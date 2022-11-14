@@ -114,6 +114,14 @@ class ApplicationTest extends NsTest {
         });
     }
 
+    @Test
+    void check_Bonus_자연수() {
+        assertSimpleTest(() -> {
+            runException("1000", "1,2,3,4,5,6", "j");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
 
     @Override
     public void runMain() {
