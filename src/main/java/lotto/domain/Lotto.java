@@ -52,8 +52,7 @@ public class Lotto {
 
     private void overlapValidate() {
         if (lotto.stream().distinct().count() != LottoInfo.LOTTO_LENGTH.getValue()) {
-            throw new IllegalArgumentException("[ERROR] 로또 번호는 중되지 않아야 합니다.");
+            throw new IllegalArgumentException("[ERROR] 로또 번호는 중복되지 않아야 합니다.");
         }
-
     }
 }
