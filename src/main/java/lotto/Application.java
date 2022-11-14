@@ -10,23 +10,17 @@ public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         System.out.println("구입금액을 입력해 주세요.");
-        int purchasePrice = getPurchasePrice(Console.readLine());
-        List<Lotto> lottoList = createLottoList(purchasePrice);
-        printLottoList(lottoList);
+        User user = new User(Console.readLine());
         System.out.println("당첨 번호를 입력해 주세요.");
         List<Integer> winningLottoNumbers = getWinningLottoNumbers(Console.readLine());
         Lotto winningLotto = new Lotto(winningLottoNumbers);
         System.out.println("보너스 번호를 입력해 주세요.");
         int bonusNumber = getBonusNumber(Console.readLine(), winningLottoNumbers);
-        HashMap<String, Integer> history = createHistory(lottoList, winningLotto, bonusNumber);
-        double yieldRate = getYieldRate(purchasePrice, getProfits(history));
-        printYieldRate(yieldRate);
+//       HashMap<String, Integer> history = createHistory(lottoList, winningLotto, bonusNumber);
+//        double yieldRate = getYieldRate(purchasePrice, getProfits(history));
+//        printYieldRate(yieldRate);
     }
 
-    public static int getPurchasePrice(String input) {
-        validatePurchasePrice(input);
-        return Integer.parseInt(input);
-    }
 
     public static List<Integer> getWinningLottoNumbers(String input) {
         String[] inputNumbers = input.split(",");
@@ -41,18 +35,6 @@ public class Application {
     public static int getBonusNumber(String input, List<Integer> winningLottoNumbers) {
         validateNumber(input, winningLottoNumbers);
         return Integer.parseInt(input);
-    }
-
-    public static void validatePurchasePrice(String input) {
-        int inputNumber;
-        try {
-            inputNumber = Integer.parseInt(input);
-        } catch (Exception e) {
-            throw new IllegalArgumentException(lotto.Error.INVALID_PRICE.getMessage());
-        }
-        if (inputNumber % 1000 != 0) {
-            throw new IllegalArgumentException(lotto.Error.INVALID_PRICE.getMessage());
-        }
     }
 
     public static void validateNumber(String input) {
@@ -72,15 +54,6 @@ public class Application {
         if (winningLottoNumbers.contains(Integer.parseInt(input))) {
             throw new IllegalArgumentException(Error.INPUT_DUPLICATE.getMessage());
         }
-    }
-
-    public static List<Lotto> createLottoList(int purchasePrice) {
-        int range = purchasePrice / 1000;
-        List<Lotto> lottoList = new ArrayList<>();
-        for (int i = 0; i < range; i++) {
-            lottoList.add(Lotto.createPurchaseLotto());
-        }
-        return lottoList;
     }
 
     public static HashMap<String, Integer> createHistory(List<Lotto> lottoList, Lotto winningLotto, int bonusNumber) {
