@@ -13,10 +13,11 @@ public class Game {
     private List<Lotto> total_lotto;
     private List<Integer> total_bonus_lotto;
 
+    private final String SHOW_LOTTO ="개를 구매했습니다.";
+
     public void run(){
         init();
         int money = view.requestMoney();
-        System.out.println(money);
         lottoNumberSave(money);
 
     }
@@ -28,7 +29,7 @@ public class Game {
             total_lotto.add(lotto);
         }
     }
-    
+
     private void init(){
         final Scanner scanner = new Scanner(System.in);
         view= new View(scanner);
