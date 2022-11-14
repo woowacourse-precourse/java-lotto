@@ -17,4 +17,7 @@ public class printResult {
         System.out.println("당첨 통계");
         System.out.println("---");
     }
+    public void printLine() {
+        System.out.println();
+    }
 }
