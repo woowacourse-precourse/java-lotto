@@ -42,6 +42,7 @@
     - [X] 숫자 3자리마다 콤마를 찍을 수 있다. - NumberFormator#divideEvery3Digits()
   - [X] [1~5]등의 각 개수를 알 수 있다. - PrizeCount#items
   - [X] [1~5]등의 각 합산 금액이 얼마인지 알 수 있다. - PrizeCount#getTotalPrizeMoney()
-  - [X] 수익률이 얼마인지 출력할 수 있다. 소수점 둘째 자리에서 반올림한다. - Profit#getRate()
-    - [X] 구입금액 대비 당첨금액 비율(%)을 구할 수 있다. - Profit#setRate()
-      - [X] 총 당첨 금액을 알 수 있다. - Profit#calculate()
+  - [ ] 수익률이 얼마인지 출력할 수 있다. 
+    - [X] 숫자를 소수점 둘째 자리에서 반올림할 수 있다. - NumberFormator#roundToTwoDecimalPlaces()
+      - [X] 구입금액 대비 당첨금액 비율(%)을 구할 수 있다. - Profit#setRate()
+        - [X] 총 당첨 금액을 알 수 있다. - Profit#calculate()

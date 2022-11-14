@@ -10,4 +10,8 @@ public class NumberFormator {
         return decFormat.format(number);
     }
 
+    public static String roundToTwoDecimalPlaces(float number) {
+        return String.format("%.1f", number);
+    }
+
 }
