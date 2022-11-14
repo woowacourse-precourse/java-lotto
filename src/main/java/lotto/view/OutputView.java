@@ -4,22 +4,23 @@ import java.util.Map;
 import java.util.Map.Entry;
 import lotto.domain.LottoTicket;
 import lotto.domain.Money;
+import lotto.domain.Profit;
 import lotto.domain.Rank;
 
 public class OutputView {
 
-    public void printLottoAmount(Money money) {
+    public static void printLottoAmount(Money money) {
         int lottoAmount = money.calculateLottoAmount();
         System.out.println(lottoAmount + "개를 구매했습니다.");
     }
 
-    public void printLottoTicket(LottoTicket lottoTicket) {
-        for (String lotto : lottoTicket.printLottoTicket()) {
+    public static void printLottoTicket(LottoTicket lottoTicket) {
+        for (String lotto : lottoTicket.convertString()) {
             System.out.println(lotto);
         }
     }
 
-    public void printLottoResult(Map<Rank, Integer> lottoResult) {
+    public static void printLottoResult(Map<Rank, Integer> lottoResult) {
         System.out.println("당첨 통계");
         System.out.println("---");
         lottoResult.remove(Rank.LOSE);
@@ -28,16 +29,20 @@ public class OutputView {
         }
     }
 
-    private String printLottoRank(Rank rank, int amount) {
-        if (rank.hasBonus()) {
-            return String.format(rank.getCorrectNumberAmount() + "개 일치, 보너스 볼 일치 (" + amount + ") - ",
-                    rank.prize() + "개");
-        }
-
-        return String.format(rank.getCorrectNumberAmount() + "개 일치 (" + amount + ") - ",
-                rank.prize() + "개");
-
+    public static void printProfit(Profit profit) {
+        String roundedProfit = String.format("%.1f", profit.getProfit() * 100);
+        System.out.println("총 수익률은 " + roundedProfit + "%입니다.");
     }
 
+    private static String printLottoRank(Rank rank, int amount) {
+        if (rank.hasBonus()) {
+            return String.format(rank.getCorrectNumberAmount() + "개 일치, 보너스 볼 일치 (" + rank.prize() + "원) - " +
+                    amount + "개");
+        }
+
+        return String.format(rank.getCorrectNumberAmount() + "개 일치 (" + rank.prize() + "원) - " +
+                amount + "개");
+
+    }
 }
 
