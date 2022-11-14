@@ -20,24 +20,21 @@ public class Store {
     }
 
     public void sellLottoToCustomer(String beforePaidMoney) {
-        hasValidType(beforePaidMoney);
         int paidMoney = fitPaidMoney(beforePaidMoney);
         this.customer = new Customer(paidMoney);
     }
 
-    public void pickWinningNumberWithBonusNumber(String beforeWinningNumber, String beforeBonusNumber) {
-        List<Integer> winningNumber = pickWinningNumber(beforeWinningNumber);
-        int bonusNumber = pickBonusNumber(winningNumber, beforeBonusNumber);
+    public void pickWinningNumberWithBonusNumber(List<Integer> winningNumber, int bonusNumber) {
         this.winningNumberWithBonusNumber = fitWinningNumberWithBonusNumber(winningNumber, bonusNumber);
     }
 
-    private List<Integer> pickWinningNumber(String beforeWinningNumber) {
+    public List<Integer> pickWinningNumber(String beforeWinningNumber) {
         List<Integer> winningNumber = fitWinningNumber(beforeWinningNumber);
         hasValidLottoNumber(winningNumber);
         return winningNumber;
     }
 
-    private int pickBonusNumber(List<Integer> winningNumber, String beforeBonusNumber) {
+    public int pickBonusNumber(List<Integer> winningNumber, String beforeBonusNumber) {
         int bonusNumber = fitBonusNumber(beforeBonusNumber);
         hasValidBonusNumber(winningNumber, bonusNumber);
         return bonusNumber;
