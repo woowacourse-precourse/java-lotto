@@ -16,8 +16,8 @@ public class LottoController {
         try {
             int ticket = getTicketFromUserByConsole();
             List<Lotto> lottos = getRandomLottoBy(ticket);
-            WinningLotto winningLotto = getWinningLottoByUser();
-            printLottoResult(lottos, winningLotto);
+            WinningLotto winningLotto = getWinningLottoFromUserByConsole();
+            printLottoResultByConsole(lottos, winningLotto);
         } catch (IllegalArgumentException error) {
             OutputView.printErrorMessage(error.getMessage());
         }
@@ -36,7 +36,7 @@ public class LottoController {
         return lottos;
     }
 
-    private WinningLotto getWinningLottoByUser() {
+    private WinningLotto getWinningLottoFromUserByConsole() {
         Lotto manualLotto = getManualLottoFromUserByConsole();
         int bonusNumber = getBonusNumberFromUserByConsole();
         return new WinningLotto(manualLotto, bonusNumber);
@@ -52,7 +52,7 @@ public class LottoController {
         return lottoNumber.getValue();
     }
 
-    private void printLottoResult(List<Lotto> lottos, WinningLotto winningLotto) {
+    private void printLottoResultByConsole(List<Lotto> lottos, WinningLotto winningLotto) {
         Map<LottoRanking, Integer> lottoResultData = LottoReader.getLottoRankings(lottos, winningLotto);
         OutputView.printLottoResult(lottoResultData);
         printLottoRate(profitCalculator.getLottoYield(lottoResultData));
