@@ -8,7 +8,9 @@ public enum UIMessages {
     WINNING_STATS("당첨 통계\n---"),
     TOTAL_EARNINGS("총 수익률은"),
     IS("입니다"),
-    UNIT("개");
+    UNIT("개"),
+    WON("원");
+
     String text;
 
     UIMessages(String text) {

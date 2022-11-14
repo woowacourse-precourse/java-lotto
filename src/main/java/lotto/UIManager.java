@@ -23,10 +23,10 @@ public class UIManager {
      * @param n
      * @param lottos
      */
-    public void buyLotto(int n, List<Lotto> lottos) {
+    public void buyLottos(int n, List<Lotto> lottos) {
         System.out.println(n + UIMessages.BUY_LOTTOS.getText());
         for (Lotto lotto : lottos) {
-            System.out.println(lotto);
+            System.out.println(lotto.getNumbers());
         }
     }
 
@@ -41,9 +41,9 @@ public class UIManager {
     /**
      * 보너스 번호 입력
      */
-    public int enterBonusNumber() {
+    public String enterBonusNumber() {
         System.out.println(UIMessages.ENTER_BONUS_NUMBER.getText());
-        return Integer.parseInt(Console.readLine());
+        return Console.readLine();
     }
 
     /**
@@ -54,7 +54,7 @@ public class UIManager {
         Map<Rank, Integer> ranks = user.getRanks();
         for (Rank r : ranks.keySet()) {
             System.out.println(r.getCondition() + " ("
-                    + r.getWinnings() + ") - "
+                    + r.getWinnings() + UIMessages.WON.getText() +  ") - "
                     + ranks.get(r) + UIMessages.UNIT.getText());
         }
         System.out.println(UIMessages.TOTAL_EARNINGS.getText()

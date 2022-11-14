@@ -8,7 +8,7 @@ import java.util.Map;
 
 public class User {
     int purchaseAmount;
-    int earningsRate;
+    String earningsRate;
     Map<Rank, Integer> ranks = new HashMap<>();
 
     User(int purchaseAmount) {
@@ -27,7 +27,13 @@ public class User {
     }
 
     public void settleEarningsRate() {
-
+        double sum = 0.0;
+        for(Rank rank : ranks.keySet()) {
+            String winning = rank.getWinnings();
+            Double parseWinning = Double.parseDouble(winning.replace(",", ""));
+            sum += ranks.get(rank) * parseWinning;
+        }
+        earningsRate = String.format("%.1f", sum / purchaseAmount);
     }
 
     public int getPurchaseAmount() {
