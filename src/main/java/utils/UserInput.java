@@ -1,7 +1,8 @@
-package Utils;
+package utils;
 
 import camp.nextstep.edu.missionutils.Console;
 import lotto.Lotto;
+import model.Game;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,16 +11,39 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class UserInput {
+    private Game game;
+
+    public UserInput(Game game) {
+        this.game = game;
+    }
+
+    // 구입금액 입력
+    public void inputMoney() {
+        String userInputMoney = Console.readLine();
+
+        validateInputIsNum(userInputMoney);
+        validateInputMoney(userInputMoney);
+
+        int lottoCount = getLottoCount(userInputMoney);
+        game.setPurchaseNumber(lottoCount);
+    }
+
+    // 로또 개수
+    public int getLottoCount(String userInput) {
+        int userInputMoney = Integer.parseInt(userInput);
+
+        return userInputMoney / 1000;
+    }
 
     // 당첨번호 입력, 유효성검사 후 로또 객체 생성
-    public Lotto inputLottoNumber() {
+    public void inputLottoNumber() {
         String userInputLottoNumbers = Console.readLine();
 
         validateInputLottoNumbers(userInputLottoNumbers);
         List<Integer> lottoNumbers = inputLottoNumberToList(userInputLottoNumbers);
         Lotto lotto = new Lotto(lottoNumbers);
 
-        return lotto;
+        game.setLotto(lotto);
     }
 
     // 사용자 입력이 숫자인지 유효성 검사
@@ -56,7 +80,7 @@ public class UserInput {
         StringTokenizer st = new StringTokenizer(userInput, ",");
         List<Integer> lottoNumbers = new ArrayList<>();
 
-        while (st.hasMoreTokens()){
+        while (st.hasMoreTokens()) {
             lottoNumbers.add(Integer.parseInt(st.nextToken()));
         }
 
