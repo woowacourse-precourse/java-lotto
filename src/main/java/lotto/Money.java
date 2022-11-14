@@ -9,6 +9,7 @@ public class Money {
             throw new IllegalArgumentException("[ERROR] 천원 단위로 입력해주세요.");
         }
         int lotto = money / 1000;
+        System.out.println(lotto + "개를 구매했습니다.");
         return lotto;
     }
 }
