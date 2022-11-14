@@ -10,14 +10,14 @@ class NumberWithDotFilterTest {
 
     @DisplayName("입력값이 숫자가 아닐 경우 예외가 발생한다.")
     @Test
-    void throwExceptionWhenValueNotDivided() {
+    void throwExceptionWhenValueNotNumber() {
         assertThatThrownBy(() -> new NumberWithDotFilter().doFilter("1,2,5,s,2,6"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
     @DisplayName("입력값이 없을 경우 예외가 발생한다.")
     @Test
-    void throwExceptionWhenValueIsZero() {
+    void throwExceptionWhenValueIsEmpty() {
         assertThatThrownBy(() -> new NumberWithDotFilter().doFilter(""))
                 .isInstanceOf(IllegalArgumentException.class);
     }
