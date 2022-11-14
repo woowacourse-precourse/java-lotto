@@ -7,6 +7,7 @@ import java.util.List;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomUniqueNumbersInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
+import static lotto.exception.InputException.inputMoneyException;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class ApplicationTest extends NsTest {
@@ -46,11 +47,20 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    // 구입 금액 예외테스트
     @Test
     void 예외_테스트() {
         assertSimpleTest(() -> {
             runException("1000j");
             assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
+    @Test
+    void 예외_테스트_구입_금액에_1000원_단위가_아닌_수_입력() {
+        assertSimpleTest(() -> {
+            runException("1500");
+            assertThat(output()).contains("[ERROR] 구입 금액은 1,000원 단위로 입력받을 수 있습니다.");
         });
     }
 
