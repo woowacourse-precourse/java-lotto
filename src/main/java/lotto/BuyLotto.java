@@ -2,7 +2,6 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
 public class BuyLotto {
-    private final int price = 1000;
     private final String money;
 
     public BuyLotto() {
@@ -20,5 +19,9 @@ public class BuyLotto {
         } catch (Exception e){
             throw new IllegalArgumentException("[ERROR] 구입금액은 정수만 입력해 주세요");
         }
+        getLotto(Integer.parseInt(money));
+    }
+    public void getLotto(int money) {
+        GetLotto getlotto = new GetLotto(money);
     }
 }
