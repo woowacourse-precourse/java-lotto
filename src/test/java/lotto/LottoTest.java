@@ -8,11 +8,7 @@ import lotto.Utils.LottoInspector;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.InputStream;
-import java.io.PrintStream;
-import java.util.ArrayList;
+import java.io.*;
 import java.util.List;
 
 import static lotto.Enum.ErrorMessage.*;
@@ -38,16 +34,21 @@ class LottoTest extends NsTest {
     @DisplayName("금액을 입력하고 로또의 갯수를 확인한다.")
     @Test
     void countLottoByInputProperMoney() {
-        LottoShop shop = new LottoShop();
+        ByteArrayOutputStream consoleOutput = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(consoleOutput));
 
-        String inputMoney = "1000";
-        run(inputMoney, "1,2,3,4,5,6", "7");
-        assertThat(shop.soldLottoList.size()).isEqualTo(1);
+        String inputMoney;
+        String expectedCount;
 
-        shop.soldLottoList = new ArrayList<>();
-        inputMoney = "10000";
+        inputMoney = "77000";
+        expectedCount = "77개를";
         run(inputMoney, "1,2,3,4,5,6", "7");
-        assertThat(shop.soldLottoList.size()).isEqualTo(10);
+        assertThat(consoleOutput.toString()).contains(expectedCount);
+
+        inputMoney = "1000";
+        expectedCount = "1개를";
+        run(inputMoney, "1,2,3,4,5,6", "7");
+        assertThat(consoleOutput.toString()).contains(expectedCount);
     }
 
     @DisplayName("올바르지 않은 금액을 입력했을때 예외를 확인한다.")
@@ -65,6 +66,13 @@ class LottoTest extends NsTest {
                 .hasMessage(NOT_INPUT_INTEGER_VALUE.toMessage());
 
         input = "100";
+        inputStream = new ByteArrayInputStream(input.getBytes());
+        System.setIn(inputStream);
+        assertThatThrownBy(() -> shop.purchase())
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(NOT_PROPER_PAY_MONEY.toMessage());
+
+        input = "1500";
         inputStream = new ByteArrayInputStream(input.getBytes());
         System.setIn(inputStream);
         assertThatThrownBy(() -> shop.purchase())
