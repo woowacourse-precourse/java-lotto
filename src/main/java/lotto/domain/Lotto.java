@@ -19,4 +19,9 @@ public class Lotto {
     public List<Integer> getNumbers() {
         return numbers;
     }
+
+    public List<Integer> getPrized(List<Integer> luckyNumbers, int bonusNumbers) {
+        Judgement judgement = new Judgement();
+        return judgement.getRanking(numbers, luckyNumbers, bonusNumbers);
+    }
 }

@@ -1,10 +1,17 @@
 package lotto.domain;
 
+import java.util.Arrays;
 import java.util.List;
 
 public class Judgement {
     private int matchedCount = 0;
     private int matchedBonus = 0; // 0일 경우 unmatched, 1일 경우 macthed
+
+    public List<Integer> getRanking(List<Integer> lottoNumbers, List<Integer> luckyNumbers, int bonusNumber) {
+        compareLottoWithLucky(lottoNumbers, luckyNumbers);
+        compareLottoWithBonus(lottoNumbers, bonusNumber);
+        return Arrays.asList(matchedCount, matchedBonus);
+    }
 
     private void compareLottoWithLucky(List<Integer> lottoNumbers, List<Integer> luckyNumbers) {
         for (int number : lottoNumbers) {
