@@ -1,6 +1,7 @@
-package lotto;
+package lotto.buy;
 
 public class Payment {
+
     public static int LOTTO_PRICE = 1000;
     private final int pay;
 

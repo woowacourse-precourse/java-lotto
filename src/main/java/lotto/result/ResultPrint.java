@@ -1,6 +1,6 @@
-package lotto;
+package lotto.result;
 
-import static lotto.LottoPrizes.*;
+import static lotto.result.LottoPrizes.*;
 
 import java.text.DecimalFormat;
 import java.util.List;
@@ -11,6 +11,7 @@ public class ResultPrint {
     public static void printingResult(Map<String, Integer> prizesMap) {
         LottoResult lottoResult = new LottoResult(prizesMap);
         List<LottoPrizes> lottoPrizes = List.of(FIFTH, FOURTH, THIRD, SECOND, FIRST);
+        System.out.println("\n당첨 통계\n---");
         for (LottoPrizes lottoPrize : lottoPrizes) {
             int prizesCount = prizesMap.get(lottoPrize.name());
             printPrize(lottoPrize, prizesCount);

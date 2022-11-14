@@ -1,4 +1,4 @@
-package lotto;
+package lotto.input;
 
 public enum InputError {
     NOTHING("아무것도 입력되지 않았습니다."),
@@ -6,14 +6,14 @@ public enum InputError {
 
     final String message;
 
-    InputError(String message){
+    InputError(String message) {
         this.message = "[ERROR] " + message;
     }
-    public void createError(){
+    public void createError() {
         printMessage();
         throw new IllegalArgumentException();
     }
-    private void printMessage(){
+    private void printMessage() {
         System.out.print(this.message);
     }
 }

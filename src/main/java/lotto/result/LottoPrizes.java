@@ -1,4 +1,6 @@
-package lotto;
+package lotto.result;
+
+import lotto.buy.Payment;
 
 public enum LottoPrizes {
     FIRST(1, 6, 2000000000),

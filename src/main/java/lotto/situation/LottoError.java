@@ -1,4 +1,4 @@
-package lotto;
+package lotto.situation;
 
 public enum LottoError {
     OUT_OF_BOUND("로또 번호는 1부터 45사이의 숫자여야 합니다."),

@@ -1,6 +1,7 @@
-package lotto;
+package lotto.input;
 
-import static lotto.InputError.*;
+import static lotto.input.InputError.NOTHING;
+import static lotto.input.InputError.WRONG_FORMAT;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,7 +43,7 @@ public class InputConvert {
     }
     private static void oneNumberValidate(String input) {
         if (isInputLengthZero(input)) {
-           NOTHING.createError();
+            NOTHING.createError();
         }
         if (!isAllCharacterNumber(input)) {
             WRONG_FORMAT.createError();

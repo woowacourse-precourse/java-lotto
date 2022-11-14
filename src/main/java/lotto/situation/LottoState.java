@@ -1,4 +1,4 @@
-package lotto;
+package lotto.situation;
 
 public enum LottoState {
     START(1),

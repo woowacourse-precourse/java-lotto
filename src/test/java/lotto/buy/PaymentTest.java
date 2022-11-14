@@ -1,7 +1,7 @@
-package lotto;
+package lotto.buy;
 
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import java.io.ByteArrayOutputStream;
 import java.io.OutputStream;
@@ -19,7 +19,7 @@ public class PaymentTest {
     }
     @Test
     @DisplayName("로또 구매수")
-    void lottoPurchase(){
+    void lottoPurchase() {
         Payment payment = new Payment(8000);
         assertThat(payment.purchase()).isEqualTo(8);
         payment = new Payment(19000);

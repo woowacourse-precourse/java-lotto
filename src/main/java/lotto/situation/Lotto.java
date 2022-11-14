@@ -1,4 +1,4 @@
-package lotto;
+package lotto.situation;
 
 import java.util.ArrayList;
 import java.util.HashSet;

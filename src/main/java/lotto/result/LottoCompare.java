@@ -1,9 +1,11 @@
-package lotto;
+package lotto.result;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import lotto.situation.LottoState;
+import lotto.situation.LottoError;
 
 public class LottoCompare {
 

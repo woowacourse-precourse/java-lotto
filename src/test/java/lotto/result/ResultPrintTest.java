@@ -1,4 +1,4 @@
-package lotto;
+package lotto.result;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -18,7 +18,7 @@ public class ResultPrintTest {
         System.setOut(new PrintStream(out));
         ResultPrint.printingResult(
                 Map.of("FIRST", 0, "SECOND", 1, "THIRD", 0,
-                "FOURTH", 0, "FIFTH", 0, "NOTHING", 7)
+                        "FOURTH", 0, "FIFTH", 0, "NOTHING", 7)
         );
         assertThat(out.toString()).contains("5개 일치, 보너스 볼 일치 (30,000,000원) - 1개");
     }
@@ -29,7 +29,7 @@ public class ResultPrintTest {
         System.setOut(new PrintStream(out));
         ResultPrint.printingResult(
                 Map.of("FIRST", 0, "SECOND", 2, "THIRD", 0,
-                "FOURTH", 0, "FIFTH", 0, "NOTHING", 7)
+                        "FOURTH", 0, "FIFTH", 0, "NOTHING", 7)
         );
         assertThat(out.toString()).contains("5개 일치, 보너스 볼 일치 (30,000,000원) - 2개");
     }
@@ -40,7 +40,7 @@ public class ResultPrintTest {
         System.setOut(new PrintStream(out));
         ResultPrint.printingResult(
                 Map.of("FIRST", 1, "SECOND", 2, "THIRD", 3,
-                "FOURTH", 5, "FIFTH", 8, "NOTHING", 7)
+                        "FOURTH", 5, "FIFTH", 8, "NOTHING", 7)
         );
         assertThat(out.toString())
                 .contains("3개 일치 (5,000원) - 8개")
