@@ -58,11 +58,9 @@ public final class LottoWinningSystem {
 
         final WinningLotto winningLotto = createWinningLottery();
 
-        final LottoStatistic lottoStatistic = new LottoStatistic(winningLotto, lottos);
-        final LottoScoreDto lottoScoreDto = lottoStatistic.calculateStatistic();
-        outputView.printStatistic(lottoScoreDto);
+        printStatistic(winningLotto, lottos);
     }
-
+    
     private Money getPlayerMoney() {
         outputView.printInputAmount();
         final Money money = new Money(inputView.inputLong());
@@ -84,5 +82,11 @@ public final class LottoWinningSystem {
         final BonusNumber bonusNumber = new BonusNumber(inputView.inputInt());
 
         return new WinningLotto(winLotto, bonusNumber);
+    }
+
+    private void printStatistic(WinningLotto winningLotto, Lottos lottos) {
+        final LottoStatistic lottoStatistic = new LottoStatistic(winningLotto, lottos);
+        final LottoScoreDto lottoScoreDto = lottoStatistic.calculateStatistic();
+        outputView.printStatistic(lottoScoreDto);
     }
 }
