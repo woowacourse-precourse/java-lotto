@@ -7,17 +7,16 @@ import java.util.List;
 
 public class WinningNumber {
 
-    private List<Integer> winningLottoNumber;
+    private List<Integer> winningLotto;
     private int bonusNumber;
+
     public void generator() {
-        Lotto winningLotto = setWinningLotto();
-        System.out.println(winningLotto.getLottoNumber());
-        winningLottoNumber = winningLotto.getLottoNumber();
+        winningLotto = setWinningLotto().getLottoNumber();
         bonusNumber = setBonusNumber();
     }
 
     public List<Integer> getWinningLotto() {
-        return winningLottoNumber;
+        return winningLotto;
     }
 
     public int getBonusNumber() {
@@ -37,7 +36,7 @@ public class WinningNumber {
     private int setBonusNumber() {
         System.out.println("\n보너스 번호를 입력해 주세요.");
         String bonusNumber = Console.readLine();
-        return isValidBonusNumber(Integer.parseInt(bonusNumber), winningLottoNumber);
+        return isValidBonusNumber(Integer.parseInt(bonusNumber), winningLotto);
     }
 
     private int isValidBonusNumber(int bonusNumber, List<Integer> winningLotto) throws IllegalArgumentException{
