@@ -17,7 +17,7 @@
 
 #### 에러 상황
 - [ ] 로또 구입 금액입력 - PurchaseManager#askAmountOfMoney()
-  - [ ] 숫자가 아닌 경우 - PurchaseManager#isDigit()
+  - [ ] 숫자가 아닌 경우 - PurchaseManager#isDecimal()
   - [ ] 1000원 단위가 아닌 경우 - PurchaseManager#isThousandUnit()
 - [ ] 당첨번호 입력 - WinningNumberVerifier#askWinningNumber()
   - [ ] 입력 포맷이 "숫자,숫자,숫자..."이 아닌 경우 - WinningNumberVerifier#isCorrectFormat()
