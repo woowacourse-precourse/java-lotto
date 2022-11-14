@@ -54,4 +54,8 @@ public class OutputView {
                 rankCount
         );
     }
+
+    public static void printYield(double yield) {
+        System.out.printf(PrintMessage.TOTAL_RETURN.getMessage() + "\n", yield);
+    }
 }

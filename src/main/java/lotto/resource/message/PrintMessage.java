@@ -10,7 +10,8 @@ public enum PrintMessage {
     BONUS_NUMBER("보너스 번호를 입력해 주세요."),
     WINNING_STATISTICS("당첨 통계\n---"),
     STATISTICS_NONE_BONUS("%d개 일치 (%s원) - %d개"),
-    STATISTICS_BONUS("%d개 일치, 보너스 볼 일치 (%s원) - %d개");
+    STATISTICS_BONUS("%d개 일치, 보너스 볼 일치 (%s원) - %d개"),
+    TOTAL_RETURN("총 수익률은 %,.1f%%입니다.");
 
     private String message;
 

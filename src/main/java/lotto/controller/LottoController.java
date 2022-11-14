@@ -6,6 +6,7 @@ import lotto.domain.lotto.WinningNumber;
 import lotto.domain.number.PayOut;
 import lotto.domain.rule.Rank;
 import lotto.domain.rule.Rule;
+import lotto.domain.winnings.Winnings;
 import lotto.view.InputView;
 import lotto.view.OutputView;
 
@@ -27,6 +28,12 @@ public class LottoController {
         Map<Rank, Integer> lottoResults = getLottoResults(lottoGroup, winningNumber);
 
         getStatistics(lottoResults);
+        double yield = Winnings.getYield(payOut, lottoResults);
+        getYield(yield);
+    }
+
+    private static void getYield(double yield) {
+        OutputView.printYield(yield);
     }
 
     private static void getStatistics(Map<Rank, Integer> lottoResults) {
