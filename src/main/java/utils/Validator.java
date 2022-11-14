@@ -10,6 +10,10 @@ public class Validator {
             return word.chars()
                     .allMatch(Character::isDigit);
         }
+
+        public static boolean matchesPattern(String word, String pattern) {
+            return word.matches(pattern);
+        }
     }
 
     public static class IntegerValidator {
@@ -27,13 +31,8 @@ public class Validator {
             return collection.size() == size;
         }
 
-        public boolean hasUniqueElementsOnly(Collection collection) {
+        public static boolean hasUniqueElementsOnly(Collection collection) {
             return collection.size() == Set.copyOf(collection).size();
         }
     }
-
-    public static void main(String[] args) {
-        System.out.println(IntegerValidator.isDivisibleBy(14000, 1000));
-    }
-
 }
