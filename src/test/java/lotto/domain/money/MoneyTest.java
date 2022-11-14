@@ -35,10 +35,14 @@ class MoneyTest {
 
     @ParameterizedTest
     @CsvSource(value = {
+            "10000000:7555000:75.6",
+            "10000:0:0.0",
             "8000:5000:62.5",
             "10000:1000:10.0",
             "10000:4000:40.0",
-            "20000:3000:15.0"
+            "20000:3000:15.0",
+            "700000:5000:0.7",
+            "10000:20000000000000000:200000000000000.0"
     }, delimiterString = ":")
     void 금액의_수익률을_구할_수_있습니다(final Long principleInput, final Long profitInput, final Double percentInput) {
         var principle = Money.generateMoney(principleInput);
