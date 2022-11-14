@@ -1,6 +1,10 @@
 package lotto.validator;
 
+import static lotto.util.Const.*;
+
 public class InputValidator {
+
+    private static final long MAX_INPUT_MONEY =  (Long.MAX_VALUE / LOTTO_PRICE_UNIT) * LOTTO_PRICE_UNIT;
 
     public static void checkMoney(String money) throws IllegalArgumentException {
         if (isNotDigit(money)) {
@@ -24,6 +28,6 @@ public class InputValidator {
     }
 
     private static boolean isOverMax(String money) {
-        return Long.parseLong(money) > Long.MAX_VALUE;
+        return Long.parseLong(money) > MAX_INPUT_MONEY;
     }
 }
