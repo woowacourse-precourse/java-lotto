@@ -67,7 +67,7 @@ public class View {
             return i / 1000;
         } catch (IllegalArgumentException e) {
             System.out.println("[ERROR] 로또 구입 금액이 올바르지 않습니다.");
-            throw e;
+            return inputPrice();
         }
     }
 
@@ -80,7 +80,7 @@ public class View {
             return numbers;
         } catch (IllegalArgumentException e) {
             System.out.println("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
-            throw e;
+            return inputLottoNumber();
         }
     }
 
@@ -106,7 +106,7 @@ public class View {
             return Integer.parseInt(Console.readLine());
         } catch (IllegalArgumentException e) {
             System.out.println("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
-            throw e;
+            return inputBonusNumber();
         }
     }
 }
