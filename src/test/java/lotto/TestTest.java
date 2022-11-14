@@ -1,8 +1,10 @@
 package lotto;
 
+import Service.LottoService;
 import domain.Rank;
 import org.junit.jupiter.api.Test;
 import view.SystemMessage;
+import camp.nextstep.edu.missionutils.Console;
 
 import java.util.Arrays;
 import java.util.HashMap;

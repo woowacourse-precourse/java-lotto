@@ -14,10 +14,10 @@ public class WinningService {
     BonusNumber bonusNumber;
     SystemMessage systemMessage;
 
-    public void set_winning(){
-        getWinningNumbers();
-        getBonusNumbers();
-    }
+//    public void set_winning(){
+//        getWinningNumbers();
+//        getBonusNumbers();
+//    }
 
     public List<Integer> getWinningNumbers(){
         RequestUser.requestLottoNum();

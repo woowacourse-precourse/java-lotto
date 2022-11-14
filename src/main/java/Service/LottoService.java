@@ -1,27 +1,63 @@
 package Service;
 
-import domain.Ticket;
-import domain.UserMoneyValidate;
+import domain.*;
 import lotto.Lotto;
 import utils.RandomNumberLottoGenerator;
 import view.RequestUser;
 import camp.nextstep.edu.missionutils.Console;
 import view.SystemMessage;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class LottoService {
 
+    BonusNumber bonusNumber;
+    WinningNumber winningNumber;
     UserMoneyValidate userMoneyValidate = new UserMoneyValidate();
     SystemMessage systemMessage = new SystemMessage();
 
-    public void set_lotto(){
+    public void set_lotto() {
         int userMoney = getUserMoney();
         Ticket ticket = new Ticket();
         int ticketNum = ticket.getTicketNum(userMoney);
-        getAllLotto(ticketNum);
+        List<List<Integer>> allTickets = getAllLotto(ticketNum);
+
+        List<Integer> winningNumbers = getWinningNumbers();
+        int bonus = getBonusNumbers();
+        List<Integer> allWinningNumbers = totalWinningNumbers(winningNumbers, bonus);
+
+        Map<Rank, Integer> map = new HashMap<>();
+        Map<Rank, Integer> rankMap = calculation(allWinningNumbers, allTickets, map);
+        systemMessage.countMessage(rankMap);
+    }
+
+//    public void set_winning(){
+//        List<Integer> winningNumbers = getWinningNumbers();
+//        int bonus = getBonusNumbers();
+//        List<Integer> allWinningNumbers = totalWinningNumbers(winningNumbers, bonus);
+//    }
+
+    public List<Integer> getWinningNumbers(){
+        RequestUser.requestLottoNum();
+        String input = Console.readLine();
+        List<Integer> winningNumbers = winningNumber.validateWinningNumbers(input);
+        systemMessage.winningNumbersMessage(input);
+
+        return winningNumbers;
+    }
+
+    public int getBonusNumbers(){
+        RequestUser.requestBonusNum();
+        String input = Console.readLine();
+        int bonus = bonusNumber.getBonusNumber(input);
+        systemMessage.bonusNumberMessage(input);
+
+        return bonus;
+    }
+
+    public List<Integer> totalWinningNumbers(List<Integer> winningNumbers, int bonus){
+        winningNumbers.add(bonus);
+        return winningNumbers;
     }
 
     public int getUserMoney() throws IllegalArgumentException{
@@ -42,5 +78,20 @@ public class LottoService {
             systemMessage.ticketNumberMessage(randomNum);
         }
         return allTicket;
+    }
+
+    public Map<Rank, Integer> calculation(List<Integer> allWinningNumbers, List<List<Integer>> allTicket, Map<Rank, Integer> map){
+        systemMessage.mapSetting(map);
+        for(List<Integer> list : allTicket){
+            Rank rank = Rank.winningCondition(allWinningNumbers, list);
+            systemMessage.getCount(rank, map);
+        }
+
+        return map;
+    }
+
+    public Map<Rank, Integer> initialMap(Map<Rank, Integer> map){
+        systemMessage.mapSetting(map);
+        return map;
     }
 }

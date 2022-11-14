@@ -10,11 +10,11 @@ public class LottoController {
 
     public void run(){
         setLotto();
-        setWin();
+//        setWin();
     }
 
     private void setLotto(){
         lottoService.set_lotto();
     }
-    private void setWin() {winningService.set_winning();}
+//    private void setWin() {lottoService.set_winning();}
 }
