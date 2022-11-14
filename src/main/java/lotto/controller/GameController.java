@@ -27,5 +27,7 @@ public class GameController {
     public void checkWinningNumbers() {
         message.inputWinningNumbers();
         winningNumber.inputWinningNumbers();
+
+        message.inputBonusNumber();
     }
 }
