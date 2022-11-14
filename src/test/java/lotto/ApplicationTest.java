@@ -4,9 +4,7 @@ import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomUniqueNumbersInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
@@ -88,6 +86,17 @@ class ApplicationTest extends NsTest {
         assertThat(application.saveLotto(money).size()).isEqualTo(result);
     }
 
+    @DisplayName("로또 번호 결과와 예상 결과 같은지 확인한다. ")
+    @Test
+    void getLottoResultByLottoCount() {
+        Application application = new Application();
+        List<LottoNumber> buyList = new ArrayList<>();
+        buyList.add(new LottoNumber(Arrays.asList(6, 5, 4, 3, 2, 0)));
+        List<Integer> winningLotto = List.of(1, 2, 3, 4, 5, 6);
+        int bonusNumber = 7;
+
+        assertThat(application.getLottoResult(buyList, winningLotto, bonusNumber)).containsExactly(0, 0, 1, 0, 0);
+    }
 
     @Override
     public void runMain() {
