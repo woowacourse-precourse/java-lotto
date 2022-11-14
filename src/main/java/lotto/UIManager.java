@@ -53,11 +53,11 @@ public class UIManager {
         System.out.println(UIMessages.WINNING_STATS.getText());
         Map<Rank, Integer> ranks = user.getRanks();
         for (Rank r : ranks.keySet()) {
-            if(r.getCondition().equals(Rank.RANK_NONE.getCondition())) {
+            if (r.getCondition().equals(Rank.RANK_NONE.getCondition())) {
                 continue;
             }
             System.out.println(r.getCondition() + " ("
-                    + String.format("%,d", r.getWinnings()) + UIMessages.WON.getText() +  ") - "
+                    + String.format("%,d", r.getWinnings()) + UIMessages.WON.getText() + ") - "
                     + ranks.get(r) + UIMessages.UNIT.getText());
         }
         System.out.println(UIMessages.TOTAL_EARNINGS.getText()
