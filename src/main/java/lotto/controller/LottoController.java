@@ -31,7 +31,7 @@ public class LottoController {
         outputUI.printWinnerResult(totalWinnerLotto.getWinnerPerRank());
 
         // 로또 수익률 계산
-        double returnRate = raffleResultCalculator.calculateStatics(totalWinnerLotto.getWinnerPerRank(), lottos.size());
+        double returnRate = raffleResultCalculator.getProfitRate(totalWinnerLotto.getWinnerPerRank(), lottos.size());
         outputUI.printReturnRate(returnRate);
     }
 

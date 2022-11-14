@@ -27,11 +27,11 @@ public class OutputUI {
     public void printWinnerResult(Map<Rank, Integer> winnerPerRank) {
         Rank[] ranks = Rank.values();
         for (Rank rank : ranks) {
+            if (rank == Rank.NONE) continue;
             System.out.println(String.format("%d개 일치%s - %d개",
                     rank.getNormalNumbers(),
                     rank.getRewardString(),
-                    winnerPerRank.get(rank.getNormalNumbers())));
-
+                    winnerPerRank.get(rank)));
         }
     }
 
