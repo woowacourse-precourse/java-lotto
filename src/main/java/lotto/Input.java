@@ -40,7 +40,6 @@ public class Input {
 
 	}
 	private static void validateBudget(int budget) {
-		System.out.println("여기");
 		if (budget < 1000) {
 			throw new IllegalArgumentException("[ERROR]");
 		}
@@ -57,11 +56,9 @@ public class Input {
 		}
 		Set<Integer> hashIntegers = new HashSet<>(integers);
 		if (integers.size() != hashIntegers.size()) {
-			System.out.println("중복발생"+integers.size()+hashIntegers.size());
 			throw new IllegalArgumentException("[ERROR]");
 		}
 		if (integers.size() != 6) {
-			System.out.println("입력값개수오류"+integers.size());
 			throw new IllegalArgumentException("[ERROR]");
 		}
 	}

@@ -7,9 +7,6 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 public class Application {
     public static void main(String[] args) {
-    controller();
-    }
-    public static void controller() {
         int numberOfGame = Input.budgetInput();
         ArrayList<List<Integer>> userNumber = Lotto.randomNumberGenerate(numberOfGame);
         ArrayList<Integer> winningNumber=Input.winningNumberInput();

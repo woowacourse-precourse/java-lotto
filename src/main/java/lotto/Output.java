@@ -6,7 +6,8 @@ import java.util.HashMap;
 import java.util.List;
 
 public class Output {
-	public static void output(int numberOfGame, ArrayList<List<Integer>> userNumber, ArrayList<Integer> winningNumber, int bonusNumber) {
+	public static void output(int numberOfGame, ArrayList<List<Integer>> userNumber, ArrayList<Integer> winningNumber,
+		int bonusNumber) {
 		quantityAndNumberOutput(numberOfGame, userNumber);
 		winningResultOutput(userNumber,winningNumber,bonusNumber);
 	}
@@ -16,7 +17,8 @@ public class Output {
 			System.out.println(userNumber.get(i));
 		}
 	}
-	public static void winningResultOutput(ArrayList<List<Integer>> userNumber, ArrayList<Integer> winningNumber, int bonusNumber) {
+	public static void winningResultOutput(ArrayList<List<Integer>> userNumber, ArrayList<Integer> winningNumber,
+		int bonusNumber) {
 		HashMap<String,Integer> result = calculateResult(userNumber, winningNumber, bonusNumber);
 		System.out.println("3개 일치 (5,000원) - "+result.get("three")+"개");
 		System.out.println("4개 일치 (50,000원) - "+result.get("four")+"개");
@@ -25,8 +27,6 @@ public class Output {
 		System.out.println("6개 일치 (2,000,000,000원) - "+result.get("six")+"개");
 		System.out.println("총 수익률은 "+profitabilityOutput(result,userNumber)+"%입니다.");
 	}
-
-
 
 	public static HashMap<String, Integer> calculateResult(ArrayList<List<Integer>> userNumber, ArrayList<Integer>
 		winningNumber, int bonusNumber){
