@@ -3,47 +3,43 @@ package lotto.domain;
 import lotto.exception.InputException;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public final class UserLotto {
-
-    private final String REG_XP_LOTTO = "^[0-9,]+$";
-
-    private final String SPLIT_STANDARD = ",";
 
     private final List<Integer> winNumbers;
 
     private final int bonusNumber;
 
-    public UserLotto(String winNumbers, String bonusNumber) {
-        isDigitAndSplitByStandard(winNumbers);
+    public UserLotto(List<Integer> winNumbers, int bonusNumber) {
+        validate(winNumbers, bonusNumber);
+        this.winNumbers = List.copyOf(winNumbers);
+        this.bonusNumber = bonusNumber;
+    }
+
+    public int findBonusNumberWinCount(List<Integer> lotto) {
+        return (int) IntStream.range(0, 6)
+                .filter(i -> lotto.get(i).equals(bonusNumber))
+                .count();
+    }
+
+    private void validate(List<Integer> winNumbers, int bonusNumber) {
         isValidLottoCount(winNumbers);
         isValidLottoRange(winNumbers);
         hasNotDuplicateLotto(winNumbers);
         isValidBonusLottoRange(bonusNumber);
-        this.winNumbers = List.copyOf(mapToList(winNumbers));
-        this.bonusNumber = Integer.parseInt(bonusNumber);
     }
 
-    private void isDigitAndSplitByStandard(String winNumbers) {
-        if (!winNumbers.matches(REG_XP_LOTTO)) {
-            throw new IllegalArgumentException(InputException.LOTTO_INVALID_FORM.message());
-        }
-    }
-
-    private void isValidLottoCount(String winNumbers) {
-        if (Arrays.stream(winNumbers.split(SPLIT_STANDARD)).count() != 6) {
+    private void isValidLottoCount(List<Integer> winNumbers) {
+        if (winNumbers.size() != 6) {
             throw new IllegalArgumentException(InputException.LOTTO_INVALID_COUNT.message());
         }
     }
 
-    private void isValidLottoRange(String winNumbers) {
-        long count = Arrays.stream(winNumbers.split(SPLIT_STANDARD))
-                .map(Integer::parseInt)
-                .filter(x -> 1 <= x && x <= 45)
+    private void isValidLottoRange(List<Integer> winNumbers) {
+        long count = winNumbers.stream()
+                .filter(num -> 1 <= num && num <= 45)
                 .count();
 
         if (count != 6) {
@@ -51,29 +47,16 @@ public final class UserLotto {
         }
     }
 
-    private void hasNotDuplicateLotto(String winNumbers) {
-        if (Arrays.stream(winNumbers.split(SPLIT_STANDARD)).distinct().count() != 6) {
+    private void hasNotDuplicateLotto(List<Integer> winNumbers) {
+        if (winNumbers.stream().distinct().count() != 6) {
             throw new IllegalArgumentException(InputException.LOTTO_DUPLICATE_DIGIT.message());
         }
     }
 
-    private List<Integer> mapToList(String winNumbers) {
-        return Arrays.stream(winNumbers.split(SPLIT_STANDARD))
-                .map(Integer::valueOf)
-                .collect(Collectors.toList());
-    }
-
-    private void isValidBonusLottoRange(String bonusNumber) {
-        if (bonusNumber.length() != 1 || !bonusNumber.matches(REG_XP_LOTTO) ||
-                ( 1 > Integer.parseInt(bonusNumber) && Integer.parseInt(bonusNumber) > 45 )) {
+    private void isValidBonusLottoRange(int bonusNumber) {
+        if ( 1 > bonusNumber || bonusNumber > 45) {
             throw new IllegalArgumentException(InputException.BONUS_LOTTO_INVALID_FORM.message());
         }
-    }
-
-    public int findBonusNumberWinCount(List<Integer> lotto) {
-        return (int) IntStream.range(0, 6)
-                .filter(i -> lotto.get(i).equals(bonusNumber))
-                .count();
     }
 
     public List<Integer> getLotto() {
