@@ -19,6 +19,7 @@ public class CorrectLottoNumbers {
 
     public CorrectLottoNumbers(List<LottoNumber> correctLottoNumbers) {
         validate(correctLottoNumbers);
+        checkDuplicatedNumber(correctLottoNumbers);
         this.correctLottoNumbers = correctLottoNumbers;
         this.bonusNumber = correctLottoNumbers.get(BONUS_INDEX);
     }
@@ -26,5 +27,10 @@ public class CorrectLottoNumbers {
     private void validate(List<LottoNumber> numbers) {
         Validate.validateSize(numbers, WARM_CORRECT_LOTTO_NUMBERS_SIZE,
                 (lottoNumbers) -> lottoNumbers.size() != CORRECT_LOTTO_NUMBER_SIZE);
+    }
+
+    private void checkDuplicatedNumber(List<LottoNumber> lottoNumbers) {
+        Validate.validateDuplicateNumber(lottoNumbers,
+                (baseSize, compareLottoNumbers) -> baseSize != compareLottoNumbers.size());
     }
 }
