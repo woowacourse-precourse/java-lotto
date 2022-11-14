@@ -15,6 +15,7 @@ public class Buy {
 
     public static List<Integer> autoNumbers() {
         List<Integer> numbers = Randoms.pickUniqueNumbersInRange(START_NUMBER, FINAL_NUMBER, NUMBER_RANGE);
+        Collections.sort(numbers);
         return numbers;
     }
 
@@ -40,25 +41,25 @@ public class Buy {
 
     }
 
-    public static List<Integer> inputWinningNumber() {
+    public static List<Integer> inputLotteryNumber() {
         System.out.println("당첨 번호를 입력해 주세요.");
         String numbers = Console.readLine();
-        List<Integer> winningNumbers;
+        List<Integer> lotteryNumbers;
         try {
-            List<String> temporaryWinningNumbers = Arrays.asList(numbers.split(","));
-            Check.isNumber(temporaryWinningNumbers);
-            Check.rightRange(temporaryWinningNumbers, START_NUMBER, FINAL_NUMBER);
-            Check.numberDuplicate(temporaryWinningNumbers);
-            Check.winningNumberCount(temporaryWinningNumbers);
+            List<String> temporaryLotteryNumbers = Arrays.asList(numbers.split(","));
+            Check.isNumber(temporaryLotteryNumbers);
+            Check.rightRange(temporaryLotteryNumbers, START_NUMBER, FINAL_NUMBER);
+            Check.numberDuplicate(temporaryLotteryNumbers);
+            Check.winningNumberCount(temporaryLotteryNumbers);
 
-            winningNumbers = makeIntNumbers(temporaryWinningNumbers);
+            lotteryNumbers = convertIntNumbers(temporaryLotteryNumbers);
 
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
-            return inputWinningNumber();
+            return inputLotteryNumber();
         }
 
-        return winningNumbers;
+        return lotteryNumbers;
     }
 
     public static int inputBonusNumber(List<Integer> winningNumbers) {
