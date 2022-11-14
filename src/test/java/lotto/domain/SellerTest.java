@@ -16,8 +16,8 @@ class SellerTest {
     }
 
     @Test
-    @DisplayName("사용자 금액 입력 성공_로또 발행")
-    void sellLotto_Success() {
+    @DisplayName("사용자 금액 입력 성공-로또 발행")
+    void sellLottoSuccess() {
         Seller seller = new Seller(new StringToIntConverter());
         String money = "3000";
         IssuedLotto issuedLotto = seller.sellLotto(money);
@@ -27,7 +27,7 @@ class SellerTest {
 
     @Test
     @DisplayName("사용자 금액 1000원 단위 미입력 실패")
-    void sellLotto_Exception_Not_Divided_1000() {
+    void sellLottoExceptionNotDivided1000() {
         Seller seller = new Seller(new StringToIntConverter());
         String money = "3200";
 
@@ -37,7 +37,7 @@ class SellerTest {
 
     @Test
     @DisplayName("사용자 금액 문자 포함 입력 실패")
-    void sellLotto_Exception_Contains_String() {
+    void sellLottoExceptionContainsString() {
         Seller seller = new Seller(new StringToIntConverter());
         String money = "30001";
 
