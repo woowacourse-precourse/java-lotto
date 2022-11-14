@@ -30,3 +30,4 @@
   - feat: add game class
   - feat: add print class and print money input string
   - feat: add user's purchase amount
+  - refactor: modify exception
