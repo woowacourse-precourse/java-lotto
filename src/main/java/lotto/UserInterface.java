@@ -1,7 +1,7 @@
 package lotto;
 
 import java.util.*;
-import static Constant.GameMessage.*;
+import static Constant.Game.*;
 
 public class UserInterface {
 
@@ -16,7 +16,7 @@ public class UserInterface {
     }
 
     void printEnterBonusNumber() {
-        System.out.println("\n보너스 번호를 입력해 주세요.");
+        System.out.println(ENTER_BONUS_NUMBER);
     }
 
     void printPurchasedLotto(List<Lotto> lottos) {
