@@ -91,6 +91,7 @@ public class Validation {
 
     public static void validateBonusInput(String bonusInput, List<Integer> prizeNumbers) {
         isNumberType(bonusInput);
+        isValidRange(Integer.parseInt(bonusInput));
         isContainDuplicateNumberByPrize(Integer.parseInt(bonusInput), prizeNumbers);
     }
 }
