@@ -40,7 +40,7 @@ public class WinningStatic {
 
     private void computeYield(int purchaseMoney) {
         int sumWinningAmount = getSumWinningAmount();
-        yield= (1-(Math.abs(sumWinningAmount - purchaseMoney) / (double)purchaseMoney)) * 100;
+        yield= (sumWinningAmount/(double)purchaseMoney) * 100;
     }
 
 

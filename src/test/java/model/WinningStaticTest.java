@@ -12,7 +12,7 @@ import org.junit.jupiter.api.Test;
 class WinningStaticTest {
 
     @Test
-    @DisplayName("[Static] 3개일치 1개, 4개일치 1개 테스트")
+    @DisplayName("[WinningStatic] 3개일치 1개, 4개일치 1개 테스트")
     void threeAndFour() {
         //given
         int purchaseMoney = 4000;
@@ -28,7 +28,7 @@ class WinningStaticTest {
     }
 
     @Test
-    @DisplayName("[Static] 3개일치 3개")
+    @DisplayName("[WinningStatic] 3개일치 3개")
     void threeThird() {
         //given
         int purchaseMoney = 4000;
@@ -43,7 +43,7 @@ class WinningStaticTest {
     }
 
     @Test
-    @DisplayName("[Static] 수익률 계산(리드미 예제)")
+    @DisplayName("[WinningStatic] 수익률 계산(리드미 예제)")
     void readmeYield() {
         //given
         int purchaseMoney = 8000;
@@ -56,8 +56,21 @@ class WinningStaticTest {
         WinningStatic winningStatic = new WinningStatic();
         winningStatic.compute(purchaseMoney, results);
         //then
-        System.out.println("winningStatic = " + winningStatic.getYield());
         String yield = String.format("%.1f", winningStatic.getYield());
         assertThat(yield).isEqualTo("62.5");
+    }
+
+    @Test
+    @DisplayName("[WinningStatic] WinningStatic순서대로 출력(LOST)제외")
+    void withoutLostGetList() {
+        //given
+        //when
+        List<Result> resultsWithoutLost = Result.getResultsWithoutLost();
+        //then
+        assertThat(resultsWithoutLost.get(0)).isEqualTo(Result.THREE);
+        assertThat(resultsWithoutLost.get(1)).isEqualTo(Result.FOUR);
+        assertThat(resultsWithoutLost.get(2)).isEqualTo(Result.FIVE);
+        assertThat(resultsWithoutLost.get(3)).isEqualTo(Result.FIVE_BONUS);
+        assertThat(resultsWithoutLost.get(4)).isEqualTo(Result.SIX);
     }
 }
