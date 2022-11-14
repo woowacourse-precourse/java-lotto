@@ -33,7 +33,7 @@ public enum PrizeType {
         return this.rewardMoney;
     }
 
-    public String getResultText() {
-        return this.resultText;
+    public String getResultText(int value) {
+        return this.resultText + value + "개";
     }
 }
