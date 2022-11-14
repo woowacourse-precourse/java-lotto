@@ -25,5 +25,7 @@ public class LottoController implements Controller {
         return service.getLottosToString();
     }
 
+    public void inputWinningNumber(String input) {
+        
     }
 }

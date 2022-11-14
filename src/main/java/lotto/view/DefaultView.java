@@ -22,6 +22,7 @@ public class DefaultView implements View {
         renderLottos();
 
         System.out.println(Views.REQUEST_WINNING_NUMBER.render());
+        request(controller::inputWinningNumber);
 
     }
 
