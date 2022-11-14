@@ -2,12 +2,15 @@ package lotto.condition.lottonumber;
 
 import lotto.condition.Condition;
 
-import java.util.Arrays;
+import java.util.List;
 
-public class IsAllNumberCond implements Condition {
+import static lotto.LottoMachine.NUMBER_RANGE_BOT;
+import static lotto.LottoMachine.NUMBER_RANGE_TOP;
 
-    private static final Condition instance = new IsAllNumberCond();
-    private static final String REGEX = "[\\d]+";
+public class IsAllNumberInRangeCond implements Condition {
+
+    private static final Condition instance = new IsAllNumberInRangeCond();
+    private static final Integer SINGLE_DIGIT = 0;
 
     public static Condition getInstance() {
         return instance;
@@ -15,12 +18,24 @@ public class IsAllNumberCond implements Condition {
 
     @Override
     public Boolean isSatisfied(String input) {
-        System.out.println(input);
-        Object[] objects = Arrays.stream(input.split(",")).filter((String chunk) -> !chunk.matches(REGEX)).toArray();
-        for (Object object : objects) {
-            System.out.println(object);
+        String[] chunks = input.split(",");
+
+        for (String chunk : chunks) {
+            List<String> numbers = List.of(chunk.split(""));
+
+            if (!isDigit(numbers) || !isInRange(Integer.parseInt(chunk))) {
+                return false;
+            }
         }
 
-        return objects.length == 0;
+        return true;
+    }
+
+    private Boolean isDigit(List<String> digits) {
+        return digits.stream().allMatch((String number) -> Character.isDigit(number.charAt(SINGLE_DIGIT)));
+    }
+
+    private Boolean isInRange(Integer number) {
+        return NUMBER_RANGE_BOT <= number && number <= NUMBER_RANGE_TOP;
     }
 }
