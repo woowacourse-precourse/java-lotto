@@ -6,22 +6,11 @@ import lotto.domain.LottoEnum;
 import lotto.view.validation.ExceptionMessage;
 
 public class LottoNumbersValidation {
-    private static final String INPUT_NUMBERS_REGEXP = "^([1-9]+,)+[1-9]+$";
 
-    public static void validateInputLottoNumbers(String userInput) {
-        validateInputFormat(userInput);
-    }
-
-    public static void validateLottoNumbers(List<Integer> LottoNumbers) {
+    public static void validate(List<Integer> LottoNumbers) {
         validateNumbersLength(LottoNumbers);
         validateNumberRange(LottoNumbers);
         validateNoDuplicateNumbers(LottoNumbers);
-    }
-
-    private static void validateInputFormat(String uerInput) {
-        if (!uerInput.matches(INPUT_NUMBERS_REGEXP)) {
-            throw new IllegalArgumentException(ExceptionMessage.WRONG_FORMAT.toString());
-        }
     }
 
     private static void validateNumberRange(List<Integer> userNumbers) {
