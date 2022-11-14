@@ -53,4 +53,36 @@ class ResultTest {
         // then
         assertThat(match).isFalse();
     }
+
+    @DisplayName("로또 번호와 당첨 번호 중 5개가 일치하고 로또 번호가 보너스 번호를 포함하면 2등이다.")
+    @Test
+    void createRankSecond() {
+        // given
+        int matchCount = Rank.SECOND.getCorrectCount();
+        boolean matchBonus = true;
+
+        // when
+        result.initWinningRank();
+        result.updateResult(matchCount, matchBonus);
+
+        // then
+        assertThat(result.getResult().get(Rank.SECOND)).isEqualTo(1);
+        assertThat(result.getResult().get(Rank.THIRD)).isEqualTo(0);
+    }
+
+    @DisplayName("로또 번호와 당첨 번호 중 5개가 일치하고 로또 번호가 보너스 번호를 포함하지 않으면 3등이다.")
+    @Test
+    void createRankThird() {
+        // given
+        int matchCount = Rank.THIRD.getCorrectCount();
+        boolean matchBonus = false;
+
+        // when
+        result.initWinningRank();
+        result.updateResult(matchCount, matchBonus);
+
+        // then
+        assertThat(result.getResult().get(Rank.SECOND)).isEqualTo(0);
+        assertThat(result.getResult().get(Rank.THIRD)).isEqualTo(1);
+    }
 }
