@@ -1,22 +1,17 @@
 package lotto.Controller;
 
 import camp.nextstep.edu.missionutils.Randoms;
-import lotto.Model.Lotto;
-import lotto.Model.LottoData;
-import lotto.View.OutputView;
-import lotto.View.UserException;
+import lotto.Model.*;
+import lotto.View.*;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
-import java.util.stream.Collectors;
-
-import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class LottoController {
     LottoData lottoData = new LottoData();
     OutputView output = new OutputView();
+    InputView input = new InputView();
     UserException exception = new UserException();
 
     public void start(){
@@ -35,10 +30,7 @@ public class LottoController {
     }
     private void setLottoCount(){
         output.askPurchasePrice();
-        String purchasePriceInput = readLine();
-        exception.IsNumberFormat(purchasePriceInput);
-        int lottoPurchasePrice = Integer.parseInt(purchasePriceInput);
-        lottoData.setCountOfLotto(lottoPurchasePrice);
+        lottoData.setCountOfLotto(input.purchasePrice());
     }
 
     private void makeLottoNumber(){
@@ -62,22 +54,13 @@ public class LottoController {
 
     private void inputWinnerNumber(){
         output.askWinnerNumber();
-        String winnerNumberInput = readLine();
-        exception.IsRightWinnerNumberFormat(winnerNumberInput);
-        List<Integer> winnerNumber = Arrays.stream(winnerNumberInput.split(","))
-                                            .mapToInt(Integer::parseInt)
-                                            .boxed()
-                                            .collect(Collectors.toList());
-        Lotto winnerNumberLotto = new Lotto(winnerNumber);
+        Lotto winnerNumberLotto = new Lotto(input.winnerNumbers());
         lottoData.setWinnerNumber(winnerNumberLotto);
     }
 
     private void inputBonusNumber(){
         output.askBonusNumber();
-        String bonusNumberInput = readLine();
-        exception.IsRightBonusNumberFormat(bonusNumberInput);
-        int bonusNumber = Integer.parseInt(bonusNumberInput);
-        lottoData.setBonusNumber(bonusNumber);
+        lottoData.setBonusNumber(input.bonusNumber());
     }
 
     private void countLottoPrize(){
