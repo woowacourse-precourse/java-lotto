@@ -32,6 +32,7 @@ public class Message {
 	public static final String ASK_ENTER_THE_WINNING_LOTTO_BONUS_NUMBER = "보너스 번호를 입력해 주세요.";
 	public static final String SHOW_USER_PURCHASED_LOTTO_COUNT = "%d개를 구매했습니다.\n";
 
+	public static final String RESULT_TITLE_MESSAGE = "당첨 통계\n---";
 	protected static final String RESULT_FIFTH_RANK = "3개 일치 (5,000원) - %d개\n";
 	protected static final String RESULT_FOURTH_RANK = "4개 일치 (50,000원) - %d개\n";
 	protected static final String RESULT_THIRD_RANK = "5개 일치 (1,500,000원) - %d개\n";
@@ -44,4 +45,6 @@ public class Message {
 		put(Rank.SECOND, RESULT_SECOND_RANK);
 		put(Rank.FIRST, RESULT_FIRST_RANK);
 	}};
+
+	public static final String RESULT_EARNING_RATE = "총 수익률은 %.1f%%입니다.\n";
 }

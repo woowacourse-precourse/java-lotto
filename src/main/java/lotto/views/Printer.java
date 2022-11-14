@@ -32,6 +32,7 @@ public class Printer {
 	}
 
 	public static void showLotteriesResult(LottoResult lottoResult) {
+		System.out.println(RESULT_TITLE_MESSAGE);
 		Arrays.stream(Rank.values())
 				.filter(rank -> !rank.isOutOfRank())
 				.forEach(rank -> printLottoRankCountResult(lottoResult, rank));
@@ -39,5 +40,9 @@ public class Printer {
 
 	private static void printLottoRankCountResult(LottoResult lottoResult, Rank rank) {
 		System.out.printf(RESULT_LOTTO_MESSAGES.get(rank), lottoResult.getRankCount(rank));
+	}
+
+	public static void showEarningRate(double earningRate) {
+		System.out.printf(RESULT_EARNING_RATE, earningRate);
 	}
 }
