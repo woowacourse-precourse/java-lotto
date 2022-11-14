@@ -7,8 +7,8 @@ import lotto.ui.UserInterface;
 
 public class Cashier {
     private List<Lotto> lottos;
-    private Account account;
-    private WinningCalculator winningCalculator;
+    private final Account account;
+    private final WinningCalculator winningCalculator;
 
     public Cashier() {
         this.winningCalculator = new WinningCalculator();
