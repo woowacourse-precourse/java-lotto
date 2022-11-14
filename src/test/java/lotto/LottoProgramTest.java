@@ -26,4 +26,11 @@ public class LottoProgramTest {
 		lottoProgram.bonusNum = 7;
 		assertThat(lottoProgram.checkBonus(lottoNumbers)).isEqualTo(false);
 	}
+
+	@Test
+	public void checkCount() {
+		List<Integer> lottoNumbers = new ArrayList<>(List.of(1, 2, 3, 4, 5, 6));
+		List<Integer> randomNumbers = new ArrayList<>(List.of(3, 5, 6, 7, 8, 9));
+		assertThat(lottoProgram.checkWinNum(randomNumbers, lottoNumbers)).isEqualTo(3);
+	}
 }
