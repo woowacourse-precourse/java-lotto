@@ -15,16 +15,20 @@ public class LottiesTest {
 
     private Lotties lotties;
 
+    private Purchase purchase;
+
     @BeforeEach
     void init() {
         int purchaseCount = 2000;
-        lotties = Lotties.create(purchaseCount);
+        int publishCount = 2;
+        purchase = Purchase.create(purchaseCount);
+        lotties = Lotties.create(publishCount);
     }
 
     @DisplayName("구입 금액을 로또 하나 금액으로 나눠 총 몇개를 발행할지 구한다.")
     @Test
     void getLottoPublishCount() {
-        int lottoPublishCount = lotties.getLottoPublishCount();
+        int lottoPublishCount = purchase.getLottoPublishCount();
 
         Assertions.assertThat(lottoPublishCount).isEqualTo(2);
     }
@@ -32,7 +36,7 @@ public class LottiesTest {
     @DisplayName("로또를 주어진 개수만큼 발행한다.")
     @Test
     void createLotties() {
-        int lottoSize = lotties.getLotties().size();
+        int lottoSize = lotties.count();
 
         Assertions.assertThat(lottoSize).isEqualTo(2);
     }
@@ -46,7 +50,7 @@ public class LottiesTest {
         void isDividedByLottoAmount() {
             int purchase = 11003;
 
-            Assertions.assertThatThrownBy( () -> Lotties.create(purchase))
+            Assertions.assertThatThrownBy( () -> Purchase.create(purchase))
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessageContaining(InputException.MONEY_NOT_DIVIDE_BY_LOTTO_UNIT.message());
         }
