@@ -8,7 +8,7 @@ import java.util.*;
 public class LottoComparator {
 
     public static Map<Rank, Integer> compareToPrize(List<Lotto> lottoList, Lotto prizeLotto, int bonusNumber) {
-        Map<Rank, Integer> ranked = new LinkedHashMap<>();
+        Map<Rank, Integer> ranked = new EnumMap<>(Rank.class);
         for (Lotto lotto : lottoList) {
             Rank result = getLottoRank(lotto, prizeLotto, bonusNumber);
             ranked.put(result, ranked.getOrDefault(result, 0) + 1);
