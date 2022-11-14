@@ -16,7 +16,7 @@ public class LottoTickets {
         this.lottoTickets = makeLottoTickets(purchase.getAmount());
     }
 
-    public List<Lotto> getLottoTickets() {
+    public List<Lotto> getTickets() {
         return lottoTickets;
     }
 
