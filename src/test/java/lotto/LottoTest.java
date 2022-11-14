@@ -10,7 +10,6 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class LottoTest {
     private Judge judge;
-    private
     @BeforeEach
     void setUp() {
         judge = new Judge();
