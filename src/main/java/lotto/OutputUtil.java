@@ -13,11 +13,11 @@ public class OutputUtil {
         System.out.println(PURCHASE_INPUT);
     }
 
-    public void showPurchaseResult(Purchase purchase, LottoBunch bunch) {
+    public void showPurchaseResult(Purchase purchase, Lottos bunch) {
         Integer size =purchase.getSize();
         PURCHASE_RESULT= Integer.toString(size)+PURCHASE_RESULT;
         System.out.println(PURCHASE_RESULT);
-        for (Lotto lotto: bunch.getLottoBunch() ) {
+        for (Lotto lotto: bunch.getLottos() ) {
             System.out.println(lotto);
         }
     }
