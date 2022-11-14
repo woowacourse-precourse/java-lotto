@@ -29,13 +29,13 @@
 ### Lotto
 - 랜덤 생성된 개별 로또 번호를 관리한다.
 - 로또 생성 기능, 유효성 확인 기능, 비교 기능을 제공한다.
-### IO/InputManager
+### UI/InputManager
 - 사용자로 입력 처리 및 입력값 유효성 확인을 담당한다.
-### IO/OutputManager
+### UI/OutputManager
 - UI 출력을 담당한다.
-### IO/message/ErrorCode
+### UI/message/ErrorCode
 - enum 타입으로 에러 메세지를 저장한다.
-### IO/message/UIMessage
+### UI/message/UIMessage
 - enum 타입으로 UI 메세지를 저장한다.
 ### config/LottoConfig
 - 설정 상수값들을 저장한다.

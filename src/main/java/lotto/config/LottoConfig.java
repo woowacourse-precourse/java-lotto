@@ -1,6 +1,6 @@
 package lotto.config;
 
-import lotto.IO.message.ErrorCode;
+import lotto.UI.message.ErrorCode;
 
 import java.util.List;
 

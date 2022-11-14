@@ -1,4 +1,4 @@
-package lotto.IO.message;
+package lotto.UI.message;
 
 public enum UIMessage {
     EMPTY_LINE(""),

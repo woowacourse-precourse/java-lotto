@@ -1,6 +1,6 @@
-package lotto.IO;
+package lotto.UI;
 
-import lotto.IO.message.UIMessage;
+import lotto.UI.message.UIMessage;
 import lotto.Lotto;
 import lotto.config.LottoConfig;
 

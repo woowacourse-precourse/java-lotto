@@ -1,8 +1,8 @@
-package lotto.IO;
+package lotto.UI;
 
 import camp.nextstep.edu.missionutils.Console;
-import lotto.IO.message.ErrorCode;
-import lotto.IO.message.UIMessage;
+import lotto.UI.message.ErrorCode;
+import lotto.UI.message.UIMessage;
 import lotto.config.LottoConfig;
 
 import java.util.Arrays;

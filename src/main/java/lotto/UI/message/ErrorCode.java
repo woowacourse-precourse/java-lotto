@@ -1,4 +1,4 @@
-package lotto.IO.message;
+package lotto.UI.message;
 
 public enum ErrorCode {
     WRONG_LOTTO_PRICE("로또 가격이 잘못 설정되었습니다."),

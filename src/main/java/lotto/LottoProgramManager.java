@@ -1,9 +1,8 @@
 package lotto;
 
-import lotto.IO.InputManager;
-import lotto.IO.OutputManager;
+import lotto.UI.InputManager;
+import lotto.UI.OutputManager;
 import lotto.config.LottoConfig;
-import lotto.IO.message.ErrorCode;
 
 import java.util.ArrayList;
 import java.util.HashMap;
