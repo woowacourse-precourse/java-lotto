@@ -3,8 +3,7 @@ package lotto;
 import camp.nextstep.edu.missionutils.Randoms;
 import org.assertj.core.util.Sets;
 
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class Lotto {
     private static final int LOTTO_SIZE = 6;
@@ -41,5 +40,15 @@ public class Lotto {
         if (lottoNumbers.size() != LOTTO_SIZE) {
             throw new IllegalArgumentException(IS_DUPLICATED_LOTTO_NUMBER);
         }
+    }
+
+    public List<Integer> getNumbers() {
+        return numbers;
+    }
+
+    @Override
+    public String
+    toString() {
+        return String.valueOf(numbers);
     }
 }
