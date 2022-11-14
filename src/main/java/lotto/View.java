@@ -13,6 +13,7 @@ public class View {
     private static final String STATISTICS_STRING = "당첨 통계";
     private static final String SAME_STRING = "개 일치";
     private static final String LAST_STRING = "개";
+    private static final String ERROR_TEXT = "[ERROR] : 올바른 값을 입력해주세요.";
 
     View(){
 
@@ -24,7 +25,7 @@ public class View {
         try {
             money = Integer.parseInt(Console.readLine());
         } catch (IllegalArgumentException e) {
-            throw new IllegalArgumentException("[ERROR] : 올바른 값을 입력해주세요.");
+            throw new IllegalArgumentException(ERROR_TEXT);
         }
         System.out.println();
 
