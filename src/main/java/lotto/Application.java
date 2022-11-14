@@ -11,13 +11,15 @@ import java.util.StringTokenizer;
 public class Application {
     private static List<Lotto> lotto_list = new ArrayList<>(); //전체 로또 담을 리스트
 
+    public static int BONUS;
+
     public static List<Integer> makeRandom() {
         List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
         return numbers;
     }
 
     public static int buyLotto() {
-        System.out.println("구매금액을 입력해주세요.");
+        System.out.println("구매금액을 입력해 주세요.");
         String money = Console.readLine();
         int lottoNumber = Integer.parseInt(money) / 1000;
 
@@ -25,7 +27,7 @@ public class Application {
     }
 
     public static void printLotto(int lottoNumber) {
-        System.out.println(lottoNumber + "개를 구매했습니다.");
+        System.out.println("\n" + lottoNumber + "개를 구매했습니다.");
 
         for (int cnt = 0; cnt < lottoNumber; cnt++) {
             List<Integer> numbers = makeRandom();
@@ -37,7 +39,7 @@ public class Application {
     }
 
     public static List<Integer> winningNumber() {
-        System.out.println("당첨 번호를 입력해 주세요.");
+        System.out.println("\n당첨 번호를 입력해 주세요.");
         String numbers = Console.readLine();
         List<Integer> winningNumbersList = new ArrayList<>(); //당첨 번호 담긴 리스트
         StringTokenizer st = new StringTokenizer(numbers, ",");
@@ -50,10 +52,16 @@ public class Application {
         return winningNumbersList;
     }
 
+    public static void bonusNumber() {
+        System.out.println("\n보너스 번호를 입력해 주세요.");
+        BONUS = Integer.parseInt(Console.readLine());
+    }
+
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         int lottoNumber = buyLotto();
         printLotto(lottoNumber);
         Lotto winningLotto = new Lotto(winningNumber());
+        bonusNumber();
     }
 }
