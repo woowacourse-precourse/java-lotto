@@ -19,9 +19,6 @@ public class Lotto {
     public Lotto(List<Integer> numbers) {
         validate(numbers);
 
-        // 오름차순 정렬
-        numbers.sort(Comparator.naturalOrder());
-
         this.numbers = numbers;
     }
 
