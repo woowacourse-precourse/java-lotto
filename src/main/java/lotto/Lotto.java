@@ -139,4 +139,16 @@ public class Lotto {
             throw new IllegalArgumentException("[ERROR] 숫자만 입력해주세요.");
         }
     }
+
+    public void showLottoPaymentReceipt(int totalPayment, List<List<Integer>> generatedLotto) {
+        String receipt = "";
+
+        receipt += String.format("%d개를 구매했습니다.\n", totalPayment);
+
+        for (List<Integer> lotto : generatedLotto) {
+            receipt = receipt.concat(lotto.toString() + '\n');
+        }
+        System.out.println(receipt);
+    }
+
 }
