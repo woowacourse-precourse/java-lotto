@@ -44,11 +44,9 @@ class LottoTest {
         List<Integer> winningNumbers = List.of(1, 2, 3, 4, 5, 6);
         Lotto winningLotto = new Lotto(winningNumbers);
         Bonus bonus = new Bonus(7);
-
         Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 7));
         //when
         Result result = lotto.generateResult(winningLotto, bonus);
-
         //then
         assertThat(result.getMatchCount()).isEqualTo(5);
         assertThat(result.isBonus()).isTrue();

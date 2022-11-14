@@ -10,7 +10,8 @@ import java.util.NoSuchElementException;
 import static lotto.utils.StringParser.parseInputToIntegerList;
 
 public final class Input {
-    private Input() {}
+    private Input() {
+    }
 
     public static Amount inputAmount() {
         String input = Console.readLine();

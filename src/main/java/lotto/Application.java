@@ -22,7 +22,7 @@ public class Application {
         Results results = lottos.generateResults(winningLotto, bonus);
         Statistics statistics = results.generateStatistics();
 
-        Output.printTotalResult(statistics,amount);
+        Output.printTotalResult(statistics, amount);
     }
 
     private static Amount inputAmount() {

@@ -20,6 +20,13 @@ public enum Prize {
         this.isBonus = isBonus;
     }
 
+    public static Prize generatePrize(Result result) {
+        return Arrays.stream(Prize.values())
+                     .filter(result::isProperPrize)
+                     .findFirst()
+                     .orElse(NOTHING);
+    }
+
     public int getMatchCount() {
         return matchCount;
     }
@@ -30,12 +37,5 @@ public enum Prize {
 
     public boolean isBonus() {
         return isBonus;
-    }
-
-    public static Prize generatePrize(Result result) {
-        return Arrays.stream(Prize.values())
-              .filter(result::isProperPrize)
-              .findFirst()
-              .orElse(NOTHING);
     }
 }

@@ -11,7 +11,8 @@ public final class Output {
     private static final String STATISTICS_BONUS_MESSAGE = "%d개 일치, 보너스 볼 일치 (%,d원) - %d개\n";
     private static final String YIELD_MESSAGE = "총 수익률은 %.1f%%입니다.\n";
 
-    private Output() {}
+    private Output() {
+    }
 
     public static void println(String message) {
         System.out.println(message);

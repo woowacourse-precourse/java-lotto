@@ -6,7 +6,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public final class StringParser {
-    private StringParser() {}
+    private StringParser() {
+    }
 
     public static List<Integer> parseInputToIntegerList(String input) {
         List<Integer> numbers = new ArrayList<>();

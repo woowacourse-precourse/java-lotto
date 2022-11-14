@@ -21,7 +21,7 @@ public class Statistics {
     }
 
     public void updateStatistics(Prize prize) {
-        if(prize == Prize.NOTHING) {
+        if (prize == Prize.NOTHING) {
             return;
         }
         statisticsResult.merge(prize, 1, (oldValue, newValue) -> oldValue + 1);
@@ -30,7 +30,7 @@ public class Statistics {
     public float calculateYiled(Amount amount) {
         float revenue = 0;
         for (Prize prize : statisticsResult.keySet()) {
-            if(statisticsResult.get(prize) > 0) {
+            if (statisticsResult.get(prize) > 0) {
                 revenue += prize.getReward() * statisticsResult.get(prize);
             }
         }
