@@ -9,25 +9,32 @@ import java.util.List;
 import java.util.stream.Collectors;
 import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
 @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
 class LottoTest {
-    @Test
-    void 로또_번호의_개수가_6개가_넘어가면_예외가_발생한다() {
-        assertThatThrownBy(() -> new Lotto(List.of(1, 2, 3, 4, 5, 6, 7)))
+    @ParameterizedTest
+    @ValueSource(strings = {"1", "1,2", "1,2,3", "1,2,3,4", "1,2,3,4,5,6,7"})
+    void 로또_번호의_개수가_6개가_아니면_예외가_발생한다(final String input) {
+
+        var numbers = stringToIntegerList(input);
+        assertThatThrownBy(() -> new Lotto(numbers))
                 .isInstanceOf(IllegalArgumentException.class);
 
-        assertThatThrownBy(() -> new Lotto("1,2,3,4,5,6,7"))
+        assertThatThrownBy(() -> new Lotto(input))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
-    @Test
-    void 로또_번호에_중복된_숫자가_있으면_예외가_발생한다() {
+
+    @ParameterizedTest
+    @ValueSource(strings = {"1,1,1,1,1,1", "1,1,1,1,1,2", "1,1,1,1,2,3", "1,1,1,2,3,4", "1,1,2,3,4,5"})
+    void 로또_번호에_중복된_숫자가_있으면_예외가_발생한다(final String input) {
         // TODO: 이 테스트가 통과할 수 있게 구현 코드 작성
-        assertThatIllegalArgumentException().isThrownBy(() -> new Lotto(List.of(1, 2, 3, 4, 5, 5)))
+        var numbers = stringToIntegerList(input);
+        assertThatIllegalArgumentException().isThrownBy(() -> new Lotto(numbers))
+                .withMessageContaining(Lotto.ERROR_LOTTO_NUMBER_DUPLICATED);
+        assertThatIllegalArgumentException().isThrownBy(() -> new Lotto(input))
                 .withMessageContaining(Lotto.ERROR_LOTTO_NUMBER_DUPLICATED);
     }
 
@@ -37,16 +44,18 @@ class LottoTest {
     @ValueSource(strings = {"1,2,3,4,5,6", "6,5,4,3,2,1,", "10,9,8,7,6,5"})
     void 로또_번호는_정렬된_상태여야_합니다(final String input) {
 
-        var lotto = new Lotto(
-                Arrays.stream(input.split(","))
-                        .map(Integer::parseInt)
-                        .collect(Collectors.toList())
-        );
-        var lotto1 = new Lotto(input);
-        assertThat(lotto.numbers()).isSorted();
-        assertThat(lotto1.numbers()).isSorted();
+        var generatedIntegerNumberLotto = new Lotto(stringToIntegerList(input));
+        var generatedStringLotto = new Lotto(input);
+        
+        assertThat(generatedIntegerNumberLotto.numbers()).isSorted();
+        assertThat(generatedStringLotto.numbers()).isSorted();
 
     }
 
+    private List<Integer> stringToIntegerList(final String input) {
+        return Arrays.stream(input.split(","))
+                .map(Integer::parseInt)
+                .collect(Collectors.toList());
+    }
 
 }
