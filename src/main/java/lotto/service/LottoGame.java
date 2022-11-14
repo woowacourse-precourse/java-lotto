@@ -27,7 +27,9 @@ public class LottoGame {
     }
 
     public List<Integer> toList(String input) {
-        return Arrays.stream(input.split(",")).map(Integer::parseInt).collect(Collectors.toList());
+        return Arrays.stream(input.split(","))
+                .map(Integer::parseInt)
+                .collect(Collectors.toList());
     }
 
     public List<String> compare(List<Integer> winnings, List<Lotto> tickets, int bonus) {
