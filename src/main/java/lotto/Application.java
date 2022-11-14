@@ -12,7 +12,7 @@ public class Application {
     private static List<Integer> winningNumbers = new ArrayList<>();
     private static Integer bonusNumber;
 
-    private static List<Lotto> lottos;
+    private static List<Lotto> lottos = new ArrayList<>();
 
     private static void enterPurchaseAmount() {
         System.out.println("구입금액을 입력해 주세요.");
@@ -40,10 +40,16 @@ public class Application {
         bonusNumber = Integer.valueOf(readLine());
     }
 
+    private static void determineWinningStatus() {
+        for (Lotto lotto : lottos)
+            lotto.setWinningStatus(winningNumbers, bonusNumber);
+    }
 
     public static void main(String[] args) {
         enterPurchaseAmount();
         generateLottoNumbers();
         enterWinningNumbers();
+        determineWinningStatus();
+
     }
 }
