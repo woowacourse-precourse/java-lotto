@@ -60,4 +60,12 @@ public class LottoGameServiceTest {
         Lotto actual = lottoGameService.pickWinningNumbers(input);
         assertThat(expect).isEqualTo(actual.getNumbers());
     }
+
+    @DisplayName("당첨 번호가 숫자가 아니면 예외가 발생한다.")
+    @CsvSource({"가,나,다,라,마,바,사", "1,2,3,4,가", "1가3,gkgk"})
+    @ParameterizedTest
+    void pickWinningNumbersNotNumber(String input) {
+        assertThatThrownBy(() -> lottoGameService.pickWinningNumbers(input))
+            .isInstanceOf(IllegalArgumentException.class);
+    }
 }
