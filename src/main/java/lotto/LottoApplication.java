@@ -70,7 +70,7 @@ public class LottoApplication {
 
     private void winningNumberValidate(List<Integer> inputWinningLotto, String[] split, int idx) {
         if (!(Pattern.matches(patten, split[idx]))) {
-            throw new IllegalArgumentException(Message.NOT_NUMBER_ERROR);
+            throw new IllegalArgumentException(Message.NOT_NUMBER_OR_NOT_COMMA_ERROR);
         }
 
         if (inputWinningLotto.contains(Integer.parseInt(split[idx]))) {

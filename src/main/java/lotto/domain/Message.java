@@ -3,6 +3,7 @@ package lotto.domain;
 public class Message {
     public static final String DUPLICATE_NUMBER_ERROR = "[ERROR] 로또 번호가 중복됩니다.";
     public static final String NOT_NUMBER_ERROR = "[ERROR] 숫자 외의 것이 입력되었습니다.";
+    public static final String NOT_NUMBER_OR_NOT_COMMA_ERROR = "[ERROR] 숫자, 콤마 외의 것이 입력되었습니다.";
     public static final String ALREADY_CONTAINS_BONUS_NUMBER = "[ERROR] 보너스 번호가 이미 로또 번호에 포함됩니다.";
     public static final String RANGE_OF_NUMBER = "[ERROR] 1과45 사이의 숫자가 입력되어야 합니다.";
     public static final String SIZE_IS_NOT_SIX = "[ERROR] 사이즈가 6이 아닙니다.";
