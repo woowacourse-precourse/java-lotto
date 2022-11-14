@@ -18,6 +18,7 @@ public class OutputView {
     private static final String WINNING_STATISTICS_MESSAGE_FORMAT = "%d개 일치 (%s원) - %d개\n";
     private static final String WINNING_STATISTICS_MESSAGE_BONUS_FORMAT = "%d개 일치, 보너스 볼 일치 (%s원) - %d개\n";
     private static final DecimalFormat MONEY_FORMAT = new DecimalFormat("###,###");
+    private static final String PROFIT_RATE_MESSAGE_FORMAT = "총 수익률은 %.1f%%입니다.";
 
     public static void printPurchaseCount(int count) {
         System.out.printf(PURCHASE_COUNT_MESSAGE, count);
@@ -60,5 +61,9 @@ public class OutputView {
             return WINNING_STATISTICS_MESSAGE_BONUS_FORMAT;
         }
         return WINNING_STATISTICS_MESSAGE_FORMAT;
+    }
+
+    public static void printProfitRate(double profitRate) {
+        System.out.printf(PROFIT_RATE_MESSAGE_FORMAT, profitRate);
     }
 }
