@@ -10,5 +10,8 @@ public class Constant {
     public static final int THIRD_PRIZE = 1500000;
     public static final int SECOND_PRIZE = 30000000;
     public static final int FIRST_PRIZE = 2000000000;
-    public static final double ROUNDED_NUMBER = 100.0;
+    public static final double ROUNDED_NUMBER = 1000.0;
+    public static final int MINIMUM_SAME_NUMBER = 3;
+    public static final int PRIZE_COUNT = 5;
+    public static final int PERCENTAGE_CONSTANT = 100;
 }
