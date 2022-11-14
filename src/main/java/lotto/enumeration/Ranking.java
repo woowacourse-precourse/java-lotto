@@ -12,10 +12,12 @@ public enum Ranking {
     NON_WINNER(0L, 0, false);
 
     private final int equalCount;
+    private final Long prizeMoney;
     private static final int CHECK_SECOND_OR_THIRD_CONDITION = 5;
 
     Ranking(Long prizeMoney, int equalCount, boolean containBonus) {
         this.equalCount = equalCount;
+        this.prizeMoney = prizeMoney;
     }
 
     public static Ranking create(int equalCount, boolean isBonusContain) {
@@ -34,5 +36,9 @@ public enum Ranking {
             return Ranking.SECOND;
         }
         return Ranking.THIRD;
+    }
+
+    public Long getPrizeMoney() {
+        return this.prizeMoney;
     }
 }
