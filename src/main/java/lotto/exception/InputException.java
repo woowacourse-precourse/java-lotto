@@ -37,7 +37,7 @@ public class InputException {
     }
 
     private static void validateOnlyNumber(String number) {
-        if(isWinLottoNumber(number)) {
+        if (isWinLottoNumber(number)) {
             number = toString(toList(number));
         }
         if (!Pattern.matches(NUMBER_REGEX, number)) {

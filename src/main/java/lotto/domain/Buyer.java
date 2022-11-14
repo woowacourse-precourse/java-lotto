@@ -24,17 +24,17 @@ public class Buyer {
         return Integer.parseInt(lottoAmount);
     }
 
+    public List<Lotto> getLottos() {
+        return this.lottos;
+    }
+
     private void generateLotto(int amount) {
         int count = countOfBuyLottos(amount);
-        IntStream.range(1, count+1).forEach(value -> lottos.add(Lotto.create()));
+        IntStream.range(1, count + 1).forEach(value -> lottos.add(Lotto.create()));
         OutputView.printPurchase(count, lottos);
     }
 
     private int countOfBuyLottos(int amount) {
         return (amount / DIVIDING_NUMBER);
-    }
-
-    public List<Lotto> getLottos() {
-        return this.lottos;
     }
 }

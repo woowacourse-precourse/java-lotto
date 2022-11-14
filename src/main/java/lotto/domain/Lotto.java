@@ -20,12 +20,12 @@ public class Lotto {
         return new Lotto(createRandomNumbers());
     }
 
+    public List<Integer> getNumbers() {
+        return this.numbers;
+    }
+
     private static List<Integer> createRandomNumbers() {
         List<Integer> randomNumbers = Randoms.pickUniqueNumbersInRange(START_RANDOM_NUMBER, END_RANDOM_NUMBER, NUMBER_LENGTH);
         return new ArrayList<>(randomNumbers);
-    }
-
-    public List<Integer> getNumbers() {
-        return this.numbers;
     }
 }
