@@ -18,7 +18,7 @@ public class IOManage {
     public void inputPayment() {
         System.out.println(Message.INPUT_PAYMENT.get());
         String input = Console.readLine();
-        if (!Pattern.matches("^[0-9]*&", input)) {
+        if (!Pattern.matches("^[0-9]*$",input)) {
             throw new IllegalArgumentException(Message.ERROR.get() + Message.ERROR_INCORRECT_RANGE.get());
         }
         inputPrice = Integer.parseInt(input);
