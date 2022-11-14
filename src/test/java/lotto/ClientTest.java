@@ -47,4 +47,27 @@ class ClientTest {
         Assertions.assertThatThrownBy(() -> new Client(()->"일이삼사오육").mark())
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @DisplayName("보너스 숫자를 7 입력받는다")
+    @Test
+    void markBonusSeven() {
+        Assertions.assertThat(new Client(() -> "7").bonusMark())
+                .isEqualTo(7);
+    }
+
+    @DisplayName("보너스 숫자 칠을 입력받으면 IllegalArgumentException을 발생시킨다")
+    @Test
+    void markBonusSevenAsStringThenIllegalArgumentException() {
+        Assertions.assertThatThrownBy(() -> new Client(()->"칠").bonusMark())
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("보너스 숫자 46을 입력받으면 IllegalArgumentException을 발생시킨다")
+    @Test
+    void markBonusFortySixAsStringThenIllegalArgumentException() {
+        Assertions.assertThatThrownBy(() -> new Client(()->"46").bonusMark())
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+
 }
