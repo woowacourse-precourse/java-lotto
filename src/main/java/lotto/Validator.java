@@ -1,6 +1,8 @@
 package lotto;
 
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static lotto.ErrorMessage.*;
 import static lotto.domain.LottoConst.*;
@@ -62,5 +64,27 @@ public final class Validator {
         isValidLottoSize(numbers);
         isValidNumberRange(numbers);
         anyDuplicatedNumber(numbers);
+    }
+
+    public static void isPrizeNumberFormat(String input) {
+        if (!input.matches("^(\\d{1,2},){5}(\\d{1,2})$")) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    public static void hasIntegers(String input) {
+        List<String> splittedInput = Arrays.asList(input.split(","));
+        splittedInput.forEach(token -> isInteger(token));
+    }
+
+    public static void isValidPrizeNumbers(String input) {
+        isPrizeNumberFormat(input);
+        hasIntegers(input);
+    }
+
+    public static void isValidBonusNumber(String input) {
+        isInteger(input);
+        isNegative(input);
+        isValidNumberRange(List.of(Integer.parseInt(input)));
     }
 }
