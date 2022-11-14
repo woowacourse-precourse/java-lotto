@@ -12,10 +12,6 @@ public class OutputManager {
         System.out.println("[Error] " + error);
     }
 
-    public static void printMessage(String message) {
-        System.out.println(message);
-    }
-
     public static void printEmptyLine() {
         System.out.println(IOMessage.EMPTY_LINE.getMessage());
     }
@@ -42,18 +38,8 @@ public class OutputManager {
         }
         System.out.printf(IOMessage.PROFIT.getMessage(), 100.0 * profit / spent);
     }
-    private static String getRankMessage(int idx) {
-        if(idx == 0)
-            return IOMessage.RANK_0.getMessage();
-        if(idx == 1)
-            return IOMessage.RANK_1.getMessage();
-        if(idx == 2)
-            return IOMessage.RANK_2.getMessage();
-        if(idx == 3)
-            return IOMessage.RANK_3.getMessage();
-        if(idx == 4)
-            return IOMessage.RANK_4.getMessage();
 
-        return "";
+    private static String getRankMessage(int idx) {
+        return IOMessage.valueOf("RANK_"+idx).getMessage();
     }
 }
