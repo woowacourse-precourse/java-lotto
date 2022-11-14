@@ -1,6 +1,10 @@
 package lotto.exception;
 
 public class PurchaseAmount extends CommonException {
+    public static void checkException(String purchaseAmount) {
+        checkInteger(purchaseAmount);
+        checkInTheThousands(Integer.parseInt(purchaseAmount));
+    }
 
     private static void checkInTheThousands(int purchaseAmount) {
         if (purchaseAmount % 1000 != 0) {
