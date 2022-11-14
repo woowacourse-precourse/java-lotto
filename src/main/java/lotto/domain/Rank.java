@@ -1,7 +1,5 @@
 package lotto.domain;
 
-import java.util.Arrays;
-
 public enum Rank {
     LOSE(0, false, "0"),
     W1(3, false, "5,000"),
