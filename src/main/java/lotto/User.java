@@ -3,10 +3,7 @@ package lotto;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.math.RoundingMode;
-import java.util.ArrayList;
-import java.util.EnumMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
@@ -42,7 +39,9 @@ public class User {
     private List<List<Integer>> purchaseLottos(int count){
         List<List<Integer>> lottos = new ArrayList<>();
         for(int i = 0; i < count; i++){
-            lottos.add(Randoms.pickUniqueNumbersInRange(1,45,6));
+            List<Integer> lotto = new ArrayList<>(Randoms.pickUniqueNumbersInRange(1,45,6));
+            Collections.sort(lotto);
+            lottos.add(lotto);
         }
 
         return lottos;
