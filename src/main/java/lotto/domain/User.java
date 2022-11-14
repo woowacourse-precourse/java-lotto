@@ -1,5 +1,7 @@
 package lotto.domain;
 
+import lotto.domain.enums.Number;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -7,13 +9,25 @@ import java.util.Map;
 
 public class User {
 
-    private List<Lotto> lottos = new ArrayList<>();
+    private List<Lotto> lottos;
     private double money;
     private double winningAmount;
-    private Map<Number, Integer> rank = new HashMap<>();
+    private Map<Number, Integer> rankResult = new HashMap<>();
     private double yield;
 
     public User() {
+        lottos = new ArrayList<>();
+        winningAmount = 0;
+        initRank();
+        yield = 0;
+    }
+
+    private void initRank() {
+        rankResult.put(Number.FIVE, 0);
+        rankResult.put(Number.FOUR, 0);
+        rankResult.put(Number.THREE, 0);
+        rankResult.put(Number.TWO, 0);
+        rankResult.put(Number.ONE, 0);
     }
 
     public User(List<Lotto> lottos) {
@@ -45,11 +59,11 @@ public class User {
     }
 
     public Map<Number, Integer> getRank() {
-        return rank;
+        return rankResult;
     }
 
     public void setRank(Map<Number, Integer> rank) {
-        this.rank = rank;
+        this.rankResult = rank;
     }
 
     public double getYield() {
@@ -70,5 +84,23 @@ public class User {
 
     public int getLottoCount() {
         return this.lottos.size();
+    }
+
+    public void updateRank(int rank) {
+        if (rank == Number.FIVE.getValue()) {
+            rankResult.put(Number.FIVE, rankResult.get(Number.FIVE) + 1);
+        }
+        if (rank == Number.FOUR.getValue()) {
+            rankResult.put(Number.FOUR, rankResult.get(Number.FOUR) + 1);
+        }
+        if (rank == Number.THREE.getValue()) {
+            rankResult.put(Number.THREE, rankResult.get(Number.THREE) + 1);
+        }
+        if (rank == Number.TWO.getValue()) {
+            rankResult.put(Number.TWO, rankResult.get(Number.TWO) + 1);
+        }
+        if (rank == Number.ONE.getValue()) {
+            rankResult.put(Number.ONE, rankResult.get(Number.ONE) + 1);
+        }
     }
 }
