@@ -8,7 +8,7 @@ public class CompareNumber {
 	final private List<Integer> winningNumbers;
 	final private int bonusBall;
 	final private List<List<Integer>> ticket;
-	private final HashMap<Integer, Integer> result = new HashMap<>();
+	public final HashMap<Integer, Integer> result = new HashMap<>();
 
 
 	public CompareNumber(WinningNumber winningNumber, BonusBall bonusBall, LottoTicket lottoTicket) {
