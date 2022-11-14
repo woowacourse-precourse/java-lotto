@@ -27,7 +27,7 @@ public class OutputView {
         put(30000000, "30,000,000");
         put(1500000, "1,500,000");
         put(50000, "50,000");
-        put(5000, "5000");
+        put(5000, "5,000");
     }};
 
     public static void printLottoCount(LottoCount lottoCount) {
@@ -50,6 +50,7 @@ public class OutputView {
     }
 
     public static void printResult(Result result) {
+        System.out.printf(NEW_LINE);
         System.out.println(STATISTIC_HEADER);
         for (Rank rank : Rank.get()) {
             System.out.printf(STATISTIC_BODY, rank.getMatchCount(), getMatchBonusBall(rank),
