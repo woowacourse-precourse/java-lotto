@@ -19,21 +19,21 @@ public class Application {
 
         out.tellNumberOfLottosUserBought(theNumberOfTickets);
         lottoNumbersOnTickets = LottoTicketing.giveLottoTickets(theNumberOfTickets);
-        for(int lottoSheet=1; lottoSheet<=theNumberOfTickets; lottoSheet++) {
-            lottoNumbersOnTickets.get(lottoSheet);
+        for(int lottoSheet=0; lottoSheet<theNumberOfTickets; lottoSheet++) {
+            System.out.println(lottoNumbersOnTickets.get(lottoSheet));
         }
         out.insertBlankLine();
 
         out.askWinningNumbers();
         winningNumbers=in.toIntegerNumbersWithoutComma(in.inputWinningNumbers());
-        System.out.println(winningNumbers);
+        System.out.println(winningNumbers+"these are winning numbers");
         out.insertBlankLine();
 
         out.askBonusNumber();
         in.inputBonusNumber();
         out.insertBlankLine();
 
-        out.showWinningRate();
+        //out.showWinningRate();
 
     }
 }
