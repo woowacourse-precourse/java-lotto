@@ -18,15 +18,25 @@ public class LottoController {
     public void run() {
 
         Money money = inputMoney();
-        LottoMachine lottoMachine = new LottoMachine(money);
 
-        BuyLottoList buyLottoList = new BuyLottoList(lottoMachine.getBuyLottoList());
+        BuyLottoList buyLottoList = buyLotto(money);
+
         LottoWithBonus lottoWithBonus = inputBonus(inputLotto());
 
         LottoResult lottoResult = new LottoResult(buyLottoList, lottoWithBonus);
 
         outputHandler.winningStatistics(lottoResult);
         outputHandler.printYield(lottoResult);
+    }
+
+    private BuyLottoList buyLotto(Money money) {
+        try {
+            LottoMachine lottoMachine = new LottoMachine(money);
+            outputHandler.printBuyLottoList(lottoMachine);
+            return new BuyLottoList(lottoMachine.getBuyLottoList());
+        } catch (Exception e) {
+            throw e;
+        }
     }
 
     private Money inputMoney() {

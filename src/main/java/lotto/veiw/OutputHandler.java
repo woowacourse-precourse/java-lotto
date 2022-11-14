@@ -4,6 +4,8 @@ import static lotto.domain.LottoReference.NOPE;
 
 import java.text.DecimalFormat;
 import java.util.Map;
+import lotto.domain.Lotto;
+import lotto.domain.LottoMachine;
 import lotto.domain.LottoReference;
 import lotto.domain.LottoResult;
 
@@ -31,5 +33,12 @@ public class OutputHandler {
 
         float yield = LottoReference.getYield(result);
         System.out.printf("총 수익률은 %s%%입니다.\n", floatFormat.format(yield));
+    }
+
+    public void printBuyLottoList(LottoMachine lottoMachine) {
+        System.out.println(lottoMachine.getBuyLottoList().size() + "개를 구매했습니다.");
+        for (Lotto lotto : lottoMachine.getBuyLottoList()) {
+            System.out.println(lotto.getLottoNumbers());
+        }
     }
 }
