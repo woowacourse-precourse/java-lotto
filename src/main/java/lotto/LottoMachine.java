@@ -16,14 +16,14 @@ public class LottoMachine {
     }
 
     public List<Lotto> publishLotto() {
-        List<Lotto> allLotto = new ArrayList<>();
+        List<Lotto> publishedAllLotto = new ArrayList<>();
 
         while (money != 0) {
-            allLotto.add(new Lotto(createRandomNumbers()));
+            publishedAllLotto.add(new Lotto(createRandomNumbers()));
             spendMoney();
         }
 
-        return allLotto;
+        return publishedAllLotto;
     }
 
     public Lotto publishWinningLotto(String winningNumbers) {
