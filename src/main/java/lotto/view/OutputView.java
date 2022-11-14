@@ -4,6 +4,7 @@ import lotto.model.Lotto;
 import lotto.model.LottoResult;
 import lotto.model.Profit;
 
+import java.text.DecimalFormat;
 import java.util.List;
 
 public class OutputView {
@@ -87,7 +88,9 @@ public class OutputView {
     }
 
     public void printProfit(Profit profit) {
-        printlnMessage(PROFIT_INTRODUCE_MESSAGE + profit.getProfitValue() + PROFIT_PERCENT_MESSAGE);
+        DecimalFormat decimalFormat = new DecimalFormat("###,###.##");
+        String profitValue = decimalFormat.format(profit.getProfitValue());
+        printlnMessage(PROFIT_INTRODUCE_MESSAGE + profitValue + PROFIT_PERCENT_MESSAGE);
     }
 
 }
