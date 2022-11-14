@@ -39,9 +39,11 @@ public class LottoManager {
     public void inputAmount() {
         System.out.println(Notice.INPUT_AMOUNT.getNotice());
         String buyAmount = Console.readLine();
+        lottoGenerator.amountIsNumber(buyAmount);
         userLottos = lottoGenerator.createLottoNumbers(buyAmount);
         amount = Integer.parseInt(buyAmount);
     }
+
     public void inputWinningNumbers() {
         System.out.println(Notice.INPUT_WINNING_NUMBERS.getNotice());
         winningNumbers = lottoGenerator.changeToNumber(Console.readLine());
