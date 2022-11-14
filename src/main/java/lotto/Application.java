@@ -17,6 +17,7 @@ public class Application {
         CompareLotto comparelotto = new CompareLotto();
         result = comparelotto.correctcount(lottonumbers,askwinningnumbers(),askbonusnumber());
 
+        printresult(result);
         // TODO: 프로그램 구현
     }
     public static int askmoney(){
@@ -57,10 +58,11 @@ public class Application {
         }
         return bonusnumber;
     }
-    public static void printresult(){
+    public static void printresult(List<Integer> result){
         System.out.println("\n당첨 통계\n---");
         for(PrizeInfo info : PrizeInfo.values()){
-            System.out.println(info.getCount()+" "+info.getPrintMoney()+" - ");
+            int index = info.ordinal();
+            System.out.println(info.getCount()+" "+info.getPrintMoney()+" - "+result.get(index)+"개");
         }
     }
 }
