@@ -9,15 +9,17 @@ public class DataProcessing {
         return Randoms.pickUniqueNumbersInRange(1, 45, 6);
     }
 
-    public List<Integer> sortLottoNumbers(List<Integer> sortNumbers) {
+
+    public List<Integer> sortLottoNumbers(List<Integer> randomNumbers) {
+        List<Integer> sortNumbers = new ArrayList<>();
+        sortNumbers.addAll(randomNumbers);
         Collections.sort(sortNumbers);
         return sortNumbers;
     }
-
     public List<List<Integer>> countCreateRandomNumbers(int count) {
         List<List<Integer>> boxNumbers = new ArrayList<>();
         for (int i=0;i<count;++i) {
-            boxNumbers.add(sortLottoNumbers(lottoRandomNumbers()));
+            boxNumbers.add(lottoRandomNumbers());
         }
         return boxNumbers;
     }
@@ -87,9 +89,8 @@ public class DataProcessing {
     }
 
     public float totalReturn(int countLotto, int[] resultWin) {
-         float principal = countLotto * 1000;
-         float resultMoney = totalMoney(resultWin);
-         float result = (resultMoney * 100) / principal;
-         return result;
+        float principal = countLotto * 1000;
+        float resultMoney = totalMoney(resultWin);
+        return (resultMoney * 100) / principal;
     }
 }
