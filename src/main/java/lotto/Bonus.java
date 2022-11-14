@@ -12,11 +12,8 @@ public class Bonus {
         System.out.println("\n"+Constant.ASK_BONUS_NUMBER);
         String Bonus = Console.readLine();
         BonusNumber = Integer.parseInt(Bonus);
-        List<Integer> JackpotNumbers = Game.inputJackpotNum();
-        Lotto lotto = new Lotto(JackpotNumbers);
-
         validateNumberRange(BonusNumber);
-        BonusValidate(BonusNumber,lotto.getNumbers());
+        BonusValidate(BonusNumber,Game.JackpotNumbers);
     }
 
     private static void BonusValidate(int BonusNumber, List<Integer> numbers) {
