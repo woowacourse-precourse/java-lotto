@@ -60,4 +60,13 @@ class LottoTest {
                 Arguments.of(new Lotto(List.of(4, 1, 3, 18, 7, 39)), Named.of("0개 번호 일치", 0))
         );
     }
+
+    @Test
+    void getSortedNumbers() {
+        List<Integer> before = List.of(42, 23, 43, 21, 8, 41);
+        List<Integer> after = List.of(8, 21, 23, 41, 42, 43);
+
+        assertThat(new Lotto(before).getSortedNumbers()).isEqualTo(after);
+    }
+
 }
