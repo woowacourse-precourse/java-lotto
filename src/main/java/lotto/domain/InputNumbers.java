@@ -6,8 +6,6 @@ import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 public class InputNumbers {
-    private static final String ONLY_NUMBER_ERROR_MESSAGE = "[ERROR] 로또 번호는 숫자여야합니다.";
-    private static final String OVERLAP_ERROR_MESSAGE = "[ERROR] 로또 번호에 중복된 숫자가 존재합니다.";
     List<Integer> lottoNumbers;
     Integer bonusNumber;
 
@@ -29,20 +27,20 @@ public class InputNumbers {
     private void checkLottoNumbers(List<String> numbers){
         for (String number : numbers){
             if (!Pattern.matches("^[0-9]*$", number)){
-                throw new IllegalArgumentException(ONLY_NUMBER_ERROR_MESSAGE);
+                throw new IllegalArgumentException(Errors.LOTTO_ONLY_NUMBER.getMessage());
             }
         }
     }
 
     private void checkBonusNumber(String number){
         if (!Pattern.matches("^[0-9]*$", number)){
-            throw new IllegalArgumentException(ONLY_NUMBER_ERROR_MESSAGE);
+            throw new IllegalArgumentException(Errors.LOTTO_ONLY_NUMBER.getMessage());
         }
     }
 
     private void checkOverlap(List<String> lottoNumbers, String num){
         if (lottoNumbers.contains(num)){
-            throw new IllegalArgumentException(OVERLAP_ERROR_MESSAGE);
+            throw new IllegalArgumentException(Errors.OVERLAP.getMessage());
         }
     }
 
