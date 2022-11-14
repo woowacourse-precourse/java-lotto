@@ -29,4 +29,24 @@ public class LottoMachine {
         }
         return new Lottos(lottos);
     }
+
+    public static CorrectLottoNumbers makeCorrectLotto(LottoNumbers correctNumbers, LottoNumber bonusNumber) {
+        List<LottoNumber> combineCorrectLottoNumbers = combineCorrectLottoNumbers(correctNumbers, bonusNumber);
+
+        List<LottoNumber> correctLottoNumbers = new ArrayList<>();
+        for (LottoNumber lottoNumber : combineCorrectLottoNumbers) {
+            correctLottoNumbers.add(lottoNumber);
+        }
+        return new CorrectLottoNumbers(correctLottoNumbers);
+    }
+
+    private static ArrayList<LottoNumber> combineCorrectLottoNumbers(LottoNumbers correctNumbers, LottoNumber bonusNumber) {
+        ArrayList<LottoNumber> combineLottoNumbers = new ArrayList<>();
+        for (LottoNumber lottoNumber : correctNumbers.getLottoNumbers()) {
+            combineLottoNumbers.add(lottoNumber);
+        }
+        combineLottoNumbers.add(bonusNumber);
+        return combineLottoNumbers;
+    }
 }
+
