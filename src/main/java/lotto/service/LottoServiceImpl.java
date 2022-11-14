@@ -48,15 +48,24 @@ public class LottoServiceImpl implements LottoService {
 
 		if (matchCount == 6) {
 			scoreInfo.addScore(Score.FIRST);
-		} else if (matchCount == 5) {
+			return;
+		}
+
+		if (matchCount == 5) {
 			if (isBonusMatching(lotto, winningInfo)) {
 				scoreInfo.addScore(Score.SECOND);
 				return;
 			}
 			scoreInfo.addScore(Score.THIRD);
-		} else if (matchCount == 4) {
+			return;
+		}
+
+		if (matchCount == 4) {
 			scoreInfo.addScore(Score.FORTH);
-		} else if (matchCount == 3) {
+			return;
+		}
+
+		if (matchCount == 3) {
 			scoreInfo.addScore(Score.FIFTH);
 		}
 	}
