@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 public class WinningNumbers {
@@ -32,6 +33,22 @@ public class WinningNumbers {
 
     private String setNumber() {
         return Console.readLine();
+    }
+
+    private void validateWinningNumbers(List<String> numbers) {
+        final String INPUT_PATTERN = "^[1-9]$|^[1-3][0-9]$|^4[0-5]$";
+
+        if (numbers.size() != 6) {
+            throw new IllegalArgumentException("[ERROR]");
+        }
+
+        for (String number : numbers) {
+            boolean isMatch = Pattern.matches(INPUT_PATTERN, number);
+
+            if (!isMatch) {
+                throw new IllegalArgumentException("[ERROR]");
+            }
+        }
     }
 
     private void printGuideMessage(String message) {
