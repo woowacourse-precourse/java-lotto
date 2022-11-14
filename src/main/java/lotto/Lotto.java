@@ -79,4 +79,19 @@ public class Lotto {
         return matchCount;
     }
 
+    public List<Integer> calculateLottoResult(List<List<Integer>> generatedLottoNumber, int bonus) {
+        List<Integer> result = new ArrayList<>(List.of(0, 0, 0, 0, 0)); // 3, 4, 5, 6, 5 + b
+
+        for (List<Integer> lotto : generatedLottoNumber) {
+            int index = getIndividualLottoScore(lotto, bonus) - 3;
+
+            if (index < 0) {
+                continue;
+            }
+            result.set(index, result.get(index) + 1);
+        }
+
+        return result;
+    }
+
 }
