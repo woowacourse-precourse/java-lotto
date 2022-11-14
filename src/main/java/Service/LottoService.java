@@ -17,7 +17,7 @@ public class LottoService {
     UserMoneyValidate userMoneyValidate = new UserMoneyValidate();
     SystemMessage systemMessage = new SystemMessage();
 
-    public void set_lotto() {
+    public void lottoGame() {
         int userMoney = getUserMoney();
         systemMessage.requestTotalMoney(userMoney);
         Ticket ticket = new Ticket();
