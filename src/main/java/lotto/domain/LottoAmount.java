@@ -10,6 +10,15 @@ public class LottoAmount {
         validateAmount(amount);
         this.amount = amount;
     }
+
+    public int calculateLottoCount() {
+        return amount / MIN_COST;
+    }
+
+    public double calculateProfit(long priceSum) {
+        return (DECIMAL * priceSum / amount) * 100;
+    }
+
     private void validateAmount(int amount) {
         validateMinAmount(amount);
         validateDivisible(amount);
