@@ -66,4 +66,16 @@ class InputValidatorTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+    @Test
+    @DisplayName("보너스 번호가 이미 당첨번호에 포함되어 있을 때")
+    void bonusIsExistWinningNumber() throws Exception {
+        //given
+        String input = "3";
+        Lotto winningNumber = new Lotto(List.of(1,2,3,4,5,6));
+        //when
+        //then
+        assertThatThrownBy(() -> inputValidator.validateInputBonusNumber(input, winningNumber))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
 }
