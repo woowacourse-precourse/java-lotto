@@ -18,7 +18,7 @@ public class LottoOutput {
             sb.append(lotto).append("\n");
         }
 
-        System.out.println(sb);
+        System.out.println(sb.toString());
     }
 
     public void printLottoResult(List<LottoRank> lottoResult) {
@@ -30,7 +30,7 @@ public class LottoOutput {
                     .append("\n");
         }
         sb.deleteCharAt(sb.length() - 1);
-        System.out.println(sb);
+        System.out.println(sb.toString());
     }
 
     public String createLottoResultMessage(LottoRank rank, List<LottoRank> lottoResult) {
@@ -60,6 +60,6 @@ public class LottoOutput {
                 .append(percent)
                 .append(Messages.LOTTO_PERCENT_TAIL.getMessage());
 
-        System.out.println(sb);
+        System.out.println(sb.toString());
     }
 }

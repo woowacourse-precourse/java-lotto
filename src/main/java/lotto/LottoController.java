@@ -34,14 +34,18 @@ public class LottoController {
     }
 
     public void start() {
-        initUserLotto();
-        initLotto();
-        initBonusNumber();
+        try {
+            initUserLotto();
+            initLotto();
+            initBonusNumber();
 
-        List<LottoRank> lottoResult = service.createLottoResult(lotto.getNumbers(), userLotto.getUserLotto());
-        output.printLottoResult(lottoResult);
+            List<LottoRank> lottoResult = service.createLottoResult(lotto.getNumbers(), userLotto.getUserLotto());
+            output.printLottoResult(lottoResult);
 
-        String percent = service.calculatePercent(lottoResult);
-        output.printProfitPercent(percent);
+            String percent = service.calculatePercent(lottoResult);
+            output.printProfitPercent(percent);
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+        }
     }
 }
