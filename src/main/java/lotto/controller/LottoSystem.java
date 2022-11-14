@@ -19,7 +19,7 @@ public class LottoSystem {
             settlementSystem.renderResult();
 
         } catch (IllegalArgumentException e) {
-            OutputView.printIOMessage(e.getMessage());
+            OutputView.printMessage(e.getMessage());
         }
     }
 

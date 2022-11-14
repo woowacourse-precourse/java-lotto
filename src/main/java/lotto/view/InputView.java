@@ -19,7 +19,7 @@ public final class InputView {
     }
 
     public static int readAmount() {
-        OutputView.printIOMessage(IOMessage.READ_AMOUNT_MESSAGE);
+        OutputView.printMessage(IOMessage.READ_AMOUNT_MESSAGE);
         String line = Console.readLine();
         moneyVerifier.check(line);
 
@@ -27,7 +27,7 @@ public final class InputView {
     }
 
     public static List<Integer> readWinningNumber() {
-        OutputView.printIOMessage(IOMessage.READ_WINNING_NUM_MESSAGE);
+        OutputView.printMessage(IOMessage.READ_WINNING_NUM_MESSAGE);
         String line = Console.readLine();
         lottoVerifier.check(line);
 
@@ -37,7 +37,7 @@ public final class InputView {
     }
 
     public static int readBonusNumber() {
-        OutputView.printIOMessage(IOMessage.READ_BONUS_NUM_MESSAGE);
+        OutputView.printMessage(IOMessage.READ_BONUS_NUM_MESSAGE);
         String line = Console.readLine();
         bonusNumberVerifier.check(line);
         

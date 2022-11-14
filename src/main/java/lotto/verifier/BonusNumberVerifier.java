@@ -13,13 +13,6 @@ public class BonusNumberVerifier implements Verifier {
         checkOutOfRange(input);
     }
 
-    // 로직 관련 서비스이기 때문에 나중에 보너스 객체에 넣을 듯!
-//    private void checkExistInWinnerVerifier(String input, Lotto winnerLotto) {
-//        if (winnerLotto.contains(Long.parseLong(input))) {
-//            throw new IllegalArgumentException();
-//        }
-//    }
-
     private void checkNumeric(String input) {
         try {
             new BigInteger(input);
