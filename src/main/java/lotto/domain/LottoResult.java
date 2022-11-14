@@ -29,22 +29,11 @@ public class LottoResult {
         for (Lotto lotto : purchaseLotto) {
             int count = compareLotto.getMatchingLottoNumberCount(lotto, lottoNumbers);
             boolean bonusMatch = compareLotto.checkMatchingBonusNumber(lotto, bonusNumber);
-            if (count == 3) {
-                THREE_MATCHES++;
-            }
-            if (count == 4) {
-                FOUR_MATCHES++;
-            }
-            if (count == 5 && !bonusMatch) {
-                FIVE_MATCHES++;
-            }
-            if (count == 5 && bonusMatch) {
-                FIVE_AND_BONUS_MATCHES++;
-            }
-            if (count == 6) {
-                SIX_MATCHES++;
-            }
+            if (count == 3) THREE_MATCHES++;
+            if (count == 4) FOUR_MATCHES++;
+            if (count == 5 && !bonusMatch) FIVE_MATCHES++;
+            if (count == 5 && bonusMatch) FIVE_AND_BONUS_MATCHES++;
+            if (count == 6) SIX_MATCHES++;
         }
     }
-
 }
