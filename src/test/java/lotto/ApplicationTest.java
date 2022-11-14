@@ -92,6 +92,43 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    void 로또번호선택_기능_테스트() {
+        assertRandomUniqueNumbersInRangeTest(
+                () -> {
+                    List<Lotto> lottos = Application.pickLottoNumber(3);
+                    assertThat(output()).contains(
+                            "[8, 21, 23, 41, 42, 43]",
+                            "[3, 5, 11, 16, 32, 38]",
+                            "[7, 11, 16, 35, 36, 44]"
+                    );
+                },
+                List.of(8, 21, 23, 41, 42, 43),
+                List.of(3, 5, 11, 16, 32, 38),
+                List.of(7, 11, 16, 35, 36, 44)
+        );
+    }
+
+    @Test
+    void 로또번호선택_중복_테스트() {
+        assertRandomUniqueNumbersInRangeTest(
+                () -> {
+                    List<Lotto> lottos = Application.pickLottoNumber(3);
+                    assertThat(output()).contains(
+                            "[8, 21, 23, 41, 42, 43]",
+                            "[3, 5, 11, 16, 32, 38]",
+                            "[7, 11, 16, 35, 36, 44]"
+                    );
+                },
+                List.of(8, 21, 23, 41, 42, 43),
+                List.of(8, 21, 23, 41, 42, 43),
+                List.of(8, 21, 23, 41, 42, 43),
+                List.of(8, 21, 23, 41, 42, 43),
+                List.of(3, 5, 11, 16, 32, 38),
+                List.of(7, 11, 16, 35, 36, 44)
+        );
+    }
+
+    @Test
     void 예외_테스트() {
         assertSimpleTest(() -> {
             runException("1000j");
