@@ -13,29 +13,12 @@ public class MakeLottoNumber {
 
 
     public List<Integer> returnLottoNumber() {
-        List<Integer> lottoNumber = new ArrayList<>();
-
-        int initNum = Randoms.pickNumberInRange(rangeStartValue, rangeEndValue);
-        lottoNumber.add(initNum);
-        for(int i = 1; i<maxNumber; i++){
-            lottoNumber = checkAndPutNumber(lottoNumber);
-        }
-        Collections.sort(lottoNumber);
-        return lottoNumber;
-    }
-
-    public List<Integer> checkAndPutNumber(List<Integer> lotto) {
-        int tmp = Randoms.pickNumberInRange(rangeStartValue, rangeEndValue);
-
-        for(int i = 0; i<lotto.size(); i++) {
-            if(tmp == lotto.get(i)){
-                tmp = Randoms.pickNumberInRange(rangeStartValue, rangeEndValue);
-                i = -1;
-            }
-        }
-
-        lotto.add(tmp);
-        return lotto;
+        List<Integer> tmp = new ArrayList<>();
+        tmp = Randoms.pickUniqueNumbersInRange(rangeStartValue, rangeEndValue, 6);
+        List<Integer> lottoNumbers = new ArrayList<Integer>();
+        lottoNumbers.addAll(tmp);
+        Collections.sort(lottoNumbers);
+        return lottoNumbers;
     }
 
 }
