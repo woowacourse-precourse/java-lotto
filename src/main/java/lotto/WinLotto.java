@@ -4,14 +4,14 @@ import java.util.*;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
-public class calculateLotto {
+public class WinLotto {
     Lotto inputLottto;
     int bonusLotto;
     static String lottoinputMessage = "로또번호 입력하세요.";
     static String bonusinputMessage = "보너스번호 입력하세요.";
     static String totalrateMessage = "총 수익률은 %s%%입니다.";
 
-    calculateLotto(){
+    WinLotto(){
         System.out.println(lottoinputMessage);
         String inputLotto = Console.readLine();
         this.inputLottto = convertLottos(inputLotto);

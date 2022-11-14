@@ -12,7 +12,7 @@ public class Application {
             int numberOflottos = buyLotto.buyLotto();
             RandomLottos makeLottos = new RandomLottos(numberOflottos);
             makeLottos.printLottoNumbers();
-            calculateLotto calculateLotto = new calculateLotto();
+            WinLotto calculateLotto = new WinLotto();
             List<Integer> list = calculateLotto.winLotto(makeLottos.getLottosNumber());
 
             double l = calculateLotto.rateLotto(numberOflottos,list);
