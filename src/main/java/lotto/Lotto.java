@@ -71,4 +71,28 @@ public class Lotto {
         }
         return Integer.parseInt(input);
     }
+
+    public static int[] set_statistics(List<Lotto> buy_lists, int bonus, List<Integer> win_numbers, int[] statistics) {
+        for (Lotto buy_numbers : buy_lists) {
+            boolean match;
+            match = check_bonus(buy_numbers, bonus);
+            int match_num = check_win(win_numbers, buy_numbers);
+            if (match_num == 3) {
+                statistics[0]++;
+            }
+            if (match_num == 4) {
+                statistics[1]++;
+            }
+            if (match_num == 5 && !match) {
+                statistics[2]++;
+            }
+            if (match_num == 5 && match) {
+                statistics[3]++;
+            }
+            if (match_num == 6) {
+                statistics[4]++;
+            }
+        }
+        return statistics;
+    }
 }

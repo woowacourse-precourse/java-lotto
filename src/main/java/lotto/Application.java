@@ -60,26 +60,7 @@ public class Application {
 
         bonus = Integer.parseInt(Console.readLine());
 
-        for (Lotto buy_numbers : buy_lists) {
-            boolean match;
-            match = Lotto.check_bonus(buy_numbers, bonus);
-            int match_num = Lotto.check_win(win_numbers, buy_numbers);
-            if (match_num == 3) {
-                statistics[0]++;
-            }
-            if (match_num == 4) {
-                statistics[1]++;
-            }
-            if (match_num == 5 && !match) {
-                statistics[2]++;
-            }
-            if (match_num == 5 && match) {
-                statistics[3]++;
-            }
-            if (match_num == 6) {
-                statistics[4]++;
-            }
-        }
+        Lotto.set_statistics(buy_lists, bonus, win_numbers, statistics);
 
         System.out.println("\n당첨 통계\n---");
 
