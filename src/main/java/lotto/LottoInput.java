@@ -8,19 +8,24 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 import static lotto.LottoErrorCheck.*;
 
 public class LottoInput {
+    private static final String HOWMUCH_BUY = "구입금액을 입력해 주세요.";
+    private static final String WINNING_NUMBER_INPUT = "당첨 번호를 입력해 주세요.";
+    private static final String BONUS_NUMBER_INPUT = "보너스 번호를 입력해 주세요.";
+    private static final int LOTTO_PRICE = 1000;
+    private static final String NUMBER_SEPARATOR = ",";
     public static int howMuchLottoBuyInput(){
-        System.out.println("구입금액을 입력해 주세요.");
+        System.out.println(HOWMUCH_BUY);
         String money = readLine();
 
         moneyErrorCheck(money);
 
-        return Integer.parseInt(money)/1000;
+        return Integer.parseInt(money) / LOTTO_PRICE;
     }
     public static List<Integer> winningNumberInput(){
-        System.out.println("\n당첨 번호를 입력해 주세요.");
+        System.out.println("\n"+WINNING_NUMBER_INPUT);
 
         String number = readLine();
-        List<String> numbers = Arrays.asList(number.split(","));
+        List<String> numbers = Arrays.asList(number.split(NUMBER_SEPARATOR));
 
         winningNumberErrorCheck(numbers);
 
@@ -32,7 +37,7 @@ public class LottoInput {
         return winningNumber;
     }
     public static Integer bonusNumberInput(){
-        System.out.println("\n보너스 번호를 입력해 주세요.");
+        System.out.println("\n"+BONUS_NUMBER_INPUT);
 
         String number = readLine();
 
