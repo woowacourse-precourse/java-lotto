@@ -1,11 +1,14 @@
 package lotto.view;
 
+import lotto.service.LottoService;
+
 import java.util.List;
 
 import static lotto.service.WinningHistory.*;
 import static lotto.view.ViewWinningMessage.*;
 
 public class OutputView {
+    LottoService lottoService = new LottoService();
 
     public void buyLottoPrint(int lotteryCount) {
         System.out.println(lotteryCount + ViewMessage.OUTPUT_BUY_LOTTO.getMessage());
@@ -29,5 +32,9 @@ public class OutputView {
 
     public void totalLottoNumbersPrint() {
         System.out.println();
+    }
+
+    public void returnPrint(int quantity) {
+        System.out.println(lottoService.getReturn(quantity));
     }
 }

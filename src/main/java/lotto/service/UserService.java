@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class UserService {
+    private static final int LOTTERY_PRICE = 1000;
     User user;
     InputException inputException = new InputException();
 
@@ -52,6 +53,10 @@ public class UserService {
         // 1 ~ 45 확인후 아니면 예외처리
         // 중복 숫자가 있으면 예외처리
         user.setBonusNumber(Integer.parseInt(inputBonusNumber));
+    }
+
+    public int getLottoQuantity() {
+        return user.getMoney() / LOTTERY_PRICE;
     }
 
 

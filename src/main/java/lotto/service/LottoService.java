@@ -34,17 +34,17 @@ public class LottoService {
         return Randoms.pickUniqueNumbersInRange(1, 45, 6);
     }
 
-    public List<Lotto> getLotto() {
+    public List<Lotto> getLottoNumbers() {
         return lotto;
     }
 
-    public void setLotto(int money) {
-        while (money != 0) {
+    public void setLotto(int quantity) {
+        while (quantity != 0) {
             lotto.add(new Lotto(setLottoNumbers()
                     .stream()
                     .sorted()
                     .collect(Collectors.toList())));
-            money -= LOTTERY_PRICE;
+            quantity--;
         }
     }
 
@@ -57,13 +57,13 @@ public class LottoService {
         }
     }
 
-    public String getReturn(int money) {
+    public String getReturn(int quantity) {
         double totalPrizeMoney = 0L;
         totalPrizeMoney += (long) FIRST_PLACE.getQuantity() * FIRST_PLACE_PRIZE.getPrizeMoney();
         totalPrizeMoney += (long) SECOND_PLACE.getQuantity() * SECOND_PLACE_PRIZE.getPrizeMoney();
         totalPrizeMoney += (long) THIRD_PLACE.getQuantity() * THIRD_PLACE_PRIZE.getPrizeMoney();
         totalPrizeMoney += (long) FOURTH_PLACE.getQuantity() * FOURTH_PLACE_PRIZE.getPrizeMoney();
         totalPrizeMoney += (long) FIFTH_PLACE.getQuantity() * FIFTH_PLACE_PRIZE.getPrizeMoney();
-        return String.format("%,.1f", (totalPrizeMoney / money) * 100) + "%";
+        return String.format("%,.1f", (totalPrizeMoney / quantity * LOTTERY_PRICE) * 100) + "%";
     }
 }

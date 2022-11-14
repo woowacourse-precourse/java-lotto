@@ -36,7 +36,7 @@ public class LottoServiceTest {
         void case1(int money, int lottoQuantity) {
             LottoService lottoService = new LottoService();
             lottoService.setLotto(money);
-            Assertions.assertThat(lottoQuantity).isEqualTo(lottoService.getLotto().size());
+            Assertions.assertThat(lottoQuantity).isEqualTo(lottoService.getLottoNumbers().size());
         }
 
         Stream<Arguments> data() {
