@@ -25,7 +25,7 @@ public class User {
   }
 
   private void checkBuyAmountDividedByLottoPrice(int buyAmount) {
-    if (buyAmount % Lotto.PRICE == 0) {
+    if (buyAmount % Lotto.PRICE != 0) {
       throw new IllegalArgumentException("입력 금액의 단위가 잘못되었습니다!");
     }
   }
