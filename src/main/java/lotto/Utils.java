@@ -7,18 +7,15 @@ import java.util.*;
 import static lotto.Result.*;
 
 public class Utils {
-    private static final int LOTTO_PRICE = 1000;
+    private static final int PRICE_OF_LOTTO = 1000;
     private static final int MIN_NUM = 1;
     private static final int MAX_NUM = 45;
     private static final int NUMBER_OF_NUMS = 6;
-    private static final int FIRST_PLACE_STANDARD = 6;
-    private static final int SECOND_THIRD_PLACE_STANDARD = 5;
-    private static final int FOURTH_PLACE_STANDARD = 4;
-    private static final int FIFTH_PLACE_STANDARD = 3;
+    private static final int SECOND_THIRD_STANDARD = 5;
     public static final Map<Result, Integer> WINNING_DATA = new HashMap<>();
 
     public static int getNumberOfIssues(int price) {
-        return price / LOTTO_PRICE;
+        return price / PRICE_OF_LOTTO;
     }
 
     private static void initializeMap() {
@@ -65,29 +62,31 @@ public class Utils {
     }
 
     public static Map<Result, Integer> getAllResults(List<Lotto> lottos, List<Integer> winningNums, int bonusNum) {
+
         initializeMap();
 
         for (Lotto lotto : lottos) {
-            getEachResult(lotto, winningNums, bonusNum);
+            List<Integer> numbers = lotto.getNumbers();
+            int numOfMatching = (int) numbers.stream().filter(winningNums::contains).count();
+            if (numOfMatching >= FIFTH.getStandard()) {
+                getEachResult(numOfMatching, numbers, bonusNum);
+            }
         }
         return WINNING_DATA;
     }
 
-    private static void getEachResult(Lotto lotto, List<Integer> winningNums, int bonusNum) {
-        List<Integer> numbers = lotto.getNumbers();
-        int numOfMatching = (int) numbers.stream().filter(winningNums::contains).count();
-
-        if (numOfMatching == FIRST_PLACE_STANDARD) {
-            WINNING_DATA.merge(FIRST, 1, Integer::sum);
-        } else if (numOfMatching == SECOND_THIRD_PLACE_STANDARD && numbers.contains(bonusNum)) {
-            WINNING_DATA.merge(SECOND, 1, Integer::sum);
-        } else if (numOfMatching == SECOND_THIRD_PLACE_STANDARD) {
+    private static void getEachResult(int numOfMatching, List<Integer> numbers, int bonusNum) {
+        if (numOfMatching == SECOND_THIRD_STANDARD) {
+            if (numbers.contains(bonusNum)) {
+                WINNING_DATA.merge(SECOND, 1, Integer::sum);
+                return;
+            }
             WINNING_DATA.merge(THIRD, 1, Integer::sum);
-        } else if (numOfMatching == FOURTH_PLACE_STANDARD) {
-            WINNING_DATA.merge(FOURTH, 1, Integer::sum);
-        } else if (numOfMatching == FIFTH_PLACE_STANDARD) {
-            WINNING_DATA.merge(FIFTH, 1, Integer::sum);
+            return;
         }
+
+        Result result = findResultByStandard(numOfMatching);
+        WINNING_DATA.merge(result, 1, Integer::sum);
     }
 
     public static String getRatioOfProfit(int price) {
@@ -95,6 +94,7 @@ public class Utils {
 
         Set<Result> results = WINNING_DATA.keySet();
         for (Result result : results) {
+            // 해당 등수의 상금 액수 * 당첨 횟수
             totalPrize += result.getPrize() * WINNING_DATA.get(result);
         }
 

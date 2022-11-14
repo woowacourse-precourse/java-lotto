@@ -28,9 +28,11 @@ public class Ui {
     private static String getStatisticsFormat(Result result, int numOfResult) {
         DecimalFormat decFormat = new DecimalFormat("###,###");
         String prize = decFormat.format(result.getPrize());
-        String standard = result.getStandard();
+        int standard = result.getStandard();
 
-        return String.format("%s (%s원) - %d개", standard, prize, numOfResult);
+        if (result == Result.SECOND) {
+            return String.format("%d개 일치, 보너스 볼 일치 (%s원) - %d개", standard, prize, numOfResult);
+        }
+        return String.format("%d개 일치 (%s원) - %d개", standard, prize, numOfResult);
     }
-
 }

@@ -1,16 +1,16 @@
 package lotto;
 
 public enum Result {
-    FIFTH(5000,"3개 일치"),
-    FOURTH(50000, "4개 일치"),
-    THIRD(1500000, "5개 일치"),
-    SECOND(30000000,"5개 일치, 보너스 볼 일치"),
-    FIRST(2000000000, "6개 일치");
+    FIFTH(5000,3),
+    FOURTH(50000, 4),
+    THIRD(1500000, 5),
+    SECOND(30000000, 5),
+    FIRST(2000000000, 6);
 
     private final int prize;
-    private final String standard;
+    private final int standard;
 
-    Result(int prize, String standard) {
+    Result(int prize, int standard) {
         this.prize = prize;
         this.standard = standard;
     }
@@ -18,8 +18,17 @@ public enum Result {
     public int getPrize() {
         return prize;
     }
-    public String getStandard() {
+    public int getStandard() {
         return standard;
     }
+    public static Result findResultByStandard(int standard) {
 
+        Result[] values = Result.values();
+        for (Result result : values) {
+            if (result.standard == standard) {
+                return result;
+            }
+        }
+        return null;
+    }
 }
