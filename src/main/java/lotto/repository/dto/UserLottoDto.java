@@ -6,14 +6,14 @@ import lotto.domain.Lotto;
 
 public class UserLottoDto {
 
-	private List<Lotto> userLotto;
+	private List<Lotto> userLottos;
 
-	public UserLottoDto(List<Lotto> userLotto) {
-		this.userLotto = userLotto;
+	public UserLottoDto(List<Lotto> userLottos) {
+		this.userLottos = userLottos;
 	}
 
-	public List<Lotto> getUserLotto() {
-		return userLotto;
+	public List<Lotto> getUserLottos() {
+		return userLottos;
 	}
 
 }

@@ -34,7 +34,7 @@ class InputViewTest {
 
 	@Test
 	void printWinnerNumberTest() {
-		inputView.printWinnerNumber();
+		inputView.printWinningNumber();
 		assertThat(outContent.toString()).contains(ViewConst.WIN_NUMBER_INPUT);
 	}
 

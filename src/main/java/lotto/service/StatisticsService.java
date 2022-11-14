@@ -1,10 +1,10 @@
 package lotto.service;
 
-import lotto.controller.dto.WinnerNumberDto;
+import lotto.controller.dto.WinningNumberDto;
 import lotto.domain.Lotto;
 import lotto.domain.Rank;
 import lotto.domain.RankGroup;
-import lotto.domain.dto.WinnerCountDto;
+import lotto.domain.dto.LottoWinsCountDto;
 import lotto.repository.dto.UserLottoDto;
 import lotto.service.dto.StatisticsDto;
 
@@ -16,22 +16,22 @@ public class StatisticsService {
 		this.rankGroup = rankGroup;
 	}
 
-	public StatisticsDto updateStatistics(UserLottoDto userLottoDto, WinnerNumberDto winnerNumberDto,
+	public StatisticsDto updateStatistics(UserLottoDto userLottoDto, WinningNumberDto winningNumberDto,
 		Integer inputPrice) {
-		for (Lotto lotto : userLottoDto.getUserLotto()) {
-			updateRank(winnerNumberDto, lotto);
+		for (Lotto lotto : userLottoDto.getUserLottos()) {
+			updateRank(winningNumberDto, lotto);
 		}
 		return new StatisticsDto(rankGroup.userTotalRankResult(), rankGroup.findYield(inputPrice));
 	}
 
-	private void updateRank(WinnerNumberDto winnerNumberDto, Lotto lotto) {
-		WinnerCountDto winnerCountDto = lotto.countWinnerNumber(winnerNumberDto);
-		updateRankCount(winnerCountDto);
+	private void updateRank(WinningNumberDto winningNumberDto, Lotto lotto) {
+		LottoWinsCountDto lottoWinsCountDto = lotto.matchWinningNumber(winningNumberDto);
+		updateRankCount(lottoWinsCountDto);
 	}
 
-	private void updateRankCount(WinnerCountDto winnerCountDto) {
-		int answerCount = winnerCountDto.getAnswerCount();
-		int bonusCount = winnerCountDto.getBonusCount();
+	private void updateRankCount(LottoWinsCountDto lottoWinsCountDto) {
+		Integer answerCount = lottoWinsCountDto.getAnswerCount();
+		Integer bonusCount = lottoWinsCountDto.getBonusCount();
 		updateFirstRankCount(answerCount);
 		updateSecondRankCount(answerCount, bonusCount);
 		updateThirdRankCount(answerCount, bonusCount);

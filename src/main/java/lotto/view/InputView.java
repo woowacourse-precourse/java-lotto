@@ -10,7 +10,7 @@ public class InputView {
 		return Console.readLine();
 	}
 
-	public String printWinnerNumber() {
+	public String printWinningNumber() {
 		System.out.println(ViewConst.WIN_NUMBER_INPUT);
 		return Console.readLine();
 	}

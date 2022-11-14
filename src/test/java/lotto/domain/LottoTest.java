@@ -10,8 +10,8 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import lotto.controller.dto.WinnerNumberDto;
-import lotto.domain.dto.WinnerCountDto;
+import lotto.controller.dto.WinningNumberDto;
+import lotto.domain.dto.LottoWinsCountDto;
 
 class LottoTest {
 
@@ -42,15 +42,15 @@ class LottoTest {
 	public void check_countWinnerNumber() {
 		//given
 		Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 7));
-		WinnerNumberDto winnerNumberDto = new WinnerNumberDto(List.of(1, 2, 3, 4, 5, 6));
-		winnerNumberDto.setBonusNumber(7);
+		WinningNumberDto winningNumberDto = new WinningNumberDto(List.of(1, 2, 3, 4, 5, 6));
+		winningNumberDto.setBonusNumber(7);
 
 		//when
-		WinnerCountDto winnerCountDto = lotto.countWinnerNumber(winnerNumberDto);
+		LottoWinsCountDto lottoWinsCountDto = lotto.matchWinningNumber(winningNumberDto);
 
 		//then
-		Assertions.assertThat(winnerCountDto.getAnswerCount()).isEqualTo(5);
-		Assertions.assertThat(winnerCountDto.getBonusCount()).isEqualTo(1);
+		Assertions.assertThat(lottoWinsCountDto.getAnswerCount()).isEqualTo(5);
+		Assertions.assertThat(lottoWinsCountDto.getBonusCount()).isEqualTo(1);
 	}
 
 	@DisplayName("로또 번호 문자열로 만드는 메서드 확인 테스트")

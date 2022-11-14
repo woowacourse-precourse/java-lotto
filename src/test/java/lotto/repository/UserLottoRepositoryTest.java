@@ -33,12 +33,12 @@ class UserLottoRepositoryTest {
 		Lotto lotto2 = new Lotto(List.of(1, 2, 3, 4, 5, 6));
 
 		//when
-		userLottoRepository.updateLotto(lotto1);
-		userLottoRepository.updateLotto(lotto2);
+		userLottoRepository.save(lotto1);
+		userLottoRepository.save(lotto2);
 		UserLottoDto userLottoDto = userLottoRepository.findUserLottoDto();
 
 		//then
-		Assertions.assertThat(userLottoDto.getUserLotto()).contains(lotto1, lotto2);
+		Assertions.assertThat(userLottoDto.getUserLottos()).contains(lotto1, lotto2);
 	}
 
 }

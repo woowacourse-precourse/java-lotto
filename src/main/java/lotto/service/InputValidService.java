@@ -16,10 +16,10 @@ public class InputValidService {
 		return bonusNumber;
 	}
 
-	public List<Integer> validAnswer(String answer) {
+	public List<Integer> validWinningNumber(String answer) {
 		String[] answers = answer.split(",");
-		validAnswersSize(answers);
-		validAnswers(answers);
+		validWinningNumbersSize(answers);
+		validWinningNumbers(answers);
 		return Arrays.stream(answers).map(i -> Integer.valueOf(i)).collect(Collectors.toList());
 	}
 
@@ -46,7 +46,7 @@ public class InputValidService {
 		}
 	}
 
-	private void validAnswers(String[] answers) {
+	private void validWinningNumbers(String[] answers) {
 		for (String input : answers) {
 			checkIsNumber(input);
 			Integer bonusNumber = Integer.valueOf(input);
@@ -54,7 +54,7 @@ public class InputValidService {
 		}
 	}
 
-	private void validAnswersSize(String[] split) {
+	private void validWinningNumbersSize(String[] split) {
 		if (split.length != ValidConst.LOTTO_MAX_SIZE) {
 			throw new RuntimeException(ErrorConst.NUMBERS_SIZE_ERROR);
 		}

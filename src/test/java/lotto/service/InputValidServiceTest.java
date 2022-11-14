@@ -35,15 +35,18 @@ class InputValidServiceTest {
 	@DisplayName("당첨 번호 valid 오류 테스트 - 숫자가 아닌 경우, 1~45 범위가 아닌 경우, 6개의 숫자를 입력하지 않은경우")
 	@Test
 	void validAnswerErrorTest() {
-		assertThatThrownBy(() -> inputValidService.validAnswer("1,2,3,4,5,6,7")).isInstanceOf(RuntimeException.class);
-		assertThatThrownBy(() -> inputValidService.validAnswer("1,2,3,!,5,6")).isInstanceOf(RuntimeException.class);
-		assertThatThrownBy(() -> inputValidService.validAnswer("1,2,3,4,5,100")).isInstanceOf(RuntimeException.class);
+		assertThatThrownBy(() -> inputValidService.validWinningNumber("1,2,3,4,5,6,7")).isInstanceOf(
+			RuntimeException.class);
+		assertThatThrownBy(() -> inputValidService.validWinningNumber("1,2,3,!,5,6")).isInstanceOf(
+			RuntimeException.class);
+		assertThatThrownBy(() -> inputValidService.validWinningNumber("1,2,3,4,5,100")).isInstanceOf(
+			RuntimeException.class);
 	}
 
 	@ParameterizedTest(name = "올바른 당첨 번호 테스트")
 	@ValueSource(strings = {"1,2,3,4,5,6", "1,2,3,4,5,45"})
 	void validAnswerTest(String answer) {
-		Assertions.assertDoesNotThrow(() -> inputValidService.validAnswer(answer));
+		Assertions.assertDoesNotThrow(() -> inputValidService.validWinningNumber(answer));
 	}
 
 	@DisplayName("사용자가 입력한 돈 valid 테스트 - 1000으로 나눠지는지, 숫자인지 확인하는 테스트")

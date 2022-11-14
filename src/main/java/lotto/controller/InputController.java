@@ -1,7 +1,7 @@
 package lotto.controller;
 
 import lotto.controller.dto.UserInputMoneyDto;
-import lotto.controller.dto.WinnerNumberDto;
+import lotto.controller.dto.WinningNumberDto;
 import lotto.service.InputValidService;
 import lotto.view.InputView;
 
@@ -24,23 +24,23 @@ public class InputController {
 		}
 	}
 
-	public WinnerNumberDto getAnswerNumber() {
-		String answer = inputView.printWinnerNumber();
+	public WinningNumberDto getWinningNumber() {
+		String answer = inputView.printWinningNumber();
 		try {
-			return new WinnerNumberDto(inputValidService.validAnswer(answer));
+			return new WinningNumberDto(inputValidService.validWinningNumber(answer));
 		} catch (RuntimeException e) {
 			throw new RuntimeException(e);
 		}
 	}
 
-	public WinnerNumberDto getBonusNumber(WinnerNumberDto winnerNumberDto) {
+	public WinningNumberDto getBonusNumber(WinningNumberDto winningNumberDto) {
 		String bonus = inputView.printBonusNumber();
 		try {
-			winnerNumberDto.setBonusNumber(inputValidService.validateBonus(bonus));
+			winningNumberDto.setBonusNumber(inputValidService.validateBonus(bonus));
 		} catch (RuntimeException e) {
 			throw new RuntimeException(e);
 		}
-		return winnerNumberDto;
+		return winningNumberDto;
 	}
 
 }

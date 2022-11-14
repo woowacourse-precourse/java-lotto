@@ -15,7 +15,6 @@ public class AppConfig {
 	public LottoController config() {
 		RankGroup rankGroup = new RankGroup();
 		StatisticsService statisticsService = new StatisticsService(rankGroup);
-
 		UserLottoRepository userLottoRepository = new UserLottoRepository();
 		LottoService lottoService = new LottoService(userLottoRepository);
 		InputView inputView = new InputView();

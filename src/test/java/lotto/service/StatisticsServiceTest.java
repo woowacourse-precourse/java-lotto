@@ -8,7 +8,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import lotto.controller.dto.WinnerNumberDto;
+import lotto.controller.dto.WinningNumberDto;
 import lotto.domain.Lotto;
 import lotto.domain.Rank;
 import lotto.domain.RankGroup;
@@ -41,15 +41,15 @@ class StatisticsServiceTest {
 		//given
 		Lotto lotto1 = new Lotto(List.of(1, 2, 3, 4, 5, 6));
 		Lotto lotto2 = new Lotto(List.of(1, 2, 3, 4, 5, 7));
-		userLottoRepository.updateLotto(lotto1);
-		userLottoRepository.updateLotto(lotto2);
+		userLottoRepository.save(lotto1);
+		userLottoRepository.save(lotto2);
 		UserLottoDto userLottoDto = userLottoRepository.findUserLottoDto();
-		WinnerNumberDto winnerNumberDto = new WinnerNumberDto(List.of(1, 2, 3, 4, 5, 6));
-		winnerNumberDto.setBonusNumber(7);//
+		WinningNumberDto winningNumberDto = new WinningNumberDto(List.of(1, 2, 3, 4, 5, 6));
+		winningNumberDto.setBonusNumber(7);//
 		Integer inputPrice = 1000;
 
 		//when
-		statisticsService.updateStatistics(userLottoDto, winnerNumberDto, inputPrice);
+		statisticsService.updateStatistics(userLottoDto, winningNumberDto, inputPrice);
 		String userFirstRankStatisticsResult = rankGroup.userRankResultToString(Rank.firstRank);
 		String userSecondRankStatisticsResult = rankGroup.userRankResultToString(Rank.secondRank);
 

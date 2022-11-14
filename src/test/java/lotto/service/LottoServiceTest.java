@@ -35,7 +35,7 @@ class LottoServiceTest {
 		UserLottoDto userLottoDtoTest = userLottoRepository.findUserLottoDto();
 
 		//then
-		Assertions.assertThat(userLottoDto.getUserLotto()).isEqualTo(userLottoDtoTest.getUserLotto());
+		Assertions.assertThat(userLottoDto.getUserLottos()).isEqualTo(userLottoDtoTest.getUserLottos());
 	}
 
 }

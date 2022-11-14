@@ -24,7 +24,7 @@ public class LottoService {
 				.stream()
 				.sorted()
 				.collect(Collectors.toList());
-			userLottoRepository.updateLotto(new Lotto(numbers));
+			userLottoRepository.save(new Lotto(numbers));
 		}
 		return userLottoRepository.findUserLottoDto();
 	}

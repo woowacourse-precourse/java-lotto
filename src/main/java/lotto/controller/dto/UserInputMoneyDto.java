@@ -5,18 +5,18 @@ import lotto.util.ValidConst;
 public class UserInputMoneyDto {
 
 	private Integer inputPrice;
-	private Integer userTicketCount;
+	private Integer userLottoTicketCount;
 
 	public UserInputMoneyDto(Integer userPrice) {
 		this.inputPrice = userPrice;
-		this.userTicketCount = userPrice / ValidConst.MONEY_UNIT;
+		this.userLottoTicketCount = userPrice / ValidConst.MONEY_UNIT;
 	}
 
 	public Integer getInputPrice() {
 		return inputPrice;
 	}
 
-	public Integer getUserTicketCount() {
-		return userTicketCount;
+	public Integer getUserLottoTicketCount() {
+		return userLottoTicketCount;
 	}
 }

@@ -2,17 +2,17 @@ package lotto.controller.dto;
 
 import java.util.List;
 
-public class WinnerNumberDto {
+public class WinningNumberDto {
 
-	private List<Integer> answerNumbers;
+	private List<Integer> winningNumbers;
 	private Integer bonusNumber;
 
-	public WinnerNumberDto(List<Integer> answerNumbers) {
-		this.answerNumbers = answerNumbers;
+	public WinningNumberDto(List<Integer> winningNumbers) {
+		this.winningNumbers = winningNumbers;
 	}
 
-	public List<Integer> getAnswerNumbers() {
-		return answerNumbers;
+	public List<Integer> getWinningNumbers() {
+		return winningNumbers;
 	}
 
 	public Integer getBonusNumber() {

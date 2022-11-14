@@ -3,17 +3,17 @@ package lotto.domain;
 import java.util.List;
 import java.util.Set;
 
-import lotto.controller.dto.WinnerNumberDto;
-import lotto.domain.dto.WinnerCountDto;
+import lotto.controller.dto.WinningNumberDto;
+import lotto.domain.dto.LottoWinsCountDto;
 import lotto.util.ErrorConst;
 import lotto.util.ValidConst;
 
 public class Lotto {
-	private final List<Integer> numbers;
+	private final List<Integer> lottoNumbers;
 
-	public Lotto(List<Integer> numbers) {
-		validate(numbers);
-		this.numbers = numbers;
+	public Lotto(List<Integer> lottoNumbers) {
+		validate(lottoNumbers);
+		this.lottoNumbers = lottoNumbers;
 	}
 
 	private void validate(List<Integer> numbers) {
@@ -22,21 +22,21 @@ public class Lotto {
 		validDuplicated(numbers);
 	}
 
-	public WinnerCountDto countWinnerNumber(WinnerNumberDto winnerNumberDto) {
-		int answerCount = countAnswer(winnerNumberDto.getAnswerNumbers());
-		int bonusCount = countBonus(winnerNumberDto.getBonusNumber());
-		return new WinnerCountDto(answerCount, bonusCount);
+	public LottoWinsCountDto matchWinningNumber(WinningNumberDto winningNumberDto) {
+		int answerCount = countWinnerNumber(winningNumberDto.getWinningNumbers());
+		int bonusCount = countBonus(winningNumberDto.getBonusNumber());
+		return new LottoWinsCountDto(answerCount, bonusCount);
 	}
 
-	private int countAnswer(List<Integer> answers) {
-		return (int)numbers.stream()
+	private int countWinnerNumber(List<Integer> answers) {
+		return (int)lottoNumbers.stream()
 			.filter(number -> answers.contains(number))
 			.count();
 	}
 
 	private int countBonus(Integer bonusNumber) {
 		int bonusCount = 0;
-		if (numbers.contains(bonusNumber)) {
+		if (lottoNumbers.contains(bonusNumber)) {
 			bonusCount++;
 		}
 		return bonusCount;
@@ -67,7 +67,7 @@ public class Lotto {
 	}
 
 	public String toString() {
-		return numbers.toString();
+		return lottoNumbers.toString();
 	}
 
 }

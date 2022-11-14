@@ -15,7 +15,7 @@ public class UserLottoRepository {
 		userLotto = new HashSet<>();
 	}
 
-	public void updateLotto(Lotto lotto) {
+	public void save(Lotto lotto) {
 		userLotto.add(lotto);
 	}
 
