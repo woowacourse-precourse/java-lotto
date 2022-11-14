@@ -19,9 +19,7 @@ public class RaffleNumber {
 
     public RaffleNumber(String raffleNumbers, String bonusNumber) {
         this.raffleNumbers=createRaffleNumber(raffleNumbers);
-        validateProperRaffleNumber(bonusNumber, NUMERIC);
-
-        this.bonusNumber = Integer.parseInt(bonusNumber);
+        this.bonusNumber = createBonusNumber(bonusNumber);
     }
     public List<Integer> createRaffleNumber(String raffleNumber){
         validateProperRaffleNumber(raffleNumber, NUMERIC_PATTERN);
@@ -29,6 +27,10 @@ public class RaffleNumber {
         validateProperQuantity(separatedRaffleNumber);
         validateDuplicatedNumbers(separatedRaffleNumber);
         return transform(separatedRaffleNumber, Integer::parseInt);
+    }
+    public int createBonusNumber(String bonusNumber){
+        validateProperRaffleNumber(bonusNumber, NUMERIC);
+        return Integer.parseInt(bonusNumber);
     }
     public List<Integer> getRaffleNumbers() {
         return raffleNumbers;
