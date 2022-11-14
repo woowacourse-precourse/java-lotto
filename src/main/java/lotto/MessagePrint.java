@@ -26,4 +26,11 @@ public class MessagePrint {
 	public void inputBonusNumPrint() {
 		System.out.println(Constants.INPUT_BONUS_NUMBER_PRINT);
 	}
+
+	public void lottoResultView(StoreMap storeMap) {
+		System.out.println(Constants.WINNING_STATISTICS);
+		System.out.println(Constants.WINNING_STATISTICS_DIVISION);
+		lottoStoreMapView(storeMap.getStoreMap());
+		lottoPercentView(storeMap);
+	}
 }
