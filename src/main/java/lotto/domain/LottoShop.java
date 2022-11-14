@@ -13,8 +13,8 @@ public class LottoShop {
     }
 
     public void open(){
-        String money = projectView.askPurchaseMoney();
         try {
+            String money = projectView.askPurchaseMoney();
             IssuedLotto issuedLotto = seller.sellLotto(money);
             projectView.sell(issuedLotto);
 
