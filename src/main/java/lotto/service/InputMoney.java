@@ -14,7 +14,7 @@ public class InputMoney {
     public UserMoney InputMoney() {
         output.inputMoneyOrder();
         String inputMoney = Console.readLine();
-        lineSkip();
+        output.lineSpace();
         inputMoneyHandler.checkException(inputMoney);
         UserMoney userMoney = new UserMoney(stringToInteger(inputMoney));
 
@@ -26,12 +26,9 @@ public class InputMoney {
 
         return number;
     }
+
     public void lottoCount(UserMoney inputMoney) {
         lottoCount = inputMoney.getMoney() / LOTTO_PRICE;
         output.purchaseLottoOrder(lottoCount);
-    }
-
-    public void lineSkip() {
-        System.out.println();
     }
 }

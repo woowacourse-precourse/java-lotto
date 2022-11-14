@@ -13,8 +13,6 @@ public class Output {
     private final String BONUS_LOTTO_NUMBER = "보너스 번호를 입력해 주세요.";
     private final String WIN_STATISTICS = "당첨 통계";
 
-
-
     public void inputMoneyOrder() {
         System.out.println(INPUTMONEY_ORDER);
     }
@@ -28,9 +26,13 @@ public class Output {
     public void bonusLottoNumberOrder() {
         System.out.println(BONUS_LOTTO_NUMBER);
     }
+
     public void winStatistics() {
         System.out.println(WIN_STATISTICS);
         System.out.println("---");
+    }
+    public void lineSpace() {
+        System.out.println();
     }
     public void fifthPlace(int count){
         DecimalFormat formatter = new DecimalFormat("###,###.##");

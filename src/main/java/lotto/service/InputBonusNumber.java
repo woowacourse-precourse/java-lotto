@@ -10,7 +10,6 @@ import java.util.List;
 public class InputBonusNumber {
     InputBonusLottoNumberHandler inputBonusLottoNumberHandler = new InputBonusLottoNumberHandler();
     InputMoneyHandler inputMoneyHandler = new InputMoneyHandler();
-
     public static String INPUT_BONUS_NUMBER;
 
     public Integer inputBonusNumber(List<Integer> sixLottoNumbers) {
@@ -19,7 +18,8 @@ public class InputBonusNumber {
         INPUT_BONUS_NUMBER = userReadLine();
         inputMoneyHandler.checkIsNumber(INPUT_BONUS_NUMBER);
         bonusLottoNumber(INPUT_BONUS_NUMBER, sixLottoNumbers);
-        System.out.println();
+        output.lineSpace();
+
         return Integer.parseInt(INPUT_BONUS_NUMBER);
     }
 
@@ -28,6 +28,7 @@ public class InputBonusNumber {
 
         return userLottoNumbers;
     }
+
     public void bonusLottoNumber(String bonusNumber, List<Integer> sixLottoNumbers){
         inputBonusLottoNumberHandler.checkBonusNumberException(bonusNumber);
         inputBonusLottoNumberHandler.checkAllNumbersException(bonusNumber, sixLottoNumbers);

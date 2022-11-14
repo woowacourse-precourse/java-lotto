@@ -1,6 +1,7 @@
 package lotto.service;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import lotto.view.Output;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -8,7 +9,7 @@ import java.util.stream.Collectors;
 public class PickRandomLotto {
     public final int LIMIT_LOTTO = 6;
     public static List<List<Integer>> randomLottoLists = new ArrayList<>();
-    InputMoney inputMoney = new InputMoney();
+    Output output = new Output();
 
     public void PickRandomNumber(int lottoPapers) {
         while(randomLottoLists.size() != lottoPapers) {
@@ -27,6 +28,6 @@ public class PickRandomLotto {
                     .sorted()
                     .collect(Collectors.toList()));
         }
-        inputMoney.lineSkip();
+        output.lineSpace();
     }
 }

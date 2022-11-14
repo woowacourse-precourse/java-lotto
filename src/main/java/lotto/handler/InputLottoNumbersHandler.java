@@ -2,6 +2,7 @@ package lotto.handler;
 
 import lotto.service.InputMoney;
 import lotto.service.PickRandomLotto;
+import lotto.view.Output;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,24 +10,28 @@ import java.util.List;
 public class InputLottoNumbersHandler {
     InputMoneyHandler inputMoneyHandler = new InputMoneyHandler();
     PickRandomLotto pickRandomLotto = new PickRandomLotto();
-    InputMoney inputMoney = new InputMoney();
+    Output output = new Output();
+
     public List<Integer> checkException(List<Integer> lottoNumbers) {
         checkSize(lottoNumbers);
         checkSameNumbers(lottoNumbers);
         checkInRange(lottoNumbers);
-        inputMoney.lineSkip();
+        output.lineSpace();
         return lottoNumbers;
     }
+
     public void checkSize(List<Integer> lottoNumbers){
         if(lottoNumbers.size() != pickRandomLotto.LIMIT_LOTTO) {
             throw new IllegalArgumentException(inputMoneyHandler.ERROR_ORDER+" 로또 번호의 개수는 6개여야 합니다.");
         }
     }
+
     public void checkSameNumbers(List<Integer> lottoNumbers){
         if(lottoNumbers.stream().distinct().count() != pickRandomLotto.LIMIT_LOTTO){
             throw new IllegalArgumentException(inputMoneyHandler.ERROR_ORDER+" 로또 번호는 같은 숫자가 중복되지 않아야 합니다.");
         }
     }
+
     public void checkIsNumber(String[] lottoNumbers){
         for(int index = 0; index < lottoNumbers.length; index++){
             boolean checkNumeric = lottoNumbers[index].matches("[+-]?\\d*(\\.\\d+)?");
@@ -36,6 +41,7 @@ public class InputLottoNumbersHandler {
             }
         }
     }
+
     public void checkInRange(List<Integer> lottoNumbers){
         for(int index = 0; index < lottoNumbers.size(); index++){
             if(lottoNumbers.get(index) < 1 || lottoNumbers.get(index) > 45){

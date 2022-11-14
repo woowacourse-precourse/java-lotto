@@ -4,6 +4,7 @@ import lotto.service.InputMoney;
 
 public class InputMoneyHandler {
     public final String ERROR_ORDER = "[ERROR]";
+
     public void checkException(String inputMoney) {
         checkIsNumber(inputMoney);
         checkIsNonzero(inputMoney);
@@ -31,7 +32,7 @@ public class InputMoneyHandler {
         int money = Integer.parseInt(inputMoney);
 
         if(money % userLottoService.LOTTO_PRICE  != 0) {
-            throw new IllegalArgumentException(ERROR_ORDER+" 입력 금액은 1000단위로 나누어저야 합니다.");
+            throw new IllegalArgumentException(ERROR_ORDER+" 입력 금액은 1000단위로 나누어져야 합니다.");
         }
     }
 }

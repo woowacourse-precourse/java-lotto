@@ -4,12 +4,12 @@ import lotto.Data.LottoEnum;
 import lotto.Data.UserMoney;
 import lotto.view.Output;
 
-import java.math.BigDecimal;
 import java.util.List;
 
 public class WinLottoResult {
-    InputBonusNumber inputBonusNumber = new InputBonusNumber();
     public static int profitMoney;
+    InputBonusNumber inputBonusNumber = new InputBonusNumber();
+
     public void checkWinLottoResult(List<Integer> answerLotto, List<List<Integer>> lottoList) {
         Output output = new Output();
 
@@ -45,6 +45,7 @@ public class WinLottoResult {
         }
         return count;
     }
+
     public void lottoResultChart(int[] lottoResult) {
         Output output = new Output();
 
@@ -54,11 +55,11 @@ public class WinLottoResult {
         output.secondPlace(lottoResult[3]);
         output.firstPlace(lottoResult[4]);
     }
+
     public void calBenefit(int profitMoney, UserMoney userMoney) {
         Output output = new Output();
         double userInputMoney = userMoney.getMoney();
         double answer = (profitMoney) / userInputMoney;
-
         double yield = Math.round(answer*1000)/10.0;
 
         output.totalBenefit(yield);

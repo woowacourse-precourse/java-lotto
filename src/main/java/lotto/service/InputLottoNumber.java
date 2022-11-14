@@ -12,9 +12,10 @@ public class InputLottoNumber {
     Output output = new Output();
 
     public List<Integer> inputSixNumbers() {
-        List<Integer> resultSixLottoNumbers = new ArrayList<>();
+        List<Integer> resultSixLottoNumbers;
         output.userLottoNumbersOrder();
         resultSixLottoNumbers = sixLottoNumbers(userReadLine());
+
         return resultSixLottoNumbers;
     }
 
@@ -35,6 +36,7 @@ public class InputLottoNumber {
         for(int i = 0; i < userLottoNumbers.length ; i++){
             LottoList.add(Integer.valueOf(userLottoNumbers[i]));
         }
+
         return LottoList;
     }
 }

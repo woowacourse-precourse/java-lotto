@@ -21,6 +21,7 @@ public class Lotto {
         if(numbers.stream().distinct().count() == pickRandomLotto.LIMIT_LOTTO) {
             randomLottoLists.add(numbers);
         }
+
         if(numbers.stream().distinct().count() != pickRandomLotto.LIMIT_LOTTO) {
             throw new IllegalArgumentException(inputMoneyHandler.ERROR_ORDER+" 로또 번호는 중복되지 않아야 합니다.");
         }
