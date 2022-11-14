@@ -3,50 +3,80 @@ package lotto;
 import java.util.List;
 
 public class WinningLotto {
-    private final String threeWins = "3개 일치 (5,000원) - ";
-    private final String fourWins = "4개 일치 (50,000원) - ";
-    private final String fiveWins = "5개 일치 (1,500,000원) - ";
-    private final String fiveWinsIncludBonus = "5개 일치, 보너스 볼 일치 (30,000,000원) - ";
-    private final String sixWins = "6개 일치 (2,000,000,000원) - ";
+    private final int threeWins;
+    private final int fourWins;
+    private final int fiveWins;
+    private final int fiveWinsIncludBonus;
+    private final int sixWins;
 
     public WinningLotto(List<Integer> number, List<List<Integer>> numbers) {
-        checkWinningLotto(number,numbers);
-    }
-
-    private void checkWinningLotto(List<Integer> number, List<List<Integer>> numbers) {
+        int three = 0;
+        int four = 0;
+        int five = 0;
+        int fiveWithBonus = 0;
+        int six = 0;
         for (List<Integer> num : numbers) {
-            countWinningLotto(number, num);
+            three = getThreeWins(number, num);
+            four = getFourWins(number, num);
+            five = getFiveWins(number, num);
+            fiveWithBonus = getFiveWithBonusWins(number, num);
+            six = getSixWins(number, num);
         }
+        this.threeWins = three;
+        this.fourWins = four;
+        this.fiveWins = five;
+        this.fiveWinsIncludBonus = fiveWithBonus;
+        this.sixWins = six;
     }
 
-    private void countWinningLotto(List<Integer> number, List<Integer> num) {
-        int cnt;
+    private int getThreeWins(List<Integer> number, List<Integer> num) {
+        int cnt = countOverlapNumber(number, num);
         int threeWinsNum = 0;
-        int fourWinsNum = 0;
-        int fiveWinsNum = 0;
-        int fiveWinsIncludBonusNum = 0;
-        int sixWinsNum = 0;
-        cnt = countOverlapNumber(number, num);
         if (!num.contains(number.get(6)) && cnt == 3) {
             threeWinsNum++;
-            System.out.println(this.threeWins + threeWinsNum + "개");
+            System.out.println("3개 일치 (5,000원) - " + threeWinsNum + "개");
         }
-        if (!num.contains(number.get(6)) && cnt == 4) {
+        return threeWinsNum;
+    }
+
+    private int getFourWins(List<Integer> number, List<Integer> num) {
+        int cnt = countOverlapNumber(number, num);
+        int fourWinsNum = 0;
+        if (!num.contains(number.get(6)) && cnt == 3) {
             fourWinsNum++;
-            System.out.println(this.fourWins + fourWinsNum + "개");
+            System.out.println("4개 일치 (50,000원) - " + fourWinsNum + "개");
         }
-        if (!num.contains(number.get(6)) && cnt == 5) {
+        return fourWinsNum;
+    }
+
+    private int getFiveWins(List<Integer> number, List<Integer> num) {
+        int cnt = countOverlapNumber(number, num);
+        int fiveWinsNum = 0;
+        if (!num.contains(number.get(6)) && cnt == 3) {
             fiveWinsNum++;
-            System.out.println(this.fiveWins + fiveWinsNum + "개");
+            System.out.println("5개 일치 (1,500,000원) - " + fiveWinsNum + "개");
         }
-        if (cnt == 5) {
+        return fiveWinsNum;
+    }
+
+    private int getFiveWithBonusWins(List<Integer> number, List<Integer> num) {
+        int cnt = countOverlapNumber(number, num);
+        int fiveWinsIncludBonusNum = 0;
+        if (!num.contains(number.get(6)) && cnt == 3) {
             fiveWinsIncludBonusNum++;
-            System.out.println(this.fiveWinsIncludBonus + fiveWinsIncludBonusNum + "개");
+            System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - " + fiveWinsIncludBonusNum + "개");
         }
-        if (!num.contains(number.get(6)) && cnt == 6) {
+        return fiveWinsIncludBonusNum;
+    }
+
+    private int getSixWins(List<Integer> number, List<Integer> num) {
+        int cnt = countOverlapNumber(number, num);
+        int sixWinsNum = 0;
+        if (!num.contains(number.get(6)) && cnt == 3) {
             sixWinsNum++;
-            System.out.println(this.sixWins + sixWinsNum + "개");
+            System.out.println("6개 일치 (2,000,000,000원) - " + sixWinsNum + "개");
         }
+        return sixWinsNum;
     }
 
     private static int countOverlapNumber(List<Integer> number, List<Integer> num) {
