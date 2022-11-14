@@ -10,7 +10,7 @@ import static java.util.stream.Collectors.toList;
 
 public class Input {
     public static int getPrice() {
-        System.out.println(Message.PURCHASE_AMOUNT.print());
+        System.out.println(InputMessage.PURCHASE_AMOUNT.print());
         return getNumber();
     }
 
@@ -28,12 +28,12 @@ public class Input {
     }
 
     public static List<Integer> getWinningNumber() {
-        System.out.println(System.lineSeparator() + Message.WINNING_NUMBER.print());
+        System.out.println(System.lineSeparator() + InputMessage.WINNING_NUMBER.print());
         return stringToList(Console.readLine());
     }
 
     public static List<Integer> getBonusNumber() {
-        System.out.println(System.lineSeparator() + Message.BONUS_NUMBER.print());
+        System.out.println(System.lineSeparator() + InputMessage.BONUS_NUMBER.print());
         return stringToList(Console.readLine());
     }
 
