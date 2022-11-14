@@ -25,7 +25,7 @@ public enum LottoRank {
         return reward;
     }
 
-    public static LottoRank getRank(ComparedNumber comparedNumber){
+    public static LottoRank checkRank(ComparedNumber comparedNumber){
         for (LottoRank lottoResult : LottoRank.values()) {
             if (lottoResult.comparedNumber.equals(comparedNumber)) {
                 return lottoResult;
@@ -34,7 +34,7 @@ public enum LottoRank {
         return NONE;
     }
 
-    public static List<LottoRank> getWinLottoRank(){
+    public static List<LottoRank> getWinLottoRanks(){
         return Arrays.stream(values())
                 .filter(LottoRank::isWin)
                 .sorted(new LottoRankComparator())

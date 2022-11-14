@@ -14,9 +14,9 @@ public class LottoWinningNumber extends Lotto {
         this(converter.convert(winningNumber), bonus);
     }
 
-    private LottoWinningNumber(List<Integer> winningNumber, String bonus) {
+    private LottoWinningNumber(List<Integer> winningNumber, String bonusNumber) {
         super(winningNumber);
-        this.bonusNumber = validate(bonus);
+        this.bonusNumber = validate(bonusNumber);
     }
 
     public WinningResult getResult(IssuedLotto issuedLotto) {
@@ -29,7 +29,7 @@ public class LottoWinningNumber extends Lotto {
     }
 
     private int validateInputIsNumber(String bonus) {
-        if(LOTTO_RANGE.isValid(bonus)){
+        if (LOTTO_RANGE.isValid(bonus)) {
             return Integer.parseInt(bonus);
         }
         throw new IllegalArgumentException(EXCEPTION_MESSAGE);
@@ -45,7 +45,7 @@ public class LottoWinningNumber extends Lotto {
     @Override
     public String toString() {
         return super.toString() +
-                ", bonusNumber : "+
+                ", bonusNumber : " +
                 bonusNumber;
     }
 }
