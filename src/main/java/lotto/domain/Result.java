@@ -1,8 +1,12 @@
 package lotto.domain;
 
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.EnumMap;
+import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
+import java.util.stream.Collectors;
 
 public class Result {
 
@@ -24,6 +28,21 @@ public class Result {
 
     public void updateRankInfo(Rank rank) {
         rankInfo.put(rank, rankInfo.get(rank) + 1);
+    }
+
+    public Map<Rank, Integer> sortedRankInfo(){
+        List<Entry<Rank, Integer>> entries = rankInfo.entrySet()
+                .stream()
+                .sorted(Comparator.comparingInt(r -> r.getKey().getPrize()))
+                .collect(Collectors.toList());
+
+        Map<Rank, Integer> result = new EnumMap<>(Rank.class);
+
+        for (Entry<Rank, Integer> entry : entries) {
+            result.put(entry.getKey(), entry.getValue());
+        }
+
+        return result;
     }
 
     public Map<Rank, Integer> getRankInfo() {

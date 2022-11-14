@@ -56,17 +56,15 @@ public class GameConsole {
 
     public void outputGameResult(Result result) {
         Map<Rank, Integer> rankInfo = result.getRankInfo();
-        rankInfo.remove(Rank.NONE);
-        System.out.println("당첨 통계\n---");
-        List<Entry<Rank, Integer>> entries = rankInfo.entrySet()
-                .stream()
-                .sorted(Comparator.comparingInt(r -> r.getKey().getPrize()))
-                .collect(Collectors.toList());
+        System.out.println("\n당첨 통계\n---");
 
-        for (Entry<Rank, Integer> entry : entries) {
-            System.out.println(String.format("%d개 일치 (%,d원) - %d개", entry.getKey().getMatchCount(), entry.getKey().getPrize(), rankInfo.get(entry.getKey())));
-            if (entry.getKey() == Rank.SECOND){
-                System.out.println(String.format("%d개 일치, 보너스 볼 일치 (%,d원) - %d개", entry.getKey().getMatchCount(), entry.getKey().getPrize(), rankInfo.get(entry.getKey())));
+        Map<Rank, Integer> rankInfo = result.sortedRankInfo();
+        rankInfo.remove(Rank.NONE);
+
+        for (Rank rank : rankInfo.keySet()) {
+            System.out.println(String.format("%d개 일치 (%,d원) - %d개", rank.getMatchCount(), rank.getPrize(), rankInfo.get(rank)));
+            if (rank == Rank.SECOND){
+                System.out.println(String.format("%d개 일치, 보너스 볼 일치 (%,d원) - %d개", rank.getMatchCount(), rank.getPrize(), rankInfo.get(rank)));
             }
         }
     }
