@@ -2,7 +2,6 @@ package lotto.Model;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import lotto.View.ErrorUtil;
-
 import java.util.*;
 
 public class DataProcessing {
