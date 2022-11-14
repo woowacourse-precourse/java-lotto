@@ -31,7 +31,7 @@ public class Player {
         int numberOfTickets = lottoTickets.size();
         Output.printMessage(GameMessage.LOTTO_PURCHASE.getMessage(numberOfTickets));
         for (Lotto lotto : lottoTickets) {
-            Output.printMessage(lotto.getNumbersAsString());
+            Output.printMessage(lotto.getNumbersAsSortedString());
         }
     }
 

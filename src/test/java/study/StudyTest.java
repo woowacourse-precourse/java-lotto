@@ -1,5 +1,6 @@
 package study;
 
+import java.util.Collections;
 import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -64,5 +65,12 @@ public class StudyTest {
     void enum_long_message_test(){
         assertThat(StringFormatTest.TEST_MESSAGE_LONG.getMessage(23, 10000000000L))
                 .isEqualTo("I am 23 years old and I have 10,000,000,000 dollars");
+    }
+
+    @Test
+    @DisplayName("unmodifiableList 정렬하면 에러가 발생한다.")
+    void unmodifiableList_test(){
+        List<Integer> test = Collections.unmodifiableList(List.of(2,3,1,6,5,4));
+        assertThatThrownBy(()->Collections.sort(test)).isInstanceOf(UnsupportedOperationException.class);
     }
 }

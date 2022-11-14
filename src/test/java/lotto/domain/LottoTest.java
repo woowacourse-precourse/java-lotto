@@ -23,10 +23,10 @@ class LottoTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
-    @DisplayName("로또 번호를 문자열로 반환한다.")
+    @DisplayName("로또 번호를 오름차순으로 정렬된 문자열로 반환한다.")
     @Test
-    void getNumbersAsString() {
-        Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
-        assertThat(lotto.getNumbersAsString()).isEqualTo("[1, 2, 3, 4, 5, 6]");
+    void getNumbersAsSortedString() {
+        Lotto lotto = new Lotto(List.of(6, 2, 5, 4, 3, 1));
+        assertThat(lotto.getNumbersAsSortedString()).isEqualTo("[1, 2, 3, 4, 5, 6]");
     }
 }

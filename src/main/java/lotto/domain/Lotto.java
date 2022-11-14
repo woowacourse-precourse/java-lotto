@@ -1,5 +1,7 @@
 package lotto.domain;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import lotto.constant.LottoStatistic;
@@ -18,8 +20,10 @@ public class Lotto {
         ExceptionHandler.doesContainDuplicate(numbers);
     }
 
-    public String getNumbersAsString() {
-        return numbers.toString();
+    public String getNumbersAsSortedString() {
+        List<Integer> mutable = new ArrayList<>(numbers);
+        Collections.sort(mutable);
+        return mutable.toString();
     }
 
     public boolean doesContainNumber(int number) {
