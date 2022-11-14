@@ -23,8 +23,7 @@ public class Application {
         List<Lotto> lottoes;
         List<Integer> winningNumbers;
         Integer bonus;
-        List<Integer> stats = new ArrayList<>();
-        Grade grade;
+        List<Integer> stats;
 
         System.out.println("구입금액을 입력해 주세요.");
         purchaseAmount = Console.readLine();
@@ -74,6 +73,7 @@ public class Application {
     public static List<Integer> getWinningNumbers(String numberText) {
         List<Integer> winningNumbers = parseIntegerList(numberText);
 
+        validateCharacter(numberText);
         validateSize(winningNumbers);
         validateNumbers(winningNumbers);
         validateRanges(winningNumbers);
@@ -85,6 +85,7 @@ public class Application {
     public static Integer getBonus(String numberText) {
         List<Integer> bonus = parseIntegerList(numberText);
 
+        validateCharacter(numberText);
         validateBonus(bonus);
         validateNumbers(bonus);
         validateRanges(bonus);
@@ -217,6 +218,12 @@ public class Application {
     public static void validateDuplicatedNumber(List<Integer> numbers) {
         if (numbers.size() != numbers.stream().distinct().count()) {
             throw new IllegalArgumentException("[ERROR] 중복된 번호는 허용되지 않습니다.");
+        }
+    }
+
+    public static void validateCharacter(String input) {
+        if (input.contains("[^0-9]")) {
+            throw new IllegalArgumentException("[ERROR] 숫자만 입력하세요.");
         }
     }
 }

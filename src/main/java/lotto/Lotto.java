@@ -2,6 +2,7 @@ package lotto;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public class Lotto {
@@ -23,14 +24,15 @@ public class Lotto {
     }
 
     public void display() {
+        Collections.sort(this.numbers);
         System.out.println(this.numbers);
     }
 
-    public List<Integer> getLotto() {
+    public List<Integer> getNumbers() {
         return this.numbers;
     }
 
-    public List<Integer> getComparingResult(List<Integer> winningNumbers, Integer bonus){
+    public List<Integer> getComparingResult(List<Integer> winningNumbers, Integer bonus) {
         return Arrays.asList(compareTo(winningNumbers), compareToAdditional(bonus));
     }
 

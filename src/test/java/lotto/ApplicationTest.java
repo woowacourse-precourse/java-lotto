@@ -1,13 +1,23 @@
 package lotto;
 
+import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.test.NsTest;
+import java.util.ArrayList;
+import java.util.Arrays;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomUniqueNumbersInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
+import static lotto.Application.getBonus;
+import static lotto.Application.getTheNumberOfLottoesAsMuchThePurchaseAmount;
+import static lotto.Application.getWinningNumbers;
+import static lotto.Application.match;
+import static lotto.Application.renew;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class ApplicationTest extends NsTest {
     private static final String ERROR_MESSAGE = "[ERROR]";
@@ -53,6 +63,91 @@ class ApplicationTest extends NsTest {
             assertThat(output()).contains(ERROR_MESSAGE);
         });
     }
+
+    @Test
+    void getTheNumberOfLottoesAsMuchThePurchaseAmountTest() {
+        String purchaseAmount = "14000";
+        Integer numberOfLottoes = getTheNumberOfLottoesAsMuchThePurchaseAmount(
+                Integer.parseInt(purchaseAmount)
+        );
+
+        assertThat(numberOfLottoes).isEqualTo(14);
+    }
+
+    @Test
+    void createLottoesTest() {
+        List<Lotto> lottoes = new ArrayList<>();
+        int numberOfLottoes = 5;
+
+        for (int i = 0; i < numberOfLottoes; i++) {
+            List<Integer> arr = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+            lottoes.add(new Lotto(arr));
+            assertThat(lottoes.get(i).getNumbers()).isEqualTo(arr);
+        }
+    }
+
+    @Test
+    void getWinningNumberTest() {
+        String str = "1,2,3,4,5,6";
+        List<Integer> winningNumbers = getWinningNumbers(str);
+
+        assertThat(winningNumbers).isEqualTo(List.of(1,2,3,4,5,6));
+    }
+
+    @Test
+    void getBonusTest() {
+        String str = "5";
+        Integer bonus = getBonus(str);
+
+        assertThat(bonus).isEqualTo(5);
+    }
+
+    @Test
+    void findTest() {
+        Lotto lotto = new Lotto(List.of(1,2,3,4,5,6));
+        List<Integer> winning = List.of(1,2,3,6,7,8);
+        Integer bonus = 10;
+
+        Grade grade = Grade.find(match(lotto, winning, bonus));
+
+        assertThat(grade.toString()).isEqualTo("4등");
+    }
+
+    @Test
+    void matchTest() {
+        Lotto lotto = new Lotto(List.of(1,2,3,4,5,6));
+        List<Integer> winning = List.of(1,2,3,6,7,8);
+        Integer bonus = 10;
+        List<Integer> matching = Arrays.asList(lotto.compareTo(winning), lotto.compareToAdditional(bonus));
+
+        assertThat(matching).isEqualTo(List.of(4,0));
+    }
+
+    @Test
+    void makeStatsTest() {
+        List<Lotto> lottoes = new ArrayList<>();
+        lottoes.add(new Lotto(List.of(1,2,3,4,5,6)));
+        lottoes.add(new Lotto(List.of(1,2,6,7,3,4)));
+        lottoes.add(new Lotto(List.of(7,5,4,2,1,3)));
+        List<Integer> winning = List.of(1,2,3,4,5,6);
+        Integer bonus = 7;
+        List<Integer> stats = new ArrayList<>();
+
+        for (int i = 0; i < 5; i++) {
+            stats.add(0);
+        }
+
+        for (int i = 0; i < lottoes.size(); i++) {
+            Grade grade = Grade.find(match(lottoes.get(i), winning, bonus));
+            stats = renew(stats, grade.toString());
+        }
+
+        assertThat(stats).isEqualTo(List.of(1,2,0,0,0));
+    }
+
+
+
+
 
     @Override
     public void runMain() {

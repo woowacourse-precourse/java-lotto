@@ -21,13 +21,13 @@ public enum Grade {
     }
 
     public static Grade find(List<Integer> comparingResult) {
-        return Arrays.stream(Grade.values())
-                .filter(matching -> comparingResult.equals(matching))
+        return Arrays.stream(values())
+                .filter(matching -> matching.matching.equals(comparingResult))
                 .findAny()
                 .orElse(NONE);
     }
 
     public String toString() {
-        return name();
+        return rank;
     }
 }
