@@ -1,5 +1,9 @@
 package lotto;
 
+/**
+ * 하나를 맞춘 경우에 +10점
+ * 보너스 번호를 맞춘 경우에 +1점
+ */
 public class StatsConst {
     public static final int FIRST_SCORE = 60;
     public static final int SECOND_SCORE = 51;
