@@ -26,9 +26,13 @@ public class LottoValidator {
 
   private static void checkIsNumbersInRange(List<Integer> numbers) {
     for (int number : numbers) {
-      if (!isInRange(number)) {
-        throw new IllegalArgumentException("범위를 벗어나는 숫자가 있습니다!");
-      }
+      checkIsNumberInRange(number);
+    }
+  }
+
+  public static void checkIsNumberInRange(int number) {
+    if (!isInRange(number)) {
+      throw new IllegalArgumentException("범위를 벗어나는 숫자가 있습니다!");
     }
   }
 
