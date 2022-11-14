@@ -35,6 +35,12 @@ public class Lotto {
         return result;
     }
 
+    public Prize getWinningPrize(WinningNumbers winningNumbers) {
+        CompareResult compareResult = compareWith(winningNumbers);
+
+        return Prize.toPrize(compareResult);
+    }
+
     public int getWinningAmount(WinningNumbers winningNumbers) {
         CompareResult compareResult = compareWith(winningNumbers);
 

@@ -21,6 +21,16 @@ public class Lottos {
                 .count();
     }
 
+    public WinningInfo getWinningInfo(WinningNumbers winningNumbers) {
+        WinningInfo result = new WinningInfo();
+
+        lottos.stream()
+                .map(lotto -> lotto.getWinningPrize(winningNumbers))
+                .forEach(prize -> result.increaseWinningCount(prize));
+
+        return result;
+    }
+
     @Override
     public String toString() {
         StringBuilder result = new StringBuilder();
