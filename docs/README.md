@@ -46,3 +46,6 @@
 ### UserTest
 - `inputAmountByInvalidUnit` : 구입 금액이 1,000원 단위가 아니면 예외가 발생한다.
 
+### LottoTest
+- `createLottoByOverSize` : 로또 번호의 개수가 6개가 넘어가면 예외가 발생한다.
+- `createLottoByDuplicatedNumber` : 로또 번호에 중복된 숫자가 있으면 예외가 발생한다.

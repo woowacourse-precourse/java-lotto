@@ -1,5 +1,7 @@
 package lotto.utils;
 
+import java.util.List;
+
 public class CheckException {
     public static void checkAmount(int amount) throws IllegalArgumentException {
         try {
@@ -8,6 +10,12 @@ public class CheckException {
             }
         } catch (NumberFormatException numberFormatException) {
             throw new IllegalArgumentException("[ERROR] 숫자 형태로 입력해주세요.");
+        }
+    }
+
+    public static void checkSixSize(List<Integer> numbers) {
+        if (numbers.size() != 6) {
+            throw new IllegalArgumentException();
         }
     }
 }
