@@ -3,7 +3,7 @@ package lotto.view;
 import java.util.List;
 
 import lotto.domain.Lotto;
-import lotto.service.StatisticsDto;
+import lotto.service.dto.StatisticsDto;
 import lotto.util.ViewConst;
 
 public class OutputView {

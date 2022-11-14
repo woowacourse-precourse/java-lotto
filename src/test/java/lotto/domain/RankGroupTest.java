@@ -2,6 +2,10 @@ package lotto.domain;
 
 import static org.assertj.core.api.Assertions.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -25,7 +29,7 @@ class RankGroupTest {
 
 	@DisplayName("수익률 계산 확인 테스트")
 	@Test
-	void findYield() {
+	void findYieldTest() {
 		//given
 		Integer buyPrice = 3000;
 		rankGroup.updateRankCount(Rank.firstRank, 1);
@@ -43,7 +47,7 @@ class RankGroupTest {
 
 	@DisplayName("사용자가 당첨된 등수 횟수 업데이트 테스트")
 	@Test
-	void updateCount() {
+	void updateCountTest() {
 		//given
 		Integer addNumber = 100;
 		rankGroup.updateRankCount(Rank.firstRank, addNumber);
@@ -55,16 +59,36 @@ class RankGroupTest {
 		assertThat(userStatisticsResult).isEqualTo(RankConst.FIRST_RANK_RESULT + addNumber + RankConst.COUNT);
 	}
 
+	@DisplayName("사용자에게 보여즐 rank 통계 정보 출력 확인 테스트")
 	@Test
-	void updateRankCount() {
+	void getUserStatisticsResultTest() {
+		//given
+		rankGroup.updateRankCount(Rank.firstRank, 1);
+
+		//when
+		String userStatisticsResult = rankGroup.userRankResultToString(Rank.firstRank);
+
+		//then
+		assertThat(userStatisticsResult).isEqualTo(RankConst.FIRST_RANK_RESULT + 1 + RankConst.COUNT);
 	}
 
 	@Test
-	void userRankResultToString() {
-	}
+	public void userTotalRankResultTest() {
+		//given
+		rankGroup.updateRankCount(Rank.firstRank, 1);
+		rankGroup.updateRankCount(Rank.secondRank, 2);
+		List<String> userTotalRankResult = new ArrayList<>();
+		userTotalRankResult.add(rankGroup.userRankResultToString(Rank.fifthRank));
+		userTotalRankResult.add(rankGroup.userRankResultToString(Rank.forthRank));
+		userTotalRankResult.add(rankGroup.userRankResultToString(Rank.thirdRank));
+		userTotalRankResult.add(rankGroup.userRankResultToString(Rank.secondRank));
+		userTotalRankResult.add(rankGroup.userRankResultToString(Rank.firstRank));
 
-	@Test
-	void clearRankGroupCount() {
+		//when
+		List<String> userTotalRankResultTest = rankGroup.userTotalRankResult();
+
+		//then
+		Assertions.assertThat(userTotalRankResult).isEqualTo(userTotalRankResultTest);
 	}
 
 }

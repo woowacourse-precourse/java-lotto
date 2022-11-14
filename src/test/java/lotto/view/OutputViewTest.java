@@ -11,7 +11,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import lotto.domain.Lotto;
-import lotto.service.StatisticsDto;
+import lotto.service.dto.StatisticsDto;
 import lotto.util.ViewConst;
 
 class OutputViewTest {

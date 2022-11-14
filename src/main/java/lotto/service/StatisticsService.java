@@ -6,6 +6,7 @@ import lotto.domain.Rank;
 import lotto.domain.RankGroup;
 import lotto.domain.dto.WinnerCountDto;
 import lotto.repository.dto.UserLottoDto;
+import lotto.service.dto.StatisticsDto;
 
 public class StatisticsService {
 

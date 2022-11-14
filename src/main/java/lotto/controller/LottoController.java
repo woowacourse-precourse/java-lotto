@@ -4,8 +4,8 @@ import lotto.controller.dto.UserInputMoneyDto;
 import lotto.controller.dto.WinnerNumberDto;
 import lotto.repository.dto.UserLottoDto;
 import lotto.service.LottoService;
-import lotto.service.StatisticsDto;
 import lotto.service.StatisticsService;
+import lotto.service.dto.StatisticsDto;
 import lotto.view.OutputView;
 
 public class LottoController {
