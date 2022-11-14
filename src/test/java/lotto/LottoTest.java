@@ -3,8 +3,10 @@ package lotto;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.HashSet;
 import java.util.List;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class LottoTest {
@@ -27,8 +29,26 @@ class LottoTest {
 
     @DisplayName("범위에 맞지 않는 숫자가 입력되면 예외가 발생한다.")
     @Test
-    void createLotto() {
+    void createLottoByOutOfRangeNumber() {
         assertThatThrownBy(() -> new Lotto(List.of(59,1,2,3,4,5)))
                 .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void createPurchaseLottoTest() {
+        Lotto purchaseLotto = Lotto.createPurchaseLotto();
+        List<Integer> numbers = purchaseLotto.getNumbers();
+
+        //List 원소 개수 검사
+        assertThat(numbers.size()).isEqualTo(6);
+
+        //중복 여부 검사
+        HashSet<Integer> hashSet = new HashSet<>(numbers);
+        assertThat(hashSet.size()).isEqualTo(6);
+
+        //List 원소 범위 검사
+        for(Integer number : numbers){
+            assertThat(number).isGreaterThanOrEqualTo(1).isLessThanOrEqualTo(45);
+        }
     }
 }
