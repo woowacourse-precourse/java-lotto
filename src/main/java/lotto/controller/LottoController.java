@@ -43,7 +43,13 @@ public class LottoController {
     }
 
     public static void generateMyPrizeInstance(MyLottoList myLottoList, PrizeLotto prizeLotto) {
-
+        int [] rankArr = new int[6];
+        for(Lotto lotto : myLottoList.getLotto()) {
+            int rank = calculateRankOneLotto(lotto, prizeLotto);
+            if(rank <= 5) {
+                rankArr[rank] = rankArr[rank] + 1;
+            }
+        }
     }
 
     public static int calculateRankOneLotto(Lotto lotto, PrizeLotto prizeLotto) {
