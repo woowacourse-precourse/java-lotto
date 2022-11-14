@@ -20,7 +20,6 @@ public class LottoComparator {
     private Integer compareWith(Lotto myLotto,WinningLotto winningLotto)
     {
         int correctCount = 0;
-
         for (int myLottoNumberIndex = 0; myLottoNumberIndex < LottoInfo.LOTTO_SIZE; myLottoNumberIndex++)
         {
             Integer myLottoNumber = myLotto.get(myLottoNumberIndex);
@@ -29,7 +28,6 @@ public class LottoComparator {
                 correctCount++;
             }
         }
-
         return correctCount;
     }
 
@@ -56,7 +54,6 @@ public class LottoComparator {
                 }
             }
         }
-
         return lottoComparator;
     }
 

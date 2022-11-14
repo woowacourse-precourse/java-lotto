@@ -39,23 +39,21 @@ public class Application {
             consoleOutputManager.write(Message.getPurchaseLottoSizeMessage(purchaseLotties));
         }
         catch (NumberFormatException e) {
-            throw new IllegalArgumentException(Message.INPUT_INVALID_MESSAGE);
+            throw new IllegalArgumentException(Message.getInputInvalidErrorMessage());
         }
         return purchaseLotties;
     }
 
     private WinningLotto inputWinningLotto()
     {
-        try
-        {
+        try {
             List<Integer>winningNumbers = inputWinningLottoNumbers();
             consoleOutputManager.write(Message.BONUS_NUMBER_REQUEST_MESSAGE);
             int specialNumber = inputSpecialNumber();
             return new WinningLotto(winningNumbers,specialNumber);
         }
-        catch (NumberFormatException e)
-        {
-            throw new IllegalArgumentException(Message.INPUT_INVALID_MESSAGE);
+        catch (NumberFormatException e) {
+            throw new IllegalArgumentException(Message.getInputInvalidErrorMessage());
         }
     }
 
@@ -103,10 +101,8 @@ public class Application {
 
     }
 
-    public void run() {
-        consoleOutputManager.write(Message.GAME_START_MESSAGE);
-        try
-        {
+    private void playLottoGame() {
+        try {
             List<Lotto> lotties = purchaseLotties();
             int price = lotties.size()*LottoInfo.LOTTO_PRICE;
             consoleOutputManager.write(Message.getLottiesNumberInfoMessage(lotties));
@@ -116,10 +112,14 @@ public class Application {
 
             displayStatisticsPrizes(myLottoPrizes,price);
         }
-        catch (IllegalArgumentException e)
-        {
+        catch (IllegalArgumentException e) {
             consoleOutputManager.write(e.getMessage());
         }
+    }
+
+    public void run() {
+        consoleOutputManager.write(Message.GAME_START_MESSAGE);
+        playLottoGame();
         consoleOutputManager.write(Message.GAME_END_MESSAGE);
     }
 

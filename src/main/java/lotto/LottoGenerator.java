@@ -5,13 +5,11 @@ import lotto.Lotto.Lotto;
 import lotto.Lotto.LottoInfo;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class LottoGenerator
 {
     private volatile static LottoGenerator lottoGenerator;
-
 
     private LottoGenerator(){}
 
@@ -20,7 +18,6 @@ public class LottoGenerator
         if(price % LottoInfo.LOTTO_PRICE != 0) throw new IllegalArgumentException();
 
         List<Lotto> lotties = new ArrayList<>();
-
         int lottoCount = price / LottoInfo.LOTTO_PRICE;
         for(int nowCreatedLottoCount = 0 ; nowCreatedLottoCount < lottoCount; nowCreatedLottoCount++)
         {
@@ -28,7 +25,6 @@ public class LottoGenerator
             Lotto lotto = new Lotto(lottoNumbers);
             lotties.add(lotto);
         }
-
         return lotties;
     }
 
