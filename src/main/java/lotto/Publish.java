@@ -31,4 +31,7 @@ public class Publish {
         Collections.sort(nums);
         return nums;
     }
+
+
+    //당첨 통계 메소드 구현
 }

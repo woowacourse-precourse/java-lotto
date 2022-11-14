@@ -16,4 +16,6 @@ public enum Rank {
         this.prize = prize;
         this.winNum = winNum;
     }
+
+    //개수로 랭크 판별
 }
