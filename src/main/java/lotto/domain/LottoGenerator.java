@@ -6,25 +6,18 @@ import java.util.List;
 public class LottoGenerator {
     int generateCount;
     public LottoGenerator(int money) {
-        try {
-            if (checkMoneyUnit(money)) {
-                generateCount = money / 1000;
-            }
-        }
-        catch (IllegalArgumentException e) {
-            throw new IllegalArgumentException("[ERROR]");
-        }
+        checkMoneyUnit(money);
+        generateCount = money / 1000;
     }
 
     public int getGenerateCount() {
         return generateCount;
     }
 
-    private Boolean checkMoneyUnit(int money) throws IllegalArgumentException {
+    private void checkMoneyUnit(int money) {
         if ((money % 1000) != 0 || money <= 0) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR]");
         }
-        return true;
     }
 
     public List<Integer> createLottoNumber() {
