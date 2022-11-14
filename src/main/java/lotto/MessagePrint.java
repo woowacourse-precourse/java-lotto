@@ -39,4 +39,8 @@ public class MessagePrint {
         System.out.printf(Message.SIX.getMessage() + "%d개\n", lottoCheck.get(6));
     }
 
+    public static void printYield(double yield) {
+        System.out.printf(Message.YIELD.getMessage() + "%.1f%%입니다.", yield);
+    }
+
 }
