@@ -17,12 +17,13 @@ public class LottoInputView {
     private final static String INPUT_LOTTO_NUMBER = "당첨 번호를 입력해 주세요.";
     private final static String INPUT_BONUS_NUMBER = "보너스 번호를 입력해 주세요.";
 
-    public String getLottoAmount() {
+    public int getLottoAmount() {
         System.out.println(INPUT_MONEY_OF_LOTTO);
         String lottoMoney = Console.readLine();
         validateMoney(lottoMoney);
         validateMoneyIsDivided(lottoMoney);
-        return lottoMoney;
+        int userLottoMoney = toInt(lottoMoney);
+        return userLottoMoney;
     }
 
     public String getLottoNumber() {
@@ -64,6 +65,11 @@ public class LottoInputView {
         if(money % Constant.MONEY_UNIT != 0) {
             throw new IllegalArgumentException(MONEY_IS_NOT_DIVIDED.getErrorMessage());
         }
+    }
+
+    public int toInt(String checkedInput) {
+        int result =  Integer.parseInt(checkedInput);
+        return result;
     }
 
     public void validateInputIsNumberFormat(String uncheckedInput) {
