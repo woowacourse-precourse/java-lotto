@@ -20,10 +20,10 @@ public class Player {
         manager.requestMoneyStatementPrint();
         int money = manager.inputMoney();
         if (money < 1000) {
-            throw new IllegalArgumentException(ErrorMessage.ERROR_MONEY_IS_LACK);
+            throw new IllegalArgumentException(ErrorMessage.IS_LACK.toString());
         }
         if (money % 1000 != 0) {
-            throw new IllegalArgumentException(ErrorMessage.ERROR_MONEY_IS_NOT_DIVISIBLE_BY_1000);
+            throw new IllegalArgumentException(ErrorMessage.IS_NOT_DIVISIBLE_BY_1000.toString());
         }
         numberOfPurchase = money / 1000;
         this.money = money;

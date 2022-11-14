@@ -14,16 +14,16 @@ public class Lotto {
 
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
-            throw new IllegalArgumentException(ErrorMessage.ERROR_SIZE_IS_NOT_SIX);
+            throw new IllegalArgumentException(ErrorMessage.SIZE_IS_NOT_SIX.toString());
         }
         for (Integer number : numbers) {
             if (!(1 <= number && number <= 45)) {
-                throw new IllegalArgumentException(ErrorMessage.ERROR_RANGE_OUT);
+                throw new IllegalArgumentException(ErrorMessage.RANGE_OUT.toString());
             }
         }
         Set<Integer> isUnique = new HashSet<>(numbers);
         if (isUnique.size() != 6) {
-            throw new IllegalArgumentException(ErrorMessage.ERROR_NOT_UNIQUE);
+            throw new IllegalArgumentException(ErrorMessage.NOT_UNIQUE.toString());
         }
     }
 

@@ -32,7 +32,7 @@ public class Manager {
         try {
             money = Integer.parseInt(inputMoneyString);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException(ErrorMessage.ERROR_INPUT_IS_NOT_INTEGER);
+            throw new IllegalArgumentException(ErrorMessage.IS_NOT_INTEGER.toString());
         }
         return money;
     }
@@ -69,7 +69,7 @@ public class Manager {
             try {
                 lottoNumbers.add(Integer.parseInt(num));
             } catch (NumberFormatException e) {
-                throw new IllegalArgumentException(ErrorMessage.ERROR_INPUT_IS_NOT_INTEGER);
+                throw new IllegalArgumentException(ErrorMessage.IS_NOT_INTEGER.toString());
             }
         }
         return lottoNumbers;
@@ -85,13 +85,13 @@ public class Manager {
         try {
             bonusNumber = Integer.parseInt(inputNumber);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException(ErrorMessage.ERROR_INPUT_IS_NOT_INTEGER);
+            throw new IllegalArgumentException(ErrorMessage.IS_NOT_INTEGER.toString());
         }
         if (!(1 <= bonusNumber && bonusNumber <= 45)) {
-            throw new IllegalArgumentException(ErrorMessage.ERROR_RANGE_OUT);
+            throw new IllegalArgumentException(ErrorMessage.RANGE_OUT.toString());
         }
         if(lotto.getNumbers().contains(bonusNumber)) {
-            throw new IllegalArgumentException(ErrorMessage.ERROR_BONUS_DO_NOT_BE_CONTAINED_LOTTO_NUMBERS);
+            throw new IllegalArgumentException(ErrorMessage.DO_NOT_BE_CONTAINED_LOTTO_NUMBERS.toString());
         }
         return bonusNumber;
     }
