@@ -1,11 +1,9 @@
 package lotto.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import java.util.ArrayList;
 import java.util.List;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -13,23 +11,24 @@ import org.junit.jupiter.api.Test;
 class LottoGeneratorTest {
     LottoGenerator lottoGenerator;
     List<Lotto> lottos;
-    int size = 8;
+    int money = 8000;
+    int quantity = money / 1000;
 
     @BeforeEach
-    void Init_Before_Test() {
-        lottoGenerator = new LottoGenerator(size);
+    void testInit() {
+        lottoGenerator = new LottoGenerator(money);
         lottos = lottoGenerator.generateLottos();
     }
 
     @Test
-    @DisplayName("수량만큼 로또가 생성되면 통과")
-    void lottoGenerator_SizeOfLottosIsEqualsToQuantity_True() {
-        Assertions.assertThat(lottos.size()).isEqualTo(size);
+    @DisplayName("생성되는 로또의 갯수는 money / 1000 이다.")
+    void numberOfLottosEqualsToQuantity() {
+        assertThat(lottos.size()).isEqualTo(quantity);
     }
 
     @Test
-    @DisplayName("로또 번호가 오름차순이고 1, 45 사이면 통과")
-    void lottoGenerator_LottosIsAscendingOrder_True() {
+    @DisplayName("로또 번호는 오름차순이고 1과 45 사이의 숫자이다.")
+    void createLottosInAscendingOrderOfNumbersFrom1To45() {
         for (Lotto lotto : lottos) {
             List<Integer> list = new ArrayList<>(lotto.get());
             for (int i = 0; i < 5; i++) {
@@ -38,11 +37,5 @@ class LottoGeneratorTest {
                         .isBetween(1, 45);
             }
         }
-    }
-
-    @Test
-    @DisplayName("로또 번호가 6개면 통과")
-    void lottoGenerator_SizeOfLottoIs6_True() {
-
     }
 }
