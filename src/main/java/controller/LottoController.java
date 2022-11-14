@@ -23,13 +23,15 @@ public class LottoController {
 
     private WinningNumber createWinningNumber(){
         Lotto winningNumbers = new Lotto(InputView.inputWinningNumber());
+        int bonusNumber = InputView.inputBonusNumber();
+
         System.out.println(winningNumbers.getNumbers());
 
-        return getWinningNumbers(winningNumbers);
+        return getWinningNumbers(winningNumbers, bonusNumber);
     }
 
-    private WinningNumber getWinningNumbers(Lotto winningNumbers){
-        return new WinningNumber(winningNumbers);
+    private WinningNumber getWinningNumbers(Lotto winningNumbers, int bonusNumber){
+        return new WinningNumber(winningNumbers, bonusNumber);
     }
 
 }

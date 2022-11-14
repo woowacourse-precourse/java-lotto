@@ -2,6 +2,8 @@ package view;
 
 import camp.nextstep.edu.missionutils.Console;
 
+import static util.StringUtil.parseToInt;
+
 public class InputView {
     public static String inputMoney() {
         System.out.println("구입 금액을 입력해 주세요.");
@@ -13,9 +15,9 @@ public class InputView {
         return Console.readLine();
     }
 
-    public static String inputBonusNumber(){
+    public static int inputBonusNumber(){
         System.out.println("보너스 번호를 입력해 주세요.");
-        return Console.readLine();
+        return parseToInt(Console.readLine());
     }
 
 }

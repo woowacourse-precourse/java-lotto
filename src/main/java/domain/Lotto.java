@@ -1,9 +1,8 @@
 package domain;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
-import static util.StringUtil.parseToNumbers;
+import static util.StringUtil.parseToList;
 
 public class Lotto {
     private final List<Integer> numbers;
@@ -15,7 +14,7 @@ public class Lotto {
     }
 
     public Lotto(String inputNumbers){
-        this.numbers = parseToNumbers(inputNumbers);
+        this.numbers = parseToList(inputNumbers);
         validate(this.numbers);
         Collections.sort(this.numbers);
     }
