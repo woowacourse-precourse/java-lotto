@@ -9,6 +9,8 @@ import lotto.view.InputView;
 
 public class WinningNumbers {
 
+    public static final String SEPARATE_REGEX = ",";
+    
     private Lotto winningNumbers;
 
     private Integer bonusNumber;
@@ -25,7 +27,7 @@ public class WinningNumbers {
     }
 
     private List<Integer> stringToIntegerList(String input) {
-        return Arrays.stream(input.split(","))
+        return Arrays.stream(input.split(SEPARATE_REGEX))
                 .map(Integer::parseInt)
                 .collect(Collectors.toList());
     }
