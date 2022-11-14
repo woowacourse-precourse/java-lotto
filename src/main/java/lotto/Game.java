@@ -1,7 +1,6 @@
 package lotto;
 
 import java.util.List;
-import lotto.domain.Rank;
 import lotto.domain.Result;
 import lotto.domain.User;
 import lotto.domain.Validator;
@@ -23,20 +22,9 @@ public class Game {
 
         List<Integer> winningNumbers = gameConsole.inputWinningNumber();
         int bonusNumber = gameConsole.inputBonusNumber();
+
         Validator.checkDuplicate(winningNumbers, bonusNumber);
-
-        List<Lotto> lottos = user.getLottos();
-        Result result = new Result();
-        for (Lotto lotto : lottos) {
-            int matchCount = (int)lotto.getNumbers()
-                    .stream()
-                    .filter(winningNumbers::contains)
-                    .count();
-
-            boolean isContainBonusNumber = lotto.getNumbers().contains(bonusNumber);
-
-            result.updateRankInfo(Rank.valueOfRank(matchCount, isContainBonusNumber));
-        }
+        result.matchLotto(winningNumbers, user.getLottos(), bonusNumber);
 
         result.initWinningAmount(purchase);
         gameConsole.outputGameResult(result);

@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.stream.Collectors;
+import lotto.Lotto;
 
 public class Result {
 
@@ -28,6 +29,18 @@ public class Result {
 
     public void updateRankInfo(Rank rank) {
         rankInfo.put(rank, rankInfo.get(rank) + 1);
+    }
+
+    public void matchLotto(List<Integer> winningNumbers, List<Lotto> lottos, int bonusNumber) {
+        for (Lotto lotto : lottos) {
+            int matchCount = (int) lotto.getNumbers()
+                    .stream()
+                    .filter(winningNumbers::contains)
+                    .count();
+            boolean isContainBonusNumber = lotto.getNumbers().contains(bonusNumber);
+
+            updateRankInfo(Rank.valueOfRank(matchCount, isContainBonusNumber));
+        }
     }
 
     public Map<Rank, Integer> sortedRankInfo(){
