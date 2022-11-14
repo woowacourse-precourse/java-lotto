@@ -22,35 +22,34 @@ public class LottoGameSimulator {
     }
 
     public void start() {
-        String price = requestPriceProcess();
-        List<Lotto> lottoPacks = buyLotto(price);
-        checkLottoNumbers(lottoPacks);
+        List<Lotto> lottoPacks = buyLottoProcess();
 
-        String winningNumber = requestWinningNumber();
-        String bonusNumber = requestBonusNumber();
+        String winningNumber = setWinningNumber();
+        String bonusNumber = setBonusNumber();
 
-        Map<LottoMatch, Integer> matchedCount = checkWinningPrize(lottoPacks, winningNumber, bonusNumber);
-        checkEarningRate(price, matchedCount);
+        checkLottoResult(lottoPacks, winningNumber, bonusNumber);
     }
 
-    public List<Lotto> buyLotto(String price) {
-        return controller.create(price);
+    public List<Lotto> buyLottoProcess() {
+        String price = askLottoPrice();
+        List<Lotto> lottoPacks = controller.create(price);
+
+        display.printLottoPacks(lottoPacks);
+        display.printNewLine();
+
+        return lottoPacks;
     }
 
-    public String requestPriceProcess() {
+    public String askLottoPrice() {
         display.printRequestPrice();
         String price = scanners.inputPrice();
+
         display.printNewLine();
 
         return price;
     }
 
-    public void checkLottoNumbers(List<Lotto> lottoPacks) {
-        display.printPurchasedLottoPacks(lottoPacks);
-        display.printNewLine();
-    }
-
-    public String requestWinningNumber() {
+    public String setWinningNumber() {
         display.printRequestWinningNumber();
         String winingNumber = scanners.inputWiningNumber();
 
@@ -59,13 +58,19 @@ public class LottoGameSimulator {
         return winingNumber;
     }
 
-    public String requestBonusNumber() {
+    public String setBonusNumber() {
         display.printRequestBonusNumber();
         String bonusNumber = scanners.inputBonusNumber();
 
         display.printNewLine();
 
         return bonusNumber;
+    }
+
+    public void checkLottoResult(List<Lotto> lottoPacks, String winningNumber, String bonusNumber) {
+        Map<LottoMatch, Integer> matchedLottoCount = checkWinningPrize(lottoPacks, winningNumber, bonusNumber);
+
+        checkEarningRate(lottoPacks, matchedLottoCount);
     }
 
     public Map<LottoMatch, Integer> checkWinningPrize(List<Lotto> lottoPacks, String winingNumber, String bonusNumber) {
@@ -80,7 +85,9 @@ public class LottoGameSimulator {
         return matchedCount;
     }
 
-    public void checkEarningRate(String price, Map<LottoMatch, Integer> matchedCount) {
+    public void checkEarningRate(List<Lotto> lottoPacks, Map<LottoMatch, Integer> matchedCount) {
+        String price = String.valueOf(lottoPacks.size() / 1000);
+
         display.printEarningLate(controller.calEarningRate(price, matchedCount));
         display.printNewLine();
     }

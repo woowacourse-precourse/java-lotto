@@ -14,7 +14,7 @@ public class Display {
         System.out.println(DisplayMessage.REQUEST_PURCHASE_PRICE.message);
     }
 
-    public void printPurchasedLottoPacks(List<Lotto> lottoPacks) {
+    public void printLottoPacks(List<Lotto> lottoPacks) {
         System.out.println(lottoPacks.size() + DisplayMessage.ANNOUNCE_PURCHASED_COUNT.message);
         lottoPacks.forEach(lotto -> System.out.println(lotto.getNumbers()));
     }
