@@ -21,15 +21,18 @@ public class Player {
     public int purchaseLotto() throws IllegalArgumentException {
         manager.requestMoneyStatementPrint();
         int money = manager.inputMoney();
+        isValidMoney(money);
+        numberOfPurchase = money / pricePerPiece;
+        this.money = money;
+        return numberOfPurchase;
+    }
+    public void isValidMoney(int money) throws IllegalArgumentException {
         if (money < minimumMoney) {
             throw new IllegalArgumentException(ErrorMessage.IS_LACK.toString());
         }
         if (money % pricePerPiece != 0) {
             throw new IllegalArgumentException(ErrorMessage.IS_NOT_DIVISIBLE_BY_1000.toString());
         }
-        numberOfPurchase = money / pricePerPiece;
-        this.money = money;
-        return numberOfPurchase;
     }
 
     public void getLottoNumbers() {
