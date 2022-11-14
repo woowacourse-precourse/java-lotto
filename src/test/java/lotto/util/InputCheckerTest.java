@@ -4,6 +4,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.*;
 
 class InputCheckerTest {
@@ -45,5 +47,16 @@ class InputCheckerTest {
     @Test
     void checkInputMoney2(){
         assertThat(inputChecker.checkInputMoney("14000")).isTrue();
+    }
+    @DisplayName("입력한 당첨 로또 번호가 6개 아니면 예외 처리")
+    @Test
+    void isSizeSix1(){
+        assertThatThrownBy(()->inputChecker.isSizeSix(List.of("1", "2", "3", "4", "5", "6", "7")))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+    @DisplayName("입력한 당첨 로또 번호가 6개면 true 반환 확인")
+    @Test
+    void isSizeSix2(){
+        assertThat(inputChecker.isSizeSix(List.of("1", "2", "3", "4", "5", "6"))).isTrue();
     }
 }
