@@ -49,7 +49,7 @@ public class Controller {
         // 로또 발행 출력
         View.Output(lottoAmount+"개를 구매했습니다.");
         for (List<Integer> list : publishedLottoArray) {
-            View.Output(Model.ListToString(list));
+            View.Output(list.toString());
         }
 
         // 당첨 번호 입력
