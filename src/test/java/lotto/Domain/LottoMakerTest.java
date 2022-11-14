@@ -8,18 +8,18 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class LotteryMakerTest {
-    private  static LotteryMaker lotteryMaker;
+public class LottoMakerTest {
+    private  static LottoMaker lottoMaker;
     @BeforeAll
     static void initAll(){
-        lotteryMaker = new LotteryMaker();
+        lottoMaker = new LottoMaker();
     }
 
     @DisplayName("하나의 로또지가 제대로 발행되는지 검증")
     @Test
     void publishLotteryTicketsTest(){
         // given
-        List<Integer> ticket = lotteryMaker.publishLotteryTicket();
+        List<Integer> ticket = lottoMaker.publishLotteryTicket();
         boolean result = true;
         // when
         for (Integer lotto:ticket) {
@@ -38,9 +38,9 @@ public class LotteryMakerTest {
         // given
         int lotteryAmount = 1;
         // when
-        lotteryMaker.issueLotteryTickets(lotteryAmount);
+        lottoMaker.issueLotteryTickets(lotteryAmount);
         // then
-        List<Lotto> tickets = lotteryMaker.getLotteryTickets();
+        List<Lotto> tickets = lottoMaker.getLotteryTickets();
         assertThat(tickets.size()).isEqualTo(lotteryAmount);
     }
 

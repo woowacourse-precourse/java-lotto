@@ -8,6 +8,7 @@ import java.util.regex.Pattern;
 public class LottoIOHandler extends IOHandler {
     // 로또 당첨 번호를 입력한다.
     public List<Integer> getLottoAnswer(){
+        System.out.println("당첨 번호를 입력해 주세요.");
         // "~,~" 형식의 입력 강제화
         String input = validateInput(getUserInput());
         // 문자열을 리스트 변환

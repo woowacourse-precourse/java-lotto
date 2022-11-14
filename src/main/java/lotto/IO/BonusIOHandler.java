@@ -5,6 +5,7 @@ import java.util.regex.Pattern;
 
 public class BonusIOHandler extends IOHandler {
     public int getBonus(){
+        System.out.println("보너스 번호를 입력해 주세요.");
         String input = validateInput(getUserInput());
         return Integer.parseInt(input);
     }
