@@ -33,7 +33,7 @@ public class Lotto {
             checkNumberValid(lottoNumber);
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
-            throw new NoSuchElementException();
+            throw new IllegalArgumentException();
         }
     }
 

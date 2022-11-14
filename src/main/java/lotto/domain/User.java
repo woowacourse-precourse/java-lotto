@@ -24,7 +24,7 @@ public class User {
             isDividedOrThrows(money);
         } catch (Exception e){
             System.out.println(e.getMessage());
-            throw new NoSuchElementException();
+            throw new IllegalArgumentException();
         }
     }
 
