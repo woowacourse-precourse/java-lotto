@@ -46,13 +46,77 @@ public class Application {
             throw new IllegalArgumentException("[Error] Number should be in the range of 1 ~ 45");
         }
 
-
+        int totalIncome = calculateTotalGain(boughtLottos, pickedNumbers, bonusNum);
 
     }
 
+    public static int calculateTotalGain(List<Lotto> boughtLottos, List<Integer> pickedNumbers, int bonusNum) {
+        LotteryWon income;
+        HashMap<LotteryWon, Integer> history = new HashMap<LotteryWon, Integer>();
+        int totalIncome = 0;
 
+        for (int i = 0; i < boughtLottos.size(); i++) {
+            int matchCount = countMatchedNumber(boughtLottos.get(i), pickedNumbers);
+            income = selectLotteryWonType(matchCount);
+            history = updateHistory(history, income);
+            totalIncome += income.calculateIncome(1);
+        }
+        printHistory(history);
 
-   
+        return totalIncome;
+    }
+
+    public static void printHistory(HashMap<LotteryWon, Integer> history) {
+        System.out.println("당첨 통계");
+        System.out.println("---");
+        System.out.println("3개 일치 (5,000원) - "+history.get(LotteryWon.FifthPlace));
+        System.out.println("4개 일치 (50,000원) - "+history.get(LotteryWon.FourthPlace));
+        System.out.println("5개 일치 (1,500,000원) - "+history.get(LotteryWon.ThirdPlace));
+        System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - "+history.get(LotteryWon.SecondPlace));
+        System.out.println("6개 일치 (2,000,000,000원) - "+history.get(LotteryWon.FifthPlace));
+    }
+
+    public static HashMap<LotteryWon, Integer> updateHistory(HashMap<LotteryWon, Integer> history, LotteryWon income) {
+        if (history.containsKey(income)) {
+            history.replace(income, history.get(income) + 1);
+            return history;
+        }
+        history.put(income, 1);
+        return history;
+    }
+
+    public static int countMatchedNumber(Lotto lotto, List<Integer> pickedNumbers) {
+        int count = 0;
+
+        for (int i = 0; i < pickedNumbers.size(); i++) {
+            int number = pickedNumbers.get(i);
+            count += lotto.matchNumber(number);
+        }
+
+        return count;
+    }
+
+    public static LotteryWon selectLotteryWonType(int matchCount) {
+        LotteryWon result;
+        if (matchCount == 6) {
+            result = LotteryWon.FirstPlace;
+            return result;
+        } else if (matchCount == 5) {
+            result = LotteryWon.SecondPlace;
+            return result;
+        } else if (matchCount == 5) {
+            result = LotteryWon.ThirdPlace;
+            return result;
+        } else if (matchCount == 4) {
+            result = LotteryWon.FourthPlace;
+            return result;
+        } else if (matchCount == 3) {
+            result = LotteryWon.FifthPlace;
+            return result;
+        }
+
+        return null;
+    }
 
     public static List<Integer> validatePickedNumbers(String input) {
         String[] numbers = input.split(",");

@@ -22,6 +22,17 @@ public class Lotto {
         return numbers;
     }
 
+    public int matchNumber(int pickedNumber){
+        for (int j = 0; j < this.numbers.size(); j++) {
+            if (this.numbers.get(j) == pickedNumber) {
+                return 1;
+            }
+            if (this.numbers.get(j) < pickedNumber) {
+                return 0;
+            }
+        }
+    }
+
     private void sortAscendingOrder(){
         this.numbers.sort(new Comparator<Integer>() {
             @Override
