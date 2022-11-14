@@ -8,7 +8,7 @@ public class TotalResult {
 
     private static final int RANK_COUNT_DEFAULT_VALUE = 0;
     private static final String RANK_COUNT_MESSAGE_FORMAT = " - %d개";
-    private static final DecimalFormat yieldFormat = new DecimalFormat("###,###.##");
+    private static final DecimalFormat yieldFormat = new DecimalFormat("###,###.#");
     private final JackpotBonus jackpotBonus;
     private final List<Lotto> lotteries;
 
@@ -29,12 +29,12 @@ public class TotalResult {
     }
 
     public String getYield(Map<Rank, Integer> rankCounts) {
-        double sumOfRewards = Arrays.stream(Rank.values())
+        int sumOfRewards = Arrays.stream(Rank.values())
                 .mapToInt(rank -> rank.getReward() * rankCounts.getOrDefault(rank, RANK_COUNT_DEFAULT_VALUE))
                 .sum();
 
 
-        return yieldFormat.format(sumOfRewards / lotteries.size());
+        return yieldFormat.format((double) sumOfRewards / (lotteries.size() * 10));
     }
 
     public List<String> getRankInfoWithCounts(Map<Rank, Integer> rankCounts) {
