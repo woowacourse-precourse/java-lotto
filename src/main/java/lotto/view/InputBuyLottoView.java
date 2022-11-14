@@ -1,11 +1,11 @@
 package lotto.view;
 
-import lotto.exception.BuyLottoException;
+import lotto.exception.BuyLottoFormatException;
 
 import java.util.regex.Pattern;
 
 public final class InputBuyLottoView extends InputView {
-    private static final Pattern PATTERN = Pattern.compile("\\d+0{3}");
+    private static final Pattern PATTERN = Pattern.compile("\\d+");
 
     public String getValue() {
         String result = inputValue();
@@ -14,8 +14,12 @@ public final class InputBuyLottoView extends InputView {
     }
 
     private void validate(String inputValue) {
+        validateFormat(inputValue);
+    }
+
+    private void validateFormat(String inputValue) {
         if (!PATTERN.matcher(inputValue).matches()) {
-            throw new BuyLottoException();
+            throw new BuyLottoFormatException();
         }
     }
 }
