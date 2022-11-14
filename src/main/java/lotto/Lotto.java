@@ -19,5 +19,9 @@ public class Lotto {
         }
     }
 
-    // TODO: 추가 기능 구현
+    public Lotto makeLotto() {
+        List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+        Lotto lotto = new Lotto(numbers);
+        return lotto;
+    }
 }
