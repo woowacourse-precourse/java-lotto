@@ -25,29 +25,39 @@ public class LottoController {
             int budget = InputView.writeBudget();
             lottoCalculator = new LottoCalculator(budget);
 
-            for (int i=0; i<lottoCalculator.getTicketSize(); i++){
-                Lotto newLotto = new Lotto(NumberGenerator.GenerateNumbers());
-                lottos.add(newLotto);
-            }
-
-            OutputView.writeLottoTickets(lottos);
+            getLottoTickets();
 
             List<String> winningNumbers = InputView.writeWinningNumbers();
             int bonusNumber = InputView.writeBonusNumber();
 
-            for (Lotto lotto : lottos){
-                int rank = lotto.checkRanking(winningNumbers, bonusNumber);
-                winningResult.set(rank, winningResult.get(rank)+1);
-            }
-
-            OutputView.writeWinningResult(winningResult);
-
-            double profit = lottoCalculator.getProfit(winningResult);
-
-            OutputView.writeProfit(profit);
+            getWinningResult(winningNumbers, bonusNumber);
+            getProfit();
         }
         catch (IllegalArgumentException e){
             System.err.println("[ERROR]" + e);
         }
+    }
+
+    private void getLottoTickets(){
+        for (int i=0; i<lottoCalculator.getTicketSize(); i++){
+            lottos.add(new Lotto(NumberGenerator.GenerateNumbers()));
+        }
+
+        OutputView.writeLottoTickets(lottos);
+    }
+
+    private void getWinningResult(List<String> winningNumbers, int bonusNumber){
+        for (Lotto lotto : lottos){
+            int rank = lotto.checkRanking(winningNumbers, bonusNumber);
+            winningResult.set(rank, winningResult.get(rank)+1);
+        }
+
+        OutputView.writeWinningResult(winningResult);
+    }
+
+    private void getProfit(){
+        double profit = lottoCalculator.getProfit(winningResult);
+
+        OutputView.writeProfit(profit);
     }
 }
