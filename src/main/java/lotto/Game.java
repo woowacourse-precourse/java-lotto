@@ -5,7 +5,7 @@ import java.util.List;
 public class Game {
     private int bonusNumber;
     private int lottoCount;
-
+    private int money;
     private int hitThree;
     private int hitFour;
     private int hitFive;
@@ -22,6 +22,9 @@ public class Game {
         return this.lottoCount;
     }
 
+    public int getMoney(){
+        return this.money;
+    }
     public List<Integer> getWinningNumbers(){
         return this.winningNumbers;
     }
@@ -53,6 +56,9 @@ public class Game {
     }
     public void changehitSix(int hitSix){
         this.hitSix = hitSix;
+    }
+    public void changeMoney(int money){
+        this.money = money;
     }
 
     public int getHitThree(){
