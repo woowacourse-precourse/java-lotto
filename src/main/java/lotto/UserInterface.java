@@ -6,6 +6,12 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class UserInterface {
+    public void printLottos(List<Lotto> lottos) {
+        for (Lotto lotto : lottos) {
+            System.out.println(lotto.toStringLotto());
+        }
+    }
+
     public int inputOnlyNumber() {
         String input = Console.readLine();
         if (!validateInputOnlyNumber(input)) {
