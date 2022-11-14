@@ -3,6 +3,7 @@ package lotto.controller;
 import java.util.HashMap;
 import lotto.data.dto.BonusNumberDto;
 import lotto.data.dto.LottoBundleDto;
+import lotto.data.dto.LottoQueryDto;
 import lotto.data.dto.WinNumberDto;
 import lotto.service.AdminService;
 import lotto.type.LottoResultType;
@@ -15,9 +16,6 @@ import lotto.view.LottoResultView;
 import utils.InputReader;
 import utils.Logger;
 
-/**
- * 컨트롤러는 DTO를 조작하고, 실행 단계에 따라 필요한 서비스를 불러옵니다.
- */
 public class LottoController {
 
     private StepType currentStep;
@@ -28,6 +26,7 @@ public class LottoController {
     private final LottoResultView lottoResultView;
     private final HashMap<StepType, Runnable> stepMapper;
     private Long userId;
+    private Long roundId;
     private LottoController() {
         currentStep = StepType.INIT;
         accountService = new AccountService();
@@ -58,6 +57,7 @@ public class LottoController {
         LottoBundleDto lottoBundleDto = LottoBundleDto.createWithInput(InputReader.readLine());
         lottoBundleDto.setOwnerId(userId);
         userService.purchaseLottoBundle(lottoBundleDto);
+        roundId = lottoBundleDto.getRoundId();
         Logger.log(lottoBundleView.stringify(lottoBundleDto));
         currentStep = currentStep.getNextStep();
     }

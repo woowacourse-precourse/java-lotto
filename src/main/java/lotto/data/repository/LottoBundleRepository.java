@@ -1,16 +1,12 @@
 package lotto.data.repository;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Optional;
-import lotto.data.entity.LottoBundle;
+import lotto.data.entity.LottoRound;
 
 public class LottoBundleRepository {
 
     private static LottoBundleRepository instance;
-
-    private LottoBundleRepository() {}
 
     public static LottoBundleRepository getInstance() {
         if (instance == null) {
@@ -21,20 +17,21 @@ public class LottoBundleRepository {
 
     private static void assignNewInstance() {
         synchronized (LottoBundleRepository.class) {
-            instance = new LottoBundleRepository();
+            instance = new LottoBundleRepository(0L);
         }
     }
 
-    private final HashMap<Long, List<LottoBundle>> lottoBundleRepository = new HashMap<>();
+    private final HashMap<Long, LottoRound> lottoBundleRepository = new HashMap<>();
 
-    public Optional<List<LottoBundle>> findById(Long id) {
-        return Optional.ofNullable(lottoBundleRepository.getOrDefault(id, new ArrayList<>()));
+    private LottoBundleRepository(Long initRoundId) {
+        lottoBundleRepository.put(initRoundId, new LottoRound(initRoundId));
     }
 
-    public void save(LottoBundle lottoBundle) {
-        Long ownerId = lottoBundle.getOwnerId();
-        List<LottoBundle> lottoBundles = lottoBundleRepository.getOrDefault(ownerId, new ArrayList<>());
-        lottoBundles.add(lottoBundle);
-        lottoBundleRepository.put(ownerId, lottoBundles);
+    public Optional<LottoRound> findById(Long roundId) {
+        return Optional.ofNullable(lottoBundleRepository.getOrDefault(roundId, null));
+    }
+
+    public void createNewColumn(Long roundId) {
+        lottoBundleRepository.put(roundId, new LottoRound(roundId));
     }
 }

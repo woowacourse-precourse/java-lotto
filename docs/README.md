@@ -15,9 +15,11 @@
       - LottoBundleDto: 액수를 입력해 생성되는 로또 묶음
       - LottoWinNumberDto: 입력한 당첨 번호
       - LottoBonusNumberDto: 입력한 보너스 번호
+      - LottoQueryDto: 구매 로또 조회용도
     - entity
       - Lotto: 저장되는 로또
       - LottoBundle: 저장되는 로또 묶음
+      - LottoRound: 한 회차에 구매된 모든 로또 묶음
       - WinNumber: 저장되는 당첨 및 보너스 번호
     - dao
       - AccountDao: 계정 서비스에서 필요한 저장소 조작 메서드를 제공합니다.

@@ -27,10 +27,11 @@ public class AdminService {
         winNumberBuilder.bonusNumber(bonusNumber);
     }
 
-    public void confirmWinNumber() {
+    public void finishRound() {
         WinNumber winNumber = winNumberBuilder.build();
         Long roundId = adminDao.getCurrentRoundId();
         winNumber.setRoundId(roundId);
         adminDao.insertWinNumber(winNumber);
+        adminDao.setNextRound();
     }
 }

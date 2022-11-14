@@ -13,6 +13,7 @@ import utils.Validator.StringValidator;
 public class LottoBundleDto {
 
     private Long ownerId;
+    private Long roundId;
     private final List<LottoDto> lottos;
 
     public LottoBundleDto(List<LottoDto> lottos) {
@@ -60,11 +61,19 @@ public class LottoBundleDto {
         return ownerId;
     }
 
+    public Long getRoundId() {
+        return roundId;
+    }
+
     public List<LottoDto> getLottos() {
         return lottos;
     }
 
     public void setOwnerId(Long ownerId) {
         this.ownerId = ownerId;
+    }
+
+    public void setRoundId(Long roundId) {
+        this.roundId = roundId;
     }
 }

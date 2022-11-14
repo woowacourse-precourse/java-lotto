@@ -8,6 +8,7 @@ import java.util.stream.Collectors;
 import lotto.data.dao.UserDao;
 import lotto.data.dto.LottoBundleDto;
 import lotto.data.dto.LottoDto;
+import lotto.data.dto.LottoQueryDto;
 import lotto.data.entity.Lotto;
 import lotto.data.entity.LottoBundle;
 import lotto.type.LottoResultType;
@@ -20,12 +21,10 @@ public class UserService {
         userDao = new UserDao();
     }
 
-    /**
-     * 로또 묶음을 구매합니다.
-     */
     public void purchaseLottoBundle(LottoBundleDto lottoBundleDto) {
         Long ownerId = lottoBundleDto.getOwnerId();
         Long roundId = userDao.getCurrentRoundId();
+        lottoBundleDto.setRoundId(roundId);
         List<Lotto> lottos = lottoBundleDto.getLottos().stream()
                 .map(LottoDto::getNumbers)
                 .map(Lotto::new)
@@ -34,13 +33,10 @@ public class UserService {
         userDao.insertLottoBundle(lottoBundle);
     }
 
-    /**
-     * 구매한 로또들 중 각 당첨이 몇 개인지 알려줍니다.
-     */
-    public HashMap<LottoResultType, Integer> getMyResult(Long userId) {
+    public HashMap<LottoResultType, Integer> getMyResult(LottoQueryDto lottoQueryDto) {
         HashMap<LottoResultType, Integer> lottoResults = new HashMap<>();
-        List<LottoBundle> lottoBundles = userDao.selectLottoBundles(userId);
-        Long roundId = lottoBundles.get(0).getRoundId();
+        List<LottoBundle> lottoBundles = userDao.selectLottoBundles(lottoQueryDto);
+        Long roundId = lottoQueryDto.getRoundId();
         lottoBundles.stream()
                 .map(LottoBundle::getLottos)
                 .flatMap(Collection::stream)
