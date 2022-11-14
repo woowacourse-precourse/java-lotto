@@ -44,12 +44,7 @@
 
 #### Input total payment
 
-- Read cash and cast to integer
-
-#### Error Handler
-
-- Throw IllegalArgumentException if there's an invalid input
-- throw Error: "[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다."
+- Read cash and return
 
 #### Input lotto number
 
