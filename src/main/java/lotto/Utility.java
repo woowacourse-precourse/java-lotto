@@ -5,6 +5,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import jdk.jshell.execution.Util;
 
 import javax.xml.crypto.dsig.spec.HMACParameterSpec;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -23,6 +24,8 @@ public abstract class Utility {
 
     public static final long divisorNumber = 1000;
     public static final int noWinIndex = 5;
+
+    public static List <String> winEnumNames = Arrays.asList("WIN60", "WIN51", "WIN50", "WIN40", "WIN30");
 
     public static void printMessage(String message){
         System.out.println(message);
@@ -88,6 +91,21 @@ public abstract class Utility {
             index = noWinIndex;
         }
         return index;
+    }
+
+    public static void printLottoResult(List <Integer> lottoResult){
+        for(int i= winEnumNames.size()-1; i>=0; i--){
+            String message = createLottoResultMessage(lottoResult.get(i), winEnumNames.get(i));
+            printMessage(message);
+        }
+    }
+    public static String createLottoResultMessage(int winNumber, String winEnumName){
+        DecimalFormat decFormat = new DecimalFormat("###,###");
+        Win win = Win.valueOf(winEnumName);
+        int cntCorrectNumber = win.getCntCorrectNumber();
+        int prize = win.getPrize();
+        String message = cntCorrectNumber+"개 일치 ("+decFormat.format(prize)+") - "+winNumber+"개";
+        return message;
     }
 
     public static double profitPercentage(long spentAmount, long totalPrizeAmount){
