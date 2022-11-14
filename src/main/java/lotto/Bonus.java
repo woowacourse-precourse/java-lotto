@@ -1,5 +1,7 @@
 package lotto;
 
+import static lotto.ErrorMessages.*;
+
 public class Bonus {
     private final int number;
 
@@ -10,7 +12,7 @@ public class Bonus {
 
     private void validate(int number) {
         if (number < 1 || number > 45) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(NOT_BETWEEN_ONE_AND_FORTY_FIVE);
         }
     }
 

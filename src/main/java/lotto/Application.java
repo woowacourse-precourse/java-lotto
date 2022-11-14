@@ -8,29 +8,33 @@ import java.util.Map;
 
 public class Application {
     public static void main(String[] args) {
-        println("구입금액을 입력해 주세요.");
-        Money money = InputHandler.readMoney();
-        println();
+        try {
+            println("구입금액을 입력해 주세요.");
+            Money money = InputHandler.readMoney();
+            println();
 
-        List<Lotto> purchasedLottos = LottoShop.purchase(money);
-        printPurchasedLottos(purchasedLottos);
-        println();
+            List<Lotto> purchasedLottos = LottoShop.purchase(money);
+            printPurchasedLottos(purchasedLottos);
+            println();
 
-        println("당첨 번호를 입력해 주세요.");
-        Lotto winningNumber = InputHandler.readWinningNumber();
-        println();
+            println("당첨 번호를 입력해 주세요.");
+            Lotto winningNumber = InputHandler.readWinningNumber();
+            println();
 
-        println("보너스 번호를 입력해 주세요.");
-        Bonus bonus = InputHandler.readBonusNumber();
-        println();
+            println("보너스 번호를 입력해 주세요.");
+            Bonus bonus = InputHandler.readBonusNumber();
+            println();
 
-        println("당첨 통계");
-        println("---");
-        Map<Rank, Integer> winningHistory = getWinningHistory(winningNumber, bonus, purchasedLottos);
-        printWinningHistory(winningHistory);
+            println("당첨 통계");
+            println("---");
+            Map<Rank, Integer> winningHistory = getWinningHistory(winningNumber, bonus, purchasedLottos);
+            printWinningHistory(winningHistory);
 
-        double rateOfReturn = LottoCalculator.getRateOfReturn(winningHistory, money);
-        printRateOfReturn(rateOfReturn);
+            double rateOfReturn = LottoCalculator.getRateOfReturn(winningHistory, money);
+            printRateOfReturn(rateOfReturn);
+        } catch (IllegalArgumentException e) {
+            println(e.getMessage());
+        }
     }
 
     private static void printPurchasedLottos(List<Lotto> purchasedLottos) {

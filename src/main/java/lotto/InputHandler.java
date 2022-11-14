@@ -1,5 +1,7 @@
 package lotto;
 
+import static lotto.ErrorMessages.NOT_DIGIT;
+
 import camp.nextstep.edu.missionutils.Console;
 import java.util.Arrays;
 import java.util.stream.Collectors;
@@ -35,7 +37,7 @@ public class InputHandler {
         try {
             result = Integer.parseInt(input);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(NOT_DIGIT);
         }
         return result;
     }

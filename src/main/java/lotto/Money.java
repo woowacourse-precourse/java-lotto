@@ -1,5 +1,7 @@
 package lotto;
 
+import static lotto.ErrorMessages.*;
+
 public class Money {
     private static final int THOUSAND = 1_000;
     private static final int ZERO = 0;
@@ -16,7 +18,7 @@ public class Money {
 
     private void validate(int amount) {
         if (amount % THOUSAND != ZERO) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(NOT_THOUSAND_UNIT);
         }
     }
 
