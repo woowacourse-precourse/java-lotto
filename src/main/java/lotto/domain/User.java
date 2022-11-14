@@ -11,7 +11,7 @@ public class User {
     private List<Lotto> lottos = new ArrayList<>();
     //TODO: 당첨 결과 리스트
 
-    public User(int money) {
+    private User(int money) {
         this.money = money;
         this.lottoCount = money / 1000;
     }
