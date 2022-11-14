@@ -23,5 +23,10 @@ public class Input {
         checkLottonums(input);
         return ChangeType.string_to_listinteger(input);
     }
+    protected static int returnBonus(List<Integer> numbers){
+        String input = input();
+        checkBouns(numbers, input);
+        return ChangeType.string_to_int(input);
+    }
 
 }
