@@ -74,3 +74,19 @@ public class Lotto {
         List<Integer> randomLottoNumbers = Randoms.pickUniqueNumbersInRange(MIN_NUMBER, MAX_NUMBER, LOTTO_COUNT);
         return randomLottoNumbers;
     }
+
+    public boolean contains(int otherLottoNumber) {
+        return numbers.stream()
+                .anyMatch(lottoNumber -> lottoNumber.equals(otherLottoNumber));
+    }
+
+    public int calculateSameCount(Lotto otherLottoNumbers) {
+        return otherLottoNumbers.compareLottoNumbers(numbers);
+    }
+
+    private int compareLottoNumbers(List<Integer> lottoNumbers) {
+        return (int) lottoNumbers.stream()
+                .filter(this.numbers::contains)
+                .count();
+    }
+}
