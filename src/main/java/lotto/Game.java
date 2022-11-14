@@ -4,8 +4,8 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.List;
 
 public class Game {
-    private int gameNumber;
-    private Lotto[] games;
+    private final int gameNumber;
+    private final Lotto[] games;
 
     public Game(int money) {
         this.gameNumber = money / 1000;

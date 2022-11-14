@@ -1,6 +1,7 @@
 package lotto;
 
 import java.util.HashSet;
+import java.util.List;
 
 public class UserInputException extends Exception {
     public static boolean numberCheck(String input) throws IllegalArgumentException {
@@ -13,7 +14,17 @@ public class UserInputException extends Exception {
         }
     }
 
-    public static boolean moneyCheck(String input) throws IllegalArgumentException {
+    public static boolean moneyMinCheck(String input) throws IllegalArgumentException {
+        try {
+            if (Integer.parseInt(input) < 1000) throw new IllegalArgumentException();
+            return false;
+        } catch (IllegalArgumentException e) {
+            System.out.print("[ERROR] 최소 1000원부터 게임 가능합니다.");
+            return true;
+        }
+    }
+
+    public static boolean moneyUnitCheck(String input) throws IllegalArgumentException {
         try {
             if (Integer.parseInt(input) % 1000 != 0) throw new IllegalArgumentException();
             return false;
@@ -75,18 +86,14 @@ public class UserInputException extends Exception {
         }
     }
 
-    public static boolean duplicateCheck(String winningNumbers, String bonusNumber) {
+    public static boolean duplicateBonusCheck(List<Integer> winningNumbers, String bonusNumber) {
         try {
-            String[] checkTarget = winningNumbers.split(",");
-            HashSet<Integer> numberPool = new HashSet<>();
-            for (String targetI : checkTarget) {
-                numberPool.add(Integer.parseInt(targetI));
-            }
-            if (numberPool.contains(Integer.parseInt(bonusNumber))) throw new IllegalArgumentException();
+            if (winningNumbers.contains(Integer.parseInt(bonusNumber))) throw new IllegalArgumentException();
             return false;
         } catch (IllegalArgumentException e) {
             System.out.print("[ERROR] 보너스 번호는 직전에 입력한 당첨 번호들과 달라야합니다.");
             return true;
         }
     }
+
 }
