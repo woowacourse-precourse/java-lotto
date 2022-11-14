@@ -4,9 +4,7 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.io.ByteArrayInputStream;
-import java.io.InputStream;
-import java.util.ArrayList;
+
 import java.util.Arrays;
 import java.util.List;
 
@@ -21,7 +19,8 @@ class LottoProgramTest {
         List<Integer> numbers = Arrays.asList(1,1,2,3,4,5);
         int bonusNumber = 10;
 
-        Assertions.assertThatThrownBy(() -> lottoProgram.createWinningLotto(numbers,bonusNumber))
+        Assertions.assertThatThrownBy(
+                () -> lottoProgram.createWinningLotto(numbers,bonusNumber))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -31,7 +30,8 @@ class LottoProgramTest {
         List<Integer> numbers = Arrays.asList(1,9,8,7,6,5,4);
         int bonusNumber = 10;
 
-        Assertions.assertThatThrownBy(() -> lottoProgram.createWinningLotto(numbers,bonusNumber))
+        Assertions.assertThatThrownBy(
+                () -> lottoProgram.createWinningLotto(numbers,bonusNumber))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -41,7 +41,8 @@ class LottoProgramTest {
         List<Integer> numbers = Arrays.asList(1,9,8,7,6,5,4);
         int bonusNumber = 47;
 
-        Assertions.assertThatThrownBy(() -> lottoProgram.createWinningLotto(numbers,bonusNumber))
+        Assertions.assertThatThrownBy(
+                () -> lottoProgram.createWinningLotto(numbers,bonusNumber))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 }

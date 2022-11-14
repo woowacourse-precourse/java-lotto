@@ -10,8 +10,7 @@ public class LottoStore {
     private List<Lotto> lottoTickets = new ArrayList<>();
 
     public List<Lotto> buyLottoNumber(int price) {
-        validate(price);
-
+        validatePrice(price);
         int lottoPurchaseCount = price / LOTTO_PRICE;
         LottoMachine lottoMachine = new LottoMachine();
 
@@ -26,7 +25,7 @@ public class LottoStore {
         return lottoTickets;
     }
 
-    private void validate(int price) {
+    private void validatePrice(int price) {
         if (price < LOTTO_PRICE) {
             System.out.println(PRICE_ERROR_MSG);
             throw new IllegalArgumentException();

@@ -32,13 +32,9 @@ public class Lotto {
             throw new IllegalArgumentException();
         }
 
-        for (int i = 0; i < LOTTO_SIZE; i++) {
-            int number = numbers.get(i);
-
-            if (number < MIN_LOTTO_NUM || number > MAX_LOTTO_NUM) {
-                System.out.println(LOTTO_RANGE_ERROR_MSG);
-                throw new IllegalArgumentException();
-            }
+        if (hasOutOfRangeNumber(numbers)) {
+            System.out.println(LOTTO_RANGE_ERROR_MSG);
+            throw new IllegalArgumentException();
         }
     }
 
@@ -50,6 +46,19 @@ public class Lotto {
 
         return false;
     }
+
+    private boolean hasOutOfRangeNumber(List<Integer> numbers) {
+        for (int i = 0; i < LOTTO_SIZE; i++) {
+            int number = numbers.get(i);
+
+            if (number < MIN_LOTTO_NUM || number > MAX_LOTTO_NUM) {
+                System.out.println(LOTTO_RANGE_ERROR_MSG);
+                return true;
+            }
+        }
+        return false;
+    }
+
 
     @Override
     public String toString() {
