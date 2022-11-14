@@ -127,4 +127,21 @@ class ResultTest {
         // then
         assertThat(totalPrize).isEqualTo(2030000000);
     }
+
+    @DisplayName("8000원으로 로또를 구매했을 때 5등이 당첨되면 수익률은 62.5가 반환된다.")
+    @Test
+    void createYield() {
+        // given
+        int purchaseMoney = 8000;
+        int matchCount = Rank.FIFTH.getCorrectCount();
+        boolean matchbonus = true;
+        result.initWinningRank();
+        result.updateResult(matchCount, matchbonus);
+
+        // when
+        String yield = result.calculateYield(purchaseMoney);
+
+        // then
+        assertThat(yield).isEqualTo("62.5");
+    }
 }
