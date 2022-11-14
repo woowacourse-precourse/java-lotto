@@ -3,7 +3,6 @@ package lotto.domain;
 
 import static org.assertj.core.api.Assertions.*;
 
-import java.util.HashSet;
 import java.util.List;
 import lotto.Lotto;
 import org.junit.jupiter.api.DisplayName;
@@ -22,19 +21,8 @@ class UserTest {
     @DisplayName("로또의 개수만큼 로또를 발행한다.")
     void testName() {
         User user = new User(2000);
-        user.createLottos();
         int lottoCount = user.getLottoCount();
         List<Lotto> lottos = user.getLottos();
         assertThat(lottos.size()).isEqualTo(lottoCount);
-    }
-
-    @Test
-    @DisplayName("로또의 각 번호는 서로 중복되지 않는다.")
-    void testName2() {
-        User user = new User(1000);
-        user.createLottos();
-        List<Lotto> lottos = user.getLottos();
-        HashSet<Integer> noneDuplicationNumbers = new HashSet<>(lottos.get(0).getNumbers());
-        assertThat(noneDuplicationNumbers.size()).isEqualTo(6);
     }
 }
