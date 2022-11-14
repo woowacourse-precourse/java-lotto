@@ -20,7 +20,8 @@ public class Money {
 
     private void validate(int moneyAmount) {
         if (moneyAmount % MONEY_UNIT != 0) {
-            throw new IllegalArgumentException("[ERROR] 구입 금액은 1000원 단위여야만 합니다.");
+            throw new IllegalArgumentException(
+                String.format("[ERROR] 구입 금액은 1000원 단위여야만 합니다. : %d", moneyAmount));
         }
     }
 

@@ -21,13 +21,16 @@ public class WinLotto {
 
     private void validate(Lotto winLotto, int bonus) {
         if (winLotto.contains(bonus)) {
-            throw new IllegalArgumentException("[ERROR] 로또 숫자는 보너스번호와 중첩될수 없습니다.");
+            throw new IllegalArgumentException(
+                String.format("[ERROR] 로또 숫자는 보너스번호와 중첩될수 없습니다. 로또 : %s 보너스 : %d", winLotto.get(),
+                    bonus));
         }
     }
 
     private void validateBonus(int bonus) {
         if (bonus > MAX || bonus < MIN) {
-            throw new IllegalArgumentException("[ERROR] 보너스 번호는 45보다 크거나 1보다 작을수 없습니다.");
+            throw new IllegalArgumentException(
+                String.format("[ERROR] 보너스 번호는 45보다 크거나 1보다 작을수 없습니다. : %d", bonus));
         }
     }
 
