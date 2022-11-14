@@ -14,18 +14,22 @@ public class LottoMaker {
         }
     }
 
-    public LottoMaker(String money) { // 테스트를 위한 생성자
+    public LottoMaker(String money) {
         this.money = Integer.parseInt(money);
         validate(this.money);
     }
 
+
+    /**
+     * 로또를 발행하는 메서드
+     * @return 발행된 메서드 리턴
+     */
     public List<Lotto> publishLotto(){
         int amount = money / 1000;
         List<Lotto> lottos = new ArrayList<>();
 
         for(int lotto = 0; lotto < amount; lotto ++ ){
             lottos.add(new Lotto(Randoms.pickUniqueNumbersInRange(1,45,6)));
-            //lottos.get(lottos.size()-1).printLotto();
         }
         return lottos;
     }

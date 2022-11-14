@@ -7,5 +7,12 @@ public enum LottoData {
     FOURTH("FOURTH",4, 50000),
     FIFTH("FIFTH",3, 5000);
 
-    LottoData(String prizeName, int prizeAmount, int prizeMoney) { }
+    private String prizeName;
+    private int prizeAmount;
+    private int prizeMoney;
+    LottoData(String prizeName, int prizeAmount, int prizeMoney) {
+        this.prizeName = prizeName;
+        this.prizeAmount = prizeAmount;
+        this.prizeMoney = prizeMoney;
+    }
 }

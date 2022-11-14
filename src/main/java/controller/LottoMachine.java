@@ -2,15 +2,18 @@ package controller;
 
 import camp.nextstep.edu.missionutils.Console;
 import data.LottoData;
-import controller.LottoMaker;
 import java.util.List;
 import java.util.ArrayList;
-import controller.NumberParser;
 import lotto.Lotto;
 import data.PrintData;
+
+/**
+ * 로또 프로그램의 전체적인 진행을 맡는 클래스
+ */
 public class LottoMachine {
     private final NumberParser numberParser = new NumberParser();
     private List<Lotto> lottos = new ArrayList<>();
+
     public void start(){
         inputCash();
         inputWinningNumbers();
@@ -29,6 +32,7 @@ public class LottoMachine {
         System.out.println();
     }
 
+
     public void inputWinningNumbers() {
         PrintData.printData("INPUT_NUMBER");
         System.out.println();
@@ -46,6 +50,9 @@ public class LottoMachine {
         return rawData;
     }
 
+    /**
+     * 당첨번호와 로또들을 대조.
+     */
     public void drawLottos() {
         for(LottoData data : LottoData.values()){
             //if(data.getWinningAmount() == 5){
