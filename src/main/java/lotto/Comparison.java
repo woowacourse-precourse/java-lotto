@@ -3,12 +3,20 @@ package lotto;
 import java.util.List;
 
 public class Comparison {
-	public static int matchLottoCount(List<Integer> winningLotto, List<Integer> myLotto) {
+	static List<Integer> winningLotto;
+	static int bonusNumber;
+
+	public Comparison(List<Integer> winningLotto, int bonusNumber) {
+		this.winningLotto = winningLotto;
+		this.bonusNumber = bonusNumber;
+	}
+
+	public static int matchLottoCount(List<Integer> myLotto) {
 		return (int) winningLotto.stream()
 			.filter(myLotto::contains).count();
 	}
 
-	public static boolean isMatchBonusNumber (int bonusNumber, List<Integer> myLotto) {
+	public static boolean isMatchBonusNumber (List<Integer> myLotto) {
 		return myLotto.contains(bonusNumber);
 	}
 }

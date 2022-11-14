@@ -13,6 +13,7 @@ import lotto.WinningLotto;
 public class WinningLottoTest {
 	HashMap<String, Integer> lottoResult = new HashMap<>();
 	HashMap<String, Integer> expected = new HashMap<>();
+	WinningLotto winningLotto = new WinningLotto(List.of(1, 2, 3, 4, 5, 6), 7);
 
 	@DisplayName("당첨된 로또 개수 확인")
 	@Test

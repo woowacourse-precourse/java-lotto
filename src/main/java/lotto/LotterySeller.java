@@ -5,13 +5,13 @@ import java.util.HashSet;
 import java.util.List;
 
 public class LotterySeller {
-	private static List<List<Integer>> LotteryTickets = new ArrayList<>();
+	private static List<List<Integer>> lotteryTickets = new ArrayList<>();
 
 	public static List<List<Integer>> sellLottery(int totalNumberOfLotto) {
 		for (int i = 0; i < totalNumberOfLotto; i++) {
 			Generator generator = new Generator();
-			LotteryTickets.add(generator.createLottery());
+			lotteryTickets.add(generator.createLottery());
 		}
-		return LotteryTickets;
+		return lotteryTickets;
 	}
 }
