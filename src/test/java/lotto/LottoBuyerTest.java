@@ -10,8 +10,19 @@ import java.io.InputStream;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-class LottoBuyerTest {
+class LottoBuyerTest  {
     LottoBuyer testMachine = new LottoBuyer();
+    @DisplayName("simpleTest")
+    @Test
+    void simpleTest() {
+        String i = "12000";
+        InputStream is = new ByteArrayInputStream(i.getBytes());
+        System.setIn(is);
+        testMachine.getMoney();
+
+        testMachine.buyLotto();
+        ;
+    }
     @DisplayName("money값이 로또 값으로 나누어 떨어지지 않으면 에러.")
     @Test
     void createNotDiv() {

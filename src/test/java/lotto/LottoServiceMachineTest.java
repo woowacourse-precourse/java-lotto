@@ -3,7 +3,9 @@ package lotto;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.util.List;
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
+
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
@@ -45,4 +47,17 @@ class LottoServiceMachineTest {
                 }
         ).isInstanceOf(IllegalArgumentException.class);
     }
+    @DisplayName("보너스로또 번호가 기존과 중복이면 예외 발생.")
+    @Test
+    void createByDuplicateWithinNormalAndBonus() {
+        assertThatThrownBy(
+                ()->{
+                    String input = "1,2,3,4,5,5";
+                    InputStream is = new ByteArrayInputStream(input.getBytes());
+                    testMachine.getWinningLottoNumber();
+                }
+        ).isInstanceOf(IllegalArgumentException.class);
+    }
+
+
 }
