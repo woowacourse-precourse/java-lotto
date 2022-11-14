@@ -2,11 +2,9 @@ package lotto.view;
 
 import camp.nextstep.edu.missionutils.Console;
 import lotto.Lotto;
-import lotto.WinLotto;
 
-import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
+
 
 public class UserInterface {
     String purchaseLotto() {
@@ -19,17 +17,14 @@ public class UserInterface {
         lottos.forEach(System.out::println);
     }
 
-    WinLotto winningLotto() {
-        System.out.println("당첨 번호를 입력해 주세요.");
-        String winningLottoNum = Console.readLine();
-        List<Integer> winningLottoNums = (List<Integer>) Arrays.stream(winningLottoNum.split(","))
-                .map(Integer::parseInt)
-                .collect(Collectors.toList());
-        Lotto lotto = new Lotto(winningLottoNums);
+    String inputWinningNumber() {
+        System.out.println("당첨 번호를 입력해주세요.");
+        return Console.readLine();
+    }
 
+    String inputWinningBonus() {
         System.out.println("보너스 번호를 입력해 주세요.");
-        String bonusNum = Console.readLine();
-
+        return Console.readLine();
     }
 
     void printRank() {
