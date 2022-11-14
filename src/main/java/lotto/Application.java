@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.List;
 import lotto.domain.Judgment;
+import lotto.domain.Lotto;
 import lotto.domain.NumberGenerator;
 import lotto.domain.Statistics;
 
