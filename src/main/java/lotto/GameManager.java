@@ -4,16 +4,20 @@ import static lotto.GameMessageManager.*;
 import static lotto.InputUtil.*;
 
 public class GameManager {
+  private User user;
+
+  public GameManager() {
+    this.user = new User();
+  }
+
   public void lottoGameStart() {
+    buyLotto();
+  }
+
+  private void buyLotto() {
     printInputBuyAmountMessage();
-    int buyAmount = getIntegerInput();
-    int buyCount = getBuyCountByBuyAmount(buyAmount);
-    printBuyCount(buyCount);
+    user.setBuyAmount(getIntegerInput());
+    user.setBuyCount();
+    printBuyCount(user.getBuyCount());
   }
-
-  private int getBuyCountByBuyAmount(int buyAmount){
-    return buyAmount / Lotto.PRICE;
-  }
-
-
 }

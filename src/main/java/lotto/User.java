@@ -8,9 +8,17 @@ public class User {
   private List<Lotto> userLottoList;
   private int prizeMoney;
 
+  public int getBuyCount() {
+    return this.buyCount;
+  }
+
   public void setBuyAmount(int buyAmount) {
     checkValidBuyAmount(buyAmount);
     this.buyAmount = buyAmount;
+  }
+
+  public void setBuyCount() {
+    this.buyCount = buyAmount / Lotto.PRICE;
   }
 
   private void checkValidBuyAmount(int buyAmount) {
