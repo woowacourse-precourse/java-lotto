@@ -17,6 +17,9 @@ public class Model {
         // 1에서 45까지 서로 다른 임의의 수 6개를 생성한다.
         List<Integer> randomNumber = Randoms.pickUniqueNumbersInRange(1, 45, 6);
 
+        // 로또 번호는 오름차순으로 정렬한다.
+        randomNumber = SortArrayList(randomNumber);
+
         return randomNumber;
     }
 
