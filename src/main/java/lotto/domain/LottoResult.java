@@ -8,8 +8,8 @@ public enum LottoResult {
     FIFTH("3개 일치 (5,000원) - ", 5_000),
     NOTHING("NOTHING", 0);
 
-    String result = "";
-    int prize = 0;
+    String result;
+    int prize;
 
     LottoResult(String result, int prize) {
         this.result = result;
