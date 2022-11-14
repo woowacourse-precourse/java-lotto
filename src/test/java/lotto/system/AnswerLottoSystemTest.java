@@ -1,5 +1,6 @@
 package lotto.system;
 
+
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import org.assertj.core.api.Assertions;
@@ -11,7 +12,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
 @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
-class RandomLottoSystemTest {
+class AnswerLottoSystemTest {
     private final PrintStream standardOut = System.out;
     private final ByteArrayOutputStream outputStreamCaptor = new ByteArrayOutputStream();
 
@@ -25,17 +26,20 @@ class RandomLottoSystemTest {
         System.setOut(standardOut);
     }
 
-    @ParameterizedTest
-    @CsvSource(value = {"1000:1", "2000:2", "30000:30", "100000:100", "9999000:9999"}, delimiterString = ":")
-    void 사용자가_금액을_입력하면_입력한_금액만큼_랜덤한_로또를_만들어냅니다(final String moneyInput, final String countInput) {
-        var fakeIoSystem = new IoSystemFake(moneyInput);
-        var randomLottoSystem = new RandomLottoSystem(fakeIoSystem);
 
-        randomLottoSystem.generateLottoBundle();
+    @ParameterizedTest
+    @CsvSource(value = {"1,2,3,4,5,6:7"}, delimiterString = ":")
+    void 정답_로또_시스템이_정상적으로_메시지를_출력합니다(final String lottoInput, final String bonusNumberInput) {
+
+        var fakeIoSystem = new IoSystemFake(lottoInput, bonusNumberInput);
+        var answerLottoSystem = new AnswerLottoSystem(fakeIoSystem);
+
+        answerLottoSystem.generateAnswerLotto();
 
         var actual = outputStreamCaptor.toString().split("\n");
-        var expected = new String[]{"구입금액을 입력해 주세요.", countInput + "개를 구매했습니다."};
-
+        var expected = new String[]{"당첨 번호를 입력해 주세요.",
+                "보너스 번호를 입력해 주세요."};
         Assertions.assertThat(actual).contains(expected);
     }
+
 }
