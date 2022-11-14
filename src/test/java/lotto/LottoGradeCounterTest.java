@@ -17,6 +17,23 @@ class LottoGradeCounterTest {
         counter.forEach((k,v) -> {
             assertThat(v).isEqualTo(expect);
         });
+    }
 
+    @Test
+    @DisplayName("프린트용 Counter가 꽝을 제외하는가")
+    void checkPrintCounterRemoveBang() throws Exception {
+        //given
+        LottoGradeCounter counter = new LottoGradeCounter();
+        counter.countByOne(LottoGrade.BANG);
+        counter.countByOne(LottoGrade.BANG);
+        counter.countByOne(LottoGrade.BANG);
+        counter.countByOne(LottoGrade.BANG);
+        int expect = 0;
+        //when
+        LottoGradeCounter printCounter = counter.getPrintList();
+        //then
+        printCounter.forEach((k,v) -> {
+            assertThat(v).isEqualTo(expect);
+        });
     }
 }
