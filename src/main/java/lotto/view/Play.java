@@ -25,7 +25,6 @@ public class Play {
 
     public void startPlay(){
         System.out.println(START_MESSAGE);
-        System.out.println(result.calculateRate(8000,5000));
 
         String amount = Console.readLine();
         int total = purchase.calculateAmount(amount);
