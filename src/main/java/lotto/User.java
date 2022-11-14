@@ -14,7 +14,7 @@ public class User {
         this.lottoList = createLottoList(purchasePrice);
     }
 
-    public static void validatePurchasePrice(String input) {
+    public void validatePurchasePrice(String input) {
         int inputNumber;
         try {
             inputNumber = Integer.parseInt(input);
@@ -41,7 +41,7 @@ public class User {
         }
     }
 
-    public static List<Lotto> createLottoList(int purchasePrice) {
+    public List<Lotto> createLottoList(int purchasePrice) {
         int range = purchasePrice / 1000;
         List<Lotto> lottoList = new ArrayList<>();
         for (int i = 0; i < range; i++) {
