@@ -1,6 +1,9 @@
 package lotto.view;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 import lotto.model.Lotto;
 import lotto.model.LottoCount;
@@ -36,7 +39,10 @@ public class OutputView {
 
     public static void printPurchasedLottoNumbers(Lottos lottos) {
         for (Lotto lotto : lottos.getLottos()) {
-            lotto.printLottoNumbers();
+            List<Integer> numbers = new ArrayList<>(lotto.get());
+
+            Collections.sort(numbers);
+            System.out.println(numbers);
         }
         System.out.print(NEW_LINE);
     }

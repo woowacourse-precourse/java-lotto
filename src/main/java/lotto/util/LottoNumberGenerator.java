@@ -1,7 +1,6 @@
 package lotto.util;
 
 import camp.nextstep.edu.missionutils.Randoms;
-import java.util.Collections;
 import java.util.List;
 import lotto.model.Lotto;
 import lotto.model.LottoCount;
@@ -22,7 +21,6 @@ public class LottoNumberGenerator {
 
         do {
             List<Integer> lottoNumbers = Randoms.pickUniqueNumbersInRange(MIN_RANGE, MAX_RANGE, MAX_LENGTH);
-            Collections.sort(lottoNumbers);
             Lotto lotto = new Lotto(lottoNumbers);
             lottos.addLotto(lotto);
             count--;
