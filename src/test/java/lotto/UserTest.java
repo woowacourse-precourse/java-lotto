@@ -24,6 +24,7 @@ class UserTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+    @DisplayName("LottoList 생성 테스트(List 길이, 각 원소의 numbers의 길이, numbers 원소 중복 여부 및 범위)")
     @Test
     void createLottoListTest() {
         User user = new User("12000");
