@@ -1,6 +1,7 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
+import constant.Message;
 
 public class Counter {
     private int money;
@@ -10,29 +11,32 @@ public class Counter {
         money = 0;
     }
 
-    private void putMoney() {
+    public void putMoney() {
+        System.out.println(Message.EnterPurchasingAmountMessage);
         String inputMoney = Console.readLine();
+
         moneyCheck(inputMoney);
-        moneyCount(money);
     }
 
     private void moneyCheck(String inputMoney) {
         numberCheck(inputMoney);
         money = Integer.parseInt(inputMoney);
         unitCheck(money);
+
+        moneyCount(money);
     }
 
-    private void numberCheck(String inputMoney) {
+    public void numberCheck(String inputMoney) {
         try {
             Double.parseDouble(inputMoney);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("숫자가 아닙니다.");
+            throw new IllegalArgumentException(Message.IsNotNumberMessage);
         }
     }
 
-    private void unitCheck(int money) {
+    public void unitCheck(int money) {
         if (money % 1000 != 0) {
-            throw new IllegalArgumentException("1000원 단위의 금액이 아닙니다.");
+            throw new IllegalArgumentException(Message.IsNotThousandUnitMessage);
         }
     }
 
@@ -41,6 +45,7 @@ public class Counter {
     }
 
     public int getNumberOfLotto() {
+        System.out.println(numberOfLotto + Message.PurchaseMessage);
         return numberOfLotto;
     }
 }
