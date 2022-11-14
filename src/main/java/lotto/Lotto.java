@@ -1,5 +1,6 @@
 package lotto;
 
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -8,33 +9,23 @@ public class Lotto {
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
-        validate(numbers);
+        isValidSize(numbers);
         isDup(numbers);
+        Collections.sort(numbers);
         this.numbers = numbers;
     }
 
-    public void play() {
-
-    }
-
-    private void validate(List<Integer> numbers) {
+    private void isValidSize(List<Integer> numbers) {
         if (numbers.size() != 6) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR] 숫자 6개를 초과할 수 없습니다.");
         }
     }
 
-    private void isDup(List<Integer> numbers) {
-        Set checkDup = new HashSet();
-        for(int num : numbers){
-            checkDup.add(num);
+    private void isDup(List<Integer> numbers){
+        Set<Integer> dupCheck = new HashSet<>(numbers);
+        if (dupCheck.size() != 6){
+            throw new IllegalArgumentException("[ERROR] 숫자는 중복될 수 없습니다.");
         }
-        if(checkDup.size() != 6) {
-            throw new IllegalArgumentException();
-        }
-    }
-
-    public void printResult(int bonus) {
-
     }
 
     // TODO: 추가 기능 구현
