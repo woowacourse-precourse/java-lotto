@@ -2,13 +2,13 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class NumberGenerator {
-    public List<Integer> createWinningNumbers(String inputNumbers) {
+    public List<Integer> createWinningNumbers(List<String> inputNumbers) {
         List<Integer> winningNumbers = new ArrayList<>();
-        String[] splitNumbers = inputNumbers.split(",");
-        for (String number : splitNumbers) {
+        for (String number : inputNumbers) {
             checkNumber(number);
             int winningNumber = Integer.parseInt(number);
             winningNumbers.add(winningNumber);
@@ -16,12 +16,10 @@ public class NumberGenerator {
         return winningNumbers;
     }
 
-    public int createBonusNumbers(List<Integer> numbers, String inputNumber) {
-        checkNumber(inputNumber);
-        int bonusNumber = Integer.parseInt(inputNumber);
-        checkScope(bonusNumber);
-        checkOverlap(numbers, bonusNumber);
-        return bonusNumber;
+    public int createBonusNumbers(List<Integer> numbers, int inputNumber) {
+        checkScope(inputNumber);
+        checkOverlap(numbers, inputNumber);
+        return inputNumber;
     }
 
     public void checkNumber(String number) {
@@ -43,7 +41,9 @@ public class NumberGenerator {
     }
 
     public List<Integer> createLottoNumbers() {
-        return Randoms.pickUniqueNumbersInRange(1, 45, 6);
+        List<Integer> randomNumbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+        Collections.sort(randomNumbers);
+        return randomNumbers;
     }
 
 }

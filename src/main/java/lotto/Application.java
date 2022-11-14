@@ -17,20 +17,15 @@ public class Application {
             final int lottoCount = lottoManager.inputPurchaseMoney();
             lottoManager.printLottoCount(lottoCount);
 
-//            List<Lotto> lottos = new ArrayList<>(lottoCount);
-//            for (int i = 0; i < lottoCount; i++) {
-//                lottos.add(i, new Lotto(numberGenerator.createLottoNumbers()));
-//            }
             Lottos lottos = new Lottos(lottoCount);
             lottoManager.printLottoNumbers(lottos.getLottos());
 
             List<Integer> winningNumbers = numberGenerator.createWinningNumbers(lottoManager.inputWinningNumbers());
-            WinningNumbers w = new WinningNumbers(winningNumbers);
-            final int bonusNumber = numberGenerator.createBonusNumbers(winningNumbers, lottoManager.inputBonusNumber());
+            WinningNumbers w = new WinningNumbers(winningNumbers, lottoManager.inputBonusNumber());
 
             for (Lotto lotto : lottos.getLottos()) {
-                int correctCount = lottoCalculator.compare(lotto.getNumbers(), w.getNumbers(), bonusNumber);
-                lottoCalculator.addRankCount(correctCount);
+//                int correctCount = lottoCalculator.compare(lotto.getNumbers(), w.getNumbers(), w.getBonusNumber());
+                lottoCalculator.addRankCount(lottoCalculator.compare(lotto.getNumbers(), w.getNumbers(), w.getBonusNumber()));
             }
 
             lottoManager.printWinningDetails(lottoCalculator.getRankCount());

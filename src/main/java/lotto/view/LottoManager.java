@@ -1,6 +1,7 @@
 package lotto.view;
 
 import camp.nextstep.edu.missionutils.Console;
+import java.util.Arrays;
 import java.util.List;
 import lotto.model.Lotto;
 
@@ -42,16 +43,16 @@ public class LottoManager {
         }
     }
 
-    public String inputWinningNumbers() {
+    public List<String> inputWinningNumbers() {
         System.out.println("당첨번호를 입력해주세요.");
-        return Console.readLine();
+        return Arrays.asList(Console.readLine().split(","));
     }
 
-    public String inputBonusNumber() {
+    public int inputBonusNumber() {
         System.out.println("보너스 번호를 입력해 주세요.");
         String bonusNumber = Console.readLine();
         checkNumber(bonusNumber);
-        return bonusNumber;
+        return Integer.parseInt(bonusNumber);
     }
 
     public void printWinningDetails(List<Integer> rankCount) {

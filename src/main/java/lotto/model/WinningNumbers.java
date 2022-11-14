@@ -2,19 +2,29 @@ package lotto.model;
 
 import java.util.List;
 import java.util.stream.Collectors;
+import lotto.NumberGenerator;
 
 public class WinningNumbers {
     private final List<Integer> numbers;
+    private final int bonusNumber;
+    NumberGenerator numberGenerator;
 
-    public WinningNumbers(List<Integer> numbers) {
+    public WinningNumbers(List<Integer> numbers, int bonusNumber) {
+        numberGenerator = new NumberGenerator();
         validate(numbers);
         checkOverlap(numbers);
         checkScope(numbers);
         this.numbers = numbers;
+        this.bonusNumber = numberGenerator.createBonusNumbers(numbers, bonusNumber);
+
     }
 
     public List<Integer> getNumbers() {
         return numbers;
+    }
+
+    public int getBonusNumber() {
+        return bonusNumber;
     }
 
     private void validate(List<Integer> numbers) {
