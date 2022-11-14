@@ -53,4 +53,13 @@ public class View {
             throw e;
         }
     }
+
+    public Integer inputBonusNumber(){
+        try {
+            return Integer.parseInt(Console.readLine());
+        } catch (IllegalArgumentException e) {
+            System.out.println("[Error] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
+            throw e;
+        }
+    }
 }
