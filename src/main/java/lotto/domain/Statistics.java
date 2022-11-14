@@ -38,4 +38,12 @@ public class Statistics {
                 .mapToInt(count -> count)
                 .sum();
     }
+
+    private long calculateEarnings() {
+        long earnings = 0;
+        for (Rank rank : rankRecord.keySet()) {
+            earnings += (long) rankRecord.get(rank) * rankPrize.get(rank);
+        }
+        return earnings;
+    }
 }

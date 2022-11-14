@@ -78,7 +78,7 @@
 - [ ] 발행된 Lotto 수와 총 당첨금 정보를 활용해 수익률 계산 - Statistics#calculateEarningsRate()
   - [X] 총 몇 개의 로또를 구매 했는지 계산 - Statistics#calculateNumberOfLottosPaid()
   - [X] 로또 등수 별로 상금 정보 초기화
-  - [ ] 총 당첨 수익 계산 - Statistics#calculateEarnings()
+  - [X] 총 당첨 수익 계산 - Statistics#calculateEarnings()
   - [ ] 소수점 둘째 자리에서 반올림 처리 (ex. 100.0%, 51.5%, 1,000,000,0%) - Statistics#roundToTwoDecimalPlaces()
   
 #### ErrorType 
