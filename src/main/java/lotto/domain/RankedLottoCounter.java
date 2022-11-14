@@ -5,8 +5,11 @@ import java.util.List;
 import java.util.Map;
 
 public class RankedLottoCounter {
+    private static final int ZERO = 0;
+    private static final int ONE = 1;
+
     private Map<Ranking, Integer> numberOfRankedLottos;
-    private WinningLotto winningLotto;
+    private final WinningLotto winningLotto;
 
     public RankedLottoCounter(WinningLotto winningLotto) {
         this.winningLotto = winningLotto;
@@ -16,18 +19,18 @@ public class RankedLottoCounter {
     private void init() {
         numberOfRankedLottos = new EnumMap<>(Ranking.class);
         for (Ranking ranking : Ranking.values()) {
-            numberOfRankedLottos.put(ranking, 0);
+            numberOfRankedLottos.put(ranking, ZERO);
         }
     }
 
-    public  Map<Ranking, Integer> countRankedLottos(List<Lotto> lottos) {
+    public Map<Ranking, Integer> countRankedLottos(List<Lotto> lottos) {
         for (Lotto lotto : lottos) {
             int numberOfMatchNumbers = winningLotto.countMatchNumber(lotto);
             boolean bonusNumberMatch = winningLotto.checkBonusNumber(lotto);
             Ranking ranking = Ranking.getRank(numberOfMatchNumbers, bonusNumberMatch);
             int currentCount = numberOfRankedLottos.get(ranking);
 
-            numberOfRankedLottos.put(ranking, currentCount + 1);
+            numberOfRankedLottos.put(ranking, currentCount + ONE);
         }
         return numberOfRankedLottos;
     }

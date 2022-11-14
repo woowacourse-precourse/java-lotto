@@ -3,8 +3,13 @@ package lotto.domain;
 import java.util.List;
 
 public class WinningLotto {
-    private Lotto winninglotto;
-    private int bonusNumber;
+    private static final int LOWER_LIMIT_OF_LOTTO_NUM = 1;
+    private static final int UPPER_LIMIT_OF_LOTTO_NUM = 45;
+    private static final String OUT_OF_RANGE_ERROR_MESSAGE = "[ERROR] 1에서 45 사이의 숫자를 입력해야 합니다.";
+    private static final String ALREADY_EXISTENT_NUMBER = "[ERROR] 당첨번호에 존재하는 숫자를 입력하면 안됩니다.";
+
+    private final Lotto winninglotto;
+    private final int bonusNumber;
 
     public WinningLotto(Lotto lotto, int bonusNumber) {
         winninglotto = lotto;
@@ -13,11 +18,11 @@ public class WinningLotto {
     }
 
     private void validateBonusNumber(int bonusNumber) {
-        if (bonusNumber < 0 || bonusNumber > 45) {
-            throw new IllegalArgumentException("[ERROR] 0에서 45 사이의 숫자를 입력해야 합니다.");
+        if (bonusNumber < LOWER_LIMIT_OF_LOTTO_NUM || bonusNumber > UPPER_LIMIT_OF_LOTTO_NUM) {
+            throw new IllegalArgumentException(OUT_OF_RANGE_ERROR_MESSAGE);
         }
         if (winninglotto.getNumbers().contains(bonusNumber)) {
-            throw new IllegalArgumentException("[ERROR] 당첨번호에 존재하는 숫자를 입력하면 안됩니다.");
+            throw new IllegalArgumentException(ALREADY_EXISTENT_NUMBER);
         }
     }
 
@@ -34,9 +39,6 @@ public class WinningLotto {
     }
 
     public boolean checkBonusNumber(Lotto lotto) {
-        if (lotto.getNumbers().contains(bonusNumber)) {
-            return true;
-        }
-        return false;
+        return lotto.getNumbers().contains(bonusNumber);
     }
 }
