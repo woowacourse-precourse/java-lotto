@@ -1,8 +1,8 @@
 package lotto.view;
 
 import camp.nextstep.edu.missionutils.Console;
-import lotto.vo.LottoNumber;
-import lotto.vo.PurchaseMoney;
+import lotto.domain.LottoNumber;
+import lotto.domain.PurchaseMoney;
 
 import java.util.Arrays;
 import java.util.HashSet;
