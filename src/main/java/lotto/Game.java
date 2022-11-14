@@ -3,7 +3,9 @@ package lotto;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Game {
     private static final String INPUT_PRICE = "구입금액을 입력해주세요";
@@ -16,6 +18,7 @@ public class Game {
 
         Integer inputPrice = getInputPrice();
         List<Lotto> lottos = getLottos(inputPrice);
+        List<Integer> winNumbers = getWinNumbers();
 
     }
 
@@ -55,6 +58,24 @@ public class Game {
             lottos.add(new Lotto(Lotto.issueLotto()));
         }
         return lottos;
+    }
+
+    private static List<Integer> getWinNumbers() {
+        System.out.println(INPUT_WINNING_NUMBERS);
+        String input = Console.readLine();
+        String[] winInput = input.split(",");
+        List<Integer> winNumbers = Arrays.stream(winInput).mapToInt(s -> Integer.parseInt(s)).boxed().collect(Collectors.toList());
+
+        if (winNumbers.size() != 6) {
+            throw new IllegalArgumentException("[ERROR] 당첨번호는 6개여야 합니다.");
+        }
+        if (winNumbers.size() != winNumbers.stream().distinct().count()) {
+            throw new IllegalArgumentException("[ERROR] 당첨 번호가 중복되지 않아야 합니다.");
+        }
+        if (winNumbers.stream().anyMatch(i -> i > 45 || i < 1)) {
+            throw new IllegalArgumentException("[ERROR] 당첨 번호는 1이상 45이하여야 합니다.");
+        }
+        return winNumbers;
     }
 
 }
