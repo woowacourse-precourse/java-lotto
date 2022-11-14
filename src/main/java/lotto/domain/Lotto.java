@@ -45,6 +45,10 @@ public class Lotto {
         return numbers.stream().distinct().count() != Config.LOTTO_NUMBER_COUNT;
     }
 
+    public boolean contain(int number) {
+        return numbers.contains(number);
+    }
+
     @Override
     public String toString() {
         return numbers.stream()

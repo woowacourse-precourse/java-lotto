@@ -36,6 +36,7 @@ public class LottoController implements Controller {
         validateInput(input, WinningNumberValidator.values());
         List<Integer> winningNumber = separateStringWithComma(input);
         Lotto winningLotto = new Lotto(winningNumber);
+        service.setWinningLotto(winningLotto);
     }
 
     public List<Integer> separateStringWithComma(String input) {
@@ -48,5 +49,6 @@ public class LottoController implements Controller {
     public void inputBonusNumber(String input) {
         validateInput(input, BonusNumberValidator.values());
         int number = Integer.parseInt(input);
+        service.setBonusNumber(number);
     }
 }
