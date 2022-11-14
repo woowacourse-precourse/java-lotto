@@ -34,4 +34,12 @@ public class LottoTest {
 
         assertThat(lotto.countContainsNumber(otherLotto)).isEqualTo(3);
     }
+
+    @DisplayName("한개의 로또에서 주어진 숫자를 포함하고 있는지 여부")
+    @Test
+    void isContains() {
+        Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+        assertThat(lotto.isContains(1)).isTrue();
+        assertThat(lotto.isContains(7)).isFalse();
+    }
 }
