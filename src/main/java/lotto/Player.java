@@ -18,23 +18,30 @@ public class Player {
 
     private int getMoneyPurchased() {
         String money = Console.readLine();
+        money = eraseAllBlank(money);
         validation.checkPurchaseInput(money);
         return Integer.parseInt(money);
     }
 
     public void selectWinningNumbers() {
-        String input = Console.readLine();
-        validation.checkWinningNumberInput(input);
+        String numbers = Console.readLine();
+        numbers = eraseAllBlank(numbers);
+        validation.checkWinningNumberInput(numbers);
 
-        String[] winningNumbers = input.split(",");
+        String[] winningNumbers = numbers.split(",");
         lottoBot.saveWinningNumbers(winningNumbers);
     }
 
     public void selectBonusNumber() {
-        String input = Console.readLine();
-        validation.checkBonusNumberInput(input);
+        String number = Console.readLine();
+        number = eraseAllBlank(number);
+        validation.checkBonusNumberInput(number);
 
-        lottoBot.saveBonusNumber(input);
+        lottoBot.saveBonusNumber(number);
+    }
+
+    private String eraseAllBlank(String str) {
+        return str.replace(" ", "");
     }
 }
 
