@@ -4,12 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 import camp.nextstep.edu.missionutils.Randoms;
 
-public class LottoList {
+public class LottoGroup {
 
     private final int LOTTO_COUNT;
     private final List<Lotto> LOTTO_LIST = new ArrayList<Lotto>();
 
-    public LottoList(int buyAmount) {
+    public LottoGroup(int buyAmount) {
         this.LOTTO_COUNT = buyLottoCount(buyAmount);
         for (int count = 0; count < LOTTO_COUNT; count++) {
             LottoNumberSave();

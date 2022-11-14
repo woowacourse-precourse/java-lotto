@@ -6,7 +6,7 @@ public class Result {
 
     private final LinkedHashMap<Rank, Integer> result = new LinkedHashMap<>();
 
-    public Result(LottoList lottolist, UserNumbers usernumbers) {
+    public Result(LottoGroup lottolist, UserLotto usernumbers) {
         for (Lotto lotto : lottolist.getLOTTO_LIST()) {
             Rank rank = Rank.valueOf(SameCount(lotto, usernumbers.getNUMBERS()),
                 lotto.getNumbers().contains(usernumbers.getBONUS_NUMBER()));

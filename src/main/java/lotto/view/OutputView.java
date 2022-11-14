@@ -1,6 +1,6 @@
 package lotto.view;
 
-import lotto.model.LottoList;
+import lotto.model.LottoGroup;
 import lotto.model.Lotto;
 import lotto.model.Rank;
 import lotto.model.Result;
@@ -11,8 +11,8 @@ public class OutputView {
         System.out.println("\n" + count + "개를 구매했습니다.");
     }
 
-    public static void LottoListPrint(LottoList lottoList) {
-        for (Lotto lotto : lottoList.getLOTTO_LIST()) {
+    public static void LottoListPrint(LottoGroup lottoGroup) {
+        for (Lotto lotto : lottoGroup.getLOTTO_LIST()) {
             LottoNumberPrint(lotto);
             System.out.println("");
         }

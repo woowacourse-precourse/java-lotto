@@ -3,13 +3,13 @@ package lotto.model;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UserNumbers {
+public class UserLotto {
 
     private final Lotto NUMBERS;
     private final int BONUS_NUMBER;
 
 
-    public UserNumbers(String usernumbers, String bonusnumber) {
+    public UserLotto(String usernumbers, String bonusnumber) {
         List<Integer> numbers = new ArrayList<>();
         for (String s : stringSplit(usernumbers)) {
             numbers.add(IntegerValidate(s));

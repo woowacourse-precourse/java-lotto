@@ -4,21 +4,21 @@ import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomUniqueN
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 import java.util.List;
-import lotto.model.LottoList;
+import lotto.model.LottoGroup;
 import lotto.model.Rank;
 import lotto.model.Result;
-import lotto.model.UserNumbers;
+import lotto.model.UserLotto;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 class ResultTest {
 
-    private UserNumbers userNumbers;
+    private UserLotto userLotto;
 
     @BeforeEach
     void setup() {
-        userNumbers = new UserNumbers("1,2,3,4,5,6", "7");
+        userLotto = new UserLotto("1,2,3,4,5,6", "7");
     }
 
     @DisplayName("1등 테스트")
@@ -26,8 +26,8 @@ class ResultTest {
     void firsttest() {
         assertRandomUniqueNumbersInRangeTest(
             () -> {
-                LottoList lottoList = new LottoList(1000);
-                Result result = new Result(lottoList,userNumbers);
+                LottoGroup lottoGroup = new LottoGroup(1000);
+                Result result = new Result(lottoGroup, userLotto);
                 assertThat(result.getRankCount(Rank.FIRST)).isEqualTo(1);
                 assertThat(result.getRankCount(Rank.SECOND)).isEqualTo(0);
                 assertThat(result.getRankCount(Rank.THIRD)).isEqualTo(0);
@@ -44,8 +44,8 @@ class ResultTest {
     void test() {
         assertRandomUniqueNumbersInRangeTest(
             () -> {
-                LottoList lottoList = new LottoList(4000);
-                Result result = new Result(lottoList,userNumbers);
+                LottoGroup lottoGroup = new LottoGroup(4000);
+                Result result = new Result(lottoGroup, userLotto);
                 assertThat(result.getRankCount(Rank.FIFTH)).isEqualTo(3);
                 assertThat(result.getRankCount(Rank.FOURTH)).isEqualTo(1);
                 assertThat(result.getRankCount(Rank.THIRD)).isEqualTo(0);
@@ -65,8 +65,8 @@ class ResultTest {
     void secondtest() {
         assertRandomUniqueNumbersInRangeTest(
             () -> {
-                LottoList lottoList = new LottoList(1000);
-                Result result = new Result(lottoList,userNumbers);
+                LottoGroup lottoGroup = new LottoGroup(1000);
+                Result result = new Result(lottoGroup, userLotto);
                 assertThat(result.getRankCount(Rank.FIRST)).isEqualTo(0);
                 assertThat(result.getRankCount(Rank.SECOND)).isEqualTo(1);
                 assertThat(result.getRankCount(Rank.FIFTH)).isEqualTo(0);
