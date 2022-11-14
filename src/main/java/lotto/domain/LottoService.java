@@ -3,6 +3,7 @@ package lotto.domain;
 import camp.nextstep.edu.missionutils.Randoms;
 import lotto.model.Lotto;
 
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -31,6 +32,14 @@ public class LottoService {
     public List<Integer> generateLottoNumbers() {
 
         List<Integer> lottoNumbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+        List<Integer> sortedLottoNumbers = sortedlottoNumbers(lottoNumbers);
+
+        return sortedLottoNumbers;
+    }
+
+    private List<Integer> sortedlottoNumbers(List<Integer> lottoNumbers) {
+
+        Collections.sort(lottoNumbers);
 
         return lottoNumbers;
     }
