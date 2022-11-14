@@ -1,5 +1,6 @@
 package lotto;
 
+import lotto.exception.DuplicateLottoNumberException;
 import lotto.exception.InvalidSizeLottoNumberException;
 
 import java.util.HashSet;
@@ -28,7 +29,7 @@ public class Lotto {
     private void validateDuplicate(List<Integer> numbers) {
         Set<Integer> nonDuplicateNumbers = new HashSet<>(numbers);
         if (nonDuplicateNumbers.size() != 6) {
-            throw new IllegalArgumentException("[ERROR] 번호가 중복되는 로또 번호가 존재합니다.");
+            throw new DuplicateLottoNumberException();
         }
     }
 }
