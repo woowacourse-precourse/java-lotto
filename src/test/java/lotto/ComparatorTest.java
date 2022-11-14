@@ -24,14 +24,4 @@ public class ComparatorTest {
         assertThat(luckyCount).isEqualTo(5);
     }
 
-    @DisplayName("사용자 로또와 당첨 로또를 비교한다.")
-    @Test
-    void getWinningAmount() {
-    List<Integer> result = lottoComparator.compareUserLottoAndWinningLotto(List.of(new Lotto(List.of(1,2,3,4,5,6))),
-            new BonusNumber(6),new Lotto(List.of(1,2,3,4,5,7)));
-
-    assertThat(result).isEqualTo(List.of(0,0,0,0,0,0,1,0));
-    }
-
-
 }

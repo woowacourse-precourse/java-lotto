@@ -13,6 +13,9 @@ import java.util.List;
 public class InputValidator {
 
     public static Money checkUserInputMoney(String userInputMoney) {
+        if(checkIsNumber(userInputMoney)){
+            throw new IllegalArgumentException(ExceptionStatus.NOT_NUMBER.getText());
+        }
         if(checkZeroInHead(userInputMoney)){
             throw new IllegalArgumentException(ExceptionStatus.ZERO_IN_HEAD.getText());
         }
@@ -90,7 +93,7 @@ public class InputValidator {
         }
         return false;
     }
-    
+
     public static BonusNumber checkBonusNumber(String bonusNumber, Lotto winningLotto) {
         if(checkIsNumber(bonusNumber)){
             throw new IllegalArgumentException(ExceptionStatus.NOT_NUMBER.getText());
@@ -105,9 +108,9 @@ public class InputValidator {
         return new BonusNumber(Integer.parseInt(bonusNumber));
     }
 
-    private static boolean checkIsNumber(String bonusNumber) {
+    private static boolean checkIsNumber(String number) {
         try{
-            Integer.parseInt(bonusNumber);
+            Integer.parseInt(number);
         }catch (NumberFormatException exception){
             return true;
         }
