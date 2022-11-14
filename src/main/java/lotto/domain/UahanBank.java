@@ -31,11 +31,11 @@ public class UahanBank {
         return Collections.unmodifiableList(scores);
     }
 
-    public int changeLottoToMoney(Lotto lotto){
+    public int changeLottoToMoney(Lotto wonLotto, Lotto bonusLotto, Lotto lotto){
         return 0;
     }
 
-    private Score calculateLottoToScore(Lotto lotto){
+    private Score calculateLottoToScore(Lotto wonLotto, Lotto bonusLotto, Lotto lotto){
         return null;
     }
 }
