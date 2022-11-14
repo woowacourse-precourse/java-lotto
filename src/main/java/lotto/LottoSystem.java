@@ -39,4 +39,14 @@ public class LottoSystem {
         return result;
     }
 
+    private int getBonusMatchedCnt(List<Integer> target) {
+        int result = 0;
+        for (int i = 0; i < target.size(); i++) {
+            if (target.get(i) == this.bonusNumbers) {
+                result++;
+                break;
+            }
+        }
+        return result;
+    }
 }
