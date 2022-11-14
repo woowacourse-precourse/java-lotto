@@ -1,15 +1,12 @@
 package lotto.utils;
 
-import static lotto.uitls.Converter.convertToIntegerList;
+import static lotto.utils.Converter.convertToIntegerList;
+import static lotto.utils.Constants.*;
 
 import java.util.List;
 import java.util.regex.Pattern;
 
 public class Validation {
-    private static final int LOTTO_PRICE = 1_000;
-    private static final int COUNT_OF_NUMBERS_IN_LOTTO = 1_000;
-    private static final int LOTTO_MIN = 1;
-    private static final int LOTTO_MAX = 45;
 
     public static void validateLottoPurchaseAmount(String purchaseAmount) {
         if (hasNonDigitCharacter(purchaseAmount)) {
