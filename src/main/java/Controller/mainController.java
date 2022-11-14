@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static Service.LottoService.lottos;
-import static Controller.GameController.getWinning_numbers;
+import static domain.Game.getWinning_numbers;
 import static domain.Game.*;
 import static domain.Grade.getGrade;
 

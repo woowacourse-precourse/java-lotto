@@ -19,10 +19,9 @@ public class View {
     public static final String MESSAGE_STACTISTICS_FORMAT = "당첨 통계" + "\n";
     public static final boolean NOT_DIVISON_AMOUNT = Game.paymentAmount % Game.LottoPrice != 0;
 
-    public static String read_WinningNumbers() {
+    public static void read_WinningNumbers() {
         System.out.print(MESSAGE_WINNINGNUMBERS_INPUT_FORMAT);
         Game.winningNumbers_Input = Console.readLine();
-        return Game.winningNumbers_Input;
     }
 
     public static boolean read_buyingLottoAmount() {
@@ -53,11 +52,11 @@ public class View {
         System.out.println(MESSAGE_SIX_FORMAT + first_count + "개");
     }
 
-    public static void print_LottoNumber() {
+    public static void print_purchasedLottoNumber() {
         System.out.print(getLottoCount() + "개를 구매했습니다." + "\n");
     }
 
-    public static void print_Message_Stastistics() {
+    public static void print_Message_Winning_Stastistics() {
         System.out.print(MESSAGE_STACTISTICS_FORMAT);
     }
 
