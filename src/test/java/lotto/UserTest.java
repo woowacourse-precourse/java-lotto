@@ -40,8 +40,8 @@ class UserTest {
 
     @Test
     void 당첨_번호_입력(){
-        List<Integer> answer = List.of(1,2,3,4,5,6);
-        String userInput = "1,2,3,4,5,6";
+        List<Integer> answer = List.of(11,12,13,14,15,16);
+        String userInput = "11,12,13,14,15,16";
 
         ByteArrayInputStream input = new ByteArrayInputStream(userInput.getBytes());
         System.setIn(input);

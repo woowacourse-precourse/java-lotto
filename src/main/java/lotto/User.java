@@ -1,10 +1,10 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.regex.Pattern;
-import java.util.stream.Collectors;
 
 public class User {
     final static String PRICE_PATTERN = "^[0-9]*$";
@@ -12,7 +12,7 @@ public class User {
     final static int BONUS_NUMBER_SIZE = 1;
 
     public int purchasePrice;
-    public List<Integer> winningNumbers;
+    public List<Integer> winningNumbers = new ArrayList<>();
     public int bonusNumber;
 
     public User() {
@@ -35,23 +35,28 @@ public class User {
     }
 
     public void setWinningNumbers() {
-        String winningNumbers = Console.readLine();
-        winningNumbers = winningNumbers.replace(",", "");
-        if (isValidWinningNumbers(winningNumbers)) {
-            List<String> list =  Arrays.asList(winningNumbers.split(""));
-            this.winningNumbers = list.stream()
-                    .map(s -> Integer.parseInt(s))
-                    .collect(Collectors.toList());
-            return;
+        List<String> list =  Arrays.asList(Console.readLine().split(","));
+        if (!isWinningNumberSize(list)) {
+            throw new IllegalArgumentException();
         }
-        throw new IllegalArgumentException();
+        for (String winningNumber : list) {
+            if (isWinningNumberNumeric(winningNumber)) {
+                this.winningNumbers.add(Integer.parseInt(winningNumber));
+            }
+            throw new IllegalArgumentException();
+        }
     }
 
-    private boolean isValidWinningNumbers(String winningNumbers) {
+    private boolean isWinningNumberNumeric(String winningNumbers) {
         boolean isNumeric = Pattern.matches(PRICE_PATTERN, winningNumbers);
-        boolean isWinningNumberSize = (winningNumbers.length() == WINNING_NUMBER_SIZE);
 
-        return (isNumeric && isWinningNumberSize);
+        return isNumeric;
+    }
+
+    private boolean isWinningNumberSize(List<String> winningNumbers) {
+        boolean isSize = winningNumbers.size() == WINNING_NUMBER_SIZE;
+
+        return isSize;
     }
 
     public void setBonusNumber() {
