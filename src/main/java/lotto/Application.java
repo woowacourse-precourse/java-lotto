@@ -16,5 +16,16 @@ public class Application {
 
     public static void main(String[] args) {
         // TODO: 프로그램 구현
+        System.out.println("구매금액을 입력해주세요.");
+        String money = Console.readLine();
+        int lottoNumber = Integer.parseInt(money) / 1000;
+        System.out.println(lottoNumber + "개를 구매했습니다.");
+
+        for (int cnt = 0; cnt < lottoNumber; cnt++) {
+            List<Integer> numbers = makeRandom();
+            Lotto lotto = new Lotto(numbers);
+            lotto_list.add(lotto); //로또 리스트에 담기
+            lotto.getNumbers(); //로또 번호 출옴
+        }
     }
 }
