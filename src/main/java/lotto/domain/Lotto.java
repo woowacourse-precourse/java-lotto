@@ -21,14 +21,8 @@ public class Lotto {
         view.validateNumbersInRange(numbers);
     }
 
-    public int checkLotto(List<Integer> winner) {
-        int matchCounts = 0;
-        for (int value : winner) {
-            if (numbers.contains(value)) {
-                matchCounts++;
-            }
-        }
-        return matchCounts;
+    public List<Integer> getLotto() {
+        return this.numbers;
     }
     public List<Integer> sortLotto() {
         List<Integer> sorted = numbers;
