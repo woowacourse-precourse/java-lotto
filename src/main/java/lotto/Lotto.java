@@ -19,10 +19,10 @@ public class Lotto {
         }
     }
 
-    private void findDuplicate(List<Integer> numbers){
+    private void findDuplicate(List<Integer> numbers) {
         Set<Integer> numberPool = new HashSet<>();
-        for (Integer number : numbers){
-            if(!numberPool.add(number)){
+        for (Integer number : numbers) {
+            if (!numberPool.add(number)) {
                 throw new IllegalArgumentException("[ERROR] 로또에 중복되는 수가 있습니다");
             }
         }
@@ -36,11 +36,10 @@ public class Lotto {
                 correctCount++;
             }
         }
+        return makeResult(correctCount,numbers.contains(bonusNumber));
+    }
 
-        //이걸 대체 어떻게 줄이지?
-        if (correctCount < 3) {
-            return 0;
-        }
+    private int makeResult(int correctCount, boolean correctBonus) {
         if (correctCount == 3) {
             return 5;
         }
@@ -48,12 +47,15 @@ public class Lotto {
             return 4;
         }
         if (correctCount == 5) {
-            if (numbers.contains(bonusNumber)) {
+            if (correctBonus) {
                 return 2;
             }
             return 3;
         }
-        return 1;
+        if(correctCount == 6){
+            return 1;
+        }
+        return 0;
     }
 
     @Override
