@@ -8,7 +8,7 @@ public class InputValidator {
     public static final String NUMBERS_INPUT_FORMAT_ERROR_MESSAGE = "[ERROR] 당첨 번호는 6자리의 숫자를 쉼표(,)로 구분하여 입력해 주세요.";
 
     private static final String NUMBER_REGEX = "^\\d+$";
-private static final String SIX_NUMBER_INPUT_FORMAT_REGEX = "^\\d+(,\\d+){5}$";
+    private static final String SIX_NUMBER_INPUT_FORMAT_REGEX = "^\\d+(,\\d+){5}$";
 
 
     public static void validateIsNumber(String input) throws IllegalArgumentException {
