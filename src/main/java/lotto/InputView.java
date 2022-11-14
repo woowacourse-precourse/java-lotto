@@ -7,6 +7,8 @@ public class InputView {
 
     public static int getLottoPrice() {
         System.out.println(LOTTO_PURCHASE_PRICE_COMMENT);
-        return Integer.parseInt(Console.readLine());
+        String lottoPrice = Console.readLine();
+        NumberValidator.isValidPurchasePrice(lottoPrice);
+        return Integer.parseInt(lottoPrice);
     }
 }
