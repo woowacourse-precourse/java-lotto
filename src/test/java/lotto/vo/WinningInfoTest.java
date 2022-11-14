@@ -1,7 +1,7 @@
 package lotto.vo;
 
 import lotto.system.validator.ConvertingToWinningInfoValidator;
-import lotto.system.validator.IntegerListToLottoValidator;
+import lotto.system.validator.ConvertingToLottoValidator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
@@ -69,9 +69,9 @@ class WinningInfoTest {
 
     public static Stream<Arguments> SourceOfInvalidWinningNumbersAndErrorMessage() {
         return Stream.of(
-                Arguments.of(Arrays.asList(1, 3, 3, 15, 22, 34), IntegerListToLottoValidator.DUPLICATING_NUMBER_MESSAGE),
-                Arguments.of(Arrays.asList(1, 0, 3, 15, 22, 34), IntegerListToLottoValidator.INVALID_NUMBER_RANGE_MESSAGE),
-                Arguments.of(Arrays.asList(1, 3, 7, 15, 22, 34, 35), IntegerListToLottoValidator.INVALID_LIST_SIZE_MESSAGE)
+                Arguments.of(Arrays.asList(1, 3, 3, 15, 22, 34), ConvertingToLottoValidator.DUPLICATING_NUMBER_MESSAGE),
+                Arguments.of(Arrays.asList(1, 0, 3, 15, 22, 34), ConvertingToLottoValidator.INVALID_NUMBER_RANGE_MESSAGE),
+                Arguments.of(Arrays.asList(1, 3, 7, 15, 22, 34, 35), ConvertingToLottoValidator.INVALID_LIST_SIZE_MESSAGE)
         );
     }
 }

@@ -9,7 +9,7 @@ public class ConvertingToLottoBuyingInfoValidator {
             = String.format("로또의 금액인 %d원으로 나누어 떨어지는 금액을 입력해야 합니다.", LottoInfo.LOTTO_PRICE);
 
     public static void validate(String target) {
-        isOnlyNaturalNumber(target);
+        isOnlyNaturalNumberWithComma(target);
         validate(Integer.parseInt(removeCommaFrom(target)));
     }
 
@@ -22,7 +22,7 @@ public class ConvertingToLottoBuyingInfoValidator {
         return target.replaceAll(",", "");
     }
 
-    private static void isOnlyNaturalNumber(String target) {
+    private static void isOnlyNaturalNumberWithComma(String target) {
         if (!target.matches("^[\\d,]+$")) {
             throw new IllegalArgumentException(NOT_NATURAL_NUMBER_MESSAGE);
         }

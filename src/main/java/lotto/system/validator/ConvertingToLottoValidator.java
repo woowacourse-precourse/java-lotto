@@ -5,7 +5,7 @@ import lotto.vo.LottoInfo;
 import java.util.Collections;
 import java.util.List;
 
-public class IntegerListToLottoValidator {
+public class ConvertingToLottoValidator {
 	public static final String INVALID_NUMBER_RANGE_MESSAGE = "입력한 숫자가 로또 숫자의 범위에 맞지 않습니다.";
 	public static final String INVALID_LIST_SIZE_MESSAGE = "입력한 숫자의 개수가 로또 숫자의 개수와 맞지 않습니다.";
 	public static final String DUPLICATING_NUMBER_MESSAGE = "입력한 로또 숫자 중 중복되는 숫자가 있습니다.";

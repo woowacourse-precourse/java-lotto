@@ -56,7 +56,7 @@ class OutputViewTest {
 
             //then
             assertThat(out.toString())
-                    .isEqualTo(String.format("%s\n", String.format(OutputViewImpl.BUYED_LOTTO_AMOUNT_MESSAGE_FORMAT, 10)));
+                    .isEqualTo(String.format("%s", String.format(OutputViewImpl.BUYED_LOTTO_AMOUNT_MESSAGE_FORMAT, 10)));
         }
     }
 

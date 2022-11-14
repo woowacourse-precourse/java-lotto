@@ -26,7 +26,7 @@ public class ConvertingToWinningInfoValidator {
     }
 
     private static void validateWinningNumbers(List<Integer> winningNumbers) {
-        IntegerListToLottoValidator.validate(winningNumbers);
+        ConvertingToLottoValidator.validate(winningNumbers);
     }
 
     private static void validateBonus(Integer bonus) {

@@ -1,6 +1,6 @@
 package lotto.vo;
 
-import lotto.system.validator.IntegerListToLottoValidator;
+import lotto.system.validator.ConvertingToLottoValidator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -33,7 +33,7 @@ class LottoTest {
 
     @Test
     @DisplayName("유효한 로또 번호로 Lotto 객체를 만들 수 있다.")
-    void givenIntegerList_whenCreatingLotto_thenSuccess() {
+    void givenNumbers_whenCreatingLotto_thenSuccess() {
         //given
         List<Integer> numbers = Arrays.asList(2, 4, 5, 16, 42, 45);
 
@@ -43,19 +43,19 @@ class LottoTest {
 
     @Test
     @DisplayName("1~45 범위를 벗어나는 로또 번호로 Lotto 객체를 만드려 하면 예외가 발생한다.")
-    void givenIntegerListWithInvalidNumberRange_whenCreatingLotto_thenThrowsException() {
+    void givenNumbersWithInvalidNumberRange_whenCreatingLotto_thenThrowsException() {
         //given
         List<Integer> numbers = Arrays.asList(2, 4, 5, 42, 45, 47);
 
         //when && then
         assertThatThrownBy(() -> new Lotto(numbers))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage(IntegerListToLottoValidator.INVALID_NUMBER_RANGE_MESSAGE);
+                .hasMessage(ConvertingToLottoValidator.INVALID_NUMBER_RANGE_MESSAGE);
     }
 
     @Test
     @DisplayName("오름차순 정렬되어있지 않은 로또 번호로 Lotto 객체를 만들면, 만들어진 객체 내부의 로또 번호는 오름차순으로 정렬이 되어있다.")
-    void givenIntegerListNotSortedAsc_whenCreatingLotto_thenThrowsException() {
+    void givenNumbersNotSortedAsc_whenCreatingLotto_thenThrowsException() {
         //given
         List<Integer> given = Arrays.asList(2, 4, 42, 11, 23, 44);
         List<Integer> orderedNumbers = new ArrayList<>(given);

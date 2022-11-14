@@ -1,7 +1,7 @@
 package lotto.dto;
 
 import lotto.system.validator.ConvertingToWinningInfoValidator;
-import lotto.system.validator.IntegerListToLottoValidator;
+import lotto.system.validator.ConvertingToLottoValidator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
@@ -23,9 +23,9 @@ class WinningInfoDtoTest {
         @DisplayName("사용자 입력값 중 로또 번호 테스트")
         class WinningNumbersTest {
             @ParameterizedTest(name = "{displayName} - {0}")
-            @MethodSource("lotto.dto.WinningInfoDtoTest#SourceOfWinningNumbersNotIntegerWithRest")
+            @MethodSource("lotto.dto.WinningInfoDtoTest#SourceOfWinningNumbersNotNumbersWithRest")
             @DisplayName("입력값이 쉼표로 구분된 정수로 이루어지지 않으면 WinningInfo 객체를 만드려고 할 때 예외가 발생한다.")
-            void givenInputNotIntegerWithRest_whenMakingWinning_thenThrowsException(String winningNumbers) {
+            void givenInputNotNumbersWithComma_whenMakingWinning_thenThrowsException(String winningNumbers) {
                 //given
                 String bonus = "3";
                 WinningInfoDto winningInfoDto = new WinningInfoDto(winningNumbers, bonus);
@@ -67,9 +67,9 @@ class WinningInfoDtoTest {
         @DisplayName("사용자 입력값 중 보너스 번호 테스트")
         class BonusNumberTest {
             @ParameterizedTest(name = "{displayName} - {0}")
-            @MethodSource("lotto.dto.WinningInfoDtoTest#SourceOfBonusNotInteger")
+            @MethodSource("lotto.dto.WinningInfoDtoTest#SourceOfBonusNotNumber")
             @DisplayName("입력값이 정수로 이루어지지 않은 보너스 번호로 WinningInfo 객체를 만드려고 할 때 예외가 발생한다.")
-            void givenBonusNotInteger_whenConvertingToWinningInfo_thenThrowsException(String bonus) {
+            void givenBonusNotNumber_whenConvertingToWinningInfo_thenThrowsException(String bonus) {
                 //given
                 String winningNumbers = "1,3,7,14,34,43";
                 WinningInfoDto winningInfoDto = new WinningInfoDto(winningNumbers, bonus);
@@ -109,7 +109,7 @@ class WinningInfoDtoTest {
         }
     }
 
-    private static Stream<String> SourceOfWinningNumbersNotIntegerWithRest() {
+    private static Stream<String> SourceOfWinningNumbersNotNumbersWithRest() {
         return Stream.of(
                 "1,3,7,14,,34,43",
                 "1,3,7,14,Rr,34,43",
@@ -119,13 +119,13 @@ class WinningInfoDtoTest {
 
     public static Stream<Arguments> SourceOfInvalidWinningNumbersAndErrorMessage() {
         return Stream.of(
-                Arguments.of("1,3,3,15,22,34", IntegerListToLottoValidator.DUPLICATING_NUMBER_MESSAGE),
-                Arguments.of("1,0,3,15,22,34", IntegerListToLottoValidator.INVALID_NUMBER_RANGE_MESSAGE),
-                Arguments.of("1,3,7,15,22,34,35", IntegerListToLottoValidator.INVALID_LIST_SIZE_MESSAGE)
+                Arguments.of("1,3,3,15,22,34", ConvertingToLottoValidator.DUPLICATING_NUMBER_MESSAGE),
+                Arguments.of("1,0,3,15,22,34", ConvertingToLottoValidator.INVALID_NUMBER_RANGE_MESSAGE),
+                Arguments.of("1,3,7,15,22,34,35", ConvertingToLottoValidator.INVALID_LIST_SIZE_MESSAGE)
         );
     }
 
-    private static Stream<String> SourceOfBonusNotInteger() {
+    private static Stream<String> SourceOfBonusNotNumber() {
         return Stream.of(
                 "R",
                 "3.5",

@@ -19,17 +19,17 @@ public class WinningInfoDto {
     public WinningInfo toWinningInfo() {
         ConvertingToWinningInfoValidator.validate(this);
 
-        List<Integer> winningNumbers = convertWinningNumbersToIntegerList();
-        int bonus = convertBonusToInteger();
+        List<Integer> winningNumbers = convertWinningNumberLettersToNumbers();
+        int bonus = convertBonusToNumber();
 
         return new WinningInfo(winningNumbers, bonus);
     }
 
-    private int convertBonusToInteger() {
+    private int convertBonusToNumber() {
         return Integer.parseInt(bonus);
     }
 
-    private List<Integer> convertWinningNumbersToIntegerList() {
+    private List<Integer> convertWinningNumberLettersToNumbers() {
         return Arrays.stream(winningNumbers
                         .replace(" ", "")
                         .split(","))

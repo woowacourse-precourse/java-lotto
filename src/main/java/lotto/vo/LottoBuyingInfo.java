@@ -8,10 +8,14 @@ public class LottoBuyingInfo {
 
 	public LottoBuyingInfo(String input) {
 		ConvertingToLottoBuyingInfoValidator.validate(input);
-		int money = Integer.parseInt(removeCommaFrom(input));
+		int money = convertMoneyLetterToNumber(input);
 
 		this.money = money;
 		this.amount = money / 1000;
+	}
+
+	private static int convertMoneyLetterToNumber(String input) {
+		return Integer.parseInt(removeCommaFrom(input));
 	}
 
 	private static String removeCommaFrom(String target) {

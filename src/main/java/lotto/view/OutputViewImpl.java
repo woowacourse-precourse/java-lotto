@@ -11,8 +11,8 @@ import java.util.List;
 
 public class OutputViewImpl implements OutputView {
 
-	public static final String ERROR_MESSAGE_FORMAT = "[ERROR] %s";
-	public static final String BUYED_LOTTO_AMOUNT_MESSAGE_FORMAT = "%d개를 구매했습니다.";
+	public static final String ERROR_MESSAGE_FORMAT = "[ERROR] %s\n";
+	public static final String BUYED_LOTTO_AMOUNT_MESSAGE_FORMAT = "%d개를 구매했습니다.\n";
 	public static final String SCORE_MESSAGE_PREFIX = "당첨 통계\n" +
 			"---";
 	public static final String SCORE_MESSAGE_FORMAT = "%s (%s원) - %d개";
@@ -21,7 +21,7 @@ public class OutputViewImpl implements OutputView {
 
 	@Override
 	public void printLottoBuyingInfo(LottoBuyingInfo lottoBuyingInfo) {
-		System.out.printf((BUYED_LOTTO_AMOUNT_MESSAGE_FORMAT) + "%n", lottoBuyingInfo.getAmount());
+		System.out.printf(BUYED_LOTTO_AMOUNT_MESSAGE_FORMAT, lottoBuyingInfo.getAmount());
 	}
 
 	@Override
@@ -34,7 +34,7 @@ public class OutputViewImpl implements OutputView {
 
 	@Override
 	public void printErrorMessage(Exception e) {
-		System.out.printf((ERROR_MESSAGE_FORMAT) + "%n", e.getMessage());
+		System.out.printf(ERROR_MESSAGE_FORMAT, e.getMessage());
 	}
 
 	@Override
