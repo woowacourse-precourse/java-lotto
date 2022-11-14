@@ -1,6 +1,7 @@
 package lotto.domain;
 
 import lotto.ui.LottoGenerator;
+import lotto.ui.Output;
 import lotto.ui.Validator;
 
 import java.util.ArrayList;
@@ -8,7 +9,6 @@ import java.util.List;
 
 public class User {
     private static final String INVALID_MONEY_UNIT = "[ERROR] 구입 금액은 1000원 단위여야 합니다.";
-    private static final String BUY_MESSAGE = "개를 구매했습니다.";
     private final int money;
     private final List<Lotto> lottos;
 
@@ -35,7 +35,7 @@ public class User {
     }
 
     public void printLottos() {
-        System.out.println(lottos.size() + BUY_MESSAGE);
+        Output.printBuyMessage(lottos.size());
         lottos.forEach(Lotto::print);
     }
 }
