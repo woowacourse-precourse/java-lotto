@@ -1,5 +1,6 @@
 package lotto.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 import lotto.model.LottoGenerator;
 import lotto.model.LottoJudge;
@@ -25,6 +26,12 @@ public class LottoController {
     public int loadBonusNumber() {
         winningNumber.setBonusNumber(LottoInput.inputBonusNumber());
         return winningNumber.getBonusNumber();
+    }
+
+    public ArrayList<List<Integer>> generateLottoNumbers(String money) {
+        lottoGenerator = new LottoGenerator();
+        lottoGenerator.generateLotto(money);
+        return lottoGenerator.getLotteries();
     }
 
 
