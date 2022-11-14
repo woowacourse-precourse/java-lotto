@@ -8,6 +8,7 @@ import java.util.List;
 
 public class OutputView {
     public final static String INPUT_PURCHASE_AMOUNT_MESSAGE = "구입금액을 입력해 주세요.";
+    public final static String TICKET_NUMBER_MESSAGE = "개를 구매했습니다.";
     public final static String INPUT_WINNING_NUMBER_MESSAGE = "당첨 번호를 입력해 주세요.";
     public final static String INPUT_BONUS_NUMBER_MESSAGE = "보너스 번호를 입력해 주세요.";
     public final static String LOTTO_RESULT_MESSAGE = "당첨 통계\n---";
@@ -33,6 +34,11 @@ public class OutputView {
     public void printInputPurchaseAmount() {
 
         printlnMessage(INPUT_PURCHASE_AMOUNT_MESSAGE);
+    }
+
+    public void printTicketNumber(int ticketNumber) {
+
+        printlnMessage(ticketNumber + TICKET_NUMBER_MESSAGE);
     }
 
     public void printInputWinningNumber() {
