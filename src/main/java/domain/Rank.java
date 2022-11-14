@@ -23,7 +23,7 @@ public enum Rank {
         this.reward = reward;
     }
 
-    public Rank value(int count, boolean bonus){
+    public static Rank value(int count, boolean bonus){
         for(Rank rank : Rank.values()){
             if(rank.count == count && rank.bonus == bonus){
                 return rank;
@@ -36,11 +36,11 @@ public enum Rank {
         return rank != FAIL;
     }
 
-    public boolean isThirdCount(int count){
+    public static boolean isThirdCount(int count){
         return count == THIRD.count;
     }
 
-    public List<Rank> getRank(){
+    public static List<Rank> getRank(){
         return Arrays.stream(Rank.values())
                 .filter(Rank::isNotFail)
                 .collect(Collectors.toUnmodifiableList());
