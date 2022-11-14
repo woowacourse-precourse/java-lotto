@@ -57,21 +57,12 @@ public class View {
     }
     public int getMoneyInput() {
         String moneyString = Console.readLine();
-        int money;
-        validateIsNumber(moneyString);
-        money = Integer.parseInt(moneyString);
-        validateIsDivisible(money);
-        return money;
+        int money = validateIsNumber(moneyString);
+        return validateIsDivisible(money);
     }
     public List<Integer> getUniqueNumbersInput() {
         String numbersString = Console.readLine();
-        String[] numbersSplit;
-        List<Integer> numbersInteger= new ArrayList<>();
-        validateAreNumbers(numbersString);
-        numbersSplit = numbersString.split(",");
-        for (String num : numbersSplit) {
-            numbersInteger.add(Integer.parseInt(num));
-        }
+        List<Integer> numbersInteger= validateAreNumbers(numbersString);
         validateNumbersInRange(numbersInteger);
         validateNumberOfNumbers(numbersInteger);
         validateUniqueNumbersInput(numbersInteger);
