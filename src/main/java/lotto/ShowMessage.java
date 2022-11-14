@@ -21,7 +21,7 @@ public enum ShowMessage {
     }
 
     public static void showHowManyBuy(long number) {
-        System.out.println();
+//        System.out.println();
         System.out.println(number + HOW_MANY_BUY_MESSAGE.script);
     }
 
@@ -32,7 +32,7 @@ public enum ShowMessage {
     }
 
     public static void showInputLottoNumber() {
-        System.out.println();
+//        System.out.println();
         System.out.println(INPUT_LOTTO_NUMBER_MESSAGE.script);
     }
 
