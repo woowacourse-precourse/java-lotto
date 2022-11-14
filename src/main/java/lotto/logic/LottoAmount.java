@@ -3,9 +3,12 @@ package lotto.logic;
 public class LottoAmount {
     public static final Integer LOTTO_PRICE = 1000;
 
-    public static Integer getLottoAmount(Long money) {
+    public static Long getLottoAmount(Long money) {
         checkInputUnit(money);
-        return null;
+
+        Long amount = money / LOTTO_PRICE;
+
+        return amount;
     }
 
     private static void checkInputUnit(Long input) {
