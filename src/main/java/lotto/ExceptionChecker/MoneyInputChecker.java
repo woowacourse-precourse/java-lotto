@@ -7,14 +7,14 @@ public class MoneyInputChecker {
     private final int number;
 
 
-    public MoneyInputChecker(int moneyInput){
+    public MoneyInputChecker(int moneyInput) {
         validateUnit(moneyInput);
 
         this.number = moneyInput;
 
     }
 
-    public int moneyReturn(){
+    public int moneyReturn() {
         return number;
     }
 

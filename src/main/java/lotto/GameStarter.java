@@ -13,8 +13,8 @@ public class GameStarter {
 
     CorrectNumberCounter correctNumberCounter = new CorrectNumberCounter();
     RevenueCalculater revenueCalculater = new RevenueCalculater();
-    public void gameStart(){
 
+    public void gameStart() {
 
         printer.printToDo(MONEY_INPUT);
         int userInputMoney = inputer.inputMoney();
@@ -28,11 +28,11 @@ public class GameStarter {
         printer.printToDo(BONUS_INPUT);
         int bonusNumber = inputer.inputLottoBonusNumber();
 
-        List<Integer> amountCorrectList = correctNumberCounter.correctNumberList(userLottoNumberList,lottoWinNumber,bonusNumber);
+        List<Integer> amountCorrectList = correctNumberCounter.correctNumberList(userLottoNumberList, lottoWinNumber,
+                bonusNumber);
         int revenue = revenueCalculater.caculateRevenue(amountCorrectList);
 
-
         printer.printWinList(amountCorrectList);
-        printer.printRevenuePercent(userInputMoney,revenue);
+        printer.printRevenuePercent(userInputMoney, revenue);
     }
 }

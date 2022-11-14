@@ -41,7 +41,7 @@ public class Inputer {
         String bonusNumber = readLine();
 
         IntegerChecker integerChecker = new IntegerChecker(bonusNumber);
-        BonusNumberChecker bonusNumberChecker = new BonusNumberChecker(integerChecker.numberReturn(),LOTTO_LIST);
+        BonusNumberChecker bonusNumberChecker = new BonusNumberChecker(integerChecker.numberReturn(), LOTTO_LIST);
 
         return bonusNumberChecker.bonusReturn();
     }
