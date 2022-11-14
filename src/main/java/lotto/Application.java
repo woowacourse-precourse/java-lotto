@@ -5,7 +5,6 @@ import java.util.List;
 public class Application {
     public static void main(String[] args) {
 
-        final int bonusNumIdx = 6;
 
         // TODO: 프로그램 구현
 
@@ -23,15 +22,10 @@ public class Application {
         //당첨 번호 입력 받기
         List<Integer> winningNums = InputNum.askWinningNumbers();
 
-
-        for(Lotto lotto : lottos){
-            int cnt = lotto.countMatchedNumbers(winningNums);
-            boolean isBonusmatched = lotto.checkBonusMatched(winningNums.get(bonusNumIdx),cnt);
-            Rank rank = lotto.getRank(winningNums);
-            System.out.println("cnt = " + cnt);
-            System.out.println("isBonusmatched = " + isBonusmatched);
-            System.out.println("rank = " + rank);
-        }
+        //수익률 구하기
+        double rate = Calculator.CalculateRate(lottos, winningNums);
+        System.out.println("rate = " + rate);
+        
         
         
 

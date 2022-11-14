@@ -4,10 +4,10 @@ import java.util.Arrays;
 
 public enum Rank {
 
-    FIRST(6, 2_000_000_000, false),
-    SECOND(5,3_000_000, true),
-    THIRD(5, 1_500_000, false),
-    FOURTH(4, 50_000, false),
+    FIRST(6, 2000000000, false),
+    SECOND(5,3000000, true),
+    THIRD(5, 1500000, false),
+    FOURTH(4, 50000, false),
     FIFTH(3, 5000, false),
     NOTHING(0,0, false);
 
@@ -28,5 +28,9 @@ public enum Rank {
                 .filter(rank -> rank.winNum == matchedNumCnt && rank.bonus == isbonusMatched)
                 .findFirst()
                 .orElse(NOTHING);
+    }
+
+    public int getPrize(){
+        return prize;
     }
 }
