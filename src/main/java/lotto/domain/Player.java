@@ -42,10 +42,7 @@ public class Player {
 
     public void printLotto() {
         OutputView.printPurchaseQuantity(lottos.size());
-
-        for (Lotto lotto : lottos) {
-            OutputView.printLottoNumber(lotto);
-        }
+        lottos.forEach(OutputView::printLottoNumber);
     }
 
     public List<Lotto> getLottos() {
