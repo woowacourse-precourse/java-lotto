@@ -9,7 +9,7 @@ public class LottoGameSimulator {
     private LottoGameResult lottoGameResult;
     private List<Lotto> purchasedLottos;
     private WinningNumbers winningNumbers;
-    private Money userMoney;
+    private int paidMoney;
     public LottoGameSimulator() {
     }
 
@@ -26,12 +26,11 @@ public class LottoGameSimulator {
         MessagePrinter.printMoneyInputRequest();
         String moneyInput = Inputter.readLine();
         MoneyValidator.validate(moneyInput);
-        int money = Integer.parseInt(moneyInput);
-        userMoney = new Money(money);
+        paidMoney = Integer.parseInt(moneyInput);
     }
 
     public void printGeneratedLotto() {
-        int lottoQuantity = userMoney.getMoney() / 1000;
+        int lottoQuantity = paidMoney / 1000;
         purchasedLottos = LottoGenerator.generateLottos(lottoQuantity);
         MessagePrinter.printGeneratedLottoQuantity(lottoQuantity);
         MessagePrinter.printGeneratedLottoNumbers(purchasedLottos);
@@ -59,7 +58,7 @@ public class LottoGameSimulator {
     public void generateResult() {
         LottoGameResultGenerator lottoGameResultGenerator = new LottoGameResultGenerator();
         lottoGameResult = lottoGameResultGenerator
-                .generateLottoGameResult(purchasedLottos, winningNumbers, userMoney);
+                .generateLottoGameResult(purchasedLottos, winningNumbers, paidMoney);
     }
 
     public void printResult() {

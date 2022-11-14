@@ -23,7 +23,7 @@ public class LottoGameResultGenerator {
 
     public LottoGameResult generateLottoGameResult(List<Lotto> lottos,
                                                    WinningNumbers winningNumbers,
-                                                   Money paidMoney) {
+                                                   int paidMoney) {
         calculateWinningDetails(lottos, winningNumbers);
         calculateEarningRate(paidMoney);
 
@@ -76,9 +76,9 @@ public class LottoGameResultGenerator {
         return 1_500_000;
     }
 
-    private void calculateEarningRate(Money paidMoney) {
+    private void calculateEarningRate(int paidMoney) {
         int profits = calculateProfits();
-        earningRate = (profits / (double)paidMoney.getMoney()) * 100;
+        earningRate = (profits / (double)paidMoney) * 100;
     }
 
     private int calculateProfits() {
