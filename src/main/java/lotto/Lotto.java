@@ -27,9 +27,13 @@ public class Lotto {
         System.out.println("\n보너스 번호를 입력해 주세요.");
         String Bonus = Console.readLine();
         BonusNumber = Integer.parseInt(Bonus);
-
-        //BonusValidate(BonusNumber,numbers);
+        BonusValidate(BonusNumber,numbers);
     }
 
+    private void BonusValidate(int BonusNumber, List<Integer> numbers) {
+        if (numbers.contains(BonusNumber)) {
+            throw new IllegalArgumentException();
+        }
+    }
 
 }
