@@ -108,4 +108,30 @@ public class Validators {
             }
         }
     }
+
+    public static void validateBonusType(String bonus) {
+        if (REG_EXP.matcher(bonus).find()) {
+            throw new IllegalArgumentException(Exceptions.ONE.getMessages());
+        }
+    }
+
+    public static void validateBonus(int bonus, List<Integer> jackpotFigures) {
+        validateBonusRange(bonus);
+
+        validateBonusUniqueness(bonus, jackpotFigures);
+    }
+
+    private static void validateBonusRange(int bonus) {
+        if (bonus < RANGE_MIN || bonus > RANGE_MAX) {
+            throw new IllegalArgumentException(Exceptions.ONE.getMessages());
+        }
+    }
+
+    private static void validateBonusUniqueness(int bonus, List<Integer> jackpotFigures) {
+        for (Integer jackpotFigure : jackpotFigures) {
+            if (jackpotFigure == bonus) {
+                throw new IllegalArgumentException(Exceptions.FOUR.getMessages());
+            }
+        }
+    }
 }
