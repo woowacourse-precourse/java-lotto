@@ -3,6 +3,8 @@ package lotto.model;
 import camp.nextstep.edu.missionutils.Randoms;
 import lotto.Env;
 import lotto.Validator;
+
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -14,16 +16,6 @@ public class Lotto {
         List<String> raw = List.of(input.split(","));
 
         return new Lotto(parseIntList(raw));
-    }
-
-    public static Lotto fromRandomNumbers() {
-        List<Integer> numbers = Randoms.pickUniqueNumbersInRange(
-                Env.LOTTO_FIRST_NUMBER,
-                Env.LOTTO_LAST_NUMBER,
-                Env.LOTTO_NUMBERS
-        );
-
-        return new Lotto(numbers);
     }
 
     private static List<Integer> parseIntList(List<String> original) {
@@ -38,19 +30,19 @@ public class Lotto {
         }
     }
 
+    public static Lotto fromRandomNumbers() {
+        List<Integer> numbers = Randoms.pickUniqueNumbersInRange(
+                Env.LOTTO_FIRST_NUMBER,
+                Env.LOTTO_LAST_NUMBER,
+                Env.LOTTO_NUMBERS
+        );
+
+        return new Lotto(numbers);
+    }
+
     public Lotto(List<Integer> numbers) {
         this.validate(numbers);
         this.numbers = this.sort(numbers);
-    }
-
-    @Override
-    public String toString() {
-        String build = this.numbers
-                .stream()
-                .map(String::valueOf)
-                .collect(Collectors.joining(", "));
-
-        return String.format("[%s]", build);
     }
 
     private void validate(List<Integer> numbers) {
@@ -72,5 +64,23 @@ public class Lotto {
                 .stream()
                 .sorted()
                 .collect(Collectors.toList());
+    }
+
+    public List<Integer> toList() {
+        return Collections.unmodifiableList(this.numbers);
+    }
+
+    public boolean equals(Lotto lotto) {
+        return this.numbers.equals(lotto.toList());
+    }
+
+    @Override
+    public String toString() {
+        String build = this.numbers
+                .stream()
+                .map(String::valueOf)
+                .collect(Collectors.joining(", "));
+
+        return String.format("[%s]", build);
     }
 }

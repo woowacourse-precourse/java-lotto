@@ -59,4 +59,15 @@ class LottoTest {
         Lotto lotto = new Lotto(List.of(6, 5, 4, 3, 2, 1));
         assertThat(lotto.toString()).isEqualTo("[1, 2, 3, 4, 5, 6]");
     }
+
+    @DisplayName("리스트로 반환하고 리스트 추가에 실패한다")
+    @Test
+    void toListFromLottoAndFailAddList() {
+        Lotto lotto = new Lotto(List.of(6, 5, 4, 3, 2, 1));
+        List<Integer> numbers = lotto.toList();
+
+        assertThat(numbers).containsExactly(1, 2, 3, 4, 5, 6);
+        assertThatThrownBy(() -> numbers.add(8))
+                .isInstanceOf(UnsupportedOperationException.class);
+    }
 }
