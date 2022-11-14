@@ -9,6 +9,7 @@ public class User {
     private List<Lotto> lottos;
     private int price;
     private float earningRate;
+    private int[] winningCount= new int[5];;
 
 
     public User(int price) {
