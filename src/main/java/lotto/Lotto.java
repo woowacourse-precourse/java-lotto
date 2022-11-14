@@ -51,5 +51,8 @@ public class Lotto {
         }
         return 8 - sameNumberCount;
     }
-    
+
+    public List<Integer> getNumbers(){
+        return this.numbers;
+    }
 }

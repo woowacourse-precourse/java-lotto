@@ -7,6 +7,7 @@
   - [v] 6자리의 중복이 없는 수열들을 생성한다. - Store#makeNumbers
 - [v] 구매한 로또의 당첨내역을 계산한다. - Lotto#confirmNumbers
   - [v] 만든 로또 번호가 중복이 있는 지 검사한다. -Lotto#checkRedundancy
+  - [v] 출력을 위해 발행한 로또번호를 전달한다. -Lotto#getNumbers 
 - 입력받은 당첨번호로 구매한 로또의 당첨내역을 판단하고 수익률을 계산한다. - Judge
   - [v] 당첨내역을 합산하여 받는다. - Judge#setRankCount
   - [v] 당첨내역으로 총 당첨금을 계산한다. - Judge#countPrizeMoney
