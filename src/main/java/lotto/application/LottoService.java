@@ -12,6 +12,10 @@ import lotto.infrastructure.LottoProvider;
 
 public class LottoService {
 
+    public static LottoAmount getLottoAmount(int lottoAmount) {
+        return new LottoAmount(lottoAmount);
+    }
+
     public static List<Lotto> getLottos(int purchaseAmount) {
         LottoAmount lottoAmount = new LottoAmount(purchaseAmount);
         return LottoProvider.createLottos(lottoAmount.getLottoCount());
