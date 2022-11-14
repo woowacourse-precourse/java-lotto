@@ -1,19 +1,15 @@
 package lotto.domain;
 
 import camp.nextstep.edu.missionutils.Console;
+import lotto.service.Component;
 import lotto.service.LottoException;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+@Component
 public class Player {
-
-    private int purchasePrice;
-
-    public Player() {
-    }
-
     public int enterPurchasePrice() {
         String purchasePrice = Console.readLine();
         int purchasePriceInt = LottoException.exceptionInvalidPurchasePrice(purchasePrice);
