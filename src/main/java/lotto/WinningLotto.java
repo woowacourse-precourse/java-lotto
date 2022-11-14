@@ -15,9 +15,7 @@ public class WinningLotto {
 		String stringInputNumbers = Console.readLine();
 
 		String[] stringWinningNumbers = stringInputNumbers.split(",");
-		Exception.validateLottoLength(stringWinningNumbers);
-		Exception.validateLottoNumberRange(stringWinningNumbers);
-		Exception.validateDuplicateNumbers(stringWinningNumbers);
+		validateWinningLotto(stringWinningNumbers);
 
 		winningLotto = new Lotto(
 			Arrays.stream(stringWinningNumbers).map(Integer::parseInt).collect(Collectors.toList())
@@ -25,12 +23,25 @@ public class WinningLotto {
 
 		Print.PrintTypingBonusNumber();
 		String inputBonusNumber = Console.readLine();
-		Exception.validateNumber(inputBonusNumber);
-		Exception.validateLottoNumberRange(inputBonusNumber);
-		Exception.validateDuplicateNumbers(winningLotto, inputBonusNumber);
+		validateBonusNumber(inputBonusNumber);
+
 
 		bonusNumber = Integer.parseInt(inputBonusNumber);
 	}
+
+	private void validateWinningLotto(String[] stringWinningNumbers){
+		Exception.validateLottoLength(stringWinningNumbers);
+		Exception.validateLottoNumberRange(stringWinningNumbers);
+		Exception.validateDuplicateNumbers(stringWinningNumbers);
+	}
+
+	private void validateBonusNumber(String inputBonusNumber){
+		Exception.validateNumber(inputBonusNumber);
+		Exception.validateLottoNumberRange(inputBonusNumber);
+		Exception.validateDuplicateNumbers(winningLotto, inputBonusNumber);
+	}
+
+
 
 	public List<Integer> getWinningLotto() {
 		return winningLotto.getNumbers();
