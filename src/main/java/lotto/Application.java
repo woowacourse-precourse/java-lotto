@@ -17,7 +17,10 @@ public class Application {
 
 		Integer bonusNumber = User.getBonusNumber(winningNumbers);
 
-		showLottoResult(winningNumbers, myLottos, bonusNumber);
+		List<Integer> result = compareNumbers(winningNumbers, myLottos, bonusNumber);
+
+		showLottoResult(result);
+		showRateOfReturn(payment, result);
 	}
 
 	public static List<List<Integer>> getMyLottos(int purchaseQuantity) {
@@ -35,19 +38,17 @@ public class Application {
 		return myLottos;
 	}
 
-	public static void showLottoResult(List<Integer> winningNumbers, List<List<Integer>> myLottos, Integer bonusNumber) {
+	public static void showLottoResult(List<Integer> result) {
 
-		List<Integer> result = compareNumbers(winningNumbers, myLottos, bonusNumber);
-		
 		System.out.println("\n당첨 통계\n---");
-		
+
 		for (int index = Constant.FIFTH_PLACE.condition; index <= Constant.FIRST_PLACE.condition; index++) {
 
 			Integer numberOfTimes = result.get(index);
 			System.out.println(getLottoResultMessage(index, numberOfTimes));
-			
+
 			if (index == Constant.SECOND_PLACE.condition) {
-				
+
 				int _index = result.size() - 1;
 				System.out.println(getLottoResultMessage(_index, result.get(_index)));
 			}
@@ -59,16 +60,16 @@ public class Application {
 		int length = Constant.LOTTO_NUMBERS_LENGTH.value + 2;
 		Integer[] numberOfTimes = new Integer[length];
 		Arrays.fill(numberOfTimes, 0);
-		
+
 		List<Integer> result = new ArrayList<Integer>(Arrays.asList(numberOfTimes));
-		
+
 		for (List<Integer> myLotto : myLottos) {
 
 			int numberOfNumbers = countCorrectNumbers(winningNumbers, myLotto);
 
 			boolean isSecondPlace = numberOfNumbers == Constant.SECOND_PLACE.condition && winningNumbers.contains(bonusNumber);
 			if (isSecondPlace) {
-				
+
 				updateLottoResult(result, length - 1);
 				continue;
 			}
@@ -90,37 +91,77 @@ public class Application {
 		}
 		return count;
 	}
-	
+
 	public static List<Integer> updateLottoResult(List<Integer> result, int index) {
-		
+
 		Integer numberOfTimes = result.get(index);
 		result.set(index, numberOfTimes + 1);
-		
+
 		return result;
 	}
-	
+
 	public static String getLottoResultMessage(int index, Integer numberOfTimes) {
 
-		if (index == Constant.FIRST_PLACE.condition) {
+		if (index == Constant.FIRST_PLACE.condition)
 			return Constant.FIRST_PLACE.resultMessage + numberOfTimes + "개";
-		}
 
-		if (index == Constant.LOTTO_NUMBERS_LENGTH.value + 1) {
+		if (index == Constant.LOTTO_NUMBERS_LENGTH.value + 1)
 			return Constant.SECOND_PLACE.resultMessage + numberOfTimes + "개";
-		}
 
-		if (index == Constant.THIRD_PLACE.condition) {
+		if (index == Constant.THIRD_PLACE.condition)
 			return Constant.THIRD_PLACE.resultMessage + numberOfTimes + "개";
-		}
 
-		if (index == Constant.FOURTH_PLACE.condition) {
+		if (index == Constant.FOURTH_PLACE.condition)
 			return Constant.FOURTH_PLACE.resultMessage + numberOfTimes + "개";
-		}
 
-		if (index == Constant.FIFTH_PLACE.condition) {
+		if (index == Constant.FIFTH_PLACE.condition)
 			return Constant.FIFTH_PLACE.resultMessage + numberOfTimes + "개";
-		}
 
 		return "";
+	}
+
+	public static void showRateOfReturn(int payment, List<Integer> result) {
+
+		int totalPrizeMoney = getTotalPrizeMoney(payment, result);
+
+		System.out.println(totalPrizeMoney);
+	}
+
+	public static int getTotalPrizeMoney(int payment, List<Integer> result) {
+
+		int totalPrizeMoney = 0;
+		int startIndex = Constant.FIFTH_PLACE.condition;
+		int endIndex = Constant.LOTTO_NUMBERS_LENGTH.value + 1;
+
+		for (int numberOfNumbers = startIndex; numberOfNumbers <= endIndex; numberOfNumbers++) {
+
+			Integer numberOfTimes = result.get(numberOfNumbers);
+			if (numberOfTimes == 0)
+				continue;
+
+			totalPrizeMoney += numberOfTimes * getPrizeMoney(numberOfNumbers);
+		}
+
+		return totalPrizeMoney;
+	}
+
+	public static int getPrizeMoney(int index) {
+
+		if (index == Constant.FIRST_PLACE.condition)
+			return Constant.FIRST_PLACE.prizeMoney;
+
+		if (index == Constant.LOTTO_NUMBERS_LENGTH.value + 1)
+			return Constant.SECOND_PLACE.prizeMoney;
+
+		if (index == Constant.THIRD_PLACE.condition)
+			return Constant.THIRD_PLACE.prizeMoney;
+
+		if (index == Constant.FOURTH_PLACE.condition)
+			return Constant.FOURTH_PLACE.prizeMoney;
+
+		if (index == Constant.FIFTH_PLACE.condition)
+			return Constant.FIFTH_PLACE.prizeMoney;
+
+		return 0;
 	}
 }
