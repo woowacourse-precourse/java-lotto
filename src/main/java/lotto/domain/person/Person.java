@@ -21,4 +21,12 @@ public class Person {
 	public void buyLotto() {
 		lottos = lottoAutoGenerator.createLottoAccordingToTheAmount(money);
 	}
+
+	public Money getMoney() {
+		return money;
+	}
+
+	public List<Lotto> getLottos() {
+		return lottos;
+	}
 }
