@@ -5,8 +5,7 @@ import java.util.List;
 import java.util.Set;
 
 import static lotto.constant.ErrorConstant.*;
-import static lotto.constant.LottoConstant.LOTTO_BASE_PRICE;
-import static lotto.constant.LottoConstant.LOTTO_COUNT_NUMBER;
+import static lotto.constant.LottoConstant.*;
 
 public class LottoValidation {
     public static void canBuyLotto(int userMoney) {
@@ -22,6 +21,10 @@ public class LottoValidation {
         if (!checkDuplicateNumber(lotto)) {
             throw new IllegalArgumentException(ERROR_DUPLICATE_NUMBER);
         }
+        if (!isValidRangeOfLotto(lotto)) {
+            throw new IllegalArgumentException(ERROR_OUT_OF_RANGE);
+        }
+
     }
 
     private static boolean checkCountOfNumbers(List<Integer> lotto) {
@@ -34,6 +37,14 @@ public class LottoValidation {
         Set<Integer> distinctLotto = new HashSet<>(lotto);
         if (distinctLotto.size() != lotto.size()) {
             return false;
+        }
+        return true;
+    }
+    private static boolean isValidRangeOfLotto(final List<Integer> lotto) {
+        for (int number : lotto) {
+            if (number < LOTTO_MIN_NUMBER || number > LOTTO_MAX_NUMBER) {
+                return false;
+            }
         }
         return true;
     }
