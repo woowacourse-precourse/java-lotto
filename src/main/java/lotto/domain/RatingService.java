@@ -1,5 +1,6 @@
 package lotto.domain;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
@@ -27,5 +28,14 @@ public class RatingService {
 
     public static boolean checkBonusNumber(Lotto ticket, WinningNumber winningNumber) {
         return ticket.getNumbers().contains(winningNumber.getBonus());
+    }
+
+    public static float getYield(Result result, int money) {
+        long profit = 0;
+        for (Rating rating : Rating.values()) {
+            profit += (long) result.getResult(rating) * rating.getReward();
+        }
+        float yield = profit / money * 100;
+        return Math.round(yield * 10 / 10.0);
     }
 }
