@@ -1,6 +1,5 @@
 package Main;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -9,6 +8,7 @@ import Print.Error_Message;
 import Print.Message;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
+import lotto.Lotto;
 
 public class Application {
     public static void main(String[] args) {
@@ -26,19 +26,17 @@ public class Application {
     	
     	int n = Integer.parseInt(s) / 1000;
     	
-    	ArrayList<Integer>[] arr = new ArrayList[n];
-    	for(int i = 0; i < n; i++) {
-    		arr[i] = new ArrayList<>();
-    	}
+    	List<Lotto> arr = new ArrayList<>();
     	
     	Message.LOTTO_COUNT.print_count(n);
     	for(int i = 0; i < n; i++) {
+    		arr.add(new Lotto(input()));
     		
-    		arr[i] = new ArrayList<>(input());
+    		ArrayList<Integer> numbers = new ArrayList<>(arr.get(i).getnumber());
     		
-    		Collections.sort(arr[i]);
+    		Collections.sort(numbers);
     		
-    		System.out.println(arr[i]);
+    		System.out.println(numbers);
     	}
     	
     	Message.INPUT_WINNER_NUMBER.print();
@@ -72,14 +70,14 @@ public class Application {
     	int[] result_price = {0, 0, 0, 5000, 50000, 1500000, 30000000, 2000000000};
     	String[] result_print = {"", "", "", "3개 일치 (5,000원)", "4개 일치 (50,000원)", "5개 일치 (1,500,000원)", "5개 일치, 보너스 볼 일치 (30,000,000원)", "6개 일치 (2,000,000,000원)"};
     	int[] result_count = new int[result_print.length];
-    	for(int i = 0; i < arr.length; i++) {
-    		int count = result(arr[i], win_number);
+    	for(int i = 0; i < arr.size(); i++) {
+    		int count = result(arr.get(i).getnumber(), win_number);
     		
     		if(count < 3 || count > 6) {
     			continue;
     		}
     		
-    		if(count == 6 || (count == 5 && check_bonus_number(arr[i], bonus_number))) {
+    		if(count == 6 || (count == 5 && check_bonus_number(arr.get(i).getnumber(), bonus_number))) {
     			result_count[count + 1]++;
     			continue;
     		}
@@ -111,7 +109,7 @@ public class Application {
     	}
     }
     
-    public static int result(ArrayList<Integer> arr, int[] win_number) {
+    public static int result(List<Integer> arr, int[] win_number) {
     	int number_count = 0;
     	for(int i = 0; i < win_number.length; i++) {
 			if(arr.contains(win_number[i])) {
@@ -122,7 +120,7 @@ public class Application {
     	return number_count;
     }
     
-    public static boolean check_bonus_number(ArrayList<Integer> arr, int bonus_number) {
+    public static boolean check_bonus_number(List<Integer> arr, int bonus_number) {
     	return arr.contains(bonus_number);
     }
     

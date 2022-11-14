@@ -9,6 +9,10 @@ public class Lotto {
         validate(numbers);
         this.numbers = numbers;
     }
+    
+    public List<Integer> getnumber(){
+    	return numbers;
+    }
 
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
