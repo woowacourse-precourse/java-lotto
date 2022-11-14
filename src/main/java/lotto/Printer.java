@@ -8,7 +8,7 @@ import java.util.List;
 
 public class Printer {
 
-    private static final String BUY_MESSAGE = "개를 구매하셨습니다.";
+    private static final String BUY_MESSAGE = "개를 구매했습니다.";
     private static final String THREE = "3개 일치 (5,000원) - ";
     private static final String FOUR = "4개 일치 (50,000원) - ";
     private static final String FIVE = "5개 일치 (1,500,000원) - ";
@@ -68,9 +68,9 @@ public class Printer {
         double doubleInputMoney = inputMoney;
         double doubleRevenue = revenue;
 
-        double revenuePercent = doubleRevenue / doubleInputMoney;
+        double revenuePercent = doubleRevenue / doubleInputMoney * 100;
 
-        System.out.println(MESSAGE_FINAL + String.format("%.2f", revenuePercent) + MESSAGE_FINAL2);
+        System.out.println(MESSAGE_FINAL + String.format("%.1f", revenuePercent) + MESSAGE_FINAL2);
 
     }
 

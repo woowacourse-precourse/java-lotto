@@ -5,18 +5,19 @@ import java.util.HashSet;
 import java.util.List;
 
 public class CorrectNumberCounter {
-    private List<Integer> returnList = new ArrayList<>();
+
 
 
 
     public List<Integer> correctNumberList(List<List<Integer>> user, List<Integer> winNumber, int bounsNumber){
+        List<Integer> correctNumberList = new ArrayList<>();
 
         for (int i = 0 ; i < user.size(); i ++) {
             List<Integer> listsCombination = gatherTwoLists(user.get(i),winNumber);
-            returnList.add(caculateCorrect(listsCombination,bounsNumber));
+            correctNumberList.add(caculateCorrect(listsCombination,bounsNumber));
         }
 
-        return returnList;
+        return correctNumberList;
     }
 
     public int caculateCorrect(List<Integer> listsCombination, int bounsNumber){
@@ -33,9 +34,10 @@ public class CorrectNumberCounter {
 
 
     public List<Integer> gatherTwoLists(List<Integer> user, List<Integer> winNumber){
-        returnList.addAll(user);
-        returnList.addAll(winNumber);
-        return returnList;
+        List<Integer> gatherTwoList = new ArrayList<>();
+        gatherTwoList.addAll(user);
+        gatherTwoList.addAll(winNumber);
+        return gatherTwoList;
     }
 
     public boolean checkBonus(List<Integer> user, int bounsNumber){

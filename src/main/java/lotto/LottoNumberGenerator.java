@@ -17,7 +17,10 @@ public class LottoNumberGenerator {
         int lottoAmount = inputMoney / MONEY_UNIT;
 
         for (int i = 0; i < lottoAmount; i++) {
-            List<Integer> randomLottoNumber = pickUniqueNumbersInRange(1, 45, 6);
+            List<Integer> randomLottoNumber = new ArrayList<>();
+            List<Integer> lottoGeneration = pickUniqueNumbersInRange(1, 45, 6);
+            randomLottoNumber.addAll(lottoGeneration);
+
             Collections.sort(randomLottoNumber);
             returnList.add(randomLottoNumber);
         }
