@@ -61,3 +61,106 @@
 - [x] else 예약어를 쓰지 않는다.
 - [ ] Java Enum을 적용.
 - [x] 도메인 로직에 단위 테스트를 구현. UI(System.out, System.in, Scanner) 로직은 제외.
+
+---
+
+### < 폴더 구조 >
+
+---
+
+> 지금부터는 프로그램을 구현하면서 고민하고 도전한 것들에 대해 소개해드리겠습니다.
+> 내용이 과하다고 생각될 수 있으나, README.md 파일은 프로그램에 대한 명세를 위한 자료이지만 동시에 프로그램 구현에 대한 소개도 포함될 수 있다고 판단하여 내용을 추가하게 되었습니다.
+
+📎 [자세한 회고 포스팅](https://hello-judy-world.tistory.com/182)
+
+### 🚀 새롭게 도전한 것들 (혹은 구현하면서 고려한 점)
+
+1️⃣ **Random Numbers**
+
+이전 미션인 숫자 야구 게임과 동일하게 랜덤한 숫자를 받아오는 기능이 필요했다.
+
+이전과 달라진 점은
+
+- 숫자 야구 게임: 게임 인스턴스 하나에 랜덤 숫자가 한 번만 불러온다. 그리고 그 숫자가 유지된다.
+- 로또: 게임 인스턴스 하나에 랜덤 숫자를 생성하는 메서드를 여러번 호출한다.
+
+
+그래서 인스턴스 생성 시 랜덤 숫자가 인스턴스 변수에 할당되던 코드에서 클래스의 메서드를 호출해서 랜덤 숫자를 받는 코드로 변경했다.
+
+
+2️⃣ **validator 상속**
+
+현재 나는 숫자 1개에 대한 validation과 숫자 여러 개에 대한 validation으로 validator를 분리해서 구현하고 있다.
+
+이때 input 값이 숫자인지 확인하는 코드가 중복되었다.
+
+1. input 들어온 숫자가 숫자가 맞는지 확인
+2. `1,2,3,4,5,6` 로 들어온 input을 `[1,2,3,4,5,6]` 형태로 만든 리스트가 숫자로 이루어졌는지 확인
+
+그래서 NumberValidator를 NumbersValidator에서 상속받아 구현했다.
+(최대한 중복 코드를 줄이고 객체 지향으로 설계하고 싶어 노력하지만 아직 부족하고 이 방법이 맞는지 확신이 없다!! 하지만 계속 노력하고 공부해나가자!!)
+
+3️⃣ **Enum type**
+
+<br>
+
+### 🧐 구현하면서 고민했던 것들
+
+1️⃣ **validation은 누구의 역할일까?**
+
+항상 고민했다. validation은 어디서 해야 할까. 현재 폴더 구조에서 Controller, Domain, View 중 누군가 담당해야 한다.
+
+이전 숫자 야구 게임에서는 프로그램의 가장 앞단에서 걸러주어야 한다고 생각하여 View에서 대부분 validation 해주었다.
+
+이번에는 View에서는 정말 input만 받고 완전히 Controller와 Domain으로 그 책임을 넘겨주려고 했지만
+
+❗View에서 사용자 입력에 대해 최소한의 유효성은 확인해주어야 한다.
+
+현재 프로그램에서 최소한의 유효성(ex.숫자를 입력받는다.)과 도메인 요구사항(ex.1000으로 나누어 떨어진다.)로 나뉜다.
+
+🚩**결론** : <u>입력을 받는 최소한의 예외 처리는 View에서 나머지 규칙에 따른 예외 처리는 필요한 위치에서!</u>
+
+유효성 검사를 두 가지 성격으로 나누니 고민이 해결되었다!! 그리고 이런 것을 결정하는 것은 정답은 없고 개발자의 설계에 따라 달라진다.
+
+<br>
+
+### 😫 험난한 트러블 슈팅
+
+1️⃣ **ImmutableCollections**
+
+- `시도 1` 랜덤 숫자 리스트를 불변 -> 가변으로 변경해서 정렬
+
+프로그래밍 요구사항에 맞추어 camp.nextstep.edu.missionutils에서 제공하는 Randoms를 사용하고 있다. 이때 나는 랜덤 6개의 숫자 리스트를 정렬해서 변경하고자 했다. 
+
+불변 컬렉션을 수정하고자 해서 오류가 나고 있다. 그래서 주어진 Randoms 클래스의 구현체를 확인해보니 subList로 List의 일부를 잘라 사용하고 있었다. 이때 ArrayList의 SubList는 자신이 생성된 parent 값을 가지고 있다고 한다.
+그래서 수정할 수 없는 리스트라면 수정할 수 있는 리스트를 생성해주었다.
+
+```
+public List<Integer> generateRandomNumbers() {
+        List<Integer> lottoNumbers = Randoms.pickUniqueNumbersInRange(1, 45, LOTTO_COUNT);
+        List<Integer> modifiableLottoNumbers = new ArrayList<Integer>(lottoNumbers);
+        Collections.sort(modifiableLottoNumbers);
+        return modifiableLottoNumbers;
+    }
+```
+
+- `시도 2` 원본 데이터를 수정하지 않고 정렬
+
+랜덤 숫자 리스트를 정렬하기 위해서 원본 데이터를 수정할 수 있는 형태로 생성했다. 하지만 시간이 지나고 고민하니 객체의 설계상 랜덤 숫자 데이터는 변경되면 안 된다는 생각이 들었다.
+
+❗또한 원본 데이터의 수정을 가하지 않는 방법이 더욱 좋은 코드라고 생각했다.
+
+그래서 원본 데이터의 수정 없이 정렬하는 형태를 다시 찾아 발견한 게 Stream API이다. Stream API를 제대로 사용해본 적이 없어 자바의 정석을 펼쳐 공부했다. 그리고 최종적으로 코드를 완성해서 원본 데이터를 지키며 정렬할 수 있었다.
+
+```
+public List<Integer> generateRandomNumbers() {
+        List<Integer> lottoNumbers = Randoms.pickUniqueNumbersInRange(1, 45, LOTTO_COUNT);
+        List<Integer> sortedLottoNumbers = lottoNumbers.stream().sorted().collect(Collectors.toList());
+        return sortedLottoNumbers;
+    }
+```
+
+2️⃣ **예외 처리**
+
+이번 미션의 가장 험난한 트러블 슈팅이었다. 주어진 요구사항 문서를 제대로 파악하는 것에 중요성을 깨달았고 여러 디버깅을 해보면서 문제를 결국 해결해내는 뿌듯함을 얻었다.
+
