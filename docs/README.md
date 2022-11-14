@@ -7,7 +7,7 @@
 - [O] 중복 되지 않는 6개의 숫자를 뽑는다. (로또 발행) Machine#draw
 - [O] 입력 받은 개수에 맞게 로또를 발행한다. MachRine#draw(size)
 - [O] 당첨 번호와 보너스 번호를 입력 받는다. Console#inputWinningNumber
-- [ ] 구매한 로또와 당첨 번호를 비교해 일치하는 번호의 개수를 구한다. Machine#compare
+- [O] 구매한 로또와 당첨 번호를 비교해 일치하는 번호의 개수를 구한다. Machine#compare
 - [ ] 5개 일치한 경우, 보너스 번호를 확인 한다. Machine#BonusCompare
 - [ ] 일치한 개수에 따라 등수를 매긴다. Machine#checkRanking
 - [ ] 수익률을 계산한다. Machine#calculateRate

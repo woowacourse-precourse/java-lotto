@@ -18,4 +18,16 @@ public class Machine {
 
         return lottos;
     }
+
+    public int compare(Lotto winningLotto, Lotto lotto) {
+        List<Integer> numbers = lotto.getNumbers();
+        int count = 0;
+        for (Integer number : numbers) {
+            if (winningLotto.getNumbers().contains(number)) {
+                count++;
+            }
+        }
+        return count;
+    }
+
 }
