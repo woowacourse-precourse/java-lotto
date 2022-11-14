@@ -26,6 +26,11 @@ public class LottoMachine {
 
     private List<Integer> getRandomNumbers() {
         List<Integer> numbers = Randoms.pickUniqueNumbersInRange(START_NUMBER, END_NUMBER, SIZE);
+        return sortNumbers(numbers);
+    }
+
+    private List<Integer> sortNumbers(List<Integer> numbers) {
+        numbers = new ArrayList<>(numbers);
         Collections.sort(numbers);
         return numbers;
     }
