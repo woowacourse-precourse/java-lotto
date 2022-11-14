@@ -52,4 +52,11 @@ class ChangeTest {
         assertThat(input).isEqualTo(1000);
     }
 
+    @DisplayName("숫자를 제외한 문자가 입력이 되었으면 예외를 발생한다.")
+    @Test
+    void number_문자입력(){
+        assertThatThrownBy(() -> Change.number("1000b"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
 }
