@@ -16,7 +16,7 @@ public class LottoController {
     public void run() {
         List<Lotto> lottoBundle = buyLotto();
         List<LottoResult> lottoResults = getLottoResults(lottoBundle);
-        outputView.printYield(lottoService.calculateYield(lottoResults));
+        printYield(lottoResults);
     }
 
     private List<Lotto> buyLotto() {
@@ -33,6 +33,10 @@ public class LottoController {
 
         outputView.printLottoResult(lottoResults);
         return lottoResults;
+    }
+
+    private void printYield(List<LottoResult> lottoResults) {
+        outputView.printYield(lottoService.calculateYield(lottoResults));
     }
 
 }
