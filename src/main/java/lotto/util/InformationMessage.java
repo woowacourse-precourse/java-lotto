@@ -6,7 +6,7 @@ public enum InformationMessage {
     INPUT_BONUS_NUMBER("보너스 번호를 입력해 주세요."),
     PRINT_PURCHASE_COUNT("개를 구매했습니다."),
     PRINT_WINNING_RESULT("당첨 통계"),
-    PRINT_RATE_OF_RETURN("총 수익률은 %.1f%%입니다."),
+    PRINT_RATE_OF_RETURN("총 수익률은 %,.1f%%입니다."),
     DIVISOR("---");
 
     private final String message;
