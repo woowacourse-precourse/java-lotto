@@ -35,10 +35,18 @@ public class Lotto {
         for(Integer number : numbers){
             int numberFrequency = Collections.frequency(numbers, number);
             if(numberFrequency > 1){
-                throw new IllegalArgumentException("[Error] 로또 번호는 중복되지 않아야 합니다.");
+                throw new IllegalArgumentException("[ERROR] 로또 번호는 중복되지 않아야 합니다.");
             }
         }
     }
 
-    // TODO: 추가 기능 구현
+    int countSameNumber(List<Integer> winNumber){
+        int countSame = 0;
+        for(int number : this.numbers){
+            if(winNumber.contains(number)){
+                countSame++;
+            }
+        }
+        return countSame;
+    }
 }
