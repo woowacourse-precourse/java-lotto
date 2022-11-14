@@ -11,9 +11,9 @@ public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
 
-        // 구매금액입력
     }
 
+    // 구매금액입력
     /**
      * 6. buyLotto (로또 구입) 완료 <br/>
      * 1,000원으로 나누어 떨어지지 않는 경우 예외 처리한다. <br/>
@@ -58,5 +58,24 @@ public class Application {
             }
         }
         return lottoRandomNum;
+    }
+
+    // 랜덤 로또번호 리스트 출력
+    /**
+     * 10. buyLottoPrint (구매한 로또 lottoRandomNum 리스트 출력) 완료 <br/>
+     * 
+     * @param lottoRandomNum
+     */
+    public static void buyLottoPrint(int buyLotto) {
+        List<List<Integer>> buyLottoPrint = new ArrayList<List<Integer>>();
+        System.out.println(buyLotto + "개를 구매했습니다.");
+
+        for (int i = 0; i < buyLotto; i++) {
+            buyLottoPrint.add(lottoRandomNum());
+        }
+        for (int i = 0; i < buyLottoPrint.size(); i++) {
+            System.out.println(buyLottoPrint.get(i));
+        }
+        return;
     }
 }
