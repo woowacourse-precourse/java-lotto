@@ -11,18 +11,18 @@ public enum Prize {
     FIRST(6, 2_000_000_000, Boolean.FALSE);
 
     private final int money;
-    private final int numberOfMatch;
+    private final int matchingCount;
     private final boolean hasBonusNumber;
 
-    Prize(int numberOfMatch, int money, boolean hasBonusNumber) {
-        this.numberOfMatch = numberOfMatch;
+    Prize(int matchingCount, int money, boolean hasBonusNumber) {
+        this.matchingCount = matchingCount;
         this.money = money;
         this.hasBonusNumber = hasBonusNumber;
     }
 
-    public static Prize findPrize(int numberOfMatch, boolean hasBonusNumber) {
+    public static Prize findPrize(int matchingCount, boolean hasBonusNumber) {
         return Arrays.asList(Prize.values()).stream()
-                .filter(prize -> prize.numberOfMatch == numberOfMatch
+                .filter(prize -> prize.matchingCount == matchingCount
                                          && prize.hasBonusNumber == hasBonusNumber)
                 .findFirst()
                 .orElseThrow(() -> new IllegalArgumentException("there is no matched Prize"));
@@ -35,7 +35,7 @@ public enum Prize {
     @Override
     public String toString() {
         StringBuilder message = new StringBuilder();
-        message.append(numberOfMatch).append("개 일치");
+        message.append(matchingCount).append("개 일치");
 
         if (hasBonusNumber) {
             message.append(", 보너스 볼 일치");
