@@ -21,7 +21,7 @@
 
 
 #### Buyer
-- [ ] 구매할 수 있는 로또 수만큼 로또를 구매 - Buyer#Buyer(String won)
+- [X] 구매 금액에 맞춰 구매할 수 있는 로또 수만큼 로또 생성 - Buyer#Buyer(String won)
   - [X] 구매 가능한 수만큼 로또 생성 - Randoms#pickUniqueNumbersInRange()
 - [X] 구매 금액을 통해 몇 장의 로또를 구매할 수 있는지 계산 - Buyer#calculateNumberOfLottos(String won)
   - [X] 1,000 미만의 값인 경우 예외처리 - Buyer#validateIsUnderLottoPrice(int won) 

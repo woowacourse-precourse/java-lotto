@@ -1,14 +1,22 @@
 package lotto.domain;
 
+import java.util.ArrayList;
 import java.util.List;
 
-import static lotto.domain.Lotto.LOTTO_PRICE;
+import static camp.nextstep.edu.missionutils.Randoms.pickUniqueNumbersInRange;
+import static lotto.domain.Lotto.*;
 
 public class Buyer {
     private final List<Lotto> lottos;
 
     public Buyer(String won) {
-        lottos = List.of();
+        int numberOfLottos = calculateNumberOfLottos(won);
+        List<Lotto> lottos = new ArrayList<>();
+        for (int count = 0; count < numberOfLottos; count++) {
+            Lotto lotto = new Lotto(pickUniqueNumbersInRange(LOTTO_START_NUMBER, LOTTO_END_NUMBER, LOTTO_SIZE));
+            lottos.add(lotto);
+        }
+        this.lottos = lottos;
     }
 
     private int calculateNumberOfLottos(String won) {
