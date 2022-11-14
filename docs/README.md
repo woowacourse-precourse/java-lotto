@@ -5,15 +5,16 @@
     - 예외 처리
       - 1000원 단위로 입력되지 않을 경우
 - [x] 구매한 로또 번호 발행 기능 Store#drawLottoNumber()
-    - 랜덤으로 당첨 번호(6개)와 보너스 번호(1개) 발행
-    - 발행된 번호 리스트를 매개 변수로 Lotto 클래스 생성
-    - 번호는 오름차순
-    - 예외 처리 Lotto#Validate()
-      - 당첨 번호 6개 만족하지 않을 경우
-      - 당첨 번호가 중복일 경우 
+  - 발행된 로또 출력 Lotto#showLotto()
+  - 랜덤으로 당첨 번호(6개)와 보너스 번호(1개) 발행
+  - 발행된 번호 리스트를 매개 변수로 Lotto 클래스 생성
+  - 번호는 오름차순
+  - 예외 처리 Lotto#Validate()
+    - 당첨 번호 6개 만족하지 않을 경우
+    - 당첨 번호가 중복일 경우
 - [ ] 로또 번호 비교 후 상금 및 수익률 계산 
   - [X] 추첨된 로또 번호 입력 기능 Checker#insertWinningNumbers()
   - [X] 보너스 로또 번호 입력 기능 Checker#insertBonusNumbers()
-  - [ ] 자신의 로또 번호와 비교 기능 Checker#checkMyLotto()
-  - [ ] 상금 출력 기능 Checker#showWinningStats()
+  - [x] 자신의 로또 번호와 비교 기능 Checker#checkMyLotto()
+  - [x] 상금 출력 기능 Checker#showWinningStats()
   - [ ] 수익률 계산 기능 Checker#calculateRateOfReturn()
