@@ -8,7 +8,7 @@ import lotto.domain.Seller;
 
 public class Application {
 
-	private static final String SELL_ANNOUNCEMENT = "구입금액을 입력해 주세요.";
+	private static final String INPUT_PURCHASE_AMOUNT_ANNOUNCEMENT = "구입금액을 입력해 주세요.";
 	private static final Seller seller = new Seller();
 
 	public static void main(String[] args) {
@@ -25,7 +25,7 @@ public class Application {
 	}
 
 	private static Integer readPurchaseAmount() {
-		System.out.println(SELL_ANNOUNCEMENT);
+		System.out.println(INPUT_PURCHASE_AMOUNT_ANNOUNCEMENT);
 		try {
 			return Integer.valueOf(Console.readLine());
 		} catch (NumberFormatException e) {
