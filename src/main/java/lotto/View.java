@@ -32,7 +32,7 @@ public class View {
         }
     }
 
-    public void printResult(Rank[] values, String yield) {
+    public void printResult(Rank[] values, double yield) {
         try {
             printLine("당첨 통계\n---");
             for (Rank rank : values) {
