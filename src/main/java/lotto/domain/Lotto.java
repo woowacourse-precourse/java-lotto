@@ -34,7 +34,7 @@ public class Lotto {
                 .anyMatch(winningNumber::isEqualToBonusNumber);
     }
 
-    public List<Integer> getSortedByAscendNumbers() {
+    public List<Integer> getNumbersSortedByAscending() {
         return numbers.stream()
                 .sorted(Comparator.comparing(Integer::valueOf))
                 .collect(Collectors.toList());

@@ -59,7 +59,7 @@ public class LottoGameView {
     }
 
     public void printSortedLotto(Lotto lotto) {
-        System.out.println(lotto.getSortedByAscendNumbers());
+        System.out.println(lotto.getNumbersSortedByAscending());
     }
 
     public void printWinningResult(Map<LottoRank, Integer> rankCount) {
