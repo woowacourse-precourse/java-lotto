@@ -1,4 +1,4 @@
-package lotto;
+package lotto.model;
 
 import java.util.HashSet;
 import java.util.List;
@@ -9,6 +9,7 @@ public class Lotto {
     public static final int LOTTO_NUMBER_MIN = 1;
     public static final int LOTTO_NUMBER_MAX = 45;
     public static final int LOTTO_LENGTH = 6;
+    public static final String LOTTO_DELIMITER = ",";
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
