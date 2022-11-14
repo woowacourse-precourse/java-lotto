@@ -11,6 +11,7 @@ import java.util.stream.Stream;
 
 
 import static lotto.function.Tools.*;
+import static lotto.function.Tools.showYield;
 import static lotto.function.Validation.*;
 
 public class Start {
@@ -73,4 +74,16 @@ public class Start {
         return bonus;
     }
 
+    public static void showStatistics(List<List<Integer>> Lotto, List<Integer> winner, int bonus){
+        System.out.println("당첨 통계");
+        System.out.println("---");
+        List<Integer> places = new ArrayList<>(Arrays.asList(0,0,0,0,0,0));
+        int lsize = Lotto.size();
+        for(int i=0;i<lsize;i++){
+            int place = whichPlaceIsIt(Lotto.get(i),winner,bonus);
+            places.set(place,places.get(place)+1);
+        }
+        showPlaces(places);
+        showYield(lsize,places);
+    }
 }
