@@ -12,26 +12,33 @@ public class User {
     public static final String PURCHASE_MONEY_MULTIPLE_THOUSAND = "[ERROR] 구입 금액은 1,000원으로 나누어 떨어져야 합니다.";
     public static final String PURCHASE_MONEY_MORE_THAN_ZERO = "[ERROR] 구입 금액은 양수여야 합니다.";
 
-    String money_str;
     int money;
     List<Lotto> myLotto = new ArrayList<>();
 
     public void inputPurchaseMoney() {
         System.out.println(INPUT_PURCHASE_MONEY);
-        money_str = Console.readLine();
+        String money_str = Console.readLine();
         checkThatPurchaseMoneyIsRightInput(money_str);
     }
 
-    public void checkThatPurchaseMoneyIsRightInput(String purchaseMoney) throws IllegalArgumentException {
+    public void checkThatPurchaseMoneyIsRightInput(String purchaseMoney){
         money = Exception.isInteger(purchaseMoney);
 
+        checkThatPurchaseMoneyIsNotPositive();
+        checkThatPurchaseMoneyIsNotMultipleOfThousand();
+
+    }
+
+    private void checkThatPurchaseMoneyIsNotPositive() throws IllegalArgumentException{
         if (Exception.isNotPositive(money)) {
             throw new IllegalArgumentException(PURCHASE_MONEY_MORE_THAN_ZERO);
         }
+    }
+
+    private void checkThatPurchaseMoneyIsNotMultipleOfThousand() throws IllegalArgumentException{
         if (Exception.isNotMultipleOfThousand(money)) {
             throw new IllegalArgumentException(PURCHASE_MONEY_MULTIPLE_THOUSAND);
         }
-
     }
 
     public void purchaseLotto() {
