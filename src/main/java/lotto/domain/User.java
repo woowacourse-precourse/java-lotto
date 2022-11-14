@@ -10,17 +10,9 @@ public class User {
     private int nLottoTickets;
 
     public User(int money){
-        validateMoney(money);
         setMoney(money);
 
         setnLottoTickets(money);
-    }
-
-    private void validateMoney(int money) {
-        if(!Validator.isLottoMoney(money)){
-            Message.printInputErrorUserMoney();
-            throw new IllegalArgumentException();
-        }
     }
 
     private void setMoney(int money) {
