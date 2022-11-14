@@ -4,14 +4,14 @@ import java.util.List;
 
 public class Application {
     public static void main(String[] args) {
-        Calculator calc = InputView.inputMoney();
+        InputView inputView = new InputView();
+        inputView.inputMoney();
 
-        Lotto lotto = InputView.inputWinningNumber();
+        Lotto lotto = inputView.inputWinningNumber();
         int bonus = lotto.inputBonus();
-
-        for (List<Integer> randomLotto : calc.lotteries) {
+        for (List<Integer> randomLotto : inputView.calculator.lotteries) {
             lotto.compareLotto(randomLotto, bonus);
         }
-        calc.printResult();
+        inputView.calculator.printResult();
     }
 }
