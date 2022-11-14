@@ -22,7 +22,12 @@ public class Lotto {
         return 0;
     }
 
+
     public String toString(){
         return numbers.toString();
+    }
+
+    public List<Integer> getNumbers() {
+        return numbers;
     }
 }

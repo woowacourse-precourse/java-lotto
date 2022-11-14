@@ -29,6 +29,7 @@ public class ResultAnalyzer {
         if (hit == 5 && matcher.doesContainBonusNumber(lotto, bonusNumber)) {
             rank--;
         }
+
         return rank;
     }
 }
