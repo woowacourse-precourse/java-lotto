@@ -14,6 +14,7 @@ public class Lotto {
     public Lotto(List<Integer> winningNumbers) {
         validateSizeWinningNumber(winningNumbers);
         validateDuplicate(winningNumbers);
+        validateRange(winningNumbers);
         this.lotto = winningNumbers;
     }
 
@@ -37,6 +38,12 @@ public class Lotto {
         }
     }
 
+    public void validateRange(int number){
+        if (number < LOTTO_MIN_RANGE || number > LOTTO_MAX_RANGE) {
+            throw new IllegalArgumentException(OVER_OR_UNDER_RANGE.print(LOTTO_MIN_RANGE, LOTTO_MAX_RANGE));
+        }
+    }
+
     public void validateDuplicateBonusAndWinningNumber(int number){
         if(lotto.contains(number)){
             throw new IllegalArgumentException(DUPLICATION_WINNING_NUMBER_AND_BONUS_NUMBER.print());
@@ -46,6 +53,7 @@ public class Lotto {
 
     public void setBonusNumber(int number){
         validateDuplicateBonusAndWinningNumber(number);
+        validateRange(number);
         lotto.add(number);
     }
 
