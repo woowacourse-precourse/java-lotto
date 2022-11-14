@@ -135,4 +135,21 @@ class LottoStatsTest {
 
 
 
+    @Test
+    @DisplayName("수익률 계산 테스트")
+    public void earningTest() throws Exception{
+        // 수익률  = ( 번 돈 / 투자한 돈 ) * 100
+
+        int cost = 1000;
+        int gain = StatsConst.FIVE_MONEY;
+        double first = (gain / cost) * 100;
+        double money = Math.round(first * 100)/100.0;
+        Assertions.assertThat(money).isEqualTo(500.0);
+    }
+
+
+
+
+
+
 }
