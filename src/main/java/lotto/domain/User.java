@@ -23,4 +23,8 @@ public class User {
     private void setnLottoTickets() {
         this.nLottoTickets = this.lottoMoney / Constant.LOTTO_PRICE;
     }
+
+    public int getnLottoTickets() {
+        return nLottoTickets;
+    }
 }
