@@ -85,6 +85,10 @@ public class LottoStatistics {
         printResult();
     }
 
+    public void setBonusNumber(Integer bonusNumber){
+        this.bonusNumber = bonusNumber;
+    }
+
     public void winTheLottery() {
         Iterator<Lotto> lottoIter = lottos.iterator();
 
