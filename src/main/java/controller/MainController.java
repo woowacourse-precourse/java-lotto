@@ -13,6 +13,7 @@ public class MainController {
     private int lottoCount;
     private List<List<Integer>> totalLotteries;
     private List<Integer> winningNumbers;
+    private int[] rankCount;
 
     public void run() {
         moneyController();
@@ -40,6 +41,11 @@ public class MainController {
     }
 
     public void compareController() {
-        new LottoBank().LottoNumberCompareResult(totalLotteries, winningNumbers);
+        rankCount = new LottoBank().LottoNumberCompareResult(totalLotteries, winningNumbers);
+        compareResult();
+    }
+
+    public void compareResult() {
+        OutputView.printResult(rankCount);
     }
 }
