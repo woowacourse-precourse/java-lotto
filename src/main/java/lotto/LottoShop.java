@@ -9,7 +9,7 @@ public class LottoShop {
     private static int purchasePrise;
     private static int lottoCnt;
     public static HashMap<WinningRank, Integer> rankingCnt = new LinkedHashMap<>();
-
+    public static HashSet<Integer> rightWinningNum = new HashSet<Integer>();
     public LottoShop(int purchasePrise){
         this.purchasePrise = purchasePrise;
         this.lottoCnt = purchasePrise/1000;
@@ -67,10 +67,17 @@ public class LottoShop {
     public static int howManyRightWinningNum(Lotto winningLottoNum, Lotto lotto){
         List<Integer> winningLottoNums = winningLottoNum.getNumber();
         List<Integer> lottoNums = lotto.getNumber();
+        int rightNumCnt = 0;
 
-        lottoNums.retainAll(winningLottoNums);
-        int rightNumCnt = lottoNums.size();
+        for(int winningNum : winningLottoNums){
+            rightWinningNum.add(winningNum);
+        }
 
+        for(int lottoNum : lottoNums){
+            if(rightWinningNum.contains(lottoNum)) rightNumCnt++;
+        }
+
+        rightWinningNum.clear();
         return rightNumCnt;
     }
 
