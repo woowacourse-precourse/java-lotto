@@ -142,5 +142,10 @@ public class Controller {
                 View.Output(correctNumber + "개 일치 (" + rewardPrint + "원) - " + result + "개");
             }
         }
+
+        // 총 수익률 출력
+        Integer incomeSum = Model.CalculateEarningSum(lottoResult);
+        Double earningRate = Model.CalculateEarningRate(lottoAmount, incomeSum);
+        View.Output("총 수익률은 "+earningRate+"%입니다.");
     }
 }

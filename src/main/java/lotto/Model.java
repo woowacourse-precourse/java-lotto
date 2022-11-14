@@ -93,15 +93,18 @@ public class Model {
     }
 
     public static Double CalculateEarningRate(Integer spending, Integer income) {
-        return Math.round(income / spending * 100 * 100) / 10.0;
+        Double incomeDouble= (double)income;
+        Double spendingDouble= (double)spending;
+        Double result = Math.round(incomeDouble / spendingDouble * 100 * 10) / 10.0;
+        return result;
     }
 
-    public Integer CalculateEarningSum(LinkedHashMap<Integer, Integer> analyzedResult) {
+    public static Integer CalculateEarningSum(LinkedHashMap<Integer, Integer> analyzedResult) {
         List<Integer> analyzedResultKeys = new ArrayList<>(analyzedResult.keySet());
 
         Integer sum = 0;
 
-        for (int i = 0; i < 6; i++) {
+        for (int i = 1; i < 6; i++) {
             sum = sum + LottoReward.getRewardByRank(i) * analyzedResult.get(i);
         }
 
