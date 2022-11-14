@@ -17,12 +17,12 @@ public class LottoRepositoryTest {
     private LottoRepository lottoRepository;
 
     @TestFactory
-    @DisplayName("")
+    @DisplayName("LottoRepository Test")
     Stream<DynamicTest> lottoRepositoryTest() {
         lottoRepository = new LottoRepository();
 
         return Stream.of(
-                DynamicTest.dynamicTest("로또번호 생성을 테스트한다.", () -> {
+                DynamicTest.dynamicTest("Create Test 로또번호 생성을 테스트한다.", () -> {
                     Lotto result = lottoRepository.create();
                     List<Integer> resultNumber = result.getNumbers();
 
