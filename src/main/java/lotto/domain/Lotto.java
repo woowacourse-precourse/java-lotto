@@ -62,4 +62,8 @@ public class Lotto {
         return new Lotto(rawValues);
     }
 
+    public boolean isMatchedNumbersWith(LottoNumber number) {
+        return lottoNumbers.contains(number);
+    }
+
 }
