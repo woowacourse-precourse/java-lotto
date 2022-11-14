@@ -140,15 +140,22 @@ public class Application {
         int sameNumbers = 0;
         boolean sameBonus;
         EnumMap<WIN, Integer> winnings = new EnumMap<>(WIN.class);
-        WIN win;
+        initiateWinnings(winnings);
 
         for (Lotto lotto : lottos) {
             sameNumbers = lotto.containsN(winningNumbers);
             sameBonus = lotto.contains(bonusNumber);
-            win = WIN.getWIN(sameNumbers, sameBonus);
+            WIN win = WIN.getWIN(sameNumbers, sameBonus);
             winnings.put(win, winnings.getOrDefault(win, 0));
         }
         return winnings;
+    }
+
+    public static void initiateWinnings (EnumMap<WIN, Integer> winnings) {
+        List<WIN> wins = WIN.getAllWIN();
+        for (WIN win : wins) {
+            winnings.put(win, 0);
+        }
     }
 
     public static void printStats(EnumMap<WIN, Integer> winnings, int inputMoney) {

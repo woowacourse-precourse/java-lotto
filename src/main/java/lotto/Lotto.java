@@ -1,6 +1,7 @@
 package lotto;
 
 import java.util.Collections;
+import java.util.LinkedList;
 import java.util.List;
 
 public class Lotto {
@@ -8,7 +9,6 @@ public class Lotto {
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
-        Collections.sort(numbers);
         this.numbers = numbers;
     }
 
@@ -20,6 +20,7 @@ public class Lotto {
 
     // TODO: 추가 기능 구현
     public void printAscending() {
+        List<Integer> numbers = new LinkedList<>(this.numbers);
         System.out.println(numbers.toString());
     }
 

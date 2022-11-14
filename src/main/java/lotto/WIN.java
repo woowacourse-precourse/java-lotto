@@ -1,5 +1,6 @@
 package lotto;
 
+import java.util.List;
 import java.util.Map;
 
 public enum WIN {
@@ -42,5 +43,9 @@ public enum WIN {
             return WIN.valueOf("WIN_" + (8 - sameNumbers) + "TH");
         }
         return WIN_NO;
+    }
+
+    public static List<WIN> getAllWIN() {
+        return List.of(WIN_5TH, WIN_4TH, WIN_3RD, WIN_2ND, WIN_1ST, WIN_NO);
     }
 }
