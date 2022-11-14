@@ -14,11 +14,15 @@ public class LottoController {
     private final LottoService lottoService = new LottoService();
 
     public void run() {
-        Buyer buyer = buy();
-        Winning winning = Pick();
-        List<Rank> lottosRank = buyer.getLottosRank(winning.getNumbers(), winning.getBonusNumber());
-        printHistory(lottosRank);
-        printPortfolio(lottosRank, buyer.getPurchaseMoney());
+        try {
+            Buyer buyer = buy();
+            Winning winning = Pick();
+            List<Rank> lottosRank = buyer.getLottosRank(winning.getNumbers(), winning.getBonusNumber());
+            printHistory(lottosRank);
+            printPortfolio(lottosRank, buyer.getPurchaseMoney());
+        }catch (IllegalArgumentException e){
+            System.out.println(e.getMessage());
+        }
     }
 
     private Buyer buy() {
