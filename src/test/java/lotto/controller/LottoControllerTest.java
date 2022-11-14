@@ -6,6 +6,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -28,8 +29,10 @@ class LottoControllerTest {
 
                 () -> assertThatThrownBy(() -> controller.inputMoney("100000000000000000"))
                         .isInstanceOf(IllegalArgumentException.class)
-                        .hasMessageContaining(MoneyValidator.IS_IN_BOUNDS.getErrorMessage())
+                        .hasMessageContaining(MoneyValidator.IS_IN_BOUNDS.getErrorMessage()),
 
+                () -> assertThat(MoneyValidator.IS_PARSEABLE.getPredicate().test("non digit"))
+                        .isFalse()
         );
     }
 }

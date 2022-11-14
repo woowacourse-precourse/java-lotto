@@ -16,6 +16,17 @@ public enum MoneyValidator implements Validator {
             "[ERROR] 구입금액이 너무 큽니다.",
             (String input) -> input.length() < String.valueOf(Config.MAX_MONEY).length()
     ),
+    IS_PARSEABLE(
+            "[ERROR] 입력 형식이 잘못되었습니다.",
+            (String input) -> {
+                try {
+                    Integer.parseInt(input);
+                    return true;
+                } catch (NumberFormatException e) {
+                    return false;
+                }
+    }
+    ),
     ;
 
     private final String errorMessage;
