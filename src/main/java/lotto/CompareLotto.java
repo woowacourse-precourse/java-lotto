@@ -9,27 +9,30 @@ public class CompareLotto {
         List<Integer> correctcount = new ArrayList<>();
 
         for(List<Integer>buynumber : buynumbers){
-            int cnt=0;
-
-            for(int number:buynumber){
-                if(winningnumbers.contains(number))
-                    cnt++;
-            }
-
-            if(cnt==6){
-                one++;
-            } else if(cnt==5){
-                if(buynumber.contains(bonus))
-                    second++;
-                else
-                    third++;
-            } else if(cnt==4){
-                fourth++;
-            } else if(cnt==3){
-                fifth++;
-            }
+            compare(buynumber,winningnumbers,bonus);
         }
 
         return correctcount;
+    }
+    public void compare(List<Integer> buynumber, List<Integer> winningnumbers, int bonus){
+        int cnt=0;
+
+        for(int number:buynumber){
+            if(winningnumbers.contains(number))
+                cnt++;
+        }
+
+        if(cnt==6){
+            one++;
+        } else if(cnt==5){
+            if(buynumber.contains(bonus))
+                second++;
+            else
+                third++;
+        } else if(cnt==4){
+            fourth++;
+        } else if(cnt==3){
+            fifth++;
+        }
     }
 }
