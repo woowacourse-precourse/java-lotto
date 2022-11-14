@@ -29,6 +29,9 @@ enum WinningRanking{
     public List<Integer> getRanking(){
         return new ArrayList<>(List.of(countMatches, isMatchBonus));
     }
+    public int getOrder(){
+        return order;
+    }
     public int getCountMatches(){
         return countMatches;
     }
