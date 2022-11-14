@@ -37,7 +37,7 @@ public class OutputView {
 
         BigDecimal yield = totalPrize.divide(money);
         yield = yield.multiply(new BigDecimal("100"));
-        
+
         System.out.printf(MESSAGE_YIELD, yield);
     }
 }

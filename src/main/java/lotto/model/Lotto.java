@@ -7,10 +7,6 @@ import java.util.List;
 import lotto.util.Validator;
 
 public class Lotto {
-    private static final int MIN_LOTTO_NUMBER = 1;
-    private static final int MAX_LOTTO_NUMBER = 45;
-    private static final int LOTTO_SIZE = 6;
-    
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
@@ -23,7 +19,8 @@ public class Lotto {
     }
 
     public static Lotto makeRandom() {
-        List<Integer> randoms = Randoms.pickUniqueNumbersInRange(MIN_LOTTO_NUMBER, MAX_LOTTO_NUMBER, LOTTO_SIZE);
+        List<Integer> randoms = Randoms.
+                pickUniqueNumbersInRange(Setting.MIN_LOTTO_NUMBER, Setting.MAX_LOTTO_NUMBER, Setting.LOTTO_SIZE);
         List<Integer> numbers = new ArrayList<>(randoms);
         Collections.sort(numbers);
         return new Lotto(numbers);

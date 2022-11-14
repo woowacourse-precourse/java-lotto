@@ -4,14 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Buyer {
-    private static final int MIN_BUY_UNIT = 1_000;
     private List<Lotto> lottos;
     private int money;
     private int countLottos;
 
     public Buyer(Money money) {
         this.money = money.getMoney();
-        this.countLottos = this.money / MIN_BUY_UNIT;
+        this.countLottos = this.money / Setting.MIN_BUY_UNIT;
         buyLottos();
     }
 
