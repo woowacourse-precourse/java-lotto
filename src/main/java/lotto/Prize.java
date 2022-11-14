@@ -41,4 +41,7 @@ public enum Prize {
     public int getPrizeMoney() {
         return prizeMoney;
     }
+    public int getMatching() {
+        return matching;
+    }
 }
