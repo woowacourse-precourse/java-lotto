@@ -27,6 +27,12 @@ public class Check {
         }
     }
 
+    public static void numberDuplicate(List<Integer> numbers, int number) {
+        if (numbers.contains(number)) {
+            throw new IllegalArgumentException(ERROR_MESSAGE + " 중복된 숫자는 잘못된 입력값 입니다.");
+        }
+    }
+
     public static void winningNumberCount(List<String> numbers) {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException(ERROR_MESSAGE + " 당첨번호 숫자는 6개를 입력해야 합니다.");
