@@ -18,11 +18,12 @@ public enum Money {
     }
 
     public String getMoney() {
+        //숫자 세번 째 자리마다 ,를 넣어준다.
         DecimalFormat decimalFormat = new DecimalFormat("###,###");
         return decimalFormat.format(money);
     }
 
-    public int getMoneyAsInteger(){
+    public int getMoneyAsInteger() {
         return money;
     }
 }
