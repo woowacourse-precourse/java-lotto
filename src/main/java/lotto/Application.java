@@ -16,11 +16,10 @@ public class Application {
         Lotto winningLotto = new Lotto(winningLottoNumbers);
         System.out.println("보너스 번호를 입력해 주세요.");
         int bonusNumber = getBonusNumber(Console.readLine(), winningLottoNumbers);
-//       HashMap<String, Integer> history = createHistory(lottoList, winningLotto, bonusNumber);
-//        double yieldRate = getYieldRate(purchasePrice, getProfits(history));
-//        printYieldRate(yieldRate);
+        HashMap<String, Integer> history = createHistory(user.getLottoList(), winningLotto, bonusNumber);
+        Yield yield = new Yield(user.getPurchasePrice(), getProfits(history));
+        yield.printYieldRate();
     }
-
 
     public static List<Integer> getWinningLottoNumbers(String input) {
         String[] inputNumbers = input.split(",");
@@ -109,17 +108,6 @@ public class Application {
         return profits;
     }
 
-    public static double getYieldRate(int purchasePrice, double profits) {
-        return (profits / purchasePrice) * 100;
-    }
-
-    public static void printLottoList(List<Lotto> lottoList) {
-        System.out.println(lottoList.size() + "개를 구매했습니다.");
-        for (Lotto lotto : lottoList) {
-            System.out.println(lotto.getNumbers());
-        }
-    }
-
     public static void printWinningStats(HashMap<String, Integer> resultMap) {
         System.out.println("당첨 통계");
         System.out.println("---");
@@ -129,9 +117,4 @@ public class Application {
         System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - " + resultMap.get("5+") + "개");
         System.out.println("6개 일치 (2,000,000,000원) - " + resultMap.get("6") + "개");
     }
-
-    public static void printYieldRate(double yieldRate){
-        System.out.println("총 수익률은 "+ yieldRate +"%입니다.");
-    }
-
 }
