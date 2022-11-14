@@ -14,18 +14,23 @@ public class Application {
     static Buyer buyer = new Buyer();
     static OutputPrinter outputPrinter = new OutputPrinter();
     public static void main(String[] args) {
-        long startMoney = numbersReceiver.insertMoney();
-        long lottosBundleSize = buyer.countLottos(startMoney);
+        try {
+            long startMoney = numbersReceiver.insertMoney();
+            long lottosBundleSize = buyer.countLottos(startMoney);
 
-        List<List<Integer>> purchasedLottos = buyer.receiveLottos(lottosBundleSize);
-        outputPrinter.printPurchasedNumbers(lottosBundleSize,purchasedLottos);
+            List<List<Integer>> purchasedLottos = buyer.receiveLottos(lottosBundleSize);
+            outputPrinter.printPurchasedNumbers(lottosBundleSize,purchasedLottos);
 
-        List<Integer> basicWinningNumbers = numbersReceiver.setBasicNumbers();
-        int bonusNumber = numbersReceiver.setBonusNumber();
+            List<Integer> basicWinningNumbers = numbersReceiver.setBasicNumbers();
+            int bonusNumber = numbersReceiver.setBonusNumber();
 
-        Lotto lotto = new Lotto(basicWinningNumbers);
-        Map<WinningNumbers, Long> winningCaseStatistics = lotto.countWinningCase(bonusNumber, purchasedLottos);
-        double rawRewardRate = lotto.calculateRewardRate(bonusNumber, purchasedLottos, startMoney);
-        outputPrinter.printFinalResult(winningCaseStatistics, rawRewardRate);
+            Lotto lotto = new Lotto(basicWinningNumbers);
+            Map<WinningNumbers, Long> winningCaseStatistics = lotto.countWinningCase(bonusNumber, purchasedLottos);
+            double rawRewardRate = lotto.calculateRewardRate(bonusNumber, purchasedLottos, startMoney);
+            outputPrinter.printFinalResult(winningCaseStatistics, rawRewardRate);
+
+        } catch (IllegalArgumentException illegalArgumentException) {
+            System.out.println(illegalArgumentException.getMessage());
+        }
     }
 }
