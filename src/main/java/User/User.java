@@ -15,17 +15,19 @@ public class User {
 
     public void buyLottos() {
         int money = inputMoney();
-        if (!validateMoney(money)) {
-           throw new IllegalArgumentException("[ERROR] 금액은 1000원단위여야 합니다.");
-        }
         int countOfBuyLotto = money / 1000;
         for (int i = 0; i < countOfBuyLotto; i++) {
             lottos.add(new BoughtLotto());
         }
     }
 
-    private boolean validateMoney(int money) {
-        return money % 1000 == 0;
+    private void validateMoney(String money) {
+        if (!checkInputInteger(money)) {
+            throw new IllegalArgumentException("[ERROR] 금액은 자연수여야 합니다.");
+        }
+        if (!checkInputNumber(money)) {
+            throw new IllegalArgumentException("[ERROR] 금액은 1000원 단위여야 합니다.");
+        }
     }
 
     public void printLottos() {
