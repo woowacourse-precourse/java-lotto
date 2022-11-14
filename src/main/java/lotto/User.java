@@ -11,14 +11,9 @@ public class User {
     private static final int lottoValue = 1000;
 
     public void purchaseLotto(String input){
-        try {
-            Integer value = checkNum(input);
-            cntLotto = divideLotto(value);
-            setLotto(cntLotto);
-        }catch (IllegalArgumentException e){
-            ERRORUI.getErrorDivideValue();
-            System.exit(0);
-        }
+        Integer value = checkNum(input);
+        cntLotto = divideLotto(value);
+        setLotto(cntLotto);
     }
     private Integer checkNum(String input){
         Integer value = null;
@@ -32,9 +27,15 @@ public class User {
     }
 
     private Integer divideLotto(int value){
-        if(value%lottoValue!=0){
-            throw new IllegalArgumentException();
+        try {
+            if(value%lottoValue!=0){
+                throw new IllegalArgumentException();
+            }
+        }catch (IllegalArgumentException e){
+            ERRORUI.getErrorDivideValue();
+            System.exit(0);
         }
+
         return value/lottoValue;
     }
 

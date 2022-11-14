@@ -1,7 +1,6 @@
 package lotto;
 
 import lotto.UI.ERRORUI;
-import lotto.config.BaseException;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -20,13 +19,8 @@ public class Winning {
         List<Integer> check = new ArrayList<>();
         String[] str = input.split(",");
         check = checkNum(str);
-        try {
-            if(checkRange(check)){
-                winnings = check;
-            }
-        }catch (IllegalArgumentException e){
-            ERRORUI.getErrorRange();
-            System.exit(0);
+        if(checkRange(check)){
+            winnings = check;
         }
     }
 
@@ -44,12 +38,21 @@ public class Winning {
     }
 
     private boolean checkRange(List<Integer> check){
+        try {
+            checkIndex(check);
+        }catch (IllegalArgumentException e){
+            ERRORUI.getErrorRange();
+            System.exit(0);
+        }
+        return true;
+    }
+
+    private void checkIndex(List<Integer> check) throws IllegalArgumentException{
         for(Integer integer : check){
             if(integer<1 || integer>45){
                 throw  new IllegalArgumentException();
             }
         }
-        return true;
     }
 
     public List<Integer> getWinnings(){
@@ -58,13 +61,8 @@ public class Winning {
 
     public void setBonus(String s){
         Integer check = checkBonusNum(s);
-        try {
-            if(checkBonusRange(check)){
-                bonus = check;
-            }
-        }catch (IllegalArgumentException e){
-            ERRORUI.getErrorRange();
-            System.exit(0);
+        if(checkBonusRange(check)) {
+            bonus = check;
         }
     }
 
@@ -80,9 +78,15 @@ public class Winning {
     }
 
     private boolean checkBonusRange(Integer bonus){
-        if(bonus <1 || bonus >45){
-            throw new IllegalArgumentException();
+        try {
+            if(bonus <1 || bonus >45){
+                throw new IllegalArgumentException();
+            }
+        }catch (IllegalArgumentException e){
+            ERRORUI.getErrorRange();
+            System.exit(0);
         }
+
         return true;
     }
 
