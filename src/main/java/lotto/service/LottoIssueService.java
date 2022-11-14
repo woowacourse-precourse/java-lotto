@@ -11,7 +11,6 @@ public class LottoIssueService {
     public static LottoTicket createLottoTicket(int lottoCount) {
         isPositiveInteger(lottoCount);
         List<Lotto> lottoTicket = new ArrayList<>();
-
         for (int issued = 0; issued < lottoCount; issued++) {
             lottoTicket.add(new Lotto(issueLotto()));
         }
