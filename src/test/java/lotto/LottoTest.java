@@ -31,11 +31,18 @@ class LottoTest {
     // 아래에 추가 테스트 작성 가능
     @DisplayName("로또 구입 가격을 1000원 단위로 입력하지 않으면 예외가 발생한다.")
     @Test
-    void test() {
+    void inputLottoBuyPriceOnlyUnit1000() {
         List<Lotto> lottos = new ArrayList<>();
         Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
         lottos.add(lotto);
         assertThatThrownBy(() -> new User(1100, lottos))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("로또 숫자는 1~45 사이의 숫자여야만 한다.")
+    @Test
+    void isNumberFrom1To45() {
+        assertThatThrownBy(() -> new Lotto(List.of(1, 2, 3, 4, 5, 46)))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 }
