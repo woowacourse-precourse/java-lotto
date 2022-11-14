@@ -36,4 +36,13 @@ class ExceptionServiceTest {
         assertThatThrownBy(() -> exceptionService.exceptionHandlingOfPurchaseAmount(amount))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @Test
+    @DisplayName("당첨 번호 항복이 6개가 아니면 예외가 발생한다.")
+    void checkIfTheWinningNumbersHasSixCharactersBasedOnTheConmaTest() {
+        ExceptionService exceptionService = new ExceptionService();
+        String winningNumbers = "1,2,3,4,5,6,7";
+        assertThatThrownBy(() -> exceptionService.exceptionHandlingOfWinningNumbers(winningNumbers))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
