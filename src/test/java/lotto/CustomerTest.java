@@ -1,6 +1,7 @@
 package lotto;
 
 import lotto.user.Customer;
+import lotto.enumeration.LottoRankInformation;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -66,11 +67,11 @@ public class CustomerTest {
     @Test
     void case6_create_rankings() {
         assertRandomUniqueNumbersInRangeTest(() -> {
-            Map<LottoInformation, Integer> input = new Customer("2000")
+            Map<LottoRankInformation, Integer> input = new Customer("2000")
                     .createWinnings("1,2,3,4,5,7", "6");
             List<Integer> result = List.of(1, 1);
 
-            assertThat(List.of(input.get(LottoInformation.SECOND), input.get(LottoInformation.FOURTH)))
+            assertThat(List.of(input.get(LottoRankInformation.SECOND), input.get(LottoRankInformation.FOURTH)))
                     .isEqualTo(result);
         }, List.of(1, 2, 3, 4, 5, 6), List.of(3, 4, 5, 6, 7, 8));
     }

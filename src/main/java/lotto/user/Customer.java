@@ -1,6 +1,7 @@
 package lotto.user;
 
-import lotto.LottoInformation;
+import lotto.enumeration.ConsoleAlert;
+import lotto.enumeration.LottoRankInformation;
 import lotto.store.Lotto;
 import lotto.store.LottoDraw;
 import lotto.store.LottoMachine;
@@ -14,12 +15,9 @@ import java.util.stream.Collectors;
 public class Customer {
     private static final String NUMERIC_ERROR = "[ERROR] 숫자를 입력해 주시기 바랍니다.";
     private static final String DUPLICATION_ERROR = "[ERROR] 당첨 번호와 보너스 번호에 중복된 숫자가 있습니다.";
-    private static final String NUMBER_OF_PURCHASES_PHRASE = "개를 구매했습니다.";
-    private static final String RESULT_PHRASE = "당첨 통계\n---";
-    private static final String RESULT_EARNING_RATE_PHRASE = "총 수익률은 %.1f%%입니다.";
 
     private final List<Lotto> lotteries;
-    private final Map<LottoInformation, Integer> rankings = createRankings();
+    private final Map<LottoRankInformation, Integer> rankings = createRankings();
     private final int pay;
 
     public Customer(String readline) {
@@ -33,7 +31,7 @@ public class Customer {
     }
 
     private void validateNumeric(String readline) {
-        if (!Pattern.matches("^[0-9]*$", readline)) {
+        if (!Pattern.matches("^[1-9]\\d*$", readline)) {
             throw new IllegalArgumentException(NUMERIC_ERROR);
         }
     }
@@ -47,7 +45,7 @@ public class Customer {
     public String toLottoString() {
         StringJoiner currentLotteries = new StringJoiner("\n");
 
-        currentLotteries.add(lotteries.size() + NUMBER_OF_PURCHASES_PHRASE);
+        currentLotteries.add(lotteries.size() + ConsoleAlert.NUMBER_OF_PURCHASES_PHRASE.toAlertString());
         lotteries.forEach(lotto -> currentLotteries.add(lotto.toString()));
         return currentLotteries.toString();
     }
@@ -70,27 +68,27 @@ public class Customer {
         }).collect(Collectors.toList());
     }
 
-    public Map<LottoInformation, Integer> createWinnings(String winNumbers, String bonusNumber) {
+    public Map<LottoRankInformation, Integer> createWinnings(String winNumbers, String bonusNumber) {
         List<Integer> matchNumbers = matchWinNumbers(LottoDraw.getInstance().pickWinNumbers(winNumbers));
         List<Boolean> matchBonus = matchBonusNumber(LottoDraw.getInstance().pickBonusNumber(bonusNumber), matchNumbers);
         return inputRankings(matchNumbers, matchBonus);
     }
 
-    private Map<LottoInformation, Integer> inputRankings(List<Integer> matchNumbers, List<Boolean> matchBonus) {
+    private Map<LottoRankInformation, Integer> inputRankings(List<Integer> matchNumbers, List<Boolean> matchBonus) {
         AtomicInteger startIndex = new AtomicInteger();
 
         while (startIndex.get() < matchNumbers.size()) {
             int matchNumber = matchNumbers.get(startIndex.get());
-            LottoInformation lottoInformation = LottoInformation
-                    .makeLottoInformation(matchNumber, matchBonus.get(startIndex.getAndIncrement()));
-            rankings.put(lottoInformation, rankings.get(lottoInformation) + 1);
+            LottoRankInformation lottoRankInformation = LottoRankInformation
+                    .makeLottoRankInformation(matchNumber, matchBonus.get(startIndex.getAndIncrement()));
+            rankings.put(lottoRankInformation, rankings.get(lottoRankInformation) + 1);
         }
         return rankings;
     }
 
-    private Map<LottoInformation, Integer> createRankings() {
+    private Map<LottoRankInformation, Integer> createRankings() {
         return new HashMap<>() {{
-            Arrays.asList(LottoInformation.values()).forEach(lottoInformation -> put(lottoInformation, 0));
+            Arrays.asList(LottoRankInformation.values()).forEach(LottoRankInformation -> put(LottoRankInformation, 0));
         }};
     }
 
@@ -107,11 +105,12 @@ public class Customer {
 
     public String toResultString() {
         StringJoiner resultAlert = new StringJoiner("\n");
-        resultAlert.add(RESULT_PHRASE);
-        Arrays.stream(LottoInformation.values())
-                .filter(lottoInformation -> lottoInformation.getMatchNumber() >= 3)
-                .forEach(lottoInformation -> resultAlert.add(lottoInformation.getInformation(rankings.get(lottoInformation))));
-        resultAlert.add(String.format(RESULT_EARNING_RATE_PHRASE, calculateEarningRate(calculateWinnings())));
+        resultAlert.add(ConsoleAlert.RESULT_PHRASE.toAlertString());
+        Arrays.stream(LottoRankInformation.values())
+                .filter(LottoRankInformation -> LottoRankInformation.getMatchNumber() >= 3)
+                .forEach(LottoRankInformation -> resultAlert.add(LottoRankInformation.getInformation(rankings.get(LottoRankInformation))));
+        resultAlert.add(String.format(ConsoleAlert.RESULT_EARNING_RATE_PHRASE.toAlertString(),
+                calculateEarningRate(calculateWinnings())));
         return resultAlert.toString();
     }
 

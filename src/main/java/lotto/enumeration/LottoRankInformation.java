@@ -1,8 +1,8 @@
-package lotto;
+package lotto.enumeration;
 
 import java.util.Arrays;
 
-public enum LottoInformation {
+public enum LottoRankInformation {
     OTHERS(0, false, 0L),
     FIFTH(3, false, 5_000L),
     FOURTH(4, false, 50_000L),
@@ -14,7 +14,7 @@ public enum LottoInformation {
     private final boolean matchBonus;
     private final long prizeMoney;
 
-    LottoInformation(int matchNumber, boolean matchBonus, long prizeMoney) {
+    LottoRankInformation(int matchNumber, boolean matchBonus, long prizeMoney) {
         this.matchNumber = matchNumber;
         this.matchBonus = matchBonus;
         this.prizeMoney = prizeMoney;
@@ -41,11 +41,11 @@ public enum LottoInformation {
         return this.matchNumber;
     }
 
-    public static LottoInformation makeLottoInformation(int matchNumber, boolean matchBonus) {
+    public static LottoRankInformation makeLottoRankInformation(int matchNumber, boolean matchBonus) {
         return Arrays.stream(values())
-                .filter(lottoInformation -> lottoInformation.validateMatchNumber(matchNumber) && lottoInformation.validateMatchBonus(matchBonus))
+                .filter(LottoRankInformation -> LottoRankInformation.validateMatchNumber(matchNumber) && LottoRankInformation.validateMatchBonus(matchBonus))
                 .findFirst()
-                .orElse(LottoInformation.OTHERS);
+                .orElse(LottoRankInformation.OTHERS);
     }
 
     private boolean validateMatchBonus(boolean matchBonus) {
