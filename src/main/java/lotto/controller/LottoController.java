@@ -1,13 +1,14 @@
 package lotto.controller;
 
-import lotto.domain.WinnerNumber;
+import java.util.List;
+import lotto.constants.enums.WinResultStatus;
+import lotto.domain.WinningNumber;
 import lotto.service.LottoService;
 import lotto.validator.InputValidator;
 import lotto.views.InputView;
 import lotto.views.OutputView;
 
 public class LottoController {
-
     private final LottoService lottoService = new LottoService();
     private final InputValidator inputValidator = new InputValidator();
     private final InputView inputView = new InputView();
@@ -40,12 +41,13 @@ public class LottoController {
 
     private void printBroughtLottoMessage(int inputPrice) {
         outputView.outputLottoBuyingResult(lottoService.buyLottos(inputPrice));
-        requestWinnerNumber();
+        requestWinningNumber();
     }
 
-    private void requestWinnerNumber() {
+    private void requestWinningNumber() {
         try {
-            WinnerNumber winnerNumber = new WinnerNumber(inputView.inputWinnerNumber());
+            List<WinResultStatus> winResults = lottoService.createWinResults(
+                    new WinningNumber(inputView.inputWinningNumber()));
         } catch (IllegalArgumentException exception) {
             printLogInfo(exception);
         }
