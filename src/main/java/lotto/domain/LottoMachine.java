@@ -1,5 +1,6 @@
 package lotto.domain;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.Collections;
@@ -24,5 +25,16 @@ public class LottoMachine {
         return Math.floorDiv(money, LottoConstant.PRICE.getValue());
     }
 
+    private int readPurchaseAmount() {
+        try {
+            int money = Integer.valueOf(Console.readLine());
+            if (money < 0) {
+                throw new IllegalArgumentException();
+            }
+            return money;
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException();
+        }
+    }
 
 }
