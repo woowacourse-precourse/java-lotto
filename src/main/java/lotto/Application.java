@@ -4,7 +4,6 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Comparator;
 import java.util.List;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
@@ -44,9 +43,8 @@ public class Application {
 
         for(int i = 0 ; i < lottoCount ; i++){
             List<Integer> lottoNumber = Randoms.pickUniqueNumbersInRange(1,45,6);
-            lottoNumber.sort(Comparator.naturalOrder());
-            System.out.println(lottoNumber);
             lotto.add(new Lotto(lottoNumber));
+            lotto.get(i).printSortedLottoNumbers();
         }
 
         return lotto;
