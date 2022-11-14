@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.HashSet;
 
 public class UserInput {
-        public static void moneyNumberCheck(String money) {
+    public static void moneyNumberCheck(String money) {
         try {
             Integer.parseInt(money);
         } catch (NumberFormatException e) {
