@@ -55,4 +55,13 @@ public class InputTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+    @DisplayName("구분자로 나눠지는 리스트 입력 값 테스트")
+    @Test
+    void readListTest() {
+        InputStream in = new ByteArrayInputStream("1,2,3,4,5,6".getBytes());
+        System.setIn(in);
+
+        assertThat(Input.readListInteger(",")).contains(1,2,3,4,5,6);
+    }
+
 }
