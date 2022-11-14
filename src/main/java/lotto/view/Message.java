@@ -1,6 +1,6 @@
-package lotto.message;
+package lotto.view;
 
-import lotto.Ranking;
+import lotto.domain.Ranking;
 
 import java.util.Map;
 

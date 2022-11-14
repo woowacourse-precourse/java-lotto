@@ -1,4 +1,4 @@
-package lotto.message;
+package lotto.view;
 
 public enum ErrorMessage {
   NOT_RANGE_MESSAGE("[ERROR] 1 ~ 45 범위의 숫자가 아닙니다."),

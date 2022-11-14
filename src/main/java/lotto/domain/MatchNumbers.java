@@ -1,4 +1,4 @@
-package lotto.numbers;
+package lotto.domain;
 
 import lotto.Lotto;
 import lotto.domain.Money;

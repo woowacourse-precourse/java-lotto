@@ -1,7 +1,6 @@
 package lotto.domain;
 
-import lotto.message.ErrorMessage;
-import lotto.Ranking;
+import lotto.view.ErrorMessage;
 
 import java.util.Map;
 

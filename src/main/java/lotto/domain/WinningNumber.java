@@ -1,6 +1,6 @@
-package lotto.numbers;
+package lotto.domain;
 
-import lotto.message.ErrorMessage;
+import lotto.view.ErrorMessage;
 
 import java.util.*;
 

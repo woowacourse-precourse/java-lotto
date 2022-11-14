@@ -1,14 +1,14 @@
 package lotto.controller;
 
 import lotto.Lotto;
-import lotto.LottoPirnt;
-import lotto.UserNumberScan;
-import lotto.message.Message;
-import lotto.money.Money;
-import lotto.numbers.BonusNumber;
-import lotto.numbers.MatchNumbers;
-import lotto.numbers.RandomNumberCreater;
-import lotto.numbers.WinningNumber;
+import lotto.view.LottoPirnt;
+import lotto.domain.UserNumberScan;
+import lotto.view.Message;
+import lotto.domain.Money;
+import lotto.domain.BonusNumber;
+import lotto.domain.MatchNumbers;
+import lotto.domain.RandomNumberCreater;
+import lotto.domain.WinningNumber;
 
 import java.util.List;
 

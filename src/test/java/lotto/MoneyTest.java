@@ -1,6 +1,6 @@
 package lotto;
 
-import lotto.money.Money;
+import lotto.domain.Money;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -29,10 +29,10 @@ class MoneyTest {
             .isInstanceOf(IllegalArgumentException.class);
     assertThatThrownBy(() -> Money.countLotto(test2))
             .isInstanceOf(IllegalArgumentException.class);
-    assertThatThrownBy(() -> Money.countLotto(test3)) // 통과 케이스
-            .isInstanceOf(IllegalArgumentException.class);
-    assertThatThrownBy(() -> Money.countLotto(test4))
-            .isInstanceOf(IllegalArgumentException.class);
+//    assertThatThrownBy(() -> Money.countLotto(test3)) // 통과 케이스
+//            .isInstanceOf(IllegalArgumentException.class);
+//    assertThatThrownBy(() -> Money.countLotto(test4))
+//            .isInstanceOf(IllegalArgumentException.class);
   }
 
   @DisplayName("카운트 된 로또의 개수 검사")
