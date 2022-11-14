@@ -28,9 +28,7 @@ public class OutputConsole {
         }
     }
 
-    public static void printProfitRate(List<Lotto> lottos, int investmentMoney, List<Integer> winningNumber, int bonusNumber) {
-        ProfitRateCalculator profitRateCalculator = new ProfitRateCalculator();
-        double profitRate = profitRateCalculator.calculate(lottos, investmentMoney, winningNumber, bonusNumber);
+    public static void printProfitRate(double profitRate) {
         System.out.println("총 수익률은 " + profitRate+ "%입니다.");
     }
 }
