@@ -2,17 +2,17 @@ package lotto.view;
 
 import camp.nextstep.edu.missionutils.Console;
 
-public class Input {
+public class InputView {
 
-    public String inputMoney() {
+    public static String inputMoney() {
         return Console.readLine();
     }
 
-    public String inputWinningNumber() {
+    public static String inputWinningNumber() {
         return Console.readLine();
     }
 
-    public String inputBonusNumber() {
+    public static String inputBonusNumber() {
         return Console.readLine();
     }
 

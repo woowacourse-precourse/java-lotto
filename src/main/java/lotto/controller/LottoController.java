@@ -10,59 +10,56 @@ import lotto.domain.Statistics;
 import lotto.domain.StatisticsMaker;
 import lotto.domain.WinningLotto;
 import lotto.domain.WinningLottoMachine;
-import lotto.view.Input;
-import lotto.view.Output;
+import lotto.view.InputView;
+import lotto.view.OutputView;
 
 public class LottoController {
 
     public void start() {
-        Output output = new Output();
-        Input input = new Input();
-
-        int lottoQuantity = getLottoQuantity(output, input);
-        List<Lotto> lottos = getLottos(output, lottoQuantity);
-        WinningLotto winningLotto = makeWinningLotto(output, input);
-        makeResult(output, lottos, winningLotto);
+        int lottoQuantity = getLottoQuantity();
+        List<Lotto> lottos = getLottos(lottoQuantity);
+        WinningLotto winningLotto = makeWinningLotto();
+        makeResult(lottos, winningLotto);
     }
 
-    private void makeResult(Output output, List<Lotto> lottos, WinningLotto winningLotto) {
+    private void makeResult(List<Lotto> lottos, WinningLotto winningLotto) {
         StatisticsMaker statisticsMaker = new StatisticsMaker();
 
         Map<Integer, Integer> ranking = statisticsMaker.makeRankings(winningLotto, lottos);
         double yield = statisticsMaker.makeYield(lottos, ranking);
 
         Statistics statistics = new Statistics(ranking, yield);
-        output.printWinningStatistics(statistics);
+        OutputView.printWinningStatistics(statistics);
     }
 
-    private List<Lotto> getLottos(Output output, int lottoQuantity) {
+    private List<Lotto> getLottos(int lottoQuantity) {
         LottoMachine lottoMachine = new LottoMachine();
 
         List<Lotto> lottos = new ArrayList<>();
         for (int i = 0; i < lottoQuantity; i++) {
             lottos.add(new Lotto(lottoMachine.generateLottoNumber()));
         }
-        output.printInputMoneyResultMessage(lottoQuantity);
-        output.printPurchasedLottos(lottos);
+        OutputView.printInputMoneyResultMessage(lottoQuantity);
+        OutputView.printPurchasedLottos(lottos);
         return lottos;
     }
 
-    private int getLottoQuantity(Output output, Input input) {
+    private int getLottoQuantity() {
         Clerk clerk = new Clerk();
 
-        output.printMoneyInputMessage();
+        OutputView.printMoneyInputMessage();
 
-        return clerk.giveLottoQuantity(input.inputMoney());
+        return clerk.giveLottoQuantity(InputView.inputMoney());
     }
 
-    private WinningLotto makeWinningLotto(Output output, Input input) {
+    private WinningLotto makeWinningLotto() {
         WinningLottoMachine winningLottoMachine = new WinningLottoMachine();
 
-        output.printWinningNumbersInputMessage();
-        List<Integer> winningLottoNumber = winningLottoMachine.giveWinningLottoNumber(input.inputWinningNumber());
+        OutputView.printWinningNumbersInputMessage();
+        List<Integer> winningLottoNumber = winningLottoMachine.giveWinningLottoNumber(InputView.inputWinningNumber());
 
-        output.printBonusNumberInputMessage();
-        int winningLottoBonusNumber = winningLottoMachine.giveWinningLottoBonusNumber(input.inputBonusNumber());
+        OutputView.printBonusNumberInputMessage();
+        int winningLottoBonusNumber = winningLottoMachine.giveWinningLottoBonusNumber(InputView.inputBonusNumber());
 
         return new WinningLotto(winningLottoNumber, winningLottoBonusNumber);
     }
