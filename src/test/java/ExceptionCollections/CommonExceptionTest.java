@@ -30,7 +30,7 @@ public class CommonExceptionTest {
     @Test
     void 최소_숫자_범위_예외_테스트() {
         assertThatIllegalArgumentException().isThrownBy(
-                () -> CommonException.validateNumberRange(0)
+                () -> WinningNumbersExeption.validateNumberRange(0)
         );
     }
 
@@ -38,7 +38,7 @@ public class CommonExceptionTest {
     @Test
     void 최대_숫자_범위_예외_테스트() {
         assertThatIllegalArgumentException().isThrownBy(
-                () -> CommonException.validateNumberRange(47)
+                () -> WinningNumbersExeption.validateNumberRange(47)
         );
     }
 
@@ -46,7 +46,7 @@ public class CommonExceptionTest {
     @Test
     void 당첨_번호_개수_테스트() {
         assertThatIllegalArgumentException().isThrownBy(
-                () -> CommonException.validateNumberLength(List.of(1, 2, 3, 4), 6)
+                () -> WinningNumbersExeption.validateNumberLength(List.of("1", "2", "3", "4"), 6)
         );
     }
 
@@ -54,7 +54,7 @@ public class CommonExceptionTest {
     @Test
     void 당첨_번호_중복_테스트() {
         assertThatIllegalArgumentException().isThrownBy(
-                () -> CommonException.hasSameNumber(List.of(1, 2, 3, 4, 5, 6), 6)
+                () -> WinningNumbersExeption.hasDuplicatedNumber(List.of("1", "6", "3", "4", "5", "6"), "6")
         );
     }
 }
