@@ -63,6 +63,20 @@ public class LottoStatistics {
     private BigInteger money;
     private Integer bonusNumber;
 
+    public LottoStatistics() throws IllegalArgumentException{
+        try {
+            lottoBuyer = new LottoBuyer();
+            lotto = lottoBuyer.getLotto();
+            lottos = lottoBuyer.getLottos();
+            money = lottoBuyer.getMoney();
+            bonusNumber = lottoBuyer.getBonusNumber();
+            winTheLottery();
+            printResult();
+        } catch (IllegalArgumentException iae){
+            throw iae;
+        }
+    }
+
     public void winTheLottery(){
         Iterator<Lotto> lottoIter = lottos.iterator();
 
