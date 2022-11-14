@@ -19,7 +19,7 @@ public class OutputView {
 	private static final int LOTTO_NUMBER_CONTROL_LENGTH = 2;
 	private static final String PRIZE_RESULT_INTRO_MESSAGE = "\n당첨 통계\n---";
 	private static final String PRIZE_RESULT_MESSAGE = "%d개 일치%s(%s원) - %d개";
-	private static final String PRIZE_RESULT_BONUS_MESSAGE = ", 보너스 볼 일치";
+	private static final String PRIZE_RESULT_BONUS_MESSAGE = ", 보너스 볼 일치 ";
 	private static final String PRIZE_RESULT_BLANK_MESSAGE = " ";
 	private static final String RATE_RETURN_MESSAGE = "총 수익률은 %.1f%%입니다.%n";
 
