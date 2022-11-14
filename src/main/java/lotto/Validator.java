@@ -40,6 +40,9 @@ public class Validator {
         if (cost % 1000 != 0) {
             throwIllegalArgumentException(ERROR_MESSAGE + INVALID_COST_ERROR_MESSAGE);
         }
+        if (cost < 1000) {
+            throwIllegalArgumentException(ERROR_MESSAGE + INVALID_COST_ERROR_MESSAGE);
+        }
     }
 
     public static void throwIllegalArgumentException(String message) {
