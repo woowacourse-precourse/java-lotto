@@ -17,6 +17,7 @@ public class Application {
         List<Integer> winnerLotto = winLotto();
         int bonusNumber = bonusLotto();
         List<List> compareResult = compareLotto(purchaseLotto,winnerLotto,bonusNumber);
+        List<Integer> winCnt = gameResult(compareResult);
     }
 
     public static int buyLotto(){
