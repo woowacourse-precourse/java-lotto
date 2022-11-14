@@ -11,7 +11,6 @@ import java.util.List;
 
 public class Lotto {
 
-    private static final int PRICE = 1000;
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
@@ -28,6 +27,15 @@ public class Lotto {
         winningNumbersValid(numbers);
     }
 
+    private void duplicateValid(List<Integer> numbers) {
+        int currentCount = numbers.size();
+        int distinctCount = (int) numbers.stream().distinct().count();
+
+        if (currentCount != distinctCount) {
+            throw new IllegalArgumentException(ErrorCode.ERROR.getMessage());
+        }
+    }
+
     private void winningNumbersValid(List<Integer> winningNumbers) {
         if (!isNumberRange(winningNumbers)) {
             throw new IllegalArgumentException(ErrorCode.ERROR.getMessage());
@@ -38,25 +46,17 @@ public class Lotto {
         return winningNumbers.stream().allMatch(number -> number >= 1 && number <= 45);
     }
 
-    private void duplicateValid(List<Integer> numbers) {
-        int currentCount = numbers.size();
-        int distinctCount = (int) numbers.stream().distinct().count();
-
-        if (currentCount != distinctCount) {
-            throw new IllegalArgumentException();
-        }
-    }
-
     public static int moneyOfQuantity(int pay) throws PayMoneyException {
-        if (pay % PRICE != 0) {
+        int lottoPrice = 1000;
+        if (pay % lottoPrice != 0) {
             throw new PayMoneyException("지불한 돈이 0으로 나누어 떨어지지 않습니다.");
         }
 
-        return getQuantity(pay);
+        return getQuantity(pay, lottoPrice);
     }
 
-    private static int getQuantity(int pay) {
-        return pay / PRICE;
+    private static int getQuantity(int pay, int lottoPrice) {
+        return pay / lottoPrice;
     }
 
     public static List<Lotto> createLottoNumbers(int quantity) {
@@ -79,14 +79,14 @@ public class Lotto {
         return WinningNumberCount.of(winningCount, isMatchBonusNumber);
     }
 
-    private boolean isMatchBonusNumber(WinningLottoNumber winningLottoNumber) {
-        return numbers.stream()
-                .anyMatch(number -> number == winningLottoNumber.getBonusNumber());
-    }
-
     private int getWinningNumberCount(WinningLottoNumber winningLottoNumber) {
         return (int) numbers.stream()
                 .filter(number -> winningLottoNumber.getWinningNumbers().contains(number))
                 .count();
+    }
+
+    private boolean isMatchBonusNumber(WinningLottoNumber winningLottoNumber) {
+        return numbers.stream()
+                .anyMatch(number -> number == winningLottoNumber.getBonusNumber());
     }
 }
