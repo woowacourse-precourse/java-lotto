@@ -48,4 +48,12 @@ public class LottoController {
         String input = inputView.createBonusNumber(winnigNumbers);
         bonusNumber = Integer.parseInt(input);
     }
+
+    public void calResult(){
+        resultLotto = new ResultLotto();
+        for(Lotto lotto : user.getLottos()){
+            MatchMoney matchMoney = getMatchMoney(lotto.getNumbers());
+            resultLotto.addMatchMoney(matchMoney);
+        }
+    }
 }
