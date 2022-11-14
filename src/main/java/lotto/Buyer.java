@@ -20,7 +20,11 @@ public class Buyer {
 
 
     public Buyer(int money) {
-        validate(money);
+        try {
+            validate(money);
+        } catch (Exception exception) {
+            throw exception;
+        }
 
         this.money = money;
         this.lottoNum = money / LOTTO_PRICE;

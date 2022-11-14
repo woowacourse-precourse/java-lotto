@@ -13,7 +13,11 @@ public class WinningLotto extends Lotto {
     public WinningLotto(List<Integer> numbers, int bonusNumber) {
         super(numbers);
 
-        LottoNumberValidator.validateBonusNumber(numbers, bonusNumber);
+        try {
+            LottoNumberValidator.validateBonusNumber(numbers, bonusNumber);
+        } catch (Exception exception) {
+            throw exception;
+        }
 
         this.bonusNumber = bonusNumber;
     }
