@@ -8,13 +8,6 @@ import lotto.dto.LottoStatsDTO;
 import lotto.dto.LottoTicketDTO;
 
 public class OutputView {
-    private static final List<String> OUTPUT_LOTTO_RANK = List.of(
-        "3개 일치 (5,000원) - %d개",
-        "4개 일치 (50,000원) - %d개",
-        "5개 일치 (1,500,000원) - %d개",
-        "5개 일치, 보너스 볼 일치 (30,000,000원) - %d개",
-        "6개 일치 (2,000,000,000원) - %d개");
-
     public static void printInputAmount() {
         System.out.println(OutputMessage.INPUT_PAID_AMOUNT.getValue());
     }
@@ -51,7 +44,7 @@ public class OutputView {
 
     public static void printLottoRank(List<Integer> rankCounts) {
         for (int rank = 0; rank < LottoNumberRule.LOTTO_MINIMUM_RANK.getValue(); ++rank) {
-            System.out.printf(OUTPUT_LOTTO_RANK.get(rank), rankCounts.get(rank));
+            System.out.printf(OutputLottoResult.of(rank).getValue(), rankCounts.get(rank));
             System.out.println();
         }
     }
