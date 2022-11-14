@@ -28,6 +28,6 @@ public class Lotto {
     }
 
     public void printNumbers() {
-        System.out.print(Arrays.toString(numbers.toArray()));
+        System.out.println(Arrays.toString(numbers.toArray()));
     }
 }
