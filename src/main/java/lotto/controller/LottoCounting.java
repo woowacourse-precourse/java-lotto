@@ -6,16 +6,14 @@ import java.util.Map;
 
 public class LottoCounting {
 
-    // 로또 한장한장 세어서, Map 에다가 집어넣기. 그래서, 몇개 맞췄는지 매핑하기.
     public Map<Lotto, Integer> countedLotto(Lotto[] lottoPapers, Lotto winningLotto){
         Map<Lotto, Integer> lottoBox = new HashMap<>();
         for (Lotto oneLottoPaper : lottoPapers) {
             countLottoAndStore(lottoBox, oneLottoPaper, winningLotto);
         }
-
         return lottoBox;
     }
-    // 당첨된
+
     public Map<Integer,Integer> countWinningPaper(Map<Lotto,Integer> countedLotto,Lotto winningLotto,int bonusNumber){
         Map<Integer,Integer> countedWinningPaper = new HashMap<>();
         countedLotto.forEach((lottoPaper,lottoRanking) -> {
@@ -35,7 +33,6 @@ public class LottoCounting {
         }
     }
 
-    // 한 장의 로또가 몇개 맞췄는지, 세어서 로또박스에 매핑해야 한다.
     private void countLottoAndStore(Map<Lotto, Integer> lottoBox, Lotto oneLottoPaper, Lotto winningLotto){
         int howManyNumbersCorrect = compareLottoAndCount(oneLottoPaper, winningLotto);
         lottoBox.put(oneLottoPaper,howManyNumbersCorrect);
