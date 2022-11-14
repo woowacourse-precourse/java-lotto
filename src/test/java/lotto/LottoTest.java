@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.fail;
 import static org.junit.platform.commons.function.Try.success;
@@ -38,5 +39,13 @@ class LottoTest {
         }catch(IllegalArgumentException IllegalArgumentException){
             success("IllegalArgumentException이 발생했다.");
         }
+    }
+
+    @DisplayName("로또 번호와 당첨번호의 일치 개수를 반환한다.")
+    @Test
+    void countNumbersWithCorrectNumbers(){
+        Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+        int[] correctNum = {1, 1, 1, 4, 5, 6};
+        assertThat(lotto.getCountCorrectNumbers(correctNum)).isEqualTo(4);
     }
 }

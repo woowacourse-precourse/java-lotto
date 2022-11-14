@@ -8,7 +8,7 @@ public class Application {
     static int bonusNum;    // 보너스 번호
 
     static int cntLotto;    // 로또 수량
-    static List<Lotto> lottos;  // 생성한 로또들의 목록
+    static List<Lotto> lottoList;  // 생성한 로또들의 목록
 
     /**
      * nums[i]와 nums[0]~nums[i-1] 까지를 비교해서
@@ -58,7 +58,7 @@ public class Application {
     static void createLottoList(){
         cntLotto = money / 1000;
         for(int i = 0; i < cntLotto; i++){
-            lottos.add(createLottoOne());
+            lottoList.add(createLottoOne());
         }
     }
 
@@ -69,7 +69,7 @@ public class Application {
     static void printLotto(){
         System.out.println(cntLotto + "개를 구매했습니다.");   // 로또 수량 출력
         for(int i = 0; i < cntLotto; i++){
-            System.out.println(lottos.get(i).toString());
+            System.out.println(lottoList.get(i).toString());
         }
         System.out.println();
     }
@@ -102,17 +102,22 @@ public class Application {
         // 발행한 로또 수량 및 번호를 출력. 로또 번호는 오름차순으로 정렬해서 보여준다.
         printLotto();
 
-
         // 당첨 번호를 입력
+        System.out.println("당첨 번호를 입력해주세요");
         String inputNumbers = sc.next();
         String[] splitedNumbers = inputNumbers.split(",");
+        System.out.println();
 
         correctNums = Arrays.stream(splitedNumbers)
                 .mapToInt(Integer::parseInt)
                 .toArray();
 
         // 보너스 번호 입력
+        System.out.println("보너스 번호를 입력해주세요");
         bonusNum = sc.nextInt();
+        System.out.println();
+
+        // 당첨 통계 결과 출력
 
     }
 }
