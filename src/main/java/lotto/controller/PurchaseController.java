@@ -2,14 +2,16 @@ package lotto.controller;
 
 import lotto.model.Purchase;
 
-public class PurchaseController extends Controller{
+public class PurchaseController extends Controller {
     public int inputMoneyByUser() {
         outputView.printInputPurchaseMoneySentence();
 
         String moneyInput = inputView.input();
         validate(moneyInput);
 
-        return Integer.parseInt(moneyInput);
+        outputView.printNewLine();
+
+        return Integer.valueOf(moneyInput);
     }
 
     private void validate(String input) {

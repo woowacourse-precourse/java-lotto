@@ -24,7 +24,7 @@ public class Client {
             WinningLotto winningLotto = lottoController.createWinningLotto();
 
             Statistics statistics = statisticsController.createStatistics(lottos, winningLotto);
-            statisticsController.printEarningRate(money,statistics);
+            statisticsController.printEarningRate(money, statistics);
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }

@@ -8,8 +8,11 @@ import lotto.model.WinningLotto;
 
 import java.util.List;
 
-public class StatisticsController extends Controller{
+public class StatisticsController extends Controller {
     public Statistics createStatistics(List<Lotto> lottos, WinningLotto winningLotto) {
+        outputView.printOutputWinningStatisticsSentence();
+        outputView.printOutputContour();
+
         RankCount rankCount = new RankCount(lottos, winningLotto);
         Statistics statistics = new Statistics(rankCount);
 

@@ -38,10 +38,7 @@ public class Lotto {
     private boolean hasDuplicatedNumber(List<Integer> numbers) {
         int sizeOfDistinctNumbers = (int) numbers.stream().distinct().count();
 
-        if (sizeOfDistinctNumbers != LOTTO_NUMBERS_SIZE) {
-            return true;
-        }
-        return false;
+        return sizeOfDistinctNumbers != LOTTO_NUMBERS_SIZE;
     }
 
     protected List<Integer> getLottoNumbers() {

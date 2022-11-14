@@ -17,6 +17,8 @@ public class LottoController extends Controller {
         List<Lotto> lottos = lottoFactory.createLottos(numberOfLotto);
 
         outputView.printLottos(lottos);
+        outputView.printNewLine();
+
         return lottos;
     }
 
@@ -24,6 +26,7 @@ public class LottoController extends Controller {
         List<Integer> winningNumbers = createWinningNumbers();
         outputView.printNewLine();
         int bonusNumber = createBonusNumber();
+        outputView.printNewLine();
 
         return new WinningLotto(winningNumbers, bonusNumber);
     }
