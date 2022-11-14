@@ -12,6 +12,7 @@ public class Input {
     private static final String INVALID_MONEY = "[ERROR] 구입 금액은 숫자여야 합니다.";
     private static final String PARSE_ERROR = "[ERROR] 당첨 번호는 , 기준으로 구분되어야 합니다.";
     private static final String TO_INT_ERROR = "[ERROR] 당첨 번호는 숫자로 구성되어야 합니다.";
+    private static final String INVALID_NUMBER = "[ERROR] 보너스 번호는 숫자여야 합니다.";
 
     public static int readMoney() {
         String input = Console.readLine();
@@ -31,5 +32,13 @@ public class Input {
         } catch (NumberFormatException exception) {
             throw new IllegalArgumentException(TO_INT_ERROR);
         }
+    }
+
+    public static int readBonusNumber() {
+        String input = Console.readLine();
+        if (!Validator.isNumber(input)) {
+            throw new IllegalArgumentException(INVALID_NUMBER);
+        }
+        return Integer.parseInt(input);
     }
 }
