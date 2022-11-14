@@ -17,7 +17,7 @@ public class Application {
         CompareLotto comparelotto = new CompareLotto();
         result = comparelotto.correctcount(lottonumbers,askwinningnumbers(),askbonusnumber());
 
-        printresult(result);
+        printresult(result, buylotto);
         // TODO: 프로그램 구현
     }
     public static int askmoney(){
@@ -58,7 +58,7 @@ public class Application {
         }
         return bonusnumber;
     }
-    public static void printresult(List<Integer> result){
+    public static void printresult(List<Integer> result, int buylotto){
         int totalmoney = 0;
         System.out.println("\n당첨 통계\n---");
         for(PrizeInfo info : PrizeInfo.values()){
@@ -66,5 +66,7 @@ public class Application {
             System.out.println(info.getCount()+" "+info.getPrintMoney()+" - "+result.get(index)+"개");
             totalmoney += (info.getRealMoney()* result.get(index));
         }
+        double earn_rate = (double)(totalmoney/10)/(double)buylotto;
+        System.out.println("총 수익률은 "+earn_rate+"%입니다.");
     }
 }
