@@ -4,8 +4,10 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class User {
 
@@ -56,5 +58,20 @@ public class User {
         }
         return all_lotto;
     }
+
+    public List<Integer> winning_number() {
+        List<Integer> winning_number = new ArrayList<>();
+        System.out.println("당첨번호를 입력해주세요");
+        String winning_input = Console.readLine();
+        try{
+            String[] winning_array = winning_input.split(",");
+            winning_number = Arrays.stream(winning_array).map(Integer::parseInt).collect(Collectors.toList());
+        } catch (IllegalArgumentException e) {
+            System.out.println("[Error]" + e.getMessage());
+        }
+        return winning_number;
+    }
+
+
 
 }
