@@ -50,7 +50,7 @@ public class WinningNumbers {
             }
         }
     }
-    
+
     private void validateBonusNumber(String number) {
         final String INPUT_PATTERN = "^[1-9]$|^[1-3][0-9]$|^4[0-5]$";
 
@@ -78,6 +78,9 @@ public class WinningNumbers {
     }
 
     private List<Integer> convertNumbers() {
-        return stringToInt(arrayToList(splitNumbers(setNumber())));
+        List<String> convertedNumbers = arrayToList(splitNumbers(setNumber()));
+        validateWinningNumbers(convertedNumbers);
+
+        return stringToInt(convertedNumbers);
     }
 }
