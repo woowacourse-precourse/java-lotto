@@ -76,7 +76,7 @@ public class LottoGameConsole {
                 + tallyOfRanks.getOrDefault(THIRD_FIVE_MATCHED, 0) * prize.get(THIRD_FIVE_MATCHED)
                 + tallyOfRanks.getOrDefault(FOURTH_FOUR_MATCHED, 0) * prize.get(FOURTH_FOUR_MATCHED)
                 + tallyOfRanks.getOrDefault(FIFTH_THREE_MATCHED, 0) * prize.get(FIFTH_THREE_MATCHED);
-        totalProfit /= payment * 100;
-        return Math.round(totalProfit * 10) / 10.0;
+        double rateOfReturn = totalProfit / payment * 100;
+        return Math.round(rateOfReturn * 10) / 10.0;
     }
 }
