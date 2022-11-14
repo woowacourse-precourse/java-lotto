@@ -10,6 +10,7 @@ import java.util.stream.Collectors;
 public class WinningNumber {
     private final InputValidation inputValidation = new InputValidation();
     private List<Integer> winningNumbers;
+    private int bonusNumber;
 
     public void inputWinningNumbers() {
         String numbers = Console.readLine();
@@ -21,5 +22,10 @@ public class WinningNumber {
         return Arrays.stream(numbers.split(","))
                 .map(Integer::parseInt)
                 .collect(Collectors.toList());
+    }
+
+    public void inputBonusNumber() {
+        String number = Console.readLine();
+        bonusNumber = Integer.parseInt(number);
     }
 }

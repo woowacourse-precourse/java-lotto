@@ -29,5 +29,6 @@ public class GameController {
         winningNumber.inputWinningNumbers();
 
         message.inputBonusNumber();
+        winningNumber.inputBonusNumber();
     }
 }
