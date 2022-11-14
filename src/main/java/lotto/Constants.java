@@ -5,8 +5,8 @@ public enum Constants {
     SECOND("5개 일치, 보너스 볼 일치,", 30000000),
     THIRD("5개 일치", 1500000),
     FOURTH("4개 일치",50000),
-    FIFTH("3개 일치", 5000);
-
+    FIFTH("3개 일치", 5000),
+    NONE("탈락", 0);
     public String gameResult;
     public int money;
     private Constants(String gameResult, int money){
@@ -23,7 +23,9 @@ public enum Constants {
             return this.THIRD;
         if(match == 4)
             return this.FOURTH;
-        return this.FIFTH;
+        if(match == 3)
+            return this.FIFTH;
+        return this.NONE;
     }
 
     public String getGameResult(){

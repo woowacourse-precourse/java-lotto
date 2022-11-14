@@ -60,4 +60,12 @@ public class Manager {
             list.get(i).Print();
         }
     }
+
+    public void calculateResult(List<Lotto> lottos, List<Integer> winning, int bonus){
+        for(Lotto lotto : lottos){
+            int matchCount = 0;
+            int bonusCount = 0;
+
+        }
+    }
 }

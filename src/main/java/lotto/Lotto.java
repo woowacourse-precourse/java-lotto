@@ -26,4 +26,8 @@ public class Lotto {
         System.out.print(numbers.get(numbers.size()-1));
         System.out.println("]");
     }
+
+    public List<Integer> getNumbers(){
+        return numbers;
+    }
 }
