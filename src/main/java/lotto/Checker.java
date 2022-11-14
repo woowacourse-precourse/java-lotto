@@ -3,26 +3,35 @@ package lotto;
 import enumCollections.RankNumber;
 
 import java.util.EnumMap;
+import java.util.List;
 
 public class Checker extends Kiosk {
-    static EnumMap<RankNumber, Integer> resultStatistics = initializeResultStatistics();
+    static EnumMap<RankNumber, Integer> resultStatistics;
+    static List<Integer> winningNumbers;
+    static int bonusNumber;
 
-    public static EnumMap<RankNumber, Integer> compareAll(Buyer buyer) {
+    public static EnumMap<RankNumber, Integer> compareAllLottos(
+            Buyer buyer,
+            List<Integer> winningNumbers,
+            int bonusNumber
+    ) {
+        Checker.winningNumbers = winningNumbers;
+        Checker.bonusNumber = bonusNumber;
+        resultStatistics = initializeResultStatistics();
         for (Lotto lotto : buyer.lottos) {
             if (isInRankRange(lotto)) {
-                compareEach(lotto);
+                compareLotto(lotto);
             }
         }
         return resultStatistics;
     }
 
-    public static void compareEach(Lotto lotto) {
-        RankNumber lottoRank = getRank(countSameNumbers(lotto));
-        if (lottoRank.equals(RankNumber.THIRD) && hasBonusNumber(lotto)) {
-            lottoRank = RankNumber.SECOND;
+    public static EnumMap<RankNumber, Integer> initializeResultStatistics() {
+        EnumMap<RankNumber, Integer> emptyResultStatistics = new EnumMap<>(RankNumber.class);
+        for (RankNumber rank : RankNumber.values()) {
+            emptyResultStatistics.put(rank, 0);
         }
-        int oldCounts = resultStatistics.get(lottoRank);
-        resultStatistics.put(lottoRank, oldCounts + 1);
+        return emptyResultStatistics;
     }
 
     public static boolean isInRankRange(Lotto lotto) {
@@ -32,16 +41,13 @@ public class Checker extends Kiosk {
         return false;
     }
 
-    public static EnumMap<RankNumber, Integer> initializeResultStatistics() {
-        EnumMap<RankNumber, Integer> emptyResultStatistics = new EnumMap<RankNumber, Integer>(RankNumber.class);
-        for (RankNumber rank : RankNumber.values()) {
-            emptyResultStatistics.put(rank, 0);
+    public static void compareLotto(Lotto lotto) {
+        int sameNumbers = countSameNumbers(lotto);
+        RankNumber rank = getRank(sameNumbers);
+        if (rank.equals(RankNumber.THIRD) && hasBonusNumber(lotto)) {
+            rank = RankNumber.SECOND;
         }
-        return emptyResultStatistics;
-    }
-
-    public static boolean hasBonusNumber(Lotto lotto) {
-        return lotto.contains(bonusNumber);
+        updateCounts(rank);
     }
 
     public static int countSameNumbers(Lotto lotto) {
@@ -56,5 +62,14 @@ public class Checker extends Kiosk {
 
     public static RankNumber getRank(int sameNumbers) {
         return RankNumber.getRank(sameNumbers);
+    }
+
+    public static boolean hasBonusNumber(Lotto lotto) {
+        return lotto.contains(bonusNumber);
+    }
+
+    public static void updateCounts(RankNumber rank) {
+        int oldCounts = resultStatistics.get(rank);
+        resultStatistics.put(rank, oldCounts + 1);
     }
 }

@@ -27,7 +27,6 @@ public class CheckerTest {
     @DisplayName("당첨번호와 로또 번호를 비교한다.")
     @Test
     void compareLottoTest() {
-        Kiosk.winningNumbers = List.of(1, 2, 3, 7, 8, 9);
         List<Lotto> lottos = List.of(
                 new Lotto(List.of(1, 2, 3, 4, 5, 6)),
                 new Lotto(List.of(3, 4, 5, 6, 7, 8)),
@@ -35,8 +34,16 @@ public class CheckerTest {
         );
         Buyer buyer = new Buyer();
         buyer.buy(lottos);
-        Checker.compareAll(buyer);
-        assertThat(Checker.resultStatistics).isEqualTo(new Integer[]{1, 0, 0, 0, 2});
+        Checker.winningNumbers = List.of(1, 2, 3, 7, 8, 9);
+        Checker.bonusNumber = 1;
+        EnumMap<RankNumber, Integer> expected = new EnumMap<RankNumber, Integer>(RankNumber.class);
+        expected.put(RankNumber.FIRST, 1);
+        expected.put(RankNumber.SECOND, 0);
+        expected.put(RankNumber.THIRD, 0);
+        expected.put(RankNumber.FOURTH, 0);
+        expected.put(RankNumber.FIFTH, 2);
+        assertThat(Checker.compareAllLottos(buyer, List.of(1, 2, 3, 7, 8, 9), 4))
+                .isEqualTo(expected);
     }
 
     @DisplayName("2등 당첨 확인")
@@ -57,7 +64,7 @@ public class CheckerTest {
         expected.put(RankNumber.THIRD, 0);
         expected.put(RankNumber.FOURTH, 0);
         expected.put(RankNumber.FIFTH, 2);
-        assertThat(Checker.compareAll(buyer)).isEqualTo(expected);
+        assertThat(Checker.compareAllLottos(buyer, List.of(1, 2, 3, 7, 8, 9), 3)).isEqualTo(expected);
     }
 
 //    @DisplayName("총 당첨 금액 계산")
