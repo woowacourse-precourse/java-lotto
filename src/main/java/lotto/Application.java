@@ -43,11 +43,28 @@ public class Application {
      */
     public static List<Lotto> pickLottoNumber(int count){
         List<Lotto> lottos = new ArrayList<>();
-        for (int i = 0; i < count; i++){
+        while (lottos.size() < count){
             List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
-            lottos.add(new Lotto(numbers));
+            if (validateLottoNumber(numbers, lottos)){
+                lottos.add(new Lotto(numbers));
+            }
         }
         return lottos;
+    }
+
+    /**
+     * 로또 번호가 겹치지 않도록 검증
+     * @param lottos 로또 번호가 선택된 로또들
+     * @param numbers 랜덤으로 선택한 숫자들
+     * @return 중복된 값인지 여부
+     */
+    public static boolean validateLottoNumber(List<Integer> numbers, List<Lotto> lottos){
+        for(Lotto lotto : lottos){
+            if (lotto.getLottoNumbers().equals(numbers)){
+                return false;
+            }
+        }
+        return true;
     }
 
     /**
