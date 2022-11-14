@@ -1,7 +1,6 @@
 package lotto.view.scanner;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
@@ -28,6 +27,12 @@ public class NumberScanner {
 
     private String[] splitByDelimiter(String winningLottoNumbers) {
         return winningLottoNumbers.split(DELIMITER);
+    }
+
+    public int inputBonusNumber() {
+        String bonusNumber = readLine();
+        validateParseInt(bonusNumber);
+        return parseInt(bonusNumber);
     }
 
     private void validateParseInt(String input) {
