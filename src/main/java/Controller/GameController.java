@@ -2,6 +2,8 @@ package Controller;
 
 import Service.LottoService;
 import Service.View;
+import Utils.utils;
+import domain.Game;
 
 import java.util.Collections;
 import java.util.List;
@@ -19,12 +21,13 @@ public class GameController {
     public static void start() {
         INPUT = read_buyingLottoAmount();
         if (INPUT == NOT_NUMBER_INPUT) return;
-        print_LottoNumber();
+        print_purchasedLottoNumber();
         LottoService.lottoSpawner(getLottoCount());
         LottoService.printLottoNumbers();
-        changeToInt(read_WinningNumbers());
+        read_WinningNumbers();
+        setWinning_numbers(utils.change_StringToInt(winningNumbers_Input));
         read_bonusNumber();
-        print_Message_Stastistics();
+        print_Message_Winning_Stastistics();
         mainController.setGrades();
         mainController.grade_count();
         print_Stactistics();
@@ -32,18 +35,5 @@ public class GameController {
         print_totalGain();
 
     }
-
-    public static void changeToInt(String numbers) {
-        String[] str = numbers.split(",");
-        List<String> number = List.of(str);
-        List<Integer> newforms = number.stream().map(s -> Integer.parseInt(s)).collect(Collectors.toList());
-        Collections.sort(newforms);
-        winning_numbers = newforms;
-    }
-
-    public static List<Integer> getWinning_numbers() {
-        return winning_numbers;
-    }
-
 
 }
