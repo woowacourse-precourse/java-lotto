@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class LottoNumber {
+public class LottoNumber implements Comparable<LottoNumber> {
 
     public static final int MIN_VALUE = 1;
     public static final int MAX_VALUE = 45;
@@ -37,7 +37,6 @@ public class LottoNumber {
         }
     }
 
-
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -56,8 +55,12 @@ public class LottoNumber {
     }
 
     @Override
+    public int compareTo(LottoNumber o) {
+        return this.value - o.value;
+    }
+
+    @Override
     public String toString() {
         return String.valueOf(value);
     }
 }
-
