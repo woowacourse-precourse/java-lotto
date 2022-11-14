@@ -1,4 +1,7 @@
-package lotto;
+package lotto.domain;
+
+import lotto.domain.StartLotto;
+import lotto.domain.WinCheck;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;

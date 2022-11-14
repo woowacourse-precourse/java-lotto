@@ -1,4 +1,4 @@
-package lotto;
+package lotto.data;
 
 public enum ErrorMessage {
     TYPE_ERROR("숫자를 입력해야 합니다."),

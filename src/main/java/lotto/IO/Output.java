@@ -1,10 +1,14 @@
-package lotto;
+package lotto.IO;
+
+import lotto.data.Rank;
+import lotto.domain.Lotto;
+import lotto.domain.StartLotto;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import static lotto.Result.calculate;
+import static lotto.domain.Result.calculate;
 
 
 public class Output {

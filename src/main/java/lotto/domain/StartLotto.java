@@ -1,11 +1,11 @@
-package lotto;
+package lotto.domain;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static lotto.Lotto.buyLotto;
-import static lotto.Output.*;
-import static lotto.UserInput.*;
+import static lotto.domain.Lotto.buyLotto;
+import static lotto.IO.Output.*;
+import static lotto.IO.UserInput.*;
 
 public class StartLotto {
     public static int payment;

@@ -1,6 +1,6 @@
 package lotto;
 
-import static lotto.StartLotto.startLotto;
+import static lotto.domain.StartLotto.startLotto;
 
 public class Application {
     public static void main(String[] args) {

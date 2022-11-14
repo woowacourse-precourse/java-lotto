@@ -1,4 +1,6 @@
-package lotto;
+package lotto.domain.exceptions;
+
+import lotto.data.ErrorMessage;
 
 import java.util.Arrays;
 

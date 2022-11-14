@@ -1,9 +1,11 @@
-package lotto;
+package lotto.domain.exceptions;
 
-import static lotto.BonusInputException.*;
-import static lotto.PaymentInputException.paymentChangeError;
-import static lotto.PaymentInputException.paymentTypeError;
-import static lotto.WinNumInputException.*;
+import lotto.domain.StartLotto;
+
+import static lotto.domain.exceptions.BonusInputException.*;
+import static lotto.domain.exceptions.PaymentInputException.paymentChangeError;
+import static lotto.domain.exceptions.PaymentInputException.paymentTypeError;
+import static lotto.domain.exceptions.WinNumInputException.*;
 
 public class Exception {
 

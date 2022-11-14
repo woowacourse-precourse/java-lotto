@@ -1,6 +1,6 @@
-package lotto;
+package lotto.data;
 
-import static lotto.Result.getCount;
+import static lotto.domain.Result.getCount;
 
 public enum Rank {
     FIFTH(5, "5,000원", "3개 일치"),

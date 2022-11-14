@@ -1,12 +1,13 @@
-package lotto;
+package lotto.IO;
 
 import camp.nextstep.edu.missionutils.Console;
+import lotto.domain.StartLotto;
 
 import java.util.ArrayList;
 
-import static lotto.Exception.*;
-import static lotto.Output.requestBonusInput;
-import static lotto.Output.requestWinNum;
+import static lotto.domain.exceptions.Exception.*;
+import static lotto.IO.Output.requestBonusInput;
+import static lotto.IO.Output.requestWinNum;
 
 public class UserInput {
     public static void paymentInput() throws IllegalArgumentException {

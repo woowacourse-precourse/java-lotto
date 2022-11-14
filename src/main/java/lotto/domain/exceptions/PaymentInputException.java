@@ -1,4 +1,7 @@
-package lotto;
+package lotto.domain.exceptions;
+
+import lotto.data.ErrorMessage;
+import lotto.domain.StartLotto;
 
 public class PaymentInputException {
 
