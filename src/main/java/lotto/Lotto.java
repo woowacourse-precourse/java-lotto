@@ -49,4 +49,31 @@ public class Lotto {
         }
         return answer;
     }
+    public int[] check(List<List<Integer>> num,int bonus){
+        //로또 등수 확인
+        int [] arr = new int [7];
+        for (int idx=0;idx<num.size();idx++){
+            int cnt=0; //몇개 맞춘지 카운트
+            int bonusflag = 0;
+            for (int numIdx = 0;numIdx<num.get(idx).size();numIdx++){
+                if(numbers.contains(num.get(idx).get(numIdx))){  //다시 하기~!!! 깊이가 3임
+                    cnt++; //개수 판단 하기
+                }
+                if(num.get(idx).contains(bonus)){
+                    bonusflag =1;
+                }
+            }
+            //밑에 if문들 함수 만들기
+            if (cnt==6){  //등수 개수를 체크함
+                arr[cnt]++;
+            }
+            else if(cnt==5&&bonusflag==1){
+                arr[cnt]++;
+            }
+            else if(cnt!=0) {
+                arr[cnt-1]++;
+            }
+        }
+        return arr;
+    }
 }
