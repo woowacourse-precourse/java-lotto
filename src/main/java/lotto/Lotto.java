@@ -24,9 +24,25 @@ public class Lotto {
         Output.printCost();
         cost = Integer.parseInt(Console.readLine());
         int cnt = Output.printOrder(cost);
+        //로또 생성
         total=MakeLotto.totallotto(cnt);
 
-        //로또 생성
+        //당청 번호 입력 받기
+
+        String lottonum;
+        int bonus;
+        Output.printNum();
+        lottonum = Console.readLine();
+        String[] lottolst = lottonum.split(",");
+
+        //보너스 번호 입력받기
+        bonus = Integer.parseInt(Console.readLine());
+
+        CompareLotto.comparelotto(total,lottolst,bonus);
+
+
+
+
 
 
 

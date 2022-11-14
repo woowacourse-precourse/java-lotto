@@ -9,5 +9,9 @@ public class Output{
         System.out.println(cnt+"개를 구매했습니다.");
         return cnt;
     }
+    public static void printNum(){
+        System.out.println("당첨 번호를 입력해 주세요.");
+    }
+
 
 }

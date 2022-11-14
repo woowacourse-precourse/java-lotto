@@ -14,11 +14,8 @@ public class MakeLotto {
             }
             //요구사항에 맞게 수정
             value = Randoms.pickNumberInRange(1, 45);
-
-            if (!numbers.contains(Integer.toString(value))) {
-
+            if (!numbers.contains(value)) {
                 numbers.add(value);
-
             }
         }
 
