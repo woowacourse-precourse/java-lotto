@@ -23,27 +23,60 @@ public enum Rank {
         this.reward = reward;
     }
 
-    public static Rank value(int count, boolean bonus){
-        for(Rank rank : Rank.values()){
-            if(rank.count == count && rank.bonus == bonus){
-                return rank;
+    public static Rank winningCondition(List<Integer> winning, List<Integer> user){
+        int cnt = match(winning, user);
+        System.out.println(cnt);
+        boolean flag = isBonusPossible(winning.get(winning.size() - 1), user);
+        System.out.println(flag);
+        Rank rank = FAIL;
+
+        if(cnt == Rank.FIFTH.getCount()){
+            rank = FIFTH;
+        }
+        if(cnt == Rank.FOURTH.getCount()){
+            rank = FOURTH;
+        }
+        if(cnt == Rank.THIRD.getCount() && flag == Rank.THIRD.isBonus()){
+            rank = THIRD;
+        }
+        if(cnt == Rank.SECOND.getCount() && flag == Rank.SECOND.isBonus()){
+            rank = SECOND;
+        }
+        if(cnt == Rank.FIRST.getCount()){
+            rank = FIRST;
+        }
+
+        return rank;
+    }
+
+    public static int match(List<Integer> winning, List<Integer> user){
+        int cnt = 0;
+        for (int i = 0; i < winning.size()-1; i++) {
+            cnt += compare(winning.get(i), user);
+        }
+
+        return cnt;
+    }
+
+    public static boolean isBonusPossible(int n, List<Integer> user){
+        boolean flag = false;
+        for (int i = 0; i < user.size(); i++) {
+            if(n == user.get(i)){
+                flag = true;
+                break;
             }
         }
-        return FAIL;
+        return flag;
     }
 
-    public static boolean isNotFail(Rank rank){
-        return rank != FAIL;
-    }
-
-    public static boolean isThirdCount(int count){
-        return count == THIRD.count;
-    }
-
-    public static List<Rank> getRank(){
-        return Arrays.stream(Rank.values())
-                .filter(Rank::isNotFail)
-                .collect(Collectors.toUnmodifiableList());
+    public static int compare(int n, List<Integer> user){
+        int cnt = 0;
+        for (int i = 0; i < user.size(); i++) {
+            if(n == user.get(i)){
+                cnt++;
+            }
+        }
+        return cnt;
     }
 
     public int getCount() {
