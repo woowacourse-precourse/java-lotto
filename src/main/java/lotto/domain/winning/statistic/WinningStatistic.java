@@ -36,10 +36,4 @@ public class WinningStatistic {
         
         return result;
     }
-    
-    public List<WinningRank> getSortedByRankASC() {
-        List<WinningRank> result = WinningRank.ranks;
-        result.sort(Comparator.comparingInt((WinningRank r) -> -r.getRank()));
-        return result;
-    }
 }

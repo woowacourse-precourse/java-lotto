@@ -58,7 +58,8 @@ public class WinningStatisticViewTest {
     @DisplayName("등수가 낮은 순으로 맞힌 개수를 포함한 내역 리스트를 반환한다.")
     @Test
     void getAllWinningTextList() {
-        assertThat(WinningStatisticView.getWinningTextList(winningStatistic.getSortedByRankASC(), winningStatistic.getWinningCountByRank())).isEqualTo(List.of(
+        assertThat(WinningStatisticView.getWinningTextList(WinningRank.getSortedListByRankASC(),
+                winningStatistic.getWinningCountByRank())).isEqualTo(List.of(
                 "3개 일치 (5,000원) - 0개",
                 "4개 일치 (50,000원) - 0개",
                 "5개 일치 (1,500,000원) - 0개",

@@ -1,6 +1,7 @@
 package lotto.domain.winning;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 import lotto.domain.winning.ball.Ball;
@@ -59,5 +60,11 @@ public class WinningRank {
         return WinningRank.ranks.stream()
                 .filter((rank) -> rank.countNormalMatch.equals(normalMatchCount) && rank.countBonusMatch.equals(
                         bonusMatchCount)).findFirst();
+    }
+    
+    public static List<WinningRank> getSortedListByRankASC() {
+        List<WinningRank> result = WinningRank.ranks;
+        result.sort(Comparator.comparingInt((WinningRank r) -> -r.getRank()));
+        return result;
     }
 }

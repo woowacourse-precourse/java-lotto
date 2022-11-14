@@ -22,7 +22,7 @@ public class WinningStatisticView {
     }
     
     public static void printWinningList(WinningStatistic winningStatistic) {
-        getWinningTextList(winningStatistic.getSortedByRankASC(), winningStatistic.getWinningCountByRank()).forEach(
+        getWinningTextList(WinningRank.getSortedListByRankASC(), winningStatistic.getWinningCountByRank()).forEach(
                 View::println);
     }
     
