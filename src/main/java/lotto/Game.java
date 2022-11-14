@@ -30,6 +30,7 @@ public class Game {
         lottoView();
         makeWinning(inputWinningView());
         bonusNumber = Integer.parseInt(inputBonusView());
+        catchOutOfRangeException(bonusNumber);
         WinningLogic.addScore();
         ResultView();
         calculateRate();
