@@ -22,7 +22,7 @@ public class Computer {
     }
 
     public List<List<Integer>> createLottos(int money){
-        int times = money / LOTTO_CHARGE;
+        int times = countTimes(money);
 
         List<List<Integer>> lottos = new ArrayList<>();
 
@@ -33,5 +33,11 @@ public class Computer {
         }
 
         return lottos;
+    }
+
+    public int countTimes(int money){
+        int times = money / LOTTO_CHARGE;
+        System.out.println(times +"개를 구매했습니다.");
+        return times;
     }
 }
