@@ -1,5 +1,7 @@
 package lotto.domain;
 
+import lotto.validator.ValidationInDomain;
+
 import java.util.List;
 
 public class WinningInformation {

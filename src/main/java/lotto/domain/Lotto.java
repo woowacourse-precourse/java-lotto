@@ -1,6 +1,7 @@
 package lotto.domain;
 
 import lotto.constant.Rank;
+import lotto.validator.ValidationInDomain;
 
 import java.util.ArrayList;
 import java.util.Collections;

@@ -1,4 +1,4 @@
-package lotto.domain;
+package lotto.validator;
 
 import lotto.constant.ErrorMessage;
 

@@ -1,4 +1,4 @@
-package lotto.view;
+package lotto.validator;
 
 import lotto.constant.ErrorMessage;
 
