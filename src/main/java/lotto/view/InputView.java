@@ -6,17 +6,19 @@ import lotto.domain.Lotto;
 import java.util.ArrayList;
 import java.util.List;
 
+import static lotto.view.OutputView.*;
+
 public class InputView {
 
     public static int readInputMoney() {
 
-        System.out.println("구입금액을 입력해 주세요.");
+        System.out.println(getReadInputMessage());
         return convertStrToInt(Console.readLine());
     }
 
     public static Lotto readWinningNumbers() {
 
-        System.out.println("당첨 번호를 입력해 주세요.");
+        System.out.println(getReadWinningNumbersMessage());
         String winningNumberInput = Console.readLine();
 
         List<Integer> winningNumbers = convertStrToIntList(winningNumberInput);
@@ -24,9 +26,9 @@ public class InputView {
         return new Lotto(winningNumbers);
     }
 
-    public static int readBonusInput() {
+    public static int readBonusNumber() {
 
-        System.out.println("보너스 번호를 입력해 주세요.");
+        System.out.println(getReadBonusNumberMessage());
         return convertStrToInt(Console.readLine());
     }
 
