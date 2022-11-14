@@ -39,6 +39,31 @@ public enum Stats {
         printStats();
     }
 
+    public static String getCount(Stats stats) {
+        return HYPHEN + stats.count + NUMBER_UNIT;
+    }
+
+    public static String getAmount(Stats stats) {
+        String amount = String.valueOf(stats.amount);
+        return amount.replaceAll(AMOUNT_MARK_REGEX, COMMA);
+    }
+
+    public static String getName(Stats stats) {
+        if (stats.equals(BONUS)) {
+            return stats.name + ACCORD_NUMBER_FORMAT + ACCORD_NUMBER_AND_BONUS_FORMAT;
+        }
+        return stats.name + ACCORD_NUMBER_FORMAT;
+    }
+
+    public static void calculateProfit(int amount) {
+        int revenue = Arrays.stream(values())
+                .filter(stats -> stats.count > 0)
+                .mapToInt(stats -> stats.amount)
+                .sum();
+        double profit = ((double) revenue / (double) amount) * 100;
+        printProfit(profit);
+    }
+
     private static Stats valueOfName(List<Integer> numbers) {
         return Arrays.stream(values())
                 .filter(stats -> stats.name == numbers.size())
@@ -52,34 +77,9 @@ public enum Stats {
     }
 
     private static Stats validateBonus(Stats stats, boolean hasBonusNumber) {
-        if(stats.equals(FIVE) && hasBonusNumber) {
+        if (stats.equals(FIVE) && hasBonusNumber) {
             return BONUS;
         }
         return stats;
-    }
-
-    public static String getCount(Stats stats) {
-        return HYPHEN + stats.count + NUMBER_UNIT;
-    }
-
-    public static String getAmount(Stats stats) {
-        String amount = String.valueOf(stats.amount);
-        return amount.replaceAll(AMOUNT_MARK_REGEX, COMMA);
-    }
-
-    public static String getName(Stats stats) {
-        if(stats.equals(BONUS)) {
-            return stats.name + ACCORD_NUMBER_FORMAT + ACCORD_NUMBER_AND_BONUS_FORMAT;
-        }
-        return stats.name + ACCORD_NUMBER_FORMAT;
-    }
-
-    public static void calculateProfit(int amount) {
-        int revenue = Arrays.stream(values())
-                .filter(stats -> stats.count > 0)
-                .mapToInt(stats -> stats.amount)
-                .sum();
-        double profit = (revenue/amount) * 100;
-        printProfit(profit);
     }
 }

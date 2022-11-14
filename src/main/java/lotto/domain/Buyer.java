@@ -26,12 +26,12 @@ public class Buyer {
 
     private void generateLotto(int amount) {
         int count = countOfBuyLottos(amount);
-        IntStream.range(1, count).forEach(value -> lottos.add(Lotto.create()));
+        IntStream.range(1, count+1).forEach(value -> lottos.add(Lotto.create()));
         OutputView.printPurchase(count, lottos);
     }
 
     private int countOfBuyLottos(int amount) {
-        return (amount / DIVIDING_NUMBER) + 1;
+        return (amount / DIVIDING_NUMBER);
     }
 
     public List<Lotto> getLottos() {

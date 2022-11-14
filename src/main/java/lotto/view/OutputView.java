@@ -46,6 +46,6 @@ public class OutputView {
     }
 
     public static void printProfit(double profit) {
-        System.out.println(START_PROFIT + Math.round(profit * 100) / 100.0 + END_PROFIT);
+        System.out.println(START_PROFIT + Math.round(profit * 10) / 10.0 + END_PROFIT);
     }
 }
