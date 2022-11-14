@@ -1,5 +1,6 @@
-package lotto.Domain.Statistic;
+package lotto.Output.Statistic;
 
+import lotto.Domain.Statistic.PrizeRankIndex;
 import lotto.Output.MainValue.PrintOutput;
 
 import java.util.List;

@@ -1,6 +1,6 @@
 package lotto;
 
-import lotto.Domain.Statistic.Profit;
+import lotto.Output.Statistic.Profit;
 import lotto.Domain.Statistic.Statistic;
 import lotto.Output.Statistic.StatisticOutput;
 
