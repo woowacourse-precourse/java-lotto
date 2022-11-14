@@ -7,10 +7,10 @@ import lotto.view.Input;
  */
 public class PurchaseAmount {
 
-    private final int UNIT_PRICE = 1000;
+    private static final int UNIT_PRICE = 1000;
 
-    private final String ERROR_INDIVISIBLE = "[ERROR] " + UNIT_PRICE + "원으로 나누어떨어지는 금액만 입력해주십시오.";
-    private final String ERROR_MIN_PRICE = "[ERROR] " + UNIT_PRICE + "원 이상의 금액만 입력해주십시오.";
+    private static final String ERROR_INDIVISIBLE = "[ERROR] " + UNIT_PRICE + "원으로 나누어떨어지는 금액만 입력해주십시오.";
+    private static final String ERROR_MIN_PRICE = "[ERROR] " + UNIT_PRICE + "원 이상의 금액만 입력해주십시오.";
 
     private final int purchaseAmount;
 
