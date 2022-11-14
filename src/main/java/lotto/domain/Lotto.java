@@ -22,6 +22,17 @@ public class Lotto {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException();
         }
+
+        duplicateValid(numbers);
+    }
+
+    private void duplicateValid(List<Integer> numbers) {
+        int currentCount = numbers.size();
+        int distinctCount = (int) numbers.stream().distinct().count();
+
+        if (currentCount != distinctCount) {
+            throw new IllegalArgumentException();
+        }
     }
 
     public static int moneyOfQuantity(int pay) throws PayMoneyException {
