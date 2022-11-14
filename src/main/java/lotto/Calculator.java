@@ -1,4 +1,23 @@
 package lotto;
 
+import java.util.List;
+
 public class Calculator {
+    final int money;
+    final List<Prize> prizes;
+
+    Calculator(int money, List<Prize> prizes) {
+        this.money = money;
+        this.prizes = prizes;
+    }
+
+    public double profit() {
+        int benefit = 0;
+
+        for (Prize prize : prizes) {
+            benefit += prize.reward();
+        }
+
+        return Math.round(benefit * 100 * 10 / money) / 10.0;
+    }
 }
