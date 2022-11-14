@@ -1,7 +1,15 @@
 package lotto;
 
-import java.util.List;
+import org.assertj.core.util.Sets;
 
+import java.util.List;
+import java.util.Set;
+
+/*
+설명 - 로또 객체
+getNumbers() - 로또 번호 List return
+
+ */
 public class Lotto {
     private final List<Integer> numbers;
 
@@ -12,9 +20,15 @@ public class Lotto {
 
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR]");
+        }
+        Set<Integer> set = Sets.newHashSet(numbers);
+        if (set.size() != 6) {
+            throw new IllegalArgumentException("[ERROR]");
         }
     }
 
-    // TODO: 추가 기능 구현
+    public List<Integer> getNumbers() {
+        return this.numbers;
+    }
 }
