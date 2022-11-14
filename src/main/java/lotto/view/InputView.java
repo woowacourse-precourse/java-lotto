@@ -22,4 +22,10 @@ public class InputView {
         validator.isValidLottoNumbers(lottoNumbers);
         return lottoNumbers;
     }
+
+    public int inputBonusNumber() {
+        System.out.println(InputMessage.INPUT_BONUS_NUMBER);
+        int input = Integer.parseInt(Console.readLine());
+        return input;
+    }
 }

@@ -8,17 +8,17 @@ import lotto.domain.ErrorMessage;
 
 public class Validator {
     private static final String INPUT_NUMBER_REGEX = "^[0-9]*$";
-    public void isValidMoney(String input) {
-        if(!isNumber(input)) {
+    public void isValidMoney(String inputMoney) {
+        if(!isNumber(inputMoney)) {
             throw new IllegalArgumentException(ErrorMessage.MONEY_IS_NOT_NUMBER.toString());
         }
-        if(isZero(input)) {
+        if(isZero(inputMoney)) {
             throw new IllegalArgumentException(ErrorMessage.MONEY_IS_ZERO.toString());
         }
-        if(isEnteredSpace(input)){
+        if(isEnteredSpace(inputMoney)){
             throw new IllegalArgumentException(ErrorMessage.MONEY_IS_NOT_ENTERED.toString());
         }
-        if(!is1000Units(Integer.parseInt(input))) {
+        if(!is1000Units(Integer.parseInt(inputMoney))) {
             throw new IllegalArgumentException(ErrorMessage.MONEY_IS_NOT_1000_UNIT.toString());
         }
     }
