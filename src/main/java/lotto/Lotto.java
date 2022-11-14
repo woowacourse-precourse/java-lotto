@@ -1,6 +1,5 @@
 package lotto;
 
-
 import java.util.List;
 
 public class Lotto {
@@ -21,6 +20,10 @@ public class Lotto {
         if (numbers.stream().anyMatch(i -> i > 45 || i < 1)) {
             throw new IllegalArgumentException("[ERROR] 당첨 번호는 1이상 45이하여야 합니다.");
         }
+    }
+
+    public List<Integer> getNumbers() {
+        return this.numbers;
     }
 
 }
