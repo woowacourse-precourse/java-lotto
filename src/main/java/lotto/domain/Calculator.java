@@ -67,4 +67,7 @@ public class Calculator {
         return this.rankCounts.get(rank);
     }
 
+    private Map<Rank, Integer> getRankCounts() {
+        return this.rankCounts;
+    }
 }
