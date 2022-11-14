@@ -10,24 +10,24 @@ import lotto.Lotto;
 import lotto.LottoRank;
 
 public final class Print {
-    private static final String PURCHASE_MONEY_INPUT_MESSAGE = "구입금액을 입력해 주세요.";
-    private static final String PURCHASE_QUANTITY_MESSAGE = "개를 구매했습니다.";
-    private static final String WINNING_NUMBERS_INPUT_MESSAGE = "당첨 번호를 입력해 주세요.";
-    private static final String BONUS_NUMBER_INPUT_MESSAGE = "보너스 번호를 입력해 주세요.";
-    private static final String WINNING_STATS = "당첨 통계";
+    private static final String PURCHASE_AMOUNT = "구입금액을 입력해 주세요.";
+    private static final String PURCHASE_QUANTITY = "개를 구매했습니다.";
+    private static final String WINNING_NUMBERS = "당첨 번호를 입력해 주세요.";
+    private static final String BONUS_NUMBER = "보너스 번호를 입력해 주세요.";
+    private static final String WINNING_STATS = "당첨 통계" ;
     private static final String DIVIDE_LINE = "---";
     private static final String WINNING_RESULT = "%d개 일치 (%s원) - %d개";
     private static final String BONUS_WINNING_RESULT = "%d개 일치, 보너스 볼 일치 (%s원) - %d개";
-    private static final String YIELD_BEFORE = "총 수익률은 %s";
-    private static final String YIELD_AFTER = "%입니다.";
+    private static final String YIELD_1 = "총 수익률은 %s";
+    private static final String YIELD_2 = "%입니다.";
 
     public static void requestPurchaseAmountInput() {
-        System.out.println(PURCHASE_MONEY_INPUT_MESSAGE);
+        System.out.println(PURCHASE_AMOUNT);
     }
 
     public static void printPurchaseQuantity(int quantity) {
         System.out.println();
-        System.out.println(quantity + PURCHASE_QUANTITY_MESSAGE);
+        System.out.println(quantity + PURCHASE_QUANTITY);
     }
 
     public static void printPublishedLottoNumbers(List<Lotto> publishedLotto) {
@@ -38,12 +38,12 @@ public final class Print {
 
     public static void requestWinningNumbersInput() {
         System.out.println();
-        System.out.println(WINNING_NUMBERS_INPUT_MESSAGE);
+        System.out.println(WINNING_NUMBERS);
     }
 
     public static void requestBonusNumberInput() {
         System.out.println();
-        System.out.println(BONUS_NUMBER_INPUT_MESSAGE);
+        System.out.println(BONUS_NUMBER);
     }
 
     public static void printLottoResult(Map<LottoRank, Integer> lottoResult) {
@@ -70,7 +70,7 @@ public final class Print {
 
     public static void printYield(double lottoYield) {
         String formattedYield = String.format("%,.1f", lottoYield);
-        System.out.println(String.format(YIELD_BEFORE, formattedYield) + YIELD_AFTER);
+        System.out.println(String.format(YIELD_1, formattedYield) + YIELD_2);
     }
 
     private static String convertToComma(int winningAmount) {
