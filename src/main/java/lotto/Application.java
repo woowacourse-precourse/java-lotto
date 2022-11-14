@@ -9,8 +9,9 @@ import java.util.stream.Collectors;
 
 public class Application {
 
-    final int [] profitTable = {5000, 50000, 15000000, 3000000, 2000000000};
-
+    final int [] profitTable = {5000, 50000, 1500000, 30000000, 2000000000};
+    final String [] profitTableString = {" (5,000)", " (50,000)", " (1,500,000)", ",보너스 볼 일치 (30,000,000)", " (2,000,000,000)"};
+    final String [] profitTableCount = {"3", "4", "5", "5", "6"};
     int insertedNumber;
     List<Integer> winningNumbers;
     int bonusNumber;
@@ -29,6 +30,16 @@ public class Application {
         application.insertBonusNumberSaveNumber();
         int[] profitBoard = application.calcMatches();
         double profitRate = application.makeProfitRate(profitBoard);
+        application.printStatics(profitBoard, profitRate);
+    }
+
+    public void printStatics(int[] profitBoard, double profitRate) {
+        System.out.println("당첨 통계");
+        System.out.println("---");
+        for(int i=0; i < 5; i++){
+            System.out.println(profitTableCount[i] + "개 일치" + profitTableString[i] + " - " + profitBoard[i] + "개");
+        }
+        System.out.println("총 수익률은 " + profitRate+"%입니다.");
     }
 
     public double makeProfitRate(int[] profitBoard) {
