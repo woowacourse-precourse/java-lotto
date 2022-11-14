@@ -6,8 +6,10 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 public class Application {
     public static void moneyValidationCheck(String userMoney) throws IllegalArgumentException{
@@ -22,6 +24,35 @@ public class Application {
         }
     }
 
+    public static void bonusNumberValidationCheck(List<Integer> winningNumbers, Integer bonusNumber) throws IllegalArgumentException{
+        try{
+            if(winningNumbers.contains(bonusNumber)){
+                throw new Exception();
+            }
+            if(bonusNumber < 1 || bonusNumber > 45){
+                throw new Exception();
+            }
+        } catch (Exception e) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    public static void winningNumberValidationCheck(List<Integer> winningNumbers) throws IllegalArgumentException{
+        try{
+            Set<Integer> noDupWinningNumbers = new HashSet<>(winningNumbers);
+            if(noDupWinningNumbers.size() != 6){
+                throw new Exception();
+            }
+            for(Integer winningNumber : winningNumbers){
+                if(winningNumber < 1 || winningNumber > 45){
+                    throw new Exception();
+                }
+            }
+        } catch (Exception e) {
+            throw new IllegalArgumentException();
+        }
+    }
+
     public static List<Lotto> createLottos(int money){
         int numberOfGames = money / 1000;
         List<Lotto> Lottos = new ArrayList<>();
@@ -31,6 +62,7 @@ public class Application {
             Lotto lotto = new Lotto(numbers);
             Lottos.add(lotto);
         }
+        System.out.println("\n" + Lottos.size() + "개를 구매했습니다.");
         return Lottos;
     }
 
@@ -72,11 +104,17 @@ public class Application {
         for(String str : userInput){
             winningNumbers.add(Integer.parseInt(str));
         }
-
-        if (winningNumbers.size() != 6) {
-            throw new IllegalArgumentException("[ERROR]잘못된 입력입니다.");
-        }
         return winningNumbers;
+    }
+
+    public static String getProfitRate(Map<String,Integer> allResult , int money) {
+        int totalProfit = allResult.get("3") * 5000 +
+                allResult.get("4") * 50000 +
+                allResult.get("5") * 1500000 +
+                allResult.get("7") * 30000000 +
+                allResult.get("6") * 2000000000;
+
+        return String.format("%.1f", ((double) totalProfit / money * 100));
     }
 
     public static void main(String[] args) {
@@ -84,19 +122,14 @@ public class Application {
         String userMoney = Console.readLine();
         try{
             moneyValidationCheck(userMoney);
-        } catch (Exception e){
-            System.out.println("[ERROR]잘못된 입력입니다.");
+        } catch (IllegalArgumentException e){
+            printMoneyErrorMessage();
             return;
         }
-
         int money = Integer.parseInt(userMoney);
 
         List<Lotto> Lottos = createLottos(money);
-
-        System.out.println("\n" + Lottos.size() + "개를 구매했습니다.");
-        for(Lotto lotto : Lottos){
-            System.out.println(lotto.asSortedList());
-        }
+        printLottos(Lottos);
 
         printWinningNumberInputMessage();
         List<Integer> winningNumbers = getWinningNumbers();
@@ -104,8 +137,12 @@ public class Application {
         printBonusNumberInputMessage();
         Integer bonusNumber = Integer.parseInt(Console.readLine());
 
-        if(winningNumbers.contains(bonusNumber)){
-            throw new IllegalArgumentException("[ERROR]잘못된 입력입니다.");
+        try {
+            winningNumberValidationCheck(winningNumbers);
+            bonusNumberValidationCheck(winningNumbers, bonusNumber);
+        } catch (IllegalArgumentException e){
+            printInputErrorMessage();
+            return;
         }
 
         List<String> counts = new ArrayList<>();
@@ -117,6 +154,8 @@ public class Application {
 
         printAnalysisMessage();
         printResult(allResult);
-        printProfitRate(allResult, money);
+
+        String totalProfitRate = getProfitRate(allResult, money);
+        printProfitRate(totalProfitRate);
     }
 }
