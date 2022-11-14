@@ -26,7 +26,7 @@ public class Statistics {
 
     private void addPrizeMoney(int countOfMatch, boolean matchBonusNumber) {
         PrizeMoney prizeMoney = PrizeMoney.valueOf(countOfMatch, matchBonusNumber);
-        if(isPrize(prizeMoney)) {
+        if (isPrize(prizeMoney)) {
             winningHistory.put(prizeMoney, incrementCountOfWinning(prizeMoney));
         }
     }
