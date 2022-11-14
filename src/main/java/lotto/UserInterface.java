@@ -58,7 +58,8 @@ public class UserInterface {
 
     private void validatePurchasingAmount(String input) {
         validateAs_JavaInteger(input);
-        if (Integer.parseInt(input) % Lotto.PRICE != 0) {
+        int inputNumber = Integer.parseInt(input);
+        if (inputNumber < Lotto.PRICE || inputNumber % Lotto.PRICE != 0) {
             throw new IllegalArgumentException(
                     InvalidInputMessage.ERR_DEFAULT + InvalidInputMessage.ERR_MONEY_UNIT
             );
