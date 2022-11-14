@@ -1,7 +1,10 @@
 package lotto;
 
+import lotto.controller.Issue;
+
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        Issue user = new Issue();
+        System.out.println(user.count);
     }
 }
