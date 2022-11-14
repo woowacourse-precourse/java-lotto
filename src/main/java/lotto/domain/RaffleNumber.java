@@ -9,22 +9,24 @@ import java.util.List;
 import java.util.Set;
 
 public class RaffleNumber {
+    public List<Integer> winningNumber;
+    public int bonusNumber;
 
-    public String inputWinningNumber() {
+    public void inputWinningNumber() {
         System.out.println(Message.INPUT_WINNING);
         String userInput = Console.readLine();
-        return userInput;
+        setBonusNumber(userInput);
     }
 
-    public List<Integer> setWinningNumber(String userInput) {
+    public void setWinningNumber(String userInput) {
         List<Integer> winningNumber = new ArrayList<>();
         for (String number : userInput.split(",")) {
             validateRange(number);
             winningNumber.add(Integer.valueOf(number));
         }
-        hasSameNumber(winningNumber);
         validateSize(winningNumber);
-        return winningNumber;
+        hasSameNumber(winningNumber);
+        this.winningNumber = winningNumber;
     }
 
     private void validateRange(String number) {
@@ -47,9 +49,22 @@ public class RaffleNumber {
         }
     }
 
-    public int inputBonusNumber() {
+    public void inputBonusNumber() {
         System.out.println(Message.INPUT_BONUS);
         String userInput = Console.readLine();
-        return Integer.parseInt(userInput);
+        setBonusNumber(userInput);
+    }
+
+    public void setBonusNumber(String userInput) {
+        validateRange(userInput);
+        int parseNumber = Integer.parseInt(userInput);
+        validateNumber(winningNumber, parseNumber);
+        this.bonusNumber = parseNumber;
+    }
+
+    public void validateNumber(List<Integer> winningNumber, int bonusNumber) {
+        if (winningNumber.contains(bonusNumber)) {
+            throw new IllegalArgumentException(Message.BONUS_NUMBER_ERROR);
+        }
     }
 }

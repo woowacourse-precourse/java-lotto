@@ -8,4 +8,5 @@ public class Message {
     public static final String WINNING_RANGE_ERROR = "[ERROR] 당첨 번호의 범위는 1~45입니다.";
     public static final String WINNING_OVERLAP_ERROR = "[ERROR] 당첨 번호는 중복될 수 없습니다.";
     public static final String WINNING_SIZE_ERROR = "[ERROR] 당첨 번호는 6개입니다.";
+    public static final String BONUS_NUMBER_ERROR = "[ERROR] 보너스 번호와 당첨 번호는 중복될 수 없습니다.";
 }
