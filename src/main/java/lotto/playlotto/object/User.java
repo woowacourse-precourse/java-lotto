@@ -13,8 +13,8 @@ public class User extends Input {
 
     private Integer money;
 
-    public void pay_Money(){// 구입 금액 입력
-        this.money = returnInt();
+    public void pay_Money()  {// 구입 금액 입력
+        this.money = returnPayMoney();
         this.lottery_count = money / 1000;
         create_Lottery_nums();
     }
@@ -51,15 +51,7 @@ public class User extends Input {
     }
 
 
-    public static void main(String[] args) {
-        User user = new User();
-        user.pay_Money();
-        user.create_Lottery_nums();
-        System.out.println(user.lottery_count);
-        for(List<Integer> list : user.lottery_nums){
-            System.out.println(list);
-        }
-    }
+
 
 
 }

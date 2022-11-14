@@ -15,7 +15,7 @@ public class Output {
         System.out.printf(Out.PRINT_BUY_LOTTERY.getOutput()+"%n", buy);
     }
     public void print_lottery(User user){ //TODO: 복권 갯수 마다 출력
-        for(List<Integer> lottery : user.return_lottery_nums()){
+        for(List<Integer> lottery : user.getLottery_nums()){
             System.out.println(lottery);
         }
     }
@@ -35,7 +35,7 @@ public class Output {
         System.out.printf(Out.YIELD.getOutput(), revenue);
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args)  {
         User user = new User();
         Output out1 = new Output();
         user.pay_Money();
