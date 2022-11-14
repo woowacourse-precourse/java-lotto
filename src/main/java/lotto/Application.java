@@ -6,25 +6,33 @@ import java.util.*;
 
 public class Application {
     private final int moneyUnit = 1000;
+    private final int minNumber = 1;
+    private final int maxNumber = 45;
+    private final int numberCount = 6;
 
     public static void main(String[] args) {
         Ui ui = new Ui();
         Application application = new Application();
 
-        int money = ui.moneyInput();
+        try {
+            int money = ui.moneyInput();
 
-        List<LottoNumber> buyList = application.buyLotto(money);
+            List<LottoNumber> buyList = application.buyLotto(money);
 
-        ui.buyLottoOutput(buyList);
+            ui.buyLottoOutput(buyList);
 
-        List<Integer> lotto = ui.lottoInput();
-        int bonus = ui.bonusInput();
+            List<Integer> lotto = ui.lottoInput();
+            int bonus = ui.bonusInput(lotto);
 
-        List<Integer> lottoResult = application.getLottoResult(buyList, lotto, bonus);
-        double totalProfit = application.getTotalProfit(money, lottoResult);
+            List<Integer> lottoResult = application.getLottoResult(buyList, lotto, bonus);
+            double totalProfit = application.getTotalProfit(money, lottoResult);
 
-        ui.lottoResultTotalOutput(lottoResult);
-        ui.totalProfitOutput(totalProfit);
+            ui.lottoResultTotalOutput(lottoResult);
+            ui.totalProfitOutput(totalProfit);
+
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     public List<Integer> createLotto() {
@@ -41,7 +49,7 @@ public class Application {
     }
 
     private List<Integer> createLottoNumber() {
-        return Randoms.pickUniqueNumbersInRange(1, 45, 6);
+        return Randoms.pickUniqueNumbersInRange(minNumber, maxNumber, numberCount);
     }
 
     private boolean isDistinctNumber(List<Integer> number) {
@@ -53,8 +61,6 @@ public class Application {
     public List<LottoNumber> buyLotto(int money) {
         List<LottoNumber> buyList = new ArrayList<>();
 
-        validMoney(money);
-
         int buyCount = money / moneyUnit;
 
         for (int cnt = 0; cnt < buyCount; cnt++) {
@@ -63,19 +69,12 @@ public class Application {
         return buyList;
     }
 
-    private void validMoney(int money) {
-        if (money < moneyUnit || money % moneyUnit != 0) {
-            throw new IllegalArgumentException();
-        }
-    }
-
     public List<Integer> getLottoResult(List<LottoNumber> buyList, List<Integer> winningLotto, int bonusNumber) {
-        boolean bonus = isContainBonusNumber(winningLotto, bonusNumber);
         List<Integer> lottoResult = Arrays.asList(0, 0, 0, 0, 0);
-        int equalNumberCount;
 
         for (LottoNumber lottoNumber : buyList) {
-            equalNumberCount = compareLotto(lottoNumber.getNumbers(), winningLotto);
+            int equalNumberCount = compareLotto(lottoNumber.getNumbers(), winningLotto);
+            boolean bonus = isContainBonusNumber(lottoNumber.getNumbers(), bonusNumber);
 
             if (isWinning(equalNumberCount)) {
                 int index = changeLottoResultNumber(equalNumberCount, bonus);
@@ -100,8 +99,8 @@ public class Application {
         return equalNumberCount;
     }
 
-    private boolean isContainBonusNumber(List<Integer> winningLotto, int bonusNumber) {
-        return winningLotto.contains(bonusNumber);
+    private boolean isContainBonusNumber(List<Integer> lottoNumber, int bonusNumber) {
+        return lottoNumber.contains(bonusNumber);
     }
 
     private int changeLottoResultNumber(int count, boolean bonus) {
