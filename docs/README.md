@@ -72,7 +72,7 @@
   - [X] 프린트용 LottoGradeCounter를 전송시 꽝을 제외하고 전송하는가
   - [X] 카운트업을 제대로 동작하는가
   - [X] forEach가 제대로 동작하는가
-- [ ] LottoMatcher
-  - [ ] 로또 비교를 제대로 수행하는가 
+- [X] LottoMatcher
+  - [X] 로또 비교를 제대로 수행하는가 
 - [ ] Lottos
   - [ ] 요소 추가 및 사이즈 계산이 잘 되는가
