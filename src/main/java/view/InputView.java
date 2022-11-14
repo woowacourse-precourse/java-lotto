@@ -48,7 +48,6 @@ public class InputView {
         try {
             return Arrays.stream(winningNumbers.split(","))
                     .map(Integer::parseInt)
-                    .sorted()
                     .collect(Collectors.toList());
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException(TYPE_ERROR);
