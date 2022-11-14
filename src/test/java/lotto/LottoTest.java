@@ -96,7 +96,7 @@ class LottoTest {
         List<Integer> result = List.of(7, 10, 24, 34, 40, 41);
         Lotto lotto = new Lotto(numbers);
 
-        List<Integer> sortedByAscend = lotto.getSortedByAscend();
+        List<Integer> sortedByAscend = lotto.getSortedByAscendNumbers();
 
         assertThat(sortedByAscend).isEqualTo(result);
     }
