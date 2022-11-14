@@ -93,12 +93,8 @@ public class Application {
      * 로또 번호 발행 관련
      */
     public static void issueLottoTickets(int cash, List<Lotto> lottoTickets) {
-        try {
-            issueLottoNumbers(cash / 1000, lottoTickets);
-            showLotto(cash, lottoTickets);
-        } catch (IllegalArgumentException e) {
-            throw new IllegalArgumentException();
-        }
+        issueLottoNumbers(cash / 1000, lottoTickets);
+        showLotto(cash, lottoTickets);
     }
 
     public static void issueLottoNumbers(int buyNumber, List<Lotto> lottoTickets) {
