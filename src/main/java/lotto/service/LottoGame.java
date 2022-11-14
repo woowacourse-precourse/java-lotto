@@ -6,10 +6,13 @@ import java.util.List;
 import java.util.stream.Collectors;
 import lotto.domain.Lotto;
 import lotto.domain.LottoCheck;
+import lotto.domain.LottoHistory;
 import lotto.repository.LottoAutomatonRepository;
+import lotto.repository.LottoHistoryRepository;
 
 public class LottoGame {
     private LottoAutomatonRepository automatonRepository;
+    private LottoHistoryRepository historyRepository;
 
     public LottoGame() {
     }
@@ -36,7 +39,13 @@ public class LottoGame {
         return checkResult;
     }
 
-    public void createHistory() {
-        // 당첨 내역과 수익률을 계산해 저장
+    public LottoHistory createHistory(List<String> checkResult, String amount) {
+        historyRepository = new LottoHistoryRepository();
+        for (String ranking : checkResult) {
+            historyRepository.saveHistory(ranking);
+        }
+        long total = historyRepository.getTotal(historyRepository.getWinningHistory());
+        historyRepository.getYield(total, amount);
+        return historyRepository;
     }
 }

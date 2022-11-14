@@ -2,11 +2,13 @@ package lotto.controller;
 
 import java.util.List;
 import lotto.domain.Lotto;
+import lotto.domain.LottoHistory;
 import lotto.service.LottoGame;
 import lotto.view.input.AmountInput;
 import lotto.view.input.BonusInput;
 import lotto.view.input.WinningInput;
 import lotto.view.print.PrintGuideMessage;
+import lotto.view.print.PrintHistory;
 
 public class LottoGameController {
     private final LottoGame game;
@@ -22,6 +24,8 @@ public class LottoGameController {
         List<Integer> winnings = getWinnings();
         int bonus = Integer.parseInt(getBonus(winnings));
         List<String> checkResult = game.compare(winnings, tickets, bonus);
+        LottoHistory history = game.createHistory(checkResult, amount);
+        printStatistics(history, amount);
     }
 
     public String getAmount() {
@@ -34,7 +38,6 @@ public class LottoGameController {
         PrintGuideMessage.printPurchaseGuide(game.calculateQuantity(amount));
         for (Lotto ticket : tickets) {
             List<Integer> numbers = ticket.getNumbers();
-            ticket.ascending(numbers);
             System.out.println(numbers.toString());
         }
     }
@@ -51,7 +54,8 @@ public class LottoGameController {
         return input.getInput();
     }
 
-    public void printStatistics() {
-        // 당첨 내역과 수익률을 출력
+    public void printStatistics(LottoHistory history, String amount) {
+        PrintHistory.printWinningHistory(history);
+        PrintHistory.printYield(history.getYield(history.getTotal(history.getWinningHistory()), amount));
     }
 }
