@@ -39,12 +39,28 @@ public class LottoNumber {
     }
 
     public List<Integer> inputWinningNumber(){
-        System.out.println("\n당첨 번호를 입력해 주세요.");
+        System.out.println("\n당첨 번호를 입력해 주세요.\n");
         List<Integer> winningNumber;
         winningNumber = Arrays.stream(Console.readLine().split(","))
                 .map(Integer::parseInt)
                 .collect(Collectors.toList());
 
         return winningNumber;
+    }
+
+    public int inputBonus(){
+        System.out.println("\n보너스 번호를 입력해주세요.");
+        int bonusNumber;
+        bonusNumber = Integer.parseInt(Console.readLine());
+        return bonusNumber;
+    }
+
+    public void bonusValidate(List<Integer> lottoNumber, int bonusNumber){
+        if (lottoNumber.contains(bonusNumber)){
+            throw new IllegalArgumentException("[ERROR] 보너스 번호는 6개의 로또 번호와 중복이 불가합니다.");
+        }
+        if (bonusNumber < 1 || bonusNumber > 45){
+            throw new IllegalArgumentException("[ERROR] 보너스 번호는 1 ~ 45 사이의 숫자여야 합니다.");
+        }
     }
 }
