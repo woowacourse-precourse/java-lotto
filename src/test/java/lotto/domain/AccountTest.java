@@ -64,7 +64,7 @@ class AccountTest {
 
     @DisplayName("수익률을 가져온다.")
     @Nested
-    class shouldGetYield {
+    class ShouldGetYield {
         @DisplayName("2등과 5등 당첨")
         @Test
         void winRank2AndRank5() {
