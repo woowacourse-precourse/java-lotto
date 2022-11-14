@@ -55,7 +55,7 @@ public class LottoGameView {
 
     public void printLottos(Lottos lottos) {
         System.out.println(lottos.getLottoCount() + InformationMessage.PRINT_PURCHASE_COUNT.getMessage());
-        lottos.getlottos().forEach(this::printSortedLotto);
+        lottos.getLottos().forEach(this::printSortedLotto);
     }
 
     public void printSortedLotto(Lotto lotto) {
