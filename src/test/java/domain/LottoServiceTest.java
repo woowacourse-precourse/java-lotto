@@ -7,10 +7,8 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
-import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 class LottoServiceTest {
 
@@ -33,11 +31,18 @@ class LottoServiceTest {
         Map<Prize, Integer> winningDetails =
                 lottoService.getWinningDetails(winningNumbers, lottos, bonusNumber);
 
-        List<Prize> collect = Arrays.stream(Prize.values())
-                .filter(prize -> prize.ranking > 0)
-                .sorted(Comparator.comparing(Prize::getRanking).reversed())
-                .collect(Collectors.toList());
+        Integer prizeSum = winningDetails.keySet().stream()
+                .map(prize -> winningDetails.get(prize) * prize.rankingPrize)
+                .reduce(Integer::sum)
+                .get();
 
+        Integer calculatedSum = Arrays.stream(Prize.values())
+                .filter(prize -> prize.ranking > 0)
+                .map(prize -> winningDetails.get(prize) * prize.rankingPrize)
+                .reduce(Integer::sum)
+                .get();
+
+        Assertions.assertThat(prizeSum).isEqualTo(calculatedSum);
     }
 
 
