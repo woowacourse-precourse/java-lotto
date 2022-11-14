@@ -15,9 +15,7 @@ public class WinningNumbers {
     public WinningNumbers(List<Integer> numbers, int bonusNumber) {
         validate(numbers, bonusNumber);
 
-        this.numbers = new ArrayList<>();
-        this.numbers.addAll(numbers);
-
+        this.numbers = new ArrayList<>(numbers);
         this.bonusNumber = bonusNumber;
     }
 

@@ -15,13 +15,11 @@ public class Lotto {
     public Lotto(List<Integer> numbers) {
         validate(numbers);
 
-        this.numbers = new ArrayList<>();
-        this.numbers.addAll(numbers);
+        this.numbers = new ArrayList<>(numbers);
     }
 
     public List<Integer> getNumbers() {
-        List<Integer> output = new ArrayList<>(numbers);
-        return output;
+        return new ArrayList<>(numbers);
     }
 
     private void validate(List<Integer> numbers) {
