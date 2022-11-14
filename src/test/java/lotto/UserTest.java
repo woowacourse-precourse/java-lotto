@@ -13,16 +13,16 @@ import java.util.List;
 
 public class UserTest {
 
-    private static final String inputMoney = "80000";
-    private static final String inputNumber = "11,22,33,44,55,66";
-    private static final String inputBonusNumber = "77";
-    private static final List<Integer> lotto = List.of(10, 11, 12, 13, 14, 15);
+    private static final String INPUT_MONEY = "80000";
+    private static final String INPUT_NUMBER = "11,22,33,44,55,66";
+    private static final String INPUT_BONUS_NUMBER = "77";
+    private static final List<Integer> LOTTO = List.of(10, 11, 12, 13, 14, 15);
 
-    private static final int validInputMoney = 80000;
-    private static final List<Integer> validInputNumber = List.of(11, 22, 33, 44, 55, 66);
-    private static final int validInputBonusNumber = 77;
-    private static final int validLottoAmount = 80;
-    private static final List<List<Integer>> validLotteries = List.of(
+    private static final int VALID_INPUT_MONEY = 80000;
+    private static final List<Integer> VALID_INPUT_NUMBER = List.of(11, 22, 33, 44, 55, 66);
+    private static final int VALID_INPUT_BONUS_NUMBER = 77;
+    private static final int VALID_LOTTO_AMOUNT = 80;
+    private static final List<List<Integer>> VALID_LOTTERIES = List.of(
             List.of(10, 11, 12, 13, 14, 15));
     private User user;
 
@@ -34,40 +34,40 @@ public class UserTest {
     @DisplayName("사용자의 입력 값이 잘 들어가있는지 테스트")
     @Test
     void validateUserInput() {
-        User.setUserInputMoney(inputMoney);
-        User.setUserInputNumber(inputNumber);
-        User.setUserInputBonusNumber(inputBonusNumber);
+        User.setUserInputMoney(INPUT_MONEY);
+        User.setUserInputNumber(INPUT_NUMBER);
+        User.setUserInputBonusNumber(INPUT_BONUS_NUMBER);
 
         int money = User.getUserInputMoney();
         int bonusNumber = user.getUserInputBonusNumber();
         List<Integer> number = user.getUserInputNumber();
 
         assertAll(
-                () -> assertThat(money).isEqualTo(validInputMoney),
-                () -> assertThat(number).isEqualTo(validInputNumber),
-                () -> assertThat(bonusNumber).isEqualTo(validInputBonusNumber)
+                () -> assertThat(money).isEqualTo(VALID_INPUT_MONEY),
+                () -> assertThat(number).isEqualTo(VALID_INPUT_NUMBER),
+                () -> assertThat(bonusNumber).isEqualTo(VALID_INPUT_BONUS_NUMBER)
         );
     }
 
     @DisplayName("구입금액에 따른 로또 수량이 일치하는지 테스트")
     @Test
     void checkLottoAmount() {
-        User.setUserInputMoney(inputMoney);
+        User.setUserInputMoney(INPUT_MONEY);
         User.setLottoAmount();
         int lottoAmount = user.getLottoAmount();
 
         assertAll(
-                () -> assertThat(lottoAmount).isEqualTo(validLottoAmount)
+                () -> assertThat(lottoAmount).isEqualTo(VALID_LOTTO_AMOUNT)
         );
     }
 
     @DisplayName("발행된 로또가 저장되는지 테스트")
     @Test
     void checkLottoSave() {
-        User.setLotteries(lotto);
+        User.setLotteries(LOTTO);
         List<List<Integer>> lotteries = user.getLotteries();
         assertAll(
-                () -> assertThat(lotteries).isEqualTo(validLotteries)
+                () -> assertThat(lotteries).isEqualTo(VALID_LOTTERIES)
         );
     }
 }
