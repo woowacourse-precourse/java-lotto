@@ -6,6 +6,7 @@ public class LottoStore {
     private int money;
     private int purchaseNumber;
 
+    private int bonusNumber;
     private Lotto winningLotto;
     private List<Lotto> userLotto;
     private LottoMaker lottoMaker = new LottoMaker();
@@ -41,5 +42,9 @@ public class LottoStore {
 
     public void makeWinningLotto(List<Integer> winningLottoNumber) {
         winningLotto = new Lotto(winningLottoNumber);
+    }
+
+    public void makeBonusNumber(int number) {
+        this.bonusNumber = number;
     }
 }
