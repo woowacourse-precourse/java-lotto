@@ -13,9 +13,9 @@ public class LottoInput {
     public static int inputNumber() {
         System.out.println(INPUT_MONEY);
         String inputNum = Console.readLine();
-        try{
+        try {
             inputMoney = Integer.parseInt(inputNum);
-        }catch (NumberFormatException e){
+        } catch (NumberFormatException e) {
             System.out.println("[ERROR] 금액은 숫자만 입력할 수 있습니다.");
             throw new IllegalArgumentException("[ERROR] 금액은 숫자만 입력할 수 있습니다.");
         }

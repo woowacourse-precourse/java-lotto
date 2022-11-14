@@ -14,28 +14,29 @@ public class Lotto {
     private static final String WINNING_LOTTO = "당첨 번호를 입력해주세요.";
     private static final String NEGATIVE_PRICE_ERROR = "음수인 금액은 입력할 수 없습니다.";
     private static final String PUT_BONUS_NUMBER = "보너스 번호를 입력해주세요";
+    private static final int LOTTO_LENGTH = 6;
     public static int bonusNum;
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
-        this.numbers = new ArrayList<>(numbers);
+        this.numbers = numbers;
     }
 
     // 우승 숫자 입력받기
-    public static List<Integer> inputLotto(List<Integer> lotto) {
+    public static void inputLotto() {
         System.out.println(WINNING_LOTTO);
+        List<Integer> numbers = new ArrayList<>();
         String num = Console.readLine();
         String[] inputNum = num.split(",");
         try {
             for (int i = 0; i < inputNum.length; i++) {
-                lotto.add(Integer.parseInt(inputNum[i]));
+                Application.winningNumbers.add(Integer.parseInt(inputNum[i]));
             }
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException(ERROR + INVALID_LOTTO_NUMBERS);
         }
         Validator.validateWinningNumberInput(inputNum); // 6자리인지 확인
 
-        return lotto;
     }
 
 
@@ -53,7 +54,7 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
-        if (numbers.size() != 6) {
+        if (numbers.size() != LOTTO_LENGTH) {
             throw new IllegalArgumentException(ERROR + INVALID_WINNING_NUMBER_LENGTH_ERROR);
         }
         if (validateDuplicate(numbers)) {
@@ -76,7 +77,7 @@ public class Lotto {
     }
 
 
-    // 1부터 45까지의 수
+    // 1부터 45까지의 기
     static boolean validateRange(List<Integer> numbers) {
         for (int i = 0; i < numbers.size(); i++) {
             if (numbers.get(i) < 1 || numbers.get(i) > 45){

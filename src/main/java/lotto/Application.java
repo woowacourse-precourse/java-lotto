@@ -17,8 +17,9 @@ public class Application {
             LottoGenerator.myLottoNumber();
 
             //1등 번호 입력
+            Lotto.inputLotto();
             Lotto winnerLotto = new Lotto(winningNumbers);
-            winnerLotto.inputLotto();
+
 
             // 보너스 번호 입력
             Lotto.bonusNum();
