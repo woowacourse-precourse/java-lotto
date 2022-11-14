@@ -93,4 +93,17 @@ public class Application {
 
         return (double) originMoney / (double) resultMoney;
     }
+
+    public static int getLottoNumber(String input) {
+        if (!input.matches("[0-9]+")) {
+            throw new IllegalArgumentException("[ERROR] 입력 금액은 숫자로만 이루어져야 합니다.");
+        }
+        int lotto = Integer.parseInt(input);
+
+        if (lotto < 1 || lotto > 45) {
+            throw new IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
+        }
+
+        return lotto;
+    }
 }
