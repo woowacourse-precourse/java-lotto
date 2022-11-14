@@ -33,7 +33,7 @@ public class ConsoleInput implements Input{
         try {
             return Integer.parseInt(string);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("입력 형식이 잘못되었습니다.");
+            throw new IllegalArgumentException(InputErrorMessage.NOT_FORM_CORRECT.toString());
         }
     }
 }
