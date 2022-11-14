@@ -1,5 +1,6 @@
 package lotto;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -19,12 +20,14 @@ public class Lotto {
 
     public void print() {
         StringBuilder sb = new StringBuilder("[");
+        List<Integer> sortNumbers = new ArrayList<>(numbers);
+        Collections.sort(sortNumbers);
 
         for (int i = 0; i < 5; i++) {
-            sb.append(numbers.get(i));
+            sb.append(sortNumbers.get(i));
             sb.append(", ");
         }
-        sb.append(numbers.get(5));
+        sb.append(sortNumbers.get(5));
         sb.append("]");
 
         System.out.println(sb);

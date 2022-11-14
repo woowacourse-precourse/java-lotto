@@ -38,7 +38,8 @@ public class Application {
 
     public static int getLottoCount(String input) {
         if (!input.matches("[0-9]+")) {
-            throw new IllegalArgumentException("[ERROR] 입력 금액은 숫자로만 이루어져야 합니다.");
+            System.out.println("[ERROR] 입력 금액은 숫자로만 이루어져야 합니다.");
+            throw new IllegalArgumentException();
         }
 
         int money = Integer.parseInt(input);
@@ -54,7 +55,7 @@ public class Application {
 
         for (int i = 0; i < count; i++) {
             List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
-            Collections.sort(numbers);
+//            Collections.sort(numbers, Comparator.naturalOrder());
             lottos.add(new Lotto(numbers));
         }
 
@@ -126,7 +127,7 @@ public class Application {
         System.out.println("3개 일치 (5,000원) - " + matches.get(0) + "개");
         System.out.println("4개 일치 (50,000원) - " + matches.get(1) + "개");
         System.out.println("5개 일치 (1,500,000원) - " + matches.get(2) + "개");
-        System.out.println("5개 일치 (30,000,000원) - " + matches.get(3) + "개");
+        System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - " + matches.get(3) + "개");
         System.out.println("6개 일치 (2,000,000,000원) - " + matches.get(4) + "개");
         System.out.println("총 수익률은 " + String.format("%.1f", getRate(lottos.size(), matches)) + "%입니다.");
     }
