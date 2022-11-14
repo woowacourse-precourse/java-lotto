@@ -24,14 +24,18 @@ public class LottoGameController {
 
         List<Lotto> publishedAllLotto = publishLotto(purchaseAmount);
         Lotto winningLotto = publishWinningLotto();
-        printBonusLottoNumberInput();
-        Bonus bonus = lottoMachine.publishBonus(inputBonusNumber(), winningLotto);
+        Bonus bonus = publishBonus(winningLotto);
 
         // 구매한 로또의 당첨 결과 산출
         Map<LottoRank, Integer> lottoResult = lottoReader.createLottoResult(publishedAllLotto, winningLotto, bonus);
         printLottoResult(lottoResult);
         String lottoYield = lottoReader.calculateYield(purchaseAmount);
         printYield(lottoYield);
+    }
+
+    private Bonus publishBonus(Lotto winningLotto) {
+        printBonusLottoNumberInput();
+        return lottoMachine.publishBonus(inputBonusNumber(), winningLotto);
     }
 
     private Lotto publishWinningLotto() {
