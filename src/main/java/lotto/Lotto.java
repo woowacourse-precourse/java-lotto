@@ -57,7 +57,7 @@ public class Lotto {
             throw new IllegalArgumentException();
         }
     }
-    public int Input() {
+/*    public int Input() {
         String strPay = Console.readLine();
         try {
             pay = Integer.parseInt(strPay); //구입금액
@@ -115,6 +115,5 @@ public class Lotto {
         int money = winLottoNumber[0] * 5000 + winLottoNumber[1] * 50000 + winLottoNumber[2] * 1500000 + winLottoNumber[3] * 30000000 + winLottoNumber[4] * 2000000000;
         profit = (double) money / pay *100;
         return String.format("%.1f",profit);
-    }
-
+    }*/
 }
