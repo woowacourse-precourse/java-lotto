@@ -13,10 +13,8 @@ public class MyView {
 	}
 
 	public void getMoneyRequest() {
-		String message = OutMsg.MONEY_REQUEST.getMessage();
-		System.out.println(message);
-
-		int money = Integer.parseInt(Console.readLine());
+		System.out.println(OutMsg.MONEY_REQUEST.getMessage());
+		String money = Console.readLine();
 		model.addAttribute("money", money);
 		System.out.println();
 	}
@@ -24,8 +22,7 @@ public class MyView {
 	public void printLottos() {
 		List<Lotto> Lottos = (List<Lotto>) model.getAttribute("Lottos");
 		int amount = Lottos.size();
-		String buyMessage = Integer.toString(amount) + OutMsg.BUY_SUFFIX.getMessage();
-		System.out.println(buyMessage);
+		System.out.println(amount + OutMsg.BUY_SUFFIX.getMessage());
 		Lottos.stream().map(s->s.toString()).forEach(System.out::println);
 		System.out.println();
 	}
@@ -34,12 +31,13 @@ public class MyView {
 		System.out.println(OutMsg.ANSWER_REQUEST.getMessage());
 		String correctNumbers = Console.readLine();
 		model.addAttribute("correctNumbers", correctNumbers);
+		System.out.println();
 	}
 
 	public void getBonusNumber() {
 		System.out.println(OutMsg.BONUS_REQUEST.getMessage());
-
 		String bonus = Console.readLine();
 		model.addAttribute("bonusNumber", bonus);
+		System.out.println();
 	}
 }
