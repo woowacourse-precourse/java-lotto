@@ -20,7 +20,7 @@ public class Lotto {
         return numbers;
     }
 
-    public Rank compare(Lotto WinningLotto) {
+    public Rank compare(List<Integer> winningNumbers, int bonusNumber) {
         return null;
     }
 
