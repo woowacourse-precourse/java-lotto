@@ -11,4 +11,11 @@ public class LottoMachine {
         Utils.validateLottoNumbers(numbers);
         return numbers;
     }
+
+    public int getBonusNumber(int number) {
+        if (number < LottoInfo.START_NUMBER.getValue() || number > LottoInfo.END_NUMBER.getValue()) {
+            throw new IllegalArgumentException();
+        }
+        return number;
+    }
 }
