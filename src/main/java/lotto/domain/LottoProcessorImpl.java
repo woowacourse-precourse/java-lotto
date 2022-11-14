@@ -3,7 +3,10 @@ package lotto.domain;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class LottoProcessorImpl implements LottoProcessor{
@@ -31,12 +34,18 @@ public class LottoProcessorImpl implements LottoProcessor{
     public List<Lotto> createLottoByCount(Integer count) {
         List<Lotto> clientLotto = new ArrayList<>();
         IntStream.range(0, count)
-                .forEach(i -> clientLotto.add(lottoRepository.create(createRandomNumber())));
+                .forEach(i -> clientLotto.add(lottoRepository.create(sortLottoNumbers(createRandomNumber()))));
 
         return clientLotto;
     }
 
     private List<Integer> createRandomNumber(){
         return Randoms.pickUniqueNumbersInRange(LottoEnum.LOTTO.getMinNum(), LottoEnum.LOTTO.getMaxNum(), LottoEnum.LOTTO.getSize());
+    }
+
+    private List<Integer> sortLottoNumbers(List<Integer> lottoNumbers) {
+        return lottoNumbers.stream()
+                .sorted()
+                .collect(Collectors.toList());
     }
 }
