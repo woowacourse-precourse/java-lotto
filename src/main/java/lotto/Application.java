@@ -27,6 +27,7 @@ public class Application {
             money = Lotto.check_input_validate(input);
         } catch (IllegalArgumentException e) {
             System.out.println(ExceptionMessage.NumbersOnly.getMsg());
+            return;
         }
 
         try {
@@ -35,6 +36,7 @@ public class Application {
             }
         } catch (IllegalArgumentException e) {
             System.out.println(ExceptionMessage.PurchaseUnit.getMsg());
+            return;
         }
 
         num = money / 1000;
@@ -58,12 +60,6 @@ public class Application {
             win_numbers = Arrays.stream(input.split(","))
                     .map(Integer::parseInt)
                     .collect(Collectors.toList());
-            Lotto.checkDuplicate(new HashSet<>(win_numbers));
-        } catch (IllegalArgumentException e) {
-            System.out.println(ExceptionMessage.Duplicated.getMsg());
-        }
-
-        try {
             for (int number : win_numbers) {
                 Lotto.checkValidation(number);
             }
@@ -72,6 +68,14 @@ public class Application {
             }
         } catch (IllegalArgumentException e) {
             System.out.println(ExceptionMessage.NotValidateNum.getMsg());
+            return;
+        }
+
+        try {
+            Lotto.checkDuplicate(new HashSet<>(win_numbers));
+        } catch (IllegalArgumentException e) {
+            System.out.println(ExceptionMessage.Duplicated.getMsg());
+            return;
         }
 
         System.out.println("\n보너스 번호를 입력해 주세요.");
@@ -83,6 +87,7 @@ public class Application {
             bonus = Integer.parseInt(input);
         } catch (IllegalArgumentException e) {
             System.out.println(ExceptionMessage.NotValidateBonusNum.getMsg());
+            return;
         }
 
         Lotto.set_statistics(buy_lists, bonus, win_numbers, statistics);
