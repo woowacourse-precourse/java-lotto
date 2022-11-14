@@ -31,6 +31,8 @@
       - .decideBonusNumber(): 보너스 번호를 정합니다.
       - .getResult(): 결과를 출력합니다.
   - #### service
+    - LogInService: 유저마다 다른 아이디를 부여해주는 서비스입니다.
+      - .getNewId(): 새로운 아이디를 발급합니다. 
     - UserService: 일반 유저가 접근 가능한 서비스입니다.
       - .purchaseLottoBundle(): 로또를 구매합니다.
       - .getMyResult(): 로또 당첨 결과를 조회합니다.
