@@ -18,11 +18,11 @@ public class LottoManager {
     public static final int LOTTO_PRICE = 1000;
     public static final int LOTTO_NUMBER_COUNT = 6;
 
-    public LottoManager(int buyingMoney) {
+    public LottoManager(int buyingMoney, NumberGenerator numberGenerator) {
         this.buyingMoney = buyingMoney;
         lottos = new ArrayList<>();
         for (int i = 0; i < buyingMoney / LOTTO_PRICE; i++) {
-            lottos.add(generateRandomLotto());
+            lottos.add(new Lotto(numberGenerator.generateLottoNumber()));
         }
 
         ranks = new HashMap<>();
@@ -66,11 +66,6 @@ public class LottoManager {
     private boolean calculateMatchBonus(int winningBonus, Lotto lotto) {
         List<Integer> numbers = lotto.getNumbers();
         return numbers.contains(winningBonus);
-    }
-
-    private Lotto generateRandomLotto() {
-        List<Integer> numbers = Randoms.pickUniqueNumbersInRange(LOTTO_RANGE_START, LOTTO_RANGE_END, LOTTO_NUMBER_COUNT);
-        return new Lotto(numbers);
     }
 
     private int calculateTotalReward() {

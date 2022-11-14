@@ -26,7 +26,7 @@ public class GameManager {
     private void buyingLotto(){
         int buyingAmount = InputView.inputBuyingAmount();
         OutputView.outputBlankLine();
-        lottoManager = new LottoManager(buyingAmount);
+        lottoManager = new LottoManager(buyingAmount, new RandomNumberGenerator());
         OutputView.outputBuyingAmount(buyingAmount);
         for (Lotto lotto : lottoManager.getLottos()) {
             OutputView.outputLotto(lotto.getNumbers());
