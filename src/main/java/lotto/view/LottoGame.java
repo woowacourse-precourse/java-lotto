@@ -15,11 +15,8 @@ public class LottoGame {
     private final LottoGameController lottoGameController;
     private int lottoTicketCount;
     private String userInput;
-    private Lotto winningNumbers;
-    private int bonusNumber;
     private List<Lotto> userLottoTickets;
     private LottoAnalyzer lottoAnalyzer;
-    private String earningsRate;
 
     public LottoGame() {
         this.lottoGameController = new LottoGameController();
@@ -48,13 +45,13 @@ public class LottoGame {
     private void inputWinningNumbers() {
         System.out.println(GameMessage.WINNING_NUMBER.getMessage());
         userInput = Console.readLine();
-        winningNumbers = lottoGameController.pickWinningNumbers(userInput);
+        lottoGameController.pickWinningNumbers(userInput);
     }
 
     private void inputBonusNumber(){
         System.out.println(GameMessage.BONNUS_NUMBER.getMessage());
         userInput = Console.readLine();
-        bonusNumber = lottoGameController.pickBonusNumber(userInput);
+        lottoGameController.pickBonusNumber(userInput);
     }
 
     private void showStatistics(){
@@ -82,7 +79,7 @@ public class LottoGame {
     }
 
     private void printEarningsRate() {
-        earningsRate = lottoGameController.calculateRate(lottoAnalyzer);
+        String earningsRate = lottoGameController.calculateRate(lottoAnalyzer);
         System.out.println(GameMessage.WHOLE_EARNINGS_RATE.getMessage() + earningsRate + "입니다.");
     }
 }
