@@ -13,4 +13,16 @@ public class LottoMachine {
         return numbers;
     }
 
+    private int countPurchaseQuantity(int money) {
+        if (Math.floorMod(money, 1000) != 0) {
+            throw new IllegalArgumentException();
+        }
+        else if (Math.floorDiv(money, 10) == 0) {
+            throw new IllegalArgumentException();
+        }
+
+        return Math.floorDiv(money, 10);
+    }
+
+
 }
