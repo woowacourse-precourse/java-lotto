@@ -21,7 +21,7 @@ public class Buy {
     public static int orderTicket() {
         System.out.println("구입금액을 입력해 주세요.");
         String money = Console.readLine();
-        int tickets = 0;
+        int tickets;
         try {
             Check.isNumber(money);
             Long paperMoney = Long.parseLong(money);
@@ -29,10 +29,11 @@ public class Buy {
 
             System.out.println("\n" + tickets + "개를 구매했습니다.");
 
-
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
+            return orderTicket();
         }
+
 
         return tickets;
 
