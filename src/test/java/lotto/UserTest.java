@@ -14,16 +14,14 @@ import java.util.List;
 public class UserTest {
 
     private static final String INPUT_MONEY = "80000";
-    private static final String INPUT_NUMBER = "11,22,33,44,55,66";
+    private static final String INPUT_NUMBER = "11,22,33,34,35,36";
     private static final String INPUT_BONUS_NUMBER = "77";
     private static final List<Integer> LOTTO = List.of(10, 11, 12, 13, 14, 15);
 
     private static final int VALID_INPUT_MONEY = 80000;
-    private static final List<Integer> VALID_INPUT_NUMBER = List.of(11, 22, 33, 44, 55, 66);
+    private static final List<Integer> VALID_INPUT_NUMBER = List.of(11, 22, 33, 34, 35, 36);
     private static final int VALID_INPUT_BONUS_NUMBER = 77;
     private static final int VALID_LOTTO_AMOUNT = 80;
-    private static final List<List<Integer>> VALID_LOTTERIES = List.of(
-            List.of(10, 11, 12, 13, 14, 15));
     private User user;
 
     @BeforeEach
