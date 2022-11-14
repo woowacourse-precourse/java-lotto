@@ -1,5 +1,7 @@
 package lotto;
 
+import static lotto.LottoRank.*;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -55,6 +57,7 @@ public class Service {
 				checkNumberSame(lotto.getNumbers().get(i), onePurchaseLotto);
 			}
 			checkBonusNumberSame(bonusLotto.getBonus(), onePurchaseLotto);
+			checkRank(numberCount.getGuess(), numberCount.getBonusGuess());
 			numberCount.setCount();
 		}
 	}
@@ -70,6 +73,19 @@ public class Service {
 			numberCount.bonusGuessCount();
 			System.out.println(numberCount.getBonusGuess());
 		}
+	}
+
+	public void checkRank(int guess, int bonusGuess) {
+		if (guess == 6)
+			prize.put(FIRST_PLACE.getWinnerPrize(), prize.get(FIRST_PLACE.getWinnerPrize()) + 1);
+		if (guess == 5 && bonusGuess == 1)
+			prize.put(LottoRank.SECOND_PLACE.getWinnerPrize(), prize.get(SECOND_PLACE.getWinnerPrize()) + 1);
+		if (guess == 5 && bonusGuess != 1)
+			prize.put(LottoRank.THIRD_PLACE.getWinnerPrize(), prize.get(THIRD_PLACE.getWinnerPrize()) + 1);
+		if (guess == 4)
+			prize.put(LottoRank.FOURTH_PLACE.getWinnerPrize(), prize.get(FOURTH_PLACE.getWinnerPrize()) + 1);
+		if (guess == 3)
+			prize.put(LottoRank.FIFTH_PLACE.getWinnerPrize(), prize.get(FIFTH_PLACE.getWinnerPrize()) + 1);
 	}
 
 }
