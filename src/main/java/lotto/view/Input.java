@@ -3,8 +3,6 @@ package lotto.view;
 import camp.nextstep.edu.missionutils.Console;
 
 public class Input {
-    private static final String ERROR_MESSAGE = "[ERROR]";
-
     public String getMoney() {
         String money = Console.readLine().trim();
         return money;

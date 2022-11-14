@@ -13,6 +13,7 @@ public class Output {
     private static final String COUNT = "개";
     private static final String PROFIT_FORMAT = "총 수익률은 %.1f";;
     private static final String PERCENT_FORMAT = "%입니다.";
+    private static final String ERROR_MESSAGE = "[ERROR] ";
 
 
     public static void printMoneyInputMessage() {
@@ -51,5 +52,8 @@ public class Output {
         System.out.print(PERCENT_FORMAT);
     }
 
+    public static void printError(IllegalArgumentException e) {
+        System.out.println(ERROR_MESSAGE + e.getMessage());
+    }
 
 }
