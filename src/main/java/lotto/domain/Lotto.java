@@ -1,6 +1,8 @@
 package lotto.domain;
 
-import static lotto.constant.LottoGameRule.*;
+import static lotto.constant.LottoGameRule.LOTTO_MAX_NUMBER;
+import static lotto.constant.LottoGameRule.LOTTO_MIN_NUMBER;
+import static lotto.constant.LottoGameRule.LOTTO_NUMBER_SIZE;
 import static lotto.domain.ErrorMessage.DUPLICATE_NUMBER_ERROR;
 import static lotto.domain.ErrorMessage.NUMBER_SIZE_ERROR;
 import static lotto.domain.ErrorMessage.OUT_OF_RANGE_NUMBER_ERROR;
