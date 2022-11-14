@@ -87,6 +87,7 @@
     - [x] 당첨 내역과 총 금액 반환 - calculateWonLotto
       - [x] 당첨 금액을 당첨 등수로 변환 - changeMoneyToRank
       - [x] 당첨 내역 출력 - printWonLotto
+        - [x] 숫자를 콤마 패턴으로 표현 - changeNumberToDecimal
     - [x] 수익률 출력 - printYield
 
 

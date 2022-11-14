@@ -4,6 +4,7 @@ import static lotto.Config.LOTTO_TICKET_PRICE;
 import static lotto.Config.WINNING_RANK_AMOUNT;
 
 import camp.nextstep.edu.missionutils.Console;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -127,9 +128,14 @@ public class Controller {
             if(score.bonusNumberCount > 1){
                 message.append(", 보너스 볼" + score.bonusNumberCount + "개 일치");
             }
-            message.append(" (" + WINNING_RANK_AMOUNT[index] + "원) - " + rankCounts.get(index) + "개");
+            message.append(" (" + changeNumberToDecimal(WINNING_RANK_AMOUNT[index]) + "원) - " + rankCounts.get(index) + "개");
             System.out.println(message);
         }
+    }
+
+    private String changeNumberToDecimal(int number){
+        DecimalFormat formatter = new DecimalFormat("###,###");
+        return formatter.format(number);
     }
 
     private void printYield(double loss, double profit) {
