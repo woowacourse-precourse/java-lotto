@@ -7,8 +7,9 @@
 ## 🧀기능 목록
 - 로또를 구입한다. LottoSeller
   - [x] 로또 구입 금액을 입력받는다. LottoSeller#getPayAmount()
-  - [x] 입력 받은 금액에 따른 로또 개수를 구한다. LottoSeller#countTicket()
+    - [ ] 구입 금액은 숫자만 입력 가능하다. 
     - [x] 천원단위 아닐 경우 예외처리한다.
+  - [x] 입력 받은 금액에 따른 로또 개수를 구한다. LottoSeller#countTicket()
 - [x] 입력 받은 금액 만큼의 로또를 랜덤으로 발행한다. NumberGenerator#generateNumbers()
 - [x] 당첨번호와 보너스 번호를 입력받는다. LottoDrawing#getWinningNumber(),getBonusNumber()
   - [x] 각 번호는 쉼표(,)를 기준으로 구분
