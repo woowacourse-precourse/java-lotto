@@ -7,11 +7,12 @@ import java.util.Arrays;
 import java.util.List;
 
 public class LottoGame {
-    private List<Lotto> lotteries = new ArrayList<>();
     private int lottoCount;
-    private List<Integer> lottoResults = Arrays.asList(0, 0, 0, 0, 0, 0, 0);
     private int bonusResult = 0;
     private double rateOfReturn;
+    private List<Integer> lottoResults = Arrays.asList(0, 0, 0, 0, 0, 0, 0);
+
+    private List<Lotto> lotteries = new ArrayList<>();
 
     public List<Lotto> getLotteries() {
         return lotteries;
