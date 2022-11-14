@@ -2,6 +2,7 @@ package lotto.service.executeLotto;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -11,11 +12,21 @@ public class LotteryNumbersIssuance {
     private final static int MAX_LOTTO_NUMBER = 45;
 
 
-    public List<Integer> issueLotteryNumbers() {
-        List<Integer> LotteryNumbers = Randoms.pickUniqueNumbersInRange(MIN_LOTTO_NUMBER, MAX_LOTTO_NUMBER, COUNT_LOTTERY_NUMBER_NUMBERS);
-        Collections.sort(LotteryNumbers);
-        // TODO: Validation 로직 추가하기 (유틸 툴 오류날 경우 대비) -> exception 발생할 경우 다시 뽑아서 정상적인 값 뽑게 리턴
-        return LotteryNumbers;
+    public List<List<Integer>> getLotteries(int amount) {
+        List<List<Integer>> issuedLotteryTickets = new ArrayList<List<Integer>>();
+        while (amount != 0) {
+            List<Integer> newLottery = issueLotteryNumbers();
+            issuedLotteryTickets.add(newLottery);
+            amount = amount - 1000;
+        }
+        return issuedLotteryTickets;
     }
 
+    // 랜덤 숫자 배열 1개 뽑음
+    private List<Integer> issueLotteryNumbers() {
+        List<Integer> LotteryNumbers = Randoms.pickUniqueNumbersInRange(MIN_LOTTO_NUMBER, MAX_LOTTO_NUMBER, COUNT_LOTTERY_NUMBER_NUMBERS);
+        Collections.sort(LotteryNumbers);
+        
+        return LotteryNumbers;
+    }
 }
