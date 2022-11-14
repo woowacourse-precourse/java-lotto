@@ -3,21 +3,21 @@
 ## 기능 목록
 `IllegalArgumentException` 발생 시 "[ERROR]"로 시작하는 메시지를 출력 해야 한다.
 
-- [ ] 로또 1개의 가격은 1000원이고 구입금액을 입력 받는다.
-  - [ ] 1000으로 나누어 떨어지지 않으면 `IllegalArgumentException`를 발생한다.
-  - [ ] 나누어 떨어지는 만큼 로또번호를 생성한다.
+- [x] 로또 1개의 가격은 1000원이고 구입금액을 입력 받는다.
+  - [x] 1000으로 나누어 떨어지지 않으면 `IllegalArgumentException`를 발생한다.
+  - [x] 나누어 떨어지는 만큼 로또번호를 생성한다.
     - 예시) 4로 나누어 떨어지면 4개의 로또번호를 생성한다.
-    - [ ] 1~45까지 숫자 중 중복되지 않는 6개 숫자를 생성한다.
-- [ ] 당첨 번호를 입력 받는다(6자리 수) - 구분자는 ','
-  - [ ] 6자리가 아니면 `IllegalArgumentException`를 발생한다.
-  - [ ] 수가 아니면 `IllegalArgumentException`를 발생한다.
-  - [ ] 1~45사이의 수가 아니면 `IllegalArgumentException`를 발생한다.
-- [ ] 보너스 번호를 입력받는다.
-  - [ ] 수가 아니면 `IllegalArgumentException`를 발생한다.
-  - [ ] 1~45사이의 수가 아니면 `IllegalArgumentException`를 발생한다.
-- [ ] 발행한 로또와 당첨번호를 비교한다.
-  - [ ] 당첨 규칙에 맞춰 당첨금액을 
-  - [ ] 당첨내역을 출력한다.
+    - [x] 1~45까지 숫자 중 중복되지 않는 6개 숫자를 생성한다.
+- [x] 당첨 번호를 입력 받는다(6자리 수) - 구분자는 ','
+  - [x] 6자리가 아니면 `IllegalArgumentException`를 발생한다.
+  - [x] 수가 아니면 `IllegalArgumentException`를 발생한다.
+  - [x] 1~45사이의 수가 아니면 `IllegalArgumentException`를 발생한다.
+- [x] 보너스 번호를 입력받는다.
+  - [x] 수가 아니면 `IllegalArgumentException`를 발생한다.
+  - [x] 1~45사이의 수가 아니면 `IllegalArgumentException`를 발생한다.
+- [x] 발행한 로또와 당첨번호를 비교한다.
+  - [x] 당첨 규칙에 맞춰 등수를 나타낸다. 
+  - [ ] 등수에 맞게 당첨금을 출력하고 맞춘 개수도 출력한다.
   - [ ] 총 수익율을 출력한다. (당첨금액 / 구매금액 * 100)
     - 소수점 둘째 자리에서 반올림 한다.
 
