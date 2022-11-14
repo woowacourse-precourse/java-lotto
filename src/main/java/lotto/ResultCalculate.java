@@ -18,13 +18,14 @@ public class ResultCalculate {
                 sameNumberCount--;
             }
         }
-        //만일 5개가 같은 경우 2등인지 3등인지 계산이 필요.
         if(sameNumberCount==2){
             if(lotto.getNumbers().contains(drawLotto.get(6))) {
                 return LottoRanking.SECOND.getRanking();
             }
             return LottoRanking.THIRD.getRanking();
         }
+        if(sameNumberCount==3)
+            return LottoRanking.FOURTH.getRanking();
         return sameNumberCount;
     }
     public static void profitCalculate(){
