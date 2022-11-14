@@ -43,6 +43,7 @@ public class PlayerTest {
 
 
     private void addRankings(){
+        player.addLottoRanking(Ranking.NOTHING);
         player.addLottoRanking(Ranking.THREE_MATCH);
         player.addLottoRanking(Ranking.THREE_MATCH);
         player.addLottoRanking(Ranking.THREE_MATCH);
@@ -52,6 +53,7 @@ public class PlayerTest {
 
     private HashMap<Ranking, Integer> createTester(){
         HashMap<Ranking, Integer> tester = new HashMap<>();
+        tester.put(Ranking.NOTHING, 0);
         tester.put(Ranking.THREE_MATCH, 3);
         tester.put(Ranking.FOUR_MATCH, 0);
         tester.put(Ranking.FIVE_MATCH_WITH_BONUS, 1);
