@@ -37,4 +37,16 @@ class LottoTest {
         assertThatThrownBy(() -> lottoStore.buyLotto())
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @DisplayName("사용자가 구입 금액을 1,000단위로 입력 안할 시 예외가 발생한다.")
+    @Test
+    void inputBuyAmountByThousandUnits() {
+        String money = "11111";
+        InputStream is = new ByteArrayInputStream(money.getBytes());
+        System.setIn(is);
+        LottoStore lottoStore = new LottoStore(new LottoNumberCreator());
+
+        assertThatThrownBy(() -> lottoStore.buyLotto())
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
