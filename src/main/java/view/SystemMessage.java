@@ -67,6 +67,10 @@ public class SystemMessage {
         System.out.println("6개 일치 (2000,000,000원) - " + map.get(Rank.FIRST) + "개");
     }
 
+    public void getProfit(double profit){
+        System.out.println("총 수익률은 " + profit + "입니다.");
+    }
+
     public Map<Rank, Integer> getCount(Rank rank, Map<Rank, Integer> map) {
         map.put(rank, map.get(rank)+1);
         return map;
