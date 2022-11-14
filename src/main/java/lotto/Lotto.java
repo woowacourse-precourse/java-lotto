@@ -45,7 +45,7 @@ public class Lotto {
         Integer inputNumbers = Model.MakeStringToInteger(inputLottoAmount);
         Integer lottoAmount = Model.CountLottoAmount(inputNumbers);
 
-        final List<List<Integer>> publishedLottoArray = PublishLotto(lottoAmount);
+        final List<List<Integer>> publishedLottoArray = Model.PublishLotto(lottoAmount);
 
         View.Output(lottoAmount+"개를 구매했습니다.");
         for (List<Integer> list : publishedLottoArray) {
