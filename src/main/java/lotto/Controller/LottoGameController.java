@@ -24,7 +24,6 @@ public class LottoGameController {
     private List<Lotto> lottoList;
 
     public void run() {
-        lottoList = new ArrayList<>();
         try {
             gameInit();
             Integer lottoSheetAmount = preparePurchaseAmount();
@@ -44,6 +43,7 @@ public class LottoGameController {
         winningNumberService = new WinningNumberService();
         bonusNumberService = new BonusNumberService();
         calculateResultService = new CalculateResultService();
+        lottoList = new ArrayList<>();
         errorContent = "";
     }
 
@@ -52,6 +52,7 @@ public class LottoGameController {
         winningNumberService = null;
         bonusNumberService = null;
         calculateResultService = null;
+        lottoList = null;
     }
 
     public Integer preparePurchaseAmount() {
