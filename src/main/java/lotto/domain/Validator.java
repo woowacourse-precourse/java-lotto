@@ -24,10 +24,26 @@ public class Validator {
         return true;
     }
 
+    public boolean validateWinningNumber(String input){
+        try{
+            validatePermissionPatter(input);
+            String winningNumber = input.replaceAll(",", "");
+            validateNumeric(winningNumber);
+            List<Integer> winningNumberList = LottoNumber.winningNumberToList(winningNumber);
+            for(int i = 0; i < LOTTO_SIZE; i++){
+                validateLottoNumberBound(winningNumberList.get(i));
+            }
+        }catch(IllegalArgumentException e){
+            System.out.println(e.getMessage());
+            return false;
+        }
+        return true;
+    }
+
     public boolean validateBonusNumber(String input){
         try{
             validateNumeric(input);
-            validateLottoNumberBound(input);
+            validateLottoNumberBound(Integer.parseInt(input));
         }catch(IllegalArgumentException e){
             System.out.println(e.getMessage());
             return false;
@@ -55,9 +71,8 @@ public class Validator {
         }
     }
 
-    public void validateLottoNumberBound(String input){
-        int bonusNumber = Integer.parseInt(input);
-        if(bonusNumber < LOTTO_LOWER_BOUND || bonusNumber > LOTTO_UPPER_BOUND){
+    public void validateLottoNumberBound(int input){
+        if(input < LOTTO_LOWER_BOUND || input > LOTTO_UPPER_BOUND){
             throw new IllegalArgumentException(ERROR_MESSAGE + "1-45 사이의 범위가 아닙니다");
         }
     }
