@@ -39,4 +39,12 @@ public class Lotto {
     public boolean isContain(int number) {
         return numbers.contains(number);
     }
+
+    public int getLottoSize() {
+        return numbers.size();
+    }
+
+    public int getLottoNumber(int index) {
+        return numbers.get(index);
+    }
 }
