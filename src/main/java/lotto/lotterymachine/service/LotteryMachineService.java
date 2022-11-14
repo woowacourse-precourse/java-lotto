@@ -8,7 +8,6 @@ import lotto.user.domain.User;
 import lotto.util.Score;
 
 public class LotteryMachineService {
-
     private Map<Score, Integer> ScoreBoard;
 
     public LotteryMachineService() {
@@ -63,6 +62,18 @@ public class LotteryMachineService {
     public void featScoreBoard(int count) {
         Score score = Score.values()[count];
         ScoreBoard.put(score, ScoreBoard.get(score) + 1);
+    }
+
+    public float getIncome(int inputMoney) {
+        return ((getMoneyToLottery()/inputMoney) * 100);
+    }
+
+    public float getMoneyToLottery() {
+        int prize = 0;
+        for (int i = Score.THREE.ordinal(); i < Score.SIX.ordinal(); i++) {
+            prize += (ScoreBoard.get(Score.values()[i]) * Score.values()[i].getValue());
+        }
+        return prize;
     }
 
 }

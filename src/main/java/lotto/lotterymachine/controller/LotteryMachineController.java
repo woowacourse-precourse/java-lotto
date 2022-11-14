@@ -16,7 +16,6 @@ public class LotteryMachineController {
     private final LotteryMachineService lotteryMachineService;
     public Map<Score, Integer> ScoreBoard;
 
-
     public LotteryMachineController() {
         this.lotteryMachine = new LotteryMachine();
         this.lotteryMachineRepository = new LotteryMachineRepository();
@@ -35,9 +34,14 @@ public class LotteryMachineController {
     }
     private void checkNumbers(){
         ScoreBoard = lotteryMachineService.checkNumbers(user,lotteryMachine);
+        // 결과판 출력
+        System.out.println(ScoreBoard);
     }
     private void getStaticsResult(){
-
+        // 수익률 출력
+        float incomeRatio = lotteryMachineService.getIncome(user.getInputMoney());
+        System.out.println("수익률:");
+        System.out.println(String.format("%.1f%%",incomeRatio));
     }
     public int initUser() {
         int userInput = UserRepository.inputMoney();

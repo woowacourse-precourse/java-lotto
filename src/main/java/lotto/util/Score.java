@@ -18,5 +18,5 @@ public enum Score {
     public int getValue() {
         return value;
     }
-    // Can I make hash ?    {ZERO  : 1 }
+
 }
