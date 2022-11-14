@@ -1,6 +1,5 @@
 package lotto;
 
-import domain.LottoResult;
 import domain.Ranking;
 import domain.WinningTicket;
 

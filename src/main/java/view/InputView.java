@@ -1,9 +1,6 @@
 package view;
 
 import camp.nextstep.edu.missionutils.Console;
-import lotto.Lotto;
-
-import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
