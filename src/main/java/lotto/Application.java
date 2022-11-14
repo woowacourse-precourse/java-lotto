@@ -168,4 +168,23 @@ public class Application {
 
         return prizeLotto;
     }
+
+
+    public static List<Integer> gameResult(List<List> lottoResult){
+        List<Integer> winLottoCnt = new ArrayList<>();
+        int first=0, second=0, third=0, fourth=0, fifth=0;
+        for (int i = 0; i < lottoResult.size(); i++) {
+            first+=Integer.parseInt(String.valueOf(lottoResult.get(i).get(0)));
+            second+=Integer.parseInt(String.valueOf(lottoResult.get(i).get(1)));
+            third+=Integer.parseInt(String.valueOf(lottoResult.get(i).get(2)));
+            fourth+=Integer.parseInt(String.valueOf(lottoResult.get(i).get(3)));
+            fifth+=Integer.parseInt(String.valueOf(lottoResult.get(i).get(4)));
+        }
+        winLottoCnt.add(first);
+        winLottoCnt.add(second);
+        winLottoCnt.add(third);
+        winLottoCnt.add(fourth);
+        winLottoCnt.add(fifth);
+        return winLottoCnt;
+    }
 }
