@@ -7,8 +7,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.List;
 
-import static lotto.constant.ErrorConstant.ERROR_DUPLICATE_NUMBER;
-import static lotto.constant.ErrorConstant.ERROR_NOT_VALID_COUNT;
+import static lotto.constant.ErrorConstant.*;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
 public class UserLottoTest {
@@ -21,7 +20,7 @@ public class UserLottoTest {
                 .isThrownBy(() -> new UserLotto(input));
     }
 
-    @DisplayName("로또 번호의 개수가 6개인지 검증")
+    @DisplayName("예외 처리 : 로또 번호의 개수가 6개인지 검증")
     @Test
     void isValidSizeOfLotto() {
         assertThatIllegalArgumentException()
@@ -29,12 +28,20 @@ public class UserLottoTest {
                 .withMessageStartingWith(ERROR_NOT_VALID_COUNT);
     }
 
-    @DisplayName("로또 번호가 중복인지 검증")
+    @DisplayName("예외 처리 : 로또 번호가 중복인지 검증")
     @Test
     void checkDuplicateLotto() {
         assertThatIllegalArgumentException()
                 .isThrownBy(() -> new Lotto(List.of(1, 2, 3, 4, 5, 5)))
                 .withMessageStartingWith(ERROR_DUPLICATE_NUMBER);
+    }
+
+    @DisplayName("예외 처리 : 로또 번호가 범위 안인지 검증")
+    @Test
+    void checkRangeOfLotto() {
+        assertThatIllegalArgumentException()
+                .isThrownBy(() -> new Lotto(List.of(1, 2, 3, 4, 5, 47)))
+                .withMessageStartingWith(ERROR_OUT_OF_RANGE);
     }
 
 }
