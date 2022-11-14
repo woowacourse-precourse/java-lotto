@@ -2,6 +2,7 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -21,6 +22,16 @@ public class User {
     public void inputBonusNumber() {
         String bonusNumber = Console.readLine();
         validateBonusNumber(bonusNumber);
+    }
+
+    public List<Integer> getNumberList(String number) {
+        String[] numbers = number.split(",");
+        List<Integer> winningNumbers = new ArrayList<>();
+
+        for (String num : numbers) {
+            winningNumbers.add(Integer.parseInt(num));
+        }
+        return winningNumbers;
     }
 
     private void validateMoney(String money) {
