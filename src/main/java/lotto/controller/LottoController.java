@@ -19,7 +19,32 @@ public class LottoController {
     public void LottoStart(){
         LottoAmount amount = inputAmount();
         LottoTicket lottoTicket = purchaseLottoTicket(amount);
+        WinningNumbers winningNumbers = createWinningNumbers();
     }
+    private WinningNumbers createWinningNumbers() {
+        Lotto inputLottoNumbers = getInputLottoNumbers();
+        int bonusNumber = getBonusNumber();
+
+        return getWinningNumbers(inputLottoNumbers, bonusNumber);
+    }
+    private int getBonusNumber() {
+        try {
+            return InputView.inputBonusNumber();
+        } catch (IllegalArgumentException e) {
+            OutputView.printException(e);
+            return getBonusNumber();
+        }
+    }
+
+    private Lotto getInputLottoNumbers() {
+        try {
+            return new Lotto(inputWinningNumbers());
+        } catch (IllegalArgumentException e) {
+            printException(e);
+            return getInputLottoNumbers();
+        }
+    }
+
     private LottoTicket purchaseLottoTicket(LottoAmount amount) {
         int ticketCount = amount.calculateLottoCount();
         printLottoTicketCount(ticketCount);
