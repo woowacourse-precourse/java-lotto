@@ -7,6 +7,7 @@ import java.util.stream.Stream;
 import lotto.domain.Lotto;
 import lotto.domain.Money;
 import lotto.domain.Rank;
+import lotto.exception.LottoException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -60,5 +61,11 @@ public class OutputViewFormatterTest {
             "1000000.02:총 수익률은 1,000,000.0%입니다."}, delimiter = ':')
     void outputYield(Double value, String expected) {
         assertThat(outputViewFormatter.outputYieldFormat(value)).isEqualTo(expected);
+    }
+
+    @DisplayName("에러 문구는 “[ERROR]”로 시작해야 한다")
+    @Test
+    void outputExceptionFormat() {
+        assertThat(outputViewFormatter.outputExceptionFormat(new LottoException("에러 메세지"))).contains("[ERROR]");
     }
 }
