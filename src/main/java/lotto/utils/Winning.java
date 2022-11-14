@@ -24,7 +24,7 @@ public enum Winning {
     public static String getCountByLabel(String label) {
         String count = null;
         for (Winning win : Winning.values()) {
-            if(win.label.equals(label)) {
+            if (win.label.equals(label)) {
                 count = win.count;
                 break;
             }
@@ -33,9 +33,9 @@ public enum Winning {
     }
 
     public static int getPrizeByLabel(String label) {
-        int prize =0;
+        int prize = 0;
         for (Winning win : Winning.values()) {
-            if(win.label.equals(label)) {
+            if (win.label.equals(label)) {
                 prize = win.prize;
                 break;
             }
