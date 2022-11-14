@@ -17,7 +17,13 @@ public class InputView {
 
     public int getInputAmount() {
         System.out.println(INPUT_PURCHASE_AMOUNT);
-        String inputAmount = validationInputAmount(readLine());
+        return validateOnlyNaturalNumber(readLine());
+    }
+
+    private int validateOnlyNaturalNumber(String inputAmount) {
+        if (!inputAmount.matches("^[0-9]+$")) {
+            throw new IllegalArgumentException("금액은 자연수만 입력해주세요!");
+        }
         return parseInt(inputAmount);
     }
 
@@ -30,12 +36,7 @@ public class InputView {
         return winningNums;
     }
 
-    private String validationInputAmount(String inputAmount) {
-        if (!inputAmount.matches("^[0-9]+$")) {
-            throw new IllegalArgumentException("금액은 자연수만 입력해주세요!");
-        }
-        return inputAmount;
-    }
+
 
     public int getBonusNum() {
         System.out.println(INPUT_BONUS_NUM);

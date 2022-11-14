@@ -7,15 +7,14 @@ public class Lotto {
     private final int bonusNumber;
 
     public Lotto(List<Integer> winningNumbers, int bonusNumber) {
-        validate(winningNumbers);
+        validateWinningNumbersSize(winningNumbers);
         this.bonusNumber = bonusNumber;
         this.winningNumbers = winningNumbers;
     }
 
-    private void validate(List<Integer> numbers) {
+    private void validateWinningNumbersSize(List<Integer> numbers) {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException();
-            //TODO : 구현 필요
         }
     }
 
