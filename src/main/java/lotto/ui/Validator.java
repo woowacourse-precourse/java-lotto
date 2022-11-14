@@ -32,7 +32,7 @@ public class Validator {
         return true;
     }
 
-    private static boolean isInRange(int number) {
+    public static boolean isInRange(int number) {
         return START_NUMBER <= number && number <= END_NUMBER;
     }
 
