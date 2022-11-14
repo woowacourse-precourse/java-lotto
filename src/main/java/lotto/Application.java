@@ -22,9 +22,9 @@ public class Application {
             outputPrinter.printPurchasedNumbers(lottosBundleSize,purchasedLottos);
 
             List<Integer> basicWinningNumbers = numbersReceiver.setBasicNumbers();
+            Lotto lotto = new Lotto(basicWinningNumbers);
             int bonusNumber = numbersReceiver.setBonusNumber();
 
-            Lotto lotto = new Lotto(basicWinningNumbers);
             Map<WinningNumbers, Long> winningCaseStatistics = lotto.countWinningCase(bonusNumber, purchasedLottos);
             double rawRewardRate = lotto.calculateRewardRate(bonusNumber, purchasedLottos, startMoney);
             outputPrinter.printFinalResult(winningCaseStatistics, rawRewardRate);
