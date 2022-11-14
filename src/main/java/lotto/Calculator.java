@@ -11,6 +11,13 @@ public class Calculator {
     }
 
     private long getProfit(List<Integer> results) {
-        return 0L;
+        long profit = 0L;
+        Rank[] values = Rank.values();
+
+        for (int i = 0; i < values.length; i++) {
+            profit += values[i].getPrize() * results.get(i);
+        }
+
+        return profit;
     }
 }
