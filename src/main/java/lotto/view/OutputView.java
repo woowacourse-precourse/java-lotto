@@ -1,5 +1,9 @@
 package lotto.view;
 
+import lotto.Lotto;
+
+import java.util.List;
+
 public class OutputView {
     public final static String INPUT_PURCHASE_AMOUNT_MESSAGE = "구입금액을 입력해 주세요.";
     public final static String INPUT_WINNING_NUMBER_MESSAGE = "당첨 번호를 입력해 주세요.";
@@ -28,4 +32,21 @@ public class OutputView {
     public void printInputBonusNumber() {
         printlnMessage(INPUT_BONUS_NUMBER_MESSAGE);
     }
+
+    public void printLotto(Lotto lotto) {
+        List<Integer> lottoNumbers = lotto.getNumbers();
+        printMessage("[");
+        printList(lottoNumbers);
+        printMessage("]\n");
+    }
+
+    public void printList(List<Integer> list) {
+        for (int i = 0; i < list.size(); i++) {
+            printMessage(list.get(i).toString());
+            if (i != list.size() - 1) {
+                printMessage(", ");
+            }
+        }
+    }
+
 }
