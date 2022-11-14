@@ -1,7 +1,9 @@
 package lotto.machine;
 
 import camp.nextstep.edu.missionutils.Console;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.stream.Collectors;
 import lotto.message.ErrorMessage;
 import lotto.message.Message;
@@ -9,6 +11,8 @@ import lotto.message.Message;
 public class WinningNumberMaker {
     private final int START_NUM = 1;
     private final int END_NUM = 45;
+    private final int NUM_COUNT = 6;
+    private final String DIVIDE = ",";
 
     private String winningNumberInput;
     private String bonusNumberInput;
@@ -38,18 +42,14 @@ public class WinningNumberMaker {
     }
 
     public void divideByComma() {
-        this.inputSplitByComma = this.winningNumberInput.split(",");
-    }
-
-    public String[] showInputSplitByComma() {
-        return this.inputSplitByComma;
+        this.inputSplitByComma = this.winningNumberInput.split(DIVIDE);
     }
 
     public void validateInputSplitByComma() {
-        if (this.inputSplitByComma.length != 6) {
+        if (this.inputSplitByComma.length != NUM_COUNT) {
             throw new IllegalArgumentException(ErrorMessage.NOT_SIX_NUM.message);
         }
-        if (Arrays.stream(this.inputSplitByComma).collect(Collectors.toSet()).size() < 6) {
+        if (Arrays.stream(this.inputSplitByComma).collect(Collectors.toSet()).size() < NUM_COUNT) {
             throw new IllegalArgumentException(ErrorMessage.DUPLICATE_EXIST.message);
         }
         for (String winningNumberStr : inputSplitByComma) {
@@ -64,7 +64,7 @@ public class WinningNumberMaker {
             }
         }
         int winningNumber = Integer.parseInt(winningNumberStr);
-        if (winningNumber < 1 || winningNumber > 45) {
+        if (winningNumber < START_NUM || winningNumber > END_NUM) {
             throw new IllegalArgumentException(ErrorMessage.NUMBER_OUT_OF_RANGE.message);
         }
     }
@@ -74,10 +74,6 @@ public class WinningNumberMaker {
         for (String winningNumberStr : inputSplitByComma) {
             this.winningNumbers.add(Integer.parseInt(winningNumberStr));
         }
-    }
-
-    public List<Integer> getWinningNumbers() {
-        return new ArrayList<>(this.winningNumbers);
     }
 
     public void makeBonusNumber() throws IllegalArgumentException {
@@ -115,6 +111,14 @@ public class WinningNumberMaker {
         if (winningNumbers.contains(bonusNumber)) {
             throw new IllegalArgumentException(ErrorMessage.WINNING_NUM_CONTAINS_BONUS_NUM.message);
         }
+    }
+
+    public String[] showInputSplitByComma() {
+        return this.inputSplitByComma;
+    }
+
+    public List<Integer> getWinningNumbers() {
+        return new ArrayList<>(this.winningNumbers);
     }
 
     public int getBonusNumber() {
