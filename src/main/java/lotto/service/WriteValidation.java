@@ -9,17 +9,6 @@ import java.util.stream.Collectors;
 
 public class WriteValidation {
 
-    private void validWrite(String writePay) {
-        if (!isDigit(writePay)) {
-            throw new IllegalArgumentException(ErrorCode.ERROR.getMessage());
-        }
-    }
-
-    private boolean isDigit(String write) {
-        return write.chars().allMatch(Character::isDigit);
-    }
-
-    // 당첨 로또 입력 기능
     public WinningLottoNumber writeWinningLottoNumbers(String writeLottoNumber, String writeBonusNumber) {
         if (writeLottoNumber.chars().anyMatch(value -> value == ' ') || writeBonusNumber.chars().anyMatch(value -> value == ' ')) {
             throw new IllegalArgumentException(ErrorCode.ERROR.getMessage());
@@ -29,35 +18,9 @@ public class WriteValidation {
                 .map(Integer::valueOf)
                 .collect(Collectors.toList());
 
-        validWinningNumbers(winningNumbers);
         int bonusNumber = getValidBonusNumber(writeBonusNumber);
 
         return WinningLottoNumber.createWinningLottoNumber(winningNumbers, bonusNumber);
-    }
-
-    private void validWinningNumbers(List<Integer> winningNumbers) {
-        if (!isNumberCount(winningNumbers) && !isNumberRange(winningNumbers)) {
-            throw new IllegalArgumentException(ErrorCode.ERROR.getMessage());
-        }
-
-        validDuplicate(winningNumbers);
-    }
-
-    private boolean isNumberCount(List<Integer> winningNumbers) {
-        return winningNumbers.size() == 6;
-    }
-
-    private boolean isNumberRange(List<Integer> winningNumbers) {
-        return winningNumbers.stream().allMatch(number -> number >= 1 && number <= 45);
-    }
-
-    private void validDuplicate(List<Integer> winningNumbers) {
-        int currentSize = winningNumbers.size();
-        int distinctSize = (int) winningNumbers.stream().distinct().count();
-
-        if (currentSize != distinctSize) {
-            throw new IllegalArgumentException(ErrorCode.ERROR.getMessage());
-        }
     }
 
     private int getValidBonusNumber(String writeBonusNumber) {
@@ -65,6 +28,16 @@ public class WriteValidation {
         int bonusNumber = Integer.parseInt(writeBonusNumber);
         validRangeNumber(bonusNumber);
         return bonusNumber;
+    }
+
+    private void validWrite(String writePay) {
+        if (!isDigit(writePay)) {
+            throw new IllegalArgumentException(ErrorCode.ERROR.getMessage());
+        }
+    }
+
+    private boolean isDigit(String write) {
+        return write.chars().allMatch(Character::isDigit);
     }
 
     private void validRangeNumber(int bonusNumber) {

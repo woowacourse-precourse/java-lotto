@@ -3,6 +3,7 @@ package lotto.domain;
 import camp.nextstep.edu.missionutils.Randoms;
 import lotto.dto.WinningLottoNumber;
 import lotto.dto.WinningNumberCount;
+import lotto.exception.ErrorCode;
 import lotto.exception.PayMoneyException;
 
 import java.util.ArrayList;
@@ -24,6 +25,17 @@ public class Lotto {
         }
 
         duplicateValid(numbers);
+        winningNumbersValid(numbers);
+    }
+
+    private void winningNumbersValid(List<Integer> winningNumbers) {
+        if (!isNumberRange(winningNumbers)) {
+            throw new IllegalArgumentException(ErrorCode.ERROR.getMessage());
+        }
+    }
+
+    private boolean isNumberRange(List<Integer> winningNumbers) {
+        return winningNumbers.stream().allMatch(number -> number >= 1 && number <= 45);
     }
 
     private void duplicateValid(List<Integer> numbers) {
