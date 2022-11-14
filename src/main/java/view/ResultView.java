@@ -30,6 +30,10 @@ public class ResultView {
                 .forEachRemaining(lotto -> System.out.println(lotto.getNumbers()));
     }
 
+    public void displaySeparateLine() {
+        System.out.println();
+    }
+
     public void displayPercentageProfit(String percentageProfit) {
         System.out.println(PROFIT_INFO + percentageProfit + PERCENTAGE + SUFFIX);
     }
