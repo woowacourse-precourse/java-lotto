@@ -12,7 +12,7 @@ public class WinningNumber {
     private static final int minNum = 1;
     private static final int mulNum = 10;
     private static final String NumberNotInRange =" 숫자가 "+minNum+"~"+maxNum+"사이가 아닙니다";
-    private static final String NumberNotStartWithZero =" 숫자가 "+ initNumber+"으로 시작합니다";
+    private static final String NumberStartWithZero =" 숫자가 "+ initNumber+"으로 시작합니다";
     private static final String charIsNotNumber = "잘못된 문자 입력입니다.";
     private static final String NumberIsMulti =" 중복된 숫자입니다";
     private final List<Integer> numbers;
@@ -55,7 +55,7 @@ public class WinningNumber {
     }
     private void checkIfNumberStartsWithZero(int temporaryNumber, char newNumber ){
         if(temporaryNumber == initNumber && newNumber == zero){
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ErrorResource.errorStart+ NumberStartWithZero);
         }
     }
 
