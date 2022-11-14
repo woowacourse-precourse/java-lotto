@@ -5,11 +5,11 @@ import java.util.Map;
 import java.util.HashMap;
 
 public class DrawLotto {
-    ListOfLottos lottoList;
+    List<Lotto> lottoList;
     List<Integer> winner;
     Ranking rank;
     int bonus;
-    public DrawLotto(ListOfLottos lottoList, List<Integer> winner, int bonus) {
+    public DrawLotto(List<Lotto> lottoList, List<Integer> winner, int bonus) {
         this.lottoList = lottoList;
         this.winner = winner;
         this.bonus = bonus;

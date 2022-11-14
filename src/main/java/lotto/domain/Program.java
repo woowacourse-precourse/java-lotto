@@ -5,16 +5,19 @@ import java.util.List;
 public class Program {
     PrintMsg printMsg = new PrintMsg();
     View view = new View();
+    LottoGenerator lottoGenerator = new LottoGenerator();
     int numOfLottos, bonus;
-    ListOfLottos lottoList;
+    List<Lotto> lottoList;
     List<Integer> winner;
 
     public void lottoSetup() {
         printMsg.printMoneyInputMsg();
         numOfLottos = view.getMoneyInput();
         printMsg.printNumberOfLottosMsg(numOfLottos);
-        lottoList = new ListOfLottos(numOfLottos);
-        lottoList.printAllLottos();
+        lottoList = lottoGenerator.generateLottos(numOfLottos);
+        for (Lotto lotto : lottoList) {
+            lotto.printLotto();
+        }
     }
     public void winSetup() {
         printMsg.printWinnerInputMsg();
