@@ -111,4 +111,18 @@ public class LottoService {
         }
         return THIRD_PRIZE;
     }
+
+    public double getRateOfReturn(int money, List<Integer> result) {
+        int prizeMoney = calPrizeMoney(result);
+        return (double) prizeMoney / money * 100;
+    }
+
+    private int calPrizeMoney(List<Integer> result) {
+        int prizeMoney = 0;
+        for (int prize = 5; prize >= 1; prize--) {
+            int prizeIndex = 5 - prize;
+            prizeMoney += result.get(prizeIndex) * PRIZE_MONEY.get(prizeIndex);
+        }
+        return prizeMoney;
+    }
 }
