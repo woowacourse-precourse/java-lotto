@@ -14,10 +14,12 @@ public class LottoRaffle {
     private int bonusdto;
     private int[] resultwindto;
     public LottoRaffle() {
-        readyMoney();
-        readyLottoNumber();
-        readyBonusNumber();
-        outputWin();
+        try {
+            readyMoney();
+            readyLottoNumber();
+            readyBonusNumber();
+            outputWin();
+        } catch (IllegalArgumentException e) { System.out.println(e.getMessage()); }
     }
     public void setLotto(List<Integer> lottoNumber) { this.lottodto = lottoNumber; }
     public void setMoney(String money) { this.moneydto = money; }
@@ -36,9 +38,11 @@ public class LottoRaffle {
         outputView.printRandomLottoNumber(boxrandomdto);
     }
     public void inputMoney() {
+        ErrorUtil errorUtil = new ErrorUtil();
         OutputView outputView = new OutputView();
         outputView.printInputMoney();
         setMoney(readLine());
+        errorUtil.errorInputCharacter(moneydto);
     }
     public void countLotto(int money) { setCount(money / 1000); }
     public void readyLottoNumber() {
@@ -61,6 +65,7 @@ public class LottoRaffle {
         OutputView outputView = new OutputView();
         outputView.printInputBonusNumber();
         String bonusNumber = readLine();
+        errorUtil.errorInputCharacter(bonusNumber);
         lottoNumber.add(Integer.parseInt(bonusNumber));
         errorUtil.errorInputBonusNumber(bonusNumber);
         errorUtil.errorOverlapLottoNumber(lottoNumber);

@@ -3,6 +3,11 @@ package lotto;
 import java.util.List;
 
 public class ErrorUtil {
+    public void errorInputCharacter(String numbers) {
+        for (int i=0;i<numbers.length();++i)
+            if (numbers.charAt(i) < '0' || numbers.charAt(i) > '9')
+                throw new IllegalArgumentException("[ERROR] 유효한 숫자가 아닙니다.");
+    }
     public void errorInputMoney(int money) {
         if (money % 1000 != 0 || money == 0) {
             throw new IllegalArgumentException("[ERROR] 구입금액은 1000원 단위로 입력되어야 합니다.");

@@ -26,6 +26,8 @@ public class DataProcessing {
     public String[] splitLottoNumber(String lottoNumbers) {
         ErrorUtil errorUtil = new ErrorUtil();
         String[] splitNumbers = lottoNumbers.split(",");
+        for (int i=0;i<splitNumbers.length;++i)
+            errorUtil.errorInputCharacter(splitNumbers[i]);
         errorUtil.errorInputLottoNumber(splitNumbers);
         errorUtil.errorInputCountLottoNumber(splitNumbers);
         return splitNumbers;
