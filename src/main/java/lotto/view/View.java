@@ -12,7 +12,8 @@ public class View {
         return input;
     }
 
-    public void lottoListView(int lottoCount, LottoTickets lottoTickets){
+    public void lottoListView(LottoTickets lottoTickets){
+        int lottoCount = lottoTickets.length();
         System.out.printf(LOTTO_COUNT_MESSAGE, lottoCount);
         for(int i = 0; i < lottoCount; i++){
             System.out.println(lottoTickets.getLottoTickets().get(i).getLottoNumber());
