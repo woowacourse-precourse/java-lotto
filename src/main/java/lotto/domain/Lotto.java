@@ -11,6 +11,7 @@ public class Lotto {
     public Lotto(List<Integer> lotto) {
         this.lotto = lotto;
         lottoNumberSort();
+        validate();
     }
 
     public static Lotto generator() {
@@ -24,5 +25,15 @@ public class Lotto {
 
     private void lottoNumberSort() {
         Collections.sort(lotto);
+    }
+
+    private void validate() {
+        sizeValidate();
+    }
+
+    private void sizeValidate() {
+        if (lotto.size() != LottoInfo.LOTTO_LENGTH.getValue()) {
+            throw new IllegalArgumentException("[ERROR] 로또 번호는 6자리만 입력 가능합니다.");
+        }
     }
 }
