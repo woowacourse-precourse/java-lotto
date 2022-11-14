@@ -1,6 +1,7 @@
 package lotto.controller;
 
 import lotto.ApplicationContext;
+import lotto.controller.validator.BonusNumberValidator;
 import lotto.controller.validator.MoneyValidator;
 import lotto.controller.validator.WinningNumberValidator;
 import org.junit.jupiter.api.BeforeEach;
@@ -48,6 +49,16 @@ class LottoControllerTest {
                 () -> assertThatThrownBy(() -> controller.inputWinningNumber("f,d,f,"))
                         .isInstanceOf(IllegalArgumentException.class)
                         .hasMessageContaining("[ERROR]")
+        );
+    }
+
+    @DisplayName("보너스 번호가 조건에 맞지 않으면 예외가 발생한다.")
+    @Test
+    void inputInvalidBonusNumber() {
+        assertAll(
+                () -> assertThatThrownBy(() -> controller.inputBonusNumber("-1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessageContaining(BonusNumberValidator.IS_NATURAL_NUMBER.getErrorMessage())
         );
     }
 }

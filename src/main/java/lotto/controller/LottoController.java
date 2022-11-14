@@ -1,5 +1,6 @@
 package lotto.controller;
 
+import lotto.controller.validator.BonusNumberValidator;
 import lotto.controller.validator.MoneyValidator;
 import lotto.controller.validator.WinningNumberValidator;
 import lotto.domain.Lotto;
@@ -45,6 +46,6 @@ public class LottoController implements Controller {
     }
 
     public void inputBonusNumber(String input) {
-
+        validateInput(input, BonusNumberValidator.values());
     }
 }
