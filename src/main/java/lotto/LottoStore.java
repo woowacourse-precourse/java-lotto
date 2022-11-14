@@ -6,6 +6,7 @@ public class LottoStore {
     private int money;
     private int purchaseNumber;
 
+    private Lotto winningLotto;
     private List<Lotto> userLotto;
     private LottoMaker lottoMaker = new LottoMaker();
 
@@ -36,5 +37,9 @@ public class LottoStore {
     public void makeUserLotto() {
         lottoMaker.makeRandomLottoNumbers(purchaseNumber);
         userLotto = lottoMaker.makeUserLotto();
+    }
+
+    public void makeWinningLotto(List<Integer> winningLottoNumber) {
+        winningLotto = new Lotto(winningLottoNumber);
     }
 }
