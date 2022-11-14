@@ -63,6 +63,6 @@ public class MessagePrinter {
     }
 
     public void printDynamicEarningsRate(Statistics statistics) {
-        System.out.printf((NOTIFY_EARNINGS_RATE) + "%n" + statistics.getEarningsRate());
+        System.out.printf((NOTIFY_EARNINGS_RATE) + "%n", statistics.getEarningsRate());
     }
 }
