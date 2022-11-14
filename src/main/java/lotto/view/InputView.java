@@ -18,5 +18,11 @@ public class InputView {
         lotto = new Lotto(stringToIntList(Console.readLine()));
         return lotto;
     }
+
+    public static int inputBonusNumber() throws IllegalArgumentException {
+        System.out.print("보너스 번호를 입력하시오");
+        int bonus = Integer.parseInt(Console.readLine());
+        return bonus;
+    }
 }
 
