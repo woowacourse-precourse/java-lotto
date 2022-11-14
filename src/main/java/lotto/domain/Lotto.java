@@ -23,6 +23,24 @@ public class Lotto {
         this.numbers = lotto;
     }
 
+    public List<Integer> getNumbers() {
+        return numbers;
+    }
+
+    public boolean contains(BonusNumber bonusNumber) {
+        return numbers.contains(bonusNumber.getBonusNumber());
+    }
+
+    public int compareToLottoNumbers(Lotto lotto) {
+        return Math.toIntExact(numbers.stream()
+                .filter(lotto::contains)
+                .count());
+    }
+
+    private boolean contains(int bonusNumber) {
+        return numbers.contains(bonusNumber);
+    }
+
     private void lottoNumbersRangeExceptionCheck(List<Integer> numbers) {
         boolean winningLottoNumbersRangeCheckResult = winningLottoNumbersRangeCheck(numbers);
         if (!winningLottoNumbersRangeCheckResult) {
