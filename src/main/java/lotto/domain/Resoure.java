@@ -20,4 +20,7 @@ public class Resoure {
     public static final String fiveCorrectWithBonus = "30,000,000원";
     public static final String sixCorrect ="2,000,000,000원";
 
+    public static final int numberSize = 6;
+
+
 }
