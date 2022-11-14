@@ -13,8 +13,8 @@ public class Validation {
     private final static String ERROR_MESSAGE = "[ERROR] ";
     private final static String INVALID_MONEY_MESSAGE = "구입 금액은 " + ONE_LOTTO + "원 단위로만 입력 가능합니다.";
     private final static String INVALID_TYPE_MESSAGE = "숫자만 입력 가능합니다.";
-    private final static String INVALID_LENGTH_MESSAGE = LOTTO_LENGTH + "개의 숫자를 입력해 주세요.";
-    private final static String DUPLICATE_MESSAGE = "중복되지 않는 숫자를 입력해 주세요.";
+    private final static String INVALID_LENGTH_MESSAGE = LOTTO_LENGTH + "개의 숫자여야 합니다.";
+    private final static String DUPLICATE_MESSAGE = "로또에는 중복된 숫자가 들어갈 수 없습니다.";
     private final static String INVALID_NUMBER_RANGE = "로또 번호는 " + START_LOTTO_NUMBER + "부터 " + END_LOTTO_NUMBER + " 사이의 숫자여야 합니다.";
     private final static String DUPLICATE_BONUS_MESSAGE = "당첨 번호와 중복되지 않는 숫자를 입력해주세요.";
 
@@ -39,8 +39,8 @@ public class Validation {
         }
     }
 
-    public static void isValidLength(List<String> prizeNumbers) {
-        if (prizeNumbers.size() != LOTTO_LENGTH) {
+    public static void isValidLength(List<String> numbers) {
+        if (numbers.size() != LOTTO_LENGTH) {
             throw new IllegalArgumentException(ERROR_MESSAGE + INVALID_LENGTH_MESSAGE);
         }
     }
@@ -60,7 +60,7 @@ public class Validation {
         }
     }
 
-    public static void isValidRange(int number){
+    public static void isValidRange(int number) {
         if (number < START_LOTTO_NUMBER || number > END_LOTTO_NUMBER) {
             throw new IllegalArgumentException(ERROR_MESSAGE + INVALID_NUMBER_RANGE);
         }
@@ -93,5 +93,18 @@ public class Validation {
         isNumberType(bonusInput);
         isValidRange(Integer.parseInt(bonusInput));
         isContainDuplicateNumberByPrize(Integer.parseInt(bonusInput), prizeNumbers);
+    }
+
+    public static void validateLottoNumbers(List<Integer> numbers) {
+        List<String> stringNumbers = new ArrayList<>();
+        for (int number : numbers) {
+            stringNumbers.add(Integer.toString(number));
+        }
+
+        isValidLength(stringNumbers);
+        isContainDuplicateNumber(stringNumbers);
+        for (int number : numbers) {
+            isValidRange(number);
+        }
     }
 }
