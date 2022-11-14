@@ -12,9 +12,9 @@ public class MoneyReceiverTest {
     @DisplayName("금액을 받는다")
     @Test
     void receiveMoney() {
-        String expected = "8_000";
+        String expected = "8000";
         InputStream in = new ByteArrayInputStream(expected.getBytes());
         System.setIn(in);
-        assertThat(MoneyReceiver.receiveMoney()).isEqualTo(expected);
+        assertThat(MoneyReceiver.receiveMoney()).isEqualTo(Integer.parseInt(expected));
     }
 }

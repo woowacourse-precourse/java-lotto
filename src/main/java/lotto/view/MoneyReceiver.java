@@ -4,7 +4,7 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class MoneyReceiver {
 
-    public static String receiveMoney() {
-        return readLine();
+    public static int receiveMoney() {
+        return Integer.parseInt(readLine());
     }
 }
