@@ -1,16 +1,16 @@
 package lotto.controller;
 
+import static lotto.view.LottoBuyer.purchaseAmount;
 import static lotto.view.LottoBuyer.purchaseLotto;
-import static lotto.view.LottoBuyer.purchaseLottoCount;
 import static lotto.view.BonusInput.*;
 import static lotto.view.WinningInput.*;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.List;
+
 import lotto.domain.LottoRank;
 import lotto.domain.ErrorMessage;
-
-import java.util.List;
 import lotto.view.Message;
 
 public class LottoGame {
@@ -30,9 +30,9 @@ public class LottoGame {
     }
 
     private static void getTotalResult() {
-        Map<LottoRank, Integer> result = setToMap();
+        Map<LottoRank, Integer> result = setToLottoRank();
         LottoRank rank;
-        double purchasePrice = purchaseLottoCount * LOTTO_PRICE;
+        double purchasePrice = purchaseAmount * LOTTO_PRICE;
         System.out.println(Message.WINNING_STATS.getMessage());
         rank = LottoRank.getRankResult(winningCount, bonus);
         result.put(rank, result.get(rank) + 1);
@@ -54,7 +54,7 @@ public class LottoGame {
         }
     }
 
-    private static Map<LottoRank, Integer> setToMap() {
+    private static Map<LottoRank, Integer> setToLottoRank() {
         Map<LottoRank, Integer> result = new LinkedHashMap<>();
         for (LottoRank rank : LottoRank.values()) {
             result.put(rank, 0);
