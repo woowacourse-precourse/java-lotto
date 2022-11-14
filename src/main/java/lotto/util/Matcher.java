@@ -7,8 +7,8 @@ public class Matcher {
     private final int matchingBonusNumberCount;
 
     public Matcher(List<Integer> lottoTicket, List<Integer> winningNumbers, Integer bonusNumber) {
-        matchingWinningNumberCount = compare(lottoTicket, winningNumbers);
-        matchingBonusNumberCount = checkBonusNumber(lottoTicket, bonusNumber);
+        matchingWinningNumberCount = compareWinningNumbers(lottoTicket, winningNumbers);
+        matchingBonusNumberCount = compareBonusNumber(lottoTicket, bonusNumber);
     }
 
     public int getMatchingWinningNumberCount() {
@@ -19,19 +19,22 @@ public class Matcher {
         return matchingBonusNumberCount;
     }
 
-    private int compare(List<Integer> lottoTicket, List<Integer> winningNumbers) {
+    private int compareWinningNumbers(List<Integer> lottoTicket, List<Integer> winningNumbers) {
         int matchingCount = 0;
         for (int i = 0; i < winningNumbers.size(); i++) {
-            if (lottoTicket.contains(winningNumbers.get(i))) {
-                matchingCount++;
-            }
+            matchingCount = updateMatchingCount(lottoTicket, winningNumbers.get(i), matchingCount);
         }
         return matchingCount;
     }
 
-    private int checkBonusNumber(List<Integer> lottoTicket, Integer bonusNumber) {
+    private int compareBonusNumber(List<Integer> lottoTicket, Integer bonusNumber) {
         int matchingCount = 0;
-        if (lottoTicket.contains(bonusNumber)) {
+        matchingCount = updateMatchingCount(lottoTicket, bonusNumber, matchingCount);
+        return matchingCount;
+    }
+
+    private int updateMatchingCount(List<Integer> lottoTicket, Integer number, int matchingCount) {
+        if (lottoTicket.contains(number)) {
             matchingCount++;
         }
         return matchingCount;
