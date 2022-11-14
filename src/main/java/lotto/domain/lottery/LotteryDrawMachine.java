@@ -10,13 +10,13 @@ import java.util.stream.Collectors;
 
 public class LotteryDrawMachine {
 
-    public List<Integer> drawLotteryNumbers() {
+    public static List<Integer> drawLotteryNumbers() {
         List<Integer> lotteryNumbers = Randoms.pickUniqueNumbersInRange(MINIMUM_LOTTERY_NUMBER, MAXIMUM_LOTTERY_NUMBER,
                 LOTTERY_NUMBERS_SIZE);
         return getSortedNumbers(lotteryNumbers);
     }
 
-    private List<Integer> getSortedNumbers(List<Integer> lotteryNumbers) {
+    private static List<Integer> getSortedNumbers(List<Integer> lotteryNumbers) {
         return lotteryNumbers.stream()
                 .sorted()
                 .collect(Collectors.toList());
