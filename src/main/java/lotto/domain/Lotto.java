@@ -2,6 +2,8 @@ package lotto.domain;
 
 import java.util.List;
 
+import static lotto.constants.ErrorCode.INVALID_NUMBER_OF_DIGITS;
+
 public class Lotto {
     private final List<Integer> numbers;
 
@@ -12,7 +14,7 @@ public class Lotto {
 
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(INVALID_NUMBER_OF_DIGITS);
         }
     }
 
