@@ -1,5 +1,7 @@
 package lotto;
 
+import lotto.view.OutputView;
+
 import java.util.*;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
@@ -9,6 +11,7 @@ public class Game {
   private List<Lotto> lotteries;
   private Lotto winningNumber;
   private int bonusNumber;
+  private Ranking ranking;
 
   public Game() {
     this.lotteries = new ArrayList<>();
@@ -24,8 +27,7 @@ public class Game {
           if (hasBonusNumber) {
             return Ranking.SECOND;
           }
-          else
-            return Ranking.THIRD;
+          return Ranking.THIRD;
         }
         return ranking;
       }
@@ -59,10 +61,16 @@ public class Game {
     for (Lotto lotto : lotteries) {
       int number = compare(lotto, winningNumber);
       if (number > 2) {
-        Ranking ranking = valueOf(number, hasBonusNumber(lotto,bonusNumber));
+        Ranking ranking = valueOf(number, hasBonusNumber(lotto, bonusNumber));
         winningResult.put(ranking, winningResult.get(ranking) + 1);
       }
     }
     return winningResult;
   }
+
+  // 당첨 통계 출력하는 메서드
+  public void printResult() {
+    OutputView.printWinningStatistics(winningResult);
+  }
+
 }
