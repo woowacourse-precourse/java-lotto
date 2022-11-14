@@ -1,4 +1,4 @@
-package lotto;
+package lotto.domain;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -13,8 +13,8 @@ public class RandomLotto {
     }
 
     private void validate(int money) {
-        if (money % 1000 != 0) {
-            throw new IllegalArgumentException();
+        if (money % 1000 != 0 || money < 1000) {
+            throw new IllegalArgumentException("[ERROR] 1000원 이상이고 1000원으로 나누어떨어지는 금액이어야 합니다.");
         }
     }
 
