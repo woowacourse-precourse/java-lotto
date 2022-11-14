@@ -1,9 +1,10 @@
 package lotto.domain;
 
-import java.util.Collections;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public class Lotto {
 
@@ -11,13 +12,8 @@ public class Lotto {
 
     private final List<Integer> numbers;
 
-    public List<Integer> getNumbers() {
-        return numbers;
-    }
-
     public Lotto(List<Integer> numbers) {
         validate(numbers);
-        Collections.sort(numbers);
         this.numbers = numbers;
     }
 
@@ -40,25 +36,19 @@ public class Lotto {
     }
 
     public Ranking getRankingByRightCountAndHasBonusNumber(Lotto winningLotto, Integer bonusNumber) {
-        boolean hasBonusNumber = hasBonusNumberInNumbers(bonusNumber);
-        Integer rightCount = countSameNumbers(winningLotto);
+        boolean hasBonusNumber = numbers.contains(bonusNumber);
+        Integer rightCount = winningLotto.countSameNumbers(this.numbers);
         return Ranking.findRankingByRightCountAndHasBonusNumber(rightCount, hasBonusNumber);
     }
 
-    private Integer countSameNumbers(Lotto winningLotto) {
-        numbers.retainAll(winningLotto.getNumbers());
-        return numbers.size();
-    }
-
-    private boolean hasBonusNumberInNumbers(Integer bonusNumber) {
-        if (numbers.contains(bonusNumber)) {
-            return true;
-        }
-        return false;
+    public int countSameNumbers(List<Integer> userNumbers) {
+        List<Integer> userLotto = new ArrayList<>(userNumbers);
+        userLotto.retainAll(numbers);
+        return userLotto.size();
     }
 
     @Override
     public String toString() {
-        return numbers.toString();
+        return this.numbers.stream().sorted().collect(Collectors.toList()).toString();
     }
 }
