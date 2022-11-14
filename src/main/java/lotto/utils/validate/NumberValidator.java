@@ -44,7 +44,17 @@ public class NumberValidator {
         }
     }
 
-    public static void validateNumbersSize(List<String> numbers) {
+    public static void validateNumber(int number) {
+        if (number < 1) {
+            throw new IllegalArgumentException(LOWER_NUMBER.getMessage());
+        }
+
+        if (number > 45) {
+            throw new IllegalArgumentException(UPPER_NUMBER.getMessage());
+        }
+    }
+
+    public static void validateNumbersSize(List<?> numbers) {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException(NOT_MATCH_NUMBERS_SIZE.getMessage());
         }

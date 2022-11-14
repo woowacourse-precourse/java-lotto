@@ -1,5 +1,8 @@
 package lotto.domain;
 
+import static lotto.utils.validate.NumberValidator.validateNumber;
+import static lotto.utils.validate.NumberValidator.validateNumbersSize;
+
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -12,9 +15,18 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
-        if (numbers.size() != 6) {
-            throw new IllegalArgumentException();
+        List<Integer> distinctNumbers = getDistinctNumbers(numbers);
+        validateNumbersSize(distinctNumbers);
+
+        for (Integer number : distinctNumbers) {
+            validateNumber(number);
         }
+    }
+
+    private List<Integer> getDistinctNumbers(List<Integer> numbers) {
+        return numbers.stream()
+                .distinct()
+                .collect(Collectors.toList());
     }
 
     public int correctCount(List<Integer> winningLottoNumbers) {
@@ -39,9 +51,4 @@ public class Lotto {
                 .collect(Collectors.toList());
     }
 
-    public List<Integer> getNumbers() {
-        return numbers;
-    }
-
-    // TODO: 추가 기능 구현
 }
