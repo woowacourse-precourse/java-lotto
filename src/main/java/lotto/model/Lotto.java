@@ -41,6 +41,12 @@ public class Lotto {
         return Prize.toPrize(compareResult).getMoney();
     }
 
+    public boolean isWinningLotto(Prize prize, WinningNumbers winningNumbers) {
+        CompareResult compareResult = compareWith(winningNumbers);
+
+        return Prize.toPrize(compareResult) == prize;
+    }
+
     @Override
     public String toString() {
         StringBuilder result = new StringBuilder("[" + numbers.get(0));

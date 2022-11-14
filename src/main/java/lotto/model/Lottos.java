@@ -8,14 +8,17 @@ public class Lottos {
     public Lottos(List<Lotto> lottos) {
         this.lottos = lottos;
     }
-    public int getSize() {
-        return lottos.size();
-    }
 
     public int getWinningAmount(WinningNumbers winningNumbers) {
         return lottos.stream()
                 .mapToInt(lotto -> lotto.getWinningAmount(winningNumbers))
                 .sum();
+    }
+
+    public int countWinningLottos(Prize prize, WinningNumbers winningNumbers) {
+        return (int) lottos.stream()
+                .filter(lotto -> lotto.isWinningLotto(prize, winningNumbers))
+                .count();
     }
 
     @Override
