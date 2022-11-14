@@ -1,7 +1,9 @@
 package lotto;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import static camp.nextstep.edu.missionutils.Randoms.pickUniqueNumbersInRange;
 import static lotto.Validators.*;
 
 public class Lotto {
@@ -31,5 +33,14 @@ public class Lotto {
         validateNumbersRange(numbers);
     }
 
+    public static List<List<Integer>> generateLotteries(int lotteryQuantity) {
+        List<List<Integer>> lotteries = new ArrayList<>();
 
+        for (int i=lotteryQuantity; i>0; i--) {
+            List<Integer> lottery = pickUniqueNumbersInRange(RANGE_MIN, RANGE_MAX, LOTTERY_LENGTH);
+            lotteries.add(lottery);
+        }
+
+        return lotteries;
+    }
 }

@@ -1,5 +1,8 @@
 package lotto;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import static camp.nextstep.edu.missionutils.Console.readLine;
 import static lotto.Validators.*;
 
@@ -35,7 +38,9 @@ public class Application {
     public static void main(String[] args) {
         try {
             int budget = budgetUI();
+            int lotteryQuantity = budget / PRICE_PER_LOTTERY;
 
+            List<List<Integer>> lotteries = lotteriesUI(lotteryQuantity);
 
         } catch (IllegalArgumentException e) {
             System.out.println(Messages.EXCEPTION_HEADER.getMessage() + e.getMessage());
@@ -50,5 +55,27 @@ public class Application {
 
         int budget = Integer.parseInt(budgetFigure);
         return budget;
+    }
+
+    private static List<List<Integer>> lotteriesUI(int lotteryQuantity) {
+        System.out.println(lotteryQuantity + Messages.BOUGHT.getMessage());
+
+        List<List<Integer>> lotteries = Lotto.generateLotteries(lotteryQuantity);
+
+        printLotteries(lotteries);
+
+        return lotteries;
+    }
+
+    public static void printLotteries(List<List<Integer>> lotteries) {
+        for (List<Integer> lottery : lotteries) {
+            String ticket = String.join(
+                    Messages.DELIMITER.getMessage() + " ",
+                    lottery.stream()
+                            .map(number -> number.toString())
+                            .collect(Collectors.toList()));
+
+            System.out.println("[" + ticket + "]");
+        }
     }
 }
