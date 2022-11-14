@@ -7,21 +7,23 @@ import java.util.List;
 import java.util.stream.Collectors;
 import lotto.domain.Lotto;
 import lotto.domain.LottoConstant;
+import lotto.domain.Result;
+import lotto.domain.WinNumbers;
 
-public class LottoSeller {
+public class LottoService {
 
     private static final int LOTTO_PRICE = 1000;
 
-    private static LottoSeller instance;
+    private static LottoService instance;
 
-    private LottoSeller() {
+    private LottoService() {
     }
 
-    public static LottoSeller getInstance() {
+    public static LottoService getInstance() {
         if (instance == null) {
-            instance = new LottoSeller();
+            instance = new LottoService();
         }
-        return LottoSeller.instance;
+        return LottoService.instance;
     }
 
     public List<Lotto> sellLotto(long amount) {
@@ -54,5 +56,32 @@ public class LottoSeller {
             .stream()
             .sorted(Comparator.reverseOrder())
             .collect(Collectors.toList());
+    }
+
+    public List<Result> compareLottos(WinNumbers winNumbers, List<Lotto> lottos) {
+        return lottos
+            .stream()
+            .map(lotto -> compareLotto(winNumbers, lotto))
+            .collect(Collectors.toList());
+    }
+
+    private Result compareLotto(WinNumbers winNumbers, Lotto lotto) {
+        int matchCount = getMatchCount(winNumbers, lotto);
+        boolean hasBonusNumber = hasBonusNumber(winNumbers, lotto);
+
+        return Result.create(matchCount, hasBonusNumber);
+    }
+
+    private int getMatchCount(WinNumbers winNumbers, Lotto lotto) {
+        List<Integer> numbers = lotto.getNumbers();
+        return (int) numbers
+            .stream()
+            .filter(number -> winNumbers.getNumbers().contains(number))
+            .count();
+    }
+
+    private boolean hasBonusNumber(WinNumbers winNumbers, Lotto lotto) {
+        List<Integer> numbers = lotto.getNumbers();
+        return numbers.contains(winNumbers.getBonusNumber());
     }
 }
