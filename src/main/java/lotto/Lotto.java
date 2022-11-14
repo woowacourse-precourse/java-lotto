@@ -26,6 +26,18 @@ public class Lotto {
         System.out.print("]");
     }
 
+    public MatchDto calcMatches(List<Integer> winningNumbers, Integer bonusNumber){
+        int matchCount=0,lt=0,rt=0;
+        boolean bonusState=false;
+        while(lt < 6 && rt < 6){
+            if(Objects.equals(numbers.get(lt), bonusNumber)) bonusState = true;
+            if(Objects.equals(numbers.get(lt), winningNumbers.get(rt))) matchCount++;
+            if(numbers.get(lt) >= winningNumbers.get(rt)) rt++;
+            else if(numbers.get(lt) <= winningNumbers.get(rt)) lt++;
+        }
+        return MatchDto.of(matchCount, bonusState);
+    }
+
     public List<Integer> getNumbers() {
         return numbers;
     }
