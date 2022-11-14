@@ -9,19 +9,19 @@ public class Lottos {
 
     public Lottos() {
         this.lottos = new ArrayList<>();
-        this.lottoNumbersGenerator  = new LottoNumbersGenerator();
+        this.lottoNumbersGenerator = new LottoNumbersGenerator();
     }
 
     public void issueLottos(int purchaseAmount) {
         int lottoCount = purchaseAmount / 1000;
 
         for (int i = 0; i < lottoCount; i++) {
-            Lotto lotto = issueLotto();
+            Lotto lotto = new Lotto(lottoNumbersGenerator.getLottoNumbers());
             lottos.add(lotto);
         }
     }
-    private Lotto issueLotto() {
-        List<Integer> lottoNumbers = lottoNumbersGenerator.getLottoNumbers();
-        return new Lotto(lottoNumbers);
+
+    public List<Lotto> getLottos() {
+        return lottos;
     }
 }

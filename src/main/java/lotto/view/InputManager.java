@@ -1,4 +1,4 @@
-package lotto.ui;
+package lotto.view;
 
 import camp.nextstep.edu.missionutils.Console;
 
@@ -22,7 +22,7 @@ public class InputManager {
     private int convertIntoIntAmount(String inputAmount) {
         int intAmount;
         try {
-             intAmount = Integer.parseInt(inputAmount);
+            intAmount = Integer.parseInt(inputAmount);
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException();
         }
@@ -37,6 +37,7 @@ public class InputManager {
             throw new IllegalArgumentException();
         }
     }
+
     private void printInputMessagePurchaseAmount() {
         System.out.println(INPUT_MESSAGE_PURCHASE_AMOUNT);
     }
