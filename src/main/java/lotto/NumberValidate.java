@@ -18,10 +18,14 @@ public class NumberValidate {
         }
     }
 
-    public static void inRangeValidate(List<Integer> numbers) {
-        int max = Collections.max(numbers);
-        int min = Collections.min(numbers);
-        if (min < 1 || 45 < max) {
+    public static void numbersInRangeValidate(List<Integer> numbers) {
+        for (Integer number : numbers) {
+            inRangeValidate(number);
+        }
+    }
+
+    public static void inRangeValidate(int number) {
+        if (number < 1 || 45 < number) {
             throw new IllegalArgumentException("[ERROR] 1~45의 정수만 입력 할 수 있습니다.");
         }
     }
