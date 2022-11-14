@@ -49,10 +49,10 @@ class ApplicationTest extends NsTest {
 
     @Test
     void 예외_테스트() {
-        assertThatThrownBy(() -> {
+        assertSimpleTest(() -> {
             runException("1000j");
-        }).isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining(ERROR_MESSAGE);
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
     }
 
     @Override
