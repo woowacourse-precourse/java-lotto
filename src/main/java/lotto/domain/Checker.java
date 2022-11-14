@@ -4,8 +4,9 @@ import camp.nextstep.edu.missionutils.Console;
 
 import java.util.*;
 import java.util.Map.Entry;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+
+import static lotto.config.BaseValidation.INVALID_FORMAT;
+import static lotto.config.Constant.*;
 
 public class Checker {
 
@@ -18,7 +19,7 @@ public class Checker {
     private static final String FIVE_WINNING_ONE_BONUS = "5개 일치, 보너스 볼 일치 (30,000,000원) - ";
     private static final String SIX_WINNING = "6개 일치 (2,000,000,000원) - ";
     private static final String SHOW_RETURN_RATE_FRONT = "총 수익률은 ";
-    private static final String SHOW_RETURN_RATE_BACK = "입니다.";
+    private static final String SHOW_RETURN_RATE_BACK = "%입니다.";
 
     private List<Integer> winningNumbers = new ArrayList<>();
     private HashMap<Integer, Integer> winningStats = new HashMap<>() {{
@@ -30,26 +31,34 @@ public class Checker {
     }};
     private int bonusNumber;
     private int key;
-    private float returnRate;
-
-    public Checker() {
-        winningNumbers = new ArrayList<>();
-
-    }
+    private double returnRate;
 
     public void insertWinningNumbers() {
         System.out.println(INSERT_WINNING_NUMBER);
 
         String winningNumber = Console.readLine();
-        int[] numbers = Arrays.stream(winningNumber.split(",")).mapToInt(Integer::parseInt).toArray();
-        for (int number : numbers) {
-            winningNumbers.add(number);
+        try {
+            int[] numbers = Arrays.stream(winningNumber.split(",")).mapToInt(Integer::parseInt).toArray();
+
+            for (int number : numbers) {
+                winningNumbers.add(number);
+            }
+
+        } catch (Exception e) {
+            throw new IllegalArgumentException(INVALID_FORMAT.getMessage());
         }
+
     }
 
     public void insertBonusNumber() {
         System.out.println(INSERT_BONUS_NUMBER);
-        bonusNumber = Integer.parseInt(Console.readLine());
+
+        try {
+            bonusNumber = Integer.parseInt(Console.readLine());
+        } catch (Exception e) {
+            throw new IllegalArgumentException(INVALID_FORMAT.getMessage());
+        }
+
     }
 
     public List<Integer> getWinningNumbers() {
@@ -112,21 +121,54 @@ public class Checker {
             }
 
             if (entry.getKey() == 5) {
-                System.out.println(FIVE_WINNING  + entry.getValue());
+                System.out.println(FIVE_WINNING + entry.getValue());
             }
 
             if (entry.getKey() == 7) {
-                System.out.println(FIVE_WINNING_ONE_BONUS  + entry.getValue());
+                System.out.println(FIVE_WINNING_ONE_BONUS + entry.getValue());
             }
 
             if (entry.getKey() == 6) {
-                System.out.println(SIX_WINNING  + entry.getValue());
+                System.out.println(SIX_WINNING + entry.getValue());
             }
 
         }
+
     }
 
-    public float calculateRateOfReturn() {
+    public void calculateRateOfReturn(int payMoney) {
+
+        double sum = 0;
+
+        for (Entry<Integer, Integer> entry : winningStats.entrySet()) {
+
+            if (entry.getKey() == 3) {
+                sum += THREE_PRICE * entry.getValue();
+            }
+
+            if (entry.getKey() == 4) {
+                sum += FOUR_PRICE * entry.getValue();
+            }
+
+            if (entry.getKey() == 5) {
+                sum += FIVE_PRICE * entry.getValue();
+            }
+
+            if (entry.getKey() == 7) {
+                sum += FIVE_ONE_PRICE * entry.getValue();
+            }
+
+            if (entry.getKey() == 6) {
+                sum += SIX_PRICE * entry.getValue();
+            }
+
+        }
+
+        returnRate = (sum / payMoney) * 100;
+
+    }
+
+    public double getReturnRate() {
         return returnRate;
     }
 
