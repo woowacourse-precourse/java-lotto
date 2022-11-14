@@ -1,9 +1,10 @@
 package lotto.model;
 
+import java.util.Arrays;
 import java.util.List;
 
 public class Lotto {
-    private final List<Integer> numbers;
+    private List<Integer> numbers;
     private int bonusNumber;
 
     public Lotto(List<Integer> numbers) {
@@ -13,7 +14,7 @@ public class Lotto {
 
     private void validate(List<Integer> numbers) {
         if (numbers.stream().distinct().count() != 6) {
-            throw new IllegalArgumentException("[ERROR]");
+            throw new IllegalArgumentException();
         }
     }
 

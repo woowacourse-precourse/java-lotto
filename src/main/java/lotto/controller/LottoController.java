@@ -24,18 +24,23 @@ public class LottoController {
     }
 
     public void startLotto(){
-        inIt();
+        try {
+            inIt();
 
-        OutputView.printGameCount(user.getUserGameCnt());
-        randomNumbersController();
-        OutputView.printRandomNumbers(computer.getRandomNumbers());
+            OutputView.printGameCount(user.getUserGameCnt());
+            randomNumbersController();
+            OutputView.printRandomNumbers(computer.getRandomNumbers());
 
-        lotto=new Lotto(InputView.getLottoNumber());
-        lotto.setBonusNumber(InputView.getBonusNumber(lotto.getNumbers()));
+            lotto = new Lotto(InputView.getLottoNumber());
+            lotto.setBonusNumber(InputView.getBonusNumber(lotto.getNumbers()));
 
-        result.calculatorResult(computer.getRandomNumbers(),lotto.getNumbers(),lotto.getBonusNumber());
-        OutputView.printResult(result.getResultArray());
-        OutputView.printRateOfReturn(user.getUserPrice(),result.getPriceSum());
+            result.calculatorResult(computer.getRandomNumbers(), lotto.getNumbers(), lotto.getBonusNumber());
+            OutputView.printResult(result.getResultArray());
+            OutputView.printRateOfReturn(user.getUserPrice(), result.getPriceSum());
+        }
+        catch(IllegalArgumentException e){
+            System.out.println(e.getMessage());
+        }
     }
 
     private void inIt(){

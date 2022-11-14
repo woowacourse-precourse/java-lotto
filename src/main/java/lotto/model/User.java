@@ -12,6 +12,7 @@ public class User {
 
     public User() {
         userPrice=0;
+        userGameCnt=0;
     }
 
     public void setUserPrice(int userPrice) {
