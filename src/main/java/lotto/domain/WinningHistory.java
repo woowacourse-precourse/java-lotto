@@ -5,17 +5,22 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import static lotto.domain.WinningMoney.*;
+
 public class WinningHistory {
-    private Map<Integer,Integer> winningHistory; //등수,integer
+    private Map<WinningMoney,Integer> winningHistory; 
 
     public WinningHistory () {
         winningHistory = new HashMap<>();
-        for (int i = 1; i <= 5; i++) {
-            winningHistory.put(i, 0);
-        }
+        winningHistory.put(FIVE_THOUSAND, 0);
+        winningHistory.put(FIFTY_THOUSAND, 0);
+        winningHistory.put(ONE_MILLION_AND_A_HALF_MILLION, 0);
+        winningHistory.put(THIRTY_MILLION, 0);
+        winningHistory.put(TWO_BILLION, 0);
+
     }
 
-    public Map<Integer, Integer> getWinningHistory() {
+    public Map<WinningMoney, Integer> getWinningHistory() {
         return winningHistory;
     }
 
@@ -37,26 +42,29 @@ public class WinningHistory {
 
     private void saveWinningHistory(int count, int bonusNumber, Set<Integer> set) {
         if (count == 3) {
-            winningHistory.put(5, winningHistory.get(5) + 1);
+            winningHistory.put(FIVE_THOUSAND, winningHistory.get(FIVE_THOUSAND) + 1);
             return;
         }
         if (count == 4) {
-            winningHistory.put(4, winningHistory.get(4) + 1);
+            winningHistory.put(FIFTY_THOUSAND, winningHistory.get(FIFTY_THOUSAND) + 1);
             return;
         }
         if (count == 5) {
             if (set.contains(bonusNumber)) {
-                winningHistory.put(2, winningHistory.get(2) + 1);
+                winningHistory.put(THIRTY_MILLION, winningHistory.get(THIRTY_MILLION) + 1);
                 return;
             }
-            winningHistory.put(3, winningHistory.get(3) + 1);
+            winningHistory.put(ONE_MILLION_AND_A_HALF_MILLION, winningHistory.get(ONE_MILLION_AND_A_HALF_MILLION) + 1);
             return;
         }
         if (count == 6) {
-            winningHistory.put(1, winningHistory.get(1) + 1);
+            winningHistory.put(TWO_BILLION, winningHistory.get(TWO_BILLION) + 1);
             return;
         }
     }
 
 
+    public int calculateYield(int money) {
+        i
+    }
 }

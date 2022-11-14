@@ -5,21 +5,14 @@ import java.util.Set;
 public class BonusNumber {
     private int bonusNumber;
 
-    public void inputBonusNumber(String input, Set<Integer> winningNumber) {
+    public void inputBonusNumber(String input) {
         validateNumbers(input);
         bonusNumber = toInt(input);
         validateRange(bonusNumber);
-        validateUnique(bonusNumber, winningNumber);
     }
 
     private int toInt(String input) {
         return Integer.parseInt(input);
-    }
-
-    private void validateUnique(int bonusNumber, Set<Integer> winningNumber) {
-        if (winningNumber.contains(bonusNumber)) {
-            throw new IllegalArgumentException(Error.IS_NOT_UNIQUE.getMessage());
-        }
     }
 
     private void validateRange(int bonusNumber) {
@@ -32,5 +25,9 @@ public class BonusNumber {
         if (!str.chars().allMatch(Character::isDigit)) {
             throw new IllegalArgumentException(Error.IS_NOT_NUMBER.getMessage());
         }
+    }
+
+    public int getBonusNumber() {
+        return bonusNumber;
     }
 }
