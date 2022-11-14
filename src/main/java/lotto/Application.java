@@ -11,7 +11,7 @@ import java.util.List;
 public class Application {
 
     public static void main(String[] args) {
-        
+ 
     }
 
     // num개의 lotto를 발행하는 함수
@@ -64,4 +64,21 @@ public class Application {
     public static void revenuePrint(double useMoney, double revenue){
         System.out.printf(".%2f", revenue/useMoney);
     }
+
+    public static int lottoRank(Lotto lotto,Lotto winningLotto, int bonus){
+        int same = checkLottoSame(winningLotto, lotto);
+        if(same == 5){
+            List<Integer> nums = lotto.getNumbers();
+            if(nums.contains(bonus)){
+                return 2;
+            }
+            return 3;
+        }
+        if(same == 6){
+            return 1;
+        }
+        return 8 - same;
+    }
+
+
 }
