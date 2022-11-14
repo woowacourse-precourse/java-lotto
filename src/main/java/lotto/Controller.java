@@ -3,6 +3,7 @@ package lotto;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
+import java.util.EnumMap;
 import java.util.List;
 
 public class Controller {
@@ -12,12 +13,11 @@ public class Controller {
     Exception ex = new Exception();
     int inMoney;
     int bonus;
-    int[] list = new int[8];
     long result;
     String input;
     String[] str;
     List<Integer> lottoList = new ArrayList<>();
-
+    EnumMap<Money, Integer> map = new EnumMap<>(Money.class);
     void start() {
         try {
             inputStart();
@@ -37,13 +37,13 @@ public class Controller {
     }
 
     private void calculateResult() {
-        result = domain.checkWinningMoney(list);
+        result = domain.checkWinningMoney(map);
         view.printBenfit(inMoney, result);
     }
 
     private void checkWinning(Computer[] computers) {
-        domain.checkWinning(computers, list, lotto);
-        view.printResult(list);
+        domain.checkWinning(computers, map, lotto);
+        view.printResult(map);
     }
 
     private void inBonus() {

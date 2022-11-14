@@ -1,5 +1,7 @@
 package lotto;
 
+import java.util.EnumMap;
+
 public class View {
     final String Cost = "구입금액을 입력해 주세요.";
     final String Winning = "당첨 번호를 입력해 주세요.";
@@ -21,12 +23,11 @@ public class View {
         System.out.println(Bonus);
     }
 
-    void printResult(int[] list) {
-        int index = 7;
+    void printResult(EnumMap<Money,Integer> map) {
         System.out.println("당첨 통계");
         System.out.println("---");
         for (Money value : Money.values()) {
-            System.out.println(value.getMoneyString() + list[index--] + "개");
+            System.out.println(value.getMoneyString() + map.getOrDefault(value,0) + "개");
         }
     }
 
