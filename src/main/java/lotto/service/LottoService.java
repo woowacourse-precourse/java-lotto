@@ -17,8 +17,10 @@ public class LottoService {
     public void buyLotto() throws IllegalArgumentException  {
         lottoView.displayInputMoney();
         lottoMachine.inputMoney();
-        int numberOfLottoPurchases = lottoMachine.getNumberOfLottoPurchases();
-        lottoView.displayLottoAmount(numberOfLottoPurchases);
+        int lottoCount = lottoMachine.getLottoCount();
+        lottoView.displayLottoAmount(lottoCount);
+        lottoMachine.buyLottos(lottoCount);
+        lottoView.displayMyLottos(lottoMachine.getBuyLottos());
     }
 
     // 당첨 번호 입력하는 기능
