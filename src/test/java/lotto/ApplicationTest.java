@@ -129,6 +129,76 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    void 당첨번호입력_기능테스트() {
+        String input = "1,2,3,4,5,6";
+        OutputStream out = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(out));
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+        assertSimpleTest(() -> {
+            Lotto lotto = Application.pickLuckyNumber();
+            assertThat(lotto.getLottoNumbers()).isEqualTo(List.of(1, 2, 3, 4, 5, 6));
+        });
+    }
+
+    @Test
+    void 당첨번호입력_예외테스트_문자입력() {
+        String input = "1,2,3,4,5,ㅁ";
+        OutputStream out = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(out));
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+        assertThatThrownBy(() -> {
+            Lotto lotto = Application.pickLuckyNumber();
+        })
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("[ERROR] 숫자 이외의 값을 입력할 수 없습니다.");
+    }
+
+    @Test
+    void 당첨번호입력_예외테스트_범위외입력() {
+        String input = "1,2,3,4,5,99";
+        OutputStream out = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(out));
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+        assertThatThrownBy(() -> {
+            Lotto lotto = Application.pickLuckyNumber();
+        })
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("[ERROR] 1~45 범위를 벗어나는 값을 입력할 수 없습니다.");
+    }
+
+    @Test
+    void 당첨번호입력_예외테스트_중복입력() {
+        String input = "1,2,3,4,5,5";
+        OutputStream out = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(out));
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+        assertThatThrownBy(() -> {
+            Lotto lotto = Application.pickLuckyNumber();
+        })
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("[ERROR] 중복된 숫자를 입력할 수 없습니다.");
+    }
+
+    @Test
+    void 당첨번호입력_예외테스트_6개미만입력() {
+        String input = "1,2,3,4,5";
+        OutputStream out = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(out));
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+        assertThatThrownBy(() -> {
+            Lotto lotto = Application.pickLuckyNumber();
+        })
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("보너스 번호를 제외한 로또 번호는 6개를 입력해야 합니다.");
+    }
+
+
+    @Test
     void 예외_테스트() {
         assertSimpleTest(() -> {
             runException("1000j");
