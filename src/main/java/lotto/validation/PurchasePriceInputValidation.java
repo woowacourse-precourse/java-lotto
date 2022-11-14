@@ -1,6 +1,8 @@
 package lotto.validation;
 
 public class PurchasePriceInputValidation {
+    public static final int PRICE_OF_LOTTO = 1000;
+
     public void validate(String inputPurchasePrice) {
         validateConsistedOnlyOfNumbers(inputPurchasePrice);
         validateDividedByThousand(inputPurchasePrice);
@@ -17,8 +19,8 @@ public class PurchasePriceInputValidation {
     public void validateDividedByThousand(String inputPurchasePrice) {
         int purchasePrice = Integer.parseInt(inputPurchasePrice);
 
-        if (purchasePrice % 1000 != 0) {
-            throw new IllegalArgumentException("[ERROR] 구입금액은 1000으로 나누어떨어져야 합니다.");
+        if (purchasePrice % PRICE_OF_LOTTO != 0) {
+            throw new IllegalArgumentException("[ERROR] 구입금액은" + PRICE_OF_LOTTO + "으로 나누어떨어져야 합니다.");
         }
     }
 }
