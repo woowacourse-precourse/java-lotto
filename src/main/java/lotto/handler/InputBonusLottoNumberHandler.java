@@ -3,7 +3,8 @@ package lotto.handler;
 import java.util.List;
 
 public class InputBonusLottoNumberHandler{
-    private static final int BONUS_COUNT = 1;
+    private static final int BONUS_UNITS_COUNT = 1;
+    private static final int BONUS_TENS_COUNT = 2;
     InputMoneyHandler inputMoneyHandler = new InputMoneyHandler();
     public void checkAllNumbersException(String bonusNumber, List<Integer> sixLottoNumbers) {
         if(sixLottoNumbers.contains(Integer.parseInt(bonusNumber))) {
@@ -22,7 +23,7 @@ public class InputBonusLottoNumberHandler{
     }
 
     private void checkSize(String bonusNumber) {
-        if(bonusNumber.length() != BONUS_COUNT){
+        if(bonusNumber.length() > BONUS_TENS_COUNT || bonusNumber.length() < BONUS_UNITS_COUNT){
             throw new IllegalArgumentException(inputMoneyHandler.ERROR_ORDER);
         }
     }
