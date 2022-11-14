@@ -23,6 +23,7 @@ public class Output {
 		System.out.printf(PRINT_PURCHASE_COUNT + "\n", lotteries.size());
 		for (Lotto lotto : lotteries) {
 			List<Integer> copiedLottoNumbers = new ArrayList<>(lotto.getNumbers());
+			Collections.sort(copiedLottoNumbers);
 			System.out.println(copiedLottoNumbers.toString());
 		}
 		System.out.println();
