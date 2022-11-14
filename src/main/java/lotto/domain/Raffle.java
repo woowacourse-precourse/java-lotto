@@ -1,6 +1,7 @@
 package lotto.domain;
 
 import camp.nextstep.edu.missionutils.Console;
+import lotto.ui.Message;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,6 +9,7 @@ import java.util.List;
 public class Raffle {
 
     public String inputWinningNumber() {
+        System.out.println(Message.INPUT_WINNING);
         String userInput = Console.readLine();
         return userInput;
     }
