@@ -5,9 +5,9 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-class RaffleCounterTest {
+class RaffleMachineTest {
 
-    RaffleCounter raffleCounter = new RaffleCounter();
+    RaffleMachine raffleMachine = new RaffleMachine();
 
     @Test
     void 로또_당첨_숫자_측정() {
@@ -15,7 +15,7 @@ class RaffleCounterTest {
         List<Integer> winningNumbers = List.of(1, 2, 3, 4, 5, 6);
         int bonusNumber = 7;
 
-        Integer winnerResult = raffleCounter.countWinner(lotto, winningNumbers, bonusNumber);
+        Integer winnerResult = raffleMachine.countWinner(lotto, winningNumbers, bonusNumber);
 
         Assertions.assertThat(winnerResult).isEqualTo(1);
     }

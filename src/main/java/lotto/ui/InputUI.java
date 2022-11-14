@@ -14,10 +14,6 @@ public class InputUI {
     Validator validator = new Validator();
     OutputUI outputUI = new OutputUI();
 
-    public InputUI() {
-
-    }
-
     public int getMoney() {
         outputUI.printMessage(MONEY_INPUT_MESSAGE);
         String money = Console.readLine();

@@ -6,10 +6,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class RaffleCounter {
-
-    public RaffleCounter() {
-    }
+public class RaffleMachine {
 
     public List<Integer> getResultOfLottos(List<Lotto> lottos, List<Integer> normalNumbers, Integer bonusNumbers) {
         List<Integer> resultOfLottos = new ArrayList<>(Arrays.asList(0,0,0,0,0,0));
