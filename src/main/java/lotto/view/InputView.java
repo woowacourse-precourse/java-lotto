@@ -13,7 +13,7 @@ public enum InputView {
 		this.message = message;
 	}
 
-	public String getMessage() {
+	public String scanInput() {
 		System.out.println(message);
 		return Console.readLine();
 	}
