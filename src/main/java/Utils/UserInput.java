@@ -2,6 +2,9 @@ package Utils;
 
 import camp.nextstep.edu.missionutils.Console;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class UserInput {
 
     // 사용자 입력 받기
@@ -29,5 +32,15 @@ public class UserInput {
         }
     }
 
+    // 입력되는 당첨번호가 형식에 맞는지 유효성 검사
+    private void validateInputLottoNumbers(String userInput) {
+        String lottoNumbersPattern = "^(\\d,\\d,\\d,\\d,\\d,\\d)$";
+        Pattern pattern = Pattern.compile(lottoNumbersPattern);
+        Matcher matcher = pattern.matcher(userInput);
+
+        if(!matcher.matches()){
+            throw new IllegalArgumentException("[ERROR] 형식에 맞게 입력해주세요. 번호는 쉼표(,)를 기준으로 구분합니다.");
+        }
+    }
 
 }
