@@ -1,5 +1,7 @@
 package lotto.domain;
 
+import static lotto.Config.WINNING_RANK_AMOUNT;
+
 import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
 import lotto.Lotto;
@@ -60,8 +62,7 @@ public class Controller {
         });
     }
 
-    private List<Integer> calculateWonLotto(List<Lotto> lottos) {
-        return null;
+    private void printCalculateWonLotto(List<Lotto> lottos, List<Lotto> wonLotto, List<Integer> bonusLotto) {
     }
 
     private void printWonLotto(List<Integer> rankCounts) {
