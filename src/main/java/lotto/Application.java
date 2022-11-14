@@ -12,6 +12,7 @@ public class Application {
         // TODO: 프로그램 구현
         System.out.println("구입 금액을 입력해주세요.");
         String purchaseAmount_ = Console.readLine();
+        System.out.println();
 
         try {
             if (!isNumeric(purchaseAmount_))
@@ -27,9 +28,11 @@ public class Application {
         try {
             if (purchaseAmount % 1000 != 0)
                 throw new IllegalArgumentException();
+
         } catch (IllegalArgumentException e) {
             System.out.println(ERROR_MESSAGE + "구입 금액은 1000원 단위여야 합니다.");
         }
+
 
         LottoGenerator generator = new LottoGenerator();
         Lotto[] mylottos = generator.buyLottos(lottoQuantity);
@@ -38,10 +41,13 @@ public class Application {
         for (Lotto lotto : mylottos) {
             System.out.println(lotto.toString());
         }
+        System.out.println();
 
         System.out.println("당첨 번호를 입력해 주세요.");
         int[] winningNumber_ = Arrays.stream(Console.readLine().split(",")).mapToInt(Integer::parseInt).toArray();
         List<Integer> winningNumber = Arrays.stream(winningNumber_).boxed().collect(Collectors.toList());
+        Lotto winngLotto = new Lotto(winningNumber);
+        System.out.println();
 
         System.out.println("보너스 번호를 입력해 주세요.");
         int bonusNumber = Integer.parseInt(Console.readLine());
@@ -55,7 +61,8 @@ public class Application {
             earnings += rank.getPrize();
         }
         double earningsRate = earnings / (double) purchaseAmount * 100;
-
+        System.out.println();
+        
         System.out.println("당첨 통계");
         System.out.println("---");
         for (int i = 4; i >= 0; i--) {
@@ -72,6 +79,5 @@ public class Application {
         }
         return true;
     }
-
 
 }
