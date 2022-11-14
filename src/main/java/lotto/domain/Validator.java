@@ -58,9 +58,16 @@ public class Validator {
     }
 
     public static void validateBonus(String number, Lotto winningLotto) {
-        isNumber(number);
+        isOneNumber(number);
         isNumberInRange(number);
         isDistinctBonus(number, winningLotto);
+    }
+
+    private static void isOneNumber(String number) {
+        String pattern = "^[0-9]*$";
+        if (!number.matches(pattern)) {
+            throw new IllegalArgumentException(ErrorMessage.ONLY_ONE_NUMBER_POSSIBLE.getMessage());
+        }
     }
 
     private static void isDistinctBonus(String number, Lotto winningLotto) {
