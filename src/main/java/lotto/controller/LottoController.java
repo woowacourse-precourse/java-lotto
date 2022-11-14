@@ -28,28 +28,43 @@ public class LottoController {
 
     public void start() {
         try {
-            String purchasingAmountInput = inputView.inputPurchasingAmount();
-            validatePurchasingAmount(purchasingAmountInput);
-            int purchasingAmount = Integer.parseInt(purchasingAmountInput);
+            int purchasingAmount = inputPurchasingAmount();
 
             List<Lotto> issuedLotteries = lottoService.issueLotto(purchasingAmount);
             outputView.outputLotto(issuedLotteries);
 
-            String luckyNumberInput = inputView.inputLuckyNumber();
-            validateLuckyNumber(luckyNumberInput);
-            List<Integer> luckyNumber = converter.convertToLuckyNumber(luckyNumberInput);
+            List<Integer> luckyNumber = inputLuckyNumber();
+            String bonusNumberInput = inputBonusNumber(luckyNumber);
 
-            String bonusNumberInput = inputView.inputBonusNumber();
-            validateBonusNumber(luckyNumber, bonusNumberInput);
-
-            WinningNumber winningNumber = new WinningNumber(new Lotto(luckyNumber), Integer.parseInt(bonusNumberInput));
-            HashMap<Integer, Integer> result = winningNumber.checkLotto(issuedLotteries);
+            HashMap<Integer, Integer> result = checkLotto(issuedLotteries, luckyNumber, bonusNumberInput);
             outputView.outputWinningStatistics(result);
-
             outputView.outputEarningRate(lottoService.getEarningRate(purchasingAmount, lottoService.getEarning(result)));
         } catch (IllegalArgumentException exception) {
             System.out.println(exception.getMessage());
         }
+    }
+
+    private String inputBonusNumber(List<Integer> luckyNumber) {
+        String bonusNumberInput = inputView.inputBonusNumber();
+        validateBonusNumber(luckyNumber, bonusNumberInput);
+        return bonusNumberInput;
+    }
+
+    private HashMap<Integer, Integer> checkLotto(List<Lotto> issuedLotteries, List<Integer> luckyNumber, String bonusNumberInput) {
+        WinningNumber winningNumber = new WinningNumber(new Lotto(luckyNumber), Integer.parseInt(bonusNumberInput));
+        return winningNumber.checkLotto(issuedLotteries);
+    }
+
+    private List<Integer> inputLuckyNumber() {
+        String luckyNumberInput = inputView.inputLuckyNumber();
+        validateLuckyNumber(luckyNumberInput);
+        return converter.convertToLuckyNumber(luckyNumberInput);
+    }
+
+    private int inputPurchasingAmount() {
+        String purchasingAmountInput = inputView.inputPurchasingAmount();
+        validatePurchasingAmount(purchasingAmountInput);
+        return Integer.parseInt(purchasingAmountInput);
     }
 
     private void validateBonusNumber(List<Integer> luckyNumber, String bonusNumber) {
