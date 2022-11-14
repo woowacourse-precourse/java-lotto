@@ -10,18 +10,20 @@ import static util.Constant.DEFAULT_ZERO;
 
 public enum LottoRank {
 
-    FIRST(6, 2_000_000_000),
-    SECOND(5, 30_000_000),
-    THIRD(5, 1_500_000),
-    FOURTH(4, 50_000),
-    FIFTH(3, 5_000),
-    LOSING_TICKET(0, 0);
+    FIRST(6, false, 2_000_000_000),
+    SECOND(5, true, 30_000_000),
+    THIRD(5, false, 1_500_000),
+    FOURTH(4, false, 50_000),
+    FIFTH(3, false, 5_000),
+    LOSING_TICKET(0, false, 0);
 
-    private int sameCount;
-    private int prizeMoney;
+    private final int sameCount;
+    private final boolean needBonusBall;
+    private final int prizeMoney;
 
-    LottoRank(int sameCount, int prizeMoney) {
+    LottoRank(int sameCount, boolean isNeedBonusBall, int prizeMoney) {
         this.sameCount = sameCount;
+        this.needBonusBall = isNeedBonusBall;
         this.prizeMoney = prizeMoney;
     }
 
@@ -50,6 +52,10 @@ public enum LottoRank {
 
     public int getSameCount() {
         return sameCount;
+    }
+
+    public boolean isNeedBonusBall() {
+        return needBonusBall;
     }
 
     public int getPrizeMoney() {

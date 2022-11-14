@@ -18,8 +18,8 @@ public class MoneyInput {
 
         try {
             money = Integer.parseInt(input);
-        } catch (IllegalArgumentException e) {
-            System.out.println(ExceptionMessage.NOT_MONEY_FORMAT);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException(ExceptionMessage.NOT_MONEY_FORMAT);
         }
 
         return money;

@@ -8,12 +8,7 @@ import java.text.DecimalFormat;
 import java.util.List;
 import java.util.Map;
 
-import static util.Constant.LINE_SEPARATOR;
-import static util.Constant.SAMES_FORMAT;
-import static util.Constant.OPEN_BRACKET;
-import static util.Constant.CLOSE_BRACKET;
-import static util.Constant.HYPHEN_WITH_SPACE;
-import static util.Constant.KOREA_BASICS_UNIT;
+import static util.Constant.*;
 import static util.LottoMessage.PROFIT_INFO;
 import static util.LottoMessage.PERCENTAGE;
 import static util.LottoMessage.SUFFIX;
@@ -50,15 +45,14 @@ public class ResultView {
         LottoRank.getAscendRank()
                 .forEach(rank -> {
                     int sameCount = rank.getSameCount();
-                    String outputLine =
-                            String.format(SAMES_FORMAT, sameCount) +
-                                    OPEN_BRACKET +
-                                    moneyFormat.format(rank.getPrizeMoney()) +
-                                    CLOSE_BRACKET +
-                                    HYPHEN_WITH_SPACE +
-                                    result.getOrDefault(rank, 0) +
-                                    KOREA_BASICS_UNIT;
+                    String outputLine = String.format(SAMES_FORMAT, sameCount);
 
+                    if (rank.isNeedBonusBall()) {
+                        outputLine += SAME_BONUS_BALL;
+                    }
+                    outputLine += OPEN_BRACKET + moneyFormat.format(rank.getPrizeMoney()) + KOREA_MONEY_UNIT +
+                            CLOSE_BRACKET + HYPHEN_WITH_SPACE + result.getOrDefault(rank, DEFAULT_ZERO) +
+                            KOREA_BASICS_UNIT;
                     System.out.println(outputLine);
                 });
     }
