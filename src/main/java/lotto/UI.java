@@ -14,4 +14,9 @@ public class UI {
         return readLine();
     }
 
+    public String inputBonusNumber() {
+        System.out.println(Notice.INPUT_BONUS_NUMBER.message());
+        return readLine();
+    }
+
 }
