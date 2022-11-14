@@ -2,7 +2,7 @@
 ## Buyer
 - [x] 로또 구입 금액 저장
 - [x] 1000원 단위인지 확인, 예외시 Exception
-- [ ] 0원 보다 작은지 확인, 예외시 Exception
+- [x] 0원 보다 작은지 확인, 예외시 Exception
 
 ## Buyer Generate
 - [ ] 로또 구입 금액 ask 출력
