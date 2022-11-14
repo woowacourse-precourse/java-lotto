@@ -1,5 +1,6 @@
 package lotto;
 
+import java.io.Console;
 import java.util.List;
 
 public class User {
@@ -19,6 +20,16 @@ public class User {
 
   public void setBuyCount() {
     this.buyCount = buyAmount / Lotto.PRICE;
+  }
+
+  public void setUserLottoList(List<Lotto> userLottoList) {
+    this.userLottoList = userLottoList;
+  }
+
+  public void printUserLottoList(){
+    for (Lotto lotto : userLottoList) {
+      System.out.println(lotto.getLottoString());
+    }
   }
 
   private void checkValidBuyAmount(int buyAmount) {
