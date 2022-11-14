@@ -3,6 +3,7 @@ package lotto;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import lotto.domain.lotto.domain.Lotto;
 import lotto.domain.lotto.presentation.LottoController;
+import lotto.global.util.Util;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -15,6 +16,7 @@ import java.util.List;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomUniqueNumbersInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class ApplicationTest extends NsTest {
@@ -81,7 +83,20 @@ class ApplicationTest extends NsTest {
         Double benefit = lottoController.compareNumbers(lottos, prizeLotto, bonusNumber);
 
         // then
-        Assertions.assertEquals(benefit, 50000.00);
+        assertEquals(benefit, 50000.00);
+    }
+
+    @DisplayName("로또 숫자 입력시 오름차순 정렬이 되야한다.")
+    @Test
+    void test() {
+        // given
+        List<Integer> numbers = new ArrayList<>(List.of(6, 5, 4, 3, 2, 1));
+
+        // when
+        List<Integer> orderByAscNumbers = Util.orderByDescForList(numbers);
+
+        // then
+        assertEquals(orderByAscNumbers, List.of(1, 2, 3, 4, 5, 6));
     }
 
     @Override
