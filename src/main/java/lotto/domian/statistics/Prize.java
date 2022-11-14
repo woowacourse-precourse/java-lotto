@@ -40,11 +40,18 @@ public enum Prize {
     private static final Map<Prize, Integer> BY_PRICE =
             Stream.of(values()).collect(Collectors.toMap(Function.identity(), Prize::price));
 
+    private static final Map<Prize, String> BY_PHRASE =
+            Stream.of(values()).collect(Collectors.toMap(Function.identity(), Prize::phrase));
+
     public static Integer getGradeNum(Prize grade) {
         return BY_GRADENUM.get(grade);
     }
 
     public static Integer getPrice(Prize grade) {
         return BY_PRICE.get(grade);
+    }
+
+    public static String getPhrase(Prize grade) {
+        return BY_PHRASE.get(grade);
     }
 }
