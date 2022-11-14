@@ -7,4 +7,6 @@ public interface ValidatorProcessor {
     void validateMoney(Integer money, PriceEnum priceEnum);
 
     List<Integer> validateLottoNumberInput(String input);
+
+    void validateLottoSize(Integer size, LottoEnum lottoEnum);
 }

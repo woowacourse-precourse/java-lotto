@@ -54,4 +54,4 @@
 13. [ ] (LottoFacade): 당첨번호를 등록하는 기능과 테스트
 14. [ ] (LottoProcessor): 로또번호를 생성하는 기능과 테스트
 15. [x] (ValidatorProcessor): 번호 입력 예외를 처리하는 기능과 테스트
-16. [ ] (ValidatorProcessor): 번호 개수 예외를 처리하는 기능과 테스트
+16. [x] (ValidatorProcessor): 번호 개수 예외를 처리하는 기능과 테스트

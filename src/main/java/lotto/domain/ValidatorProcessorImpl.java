@@ -23,4 +23,11 @@ public class ValidatorProcessorImpl implements ValidatorProcessor{
             throw new IllegalArgumentException("잘못된 입력값 입니다.");
         }
     }
+
+    @Override
+    public void validateLottoSize(Integer size, LottoEnum lottoEnum) {
+        if (size != lottoEnum.getSize()){
+            throw new IllegalArgumentException("입력 길이가 다릅니다.");
+        }
+    }
 }
