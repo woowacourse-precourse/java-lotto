@@ -37,7 +37,6 @@ public class Lotto {
             if (container.contains(number)) {
                 throw new IllegalArgumentException();
             }
-
             container.add(number);
         }
     }
