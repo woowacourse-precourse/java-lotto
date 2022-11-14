@@ -8,6 +8,9 @@ package lotto.domain;
  * 5. Lotto의 패키지 변경은 가능하다.
  */
 
+import lotto.validate.LottoValidate;
+
+import java.util.Comparator;
 import java.util.List;
 
 public class Lotto {
@@ -15,16 +18,17 @@ public class Lotto {
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
+
+        // 오름차순 정렬
+        numbers.sort(Comparator.naturalOrder());
+
         this.numbers = numbers;
     }
 
     private void validate(List<Integer> numbers) {
-        if (numbers.size() != 6) {
-            throw new IllegalArgumentException();
-        }
+        new LottoValidate().validate(numbers);
     }
     // TODO: 추가 기능 구현
-
     public List<Integer> getNumbers(){
         return this.numbers;
     }
