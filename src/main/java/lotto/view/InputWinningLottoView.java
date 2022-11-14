@@ -20,19 +20,11 @@ public class InputWinningLottoView extends InputView {
 
     private void validate(String inputValue) {
         validateInput(inputValue);
-        validateRangeNumbers(inputValue);
     }
 
     private void validateInput(String inputValue) {
         if (!PATTERN.matcher(inputValue).matches()) {
             throw new InvalidLottoInputFormatException();
         }
-    }
-
-    private void validateRangeNumbers(String inputValue) {
-        List<Integer> numbers = Stream.of(inputValue.split(","))
-                .map(Integer::parseInt)
-                .collect(Collectors.toList());
-        numbers.forEach(this::validateRange);
     }
 }

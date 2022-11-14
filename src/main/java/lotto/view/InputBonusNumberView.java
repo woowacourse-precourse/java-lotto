@@ -17,7 +17,6 @@ public class InputBonusNumberView extends InputView {
 
     private void validate(String inputValue) {
         validateFormat(inputValue);
-        validateRange(Integer.parseInt(inputValue));
     }
 
     private void validateFormat(String inputValue) {
