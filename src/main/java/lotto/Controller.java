@@ -18,6 +18,7 @@ public class Controller {
     String[] str;
     List<Integer> lottoList = new ArrayList<>();
     EnumMap<Money, Integer> map = new EnumMap<>(Money.class);
+
     void start() {
         try {
             startMoney();

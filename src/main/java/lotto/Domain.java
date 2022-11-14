@@ -16,7 +16,7 @@ public class Domain {
     }
 
     Money WinningKey(int count) {
-        if (count>=3) return Money.valueOf(Ranking[Math.abs(count-7)]);
+        if (count >= 3) return Money.valueOf(Ranking[Math.abs(count - 7)]);
         return Money.notThing;
     }
 
