@@ -26,4 +26,9 @@ public class LottoController {
     public void inputBonusNumber(){
         lottoSystemService.setBonusLottoNumbers();
     }
+
+    public List<String> printStatistics(){
+        lottoSystemService.setTotal();
+        return lottoSystemService.getTotal();
+    }
 }
