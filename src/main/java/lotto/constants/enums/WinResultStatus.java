@@ -1,5 +1,7 @@
 package lotto.constants.enums;
 
+import java.util.List;
+
 public enum WinResultStatus {
     FIRST(6, 2_000_000_000),
     SECOND(7, 30_000_000),
@@ -32,8 +34,8 @@ public enum WinResultStatus {
         return FIFTH;
     }
 
-    public int getWinCount() {
-        return winCount;
+    public static List<WinResultStatus> getWinResultStatuses() {
+        return List.of(FIFTH, FOURTH, THIRD, SECOND, FIRST);
     }
 
     public long getPrizeMoney() {
