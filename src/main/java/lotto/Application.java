@@ -37,7 +37,7 @@ public class Application {
 
         // 예외처리 필요
         int bonusNumber = Integer.parseInt(inputBonusNumber);
-
+        List<Integer> ranking = rank(lottos, winningLotto, bonusNumber);
     }
 
     public static void validate(int money) {
@@ -72,6 +72,32 @@ public class Application {
         for (String number : numbers) {
             result.add(Integer.parseInt(number.trim()));
         }
+
+        return result;
+    }
+
+    public static List<Integer> rank(List<Lotto> lottos, Lotto winningLotto, int bonusNumber) {
+        List<Integer> result = new ArrayList<>();
+        int first = 0, second = 0, third = 0, forth = 0, fifth = 0;
+
+        for (Lotto lotto : lottos) {
+            if (lotto.countSameNumber(winningLotto, bonusNumber) == 3)
+                fifth++;
+            else if (lotto.countSameNumber(winningLotto, bonusNumber) == 4)
+                forth++;
+            else if (lotto.countSameNumber(winningLotto, bonusNumber) == 5)
+                third++;
+            else if (lotto.countSameNumber(winningLotto, bonusNumber) == 6)
+                first++;
+            else if (lotto.countSameNumber(winningLotto, bonusNumber) == 7)
+                second++;
+        }
+
+        result.add(first);
+        result.add(second);
+        result.add(third);
+        result.add(forth);
+        result.add(fifth);
 
         return result;
     }
