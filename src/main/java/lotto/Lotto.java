@@ -3,6 +3,7 @@ package lotto;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
+import java.util.StringTokenizer;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
@@ -28,6 +29,7 @@ public class Lotto {
     }
 
     public void validatePayment(String payment) {
+
         if (!payment.matches("^[0-9]*$")) {
             throw new IllegalArgumentException("[ERROR] 숫자만 입력해주세요.");
         }
@@ -115,4 +117,24 @@ public class Lotto {
         return Console.readLine();
     }
 
+    public List<Integer> inputLottoNumber() {
+        StringTokenizer st = new StringTokenizer(Console.readLine(), ",");
+        List<Integer> winningLottoNumber = new ArrayList<>();
+        for (int i = 0; i < 6; i++) {
+            String currentDigit = st.nextToken();
+
+            checkIfTheInputIsInteger(currentDigit);
+
+            winningLottoNumber.add(Integer.parseInt(currentDigit));
+
+        }
+
+        return winningLottoNumber;
+    }
+
+    public void checkIfTheInputIsInteger(String digit) {
+        if (!digit.matches("^[0-9]*$")) {
+            throw new IllegalArgumentException("[ERROR] 숫자만 입력해주세요.");
+        }
+    }
 }
