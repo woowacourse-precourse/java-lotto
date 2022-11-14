@@ -7,9 +7,8 @@ import java.util.stream.Collectors;
 
 public class Input {
 
-    public int inputMoney() {
-        String input = Console.readLine();
-        return Integer.parseInt(input);
+    public String inputMoney() {
+        return Console.readLine();
     }
 
     public List<Integer> inputWinningNumber() {
