@@ -24,6 +24,10 @@ public class LottoWinningNumbers {
 	}
 
 	public int countMatchedWinningNumber(final LottoTicket lottoTicket) {
+		System.out.println((int) this.winningNumbers
+				.stream()
+				.filter(lottoTicket::contains)
+				.count());
 		return (int) this.winningNumbers
 				.stream()
 				.filter(lottoTicket::contains)

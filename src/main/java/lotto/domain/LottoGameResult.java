@@ -6,10 +6,12 @@ import java.util.Map;
 public class LottoGameResult {
 	private final Map<Rank, Integer> matchingResults;
 
-	private Money money;
+	private final Money money;
 	
-	public LottoGameResult(final Map<Rank, Integer> matchingResults) {
+	public LottoGameResult(final Map<Rank, Integer> matchingResults,
+			final Money money) {
 		this.matchingResults = new EnumMap<>(matchingResults);
+		this.money = money;
 	}
 
 	public Map<Rank, Integer> getRanks() {

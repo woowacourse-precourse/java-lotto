@@ -14,6 +14,7 @@ public class LottoGame {
 
 	public LottoGame(final LottoTickets lottoTickets,
 			final LottoWinningNumbers lottoWinningNumbers) {
+		System.out.println("LottoGame생성자:"+lottoTickets);
 		this.lottoTickets = lottoTickets;
 		this.lottoWinningNumbers = lottoWinningNumbers;
 	} 

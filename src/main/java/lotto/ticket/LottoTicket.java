@@ -1,17 +1,15 @@
 package lotto.ticket;
 
 import java.util.Collections;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class LottoTicket {
-	private final Set<Integer> lottoNumbers;
+	private final List<Integer> lottoNumbers;
 
     public LottoTicket() {
-        this.lottoNumbers = new HashSet<>();
+        this.lottoNumbers = getLottoNumbers();
     }
 
     public List<Integer> getLottoNumbers() {
@@ -23,4 +21,10 @@ public class LottoTicket {
     public boolean contains(int lottoNumber) {
         return lottoNumbers.contains(lottoNumber);
     }
+
+	public String toString() {
+		return lottoNumbers.toString();
+	}
+    
+    
 }
