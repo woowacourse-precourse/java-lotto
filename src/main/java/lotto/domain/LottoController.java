@@ -38,14 +38,16 @@ public class LottoController {
         try {
             return Integer.parseInt(cost_str);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("[ERROR]");
+            throw new IllegalArgumentException(Message.Exception_NotInteger.getMessage());
         }
     }
 
     public int cost2count(int cost) {
         int count = cost / 1000;
-        if (cost % 1000 != 0 || count <= 0)
-            throw new IllegalArgumentException("[ERROR]");
+        if (cost % 1000 != 0)
+            throw new IllegalArgumentException(Message.Exception_Not1000unit.getMessage());
+        if(count <= 0)
+            throw new IllegalArgumentException(Message.Exception_NegativeNum.getMessage());
         System.out.println("\n" + count + "개를 구매했습니다.");
         return count;
     }
@@ -60,7 +62,7 @@ public class LottoController {
                 int num = Integer.parseInt(num_str);
                 lottoNumber.add(num);
             } catch (NumberFormatException e) {
-                throw new IllegalArgumentException("[ERROR]");
+                throw new IllegalArgumentException(Message.Exception_NotInteger.getMessage());
             }
         }
         return new Lotto(lottoNumber);
@@ -72,12 +74,12 @@ public class LottoController {
         try {
             int bonus_num = Integer.parseInt(bonus_str);
             if (bonus_num < 1 && bonus_num > 45)
-                throw new IllegalArgumentException("[ERROR]");
+                throw new IllegalArgumentException(Message.Exception_NotInRange.getMessage());
             if (isBonusDuplicate(bonus_num, lotto))
-                throw new IllegalArgumentException("[ERROR]");
+                throw new IllegalArgumentException(Message.Exception_DuplicateNum.getMessage());
             return bonus_num;
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("[ERROR]");
+            throw new IllegalArgumentException(Message.Exception_NotInteger.getMessage());
         }
     }
     private boolean isBonusDuplicate(int num, Lotto lotto) {

@@ -46,8 +46,8 @@ public class LottoBundle {
 
     private Lotto createOneLotto() {
         List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
-        List<Integer> numberlist = new ArrayList<>(numbers);
-        Collections.sort(numberlist);
-        return new Lotto(numberlist);
+        List<Integer> numbers_clone = new ArrayList<>(numbers);
+        Collections.sort(numbers_clone);
+        return new Lotto(numbers_clone);
     }
 }
