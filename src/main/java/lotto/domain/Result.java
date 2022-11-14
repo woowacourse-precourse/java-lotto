@@ -7,7 +7,8 @@ public enum Result {
     FOUR("4개 일치", "50,000", 40),
     FIVE("5개 일치", "1,500,000", 50),
     FIVEWITHBONUS("5개 일치, 보너스 볼 일치", "30,000,000", 51),
-    SIX("6개 일치", "2,000,000,000", 60);
+    SIX("6개 일치", "2,000,000,000", 60),
+    NOTING("꽝", "0", 0);
 
     private final String message;
     private final String money;
@@ -31,6 +32,6 @@ public enum Result {
         return Arrays.stream(Result.values())
                 .filter(result -> result.score == score)
                 .findAny()
-                .orElseThrow(() -> new IllegalArgumentException("[ERROR] 점수 계산이 잘못되었습니다."));
+                .orElse(NOTING);
     }
 }
