@@ -3,13 +3,9 @@ package lotto.domain.seller;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-import java.util.ArrayList;
 import java.util.List;
 import lotto.domain.lotto.Lotto;
-import lotto.domain.lotto.LottoGenerator;
 import lotto.domain.lotto.WinningLotto;
-import lotto.domain.seller.Country;
-import lotto.domain.seller.Seller;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -39,6 +35,14 @@ public class SellerTest {
         Seller seller = new Country(new WinningLotto(new Lotto(List.of(1,2,3,4,5,6)), 7));
         List<Integer> numbers = List.of(1, 2, 3, 4, 5, 7);
         assertThat(seller.compareNumbers(numbers)).isEqualTo(5);
+    }
+
+    @DisplayName("[성공] 로또 당첨 보너스 번호와 구매한 로또 번호를 비교하여 보너스 번호가 포함되어 있는지 확인")
+    @Test
+    void compareBonusNumber() {
+        Seller seller = new Country(new WinningLotto(new Lotto(List.of(1,2,3,4,5,6)), 7));
+        List<Integer> numbers = List.of(1, 2, 3, 4, 5, 7);
+        assertThat(seller.compareBonusNumber(numbers)).isTrue();
     }
 
 }

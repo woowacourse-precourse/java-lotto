@@ -29,6 +29,11 @@ public class Country implements Seller{
         return count;
     }
 
+    @Override
+    public boolean compareBonusNumber(List<Integer> numbers) {
+        return false;
+    }
+
     private void validateMoney(int money) {
         if (money % LOTTO_AMOUNT != 0) {
             throw new IllegalArgumentException("[ERROR] 금액이 " + LOTTO_AMOUNT + "로 나누어 떨어지지 않습니다.");

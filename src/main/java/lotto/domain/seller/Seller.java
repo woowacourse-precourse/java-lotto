@@ -7,4 +7,6 @@ public interface Seller {
     int findLottoCountByMoney(int money);
 
     int compareNumbers(List<Integer> numbers);
+
+    boolean compareBonusNumber(List<Integer> numbers);
 }
