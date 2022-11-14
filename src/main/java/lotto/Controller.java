@@ -36,7 +36,7 @@ public class Controller {
 
 	public void lottoNumberCompareAfterStore() {
 		service.setPrize();
-		service.numberComparAferStore();
+		service.numberCompareAferStore();
 	}
 
 	public void printResult() {

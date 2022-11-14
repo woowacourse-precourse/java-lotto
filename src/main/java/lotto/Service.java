@@ -55,7 +55,7 @@ public class Service {
 		bonusLotto.setBonus(Integer.parseInt(number));
 	}
 
-	public void numberComparAferStore() {
+	public void numberCompareAferStore() {
 		for (List<Integer> onePurchaseLotto : purchaseLotto) {
 			for (int i = 0; i < lotto.getNumbers().size(); i++) {
 				checkNumberSame(lotto.getNumbers().get(i), onePurchaseLotto);
