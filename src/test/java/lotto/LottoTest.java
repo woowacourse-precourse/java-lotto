@@ -73,7 +73,7 @@ class LottoTest {
         assertRandomUniqueNumbersInRangeTest(
                 () -> {
                     Lotto lotto = LottoGenerator.autoGenerate();
-                    WinningNumbers winningNumbers = new WinningNumbers(List.of(1, 3, 13, 16, 42, 43), 45);
+                    WinningNumbers winningNumbers = new WinningNumbers(List.of(1, 38, 13, 16, 42, 43), 45);
 
                     assertThat(winningNumbers.checkLotto(lotto)).isEqualTo(LottoResult.FOURTH);
                 },
