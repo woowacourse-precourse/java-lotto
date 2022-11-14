@@ -22,9 +22,9 @@ public class GameManager {
     private BonusNumber bonusNumber;
     private Prize prize;
 
-    public GameManager(Input input) {
+    public GameManager() {
         this.output = new Output();
-        this.input = input;
+        this.input = new Input();
     }
 
     public void run() {

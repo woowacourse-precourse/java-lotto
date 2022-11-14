@@ -12,9 +12,11 @@ import java.util.List;
 public class Input {
 
     private final InputValidation inputValidation;
+    private final Output output;
 
     public Input() {
         inputValidation = new InputValidation();
+        output = new Output();
     }
 
     public int getUserMoney() {
