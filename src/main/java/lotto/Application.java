@@ -1,6 +1,5 @@
 package lotto;
 
-import lotto.ui.Messages;
 
 public class Application {
     public static void main(String[] args) {

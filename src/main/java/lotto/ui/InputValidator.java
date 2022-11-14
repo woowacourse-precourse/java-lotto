@@ -32,7 +32,7 @@ public class InputValidator {
         }
     }
 
-    public void validateListSize(List<String> userInput) {
+    public void validateInputSize(List<String> userInput) {
         if(userInput.size() != 6) {
             throw new IllegalArgumentException(Messages.ERROR_LOTTO_SIZE.getMessage());
         }
@@ -55,7 +55,7 @@ public class InputValidator {
     public void validateInputWinningNumber(List<String> userInput) {
         validateListInputIsNumeric(userInput);
         validateInputRange(userInput);
-        validateListSize(userInput);
+        validateInputSize(userInput);
 
     }
 
