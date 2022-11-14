@@ -50,6 +50,16 @@ public class WinningNumbers {
             }
         }
     }
+    
+    private void validateBonusNumber(String number) {
+        final String INPUT_PATTERN = "^[1-9]$|^[1-3][0-9]$|^4[0-5]$";
+
+        boolean isMatch = Pattern.matches(INPUT_PATTERN, number);
+
+        if (!isMatch) {
+            throw new IllegalArgumentException("[ERROR]");
+        }
+    }
 
     private void printGuideMessage(String message) {
         System.out.println(message);
