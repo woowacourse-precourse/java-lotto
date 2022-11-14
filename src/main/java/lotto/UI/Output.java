@@ -1,17 +1,14 @@
 package lotto.UI;
 
-import java.util.Comparator;
-import java.util.Map;
-import lotto.domain.Bonus;
+import java.util.List;
 import lotto.domain.Lotto;
 
 public class Output {
 
-    public static void printLotteries(Map<Lotto, Bonus> lotteries) {
+    public static void printLotteries(List<Lotto> lotteries) {
         System.out.println();
         System.out.println(lotteries.size() + "개를 구매했습니다.");
-        for (Lotto lotto : lotteries.keySet()) {
-            lotto.getNumbers().sort(Comparator.naturalOrder());
+        for (Lotto lotto : lotteries) {
             System.out.println(lotto);
         }
         System.out.println();
@@ -26,7 +23,6 @@ public class Output {
     }
 
     public static void printEarningRate(float earningRate) {
-        System.out.printf("총 수익률은 %.1f입니다.\n", earningRate);
+        System.out.printf("총 수익률은 %.1f%%입니다.\n", earningRate);
     }
-
 }

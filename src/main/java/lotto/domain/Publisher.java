@@ -1,33 +1,41 @@
 package lotto.domain;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
+import java.util.ArrayList;
 
 public class Publisher {
 
     private static final int TICKET_PRICE = 1000;
     private final int purchaseAmount;
     private final int ticketQuantity;
-    private Map<Lotto, Bonus> lotteries;
+    private final List<Lotto> lotteries;
+    private final Generator generator;
 
     public Publisher(int purchaseAmount) {
         validate(purchaseAmount);
         this.purchaseAmount = purchaseAmount;
         this.ticketQuantity = purchaseAmount / TICKET_PRICE;
-        this.lotteries = new HashMap<Lotto, Bonus>(ticketQuantity);
+        this.lotteries = new ArrayList<Lotto>(ticketQuantity);
+        this.generator = new Generator();
     }
 
-    public Map<Lotto, Bonus> getLotteries() {
+    int getPurchaseAmount() {
+        return purchaseAmount;
+    }
+
+    public List<Lotto> getLotteries() {
         return lotteries;
     }
 
-    public int getTicketQuantity() {
+    int getTicketQuantity() {
         return ticketQuantity;
     }
 
-    public void issueLotto(List<Integer> numbers, int bonusNumber) {
-        lotteries.put(new Lotto(numbers), new Bonus(bonusNumber));
+    public void issueLotto() {
+        while (lotteries.size() < ticketQuantity) {
+            List<Integer> numbers = generator.createLottoNumbers();
+            lotteries.add(new Lotto(numbers));
+        }
     }
 
     private void validate(int purchaseAmount) {

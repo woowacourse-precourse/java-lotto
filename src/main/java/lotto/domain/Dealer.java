@@ -3,19 +3,20 @@ package lotto.domain;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
 
 public class Dealer {
 
-    private final Generator generator;
+    private final List<Integer> winNumbers;
+    private final int bonusNumber;
     private final List<Integer> result;
     private final float earningRate;
 
-    public Dealer(Map<Lotto, Bonus> lotteries, int purchaseAmount) {
+    public Dealer(Publisher publisher, Lotto winNumbers, int bonusNumber) {
         result = new ArrayList<Integer>(Arrays.asList(0, 0, 0, 0, 0, 0));
-        generator = new Generator();
-        make(lotteries);
-        earningRate = calculateEarningRate(purchaseAmount);
+        this.winNumbers = winNumbers.getNumbers();
+        this.bonusNumber = bonusNumber;
+        make(publisher.getLotteries());
+        earningRate = calculateEarningRate(publisher.getPurchaseAmount());
     }
 
     public List<Integer> getResult() {
@@ -35,13 +36,11 @@ public class Dealer {
         return (float) earning / purchaseAmount * 100;
     }
 
-    private void make(Map<Lotto, Bonus> lotteries) {
-        List<Integer> winNumber = generator.getWinNumber();
-
-        for (Lotto lotto : lotteries.keySet()) {
-            int bonusNumber = lotteries.get(lotto).getBonusNumber();
-            int matchingCount = (int) lotto.getNumbers().stream().filter(i -> winNumber.contains(i))
-                    .count();
+    private void make(List<Lotto> lotteries) {
+        for (Lotto lotto : lotteries) {
+            int matchingCount = (int) lotto.getNumbers().stream()
+                    .filter(i -> winNumbers.contains(i))
+                            .count();
 
             if (rankingIsSecond(bonusNumber, matchingCount)) {
                 increaseRankingCount(Ranking.second);
@@ -54,8 +53,7 @@ public class Dealer {
     }
 
     private boolean rankingIsSecond(int bonusNumber, int matchingCount) {
-        return Ranking.second.matchingCount() == matchingCount && generator.getWinNumber()
-                .contains(bonusNumber);
+        return Ranking.second.matchingCount() == matchingCount && winNumbers.contains(bonusNumber);
     }
 
     private void increaseRankingCount(Ranking ranking) {
