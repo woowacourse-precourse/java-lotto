@@ -31,7 +31,13 @@ public class User {
         for (String s : lotto) {
             lottoNumber.add(Integer.parseInt(s));
         }
-
+        validateLottoLength(lottoNumber);
         return lottoNumber;
+    }
+
+    private void validateLottoLength(List<Integer> lotto) {
+        if (lotto.size() != 6) {
+            throw new IllegalArgumentException("[ERROR] 숫자 6개를 입력해주세요.");
+        }
     }
 }

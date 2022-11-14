@@ -75,4 +75,14 @@ public class UserTest {
         assertThatThrownBy(() -> user.getLottoInput())
                 .isInstanceOf(NumberFormatException.class);
     }
+
+    @DisplayName("유저의 로또 번호가 6개가 아니라면 예외가 발생한다.")
+    @Test
+    void createLottoByWrongSize() {
+        String input = "1,2,3";
+        setUp(input);
+
+        Throwable exception = assertThrows(IllegalArgumentException.class, user::getLottoInput);
+        assertEquals("[ERROR] 숫자 6개를 입력해주세요.", exception.getMessage());
+    }
 }
