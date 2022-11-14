@@ -43,4 +43,15 @@ public class UI {
         System.out.println("보너스 번호를 입력해 주세요");
         this.bonus = Integer.parseInt(readLine());
     }
+
+    public void showCostCount() {
+        System.out.println(this.cost/1000+"개를 구매했습니다.\n");
+    }
+
+    public void showLottoNumbers(List<List<Integer>> lottoNumbers) {
+        for (List<Integer> list : lottoNumbers) {
+            System.out.println(list.toString());
+        }
+    }
+
 }

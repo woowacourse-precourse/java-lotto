@@ -47,6 +47,11 @@ public class User {
         return fifth;
     }
 
+    public float calculateYield() {
+        float yield = (float) (fifth * 5000 + fourth * 50000 + third * 1500000 + second * 30000000 + first * 2000000000) / cost * 100;
+        return yield;
+    }
+
     private void validateCost(int cost) {
         if (cost % 1000 != 0) {
             throw new IllegalArgumentException("[ERROR] 구입 금액은 1,000원으로 나누어 떨어져야 합니다");
@@ -57,9 +62,7 @@ public class User {
         for (int i = 0; i < this.cost / 1000; i++) {
             lottoNumbers.add(pickUniqueNumbersInRange(1, 45, 6));
             Collections.sort(lottoNumbers.get(i));
-            System.out.println(lottoNumbers.get(i));
         }
-
     }
 
     public void checkWinning(List<Integer> numbers, int bonus) {
