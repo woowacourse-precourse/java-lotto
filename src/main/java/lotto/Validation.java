@@ -16,4 +16,11 @@ public class Validation {
         return false;
     }
 
+    public boolean isDividable(int number) {
+        if (number % 1000 == 0) {
+            return true;
+        }
+        return false;
+    }
+
 }
