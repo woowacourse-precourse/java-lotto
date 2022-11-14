@@ -15,7 +15,7 @@ public class Game {
     public static List<Lotto> lottos = new ArrayList<>();
     public static String input;
     public static Integer count;
-    public static List<Integer> winning = new ArrayList<>();
+    public static Lotto winning;
     public static Integer bonusNumber;
     public static Float rate;
     public Game(){
@@ -24,7 +24,7 @@ public class Game {
     public static void start(){
         input = inputMoneyView();
 
-        notNumericalInputException(input);
+        catchNotNumericalInputException(input);
         catchInputException(input);
 
         countMoney();
@@ -34,7 +34,7 @@ public class Game {
         makeWinning(inputWinningView());
 
         String bonusString =inputBonusView();
-        notNumericalInputException(bonusString);
+        catchNotNumericalInputException(bonusString);
         bonusNumber = Integer.parseInt(bonusString);
         catchOutOfRangeException(bonusNumber);
 
@@ -60,12 +60,13 @@ public class Game {
     }
 
     public static void makeWinning(String numbers){
-        notNumericalInputException(numbers);
+        catchNotNumericalInputException(numbers);
+        List<Integer> newList = new ArrayList<>();
         Arrays.asList(numbers.split(",")).stream().forEach(number->{
             int num = Integer.parseInt(number);
             catchOutOfRangeException(num);
-            winning.add(num);
+            newList.add(num);
         });
-        catchDuplicatedException(winning);
+        winning = new Lotto(newList);
     }
 }
