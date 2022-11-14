@@ -29,14 +29,14 @@ public class Lotto {
     }
 
     // TODO: 추가 기능 구현
-    public int compareWithAnswer(List<Integer> winNumbers, int bonusNumber) {
+    public int compareWithAnswer(WinNumber winNumber) {
         int correctCount = 0;
-        for (int winNumber : winNumbers) {
-            if (numbers.contains(winNumber)) {
+        for (int target : winNumber.getWinNumber()) {
+            if (numbers.contains(target)) {
                 correctCount++;
             }
         }
-        return makeResult(correctCount,numbers.contains(bonusNumber));
+        return makeResult(correctCount,numbers.contains(winNumber.getBonusNumber()));
     }
 
     private int makeResult(int correctCount, boolean correctBonus) {

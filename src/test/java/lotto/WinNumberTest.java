@@ -18,8 +18,6 @@ import java.util.stream.Stream;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class WinNumberTest {
-    private WinNumber wn = new WinNumber();
-
     private static Stream<Arguments> provideUserWinNumber(){
         return Stream.of(
                 Arguments.of("0,1,2,3,4,5","6"),
@@ -31,7 +29,7 @@ public class WinNumberTest {
     @ParameterizedTest
     @MethodSource("provideUserWinNumber")
     void isWinNumberInvalid(String winNumber,String bonusNumber) {
-        assertThatThrownBy(() -> wn.makingWinNumber(winNumber,bonusNumber))
+        assertThatThrownBy(() -> new WinNumber(winNumber,bonusNumber))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 }

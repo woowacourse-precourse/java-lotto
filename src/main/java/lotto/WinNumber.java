@@ -10,14 +10,20 @@ public class WinNumber {
 
     private WinNumberController wc = new WinNumberController();
 
-    public WinNumber makingWinNumber(String winNumber, String bonusNumber) {
+    public WinNumber(String winNumber, String bonusNumber) {
         this.winNumber = wc.readWinNumber(winNumber);
         this.bonusNumber = wc.readBonusNumber(bonusNumber);
 
         validateBonusNumber(this.bonusNumber);
         validateWinNumber(this.winNumber);
+    }
 
-        return this;
+    public List<Integer> getWinNumber(){
+        return winNumber;
+    }
+
+    public int getBonusNumber(){
+        return bonusNumber;
     }
 
     private void validateBonusNumber(Integer bonusNumber) {

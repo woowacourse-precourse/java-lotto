@@ -18,6 +18,9 @@ public class LottoApplication {
     }
 
     public void run() {
+        String winNumber;
+        String bonusNumber;
+
         System.out.println("구입금액을 입력해 주세요.");
 
         int lottoAmount = lc.readUserMoney(Console.readLine()) / 1000;
@@ -29,6 +32,10 @@ public class LottoApplication {
         this.printLottoPool();
 
 
+
+        for(Lotto lotto : lottoPool){
+            //lotto.compareWithAnswer()
+        }
     }
 
 

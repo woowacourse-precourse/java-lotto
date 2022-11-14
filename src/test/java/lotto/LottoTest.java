@@ -35,12 +35,13 @@ class LottoTest {
     @Test
     void compareLottoWithWinnumber() {
         //given
-        List<Integer> winNumber = List.of(1, 2, 3, 4, 5, 6);
-        int bonusNumber = 7;
+        String winNumber = "1,2,3,4,5,6";
+        String bonusNumber = "7";
         Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 7));
+        WinNumber wn = new WinNumber(winNumber,bonusNumber);
 
         //when
-        int prize = lotto.compareWithAnswer(winNumber,bonusNumber);
+        int prize = lotto.compareWithAnswer(wn);
 
         //then
         assertThat(prize).isEqualTo(2);
