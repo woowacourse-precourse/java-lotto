@@ -24,12 +24,10 @@ public class Application {
             WinningNumbers w = new WinningNumbers(winningNumbers, lottoManager.inputBonusNumber());
 
             for (Lotto lotto : lottos.getLottos()) {
-//                int correctCount = lottoCalculator.compare(lotto.getNumbers(), w.getNumbers(), w.getBonusNumber());
                 lottoCalculator.addRankCount(lottoCalculator.compare(lotto.getNumbers(), w.getNumbers(), w.getBonusNumber()));
             }
 
-            lottoManager.printWinningDetails(lottoCalculator.getRankCount());
-            lottoManager.printRateOfReturn(lottoCalculator.RateOfReturn(lottoManager.getPurchaseMoney()));
+            lottoManager.printWinningDetails(lottoCalculator.getRankCount(), lottoCalculator.RateOfReturn(lottoManager.getPurchaseMoney()));
         } catch (IllegalArgumentException e) {
             System.out.println("[ERROR]" + e.getMessage());
         }
