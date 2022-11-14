@@ -6,10 +6,12 @@ import java.util.List;
 public class Statistics {
 	private final User user;
 	private final WinningLotto winningLotto;
+	private final CorrectLottoNumber correctLottoNumber;
 
 	public Statistics(User user, WinningLotto winningLotto) {
 		this.user = user;
 		this.winningLotto = winningLotto;
+		this.correctLottoNumber = new CorrectLottoNumber();
 	}
 
 	public void match() {
@@ -18,22 +20,27 @@ public class Statistics {
 
 	private void compare(User user, WinningLotto winningLotto) {
 		UserLotto userLotto = user.getUserLottoes();
-		List<Integer> correctNumbers = new ArrayList<>(List.of(0, 0, 0, 0, 0));
 
 		for (Lotto l : userLotto.getUserLottoes()) {
 			List<Integer> userLottoOne = l.getNumbers();
 			List<Integer> winningLottoNumber = winningLotto.getWinningLotto();
 			Integer bonusNumber = winningLotto.getBonusNumber();
-
-			correctNumbers.set(0, correctNumbers.get(0) + compareCorrect3Number(userLottoOne, winningLottoNumber));
-			correctNumbers.set(1, correctNumbers.get(1) + compareCorrect4Number(userLottoOne, winningLottoNumber));
-			correctNumbers.set(2, correctNumbers.get(2) + compareCorrect5Number(userLottoOne, winningLottoNumber));
-			correctNumbers.set(3, correctNumbers.get(3) +
-				compareCorrect6NumberContainBonusNumber(userLottoOne, winningLottoNumber, bonusNumber));
-			correctNumbers.set(4, correctNumbers.get(4) + compareCorrect6Number(userLottoOne, winningLottoNumber));
+			calculateCorrectNumbers(userLottoOne, winningLottoNumber, bonusNumber);
 		}
-		Print.printCorrectness(correctNumbers);
-		Print.printYield(correctNumbers, user.getLottoCount());
+
+		Print.printCorrectness(correctLottoNumber.getCorrectLottoNumber());
+		Print.printYield(correctLottoNumber.getCorrectLottoNumber(), user.getLottoCount());
+	}
+
+	private void calculateCorrectNumbers(List<Integer> userLottoOne, List<Integer> winningLottoNumber,
+		Integer bonusNumber) {
+		List<Integer> correctNumbers = correctLottoNumber.getCorrectLottoNumber();
+		correctNumbers.set(0, correctNumbers.get(0) + compareCorrect3Number(userLottoOne, winningLottoNumber));
+		correctNumbers.set(1, correctNumbers.get(1) + compareCorrect4Number(userLottoOne, winningLottoNumber));
+		correctNumbers.set(2, correctNumbers.get(2) + compareCorrect5Number(userLottoOne, winningLottoNumber));
+		correctNumbers.set(3, correctNumbers.get(3) +
+			compareCorrect6NumberContainBonusNumber(userLottoOne, winningLottoNumber, bonusNumber));
+		correctNumbers.set(4, correctNumbers.get(4) + compareCorrect6Number(userLottoOne, winningLottoNumber));
 	}
 
 	private Integer compareCorrect3Number(List<Integer> userLottoOne, List<Integer> winningLottoNumber) {
