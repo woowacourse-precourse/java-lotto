@@ -11,10 +11,10 @@ import java.util.List;
 
 public class Statistics {
 
-    public HashMap<Lotto, List<Integer>> getTotalWinningCount(List<Lotto> lottos, Winning winning) {
-        HashMap<Lotto, List<Integer>> totalWinningCount = new HashMap<>();
+    public List<List<Integer>> getTotalWinningCount(List<Lotto> lottos, Winning winning) {
+        List<List<Integer>> totalWinningCount = new ArrayList<>();
         for (Lotto lotto : lottos) {
-            totalWinningCount.put(lotto, getWinningCount(lotto.getNumbers(), winning));
+            totalWinningCount.add(getWinningCount(lotto.getNumbers(), winning));
         }
         return totalWinningCount;
     }
