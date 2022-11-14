@@ -1,7 +1,6 @@
 package lotto;
 
 import lotto.CheckInputException;
-
 import lotto.Util;
 
 import java.util.List;

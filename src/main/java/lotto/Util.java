@@ -1,7 +1,5 @@
 package lotto;
 
-import net.bytebuddy.pool.TypePool;
-
 import java.math.BigInteger;
 import java.util.List;
 import java.util.ArrayList;
@@ -22,10 +20,7 @@ public class Util {
         final BigInteger thousand = BigInteger.valueOf(1000);
         final BigInteger remainderInput = convertInput.remainder(thousand);
 
-        if (remainderInput.compareTo(BigInteger.ZERO) == 0) {
-            return true;
-        }
-        return false;
+        return remainderInput.compareTo(BigInteger.ZERO) == 0;
     }
 
     public static int countChar(final String input, final char ch) {
@@ -55,9 +50,6 @@ public class Util {
     public static boolean isDuplicate(List<Integer> numbers) {
         long numbersCount = numbers.stream().distinct().count();
 
-        if (numbers.size() != numbersCount) {
-            return true;
-        }
-        return false;
+        return numbers.size() != numbersCount;
     }
 }

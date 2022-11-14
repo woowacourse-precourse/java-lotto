@@ -4,8 +4,6 @@ import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomUniqueN
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-import camp.nextstep.edu.missionutils.test.NsTest;
-
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -63,8 +61,8 @@ class LottoStatisticsTest {
             lottoStatistics.rankCount(tmp);
         }
         BigInteger totalPrize = lottoStatistics.getTotalPrize();
-        assertThat(totalPrize)
-                .isEqualTo(2_031_555_000);
+
+        assertThat(totalPrize.toString() == "2031555000");
     }
 
     @Test
@@ -74,8 +72,8 @@ class LottoStatisticsTest {
         Integer bonusNumber = 4;
         lottoStatistics.setBonusNumber(bonusNumber);
 
-        testNumbers.add(List.of(1, 2, 3));            //5등
-        testNumbers.add(List.of(1, 2));              //4등
+        testNumbers.add(List.of(1, 2, 3));          //5등
+        testNumbers.add(List.of(1, 2));             //4등
         testNumbers.add(List.of(1));            //3등
         testNumbers.add(List.of(1, bonusNumber));   //2등
         testNumbers.add(List.of());                 //1등
@@ -91,7 +89,6 @@ class LottoStatisticsTest {
         BigDecimal rateReturn =
                 lottoStatistics.getRateOfReturn();
 
-        assertThat(lottoStatistics.getRateOfReturn())
-                .isEqualTo(BigDecimal.valueOf(40631100));
+        assertThat(rateReturn.toString() == "40631100");
     }
 }

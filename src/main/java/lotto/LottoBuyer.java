@@ -15,7 +15,6 @@ public class LottoBuyer {
     private Lotto lotto;
     private BigInteger money;
     private Integer bonusNumber;
-
     private List<Lotto> lottos;
 
     public LottoBuyer() {
