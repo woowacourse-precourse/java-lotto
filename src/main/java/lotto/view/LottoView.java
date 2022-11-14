@@ -13,8 +13,6 @@ public class LottoView {
     private static final int MIN_LOTTO_NUMBER = 1;
     private static final int MAX_LOTTO_NUMBER = 45;
 
-    List<List<Integer>> lottos = new ArrayList<>();
-
     public int getMoney() {
         System.out.println("구입금액을 입력해 주세요.");
         int money = Integer.parseInt(Console.readLine());
@@ -70,14 +68,5 @@ public class LottoView {
 
     private boolean validateNumberRange(int number) {
         return number < MIN_LOTTO_NUMBER || number > MAX_LOTTO_NUMBER;
-    }
-
-    public void printLottosNumbers(int count) {
-        System.out.println(count + "개를 구매했습니다.");
-        LottoGenerator lottoGenerator = new LottoGenerator();
-        lottos = lottoGenerator.generateLotto(count);
-        for (List lotto : lottos) {
-            System.out.println(lotto);
-        }
     }
 }
