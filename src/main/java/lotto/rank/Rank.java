@@ -31,6 +31,14 @@ public enum Rank {
         return null;
     }
 
+    public int getNumber() {
+        return number;
+    }
+
+    public boolean getBonusYN() {
+        return bonusYN;
+    }
+
     public long getWinProfit() {
         return winProfit;
     }
