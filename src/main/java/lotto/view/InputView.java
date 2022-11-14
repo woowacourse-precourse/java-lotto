@@ -18,4 +18,18 @@ public class InputView {
             throw new RuntimeException(INPUT_TYPE_IS_NOT_PROPER);
         }
     }
+
+    public static Integer inputBonusNumber() {
+        String bonusNumber = Console.readLine();
+        validateBonusNumberType(bonusNumber);
+        return Integer.parseInt(bonusNumber);
+    }
+
+    private static void validateBonusNumberType(String bonusNumber) {
+        try {
+            Integer.parseInt(bonusNumber);
+        } catch (IllegalArgumentException e) {
+            throw new RuntimeException(INPUT_TYPE_IS_NOT_PROPER);
+        }
+    }
 }
