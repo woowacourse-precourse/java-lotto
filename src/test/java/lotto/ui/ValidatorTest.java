@@ -87,4 +87,22 @@ public class ValidatorTest {
                     .isInstanceOf(IllegalArgumentException.class);
         }
     }
+
+    @Nested
+    class isHundredUnit {
+        @DisplayName("주어진 숫자가 1000원 단위인 경우")
+        @Test
+        void isHundredTest_1000원단위() {
+            Assertions.assertThat(Validator.isHundredUnit(12000)).isTrue();
+        }
+
+        @DisplayName("주어진 숫자가 1000원 단위가 아닌 경우")
+        @Test
+        void isHundredTest_1000원단위아님() {
+            Assertions.assertThatThrownBy(
+                            () -> Validator.isHundredUnit(12314)
+                    )
+                    .isInstanceOf(IllegalArgumentException.class);
+        }
+    }
 }
