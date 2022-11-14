@@ -61,7 +61,7 @@ public class OutputView {
         StringBuilder statistics = new StringBuilder();
 
         statistics.append(String.format(SAME_NUMBER_COUNT_MESSAGE.getMessage(), dto.getSameNumberCount()));
-        if (dto.isBonus()) {
+        if (dto.hasBonus()) {
             statistics.append(BONUS_NUMBER_MESSAGE.getMessage());
         }
         statistics.append(String.format(WINNER_PRICE_MESSAGE.getMessage(), toMoneyFormat(dto.getWinnerPrice())));

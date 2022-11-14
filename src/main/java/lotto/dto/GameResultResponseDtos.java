@@ -11,13 +11,13 @@ public class GameResultResponseDtos {
 
         private final int sameNumberCount;
         private final int winnerPrice;
-        private final boolean isBonus;
+        private final boolean hasBonus;
         private final int totalCount;
 
-        public GameResultResponseDto(int sameNumberCount, int winnerPrice, boolean isBonus, int totalCount) {
+        public GameResultResponseDto(int sameNumberCount, int winnerPrice, boolean hasBonus, int totalCount) {
             this.sameNumberCount = sameNumberCount;
             this.winnerPrice = winnerPrice;
-            this.isBonus = isBonus;
+            this.hasBonus = hasBonus;
             this.totalCount = totalCount;
         }
 
@@ -29,8 +29,8 @@ public class GameResultResponseDtos {
             return winnerPrice;
         }
 
-        public boolean isBonus() {
-            return isBonus;
+        public boolean hasBonus() {
+            return hasBonus;
         }
 
         public int getTotalCount() {
