@@ -81,44 +81,23 @@ class LottoTest {
         assertThat(lotto.getIndividualLottoScore(sixNumbersMatch, bonusNumber)).isEqualTo(6);
     }
 
-//    @DisplayName("각 로또의 점수를 계산한 뒤 매칭된 숫자와 보너스 일치 여부를 배열에 담아 리턴한다.")
-//    @Test
-//    void calculateLottoResult() {
-//
-//        List<Integer> winningNumber = List.of(1, 2, 3, 4, 5, 6);
-//        int bonusNumber = 7;
-//
-//        Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 7));
-//
-//        List<Integer> sixNumbersMatch = List.of(1, 2, 3, 4, 5, 6);
-//        List<Integer> fiveAndBonusNumbersMatch = List.of(1, 2, 3, 4, 5, 7);
-//        List<Integer> fiveNumbersMatch = List.of(1, 2, 3, 4, 5, 9);
-//        List<Integer> fourNumbersMatch = List.of(1, 2, 3, 4, 10, 11);
-//        List<Integer> threeNumbersMatch = List.of(1, 2, 3, 12, 13, 14);
-//        List<List<Integer>> purchaseRecord = List.of(sixNumbersMatch, fiveNumbersMatch, fiveAndBonusNumbersMatch, fourNumbersMatch, threeNumbersMatch);
-//
-//        List<Integer> winningRecord = new ArrayList<>(); // 3, 4, 5, 5 + bonus, 6
-//
-//        winningRecord.add(0);
-//        winningRecord.add(0);
-//        winningRecord.add(0);
-//        winningRecord.add(0);
-//        winningRecord.add(0);
-//
-//        for (List<Integer> currentLotto : purchaseRecord) {
-//            int indexToIncrease = lotto.getIndividualLottoScore(currentLotto);
-//
-//            if (indexToIncrease < 0) {
-//                continue;
-//            }
-//
-//            int currentIndexCount = winningRecord.get(indexToIncrease);
-//            winningRecord.set(indexToIncrease, currentIndexCount + 1);
-//        }
-//
-//        assertThat(lotto.calculateLottoResult(purchaseRecord, winningRecord)).isEqualTo(List.of(1, 1, 1, 1, 1));
-//
-//    }
+    @DisplayName("각 로또의 점수를 계산한 뒤 매칭된 숫자와 보너스 일치 여부를 배열에 담아 리턴한다.")
+    @Test
+    void calculateLottoResult() {
+
+        Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+        int bonusNumber = 7;
+
+        List<Integer> threeNumbersMatch = List.of(1, 2, 3, 12, 13, 14);
+        List<Integer> fourNumbersMatch = List.of(1, 2, 3, 4, 10, 11);
+        List<Integer> fiveNumbersMatch = List.of(1, 2, 3, 4, 5, 9);
+        List<Integer> fiveAndBonusNumbersMatch = List.of(1, 2, 3, 4, 5, 7);
+        List<Integer> sixNumbersMatch = List.of(1, 2, 3, 4, 5, 6);
+        List<List<Integer>> purchaseRecord = List.of(sixNumbersMatch, fiveNumbersMatch, fiveAndBonusNumbersMatch, fourNumbersMatch, threeNumbersMatch);
+
+        assertThat(lotto.calculateLottoResult(purchaseRecord, bonusNumber)).isEqualTo(List.of(1, 1, 1, 1, 1));
+
+    }
 //
 //    @DisplayName("수익률을 계산한 뒤 그 값을 리턴한다.")
 //    @Test
