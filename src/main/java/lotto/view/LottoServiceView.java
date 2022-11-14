@@ -14,13 +14,13 @@ public class LottoServiceView {
 
     private void validateInputMoney(String input) {
 
-        checkMinimunAmount(input);
+        checkMinimumAmount(input);
         checkOnlyInteger(input);
         checkOverFlow(input);
         checkMonetaryUnit(input);
     }
 
-    private void checkMinimunAmount(String input) {
+    private void checkMinimumAmount(String input) {
         if (input.length() < 4) {
             throw new IllegalArgumentException("[ERROR] 최소 구매 금액은 1,000원 이상입니다.");
         }
