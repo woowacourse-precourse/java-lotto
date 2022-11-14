@@ -11,6 +11,11 @@ public class Money {
         this.money = Long.parseLong(input);
     }
 
+    // 금액 반환 기능
+    public long getMoney() {
+        return this.money;
+    }
+
     // 유효한 입력값인지 검증 기능
     private void validateInput(String input) throws IllegalArgumentException {
         for (int i = 0; i < input.length(); i++) {

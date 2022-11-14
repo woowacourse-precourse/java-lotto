@@ -16,6 +16,11 @@ public class LottoView {
         System.out.println(Message.INPUT_MONEY_MESSAGE);
     }
 
+    //  구매한 로또 개수를 보여주는 기능
+    public void displayLottoAmount() {
+        System.out.println(String.format(Message.PURCHASE_LOTTO_AMOUNT_MESSAGE, 1));
+    }
+
 //    구매한 로또 보여주는 기능
 //    public void displayMyLottos() {}
 
