@@ -37,4 +37,8 @@ public class Lotto {
         validateDuplicateBonusAndWinningNumber(number);
         lotto.add(number);
     }
+
+    public List<Integer> getLotto() {
+        return lotto;
+    }
 }
