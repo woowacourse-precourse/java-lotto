@@ -6,6 +6,7 @@ import lotto.domain.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 
 public class Play {
     private static final String START_MESSAGE = "구입금액을 입력해 주세요.";
@@ -44,10 +45,22 @@ public class Play {
         String bonus = Console.readLine();
 //
 //        System.out.println(result.calculateResult(lotto,winLotto,bonus));
-        System.out.println(Arrays.deepToString(result.convertLotto(lotto,winLotto,bonus)));
+//        System.out.println(Arrays.deepToString(result.calculateLotto(lotto,winLotto,bonus)));
+//
+//        int[][] totalResult = result.calculateLotto(lotto,winLotto,bonus);
+        Map<ResultType,Integer> totalResult = result.calculateLotto(lotto,winLotto,bonus);
 
+        System.out.println(totalResult.entrySet());
+        result.printResult(totalResult);
+
+        System.out.println(result.makePrize(totalResult));
+        double prize = result.makePrize(totalResult);
         System.out.println("\n"+WINNING_MESSAGE);
-        System.out.println(result.calculateRate(8000,5000));
+
+
+//        System.out.println(result.makeTotalResult(totalResult));
+        System.out.println(result.calculateRate((double) total,prize));
+
     }
 
 
