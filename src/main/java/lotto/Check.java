@@ -30,10 +30,8 @@ public class Check {
     }
 
     public static void winningStatisticsMaker(int[] lottoArray, int userInputBonusNumber, int[] correctCount, int countTmp){
-        for (int i = 3; i <= 6; i++){
-            if (countTmp == i){
-                correctCount[i - 3]++;
-            }
+        if(countTmp >= 3){
+            correctCount[countTmp - 3]++;
         }
 
         if (countTmp == 5){
