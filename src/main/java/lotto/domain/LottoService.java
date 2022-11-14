@@ -37,7 +37,7 @@ public class LottoService {
         return sortedLottoNumbers;
     }
 
-    private List<Integer> sortedLottoNumbers(List<Integer> lottoNumbers) {
+    public List<Integer> sortedLottoNumbers(List<Integer> lottoNumbers) {
 
         Collections.sort(lottoNumbers);
 
