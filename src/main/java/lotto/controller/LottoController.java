@@ -18,9 +18,8 @@ public class LottoController {
     public void run() {
         try {
             Cost cost = createCost();
-
             int purchaseCost = cost.getCost();
-            int purchaseCount = purchaseCost / 1000;
+            int purchaseCount = cost.getPurchaseCount();
             Output.purchaseCountNotification(purchaseCount);
 
             LottoGroup lottoGroup = createLottoGroup(purchaseCount);
@@ -32,7 +31,6 @@ public class LottoController {
 
             Profit profit = createProfit(purchaseCost, result);
             Output.earningsRateNotification(profit.getEarningsRate());
-
         } catch (IllegalArgumentException ex) {
             Output.printError(ex.getMessage());
         }
