@@ -17,9 +17,8 @@
 - [x] 보너스 번호가 숫자인지 확인한다. NumberInput#validateNumber()
 - [x] 보너스 번호가 로또 상한과 하한의 사이인지 확인한다 NumberInput#validateNumberInRange()
 - [x] 보너스 번호를 입력 받는다. NumberInput#getBonusNumber()
-- [ ] 발행 로또가 보너스 번호를 포함하는지 확인한다. WinLotto#isContainBonusNumber()
-- [ ] 로또 결과를 가져온다. WinLotto#getAllResult();
-- [ ] 발행한 로또 번호를 가능한 당첨 번호와 가장 많이 일치하는 갯수와 일치 금액을 계산 한다. WinLotto#matchWinner()
+- [ ] 로또를 집계한다. WinLotto#setResult()
+- [ ] 로또 결과를 가져온다. WinLotto#getResult();
 - [x] 당첨 순위에 해당하는 일치개수를 가져온다. LottoRank#getSameCount()
 - [x] 당첨 순위에 해당하는 당첨금을 가져온다. LottoRank#getPrizeMoney()
 - [x] 로또 순위를 가져온다. LottoRank#getRank()
