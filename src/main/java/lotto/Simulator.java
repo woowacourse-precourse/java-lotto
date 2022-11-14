@@ -24,10 +24,22 @@ public class Simulator {
         return this.lottos;
     }
 
-    public void setWinning(Lotto winning, int bonus) {
+    public Simulator setWinning(Lotto winning, int bonus) {
         this.winning = winning;
         Lotto.validateRange(bonus);
         this.bonus = bonus;
+        return this;
+    }
+
+    public List<Integer> getStatistic() {
+        List<Integer> wins = new ArrayList<>(List.of(0, 0, 0, 0, 0));
+        for (Lotto lotto : this.lottos) {
+            int rank = lotto.compare(this.winning, this.bonus);
+            if (rank < 6) {
+                wins.set(rank - 1, wins.get(rank - 1) + 1);
+            }
+        }
+        return wins;
     }
 
     private void validatePrice(int price) {
