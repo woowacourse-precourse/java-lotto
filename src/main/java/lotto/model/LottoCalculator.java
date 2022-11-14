@@ -1,4 +1,4 @@
-package lotto;
+package lotto.model;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,15 +18,15 @@ public class LottoCalculator {
         return Randoms.pickUniqueNumbersInRange(1, 45, 6);
     }
 
-    public List<LottoRanking> getLottoRanking(List<Integer> winningNumbers, int bonusNumber,  List<Lotto> lottos) {
-        List<LottoRanking> lottoRankings = new ArrayList<>(ARRAY_LIST_SIZE);
+    public List<LottoRankingType> getLottoRanking(List<Integer> winningNumbers, int bonusNumber, List<Lotto> lottos) {
+        List<LottoRankingType> lottoRankingTypes = new ArrayList<>(ARRAY_LIST_SIZE);
         for (Lotto lotto : lottos) {
             int winNumber = getWinNumberCount(winningNumbers, lotto);
             boolean winBonus = lotto.getNumbers().contains(bonusNumber);
 
-            lottoRankings.add(getLottoRanking(winNumber, winBonus));
+            lottoRankingTypes.add(getLottoRanking(winNumber, winBonus));
         }
-        return lottoRankings;
+        return lottoRankingTypes;
     }
 
     private int getWinNumberCount(List<Integer> winningNumbers, Lotto lotto) {
@@ -39,26 +39,26 @@ public class LottoCalculator {
         return winNumber;
     }
 
-    private LottoRanking getLottoRanking(int winNumber, boolean winBonus) {
+    private LottoRankingType getLottoRanking(int winNumber, boolean winBonus) {
         if (winNumber == WIN_FIRST_COUNT) {
-            return LottoRanking.FIRST_PLACE;
+            return LottoRankingType.FIRST_PLACE;
         }
         if (winNumber == WIN_THIRD_COUNT) {
             return checkBonus(winBonus);
         }
         if (winNumber == WIN_FOURTH_COUNT) {
-            return LottoRanking.FOURTH_PLACE;
+            return LottoRankingType.FOURTH_PLACE;
         }
         if (winNumber == WIN_FIFTH_COUNT) {
-            return LottoRanking.FIFTH_PLACE;
+            return LottoRankingType.FIFTH_PLACE;
         }
-        return LottoRanking.BANG;
+        return LottoRankingType.BANG;
     }
 
-    private LottoRanking checkBonus(boolean winBonus) {
+    private LottoRankingType checkBonus(boolean winBonus) {
         if (winBonus) {
-            return LottoRanking.SECOND_PLACE;
+            return LottoRankingType.SECOND_PLACE;
         }
-        return LottoRanking.THIRD_PLACE;
+        return LottoRankingType.THIRD_PLACE;
     }
 }

@@ -1,4 +1,9 @@
-package lotto;
+package lotto.controller;
+
+import lotto.model.Lotto;
+import lotto.model.LottoCalculator;
+import lotto.model.LottoRankingType;
+import lotto.view.UserInterface;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -50,7 +55,7 @@ public class LotteryStore {
 
     public void outputResult() {
         // 로또 당첨 계산하고
-        List<LottoRanking> lottoRankings
+        List<LottoRankingType> lottoRankingTypes
                 = this.lottoCalculator.getLottoRanking(this.winningNumbers, this.bonusNumber, this.lottos);
 
         // 결과를 userinterface에 넘겨주자
