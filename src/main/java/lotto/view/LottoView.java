@@ -2,6 +2,7 @@ package lotto.view;
 
 import lotto.Lotto;
 import lotto.MyLottoList;
+import lotto.PrizeLotto;
 import org.junit.jupiter.params.ParameterizedTest;
 
 import java.util.ArrayList;
@@ -40,4 +41,9 @@ public class LottoView {
             AppView.outputLine(String.valueOf(lotto));
         }
     }
+    /*
+    public static void outputSynthesis(MyLottoList myLottoList, PrizeLotto prizeLotto) {
+
+    }
+    */
 }

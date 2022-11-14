@@ -41,4 +41,39 @@ public class LottoController {
     public static void addBonusNum(int bonusNum, PrizeLotto prizeLotto) {
         prizeLotto.setBonusNumber(bonusNum);
     }
+
+    public static void generateMyPrizeInstance(MyLottoList myLottoList, PrizeLotto prizeLotto) {
+
+    }
+
+    public static int calculateRankOneLotto(Lotto lotto, PrizeLotto prizeLotto) {
+        int correctNum = 0;
+        int rank = 0;
+        for(int num : lotto.getNumbers()) {
+            if(prizeLotto.getPrizeLotto().getNumbers().contains(num)) {
+                correctNum += 1;
+            }
+        }
+        rank = calculateRankByBonusNum(lotto, correctNum, prizeLotto.getBonusNumber());
+        return rank;
+    }
+
+    public static int calculateRankByBonusNum(Lotto lotto, int correctNum, int BonusNum) {
+        if(correctNum <= 4) {
+            return 8 - correctNum;
+        }
+
+        if(correctNum == 6) {
+            return 1;
+        }
+
+        if(correctNum == 5) {
+            if(lotto.getNumbers().contains(BonusNum)) {
+                return 2;
+            }
+
+            return 3;
+        }
+        return 10;
+    }
 }

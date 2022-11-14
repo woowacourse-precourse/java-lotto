@@ -1,6 +1,7 @@
 package lotto.controller;
 
 import lotto.MyLottoList;
+import lotto.MyPrize;
 import lotto.PrizeLotto;
 import lotto.view.AppView;
 import lotto.view.LottoView;
@@ -10,6 +11,7 @@ import static lotto.controller.LottoController.*;
 public class AppController {
     MyLottoList myLottoList;
     PrizeLotto prizeLotto;
+    MyPrize myPrize;
     int money;
     int bonusNum;
 
@@ -29,5 +31,8 @@ public class AppController {
         bonusNum = LottoView.inputBonusNum();
         addBonusNum(bonusNum, prizeLotto);
         AppView.outputLine("");
+        AppView.outputLine("당첨 통계");
+        AppView.outputLine("---");
+        myPrize =
     }
 }

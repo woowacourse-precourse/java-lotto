@@ -13,6 +13,10 @@ public class Lotto {
         this.numbers = numbers;
     }
 
+    public List<Integer> getNumbers() {
+        return numbers;
+    }
+
     // test: test/java/lotto/LottoTest/createLottoByOverSize()
     private void validateAmount(List<Integer> numbers) {
         if (numbers.size() != 6) {
