@@ -6,7 +6,7 @@ import java.util.List;
 
 public class Discriminator {
     private static final List<List<Integer>> MATCHES = new ArrayList<>();
-    private static final int LEAST_MATCH_COUNT = 3;
+    private static final int LEAST_MATCH_COUNT = 2;
     private static final int ZERO = 0;
     private static final int COUNT = 1;
     private static final int SECOND_RANK_CONDITION = 5;
