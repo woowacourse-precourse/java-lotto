@@ -8,6 +8,11 @@ import java.util.List;
 public class Draw {
     private final Lotto winnerNumbers;
     private final Integer bonusNumber;
+    Constants.Statistic THREE = Constants.Statistic.THREE;
+    Constants.Statistic FOUR = Constants.Statistic.FOUR;
+    Constants.Statistic FIVE = Constants.Statistic.FIVE;
+    Constants.Statistic FIVE_BONUS = Constants.Statistic.FIVE_BONUS;
+    Constants.Statistic SIX = Constants.Statistic.SIX;
 
     public Draw(Lotto winnerNumbers, Integer bonusNumber) {
         this.winnerNumbers = winnerNumbers;
@@ -17,23 +22,28 @@ public class Draw {
 
     public Integer resultLottery(List<Lotto> Lottos) {
         List<Integer> lottoCorrectCount = new ArrayList<>();
-        List<Boolean> bonusCorrect = new ArrayList<>();
         for (Lotto lotto : Lottos) {
             List<Integer> target = lotto.getNumbers();
             int count = countSameNumber(target);
+            if (count == FIVE.getCorrectNumber() && lotto.hasNumber(bonusNumber)){
+                count += 10;
+            }
             lottoCorrectCount.add(count);
-            bonusCorrect.add(lotto.hasNumber(bonusNumber));
         }
-        int[] result = countResult(lottoCorrectCount, bonusCorrect);
-        viewResult(result);
-        return winnings(result);
+
+        countResult(lottoCorrectCount);
+        viewResult();
+        return winnings();
     }
 
-    private Integer winnings(int[] result) {
+    private Integer winnings() {
         Integer money = 0;
-        for (int i = 0; i < Constants.PRINT_SIZE; i++) {
-            money += (result[i] * Constants.winningMoney[i]);
-        }
+        money += SIX.getAllPrize();
+        money += FIVE.getAllPrize();
+        money += FIVE_BONUS.getAllPrize();
+        money += FOUR.getAllPrize();
+        money += THREE.getAllPrize();
+
         return money;
     }
 
@@ -48,34 +58,30 @@ public class Draw {
         return count;
     }
 
-    private int[] countResult(List<Integer> lottoCorrectCount, List<Boolean> bonusCorrect) {
-        int[] result = new int[5];
-        for (int i = 0; i < lottoCorrectCount.size(); i++) {
-            int count = lottoCorrectCount.get(i);
-            // 6개 모두 일치한 경우
-            if (count == 6) {
-                result[4] += 1;
-            }
-            // 5개 + 보너스 번호가 일치한 경우
-            else if (count == 5 && bonusCorrect.get(i)) {
-                result[3] += 1;
-            } else if (count > 2) {
-                result[count - 3] += 1;
+    private void countResult(List<Integer> lottoCorrectCount) {
+        for (int count : lottoCorrectCount) {
+            if (count == SIX.getCorrectNumber()) {
+                SIX.addCount();
+            } else if (count == FIVE_BONUS.getCorrectNumber()) {
+                FIVE_BONUS.addCount();
+            } else if (count == FIVE.getCorrectNumber()) {
+                FIVE.addCount();
+            } else if (count == FOUR.getCorrectNumber()) {
+                FOUR.addCount();
+            } else if (count == THREE.getCorrectNumber()) {
+                THREE.addCount();
             }
         }
-        return result;
     }
 
-    private void viewResult(int[] result) {
+    private void viewResult() {
         System.out.println("당첨 통계\n" +
                 "---");
-        for (int i = 0; i < Constants.PRINT_SIZE; i++) {
-            printLine(i, result);
-        }
-    }
-
-    private void printLine(int idx, int[] result) {
-        System.out.println(Constants.printTable[idx] + result[idx] + "개");
+        System.out.println(THREE.getPrint() + THREE.getCount() + "개");
+        System.out.println(FOUR.getPrint() + FOUR.getCount() + "개");
+        System.out.println(FIVE.getPrint() + FIVE.getCount() + "개");
+        System.out.println(FIVE_BONUS.getPrint() + FIVE_BONUS.getCount() + "개");
+        System.out.println(SIX.getPrint() + SIX.getCount() + "개");
     }
 
     private void validate(Integer bonusNumber) {
