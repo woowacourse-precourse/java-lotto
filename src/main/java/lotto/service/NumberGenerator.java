@@ -10,11 +10,10 @@ import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+@Component
 public class NumberGenerator {
-    List<List<Integer>> autoLotto;
 
-    public NumberGenerator() {
-    }
+    List<List<Integer>> autoLotto;
 
     public int calculatorLottoQuantity(int purchasePrice) {
         return purchasePrice / LottoConstant.PRICE_UNIT;
