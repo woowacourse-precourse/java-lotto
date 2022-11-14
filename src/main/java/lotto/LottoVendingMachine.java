@@ -7,9 +7,9 @@ import java.util.List;
 
 public class LottoVendingMachine {
 
-    public static final int LOTTO_NUMBERS_SIZE = 6;
-    public static final int MIN_VALUE = 1;
-    public static final int MAX_VALUE = 45;
+    public static final int LOTTO_NUMBERS_SIZE = LottoDrawMachine.LOTTO_NUMBERS_SIZE;
+    public static final int MIN_VALUE = LottoDrawMachine.MIN_VALUE;
+    public static final int MAX_VALUE = LottoDrawMachine.MAX_VALUE;
 
     public static int getLottoTickets(int purchaseAmount) {
         int lottoTickets = purchaseAmount / 1000;
@@ -30,6 +30,6 @@ public class LottoVendingMachine {
     }
 
     private static void print(List<Lotto> lottos) {
-        lottos.stream().forEach(e -> System.out.println(e));
+        lottos.stream().forEach(System.out::println);
     }
 }
