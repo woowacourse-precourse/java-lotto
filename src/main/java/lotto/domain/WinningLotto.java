@@ -6,7 +6,7 @@ import java.util.regex.Pattern;
 import static lotto.constant.ConstValue.DIGIT_REGEX;
 import static lotto.constant.Message.*;
 
-public class WinningLotto extends Lotto{
+public class WinningLotto extends Lotto {
     private int bonusNumber;
 
     public WinningLotto(List<Integer> numbers, int bonusNumber) {

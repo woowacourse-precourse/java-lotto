@@ -16,6 +16,7 @@ import static lotto.constant.Message.*;
 
 public class InputView {
     private final Validator validator = new Validator();
+
     public WinningLotto inputWinningLottoNumber() {
         System.out.println(WINNING_NUMBER_INPUT_MESSAGE);
         String lottoNumbers = Console.readLine();

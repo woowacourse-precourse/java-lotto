@@ -28,6 +28,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 public class InputViewTest {
 
     InputView inputView;
+
     @BeforeEach
     void init() {
         inputView = new InputView();
@@ -56,7 +57,7 @@ public class InputViewTest {
     }
 
     @ParameterizedTest
-    @ValueSource(strings = {"1,2,3,4,5,5","1,1,2,3,4,5"})
+    @ValueSource(strings = {"1,2,3,4,5,5", "1,1,2,3,4,5"})
     void 당첨_번호_중복_시_예외_처리(String input) {
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
@@ -66,7 +67,7 @@ public class InputViewTest {
     }
 
     @ParameterizedTest
-    @ValueSource(strings = {"0,1,2,3,4,5","1,2,3,4,5,46"})
+    @ValueSource(strings = {"0,1,2,3,4,5", "1,2,3,4,5,46"})
     void 당첨_번호_범위_예외_처리(String input) {
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
@@ -76,7 +77,7 @@ public class InputViewTest {
     }
 
     @ParameterizedTest
-    @ValueSource(strings = {"1,2,3,4,5","1,2,3,4,5"})
+    @ValueSource(strings = {"1,2,3,4,5", "1,2,3,4,5"})
     void 당첨_번호_6개_아닐_시_예외_처리(String input) {
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);

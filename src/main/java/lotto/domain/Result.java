@@ -34,7 +34,7 @@ public class Result {
                 .entrySet()
                 .stream()
                 .mapToLong(entry ->
-                    entry.getKey().getReward() * entry.getValue()
+                        entry.getKey().getReward() * entry.getValue()
                 )
                 .sum();
     }
