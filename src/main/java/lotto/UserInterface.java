@@ -2,10 +2,17 @@ package lotto;
 
 import java.util.*;
 
-public class Print {
+public class UserInterface {
 
     private HashMap<Rank, Integer> rankCount;
 
+    void printEnterAmout() {
+        System.out.println("구입금액을 입력해 주세요.");
+    }
+
+    void printEnterWinningNumber() {
+        System.out.println("\n당첨 번호를 입력해 주세요.");
+    }
     void printPurchasedLotto(List<Lotto> lottos) {
         System.out.println("\n" + lottos.size() + "개를 구매했습니다.");
         lottos.forEach(System.out::println);
