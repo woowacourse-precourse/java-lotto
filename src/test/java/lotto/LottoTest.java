@@ -89,4 +89,19 @@ class LottoTest {
         assertThatThrownBy(() -> lottoNumberCreator.createLottoWinNumber(lottoWinNumber))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @DisplayName("로또 당첨 번호 1부터 45 사이의 숫자를 입력 안할 시 예외가 발생한다.")
+    @Test
+    void inputLottoWinNumberByNumberRange() {
+        String money = "0, 2, 3, 4, 5, 6";
+        InputStream is = new ByteArrayInputStream(money.getBytes());
+        System.setIn(is);
+
+        LottoNumberCreator lottoNumberCreator = new LottoNumberCreator();
+        InputUi inputUi = new InputUi();
+        String lottoWinNumber = inputUi.inputLottoWinNumber();
+
+        assertThatThrownBy(() -> lottoNumberCreator.createLottoWinNumber(lottoWinNumber))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
