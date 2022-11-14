@@ -20,12 +20,10 @@ public class Application {
             System.out.println(message);
         }
         User user = new User();
-
         List<List<Integer>> AutoLotto = user.Count(money);
         user.PrintNumber(AutoLotto);
         List<Integer> UserLotto = user.UserLotto();
         List<Integer> result = user.CheckResult(AutoLotto, UserLotto);
-        System.out.println(AutoLotto);
         CheckCount count = new CheckCount();
         int three = count.CheckThree(result);
         int four = count.CheckFour(result);
@@ -34,15 +32,5 @@ public class Application {
         int six = count.CheckSix(result);
         ResultImpl UserResult = new ResultImpl();
         UserResult.ReturnResult(three, four, five, FiveS, six,money);
-
-
-
-
-
-
-
-
-
-
     }
 }
