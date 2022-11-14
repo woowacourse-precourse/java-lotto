@@ -19,6 +19,7 @@ public class InputView {
     public List<Integer> inputLottoNumber() {
         System.out.println(InputMessage.INPUT_WINNING_NUMBER);
         List<Integer> lottoNumbers = Arrays.stream(Console.readLine().split(",")).map(Integer::parseInt).collect(Collectors.toList());
+        validator.isValidLottoNumbers(lottoNumbers);
         return lottoNumbers;
     }
 }

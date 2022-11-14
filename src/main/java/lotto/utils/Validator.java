@@ -1,5 +1,6 @@
 package lotto.utils;
 
+import java.util.List;
 import java.util.regex.Pattern;
 import lotto.domain.ErrorMessage;
 
@@ -18,6 +19,18 @@ public class Validator {
         if(!is1000Units(Integer.parseInt(input))) {
             throw new IllegalArgumentException(ErrorMessage.MONEY_IS_NOT_1000_UNIT.toString());
         }
+    }
+
+    public void isValidLottoNumbers(List<Integer> lottoNumbers) {
+        if(!isLottoRange(lottoNumbers)) {
+            throw new IllegalArgumentException(ErrorMessage.LOTTO_NUMBER_IS_NOT_VALID_RANGE.toString());
+        }
+    }
+
+    private boolean isLottoRange(List<Integer> lottoNumbers) {
+        int rightNumberCount = (int) lottoNumbers.stream()
+                .filter(number -> 1 <= number && number <= 45).count();
+        return rightNumberCount == 6;
     }
 
     private boolean isNumber(String input) {
