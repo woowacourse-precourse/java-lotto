@@ -10,6 +10,23 @@ import java.util.Set;
 public class Lotto {
     private final List<Integer> numbers;
 
+    enum LottoReward {
+        MISS(0, 0),
+        FIFTH(3, 5000),
+        FOURTH(4, 50000),
+        THIRD(5, 1500000),
+        SECOND(5, 30000000),
+        FIRST(6, 2000000000);
+
+        private int matchCount;
+        private int reward;
+
+        LottoReward(final int matchCount, final int reward) {
+            this.matchCount = matchCount;
+            this.reward = reward;
+        }
+    }
+
     public Lotto(List<Integer> numbers) {
         HashSet<Integer> playerNumbers = Model.MakeListToSet(numbers);
         ValidatePlayerNumber(playerNumbers);
