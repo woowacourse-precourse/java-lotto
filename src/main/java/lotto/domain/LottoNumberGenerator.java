@@ -12,10 +12,10 @@ public class LottoNumberGenerator {
     public static final int END_NUMBER = 45;
     public static final int COUNT = 6;
 
-    private LottoNumberGenerator() {
+    public LottoNumberGenerator() {
     }
 
-    public static List<Integer> generateNumbers() {
+    public List<Integer> generate() {
         List<Integer> numbers = new ArrayList<>(Randoms.pickUniqueNumbersInRange(START_NUMBER, END_NUMBER, COUNT));
         numbers.sort(Comparator.naturalOrder());
         return Collections.unmodifiableList(numbers);

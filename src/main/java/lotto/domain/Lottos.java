@@ -8,21 +8,12 @@ public class Lottos {
 
     private final List<Lotto> lottos;
 
-    public Lottos(Money money) {
+    public Lottos() {
         lottos = new ArrayList<>();
-        issueLottos(money);
     }
 
-    private void issueLottos(Money money) {
-        long count = money.countPurchasable(Lotto.PRICE);
-        for (long number = 0; number < count; number++) {
-            Lotto lotto = issueLotto();
-            lottos.add(lotto);
-        }
-    }
-
-    private Lotto issueLotto() {
-        return new Lotto(LottoNumberGenerator.generateNumbers());
+    public void add(Lotto lotto) {
+        lottos.add(lotto);
     }
 
     public long getCount() {
