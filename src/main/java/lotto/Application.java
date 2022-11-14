@@ -30,7 +30,14 @@ public class Application {
 
         // 4 : has Check Number
 
+        CountingLotto countingLotto = new CountingLotto();
+        List<Integer> counting = countingLotto.hasCheckNumber(lottoNumber,makeLotto.lottoNumber,makeLotto.lottoBonusNumber);
+
         // 5 : 당첨결과출력
+
+        RankSystem rankSystem = new RankSystem();
+        rankSystem.hasPrintCount(counting);
+        rankSystem.calYield(user.buyMoney);
 
     }
 }
