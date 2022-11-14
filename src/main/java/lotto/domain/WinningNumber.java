@@ -14,6 +14,7 @@ public class WinningNumber {
     private static final String NumberNotInRange =" 숫자가 "+minNum+"~"+maxNum+"사이가 아닙니다";
     private static final String NumberNotStartWithZero =" 숫자가 "+ initNumber+"으로 시작합니다";
     private static final String charIsNotNumber = "잘못된 문자 입력입니다.";
+    private static final String NumberIsMulti =" 중복된 숫자입니다";
     private final List<Integer> numbers;
 
     private WinningNumber(String string){
@@ -29,6 +30,7 @@ public class WinningNumber {
             char temporaryLetter = string.charAt(i);
             if(temporaryLetter == rest ){
                 checkIfNumberInRange(temporaryInt);
+                ifNumberAlreadyExist(numbers,temporaryInt);
                 numbers.add(temporaryInt);
                 temporaryInt = initNumber;
                 continue;
@@ -38,6 +40,12 @@ public class WinningNumber {
             temporaryInt = temporaryLetter *mulNum + (temporaryLetter -zero);
         }
         return numbers;
+    }
+
+    private void ifNumberAlreadyExist(List<Integer> numbers,int newNumber){
+        if(numbers.contains(newNumber)){
+            throw new IllegalArgumentException(ErrorResource.errorStart+NumberIsMulti);
+        }
     }
 
     private void checkIfNumberInRange(int i){
