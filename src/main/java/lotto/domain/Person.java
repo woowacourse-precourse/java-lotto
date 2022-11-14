@@ -6,7 +6,7 @@ import java.util.stream.Collectors;
 
 public class Person {
     private List<Lotto> lottos;
-    private List<LottoPrize> results;
+    private List<LottoPrize> lottoResults;
 
     public void buyLottos(LottoMachine lottoMachine) {
         this.lottos = lottoMachine.sellLottos();
@@ -37,23 +37,23 @@ public class Person {
 
     private void setLottoResult() {
         for (Lotto lotto : lottos) {
-            results.add(getLottoResult(lotto));
+            lottoResults.add(getLottoResult(lotto));
         }
     }
 
     private int sumPrize() {
         int totalPrize = 0;
-        for (LottoPrize result : results) {
+        for (LottoPrize result : lottoResults) {
             totalPrize += result.getPrize();
         }
         return totalPrize;
     }
 
     private float getReturnRate() {
-        return Math.round((sumPrize()/results.size())*10/10.0);
+        return Math.round((sumPrize()/lottoResults.size())*10/10.0);
     }
 
     public List<LottoPrize> getLottoResult() {
-        return results;
+        return lottoResults;
     }
 }
