@@ -73,12 +73,13 @@ public class LottoService {
     public LottoRank judge(Lotto myLotto, Lotto winLotto, int bonusNumber) {
         boolean bonus = false;
         int count = 0;
-        List<Integer> lottoList = winLotto.getNumbers();
-        for (int j = 0; j < lottoList.size(); j++) {
-            if (lottoList.contains(myLotto.getNumbers().get(j))) {
+        List<Integer> winList = winLotto.getNumbers();
+        List<Integer> myList = myLotto.getNumbers();
+        for (int i = 0; i < winList.size(); i++) {
+            if (winList.contains(myLotto.getNumbers().get(i))) {
                 count++;
             }
-            if (lottoList.contains(bonusNumber)) {
+            if (myList.contains(bonusNumber)) {
                 bonus = true;
             }
         }

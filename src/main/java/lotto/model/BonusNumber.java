@@ -19,12 +19,13 @@ public class BonusNumber {
 
     public int validate(String bonusNumberString, List<Integer> winningNumber) {
         try {
-            int bonusNumber = Integer.parseInt(bonusNumberString);
-            if (!(bonusNumber >= LOTTO_NUMBER_MIN && bonusNumber <= LOTTO_NUMBER_MAX)
-                    || winningNumber.contains(bonusNumber)) {
+            int bonusNumberInt = Integer.parseInt(bonusNumberString);
+            if (!(bonusNumberInt >= LOTTO_NUMBER_MIN && bonusNumberInt <= LOTTO_NUMBER_MAX)
+                    || winningNumber.contains(bonusNumberInt)) {
                 throw new IllegalArgumentException();
             }
-            bonusNumber = Integer.parseInt(bonusNumberString);
+            bonusNumberInt = Integer.parseInt(bonusNumberString);
+            return bonusNumberInt;
         } catch (IllegalArgumentException e) {
             LottoService.status = LottoService.ERROR_STATUS;
             OutputView.printError(INVALID_BONUS_NUMBER_ERROR);
