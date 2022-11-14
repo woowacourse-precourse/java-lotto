@@ -1,5 +1,9 @@
 package util;
 
+import domain.Lotto;
+
+import java.util.Arrays;
+
 public enum LottoRank {
 
     FIRST(6, 2_000_000_000),
@@ -15,6 +19,17 @@ public enum LottoRank {
     LottoRank(int sameCount, int prizeMoney) {
         this.sameCount = sameCount;
         this.prizeMoney = prizeMoney;
+    }
+
+    public static LottoRank getRank(Lotto lotto, int numberOfSameNumber, int bonusNumber) {
+        if (SECOND.getSameCount() == numberOfSameNumber && !lotto.isContainBonusNumber(bonusNumber)) {
+            return LottoRank.THIRD;
+        }
+
+        return Arrays.stream(values())
+                .filter(rank -> rank.getSameCount() == numberOfSameNumber)
+                .findAny()
+                .orElse(LottoRank.LOSING_TICKET);
     }
 
     public int getSameCount() {
