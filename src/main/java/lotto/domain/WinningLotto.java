@@ -14,8 +14,8 @@ public class WinningLotto {
         this.winningNumbers = winningNumbers;
     }
 
-    public void validateBonusNumber(List<Integer> winningNumbers, int bonus_number) {
-        if(winningNumbers.contains(bonus_number)){
+    public static void validateBonusNumber(List<Integer> winningNumbers, int bonusNumber) {
+        if( !Lotto.isValidNumber(bonusNumber) || winningNumbers.contains(bonusNumber)) {
             throw new IllegalArgumentException();
         }
     }
@@ -31,4 +31,5 @@ public class WinningLotto {
         }
         return null;
     }
+
 }
