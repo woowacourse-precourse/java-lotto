@@ -4,7 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 
 import java.util.List;
 
-public class BonusNumberVerifier {
+public class BonusNumberValidator {
 
     public int askBonusNumber(List<Integer> winningNumbers) throws IllegalArgumentException {
         String input = Console.readLine();

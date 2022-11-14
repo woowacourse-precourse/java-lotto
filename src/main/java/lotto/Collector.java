@@ -1,9 +1,8 @@
 package lotto;
 
-import lotto.verifier.BonusNumberVerifier;
-import lotto.verifier.WinningNumberVerifier;
+import lotto.verifier.BonusNumberValidator;
+import lotto.verifier.WinningNumberValidator;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -11,10 +10,10 @@ import java.util.stream.Collectors;
 public class Collector {
 
     public List<Integer> collectRankResults(List<Lotto> lottoList) {
-        WinningNumberVerifier winningNumberVerifier = new WinningNumberVerifier();
-        BonusNumberVerifier bonusNumberVerifier = new BonusNumberVerifier();
+        WinningNumberValidator winningNumberVerifier = new WinningNumberValidator();
+        BonusNumberValidator bonusNumberVerifier = new BonusNumberValidator();
 
-        List<Integer> winningNumbers = winningNumberVerifier.askWinningNumber();
+        List<Integer> winningNumbers = winningNumberVerifier.askWinningNumbers();
         int bonusNumber = bonusNumberVerifier.askBonusNumber(winningNumbers);
 
         List<Integer> rankResults = getRankResults(winningNumbers, bonusNumber, lottoList);

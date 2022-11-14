@@ -4,9 +4,9 @@ import camp.nextstep.edu.missionutils.Console;
 
 import java.util.List;
 
-public class WinningNumberVerifier {
+public class WinningNumberValidator {
 
-    public List<Integer> askWinningNumber() {
+    public List<Integer> askWinningNumbers() {
         String input = Console.readLine();
 
         validateInput(input);
