@@ -2,7 +2,7 @@ package lotto;
 
 import java.util.List;
 
-public class Confirm {
+public class Draw {
 
     public static int numberCount(List<Integer> winningNumbers, Lotto lotto) {
         int matchNumberCount = 0;
