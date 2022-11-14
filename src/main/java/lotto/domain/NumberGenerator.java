@@ -7,11 +7,13 @@ import java.util.List;
 
 public class NumberGenerator {
     public final List<List<Integer>> collectionOfLottoNumbers;
+    public final int quantity;
 
     public NumberGenerator(int money) {
         validate(money);
-        int quantity = money / 1000;
+        this.quantity = money / 1000;
         this.collectionOfLottoNumbers = generate(quantity);
+        printGeneratedNumbers();
     }
 
     private void validate(int money) {
@@ -34,5 +36,12 @@ public class NumberGenerator {
         Collections.sort(numbers);
         System.out.println(numbers);
         return numbers;
+    }
+
+    private void printGeneratedNumbers() {
+        System.out.println(quantity+"개를 구매했습니다.");
+        for (List<Integer> collectionOfLottoNumber : collectionOfLottoNumbers) {
+            System.out.println(collectionOfLottoNumber);
+        }
     }
 }
