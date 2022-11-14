@@ -11,8 +11,11 @@ public class ResultPrinter {
     private final int FOURTH_INCOME = 50000;
     private final int FIFTH_INCOME = 5000;
 
-    public ResultPrinter(List<Integer> resultList, int money) {
+    public void setResultList(List<Integer> resultList) {
         this.resultList = resultList;
+    }
+
+    public void setMoney(int money) {
         this.money = money;
     }
 
