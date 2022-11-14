@@ -126,11 +126,18 @@ public class Controller {
         View.Output("당첨 통계");
         View.Output("---");
         List<Integer> lottoResultKeys = new ArrayList<>(lottoResult.keySet());
-        for (int i = 0; i < 5; i++) {
-            Integer key = lottoResultKeys.get(i);
-            Integer result = lottoResult.get(i);
+        for (int i = 5; 0 < i; i--) {
+            Integer correctNumber = LottoReward.getCorrectNumberByRank(i);
+            Integer result = lottoResult.get(i+1);
             Integer reward = LottoReward.getRewardByRank(i);
-            View.Output(key+"개 일치 ("+reward+") - "+result+"개");
+
+            if (i == 2) {
+                View.Output(correctNumber + "개 일치, 보너스 볼 일치 (" + reward + ") - " + result + "개");
+            }
+
+            if (i != 2) {
+                View.Output(correctNumber + "개 일치 (" + reward + ") - " + result + "개");
+            }
         }
     }
 }
