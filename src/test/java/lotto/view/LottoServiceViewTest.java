@@ -25,6 +25,15 @@ class LottoServiceViewTest {
     }
 
     @ParameterizedTest
+    @DisplayName("유효성 검사 테스트 - 오버플로우 검사")
+    @ValueSource(strings = {"2147483648", "1000000000"})
+    void checkOverFlow(String inputMoney) {
+        assertThatThrownBy(() -> lottoServiceView.checkOverFlow(inputMoney))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("[ERROR] 구매 금액은 최대 10억 미만으로 입력해야 합니다.");
+    }
+
+    @ParameterizedTest
     @DisplayName("유효성 검사 테스트 - 자연수 입력 확인")
     @ValueSource(strings = {"as", "abasd", "1234.5", "-5123", "0.1234", "&*(^&@#$%@$  !@#", " 12345", "12 45 43"})
     void checkOnlyIntegerTest(String inputMoney) {
