@@ -2,6 +2,7 @@ package lotto.domain;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class LottoMachine extends Lotto{
 
@@ -21,8 +22,8 @@ public class LottoMachine extends Lotto{
         return convertNumbers;
     }
 
-    public static LottoMachine initLottoMachineNumber(String numbers) {
-        return new LottoMachine(convertStringToNumber(numbers));
+    public static Optional<LottoMachine> initLottoMachineNumber(String numbers) {
+        return Optional.of(new LottoMachine(convertStringToNumber(numbers)));
     }
 
     public void addBonusNumber(int bonusNumber) {
