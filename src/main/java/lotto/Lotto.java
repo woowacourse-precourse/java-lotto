@@ -23,11 +23,11 @@ public class Lotto {
         if (hashSet.size() != 6) {
             throw new IllegalArgumentException(Error.INPUT_DUPLICATE.getMessage());
         }
-        for (Integer number : numbers) {
+        numbers.forEach((number -> {
             if (number > 45 || number < 1) {
                 throw new IllegalArgumentException(Error.INVALID_INPUT_VALUE.getMessage());
             }
-        }
+        }));
     }
 
     // TODO: 추가 기능 구현
