@@ -25,7 +25,7 @@ public class LottoSystem {
     }
 
     public Integer getUserLottoCount() {
-        return userLottoNumber;
+        return userLottoCount;
     }
 
 }

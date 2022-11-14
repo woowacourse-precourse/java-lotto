@@ -39,7 +39,7 @@ public class LottoSystemService {
 
     private List<List<Integer>> getRandomLottoNumbers(int lottoCount) {
         List<List<Integer>> numbers = new ArrayList<>();
-        List<Integer> number = new ArrayList<>();
+        List<Integer> number;
 
         for (int i = 0; i < lottoCount; i++) {
             number = Randoms.pickUniqueNumbersInRange(1, 45, 6);
