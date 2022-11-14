@@ -101,3 +101,8 @@
 
 #### Judgement
 - [X] 로또 당첨 번호와 비교하여 구매 로또가 몇 등에 해당하는지 알 수 있다. - JudgementTest#getLottoRank()
+
+
+#### Statistics 
+- [X] 기록 전, 1등부터 5등까지 모두 0으로 초기화 상태이다. - StatisticsTest#isInitializedZeroCount()
+- [ ] 각 등수 별로 몇 번씩 당첨됐는지 기록한다. - StatisticsTest#record()
