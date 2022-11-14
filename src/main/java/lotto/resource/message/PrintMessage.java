@@ -1,8 +1,5 @@
 package lotto.resource.message;
 
-import lotto.domain.lotto.Lotto;
-import lotto.domain.lotto.LottoGroup;
-
 public enum PrintMessage {
     PAYOUT("구입금액을 입력해 주세요."),
     LOTTO_COUNT("%d개를 구매했습니다."),
@@ -13,7 +10,7 @@ public enum PrintMessage {
     STATISTICS_BONUS("%d개 일치, 보너스 볼 일치 (%s원) - %d개"),
     TOTAL_RETURN("총 수익률은 %,.1f%%입니다.");
 
-    private String message;
+    private final String message;
 
     PrintMessage(String message) {
         this.message = message;
