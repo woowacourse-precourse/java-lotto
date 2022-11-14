@@ -18,5 +18,10 @@ public class UserLottoTest {
         assertThatIllegalArgumentException()
                 .isThrownBy(() -> new UserLotto(input));
     }
-
+    @DisplayName("로또 번호의 개수가 6개인지 검증")
+    @Test
+    void createLottoByOverSize() {
+        assertThatIllegalArgumentException()
+                .isThrownBy(() -> new Lotto(List.of(1, 2, 3, 4, 5, 6, 7)));
+    }
 }
