@@ -18,14 +18,22 @@ public class Application {
     private final static String bonusNonNumericErrorMessage = "[ERROR] 보너스 번호는 숫자여야 합니다.";
 
     public static void main(String[] args) {
+        try {
+            simulate();
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+    
+    public static void simulate() {
         int price = readNumber(inputPriceMessage, priceNonNumericErrorMessage);
         Simulator lottoSimulator = new Simulator(price);
         printPurchaseHistory(lottoSimulator);
         Lotto winning = new Lotto(readNumbers(inputWinningNumbersMessage));
         int bonus = readNumber(inputBonusNumberMessage, bonusNonNumericErrorMessage);
         List<Integer> wins = lottoSimulator
-                        .setWinning(winning, bonus)
-                        .getStatistic();
+                .setWinning(winning, bonus)
+                .getStatistic();
         printWinningHistory(wins);
         printRateOfReturn(calculateRateOfReturn(wins, price));
     }
