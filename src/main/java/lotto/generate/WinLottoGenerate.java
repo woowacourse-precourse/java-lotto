@@ -2,6 +2,7 @@ package lotto.generate;
 
 import camp.nextstep.edu.missionutils.Console;
 import lotto.domain.Lotto;
+import lotto.domain.WinLotto;
 import lotto.enums.StringEnum;
 
 import java.util.Arrays;
@@ -18,6 +19,7 @@ public class WinLottoGenerate {
     public void askBonusNumberPrint() {
         System.out.println(StringEnum.BONUS_NUMBER.getMessage());
     }
+
     private Lotto askWinNumber() {
         askWinNumberPrint();
         String winNumberInput = Console.readLine();
@@ -26,23 +28,31 @@ public class WinLottoGenerate {
         List<Integer> numbers = Arrays.stream(winNumber).map(Integer::parseInt).collect(Collectors.toList());
         return new Lotto(numbers);
     }
+
     public void winNumberValidate(String winNumber) {
-        String inputValidate = winNumber.replaceAll("[0-9,]","");
-        if(inputValidate.length()>0){
+        String inputValidate = winNumber.replaceAll("[0-9,]", "");
+        if (inputValidate.length() > 0) {
             throw new IllegalArgumentException("[ERROR] 입력값이 유효하지 않습니다.");
         }
     }
+
     private Integer askBonus() {
         askBonusNumberPrint();
         String bonus = Console.readLine();
         bonusValidate(bonus);
         return Integer.parseInt(bonus);
     }
+
     public void bonusValidate(String bonus) {
         if (!bonus.chars().allMatch(Character::isDigit)) {
             throw new IllegalArgumentException();
         }
     }
 
+    public WinLotto generate() {
+        Lotto winLotto = askWinNumber();
+        Integer bonusInteger = askBonus();
+        return new WinLotto(winLotto, bonusInteger);
+    }
 
 }
