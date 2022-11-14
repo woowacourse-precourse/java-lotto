@@ -52,9 +52,9 @@ public class Money {
     /**
      * ROI는 투자대비 수익률로 이익금액/원금 * 100을 나타냅니다.
      */
-    public Double calculateROI(Money amount) {
-        var ROI = ((double) amount.amount / this.amount) * 100;
-        return Math.round(ROI * 100) / 100.0;
+    public Double calculateROI(Money profits) {
+        var ROI = ((double) profits.amount / this.amount) * 100;
+        return Math.round(ROI * 10) / 10.0;
     }
 
     public Money plus(Money money) {
