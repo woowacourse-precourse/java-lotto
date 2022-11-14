@@ -15,7 +15,7 @@
   - [X] 수익률은 소수점 둘째 자리에서 반올림한다
 
 ### 예외 처리
-- [ ] 사용자가 잘못된 값을 입력시 IllegalArgumentException 발생 + [ERROR] 로 시작하는 에러 메시지 출력 후 종료 한다
+- [X] 사용자가 잘못된 값을 입력시 IllegalArgumentException 발생 + [ERROR] 로 시작하는 에러 메시지 출력 후 종료 한다
 
 ### 테스트
 - [X] ~~랜덤 숫자 추출 테스트~~
