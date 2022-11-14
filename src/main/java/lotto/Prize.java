@@ -9,9 +9,9 @@ public enum Prize {
     PRIZE4(4, false, 50000),
     PRIZE5(3, false, 5000)
     ;
-    private int matching;
-    private boolean bonus;
-    private int prizeMoney;
+    private int matching = 0;
+    private boolean bonus = false;
+    private int prizeMoney = 0;
 
     Prize(int count, boolean bonus, int prizeMoney) {
         this.matching = count;
