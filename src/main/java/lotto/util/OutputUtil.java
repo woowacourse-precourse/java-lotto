@@ -5,6 +5,7 @@ import lotto.domain.User;
 import lotto.domain.enums.Message;
 import lotto.domain.enums.Number;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -44,16 +45,15 @@ public class OutputUtil {
         System.out.println(Message.BONUS_NUMBER_INPUT_ERROR);
     }
 
-    public static void printResult(Map<Number, Integer> ranks) {
+    public static void printResult(User user) {
+        Map<Number, Integer> ranks = user.getRanks();
         System.out.println(Message.TOTAL_RESULT_MESSAGE);
         System.out.println(Message.RESULT_FIFTH.getMessage() + ranks.get(Number.FIVE) + "개");
         System.out.println(Message.RESULT_FOURTH.getMessage() + ranks.get(Number.FOUR) + "개");
         System.out.println(Message.RESULT_THIRD.getMessage() + ranks.get(Number.THREE) + "개");
         System.out.println(Message.RESULT_SECOND.getMessage() + ranks.get(Number.TWO) + "개");
         System.out.println(Message.RESULT_FIRST.getMessage() + ranks.get(Number.ONE) + "개");
-    }
 
-    public static void printYield(double yield) {
-        System.out.printf(Message.YIELD_MESSAGE.getMessage(), yield);
+        System.out.printf(Message.YIELD_MESSAGE.getMessage(), user.getYield());
     }
 }
