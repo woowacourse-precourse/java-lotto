@@ -13,14 +13,15 @@ public class LottoController {
     public void run() {
 
         List<Lotto> clientLotto = buyLotto();
+        Lotto winLotto = inputWinLotto();
 
     }
 
 
     private List<Lotto> buyLotto() {
-        String input = getInput(ViewValue.BUY_INFO_MESSAGE.getValue());
+        String moneyInput = getInput(ViewValue.BUY_INFO_MESSAGE.getValue());
 
-        List<Lotto> clientLotto = lottoFacade.buyLotto(Integer.valueOf(input));
+        List<Lotto> clientLotto = lottoFacade.buyLotto(Integer.valueOf(moneyInput));
 
         System.out.println(clientLotto.size()+ViewValue.BUY_INFO_DONE.getValue());
 
@@ -31,5 +32,10 @@ public class LottoController {
     private String getInput(String message) {
         System.out.println(message);
         return Console.readLine();
+    }
+
+    private Lotto inputWinLotto() {
+        String lottoNumberInput = getInput(ViewValue.INSERT_NUMBER_INFO.getValue());
+        return lottoFacade.registerWinLotto(lottoNumberInput);
     }
 }
