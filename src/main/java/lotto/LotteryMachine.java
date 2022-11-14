@@ -2,15 +2,14 @@ package lotto;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
-import static lotto.User.bonusNumber;
+import static lotto.User.*;
 
 public class LotteryMachine {
-    private List<Integer> winningNumbers; //Lotto numbers와 같은 역할임
-    private ArrayList<List<Integer>> userNumbers;
+    private List<Integer> winningNumbers;
+    private List<List<Integer>> userNumbers;
     private List<Integer> winningCase;
-    public static List<Integer> winningPriceByCase;
+    private List<Integer> winningPriceByCase;
 
     public LotteryMachine(User user, Lotto lotto){
         this.userNumbers = user.getLotteryOfUser();
@@ -28,7 +27,7 @@ public class LotteryMachine {
     private int compare(List<Integer> lottery, List<Integer> winningNumbers) {
         int count = 0;
         for(int i=0; i<lottery.size(); i++){
-            if(winningNumbers.get(i) == lottery.get(i))
+            if(lottery.contains(winningNumbers.get(i)))
                 count++;
         }
         if(count>=3)
@@ -56,22 +55,31 @@ public class LotteryMachine {
         return this.winningCase;
     }
 
-    public void matchWinningCase(){
-        for(WinningStatus status: WinningStatus.values()){
-            winningPriceByCase = winningCase.stream()
-                            .filter(count -> count == status.getMatchNumber())
-                            .map(count -> count * status.getWinningPrice())
-                            .collect(Collectors.toList());
+    public List<Integer> getWinningPriceByCase(){
+        return this.winningPriceByCase;
+    }
+
+    private double searchWinningCase(int num){
+        for(WinningStatus status : WinningStatus.values()){
+            if(num == status.getMatchNumber())
+                return status.getWinningPrice();
         }
+        return 0;
+    }
+
+    private double matchWinningCase(){
+        winningPriceByCase = new ArrayList<>();
+        double sum = 0;
+        for(int i=0; i<winningCase.size(); i++){
+            sum += searchWinningCase(winningCase.get(i));
+        }
+        return sum;
     }
 
     public void calculateRate(){
-        double sum = 0;
-        for(int a: winningPriceByCase){
-            sum += a;
-        }
-        sum /= lottoEA*1000;
-        String rate = String.format("%.2f", sum);
-        System.out.println("총 수익률은 " + rate + "입니다.");
+        double sum = matchWinningCase();
+        sum = (sum/lottoPrice) * 100;
+        String rate = String.format("%.1f", sum);
+        System.out.println("총 수익률은 " + rate + "%입니다.");
     }
 }

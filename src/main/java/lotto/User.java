@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class User {
-    private int lottoPrice;
+    public static int lottoPrice;
     public static int lottoEA;
     private String numberString;
     private List<Integer> userNumbers;

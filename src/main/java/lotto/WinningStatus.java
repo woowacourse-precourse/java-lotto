@@ -22,4 +22,8 @@ public enum WinningStatus {
     public int getWinningPrice(){
         return winningPrice;
     }
+
+    public void winningStatistics(){
+
+    }
 }
