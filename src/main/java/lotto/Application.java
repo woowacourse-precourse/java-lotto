@@ -7,7 +7,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
-import static lotto.ErrorCheck.*;
+import static lotto.LottoErrorCheck.*;
 
 public class Application {
     public static void main(String[] args) {

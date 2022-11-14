@@ -5,7 +5,7 @@ import java.util.Set;
 import java.util.HashSet;
 import java.util.regex.Pattern;
 
-public class ErrorCheck {
+public class LottoErrorCheck {
     public static void moneyErrorCheck(String money){
         String numberPattern = "^[0-9]{1,}$";
         if(!Pattern.matches(numberPattern, money))
