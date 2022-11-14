@@ -31,10 +31,11 @@
 
 ---
 
-* 입력 클래스에서 입력을 받음   
-* Lotto 클래스에서 당첨에 대한 로직 계산   
-* 메시지에 대한 상수를 담는 enum
-* 계산 로직을 담당할 Calculator 클래스
-
+* InputView 에서 입력을 받아서 Lotto 와 Calculator 객체를 생성
+* Lotto 는 생성 번호와 당첨 번호를 비교함
+* 계산을 위한 정보를 담고 있는 Correct enum
+* 출력 내용에 대한 상수와 메서드를 담고 있는 Message enum
+* 에러 메시지 출력은 ErrorMessage enum
+* Calculator 클래스에서 결과에 대한 계산과 출력을 담당함
 
 
