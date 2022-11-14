@@ -12,6 +12,9 @@ public class Application {
         System.out.println(ORDER_INPUT_MESSAGE);
         result = new LottoOrder(Console.readLine());
         System.out.println();
+        System.out.println(result.getLottoCount() + "개를 구매했습니다.");
+        System.out.println(result);
+        System.out.println();
 
         return result;
     }
@@ -20,6 +23,10 @@ public class Application {
         // TODO: 프로그램 구현
         LottoOrder lottoOrder;
 
-        lottoOrder = getLottoOrderInput();
+        try {
+            lottoOrder = getLottoOrderInput();
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+        }
     }
 }

@@ -64,4 +64,16 @@ public class LottoOrder {
     public int getLottoCount() {
         return lottoCount;
     }
+
+    @Override
+    public String toString() {
+        StringBuilder result = new StringBuilder();
+
+        for (Lotto ticket : lottoTickets) {
+            result.append(ticket.toString());
+            result.append("\n");
+        }
+
+        return result.toString();
+    }
 }
