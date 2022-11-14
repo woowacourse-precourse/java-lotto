@@ -1,5 +1,7 @@
 package lotto.domain;
 
+import lotto.domain.validutils.LottosCashierValidUtils;
+
 import java.util.List;
 import java.util.stream.Collectors;
 

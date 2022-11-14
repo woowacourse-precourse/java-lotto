@@ -1,4 +1,4 @@
-package lotto.domain;
+package lotto.domain.validutils;
 
 import java.util.HashSet;
 import java.util.List;

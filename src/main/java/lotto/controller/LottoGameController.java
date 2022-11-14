@@ -1,6 +1,6 @@
 package lotto.controller;
 
-import lotto.domain.LottoValidationUtils;
+import lotto.domain.validutils.LottoValidationUtils;
 import lotto.dto.GameResultResponseDtos;
 import lotto.dto.LottoResponseDtos;
 import lotto.service.LottoGameService;

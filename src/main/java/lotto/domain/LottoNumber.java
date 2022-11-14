@@ -1,5 +1,7 @@
 package lotto.domain;
 
+import lotto.domain.validutils.LottoNumberValidUtils;
+
 import java.util.Objects;
 
 public class LottoNumber implements Comparable<LottoNumber>{
