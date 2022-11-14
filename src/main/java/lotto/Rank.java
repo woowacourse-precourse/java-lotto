@@ -7,7 +7,7 @@ public enum Rank {
     FIFTH(4, 3, 5000, 0),
     FOURTH(3, 4, 50000, 0),
     THIRD(2, 5, 1500000, 0),
-    SECOND(1, 5, 3000000, 1),
+    SECOND(1, 5, 30000000, 1),
     FIRST(0, 6, 2000000000, 0),
     NOTHING(5, 0, 0, 0);
     private int count;

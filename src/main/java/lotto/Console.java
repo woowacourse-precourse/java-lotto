@@ -47,7 +47,7 @@ public class Console {
 
     }
 
-    public void outputResult(HashMap<Rank,Integer> rankMap){
+    public void outputResult(HashMap<Rank,Integer> rankMap, double yield){
         System.out.println("당첨 통계\n" + "---");
         for (Rank rank: Rank.values()) {
             if (rank.getCount()==0) {
@@ -67,6 +67,7 @@ public class Console {
             }
             System.out.println(rank.getCount()+"개 일치 ("+strMoney+"원) - "+cnt+"개");
         }
+        System.out.println("총 수익률은 "+yield+"%입니다.");
 
     }
 }

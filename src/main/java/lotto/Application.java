@@ -21,8 +21,9 @@ public class Application {
 
         List<Integer>[] resultList = winningLotto.getResult(issuedList, plusNumber);
         HashMap<Rank,Integer> rankMap = controller.getRankMap(resultList);
-        console.outputResult(rankMap);
+        double yield = controller.getYield(money,rankMap);
+        console.outputResult(rankMap, yield);
 
-//        double yield = controller.getYield(money,rankMap);
+
     }
 }

@@ -64,13 +64,14 @@ public class Controller {
         return Rank.NOTHING;
     }
 
-//    public double getYield(int money, HashMap<Rank,Integer> rankMap) {
-//        if (rankMap.size() ==0 ){
-//            return 0;
-//        }
-//        double earnings = 0;
-//        for (Rank rank: rankMap.keySet()) {
-//
-//        }
-//    }
+    public double getYield(int money, HashMap<Rank,Integer> rankMap) {
+        if (rankMap.size() ==0 ){
+            return 0;
+        }
+        double earnings = 0;
+        for (Rank rank: rankMap.keySet()) {
+            earnings += rankMap.get(rank) * rank.getMoney();
+        }
+        return Math.round(earnings/money * 100 * 10) /10.0;
+    }
 }
