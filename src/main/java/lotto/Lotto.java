@@ -23,4 +23,14 @@ public class Lotto {
     public boolean existsNumber(int number) {
         return numbers.contains(number);
     }
+
+    public int countMatchingNumber(List<Integer> numbers) {
+        int count = 0;
+        for (int number : numbers) {
+            if (this.numbers.contains(number)) {
+                count ++;
+            }
+        }
+        return count;
+    }
 }
