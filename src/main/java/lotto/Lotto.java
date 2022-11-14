@@ -2,6 +2,7 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
 
+import java.util.Collections;
 import java.util.List;
 
 public class Lotto {
@@ -18,6 +19,12 @@ public class Lotto {
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException();
+        }
+    }
+
+    private void checkRangeOfNumbers(List<Integer> numbers){
+        if(Collections.max(numbers)>45 || Collections.min(numbers)<1){
+            throw new IllegalArgumentException("[ERROR] 입력값의 범위는 1부터 45입니다.");
         }
     }
 
