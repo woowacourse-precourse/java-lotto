@@ -12,7 +12,7 @@ class ModelTest {
     @Test
     void 로또_번호_생성_확인() {
         Model model = new Model();
-        final List<List<Integer>> lottos = model.repeatGettingLottoNumber(8);
+        final List<List<Integer>> lottos = model.getUsersLottos(8);
 
         System.out.println(lottos);
     }
@@ -31,6 +31,7 @@ class ModelTest {
         );
         final List<Integer>lotto = List.of(1,2,3,4,5,6);
         final int bonusNumber = 7;
+        model.USERS_LOTTOS = lottos;
 
         final HashMap<Integer, Integer> result = new HashMap<>();
         result.put(1,2);
@@ -39,9 +40,7 @@ class ModelTest {
         result.put(4,1);
         result.put(5,1);
 
-        List<Integer> prizes = model.checkLottoNumber(lotto, lottos);
-
-        assertThat(model.checkPrizeLotto(prizes,lottos, bonusNumber)).isEqualTo(result);
+        assertThat(model.checkPrize(3, bonusNumber, lotto)).isEqualTo(result);
     }
 
     @Test
@@ -57,7 +56,9 @@ class ModelTest {
 
         double result = 671927.5;
 
-        assertThat(model.calculateRateOfProfit(prizeRankings, money)).isEqualTo(result);
+        model.PRIZE_RANKINGS = prizeRankings;
+
+        assertThat(model.calculateRateOfProfit(money)).isEqualTo(result);
     }
 
     @Test
@@ -72,8 +73,9 @@ class ModelTest {
         prizeRankings.put(5,9);
 
         double result = 257.5;
+        model.PRIZE_RANKINGS = prizeRankings;
 
-        assertThat(model.calculateRateOfProfit(prizeRankings, money)).isEqualTo(result);
+        assertThat(model.calculateRateOfProfit(money)).isEqualTo(result);
     }
 
     @Test
