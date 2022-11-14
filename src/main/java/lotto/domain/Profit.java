@@ -1,6 +1,6 @@
 package lotto.domain;
 
-import lotto.util.NumberFormator;
+import lotto.util.NumberUtils;
 
 public class Profit {
 
@@ -33,7 +33,7 @@ public class Profit {
         StringBuilder message = new StringBuilder();
 
         message.append("총 수익률은 ")
-                .append(NumberFormator.roundToTwoDecimalPlaces(rate))
+                .append(NumberUtils.roundToTwoDecimalPlaces(rate))
                 .append("%")
                 .append("입니다.");
 

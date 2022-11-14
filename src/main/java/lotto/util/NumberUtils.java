@@ -2,7 +2,7 @@ package lotto.util;
 
 import java.text.DecimalFormat;
 
-public class NumberFormator {
+public class NumberUtils {
 
     private static final DecimalFormat decFormat = new DecimalFormat("###,###");
 

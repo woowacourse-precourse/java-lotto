@@ -1,7 +1,7 @@
 package lotto.domain;
 
 import java.util.Arrays;
-import lotto.util.NumberFormator;
+import lotto.util.NumberUtils;
 
 public enum Prize {
     FIFTH(3, 5_000, Boolean.FALSE),
@@ -41,7 +41,7 @@ public enum Prize {
             message.append(", 보너스 볼 일치");
         }
 
-        message.append(" (").append(NumberFormator.divideEvery3Digits(money)).append("원)");
+        message.append(" (").append(NumberUtils.divideEvery3Digits(money)).append("원)");
 
         return message.toString();
     }
