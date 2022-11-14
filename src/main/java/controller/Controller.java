@@ -36,7 +36,8 @@ public class Controller {
 
     private void getResult(Lottos lottos, WinningLotto winningLotto) {
         LottoResult lottoResult = lottos.getLottoResult(winningLotto);
+
         int totalWinnings = lottoResult.getLottoTotalMoney();
-        System.out.println("총 당첨금 : " + totalWinnings);
+        double yield = LottoGame.getYield(totalWinnings, lottos.getLottoPrice());
     }
 }

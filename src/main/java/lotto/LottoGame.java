@@ -35,4 +35,8 @@ public class LottoGame {
 
         return new WinningLotto(new Lotto(winningLotto), bonusNumber);
     }
+
+    public static double getYield(int totalWinnings, int lottoPrice) {
+        return (double) totalWinnings / lottoPrice;
+    }
 }
