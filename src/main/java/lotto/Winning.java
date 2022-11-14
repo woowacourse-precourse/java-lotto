@@ -39,6 +39,7 @@ public class Winning {
             statistics.merge(analysis(lotto), 1, (value, putValue) -> value + 1);
         }
         printStatistics(statistics);
+        printTotalReturn(price, statistics);
     }
 
     private static void printStatistics(Map<Prize, Integer> statistics) {
@@ -48,4 +49,19 @@ public class Winning {
         }
     }
 
+    private static long totalReturn(Map<Prize, Integer> statistics) {
+        long total = 0;
+
+        for (Prize prize : PRIZES) {
+            total += prize.getReturn(statistics.getOrDefault(prize, 0));
+        }
+        return total;
+    }
+
+    private static void printTotalReturn(int price, Map<Prize, Integer> statistics) {
+        System.out.println(
+                "총 수익률은 "
+                        + String.format("%.1f", totalReturn(statistics) * 100 / (float) price)
+                        + "%입니다.");
+    }
 }
