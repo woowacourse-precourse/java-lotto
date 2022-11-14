@@ -197,6 +197,60 @@ class ApplicationTest extends NsTest {
                 .hasMessageContaining("보너스 번호를 제외한 로또 번호는 6개를 입력해야 합니다.");
     }
 
+    @Test
+    void 보너스번호입력_기능테스트() {
+        String input = "7";
+        OutputStream out = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(out));
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+        assertSimpleTest(() -> {
+            int bonusNumber = Application.pickBonusNumber(new Lotto(List.of(1,2,3,4,5,6)));
+            assertThat(bonusNumber).isEqualTo(Integer.parseInt(input));
+        });
+    }
+
+    @Test
+    void 보너스번호입력_예외테스트_범위외입력() {
+        String input = "46";
+        OutputStream out = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(out));
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+        assertThatThrownBy(() -> {
+            int bonusNumber = Application.pickBonusNumber(new Lotto(List.of(1,2,3,4,5,6)));
+        })
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("[ERROR] 1~45 범위를 벗어나는 값을 입력할 수 없습니다.");
+    }
+
+    @Test
+    void 보너스번호입력_예외테스트_문자입력() {
+        String input = "a";
+        OutputStream out = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(out));
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+        assertThatThrownBy(() -> {
+            int bonusNumber = Application.pickBonusNumber(new Lotto(List.of(1,2,3,4,5,6)));
+        })
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("[ERROR] 숫자 이외의 값을 입력할 수 없습니다.");
+    }
+
+    @Test
+    void 보너스번호입력_예외테스트_중복입력() {
+        String input = "6";
+        OutputStream out = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(out));
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+        assertThatThrownBy(() -> {
+            int bonusNumber = Application.pickBonusNumber(new Lotto(List.of(1,2,3,4,5,6)));
+        })
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("[ERROR] 기존 당첨 번호와 중복된 숫자를 입력할 수 없습니다.");
+    }
 
     @Test
     void 예외_테스트() {
