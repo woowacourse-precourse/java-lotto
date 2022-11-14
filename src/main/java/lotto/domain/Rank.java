@@ -18,7 +18,7 @@ public enum Rank {
         this.prize = new Money(prize);
     }
 
-    public static Rank from(long matchCount, boolean hasBonusNumber) {
+    public static Rank from(int matchCount, boolean hasBonusNumber) {
         if (isThird(matchCount, hasBonusNumber)) {
             return THIRD;
         }
@@ -28,7 +28,7 @@ public enum Rank {
                 .orElse(NONE);
     }
 
-    private static boolean isThird(long matchCount, boolean hasBonusNumber) {
+    private static boolean isThird(int matchCount, boolean hasBonusNumber) {
         return matchCount == THIRD.matchCount && !hasBonusNumber;
     }
 

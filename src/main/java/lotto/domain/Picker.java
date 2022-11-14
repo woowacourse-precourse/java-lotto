@@ -28,7 +28,7 @@ public class Picker {
     }
 
     private Rank pick(Lotto lotto) {
-        long matchCount = lotto.countMatchesWith(winningLotto);
+        int matchCount = lotto.countMatchesWith(winningLotto);
         boolean hasBonusNumber = lotto.contains(bonusNumber);
         return Rank.from(matchCount, hasBonusNumber);
     }

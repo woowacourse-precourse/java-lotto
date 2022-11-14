@@ -40,10 +40,10 @@ public class Lotto {
         }
     }
 
-    public long countMatchesWith(Lotto other) {
-        return numbers.stream()
+    public int countMatchesWith(Lotto other) {
+        return Math.toIntExact(numbers.stream()
                 .filter(other::contains)
-                .count();
+                .count());
     }
 
     public boolean contains(LottoNumber number) {

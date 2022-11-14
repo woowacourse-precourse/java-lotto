@@ -11,7 +11,7 @@ class RankTest {
     @DisplayName("2개 이하는 꼴등")
     @ParameterizedTest(name = "{0}개 맞으면 꼴등")
     @CsvSource(value = {"0,false,NONE", "1,false,NONE", "2,false,NONE"}, delimiter = ',')
-    void zero_one_and_two_is_NONE(long matchCount, boolean hasBonusNumber, Rank expected) {
+    void zero_one_and_two_is_NONE(int matchCount, boolean hasBonusNumber, Rank expected) {
         assertThat(Rank.from(matchCount, hasBonusNumber)).isEqualTo(expected);
     }
 
