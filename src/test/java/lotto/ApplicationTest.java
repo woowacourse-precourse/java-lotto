@@ -5,7 +5,9 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.io.*;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomUniqueNumbersInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
@@ -108,9 +110,9 @@ class ApplicationTest extends NsTest {
         assertThat(isNotDuplicated(application.getRandomLottos())).isEqualTo(true);
     }
 
-    @DisplayName("로또 금액의 각각의 배열에는 1 ~ 45 범위의 숫자가 저장된다")
+    @DisplayName("당첨 금액은 1~45 사이의 6개 숫자라면 예외가 발생하지 않는다")
     @Test
-    void createRandomLottsWithNumberWhichInRage() {
+    void createWinningPrice() {
         //given
         Application application = new Application();
         makeLottoPrice("8000");
@@ -120,6 +122,56 @@ class ApplicationTest extends NsTest {
         application.makeEachArrays();
         //then
         assertThat(inRange(application.getRandomLottos())).isEqualTo(true);
+    }
+    @DisplayName("당첨 번호는 1~45 사이의 6개의 숫자가 들어왔을때 예외가 발생하지 않는다")
+    @Test
+    void createWinningNumberWhichInRangeAndSize() {
+        //given
+        Application application = new Application();
+        makeWinningNumber("1,2,3,4,5,6");
+        //when
+        application.insertWinningNumber();
+        //then
+        assertThat((application.getWinningNumbers())).isEqualTo(checkWinningNumber("1,2,3,4,5,6"));
+    }
+
+    @DisplayName("당첨 번호는 1~45 사이 밖의 숫자가 들어왔을떄 예외가 발생한다")
+    @Test
+    void createRandomLottsWithNumberWhichOutOfRange() {
+        //given
+        Application application = new Application();
+        makeWinningNumber("1,2,3,4,5,57");
+        //when
+        //then
+        assertThatThrownBy(application::insertWinningNumber)
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("당첨 번호는 개수가 6개가 아닐때 예외가 발생한다")
+    @Test
+    void createRandomLottsWithNumberWhichOutOfSize() {
+        //given
+        Application application = new Application();
+        makeWinningNumber("1,2,3,4,5");
+        //when
+        //then
+        assertThatThrownBy(application::insertWinningNumber)
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("당첨 번호는 숫자와 ','가 아닌 값이 들어오면 예외가 발생한다")
+    @Test
+    void createRandomLottsWhichContainsNotNumberOrComma() {
+        //given
+        Application application = new Application();
+        makeWinningNumber("test");
+        //when
+        //then
+        assertThatThrownBy(application::insertWinningNumber)
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+    private List<Integer> checkWinningNumber(String s) {
+        return Arrays.stream(s.split(",")).map(Integer::parseInt).collect(Collectors.toList());
     }
 
     private boolean inRange(List<List<Integer>> randomLottos){
@@ -143,6 +195,13 @@ class ApplicationTest extends NsTest {
     }
 
     private void makeLottoPrice(String input) {
+        OutputStream out = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(out));
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+    }
+
+    private void makeWinningNumber(String input) {
         OutputStream out = new ByteArrayOutputStream();
         System.setOut(new PrintStream(out));
         InputStream in = new ByteArrayInputStream(input.getBytes());
