@@ -1,20 +1,25 @@
 package lotto.domain;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import lotto.utils.Converter;
+import lotto.utils.StringToIntConverter;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import static lotto.utils.StringToIntConverter.convert;
 
 public class Seller {
     private static final int UNIT_MONEY = 1000;
     private static final int START_NUMBER = 1;
     private static final int END_NUMBER = 45;
     private static final int NUMBER_COUNT = 6;
+    private final Converter<String, Integer> converter;
+
+    public Seller(StringToIntConverter converter) {
+        this.converter = converter;
+    }
 
     public IssuedLotto sellLotto(String money){
-        int purchaseMoney = convert(money);
+        int purchaseMoney = converter.convert(money);
         validateUnitAmount(purchaseMoney);
         return IssueLotto(purchaseMoney / UNIT_MONEY);
     }
