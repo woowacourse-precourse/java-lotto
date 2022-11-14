@@ -19,4 +19,11 @@ public class Manager {
         }
         return true;
     }
+    
+    public boolean ValidRangeOfLottoNumber(List<Integer> list){
+        for(int i=0; i<list.size(); i++){
+            if(list.get(i) < 1 || list.get(i) > 45) return false;
+        }
+        return true;
+    }
 }
