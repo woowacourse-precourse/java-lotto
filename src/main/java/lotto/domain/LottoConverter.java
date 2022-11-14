@@ -14,8 +14,10 @@ public class LottoConverter {
         return convertedNumbers;
     }
     public Lotto convertRandomNumbersToLotto(List<Integer> lottoNumbers) {
-        lottoNumbers.sort(Comparator.naturalOrder());
-        return new Lotto(lottoNumbers);
+        List<Integer> convertedNumbers = lottoNumbers.stream()
+                .sorted(Comparator.naturalOrder())
+                .collect(Collectors.toList());
+        return new Lotto(convertedNumbers);
     }
 
     public Integer convertBonus(String bonusNumber) {
