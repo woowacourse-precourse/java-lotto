@@ -25,4 +25,30 @@ public class Output {
         System.out.println("---");
     }
 
+    public void printStatistics(LinkedHashMap<Rating, Integer> statistics, int money){
+        int accumulation = 0;
+        for(Rating rating : statistics.keySet()){
+            accumulation += printStatisticsOfEach(rating, statistics.get(rating));
+        }
+        printTotalYield(money, accumulation);
+    }
+
+    private void printTotalYield(int money, int accumulation) {
+        System.out.printf("총 수익률은 %.1f%%입니다.", ((float)accumulation/money * 100));
+    }
+
+    private int printStatisticsOfEach(Rating rating, int count) {
+        if(rating == Rating.SECOND){
+            System.out.printf("%d개 일치, 보너스 볼 일치 (%s원) - %d개\n",
+                    rating.getAccord(), numberFormat(rating.getPrize()), count);
+            return rating.getAccord() * count;
+        }
+        System.out.printf("%d개 일치 (%s원) - %d개\n", rating.getAccord(), numberFormat(rating.getPrize()), count);
+        return rating.getPrize() * count;
+    }
+
+    private String numberFormat(int number){
+        NumberFormat numberFormat = NumberFormat.getInstance();
+        return numberFormat.format(number);
+    }
 }
