@@ -1,20 +1,23 @@
 ## 구현 기능 목록
-- [x] 로또 구입 기능 Customer#buyLotto()
-  - [x] 구입 급액 입력 기능 Customer#payMoney()
+- [x] 로또 구입 Customer#buyLotto()
+  - [x] 구입 급액 입력 Customer#payMoney()
     - 로또는 1개당 1000원 
     - 예외 처리
       - 1000원 단위로 입력되지 않을 경우
-- [x] 구매한 로또 번호 발행 기능 Store#drawLottoNumber()
+- [x] 구매한 로또 번호 발행 Store#drawLottoNumber()
   - 발행된 로또 출력 Lotto#showLotto()
-  - 랜덤으로 당첨 번호(6개)와 보너스 번호(1개) 발행
+  - 랜덤으로 당첨 번호(6개) 발행
   - 발행된 번호 리스트를 매개 변수로 Lotto 클래스 생성
   - 번호는 오름차순
   - 예외 처리 Lotto#Validate()
     - 당첨 번호 6개 만족하지 않을 경우
     - 당첨 번호가 중복일 경우
-- [ ] 로또 번호 비교 후 상금 및 수익률 계산 
-  - [X] 추첨된 로또 번호 입력 기능 Checker#insertWinningNumbers()
-  - [X] 보너스 로또 번호 입력 기능 Checker#insertBonusNumbers()
-  - [x] 자신의 로또 번호와 비교 기능 Checker#checkMyLotto()
-  - [x] 상금 출력 기능 Checker#showWinningStats()
-  - [ ] 수익률 계산 기능 Checker#calculateRateOfReturn()
+- [x] 로또 번호 비교 후 상금 및 수익률 계산 
+  - [X] 추첨된 로또 번호 입력 Checker#insertWinningNumbers()
+  - [X] 보너스 로또 번호 입력 Checker#insertBonusNumbers()
+  - [x] 추첨 번호, 보너스 번호와 가지고 있는 로또 번호 비교 Checker#checkMyLotto()
+    - [x] 로또 번호와 당첨 번호 비교 Checker#checkNumber
+    - [x] 보너스 번호 포함 확인 Checker#checkBonusNumber
+    - [x] 당첨 통계 출력 View#showWinningStats()
+  - [x] 수익률 계산 기능 Checker#TotalWinningAmount()
+    - [x] 수익률 출력 기능 View#showReturnRate()
