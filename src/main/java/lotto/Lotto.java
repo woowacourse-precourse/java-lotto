@@ -4,27 +4,23 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public class Lotto {
 
-    public static int LOTTO_MAX_NUMBER = 45;
-    public static int LOTTO_MIN_NUMBER = 1;
-
     public static int LOTTO_NUMBER_COUNT = 6;
 
-    private final List<Integer> numbers;
+    private final List<LottoNumber> numbers;
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
-        this.numbers = numbers;
+        this.numbers = numbers.stream()
+                .map(LottoNumber::new).collect(Collectors.toList());
     }
 
     private static void validate(List<Integer> numbers) {
         validateNumberCount(numbers);
         validateDuplication(numbers);
-        for (int number : numbers) {
-            validateNumberRange(number);
-        }
     }
 
     private static void validateNumberCount(List<Integer> numbers) {
@@ -32,15 +28,6 @@ public class Lotto {
             throw new IllegalArgumentException(
                     InvalidInputMessage.ERR_DEFAULT
                             + InvalidInputMessage.ERR_NUMBERS_COUNT
-            );
-        }
-    }
-
-    private static void validateNumberRange(int number) {
-        if (number < LOTTO_MIN_NUMBER || LOTTO_MAX_NUMBER < number) {
-            throw new IllegalArgumentException(
-                    InvalidInputMessage.ERR_DEFAULT
-                            + InvalidInputMessage.ERR_NUMBER_RANGE
             );
         }
     }
@@ -55,7 +42,7 @@ public class Lotto {
         }
     }
 
-    public List<Integer> getNumbers() {
+    public List<LottoNumber> getNumbers() {
         return Collections.unmodifiableList(numbers);
     }
 }
