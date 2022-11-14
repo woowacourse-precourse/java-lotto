@@ -56,4 +56,7 @@ public class LottoProgram {
 		}
 	}
 
+	public void matchLotto(List<Integer> lottoNumbers) {
+		lotto = new Lotto(lottoNumbers);
+	}
 }
