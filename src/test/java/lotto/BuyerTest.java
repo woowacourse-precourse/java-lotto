@@ -7,7 +7,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayInputStream;
-import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -52,5 +52,27 @@ public class BuyerTest {
         purchaseAmount = UserInterface.readPurchaseAmount();
         lotteryTickets = buyer.pickLotteryNumbers(Integer.parseInt(purchaseAmount) / 1000);
         assertEquals(8, lotteryTickets.size());
+    }
+
+
+
+    @DisplayName("구입 금액에 따라 올바른 수의 복권을 발행한다.")
+    @Test
+    void sortLotteryNumbersTest() {
+        List<List<Integer>> lotteryTicket = new ArrayList<>();
+        List<Integer> ticket = new ArrayList<>();
+        Buyer buyer = new Buyer();
+
+        ticket.add(4);
+        ticket.add(6);
+        ticket.add(5);
+        ticket.add(2);
+        ticket.add(3);
+        ticket.add(1);
+        lotteryTicket.add(ticket);
+        buyer.sortLotteryNumbers(lotteryTicket);
+        for (int i = 0; i < lotteryTicket.size(); i++) {
+            assertEquals(i + 1, lotteryTicket.get(0).get(i));
+        }
     }
 }
