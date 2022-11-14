@@ -21,6 +21,7 @@ public class Application {
         System.out.println("---");
         Map<Collect, Integer> result = lotteryResult(userLottoTotal, prize, bonus);
         lottoResultOutput(result);
+        lottoProfit(numOfLotto, result);
     }
     public static String userPayment () {
         return Console.readLine();
@@ -105,5 +106,14 @@ public class Application {
         for (Collect rk : Collect.values()) {
             System.out.println(rk.getDescription() + " - " + lotteryResult.get(rk)+"개");
         }
+    }
+    public static void lottoProfit(Integer numOfLotto, Map<Collect, Integer> lotteryResult) {
+        Integer totalPrize = 0;
+
+        for (Collect rk : Collect.values()) {
+            totalPrize += lotteryResult.get(rk)*rk.getPrize();
+        }
+        Float result = (totalPrize.floatValue() / (numOfLotto*1000))*100;
+        System.out.println("총 수익률은 " + String.format("%.1f", result) + "%입니다.");
     }
 }
