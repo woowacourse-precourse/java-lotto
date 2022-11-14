@@ -18,6 +18,7 @@ public class LottoService {
     private UserLottoInfo userLottoInfo;
     private WinningLotto winningLotto;
     private BonusNumber bonusNumber;
+    private LottoCalculator lottoCalculator;
 
     public LottoService() {
     }
@@ -79,7 +80,11 @@ public class LottoService {
     }
 
     public void calculateUserLottos() {
-        LottoCalculator lottoCalculator = new LottoCalculator(userLottoInfo, winningLotto, bonusNumber);
+        lottoCalculator = new LottoCalculator(userLottoInfo, winningLotto, bonusNumber);
         lottoCalculator.calculate();
+    }
+
+    public void showTotalLottoResult() {
+        lottoCalculator.getTotalResult();
     }
 }
