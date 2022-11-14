@@ -20,7 +20,7 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
-        if (numbers.size() != 6) {
+        if (numbers.size() != LOTTO_SIZE) {
             throw new IllegalArgumentException(SIZE_CHECK_ERROR);
         }
         if (duplicateCheck(numbers)) {
