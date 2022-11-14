@@ -24,4 +24,11 @@ public class Lotto {
     }
 
     // TODO: 추가 기능 구현
+    private void numberGenerator(List<Integer> numbers) {
+        numbers = Randoms.pickUniqueNumbersInRange(LOTTO_START_NUMBER, LOTTO_END_NUMBER, MAX_LOTTO_NUMBER_COUNT);
+    }
+
+    public boolean numberRightCompare(List<Integer> inputNumber) {
+        return numbers.containsAll(inputNumber);
+    }
 }
