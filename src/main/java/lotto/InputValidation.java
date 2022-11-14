@@ -25,7 +25,7 @@ public class InputValidation {
     }
     public static void bonusNumberValidation(String bonus , Lotto winningNumber){
         numberFormatExceptionValidation(bonus);
-        if(winningNumber.getNumbers().contains(bonus)) throw new IllegalArgumentException(BONUS_MESSAGE);
+        if(winningNumber.getNumbers().contains(Integer.parseInt(bonus))) throw new IllegalArgumentException(BONUS_MESSAGE);
     }
 }
 
