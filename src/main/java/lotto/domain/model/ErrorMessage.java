@@ -18,7 +18,8 @@ public enum ErrorMessage {
     NOT_DIVIDE_COMMAS("\",\" 를 사용하여 올바른 입력을 해 주세요"),
     BONUS_NUMBER_OUT_BOUND("유효범위에서 벗어난 숫자를 입력하셨습니다 (유효범위 : 1 ~ 45) | 입력 : "),
     BONUS_NUMBER_DUPLICATION("당첨번호에 속한 보너스 번호를 입력하였습니다 | 당첨 번호: "),
-    BONUS_NUMBER_INVALID("올바른 로또 번호를 입력 해 주세요 | 입력 : ");
+    BONUS_NUMBER_INVALID("올바른 로또 번호를 입력 해 주세요 | 입력 : "),
+    INVALID_MATCH_COUNT("도출 퇼 수 없는 결과입니다 | MATCH COUNT : ");
 
 
     private final String message;

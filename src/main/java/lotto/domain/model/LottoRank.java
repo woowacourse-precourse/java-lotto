@@ -29,8 +29,16 @@ public enum LottoRank {
     }
 
     public static LottoRank find(final String matchCount) {
+        checkCount(matchCount);
         return Arrays.stream(values()).filter(lottoRank -> lottoRank.matchCount.equals(matchCount)).findFirst()
                 .orElse(NO_MATCH);
+    }
+
+    private static void checkCount(final String matchCount) {
+        if (Integer.parseInt(matchCount) > 6 || Integer.parseInt(matchCount) < 0) {
+            throw new IllegalArgumentException(
+                    ErrorMessage.getErrorMessage(ErrorMessage.INVALID_MATCH_COUNT) + matchCount);
+        }
     }
 
     public static LottoRank of(final LottoRank lottoRank, final Boolean isBonusMatch) {
