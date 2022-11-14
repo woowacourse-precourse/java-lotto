@@ -65,21 +65,17 @@ public class ManagerService {
     public int judgeRank(int correctCount, boolean isCorrectBonus) {
         if (correctCount == Number.THREE) {
             return Number.FIVE;
-        }
-        if (correctCount == Number.FOUR) {
+        } else if (correctCount == Number.FOUR) {
             return Number.FOUR;
-        }
-        if (!isCorrectBonus && correctCount == Number.FIVE) {
+        } else if (correctCount == Number.FIVE) {
+            if (isCorrectBonus) {
+                return Number.TWO;
+            }
             return Number.THREE;
-        }
-        if (isCorrectBonus && correctCount == Number.FIVE) {
-            return Number.TWO;
-        }
-        if (correctCount == Number.SIX) {
+        } else if (correctCount == Number.SIX) {
             return Number.ONE;
         }
         return Number.ZERO;
     }
-
 
 }
