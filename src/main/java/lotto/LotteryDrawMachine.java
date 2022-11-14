@@ -16,14 +16,22 @@ public class LotteryDrawMachine {
     LotteryScratch lotteryScratch;
 
     public LotteryDrawMachine() {
-        user = new User(ui.enterPurchaseAmount());
-        lottos = generateLotto();
-        ui.buyLottos(numOfPurchasableLotto, lottos);
-        String winningNumber = ui.enterWinningNumber();
-        String bonusNumber = ui.enterBonusNumber();
-        wn = new WinningNumber(winningNumber, bonusNumber);
-        lotteryScratch = new LotteryScratch(wn, lottos, user);
-        ui.winningStat(user);
+    }
+
+    public void run() {
+        try {
+            user = new User(ui.enterPurchaseAmount());
+            lottos = generateLotto();
+            ui.buyLottos(numOfPurchasableLotto, lottos);
+            String winningNumber = ui.enterWinningNumber();
+            String bonusNumber = ui.enterBonusNumber();
+            wn = new WinningNumber(winningNumber, bonusNumber);
+            lotteryScratch = new LotteryScratch(wn, lottos, user);
+            ui.winningStat(user);
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+            return;
+        }
     }
 
     // 유저 금액만큼 로또 생성
@@ -46,5 +54,9 @@ public class LotteryDrawMachine {
 
     public List<Lotto> getLottos() {
         return lottos;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }
