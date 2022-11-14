@@ -11,7 +11,7 @@ public class Controller {
     private List<Integer> winningNumbers;
     private Rank[] ranks;
 
-    public void Controller() {
+    public void initialize() {
         view = new View();
         lottoNumbers = new ArrayList<>();
         winningNumbers = new ArrayList<>();
@@ -61,6 +61,7 @@ public class Controller {
     }
 
     public void run() {
+        initialize();
         view.printLine("구입금액을 입력해 주세요.");
         int priceNumber = view.inputPrice();
         view.printLine("");
