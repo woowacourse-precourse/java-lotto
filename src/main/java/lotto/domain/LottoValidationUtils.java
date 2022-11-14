@@ -53,8 +53,8 @@ public class LottoValidationUtils {
         return (number < MINIMUM_LOTTO_NUMBER) || (number > MAXIMUM_LOTTO_NUMBER);
     }
 
-    public static void validateDuplication(List<Integer> answers, int bonusNumber) {
-        if (answers.contains(bonusNumber)) {
+    public static void validateDuplication(List<Integer> numbers, int number) {
+        if (numbers.contains(number)) {
             throw new IllegalArgumentException(ANSWER_DUPLICATE_BONUS_NUMBER);
         }
     }
