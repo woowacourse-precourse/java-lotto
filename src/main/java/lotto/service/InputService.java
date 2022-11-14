@@ -17,11 +17,13 @@ public class InputService {
     }
 
     public static String readWinningNumber() {
+        System.out.println();
         System.out.println(WINNING_NUMBER_MESSAGE);
         return Console.readLine();
     }
 
     public static String readBonusNumber() {
+        System.out.println();
         System.out.println(BONUS_NUMBER_MESSAGE);
         return Console.readLine();
     }

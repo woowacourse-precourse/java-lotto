@@ -16,11 +16,13 @@ public class OutputService {
     }
 
     public static void printGeneratedLottos(List<Lotto> lottos) {
+        System.out.println();
         System.out.printf((PURCHASE_MESSAGE) + "%n", lottos.size());
         lottos.forEach(System.out::println);
     }
 
     public static void printResult(Result result) {
+        System.out.println();
         System.out.println(RESULT_STATUS_MESSAGE);
         System.out.println(LINE);
         System.out.println(result);
