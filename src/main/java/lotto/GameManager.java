@@ -24,8 +24,9 @@ public class GameManager {
         View.printBonusNumberMessage();
         Integer bonusNumber = inputBonusNumber();
 
-        LottoGame game = new LottoGame(price, bonusNumber, winningLotto, publishedLottos);
-        game.play();
+        LottoGame game = new LottoGame(bonusNumber, winningLotto, publishedLottos);
+        LottoResult result = game.play();
+        View.printLottoResult(result, price);
     }
 
     private Integer getCountFromPrice(Integer Price) {
