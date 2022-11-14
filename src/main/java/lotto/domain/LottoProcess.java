@@ -3,8 +3,9 @@ package lotto.domain;
 import java.util.*;
 
 public class LottoProcess {
-    final int START_COUNT = 0;
-    final int SIX_CORRECT = 6;
+    static final String RATE_OF_RETURN_STR = "총 수익률은 %.1f%%입니다.";
+    static final int START_COUNT = 0;
+    static final int SIX_CORRECT = 6;
     static final int FIVE_CORRECT = 5;
     static final int FOUR_CORRECT = 4;
     static final int THREE_CORRECT = 3;
@@ -14,6 +15,9 @@ public class LottoProcess {
     static final int FOURTH = 4;
     static final int FIFTH = 5;
     static final int REST = 6;
+    static final int NOTHING = 0;
+    static final float START_TOTAL_PRIZE=0;
+    static final int MAKE_PERCENTAGE=100;
 
     private final List<List<Integer>> lottos;
     private final List<Integer>winningNumbers;
@@ -74,15 +78,15 @@ public class LottoProcess {
     }
 
     public void calculateRateOfReturn(Map<String, Integer> ranking){
-        float totalPrize = 0;
+        float totalPrize = START_TOTAL_PRIZE;
 
         for(Rank rank : Rank.values()){
-            if(ranking.get(rank.name()) != 0){
+            if(ranking.get(rank.name()) != NOTHING){
                 totalPrize += rank.getPrize();
             }
         }
 
-        System.out.println(String.format("총 수익률은 %.1f%%입니다.",(totalPrize/this.money) * 100));
+        System.out.println(String.format(RATE_OF_RETURN_STR,(totalPrize/this.money) * MAKE_PERCENTAGE));
     }
 
 }
