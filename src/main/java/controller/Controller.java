@@ -4,9 +4,6 @@ import lotto.*;
 import view.InputView;
 import view.OutputView;
 
-import java.util.List;
-import java.util.Map;
-
 public class Controller {
     public void run() {
         Lottos lottos = getLottos();
@@ -37,7 +34,9 @@ public class Controller {
     private void getResult(Lottos lottos, WinningLotto winningLotto) {
         LottoResult lottoResult = lottos.getLottoResult(winningLotto);
 
-        int totalWinnings = lottoResult.getLottoTotalMoney();
-        double yield = LottoGame.getYield(totalWinnings, lottos.getLottoPrice());
+        double yield = lottoResult.getLottoYield(lottos);
+
+//        OutputView.printLottoResult(lottoResult);
+//        OutputView.printLottoYield(yield);
     }
 }

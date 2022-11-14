@@ -13,6 +13,12 @@ public class LottoResult {
         return lottoResult;
     }
 
+    public double getLottoYield(Lottos lottos) {
+        int totalWinMoney = getLottoTotalMoney();
+
+        return (double) totalWinMoney / lottos.getLottoPrice();
+    }
+
     public int getLottoTotalMoney() {
         int totalWinMoney = 0;
 
