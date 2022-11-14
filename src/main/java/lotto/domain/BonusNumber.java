@@ -9,10 +9,11 @@ public class BonusNumber {
     private static final int MAX_RANGE = 45;
     private final int number;
 
-    public BonusNumber(String number) {
+    public BonusNumber(String number, WinningLotto winningLotto) {
         validateInteger(number);
-        validateRange(number);
-        //validateDuplicatedByWinningNumbers(bonusNumber, winningNumbers);
+        int bonusNumber = Integer.parseInt(number);
+        validateRange(bonusNumber);
+        validateDuplicatedByWinningNumbers(bonusNumber, winningLotto);
         this.number = Integer.parseInt(number);
     }
 
@@ -24,19 +25,21 @@ public class BonusNumber {
         }
     }
 
-    private void validateRange(String number) {
-        int bonusNumber = Integer.parseInt(number);
-        System.out.println(bonusNumber);
-        if (bonusNumber < MIN_RANGE || bonusNumber > MAX_RANGE) {
+    private void validateRange(int number) {
+        if (number < MIN_RANGE || number > MAX_RANGE) {
             throw new IllegalArgumentException(BONUS_NUMBER_OUT_OF_RANGE);
         }
     }
 
-    private void validateDuplicatedByWinningNumbers(int bonusNumber, Lotto winningNumbers) {
-        List<Integer> numbers = winningNumbers.getNumbers();
-        if (numbers.contains(bonusNumber)) {
+    private void validateDuplicatedByWinningNumbers(int number, WinningLotto winningLotto) {
+        List<Integer> winningNumbers = getLotto(winningLotto).getNumbers();
+        if (winningNumbers.contains(number)) {
             throw new IllegalArgumentException(BONUS_NUMBER_DUPLICATED);
         }
+    }
+
+    private Lotto getLotto(WinningLotto winningNumbers) {
+        return winningNumbers.getWinningNumbers();
     }
 
     public int getNumber() {
