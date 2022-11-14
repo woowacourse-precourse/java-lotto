@@ -159,17 +159,42 @@ class ApplicationTest extends NsTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
-    @DisplayName("당첨 번호는 숫자와 ','가 아닌 값이 들어오면 예외가 발생한다")
+    @DisplayName("보너스 번호는 1~45 사이의 숫자 하나가 입력되면 예외가 발생하지 않는다")
     @Test
-    void createRandomLottsWhichContainsNotNumberOrComma() {
+    void createBonusNumberWhichInRange() {
+        //given
+        Application application = new Application();
+        makeWinningNumber("1");
+        //when
+        application.insertBonusNumberSaveNumber();
+        //then
+        assertThat(application.getBonusNumber()).isEqualTo(1);
+    }
+
+    @DisplayName("보너스 번호는 1~45 사이의 범위를 넘어가는 숫자가 입력되면 예외가 발생한다")
+    @Test
+    void createBonusNumberWhichOutOfRange() {
+        //given
+        Application application = new Application();
+        makeWinningNumber("60");
+        //when
+        //then
+        assertThatThrownBy(application::insertBonusNumberSaveNumber)
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("보너스 번호는 1~45 사이의 범위를 넘어가는 숫자가 입력되면 예외가 발생한다")
+    @Test
+    void createBonusNumberWhichIsNotNumber() {
         //given
         Application application = new Application();
         makeWinningNumber("test");
         //when
         //then
-        assertThatThrownBy(application::insertWinningNumber)
+        assertThatThrownBy(application::insertBonusNumberSaveNumber)
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
     private List<Integer> checkWinningNumber(String s) {
         return Arrays.stream(s.split(",")).map(Integer::parseInt).collect(Collectors.toList());
     }
