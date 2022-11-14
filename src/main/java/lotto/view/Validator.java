@@ -2,6 +2,7 @@ package lotto.view;
 
 import lotto.view.constant.ValidationRegex;
 
+import java.util.List;
 import java.util.regex.Pattern;
 
 public class Validator {
@@ -14,5 +15,23 @@ public class Validator {
 
     public static boolean isNumber (String input) {
         return Pattern.matches(NUMBER_REGEX, input);
+    }
+
+    public static boolean hasNonNumericValue (List<String> numbers) {
+        for (String number : numbers) {
+            if (!isNumber(number)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static boolean hasEmptyValue (List<String> numbers) {
+        for (String number : numbers) {
+            if (isEmpty(number)) {
+                return true;
+            }
+        }
+        return false;
     }
 }
