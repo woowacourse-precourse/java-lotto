@@ -37,4 +37,28 @@ public class Player {
             lottoTickets.add(lottoTicket.getLotto());
         }
     }
+
+    public long getMoney(){
+        return money;
+    }
+
+    public List<List<Integer>> getLottoTickets(){
+        return lottoTickets;
+    }
+
+    public Map<Ranking, Long> getWinningResult(){
+        return winningResult;
+    }
+
+    public double getReturnRate(){
+        return returnRate;
+    }
+
+    public void setWinningResult(Map<Ranking, Long> winningResult){
+        this.winningResult = winningResult;
+    }
+
+    public void setReturnRate(double returnRate){
+        this.returnRate = returnRate;
+    }
 }
