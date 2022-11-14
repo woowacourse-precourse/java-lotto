@@ -17,121 +17,62 @@
 
 ---
 
-### `class LottoGameController` [ - ]
+### 로또 게임의 전체적인 과정을 컨트롤하는 기능 [ - ]
 
-로또 게임의 전체적인 과정을 컨트롤하는 기능
+### 콘솔 입력 관련 기능 [ - ]
 
-- `void runGame()` [ - ]
+- 콘솔로부터 정수를 하나 입력받는 기능 [ - ]
 
-### `class ConsoleInputView` [ - ]
+- 콘솔로부터 쉽표로 구분된 여러 개의 정수를 한 번에 입력받는 기능 [ - ]
 
-콘솔 입력 관련 기능
 
-- `int readInteger()` [ - ]
+### 콘솔 출력 관련 기능 [ - ]
 
-  콘솔로부터 정수를 하나 입력받는 기능
+- 콘솔에 문자열을 출력하는 기능 [ - ]
 
-- `List<Integer> readIntegers()` [ - ]
+- 콘솔에 여러 개의 변수를 리스트 형식으로 출력하는 기능 [ - ]
 
-  콘솔로부터 쉽표로 구분된 여러 개의 정수를 한 번에 입력받는 기능
+- 예외 상황 시 콘솔에 에러 문자열을 출력하는 기능 [ - ]
 
-### `class ConsoleOutputView` [ - ]
+### 구입 금액 관련 기능 [ O ]
 
-콘솔 출력 관련 기능
+- 1000원 단위인지 확인 후 객체 생성 [ O ]
 
-- `void println(String)` [ - ]
+- 구입 금액으로 살 수 있는 로또 갯수를 계산하는 기능 [ O ]
 
-  콘솔에 문자열을 출력하는 기능
+### 로또 관련 기능 [ O ]
 
-- `void println(List<Integer>)` [ - ]
+- 정수 리스트의 정수 갯수, 각 정수가 특정 범위에 속하는 지 등을 확인 후 객체 생성 기능 [ O ]
 
-  콘솔에 여러 개의 변수를 리스트 형식으로 출력하는 기능
+- 로또 숫자 배열을 얻어오는 기능 [ O ]
 
-- `void printlnError(String)` [ - ]
+### 로또 생성 관련 기능 [ O ]
 
-  예외 상황 시 콘솔에 에러 문자열을 출력하는 기능
+- 무작위 로또 번호를 만들어 자동 로또를 생성하는 기능   [ O ]
 
-### `class Payment` [ - ]
+### 당첨 번호 관련 기능 [ O ]
 
-구입 금액 관련 기능
+- 중복되지 않는지, 범위에 벗어나지 않는지 확인 후 당첨 번호 생성 하는 기능 [ O ]
 
-- `Payment(int)` [ - ]
-  
-  1000원 단위인지 확인 후 객체 생성
+- 해당 당첨번호에 대해 로또의 당첨 결과를 확인하는 기능  [ O ]
 
-- `int getLottoCount()` [ - ]
+### 당첨 결과 관련 기능 [ - ]
 
-  구입 금액으로 살 수 있는 로또 갯수를 계산하는 기능
+- 당첨 결과의 상금을 얻어오는 기능 [ - ]
 
-### `class Lotto` [ - ]
+- 당첨 결과의 설명을 얻어오는 기능 [ - ]
 
-로또 관련 기능
+### 당첨 통계 관련 기능 [ - ]
 
-- `Lotto(List<Integer>)` [ O ]
+- 당첨 내역 설명을 얻어오는 기능 [ - ]
 
-  정수 리스트의 정수 갯수, 각 정수가 특정 범위에 속하는 지 등을 확인 후 객체 생성
+- 총 수익률 설명을 얻어오는 기능 [ - ]
 
-- `LottoResult check(WinningNumbers)` [ - ]
+### 당첨 통계 생성 관련 기능 [ - ]
 
-  해당 `Lotto`의 당첨 결과를 확인하는 기능 
+- 구입 금액 만으로 객체 생성 [ - ]
 
-- `List<Integer> getNumbers()` [ - ]
+- 당첨 결과 설정 기능 [ - ]
 
-  로또 숫자 배열을 얻어오는 기능
-
-### `class LottoGenerator` [ - ]
-
-로또 생성 관련 기능
-
-- `static Lotto autoGenerate()` [ - ]
-
-  무작위 로또 번호를 만들어 자동 로또를 생성하는 기능  
-
-### `class WinningNumbers` [ - ]
-
-당첨 번호 관련 기능
-
-- `WinningNumbers(List<Integer>, int)` [ - ]
-
-  중복되지 않는지, 범위에 벗어나지 않는지 확인 후 당첨 번호 생성
-
-### `enum LottoResult` [ - ]
-
-당첨 결과 관련 기능
-
-- `int getPrize()` [ - ]
-
-  당첨 결과의 상금을 얻어오는 기능
-
-- `String getDescription()` [ - ]
-
-  당첨 결과의 설명을 얻어오는 기능
-
-### `class LottoStatistics` [ - ]
-
-당첨 통계 관련 기능
-
-- `String getHistoryDescription()` [ - ]
-
-  당첨 내역 설명을 얻어오는 기능
-
-- `String getReturnRateDescription()` [ - ]
-
-  총 수익률 설명을 얻어오는 기능
-
-### `class LottoStatisticsGenerator` [ - ]
-
-당첨 통계 생성 관련 기능
-
-- `public LottoStatisticsGenerator(Payment)` [ - ]
-
-  구입 금액만 알 수 있을 때 먼저 `LottoStatisticsGenerator` 를 생성
-
-- `public void setResult(List<LottoResult>)` [ - ] 
-
-  당첨 결과를 설정
-
-- `public void generate()` [ - ]
-
-  구입 금액과 당첨 결가를 이용해서 `LottoStatistics`를 생성하는 기능
+- 구입 금액과 당첨 결가를 이용해서 당첨 통계를 생성하는 기능 [ - ]
   - `setResult()`가 호출되기 전에 호출된다면 exception 반환
