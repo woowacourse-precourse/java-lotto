@@ -27,7 +27,7 @@ public enum Result {
         return money;
     }
 
-    public static Result getResult(int score) {
+    public static Result computeScore(int score) {
         return Arrays.stream(Result.values())
                 .filter(result -> result.score == score)
                 .findAny()

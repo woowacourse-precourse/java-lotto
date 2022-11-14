@@ -30,7 +30,7 @@ public class Lotto {
             score++;
         }
 
-        return Result.getResult(score);
+        return Result.computeScore(score);
     }
 
     public void print() {
