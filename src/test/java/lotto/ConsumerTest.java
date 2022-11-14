@@ -14,7 +14,7 @@ public class ConsumerTest {
             Consumer consumer = new Consumer();
             final byte[] buf = String.join("\n", "2002").getBytes();
             System.setIn(new ByteArrayInputStream(buf));
-            consumer.purchaseLotto();
+            consumer.purchase();
         }).isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -24,7 +24,7 @@ public class ConsumerTest {
             Consumer consumer = new Consumer();
             final byte[] buf = String.join("\n", "100").getBytes();
             System.setIn(new ByteArrayInputStream(buf));
-            consumer.purchaseLotto();
+            consumer.purchase();
         }).isInstanceOf(IllegalArgumentException.class);
     }
 }
