@@ -25,14 +25,11 @@ public class Application {
         int bonusNumber = numbersReceiver.setBonusNumber();
 
         Lotto lotto = new Lotto(basicWinningNumbers);
-        List<Integer> winningCounter = lotto.countMatches(purchasedLottos);
-        List<Boolean> winningBonus = lotto.matchBonus(bonusNumber,purchasedLottos);
 
-        Map<WinningNumbers, Long> winningCaseStatistics = lotto.countWinningCase(winningCounter, winningBonus);
-        double rawRewardRate = lotto.calculateRewardRate(winningCounter, winningBonus, startMoney);
+        Map<WinningNumbers, Long> winningCaseStatistics = lotto.countWinningCase(bonusNumber, purchasedLottos);
+        double rawRewardRate = lotto.calculateRewardRate(bonusNumber, purchasedLottos, startMoney);
 
         outputPrinter.printWinningStatistics(winningCaseStatistics);
         outputPrinter.printRewardRate(rawRewardRate);
-
     }
 }

@@ -15,7 +15,7 @@ public class Lotto {
         this.numbers = numbers;
     }
 
-    private void validate(List<Integer> numbers) throws IllegalArgumentException {
+    public void validate(List<Integer> numbers) throws IllegalArgumentException {
         checkNumberLength(numbers);
 
         for (Integer number : numbers) {
@@ -25,7 +25,7 @@ public class Lotto {
         makeSureUniqueNumbers(numbers);
     }
 
-    private void validateBonus(int bonusNumer) throws IllegalArgumentException {
+    public void validateBonus(int bonusNumer) throws IllegalArgumentException {
         checkNumberRange(bonusNumer);
 
         makeSureUniqueNumber(bonusNumer, numbers);
@@ -54,8 +54,10 @@ public class Lotto {
         return result;
     }
 
-    public double calculateRewardRate(List<Integer> normalNumbers, List<Boolean> bonusNumbers, long totalMoney) {
+    public double calculateRewardRate(int bonusNumber, List<List<Integer>> lottoBundle, long totalMoney) {
         double sum = 0;
+        List<Integer> normalNumbers = countMatches(lottoBundle);
+        List<Boolean> bonusNumbers = matchBonus(bonusNumber, lottoBundle);
 
         for (int singleLotto = 0; singleLotto < normalNumbers.size(); singleLotto++){
             int match = normalNumbers.get(singleLotto);
@@ -66,7 +68,9 @@ public class Lotto {
         return sum/totalMoney;
     }
 
-    public Map<WinningNumbers, Long> countWinningCase(List<Integer> normalNumbers, List<Boolean> bonusNumbers) {
+    public Map<WinningNumbers, Long> countWinningCase(int bonusNumber, List<List<Integer>> lottoBundle) {
+        List<Integer> normalNumbers = countMatches(lottoBundle);
+        List<Boolean> bonusNumbers = matchBonus(bonusNumber, lottoBundle);
         Map<WinningNumbers, Long> result = new EnumMap<>(WinningNumbers.class);
 
         for (int singleLotto = 0; singleLotto < normalNumbers.size(); singleLotto++) {
