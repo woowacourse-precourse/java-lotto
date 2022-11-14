@@ -37,4 +37,10 @@ public class LottoStatistics {
         }
         return newKey;
     }
+
+    public double getProfits(List<Lotto> lottos, Lotto winningLotto, int bonus, int money) {
+        countWinningMoney(lottos, winningLotto, bonus);
+        double profits = (double) winningMoney / money;
+        return profits;
+    }
 }
