@@ -28,4 +28,14 @@ public class LottoUtils {
             throw new IllegalArgumentException();
         }
     }
+
+    public static void checkUniqueNumbers(List<Integer> numbers) {
+        List<Integer> numbers2 = numbers.stream()
+                .distinct()
+                .collect(Collectors.toList());
+
+        if(numbers.size() != numbers2.size()){
+            throw new IllegalArgumentException();
+        }
+    }
 }
