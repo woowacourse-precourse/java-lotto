@@ -7,8 +7,11 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static lotto.domain.game.Lotto.*;
+
 public class CreateLotto {
     private List<Integer> lotto;
+
 
     public CreateLotto(){
         List<Integer> temLotto = generateLotto();
@@ -17,7 +20,7 @@ public class CreateLotto {
     }
 
     public List<Integer> generateLotto(){
-        return Randoms.pickUniqueNumbersInRange(1, 45, 6).stream().sorted().collect(Collectors.toList());
+        return Randoms.pickUniqueNumbersInRange(LOTTO_MIN_RANGE, LOTTO_MAX_RANGE, LOTTO_COUNT).stream().sorted().collect(Collectors.toList());
     }
 
     public void sortNatural(){
