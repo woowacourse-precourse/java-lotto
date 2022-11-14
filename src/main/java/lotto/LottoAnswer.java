@@ -3,6 +3,7 @@ package lotto;
 import java.util.ArrayList;
 import java.util.List;
 
+import static Error.ErrorLottoNumbers.isDuplicateInput;
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class LottoAnswer {
@@ -15,14 +16,22 @@ public class LottoAnswer {
 
   private void setLottoAnswer() {
     String answer;
-    System.out.println("당첨 번호를 입력해 주세요.");
-    answer = readLine();
+      System.out.println("당첨 번호를 입력해 주세요.");
+      answer = readLine();
+    System.out.println();
     String answer_arr[] = answer.split(",");
     for (int i = 0; i < 6; i++) {
-      lotto_answer.add(Integer.valueOf(answer_arr[i]));
+      if (isDuplicateInput(lotto_answer, Integer.valueOf(answer_arr[i]))) {
+        throw new IllegalArgumentException();
+      }
+      lotto_answer.add(Integer.valueOf(answer_arr[i])); // try catch 문 작성하는 것 권장
     }
     System.out.println("보너스 번호를 입력해 주세요.");
     bonus_number = Integer.parseInt(readLine());
+    if (isDuplicateInput(lotto_answer, bonus_number)) {
+      throw new IllegalArgumentException();
+    }
+    System.out.println();
   }
 
   public boolean haveNumber(Integer number) {
