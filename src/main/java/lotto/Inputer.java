@@ -4,30 +4,44 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 
 import java.util.ArrayList;
 import java.util.List;
+import lotto.ExceptionChecker.BonusNumberChecker;
+import lotto.ExceptionChecker.IntegerChecker;
+import lotto.ExceptionChecker.Lotto;
+import lotto.ExceptionChecker.MoneyInputChecker;
 
 public class Inputer {
+    List<Integer> a = new ArrayList<>();
+    Lotto lotto = new Lotto(a);;
+
     private static final String REGEX = ",";
+
 
     public int inputMoney() {
 
-        int userInputMoney = Integer.parseInt(readLine());
+        String userInputMoneyString = readLine();
+        IntegerChecker integerChecker = new IntegerChecker(userInputMoneyString);
+        MoneyInputChecker moneyInputChecker = new MoneyInputChecker(integerChecker.numberReturn());
 
-        return userInputMoney;
+        return moneyInputChecker.moneyReturn();
     }
 
     public List<Integer> createLottoWinNumber() {
 
         String lottoWin = readLine();
-        List<Integer> lottoWinNumberList = lottoWinList(lottoWin);
+
+        Lotto lotto = new Lotto(lottoWinList(lottoWin));
+        List<Integer> lottoWinNumberList = lotto.lottoReturn();
 
         return lottoWinNumberList;
     }
 
     public int inputLottoBonusNumber() {
+        String bonusNumber = readLine();
 
-        int bonusNumber = Integer.parseInt(readLine());
+        IntegerChecker integerChecker = new IntegerChecker(bonusNumber);
+        BonusNumberChecker bonusNumberChecker = new BonusNumberChecker(integerChecker.numberReturn());
 
-        return bonusNumber;
+        return bonusNumberChecker.bonusReturn();
     }
 
 
@@ -38,10 +52,10 @@ public class Inputer {
         List<Integer> lottoWinList = new ArrayList<>();
 
         for (int i = 0; i < lottoWinArray.length; i++) {
-            lottoWinList.add(Integer.parseInt(lottoWinArray[i]));
+            IntegerChecker integerChecker = new IntegerChecker(lottoWinArray[i]);
+            lottoWinList.add(integerChecker.numberReturn());
         }
 
         return lottoWinList;
     }
-
 }
