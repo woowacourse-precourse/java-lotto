@@ -10,11 +10,11 @@ import static lotto.utils.ErrorMessages.WINNING_NUMBERS_SEPARATOR;
 public class WinningLotto {
     private static final int NUMBERS_SIZE = 6;
     private static final String SEPARATOR = ",";
-    private final Lotto winningNumbers;
+    private final Lotto winningLotto;
 
     public WinningLotto(String numbers) {
         validateSeparator(numbers);
-        this.winningNumbers = generateLotto(numbers);
+        this.winningLotto = generateLotto(numbers);
     }
 
     private void validateSeparator(String numbers) {
@@ -25,11 +25,11 @@ public class WinningLotto {
     }
 
     private Lotto generateLotto(String numbers) {
-        List<Integer> lottoNumbers = numbersToList(numbers);
+        List<Integer> lottoNumbers = toIntegerList(numbers);
         return new Lotto(lottoNumbers);
     }
 
-    private List<Integer> numbersToList(String numbers) {
+    private List<Integer> toIntegerList(String numbers) {
         try {
             return Arrays.stream(numbers.split(SEPARATOR))
                     .map(Integer::parseInt)
@@ -40,6 +40,14 @@ public class WinningLotto {
     }
 
     public Lotto getWinningNumbers() {
-        return this.winningNumbers;
+        return this.winningLotto;
+    }
+
+    public int getMatchCount(List<Integer> lottoNumbers) {
+        List<Integer> winningNumbers = winningLotto.getNumbers();
+        long count = lottoNumbers.stream()
+                .filter(winningNumbers::contains)
+                .count();
+        return Long.valueOf(count).intValue();
     }
 }

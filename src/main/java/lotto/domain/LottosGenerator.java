@@ -31,4 +31,8 @@ public class LottosGenerator {
     private void sortNumbers(List<Integer> numbers) {
         Collections.sort(numbers);
     }
+
+    public List<Lotto> getLottos() {
+        return this.lottos;
+    }
 }
