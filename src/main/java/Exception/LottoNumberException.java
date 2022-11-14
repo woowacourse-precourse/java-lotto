@@ -3,8 +3,8 @@ package Exception;
 import java.util.regex.Pattern;
 
 public class LottoNumberException {
-    private static String NOTNUMBER_ERRORMESSAGE = "[ERROR] 숫자만 입력해주세요.";
-    private static String OUTOFRANGE_ERRORMESSAGE = "[ERROR] 1~45사이의 숫자만 입력해주세요.";
+    private static final String NOTNUMBER_ERRORMESSAGE = "[ERROR] 숫자만 입력해주세요.";
+    private static final String OUTOFRANGE_ERRORMESSAGE = "[ERROR] 1~45사이의 숫자만 입력해주세요.";
 
     public static void checkException(String number) {
 
