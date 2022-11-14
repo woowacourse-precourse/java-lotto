@@ -34,7 +34,7 @@ public class Application {
         for(int i = 0; i < lottoCount; i++){
             int countTmp = 0;
 
-            countTmpCounter(lottoArray[i], userInputLottoNumber, countTmp);
+            countTmp = countTmpCounter(lottoArray[i], userInputLottoNumber, countTmp);
 
             winningStatisticsMaker(lottoArray[i], userInputBonusNumber, correctCount, countTmp);
         }
@@ -42,7 +42,7 @@ public class Application {
         yieldCalculation(correctCount, purchasedValue);
     }
 
-    public static void countTmpCounter(int[] lottoArray, int[] userInputLottoNumber, int countTmp){
+    public static int countTmpCounter(int[] lottoArray, int[] userInputLottoNumber, int countTmp){
         for (int i = 0; i < 6; i++){
             for (int j = 0; j < 6; j++){
                 if (lottoArray[i] == userInputLottoNumber[j]){
@@ -50,6 +50,8 @@ public class Application {
                 }
             }
         }
+
+        return countTmp;
     }
 
     public static void winningStatisticsMaker(int[] lottoArray, int userInputBonusNumber, int[] correctCount, int countTmp){
@@ -94,10 +96,15 @@ public class Application {
         System.out.println("%입니다.");
     }
 
-    public static int buyLotto(int purchasedValue){
+    public static int buyLotto(){
+        int purchasedValue;
         System.out.println("구입금액을 입력해 주세요.");
         purchasedValue = Integer.parseInt(Console.readLine());
 
+        return purchasedValue;
+    }
+
+    public static int checkHowManyLotto(int purchasedValue){
         if (purchasedValue % 1000 != 0) {
             System.out.println("[ERROR] 로또 구입 금액은 1000원으로 나누어 떨어져야 합니다.");
             throw new IllegalArgumentException();
@@ -122,13 +129,15 @@ public class Application {
     }
 
     public static void startLotto() {
-        int purchasedValue = 0;
+        int purchasedValue;
         String userInputLotto = "";
         String[] userInputLottoTmp = new String[6];
         int[] userInputLottoNumber = new int[6];
         int userInputBonusNumber = 0;
 
-        int lottoCount = buyLotto(purchasedValue);
+        purchasedValue = buyLotto();
+
+        int lottoCount = checkHowManyLotto(purchasedValue);
 
         int[][] lottoArray = new int[lottoCount][6];
 
