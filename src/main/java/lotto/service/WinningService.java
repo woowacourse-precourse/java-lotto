@@ -6,7 +6,7 @@ import lotto.domain.WinningNumber;
 
 import java.util.List;
 
-public class LottoService {
+public class WinningService {
     private static final int NUMBER_OF_RANKING = Ranking.values().length;
 
     public int[] compareAllLottoWithWinningNumbers(List<Lotto> lottos, WinningNumber winningNumber) {
@@ -47,10 +47,5 @@ public class LottoService {
 
     public boolean hasBonusNumber(Lotto lotto, int bonusNumber) {
         return lotto.getNumbers().contains(bonusNumber);
-    }
-
-    public double calculateRateOfReturn(int purchaseAmount, int reward) {
-        double rateOfReturn = ((double)reward / purchaseAmount) * 100 - 100;
-        return Math.round((rateOfReturn * 10) / 10.0);
     }
 }
