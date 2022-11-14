@@ -27,7 +27,7 @@ public class Output {
             sb.append(score.getPrint()).append(amount).append("개").append(System.getProperty("line.separator"));
         }
         System.out.println(sb.toString());
-        System.out.println("총 수익률은 "+ totalBenefit/lottos.getPaid() + "%입니다.");
+        System.out.println("총 수익률은 "+ (double)totalBenefit/lottos.getPaid() + "%입니다.");
     }
 
     public static void showError(Error error) {
