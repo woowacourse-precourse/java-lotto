@@ -66,4 +66,14 @@ public class SimulatorTest {
                 List.of(1, 2, 3, 4, 5, 6)
         );
     }
+
+    @DisplayName("복권 발행 시 오름차순으로 정렬한다.")
+    @Test
+    void generateLottoStringOutputSortTest() {
+        Simulator simulator = new Simulator(1000);
+        assertRandomUniqueNumbersInRangeTest(
+                () -> assertThat(simulator.generate().toString()).isEqualTo("[1, 2, 3, 4, 5, 6]"),
+                List.of(6, 5, 4, 3, 2, 1)
+        );
+    }
 }
