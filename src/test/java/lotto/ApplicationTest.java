@@ -72,6 +72,14 @@ class ApplicationTest extends NsTest {
         });
     }
 
+    @Test
+    void 로또_구입갯수_테스트() {
+        assertSimpleTest(() -> {
+            run("8000");
+            assertThat(output()).contains("8개");
+        });
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
