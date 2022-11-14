@@ -9,9 +9,9 @@ import java.util.List;
 
 public class YieldMachine {
 
-    WinningNumberLotto winningNumberLotto;
-    static final Integer MAX_COUNT_OF_LOTTO_NUMBER = 6;
-    List<Integer> countOfReward;
+    private WinningNumberLotto winningNumberLotto;
+    private static final Integer MAX_COUNT_OF_LOTTO_NUMBER = 6;
+    private List<Integer> countOfReward;
 
     public YieldMachine() {
         this.winningNumberLotto = new WinningNumberLotto();
@@ -59,5 +59,9 @@ public class YieldMachine {
 
     private void printYield() {
 
+    }
+
+    public List<Integer> getCountOfReward() {
+        return this.countOfReward;
     }
 }
