@@ -22,20 +22,15 @@ public class LottoController {
     }
 
     public void run(){
-        //input price
         try {
             Integer purchaseCost = inputPrice();
 
-            //print guess number
             List<Lotto> guessNumberSet = printGuessNumber(purchaseCost);
 
-            //input Lotto number
             List<Integer> lottoNumber = inputLottoNumber();
 
-            //input bonus number
             Integer bonusNumber = inputBonusNumber();
 
-            //print statistics
             statistics(guessNumberSet, lottoNumber, bonusNumber, purchaseCost);
         }catch(IllegalArgumentException e){
             System.out.println(e.getMessage());
