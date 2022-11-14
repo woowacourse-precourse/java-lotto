@@ -23,7 +23,7 @@
     - [x] 중복되는 숫자가 있으면 예외 처리한다. - Lotto#validate()
 - [x] 보너스 번호 1개를 입력받는다. - Bonus
     - [x] 보너스 번호가 1~45 사이의 숫자가 아니면 예외 처리한다. - Formatter#verifyRangeOfLottoNumber()
-- [x] 보너스 번호가 당첨번호와 중복되면 예외 처리한다. - LottoController#validateDuplicates()
+- [x] 보너스 번호가 당첨번호와 중복되면 예외 처리한다. - Bonus#validateDuplicates()
 
 **로또 결과 계산**
 

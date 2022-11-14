@@ -3,6 +3,7 @@ package lotto.domain;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import java.util.List;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -21,6 +22,17 @@ class LottoTest {
         assertThatThrownBy(() -> new Lotto(List.of(1, 2, 3, 4, 5, 5)))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+    @DisplayName("범위를 초과한 숫자를 포함하면 예외가 발생한다.")
 
-    // 아래에 추가 테스트 작성 가능
+    @Test
+    void 범위를_초과한_숫자_포함() {
+        assertThatThrownBy(() -> new Lotto(List.of(1, 2, 3, 4, 5, 6, 70)))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+
+    @Test
+    void 올바른_입력() {
+        Assertions.assertEquals(List.of(1,2,3,4,5,6), new Lotto(List.of(1,2,3,4,5,6)).getWinningNumbers());
+    }
 }
