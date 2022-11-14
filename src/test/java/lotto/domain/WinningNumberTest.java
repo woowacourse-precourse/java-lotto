@@ -1,5 +1,6 @@
 package lotto.domain;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
@@ -13,7 +14,13 @@ public class WinningNumberTest {
     @Nested
     @DisplayName("보너스 번호 관련 검증 로직")
     class ValidateBonus{
-        WinningLotto winningNumber = new WinningLotto(Arrays.asList(1,2,3,4,5,6));
+
+        WinningLotto winningLotto;
+
+        @BeforeEach
+        void 당첨번호_초기화(){
+            winningLotto = new WinningLotto(Arrays.asList(1,2,3,4,5,6));
+        }
 
         @Test
         @DisplayName("중복 숫자 입력시 예외 발생")
@@ -22,7 +29,7 @@ public class WinningNumberTest {
             int bonus = 1;
             // when
             // then
-            assertThatThrownBy(() -> winningNumber.updateBonus(bonus))
+            assertThatThrownBy(() -> winningLotto.updateBonus(bonus))
                             .isInstanceOf(IllegalArgumentException.class);
         }
 
@@ -33,7 +40,7 @@ public class WinningNumberTest {
             int bonus = 49;
             // when
             // then
-            assertThatThrownBy(() -> winningNumber.updateBonus(bonus))
+            assertThatThrownBy(() -> winningLotto.updateBonus(bonus))
                     .isInstanceOf(IllegalArgumentException.class);
         }
     }
