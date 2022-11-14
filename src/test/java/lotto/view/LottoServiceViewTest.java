@@ -6,6 +6,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
@@ -21,6 +22,15 @@ class LottoServiceViewTest {
     @BeforeEach
     void beforeEach() {
         lottoServiceView = new LottoServiceView();
+    }
+
+    @ParameterizedTest
+    @DisplayName("유효성 검사 테스트 - 자연수 입력 확인")
+    @ValueSource(strings = {"as", "abasd", "1234.5", "-5123", "0.1234", "&*(^&@#$%@$  !@#", " 12345", "12 45 43"})
+    void checkOnlyIntegerTest(String inputMoney) {
+        assertThatThrownBy(() -> lottoServiceView.checkOnlyInteger(inputMoney))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("[ERROR] 구매 금액은 숫자만 입력되어야 합니다.");
     }
 
     @ParameterizedTest
