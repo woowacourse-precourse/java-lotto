@@ -11,7 +11,7 @@ class UserTest {
 
     @Test
     void 구입금액_횟수_테스트() {
-        List<List<Integer>> numbers = User.randomLotto(8);
+        List<Lotto> numbers = User.randomLotto(8);
         assertThat(numbers.size()).isEqualTo(8);
     }
 

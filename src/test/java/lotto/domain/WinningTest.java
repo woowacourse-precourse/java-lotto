@@ -3,6 +3,7 @@ package lotto.domain;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -15,7 +16,10 @@ class WinningTest {
     @Test
     void score() {
         Winning winning = new Winning();
-        winning.score(Arrays.asList(Arrays.asList(1,2,3,4,5,6)), Arrays.asList(1,2,3,4,5,8), 6);
+        List<Lotto> list = new ArrayList<>();
+        Lotto lotto = new Lotto(Arrays.asList(1,2,3,4,5,6));
+        list.add(lotto);
+        winning.score(list, Arrays.asList(1,2,3,4,5,8), 6);
         assertThat(winning.win2).isEqualTo(1);
     }
 
@@ -23,7 +27,8 @@ class WinningTest {
     @Test
     void sameCount() {
         Winning winning = new Winning();
-        int count = winning.sameCount(Arrays.asList(1,2,3,4,5,6), Arrays.asList(6,7,8,9,10,11));
+        Lotto lotto = new Lotto(Arrays.asList(1,2,3,4,5,6));
+        int count = winning.sameCount(lotto, Arrays.asList(6,7,8,9,10,11));
         assertThat(count).isEqualTo(1);
     }
 
@@ -31,7 +36,8 @@ class WinningTest {
     @Test
     void bonusCount1() {
         Winning winning = new Winning();
-        winning.bonusCount(Arrays.asList(1,2,3,4,5,6), 6);
+        Lotto lotto = new Lotto(Arrays.asList(1,2,3,4,5,6));
+        winning.bonusCount(lotto, 6);
         assertThat(winning.win2).isEqualTo(1);
     }
 
@@ -39,7 +45,8 @@ class WinningTest {
     @Test
     void bonusCount2() {
         Winning winning = new Winning();
-        winning.bonusCount(Arrays.asList(1,2,3,4,5,6), 7);
+        Lotto lotto = new Lotto(Arrays.asList(1,2,3,4,5,6));
+        winning.bonusCount(lotto, 7);
         assertThat(winning.win3).isEqualTo(1);
     }
 
