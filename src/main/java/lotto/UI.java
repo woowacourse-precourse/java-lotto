@@ -37,13 +37,13 @@ public class UI {
         System.out.println("당첨 통계");
         System.out.println("---");
 
-        for (int rank = 5; rank > 0; rank++) {
+        for (int rank = 5; rank > 0; rank--) {
             String stringRank = Domain.rankStringMapper.get(rank);
             Rank tempRank = Rank.valueOf(stringRank);
 
-            System.out.println(tempRank.getOverlappingNumber() + "개 일치" + ", 보너스볼 일치 ".repeat(tempRank.getBonusBall())+"(" +
+            System.out.println(tempRank.getOverlappingNumber() + "개 일치" + ", 보너스 볼 일치".repeat(tempRank.getBonusBall())+" (" +
                     moneyFormatter.format(domain.getReward(rank)) + "원) - " + rankList.get(rank) + "개");
         }
-        System.out.println("총 수익률은 " + domain.getYield(rankList, numberOfLottos) + "입니다.");
+        System.out.println("총 수익률은 " + domain.getYield(rankList, numberOfLottos) + "%입니다.");
     }
 }
