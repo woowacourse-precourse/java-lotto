@@ -2,11 +2,11 @@ package lotto;
 
 import lotto.application.LottoFacade;
 import lotto.domain.Lotto;
-import lotto.domain.MoneyProcessorImpl;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.DynamicTest;
 import org.junit.jupiter.api.TestFactory;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Stream;
 
@@ -89,6 +89,30 @@ public class LottoFacadeTest {
                     String result = lottoFacade.getMargin(money, after);
 
                     assertThat(result).isEqualTo("62.5");
+                })
+        );
+    }
+
+    @TestFactory
+    @DisplayName("LottoFacade checkWinning Test")
+    Stream<DynamicTest> checkWinningTest() {
+        lottoFacade = new LottoFacade();
+
+        return Stream.of(
+                DynamicTest.dynamicTest("각 로또의 당첨점수를 구한다.", () -> {
+                    final List<Lotto> clientLotto = new ArrayList<>(
+                            List.of(new Lotto(List.of(1, 2, 3, 4, 5, 6)),
+                                    new Lotto(List.of(1, 2, 3, 4, 5, 7)),
+                                    new Lotto(List.of(1, 2, 3, 4, 5 ,8)))
+                    );
+                    final Lotto winLotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+                    final int bonus = 7;
+
+                    List<Integer> result = lottoFacade.checkWinning(clientLotto, winLotto, bonus);
+
+                    assertThat(result.size()).isEqualTo(clientLotto.size());
+                    System.out.println(result);
+                    assertThat(result).contains(5,6,7);
                 })
         );
     }

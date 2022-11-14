@@ -1,31 +1,15 @@
 package lotto.application;
 
-import lotto.domain.*;
+import lotto.domain.Lotto;
+import lotto.domain.LottoEnum;
+import lotto.domain.PriceEnum;
 
 import java.util.List;
 
+public interface LottoFacade {
+     List<Lotto> buyLotto(Integer money);
 
+     Lotto registerWinLotto(String input);
 
-public class LottoFacade {
-
-    private final LottoProcessor lottoProcessor = new LottoProcessorImpl();
-    private final MoneyProcessor moneyProcessor = new MoneyProcessorImpl();
-    private final ValidatorProcessor validatorProcessor = new ValidatorProcessorImpl();
-
-
-    public List<Lotto> buyLotto(Integer money) {
-        validatorProcessor.validateMoney(money, PriceEnum.LOTTO_PRICE);
-        Integer count = moneyProcessor.calculateLottoCount(money);
-        return lottoProcessor.createLottoByCount(count);
-    }
-
-    public Lotto registerWinLotto(String input) {
-        List<Integer> validatedLottoNumber = validatorProcessor.validateLottoNumberInput(input);
-        validatorProcessor.validateLottoSize(validatedLottoNumber.size(), LottoEnum.LOTTO);
-        return lottoProcessor.createLotto(validatedLottoNumber);
-    }
-
-    public String getMargin(Integer before, Integer after) {
-        return moneyProcessor.calculateMargin(before, after);
-    }
+     String getMargin(Integer before, Integer after);
 }
