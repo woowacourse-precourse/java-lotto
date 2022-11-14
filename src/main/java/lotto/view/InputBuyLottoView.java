@@ -9,11 +9,11 @@ public final class InputBuyLottoView extends InputView {
     private static final Pattern PATTERN = Pattern.compile("\\d+");
     private static final String INPUT_MESSAGE = "구입금액을 입력해 주세요.";
 
-    public String getValue() {
+    public Integer getValue() {
         System.out.println(INPUT_MESSAGE);
         String result = inputValue();
         validate(result);
-        return result;
+        return Integer.parseInt(result);
     }
 
     private void validate(String inputValue) {
