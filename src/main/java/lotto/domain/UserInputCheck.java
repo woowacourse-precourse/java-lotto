@@ -1,6 +1,6 @@
 package lotto.domain;
 
-import lotto.util.Validation;
+import lotto.domain.util.Validation;
 
 public class UserInputCheck {
     static Integer purchaseAmountCheck(String userInput) {

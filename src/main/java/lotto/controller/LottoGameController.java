@@ -1,5 +1,6 @@
 package lotto.controller;
 
+import java.util.List;
 import lotto.domain.LottoGame;
 import lotto.view.InputMessage;
 
@@ -9,6 +10,10 @@ public class LottoGameController {
     public void lottoGameStart() {
         LottoGame lottoGame = new LottoGame();
         inputMessage.gameStart();
-        inputMessage.purchaseAmountMessage(lottoGame.GetUserInput());
+        int amount = lottoGame.GetUserInput();
+        int count = amount / 1000;
+        inputMessage.purchaseAmountMessage(amount);
+        List<List<Integer>> lotts = lottoGame.getLottos(count);
+
     }
 }

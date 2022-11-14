@@ -1,10 +1,14 @@
-package lotto.util;
+package lotto.domain.util;
+
+import java.util.HashSet;
+import java.util.List;
 
 public class Validation {
     private static final String ERROR_MESSAGE = "[ERROR] ";
     private static final String CONTAIN_NUMBER = "숫자가 아닌 값이 포함되어 있습니다.";
     private static final String LESS_THAN_MINIMUM = "가격이 천원보다 작습니다.";
     private static final String NOT_DIVIDED = "천원으로 나누어 떨어지지 않습니다.";
+    private static final String DUPLICATE = "중복된 값이 존재합니다.";
 
     public static void isNumber(String input) throws IllegalArgumentException {
         String regExp = "^[0-9]+$";
@@ -24,6 +28,13 @@ public class Validation {
         int price = Integer.parseInt(input);
         if (price % 1000 != 0) {
             throw new IllegalArgumentException(ERROR_MESSAGE + NOT_DIVIDED);
+        }
+    }
+
+    public static void isDuplicate(List<Integer> numbers) {
+        HashSet<Integer> operators = new HashSet<>(numbers);
+        if(operators.size() != numbers.size()){
+            throw new IllegalArgumentException(ERROR_MESSAGE + DUPLICATE);
         }
     }
 }
