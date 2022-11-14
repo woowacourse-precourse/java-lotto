@@ -17,9 +17,6 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 class LottoTest {
 
     private static final List<Integer> COMPUTER = List.of(8, 21, 23, 41, 42, 43);
-    private static final List<Integer> BEFORE = List.of(42, 23, 43, 21, 8, 41);
-    private static final List<Integer> AFTER = List.of(8, 21, 23, 41, 42, 43);
-    private static final String AFTER_STRING = "[8, 21, 23, 41, 42, 43]";
 
     @DisplayName("로또 번호의 개수가 6개가 넘어가면 예외가 발생한다.")
     @Test
@@ -34,14 +31,6 @@ class LottoTest {
         // TODO: 이 테스트가 통과할 수 있게 구현 코드 작성
         assertThatThrownBy(() -> new Lotto(List.of(1, 2, 3, 4, 5, 5)))
                 .isInstanceOf(IllegalArgumentException.class);
-    }
-
-    @DisplayName("로또 번호 특정 자리에 특정 숫자가 있는지 알 수 있다")
-    @ParameterizedTest
-    @CsvSource({"0, 1, true", "0, 4, false", "1, 2, true"})
-    void isEqualPlace(int index, int number, boolean expected) {
-        boolean actual = new Lotto(List.of(1, 2, 3, 4, 5, 5)).hasPlace(index, number);
-        assertThat(actual).isEqualTo(expected);
     }
 
     @DisplayName("컴퓨터의 수와 플레이어의 수를 비교해서 몇 개의 숫자가 일치하는 지 알 수 있다")

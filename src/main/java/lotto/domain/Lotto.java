@@ -23,13 +23,13 @@ public class Lotto {
         checkDuplicate(numbers);
     }
 
-    public boolean hasPlace(int index, int number) {
-        return numbers.get(index) == number;
+    public boolean hasNumber(int number) {
+        return numbers.contains(number);
     }
 
     public int getMatchingNumber(List<Integer> player) {
         return (int) IntStream.range(0, player.size())
-                .filter(index -> hasPlace(index, player.get(index))).count();
+                .filter(index -> hasNumber(player.get(index))).count();
     }
 
     @Override
