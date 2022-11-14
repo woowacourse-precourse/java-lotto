@@ -1,5 +1,7 @@
 package util;
 
+import domain.Lotto;
+
 import java.util.List;
 
 public class ResultPrinter {
@@ -33,6 +35,12 @@ public class ResultPrinter {
                 resultList.get(RankType.SECCOND.ordinal()),
                 resultList.get(RankType.FIRST.ordinal()), calculateIncomeRate()
                 );
+    }
+
+    public void printallLottos(List<Lotto> lottoList) {
+        for(Lotto lotto : lottoList) {
+            System.out.println(lotto.getNumbers());
+        }
     }
 
     private double calculateIncomeRate() {
