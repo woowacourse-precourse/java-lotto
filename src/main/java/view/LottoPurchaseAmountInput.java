@@ -1,12 +1,10 @@
 package view;
 
-import static view.InputLottoPurchaseAmountConstants.*;
+import static view.LottoPurchaseAmountInputConstants.*;
 
 import camp.nextstep.edu.missionutils.Console;
-import controller.LottoCreate;
 
-
-public class InputLottoPurchaseAmount {
+public class LottoPurchaseAmountInput {
 	
 	public long readLottoPurchaseAmount() {
 		System.out.println(INPUT_TEXT_PURCHASE_AMOUNT);

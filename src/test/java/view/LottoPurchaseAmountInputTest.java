@@ -1,7 +1,7 @@
-package utils;
+package view;
 
 import static org.assertj.core.api.Assertions.*;
-import static utils.InputLottoPurchaseAmount.*;
+import static view.LottoPurchaseAmountInput.*;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
@@ -11,8 +11,10 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
-public class InputLottoPurchaseAmountTest {
-
+public class LottoPurchaseAmountInputTest {
+	
+	LottoPurchaseAmountInput inputLottoPurchaseAmount = new LottoPurchaseAmountInput();
+	
 	@Nested
 	class FailTest {
 
@@ -24,7 +26,7 @@ public class InputLottoPurchaseAmountTest {
 
 			for (String lottoPurchaseAmount : lottoPurchaseAmounts) {
 				readLine(lottoPurchaseAmount);
-				assertThatThrownBy(() -> readLottoPurchaseAmount()).isInstanceOf(IllegalArgumentException.class);
+				assertThatThrownBy(() -> inputLottoPurchaseAmount.readLottoPurchaseAmount()).isInstanceOf(IllegalArgumentException.class);
 			}
 		}
 
@@ -37,7 +39,7 @@ public class InputLottoPurchaseAmountTest {
 			// then
 			for (String lottoPurchaseAmount : lottoPurchaseAmounts) {
 				readLine(lottoPurchaseAmount);
-				assertThatThrownBy(() -> readLottoPurchaseAmount()).isInstanceOf(IllegalArgumentException.class);
+				assertThatThrownBy(() -> inputLottoPurchaseAmount.readLottoPurchaseAmount()).isInstanceOf(IllegalArgumentException.class);
 			}
 		}
 
@@ -50,7 +52,7 @@ public class InputLottoPurchaseAmountTest {
 			// then
 			for (String lottoPurchaseAmount : lottoPurchaseAmounts) {
 				readLine(lottoPurchaseAmount);
-				assertThatThrownBy(() -> readLottoPurchaseAmount()).isInstanceOf(IllegalArgumentException.class);
+				assertThatThrownBy(() -> inputLottoPurchaseAmount.readLottoPurchaseAmount()).isInstanceOf(IllegalArgumentException.class);
 			}
 		}
 
@@ -63,7 +65,7 @@ public class InputLottoPurchaseAmountTest {
 			// then
 			for (String lottoPurchaseAmount : lottoPurchaseAmounts) {
 				readLine(lottoPurchaseAmount);
-				assertThatThrownBy(() -> readLottoPurchaseAmount()).isInstanceOf(IllegalArgumentException.class);
+				assertThatThrownBy(() -> inputLottoPurchaseAmount.readLottoPurchaseAmount()).isInstanceOf(IllegalArgumentException.class);
 			}
 		}
 	}
@@ -85,7 +87,7 @@ public class InputLottoPurchaseAmountTest {
 				// when
 				long expectedLottoPurchaseAmount = expectedLottoPurchaseAmounts.get(idx);
 				readLine(lottoPurchaseAmount);
-				long result = readLottoPurchaseAmount();
+				long result = inputLottoPurchaseAmount.readLottoPurchaseAmount();
 
 				// then
 				assertThat(result).isEqualTo(expectedLottoPurchaseAmount);

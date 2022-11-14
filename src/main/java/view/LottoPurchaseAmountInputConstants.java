@@ -1,6 +1,6 @@
 package view;
 
-public class InputLottoPurchaseAmountConstants {
+public class LottoPurchaseAmountInputConstants {
 
 	public static final String INPUT_TEXT_PURCHASE_AMOUNT = "구입금액을 입력해 주세요.";
 
@@ -15,7 +15,7 @@ public class InputLottoPurchaseAmountConstants {
 	public static final long PURCHASE_AMOUNT_MAXIMUM = 8145060000L;
 	public static final long PURCHASE_AMOUNT_UNIT = 1000L;
 
-	private InputLottoPurchaseAmountConstants() {
+	private LottoPurchaseAmountInputConstants() {
 
 	}
 }

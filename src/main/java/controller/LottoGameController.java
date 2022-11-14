@@ -3,12 +3,12 @@ package controller;
 import model.Lotto;
 import model.LottoRandomNumberGenerator;
 import model.LottoTotalCountCalculator;
-import view.InputLottoPurchaseAmount;
+import view.LottoPurchaseAmountInput;
 import view.OutputLotto;
 
 public class LottoGameController {
 
-	private InputLottoPurchaseAmount inputLotto = new InputLottoPurchaseAmount();
+	private LottoPurchaseAmountInput lottoPurchaseAmountInput = new LottoPurchaseAmountInput();
 	private LottoTotalCountCalculator lottoTotalCountCalculator = new LottoTotalCountCalculator();
 	private OutputLotto outputLotto = new OutputLotto();
 	private LottoRandomNumberGenerator randomGenerator = new LottoRandomNumberGenerator();
@@ -25,7 +25,7 @@ public class LottoGameController {
 	}
 
 	private long lottoPurchaseAmountInput() {
-		long purchaseAmount = inputLotto.readLottoPurchaseAmount();
+		long purchaseAmount = lottoPurchaseAmountInput.readLottoPurchaseAmount();
 		return purchaseAmount;
 	}
 
