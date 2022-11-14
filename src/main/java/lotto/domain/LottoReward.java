@@ -28,7 +28,7 @@ public enum LottoReward {
                 .filter(statistic -> statistic.matchingNumbers == numberOfMatch)
                 .findFirst()
                 .orElseThrow(()
-                        -> new IllegalArgumentException("[ERROR] 해당하는 등수를 찾을 수 없습니다."));
+                        -> new IllegalArgumentException(Message.CANNOT_FIND_RANK));
     }
 
     public void plusCount() {

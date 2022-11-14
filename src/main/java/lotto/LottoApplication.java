@@ -8,13 +8,6 @@ import java.util.List;
 import java.util.regex.Pattern;
 
 public class LottoApplication {
-    private final String BONUS_BALL_RESULT_MESSAGE = "%d개 일치, 보너스 볼 일치 (%,d원) - %d개";
-    private final String RESULT_MESSAGE = "%d개 일치 (%,d원) - %d개";
-    private final String WINNING_NUMBER_INPUT = "당첨 번호를 입력해주세요.";
-    private final String DUPLICATE_NUMBER_ERROR = "[ERROR] 로또 번호가 중복됩니다.";
-    private final String MONEY_INPUT = "구입금액을 입력해 주세요.";
-    private final String BONUS_NUMBER_INPUT = "보너스 번호를 입력해 주세요.";
-    private final String NOT_NUMBER_ERROR = "[ERROR] 숫자 외의 것이 입력되었습니다.";
     private final String patten = "^[0-9]*$";
 
     private RandomLotto randomLottos;
@@ -49,10 +42,10 @@ public class LottoApplication {
     }
 
     private int inputMoney() {
-        System.out.println(MONEY_INPUT);
+        System.out.println(Message.MONEY_INPUT);
         String input = Console.readLine();
         if (!(Pattern.matches(patten, input))) {
-            throw new IllegalArgumentException(NOT_NUMBER_ERROR);
+            throw new IllegalArgumentException(Message.NOT_NUMBER_ERROR);
         }
 
         int money = Integer.parseInt(input);
@@ -61,7 +54,7 @@ public class LottoApplication {
     }
 
     private Lotto inputAndGetLotto() {
-        System.out.println(WINNING_NUMBER_INPUT);
+        System.out.println(Message.WINNING_NUMBER_INPUT);
         List<Integer> inputWinningLotto = new ArrayList<>();
         String[] split = Console.readLine().split(",");
 
@@ -77,19 +70,19 @@ public class LottoApplication {
 
     private void winningNumberValidate(List<Integer> inputWinningLotto, String[] split, int idx) {
         if (!(Pattern.matches(patten, split[idx]))) {
-            throw new IllegalArgumentException(NOT_NUMBER_ERROR);
+            throw new IllegalArgumentException(Message.NOT_NUMBER_ERROR);
         }
 
         if (inputWinningLotto.contains(Integer.parseInt(split[idx]))) {
-            throw new IllegalArgumentException(DUPLICATE_NUMBER_ERROR);
+            throw new IllegalArgumentException(Message.DUPLICATE_NUMBER_ERROR);
         }
     }
 
     private int inputBonusNumber() {
-        System.out.println(BONUS_NUMBER_INPUT);
+        System.out.println(Message.BONUS_NUMBER_INPUT);
         String inputBonusNumber = Console.readLine();
         if (!(Pattern.matches(patten, inputBonusNumber))) {
-            throw new IllegalArgumentException(NOT_NUMBER_ERROR);
+            throw new IllegalArgumentException(Message.NOT_NUMBER_ERROR);
         }
         bonusNumber = Integer.parseInt(inputBonusNumber);
 
@@ -148,11 +141,11 @@ public class LottoApplication {
         System.out.println("---");
         for (LottoReward lottoReward : LottoReward.values()) {
             if (isRankSecond(lottoReward)) {
-                System.out.println(String.format(BONUS_BALL_RESULT_MESSAGE,
+                System.out.println(String.format(Message.BONUS_BALL_RESULT_MESSAGE,
                         lottoReward.getMatchingNumbers(), lottoReward.getReward(), lottoReward.getCount()));
                 continue;
             }
-            System.out.println(String.format(RESULT_MESSAGE,
+            System.out.println(String.format(Message.RESULT_MESSAGE,
                     lottoReward.getMatchingNumbers(), lottoReward.getReward(), lottoReward.getCount()));
         }
     }

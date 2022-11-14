@@ -14,18 +14,18 @@ public class Lotto {
 
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
-            throw new IllegalArgumentException("[ERROR] 사이즈가 6이 아닙니다.");
+            throw new IllegalArgumentException(Message.SIZE_IS_NOT_SIX);
         }
 
         Integer max = numbers.stream().max(Integer::compareTo).orElseThrow();
         Integer min = numbers.stream().min(Integer::compareTo).orElseThrow();
         if (min < 1 || max > 45) {
-            throw new IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
+            throw new IllegalArgumentException(Message.RANGE_OF_NUMBER);
         }
 
         Set<Integer> set = new HashSet<>(numbers);
         if (set.size() != numbers.size()) {
-            throw new IllegalArgumentException("[ERROR] 숫자가 중복됩니다.");
+            throw new IllegalArgumentException(Message.STRING_IS_DUPLICATE);
         }
     }
 

@@ -12,11 +12,11 @@ public class WinningLotto {
 
     private void validate(Lotto lotto, int bonusNumber) {
         if (lotto.containsNumber(bonusNumber)) {
-            throw new IllegalArgumentException("[ERROR] 보너스 번호가 이미 로또 번호에 포함됩니다.");
+            throw new IllegalArgumentException(Message.ALREADY_CONTAINS_BONUS_NUMBER);
         }
 
         if (bonusNumber < 1 || bonusNumber > 45) {
-            throw new IllegalArgumentException("[ERROR] 1과45 사이의 숫자가 입력되어야 합니다.");
+            throw new IllegalArgumentException(Message.RANGE_OF_NUMBER);
         }
     }
 

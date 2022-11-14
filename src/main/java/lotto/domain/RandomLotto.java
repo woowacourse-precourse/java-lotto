@@ -14,7 +14,7 @@ public class RandomLotto {
 
     private void validate(int money) {
         if (money % 1000 != 0 || money < 1000) {
-            throw new IllegalArgumentException("[ERROR] 1000원 이상이고 1000원으로 나누어떨어지는 금액이어야 합니다.");
+            throw new IllegalArgumentException(Message.IS_RIGHT_MONEY);
         }
     }
 
