@@ -16,6 +16,6 @@ public class LottoCalculator {
         Money reward = sumAllPrize(lottoPrizes);
         Money money = user.getMoney();
 
-        return reward.divide(money);
+        return reward.divide(money) * 100;
     }
 }
