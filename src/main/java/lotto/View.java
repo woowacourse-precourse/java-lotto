@@ -19,7 +19,12 @@ public class View {
 
     int inputMoneyAmount() {
         System.out.println(INPUT_AMOUNT_STRING);
-        int money = Integer.parseInt(Console.readLine());
+        int money = 0;
+        try{
+            money = Integer.parseInt(Console.readLine());
+        } catch(IllegalArgumentException e) {
+            throw new IllegalArgumentException("[ERROR] : 올바른 값을 입력해주세요.");
+        }
         System.out.println();
 
         return money;

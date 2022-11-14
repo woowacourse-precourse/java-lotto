@@ -45,7 +45,8 @@ public class Controller {
         controller.judegeWin(winniglotto, alllotto, bonusnum, controller, resultchart);
         String profit = controller.calculateProfit(resultchart, lottocost.getCost());
 
-        view.printResult(resultchart.get(3),resultchart.get(4),resultchart.get(5),resultchart.get(7),resultchart.get(6), profit);
+        view.printResult(resultchart.get(3),resultchart.get(4),resultchart.get(5),
+                resultchart.get(7),resultchart.get(6), profit);
     }
 
     void randomSetLotto(int lottocount, List<Lotto> alllotto) {
@@ -63,7 +64,8 @@ public class Controller {
         }
     }
 
-    void judegeWin(Lotto winninglotto, List<Lotto> randomlotto, int bonusnum, Controller controller, HashMap<Integer, Integer> resultchart) {
+    void judegeWin(Lotto winninglotto, List<Lotto> randomlotto, int bonusnum,
+                   Controller controller, HashMap<Integer, Integer> resultchart) {
         for(int index = 0; index < randomlotto.size(); index++) {
             int duplicatenum = controller.countWin(winninglotto, randomlotto.get(index));
 
@@ -102,7 +104,8 @@ public class Controller {
     }
 
     String calculateProfit(HashMap<Integer, Integer> chart, int lottocost) {
-        int sum = (V * chart.get(3)) + (VI * chart.get(4)) + (III * chart.get(5)) + (II * chart.get(7)) + (I * chart.get(6));
+        int sum = (V * chart.get(3)) + (VI * chart.get(4))
+                + (III * chart.get(5)) + (II * chart.get(7)) + (I * chart.get(6));
         double calnum = (double)sum / (double)lottocost * 100;
         String result = String.format("%.1f", calnum);
 

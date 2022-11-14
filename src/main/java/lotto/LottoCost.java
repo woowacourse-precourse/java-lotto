@@ -16,13 +16,13 @@ public class LottoCost {
 
     private void validateDivide(int cost) {
         if (cost % 1000 != 0) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR] 금액은 1000원 단위로 입력해 주세요.");
         }
     }
 
     private void validateZero(int cost) {
         if (cost == 0) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR] 100원 이상으로 입력해 주세요.");
         }
     }
 }
