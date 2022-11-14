@@ -34,7 +34,8 @@ public class LottoSystem {
             CompareLottoNumbers compare = new CompareLottoNumbers(win.getNumbers(), bonus.getBonusNumber());
             List<Integer> prize = compare.calculator(lottoCount, lottoNumbers);
 
-            user.printResult(prize, lottoCount);
+            PrizeMoney money = new PrizeMoney(prize);
+            user.printResult(lottoCount, money.reward(), money.moneyInformation(), money.getFrequency());
 
         } catch (IllegalArgumentException e) {
             System.out.println("[ERROR] : 입력값을 정확하게 입력하세요");
