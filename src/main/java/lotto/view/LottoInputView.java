@@ -86,7 +86,7 @@ public class LottoInputView {
     }
 
     public void validateInputIsNumberFormat(String uncheckedInput) {
-        String uncheckedNumbers = Arrays.toString(uncheckedInput.split(","));
+        String uncheckedNumbers = String.join("", uncheckedInput.split(","));
         boolean isNumber = isNumberString(uncheckedNumbers);
         if(!isNumber) {
             throw new IllegalArgumentException(INVALID_LOTTO_NUMBERS.getErrorMessage());
