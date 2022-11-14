@@ -2,7 +2,6 @@ package lotto.view;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
-import java.util.stream.Collectors;
 import lotto.model.Lotto;
 import lotto.model.LottoCount;
 import lotto.model.Lottos;
@@ -12,8 +11,6 @@ import lotto.model.Result;
 
 public class OutputView {
     private static final String NEW_LINE = "\n";
-    private static final String OPEN_BRACKET = "[";
-    private static final String CLOSE_BRACKET = "]";
     private static final String COMMA = ", ";
     private static final String NUMBER_OF_PURCHASED_LOTTOS = "%d개를 구매했습니다.";
     private static final String STATISTIC_HEADER = "당첨 통계" + NEW_LINE + "---";
@@ -38,13 +35,7 @@ public class OutputView {
 
     public static void printPurchasedLottoNumbers(Lottos lottos) {
         for (Lotto lotto : lottos.getLottos()) {
-            String lottoNumbers = OPEN_BRACKET
-                    + lotto.get()
-                    .stream()
-                    .map(String::valueOf)
-                    .collect(Collectors.joining(COMMA))
-                    + CLOSE_BRACKET;
-            System.out.println(lottoNumbers);
+            lotto.printLottoNumbers();
         }
         System.out.print(NEW_LINE);
     }
