@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 import lotto.domain.Lotto;
 import lotto.domain.LottoRepository;
+import lotto.domain.Money;
 import lotto.type.Prize;
 
 public class LottoService {
@@ -25,12 +26,12 @@ public class LottoService {
         return numbers;
     }
 
-    private Double calcYield(List<Prize> prizes, int money) {
+    private Double calcYield(List<Prize> prizes, Money money) {
         Long prizeMoney = prizes.stream()
                 .map(Prize::getPrizeMoney)
                 .reduce(Long::sum)
                 .orElse(1L);
-        return (double) money / prizeMoney * 100;
+        return money.calcYield(prizeMoney);
 
     }
 
