@@ -16,4 +16,8 @@ public class ResultLotto {
         if(matchMoney == null) return;
         map.put(matchMoney, map.getOrDefault(matchMoney,0)+1);
     }
+
+    public Map<MatchMoney, Integer> getMap() {
+        return map;
+    }
 }
