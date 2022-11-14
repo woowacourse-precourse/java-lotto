@@ -14,7 +14,7 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
-        if (isInValidSize(numbers) || hasOutOfBoundNumber(numbers)) {
+        if (isInValidSize(numbers) || hasOutOfBoundNumber(numbers) || hasDuplicateNumber(numbers)) {
             throw new IllegalArgumentException();
         }
     }
@@ -25,5 +25,9 @@ public class Lotto {
 
     private static boolean hasOutOfBoundNumber(List<Integer> numbers) {
         return numbers.stream().anyMatch(x -> x < START_NUMBER || x > END_NUMBER);
+    }
+
+    private static boolean hasDuplicateNumber(List<Integer> numbers) {
+        return numbers.stream().distinct().count() != numbers.size();
     }
 }
