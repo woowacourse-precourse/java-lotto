@@ -15,6 +15,9 @@ public enum ExceptionType {
             ConstantNumberType.COUNT.getValue()),
     EMPTY("적어도 하나의 로또는 구매해야 합니다."),
     NULL("번호를 받지 못했습니다."),
+    FINISHED_ROUND("해당 회차는 이미 종료되었습니다."),
+    NULL_PURCHASE("해당 유저의 구매 이력이 존재하지 않습니다."),
+    NULL_ROUND("해당 회차가 존재하지 않습니다."),
     ;
 
     private static final String ERROR_BASE = "[ERROR] ";

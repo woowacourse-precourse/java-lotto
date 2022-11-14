@@ -9,6 +9,7 @@ import lotto.data.entity.LottoBundle;
 import lotto.data.entity.LottoRound;
 import lotto.data.repository.LottoBundleRepository;
 import lotto.data.repository.WinNumberRepository;
+import lotto.type.ExceptionType;
 
 public class UserDao {
     private final LottoBundleRepository lottoBundleRepository;
@@ -28,11 +29,15 @@ public class UserDao {
         Long ownerId = lottoBundle.getOwnerId();
         HashMap<Long, List<LottoBundle>> userIdMapper = getLottoRound(roundId).getUserIdMapper();
         List<LottoBundle> lottoBundles = userIdMapper.getOrDefault(ownerId, new ArrayList<>());
-        if (!roundId.equals(winNumberRepository.getCurrentRoundId())) {
-            throw new IllegalArgumentException("[ERROR] 해당 회차는 이미 종료되었습니다.");
+        if (isRoundFinished(roundId)) {
+            throw ExceptionType.FINISHED_ROUND.getException();
         }
         lottoBundles.add(lottoBundle);
         userIdMapper.put(ownerId, lottoBundles);
+    }
+
+    private boolean isRoundFinished(Long roundId) {
+        return !roundId.equals(winNumberRepository.getCurrentRoundId());
     }
 
     public List<LottoBundle> selectLottoBundles(LottoQueryDto lottoQueryDto) {
@@ -40,16 +45,20 @@ public class UserDao {
         Long userId = lottoQueryDto.getUserId();
         HashMap<Long, List<LottoBundle>> userIdMapper = getLottoRound(roundId).getUserIdMapper();
         List<LottoBundle> lottoBundles = userIdMapper.getOrDefault(userId, null);
-        if(lottoBundles == null) {
-            throw new IllegalArgumentException("[ERROR] 해당 유저의 구매 이력이 존재하지 않습니다.");
+        if(isNull(lottoBundles)) {
+            throw ExceptionType.NULL_PURCHASE.getException();
         }
         return lottoBundles;
+    }
+
+    private boolean isNull(List<LottoBundle> lottoBundles) {
+        return lottoBundles == null;
     }
 
     private LottoRound getLottoRound(Long roundId) {
         Optional<LottoRound> selectedLottoRound = lottoBundleRepository.findById(roundId);
         if (selectedLottoRound.isEmpty()) {
-            throw new IllegalArgumentException("[ERROR] 해당 회차가 존재하지 않습니다.");
+            throw ExceptionType.NULL_ROUND.getException();
         }
         return selectedLottoRound.get();
     }
