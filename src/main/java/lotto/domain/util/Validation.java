@@ -45,19 +45,19 @@ public class Validation {
         }
     }
 
-    public static void isDuplicate(List<Integer> numbers) {
+    public static void isDuplicated(List<Integer> numbers) {
         HashSet<Integer> operators = new HashSet<>(numbers);
         if (operators.size() != numbers.size()) {
             throw new IllegalArgumentException(ERROR_MESSAGE + DUPLICATE);
         }
     }
 
-    public static void isItSix(String[] numbers) {
+    public static void isValidLength(String[] numbers) {
         if (numbers.length != 6) {
             throw new IllegalArgumentException(ERROR_MESSAGE + IS_NOT_SIX);
         }
     }
-    public static void isItOne(String userInput) {
+    public static void isValidLength(String userInput) {
         if (userInput.length() != 1) {
             throw new IllegalArgumentException(ERROR_MESSAGE + IS_NOT_ONE);
         }

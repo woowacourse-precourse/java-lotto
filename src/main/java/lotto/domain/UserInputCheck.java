@@ -18,7 +18,7 @@ public class UserInputCheck {
         String[] numbers = userInput.split(",");
         try {
             Validation.isNumber(numbers);
-            Validation.isItSix(numbers);
+            Validation.isValidLength(numbers);
             Validation.isItRange(numbers);
         }catch (IllegalArgumentException err){
             System.out.println(err);
@@ -28,7 +28,7 @@ public class UserInputCheck {
 
     static String bonusNumberCheck(String userInput){
         Validation.isNumber(userInput);
-        Validation.isItOne(userInput);
+        Validation.isValidLength(userInput);
         Validation.isItRange(userInput);
         return userInput;
     }

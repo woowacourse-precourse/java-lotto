@@ -19,6 +19,5 @@ public class LottoGameController {
         inputMessage.winningNumberMessage(winningNumber);
         String bonusNumber = lottoGame.getBonusNumber();
         inputMessage.bonusNumberMessage(bonusNumber);
-
     }
 }
