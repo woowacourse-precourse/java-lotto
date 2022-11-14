@@ -10,5 +10,27 @@ public class User {
     private int money;
     private int buyCount;
 
+    public void setMoney(int money) {
+        this.money = money;
+        this.buyCount = calBuyCount();
+    }
 
+    public void buyLotto(){
+        lottos = new ArrayList<>();
+        for(int i=0; i< buyCount; i++){
+            lottos.add(Lotto.of());
+        }
+    }
+
+    public int getMoney() {
+        return money;
+    }
+
+    public List<Lotto> getLottos(){
+        return this.lottos;
+    }
+
+    private int calBuyCount(){
+        return money / MONEY_UNIT;
+    }
 }
