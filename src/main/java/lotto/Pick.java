@@ -1,7 +1,6 @@
 package lotto;
 
 import static camp.nextstep.edu.missionutils.Randoms.pickUniqueNumbersInRange;
-
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -9,7 +8,7 @@ import java.util.List;
 public class Pick {
 
   private final int count;
-  static List<List<Integer>> pick_member = new ArrayList<>();
+  public List<List<Integer>> pick_member = new ArrayList<>();
 
   public Pick(int count) {
     this.count = count;
