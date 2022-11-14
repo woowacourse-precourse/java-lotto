@@ -29,6 +29,18 @@ public class Lotto {
         return numbers.contains(number);
     }
 
+    private void sort(List<Integer> numbers) {
+        Collections.sort(numbers);
+    }
+
+    private void validate(List<Integer> numbers) {
+        Validator validator = new Validator();
+
+        validator.validateNumberSize(numbers);
+        validator.validateDuplicateNumber(numbers);
+        validator.validateNumberRange(numbers);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -49,17 +61,5 @@ public class Lotto {
     @Override
     public String toString() {
         return numbers.toString();
-    }
-
-    private void sort(List<Integer> numbers) {
-        Collections.sort(numbers);
-    }
-
-    private void validate(List<Integer> numbers) {
-        Validator validator = new Validator();
-
-        validator.validateNumberSize(numbers);
-        validator.validateDuplicateNumber(numbers);
-        validator.validateNumberRange(numbers);
     }
 }
