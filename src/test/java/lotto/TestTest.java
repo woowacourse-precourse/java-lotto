@@ -2,6 +2,7 @@ package lotto;
 
 import Service.LottoService;
 import domain.Rank;
+import domain.Reward;
 import org.junit.jupiter.api.Test;
 import view.SystemMessage;
 import camp.nextstep.edu.missionutils.Console;
@@ -69,6 +70,10 @@ public class TestTest {
         System.out.println("KKKKKKKKKKKKKKKKKKKKKK");
         systemMessage.winningMessage();
         systemMessage.countMessage(map);
+
+        Reward reward = new Reward();
+        Long sum = reward.totalReward(map);
+        System.out.println(sum);
 
     }
 }
