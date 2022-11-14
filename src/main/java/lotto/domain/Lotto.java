@@ -11,7 +11,6 @@ public class Lotto {
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
-        isDuplicateNumber(numbers);
         this.numbers = numbers;
     }
 
@@ -19,19 +18,14 @@ public class Lotto {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException();
         }
-    }
-
-    // TODO: 추가 기능 구현
-    public void printNumbers() {
-        System.out.println(numbers);
+        isDuplicateNumber(numbers);
     }
 
     public List<Integer> getNumbers() {
         return numbers;
     }
 
-    public boolean isDuplicateNumber(List<Integer> numbers) {
+    public void isDuplicateNumber(List<Integer> numbers) {
         inputException.duplicateNumberException(numbers);
-        return false;
     }
 }
