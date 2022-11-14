@@ -1,4 +1,4 @@
-package lotto;
+package lotto.domain;
 
 import java.util.List;
 
@@ -14,7 +14,7 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
-        if (!(validateSize(numbers)&&validateRange(numbers))) {
+        if (!(validateSize(numbers)&&validateRange(numbers) && validateDuplication(numbers))) {
             throw new IllegalArgumentException();
         }
     }
@@ -24,5 +24,8 @@ public class Lotto {
     }
     private boolean validateRange(List<Integer> numbers) {
         return numbers.stream().allMatch(i -> MINIMUM_NUMBER <= i && i <= MAXIMUM_NUMBER);
+    }
+    private boolean validateDuplication(List<Integer> numbers) {
+        return numbers.stream().distinct().count() == numbers.size();
     }
 }
