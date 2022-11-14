@@ -15,16 +15,17 @@
 
 - [X] 당첨번호를 입력받는 기능 inputWinningNumber
     - [x] 1~45 6자리를 입력받음 inputMainNumber
-    - [X] 보너스 숫자를 입력받음 inputBonusNumber
-    - [X] (예외처리) 보너스 숫자가 당첨번호에 포함되는 경우 compareMainWithBouns
+    - [X] 보너스 번호를 입력받음 inputBonusNumber
+    - [X] (예외처리) 보너스 번호가 당첨번호에 포함되는 경우 compareMainWithBouns
     - [X] (예외처리) 입력값이 1~45 이내 숫자가 아닌 경우
-    - [X] (예외처리) 같은 숫자가 들어오는 경우
+    - [X] (예외처리) 같은 번호가 들어오는 경우
     - [X] (예외처리) 메인번호가 6개가 아닌 경우
 
 
-- [ ] 당첨 통계 출력 기능 printStatistics
-    - [ ] 각 등수별로 당첨 금액과 갯수를 출력 sortLottoResults
-    - [ ] 3등은 5개, 2등은 5개+보너스 일치이므로 3등인지 2등인지 구별하는 기능 distinguishSecondPlace
+- [X] 당첨 금액과 갯수 출력 기능 totalResult
+    - [X] 구매한 로또와 당첨 번호가 일치하는지 확인하고, 보너스 번호 유무도 확인 calculateRank
+    - [X] 보너스 번호의 일치 여부 확인 
+    - [X] 3등은 5개, 2등은 5개+보너스 일치이므로 3등인지 2등인지 구별하는 기능 
 
 
 - [ ] 수익률 출력 기능 printYield

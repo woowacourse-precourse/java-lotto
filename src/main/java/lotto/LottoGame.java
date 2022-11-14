@@ -2,27 +2,66 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
 
+import java.text.DecimalFormat;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 public class LottoGame {
 
     public void start() {
         User user = new User();
-        user.buyLotto();
-        System.out.println("");
+        List<List<Integer>> userLottos = user.buyLotto();
 
-        inputWinningNumber();
+        Lotto mainNumber = new Lotto(inputMainNumber());
+        LottoNumber bonusNumber = new LottoNumber(inputBonusNumber());
+
+        inputWinningNumber(mainNumber, bonusNumber);
+
+        Map<Rank,Integer> result = getResult(userLottos,mainNumber,bonusNumber);
+
+        gameResult(result);
+    }
+    public Map<Rank,Integer> getResult(List<List<Integer>> userLottos, Lotto mainNumber, LottoNumber bonusNumber) {
+        Map<Rank,Integer> resultOrigin = new HashMap<>();
+
+        for (List<Integer> userLotto : userLottos) {
+            int hitCount = compareNumbers(mainNumber,userLotto);
+            boolean hasBonusNumber = checkBonusNumber(bonusNumber, userLotto);
+            Rank rank = Rank.calculateRank(hitCount,hasBonusNumber);
+            resultOrigin.put(rank, resultOrigin.getOrDefault(rank,0)+1);
+
+        }
+        return resultOrigin;
     }
 
-    public void inputWinningNumber() {
-        Lotto mainNumber = new Lotto(inputMainNumber());
-        LottoNumber bonusNumber = new LottoNumber(bonusNumber());
+    public int compareNumbers(Lotto mainNumber, List<Integer> userLotto) {
+        int hitCount = 0;
+        for (Integer eachNumber : mainNumber.getNumbers()) {
+            if (userLotto.contains(eachNumber)) {
+                hitCount++;
+            }
+        }
+        return hitCount;
+    }
+
+    public boolean checkBonusNumber(LottoNumber bonusNumber, List<Integer> userLotto) {
+        boolean hasBonusNumber = false;
+        if (userLotto.contains(bonusNumber.getNumber())) {
+            hasBonusNumber = true;
+            return hasBonusNumber;
+        }
+        return hasBonusNumber;
+    }
+
+    public void inputWinningNumber(Lotto mainNumber, LottoNumber bonusNumber) {
         compareMainWithBouns(mainNumber.getNumbers(),bonusNumber.getNumber());
     }
 
     public List<Integer> inputMainNumber() {
+        System.out.println();
         System.out.println("당첨 번호를 입력해 주세요.");
         String[] splitInputValue = Console.readLine().split(",");
         List<String> rawMainNumber = Arrays.asList(splitInputValue);
@@ -30,7 +69,6 @@ public class LottoGame {
         for (int oneNumber : mainNumbers) {
             LottoNumber lottoMain = new LottoNumber(oneNumber);
         }
-
         return mainNumbers;
     }
 
@@ -41,10 +79,11 @@ public class LottoGame {
         return winningNumbers;
     }
 
-    public int bonusNumber() {
+    public int inputBonusNumber() {
+        System.out.println();
         System.out.println("보너스 번호를 입력해 주세요.");
-        int inputBonusNumber = Integer.parseInt(Console.readLine());
-        return inputBonusNumber;
+        int inputBonus = Integer.parseInt(Console.readLine());
+        return inputBonus;
     }
 
     public void compareMainWithBouns(List<Integer> winningNumbers, int inputBonusNumber) {
@@ -52,5 +91,24 @@ public class LottoGame {
             throw new IllegalArgumentException("보너스 번호가 당첨 번호에 포함되어 있습니다.");
         }
     }
+    public void gameResult(Map<Rank,Integer> result) {
+        System.out.println("당첨 통계");
+        System.out.println("---");
+        for (Rank rank : Rank.values()) {
+            totalResult(result,rank);
+        }
+    }
+
+    public String totalResult(Map<Rank,Integer> result,Rank rank) {
+        DecimalFormat decimalFormat = new DecimalFormat("###,###");
+        String reward = decimalFormat.format(rank.getReward());
+        int rewardCount = result.getOrDefault(rank,0);
+
+        if (rank == Rank.SECOND) {
+            return rank.getHitCount() + "개 일치, 보너스 볼 일치 (" + reward + "원) - " + rewardCount + "개";
+        }
+        return rank.getHitCount() + "개 일치 (" + reward + "원) - " + rewardCount + "개";
+    }
+
 
 }
