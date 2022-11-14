@@ -16,4 +16,8 @@ public class StoreMap {
 		StoreMap.put(Rank.FOURTH, 0);
 		StoreMap.put(Rank.FIFTH, 0);
 	}
+
+	public void pushStoreMap(Rank rank) {
+		StoreMap.put(rank, StoreMap.get(rank) + 1);
+	}
 }
