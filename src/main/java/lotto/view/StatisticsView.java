@@ -1,8 +1,11 @@
 package lotto.view;
 
-public class StatisticsView extends View{
-  @Override
-  public void print(String output) {
+import lotto.domain.constant.StatisticsMessage;
+import lotto.dto.StatisticsDto;
 
+public class StatisticsView {
+
+  public void print(StatisticsDto dto) {
+    System.out.println(StatisticsMessage.STATISTICS.print(dto));
   }
 }
