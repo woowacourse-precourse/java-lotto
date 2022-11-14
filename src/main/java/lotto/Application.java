@@ -15,6 +15,8 @@ public class Application {
         List<Lotto> lottoList = createLottoList(purchasePrice);
         int bonusNumber = getBonusNumber(Console.readLine(), winningLottoNumbers);
         HashMap<String, Integer> history = createHistory(lottoList, winningLotto, bonusNumber);
+        double profits = getProfits(history);
+        double yieldRate = getYieldRate(purchasePrice, profits);
     }
 
     public static int getPurchasePrice(String input) {
@@ -71,7 +73,7 @@ public class Application {
     public static List<Lotto> createLottoList(int purchasePrice) {
         int range = purchasePrice / 1000;
         List<Lotto> lottoList = new ArrayList<>();
-        for (int i = 0; i < range; i++){
+        for (int i = 0; i < range; i++) {
             lottoList.add(Lotto.createPurchaseLotto());
         }
         return lottoList;
@@ -118,5 +120,19 @@ public class Application {
     public static boolean checkBonusNumber(Lotto purchaseLotto, int bonusNumber) {
         List<Integer> purchaseLottoNumbers = purchaseLotto.getNumbers();
         return purchaseLottoNumbers.contains(bonusNumber);
+    }
+
+    public static double getProfits(HashMap<String, Integer> history) {
+        double profits = 0;
+        profits += history.get("3") * 5000;
+        profits += history.get("4") * 50000;
+        profits += history.get("5") * 1500000;
+        profits += history.get("5+") * 30000000;
+        profits += history.get("6") * 2000000000;
+        return profits;
+    }
+
+    public static double getYieldRate(int purchasePrice, double profits) {
+        return (profits / purchasePrice) * 100;
     }
 }
