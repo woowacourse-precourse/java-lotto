@@ -219,6 +219,10 @@ public class Application {
         System.out.println("6개 일치 (2,000,000,000원) - " + totalRank.get(1) + "개");
     }
 
+    static void printRateOfReturn(double rateOfReturn) {
+        System.out.println(String.format("총 수익률은 .%1f%입니다.", rateOfReturn));
+    }
+
     static long calculateSumOfPrize(Map<Integer, Integer> totalRank) {
         long sumOfPrize = 0;
         sumOfPrize += totalRank.get(1) * 2000000000L;
@@ -230,7 +234,7 @@ public class Application {
     }
 
     static double calculateRateOfReturn(long sumOfPrize, int purchaseAmount) {
-        double RateOfReturn = (double) sumOfPrize / (double) purchaseAmount;
-        return RateOfReturn;
+        double rateOfReturn = (double) sumOfPrize / (double) purchaseAmount;
+        return rateOfReturn;
     }
 }
