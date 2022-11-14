@@ -15,7 +15,15 @@ public class Cashier {
         this.account = new Account(winningCalculator);
     }
 
-    public void buyLottos() {
+    public void purchaseLottos() {
+        publishLottos();
+        setWinningRule();
+        saveResultInAccount();
+        getResultInAccount();
+        getYieldInAccount();
+    }
+
+    public void publishLottos() {
         String inputMoneyRaw = UserInterface.getInputMoney();
         int inputMoney = convertStringToInt(inputMoneyRaw);
         this.lottos = LottoMachine.publish(inputMoney);
