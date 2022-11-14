@@ -1,17 +1,17 @@
 package lotto.domain;
 
-import java.util.Comparator;
 import java.util.List;
+import java.util.Objects;
 
 public class Lotto {
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
-        validate(numbers);
+        validateSize(numbers);
         this.numbers = numbers;
     }
 
-    private void validate(List<Integer> numbers) {
+    private void validateSize(List<Integer> numbers) {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException();
         }
@@ -59,8 +59,7 @@ public class Lotto {
     }
 
     public void sortedAndPrint() {
-        numbers.sort(Comparator.naturalOrder());
-        System.out.println(numbers);
+        System.out.println(numbers.toString());
     }
 
     @Override
@@ -71,5 +70,22 @@ public class Lotto {
         }
         stringBuilder.append("]");
         return stringBuilder.toString();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Lotto lotto = (Lotto) o;
+        return Objects.equals(numbers, lotto.numbers);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(numbers);
     }
 }

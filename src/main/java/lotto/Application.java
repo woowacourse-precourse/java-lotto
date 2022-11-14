@@ -4,7 +4,11 @@ import lotto.program.MainProgram;
 
 public class Application {
     public static void main(String[] args) {
-        MainProgram lottoMainProgram = new MainProgram();
-        lottoMainProgram.run();
+        try {
+            MainProgram lottoMainProgram = new MainProgram();
+            lottoMainProgram.run();
+        } catch (IllegalArgumentException e) {
+            System.out.println("[ERROR] " + e.getMessage());
+        }
     }
 }

@@ -46,7 +46,7 @@ public class PrizeOfUser {
             ticket += eachPrizeCount;
             earning += eachPrize.calculateEachEarning(eachPrizeCount);
         }
-        String earningRate = String.format("%.1f", earning / (ticket * 1000.0));
+        String earningRate = String.format("%.1f", earning / (ticket * 10.0));
         System.out.println("총 수익률은 "+earningRate+"%입니다.");
     }
 }
