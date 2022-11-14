@@ -19,11 +19,22 @@ public class Lotto {
         if (dupCheck(numbers)) {
             throw new IllegalArgumentException("[ERROR] 로또 번호에 중복 된 숫자가 있습니다.");
         }
+        if (rangeCheck(numbers)) {
+            throw new IllegalArgumentException("[ERROR] 로또 숫자의 범위는 1~45 입니다.");
+        }
     }
 
     private boolean dupCheck(List<Integer> numbers) {
         Set<Integer> numSet = new HashSet<>(numbers);
 
         return numbers.size() != numSet.size();
+    }
+
+    private boolean rangeCheck(List<Integer> numbers) {
+        for (int number : numbers) {
+            if (number < 1 || number > 45)
+                return true;
+        }
+        return false;
     }
 }
