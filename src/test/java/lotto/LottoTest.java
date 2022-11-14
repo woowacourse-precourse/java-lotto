@@ -81,6 +81,17 @@ class LottoTest {
     class CheckInputAnswerValid {
         //given
         Input input = new Input();
+        @DisplayName("로또 번호에 숫자가 아닌 문자가 들어가면 예외가 발생한다")
+        @Test
+        void notNumber() {
+            //when
+            String[] answer = {"j","2","3","3","5","6"};
+            //then
+            assertThatThrownBy(() -> input.returnAnswer(answer))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessageContaining("[ERROR] 1-45까지의 수 중 서로 다른 6개의 수를 골라 입력하세요.");
+        }
+
         @DisplayName("로또 번호의 개수가 중복되면 예외가 발생한다")
         @Test
         void repeatNumberInAnswer() {
@@ -91,6 +102,7 @@ class LottoTest {
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessageContaining("[ERROR] 1-45까지의 수 중 서로 다른 6개의 수를 골라 입력하세요.");
         }
+
         @DisplayName("로또 번호의 개수가 6개 이상이면 예외가 발생한다")
         @Test
         void isNumberOverLength() {
@@ -101,6 +113,7 @@ class LottoTest {
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessageContaining("[ERROR] 1-45까지의 수 중 서로 다른 6개의 수를 골라 입력하세요.");
         }
+
         @DisplayName("로또 번호가 1~45 사이의 숫자가 아니면 예외가 발생한다")
         @Test
         void isNumberNotInRange() {
