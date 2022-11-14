@@ -1,11 +1,6 @@
 package lotto.domain;
 
-import static org.assertj.core.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.*;
-
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 
 class ProfitTest {
 
@@ -20,12 +15,7 @@ class ProfitTest {
     void setUp() {
         prizeCount.addPrizeCount(Prize.FIFTH);
         profit = new Profit(prizeCount);
-        profit.calculate();
-        profit.setRate(PURCHASE_AMOUNT);
+        profit.calculate(PURCHASE_AMOUNT);
     }
 
-    @Test
-    void getRate() {
-        assertThat(profit.getRate()).isEqualTo(RATE);
-    }
 }
