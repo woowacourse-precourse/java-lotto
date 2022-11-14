@@ -75,7 +75,7 @@ public class LottoMachine {
         String[] tokenized = input.split(",");
 
         this.normalNumbers = new ArrayList<>();
-        for(String token: tokenized) {
+        for (String token: tokenized) {
             normalNumbers.add(Integer.parseInt(token));
         }
     }
@@ -84,8 +84,8 @@ public class LottoMachine {
         System.out.println("보너스 번호를 입력해 주세요.");
         String input = Console.readLine();
         validateWinningNumber(input, 1);
-
         this.bonusNumber = Integer.parseInt(input);
+        validateBonusNumber();
     }
 
     public void validateWinningNumber(String input, int size) {
@@ -93,8 +93,7 @@ public class LottoMachine {
         if (tokenized.length != size) {
             throw new IllegalArgumentException("[ERROR] 번호의 개수가 " + size + "개가 되어야 합니다.");
         }
-
-        for(String token : tokenized) {
+        for (String token : tokenized) {
             try {
                 int winningNumber = Integer.parseInt(token);
                 validateNumberValue(winningNumber);
@@ -107,6 +106,12 @@ public class LottoMachine {
     public void validateNumberValue(int winningNumber) {
         if (winningNumber < 1 || winningNumber > 45) {
             throw new IllegalArgumentException("[ERROR] 숫자의 범위는 1 ~ 45 입니다.");
+        }
+    }
+
+    public void validateBonusNumber() {
+        if (normalNumbers.contains(bonusNumber)) {
+            throw new IllegalArgumentException("[ERROR] 보너스 번호와 당첨 번호가 중복됩니다.");
         }
     }
 

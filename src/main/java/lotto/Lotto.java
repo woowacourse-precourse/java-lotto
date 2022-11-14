@@ -34,12 +34,12 @@ public class Lotto {
     public LottoResult getResult(List<Integer> normalNumbers, int bonusNumber) {
         int match = 0;
         boolean bonusMatch = false;
-        for(int number: numbers) {
+        for (int number: numbers) {
             if (normalNumbers.contains(number)) {
                 match++;
             }
         }
-        if(numbers.contains(bonusNumber)) {
+        if (numbers.contains(bonusNumber)) {
             bonusMatch = true;
         }
 

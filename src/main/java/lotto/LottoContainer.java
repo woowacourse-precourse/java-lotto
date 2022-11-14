@@ -22,7 +22,7 @@ public class LottoContainer {
 
     public void matchAll(List<Integer> normalNumbers, int bonusNumber) {
         Map<LottoResult, Integer> matchMap = getNothingMatchResult();
-        for(Lotto lotto: lottos) {
+        for (Lotto lotto: lottos) {
             LottoResult lottoResult = lotto.getResult(normalNumbers, bonusNumber);
             if (matchMap.containsKey(lottoResult)) {
                 matchMap.put(lottoResult, matchMap.get(lottoResult) + 1);
@@ -33,7 +33,7 @@ public class LottoContainer {
 
     public Map<LottoResult, Integer> getNothingMatchResult() {
         Map<LottoResult, Integer> matchMap = new HashMap<>();
-        for(LottoResult lottoResult: LottoResult.values()) {
+        for (LottoResult lottoResult: LottoResult.values()) {
             matchMap.put(lottoResult, 0);
         }
 
@@ -45,7 +45,7 @@ public class LottoContainer {
         int totalPrice = 0;
         double rate = 0;
 
-        while(keys.hasNext()) {
+        while (keys.hasNext()) {
             LottoResult key = keys.next();
             totalPrice += key.getMoney() * matchMap.get(key);
         }
