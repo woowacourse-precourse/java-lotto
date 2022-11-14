@@ -78,7 +78,8 @@ public class View {
     public int getMoneyInput() {
         String moneyString = Console.readLine();
         int money = validateIsNumber(moneyString);
-        return validateIsDivisible(money);
+        validateIsDivisible(money);
+        return money;
     }
     public List<Integer> getWinnerInput() {
         String numbersString = Console.readLine();

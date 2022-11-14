@@ -19,6 +19,7 @@ public class PrintMsg {
         for (Ranking rank : Ranking.values()) {
             System.out.print(rank.getDescription() + comparison.get(rank)+"개");
         }
+        System.out.println();
     }
     public void printProfitRate(double profitRate) {
         System.out.println("총 수익률은 " + profitRate + "%입니다.");
