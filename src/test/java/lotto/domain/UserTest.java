@@ -85,4 +85,14 @@ public class UserTest {
         Throwable exception = assertThrows(IllegalArgumentException.class, user::getLottoInput);
         assertEquals("[ERROR] 숫자 6개를 입력해주세요.", exception.getMessage());
     }
+
+    @DisplayName("유저의 로또 번호가 1~45 사이가 아니라면 예외가 발생한다.")
+    @Test
+    void createLottoByWrongRange() {
+        String input = "1,2,3,49,100,-2";
+        setUp(input);
+
+        Throwable exception = assertThrows(IllegalArgumentException.class, user::getLottoInput);
+        assertEquals("[ERROR] 1~45 사이 숫자를 입력해주세요.", exception.getMessage());
+    }
 }

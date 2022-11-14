@@ -32,12 +32,21 @@ public class User {
             lottoNumber.add(Integer.parseInt(s));
         }
         validateLottoLength(lottoNumber);
+        validateRange(lottoNumber);
         return lottoNumber;
     }
 
     private void validateLottoLength(List<Integer> lotto) {
         if (lotto.size() != 6) {
             throw new IllegalArgumentException("[ERROR] 숫자 6개를 입력해주세요.");
+        }
+    }
+
+    private void validateRange(List<Integer> lotto) {
+        for (Integer integer : lotto) {
+            if (integer > 45 || integer < 1) {
+                throw new IllegalArgumentException("[ERROR] 1~45 사이 숫자를 입력해주세요.");
+            }
         }
     }
 }
