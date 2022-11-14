@@ -55,4 +55,12 @@ public class InputNumbersTest {
         // when, then
         assertDoesNotThrow(() -> InputNumbers.checkException(numbers));
     }
+
+    @Test
+    @DisplayName("숫자가 6개보다 적으면 에러가 발생한다.")
+    void checkNumberCount() {
+        String numbers = "1,,,,,";
+
+        assertThrows(IllegalArgumentException.class, () -> InputNumbers.checkException(numbers));
+    }
 }
