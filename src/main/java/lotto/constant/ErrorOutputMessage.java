@@ -1,9 +1,12 @@
 package lotto.constant;
 
 public final class ErrorOutputMessage {
-    public static final String ERROR = "[ERROR] ";
+    private static final String ERROR = "[ERROR] ";
 
-    public static final String PURCHASE
+    public static final String PURCHASE_TYPE
+            = ERROR + "구매 금액은 숫자로만 이루어져야 합니다.";
+
+    public static final String PURCHASE_REMAINDER
             = ERROR + "구매 금액은 " + LottoNumber.PURCHASE_AMOUNT_COND.getNumber() + "으로 나누어 떨어져야 합니다.";
 
     public static final String NUMBER_COUNT
