@@ -27,6 +27,9 @@
     - [x] 보너스 번호 입력 받기 (`InputView`)
     - [x] `LotteryDrawService`를 통해 당첨 번호 생성
 - [ ] `LotteryDrawService`를 통해 판매된 티켓의 당첨 여부 계산 기능 구현
+    - [ ] 당첨 결과를 나타내는 enum 생성
+    - [ ] `LotteryTicketRepository` 에 당첨 결과를 저장하는 Map 추가
+    - [ ] 당첨 번호와 `LotteryTicketRepository` 에 저장된 로또 티켓을 비교해 당첨 결과 저장
 - [ ] `LotteryController` 로또 추첨 구현
 
 ## 로또 결과 조회
