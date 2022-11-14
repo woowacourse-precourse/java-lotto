@@ -79,8 +79,7 @@ class LottoHandlerTest {
                 .collect(Collectors.toList());
         String bonusNumber = "7";
         List<Integer> winningNumbers = List.of(1, 2, 3, 4, 5, 6);
-        Map<LottoGrade, Integer> resultOfLotto = LottoHandler.getResultOfLotto(bonusNumber, winningNumbers, lottos);
-        return resultOfLotto;
+        return LottoHandler.getResultOfLotto(lottos, winningNumbers, Integer.valueOf(bonusNumber));
     }
 
 

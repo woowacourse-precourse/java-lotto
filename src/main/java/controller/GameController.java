@@ -16,22 +16,22 @@ public class GameController {
         Integer purchaseAmount = getPurchaseAmount();
         List<Lotto> lottos = createLottos(purchaseAmount);
         List<Integer> winningNumbers = getWinningNumbers();
-        String bonusNumber = getBonusNumber();
+        Integer bonusNumber = getBonusNumber();
         getResultOfLotto(purchaseAmount, lottos, winningNumbers, bonusNumber);
     }
 
     private void getResultOfLotto(Integer purchaseAmount,
                                   List<Lotto> lottos,
                                   List<Integer> winningNumbers,
-                                  String bonusNumber) {
-        Map<LottoGrade, Integer> resultOfLotto = LottoHandler.getResultOfLotto(bonusNumber, winningNumbers, lottos);
+                                  Integer bonusNumber) {
+        Map<LottoGrade, Integer> resultOfLotto = LottoHandler.getResultOfLotto(lottos, winningNumbers, bonusNumber);
         Double rateOfReturn = LottoHandler.getRateOfReturn(resultOfLotto, purchaseAmount);
         OutputView.printResultOfLotto(resultOfLotto, rateOfReturn);
     }
 
-    private String getBonusNumber() {
+    private Integer getBonusNumber() {
         String bonusNumber = Console.readLine();
-        return bonusNumber;
+        return Integer.valueOf(bonusNumber);
     }
 
     private List<Integer> getWinningNumbers() {

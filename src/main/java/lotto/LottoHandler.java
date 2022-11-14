@@ -37,11 +37,11 @@ public class LottoHandler {
         return Double.valueOf(totalMoney / purchaseAmount * 100);
     }
 
-    public static Map<LottoGrade, Integer> getResultOfLotto(String bonusNumber, List<Integer> winningNumbers, List<Lotto> lottos) {
+    public static Map<LottoGrade, Integer> getResultOfLotto(List<Lotto> lottos, List<Integer> winningNumbers, Integer bonusNumber) {
         Map<LottoGrade, Integer> lottoGradeInfo = initializeLottoGrade();
         for (Lotto lotto : lottos) {
             Integer numberOfMatches = lotto.countNumbersIncluded(winningNumbers);
-            Boolean containsBonusNumber = lotto.containsBonusNumber(Integer.valueOf(bonusNumber));
+            Boolean containsBonusNumber = lotto.containsBonusNumber(bonusNumber);
             LottoGrade lottoGrade = lotto.getLottoGrade(numberOfMatches, containsBonusNumber);
             lottoGradeInfo.merge(lottoGrade, 1, Integer::sum);
         }
