@@ -27,18 +27,12 @@ public class ExceptionHandler {
         }
     }
 
-    public static void checkValidationBonusNumber(String input, List<Integer> winningNumbers) throws IllegalArgumentException {
-        Integer bonusNumber = Integer.parseInt(input);
-        if (winningNumbers.contains(bonusNumber)) {
-            throw makeIllegalArgumentException(Message.BONUS_NUMBER_INPUT_ERROR);
-        }
-    }
-
     public static void checkValidationWinningNumber(String input) throws IllegalArgumentException {
         try {
             isSixNumbers(input);
             isOnlyCommaAndNumber(input);
             isAllDifferentNumbers(input);
+            isValidationRange(input);
         } catch (IllegalArgumentException illegalArgumentException) {
             throw makeIllegalArgumentException(Message.INPUT_WINNING_NUMBER_ERROR);
         }
@@ -73,6 +67,24 @@ public class ExceptionHandler {
             }
 
             container.add(number);
+        }
+    }
+
+    private static void isValidationRange(String input) throws IllegalArgumentException {
+        String[] tokens = input.split(COMMA);
+        for (String token : tokens) {
+            int number = Integer.parseInt(token);
+            if (1 <= number && number <= 45) {
+                continue;
+            }
+            throw new IllegalArgumentException();
+        }
+    }
+
+    public static void checkValidationBonusNumber(String input, List<Integer> winningNumbers) throws IllegalArgumentException {
+        Integer bonusNumber = Integer.parseInt(input);
+        if (winningNumbers.contains(bonusNumber)) {
+            throw makeIllegalArgumentException(Message.BONUS_NUMBER_INPUT_ERROR);
         }
     }
 
