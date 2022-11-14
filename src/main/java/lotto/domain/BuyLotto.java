@@ -8,23 +8,9 @@ import java.util.List;
 
 public class BuyLotto {
     public static final int LOTTO_PRICE = 1000;
-
-    public int getPrice() {
-        return price;
-    }
-
     int price;
-    List<Lotto> lottos;
-
-    public List<Lotto> getLottos() {
-        return lottos;
-    }
-
     int count;
-
-    public int getCount() {
-        return count;
-    }
+    List<Lotto> lottos;
 
     public BuyLotto(int price) {
         validatePrice(price);
@@ -55,5 +41,17 @@ public class BuyLotto {
         if (price % LOTTO_PRICE != 0) {
             throw new IllegalArgumentException(ErrorMessages.PRICE);
         }
+    }
+
+    public List<Lotto> getLottos() {
+        return lottos;
+    }
+
+    public int getPrice() {
+        return price;
+    }
+
+    public int getCount() {
+        return count;
     }
 }
