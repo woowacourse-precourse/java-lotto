@@ -1,4 +1,4 @@
-package ui;
+package lotto.ui;
 
 public class Message {
 
