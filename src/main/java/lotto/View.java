@@ -55,6 +55,16 @@ public class View {
         validateIsDivisible(money);
         return money;
     }
-
+    public List<Integer> getUniqueNumbersInput() {
+        String numbersString = Console.readLine();
+        String[] numbersSplit;
+        List<Integer> numbersInteger= new ArrayList<>();
+        validateIsNumber(numbersString);
+        numbersSplit = numbersString.split(",");
+        for (String num : numbersSplit) {
+            numbersInteger.add(Integer.parseInt(num));
+        }
+        return numbersInteger;
+    }
 }
 
