@@ -29,6 +29,7 @@ public class WinningNumber {
 
     // 올바른 당첨 번호 입력값인지 검증하는 기능
     private void validateInput(String input) throws IllegalArgumentException {
+        checkBlank(input);
         validateFiveComma(input);
     }
 
@@ -82,6 +83,7 @@ public class WinningNumber {
     private void checkDuplicate(int number) {
         List<Integer> winningNumber = lotto.getNumbers();
         HashSet<Integer> deduplication = new HashSet<>(winningNumber);
+        deduplication.add(number);
         if (deduplication.size() == Setting.LOTTO_SIZE) {
             throw new IllegalArgumentException("[ERROR] 중복된 숫자를 입력할 수 없습니다.");
         }
