@@ -39,7 +39,7 @@ public class LottoGame {
         int bonusNumber = lottoGameView.inputBonusNumber();
 
         return lottoCompany
-                .generate(winningNumbers, bonusNumber)
+                .generateWinningNumber(winningNumbers, bonusNumber)
                 .getRanks(lottos);
     }
 }

@@ -6,13 +6,14 @@ import java.util.List;
 import java.util.Map;
 
 public class LottoCompany {
+    private static final int PERCENTAGE = 100;
 
-    public WinningNumber generate(List<Integer> winningNumbers, int bonusNumber) {
+    public WinningNumber generateWinningNumber(List<Integer> winningNumbers, int bonusNumber) {
         return new WinningNumber(winningNumbers, bonusNumber);
     }
 
     public double getRateOfReturn(int money, int prizeMoney) {
-        return ((double) prizeMoney / money) * 100;
+        return ((double) prizeMoney / money) * PERCENTAGE;
     }
 
     public int getTotalPrizeMoney(List<LottoRank> ranks) {

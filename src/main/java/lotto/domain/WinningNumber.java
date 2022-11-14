@@ -1,14 +1,14 @@
 package lotto.domain;
 
 import lotto.util.ErrorMessage;
+import lotto.util.LottoConstant;
 import lotto.util.LottoRank;
+
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class WinningNumber {
-    private static final int LOTTO_NUMBER_COUNT = 6;
-
     private final List<Integer> winningNumbers;
     private final int bonusNumber;
 
@@ -44,7 +44,7 @@ public class WinningNumber {
     }
 
     private void validateNumberCount(List<Integer> winningNumbers) {
-        if (winningNumbers.size() != LOTTO_NUMBER_COUNT) {
+        if (winningNumbers.size() != LottoConstant.NUMBER_COUNT.getValue()) {
             throw new IllegalArgumentException(ErrorMessage.INVALID_LOTTO_NUMBER_COUNT.getMessage());
         }
     }
@@ -54,7 +54,7 @@ public class WinningNumber {
     }
 
     private void validateNumberRange(int number) {
-        if (number < 1 || number > 45) {
+        if (number < LottoConstant.START_NUMBER.getValue() || number > LottoConstant.END_NUMBER.getValue()) {
             throw new IllegalArgumentException(ErrorMessage.INVALID_LOTTO_NUMBER_RANGE.getMessage());
         }
     }
