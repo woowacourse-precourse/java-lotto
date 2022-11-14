@@ -10,10 +10,23 @@ public class Money {
 
     private int money;
 
-    private void checkPattern(String input){
+    public Money(String input) {
+        checkPattern(input);
+        money = Integer.parseInt(input);
+    }
+
+    private void checkPattern(String input) {
         Matcher matcher = CORRECT_MONEY_PATTERN.matcher(input);
-        if(!matcher.find()){
+        if (!matcher.find()) {
             throw new IllegalArgumentException(Exception.catchException());
         }
+    }
+
+    public int divideMoney(int referenceValue) {
+        return money / referenceValue;
+    }
+
+    public double getMoney(){
+        return money;
     }
 }
