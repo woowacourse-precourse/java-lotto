@@ -3,24 +3,24 @@ package lotto.domain;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class User{
     public static int money = Integer.parseInt(Console.readLine());
 
-    private final List<List<Integer>> userNumList;
+    private final List<Integer> userNumList;
 
-    public User(List<List<Integer>> userNumList){
+    public User(List<Integer> userNumList){
         this.userNumList = userNumList;
     }
 
-    public static List<List<Integer>> getUserInput(){
-        List<List<Integer>> inputList = new ArrayList<>();
+    public static List<Integer> getUserInput(){
+        List<Integer> inputList = new ArrayList<>();
         for (int i = 0; i< money / 1000; i++) {
             String str = Console.readLine();
-            String tempList[] = str.split(",");
+            inputList = (List<Integer>) Arrays.stream((str.split(","))).mapToInt(Integer::parseInt);
 
-            inputList.add(stringToNum(tempList));
         }
         return inputList;
     }
@@ -34,6 +34,8 @@ public class User{
     }
 
     public static int bonusNum = Integer.parseInt(Console.readLine());
-
+    public int get_index(int index){
+        return userNumList.get(index);
+    }
 
 }
