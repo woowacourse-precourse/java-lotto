@@ -27,8 +27,8 @@ public class LottoScanner {
     }
 
     void validateItContainsOnlyNumber(String money) {
-        final String REGEX = "\\d+";
-        if (!money.matches(REGEX)) {
+        final String REGEX_FOR_NUMBER = "^\\d+$";
+        if (!money.matches(REGEX_FOR_NUMBER)) {
             throw new IllegalArgumentException(NOT_ONLY_NUMBER);
         }
     }

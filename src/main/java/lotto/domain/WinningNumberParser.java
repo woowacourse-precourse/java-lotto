@@ -18,8 +18,8 @@ public class WinningNumberParser {
     }
 
     private void validateWinningNumberFormat(String winningNumber) {
-        final String REGEX = "(\\d+,){5}\\d+";
-        if (!winningNumber.matches(REGEX)) {
+        final String REGEX_FOR_WINNING_NUMBER = "^(\\d+,){5}\\d+$";
+        if (!winningNumber.matches(REGEX_FOR_WINNING_NUMBER)) {
             throw new IllegalArgumentException(INVALID_FORMAT_OF_WINNING_NUMBER);
         }
     }
