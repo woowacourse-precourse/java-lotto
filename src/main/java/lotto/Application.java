@@ -21,7 +21,7 @@ public class Application {
         System.out.println("구입금액을 입력해주세요.");
         String userInput = Console.readLine();
         try {
-            return Integer.valueOf(userInput);
+            return Integer.parseInt(userInput);
         } catch (Exception e){
             throw new IllegalArgumentException("[ERROR]: 입력값이 숫자가 아닙니다.");
         }
@@ -77,7 +77,7 @@ public class Application {
 
         for (String input : inputs) {
             try {
-                int num = Integer.valueOf(input);
+                int num = Integer.parseInt(input);
                 numbers.add(num);
             } catch (Exception e) {
                 throw new IllegalArgumentException("[ERROR]: 입력값이 숫자가 아닙니다.");
@@ -104,6 +104,13 @@ public class Application {
                 throw new IllegalArgumentException("[ERROR]: 45보다 큰 당첨번호를 입력하였습니다. " + num);
             }
         }
+    }
+
+    public static int getBonusNumber(Lotto luckyNumbers) {
+        int bonusNum = readBonusNumbers();
+        luckyNumbers.validBonusNumber(bonusNum);
+        checkRange(List.of(bonusNum));
+        return bonusNum;
     }
 
     public static void main(String[] args) {
