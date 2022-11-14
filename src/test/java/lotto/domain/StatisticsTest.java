@@ -1,8 +1,9 @@
 package lotto.domain;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 class StatisticsTest {
 
@@ -18,9 +19,23 @@ class StatisticsTest {
         statistics.updateStatistics(prize2);
 
         //then
-        Assertions.assertThat(statistics.getStatisticsResult()
+        assertThat(statistics.getStatisticsResult()
                                         .get(Prize.SECOND))
                   .isEqualTo(2);
+    }
 
+    @DisplayName("총 당첨 수령 금액과 사용자가 구매에 지불한 금액을 계산해 수익률이 잘 반환 되는지 테스트")
+    @Test
+    void calculateYield() {
+        //given
+        Amount amount = new Amount(8000);
+        Statistics statistics = new Statistics();
+        Prize prize = Prize.SECOND;
+
+        //when
+        statistics.updateStatistics(prize);
+        float yield = statistics.calculateYiled(amount);
+        //then
+        assertThat(yield).isEqualTo(375000);
     }
 }
