@@ -38,7 +38,7 @@
     - [X] 특정 자리에 특정 숫자가 있는지 알 수 있다. - Lotto#hasPlace()
   - [ ] 컴퓨터의 수(1자리)와 플레이어의 수(1자리)를 비교할 수 있다.
 - [ ] 당첨 내역을 출력할 수 있다.
-  - [ ] 당첨 기준과 금액을 알 수 있다.
+  - [X] 당첨 기준과 금액을 알 수 있다. - Prize#toString()
     - [X] 숫자 3자리마다 콤마를 찍을 수 있다. - NumberFormator#divideEvery3Digits()
   - [X] [1~5]등의 각 개수를 알 수 있다. - PrizeCount#getPrizeCount()
   - [X] [1~5]등의 각 합산 금액이 얼마인지 알 수 있다. - PrizeCount#getTotalPrizeMoney()
