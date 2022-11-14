@@ -5,14 +5,16 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
-import lotto.validator.LottoValidator;
 import lotto.type.Prize;
+import lotto.validator.LottoValidator;
 
 public class View {
 
     public long inputMoney() {
         System.out.println("구입금액을 입력해 주세요");
-        long money = Long.parseLong(Console.readLine());
+        String inputString = Console.readLine();
+        LottoValidator.validateHasNumber(List.of(inputString));
+        long money = Long.parseLong(inputString);
         validateMoney(money);
         return money;
     }
