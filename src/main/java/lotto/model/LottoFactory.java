@@ -1,16 +1,20 @@
 package lotto.model;
 
 
-import static lotto.constant.LottoConstants.*;
+import static lotto.constant.LottoConstants.LOTTO_SIZE;
+import static lotto.constant.LottoConstants.MAX_VALID_LOTTO_VALUE;
+import static lotto.constant.LottoConstants.MIN_VALID_LOTTO_VALUE;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
 public class LottoFactory {
+
     public Lottos generateBy(int lottoCount) {
         List<Lotto> lottos = new ArrayList<>();
-        for(int count=0;count<lottoCount; count++){
+
+        for (int count = 0; count < lottoCount; count++) {
             lottos.add(new Lotto(generateRandomLottoNumbers()));
         }
 

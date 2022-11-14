@@ -1,7 +1,11 @@
 package lotto.model;
 
 import static lotto.constant.BonusBallConstants.DUPLICATED_BONUSBALL_INPUt_MSG;
-import static lotto.constant.WinningManagerConstants.*;
+import static lotto.constant.WinningManagerConstants.FIRST_RANK;
+import static lotto.constant.WinningManagerConstants.MATCHED_ALL;
+import static lotto.constant.WinningManagerConstants.NEED_TO_CHECK_BONUSBALL;
+import static lotto.constant.WinningManagerConstants.TO_RANK;
+import static lotto.constant.WinningManagerConstants.VALID_LOTTO_RANK;
 
 import java.util.List;
 import java.util.stream.Collectors;
