@@ -12,9 +12,9 @@ public enum WinDetail {
 
     private int matchCount;
     private BonusType bonusType;
-    private int reward;
+    private long reward;
 
-    WinDetail(int matchCount, BonusType bonusType, int reward) {
+    WinDetail(int matchCount, BonusType bonusType, long reward) {
         this.matchCount = matchCount;
         this.bonusType = bonusType;
         this.reward = reward;
@@ -28,7 +28,7 @@ public enum WinDetail {
                 .orElse(NONE);
     }
 
-    public int reward(){
+    public long reward(){
         return reward;
     }
 }

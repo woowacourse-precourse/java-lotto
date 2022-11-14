@@ -240,10 +240,10 @@ class ApplicationTest extends NsTest {
 
     @Test
     void 수익계산(){
-        List<WinDetail> result = new ArrayList<>(List.of(WinDetail.Second,WinDetail.Third,WinDetail.Third));
+        List<WinDetail> result = new ArrayList<>(List.of(WinDetail.First, WinDetail.Second,WinDetail.Third,WinDetail.Third));
         Revenue revenue = new Revenue();
-        int reward = revenue.revenue(result);
-        assertThat(reward).isEqualTo(33000000);
+        long reward = revenue.revenue(result);
+        assertThat(reward).isEqualTo(2033000000L);
 
 
     }
