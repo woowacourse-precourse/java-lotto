@@ -4,16 +4,18 @@ import lotto.data.Error;
 
 import java.util.List;
 
+import static lotto.data.LottoInfo.*;
+
 public class ExceptionHandler {
 
     public static void checkOutOfRange(List<Integer> numbers) throws IllegalArgumentException {
-        if (numbers.get(0) < 1 || numbers.get(numbers.size() - 1) > 45) {
+        if (numbers.get(0) < START_NUMBER.getValue() || numbers.get(numbers.size() - 1) > END_NUMBER.getValue()) {
             throw new IllegalArgumentException(Error.OUT_OF_RANGE.getMessage());
         }
     }
 
     public static void checkOutOfRange(int number) throws IllegalArgumentException {
-        if (number < 1 || number > 45) {
+        if (number < START_NUMBER.getValue() || number > END_NUMBER.getValue()) {
             throw new IllegalArgumentException(Error.OUT_OF_RANGE.getMessage());
         }
     }
@@ -45,7 +47,7 @@ public class ExceptionHandler {
     }
 
     public static void checkNotDivisibleByThousand(int price) throws IllegalArgumentException {
-        if (price % 1000 > 0) {
+        if (price % PRICE_UNIT.getValue() > 0) {
             throw new IllegalArgumentException(Error.NOT_DIVISIBLE_BY_THOUSAND.getMessage());
         }
     }

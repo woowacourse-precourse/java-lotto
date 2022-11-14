@@ -6,6 +6,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import static lotto.data.LottoInfo.MINIMUM_RANK;
+
 public class LottoComparator {
 
     private void updateWinningAmount(Map<LottoRank, Integer> winningCounts, int winningCount, boolean isSameWithBonus) {
@@ -18,7 +20,7 @@ public class LottoComparator {
         int winningCount = lotto.calculateWinningCount(winningNumbers);
         boolean isSameWithBonus = lotto.isSameWithBonus(bonus);
 
-        if (winningCount < 3)
+        if (winningCount < MINIMUM_RANK.getValue())
             return;
 
         updateWinningAmount(winningCounts, winningCount, isSameWithBonus);

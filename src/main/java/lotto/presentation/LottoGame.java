@@ -9,11 +9,9 @@ import lotto.domain.RewardCalculator;
 import java.util.List;
 import java.util.Map;
 
+import static lotto.data.LottoInfo.*;
+
 public class LottoGame {
-    private final int startNumber = 1;
-    private final int endNumber = 45;
-    private final int numberCount = 6;
-    private final int priceUnit = 1000;
     private final LottoGenerator lottoGenerator;
     private final LottoForm lottoForm;
     private final LottoComparator lottoComparator;
@@ -25,7 +23,12 @@ public class LottoGame {
         lottoComparator = new LottoComparator();
         rewardCalculator = new RewardCalculator();
         lottoPrinter = new LottoPrinter();
-        lottoGenerator = new LottoGenerator(startNumber, endNumber, numberCount, priceUnit, lottoPrinter);
+        lottoGenerator = new LottoGenerator(
+                START_NUMBER.getValue(),
+                END_NUMBER.getValue(),
+                NUMBER_COUNT.getValue(),
+                PRICE_UNIT.getValue(),
+                lottoPrinter);
     }
 
     public void play() throws IllegalArgumentException {
