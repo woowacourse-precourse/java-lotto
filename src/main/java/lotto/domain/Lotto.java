@@ -29,9 +29,9 @@ public class Lotto {
     }
 
     private int rankCheck(int count) {
-        int rank = 3, amount = 3, counter = 0;
+        int rank = 3, amount = 5, counter = 0;
         while (amount != count) {
-            amount++;
+            amount--;
             counter++;
         }
         return (rank + counter);
