@@ -1,11 +1,9 @@
 package lotto.controller;
 
-import java.util.ArrayList;
-import java.util.List;
+import lotto.domain.generator.NumberGenerator;
+import lotto.domain.generator.RandomNumberGenerator;
 import lotto.domain.lottery.BonusNumber;
 import lotto.domain.Cost;
-import lotto.domain.lottery.LotteryDrawMachine;
-import lotto.domain.lottery.Lotto;
 import lotto.domain.lottery.LottoGroup;
 import lotto.domain.lottery.WinningLotto;
 import lotto.domain.result.Profit;
@@ -22,7 +20,8 @@ public class LottoController {
             int purchaseCount = cost.getPurchaseCount();
             Output.purchaseCountNotification(purchaseCount);
 
-            LottoGroup lottoGroup = createLottoGroup(purchaseCount);
+            NumberGenerator randomNumberGenerator = new RandomNumberGenerator();
+            LottoGroup lottoGroup = createLottoGroup(purchaseCount, randomNumberGenerator);
             Output.printLottoGroup(lottoGroup);
 
             WinningLotto winningLotto = createWinningLotto();
@@ -50,8 +49,8 @@ public class LottoController {
         return new Cost(Input.inputCost());
     }
 
-    private LottoGroup createLottoGroup(int purchaseCount) {
-        return new LottoGroup(purchaseCount);
+    private LottoGroup createLottoGroup(int purchaseCount, NumberGenerator numberGenerator) {
+        return new LottoGroup(purchaseCount, numberGenerator);
     }
 
     private WinningLotto createWinningLotto() {
