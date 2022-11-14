@@ -9,6 +9,11 @@ public class Money {
         validate(inputMoney);
         this.money = Integer.parseInt(inputMoney);
     }
+
+    public int getMoney() {
+        return money;
+    }
+
     private void validate(String inputMoney) {
         validateForDigit(inputMoney);
         validateByLotteryPrice(Integer.parseInt(inputMoney));
