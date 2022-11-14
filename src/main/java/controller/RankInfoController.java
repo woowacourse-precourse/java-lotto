@@ -1,9 +1,6 @@
 package controller;
 
-import domain.Bonus;
-import domain.Lotto;
-import domain.RankInfo;
-import domain.UserLotto;
+import domain.*;
 import service.RankInfoService;
 
 public class RankInfoController {
@@ -15,5 +12,9 @@ public class RankInfoController {
 
     public RankInfo getRankInfo(RankInfo rankInfo, Lotto lotto, UserLotto userLotto, Bonus bonus) {
         return rankInfoService.putRankInfo(rankInfo, lotto, userLotto, bonus);
+    }
+
+    public String getYield(RankInfo rankInfo, Money money) {
+        return String.format("%.1f", rankInfoService.calcYield(rankInfo, money));
     }
 }
