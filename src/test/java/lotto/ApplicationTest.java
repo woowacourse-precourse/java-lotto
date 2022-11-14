@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomUniqueNumbersInRangeTest;
@@ -235,6 +236,16 @@ class ApplicationTest extends NsTest {
         int bonus = 9;
         boolean check = winCalculation.bonusNumber(bonus,number);
         assertThat(check).isEqualTo(false);
+    }
+
+    @Test
+    void 수익계산(){
+        List<WinDetail> result = new ArrayList<>(List.of(WinDetail.Second,WinDetail.Third,WinDetail.Third));
+        Revenue revenue = new Revenue();
+        int reward = revenue.revenue(result);
+        assertThat(reward).isEqualTo(33000000);
+
+
     }
 
     @Override
