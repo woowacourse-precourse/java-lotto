@@ -1,14 +1,17 @@
 package lotto;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatCode;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import lotto.constant.ErrorMessage;
 import lotto.constant.LottoNumber;
 import lotto.domain.Lotto;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 class LottoTest {
@@ -43,5 +46,34 @@ class LottoTest {
 
         // then
         assertThat(lotto.getNumbers()).isEqualTo(numbers);
+    }
+
+    @Nested
+    @DisplayName("사용자가 입력한 당첨 번호 문자열이")
+    class If_user_winning_lotto_number_input_is {
+
+        @Test
+        @DisplayName("규칙에 맞지 않으면 예외를 던진다")
+        void does_not_comply_with_rule() {
+            // given
+            String input = ",1,,1,";
+
+            // when, then
+            assertThatThrownBy(() -> new Lotto(input))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessage(
+                            ErrorMessage.USER_INPUT_DOES_NOT_COMPLY_WITH_RULE_FOR_WINNING_LOTTO_NUMBER.getMessage());
+        }
+
+        @Test
+        @DisplayName("규칙에 맞다면 예외를 던지지 않는다")
+        void does_comply_with_rule() {
+            // given
+            String input = "1,2,3,4,5,6";
+
+            // when, then
+            assertThatCode(() -> new Lotto(input))
+                    .doesNotThrowAnyException();
+        }
     }
 }

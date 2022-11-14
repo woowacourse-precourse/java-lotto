@@ -2,14 +2,16 @@ package lotto.domain;
 
 import static lotto.validator.LottoNumberValidator.validateExistDuplicateNumber;
 import static lotto.validator.LottoNumberValidator.validateRangeOfNumber;
-import static lotto.validator.UserInputValidator.validateWinningLottoNumberComplyWithRule;
 
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import lotto.constant.Constants;
+import lotto.constant.ErrorMessage;
 import lotto.constant.LottoNumber;
+import lotto.constant.RegularExpression;
 
 public class Lotto {
     private final List<Integer> numbers;
@@ -39,6 +41,16 @@ public class Lotto {
     }
 
     // TODO: 추가 기능 구현
+    private void validateWinningLottoNumberComplyWithRule(String userInput) {
+        for (String splitInput : userInput.split(Constants.WINNING_LOTTO_NUMBER_INPUT_SEPARATOR)) {
+            if (!Pattern.matches(RegularExpression.ONLY_NUMBER.getRegex(), splitInput)) {
+                throw new IllegalArgumentException(
+                        ErrorMessage.USER_INPUT_DOES_NOT_COMPLY_WITH_RULE_FOR_WINNING_LOTTO_NUMBER.getMessage()
+                );
+            }
+        }
+    }
+
     public List<Integer> getNumbers() {
         return Collections.unmodifiableList(numbers);
     }
