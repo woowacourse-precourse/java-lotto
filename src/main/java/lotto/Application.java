@@ -74,6 +74,11 @@ public class Application {
             throw new IllegalArgumentException("[ERROR] 금액을 1000원 단위로 입력해 주세요.");
     }
 
+    public static void isNonZero(Long purchasePrice) {
+        if (purchasePrice == 0)
+            throw new IllegalArgumentException("[ERROR] 1000원 이상의 값을 입력해 주세요.");
+    }
+
     public static void getNoOfLotto() {
         guidePurchasePriceFormat();
         String purchasePriceInput = Console.readLine();
@@ -85,6 +90,7 @@ public class Application {
         long purchasePrice = Long.parseLong(purchasePriceInput);
         isLargerThan2billion(purchasePrice);
         isDividedBy1000(purchasePrice);
+        isNonZero(purchasePrice);
 
         noOfLottos = (int)(purchasePrice / 1000);
     }
@@ -240,7 +246,7 @@ public class Application {
 
     public static double getEarningsRate() {
         long totalWinningPrizes = sumWinningPrizes();
-        return (double)totalWinningPrizes / (noOfLottos*1000)*100;
+        return (double)(totalWinningPrizes / 1000) / noOfLottos * 100;
     }
 
     public static void printEarningsRate() {
