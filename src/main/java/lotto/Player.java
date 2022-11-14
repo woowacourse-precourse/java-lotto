@@ -63,4 +63,8 @@ public class Player {
             throw new IllegalArgumentException("[ERROR] : 보너스 번호는 입력한 당첨 번호와 중복되서는 안됩니다.");
         this.Bonus = bonus;
     }
+    public void InputBonusNumber(){
+        String input = readLine();
+        checkBonusNumber(input);
+    }
 }
