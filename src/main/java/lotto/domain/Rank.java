@@ -31,4 +31,8 @@ public enum Rank {
     private static boolean isThird(long matchCount, boolean hasBonusNumber) {
         return matchCount == THIRD.matchCount && !hasBonusNumber;
     }
+
+    public Money prize() {
+        return prize;
+    }
 }
