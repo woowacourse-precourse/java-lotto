@@ -16,6 +16,16 @@ public class Lotto {
         return new Lotto(parseIntList(raw));
     }
 
+    public static Lotto fromRandomNumbers() {
+        List<Integer> numbers = Randoms.pickUniqueNumbersInRange(
+                Env.LOTTO_FIRST_NUMBER,
+                Env.LOTTO_LAST_NUMBER,
+                Env.LOTTO_NUMBERS
+        );
+
+        return new Lotto(numbers);
+    }
+
     private static List<Integer> parseIntList(List<String> original) {
         try {
             return original

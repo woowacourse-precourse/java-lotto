@@ -46,4 +46,10 @@ class LottoTest {
         assertThatThrownBy(() -> Lotto.from(input))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @DisplayName("로또 번호를 랜덤으로 생성한다.")
+    @Test
+    void createLottoByRandomNumbers() {
+        assertDoesNotThrow(Lotto::fromRandomNumbers);
+    }
 }
