@@ -7,13 +7,17 @@ public class Program {
     PrintMsg printMsg = new PrintMsg();
     View view = new View();
     LottoGenerator lottoGenerator = new LottoGenerator();
+    DrawLotto drawLotto;
     int numOfLottos, bonus, money;
     List<Lotto> lottoList;
     List<Integer> winner;
-    DrawLotto drawLotto;
     Map<Ranking, Integer> result;
     double profitRate;
-
+    public void run(List<Lotto> lottoList, List<Integer> winner, int bonus) {
+        lottoSetup();
+        winSetup();
+        result(lottoList, winner, bonus);
+    }
     public void lottoSetup() {
         printMsg.printMoneyInputMsg();
         money = view.getMoneyInput();
