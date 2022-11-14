@@ -1,5 +1,6 @@
 package lotto.controller;
 
+import lotto.domain.WinnerNumber;
 import lotto.service.LottoService;
 import lotto.validator.InputValidator;
 import lotto.views.InputView;
@@ -43,9 +44,8 @@ public class LottoController {
     }
 
     private void requestWinnerNumber() {
-        String inputLottoNumber = inputView.inputLottoNumber();
         try {
-            inputValidator.validateInputLottoNumber(inputLottoNumber);
+            WinnerNumber winnerNumber = new WinnerNumber(inputView.inputWinnerNumber());
         } catch (IllegalArgumentException exception) {
             printLogInfo(exception);
         }
