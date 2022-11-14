@@ -7,7 +7,7 @@ public class InputValidator {
     public void validateStringInputIsNumeric(String userInput) {
         for(char input : userInput.toCharArray()) {
             if(!Character.isDigit(input)) {
-                throw new IllegalArgumentException();
+                throw new IllegalArgumentException(Messages.ERROR_NUMERIC.getMessage());
             }
         }
     }
@@ -18,7 +18,7 @@ public class InputValidator {
                 Integer.parseInt(input);
             }
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(Messages.ERROR_LIST_NUMERIC.getMessage());
         }
     }
 
@@ -27,14 +27,14 @@ public class InputValidator {
             int inputNum = Integer.parseInt(input);
 
             if(inputNum < 1 || inputNum > 45) {
-                throw new IllegalArgumentException();
+                throw new IllegalArgumentException(Messages.ERROR_LOTTO_NUMBER_RANGE.getMessage());
             }
         }
     }
 
     public void validateListSize(List<String> userInput) {
         if(userInput.size() != 6) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(Messages.ERROR_LOTTO_SIZE.getMessage());
         }
     }
 
@@ -43,7 +43,7 @@ public class InputValidator {
 
         int money = Integer.parseInt(userInput);
         if(money%1000 != 0 || money < 1000) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ERROR);
         }
     }
 
@@ -60,7 +60,7 @@ public class InputValidator {
         int inputNum = Integer.parseInt(userInput);
 
         if(lottoNumbers.contains(inputNum)) {
-            throw new IllegalArgumentException(Messages.ERROR_BONUS_DUPLICATE.getMessage());
+            throw new IllegalArgumentException();
         }
 
         if(inputNum < 1 || inputNum > 45) {

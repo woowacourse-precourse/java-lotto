@@ -20,7 +20,12 @@ public class LottoInput {
         Messages.INPUT_MONEY.printMessage();
         String userInput = readInput();
 
-        inputValidator.validateInputMoney(userInput);
+        try {
+            inputValidator.validateInputMoney(userInput);
+        } catch (IllegalArgumentException e) {
+            Messages.
+        }
+
 
         return Integer.parseInt(userInput);
     }
