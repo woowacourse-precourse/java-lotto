@@ -18,6 +18,7 @@ public class Model {
     private int MONEY;
     private int BONUS_NUMBER;
 
+    // 로또 번호 비교하는 시작점, 입력한 금액, 보너스 번호를 필드값에 입력
     public HashMap<Integer, Integer> checkPrize(int money, int bonusNumber, List<Integer> lottoNumbers) {
         this.MONEY = money;
         this.BONUS_NUMBER = bonusNumber;
@@ -26,6 +27,7 @@ public class Model {
         return PRIZE_RANKINGS;
     }
 
+    // 계산된 수익률을 반환하는 메서드
     public double getRateOfProfit () {
         return calculateRateOfProfit(MONEY);
     }
@@ -36,6 +38,7 @@ public class Model {
         return this.USERS_LOTTOS;
     }
 
+    // 생성된 로또 마다 입력한 로또 번호랑 비교하는 메서드
     public void checkLottoNumber (List<Integer> lottoNumbers) {
         List<Integer> duplicatedNumbers = new ArrayList<>();
 
@@ -50,6 +53,7 @@ public class Model {
         checkPrizeLotto(duplicatedNumbers);
     }
 
+    // 입력한 로또 번호랑 생성된 로또 번호 비교값을 순위로 변환해서 반환하는 메서드
     public void checkPrizeLotto (List<Integer> duplicatedNumbers) {
         List<Integer> prizeRankings = new ArrayList<>();
 
@@ -62,6 +66,7 @@ public class Model {
         PRIZE_RANKINGS = makeNumberByRanking(prizeRankings);
     }
 
+    // 입력한 로또 번호가 5개 이상인 로또를 대상으로 보너스 번호가 포함되어 있는지 확인하는 메서드
     private void checkBonusNumber(List<Integer> prizeRankings){
         int changedRanking;
 
@@ -74,6 +79,7 @@ public class Model {
         }
     }
 
+    // 순위 별로 값이 0인(텅 빈) Map 생성
     private HashMap<Integer, Integer> makeNumberByRanking (List<Integer> prizeRankings) {
         HashMap<Integer, Integer> numberByRanking = new HashMap<>();
 
@@ -86,6 +92,7 @@ public class Model {
         return numberByRanking;
     }
 
+    // 5개가 일치한 로또가 보너스 번호가 포함되어 있다면 순위를 올리는 메서드
     private int upRanking (List<Integer> usersLotto, int bonusNumber) {
         if (usersLotto.contains(bonusNumber)) {
             return Ranking.SECOND.getRanking();
@@ -93,6 +100,7 @@ public class Model {
         return Ranking.THIRD.getRanking();
     }
 
+    // 순위 리스트를 받아 Map으로 값을 추가시키는 메서드
     private void inputNumberByRanking (List<Integer> prizeRankings, HashMap<Integer, Integer> numberByRanking) {
 
         for (int ranking: prizeRankings) {
@@ -102,6 +110,7 @@ public class Model {
         }
     }
 
+    // 일치하는 값을 순위로 변환시키는 메서드
     private int addPrizeRanking(int duplicatedNumber) {
         if (duplicatedNumber == 3) return Ranking.FIFTH.getRanking();
         if (duplicatedNumber == 4) return Ranking.FORTH.getRanking();
@@ -110,6 +119,7 @@ public class Model {
         return 0;
     }
 
+    // 수익률 계산하는 메서드
     public double calculateRateOfProfit (int money) {
         int totalProfit = 0;
 
@@ -120,6 +130,7 @@ public class Model {
         return (double)totalProfit / money;
     }
 
+    // 당첨된 순위에 해당하는 금액을 반환하는 메서드
     public int profitByRanking (int ranking, int numberOfRanking) {
         if (ranking == 1) return Prize.FIRST.getPrize() * numberOfRanking;
         if (ranking == 2) return Prize.SECOND.getPrize() * numberOfRanking;
@@ -163,6 +174,7 @@ public class Model {
         }
     }
 
+    // 순위가 저장된 enum클래스
     public enum Ranking {
         FIRST(1),
         SECOND(2),
