@@ -56,11 +56,11 @@ public class Lotto {
     public void printInfo(){
         System.out.print("[");
         for(int i = 0 ; i < numbers.size(); i++){
+            if(i != 0) System.out.print(" ");
             System.out.print(numbers.get(i));
             if(i != numbers.size()-1) System.out.print(",");
         }
         System.out.println("]");
     }
 
-    // TODO: 추가 기능 구현
 }
