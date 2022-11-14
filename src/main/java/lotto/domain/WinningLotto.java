@@ -6,8 +6,8 @@ import static lotto.domain.ErrorMessage.BONUS_NUMBER_DUPLICATED_ERROR;
 import static lotto.domain.ErrorMessage.OUT_OF_RANGE_NUMBER_ERROR;
 
 public class WinningLotto {
-    private Lotto winningLotto;
-    private int bonusNumber;
+    private final Lotto winningLotto;
+    private final int bonusNumber;
 
     public WinningLotto(Lotto winningNumber, int bonusNumber) {
         this.winningLotto = winningNumber;

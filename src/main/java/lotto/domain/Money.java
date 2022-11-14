@@ -5,7 +5,7 @@ import static lotto.domain.ErrorMessage.UNDER_MONEY_ERROR;
 
 public class Money {
     private static final int UNIT_MONEY = 1_000;
-    private int money;
+    private final int money;
 
     public Money(int money) {
         validate(money);

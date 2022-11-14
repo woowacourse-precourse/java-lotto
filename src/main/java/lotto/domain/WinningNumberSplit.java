@@ -20,7 +20,7 @@ public class WinningNumberSplit {
             if (InputValidator.isBlank(number)) {
                 throw new IllegalArgumentException(WINNING_INPUT_NUMBER_ERROR.toString());
             }
-            if (!InputValidator.isNumber(number)) {
+            if (InputValidator.isNotNumber(number)) {
                 throw new IllegalArgumentException(NOT_NUMBER_ERROR.toString());
             }
             winningNumbers.add(Integer.parseInt(number));
