@@ -14,14 +14,12 @@ public class Application {
     }
 
     static private int isValidPurchaseAmount(int inputValue) throws IllegalArgumentException {
-
         if (inputValue == 0) {
             throw new IllegalArgumentException("[ERROR] 구매 금액은 0보다 커야합니다.");
         }
-
-        if (inputValue % 1000 != 0)
+        if (inputValue % 1000 != 0) {
             throw new IllegalArgumentException("[ERROR] 구매 금액은 1000단위로 입력해야 합니다.");
-
+        }
         return inputValue;
     }
 }
