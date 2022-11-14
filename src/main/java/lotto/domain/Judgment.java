@@ -95,4 +95,25 @@ public class Judgment {
     private boolean isContainBonusNumber(List<Integer> lottoNumber) {
         return lottoNumber.contains(bonusNumber);
     }
+
+    public double calculateProfitRate(int money) {
+        int totalPrizeMoney = 0;
+        if (result.get(Rank.FIFTH.getRanking()) != 0) {
+            totalPrizeMoney += result.get(Rank.FIFTH.getRanking()) * Rank.FIFTH.getPrizeMoney();
+        }
+        if (result.get(Rank.FOURTH.getRanking()) != 0) {
+            totalPrizeMoney += result.get(Rank.FOURTH.getRanking()) * Rank.FOURTH.getPrizeMoney();
+        }
+        if (result.get(Rank.THIRD.getRanking()) != 0) {
+            totalPrizeMoney += result.get(Rank.THIRD.getRanking()) * Rank.THIRD.getPrizeMoney();
+        }
+        if (result.get(Rank.SECOND.getRanking()) != 0) {
+            totalPrizeMoney += result.get(Rank.SECOND.getRanking()) * Rank.SECOND.getPrizeMoney();
+        }
+        if (result.get(Rank.FIRST.getRanking()) != 0) {
+            totalPrizeMoney += result.get(Rank.FIRST.getRanking()) * Rank.FIRST.getPrizeMoney();
+        }
+        double profitRate = (double)totalPrizeMoney / money * 100;
+        return profitRate;
+    }
 }

@@ -27,6 +27,8 @@ public class Controller {
         Judgment judgment = new Judgment(lottoNumbers, winningNumbers, bonusNumber);
         List<Integer> winningResult = judgment.result();
         systemMessage.printResult(winningResult);
+        double profitRate = judgment.calculateProfitRate(money);
+        systemMessage.printProfitRate(profitRate);
     }
 
     public void createLotto(int lottoTicket) {
