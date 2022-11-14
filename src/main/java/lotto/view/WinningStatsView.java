@@ -11,6 +11,8 @@ public class WinningStatsView {
     public static final String CONTOUR = "---";
     public static final String WINNING_CONTOUR = " - ";
     public static final String WINNING_UNIT = "개";
+    public static final String RATE_OF_RETURN_FRONT_MESSAGE = "총 수익률은 ";
+    public static final String RATE_OF_RETURN_BACK_MESSAGE = "%입니다.";
 
     public static void showWinningStatsMessage() {
         System.out.println(WINNING_STATS_MESSAGE);
@@ -26,5 +28,9 @@ public class WinningStatsView {
         System.out.println(Prize.THIRD_PLACE.getMessage() + WINNING_CONTOUR + numberOfWinningTypes.get(2) + WINNING_UNIT);
         System.out.println(Prize.SECOND_PLACE.getMessage() + WINNING_CONTOUR + numberOfWinningTypes.get(1) + WINNING_UNIT);
         System.out.println(Prize.FIRST_PLACE.getMessage() + WINNING_CONTOUR + numberOfWinningTypes.get(0) + WINNING_UNIT);
+    }
+
+    public static void showRateOfReturn(String rateOfReturn) {
+        System.out.println(RATE_OF_RETURN_FRONT_MESSAGE + rateOfReturn + RATE_OF_RETURN_BACK_MESSAGE);
     }
 }
