@@ -1,6 +1,8 @@
 package lotto;
 
+import java.text.DecimalFormat;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 public class LottoPrinter {
@@ -13,4 +15,21 @@ public class LottoPrinter {
             System.out.println("]");
         });
     }
+
+    public static void printStatistics(Map<LottoPrize, Integer> statistics) {
+        System.out.println("당첨 통계");
+        System.out.println("---");
+
+        List<LottoPrize> prizes = List.of(LottoPrize.FIFTH, LottoPrize.FOURTH, LottoPrize.THIRD, LottoPrize.SECOND,
+                LottoPrize.FIRST);
+        prizes.forEach(prize -> printPrizeStatistic(prize, statistics));
+    }
+
+    private static void printPrizeStatistic(LottoPrize prize, Map<LottoPrize, Integer> statistics) {
+        int count = statistics.get(prize);
+        DecimalFormat decimalFormat = new DecimalFormat("###,###");
+        String formattedReward = decimalFormat.format(prize.reward);
+        System.out.printf("%s (%s원) - %d개\n", prize.matchCount, formattedReward, count);
+    }
+
 }
