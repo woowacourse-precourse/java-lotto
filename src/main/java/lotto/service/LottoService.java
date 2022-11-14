@@ -1,24 +1,11 @@
 package lotto.service;
 
 import java.util.List;
-import lotto.domain.User;
-import lotto.domain.WinningLotto;
 import lotto.util.LottoUtils;
 
 public class LottoService {
 
     final static int LOTTO_PAYMENT = 1000;
-
-    public int inputPaymentToNumber(String inputPayment){
-        int payment;
-
-        try {
-            payment = Integer.parseInt(inputPayment);
-            return payment;
-        } catch (Exception e) {
-            throw new IllegalArgumentException("[ERROR] 숫자가 아닌 값이 입력되었습니다.");
-        }
-    }
 
     public int buyLotto(int payment){
         int amount = getLottoAmount(payment);
@@ -39,7 +26,6 @@ public class LottoService {
         for(int number :winningNumber){
             LottoUtils.checkNumberInRange(number);
         }
-
         return winningNumber;
     }
 

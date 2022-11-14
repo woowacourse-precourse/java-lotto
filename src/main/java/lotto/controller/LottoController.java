@@ -5,6 +5,7 @@ import lotto.domain.Lotto;
 import lotto.domain.User;
 import lotto.domain.WinningLotto;
 import lotto.service.LottoService;
+import lotto.util.LottoUtils;
 import lotto.view.Message;
 
 public class LottoController {
@@ -24,7 +25,7 @@ public class LottoController {
 
     public int getLottoAmount() {
         String inputPayment = message.inputPaymentMessage();
-        int lottoPayment = lottoService.inputPaymentToNumber(inputPayment);
+        int lottoPayment = LottoUtils.inputToNumber(inputPayment);
         user.setLottoPayment(lottoPayment);
 
         int lottoAmount = lottoService.buyLotto(lottoPayment);

@@ -31,11 +31,11 @@ public class LottoUtils {
     }
 
     public static void checkUniqueNumbers(List<Integer> numbers) {
-        List<Integer> numbers2 = numbers.stream()
+        List<Integer> uniqueNumbers  = numbers.stream()
                 .distinct()
                 .collect(Collectors.toList());
 
-        if(numbers.size() != numbers2.size()){
+        if(numbers.size() != uniqueNumbers.size()){
             throw new IllegalArgumentException("[ERROR] 중복된 번호가 당첨될 수 없습니다.");
         }
     }
@@ -43,6 +43,17 @@ public class LottoUtils {
     public static void checkNumberInRange(int number) {
         if(number<START_NUMBER || number>END_NUMBER){
             throw new IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
+        }
+    }
+
+    public static int inputToNumber(String input){
+        int number;
+
+        try {
+            number = Integer.parseInt(input);
+            return number;
+        } catch (Exception e) {
+            throw new IllegalArgumentException("[ERROR] 숫자가 아닌 값이 입력되었습니다.");
         }
     }
 }
