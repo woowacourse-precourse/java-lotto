@@ -2,6 +2,8 @@ package lotto.view;
 
 import java.text.DecimalFormat;
 import java.text.MessageFormat;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import lotto.domain.Lotto;
@@ -32,7 +34,9 @@ public class OutputView {
     public static void printPurchaseLotto(List<Lotto> lottos) {
         System.out.println(MessageFormat.format(PURCHASE_LOTTO_COUNT_MESSAGE, lottos.size()));
         for (Lotto lotto : lottos) {
-            System.out.println(lotto.getNumbers());
+            List<Integer> numbers = new ArrayList<>(lotto.getNumbers());
+            Collections.sort(numbers);
+            System.out.println(numbers);
         }
     }
 
