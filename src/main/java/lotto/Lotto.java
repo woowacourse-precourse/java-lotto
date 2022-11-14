@@ -30,7 +30,7 @@ public class Lotto {
     private void checkDuplicatedNumber(List<Integer> numbers) {
         for (int i = 0; i < 5; i++) {
             int currentNumber = numbers.get(i);
-            int nextNumber = numbers.get(i+1);
+            int nextNumber = numbers.get(i + 1);
             if (currentNumber == nextNumber) {
                 throw new IllegalArgumentException();
             }
@@ -38,5 +38,10 @@ public class Lotto {
         }
     }
 
+    public void checkBonusExists(int bonus) {
+        if (this.numbers.contains(bonus)) {
+            throw new IllegalArgumentException();
+        }
+    }
 
 }
