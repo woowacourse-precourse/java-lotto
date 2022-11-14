@@ -21,4 +21,8 @@ public class Lotto {
   public String getLottoString() {
     return numbers.toString();
   }
+
+  public boolean isNumberContained(int number) {
+    return numbers.contains(number);
+  }
 }
