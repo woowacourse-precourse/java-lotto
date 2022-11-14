@@ -14,7 +14,7 @@ public class PlayerTest {
     @DisplayName("로또 플레이 후 결과 검증")
     @Test
     void playLotto() {
-        Lottos lottos = LottosCreator.create(8000, createLottoNumbers());
+        Lottos lottos = LottosCashier.create(8000, createLottoNumbers());
         Player player = new Player(lottos, 8000);
         Answer answer = new Answer(List.of(1, 2, 3, 4, 5, 6), 7);
 

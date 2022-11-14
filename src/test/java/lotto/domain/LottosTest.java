@@ -18,7 +18,7 @@ public class LottosTest {
     void getLottosWithSorting() {
         List<List<Integer>> lottoNumbers = createSortTestLottoNumbers();
 
-        Lottos lottos = LottosCreator.create(3000, lottoNumbers);
+        Lottos lottos = LottosCashier.create(3000, lottoNumbers);
         LottoResponseDtos purchaseLottos = lottos.toResponseDto();
         List<LottoResponseDto> responseDtos = purchaseLottos.getLottoResponseDtos();
         List<List<Integer>> answer = createAnswer();

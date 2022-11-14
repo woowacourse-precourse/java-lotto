@@ -12,7 +12,7 @@ public class LottoGameService {
     private Answer answer;
 
     public void createPlayer(int purchasePrice) {
-        player = new Player(LottosCreator.create(purchasePrice), purchasePrice);
+        player = new Player(LottosCashier.create(purchasePrice), purchasePrice);
     }
 
     public void createAnswer(List<Integer> answers, int bonusNumber) {

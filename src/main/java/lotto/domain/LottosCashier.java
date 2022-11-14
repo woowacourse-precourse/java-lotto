@@ -3,11 +3,11 @@ package lotto.domain;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class LottosCreator {
+public class LottosCashier {
 
     public static final int LOTTO_PRICE = 1000;
 
-    private LottosCreator() {
+    private LottosCashier() {
     }
 
     public static Lottos create(int purchasePrice) {
