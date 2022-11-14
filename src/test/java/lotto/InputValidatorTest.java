@@ -54,4 +54,16 @@ class InputValidatorTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+    @Test
+    @DisplayName("보너스 번호가 범위를 초과하였을 때")
+    void bonusOutOfRange() throws Exception {
+        //given
+        String input = "47";
+        Lotto winningNumber = new Lotto(List.of(1,2,3,4,5,6));
+        //when
+        //then
+        assertThatThrownBy(() -> inputValidator.validateInputBonusNumber(input, winningNumber))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
 }
