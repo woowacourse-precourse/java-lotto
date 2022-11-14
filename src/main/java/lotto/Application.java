@@ -2,6 +2,7 @@ package lotto;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
+import jdk.jshell.spi.ExecutionControlProvider;
 import lotto.domain.Lotto;
 import lotto.domain.UserLotto;
 import lotto.domain.Bonus;
@@ -16,27 +17,29 @@ import static lotto.domain.Guide.*;
 
 import static lotto.domain.NumberGenerator.createLottoList;
 import static lotto.domain.UserLotto.createLottoResult;
+import static lotto.domain.Bonus.bonusIsNumeric;
 
 public class Application {
     static final int ROUND_NUMBER = 1;
 
     public static void main(String[] args) {
-        UserLotto user = createUserLotto();
-        int lottoCount = user.getLottoCount();
-        List<Lotto> lottos = getLottoList(lottoCount);
+        try {
+            UserLotto user = createUserLotto();
+            List<Lotto> lottos = getLottoList(user.getLottoCount());
 
-        printLottoList(lottos);
+            printLottoList(lottos);
 
-        Lotto winningNumbers = createWinningNumbers();
-        Bonus bonusNumber = createBonusNumber(winningNumbers);
-        List<Integer> lottoResult = createLottoResult(lottos, winningNumbers.getLotto(),
-                bonusNumber.getBonusNumber());
+            Lotto winningNumbers = createWinningNumbers();
+            List<Integer> lottoResult = createLottoResult(lottos, winningNumbers.getLotto(),
+                    createBonusNumber(winningNumbers).getBonusNumber());
 
-        printLottoStatistics(createLottoStatisticsMessage(lottoResult));
-        printRateOfReturn(user.getRateOfReturn(lottoResult), ROUND_NUMBER);
+            printResults(lottoResult, user);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 
-    public static UserLotto createUserLotto() {
+    public static UserLotto createUserLotto() throws IllegalArgumentException {
         printGetMoney();
         return new UserLotto(readLine());
     }
@@ -51,8 +54,15 @@ public class Application {
         return new Lotto(convertStringListToIntegerList(splitNumber(readLine())));
     }
 
-    public static Bonus createBonusNumber(Lotto winningNumbers) {
+    public static Bonus createBonusNumber(Lotto winningNumbers) throws IllegalArgumentException {
         printGetBonusNumber();
-        return new Bonus(convertStringToInt(readLine()), winningNumbers);
+        String bonusNumber = readLine();
+        bonusIsNumeric(bonusNumber);
+        return new Bonus(convertStringToInt(bonusNumber), winningNumbers);
+    }
+
+    public static void printResults(List<Integer> lottoResult, UserLotto user) {
+        printLottoStatistics(createLottoStatisticsMessage(lottoResult));
+        printRateOfReturn(user.getRateOfReturn(lottoResult), ROUND_NUMBER);
     }
 }
