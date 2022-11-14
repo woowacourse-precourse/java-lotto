@@ -67,4 +67,10 @@ public class User {
             throw new IllegalArgumentException("[ERROR] 당첨 번호의 개수를 6개만 입력해주세요");
         }
     }
+
+    public void checkNumberRange(int number) {
+        if (number > 45 || number < 1) {
+            throw new IllegalArgumentException("[ERROR] 숫자 범위 1~45까지만 입력해주세요");
+        }
+    }
 }
