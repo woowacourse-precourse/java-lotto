@@ -2,11 +2,11 @@ package lotto;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
-import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
-import lotto.domain.Correct;
+import lotto.domain.CorrectNum;
 import lotto.domain.Draw;
 import lotto.domain.LotteryShop;
 import lotto.domain.Lotto;
@@ -38,15 +38,14 @@ public class Application {
         System.out.println("---");
         for (int i = 0; i < lottos.size(); i++) {
             List<Integer> lotto = lottos.get(i).getNumbers();
-            Correct correctType = (Correct) Draw.findCorrectType(lotto, winNum, bonusNum);
-            correctType.setCnt(correctType.getCnt() + 1);
-
+            CorrectNum correctNumType = (CorrectNum) Draw.findCorrectType(lotto, winNum, bonusNum);
+            correctNumType.setCnt(correctNumType.Cnt() + 1);
         }
-        System.out.println("3개 일치 (5,000원) - " + Correct.THREE.getCnt() + "개");
-        System.out.println("4개 일치 (50,000원) - " + Correct.FOUR.getCnt() + "개");
-        System.out.println("5개 일치 (1,500,000원) - " + Correct.FIVE.getCnt() + "개");
-        System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - " + Correct.FIVE_BONUS.getCnt() + "개");
-        System.out.println("6개 일치 (2,000,000,000원) - " + Correct.SIX.getCnt() + "개");
-        System.out.println(String.format("%,.2f%%입니다.", RateOfProfit.calculate(amount)));
+        System.out.println("3개 일치 (5,000원) - " + CorrectNum.THREE.Cnt() + "개");
+        System.out.println("4개 일치 (50,000원) - " + CorrectNum.FOUR.Cnt() + "개");
+        System.out.println("5개 일치 (1,500,000원) - " + CorrectNum.FIVE.Cnt() + "개");
+        System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - " + CorrectNum.FIVE_BONUS.Cnt() + "개");
+        System.out.println("6개 일치 (2,000,000,000원) - " + CorrectNum.SIX.Cnt() + "개");
+        System.out.println(String.format("총 수익률은 %.1f%%입니다.", RateOfProfit.calculate(amount)));
     }
 }
