@@ -1,8 +1,8 @@
 package lotto;
 
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 public class OutputConsole {
@@ -21,7 +21,7 @@ public class OutputConsole {
 
     public static void printWinningList(List<Lotto> lottos, List<Integer> winningNumber, int bonusNumber) {
         LottoMachine lottoMachine = new LottoMachine();
-        HashMap<Rank, Integer> rankResult = lottoMachine.makeRankResult(lottos, winningNumber, bonusNumber);
+        Map<Rank, Integer> rankResult = lottoMachine.makeRankResult(lottos, winningNumber, bonusNumber);
         for (Rank key: rankResult.keySet()){
             System.out.println(key.getScoreText() + "- " + rankResult.get(key) +"개");;
         }

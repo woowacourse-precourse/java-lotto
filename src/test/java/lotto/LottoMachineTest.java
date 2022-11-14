@@ -4,8 +4,8 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import static lotto.LottoMachine.LOTTO_PRICE;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -37,7 +37,7 @@ public class LottoMachineTest {
         lottos.add(new Lotto(List.of(1, 3, 5, 14, 22, 45)));
         LottoMachine lottoMachine = new LottoMachine();
         //when
-        HashMap<Rank, Integer> rankResult = lottoMachine.makeRankResult(lottos,winningNumber, bonusNumber);
+        Map<Rank, Integer> rankResult = lottoMachine.makeRankResult(lottos,winningNumber, bonusNumber);
         //then
         assertThat(rankResult.get(Rank.FIRST)).isEqualTo(3);
     }

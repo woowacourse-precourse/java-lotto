@@ -5,6 +5,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class LottoMachine {
 
@@ -24,13 +25,19 @@ public class LottoMachine {
         return numbers;
     }
 
-    public HashMap<Rank, Integer> makeRankResult(List<Lotto> lottos, List<Integer> winningNumber, int bonusNumber) {
-        HashMap<Rank, Integer> rankResult = new HashMap<>();
+    public Map<Rank, Integer> makeRankResult(List<Lotto> lottos, List<Integer> winningNumber, int bonusNumber) {
+        Map<Rank, Integer> rankResult = new HashMap<Rank, Integer>() {
+            {
+                put(Rank.FIRST, 0);
+                put(Rank.SECOND, 0);
+                put(Rank.THIRD, 0);
+                put(Rank.FOURTH, 0);
+                put(Rank.FIFTH, 0);
+                put(Rank.NOTHING, 0);
+            }
+        };
         for (int i = 0; i < lottos.size(); i++) {
             Rank rank = lottos.get(i).matchRank(winningNumber, bonusNumber);
-            if (!rankResult.containsKey(rank)) {
-                rankResult.put(rank, 0);
-            }
             rankResult.put(rank, rankResult.get(rank) + 1);
         }
         return rankResult;
