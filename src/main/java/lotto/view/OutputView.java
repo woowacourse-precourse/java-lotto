@@ -11,11 +11,11 @@ import static lotto.domain.WinningMoney.*;
 public class OutputView {
     private static final String TITLE = "당첨 통계";
     private static final String LINE = "---";
-    private static final String FIFTH_PLACE = "3개 일치 (5,000)원 - %d개";
-    private static final String FOURTH_PLACE = "4개 일치 (50,000원) - %d개";
-    private static final String THIRD_PLACE = "5개 일치 (1,500,000원) - %d개";
-    private static final String SECOND_PLACE = "5개 일치, 보너스 볼 일치 (30,000,000원) - %d개";
-    private static final String FIRST_PLACE = "6개 일치 (2,000,000,000원) - %d개";
+    private static final String FIFTH_PLACE = "3개 일치 (5,000)원 - %d개\n";
+    private static final String FOURTH_PLACE = "4개 일치 (50,000원) - %d개\n";
+    private static final String THIRD_PLACE = "5개 일치 (1,500,000원) - %d개\n";
+    private static final String SECOND_PLACE = "5개 일치, 보너스 볼 일치 (30,000,000원) - %d개\n";
+    private static final String FIRST_PLACE = "6개 일치 (2,000,000,000원) - %d개\n";
     private static final String YIELD = "총 수익률은 %d%%입니다.";
     public void printLottos(List<Lotto> lottos) {
         System.out.println();
