@@ -24,7 +24,7 @@ public class Application {
 
         // 보너스 번호를 입력받는다.
         BonusIOHandler bonusIOHandler = new BonusIOHandler();
-        Bonus bonus = new Bonus(bonusIOHandler.getBonus());
+        Bonus bonus = new Bonus(bonusIOHandler.getUserBonus(lottoAnswer));
 
         // 당첨 결과를 계산한다.
         LottoCalculator calculator = new LottoCalculator();
@@ -32,6 +32,7 @@ public class Application {
         System.out.println(rank);
 
         // 수익률을 계산한다.
+
 
     }
 }

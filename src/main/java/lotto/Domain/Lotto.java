@@ -13,7 +13,7 @@ public class Lotto{
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
-        DuplicationCheck(numbers);
+        duplicationCheck(numbers);
         this.numbers = numbers;
     }
 
@@ -25,7 +25,7 @@ public class Lotto{
     }
 
     // 중복 수가 있는지 체크한다.
-    private void DuplicationCheck(List<Integer> numbers){
+    private void duplicationCheck(List<Integer> numbers){
         final Set<Integer> yetExist = new HashSet<>();
         for (Integer number:numbers) {
             if (!yetExist.add(number)) {

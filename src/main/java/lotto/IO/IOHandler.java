@@ -9,5 +9,5 @@ public abstract class IOHandler {
         input = Console.readLine();
         return input;
     }
-    public abstract String validateInput(String input);
+    public abstract void validateInput(String input);
 }

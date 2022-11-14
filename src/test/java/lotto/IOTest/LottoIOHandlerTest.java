@@ -24,6 +24,14 @@ public class LottoIOHandlerTest extends IOTest {
         assertThat(lottoIOHandler.getLottoAnswer()).isEqualTo(list);
     }
 
+    @DisplayName("~,~ 형식의 문자열을 리스트로 변환 검증")
+    @Test
+    void convertStringToIntListTest(){
+        assertThat(lottoIOHandler.convertStringToIntList("1,2,3,4,5,6"))
+                .isEqualTo(List.of(1, 2, 3, 4, 5, 6));
+    }
+
+
     @DisplayName("잘못된 당첨 번호 예외처리 검증")
     @Test
     void validateInputTest_notInputComma_IllegalArgumentException(){

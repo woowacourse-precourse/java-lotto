@@ -19,14 +19,9 @@ public class CashIOHandlerTest extends IOTest {
     void getUserInputTest(){
         systemIn("1124124");
         assertThat(cashier.getUserInput()).isEqualTo("1124124");
-    }
 
-    @DisplayName(",000 입력에 대한 처리가 되는지")
-    @Test
-    void validateInput_comma(){
-        String input = "168,219,000";
-        String comma = cashier.validateInput(input);
-        assertThat(comma).isEqualTo("168219000");
+        systemIn("168,219,000");
+        assertThat(cashier.getUserInput()).isEqualTo("168219000");
     }
 
     @DisplayName(",000 입력에 대한 예외 처리가 되는지")
@@ -36,14 +31,6 @@ public class CashIOHandlerTest extends IOTest {
         assertThatThrownBy(()->cashier.validateInput(input))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("[ERROR] 천원 단위로 입력해주세요");
-    }
-
-    @DisplayName("000 단위에 대한 검증이 정상 처리되는지")
-    @Test
-    void validateInputTest_thousand(){
-        String input2 = "168219000";
-        String normal = cashier.validateInput(input2);
-        assertThat(normal).isEqualTo("168219000");
     }
 
     @DisplayName("000 단위에 대한 예외 처리가 되는지")
