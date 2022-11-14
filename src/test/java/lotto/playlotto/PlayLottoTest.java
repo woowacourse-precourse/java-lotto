@@ -41,10 +41,13 @@ class PlayLottoTest extends NsTest {
 
     @Test
     void check_num() {
-        PlayLotto lotto = new PlayLotto();
-        List<Integer> list = List.of(1, 2, 3, 4, 5, 6);
+
+        PlayLotto playLotto = create_PlayLotto();
+        playLotto.setLotto(create_Lotto());
+
+
         Integer num = 5;
-        Boolean condition = lotto.check_num(list, 5);
+        Boolean condition = playLotto.check_num(playLotto.getLotto().returnNumbers(), 5);
         assertThat(condition).isTrue();
     }
 
