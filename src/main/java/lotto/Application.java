@@ -60,7 +60,7 @@ public class Application {
     private static void makeLottoResults() {
         ResultMaker resultMaker = new ResultMaker(winningNumbers, bonusNumber);
         for (Lotto lotto : lottos) {
-            results.add(resultMaker.getTheResult(lotto.getNumbers()));
+            results.add(resultMaker.getWinningResult(lotto.getNumbers()));
         }
     }
 

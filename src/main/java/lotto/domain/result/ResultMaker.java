@@ -13,7 +13,7 @@ public class ResultMaker {
         this.bonusNumber = bonusNumber;
     }
 
-    public Result getTheResult(List<Integer> lottoNumbers) {
+    public Result getWinningResult(List<Integer> lottoNumbers) {
         int accordedNumbers = (int)winningNumbers.stream()
                 .filter(num -> lottoNumbers.contains(num))
                 .count();
