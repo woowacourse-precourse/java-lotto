@@ -1,7 +1,6 @@
-package lotto.vo;
+package lotto.domain;
 
 import java.util.List;
-import lotto.Prize;
 
 public class Lotto {
     private final List<Integer> numbers;

@@ -1,8 +1,7 @@
-package lotto.vo;
+package lotto.domain;
 
 import java.util.HashMap;
 import java.util.Map;
-import lotto.Prize;
 
 public class PrizeOfUser {
     private final Map<Prize, Integer> prizes;

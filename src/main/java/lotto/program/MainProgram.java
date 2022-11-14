@@ -1,9 +1,7 @@
 package lotto.program;
 
-import java.util.List;
-import lotto.vo.Lotto;
-import lotto.vo.LottoOfAnswer;
-import lotto.vo.LottoOfUser;
+import lotto.domain.LottoOfAnswer;
+import lotto.domain.LottoOfUser;
 
 public class MainProgram {
     private final ConsoleProgram consoleProgram;

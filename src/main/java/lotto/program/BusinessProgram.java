@@ -2,10 +2,10 @@ package lotto.program;
 
 import lotto.utils.Converter;
 import lotto.utils.Generator;
-import lotto.vo.Lotto;
-import lotto.vo.LottoOfAnswer;
-import lotto.vo.LottoOfUser;
-import lotto.vo.PrizeOfUser;
+import lotto.domain.Lotto;
+import lotto.domain.LottoOfAnswer;
+import lotto.domain.LottoOfUser;
+import lotto.domain.PrizeOfUser;
 
 public class BusinessProgram {
 
