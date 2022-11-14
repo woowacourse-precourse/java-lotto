@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class LotteryMachine {
     private static final int AMOUNT_UNIT = 1000;
@@ -18,10 +19,16 @@ public class LotteryMachine {
         drawLottos(amount / AMOUNT_UNIT);
     }
 
-    private WinningStat compareNumbers(Lotto winningNumbers, int bonusNumber) {
+    public WinningStat compareNumbers(Lotto winningNumbers, int bonusNumber) {
         WinningStat winningStat = new WinningStat();
         lottos.forEach(x -> winningStat.add(x.countNumbers(winningNumbers), x.hasNumber(bonusNumber)));
         return winningStat;
+    }
+
+    public List<String> getLists() {
+        return lottos.stream()
+                .map(Lotto::toString)
+                .collect(Collectors.toList());
     }
 
     private void drawLottos(int number) {

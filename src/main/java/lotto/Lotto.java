@@ -12,14 +12,22 @@ public class Lotto {
         this.numbers = numbers;
     }
 
-    public int countNumbers(Lotto lotto){
+    public int countNumbers(Lotto lotto) {
         return (int) numbers.stream()
                 .filter(lotto::hasNumber)
                 .count();
     }
 
-    public boolean hasNumber(int number){
+    public boolean hasNumber(int number) {
         return numbers.contains(number);
+    }
+
+    public String toString() {
+        return "[" + numbers.stream()
+                .sorted()
+                .map(String::valueOf)
+                .collect(Collectors.joining(","))
+                + "]";
     }
 
     private void validate(List<Integer> numbers) {
@@ -28,12 +36,12 @@ public class Lotto {
         }
     }
 
-    private void validateNumbers(int number){
-        if(number<1||number>45)
+    private void validateNumbers(int number) {
+        if (number < 1 || number > 45)
             throw new IllegalArgumentException("[ERROR] 로또 번호 범위는 1~45입니다.");
     }
 
-    private List<Integer> distinctNumbers(List<Integer> numbers){
+    private List<Integer> distinctNumbers(List<Integer> numbers) {
         return numbers.stream()
                 .distinct()
                 .collect(Collectors.toList());
