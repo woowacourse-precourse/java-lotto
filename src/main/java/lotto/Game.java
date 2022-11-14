@@ -45,7 +45,7 @@ public class Game {
         List<Integer> counts = countNum(datas, numbers);
         System.out.println(counts);
         int[] counter = prize(counts);
-        //Print(counter);
+        Print(counter);
     }
 
     public List<Integer> countNum(List<List<Integer>> datas, List<Integer> numbers) {
@@ -85,6 +85,12 @@ public class Game {
         return counter;
     }
 
+    public void Print(int[] counter){
+        System.out.printf("\n3개 일치 (5,000원) - %d개\n", counter[0]);
+        System.out.printf("4개 일치 (50,000원) - %d개\n", counter[1]);
+        System.out.printf("5개 일치 (1,500,000원) - %d개\n", counter[2]);
+        System.out.printf("6개 일치 (2,000,000,000원) - %d개", counter[3]);
+    }
     /*
     3개 일치 (5,000원) - 1개
     4개 일치 (50,000원) - 0개
