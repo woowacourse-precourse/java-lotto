@@ -5,6 +5,11 @@ public class Application {
         // TODO: 프로그램 구현
 
         GameManager gameManager = new GameManager();
-        gameManager.start();
+        try {
+            gameManager.start();
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+        }
+
     }
 }

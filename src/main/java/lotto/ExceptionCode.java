@@ -9,7 +9,7 @@ public enum ExceptionCode {
     Not_Money("[ERROR] 돈은 1,000원 단위로 입력하셔야 합니다."),
     Over_Money("[ERROR] 돈의 최소값은 0원 입니다.");
 
-    String message;
+    final String message;
 
     ExceptionCode(String message) {
         this.message = message;
