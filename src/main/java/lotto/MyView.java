@@ -42,6 +42,13 @@ public class MyView {
 	}
 
 	public void printAnalysis() {
-
+		System.out.println(OutMsg.ANALYSIS_PREFIX.getMessage());
+		List<Integer> analysis = (List<Integer>)model.getAttribute("analysis");
+		System.out.println(OutMsg.THREE_HIT.getMessage() + analysis.get(0) + "개");
+		System.out.println(OutMsg.FOUR_HIT.getMessage() + analysis.get(1) + "개");
+		System.out.println(OutMsg.FIVE_HIT_WO_BONUS.getMessage() + analysis.get(2) + "개");
+		System.out.println(OutMsg.FIVE_HIT_W_BONUS.getMessage() + analysis.get(3) + "개");
+		System.out.println(OutMsg.SIX_HIT.getMessage() + analysis.get(4) + "개");
+		System.out.println(model.getAttribute("profitMsg"));
 	}
 }
