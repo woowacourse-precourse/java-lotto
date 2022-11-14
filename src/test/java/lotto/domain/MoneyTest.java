@@ -23,7 +23,7 @@ public class MoneyTest {
         assertThat(new Money(amount).hasChangesWith(price)).isEqualTo(expected);
     }
 
-    @DisplayName("어떤 가격으로 살 수 있는 양을 알 수 있다")
+    @DisplayName("어떤 가격으로 살 수 있는 개수를 알 수 있다")
     @ParameterizedTest(name = "{0}으로 {1}짜리를 {2}개 살 수 있다")
     @CsvSource(value = {"15000,1500,10", "10000,1100,9"}, delimiter = ',')
     void count_affordable_by_price(int amount, int price, int expected) {
