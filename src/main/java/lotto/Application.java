@@ -18,7 +18,7 @@ public class Application {
             OutOfDigitException(amount);
 
             LottoList userLotto = new LottoList(new BigInteger(amount));
-
+            PrintGameInfo.purchaseCount(userLotto.getLottoCount());
 
         } catch (IllegalArgumentException exception) {
             exception.printStackTrace();
@@ -29,14 +29,14 @@ public class Application {
     public static void OutOfDigitException(String amount) {
         amount.chars().forEach(amountIndex -> {
             if (!Character.isDigit(amountIndex)) {
-                throw new IllegalArgumentException(PrintGameInfo.isNotDigitString);
+                throw new IllegalArgumentException(PrintGameInfo.getIsNotDigitString());
             }
         });
     }
 
     public static void amountEmptyException(String amount) {
         if (amount == null || amount.isEmpty() || amount.isBlank()) {
-            throw new IllegalArgumentException(PrintGameInfo.isEmptyString);
+            throw new IllegalArgumentException(PrintGameInfo.getIsEmptyString());
         }
     }
 }

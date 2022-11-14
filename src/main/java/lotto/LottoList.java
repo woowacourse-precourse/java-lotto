@@ -18,10 +18,10 @@ public class LottoList {
         this.lottoCount = lottoAmount.divide(BigInteger.valueOf(AMOUNT_UNIT));
     }
 
-    public Long getLottoAmount() {
+    public BigInteger getLottoAmount() {
         return lottoAmount;
     }
-    public Long getLottoCount() {
+    public BigInteger getLottoCount() {
         return lottoCount;
     }
 
