@@ -26,4 +26,12 @@ public class SystemMessage {
         System.out.println(msg);
     }
 
+    public void winningNumbersMessage(String input){
+        System.out.println(input);
+    }
+
+    public void bonusNumberMessage(String input){
+        System.out.println(input);
+    }
+
 }
