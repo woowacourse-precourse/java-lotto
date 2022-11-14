@@ -1,5 +1,7 @@
 package domain;
 
+import dto.LottoDto;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,13 +24,8 @@ public class Lotto {
             }
         }
     }
-
-    public List<Integer> getLotto(){
-        List<Integer> lotto = new ArrayList<>();
-        for(Integer number : numbers){
-            lotto.add(number);
-        }
-        return lotto;
+    public LottoDto sendDto(){
+        return new LottoDto(numbers);
     }
 
 
