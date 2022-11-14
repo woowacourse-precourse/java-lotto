@@ -160,7 +160,7 @@ public class Function {
                 throw new IllegalArgumentException("보너스 번호는 1~45사이로 입력해야 합니다.");
             }
             if (winNumber.contains(bonusNumber)) {
-                throw new IllegalArgumentException("보너스 번호는 당첨 번호와 달랴야 합니다.");
+                throw new IllegalArgumentException("보너스 번호는 당첨 번호와 달라야 합니다.");
             }
             return true;
         } catch (Exception e) {
