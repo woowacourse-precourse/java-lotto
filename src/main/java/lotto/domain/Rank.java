@@ -18,7 +18,7 @@ public enum Rank {
         this.matchCount = matchCount;
     }
 
-    public Rank get(int matchCount, boolean bonus) {
+    public static Rank get(int matchCount, boolean bonus) {
         if (matchCount == 5 && bonus) {
             return SECOND;
         }
