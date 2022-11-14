@@ -12,8 +12,8 @@ import lotto.domain.WinningNumber;
 
 import java.util.List;
 
-public class RunLotto {
-  public  void test1() {
+public class ControlLotto {
+  public  void runLotto() {
     // TODO: 프로그램 구현
     Message.requestInputMoneyMessage();
     Money.countLotto(UserNumberScan.requestValue());

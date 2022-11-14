@@ -28,9 +28,9 @@ class BonusNumberTest {
   @DisplayName("당첨 번호와 같지 않은 보너스 넘버 판별")
   @Test
   void validBonusNumber() {
-    assertThat(BonusNumber.validBonusNumber("2", List.of(5)))
+    assertThat(BonusNumber.validBonusNumber("2", List.of(1,5,6,8,34,4)))
             .isEqualTo(2);
-    assertThatThrownBy(() -> BonusNumber.validBonusNumber("2", List.of(2)))
+    assertThatThrownBy(() -> BonusNumber.validBonusNumber("2", List.of(2,4,1,8,9)))
             .isInstanceOf(IllegalArgumentException.class);
   }
 }
