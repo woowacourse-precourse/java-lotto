@@ -4,6 +4,8 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class ConvertTest {
@@ -24,6 +26,12 @@ class ConvertTest {
         Assertions.assertThat(lotto.getNumbers().get(3)).isEqualTo(4);
         Assertions.assertThat(lotto.getNumbers().get(4)).isEqualTo(5);
         Assertions.assertThat(lotto.getNumbers().get(5)).isEqualTo(6);
+    }
+    @Test
+    @DisplayName("보너스 번호 변환 테스트 ")
+    public void bonusConvert() throws Exception{
+        Assertions.assertThat(Convert.bonusConvert("7",new Lotto(List.of(1,2,3,4,5,6)))).isEqualTo(7);
+
 
     }
 }
