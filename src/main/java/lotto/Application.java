@@ -9,6 +9,7 @@ public class Application {
             Lottos lottos = new Lottos(lottoNumber);
             System.out.println();
             WinningNumbers winningNumbers = new WinningNumbers();
+            System.out.println();
             Compute compute = new Compute(lottos, winningNumbers, money);
         }
         catch (IllegalArgumentException e) {
