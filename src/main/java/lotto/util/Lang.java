@@ -25,6 +25,7 @@ public class Lang {
     public static final String VIEW_WINNING_STATS = "당첨 통계";
     public static final String VIEW_STATS_UNIT = "%s - %d개";
     public static final String VIEW_TOTAL_RETURNS = "총 수익률은 %.1f%%입니다.";
+    public static final String VIEW_ERROR = "[ERROR]";
 
 
     public static String format(String message, Object ...args) {
