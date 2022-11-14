@@ -23,4 +23,7 @@ public class LottoService {
         return user.getLotties();
     }
 
+    public void saveBonusNumber(String bonusNumber) {
+        lottoMachine.addBonusNumber(Integer.parseInt(bonusNumber));
+    }
 }
