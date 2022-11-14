@@ -14,6 +14,8 @@ public class Application {
         // TODO: 프로그램 구현
         int purchaseAmount = buyLotto();
         List<List> purchaseLotto = autoLotto(purchaseAmount);
+        List<Integer> winnerLotto = winLotto();
+        int bonusNumber = bonusLotto();
     }
 
     public static int buyLotto(){
@@ -48,4 +50,55 @@ public class Application {
         return autoNumbers;
     }
 
+    public static List<Integer> winLotto(){
+        System.out.println(WIN_LOTTO_NUMBER_INPUT);
+        String winNum = Console.readLine();
+        checkWinLottoException(winNum);
+        String[] inputNum = winNum.split(",");
+        List<Integer> winNumbers = new ArrayList<>();
+        for (int i = 0; i < inputNum.length; i++) {
+            winNumbers.add(Integer.parseInt(inputNum[i]));
+        }
+        new Lotto(winNumbers);
+
+        return winNumbers;
+    }
+    private static void checkWinLottoException(String winNum) {
+        String[] winLottoCheck = winNum.split("");
+        int cnt = 0;
+        for (int i = 0; i < winLottoCheck.length; i++) {
+            if(winLottoCheck[i].equals(",")){
+                cnt++;
+            }
+        }
+        if(cnt!=5){
+            throw new IllegalArgumentException(USER_INPUT_ERROR);
+        }
+        winLottoCheck = winNum.split(",");
+        for (int i = 0; i < winLottoCheck.length; i++) {
+            if(Integer.parseInt(winLottoCheck[i])>45 || Integer.parseInt(winLottoCheck[i])<1){
+                throw new IllegalArgumentException(INPUT_RANGE_ERROR);
+            }
+        }
+    }
+
+    public static int bonusLotto(){
+        System.out.println(BONUS_NUMBER_INPUT);
+        String bonusNum = Console.readLine();
+        int bonus = 0;
+        checkBonusNumException(bonusNum);
+        bonus = Integer.parseInt(bonusNum);
+        return bonus;
+    }
+    private static void checkBonusNumException(String bonusNum){
+        int bonus = 0;
+        try{
+            bonus = Integer.parseInt(bonusNum);
+        } catch (NumberFormatException e){
+            throw new IllegalArgumentException(USER_INPUT_ERROR);
+        }
+        if(bonus>45 || bonus<1){
+            throw new IllegalArgumentException(INPUT_RANGE_ERROR);
+        }
+    }
 }
