@@ -29,15 +29,19 @@ public class WinningNumber {
         for(int i=0;i<string.length();i++){
             char temporaryLetter = string.charAt(i);
             if(temporaryLetter == rest ){
-                checkIfNumberInRange(temporaryNumber);
-                ifNumberAlreadyExist(numbers,temporaryNumber);
-                numbers.add(temporaryNumber);
+                numberValidate(numbers, temporaryNumber);
                 temporaryNumber = initNumber;
                 continue;
             }
             temporaryNumber = getTemporaryNumber(temporaryNumber, temporaryLetter);
         }
         return numbers;
+    }
+
+    private void numberValidate(List<Integer> numbers, int temporaryNumber) {
+        checkIfNumberInRange(temporaryNumber);
+        ifNumberAlreadyExist(numbers, temporaryNumber);
+        numbers.add(temporaryNumber);
     }
 
     private int getTemporaryNumber(int temporaryNumber, char temporaryLetter) {
