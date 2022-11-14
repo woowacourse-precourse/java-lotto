@@ -1,7 +1,6 @@
 package lotto.view;
 
 import lotto.domain.LottoPaper;
-
 import java.util.List;
 
 public class PrintMachine {

@@ -1,7 +1,6 @@
 package lotto.domain;
 
 import java.util.List;
-
 public class GetBonusNumber {
     public int bonus;
     public void getBonusNumber(List<Integer> winningNumber, String userInput){

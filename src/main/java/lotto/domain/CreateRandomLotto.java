@@ -1,7 +1,6 @@
 package lotto.domain;
 
 import camp.nextstep.edu.missionutils.Randoms;
-
 import java.util.*;
 
 public class CreateRandomLotto {
