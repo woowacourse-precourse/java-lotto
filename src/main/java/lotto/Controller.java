@@ -14,13 +14,12 @@ import java.util.Map;
 
 public class Controller {
     private static final int MULTIPLIER = 1000;
+
     private PriceGetter priceGetter = new PriceGetter();
     private LotteryListPrinter lotteryListPrinter = new LotteryListPrinter();
     private PrizeListPrinter prizeListPrinter = new PrizeListPrinter();
-
     private IssuingMachine issuingMachine = new IssuingMachine();
     private PrizeListGenerator prizeListGenerator;
-    private YieldCalculator yieldCalculator = new YieldCalculator();
 
     public void lottery() {
         try {
@@ -31,7 +30,7 @@ public class Controller {
             Map<Enum, Integer> winnerResult = getWinnerResult(lotteryList);
 
             int buyingMoney = buyingAmount * MULTIPLIER;
-            double yield = yieldCalculator.computeYield(buyingMoney, winnerResult);
+            double yield = YieldCalculator.computeYield(buyingMoney, winnerResult);
             prizeListPrinter.printWinStatistic(winnerResult, yield);
         } catch (IllegalArgumentException ie) {
             System.out.println(ie.getMessage());
