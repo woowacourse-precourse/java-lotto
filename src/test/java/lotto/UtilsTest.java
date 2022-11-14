@@ -10,11 +10,20 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 class UtilsTest {
-    @DisplayName("로또 번호가 1 ~ 45 범위를 넘으면 false")
+    @DisplayName("로또 번호가 1 ~ 45 범위를 넘으면 에러 발생")
     @Test
-    void 로또_번호_유효_범위_넘으면_false() {
+    void 로또_번호_유효_범위_넘으면_에러() {
         List<Integer> numbers = List.of(1, 2, 3, 48, 5, 6);
-        assertThat(Utils.validateLottoNumbers(numbers)).isFalse();
+        assertThatThrownBy(() -> Utils.validateLottoNumbers(numbers))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("로또 번호가 6개가 아니면 에러 발생")
+    @Test
+    void 로또_번호_6개_아니면_에러() {
+        List<Integer> numbers = List.of(1, 2, 3, 4, 5, 6, 7);
+        assertThatThrownBy(() -> Utils.validateLottoNumbers(numbers))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 
     @DisplayName("랜덤 숫자 6개 확인")
