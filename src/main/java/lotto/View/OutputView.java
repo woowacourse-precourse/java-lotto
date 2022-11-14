@@ -15,4 +15,8 @@ public class OutputView {
             System.out.println(lottoPublisher.makeRandomLottoNumber());
         }
     }
+
+    public void printEmptyLine() {
+        System.out.println();
+    }
 }
