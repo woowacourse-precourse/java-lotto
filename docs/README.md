@@ -1,28 +1,30 @@
 **기능 구현 목록**
 
 - 로또 구입 금액을 입력하면 구입 금액에 해당하는 만큼 로또를 발행해야 한다. 
-    - [] 로또 구입 금액 입력기를 만들고, 입력값에 따라 로또 개수를 정수형으로 반환한다.<><1> Inputer#inputMoney
+    - [x] 로또 구입 금액 입력기를 만들고, 입력값에 따라 로또 개수를 정수형으로 반환한다.<><1> Inputer#inputMoney
 
 - 사용자 : 구입 금액만큼 1~45까지의 로또 번호를 중복되지 않게 6개의 숫자 리스트를 랜덤하게 생성한다.
-    - [] 로또 번호 생성기를 만들고, 그것의 배열/리스트를 반환한다.<1><2,3> Generater#generateRandomLottoNumber
+    - [x] 구입 금액을 받고, 로또 번호 생성기를 만들고(이미 함수가 있음), 그것을 2차원 배열/리스트로 반환한다. <1><2,3> Generater#generateRandomLottoNumber
 
-- 당첨 번호와 보너스 번호를 입력받는다.
-    - [] 당첨번호 입력기를 만들고, 그것을 배열/리스트로 반환한다.<><3> Inputer#inputLottoWinNumber
-    - [] 보너스 번호를 입력기를 만들고, 그것을 정수형으로 반환한다.<><3> Inputer#inputLottoBonusNumber
+- 당첨 번호와` 보너스 번호를 입력받는다.
+    - 당첨번호 입력기를 만들고, 그것을 배열/리스트로 반환한다.<><3> 
+      - [x] 당첨번호 입력기 만들기 Inputer#createLottoWinNumber
+      - [x] 배열/리스트로 반환하는 함수 만들기 Maker#makeStringToList
+    - [x] 보너스 번호를 입력기를 만들고, 그것을 정수형`으로 반환한다.<><3> Inputer#createLottoBonusNumber
 
 - 발행한 로또 수량 및 번호를 출력한다. 로또 번호는 오름차순으로 정렬하여 보여준다.
-  - [] 로또 번호 출력기를 만든다. 그것은 오름차순으로 정렬하여 보여준다.<2><>  Printer#printUserLottoNumber
+  - [x] 로또 번호 출력기를 만든다. 그것은 오름차순으로 정렬하여 보여준다.<2><>  Printer#printUserLottoNumber
 
 - 사용자가 구매한 로또 번호와 당첨 번호를 비교한다.
-  - [] 숫자를 비교할 수 있는 기능을 구현하고, 그것을 정수형(일반 맞춘 개수, 보너스 맞춘 개수)로 반환한다. <3><4,5> Comparator#compareLotto
+  - [x] 숫자를 비교할 수 있는 기능을 구현하고, 그것을 정수형(일반 맞춘 개수, 보너스 맞춘 개수)로 반환한다. <3><4,5> Comparator#compareLotto
 
 - 당첨 내역에 따른 수익률 계산기를 만든다.
-  - [] 수익률을 계산하기 위해, 수익을 먼저 계산한다. 그리고 수익을 반환한다.<5><7> Calculater#caculateRevenue
-  - [] 당첨된 숫자에 따른, 수익률을 계산하고 정수형(수익률)로 반환한다. <7><6> Calculater#caculateRevenuePercent
+  - [x] 수익률을 계산하기 위해, 수익을 먼저 계산한다. 그리고 수익을 반환한다.<5><7> Calculater#caculateRevenue
+
 
 - 당첨 내역과 수익률을 출력한다. 
   - [] 당첨 내역 출력기를 만든다. <4><> Printer#printWinList
-  - [] 수익률 출력기를 만든다. <6><> Printer#printRevenue
+  - [x] 수익률 출력기를 만든다. <6><> Printer#printRevenue
 
 - 예외사항에 대한 부분을 구현한다.
 
@@ -45,3 +47,52 @@
 당첨 번호와 보너스 번호를 입력받는다.
 사용자가 구매한 로또 번호와 당첨 번호를 비교하여 당첨 내역 및 수익률을 출력하고 로또 게임을 종료한다.
 사용자가 잘못된 값을 입력할 경우 IllegalArgumentException를 발생시키고, "[ERROR]"로 시작하는 에러 메시지를 출력 후 종료한다.
+
+
+
+🎯 프로그래밍 요구 사항
+- [] JDK 11 버전에서 실행 가능해야 한다. JDK 11에서 정상적으로 동작하지 않을 경우 0점 처리한다.
+- [] 프로그램 실행의 시작점은 Application의 main()이다.
+- [] build.gradle 파일을 변경할 수 없고, 외부 라이브러리를 사용하지 않는다.
+- [] Java 코드 컨벤션 가이드를 준수하며 프로그래밍한다.
+- [] 프로그램 종료 시 System.exit()를 호출하지 않는다.
+- [] 프로그램 구현이 완료되면 ApplicationTest의 모든 테스트가 성공해야 한다. 테스트가 실패할 경우 0점 처리한다.
+- [] 프로그래밍 요구 사항에서 달리 명시하지 않는 한 파일, 패키지 이름을 수정하거나 이동하지 않는다.
+- [] indent(인덴트, 들여쓰기) depth를 3이 넘지 않도록 구현한다. 2까지만 허용한다.
+- [] 예를 들어 while문 안에 if문이 있으면 들여쓰기는 2이다.
+    힌트: indent(인덴트, 들여쓰기) depth를 줄이는 좋은 방법은 함수(또는 메서드)를 분리하면 된다.
+- [] 3항 연산자를 쓰지 않는다.
+- [] 함수(또는 메서드)가 한 가지 일만 하도록 최대한 작게 만들어라.
+- [] JUnit 5와 AssertJ를 이용하여 본인이 정리한 기능 목록이 정상 동작함을 테스트 코드로 확인한다.
+
+추가된 요구 사항
+- [] 함수(또는 메서드)의 길이가 15라인을 넘어가지 않도록 구현한다.
+- [] 함수(또는 메서드)가 한 가지 일만 잘 하도록 구현한다.
+- [] else 예약어를 쓰지 않는다.
+    힌트: if 조건절에서 값을 return하는 방식으로 구현하면 else를 사용하지 않아도 된다.
+    else를 쓰지 말라고 하니 switch/case로 구현하는 경우가 있는데 switch/case도 허용하지 않는다.
+- [] Java Enum을 적용한다.
+- [] 도메인 로직에 단위 테스트를 구현해야 한다. 단, UI(System.out, System.in, Scanner) 로직은 제외한다.
+- [] 핵심 로직을 구현하는 코드와 UI를 담당하는 로직을 분리해 구현한다.
+    단위 테스트 작성이 익숙하지 않다면 test/java/lotto/LottoTest를 참고하여 학습한 후 테스트를 구현한다.
+
+라이브러리
+- [] camp.nextstep.edu.missionutils에서 제공하는 Randoms 및 Console API를 사용하여 구현해야 한다.
+- [] Random 값 추출은 camp.nextstep.edu.missionutils.Randoms의 pickUniqueNumbersInRange()를 활용한다.
+- [] 사용자가 입력하는 값은 camp.nextstep.edu.missionutils.Console의 readLine()을 활용한다.
+
+Lotto 클래스
+- [] 제공된 Lotto 클래스를 활용해 구현해야 한다.
+- [] Lotto에 매개 변수가 없는 생성자를 추가할 수 없다.
+- [] numbers의 접근 제어자인 private을 변경할 수 없다.
+- [] Lotto에 필드(인스턴스 변수)를 추가할 수 없다.
+- [] Lotto의 패키지 변경은 가능하다.
+
+
+
+✏️ 과제 진행 요구 사항
+- [] 미션은 java-lotto 저장소를 Fork & Clone해 시작한다.
+- [] 기능을 구현하기 전 docs/README.md에 구현할 기능 목록을 정리해 추가한다.
+- [] Git의 커밋 단위는 앞 단계에서 docs/README.md에 정리한 기능 목록 단위로 추가한다.
+- [] 커밋 메시지 컨벤션 가이드를 참고해 커밋 메시지를 작성한다.
+- [] 과제 진행 및 제출 방법은 프리코스 과제 제출 문서를 참고한다.
