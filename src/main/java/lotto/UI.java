@@ -71,6 +71,15 @@ public class UI {
 
     }
 
+    public void Lotto_Number_Print(Integer number_of_lotto_paper, List<List<Integer>> Total_Lotto_numbers){
+        System.out.printf("%d개를 구매했습니다.%n",number_of_lotto_paper);
+        for (Integer index = 0; index < number_of_lotto_paper; index++){
+            System.out.println(Total_Lotto_numbers.get(index));
+        }
+
+    }
+}
+
 
 
 
