@@ -7,7 +7,8 @@ public enum Error {
     INPUT_NOT_NUMERIC("[ERROR] 숫자만 입력 가능합니다."),
     LESS_THAN_1000WON("[ERROR] 1000원 이상부터 구매 가능합니다."),
     NOT_DIVIDED_1000WON("[ERROR] 1000원 단위로만 구매 가능합니다."),
-    NOT_SIX_NUMBERS("[ERROR] 당첨 번호는 6개를 입력해야만 합니다.")
+    NOT_SIX_NUMBERS("[ERROR] 당첨 번호는 6개를 입력해야만 합니다."),
+    DUPLICATED_NUMBERS("[ERROR] 수가 중복됩니다.")
     ;
 
     private final String message;

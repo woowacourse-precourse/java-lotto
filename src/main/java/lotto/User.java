@@ -2,6 +2,10 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
 
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 public class User {
 
     public void inputMoney() {
@@ -65,4 +69,12 @@ public class User {
             throw new IllegalArgumentException(Error.NOT_SIX_NUMBERS.getMessage());
         }
     }
+
+    private void validateInputDuplicatedNumbers(String input) {
+        Set<String> numbers = new HashSet<>(List.of(input.split(",")));
+        if (numbers.size() != 6) {
+            throw new IllegalArgumentException(Error.DUPLICATED_NUMBERS.getMessage());
+        }
+    }
+
 }
