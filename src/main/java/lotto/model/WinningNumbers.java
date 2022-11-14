@@ -3,11 +3,11 @@ package lotto.model;
 import java.util.ArrayList;
 import java.util.List;
 
-public class WinningNumber {
+public class WinningNumbers {
 
     private final List<Integer> winningNumbers;
 
-    public WinningNumber(String input) {
+    public WinningNumbers(String input) {
         validate(input);
         Lotto lotto = new Lotto(inputStringToList(input));
         winningNumbers = lotto.getLottoNumbers();
@@ -38,6 +38,7 @@ public class WinningNumber {
         }
     }
 
+    // TODO 삭제해도 되는 로직
     private void isSizeOfSix(String input) {
         String[] inputs = input.split(",");
         if (inputs.length != 6) {

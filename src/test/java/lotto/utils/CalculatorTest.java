@@ -1,4 +1,4 @@
-package lotto.controller;
+package lotto.utils;
 
 import static org.assertj.core.api.Assertions.*;
 
