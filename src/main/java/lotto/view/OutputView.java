@@ -2,7 +2,6 @@ package lotto.view;
 
 import lotto.domain.Lotto;
 import lotto.domain.LottoRanking;
-import lotto.domain.LottoResult;
 
 import java.text.DecimalFormat;
 import java.util.*;
@@ -48,6 +47,10 @@ public class OutputView {
         System.out.println();
     }
 
+    private static void sortLottoNumbers(List<Integer> lottoNumbers) {
+        Collections.sort(lottoNumbers);
+    }
+
     private static void printLottoInformation(List<Integer> lottonumbers) {
         StringBuilder result = new StringBuilder();
         for (int i = 0; i < lottonumbers.size() - 1; i++) {
@@ -58,10 +61,6 @@ public class OutputView {
         int lastNumber = lottonumbers.get(lottonumbers.size() - 1);
         result.append(lastNumber);
         System.out.println(String.format(LOTTO_FRAME, result));
-    }
-
-    private static void sortLottoNumbers(List<Integer> lottoNumbers) {
-        Collections.sort(lottoNumbers);
     }
 
     private static void printOrderLottoResult(Map<LottoRanking, Integer> lottoResult) {

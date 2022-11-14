@@ -1,12 +1,9 @@
 package lotto.domain;
 
-import lotto.view.InputView;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class LottoMaker {
-
     private RandomLotto randomLotto = new RandomLotto();
 
     public List<Lotto> getRandomLottos(int lottoTicket) {

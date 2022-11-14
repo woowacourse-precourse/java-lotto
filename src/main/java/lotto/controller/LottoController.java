@@ -8,7 +8,6 @@ import java.util.List;
 import java.util.Map;
 
 public class LottoController {
-
     private TicketMachine ticketMachine = new TicketMachine();
     private LottoMaker lottoMaker = new LottoMaker();
     private LottoResult lottoResult = new LottoResult();
@@ -43,12 +42,6 @@ public class LottoController {
         return new WinningLotto(manualLotto, bonusNumber);
     }
 
-    private void printLottoResult(List<Lotto> lottos, WinningLotto winningLotto) {
-        Map<LottoRanking, Integer> lottoResultData = LottoReader.getLottoRankings(lottos, winningLotto);
-        OutputView.printLottoResult(lottoResultData);
-        printLottoRate(lottoResult.getLottoYield(lottoResultData));
-    }
-
     private Lotto getManualLottoFromUserByConsole() {
         List<Integer> lottoNumbers = InputView.getManualLottoNumberFromUser();
         return lottoMaker.getManualLotto(lottoNumbers);
@@ -57,6 +50,12 @@ public class LottoController {
     private int getBonusNumberFromUserByConsole() {
         LottoNumber lottoNumber = new LottoNumber(InputView.getBonusNumberFromUser());
         return lottoNumber.getValue();
+    }
+
+    private void printLottoResult(List<Lotto> lottos, WinningLotto winningLotto) {
+        Map<LottoRanking, Integer> lottoResultData = LottoReader.getLottoRankings(lottos, winningLotto);
+        OutputView.printLottoResult(lottoResultData);
+        printLottoRate(lottoResult.getLottoYield(lottoResultData));
     }
 
     private void printLottoRate(double returnRate) {

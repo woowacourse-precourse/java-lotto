@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.Map;
 
 public class LottoReader {
-
     public static Map<LottoRanking, Integer> getLottoRankings(List<Lotto> lottos, WinningLotto winningLotto) {
         Map<LottoRanking, Integer> result = new HashMap<>();
         for (Lotto lotto : lottos) {

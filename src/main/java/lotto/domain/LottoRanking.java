@@ -33,7 +33,7 @@ public enum LottoRanking {
                 .orElse(LottoRanking.MISS);
     }
 
-    public static double getLottoScoreBy(LottoRanking lottoRanking){
+    public static double getLottoScoreBy(LottoRanking lottoRanking) {
         return lottoRanking.getLottoScore();
     }
 }

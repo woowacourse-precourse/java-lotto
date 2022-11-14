@@ -2,12 +2,10 @@ package lotto.domain;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 public class Lotto {
     private static final String SIZE_ERROR_MESSAGE = "[ERROR] 로또는 6자리의 숫자로 입력되야 합니다.";
     private static final String DUPLICATION_ERROR_MESSAGE = "[ERROR] 로또는 중복되지 않은 숫자로 이루어져야 합니다.";
-
     private static final int LOTTO_SIZE = 6;
 
     private final List<LottoNumber> lottoNumbers;
