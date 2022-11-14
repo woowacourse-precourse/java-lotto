@@ -54,6 +54,10 @@ public class User {
         String inputNumber = Console.readLine();
         checkInteger(inputNumber);
 
+        int bonusNumber = Integer.parseInt(inputNumber);
+        checkNumberRange(bonusNumber);
+        checkBonusNumberDuplicate(winningNumbers, bonusNumber);
+
         return bonusNumber;
     }
 
