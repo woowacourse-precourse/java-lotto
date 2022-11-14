@@ -36,6 +36,7 @@ public class OutputManager {
     }
 
     public static void printRanks(Map<Integer, Integer> ranks) {
+        System.out.println(IOMessage.LOTTO_RESULT);
         for(int rank = 4; rank >= 0; rank--) {
             System.out.printf(getRankMessage(rank), LottoConfig.awards.get(rank), ranks.getOrDefault(rank, 0));
         }

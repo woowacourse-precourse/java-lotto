@@ -8,6 +8,7 @@ public enum IOMessage {
     LOTTO_BUY_NUM("개를 구매했습니다."),
     ASK_ANSWER("당첨 번호를 입력해 주세요."),
     ASK_BONUS("보너스 번호를 입력해 주세요."),
+    LOTTO_RESULT("당첨 통계\n---"),
     RANK_0("6개 일치 (%,d원) - %d개\n"),
     RANK_1("5개 일치, 보너스 볼 일치 (%,d원) - %d개\n"),
     RANK_2("5개 일치 (%,d원) - %d개\n"),
