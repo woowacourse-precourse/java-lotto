@@ -6,7 +6,7 @@ import lotto.domain.Lotto;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Generator {
+public class LottoGenerator {
     List<Lotto> lottos = new ArrayList<>();
 
     public List<Integer> generateLotto(){
