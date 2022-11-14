@@ -78,8 +78,14 @@ class PlayLottoTest extends NsTest {
     void cal_revenue() {
     }
 
-    @Override
-    protected void runMain() {
-        PlayLotto.main(new String[]{});
+    private Lotto create_Lotto(){
+        return new Lotto(List.of(1,2,3,4,5,6));
     }
+    private User create_User(){
+        return new User();
+    }
+    private PlayLotto create_PlayLotto(){
+        return new PlayLotto();
+    }
+
 }
