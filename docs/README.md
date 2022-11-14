@@ -3,6 +3,7 @@
 - [x] validate 메서드 기능 추가 - Lotto.validate()
   - [x] 입력된 숫자가 1~45 사이의 숫자가 아닐 시 예외 발생
   - [x] 입력된 숫자에 중복된 숫자가 입력될 시 예외 발생
+- [x] 숫자들을 정렬하여 보여주기
 ### - LottoSeller 인스턴스 기능
 - [x] 구입 금액 읽기 - LottoSeller.takemoney()
   - [x] 구입 금액에 따라 만들 로또의 개수 계산
