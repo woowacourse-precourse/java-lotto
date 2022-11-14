@@ -7,6 +7,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import static lotto.LottoMachine.LOTTO_PRICE;
+
 public class InputConsole {
 
     public static final String PURCHASE_MONEY_INPUT_MESSAGE = "구입금액을 입력해 주세요.";
@@ -17,6 +19,13 @@ public class InputConsole {
         System.out.println(PURCHASE_MONEY_INPUT_MESSAGE);
         int money = Integer.parseInt(Console.readLine());
         return money;
+    }
+
+    private boolean isEnoughMoney(String money) {
+        if (Integer.parseInt(money) < LOTTO_PRICE) {
+            return false;
+        }
+        return true;
     }
 
     public static List<Integer> winningNumber() {
