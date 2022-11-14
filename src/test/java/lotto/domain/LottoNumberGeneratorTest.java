@@ -18,6 +18,7 @@ class LottoNumberGeneratorTest {
         List<List<Integer>> lottoNumbers = lottoNumberGenerator.generateLottoNumber(0);
         lottoNumbers.clear();
     }
+
     @DisplayName("로또 구입 수만큼 번호 생성되는지 테스트")
     @Test
     void checkSize() {
