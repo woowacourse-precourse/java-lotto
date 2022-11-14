@@ -11,7 +11,16 @@ public class Money {
     }
     private void validate(String inputMoney) {
         validateForDigit(inputMoney);
+        validateByLotteryPrice(Integer.parseInt(inputMoney));
     }
+
+    private void validateByLotteryPrice(int inputMoney) {
+        if (inputMoney % 1000 != 0) {
+            throw new IllegalArgumentException("[ERROR] 구입금액은 1000원 단위여야만 합니다.");
+        }
+    }
+
+
     private void validateForDigit(String inputMoney) {
         for (char number : inputMoney.toCharArray()) {
             checkDigit(number);
