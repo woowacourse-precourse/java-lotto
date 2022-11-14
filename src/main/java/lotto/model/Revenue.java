@@ -15,4 +15,10 @@ public class Revenue {
         }
         return reward;
     }
+
+    public double rate(String money, long reward){
+        double rate = (double)reward / Double.parseDouble(money)* 100;
+        rate = Math.round(rate*10.0)/10.0;
+        return rate;
+    }
 }

@@ -13,7 +13,7 @@ public class OutputView {
     }
 
     public void lottoCountMsg(int count) {
-        System.out.println(count + "개를 구입했습니다.");
+        System.out.println(count + "개를 구매했습니다.");
     }
 
     public String equalMsg() {
@@ -59,6 +59,10 @@ public class OutputView {
 
     public void firstMsg(int count) {
         System.out.println("6개 일치 (2,000,000,000원) - " + count + "개");
+    }
+
+    public void rateMsg(double rate) {
+        System.out.println("총 수익률은 " + rate + "%입니다.");
     }
 
 }

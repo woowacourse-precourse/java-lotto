@@ -63,9 +63,11 @@ public class Application {
 
         rank = winCalculation.winCal(numbers,lottos,bn);
         List<WinDetail> result = winCalculation.rankResult(rank);
-        revenue.revenue(result);
+        long reward = revenue.revenue(result);
         List<Integer> cc = winCount.winCount(result);
         winCount.printCount(cc);
+        double rate = revenue.rate(str,reward);
+        outputView.rateMsg(rate);
 
 
 
