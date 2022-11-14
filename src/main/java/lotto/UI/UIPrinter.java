@@ -20,7 +20,7 @@ public class UIPrinter {
         System.out.println(message);
     }
 
-    public static void printRank(String message, int money, int num) {
+    public static void printRank(String message, long money, int num) {
         System.out.printf(message, money, num);
     }
 
