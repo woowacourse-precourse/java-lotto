@@ -139,6 +139,16 @@ public class Application {
         return LottoTicket;
     }
 
+    static Map<Integer, Integer> checkTotalRank(Set<List<Integer>> lottoTickets, List<Integer> lottoNumbers, int bonusNumber) {
+        Map<Integer, Integer> totalRank = new HashMap<>();
+        for (List<Integer> lottoTicket : lottoTickets) {
+            int winNumberCount = checkWinningLottoTicket(lottoTicket, lottoNumbers);
+            boolean winBonusNumber = checkBonusNumber(lottoTicket, bonusNumber);
+            totalRank = addRank(totalRank, checkWinRank(winNumberCount, winBonusNumber));
+        }
+        return totalRank;
+    }
+
     static int checkWinningLottoTicket(List<Integer> lottoTicket, List<Integer> lottoNumbers) {
         int winningNumberCount = 0;
         for (int eachNumber : lottoTicket) {
@@ -154,6 +164,14 @@ public class Application {
                 return true;
         }
         return false;
+    }
+
+    static Map<Integer, Integer> addRank(Map<Integer, Integer> totalRank, int winRank) {
+        if (winRank == 0)
+            return totalRank;
+        int count = totalRank.get(winRank);
+        totalRank.put(winRank, count + 1);
+        return totalRank;
     }
 
     static int checkWinRank(int winNumberCount, boolean winBonusNumber) {
