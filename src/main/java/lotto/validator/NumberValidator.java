@@ -14,20 +14,20 @@ import java.util.List;
 import java.util.Set;
 
 public class NumberValidator {
-    public static void hasValidType(String number) {
+    public static void hasValidType(String number) throws IllegalArgumentException {
         String tempNumber = number.replaceAll(LOTTERY_NUMBER_SEPARATOR, "");
         if (!tempNumber.matches("-?\\d+")) {
             throw new IllegalArgumentException(INVALID_TYPE_ERROR_MESSAGE);
         }
     }
 
-    public static void hasValidRange(int lotteryNumber) {
+    public static void hasValidRange(int lotteryNumber) throws IllegalArgumentException {
         if (!(lotteryNumber >= VALID_MIN_RANGE && lotteryNumber <= VALID_MAX_RANGE)) {
             throw new IllegalArgumentException(INVALID_RANGE_ERROR_MESSAGE);
         }
     }
 
-    public static void hasNonDuplicateNumbers(List<Integer> lotteryNumbers) {
+    public static void hasNonDuplicateNumbers(List<Integer> lotteryNumbers) throws IllegalArgumentException {
         Set<Integer> tempLotteryNumbers = new HashSet<>(lotteryNumbers);
         if (tempLotteryNumbers.size() != lotteryNumbers.size()) {
             if (lotteryNumbers.size() == VALID_LOTTERY_NUMBER_LENGTH) {
