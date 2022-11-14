@@ -1,8 +1,8 @@
 package lotto;
 
+import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 import lotto.domain.Judgment;
 import lotto.domain.NumberGenerator;
 import lotto.domain.Statistics;
@@ -15,27 +15,30 @@ import lotto.domain.Statistics;
 */
 
 public class Application {
-    private static final Scanner scanner = new Scanner(System.in);
     public static void main(String[] args) {
-        int purchaseAmount = askPurchaseAmount();
-        NumberGenerator numberGenerator = new NumberGenerator(purchaseAmount);
-        List<Integer> lottoNumbers = askLottoNumbers();
-        Lotto lotto = new Lotto(lottoNumbers);
-        int bonusNumber = lotto.validateBonusNumber(askBonusNumber());
-        Judgment judgment = new Judgment(numberGenerator.collectionOfLottoNumbers, lottoNumbers, bonusNumber);
-        Statistics statistics = new Statistics(purchaseAmount, judgment.firstCount, judgment.secondCount, judgment.thirdCount, judgment.fourthCount, judgment.fifthCount);
-        System.out.println(statistics.resultMessage);
+        try {
+            String purchaseAmount = askPurchaseAmount();
+            NumberGenerator numberGenerator = new NumberGenerator(purchaseAmount);
+            List<Integer> lottoNumbers = askLottoNumbers();
+            Lotto lotto = new Lotto(lottoNumbers);
+            int bonusNumber = lotto.validateBonusNumber(askBonusNumber());
+            Judgment judgment = new Judgment(numberGenerator.collectionOfLottoNumbers, lottoNumbers, bonusNumber);
+            Statistics statistics = new Statistics(numberGenerator.purchaseAmount, judgment.firstCount, judgment.secondCount, judgment.thirdCount, judgment.fourthCount, judgment.fifthCount);
+            System.out.println(statistics.resultMessage);
+        } catch (IllegalArgumentException e) {
+            System.out.println("[ERROR]");
+            //return;
+        }
     }
 
-    public static int askPurchaseAmount() {
+    public static String askPurchaseAmount() {
         System.out.println("구입금액을 입력해 주세요.");
-        return Integer.valueOf(scanner.next());
+        return Console.readLine();
     }
 
     public static List<Integer> askLottoNumbers() {
         System.out.println("당첨 번호를 입력해 주세요.");
-        String input = scanner.next();
-
+        String input = Console.readLine();
         List <Integer> numbers = new ArrayList<>();
         for (String number : input.split(",")) {
             numbers.add(Integer.valueOf(number));
@@ -45,7 +48,7 @@ public class Application {
 
     public static int askBonusNumber() {
         System.out.println("보너스 번호를 입력해 주세요.");
-        String input = scanner.next();
-        return Integer.valueOf(input);
+        String input = Console.readLine();
+        return Integer.parseInt(input);
     }
 }
