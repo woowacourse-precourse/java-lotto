@@ -11,13 +11,13 @@ public class Lotto {
     public Lotto(List<Integer> numbers) {
         validate(numbers);
         this.numbers = numbers;
-        isDuplicated(numbers);
     }
 
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException();
         }
+        isDuplicated(numbers);
         isNumbersInRange(numbers);
     }
 
@@ -29,15 +29,15 @@ public class Lotto {
         }
     }
 
-    public List<Integer> getNumbers() {
-        return numbers;
-    }
-
     public void isNumbersInRange(List<Integer> targetNumbers) {
         for(Integer item : targetNumbers) {
             if (item < 1 || item > 45) {
                 throw new IllegalArgumentException("[ERROR] 1부터 45 사이의 숫자를 입력해주세요.");
             }
         }
+    }
+
+    public List<Integer> getNumbers() {
+        return numbers;
     }
 }

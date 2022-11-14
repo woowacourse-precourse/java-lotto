@@ -7,8 +7,8 @@ import java.util.stream.Collectors;
 
 public class Rank {
     // bonusNumber 1~45인지 확인하는 함수 추가
-    private int bonusNumber;
-    private Lotto lottoNumbers;
+    private final int bonusNumber;
+    private final Lotto lottoNumbers;
 
     public Rank() {
         this.bonusNumber = UI.getBonusNumber();
