@@ -7,22 +7,39 @@ import java.util.List;
 import lotto.ui.Ouput;
 
 public class LottoChecker {
-    public int compare(Lotto purchased, Lotto winning) {
+
+//    private static final int BONUS_NUMBER
+//    enum Place {
+//        FIFTH(3),
+//        FOURTH(4),
+//        THIRD(5),
+//        SECOND(15),
+//        FIRST(6);
+//
+//        private final int value;
+//
+//        Place(int value) {
+//            this.value = value;
+//        }
+//    }
+
+
+    public int compare(Lotto purchasedLotto, Lotto winningLotto) {
         int count = 0;
         for (int column = 0; column < Lotto.NUMBER_OF_NUMBERS; column++) {
-            if (purchased.getNumbers().contains(winning.getNumbers().get(column))) {
+            if (purchasedLotto.getNumbers().contains(winningLotto.getNumbers().get(column))) {
                 count++;
             }
         }
         return count;
     }
 
-    public List<Integer> compareLottoTable(List<Lotto> lottoTable, Lotto winning, int bonusNumber) {
-        validateBounusNumber(winning, bonusNumber);
+    public List<Integer> compareLottoTable(List<Lotto> lottoTable, Lotto winningLotto, int bonusNumber) {
+        validateBounusNumber(winningLotto, bonusNumber);
         List<Integer> countGroup = new ArrayList<>();
         for (int row = 0; row < lottoTable.size(); row++) {
             int count = 0;
-            count = compare(lottoTable.get(row), winning);
+            count = compare(lottoTable.get(row), winningLotto);
             if (count == 5 && hasBonusNumber(lottoTable.get(row), bonusNumber)) {
                 count += 10;
             }
