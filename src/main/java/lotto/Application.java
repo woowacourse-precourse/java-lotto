@@ -5,6 +5,8 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 public class Application {
     static Game gameData;
@@ -17,6 +19,7 @@ public class Application {
     final static int MAX = 45;
 
     final static int NUMBER_SIZE = 6;
+
     public static void main(String[] args) {
         saveInput();
 //        gameStart();
@@ -68,10 +71,17 @@ public class Application {
         //TODO: 로또 발행 구현
     }
 
-    public static void calculateWinning(){
+    public static void calculateWinnings(){
         //TODO: 당첨 내역 계산 구현
         StringBuilder sb = new StringBuilder();
         sb.append("당첨 통계\n---\n");
+
+        for(Lotto lotto : lottos){
+            List<Integer> sameNumbers = sameWith(lotto.getNumbers());
+            final int winningCount = sameNumbers.size();
+            final boolean hasBonus = sameNumbers.contains(gameData.getBonusNumber());
+
+        }
 //        3개 일치 (5,000원) - 1개
 //        4개 일치 (50,000원) - 0개
 //        5개 일치 (1,500,000원) - 0개
@@ -80,6 +90,23 @@ public class Application {
 
     }
 
+    private static List<Integer> sameWith(List<Integer> numbers){
+        final List<Integer> winningNumbers = gameData.getWinningNumbers();
+        return numbers.stream()
+                .filter(
+                        num -> winningNumbers.stream().allMatch((Predicate.isEqual(num)))
+                )
+                .collect(Collectors.toList());
+
+    }
+
+    private static void setWinnings(int winningCount, boolean hasBonus){
+        if(winningCount == 6 ) gameData.changehitSix(gameData.getHitSix()+1);
+        if(winningCount == 5 && hasBonus) gameData.changehitFiveAndBonus(gameData.getHitFiveAndBonus()+1);
+        if(winningCount == 5 && !hasBonus) gameData.changehitFive(gameData.getHitFive()+1);
+        if(winningCount == 4 ) gameData.changehitFour(gameData.getHitFour()+1);
+        if(winningCount == 3 ) gameData.changehitThree(gameData.getHitThree()+1);
+    }
     public static void calculateRate(){
         //TODO: 수익률 계산 구현
     }
