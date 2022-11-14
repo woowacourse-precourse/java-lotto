@@ -1,8 +1,8 @@
 package lotto.domain;
 
-import static lotto.domain.Constants.Money.MAXIMUM_AMOUNT;
-import static lotto.domain.Constants.Money.MINIMUM_AMOUNT;
-import static lotto.domain.Constants.Money.UNIT_AMOUNT;
+import static lotto.constant.Constants.Money.MAXIMUM_AMOUNT;
+import static lotto.constant.Constants.Money.MINIMUM_AMOUNT;
+import static lotto.constant.Constants.Money.UNIT_AMOUNT;
 
 public class Money {
     private final int amount;

@@ -1,8 +1,8 @@
 package lotto.domain;
 
-import static lotto.domain.Constants.Lotto.RANGE_BEGIN;
-import static lotto.domain.Constants.Lotto.RANGE_END;
-import static lotto.domain.Constants.Lotto.SIZE;
+import static lotto.constant.Constants.Lotto.RANGE_BEGIN;
+import static lotto.constant.Constants.Lotto.RANGE_END;
+import static lotto.constant.Constants.Lotto.SIZE;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;

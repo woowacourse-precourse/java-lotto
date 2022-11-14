@@ -1,7 +1,7 @@
 package lotto.domain;
 
-import static lotto.domain.Constants.Lotto.RANGE_BEGIN;
-import static lotto.domain.Constants.Lotto.RANGE_END;
+import static lotto.constant.Constants.Lotto.RANGE_BEGIN;
+import static lotto.constant.Constants.Lotto.RANGE_END;
 
 import java.util.Objects;
 
