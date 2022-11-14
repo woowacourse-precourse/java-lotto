@@ -53,20 +53,6 @@ public class InputView {
         return Integer.parseInt(Console.readLine());
     }
 
-    // 한 게임의 로또 번호를 자동으로 생성해서 Integer List를 반환
-    public List<Integer> createLottoOneGameNumber() {
-        List<Integer> oneGameNumbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
-        return oneGameNumbers;
-    }
-
-    // 로또 게임 횟수 만큼 로또 번호를 랜덤하게 발행하는 메소드
-    public List<List<Integer>> createAllGameLottoNumber(int ticket) {
-        allLottoNumber = new ArrayList<>();
-        for (int i = 0; i < ticket; i++) {
-            allLottoNumber.add(createLottoOneGameNumber());
-        }
-        return allLottoNumber;
-    }
 
     // 로또 번호, 당첨 번호, 보너스 번호를 입력받아 등수를 확인함
 
