@@ -29,7 +29,7 @@ public class Kiosk {
         bonusNumber = Input.getBonusNumber();
         EnumMap<RankNumber, Integer> resultStatistics = Checker.compareAll(buyer);
         Output.showResultStatistics(resultStatistics);
-//        float yield = Calculator.getYield(payment, resultStatistics);
+        float yield = Calculator.getYield(payment, resultStatistics);
 //        Output.yield(yield);
     }
 

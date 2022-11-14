@@ -1,17 +1,19 @@
 package lotto;
 
-import enumCollections.RankIndex;
+import enumCollections.RankNumber;
 import enumCollections.Winnings;
 
+import java.util.EnumMap;
+
 public class Calculator extends Kiosk {
-    public static float getYield(int payment, int[] resultStatistics) {
-        return (getTotalWinnings(resultStatistics) / payment) * 100;
+    public static float getYield(int payment, EnumMap<RankNumber, Integer> resultStatistics) {
+        return (getTotalWinnings(resultStatistics) / (float)payment) * 100;
     }
 
-    public static int getTotalWinnings(int[] resultStatistics) {
+    public static int getTotalWinnings(EnumMap<RankNumber, Integer> resultStatistics) {
         int totalWinnings = 0;
-        for (RankIndex rank : RankIndex.values()) {
-            totalWinnings += resultStatistics[rank.ordinal()] * Winnings.getAmount(rank.name());
+        for (RankNumber rank : RankNumber.values()) {
+            totalWinnings += resultStatistics.get(rank) * Winnings.getAmount(rank.toString());
         }
         return totalWinnings;
     }
