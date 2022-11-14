@@ -1,12 +1,12 @@
-package lotto.controller;
+package lotto.management;
 
-public class LottoPurchaseManagement {
+public class LottoPurchase {
 
     static final int LOTTO_PRICE = 1000;
 
     final int LOTTO_TICKETS;
 
-    public LottoPurchaseManagement(int purchaseMoney) {
+    public LottoPurchase(int purchaseMoney) {
         valid(purchaseMoney);
         this.LOTTO_TICKETS = changeMoneyToLottoTickets(purchaseMoney);
     }

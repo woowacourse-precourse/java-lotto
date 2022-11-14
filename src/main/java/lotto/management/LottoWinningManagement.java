@@ -1,4 +1,4 @@
-package lotto.controller;
+package lotto.management;
 
 import java.util.Arrays;
 import java.util.List;
