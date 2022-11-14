@@ -1,6 +1,7 @@
 package lotto;
 
 import java.util.*;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 public class Lotto {
@@ -38,5 +39,23 @@ public class Lotto {
     public List<Integer> getLotto() {
         List<Integer> numbers = this.numbers.stream().sorted().collect(Collectors.toList());
         return numbers;
+    }
+
+    public Rank rankOfLotto(List<Integer> winningNumbers, int bonusNumber){
+        List<Integer> result =  this.numbers.stream().filter(number ->
+                winningNumbers.stream().anyMatch(Predicate.isEqual(number))).collect(Collectors.toList());
+        return getRank(result.size(), bonusNumber);
+    }
+
+    private Rank getRank(int count, int bonusNumber){
+        if(count != 5)
+            return Rank.findRankByCount(count);
+        return isBonusNumber(bonusNumber);
+    }
+
+    private Rank isBonusNumber(int bonusNumber){
+        if(this.numbers.stream().anyMatch(number -> number == bonusNumber))
+            return Rank.SECOND;
+        return Rank.THIRD;
     }
 }

@@ -2,6 +2,8 @@ package lotto;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import java.util.List;
 
@@ -47,5 +49,12 @@ class LottoTest {
         assertThat(lotto.getLotto()).containsExactly(4, 5, 7, 8, 30, 40);
     }
 
-
+    @ParameterizedTest
+    @CsvSource({"1,2,3,4,5,6,40,FIRST", "1,2,3,4,5,9,6,SECOND", "1,2,3,4,5,9,40,THIRD", "1,2,3,4,7,8,9,FOURTH",
+            "1,2,3,9,8,7,10,FIFTH", "1,11,12,13,14,15,16,NOTHING"})
+    void getRankOfLotto(int number1, int number2, int number3, int number4, int number5, int number6, int bonus, String rank) {
+        Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+        assertThat(lotto.rankOfLotto(List.of(number1, number2, number3, number4, number5, number6), bonus).toString())
+                .isEqualTo(rank);
+    }
 }

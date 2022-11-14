@@ -1,5 +1,6 @@
 package lotto;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class LottoGroups {
@@ -11,6 +12,12 @@ public class LottoGroups {
 
     public int getLottosSize() {
         return lottos.size();
+    }
+
+    public List<Rank> getRanks(List<Integer> winningNumbers, int bonusNumber){
+        List<Rank> ranks = new ArrayList<>();
+        lottos.stream().forEach(lotto -> ranks.add(lotto.rankOfLotto(winningNumbers, bonusNumber)));
+        return ranks;
     }
 
     public void printAmountOfLottosComment() {
