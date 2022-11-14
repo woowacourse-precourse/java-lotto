@@ -9,6 +9,7 @@ public class Message {
     private static final String INPUT_USER_MONEY_MESSAGE = "구입금액을 입력해 주세요.";
     private static final String NUMBER_LOTTO_TICKETS_MESSAGE = "%d개를 구매했습니다.%n";
     private static final String INPUT_SERVICE_WINNING_NUMBERS_MESSAGE = "당첨 번호를 입력해 주세요.";
+    private static final String INPUT_SERVICE_BONUS_NUMBER_MESSAGE = "보너스 번호를 입력해 주세요.";
 
     private static final String ERROR_MESSAGE = "[ERROR] ";
     private static final String INPUT_ERROR_HAS_CHARACTER_MESSAGE = ERROR_MESSAGE + "숫자가 아닌 수가 입력되었습니다. 게임을 종료합니다.";
@@ -60,6 +61,9 @@ public class Message {
         System.out.println(INPUT_SERVICE_WINNING_NUMBERS_MESSAGE);
     }
 
+    public static void printInputServiceBonusNumber(){
+        System.out.println(INPUT_SERVICE_BONUS_NUMBER_MESSAGE);
+    }
 
 
 }

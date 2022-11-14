@@ -18,6 +18,7 @@ public class Service {
 
         Message.printInputServiceWinningNumbers();
         setWinningNumbers();
+        Message.printInputServiceBonusNumber();
     }
 
     private void setLottoTickets(int nLottoTickets){
