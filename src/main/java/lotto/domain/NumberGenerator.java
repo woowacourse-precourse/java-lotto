@@ -2,21 +2,33 @@ package lotto.domain;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class NumberGenerator {
     public final List<List<Integer>> collectionOfLottoNumbers;
     public final int quantity;
+    public int purchaseAmount;
 
-    public NumberGenerator(int money) {
-        validate(money);
-        this.quantity = money / 1000;
+    public NumberGenerator(String money) {
+        this.purchaseAmount = validate(money);
+        this.quantity = purchaseAmount / 1000;
         this.collectionOfLottoNumbers = generate(quantity);
         printGeneratedNumbers();
     }
 
-    private void validate(int money) {
+    private int validate(String money) {
+        validateInteger(money);
+        validateUnit(Integer.valueOf(money));
+        return Integer.valueOf(money);
+    }
+
+    private void validateInteger(String money) {
+        if (!money.matches("^[0-9]+$")) {
+            throw new IllegalArgumentException("[ERROR] 구입금액은 숫자여야 합니다.");
+        }
+    }
+
+    private  void validateUnit(int money) {
         if (money % 1000 != 0) {
             throw new IllegalArgumentException("[ERROR] 구입금액은 1,000원 단위로 입력해야 합니다.");
         }
@@ -33,7 +45,7 @@ public class NumberGenerator {
 
     private  List<Integer> generateEachNumbers() {
         List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6); // 정렬 안되있음
-        Collections.sort(numbers);
+        // Collections.sort(numbers);
         return numbers;
     }
 
