@@ -28,5 +28,10 @@ public class Input {
         checkBouns(numbers, input);
         return ChangeType.string_to_int(input);
     }
+    protected static int returnPayMoney()  {
+        String input = input();
+        checkPayMoney(input);
+        return ChangeType.string_to_int(input);
+    }
 
 }
