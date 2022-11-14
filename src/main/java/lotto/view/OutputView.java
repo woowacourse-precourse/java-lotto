@@ -12,7 +12,7 @@ import java.util.stream.Collectors;
 public class OutputView {
 
     public static void printLottoList(Lotties lotties) {
-        System.out.println(lotties.getLottiesSize());
+        System.out.println(lotties.getLottiesSize() + "개를 구매했습니다.");
 
         for (Lotto lotto : lotties.getLotties()) {
             List<Integer> collect = lotto.getNumbers()
@@ -35,11 +35,11 @@ public class OutputView {
                 .collect(Collectors.toList());
 
         for (LottoRank rank : collect) {
-            System.out.println(rank + "-" + winLottoInfo.get(rank) + "개");
+            System.out.println(rank + " - " + winLottoInfo.get(rank) + "개");
         }
     }
 
-    public static void printYieldResult(long lottoYield) {
+    public static void printYieldResult(double lottoYield) {
         System.out.println("총 수익률은 " + lottoYield + "%입니다.");
     }
 }

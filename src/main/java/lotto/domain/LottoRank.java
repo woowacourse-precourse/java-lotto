@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 public enum LottoRank {
 
-    FIRST(6,  0, 2000000000),
+    FIRST( 6,  0, 2000000000),
     SECOND(5, 1, 30000000),
     THIRD(5, 0, 1500000),
     FOURTH(4, 0, 50000),
@@ -36,6 +36,24 @@ public enum LottoRank {
 
     @Override
     public String toString() {
-        return matchCount + "개 일치" + " " + "(" + winMoney + "원)";
+        return matchCount + "개 일치" + " " + "(" + splitByComma(winMoney) + "원)";
+    }
+
+    private String splitByComma(Integer winMoney) {
+        StringBuilder result = new StringBuilder();
+        result.append(winMoney.toString());
+
+        int cnt = 1;
+        for(int i = result.length() - 1; i >= 0 ; i--) {
+            if (cnt % 3 == 0) {
+                result.insert(i, ",");
+            }
+            cnt += 1;
+        }
+        return result.toString();
+    }
+
+    public int matchCount() {
+        return matchCount;
     }
 }
