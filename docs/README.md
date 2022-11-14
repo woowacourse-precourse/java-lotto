@@ -6,7 +6,7 @@
 
 - [X] 플레이어로 부터 값을 입력 받는다. - request
     - [X] 플레이어로 부터 입력 받은 값을 int로 변환한다. - convertInput
-    - [ ] 입력 받은 값이 비어있는지 확인한다. - validationInputLength
+    - [X] 입력 받은 값이 비어있는지 확인한다. - validationInputLength
     - [X] 입력 받은 값이 0인지 확인한다. - validationZeroAmount
     - [X] 입력 받은 값이 1,000 단위인지 확인한다. - validationAmount
     - [X] 입력 받은 값을 통해 로또 구매 개수를 확인한다. - lottoQuantity    
