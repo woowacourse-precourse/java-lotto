@@ -59,6 +59,9 @@ public class User {
         if (money < LOTTO_CHARGE) {
             throw new IllegalArgumentException("[ERROR] 로또 1장의 구매가격은 1000원 입니다! 1000이상의 수를 입력해주세요");
         }
+        if(money % 1000 != 0){
+            throw new IllegalArgumentException("[ERROR] 1000 단위로 입력해주세요!");
+        }
     }
 
     public void validateToConvertToInt(String userInput) {
