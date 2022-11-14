@@ -70,10 +70,11 @@ public class LottoService {
         return profit;
     }
 
-    public String calculatePercent(int profit, int money) {
-        double result = (profit * 100) / (double) money;
+    public String calculatePercent(List<LottoRank> lottoResult, int inputMoney) {
+        long profit = calculateProfit(lottoResult);
+        double result = (profit * 100) / (double) inputMoney;
 
-        String percent = String.format(".1f", result);
+        String percent = String.format("%.1f", result);
 
         return percent;
     }
