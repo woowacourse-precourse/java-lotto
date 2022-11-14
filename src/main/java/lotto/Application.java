@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Application {
 
@@ -40,7 +41,8 @@ public class Application {
     public void makeLottery(){
         for(int i =0; i < insertedNumber/1000; i++){
             List<Integer> randomSet = makeUnDuplicatedArray();
-            Lotto lotto = new Lotto(randomSet);
+            List<Integer> sortedRandomSet = randomSet.stream().sorted().collect(Collectors.toList());
+            Lotto lotto = new Lotto(sortedRandomSet);
             lottery.add(lotto);
         }
     }
