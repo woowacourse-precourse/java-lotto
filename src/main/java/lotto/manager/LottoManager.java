@@ -9,7 +9,6 @@ import lotto.WinningNumber;
 import lotto.generator.NumberGenerator;
 import lotto.result.RewardEnum;
 import lotto.ui.Input.ParameterInput;
-import lotto.ui.text.DynamicText;
 
 public class LottoManager {
     private final NumberGenerator generator;
@@ -20,23 +19,15 @@ public class LottoManager {
         this.input = input;
     }
 
-    public void tryLotto() {
-        int lottoQuantity = input.readQuantityFromMoney();
-        System.out.println();
-
-        List<Lotto> lottoList = buyLotto(lottoQuantity);
-        System.out.println(DynamicText.totalQuantity(lottoQuantity));
-        System.out.println(DynamicText.totalLotto(lottoList));
-        System.out.println();
-
-        WinningNumber winningNumber = input.readWinningNumber();
-        System.out.println();
-
-        Map<RewardEnum, Integer> statistics = makeStatistics(lottoList, winningNumber);
-        System.out.println(DynamicText.statistics(statistics));
+    public int getQuantity() {
+        return input.readQuantityFromMoney();
     }
 
-    private List<Lotto> buyLotto(int quantity) {
+    public WinningNumber getWinningNumber() {
+        return input.readWinningNumber();
+    }
+
+    public List<Lotto> buyLotto(int quantity) {
         List<Lotto> lottoList = new ArrayList<>();
         while (lottoList.size() < quantity) {
             lottoList.add(new Lotto(generator.generate(1, 45, 6)));
@@ -44,7 +35,7 @@ public class LottoManager {
         return lottoList;
     }
 
-    private Map<RewardEnum, Integer> makeStatistics(List<Lotto> lottoList, WinningNumber winningNumber) {
+    public Map<RewardEnum, Integer> makeStatistics(List<Lotto> lottoList, WinningNumber winningNumber) {
         Map<RewardEnum, Integer> statistics = initStatistics();
         for (Lotto lotto : lottoList) {
             RewardEnum matchResult = lotto.match(winningNumber);
