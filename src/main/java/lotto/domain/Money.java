@@ -3,6 +3,8 @@ package lotto.domain;
 public class Money {
     private static final int LOTTO_PRICE = 1000;
     private static final int ZERO = 0;
+    private static final double PROFIT_RATE_MULTIPLIER = 100.0;
+    private static final double NUMBER_DECIMAL_CALCULATION = 100.0;
     private final int amount;
 
     public Money(int amount) {
@@ -40,5 +42,10 @@ public class Money {
 
     public int getCountOfLotto(){
         return amount/LOTTO_PRICE;
+    }
+
+    public double calculateProfitRate(int profit){
+        double profitRate = (double)profit/(double)amount*PROFIT_RATE_MULTIPLIER;
+        return Math.round(profitRate*NUMBER_DECIMAL_CALCULATION)/NUMBER_DECIMAL_CALCULATION;
     }
 }
