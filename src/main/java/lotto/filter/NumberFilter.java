@@ -3,8 +3,10 @@ package lotto.filter;
 public class NumberFilter implements Filter {
     @Override
     public void doFilter(String number) {
-        if (number == null || number.equals("")) {
-            throw new IllegalArgumentException("천원 단위의 숫자를 입력해 주세요.");
+        number = number.replace(" ", "");
+
+        if (number.equals("")) {
+            throw new IllegalArgumentException("공백 입력은 허용되지 않습니다.");
         }
 
         for (char i : number.toCharArray()) {

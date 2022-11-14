@@ -7,8 +7,10 @@ public class NumberWithDotFilter implements Filter {
 
     @Override
     public void doFilter(String numberWithDot) {
+        numberWithDot = numberWithDot.replace(" ", "");
+
         String[] numbers = numberWithDot.split(SPLITTER);
-        
+
         if (numbers.length != VALID_SIZE) {
             throw new IllegalArgumentException("입력한 숫자의 형식이 잘못되었거나 갯수가 부족합니다");
         }

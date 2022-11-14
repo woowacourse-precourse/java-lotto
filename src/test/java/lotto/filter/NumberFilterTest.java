@@ -10,22 +10,36 @@ class NumberFilterTest {
 
     @DisplayName("입력값이 숫자가 아닐 경우 예외가 발생한다.")
     @Test
-    void throwExceptionWhenValueNotDivided() {
+    void throwExceptionWhenValueNotNumber() {
         assertThatThrownBy(() -> new NumberFilter().doFilter("125s2"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
     @DisplayName("입력값이 없을 경우 예외가 발생한다.")
     @Test
-    void throwExceptionWhenValueIsZero() {
+    void throwExceptionWhenValueIsEmpty() {
         assertThatThrownBy(() -> new NumberFilter().doFilter(""))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
-    @DisplayName("입력값이 숫자일 경우 예외가 발생하지 않는다.")
+    @DisplayName("공백만 입력되었을 경우 예외가 발생한다.")
+    @Test
+    void throwExceptionWhenValueIsSpace() {
+        assertThatThrownBy(() -> new NumberFilter().doFilter("           "))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("입력값이 천원 단위의 숫자일 경우 예외가 발생하지 않는다.")
     @Test
     void successTest() {
         assertThatNoException()
                 .isThrownBy(() -> new NumberFilter().doFilter("8000"));
+    }
+
+    @DisplayName("입력값이 공백을 포함한 천원 단위의 숫자일 경우 예외가 발생하지 않는다.")
+    @Test
+    void successTestWithSpace() {
+        assertThatNoException()
+                .isThrownBy(() -> new NumberFilter().doFilter("8  0   0  0"));
     }
 }
