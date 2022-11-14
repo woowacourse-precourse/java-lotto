@@ -10,6 +10,9 @@
     - numbers에 중복된 값이 있는지 확인한다.
     - 이때 numbers는 오름차순으로 정렬되어 있으므로 인접한 값만 확인하면 된다.
     - 이 과정에서 중복된 값이 발견되면 `IllegalArgumentException`를 발생시킨다.
+  - checkBonusExists 메소드
+    - 보너스 숫자가 members 변수에 이미 존재하면 `IllegalArgumentException`를 발생시킨다.
+
 ---
 ## Features
 
@@ -31,7 +34,6 @@
     - `inputLottonumber`메소드에서 생성된 문자열배열에서 순서대로 정수로 변환하여 lottoList에 저장한다.
     - lottoList를 오름차순으로 정렬시킨 뒤 Lotto객체를 생성하여 반환한다.
     - 이 과정에서 예외가 발생할 시 `IllegalArgumentException`를 발생시킨다.
-
 
 - 보너스 번호를 입력 받는다.
   - inputBonusNumber 메소드
