@@ -26,7 +26,7 @@ public class OutputImpl implements Output {
 
         for (Win win : winResult.keySet()) {
             System.out.println(
-                    win.getPrizeInformation() + " (" + win.getPrizeMoney() + ") - " + winResult.get(win) + "개");
+                    win.getPrizeInformation() + " (" + win.getPrizeMoneyTag() + ") - " + winResult.get(win) + "개");
         }
         System.out.println("총 수익률은 " + rateOfReturn + "% 입니다.");
     }
