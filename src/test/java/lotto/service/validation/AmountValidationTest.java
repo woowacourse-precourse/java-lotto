@@ -11,7 +11,8 @@ public class AmountValidationTest {
     void amount_is_minus_Test() {
         int amount = -100;
         boolean EXPECTED_RESULT = false;
-        boolean result = AmountValidation.isValidAmount(amount);
+        AmountValidation amountValidation = new AmountValidation(amount);
+        boolean result = amountValidation.isValidAmount();
         assertThat(result).isEqualTo(EXPECTED_RESULT);
     }
 
@@ -20,7 +21,8 @@ public class AmountValidationTest {
     void amount_is_lower_than_unit_of_amount_Test() {
         int amount = -100;
         boolean EXPECTED_RESULT = false;
-        boolean result = AmountValidation.isValidAmount(amount);
+        AmountValidation amountValidation = new AmountValidation(amount);
+        boolean result = amountValidation.isValidAmount();
         assertThat(result).isEqualTo(EXPECTED_RESULT);
     }
 
@@ -29,7 +31,8 @@ public class AmountValidationTest {
     void amount_does_not_match_the_unit() {
         int amount = 1001;
         boolean EXPECTED_RESULT = false;
-        boolean result = AmountValidation.isValidAmount(amount);
+        AmountValidation amountValidation = new AmountValidation(amount);
+        boolean result = amountValidation.isValidAmount();
         assertThat(result).isEqualTo(EXPECTED_RESULT);
     }
 
@@ -38,7 +41,8 @@ public class AmountValidationTest {
     void amount_conditions_are_satisfied() {
         int amount = 2345000;
         boolean EXPECTED_RESULT = true;
-        boolean result = AmountValidation.isValidAmount(amount);
+        AmountValidation amountValidation = new AmountValidation(amount);
+        boolean result = amountValidation.isValidAmount();
         assertThat(result).isEqualTo(EXPECTED_RESULT);
     }
 }
