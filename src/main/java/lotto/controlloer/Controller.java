@@ -5,6 +5,7 @@ import static lotto.view.outputView.printLottoGroup;
 
 import java.util.ArrayList;
 import java.util.List;
+import lotto.domain.AnswerLotto;
 import lotto.domain.Lotto;
 import lotto.domain.LottoGroup;
 import lotto.domain.NumberGenerator;
@@ -23,8 +24,7 @@ public class Controller {
     }
 
     private void getAnswerLotto(){
-        inputLottoAnswerNumber();
-        inputBonusNumber();
+        AnswerLotto answerLotto = new AnswerLotto(inputLottoAnswerNumber(), inputBonusNumber());
     }
 
     private int getNumberOfLotto(int money){

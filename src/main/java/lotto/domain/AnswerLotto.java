@@ -14,4 +14,8 @@ public class AnswerLotto {
     public List<Integer> getAnswerLotto() {
         return answerLotto;
     }
+
+    public int getBonusNumber() {
+        return bonusNumber;
+    }
 }
