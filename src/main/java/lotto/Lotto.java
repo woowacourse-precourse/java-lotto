@@ -3,6 +3,7 @@ package lotto;
 import java.util.List;
 
 public class Lotto {
+    private static final int NUMBER_COUNT = 6;
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
@@ -11,8 +12,12 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
-        if (numbers.size() != 6) {
-            throw new IllegalArgumentException();
+        checkNumbersCount();
+    }
+
+    private void checkNumbersCount(){
+        if (numbers.size() != NUMBER_COUNT) {
+            throw new IllegalArgumentException("로또 숫자의 개수가 잘못되었습니다!");
         }
     }
 
