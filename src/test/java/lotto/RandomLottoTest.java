@@ -5,7 +5,6 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
@@ -17,7 +16,7 @@ public class RandomLottoTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
-    @DisplayName("발행 로또 갯수만큼 로또의 번호응 생성한다.")
+    @DisplayName("발행 로또 갯수만큼 로또의 번호를 생성한다.")
     @Test
     void wrongOfLottoAmount() {
         int ticket = 5;
