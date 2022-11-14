@@ -64,6 +64,16 @@ class ApplicationTest extends NsTest {
             assertThat(output()).contains(ERROR_MESSAGE);
         });
     }
+    
+    @Test
+    @DisplayName("1000으로 나눠떨어지지 않는 경우")
+    void negateTest(){
+        assertSimpleTest(() -> {
+            runException("1234");
+            assertThat(output().contains(ERROR_MESSAGE));
+        });
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
