@@ -77,6 +77,15 @@ public class GameResult {
         return reward * count;
     }
 
+    public void printTotalResult() {
+        OutputView.printStatistics();
+
+        Arrays.stream(WinningConstants.values())
+                .forEach(this::printPlaceResult);
+
+        OutputView.printProfitRate(profitRate);
+    }
+
     private void printPlaceResult(WinningConstants nthPlace) {
         int place = nthPlace.getPlace();
         int count = result.get(place);
