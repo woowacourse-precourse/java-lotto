@@ -31,6 +31,7 @@
 - [x] "[ERROR] 당첨 번호는 중복될 수 없습니다."를 출력한다. - ShowErrorMessage#showDuplicateLottoNumber()
 - [x] "[ERROR] 보너스 번호는 당첨 번호와 중복될 수 없습니다."를 출력한다. - ShowErrorMessage#showContainsBonusNumber()
 
+- [x] 로또 시작 - Lotto#startLotto()
 - [x] 구입할 수 있는 로또의 개수를 반환 - Lotto#lottoCount()
 - [x] 1 ~ 45까지의 숫자 중 6개의 중복되지 않는 숫자를 뽑는다. - Lotto#createLottoNumbers()
 - [x] 구입할 금액만큼 로또 번호를 반복하여 생성하고 오름차순 정렬 - lottoList = Lotto#createLottoList()
