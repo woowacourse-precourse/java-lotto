@@ -36,7 +36,7 @@ public class LottoController {
     private void setLottoCount(){
         output.askPurchasePrice();
         String purchasePriceInput = readLine();
-        exception.IsIllegalArgumentException(purchasePriceInput);
+        exception.IsNumberFormat(purchasePriceInput);
         int lottoPurchasePrice = Integer.parseInt(purchasePriceInput);
         lottoData.setCountOfLotto(lottoPurchasePrice);
     }
@@ -63,7 +63,7 @@ public class LottoController {
     private void inputWinnerNumber(){
         output.askWinnerNumber();
         String winnerNumberInput = readLine();
-        exception.IsIllegalArgumentException(winnerNumberInput);
+        exception.IsRightWinnerNumberFormat(winnerNumberInput);
         List<Integer> winnerNumber = Arrays.stream(winnerNumberInput.split(","))
                                             .mapToInt(Integer::parseInt)
                                             .boxed()
@@ -75,7 +75,7 @@ public class LottoController {
     private void inputBonusNumber(){
         output.askBonusNumber();
         String bonusNumberInput = readLine();
-        exception.IsIllegalArgumentException(bonusNumberInput);
+        exception.IsRightBonusNumberFormat(bonusNumberInput);
         int bonusNumber = Integer.parseInt(bonusNumberInput);
         lottoData.setBonusNumber(bonusNumber);
     }
