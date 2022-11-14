@@ -7,7 +7,8 @@ public enum ExceptionMessage {
     DUPLICATE_NUMBER("로또 번호는 중복된 숫자가 없어야 합니다."),
     NUMBERS_LENGTH("로또 번호는 6개의 숫자로 구성되어야 합니다."),
     ONLY_NUMBER("오직 숫자만 입력할 수 있습니다."),
-    DUPLICATE("중복된 숫자가 입력되었습니다.");
+    DUPLICATE_NUMBERS("중복된 숫자가 입력되었습니다."),
+    DUPLICATE_BONUS("보너스가 로또 번호와 중복됩니다.");
 
     private final String message;
     private static final String ERROR = "[ERROR] ";

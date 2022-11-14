@@ -2,6 +2,7 @@ package lotto.view;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
+import lotto.view.validation.InputBonusValidation;
 import lotto.view.validation.InputNumbersValidation;
 
 public class InputView {
@@ -17,8 +18,10 @@ public class InputView {
         return InputUtil.convertUserInputToNumbers(userNumbers);
     }
 
-    public static String inputBonusNumber() {
+    public static Integer inputBonusNumber() {
         System.out.println(GameMessage.INPUT_BONUS);
-        return Console.readLine();
+        String bonus = Console.readLine();
+        InputBonusValidation.validate(bonus);
+        return Integer.valueOf(bonus);
     }
 }

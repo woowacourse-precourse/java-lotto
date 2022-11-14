@@ -5,26 +5,17 @@ import lotto.domain.LottoEnum;
 import lotto.view.validation.ExceptionMessage;
 
 public class LottoBonusValidation {
-    private static final String NUMBER_REGEXP = "^[0-9]+$";
-    public static void validate(String userInput) {
-        validateOnlyNumber(userInput);
-        int bonus = Integer.parseInt(userInput);
+    public static void validate(Integer bonus) {
         validateNumberRange(bonus);
     }
 
-    public static void validateDuplicateNumber(Lotto lotto, String bonus) {
-        if (lotto.containBonusNumber(Integer.valueOf(bonus))) {
-            throw new IllegalArgumentException();
+    public static void validateDuplicateNumber(Lotto lotto, Integer bonus) {
+        if (lotto.containBonusNumber(bonus)) {
+            throw new IllegalArgumentException(ExceptionMessage.DUPLICATE_BONUS.toString());
         }
     }
 
-    private static void validateOnlyNumber(String userInput) {
-        if (!userInput.matches(NUMBER_REGEXP)) {
-            throw new IllegalArgumentException(ExceptionMessage.ONLY_NUMBER.toString());
-        }
-    }
-
-    private static void validateNumberRange(int bonus) {
+    private static void validateNumberRange(Integer bonus) {
         if (!LottoEnum.isNumberInRange(bonus)) {
             throw new IllegalArgumentException(ExceptionMessage.NUMBER_RANGE.toString());
         }

@@ -49,9 +49,9 @@ public class LottoMachine {
     }
 
     public void inputUserBonus() {
-        String bonus = InputView.inputBonusNumber();
+        Integer bonus = InputView.inputBonusNumber();
         LottoBonusValidation.validate(bonus);
         LottoBonusValidation.validateDuplicateNumber(userLotto, bonus);
-        userBonus =  Integer.valueOf(bonus);
+        userBonus = bonus;
     }
 }
