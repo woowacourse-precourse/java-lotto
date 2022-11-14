@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.io.*;
+import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.List;
 
@@ -270,6 +271,26 @@ class ApplicationTest extends NsTest {
         assertSimpleTest(() -> {
             HashMap<Application.Prize, Integer> prizes = Application.getLottoResult(lottos, luckyLotto, bonusNumber);
             assertThat(prizes).isEqualTo(answer);
+        });
+    }
+
+    @Test
+    void 수익률출력_기능테스트1() {
+        int purchase = 8000;
+        int profit = 2061500000;
+        assertSimpleTest(() -> {
+            String profitRate = Application.getProfitRate(purchase, profit).toString();
+            assertThat(profitRate).isEqualTo("25768750");
+        });
+    }
+
+    @Test
+    void 수익률출력_기능테스트2() {
+        int purchase = 8000;
+        int profit = 5000;
+        assertSimpleTest(() -> {
+            String profitRate = Application.getProfitRate(purchase, profit).toString();
+            assertThat(profitRate).isEqualTo("62.5");
         });
     }
 
