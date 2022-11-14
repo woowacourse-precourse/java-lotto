@@ -37,6 +37,8 @@ public class RaffleNumber {
         if (!numberRemovedLetters.equals(BLANK)) {
             throw new IllegalArgumentException(ENTER_WRONG_LETTERS_MESSAGE);
         }
-    }fear(RaffleNumber.java): 숫자 다음 콤마 순으로 입력되었는지 확인하는 기능 구현
-
+    }
+    public List<String> separateRaffleNumberByComma(String raffleNumber){
+        return List.of(raffleNumber.split(DELIMITER));
+    }
 }
