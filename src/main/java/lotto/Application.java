@@ -7,6 +7,11 @@ public class Application {
         printInputMoney();
         int money = getMoneyInputFromUser();
         int numberOfLotteries = calculateNumberOfLotteries(money);
+        printNumberOfLotteries(numberOfLotteries);
+    }
+
+    private static void printNumberOfLotteries(int numberOfLotteries) {
+        System.out.println(numberOfLotteries + Message.OUTPUT_LOTTO_NUMBER.message);
     }
 
     public static int calculateNumberOfLotteries(int money) {
