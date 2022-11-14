@@ -12,6 +12,8 @@ public class Compare {
         for (int i = 0; i < (inputMoney/1000) ; i++) {
             count = 0;
             count = getContainingNumber(computerRandomNumbers, numbers, count, i);
+
+            reflectCountforResult(computerRandomNumbers, bonusNumber, result, count, i);
         }
         return result;
     }
@@ -22,4 +24,18 @@ public class Compare {
         }
         return count;
     }
+
+    private void reflectCountforResult(List<List<Integer>> computerRandomNumbers, int bonusNumber, int[] result, int count, int i) {
+
+        if (count == 3) result[0]++;
+        if (count == 4) result[1]++;
+        if (count == 5) {
+            if (computerRandomNumbers.get(i).contains(bonusNumber)) {
+                result[3]++;
+            }
+            result[2]++;
+        }
+        if (count == 6) result[4]++;
+    }
+
 }
