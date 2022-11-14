@@ -1,10 +1,65 @@
 package lotto;
 
+import java.util.ArrayList;
+import java.util.EnumMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Objects;
+import lotto.model.Lotto;
+import lotto.model.LottoAnswer;
+import lotto.model.LottoEnum;
+import lotto.model.ResultEnum;
 
 public class CalculateLotto {
-    public void calculateResult(List<Lotto> lottos, LottoWin winNumber) {
+    private final static int INIT_VALUES = 0;
+    private final static int ADD_AMOUNT = 1;
+    public EnumMap<ResultEnum, Integer> calculateResult(List<Lotto> lottos, LottoAnswer lottoAnswer) {
+        EnumMap<ResultEnum, Integer> result = new EnumMap<>(ResultEnum.class);
+        initEnumMap(result);
+        List<Integer> answerNumbers = new ArrayList<>(lottoAnswer.getLottoNumber());
+        Integer bonusNumber = lottoAnswer.getBonusNumber();
 
+        for (Lotto lotto : lottos) {
+            calcLotto(result, answerNumbers, bonusNumber, lotto);
+        }
+
+        return result;
+    }
+
+    private void initEnumMap(EnumMap<ResultEnum, Integer> result) {
+        for (ResultEnum resultEnum : ResultEnum.values()) {
+            result.put(resultEnum, INIT_VALUES);
+        }
+    }
+
+    private void calcLotto(EnumMap<ResultEnum, Integer> result, List<Integer> answerNumber, Integer bonusNumber, Lotto lotto) {
+        List<Integer> numbers = new ArrayList<>(lotto.getLottoNumber());
+        Integer hitAmount = calcHitAmount(numbers, answerNumber);
+        Boolean bonusHit = isBonusHit(hitAmount, numbers, bonusNumber);
+        referenceEnum(result, hitAmount, bonusHit);
+    }
+
+    private Integer calcHitAmount(List<Integer> numbers, List<Integer> answerNumber) {
+        numbers.removeAll(answerNumber);
+        return LottoEnum.SIZE.getValue() - numbers.size();
+    }
+
+    private Boolean isBonusHit(Integer hitAmount, List<Integer> numbers, Integer bonusNumber) {
+        if (Objects.equals(hitAmount, ResultEnum.HIT_5.getHitAmount())) {
+            return numbers.contains(bonusNumber);
+        }
+
+        return false;
+    }
+
+    private void referenceEnum(EnumMap<ResultEnum, Integer> result, Integer hitAmount, Boolean bonusHit) {
+        for (ResultEnum resultEnum : result.keySet()) {
+            boolean amountFlag = Objects.equals(resultEnum.getHitAmount(), hitAmount);
+            boolean bonusFlag = Objects.equals(resultEnum.getIsBonusHit(), bonusHit);
+            if (amountFlag && bonusFlag) {
+                result.put(resultEnum, result.get(resultEnum) + ADD_AMOUNT);
+            }
+        }
     }
 
     public void calculateROI() {

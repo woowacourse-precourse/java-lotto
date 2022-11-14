@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
+import lotto.model.Lotto;
+import lotto.model.LottoEnum;
 
 public class ManagementLotto {
     private final ValidInput validInput = new ValidInput();

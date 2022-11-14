@@ -2,6 +2,7 @@ package lotto;
 
 import java.util.List;
 import java.util.Objects;
+import lotto.model.LottoEnum;
 
 public class ValidInput {
     public void validCashAmount(Integer cash, Integer lottoDividePrice) {
@@ -16,7 +17,7 @@ public class ValidInput {
     }
 
     public void validIsInputInRange(Integer number) {
-        if (!((number < LottoEnum.END_NUM.getValue()) && (number > LottoEnum.START_NUM.getValue()))) {
+        if (number < LottoEnum.START_NUM.getValue() || number > LottoEnum.END_NUM.getValue()) {
             throw new IllegalArgumentException("[ERROR] 로또 번호가 " + LottoEnum.START_NUM.getValue() + "과 " +
                     LottoEnum.END_NUM.getValue() + "사이에 있지 않습니다!");
         }
