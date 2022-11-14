@@ -1,6 +1,7 @@
 package lotto.domain;
 
 import lotto.domain.enums.Number;
+import lotto.service.ManagerService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
@@ -11,29 +12,33 @@ import static org.junit.jupiter.api.Assertions.assertAll;
 
 class ManagerTest {
 
+    User user;
     Manager manager;
+    ManagerService managerService;
 
     @BeforeEach
     void beforeEach() {
+        user = new User();
         manager = new Manager();
+        managerService = new ManagerService();
     }
 
     @Test
     void 구입금액에_따른_로또_반환_테스트() {
-        double money = 8000;
+        user.setMoney(8000.0);
         int expect = 8;
-        List<Lotto> lottos = manager.changeLottos(money);
+        managerService.changeLottos(user);
 
-        assertThat(lottos.size()).isEqualTo(expect);
+        assertThat(user.getLottoCount()).isEqualTo(expect);
     }
 
     @Test
     void 구입금액에_따른_로또_반환_테스트_0() {
-        double money = 0;
+        user.setMoney(0.0);
         int expect = 0;
-        List<Lotto> lottos = manager.changeLottos(money);
+        managerService.changeLottos(user);
 
-        assertThat(lottos.size()).isEqualTo(expect);
+        assertThat(user.getLottoCount()).isEqualTo(expect);
     }
 
     @Test
@@ -42,7 +47,7 @@ class ManagerTest {
         manager.setWinningNumbers("1,2,3,4,5,7");
 
         int expect = 5;
-        int result = manager.getCorrectCount(userLotto);
+        int result = manager.countCorrect(userLotto);
 
         assertThat(result).isEqualTo(expect);
     }
@@ -50,14 +55,14 @@ class ManagerTest {
     @Test
     void judgeRankTest() {
         assertAll(
-            () -> assertThat(manager.judgeRank(0, true)).isEqualTo(Number.ZERO.getValue()),
-            () -> assertThat(manager.judgeRank(1, true)).isEqualTo(Number.ZERO.getValue()),
-            () -> assertThat(manager.judgeRank(2, true)).isEqualTo(Number.ZERO.getValue()),
-            () -> assertThat(manager.judgeRank(3, true)).isEqualTo(Number.FIVE.getValue()),
-            () -> assertThat(manager.judgeRank(4, true)).isEqualTo(Number.FOUR.getValue()),
-            () -> assertThat(manager.judgeRank(5, false)).isEqualTo(Number.THREE.getValue()),
-            () -> assertThat(manager.judgeRank(5, true)).isEqualTo(Number.TWO.getValue()),
-            () -> assertThat(manager.judgeRank(6, true)).isEqualTo(Number.ONE.getValue())
+            () -> assertThat(managerService.judgeRank(0, true)).isEqualTo(Number.ZERO.getValue()),
+            () -> assertThat(managerService.judgeRank(1, true)).isEqualTo(Number.ZERO.getValue()),
+            () -> assertThat(managerService.judgeRank(2, true)).isEqualTo(Number.ZERO.getValue()),
+            () -> assertThat(managerService.judgeRank(3, true)).isEqualTo(Number.FIVE.getValue()),
+            () -> assertThat(managerService.judgeRank(4, true)).isEqualTo(Number.FOUR.getValue()),
+            () -> assertThat(managerService.judgeRank(5, false)).isEqualTo(Number.THREE.getValue()),
+            () -> assertThat(managerService.judgeRank(5, true)).isEqualTo(Number.TWO.getValue()),
+            () -> assertThat(managerService.judgeRank(6, true)).isEqualTo(Number.ONE.getValue())
         );
     }
 
