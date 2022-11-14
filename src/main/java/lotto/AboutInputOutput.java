@@ -33,6 +33,12 @@ public class AboutInputOutput {
         return orderedNumbers(winningNumbers);
     }
 
+    public void printLottoSet(List<List<Integer>> lottoSet) {
+        for (List<Integer> lotto : lottoSet) {
+            System.out.println(lotto);
+        }
+    }
+
     public List<Integer> orderedNumbers(String[] winningNumbers) {
         List<Integer> numbers = new ArrayList<>();
         for (String winningNumber : winningNumbers) {

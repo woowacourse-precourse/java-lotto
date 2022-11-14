@@ -20,13 +20,11 @@ public class Application {
         BuyLotto buyLotto = new BuyLotto(money);
         io.outputLottoCount(buyLotto.lottoCount);
 
-        // 구매한 로또 목록 리스트 생성, 여기부터는 buylottos에서 할 일?
+        // 구매한 로또 목록 리스트 생성
         List<List<Integer>> lottoSet = buyLotto.getLottoSet(buyLotto.lottoCount);
 
         // 응모 로또 출력
-        for (List<Integer> lottoList : lottoSet) {
-            System.out.println(lottoList);
-        }
+        io.printLottoSet(lottoSet);
 
         // 당첨번호 입력
         System.out.println(io.PLEASE_ENTER_NUMBERS);
