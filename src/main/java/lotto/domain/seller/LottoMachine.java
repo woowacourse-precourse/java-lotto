@@ -49,6 +49,11 @@ public class LottoMachine implements Seller{
 
     @Override
     public int calculateTotalWinningAmount(List<LottoRanking> lottoRankings) {
-        return 0;
+        int amount = 0;
+        for (LottoRanking lottoRanking : lottoRankings) {
+            amount += lottoRanking.getWinningAmount();
+        }
+        return amount;
+
     }
 }

@@ -80,7 +80,6 @@ public class SellerTest {
             LottoRanking.LOSER);
         int amount = seller.calculateTotalWinningAmount(lottoRankings);
         assertThat(amount).isEqualTo(2000005000);
-
     }
 
 }
