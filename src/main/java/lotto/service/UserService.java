@@ -4,24 +4,20 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
+import lotto.data.dao.UserDao;
 import lotto.data.dto.LottoBundleDto;
 import lotto.data.dto.LottoDto;
 import lotto.data.entity.Lotto;
 import lotto.data.entity.LottoBundle;
-import lotto.data.repository.LottoBundleRepository;
-import lotto.data.repository.WinNumberRepository;
 import lotto.type.LottoResultType;
 
 public class UserService {
 
-    private final LottoBundleRepository lottoBundleRepository;
-    private final WinNumberRepository winNumberRepository;
+    private final UserDao userDao;
 
     public UserService() {
-        lottoBundleRepository = LottoBundleRepository.getInstance();
-        winNumberRepository = WinNumberRepository.getInstance();
+        userDao = new UserDao();
     }
 
     /**
@@ -29,13 +25,13 @@ public class UserService {
      */
     public void purchaseLottoBundle(LottoBundleDto lottoBundleDto) {
         Long ownerId = lottoBundleDto.getOwnerId();
-        Long roundId = winNumberRepository.getCurrentRoundId();
+        Long roundId = userDao.getCurrentRoundId();
         List<Lotto> lottos = lottoBundleDto.getLottos().stream()
                 .map(LottoDto::getNumbers)
                 .map(Lotto::new)
                 .collect(Collectors.toList());
         LottoBundle lottoBundle = new LottoBundle(ownerId, roundId, lottos);
-        lottoBundleRepository.save(lottoBundle);
+        userDao.insertLottoBundle(lottoBundle);
     }
 
     /**
@@ -43,11 +39,7 @@ public class UserService {
      */
     public HashMap<LottoResultType, Integer> getMyResult(Long userId) {
         HashMap<LottoResultType, Integer> lottoResults = new HashMap<>();
-        Optional<List<LottoBundle>> selectedLottoBundles = lottoBundleRepository.findById(userId);
-        if (selectedLottoBundles.isEmpty()) {
-            throw new NullPointerException();
-        }
-        List<LottoBundle> lottoBundles = selectedLottoBundles.get();
+        List<LottoBundle> lottoBundles = userDao.selectLottoBundles(userId);
         Long roundId = lottoBundles.get(0).getRoundId();
         lottoBundles.stream()
                 .map(LottoBundle::getLottos)
