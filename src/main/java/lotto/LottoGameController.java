@@ -1,9 +1,7 @@
 package lotto;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import dto.IssueLottoInfo;
 import dto.Lotto;
@@ -73,12 +71,12 @@ public class LottoGameController {
 	public void calculateResult() {
 		ConfirmWinning confirmWinning = new ConfirmWinning(lottoGameInfo);
 		confirmWinning.confirmWinning();
-		
 	}
 
 	// 결과 출력하기
 	public void printResult() {
-		// TODO: 추가 기능 구현
+		PrintUtil.printResult(lottoGameInfo);
+		PrintUtil.printProfitRate(lottoGameInfo);
 	}
 
 }
