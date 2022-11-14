@@ -3,6 +3,7 @@ package lotto.controller;
 import java.util.List;
 import lotto.domain.Lotto;
 import lotto.domain.User;
+import lotto.domain.WinningLotto;
 import lotto.service.LottoService;
 import lotto.view.Message;
 
@@ -24,11 +25,16 @@ public class LottoController {
         }
 
         String inputWinningNumber = message.inputWinningNumberMessage();
-        List<Integer> winningLotto = lottoService.setWinningNumber(inputWinningNumber);
+        List<Integer> winningNumber = lottoService.setWinningNumber(inputWinningNumber);
         String inputBonusNumber = message.inputBonusNumberMessage();
         int bonusNumber = lottoService.setBonusNumber(inputBonusNumber);
 
-        lottoService.setWinningLotto(winningLotto,bonusNumber);
+        WinningLotto winningLotto = lottoService.setWinningLotto(winningNumber,bonusNumber);
+
+        user.getLottoResults(winningLotto);
+
+
+        message.lottoResultMessage();
     }
 
 }

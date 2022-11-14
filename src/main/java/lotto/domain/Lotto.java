@@ -1,6 +1,7 @@
 package lotto.domain;
 
 import java.util.List;
+import java.util.function.Predicate;
 
 public class Lotto {
     private final List<Integer> numbers;
@@ -19,6 +20,4 @@ public class Lotto {
     public List<Integer> getNumbers(){
         return numbers;
     }
-
-    // TODO: 추가 기능 구현
 }

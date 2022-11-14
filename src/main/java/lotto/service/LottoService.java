@@ -1,6 +1,7 @@
 package lotto.service;
 
 import java.util.List;
+import lotto.domain.User;
 import lotto.domain.WinningLotto;
 import lotto.util.LottoUtils;
 
@@ -53,7 +54,8 @@ public class LottoService {
         }
     }
 
-    public void setWinningLotto(List<Integer> winningLotto, int bonusNumber) {
-        new WinningLotto(winningLotto,bonusNumber);
+    public WinningLotto setWinningLotto(List<Integer> winningNumber, int bonusNumber) {
+        WinningLotto winningLotto= new WinningLotto(winningNumber,bonusNumber);
+        return winningLotto;
     }
 }
