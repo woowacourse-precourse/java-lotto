@@ -40,7 +40,7 @@ public class Application {
         int bonusNumbers = inputHandler.getBonusNumbers(winningNumbers);
 
         Map<Lotto, Integer> countedLotto = lottoCounter.countedLotto(lottoPapers,winningNumbers);
-        Map<Integer, Integer> winningCounts = lottoCounter.countWinningPaper(countedLotto,winningNumbers,bonusNumbers);
+        Map<Integer, Integer> winningCounts = lottoCounter.countWinningPaper(countedLotto,bonusNumbers);
         outputHandler.printAllRecord(winningCounts, amountOfLottoPaper * 1000);
     }
 }

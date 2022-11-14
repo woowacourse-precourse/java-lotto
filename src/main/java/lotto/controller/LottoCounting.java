@@ -14,7 +14,7 @@ public class LottoCounting {
         return lottoBox;
     }
 
-    public Map<Integer,Integer> countWinningPaper(Map<Lotto,Integer> countedLotto,Lotto winningLotto,int bonusNumber){
+    public Map<Integer,Integer> countWinningPaper(Map<Lotto,Integer> countedLotto,int bonusNumber){
         Map<Integer,Integer> countedWinningPaper = new HashMap<>();
         countedLotto.forEach((lottoPaper,lottoRanking) -> {
             addOneWinningPrize(countedWinningPaper,lottoRanking,lottoPaper,bonusNumber);

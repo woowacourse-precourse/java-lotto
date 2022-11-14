@@ -232,11 +232,10 @@ class LottoCountingTest {
 
         void testWinningPaperCase(int sizeInput, String expectedOutput){
             Map<Lotto,Integer> countedLotto = getCountedLotto(sizeInput);
-            Lotto winningLotto = getWinningLotto();
 
             Map<Integer, Integer> expectedResult = new HashMap<>();
             putExpectedResult(expectedResult,expectedOutput);
-            Map<Integer, Integer> actualResult = lottoCounter.countWinningPaper(countedLotto,winningLotto,bonusNumber);
+            Map<Integer, Integer> actualResult = lottoCounter.countWinningPaper(countedLotto,bonusNumber);
 
             assertThat(actualResult).isEqualTo(expectedResult);
         }
