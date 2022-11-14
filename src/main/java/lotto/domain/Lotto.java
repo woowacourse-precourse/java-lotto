@@ -18,14 +18,12 @@ public class Lotto {
 
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
-            System.out.println("[ERROR] 숫자의 개수는 6개여야 합니다.");
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR] 숫자의 개수는 6개여야 합니다.");
         }
 
         Set<Integer> uniqueNumbers = new HashSet<>(numbers);
         if (uniqueNumbers.size() < 6) {
-            System.out.println("[ERROR] 중복된 숫자가 없어야 합니다.");
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR] 중복된 숫자가 없어야 합니다.");
         }
 
         numbers.forEach(this::validateLottoNumberRange);
@@ -33,8 +31,7 @@ public class Lotto {
 
     public void validateLottoNumberRange(int lottoNumber) {
         if (lottoNumber < MIN_LOTTO_NUMBER || lottoNumber > MAX_LOTTO_NUMBER) {
-            System.out.println("[ERROR] 1부터 45 사이 숫자만 로또 번호가 될 수 있습니다.");
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR] 1부터 45 사이 숫자만 로또 번호가 될 수 있습니다.");
         }
     }
 
@@ -44,8 +41,7 @@ public class Lotto {
 
     public void validateBonusNumber(int bonusNumber) {
         if (numbers.contains(bonusNumber)) {
-            System.out.println("[ERROR] 보너스 번호는 당첨 번호와 중복될 수 없습니다.");
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR] 보너스 번호는 당첨 번호와 중복될 수 없습니다.");
         }
     }
 
