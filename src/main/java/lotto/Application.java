@@ -1,46 +1,37 @@
 package lotto;
 
-import lotto.domain.Lotto;
 import lotto.domain.Manager;
 import lotto.domain.User;
-import lotto.util.ExceptionHandler;
-import lotto.util.InputUtil;
+import lotto.service.ManagerService;
+import lotto.service.UserService;
 import lotto.util.OutputUtil;
 
 import java.util.List;
 
 public class Application {
 
+    UserService userService = new UserService();
+    ManagerService managerService = new ManagerService();
     User user = new User();
     Manager manager = new Manager();
 
     private void run() {
         try {
-            setInputMoney();
+            firstStep();
             printPurchaseResult();
-            setInputWinningNumber();
-            setInputBonusNumber();
-            manager.judgeResult(user);
-            user.calculateYield();
-            OutputUtil.printResult(user);
+            secondStep();
+
+            managerService.judgeResult(user, manager);
+
+            lastStep();
         } catch (IllegalArgumentException illegalArgumentException) {
             OutputUtil.printEndProgram();
         }
     }
 
-    private void setInputMoney() throws IllegalArgumentException {
-        OutputUtil.printInputPurchaseAmount();
-        String input = InputUtil.getUserInput();
-        try {
-            ExceptionHandler.checkValidationMoney(input);
-            double money = Double.parseDouble(input);
-            user.setMoney(money);
-            List<Lotto> lottos = manager.changeLottos(money);
-            user.setLottos(lottos);
-        } catch (IllegalArgumentException illegalArgumentException) {
-            OutputUtil.printInputWinningNumbersError();
-            throw illegalArgumentException;
-        }
+    private void firstStep() {
+        userService.setInputMoney(user, manager);
+        managerService.changeLottos(user);
     }
 
     private void printPurchaseResult() {
@@ -48,28 +39,14 @@ public class Application {
         OutputUtil.printUserLottos(user);
     }
 
-    private void setInputWinningNumber() throws IllegalArgumentException {
-        OutputUtil.printInputWinningNumbers();
-        String input = InputUtil.getUserInput();
-        try {
-            ExceptionHandler.checkValidationWinningNumber(input);
-            manager.setWinningNumbers(input);
-        } catch (IllegalArgumentException illegalArgumentException) {
-            OutputUtil.printInputWinningNumbersError();
-            throw illegalArgumentException;
-        }
+    private void secondStep() {
+        managerService.setWinningNumber(manager);
+        managerService.setBonusNumber(manager);
     }
 
-    private void setInputBonusNumber() throws IllegalArgumentException {
-        OutputUtil.printInputBonusNumber();
-        String input = InputUtil.getUserInput();
-        try {
-            ExceptionHandler.checkValidationBonusNumber(input, manager.getWinningNumbers());
-            manager.setBonusNumber(input);
-        } catch (IllegalArgumentException illegalArgumentException) {
-            OutputUtil.printInputBonusNumberError();
-            throw illegalArgumentException;
-        }
+    private void lastStep() {
+        userService.calculateYield(user);
+        OutputUtil.printResult(user);
     }
 
     public static void main(String[] args) {
