@@ -46,4 +46,12 @@ class LottoTest {
         int bonusNumber = 1;
         assertThat(lotto.containsBonusNumber(bonusNumber)).isTrue();
     }
+
+    @DisplayName("로또 번호 리스트를 조회할 수 있다.")
+    @Test
+    void getLottoNumbers() {
+        Lotto lotto = new Lotto(Arrays.asList(1, 2, 3, 4, 5, 6));
+        List<Integer> numbers = lotto.getNumbers();
+        assertThat(numbers).contains(1, 2, 3, 4, 5, 6);
+    }
 }

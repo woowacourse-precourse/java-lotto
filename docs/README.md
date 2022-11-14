@@ -81,4 +81,4 @@
 - [X] 로또 번호 중 1~45 숫자 범위 내에 없는 수가 있으면 예외가 발생한다. - LottoTest#createLottoByExceedNumberRange()
 - [X] 로또 생성 시 오름차순으로 정렬된다. - LottoTest#createLottoByAscendingOrder()
 - [X] 로또 번호 리스트의 보너스 번호 포함 여부를 알 수 있다. - LottoTest#containsBonusNumber()
-- [ ] 로또 번호 리스트를 조회할 수 있다. - LottoTest#getLottoNumbers()
+- [X] 로또 번호 리스트를 조회할 수 있다. - LottoTest#getLottoNumbers()
