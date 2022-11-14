@@ -1,5 +1,6 @@
 package lotto.domain;
 
+import lotto.utils.StringToListConverter;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -16,7 +17,7 @@ class LottoWinningNumberTest {
         String winningNumber = "1,2,3,4,5,6";
         String bonus = "7";
 
-        LottoWinningNumber lottoWinningNumber = new LottoWinningNumber(winningNumber, bonus);
+        LottoWinningNumber lottoWinningNumber = new LottoWinningNumber(new StringToListConverter(), winningNumber, bonus);
         assertThat(lottoWinningNumber).isNotNull();
     }
 
@@ -26,7 +27,7 @@ class LottoWinningNumberTest {
         String winningNumber = "1,2,3,4,5,5";
         String bonus = "7";
 
-        assertThatThrownBy(() -> new LottoWinningNumber(winningNumber, bonus))
+        assertThatThrownBy(() -> new LottoWinningNumber(new StringToListConverter(), winningNumber, bonus))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -36,7 +37,7 @@ class LottoWinningNumberTest {
         String winningNumber = "1,2,3,4,5";
         String bonus = "5";
 
-        assertThatThrownBy(() -> new LottoWinningNumber(winningNumber, bonus))
+        assertThatThrownBy(() -> new LottoWinningNumber(new StringToListConverter(), winningNumber, bonus))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -46,7 +47,7 @@ class LottoWinningNumberTest {
         String winningNumber = "1,2,3,4,5,6";
         String bonus = "5";
 
-        assertThatThrownBy(() -> new LottoWinningNumber(winningNumber, bonus))
+        assertThatThrownBy(() -> new LottoWinningNumber(new StringToListConverter(), winningNumber, bonus))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -56,7 +57,7 @@ class LottoWinningNumberTest {
         String winningNumber = "1,2,3,4,5,6";
         String bonus = "a";
 
-        assertThatThrownBy(() -> new LottoWinningNumber(winningNumber, bonus))
+        assertThatThrownBy(() -> new LottoWinningNumber(new StringToListConverter(), winningNumber, bonus))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -66,7 +67,7 @@ class LottoWinningNumberTest {
         String winningNumber = "1,2,3,4,5,6";
         String bonus = "7";
 
-        LottoWinningNumber lottoWinningNumber = new LottoWinningNumber(winningNumber, bonus);
+        LottoWinningNumber lottoWinningNumber = new LottoWinningNumber(new StringToListConverter(), winningNumber, bonus);
         IssuedLotto issuedLotto = new IssuedLotto(List.of(
                 new Lotto(List.of(1, 2, 3, 4, 5, 6)),
                 new Lotto(List.of(1, 2, 3, 4, 5, 6)),
