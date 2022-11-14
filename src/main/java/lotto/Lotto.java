@@ -21,4 +21,8 @@ public class Lotto {
     public int decideRank(List<Integer> lotto, int bonusNumber) {
         return 0;
     }
+
+    public String toString(){
+        return numbers.toString();
+    }
 }
