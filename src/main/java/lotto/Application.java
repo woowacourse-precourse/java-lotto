@@ -1,6 +1,6 @@
 package lotto;
 
-import lotto.mainframe.Game;
+import lotto.domain.Game;
 
 public class Application {
     public static void main(String[] args) {

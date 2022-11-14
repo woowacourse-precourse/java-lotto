@@ -1,4 +1,4 @@
-package lotto.mainframe;
+package lotto.domain;
 
 import lotto.view.GameInput;
 import lotto.view.GameOutput;

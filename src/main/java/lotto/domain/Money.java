@@ -1,4 +1,4 @@
-package lotto.mainframe;
+package lotto.domain;
 
 import java.text.DecimalFormat;
 

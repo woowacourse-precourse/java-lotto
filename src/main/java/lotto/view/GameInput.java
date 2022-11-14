@@ -2,7 +2,7 @@ package lotto.view;
 
 import camp.nextstep.edu.missionutils.Console;
 import lotto.exception.NumberException;
-import lotto.mainframe.User;
+import lotto.domain.User;
 
 public class GameInput {
 
