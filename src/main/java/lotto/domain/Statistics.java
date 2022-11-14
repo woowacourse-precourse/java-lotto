@@ -44,8 +44,7 @@ public class Statistics {
 
     public double findLottoYield(int purchaseAmount) {
         double quotient = (double) winAmount / (double) purchaseAmount;
-        String result = String.format("%.1f", quotient * PERCENTAGE);
-        return Double.parseDouble(result);
+        return quotient * PERCENTAGE;
     }
 
     public Map<LottoRank, Integer> getWinLottoInfoMap() {
