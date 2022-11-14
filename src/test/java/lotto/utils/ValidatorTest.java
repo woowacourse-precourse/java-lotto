@@ -3,6 +3,8 @@ package lotto.utils;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.Arrays;
+import java.util.List;
 import lotto.domain.ErrorMessage;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -13,6 +15,16 @@ class ValidatorTest {
     @BeforeEach
     void beforeEach() {
         validator = new Validator();
+    }
+
+    @Test
+    public void 입력한_번호가_로또번호_범위를_벗어난_경우() {
+        //given
+        List<Integer> input = Arrays.asList(1, 2, 3, 4, 5, 50);
+        //when
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> validator.isValidLottoNumbers(input));
+        //then
+        assertThat(exception.getMessage()).isEqualTo(ErrorMessage.LOTTO_NUMBER_IS_NOT_VALID_RANGE.toString());
     }
 
     @Test
