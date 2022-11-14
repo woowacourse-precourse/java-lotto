@@ -1,4 +1,4 @@
-package lotto;
+package lotto.domain;
 
 import java.util.Arrays;
 
@@ -27,7 +27,8 @@ public enum LottoReward {
         return Arrays.stream(values())
                 .filter(statistic -> statistic.matchingNumbers == numberOfMatch)
                 .findFirst()
-                .orElseThrow(IllegalArgumentException::new);
+                .orElseThrow(()
+                        -> new IllegalArgumentException("[ERROR] 해당하는 등수를 찾을 수 없습니다."));
     }
 
     public void plusCount() {
