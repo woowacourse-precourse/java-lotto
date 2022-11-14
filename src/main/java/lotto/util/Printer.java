@@ -5,15 +5,15 @@ import lotto.domain.Lotto;
 import java.util.List;
 
 public class Printer {
-    public void print(String message) {
+    public static void print(String message) {
         System.out.println(message);
     }
 
-    public void divide() {
+    public static void divide() {
         System.out.println();
     }
 
-    public void printLottos(List<Lotto> lottos) {
+    public static void printLottos(List<Lotto> lottos) {
         for (Lotto lotto : lottos) {
             System.out.println(lotto.getNumbers());
         }
