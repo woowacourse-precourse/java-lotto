@@ -27,12 +27,13 @@ public class Application {
             wonNumber.bonusNumber();
 
             WonAnalysis wonAnalysis = new WonAnalysis();
-            List<Rank> Result = wonAnalysis.Result(wonNumber.wonNumber, by.lottoList, wonNumber.bonusNumber);
+            List<Rank> Result = wonAnalysis.createLottoResult(wonNumber.wonNumber, by.lottoList);
 
             Output output = new Output();
             output.printLottoResult(Result);
-            String percent = wonAnalysis.totalPercent(Result);
+            String percent = wonAnalysis.calculatePercent(Result);
             output.printPercent(percent);
+
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
