@@ -3,9 +3,9 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.List;
 import java.util.ArrayList;
 
-public class makeLottos {
+public class RandomLottos {
     private List<Lotto> lottosNumber;
-    makeLottos(int numberOfLottos){
+    RandomLottos(int numberOfLottos){
         this.lottosNumber = makeLottosNumber(numberOfLottos);
     }
     private List<Lotto> makeLottosNumber(int numberOfLottos){

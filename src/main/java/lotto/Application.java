@@ -10,7 +10,7 @@ public class Application {
             BuyLotto buyLotto = new BuyLotto(inputMoney);
             buyLotto.buyLottoprint();
             int numberOflottos = buyLotto.buyLotto();
-            makeLottos makeLottos = new makeLottos(numberOflottos);
+            RandomLottos makeLottos = new RandomLottos(numberOflottos);
             makeLottos.printLottoNumbers();
             calculateLotto calculateLotto = new calculateLotto();
             List<Integer> list = calculateLotto.winLotto(makeLottos.getLottosNumber());
