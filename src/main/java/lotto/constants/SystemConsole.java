@@ -13,31 +13,31 @@ public class SystemConsole {
         System.out.println(lottos + SystemMessage.BUY_LOTTO_MESSAGE);
     }
 
-    public void WINNING_NUMBERS() {
+    public void winningNumbers() {
         System.out.println();
         System.out.println(SystemMessage.PRIZE_AMOUNT_MESSAGE);
     }
 
-    public void BONUS_NUMBER() {
+    public void bonusNumber() {
         System.out.println();
         System.out.println(SystemMessage.BONUS_NUMBER_MESSAGE);
     }
 
-    public void WINNING_STATISTICS() {
+    public void winningStatistics() {
         System.out.println();
         System.out.println(SystemMessage.WINNING_STATISTICS_MESSAGE);
         System.out.println(SystemMessage.LINE_MESSAGE);
     }
 
-    public void WINNING_RANKING(int c, int m, int p) {
+    public void winningRanking(int c, int m, int p) {
         System.out.println(m+ "개 일치 (" + NumberFormat.getNumberInstance().format(p) + "원) - " +c+ "개");
     }
 
-    public void WINNING_RANKING_SECOND(int c, int m, int p) {
+    public void winningRankingSecond(int c, int m, int p) {
         System.out.println(m+"개 일치, 보너스 볼 일치 ("+NumberFormat.getNumberInstance().format(p)+"원) - "+c+"개");
     }
 
-    public void GROSS_YIELDS(double revenue) {
+    public void grossYields(double revenue) {
         System.out.println(String.format("총 수익률은 %.1f%%입니다.", revenue));
     }
 

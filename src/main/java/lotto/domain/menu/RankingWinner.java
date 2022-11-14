@@ -7,20 +7,21 @@ import lotto.domain.WinningStatistics;
 import lotto.domain.YieldCalculation;
 
 public class RankingWinner {
-
     private final TotalPrizeMoney totalPrizeMoney;
     private final YieldCalculation yieldCalculation;
     private final WinningStatistics winningStatistics;
 
     public RankingWinner(WinningStatistics winningStatistics, TotalPrizeMoney totalPrizeMoney,
             YieldCalculation yieldCalculation) {
+
         this.winningStatistics = winningStatistics;
         this.totalPrizeMoney = totalPrizeMoney;
         this.yieldCalculation = yieldCalculation;
     }
 
     public void findAWinner(List<Integer> sameNumberCount, List<Integer> bonusNumbers) {
-        List<Integer> winningRanking = winningStatistics.countCheck(sameNumberCount, bonusNumbers);  // ok
+        List<Integer> winningRanking = winningStatistics.countCheck(sameNumberCount,
+                bonusNumbers);
 
         SystemConsole systemConsole = new SystemConsole();
         systemConsole.WINNING_STATISTICS();
@@ -31,20 +32,19 @@ public class RankingWinner {
 
         int calculation = totalPrizeMoney.totalCalculation(sameNumberCount, winningRanking);
         double revenue = yieldCalculation.revenue(calculation);
-        systemConsole.GROSS_YIELDS(revenue);
+        systemConsole.grossYields(revenue);
     }
 
     private void systemConsole(List<Integer> winningRanking, SystemConsole systemConsole) {
         for (Rank rank : Rank.values()) {
             int rankIndex = rank.ordinal();
-            int c = winningRanking.get(rankIndex);
+            int rankCount = winningRanking.get(rankIndex);
 
             if (rank == Rank.SECOND) {
-                systemConsole.WINNING_RANKING_SECOND(c, rank.getMatch(), rank.getMoney());
+                systemConsole.winningRankingSecond(rankCount, rank.getMatch(), rank.getMoney());
                 continue;
             }
-
-            systemConsole.WINNING_RANKING(c, rank.getMatch(), rank.getMoney());
+            systemConsole.winningRanking(rankCount, rank.getMatch(), rank.getMoney());
         }
     }
 }

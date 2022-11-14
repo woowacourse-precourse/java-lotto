@@ -14,20 +14,31 @@ public class BonusBallAndLotto {
         this.bonusNumberCase = bonusNumberCase;
     }
 
-    public List<Integer> getCorrectLocation(Lotto lottoAnswer, List<List<Integer>> random, List<Integer> resultNumber, int bonus) {
+    public List<Integer> getCorrectLocation(Lotto lottoAnswer, List<List<Integer>> random,
+            List<Integer> resultNumber, int bonus) {
+
         List<Integer> WinningNumbers = lottoAnswer.getNumbers();
         List<Integer> result = new ArrayList<>();
 
         for (Integer integer : resultNumber) {
             int bonusCaseCount = 0;
             int correctNumberCheck = 0;
+            bonusCaseCount = getBonusCaseCount(random, bonus, WinningNumbers, integer,
+                    bonusCaseCount, correctNumberCheck);
 
-            if (integer == BONUS_CONDITIONS) {
-                bonusCaseCount = bonusNumberCase.getBonusCount(random, bonus, WinningNumbers,
-                        bonusCaseCount, correctNumberCheck);
-            }
             result.add(bonusCaseCount);
         }
         return result;
+    }
+
+    private int getBonusCaseCount(List<List<Integer>> random, int bonus,
+            List<Integer> WinningNumbers, Integer integer,
+            int bonusCaseCount, int correctNumberCheck) {
+
+        if (integer == BONUS_CONDITIONS) {
+            bonusCaseCount = bonusNumberCase.getBonusCount(random, bonus, WinningNumbers,
+                    bonusCaseCount, correctNumberCheck);
+        }
+        return bonusCaseCount;
     }
 }

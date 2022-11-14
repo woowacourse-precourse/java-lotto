@@ -10,8 +10,7 @@ public class AmountPaymentException {
     private final ExceptionMessage exceptionMessage;
     private final ExceptionConsole exceptionConsole;
 
-    public AmountPaymentException(ExceptionMessage exceptionMessage, ExceptionConsole exceptionConsole) {
-        this.exceptionMessage = exceptionMessage;
+    public AmountPaymentException(ExceptionConsole exceptionConsole) {
         this.exceptionConsole = exceptionConsole;
     }
 
