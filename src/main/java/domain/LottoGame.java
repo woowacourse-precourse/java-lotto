@@ -77,4 +77,21 @@ public class LottoGame {
         System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - " + matchCounts.get(7) + "개");
         System.out.println("6개 일치 (2,000,000,000원) - " + matchCounts.get(6) + "개");
     }
+
+    public float calculateTotalEarning() {
+        float total = 0.0F;
+        Prize three = Prize.CALCULATE_THREE;
+        total += three.calculate(matchCounts.get(3));
+        Prize four = Prize.CALCULATE_FOUR;
+        total += four.calculate(matchCounts.get(4));
+        Prize five = Prize.CALCULATE_FIVE;
+        total += five.calculate(matchCounts.get(5));
+        Prize six = Prize.CALCULATE_SIX;
+        total += six.calculate(matchCounts.get(6));
+        Prize bonus = Prize.CALCULATE_BONUS;
+        total += bonus.calculate(matchCounts.get(7));
+
+        return total;
+    }
+
 }
