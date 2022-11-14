@@ -12,7 +12,8 @@ public class LottoMakerTest {
     private  static LottoMaker lottoMaker;
     @BeforeAll
     static void initAll(){
-        lottoMaker = new LottoMaker();
+        int lotteryAmount = 6;
+        lottoMaker = new LottoMaker(6);
     }
 
     @DisplayName("하나의 로또지가 제대로 발행되는지 검증")
@@ -35,13 +36,19 @@ public class LottoMakerTest {
     @DisplayName("원하는만큼 로또가 발행되는지 검증")
     @Test
     void issueLotteryTicketsTest(){
-        // given
-        int lotteryAmount = 1;
         // when
-        lottoMaker.issueLottoTickets(lotteryAmount);
+        lottoMaker.issueLottoTickets();
         // then
         List<Lotto> tickets = lottoMaker.getLottoTickets();
-        assertThat(tickets.size()).isEqualTo(lotteryAmount);
+        assertThat(tickets.size()).isEqualTo(6);
+    }
+
+    @DisplayName("로또지 출력 검증")
+    @Test
+    void printLottoTicketsTest(){
+        // when
+        lottoMaker.issueLottoTickets();
+        lottoMaker.printLottoTickets();
     }
 
 }

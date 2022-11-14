@@ -26,14 +26,16 @@ public class LottoMaker {
     public void printLottoTickets(){
         System.out.println(this.lottoAmount+"개를 구매했습니다.");
         for(Lotto lotto:lottoTickets){
-            System.out.println(lotto);
+            System.out.println(lotto.getNumbers());
         }
     }
 
     // 로또의 개수만큼의 로또지 생성
-    public void issueLottoTickets(int lottoAmount){
-        Lotto lotto = new Lotto(publishLottoTicket());
-        this.lottoTickets.add(lotto);
+    public void issueLottoTickets(){
+        for(int i=0;i<lottoAmount;i++){
+            Lotto lotto = new Lotto(publishLottoTicket());
+            this.lottoTickets.add(lotto);
+        }
     }
 
     // 하나의 로또지 발행
