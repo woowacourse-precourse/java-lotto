@@ -22,7 +22,7 @@ public class Lotto {
         return numbers.get(index) == number;
     }
 
-    public int getNumberOfMatch(List<Integer> computer) {
+    public int getMatchingNumber(List<Integer> computer) {
         return (int) IntStream.range(0, computer.size())
                 .filter(index -> hasPlace(index, computer.get(index))).count();
     }

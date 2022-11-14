@@ -45,7 +45,7 @@ class LottoTest {
     @ParameterizedTest
     @MethodSource("providePlayers")
     void isEqualCorrectCount(Lotto player, int expected) {
-        int actual = player.getNumberOfMatch(COMPUTER);
+        int actual = player.getMatchingNumber(COMPUTER);
         assertThat(actual).isEqualTo(expected);
     }
 
