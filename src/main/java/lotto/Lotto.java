@@ -1,14 +1,13 @@
 package lotto;
 
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 
 public class Lotto {
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
+        duplicateValidation(numbers);
         this.numbers = numbers;
     }
 
@@ -53,5 +52,10 @@ public class Lotto {
         sortedNumbers.sort(Comparator.naturalOrder());
 
         System.out.println(sortedNumbers);
+    }
+    private void duplicateValidation(List<Integer> numbers) {
+        Set<Integer> duplicationCheck = new HashSet<>(numbers);
+        if ( duplicationCheck.size() != numbers.size() )
+            throw new IllegalArgumentException("[ERROR] 로또 번호 6개는 서로 다른 숫자이어야 합니다.");
     }
 }
