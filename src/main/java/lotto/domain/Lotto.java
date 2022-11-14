@@ -1,4 +1,4 @@
-package lotto;
+package lotto.domain;
 
 import camp.nextstep.edu.missionutils.Console;
 
@@ -31,18 +31,24 @@ public class Lotto {
         }
     }
 
+    public int match_each_lotto(List<Integer> each_lotto) {
+        int cnt = 0;
+
+        for(int i = 0; i < each_lotto.size(); i++){
+            if(this.numbers.contains(each_lotto.get(i))) {
+                cnt++;
+            }
+        }
+        return cnt;
+    }
+
     public List<Integer> match(List<List<Integer>> lotto) {
         List<Integer> cnt = new ArrayList<>();
         List<Integer> each_lotto = new ArrayList<>();
-        List<Integer> same = new ArrayList<>();
         int i = 0;
-        int cnt_each = 0;
         while(cnt.size() != lotto.size()) {
             each_lotto = lotto.get(i);
-            same= each_lotto.stream()
-                            .filter(num -> this.numbers.stream().anyMatch(Predicate.isEqual(num)))
-                            .collect(Collectors.toList());
-            cnt.add(same.size());
+            cnt.add(match_each_lotto(each_lotto));
             i++;
         }
         return cnt;

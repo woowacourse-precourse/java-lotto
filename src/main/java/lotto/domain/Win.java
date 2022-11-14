@@ -1,4 +1,4 @@
-package lotto;
+package lotto.domain;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -33,10 +33,10 @@ public enum Win {
         if(cnt_match == 6){
             return FIRST;
         }
-        if(cnt_match ==5 && bonus_number == true){
+        if(cnt_match ==5 && bonus_number){
             return SECOND;
         }
-        if(cnt_match ==5 && bonus_number == false){
+        if(cnt_match ==5 && !bonus_number){
             return THIRD;
         }
         if(cnt_match ==4) {
@@ -72,7 +72,6 @@ public enum Win {
                 cnt_total_ranking.get(4) * FIFTH.prize;
 
         double yield = (revenue / money) * 100 ;
-        System.out.println(yield);
         System.out.println("총 수익률은 " + String.format("%.1f", yield) + "% 입니다.");
     }
 }

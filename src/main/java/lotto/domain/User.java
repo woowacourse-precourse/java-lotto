@@ -1,4 +1,4 @@
-package lotto;
+package lotto.domain;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
@@ -17,7 +17,7 @@ public class User {
         int money = Integer.MAX_VALUE;
         try {
             money = Integer.parseInt(money_input);
-        } catch (IllegalArgumentException e) {
+        } catch (Exception e) {
             System.out.println("[Error]" + e.getMessage());
             throw e;
         }
@@ -53,7 +53,7 @@ public class User {
         while (all_lotto.size() < num) {
             all_lotto.add(lotto());
         }
-        System.out.println(all_lotto);
+
         for(int i = 0; i < all_lotto.size(); i++) {
             System.out.println(all_lotto.get(i));
         }
