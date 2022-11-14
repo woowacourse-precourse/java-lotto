@@ -7,7 +7,7 @@ public class Host {
     List<Integer> winNumbers;
     int bonusNumber;
 
-    public void registerWinningInformation(){
+    public void registerWinningInformation(List<Integer> winNumbers, int bonusNumber){
 
     }
 

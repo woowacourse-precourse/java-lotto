@@ -4,13 +4,10 @@
 - 로또를 구매한다.
 - 구매한 모든 로또를 보여준다.
 
-### LotteryWheel
+### Host
 - 이미 발급한 로또인지 확인한다.
 - 추첨 번호를 등록한다.
 - 로또를 발행한다.
-
-### StatisticsAnalyzer
-- 수익률을 계산한다.
 - 당첨 결과를 보여준다.
 
 ### NumberGenerator
