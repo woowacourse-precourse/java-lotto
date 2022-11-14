@@ -19,7 +19,9 @@ public class OutputView {
     private static final String START_PARENTHESES = "(";
     private static final String END_PARENTHESES = ")";
     private static final String SPACE = " ";
-    private static final String PROFIT = "총 수익률은 %d%입니다.";
+    private static final String START_PROFIT = "총 수익률은 ";
+    private static final String END_PROFIT = "%입니다.";
+
 
     private OutputView() {
     }
@@ -30,6 +32,7 @@ public class OutputView {
             Collections.sort(lotto.getNumbers());
             System.out.println(lotto.getNumbers());
         });
+        System.out.println();
     }
 
     public static void printStats() {
@@ -40,5 +43,9 @@ public class OutputView {
                     System.out.print(START_PARENTHESES + Stats.getAmount(element) + END_PARENTHESES);
                     System.out.println(Stats.getCount(element));
                 });
+    }
+
+    public static void printProfit(double profit) {
+        System.out.println(START_PROFIT + Math.round(profit * 100) / 100.0 + END_PROFIT);
     }
 }

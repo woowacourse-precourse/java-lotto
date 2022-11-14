@@ -17,10 +17,11 @@ public class Buyer {
         lottos = new ArrayList<>();
     }
 
-    public void buyLotto() {
+    public int buyLotto() {
         String lottoAmount = Console.readLine();
         validatesLottoAmount(lottoAmount);
         generateLotto(Integer.parseInt(lottoAmount));
+        return Integer.parseInt(lottoAmount);
     }
 
     private void generateLotto(int amount) {

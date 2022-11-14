@@ -74,6 +74,12 @@ public enum Stats {
         return stats.name + ACCORD_NUMBER_FORMAT;
     }
 
-    public static void calculateProfit() {
+    public static void calculateProfit(int amount) {
+        int revenue = Arrays.stream(values())
+                .filter(stats -> stats.count > 0)
+                .mapToInt(stats -> stats.amount)
+                .sum();
+        double profit = (revenue/amount) * 100;
+        printProfit(profit);
     }
 }

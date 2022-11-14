@@ -16,8 +16,8 @@ public class Game {
 
     public void play() {
         inputLottoAmountMessage();
-        buyer.buyLotto();
+        int amount = buyer.buyLotto();
         Stats.compare(buyer.getLottos(), inputWinLottoNumber(), inputBonusNumber());
-        Stats.calculateProfit();
+        Stats.calculateProfit(amount);
     }
 }
