@@ -25,8 +25,7 @@ public class InputHandler {
     public static int getPurchaseAmount() {
         String userInput = Console.readLine();
         int inputMoney = validateNumberType(userInput);
-        validatePurchaseAmount(inputMoney);
-        return inputMoney;
+        return validatePurchaseAmount(inputMoney);
     }
 
     public static int getBonusNumber() throws ExceptionHandler {
@@ -44,7 +43,7 @@ public class InputHandler {
 
     private static void validateSize(List<Integer> userInput) {
         if (userInput.size() != CONSTANTS.LOTTO_COUNT.getNumbers()) {
-            throw new ExceptionHandler("number exception");
+            throw new IllegalArgumentException("number exception");
         }
     }
 
@@ -58,23 +57,19 @@ public class InputHandler {
         HashSet<Integer> numbers = new HashSet<>();
         for (Integer number :
                 userInput) {
-            if (numbers.add(number)) {
+            if (!numbers.add(number)) {
                 throw new ExceptionHandler("test");
             }
         }
     }
 
     private static int validateNumberType(String number) {
-        try {
-            return Integer.parseInt(number);
-        } catch (ExceptionHandler exception) {
-            exception.setMessage("error");
-        }
-        return 0;
+        return Integer.parseInt(number);
     }
 
-    private static void validatePurchaseAmount(int money) {
+    private static int validatePurchaseAmount(int money) {
         if (money % CONSTANTS.MONETARY_UNIT.getNumbers() != 0)
-            throw new ExceptionHandler("money error");
+            throw new IllegalArgumentException("money error");
+        return money / CONSTANTS.MONETARY_UNIT.getNumbers();
     }
 }
