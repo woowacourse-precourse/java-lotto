@@ -76,8 +76,9 @@ public abstract class Utility {
         return result;
     }
     public static int findLottoResult(List <Integer> lotto, List <Integer> winningNumbers, int bonusNumber){
-        winningNumbers.retainAll(lotto);
-        int cntCorrectNum = winningNumbers.size();
+        List <Integer> _winningNumbers = new ArrayList<>(winningNumbers);
+        _winningNumbers.retainAll(lotto);
+        int cntCorrectNum = _winningNumbers.size();
         int checkBonus = 0;
         if(lotto.contains(bonusNumber)){
             checkBonus = 1;
