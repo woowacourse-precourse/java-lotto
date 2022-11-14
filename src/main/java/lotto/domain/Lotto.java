@@ -49,7 +49,7 @@ public class Lotto {
     }
 
     private void validateIsDigitOfBonusNumber(String bonusNumber) {
-        if (bonusNumber.matches("^[0-9]+$")) {
+        if (!bonusNumber.matches("^[0-9]+$")) {
             throw new IllegalArgumentException("[ERROR] 보너스 번호는 숫자여야 합니다.");
         }
     }
