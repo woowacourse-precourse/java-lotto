@@ -18,6 +18,5 @@ public class Game {
         inputLottoAmountMessage();
         buyer.buyLotto();
         Stats.compare(buyer.getLottos(), inputWinLottoNumber(), inputBonusNumber());
-        Stats.printCount();
     }
 }

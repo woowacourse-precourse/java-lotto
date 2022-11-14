@@ -23,15 +23,6 @@ public enum Stats {
         this.count = count;
     }
 
-    //테스트 용도
-    public static void printCount() {
-        Arrays.stream(values())
-                .filter(stats -> !stats.equals(CONTINUE))
-                .forEach(stats -> {
-                    System.out.println(stats.count);
-                });
-    }
-
     public static void compare(List<Lotto> lottos, List<Integer> winLottoNumbers, int bonusNumber) {
         lottos.forEach(lotto -> {
             boolean hasBonusNumber = lotto.getNumbers().contains(bonusNumber);
