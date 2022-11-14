@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class WinningPlaceTest {
+class LottoRankTest {
 
     @DisplayName("번호 일치에 대한 결과값 반환에서 예외가 발생한다.")
     @Test
