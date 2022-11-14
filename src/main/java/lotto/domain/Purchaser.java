@@ -4,6 +4,7 @@ import lotto.utils.LottoGenerator;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Purchaser {
     private int money;
@@ -20,6 +21,12 @@ public class Purchaser {
         for (int i = 0; i < numberOfLotto; i++) {
             lottos.add(new Lotto(LottoGenerator.getLottoNumbers()));
         }
+    }
+
+    public List<List<Integer>> getLottos() {
+        return lottos.stream()
+                .map(lotto -> lotto.getNumbers())
+                .collect(Collectors.toList());
     }
 
     private int computeNumberOfLotto(int money) {
