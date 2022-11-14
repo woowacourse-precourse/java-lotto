@@ -14,6 +14,9 @@ public class Lotto {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException();
         }
+        Manager m = new Manager();
+        if(m.OverlapOfLottoNumber(numbers))
+            throw new IllegalArgumentException();
     }
 
     // TODO: 추가 기능 구현

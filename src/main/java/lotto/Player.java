@@ -51,7 +51,7 @@ public class Player {
 
     public void InputWinningNumber(){
         System.out.println("\n" + manager.INPUT_WINNING);
-        winning.clear();
+        winning = new ArrayList<>();
         String input = readLine();
         checkWinningNumber(input);
     }
@@ -75,7 +75,7 @@ public class Player {
     }
 
     public void PurChaseLotto(){
-        lottos.clear();
+        lottos = new ArrayList<>();
         for(int i=0; i<total_lotto; i++){
             lottos.add(manager.makeLotto());
         }
@@ -84,6 +84,7 @@ public class Player {
     public void LottoGamestart(){
         InputPurchaseMoney();
         calculateTotalLotto();
+        PurChaseLotto();
         manager.PrintLotto(this.lottos);
         InputWinningNumber();
         InputBonusNumber();

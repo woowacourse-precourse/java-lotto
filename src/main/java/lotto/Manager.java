@@ -50,7 +50,10 @@ public class Manager {
     }
 
     public Lotto makeLotto(){
-        List<Integer> numbers = Randoms.pickUniqueNumbersInRange(LOTTO_MIN, LOTTO_MAX, LOTTO_LENGTH);
+        List<Integer> temp = Randoms.pickUniqueNumbersInRange(LOTTO_MIN, LOTTO_MAX, LOTTO_LENGTH);
+        List<Integer> numbers = new ArrayList<>();
+        for(Integer elem : temp)
+            numbers.add(elem);
         Collections.sort(numbers);
         Lotto lotto = new Lotto(numbers);
         return lotto;
@@ -107,7 +110,7 @@ public class Manager {
     public void PrintGameResult(List<Lotto> lottos, List<Integer> winning, int bonus){
         int[] frequency = calculateResult(lottos, winning, bonus);
         System.out.print(INIT_RESULT);
-        for(int i=1;i<frequency.length;i++){
+        for(int i=frequency.length-1;i>=1;i--){
             System.out.print(Constants.invert(i).getGameResult());
             System.out.print(" - ");
             System.out.println(frequency[i]+LOTTO_UNIT);
