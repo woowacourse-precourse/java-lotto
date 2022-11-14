@@ -11,9 +11,9 @@ public class InputView {
         return Console.readLine();
     }
 
-    public static String readWinningNumber() {
+    public static String readWinningNumbers() {
         System.out.println();
-        System.out.println(INPUT_WINNING_NUMBER);
+        System.out.println(INPUT_WINNING_NUMBERS);
         return Console.readLine();
     }
 
