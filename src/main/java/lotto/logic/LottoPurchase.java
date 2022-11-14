@@ -18,7 +18,7 @@ public class LottoPurchase {
         ExceptionValidation.validateException(amount);
         result = amount / 1000;
         System.out.println(result+"개를 구매했습니다.");
-        return result;
+        return amount;
     }
 }
 
