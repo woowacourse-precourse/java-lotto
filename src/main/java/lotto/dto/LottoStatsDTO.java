@@ -11,10 +11,6 @@ public class LottoStatsDTO {
 	this.yieldPercent = yieldPercent;
     }
 
-    public Integer getRank(Integer rank) {
-	return rankCounts.get(rank);
-    }
-
     public List<Integer> getRankCounts() {
 	return rankCounts;
     }

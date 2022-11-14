@@ -31,6 +31,6 @@ public class LottoService {
     public LottoStatsDTO compareLottoNumbers() {
 	lottery.compareNumberByWinning(winningLotto);
 	lottery.calculateYieldPercent();
-	return lottery.getRankCounts();
+	return lottery.getLottoStatsDTO();
     }
 }

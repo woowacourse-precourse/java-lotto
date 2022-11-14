@@ -44,7 +44,7 @@ public class LottoPurchase {
 	return lottery;
     }
 
-    public LottoStatsDTO getRankCounts() {
+    public LottoStatsDTO getLottoStatsDTO() {
         return new LottoStatsDTO(rankCounts, yield);
     }
 }
