@@ -11,6 +11,7 @@ public class Lotto {
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
+        validate_duplication(numbers);
         this.numbers = numbers;
     }
 
@@ -18,6 +19,24 @@ public class Lotto {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException("[ERROR] 로또 번호의 개수가 여섯개가 아닙니다.");
         }
+    }
+
+    private void validate_duplication(List<Integer> numbers) {
+        for (int i=0;i<numbers.size()-1;i++){
+            int check_now = numbers.get(i);
+            if(duplication_check(numbers,check_now,i)){
+                throw new IllegalArgumentException("[ERROR] 로또 번호에 중복이 존재해선 안됩니다.");
+            }
+        }
+    }
+
+    private static boolean duplication_check(List<Integer> numbers,int check_now,int index){
+        for (int i=0;i<numbers.size();i++){
+            if (check_now==numbers.get(i)&&index!=i){
+                return true;
+            }
+        }
+        return false;
     }
 
     public static void compare_prepare(List<List<Integer>> purchased_lotto,
