@@ -6,7 +6,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class Application {
-    private static final String ERROR_MESSAGE = "[ERROR]";
+    private static final String ERROR_MESSAGE = "[ERROR] ";
 
     public static void main(String[] args) {
         // TODO: 프로그램 구현
@@ -15,7 +15,7 @@ public class Application {
 
         try {
             if (!isNumeric(purchaseAmount_))
-                throw new IllegalArgumentException();
+                throw new IllegalArgumentException(ERROR_MESSAGE + "숫자만 입력해야합니다.");
         } catch (IllegalArgumentException e) {
             System.out.println(ERROR_MESSAGE + "숫자만 입력해야합니다.");
             return;
@@ -58,7 +58,7 @@ public class Application {
 
         System.out.println("당첨 통계");
         System.out.println("---");
-        for (int i = 0; i < 5; i++) {
+        for (int i = 4; i >= 0; i--) {
             System.out.println(당첨.valueOfValue(i).getResult().replace("_", ",") + " - " + result[i] + "개");
         }
         System.out.println("총 수익률은 " + String.format("%.1f", earningsRate) + "%입니다.");
