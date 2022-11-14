@@ -17,18 +17,40 @@ public class Lotto {
         }
     }
 
-    public int purchase() {
+    public void purchase() throws IllegalArgumentException {
     	System.out.println("구매금액을 입력해 주세요.");
-    	int purchaseAmount = Integer.parseInt(Console.readLine());
-    	purchaseValidate(purchaseAmount);
-    	return purchaseAmount;
-    }
-    
-    private void purchaseValidate(int purchaseAmount) throws IllegalArgumentException {
-    	if(purchaseAmount % 1000 != 0) {
-    		System.out.println("[ERROR] 1,000원 단위로 입력해주세요.");
+    	String input = Console.readLine();
+    	if (!purchaseValidate(input)) {
     		throw new IllegalArgumentException();
     	}
+    	System.out.println(input);
     }
     
+    private boolean purchaseValidate(String input){
+    	if(!checkInputNumeric(input)) {
+    		System.out.println("[ERROR] 숫자만 입력해주세요.");
+    		return false;
+    	} 
+    	if(!checkInputRange(input)) {
+    		System.out.println("[ERROR] 1,000원 이상 구매 가능합니다.");
+    		return false;
+    	}
+    	if(!checkInputValue(input)) {
+    		System.out.println("[ERROR] 1,000원 단위로 입력해주세요.");
+    		return false;
+    	}
+    	return true;
+    }
+    
+    private boolean checkInputNumeric(String input) {
+    	return input != null && input.matches("[0-9.]+"); 
+    }
+    
+    private boolean checkInputRange(String input) {
+    	return Integer.parseInt(input) >= 1000;
+    }
+    
+    private boolean checkInputValue(String input) {
+    	return Integer.parseInt(input) % 1000 == 0; 
+    }
 }
