@@ -79,7 +79,6 @@ public class LottoController {
     private void giveResult() {
         adminService.confirmWinNumber();
         HashMap<LottoResultType, Integer> myResult = userService.getMyResult(userId);
-        Logger.log(myResult.toString());
         Logger.log(lottoResultView.stringify(myResult));
         currentStep = currentStep.getNextStep();
     }
