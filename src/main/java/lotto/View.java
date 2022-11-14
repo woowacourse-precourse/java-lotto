@@ -2,6 +2,9 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class View {
     public void printLine(String s) {
         try {
@@ -33,16 +36,16 @@ public class View {
         }
     }
 
-    public int[] inputLottoNumber() {
+    public List<Integer> inputLottoNumber() {
         try {
             String[] ss = Console.readLine().split(",");
-            int[] numbers = new int[ss.length];
+            List<Integer> numbers = new ArrayList<>();
             for (int i = 0; i < ss.length; i++) {
                 int number = Integer.parseInt(ss[i]);
                 if (number < 1 || number > 45) {
                     throw new IllegalArgumentException();
                 }
-                numbers[i] = number;
+                numbers.add(number);
             }
             return numbers;
         } catch (IllegalArgumentException e) {
