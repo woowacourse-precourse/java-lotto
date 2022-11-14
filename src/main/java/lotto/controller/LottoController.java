@@ -19,8 +19,9 @@ public class LottoController {
 
     public void run() {
         LottosDto lottosDto = buyLotto();
+        WinningNumberDto winningLotto = announceWinningLotto();
 
-        announceLottoWinningStatistics(lottosDto);
+        computeWinningStatistics(lottosDto, winningLotto);
     }
 
     private LottosDto buyLotto() {
@@ -31,10 +32,14 @@ public class LottoController {
         return lottosDto;
     }
 
-    private void announceLottoWinningStatistics(LottosDto lottosDto) {
+    private WinningNumberDto announceWinningLotto() {
         String winningNumber = InputView.requestWinningNumber();
         String bonusNumber = InputView.requestBonusNumber();
-        WinningNumberDto winningNumberDto = lottoService.createWinningNumber(winningNumber, bonusNumber);
+
+        return lottoService.createWinningNumber(winningNumber, bonusNumber);
+    }
+
+    private void computeWinningStatistics(LottosDto lottosDto, WinningNumberDto winningNumberDto) {
         WinningStatisticsDto winningStatisticsDto = lottoService.createWinningStatistics(lottosDto, winningNumberDto);
         Map<Rank, Integer> rankAndRankCount = winningStatisticsDto.getRankAndRankCount();
         double totalYield = winningStatisticsDto.getTotalYield();
