@@ -1,5 +1,6 @@
 package lotto.domain;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
@@ -15,8 +16,7 @@ public class Lotto {
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
-        Collections.sort(numbers);
-        this.numbers = numbers;
+        this.numbers = ascending(numbers);
     }
 
     private void validate(List<Integer> numbers) {
@@ -30,6 +30,13 @@ public class Lotto {
     }
 
     // TODO: 추가 기능 구현
+    private List<Integer> ascending(List<Integer> numbers) {
+        List<Integer> copy = new ArrayList<>(numbers);
+        Collections.sort(copy);
+        return Collections.unmodifiableList(copy);
+    }
+
+
     private boolean isInBound(List<Integer> numbers) {
         return numbers.size() == Config.LOTTO_NUMBER_COUNT;
     }
