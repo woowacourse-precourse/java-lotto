@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Purchase {
-    List<Lotto> myLotto = new ArrayList<>();
+    private List<Lotto> myLotto = new ArrayList<>();
 
     public void lotto(Integer cost){
         Validation.costValidation(cost);
@@ -17,6 +17,8 @@ public class Purchase {
         }
     }
 
-
+    public List<Lotto> getMyLotto(){
+        return myLotto;
+    }
 
 }
