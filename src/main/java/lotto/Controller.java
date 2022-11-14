@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import lotto.constant.Constant;
 import lotto.model.BonusNumber;
-import lotto.model.Lotto;
 import lotto.model.Money;
 import lotto.model.Service;
 import lotto.util.LottoGenerator;
