@@ -42,4 +42,16 @@ class LottoTest {
 		assertThat(5).isEqualTo(service.numberCount.guess);
 		assertThat(1).isEqualTo(service.numberCount.bonusGuess);
 	}
+
+	@Test
+	void 당첨된_로또의_개수_금액_저장() {
+		Service service = new Service();
+		service.setPrize();
+		service.checkRank(5, 1);//2등 2번 저장
+		service.checkRank(5, 1);
+
+		assertThat(2).isEqualTo(service.prize.get(30000000));
+
+	}
+	
 }
