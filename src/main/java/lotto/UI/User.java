@@ -6,6 +6,7 @@ import lotto.domain.Lotto;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.regex.Pattern;
 
 import static lotto.enums.Error.*;
 
@@ -20,6 +21,26 @@ public class User extends Exception {
         return Console.readLine();
     }
 
+    public static void numberCheck(String input) {
+        try {
+            Pattern abc = Pattern.compile("^[0-9]*$");
+            if (!abc.matcher(input).matches()) {
+                throw new IllegalArgumentException(ER_STRINGCHECK.getMessage());
+            }
+
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+
+        }
+    }
+
+    public static Integer convertToInteger(String input) {
+        Pattern abc = Pattern.compile("^[0-9]*$");
+        if (abc.matcher(input).matches()) {
+            return Integer.parseInt(input);
+        }
+        return 0;
+    }
 
     public static Integer checkMonetaryUnit(Integer money) {
         if (money % 1000 != 0) {
@@ -39,7 +60,12 @@ public class User extends Exception {
                 throw new IllegalArgumentException(ER_STRINGCHECK_SIXNUMBERS.getMessage());
             }
         }
-        new Lotto(lottoNumbers);
+        try {
+            new Lotto(lottoNumbers);
+        } catch (IllegalArgumentException illegalArgumentException) {
+            System.out.println(illegalArgumentException.getMessage());
+            throw new IllegalArgumentException();
+        }
         Collections.sort(lottoNumbers);
         return lottoNumbers;
     }
@@ -60,6 +86,15 @@ public class User extends Exception {
             throw new IllegalArgumentException(ER_NUMBER_RANGE.getMessage());
         }
         return number;
+    }
+
+    public static Integer validCheckBonusNumber() {
+        try {
+            return bonusNumberRangeCheck(inputBonusNumber());
+        } catch (IllegalArgumentException illegalArgumentException) {
+            System.out.println(illegalArgumentException.getMessage());
+            throw new IllegalArgumentException();
+        }
     }
 
 }
