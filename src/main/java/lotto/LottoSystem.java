@@ -7,28 +7,30 @@ import java.util.Map;
 public class LottoSystem {
     public static final int LOTTO_PRICE = 1_000;
 
-    public int money;
+    public int purchaseAmount;
     private final List<Lotto> generatedLottos = new ArrayList<>();
-
     private WinningNumber winningNumber;
 
     public void execute() {
-        money = LottoScanner.readMoney();
-        int generateCount = money / LOTTO_PRICE;
-
-        for (int i = 0; i < generateCount; i++) {
-            generatedLottos.add(LottoGenerator.generate());
-        }
+        purchaseAmount = LottoScanner.readPurchaseAmount();
+        generateLottosForPurchaseAmount();
         LottoPrinter.printLotto(generatedLottos);
 
         winningNumber = LottoScanner.readWinningNumber();
-
         calculateAndPrintStatistics();
+    }
+
+    private void generateLottosForPurchaseAmount() {
+        int purchasedLottoCount = purchaseAmount / LOTTO_PRICE;
+
+        for (int i = 0; i < purchasedLottoCount; i++) {
+            generatedLottos.add(LottoGenerator.generate());
+        }
     }
 
     private void calculateAndPrintStatistics() {
         Map<LottoPrize, Integer> statistics = StatisticsCalculator.calculateStatistics(generatedLottos, winningNumber);
-        double rateOfReturn = StatisticsCalculator.calculateRateOfReturn(money, statistics);
+        double rateOfReturn = StatisticsCalculator.calculateRateOfReturn(purchaseAmount, statistics);
 
         LottoPrinter.printStatistics(statistics);
         LottoPrinter.printRateOfReturn(rateOfReturn);

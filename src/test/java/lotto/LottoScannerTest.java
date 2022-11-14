@@ -34,7 +34,7 @@ public class LottoScannerTest {
 
         @Override
         protected void runMain() {
-            LottoScanner.readMoney();
+            LottoScanner.readPurchaseAmount();
         }
     }
 

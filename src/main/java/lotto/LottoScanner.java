@@ -14,18 +14,18 @@ public class LottoScanner {
     public static final String SHOULD_BE_DIVIDED_BY_1000 = "구입금액은 1000으로 나누어 떨어져야합니다.";
     public static final String DO_NOT_INCLUDE_NUMERIC_VALUE = "숫자가 아닌 문자가 있습니다.";
 
-    public static int readMoney() {
+    public static int readPurchaseAmount() {
         System.out.println(READ_MONEY_PROMPT);
-        int money;
+        int purchaseAmount;
         try {
-            money = Integer.parseInt(Console.readLine());
+            purchaseAmount = Integer.parseInt(Console.readLine());
         } catch (Exception e) {
             throw new IllegalArgumentException(REQUIRE_NUMERIC_VALUE);
         }
-        if ((money % 1000) != 0) {
+        if ((purchaseAmount % 1000) != 0) {
             throw new IllegalArgumentException(SHOULD_BE_DIVIDED_BY_1000);
         }
-        return money;
+        return purchaseAmount;
     }
 
     public static WinningNumber readWinningNumber() {
