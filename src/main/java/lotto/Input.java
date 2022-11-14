@@ -10,7 +10,7 @@ public class Input {
         String input = Console.readLine();
         int money = Converter.stringToInt(input);
         if (!Validation.thousandUnit(money)) {
-            throw new IllegalArgumentException(Error.MONEY_THOUSAND_UNIT.getDesc());
+            Output.showError(Error.MONEY_THOUSAND_UNIT);
         }
         return money;
     }
@@ -20,10 +20,10 @@ public class Input {
         String input = Console.readLine();
         List<Integer> winningNums = Converter.stringToList(input);
         if (!Validation.lottoLength(winningNums)) {
-            throw new IllegalArgumentException(Error.WINNING_NUMS_LENGTH.getDesc());
+            Output.showError(Error.WINNING_NUMS_LENGTH);
         }
         if (!Validation.lottoNumDuplicated(winningNums)) {
-            throw new IllegalArgumentException(Error.DUPLICATED_NUM.getDesc());
+            Output.showError(Error.DUPLICATED_NUM);
         }
         return winningNums;
     }
@@ -33,7 +33,7 @@ public class Input {
         String input = Console.readLine();
         int num = Converter.stringToInt(input);
         if (winningNums.contains(num)) {
-            throw new IllegalArgumentException(Error.DUPLICATED_NUM.getDesc());
+            Output.showError(Error.DUPLICATED_NUM);
         }
         return num;
     }
