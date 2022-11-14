@@ -6,11 +6,12 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Validator {
+
+    public static final String LENGTH_OVER_NUMBER = "[ERROR] 당첨번호는 6개를 입력해야 합니다.";
     private static final String INVALID_NUMBER = "[ERROR] 숫자만 입력 가능합니다.";
     private static final String INVALID_MONEY = "[ERROR] 1000원 단위로 입력이 가능합니다.";
     private static final String DUPLICATION_NUMBER = "[ERROR] 중복된 숫자가 입력되었습니다.";
     private static final String RANGE_OVER_NUMBER = "[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.";
-    private static final String LENGTH_OVER_NUMBER = "[ERROR] 당첨번호는 6개를 입력해야 합니다.";
     private static final int MONEY_UNIT = 1000;
     private static final int NOTHING_CHANGES = 0;
     private static final int MIN_LOTTO_NUMBER = 1;
@@ -44,12 +45,10 @@ public class Validator {
                 .map(Validator::changeNumber)
                 .filter((n) -> checkValidNumber(n))
                 .collect(Collectors.toList());
-        checkLength(winningNumbers);
-        checkDuplication(winningNumbers);
         return winningNumbers;
     }
 
-    public void checkLength(List list) {
+    public static void checkLength(List list) {
         if (list.size() > LOTTO_LENGTH || list.size() < LOTTO_LENGTH) {
             throw new IllegalArgumentException(LENGTH_OVER_NUMBER);
         }
