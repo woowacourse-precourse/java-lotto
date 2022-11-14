@@ -11,6 +11,7 @@ public class Application {
     public static void main(String[] args) {
         int user_buy_num = HowManyLotto();
         List<Integer>[] user_lotto = UserLotto(user_buy_num);
+        PrintUserLotto(user_lotto);
     }
 
     static int HowManyLotto() {
@@ -42,5 +43,11 @@ public class Application {
         }
 
         return user_lotto;
+    }
+
+    static void PrintUserLotto(List<Integer>[] user_lotto) {
+        for (int i=0; i < user_lotto.length; i++) {
+            System.out.println(user_lotto[i]);
+        }
     }
 }
