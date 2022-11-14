@@ -28,9 +28,9 @@
 - ✅ **`isUnique`** : 중복인 경우
 - 
 ### <span style = "color:skyblue" >getWinningHistory</span> : 당첨 내역 확인
-- 🟩 **`getAccordance`** → 로또 번호마다 값이 일치하는 개수 저장
-- 🟩 **`matchWinning`** → 당첨내역 계산
-- 🟩 **`printWinning`** → 당첨내역 출력
+- ✅ **`getAccordance`** → 로또 번호마다 값이 일치하는 개수 저장
+- ✅ **`matchWinning`** → 당첨내역 계산
+- ✅ **`printWinning`** → 당첨내역 출력
 
 ### <span style = "color:skyblue" >getYeild</span> : 수익률 계산
 - 🟩 **`getYield`** → 수익률 계산
@@ -38,11 +38,11 @@
 - 🟩 **`printYield`** → 수익률 출력
 
 ### +) 예외상황
-- 🟩 **`isNumeric`** : 숫자가 아닌 경우
-- 🟩 **`isMutipleOfThousand`** : 1000원으로 나누어 떨어지지 않는 경우
-- 🟩 **`isValidRange`** : 숫자 범위 초과
-- 🟩 **`isUnique`** : 중복인 경우
-- 🟩 **`isValidLength`** : 필요한 개수와 다를 때
+- ✅ **`isNumeric`** : 숫자가 아닌 경우
+- ✅ **`isMutipleOfThousand`** : 1000원으로 나누어 떨어지지 않는 경우
+- ✅ **`isValidRange`** : 숫자 범위 초과
+- ✅ **`isUnique`** : 중복인 경우
+- ✅ **`isValidLength`** : 필요한 개수와 다를 때
 
 # Git 커밋 메시지(temp)
 ```markdown

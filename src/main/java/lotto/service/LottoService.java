@@ -1,6 +1,8 @@
 package lotto.service;
 
 import lotto.Enum.LottoInfo;
+import lotto.Enum.WinningPrice;
+import lotto.Enum.WinningType;
 import lotto.entity.GeneratedLottos;
 import lotto.entity.Lotto;
 import lotto.entity.User;
@@ -10,6 +12,7 @@ import lotto.utils.Validation;
 import lotto.view.SystemMessage;
 import lotto.view.UserRequest;
 
+import java.lang.reflect.WildcardType;
 import java.util.*;
 
 
@@ -99,5 +102,23 @@ public class LottoService {
         for (Map.Entry<Integer,Integer> entry: winningHistory.entrySet()) {
             SystemMessage.printWinningHistory(entry.getKey(), entry.getValue());
         }
+    }
+
+    public void getYeild() {
+        int purchaseAmount = user.getPurchaseMoney();
+        int winningAmount = 0;
+
+        List<Integer> rankPrice = new ArrayList<>();
+        for (WinningPrice winningPrice : WinningPrice.values()) {
+            rankPrice.add(winningPrice.getPrice());
+        }
+        List<Integer> rankCount = new ArrayList<>(user.getWinning().values());
+
+        for (int i = 0; i < rankPrice.size(); i++) {
+            winningAmount += rankPrice.get(i) * rankCount.get(i);
+        }
+
+        user.setYield((long) (winningAmount / purchaseAmount));
+
     }
 }
