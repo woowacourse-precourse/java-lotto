@@ -1,15 +1,18 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.Randoms;
-import domain.Game;
+import Controller.GameController;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class Lotto {
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
-       // validate(numbers);
+        validate(numbers);
         this.numbers = numbers;
     }
 
@@ -22,13 +25,13 @@ public class Lotto {
         }
     }
 
-
     public List<Integer> getNumbers() {
         return this.numbers;
     }
 
     public static Lotto get() {
-        return new Lotto(Randoms.pickUniqueNumbersInRange(1, 45, 6));
+        ArrayList<Integer> lotto = new ArrayList<>(Randoms.pickUniqueNumbersInRange(1, 45, 6));
+        return new Lotto(lotto);
     }
 
     public int get_hitCount(List<Integer> winning_numbers) {
@@ -38,15 +41,13 @@ public class Lotto {
         }
         return hit_Count;
     }
+
     public boolean bonus_hit(int bonusNumber) {
         return numbers.contains(bonusNumber);
     }
 
-    public void print(){
-        Game.ascendingSort(numbers);
-        for(int number : numbers) {
-            System.out.print(number);
-            System.out.print(", ");
-        }
+    public void print() {
+        System.out.print(numbers.toString());
+
     }
 }

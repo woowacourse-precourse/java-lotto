@@ -1,6 +1,7 @@
 package Controller;
 
 import Service.LottoService;
+import Service.View;
 
 import java.util.Collections;
 import java.util.List;
@@ -12,9 +13,12 @@ import static Service.View.*;
 import static domain.Game.*;
 
 public class GameController {
+    public static final boolean NOT_NUMBER_INPUT = true;
+    public static boolean INPUT;
 
     public static void start() {
-        read_buyingLottoAmount();
+        INPUT = read_buyingLottoAmount();
+        if (INPUT == NOT_NUMBER_INPUT) return;
         print_LottoNumber();
         LottoService.lottoSpawner(getLottoCount());
         LottoService.printLottoNumbers();
