@@ -7,11 +7,13 @@ import lotto.IO.message.ErrorCode;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class LottoProgramManager {
     private List<Lotto> lottoBought;
     private Lotto answer;
     private int bonus;
+    private Map<Integer, Integer> lottoResult;
 
     public void runProgram() {
         try {
@@ -55,8 +57,12 @@ public class LottoProgramManager {
 
     private int rankLotto() {
         for(Lotto lotto : lottoBought) {
-            lotto.compareWithAnswer(answer, bonus);
+            int rank = lotto.compareWithAnswer(answer, bonus);
+
+            lottoResult.putIfAbsent(rank, 0);
+            lottoResult.put(rank, lottoResult.get(rank) + 1);
         }
+
         return 0;
     }
 }
