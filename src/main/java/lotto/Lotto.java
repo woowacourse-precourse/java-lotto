@@ -1,20 +1,30 @@
 package lotto;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Lotto {
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
-        validate(numbers);
+        validateAmount(numbers);
+        validateOverlap(numbers);
         this.numbers = numbers;
     }
 
-    private void validate(List<Integer> numbers) {
+    // test: test/java/lotto/LottoTest/createLottoByOverSize()
+    private void validateAmount(List<Integer> numbers) {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException();
         }
     }
 
-    // TODO: 추가 기능 구현
+    // test: test/java/lotto/LottoTest/createLottoByDuplicatedNumber()
+    private void validateOverlap(List<Integer> numbers) {
+        Set<Integer> testSet = new HashSet<>(numbers);
+        if(numbers.size() != testSet.size()) {
+            throw new IllegalArgumentException();
+        }
+    }
 }
