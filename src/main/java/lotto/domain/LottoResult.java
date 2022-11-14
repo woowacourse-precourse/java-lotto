@@ -1,5 +1,6 @@
 package lotto.domain;
 
+import javax.swing.*;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -27,7 +28,7 @@ public class LottoResult {
         }
 
         if (lottoNumbers.contains(bonusNumber)) {
-            return takePlace;
+            return Math.min(takePlace, 6);
         }
 
         return Math.min(takePlace + 1, 6);
