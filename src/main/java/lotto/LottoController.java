@@ -16,40 +16,40 @@ import java.util.List;
 public class LottoController {
     private final LottoMachine lottoMachine;
     private List<Lotto> lottos;
+    private List<Integer> answer;
+    private int bonus;
 
     public LottoController() {
         this.lottoMachine = new LottoMachine();
     }
 
-    public void play() {
-        try {
-            buyLotto();
-            setAnswer();
-            getResult();
-        } catch (Exception err) {
-            CommonView.printExceptionMessage(err);
-        }
-    }
-
     private void buyLotto() {
         CommonView.printInputMoneyMessage();
-        String money = Console.readLine().replace(" ", "");
+        String money = readLineWithoutWhiteSpace();
         validateNumberInput(money);
         lottos = lottoMachine.publish(Integer.parseInt(money));
+    }
+
+    private void getLottoInformation() {
         PublishView.printPublishInformation(lottos);
+    }
+
+    private void setLuckyNumber() {
+        lottoMachine.setLuckyNumber(answer, bonus);
     }
 
     private void setAnswer() {
         CommonView.printInputAnswerMessage();
-        String answerInput = Console.readLine().replace(" ", "");
+        String answerInput = readLineWithoutWhiteSpace();
         validateAnswerInput(answerInput);
+        answer = makeAnswerInputIntoList(answerInput);
+    }
 
+    private void setBonus() {
         CommonView.printInputBonusMessage();
-        String bonusInput = Console.readLine().replace(" ", "");
+        String bonusInput = readLineWithoutWhiteSpace();
         validateNumberInput(bonusInput);
-
-        int bonus = Integer.parseInt(bonusInput);
-        lottoMachine.setLuckyNumber(makeAnswerIntoList(answerInput), bonus);
+        bonus = Integer.parseInt(bonusInput);
     }
 
     private void getResult() {
@@ -58,16 +58,18 @@ public class LottoController {
         RecordView.printYield(winningRecord);
     }
 
-    private List<Integer> makeAnswerIntoList(String answer) {
-        List<Integer> ilist = new ArrayList<>();
-        Arrays.stream(answer.split(",")).mapToInt(Integer::parseInt).forEach(ilist::add);
-        return ilist;
+    private List<Integer> makeAnswerInputIntoList(String answerInput) {
+        List<Integer> answer = new ArrayList<>();
+        Arrays.stream(answerInput.split(","))
+                .mapToInt(Integer::parseInt)
+                .forEach(answer::add);
+        return answer;
     }
 
     private void validateAnswerInput(String input) {
         try {
-            for (String str : input.split(",")) {
-                Integer.parseInt(str);
+            for (String target : input.split(",")) {
+                Integer.parseInt(target);
             }
         } catch (Exception err) {
             throw new IllegalArgumentException("콤마(,)를 이용해 6개의 숫자를 입력해주세요.");
@@ -75,6 +77,25 @@ public class LottoController {
     }
 
     private void validateNumberInput(String input) {
-        if (!input.matches("^[0-9]*$")) throw new IllegalArgumentException("숫자만 입력하실 수 있습니다.");
+        if (!input.matches("^[0-9]*$")) {
+            throw new IllegalArgumentException("숫자만 입력하실 수 있습니다.");
+        }
+    }
+
+    private String readLineWithoutWhiteSpace() {
+        return Console.readLine().replace(" ", "");
+    }
+
+    public void play() {
+        try {
+            buyLotto();
+            getLottoInformation();
+            setAnswer();
+            setBonus();
+            setLuckyNumber();
+            getResult();
+        } catch (Exception err) {
+            CommonView.printExceptionMessage(err);
+        }
     }
 }

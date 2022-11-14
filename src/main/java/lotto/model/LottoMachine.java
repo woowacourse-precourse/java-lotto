@@ -10,21 +10,42 @@ public class LottoMachine {
     private int bonus;
 
     private void validate(List<Integer> answer, int bonus) {
-        if (answer.contains(bonus)) throw new IllegalArgumentException("당첨 번호와 중복되지 않는 보너스 번호를 입력해주세요.");
-        if (answer.size() != 6) throw new IllegalArgumentException("당첨 번호는 6개의 숫자입니다.");
-
+        validateAnswerContainBonus(answer, bonus);
+        validateAnswerSize(answer);
         validateNumber(bonus);
         validateOverlap(answer);
         answer.forEach(this::validateNumber);
     }
 
+    private void validateAnswerContainBonus(List<Integer> answer, int bonus) {
+        if (answer.contains(bonus)) {
+            throw new IllegalArgumentException("당첨 번호와 중복되지 않는 보너스 번호를 입력해주세요.");
+        }
+    }
+
+    private void validateAnswerSize(List<Integer> answer) {
+        if (answer.size() != 6) {
+            throw new IllegalArgumentException("당첨 번호는 6개의 숫자입니다.");
+        }
+    }
+
     private void validateNumber(int number) {
-        if (number > 45 || number < 1) throw new IllegalArgumentException("로또 번호는 1부터 45 사이의 숫자여야 합니다.");
+        if (number > 45 || number < 1) {
+            throw new IllegalArgumentException("로또 번호는 1부터 45 사이의 숫자여야 합니다.");
+        }
     }
 
     private void validateOverlap(List<Integer> answer) {
         Set<Integer> set = new HashSet<>(answer);
-        if (set.size() != 6) throw new IllegalArgumentException("로또의 각 번호는 중복이 없어야 합니다.");
+        if (set.size() != 6) {
+            throw new IllegalArgumentException("로또의 각 번호는 중복이 없어야 합니다.");
+        }
+    }
+
+    private void validatePrice(long price) {
+        if (price < 1000) {
+            throw new IllegalArgumentException("입력하신 금액으로는 복권을 구매할 수 없습니다.");
+        }
     }
 
     public void setLuckyNumber(List<Integer> answer, int bonus) {
@@ -34,7 +55,7 @@ public class LottoMachine {
     }
 
     public List<Lotto> publish(long price) {
-        if (price < 1000) throw new IllegalArgumentException("입력하신 금액으로는 복권을 구매할 수 없습니다.");
+        validatePrice(price);
         List<Lotto> lottos = new ArrayList<>();
         while (price >= 1000) {
             List<Integer> randoms = Randoms.pickUniqueNumbersInRange(1, 45, 6);
@@ -43,6 +64,7 @@ public class LottoMachine {
             lottos.add(new Lotto(numbers));
             price -= 1000;
         }
+
         return lottos;
     }
 
@@ -52,6 +74,7 @@ public class LottoMachine {
             int place = lotto.draw(answer, bonus);
             temp[place]++;
         });
+
         List<Integer> history = Arrays.stream(temp).boxed().collect(Collectors.toList());
         return new WinningRecord(history);
     }

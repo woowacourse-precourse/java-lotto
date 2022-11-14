@@ -14,15 +14,10 @@ class WinningRecordTest {
     @ValueSource(ints = {2000, 100000, 5000, 6000, 20000, 90000, 80000, 6000})
     void yeildIsGreaterThanOrEqualToZero(int source) {
         LottoMachine lottoMachine = new LottoMachine();
-
         List<Lotto> lottos = lottoMachine.publish(source);
-
         lottoMachine.setLuckyNumber(List.of(1, 2, 3, 4, 5, 6), 7);
-
         WinningRecord winningRecord = lottoMachine.drawAll(lottos);
-
         double actual = winningRecord.getYield();
-
         assertThat(actual).isGreaterThanOrEqualTo(0.0);
     }
 }

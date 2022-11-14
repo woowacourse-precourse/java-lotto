@@ -1,20 +1,20 @@
 package lotto.model;
 
 public enum Reward {
-    FIFTH("5,000", 5, "3개 일치"),
-    FOURTH("50,000", 4, "4개 일치"),
-    THIRD("1,500,000", 3, "5개 일치"),
-    SECOND("30,000,000", 2, "5개 일치, 보너스 볼 일치"),
-    FIRST("2,000,000,000", 1, "6개 일치");
+    FIFTH("5,000", "3개 일치", 5),
+    FOURTH("50,000", "4개 일치", 4),
+    THIRD("1,500,000", "5개 일치", 3),
+    SECOND("30,000,000", "5개 일치, 보너스 볼 일치", 2),
+    FIRST("2,000,000,000", "6개 일치", 1);
 
     private final String amount;
     private final String condition;
     private final int place;
 
-    Reward(String amount, int place, String condition) {
+    Reward(String amount, String condition, int place) {
         this.amount = amount;
-        this.place = place;
         this.condition = condition;
+        this.place = place;
     }
 
     public String getAmount() {
