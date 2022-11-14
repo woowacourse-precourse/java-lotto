@@ -5,7 +5,7 @@ import enumCollections.RankNumber;
 import java.util.EnumMap;
 import java.util.List;
 
-public class Checker extends Kiosk {
+public class Checker {
     static EnumMap<RankNumber, Integer> resultStatistics;
     static List<Integer> winningNumbers;
     static int bonusNumber;

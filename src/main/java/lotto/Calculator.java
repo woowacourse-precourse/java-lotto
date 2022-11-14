@@ -3,10 +3,9 @@ package lotto;
 import enumCollections.RankNumber;
 import enumCollections.Winnings;
 
-import java.math.BigDecimal;
 import java.util.EnumMap;
 
-public class Calculator extends Kiosk {
+public class Calculator {
     public static Double getYield(int payment, EnumMap<RankNumber, Integer> resultStatistics) {
         return getRoundedYield((getTotalWinnings(resultStatistics) / (double) payment) * 100);
     }
