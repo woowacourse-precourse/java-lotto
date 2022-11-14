@@ -3,6 +3,12 @@ package lotto;
 import java.util.List;
 
 public class Lotto {
+    static final int startLotto = 1;
+    static final int endLotto = 45;
+    static final int sizeLotto = 6;
+    static final int asciiZero = 48;
+    static final int asciiNine = 57;
+
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
@@ -15,7 +21,7 @@ public class Lotto {
         String[] inputSplitAnswer = inputAnswer.split(",");
         for (String inputNumber : inputSplitAnswer) {
             int number = Integer.parseInt(inputNumber);
-            if (number > 0 && number <= 45) {
+            if ((number >= startLotto) && (number <= endLotto)) {
                 lottoAnswer.add(number);
                 continue;
             }
@@ -25,7 +31,7 @@ public class Lotto {
     }
 
     public void validateCount(List<Integer> numbers) throws IllegalArgumentException {
-        if (numbers.size() != 6) {
+        if (numbers.size() != sizeLotto) {
             throw new IllegalArgumentException("[ERROR] 로또 번호 6개를 입력해주세요.");
         }
     }
@@ -47,7 +53,7 @@ public class Lotto {
 
     public void validateBonusNumberInput(String bonusNumber) throws IllegalArgumentException {
         for (int i = 0; i < bonusNumber.length(); i++) {
-            if (bonusNumber.charAt(i) >= 48 && bonusNumber.charAt(i) <= 57) {
+            if (bonusNumber.charAt(i) >= asciiZero && bonusNumber.charAt(i) <= asciiNine) {
                 continue;
             }
             throw new IllegalArgumentException("[ERROR] 보너스 숫자는 숫자로만 입력 해주세요");
@@ -56,7 +62,7 @@ public class Lotto {
 
     public void validateBonusNumberRange(String bonusNumber) throws IllegalArgumentException {
         int bonusNum = Integer.parseInt(bonusNumber);
-        if (bonusNum>0 && bonusNum<=45) {
+        if (bonusNum >= startLotto && bonusNum <= endLotto) {
             return;
         }
         throw new IllegalArgumentException("[ERROR] 보너스 숫자는 1부터 45사이의 숫자입니다.");

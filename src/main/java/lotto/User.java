@@ -8,6 +8,10 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class User {
+    static final int divideNumber = 1000;
+    static final int fifth =5;
+    static final int fifthBonusNumber =55;
+
     public List<Lotto> userLotto;
     public int achieveMoney;
 
@@ -16,7 +20,7 @@ public class User {
     }
 
     public void getUserLotto(int price) {
-        int lottoCount = price / 1000;
+        int lottoCount = price / divideNumber;
         for (int i = 0; i < lottoCount; i++) {
             List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 15, 6);
             List<Integer> sortedList = numbers.stream().sorted().collect(Collectors.toList());
@@ -25,7 +29,7 @@ public class User {
     }
 
     public void printUserLotto(int price) {
-        int lottoCount = price / 1000;
+        int lottoCount = price / divideNumber;
         Message.printLottoCountMessage(lottoCount);
 
         for (int i = 0; i < lottoCount; i++) {
@@ -65,8 +69,8 @@ public class User {
                 count++;
             }
         }
-        if (count == 5 && lottoAnswer.contains(Integer.parseInt(bonusNumber))) {
-            count = 55;
+        if (count == fifth && lottoAnswer.contains(Integer.parseInt(bonusNumber))) {
+            count = fifthBonusNumber;
         }
 
         return Score.getWinValue(count);
