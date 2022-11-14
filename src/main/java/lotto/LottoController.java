@@ -43,4 +43,9 @@ public class LottoController {
         String input = inputView.createWinningNumbers();
         winnigNumbers = new Lotto(input).getNumbers();
     }
+
+    public void bonusNumberCreate(){
+        String input = inputView.createBonusNumber(winnigNumbers);
+        bonusNumber = Integer.parseInt(input);
+    }
 }
