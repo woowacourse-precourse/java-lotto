@@ -6,6 +6,8 @@ import java.util.List;
 import java.util.Map;
 
 public class OutputView {
+    private final int LOTTO_SIZE = 6;
+
     public void printException(String message) {
         System.out.println("[ERROR] " + message);
     }
@@ -17,7 +19,7 @@ public class OutputView {
     public void printLotto(List<Integer> purchaserLotto) {
         System.out.print("[");
 
-        for (int i = 0; i < 6; i++) {
+        for (int i = 0; i < LOTTO_SIZE; i++) {
             System.out.print(purchaserLotto.get(i));
             if (i != 5) {
                 System.out.print(", ");
