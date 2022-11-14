@@ -36,6 +36,7 @@ public class Application {
         Print.winNumbers();
         Print.requestBonusNumber();
         Player.getBonusNumber();
+        Compare.bonusNumber = bonusNumber;
         Print.bonusNumber();
 
         Compare.numbers();
