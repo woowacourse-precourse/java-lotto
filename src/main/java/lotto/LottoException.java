@@ -27,5 +27,10 @@ public class LottoException {
 			throw new IllegalArgumentException(Constant.INPUT_SIZE_ERROR);
 		}
 	}
-	
+
+	public void checkNumberSize(String number) throws IllegalArgumentException {
+		if (Integer.parseInt(number) < 1 || Integer.parseInt(number) > 45) {
+			throw new IllegalArgumentException(Constant.RANGE_OVER_ERROR);
+		}
+	}
 }

@@ -39,6 +39,7 @@ public class Service {
 		String[] splitLottoNumber = number.split(",");
 		exception.checkInputSize(splitLottoNumber, Constant.LOTTO_LENGTH);
 		for (int i = 0; i < Constant.LOTTO_LENGTH; i++) {
+			checkUserNumber(splitLottoNumber[i]);
 			lottoNumber.add(Integer.parseInt(splitLottoNumber[i]));
 		}
 		return lottoNumber;
@@ -108,6 +109,10 @@ public class Service {
 
 	public double yield() {
 		return Math.round((double)totalPrize() / money * 1000) / 10.0;
+	}
+
+	public void checkUserNumber(String splitLottoNumber) {
+		exception.checkNumberSize(splitLottoNumber);
 	}
 
 	public void checkMoney(String inputMoney) {
