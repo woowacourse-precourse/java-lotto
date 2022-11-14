@@ -6,9 +6,6 @@ import java.util.List;
 import java.util.Set;
 
 public class Lotto {
-    private static final int LOTTO_MINIMUM_NUMBER = 1;
-    private static final int LOTTO_MAXIMUM_NUMBER = 45;
-    private static final int LOTTO_RANGE_SIZE = 6;
     private static final String ERROR_PREFIX_MASSAGE = "[ERROR] ";
     private static final String ERROR_SIZE_MASSAGE = "로또 번호는 6개입니다.";
     private static final String ERROR_RANGE_MASSAGE = "로또 번호는 1부터 45까지입니다.";
@@ -25,7 +22,7 @@ public class Lotto {
     }
 
     private void validateSize(List<Integer> lottoNumbers) {
-        if (lottoNumbers.size() != LOTTO_RANGE_SIZE) {
+        if (lottoNumbers.size() != LottoNumberRule.LOTTO_RANGE_SIZE.getValue()) {
             throw new IllegalArgumentException(ERROR_PREFIX_MASSAGE + ERROR_SIZE_MASSAGE);
         }
     }
@@ -37,14 +34,15 @@ public class Lotto {
     }
 
     private void checkInRange(Integer lottoNumber) {
-        if (lottoNumber < LOTTO_MINIMUM_NUMBER || lottoNumber > LOTTO_MAXIMUM_NUMBER) {
+        if (lottoNumber < LottoNumberRule.LOTTO_MINIMUM_NUMBER.getValue()
+            || lottoNumber > LottoNumberRule.LOTTO_MAXIMUM_NUMBER.getValue()) {
             throw new IllegalArgumentException(ERROR_PREFIX_MASSAGE + ERROR_RANGE_MASSAGE);
         }
     }
 
     private void validateDuplicate(List<Integer> lottoNumbers) {
         Set<Integer> lottoNumbersSet = new HashSet<>(lottoNumbers);
-        if (lottoNumbersSet.size() != LOTTO_RANGE_SIZE) {
+        if (lottoNumbersSet.size() != LottoNumberRule.LOTTO_RANGE_SIZE.getValue()) {
             throw new IllegalArgumentException(ERROR_PREFIX_MASSAGE + ERROR_DUPLICATE_MASSAGE);
         }
     }

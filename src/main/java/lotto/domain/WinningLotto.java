@@ -3,10 +3,7 @@ package lotto.domain;
 import java.util.List;
 
 public class WinningLotto{
-    private static final int LOTTO_MINIMUM_NUMBER = 1;
-    private static final int LOTTO_MAXIMUM_NUMBER = 45;
     private static final int RANK_TO_LIST = 3;
-    private static final int MAXIMUM_RANK = 6;
     private static final String ERROR_PREFIX_MASSAGE = "[ERROR] ";
     private static final String ERROR_RANGE_MASSAGE = "로또 번호는 1부터 45까지입니다.";
     private static final String ERROR_DUPLICATE_MASSAGE = "로또 번호에 중복된 숫자는 없습니다.";
@@ -21,7 +18,8 @@ public class WinningLotto{
     }
 
     private void validateBonusNumber(Integer bonusNumber) {
-	if (bonusNumber < LOTTO_MINIMUM_NUMBER || bonusNumber > LOTTO_MAXIMUM_NUMBER) {
+	if (bonusNumber < LottoNumberRule.LOTTO_MINIMUM_NUMBER.getValue()
+	    || bonusNumber > LottoNumberRule.LOTTO_MAXIMUM_NUMBER.getValue()) {
 	    throw new IllegalArgumentException(ERROR_PREFIX_MASSAGE + ERROR_RANGE_MASSAGE);
 	}
     }
@@ -38,7 +36,7 @@ public class WinningLotto{
 	    rank += isContainWinningNumber(lottoNumber);
 	    rank += isContainBonusNumber(lottoNumber);
 	}
-	if (rank == MAXIMUM_RANK) {
+	if (rank == LottoNumberRule.MAXIMUM_NUMBER_MATCH.getValue()) {
 	    rank += isNotContainBonusNumber(lottoNumbers.getLottoNumbers());
 	}
 	return rank - RANK_TO_LIST;
