@@ -10,14 +10,14 @@ import lotto.type.Prize;
 
 public class View {
 
-    public int intputMoney() {
+    public long inputMoney() {
         System.out.println("구입금액을 입력해 주세요");
-        int money = Integer.parseInt(Console.readLine());
+        long money = Long.parseLong(Console.readLine());
         validateMoney(money);
         return money;
     }
 
-    public void validateMoney(int money) {
+    public void validateMoney(long money) {
         if (money % 1000 != 0) {
             throw new IllegalArgumentException("[ERROR] 입력금액은 1000원 단위여야 합니다.");
         }
@@ -101,7 +101,7 @@ public class View {
         System.out.printf("5개 일치 (1,500,000원) - %s개\n", prizeLongMap.get(Prize.FIVE));
         System.out.printf("5개 일치, 보너스 볼 일치 (30,000,000원) - %s개\n", prizeLongMap.get(Prize.FIVE_AND_BONUS));
         System.out.printf("6개 일치 (2,000,000,000원) - %s개\n", prizeLongMap.get(Prize.SIX));
-        System.out.printf("총 수익률은 %.1f%%입니다.\n", prizeDto.getYield());
+        System.out.printf("총 수익률은 %,1f%%입니다.\n", prizeDto.getYield());
 
     }
 
