@@ -19,7 +19,8 @@ public class DataProcessing {
     public List<List<Integer>> countCreateRandomNumbers(int count) {
         List<List<Integer>> boxNumbers = new ArrayList<>();
         for (int i=0;i<count;++i) {
-            boxNumbers.add(lottoRandomNumbers());
+            Lotto lotto = new Lotto(lottoRandomNumbers());
+            boxNumbers.add(lotto.getNumbers());
         }
         return boxNumbers;
     }
@@ -41,6 +42,16 @@ public class DataProcessing {
         errorUtil.errorInputLottoNumber(splitNumbers);
         errorUtil.errorInputCountLottoNumber(splitNumbers);
         return splitNumbers;
+    }
+
+    public List<Integer> lottoNumber(String lottoNumbers) {
+        List<Integer> numbers = new ArrayList<>();
+        ErrorUtil errorUtil = new ErrorUtil();
+        String[] splitNumber = splitLottoNumber(lottoNumbers);
+        for (int i=0;i<splitNumber.length;++i)
+            numbers.add(Integer.parseInt(splitNumber[i]));
+        errorUtil.errorOverlapLottoNumber(numbers);
+        return numbers;
     }
 
     public  List<Integer> countWinLotto(List<Integer> lottoNumber, List<List<Integer>> boxRandomNumber,
