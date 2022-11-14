@@ -32,7 +32,7 @@ public class LottoController {
         List<Lotto> lottos = request.getLottos();
         WinningNumber winningNumber = request.getWinningNumber();
 
-        Statistics statistics = lottoService.calculateWinning(principle, lottos, winningNumber);
+        Statistics statistics = lottoService.judgeWinning(principle, lottos, winningNumber);
         return new WinningResult(statistics);
     }
 }

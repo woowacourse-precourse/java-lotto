@@ -24,7 +24,7 @@ public class LottoService {
         return lottoSalesman.salesLotto(payment);
     }
 
-    public Statistics calculateWinning(
+    public Statistics judgeWinning(
             final Money principle,
             final List<Lotto> lottos,
             final WinningNumber winningNumber
