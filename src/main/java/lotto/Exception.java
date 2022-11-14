@@ -9,5 +9,8 @@ public class Exception {
 		if (!Pattern.matches("^[0-9]*$", input)) {
 			throw new IllegalArgumentException(Constants.ERROR_NUMBER_PATTERN);
 		}
+		if (Integer.parseInt(input) <= 0) {
+			throw new IllegalArgumentException(Constants.ERROR_NUMBER_RANGE);
+		}
 	}
 }
