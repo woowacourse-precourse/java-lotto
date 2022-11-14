@@ -23,7 +23,6 @@ public class Lotto {
 
         List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
         Collections.sort(numbers);//오름차순
-//        System.out.println(numbers);
         return numbers;
     }
 

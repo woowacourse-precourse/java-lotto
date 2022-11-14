@@ -39,7 +39,7 @@ public class Application extends Lotto {
 
         int howManyTimes = (Integer.parseInt(price))/1000;
         int[] findPrize = new int[howManyTimes];        //구매한 로또가 각각 몇등인지 담겨있음
-        int[][] allMyLotto = new int[howManyTimes][6];
+        String[][] allMyLotto = new String[howManyTimes][6];
 
         List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
         Application application = new Application(numbers);
@@ -50,7 +50,7 @@ public class Application extends Lotto {
         for(int i = 0 ; i < howManyTimes; i ++ ){
             myLotto = application.randomLotto();
             for(int j = 0 ; j < 6; j++){
-                allMyLotto[i][j] = myLotto.get(j);
+                allMyLotto[i][j] = String.valueOf(myLotto.get(j));
             }
             System.out.println(myLotto);
         }
@@ -65,13 +65,16 @@ public class Application extends Lotto {
         for(int i = 0 ; i < howManyTimes; i ++){
             int cntEqualNumbers = 0;
             for(int j = 0 ; j < 6 ; j++){
-                if(getPrizeNum[j].equals(allMyLotto[i][j])){
-                    cntEqualNumbers += 1;
+                for(int k = 0 ; k < 6 ; k++) {
+                    if (getPrizeNum[j].equals(allMyLotto[i][k])) {
+                        cntEqualNumbers += 1;
+
+                    }
                 }
             }
             if(cntEqualNumbers == 5){
                 for(int j = 0 ; j < 6 ; j++){
-                    if(getPrizeNum[j].equals(bonusNum)){
+                    if(allMyLotto[i][j].equals(bonusNum)){
                         cntEqualNumbers += 2;
                     }
                 }
@@ -97,6 +100,10 @@ public class Application extends Lotto {
             }
         }
 
+        double winningRate = 0;
+        winningRate = ((500 * fifthPrize) + (5000 * fourthPrize) + (150000 * thirdPrize)
+                        + (3000000 * secondPrize) + (200000000 * firstPrize))/(howManyTimes);
+
         System.out.println("당첨 통계");
         System.out.println("---");
         System.out.println("3개 일치 (5,000원) - " + fifthPrize + "개");
@@ -104,5 +111,6 @@ public class Application extends Lotto {
         System.out.println("5개 일치 (1,500,000원) - " + thirdPrize + "개");
         System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - " + secondPrize + "개");
         System.out.println("6개 일치 (2,000,000,000원) - " + firstPrize + "개");
+        System.out.println("총 수익률은 " + winningRate + "%입니다.");
     }
 }
