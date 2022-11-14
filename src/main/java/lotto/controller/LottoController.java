@@ -18,6 +18,7 @@ public class LottoController {
     public void run() {
         int amount = generateByAmount();
         checkWinning();
+        calculateRate(amount);
     }
 
     private int generateByAmount() {
@@ -39,6 +40,10 @@ public class LottoController {
         int bonusNumber = inputView.inputBonusNumber(winningNumbers);
 
         result(winningNumbers, bonusNumber);
+    }
+
+    private void calculateRate(int amount) {
+        outputView.printWithLine(lottoService.calculateRate(amount));
     }
 
     private void result(List<Integer> winningNumbers, int bonusNumber) {
