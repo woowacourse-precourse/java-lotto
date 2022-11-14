@@ -2,24 +2,28 @@ package lotto.service;
 
 import lotto.domain.Lotto;
 import lotto.domain.enumeration.Rating;
+import lotto.repository.LottoRepository;
 
 import java.util.LinkedHashMap;
 import java.util.List;
 
 public class LottoGameMachineServiceImpl implements LottoGameMachineService{
+
+    private final LottoRepository repository = new LottoRepository();
+
     @Override
     public void enterMoney(int money) {
-
+        repository.payMoney(money);
     }
 
     @Override
     public void enterTheWinningNumbers(Lotto winningNumbers) {
-
+        repository.saveWinningNumbers(winningNumbers);
     }
 
     @Override
     public void enterBonusNumber(int bonusNumber) {
-
+        repository.saveBonusNumber(bonusNumber);
     }
 
     @Override
@@ -29,26 +33,26 @@ public class LottoGameMachineServiceImpl implements LottoGameMachineService{
 
     @Override
     public int readLottoQuantity() {
-        return 0;
+        return repository.getLottoQuantity();
     }
 
     @Override
     public List<Lotto> readLottoNumbers() {
-        return null;
+        return repository.getLottoNumbers();
     }
 
     @Override
     public int readMoney() {
-        return 0;
+        return repository.getMoney();
     }
 
     @Override
     public List<Integer> readWinningNumbers() {
-        return null;
+        return repository.getWinningNumbers();
     }
 
     @Override
     public int readBonusNumber() {
-        return 0;
+        return repository.getBonusNumber();
     }
 }
