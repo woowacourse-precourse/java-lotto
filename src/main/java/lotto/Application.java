@@ -8,19 +8,15 @@ public class Application {
     public static void main(String[] args) {
         int buylotto = askmoney();
         List<List<Integer>> lottonumbers = new ArrayList<>();
-        List<Integer> winningnumbers = new ArrayList<>();
         List<Integer> result = new ArrayList<>();
-        int bonusnum;
 
         Random random = new Random();
         lottonumbers = random.createAllLotto(buylotto);
         printalllotto(lottonumbers,buylotto);
 
-        winningnumbers = askwinningnumbers();
-        bonusnum = askbonusnumber();
-
         CompareLotto comparelotto = new CompareLotto();
-        result = comparelotto.correctcount(lottonumbers,winningnumbers,bonusnum);
+        result = comparelotto.correctcount(lottonumbers,askwinningnumbers(),askbonusnumber());
+
         // TODO: 프로그램 구현
     }
     public static int askmoney(){
