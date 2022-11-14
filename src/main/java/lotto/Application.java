@@ -3,12 +3,14 @@ package lotto;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 public class Application {
     public static void main(String[] args) {
         int user_buy_num = HowManyLotto();
+        List<Integer>[] user_lotto = UserLotto(user_buy_num);
     }
 
     static int HowManyLotto() {
@@ -29,5 +31,16 @@ public class Application {
         List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
         Collections.sort(numbers);
         return numbers;
+    }
+
+    static List<Integer>[] UserLotto(int user_buy_num) {
+        List<Integer>[] user_lotto = new List[user_buy_num];
+
+        for (int i=0; i < user_buy_num; i++) {
+            Lotto lotto = new Lotto(MakeNumbers());
+            user_lotto[i] = lotto.GetNumbers();
+        }
+
+        return user_lotto;
     }
 }
