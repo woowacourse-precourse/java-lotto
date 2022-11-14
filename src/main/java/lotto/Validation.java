@@ -2,25 +2,22 @@ package lotto;
 
 public class Validation {
 
-    public boolean isNumeric(String input) {
-        if (input.matches("^[0-9]*$")) {
-            return true;
+    public void checkNumeric(String input) throws IllegalArgumentException {
+        if (!input.matches("^[0-9]*$")) {
+            throw new IllegalArgumentException(Error.NOT_NUMERIC.message());
         }
-        return false;
     }
 
-    public boolean isNumberInRange(int number) {
-        if (number >= 1 && number <= 45) {
-            return true;
+    public void checkNumberInRange(int number) throws IllegalArgumentException {
+        if (number < 1 || number > 45) {
+            throw new IllegalArgumentException(Error.NOT_IN_RANGE.message());
         }
-        return false;
     }
 
-    public boolean isDividable(int number) {
-        if (number % 1000 == 0) {
-            return true;
+    public void checkDividable(int number) throws IllegalArgumentException {
+        if (number % 1000 != 0) {
+            throw new IllegalArgumentException(Error.NOT_DIVIDABLE.message());
         }
-        return false;
     }
 
 }
