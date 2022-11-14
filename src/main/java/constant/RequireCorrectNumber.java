@@ -1,22 +1,22 @@
 package constant;
 
+import java.util.List;
+
 public enum RequireCorrectNumber {
-    FIRST_CORRECT(6,0), SECOND_CORRECT(5,1),
-    THIRD_CORRECT(5,0), FOURTH_CORRECT(4,0),
-    FIFTH_CORRECT(3,0);
+    FIRST_CORRECT(6), SECOND_CORRECT(5),
+    THIRD_CORRECT(5), FOURTH_CORRECT(4),
+    FIFTH_CORRECT(3);
 
 
     private final int normalNumberCount;
-    private final int bonusNumberCount;
-        RequireCorrectNumber(int normalNumber, int bonusNumber){
+
+        RequireCorrectNumber(Integer normalNumber){
         this.normalNumberCount = normalNumber;
-        this.bonusNumberCount = bonusNumber;
+
     }
 
-    public int getNormalCount(){
-        return normalNumberCount;
+    public int getValue(){
+            return normalNumberCount;
     }
-    public int getBonusNumberCount(){
-        return bonusNumberCount;
-    }
+
 }
