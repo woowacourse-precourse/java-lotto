@@ -4,7 +4,6 @@ import java.util.*;
 
 public class Lotto {
     private final List<Integer> numbers;
-    private int bonusNumber;
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
@@ -31,6 +30,10 @@ public class Lotto {
         if(numbers.size()!= testNumbers.size()){
             throw new IllegalArgumentException("[ERROR] 로또 번호에 중복된 숫자가 있습니다.");
         }
+    }
+
+    public void printLotto(){
+        System.out.printf("[%d, %d, %d, %d, %d, %d]%n",numbers.get(0),numbers.get(1),numbers.get(2),numbers.get(3),numbers.get(4),numbers.get(5));
     }
 
     // TODO: 추가 기능 구현

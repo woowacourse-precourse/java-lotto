@@ -1,7 +1,6 @@
 package lotto.domain;
 
 import camp.nextstep.edu.missionutils.Randoms;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,7 +14,7 @@ public class Player {
     }
 
     public Player(int money){
-        this.lottos = new ArrayList<>();
+        this.lottos = buyLottos(howManyLotto(money));
         this.money = money;
     }
 
@@ -28,12 +27,18 @@ public class Player {
 
     public List<Lotto> buyLottos(int moneyCount){
 
+        List<Lotto> sampleLottos = new ArrayList<>();
         for (int i = 0; i < moneyCount; i++) {
             Lotto lotto = new Lotto(Randoms.pickUniqueNumbersInRange(1, 45, 6));
-            lottos.add(lotto);
+            sampleLottos.add(lotto);
         }
-        return lottos;
+        return sampleLottos;
     }
 
+    public void printLottos(){
+        for(Lotto lotto : lottos){
+            lotto.printLotto();
+        }
+    }
 
 }
