@@ -7,9 +7,14 @@ import java.util.stream.Collectors;
 
 public class GameController {
     public void start(){
-        Buyer buyer = buyLottos();
-        WinningNumber winningNumber = generateWinningNumber();
-        checkMatchedNumber(buyer, winningNumber);
+        try{
+            Buyer buyer = buyLottos();
+            WinningNumber winningNumber = generateWinningNumber();
+            checkMatchedNumber(buyer, winningNumber);
+        }catch (IllegalArgumentException e){
+            System.out.println(e.getMessage());
+        }
+
     }
 
 

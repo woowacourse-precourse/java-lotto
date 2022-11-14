@@ -4,6 +4,7 @@ package lotto;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
+import static lotto.ErrorMessage.*;
 
 public class NumbersValidator {
 
@@ -11,7 +12,7 @@ public class NumbersValidator {
         validateLotto(numbers);
 
         if (numbers.contains(bonusNumber)){
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(PREFIX.getMsg() + INVALID_BONUS_NUMBER.getMsg());
         }
 
     }
@@ -19,7 +20,7 @@ public class NumbersValidator {
     public static void validateLotto(List<Integer> numbers) {
         if (numbers.size() != Lotto.SIZE
                 || isOverlapping(numbers)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(PREFIX.getMsg() + INVALID_LOTTO_NUMBER.getMsg());
         }
     }
 
@@ -29,14 +30,14 @@ public class NumbersValidator {
 
     public static void validateMoney(int money) {
         if(!Objects.equals(money % LottoMachine.MONEY_UNIT, 0)){
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(PREFIX.getMsg() + INVALID_MONEY.getMsg());
         }
     }
 
     public static void isNumeric(String input){
         if (!input.chars().mapToObj(i -> (char)i)
                 .allMatch(Character::isDigit)){
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(PREFIX.getMsg() + NOT_A_NUMBER.getMsg());
         }
     }
 
