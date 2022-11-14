@@ -27,7 +27,7 @@ public class UserIO {
         return new ArrayList<>(List.of(numbers));
     }
 
-    public int inputBonusNumber() {
+    public Integer inputBonusNumber() {
         System.out.println("보너스 번호를 입력해주세요.");
         return Integer.parseInt(Console.readLine());
     }

@@ -12,5 +12,17 @@ public class Application {
         return Randoms.pickUniqueNumbersInRange(1, 45, 6);
     }
 
+    private Integer getResult(List<Integer> winningNumbers, List<Integer> lottoNumbers) {
+        int result = 0;
+        for (Integer number : lottoNumbers) {
+            if (winningNumbers.contains(number)) {
+                result += 1;
+            }
+        }
+        return result;
+    }
 
+    private boolean getBonusNumberResult(Integer bonusNumber, Integer lottoBonusNumber) {
+        return bonusNumber.equals(lottoBonusNumber);
+    }
 }
