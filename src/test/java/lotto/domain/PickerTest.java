@@ -1,6 +1,7 @@
 package lotto.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
 import java.util.List;
 
@@ -32,12 +33,12 @@ class PickerTest {
                 .containsExactly(Rank.FIRST, Rank.SECOND, Rank.THIRD, Rank.NONE, Rank.FOURTH);
     }
 
-    @DisplayName("당첨번호와 보너스 번호가 겹치면 1등이 우선이다")
+    @DisplayName("당첨번호와 보너스 번호가 겹치면 예외를 발생시킨다")
     @Test
-    void first_first_when_winning_numbers_contain_bonus_number() {
-        Picker picker = new Picker(new Lotto(1, 2, 3, 4, 5, 6), new LottoNumber(6));
+    void throw_IllegalArgumentException_when_winning_numbers_have_bonus_number() {
+        Lotto winningLotto = new Lotto(1, 2, 3, 4, 5, 6);
+        LottoNumber bonusNumber = new LottoNumber(6);
 
-        assertThat(picker.pick(userLottos))
-                .containsExactly(Rank.FIRST, Rank.THIRD, Rank.THIRD, Rank.NONE, Rank.FOURTH);
+        assertThatIllegalArgumentException().isThrownBy(() -> new Picker(winningLotto, bonusNumber));
     }
 }
