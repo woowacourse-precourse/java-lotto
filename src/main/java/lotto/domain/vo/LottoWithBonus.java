@@ -3,7 +3,6 @@ package lotto.domain.vo;
 import java.util.List;
 import lotto.domain.constants.ErrorCode;
 import lotto.domain.constants.LottoConstants;
-import lotto.domain.vo.Lotto;
 
 public class LottoWithBonus {
 

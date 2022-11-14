@@ -4,10 +4,10 @@ import static lotto.domain.LottoReference.NOPE;
 
 import java.text.DecimalFormat;
 import java.util.Map;
-import lotto.domain.vo.Lotto;
 import lotto.domain.LottoMachine;
 import lotto.domain.LottoReference;
 import lotto.domain.LottoResult;
+import lotto.domain.vo.Lotto;
 
 public class OutputHandler {
 
