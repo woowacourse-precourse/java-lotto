@@ -94,7 +94,7 @@ public class Controller {
         final List<List<Integer>> publishedLottoArray = Model.PublishLotto(lottoCount);
 
         // 로또 발행 출력
-        View.Output(lottoAmount+"원을 구매했습니다.");
+        View.Output(inputLottoAmount);
         for (List<Integer> list : publishedLottoArray) {
             View.Output(list.toString());
         }
@@ -128,7 +128,7 @@ public class Controller {
         List<Integer> lottoResultKeys = new ArrayList<>(lottoResult.keySet());
         for (int i = 5; 0 < i; i--) {
             Integer correctNumber = LottoReward.getCorrectNumberByRank(i);
-            Integer result = lottoResult.get(i+1);
+            Integer result = lottoResult.get(i);
             Integer reward = LottoReward.getRewardByRank(i);
 
             if (i == 2) {
