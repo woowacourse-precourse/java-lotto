@@ -47,7 +47,7 @@ public class UserService {
         return numbers;
     }
 
-    public void addBonusNumber(String inputBonusNumber) {
+    public void setBonusNumber(String inputBonusNumber) {
         inputException.notDigitException(inputBonusNumber);
         // 1 ~ 45 확인후 아니면 예외처리
         // 중복 숫자가 있으면 예외처리

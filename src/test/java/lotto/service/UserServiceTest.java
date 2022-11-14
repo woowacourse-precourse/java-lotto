@@ -87,7 +87,7 @@ public class UserServiceTest {
         void case1(String numbers, String bonusNumber, List<Integer> checkList) {
             userService.setMoneyToUser("1000");
             userService.setNumbersToUser(numbers);
-            userService.addBonusNumber(bonusNumber);
+            userService.setBonusNumber(bonusNumber);
             User user = userService.getUser();
             Assertions.assertThat(user.getNumbers()).isEqualTo(checkList);
         }
