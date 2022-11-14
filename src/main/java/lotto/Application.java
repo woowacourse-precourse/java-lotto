@@ -5,8 +5,7 @@ import lotto.view.Print;
 import java.util.ArrayList;
 import java.util.List;
 
-import static lotto.Player.numberOfLottos;
-import static lotto.Player.winNumbers;
+import static lotto.Player.*;
 
 public class Application {
     public static void main(String[] args) {
@@ -17,8 +16,10 @@ public class Application {
         Print.howmanyLottos(numberOfLottos);
         Print.requestWinNumbers();
         Player.getWinNumbers();
-        System.out.println(winNumbers);
-
+        Print.winNumbers();
         Print.requestBonusNumber();
+        Player.getBonusNumber();
+        Print.bonusNumber();
+        Lotto.getRandomNumbers(numbers);
     }
 }

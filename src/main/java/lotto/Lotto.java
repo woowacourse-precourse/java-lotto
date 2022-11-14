@@ -20,6 +20,11 @@ public class Lotto {
     }
     // TODO: 추가 기능 구현
 
+    public static void getRandomNumbers(List<Integer> numbers){
+        numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+        System.out.println(numbers);
+    }
+
 
     /*public void pickNumbers(List<Integer> numbers){
        numbers = Randoms.pickUniqueNumbersInRange(1,45,6);

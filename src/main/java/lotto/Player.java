@@ -8,8 +8,8 @@ import java.util.List;
 public class Player {
     public static int money;
     public static int numberOfLottos;
-
     public static List<Integer> winNumbers;
+    public static int bonusNumber;
 
     public static int getMoney() {
         String playerInput = Console.readLine();
@@ -27,13 +27,26 @@ public class Player {
         return winNumbers;
     }
 
+    public static int getBonusNumber() {
+        String playerInput = Console.readLine();
+        validateNumbers(playerInput);
+        bonusNumber = Integer.parseInt(playerInput);
+        duplicateBonusNumber(bonusNumber);
+        return bonusNumber;
+    }
+
+    private static void duplicateBonusNumber(int bonusNumber) {
+        if(winNumbers.contains(bonusNumber)){
+            throw new IllegalArgumentException("[ERROR]보너스 숫자와 이미 입력한 당첨번호는 중복될 수 없습니다.");
+        }
+    }
+
     private static void toMakeWinNumbers(String playerInput) {
         List<String> beforeCheck = Arrays.asList(playerInput.split(","));
         winNumbers = new ArrayList<>();
         for (int i = 0; i < beforeCheck.size(); i++) {
             validateNumbers(beforeCheck.get(i));
             winNumbers.add(Integer.parseInt(beforeCheck.get(i)));
-            System.out.println(winNumbers);
         }
     }
 
