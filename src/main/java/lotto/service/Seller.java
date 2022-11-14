@@ -11,6 +11,8 @@ import lotto.service.view.ViewConsole;
 public class Seller {
     private Money money;
     private Lottos lottos;
+    private LottoNumbers correctNumbers;
+    private LottoNumber bonusNumber;
 
 
     public void acceptMoney() {
@@ -23,6 +25,16 @@ public class Seller {
         lottos = LottoMachine.makeLottos(money);
         ViewConsole.printLottoLineCount(lottos.getSizeOfLottoLines());
         ViewConsole.printLottoLineDetails(lottos);
+        System.out.println();
+    }
+
+    public void makeCorrectNumber() {
+        ViewConsole.printInputCorrectNumber();
+        correctNumbers = InputConsole.readCorrectNumbers();
+        System.out.println();
+
+        ViewConsole.printInputBonusNumber();
+        bonusNumber = InputConsole.readBonusNumber();
         System.out.println();
     }
 
