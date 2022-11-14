@@ -8,11 +8,12 @@ import java.text.DecimalFormat;
 import java.util.List;
 import java.util.Map;
 
-import static util.LottoMessage.SAMES_FORMAT;
-import static util.LottoMessage.OPEN_BRACKET;
-import static util.LottoMessage.CLOSE_BRACKET;
-import static util.LottoMessage.HYPHEN_WITH_SPACE;
-import static util.LottoMessage.KOREA_BASICS_UNIT;
+import static util.Constant.LINE_SEPARATOR;
+import static util.Constant.SAMES_FORMAT;
+import static util.Constant.OPEN_BRACKET;
+import static util.Constant.CLOSE_BRACKET;
+import static util.Constant.HYPHEN_WITH_SPACE;
+import static util.Constant.KOREA_BASICS_UNIT;
 
 public class ResultView {
 
@@ -35,7 +36,7 @@ public class ResultView {
     }
 
     public void displaySeparator() {
-        System.out.println(LottoMessage.LINE_SEPARATOR);
+        System.out.println(LINE_SEPARATOR);
     }
 
     public void displayWinners(Map<LottoRank, Integer> result) {

@@ -6,6 +6,8 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.stream.Stream;
 
+import static util.Constant.DEFAULT_ZERO;
+
 public enum LottoRank {
 
     FIRST(6, 2_000_000_000),
@@ -43,7 +45,7 @@ public enum LottoRank {
 
     public static Stream<LottoRank> getAscendRank() {
         return Arrays.stream(LottoRank.values())
-                .sorted(Collections.reverseOrder());
+                .sorted(Collections.reverseOrder()).filter(rank -> rank.getPrizeMoney() != DEFAULT_ZERO);
     }
 
     public int getSameCount() {

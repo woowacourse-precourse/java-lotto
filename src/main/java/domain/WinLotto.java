@@ -6,6 +6,9 @@ import java.util.EnumMap;
 import java.util.List;
 import java.util.Map;
 
+import static util.Constant.DEFAULT_ZERO;
+import static util.Constant.ONE;
+
 public class WinLotto {
 
     private final List<Lotto> lotteries;
@@ -24,8 +27,6 @@ public class WinLotto {
 
     private Map<LottoRank, Integer> setResult() {
         Map<LottoRank, Integer> numberOfRank = new EnumMap<>(LottoRank.class);
-        final int DEFAULT_ZERO = 0;
-        final int ONE = 1;
 
         lotteries.stream().forEach(lotto -> {
             LottoRank rank =
