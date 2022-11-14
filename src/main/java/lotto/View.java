@@ -1,9 +1,9 @@
-package lotto.Machine;
+package lotto;
 
 import java.util.Collections;
 import java.util.List;
 
-public class PrintMachine {
+public class View {
 
     public static void buyLotto() {
         System.out.println("구입금액을 입력해 주세요.");
@@ -13,7 +13,7 @@ public class PrintMachine {
         System.out.println(String.format("%d개를 구입했습니다.", count));
     }
 
-    public static void winningNumber() {
+    public static void winNumber() {
         System.out.println("당첨 번호를 입력해 주세요.");
     }
 
@@ -30,6 +30,5 @@ public class PrintMachine {
             Collections.sort(lotto);
             System.out.println(lotto);
         }
-
     }
 }
