@@ -42,9 +42,25 @@ public class Application {
         }
         return My_Lotto_Number;
     }
+    public static ArrayList<Integer> INPUT_WINNING_NUMBER(String Input){
+        ArrayList<Integer> result = new ArrayList<>();
+        String []tmp = Input.split(",");
+        for (int i = 0; i < tmp.length; i++){
+            result.add(Integer.parseInt(tmp[i]));
+        }
+        return result;
+    }
+    public static ArrayList<Integer> PRINT_INPUT_WINNING_NUMBER() throws IllegalArgumentException{
+        ArrayList<Integer> result = new ArrayList<Integer>();
+        System.out.println("당첨 번호를 입력해 주세요.");
+        String Input = Console.readLine();
+        result = INPUT_WINNING_NUMBER(Input);
+        return result;
+    }
     public static void main(String[] args) {
         // TODO: 프로그램 구현
             int Amount = PRINT_REQUEST_PAY();
             ArrayList<List<Integer>> My_Lotto_Number = PRINT_MY_LOTTO_NUMBER(Amount);
+            ArrayList<Integer> Winning_Number = PRINT_INPUT_WINNING_NUMBER();
     }
 }
