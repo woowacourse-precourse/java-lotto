@@ -11,5 +11,6 @@ public class Application {
 
         LottoGenerator lottoGenerator = new LottoGenerator();
         List<Lotto> lottos = lottoGenerator.createLottos(lottoCount);
+        WinningLotto winningLotto = UserInterface.enterWinningLotto();
     }
 }
