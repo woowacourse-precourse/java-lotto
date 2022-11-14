@@ -16,22 +16,16 @@ public class LottoController {
     public void run() {
         try {
             Cost cost = createCost();
-            int purchaseCost = cost.getCost();
-            int purchaseCount = cost.getPurchaseCount();
-            Output.purchaseCountNotification(purchaseCount);
 
-            NumberGenerator randomNumberGenerator = new RandomNumberGenerator();
-            LottoGroup lottoGroup = createLottoGroup(purchaseCount, randomNumberGenerator);
-            Output.printLottoGroup(lottoGroup);
-
+            LottoGroup lottoGroup = createLottoGroup(cost.getPurchaseCount());
             WinningLotto winningLotto = createWinningLotto();
             BonusNumber bonusNumber = createBonusNumber(winningLotto);
 
             Result result = createResult(lottoGroup, winningLotto, bonusNumber);
-            Output.printWinningStatistics(result);
+            Profit profit = createProfit(cost.getCost(), result);
 
-            Profit profit = createProfit(purchaseCost, result);
-            Output.earningsRateNotification(profit.getEarningsRate());
+            print(cost, lottoGroup, result, profit);
+
         } catch (IllegalArgumentException ex) {
             Output.printError(ex.getMessage());
         }
@@ -49,8 +43,9 @@ public class LottoController {
         return new Cost(Input.inputCost());
     }
 
-    private LottoGroup createLottoGroup(int purchaseCount, NumberGenerator numberGenerator) {
-        return new LottoGroup(purchaseCount, numberGenerator);
+    private LottoGroup createLottoGroup(int purchaseCount) {
+        NumberGenerator randomNumberGenerator = new RandomNumberGenerator();
+        return new LottoGroup(purchaseCount, randomNumberGenerator);
     }
 
     private WinningLotto createWinningLotto() {
@@ -59,5 +54,12 @@ public class LottoController {
 
     private BonusNumber createBonusNumber(WinningLotto winningLotto) {
         return new BonusNumber(Input.inputBonusNumbers(), winningLotto);
+    }
+
+    private void print(Cost cost, LottoGroup lottoGroup, Result result, Profit profit) {
+        Output.purchaseCountNotification(cost.getPurchaseCount());
+        Output.printLottoGroup(lottoGroup);
+        Output.printWinningStatistics(result);
+        Output.earningsRateNotification(profit.getEarningsRate());
     }
 }
