@@ -20,7 +20,8 @@ public enum WinningType {
     }
 
     public static WinningType of(int matchedCount, boolean isBonusMatched) {
-        if (isBonusMatched && matchedCount == 5) {
+        if (isBonusMatched
+                && matchedCount == SECOND_PLACE.getReward()) {
             return SECOND_PLACE;
         }
 
