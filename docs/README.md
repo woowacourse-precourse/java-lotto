@@ -65,7 +65,7 @@
 - [x] 당첨 번호와 상금을 정의한 Enum
 
 ### WinningLotto
-- [ ] 당첨 번호와 보너스 번호로 생성되는 WinningLotto 클래스
+- [x] 당첨 번호와 보너스 번호로 생성되는 WinningLotto 클래스
 
 ### LottoService
 - [ ] 당첨번호와 보너스번호를 기준으로 당첨 통계의 정보를 구한다.
