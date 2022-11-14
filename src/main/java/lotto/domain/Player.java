@@ -1,29 +1,30 @@
 package lotto.domain;
 
+import static lotto.util.Constants.NUMBER_COUNTS;
+import static lotto.util.Constants.LOTTO_RANGE_MAX;
+import static lotto.util.Constants.LOTTO_RANGE_MIN;
+
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import lotto.view.OutputView;
 
 public class Player {
 
-    private static final List<List<Integer>> allPlayerNumbers = new ArrayList<>();
+    private static List<List<Integer>> allPlayerNumbers = new ArrayList<>();
 
     public Player(int ticketNumber) {
         createAllPlayerNumbers(ticketNumber);
     }
 
-    public List<List<Integer>> get() {
+    public List<List<Integer>> getAllPlayerNumbers() {
         return allPlayerNumbers;
     }
 
     private static void createAllPlayerNumbers(int ticketNumber) {
-        for (int i = 0; i < ticketNumber; i++) {
-            List<Integer> playerNumber = createPlayerNumbers();
-            allPlayerNumbers.add(playerNumber);
-            OutputView.printPlayerNumbers(playerNumber);
-        }
+        do {
+            allPlayerNumbers.add(createPlayerNumbers());
+        } while (allPlayerNumbers.size() < ticketNumber);
     }
 
     private static List<Integer> createPlayerNumbers() {
@@ -31,7 +32,7 @@ public class Player {
     }
 
     private static List<Integer> createSixRandomUniqueNumbers() {
-        return new ArrayList<>(Randoms.pickUniqueNumbersInRange(1, 45, 6));
+        return new ArrayList<>(Randoms.pickUniqueNumbersInRange(LOTTO_RANGE_MIN, LOTTO_RANGE_MAX, NUMBER_COUNTS));
     }
 
     private static List<Integer> sortInAscendingOrders(List<Integer> playerNumbers) {
