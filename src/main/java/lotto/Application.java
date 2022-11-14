@@ -2,6 +2,7 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
 
+import java.util.Arrays;
 import java.util.List;
 
 public class Application {
@@ -17,13 +18,14 @@ public class Application {
         List<List> lottoNumber = makeNumber.makeUserNumber(user.buyCount);
 
 
-        // 2 : Lotto validate Check
-
+        // 2 : Lotto Number Make
         MakeLotto makeLotto = new MakeLotto();
 
+
+        // 3 : Lotto validate Check
         Lotto lotto = new Lotto(makeLotto.lottoNumber);
 
-        // 3 : Lotto Number Make
+        lotto.numberValidate(Arrays.asList(makeLotto.lottoBonusNumber));//보너스숫자 체크
 
 
         // 4 : has Check Number
