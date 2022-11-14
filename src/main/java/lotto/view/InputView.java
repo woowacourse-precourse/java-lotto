@@ -1,13 +1,10 @@
 package lotto.view;
 
-import camp.nextstep.edu.missionutils.Console;
-
 import java.util.ArrayList;
 import java.util.List;
 
-import static camp.nextstep.edu.missionutils.Console.*;
+import static camp.nextstep.edu.missionutils.Console.readLine;
 import static java.lang.Integer.parseInt;
-import static java.lang.String.*;
 
 public class InputView {
 
@@ -20,27 +17,24 @@ public class InputView {
         return validateOnlyNaturalNumber(readLine());
     }
 
-    private int validateOnlyNaturalNumber(String inputAmount) {
-        if (!inputAmount.matches("^[0-9]+$")) {
-            throw new IllegalArgumentException("금액은 자연수만 입력해주세요!");
-        }
-        return parseInt(inputAmount);
-    }
-
     public List<Integer> getWinningNums() {
         System.out.println(INPUT_WINNING_NUM);
         List<Integer> winningNums = new ArrayList<>();
         for (String winningNum : readLine().split(",")) {
-            winningNums.add(Integer.parseInt(winningNum));
+            winningNums.add(validateOnlyNaturalNumber(winningNum));
         }
         return winningNums;
     }
 
-
-
     public int getBonusNum() {
         System.out.println(INPUT_BONUS_NUM);
-        //TODO : validation 추가 필요
-        return parseInt(readLine());
+        return validateOnlyNaturalNumber(readLine());
+    }
+
+    private int validateOnlyNaturalNumber(String input) {
+        if (!input.matches("^[0-9]+$")) {
+            throw new IllegalArgumentException("자연수만 입력해주세요!");
+        }
+        return parseInt(input);
     }
 }
