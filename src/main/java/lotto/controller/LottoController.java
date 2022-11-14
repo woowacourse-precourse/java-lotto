@@ -2,7 +2,11 @@ package lotto.controller;
 
 public class LottoController {
     public void controlLotto(){
-        LottoPurchase lottoPurchase = new LottoPurchase();
-        lottoPurchase.controlLottoPurchase();
+        try{
+            LottoPurchase lottoPurchase = new LottoPurchase();
+            lottoPurchase.controlLottoPurchase();
+        } catch(Exception e){
+            System.out.println(e.getMessage());
+        }
     }
 }

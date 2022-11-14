@@ -1,5 +1,6 @@
 package lotto.controller;
 
+import lotto.model.User;
 import lotto.view.LottoPurchaseUI;
 
 public class LottoPurchase {
@@ -7,5 +8,6 @@ public class LottoPurchase {
 
     public void controlLottoPurchase(){
         String purchaseAmount = lottoPurchaseUI.takePurchaseAmount();
+        User user = new User(purchaseAmount);
     }
 }
