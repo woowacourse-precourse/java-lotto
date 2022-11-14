@@ -66,15 +66,19 @@ public class LottoStatistics {
     public LottoStatistics() throws IllegalArgumentException {
         try {
             lottoBuyer = new LottoBuyer();
+            lottoBuyer.setBuyer();
             lotto = lottoBuyer.getLotto();
             lottos = lottoBuyer.getLottos();
             money = lottoBuyer.getMoney();
             bonusNumber = lottoBuyer.getBonusNumber();
-            winTheLottery();
-            printResult();
         } catch (IllegalArgumentException iae) {
             throw iae;
         }
+    }
+
+    public void start() {
+        winTheLottery();
+        printResult();
     }
 
     public void winTheLottery() {
@@ -88,7 +92,7 @@ public class LottoStatistics {
         }
     }
 
-    /*등수별 카운트*/
+    //등수별 카운트
     public void rankCount(List<Integer> numbers) {
         if (numbers.size() == 0) {
             Rank.FIRST.plusCount();
