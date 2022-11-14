@@ -1,4 +1,6 @@
-package lotto;
+package lotto.domain;
+
+import lotto.util.InputChecker;
 
 import java.util.List;
 
@@ -7,6 +9,7 @@ public class Lotto {
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
+        InputChecker.checkLottoNumbers(numbers);
         this.numbers = numbers;
     }
 
@@ -17,4 +20,11 @@ public class Lotto {
     }
 
     // TODO: 추가 기능 구현
+    public void printNumbers() {
+        System.out.println(numbers);
+    }
+
+    public List<Integer> getNumbers() {
+        return numbers;
+    }
 }
