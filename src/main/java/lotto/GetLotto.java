@@ -30,6 +30,6 @@ public class GetLotto {
     }
 
     public void choiceNumber() {
-        choiceLottoNumber choice_number = new choiceLottoNumber();
+        ChoiceLottoNumber choice_number = new ChoiceLottoNumber();
     }
 }
