@@ -86,7 +86,7 @@ class LottoTest {
         @Test
         void changeLottoWinningNumberToList(){
             Winner winner = new Winner("11,45,2,13,24,35");
-            List<Integer> lottoWinningNumber = winner.getLottoWinningNumber();
+            List<Integer> lottoWinningNumber = winner.getWinningNumber();
             assertThat(lottoWinningNumber).containsExactlyInAnyOrder(45,11,13,24,35,2);
         }
     }
@@ -125,14 +125,14 @@ class LottoTest {
         @DisplayName("로또 번호와 당첨 번호를 비교하고 몇 개가 같은지 알 수 있다.")
         @Test
         void 로또_번호_당첨_번호_비교_테스트() {
-            int correctCount = referee.correctCountLottoNumberAndWinnerNum(List.of(1, 2, 3, 4, 5, 6), List.of(2, 3, 12, 43, 45));
+            int correctCount = referee.correctCountLottoNumAndWinnerNum(List.of(1, 2, 3, 4, 5, 6), List.of(2, 3, 12, 43, 45));
             assertThat(correctCount).isEqualTo(2);
         }
 
         @DisplayName("로또 번호와 보너스 번호를 비교")
         @Test
         void 로또_번호_보너스_번호_비교_테스트() {
-            boolean found = referee.isBonusNumberInLottoNumber(List.of(1, 2, 3, 4, 5, 6), 3);
+            boolean found = referee.isBonusNumberInWinningNumber(List.of(1, 2, 3, 4, 5, 6), 3);
             assertThat(found).isEqualTo(true);
         }
 

@@ -9,15 +9,15 @@ public class ProfitCalculator {
 
     public String calculate(int lottoCount, Map<LottoRank, Integer> lottoResultCount) {
         BigDecimal count = BigDecimal.valueOf(lottoCount);
-        BigDecimal purchaseMoney = count.multiply(BigDecimal.valueOf(1000));
+        BigDecimal purchasedMoney = count.multiply(BigDecimal.valueOf(1000));
         BigDecimal winningMoneyAmount = getWinningMoneyAmount(lottoResultCount);
-        BigDecimal profit = winningMoneyAmount.divide(purchaseMoney);
-        profit = profit.multiply(BigDecimal.valueOf(100)).setScale(1,RoundingMode.HALF_UP);
+        BigDecimal profitBeforeMultiply  = winningMoneyAmount.divide(purchasedMoney);
+        BigDecimal profit = profitBeforeMultiply.multiply(BigDecimal.valueOf(100)).setScale(1,RoundingMode.HALF_UP);
         return profit.toString();
     }
 
     public BigDecimal getWinningMoneyAmount(Map<LottoRank, Integer> lottoResultCount) {
-        BigDecimal result = new BigDecimal(0);
+        BigDecimal winningMoneyAmount = new BigDecimal(0);
         for (Map.Entry<LottoRank, Integer> lottoRankEntry : lottoResultCount.entrySet()) {
             LottoRank rank = lottoRankEntry.getKey();
             int winningMoney =  rank.getMoney();
@@ -25,9 +25,9 @@ public class ProfitCalculator {
             BigDecimal money = BigDecimal.valueOf(winningMoney);
             BigDecimal count = BigDecimal.valueOf(winningCount);
             BigDecimal sum = money.multiply(count);
-            result = result.add(sum);
+            winningMoneyAmount = winningMoneyAmount.add(sum);
         }
-        return result;
+        return winningMoneyAmount;
     }
 
 }

@@ -9,14 +9,14 @@ import static lotto.constValue.Constants.LottoInfo.*;
 
 public class LottoGenerator {
 
-    public List<Lotto> createLottoNumbers(int lottoAmount) {
+    public List<Lotto> createLottoNumbers(int lottoTicket) {
         List<Lotto> lottos = new ArrayList<>();
 
-        while (lottoAmount > 0) {
+        while (lottoTicket > 0) {
             List<Integer> numbers = Randoms.pickUniqueNumbersInRange(MIN_RANGE, MAX_RANGE, COUNT_RANGE);
             Lotto lotto = new Lotto(numbers);
             lottos.add(lotto);
-            lottoAmount--;
+            lottoTicket--;
         }
         return lottos;
     }

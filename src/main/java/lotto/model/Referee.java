@@ -14,30 +14,35 @@ public class Referee {
         return lottoResultCount;
     }
 
-    public void createLottoResult(List<Lotto> lottos, List<Integer> winnerNumber, int bonusNum){
+    public void createLottoResult(List<Lotto> lottos, List<Integer> winningNumber, int bonusNum){
         for (Lotto lotto : lottos) {
             List<Integer> lottoNumbers = lotto.getNumbers();
-            createLottoResultCount(winnerNumber, bonusNum, lottoNumbers);
+            createLottoResultCount(lottoNumbers,winningNumber, bonusNum);
         }
     }
 
-    public void createLottoResultCount(List<Integer> winnerNumber, int bonusNum, List<Integer> lottoNumbers) {
-        int correctCount = correctCountLottoNumberAndWinnerNum(lottoNumbers, winnerNumber);
-        boolean foundBonus = isBonusNumberInLottoNumber(winnerNumber, bonusNum);
+    public void createLottoResultCount(List<Integer> lottoNumbers,List<Integer> winningNumber, int bonusNum) {
+        int correctCount = correctCountLottoNumAndWinnerNum(lottoNumbers, winningNumber);
+        boolean foundBonus = isBonusNumberInWinningNumber(winningNumber, bonusNum);
         putLottoResultCount(correctCount,foundBonus);
     }
 
-    public int correctCountLottoNumberAndWinnerNum(List<Integer> lottoNumber, List<Integer> winnerNumber) {
-        int count = 0;
+    public int correctCountLottoNumAndWinnerNum(List<Integer> lottoNumber, List<Integer> winnerNumber) {
+        int correctCount = 0;
         for (int i = 0; i < 6; i++) {
-            if (winnerNumber.contains(lottoNumber.get(i))) {
-                count++;
-            }
+            correctCount = getCorrectCount(lottoNumber, winnerNumber, correctCount, i);
         }
-        return count;
+        return correctCount;
     }
 
-    public boolean isBonusNumberInLottoNumber(List<Integer> winningNumber, int bonusNum) {
+    private static int getCorrectCount(List<Integer> lottoNumber, List<Integer> winnerNumber, int correctCount, int i) {
+        if (winnerNumber.contains(lottoNumber.get(i))) {
+            correctCount++;
+        }
+        return correctCount;
+    }
+
+    public boolean isBonusNumberInWinningNumber(List<Integer> winningNumber, int bonusNum) {
         return winningNumber.contains(bonusNum);
     }
 
@@ -58,17 +63,17 @@ public class Referee {
     }
 
     private static void addLottoCount(LottoRank rank) {
-        addLottoCountPresent(rank);
-        addLottoCountNotPresent(rank);
+        addLottoResultCountPresent(rank);
+        addLottoResultCountNonPresent(rank);
     }
 
-    private static void addLottoCountNotPresent(LottoRank rank) {
+    private static void addLottoResultCountNonPresent(LottoRank rank) {
         if (!isContainRank(rank)) {
             lottoResultCount.put(rank, 1);
         }
     }
 
-    private static void addLottoCountPresent(LottoRank rank) {
+    private static void addLottoResultCountPresent(LottoRank rank) {
         if (isContainRank(rank)) {
             Integer count = lottoResultCount.get(rank);
             lottoResultCount.put(rank, count + 1);

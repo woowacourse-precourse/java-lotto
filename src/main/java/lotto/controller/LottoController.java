@@ -50,7 +50,7 @@ public class LottoController {
     public List<Integer> enterLotto(){
         String lottoWinningNumber = inputView.enterLottoNumber();
         winner = new Winner(lottoWinningNumber);
-        return winner.getLottoWinningNumber();
+        return winner.getWinningNumber();
     }
 
     public int enterBonus(){

@@ -6,6 +6,8 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 import static lotto.constValue.Constants.ExceptionMessage.*;
+import static lotto.constValue.Constants.LottoInfo.MAX_RANGE;
+import static lotto.constValue.Constants.LottoInfo.MIN_RANGE;
 
 public class Lotto {
     private final List<Integer> numbers;
@@ -27,26 +29,30 @@ public class Lotto {
     // TODO: 추가 기능 구현
     private void validateLottoNumberRange(List<Integer> numbers) {
         for (Integer number : numbers) {
-            if (number < 1 || number > 45) {
-                throw new IllegalArgumentException(LOTTO_NUMBER_OVER_RANGE_ERROR_MESSAGE);
-            }
+            throwOverRangeException(number);
+        }
+    }
+
+    private static void throwOverRangeException(Integer number) {
+        if (number < MIN_RANGE || number > MAX_RANGE) {
+            throw new IllegalArgumentException(LOTTO_NUMBER_OVER_RANGE_ERROR_MESSAGE);
         }
     }
 
     private void validateDuplicatedLottoNumber(List<Integer> numbers) {
-        Set<Integer> notDuplicatedNumber = getNotDuplicatedNumber(numbers);
-        if (numbers.size() == notDuplicatedNumber.size()) {
+        Set<Integer> nonDuplicatedNumber = getNonDuplicatedNumber(numbers);
+        if (numbers.size() == nonDuplicatedNumber.size()) {
             return;
         }
         throw new IllegalArgumentException(LOTTO_NUMBER_DUPLICATE_ERROR_MESSAGE);
     }
 
-    private static Set<Integer> getNotDuplicatedNumber(List<Integer> numbers) {
-        Set<Integer> notDuplicatedNumber = new HashSet<>();
+    private static Set<Integer> getNonDuplicatedNumber(List<Integer> numbers) {
+        Set<Integer> nonDuplicatedNumber = new HashSet<>();
         for (Integer number : numbers) {
-            notDuplicatedNumber.add(number);
+            nonDuplicatedNumber.add(number);
         }
-        return notDuplicatedNumber;
+        return nonDuplicatedNumber;
     }
 
 
