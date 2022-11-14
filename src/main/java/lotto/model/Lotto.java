@@ -3,10 +3,11 @@ package lotto.model;
 import java.util.Collections;
 import java.util.List;
 
+import static lotto.exception.LottoException.isDuplicateNumber;
+import static lotto.exception.LottoException.isValidLottoSize;
+import static lotto.exception.LottoException.isValidNumberRange;
+
 public class Lotto {
-    private static final String INVALID_LOTTO_SIZE = "[ERROR] 로또는 6개의 숫자로 이루어져야 합니다.";
-    private static final String INVALID_NUMBER_RANGE = "[ERROR] 로또 번호의 범위는 1 ~ 45까지 입니다.";
-    private static final String DUPLICATE_LOTTO_NUMBER = "[ERROR] 로또의 6개의 수는 중복될 수 없습니다.";
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
@@ -18,30 +19,6 @@ public class Lotto {
 
     public List<Integer> get() {
         return Collections.unmodifiableList(numbers);
-    }
-
-    private void isValidLottoSize(List<Integer> numbers) {
-        if (numbers.size() != 6) {
-            throw new IllegalArgumentException(INVALID_LOTTO_SIZE);
-        }
-    }
-
-    private void isValidNumberRange(List<Integer> numbers) {
-        for (int number : numbers) {
-            if (number < 1 || number > 45) {
-                throw new IllegalArgumentException(INVALID_NUMBER_RANGE);
-            }
-        }
-    }
-
-    private void isDuplicateNumber(List<Integer> numbers) {
-        int uniqueNumberCount = (int) numbers.stream()
-                .distinct()
-                .count();
-
-        if (numbers.size() != uniqueNumberCount) {
-            throw new IllegalArgumentException(DUPLICATE_LOTTO_NUMBER);
-        }
     }
 
     public int countSameNumber(WinningLotto winningLotto) {
