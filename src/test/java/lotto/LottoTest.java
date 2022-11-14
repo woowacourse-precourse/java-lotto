@@ -3,6 +3,8 @@ package lotto;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
@@ -122,8 +124,18 @@ class LottoTest {
         /*given*/
         boolean compareTicketAndBonusTest = true;
         /*when*/
-        boolean compareTicketAndBonus = playLotto.compareTicketAndBonusNumber(List.of(1, 2, 3, 4, 5, 6),"1");
+        boolean compareTicketAndBonus = playLotto.compareTicketAndBonusNumber(List.of(1, 2, 3, 4, 5, 6), "1");
         /*then*/
         assertThat(compareTicketAndBonusTest).isEqualTo(compareTicketAndBonus);
+    }
+
+    @DisplayName("티켓이 몇개 일치하는지 찾는다.")
+    @ParameterizedTest
+    @CsvSource({"3,true,0","4,false,1","5,false,2","5,true,3","6,false,4","0,true,9"})
+    void compareReward(int number1, boolean bonusCheck, int expected) {
+        /*when*/
+        int actual = playLotto.compareReward(number1, bonusCheck);
+        /*then*/
+        assertThat(expected).isEqualTo(actual);
     }
 }
