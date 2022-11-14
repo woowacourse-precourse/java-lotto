@@ -73,6 +73,6 @@
 ---
 ## 흐름도
 
-<br>
+![로또 흐름도](../flowchart/woowaLotto.png)
 
 ---
