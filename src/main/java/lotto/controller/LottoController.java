@@ -1,5 +1,6 @@
 package lotto.controller;
 
+import lotto.util.LottoMachine;
 import lotto.model.LottoResult;
 import lotto.model.Lottos;
 import lotto.model.WinningNumber;
@@ -9,25 +10,30 @@ public class LottoController {
 
     public void play() {
         try {
-            LottoConsole.printPurchaseAmountInput();
-            String purchaseAmountStr = LottoConsole.readPurchaseAmount();
-            Lottos lottos = new Lottos(purchaseAmountStr);
-            LottoConsole.printLottos(lottos);
+            Lottos lottos = purchaseLottos();
 
-            LottoConsole.printWinningNumberInput();
-            String winningNumberStr = LottoConsole.readWinningNumber();
-            LottoConsole.printBonusNumberStr();
-            String bonusNumberStr = LottoConsole.readBonusNumber();
-
-            WinningNumber winningNumber = new WinningNumber(winningNumberStr, bonusNumberStr);
-            LottoResult lottoResult = new LottoResult(lottos, winningNumber);
+            LottoResult lottoResult = calculateLottoResult(lottos);
 
             LottoConsole.printLottoResult(lottoResult);
         } catch (IllegalArgumentException e) {
             LottoConsole.printError(e);
         }
+    }
 
+    private LottoResult calculateLottoResult(Lottos lottos) {
+        String winningNumberStr = LottoConsole.readWinningNumber();
+        String bonusNumberStr = LottoConsole.readBonusNumber();
 
+        WinningNumber winningNumber = new WinningNumber(winningNumberStr, bonusNumberStr);
+        LottoResult lottoResult = new LottoResult(lottos, winningNumber);
+        return lottoResult;
+    }
+
+    private Lottos purchaseLottos() {
+        String purchaseAmountStr = LottoConsole.readPurchaseAmount();
+        Lottos lottos = new Lottos(LottoMachine.generateLottos(purchaseAmountStr), purchaseAmountStr);
+        LottoConsole.printLottos(lottos);
+        return lottos;
     }
 
 }
