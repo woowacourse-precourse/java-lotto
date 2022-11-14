@@ -17,11 +17,9 @@ public class OutputConsole {
         }
     }
 
-    public static void printWinningList(List<Lotto> lottos, List<Integer> winningNumber, int bonusNumber) {
+    public static void printWinningList(Map<Rank, Integer> rankResult) {
         System.out.println("당첨통계");
         System.out.println("---");
-        LottoMachine lottoMachine = new LottoMachine();
-        Map<Rank, Integer> rankResult = lottoMachine.makeRankResult(lottos, winningNumber, bonusNumber);
         for (Rank key: rankResult.keySet()){
             if (key == Rank.NOTHING) {
                 continue;

@@ -1,6 +1,7 @@
 package lotto;
 
 import java.util.List;
+import java.util.Map;
 
 public class LottoStore {
 
@@ -11,7 +12,8 @@ public class LottoStore {
         OutputConsole.printLottoList(lottos);
         List<Integer> winningNumber = InputConsole.winningNumber();
         int bonusNumber = InputConsole.bonusNumber();
-        OutputConsole.printWinningList(lottos, winningNumber, bonusNumber);
+        Map<Rank, Integer> rankResult = lottoMachine.makeRankResult(lottos, winningNumber, bonusNumber);
+        OutputConsole.printWinningList(rankResult);
         OutputConsole.printProfitRate(lottos, money, winningNumber, bonusNumber);
     }
 }
