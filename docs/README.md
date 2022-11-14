@@ -24,7 +24,7 @@
 - [x] 금액에 해당하는 로또 발행수를 알 수 있다. - Judgment#countLottos()
    - [x] 입력 받은 금액이 양의 정수가 아니면 에러 메시지를 출력 후 종료할 수 있다.
    - [x] 입력 받은 금액이 1,000원으로 나누어 떨어지지 않으면 에러 메시지를 출력 후 종료할 수 있다.
-- [ ] 1~45까지의 중복되지 않는 6개의 숫자를 생성한다. - NumberGenerator#createLottoNumbers()
+- [x] 1~45까지의 중복되지 않는 6개의 숫자를 생성한다. - NumberGenerator#createLottoNumbers()
 - [ ] 로또를 구매할 수 있다. - Buyer#buyLottos()
 - [ ] 구매한 로또를 알 수 있다. - Buyer#getLottos()
 - [ ] 구매한 로또 번호들을 오름차순으로 정렬할 수 있다. - Buyer#sortLottos();
