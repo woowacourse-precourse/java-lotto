@@ -16,22 +16,36 @@ public class LottoValidator {
     private static final String RANGE_ERROR_MESSAGE = ERROR_HEADER + " 1~45 사이의 숫자만 입력해주십시오.";
 
     public void validate(List<Integer> numbers) {
-        int size = numbers.size();
+        checkLottoSize(numbers);
+        checkDuplicate(numbers);
+        countInvalidNumber(numbers);
+    }
 
-        if (size != MAX_LOTTO_SIZE) {
+    public void validate(List<Integer> numbers, int bonusNumber) {
+        //TODO: 여기서 당첨 Lotto와 번호가 중복인지도 체크해야 한다.
+        
+
+    }
+
+    public void checkLottoSize(List<Integer> numbers) {
+        if (numbers.size() != MAX_LOTTO_SIZE) {
             System.out.print(SIZE_ERROR_MESSAGE);
             throw new IllegalArgumentException();
         }
+    }
 
+    public void checkDuplicate(List<Integer> numbers) {
         boolean isDuplicated = numbers.stream()
                 .distinct()
-                .count() != size;
+                .count() != numbers.size();
 
         if (isDuplicated) {
             System.out.print(DUPLICATION_ERROR_MESSAGE);
             throw new IllegalArgumentException();
         }
+    }
 
+    public void countInvalidNumber(List<Integer> numbers) {
         long invalidCount = numbers.stream()
                 .filter(num -> (num < MIN_LOTTO_RANGE || num > MAX_LOTTO_RANGE))
                 .count();
@@ -40,7 +54,5 @@ public class LottoValidator {
             System.out.print(RANGE_ERROR_MESSAGE);
             throw new IllegalArgumentException();
         }
-
-        //TODO: 메소드 길이 15줄 이내로 줄이기
     }
 }
