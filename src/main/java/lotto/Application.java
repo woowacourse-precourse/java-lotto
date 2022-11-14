@@ -61,14 +61,18 @@ public class Application {
         String[] inputs = userInput.split(",");
 
         for (String input: inputs) {
-            try{
-                int number = Integer.parseInt(input);
-                winningNumbers.add(number);
-            }catch (Exception e){
-                throw new IllegalArgumentException(ERROR.LOTTO_NUMBERS);
-            }
+            getWinningNumber(input);
         }
         validateWinning();
+    }
+
+    public static void getWinningNumber(String input) throws IllegalArgumentException {
+        try{
+            int number = Integer.parseInt(input);
+            winningNumbers.add(number);
+        }catch (Exception e){
+            throw new IllegalArgumentException(ERROR.LOTTO_NUMBERS);
+        }
     }
 
     public static void validateWinning(){
@@ -155,8 +159,7 @@ public class Application {
         System.out.println("당첨 통계");
         System.out.println("---");
         for (WIN win : winnings.keySet()) {
-            if (win == WIN.WIN_NO)
-                continue;
+            if (win == WIN.WIN_NO) continue;
             totalMoney += printStatsOne(win, winnings.get(win));
         }
         printRateOfReturn(totalMoney, inputMoney);
