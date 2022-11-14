@@ -2,6 +2,9 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Application {
     public static final Integer LOTTO_AMOUNT_EACH = 1000;
 
@@ -14,7 +17,8 @@ public class Application {
         [1, 2, 3, 4, 5, 6]
          */
 
-        // 당첨 번호를 입력해 주세요.
+        noticeInputWiningLottoNumbers();
+        Lotto winingLotto = noticeWiningLottoInputMessage();
         // 1,2,3,4,5,6
 
         // 보너스 번호를 입력해 주세요
@@ -29,6 +33,23 @@ public class Application {
         // 총 수익률은 62.5%입니다.
 
         // TODO: 프로그램 구현
+    }
+
+
+    private static Lotto noticeWiningLottoInputMessage() {
+        String input = Console.readLine();
+        String[] winingLottoInput = input.split(",");
+
+        List<Integer> winingLottoNumbers = new ArrayList<>();
+        for(int i = 0; i < 6; i++) {
+            Integer number = Integer.parseInt(winingLottoInput[i]);
+            winingLottoNumbers.add(number);
+        }
+        return new Lotto(winingLottoNumbers);
+    }
+
+    private static void noticeInputWiningLottoNumbers() {
+        System.out.println("당첨 번호를 입력해 주세요.");
     }
 
     private static void printlnLottoNumMessage(Integer amount) {
