@@ -1,5 +1,6 @@
 package lotto.view;
 
+import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.List;
 import lotto.model.Lotto;
@@ -30,8 +31,13 @@ public class OutputView {
         }
     }
 
-    public static void printYield(int money, LottoStatics statics) {
-        float yield = (statics.getTotalPrize() / (float) money) * 100;
+    public static void printYield(int inputmoney, LottoStatics statics) {
+        BigDecimal money = new BigDecimal(String.valueOf(inputmoney));
+        BigDecimal totalPrize = new BigDecimal(String.valueOf(statics.getTotalPrize()));
+
+        BigDecimal yield = totalPrize.divide(money);
+        yield = yield.multiply(new BigDecimal("100"));
+        
         System.out.printf(MESSAGE_YIELD, yield);
     }
 }
