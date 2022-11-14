@@ -4,9 +4,10 @@ import static lotto.constant.SystemValue.LOTTERY_NUMBERS_SIZE;
 import static lotto.constant.SystemValue.MAXIMUM_LOTTERY_NUMBER;
 import static lotto.constant.SystemValue.MINIMUM_LOTTERY_NUMBER;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.regex.Pattern;
-import lotto.util.TypeConverter;
+import java.util.stream.Collectors;
 
 public class WinningLotto {
 
@@ -18,7 +19,7 @@ public class WinningLotto {
 
     public WinningLotto(String number) {
         validate(number);
-        this.numbers = TypeConverter.toIntegerListByComma(number);
+        this.numbers = toIntegerListByComma(number);
     }
 
     private void validate(String number) {
@@ -40,7 +41,7 @@ public class WinningLotto {
     }
 
     public static void checkSizeValid(String winningNumber) {
-        List<String> winningNumbers = TypeConverter.toStringListByComma(winningNumber);
+        List<String> winningNumbers = toStringListByComma(winningNumber);
         boolean isSize = winningNumbers.size() == LOTTERY_NUMBERS_SIZE;
         if (!isSize) {
             throw new IllegalArgumentException(WINNING_NUMBERS_SIZE_ERROR);
@@ -48,7 +49,7 @@ public class WinningLotto {
     }
 
     public static void checkConflictValid(String winningNumber) {
-        List<Integer> winningNumbers = TypeConverter.toIntegerListByComma(winningNumber);
+        List<Integer> winningNumbers = toIntegerListByComma(winningNumber);
         boolean isConflict = winningNumbers.stream()
                 .distinct()
                 .count() == LOTTERY_NUMBERS_SIZE;
@@ -58,7 +59,7 @@ public class WinningLotto {
     }
 
     public static void checkRangeValid(String winningNumber) {
-        List<Integer> winningNumbers = TypeConverter.toIntegerListByComma(winningNumber);
+        List<Integer> winningNumbers = toIntegerListByComma(winningNumber);
         boolean isRange = winningNumbers.stream()
                 .filter(number -> MINIMUM_LOTTERY_NUMBER <= number
                         && number <= MAXIMUM_LOTTERY_NUMBER)
@@ -70,5 +71,16 @@ public class WinningLotto {
 
     public boolean contains(Integer number) {
         return numbers.contains(number);
+    }
+
+    private static List<String> toStringListByComma(String winningNumber) {
+        return Arrays.asList(winningNumber.split(","));
+    }
+
+    private static List<Integer> toIntegerListByComma(String winningNumber) {
+        List<String> winningNumbers = Arrays.asList(winningNumber.split(","));
+        return winningNumbers.stream()
+                .map(Integer::parseInt)
+                .collect(Collectors.toList());
     }
 }
