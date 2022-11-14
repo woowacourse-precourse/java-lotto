@@ -24,7 +24,7 @@ public class LottoGenerator {
     }
 
     private void getNumbersFromLottos(List<Lotto> lottos) {
-        for (Lotto lotto: lottos) {
+        for (Lotto lotto : lottos) {
             lottosNumber.add(lotto.getNumbers());
         }
     }

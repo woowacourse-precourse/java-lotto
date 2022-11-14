@@ -16,17 +16,17 @@ public enum Prize {
     private final int price;
     private final String phrase;
 
-    Prize(int gradeNum, int price, String phrase){
+    Prize(int gradeNum, int price, String phrase) {
         this.gradeNum = gradeNum;
         this.price = price;
         this.phrase = phrase;
     }
 
-    public int gradeNum(){
+    public int gradeNum() {
         return gradeNum;
     }
 
-    public int price(){
+    public int price() {
         return price;
     }
 
