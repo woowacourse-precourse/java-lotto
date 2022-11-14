@@ -5,7 +5,6 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class InputLottoTest {
@@ -35,7 +34,7 @@ class InputLottoTest {
     @Test
     void toIntList(){
         InputLotto inputLotto = new InputLotto();
-        assertEquals(List.of(12, 23, 34, 45, 56, 67), inputLotto.toIntList(List.of("12", "23", "34", "45", "56", "67")));
+        assertEquals(List.of(12, 23, 34, 45, 1, 24), inputLotto.toIntList(List.of("12", "23", "34", "45", "1", "24")));
     }
 
 }
