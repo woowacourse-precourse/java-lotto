@@ -9,7 +9,7 @@ public class UIPrinter {
     }
 
     public static void printEmptyLine() {
-        System.out.println(UIMessage.EMPTY_LINE.getMessage());
+        System.out.println();
     }
 
     public static void printLotto(Lotto lotto) {
