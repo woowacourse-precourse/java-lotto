@@ -12,9 +12,16 @@ import java.util.Map;
 public enum OutputView {
     INSTANCE;
     private static final String LOTTO_QUANTITY_MESSAGE_FORMAT = "개를 구매했습니다";
-
+    private static final String TOTAL_RESULT_HEADER_MESSAGE = "당첨 통계\n---";
+    private static final String YIELD_MESSAGE_FORMAT = "총 수익률은 %s%%입니다.";
+    public static void printTotalResultHeader(){
+        System.out.println(TOTAL_RESULT_HEADER_MESSAGE);
+    }
     public static void printRankInfoWithCounts(List<String> rankInfoWithCounts) {
         rankInfoWithCounts.forEach(System.out::println);
+    }
+    public static void printYield(String yield){
+        System.out.println(String.format(YIELD_MESSAGE_FORMAT, yield));
     }
 
     public static void printLottoReceipts(List<Lotto> lotteries) {
