@@ -69,4 +69,22 @@ public class ValidatorTest {
             Assertions.assertThat(Validator.isInRange(List.of(1,2,3,4,5,6))).isTrue();
         }
     }
+
+    @Nested
+    class isDuplicate {
+        @DisplayName("주어진 리스트에 중복이 존재하지 않는 경우")
+        @Test
+        void isDuplicate_중복없는경우() {
+            Assertions.assertThat(Validator.isDuplicate(List.of(1,2,3,4,5,6))).isFalse();
+        }
+
+        @DisplayName("주어진 리스트에 중복이 존재하지 않는 경우")
+        @Test
+        void isDuplicate_중복있는경우() {
+            Assertions.assertThatThrownBy(
+                            () -> Validator.isDuplicate(List.of(1,2,3,4,5,5))
+                    )
+                    .isInstanceOf(IllegalArgumentException.class);
+        }
+    }
 }
