@@ -37,22 +37,6 @@ public class MachineTest {
         Assertions.assertThat(lottos.size()).isEqualTo(count);
     }
 
-    @DisplayName("일치하는 번호 개수 확인 - 모두 일치 하는 경우")
-    @Test
-    void compareLottoCorrectAll() {
-        int count = machine.compare(new Lotto(List.of(1, 2, 3, 4, 5, 6)), new Lotto(List.of(1, 2, 3, 4, 5, 6)));
-
-        Assertions.assertThat(count).isEqualTo(6);
-    }
-
-    @DisplayName("일치하는 번호 개수 확인 - 하나만 일치 하는 경우")
-    @Test
-    void compareLottoCorrectOne() {
-        int count = machine.compare(new Lotto(List.of(1, 2, 3, 4, 5, 6)), new Lotto(List.of(6, 7, 8, 9, 10, 11)));
-
-        Assertions.assertThat(count).isEqualTo(1);
-    }
-
     @DisplayName("순위 확인 - 1등")
     @Test
     void rankingCheckFirst() {
