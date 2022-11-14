@@ -63,5 +63,27 @@ public class DiscriminatorTest {
 
         assertThat(discriminator.guessBonusNumber(lotto, 5)).isEqualTo(expectedBonusCount);
     }
+    @Test
+    @DisplayName("2개 이하의 추첨 번호를 맞춘 결과는 제외된다.")
+    public void excludeResultUnderTwoMatches(){
+        int expectedBonusCount=0;
+        int raffleMatches;
+        int bonusMatches=0;
+
+        List<Integer> lottoNumbers=List.of(1,45,6,7,8,20);
+        Lotto lotto = new Lotto(lottoNumbers);
+        List<List<Integer>> matches;
+
+        String raffleNumbers="1,45,5,11,23,9";
+        String bonusNumber="15";
+        RaffleNumber raffleNumber = new RaffleNumber(raffleNumbers, bonusNumber);
+
+        Discriminator discriminator = new Discriminator(raffleNumber);
+        raffleMatches=discriminator.guessLottoNumber(lotto);
+        discriminator.addMatchOverThree(raffleMatches, bonusMatches);
+        matches=discriminator.getMatches();
+
+        assertThat(matches.size()).isEqualTo(expectedBonusCount);
+    }
 
 }
