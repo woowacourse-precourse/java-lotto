@@ -31,4 +31,11 @@ public enum Prize {
     public boolean isBonus() {
         return isBonus;
     }
+
+    public static Prize generatePrize(Result result) {
+        return Arrays.stream(Prize.values())
+              .filter(result::isProperPrize)
+              .findFirst()
+              .orElse(NOTHING);
+    }
 }
