@@ -17,12 +17,12 @@ public class LottoGame {
         return lottos;
     }
 
-    public String getWinningNumber() {
+    public List<Integer> getWinningNumber() {
         String userInput = Console.readLine();
         return UserInputCheck.winningNumberCheck(userInput);
     }
 
-    public String getBonusNumber() {
+    public int getBonusNumber() {
         String userInput = Console.readLine();
         return UserInputCheck.bonusNumberCheck(userInput);
     }

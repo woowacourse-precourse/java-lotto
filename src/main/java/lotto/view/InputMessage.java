@@ -1,6 +1,9 @@
 package lotto.view;
 
+import static org.mockito.internal.util.StringUtil.join;
+
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class InputMessage {
     private final String INPUT_BONUS_NUMBER = "보너스 번호를 입력해 주세요";
@@ -25,12 +28,15 @@ public class InputMessage {
         System.out.println(INPUT_WINNING_NUMBER);
     }
 
-    public void winningNumberMessage(String winningNumber){
-        System.out.println(winningNumber);
+    public void winningNumberMessage(List<Integer> winningNumber){
+        String number = winningNumber.stream()
+                .map(String::valueOf)
+                .collect(Collectors.joining(","));
+        System.out.println(number);
         System.out.println(INPUT_BONUS_NUMBER);
     }
 
-    public void bonusNumberMessage(String bonusNumber) {
+    public void bonusNumberMessage(Integer bonusNumber) {
         System.out.println(bonusNumber);
     }
 }
