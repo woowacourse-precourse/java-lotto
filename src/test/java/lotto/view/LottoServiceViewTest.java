@@ -25,6 +25,15 @@ class LottoServiceViewTest {
     }
 
     @ParameterizedTest
+    @DisplayName("유효성 검사 테스트 - 화폐 최소 단위 검사")
+    @ValueSource(strings = {"10004", "112334", "123040", "111400"})
+    void checkMonetaryUnitTest(String inputMoney) {
+        assertThatThrownBy(() -> lottoServiceView.checkMonetaryUnit(inputMoney))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("[ERROR] 구매 금액의 최소 단위는 1,000 입니다. 1,000 단위로 다시 입력해주세요.");
+    }
+
+    @ParameterizedTest
     @DisplayName("유효성 검사 테스트 - 오버플로우 검사")
     @ValueSource(strings = {"2147483648", "1000000000"})
     void checkOverFlowTest(String inputMoney) {
