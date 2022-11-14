@@ -1,4 +1,4 @@
-package lotto.Exception;
+package lotto.exception;
 
 public enum ExceptionType {
     MONEY_TYPE_EXCEPTION("[ERROR] 돈은 정수값이 입력되어야 합니다."),

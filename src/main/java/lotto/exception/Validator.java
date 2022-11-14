@@ -1,4 +1,4 @@
-package lotto.Exception;
+package lotto.exception;
 
 import lotto.domain.Lotto;
 import lotto.util.TypeConverter;
@@ -6,10 +6,9 @@ import lotto.util.TypeConverter;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 public class Validator {
-    public static void validateMoney(String money) {
+    public static void validateMoneyString(String money) {
         validateMoneyType(money);
         validateMoneyValue(Integer.parseInt(money));
     }
