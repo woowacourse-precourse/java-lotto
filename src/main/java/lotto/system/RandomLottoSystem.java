@@ -8,7 +8,7 @@ import lotto.domain.money.Money;
 
 public class RandomLottoSystem {
     private static final String PRINT_MESSAGE_INPUT_PURCHASE_MONEY = "구입금액을 입력해 주세요.";
-    private static final String PRINT_MESSAGE_BUY_AMOUNT = "%d 개를 입력했습니다.";
+    private static final String PRINT_MESSAGE_BUY_AMOUNT = "%d개를 구매했습니다.";
     private static final Integer START_INCLUSIVE = 1;
     private static final Integer END_INCLUSIVE = 45;
     private static final Integer COUNT = 6;
