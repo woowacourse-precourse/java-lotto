@@ -13,8 +13,8 @@ public class Input {
             int input = Integer.parseInt(money);
             checkValidation(input);
             return input / 1000;
-        } catch (Exception e) {
-            throw new IllegalArgumentException("구입금액은 1000원 단위로 입력하세요.");
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("숫자를 입력하세요.");
         }
     }
 
