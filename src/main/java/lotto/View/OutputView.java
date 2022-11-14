@@ -19,7 +19,7 @@ public class OutputView {
     private static final String PRINT_THIRD_RANK = "5개 일치 (1,500,000원) - %d개";
     private static final String PRINT_SECOND_RANK = "5개 일치, 보너스 볼 일치 (30,000,000원) - %d개";
     private static final String PRINT_FIRST_RANK = "6개 일치 (2,000,000,000원) - %d개";
-    private static final String PRINT_EARNED_RATIO = "총 수익률은 %.1f";
+    private static final String PRINT_EARNED_RATIO = "총 수익률은 %.1f%%입니다.";
 
 
     public static final int ZERO = 0;
@@ -34,10 +34,11 @@ public class OutputView {
 
     public static void printLottoWallet(List<Lotto> wallet) {
         for (int i = ZERO; i < wallet.size(); i++) {
-            List<Integer> lotto = wallet.get(i).getNumbers().stream()
+            List<Integer> numbers = wallet.get(i).getNumbers();
+            numbers.stream()
                     .sorted(Collections.reverseOrder().reversed())
                     .collect(Collectors.toList());
-            System.out.println(lotto.toString());
+            System.out.println(numbers.toString());
         }
     }
 
@@ -52,7 +53,6 @@ public class OutputView {
                 calculator.CountOfRank(WinningRank.SECOND));
         System.out.printf(PRINT_FIRST_RANK + NEXT_LINE, calculator.CountOfRank(WinningRank.FIRST));
         System.out.printf(PRINT_EARNED_RATIO, calculator.earnedRatio());
-        System.out.print("%입니다.");
     }
 
     public static void printBlankLine(){
