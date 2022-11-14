@@ -20,9 +20,9 @@ public class Application {
             Integer BonusNumber = Convertor.toNumericValue(Input.bonusNumber());
             Winner winnerTicket = new Winner(WinningNumbers, BonusNumber);
 
-            Profit profit = new Profit(lottoTickets, winnerTicket);
-            Statistics statistics = new Statistics(profit);
-            Output.lottoResult(purchasePrice, statistics.getStatistics());
+//            Profit profit = new Profit(lottoTickets, winnerTicket);
+//            Statistics statistics = new Statistics(profit);
+//            Output.lottoResult(purchasePrice, statistics.getStatistics());
         } catch (IllegalArgumentException illegalArgumentException) {
             System.out.println(illegalArgumentException.getMessage());
         }

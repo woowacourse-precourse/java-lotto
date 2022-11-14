@@ -28,14 +28,13 @@ public enum Ranks {
         return message;
     }
 
-    public static int getPrizeMoneyBy(Matcher matcher) {
-        if (matcher.getMatchingWinningNumberCount() == 5
-                    && matcher.getMatchingBonusNumberCount() == 1) {
+    public static int getPrizeMoneyBy(int matchingWinningNumberCount, int matchingBonusNumberCount) {
+        if (matchingWinningNumberCount == 5 && matchingBonusNumberCount == 1) {
             return Ranks.BONUS_NUMBERS.prizeMoney;
         }
 
         for (Ranks ranks : Ranks.values()) {
-            if (matcher.getMatchingWinningNumberCount() == ranks.matchingWinningNumberCount) {
+            if (matchingWinningNumberCount == ranks.matchingWinningNumberCount) {
                 return ranks.prizeMoney;
             }
         }
