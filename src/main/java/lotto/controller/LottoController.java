@@ -18,12 +18,12 @@ public class LottoController {
 
         printNumberOfLottos(purchaseAmount);
 
-        Lottos lottos = generateLottos(purchaseAmount.getNumberOfLottos());
+        Lottos lottos = purchaseLottos(purchaseAmount);
         WinningNumbers winningNumbers = inputWinningNumbers();
 
         printLottosInfo(lottos);
         printLottosResult(lottos, winningNumbers);
-        printProfitRate(purchaseAmount, lottos, winningNumbers);
+        printLottosProfitRate(purchaseAmount, lottos, winningNumbers);
     }
 
     private PurchaseAmount inputPurchaseAmount() {
@@ -32,10 +32,10 @@ public class LottoController {
     }
 
     private WinningNumbers inputWinningNumbers() {
-        List<Integer> regularNumbers = inputView.inputWinningNumbers();
+        List<Integer> winningNumbers = inputView.inputWinningNumbers();
         int bonusNumber = inputView.inputBonusNumber();
 
-        return new WinningNumbers(regularNumbers, bonusNumber);
+        return new WinningNumbers(winningNumbers, bonusNumber);
     }
 
     private void printNumberOfLottos(PurchaseAmount purchaseAmount) {
@@ -50,11 +50,14 @@ public class LottoController {
         outputView.printWinningInfo(lottos.getWinningInfo(winningNumbers));
     }
 
-    private void printProfitRate(PurchaseAmount purchaseAmount, Lottos lottos, WinningNumbers winningNumbers) {
-        outputView.printProfitRate(purchaseAmount.calculateProfitRate(lottos.getWinningAmount(winningNumbers)));
+    private void printLottosProfitRate(PurchaseAmount purchaseAmount, Lottos lottos, WinningNumbers winningNumbers) {
+        int winningAmount = lottos.getWinningAmount(winningNumbers);
+        double profitRate = purchaseAmount.calculateProfitRate(winningAmount);
+
+        outputView.printProfitRate(profitRate);
     }
 
-    private Lottos generateLottos(int numberOfLottos) {
-        return LottoFactory.generate(numberOfLottos);
+    private Lottos purchaseLottos(PurchaseAmount purchaseAmount) {
+        return LottoFactory.generate(purchaseAmount.getNumberOfLottos());
     }
 }
