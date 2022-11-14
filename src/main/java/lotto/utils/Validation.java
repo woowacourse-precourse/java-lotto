@@ -1,7 +1,5 @@
 package lotto.utils;
 
-import lotto.view.Output;
-
 public class Validation {
 
     public static void validateIsNumber(String target) {
