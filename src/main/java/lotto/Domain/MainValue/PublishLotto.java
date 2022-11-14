@@ -20,11 +20,13 @@ public class PublishLotto {
         List<Set<Integer>> lottos = new ArrayList<>();
 
         for(int count=0; count<publishLottosNum; count++) {
-            Set<Integer> oneLotto = new TreeSet<>();
-            for(int lottosize=0; lottosize<LottoValue.SIZE_No_Bonus.getNum(); lottosize++) {
-                oneLotto.add(Randoms.pickNumberInRange(LottoValue.MIN.getNum(), LottoValue.MAX.getNum()));
-            }
-                lottos.add(oneLotto);
+            List<Integer> random = Randoms.pickUniqueNumbersInRange(
+                    LottoValue.MIN.getNum(),
+                    LottoValue.MAX.getNum(),
+                    LottoValue.SIZE.getNum()
+            );
+            Set<Integer> oneLotto = new TreeSet<>(random);
+            lottos.add(oneLotto);
         }
 
         return lottos;
