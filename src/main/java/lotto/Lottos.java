@@ -33,6 +33,13 @@ public class Lottos {
         return Collections.unmodifiableList(lottos);
     }
 
+    public void rank(LottoResult lottoResult, Lotto winningLotto, BonusNumber bonusNumber) {
+        for (Lotto lotto : lottos) {
+            Ranking ranking = Ranking.rank(lotto, winningLotto, bonusNumber);
+            lottoResult.add(ranking);
+        }
+    }
+
     @Override
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder();
