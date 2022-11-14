@@ -17,7 +17,7 @@ public class Converter {
 
     public static List<Integer> stringToList(String s) {
         List<Integer> output = new ArrayList<>();
-        String[] splitNums = s.split(",");
+        String[] splitNums = s.split(",", -1);
         for (String splitNum : splitNums) {
             int num = stringToInt(splitNum);
             if(!Validation.lottoNumRange(num))
