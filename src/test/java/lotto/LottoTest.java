@@ -1,8 +1,10 @@
 package lotto;
 
+import constants.Rank;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -41,4 +43,15 @@ class LottoTest {
 
         assertThat(raffler.checkMatches(8)).isEqualTo(0);
     }
+
+    @DisplayName("로또의 등수를 리턴한다")
+    @Test
+    void getRankTest() {
+        Lotto lotto = new Lotto(List.of(1,2,3,4,22,33));
+        LottoRaffler raffler = new LottoRaffler(new Integer[]{1,2,3,4,5,6},7);
+        List<Lotto> lottos = new ArrayList<>();
+        lottos.add(lotto);
+        assertThat(raffler.raffle(lottos)).isEqualTo(Rank.FOUR);
+    }
+
 }
