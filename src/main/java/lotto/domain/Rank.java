@@ -58,4 +58,22 @@ public enum Rank {
                 .filter(rank -> rank != Rank.EMPTY)
                 .collect(Collectors.toList());
     }
+
+    public static int calculateEarning(List<Rank> results) {
+        return results.stream()
+                .mapToInt(rank -> rank.getPrize())
+                .sum();
+    }
+
+    public int getPrize() {
+        return prize;
+    }
+
+    public int getMatchCount() {
+        return matchCount;
+    }
+
+    public String getMessage() {
+        return message;
+    }
 }
