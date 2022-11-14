@@ -17,11 +17,10 @@ public class Lotto {
     }
 
     private void isCorrectRange(List<Integer> numbers) {
-        numbers.stream()
-                .forEach(LottoValidator::isCorrectRange);
+        numbers.forEach(LottoValidator::isCorrectRange);
     }
 
-    public List<Integer> getNumbers(){
+    public List<Integer> getNumbers() {
         return numbers;
     }
 

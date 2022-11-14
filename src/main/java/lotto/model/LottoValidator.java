@@ -1,5 +1,6 @@
 package lotto.model;
 
+import lotto.enums.Constant;
 import lotto.Util;
 
 import java.util.ArrayList;
@@ -7,23 +8,20 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class LottoValidator {
-	private static final int START_RANGE = 1;
-	private static final int END_RANGE = 45;
-	private static final int SIZE = 6;
 
 	public static void isCorrectRange(int num) {
-		if (!Util.inRangeCheck(num, START_RANGE, END_RANGE)) {
+		if (!Util.inRangeCheck(num, Constant.START_RANGE.getValue(), Constant.END_RANGE.getValue())) {
 			throw new IllegalArgumentException("It is not in correct range");
 		}
 	}
 
-	public static void isCorrectSize(List<Integer> answer){
-		if (!Util.isCorrectSize(answer, SIZE)) {
+	public static void isCorrectSize(List<Integer> answer) {
+		if (!Util.isCorrectSize(answer, Constant.LOTTO_SIZE.getValue())) {
 			throw new IllegalArgumentException("It is not correct size");
 		}
 	}
 
-	public static void isDistinctNumbers(List<Integer> answer, Integer bonus){
+	public static void isDistinctNumbers(List<Integer> answer, Integer bonus) {
 		List<Integer> joinNums = new ArrayList<>();
 		joinNums.addAll(answer);
 		joinNums.add(bonus);

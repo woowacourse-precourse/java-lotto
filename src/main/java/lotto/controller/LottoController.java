@@ -13,18 +13,20 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class LottoController {
-	private List<Lotto> lottos = new ArrayList<>();
-	public void start(){
-		InputNumValidator cashValidator = new InputNumValidator(InputView.buyInput());
-		Cash cash = new Cash(Util.toLong(cashValidator.INPUT_VALUE));
+	private final List<Lotto> lottos = new ArrayList<>();
+	public void start() {
+		Cash cash = inputCash();
 		purchase(cash);
-		AnswerLotto answerLotto = getAnswerLotto();
-		List<Integer> prize = getPrize(answerLotto);
-		OutputView.printPrize(prize);
-		OutputView.printProfit(prize);
+		AnswerLotto answerLotto = inputAnswerLotto();
+		printResult(calculatePrize(answerLotto));
 	}
 
-	private void purchase(Cash cash){
+	private Cash inputCash() {
+		InputNumValidator cashValidator = new InputNumValidator(InputView.buyInput());
+		return new Cash(Util.toLong(cashValidator.INPUT_VALUE));
+	}
+
+	private void purchase(Cash cash) {
 		addNewLotto(cash);
 		OutputView.printLottos(lottos);
 	}
@@ -38,20 +40,29 @@ public class LottoController {
 		}
 	}
 
-	private AnswerLotto getAnswerLotto(){
+	private AnswerLotto inputAnswerLotto() {
 		InputNumListValidator answerValidator = new InputNumListValidator(InputView.answerInput());
 		List<Integer> numbers = Util.getSplitList(answerValidator.INPUT_VALUE);
 		InputNumValidator bonus = new InputNumValidator(InputView.bonusInput());
 		return new AnswerLotto(numbers, Integer.parseInt(bonus.INPUT_VALUE));
 	}
 
-	private List<Integer> getPrize(AnswerLotto answerLotto){
+	private List<Integer> calculatePrize(AnswerLotto answerLotto) {
 		int[] prize = new int[]{0, 0, 0, 0, 0, 0};
-		lottos.stream()
-				.map(answerLotto::getRank)
-				.forEach(rank -> prize[rank - 1]++);
+		initRankCount(answerLotto, prize);
 		return Arrays.stream(prize)
 				.boxed()
 				.collect(Collectors.toList());
+	}
+
+	private void initRankCount(AnswerLotto answerLotto, int[] prize) {
+		lottos.stream()
+				.map(answerLotto::getRank)
+				.forEach(rank -> prize[rank - 1]++);
+	}
+
+	private void printResult(List<Integer> prize) {
+		OutputView.printPrize(prize);
+		OutputView.printProfit(prize);
 	}
 }

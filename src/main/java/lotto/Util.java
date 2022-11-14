@@ -8,11 +8,11 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Util {
-	public static boolean isNotDigit(char source){
+	public static boolean isNotDigit(char source) {
 		return !Character.isDigit(source);
 	}
 
-	public static Long toLong(String number){
+	public static Long toLong(String number) {
 		return Long.parseLong(number);
 	}
 
@@ -22,11 +22,11 @@ public class Util {
 				.collect(Collectors.toList());
 	}
 
-	public static boolean inRangeCheck(int num, int start, int end){
+	public static boolean inRangeCheck(int num, int start, int end) {
 		return start <= num && num <= end;
 	}
 
-	public static boolean isCorrectSize(List<Integer> numbers, int size){
+	public static boolean isCorrectSize(List<Integer> numbers, int size) {
 		return numbers.size() == size;
 	}
 

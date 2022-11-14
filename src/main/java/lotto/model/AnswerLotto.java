@@ -1,19 +1,14 @@
 package lotto.model;
 
+import lotto.enums.Rank;
 import lotto.Util;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class AnswerLotto {
-	private final int START_RANGE = 1;
-	private final int END_RANGE = 45;
-	private final int SIZE = 6;
-	List<Integer> answer;
-	Integer bonus;
+	private final List<Integer> answer;
+	private final Integer bonus;
 
 	public AnswerLotto(List<Integer> answer, Integer bonus) {
 		isValidate(answer, bonus);
@@ -21,7 +16,7 @@ public class AnswerLotto {
 		this.bonus = bonus;
 	}
 
-	private void isValidate(List<Integer> answer, Integer bonus){
+	private void isValidate(List<Integer> answer, Integer bonus) {
 		isAllCorrectRange(answer, bonus);
 		LottoValidator.isCorrectSize(answer);
 		LottoValidator.isDistinctNumbers(answer, bonus);
@@ -31,21 +26,20 @@ public class AnswerLotto {
 		List<Integer> joinNums = new ArrayList<>();
 		joinNums.addAll(answer);
 		joinNums.add(bonus);
-		joinNums.stream()
-				.forEach(LottoValidator::isCorrectRange);
+		joinNums.forEach(LottoValidator::isCorrectRange);
 	}
 
-
-
-	public int getRank(Lotto lotto){
+	public int getRank(Lotto lotto) {
+		final int COMPUTATIONAL_VALUE = 7;
 		int matchCount = getMatchCount(lotto.getNumbers());
-		if (matchCount < 3) {
-			return 6;
+		if (matchCount < Rank.FIFTH.getMatchCount()) {
+			return Rank.SIXTH.getRank();
 		}
-		if (matchCount < 5 || (matchCount == 5 && !lotto.getNumbers().contains(bonus))) {
+		if (matchCount < Rank.THIRD.getMatchCount() ||
+				(matchCount == Rank.THIRD.getMatchCount() && !lotto.getNumbers().contains(bonus))) {
 			matchCount--;
 		}
-		return Math.abs(7 - matchCount);
+		return Math.abs(COMPUTATIONAL_VALUE - matchCount);
 	}
 
 	private int getMatchCount(List<Integer> numbers) {

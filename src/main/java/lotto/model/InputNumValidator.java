@@ -9,12 +9,12 @@ public class InputNumValidator {
 		INPUT_VALUE = input;
 	}
 
-	public void isValidate(){
+	public void isValidate() {
 		isAllDigit(INPUT_VALUE);
 		isNull(INPUT_VALUE);
 	}
 
-	public void isAllDigit(String input){
+	public void isAllDigit(String input) {
 		for (int i = 0; i < input.length(); i++) {
 			if (Util.isNotDigit(input.charAt(i))){
 				throw new IllegalArgumentException("It is not all digit");
@@ -22,7 +22,7 @@ public class InputNumValidator {
 		}
 	}
 
-	public void isNull(String input){
+	public void isNull(String input) {
 		if (input.isBlank()){
 			throw new IllegalArgumentException("It is blank");
 		}

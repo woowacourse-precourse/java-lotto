@@ -1,4 +1,4 @@
-package lotto;
+package lotto.enums;
 
 public enum Message { // TODO :: 모든 상수를 다루는 방향으로 바꿀 예정
 	BEFORE_BUY("구입금액을 입력해 주세요."),
@@ -8,7 +8,7 @@ public enum Message { // TODO :: 모든 상수를 다루는 방향으로 바꿀 
 	BEFORE_PRIZE("당첨 통계\n---"),
 	PROFIT("총 수익률은 %,.1f%%입니다.");
 
-	private String message;
+	private final String message;
 
 	Message(String message){
 		this.message = message;

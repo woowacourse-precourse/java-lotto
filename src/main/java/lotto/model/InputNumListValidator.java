@@ -10,7 +10,7 @@ public class InputNumListValidator extends InputNumValidator {
 	}
 
 	@Override
-	public void isValidate(){
+	public void isValidate() {
 		Arrays.stream(INPUT_VALUE.split(","))
 				.forEach(split -> {
 					isNull(split);
