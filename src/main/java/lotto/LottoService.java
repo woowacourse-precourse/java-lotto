@@ -3,6 +3,7 @@ package lotto;
 import lotto.domain.Lotto;
 import lotto.domain.Money;
 import lotto.domain.Number;
+import lotto.domain.WinningResult;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -13,8 +14,7 @@ import java.util.stream.Stream;
 public class LottoService {
     private final RandomGenerator randomGenerator = new RandomGenerator();
     private final List<Lotto> lotteries = new ArrayList<>();
-    private Lotto winningNumber;
-    private Number bonusNumber;
+    private WinningResult winningResult;
 
     public void purchase(Money money) {
         int buyQuantity = money.getWon() / 1000;
@@ -28,12 +28,11 @@ public class LottoService {
         return lotteries;
     }
 
-    public void setWinningNumber(String inputWinningNumber) {
-        winningNumber = new Lotto(convertToNumbers(inputWinningNumber));
-    }
+    public void setWinningNumber(String inputWinningNumber, String inputBonusNumber) {
+        Lotto winningNumber = new Lotto(convertToNumbers(inputWinningNumber));
+        Number bonusNumber = convertToNumber(inputBonusNumber);
 
-    public void setBonusNumber(String inputBonusNumber) {
-        bonusNumber = convertToNumber(inputBonusNumber);
+        winningResult = new WinningResult(winningNumber, bonusNumber);
     }
 
     private List<Number> convertToNumbers(String input) {

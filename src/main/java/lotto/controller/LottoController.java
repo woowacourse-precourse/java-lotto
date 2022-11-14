@@ -25,11 +25,10 @@ public class LottoController {
 
     public void inputWinningNumber() {
         lottoMessage.printInputWinningNumber();
-        lottoService.setWinningNumber(Console.readLine());
-    }
-
-    public void inputBonusNumber() {
+        String winningNumber = Console.readLine();
         lottoMessage.printInputBonusNumber();
-        lottoService.setBonusNumber(Console.readLine());
+        String bonusNumber = Console.readLine();
+
+        lottoService.setWinningNumber(winningNumber, bonusNumber);
     }
 }
