@@ -7,7 +7,7 @@
 - [X] 로또 게임 객체 내 로또 생성 메소드 createLotto 생성
 - [X] 로또 게임 객체 내 생성한 로또 출력 메소드 printLotteries 생성
 - [X] user 객체 내 당첨 번호 입력 메소드 inputWinning 생성
-- [ ] user 객체 내 보너스 번호 입력 메소드 inputBonusNumber 생성
+- [X] user 객체 내 보너스 번호 입력 메소드 inputBonusNumber 생성
 - [ ] 로또 게임 객체 내 당첨 여부 확인 메소드 confirmIsPrized 생성
 - [ ] 로또 게임 객체 내 당첨 통계 출력 메소드 printWinningStatistics 생성
 - [ ] user 객체 내 수익률 계산 메소드 calculateEarningRate 생성

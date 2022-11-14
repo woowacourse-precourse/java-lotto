@@ -9,6 +9,7 @@ public class User {
     private LottoGame lottoGame;
     private Lotto winningLotto;
     private int buyPrice;
+    private int bonusNumber;
 
     public void startLottoGame() {
         lottoGame = new LottoGame();
@@ -23,6 +24,10 @@ public class User {
 
         System.out.println("당첨 번호를 입력해 주세요.");
         inputWinning();
+        System.out.println();
+
+        System.out.println("보너스 번호를 입력해 주세요.");
+        inputBonusNumber();
         System.out.println();
     }
 
@@ -40,4 +45,9 @@ public class User {
 
         winningLotto = new Lotto(winningNumbers);
     }
+
+    private void inputBonusNumber() {
+        bonusNumber = Integer.parseInt(readLine());
+    }
+
 }
