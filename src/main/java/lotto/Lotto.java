@@ -12,9 +12,18 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
-        if (numbers.size() != 6) {
-            throw new IllegalArgumentException();
+        if (numbers.size() != 6 || !isNotDuplicated(numbers)) {
+            Exception.of(Exception.LOTTO_NUMBER_07);
         }
+    }
+
+    private boolean isNotDuplicated(List<Integer> numbers){
+        boolean [] check = new boolean[45];
+        for(Integer num : numbers){
+            if(check[num-1]) return false;
+            check[num-1] = true;
+        }
+        return true;
     }
 
     public void print(){

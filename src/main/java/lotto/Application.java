@@ -76,7 +76,11 @@ public class Application {
 
     public void insertPriceAndSaveNumber(){
         String s = Console.readLine();
-        insertedNumber = Integer.parseInt(s);
+        try{
+            insertedNumber = Integer.parseInt(s);
+        }catch (java.lang.Exception e){
+            Exception.of(Exception.LOTTO_PRICE_01);
+        }
         if(insertedNumber < 0 || insertedNumber%1000 != 0) Exception.of(Exception.LOTTO_PRICE_01);
     }
 
