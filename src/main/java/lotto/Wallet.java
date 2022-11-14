@@ -1,16 +1,17 @@
 package lotto;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 public class Wallet {
     private List<Lotto> myLottos;
     private int money;
-    private int profit;
+    private List<LottoReward> profit;
 
     Wallet() {
         this.money = 0;
-        this.profit = 0;
+        this.profit = new ArrayList<>();
         this.myLottos = Collections.emptyList();
     }
 
@@ -47,6 +48,6 @@ public class Wallet {
     }
 
     public void addReward(LottoReward reward) {
-        this.profit += reward.getReward();
+        this.profit.add(reward);
     }
 }
