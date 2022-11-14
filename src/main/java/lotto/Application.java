@@ -9,6 +9,7 @@ public class Application {
         int buylotto = askmoney();
         List<List<Integer>> lottonumbers = new ArrayList<>();
         List<Integer> winningnumbers = new ArrayList<>();
+        List<Integer> result = new ArrayList<>();
         int bonusnum;
 
         Random random = new Random();
@@ -17,6 +18,9 @@ public class Application {
 
         winningnumbers = askwinningnumbers();
         bonusnum = askbonusnumber();
+
+        CompareLotto comparelotto = new CompareLotto();
+        result = comparelotto.correctcount(lottonumbers,winningnumbers,bonusnum);
         // TODO: 프로그램 구현
     }
     public static int askmoney(){
