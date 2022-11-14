@@ -19,4 +19,13 @@ public class LottoRandomPeek {
         randomLottos.add(new Lotto(randomNumbers));
     }
 
+    public void generateRandom(int countLotto) {
+        for (int peekIndex = 0; peekIndex < countLotto; peekIndex++) {
+            drawLotto();
+        }
+    }
+
+    public List<Lotto> getRandomLottos() {
+        return randomLottos;
+    }
 }
