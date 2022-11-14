@@ -1,9 +1,6 @@
 package lotto.view;
 
-import lotto.Logger;
-import lotto.LotteryPublisher;
-import lotto.Lotto;
-import lotto.User;
+import lotto.*;
 
 import java.util.List;
 
@@ -29,7 +26,7 @@ public class MainView {
             List<Integer> winningNumber = user.inputWinningNumber();
 
             printInputBonusNumber();
-            int bonusNumber = user.inputBonusNumber();
+            int bonusNumber = user.inputBonusNumber(winningNumber);
         } catch (IllegalArgumentException e) {
             Logger.printError(e.getMessage());
         }

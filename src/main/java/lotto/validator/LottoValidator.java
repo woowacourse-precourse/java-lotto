@@ -41,7 +41,13 @@ public final class LottoValidator {
         }
     }
 
-    public static void validateLottoNumberRange(Integer lottoNumber) {
+    public static void validateNotExistInWinningNumber(int bonusNumber, List<Integer> winningNumber) {
+        if (winningNumber.contains(bonusNumber)) {
+            throw new IllegalArgumentException(BONUS_NUMBER_EXIST_IN_WINNING_NUMBER_ERROR);
+        }
+    }
+
+    public static void validateLottoNumberRange(int lottoNumber) {
         if (isInvalidRange(lottoNumber)) {
             throw new IllegalArgumentException(INVALID_LOTTO_NUMBER_RANGE_ERROR);
         }

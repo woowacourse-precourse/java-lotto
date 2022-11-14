@@ -6,6 +6,8 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
+import java.util.List;
+
 import static lotto.ErrorMessage.*;
 import static org.assertj.core.api.Assertions.*;
 
@@ -68,17 +70,26 @@ public class UserTest {
     @ValueSource(strings = {"a", "?", " "})
     void validateInputBonusNumberNotNumber(String bonusNumberInput) {
         User user = new User(new MockInputReader(bonusNumberInput));
-        assertThatThrownBy(() -> user.inputBonusNumber())
+        assertThatThrownBy(() -> user.inputBonusNumber(List.of()))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage(BONUS_NUMBER_NOT_NUMBER_ERROR);
+                .hasMessage(BONUS_NUMBER_NOT_NUMBER_INPUT_ERROR);
     }
 
     @ParameterizedTest(name = "로또 번호 범위를 벗어난 {0}을 보너스 번호로 입력시 예외가 발생한다.")
     @ValueSource(strings = {"0", "46"})
     void validateInputBonusNumberInvalidRange(String bonusNumberInput) {
         User user = new User(new MockInputReader(bonusNumberInput));
-        assertThatThrownBy(() -> user.inputBonusNumber())
+        assertThatThrownBy(() -> user.inputBonusNumber(List.of()))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(INVALID_LOTTO_NUMBER_RANGE_ERROR);
+    }
+
+    @DisplayName("당첨 번호에 이미 존재하는 숫자를 보너스 번호로 입력할때 예외가 발생한다.")
+    @Test
+    void validateInputBonusNumberExistInWinningNumber() {
+        User user = new User(new MockInputReader("1"));
+        assertThatThrownBy(() -> user.inputBonusNumber(List.of(1, 2, 3, 4, 5, 6)))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(BONUS_NUMBER_EXIST_IN_WINNING_NUMBER_ERROR);
     }
 }

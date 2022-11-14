@@ -28,15 +28,17 @@ public class User {
         return convertToImmutableIntegerList(winningNumberInput);
     }
 
-    public int inputBonusNumber() {
+    public int inputBonusNumber(List<Integer> winningNumber) {
         String bonusNumberInput = inputReader.readLine();
-        validateBonusNumber(bonusNumberInput);
+        validateBonusNumber(bonusNumberInput, winningNumber);
         return Integer.valueOf(bonusNumberInput);
     }
 
-    private void validateBonusNumber(String bonusNumberInput) {
-        validateNumber(bonusNumberInput, BONUS_NUMBER_NOT_NUMBER_ERROR);
-        validateLottoNumberRange(Integer.valueOf(bonusNumberInput));
+    private void validateBonusNumber(String bonusNumberInput, List<Integer> winningNumber) {
+        validateNumber(bonusNumberInput, BONUS_NUMBER_NOT_NUMBER_INPUT_ERROR);
+        Integer bonusNumber = Integer.valueOf(bonusNumberInput);
+        validateLottoNumberRange(bonusNumber);
+        validateNotExistInWinningNumber(bonusNumber, winningNumber);
     }
 
     private void validateWinningNumber(String winningNumberInput) {

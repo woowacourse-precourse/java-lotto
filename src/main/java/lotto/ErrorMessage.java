@@ -11,6 +11,7 @@ public final class ErrorMessage {
     public static final String WINNING_NUMBER_NOT_NUMBER_INPUT_ERROR = "당첨 로또 번호는 ','로 구분되어야 하고, 각 자리는 숫자여야 합니다.";
 
     public static final String BONUS_NUMBER_NOT_NUMBER_ERROR = "보너스 번호는 숫자여야 합니다.";
+    public static final String BONUS_NUMBER_ALREADY_INPUT_ERROR = "보너스 번호는 이미 입력한 당첨 번호에 존재하지 않는 숫자여야 합니다.";
 
     private ErrorMessage() {
     }
