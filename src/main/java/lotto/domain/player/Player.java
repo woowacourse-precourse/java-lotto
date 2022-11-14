@@ -13,8 +13,8 @@ import static lotto.domain.player.PlayerString.NO_DIVIDE_MONEY;
 public class Player {
     public static int LOTTO_PRICE = 1000;
     private final long money;
-    private List<List<Integer>> lottoTickets;
-    private Map<Ranking, Long> winningResult;
+    private List<List<Integer>> lottoTickets = new ArrayList<>();
+    private Map<Ranking, Integer> winningResult;
     private double returnRate;
 
     public Player(long money){
@@ -46,7 +46,7 @@ public class Player {
         return lottoTickets;
     }
 
-    public Map<Ranking, Long> getWinningResult(){
+    public Map<Ranking, Integer> getWinningResult(){
         return winningResult;
     }
 
@@ -54,7 +54,7 @@ public class Player {
         return returnRate;
     }
 
-    public void setWinningResult(Map<Ranking, Long> winningResult){
+    public void setWinningResult(Map<Ranking, Integer> winningResult){
         this.winningResult = winningResult;
     }
 
