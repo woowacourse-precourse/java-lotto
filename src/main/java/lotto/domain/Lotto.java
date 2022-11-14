@@ -60,3 +60,8 @@ public class Lotto {
                 .map(Integer::parseInt)
                 .collect(collectingAndThen(toList(), Collections::unmodifiableList));
     }
+
+    public List<Integer> getNumbers() {
+        return numbers;
+    }
+
