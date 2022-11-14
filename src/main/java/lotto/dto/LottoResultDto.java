@@ -4,8 +4,8 @@ import java.util.EnumMap;
 import lotto.domain.LottoPrize;
 
 public class LottoResultDto {
-    private double profitRatio;
-    private EnumMap<LottoPrize, Long> prizeCount;
+    private final double profitRatio;
+    private final EnumMap<LottoPrize, Long> prizeCount;
 
     public LottoResultDto(double profitRatio, EnumMap<LottoPrize, Long> prizeCount) {
         this.profitRatio = profitRatio;

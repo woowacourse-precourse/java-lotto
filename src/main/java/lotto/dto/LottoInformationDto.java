@@ -3,8 +3,8 @@ package lotto.dto;
 import java.util.List;
 
 public class LottoInformationDto {
-    private List<List<Integer>> lottoTicket;
-    private Integer size;
+    private final List<List<Integer>> lottoTicket;
+    private final Integer size;
 
     public LottoInformationDto(List<List<Integer>> lottoTicket) {
         this.lottoTicket = lottoTicket;

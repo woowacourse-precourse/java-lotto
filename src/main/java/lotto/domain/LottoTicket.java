@@ -9,7 +9,7 @@ import static java.util.stream.Collectors.toList;
 import java.util.List;
 
 public class LottoTicket {
-    private List<Lotto> ticket;
+    private final List<Lotto> ticket;
 
     public LottoTicket(List<Lotto> ticket) {
         this.ticket = ticket;

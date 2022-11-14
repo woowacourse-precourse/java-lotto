@@ -8,7 +8,7 @@ public class LottoResult {
     private static final Long ZERO = 0L;
     private static final double DEFAULT_RATIO = 100.0;
 
-    private EnumMap<LottoPrize, Long> result = new EnumMap<>(LottoPrize.class);
+    private final EnumMap<LottoPrize, Long> result = new EnumMap<>(LottoPrize.class);
 
     public LottoResult(Map<LottoPrize, Long> result) {
         this.result.putAll(result);
