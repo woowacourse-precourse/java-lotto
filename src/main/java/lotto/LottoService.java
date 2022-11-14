@@ -1,6 +1,9 @@
 package lotto;
 
+import lotto.domain.Lotto;
+import lotto.domain.Lottos;
 import lotto.domain.WinningType;
+import lotto.util.RandomNumberGenerator;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -21,5 +24,18 @@ public class LottoService {
 
     public int calBuyingCount(int money) {
         return money / 1000;
+    }
+
+    public Lottos getLottos(int number) {
+        List<Lotto> lottos = new ArrayList<>();
+        for (int count = 0; count < number; count++) {
+            lottos.add(getNewLotto());
+        }
+        return new Lottos(lottos);
+    }
+
+    public Lotto getNewLotto() {
+        List<Integer> lottoNumbers = RandomNumberGenerator.makeRandomNumbers();
+        return new Lotto(lottoNumbers);
     }
 }
