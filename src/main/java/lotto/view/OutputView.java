@@ -26,28 +26,28 @@ public class OutputView {
         }
     }
 
-    public static void printPrize(List<Integer> prize) {
+    public static void printPrize(int [] prize) {
         System.out.println(WINNING_STATUS);
         System.out.println(LINE);
-        for(int i = 0; i < prize.size(); i++) {
+        for(int i = 0; i < prize.length; i++) {
             if(i == 0) {
-                System.out.println(WINNING_FIFTH + prize.get(i) + COUNT);
+                System.out.println(WINNING_FIFTH + prize[0] + COUNT);
             }
 
             if(i == 1) {
-                System.out.println(WINNING_FOURTH + prize.get(i) + COUNT);
+                System.out.println(WINNING_FOURTH + prize[1] + COUNT);
             }
 
             if(i == 2) {
-                System.out.println(WINNING_THIRD + prize.get(i) + COUNT);
+                System.out.println(WINNING_THIRD + prize[2] + COUNT);
             }
 
             if(i == 3) {
-                System.out.println(WINNING_SECOND + prize.get(i) + COUNT);
+                System.out.println(WINNING_SECOND + prize[3] + COUNT);
             }
 
             if(i == 4) {
-                System.out.println(WINNING_FIRST + prize.get(i) + COUNT);
+                System.out.println(WINNING_FIRST + prize[4] + COUNT);
             }
         }
     }
