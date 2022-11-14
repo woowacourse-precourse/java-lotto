@@ -10,18 +10,22 @@ import java.util.List;
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
-        int purchaseAmount = askPurchaseAmount();
-        int lottoCount = Purchase.getLottoCount(purchaseAmount);
+        try {
+            int purchaseAmount = askPurchaseAmount();
+            int lottoCount = Purchase.getLottoCount(purchaseAmount);
 
-        Generator generator = new Generator(lottoCount);
-        List<List<Integer>> playerLotto = generator.createLotto();
+            Generator generator = new Generator(lottoCount);
+            List<List<Integer>> playerLotto = generator.createLotto();
 
-        Lotto lotto = new Lotto(askWinningNumber());
-        int bonusNumber = askBonusNumber();
-        int prizeMoney = lotto.getPrizeMoney(playerLotto, bonusNumber);
+            Lotto lotto = new Lotto(askWinningNumber());
+            int bonusNumber = askBonusNumber();
+            int prizeMoney = lotto.getPrizeMoney(playerLotto, bonusNumber);
 
-        lotto.showWinningStatistics();
-        Profit.showRate(purchaseAmount, prizeMoney);
+            lotto.showWinningStatistics();
+            Profit.showRate(purchaseAmount, prizeMoney);
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());;
+        }
     }
 
     private static int askPurchaseAmount() {
