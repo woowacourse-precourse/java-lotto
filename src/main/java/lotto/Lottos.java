@@ -10,15 +10,19 @@ public class Lottos {
 
     public Lottos(Money money) {
         lottos = new ArrayList<>();
-        createLotto(money);
+        issueLottos(money);
     }
 
-    private void createLotto(Money money) {
+    private void issueLottos(Money money) {
         long count = money.countPurchasable(Lotto.PRICE);
         for (long number = 0; number < count; number++) {
-            Lotto lotto = new Lotto(LottoNumberGenerator.generateNumbers());
+            Lotto lotto = issueLotto();
             lottos.add(lotto);
         }
+    }
+
+    private Lotto issueLotto() {
+        return new Lotto(LottoNumberGenerator.generateNumbers());
     }
 
     public long getCount() {
