@@ -5,7 +5,9 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class LottoTest {
@@ -25,4 +27,21 @@ class LottoTest {
     }
 
     // 아래에 추가 테스트 작성 가능
+    @DisplayName("출력용 문자열을 생성한다.")
+    @Test
+    void generateString() {
+        // given
+        List<Integer> list = List.of(1, 2, 3, 4, 5, 6);
+        Lotto lotto = new Lotto(list);
+
+        // when
+        String string = lotto.toString();
+
+        // then
+        assertThat(string).isEqualTo(
+                list.stream()
+                        .map(String::valueOf)
+                        .collect(Collectors.joining(", ", "[", "]"))
+        );
+    }
 }
