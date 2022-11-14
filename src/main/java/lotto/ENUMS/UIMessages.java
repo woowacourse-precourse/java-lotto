@@ -7,7 +7,8 @@ public enum UIMessages {
     ENTER_BONUS_NUMBER("보너스 번호를 입력해 주세요."),
     WINNING_STATS("당첨 통계\n---"),
     TOTAL_EARNINGS("총 수익률은"),
-    IS("입니다");
+    IS("입니다"),
+    UNIT("개");
     String text;
 
     UIMessages(String text) {
