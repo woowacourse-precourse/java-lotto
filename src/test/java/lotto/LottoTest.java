@@ -28,9 +28,9 @@ class LottoTest {
     }
 
     // 아래에 추가 테스트 작성 가능
-    @DisplayName("순위 체크 함수")
+    @DisplayName("순위 체크 함수(Enum)")
     @Test
-    void getLottoRanking(){
+    void getLottoRankingEnum(){
         List<Integer> lotto = List.of(1,2,3,4,5,6);
 
         //1등 테스트
@@ -51,6 +51,31 @@ class LottoTest {
 
         // 5등 테스트
         assertThat(LottoRanking.caculateRanking(lotto, 7, List.of(2,3,4,10,8,9)))
+                .isEqualTo(LottoRanking.FIFTH);
+    }
+
+    @DisplayName("순위 체크 함수(Lotto class)")
+    @Test
+    void getLottoRanking(){
+        Lotto lotto = new Lotto(List.of(1,2,3,4,5,6),7);
+        //1등 테스트
+        assertThat(lotto.caculateRanking(List.of(1,2,3,4,5,6)))
+                .isEqualTo(LottoRanking.FIRST);
+
+        // 2등 테스트
+        assertThat(lotto.caculateRanking(List.of(2,3,4,5,7,6)))
+                .isEqualTo(LottoRanking.SECOND);
+
+        // 3등 테스트
+        assertThat(lotto.caculateRanking(List.of(2,3,4,5,6,8)))
+                .isEqualTo(LottoRanking.THIRD);
+
+        // 4등 테스트
+        assertThat(lotto.caculateRanking(List.of(2,3,4,5,9,8)))
+                .isEqualTo(LottoRanking.FORTH);
+
+        // 5등 테스트
+        assertThat(lotto.caculateRanking(List.of(2,3,4,10,8,9)))
                 .isEqualTo(LottoRanking.FIFTH);
     }
 }
