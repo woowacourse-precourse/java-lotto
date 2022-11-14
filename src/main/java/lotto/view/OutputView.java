@@ -19,6 +19,7 @@ public class OutputView {
     private static final String START_PARENTHESES = "(";
     private static final String END_PARENTHESES = ")";
     private static final String SPACE = " ";
+    private static final String PROFIT = "총 수익률은 %d%입니다.";
 
     private OutputView() {
     }

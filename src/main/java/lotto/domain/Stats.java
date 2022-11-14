@@ -64,9 +64,7 @@ public enum Stats {
 
     public static String getAmount(Stats stats) {
         String amount = String.valueOf(stats.amount);
-        StringBuilder sb = new StringBuilder();
-        amount.chars().forEach(sb::append);
-        return sb.toString().replaceAll(AMOUNT_MARK_REGEX, COMMA);
+        return amount.replaceAll(AMOUNT_MARK_REGEX, COMMA);
     }
 
     public static String getName(Stats stats) {
@@ -76,7 +74,6 @@ public enum Stats {
         return stats.name + ACCORD_NUMBER_FORMAT;
     }
 
-    public void profit() {
-
+    public static void calculateProfit() {
     }
 }
