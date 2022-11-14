@@ -31,6 +31,8 @@ public class User {
         System.out.println();
 
         lottoGame.confirmLotteriesPrized(winningLotto, bonusNumber);
+
+        lottoGame.printWinningStatistics();
     }
 
     public void inputBuyPrice() {
