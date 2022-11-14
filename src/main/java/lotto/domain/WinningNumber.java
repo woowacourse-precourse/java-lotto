@@ -15,4 +15,10 @@ public class WinningNumber {
 			throw new IllegalArgumentException();
 		}
 	}
+
+	public LottoRanking checkWinning(Lotto userLotto) {
+		int matchCount = winningLotto.compare(userLotto);
+		boolean isMatchBonusNumber = userLotto.isMatch(bonusNumber.getNumber());
+		return LottoRanking.of(matchCount, isMatchBonusNumber);
+	}
 }
