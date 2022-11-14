@@ -55,6 +55,6 @@ class LottosTest {
                 )
         ));
 
-        assertThat(lottos.getWinningInfo(winningNumbers)).isEqualTo(expected);
+        assertThat(lottos.getLottosResult(winningNumbers)).isEqualTo(expected);
     }
 }

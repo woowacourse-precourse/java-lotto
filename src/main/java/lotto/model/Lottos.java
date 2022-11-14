@@ -3,19 +3,14 @@ package lotto.model;
 import java.util.List;
 
 public class Lottos {
+    public static final String NEW_LINE = "\n";
     private final List<Lotto> lottos;
 
     public Lottos(List<Lotto> lottos) {
         this.lottos = lottos;
     }
 
-    public int getWinningAmount(WinningNumbers winningNumbers) {
-        return lottos.stream()
-                .mapToInt(lotto -> lotto.getWinningAmount(winningNumbers))
-                .sum();
-    }
-
-    public WinningInfo getWinningInfo(WinningNumbers winningNumbers) {
+    public WinningInfo getLottosResult(WinningNumbers winningNumbers) {
         WinningInfo result = new WinningInfo();
 
         lottos.stream()
@@ -26,12 +21,18 @@ public class Lottos {
         return result;
     }
 
+    public int getWinningAmount(WinningNumbers winningNumbers) {
+        return lottos.stream()
+                .mapToInt(lotto -> lotto.getWinningAmount(winningNumbers))
+                .sum();
+    }
+
     @Override
     public String toString() {
         StringBuilder result = new StringBuilder();
 
         for (Lotto lotto : lottos) {
-            result.append(lotto).append('\n');
+            result.append(lotto).append(NEW_LINE);
         }
 
         return result.toString();

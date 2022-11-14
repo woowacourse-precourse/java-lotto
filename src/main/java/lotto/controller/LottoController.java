@@ -47,7 +47,7 @@ public class LottoController {
     }
 
     private void printLottosResult(Lottos lottos, WinningNumbers winningNumbers) {
-        outputView.printWinningInfo(lottos.getWinningInfo(winningNumbers));
+        outputView.printWinningInfo(lottos.getLottosResult(winningNumbers));
     }
 
     private void printLottosProfitRate(PurchaseAmount purchaseAmount, Lottos lottos, WinningNumbers winningNumbers) {
