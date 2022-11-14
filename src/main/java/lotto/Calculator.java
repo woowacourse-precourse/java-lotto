@@ -3,7 +3,7 @@ package lotto;
 import java.util.Map;
 
 public class Calculator {
-    public int getProfit(Map<WinningRank, Integer> winResult) {
+    public static int getProfit(Map<WinningRank, Integer> winResult) {
 
         int result = 0;
         for (Map.Entry<WinningRank, Integer> entry : winResult.entrySet()) {
@@ -12,7 +12,7 @@ public class Calculator {
 
         return result;
     }
-    public double getEarningsRate(int purchaseCost, Map<WinningRank,Integer> winResult) {
+    public static double getEarningsRate(int purchaseCost, Map<WinningRank,Integer> winResult) {
         return Math.round(((double) getProfit(winResult) / (double) purchaseCost) * 1000) /10.0;
     }
 }
