@@ -2,11 +2,13 @@ package lotto.controller;
 
 import lotto.domain.Lotto;
 import lotto.domain.NumberGenerator;
-import lotto.utils.Validator;
 import lotto.view.InputView;
+import lotto.utils.Validator;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static lotto.utils.ErrorCode.*;
 
 public class LottoSystem {
 
@@ -19,6 +21,9 @@ public class LottoSystem {
     public void start() {
         String input = inputView.inputMoney();
         int money = validator.convertToInt(input);
+        if (!validator.isValidPrice(money)) {
+            throw new IllegalArgumentException(INVALID_PRICE.getMessage());
+        }
         List<Lotto> userLottos = buyLotto(money);
         // 아래 코드는 테스트용
         for (Lotto lotto : userLottos) {
