@@ -23,7 +23,7 @@ public class Controller {
             WinningLotto winningLotto = getWinningLotto();
 
             //결과 출력하기
-            LottoResult lottoResult = new LottoResult(money, userLottos, winningLotto);
+            LottoResult lottoResult = new LottoResult(userLottos, winningLotto);
             output.printResult(lottoResult);
 
         } catch (IllegalArgumentException e) {
