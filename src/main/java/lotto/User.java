@@ -25,9 +25,9 @@ public class User {
         throw new IllegalArgumentException();
     }
 
-    private boolean isValidPurchasePrice(String readLine) {
-        boolean isNumeric = Pattern.matches(PRICE_PATTERN, readLine);
-        boolean isThousand = (Integer.parseInt(readLine) % 1000 == 0);
+    private boolean isValidPurchasePrice(String purchasePrice) {
+        boolean isNumeric = Pattern.matches(PRICE_PATTERN, purchasePrice);
+        boolean isThousand = (Integer.parseInt(purchasePrice) % 1000 == 0);
 
         return (isNumeric && isThousand);
     }
