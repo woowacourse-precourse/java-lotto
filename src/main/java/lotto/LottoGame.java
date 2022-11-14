@@ -6,6 +6,7 @@ public class LottoGame {
     public void getLottoPrice() {
         int lottoPrice = InputView.getLottoPrice();
         int lottoCount = getLottoCount(lottoPrice);
+        OutputView.printLottoCount(lottoCount);
     }
 
     private int getLottoCount(int lottoPrice) {
