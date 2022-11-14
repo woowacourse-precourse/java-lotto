@@ -11,10 +11,10 @@ public class Dealer {
     private final List<Integer> result;
     private final float earningRate;
 
-    public Dealer(Publisher publisher, Lotto winNumbers, int bonusNumber) {
+    public Dealer(Publisher publisher, Lotto winNumbers, Bonus bonus) {
         result = new ArrayList<Integer>(Arrays.asList(0, 0, 0, 0, 0, 0));
         this.winNumbers = winNumbers.getNumbers();
-        this.bonusNumber = bonusNumber;
+        this.bonusNumber = bonus.getBonusNumber();
         make(publisher.getLotteries());
         earningRate = calculateEarningRate(publisher.getPurchaseAmount());
     }
