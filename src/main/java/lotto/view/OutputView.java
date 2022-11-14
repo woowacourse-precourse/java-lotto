@@ -24,8 +24,10 @@ public final class OutputView {
         printIOMessage("총 수익률은 " + formattedYield + "%입니다.");
     }
 
+    public static void printLotto(List<Integer> lotto) {
+       System.out.println(lotto);
+    }
     public static void printIOMessage(String message) {
         System.out.println(message);
     }
-
 }

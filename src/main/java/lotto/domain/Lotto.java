@@ -31,7 +31,7 @@ public class Lotto {
 
 
     public void printLottoInfo() {
-        OutputView.printIOMessage(numbers.toString());
+        OutputView.printLotto(numbers);
     }
 
     private void validate(List<Integer> numbers) {
