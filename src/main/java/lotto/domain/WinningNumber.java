@@ -18,6 +18,12 @@ public class WinningNumber {
         this.numbers = numbers;
     }
 
+    private void checkIfNumberStartsWithZero(int temporaryInt, char newInt ){
+        if(temporaryInt == minNum && newInt == zero){
+            throw new IllegalArgumentException();
+        }
+    }
+
     private void checkIfCharIsNumber(char c){
         if(c<zero || c>nine){
             throw new IllegalArgumentException();
