@@ -1,13 +1,16 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import java.io.*;
 import java.util.List;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomUniqueNumbersInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class ApplicationTest extends NsTest {
     private static final String ERROR_MESSAGE = "[ERROR]";
@@ -44,6 +47,48 @@ class ApplicationTest extends NsTest {
                 List.of(2, 13, 22, 32, 38, 45),
                 List.of(1, 3, 5, 14, 22, 45)
         );
+    }
+
+    @Test
+    void 구입금액입력_테스트() {
+        // 19000원을 가지고 로또 19장을 살 수 있음
+        String input = "19000";
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+        int count = Application.buyLotto();
+        assertSimpleTest(() -> {
+            assertThat(count).isEqualTo(19);
+        });
+    }
+
+    @Test
+    void 구입금액입력_예외테스트_1000단위아님() {
+        // 8400 -> 1000 단위로 나누어지지 않음
+        String input = "8400";
+        OutputStream out = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(out));
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+        assertThatThrownBy(() -> {
+            int count = Application.buyLotto();
+        })
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("[ERROR] 로또 구입 금액은 1000원 단위로 입력해야 합니다.");
+    }
+
+    @Test
+    void 구입금액입력_예외테스트_문자입력() {
+        // 8400 -> 1000 단위로 나누어지지 않음
+        String input = "abc";
+        OutputStream out = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(out));
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+        assertThatThrownBy(() -> {
+            int count = Application.buyLotto();
+        })
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("[ERROR] 숫자 이외의 값을 입력할 수 없습니다.");
     }
 
     @Test
