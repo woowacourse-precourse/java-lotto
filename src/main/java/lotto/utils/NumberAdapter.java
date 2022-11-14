@@ -18,6 +18,7 @@ public class NumberAdapter {
     }
 
     public static int fitBonusNumber(String beforeBonusNumber) {
+        hasValidType(beforeBonusNumber);
         return Integer.parseInt(beforeBonusNumber);
     }
 
@@ -27,6 +28,7 @@ public class NumberAdapter {
     }
 
     public static int fitPaidMoney(String beforePaidMoney) {
+        hasValidType(beforePaidMoney);
         return Integer.parseInt(beforePaidMoney);
     }
 }
