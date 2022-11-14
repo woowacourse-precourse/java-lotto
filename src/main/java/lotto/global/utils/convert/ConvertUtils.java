@@ -13,7 +13,7 @@ public class ConvertUtils {
 
     public static Integer convertStringToInteger(String input) {
         if (StringUtils.isBlank(input)) {
-            throw new IllegalArgumentException(ErrorMessage.NOT_INPUT_MONEY);
+            throw new IllegalArgumentException(ErrorMessage.NOT_INPUT_NUMBER);
         }
         try {
             return Integer.parseInt(input);

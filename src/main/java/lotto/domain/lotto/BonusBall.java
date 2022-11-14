@@ -16,6 +16,10 @@ public class BonusBall {
         return new BonusBall(number);
     }
 
+    public Integer getNumber() {
+        return number;
+    }
+
     private void validate(Integer number) {
         if (number < Number.MIN_NUMBER_RANGE || number > Number.MAX_NUMBER_RANGE) {
             throw new IllegalArgumentException(ErrorMessage.INVALID_RANGE);

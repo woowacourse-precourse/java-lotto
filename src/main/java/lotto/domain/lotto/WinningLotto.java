@@ -13,4 +13,12 @@ public class WinningLotto {
     public static WinningLotto create(Lotto lotto, BonusBall bonusBall) {
         return new WinningLotto(lotto, bonusBall);
     }
+
+    public Lotto getLotto() {
+        return lotto;
+    }
+
+    public BonusBall getBonusBall() {
+        return bonusBall;
+    }
 }

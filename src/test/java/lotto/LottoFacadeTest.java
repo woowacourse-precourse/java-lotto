@@ -2,6 +2,7 @@ package lotto;
 
 import lotto.application.LottoFacade;
 import lotto.domain.lotto.Lottos;
+import lotto.domain.lotto.WinningLotto;
 import lotto.domain.money.Money;
 import lotto.factory.InputFactory;
 import lotto.global.config.AppConfig;
@@ -73,6 +74,22 @@ public class LottoFacadeTest {
             //then
             assertThat(lottos.size()).isEqualTo(2);
             assertThat(lottos.getLottos().get(1).getNumbers().size()).isEqualTo(6);
+        }
+    }
+
+    @Nested
+    @DisplayName("당첨 번호 입력 받기")
+    class createWinningLotto {
+        @Test
+        @DisplayName("올바르게 입력 받았으면 WinningLotto 객체를 생성한다.")
+        void success() {
+            //given
+            InputFactory.inputNumber("1,2,3,4,5,6" + "\n" + "7");
+            //when
+            final WinningLotto winningLotto = lottoFacade.createWinningLotto();
+            //then
+            assertThat(winningLotto.getLotto().getNumbers().size()).isEqualTo(6);
+            assertThat(winningLotto.getBonusBall().getNumber()).isEqualTo(7);
         }
     }
 }
