@@ -6,22 +6,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class LottoBundle {
-    private int cost;
+    private int count;
     private final List<Lotto> lottoList;
 
-    public LottoBundle(int cost) {
-        validate(cost);
-        this.cost = cost;
+    public LottoBundle(int count) {
+        this.count = count;
         this.lottoList = createLottoList();
     }
 
-    private void validate(int cost) {
-        //TODO: 범위확인
-    }
+
     private List<Lotto> createLottoList(){
         List<Lotto> lottoList1 = new ArrayList<>();
-        int count = this.cost/1000;
-        while(count-->0){}
+        while(this.count-->0){}
         return lottoList1;
     }
 }
