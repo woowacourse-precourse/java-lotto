@@ -1,6 +1,7 @@
 package lotto.Controller;
 
 import lotto.Domain.LotteryTickets;
+import lotto.Domain.LottoResult;
 import lotto.Domain.WinningNumber;
 import lotto.Service.LottoService;
 
@@ -16,6 +17,9 @@ public class LottoController {
             lottoService.showLottoPurchaseHistory(lotteryTickets);
 
             WinningNumber winningNumbers = lottoService.getWinningNumsWithBonus();
+
+            LottoResult lottoResult = lottoService.getLottoResult(lotteryTickets, winningNumbers);
+
 
         } catch (Exception e) {
             System.out.println(e.getMessage());
