@@ -12,7 +12,7 @@ public class PrizeTableTest {
     @Test
     void testInitialScoreTable() {
         Map<Integer, Integer> scoreMap = PrizeTable.setScoreTable();
-        Map<Integer, Integer> EXPECTED_RESULT = Map.of(2, 0, 3, 0, 4, 0, 5, 0, 6, 0);
+        Map<Integer, Integer> EXPECTED_RESULT = Map.of(3, 0, 4, 0, 0, 0, 5, 0, 6, 0);
         assertThat(scoreMap).isEqualTo(EXPECTED_RESULT);
     }
 

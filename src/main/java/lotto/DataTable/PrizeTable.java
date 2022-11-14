@@ -7,13 +7,13 @@ import java.util.Map;
 public enum PrizeTable {
     FirstPlace(6, 2000000000),
     SecondPlace(5, 30000000),
-    SecondPlaceBonus(4, 30000000),
-    ThirdPlace(3, 50000),
-    FourthPlace(2, 5000);
+    SecondPlaceBonus(0, 30000000),
+    ThirdPlace(4, 50000),
+    FourthPlace(3, 5000);
 
     public final int prize;
     public final int count;
-    public static final Map<Integer, Integer> AMOUNT_BY_RANK = new HashMap<>();
+    public static final Map<Integer, Integer> AMOUNT_BY_RANK = new HashMap<Integer, Integer>();
 
     private PrizeTable(int count, int prize) {
         this.count = count;
