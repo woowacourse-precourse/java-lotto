@@ -51,3 +51,31 @@
 - 3항 연산자를 쓰지 않는다.
 - 함수(또는 메서드)가 한 가지 일만 하도록 최대한 작게 만들어라.
 - JUnit 5와 AssertJ를 이용하여 본인이 정리한 기능 목록이 정상 동작함을 테스트 코드로 확인한다.
+
+
+### Lotto 클래스
+
+- 제공된 `Lotto` 클래스를 활용해 구현해야 한다.
+- `Lotto`에 매개 변수가 없는 생성자를 추가할 수 없다.
+- `numbers`의 접근 제어자인 private을 변경할 수 없다.
+- `Lotto`에 필드(인스턴스 변수)를 추가할 수 없다.
+- `Lotto`의 패키지 변경은 가능하다.
+
+```java
+public class Lotto {
+    private final List<Integer> numbers;
+
+    public Lotto(List<Integer> numbers) {
+        validate(numbers);
+        this.numbers = numbers;
+    }
+
+    private void validate(List<Integer> numbers) {
+        if (numbers.size() != 6) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    // TODO: 추가 기능 구현
+}
+```
