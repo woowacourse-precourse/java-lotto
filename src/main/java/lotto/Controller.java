@@ -52,7 +52,13 @@ public class Controller {
         }
     }
 
-
+    public void checking() {
+        for (int i = 0; i < user.getUserLottoNumber().size(); i++) {
+            Checker checker = new Checker(user.getUserLottoNumber().get(i), user.getWinningNumbers());
+            int checkNum = checker.winningNumCheck();
+            user.userMatchNumber.add(checkNum);
+        }
+    }
 
 
 }
