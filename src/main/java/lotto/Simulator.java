@@ -3,7 +3,9 @@ package lotto;
 import static lotto.Rank.valueOfRank;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import java.math.BigDecimal;
 import java.math.BigInteger;
+import java.math.MathContext;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -69,6 +71,12 @@ public class Simulator {
     public static Lotto generate() {
         List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
         return new Lotto(numbers);
+    }
+
+    public static BigDecimal calculateRateOfReturn(List<Integer> wins, int purchasePrice) {
+        BigDecimal totalWinningPrice = new BigDecimal(calculateTotalWinningPrice(wins));
+        BigDecimal totalPurchasePrice = new BigDecimal(purchasePrice);
+        return totalWinningPrice.divide(totalPurchasePrice, new MathContext(3));
     }
 
     public static BigInteger calculateTotalWinningPrice(List<Integer> wins) {
