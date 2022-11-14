@@ -50,8 +50,14 @@ public class CheckLottosPrize {
     }
 
     private int getAnswerCount(Lotto lotto) {
-        lotto.get().retainAll(winningNumbers.get());
-        return lotto.get().size();
+        int answerCount = 0;
+        for (Integer winningNumber : winningNumbers.get()) {
+            if (lotto.get().contains(winningNumber)) {
+                lotto.get().remove(winningNumber);
+                answerCount++;
+            }
+        }
+        return answerCount;
     }
 
     public Map<String, Integer> getTotalPrize() {
