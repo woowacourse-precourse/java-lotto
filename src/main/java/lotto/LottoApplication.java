@@ -1,9 +1,11 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
+import lotto.domain.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Pattern;
 
 public class LottoApplication {
     private final String BONUS_BALL_RESULT_MESSAGE = "%d개 일치, 보너스 볼 일치 (%,d원) - %d개";
@@ -12,6 +14,7 @@ public class LottoApplication {
     private final String DUPLICATE_NUMBER_ERROR = "[ERROR] 로또 번호가 중복됩니다.";
     private final String MONEY_INPUT = "구입금액을 입력해 주세요.";
     private final String BONUS_NUMBER_INPUT = "보너스 번호를 입력해 주세요.";
+    private final String patten = "^[0-9]*$";
 
     private RandomLotto randomLottos;
     private RandomLottoGenerator randomLottoGenerator;
@@ -21,20 +24,16 @@ public class LottoApplication {
     private int bonusNumber;
 
     public void run() {
-        System.out.println(MONEY_INPUT);
-        int money = Integer.parseInt(Console.readLine());
-        if (money % 1000 != 0) {
-            throw new IllegalArgumentException();
-        }
+        // 구매 금액 입력
+        int money = inputMoney();
 
+        // 랜덤 로또 생성
         randomLottoGenerator = new RandomLottoGenerator();
         randomLottos = new RandomLotto(randomLottoGenerator);
         randomNumbers = randomLottos.makeRandomLottos(money);
         randomNumbers.forEach(random -> random.printNumbers());
 
-        // 보너스 숫자
-
-        // 로또 당첨번호
+        // 로또 당첨번호(당첨번호 입력, 보너스번호 입력)
         winningLotto = new WinningLotto(inputAndGetLotto(), inputBonusNumber());
 
         // 총 상금
@@ -48,10 +47,16 @@ public class LottoApplication {
         printYield((double) money, (double) sum);
     }
 
-    private int inputBonusNumber() {
-        System.out.println(BONUS_NUMBER_INPUT);
-        bonusNumber = Integer.parseInt(Console.readLine());
-        return bonusNumber;
+    private int inputMoney() {
+        System.out.println(MONEY_INPUT);
+        String input = Console.readLine();
+        if (!(Pattern.matches(patten, input))) {
+            throw new IllegalArgumentException("[ERROR] 숫자 외의 것이 입력되었습니다.");
+        }
+
+        int money = Integer.parseInt(input);
+
+        return money;
     }
 
     private Lotto inputAndGetLotto() {
@@ -60,9 +65,7 @@ public class LottoApplication {
         String[] split = Console.readLine().split(",");
 
         for (int idx = 0; idx < split.length; idx++) {
-            if (inputWinningLotto.contains(Integer.parseInt(split[idx]))) {
-                throw new IllegalArgumentException(DUPLICATE_NUMBER_ERROR);
-            }
+            winningNumberValidate(inputWinningLotto, split, idx);
             inputWinningLotto.add(Integer.parseInt(split[idx]));
         }
 
@@ -71,16 +74,78 @@ public class LottoApplication {
         return inputLotto;
     }
 
-    private void printYield(double money, double sum) {
-        double yield = sum / money * 100;
-        System.out.println("총 수익률은 " + String.format("%.1f", yield) + "%입니다.");
+    private void winningNumberValidate(List<Integer> inputWinningLotto, String[] split, int idx) {
+        if (!(Pattern.matches(patten, split[idx]))) {
+            throw new IllegalArgumentException();
+        }
+
+        if (inputWinningLotto.contains(Integer.parseInt(split[idx]))) {
+            throw new IllegalArgumentException(DUPLICATE_NUMBER_ERROR);
+        }
+    }
+
+    private int inputBonusNumber() {
+        System.out.println(BONUS_NUMBER_INPUT);
+        String inputBonusNumber = Console.readLine();
+        if (!(Pattern.matches(patten, inputBonusNumber))) {
+            throw new IllegalArgumentException("[ERROR] 숫자 외의 것이 입력되었습니다.");
+        }
+        bonusNumber = Integer.parseInt(inputBonusNumber);
+
+        return bonusNumber;
+    }
+
+    private int getSum(int sum) {
+        for (Lotto lotto : randomNumbers) {
+            int cnt = winningLotto.matchCount(lotto);
+            winningLotto.matchCount(lotto);
+
+            if (isSmallerThanCount(cnt)) continue;
+
+            /**
+             * FIRST, SECOND, THIRD, FOURTH, FIFTH
+             */
+            LottoReward rank = getLottoRank(lotto, cnt);
+            // 해당 rank 의 숫자를 더해준다
+            plusCount(rank);
+            // 해당 rank 의 상금을 더해준다
+            sum += rank.getReward();
+        }
+        return sum;
+    }
+
+    private boolean isSmallerThanCount(int cnt) {
+        return cnt < 3;
+    }
+
+    private LottoReward getLottoRank(Lotto lotto, int cnt) {
+        LottoReward rank = LottoReward.getRank(cnt, isContainsBonusNumber(lotto, cnt));
+        return rank;
+    }
+
+    private boolean isContainsBonusNumber(Lotto lotto, int cnt) {
+        boolean containsBonusNumber = false;
+        if (isCountFive(cnt)) {
+            if (winningLotto.isContainsBonusNumber(lotto, bonusNumber)) {
+                containsBonusNumber = true;
+            }
+        }
+        return containsBonusNumber;
+    }
+
+    private boolean isCountFive(int cnt) {
+        return cnt == 5;
+    }
+
+    private void plusCount(LottoReward rank) {
+        rank.plusCount();
     }
 
     private void printResult() {
         System.out.println("당첨 통계");
         System.out.println("---");
         for (LottoReward lottoReward : LottoReward.values()) {
-            if (lottoReward == LottoReward.SECOND) {
+            if (isRankSecond(lottoReward)) {
                 System.out.println(String.format(BONUS_BALL_RESULT_MESSAGE,
                         lottoReward.getMatchingNumbers(), lottoReward.getReward(), lottoReward.getCount()));
                 continue;
@@ -90,32 +155,12 @@ public class LottoApplication {
         }
     }
 
-    private int getSum(int sum) {
-        for (Lotto lotto : randomNumbers) {
-            int cnt = winningLotto.matchCount(lotto);
-            winningLotto.matchCount(lotto);
-
-            if (cnt < 3) continue;
-
-            /**
-             * FIRST, SECOND, THIRD, FOURTH, FIFTH
-             */
-            LottoReward rank = LottoReward.getRank(cnt, isContainsBonusNumber(lotto, cnt));
-            // 해당 rank 의 숫자를 더해준다
-            rank.plusCount();
-            // 해당 rank 의 상금을 더해준다
-            sum += rank.getReward();
-        }
-        return sum;
+    private boolean isRankSecond(LottoReward lottoReward) {
+        return lottoReward == LottoReward.SECOND;
     }
 
-    private boolean isContainsBonusNumber(Lotto lotto, int cnt) {
-        boolean containsBonusNumber = false;
-        if (cnt == 5) {
-            if (winningLotto.isContainsBonusNumber(lotto, bonusNumber)) {
-                containsBonusNumber = true;
-            }
-        }
-        return containsBonusNumber;
+    private void printYield(double money, double sum) {
+        double yield = sum / money * 100;
+        System.out.println("총 수익률은 " + String.format("%.1f", yield) + "%입니다.");
     }
 }
