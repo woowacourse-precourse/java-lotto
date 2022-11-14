@@ -107,4 +107,18 @@ public class User {
         float temp = (float)(100.0*((float)sum/(float)lottos.size()));
         this.earningRate = Math.round(temp*10);
     }
+    public void printPrizeResult(){
+        System.out.println("당첨 통계\n---");
+        System.out.printf("3개 일치 (%d) - %d개\n", WinningRanking.FIFTH_WITHOUT_BONUS.getPrize(),
+                this.rankingCount[WinningRanking.FIFTH_WITHOUT_BONUS.getOrder()]);
+        System.out.printf("4개 일치 (%d) - %d개\n", WinningRanking.FOURTH_WITHOUT_BONUS.getPrize(),
+                this.rankingCount[WinningRanking.FOURTH_WITHOUT_BONUS.getOrder()]);
+        System.out.printf("5개 일치 (%d) - %d개\n", WinningRanking.THIRD_WITHOUT_BONUS.getPrize(),
+                this.rankingCount[WinningRanking.THIRD_WITHOUT_BONUS.getOrder()]);
+        System.out.printf("5개 일치, 보너스 불 일치 (%d) - %d개\n", WinningRanking.SECOND.getPrize(),
+                this.rankingCount[WinningRanking.SECOND.getOrder()]);
+        System.out.printf("6개 일치 (%d) - %d개\n", WinningRanking.FIRST_WITHOUT_BONUS.getPrize(),
+                this.rankingCount[WinningRanking.FIRST_WITHOUT_BONUS.getOrder()]);
+        System.out.printf("총 수익률은 %f%%입니다.\n", this.earningRate);
+    }
 }
