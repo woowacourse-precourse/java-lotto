@@ -15,8 +15,8 @@ public class LottoSellerTest {
         LottoSeller tester = new LottoSeller();
 
         InputStream input = new ByteArrayInputStream(money.getBytes());
-        tester.takeMoney();
         System.setIn(input);
+        tester.takeMoney();
         assertThat(tester.money).isEqualTo(9326);
         assertThat(tester.piece).isEqualTo(9);
         assertThat(tester.change).isEqualTo(326);
