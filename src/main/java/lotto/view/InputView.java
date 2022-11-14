@@ -24,6 +24,14 @@ public class InputView {
         return purchasePrice;
     }
 
+    public List<Integer> userInputPredictionNumbers() {
+        outputView.printPredictionNumbersMessage();
+        String inputPredictionNumbers = Console.readLine();
+
+        List<Integer> predictionNumbers = splitStringByCommaAndParseInt(inputPredictionNumbers);
+        return predictionNumbers;
+    }
+
     public static List<Integer> splitStringByCommaAndParseInt(String s) {
         String blankRemoved = s.replaceAll(" ", "");
         String[] splitByComma = blankRemoved.split(",");
