@@ -3,7 +3,9 @@ package lotto;
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class Player {
+    private final int LOTTO_PRICE = 1000;
     private int PurchaseMoney;
+    private int total_lotto;
     private Manager manager;
 
     public Player(Manager manager){
@@ -20,5 +22,9 @@ public class Player {
         if(money % 1000 != 0)
             throw new IllegalArgumentException("[ERROR] : 금액은 1000원으로 나누어 떨어져야 합니다.");
         this.PurchaseMoney = money;
+    }
+
+    public void calculateTotalLotto(){
+        this.total_lotto = this.PurchaseMoney / this.LOTTO_PRICE;
     }
 }
