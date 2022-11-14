@@ -3,7 +3,8 @@ package lotto.type;
 public enum ExceptionType {
 
     NUMBER("숫자를 입력해야 합니다."),
-    FORMAT("쉼표로 구분지어 입력해야 합니다."),
+    FORMAT("쉼표로 구분된 숫자들을 %d개 입력해야 합니다.",
+            ConstantNumberType.COUNT.getValue()),
     DUPLICATE("중복되지 않은 숫자를 입력해야 합니다."),
     RANGE("%d ~ %d 사이의 숫자를 입력해야 합니다.",
             ConstantNumberType.MIN.getValue(),
