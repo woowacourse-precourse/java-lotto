@@ -1,5 +1,7 @@
 package lotto.domain;
 
+import camp.nextstep.edu.missionutils.Randoms;
+import java.util.Collections;
 import java.util.List;
 
 public class LottoOrder {
@@ -34,6 +36,19 @@ public class LottoOrder {
         }
 
         return money / LOTTO_PRICE;
+    }
+
+    /**
+     * 로또 숫자 범위 중에서 중복되지 않는 숫자를 로또 한 세트의 개수만큼 뽑는다.
+     *
+     * @return 로또 숫자 범위에 해당하는 중복되지 않는 숫자들을 한 세트 뽑아 오름차순으로 정렬한 List
+     */
+    private List<Integer> generateRandomLottoNumber() {
+        List<Integer> lottoNumber = Randoms.pickUniqueNumbersInRange(
+                Lotto.LOTTO_START_NUMBER, Lotto.LOTTO_END_NUMBER, Lotto.LOTTO_SIZE);
+        Collections.sort(lottoNumber);
+
+        return lottoNumber;
     }
 
     public List<Lotto> getLottoTickets() {
