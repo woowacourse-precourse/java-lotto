@@ -41,7 +41,9 @@ public class YieldMachine {
     }
 
     private void calculateAllLottoReward(List<BoughtLotto> boughtLottos) {
-
+        for (BoughtLotto boughtLotto: boughtLottos) {
+            calculateOneLottoReward(boughtLotto);
+        }
     }
 
     private List<Integer> findCountOfSameNumberWithWinningNumber(BoughtLotto boughtLotto) {
