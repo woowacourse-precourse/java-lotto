@@ -6,9 +6,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PickNumber {
+
+    public static List<List<Integer>> purchased_lotto=new ArrayList<>();
+
     public static void pick_number_of_lotto(int pages_of_lotto){
         StringBuilder sb=new StringBuilder();
-        List<List<Integer>> purchased_lotto=new ArrayList<>();
 
         sb.append('\n').append(pages_of_lotto+"개를 구매했습니다.").append('\n');
 
@@ -20,5 +22,9 @@ public class PickNumber {
 
         System.out.println(sb);
         Jackpot.input_jackpot_number();
+    }
+
+    public static List<List<Integer>> get_purchased_lotto_list(){
+        return purchased_lotto;
     }
 }
