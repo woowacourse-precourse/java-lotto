@@ -46,6 +46,11 @@ public class ServiceInput {
             Message.printInputErrorRangeOut();
             throw new IllegalArgumentException();
         }
+
+        if (Validator.isListDuplicate(winningNumbers)){
+            Message.printInputErrorDuplicate();
+            throw new IllegalArgumentException();
+        }
     }
 
     private static String getInputWinningNumbers() {

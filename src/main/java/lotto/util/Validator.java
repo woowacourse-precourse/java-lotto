@@ -38,6 +38,13 @@ public class Validator {
         return false;
     }
 
+    private static boolean isNotSameIndex(int index1, int index2){
+        return index1 != index2;
+    }
+    private static boolean isSame(int num1, int num2){
+        return num1 == num2;
+    }
+
     public static boolean isListhasCharacter(List<String> inputNumbersList) {
 
         for(int i=0; i<inputNumbersList.size(); i++){
@@ -59,4 +66,17 @@ public class Validator {
 
         return false;
     }
+
+    public static boolean isListDuplicate(List<Integer> numbersList) {
+
+        for (int i=0; i<numbersList.size(); i++){
+            for (int j=0; j<numbersList.size(); j++){
+                if (isNotSameIndex(i,j) && isSame(numbersList.get(i), numbersList.get(j))) return true;
+            }
+        }
+
+        return false;
+    }
+
+
 }
