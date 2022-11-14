@@ -47,9 +47,9 @@ class LottoTest {
     @Test
     void lottoHasBonusNumber() {
         Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
-        WinningLotto winningLotto = new WinningLotto(new Lotto(List.of(1, 2, 3, 4, 5, 6)), 1);
+        WinningLotto winningLotto = new WinningLotto(new Lotto(List.of(1, 2, 3, 4, 5, 6)), 7);
         boolean result = winningLotto.isBonusNumberIn(lotto);
 
-        assertThat(result).isEqualTo(true);
+        assertThat(result).isEqualTo(false);
     }
 }
