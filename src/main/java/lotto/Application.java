@@ -8,7 +8,23 @@ public class Application {
     private final int moneyUnit = 1000;
 
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        Ui ui = new Ui();
+        Application application = new Application();
+
+        int money = ui.moneyInput();
+
+        List<LottoNumber> buyList = application.buyLotto(money);
+
+        ui.buyLottoOutput(buyList);
+
+        List<Integer> lotto = ui.lottoInput();
+        int bonus = ui.bonusInput();
+
+        List<Integer> lottoResult = application.getLottoResult(buyList, lotto, bonus);
+        double totalProfit = application.getTotalProfit(money, lottoResult);
+
+        ui.lottoResultTotalOutput(lottoResult);
+        ui.totalProfitOutput(totalProfit);
     }
 
     public List<Integer> createLotto() {
@@ -34,7 +50,7 @@ public class Application {
         return number.size() == reuslt.size();
     }
 
-    public List<LottoNumber> saveLotto(int money) {
+    public List<LottoNumber> buyLotto(int money) {
         List<LottoNumber> buyList = new ArrayList<>();
 
         validMoney(money);
