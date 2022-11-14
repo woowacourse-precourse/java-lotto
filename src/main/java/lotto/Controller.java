@@ -14,15 +14,12 @@ public class Controller {
 
     public void generate() {
         try {
-            //로또 구입하기
             int money = input.getMoney();
             UserLottos userLottos = new UserLottos(money);
             output.printUserLottos(userLottos);
 
-            //당첨 로또 넣기
             WinningLotto winningLotto = getWinningLotto();
 
-            //결과 출력하기
             LottoResult lottoResult = new LottoResult(userLottos, winningLotto);
             output.printResult(lottoResult);
 
