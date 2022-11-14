@@ -14,7 +14,7 @@ public class Constants {
     }
 
     public static class Digit {
-        public static final int LOTTO_PRICE = 1000;
+        public static final int LOTTO_PRICE = 1_000;
         public static final int LOTTO_NUMBER_COUNT = 6;
 
         public static final int FIRST_PLACE = 1;
@@ -23,11 +23,11 @@ public class Constants {
         public static final int FOURTH_PLACE = 4;
         public static final int FIFTH_PLACE = 5;
 
-        public static final int FIRST_PLACE_PRIZE = 2000000000;
-        public static final int SECOND_PLACE_PRIZE = 30000000;
-        public static final int THIRD_PLACE_PRIZE = 1500000;
-        public static final int FOURTH_PLACE_PRIZE = 50000;
-        public static final int FIFTH_PLACE_PRIZE = 5000;
+        public static final int FIRST_PLACE_PRIZE = 2_000_000_000;
+        public static final int SECOND_PLACE_PRIZE = 30_000_000;
+        public static final int THIRD_PLACE_PRIZE = 1_500_000;
+        public static final int FOURTH_PLACE_PRIZE = 50_000;
+        public static final int FIFTH_PLACE_PRIZE = 5_000;
     }
 
     public static class Error {
