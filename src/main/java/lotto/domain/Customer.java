@@ -29,6 +29,10 @@ public class Customer {
         }
     }
 
+    public double calculateRate(int amount) {
+        return ((double) (money * 100)) / (double) amount;
+    }
+
     public int[] getWinningList() {
         return winnings;
     }
