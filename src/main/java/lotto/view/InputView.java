@@ -19,7 +19,7 @@ public class InputView {
             return amount;
         } catch (NumberFormatException ex) {
             System.out.println("[ERROR] 숫자를 입력해주세요. ");
-            throw new IllegalArgumentException();
+            throw new NoSuchElementException();
         }
     }
 
