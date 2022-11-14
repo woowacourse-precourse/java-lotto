@@ -3,7 +3,7 @@ package lotto.domain;
 import java.util.Map;
 import java.util.Optional;
 
-public class LottoResult {
+public class ProfitCalculator {
     public double getLottoYield(Map<LottoRanking, Integer> rankingData) {
         int totalReward = getTotalReward(rankingData);
         int totalTicket = getTotalTicket(rankingData);

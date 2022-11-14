@@ -10,7 +10,7 @@ import java.util.Map;
 public class LottoController {
     private TicketMachine ticketMachine = new TicketMachine();
     private LottoMaker lottoMaker = new LottoMaker();
-    private LottoResult lottoResult = new LottoResult();
+    private ProfitCalculator profitCalculator = new ProfitCalculator();
 
     public void process() {
         try {
@@ -55,7 +55,7 @@ public class LottoController {
     private void printLottoResult(List<Lotto> lottos, WinningLotto winningLotto) {
         Map<LottoRanking, Integer> lottoResultData = LottoReader.getLottoRankings(lottos, winningLotto);
         OutputView.printLottoResult(lottoResultData);
-        printLottoRate(lottoResult.getLottoYield(lottoResultData));
+        printLottoRate(profitCalculator.getLottoYield(lottoResultData));
     }
 
     private void printLottoRate(double returnRate) {

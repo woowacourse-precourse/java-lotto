@@ -12,9 +12,9 @@ import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.*;
 
-class LottoResultTest {
+class ProfitCalculatorTest {
 
-    private LottoResult lottoResult = new LottoResult();
+    private ProfitCalculator profitCalculator = new ProfitCalculator();
     static Map<LottoRanking, Integer> firstData = new HashMap<>();
     static Map<LottoRanking, Integer> secondData = new HashMap<>();
     static Map<LottoRanking, Integer> thirdData = new HashMap<>();
@@ -48,21 +48,21 @@ class LottoResultTest {
     @MethodSource("lottoRankingTicketDataSource")
     void 로또_장수_계산_테스트(Map<LottoRanking, Integer> lottoData, int expected) {
 
-        assertThat(lottoResult.getTotalTicket(lottoData)).isEqualTo(expected);
+        assertThat(profitCalculator.getTotalTicket(lottoData)).isEqualTo(expected);
     }
 
     @DisplayName("로또 상금 계산 기능 테스트")
     @ParameterizedTest
     @MethodSource("lottoRankingRewardDataSource")
     void 로또_상금_계산_테스트(Map<LottoRanking, Integer> lottoData, int expected) {
-        assertThat(lottoResult.getTotalReward(lottoData)).isEqualTo(expected);
+        assertThat(profitCalculator.getTotalReward(lottoData)).isEqualTo(expected);
     }
 
     @DisplayName("로또 상금 수익률 계산 기능 테스트")
     @ParameterizedTest
     @MethodSource("lottoRankingRewardRateDataSource")
     void 로또_상금_수익률_계산_테스트(Map<LottoRanking, Integer> lottoData, double expected) {
-        double result = Math.round(lottoResult.getLottoYield(lottoData) * 1000) / 1000.0;
+        double result = Math.round(profitCalculator.getLottoYield(lottoData) * 1000) / 1000.0;
         assertThat(result).isEqualTo(expected);
     }
 
