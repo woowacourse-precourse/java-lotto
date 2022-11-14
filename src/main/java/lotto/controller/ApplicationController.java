@@ -47,6 +47,15 @@ public class ApplicationController {
         inputValidator.validateWinningNumber(winningNumber);
         player.setWinningNumber(winningNumber);
 
-        // TODO: 보너스 번호 과정 제어 기능 호출
+        control_BonusNumber();
+    }
+
+    public void control_BonusNumber() {
+        // TODO
+        //  - [ ] 보너스 번호 입력
+        //  - [ ] 보너스 번호 검증
+        //  - [ ] 보너스 번호 저장
+
+        // TODO: 당첨 내역 과정 제어 기능 호출
     }
 }
