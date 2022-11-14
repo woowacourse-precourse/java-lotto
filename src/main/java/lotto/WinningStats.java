@@ -32,13 +32,21 @@ public class WinningStats {
 
     public WinningStats(List<Lotto> purchase, Lotto winning, int bonus){
         for(Lotto selected : purchase){
-            Boolean existBonus = null;
-            int sameCount = Lotto.CountSameNumber(selected, winning);
-            if(sameCount == 5)
-                existBonus = Lotto.CheckBonus(selected, bonus);
-
+            int sameCount = GetSameNumber(selected, winning);
+            Boolean existBonus = CheckBonus(selected, bonus, sameCount);
             AccumulateWinning(sameCount, existBonus);
         }
+    }
+
+    private Boolean CheckBonus(Lotto lotto, int bonus, int sameCount){
+        if(sameCount == 5)
+            return Lotto.CheckBonus(lotto, bonus);
+
+        return null;
+    }
+
+    private int GetSameNumber(Lotto lotto, Lotto winning){
+        return Lotto.CountSameNumber(lotto, winning);
     }
 
     public void PrintWinningStats(){
@@ -53,10 +61,11 @@ public class WinningStats {
     }
 
     private void AccumulateWinning(int sameCount, Boolean existBonus){
-        if(sameCount < 3)
+        Optional<Winning> a = collection.stream().filter(c->c.sameCount == sameCount && c.existBonus == existBonus).findFirst();
+        if(a.isEmpty())
             return;
 
-        collection.stream().filter(c->c.sameCount == sameCount && c.existBonus == existBonus).findFirst().get().number++;
+        a.get().number++;
     }
 
     public void CalculateEarningRate(int amount){
@@ -64,6 +73,7 @@ public class WinningStats {
         for(Winning c : collection){
             sum += c.number * c.reward;
         }
-        earningRate = (sum * 100.0) / amount;
+
+        earningRate = (double)sum / amount * 100;
     }
 }
