@@ -127,6 +127,6 @@ public class LottoController {
             reward += (long) winningList.get(LottoRanking.findByRanking(i)) * LottoRanking.findByRanking(i).getReward();
         }
         double yieldMoney = reward / (lottoCount * 1000) * 100;
-        System.out.printf(PRINT_YIELD,yieldMoney);
+        System.out.printf(PRINT_YIELD, yieldMoney);
     }
 }

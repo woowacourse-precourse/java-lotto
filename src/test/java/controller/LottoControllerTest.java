@@ -23,7 +23,7 @@ class LottoControllerTest {
 
     @DisplayName("사용자 입력 금액에 따른 로또 구입 갯수 출력 테스트")
     @Test
-    public void createLottoCount(){
+    public void createLottoCount() {
         //given
         String userInput = "8000";
 
@@ -39,7 +39,7 @@ class LottoControllerTest {
 
     @DisplayName("로또 구입 갯수에 따른 로또 발행 갯수 테스트 ")
     @Test
-    public void createLottoPublish(){
+    public void createLottoPublish() {
         //given
         int count = 8;
 
@@ -52,13 +52,13 @@ class LottoControllerTest {
 
     @DisplayName("당첨 번호와 로또 번호 중 일치하는 숫자를 출력하는 테스트")
     @Test
-    public void compareWinningNumberAndLottoNumber(){
+    public void compareWinningNumberAndLottoNumber() {
         //given
-        List<Integer> lottoNumbers = new ArrayList<>(List.of(1,2,3,4,5,6));
-        WinningNumbers winningNumbers = new WinningNumbers(List.of(1,3,5,7,9,11));
+        List<Integer> lottoNumbers = new ArrayList<>(List.of(1, 2, 3, 4, 5, 6));
+        WinningNumbers winningNumbers = new WinningNumbers(List.of(1, 3, 5, 7, 9, 11));
 
         //when
-        int matchLottoNumber = lottoController.getWinningNumberScore(lottoNumbers,winningNumbers);
+        int matchLottoNumber = lottoController.getWinningNumberScore(lottoNumbers, winningNumbers);
 
         //then
         assertThat(matchLottoNumber).isEqualTo(3);
@@ -67,24 +67,21 @@ class LottoControllerTest {
 
     @DisplayName("보너스 번호가 로또 번호 중 일치하는지 여부를 확인하는 테스트")
     @Test
-    public void compareBonusNumberAndLottoNumber(){
+    public void compareBonusNumberAndLottoNumber() {
         //given
-        List<Integer> lottoNumbers = new ArrayList<>(List.of(1,2,3,4,5,6));
+        List<Integer> lottoNumbers = new ArrayList<>(List.of(1, 2, 3, 4, 5, 6));
         BonusNumber bonusNumber = new BonusNumber("6");
 
         //when
-        boolean matchBonusNumber = lottoController.getBonusNumberScore(lottoNumbers,bonusNumber);
+        boolean matchBonusNumber = lottoController.getBonusNumberScore(lottoNumbers, bonusNumber);
 
         //then
         assertThat(matchBonusNumber).isEqualTo(true);
-
     }
-
-
 
     @DisplayName("로또 발행 번호와 당첨번호, 보너스 번호를 비교하여 당첨 내역을 확인하는 테스트")
     @Test
-    public void createLottoWinningList(){
+    public void createLottoWinningList() {
         //given
         Lotto lotto1 = new Lotto(List.of(8, 21, 23, 41, 42, 43));
         Lotto lotto2 = new Lotto(List.of(3, 5, 11, 16, 32, 38));
@@ -95,22 +92,21 @@ class LottoControllerTest {
         Lotto lotto7 = new Lotto(List.of(2, 13, 22, 32, 38, 45));
         Lotto lotto8 = new Lotto(List.of(1, 3, 5, 14, 22, 45));
 
-        ArrayList<Lotto> lottos = new ArrayList<>(List.of(lotto1,lotto2,lotto3,lotto4,lotto5,lotto6,lotto7,lotto8));
-        WinningNumbers winningNumbers = new WinningNumbers(List.of(1,2,3,4,5,6));
+        ArrayList<Lotto> lottos = new ArrayList<>(List.of(lotto1, lotto2, lotto3, lotto4, lotto5, lotto6, lotto7, lotto8));
+        WinningNumbers winningNumbers = new WinningNumbers(List.of(1, 2, 3, 4, 5, 6));
         BonusNumber bonusNumber = new BonusNumber("7");
 
         //when
-        HashMap<LottoRanking, Integer> winningList = lottoController.makeWinningList(lottos,winningNumbers,bonusNumber);
+        HashMap<LottoRanking, Integer> winningList = lottoController.makeWinningList(lottos, winningNumbers, bonusNumber);
 
         //then
-        assertThat(winningList.get(LottoRanking.FIFTH)).isEqualTo(1);
-        assertThat(winningList.get(LottoRanking.FOURTH)).isEqualTo(0);
-        assertThat(winningList.get(LottoRanking.THIRD)).isEqualTo(0);
-        assertThat(winningList.get(LottoRanking.SECOND)).isEqualTo(0);
         assertThat(winningList.get(LottoRanking.FIRST)).isEqualTo(0);
+        assertThat(winningList.get(LottoRanking.SECOND)).isEqualTo(0);
+        assertThat(winningList.get(LottoRanking.THIRD)).isEqualTo(0);
+        assertThat(winningList.get(LottoRanking.FOURTH)).isEqualTo(0);
+        assertThat(winningList.get(LottoRanking.FIFTH)).isEqualTo(1);
 
     }
-
 
 
 }

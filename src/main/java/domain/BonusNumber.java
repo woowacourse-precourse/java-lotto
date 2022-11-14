@@ -11,7 +11,7 @@ public class BonusNumber {
         return bonusNumber;
     }
 
-    public int convertBonusNumber(){
+    public int convertBonusNumber() {
         return Integer.parseInt(bonusNumber);
     }
 }
