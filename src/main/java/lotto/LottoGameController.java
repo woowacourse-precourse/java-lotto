@@ -7,7 +7,7 @@ import static lotto.view.Print.requestBonusNumberInput;
 import static lotto.view.Print.printLottoResult;
 import static lotto.view.Print.printPublishedLottoNumbers;
 import static lotto.view.Print.printPurchaseQuantity;
-import static lotto.view.Print.printWinningLottoNumbersInput;
+import static lotto.view.Print.requestWinningNumbersInput;
 import static lotto.view.Print.printYield;
 import static lotto.view.Print.requestPurchaseAmountInput;
 
@@ -46,7 +46,7 @@ public class LottoGameController {
     }
 
     private Lotto publishWinningLotto() {
-        printWinningLottoNumbersInput();
+        requestWinningNumbersInput();
         return lottoMachine.publishWinningLotto(inputWinningNumbers());
     }
 

@@ -36,7 +36,7 @@ public final class Print {
         }
     }
 
-    public static void printWinningLottoNumbersInput() {
+    public static void requestWinningNumbersInput() {
         System.out.println();
         System.out.println(WINNING_NUMBERS_INPUT_MESSAGE);
     }
