@@ -95,7 +95,7 @@ class LottoPrinterTest {
             assertSimpleTest(
                     () -> {
                         run();
-                        assertThat(output().contains("총 수익률은 65.2%%입니다."));
+                        assertThat(output().contains("총 수익률은 65.2%입니다."));
                     });
         }
 
