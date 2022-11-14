@@ -1,6 +1,9 @@
-package lotto;
+package lotto.domain;
 
 import camp.nextstep.edu.missionutils.Console;
+import lotto.constant.ExceptionConstant;
+import lotto.service.CalculatorLottoType;
+import lotto.constant.LottoConstant;
 
 import java.util.HashMap;
 import java.util.HashSet;
@@ -17,14 +20,15 @@ public class Lotto {
         this.numbers = numbers;
     }
 
-    private void validate(List<Integer> numbers) {
+    private void validate(List<Integer> numbers) throws IllegalArgumentException{
         if (numbers.size() != 6) {
             IllegalArgumentException e = new IllegalArgumentException();
-            System.out.println(Constant.ERROR_MESSAGE + "[ERROR] 로또 번호 개수는 6개여야 합니다.");
+            System.out.println(LottoConstant.ERROR_MESSAGE + "로또 번호 개수는 6개여야 합니다.");
             throw e;
         }
     }
 
+    // TODO: 추가 기능 구현
     public void enterBonusNumber() {
         String bonusNumberInput = Console.readLine();
         bonusNumber = exceptionInvalidBonusNumber(bonusNumberInput);
@@ -32,7 +36,6 @@ public class Lotto {
         exceptionBonusNumberByDuplicatedLotto(bonusNumber);
     }
 
-    // TODO: 추가 기능 구현
     public void processLotto(List<List<Integer>> userLottos, int purchasePrice) {
         HashMap<Integer, Integer> matchingPair = createLottoHashSet();
         calculateWinningStatistics(userLottos, bonusNumber, matchingPair);
@@ -40,7 +43,7 @@ public class Lotto {
     }
 
     public HashMap<Integer, Integer> createLottoHashSet() {
-        return new HashMap<>(Constant.LOTTO_WINNING_SIZE) {
+        return new HashMap<>(LottoConstant.LOTTO_WINNING_SIZE) {
             {
                 for (int i = 3; i <= 7; i++) {
                     put(i, 0);
@@ -50,18 +53,18 @@ public class Lotto {
     }
 
     private void printWinningStatistics(HashMap<Integer, Integer> matchingPair, int purchasePrice) {
-        System.out.println(Constant.THREE_MATCHING + " - " + matchingPair.get(3) + "개");
-        System.out.println(Constant.FOUR_MATCHING + " - " + matchingPair.get(4) + "개");
-        System.out.println(Constant.FIVE_MATCHING + " - " + matchingPair.get(5) + "개");
-        System.out.println(Constant.FIVE_MATCHING_WITH_BONUS_NUM + " - " + matchingPair.get(7) + "개");
-        System.out.println(Constant.SIX_MATCHING + " - " + matchingPair.get(6) + "개");
+        System.out.println(LottoConstant.THREE_MATCHING + " - " + matchingPair.get(3) + "개");
+        System.out.println(LottoConstant.FOUR_MATCHING + " - " + matchingPair.get(4) + "개");
+        System.out.println(LottoConstant.FIVE_MATCHING + " - " + matchingPair.get(5) + "개");
+        System.out.println(LottoConstant.FIVE_MATCHING_WITH_BONUS_NUM + " - " + matchingPair.get(7) + "개");
+        System.out.println(LottoConstant.SIX_MATCHING + " - " + matchingPair.get(6) + "개");
 
         printTotalYield(purchasePrice, matchingPair);
     }
 
     private void printTotalYield(double purchasePrice, HashMap<Integer, Integer> matchingPair) {
         double yield = calculateTotalYield(purchasePrice, matchingPair);
-        System.out.println(Constant.TOTAL_YIELD + String.format("%.1f", yield) + "%입니다.");
+        System.out.println(LottoConstant.TOTAL_YIELD + String.format("%.1f", yield) + "%입니다.");
     }
 
     private double calculateTotalYield(double purchasePrice, HashMap<Integer, Integer> matchingPair) {
@@ -69,7 +72,7 @@ public class Lotto {
         for (CalculatorLottoType type : CalculatorLottoType.values()) {
             sum += matchingPair.get(type.getMatchingCount()) * type.getMatchingCountMoney();
         }
-        return (double) sum * Constant.YIELD_OPERAND / purchasePrice;
+        return (double) sum * LottoConstant.YIELD_OPERAND / purchasePrice;
     }
 
     private void calculateWinningStatistics(List<List<Integer>> userLottos, int bonusNumber, HashMap<Integer, Integer> matchingPair) {
@@ -99,48 +102,38 @@ public class Lotto {
         return matchingCount;
     }
 
-    private void exceptionLottoByDuplicatedNumber(List<Integer> numbers) {
+    private void exceptionLottoByDuplicatedNumber(List<Integer> numbers) throws IllegalArgumentException{
         HashSet<Integer> lottoSetUniqueNumber = new HashSet<Integer>(numbers);
         if (lottoSetUniqueNumber.size() != 6) {
-            IllegalArgumentException e = new IllegalArgumentException();
-            System.out.println(Constant.ERROR_MESSAGE + "로또 번호는 중복될 수 없습니다.");
-            throw e;
+            throw new IllegalArgumentException(LottoConstant.ERROR_MESSAGE + ExceptionConstant.DUPLICATED_LOTTO_NUMBERS);
         }
     }
 
-    public void exceptionBonusNumberByDuplicatedLotto(int bonusNumber) {
+    public void exceptionBonusNumberByDuplicatedLotto(int bonusNumber) throws IllegalArgumentException{
         if (numbers.contains(bonusNumber)) {
-            IllegalArgumentException e = new IllegalArgumentException();
-            System.out.println(Constant.ERROR_MESSAGE + "보너스 번호는 로또 번호와 중복될 수 없습니다.");
-            throw e;
+            throw new IllegalArgumentException(LottoConstant.ERROR_MESSAGE + ExceptionConstant.DUPLICATED_BONUS_WITH_LOTTO);
         }
     }
 
-    public void exceptionLottoNumberOutOfRange(List<Integer> numbers) {
+    public void exceptionLottoNumberOutOfRange(List<Integer> numbers) throws IllegalArgumentException{
         for (Integer lottoNumber : numbers) {
-            if (lottoNumber > Constant.LOTTO_MAX_RANGE || lottoNumber < Constant.LOTTO_MIN_RANGE) {
-                IllegalArgumentException e = new IllegalArgumentException();
-                System.out.println(Constant.ERROR_MESSAGE + "로또 번호는 1부터 45 사이의 숫자여야 합니다.");
-                throw e;
+            if (lottoNumber > LottoConstant.LOTTO_MAX_RANGE || lottoNumber < LottoConstant.LOTTO_MIN_RANGE) {
+                throw new IllegalArgumentException(LottoConstant.ERROR_MESSAGE + ExceptionConstant.INVALID_LOTTO_RANGE);
             }
         }
     }
 
-    private int exceptionInvalidBonusNumber(String bonusNumber) {
+    private int exceptionInvalidBonusNumber(String bonusNumber) throws IllegalArgumentException{
         try {
             return Integer.parseInt(bonusNumber);
         } catch (NumberFormatException exception) {
-            IllegalArgumentException e = new IllegalArgumentException();
-            System.out.println(Constant.ERROR_MESSAGE + "보너스 번호는 1부터 45 사이의 숫자여야 합니다.");
-            throw e;
+            throw new IllegalArgumentException(LottoConstant.ERROR_MESSAGE + ExceptionConstant.INVALID_BONUS_RANGE);
         }
     }
 
-    public void exceptionBonusNumberOutOfRange(int bonusNumber) {
-        if (bonusNumber > Constant.LOTTO_MAX_RANGE || bonusNumber < Constant.LOTTO_MIN_RANGE) {
-            IllegalArgumentException e = new IllegalArgumentException();
-            System.out.println(Constant.ERROR_MESSAGE + "보너스 번호는 1부터 45 사이의 숫자여야 합니다.");
-            throw e;
+    public void exceptionBonusNumberOutOfRange(int bonusNumber) throws IllegalArgumentException{
+        if (bonusNumber > LottoConstant.LOTTO_MAX_RANGE || bonusNumber < LottoConstant.LOTTO_MIN_RANGE) {
+            throw new IllegalArgumentException(LottoConstant.ERROR_MESSAGE + ExceptionConstant.INVALID_BONUS_RANGE);
         }
     }
 }
