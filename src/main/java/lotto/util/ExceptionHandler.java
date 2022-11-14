@@ -63,7 +63,6 @@ public class ExceptionHandler {
             if (container.contains(number)) {
                 throw new IllegalArgumentException();
             }
-
             container.add(number);
         }
     }
