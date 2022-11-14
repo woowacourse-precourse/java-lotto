@@ -10,6 +10,6 @@ public class LottoPurchase {
         String purchaseAmount = lottoPurchaseUI.takePurchaseAmount();
         User user = new User(purchaseAmount);
         user.createUserLottos();
-        System.out.println(user.getUserLottos());
+        lottoPurchaseUI.showLottoNumbers(user.getUserLottos());
     }
 }
