@@ -78,6 +78,7 @@ public class InputException {
             throw new IllegalArgumentException(ErrorMessage.ERROR_RANGE.printMessage());
         }
     }
+
     public enum ErrorMessage {
         ERROR_NUMBER("숫자만 입력해 주세요."),
         ERROR_DIVIDE("1000원 단위로 입력해 주세요."),
