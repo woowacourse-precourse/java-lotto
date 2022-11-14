@@ -18,10 +18,10 @@ public class LottoMachine {
         this.lottos = order(count);
     }
 
-    private List<Lotto> order(int count){
+    private List<Lotto> order(int count) {
         List<Lotto> lottos = new ArrayList<>();
 
-        while (lottos.size() != count){
+        while (lottos.size() != count) {
             lottos.add(makeLotto());
         }
 
