@@ -7,36 +7,36 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class WinningLotto {
-    private final Lotto winningLotto;
-    private final Integer bonusNumber;
+	private final Lotto winningLotto;
+	private final Integer bonusNumber;
 
-    public WinningLotto() {
-        Print.PrintTypingWinLotto();
-        String stringInputNumbers = Console.readLine();
+	public WinningLotto() {
+		Print.PrintTypingWinLotto();
+		String stringInputNumbers = Console.readLine();
 
-        String[] stringWinningNumbers = stringInputNumbers.split(",");
-        Exception.validateLottoLength(stringWinningNumbers);
-        Exception.validateLottoNumberRange(stringWinningNumbers);
-        Exception.validateDuplicateNumbers(stringWinningNumbers);
+		String[] stringWinningNumbers = stringInputNumbers.split(",");
+		Exception.validateLottoLength(stringWinningNumbers);
+		Exception.validateLottoNumberRange(stringWinningNumbers);
+		Exception.validateDuplicateNumbers(stringWinningNumbers);
 
-        winningLotto = new Lotto(
-                Arrays.stream(stringWinningNumbers).map(Integer::parseInt).collect(Collectors.toList())
-        );
+		winningLotto = new Lotto(
+			Arrays.stream(stringWinningNumbers).map(Integer::parseInt).collect(Collectors.toList())
+		);
 
-        Print.PrintTypingBonusNumber();
-        String inputBonusNumber = Console.readLine();
-        Exception.validateNumber(inputBonusNumber);
-        Exception.validateLottoNumberRange(inputBonusNumber);
-        Exception.validateDuplicateNumbers(winningLotto,inputBonusNumber);
+		Print.PrintTypingBonusNumber();
+		String inputBonusNumber = Console.readLine();
+		Exception.validateNumber(inputBonusNumber);
+		Exception.validateLottoNumberRange(inputBonusNumber);
+		Exception.validateDuplicateNumbers(winningLotto, inputBonusNumber);
 
-        bonusNumber = Integer.parseInt(inputBonusNumber);
-    }
+		bonusNumber = Integer.parseInt(inputBonusNumber);
+	}
 
-    public List<Integer> getWinningLotto() {
-        return winningLotto.getNumbers();
-    }
+	public List<Integer> getWinningLotto() {
+		return winningLotto.getNumbers();
+	}
 
-    public Integer getBonusNumber(){
-        return bonusNumber;
-    }
+	public Integer getBonusNumber() {
+		return bonusNumber;
+	}
 }
