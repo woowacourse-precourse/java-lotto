@@ -42,11 +42,7 @@ public class InputView {
     }
 
     private static int inputNumber() {
-        try {
-            return parseInt(readLine());
-        } catch (RuntimeException e) {
-            throw new NoSuchElementException();
-        }
+        return parseInt(readLine());
     }
 
     private static List<Integer> toIntegers(final String input) {

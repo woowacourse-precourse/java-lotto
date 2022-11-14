@@ -10,6 +10,7 @@ import lotto.domain.lotto.Lotto;
 import lotto.domain.money.Money;
 import lotto.domain.winningnumber.WinningNumber;
 import lotto.infra.log.Logger;
+import lotto.step.Exit;
 import lotto.step.PurchaseLotto;
 import lotto.step.Step;
 import lotto.view.InputView;
@@ -51,7 +52,9 @@ public class LottoApplicationContext {
             step.execute();
             step = step.next();
         } catch (RuntimeException e) {
-            log.error(e.getMessage(), e.getClass());
+            // 종료 상태로 변경
+            step = new Exit(this);
+            log.error(e.getMessage());
         }
     }
 

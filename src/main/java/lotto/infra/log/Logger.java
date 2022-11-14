@@ -26,7 +26,7 @@ public class Logger {
         }
     }
 
-    private void error(final String message) {
+    public void error(final String message) {
         String log = String.format("%s %s", ERROR_PREFIX, message);
         StandardOutput.println(log);
     }
