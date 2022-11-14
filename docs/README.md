@@ -85,7 +85,7 @@
     - [ ] 당첨과 보너스 번호를 입력 처리
     - [x] 발행한 로또 수량 및 번호를 출력 - printPublishedLotto
     - [ ] 당첨 내역 결과 반환 - printCalculateWonLotto
-      - [ ] 당첨 금액을 당첨 등수로 변환 - changeMoneyToRank
+      - [x] 당첨 금액을 당첨 등수로 변환 - changeMoneyToRank
       - [ ] 당첨 내역 출력 - printWonLotto
       - [ ] 수익률 출력 - printYield
 

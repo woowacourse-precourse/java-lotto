@@ -1,5 +1,6 @@
 package lotto.domain;
 
+import static lotto.Config.WINNING_RANK_AMOUNT;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.mockito.Mockito.mock;
@@ -9,6 +10,8 @@ import java.util.List;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 public class ControllerTest {
     private static Controller controller;
@@ -54,5 +57,19 @@ public class ControllerTest {
         assertThat(
                 formatStringToNumberMethod.invoke(controller, numericString))
                 .isEqualTo(1000);
+    }
+
+    @DisplayName("당첨 금액을 당첨 등수로 변환한다.")
+    @Test
+    void testChangeMoneyToRank() throws Exception {
+        Method changeMoneyToRankMethod = Controller.class.getDeclaredMethod("changeMoneyToRank", int.class);
+        changeMoneyToRankMethod.setAccessible(true);
+
+        int rank = 0;
+        int lotto1stMoney = WINNING_RANK_AMOUNT[rank];
+
+        assertThat(
+                changeMoneyToRankMethod.invoke(controller, lotto1stMoney))
+                .isEqualTo(rank);
     }
 }

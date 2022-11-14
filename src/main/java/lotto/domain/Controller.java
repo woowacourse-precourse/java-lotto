@@ -62,11 +62,19 @@ public class Controller {
         });
     }
 
-    private int changeMoneyToRank(int money){
-        return 0;
+    private void printCalculateWonLotto(List<Lotto> lottos, List<Lotto> wonLotto, List<Integer> bonusLotto) {
     }
 
-    private void printCalculateWonLotto(List<Lotto> lottos, List<Lotto> wonLotto, List<Integer> bonusLotto) {
+    private int changeMoneyToRank(int money){
+        int rank = 0;
+
+        for(; rank < WINNING_RANK_AMOUNT.length; rank++){
+            if(money == WINNING_RANK_AMOUNT[rank]){
+                break;
+            }
+        }
+
+        return rank;
     }
 
     private void printWonLotto(List<Integer> rankCounts) {
