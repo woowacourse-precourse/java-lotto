@@ -1,5 +1,7 @@
 package lotto;
 
+import utils.LottoCreator;
+
 import java.util.*;
 import java.util.stream.Collectors;
 

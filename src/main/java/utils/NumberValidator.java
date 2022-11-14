@@ -1,4 +1,6 @@
-package lotto;
+package utils;
+
+import lotto.LottoGame;
 
 import java.util.Arrays;
 import java.util.List;

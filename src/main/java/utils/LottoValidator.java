@@ -1,4 +1,4 @@
-package lotto;
+package utils;
 
 import java.util.HashSet;
 import java.util.List;
