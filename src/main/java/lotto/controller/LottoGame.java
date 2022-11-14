@@ -1,12 +1,14 @@
 package lotto.controller;
 
 import camp.nextstep.edu.missionutils.Console;
+import java.util.EnumMap;
 import java.util.List;
 import lotto.CalculateLotto;
 import lotto.ManagementLotto;
 import lotto.ProcessVariable;
 import lotto.model.Lotto;
 import lotto.model.LottoAnswer;
+import lotto.model.ResultEnum;
 import lotto.view.Message;
 
 public class LottoGame {
@@ -19,8 +21,9 @@ public class LottoGame {
             Integer purchasePrice = inputPurchasePrice();
             List<Lotto> lottos = purchaseLotto(purchasePrice);
             LottoAnswer winNumber = inputWinNumber();
-            //message.printResult(calculateLotto.calculateResult(lottos, winNumber));
-            calculateLotto.calculateROI();
+            EnumMap<ResultEnum, Integer> result = calculateLotto.calculateResult(lottos, winNumber);
+            Double roi = calculateLotto.calculateROI(purchasePrice, result);
+            message.printResult(result, roi);
         } catch (IllegalArgumentException exception) {
             message.printMsg(exception.getMessage());
         }

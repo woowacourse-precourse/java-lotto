@@ -1,7 +1,7 @@
 package lotto.model;
 
 public enum ResultEnum {
-    HIT_NONE(0, false, 0),
+    //HIT_NONE(0, false, 0),
     HIT_3(3, false, 5000),
     HIT_4(4, false, 50000),
     HIT_5(5, false, 1500000),
