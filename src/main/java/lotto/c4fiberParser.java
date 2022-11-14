@@ -1,13 +1,15 @@
 package lotto;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class c4fiberParser {
     public static Integer getIntegerFromString(String input) {
         if (!isParsable(input)) {
-            throw new IllegalArgumentException();
+            return 0;
+            //throw new IllegalArgumentException();
         }
 
         return Integer.parseInt(input);
@@ -15,7 +17,8 @@ public class c4fiberParser {
 
     public static List<Integer> getIntegerListFromString(String input) {
         if (!isParsable(input)) {
-            throw new IllegalArgumentException();
+            return Collections.EMPTY_LIST;
+            // throw new IllegalArgumentException();
         }
 
         return Arrays.stream(input.split(","))
