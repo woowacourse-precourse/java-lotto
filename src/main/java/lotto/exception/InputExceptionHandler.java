@@ -15,8 +15,8 @@ public class InputExceptionHandler {
 	private static final String REST_OR_NUMBER_EXCEPTION = "[ERROR] 당첨 번호는 숫자와 쉼표로 구분지어야 합니다.";
 	private static final String DUPLICATED_BONUS_NUMBER_MESSAGE = "[ERROR] 보너스 번호는 당첨 번호와 중복되면 안됩니다.";
 	private static final String NUMBER_REGEX = "^[0-9]*$";
-	private static final int CASH_UNIT = 1000;
 	private static final String REST_DIVISION_REGEX = ",";
+	private static final int CASH_UNIT = 1000;
 
 	public static int checkPurchaseAmountForm(String input) {
 		isNumber(input);

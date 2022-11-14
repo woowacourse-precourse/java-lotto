@@ -21,7 +21,6 @@ public class Buyer {
 		return new Buyer(lottos);
 	}
 
-
 	public int getLottosAmount() {
 		return lottos.size() * ConstValue.LOTTO_PRICE;
 	}

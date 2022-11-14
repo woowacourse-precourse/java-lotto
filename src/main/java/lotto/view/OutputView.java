@@ -16,6 +16,7 @@ public class OutputView {
 	private static final String PRINT_WINNING_RANK = "%d개 일치 (%s원) - %d개\n";
 	private static final String PRINT_WINNING_2ND_RANK = "%d개 일치, 보너스 볼 일치 (%s원) - %d개\n";
 	private static final String PRINT_YIELD_MESSAGE = "총 수익률은 %.1f%%입니다.\n";
+	private static final String FORMAT_THOUSAND_UNIT = "###,###";
 
 	public static void printAmountMessage() {
 		System.out.println(INPUT_AMOUNT_MESSAGE);
@@ -39,14 +40,14 @@ public class OutputView {
 	}
 
 	public static void printRankCount(Map.Entry<Rank, Integer> stat) {
-		DecimalFormat formatter = new DecimalFormat("###,###");
+		DecimalFormat formatter = new DecimalFormat(FORMAT_THOUSAND_UNIT);
 		System.out.printf(PRINT_WINNING_RANK, stat.getKey().getSameWinningNumberCount(),
 			formatter.format(stat.getKey().getReward()),
 			stat.getValue());
 	}
 
 	public static void printSecondRankCount(Map.Entry<Rank, Integer> stat) {
-		DecimalFormat formatter = new DecimalFormat("###,###");
+		DecimalFormat formatter = new DecimalFormat(FORMAT_THOUSAND_UNIT);
 		System.out.printf(PRINT_WINNING_2ND_RANK, stat.getKey().getSameWinningNumberCount(),
 			formatter.format(stat.getKey().getReward()),
 			stat.getValue());
