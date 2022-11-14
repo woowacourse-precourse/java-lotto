@@ -5,9 +5,12 @@ import lotto.service.LottoService;
 
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
-        LottoService lottoService = new LottoService();
-        LottoController lottoController = new LottoController(lottoService);
-        lottoController.run();
+        try {
+            LottoService lottoService = new LottoService();
+            LottoController lottoController = new LottoController(lottoService);
+            lottoController.run();
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+        }
     }
 }
