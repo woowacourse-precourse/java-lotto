@@ -46,9 +46,13 @@ public class Calculator {
 
         for (Hit hit : result.keySet()) {
             Integer hitCount = result.get(hit);
-            totalEarning += hitCount * hit.getPrize();
+            totalEarning += hitCount * parseToInt(hit.getPrize());
         }
 
         return totalEarning / (float) money * 100;
+    }
+
+    private static Integer parseToInt(String prize) {
+        return Integer.parseInt(String.join("", prize.split(",")));
     }
 }
