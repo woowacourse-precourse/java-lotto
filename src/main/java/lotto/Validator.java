@@ -37,9 +37,9 @@ public class Validator {
         }
     }
 
-    public void ValidatorBonusRangeNumber(List<Integer> BonusNumber){
-        for(Integer integer : BonusNumber){
-            if(integer > 45 || integer < 0){
+    public void ValidatorBonusRangeNumber(int BonusNumber){
+        for(int index = 0; index < BonusNumber; index++){
+            if(BonusNumber > 45 || BonusNumber < 0){
                 throw new IllegalArgumentException("[ERROR] 1부터~45의 수까지 입력가능합니다");
             }
         }
@@ -60,6 +60,20 @@ public class Validator {
             afterSplit.add(Integer.parseInt(index));
         }
         return afterSplit;
+    }
+
+    public void priceDuplicate(int ValueNumber){
+        if(ValueNumber % 1000 != 0){
+            throw new IllegalArgumentException("[ERROR] 1000단위의 수를 입력하세요");
+        }
+    }
+
+    public void OnlyNumber(String SValueNumber1){
+        if(!SValueNumber1.matches("[\\d]{1,8}")){
+            throw new IllegalArgumentException(("[ERROR] 숫자만 가능합니다."));
+
+        }
+
     }
 
 }

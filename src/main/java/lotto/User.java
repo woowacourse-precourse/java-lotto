@@ -27,9 +27,14 @@ public class User {
     }
 
         public static int inputBuyPrice() {
-            String Sixinput = readLine();
-            return Integer.parseInt(Sixinput);
+            String InputSix = readLine();
+            val.OnlyNumber(InputSix);
+            int priceDuplicate = Integer.parseInt(InputSix);
+            val.priceDuplicate(priceDuplicate);
+
+            return priceDuplicate;
         }
+
 
 
 
@@ -58,8 +63,8 @@ public class User {
 
         public static int bonusNumber() {
             String BonusInput = readLine();
-            String bonusNumberInput = new String(String.valueOf(BonusInput));
-            return Integer.parseInt(readLine());
+            val.ValidatorBonusRangeNumber(Integer.parseInt(BonusInput));
+            return Integer.parseInt(BonusInput);
 
 
         }

@@ -52,7 +52,7 @@ public class Lotto {
 
 
     //당첨통계
-    public static void toResult(Integer number, int correct, int Countlotto) {
+    public static void toResult(Integer number, int Countlotto) {
         User user = new User();
         // [1,2,3,4,5,6] 처럼 로또번호 입력값
         String lottoInput = user.lottoListSix();
