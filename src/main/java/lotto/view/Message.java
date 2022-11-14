@@ -3,7 +3,6 @@ package lotto.view;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.text.DecimalFormat;
-import java.util.Collections;
 import lotto.domain.Lotto;
 import lotto.domain.LottoGrade;
 import lotto.domain.User;
@@ -49,7 +48,7 @@ public class Message {
                 System.out.print(", 보너스 볼 일치");
             }
             System.out.print(" (" + df.format(lottoGrade.getPrize()) + "원) - ");
-            System.out.println(User.getLottoGradeNumber(lottoGrade) + "개");
+            System.out.println(User.getCountLottoGrade(lottoGrade) + "개");
         }
     }
 

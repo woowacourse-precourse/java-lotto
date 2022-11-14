@@ -7,19 +7,20 @@ import lotto.util.LottoUtils;
 
 public class User {
 
-    private List<Lotto> lottos;
+
     private static List<LottoGrade> lottoGrades;
-    private double profit;
     private int lottoPayment;
+    private List<Lotto> lottos;
+    private double profit;
+
 
     public void buyLottos(int lottoAmount) {
         lottos = new ArrayList<>();
 
         while (lottos.size() < lottoAmount) {
-            List<Integer> numbers = LottoUtils.pickUniqueNumbersInRange();
-            List<Integer> number2 = new ArrayList<>(numbers);
-            Collections.sort(number2);
-            Lotto lotto = new Lotto(number2);
+            List<Integer> lottoNumbers = new ArrayList<>(LottoUtils.pickUniqueNumbersInRange());
+            Collections.sort(lottoNumbers);
+            Lotto lotto = new Lotto(lottoNumbers);
             lottos.add(lotto);
         }
     }
@@ -39,16 +40,17 @@ public class User {
         }
     }
 
-    public static int getLottoGradeNumber(LottoGrade lottoGrade) {
-        return (int) lottoGrades.stream().filter(grade -> lottoGrade.equals(grade)).count();
+    public static int getCountLottoGrade(LottoGrade lottoGrade) {
+        return (int) lottoGrades.stream()
+                .filter(userGrade -> lottoGrade.equals(userGrade))
+                .count();
     }
 
     public String getLottoProfit() {
-        double payment = lottoPayment;
         for (LottoGrade lottoGrade : lottoGrades) {
             profit += lottoGrade.getPrize();
         }
-        return String.format("%.1f", profit / payment * 100);
+        return String.format("%.1f", profit / lottoPayment * 100);
     }
 
     public void setLottoPayment(int lottoPayment) {
