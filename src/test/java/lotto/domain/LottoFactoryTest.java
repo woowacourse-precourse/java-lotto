@@ -38,7 +38,7 @@ public class LottoFactoryTest {
     @Test
     void 랜덤로또_생성_검증() {
         int lottoCount = 3;
-        Lottos lottos = LottoFactory.createRandomLottos(lottoCount);
+        Lottos lottos = LottoFactory.createRandomLottoByCnt(lottoCount);
         assertThat(lottos.get().size())
             .isEqualTo(3);
     }

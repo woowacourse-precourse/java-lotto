@@ -1,14 +1,11 @@
 package lotto.controller;
 
-import camp.nextstep.edu.missionutils.Randoms;
-import java.util.ArrayList;
-import java.util.List;
-import lotto.domain.Lotto;
 import lotto.domain.LottoFactory;
 import lotto.domain.Lottos;
 import lotto.domain.Money;
 import lotto.domain.Result;
 import lotto.domain.WinLotto;
+import lotto.domain.Yield;
 import lotto.view.InputView;
 import lotto.view.OutputView;
 
@@ -17,11 +14,13 @@ public class LottoGameController {
     public void run() {
         Money money = getMoney();
         Lottos lottos = getLottos(money.getLottoCnt());
-        OutputView.printLottos(lottos, money.getLottoCnt());
+        OutputView.printLottos(lottos);
+
         WinLotto winLotto = getWinLotto();
         Result result = Result.of(lottos, winLotto);
+        Yield  yield  = Yield.of(money.get(),result.getPrize());
         OutputView.printResult(result);
-        OutputView.printProfit(result.getPrize(),money.get());
+        OutputView.printYield(yield);
     }
 
     private Money getMoney() {
@@ -29,7 +28,7 @@ public class LottoGameController {
     }
 
     private Lottos getLottos(int lottoCnt) {
-        return LottoFactory.createRandomLottos(lottoCnt);
+        return LottoFactory.createRandomLottoByCnt(lottoCnt);
     }
 
     private WinLotto getWinLotto() {

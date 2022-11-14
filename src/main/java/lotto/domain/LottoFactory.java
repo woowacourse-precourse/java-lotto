@@ -10,7 +10,7 @@ public class LottoFactory {
         return WinLotto.of(Lotto.from(winLotto),bonus);
     }
 
-    public static Lottos createRandomLottos(int lottoCnt) {
+    public static Lottos createRandomLottoByCnt(int lottoCnt) {
         List<Lotto> lottosList = new ArrayList<>();
         for (int i = 0; i < lottoCnt; i++) {
             lottosList.add(Lotto.from(LottoNumberGenerator.generate()));
