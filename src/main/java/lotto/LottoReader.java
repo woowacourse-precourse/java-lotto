@@ -17,15 +17,10 @@ public class LottoReader {
         Map<LottoRank, Integer> lottoResult = initLottoResult();
 
         for (Entry<Lotto, Integer> matchingResultEntry : matchingResult.entrySet()) {
-            Lotto lotto = matchingResultEntry.getKey();
             Integer matchingCount = matchingResultEntry.getValue();
 
             if (matchingCount == 5) {
-                if (lotto.isMatch(bonus)) {
-                    lottoResult.put(RANK2, lottoResult.get(RANK2) + 1);
-                }
-
-                lottoResult.put(RANK3, lottoResult.get(RANK3) + 1);
+                putBonusRank(lottoResult, matchingResultEntry, bonus);
             }
 
             if (matchingCount >= 3) {
@@ -35,6 +30,16 @@ public class LottoReader {
         }
 
         return lottoResult;
+    }
+
+    private void putBonusRank(Map<LottoRank, Integer> lottoResult, Entry<Lotto, Integer> matchingResult, Bonus bonus) {
+        Lotto lotto = matchingResult.getKey();
+
+        if (lotto.isMatch(bonus)) {
+            lottoResult.put(RANK2, lottoResult.get(RANK2) + 1);
+        }
+
+        lottoResult.put(RANK3, lottoResult.get(RANK3) + 1);
     }
 
     private Map<LottoRank, Integer> initLottoResult() {
