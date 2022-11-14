@@ -11,6 +11,9 @@ public class LottoController {
     public void start(){
         Player player = buyLotto();
         Lotto winningLotto = inputWinningLotto();
+        WinLotto winLotto = checkWinningLotto(winningLotto, player);
+        player.setWinningResult(winLotto.getWinningResult());
+        player.setReturnRate(winLotto.calculateReturnRate());
     }
 
     public Player buyLotto(){
@@ -26,5 +29,11 @@ public class LottoController {
         int inputBonusNumber = InputView.inputBonusNumber();
         lotto.setBonusNumber(inputBonusNumber);
         return lotto;
+    }
+
+    public WinLotto checkWinningLotto(Lotto winningLotto, Player player){
+        WinLotto winLotto = new WinLotto(winningLotto, player);
+        winLotto.checkLotto();
+        return winLotto;
     }
 }
