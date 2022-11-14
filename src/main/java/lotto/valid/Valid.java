@@ -14,5 +14,16 @@ public class Valid {
 
     public static String[] lotto_answer_valid(String answer){
         return answer.split(",");
+
+    public static void check_empty(String str) {
+        String [] input = str.split(",");
+        for(int i = 0; i < input.length; i++){
+            if(input[i].isEmpty()){
+                throw new IllegalArgumentException(empty_Message);
+            }
+        }
     }
+
+
+
 }
