@@ -10,6 +10,7 @@ import java.util.List;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomUniqueNumbersInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.*;
 
 class LottoGameTest extends NsTest {
@@ -56,7 +57,33 @@ class LottoGameTest extends NsTest {
                 List.of(1, 3, 5, 14, 22, 45)
         );
     }
-
+    @DisplayName("입력 받은 당첨 로또 번호가 1~45 사이 숫자가 아닌 경우 예외처리 확인")
+    @Test
+    void getLottoWinningNumberInput1(){
+        assertThatThrownBy(()->{
+            runException("1,2,3,4,5,46");
+            lottoGame.getLottoWinningNumberInput();
+        })
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+    @DisplayName("입력 받은 당첨 로또 번호가 6개가 아닌 경우 예외처리 확인")
+    @Test
+    void getLottoWinningNumberInput2(){
+        assertThatThrownBy(()->{
+            runException("1,2,3,4,5,6,7");
+            lottoGame.getLottoWinningNumberInput();
+        })
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+    @DisplayName("입력 받은 당첨 로또 번호가 중복이 있는 경우 예외처리 확인")
+    @Test
+    void getLottoWinningNumberInput3(){
+        assertThatThrownBy(()->{
+            runException("1,2,3,4,5,5");
+            lottoGame.getLottoWinningNumberInput();
+        })
+                .isInstanceOf(IllegalArgumentException.class);
+    }
     @Override
     protected void runMain() {
         lottoGame.startGame();
