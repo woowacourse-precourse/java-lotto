@@ -8,7 +8,7 @@ import java.util.List;
 public class Lotto {
     private final List<Integer> numbers;
 
-    public Lotto(List<Integer> numbers) {
+    public Lotto(List<Integer> numbers) throws IllegalArgumentException {
         validateSize(numbers);
         validateDuplication(numbers);
         validateRange(numbers);
@@ -16,14 +16,14 @@ public class Lotto {
     }
 
     // 6개의 숫자인지 검증하는 기능
-    private void validateSize(List<Integer> numbers) {
+    private void validateSize(List<Integer> numbers) throws IllegalArgumentException {
         if (numbers.size() != Setting.LOTTO_SIZE) {
             throw new IllegalArgumentException("[ERROR] 6개 숫자를 입력해야 합니다.");
         }
     }
 
     // 중복된 숫자가 있는지 검증하는 기능
-    private void validateDuplication(List<Integer> numbers) {
+    private void validateDuplication(List<Integer> numbers) throws IllegalArgumentException {
         HashSet<Integer> deduplication = new HashSet<>(numbers);
         if (deduplication.size() != Setting.LOTTO_SIZE) {
             throw new IllegalArgumentException("[ERROR] 중복된 숫자를 입력할 수 없습니다.");
@@ -31,7 +31,7 @@ public class Lotto {
     }
 
     // 1 이상 45 이하의 숫자들인지 검증하는 기능
-    private void validateRange(List<Integer> numbers) {
+    private void validateRange(List<Integer> numbers) throws IllegalArgumentException {
         long validNumber = numbers.stream()
                                     .filter(number -> number >= Setting.LOTTO_MIN_NUMBER)
                                     .filter(number -> number <= Setting.LOTTO_MAX_NUMBER)
