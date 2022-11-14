@@ -13,4 +13,16 @@ public class UserInputCheck {
         }
         return Integer.parseInt(userInput);
     }
+
+    static String winningNumberCheck(String userInput) {
+        String[] numbers = userInput.split(",");
+        try {
+            Validation.isItSix(numbers);
+            Validation.isItRange(numbers);
+            Validation.isNumber(numbers);
+        }catch (IllegalArgumentException err){
+            System.out.println(err);
+        }
+        return userInput;
+    }
 }

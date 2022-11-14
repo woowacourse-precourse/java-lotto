@@ -12,4 +12,9 @@ public class LottoGame {
     public List<List<Integer>> getLottos(int count) {
         return LottosGenerator.lottoGenerate(count);
     }
+
+    public String getWinningNumber(){
+        String userInput = Console.readLine();
+        return UserInputCheck.winningNumberCheck(userInput);
+    }
 }

@@ -14,7 +14,9 @@ public class LottoGameController {
         int count = amount / 1000;
         inputMessage.purchaseAmountMessage(amount);
         List<List<Integer>> lotts = lottoGame.getLottos(count);
-        inputMessage.PurchasedLottoNumberMessage(lotts);
+        inputMessage.purchasedLottoNumberMessage(lotts);
+        String winningNumber = lottoGame.getWinningNumber();
+        inputMessage.winningNumberMessage(winningNumber);
 
     }
 }

@@ -19,8 +19,12 @@ public class InputMessage {
         System.out.println(format);
     }
 
-    public void PurchasedLottoNumberMessage(List<List<Integer>> lotts) {
+    public void purchasedLottoNumberMessage(List<List<Integer>> lotts) {
         lotts.forEach(System.out::println);
         System.out.println(INPUT_WINNING_NUMBER);
+    }
+
+    public void winningNumberMessage(String winningNumber){
+        System.out.println(winningNumber);
     }
 }
