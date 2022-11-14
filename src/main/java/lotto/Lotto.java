@@ -1,8 +1,11 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class Lotto {
     private final List<Integer> numbers;
@@ -19,10 +22,8 @@ public class Lotto {
     }
 
     // TODO: 추가 기능 구현
-    private void buyLotto(int purchaseMoney){
-        int purchaseAmount = purchaseMoney/1000;
-        //purchaseAmount를 인자로 받아서 list를 반환하는 로또 뽑기 기능 추가
-
+    private List<List<Integer>> buyLotto(int purchaseMoney){
+        return digitPick(purchaseMoney/1000);
     }
     private int inputMoney(){
         int purchaseMoney = Integer.parseInt(Console.readLine());
@@ -31,4 +32,13 @@ public class Lotto {
         }
         return purchaseMoney;
     }
+
+    private List<List<Integer>> digitPick(int purchaseAmount){
+        List<List<Integer>> lottoNums = new ArrayList<>();
+        while (lottoNums.size()==purchaseAmount){
+            lottoNums.add(Randoms.pickUniqueNumbersInRange(1, 45, 6));
+        }
+        return lottoNums;
+    }
+
 }
