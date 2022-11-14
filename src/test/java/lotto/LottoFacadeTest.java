@@ -42,7 +42,7 @@ public class LottoFacadeTest {
 
                     assertThatThrownBy(() -> lottoFacade.buyLotto(money))
                             .isInstanceOf(IllegalArgumentException.class)
-                            .hasMessageContaining("1000원 단위의 금액만 가능합니다.");
+                            .hasMessageContaining("금액 단위를 일치시켜야 합니다.");
                 })
         );
     }
