@@ -2,12 +2,8 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
-
-import static org.assertj.core.util.Arrays.asList;
 
 public class Application {
     public static void main(String[] args) {
@@ -15,12 +11,10 @@ public class Application {
         System.out.println("구입 금액을 입력해주세요.");
         int purchaseAmount = Integer.parseInt(Console.readLine());
         int lottoQuantity = purchaseAmount/1000;
-        try {
-            if(purchaseAmount%1000!=0)
-                throw new IllegalArgumentException();
-        } catch (IllegalArgumentException e) {
-            System.out.println("[ERROR]");
-        }
+
+        if(purchaseAmount%1000!=0)
+            throw new IllegalArgumentException("구입 금액은 1000원 단위여야 합니다.");
+
 
         LottoGenerator generator = new LottoGenerator();
         Lotto[] mylottos = generator.buyLottos(lottoQuantity);

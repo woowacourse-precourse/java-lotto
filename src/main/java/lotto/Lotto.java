@@ -9,9 +9,9 @@ public class Lotto {
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
+        numbers.sort(Comparator.naturalOrder());
         validate(numbers);
         checkDuplicate(numbers);
-        numbers.sort(Comparator.naturalOrder());
         this.numbers = numbers;
     }
 
@@ -42,5 +42,10 @@ public class Lotto {
                 matchingCount++;
         }
         return 당첨.getRank(matchingCount,winningSet.contains(bonusNumber));
+    }
+
+    @Override
+    public String toString() {
+        return numbers.toString();
     }
 }
