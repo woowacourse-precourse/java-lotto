@@ -3,7 +3,7 @@ package lotto.domain;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import java.util.List;
-import lotto.domain.errorenum.Error;
+import lotto.domain.errorenum.LottoError;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -17,7 +17,7 @@ class WinningLottoTest {
 
         assertThatThrownBy(() -> new WinningLotto(lotto, bonusNumber))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining(Error.BONUS_NUMBER_DUPLICATE.getCode());
+                .hasMessageContaining(LottoError.BONUS_NUMBER_DUPLICATE.printError());
     }
 
     @DisplayName("보너스 번호가 로또 숫자 범위에서 벗어나는 경우 오류가 발생한다")
@@ -28,7 +28,7 @@ class WinningLottoTest {
 
         assertThatThrownBy(() -> new WinningLotto(lotto, bonusNumber))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining(Error.NOT_IN_RANGE.getCode());
+                .hasMessageContaining(LottoError.NOT_IN_RANGE.printError());
     }
 
 }

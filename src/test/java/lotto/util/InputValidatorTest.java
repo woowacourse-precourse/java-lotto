@@ -2,7 +2,7 @@ package lotto.util;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-import lotto.domain.errorenum.Error;
+import lotto.domain.errorenum.LottoError;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -16,7 +16,7 @@ class InputValidatorTest {
     void createInputWithWrongCharacter(String input) {
         assertThatThrownBy(() -> InputValidator.validateWinningNumberDelimiter(input))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining(Error.WRONG_DELIMITER.getCode());
+                .hasMessageContaining(LottoError.WRONG_DELIMITER.printError());
     }
 
     @DisplayName("당첨 번호를 입력받을 때 숫자와 구분자로만 구성된 입력이 들어올 경우 정상 실행된다")
@@ -36,7 +36,7 @@ class InputValidatorTest {
 
         assertThatThrownBy(() -> InputValidator.validateParsingInteger(input))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining(Error.ACCEPT_ONLY_NUMBER.getCode());
+                .hasMessageContaining(LottoError.ACCEPT_ONLY_NUMBER.printError());
     }
 
 }

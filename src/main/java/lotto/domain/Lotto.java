@@ -2,8 +2,7 @@ package lotto.domain;
 
 import java.util.List;
 import java.util.stream.Collectors;
-import lotto.domain.errorenum.Error;
-import lotto.domain.lottoenum.LottoCondition;
+import lotto.domain.errorenum.LottoError;
 import lotto.util.LottoNumberValidator;
 
 public class Lotto {
@@ -32,7 +31,7 @@ public class Lotto {
 
     private void validateLength(int size) {
         if (!LottoNumberValidator.isCorrectLength(size)) {
-            throw new IllegalArgumentException(Error.NOT_6_LENGTH.getCode());
+            throw new IllegalArgumentException(LottoError.NOT_6_LENGTH.printError());
         }
     }
 
@@ -42,7 +41,7 @@ public class Lotto {
 
     private void validateNonDuplicate(List<Integer> numbers) {
         if (!LottoNumberValidator.isCorrectLength(getDuplicateRemovedCount(numbers))) {
-            throw new IllegalArgumentException(Error.DUPLICATE_FOUND.getCode());
+            throw new IllegalArgumentException(LottoError.DUPLICATE_FOUND.printError());
         }
     }
 

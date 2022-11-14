@@ -1,6 +1,6 @@
 package lotto.util;
 
-import lotto.domain.errorenum.Error;
+import lotto.domain.errorenum.LottoError;
 
 public class InputValidator {
     private static final String WINNING_NUMBER_REGEX = "[0-9,]+";
@@ -10,7 +10,7 @@ public class InputValidator {
 
     public static void validateWinningNumberDelimiter(String input) {
         if (!input.matches(WINNING_NUMBER_REGEX)) {
-            throw new IllegalArgumentException(Error.WRONG_DELIMITER.getCode());
+            throw new IllegalArgumentException(LottoError.WRONG_DELIMITER.printError());
         }
     }
 
@@ -19,7 +19,7 @@ public class InputValidator {
         try {
             value = Integer.parseInt(input);
         } catch (NumberFormatException exception) {
-            throw new IllegalArgumentException(Error.ACCEPT_ONLY_NUMBER.getCode());
+            throw new IllegalArgumentException(LottoError.ACCEPT_ONLY_NUMBER.printError());
         }
         return value;
     }

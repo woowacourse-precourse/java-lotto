@@ -1,7 +1,7 @@
 package lotto.domain;
 
 import java.util.List;
-import lotto.domain.errorenum.Error;
+import lotto.domain.errorenum.LottoError;
 import lotto.util.LottoNumberValidator;
 
 public class WinningLotto {
@@ -31,7 +31,7 @@ public class WinningLotto {
 
     private void validateBonusNumberDuplicate(List<Integer> lottoNumbers, int bonusNumber) {
         if (lottoNumbers.contains(bonusNumber)) {
-            throw new IllegalArgumentException(Error.BONUS_NUMBER_DUPLICATE.getCode());
+            throw new IllegalArgumentException(LottoError.BONUS_NUMBER_DUPLICATE.printError());
         }
     }
 }
