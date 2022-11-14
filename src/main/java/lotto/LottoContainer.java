@@ -42,12 +42,11 @@ public class LottoContainer {
     }
 
     public void printResult(Map<LottoResult, Integer> matchMap) {
-        Iterator<LottoResult> results = matchMap.keySet().iterator();
-
-        while(results.hasNext()) {
-            LottoResult key = results.next();
-            System.out.println(key.getMessage() + matchMap.get(key) + "개");
-        }
+        System.out.println(LottoResult.FIFTH_PRIZE.getMessage() + matchMap.get(LottoResult.FIFTH_PRIZE) + "개");
+        System.out.println(LottoResult.FOURTH_PRIZE.getMessage() + matchMap.get(LottoResult.FOURTH_PRIZE) + "개");
+        System.out.println(LottoResult.THIRD_PRIZE.getMessage() + matchMap.get(LottoResult.THIRD_PRIZE) + "개");
+        System.out.println(LottoResult.SECOND_PRIZE.getMessage() + matchMap.get(LottoResult.SECOND_PRIZE) + "개");
+        System.out.println(LottoResult.FIRST_PRIZE.getMessage() + matchMap.get(LottoResult.FIRST_PRIZE) + "개");
     }
 
 }
