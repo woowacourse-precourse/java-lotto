@@ -11,7 +11,6 @@ public class Application {
     public static Player player = new Player();
     public static LottoIssuer lottoIssuer = new LottoIssuer();
     public static DrawingMachine drawingMachine = new DrawingMachine();
-    //    public static Calculator calculator = new Calculator();
     public static Integer numberOfLottoToBuy = 0;
 
     public static void main(String[] args) {

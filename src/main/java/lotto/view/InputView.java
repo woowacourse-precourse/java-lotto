@@ -2,6 +2,7 @@ package lotto.view;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
@@ -12,11 +13,13 @@ public class InputView {
         try {
             Integer amount = Integer.valueOf(input);
             if (amount % 1000 != 0 || amount < 0) {
-                throw new IllegalArgumentException("[ERROR] 1000원 단위로 입력해주세요. ");
+                System.out.println("[ERROR] 1000원 단위로 입력해주세요. ");
+                throw new IllegalArgumentException();
             }
             return amount;
         } catch (NumberFormatException ex) {
-            throw new IllegalArgumentException("[ERROR] 숫자를 입력해주세요. ");
+            System.out.println("[ERROR] 숫자를 입력해주세요. ");
+            throw new IllegalArgumentException();
         }
     }
 
@@ -27,12 +30,14 @@ public class InputView {
                     .collect(Collectors.toList());
             for (Integer number : winningNumber) {
                 if (number < 1 || number > 45) {
-                    throw new IllegalArgumentException("[ERROR] 1~45 사이의 값을 입력해주세요. ");
+                    System.out.println("[ERROR] 1~45 사이의 값을 입력해주세요. ");
+                    throw new IllegalArgumentException();
                 }
             }
             return winningNumber;
         } catch (NumberFormatException ex) {
-            throw new IllegalArgumentException("[ERROR] 잘못된 값이 입력됐습니다. ");
+            System.out.println("[ERROR] 잘못된 값이 입력됐습니다. ");
+            throw new IllegalArgumentException();
         }
     }
 
@@ -40,7 +45,8 @@ public class InputView {
         try {
             return Integer.valueOf(input);
         } catch (NumberFormatException ex) {
-            throw new IllegalArgumentException("[ERROR] 숫자가 아닌 값이 입력됐습니다. ");
+            System.out.println("[ERROR] 숫자가 아닌 값이 입력됐습니다. ");
+            throw new IllegalArgumentException();
         }
     }
 

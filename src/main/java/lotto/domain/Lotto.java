@@ -13,13 +13,16 @@ public class Lotto {
 
     private void validate(List<Integer> numbers) {
         if (!isSizeValid(numbers)) {
-            throw new IllegalArgumentException("[ERROR] 생성된 숫자의 갯수가 일치하지 않습니다. ");
+            System.out.println("[ERROR] 생성된 숫자의 갯수가 일치하지 않습니다. ");
+            throw new IllegalArgumentException();
         }
         if (!isRangeValid(numbers)) {
-            throw new IllegalArgumentException("[ERROR] 생성된 숫자가 1보다 작거나 45보다 큽니다. ");
+            System.out.println("[ERROR] 생성된 숫자가 1보다 작거나 45보다 큽니다. ");
+            throw new IllegalArgumentException();
         }
         if (!noOverlap(numbers)) {
-            throw new IllegalArgumentException("[ERROR] 생성된 숫자 중 중복된 숫자가 있습니다. ");
+            System.out.println("[ERROR] 생성된 숫자 중 중복된 숫자가 있습니다. ");
+            throw new IllegalArgumentException();
         }
     }
 
