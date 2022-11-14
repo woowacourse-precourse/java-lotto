@@ -13,9 +13,8 @@ public enum OutputView {
     INSTANCE;
     private static final String LOTTO_QUANTITY_MESSAGE_FORMAT = "개를 구매했습니다";
 
-    public static void printRankInfoWithCounts(Map<Rank, Integer> rankCounts) {
-        TotalResult.getRankInfoWithCounts(rankCounts)
-                .forEach(System.out::println);
+    public static void printRankInfoWithCounts(List<String> rankInfoWithCounts) {
+        rankInfoWithCounts.forEach(System.out::println);
     }
 
     public static void printLottoReceipts(List<Lotto> lotteries) {
