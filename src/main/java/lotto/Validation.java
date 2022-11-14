@@ -28,7 +28,6 @@ public class Validation {
 
     public static void isDividedByThousand(int value) {
         if (value == 0 || value % ONE_LOTTO != 0) {
-            System.out.println(ERROR_MESSAGE + INVALID_MONEY_MESSAGE);
             throw new IllegalArgumentException(ERROR_MESSAGE + INVALID_MONEY_MESSAGE);
         }
     }
