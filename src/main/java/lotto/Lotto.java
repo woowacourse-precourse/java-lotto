@@ -2,10 +2,12 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 
 public class Lotto {
+
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
@@ -20,7 +22,13 @@ public class Lotto {
     }
 
     public static Lotto create() {
-        return new Lotto(Randoms.pickUniqueNumbersInRange(1, 45, 6));
+        Lotto lotto = new Lotto(Randoms.pickUniqueNumbersInRange(1, 45, 6));
+        Collections.sort(lotto.numbers);
+        return lotto;
+    }
+
+    public List<Integer> getNumbers() {
+        return numbers;
     }
 
     public Score getScore(List<Integer> winningNumbers, int bonusNumber) {
