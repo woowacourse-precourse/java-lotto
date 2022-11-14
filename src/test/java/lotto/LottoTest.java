@@ -18,9 +18,10 @@ class LottoTest {
     private Application application;
     private LottoMachine lottoMachine;
     private LottoClerk lottoClerk;
+
     @BeforeEach
-    void SetUp(){
-        application =new Application();
+    void SetUp() {
+        application = new Application();
         lottoMachine = new LottoMachine();
         lottoClerk = new LottoClerk();
     }
