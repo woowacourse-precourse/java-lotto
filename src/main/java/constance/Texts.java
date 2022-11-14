@@ -5,6 +5,7 @@ public class Texts {
     public static final String LOTTO_USER_PURCHASE_RESULT = "%d개를 구매했습니다.\n%s";
     public static final String LOTTO_USER_INPUT_WINNING_NUMBERS = "당첨 번호를 입력해 주세요.";
     public static final String LOTTO_USER_INPUT_BONUS_NUMBERS = "보너스 번호를 입력해 주세요.";
+    public static final String LOTTO_GAME_RESTART = "게임을 재시작합니다.";
     public static final String LOTTO_GAME_WINNING_STATS = "당첨 통계";
     public static final String LOTTO_GAME_DIVISION = "---";
     public static final String LOTTO_GAME_COINCIDE_RESULT = "%d개 일치%s (%s원) - %d개";
