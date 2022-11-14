@@ -25,15 +25,12 @@ public class RankCalculator {
     }
 
     private Rank compareLottoWithUser(Lotto lottoTicket, UserNumber userNumber) {
-        List<Integer> list = new ArrayList<>(lottoTicket.getNumbers());
-        int correct = 0;
+        List<Integer> lotto = new ArrayList<>(lottoTicket.getNumbers());
+        int sameCount = (int) lotto.stream()
+                .filter(userNumber.getWinNumbers().getNumbers()::contains)
+                .count();
 
-        for (int number : userNumber.getWinNumbers().getNumbers()) {
-            if (list.contains(number)) {
-                correct++;
-            }
-        }
-        return convertRank(correct, compareBonusNumber(lottoTicket, userNumber.getBonusNumber()));
+        return convertRank(sameCount, compareBonusNumber(lottoTicket, userNumber.getBonusNumber()));
     }
 
     private Rank convertRank(int count, boolean isSecond) {
