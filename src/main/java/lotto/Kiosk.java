@@ -17,14 +17,18 @@ public class Kiosk {
     static public void start(Buyer buyer) {
         payment = getPurchaseAmount();
         int numberOfLottos = countLottos(payment);
-        buyer.buy(Generator.generate(numberOfLottos));
-//        Output.showLottos();
+        List<Lotto> lottos = Generator.generate(numberOfLottos);
+        Output.getNumberOfPurchase(numberOfLottos);
+        Output.printLottos(lottos);
+        buyer.buy(lottos);
         Output.getWinningNumbers();
         winningNumbers = Input.getWinningNumbers();
+        Output.getBonusNumber();
         bonusNumber = Input.getBonusNumber();
         resultStatistics = Checker.compare(buyer);
-//        Output.showResultStatistics();
-
+//        Output.showResultStatistics(resultStatistics);
+        float yield = Calculator.getYield(payment, resultStatistics);
+        Output.yield(yield);
     }
 
     static private int getPurchaseAmount() {
