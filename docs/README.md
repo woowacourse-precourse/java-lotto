@@ -12,15 +12,15 @@
     - [x]  로또 번호 출력하는 기능 → getNumbers
     - [x]  로또 번호가 중복된 값은 아닌지 검증 기능 → validateDuplicateNumber
     - [x]  로또 번호가 1~45 사이의 값으로 입력됐는지 검증 기능 → validateBetween1And45
-    - [ ]  로또와 당첨 번호 비교 기능 → compareLotto_WinningNumber
-
-        당첨 기준 1등~5등 enum으로 선언
 2. Player
     - [x]  로또 구입 금액 저장 기능 → setPurchaseAmount
     - [x]  구입한 로또 개수 저장 기능 → setLottoCount
     - [x]  구매한 로또 번호 저장 기능 → setLottoNumbers
     - [x]  당첨 번호 저장 기능 → setWinningNumber
     - [x]  보너스 번호 저장 기능 → setBonusNumber
+    - [x]  로또와 당첨 번호 비교 기능 → compareLottoAndWinningNumber
+
+        당첨 기준 1등~5등 enum으로 선언
     - [ ]  당첨 내역 저장 기능 → setWinningResult
     - [ ]  수익률 저장 기능 → setLottoYield
 3. Seller
@@ -34,6 +34,7 @@
         
         - [x]  당첨 번호가 1~45 사이의 숫자로 이루어졌는지 검증 기능 → validateWinningNumberBetween1And45
     - [x]  보너스 번호가 1~45 사이의 숫자로 이루어졌는지 검증 기능 → validateBonusNumberBetween1And45
+    - [ ]  보너스 번호가 당첨 번호와 겹치지 않는지 검증 기능 → isBonusNumberNotInWinningNumber
     - [x]  문자열을 숫자로 변환해주는 기능 → convertStringIntoInt
     - [x]  문자열을 리스트로 변환해주는 기능 → convertStringIntoList 
 

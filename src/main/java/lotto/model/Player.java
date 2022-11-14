@@ -42,4 +42,19 @@ public class Player {
     public void setBonusNumber(int bonusNumber) {
         this.bonusNumber = bonusNumber;
     }
+
+    private int compareLottoAndWinningNumber(Lotto lotto) {
+        int matchingNumbers = 0;
+
+        for (int number : this.winningNumber) {
+            if (lotto.getNumbers().contains(number)) {
+                matchingNumbers++;
+            }
+        }
+        if (lotto.getNumbers().contains(this.bonusNumber)) {
+            matchingNumbers += 10;
+        }
+
+        return matchingNumbers;
+    }
 }
