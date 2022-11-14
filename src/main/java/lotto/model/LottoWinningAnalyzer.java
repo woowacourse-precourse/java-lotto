@@ -1,8 +1,7 @@
-package lotto;
+package lotto.model;
 
 import java.util.EnumMap;
 
-import static lotto.LottoConstant.*;
 import static lotto.view.LottoSeller.printMessage;
 
 public class LottoWinningAnalyzer {
@@ -19,15 +18,15 @@ public class LottoWinningAnalyzer {
     }
 
     public void printProfit(int userMoney) {
-        printMessage(String.format(WINNING_RESULT_MSG, calculateProfit(userMoney)));
+        printMessage(String.format(
+                MessageType.WINNING_RESULT.getMessage(), calculateProfit(userMoney)));
     }
 
     private double calculateProfit(int userMoney) {
         double winningMoney = getSumAllWinningMoney();
         double profit = winningMoney / userMoney * 100;
-        double roundDecimalPoint = Math.pow(10, ROUND_POINT);
 
-        return Math.round(profit * roundDecimalPoint) / roundDecimalPoint;
+        return Math.round(profit * 100) / 100;
     }
 
     private long getSumAllWinningMoney() {

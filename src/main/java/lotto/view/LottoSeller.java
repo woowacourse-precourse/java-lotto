@@ -1,24 +1,32 @@
-package lotto;
+package lotto.view;
 
 import camp.nextstep.edu.missionutils.Console;
+import lotto.model.Error;
+import lotto.model.ErrorType;
+import lotto.model.MessageType;
 import lotto.model.Lotto;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static lotto.LottoConstant.*;
-import static lotto.LottoErrorMessage.*;
+import static lotto.model.Lotto.*;
 
 public class LottoSeller {
+    private static final String SEPARATOR = ",";
 
     public static void printMessage(String message) {
         System.out.println(message);
     }
 
+    public static void printMessage(MessageType type) {
+        System.out.println(type.getMessage());
+    }
+
     public static void printLottoNumbers(List<Lotto> lottoTickets) {
         int lottoPurchaseCount = lottoTickets.size();
-        printMessage(String.format(BUY_MSG, lottoPurchaseCount));
+        printMessage(String.format(
+                MessageType.PURCHASE_COMPLETION.getMessage(), lottoPurchaseCount));
 
         for (int i = 0; i < lottoPurchaseCount; i++) {
             printMessage(lottoTickets.get(i).toString());
@@ -26,13 +34,13 @@ public class LottoSeller {
     }
 
     public static int receivePurchasePrice() {
-        printMessage(PURCHASE_PRICE_MSG);
+        printMessage(MessageType.PURCHASE_PRICE);
 
         return receiveNumber();
     }
 
     public static List<Integer> receiveWinningNumbers() {
-        printMessage(WINNING_NUM_MSG);
+        printMessage(MessageType.WINNING_NUMBER);
         String userInput = Console.readLine();
         validateWinningNumbers(userInput);
 
@@ -45,7 +53,7 @@ public class LottoSeller {
     }
 
     public static int receiveBonusNumber() {
-        printMessage(BONUS_NUM_MSG);
+        printMessage(MessageType.BONUS_NUMBER);
 
         return receiveNumber();
     }
@@ -54,7 +62,7 @@ public class LottoSeller {
         String[] numbers = input.split(SEPARATOR, 0);
 
         if (numbers.length != LOTTO_SIZE) {
-            printMessage(LOTTO_SIZE_ERROR_MSG);
+            Error.printException(ErrorType.SIZE);
             throw new IllegalArgumentException();
         }
 
@@ -65,7 +73,7 @@ public class LottoSeller {
 
     private static void validateNumber(String input) {
         if (!input.matches("^[0-9]*$")) {
-            printMessage(NUMBER_ERROR_MSG);
+            Error.printException(ErrorType.NOT_NUMBER);
             throw new IllegalArgumentException();
         }
     }

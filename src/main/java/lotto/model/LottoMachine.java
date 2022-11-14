@@ -1,4 +1,4 @@
-package lotto;
+package lotto.model;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import static lotto.LottoConstant.*;
+import static lotto.model.Lotto.*;
 
 public class LottoMachine {
 

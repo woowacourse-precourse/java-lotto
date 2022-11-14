@@ -1,12 +1,13 @@
-package lotto;
+package lotto.model;
 
 import java.util.List;
 
-import static lotto.LottoConstant.*;
-import static lotto.LottoErrorMessage.*;
-import static lotto.view.LottoSeller.printMessage;
 
 public class Lotto {
+    public static final int MIN_LOTTO_NUM = 1;
+    public static final int MAX_LOTTO_NUM = 45;
+    public static final int LOTTO_SIZE = 6;
+
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
@@ -33,18 +34,18 @@ public class Lotto {
 
     private void validate(List<Integer> numbers) {
         if (numbers.size() != LOTTO_SIZE) {
-            printMessage(LOTTO_SIZE_ERROR_MSG);
-            throw new IllegalArgumentException(LOTTO_SIZE_ERROR_MSG);
+            Error.printException(ErrorType.SIZE);
+            throw new IllegalArgumentException();
         }
 
         if (hasDuplicateNumber(numbers)) {
-            printMessage(DUPLICATE_NUM_ERROR_MSG);
-            throw new IllegalArgumentException(DUPLICATE_NUM_ERROR_MSG);
+            Error.printException(ErrorType.DUPLICATE);
+            throw new IllegalArgumentException();
         }
 
         if (hasOutOfRangeNumber(numbers)) {
-            printMessage(LOTTO_RANGE_ERROR_MSG);
-            throw new IllegalArgumentException(LOTTO_RANGE_ERROR_MSG);
+            Error.printException(ErrorType.RANGE);
+            throw new IllegalArgumentException();
         }
     }
 
@@ -62,13 +63,12 @@ public class Lotto {
             int number = numbers.get(i);
 
             if (number < MIN_LOTTO_NUM || number > MAX_LOTTO_NUM) {
-                printMessage(LOTTO_RANGE_ERROR_MSG);
+                Error.printException(ErrorType.RANGE);
                 return true;
             }
         }
         return false;
     }
-
 
     @Override
     public String toString() {

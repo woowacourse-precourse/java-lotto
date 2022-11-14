@@ -1,10 +1,6 @@
-package lotto;
+package lotto.model;
 
-import lotto.model.Lotto;
-
-import static lotto.LottoErrorMessage.*;
-import static lotto.LottoConstant.*;
-import static lotto.view.LottoSeller.printMessage;
+import static lotto.model.Lotto.*;
 
 public class WinningLotto {
     private Lotto winningLotto;
@@ -19,7 +15,8 @@ public class WinningLotto {
     public int countWinningNumber(Lotto userLotto) {
         int count = winningLotto.countNumberOfMatching(userLotto);
 
-        if (count == WINNING_FIVE_AND_BONUS_NUM && !hasNumberInBonus(userLotto))
+        if (count == WinningType.FIVE_AND_BONUS.getNumberOfMatching()
+                && !hasNumberInBonus(userLotto))
             count++;
 
         return count;
@@ -31,12 +28,12 @@ public class WinningLotto {
 
     private void validateBonusNumber(int bonusNumber) {
         if (winningLotto.hasNumber(bonusNumber)) {
-            printMessage(DUPLICATE_NUM_ERROR_MSG);
+            Error.printException(ErrorType.DUPLICATE);
             throw new IllegalArgumentException();
         }
 
         if (bonusNumber < MIN_LOTTO_NUM || bonusNumber > MAX_LOTTO_NUM) {
-            printMessage(LOTTO_RANGE_ERROR_MSG);
+            Error.printException(ErrorType.RANGE);
             throw new IllegalArgumentException();
         }
     }

@@ -1,6 +1,4 @@
-package lotto;
-
-import lotto.ErrorType;
+package lotto.model;
 
 public class Error {
     private static final String ERROR = "[ERROR] %s";

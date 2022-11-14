@@ -1,5 +1,6 @@
-package lotto;
+package lotto.controller;
 
+import lotto.model.WinningType;
 import lotto.model.LottoStore;
 import lotto.model.LottoWinningAnalyzer;
 import lotto.model.WinningLotto;
@@ -8,10 +9,11 @@ import lotto.model.Lotto;
 import java.util.EnumMap;
 import java.util.List;
 
-import static lotto.LottoConstant.*;
-import static lotto.LottoSeller.*;
+import static lotto.view.LottoSeller.*;
 
 public class LottoProgram {
+    private static final int INIT_WINNING_COUNT = 0;
+
     private List<Lotto> lottoTickets;
     private WinningLotto winningLotto;
     private EnumMap<WinningType, Integer> winningResult;
@@ -51,6 +53,7 @@ public class LottoProgram {
         LottoStore lottoStore = new LottoStore();
 
         this.lottoTickets = lottoStore.buyLottoNumber(price);
+
         printLottoNumbers(lottoTickets);
     }
 
@@ -58,29 +61,23 @@ public class LottoProgram {
         this.winningLotto = new WinningLotto(new Lotto(numbers), bonusNumber);
     }
 
-    public void createWinningLotto(List<Integer> numbers, int bonusNumber) {
-        Lotto winningNumber = new Lotto(numbers);
-
-        this.winningLotto = new WinningLotto(winningNumber, bonusNumber);
-    }
-
     private void initializeWinningResult() {
         for (int i = 0; i < lottoTickets.size(); i++) {
             Lotto lottoTicket = lottoTickets.get(i);
             int count = winningLotto.countWinningNumber(lottoTicket);
 
-            if (count >= WINNING_THREE_NUM)
+            if (count >= WinningType.THREE.getNumberOfMatching())
                 updateWinningResult(count);
         }
     }
 
     private void updateWinningResult(int count) {
         WinningType type = winningResult.keySet().stream().
-                filter(winningType -> winningType.getWinningNumber() == count)
+                filter(winningType -> winningType.getNumberOfMatching() == count)
                 .findAny()
                 .get();
         int currentCount = winningResult.get(type);
 
-        winningResult.put(type, currentCount + PLUS_ONE_COUNT);
+        winningResult.put(type, currentCount + 1);
     }
 }

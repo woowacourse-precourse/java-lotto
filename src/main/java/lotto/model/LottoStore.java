@@ -1,20 +1,15 @@
-package lotto;
-
-import lotto.model.Lotto;
-import lotto.model.LottoMachine;
+package lotto.model;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static lotto.LottoErrorMessage.*;
-import static lotto.LottoConstant.*;
-import static lotto.view.LottoSeller.printMessage;
 
 public class LottoStore {
-    private List<Lotto> lottoTickets = new ArrayList<>();
+    private static final int LOTTO_PRICE = 1000;
 
     public List<Lotto> buyLottoNumber(int price) {
         validatePrice(price);
+        List<Lotto> lottoTickets = new ArrayList<>();
         int lottoPurchaseCount = price / LOTTO_PRICE;
         LottoMachine lottoMachine = new LottoMachine();
 
@@ -24,30 +19,18 @@ public class LottoStore {
             lottoTickets.add(lotto);
         }
 
-        printLottoNumbers();
-
         return lottoTickets;
     }
 
     private void validatePrice(int price) {
         if (price < LOTTO_PRICE) {
-            System.out.println(PRICE_ERROR_MSG);
+            Error.printException(ErrorType.PRICE);
             throw new IllegalArgumentException();
         }
 
         if (price % LOTTO_PRICE != 0) {
-            System.out.println(PRICE_ERROR_MSG);
+            Error.printException(ErrorType.PRICE);
             throw new IllegalArgumentException();
-        }
-    }
-
-    private void printLottoNumbers() {
-        int lottoPurchaseCount = lottoTickets.size();
-
-        printMessage(String.format(BUY_MSG, lottoPurchaseCount));
-
-        for (int i = 0; i < lottoPurchaseCount; i++) {
-            printMessage(lottoTickets.get(i).toString());
         }
     }
 }
