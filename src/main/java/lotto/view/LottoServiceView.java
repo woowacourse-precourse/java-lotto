@@ -3,7 +3,7 @@ package lotto.view;
 import camp.nextstep.edu.missionutils.Console;
 
 public class LottoServiceView {
-
+    
     public int inputMoney() {
 
         System.out.println("구입금액을 입력해 주세요.");
@@ -12,21 +12,21 @@ public class LottoServiceView {
         return 1;
     }
 
-    private void validateInputMoney(String input) {
+    public void validateInputMoney(String input) {
 
-        checkMinimumAmount(input);
         checkOnlyInteger(input);
+        checkMinimumAmount(input);
         checkOverFlow(input);
         checkMonetaryUnit(input);
     }
 
-    private void checkMinimumAmount(String input) {
+    public void checkMinimumAmount(String input) {
         if (input.length() < 4) {
             throw new IllegalArgumentException("[ERROR] 최소 구매 금액은 1,000원 이상입니다.");
         }
     }
 
-    private void checkMonetaryUnit(String input) {
+    public void checkMonetaryUnit(String input) {
 
         for (int i = 0; i < 3; i++) {
             if (!(input.charAt(i) == '0')) {
@@ -35,14 +35,14 @@ public class LottoServiceView {
         }
     }
 
-    private void checkOverFlow(String input) {
+    public void checkOverFlow(String input) {
 
         if (input.length() > 9) {
             throw new IllegalArgumentException("[ERROR] 구매 금액은 최대 10억 미만으로 입력해야 합니다.");
         }
     }
 
-    private void checkOnlyInteger(String input) {
+    public void checkOnlyInteger(String input) {
 
         char value;
         for (int i = 0; i < input.length(); i++) {
