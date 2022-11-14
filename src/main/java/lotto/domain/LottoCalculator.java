@@ -26,6 +26,6 @@ public class LottoCalculator {
             total_income += winnings.get(i) * PRIZE.get(i);
         }
 
-        return (total_income - budget) / budget * 100;
+        return (double) total_income / budget * 100;
     }
 }

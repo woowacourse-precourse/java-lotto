@@ -9,7 +9,6 @@ public class NumberGenerator {
 
     public static List<Integer> GenerateNumbers(){
         List<Integer> result = Randoms.pickUniqueNumbersInRange(1,45,6);
-        Collections.sort(result);
 
         return result;
     }
