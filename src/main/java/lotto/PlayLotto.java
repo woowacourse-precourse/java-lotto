@@ -16,11 +16,18 @@ public class PlayLotto {
         return allLottoNumber;
     }
 
-/*    public void seprateTicket(List<List<Integer>> RandomLottoTicket) {
+    public List<Integer> seprateTicket(List<List<Integer>> RandomLottoTicket, String inputWinningNumber, String inputBonusNumber) {
+        List<Integer> correctNumber = new ArrayList<>(List.of(0,0,0,0,0));
         for (List<Integer> eachTicket : RandomLottoTicket) {
-
+            int compareWinning = compareTicketAndWinningNumber(eachTicket, inputWinningNumber);
+            boolean compareBonus = compareTicketAndBonusNumber(eachTicket, inputBonusNumber);
+            int compareReward = compareReward(compareWinning,compareBonus);
+            if (compareReward < 5) {
+                 correctNumber.add(compareReward,correctNumber.get(compareReward)+1);
+            }
         }
-    }*/
+        return correctNumber;
+    }
 
     public int compareTicketAndWinningNumber(List<Integer> ticket, String winningNumber) {
         List<Integer> winning = createLotto.winningNumber(winningNumber);
@@ -40,4 +47,24 @@ public class PlayLotto {
         }
         return countbonus;
     }
+
+    public int compareReward(int compareWinning, boolean compareBonus) {
+        if (compareWinning == 3) {
+            return 0;
+        }
+        if (compareWinning == 4) {
+            return 1;
+        }
+        if (compareWinning == 5 && !compareBonus) {
+            return 2;
+        }
+        if (compareWinning == 5 && compareBonus) {
+            return 3;
+        }
+        if (compareWinning == 6 && !compareBonus) {
+            return 4;
+        }
+        return 9;
+    }
+
 }
