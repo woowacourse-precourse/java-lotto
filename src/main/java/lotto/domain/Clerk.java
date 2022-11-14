@@ -20,7 +20,7 @@ public class Clerk {
     private void validateRest(int money) {
         money = money % Constants.LOTTO_PRICE.getValue();
         if (money != 0) {
-            throw new IllegalArgumentException("[ERROR] 입력금액과 로또 금액이 나누어 떨어지지 않습니다.");
+            throw new IllegalArgumentException("입력금액과 로또 금액이 나누어 떨어지지 않습니다.");
         }
     }
 
@@ -29,14 +29,14 @@ public class Clerk {
         try {
             money = Integer.parseInt(input);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("[ERROR] 수가 아닌 입력이 있습니다.");
+            throw new IllegalArgumentException("수가 아닌 입력이 있습니다.");
         }
         return money;
     }
 
     private void validateBlank(String input) {
         if (input.length() == 0) {
-            throw new IllegalArgumentException("[ERROR] 빈 문자열이 입력되었습니다.");
+            throw new IllegalArgumentException("빈 문자열이 입력되었습니다.");
         }
     }
 

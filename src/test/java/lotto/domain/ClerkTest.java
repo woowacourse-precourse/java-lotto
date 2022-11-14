@@ -14,7 +14,7 @@ class ClerkTest {
 
         assertThatThrownBy(() -> clerk.giveLottoQuantity(input))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("[ERROR] 빈 문자열이 입력되었습니다.");
+                .hasMessageContaining("빈 문자열이 입력되었습니다.");
     }
 
     @Test
@@ -23,7 +23,7 @@ class ClerkTest {
 
         assertThatThrownBy(() -> clerk.giveLottoQuantity(input))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("[ERROR] 수가 아닌 입력이 있습니다.");
+                .hasMessageContaining("수가 아닌 입력이 있습니다.");
     }
 
     @Test
@@ -32,7 +32,7 @@ class ClerkTest {
 
         assertThatThrownBy(() -> clerk.giveLottoQuantity(input))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("[ERROR] 입력금액과 로또 금액이 나누어 떨어지지 않습니다.");
+                .hasMessageContaining("입력금액과 로또 금액이 나누어 떨어지지 않습니다.");
     }
 
     @Test
