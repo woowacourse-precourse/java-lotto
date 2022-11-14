@@ -4,6 +4,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -196,5 +197,63 @@ class LottoCountingTest {
         }
     }
 
-    
+    @Nested
+    class CountWinningPaperTest{
+
+        Map<Lotto, Integer> getCountedLotto(int size){
+            Lotto winningLotto = getWinningLotto();
+            Lotto[] lottoPapers = getLottoPapersFromData(size);
+            return lottoCounter.countedLotto(lottoPapers,winningLotto);
+        }
+
+        Lotto[] getLottoPapersFromData(int size){
+            Lotto[] lottoPapers = new Lotto[size];
+            System.arraycopy(lottoPaperInput, 0, lottoPapers, 0, size);
+            return lottoPapers;
+        }
+
+        // 체크해야 되는 부분 : 1등 몇개 2등 몇개 등등 잘 매칭되어 들어갔는지?
+        // index :
+        // 0 : 1등
+        // 1 : 2등
+        // 2 : 3등
+        // 3 : 4등
+        // 4 : 5등
+        // 5~8 : 탈락(-1)
+
+        // 하드코딩하기.
+        void putExpectedResult(Map<Integer, Integer> expectedResult,String input){
+            String[] inputs = input.split(" ");
+            for(int inputIndex = 1 ; inputIndex <= inputs.length; inputIndex++){
+                int value = Integer.parseInt(inputs[inputIndex-1]);
+                expectedResult.put(inputIndex,value);
+            }
+        }
+
+        void testWinningPaperCase(int sizeInput, String expectedOutput){
+            Map<Lotto,Integer> countedLotto = getCountedLotto(sizeInput);
+            Lotto winningLotto = getWinningLotto();
+
+            Map<Integer, Integer> expectedResult = new HashMap<>();
+            putExpectedResult(expectedResult,expectedOutput);
+            Map<Integer, Integer> actualResult = lottoCounter.countWinningPaper(countedLotto,winningLotto,bonusNumber);
+
+            assertThat(actualResult).isEqualTo(expectedResult);
+        }
+
+        @Test
+        void countWinningPaper_case1(){
+            int sizeInput = 1;
+            String expectedOutput = "1";
+            testWinningPaperCase(sizeInput,expectedOutput);
+        }
+
+        @Test
+        void countWinningPaper_case2(){
+            int sizeInput = 2;
+            String expectedOutput = "1 1";
+            testWinningPaperCase(sizeInput,expectedOutput);
+        }
+
+    }
 }
