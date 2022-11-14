@@ -1,10 +1,12 @@
 package lotto.domain;
 
-import lotto.ui.ErrorMessage;
 import lotto.ui.LottoValidator;
-import lotto.util.Log;
 
 import java.util.List;
+
+import static lotto.ui.ErrorMessage.INVALID_SIZE;
+import static lotto.ui.ErrorMessage.LOTTO_DUPLICATION;
+import static lotto.util.LogLevel.ERROR;
 
 public class Lotto {
     private final List<Integer> numbers;
@@ -16,13 +18,11 @@ public class Lotto {
 
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
-            Log.error(ErrorMessage.INVALID_SIZE.getMessage());
-            throw new IllegalArgumentException(ErrorMessage.INVALID_SIZE.getMessage());
+            throw new IllegalArgumentException(INVALID_SIZE.toMessage(ERROR));
         }
 
         if (LottoValidator.isDuplication(numbers)) {
-            Log.error(ErrorMessage.LOTTO_DUPLICATION.getMessage());
-            throw new IllegalArgumentException(ErrorMessage.LOTTO_DUPLICATION.getMessage());
+            throw new IllegalArgumentException(LOTTO_DUPLICATION.toMessage(ERROR));
         }
     }
 
