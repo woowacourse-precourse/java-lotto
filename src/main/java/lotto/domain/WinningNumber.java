@@ -13,8 +13,8 @@ public class WinningNumber {
         this.bonusNumber = bonusNumber;
     }
 
-    public long countMatchedNumbers(Lotto lotto) {
-        return lotto.getNumbers().stream()
+    public long countMatchedNumbers(List<Integer> lottoNumbers) {
+        return lottoNumbers.stream()
                 .filter(numbers::contains)
                 .count();
     }

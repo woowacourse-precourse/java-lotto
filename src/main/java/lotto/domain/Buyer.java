@@ -24,7 +24,6 @@ public class Buyer {
     final int bonusCountPlace = 3;
     final int secondPlaceIdx = 0;
 
-
     private final int usedMoney;
     private final List<Lotto> lottos;
 
@@ -41,9 +40,9 @@ public class Buyer {
         winningResult = initWinningResult();
 
         lottos.stream()
-                .filter(lotto -> winningNumber.countMatchedNumbers(lotto) > normalization)
+                .filter(lotto -> winningNumber.countMatchedNumbers(lotto.getNumbers()) > normalization)
                 .forEach(lotto -> {
-                    long matched = winningNumber.countMatchedNumbers(lotto) - normalization;
+                    long matched = winningNumber.countMatchedNumbers(lotto.getNumbers()) - normalization;
                     if (matched == bonusCountPlace && winningNumber.isBonusNumberMatched(lotto)) {
                         matched = secondPlaceIdx;
                     }
