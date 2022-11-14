@@ -2,8 +2,8 @@ package lotto;
 
 import type.Rank;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class LottoGroups {
     private List<Lotto> lottos;
@@ -16,17 +16,22 @@ public class LottoGroups {
         return lottos.size();
     }
 
-    public List<Rank> getRanks(List<Integer> winningNumbers, int bonusNumber){
+    public List<Lotto> getLottos() {
+        List<Lotto> lottoGroups = lottos.stream().collect(Collectors.toList());
+        return lottoGroups;
+    }
+
+    public List<Rank> getRanks(List<Integer> winningNumbers, int bonusNumber) {
         List<Rank> ranks = new ArrayList<>();
         lottos.stream().forEach(lotto -> ranks.add(lotto.rankOfLotto(winningNumbers, bonusNumber)));
         return ranks;
     }
 
-    public void printAmountOfLottosComment() {
-        System.out.println(lottos.size() + "개를 구매했습니다.");
-    }
+    public Map<Rank, Integer> numbersOfRanks(List<Integer> winningNumbers, int bonusNumber) {
+        List<Rank> ranks = getRanks(winningNumbers, bonusNumber);
+        Map<Rank, Integer> numbersOfRanks = new HashMap<>();
+        Arrays.stream(Rank.values()).forEach(rank -> numbersOfRanks.put(rank, Collections.frequency(ranks, rank)));
 
-    public void printAllLottos() {
-        this.lottos.stream().forEach(lotto -> System.out.println(lotto.getLotto()));
+        return numbersOfRanks;
     }
 }

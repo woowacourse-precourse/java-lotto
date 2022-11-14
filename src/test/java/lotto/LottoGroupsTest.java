@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import type.Rank;
 
 import java.util.List;
+import java.util.Map;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -23,5 +24,14 @@ public class LottoGroupsTest {
     @Test
     void getRanks() {
             assertThat(lottoGroups.getRanks(List.of(1,2,3,4,7,9),8)).contains(Rank.FOURTH, Rank.THIRD);
+    }
+
+    @DisplayName("등수별 개수를 구한다.")
+    @Test
+    void getNumbersOfRanks() {
+        Map<Rank, Integer> numbersOfRanks = lottoGroups.numbersOfRanks(List.of(1, 2, 3, 7, 12, 13), 9);
+
+        assertThat(numbersOfRanks.get(Rank.FIFTH)).isEqualTo(1);
+        assertThat(numbersOfRanks.get(Rank.FOURTH)).isEqualTo(1);
     }
 }
