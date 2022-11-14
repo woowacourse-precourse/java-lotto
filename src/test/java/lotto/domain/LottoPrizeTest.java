@@ -17,6 +17,7 @@ import org.junit.jupiter.api.DisplayNameGenerator;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.MethodSource;
 
 @DisplayName("LottoPrize 이늄")
@@ -47,5 +48,23 @@ public class LottoPrizeTest {
     void calculatePrize_메서드는_맞춘개수를_입력받아_당첨금의_합을_반환한다() {
         LottoPrize lottoPrize = _1ST_PRIZE;
         assertThat(lottoPrize.calculatePrize(2L)).isEqualTo(lottoPrize.getPrize() * 2L);
+    }
+
+    @ParameterizedTest
+    @CsvSource({"_1ST_PRIZE, 6", "_2ND_PRIZE, 5", "_3RD_PRIZE, 5", "_4TH_PRIZE, 4", "_5TH_PRIZE, 3"})
+    void getMatchCount_메서드는_해당_당첨금을_얻기위해_맞춰야하는_숫자의_개수를_반환한다(LottoPrize lottoPrize, Integer count) {
+        assertThat(lottoPrize.getMatchCount()).isEqualTo(count);
+    }
+
+    @ParameterizedTest
+    @CsvSource({
+            "_1ST_PRIZE, 2_000_000_000",
+            "_2ND_PRIZE, 30_000_000",
+            "_3RD_PRIZE, 1_500_000",
+            "_4TH_PRIZE, 50_000",
+            "_5TH_PRIZE, 5_000"
+    })
+    void getPrize_메서드는_Enum의_당첨금을_반환한다(LottoPrize lottoPrize, Long prize) {
+        assertThat(lottoPrize.getPrize()).isEqualTo(prize);
     }
 }

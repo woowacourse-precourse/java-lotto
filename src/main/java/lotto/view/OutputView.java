@@ -60,7 +60,7 @@ public enum OutputView {
     private String formattingLottoResultMessage(EnumMap<LottoPrize, Long> prizeCount, LottoPrize lottoPrize) {
         return format(
                 LOTTO_RESULT_MESSAGE_FORMAT,
-                lottoPrize.getMatch(),
+                lottoPrize.getMatchCount(),
                 generateBonusBallMessage(lottoPrize),
                 lottoPrize.getPrize(),
                 prizeCount.getOrDefault(lottoPrize, EMPTY_PRIZE)

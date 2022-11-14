@@ -7,18 +7,18 @@ import java.util.Comparator;
 import java.util.List;
 
 public enum LottoPrize {
-    _1ST_PRIZE(6, 2_000_000_000),
-    _2ND_PRIZE(5, 30_000_000),
-    _3RD_PRIZE(5, 1_500_000),
-    _4TH_PRIZE(4, 50_000),
-    _5TH_PRIZE(3, 5_000),
-    _NOTHING(0, 0);
+    _1ST_PRIZE(6, 2_000_000_000L),
+    _2ND_PRIZE(5, 30_000_000L),
+    _3RD_PRIZE(5, 1_500_000L),
+    _4TH_PRIZE(4, 50_000L),
+    _5TH_PRIZE(3, 5_000L),
+    _NOTHING(0, 0L);
 
-    private final Integer match;
-    private final Integer prize;
+    private final Integer matchCount;
+    private final Long prize;
 
-    LottoPrize(Integer match, Integer prize) {
-        this.match = match;
+    LottoPrize(Integer match, Long prize) {
+        this.matchCount = match;
         this.prize = prize;
     }
 
@@ -33,7 +33,7 @@ public enum LottoPrize {
 
     private static LottoPrize getLottoPrize(int matchedCount) {
         return lowestPrizeOrder().stream()
-                .filter(prize -> prize.match == matchedCount)
+                .filter(prize -> prize.matchCount == matchedCount)
                 .findAny()
                 .orElse(_NOTHING);
     }
@@ -41,7 +41,7 @@ public enum LottoPrize {
     public static List<LottoPrize> lowestPrizeOrder() {
         return Arrays.stream(values())
                 .filter(lottoPrize -> !lottoPrize.equals(_NOTHING))
-                .sorted(Comparator.comparingInt(o -> o.prize))
+                .sorted(Comparator.comparingLong(o -> o.prize))
                 .collect(toList());
     }
 
@@ -52,11 +52,11 @@ public enum LottoPrize {
         return lottoPrize;
     }
 
-    public Integer getMatch() {
-        return match;
+    public Integer getMatchCount() {
+        return matchCount;
     }
 
-    public Integer getPrize() {
+    public Long getPrize() {
         return prize;
     }
 }
