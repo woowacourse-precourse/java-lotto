@@ -9,7 +9,7 @@ public enum PriceType {
 
     private final String price;
 
-    PriceType (String result){
+    PriceType(String result) {
         this.price = result;
     }
 

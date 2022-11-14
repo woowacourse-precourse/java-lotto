@@ -1,6 +1,5 @@
 package lotto.domain;
 
-import camp.nextstep.edu.missionutils.Randoms;
 import lotto.valid.Validation;
 
 import java.util.List;

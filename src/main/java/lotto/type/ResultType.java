@@ -10,7 +10,7 @@ public enum ResultType {
     DIGIT("개");
     private final String result;
 
-    ResultType (String result){
+    ResultType(String result) {
         this.result = result;
     }
 

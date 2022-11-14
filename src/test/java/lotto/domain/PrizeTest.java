@@ -8,8 +8,6 @@ import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 class PrizeTest {
     private Prize prize = new Prize();
 
@@ -20,7 +18,7 @@ class PrizeTest {
     @Test
     void prizeNumbersLengthOutOfBoundInputException() {
         ScannerInput("1,2,3,4,5,6,7");
-        Assertions.assertThrows(IllegalArgumentException.class, ()->{
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
             prize.inputPrizeNumbers();
         });
     }
@@ -29,7 +27,7 @@ class PrizeTest {
     @Test
     void prizeNumbersLessLengthInputException() {
         ScannerInput("1,2,3,4");
-        Assertions.assertThrows(IllegalArgumentException.class, ()->{
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
             prize.inputPrizeNumbers();
         });
     }
@@ -38,7 +36,7 @@ class PrizeTest {
     @Test
     void prizeNumbersNotSplitCommaInputException() {
         ScannerInput("1234");
-        Assertions.assertThrows(IllegalArgumentException.class, ()->{
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
             prize.inputPrizeNumbers();
         });
     }
@@ -47,7 +45,7 @@ class PrizeTest {
     @Test
     void prizeNumbersOverRangeInputException() {
         ScannerInput("1,2,4,5,7,46");
-        Assertions.assertThrows(IllegalArgumentException.class, ()->{
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
             prize.inputPrizeNumbers();
         });
     }
@@ -56,7 +54,7 @@ class PrizeTest {
     @Test
     void prizeNumbersLessRangeInputException() {
         ScannerInput("1,2,4,-1,5,4,6");
-        Assertions.assertThrows(IllegalArgumentException.class, ()->{
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
             prize.inputPrizeNumbers();
         });
     }
@@ -68,7 +66,7 @@ class PrizeTest {
         prize.inputPrizeNumbers();
         List<Integer> prizeNumbers = prize.getPrizeNumbers();
         Assertions.assertEquals(prizeNumbers.size(), 6);
-        Assertions.assertTrue(prizeNumbers.containsAll(List.of(1,2,4,5,6,7)));
+        Assertions.assertTrue(prizeNumbers.containsAll(List.of(1, 2, 4, 5, 6, 7)));
     }
 
     /**
@@ -78,7 +76,7 @@ class PrizeTest {
     @Test
     void bonusNumbersOverRangeInputException() {
         ScannerInput("46");
-        Assertions.assertThrows(IllegalArgumentException.class, ()->{
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
             prize.inputBonusNumber();
         });
     }
@@ -87,7 +85,7 @@ class PrizeTest {
     @Test
     void bonusNumbersNotNumberInputException() {
         ScannerInput("A");
-        Assertions.assertThrows(IllegalArgumentException.class, ()->{
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
             prize.inputBonusNumber();
         });
     }

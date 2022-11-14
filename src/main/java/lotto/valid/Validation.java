@@ -8,8 +8,8 @@ import java.util.List;
 
 public class Validation {
 
-    public static void purchaseNumberValid(String number){
-        if (!number.matches("-?\\d+(\\.\\d+)?")){
+    public static void purchaseNumberValid(String number) {
+        if (!number.matches("-?\\d+(\\.\\d+)?")) {
             OutputPrint.printError(ErrorType.INVALID_INPUT_TYPE.getText());
             throw new IllegalArgumentException();
         }
@@ -20,14 +20,14 @@ public class Validation {
         }
     }
 
-    public static void isGeneratedNumberValid(List<Integer> numbers){
+    public static void isGeneratedNumberValid(List<Integer> numbers) {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException(ErrorType.INVALID_NUMBER_DIGITS.getText());
         }
         isDuplicated(numbers);
     }
 
-    public static void prizeNumbersValid(List<Integer> prizeNumbers){
+    public static void prizeNumbersValid(List<Integer> prizeNumbers) {
         if (prizeNumbers.size() != 6) {
             throw new IllegalArgumentException(ErrorType.INVALID_NUMBER_DIGITS.getText());
         }
@@ -41,13 +41,13 @@ public class Validation {
     }
 
     private static void isDuplicated(List<Integer> prizeNumbers) {
-        if(prizeNumbers.size() != prizeNumbers.stream().distinct().count()){
+        if (prizeNumbers.size() != prizeNumbers.stream().distinct().count()) {
             throw new IllegalArgumentException(ErrorType.INVALID_DUPLICATED_NUMBER.getText());
         }
     }
 
     public static void bonusNumberValid(String bonus) {
-        if (!bonus.matches("-?\\d+(\\.\\d+)?")){
+        if (!bonus.matches("-?\\d+(\\.\\d+)?")) {
             throw new IllegalArgumentException(ErrorType.INVALID_INPUT_TYPE.getText());
         }
 

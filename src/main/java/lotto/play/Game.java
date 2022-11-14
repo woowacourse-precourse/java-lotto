@@ -1,7 +1,7 @@
 package lotto.play;
 
 import camp.nextstep.edu.missionutils.Randoms;
-import lotto.Util.InputPrint;
+
 import lotto.Util.OutputPrint;
 import lotto.domain.Lotto;
 import lotto.domain.Player;
@@ -16,7 +16,7 @@ public class Game {
 
     private Prize prize;
 
-    private Map<Integer ,Integer> matchResults;
+    private Map<Integer, Integer> matchResults;
 
 
     public Game() {
@@ -26,7 +26,7 @@ public class Game {
         matchResults = new HashMap<>();
     }
 
-    public void playGame(){
+    public void playGame() {
         player.inputMoney();
         OutputPrint.moneyToNumberPrint(player.getPurchaseNumber() / 1000);
         generateNumbers(player.getPurchaseNumber() / 1000);
@@ -54,7 +54,7 @@ public class Game {
                 + matchResults.getOrDefault(7, 0) * 2000000000;
     }
 
-    private void generateNumbers(int count){
+    private void generateNumbers(int count) {
         for (int i = 0; i < count; i++) {
             List<Integer> subNumbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
             List<Integer> numbers = new ArrayList<>(subNumbers);

@@ -1,7 +1,6 @@
 package lotto.domain;
 
 import lotto.Util.InputPrint;
-import lotto.Util.OutputPrint;
 import lotto.valid.Validation;
 
 import java.util.ArrayList;
@@ -15,7 +14,7 @@ public class Prize {
 
     private int bonusNumber;
 
-    public void inputPrizeNumbers(){
+    public void inputPrizeNumbers() {
         prizeNumbers = Arrays.stream(InputPrint.prizeNumberInput().split(","))
                 .map(num -> Integer.parseInt(num))
                 .collect(Collectors.toList());
@@ -23,23 +22,23 @@ public class Prize {
         Validation.prizeNumbersValid(prizeNumbers);
     }
 
-    public void inputBonusNumber(){
+    public void inputBonusNumber() {
         String bonus = InputPrint.bonusNumberInput();
         Validation.bonusNumberValid(bonus);
         this.bonusNumber = Integer.parseInt(bonus);
     }
 
-    public int match(Lotto lotto){
+    public int match(Lotto lotto) {
         List<Integer> subList = new ArrayList<>(prizeNumbers);
         subList.removeAll(lotto.getNumbers());
         int resultSize = 6 - subList.size();
-        if (resultSize == 1 && matchBonusNumber(lotto.getNumbers())){
+        if (resultSize == 1 && matchBonusNumber(lotto.getNumbers())) {
             return 7;
         }
         return resultSize;
     }
 
-    private boolean matchBonusNumber(List<Integer> numbers){
+    private boolean matchBonusNumber(List<Integer> numbers) {
         return numbers.contains(bonusNumber);
     }
 
@@ -47,15 +46,7 @@ public class Prize {
         return prizeNumbers;
     }
 
-    public void setPrizeNumbers(List<Integer> prizeNumbers) {
-        this.prizeNumbers = prizeNumbers;
-    }
-
     public int getBonusNumber() {
         return bonusNumber;
-    }
-
-    public void setBonusNumber(int bonusNumber) {
-        this.bonusNumber = bonusNumber;
     }
 }
