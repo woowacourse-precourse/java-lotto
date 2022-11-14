@@ -8,7 +8,6 @@ import lotto.domain.Profit;
 import lotto.domain.Rank;
 
 public class OutputView {
-
     public static void printLottoAmount(Money money) {
         int lottoAmount = money.calculateLottoAmount();
         System.out.println(lottoAmount + "개를 구매했습니다.");
@@ -30,8 +29,7 @@ public class OutputView {
     }
 
     public static void printProfit(Profit profit) {
-        String roundedProfit = String.format("%.1f", profit.getProfit() * 100);
-        System.out.println("총 수익률은 " + roundedProfit + "%입니다.");
+        System.out.println("총 수익률은 " + profit.getProfit() + "%입니다.");
     }
 
     private static String printLottoRank(Rank rank, int amount) {
@@ -39,10 +37,8 @@ public class OutputView {
             return String.format(rank.getCorrectNumberAmount() + "개 일치, 보너스 볼 일치 (" + rank.prize() + "원) - " +
                     amount + "개");
         }
-
         return String.format(rank.getCorrectNumberAmount() + "개 일치 (" + rank.prize() + "원) - " +
                 amount + "개");
-
     }
 }
 

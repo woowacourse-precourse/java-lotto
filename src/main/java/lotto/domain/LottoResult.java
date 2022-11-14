@@ -1,5 +1,7 @@
 package lotto.domain;
 
+import static lotto.utils.Constant.ZERO;
+
 import java.util.Map;
 import java.util.Map.Entry;
 
@@ -16,7 +18,7 @@ public class LottoResult {
     }
 
     public double getTotalPrize() {
-        double totalPrize = 0;
+        double totalPrize = ZERO;
         for (Entry<Rank, Integer> rank : lottoResult.entrySet()) {
             String stripedPrize = rank.getKey().prize().replaceAll(",", "");
             totalPrize += Integer.parseInt(stripedPrize) * rank.getValue();
