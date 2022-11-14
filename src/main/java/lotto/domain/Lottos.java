@@ -2,10 +2,7 @@ package lotto.domain;
 
 import lotto.utils.ErrorMessage;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class Lottos {
     private static final int LOTTO_PRICE = 1000;
@@ -36,9 +33,7 @@ public class Lottos {
     }
 
     Lottos(Lotto... lottos) {
-        for (Lotto lotto : lottos) {
-            this.lottos.add(lotto);
-        }
+        Collections.addAll(this.lottos, lottos);
     }
 
     private void validate(int money) {

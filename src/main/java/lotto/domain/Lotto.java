@@ -58,7 +58,7 @@ public class Lotto {
 
     public int countMatchingNumbers(Lotto winningLotto) {
         return (int) numbers.stream()
-                .filter(number -> winningLotto.contains(number))
+                .filter(winningLotto::contains)
                 .count();
     }
 
