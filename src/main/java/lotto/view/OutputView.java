@@ -30,7 +30,7 @@ public final class OutputView {
     }
 
     public static void printReceipt(int size) {
-        printMessage(size + IOMessage.WRITE_AMOUNT_MESSAGE);
+        printMessage(size + "개를 구매했습니다.");
     }
 
     public static void printMessage(String message) {
