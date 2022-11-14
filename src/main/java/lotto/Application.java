@@ -13,6 +13,7 @@ public class Application {
         userLottoController.printIssuedLotteries();
         resultController.enterWinningNumbers();
         resultController.enterBonusNumber();
+        resultController.printLottoResult(userLottoController.getIssuedLotteries());
     }
 
     private static void init() {

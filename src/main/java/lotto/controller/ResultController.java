@@ -1,6 +1,11 @@
 package lotto.controller;
 
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
+import java.util.Map;
+import lotto.domain.Lotto;
+import lotto.domain.WinningResult;
 import lotto.service.ResultService;
 import lotto.view.InputView;
 import lotto.view.OutputView;
@@ -35,7 +40,15 @@ public class ResultController {
         resultService.saveBonusNumber(bonusNumber);
     }
 
-    public void printLottoResult() {
-        resultService.getLottoResult();
+    public void printLottoResult(List<Lotto> issuedLotteries) {
+        resultService.saveLottoResult(issuedLotteries);
+        List<WinningResult> winningResults = Arrays.asList(WinningResult.values());
+        Collections.reverse(winningResults);
+        Map<WinningResult, Integer> lottoResultCount = resultService.getLottoResultCount();
+
+        OutputView.printLottoResultHeaderMessage();
+        for (WinningResult winningResult : winningResults) {
+            OutputView.printLottoResult(winningResult.toString(), lottoResultCount.getOrDefault(winningResult, 0));
+        }
     }
 }

@@ -1,5 +1,7 @@
 package lotto.controller;
 
+import java.util.List;
+import lotto.domain.Lotto;
 import lotto.service.UserLottoService;
 import lotto.view.InputView;
 import lotto.view.OutputView;
@@ -31,4 +33,7 @@ public class UserLottoController {
     }
 
 
+    public List<Lotto> getIssuedLotteries() {
+        return userLottoService.getLotteries();
+    }
 }

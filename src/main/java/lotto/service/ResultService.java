@@ -9,16 +9,18 @@ import static lotto.Constants.MAXIMUM_LOTTO_NUMBER;
 import static lotto.Constants.MINIMUM_LOTTO_NUMBER;
 
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
-import lotto.Lotto;
+import lotto.domain.Lotto;
+import lotto.domain.Result;
+import lotto.domain.WinningResult;
 import lotto.repository.ResultRepository;
-import lotto.repository.UserLottoRepository;
 
 public class ResultService {
     private static ResultService instance;
     private static ResultRepository resultRepository;
-    private static UserLottoRepository userLottoRepository;
 
     private ResultService() {
     }
@@ -27,7 +29,6 @@ public class ResultService {
         if (instance == null) {
             instance = new ResultService();
             resultRepository = ResultRepository.getInstance();
-            userLottoRepository = UserLottoRepository.getInstance();
         }
         return instance;
     }
@@ -67,7 +68,23 @@ public class ResultService {
         resultRepository.save(Integer.parseInt(bonusNumber));
     }
 
-    public void getLottoResult() {
+    public void saveLottoResult(List<Lotto> issuedLotteries) {
+        Lotto winningLotto = resultRepository.findWinningLotto();
+        int bonusNumber = resultRepository.findBonusNumber();
+        Map<WinningResult, Integer> winningResultCount = new HashMap<>();
 
+        for (Lotto issued : issuedLotteries) {
+            int cnt = issued.getSameNumberCount(winningLotto, issued);
+            WinningResult winningResult = WinningResult.getWinningResult(
+                    new Result(cnt, issued.hasBonusNumber(bonusNumber)));
+            if (winningResult != null) {
+                winningResultCount.put(winningResult, winningResultCount.getOrDefault(winningResult, 0) + 1);
+            }
+        }
+        resultRepository.save(winningResultCount);
+    }
+
+    public Map<WinningResult, Integer> getLottoResultCount() {
+        return resultRepository.findLottoResultCount();
     }
 }

@@ -1,8 +1,9 @@
-package lotto;
+package lotto.domain;
 
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
+import lotto.Constants;
 
 public class Lotto {
     private final List<Integer> numbers;
@@ -19,6 +20,16 @@ public class Lotto {
         }
     }
 
+    public int getSameNumberCount(Lotto winningLotto, Lotto userLotto) {
+        int sameCnt = 0;
+        for (Integer number : userLotto.numbers) {
+            if (winningLotto.numbers.contains(number)) {
+                sameCnt++;
+            }
+        }
+        return sameCnt;
+    }
+
     @Override
     public String toString() {
         return numbers.stream()
@@ -26,5 +37,7 @@ public class Lotto {
                 .collect(Collectors.joining(Constants.ISSUED_LOTTO_NUMBERS_SEPARATOR));
     }
 
-    // TODO: 추가 기능 구현
+    public boolean hasBonusNumber(int bonusNumber) {
+        return numbers.contains(bonusNumber);
+    }
 }

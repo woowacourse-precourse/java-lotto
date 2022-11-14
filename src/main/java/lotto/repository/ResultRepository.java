@@ -1,11 +1,14 @@
 package lotto.repository;
 
-import lotto.Lotto;
+import java.util.Map;
+import lotto.domain.Lotto;
+import lotto.domain.WinningResult;
 
 public class ResultRepository {
     private static ResultRepository instance;
     private Lotto winningLotto;
     private int bonusNumber;
+    private Map<WinningResult, Integer> winningResultCount;
 
     private ResultRepository() {
     }
@@ -23,5 +26,21 @@ public class ResultRepository {
 
     public void save(int bonusNumber) {
         this.bonusNumber = bonusNumber;
+    }
+
+    public Lotto findWinningLotto() {
+        return winningLotto;
+    }
+
+    public int findBonusNumber() {
+        return bonusNumber;
+    }
+
+    public void save(Map<WinningResult, Integer> winningResultCount) {
+        this.winningResultCount = winningResultCount;
+    }
+
+    public Map<WinningResult, Integer> findLottoResultCount() {
+        return winningResultCount;
     }
 }

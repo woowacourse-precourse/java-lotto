@@ -5,7 +5,8 @@ import static lotto.Constants.ASK_LOTTO_WINNING_NUMBERS;
 import static lotto.Constants.ASK_PURCHASE_AMOUNT;
 
 import java.util.List;
-import lotto.Lotto;
+import lotto.Constants;
+import lotto.domain.Lotto;
 
 public class OutputView {
     public static void printAskPurchaseAmount() {
@@ -24,5 +25,13 @@ public class OutputView {
         for (Lotto lotto : lotteries) {
             System.out.println("[" + lotto.toString() + "]");
         }
+    }
+
+    public static void printLottoResultHeaderMessage() {
+        System.out.println(Constants.LOTTO_RESULT_HEADER_MESSAGE);
+    }
+
+    public static void printLottoResult(String winningResultInfo, int count) {
+        System.out.println(winningResultInfo + count + "개");
     }
 }

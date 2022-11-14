@@ -10,7 +10,7 @@ import static lotto.Constants.PURCHASE_AMOUNT_IS_NOT_NUMBER_ERROR_MESSAGE;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.List;
-import lotto.Lotto;
+import lotto.domain.Lotto;
 import lotto.repository.UserLottoRepository;
 
 public class UserLottoService {
