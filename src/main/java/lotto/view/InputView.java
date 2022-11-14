@@ -3,6 +3,7 @@ package lotto.view;
 import camp.nextstep.edu.missionutils.Console;
 import lotto.util.Parser;
 import lotto.validator.InputValidator;
+import lotto.validator.MoneyValidator;
 
 import java.util.List;
 
@@ -17,6 +18,7 @@ public class InputView {
 
         String money = Console.readLine();
         InputValidator.checkMoney(money);
+        MoneyValidator.check(Long.valueOf(money));
         return Long.valueOf(money);
     }
 
@@ -35,7 +37,7 @@ public class InputView {
         return Integer.valueOf(bonusNumber);
     }
 
-    public static void printMessage(String message){
+    public static void printMessage(String message) {
         System.out.println(message);
     }
 }

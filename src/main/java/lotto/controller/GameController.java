@@ -15,9 +15,9 @@ public class GameController {
         OutputView.showPurchasedLotto(user);
 
         WinningNumber winnerNumber = getWinningNumber();
-        List<Rank> ranks = getRanks(user.getLottos(), winnerNumber);
+        List<Rank> ranks = getRanks(user, winnerNumber);
 
-        OutputView.showGameResult(ranks, inputMoney);
+        OutputView.showGameResult(user, ranks);
     }
 
     public List<Lotto> buyLotto(long money) {
@@ -31,10 +31,10 @@ public class GameController {
         return new WinningNumber(lotto, bonusNumber);
     }
 
-    public List<Rank> getRanks(List<Lotto> lottos, WinningNumber winningNumber) {
+    public List<Rank> getRanks(User user, WinningNumber winningNumber) {
         List<Rank> ranks = new ArrayList<>();
 
-        for (Lotto lotto : lottos) {
+        for (Lotto lotto : user.getLottos()) {
             Rank rank = Rank.calculate(lotto, winningNumber);
             ranks.add(rank);
         }
