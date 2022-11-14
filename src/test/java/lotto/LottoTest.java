@@ -1,16 +1,18 @@
 package lotto;
 
-import lotto.domain.*;
+import lotto.domain.Customer;
+import lotto.domain.Lotto;
+import lotto.domain.Lottos;
+import lotto.domain.WinningNumber;
 import lotto.util.LottoRank;
 import lotto.view.LottoGameView;
 import lotto.view.ViewValidator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -85,33 +87,6 @@ class LottoTest {
         Object lottoNumber = method.invoke(customer);
 
         assertThat(lottoNumber).isInstanceOf(List.class);
-    }
-
-    @DisplayName("로또 번호를 생성하면 6개의 번호가 나온다")
-    @Test
-    void generateLottoNumberBySixLength() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
-        Customer customer = new Customer();
-        int result = 6;
-
-        Method method = customer.getClass().getDeclaredMethod("generateLottoNumber");
-        method.setAccessible(true);
-        List<Integer> lottoNumber = (List<Integer>) method.invoke(customer);
-
-        assertThat(lottoNumber.size()).isEqualTo(result);
-    }
-
-    @DisplayName("로또 번호를 생성하면 중복없이 6개의 번호가 나온다")
-    @Test
-    void generateLottoNumberByNotDuplicated() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
-        Customer customer = new Customer();
-        int result = 6;
-
-        Method method = customer.getClass().getDeclaredMethod("generateLottoNumber");
-        method.setAccessible(true);
-        List<Integer> lottoNumber = (List<Integer>) method.invoke(customer);
-        int lottoNumberSize = new HashSet<>(lottoNumber).size();
-
-        assertThat(lottoNumberSize).isEqualTo(result);
     }
 
     @DisplayName("로또 번호를 입력하면 오름차순으로 정렬한다")
@@ -224,30 +199,22 @@ class LottoTest {
 
     @DisplayName("뽑기 기계에 당첨 번호를 넣으면 당첨 번호가 들어간다")
     @Test
-    void generateWinningNumberInDrawingMachine() throws NoSuchFieldException, IllegalAccessException {
+    void generateWinningNumberInDrawingMachine() {
         List<Integer> result = List.of(1, 7, 10, 24, 37, 45);
         int bonusNumber = 11;
-        WinningNumber drawingMachine = new WinningNumber(result, bonusNumber);
+        WinningNumber winningNumber = new WinningNumber(result, bonusNumber);
 
-        Field field = drawingMachine.getClass().getDeclaredField("winningNumbers");
-        field.setAccessible(true);
-        List<Integer> winningNumber = (List<Integer>) field.get(drawingMachine);
-
-        assertThat(winningNumber).isEqualTo(result);
+        result.forEach(integer ->
+                assertThat(winningNumber.isContainedWinningNumber(integer)).isEqualTo(true));
     }
 
     @DisplayName("뽑기 기계에 보너스 번호를 넣으면 보너스 번호가 들어간다")
     @Test
-    void generateBonusNumberInDrawingMachine() throws NoSuchFieldException, IllegalAccessException {
-        List<Integer> winningNumber = List.of(1, 7, 10, 24, 37, 45);
+    void generateBonusNumberInDrawingMachine() {
         int result = 11;
-        WinningNumber drawingMachine = new WinningNumber(winningNumber, result);
+        WinningNumber winningNumber = new WinningNumber(List.of(1, 7, 10, 24, 37, 45), result);
 
-        Field field = drawingMachine.getClass().getDeclaredField("bonusNumber");
-        field.setAccessible(true);
-        int bonusNumber = (int) field.get(drawingMachine);
-
-        assertThat(bonusNumber).isEqualTo(result);
+        assertThat(winningNumber.isEqualToBonusNumber(11)).isEqualTo(true);
     }
 
     @DisplayName("당첨 번호에 특정 번호가 포함되어 있으면 true를 반환한다")
@@ -355,22 +322,11 @@ class LottoTest {
         assertThat(rank).isEqualTo(result);
     }
 
-    @DisplayName("2개의 로또가 들어가면 2개의 당첨 결과가 나온다")
-    @Test
-    void getRankByLottos() {
-        Lottos lottos = new Lottos(List.of(new Lotto(List.of(1, 10, 13, 25, 32, 43)), new Lotto(List.of(2, 11, 13, 25, 33, 45))));
-        WinningNumber winningNumber = new WinningNumber(List.of(1, 10, 12, 24, 33, 45), 43);
-
-        List<LottoRank> ranks = lottos.getRanks(winningNumber);
-
-        assertThat(ranks.size()).isEqualTo(2);
-    }
-
     @DisplayName("랭크 결과 리스트를 입력하면 총 당첨금을 반환한다")
     @Test
     void getTotalPrizeMoneyByRanks() {
         Lottos lottos = new Lottos(List.of(new Lotto(List.of(1, 2, 3, 4, 5, 6))));
-        List<LottoRank> ranks = List.of(LottoRank.SECOND_PLACE, LottoRank.SECOND_PLACE, LottoRank.THIRD_PLACE);
+        Map<LottoRank, Integer> ranks = Map.of(LottoRank.SECOND_PLACE, 2, LottoRank.THIRD_PLACE, 1);
         int result = 61_500_000;
 
         int totalPrizeMoney = lottos.getTotalPrizeMoney(ranks);
@@ -382,7 +338,7 @@ class LottoTest {
     @Test
     void getRateOfReturnByMoneyAndPrizeMoney() {
         Lottos lottos = new Lottos(List.of(new Lotto(List.of(1, 2, 3, 4, 5, 6))));
-        List<LottoRank> ranks = List.of(LottoRank.SECOND_PLACE, LottoRank.SECOND_PLACE, LottoRank.THIRD_PLACE);
+        Map<LottoRank, Integer> ranks = Map.of(LottoRank.SECOND_PLACE, 2, LottoRank.THIRD_PLACE, 1);
         double result = 6_150_000.0;
 
         double rateOfReturn = lottos.getRateOfReturn(lottos.getTotalPrizeMoney(ranks));
