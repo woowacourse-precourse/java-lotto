@@ -2,6 +2,7 @@ package lotto.controller;
 
 import camp.nextstep.edu.missionutils.Console;
 import lotto.domain.WinningLotto;
+import lotto.view.UserInputHelper;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,8 +10,13 @@ import java.util.List;
 public class EnterWinningNumber {
     public static final int LOTTO_SIZE = 6;
 
+    private UserInputHelper userInputHelper;
     private List<Integer> winningLotto;
     private int bonusNumber;
+
+    public EnterWinningNumber() {
+        userInputHelper = new UserInputHelper();
+    }
 
     public WinningLotto enterWinngLottoNumber() {
         winningLotto = getWinningNumberInput();
@@ -20,6 +26,7 @@ public class EnterWinningNumber {
     }
 
     private List<Integer> getWinningNumberInput() {
+        userInputHelper.winningNumberHelper();
         return convert(Console.readLine());
     }
 
