@@ -3,6 +3,8 @@ package lotto.domain;
 import static lotto.Config.WINNING_RANK_AMOUNT;
 
 import camp.nextstep.edu.missionutils.Console;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import lotto.Lotto;
 import lotto.Score;
@@ -66,7 +68,8 @@ public class Controller {
         });
     }
 
-    private void printCalculateWonLotto(List<Lotto> lottos, List<Lotto> wonLotto, List<Integer> bonusLotto) {
+    private int calculateWonLotto(List<Lotto> lottos, Lotto wonLotto, List<Integer> bonusLotto) {
+        return 0;
     }
 
     private int changeMoneyToRank(int money){
