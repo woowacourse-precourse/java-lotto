@@ -22,7 +22,7 @@ public class LottoStoreClerk {
     }
 
     private int caculateTheAmountOfLottos(int fee) {
-        return fee/1000;
+        return fee/Constants.LOTTO_PRICE;
     }
 
     private void checkNumbersOfLottos(List<Lotto> lottos) {

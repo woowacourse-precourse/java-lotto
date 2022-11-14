@@ -60,7 +60,7 @@ public class LottoCompany {
     }
 
     private void validateRange(int number) {
-        if (number < 1 || number > 45) {
+        if (number < Constants.MINIMUM_LOTTO_NUMBER || number > Constants.MAXIMUM_LOTTO_NUMBER) {
             throw new IllegalArgumentException("[ERROR] 당첨 번호는 1과 45 사이의 숫자여야 합니다.");
         }
     }

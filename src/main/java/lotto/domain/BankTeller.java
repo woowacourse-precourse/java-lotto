@@ -17,7 +17,8 @@ public class BankTeller {
     }
 
     public void givePrizeTo(Customer customer, LottoCompany lottoCompany) {
-        List<LottoRank> lottoRanks = lottoReader.rank(customer.getLottos(), lottoCompany.getWinningNumbers(), lottoCompany.getBonusNumber());
+        List<LottoRank> lottoRanks = lottoReader.rank(customer.getLottos(), lottoCompany.getWinningNumbers(),
+                lottoCompany.getBonusNumber());
         int prize = prizeCalculator.getPrize(lottoRanks);
         double returnOfInvest = prizeCalculator.getROI(prize, customer.getReceiptFee());
         guideWinningBreakdown(lottoRanks, returnOfInvest);
@@ -31,6 +32,6 @@ public class BankTeller {
             System.out.println(String.format(STATIC_FORMAT,
                     rank.getCondition(), MONETARY_FORMAT.format(rank.getPrize()), count));
         }
-        System.out.println(String.format("총 수익률은 %.1f%%입니다.", roi*100));
+        System.out.println(String.format("총 수익률은 %.1f%%입니다.", roi * 100));
     }
 }

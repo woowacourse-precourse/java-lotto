@@ -14,6 +14,7 @@ public class LottoPrinter {
     }
 
     private Lotto printLotto() {
-        return new Lotto(Randoms.pickUniqueNumbersInRange(1, 45, 6));
+        return new Lotto(Randoms.pickUniqueNumbersInRange(
+                Constants.MINIMUM_LOTTO_NUMBER, Constants.MAXIMUM_LOTTO_NUMBER, Constants.THE_NUMBER_OF_LOTTO_NUMBERS));
     }
 }
