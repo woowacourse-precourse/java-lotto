@@ -13,8 +13,7 @@ import java.util.List;
 import java.util.Map;
 
 public class Controller {
-
-//    private final static IllegalArgumentException ie = new IllegalArgumentException("[ERROR] 1000 원 단위의 숫자를 입력해주세요!");
+    private static final int MULTIPLIER = 1000;
     private PriceGetter priceGetter = new PriceGetter();
     private LotteryListPrinter lotteryListPrinter = new LotteryListPrinter();
     private PrizeListPrinter prizeListPrinter = new PrizeListPrinter();
@@ -25,23 +24,32 @@ public class Controller {
 
     public void lottery() {
         try {
-            int price = priceGetter.getBuyingMoney();
-            int buyingAmount = QuantityCalculator.calculateProperQuantity(price);
+            int buyingAmount = getBuyingAmount();
 
             List<Lotto> lotteryList = issuingMachine.makeLotteryList(buyingAmount);
-
             lotteryListPrinter.printAllLottery(lotteryList);
+            Map<Enum, Integer> winnerResult = getWinnerResult(lotteryList);
 
-            prizeListGenerator = new PrizeListGenerator();
-            prizeListGenerator.iterateLotteriesForStatistic(lotteryList);
-            Map<Enum, Integer> winnerResult = prizeListGenerator.returnWinnerResult();
-
-            double yield = yieldCalculator.computeYield(buyingAmount * 1000, winnerResult);
-
+            int buyingMoney = buyingAmount * MULTIPLIER;
+            double yield = yieldCalculator.computeYield(buyingMoney, winnerResult);
             prizeListPrinter.printWinStatistic(winnerResult, yield);
         } catch (IllegalArgumentException ie) {
             System.out.println(ie.getMessage());
-            return;
         }
+    }
+
+    private int getBuyingAmount() {
+        int price = priceGetter.getBuyingMoney();
+        int buyingAmount = QuantityCalculator.calculateProperQuantity(price);
+
+        return buyingAmount;
+    }
+
+    private Map<Enum, Integer> getWinnerResult(List<Lotto> lotteryList) {
+        prizeListGenerator = new PrizeListGenerator();
+        prizeListGenerator.iterateLotteriesForStatistic(lotteryList);
+        Map<Enum, Integer> winnerResult = prizeListGenerator.returnWinnerResult();
+
+        return winnerResult;
     }
 }
