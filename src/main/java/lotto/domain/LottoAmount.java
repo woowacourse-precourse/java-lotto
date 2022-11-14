@@ -32,6 +32,6 @@ public class LottoAmount {
 			.filter(entry -> LottoRanking.noWin != entry.getKey())
 			.map(entry -> entry.getKey().getPrizeMoney() * entry.getValue())
 			.mapToLong(Integer::longValue).sum();
-		return (double) result / purchaseMoney * PERCENT_NUMBER;
+		return (double)result / purchaseMoney * PERCENT_NUMBER;
 	}
 }

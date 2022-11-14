@@ -1,11 +1,9 @@
 package lotto.view;
 
-import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 import java.util.stream.Collectors;
 
 import lotto.domain.Lotto;
@@ -34,7 +32,8 @@ public class OutputView {
 		for (Lotto lotto : lottoTickets) {
 			StringBuilder lottoNumbers = new StringBuilder(LOTTO_NUMBER_INTRO);
 			createTicketPrint(lottoNumbers, lotto);
-			lottoNumbers.delete(lottoNumbers.length() - LOTTO_NUMBER_CONTROL_LENGTH, lottoNumbers.length()).append(LOTTO_NUMBER_OUTRO);
+			lottoNumbers.delete(lottoNumbers.length() - LOTTO_NUMBER_CONTROL_LENGTH, lottoNumbers.length())
+				.append(LOTTO_NUMBER_OUTRO);
 			System.out.println(lottoNumbers);
 		}
 	}
