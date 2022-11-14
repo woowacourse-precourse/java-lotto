@@ -3,6 +3,7 @@ package lotto.utils;
 import java.util.HashSet;
 import java.util.List;
 import java.util.regex.Pattern;
+import java.util.stream.IntStream;
 import lotto.domain.ErrorMessage;
 
 public class Validator {
@@ -35,9 +36,12 @@ public class Validator {
     }
 
     private boolean isLottoRange(List<Integer> lottoNumbers) {
-        int rightNumberCount = (int) lottoNumbers.stream()
-                .filter(number -> 1 <= number && number <= 45).count();
-        return rightNumberCount == 6;
+        for(int number : lottoNumbers) {
+            if(!(0 < number && number < 46)) {
+                return false;
+            }
+        }
+        return true;
     }
 
     private boolean isSixNumbers(List<Integer> lottoNumbers) {
