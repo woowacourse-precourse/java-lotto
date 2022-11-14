@@ -7,6 +7,7 @@ import lotto.util.InputChecker;
 import lotto.view.InputView;
 import lotto.view.OutputView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class LottoGame {
@@ -14,11 +15,13 @@ public class LottoGame {
     private InputView inputView;
     private InputChecker inputChecker;
     private OutputView outputView;
+    private List<Lotto> lottos;
 
     public LottoGame(){
         inputView=new InputView();
         inputChecker=new InputChecker();
         outputView=new OutputView();
+        lottos=new ArrayList<>();
     }
     public void startGame(){
         getMoneyInput();
@@ -32,6 +35,12 @@ public class LottoGame {
         }
     }
     public void getLottoNumberList(){
-        Lotto lotto=new Lotto(Randoms.pickUniqueNumbersInRange(1, 45, 6));
+        for(int i=0; i< money.getLottoCount(); i++) {
+            Lotto lotto = new Lotto(Randoms.pickUniqueNumbersInRange(1, 45, 6));
+            if (!lotto.getLotto().isEmpty()) {
+                lottos.add(lotto);
+            }
+        }
+        outputView.printLottoNumbersAll(lottos);
     }
 }
