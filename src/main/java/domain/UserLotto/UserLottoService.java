@@ -1,7 +1,7 @@
-package service;
+package domain.UserLotto;
 
 import camp.nextstep.edu.missionutils.Randoms;
-import domain.UserLotto;
+import domain.UserLotto.UserLotto;
 
 import java.util.ArrayList;
 import java.util.List;

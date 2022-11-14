@@ -1,7 +1,11 @@
 package domain;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
-import controller.RankInfoController;
+import domain.RankInfo.RankInfoController;
+import domain.Bonus.Bonus;
+import domain.Lotto.Lotto;
+import domain.RankInfo.RankInfo;
+import domain.UserLotto.UserLotto;
 import org.junit.jupiter.api.Test;
 import view.OutputMessage;
 

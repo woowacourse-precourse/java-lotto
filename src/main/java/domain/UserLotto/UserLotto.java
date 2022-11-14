@@ -1,4 +1,4 @@
-package domain;
+package domain.UserLotto;
 
 import java.util.List;
 

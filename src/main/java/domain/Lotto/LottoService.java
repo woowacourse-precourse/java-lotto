@@ -1,6 +1,6 @@
-package service;
+package domain.Lotto;
 
-import domain.Lotto;
+import domain.Lotto.Lotto;
 
 import java.util.List;
 import java.util.stream.Collectors;

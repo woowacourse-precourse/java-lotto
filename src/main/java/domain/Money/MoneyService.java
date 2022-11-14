@@ -1,6 +1,4 @@
-package service;
-
-import domain.Money;
+package domain.Money;
 
 public class MoneyService {
     public Money saveMoney(String purchaseMoney) {

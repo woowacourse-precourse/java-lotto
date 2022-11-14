@@ -1,4 +1,4 @@
-package domain;
+package domain.Money;
 
 public class Money {
     private final static int UNIT = 1000;

@@ -1,4 +1,4 @@
-package domain;
+package domain.RankInfo;
 
 public enum Rank {
     FIFTH(3, 5000),

@@ -1,7 +1,6 @@
-package controller;
+package domain.Money;
 
-import domain.Money;
-import service.MoneyService;
+import MoneyService;
 
 import java.util.regex.Pattern;
 

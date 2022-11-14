@@ -1,4 +1,4 @@
-package domain;
+package domain.Bonus;
 
 public class Bonus {
     private final int bonusNumber;

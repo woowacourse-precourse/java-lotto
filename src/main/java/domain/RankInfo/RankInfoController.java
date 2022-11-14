@@ -1,7 +1,9 @@
-package controller;
+package domain.RankInfo;
 
-import domain.*;
-import service.RankInfoService;
+import domain.Bonus.Bonus;
+import domain.Lotto.Lotto;
+import domain.Money.Money;
+import domain.UserLotto.UserLotto;
 
 public class RankInfoController {
     private final RankInfoService rankInfoService = new RankInfoService();

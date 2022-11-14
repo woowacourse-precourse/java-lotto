@@ -1,7 +1,6 @@
-package service;
+package domain.Bonus;
 
-import domain.Bonus;
-import domain.Lotto;
+import domain.Lotto.Lotto;
 
 public class BonusService {
     public Bonus createBonusNumber(int bonusNumber, Lotto lotto) {

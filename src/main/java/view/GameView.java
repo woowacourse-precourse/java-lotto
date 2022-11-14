@@ -1,7 +1,15 @@
 package view;
 
-import controller.*;
-import domain.*;
+import domain.Bonus.Bonus;
+import domain.Bonus.BonusController;
+import domain.Lotto.Lotto;
+import domain.Lotto.LottoController;
+import domain.Money.Money;
+import domain.Money.MoneyController;
+import domain.RankInfo.RankInfo;
+import domain.RankInfo.RankInfoController;
+import domain.UserLotto.UserLotto;
+import domain.UserLotto.UserLottoController;
 
 public class GameView {
 

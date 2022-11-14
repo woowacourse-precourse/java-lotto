@@ -1,4 +1,4 @@
-package domain;
+package domain.Lotto;
 
 import java.util.HashSet;
 import java.util.List;

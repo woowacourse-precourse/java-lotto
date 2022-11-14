@@ -1,8 +1,6 @@
-package controller;
+package domain.Bonus;
 
-import domain.Bonus;
-import domain.Lotto;
-import service.BonusService;
+import domain.Lotto.Lotto;
 
 import java.util.regex.Pattern;
 
