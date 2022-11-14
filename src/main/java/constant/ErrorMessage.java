@@ -9,6 +9,8 @@ public enum ErrorMessage {
     ERROR_DUPLICATE("[ERROR] 중복된 숫자 발견!"),
     ERROR_OVERRANGE("[ERROR] 입력 범위 초과!"),
 
+    ERROR_NO_MONEY("[ERROR] 로또를 구매하지 않으셨습니다."),
+
     ERROR_BONUS_OVERRANGE("[ERROR] 보너스 번호는 1부터 45 사이의 숫자여야 합니다!"),
     ERROR_BONUS_NOT_NUMBER("[ERROR] 보너스 번호에는 숫자가 와야 합니다."),
     ERROR_BONUS_DUPLICATE_WINNING("[ERROR] 보너스 번호는 당첨번호와 겹쳐질 수 없습니다.");

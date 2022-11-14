@@ -3,6 +3,7 @@
 - [X] 로또 구입 금액 입력 - inputMoney()
     - [X] (예외)입력값이 올바른지 확인, 출력(금액이 나눠떨어지는지, 입력에 문자가 오지 않았는지 - validateMoney()
     - [X] (예외) 예외일 경우 출력 - ExceptionInfo, ErrorMessage(Enum사용), ExceptionNumber(Enum사용)
+    - [X] (예외) 아예 구입을 하지 않을 경우 (0원이 입력된 경우)
 - [X] 구입 금액만큼 로또 번호 리스트를 생성하고 출력한다. - putLottoNumberList()
     - [X] 로또 번호는 오름차순 출력 - setLottoNumberList()
     - [X] 출력은 담당 출력클래스에서 출력 - view PrintLotto()

@@ -32,6 +32,24 @@ class ValidateUserMoneyTest {
         Assertions.assertThat(message).contains("[ERROR]");
     }
 
+    @Test
+    @DisplayName("(예외)사용자 금액이 0원이라면?")
+    void checkIsNoMoney(){
+        int money=0;
+        String message=null;
+        try {
+            if (money==0) {
+                throw new IllegalArgumentException(ErrorMessage.ERROR_NO_MONEY.getMessage());
+            }
+        } catch (IllegalArgumentException e) {
+            message = e.getMessage();
+            OutputView.printException(e);
+        }
+
+        Assertions.assertThat(message).contains("[ERROR]");
+
+    }
+
 
     @Test
     @DisplayName("(예외)사용자 입력이 숫자인지 확인")

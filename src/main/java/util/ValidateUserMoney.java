@@ -16,8 +16,16 @@ public class ValidateUserMoney {
 
         checkProcessIsCorrectMoney(input_money);
 
+        checkIsNone(input_money);
+
         return true;
     }
+
+    private static void checkIsNone(String input_money) {
+        isNoMoney(Integer.parseInt(input_money));
+    }
+
+
 
     private static void checkProcessIsCorrectMoney(String input_money){
         isCorrectMoney(Integer.parseInt(input_money));
@@ -30,6 +38,11 @@ public class ValidateUserMoney {
 
     }
 
+    private static void isNoMoney(int parseInt) {
+        if(parseInt==0){
+            throw new IllegalArgumentException(ErrorMessage.ERROR_NO_MONEY.getMessage());
+        }
+    }
 
     private static void isCorrectMoney(int money){
         if(money % CURRENCY_UNIT>0){
