@@ -20,6 +20,7 @@
       - LottoBundle: 저장되는 로또 묶음
       - WinNumber: 저장되는 당첨 및 보너스 번호
     - repository
+      - UserRepository: 유저 아이디 개수 저장소
       - LottoBundleRepository: 구매 로또 저장소
       - LottoWinNumberRepository: 당첨 번호 저장소
   - #### controller
