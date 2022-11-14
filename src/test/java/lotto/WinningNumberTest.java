@@ -60,4 +60,18 @@ public class WinningNumberTest {
         //then
         assertEquals(list, test);
     }
+
+    @Test
+    public void 당첨번호개수검증() throws Exception{
+        //given
+        List<Integer> list = List.of(1,2,3,4,5);
+        //when
+        try{
+            winningNumber.numberCount(list);
+        }catch (Exception e){
+            System.out.println(e);
+        }
+        //then
+        assertThrows(IllegalArgumentException.class, () -> winningNumber.numberCount(list));
+    }
 }
