@@ -27,6 +27,7 @@ public class Game {
     }
 
     public void runGame(){
+
         Message.printStartWinningStatistics();
 
         // 사용자 로또 순환 하면서 1. 일치 개수 얻기, 2. 등수 얻기, 3. 해당 등수 없으면 continue, 있으면 결과 추가
@@ -51,7 +52,7 @@ public class Game {
         }
 
         setWinningPrize();
-        // TODO: 사용자의 당첨 통계(당첨 개수) 출력
+        Message.printWinningStatistics(this.winningResult);
 
         setProfitRate();
         // TODO: 사용자의 수익률 출력

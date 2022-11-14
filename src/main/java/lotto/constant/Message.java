@@ -1,6 +1,7 @@
 package lotto.constant;
 
 import lotto.domain.Lotto;
+import lotto.util.WinningInfo;
 
 import java.util.List;
 
@@ -11,6 +12,7 @@ public class Message {
     private static final String INPUT_SERVICE_WINNING_NUMBERS_MESSAGE = "당첨 번호를 입력해 주세요.";
     private static final String INPUT_SERVICE_BONUS_NUMBER_MESSAGE = "보너스 번호를 입력해 주세요.";
     private static final String START_WINNING_STATISTICS_MESSAGE = "당첨 통계\n---";
+    private static final String WINNING_STATISTICS_MESSAGE = "%s - %d개%n";
 
     private static final String ERROR_MESSAGE = "[ERROR] ";
     private static final String INPUT_ERROR_HAS_CHARACTER_MESSAGE = ERROR_MESSAGE + "숫자가 아닌 수가 입력되었습니다. 게임을 종료합니다.";
@@ -76,4 +78,12 @@ public class Message {
     }
 
 
+    public static void printWinningStatistics(int[] winningResult) {
+
+        for (int i=0; i<winningResult.length; i++){
+            String winningMesssage = WinningInfo.values()[i].getMessage();
+            int winningCount = winningResult[i];
+            System.out.printf(WINNING_STATISTICS_MESSAGE, winningMesssage, winningCount);
+        }
+    }
 }
