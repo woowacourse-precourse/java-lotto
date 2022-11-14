@@ -18,9 +18,15 @@ public class LottoFactory {
 
         while (lottos.size() < amount) {
             Lotto lotto = new Lotto(numbers.generate());
-            lottos.add(lotto);
+            addLotto(lotto, lottos);
         }
 
         return Collections.unmodifiableList(lottos);
+    }
+
+    private void addLotto(Lotto lotto, List<Lotto> lottos) {
+        if (!lottos.contains(lotto)) {
+            lottos.add(lotto);
+        }
     }
 }
