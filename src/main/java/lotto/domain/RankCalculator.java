@@ -7,8 +7,7 @@ import java.util.List;
 import java.util.Map;
 
 public class RankCalculator {
-
-    private Map<Rank, Integer> ranks;
+    private final Map<Rank, Integer> ranks;
 
     public RankCalculator(List<Lotto> lottoTickets, UserNumber userNumber) {
         this.ranks = countRank(lottoTickets, userNumber);

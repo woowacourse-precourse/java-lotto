@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class LottoGenerator {
-    private List<Lotto> lottoTickets;
+    private final List<Lotto> lottoTickets;
 
     public LottoGenerator(int round) {
         lottoTickets = makeLottoTickets(round);

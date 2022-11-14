@@ -5,8 +5,8 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class UserNumber {
-    private Lotto winNumbers;
-    private int bonusNumber;
+    private final Lotto winNumbers;
+    private final int bonusNumber;
 
     public UserNumber(String winNumbers, String bonusNumber) {
         validateWinNumbersType(winNumbers);

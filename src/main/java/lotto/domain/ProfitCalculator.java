@@ -3,8 +3,7 @@ package lotto.domain;
 import java.util.Map;
 
 public class ProfitCalculator {
-
-    private double profit;
+    private final double profit;
 
     public ProfitCalculator(Map<Rank, Integer> ranks, int purchaseMoney) {
         int earnMoney = calculateEarnMoney(ranks);
