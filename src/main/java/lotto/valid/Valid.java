@@ -1,5 +1,6 @@
 package lotto.valid;
 
+import lotto.input_output.ChangeType;
 import lotto.playlotto.PlayLotto;
 
 import java.util.ArrayList;
@@ -7,6 +8,8 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
+
+import static lotto.input_output.ChangeType.*;
 
 /*
 1. [ERROR] `,`로 나눴을 때 6자리가 아닐 때
@@ -30,7 +33,7 @@ public class Valid {
     private static String under_thousand_Message = "[ERROR] 입력된 값이 1000원 미만의 단위가 포함되어 있습니다 : ";
     private static String empty_Message = "[ERROR] 값이 비어있습니다.";
     public static void check_size(String str){
-        int size = str.split(",").length;   //TODO: ChageType을 이용한 리펙토링
+        int size = string_to_stringarray(str).length;  //TODO: ChageType을 이용한 리펙토링
         if(size != 6){
             throw new IllegalArgumentException(size_Message + size);
         }
@@ -52,11 +55,11 @@ public class Valid {
     }
 
     public static void check_Overlap(String str){
-        String[] input = str.split(",");
+        String[] input = string_to_stringarray(str);
         List<Integer> container = new ArrayList<>();
 
         for(int i = 0; i < input.length; i++){
-            Integer num = Integer.valueOf(input[i]);
+            Integer num = string_to_int(input[i]);
             if(container.contains(num)){
                 throw new IllegalArgumentException(overlap_Message + input[i]);
             }
@@ -85,7 +88,7 @@ public class Valid {
     }
 
     public static void check_Range(String str) {
-        String[] input = str.split(",");
+        String[] input = string_to_stringarray(str);
         for(int i = 0; i < input.length; i++){
             Integer num = Integer.valueOf(input[i]);
             if(num > 45 || num < 1){
@@ -104,14 +107,14 @@ public class Valid {
     }
 
     public static void check_under_thousand(String str) {
-        Integer num = Integer.valueOf(str);
+        Integer num = string_to_int(str);
         if(num % 1000 != 0){
             throw new IllegalArgumentException(under_thousand_Message + num);
         }
     }
 
     public static void check_empty(String str) {
-        String [] input = str.split(",");
+        String [] input = string_to_stringarray(str);
         for(int i = 0; i < input.length; i++){
             if(input[i].isEmpty()){
                 throw new IllegalArgumentException(empty_Message);
