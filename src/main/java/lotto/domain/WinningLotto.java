@@ -10,4 +10,8 @@ public class WinningLotto {
 
     private WinningLotto(){}
 
+    public static void setWinningLotto(List<Integer> winningLottoNumber, int winningBonusNumber) {
+        winningLottoNumber = winningLottoNumber;
+        winningBonusNumber = winningBonusNumber;
+    }
 }
