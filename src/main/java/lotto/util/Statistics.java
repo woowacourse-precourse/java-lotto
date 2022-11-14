@@ -6,6 +6,7 @@ import lotto.domain.WinLotto;
 import lotto.enums.IntEnum;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -55,7 +56,7 @@ public class Statistics {
         for (int index = 0; index < reward.size(); index++) {
             profit += cutRank.get(index) * reward.get(index);
         }
-        return new BigDecimal(Math.round((profit / (double) buyer.getBuyPrice() * 100) * 10) / 10.0);
+        return new BigDecimal(Math.round((profit / (double) buyer.getBuyPrice() * 100))).setScale(1, RoundingMode.HALF_EVEN);
     }
 
 }
