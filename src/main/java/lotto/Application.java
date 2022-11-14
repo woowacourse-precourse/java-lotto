@@ -10,7 +10,7 @@ public class Application {
         // TODO: 프로그램 구현
         int purchasePrice = getPurchasePrice(Console.readLine());
         List<Integer> winningLottoNumbers = getWinningLottoNumbers(Console.readLine());
-        int bonusNumber = getBonusNumber(Console.readLine());
+        int bonusNumber = getBonusNumber(Console.readLine(),winningLottoNumbers);
 
     }
 
@@ -29,7 +29,8 @@ public class Application {
         return numbers;
     }
 
-    public static int getBonusNumber(String input){
+    public static int getBonusNumber(String input, List<Integer> winningLottoNumbers){
+        validateNumber(input,winningLottoNumbers);
         return Integer.parseInt(input);
     }
 
@@ -54,6 +55,13 @@ public class Application {
         }
         if (number > 45 || number < 1) {
             throw new IllegalArgumentException(Error.INVALID_INPUT_VALUE.getMessage());
+        }
+    }
+
+    public static void validateNumber(String input, List<Integer> winningLottoNumbers) {
+        validateNumber(input);
+        if (winningLottoNumbers.contains(Integer.parseInt(input))) {
+            throw new IllegalArgumentException(Error.INPUT_DUPLICATE.getMessage());
         }
     }
 }
