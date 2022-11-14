@@ -1,6 +1,7 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -47,9 +48,46 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 예외_테스트() {
+    @DisplayName("숫자가 아닌 문자를 입력할 경우 예외를 던진다.")
+    void inputIncludesNonNumericValue() {
         assertSimpleTest(() -> {
             runException("1000j");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
+    @Test
+    @DisplayName("당첨번호의 구분자가 쉼표가 아니면 예외를 던진다.")
+    void invalidInputDelimiter() {
+        assertSimpleTest(() -> {
+            runException("1000", "1,2,3.4.5,6", "7");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
+    @Test
+    @DisplayName("범위를 벗어나는 숫자를 입력하면 예외를 던진다.")
+    void invalidRangeWinningNumber() {
+        assertSimpleTest(() -> {
+            runException("1000", "1,2,33,44,55,6", "7");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
+    @Test
+    @DisplayName("구입금액이 1000원 단위가 아니면 예외를 던진다.")
+    void invalidMoneyInput() {
+        assertSimpleTest(() -> {
+            runException("4300");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
+    @Test
+    @DisplayName("당첨번호의 개수가 올바르지 않으면 예외를 던진다")
+    void wrongSizeOfWinningNumber() {
+        assertSimpleTest(() -> {
+            runException("1000", "1,2,3,4,5", "6");
             assertThat(output()).contains(ERROR_MESSAGE);
         });
     }
