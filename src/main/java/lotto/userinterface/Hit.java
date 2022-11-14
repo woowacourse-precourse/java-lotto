@@ -17,6 +17,14 @@ public enum Hit {
         this.prize = prize;
     }
 
+    public Integer getPrize() {
+        return prize;
+    }
+
+    public Integer getHitCount() {
+        return hitCount;
+    }
+
     public static Hit getHit(Integer hitCount, Boolean bonus) {
         for (Hit hit : Hit.values()) {
             if (hit.hitCount == hitCount && hit.bonus == bonus) {
