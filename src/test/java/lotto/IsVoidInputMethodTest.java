@@ -11,6 +11,6 @@ class IsVoidInputMethodTest {
         String winningNumberInput = "";
         assertThatThrownBy(() -> isVoidInput(winningNumberInput))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("문자를 입력하십시오.");
+                .hasMessageContaining("[ERROR] 문자를 입력하십시오.");
     }
 }
