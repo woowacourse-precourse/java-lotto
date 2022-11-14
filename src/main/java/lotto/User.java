@@ -9,8 +9,7 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 public class User {
   private int ticket;
   private int money;
-  private List<Lotto> lottos = new ArrayList<>();
-  private LottoWinRank win_rank;
+  private final List<Lotto> lottos = new ArrayList<>();
 
   public User() {
     setTicket();
@@ -19,7 +18,12 @@ public class User {
   private void setTicket() {
     System.out.println("구입금액을 입력해 주세요.");
     String money = readLine();
-    this.money = isDigit(money);
+    if (!isDigit(money)) {
+      System.out.println("[ERROR] 잘못된 입력입니다.");
+//      throw new IllegalArgumentException("[ERROR] 잘못된 입력입니다.");
+      return;
+    }
+    this.money = Integer.parseInt(money);
     ticket = MathUtils.numberOfLotto(this.money);
   }
 
@@ -36,7 +40,7 @@ public class User {
   }
 
   public void printResult(LottoAnswer lottoAnswer) {
-    win_rank = new LottoWinRank(lottos, lottoAnswer);
+    LottoWinRank win_rank = new LottoWinRank(lottos, lottoAnswer);
     win_rank.printWinRank();
     System.out.println("총 수익률은 " + MathUtils.calcYield(win_rank.calcWinMoney(), money) + "%입니다.");
   }

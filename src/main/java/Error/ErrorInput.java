@@ -2,15 +2,12 @@ package Error;
 
 public class ErrorInput {
 
-  public static int isDigit(String number) {
-    int res;
-
+  public static boolean isDigit(String number) {
     for (int i = 0; i < number.length(); i++) {
       if (Character.isDigit(number.charAt(i)) == false) {
-        throw new IllegalArgumentException("[ERROR] 잘못된 입력입니다.");
+        return false;
       }
     }
-    res = Integer.parseInt(number);
-    return res;
+    return true;
   }
 }
