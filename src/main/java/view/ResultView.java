@@ -19,4 +19,7 @@ public class ResultView {
         System.out.println(percentageProfit);
     }
 
+    public void displayWinStatistics() {
+        System.out.println(LottoMessage.WIN_STATISTICS);
+    }
 }
