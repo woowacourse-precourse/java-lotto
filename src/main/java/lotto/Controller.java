@@ -112,12 +112,14 @@ public class Controller {
         // 당첨 번호 입력
         View.Output("당첨 번호를 입력해 주세요.");
         String inputRealLottoNumber = View.Input();
+        View.Output(inputRealLottoNumber);
         String[] splittedRealLottoNumbers = Model.SplitInput(inputRealLottoNumber);
         List<Integer> realLottoNumbers = Model.MakeStringToListInteger(splittedRealLottoNumbers);
 
         // 보너스 번호 입력
         View.Output("보너스 번호를 입력해 주세요.");
         String inputRealLottoBonusNumber = View.Input();
+        View.Output(inputRealLottoBonusNumber);
         Integer realLottoBonusNumber = Model.MakeStringToInteger(inputRealLottoBonusNumber);
 
         // 보너스 번호 추가
