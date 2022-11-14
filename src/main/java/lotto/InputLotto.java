@@ -23,11 +23,11 @@ public class InputLotto {
     }
 
     public List<Integer> inputValueSplitCommas(){
-        String value = inputValueOfUser();
         ExceptionHandling exceptionHandling = new ExceptionHandling();
-
-        List<String> stringsNumberList = splitCommas(value);
+        String value = inputValueOfUser();
+        List<String> stringsNumberList = splitCommas(value); // ,(쉼표)로 나누기
         List<Integer> numberList = toIntList(stringsNumberList);
+        Lotto lotto = new Lotto(numberList);
         exceptionHandling.removeDuplicateNumber(numberList);
         return numberList;
     }
