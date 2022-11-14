@@ -13,4 +13,11 @@ public class InputUi {
     public String inputBuyAmount() {
         return Console.readLine();
     }
+
+    /**
+     * 로또 당첨 번호 입력 받기
+     */
+    public String inputLottoWinNumber() {
+        return Console.readLine();
+    }
 }
