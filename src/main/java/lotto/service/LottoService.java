@@ -9,12 +9,12 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 import camp.nextstep.edu.missionutils.Randoms;
-import lotto.Rank;
+import lotto.domain.Rank;
 import lotto.domain.Lotto;
 
 public class LottoService {
+	final int NUMBER_JUDGMENT_RANKED_BY_BONUS = 5;
 	final int PERCENT = 100;
-	private final String LOTTO_REGEX = ",";
 
 	public List<List<Integer>> publishLotteries(int quantity) {
 		List<List<Integer>> candidate = new ArrayList<>();
@@ -26,12 +26,6 @@ public class LottoService {
 		}
 
 		return candidate;
-	}
-
-	public Map<Rank, Integer> getWinningRanking(List<List<Integer>> candidate, List<Integer> winningNumbers,
-			int bonusNumber) {
-
-		return countWinningNumber(candidate, winningNumbers, bonusNumber);
 	}
 
 	private List<Integer> pickLottoNumbers() {
@@ -46,21 +40,28 @@ public class LottoService {
 		candidateLotto.add(candidate);
 	}
 
-	private Map<Rank, Integer> countWinningNumber(List<List<Integer>> candidate, List<Integer> winningNumbers, int bonusNumber) {
+	public Map<Rank, Integer> countWinningNumber(List<List<Integer>> candidate, List<Integer> winningNumbers,
+			int bonusNumber) {
 		Map<Rank, Integer> rank = new EnumMap<>(Rank.class);
 
 		for (List<Integer> integers : candidate) {
-			boolean checkPoint = false;
 			int count = compareNumbers(integers, winningNumbers);
 
-			if (count == 5) {
-				checkPoint = checkBonus(integers, bonusNumber);
-			}
-			Rank key = Rank.of(count, checkPoint);
+			Rank key = Rank.of(count, judgementRankByBonus(count, integers, bonusNumber));
 			rank.put(key, rank.getOrDefault(key, 0) + 1);
 		}
 
 		return rank;
+	}
+
+	private boolean judgementRankByBonus(int count, List<Integer> lotto, int bonusNumber) {
+		boolean haveBonus = false;
+
+		if (count == NUMBER_JUDGMENT_RANKED_BY_BONUS) {
+			haveBonus = checkBonus(lotto, bonusNumber);
+		}
+
+		return haveBonus;
 	}
 
 	public int getPrizeMoney(Map<Rank, Integer> rank) {
@@ -69,7 +70,6 @@ public class LottoService {
 		for (Map.Entry<Rank, Integer> entry : rank.entrySet()) {
 			prizeMoney += entry.getKey().getPrizeMoney() * entry.getValue();
 		}
-
 
 		return prizeMoney;
 	}
@@ -87,10 +87,6 @@ public class LottoService {
 			}
 		}
 
-	//	if (count == Ranking.PERFECT.getValue()) {
-	//		count++;
-	//	}
-
 		return count;
 	}
 
@@ -100,7 +96,7 @@ public class LottoService {
 	}
 
 	public List<Integer> convertStringToList(String numbers) {
-		List<String> lotto = Arrays.asList(numbers.split(LOTTO_REGEX));
+		List<String> lotto = Arrays.asList(numbers.split(","));
 
 		return lotto.stream()
 				.map(Integer::parseInt)

@@ -2,9 +2,11 @@ package lotto.domain;
 
 import java.util.List;
 
-import lotto.Notice;
+import lotto.utils.Notice;
 
 public class LottoMachine {
+	final int LOTTO_MIN = 1;
+	final int LOTTO_MAX = 45;
 	private final List<Integer> winningNumbers;
 	private final int bonusNumber;
 
@@ -33,11 +35,7 @@ public class LottoMachine {
 		checkBonusDuplication(winningNumbers, bonusNumber);
 	}
 
-
-	public void checkNumberRange(int number) {
-		int LOTTO_MIN = 1;
-		int LOTTO_MAX = 45;
-
+	private void checkNumberRange(int number) {
 		if (number< LOTTO_MIN || number > LOTTO_MAX) {
 			throw new IllegalArgumentException(Notice.ERROR.getNoticeMessage() + " 1 ~ 45 사이의 숫자를 입력해 주세요.");
 		}

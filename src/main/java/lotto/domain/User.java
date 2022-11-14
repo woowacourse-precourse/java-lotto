@@ -1,11 +1,9 @@
 package lotto.domain;
 
-import java.util.List;
-
-import lotto.Notice;
+import lotto.utils.Notice;
 
 public class User {
-	private int LOTTO_PRICE = 1000;
+	final int LOTTO_PRICE = 1000;
 	private int money;
 	private int prizeMoney;
 	private String rateOfReturn;

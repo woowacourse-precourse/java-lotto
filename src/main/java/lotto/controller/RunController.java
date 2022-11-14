@@ -1,11 +1,10 @@
 package lotto.controller;
 
-import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
-import lotto.Notice;
-import lotto.Rank;
+import lotto.utils.Notice;
+import lotto.domain.Rank;
 import lotto.domain.Lotto;
 import lotto.domain.LottoMachine;
 import lotto.domain.LottoStore;
@@ -23,6 +22,7 @@ public class RunController {
 			drawLottery(money);
 		}
 	}
+
 	private int getCurrentMoney() {
 		String numbers = Input.numbers();
 
@@ -45,7 +45,7 @@ public class RunController {
 		LottoMachine machine = pickThisRoundLotto();
 
 		if (machine != null) {
-			user.setPrizeMoney(getRanking(seller , machine));
+			user.setPrizeMoney(getRankingByLotto(seller , machine));
 
 			user.setRateOfReturn(new LottoService().getRateOfReturn(user.getPrizeMoney(), user.getMoney()));
 			Output.printRateOfReturn(user.getRateOfReturn());
@@ -60,16 +60,18 @@ public class RunController {
 		return seller;
 	}
 
-	private int getRanking(LottoStore seller, LottoMachine machine) {
-		Map<Rank, Integer> ranking = new LottoService().getWinningRanking(seller.getLotto(), machine.getWinningNumbers(), machine.getBonusNumber());
+	private int getRankingByLotto(LottoStore seller, LottoMachine machine) {
+		Map<Rank, Integer> rank = new LottoService().countWinningNumber(seller.getLotto(), machine.getWinningNumbers(), machine.getBonusNumber());
 
-		ranking.entrySet().stream()
-				.sorted(Collections.reverseOrder());
-		Output.printRank(ranking);
+		for (int i = 0; i < Rank.getKeyWithoutDefault().size(); i++) {
+			Rank key = Rank.getKeyWithoutDefault().get(i);
 
-		return getMoneyByLotto(ranking);
-	}
-	private int getMoneyByLotto(Map<Rank, Integer> rank) {
+			rank.put(key, rank.getOrDefault(key, 0));
+		}
+		rank.remove(Rank.valueOf("NO_PRIZE"));
+
+		Output.printRank(rank);
+
 		return new LottoService().getPrizeMoney(rank);
 	}
 
@@ -86,10 +88,10 @@ public class RunController {
 	}
 
 	private LottoMachine pickThisRoundLotto() {
-		List<Integer> winningnUmbers = pickWinningNumbers();
+		List<Integer> winningUmbers = pickWinningNumbers();
 
-		if (winningnUmbers != null) {
-			Lotto lotto = new Lotto(winningnUmbers);
+		if (winningUmbers != null) {
+			Lotto lotto = new Lotto(winningUmbers);
 			Object bonusNumber = pickBonusNumber();
 			if (bonusNumber != null) {
 				return new LottoMachine(lotto.getNumbers(), (int)bonusNumber);

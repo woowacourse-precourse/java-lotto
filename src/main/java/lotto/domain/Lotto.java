@@ -1,9 +1,8 @@
 package lotto.domain;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import lotto.Notice;
+import lotto.utils.Notice;
 
 public class Lotto {
     private final int LOTTO_MIN = 1;

@@ -3,7 +3,7 @@ package lotto.domain;
 import java.util.List;
 
 public class LottoStore {
-	private final int LOTTO_PRICE = 1000;
+	final int LOTTO_PRICE = 1000;
 	private final int quantity;
 	private List<List<Integer>> lotto;
 
