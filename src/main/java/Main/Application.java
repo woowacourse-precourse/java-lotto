@@ -9,8 +9,6 @@ import lotto.Lotto;
 
 public class Application {
     public static void main(String[] args) {
-        //BuyLotto butlotto = new BuyLotto();
-    	
     	User user = new User();
     	
     	int n = user.input_money();
