@@ -6,6 +6,7 @@ import lotto.config.LottoConfig;
 import lotto.IO.message.ErrorCode;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -57,11 +58,15 @@ public class LottoProgramManager {
     }
 
     private void rankLotto() {
+        lottoResult = new HashMap<Integer, Integer>();
+
         for(Lotto lotto : lottoBought) {
             int rank = lotto.compareWithAnswer(answer, bonus);
 
             lottoResult.putIfAbsent(rank, 0);
             lottoResult.put(rank, lottoResult.get(rank) + 1);
         }
+
+        OutputManager.printRanks(lottoResult);
     }
 }
