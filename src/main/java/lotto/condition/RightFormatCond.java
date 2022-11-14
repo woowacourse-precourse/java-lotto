@@ -12,6 +12,6 @@ public class RightFormatCond implements Condition {
 
     @Override
     public Boolean isSatisfied(String input) {
-        return input.split(", ").length == LottoMachine.LOTTO_NUMBER_SIZE;
+        return input.split(",").length == LottoMachine.LOTTO_NUMBER_SIZE;
     }
 }
