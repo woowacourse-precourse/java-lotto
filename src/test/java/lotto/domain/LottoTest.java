@@ -17,6 +17,9 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 class LottoTest {
 
     private static final List<Integer> COMPUTER = List.of(8, 21, 23, 41, 42, 43);
+    private static final List<Integer> BEFORE = List.of(42, 23, 43, 21, 8, 41);
+    private static final List<Integer> AFTER = List.of(8, 21, 23, 41, 42, 43);
+    private static final String AFTER_STRING = "[8, 21, 23, 41, 42, 43]";
 
     @DisplayName("로또 번호의 개수가 6개가 넘어가면 예외가 발생한다.")
     @Test
@@ -61,12 +64,16 @@ class LottoTest {
         );
     }
 
+    @DisplayName("로또 번호를 오름차순 정렬할 수 있다.")
     @Test
     void getSortedNumbers() {
-        List<Integer> before = List.of(42, 23, 43, 21, 8, 41);
-        List<Integer> after = List.of(8, 21, 23, 41, 42, 43);
+        assertThat(new Lotto(BEFORE).getSortedNumbers()).isEqualTo(AFTER);
+    }
 
-        assertThat(new Lotto(before).getSortedNumbers()).isEqualTo(after);
+    @DisplayName("로또 번호를 오름차순 정렬하여 출력한다.")
+    @Test
+    void testToString() {
+        assertThat(new Lotto(BEFORE).toString()).isEqualTo(AFTER_STRING);
     }
 
 }
