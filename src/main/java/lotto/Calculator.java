@@ -4,6 +4,7 @@ import lotto.userinterface.Hit;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 
 public class Calculator {
@@ -29,7 +30,7 @@ public class Calculator {
     }
 
     private static HashMap<Hit, Integer> getInitResult() {
-        HashMap<Hit, Integer> result = new HashMap<>();
+        HashMap<Hit, Integer> result = new LinkedHashMap<>();
 
         result.put(Hit.THREE, 0);
         result.put(Hit.FOUR, 0);
@@ -38,5 +39,16 @@ public class Calculator {
         result.put(Hit.SIX, 0);
 
         return result;
+    }
+
+    public static float getEarningRate(HashMap<Hit, Integer> result, Integer money) {
+        Integer totalEarning = 0;
+
+        for (Hit hit : result.keySet()) {
+            Integer hitCount = result.get(hit);
+            totalEarning += hitCount * hit.getPrize();
+        }
+
+        return totalEarning / (float) money * 100;
     }
 }
