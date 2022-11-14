@@ -1,8 +1,6 @@
-package lotto;
+package lotto.domain.validator;
 
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import lotto.domain.WinningNumbers;
 
 public class BonusNumberValidator {
     private static int MIN_BONUS_NUMBER = 1;

@@ -1,5 +1,12 @@
-package lotto;
+package lotto.controller;
 
+import lotto.domain.*;
+import lotto.domain.generator.LottoGameResultGenerator;
+import lotto.domain.generator.LottoGenerator;
+import lotto.domain.generator.WinningNumbersGenerator;
+import lotto.domain.validator.BonusNumberValidator;
+import lotto.domain.validator.MoneyValidator;
+import lotto.domain.validator.WinningNumbersValidator;
 import lotto.io.Inputter;
 import lotto.io.MessagePrinter;
 

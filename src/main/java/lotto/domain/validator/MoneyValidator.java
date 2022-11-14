@@ -1,4 +1,4 @@
-package lotto;
+package lotto.domain.validator;
 
 public class MoneyValidator extends Validator {
     private static int COST_OF_LOTTO = 1000;

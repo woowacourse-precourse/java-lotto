@@ -1,4 +1,8 @@
-package lotto;
+package lotto.domain.generator;
+
+import lotto.domain.Lotto;
+import lotto.domain.LottoGameResult;
+import lotto.domain.WinningNumbers;
 
 import java.util.HashMap;
 import java.util.List;

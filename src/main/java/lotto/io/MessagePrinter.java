@@ -1,6 +1,6 @@
 package lotto.io;
 
-import lotto.Lotto;
+import lotto.domain.Lotto;
 
 import java.util.List;
 import java.util.Map;
