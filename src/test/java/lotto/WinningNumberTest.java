@@ -1,16 +1,11 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
-import lotto.Model.Lotto;
-import lotto.Service.WinningNumberService;
+
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomUniqueNumbersInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
-import static lotto.Application.ERROR_MESSAGE;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class WinningNumberTest extends NsTest {
@@ -56,15 +51,6 @@ public class WinningNumberTest extends NsTest {
             assertThat(output()).contains("[ERROR] 로또의 숫자는 1 ~ 45 사이의 숫자여야합니다.");
         });
     }
-
-    @Test
-    void 당첨번호_입력_성공_테스트() {
-        WinningNumberService winningNumberService = new WinningNumberService();
-        List<Integer> number = winningNumberService.convertToInteger("1,2,3,4,5,6", ",");
-        List<Integer> compareList = List.of(1, 2, 3, 4, 5, 6);
-        assertThat(number.equals(compareList));
-    }
-
 
     @Override
     public void runMain() {

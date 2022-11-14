@@ -1,10 +1,8 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
-import lotto.Service.WinningNumberService;
-import org.junit.jupiter.api.Test;
 
-import java.util.List;
+import org.junit.jupiter.api.Test;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -35,11 +33,6 @@ public class BonusNumberTest extends NsTest {
             run("5000", "1,2,3,4,5,6", "6");
             assertThat(output()).contains(ERROR_MESSAGE);
         });
-    }
-
-    @Test
-    void 보너스번호_입력_성공_테스트() {
-
     }
 
     @Override

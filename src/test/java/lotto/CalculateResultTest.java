@@ -1,12 +1,13 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomUniqueNumbersInRangeTest;
-import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class CalculateResultTest extends NsTest {
@@ -126,7 +127,6 @@ public class CalculateResultTest extends NsTest {
                 List.of(1, 2, 3, 4, 5, 6)
         );
     }
-
     @Override
     public void runMain() {
         Application.main(new String[]{});
