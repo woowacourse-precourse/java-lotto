@@ -131,6 +131,30 @@ public class Application {
         System.out.println("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
         throw new IllegalArgumentException();
     }
+
+    // 당첨 계산 카운팅 메소드
+    private static List<Double> myWinningCount(List<Lotto> myLottoNumbers, Lotto winningLottoNumbers, int bonusNumber) {
+        List<Double> winningCount = new ArrayList<>();
+        for(int i = 0; i < myLottoNumbers.size(); i++) {
+            double count = oneOfMyWinningCount(myLottoNumbers.get(i), winningLottoNumbers);
+            if(count == 5 && myLottoNumbers.get(i).getNumbers().contains(bonusNumber)) {
+                count += 0.5;
+            }
+            winningCount.add(count);
+        }
+        return winningCount;
+    }
+
+    // 로또 1개 당첨 계산 카운팅 메소드
+    private static double oneOfMyWinningCount(Lotto oneOfMyLottoNumbers, Lotto winningLottoNumbers) {
+        double count = 0.0;
+        for(int i = 0; i < LOTTO_NUM_SIZE; i++) {
+            if(oneOfMyLottoNumbers.getNumbers().contains(winningLottoNumbers.getNumbers().get(i))) {
+                count++;
+            }
+        }
+        return count;
+    }
     public static void main(String[] args) {
 
     }
