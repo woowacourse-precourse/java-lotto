@@ -6,11 +6,13 @@ import java.util.List;
 
 public class LottoManager {
 
-    private final int[] rewards = new int[]{ Prize.FIFTH_PRIZE.getPrize(),
+    private final int[] rewards = new int[]{
+            Prize.FIRST_PRIZE.getPrize(),
             Prize.SECOND_PRIZE.getPrize(),
             Prize.THIRD_PRIZE.getPrize(),
             Prize.FOURTH_PRIZE.getPrize(),
-            Prize.FIFTH_PRIZE.getPrize() };
+            Prize.FIFTH_PRIZE.getPrize()
+    };
     private final Judge judge;
     private final LottoGenerator lottoGenerator;
     private final int[] prize = new int[]{ 0, 0, 0, 0, 0 };
