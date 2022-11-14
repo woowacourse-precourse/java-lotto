@@ -40,4 +40,10 @@ public class RankTest {
         List<Integer> lottoState = List.of(5,1);
         assertThat(Rank.getRankNameByMatchState(lottoState)).isEqualTo("SECOND");
     }
+    @Test
+    @DisplayName("로또 번호가 맞춘 추첨 번호의 상태를 보상표와 비교하여 해당하는 등수를 반환한다.")
+    public void findWinningsByMatchState(){
+        List<Integer> lottoState = List.of(5,1);
+        assertThat(Rank.getWinningsByMatchState(lottoState)).isEqualTo(30000000);
+    }
 }
