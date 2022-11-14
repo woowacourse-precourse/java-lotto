@@ -8,30 +8,25 @@ import java.util.*;
 
 public class Lotto {
     enum statistics {
-        prize1(6, 4,"2,000,000,000"),
-        prize2(5, 3,"30,000,000"),
-        prize3(5, 2,"1,500,000"),
-        prize4(4,1,"50,000"),
-        prize5(3,0,"5,000"),
-        noprize(0,-1,"0");
-        // 일치하는 번호 개수
-        private final int count;
-        // 통계를 저장할 통계 리스트 인덱스
-        private final int index;
-        private final String money;
+        PRIZE5(3,0,"5,000"),
+        PRIZE4(4,1,"50,000"),
+        PRIZE3(5, 2,"1,500,000"),
+        PRIZE2(5, 3,"30,000,000"),
+        PRIZE1(6, 4,"2,000,000,000"),
+        NOPRIZE(0,-1,"0");
+        private final int COUNT, INDEX;
+        private final String MONEY;
         statistics( int count,int index, String money){
-            this.count = count;
-            this.index = index;
-            this.money = money;
+            this.COUNT = count;
+            this.INDEX = index;
+            this.MONEY = money;
         }
     }
     private static int number_of_lotto;
     private static List<List<Integer>> purchased_lotto_numbers;
     public static int bonus_number = 0;
-    private static List<statistics> win_lotto;
-    private static int[] status_of_win = {0,0,0,0,0};
-    private static double rate_of_earning;
-
+    private static List<statistics> win_lotto = new ArrayList<>();
+    private static int[] status_of_win = { 0, 0, 0, 0, 0 };
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
@@ -109,15 +104,11 @@ public class Lotto {
 
 
     public void calculatePrize() {
-        win_lotto = new ArrayList<>(number_of_lotto);
-
         for (int i = 0;i<number_of_lotto;i++){
-            int count = getCountOfSameNumbers(i);
-            setPrize(count, purchased_lotto_numbers.get(i));
+            setPrize(getCountOfSameNumbers(i), purchased_lotto_numbers.get(i));
 
-            int index = win_lotto.get(i).index;
+            int index = win_lotto.get(i).INDEX;
             if (index != -1){
-                // 로또 당첨 통계를 계산해 status_of_win 배열에 저장
                 status_of_win[index] = status_of_win[index] + 1;
             }
         }
@@ -135,53 +126,72 @@ public class Lotto {
 
     public void setPrize(int count, List<Integer> my_lotto) {
         if (count == 5){
-            if (my_lotto.contains(bonus_number)){
-                win_lotto.add(statistics.prize2);
-            }
-            if (!my_lotto.contains(bonus_number)){
-                win_lotto.add(statistics.prize3);
-            }
-            return;
+            determinePrize2Prize3(my_lotto);
         }
         if (count == 6){
-            win_lotto.add(statistics.prize1);
+            determinePrize1();
         }
         if (count == 4){
-            win_lotto.add(statistics.prize4);
+            determinPrize4();
         }
         if (count == 3){
-            win_lotto.add(statistics.prize5);
+            determinePrize5();
         }
-        if (count <=2 || count >= 7){
-            win_lotto.add(statistics.noprize);
+        if (count <= 2 || count >= 7){
+            determineNoprize();
         }
 
+    }
+
+    private static void determineNoprize() {
+        win_lotto.add(statistics.NOPRIZE);
+    }
+
+    private static void determinePrize5() {
+        win_lotto.add(statistics.PRIZE5);
+    }
+
+    private static void determinPrize4() {
+        win_lotto.add(statistics.PRIZE4);
+    }
+
+    private static void determinePrize1() {
+        win_lotto.add(statistics.PRIZE1);
+    }
+
+    private static void determinePrize2Prize3(List<Integer> my_lotto) {
+        if (my_lotto.contains(bonus_number)){
+            win_lotto.add(statistics.PRIZE2);
+        }
+        if (!my_lotto.contains(bonus_number)){
+            win_lotto.add(statistics.PRIZE3);
+        }
     }
 
     public void printStatisticsForLotto(){
         System.out.println("\n당첨 통계\n---");
-        System.out.println(statistics.prize5.count + "개 일치 ("+statistics.prize5.money + "원) - "+status_of_win[0]+"개");
-        System.out.println(statistics.prize4.count + "개 일치 ("+statistics.prize4.money + "원) - "+status_of_win[1]+"개");
-        System.out.println(statistics.prize3.count + "개 일치 ("+statistics.prize3.money + "원) - "+status_of_win[2]+"개");
-        System.out.println(statistics.prize2.count + "개 일치, 보너스 볼 일치 ("+statistics.prize2.money + "원) - "+status_of_win[3]+"개");
-        System.out.println(statistics.prize1.count + "개 일치 ("+statistics.prize1.money + "원) - "+status_of_win[4]+"개");
+        System.out.println(statistics.PRIZE5.COUNT + "개 일치 ("+statistics.PRIZE5.MONEY + "원) - "+status_of_win[0]+"개");
+        System.out.println(statistics.PRIZE4.COUNT + "개 일치 ("+statistics.PRIZE4.MONEY + "원) - "+status_of_win[1]+"개");
+        System.out.println(statistics.PRIZE3.COUNT + "개 일치 ("+statistics.PRIZE3.MONEY + "원) - "+status_of_win[2]+"개");
+        System.out.println(statistics.PRIZE2.COUNT + "개 일치, 보너스 볼 일치 ("+statistics.PRIZE2.MONEY + "원) - "+status_of_win[3]+"개");
+        System.out.println(statistics.PRIZE1.COUNT + "개 일치 ("+statistics.PRIZE1.MONEY + "원) - "+status_of_win[4]+"개");
     }
 
     public void calculateRateOfEarning(){
         double total_money = 0.0;
-        total_money += status_of_win[0]*getMoney(statistics.prize5);
-        total_money += status_of_win[1]*getMoney(statistics.prize4);
-        total_money += status_of_win[2]*getMoney(statistics.prize3);
-        total_money += status_of_win[3]*getMoney(statistics.prize2);
-        total_money += status_of_win[4]*getMoney(statistics.prize1);
-        rate_of_earning = (total_money / (number_of_lotto * 1000.0)) * 100.0;
+        total_money += status_of_win[0]*getMoney(statistics.PRIZE5);
+        total_money += status_of_win[1]*getMoney(statistics.PRIZE4);
+        total_money += status_of_win[2]*getMoney(statistics.PRIZE3);
+        total_money += status_of_win[3]*getMoney(statistics.PRIZE2);
+        total_money += status_of_win[4]*getMoney(statistics.PRIZE1);
+        printRateOfEarning((total_money / (number_of_lotto * 1000.0)) * 100.0);
     }
 
     private static Integer getMoney(statistics prize) {
-        return Integer.parseInt(prize.money.replace(",", ""));
+        return Integer.parseInt(prize.MONEY.replace(",", ""));
     }
 
-    public void printRateOfEarning() {
+    public void printRateOfEarning(double rate_of_earning) {
         System.out.println("총 수익률은 "+String.format("%.1f",rate_of_earning)+"%입니다.");
     }
 
