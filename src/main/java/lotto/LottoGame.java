@@ -7,6 +7,7 @@ import lotto.config.Config;
 import lotto.domain.IssuedLotto;
 import lotto.domain.Lotto;
 import lotto.domain.PurchaseAmount;
+import lotto.domain.WinningNumber;
 import lotto.io.Reader;
 import lotto.io.Writer;
 import lotto.service.LottoIssueService;
@@ -34,8 +35,12 @@ public class LottoGame {
     public void start() {
         Writer.inputPurchaseAmount();
         PurchaseAmount purchaseAmount = new PurchaseAmount(Reader.readUserPurchaseAmount());
-        IssuedLotto issuedLotto = lottoIssueService.issueLotto(purchaseAmount);
 
+        IssuedLotto issuedLotto = lottoIssueService.issueLotto(purchaseAmount);
+        Writer.printIssuedLottoList(issuedLotto);
+
+        Writer.inputWinningNumber();
+        WinningNumber winningNumber = WinningNumber.saveWinningNumbers(Reader.readWinningNumbers());
 
     }
 

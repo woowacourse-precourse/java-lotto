@@ -1,6 +1,7 @@
 package lotto.io;
 
 import camp.nextstep.edu.missionutils.Console;
+import lotto.domain.WinningNumber;
 
 public final class Reader {
 
@@ -12,4 +13,7 @@ public final class Reader {
         return Console.readLine();
     }
 
+    public static String readWinningNumbers() {
+        return Console.readLine();
+    }
 }
