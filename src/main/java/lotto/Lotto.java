@@ -32,7 +32,6 @@ public class Lotto {
 
     private void isValidNumberOfNumbers(List<Integer> winningNumbers) {
         if (winningNumbers.size() != NUMBER_OF_NUMBERS) {
-            SystemMessage.printErrorMessage(NOT_VALID_LENGTH_NUMBERS);
             throw new IllegalArgumentException(NOT_VALID_LENGTH_NUMBERS);
         }
     }
@@ -43,7 +42,6 @@ public class Lotto {
                 .collect(Collectors.toList());
 
         if (uniqueNumbers.size() != NUMBER_OF_NUMBERS) {
-            SystemMessage.printErrorMessage(DUPLICATE_NUMBER_ERROR);
             throw new IllegalArgumentException(DUPLICATE_NUMBER_ERROR);
         }
     }
@@ -51,7 +49,6 @@ public class Lotto {
     private static void isInRangeNumbers(List<Integer> winningNumbers) {
         for (int number : winningNumbers) {
             if (number < 1 || number > 45) {
-                SystemMessage.printErrorMessage(NOT_IN_RANGE_NUMBER_INPUT);
                 throw new IllegalArgumentException(NOT_IN_RANGE_NUMBER_INPUT);
             }
         }

@@ -12,16 +12,19 @@ import java.util.Map;
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
-        LottoService lottoService = new LottoService();
+        try {
+            LottoService lottoService = new LottoService();
 
-        int numberOfLotto = getNumberOfLotto(lottoService);
-        List<Lotto> lottos = publishLottos(lottoService, numberOfLotto);
+            int numberOfLotto = getNumberOfLotto(lottoService);
+            List<Lotto> lottos = publishLottos(lottoService, numberOfLotto);
+            List<Integer> winningNumbers = enterWinningNumber();
+            int bonusNumber = enterBonusNumber();
 
-        List<Integer> winningNumbers = enterWinningNumber();
-        int bonusNumber = enterBonusNumber();
-
-        Map<Prize, Integer> winningDetails = lottoService.getWinningDetails(winningNumbers, lottos, bonusNumber);
-        printUserLottoResult(lottoService, winningDetails);
+            Map<Prize, Integer> winningDetails = lottoService.getWinningDetails(winningNumbers, lottos, bonusNumber);
+            printUserLottoResult(lottoService, winningDetails);
+        } catch (IllegalArgumentException e) {
+            SystemMessage.printErrorMessage(e.getMessage());
+        }
     }
 
     private static int getNumberOfLotto(LottoService lottoService) {
