@@ -47,4 +47,16 @@ class LottoTest {
         List<Integer> winning2 = List.of(1, 2, 3, 4, 5, 6);
         assertThat(lotto2.getSameNumberCount(winning2)).isEqualTo(0);
     }
+
+    @DisplayName("로또 번호에 보너스 번호가 있는지 여부를 반환한다.")
+    @Test
+    void 로또_번호_보너스_번호_일치_여부() {
+        Lotto lotto1 = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+        int bonus1 = 3;
+        assertThat(lotto1.haveBonusNumber(bonus1)).isTrue();
+
+        Lotto lotto2 = new Lotto(List.of(8, 21, 23, 41, 42, 43));
+        int bonus2 = 1;
+        assertThat(lotto2.haveBonusNumber(bonus2)).isFalse();
+    }
 }
