@@ -34,7 +34,7 @@ public class OutputView {
     }
 
     public static void announceResult(Result result, String profitRate) {
-        NumberFormat numberFormat = new DecimalFormat("#,##0.0");
+        NumberFormat numberFormat = new DecimalFormat(PROFIT_RATE_PRINT_FORMAT);
 
         System.out.println(RESULT_HEADER);
         System.out.print(result.toString());

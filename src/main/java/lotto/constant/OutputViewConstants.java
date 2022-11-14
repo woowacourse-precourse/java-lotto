@@ -10,4 +10,6 @@ public class OutputViewConstants {
     public static final String RESULT_HEADER = "\n당첨 통계\n---";
     public static final String PROFIT_RATE_PREFIX="총 수익률은 ";
     public static final String PROFIT_RATE_SUFFIX="%입니다.";
+
+    public static final String PROFIT_RATE_PRINT_FORMAT = "#,##0.0";
 }
