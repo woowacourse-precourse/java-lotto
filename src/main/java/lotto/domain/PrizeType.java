@@ -26,9 +26,9 @@ public enum PrizeType {
         return expression.apply(count);
     }
 
-    public static PrizeType getPrizeType(int count) {
+    public static PrizeType getPrizeType(int count, boolean bonus) {
         return Arrays.stream(PrizeType.values())
-                .filter(prize -> prize.type == count)
+                .filter(prize -> prize.type == count && prize.bonus == bonus)
                 .findFirst()
                 .orElse(null);
     }
