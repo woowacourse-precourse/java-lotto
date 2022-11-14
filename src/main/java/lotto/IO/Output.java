@@ -23,7 +23,7 @@ public class Output {
     public static void printNumbers(Lotto lotto) {
         List<Integer> numberForPrint = new ArrayList<>();
         for (int e : lotto.getNums())
-            numberForPrint.add(e);
+            Collections.addAll(numberForPrint, e);
         Collections.sort(numberForPrint);
         System.out.println(numberForPrint);
     }

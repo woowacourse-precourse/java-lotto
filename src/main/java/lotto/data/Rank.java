@@ -1,7 +1,5 @@
 package lotto.data;
 
-import static lotto.domain.Result.getCount;
-
 public enum Rank {
     FIFTH(5, "5,000원", "3개 일치"),
     FOURTH(4, "50,000원", "4개 일치"),
