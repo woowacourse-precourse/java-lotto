@@ -41,5 +41,17 @@ public class Lotto {
         return cnt;
     }
 
+    public List<Boolean> match_bonus(List<List<Integer>> lotto, int bonus_number) {
+        List<Boolean> bonus_check = new ArrayList<>();
+        List<Integer> each_lotto = new ArrayList<>();
+        int i = 0;
+        while(bonus_check.size() != lotto.size()) {
+            each_lotto = lotto.get(i);
+            bonus_check.add(each_lotto.contains(bonus_number));
+            i++;
+        }
+        return bonus_check;
+    }
+
     // TODO: 추가 기능 구현
 }
