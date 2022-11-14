@@ -10,10 +10,12 @@ public class InputView {
     private static final String MONEY_INPUT_MESSAGE = "구입금액을 입력해 주세요.";
     private static final String LOTTONUMBERS_INPUT_MESSAGE = "당첨 번호를 입력해 주세요.";
     private static final String BONUS_INPUT_MESSAGE = "보너스 번호를 입력해 주세요.";
-    private static final String LOTTONUMBERS_INPUT_EXCEPTION_MESSAGE = "[ERROR] : 중복되지 않는 1~45 사이 숫자를 입력해주세요";
+    private static final String LOTTONUMBERS_INPUT_EXCEPTION_MESSAGE = "[ERROR] : 중복되지 않는 1~45 사이 숫자를 입력해 주세요";
+    private static final String BONUSNUMBER_INPUT_EXCEPTION_MESSAGE = "[ERROR] : 1~45중 로또번호와 중복되지 않는 숫자를 입력해 주세요.";
     private final int lotteryPrice = 1000;
     private static int inputMoney = 0;
     private static int lotteryAmount = 0;
+    private static List<Integer> lottoNum;
 
     public int getInputMoney() {
         return inputMoney;
@@ -67,11 +69,11 @@ public class InputView {
         return userNumbers;
     }
 
-    public List<Integer> input_Lotto_Numbers() {
+    public void input_Lotto_Numbers() {
         System.out.println(LOTTONUMBERS_INPUT_MESSAGE);
-        List<Integer> list = makeList(getUserInput());
-        lotto_Numbers_Validate(list);
-        return list;
+        lottoNum = makeList(getUserInput());
+        lotto_Numbers_Validate(lottoNum);
+
     }
 
     public void lotto_Numbers_Validate(List<Integer> list) {
@@ -90,6 +92,16 @@ public class InputView {
     public int input_Bonus_Number() {
         System.out.println(BONUS_INPUT_MESSAGE);
         int bonusNum = Integer.parseInt(getUserInput());
+        bonus_Numbers_Validate(bonusNum);
         return bonusNum;
+    }
+
+    public void bonus_Numbers_Validate(int bonusNum) {
+        if (bonusNum > 45) {
+            throw new IllegalArgumentException(BONUSNUMBER_INPUT_EXCEPTION_MESSAGE);
+        }
+        if (lottoNum.contains(bonusNum)) {
+            throw new IllegalArgumentException(BONUSNUMBER_INPUT_EXCEPTION_MESSAGE);
+        }
     }
 }
