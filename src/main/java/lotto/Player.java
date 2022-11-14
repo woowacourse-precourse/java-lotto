@@ -12,25 +12,8 @@ public class Player {
     private int fifthPlace = 0;
     private List<Lotto> lottery = new ArrayList<>();
 
-    public int getFirstPlace() {
-        return firstPlace;
-    }
-
-    public int getSecondPlace() {
-        return secondPlace;
-    }
-
-    public int getThirdPlace() {
-        return thirdPlace;
-    }
-
-    public int getFourthPlace() {
-        return fourthPlace;
-    }
-
     private final int money;
     private final int LOTTO_PRICE = 1000;
-
     public int getFifthPlace() {
         return fifthPlace;
     }
@@ -81,11 +64,27 @@ public class Player {
         return fifthRevenue + fourthRevenue + thirdRevenue + secondRevenue + firstRevenue;
     }
 
+    public List<Lotto> getLottery() {
+        return lottery;
+    }
+
     private int getMoney() {
         return this.money;
     }
 
-    public List<Lotto> getLottery() {
-        return lottery;
+    public int getFirstPlace() {
+        return firstPlace;
+    }
+
+    public int getSecondPlace() {
+        return secondPlace;
+    }
+
+    public int getThirdPlace() {
+        return thirdPlace;
+    }
+
+    public int getFourthPlace() {
+        return fourthPlace;
     }
 }

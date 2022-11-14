@@ -2,6 +2,8 @@ package view;
 
 import camp.nextstep.edu.missionutils.Console;
 
+import java.util.NoSuchElementException;
+
 public class InputView {
 
     private static final String BUYING_AMOUNT_MESSAGE = "구입금액을 입력해 주세요.";
@@ -18,7 +20,7 @@ public class InputView {
 
     private static void validateIsNaturalNumber(int convertedAmount) {
         if (convertedAmount < 0) {
-            throw new IllegalArgumentException("금액은 음수가 될 수 없습니다.");
+            throw new IllegalArgumentException("[ERROR] 금액은 음수가 될 수 없습니다.");
         }
     }
 
@@ -27,7 +29,8 @@ public class InputView {
         try {
             convertedAmount = Integer.parseInt(s);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("금액은 숫자만 입력할 수 있습니다.");
+            System.out.println("[ERROR] 금액은 숫자만 입력할 수 있습니다.");
+            throw new NoSuchElementException("[ERROR] 금액은 숫자만 입력할 수 있습니다.");
         }
         return convertedAmount;
     }
@@ -43,7 +46,7 @@ public class InputView {
         try {
             Integer.parseInt(stringBonusNumber);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("번호는 숫자만 입력할 수 있습니다.");
+            throw new IllegalArgumentException("[ERROR] 번호는 숫자만 입력할 수 있습니다.");
         }
     }
 

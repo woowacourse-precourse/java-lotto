@@ -14,6 +14,7 @@ public class Lotto {
     public Lotto(List<Integer> numbers) {
         validate(numbers);
         validateNumbersAreUnique(numbers);
+
         this.numbers = numbers;
     }
 
@@ -37,19 +38,19 @@ public class Lotto {
         return copiedNumbers.toString();
     }
 
-    public int getLottoNumber(int idx) {
-        return numbers.get(idx);
-    }
-
-    public int getBonusNumber() {
-        return this.bonusNumber;
-    }
-
     public void validateNumbersAreUnique(List<Integer> numbers) {
         int originalNumberLength = numbers.size();
         HashSet<Integer> uniqueNumberLength = new HashSet<>(numbers);
         if (originalNumberLength != uniqueNumberLength.size()) {
             throw new IllegalArgumentException("[ERROR] 중복된 숫자는 들어올 수 없습니다.");
         }
+    }
+
+    public int getLottoNumber(int idx) {
+        return numbers.get(idx);
+    }
+
+    public int getBonusNumber() {
+        return this.bonusNumber;
     }
 }
