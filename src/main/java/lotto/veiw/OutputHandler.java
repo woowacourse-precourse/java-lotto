@@ -14,11 +14,12 @@ public class OutputHandler {
         System.out.println("당첨 통계");
         System.out.println("---");
         for (LottoReference lo : LottoReference.values()) {
-            if (lo != NOPE) {
-                System.out.printf("%d개 일치%s (%s원) - %d개\n", lo.getCorrectCount(), lo.getMessage(),
+            if (lo == NOPE) {
+                continue;
+            }
+            System.out.printf("%d개 일치%s (%s원) - %d개\n", lo.getCorrectCount(), lo.getMessage(),
                         moneyFormat.format(lo.getPrize()),
                         result.getOrDefault(lo, 0));
-            }
         }
     }
 
