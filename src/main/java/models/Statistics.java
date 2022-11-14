@@ -12,7 +12,7 @@ public class Statistics {
     private double rateOfReturn;
 
     public Statistics() {
-        this.divisionsCount = new ArrayList<>(Collections.nCopies(PrizeDivision.values().length, 0));
+        divisionsCount = new ArrayList<>(Collections.nCopies(PrizeDivision.values().length, 0));
     }
 
     public void setPrizeAmountSummationAndRateOfReturn(long prizeAmountSummation, double rateOfReturn) {

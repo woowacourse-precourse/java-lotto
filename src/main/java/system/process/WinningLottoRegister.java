@@ -14,7 +14,7 @@ public class WinningLottoRegister {
     public WinningLottoRegister() {
         List<Integer> sixLottoNumbers = changeLottoNumbersInputToIntegers(inputSixLottoNumbers());
         int bonusNumber = changeBonusNumberInputToInteger(inputBonusNumber());
-        this.winningLotto = new WinningLotto(sixLottoNumbers, bonusNumber);
+        winningLotto = new WinningLotto(sixLottoNumbers, bonusNumber);
     }
 
     private String inputSixLottoNumbers() {

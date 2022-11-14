@@ -9,7 +9,7 @@ public class WinningLotto {
     private int bonusNumber;
 
     public WinningLotto(List<Integer> lottoNumbers, int bonusNumber) {
-        this.lotto = new Lotto(lottoNumbers);
+        lotto = new Lotto(lottoNumbers);
         WinningLottoValidation.validateBonusNumber(lotto, bonusNumber);
         this.bonusNumber = bonusNumber;
     }

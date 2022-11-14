@@ -16,9 +16,9 @@ public class StatisticsCalculator {
 
 
     public StatisticsCalculator(Buying buying, WinningLottoRegister winningLottoRegister) {
-        this.statistics = new Statistics();
-        this.boughtLottos = buying.getBoughtLottos();
-        this.winningLotto = winningLottoRegister.getWinningLotto();
+        statistics = new Statistics();
+        boughtLottos = buying.getBoughtLottos();
+        winningLotto = winningLottoRegister.getWinningLotto();
         startCalculator();
     }
 
