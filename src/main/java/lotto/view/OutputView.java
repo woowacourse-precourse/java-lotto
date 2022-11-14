@@ -8,6 +8,6 @@ public class OutputView {
     }
 
     public void printWinningNumbers(List<Integer> winningNumbers) {
-        System.out.println("winningNumbers = " + winningNumbers);
+        System.out.println(winningNumbers);
     }
 }
