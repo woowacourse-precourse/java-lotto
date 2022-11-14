@@ -2,7 +2,6 @@ package lotto.view;
 
 import java.util.List;
 import lotto.domain.Rank;
-import lotto.domain.Yield;
 
 public class OutputView {
 
@@ -21,8 +20,8 @@ public class OutputView {
         System.out.println("구입금액을 입력해 주세요.");
     }
 
-    public static void printIssueCount(int issueCount) {
-        System.out.println(issueCount + "개를 구매했습니다.");
+    public static void printTicketNumber(int ticketNumber) {
+        System.out.println(ticketNumber + "개를 구매했습니다.");
     }
 
     public static void printWinningNumberInput() {
@@ -50,7 +49,7 @@ public class OutputView {
         }
     }
 
-    public static void printYield(String yield){
+    public static void printYield(String yield) {
         System.out.println("총 수익률은 " + yield + "%입니다.");
     }
 }

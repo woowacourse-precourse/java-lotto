@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class InputView {
-    public static String inputCash() {
+    public static String inputTotalBudget() {
         OutputView.printCashInput();
         return getInput();
     }

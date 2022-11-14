@@ -1,5 +1,7 @@
 package lotto.controller;
 
+import static lotto.domain.Purchase.LOTTO_PRICE;
+
 import java.util.ArrayList;
 import java.util.List;
 import lotto.domain.Bonus;
@@ -21,9 +23,7 @@ public class LottoController {
 
     public static void run() {
         try {
-            // 로또 구입
-            Purchase purchase = new Purchase(InputView.inputCash());
-            ticketNumber = purchase.getTicketNumber();
+            purchaseLotto();
 
             // 로또 발행
             Player player = new Player(ticketNumber);
@@ -47,13 +47,19 @@ public class LottoController {
 
             OutputView.printStatistics();
 
-            Yield yield = new Yield(purchase.getTotalPurchase());
+            Yield yield = new Yield(ticketNumber * LOTTO_PRICE);
             OutputView.printYield(yield.getYield());
 
         } catch (Exception error) {
             OutputView.printErrorMessage(error);
         }
 
+    }
+
+    private static void purchaseLotto() {
+        Purchase budget = new Purchase(InputView.inputTotalBudget());
+        ticketNumber = budget.getTicketNumber();
+        OutputView.printTicketNumber(ticketNumber);
     }
 
     private static void validateDuplicates() {

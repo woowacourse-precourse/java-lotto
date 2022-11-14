@@ -1,34 +1,54 @@
 package lotto.domain;
 
 import java.util.regex.Pattern;
-import lotto.view.OutputView;
 
 public class Purchase {
-    private static final String MONEY_REGEX = "^[0-9]*$";
-    private final int totalPurchase;
+    public static final int LOTTO_PRICE = 1000;
 
-    private final int ticketNumber;
+    private static final Pattern MONEY_REGEX = Pattern.compile("^[0-9]*$");
+
+    private int ticketNumber;
 
     public Purchase(String input) {
-        if (!input.matches(MONEY_REGEX)) {
+        this.ticketNumber = calculateTicketNumber(input);
+    }
+
+    private int calculateTicketNumber(String input) {
+        validateInputType(input);
+        final int totalBudget = Integer.parseInt(input);
+        validateTotalBudget(totalBudget);
+        this.ticketNumber = totalBudget / LOTTO_PRICE;
+        return ticketNumber;
+    }
+
+    private static void validateTotalBudget(int totalBudget) {
+        verifyMinimumBudget(totalBudget);
+        verifyUnitOfBudget(totalBudget);
+    }
+
+    private static void validateInputType(String input) {
+        if (!MONEY_REGEX.matcher(input).matches()) {
             throw new IllegalArgumentException("숫자만 입력 가능합니다.");
         }
-        totalPurchase = Integer.parseInt(input);
-        if (totalPurchase < 0) {
-            throw new IllegalArgumentException("올바른 로또 구입 금액을 입력해 주세요.");
-        }
-        if (totalPurchase % 1000 != 0) {
+    }
+
+    private static void verifyUnitOfBudget(int totalBudget) {
+        if (totalBudget % LOTTO_PRICE != 0) {
             throw new IllegalArgumentException("구입 금액은 1,000원 단위로 가능합니다.");
         }
-        this.ticketNumber = totalPurchase / 1000;
-        OutputView.printIssueCount(ticketNumber);
+    }
+
+    private static void verifyMinimumBudget(int totalBudget) {
+        if (totalBudget < LOTTO_PRICE) {
+            throw new IllegalArgumentException("구입 금액은 1,000원 단위로 가능합니다.");
+        }
+    }
+
+    public int calculateTicketNumber() {
+        return ticketNumber;
     }
 
     public int getTicketNumber() {
         return ticketNumber;
-    }
-
-    public int getTotalPurchase() {
-        return totalPurchase;
     }
 }
