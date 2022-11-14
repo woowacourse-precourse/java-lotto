@@ -9,12 +9,15 @@ public class WinningLotto {
     private final int bonusNumber;
 
     public WinningLotto(LottoRequest lottoRequest, LottoNumberRequest numberRequest) {
-        numberValidation(numberRequest);
         this.lotto = new Lotto(lottoRequest.getNumbers());
+        bonusNumberValidation(numberRequest.getNumber());
         this.bonusNumber = numberRequest.getNumber();
     }
 
-    private void numberValidation(LottoNumberRequest numberRequest) {
+    private void bonusNumberValidation(int bonusNumber) {
+        if (this.lotto.contains(bonusNumber)) {
+            throw new IllegalArgumentException("로또 번호와 보너스번호와 겹칠 수 없습니다.");
+        }
     }
 
 }
