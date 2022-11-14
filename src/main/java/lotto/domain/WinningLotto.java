@@ -4,14 +4,15 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static lotto.utils.ErrorMessages.WINNING_NUMBERS_NOT_INTEGER;
 import static lotto.utils.ErrorMessages.WINNING_NUMBERS_SEPARATOR;
 
-public class WinningNumbers {
+public class WinningLotto {
     private static final int NUMBERS_SIZE = 6;
     private static final String SEPARATOR = ",";
     private final Lotto winningNumbers;
 
-    public WinningNumbers(String numbers) {
+    public WinningLotto(String numbers) {
         validateSeparator(numbers);
         this.winningNumbers = generateLotto(numbers);
     }
@@ -37,7 +38,6 @@ public class WinningNumbers {
             throw new IllegalArgumentException(WINNING_NUMBERS_NOT_INTEGER);
         }
     }
-
 
     public Lotto getWinningNumbers() {
         return this.winningNumbers;
