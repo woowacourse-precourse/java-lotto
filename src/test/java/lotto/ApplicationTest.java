@@ -64,6 +64,23 @@ class ApplicationTest extends NsTest {
         });
     }
 
+    // 보너스 번호 예외테스트
+    @Test
+    void 예외_테스트_보너스_번호에_문자가_입력되는_경우() {
+        assertSimpleTest(() -> {
+            runException("1000", "1,2,3,4,5,6", "a");
+            assertThat(output()).contains("[ERROR] 보너스 번호는 숫자만 입력 가능합니다.");
+        });
+    }
+
+    @Test
+    void 예외_테스트_보너스_번호가_범위를_벗어나는_경우() {
+        assertSimpleTest(() -> {
+            runException("1000", "1,2,3,4,5,6", "46");
+            assertThat(output()).contains("[ERROR] 보너스 번호는 1부터 45 사이의 숫자여야 합니다.");
+        });
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
