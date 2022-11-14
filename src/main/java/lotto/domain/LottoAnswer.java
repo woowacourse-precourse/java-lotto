@@ -22,6 +22,10 @@ public class LottoAnswer {
         if (numbers.contains(bonus)) {
             throw new IllegalArgumentException(LottoErrorCode.DUPLICATE_LOTTO_NUMBER.toString());
         }
+        if (bonus < Lotto.LOTTO_START_NUMBER || bonus > Lotto.LOTTO_END_NUMBER) {
+            throw new IllegalArgumentException(LottoErrorCode.INVALID_LOTTO_RANGE.toString());
+        }
+
         this.winningNumber = new Lotto(numbers);
         this.bonusNumber = bonus;
     }
