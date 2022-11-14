@@ -13,7 +13,7 @@ public class LottoGenerator {
         lottoTickets = makeLottoTickets(round);
     }
 
-    public List<Lotto> makeLottoTickets(int round) {
+    private List<Lotto> makeLottoTickets(int round) {
         List<Lotto> tickets = new ArrayList<>();
         for (int i = 0; i < round; i++) {
             tickets.add(new Lotto(makeLottoNumbers()));
@@ -21,7 +21,7 @@ public class LottoGenerator {
         return tickets;
     }
 
-    public List<Integer> makeLottoNumbers() {
+    private List<Integer> makeLottoNumbers() {
         return Randoms.pickUniqueNumbersInRange(1, 45, 6)
                 .stream()
                 .sorted()
