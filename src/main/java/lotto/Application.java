@@ -1,15 +1,21 @@
 package lotto;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
 
 public class Application {
     public static void main(String[] args) {
-
         System.out.println("구입금액을 입력해 주세요.");
         String input = readInput();
 
         final int MONEY = validateMoneyInput(input);
-        
+        List<Lotto> boughtLottos = new ArrayList<Lotto>();
+        boughtLottos = buyLotto(boughtLottos, MONEY);
+
+
 
     }
 
@@ -36,6 +42,18 @@ public class Application {
         }catch (NumberFormatException e){
             throw new IllegalArgumentException("[Error] Only numbers are allowed");
         }
+    }
+
+    public static List<Lotto> buyLotto(List lottos, int money){
+        int numberOfLottos = (money/1000);
+
+        for (int i = 0; i<numberOfLottos; i++){
+            List<Integer> randomNumbers = Randoms.pickUniqueNumbersInRange(1,45,6);
+            Lotto lottoItem = new Lotto(randomNumbers);
+            lottos.add(lottoItem);
+        }
+
+        return lottos;
     }
 
 }
