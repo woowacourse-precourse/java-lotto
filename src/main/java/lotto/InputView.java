@@ -10,6 +10,7 @@ public class InputView {
     private static final String INPUT_MONEY_MESSAGE = "구입금액을 입력해 주세요.";
     private static final String INPUT_NOT_DIGIT_MESSAGE = "[ERROR] 입력 값은 숫자가 아닙니다.";
     private static final String INPUT_WINNING_LOTTO_MESSAGE = "당첨 번호를 입력해 주세요.";
+    private static final String INPUT_BONUS_NUMBER_MESSAGE = "보너스 번호를 입력해 주세요.";
     private static final String COMMA = ",";
     private static final String WHITESPACE = "\\s";
     private static final String EMPTY = "";
@@ -24,7 +25,16 @@ public class InputView {
     public static List<Integer> inputWinningLotto() {
         System.out.println(INPUT_WINNING_LOTTO_MESSAGE);
         String input = Console.readLine();
-        return parse(input);
+        return Arrays.stream(split(removeBlank(input)))
+                .map(Integer::parseInt)
+                .collect(Collectors.toList());
+    }
+
+    public static int inputBonusNumber() {
+        System.out.println(INPUT_BONUS_NUMBER_MESSAGE);
+        String input = Console.readLine();
+        validateIsDigit(input);
+        return Integer.parseInt(input);
     }
 
     private static void validateIsDigit(String input) {
@@ -34,12 +44,6 @@ public class InputView {
                 throw new IllegalArgumentException(INPUT_NOT_DIGIT_MESSAGE);
             }
         }
-    }
-
-    private static List<Integer> parse(String input) {
-        return Arrays.stream(split(removeBlank(input)))
-                     .map(Integer::parseInt)
-                     .collect(Collectors.toList());
     }
 
     private static String[] split(String input) {

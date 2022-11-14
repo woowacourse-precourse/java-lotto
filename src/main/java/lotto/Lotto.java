@@ -41,9 +41,13 @@ public class Lotto {
 
     private void validateLottoNumbersRange(List<Integer> numbers) {
         for (int number : numbers) {
-            if (isNotInLottoNumberRange(number)) {
-                throw new IllegalArgumentException(LOTTO_NUMBER_RANGE_MISMATCH_MESSAGE);
-            }
+            validateLottoNumberRange(number);
+        }
+    }
+
+    protected void validateLottoNumberRange(int number) {
+        if (isNotInLottoNumberRange(number)) {
+            throw new IllegalArgumentException(LOTTO_NUMBER_RANGE_MISMATCH_MESSAGE);
         }
     }
 
