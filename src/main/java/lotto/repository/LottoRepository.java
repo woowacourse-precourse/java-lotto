@@ -36,6 +36,10 @@ public class LottoRepository {
         return lottoNumbers.stream().sorted().collect(Collectors.toList());
     }
 
+    public void saveWinningNumbers(Lotto winningNumbers){
+        this.winningNumbers = winningNumbers;
+    }
+
     public int getMoney() {
         return money;
     }
@@ -47,4 +51,9 @@ public class LottoRepository {
     public List<Lotto> getLottoNumbers() {
         return lottoNumbers;
     }
+
+    public List<Integer> getWinningNumbers() {
+        return winningNumbers.getNumbers();
+    }
+
 }
