@@ -11,16 +11,21 @@ public class Application {
         // TODO: 프로그램 구현
         Game game = new Game();
         int money = game.insertMoney();
+        System.out.println();
+
         List<Lotto> lottoBought = game.createLotto(money);
-        for (int i = 0; i < lottoBought.size(); i++) {
-            System.out.println(lottoBought.get(i).getNumbers());
-        }
+        game.printLottoBought(lottoBought);
+        System.out.println();
 
         LottoWin lottoWin = new LottoWin();
         List<Integer> luckyNumbers = lottoWin.createLuckyNumber();
-        int bonusNumber = lottoWin.createBonusNumber();
+        System.out.println();
 
-        System.out.println("당첨번호: "+luckyNumbers);
-        System.out.println("보너스번호: "+bonusNumber);
+        int bonusNumber = lottoWin.createBonusNumber(luckyNumbers);
+        System.out.println();
+
+        game.compareLotto(lottoBought, luckyNumbers, bonusNumber);
+        game.printResult(money);
     }
+
 }
