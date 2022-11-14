@@ -16,6 +16,10 @@ public class SystemUi {
     }
 
     public static void printLotto(List<Lotto> lottos) {
+        System.out.println();
         System.out.println(lottos.size()+ANNOUNCE_LOTTO_NUMBER_MESSAGE);
+        for (int index = 0; index < lottos.size(); index++) {
+            System.out.println(lottos.get(index).getNumbers());
+        }
     }
 }
