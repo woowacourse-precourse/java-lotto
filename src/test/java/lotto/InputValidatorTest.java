@@ -79,4 +79,23 @@ public class InputValidatorTest {
                     .isInstanceOf(IllegalArgumentException.class);
         }
     }
+
+    @DisplayName("보너스 번호 테스트")
+    @Nested
+    class Input_BonusNumber {
+        @DisplayName("입력된 값이 숫자가 아니라면 예외가 발생한다.")
+        @Test
+        void inputBonusNumber() {
+            assertThatThrownBy(() -> inputValidator.convertStringIntoInt("AAA"))
+                    .isInstanceOf(IllegalArgumentException.class);
+        }
+
+        @DisplayName("보너스 번호의 범위가 1~45를 벗어나면 예외가 발생한다.")
+        @ParameterizedTest
+        @CsvSource(value = {"0", "100"})
+        void BonusNumberOutOfRange(int bonusNumber) {
+            assertThatThrownBy(() -> inputValidator.validateBonusNumberBetween1And45(bonusNumber))
+                    .isInstanceOf(IllegalArgumentException.class);
+        }
+    }
 }
