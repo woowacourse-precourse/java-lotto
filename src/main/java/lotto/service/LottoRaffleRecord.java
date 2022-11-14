@@ -1,4 +1,4 @@
-package lotto;
+package lotto.service;
 
 import lotto.config.LottoPrize;
 
@@ -9,7 +9,7 @@ import java.util.Map;
 public class LottoRaffleRecord {
 
     private final Map<String, Integer> prizeRecord;
-    private int winnings;
+    private int winningMoney;
 
     public LottoRaffleRecord() {
         prizeRecord = new LinkedHashMap<>();
@@ -30,11 +30,11 @@ public class LottoRaffleRecord {
 
     public int getWinnings() {
         collectWinnings();
-        return winnings;
+        return winningMoney;
     }
 
     private void collectWinnings() {
-        prizeRecord.forEach((prize, count) -> winnings += LottoPrize.getWinningsByPrize(prize) * count);
+        prizeRecord.forEach((prize, count) -> winningMoney += LottoPrize.getWinningsByPrize(prize) * count);
     }
 
 }

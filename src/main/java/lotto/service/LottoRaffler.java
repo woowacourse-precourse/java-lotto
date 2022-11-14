@@ -1,21 +1,19 @@
-package lotto;
+package lotto.service;
 
 import lotto.config.LottoPrize;
+import lotto.model.Lotto;
+import lotto.model.LottoWinning;
 
 import java.util.*;
 
 public class LottoRaffler {
 
     private final LottoRaffleRecord lottoRaffleRecord;
+    private final LottoWinning lottoWinning;
 
-    private final List<Integer> winningNumbers;
-    private final int bonusNumber;
-
-    public LottoRaffler(List<Integer> winningNumbers, int bonusNumber) {
+    public LottoRaffler(LottoWinning lottoWinning) {
         this.lottoRaffleRecord = new LottoRaffleRecord();
-
-        this.winningNumbers = winningNumbers;
-        this.bonusNumber = bonusNumber;
+        this.lottoWinning = lottoWinning;
     }
 
     public Map<String, Integer> raffle(List<Lotto> lottos) {
@@ -32,10 +30,10 @@ public class LottoRaffler {
     }
 
     private int checkLottoNumbers(List<Integer> lottoNumbers) {
-        return (int) lottoNumbers.stream().filter(winningNumbers::contains).count();
+        return (int) lottoNumbers.stream().filter(lottoWinning.getWinLotto().getNumbers()::contains).count();
     }
 
     private boolean checkBonusNumber(List<Integer> lottoNumbers) {
-        return lottoNumbers.contains(bonusNumber);
+        return lottoNumbers.contains(lottoWinning.getWinBonus());
     }
 }
