@@ -1,5 +1,7 @@
 package lotto;
 
+import java.text.DecimalFormat;
+
 public enum WinningRank {
     BANG(0, 0),
     FIFTH(3, 5000),
@@ -34,5 +36,10 @@ public enum WinningRank {
 
     public int getReward(){
         return reward;
+    }
+
+    public String getRewardDecimalFormat(){
+        DecimalFormat df = new DecimalFormat("###,###");
+        return df.format(getReward());
     }
 }

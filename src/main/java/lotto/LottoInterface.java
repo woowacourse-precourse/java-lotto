@@ -53,7 +53,7 @@ public class LottoInterface {
         System.out.println("---");
         HashMap<WinningRank, Integer> ranking = LottoShop.confirmRank(purchaseLottos, winningLottoNum, bonus);
         Arrays.stream(WinningRank.values()).filter(rank -> rank != WinningRank.BANG).map(rank -> rank.getRightNumCnt() + "개 일치" + (rank == WinningRank.SECOND ? ", 보너스 볼 일치" : "")
-                + " (" + rank.getReward() + "원) - " + ranking.get(rank) + "개").forEach(System.out::println);
+                + " (" + rank.getRewardDecimalFormat() + "원) - " + ranking.get(rank) + "개").forEach(System.out::println);
     }
 
     public static void yield(){
