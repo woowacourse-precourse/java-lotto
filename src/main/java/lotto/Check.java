@@ -1,15 +1,17 @@
 package lotto;
 
+import java.util.List;
+
 public class Check {
     static Output output = new Output();
 
-    public static void numberCompare(int lottoCount, int[][] lottoArray, int[] userInputLottoNumber, int userInputBonusNumber, int purchasedValue){
+    public static void numberCompare(int lottoCount, Lotto[] lottoArray, Lotto userInputLottoNumber, int userInputBonusNumber, int purchasedValue){
         int[] correctCount = new int[5];
 
         for(int i = 0; i < lottoCount; i++){
             int countTmp = 0;
 
-            countTmp = countTmpCounter(lottoArray[i], userInputLottoNumber, countTmp);
+            countTmp = countTmpCounter(lottoArray[i], userInputLottoNumber);
 
             winningStatisticsMaker(lottoArray[i], userInputBonusNumber, correctCount, countTmp);
         }
@@ -17,10 +19,12 @@ public class Check {
         output.yieldCalculation(correctCount, purchasedValue);
     }
 
-    public static int countTmpCounter(int[] lottoArray, int[] userInputLottoNumber, int countTmp){
+
+    public static int countTmpCounter(Lotto lottoArray, Lotto userInputLottoNumber){
+        int countTmp = 0;
         for (int i = 0; i < 6; i++){
             for (int j = 0; j < 6; j++){
-                if (lottoArray[i] == userInputLottoNumber[j]){
+                if (lottoArray.getIthNumber(i) == userInputLottoNumber.getIthNumber(j)){
                     countTmp++;
                 }
             }
@@ -29,14 +33,14 @@ public class Check {
         return countTmp;
     }
 
-    public static void winningStatisticsMaker(int[] lottoArray, int userInputBonusNumber, int[] correctCount, int countTmp){
+    public static void winningStatisticsMaker(Lotto lottoArrayLine, int userInputBonusNumber, int[] correctCount, int countTmp){
         if(countTmp >= 3){
             correctCount[countTmp - 3]++;
         }
 
         if (countTmp == 5){
             for (int i = 0; i < 6; i++){
-                if (lottoArray[i] == userInputBonusNumber){
+                if (lottoArrayLine.getIthNumber(i) == userInputBonusNumber){
                     correctCount[2]--;
                     correctCount[3]++;
                 }

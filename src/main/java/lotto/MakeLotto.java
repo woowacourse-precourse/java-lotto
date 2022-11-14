@@ -8,14 +8,11 @@ import java.util.List;
 public class MakeLotto {
 
     Output output = new Output();
-    public void makeLottoNumber(int[][] lottoArray ,int lottoCount){
+    public void makeLottoNumber(Lotto[] lottoArray ,int lottoCount){
         for (int i = 0; i < lottoCount; i++){
             List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
-            for (int j = 0; j < lottoArray[i].length; j++){
-                lottoArray[i][j] = numbers.get(j);
-            }
+            lottoArray[i] = new Lotto(numbers);
 
-            Arrays.sort(lottoArray[i]);
             output.lottoNumberPrinter(lottoArray[i]);
         }
     }

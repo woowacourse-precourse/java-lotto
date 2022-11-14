@@ -8,12 +8,12 @@ public class Output {
         System.out.println("[ERROR] 로또 구입 금액은 숫자로 이루어지고 1000원으로 나누어 떨어져야 합니다.");
     }
 
-    public void lottoNumberPrinter(int[] lottoArray){
+    public void lottoNumberPrinter(Lotto lottoArray){
         System.out.print("[");
-        for(int j = 0; j < lottoArray.length - 1; j++){
-            System.out.print(lottoArray[j] + ", ");
+        for(int j = 0; j < 5; j++){
+            System.out.print(lottoArray.getIthNumber(j) + ", ");
         }
-        System.out.println(lottoArray[5] + "]");
+        System.out.println(lottoArray.getIthNumber(5) + "]");
     }
 
     public void winningStatisticPrinter(int[] correctCount){

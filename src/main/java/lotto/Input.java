@@ -2,9 +2,11 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Input {
     Output output = new Output();
-
     public int buyLotto() {
         System.out.println("구입금액을 입력해 주세요.");
         int purchasedValueReader = 0;
@@ -30,15 +32,18 @@ public class Input {
         return lottoCount;
     }
 
-    public static void userInputLottoNumber(int[] userInputLottoNumber, int userInputBonusNumber){
+    public static void userInputLottoNumber(Lotto userInputLottoNumber, int userInputBonusNumber){
         String userInputLotto;
         String[] userInputLottoTmp;
+        List<Integer> numbers = new ArrayList<>();
         System.out.println("\n당첨 번호를 입력해 주세요.");
         userInputLotto = Console.readLine();
         userInputLottoTmp = userInputLotto.split(",");
         for (int i = 0; i < userInputLottoTmp.length; i++) {
-            userInputLottoNumber[i] = Integer.parseInt(userInputLottoTmp[i]);
+              numbers.add(Integer.parseInt(userInputLottoTmp[i]));
         }
+
+        userInputLottoNumber = new Lotto(numbers);
 
         System.out.println("\n보너스 번호를 입력해 주세요.");
         userInputBonusNumber = Integer.parseInt(Console.readLine());
