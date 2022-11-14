@@ -9,6 +9,14 @@ public class LottoMachine {
     private List<Integer> normalNumbers;
     private int bonusNumber;
 
+    public List<Integer> getNormalNumbers() {
+        return normalNumbers;
+    }
+
+    public int getBonusNumber() {
+        return bonusNumber;
+    }
+
     public String getMoney() {
         System.out.println("구매금액을 입력해주세요.");
         String input = Console.readLine();

@@ -7,5 +7,6 @@ public class Application {
         lottoContainer.printLottos();
 
         lottoMachine.setWinningNumbers();
+        lottoContainer.matchAll(lottoMachine.getNormalNumbers(), lottoMachine.getBonusNumber());
     }
 }

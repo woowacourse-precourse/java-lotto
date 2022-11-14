@@ -1,6 +1,7 @@
 package lotto;
 
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -19,7 +20,7 @@ public class LottoContainer {
         }
     }
 
-    public Map<LottoResult, Integer> MatchAll(List<Integer> normalNumbers, int bonusNumber) {
+    public void matchAll(List<Integer> normalNumbers, int bonusNumber) {
         Map<LottoResult, Integer> matchMap = getNothingMatchResult();
         for(Lotto lotto: lottos) {
             LottoResult lottoResult = lotto.getResult(normalNumbers, bonusNumber);
@@ -28,7 +29,7 @@ public class LottoContainer {
             }
         }
 
-        return matchMap;
+        printResult(matchMap);
     }
 
     public Map<LottoResult, Integer> getNothingMatchResult() {
@@ -38,6 +39,15 @@ public class LottoContainer {
         }
 
         return matchMap;
+    }
+
+    public void printResult(Map<LottoResult, Integer> matchMap) {
+        Iterator<LottoResult> results = matchMap.keySet().iterator();
+
+        while(results.hasNext()) {
+            LottoResult key = results.next();
+            System.out.println(key.getMessage() + matchMap.get(key) + "개");
+        }
     }
 
 }
