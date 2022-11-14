@@ -12,4 +12,9 @@ public class InputView {
         String winningNumberString = Console.readLine();
         return winningNumberString;
     }
+
+    public String inputBonusNumber() {
+        String bonusNumberString = Console.readLine();
+        return bonusNumberString;
+    }
 }
