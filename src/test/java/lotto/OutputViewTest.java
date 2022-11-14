@@ -2,6 +2,8 @@ package lotto;
 
 import static org.junit.jupiter.api.Assertions.*;
 import java.util.List;
+
+import lotto.domain.RandomLottoNumber;
 import lotto.util.RandomUtil;
 import lotto.view.OutputView;
 import org.junit.jupiter.api.DisplayName;
@@ -16,7 +18,7 @@ class OutputViewTest {
         int lottoPurchaseAmount = 6000;
         int countFromMoney = 6;
 
-        List<List<Integer>> lottoNumbers = RandomUtil.getLottoNumbers(lottoPurchaseAmount);
+        List<RandomLottoNumber> lottoNumbers = RandomUtil.createLottoNumberList(countFromMoney);
         OutputView.purchaseResultMsg(lottoNumbers, countFromMoney);
     }
 }

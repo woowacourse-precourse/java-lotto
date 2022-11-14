@@ -5,36 +5,42 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import lotto.domain.RandomLottoNumber;
+import lotto.view.InputView;
 
 public class RandomUtil {
 
     static final int LENGTH_OF_LOTTO_NUMBERS = 6;
 
-    public static List<List<Integer>> getLottoNumbers(int money){
-        int countFromMoney = getCountFromMoney(money);
+    public static List<RandomLottoNumber> getLottoNumbers(int money){
+        int countFromMoney = getCountFromMoney();
         return createLottoNumberList(countFromMoney);
     }
 
-    private static int getCountFromMoney(int money) {
-        int countFromMoney = money / 1000;
+    private static int getCountFromMoney() {
+        String purchaseAmountInput = InputView.getInputPurchaseAmount();
+        ParserUtil.parsePurchaseAmountInput(purchaseAmountInput);
+        int purchaseAmount = Integer.parseInt(purchaseAmountInput);
+        int countFromMoney = purchaseAmount / 1000;
         return countFromMoney;
     }
 
-    private static List<List<Integer>> createLottoNumberList(int countFromMoney) {
-        List<List<Integer>> lottoNumberList = new ArrayList<>();
+    public static List<RandomLottoNumber> createLottoNumberList(int countFromMoney) {
+        List<RandomLottoNumber> lottoNumberList = new ArrayList<>();
         for (int i=0; i<countFromMoney; i++) {
-            List<Integer> lottoNumbers = createLottoNumbers();
-            lottoNumberList.add(lottoNumbers);
+            RandomLottoNumber randomLottoNumber = createLottoNumbers();
+            lottoNumberList.add(randomLottoNumber);
         }
         return lottoNumberList;
     }
 
-    private static List<Integer> createLottoNumbers() {
+    private static RandomLottoNumber createLottoNumbers() {
         List<Integer> lottoNumbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
         while (!validateLottoNumbers(lottoNumbers)) {
             lottoNumbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
         }
-        return lottoNumbers;
+        RandomLottoNumber randomLottoNumber = new RandomLottoNumber(lottoNumbers);
+        return randomLottoNumber;
     }
 
     private static boolean validateLottoNumbers(List<Integer> lottoNumbers) {
