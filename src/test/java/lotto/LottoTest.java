@@ -1,15 +1,19 @@
 package lotto;
 
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.io.ByteArrayInputStream;
-import java.io.InputStream;
+import java.io.*;
 import java.util.List;
 
+import static org.assertj.core.api.Assertions.*;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class LottoTest {
+
+    String error = "[ERROR]";
+    String doNotContain = "수익률";
     @DisplayName("로또 번호의 개수가 6개가 넘어가면 예외가 발생한다.")
     @Test
     void createLottoByOverSize() {
@@ -45,12 +49,15 @@ class LottoTest {
 
     @Test
     void 보너스_숫자_중복() {
+        OutputStream out = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(out));
         InputView inputView = new InputView();
         inputView.lotto = new Lotto(List.of(1,2,3,4,5,6));
         String input = "6";
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
-        assertThatThrownBy(() -> inputView.inputBonus())
-                .isInstanceOf(IllegalArgumentException.class);
+        inputView.inputMoney();
+        assertThat(out.toString()).contains(error)
+                .doesNotContain(doNotContain);
     }
 }
