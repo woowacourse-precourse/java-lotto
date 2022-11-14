@@ -6,8 +6,8 @@ public class Calculator {
     final int money;
     final List<Prize> prizes;
 
-    Calculator(int money, List<Prize> prizes) {
-        this.money = money;
+    Calculator(int amount, List<Prize> prizes) {
+        this.money = amount * 1000;
         this.prizes = prizes;
     }
 
