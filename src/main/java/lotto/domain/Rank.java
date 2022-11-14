@@ -16,7 +16,7 @@ public class Rank {
         return rankRecord;
     }
 
-    public int changeRank(int i) {
+    private int changeRank(int i) {
         if (i == RankChart.FIRST_PLACE.getValue()) {
             return RankChart.FIRST_PLACE.getValue();
 
