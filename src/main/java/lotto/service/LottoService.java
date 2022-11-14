@@ -3,6 +3,7 @@ package lotto.service;
 import lotto.Lotto;
 import lotto.comparator.LottoComparator;
 import lotto.repository.LottoRepository;
+import lotto.status.WinningStatus;
 import lotto.validator.InputValidator;
 import lotto.utils.RandomUtils;
 
@@ -77,11 +78,10 @@ public class LottoService {
     public String getProfit() {
         List<Integer> winningResult = LottoRepository.getWinningResult();
         Double purchaseMoney = Double.valueOf(LottoRepository.getPurchaseMoney());
-
         Long totalPrice = 0L;
-//        for (int i = 0 ; i < winningMoney.size(); i ++){
-//            totalPrice += winningMoney.get(i) * winningResult.get(i);
-//        }
+        for (int i = 3 ; i < 8; i ++){
+            totalPrice += winningResult.get(i) * WinningStatus.find(i).getReward();
+        }
         return String.format("%.1f", totalPrice/purchaseMoney*100);
     }
 }
