@@ -28,6 +28,25 @@ public class ViewConsole {
         System.out.println(count + LOTTO_LINE_COUNT);
     }
 
+    public static void printLottoLineDetails(Lottos lottos) {
+        List<List<Integer>> lottoDetails = makeLottoDetails(lottos);
+
+        for (List<Integer> details : lottoDetails) {
+            System.out.println(details);
+        }
+    }
+
+    private static List<List<Integer>> makeLottoDetails(Lottos lottos) {
+        List<List<Integer>> lottoDetails = new ArrayList<>();
+
+        for (Lotto lotto : lottos.getLottos()) {
+            List<Integer> sortedDetails = new ArrayList<>(lotto.getNumbers());
+            Collections.sort(sortedDetails);
+            lottoDetails.add(sortedDetails);
+        }
+        return lottoDetails;
+    }
+
     public static void printInputCorrectNumber() {
         System.out.println(PLZ_INPUT_CORRECT_NUMBER);
     }
