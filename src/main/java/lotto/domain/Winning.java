@@ -43,7 +43,7 @@ public class Winning extends Valid {
         return save;
     }
 
-    public void compare(User user) {
+    public void draw(User user) {
         List<Lotto> lottos = user.getLottos();
         for (Lotto o : lottos) {
             user.saveResult(compareLotto(o));

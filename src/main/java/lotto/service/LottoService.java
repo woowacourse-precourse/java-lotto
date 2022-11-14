@@ -19,15 +19,15 @@ public class LottoService {
     }
 
     public void printLotto() {
-        Message.printBuyResult(user);
+        Message.printLotto(user);
     }
 
-    public void createWinning() throws IllegalArgumentException {
+    public void draw() throws IllegalArgumentException {
         Message.printWinningNum();
         winning.pickNum();
         Message.printWinningBonus();
         winning.pickBonus();
-        winning.compare(user);
+        winning.draw(user);
     }
 
     public void printResult() {

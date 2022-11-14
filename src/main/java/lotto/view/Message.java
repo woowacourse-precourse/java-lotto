@@ -14,7 +14,7 @@ public class Message {
         System.out.println("구입금액을 입력해 주세요.");
     }
 
-    public static void printBuyResult(User user) {
+    public static void printLotto(User user) {
         List<Lotto> lottos = user.getLottos();
         System.out.println(lottos.size() + "개를 구매했습니다.");
         lottos.stream().forEach(lotto ->

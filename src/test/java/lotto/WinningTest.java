@@ -90,7 +90,7 @@ public class WinningTest {
                     winning.pickNum();
                     winning.pickBonus();
 
-                    winning.compare(user);
+                    winning.draw(user);
 
                     assertThat(user.getResult().get(Rank.FOURTH)).isEqualTo(1);
                     assertThat(user.getResult().get(Rank.FIFTH)).isEqualTo(2);
