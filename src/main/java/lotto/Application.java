@@ -10,12 +10,12 @@ public class Application {
     public static void main(String[] args) {
         int purchaseAmount = getPurchaseAmount();
         Publisher publisher = new Publisher(purchaseAmount);
-
-        issueLotteries(publisher);
-
+        publisher.issueLotto();
         Output.printLotteries(publisher.getLotteries());
 
-        Dealer dealer = new Dealer(publisher.getLotteries(), purchaseAmount);
+        Lotto winNumber = getWinNumber();
+        int bonusNumber = getBonusNumber();
+        Dealer dealer = new Dealer(publisher, winNumber, bonusNumber);
         List<Integer> result = dealer.getResult();
         float earningRate = dealer.getEarningRate();
 
@@ -41,19 +41,20 @@ public class Application {
         }
     }
 
-    static void issueLotteries(Publisher publisher) {
-        while (publisher.getLotteries().size() < publisher.getTicketQuantity()) {
-            try {
-                List<Integer> numbers = new ArrayList<>();
-                for (String number : Input.getAnswer(Request.winNumber.value()).split(",")) {
-                    numbers.add(Integer.parseInt(number));
-                }
-                int bonusNumber = (Input.getAnswerInInteger(Request.bonusNumber.value()));
-                publisher.issueLotto(numbers, bonusNumber);
-            } catch (Exception e) { // 숫자가 아닌 문자인 경우
-                throw new IllegalArgumentException(
-                        "[ERROR] 로또 번호는 쉼표(,)로 구분된 1부터 45 사이의 6자리 숫자여야 합니다");
+    static Lotto getWinNumber() {
+        try {
+            List<Integer> numbers = new ArrayList<>();
+            for (String number : Input.getAnswer(Request.winNumber.value()).split(",")) {
+                numbers.add(Integer.parseInt(number));
             }
+            return new Lotto(numbers);
+        } catch (Exception e) { // 숫자가 아닌 문자인 경우
+            throw new IllegalArgumentException(
+                    "[ERROR] 로또 번호는 쉼표(,)로 구분된 1부터 45 사이의 6자리 숫자여야 합니다");
         }
+    }
+
+    static int getBonusNumber() {
+        return Input.getAnswerInInteger(Request.bonusNumber.value());
     }
 }
