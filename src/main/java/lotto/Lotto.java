@@ -3,7 +3,9 @@ package lotto;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Lotto {
     private final List<Integer> numbers;
@@ -17,6 +19,10 @@ public class Lotto {
         return new Lotto(Randoms.pickUniqueNumbersInRange(1, 45, 6));
     }
 
+    public List<Integer> getLottoNumber() {
+        return numbers;
+    }
+
     public static List<Lotto> generateLottoSet(int counts) {
         List<Lotto> lottos = new ArrayList<>();
         for(int count =0; count < counts; count++) {
@@ -25,22 +31,24 @@ public class Lotto {
         return lottos;
     }
 
-    public List<Integer> getLottoNumber() {
-        return numbers;
-    }
-
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR] 로또 번호 개수가 다릅니다.");
         }
-
-        for(int n : numbers) {
-            if(n >= 1 && n <= 45) {
+        for(int number : numbers) {
+            if(number >= 1 && number <= 45) {
                 continue;
             }
-            throw new IllegalArgumentException("올바르지 않은 로또 번호입니다.");
+            throw new IllegalArgumentException("[ERROR] 올바르지 않은 로또 번호입니다.");
         }
+        if(isDuplicated(numbers)){
+            throw new IllegalArgumentException("[ERROR] 로또 번호 사이에 중복이 존재합니다.");
+        }
+
     }
 
-    // TODO: 추가 기능 구현
+    private boolean isDuplicated(List<Integer> numbers) {
+        Set<Integer> notDuplicatedNumbers = new HashSet<>(numbers);
+        return notDuplicatedNumbers.size() != numbers.size();
+    }
 }
