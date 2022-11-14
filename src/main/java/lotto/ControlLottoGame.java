@@ -63,7 +63,9 @@ public class ControlLottoGame {
         earnedPrice += winningCount.get(2) * CorrectValue.FIVE_CORRECT.get();
         earnedPrice += winningCount.get(3) * CorrectValue.SIX_CORRECT.get();
         earnedPrice += winningCount.get(4) * CorrectValue.FIVE_BONUS_CORRECT.get();
-        String earnedRate = String.format("%.1f", (double) 100 * earnedPrice / payedPrice);
+
+        double rate = (double) earnedPrice / payedPrice;
+        String earnedRate = String.format("%.1f", rate * 100);
 
         return Double.parseDouble(earnedRate);
     }
