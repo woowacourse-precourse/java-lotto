@@ -8,6 +8,8 @@ import lotto.domain.Lotto;
 import lotto.domain.LottoRepository;
 import lotto.domain.Money;
 import lotto.type.Prize;
+import lotto.view.LottoDto;
+import lotto.view.PrizeDto;
 
 public class LottoService {
     private final LottoRepository lottoRepository;
@@ -24,6 +26,12 @@ public class LottoService {
             numbers.add(lottoRepository.save(lotto));
         }
         return numbers;
+    }
+
+    public PrizeDto calcWinningResult(List<Integer> winningNumbers,int bonusNumber, Money money) {
+        List<Prize> prizes = confirmWinning(winningNumbers, bonusNumber);
+        Double yield = calcYield(prizes, money);
+        return new PrizeDto(prizes, yield);
     }
 
     private Double calcYield(List<Prize> prizes, Money money) {
