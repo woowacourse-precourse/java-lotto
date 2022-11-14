@@ -10,15 +10,17 @@ import java.util.List;
 public class InputBonusNumber {
     InputBonusLottoNumberHandler inputBonusLottoNumberHandler = new InputBonusLottoNumberHandler();
     InputMoneyHandler inputMoneyHandler = new InputMoneyHandler();
-    Output output = new Output();
+
+    public static String INPUT_BONUS_NUMBER;
 
     public Integer inputBonusNumber(List<Integer> sixLottoNumbers) {
+        Output output = new Output();
         output.bonusLottoNumberOrder();
-        String inputBonusNumber = userReadLine();
-        inputMoneyHandler.checkIsNumber(inputBonusNumber);
-        bonusLottoNumber(inputBonusNumber, sixLottoNumbers);
+        INPUT_BONUS_NUMBER = userReadLine();
+        inputMoneyHandler.checkIsNumber(INPUT_BONUS_NUMBER);
+        bonusLottoNumber(INPUT_BONUS_NUMBER, sixLottoNumbers);
         System.out.println();
-        return Integer.parseInt(inputBonusNumber);
+        return Integer.parseInt(INPUT_BONUS_NUMBER);
     }
 
     public String userReadLine() {

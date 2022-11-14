@@ -9,6 +9,7 @@ import static lotto.service.PickRandomLotto.randomLottoLists;
 
 public class LottoGame {
     InputMoney inputMoney = new InputMoney();
+    WinLottoResult winLottoResult = new WinLottoResult();
 
     public void run() {
         UserMoney userMoney = inputMoney.InputMoney();
@@ -16,6 +17,7 @@ public class LottoGame {
         pickRandomLottos(inputMoney.lottoCount);
         List<Integer> answerLotto = inputLottoNumbers();
         winLottosResult(answerLotto,randomLottoLists);
+        winLottoResult.calBenefit(winLottoResult.profitMoney, userMoney);
     }
 
     public void countLottoPapers(UserMoney userMoney) {
