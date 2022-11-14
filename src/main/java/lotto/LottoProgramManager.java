@@ -21,6 +21,7 @@ public class LottoProgramManager {
             generateLotto(lottoNum);
             getAnswerAndBonus();
             rankLotto();
+
         } catch(Exception e) {
             OutputManager.printError(e.getMessage());
         }
@@ -55,14 +56,12 @@ public class LottoProgramManager {
         bonus = InputManager.scanBonus();
     }
 
-    private int rankLotto() {
+    private void rankLotto() {
         for(Lotto lotto : lottoBought) {
             int rank = lotto.compareWithAnswer(answer, bonus);
 
             lottoResult.putIfAbsent(rank, 0);
             lottoResult.put(rank, lottoResult.get(rank) + 1);
         }
-
-        return 0;
     }
 }
