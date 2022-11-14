@@ -22,7 +22,7 @@ public enum LottoResult {
         return money;
     }
 
-    public LottoResult getLottoResult(int match, boolean bonusMatch) {
+    public static LottoResult getLottoResult(int match, boolean bonusMatch) {
         if (match == 5 && bonusMatch) {
             return SECOND_PRIZE;
         }
