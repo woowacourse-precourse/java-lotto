@@ -7,7 +7,6 @@ import model.Win;
 import model.WinningResult;
 
 import java.util.List;
-import java.util.Map;
 
 public class OutputView {
     public static final String LOTTOS_COUNT = "개를 구매했습니다.";
@@ -15,7 +14,7 @@ public class OutputView {
     public static final String MATCH_COUNT = "%d개 일치";
     public static final String BONUS_BALL = ", 보너스 볼 일치";
     public static final String WINNING_AMOUNT_AND_COUNT = " (%,d원) - %d개" + System.lineSeparator();
-    public static final String EARNINGS_RATE = "총 수익률은 %.1f%%입니다.";
+    public static final String EARNINGS_RATE = "총 수익률은 %,.1f%%입니다." + System.lineSeparator();
 
     private OutputView() {
 
@@ -54,6 +53,6 @@ public class OutputView {
     }
 
     public static void printEarningsRate(EarningsRate earningsRate) {
-        System.out.println(String.format(EARNINGS_RATE, earningsRate.getEarningRate()));
+        System.out.printf(EARNINGS_RATE, earningsRate.getEarningRate());
     }
 }
