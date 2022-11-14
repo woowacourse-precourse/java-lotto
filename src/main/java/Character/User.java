@@ -3,7 +3,6 @@ package Character;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-
 import camp.nextstep.edu.missionutils.Console;
 
 public class User {
@@ -23,12 +22,14 @@ public class User {
 
     public void setMoney() {
         int money;
+
         try {
             money = Integer.parseInt(Console.readLine());
             this.money=money;
         } catch (NumberFormatException e) {
             System.out.println("[ERROR] 잘못된 입력 형식입니다.");
         }
+
     }
 
     public int getMoney() {
@@ -63,21 +64,25 @@ public class User {
 
     public void inputWinningNumber() throws IllegalArgumentException  {
         List<Integer> winningNumber;
+
         try {
             winningNumber = splitStringToIntegerArray(Console.readLine());
         } catch(NumberFormatException e) {
             System.out.println("[ERROR] 잘못된 입력입니다.");
             throw new IllegalArgumentException();
         }
+
         this.winningNumber=winningNumber;
     }
 
     public List<Integer> splitStringToIntegerArray(String inputtedWinningNumber) {
         List<Integer> listedWinningNumber = new ArrayList<>();
         String[] unconvertedWinningNumber = inputtedWinningNumber.split(",");
+
         for (String unconvertedWinningNumberContent : unconvertedWinningNumber) {
             listedWinningNumber.add(Integer.parseInt(unconvertedWinningNumberContent));
         }
+
         return listedWinningNumber;
     }
     
@@ -118,7 +123,9 @@ public class User {
 
     public double calculateEarningRate() {
         double earningRate;
+
         earningRate = earning/money;
+
         return earningRate;
     }
 }

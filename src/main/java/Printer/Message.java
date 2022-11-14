@@ -14,6 +14,7 @@ public enum Message {
     WINNING_RESULT_MESSAGE_6CORRECT("6개 일치 (2,000,000,000원) - ");
 
     private final String printingMessage;
+
     Message(String printingMessage) {
         this.printingMessage=printingMessage;
     }

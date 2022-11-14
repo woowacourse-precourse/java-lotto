@@ -1,6 +1,9 @@
 package Character;
 
-import java.util.*;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 public class Lotto {
     private final List<Integer> numbers;
@@ -34,6 +37,7 @@ public class Lotto {
 
     private void duplicatedNumberValidate(List<Integer> numbers) {
         Set<Integer> noDuplicateNumbers = new HashSet<>(numbers);
+
         if (!(numbers.size()==noDuplicateNumbers.size())) {
             System.out.println("[ERROR] 중복된 숫자가 존재해서는 안 됩니다.");
             throw new IllegalArgumentException();

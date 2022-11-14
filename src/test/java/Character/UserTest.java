@@ -23,17 +23,21 @@ public class UserTest {
     void makeLottoBundleTest() {
         int howManyLotto = 3;
         int result = 3;
+
         user.makeLottoBundle(howManyLotto);
+
         assertEquals(result,user.getLottoBundle().size());
     }
 
     @ParameterizedTest
     @ValueSource(strings = {"1,2,3,4,5,6"})
     void inputWinningNumberTest(String winningNumberInput) {
+        List<Integer> answer = List.of(1,2,3,4,5,6);
+
         InputStream in = generateUserInput(winningNumberInput);
         System.setIn(in);
         Scanner scanner = new Scanner(System.in);
-        List<Integer> answer = List.of(1,2,3,4,5,6);
+
         user.inputWinningNumber();
         assertEquals(user.getWinningNumber(),answer);
     }
@@ -44,6 +48,7 @@ public class UserTest {
         InputStream in = generateUserInput(winningNumberInput);
         System.setIn(in);
         Scanner scanner = new Scanner(System.in);
+
         assertThatThrownBy(() -> user.inputWinningNumber())
                 .isInstanceOf(IllegalArgumentException.class);
     }
@@ -54,6 +59,7 @@ public class UserTest {
         InputStream in = generateUserInput(winningNumberInput);
         System.setIn(in);
         Scanner scanner = new Scanner(System.in);
+
         assertThatThrownBy(() -> user.inputWinningNumber())
                 .isInstanceOf(IllegalArgumentException.class);
     }
@@ -61,10 +67,12 @@ public class UserTest {
     @ParameterizedTest
     @ValueSource(strings = {"1,2,3,4,5,6,7"})
     void splitStringToIntegerArray(String inputtedWinningNumber) {
+        List<Integer> result = List.of(1,2,3,4,5,6,7);
+
         InputStream in = generateUserInput(inputtedWinningNumber);
         System.setIn(in);
         Scanner scanner = new Scanner(System.in);
-        List<Integer> result = List.of(1,2,3,4,5,6,7);
+
         assertEquals(result,user.splitStringToIntegerArray(inputtedWinningNumber));
     }
 
@@ -72,10 +80,13 @@ public class UserTest {
     @ValueSource(strings = {"7"})
     void inputBonusNumberTest(String bonusNumberInput) {
         int result = 7;
+
         InputStream in = generateUserInput(bonusNumberInput);
         System.setIn(in);
         Scanner scanner = new Scanner(System.in);
+
         user.inputBonusNumber();
+
         assertEquals(user.getBonusNumber(),7);
     }
 
@@ -85,6 +96,7 @@ public class UserTest {
         InputStream in = generateUserInput(bonusNumberInput);
         System.setIn(in);
         Scanner scanner = new Scanner(System.in);
+
         assertThatThrownBy(() -> user.inputWinningNumber())
                 .isInstanceOf(IllegalArgumentException.class);
     }
@@ -95,6 +107,7 @@ public class UserTest {
         InputStream in = generateUserInput(bonusNumberInput);
         System.setIn(in);
         Scanner scanner = new Scanner(System.in);
+
         assertThatThrownBy(() -> user.checkBonusNumberRange(Integer.parseInt(bonusNumberInput)))
                 .isInstanceOf(IllegalArgumentException.class);
     }
@@ -102,21 +115,25 @@ public class UserTest {
     @Test
     void countingWinningNumberTest() {
         List<Integer> result = List.of(0,0,0,2,0,1,1,0);
+
         user.countWinningNumber(3,false);
         user.countWinningNumber(3,false);
         user.countWinningNumber(5,false);
         user.countWinningNumber(5,true);
+
         assertEquals(result,user.getWinningNumberCounting());
     }
 
     @Test
     void calculateEarningTest() {
         double result = 31510000;
+
         user.countWinningNumber(3,false);
         user.countWinningNumber(3,false);
         user.countWinningNumber(5,false);
         user.countWinningNumber(5,true);
         user.calculateEarning();
+
         assertEquals(result,user.getEarning());
     }
 
@@ -124,12 +141,15 @@ public class UserTest {
     @ValueSource(strings = {"100000"})
     void calculateEarningRateTest(String moneyInput) {
         double result = 0.5;
+
         InputStream in = generateUserInput(moneyInput);
         System.setIn(in);
         Scanner scanner = new Scanner(System.in);
+
         user.setMoney();
         user.countWinningNumber(4,false);
         user.calculateEarning();
+
         assertEquals(result,user.calculateEarningRate());
     }
 }

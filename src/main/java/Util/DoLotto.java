@@ -19,25 +19,33 @@ public class DoLotto {
 
     public void makeLottoBundle() {
         int numberOfLotto;
+
         numberOfLotto = lotteryTicketingMachine.ticketHowManyLotto(user.getMoney());
         user.makeLottoBundle(numberOfLotto);
+
         messagePrinter.printPurchasedLotto(user.getLottoBundle());
     }
 
     public void makeWinningNumber() {
         messagePrinter.printInputWinningNumberMessage();
         user.inputWinningNumber();
+
         messagePrinter.printInputBonusNumberMessage();
         user.inputBonusNumber();
     }
 
     public void getPrizeMoney() {
+        int howManyWinningNumber;
+        boolean isBonusNumberCorrect;
+
         for (Lotto lotto : user.getLottoBundle()) {
-            int howManyWinningNumber = lotteryTicketingMachine.checkWinningNumber(user.getWinningNumber(),lotto);
-            boolean isBonusNumberCorrect = lotto.contains(user.getBonusNumber());
+            howManyWinningNumber = lotteryTicketingMachine.checkWinningNumber(user.getWinningNumber(),lotto);
+            isBonusNumberCorrect = lotto.contains(user.getBonusNumber());
             user.countWinningNumber(howManyWinningNumber,isBonusNumberCorrect);
         }
+
         user.calculateEarning();
+
         messagePrinter.printWinningResult(user.getWinningNumberCounting());
         messagePrinter.printEarningsRate(user.calculateEarningRate());
     }
