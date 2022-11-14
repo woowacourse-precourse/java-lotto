@@ -7,31 +7,23 @@ import static camp.nextstep.edu.missionutils.Console.*;
 
 public class UI {
     private int cost;
-    private List<Integer> userInput;
-    private int userBonus;
+    private List<Integer> winningNumbers;
 
     public UI() {
-        this.userInput = new ArrayList<>();
+        this.winningNumbers = new ArrayList<>();
     }
 
     public int getCost() {
         return cost;
     }
 
-    public List<Integer> getUserInput() {
-        return userInput;
+    public List<Integer> getWinningNumbers() {
+        return winningNumbers;
     }
 
-    public int getUserBonus() {
-        return userBonus;
-    }
-
-    public void requestInput() {
+    public void inputCost() {
         System.out.println("구입 금액을 입력해 주세요.");
-        makeCost();
-    }
-
-    private void makeCost() {
         this.cost = Integer.parseInt(readLine());
     }
+
 }
