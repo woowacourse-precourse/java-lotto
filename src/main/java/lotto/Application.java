@@ -17,6 +17,11 @@ public class Application {
     static public Map<Places, Long> prizesAt = new EnumMap<>(Places.class);
     static int noOfLottos;
 
+    public static void initializeNumberType() {
+        for (int number = 1; number <= 45; number++)
+            numberType[number] = NumberType.NONE;
+    }
+
     public static void initializeNoOfLottoWinAt() {
         for (Places place: Places.values())
             noOfLottoWinAt.put(place, 0);
@@ -82,8 +87,6 @@ public class Application {
     }
 
     public static void checkNumberTypeByIndex(List<Integer> winningNumbers) {
-        for (int number = 1; number <= 45; number++)
-            numberType[number] = NumberType.NONE;
         for (int number : winningNumbers)
             numberType[number] = NumberType.WINNING;
     }
@@ -207,6 +210,7 @@ public class Application {
     }
 
     public static void main(String[] args) {
+        initializeNumberType();
         initializeNoOfLottoWinAt();
         initializePrizesAtPlaces();
 
