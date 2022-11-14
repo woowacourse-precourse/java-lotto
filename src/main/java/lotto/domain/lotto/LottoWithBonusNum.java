@@ -20,7 +20,7 @@ public class LottoWithBonusNum {
 
     private void validate(List<Integer> numbers, int bonusNumber) {
         validateSize(numbers);
-        validateDuplidate(numbers, bonusNumber);
+        validateDuplicate(numbers, bonusNumber);
         validateNumberRange(numbers, bonusNumber);
 
     }
@@ -31,7 +31,7 @@ public class LottoWithBonusNum {
         }
     }
 
-    private void validateDuplidate(List<Integer> numbers, int bonusNumber) {
+    private void validateDuplicate(List<Integer> numbers, int bonusNumber) {
         numbers.forEach((number) -> {
             if (!isOnceAppear(numbers, number)) {
                 throw new IllegalArgumentException("[ERROR] 중복이 되는 숫자가 존재합니다.");
