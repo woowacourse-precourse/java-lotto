@@ -53,6 +53,7 @@ public class ApplicationController {
     public void control_BonusNumber() {
         // TODO
         //  - [x] 보너스 번호 입력
+        //  - [ ] 보너스 번호 숫자로 변환
         //  - [ ] 보너스 번호 검증
         //  - [ ] 보너스 번호 저장
         String input_BonusNumber = inputView.inputBonusNumber();
