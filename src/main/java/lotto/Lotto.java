@@ -3,11 +3,9 @@ package lotto;
 import java.util.Arrays;
 import java.util.List;
 
-public class Lotto {
-    private static final String NUMBERS_COUNT_ERROR_MESSAGE = "[ERROR] 번호의 개수가 6개가 아닙니다.";
-    private static final String DUPLICATE_NUMBER_ERROR_MESSAGE = "[ERROR] 중복된 번호가 있습니다.";
-    private static final String NUMBER_RANGE_ERROR_MESSAGE = "[ERROR] 1 ~ 45의 번호가 아닙니다.";
+import static lotto.LottoGameStatus.*;
 
+public class Lotto {
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
@@ -19,7 +17,7 @@ public class Lotto {
         Boolean[] isIncluded = new Boolean[46];
         Arrays.fill(isIncluded, false);
         if (numbers.size() != 6) {
-            throw new IllegalArgumentException(NUMBERS_COUNT_ERROR_MESSAGE);
+            throw new IllegalArgumentException(NUMBERS_COUNT_ERROR_MESSAGE.getMessage());
         }
 
         checkNumberRange(numbers, isIncluded);
@@ -28,10 +26,10 @@ public class Lotto {
     private void checkNumberRange(List<Integer> numbers, Boolean[] isIncluded) {
         for (Integer number : numbers) {
             if (number < 1 || number > 45) {
-                throw new IllegalArgumentException(NUMBER_RANGE_ERROR_MESSAGE);
+                throw new IllegalArgumentException(NUMBER_RANGE_ERROR_MESSAGE.getMessage());
             }
             if (isIncluded[number]) {
-                throw new IllegalArgumentException(DUPLICATE_NUMBER_ERROR_MESSAGE);
+                throw new IllegalArgumentException(DUPLICATE_NUMBER_ERROR_MESSAGE.getMessage());
             }
             isIncluded[number] = true;
         }
@@ -43,7 +41,6 @@ public class Lotto {
 
     public int checkWinning(List<Integer> winningNumbers, int bonusNumber) {
         boolean[] isIncluded = new boolean[46];
-
         winningNumbers.forEach(num -> isIncluded[num] = true);
         int count = (int) this.numbers.stream().filter(num -> isIncluded[num]).count();
         if (count < 3) {

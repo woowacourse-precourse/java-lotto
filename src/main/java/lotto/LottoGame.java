@@ -9,17 +9,14 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static lotto.LottoGameStatus.*;
+
 public class LottoGame {
-    private static final String TYPE_ERROR_MESSAGE = "[ERROR] 숫자가 입력되지 않았습니다.";
-    private static final String MONEY_INPUT_ERROR_MESSAGE = "[ERROR] 금액을 1000원 단위로 입력해주세요.";
-    private static final String BONUS_NUMBER_DUPLICATION_ERROR_MESSAGE = "[ERROR] 보너스번호와 당첨번호가 중복됩니다.";
-    private static final String WINNING_NUMBER_ERROR_MESSAGE = "[ERROR] 당첨번호에 숫자를 입력해주세요.";
-    private static final String NUMBER_RANGE_ERROR_MESSAGE = "[ERROR] 1 ~ 45의 번호가 아닙니다.";
     private static final String MONEY_INPUT_MESSAGE = "구입금액을 입력해 주세요.";
     private static final String BONUS_NUMBER_INPUT_MESSAGE = "보너스 번호를 입력해 주세요.";
     private static final String WINNING_NUMBER_INPUT_MESSAGE = "당첨 번호를 입력해 주세요.";
     private static final String RESULT_INFO_MESSAGE = "당첨 통계\n---";
-    private static final Integer LOTTO_PRICE = 1000;
+    public static final Integer LOTTO_PRICE = 1000;
 
     private static final Integer[] winningPrizes = {2000000000, 30000000, 1500000, 50000, 5000};
 
@@ -36,11 +33,11 @@ public class LottoGame {
 
     private void checkBonusNumber(int bonusNumber) {
         if (bonusNumber < 1 || bonusNumber > 45) {
-            throw new IllegalArgumentException(NUMBER_RANGE_ERROR_MESSAGE);
+            throw new IllegalArgumentException(NUMBER_RANGE_ERROR_MESSAGE.getMessage());
         }
         for (int number : winningNumbers.getNumbers()) {
             if (number == bonusNumber) {
-                throw new IllegalArgumentException(BONUS_NUMBER_DUPLICATION_ERROR_MESSAGE);
+                throw new IllegalArgumentException(BONUS_NUMBER_DUPLICATION_ERROR_MESSAGE.getMessage());
             }
         }
     }
@@ -57,7 +54,7 @@ public class LottoGame {
                     .map(Integer::parseInt)
                     .collect(Collectors.toList());
         } catch (NumberFormatException exception) {
-            throw new IllegalArgumentException(WINNING_NUMBER_ERROR_MESSAGE);
+            throw new IllegalArgumentException(WINNING_NUMBER_ERROR_MESSAGE.getMessage());
         }
     }
 
@@ -84,7 +81,7 @@ public class LottoGame {
 
     public int countLotto(int money) {
         if (money == 0 || money % LOTTO_PRICE != 0) {
-            throw new IllegalArgumentException(MONEY_INPUT_ERROR_MESSAGE);
+            throw new IllegalArgumentException(MONEY_INPUT_ERROR_MESSAGE.getMessage());
         }
         return money / LOTTO_PRICE;
     }
@@ -94,7 +91,7 @@ public class LottoGame {
             System.out.println(MONEY_INPUT_MESSAGE);
             return Integer.parseInt(Console.readLine());
         } catch (NumberFormatException numberFormatException) {
-            throw new IllegalArgumentException(TYPE_ERROR_MESSAGE);
+            throw new IllegalArgumentException(TYPE_ERROR_MESSAGE.getMessage());
         }
     }
 

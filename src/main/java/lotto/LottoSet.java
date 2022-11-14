@@ -4,12 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class LottoSet {
+    public static final Integer LOTTO_PRICE = 1000;
+
     private int inputMoney;
     private List<Lotto> lottos;
 
     public LottoSet(List<Lotto> lottoSet) {
         this.lottos = lottoSet;
-        this.inputMoney = lottos.size() * 1000;
+        this.inputMoney = lottos.size() * LOTTO_PRICE;
     }
 
     public int getInputMoney() {
