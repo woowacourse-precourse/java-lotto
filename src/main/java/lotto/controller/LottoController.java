@@ -5,7 +5,7 @@ import lotto.domain.vo.BuyLottoList;
 import lotto.domain.vo.Lotto;
 import lotto.domain.LottoMachine;
 import lotto.domain.LottoResult;
-import lotto.domain.LottoWithBonus;
+import lotto.domain.vo.LottoWithBonus;
 import lotto.domain.vo.Money;
 import lotto.veiw.InputHandler;
 import lotto.veiw.OutputHandler;

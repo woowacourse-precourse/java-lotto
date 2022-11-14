@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.Map;
 import lotto.domain.vo.BuyLottoList;
 import lotto.domain.vo.Lotto;
+import lotto.domain.vo.LottoWithBonus;
 
 public class LottoResult {
 
