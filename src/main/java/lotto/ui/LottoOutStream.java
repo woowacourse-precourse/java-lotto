@@ -9,11 +9,11 @@ import lotto.domain.LottoGame;
 public class LottoOutStream {
     public static void showLottoResult(int[] matches) {
         System.out.print("\n" + "당첨 통계\n---\n");
-        System.out.print("3개 일치 (5,000원) - " + matches[LottoGame._fifth_place] + "개\n");
-        System.out.print("4개 일치 (50,000원) - " + matches[LottoGame._fourth_place] + "개\n");
-        System.out.print("5개 일치 (1,500,000원) - " + matches[LottoGame._third_place] + "개\n");
-        System.out.print("5개 일치, 보너스 볼 일치 (30,000,000원) - " + matches[LottoGame._second_place] + "개\n");
-        System.out.print("6개 일치 (2,000,000,000원) - " + matches[LottoGame._first_place] + "개\n");
+        System.out.print("3개 일치 (5,000원) - " + matches[LottoGame._5th_index] + "개\n");
+        System.out.print("4개 일치 (50,000원) - " + matches[LottoGame._4th_index] + "개\n");
+        System.out.print("5개 일치 (1,500,000원) - " + matches[LottoGame._3rd_index] + "개\n");
+        System.out.print("5개 일치, 보너스 볼 일치 (30,000,000원) - " + matches[LottoGame._2nd_index] + "개\n");
+        System.out.print("6개 일치 (2,000,000,000원) - " + matches[LottoGame._1st_index] + "개\n");
     }
 
     public static void showRateOfReturn(BigDecimal rateOfReturn) {

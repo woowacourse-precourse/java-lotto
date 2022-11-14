@@ -9,20 +9,20 @@ import java.util.List;
 
 public class LottoGame {
     public enum eLottoPlace {
-        FIRST_PLACE,
-        SECOND_PLACE,
-        THIRD_PLACE,
-        FOURTH_PLACE,
-        FIFTH_PLACE,
-        NOTHING
+        FIRST_PLACE, SECOND_PLACE, THIRD_PLACE, FOURTH_PLACE, FIFTH_PLACE, NOTHING
     }
 
     private static final int _lotto_price = 1000;
-    public static final int _first_place = 0;
-    public static final int _second_place = 1;
-    public static final int _third_place = 2;
-    public static final int _fourth_place = 3;
-    public static final int _fifth_place = 4;
+    private static final String _1st_reward = "2000000000";
+    private static final String _2nd_reward = "30000000";
+    private static final String _3rd_reward = "1500000";
+    private static final String _4th_reward = "50000";
+    private static final String _5th_reward = "5000";
+    public static final int _1st_index = 0;
+    public static final int _2nd_index = 1;
+    public static final int _3rd_index = 2;
+    public static final int _4th_index = 3;
+    public static final int _5th_index = 4;
 
     // 로또 구매 함수
     public static List<Lotto> buyLotto(int money) {
@@ -87,15 +87,15 @@ public class LottoGame {
 
     private static int[] appendPlaceToResult(int[] matches, eLottoPlace place) {
         if (place == eLottoPlace.FIRST_PLACE)
-            matches[_first_place] += 1;
+            matches[_1st_index] += 1;
         if (place == eLottoPlace.SECOND_PLACE)
-            matches[_second_place] += 1;
+            matches[_2nd_index] += 1;
         if (place == eLottoPlace.THIRD_PLACE)
-            matches[_third_place] += 1;
+            matches[_3rd_index] += 1;
         if (place == eLottoPlace.FOURTH_PLACE)
-            matches[_fourth_place] += 1;
+            matches[_4th_index] += 1;
         if (place == eLottoPlace.FIFTH_PLACE)
-            matches[_fifth_place] += 1;
+            matches[_5th_index] += 1;
         return matches;
     }
 
@@ -111,10 +111,10 @@ public class LottoGame {
 
     private static BigInteger sumReward(int[] matches) {
         BigInteger reward = new BigInteger("0");
-        String[] rewardByPlace = {"2000000000", "30000000", "1500000", "50000", "5000"};
+        String[] rewardTable = {_1st_reward, _2nd_reward, _3rd_reward, _4th_reward, _5th_reward};
 
         for (int i = 0; i < matches.length; ++i) {
-            BigInteger nowReward = new BigInteger(rewardByPlace[i]);
+            BigInteger nowReward = new BigInteger(rewardTable[i]);
             BigInteger count = new BigInteger(String.valueOf(matches[i]));
 
             nowReward = nowReward.multiply(count);
