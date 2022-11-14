@@ -1,7 +1,5 @@
 package lotto.domain;
 
-import java.util.List;
-
 public class WinningNumbers {
     private static final String ERROR_NUMBER_EXISTS = "[ERROR] 당첨번호에 존재하는 번호입니다.";
 
