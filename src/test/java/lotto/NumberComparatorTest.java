@@ -68,4 +68,49 @@ public class NumberComparatorTest {
         })
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @Test
+    void setOversizeWholeNumber() {
+        assertThatThrownBy(() -> {
+            NumberComparator tester = new NumberComparator(List.of(1, 2, 3, 4, 5, 6, 7, 8));
+            tester.validateWholeNumber();
+        })
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void setUndersizeWholeNumber() {
+        assertThatThrownBy(() -> {
+            NumberComparator tester = new NumberComparator(List.of(3, 23, 35, 43, 12, 32));
+            tester.validateWholeNumber();
+        })
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void setRepetitiveWholeNumber() {
+        assertThatThrownBy(() -> {
+            NumberComparator tester = new NumberComparator(List.of(32, 32, 12, 43, 5, 2, 3));
+            tester.validateWholeNumber();
+        })
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void setOverMaxWholeNumber() {
+        assertThatThrownBy(() -> {
+            NumberComparator tester = new NumberComparator(List.of(40, 41, 42, 43, 44, 45, 46));
+            tester.validateWholeNumber();
+        })
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void setUnderMinWholeNumber() {
+        assertThatThrownBy(() -> {
+            NumberComparator tester = new NumberComparator(List.of(0, 1, 2, 3, 4, 5, 6));
+            tester.validateWholeNumber();
+        })
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
