@@ -31,7 +31,7 @@
    - 로또 구매 개수 출력하는 메소드 (printNumberOfLottosMsg)
    - 당첨 번호 입력 받을 때 메시지 출력하는 메소드 (printWinnerInputMsg)
    - 보너스 번호 입력 받을 때 메시지 출력하는 메소드 (printBonusInputMsg)
-   - 소수점 둘째 자리에서 반올림한 수익률 출력하는 메소드 (printProfitRateMsg)
+   - 소수점 둘째 자리에서 반올림한 수익률 출력하는 메소드 (printProfitRate)
    - 당첨 내역 출력하는 메소드 (printResult)
 6. Application 클래스: 게임 실행
 7. Ranking enum 클래스
