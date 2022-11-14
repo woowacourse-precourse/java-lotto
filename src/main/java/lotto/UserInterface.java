@@ -2,7 +2,9 @@ package lotto;
 
 
 import camp.nextstep.edu.missionutils.Console;
+import java.text.MessageFormat;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -15,7 +17,7 @@ public class UserInterface {
     private final static String FORMAT_SPLITTER_WINNING_NUMBERS = ",";
     private final static String MSG_REQUEST_BONUS_NUMBER = "보너스 번호를 입력해 주세요.";
     private final static String MSG_SHOW_LOTTO_STATISTICS = "당첨 통계\n---";
-    private final static String MSG_SHOW_COUNT_WINNING_BY_PLACE = "{0} ({1}) - {2}개";
+    private final static String MSG_SHOW_COUNT_WINNING_BY_PLACE = "{0} ({1}원) - {2}개";
     private final static String MSG_SHOW_TOTAL_MARGIN_RATE = "총 수익률은 {0}%입니다.";
 
     public UserInterface() {
@@ -105,19 +107,21 @@ public class UserInterface {
     }
 
     public void showLottoStatistics(Map<LottoPlace, Integer> records, double marginRate) {
-        List<LottoPlace> lottoPlaces = List.of(LottoPlace.values());
+        List<LottoPlace> lottoPlaces = List.of(LottoPlace.values()).stream()
+                .sorted(Comparator.comparing(LottoPlace::getPrizeMoney))
+                .collect(Collectors.toList());
         output(MSG_SHOW_LOTTO_STATISTICS);
         for (LottoPlace place : lottoPlaces) {
             if (place.equals(LottoPlace.NONE)) {
                 continue;
             }
-            output(String.format(
+            output(MessageFormat.format(
                     MSG_SHOW_COUNT_WINNING_BY_PLACE,
                     place.getInfo(),
                     place.getPrizeMoney(),
                     records.get(place))
             );
         }
-        output(String.format(MSG_SHOW_TOTAL_MARGIN_RATE, marginRate));
+        output(MessageFormat.format(MSG_SHOW_TOTAL_MARGIN_RATE, marginRate));
     }
 }
