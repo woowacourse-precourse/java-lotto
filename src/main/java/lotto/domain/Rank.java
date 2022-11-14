@@ -23,15 +23,19 @@ public class Rank {
 
     public void setCount(int cnt, boolean bonus) {
         if(cnt == Statistic.SAME_SIX.getValue()) {
-            ranks.replace(Statistic.SAME_SIX, ranks.get(Statistic.SAME_SIX)+ 1);
+            updateRank(Statistic.SAME_SIX);
         }else if(cnt == Statistic.SAME_FIVE.getValue() && bonus) {
-            ranks.replace(Statistic.SAME_FIVE_BONUS, ranks.get(Statistic.SAME_FIVE_BONUS) + 1);
+            updateRank(Statistic.SAME_FIVE_BONUS);
         }else if(cnt == Statistic.SAME_FIVE.getValue()) {
-            ranks.replace(Statistic.SAME_FIVE, ranks.get(Statistic.SAME_FIVE) + 1);
+            updateRank(Statistic.SAME_FIVE);
         }else if(cnt == Statistic.SAME_FOUR.getValue()) {
-            ranks.replace(Statistic.SAME_FOUR, ranks.get(Statistic.SAME_FOUR) + 1);
+            updateRank(Statistic.SAME_FOUR);
         }else if(cnt == Statistic.SAME_THREE.getValue()) {
-            ranks.replace(Statistic.SAME_THREE, ranks.get(Statistic.SAME_THREE) + 1);
+            updateRank(Statistic.SAME_THREE);
         }
+    }
+
+    public void updateRank(Statistic number) {
+        ranks.replace(number, ranks.get(number) + 1);
     }
 }
