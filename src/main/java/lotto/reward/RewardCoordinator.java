@@ -11,16 +11,19 @@ public class RewardCoordinator {
 
     private WinningNumber winningNumber;
     private List<LottoReward> rewards;
+    private int purchasePrice;
 
     public RewardCoordinator(WinningNumber winningNumber,
-                             List<LottoReward> rewards) {
+                             List<LottoReward> rewards,
+                             int purchasePrice) {
         this.winningNumber = winningNumber;
         this.rewards = rewards;
+        this.purchasePrice = purchasePrice;
     }
 
     public String getRewardResult(List<Lotto> lottos) {
         int[] totalResult = new int[rewards.size()];
-        long totalPrice = 0;
+        long totalReward = 0;
 
         for (Lotto lotto : lottos) {
             int index = getRewardIndex(lotto);
@@ -28,9 +31,9 @@ public class RewardCoordinator {
                 continue;
             }
             totalResult[index]++;
-            totalPrice += rewards.get(index).getPrize();
+            totalReward += rewards.get(index).getPrize();
         }
-        return printResult(totalResult);
+        return printResult(totalResult, totalReward);
     }
 
     private int getRewardIndex(Lotto lotto) {
@@ -45,12 +48,18 @@ public class RewardCoordinator {
         return NOT_REWARD;
     }
 
-    private String printResult(int[] totalResult) {
+    private String printResult(int[] totalResult, long totalReward) {
         StringBuilder stringBuilder = new StringBuilder();
         for (int index = totalResult.length-1; index >= 0; index--) {
             String result = rewards.get(index).getRewardInfo() + " - " + totalResult[index] + "개\n";
             stringBuilder.append(result);
         }
-        return stringBuilder.deleteCharAt(stringBuilder.length()-1).toString();
+        stringBuilder.append("총 수익률은 " + formattedRate(totalReward) + "%입니다.");
+
+        return stringBuilder.toString();
+    }
+
+    private String formattedRate(long totalReward) {
+        return String.format("%.1f", (double) totalReward / purchasePrice * 100);
     }
 }

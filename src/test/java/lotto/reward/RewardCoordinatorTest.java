@@ -18,9 +18,11 @@ public class RewardCoordinatorTest {
         WinningNumber winningNumber = mock(WinningNumber.class);
         List<LottoReward> rewards = mockLottoRewards();
         List<Lotto> lottos = mockLottos();
-        String excepted = "5개 일치, 보너스 볼 일치 (30,000,000원) - 1개\n6개 일치 (2,000,000,000원) - 1개\n";
+        String excepted = "5개 일치, 보너스 볼 일치 (30,000,000원) - 1개\n" +
+                "6개 일치 (2,000,000,000원) - 1개\n" +
+                "총 수익률은 200.0%입니다.";
 
-        String result = new RewardCoordinator(winningNumber, rewards).getRewardResult(mockLottos());
+        String result = new RewardCoordinator(winningNumber, rewards, 2000).getRewardResult(lottos);
 
         assertThat(result).isEqualTo(excepted);
     }
@@ -29,6 +31,7 @@ public class RewardCoordinatorTest {
         LottoReward mockLottoReward = mock(LottoReward.class);
         when(mockLottoReward.isSatisfyMatchingCondition(anyInt(), anyInt())).thenReturn(false, true, true);
         when(mockLottoReward.getRewardInfo()).thenReturn( "5개 일치, 보너스 볼 일치 (30,000,000원)", "6개 일치 (2,000,000,000원)");
+        when(mockLottoReward.getPrize()).thenReturn(2000L);
         return List.of(mockLottoReward, mockLottoReward);
     }
 

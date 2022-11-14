@@ -32,7 +32,7 @@ public enum LottoApplicationSetting {
         return new WinningNumber(numbers, bonusNumbers, winningNumberSetting);
     }
 
-    public RewardCoordinator createRewardCoordinator(WinningNumber winningNumber) {
-        return new RewardCoordinator(winningNumber, rewards);
+    public RewardCoordinator createRewardCoordinator(WinningNumber winningNumber, int purchasePrice) {
+        return new RewardCoordinator(winningNumber, rewards, purchasePrice);
     }
 }

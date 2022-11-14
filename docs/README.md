@@ -18,6 +18,7 @@
 
 - RewardCoordinator
     - [x] 해당 로또가 당첨되었는지를 판단하도 결과를 출력
+    - [x] 구매 금액을 통해 수익률을 계산하여 출력
 
 
 - WinningNumber
