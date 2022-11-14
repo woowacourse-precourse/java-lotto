@@ -14,7 +14,6 @@ public class GameController {
         LottoSeller lottoPurchase = new LottoSeller();
 
         lottoPurchase.getPayAmount();
-        lottoPurchase.countTicket();
         lottoPurchase.printTicket();
     }
 

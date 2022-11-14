@@ -15,19 +15,20 @@ public class LottoSeller {
     public void getPayAmount() {
         System.out.println(MESSAGE_INPUT_PAY_AMOUNT);
         this.payAmount = Integer.parseInt(Console.readLine());
-    }
 
-    public int countTicket() {
-        if (payAmount % 1000 == 0) {
-            numberOfTickets = payAmount / 1000;
+        if (payAmount > 0 && payAmount % 1000 == 0) {
+
         }
         if (payAmount % 1000 != 0) {
             throw new IllegalArgumentException(ERROR_INPUT_PAY_AMOUNT);
         }
-        return numberOfTickets;
     }
 
-    public void generateTickets(){
+    public int countTicket() {
+        return payAmount / 1000;
+    }
+
+    public void generateTickets() {
         NumberGenerator newNumbers = new NumberGenerator(numberOfTickets);
         newNumbers.generateNumbers();
         newLottos = newNumbers.myLotto;
