@@ -38,7 +38,7 @@ public class LottoMachine implements Seller{
 
     @Override
     public LottoRanking findLottoRanking(LottoCount lottoCount) {
-        return null;
+        return LottoRanking.of(lottoCount);
     }
 
     private void validateMoney(int money) {

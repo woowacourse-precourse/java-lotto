@@ -9,4 +9,12 @@ public class LottoCount {
         this.lottoCount = lottoCount;
         this.bonus = bonus;
     }
+
+    public int getLottoCount() {
+        return lottoCount;
+    }
+
+    public boolean isBonus() {
+        return bonus;
+    }
 }
