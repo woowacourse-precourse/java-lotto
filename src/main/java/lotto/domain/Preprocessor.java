@@ -26,7 +26,7 @@ public class Preprocessor {
         return new ArrayList<String>(Arrays.asList(numbers));
     }
 
-    public static String addNumberPunctuation(int prizeMoney) {
+    public static String addNumberPunctuation(Number prizeMoney) {
         return NumberFormat.getInstance().format(prizeMoney);
     }
 }
