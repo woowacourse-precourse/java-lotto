@@ -71,11 +71,11 @@ public class LottoGameConsole {
     }
 
     private double calculateRateOfReturn(Map<Rank, Integer> tallyOfRanks, int payment) {
-        double totalProfit = tallyOfRanks.get(FIRST_SIX_MATCHED) * prize.get(FIRST_SIX_MATCHED)
-                + tallyOfRanks.get(SECOND_FIVE_WITH_BONUS) * prize.get(SECOND_FIVE_WITH_BONUS)
-                + tallyOfRanks.get(THIRD_FIVE_MATCHED) * prize.get(THIRD_FIVE_MATCHED)
-                + tallyOfRanks.get(FOURTH_FOUR_MATCHED) * prize.get(FOURTH_FOUR_MATCHED)
-                + tallyOfRanks.get(FIFTH_THREE_MATCHED) * prize.get(FIFTH_THREE_MATCHED);
+        double totalProfit = tallyOfRanks.getOrDefault(FIRST_SIX_MATCHED, 0) * prize.get(FIRST_SIX_MATCHED)
+                + tallyOfRanks.getOrDefault(SECOND_FIVE_WITH_BONUS, 0) * prize.get(SECOND_FIVE_WITH_BONUS)
+                + tallyOfRanks.getOrDefault(THIRD_FIVE_MATCHED, 0) * prize.get(THIRD_FIVE_MATCHED)
+                + tallyOfRanks.getOrDefault(FOURTH_FOUR_MATCHED, 0) * prize.get(FOURTH_FOUR_MATCHED)
+                + tallyOfRanks.getOrDefault(FIFTH_THREE_MATCHED, 0) * prize.get(FIFTH_THREE_MATCHED);
         totalProfit /= payment * 100;
         return Math.round(totalProfit * 10) / 10.0;
     }
