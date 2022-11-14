@@ -10,11 +10,8 @@ public class Lotto {
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
-        numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
-        Collections.sort(numbers);
         validate(numbers);
         System.out.println(numbers);
-
         this.numbers = numbers;
         }
     private void validate(List<Integer> numbers) {
