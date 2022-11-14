@@ -8,6 +8,11 @@ import java.util.List;
 
 public class BuyLotto {
     public static final int LOTTO_PRICE = 1000;
+
+    public int getPrice() {
+        return price;
+    }
+
     int price;
     List<Lotto> lottos;
 
