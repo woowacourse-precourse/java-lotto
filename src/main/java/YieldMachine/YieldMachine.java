@@ -34,8 +34,17 @@ public class YieldMachine {
 
     }
 
-    private int findCountOfSameNumberWithWinningNumber() {
-        return 1;
+    private List<Integer> findCountOfSameNumberWithWinningNumber(BoughtLotto boughtLotto) {
+        List<Integer> matchingNumber = new ArrayList<>(List.of(0, 0));
+        for (Integer winningNumberLottoNumber: winningNumberLotto.getLotto()) {
+            if (boughtLotto.getLotto().contains(winningNumberLottoNumber)) {
+                matchingNumber.set(0, matchingNumber.get(0) + 1);
+            }
+        }
+        if (boughtLotto.getLotto().contains(winningNumberLotto.getBonusNumber())) {
+            matchingNumber.set(1, 1);
+        }
+        return matchingNumber;
     }
 
     private void printYield() {
