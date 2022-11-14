@@ -11,18 +11,9 @@ public class DataProcessing {
 
 
     public List<Integer> sortLottoNumbers(List<Integer> randomNumbers) {
-        List<Integer> sortNumbers = new ArrayList<>();
-        sortNumbers.addAll(randomNumbers);
+        List<Integer> sortNumbers = new ArrayList<>(randomNumbers);
         Collections.sort(sortNumbers);
         return sortNumbers;
-    }
-    public List<List<Integer>> countCreateRandomNumbers(int count) {
-        List<List<Integer>> boxNumbers = new ArrayList<>();
-        for (int i=0;i<count;++i) {
-            Lotto lotto = new Lotto(lottoRandomNumbers());
-            boxNumbers.add(lotto.getNumbers());
-        }
-        return boxNumbers;
     }
 
     public int conversionMoney(String money) {
@@ -32,34 +23,12 @@ public class DataProcessing {
         return conversion;
     }
 
-    public int countLotto(int money) {
-        return money / 1000;
-    }
-
     public String[] splitLottoNumber(String lottoNumbers) {
         ErrorUtil errorUtil = new ErrorUtil();
         String[] splitNumbers = lottoNumbers.split(",");
         errorUtil.errorInputLottoNumber(splitNumbers);
         errorUtil.errorInputCountLottoNumber(splitNumbers);
         return splitNumbers;
-    }
-
-    public List<Integer> lottoNumber(String lottoNumbers) {
-        List<Integer> numbers = new ArrayList<>();
-        ErrorUtil errorUtil = new ErrorUtil();
-        String[] splitNumber = splitLottoNumber(lottoNumbers);
-        for (int i=0;i<splitNumber.length;++i)
-            numbers.add(Integer.parseInt(splitNumber[i]));
-        errorUtil.errorOverlapLottoNumber(numbers);
-        return numbers;
-    }
-
-    public  List<Integer> countWinLotto(List<Integer> lottoNumber, List<List<Integer>> boxRandomNumber,
-                                        int count, int bonusNumber) {
-        List<Integer> countWinLotto = new ArrayList<>();
-        for (int i=0;i<count;++i)
-            countWinLotto.add(winLotto(lottoNumber, boxRandomNumber.get(i), bonusNumber));
-        return countWinLotto;
     }
     public boolean secondWin(List<Integer> randomNumber, int bonusNumber) {
         return randomNumber.contains(bonusNumber);
@@ -72,23 +41,6 @@ public class DataProcessing {
         if (win == 5 && secondWin(randomNumber, bonusNumber))
             win = 7;
         return win;
-    }
-
-    public int[] resultWinLotto(List<Integer> countWin) {
-        int[] resultLotto = {0, 0, 0, 0, 0};
-        for (Integer integer : countWin) {
-            if (integer == 6)
-                resultLotto[4] += 1;
-            else if (integer == 7)
-                resultLotto[3] += 1;
-            else if (integer == 5)
-                resultLotto[2] += 1;
-            else if (integer == 4)
-                resultLotto[1] += 1;
-            else if (integer == 3)
-                resultLotto[0] += 1;
-        }
-        return resultLotto;
     }
 
     public int totalMoney(int[] resultWin) {
