@@ -1,5 +1,7 @@
 package lotto.view;
 
+import lotto.model.enumeration.Reward;
+
 import java.util.Collections;
 import java.util.List;
 
@@ -14,5 +16,18 @@ public class OutputView {
             Collections.sort(computerRandomNumbers.get(i));
             System.out.println(computerRandomNumbers.get(i));
         }
+    }
+
+
+    public static void printStatistics(int[] result) {
+        System.out.println("\n당첨 통계\n" + "---");
+
+        for (int i = 0; i < result.length; i++) {
+            System.out.println(result[i] + "개");
+        }
+    }
+
+    public static void printRate(String rate) {
+        System.out.println("총 수익률은 " + rate + "%입니다.");
     }
 }

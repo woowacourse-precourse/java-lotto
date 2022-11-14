@@ -1,5 +1,6 @@
 package lotto.controller;
 
+import lotto.model.Calculator;
 import lotto.model.Compare;
 import lotto.model.Computer;
 import lotto.view.InputView;
@@ -11,12 +12,14 @@ public class LottoController {
 
     private static final Computer computer = new Computer();
     private static final Compare compare = new Compare();
+    private static final Calculator calculator = new Calculator();
+    private static final int[] REWARD_LEVEL = {5000, 50000, 1500000, 30000000, 2000000000};
 
     public void init() {
         int inputMoney = purchaseLotto();
         List<List<Integer>> computerRandomNumbers = generateRandomNumbers(inputMoney);
         int[] result = compareLottoNumbers(inputMoney, computerRandomNumbers);
-        // createStatistic();
+        createStatistic(inputMoney, result);
     }
 
     private int purchaseLotto() {
@@ -43,4 +46,11 @@ public class LottoController {
         return result;
     }
 
+    private void createStatistic(int inputMoney, int[] result) {
+        int reward = calculator.getReward(REWARD_LEVEL, result);
+        String rate = calculator.getRate(inputMoney, reward);
+
+        OutputView.printStatistics(result);
+        OutputView.printRate(rate);
+    }
 }
