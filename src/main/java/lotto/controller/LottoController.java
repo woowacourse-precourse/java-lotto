@@ -20,7 +20,12 @@ public class LottoController {
         LottoAmount amount = inputAmount();
         LottoTicket lottoTicket = purchaseLottoTicket(amount);
         WinningNumbers winningNumbers = createWinningNumbers();
+        LottoResult lottoResult = getLottoResult(lottoTicket, winningNumbers);
     }
+    private LottoResult getLottoResult(LottoTicket lottoTicket, WinningNumbers winningNumbers) {
+        return lottoTicket.calLottoWinResult(winningNumbers);
+    }
+
     private WinningNumbers createWinningNumbers() {
         Lotto inputLottoNumbers = getInputLottoNumbers();
         int bonusNumber = getBonusNumber();
