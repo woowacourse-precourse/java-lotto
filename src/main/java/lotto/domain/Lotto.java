@@ -2,14 +2,11 @@ package lotto.domain;
 
 import static lotto.domain.LottoValidator.validateLottoNumbers;
 
+import java.util.Collections;
 import java.util.List;
 
 public class Lotto {
     private final List<Integer> numbers;
-
-    private static final int SECOND = 7;
-
-    private static final int THIRD = 5;
 
     public Lotto(List<Integer> numbers) {
         validateLottoNumbers(numbers);
@@ -17,6 +14,7 @@ public class Lotto {
     }
 
     public List<Integer> getNumbers() {
+        Collections.sort(this.numbers);
         return this.numbers;
     }
 
@@ -28,13 +26,13 @@ public class Lotto {
                 .count();
 
         if (isSecond(count, bonusNumber)) {
-            count = SECOND;
+            count = 7;
         }
 
         return count;
     }
 
     private boolean isSecond(int count, int bonusNumber) {
-        return count == THIRD && numbers.contains(bonusNumber);
+        return count == 5 && numbers.contains(bonusNumber);
     }
 }
