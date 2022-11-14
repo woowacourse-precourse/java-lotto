@@ -7,33 +7,33 @@ import java.util.List;
 
 public class InputView {
 
-  private String purchaseMoney;
-  private String winningNumbers;
-  private String bonusNumber;
+    private String purchaseMoney;
+    private String winningNumbers;
+    private String bonusNumber;
 
-  public int enterPurchaseMoney() {
-    this.purchaseMoney = Console.readLine();
-    return Integer.parseInt(purchaseMoney);
-  }
+    public int enterPurchaseMoney() {
+        this.purchaseMoney = Console.readLine();
+        return Integer.parseInt(purchaseMoney);
+    }
 
 
-  public List<Integer> enterWinningNumbers() {
-    this.winningNumbers = Console.readLine();
-    return changeTypeForSystem(replaceComma(winningNumbers));
-  }
+    public List<Integer> enterWinningNumbers() {
+        this.winningNumbers = Console.readLine();
+        return changeTypeForSystem(replaceComma(winningNumbers));
+    }
 
-  public int enterBonusNumber() {
-    this.bonusNumber = Console.readLine();
-    return Integer.parseInt(bonusNumber);
-  }
+    public int enterBonusNumber() {
+        this.bonusNumber = Console.readLine();
+        return Integer.parseInt(bonusNumber);
+    }
 
-  private String replaceComma(String winningNumbers) {
-    return winningNumbers.replace(",", "");
-  }
+    private String replaceComma(String winningNumbers) {
+        return winningNumbers.replace(",", "");
+    }
 
-  private List<Integer> changeTypeForSystem(String winningNumbers) {
-    return Arrays.asList(Integer.parseInt(winningNumbers));
-  }
+    private List<Integer> changeTypeForSystem(String winningNumbers) {
+        return Arrays.asList(Integer.parseInt(winningNumbers));
+    }
 }
 
 

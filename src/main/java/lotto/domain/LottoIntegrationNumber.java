@@ -5,17 +5,17 @@ import java.util.List;
 
 public class LottoIntegrationNumber {
 
-  private final List<List<Integer>> numbersIntegration;
+    private final List<List<Integer>> numbersIntegration;
 
-  LottoIntegrationNumber(){
-    numbersIntegration = new ArrayList<>();
-  }
+    LottoIntegrationNumber() {
+        numbersIntegration = new ArrayList<>();
+    }
 
-  public void addNumbersIntegration(List<Integer> randomNumbers){
-    numbersIntegration.add(randomNumbers);
-  }
+    public void addNumbersIntegration(List<Integer> randomNumbers) {
+        numbersIntegration.add(randomNumbers);
+    }
 
-  public List<List<Integer>> getNumbersIntegration(){
-    return numbersIntegration;
-  }
+    public List<List<Integer>> getNumbersIntegration() {
+        return numbersIntegration;
+    }
 }
