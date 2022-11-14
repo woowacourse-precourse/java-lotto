@@ -14,9 +14,9 @@
     - 로또 번호 조건
       - 숫자 범위 : 1 ~ 45
       - 중복 x
-- [ ] 당첨 번호 설정
-  - [ ] 당첨 번호 입력 요청 메시지 출력 : "당첨 번호를 입력해 주세요."
-  - [ ] 당첨 번호 입력 받기 -> camp.nextstep.edu.missionutils.Console의 readLine() 사용
+- [x] 당첨 번호 설정
+  - [x] 당첨 번호 입력 요청 메시지 출력 : "당첨 번호를 입력해 주세요."
+  - [x] 당첨 번호 입력 받기 -> camp.nextstep.edu.missionutils.Console의 readLine() 사용
     - 입력 조건
         - 숫자 범위 : 1 ~ 45
         - 중복 x
