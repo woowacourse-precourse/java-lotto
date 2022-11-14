@@ -4,6 +4,7 @@ import java.util.List;
 
 import lotto.utils.LottoInfo;
 import lotto.utils.Validator;
+import lotto.view.OutputView;
 
 public class Lotto {
     private final List<Integer> numbers;
@@ -18,7 +19,7 @@ public class Lotto {
             Validator.listLengthCheck(numbers, LottoInfo.LENGTH.getNumber());
             Validator.containDuplicate(numbers);
         } catch (IllegalArgumentException exception) {
-            System.out.println(exception.getMessage());
+            OutputView.printErrorMessage(exception.getMessage());
             throw new IllegalArgumentException();
         }
     }
