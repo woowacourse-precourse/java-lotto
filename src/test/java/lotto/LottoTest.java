@@ -41,4 +41,14 @@ class LottoTest {
     void decideToBuyLottoTest() {
         assertThat(server.decideToBuyLotto(8000)).isEqualTo(8);
     }
+
+    @DisplayName("로또 당첨 번호와 사용자 로또 번호를 비교 후, 일치 개수 테스트")
+    @Test
+    void compareLottoNumberAfterCommonNumber() {
+        List<Integer> winLottoNumber = List.of(1, 5, 15, 27, 35, 44);
+        List<Integer> lottoNumber = List.of(1, 6, 14, 27, 39, 42);
+        assertThat(server.compareLottoNumber(winLottoNumber, lottoNumber)).isEqualTo(2);
+    }
+
+
 }
