@@ -23,7 +23,7 @@ public class Lotto {
 
     private void validateRange(List<Integer> numbers){
         for(int i=0; i<numbers.size(); i++){
-            if(numbers.get(i)>=1 && numbers.get(i)<=45){
+            if(numbers.get(i)<1 || numbers.get(i)>45){
                 throw new IllegalArgumentException(ErrorMessage.LOTTO_RANGE_ERROR.print());
             }
         }
@@ -35,4 +35,5 @@ public class Lotto {
             }
         }
     }
+    public List<Integer> getLotto(){ return numbers;}
 }
