@@ -35,7 +35,7 @@ public class Validation {
         if (hasDuplicatedNumber(winningNumbers)) {
             throw new IllegalArgumentException("[ERROR] 중복되는 당첨 번호가 존재합니다.");
         }
-        if (!isCorrectRange(winningNumbers)) {
+        if (!isNumbersInCorrectRange(winningNumbers)) {
             throw new IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
         }
     }
