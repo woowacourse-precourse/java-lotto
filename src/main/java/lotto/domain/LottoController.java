@@ -64,19 +64,30 @@ public class LottoController {
         }
         return new Lotto(lottoNumber);
     }
-    public static int bonusInput(Lotto lotto){
+    private int bonusInput(Lotto lotto){
         System.out.println("보너스번호를 입력해 주세요.");
         String bonus_str = readLine();
         try {
+//            if(isString_in_1to9(bonus_str))
+//                throw new IllegalArgumentException();
             int bonus_num = Integer.parseInt(bonus_str);
             if(bonus_num<1 && bonus_num>45)
+                throw new IllegalArgumentException();
+            if(isLottoDuplicate(bonus_num,lotto))
                 throw new IllegalArgumentException();
             return bonus_num;
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException();
         }
     }
-    private boolean isString_in_1to9(String str) {
-        return str.matches("[1-9.]+");
+//    private boolean isString_in_1to9(String str) {
+//        return str.matches("[1-9.]+");
+//    }
+    private boolean isLottoDuplicate(int num, Lotto lotto) {
+        for(int lotto_num : lotto.getNumbers()){
+            if(num == lotto_num)
+                return true;
+        }
+        return false;
     }
 }
