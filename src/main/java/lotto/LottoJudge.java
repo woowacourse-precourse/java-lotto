@@ -1,6 +1,8 @@
 package lotto;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class LottoJudge {
 
@@ -26,37 +28,38 @@ public class LottoJudge {
         int matcherCount = countByMatcher(userLotto);
         boolean isContainBonus = checkByBonus(userLotto);
 
-        if(matcherCount == 6)
+        if (matcherCount == 6) {
             return LottoPlace.MATCHED_6;
-        if(matcherCount == 5) {
-            if(isContainBonus)
+        }
+        if (matcherCount == 5) {
+            if (isContainBonus) {
                 return LottoPlace.MATCHED_5_WITH_BONUS;
+            }
             return LottoPlace.MATCHED_5;
         }
-        if(matcherCount == 4)
+        if (matcherCount == 4) {
             return LottoPlace.MATCHED_4;
-        if(matcherCount == 3)
+        }
+        if (matcherCount == 3) {
             return LottoPlace.MATCHED_3;
+        }
         return LottoPlace.NONE;
     }
 
     private int countByMatcher(Lotto userLotto) {
-        int count = 0;
-        List<LottoNumber> matcherLotto = matcher.getNumbers();
-        for (LottoNumber number : userLotto.getNumbers()) {
-            if (matcherLotto.contains(number)) {
-                ++count;
-            }
-        }
-        return count;
+        Set<LottoNumber> notDuplicatedLottoNumbers = new HashSet<LottoNumber>();
+
+        List<LottoNumber> matcherNumbers = matcher.getNumbers();
+        List<LottoNumber> userNumbers = userLotto.getNumbers();
+
+        notDuplicatedLottoNumbers.addAll(matcherNumbers);
+        notDuplicatedLottoNumbers.addAll(userNumbers);
+
+        return matcherNumbers.size() + userNumbers.size()
+                - notDuplicatedLottoNumbers.size();
     }
 
     private boolean checkByBonus(Lotto userLotto) {
-        for (LottoNumber number : userLotto.getNumbers()) {
-            if (bonus.equals(number)) {
-                return true;
-            }
-        }
-        return false;
+        return userLotto.getNumbers().contains(bonus);
     }
 }
