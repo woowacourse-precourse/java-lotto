@@ -1,14 +1,18 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import lotto.Model.Money;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomUniqueNumbersInRangeTest;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class ApplicationTest extends NsTest {
+
+    private static final String ERROR_MESSAGE = "[ERROR]";
 
     @Test
     void 기능_테스트() {
@@ -43,6 +47,14 @@ class ApplicationTest extends NsTest {
                 List.of(1, 3, 5, 14, 22, 45)
         );
     }
+
+    @Test
+    void 예외_테스트() {
+        assertThatThrownBy(() -> Money.setInputMoney("1000j"))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining(ERROR_MESSAGE);
+    }
+
 
     @Override
     public void runMain() {
