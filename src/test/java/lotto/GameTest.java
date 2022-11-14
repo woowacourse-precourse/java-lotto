@@ -12,14 +12,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class GameTest extends NsTest {
     @Test
-    void makeWinningTest(){
-        makeWinning("1,2,3,4,5,6");
-        assertThat(winning).isEqualTo(
-                List.of(1,2,3,4,5,6)
-        );
-    }
-
-    @Test
     void resultViewTest() {
         assertRandomUniqueNumbersInRangeTest(
                 () -> {
