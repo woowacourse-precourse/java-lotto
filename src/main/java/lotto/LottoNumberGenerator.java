@@ -1,6 +1,8 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
@@ -14,8 +16,8 @@ public class LottoNumberGenerator {
     }
 
     public static List<Integer> generateNumbers() {
-        List<Integer> numbers = Randoms.pickUniqueNumbersInRange(START_NUMBER, END_NUMBER, COUNT);
+        List<Integer> numbers = new ArrayList<>(Randoms.pickUniqueNumbersInRange(START_NUMBER, END_NUMBER, COUNT));
         numbers.sort(Comparator.naturalOrder());
-        return numbers;
+        return Collections.unmodifiableList(numbers);
     }
 }
