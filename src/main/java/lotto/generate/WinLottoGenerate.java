@@ -4,7 +4,6 @@ import camp.nextstep.edu.missionutils.Console;
 import lotto.domain.Lotto;
 import lotto.domain.WinLotto;
 import lotto.enums.StringEnum;
-import lotto.output.Output;
 
 import java.util.Arrays;
 import java.util.List;

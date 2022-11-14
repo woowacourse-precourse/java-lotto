@@ -3,7 +3,6 @@ package lotto.generate;
 import camp.nextstep.edu.missionutils.Console;
 import lotto.domain.Buyer;
 import lotto.enums.StringEnum;
-import lotto.output.Output;
 
 public class BuyerGenerate {
 
