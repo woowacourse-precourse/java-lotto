@@ -12,8 +12,11 @@ public class ConsoleInput implements Input{
     }
 
     @Override
-    public int enterInt() {
+    public Integer enterInteger() {
         String inputMessage = Console.readLine();
+        if (inputMessage == "") {
+            return null;
+        }
         return stringToInt(inputMessage);
     }
 

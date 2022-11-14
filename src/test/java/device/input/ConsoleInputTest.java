@@ -26,6 +26,16 @@ public class ConsoleInputTest {
     }
 
     @Test
+    void enterIntegerTest_emptyCase() {
+        given(Console.readLine()).willReturn("");
+        Integer expect = null;
+
+        int result = new ConsoleInput().enterInt();
+
+        assertThat(result).isEqualTo(expect);
+    }
+
+    @Test
     void enterIntegerTest_abnormalCase() {
         given(Console.readLine()).willReturn("12T");
 

@@ -4,5 +4,5 @@ import java.util.List;
 
 public interface Input {
     List<Integer> enterIntegerList();
-    int enterInt();
+    Integer enterInteger();
 }
