@@ -2,6 +2,7 @@ package lotto;
 
 import java.util.ArrayList;
 import java.util.List;
+import lotto.view.OutputView;
 
 public class Winning {
     private static final String ERROR_MESSAGE = "[ERROR] ";
@@ -33,11 +34,11 @@ public class Winning {
     public static void prize(List<Lotto> lottoTickets, List<Integer> winningNumber, String bonusNumber) {
         validateBonusNumber(winningNumber, bonusNumber);
         List<Integer> prizeList = new ArrayList<>();
+        countMatchList(lottoTickets, winningNumber, prizeList);
 
-        savePrizeList(lottoTickets, winningNumber, prizeList);
     }
 
-    private static void savePrizeList(List<Lotto> lottoTickets, List<Integer> winningNumber, List<Integer> prizeList) {
+    private static void countMatchList(List<Lotto> lottoTickets, List<Integer> winningNumber, List<Integer> prizeList) {
         for(int i = 0; i < lottoTickets.size(); i++) {
             int matchCount;
             matchCount = winningNumberCount(lottoTickets, winningNumber, i);
