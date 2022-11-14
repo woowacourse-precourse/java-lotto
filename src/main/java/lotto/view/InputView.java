@@ -33,10 +33,11 @@ public class InputView {
         System.out.println(MESSAGE_INPUT_WINNING_NUMBER);
     }
 
-    private static List<Integer> castToList(String inputWinning) {
+    public static List<Integer> castToList(String inputWinning) {
         List<Integer> winningNumbers = new ArrayList<>();
 
         for(String input : inputWinning.split(",")) {
+            InputValidation.isValidInput(input);
             winningNumbers.add(Integer.valueOf(input));
         }
 
