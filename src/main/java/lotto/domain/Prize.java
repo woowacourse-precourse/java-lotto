@@ -24,7 +24,7 @@ public class Prize {
 
     public void inputBonusNumber() {
         String bonus = InputPrint.bonusNumberInput();
-        Validation.bonusNumberValid(bonus);
+        Validation.bonusNumberValid(bonus, prizeNumbers);
         this.bonusNumber = Integer.parseInt(bonus);
     }
 
@@ -48,5 +48,9 @@ public class Prize {
 
     public int getBonusNumber() {
         return bonusNumber;
+    }
+
+    public void setPrizeNumbers(List<Integer> prizeNumbers) {
+        this.prizeNumbers = prizeNumbers;
     }
 }

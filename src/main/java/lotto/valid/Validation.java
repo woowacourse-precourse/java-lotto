@@ -46,9 +46,13 @@ public class Validation {
         }
     }
 
-    public static void bonusNumberValid(String bonus) {
+    public static void bonusNumberValid(String bonus, List<Integer> prizeNumbers) {
         if (!bonus.matches("-?\\d+(\\.\\d+)?")) {
             throw new IllegalArgumentException(ErrorType.INVALID_INPUT_TYPE.getText());
+        }
+
+        if (prizeNumbers.contains(Integer.parseInt(bonus))) {
+            throw new IllegalArgumentException(ErrorType.INVALID_DUPLICATED_NUMBER.getText());
         }
 
         if (Integer.parseInt(bonus) < NumberBoundaryType.MINIMUM_INDEX.getBoundary()
