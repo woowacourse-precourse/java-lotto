@@ -1,10 +1,9 @@
 package lotto.view;
 
 import camp.nextstep.edu.missionutils.Console;
-import lotto.Lotto;
+import lotto.domain.Lotto;
 import lotto.status.WinningStatus;
 
-import javax.swing.plaf.IconUIResource;
 import java.text.DecimalFormat;
 import java.util.List;
 
@@ -35,12 +34,12 @@ public class View {
 
     public static void printWinningResult(List<Integer> result) {
         for (int i = 3; i < 8; i++) {
-           printResult(result,i);
+           printEachResult(result,i);
         }
         System.out.println();
     }
 
-    private static void printResult(List<Integer> result, Integer i) {
+    private static void printEachResult(List<Integer> result, Integer i) {
         if (i == 6) {
             System.out.printf("%d개 일치, 보너스 볼 일치 (%s원) - %d개", WinningStatus.find(i).getNumberMatchCount(),
                     decFormat.format(WinningStatus.find(i).getReward()), result.get(i));

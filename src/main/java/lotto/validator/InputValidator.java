@@ -1,7 +1,8 @@
 package lotto.validator;
 
-import lotto.Lotto;
-import lotto.repository.LottoRepository;
+import lotto.domain.BonusNumber;
+import lotto.domain.Lotto;
+import lotto.domain.Money;
 import lotto.status.BoundaryStatus;
 import lotto.status.ExceptionStatus;
 import lotto.status.NumberStatus;
@@ -11,19 +12,17 @@ import java.util.List;
 
 public class InputValidator {
 
-    public static void checkUserInputMoney(String userInputMoney) {
+    public static Money checkUserInputMoney(String userInputMoney) {
         if(checkZeroInHead(userInputMoney)){
-            System.out.println(ExceptionStatus.ZERO_IN_HEAD.getText());
             throw new IllegalArgumentException(ExceptionStatus.ZERO_IN_HEAD.getText());
         }
         if (checkOnlyNumber(userInputMoney)) {
-            System.out.println("[ERROR]");
             throw new IllegalArgumentException(ExceptionStatus.ZERO_IN_HEAD.getText());
         }
         if (checkDivide(userInputMoney)) {
-            System.out.println(ExceptionStatus.NOT_DIVIDE_BASE_PRICE.getText());
             throw new IllegalArgumentException(ExceptionStatus.NOT_DIVIDE_BASE_PRICE.getText());
         }
+        return new Money(Integer.parseInt(userInputMoney));
     }
 
     private static boolean checkZeroInHead(String userInputMoney) {
@@ -54,17 +53,16 @@ public class InputValidator {
     public static void checkWinningNumber(String winningNumber) {
         List<String> checkNumber = Arrays.asList(winningNumber.split(","));
         if(checkLength(checkNumber)){
-            System.out.println(ExceptionStatus.NOT_CORRECT_SHAPE.getText());
             throw new IllegalArgumentException(ExceptionStatus.NOT_CORRECT_SHAPE.getText());
         }
         if(checkOnlyNumber(checkNumber)){
-            System.out.println(ExceptionStatus.CONTAIN_ONLY_NUMBER.getText());
             throw new IllegalArgumentException(ExceptionStatus.CONTAIN_ONLY_NUMBER.getText());
         }
         if(checkNumberBoundary(checkNumber)){
-            System.out.println(ExceptionStatus.NOT_BOUNDARY_NUMBER.getText());
             throw new IllegalArgumentException(ExceptionStatus.NOT_BOUNDARY_NUMBER.getText());
         }
+
+
     }
 
     private static boolean checkNumberBoundary(List<String> checkNumber) {
@@ -95,24 +93,21 @@ public class InputValidator {
         return false;
     }
 
-    public static void checkBonusNumber(String bonusNumber) {
+    public static BonusNumber checkBonusNumber(String bonusNumber, Lotto winningLotto) {
         if(checkIsNumber(bonusNumber)){
-            System.out.println(ExceptionStatus.NOT_NUMBER.getText());
             throw new IllegalArgumentException(ExceptionStatus.NOT_NUMBER.getText());
         }
         if(checkNumberBoundary(bonusNumber)){
-            System.out.println(ExceptionStatus.NOT_BOUNDARY_NUMBER.getText());
             throw new IllegalArgumentException(ExceptionStatus.NOT_BOUNDARY_NUMBER.getText());
         }
-        if(checkNumberInWinningNumber(bonusNumber)){
-            System.out.println(ExceptionStatus.IS_DUPLICATED.getText());
+        if(checkNumberInWinningNumber(bonusNumber,winningLotto)){
             throw new IllegalArgumentException(ExceptionStatus.IS_DUPLICATED.getText());
         }
 
+        return new BonusNumber(Integer.parseInt(bonusNumber));
     }
 
-    private static boolean checkNumberInWinningNumber(String bonusNumber) {
-        Lotto winningLotto = LottoRepository.getLastWinningLotto();
+    private static boolean checkNumberInWinningNumber(String bonusNumber, Lotto winningLotto) {
         if(winningLotto.getNumbers().contains(Integer.parseInt(bonusNumber))){
             return true;
         }

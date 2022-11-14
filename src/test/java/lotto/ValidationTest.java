@@ -1,5 +1,6 @@
 package lotto;
 
+import lotto.domain.Lotto;
 import lotto.repository.LottoRepository;
 import lotto.service.LottoService;
 import lotto.validator.InputValidator;
@@ -10,6 +11,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -41,7 +43,7 @@ public class ValidationTest {
     @CsvSource(value = {"1,2,3,4,5,6:6","1,2,3,4,5,6:ㄱ","1,2,3,4,5,6:46"} , delimiter = ':')
     void createBonusNumber(String winningNumber , String input) {
         lottoService.createWinningLotto(winningNumber);
-        assertThatThrownBy(() -> InputValidator.checkBonusNumber(input))
+        assertThatThrownBy(() -> InputValidator.checkBonusNumber(input,new Lotto(List.of(1,2,3,4,5,6))))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 

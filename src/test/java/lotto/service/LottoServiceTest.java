@@ -1,6 +1,6 @@
 package lotto.service;
 
-import lotto.Lotto;
+import lotto.domain.Lotto;
 import lotto.repository.LottoRepository;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -10,7 +10,6 @@ import org.junit.jupiter.params.provider.ValueSource;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 class LottoServiceTest {
     private LottoService lottoService = new LottoService();

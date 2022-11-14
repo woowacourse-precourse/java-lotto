@@ -1,10 +1,9 @@
 package lotto.service;
 
-import lotto.Lotto;
+import lotto.domain.*;
 import lotto.comparator.LottoComparator;
 import lotto.repository.LottoRepository;
 import lotto.status.BoundaryStatus;
-import lotto.status.NumberStatus;
 import lotto.status.WinningStatus;
 import lotto.validator.InputValidator;
 import lotto.utils.RandomUtils;
@@ -17,14 +16,17 @@ import java.util.stream.Collectors;
 
 public class LottoService {
 
-    public static Integer getTheNumberOfLotto(String purchaseMoney) {
-        InputValidator.checkUserInputMoney(purchaseMoney);
-        savePurchaseMoney(purchaseMoney);
-        return Integer.parseInt(purchaseMoney) / NumberStatus.BASE_PRICE_OF_LOTTO.getNumber();
+    private LottoRepository lottoRepository = new LottoRepository();
+    private LottoComparator lottoComparator = new LottoComparator();
+
+    public  Money getTheNumberOfLotto(String purchaseMoney) {
+        Money userMoney = InputValidator.checkUserInputMoney(purchaseMoney);
+        saveUserMoney(userMoney);
+        return userMoney;
     }
 
-    private static void savePurchaseMoney(String purchaseMoney) {
-        LottoRepository.savePurchaseMoney(purchaseMoney);
+    private  void saveUserMoney(Money userMoney) {
+        lottoRepository.saveUserMoney(userMoney);
     }
 
     public List<Lotto> createUserLotto(Integer numberOfLotto) {
@@ -38,48 +40,54 @@ public class LottoService {
     }
 
     private void saveUserLotto(List<Lotto> userLottoGroup) {
-        LottoRepository.saveUserLotto(userLottoGroup);
+        lottoRepository.saveUserLotto(userLottoGroup);
     }
 
     public void createWinningLotto(String winningNumber) {
         InputValidator.checkWinningNumber(winningNumber);
-        Lotto winningLotto = new Lotto(Arrays.asList(winningNumber.split(",")).stream()
-                .map(s -> Integer.parseInt(s))
-                .collect(Collectors.toList()));
+        List<Integer> numbers = transferToNumbers(winningNumber);
+        Lotto winningLotto = new Lotto(numbers);
         saveWinningLotto(winningLotto);
     }
 
+    private List<Integer> transferToNumbers(String winningNumbers) {
+        return Arrays.asList(winningNumbers.split(",")).stream()
+                .map(s -> Integer.parseInt(s))
+                .collect(Collectors.toList());
+    }
+
     private void saveWinningLotto(Lotto winningLotto) {
-        LottoRepository.saveWinningLotto(winningLotto);
+        lottoRepository.saveWinningLotto(winningLotto);
     }
 
-    public void createBonusNumber(String bonusNumber) {
-        InputValidator.checkBonusNumber(bonusNumber);
-        saveBonusNumber(Integer.parseInt(bonusNumber));
+    public void createBonusNumber(String userBonusNumber) {
+        Lotto winningLotto = lottoRepository.getLastWinningLotto();
+        BonusNumber bonusNumber =InputValidator.checkBonusNumber(userBonusNumber,winningLotto);
+        saveBonusNumber(bonusNumber);
     }
 
-    private void saveBonusNumber(int bonusNumber) {
-        LottoRepository.saveBonusNumber(bonusNumber);
+    private void saveBonusNumber(BonusNumber bonusNumber) {
+        lottoRepository.saveBonusNumber(bonusNumber);
     }
-
     public List<Integer> compareLotto() {
-        List<Lotto> userLottoGroup = LottoRepository.getLastUserLottoGroup();
-        Lotto winningLotto = LottoRepository.getLastWinningLotto();
-        Integer bonusNumber = LottoRepository.getBonusNumber();
-        List<Integer> winningResult = LottoComparator.compareUserLottoAndWinningLotto(
+        List<Lotto> userLottoGroup = lottoRepository.getLastUserLottoGroup();
+        Lotto winningLotto = lottoRepository.getLastWinningLotto();
+        BonusNumber bonusNumber = lottoRepository.getBonusNumber();
+
+        List<Integer> compareResult = lottoComparator.compareUserLottoAndWinningLotto(
                 userLottoGroup, bonusNumber, winningLotto);
 
-        saveWinningResult(winningResult);
-        return winningResult;
+        saveWinningResult(compareResult);
+        return compareResult;
     }
 
     private void saveWinningResult(List<Integer> winningResult) {
-        LottoRepository.saveWinningResult(winningResult);
+        lottoRepository.saveWinningResult(winningResult);
     }
 
     public String getProfit() {
-        List<Integer> winningResult = LottoRepository.getWinningResult();
-        Double purchaseMoney = Double.valueOf(LottoRepository.getPurchaseMoney());
+        List<Integer> winningResult = lottoRepository.getWinningResult();
+        Double purchaseMoney = Double.valueOf(lottoRepository.getUserMoney().getMoney());
         Long totalPrice = 0L;
         for (int i = BoundaryStatus.MIN_WINNING_COUNT.getNumber(); i < winningResult.size(); i++) {
             totalPrice += winningResult.get(i) * WinningStatus.find(i).getReward();

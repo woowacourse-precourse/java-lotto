@@ -1,24 +1,23 @@
 package lotto.controller;
 
-import lotto.Lotto;
+import lotto.domain.Lotto;
+import lotto.domain.Money;
 import lotto.service.LottoService;
 import lotto.view.View;
 
 import java.util.List;
 
 public class LottoController {
-    private LottoService lottoService;
-    public LottoController() {
-        this.lottoService = new LottoService();
-    }
+    private LottoService lottoService =  new LottoService();
+
     public void startGame() {
         String userInputMoney = View.printUserInputMoney();
         getTheNumberOfLotto(userInputMoney);
     }
 
     private void getTheNumberOfLotto(String userInputMoney) {
-        Integer numberOfLotto = lottoService.getTheNumberOfLotto(userInputMoney);
-        getUserLotto(numberOfLotto);
+        Money userMoney = lottoService.getTheNumberOfLotto(userInputMoney);
+        getUserLotto(userMoney.getTheNumberOfLotto());
     }
 
     private void getUserLotto(Integer numberOfLotto) {
@@ -44,8 +43,8 @@ public class LottoController {
     }
 
     private void compareLotto() {
-        List<Integer> result = lottoService.compareLotto();
-        showWinningResult(result);
+        List<Integer> compareResult = lottoService.compareLotto();
+        showWinningResult(compareResult);
     }
 
     private void showWinningResult(List<Integer> result) {

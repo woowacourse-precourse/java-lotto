@@ -1,6 +1,8 @@
 package lotto;
 
 import lotto.comparator.LottoComparator;
+import lotto.domain.BonusNumber;
+import lotto.domain.Lotto;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -16,7 +18,7 @@ public class ComparatorTest {
     @ValueSource(strings = {"1,2,3,4,5,6"})
     void compareEachNumber() {
         Integer luckyCount = LottoComparator.compareEachNumber(new Lotto(List.of(1, 2, 3, 4, 5, 6)),
-                new Lotto(List.of(1,2,3,4,5,8)),7);
+                new Lotto(List.of(1,2,3,4,5,8)),new BonusNumber(7));
 
         assertThat(luckyCount).isEqualTo(5);
     }

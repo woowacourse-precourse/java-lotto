@@ -1,7 +1,7 @@
 package lotto.utils;
 
 import camp.nextstep.edu.missionutils.Randoms;
-import lotto.Lotto;
+import lotto.domain.Lotto;
 import lotto.status.NumberStatus;
 
 import java.util.ArrayList;

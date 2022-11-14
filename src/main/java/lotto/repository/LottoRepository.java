@@ -1,56 +1,56 @@
 package lotto.repository;
 
-import lotto.Lotto;
+import lotto.domain.BonusNumber;
+import lotto.domain.Lotto;
+import lotto.domain.Money;
 
 import java.util.List;
 
-import static java.util.Arrays.asList;
-
 public class LottoRepository {
 
-    private static List<Integer> lastWinningResult;
-    private static Integer lastPurchaseMoney;
-    private static List<Lotto> lastUserLottoGroup;
-    private static Lotto lastWinningLotto;
-    private static Integer lastBonusNumber;
+    private  List<Integer> lastCompareResult;
+    private  Money lastuserMoney;
+    private  List<Lotto> lastUserLottoGroup;
+    private  Lotto lastWinningLotto;
+    private  BonusNumber lastBonusNumber;
 
-    public static void saveUserLotto(List<Lotto> userLottoGroup) {
+    public  Money getUserMoney() {
+        return lastuserMoney;
+    }
+
+    public  void saveUserLotto(List<Lotto> userLottoGroup) {
         lastUserLottoGroup = userLottoGroup;
     }
 
-    public static void saveWinningLotto(Lotto winningLotto) {
+    public  void saveWinningLotto(Lotto winningLotto) {
         lastWinningLotto = winningLotto;
     }
 
-    public static Lotto getLastWinningLotto() {
+    public  Lotto getLastWinningLotto() {
         return lastWinningLotto;
     }
 
-    public static List<Lotto> getLastUserLottoGroup() {
+    public  List<Lotto> getLastUserLottoGroup() {
         return lastUserLottoGroup;
     }
 
-    public static void saveBonusNumber(int bonusNumber) {
+    public  void saveBonusNumber(BonusNumber bonusNumber) {
         lastBonusNumber = bonusNumber;
     }
 
-    public static Integer getBonusNumber() {
+    public  BonusNumber getBonusNumber() {
         return lastBonusNumber;
     }
 
-    public static void savePurchaseMoney(String purchaseMoney) {
-        lastPurchaseMoney = Integer.parseInt(purchaseMoney);
+    public  void saveWinningResult(List<Integer> winningResult) {
+        lastCompareResult = winningResult;
     }
 
-    public static void saveWinningResult(List<Integer> winningResult) {
-        lastWinningResult = winningResult;
+    public  List<Integer> getWinningResult() {
+        return lastCompareResult;
     }
 
-    public static List<Integer> getWinningResult() {
-        return lastWinningResult;
-    }
-
-    public static Integer getPurchaseMoney() {
-        return lastPurchaseMoney;
+    public  void saveUserMoney(Money userMoney) {
+        lastuserMoney = userMoney;
     }
 }
