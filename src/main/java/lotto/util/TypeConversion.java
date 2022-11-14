@@ -27,7 +27,7 @@ public class TypeConversion {
         return Arrays.asList(separatedInput);
     }
 
-    public static List<Integer> stringListToIntList(String input) {
+    public static List<Integer> stringToIntList(String input) {
 
         List<String> playerNumbers = splitInput(input);
 

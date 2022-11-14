@@ -1,6 +1,6 @@
 package lotto.view;
 
-import static lotto.util.TypeConversion.stringListToIntList;
+import static lotto.util.TypeConversion.stringToIntList;
 import static lotto.util.TypeConversion.stringToInt;
 import static lotto.util.Validator.*;
 import static lotto.util.Validator.validateUnitStandard;
@@ -34,7 +34,7 @@ public class InputView {
         System.out.println(ASK_NUMBERS_MESSAGE);
         String input = Console.readLine();
 
-        List<Integer> playerNumbers = stringListToIntList(input);
+        List<Integer> playerNumbers = stringToIntList(input);
         validatePlayNumbersCount(playerNumbers);
         validatePlayNumbersRange(playerNumbers);
         validatePlayNumbersDuplication(playerNumbers);

@@ -37,7 +37,7 @@ class TypeConversionTest {
         String input = "1,2,3,4,5,6";
 
         // when
-        List<Integer> result = TypeConversion.stringListToIntList(input);
+        List<Integer> result = TypeConversion.stringToIntList(input);
 
         // then
         assertThat(result).containsExactly(1, 2, 3, 4, 5, 6);
@@ -50,7 +50,7 @@ class TypeConversionTest {
         String input = "1,2,3,4,5, 6";
 
         // expected
-        assertThatThrownBy(() -> TypeConversion.stringListToIntList(input))
+        assertThatThrownBy(() -> TypeConversion.stringToIntList(input))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 }
