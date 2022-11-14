@@ -9,20 +9,17 @@ public class Utils {
     public static void validateLottoNumbers(List<Integer> numbers) {
         Set<Integer> overlapRemoveNumbers = new HashSet<>(numbers);
         if (numbers.size() != 6 || overlapRemoveNumbers.size() != 6) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(Error.COUNT_ERROR.getMessage());
         }
-        if (!validateNumbersRange(overlapRemoveNumbers)) {
-            throw new IllegalArgumentException();
-        }
+        validateNumbersRange(overlapRemoveNumbers);
     }
 
-    public static boolean validateNumbersRange(Set<Integer> numbers) {
+    private static void validateNumbersRange(Set<Integer> numbers) {
         for (int n : numbers) {
             if (n < LottoInfo.START_NUMBER.getValue() || n > LottoInfo.END_NUMBER.getValue()) {
-                return false;
+                throw new IllegalArgumentException(Error.RANGE_ERROR.getMessage());
             }
         }
-        return true;
     }
 
     public static List<Integer> pickUnique6Numbers() {

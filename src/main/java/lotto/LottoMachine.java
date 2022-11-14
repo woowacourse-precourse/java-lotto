@@ -39,10 +39,10 @@ public class LottoMachine {
 
     public int getBonusNumber(int number, List<Integer> winning) {
         if (winning.contains(number)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(Error.DUPLICATE_ERROR.getMessage());
         }
         if (number < LottoInfo.START_NUMBER.getValue() || number > LottoInfo.END_NUMBER.getValue()) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(Error.RANGE_ERROR.getMessage());
         }
         return number;
     }
