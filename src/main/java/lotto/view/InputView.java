@@ -15,4 +15,11 @@ public class InputView {
         validator.moneyValid(input);
         return Integer.parseInt(input);
     }
+
+    public String createWinningNumbers(){
+        System.out.println(INPUT_LOTTO_NUMBER);
+        String input = Console.readLine();
+        validator.isRightNumbers(input);
+        return input;
+    }
 }
