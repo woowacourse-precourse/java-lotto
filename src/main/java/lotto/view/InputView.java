@@ -38,7 +38,15 @@ public class InputView {
 
     private static List<Integer> splitLottoNumbers(String lotto){
         return Arrays.stream(lotto.split(","))
-                .map(Integer::parseInt)
+                .map(InputView::parseIntOrThrowException)
                 .collect(Collectors.toList());
+    }
+
+    private static Integer parseIntOrThrowException(String lotto){
+        try {
+            return Integer.parseInt(lotto);
+        } catch (Exception e){
+            throw new IllegalArgumentException(NO_NUMBERIC_VALUE_ERROR);
+        }
     }
 }
