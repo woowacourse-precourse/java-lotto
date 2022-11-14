@@ -3,6 +3,7 @@ package lotto;
 import java.util.ArrayList;
 import java.util.List;
 
+import static Error.ErrorInput.isDigit;
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class User {
@@ -16,10 +17,10 @@ public class User {
   }
 
   private void setTicket() {
-
     System.out.println("구입금액을 입력해 주세요.");
-    money = Integer.parseInt(readLine());
-    ticket = MathUtils.numberOfLotto(money);
+    String money = readLine();
+    this.money = isDigit(money);
+    ticket = MathUtils.numberOfLotto(this.money);
   }
 
   public void setLottos() {
