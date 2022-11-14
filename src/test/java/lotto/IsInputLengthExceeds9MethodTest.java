@@ -2,7 +2,7 @@ package lotto;
 
 import org.junit.jupiter.api.Test;
 
-import static lotto.Application.isNoOfDigitsExceeds9;
+import static lotto.Application.isInputLengthExceeds9;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class IsInputLengthExceeds9MethodTest {
@@ -11,7 +11,7 @@ class IsInputLengthExceeds9MethodTest {
     @Test
     void isInputLengthExceeds9_메소드_예외_테스트1() {
         String numberInput = "3141592653589793238462643383279502884197";
-        assertThatThrownBy(() -> isNoOfDigitsExceeds9(numberInput))
+        assertThatThrownBy(() -> isInputLengthExceeds9(numberInput))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(ERROR_MESSAGE);
     }
@@ -19,7 +19,7 @@ class IsInputLengthExceeds9MethodTest {
     @Test
     void isInputLengthExceeds9_메소드_예외_테스트2() {
         String numberInput = "1234567890";
-        assertThatThrownBy(() -> isNoOfDigitsExceeds9(numberInput))
+        assertThatThrownBy(() -> isInputLengthExceeds9(numberInput))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(ERROR_MESSAGE);
     }
@@ -27,6 +27,6 @@ class IsInputLengthExceeds9MethodTest {
     @Test
     void isInputLengthExceeds9_메소드_정상_입력_테스트1() {
         String numberInput = "123456789";
-        isNoOfDigitsExceeds9(numberInput);
+        isInputLengthExceeds9(numberInput);
     }
 }
