@@ -54,10 +54,8 @@ public class LottoResult {
     public String toString() {
         StringBuilder lottoResultMessage = new StringBuilder(CommonMessageConst.LINE_FEED);
 
-        lottoResultMessage.append(LOTTO_RESULT_MESSAGE_PREFIX)
-                .append(CommonMessageConst.LINE_FEED)
-                .append(LOTTO_RESULT_MESSAGE_CONTOUR)
-                .append(CommonMessageConst.LINE_FEED);
+        lottoResultMessage.append(LOTTO_RESULT_MESSAGE_PREFIX).append(CommonMessageConst.LINE_FEED)
+                .append(LOTTO_RESULT_MESSAGE_CONTOUR).append(CommonMessageConst.LINE_FEED);
 
         String lottoRankingMessage = processLottoRankingMessage();
         lottoResultMessage.append(lottoRankingMessage).append(CommonMessageConst.LINE_FEED);

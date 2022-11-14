@@ -26,6 +26,9 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 class LottoTest {
 
+    private static final int VALID_NUMBER_COUNT = 6;
+    private static final String NUMBER_SEPARATOR = ",";
+
     @DisplayName("로또 번호의 개수가 6개가 넘어가면 예외가 발생한다.")
     @Test
     void createLottoByOverSize() {
@@ -39,9 +42,6 @@ class LottoTest {
         assertThatThrownBy(() -> new Lotto(List.of(1, 2, 3, 4, 5, 5)))
                 .isInstanceOf(IllegalArgumentException.class);
     }
-
-    private static final int VALID_NUMBER_COUNT = 6;
-    private static final String NUMBER_SEPARATOR = ",";
 
     @Nested
     @DisplayName("List<Integer> numbers를 매개변수로 받는 생성자는")
@@ -203,10 +203,7 @@ class LottoTest {
         @DisplayName("생성한 Lotto의 numbers 필드를 오름차순으로 정해진 형식에 맞는 문자열을 반환한다.")
         void to_string_test() {
             List<Integer> uniqueNumbers = createUniqueNumbers();
-
-            Lotto lotto = new Lotto(uniqueNumbers);
-            String lottoPrintLog = lotto.toString();
-
+            String lottoPrintLog = new Lotto(uniqueNumbers).toString();
             assertThat(lottoPrintLog).contains(LOTTO_PRINT_LOG_OPEN_BRACKET, LOTTO_PRINT_LOG_CLOSE_BRACKET);
 
             lottoPrintLog = lottoPrintLog.substring(1, lottoPrintLog.length() - 1);

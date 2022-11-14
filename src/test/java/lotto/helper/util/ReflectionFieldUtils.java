@@ -11,8 +11,8 @@ public final class ReflectionFieldUtils {
 
     public static <T> Field processReflectionField(Class<T> clazz, String fieldName) {
         Field field = Arrays.stream(clazz.getDeclaredFields())
-            .filter(target -> target.getName().equals(fieldName))
-            .findAny().orElseThrow(FieldNotFoundException::new);
+                .filter(target -> target.getName().equals(fieldName))
+                .findAny().orElseThrow(FieldNotFoundException::new);
 
         field.setAccessible(true);
         return field;

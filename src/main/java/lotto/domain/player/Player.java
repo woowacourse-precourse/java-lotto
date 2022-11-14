@@ -33,7 +33,6 @@ public class Player {
                     LottoNumberConst.MAX_NUMBER_INT_VALUE,
                     LottoNumberConst.NUMBER_SIZE
             );
-
             lottos.add(new Lotto(uniqueNumbers));
             lottoAmount = lottoAmount.subtract(BigInteger.ONE);
         }

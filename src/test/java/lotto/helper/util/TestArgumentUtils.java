@@ -17,12 +17,12 @@ public final class TestArgumentUtils {
 
     public static Map<LottoRanking, Integer> createArgumentMap(List<Integer> numberOfWins) {
         return Map.of(
-            LottoRanking.RANKING_FIRST, numberOfWins.get(RANKING_FIRST_INDEX),
-            LottoRanking.RANKING_SECOND, numberOfWins.get(RANKING_SECOND_INDEX),
-            LottoRanking.RANKING_THIRD, numberOfWins.get(RANKING_THIRD_INDEX),
-            LottoRanking.RANKING_FOURTH, numberOfWins.get(RANKING_FOURTH_INDEX),
-            LottoRanking.RANKING_FIFTH, numberOfWins.get(RANKING_FIFTH_INDEX),
-            LottoRanking.RANKING_NOTHING, 0
+                LottoRanking.RANKING_FIRST, numberOfWins.get(RANKING_FIRST_INDEX),
+                LottoRanking.RANKING_SECOND, numberOfWins.get(RANKING_SECOND_INDEX),
+                LottoRanking.RANKING_THIRD, numberOfWins.get(RANKING_THIRD_INDEX),
+                LottoRanking.RANKING_FOURTH, numberOfWins.get(RANKING_FOURTH_INDEX),
+                LottoRanking.RANKING_FIFTH, numberOfWins.get(RANKING_FIFTH_INDEX),
+                LottoRanking.RANKING_NOTHING, 0
         );
     }
 }

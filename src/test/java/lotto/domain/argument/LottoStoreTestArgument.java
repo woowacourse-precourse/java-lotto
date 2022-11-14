@@ -22,8 +22,7 @@ public final class LottoStoreTestArgument {
                     List.of(LottoRanking.RANKING_FIFTH,
                                 LottoRanking.RANKING_FIRST,
                                 LottoRanking.RANKING_THIRD,
-                                LottoRanking.RANKING_FIFTH,
-                                LottoRanking.RANKING_SECOND), "5000",
-                    TestArgumentUtils.createArgumentMap(List.of(1, 1, 1, 0, 2))));
+                                LottoRanking.RANKING_SECOND), "4000",
+                    TestArgumentUtils.createArgumentMap(List.of(1, 1, 1, 0, 1))));
     }
 }
