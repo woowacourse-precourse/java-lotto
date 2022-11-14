@@ -77,6 +77,27 @@ public class LottoController {
         return bonusNumber;
     }
 
+    public int getWinningNumberScore(List<Integer> numbers, WinningNumbers winningNumbers) {
+        int matchWinningNumber = 0;
+
+        for (int i = 0; i < winningNumbers.getWinningNumbers().size(); i++) {
+            List<Integer> winningNumber = winningNumbers.getWinningNumbers();
+            if (numbers.contains(winningNumber.get(i))) {
+                matchWinningNumber++;
+            }
+        }
+        return matchWinningNumber;
+    }
+
+    public boolean getBonusNumberScore(List<Integer> numbers, BonusNumber bonusNumber) {
+        boolean matchBonusNumber = false;
+
+        if (numbers.contains(bonusNumber.convertBonusNumber())) {
+            matchBonusNumber = true;
+        }
+        return matchBonusNumber;
+    }
+
     public HashMap<LottoRanking, Integer> makeWinningList(ArrayList<Lotto> lottos, WinningNumbers winningNumbers, BonusNumber bonusNumber) {
         HashMap<LottoRanking, Integer> winningList = new HashMap<>();
         for (LottoRanking lottoRanking : LottoRanking.values()) {
@@ -90,27 +111,6 @@ public class LottoController {
             winningList.put(LottoRanking.getRanking(matchWinningNumber, matchBonusNumber), winningList.get(LottoRanking.getRanking(matchWinningNumber, matchBonusNumber)) + 1);
         }
         return winningList;
-    }
-
-    public boolean getBonusNumberScore(List<Integer> numbers, BonusNumber bonusNumber) {
-        boolean matchBonusNumber = false;
-
-        if (numbers.contains(bonusNumber)) {
-            matchBonusNumber = true;
-        }
-        return matchBonusNumber;
-    }
-
-    public int getWinningNumberScore(List<Integer> numbers, WinningNumbers winningNumbers) {
-        int matchWinningNumber = 0;
-
-        for (int i = 0; i < winningNumbers.getWinningNumbers().size(); i++) {
-            List<Integer> winningNumber = winningNumbers.getWinningNumbers();
-            if (numbers.contains(winningNumber.get(i))) {
-                matchWinningNumber++;
-            }
-        }
-        return matchWinningNumber;
     }
 
     public void printWinningList(HashMap<LottoRanking, Integer> winningList) {
