@@ -35,6 +35,16 @@ public class Lotto {
         return new Lotto(numbers);
     }
 
+    public boolean contains(int number) {
+        return numbers.contains(number);
+    }
+
+    public Rank match(WinningNumbers winningNumbers) {
+        int matchCount = (int) numbers.stream().filter(winningNumbers.winningNumbers::contains).count();
+        boolean matchBonusNumber = numbers.contains(winningNumbers.bonusNumber);
+        return Rank.of(matchCount, matchBonusNumber);
+    }
+
     @Override
     public String toString() {
         return numbers.stream().sorted().collect(Collectors.toList()).toString();
