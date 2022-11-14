@@ -57,7 +57,7 @@ public class User {
     public void setBonusNumber() {
         String bonusNumber = Console.readLine();
         if (isValidBonusNumber(bonusNumber)) {
-            this.purchasePrice = Integer.parseInt(bonusNumber);
+            this.bonusNumber = Integer.parseInt(bonusNumber);
             return;
         }
         throw new IllegalArgumentException();
@@ -65,12 +65,15 @@ public class User {
 
     private boolean isValidBonusNumber(String bonusNumber) {
         boolean isNumeric = Pattern.matches(PRICE_PATTERN, bonusNumber);
-        boolean isBonusNumberSize = (bonusNumber.length() == BONUS_NUMBER_SIZE);
 
-        return (isNumeric && isBonusNumberSize);
+        return isNumeric;
     }
 
     public int getPurchaseNumber() {
         return purchasePrice/1000;
+    }
+
+    public List<Integer> getWinningNumbers() {
+        return winningNumbers;
     }
 }
