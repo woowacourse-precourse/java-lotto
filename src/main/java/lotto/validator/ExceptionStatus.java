@@ -9,7 +9,6 @@ public enum ExceptionStatus {
     NO_CONTAIN_WINNING_LOTTO_NUMBERS("보너스 숫자는 당첨 번호를 포함할 수 없습니다"),
     REGEX_EXCEPTION("올바른 당첨번호 입력 방식이 아닙니다");
 
-
     private final String message;
     private static final String PREFIX = "[ERROR] ";
 
