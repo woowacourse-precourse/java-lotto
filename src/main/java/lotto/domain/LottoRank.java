@@ -4,11 +4,12 @@ import java.util.Arrays;
 
 public enum LottoRank {
 
-    FIRST( 6,  0, 2000000000),
-    SECOND(5, 1, 30000000),
-    THIRD(5, 0, 1500000),
-    FOURTH(4, 0, 50000),
-    FIFTH(3, 0, 5000);
+    FIRST( 6,  0, 2_000_000_000),
+    SECOND(5, 1, 30_000_000),
+    THIRD(5, 0, 1_500_000),
+    FOURTH(4, 0,  50_000),
+    FIFTH(3, 0,  5_000),
+    FAIL(0, 0, 0);
 
     private final int matchCount;
 
@@ -27,44 +28,22 @@ public enum LottoRank {
                 .filter(lottoRank -> lottoRank.matchCount == result)
                 .filter(lottoRank -> lottoRank.bonusCount == bonus)
                 .findAny()
-                .orElseThrow();
+                .orElse(FAIL);
     }
 
     public int findTotalMoney (int cnt) {
         return winMoney * cnt;
     }
 
-    @Override
-    public String toString() {
-        return String.format("%d개 일치%s (%s원)", matchCount, isBonus(), splitByComma(winMoney));
-    }
-
-    private String splitByComma(Integer winMoney) {
-        StringBuilder result = new StringBuilder();
-        result.append(winMoney.toString());
-
-        int cnt = 1;
-        for(int i = result.length() - 1; i >= 0 ; i--) {
-            if (cnt % 3 == 0) {
-                result.insert(i, ",");
-            }
-            cnt += 1;
-        }
-        return result.toString();
-    }
-
-    private String isBonus() {
-        if (bonusCount == 1) {
-            return ", 보너스 볼 일치";
-        }
-        return "";
+    public boolean isBonusNumber() {
+        return bonusCount == 1;
     }
 
     public int matchCount() {
         return matchCount;
     }
 
-    public int bonusCount() {
-        return bonusCount;
+    public int winMoney() {
+        return winMoney;
     }
 }

@@ -3,12 +3,15 @@ package lotto.view;
 import lotto.domain.Lotto;
 import lotto.domain.LottoRank;
 
+import java.text.DecimalFormat;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
 public class OutputView {
+
+    private static final DecimalFormat decFormat = new DecimalFormat("###,###");
 
     public static void printLottoList(List<Lotto> lotties) {
         String printFormat = String.format(View.OUTPUT_LOTTO_ISSUE.message(), lotties.size());
@@ -29,16 +32,23 @@ public class OutputView {
         System.out.println(View.OUTPUT_STATISTICS.message());
         System.out.println(View.OUTPUT_DOTTED_LINE.message());
 
-        List<LottoRank> collect = winLottoInfo.keySet()
+        winLottoInfo.keySet()
                 .stream()
+                .filter(rank -> !rank.equals(LottoRank.FAIL))
                 .sorted(Comparator.comparingInt(LottoRank::matchCount))
-                .sorted(Comparator.comparingInt(LottoRank::bonusCount))
-                .collect(Collectors.toList());
+                .sorted((o1, o2) -> Boolean.compare(o1.isBonusNumber(), o2.isBonusNumber()))
+                .forEach(rank -> printResultAccordingToBonus(rank, winLottoInfo.get(rank)));
+    }
 
-        for (LottoRank rank : collect) {
-            String printFormat = String.format(View.OUTPUT_WIN_RESULT.message(), rank, winLottoInfo.get(rank));
-            System.out.println(printFormat);
+    private static void printResultAccordingToBonus(LottoRank rank, int totalCount) {
+        String winMoney = decFormat.format(rank.winMoney());
+        String printFormat = String.format(View.OUTPUT_WIN_RESULT.message(), rank.matchCount(), winMoney, totalCount);
+
+        if (rank.isBonusNumber()) {
+            printFormat =  String.format(View.OUTPUT_BONUS_RESULT.message(), rank.matchCount(), winMoney, totalCount);
         }
+
+        System.out.println(printFormat);
     }
 
     public static void printYieldResult(double lottoYield) {

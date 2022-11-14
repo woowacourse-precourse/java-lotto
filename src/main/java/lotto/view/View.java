@@ -8,7 +8,8 @@ public enum View {
     OUTPUT_LOTTO_ISSUE("%d개를 구매했습니다."),
     OUTPUT_STATISTICS( "당첨 통계"),
     OUTPUT_DOTTED_LINE("---"),
-    OUTPUT_WIN_RESULT("%s - %d개"),
+    OUTPUT_WIN_RESULT("%d개 일치 (%s원) - %d개"),
+    OUTPUT_BONUS_RESULT( "%d개 일치, 보너스 볼 일치 (%s원) - %d개"),
     OUTPUT_TOTAL_YIELD("총 수익률은 %.1f%%입니다.");
 
     private final String message;
