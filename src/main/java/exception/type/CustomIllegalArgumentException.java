@@ -1,7 +1,7 @@
 package exception.type;
 
 public class CustomIllegalArgumentException extends IllegalArgumentException {
-    private static final String PREFIX_ERROR = "[ERROR] ";
+    public static final String PREFIX_ERROR = "[ERROR] ";
     private String message;
 
     public CustomIllegalArgumentException(String message) {

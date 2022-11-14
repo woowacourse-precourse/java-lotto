@@ -1,6 +1,8 @@
 package exception;
 
-public class MoneyIllegalArgumentException extends IllegalArgumentException {
+import exception.type.CustomIllegalArgumentException;
+
+public class MoneyIllegalArgumentException extends CustomIllegalArgumentException {
     private String message;
 
     public MoneyIllegalArgumentException(String message) {
