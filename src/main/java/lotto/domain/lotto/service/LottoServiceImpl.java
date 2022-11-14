@@ -1,7 +1,12 @@
 package lotto.domain.lotto.service;
 
+import lotto.domain.lotto.BonusBall;
+import lotto.domain.lotto.Lotto;
 import lotto.domain.lotto.Lottos;
 import lotto.domain.money.Money;
+import lotto.global.utils.convert.ConvertUtils;
+
+import java.util.List;
 
 public class LottoServiceImpl implements LottoService {
 
@@ -26,6 +31,20 @@ public class LottoServiceImpl implements LottoService {
     @Override
     public void sendLottosInfo(Lottos lottos) {
         lottoMessenger.sendLottosInfo(lottos);
+    }
+
+    @Override
+    public Lotto requestWinningNumbers() {
+        final String inputNumbers = lottoMessenger.requestWinningNumbers();
+        final List<Integer> numbers = ConvertUtils.convertStringToIntegerList(inputNumbers);
+        return Lotto.create(numbers);
+    }
+
+    @Override
+    public BonusBall requestBonusNumber() {
+        final String inputBonusNumber = lottoMessenger.requestBonusNumber();
+        final Integer bonusNumber = ConvertUtils.convertStringToInteger(inputBonusNumber);
+        return BonusBall.create(bonusNumber);
     }
 
 }

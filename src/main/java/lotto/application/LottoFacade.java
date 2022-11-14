@@ -1,6 +1,9 @@
 package lotto.application;
 
+import lotto.domain.lotto.BonusBall;
+import lotto.domain.lotto.Lotto;
 import lotto.domain.lotto.Lottos;
+import lotto.domain.lotto.WinningLotto;
 import lotto.domain.lotto.service.LottoService;
 import lotto.domain.money.Money;
 import lotto.domain.money.service.MoneyService;
@@ -24,5 +27,11 @@ public class LottoFacade {
         final Lottos lottos = lottoService.buyLottos(money);
         lottoService.sendLottosInfo(lottos);
         return lottos;
+    }
+
+    public WinningLotto createWinningLotto() {
+        final Lotto lotto = lottoService.requestWinningNumbers();
+        final BonusBall bonusBall = lottoService.requestBonusNumber();
+        return WinningLotto.create(lotto, bonusBall);
     }
 }

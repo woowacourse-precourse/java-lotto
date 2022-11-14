@@ -17,11 +17,15 @@ public class Lottos {
         return new Lottos(lottos);
     }
 
+    public List<Lotto> getLottos() {
+        return lottos;
+    }
+
     public Integer size() {
         return lottos.size();
     }
 
     public void sendInfo() {
-        lottos.forEach(lotto -> System.out.println(LEFT_BRACKET + lotto.getNumbers() + RIGHT_BRACKET));
+        lottos.forEach(lotto -> System.out.println(LEFT_BRACKET + lotto.numbers() + RIGHT_BRACKET));
     }
 }

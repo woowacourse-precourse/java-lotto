@@ -26,9 +26,8 @@ public class Lotto {
 
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ErrorMessage.INVALID_SIZE);
         }
-
         if (invalidRange(numbers)) {
             throw new IllegalArgumentException(ErrorMessage.INVALID_RANGE);
         }
@@ -45,11 +44,13 @@ public class Lotto {
         return numbers.stream().anyMatch(number -> number < Number.MIN_NUMBER_RANGE || number > Number.MAX_NUMBER_RANGE);
     }
 
-    public String getNumbers() {
+    public List<Integer> getNumbers() {
+        return numbers;
+    }
+
+    public String numbers() {
         return numbers.stream()
                 .map(String::valueOf)
                 .collect(Collectors.joining(COMMA_WITH_BLANK));
     }
-
-    // TODO: 추가 기능 구현
 }

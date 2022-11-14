@@ -28,4 +28,8 @@ public class Money {
     public Integer getCount() {
         return money / Number.ONE_THOUSAND;
     }
+
+    public Integer getMoney() {
+        return money;
+    }
 }

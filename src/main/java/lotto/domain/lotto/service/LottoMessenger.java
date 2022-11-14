@@ -7,4 +7,8 @@ public interface LottoMessenger {
     String requestMoney();
 
     void sendLottosInfo(Lottos lottos);
+
+    String requestWinningNumbers();
+
+    String requestBonusNumber();
 }
