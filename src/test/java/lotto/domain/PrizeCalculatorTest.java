@@ -73,9 +73,7 @@ public class PrizeCalculatorTest {
         PrizeCalculator prizeCalculator = new PrizeCalculator();
         assertThat(prizeCalculator.getPrizeAmount(matchingNumber, bonus)).isEqualTo(prizeAmount);
     }
-    /*@ParameterizedTest
-    @MethodSource("provideParametersForResultTest")
-    @DisplayName("로또 결과를 출력한다.") Lotto lotto, List<Integer> winningNumber, int bonusNumber, String result*/
+
     @Test
     @DisplayName("3개 일치 하나인 경우의 로또 결과를 출력한다.")
     void getResultStringForLottoOne3Match() {

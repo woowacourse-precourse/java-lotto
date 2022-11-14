@@ -44,12 +44,16 @@ public class PrizeCalculator {
         long prizeAmount = 0;
         for (PrizeStatistic prizeType : PrizeStatistic.values()) {
             if (prizeType.getMatchingNumbers() == numberOfMatches && prizeType.geBonus() == doesBonusMatch){
-                prizeCount.merge(prizeType, 1, Integer::sum);
+                recordPrizeResult(prizeType);
                 prizeAmount = prizeType.getPrizeAmount();
                 return prizeAmount;
             }
         }
         return prizeAmount;
+    }
+
+    private void recordPrizeResult(PrizeStatistic prizeType) {
+        prizeCount.merge(prizeType, 1, Integer::sum);
     }
 
     public void printPrizeResult() {
