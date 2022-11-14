@@ -20,6 +20,8 @@ public class Client {
         int moneyAmount = parseStringToIntOrElseThrow(moneyAmountString);
 
         ThousandMultipleOrElseThrow(moneyAmount);
+        moneyAmount /= 1000;
+
         print(moneyAmount + PrintMessage.amount);
 
         return moneyAmount;

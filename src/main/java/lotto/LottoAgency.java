@@ -8,8 +8,8 @@ public class LottoAgency {
     private NumberGenerator numberGenerator;
     private int amount;
 
-    public LottoAgency(int money, NumberGenerator numberGenerator) {
-        this.amount = issueAmount(money);
+    public LottoAgency(int amount, NumberGenerator numberGenerator) {
+        this.amount = amount;
         this.numberGenerator = numberGenerator;
     }
 
@@ -29,10 +29,6 @@ public class LottoAgency {
         }
 
         return lottos;
-    }
-
-    private int issueAmount(int money) {
-        return money / 1000;
     }
 
     private boolean isDuplicated(List<Integer> numbers) {
