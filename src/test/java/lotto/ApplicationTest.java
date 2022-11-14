@@ -54,6 +54,14 @@ class ApplicationTest extends NsTest {
         });
     }
 
+    @Test
+    void 구입금액이_1000원단위가_아닌_경우_예외_테스트() {
+        assertSimpleTest(() -> {
+            runException("5500");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});

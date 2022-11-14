@@ -24,9 +24,13 @@ public class Application {
         int purchaseAmount = Integer.parseInt(purchaseAmount_);
         int lottoQuantity = purchaseAmount / 1000;
 
-        if (purchaseAmount % 1000 != 0)
-            throw new IllegalArgumentException(ERROR_MESSAGE + "구입 금액은 1000원 단위여야 합니다.");
-
+        try {
+            if (purchaseAmount % 1000 != 0)
+                throw new IllegalArgumentException();
+        } catch (IllegalArgumentException e) {
+            System.out.println(ERROR_MESSAGE + "구입 금액은 1000원 단위여야 합니다.");
+            return;
+        }
 
         LottoGenerator generator = new LottoGenerator();
         Lotto[] mylottos = generator.buyLottos(lottoQuantity);
