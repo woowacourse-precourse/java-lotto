@@ -117,6 +117,6 @@ public abstract class Utility {
     }
 
     public static double calculateProfitPercentage(long spentAmount, long totalPrizeAmount){
-        return Math.round((totalPrizeAmount/spentAmount)*100)/100.0;
+        return Math.round((totalPrizeAmount/spentAmount)*10)/10.0;
     }
 }
