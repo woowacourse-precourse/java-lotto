@@ -8,7 +8,7 @@ import java.util.stream.Collectors;
 public class c4fiberParser {
     public static Integer getIntegerFromString(String input) {
         if (isParsable(input)) {
-            Integer.parseInt(input);
+            return Integer.parseInt(input);
         }
 
         return 0;
