@@ -1,8 +1,6 @@
 package controller;
 
-import domain.LottoGenerator;
-import domain.LottoPurchaseAmount;
-import domain.WinningTicket;
+import domain.*;
 import lotto.LottoTickets;
 import view.InputView;
 import view.OutputView;
@@ -14,7 +12,7 @@ public class LottoGameController {
 
     public void run() {
         LottoPurchaseAmount lottoPurchaseAmount = inputMoney();
-        LottoTickets lottoTickets = purchaseLotto((int) lottoPurchaseAmount.calculateNumberOfLottoTickets());
+        LottoTickets lottoTickets = purchaseLotto(lottoPurchaseAmount.calculateNumberOfLottoTickets());
         WinningTicket winningTicket = getWinningTicket();
     }
 

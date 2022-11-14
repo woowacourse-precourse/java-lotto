@@ -12,7 +12,7 @@ public class LottoPurchaseAmount {
         this.amount = amount; 
     }
 
-    public double calculateNumberOfLottoTickets() {
+    public int calculateNumberOfLottoTickets() {
         return amount / MIN_COST;
     }
 
