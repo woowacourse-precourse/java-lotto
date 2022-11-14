@@ -1,9 +1,6 @@
 package lotto.controller;
 
-import lotto.model.Lotto;
-import lotto.model.LottoCount;
-import lotto.model.LottoTicket;
-import lotto.model.LuckyNumbers;
+import lotto.model.*;
 import lotto.view.InputView;
 import lotto.view.OutputView;
 
@@ -15,6 +12,9 @@ public class LottoController {
         LottoCount amount = requestUserAmount();
         LottoTicket lottoTicket = buyTickets(amount);
         LuckyNumbers luckyNumbers = getInputLuckyNumbers();
+        Result result = getResult(lottoTicket,luckyNumbers);
+        printResult(amount, result);
+
 
     }
 
@@ -44,5 +44,15 @@ public class LottoController {
             throw new IllegalArgumentException();
         }
 
+    }
+
+    private Result getResult(LottoTicket lottoTicket, LuckyNumbers luckyNumbers){
+        return lottoTicket.calculateStatistic(luckyNumbers);
+    }
+
+    private void printResult(LottoCount amount, Result result){
+        OutputView.printResult();
+        OutputView.printLottoResult(result);
+        OutputView.printProfit((float)result.calculatePrize()/(float)amount.getAmount());
     }
 }

@@ -32,4 +32,12 @@ public class LuckyNumbers {
         return luckyNumbers;
     }
 
+    public boolean contains(Integer integer) {
+        return luckyNumbers.contains(integer);
+    }
+
+    public LottoRank calculateRanking(Lotto lotto) {
+        int cnt = luckyNumbers.countSameNum(lotto);
+        return LottoRank.valueOf(cnt,lotto.contains(bonusNumber));
+    }
 }

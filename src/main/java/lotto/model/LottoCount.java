@@ -22,4 +22,7 @@ public class LottoCount {
         }
     }
 
+    public int getAmount(){
+        return amount;
+    }
 }

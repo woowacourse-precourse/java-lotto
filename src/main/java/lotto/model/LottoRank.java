@@ -1,7 +1,9 @@
 package lotto.model;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.function.BiPredicate;
+import java.util.stream.Collectors;
 
 public enum LottoRank {
     NOTHING(0, 0, (correctNumber, matchBonus) -> correctNumber < 3),
@@ -28,5 +30,23 @@ public enum LottoRank {
                 .filter(lottoRank -> lottoRank.isMatch.test(sameCount, bonus))
                 .findFirst()
                 .orElseThrow(() -> new IllegalArgumentException("[ERROR] 조건에 맞지 않는 당첨입니다."));
+    }
+
+    public static List<LottoRank> getWithoutDefault() {
+        return Arrays.stream(LottoRank.values())
+                .filter(rank -> !rank.equals(NOTHING))
+                .collect(Collectors.toList());
+    }
+
+    public long multiple(Integer count) {
+        return (long) prizeAmount * count;
+    }
+
+    public int getCorrectNumber() {
+        return correctNumber;
+    }
+
+    public int getPrizeAmount() {
+        return  prizeAmount;
     }
 }

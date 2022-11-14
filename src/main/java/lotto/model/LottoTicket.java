@@ -5,6 +5,9 @@ import lotto.view.OutputView;
 
 import java.util.*;
 
+import static java.util.stream.Collectors.collectingAndThen;
+import static java.util.stream.Collectors.toList;
+
 public class LottoTicket {
     private final List<Lotto> lottoTickets = new ArrayList<>();
 
@@ -29,6 +32,12 @@ public class LottoTicket {
         return lottoTickets;
     }
 
-
+    public Result calculateStatistic(LuckyNumbers luckyNumbers){
+        List<LottoRank> lottoRanks = lottoTickets.stream()
+                .map(luckyNumbers::calculateRanking)
+                .filter(Objects::nonNull)
+                .collect(collectingAndThen(toList(),Collections::unmodifiableList));
+        return new Result(lottoRanks);
+    }
 
 }
