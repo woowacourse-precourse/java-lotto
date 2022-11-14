@@ -26,7 +26,7 @@ public class Application {
         List<Lotto> lotteries = purchaseLotteries(payment);
 
         List<Integer> winningNumbers = inputWinningNumbers();
-        int bonus = inputBonusNumber();
+        int bonus = inputBonusNumber(winningNumbers);
 
         List<Integer> rankCount = getRankCount(
                 lotteries,
@@ -73,12 +73,45 @@ public class Application {
         return winningNumbers;
     }
 
-    public static int inputBonusNumber() {
-        // 보너스 번호 입력
+    public static int inputBonusNumber(List<Integer> winningNumbers) {
         System.out.println(INPUT_BONUS_NUMBER_SENTENCE);
-        int bonus = Integer.parseInt(Console.readLine());
+        String bonusInput = Console.readLine();
+        int bonus = validateBonusNumber(bonusInput, winningNumbers);
         System.out.println();
         return bonus;
+    }
+
+    public static int validateBonusNumber(
+            String bonusInput,
+            List<Integer> winningNumbers
+    ) {
+        // String의 input이 Integer로 제대로 변환되는지 확인
+        int bonus = validateNumber(bonusInput);
+
+        // 1~45 범위의 수인지 확인
+        validateValidRangeNumber(bonus);
+
+        // 보너스 번호가 당첨 번호에 있는지 확인
+        if (winningNumbers.contains(bonus)) {
+            throw new IllegalArgumentException();
+        }
+        return bonus;
+    }
+
+    public static int validateNumber(String input) {
+        int output;
+        try{
+            output = Integer.parseInt(input);
+        } catch (NumberFormatException e){
+            throw new IllegalArgumentException();
+        }
+        return output;
+    }
+
+    public static void validateValidRangeNumber(int num) {
+        if (num < 1 || num > 45) {
+            throw new IllegalArgumentException();
+        }
     }
 
     public static List<Integer> generateSortedRandomNumbers() {
