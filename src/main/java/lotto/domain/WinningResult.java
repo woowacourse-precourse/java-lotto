@@ -14,26 +14,26 @@ public class WinningResult {
     private Map<Ranking, Integer> winningResult;
 
     public WinningResult(Lottos lottos, WinningNumbers winningNumbers) {
-        this.winningResult = initialWinningResult();
-        putWinningResult(lottos, winningNumbers);
+        this.winningResult = initialize();
+        put(lottos, winningNumbers);
     }
 
-    private Map<Ranking, Integer> initialWinningResult() {
+    private Map<Ranking, Integer> initialize() {
         return Arrays.stream(Ranking.values())
                 .collect(Collectors.toMap(value -> value, count -> 0, (a, b) -> b, () -> new EnumMap<>(Ranking.class)));
     }
 
-    public void putWinningResult(Lottos lottos, WinningNumbers winningNumbers) {
+    public void put(Lottos lottos, WinningNumbers winningNumbers) {
         List<Ranking> rankings = winningNumbers.calculateRanking(lottos);
         for (Ranking ranking : rankings) {
             winningResult.put(ranking, winningResult.get(ranking) + 1);
         }
     }
 
-    private String makeRankingMessage() {
+    private String makeMessage() {
         StringBuilder result = new StringBuilder();
         for (Ranking ranking : Ranking.values()) {
-            makeWinningResultMessageExceptNothing(result, ranking);
+            makeMessageExceptNothing(result, ranking);
         }
         return WINNING_RESULT_START_MESSAGE + result;
     }
@@ -43,7 +43,7 @@ public class WinningResult {
                 .mapToDouble(ranking -> (double) ranking.getPrize() * winningResult.get(ranking)).sum();
     }
 
-    private void makeWinningResultMessageExceptNothing(StringBuilder result, Ranking ranking) {
+    private void makeMessageExceptNothing(StringBuilder result, Ranking ranking) {
         if (ranking != Ranking.NOTHING) {
             result.append(String.format(WINNING_RESULT_MESSAGE, ranking.toString(), winningResult.get(ranking)));
         }
@@ -51,6 +51,6 @@ public class WinningResult {
 
     @Override
     public String toString() {
-        return makeRankingMessage();
+        return makeMessage();
     }
 }
