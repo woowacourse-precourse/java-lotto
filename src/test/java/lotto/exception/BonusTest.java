@@ -33,4 +33,14 @@ public class BonusTest {
             assertThat(e.getMessage()).isEqualTo(notOneMessage);
         }
     }
+
+    @Test
+    @DisplayName("1 ~ 45 범위를 벗어나는 값은 에러가 발생한다.")
+    void checkNumberRange() {
+        // given
+        String bonus = "123";
+
+        // when, then
+        assertThrows(IllegalArgumentException.class, () -> Bonus.checkException(bonus));
+    }
 }
