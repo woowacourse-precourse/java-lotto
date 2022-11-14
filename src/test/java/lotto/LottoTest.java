@@ -70,4 +70,13 @@ class LottoTest {
 			() -> Exception.validateDuplicateNumbers(new String[] {"1","2","3","4","5","1"})
 		).isInstanceOf(IllegalArgumentException.class);
 	}
+
+	@DisplayName("보너스번호 또한,숫자 이외의 엽력을 받을 수 없다.")
+	@Test
+	void inputWinningLottoBonusNumberIntegerCheck(){
+		assertThatThrownBy(
+			() -> Exception.validateNumber("12j")
+		).isInstanceOf(IllegalArgumentException.class);
+	}
+
 }
