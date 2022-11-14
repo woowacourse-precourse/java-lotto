@@ -46,13 +46,11 @@ public class Application {
 
     private static Lotto inputWinningLotto() {
         Output.println("\n" + INPUT_WINNING_NUMBERS_MESSAGE);
-        Lotto winningLotto = Input.inputWinningNumbers();
-        return winningLotto;
+        return Input.inputWinningNumbers();
     }
 
     private static Bonus inputBonusNumber() {
         Output.println("\n" + INPUT_BONUS_NUMBER_MESSAGE);
-        Bonus bonus = Input.inputBonusNumber();
-        return bonus;
+        return Input.inputBonusNumber();
     }
 }
