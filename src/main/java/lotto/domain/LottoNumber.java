@@ -25,7 +25,17 @@ public class LottoNumber {
         return winningNumberList;
     }
 
-    public static void validateBonusNumber(Lotto lotto, int bonusNumber){
+    public static boolean validateDuplicateBonusNumber(Lotto lotto, int bonusNumber){
+        try{
+            validateDuplicateNumber(lotto, bonusNumber);
+        }catch (IllegalArgumentException e){
+            System.out.println(e.getMessage());
+            return false;
+        }
+        return true;
+    }
+
+    public static void validateDuplicateNumber(Lotto lotto, int bonusNumber){
         List<Integer> lottoNumber = lotto.getLottoNumber();
         if(lottoNumber.contains(bonusNumber)){
             throw new IllegalArgumentException(ERROR_MESSAGE + "보너스 넘버가 중복됩니다.");
