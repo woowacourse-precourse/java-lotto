@@ -1,16 +1,19 @@
 package lotto.view;
 
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
-import static camp.nextstep.edu.missionutils.Console.readLine;
-
 public class MoneyReceiverTest {
-
+    @DisplayName("금액을 올바르게 받는지 확인")
     @Test
-    public void getMoney() {
-        int expected = 8_000;
-        String userInput = readLine();
-        assertThat(expected).isEqualTo(userInput);
+    void getMoney() {
+        String expected = "8_000";
+        InputStream in = new ByteArrayInputStream(expected.getBytes());
+        System.setIn(in);
+        assertThat(MoneyReceiver.getMoney()).isEqualTo(expected);
     }
 }
