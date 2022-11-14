@@ -22,7 +22,8 @@ public class Application {
             WinningNumbers winningNumbers = new WinningNumbers(toIntegers(spilt(Console.readLine())));
 
             printInputBonusNumberComment();
-            BonusNumber bonusNumber = new BonusNumber(toInt(Console.readLine()));
+
+            BonusNumber bonusNumber = new BonusNumber(inputBonusNumber(winningNumbers));
 
             Map<Rank, Integer> numbersOfRanks = numbersOfRanks(lottos, winningNumbers.getWinningNumbers(), bonusNumber.getBonusNumber());
 
@@ -82,7 +83,11 @@ public class Application {
         }
         return result;
     }
-
+    private static int inputBonusNumber(WinningNumbers winningNumbers){
+        int bonusNumber = toInt(Console.readLine());
+        winningNumbers.validateDuplicateBonusNumber(bonusNumber);
+        return bonusNumber;
+    }
     public static Map<Rank, Integer> numbersOfRanks(LottoGroups lottos, List<Integer> winningNumbers, int bonusNumber) {
         List<Rank> ranks = lottos.getRanks(winningNumbers, bonusNumber);
         Map<Rank, Integer> numbersOfRanks = new HashMap<>();
