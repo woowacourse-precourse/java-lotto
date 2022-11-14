@@ -14,6 +14,6 @@ public class Profit {
                 winningMap.get("six_YesBonus") * 2000000000;
 
         double profit = total/userMoney * 100;
-        PrintOutput.PROFIT.printProfitMessage(profit);
+        System.out.printf(PrintOutput.PROFIT.message(),profit);
     }
 }

@@ -10,11 +10,5 @@ public enum PrintOutput {
         this.message = message;
     }
 
-    public void printMessage(int number) {
-        System.out.printf(message, number);
-    }
-
-    public void printProfitMessage(double number) {
-        System.out.printf(message, number);
-    }
+    public String message() { return message; }
 }

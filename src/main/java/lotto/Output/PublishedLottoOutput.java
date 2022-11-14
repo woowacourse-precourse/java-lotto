@@ -13,7 +13,7 @@ public class PublishedLottoOutput {
     }
 
     public void printPublishedLotto() {
-        PrintOutput.BUY.printMessage(publishLottosNum);
+        System.out.printf(PrintOutput.BUY.message(),publishLottosNum);
         for(Set<Integer> lotto : publishedLottos) {
             System.out.println(lotto);
         }
