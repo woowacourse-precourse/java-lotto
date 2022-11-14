@@ -2,6 +2,7 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -52,6 +53,12 @@ class ApplicationTest extends NsTest {
         assertSimpleTest(() -> {
             assertThat(output().contains(ERROR_MESSAGE));
         });
+    }
+
+    @DisplayName("게임 시작 문구 출력")
+    @Test
+    void printGameStart() {
+        assertThat(output().contains("구입금액을 입력해 주세요."));
     }
 
     @Override
