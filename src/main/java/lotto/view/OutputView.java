@@ -11,7 +11,7 @@ import lotto.domain.LottoResult;
 
 public class OutputView {
 
-    private final long LOTTO_RESULT_IS_ZERO = 0L;
+    private static final long LOTTO_RESULT_IS_ZERO = 0L;
 
     public void printLottoBundleInfo(List<Lotto> lottoBundle) {
         System.out.printf("%d개를 구매했습니다.\n", lottoBundle.size());

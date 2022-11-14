@@ -15,8 +15,8 @@ public enum LottoResult {
     FIVE_WITH_BONUS(30_000_000, 5),
     SIX(2_000_000_000, 6);
 
-    private int payout;
-    private int numberOfMatches;
+    private final int payout;
+    private final int numberOfMatches;
 
     LottoResult(int payout, int numberOfMatches) {
         this.payout = payout;

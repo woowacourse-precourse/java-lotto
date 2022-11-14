@@ -9,7 +9,7 @@ import lotto.exception.InputValidator;
 
 public class InputView {
 
-    private InputValidator validator = new InputValidator();
+    private final InputValidator validator = new InputValidator();
 
     public int sendMoney() {
         System.out.println("구입금액을 입력해 주세요.");

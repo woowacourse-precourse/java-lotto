@@ -9,9 +9,9 @@ import lotto.view.OutputView;
 
 public class LottoController {
 
-    private LottoService lottoService = new LottoService();
-    private InputView inputView = new InputView();
-    private OutputView outputView = new OutputView();
+    private final LottoService lottoService = new LottoService();
+    private final InputView inputView = new InputView();
+    private final OutputView outputView = new OutputView();
 
     public void run() {
         List<Lotto> lottoBundle = buyLotto();
