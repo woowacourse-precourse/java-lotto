@@ -2,6 +2,7 @@ package view;
 
 import camp.nextstep.edu.missionutils.Console;
 import lotto.domain.PurchasedAmount;
+정import lotto.domain.Validator;
 import lotto.domain.WinningLotto;
 
 import java.lang.reflect.Array;
@@ -14,17 +15,23 @@ import static lotto.constant.ConstValue.WINNING_NUMBER_INPUT_PATTERN;
 import static lotto.constant.Message.*;
 
 public class InputView {
+    private final Validator validator = new Validator();
     public WinningLotto inputWinningLottoNumber() {
         System.out.println(WINNING_NUMBER_INPUT_MESSAGE);
         String lottoNumbers = Console.readLine();
 
-        validatePattern(lottoNumbers);
+        validator.validateWinningLottoPattern(lottoNumbers);
+
         List<Integer> lotto = StringToList(lottoNumbers);
+
+        validator.validateWinningLotto(lotto);
 
         System.out.println(BONUS_NUMBER_INPUT_MESSAGE);
         String bonusNumber = Console.readLine();
 
-        return new WinningLotto(lotto, bonusNumber);
+        validator.validateBonusNumber(lotto, bonusNumber);
+
+        return new WinningLotto(lotto, Integer.parseInt(bonusNumber));
     }
 
     private List<Integer> StringToList(String lottoNumbers) {
@@ -33,16 +40,13 @@ public class InputView {
                 .collect(Collectors.toList());
     }
 
-    private void validatePattern(String lottoNumbers) {
-        if (!Pattern.matches(WINNING_NUMBER_INPUT_PATTERN, lottoNumbers)) {
-            throw new IllegalArgumentException(ERROR_MESSAGE + INVALID_WINNING_LOTTO_INPUT_FORMAT_MESSAGE);
-        }
-    }
 
     public PurchasedAmount inputPurchasedAmount() {
         System.out.println(PURCHASE_AMOUNT_INPUT_MESSAGE);
         String purchasedAmount = Console.readLine();
 
-        return new PurchasedAmount(purchasedAmount);
+        validator.validatePurchasedAmount(purchasedAmount);
+
+        return new PurchasedAmount(Integer.parseInt(purchasedAmount));
     }
 }
