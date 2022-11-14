@@ -1,11 +1,18 @@
 package lotto;
 
+import camp.nextstep.edu.missionutils.Randoms;
+
 import java.util.List;
 
 public class Lotto {
+    private final int LOTTO_START_NUMBER = 1;
+    private final int LOTTO_END_NUMBER = 45;
+    private final int MAX_LOTTO_NUMBER_COUNT = 6;
+
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
+        numberGenerator(numbers);
         validate(numbers);
         this.numbers = numbers;
     }
