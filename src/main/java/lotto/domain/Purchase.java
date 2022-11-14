@@ -1,9 +1,10 @@
 package lotto.domain;
 
 import camp.nextstep.edu.missionutils.Console;
+import lotto.ui.Message;
 
 public class Purchase {
-    int money;
+    public int money;
 
     public void inputMoney() {
         System.out.println("구입금액을 입력해 주세요.");
@@ -14,7 +15,10 @@ public class Purchase {
 
     }
 
-    public boolean isValid(int userInput) {
+    public boolean isValid(int userInput) throws IllegalArgumentException{
+        if(userInput % 1000 != 0){
+            throw new IllegalArgumentException(Message.MONEY_ERROR);
+        }
         return userInput % 1000 == 0;
     }
 
