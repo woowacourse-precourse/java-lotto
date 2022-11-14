@@ -1,4 +1,4 @@
-package lotto.messages;
+package lotto.message;
 
 public class PrintMessage {
 

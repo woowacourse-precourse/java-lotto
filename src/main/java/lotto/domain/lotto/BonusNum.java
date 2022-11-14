@@ -1,7 +1,7 @@
 package lotto.domain.lotto;
 
 import static lotto.domain.lotto.Lotto.isRanged;
-import static lotto.messages.ErrorMessage.OUT_OF_RANGE_MESSAGE;
+import static lotto.message.ErrorMessage.OUT_OF_RANGE_MESSAGE;
 
 public class BonusNum {
     private final int num;
@@ -9,6 +9,10 @@ public class BonusNum {
     public BonusNum(int num) {
         validate(num);
         this.num = num;
+    }
+
+    public static BonusNum makeBonusNum(int num) {
+        return new BonusNum(num);
     }
 
     void validate(int num) {
