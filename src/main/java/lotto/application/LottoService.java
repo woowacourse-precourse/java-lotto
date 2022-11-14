@@ -16,7 +16,6 @@ public class LottoService {
     private static final int THREE=2;
     private static final int FOUR=3;
     private static final int FIVE=4;
-    private static final int NOT_WIN=-1;
     private static final int START_NUMBER=1;
     private static final int END_NUMBER=45;
     private static final int SIZE=6;
