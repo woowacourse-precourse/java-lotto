@@ -24,25 +24,21 @@ public class Computer {
     }
 
     private void validate(List<String> winningNumbers) {
-        for (String winningNumber : winningNumbers) {
-            Validator.validateNaturalNumber(winningNumber);
-            Validator.validateLeadingZero(winningNumber);
-        }
-        this.winningNumbers = winningNumbers.stream()
+        List<Integer> convertedWinningNumbers = winningNumbers.stream()
+                .peek(Validator::validateNaturalNumber)
+                .peek(Validator::validateLeadingZero)
                 .map(Integer::parseInt)
                 .collect(Collectors.toList());
 
-        Validator.validateLength(this.winningNumbers, WINNING_NUMBERS_LENGTH);
-        Validator.validateRange(this.winningNumbers, WINNING_NUMBERS_LENGTH);
-        Validator.validateDuplication(this.winningNumbers, WINNING_NUMBERS_LENGTH);
+        Validator.validateLength(convertedWinningNumbers, WINNING_NUMBERS_LENGTH);
+        Validator.validateRange(convertedWinningNumbers, WINNING_NUMBERS_LENGTH);
+        Validator.validateDuplication(convertedWinningNumbers, WINNING_NUMBERS_LENGTH);
     }
 
     private void validate(String bonusNumber) {
         Validator.validateNaturalNumber(bonusNumber);
         Validator.validateLeadingZero(bonusNumber);
-
-        this.bonusNumber = Integer.parseInt(bonusNumber);
-        Validator.validateRange(this.bonusNumber);
+        Validator.validateRange(Integer.parseInt(bonusNumber));
     }
 
     public static Lotto issueLotto() {
