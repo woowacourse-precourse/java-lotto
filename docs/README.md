@@ -56,3 +56,4 @@
 15. [x] (ValidatorProcessor): 번호 입력 예외를 처리하는 기능과 테스트
 16. [x] (ValidatorProcessor): 번호 개수 예외를 처리하는 기능과 테스트
 17. [x] (LottoFacade): 당첨금액 마진율을 구하는 기능과 테스트
+18. [x] (LottoFacade): 당첨 통계를 구하는 기능과 테스트

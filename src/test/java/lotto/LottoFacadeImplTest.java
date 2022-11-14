@@ -1,25 +1,29 @@
 package lotto;
 
 import lotto.application.LottoFacade;
+import lotto.application.LottoFacadeImpl;
 import lotto.domain.Lotto;
+import lotto.domain.RankEnum;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.DynamicTest;
 import org.junit.jupiter.api.TestFactory;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.*;
 
-public class LottoFacadeTest {
+public class LottoFacadeImplTest {
 
     private LottoFacade lottoFacade;
 
     @TestFactory
     @DisplayName("LottoFacade buyLotto Test")
     Stream<DynamicTest> lottoFacadeBuyLottoTest() {
-        lottoFacade = new LottoFacade();
+        lottoFacade = new LottoFacadeImpl();
 
         return Stream.of(
                 DynamicTest.dynamicTest("5000원 금액의 경우 5장을 구매한다.", () -> {
@@ -49,7 +53,7 @@ public class LottoFacadeTest {
     @TestFactory
     @DisplayName("LottoFacade registerWinLotto Test")
     Stream<DynamicTest> lottoFacadeRegisterWinLottoTest() {
-        lottoFacade = new LottoFacade();
+        lottoFacade = new LottoFacadeImpl();
 
         return Stream.of(
                 DynamicTest.dynamicTest("input을 lotto로 반환한다.", () -> {
@@ -80,7 +84,7 @@ public class LottoFacadeTest {
     @TestFactory
     @DisplayName("LottoFacade getMargin Test")
     Stream<DynamicTest> getMarginTest() {
-        lottoFacade = new LottoFacade();
+        lottoFacade = new LottoFacadeImpl();
 
         return Stream.of(
                 DynamicTest.dynamicTest("투자 8000원, 수익 5000원인 경우", () -> {
@@ -96,23 +100,36 @@ public class LottoFacadeTest {
     @TestFactory
     @DisplayName("LottoFacade checkWinning Test")
     Stream<DynamicTest> checkWinningTest() {
-        lottoFacade = new LottoFacade();
+        lottoFacade = new LottoFacadeImpl();
 
         return Stream.of(
-                DynamicTest.dynamicTest("각 로또의 당첨점수를 구한다.", () -> {
+                DynamicTest.dynamicTest("각 로또의 당첨점수를 구한다. Case 1등 2등 3등", () -> {
+                    final Lotto winLotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
                     final List<Lotto> clientLotto = new ArrayList<>(
                             List.of(new Lotto(List.of(1, 2, 3, 4, 5, 6)),
                                     new Lotto(List.of(1, 2, 3, 4, 5, 7)),
                                     new Lotto(List.of(1, 2, 3, 4, 5 ,8)))
                     );
-                    final Lotto winLotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
                     final int bonus = 7;
 
-                    List<Integer> result = lottoFacade.checkWinning(clientLotto, winLotto, bonus);
+                    List<Integer> result = lottoFacade.checkWinning(winLotto, clientLotto, bonus);
 
-                    assertThat(result.size()).isEqualTo(clientLotto.size());
-                    System.out.println(result);
-                    assertThat(result).contains(5,6,7);
+                    assertThat(result).contains(RankEnum.FIRST.getMatchNumber(),RankEnum.SECOND.getMatchNumber(),RankEnum.THIRD.getMatchNumber());
+                    assertThat(result.size()).isEqualTo(3);
+                }),
+                DynamicTest.dynamicTest("각 로또의 당첨점수를 구한다. Case 2등 2등 5등", () -> {
+                    final Lotto winLotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+                    final List<Lotto> clientLotto = new ArrayList<>(
+                            List.of(new Lotto(List.of(1, 2, 3, 4, 6, 7)),
+                                    new Lotto(List.of(1, 2, 3, 4, 5, 7)),
+                                    new Lotto(List.of(4, 5, 6, 7, 8 ,9)))
+                    );
+                    final int bonus = 7;
+
+                    List<Integer> result = lottoFacade.checkWinning(winLotto, clientLotto, bonus);
+
+                    assertThat(result).contains(RankEnum.SECOND.getMatchNumber(),RankEnum.FIFTH.getMatchNumber());
+                    assertThat(result.size()).isEqualTo(3);
                 })
         );
     }

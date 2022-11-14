@@ -2,8 +2,10 @@ package lotto.application;
 
 import lotto.domain.*;
 
-import java.util.List;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 
 public class LottoFacadeImpl implements LottoFacade{
@@ -32,4 +34,29 @@ public class LottoFacadeImpl implements LottoFacade{
         return moneyProcessor.calculateMargin(before, after);
     }
 
+    @Override
+    public List<Integer> checkWinning(Lotto winLotto, List<Lotto> clientLotto, Integer bonus) {
+        List<Integer> result = new ArrayList<>();
+        clientLotto.forEach(lotto -> {
+            int count = lottoProcessor.matchLottoNumber(winLotto, lotto);
+            count = checkAndCountNumber(count == RankEnum.FIRST.getMatchNumber()-1, count);
+            count = checkBonus(bonus, lotto, count);
+            result.add(count);
+        });
+        return result;
+    }
+
+    private int checkBonus(int bonus, Lotto lotto, int count) {
+        if (count == RankEnum.SECOND.getMatchNumber()-1) {
+            count = checkAndCountNumber(lottoProcessor.matchBonusNumber(bonus, lotto), count);
+        }
+        return count;
+    }
+
+    private int checkAndCountNumber(boolean check, int count) {
+        if (check) {
+            count++;
+        }
+        return count;
+    }
 }

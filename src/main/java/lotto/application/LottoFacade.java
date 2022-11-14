@@ -1,10 +1,9 @@
 package lotto.application;
 
 import lotto.domain.Lotto;
-import lotto.domain.LottoEnum;
-import lotto.domain.PriceEnum;
 
 import java.util.List;
+
 
 public interface LottoFacade {
      List<Lotto> buyLotto(Integer money);
@@ -12,4 +11,6 @@ public interface LottoFacade {
      Lotto registerWinLotto(String input);
 
      String getMargin(Integer before, Integer after);
+
+     List<Integer> checkWinning(Lotto winLotto, List<Lotto> clientLotto, Integer bonus);
 }
