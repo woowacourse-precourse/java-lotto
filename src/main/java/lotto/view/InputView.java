@@ -14,7 +14,7 @@ public class InputView {
     private static final String ASK_NUMBERS_MESSAGE = "당첨 번호를 입력해 주세요.";
     private static final String ASK_BONUS_NUMBER_MESSAGE = "보너스 번호를 입력해 주세요.";
 
-    public int askPurchaseAmount() {
+    public static int askPurchaseAmount() {
         System.out.println(PURCHASE_AMOUNT_MESSAGE);
         String input = Console.readLine();
 
@@ -25,7 +25,7 @@ public class InputView {
         return purchaseAmount;
     }
 
-    public List<Integer> askNumbers() {
+    public static List<Integer> askNumbers() {
         System.out.println(ASK_NUMBERS_MESSAGE);
         String input = Console.readLine();
 
@@ -37,7 +37,7 @@ public class InputView {
         return playerNumbers;
     }
 
-    public List<Integer> askBonusNumber(List<Integer> playerNumbers) {
+    public static List<Integer> askBonusNumber(List<Integer> playerNumbers) {
         System.out.println(ASK_BONUS_NUMBER_MESSAGE);
         String input = Console.readLine();
 
