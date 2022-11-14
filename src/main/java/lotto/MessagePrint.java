@@ -18,4 +18,8 @@ public class MessagePrint {
 		LottoProgram lottoProgram = new LottoProgram();
 		System.out.println(lottoProgram.countLotto(inputPrice) + Constants.COUNT_LOTTO_PRINT);
 	}
+
+	public void inputWinNumPrint() {
+		System.out.println(Constants.INPUT_LOTTO_NUMBER_PRINT);
+	}
 }
