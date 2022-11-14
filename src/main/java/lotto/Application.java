@@ -24,4 +24,8 @@ public class Application {
         }
         return numbers;
     }
+
+    public static int getBonusNumber(String input){
+        return Integer.parseInt(input);
+    }
 }
