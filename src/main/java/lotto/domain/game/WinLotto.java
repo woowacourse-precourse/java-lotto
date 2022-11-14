@@ -61,4 +61,11 @@ public class WinLotto {
                 .mapToLong(entry -> entry.getKey().getPrize() * entry.getValue())
                 .sum();
     }
+
+    public double calculateReturnRate(){
+        long sum = calculatePrizeSum();
+        double returnRate = sum / userMoney * 100;
+
+        return Double.parseDouble(String.format("%.1f", returnRate));
+    }
 }
