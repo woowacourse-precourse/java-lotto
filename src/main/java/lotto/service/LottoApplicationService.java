@@ -10,10 +10,11 @@ import java.util.List;
 public class LottoApplicationService {
     private final ConsoleInput consoleInput = new ConsoleInput();
     private final ConsoleOutput consoleOutput = new ConsoleOutput();
-
     private Money money;
     private LottoCollection lottoCollection;
     private  WinningLotto winningLotto;
+
+    private LottoStatistic statistic;
 
     public void inputMoney() {
         consoleOutput.printDirectiveAboutInputMoney();
@@ -37,5 +38,10 @@ public class LottoApplicationService {
         consoleOutput.printDirectiveAboutInputBonusNumber();
         Integer bounsBall = InputParser.parseToInteger(consoleInput.readInput());
         winningLotto = WinningLottoGenerator.generateWinningLotto(winningBalls, bounsBall);
+    }
+
+    public void getStatisticsOfLotto() {
+        statistic = LottoStatistic.of(lottoCollection.countLottoAward(winningLotto));
+        consoleOutput.printStatisticsOfWiningLotto(statistic,money.getMoney());
     }
 }

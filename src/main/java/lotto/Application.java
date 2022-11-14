@@ -8,8 +8,13 @@ public class Application {
         final LottoApplicationService lottoApplicationService
                 = new LottoApplicationService();
 
-        lottoApplicationService.inputMoney();
-        lottoApplicationService.createLottos();
-        lottoApplicationService.createWinningLottoNumbers();
+        try {
+            lottoApplicationService.inputMoney();
+            lottoApplicationService.createLottos();
+            lottoApplicationService.createWinningLottoNumbers();
+            lottoApplicationService.getStatisticsOfLotto();
+        } catch (IllegalArgumentException ignored) {
+
+        }
     }
 }
