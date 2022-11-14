@@ -1,10 +1,14 @@
 package lotto.domain;
 
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class LottoTest {
@@ -29,4 +33,10 @@ class LottoTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+    @DisplayName("로또 생성 시 오름차순으로 정렬된다.")
+    @Test
+    void createLottoByAscendingOrder() {
+        Lotto lotto = new Lotto(Arrays.asList(6, 5, 4, 3, 2, 1));
+        assertThat(lotto.getNumbers()).isSortedAccordingTo(Comparator.naturalOrder());
+    }
 }
