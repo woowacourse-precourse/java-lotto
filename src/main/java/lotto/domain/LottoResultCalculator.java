@@ -8,11 +8,10 @@ import java.util.Map.Entry;
 public class LottoResultCalculator {
 
     private LottoResultCalculator() {
-
     }
 
 
-    public static Long calculatePrize(Map<Lotto, LottoRank> ranks) {
+    public static Long calculateTotalPrize(Map<Lotto, LottoRank> ranks) {
         Long totalPrize = 0L;
         for (Entry<Lotto, LottoRank> rank : ranks.entrySet()) {
             if (rank.getValue() == null) {
