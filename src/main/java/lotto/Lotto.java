@@ -1,7 +1,9 @@
 package lotto;
 
 import java.util.Comparator;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Lotto {
     private final List<Integer> numbers;
@@ -15,6 +17,11 @@ public class Lotto {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException();
         }
+        Set<Integer> numSet = new HashSet<>(numbers);
+        if(numSet.size() != numbers.size()){
+            throw new IllegalArgumentException();
+        }
+
         numbers.sort(Comparator.naturalOrder());
     }
 
