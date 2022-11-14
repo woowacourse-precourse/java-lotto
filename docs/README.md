@@ -6,9 +6,9 @@
 
 ## Buyer Generate
 - [x] 로또 구입 금액 ask 출력
-- [ ] 로또 구입 금액 입력
-- [ ] 입력된 값이 숫자인지 확인 예외시 Exception
-- [ ] 입력된 구입 금액으로 Buyer 클래스 생성
+- [x] 로또 구입 금액 입력
+- [x] 입력된 값이 숫자인지 확인 예외시 Exception
+- [x] 입력된 구입 금액으로 Buyer 클래스 생성
 
 ## Lotto Random Peek
 - [ ] 금액에 맞는 횟수만큼 복권발행
