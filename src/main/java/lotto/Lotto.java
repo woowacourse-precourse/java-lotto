@@ -3,6 +3,9 @@ package lotto;
 import java.util.List;
 
 public class Lotto {
+    static final int SIZE_OF_NUMBERS = 6;
+    static final int MAXIMUM_NUMBER = 45;
+    static final int MINIMUM_NUMBER = 1;
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
@@ -11,10 +14,15 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
-        if (numbers.size() != 6) {
+        if (!(validateSize(numbers)&&validateRange(numbers))) {
             throw new IllegalArgumentException();
         }
     }
 
-    // TODO: 추가 기능 구현
+    private boolean validateSize(List<Integer> numbers) {
+        return numbers.size() == SIZE_OF_NUMBERS;
+    }
+    private boolean validateRange(List<Integer> numbers) {
+        return numbers.stream().allMatch(i -> MINIMUM_NUMBER <= i && i <= MAXIMUM_NUMBER);
+    }
 }
