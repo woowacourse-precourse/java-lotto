@@ -8,23 +8,23 @@ public class Application {
 
         System.out.println("구입금액을 입력해 주세요.");
         String input = Console.readLine();
-        validate(input);
-        int money = Integer.parseInt(input);
-
-    }
-
-    public static void validate(String input) {
         int money = -1;
         try {
             money = Integer.parseInt(input);
         } catch (NumberFormatException e) {
             System.out.println("[ERROR]");
-            new IllegalArgumentException("[ERROR]");
+            return ;
         }
 
+        validate(money);
+
+        int numOfLotto = money % 1000;
+    }
+
+    public static void validate(int money) {
         if (money % 1000 != 0) {
             System.out.println("[ERROR]");
-            new IllegalArgumentException("[ERROR]");
+            throw new IllegalArgumentException("[ERROR]");
         }
     }
 }
