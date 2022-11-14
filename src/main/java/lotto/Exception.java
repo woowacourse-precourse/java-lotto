@@ -1,5 +1,7 @@
 package lotto;
 
+import java.util.Objects;
+
 public class Exception {
     public void initialInput(String input) throws IllegalArgumentException {
         if (onlyNumber(input)) throw new IllegalArgumentException();
@@ -10,7 +12,8 @@ public class Exception {
 
     public boolean onlyOneThousand(int inMoney) {
         try {
-            if (inMoney % 1000 != 0) getTh();
+            if (!Objects.equals(inMoney%1000,0)) getTh();
+            else if (Objects.equals(inMoney,0)) getTh();
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
             return true;
