@@ -160,4 +160,15 @@ class LottoTest {
         /*then*/
         assertThat(seprateTicketTest).isEqualTo(seprateTicket);
     }
+
+    @DisplayName("수익률을 출력한다.")
+    @Test
+    void yieldTest() {
+        /*given*/
+        double yieldExtend = 10;
+        /*when*/
+        double yieldActual = playLotto.yield(5000,List.of(0,0,0,1,0));
+        /*then*/
+        assertThat(yieldExtend).isEqualTo(yieldActual);
+    }
 }
