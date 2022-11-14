@@ -26,7 +26,7 @@ public enum Rank {
     }
 
     public boolean hasSameRankBy(int matchCount, boolean hasBonusNumber) {
-        if(matchCount == SECOND_AND_THIRD_MATCH_COUNT) {
+        if(matchCount == this.matchCount && matchCount == SECOND_AND_THIRD_MATCH_COUNT) {
             return this.hasBonusNumber == hasBonusNumber;
         }
         return this.matchCount == matchCount ;
