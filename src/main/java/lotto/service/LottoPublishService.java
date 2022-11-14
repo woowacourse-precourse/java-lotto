@@ -9,7 +9,7 @@ import java.util.List;
 import static lotto.config.Constants.LottoNumber.*;
 import static lotto.config.Constants.LottoPrice.LOTTO_PRICE;
 
-public class LottoPublisher {
+public class LottoPublishService {
 
     public List<Lotto> publish(int money) {
         validate(money);
