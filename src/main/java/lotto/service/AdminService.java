@@ -1,19 +1,19 @@
 package lotto.service;
 
 import java.util.Set;
+import lotto.data.dao.AdminDao;
 import lotto.data.dto.BonusNumberDto;
 import lotto.data.dto.WinNumberDto;
 import lotto.data.entity.WinNumber;
 import lotto.data.entity.WinNumber.WinNumberBuilder;
-import lotto.data.repository.WinNumberRepository;
 
 public class AdminService {
 
-    private final WinNumberRepository winNumberRepository;
+    private final AdminDao adminDao;
     private final WinNumberBuilder winNumberBuilder;
 
     public AdminService() {
-        winNumberRepository = WinNumberRepository.getInstance();
+        adminDao = new AdminDao();
         winNumberBuilder = WinNumber.builder();
     }
 
@@ -29,8 +29,8 @@ public class AdminService {
 
     public void confirmWinNumber() {
         WinNumber winNumber = winNumberBuilder.build();
-        Long roundId = winNumberRepository.getCurrentRoundId();
+        Long roundId = adminDao.getCurrentRoundId();
         winNumber.setRoundId(roundId);
-        winNumberRepository.save(winNumber);
+        adminDao.insertWinNumber(winNumber);
     }
 }
