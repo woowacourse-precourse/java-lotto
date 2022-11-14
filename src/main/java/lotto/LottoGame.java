@@ -16,7 +16,7 @@ public class LottoGame {
 
     private LottoAmount insertMoney() {
         Print.money();
-        return new LottoAmount(Input.purchaseAmount());
+        return new LottoAmount(Input.number());
     }
 
     private LottoResult makeResult(Lottos lottos, WinningLotto winningLotto) {
@@ -33,7 +33,7 @@ public class LottoGame {
         Print.winningNumber();
         List<Integer> winningNumber = Input.winningNumber();
         Print.bonusNumber();
-        int bonus = Input.bonus();
+        int bonus = Input.number();
         return generator.makeLotto(winningNumber, bonus);
     }
 }

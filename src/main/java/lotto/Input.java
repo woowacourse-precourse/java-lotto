@@ -10,7 +10,7 @@ public class Input {
     private static final String NUMBER_FORMAT_ERROR = "[ERROR] 숫자를 입력해 주세요.";
     private static final String SEPARATOR_ERROR = "[ERROR] 구분자 '" + SEPARATOR + "' 를 입력해 주세요.";
 
-    public static int purchaseAmount() {
+    public static int number() {
         return changeNumber(input());
     }
 
@@ -20,11 +20,6 @@ public class Input {
         return Stream.of(input.split(SEPARATOR))
                 .map(Input::changeNumber)
                 .collect(Collectors.toList());
-    }
-
-    public static int bonus() {
-        String input = input();
-        return changeNumber(input);
     }
 
     private static int changeNumber(String input) {
