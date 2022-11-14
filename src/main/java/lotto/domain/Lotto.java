@@ -13,9 +13,7 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
-        LottoValidate lottoValidate = new LottoValidate();
-        lottoValidate.validate(numbers);
-
+         new LottoValidate().validate(numbers);
     }
     public List<Integer> getNumbers(){
         return numbers;
