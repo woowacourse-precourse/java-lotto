@@ -1,5 +1,7 @@
 package lotto;
 
+import lotto.domain.*;
+
 import java.util.Set;
 
 public class Application {
@@ -7,8 +9,8 @@ public class Application {
     public static void main(String[] args) {
         try {
             String amountMoney = makeNumber.getAmountInput();
-            CalculatorMoney money = new CalculatorMoney(amountMoney);
-            int lottoCount = makeNumber.buyLotto(amountMoney);
+            Money money = new Money(amountMoney);
+            int lottoCount = makeNumber.buyLotto(money);
             allLotto alllotto = new allLotto();
             for (int i = 0; i < lottoCount; i++) {
                 alllotto.addLotto(new Lotto(makeNumber.randomLotto()));

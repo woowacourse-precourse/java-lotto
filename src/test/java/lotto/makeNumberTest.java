@@ -1,5 +1,7 @@
 package lotto;
 
+import lotto.domain.Money;
+import lotto.domain.makeNumber;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -10,7 +12,6 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import  lotto.makeNumber.*;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 public class makeNumberTest {
@@ -45,7 +46,8 @@ public class makeNumberTest {
     @DisplayName("로또 구입금액 로또로 바꾸는 기능 테스트")
     @Test
     void buyLottoTest(){
-        int lotto= makeNumber.buyLotto("8000");
+        Money money=new Money("8000");
+        int lotto= makeNumber.buyLotto(money);
         assertThat(lotto==8);
     }
     @DisplayName("로또번호 랜덤 생성 테스트")

@@ -1,8 +1,6 @@
-package lotto;
+package lotto.domain;
 
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 public class Judgement {
@@ -17,7 +15,7 @@ public class Judgement {
         return this.result;
     }
 
-    public void checkWin(Set<Integer> winner, allLotto alllotto, String bonusNumber, CalculatorMoney money) {
+    public void checkWin(Set<Integer> winner, allLotto alllotto, String bonusNumber, Money money) {
         for (int i = 0; i < alllotto.sizeLotto(); i++) {
             Set<Integer> tempWinner = new HashSet<>();
             tempWinner.addAll(winner);
@@ -28,7 +26,7 @@ public class Judgement {
         printResult(this.result);
     }
 
-    public int checkPlaceWin(Set<Integer> tempwinner, Set<Integer> transformLotto, String bonusNumber, CalculatorMoney money) {
+    public int checkPlaceWin(Set<Integer> tempwinner, Set<Integer> transformLotto, String bonusNumber, Money money) {
         tempwinner.retainAll(transformLotto);
         Rank rank = Rank.getRank(tempwinner.size(), isContainsBonus(tempwinner, bonusNumber));
         money.sumWinningMoney(rank);

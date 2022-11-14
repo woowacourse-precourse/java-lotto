@@ -1,16 +1,13 @@
 package lotto;
 
+import lotto.domain.Money;
+import lotto.domain.Judgement;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.io.ByteArrayInputStream;
-import java.io.InputStream;
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
-import  lotto.makeNumber.*;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
@@ -35,7 +32,7 @@ class JudgementTest {
         lotto.add(8);
         lotto.add(9);
         Judgement jud=new Judgement();
-        CalculatorMoney money=new CalculatorMoney("0");
+        Money money=new Money("0");
         String bonusNumber="7";
         assertThat(jud.checkPlaceWin(winner,lotto,bonusNumber,money)==2);
     }
@@ -59,7 +56,7 @@ class JudgementTest {
         lotto.add(8);
         lotto.add(9);
         Judgement jud=new Judgement();
-        CalculatorMoney money=new CalculatorMoney("0");
+        Money money=new Money("0");
         String bonusNumber="7";
         assertThat(jud.checkPlaceWin(winner,lotto,bonusNumber,money)==3);
     }
@@ -84,7 +81,7 @@ class JudgementTest {
         lotto.add(9);
         Judgement jud=new Judgement();
         String bonusNumber="7";
-        CalculatorMoney money=new CalculatorMoney("0");
+        Money money=new Money("0");
         assertThat(jud.checkPlaceWin(winner,lotto,bonusNumber,money)==1);
     }
     @DisplayName("미당첨 확인 테스트")
@@ -108,7 +105,7 @@ class JudgementTest {
         lotto.add(12);
         Judgement jud=new Judgement();
         String bonusNumber="7";
-        CalculatorMoney money=new CalculatorMoney("0");
+        Money money=new Money("0");
         assertThat(jud.checkPlaceWin(winner,lotto,bonusNumber,money)==0);
     }
 

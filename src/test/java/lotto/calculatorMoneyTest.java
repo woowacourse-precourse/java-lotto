@@ -1,5 +1,7 @@
 package lotto;
 
+import lotto.domain.Money;
+import lotto.domain.Rank;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -11,7 +13,7 @@ class calculatorMoneyTest {
         int[] result=new int[6];
         result[3]=1;
         result[5]=1;
-        CalculatorMoney cal=new CalculatorMoney("8000");
+        Money cal=new Money("8000");
         cal.sumWinningMoney(Rank.THIRD);
         cal.sumWinningMoney(Rank.FIFTH);
         assertThat(cal.getWinningMoney()==1550000);
@@ -19,7 +21,7 @@ class calculatorMoneyTest {
     @DisplayName("반올림 테스트")
     @Test
     void profitRate_test(){
-        CalculatorMoney cal=new CalculatorMoney("8000");
+        Money cal=new Money("8000");
         int[] result=new int[6];
         result[3]=1;
         cal.sumWinningMoney(Rank.THIRD);

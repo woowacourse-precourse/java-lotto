@@ -1,4 +1,4 @@
-package lotto;
+package lotto.domain;
 
 import java.util.*;
 import java.util.logging.Logger;
@@ -66,8 +66,8 @@ public class makeNumber {
         }
     }
 
-    public static int buyLotto(String money) {
-        int lotto = Integer.parseInt(money) / 1000;
+    public static int buyLotto(Money money) {
+        int lotto = money.getAmountInput() / 1000;
 
         System.out.println(lotto + "개를 구매했습니다.");
         return lotto;

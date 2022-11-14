@@ -1,12 +1,12 @@
-package lotto;
+package lotto.domain;
 
 
-public class CalculatorMoney {
+public class Money {
     private static final String ERROR_LOTTO_THOUSAND = "[ERROR] 1000원 단위로 입력해주세요.";
     private static final String ERROR_LOTTO_ISDIGIT = "[ERROR] 구입 금액은 실수여야합니다.";
     private int winningMoney;
     private String getAmountInput;
-    public CalculatorMoney(String getAmountInput){
+    public Money(String getAmountInput){
         this.winningMoney=0;
         this.getAmountInput=getAmountInput;
         checkMoney(getAmountInput);
