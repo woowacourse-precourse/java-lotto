@@ -108,7 +108,6 @@ public class Game {
     }
 
     public static String checkInputError() {
-
         Record.printEnterPrice();
         String input = Console.readLine();
 
@@ -122,7 +121,6 @@ public class Game {
                     .IS_ERROR
                     .getMessage();
         }
-
         return input;
     }
 

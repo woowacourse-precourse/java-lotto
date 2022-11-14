@@ -1,5 +1,6 @@
 package lotto;
 
+import java.sql.Ref;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -101,64 +102,46 @@ public class LottoTickets {
 
         HashMap<Integer, Integer> matchesDictionary = new HashMap<>();
 
-        matchesDictionary.put(
-                ReferenceValue
-                        .WinningStats
-                        .BELOW_STANDARD
-                        .getIndex(), ReferenceValue.NOTHING);
-        matchesDictionary.put(
-                ReferenceValue
-                        .WinningStats
-                        .THREE_MATCHES
-                        .getIndex(), ReferenceValue.NOTHING);
-        matchesDictionary.put(
-                ReferenceValue
-                        .WinningStats
-                        .FOUR_MATCHES
-                        .getIndex(), ReferenceValue.NOTHING);
-        matchesDictionary.put(
-                ReferenceValue
-                        .WinningStats
-                        .FIVE_MATCHES
-                        .getIndex(), ReferenceValue.NOTHING);
-        matchesDictionary.put(
-                ReferenceValue
-                        .WinningStats
-                        .FIVE_BONUS_MATCHES
-                        .getIndex(), ReferenceValue.NOTHING);
-        matchesDictionary.put(
-                ReferenceValue
-                        .WinningStats
-                        .SIX_MATCHES
-                        .getIndex(), ReferenceValue.NOTHING);
+        for (ReferenceValue.WinningStats winningStats : ReferenceValue.WinningStats.values()) {
+            matchesDictionary.put(winningStats.getIndex(), ReferenceValue.NOTHING);
+        }
 
         return matchesDictionary;
     }
 
     private static int getMatchesIndex(LottoResult lottoResult) {
         int size = lottoResult.size();
-        int matchesIndex = ReferenceValue.WinningStats.BELOW_STANDARD.getIndex();
 
         if (size < ReferenceValue.WinningStats.THREE_MATCHES.getCount()) {
             size = ReferenceValue.NOTHING;
         }
 
-        for (ReferenceValue.WinningStats winningStats : ReferenceValue.WinningStats.values()) {
-            if (winningStats.equalsCount(size)) {
-                matchesIndex = winningStats.getIndex();
-                break;
-            }
-        }
-
-        boolean checkFive = ReferenceValue.WinningStats
-                .FIVE_MATCHES
-                .equalsIndex(matchesIndex);
+        int matchesIndex = getSameCountIndex(size);
+        boolean checkFive = checkCountFive(matchesIndex);
 
         if (checkFive) {
             matchesIndex = checkBonusIndex(lottoResult);
         }
 
         return matchesIndex;
+    }
+
+    private static int getSameCountIndex(int size) {
+
+        int index = 0;
+        for (ReferenceValue.WinningStats winningStats : ReferenceValue.WinningStats.values()) {
+            if (winningStats.equalsCount(size)) {
+                index = winningStats.getIndex();
+                break;
+            }
+        }
+        return index;
+    }
+
+    public static boolean checkCountFive(int index) {
+        return ReferenceValue.WinningStats
+                .FIVE_MATCHES
+                .equalsIndex(index);
     }
 
     public static int checkBonusIndex(LottoResult lottoResult) {

@@ -57,26 +57,29 @@ public class Record {
     }
 
     public static String getWinningStats(LottoTickets lottoTickets) {
-        int matchesListSize = 6;
         StringBuilder winningStats = new StringBuilder();
         List<Integer> matches = lottoTickets.getMatches();
         winningStats.append(ResultMessage.BORDER.getMessage() + ReferenceValue.LINE_BREAK);
 
+        winningStats.append(getAllMatchMessage(matches));
+        winningStats.append(getTotalReturnMessage(lottoTickets));
+        return winningStats.toString();
+    }
+
+    private static String getAllMatchMessage(List<Integer> matches) {
+        int matchesListSize = 6;
         int winningStart = ReferenceValue.
                 WinningStats.
                 THREE_MATCHES.
                 getIndex();
 
-        System.out.println(matches);
-
+        StringBuilder allMathMessage = new StringBuilder();
         for (int index = winningStart; index < matchesListSize; index++) {
             int matchesCount = matches.get(index);
             String matchesMessage = getMatchesMessage(index, matchesCount);
-            winningStats.append(matchesMessage + COUNT_MESSAGE + ReferenceValue.LINE_BREAK);
+            allMathMessage.append(matchesMessage + COUNT_MESSAGE + ReferenceValue.LINE_BREAK);
         }
-
-        winningStats.append(getTotalReturnMessage(lottoTickets));
-        return winningStats.toString();
+        return allMathMessage.toString();
     }
 
     private static String getTotalReturnMessage(LottoTickets lottoTickets) {
