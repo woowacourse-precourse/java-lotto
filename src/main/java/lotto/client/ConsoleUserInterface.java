@@ -17,6 +17,7 @@ public class ConsoleUserInterface {
     private final static String MSG_REQUEST_PURCHASE_AMOUNT = "구입금액을 입력해 주세요.";
     private final static String MSG_SHOW_PURCHASE_AMOUNT = "개를 구매했습니다.";
     private final static String MSG_REQUEST_WINNING_NUMBERS = "당첨 번호를 입력해 주세요.";
+    private final static String MSG_REQUEST_BONUS_NUMBER = "보너스 번호를 입력해 주세요.";
 
     public ConsoleUserInterface() {
     }
@@ -91,5 +92,12 @@ public class ConsoleUserInterface {
             numbers.add(Integer.parseInt(rawNumber));
         }
         return numbers;
+    }
+
+    public int requestBonusNumber(){
+        output(MSG_REQUEST_BONUS_NUMBER);
+        String input = input();
+        validateAs_JavaInteger(input);
+        return Integer.parseInt(input);
     }
 }
