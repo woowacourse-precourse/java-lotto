@@ -43,20 +43,7 @@ public class LottoServiceTest {
     }
 
     @Test
-    @DisplayName("당첨된 로또 등수 반환")
-    void rankLottoTest() {
-        //given(준비)
-        int matchCount = 5;
-        boolean bonusNumber = true;
-
-        //when(실행)
-        LottoRank rank = lottoService.rankLotto(matchCount, bonusNumber);
-
-        //then(검증)
-        Assertions.assertThat(rank).isEqualTo(LottoRank.SECOND);
-    }
-
-    @Test
+    @DisplayName("구입한 로또에 대한 등수 반환")
     void createLottoResultTest() {
         //given(준비)
         List<Integer> lotto = List.of(1,2,3,4,5,6);
@@ -76,6 +63,7 @@ public class LottoServiceTest {
     }
 
     @Test
+    @DisplayName("로또 당첨 결과를 통해 수익률 계산")
     void calculatePercent() {
         //given(준비)
         List<LottoRank> lottoResult = List.of(LottoRank.FIFTH, LottoRank.BLANK, LottoRank.BLANK, LottoRank.BLANK);

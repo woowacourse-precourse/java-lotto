@@ -48,12 +48,4 @@ public class LottoController {
             System.out.println(e.getMessage());
         }
     }
-
-    public Lotto getLotto() {
-        return lotto;
-    }
-
-    public UserLotto getUserLotto() {
-        return userLotto;
-    }
 }
