@@ -1,5 +1,7 @@
 package lotto;
 
+import util.Rank;
+
 import java.util.HashMap;
 import java.util.Map;
 
