@@ -20,7 +20,7 @@
 - [ ] 발행 로또가 보너스 번호를 포함하는지 확인한다. WinLotto#isContainBonusNumber()
 - [ ] 로또 결과를 가져온다. WinLotto#getAllResult();
 - [ ] 수익률을 가져온다. LottoStatistics#getPercentageOfProfit()
-  - [ ] 수익률을 계산한다. LottoStatistics#calculatePercentageOfProfit()
+  - [x] 수익률을 계산한다. LottoStatistics#calculatePercentageOfProfit()
 - [x] "구입금액을 입력해 주세요." 출력한다. RequestView#displayEnterPurchaseAmount()
 - [x] "당첨 번호를 입력해 주세요." 출력한다. RequestView#displayEnterWinnerNumber()
 - [x] "보너스 번호를 입력해 주세요." 출력한다. RequestView#displayEnterBonusNumber()
