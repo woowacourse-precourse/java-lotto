@@ -10,7 +10,10 @@ public class LottoController {
 
     public void executeGame() {
         lottoService.inputLottoPrice();
+
         lottoService.publishLottos();
         lottoService.showLottoResult();
+
+        lottoService.inputWinningLottoNumbers();
     }
 }
