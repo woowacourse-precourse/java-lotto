@@ -1,7 +1,10 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import lotto.domain.Lotto;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import java.util.List;
 
@@ -11,6 +14,41 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class ApplicationTest extends NsTest {
     private static final String ERROR_MESSAGE = "[ERROR]";
+
+    @Test
+    void 로또_번호_만드는_메서드의_리턴_길이_확인() {
+        int lottoNumCount = 6;
+
+        assertThat(Lotto.createSortedLottoNumbers(lottoNumCount).size()).isEqualTo(lottoNumCount);
+    }
+
+    @ParameterizedTest
+    @CsvSource({"0,1","1,2","2,3","3,4","4,5"})
+    void 로또_번호가_오름차순_정렬이_맞는지_확인(int smallIdx, int bigIdx) {
+        int lottoNumCount = 6;
+
+        List<Integer> lottos = Lotto.createSortedLottoNumbers(lottoNumCount);
+
+        assertThat(lottos.get(smallIdx) < lottos.get(bigIdx)).isEqualTo(true);
+    }
+
+    @ParameterizedTest
+    @CsvSource({"1","10","100","1001","'1,000'","-10000000000","qwer","ㅁㄴㅇㅂㅈㄱ","100ㅂ","100a","5a0a","10000000000000000000000000000000000000"})
+    void 로또_구매_금액_예외_입력_확인(String purchaseMoney) {
+        assertSimpleTest(() -> {
+            runException(purchaseMoney);
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
+    @ParameterizedTest
+    @CsvSource({"1000,1개를 구매했습니다.","6000,6개를 구매했습니다.","9000,9개를 구매했습니다.","15000,15개를 구매했습니다."})
+    void 로또_구입금액에_맞춰서_구매가_되는지_확인(String purchaseMoney, String msg) {
+        assertSimpleTest(() -> {
+            runException(purchaseMoney);
+            assertThat(output()).contains(msg);
+        });
+    }
 
     @Test
     void 기능_테스트() {
