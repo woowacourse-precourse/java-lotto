@@ -29,4 +29,19 @@ public class GetLotto {
         }
         return numbers;
     }
+
+    public int getBonusNumber() {
+        InputStreamReader ir = new InputStreamReader(System.in);
+        BufferedReader br = new BufferedReader(ir);
+        String getNumbers;
+        int number;
+
+        try {
+            getNumbers = br.readLine();
+            number = Integer.parseInt(getNumbers);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        return number;
+    }
 }
