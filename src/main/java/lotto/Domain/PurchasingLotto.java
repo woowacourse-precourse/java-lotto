@@ -12,9 +12,9 @@ public class PurchasingLotto {
     }
 
     public int calculateNumberOfLotto(int purchasingAmount) {
-        int NumberOfLotto = purchasingAmount / 1000;
+        int numberOfLotto = purchasingAmount / 1000;
 
-        return NumberOfLotto;
+        return numberOfLotto;
     }
 
     private void devisionValid(int purchase) {
