@@ -21,7 +21,7 @@ public class ProfitCalculator {
     }
 
     private double calculateProfit(int earnMoney, int purchaseMoney) {
-        return Math.round((double) earnMoney / purchaseMoney * 10) / 10.0;
+        return ((double) earnMoney / (double) purchaseMoney) * 100;
     }
 
     public double getProfit() {
