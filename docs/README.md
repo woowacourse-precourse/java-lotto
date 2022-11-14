@@ -96,3 +96,7 @@
 
 #### WinningLotto
 - [X] 당첨 로또 번호 리스트가 보너스 번호를 포함하고 있는 경우 예외가 발생한다. - WinningLottoTest#createWinningLottoByWinningLottoContainsBonusNumber()
+
+
+#### Judgement
+- [X] 로또 당첨 번호와 비교하여 구매 로또가 몇 등에 해당하는지 알 수 있다. - JudgementTest#getLottoRank()
