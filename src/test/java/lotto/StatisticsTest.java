@@ -36,4 +36,17 @@ public class StatisticsTest {
         assertThat(numberOfEachGrade).isEqualTo(expected);
     }
 
+    @DisplayName("발행한 로또의 수익률울 출력한다.")
+    @Test
+    void getProfit() {
+        // given
+        Statistics statistics = new Statistics(Arrays.asList(1, 2, 3, 4, 5, 6), 7);
+
+        // when
+        double profit = statistics.getProfit(lottosNumber);
+
+        // then
+        assertThat(profit).isEqualTo((double) 62.5);
+    }
+
 }
