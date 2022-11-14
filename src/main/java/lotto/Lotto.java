@@ -13,23 +13,9 @@ public class Lotto {
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
-        isCorrectSize(numbers);
-        isDuplicated(numbers);
+        validateCorrectSize(numbers);
+        validateDuplicated(numbers);
         this.numbers = numbers;
-    }
-
-    private void isCorrectSize(List<Integer> numbers) {
-        if (numbers.size() != 6) {
-            throw new IllegalArgumentException(ErrorMessage.SIZE_NOT_CORRECT.message);
-        }
-    }
-
-    private void isDuplicated(List<Integer> numbers) {
-        Set<Integer> duplicated = new HashSet<>(numbers);
-
-        if (duplicated.size() != 6) {
-            throw new IllegalArgumentException(ErrorMessage.DUPLICATE_NUMBER.message);
-        }
     }
 
     public static Lotto generateLotto() {
@@ -50,28 +36,6 @@ public class Lotto {
             buyLotto.printLotto();
         }
         return buyLottos;
-    }
-
-    public void printLotto() {
-        System.out.println(numbers);
-    }
-
-    public List<Integer> getNumbers() {
-        return numbers;
-    }
-
-    public Winning checkLotto(Lotto lotto, int bonus) {
-        int count = 0;
-        List<Integer> lottoNumber = lotto.getNumbers();
-        boolean isBonus = lottoNumber.contains(bonus);
-
-        for (Integer number : lottoNumber) {
-            if (numbers.contains(number)) {
-                count++;
-            }
-        }
-
-        return calculatePrize(count, isBonus);
     }
 
     public static Winning calculatePrize(int count, boolean isBonus) {
@@ -120,6 +84,41 @@ public class Lotto {
         System.out.print("총 수익률은 " + result + "%입니다.");
 
         return result;
+    }
+
+    private void validateCorrectSize(List<Integer> numbers) {
+        if (numbers.size() != 6) {
+            throw new IllegalArgumentException(ErrorMessage.SIZE_NOT_CORRECT.message);
+        }
+    }
+
+    private void validateDuplicated(List<Integer> numbers) {
+        Set<Integer> duplicated = new HashSet<>(numbers);
+        if (duplicated.size() != 6) {
+            throw new IllegalArgumentException(ErrorMessage.DUPLICATE_NUMBER.message);
+        }
+    }
+
+    public void printLotto() {
+        System.out.println(numbers);
+    }
+
+    public List<Integer> getNumbers() {
+        return numbers;
+    }
+
+    public Winning checkLotto(Lotto lotto, int bonus) {
+        int count = 0;
+        List<Integer> lottoNumber = lotto.getNumbers();
+        boolean isBonus = lottoNumber.contains(bonus);
+
+        for (Integer number : lottoNumber) {
+            if (numbers.contains(number)) {
+                count++;
+            }
+        }
+
+        return calculatePrize(count, isBonus);
     }
 
     public List<Integer> checkLottoAll(List<Lotto> buyLottos, int bonus) {
