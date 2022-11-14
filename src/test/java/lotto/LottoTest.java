@@ -1,13 +1,8 @@
 package lotto;
 
-import java.util.ArrayList;
-import lotto.model.LottoGenerator;
-import lotto.model.WinningNumber;
-import camp.nextstep.edu.missionutils.test.NsTest;
-import org.junit.jupiter.api.Assertions;
+import lotto.valid.Lotto;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
 
 import java.util.List;
 

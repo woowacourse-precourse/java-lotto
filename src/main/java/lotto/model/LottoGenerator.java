@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
+import lotto.valid.Lotto;
 
 public class LottoGenerator {
 
@@ -19,6 +20,7 @@ public class LottoGenerator {
         for (int i = 0; i < lottoCount; i++) {
             lottoNumber = Randoms.pickUniqueNumbersInRange(1, 45, 6).stream().sorted().collect(
                 Collectors.toList());
+            Lotto lotto = new Lotto(lottoNumber);
             lotteries.add(lottoNumber);
         }
         this.lotteries = lotteries;
