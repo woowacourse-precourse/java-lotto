@@ -10,25 +10,25 @@ public class GameProgressView {
     public static final String ENTER_WINNING_NUMBERS_MESSAGE = "당첨 번호를 입력해 주세요.";
     public static final String ENTER_BONUS_NUMBER_MESSAGE = "보너스 번호를 입력해 주세요.";
 
-    public static void showPurchaseMessage() {
+    public void showPurchaseMessage() {
         System.out.println(PURCHASE_MESSAGE);
     }
 
-    public static void showCountMessage(int count) {
+    public void showCountMessage(int count) {
         System.out.println(count + COUNT_MESSAGE);
     }
 
-    public static void showBuyLottery(ArrayList<Lotto> lottery) {
+    public void showBuyLottery(ArrayList<Lotto> lottery) {
         for (Lotto lotto : lottery) {
             System.out.println(lotto.getNumbers());
         }
     }
 
-    public static void showEnterWinningNumbersMessage() {
+    public void showEnterWinningNumbersMessage() {
         System.out.println(ENTER_WINNING_NUMBERS_MESSAGE);
     }
 
-    public static void showEnterBonusNumberMessage() {
+    public void showEnterBonusNumberMessage() {
         System.out.println(ENTER_BONUS_NUMBER_MESSAGE);
     }
 
