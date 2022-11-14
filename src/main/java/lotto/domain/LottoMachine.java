@@ -42,7 +42,8 @@ public class LottoMachine {
     }
 
     private Lotto createRandomNumbers() {
-        List<Integer> numbers = new ArrayList<>(Randoms.pickUniqueNumbersInRange(MIN_LOTTO_NUMBER, MAX_LOTTO_NUMBER, 6));
+        List<Integer> numbers = new ArrayList<>(Randoms.pickUniqueNumbersInRange(MIN_LOTTO_NUMBER,
+                MAX_LOTTO_NUMBER, 6));
         Collections.sort(numbers);
         return new Lotto(numbers);
     }

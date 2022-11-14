@@ -46,6 +46,5 @@ public class LottoMachineTest {
         int bonusNumber = 7;
         lottoMachine.saveWinningNumber(winningNumber,bonusNumber);
         lottoMachine.getWinningList();
-        System.out.println(String.format("%.1f", lottoMachine.getYield()));
     }
 }
