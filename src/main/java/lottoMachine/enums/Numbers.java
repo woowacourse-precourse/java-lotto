@@ -1,6 +1,7 @@
 package lottoMachine.enums;
 
 public enum Numbers {
+    ZERO(0),
     LOTTO_NUMBER_START(1),
     LOTTO_NUMBER_END(45),
     LOTTO_PRICE(1000),
