@@ -21,6 +21,11 @@ public class LuckyNumber {
         luckyNumber = new Lotto(number);
     }
 
+    public void inputBonusNumber(String input){
+        validate(input);
+        bonusNumber = Integer.parseInt(input);
+    }
+
     public Lotto getLuckyNumber(){
         return luckyNumber;
     }
@@ -35,5 +40,11 @@ public class LuckyNumber {
             if(!Character.isDigit(c))
                 throw new IllegalArgumentException(LottoException.NOT_DISIT.getErrorMessage());
         }
+
+        int intInput = Integer.parseInt(input);
+
+        if(intInput>45 || intInput<1)
+            throw new IllegalArgumentException(LottoException.INVALID_NUMBER_RANGE.getErrorMessage());
+
     }
 }
