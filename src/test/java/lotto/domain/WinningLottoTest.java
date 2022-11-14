@@ -8,6 +8,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 class WinningLottoTest {
+    private static final String ERROR_HEAD = "[ERROR]";
 
     @DisplayName("보너스 번호가 당첨 로또 번호와 중복되는 경우 오류가 발생한다")
     @Test
@@ -17,7 +18,8 @@ class WinningLottoTest {
 
         assertThatThrownBy(() -> new WinningLotto(lotto, bonusNumber))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining(LottoError.BONUS_NUMBER_DUPLICATE.printError());
+                .hasMessageContaining(LottoError.BONUS_NUMBER_DUPLICATE.printError())
+                .hasMessageStartingWith(ERROR_HEAD);
     }
 
     @DisplayName("보너스 번호가 로또 숫자 범위에서 벗어나는 경우 오류가 발생한다")
@@ -28,7 +30,8 @@ class WinningLottoTest {
 
         assertThatThrownBy(() -> new WinningLotto(lotto, bonusNumber))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining(LottoError.NOT_IN_RANGE.printError());
+                .hasMessageContaining(LottoError.NOT_IN_RANGE.printError())
+                .hasMessageStartingWith(ERROR_HEAD);
     }
 
 }

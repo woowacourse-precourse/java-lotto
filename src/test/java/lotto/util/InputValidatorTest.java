@@ -9,6 +9,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
 class InputValidatorTest {
+    private static final String ERROR_HEAD = "[ERROR]";
 
     @DisplayName("당첨 번호를 입력받을 때 지정된 구분자, 숫자 외의 입력이 들어올 경우 오류가 발생한다.")
     @ParameterizedTest
@@ -16,7 +17,8 @@ class InputValidatorTest {
     void createInputWithWrongCharacter(String input) {
         assertThatThrownBy(() -> InputValidator.validateWinningNumberDelimiter(input))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining(LottoError.WRONG_DELIMITER.printError());
+                .hasMessageContaining(LottoError.WRONG_DELIMITER.printError())
+                .hasMessageStartingWith(ERROR_HEAD);
     }
 
     @DisplayName("당첨 번호를 입력받을 때 숫자와 구분자로만 구성된 입력이 들어올 경우 정상 실행된다")
@@ -36,7 +38,8 @@ class InputValidatorTest {
 
         assertThatThrownBy(() -> InputValidator.validateParsingInteger(input))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining(LottoError.ACCEPT_ONLY_NUMBER.printError());
+                .hasMessageContaining(LottoError.ACCEPT_ONLY_NUMBER.printError())
+                .hasMessageStartingWith(ERROR_HEAD);
     }
 
 }

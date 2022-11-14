@@ -2,6 +2,7 @@ package lotto.util;
 
 import lotto.domain.errorenum.LottoError;
 
+// 입력 자체의 유효성을 검증하는 로직
 public class InputValidator {
     private static final String WINNING_NUMBER_REGEX = "[0-9,]+";
 

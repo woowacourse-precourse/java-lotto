@@ -11,6 +11,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
 class LottoNumberValidatorTest {
+    private static final String ERROR_HEAD = "[ERROR]";
 
     @DisplayName("개별 로또 번호가 범위 내의 숫자가 아니라면 예외가 발생한다")
     @ParameterizedTest
@@ -18,7 +19,8 @@ class LottoNumberValidatorTest {
     void createLottoNumberOutOfRange(int number) {
         assertThatThrownBy(() -> LottoNumberValidator.validateInRange(number))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining(LottoError.NOT_IN_RANGE.printError());
+                .hasMessageContaining(LottoError.NOT_IN_RANGE.printError())
+                .hasMessageStartingWith(ERROR_HEAD);
     }
 
     @DisplayName("로또의 길이가 6이 아니라면 false 가 반환된다")
