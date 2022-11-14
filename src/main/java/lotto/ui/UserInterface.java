@@ -41,7 +41,7 @@ public class UserInterface {
         System.out.println();
         System.out.println(INPUT_BONUS_NUMBER_ANNOUNCEMENT);
         String bonusNumberRaw = Console.readLine();
-//        InputValidator.checkInputBonusNumber(bonusNumberRaw);
+        InputValidator.checkInputBonusNumber(bonusNumberRaw);
         return bonusNumberRaw;
     }
 
