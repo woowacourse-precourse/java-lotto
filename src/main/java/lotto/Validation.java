@@ -6,6 +6,8 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 public class Validation {
+    public static final int RANGE_START = 1;
+    public static final int RANGE_END = 45;
     public static final int LOTTO_COUNT = 6;
 
     public static final String LOTTO_NUMBER_RANGE_MESSAGE = "[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.";
@@ -16,7 +18,7 @@ public class Validation {
    }
    public static void numberRangeValidation(List<Integer> numbers){
        int numbersCount = numbers.stream()
-               .filter(number->number >= 1 && number <= 45)
+               .filter(number->number >= RANGE_START && number <= RANGE_END)
                .collect(Collectors.toList()).size();
 
        if(numbersCount != LOTTO_COUNT) throw new IllegalArgumentException(LOTTO_NUMBER_RANGE_MESSAGE);
@@ -24,7 +26,7 @@ public class Validation {
 
    public static void numberDuplicateValidation(List<Integer> numbers){
        int numbersCount = numbers.stream()
-               .filter(number->number >= 1 && number <= 45)
+               .filter(number->number >= RANGE_START && number <= RANGE_END)
                .collect(Collectors.toSet()).size();
        if(numbersCount != LOTTO_COUNT) throw new IllegalArgumentException(NUMBER_DUPLICATE_MESSAGE);
    }
