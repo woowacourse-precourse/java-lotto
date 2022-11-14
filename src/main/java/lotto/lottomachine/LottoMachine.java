@@ -7,7 +7,7 @@ import lotto.domain.validation.LottoNumbersValidation;
 import lotto.lottopaper.LottoPaper;
 import lotto.view.OutputView;
 import lotto.view.InputView;
-import lotto.view.validation.UserMoneyValidation;
+import lotto.view.validation.InputMoneyValidation;
 
 public class LottoMachine {
 
@@ -41,35 +41,20 @@ public class LottoMachine {
 
     public void buyLotto() {
         String userLottoPrice = InputView.buyLotto();
-        try {
-            UserMoneyValidation.validate(userLottoPrice);
-            lottoPrice = Integer.parseInt(userLottoPrice);
-        } catch (IllegalArgumentException exception) {
-            System.out.println(exception.getMessage());
-            throw exception;
-        }
+        InputMoneyValidation.validate(userLottoPrice);
+        lottoPrice = Integer.parseInt(userLottoPrice);
     }
 
     public void inputUserNumbers() {
-        try {
-            List<Integer> inputLottoNumbers = InputView.inputLottoNumbers();
-            LottoNumbersValidation.validateLottoNumbers(inputLottoNumbers);
-            userNumbers =  inputLottoNumbers;
-        } catch (IllegalArgumentException exception) {
-            System.out.println(exception.getMessage());
-            throw exception;
-        }
+        List<Integer> inputLottoNumbers = InputView.inputLottoNumbers();
+        LottoNumbersValidation.validate(inputLottoNumbers);
+        userNumbers =  inputLottoNumbers;
     }
 
     public void inputUserBonus() {
         String bonus = InputView.inputBonusNumber();
-        try {
-            LottoBonusValidation.validate(bonus);
-            LottoBonusValidation.validateDuplicateNumber(userNumbers, bonus);
-            userBonus =  Integer.valueOf(bonus);
-        } catch (IllegalArgumentException exception) {
-            System.out.println(exception.getMessage());
-            throw exception;
-        }
+        LottoBonusValidation.validate(bonus);
+        LottoBonusValidation.validateDuplicateNumber(userNumbers, bonus);
+        userBonus =  Integer.valueOf(bonus);
     }
 }
