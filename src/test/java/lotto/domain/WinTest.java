@@ -1,9 +1,5 @@
-package lotto;
+package lotto.domain;
 
-import lotto.domain.Rank;
-import lotto.domain.Lotto;
-import lotto.domain.Ticket;
-import lotto.domain.Win;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -26,7 +22,7 @@ class WinTest {
 
     @DisplayName("구매한 로또의 당첨 비교 결과를 생성한다.")
     @Test
-    public void createWin() throws Exception {
+    public void createWin() {
         List<Integer> winningNumbers = Arrays.asList(1, 2, 3, 4, 5, 6);
         int bonusNumber = 7;
 
@@ -36,7 +32,7 @@ class WinTest {
 
     @DisplayName("전체 당첨금을 계산한다.")
     @Test
-    public void getWinnings() throws Exception {
+    public void getWinnings() {
         List<Integer> winningNumbers = Arrays.asList(1, 2, 3, 4, 5, 6);
         int bonusNumber = 7;
         int money = Rank.FIRST.getWinnings();
