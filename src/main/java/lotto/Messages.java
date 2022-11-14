@@ -13,4 +13,7 @@ public final class Messages {
     public static final String ROUND_HUNDREDTHS = "%.1f";
     public static final String HYPHEN = "-";
     public static final String PCS = "개";
+
+    private Messages() {
+    }
 }
