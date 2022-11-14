@@ -30,6 +30,9 @@ public class LottoController {
     public void purchase() {
         requestView.displayEnterPurchaseAmount();
         validatedMoney = new Money(moneyInput.getPurchaseAmount());
+    }
+
+    public void purchaseList() {
         resultView.displaySeparateLine();
         machine = new LottoMachine(validatedMoney.getMoney());
         lotteries = machine.lottoForAmount();

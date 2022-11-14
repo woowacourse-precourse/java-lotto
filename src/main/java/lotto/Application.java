@@ -9,6 +9,7 @@ public class Application {
 
         try {
             lottoController.purchase();
+            lottoController.purchaseList();
             lottoController.winnerNumber();
             lottoController.bonusNumber();
             lottoController.statistics();
