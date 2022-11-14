@@ -1,7 +1,14 @@
 package lotto;
 
+import java.util.List;
+
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        int paid = Input.buyLotto();
+        Lottos lottos = new Lottos(paid);
+        Output.showLottos(lottos.getBoughtLottos());
+        List<Integer> winNumbers = Input.winningNumbers();
+        int bonusNum = Input.bonusNumber(winNumbers);
+        Output.showResult(lottos, winNumbers, bonusNum);
     }
 }
