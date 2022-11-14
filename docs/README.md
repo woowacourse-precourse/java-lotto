@@ -3,7 +3,8 @@
 ## 기능 목록
 
 - [x] 1부터 45까지의 서로 다른 임의의 수 6개를 생성한다. - NumberGenerator#createRandomNumbers();
-- [ ] 금액만큼 로또를 발행한다. - Issue#createLotto();
+- [ ] 구입 금액만큼 로또를 발행한다. - Issue#createLotto();
+  - [ ] [예외] 구입 금액이 1,000원으로 나누어 떨어지지 않는 경우 예외가 발생한다.
 - [ ] 사용자의 로또 번호와 당첨 번호를 비교할 수 있다. - LottoService#compare();
     - [ ] 당첨 번호 중 몇 개의 숫자가 일치하는지 알 수 있다. - Judgment#correctCount();
     - [ ] 보너스 번호가 일치하는지 알 수 있다. - Judgment#hasBonusNumber();
