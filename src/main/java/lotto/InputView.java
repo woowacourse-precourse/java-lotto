@@ -19,11 +19,11 @@ public class InputView {
         String input = Console.readLine();
         try {
             validateMoney(input);
-            money = Long.parseLong(input);
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
             return;
         }
+        money = Long.parseLong(input);
         this.calculator = new Calculator(money);
     }
 
