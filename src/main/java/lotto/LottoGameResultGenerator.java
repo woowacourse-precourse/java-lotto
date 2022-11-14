@@ -23,21 +23,18 @@ public class LottoGameResultGenerator {
 
     public LottoGameResult generateLottoGameResult(List<Lotto> lottos,
                                                    WinningNumbers winningNumbers,
-                                                   BonusNumber bonusNumber,
                                                    Money paidMoney) {
-        calculateWinningDetails(lottos, winningNumbers, bonusNumber);
+        calculateWinningDetails(lottos, winningNumbers);
         calculateEarningRate(paidMoney);
 
         LottoGameResult lottoGameResult = new LottoGameResult(winningDetails, earningRate);
         return lottoGameResult;
     }
 
-    private void calculateWinningDetails(List<Lotto> lottos,
-                                                WinningNumbers winningNumbers,
-                                                BonusNumber bonusNumber) {
+    private void calculateWinningDetails(List<Lotto> lottos, WinningNumbers winningNumbers) {
         for (Lotto lotto : lottos) {
             int winningCount = calculateWinningCount(lotto, winningNumbers);
-            updateWinningDetails(lotto, bonusNumber, winningCount);
+            updateWinningDetails(lotto, winningNumbers, winningCount);
         }
     }
 
@@ -51,18 +48,19 @@ public class LottoGameResultGenerator {
         return winningCount;
     }
 
-    private void updateWinningDetails(Lotto lotto, BonusNumber bonusNumber, int winningCount) {
+    private void updateWinningDetails(Lotto lotto, WinningNumbers winningNumbers, int winningCount) {
         if (winningCount < 3) {
             return;
         }
 
-        int prizeMoney = getPrizeMoneyByWinningCount(lotto, bonusNumber, winningCount);
+        int prizeMoney = getPrizeMoneyByWinningCount(lotto, winningNumbers, winningCount);
         int oldValue = winningDetails.get(prizeMoney);
         int newValue = oldValue + 1;
         winningDetails.put(prizeMoney, newValue);
     }
 
-    private int getPrizeMoneyByWinningCount(Lotto lotto, BonusNumber bonusNumber, int winningCount) {
+    private int getPrizeMoneyByWinningCount(Lotto lotto, WinningNumbers winningNumbers, int winningCount) {
+        int bonusNumber = winningNumbers.getBonusNumber();
         if (winningCount == 6) {
             return 2_000_000_000;
         }
@@ -72,7 +70,7 @@ public class LottoGameResultGenerator {
         if (winningCount == 3) {
             return 5_000;
         }
-        if (lotto.contains(bonusNumber.getNumber())) {
+        if (lotto.contains(bonusNumber)) {
             return 30_000_000;
         }
         return 1_500_000;
