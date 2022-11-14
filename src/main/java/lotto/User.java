@@ -81,10 +81,13 @@ public class User {
         } catch (IllegalArgumentException e) {
             System.out.println("[Error]" + e.getMessage());
         }
+
+        if(bonus_number < 1 || bonus_number > 45) {
+            System.out.println("[Error]1~45 사이의 숫자를 입력해야 합니다.");
+            throw new IllegalArgumentException();
+        }
+
         return bonus_number;
     }
-
-
-
 
 }

@@ -40,7 +40,7 @@ public class Lotto {
         while(cnt.size() != lotto.size()) {
             each_lotto = lotto.get(i);
             same= each_lotto.stream()
-                            .filter(l -> this.numbers.stream().anyMatch(Predicate.isEqual(l)))
+                            .filter(num -> this.numbers.stream().anyMatch(Predicate.isEqual(num)))
                             .collect(Collectors.toList());
             cnt.add(same.size());
             i++;
@@ -51,7 +51,6 @@ public class Lotto {
     public List<Boolean> match_bonus(List<List<Integer>> lotto, int bonus_number) {
         List<Boolean> bonus_check = new ArrayList<>();
         List<Integer> each_lotto = new ArrayList<>();
-        System.out.println(lotto);
         int i = 0;
         while(bonus_check.size() != lotto.size()) {
             each_lotto = lotto.get(i);
@@ -61,7 +60,4 @@ public class Lotto {
         return bonus_check;
     }
 
-
-
-    // TODO: 추가 기능 구현
 }
