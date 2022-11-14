@@ -1,6 +1,8 @@
 package lotto.view;
 
 import lotto.Lotto;
+import lotto.model.LottoResult;
+import lotto.model.Profit;
 
 import java.util.List;
 
@@ -8,6 +10,15 @@ public class OutputView {
     public final static String INPUT_PURCHASE_AMOUNT_MESSAGE = "구입금액을 입력해 주세요.";
     public final static String INPUT_WINNING_NUMBER_MESSAGE = "당첨 번호를 입력해 주세요.";
     public final static String INPUT_BONUS_NUMBER_MESSAGE = "보너스 번호를 입력해 주세요.";
+    public final static String LOTTO_RESULT_MESSAGE = "당첨 통계\n---";
+    public final static String LOTTO_FIFTH_INTRODUCE_MESSAGE = "3개 일치 (5,000원) - ";
+    public final static String LOTTO_FOURTH_INTRODUCE_MESSAGE = "4개 일치 (50,000원) - ";
+    public final static String LOTTO_THIRD_INTRODUCE_MESSAGE = "5개 일치 (1,500,000원) - ";
+    public final static String LOTTO_SECOND_INTRODUCE_MESSAGE = "5개 일치, 보너스 볼 일치 (30,000,000원) - ";
+    public final static String LOTTO_FIRST_INTRODUCE_MESSAGE = "6개 일치 (2,000,000,000원) - ";
+    public final static String LOTTO_COUNT_MESSAGE = "개";
+    public final static String PROFIT_INTRODUCE_MESSAGE = "총 수익률은 ";
+    public final static String PROFIT_PERCENT_MESSAGE = "%입니다.";
 
     private void printlnMessage(String message) {
 
@@ -55,5 +66,18 @@ public class OutputView {
         }
     }
 
+    public void printResult(LottoResult lottoResult) {
+        printlnMessage(LOTTO_RESULT_MESSAGE);
+        printlnMessage(LOTTO_FIFTH_INTRODUCE_MESSAGE + lottoResult.getFifth() + LOTTO_COUNT_MESSAGE);
+        printlnMessage(LOTTO_FOURTH_INTRODUCE_MESSAGE + lottoResult.getFourth() + LOTTO_COUNT_MESSAGE);
+        printlnMessage(LOTTO_THIRD_INTRODUCE_MESSAGE + lottoResult.getThird() + LOTTO_COUNT_MESSAGE);
+        printlnMessage(LOTTO_SECOND_INTRODUCE_MESSAGE + lottoResult.getSecond() + LOTTO_COUNT_MESSAGE);
+        printlnMessage(LOTTO_FIRST_INTRODUCE_MESSAGE + lottoResult.getFirst() + LOTTO_COUNT_MESSAGE);
+    }
+
+    public void printProfit(Profit profit) {
+        // TODO : 총 수익률은 소수점 둘째자리에서 반올림
+        printlnMessage(PROFIT_INTRODUCE_MESSAGE + profit.getProfitValue() + PROFIT_PERCENT_MESSAGE);
+    }
 
 }
