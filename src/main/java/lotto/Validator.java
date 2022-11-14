@@ -1,5 +1,7 @@
 package lotto;
 
+import static lotto.NumberType.*;
+
 import java.util.HashSet;
 
 public class Validator {
@@ -57,15 +59,15 @@ public class Validator {
         }
     }
 
-    public static void isValidateNumberRange(String Input) {
+    public static void isValidateNumberRange(String Input) throws IllegalArgumentException{
         int number = Integer.parseInt(Input);
-        if (!(1 <= number && number <= 45)) {
+        if (!(NUMBER_START.getNumber() <= number && number <= NUMBER_END.getNumber())) {
             throw new IllegalArgumentException("[ERROR] 숫자 범위가 유효하지 않습니다.");
         }
     }
 
     public static void isValidateNumberLength(String[] Input) throws IllegalArgumentException {
-        if (Input.length != 6) {
+        if (Input.length != NUMBER_COUNT.getNumber()) {
             throw new IllegalArgumentException("[ERROR] 숫자 개수가 많습니다");
         }
     }
