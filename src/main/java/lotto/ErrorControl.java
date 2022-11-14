@@ -59,4 +59,16 @@ public class ErrorControl {
         }
     }
 
+    public static void validateNumberOfSeparate(String input) {
+        int numberOfSeparate = 0;
+        for (int index = 0; index < input.length(); index++) {
+            if (input.charAt(index) == ',') {
+                numberOfSeparate++;
+            }
+        }
+        if (numberOfSeparate != Constants.LOTTO_SIZE-1){
+            throw new MyIllegalArgumentException(Constants.ERROR_MESSAGE_USE_CORRECT_SEPARATOR_NUMBER);
+        }
+    }
+
 }

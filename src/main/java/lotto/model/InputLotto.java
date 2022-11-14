@@ -27,6 +27,7 @@ public class InputLotto {
 
     private List<Integer> convertToWinNumbers(String input) {
         List<Integer> winNumbers = new ArrayList<>(Constants.LOTTO_SIZE);
+        ErrorControl.validateNumberOfSeparate(input);
         String[] splitInput = input.split(Constants.NUMBER_SEPARATOR);
         ErrorControl.validateSeparatorAndSize(splitInput);
 

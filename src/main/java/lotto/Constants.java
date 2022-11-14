@@ -18,6 +18,7 @@ public class Constants {
     public final static String ERROR_MESSAGE_INPUT_THOUSANDS_NUMBER = "[ERROR] 1000단위의 숫자를 입력해 주세요.";
     public final static String ERROR_MESSAGE_NOT_LOTTO_SIZE = "[ERROR] 로또 번호 개수는 6개여야 합니다.";
     public final static String ERROR_MESSAGE_NO_DUPLICATE_IN_LOTTO_NUMBER = "[ERROR] 로또 번호는 중복된 값을 가질 수 없습니다.";
+    public final static String ERROR_MESSAGE_USE_CORRECT_SEPARATOR_NUMBER = "[ERROR] 구분자의 개수가 너무 많습니다. 6개의 숫자를 ',' 로 구분해 입력해주세요.";
     public final static int END_PRIZE = 5;
     public final static int SECOND_PRIZE = 2;
     public final static int FIRST_PRIZE = 1;
