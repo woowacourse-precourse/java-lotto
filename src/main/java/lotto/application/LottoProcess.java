@@ -51,14 +51,18 @@ public class LottoProcess {
         List<MatchReport> reportList = matcher.match(user.currentUserLottos(), lottoMachine);
 
         Report printReport = new Report();
-        Map<Rank, Integer> rankIntegerMap = printReport.printEachPrize(reportList);
-        for (Rank rank : rankIntegerMap.keySet()) {
-            System.out.println(rank.currentWinningMessage() + rankIntegerMap.get(rank) + AMOUNT);
-        }
+        printWholePrizes(reportList, printReport);
         String interest = printReport.TotalInterest(money.currentMoney());
 
         System.out.println(ConsoleOut.TOTAL_PRIZE_MESSAGE_PRE + interest
             + ConsoleOut.TOTAL_PRIZE_MESSAGE_POST);
+    }
+
+    private static void printWholePrizes(List<MatchReport> reportList, Report printReport) {
+        Map<Rank, Integer> rankIntegerMap = printReport.printEachPrize(reportList);
+        for (Rank rank : rankIntegerMap.keySet()) {
+            System.out.println(rank.currentWinningMessage() + rankIntegerMap.get(rank) + AMOUNT);
+        }
     }
 
     private static Integer getMoneyInput() {
