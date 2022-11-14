@@ -1,10 +1,12 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import org.assertj.core.internal.BigIntegers;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
+import java.math.BigInteger;
 import java.util.List;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomUniqueNumbersInRangeTest;
@@ -70,6 +72,14 @@ class ApplicationTest extends NsTest {
     void 사용자입력_빈문자확인_테스트(String userInput) {
         assertThatThrownBy(() -> {
             Application.amountEmptyException(userInput);
+        }).isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"1000", "10000", "100", "50"})
+    void 최소단위로나눠떨어지지않는경우_테스트(String userInput) {
+        assertThatThrownBy(() -> {
+            LottoList.notDivThousand(new BigInteger(userInput));
         }).isInstanceOf(IllegalArgumentException.class);
     }
 

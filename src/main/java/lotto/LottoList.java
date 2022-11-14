@@ -14,16 +14,20 @@ public class LottoList {
     private List<Lotto> lottos = new ArrayList<>();
 
     LottoList(BigInteger amount) {
-        notDivThousand(amount);
+        LottoList.notDivThousand(amount);
 
         this.lottoAmount = amount;
         this.lottoCount = lottoAmount.divide(BigInteger.valueOf(AMOUNT_UNIT));
     }
 
-    public void notDivThousand(BigInteger amount) {
-        if ("0".equals(amount.remainder(BigInteger.valueOf(AMOUNT_UNIT)))) {
+    public static void notDivThousand(BigInteger amount) {
+        String remain = getRemainder(amount);
+        if (!"0".equals(remain)) {
             throw new IllegalArgumentException(PrintGameInfo.getNotDivThousand());
         }
+    }
+    public static String getRemainder(BigInteger amount) {
+        return amount.remainder(BigInteger.valueOf(AMOUNT_UNIT)).toString();
     }
 
 
