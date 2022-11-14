@@ -11,7 +11,7 @@ public enum ViewEnum {
     START_OF_RESULT_MESSAGE("\n당첨 통계 \n---\n"),
     RESULT_OF_VALUE_MESSAGE("%d개 일치 (%s원) - %d개 \n"),
     RESULT_OF_BONUS_VALUE_MESSAGE("%d개 일치, 보너스 볼 일치 (%s원) - %d개\n"),
-    RATE_OF_RETURN_MESSAGE("총 수익률은 %.1f%%입니다\n"),
+    RATE_OF_RETURN_MESSAGE("총 수익률은 %.1f%%입니다.\n"),
 
     THREE("5,000"),
     FOUR("50,000"),
