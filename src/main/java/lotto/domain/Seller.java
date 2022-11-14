@@ -3,10 +3,9 @@ package lotto.domain;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
-import static lotto.resources.ValidationPattern.PATTERN;
+import static lotto.utils.StringToIntConverter.convert;
 
 public class Seller {
     private static final int UNIT_MONEY = 1000;
@@ -14,24 +13,10 @@ public class Seller {
     private static final int END_NUMBER = 45;
     private static final int NUMBER_COUNT = 6;
 
-    private Seller() {
-    }
-
-    public static Seller getInstance() {
-        return new Seller();
-    }
-
     public IssuedLotto sellLotto(String money){
-        int purchaseMoney = convertStringToInt(money);
+        int purchaseMoney = convert(money);
         validateUnitAmount(purchaseMoney);
         return IssueLotto(purchaseMoney / UNIT_MONEY);
-    }
-
-    private int convertStringToInt(String payment){
-        if (PATTERN.canConvert(payment)) {
-            return Integer.parseInt(payment);
-        }
-        throw new IllegalArgumentException("[ERROR] 숫자만 입력해 주시기 바랍니다.");
     }
 
     private void validateUnitAmount(int purchaseMoney){
@@ -44,9 +29,7 @@ public class Seller {
         List<Lotto> lottos = new ArrayList<>();
         for (int i = 0; i < sellCount; i++) {
             List<Integer> numbers = Randoms.pickUniqueNumbersInRange(START_NUMBER, END_NUMBER, NUMBER_COUNT);
-            List<Integer> lottoNumber = new ArrayList<>(numbers);
-            Collections.sort(lottoNumber);
-            lottos.add(new Lotto(lottoNumber));
+            lottos.add(new Lotto(numbers));
         }
         return new IssuedLotto(lottos);
     }
