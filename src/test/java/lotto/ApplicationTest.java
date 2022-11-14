@@ -103,8 +103,9 @@ class ApplicationTest extends NsTest {
     void getTotalProfitByLottoResult() {
         Application application = new Application();
         List<Integer> lottoResult = List.of(0, 0, 0, 0, 1);
+        int money = 8000;
 
-        assertThat(application.getTotalProfit(lottoResult)).isEqualTo(62.5);
+        assertThat(application.getTotalProfit(money,lottoResult)).isEqualTo(62.5);
     }
 
     @Override
