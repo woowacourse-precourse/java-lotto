@@ -36,7 +36,7 @@ public class Lotto {
 
     private void validate(List<Integer> numbers) {
         Set<Integer> nonDuplicatedNumbers = new HashSet<>(numbers);
-        if (nonDuplicatedNumbers.size() != 6) {
+        if (nonDuplicatedNumbers.size() != NUMBER_COUNT) {
             throw new IllegalArgumentException(NUMBER_INPUT_COUNT_ERROR_MESSAGE);
         }
         if (numbers.get(0) < MIN_NUMBER || numbers.get(NUMBER_COUNT - 1) > MAX_NUMBER) {
