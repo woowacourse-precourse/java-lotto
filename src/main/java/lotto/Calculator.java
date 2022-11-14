@@ -8,6 +8,7 @@ public class Calculator {
     private static final int bonusNumIdx = 6;
 
 
+
     public static int countLotto(int price){
 
         validate(price);
@@ -24,9 +25,10 @@ public class Calculator {
             int cnt = lotto.countMatchedNumbers(winningNums);
             boolean isBonusmatched = lotto.checkBonusMatched(winningNums.get(bonusNumIdx),cnt);
             Rank rank = lotto.getRank(winningNums);
-//            System.out.println("cnt = " + cnt);
-//            System.out.println("isBonusmatched = " + isBonusmatched);
-//            System.out.println("rank = " + rank);
+            rank.setCount(rank.getCount()+1);
+            System.out.println("cnt = " + cnt);
+            System.out.println("isBonusmatched = " + isBonusmatched);
+            System.out.println("rank = " + rank);
 
             totalPrize += rank.getPrize();
         }

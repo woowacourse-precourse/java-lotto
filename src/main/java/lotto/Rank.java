@@ -4,22 +4,24 @@ import java.util.Arrays;
 
 public enum Rank {
 
-    FIRST(6, 2000000000, false),
-    SECOND(5,3000000, true),
-    THIRD(5, 1500000, false),
-    FOURTH(4, 50000, false),
-    FIFTH(3, 5000, false),
-    NOTHING(0,0, false);
+    FIRST(6, 2000000000, false,0),
+    SECOND(5,3000000, true,0),
+    THIRD(5, 1500000, false,0),
+    FOURTH(4, 50000, false,0),
+    FIFTH(3, 5000, false,0),
+    NOTHING(0,0, false,0);
 
 
     private final int prize;
     private final int winNum;
     private final boolean bonus;
+    private int count;
 
-    Rank(int winNum, int prize, boolean bonus) {
+    Rank(int winNum, int prize, boolean bonus, int count) {
         this.prize = prize;
         this.winNum = winNum;
         this.bonus = bonus;
+        this.count = count;
     }
 
     //개수로 랭크 판별
@@ -32,5 +34,13 @@ public enum Rank {
 
     public int getPrize(){
         return prize;
+    }
+
+    public void setCount(int count) {
+        this.count = count;
+    }
+
+    public int getCount() {
+        return count;
     }
 }

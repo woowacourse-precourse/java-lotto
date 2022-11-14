@@ -25,7 +25,9 @@ public class Application {
         //수익률 구하기
         double rate = Calculator.CalculateRate(lottos, winningNums);
         System.out.println("rate = " + rate);
-        
+
+        //당첨 통계 출력
+        Print.printState(rate);
         
         
 
