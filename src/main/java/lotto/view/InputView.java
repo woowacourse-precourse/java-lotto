@@ -11,8 +11,9 @@ public class InputView {
     private static final String ASK_PURCHASE_AMOUNT = "구입금액을 입력해 주세요.";
     private static final String ASK_WINNING_NUMBERS = "당첨 번호를 입력해 주세요.";
     private static final String ASK_BONUS_NUMBER = "보너스 번호를 입력해 주세요.";
-    private static final String DELIMITER = ",";
-    private static final String TYPE_WRONG = "[ERROR] 숫자만 입력해주세요.";
+    private static final Character DELIMITER = ',';
+    private static final int DELIMITER_COUNT = 5;
+    private static final String TYPE_WRONG = "[ERROR] 정확히 숫자(또는 액수)를 입력해주세요.";
     private static final String WINNING_NUMBERS_DELIMITER_ERROR = "[ERROR] 구분자로 , 를 사용해야합니다.";
 
     public static int inputAmount() {
@@ -21,15 +22,14 @@ public class InputView {
     }
 
     private static int convertToInt(String input) {
-        try {
-            return Integer.parseInt(input);
-        } catch (Exception e){
+        if (!input.matches("[1-9][0-9]*")) {
             throw new IllegalArgumentException(TYPE_WRONG);
         }
+
+        return Integer.parseInt(input);
     }
 
     public static WinningNumbers inputWinningNumbersAndBonus() {
-
         Lotto lotto = inputWinningNumbers();
 
         int bonusNumber = inputBonusNumber();
@@ -53,12 +53,16 @@ public class InputView {
     }
 
     private static List<Integer> convertToList(String inputWinningNumbers) {
+        if (inputWinningNumbers.chars().filter(ch -> ch == ',').count() != DELIMITER_COUNT){
+            throw new IllegalArgumentException(WINNING_NUMBERS_DELIMITER_ERROR);
+        }
+
         try {
-            return Arrays.stream(inputWinningNumbers.split(DELIMITER))
+            return Arrays.stream(inputWinningNumbers.split(String.valueOf(DELIMITER)))
                     .map(Integer::parseInt)
                     .collect(Collectors.toList());
         } catch (Exception e) {
-            throw new IllegalArgumentException(WINNING_NUMBERS_DELIMITER_ERROR);
+            throw new IllegalArgumentException(TYPE_WRONG);
         }
     }
 }
