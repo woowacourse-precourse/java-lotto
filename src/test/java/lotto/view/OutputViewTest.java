@@ -7,10 +7,14 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
 class OutputViewTest {
-    @DisplayName("당첨 결과를 제대로 출력 하는지 테스트")
     @Test
-    void printResult(){
+    void 당첨_결과_리스트_출력_테스트(){
         int[] tempArray={0,1,2,1,1,1};
         OutputView.printResult(tempArray);
+    }
+
+    @Test
+    void 수익률_출력_테스트(){
+        OutputView.printRateOfReturn(5,50_000);
     }
 }
