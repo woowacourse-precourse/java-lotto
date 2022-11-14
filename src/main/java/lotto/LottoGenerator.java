@@ -2,14 +2,10 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.lang.reflect.Array;
 import java.util.*;
-import java.util.stream.Stream;
 
 public class LottoGenerator {
 
-    private static Lotto winNumbers;
-    private static int bonusNumber;
     private Judge judge;
 
     public LottoGenerator() {
