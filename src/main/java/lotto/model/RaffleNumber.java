@@ -1,5 +1,6 @@
 package lotto.model;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Function;
 import java.util.stream.Collectors;
@@ -14,23 +15,23 @@ public class RaffleNumber {
     private static final int PROPER_QUANTITY = 6;
     private static final String WRONG_QUANTITY_ERROR_MESSAGE = "[ERROR] 추첨 번호가 6개가 아닙니다. 프로그램을 종료합니다.";
     private static final String DUPLICATE_ERROR_MESSAGE = "[ERROR] 숫자가 중복되었습니다. 프로그램을 종료합니다.";
-    private List<Integer> raffleNumbers;
-    private final int bonusNumber;
+    private List<Integer> raffleNumbers=new ArrayList<>();
+    private int bonusNumber;
 
-    public RaffleNumber(String raffleNumbers, String bonusNumber) {
-        this.raffleNumbers=createRaffleNumber(raffleNumbers);
-        this.bonusNumber = createBonusNumber(bonusNumber);
-    }
-    public List<Integer> createRaffleNumber(String raffleNumber){
+    public void createRaffleNumber(String raffleNumber){
         validateProperRaffleNumber(raffleNumber, NUMERIC_PATTERN);
-        List<String> separatedRaffleNumber=List.of(raffleNumber.split(DELIMITER));
+        List<String> separatedRaffleNumber=separateRaffleNumberByComma(raffleNumber);
         validateProperQuantity(separatedRaffleNumber);
         validateDuplicatedNumbers(separatedRaffleNumber);
-        return transform(separatedRaffleNumber, Integer::parseInt);
+        this.raffleNumbers=transform(separatedRaffleNumber, Integer::parseInt);
     }
-    public int createBonusNumber(String bonusNumber){
+    public void createBonusNumber(String bonusNumber){
         validateProperRaffleNumber(bonusNumber, NUMERIC);
-        return Integer.parseInt(bonusNumber);
+        this.bonusNumber = Integer.parseInt(bonusNumber);
+    }
+    public void create(String raffleNumber, String bonusNumber){
+        createRaffleNumber(raffleNumber);
+        createBonusNumber(bonusNumber);
     }
     public List<Integer> getRaffleNumbers() {
         return raffleNumbers;
