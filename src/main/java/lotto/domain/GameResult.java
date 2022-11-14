@@ -1,6 +1,7 @@
 package lotto.domain;
 
 import lotto.constant.WinningConstants;
+import lotto.view.OutputView;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -74,5 +75,12 @@ public class GameResult {
         int place = nthPlace.getPlace();
         int count = result.get(place);
         return reward * count;
+    }
+
+    private void printPlaceResult(WinningConstants nthPlace) {
+        int place = nthPlace.getPlace();
+        int count = result.get(place);
+        String message = nthPlace.getMessage();
+        OutputView.printPlaceResult(String.format(message, count));
     }
 }
