@@ -26,7 +26,7 @@ public class MoneyService {
     private void checkAmountFormat(String amount) {
         Format format = Format.PURCHASE_AMOUNT;
 
-        if (Pattern.matches(format.getRegex(), amount)) {
+        if (!Pattern.matches(format.getRegex(), amount)) {
             throw new IllegalArgumentException(Error.PURCHASE_AMOUNT_FORMAT.getText());
         }
     }
@@ -38,5 +38,4 @@ public class MoneyService {
             throw new IllegalArgumentException(Error.PURCHASE_AMOUNT_VALUE.getText());
         }
     }
-
 }
