@@ -43,12 +43,10 @@ public class Customer {
 
     private void validate(String number) {
         if (!number.matches("^[0-9]+$")) {
-            System.out.println("[ERROR] 구매 금액은 숫자여야 합니다.");
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR] 구매 금액은 숫자여야 합니다.");
         }
         if (Integer.parseInt(number) % 1000 != 0) {
-            System.out.println("[ERROR] 구매 금액은 1000원 단위여야 합니다.");
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR] 구매 금액은 1000원 단위여야 합니다.");
         }
     }
 }
