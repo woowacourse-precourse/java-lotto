@@ -55,6 +55,7 @@ public class Service {
 				checkNumberSame(lotto.getNumbers().get(i), onePurchaseLotto);
 			}
 			checkBonusNumberSame(bonusLotto.getBonus(), onePurchaseLotto);
+			numberCount.setCount();
 		}
 	}
 

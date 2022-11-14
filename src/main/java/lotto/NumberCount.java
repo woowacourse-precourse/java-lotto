@@ -4,6 +4,11 @@ public class NumberCount {
 	int guess;
 	int bonusGuess;
 
+	public void setCount() {
+		guess = 0;
+		bonusGuess = 0;
+	}
+
 	public void guessCount() {
 		guess++;
 	}
