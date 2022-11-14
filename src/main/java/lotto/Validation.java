@@ -6,6 +6,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
+import static lotto.util.ErrorMessage.DUPLICATED_NUMBER;
+import static lotto.util.ErrorMessage.NOT_DIVIDED_BY_THOUSAND;
 import static lotto.util.LottoCode.*;
 
 public class Validation {
@@ -15,7 +17,13 @@ public class Validation {
         validateIsNumberInput(input);
 
         int money = Integer.parseInt(input);
-        if ((money % LOTTO_PRICE.getCode()) != 0) {
+        validateDivedThousand(money);
+    }
+
+    private void validateDivedThousand(int money) {
+        boolean match = (money % LOTTO_PRICE.getCode()) != 0;
+        if (match) {
+            System.out.println(NOT_DIVIDED_BY_THOUSAND.getMessage());
             throw new IllegalArgumentException();
         }
     }
@@ -23,39 +31,34 @@ public class Validation {
     public void validateResultNumberInput(String result) {
         List<Integer> numbers = separateNumbers(result);
 
-        if (isOutOfRangeNumbers(numbers)) {
-            throw new IllegalArgumentException();
-        }
+        validateOutOfRange(numbers);
 
-        if (isDuplicate(numbers)) {
-            throw new IllegalArgumentException();
-        }
+        validateDuplicate(numbers);
     }
 
     public void validateIsNumberInput(String bonus) {
         validateByRegex(REGEX_NOT_NUMBER, bonus);
     }
 
-    public void validateBasicNumber(List<Integer> numbers) {
-        if (numbers.size() != COUNT_LOTTO_NUMBER.getCode()) {
-            throw new IllegalArgumentException();
-        }
+    public void validateBonusNumber(List<Integer> numbers, Integer bonusNumber) {
+        validateOutOfRange(bonusNumber);
 
-        if (isDuplicate(numbers)) {
-            throw new IllegalArgumentException();
-        }
-
-        if (isOutOfRangeNumbers(numbers)) {
-            throw new IllegalArgumentException();
-        }
+        validateDuplicate(numbers, bonusNumber);
     }
 
-    public void validateBonusNumber(List<Integer> numbers, Integer bonusNumber) {
-        if (isOutOfRangeNumber(bonusNumber)) {
-            throw new IllegalArgumentException();
-        }
+    public void validateBasicNumber(List<Integer> numbers) {
 
-        if (isDuplicate(numbers, bonusNumber)) {
+        validateCountOfLottoNumbers(numbers);
+
+        validateDuplicate(numbers);
+
+        validateOutOfRange(numbers);
+    }
+
+    private void validateCountOfLottoNumbers(List<Integer> numbers) {
+        boolean match = numbers.size() != COUNT_LOTTO_NUMBER.getCode();
+        if (match) {
+            System.out.println();
             throw new IllegalArgumentException();
         }
     }
@@ -68,25 +71,35 @@ public class Validation {
         }
     }
 
-    private boolean isOutOfRangeNumbers(List<Integer> numbers) {
-        return numbers.stream()
-                .anyMatch(this::isOutOfRangeNumber);
+    private void validateOutOfRange(List<Integer> numbers) {
+        numbers.forEach(this::validateOutOfRange);
     }
 
-    private boolean isOutOfRangeNumber(Integer number) {
-        return (number >= MIN_LOTTO_NUMBER.getCode()) && (number <= MAX_LOTTO_NUMBER.getCode());
-    }
+    private void validateOutOfRange(Integer number) {
+        boolean match = (number >= MIN_LOTTO_NUMBER.getCode()) && (number <= MAX_LOTTO_NUMBER.getCode());
 
-    private boolean isDuplicate(List<Integer> numbers) {
-        return numbers.size() != numbers.stream().distinct().count();
-    }
-
-    private boolean isDuplicate(List<Integer> numbers, Integer bonusNumber) {
-        if (isDuplicate(numbers)) {
-            return true;
+        if (match) {
+            System.out.println(DUPLICATED_NUMBER.getMessage());
+            throw new IllegalArgumentException();
         }
+    }
 
-        return numbers.contains(bonusNumber);
+    private void validateDuplicate(List<Integer> numbers) {
+        boolean match = numbers.size() != numbers.stream().distinct().count();
+
+        if (match) {
+            System.out.println(DUPLICATED_NUMBER.getMessage());
+            throw new IllegalArgumentException();
+        }
+    }
+
+    private void validateDuplicate(List<Integer> numbers, Integer bonusNumber) {
+        validateDuplicate(numbers);
+        boolean match = numbers.contains(bonusNumber);
+        if (match) {
+            System.out.println(DUPLICATED_NUMBER.getMessage());
+            throw new IllegalArgumentException();
+        }
     }
 
     private List<Integer> separateNumbers(String result) {
