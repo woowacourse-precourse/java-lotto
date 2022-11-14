@@ -30,15 +30,15 @@ public enum Ranking {
         this.hasBonusNumber = hasBonusNumber;
     }
 
-    public static Ranking findRankingByRightCountAndHasBonusNumber(int rightCount, boolean hasBonusNumber) {
+    public static Ranking findByRightCountAndHasBonusNumber(int rightCount, boolean hasBonusNumber) {
         return Arrays.stream(Ranking.values())
                 .filter(ranking -> ranking.rightCount == rightCount)
                 .findFirst()
-                .map(ranking -> getRanking(ranking, hasBonusNumber))
+                .map(ranking -> checkBonusNumber(ranking, hasBonusNumber))
                 .orElse(NOTHING);
     }
 
-    private static Ranking getRanking(Ranking ranking, boolean hasBonusNumber) {
+    private static Ranking checkBonusNumber(Ranking ranking, boolean hasBonusNumber) {
         if (ranking.rightCount == SECOND_RIGHT_COUNT && hasBonusNumber) {
             return SECOND;
         }

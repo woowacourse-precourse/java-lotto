@@ -38,7 +38,7 @@ public class Lotto {
     public Ranking getRankingByRightCountAndHasBonusNumber(Lotto winningLotto, Integer bonusNumber) {
         boolean hasBonusNumber = numbers.contains(bonusNumber);
         Integer rightCount = winningLotto.countSameNumbers(this.numbers);
-        return Ranking.findRankingByRightCountAndHasBonusNumber(rightCount, hasBonusNumber);
+        return Ranking.findByRightCountAndHasBonusNumber(rightCount, hasBonusNumber);
     }
 
     public int countSameNumbers(List<Integer> userNumbers) {
