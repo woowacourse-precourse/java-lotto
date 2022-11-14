@@ -1,4 +1,4 @@
-package lotto.model;
+package lotto.model.enums;
 
 public enum GameMessage {
     PRICE_MESSAGE("구입금액을 입력해 주세요."),
