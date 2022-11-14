@@ -8,6 +8,7 @@ public class Lotto {
     public Lotto(List<Integer> numbers) {
         validate(numbers);
         this.numbers = numbers;
+        numbers.sort(Integer::compareTo);
     }
 
     private void validate(List<Integer> numbers) {
@@ -16,5 +17,8 @@ public class Lotto {
         }
     }
 
-    // TODO: 추가 기능 구현
+    @Override
+    public String toString() {
+        return this.numbers.toString();
+    }
 }
