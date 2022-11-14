@@ -8,14 +8,8 @@ public class Lotto {
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
-        validLotto(numbers);
+        Validation.validLotto(numbers);
         this.numbers = numbers;
-    }
-
-    private void validLotto(List<Integer> numbers) {
-        Validation.validateLottoSize(numbers);
-        Validation.validLottoNumberDuplicate(numbers);
-        Validation.validNumberRange(numbers);
     }
 
     @Override

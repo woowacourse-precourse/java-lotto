@@ -7,6 +7,12 @@ import static constant.ErrorMessage.*;
 
 public class Validation {
 
+    public static void validLotto(List<Integer> numbers) {
+        Validation.validateLottoSize(numbers);
+        Validation.validLottoNumberDuplicate(numbers);
+        Validation.validNumberRange(numbers);
+    }
+
     public static void validateLottoSize(List<Integer> numbers) {
         if (numbers.size() != LOTTO_SIZE) {
             System.out.println(NOT_LOTTO_LENGTH);
