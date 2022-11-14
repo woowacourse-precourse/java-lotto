@@ -1,20 +1,20 @@
 package lotto.domain.subaction;
 
 import java.util.List;
+import lotto.constants.Rank;
 
 public class WinnerRemainingCase {
     private static final int SECOND_PRIZE_CONDITION = 5;
-    private static final int SECOND_INDEX = 3;
     private static final int START_WINNING_RANKING = 3;
     private static final int LAST_WINNING_RANKING = 6;
     private static final int SECOND_CONDITION = 1;
 
-    public List<Integer> CaseCount(List<Integer> sameNumberCount, List<Integer> secondCaseCount) {
+    public List<Integer> caseCount(List<Integer> sameNumberCount, List<Integer> secondCaseCount) {
         int currentIndex = 0;
+        for (int rankIndex = START_WINNING_RANKING; rankIndex <= LAST_WINNING_RANKING;
+                rankIndex++) {
 
-        for (int rankIndex = START_WINNING_RANKING; rankIndex <= LAST_WINNING_RANKING; rankIndex++) {
             int caseCount = 0;
-
             currentIndex = getCurrentIndex(currentIndex, rankIndex);
             caseCount = getCaseCount(sameNumberCount, rankIndex, caseCount);
             caseCount = getSecondCaseCount(secondCaseCount, rankIndex, caseCount);
@@ -33,8 +33,10 @@ public class WinnerRemainingCase {
     }
 
     private int getSecondCaseCount(List<Integer> secondCaseCount, int rankIndex, int caseCount) {
-        if (rankIndex == SECOND_PRIZE_CONDITION && secondCaseCount.get(SECOND_INDEX) >= SECOND_CONDITION) {
-            caseCount = secondCaseCount.get(SECOND_INDEX) - caseCount;
+        if (rankIndex == SECOND_PRIZE_CONDITION
+                && secondCaseCount.get(Rank.SECOND.ordinal()) >= SECOND_CONDITION) {
+
+            caseCount = secondCaseCount.get(Rank.SECOND.ordinal()) - caseCount;
         }
         return caseCount;
     }
