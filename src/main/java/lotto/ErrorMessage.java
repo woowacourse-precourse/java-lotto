@@ -13,6 +13,8 @@ public final class ErrorMessage {
     public static final String BONUS_NUMBER_NOT_NUMBER_ERROR = "보너스 번호는 숫자여야 합니다.";
     public static final String BONUS_NUMBER_ALREADY_INPUT_ERROR = "보너스 번호는 이미 입력한 당첨 번호에 존재하지 않는 숫자여야 합니다.";
 
+    public static final String INVALID_CORRECT_WINNING_NUMBER_ERROR = "로또에서 맞춘 번호의 개수는 0부터 6 사이의 숫자여야 합니다.";
+
     private ErrorMessage() {
     }
 }
