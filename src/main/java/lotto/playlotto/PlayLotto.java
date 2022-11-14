@@ -63,7 +63,7 @@ public class PlayLotto extends Input {
         this.bonus = bonus;
     }
 
-    public void play() { //한 사이클 실행
+    public void play()  { //한 사이클 실행
         buy_lottery();
         print_buy_lottery();
         print_lottery_nums();
@@ -75,7 +75,7 @@ public class PlayLotto extends Input {
 
     }
 
-    public void buy_lottery(){ //사용자에게 복권 당첨 금액 입력받기
+    public void buy_lottery()  { //사용자에게 복권 당첨 금액 입력받기
         out.buy_lottery();
         this.user.pay_Money();
     }
@@ -88,11 +88,11 @@ public class PlayLotto extends Input {
 
     public void create_lotto(){ // 당첨 번호 입력받기
         out.win_lottery_number();
-        this.lotto = new Lotto(returnList());
+        this.lotto = new Lotto(returnLotteryNumber());
     }
     public void create_bonus(){ // 보너스 번호 입력받기
         out.bonus_lottery_number();
-        this.bonus = returnInt();
+        this.bonus = returnBonus(lotto.returnNumbers());
     }
 
     public void compare_lottery(User user){
@@ -124,13 +124,11 @@ public class PlayLotto extends Input {
         return win_lottery.contains(bonus_num);
     }
 
-    public Boolean check_result(int count, int bonus){
+    public void check_result(int count, int bonus){
         int index = WinCondition.getIndex(count, bonus);
         if(index != -1){
             win_count.add(index, win_count.get(index)+1);
-            return true;
         }
-        return false;
     }
 
     public void print_result(List<Integer> win_count){
@@ -148,12 +146,6 @@ public class PlayLotto extends Input {
         }
         return sum / user.getMoney() * 100;
     }
-
-    public static void main(String[] args) {
-        PlayLotto playLotto = new PlayLotto();
-
-    }
-
 
 
 }
