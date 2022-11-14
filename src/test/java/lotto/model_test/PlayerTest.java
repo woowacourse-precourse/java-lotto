@@ -43,7 +43,6 @@ public class PlayerTest {
 
 
     private void addRankings(){
-        player.addLottoRanking(Ranking.NOTHING);
         player.addLottoRanking(Ranking.THREE_MATCH);
         player.addLottoRanking(Ranking.THREE_MATCH);
         player.addLottoRanking(Ranking.THREE_MATCH);

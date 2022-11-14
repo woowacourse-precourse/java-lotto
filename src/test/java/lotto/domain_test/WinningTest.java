@@ -35,6 +35,7 @@ public class WinningTest {
 
     private HashMap<Ranking, Integer> makeExampleMap(){
         HashMap<Ranking, Integer> exampleMap = new HashMap<>();
+        exampleMap.put(NOTHING, 0);
         exampleMap.put(THREE_MATCH, 3);
         exampleMap.put(FOUR_MATCH, 0);
         exampleMap.put(FIVE_MATCH, 1);
