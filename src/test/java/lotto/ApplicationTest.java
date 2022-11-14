@@ -1,6 +1,7 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -46,10 +47,47 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @DisplayName("로또 구입 금액에 문자가 포함되어 있으면 에러를 표시한다.")
     @Test
     void 예외_테스트() {
         assertSimpleTest(() -> {
             runException("1000j");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
+    @DisplayName("로또 구입 금액이 1000원보다 작으면 에러를 표시한다.")
+    @Test
+    void 예외_테스트2() {
+        assertSimpleTest(() -> {
+            runException("700");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
+    @DisplayName("로또 구입 금액을 1000원 단위로 표시하지 않으면 에러를 표시한다.")
+    @Test
+    void 예외_테스트3() {
+        assertSimpleTest(() -> {
+            runException("1004");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
+    @DisplayName("로또 구입 금액에 빈 문자가 포함되어 있으면 에러를 표시한다.")
+    @Test
+    void 예외_테스트4() {
+        assertSimpleTest(() -> {
+            runException(" ");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
+    @DisplayName("로또 구입 금액에 문자만 나열되어 있어도 에러를 표시한다.")
+    @Test
+    void 예외_테스트5() {
+        assertSimpleTest(() -> {
+            runException("aaa");
             assertThat(output()).contains(ERROR_MESSAGE);
         });
     }
