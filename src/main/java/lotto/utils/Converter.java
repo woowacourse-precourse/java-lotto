@@ -2,6 +2,7 @@ package lotto.utils;
 
 import static lotto.utils.Constants.LOTTO_PRICE;
 
+import java.text.DecimalFormat;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -14,5 +15,10 @@ public class Converter {
 
     public static int convertToCountsOfLotto(int lottoPurchaseAmount) {
         return lottoPurchaseAmount / LOTTO_PRICE;
+    }
+
+    public static String convertToStringWithComma(int money) {
+        DecimalFormat commaFormatter = new DecimalFormat("###,###");
+        return commaFormatter.format(money);
     }
 }
