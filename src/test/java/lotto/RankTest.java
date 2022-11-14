@@ -26,4 +26,9 @@ public class RankTest {
 		assertThat(Rank.FIFTH.getWinningMoney()).isEqualTo(5000);
 		assertThat(Rank.MISS.getWinningMoney()).isEqualTo(0);
 	}
+
+	@Test
+	public void valueOfTest_보너스통과() {
+		assertThat(Rank.valueOf(5, true)).isEqualTo(Rank.SECOND);
+	}
 }
