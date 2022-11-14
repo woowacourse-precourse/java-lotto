@@ -5,7 +5,7 @@ import lotto.util.StringUtils;
 import java.util.regex.Pattern;
 
 public class MoneyDto {
-    private static final String MONEY_PATTERN = "^[0-9]*0{3}$";
+    private static final String MONEY_PATTERN = "^[0-9]*0{3}$"; // 1000배수
     private static final String NUMBER_FORM_EXCEPTION_MESSAGE = "금액은 0보다 큰 1000원 단위로만 입력할 수 있습니다.";
     private static final String BLANK_INPUT_EXCEPTION_MESSAGE = "Null 또는 Empty 를 입력할 수 없습니다.";
 
