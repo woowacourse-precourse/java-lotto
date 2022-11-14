@@ -16,8 +16,26 @@ public class Lotto {
         }
     }
 
-    public int lottoChecker() {
+    public int lottoChecker(List<Integer> winNumbers, int bonusNumber) {
+        int rank = 6, count = 0;
+        count = compareNumber(winNumbers, numbers);
 
+        if (count == 6) rank = 1;
+        if (count >= 3 && count < 6) {
+            rank = rankCheck(count);
+        }
+        if (count == 5 && secondPlaceCheck(bonusNumber)) rank = 2;
+        return rank;
+    }
+
+    private int rankCheck(int count) {
+        int rank = 3, amount = 3, counter = 0;
+        while (amount != count) {
+            amount++;
+            counter++;
+        }
+
+        return (rank + counter);
     }
 
     private int compareNumber(List<Integer> winNumbers, List<Integer> lottoNumbers) {
