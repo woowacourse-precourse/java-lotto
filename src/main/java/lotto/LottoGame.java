@@ -12,6 +12,7 @@ public class LottoGame {
     public LottoGame(Integer bonusNumber, Lotto winningLotto, List<Lotto> goingToPublishLottos) {
         this.bonusNumber = bonusNumber;
         this.publishedLottos = new PublishedLottos(winningLotto, goingToPublishLottos);
+        this.validateBonusNumber(bonusNumber);
     }
 
     public LottoResult play() {
@@ -23,5 +24,11 @@ public class LottoGame {
         }
 
         return new LottoResult(ranksResult);
+    }
+
+    private void validateBonusNumber(Integer bonusNumber) throws IllegalArgumentException {
+        if (publishedLottos.isWinningLottoContainBonusNumber(bonusNumber)) {
+            throw new IllegalArgumentException("[ERROR] 보너스 번호와 당첨 번호는 중복되지 않아야 합니다.");
+        }
     }
 }

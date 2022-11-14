@@ -35,4 +35,8 @@ public class PublishedLottos {
 
         return rank;
     }
+
+    public boolean isWinningLottoContainBonusNumber(Integer bonusNumber) {
+        return winningLotto.hasBonusNumber(bonusNumber);
+    }
 }

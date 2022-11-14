@@ -2,8 +2,11 @@ package lotto;
 
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
-        GameManager gameManager = new GameManager();
-        gameManager.run();
+        try {
+            GameManager gameManager = new GameManager();
+            gameManager.run();
+        } catch (Exception exception) {
+            System.out.println(exception.getMessage());
+        }
     }
 }
