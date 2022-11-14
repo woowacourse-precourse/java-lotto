@@ -9,6 +9,7 @@ public final class Output {
     private static final String CONTOUR = "---";
     private static final String STATISTICS_NO_BONUS_MESSAGE = "%d개 일치 (%,d원) - %d개\n";
     private static final String STATISTICS_BONUS_MESSAGE = "%d개 일치, 보너스 볼 일치 (%,d원) - %d개\n";
+    private static final String YIELD_MESSAGE = "총 수익률은 %.1f%%입니다.\n";
 
     private Output() {}
 
@@ -36,5 +37,9 @@ public final class Output {
             }
             System.out.printf(STATISTICS_NO_BONUS_MESSAGE, prize.getMatchCount(), prize.getReward(), statisticsResult.get(prize));
         }
+    }
+
+    public static void printTotalYield(Statistics statistics, Amount amount) {
+        System.out.printf(YIELD_MESSAGE, statistics.calculateYiled(amount));
     }
 }
