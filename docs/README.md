@@ -55,3 +55,4 @@
 14. [x] (LottoProcessor): 입력한 번호로 로또번호를 생성하는 기능과 테스트
 15. [x] (ValidatorProcessor): 번호 입력 예외를 처리하는 기능과 테스트
 16. [x] (ValidatorProcessor): 번호 개수 예외를 처리하는 기능과 테스트
+17. [x] (LottoFacade): 당첨금액 마진율을 구하는 기능과 테스트

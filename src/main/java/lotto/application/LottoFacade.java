@@ -2,9 +2,8 @@ package lotto.application;
 
 import lotto.domain.*;
 
-import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
+
 
 
 public class LottoFacade {
@@ -24,5 +23,9 @@ public class LottoFacade {
         List<Integer> validatedLottoNumber = validatorProcessor.validateLottoNumberInput(input);
         validatorProcessor.validateLottoSize(validatedLottoNumber.size(), LottoEnum.LOTTO);
         return lottoProcessor.createLotto(validatedLottoNumber);
+    }
+
+    public String getMargin(Integer before, Integer after) {
+        return moneyProcessor.calculateMargin(before, after);
     }
 }

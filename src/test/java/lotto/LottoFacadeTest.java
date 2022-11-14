@@ -2,8 +2,7 @@ package lotto;
 
 import lotto.application.LottoFacade;
 import lotto.domain.Lotto;
-import lotto.domain.LottoEnum;
-import lotto.domain.LottoProcessorImpl;
+import lotto.domain.MoneyProcessorImpl;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.DynamicTest;
 import org.junit.jupiter.api.TestFactory;
@@ -75,7 +74,22 @@ public class LottoFacadeTest {
                             .isInstanceOf(IllegalArgumentException.class)
                             .hasMessageContaining("입력 길이가 다릅니다.");
                 })
+        );
+    }
 
+    @TestFactory
+    @DisplayName("LottoFacade getMargin Test")
+    Stream<DynamicTest> getMarginTest() {
+        lottoFacade = new LottoFacade();
+
+        return Stream.of(
+                DynamicTest.dynamicTest("투자 8000원, 수익 5000원인 경우", () -> {
+                    final Integer money = 8000;
+                    final Integer after = 5000;
+                    String result = lottoFacade.getMargin(money, after);
+
+                    assertThat(result).isEqualTo("62.5");
+                })
         );
     }
 }
