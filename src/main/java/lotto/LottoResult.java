@@ -12,4 +12,16 @@ public class LottoResult {
     public Map<LottoRank, Integer> getLottoResult() {
         return lottoResult;
     }
+
+    public int getLottoTotalMoney() {
+        int totalWinMoney = 0;
+
+        for (LottoRank lottoRank : lottoResult.keySet()) {
+            if (lottoResult.get(lottoRank) > 0) {
+                totalWinMoney += lottoRank.getWinnings();
+            }
+        }
+
+        return totalWinMoney;
+    }
 }

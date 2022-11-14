@@ -18,6 +18,10 @@ public enum LottoRank {
         this.numberOfMatch = numberOfMatch;
     }
 
+    public int getWinnings() {
+        return winnings;
+    }
+
     public static LottoRank valueOf(int matchCount, boolean bonusMatch) {
         if (isNothingWinning(matchCount)) {
             return NOTHING;
