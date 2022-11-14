@@ -27,38 +27,40 @@ public class Validator {
 
     public static void validateNumbers(String numbers) {
         isRightForm(numbers);
-        isDistinctNumbers(numbers);
+        StringTokenizer st = new StringTokenizer(numbers, ",");
+        List<Integer> list = new ArrayList<>();
+        while (st.hasMoreTokens()) {
+            String number = st.nextToken();
+            isNumberInRange(number);
+            isDistinctNumbers(Integer.parseInt(number), list);
+            list.add(Integer.parseInt(number));
+        }
     }
 
     private static void isRightForm(String numbers) {
-        String pattern = "[1-45],[1-45],[1-45],[1-45],[1-45],[1-45]";
+        String pattern = "[0-9],[0-9],[0-9],[0-9],[0-9],[0-9]";
         if (!numbers.matches(pattern)) {
             throw new IllegalArgumentException(ErrorMessage.NOT_RIGHT_FORM.getMessage());
         }
     }
 
-    private static void isDistinctNumbers(String numbers) {
-        StringTokenizer st = new StringTokenizer(numbers, ",");
-        List<Integer> list = new ArrayList<>();
-        while (st.hasMoreTokens()) {
-            int number = Integer.parseInt(st.nextToken());
-            if (list.contains(number)) {
-                throw new IllegalArgumentException(ErrorMessage.DUPLICATE_NUMBER.getMessage());
-            }
-            list.add(number);
+    private static void isNumberInRange(String number) {
+        String pattern = "^[1-9]$|^[1-3][0-9]$|^4[0-5]$";
+        if (!number.matches(pattern)) {
+            throw new IllegalArgumentException(ErrorMessage.OUT_OF_RANGE.getMessage());
+        }
+    }
+
+    private static void isDistinctNumbers(int number, List<Integer> list) {
+        if (list.contains(number)) {
+            throw new IllegalArgumentException(ErrorMessage.DUPLICATE_NUMBER.getMessage());
         }
     }
 
     public static void validateBonus(String number, Lotto winningLotto) {
+        isNumber(number);
         isNumberInRange(number);
         isDistinctBonus(number, winningLotto);
-    }
-
-    private static void isNumberInRange(String number) {
-        String pattern = "[1-45]";
-        if (!number.matches(pattern)) {
-            throw new IllegalArgumentException(ErrorMessage.ONLY_ONE_NUMBER_IN_RANGE_POSSIBLE.getMessage());
-        }
     }
 
     private static void isDistinctBonus(String number, Lotto winningLotto) {

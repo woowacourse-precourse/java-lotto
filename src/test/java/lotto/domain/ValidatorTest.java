@@ -68,7 +68,7 @@ public class ValidatorTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
-    @DisplayName("보너스 번호가 1개가 아니면 예외가 발생한다.")
+    @DisplayName("보너스 번호가 1개의 숫자가 아니면 예외가 발생한다.")
     @Test
     void inputBonusOverSize() {
         String input = "7,8";
