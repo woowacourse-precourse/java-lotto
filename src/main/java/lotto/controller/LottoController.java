@@ -1,10 +1,7 @@
 package lotto.controller;
 
 import camp.nextstep.edu.missionutils.Console;
-import lotto.domain.Host;
-import lotto.domain.Lotto;
-import lotto.domain.LottoMachine;
-import lotto.domain.User;
+import lotto.domain.*;
 import lotto.util.Printer;
 import lotto.view.LottoMessage;
 
@@ -15,6 +12,7 @@ public class LottoController {
     private Host host = new Host();
     private LottoMachine lottoMachine = new LottoMachine();
     private Lotto winningLotto;
+    private Bonus bonus;
 
     public void init() {
         playLotto();
@@ -46,6 +44,7 @@ public class LottoController {
     private void draw() {
         Printer.print(LottoMessage.INPUT_NUMBERS.getMessage());
         winningLotto = host.drawNumbers();
+        bonus = host.drawBonus();
     }
 
 }

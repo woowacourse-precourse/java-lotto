@@ -22,4 +22,9 @@ public class Host {
         }
         return list;
     }
+
+    public Bonus drawBonus() {
+        String number = Console.readLine();
+        return new Bonus(Integer.parseInt(number));
+    }
 }
