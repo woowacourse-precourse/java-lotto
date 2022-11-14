@@ -22,7 +22,7 @@ public class WinningStats {
         }
     }
 
-    private static List<Winning> collection = new ArrayList<>(Arrays.asList(
+    public static List<Winning> collection = new ArrayList<>(Arrays.asList(
             new Winning(5,0,5000, 3, null, "3개 일치 (5,000원) - %d개"),
             new Winning(4,0,50000,4, null,"4개 일치 (50,000원) - %d개"),
             new Winning(3,0,1500000,5,false,"5개 일치 (1,500,000원) - %d개"),
@@ -31,6 +31,8 @@ public class WinningStats {
     ));
 
     public WinningStats(List<Lotto> purchase, Lotto winning, int bonus){
+        WinningStats.Initialize();
+
         for(Lotto selected : purchase){
             int sameCount = GetSameNumber(selected, winning);
             Boolean existBonus = CheckBonus(selected, bonus, sameCount);
@@ -38,6 +40,11 @@ public class WinningStats {
         }
     }
 
+    public static void Initialize(){
+        for(Winning c : collection){
+            c.number = 0;
+        }
+    }
     private Boolean CheckBonus(Lotto lotto, int bonus, int sameCount){
         if(sameCount == 5)
             return Lotto.CheckBonus(lotto, bonus);
@@ -75,5 +82,6 @@ public class WinningStats {
         }
 
         earningRate = (double)sum / amount * 100;
+        earningRate = Math.round(earningRate * 10) / 10.0;
     }
 }
