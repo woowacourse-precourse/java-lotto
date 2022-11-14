@@ -5,6 +5,7 @@ import lotto.GameManager;
 import lotto.utils.GameMessage;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Wallet {
@@ -17,6 +18,10 @@ public class Wallet {
         this.numberOfPurchase = numberOfPurchase;
         initialize();
         pickLottos();
+    }
+
+    public List<Lotto> getLottos() {
+        return Collections.unmodifiableList(lottos);
     }
 
     private void pickLottos() {

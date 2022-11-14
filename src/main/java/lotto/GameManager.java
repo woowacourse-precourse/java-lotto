@@ -2,9 +2,15 @@ package lotto;
 
 import lotto.domain.BonusNumber;
 import lotto.domain.Lotto;
+import lotto.domain.Prize;
 import lotto.domain.Wallet;
 import lotto.utils.Constant;
+import lotto.utils.Ranking;
 import lotto.views.Input;
+
+import javax.print.attribute.standard.RequestingUserName;
+import java.util.HashMap;
+import java.util.List;
 
 public class GameManager {
 
@@ -12,6 +18,7 @@ public class GameManager {
     private Wallet wallet;
     private Lotto winningNumber;
     private BonusNumber bonusNumber;
+    private Prize prize;
 
     public GameManager(Input input) {
         this.input = input;
@@ -26,6 +33,8 @@ public class GameManager {
         winningNumber = new Lotto(input.getWinningNumber());
         bonusNumber = new BonusNumber(input.getBonusNumber());
         winningNumber.validateDistinctInBonusNumber(bonusNumber.getBonusNumber());
+        prize = new Prize(makePrize());
+
     }
 
     public int changeNumberOfLottoToBuy(int lottoPrice) {
@@ -35,4 +44,37 @@ public class GameManager {
     public void purchaseLotto(int numberOfPurchase) {
         wallet = new Wallet(numberOfPurchase);
     }
+
+    public HashMap<Ranking, Integer> makePrize() {
+        HashMap<Ranking, Integer> result = new HashMap<>();
+
+        for (Lotto lotto : wallet.getLottos()) {
+            Ranking ranking = compareWinningNumber(lotto.getNumbers());
+            addRankingInResult(result, ranking);
+        }
+
+        return result;
+    }
+
+    public Ranking compareWinningNumber(List<Integer> lotto) {
+        int count = 0;
+        for (Integer number : lotto) {
+            if (winningNumber.getNumbers().contains(number))
+                count++;
+        }
+
+        return Ranking.checkNumberCount(count);
+    }
+
+    public void addRankingInResult(HashMap<Ranking, Integer> result, Ranking ranking) {
+        if (ranking == Ranking.NOTHING)
+            return;
+
+        if (!result.containsKey(ranking)) {
+            result.put(ranking, 1);
+            return;
+        }
+        result.put(ranking, ranking.getNumberCount() + 1);
+    }
+
 }
