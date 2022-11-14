@@ -21,8 +21,8 @@
 - 금액을 입력받는다. - InputManager#inputCustomerMoney
   - 입력 받은 금액의 유효성을 검증한다. - Verifier#isValidMoney
 - 금액에 맞게 로또를 구매한다. - Customer#purchaseLotto
-- 당첨 번호를 입력 받는다. - Application#inputWinningNumber
-- 보너스 번호를 입력 받는다. - Application#inputBonusNumber
+- 당첨 번호를 입력 받는다. - InputManager#inputWinningNumber
+- 보너스 번호를 입력 받는다. - InputManager#inputBonusNumber
 - 구매한 로또 수량 및 번호를 오름차순으로 정렬 후 출력한다. - UI#printPurchaseHistory
 - 당첨 내역과 수익률을 출력 후 종료한다. 수익률은 소수점 둘째 자리에서 반올림한다. UI#printWinningStatistics
 - 사용자의 입력에 대해 예외처리를 적용하고 에러메세지를 출력 후 종료한다. 

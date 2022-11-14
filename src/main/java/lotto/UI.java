@@ -1,6 +1,7 @@
 package lotto;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 public class UI {
@@ -10,8 +11,13 @@ public class UI {
     }
     public void printPurchaseHistory(Customer customer) {
         List<Lotto> purchaseHistory = customer.getLotteryTickets();
+        int count = purchaseHistory.size();
+        System.out.println(count + "개를 구매했습니다.");
+        
         for (Lotto lotto : purchaseHistory) {
-            System.out.println(lotto.getNumbers());
+            List<Integer> lottoNumbers = lotto.getNumbers();
+            lottoNumbers.sort(Comparator.naturalOrder());
+            System.out.println(lottoNumbers);
         }
     }
 
