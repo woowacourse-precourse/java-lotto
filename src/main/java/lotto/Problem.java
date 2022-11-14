@@ -5,19 +5,20 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.*;
 
 public class Problem {
+    Comment comment;
     WinningLotto winningLotto;
     User user;
     Map<Prize,Integer> winResult;
     long winMoney;
-    Comment comment;
+
     Problem(){
         comment=new Comment();
-        this.user=new User();
-        this.winMoney=0;
+        user=new User();
+        winMoney=0;
         initializeWinResult();
     }
     void initializeWinResult(){
-        this.winResult=new EnumMap<Prize, Integer>(Prize.class);
+        winResult=new EnumMap<Prize, Integer>(Prize.class);
 
         for(Prize prize:Prize.values()){
             winResult.put(prize,0);
@@ -31,48 +32,13 @@ public class Problem {
         calculateResult();
         printAnswer();
     }
-
-    void printAnswer(){
-        comment.startPrintAnswer();
-        printAllPrizeNumber();
-        printYield();
-    }
-
-    void printYield(){
-        double yield=calculateYield();
-        System.out.println("총 수익률은 "+String.format("%.1f",yield)+"%입니다.");
-    }
-
-    double calculateYield(){
-        double money=Double.parseDouble(user.money);
-        return winMoney/money*100;
-    }
-
-    void printAllPrizeNumber(){
-        for(Prize prize:Prize.values()){
-            System.out.println(prize.getPrintCondition()+" ("+prize.getPrintWinMoney()+"원) - "+winResult.get(prize)+"개");
-        }
-    }
-
-    void printAnswerComment(){
-        System.out.println();
-        System.out.println("당첨 통계");
-        System.out.println("---");
-    }
-
     private void setUserLotto(){
         comment.inputMoney();
-        this.user.inputMoney();
-        this.user.setLottoQuantity();
-        this.user.printLottoQunantity();
-        this.user.buyingLotto();
-        this.user.printAllBuyingLotto();
-    }
-
-    void calculateResult(){
-        for(Prize key:winResult.keySet()){
-            winMoney+=(key.getWinMoney()*winResult.get(key));
-        }
+        user.inputMoney();
+        user.setLottoQuantity();
+        user.printLottoQunantity();
+        user.buyingLotto();
+        user.printAllBuyingLotto();
     }
 
     private void setWinningLotto(){
@@ -81,6 +47,27 @@ public class Problem {
         comment.inputBonusNumber();
         inputBonusNumber();
     }
+
+    private void inputWinningNumber(){
+        String []numbers=Console.readLine().split(",");
+        winningLotto=new WinningLotto(convertNumbers(numbers));
+    }
+
+    private List<Integer> convertNumbers(String[] inputNumbers){
+        List<Integer> numbers=new ArrayList<>();
+
+        for(String number :inputNumbers){
+            numbers.add(Integer.parseInt(number));
+        }
+
+        return numbers;
+    }
+
+    private void inputBonusNumber(){
+        int bonusNumber=Integer.parseInt((Console.readLine()));
+        winningLotto.inputBonusNumber(bonusNumber);
+    }
+
     private void findResult(){
         for(Lotto lotto:user.lottos){
             checkPrize(lotto);
@@ -116,10 +103,6 @@ public class Problem {
         addPrizeResult(win);
     }
 
-    void addPrizeResult(Prize win){
-        winResult.put(win,winResult.get(win)+1);
-    }
-
     Prize checkWinBonus(Lotto lotto){
         Prize win=Prize.THIRD;
         if(lotto.getNumbers().contains(winningLotto.bonusNumber)){
@@ -127,23 +110,35 @@ public class Problem {
         }
         return win;
     }
-
-    private void inputWinningNumber(){
-        String []numbers=Console.readLine().split(",");
-        this.winningLotto=new WinningLotto(convertNumbers(numbers));
+    void addPrizeResult(Prize win){
+        winResult.put(win,winResult.get(win)+1);
     }
-    private List<Integer> convertNumbers(String[] inputNumbers){
-        List<Integer> numbers=new ArrayList<>();
 
-        for(String number :inputNumbers){
-            numbers.add(Integer.parseInt(number));
+    void calculateResult(){
+        for(Prize key:winResult.keySet()){
+            winMoney+=(key.getWinMoney()*winResult.get(key));
         }
-
-        return numbers;
     }
 
-    private void inputBonusNumber(){
-        int bonusNumber=Integer.parseInt((Console.readLine()));
-        this.winningLotto.inputBonusNumber(bonusNumber);
+    void printAnswer(){
+        comment.startPrintAnswer();
+        printAllPrizeNumber();
+        printYield();
+    }
+
+    void printAllPrizeNumber(){
+        for(Prize prize:Prize.values()){
+            System.out.println(prize.getPrintCondition()+" ("+prize.getPrintWinMoney()+"원) - "+winResult.get(prize)+"개");
+        }
+    }
+
+    void printYield(){
+        double yield=calculateYield();
+        System.out.println("총 수익률은 "+String.format("%.1f",yield)+"%입니다.");
+    }
+
+    double calculateYield(){
+        double money=Double.parseDouble(user.money);
+        return winMoney/money*100;
     }
 }

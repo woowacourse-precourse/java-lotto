@@ -11,8 +11,6 @@ public class User {
     String lottoQuantity;
     List<Lotto> lottos;
 
-
-
     User(){
         this.lottos=new ArrayList<Lotto>();
     }
@@ -42,7 +40,7 @@ public class User {
     }
 
     void setLottoQuantity(){
-        this.lottoQuantity=calculateQuantity();
+        lottoQuantity=calculateQuantity();
     }
 
     private String calculateQuantity(){
@@ -51,7 +49,7 @@ public class User {
 
     void printLottoQunantity(){
         System.out.println();
-        System.out.println(this.lottoQuantity+"개를 구매했습니다.");
+        System.out.println(lottoQuantity+"개를 구매했습니다.");
     }
 
     void buyingLotto(){
