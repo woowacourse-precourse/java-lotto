@@ -150,9 +150,23 @@ public class Application {
 
     static boolean checkBonusNumber(List<Integer> lottoTicket, int bonusNumber) {
         for (int eachNumber : lottoTicket) {
-            if (eachNumber == bonusNumber
+            if (eachNumber == bonusNumber)
                 return true;
         }
         return false;
+    }
+
+    static int checkWinRank(int winNumberCount, boolean winBonusNumber) {
+        if (winNumberCount == 6)
+            return 1;
+        if (winNumberCount == 5 && winBonusNumber)
+            return 2;
+        if (winNumberCount == 5)
+            return 3;
+        if (winNumberCount == 4)
+            return 4;
+        if (winNumberCount == 3)
+            return 5;
+        return 0;
     }
 }
