@@ -86,4 +86,13 @@ class LottoTest {
         assert(Five == 3);
     }
 
+    @DisplayName("result 반환리스트안에 100이라는 숫자가 있는 갯수만큼의 수를 리턴")
+    @Test
+    void CheckResultFiveService(){
+        List<Integer> result = List.of(100,100,100,100,3);
+        CheckCount count = new CheckCount();
+        int FiveS = count.CheckFiveS(result);
+        assert(FiveS == 4);
+    }
+
 }
