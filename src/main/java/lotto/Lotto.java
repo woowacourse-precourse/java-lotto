@@ -31,13 +31,13 @@ public class Lotto {
         return numbers.contains(otherLottoNumber);
     }
 
-    private void validate(List<Integer> numbers) {
+    protected void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException();
         }
     }
 
-    private void validateLottoRange(List<Integer> numbers) {
+    protected void validateLottoRange(List<Integer> numbers) {
         for (Integer number : numbers) {
             if (number < MIN_NUMBER || number > MAX_NUMBER) {
                 throw new IllegalArgumentException(LOTTO_RANGE_ERROR_MESSAGE);
@@ -45,7 +45,7 @@ public class Lotto {
         }
     }
 
-    private void validateDuplicateCount(List<Integer> numbers) {
+    protected void validateDuplicateCount(List<Integer> numbers) {
         if (numbers.size() != numbers.stream().distinct().count()) {
             throw new IllegalArgumentException(LOTTO_HAS_DUPLICATED_NUMBER_ERROR_MESSAGE);
         }
