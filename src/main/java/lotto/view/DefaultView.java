@@ -22,7 +22,14 @@ public class DefaultView implements View {
     }
 
     private void request(Consumer<String> consumer) {
-        consumer.accept(Console.readLine());
+        String input = Console.readLine();
+        try {
+            consumer.accept(input);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            throw new IllegalArgumentException();
+        }
+
     }
     
 }
