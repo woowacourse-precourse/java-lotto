@@ -1,15 +1,15 @@
 package lotto.Model;
 
+import static lotto.Utils.Constant.*;
+
 import java.util.*;
 import lotto.Utils.Util;
 import lotto.Utils.Validator.BuyerValidator;
 
 public class Buyer {
 
-    public final int NUMBERS_OF_LOTTO = 6;
-    public final int ZERO = 0;
-    public final int START_NUM = 1;
-    public final int END_NUM = 45;
+    private final int START_NUM = 1;
+    private final int END_NUM = 45;
 
     private int purchaseAmount;
     private int purchaseCount;

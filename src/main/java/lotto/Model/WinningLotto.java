@@ -1,5 +1,7 @@
 package lotto.Model;
 
+import static lotto.Utils.Constant.*;
+
 import java.util.ArrayList;
 import java.util.List;
 import lotto.Utils.Util;
@@ -7,8 +9,6 @@ import lotto.Utils.Validator.BonusValidator;
 import lotto.Utils.Validator.WinningLottoValidator;
 
 public class WinningLotto {
-
-    public final int ZERO = 0;
 
     private final List<Integer> winningNumbers;
     private final int bonus;

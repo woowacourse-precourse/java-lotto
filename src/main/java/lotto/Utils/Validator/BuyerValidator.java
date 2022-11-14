@@ -1,16 +1,15 @@
 package lotto.Utils.Validator;
 
+import static lotto.Utils.Constant.*;
+
 import lotto.Utils.Util;
 
 public class BuyerValidator {
 
-    public static final int DIVISOR = 1000;
-    public static final int ZERO = 0;
 
-    public static final String ERROR = "[ERROR] ";
-    public static final String NOT_INTEGER_STATE = "정수만 입력해야 합니다.";
-    public static final String NOT_NATURAL_STATE = "양수만 입력해야 합니다.";
-    public static final String NOT_1000UNIT_STATE = "1000원 단위로 입력해야 합니다.";
+    private static final String NOT_INTEGER_STATE = "정수만 입력해야 합니다.";
+    private static final String NOT_NATURAL_STATE = "양수만 입력해야 합니다.";
+    private static final String NOT_1000UNIT_STATE = "1000원 단위로 입력해야 합니다.";
 
     protected final String moneyString;
 
@@ -38,7 +37,7 @@ public class BuyerValidator {
     }
 
     private void is1000Unit() {
-        if ((Util.getInt(moneyString) % DIVISOR) != ZERO) {
+        if ((Util.getInt(moneyString) % UNIT_OF_MONEY) != ZERO) {
             throw new IllegalArgumentException(ERROR + NOT_1000UNIT_STATE);
         }
     }

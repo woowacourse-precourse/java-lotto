@@ -10,16 +10,16 @@ import lotto.Model.WinningRank;
 
 public class OutputView {
 
-    public static final String PRINT_NUMBER_OF_LOTTO = "%d개를 구매했습니다.";
-    public static final String PRINT_STATISTICS = "당첨 통계";
-    public static final String PRINT_LINE = "---";
-    public static final String NEXT_LINE = "%n";
-    public static final String PRINT_FIFTH_RANK = "3개 일치 (5,000원) - %d개";
-    public static final String PRINT_FORTH_RANK = "4개 일치 (50,000원) - %d개";
-    public static final String PRINT_THIRD_RANK = "5개 일치 (1,500,000원) - %d개";
-    public static final String PRINT_SECOND_RANK = "5개 일치, 보너스 볼 일치 (30,000,000원) - %d개";
-    public static final String PRINT_FIRST_RANK = "6개 일치 (2,000,000,000원) - %d개";
-    public static final String PRINT_EARNED_RATIO = "총 수익률은 %.1f";
+    private static final String PRINT_NUMBER_OF_LOTTO = "%d개를 구매했습니다.";
+    private static final String PRINT_STATISTICS = "당첨 통계";
+    private static final String PRINT_LINE = "---";
+    private static final String NEXT_LINE = "%n";
+    private static final String PRINT_FIFTH_RANK = "3개 일치 (5,000원) - %d개";
+    private static final String PRINT_FORTH_RANK = "4개 일치 (50,000원) - %d개";
+    private static final String PRINT_THIRD_RANK = "5개 일치 (1,500,000원) - %d개";
+    private static final String PRINT_SECOND_RANK = "5개 일치, 보너스 볼 일치 (30,000,000원) - %d개";
+    private static final String PRINT_FIRST_RANK = "6개 일치 (2,000,000,000원) - %d개";
+    private static final String PRINT_EARNED_RATIO = "총 수익률은 %.1f";
 
 
     public static final int ZERO = 0;

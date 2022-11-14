@@ -1,11 +1,12 @@
 package lotto.Model;
 
+import static lotto.Utils.Constant.*;
+
 import java.util.List;
 
 public class Calculator {
 
-    public static final int UNIT_OF_MONEY = 1000;
-    public static final int PERCENT = 100;
+    private final int PERCENT = 100;
 
     private final List<WinningRank> rankResult;
 
