@@ -1,8 +1,8 @@
 package lotto.domain;
 
-import lotto.ui.LottoGenerator;
-import lotto.ui.Output;
-import lotto.ui.Validator;
+import lotto.util.LottoGenerator;
+import lotto.util.Output;
+import lotto.util.Validator;
 
 import java.util.ArrayList;
 import java.util.List;
