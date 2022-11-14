@@ -2,8 +2,7 @@ package lotto.utils;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import static lotto.utils.ErrorCode.INVALID_TYPE_BONUS_NUMBER;
+import static lotto.utils.ErrorCode.*;
 
 public class Validator {
 
@@ -23,7 +22,13 @@ public class Validator {
         String[] tmp_str = s.replace(" ", "").split(",");
         List<Integer> result = new ArrayList<>();
         for (String str : tmp_str) {
-            result.add(Integer.parseInt(str));
+            int number;
+            try {
+                number = Integer.parseInt(str);
+            } catch (NumberFormatException e) {
+                throw new IllegalArgumentException(INVALID_TYPE_LOTTO_NUMBER.getMessage());
+            }
+            result.add(number);
         }
         return result;
     }
