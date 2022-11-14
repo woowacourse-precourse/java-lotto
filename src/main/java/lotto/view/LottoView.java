@@ -52,5 +52,9 @@ public class LottoView {
     }
 
 
-
+    public static void outputProfitRate(long Amount, int money) {
+        double profit = Amount / (double)money;
+        profit = Math.round((profit*10)/10.0);
+        AppView.outputLine("총 수익률은 " + profit + "%입니다.");
+    }
 }

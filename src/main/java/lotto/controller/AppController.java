@@ -1,5 +1,6 @@
 package lotto.controller;
 
+import lotto.Lotto;
 import lotto.MyLottoList;
 import lotto.MyPrize;
 import lotto.PrizeLotto;
@@ -35,5 +36,6 @@ public class AppController {
         AppView.outputLine("---");
         myPrize = generateMyPrizeInstance(myLottoList, prizeLotto);
         LottoView.outputSynthesisEachRank(myPrize);
+        LottoView.outputProfitRate(myPrize.getProfitAmount(), money);
     }
 }
