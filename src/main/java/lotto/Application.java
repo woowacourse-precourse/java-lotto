@@ -4,7 +4,6 @@ import lotto.UI.*;
 import lotto.domain.*;
 import java.util.ArrayList;
 import java.util.List;
-import org.jetbrains.annotations.NotNull;
 
 public class Application {
 
@@ -42,7 +41,7 @@ public class Application {
         }
     }
 
-    static void issueLotteries(@NotNull Publisher publisher) {
+    static void issueLotteries(Publisher publisher) {
         while (publisher.getLotteries().size() < publisher.getTicketQuantity()) {
             try {
                 List<Integer> numbers = new ArrayList<>();
