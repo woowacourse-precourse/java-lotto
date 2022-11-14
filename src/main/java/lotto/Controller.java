@@ -14,17 +14,16 @@ import java.util.Map;
 
 public class Controller {
 
-    private final static IllegalArgumentException ie = new IllegalArgumentException("[ERROR] 1000 원 단위의 숫자를 입력해주세요!");
+//    private final static IllegalArgumentException ie = new IllegalArgumentException("[ERROR] 1000 원 단위의 숫자를 입력해주세요!");
     private PriceGetter priceGetter = new PriceGetter();
-    private WinnerNumberGetter winnerNumberGetter = new WinnerNumberGetter();
     private LotteryListPrinter lotteryListPrinter = new LotteryListPrinter();
     private PrizeListPrinter prizeListPrinter = new PrizeListPrinter();
 
     private IssuingMachine issuingMachine = new IssuingMachine();
-    private PrizeListGenerator prizeListGenerator = new PrizeListGenerator();
+    private PrizeListGenerator prizeListGenerator;
     private YieldCalculator yieldCalculator = new YieldCalculator();
 
-    public void lottery() throws IllegalArgumentException {
+    public void lottery() {
         try {
             int price = priceGetter.getBuyingMoney();
             int buyingAmount = QuantityCalculator.calculateProperQuantity(price);
@@ -33,17 +32,16 @@ public class Controller {
 
             lotteryListPrinter.printAllLottery(lotteryList);
 
-            Map<Integer, Integer> winningNumbers = prizeListGenerator.getWinningNumbers();
-
-            prizeListGenerator.iterateLotteriesForStatistic(winningNumbers, lotteryList);
+            prizeListGenerator = new PrizeListGenerator();
+            prizeListGenerator.iterateLotteriesForStatistic(lotteryList);
             Map<Enum, Integer> winnerResult = prizeListGenerator.returnWinnerResult();
 
             double yield = yieldCalculator.computeYield(buyingAmount * 1000, winnerResult);
 
             prizeListPrinter.printWinStatistic(winnerResult, yield);
-        } catch (IllegalArgumentException illegalArgumentException) {
-            throw ie;
+        } catch (IllegalArgumentException ie) {
+            System.out.println(ie.getMessage());
+            return;
         }
-
     }
 }
