@@ -1,7 +1,9 @@
 #  User Interface (UI)
 
-    inputMoney : 금액을 입력 받음
+**inputMoney**  
 
+    금액을 입력 받음
+    구매한 로또의 개수와 정보를 출력
 
 #  금액 제한 설정(Money)
     MAX : 최대 금액 
@@ -36,18 +38,27 @@
 
 **selectAt**
    
-     보관된 로또를 반환
+    보관된 로또를 반환
 
 #로또 판매점 (Store)
 
-    
-**setCustomer**
+    구매자 정보 설정
 
+**countLotto**
+
+    구매자가 구매 가능한 로또 개수 파악
+
+**makeLotto**
+
+    로또 한개 발행
+
+**saveLotto**
+   
+    발행된 로또를 DB에 저장
 
 **buy**
-
-    makeLotto : 
-    saveLotto :
+    
+    구매자가 구매 가능한 개수만큼 로또를 구매
 
 
 
