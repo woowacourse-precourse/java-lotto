@@ -17,6 +17,7 @@ public class Lotto {
 
     public Lotto(List<Integer> numbers) {
         validateNumbers(numbers);
+        includeDuplicates(numbers);
         this.numbers = numbers;
     }
 
@@ -39,5 +40,9 @@ public class Lotto {
         if (deduplicated.size() != LOTTO_SIZE) {
             throw new ErrorException(Error.INCLUDE_DUPLICATE_VALUE.toString());
         }
+    }
+
+    public List<Integer> getNumbers() {
+        return numbers;
     }
 }
