@@ -13,14 +13,17 @@ public class BuyerValidator {
     public static final String NOT_1000UNIT_STATE = "1000원 단위로 입력해야 합니다.";
 
     protected final String moneyString;
-    public BuyerValidator(String moneyString){
+
+    public BuyerValidator(String moneyString) {
         this.moneyString = moneyString;
         isInteger();
         isNatural();
         is1000Unit();
-    };
+    }
 
-    private void isInteger(){
+    ;
+
+    private void isInteger() {
         try {
             Util.getInt(moneyString);
         } catch (NumberFormatException e) {
@@ -28,14 +31,14 @@ public class BuyerValidator {
         }
     }
 
-    private void isNatural(){
-        if(Util.getInt(moneyString) < 0){
+    private void isNatural() {
+        if (Util.getInt(moneyString) < 0) {
             throw new IllegalArgumentException(ERROR + NOT_NATURAL_STATE);
         }
     }
 
-    private void is1000Unit(){
-        if ((Util.getInt(moneyString) % DIVISOR) != ZERO){
+    private void is1000Unit() {
+        if ((Util.getInt(moneyString) % DIVISOR) != ZERO) {
             throw new IllegalArgumentException(ERROR + NOT_1000UNIT_STATE);
         }
     }

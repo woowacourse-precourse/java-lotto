@@ -23,14 +23,16 @@ public class OutputView {
 
 
     public static final int ZERO = 0;
-    public static void printBuyerLotto(Buyer buyer){
+
+    public static void printBuyerLotto(Buyer buyer) {
         int count = buyer.getPurchaseCount();
         System.out.printf(PRINT_NUMBER_OF_LOTTO, count);
         System.out.println();
         printLottoWallet(buyer.getLottoWallet());
     }
-    public static void printLottoWallet(List<Lotto> wallet){
-        for(int i = ZERO; i<wallet.size(); i++){
+
+    public static void printLottoWallet(List<Lotto> wallet) {
+        for (int i = ZERO; i < wallet.size(); i++) {
             List<Integer> lotto = wallet.get(i).getNumbers().stream()
                     .sorted(Collections.reverseOrder().reversed())
                     .collect(Collectors.toList());
@@ -38,13 +40,14 @@ public class OutputView {
         }
     }
 
-    public static void printWinningStatistics(Calculator calculator){
+    public static void printWinningStatistics(Calculator calculator) {
         System.out.println(PRINT_STATISTICS);
         System.out.println(PRINT_LINE);
         System.out.printf(PRINT_FIFTH_RANK + NEXT_LINE, calculator.CountOfRank(WinningRank.FIFTH));
         System.out.printf(PRINT_FORTH_RANK + NEXT_LINE, calculator.CountOfRank(WinningRank.FOURTH));
         System.out.printf(PRINT_THIRD_RANK + NEXT_LINE, calculator.CountOfRank(WinningRank.THIRD));
-        System.out.printf(PRINT_SECOND_RANK + NEXT_LINE, calculator.CountOfRank(WinningRank.SECOND));
+        System.out.printf(PRINT_SECOND_RANK + NEXT_LINE,
+                calculator.CountOfRank(WinningRank.SECOND));
         System.out.printf(PRINT_FIRST_RANK + NEXT_LINE, calculator.CountOfRank(WinningRank.FIRST));
         System.out.printf(PRINT_EARNED_RATIO, calculator.earnedRatio());
         System.out.print("%입니다.");

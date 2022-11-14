@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Set;
 
 public class Lotto {
+
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
@@ -18,6 +19,7 @@ public class Lotto {
             throw new IllegalArgumentException();
         }
     }
+
     // TODO: 추가 기능 구현
     public List<Integer> getNumbers() {
         return numbers;

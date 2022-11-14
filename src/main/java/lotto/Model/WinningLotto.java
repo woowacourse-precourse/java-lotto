@@ -7,6 +7,7 @@ import lotto.Utils.Validator.BonusValidator;
 import lotto.Utils.Validator.WinningLottoValidator;
 
 public class WinningLotto {
+
     public final int ZERO = 0;
 
     private final List<Integer> winningNumbers;
@@ -21,21 +22,21 @@ public class WinningLotto {
         this.bonus = Util.getInt(bonus);
     }
 
-    public int matchNumberCount(Lotto lotto){
+    public int matchNumberCount(Lotto lotto) {
         return Math.toIntExact(lotto.getNumbers().stream()
                 .filter(this.winningNumbers::contains)
                 .count());
     }
 
-    public boolean isMatchBonusNumber(Lotto lotto){
+    public boolean isMatchBonusNumber(Lotto lotto) {
         return lotto.getNumbers().contains(bonus);
     }
 
-    public List<WinningRank> makeRankResult(Buyer buyer){
+    public List<WinningRank> makeRankResult(Buyer buyer) {
         List<WinningRank> rankResult = new ArrayList<>();
         List<Lotto> LottoWallet = buyer.getLottoWallet();
 
-        for(int i = ZERO; i < LottoWallet.size(); i++){
+        for (int i = ZERO; i < LottoWallet.size(); i++) {
             rankResult.add(WinningRank.valueOf(this.matchNumberCount(LottoWallet.get(i))
                     , this.isMatchBonusNumber(LottoWallet.get(i))));
         }

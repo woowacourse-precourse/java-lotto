@@ -8,8 +8,7 @@ public enum WinningRank {
     THIRD(5, 1_500_000),
     FOURTH(4, 50_000),
     FIFTH(3, 5_000),
-    SIXTH(0, 0)
-    ;
+    SIXTH(0, 0);
 
     private static final int MIN_MATCH_COUNT = 3;
     public static final String ERROR = "[ERROR] ";
@@ -23,22 +22,20 @@ public enum WinningRank {
         this.WinningAmount = WinningAmount;
     }
 
-    public int matchCount(){
-        return matchCount;
-    }
 
-    public int WinningAmount(){
+    public int WinningAmount() {
         return WinningAmount;
     }
 
     private boolean Count(int matchCount) {
         return this.matchCount == matchCount;
     }
-    public static WinningRank valueOf(int matchCount, boolean matchBonus){
-        if (matchCount < MIN_MATCH_COUNT){
+
+    public static WinningRank valueOf(int matchCount, boolean matchBonus) {
+        if (matchCount < MIN_MATCH_COUNT) {
             return SIXTH;
         }
-        if (SECOND.Count(matchCount) && matchBonus){
+        if (SECOND.Count(matchCount) && matchBonus) {
             return SECOND;
         }
         return Arrays.stream(WinningRank.values())

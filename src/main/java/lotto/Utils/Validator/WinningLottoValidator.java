@@ -15,18 +15,20 @@ public class WinningLottoValidator {
 
     protected final String WinningLotto;
 
-    public WinningLottoValidator(String WinningLotto){
+    public WinningLottoValidator(String WinningLotto) {
         this.WinningLotto = WinningLotto;
         isInteger();
         isValidLottoSize();
         isValidRange();
         isOverlap();
-    };
+    }
+
+    ;
 
     private void isInteger() {
-        try{
+        try {
             Util.getList(WinningLotto);
-        }catch (NumberFormatException e){
+        } catch (NumberFormatException e) {
             throw new IllegalArgumentException(ERROR + NOT_INTEGER_STATE);
         }
     }
@@ -37,15 +39,15 @@ public class WinningLottoValidator {
         }
     }
 
-    private void isValidRange(){
-        if(!Util.checkRange(Util.getList(WinningLotto))){
+    private void isValidRange() {
+        if (!Util.checkRange(Util.getList(WinningLotto))) {
             throw new IllegalArgumentException(ERROR + NOT_RANGE_STATE);
         }
     }
 
-    private void isOverlap(){
+    private void isOverlap() {
         Set set = new HashSet<>(Util.getList(WinningLotto));
-        if(set.size() != 6){
+        if (set.size() != 6) {
             throw new IllegalArgumentException(ERROR + NOT_OVERLAP_STATE);
         }
     }
