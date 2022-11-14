@@ -19,21 +19,23 @@ public class RandomLottoGenerator {
             randomLotto.add(Randoms.pickUniqueNumbersInRange(LOTTO_START_NUM, LOTTO_END_NUM, LOTTO_SIZE_NUM));
         }
 
-        lottoTheorem(randomLotto);
-        consoleOutput(randomLotto);
-
+        List<List<Integer>> randomLottoTicket = lottoTheorem(randomLotto);
+        consoleOutput(randomLottoTicket);
         return randomLotto;
     }
 
-    private void consoleOutput(List<List<Integer>> randomLotto) {
-        for (List<Integer> lottoTickets : randomLotto) {
+    private void consoleOutput(List<List<Integer>> randomLottoTicket) {
+        for (List<Integer> lottoTickets : randomLottoTicket) {
             System.out.println(lottoTickets);
         }
     }
 
-    public void lottoTheorem(List<List<Integer>> randomLotto) {
+    public List<List<Integer>> lottoTheorem(List<List<Integer>> randomLotto) {
+        List<List<Integer>> randomLottoTicket = new ArrayList<>();
+
         for (List<Integer> randomNumber : randomLotto) {
-            randomNumber.stream().sorted().collect(Collectors.toList());
+            randomLottoTicket.add(randomNumber.stream().sorted().collect(Collectors.toList()));
         }
+        return randomLottoTicket;
     }
 }
