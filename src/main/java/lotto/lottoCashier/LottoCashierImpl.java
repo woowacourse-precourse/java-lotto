@@ -2,6 +2,8 @@ package lotto.lottoCashier;
 
 import camp.nextstep.edu.missionutils.Console;
 
+import static lotto.constants.Constants.PRICE_OF_LOTTO;
+
 public class LottoCashierImpl implements LottoCashier{
     @Override
     public int receiveMoney() {
@@ -25,8 +27,11 @@ public class LottoCashierImpl implements LottoCashier{
     }
 
     @Override
-    public int calculateNumberOfLottos() {
-        return 0;
+    public int calculateNumberOfLottos(int money) {
+        if(money % PRICE_OF_LOTTO != 0) {
+            throw new IllegalArgumentException("[ERROR] 로또 가격으로 정확히 나눠떨어지는 값을 입력하세요. 로또 가격: " + PRICE_OF_LOTTO);
+        }
+        return money / PRICE_OF_LOTTO;
     }
 
     @Override
