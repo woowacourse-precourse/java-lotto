@@ -16,6 +16,8 @@
 - [ ] 당첨 통계를 출력한다.
     -[ ] 당첨 내역 (로또 리스트가 각각 몇 등 했는지 정보 포함)
     -[ ] 총 수익률
+---
+
 
 ### Domain
 
@@ -72,17 +74,18 @@
 - [X] 로또 당첨 내역 자료 구조 반환 - Statistics#getRankRecord()
 - [ ] 발행된 Lotto 수와 총 당첨금 정보를 활용해 수익률 계산 - Statistics#calculateEarningsRate()
   - [ ] 소수점 둘째 자리에서 반올림 처리 (ex. 100.0%, 51.5%, 1,000,000,0%) - Statistics#roundToTwoDecimalPlaces()
-  
-
-### Test
+---
 
 
-#### Buyer
+### Domain Test
+
+
+#### BuyerTest
 - [X] 구매자가 로또 한 장 가격인 1,000원 미만의 금액으로 로또를 구매하려고 하면 예외가 발생한다. - BuyerTest#createBuyerByUnderLottoPrice() 
 - [X] 구매자가 입력한 구매 금액에 맞춰 몇 장의 로또를 구매할 수 있는지 알 수 있다. - BuyerTest#calculateNumberOfLottos()
 
 
-#### Lotto
+#### LottoTest
 - [X] 로또 번호의 개수가 6개가 넘어가면 예외가 발생한다. - LottoTest#createLottoByOverSize()
 - [X] 로또 번호에 중복된 숫자가 있으면 예외가 발생한다. - LottoTest#createLottoByDuplicatedNumber()
 - [X] 로또 번호 중 1~45 숫자 범위 내에 없는 수가 있으면 예외가 발생한다. - LottoTest#createLottoByExceedNumberRange()
@@ -91,18 +94,18 @@
 - [X] 로또 번호 리스트를 조회할 수 있다. - LottoTest#getLottoNumbers()
 
 
-#### Bonus 
+#### BonusTest
 - [X] 보너스 번호가 1~45 숫자 범위에 포함되지 않은 경우 예외가 발생한다. - BonusTest#createBonusByExceedNumberRange()
 
 
-#### WinningLotto
+#### WinningLottoTest
 - [X] 당첨 로또 번호 리스트가 보너스 번호를 포함하고 있는 경우 예외가 발생한다. - WinningLottoTest#createWinningLottoByWinningLottoContainsBonusNumber()
 
 
-#### Judgement
+#### JudgementTest
 - [X] 로또 당첨 번호와 비교하여 구매 로또가 몇 등에 해당하는지 알 수 있다. - JudgementTest#getLottoRank()
 
 
-#### Statistics 
+#### StatisticsTest
 - [X] 기록 전, 1등부터 5등까지 모두 0으로 초기화 상태이다. - StatisticsTest#isInitializedZeroCount()
 - [X] 각 등수 별로 몇 번씩 당첨됐는지 기록한다. - StatisticsTest#record()
