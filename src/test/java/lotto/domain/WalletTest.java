@@ -23,9 +23,18 @@ public class WalletTest {
         assertThat(countOfTickets).isEqualTo(5);
     }
 
+    @DisplayName("구입 금액이 티켓 가격보다 작은 경우 예외가 발생하는지 확인한다")
+    @ParameterizedTest
+    @ValueSource(ints = {-1000, -500, 0, 1, 100})
+    void check_Normal_Amount(int money) {
+        assertThatThrownBy(() -> new Wallet(money))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("입력된 구입 금액이 티켓 가격보다 작습니다.");
+    }
+
     @DisplayName("구입 금액이 1000으로 나누어 떨어지지 않는 경우 예외가 발생하는지 확인한다")
     @ParameterizedTest
-    @ValueSource(ints = {100, 1001, 2500, 55555})
+    @ValueSource(ints = {1001, 2500, 55555})
     void check_Money_Divisible_By_1000(int money) {
         assertThatThrownBy(() -> new Wallet(money))
                 .isInstanceOf(IllegalArgumentException.class)

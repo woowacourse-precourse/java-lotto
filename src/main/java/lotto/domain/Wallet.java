@@ -7,12 +7,23 @@ public class Wallet {
     private final int money;
 
     public Wallet(int money) {
-        validateMultiple(money);
+        validate(money);
         this.money = money;
     }
 
     public int calculate() {
         return money / TICKET_PRICE;
+    }
+
+    private void validate(int money) {
+        validateNormal(money);
+        validateMultiple(money);
+    }
+
+    private void validateNormal(int money) {
+        if (money < TICKET_PRICE) {
+            throw new IllegalArgumentException("[ERROR] 입력된 구입 금액이 티켓 가격보다 작습니다.");
+        }
     }
 
     private void validateMultiple(int money) {
