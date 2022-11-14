@@ -26,8 +26,10 @@ public class Application {
         for (int i = 0; i < numberOfLotteries; i++) {
             List<Integer> uniqueNumbers = Randoms.pickUniqueNumbersInRange(LOTTO_START, LOTTO_END, LOTTO_PICK_NUM);
             Collections.sort(uniqueNumbers);
-            lotteries.add(new Lotto(uniqueNumbers));
-            //TODO: 뽑은 로또 숫자 출력
+            Lotto lotto = new Lotto(uniqueNumbers);
+            lotteries.add(lotto);
+
+            System.out.println(lotto);
         }
     }
 

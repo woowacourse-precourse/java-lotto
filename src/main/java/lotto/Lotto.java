@@ -33,4 +33,13 @@ public class Lotto {
             throw new IllegalArgumentException();
         }
     }
+
+    @Override
+    public String toString() {
+        String returnedString = "[" + String.valueOf(numbers.get(0));
+        for (int idx = 1; idx < numbers.size(); idx++) {
+            returnedString += ", " + numbers.get(idx);
+        }
+        return returnedString + "]";
+    }
 }
