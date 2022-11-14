@@ -36,7 +36,7 @@ public class Account {
     public String getYield() {
         double yieldRaw = winningAmount / ((double) (count * 1000));
         double yieldPercent = yieldRaw * 100;
-        DecimalFormat decFormat = new DecimalFormat("###,###.0");
+        DecimalFormat decFormat = new DecimalFormat("###,##0.0");
         String yield = decFormat.format(yieldPercent);
         return yield;
     }
