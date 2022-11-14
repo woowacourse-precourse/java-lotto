@@ -32,4 +32,18 @@ public class Result {
         return lotto.getNumbers().contains(bonus);
     }
 
+    //  당첨 번호와 로또 번호를 비교하여 등수를 정하는 기능
+    public void updateResult(int matchCount, boolean correctBonus) {
+        for (Rank rank : Rank.values()) {
+            if (matchCount == rank.getCorrectCount()) {
+                result.put(rank, result.get(rank) + 1);
+            }
+        }
+        if (matchCount == Rank.SECOND.getCorrectCount() && correctBonus) {
+            result.put(Rank.THIRD, result.get(Rank.THIRD) - 1);
+        } else if (matchCount == Rank.THIRD.getCorrectCount()) {
+            result.put(Rank.SECOND, result.get(Rank.SECOND) - 1);
+        }
+    }
+
 }
