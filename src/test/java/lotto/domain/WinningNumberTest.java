@@ -40,4 +40,15 @@ public class WinningNumberTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("보너스 숫자는 당첨 번호와 중복되지 않아야 합니다.");
     }
+
+    @DisplayName("6개보다 적은 숫자로 당첨 번호 생성 시 에러가 발생한다.")
+    @Test
+    void createWinningNumberWithLessThanSixNumbers() {
+        List<Integer> numbers = List.of(1, 2, 30, 7, 5);
+        int bonusNumber = 7;
+
+        assertThatThrownBy(() -> new WinningNumber(numbers, bonusNumber))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("6개의 숫자를 입력해주세요.");
+    }
 }
