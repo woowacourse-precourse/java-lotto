@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import lotto.util.constants.LottoConstants;
+import lotto.util.constants.WinningScore;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
@@ -66,6 +67,7 @@ class LottoMachineTest {
     @Nested
     @DisplayName("당첨 결과를 계산한다.")
     class ComputeWinningResultsTest {
+        private LottoResult lottoResult = new LottoResult();
         private Lotto winningLotto;
         private List<Lotto> userLottoTickets;
 
@@ -81,8 +83,9 @@ class LottoMachineTest {
         @Test
         void 일치하는_숫자_갯수_계산_테스트() {
             Lotto userLotto = userLottoTickets.get(1);
-            int count = lottoMachine.compareLottoNumber(userLotto.getNumbers(), winningLotto.getNumbers());
-            assertThat(count).isEqualTo(3);
+            WinningScore winningScore = lottoResult.compareLottoNumber(userLotto.getNumbers(),
+                    winningLotto.getNumbers());
+            assertThat(winningScore.name()).isEqualTo(WinningScore.THREE.name());
         }
     }
 
