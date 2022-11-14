@@ -134,7 +134,15 @@ class LottoTest extends NsTest {
 			assertThat(output()).contains(ERROR_MESSAGE);
 		});
 	}
-	
+
+	@Test
+	void 당첨번호_범위_검사() {
+		assertSimpleTest(() -> {
+			runException("1000", "1,2,3,4,5,46");
+			assertThat(output()).contains(ERROR_MESSAGE);
+		});
+	}
+
 	@Override
 	public void runMain() {
 		Application.main(new String[] {});
