@@ -16,4 +16,11 @@ class InputValidationTest {
                 InputValidation.numberFormatExceptionValidation("안녕하세요"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+    @Test
+    @DisplayName(",로 입력이 들어오지 않을 때")
+    public void NotComma() throws Exception{
+        Assertions.assertThatThrownBy(()->
+                InputValidation.winningNumberValidation("1 2 3 4 5 6"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
