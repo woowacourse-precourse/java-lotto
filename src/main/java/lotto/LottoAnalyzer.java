@@ -11,7 +11,7 @@ public class LottoAnalyzer {
     private final List<Lotto> lottoTickets;
     private final List<Integer> winningNumbers;
     private final int bonusNumber;
-    private int[] rankCount = new int[5];
+    private final int[] rankCount = new int[5];
     private int wholePrizeMoney = 0;
 
     public LottoAnalyzer(List<Lotto> lottoTickets, List<Integer> winningNumbers, int bonusNumber) {
