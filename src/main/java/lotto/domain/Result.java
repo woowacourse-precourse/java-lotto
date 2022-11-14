@@ -1,11 +1,7 @@
 package lotto.domain;
 
-import lotto.domain.StartLotto;
-import lotto.domain.WinCheck;
-
 import java.math.BigDecimal;
 import java.math.RoundingMode;
-import java.util.List;
 
 public class Result {
     public static int first;
@@ -20,7 +16,9 @@ public class Result {
         third = 0;
         fourth = 0;
         fifth = 0;
-        addResult(StartLotto.winChecks);
+        for (WinCheck e : StartLotto.winChecks) {
+            addResult(e);
+        }
     }
 
     public static int getCount(int index) {
@@ -37,20 +35,20 @@ public class Result {
         return 0;
     }
 
-    public static void addResult(List<WinCheck> winChecks) {
-        for (WinCheck e : winChecks) {
-            if (e.getMatchCnt() == 6)
-                first++;
-            if (e.getMatchCnt() == 5)
-                if (e.isBonusMatch())
-                    second++;
-                else
-                    third++;            //-> 고쳐야 함
-            if (e.getMatchCnt() == 4)
-                fourth++;
-            if (e.getMatchCnt() == 3)
-                fifth++;
+    public static void addResult(WinCheck winChecks) {
+        if (winChecks.getMatchCnt() == 6)
+            first++;
+        if (winChecks.getMatchCnt() == 5) {
+            if (winChecks.isBonusMatch()) {
+                second++;
+                return;
+            }
+            third++;
         }
+        if (winChecks.getMatchCnt() == 4)
+            fourth++;
+        if (winChecks.getMatchCnt() == 3)
+            fifth++;
     }
 
     public static BigDecimal totalPrize() {
