@@ -21,7 +21,7 @@
 - [x] `UserController` 의 로또 구매 부분 구현
 
 ## 로또 추첨
-- [ ] `Lotto` 를 상속받은 `LotteryWinningNumber` 클래스 구현
+- [x] `Lotto` 를 상속받은 `LotteryWinningNumber` 클래스 구현
 - [ ] 로또 추첨 문구 출력 (`InputView`)
 - [ ] `LotteryDrawService`를 통해 당첨 번호 생성 기능 구현
 - [ ] 보너스 번호 입력 문구 출력 (`InputView`)
