@@ -31,9 +31,9 @@ public class Lotto {
         }
     }
 
-    private  void validateDuplicationOfNumbers(List<Integer> numbers) {
+    private void validateDuplicationOfNumbers(List<Integer> numbers) {
         int[] checkDuplication = new int[46];
-        for(Integer number : numbers){
+        for (Integer number : numbers) {
             if (checkDuplication[number] == 1) {
                 throw new IllegalArgumentException(ERROR_MESSAGE.NOT_DUPLICATION_OF_NUMBERS.getMessage());
             }
@@ -63,7 +63,7 @@ public class Lotto {
 
     private void validateDuplicationOfBonusNumber(int bonusNumber) {
         int[] checkDuplication = new int[46];
-        for(Integer number : numbers) {
+        for (Integer number : numbers) {
             checkDuplication[number] = 1;
         }
         if (checkDuplication[bonusNumber] == 1) {

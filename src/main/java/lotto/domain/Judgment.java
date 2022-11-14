@@ -4,14 +4,14 @@ import java.util.List;
 
 public class Judgment {
 
-    public List<List<Integer>> collectionOfLottoNumbers;
     public final int firstCount;
     public final int secondCount;
     public final int thirdCount;
     public final int fourthCount;
     public final int fifthCount;
+    public List<List<Integer>> collectionOfLottoNumbers;
 
-    public Judgment(List<List<Integer>> collectionOfLottoNumbers, List<Integer>numbers, int bonusNumber) {
+    public Judgment(List<List<Integer>> collectionOfLottoNumbers, List<Integer> numbers, int bonusNumber) {
         this.collectionOfLottoNumbers = collectionOfLottoNumbers;
         this.firstCount = calculateFirst(numbers);
         this.secondCount = calculateSecond(numbers, bonusNumber);
@@ -20,7 +20,7 @@ public class Judgment {
         this.fifthCount = calculateFifth(numbers);
     }
 
-    private int calculateFirst(List<Integer>numbers) {
+    private int calculateFirst(List<Integer> numbers) {
         int count = 0;
         for (List<Integer> collectionOfLottoNumber : collectionOfLottoNumbers) {
             if (correctCount(collectionOfLottoNumber, numbers) == 6) {
@@ -30,7 +30,7 @@ public class Judgment {
         return count;
     }
 
-    private int calculateSecond(List<Integer>numbers, int bonusNumber) {
+    private int calculateSecond(List<Integer> numbers, int bonusNumber) {
         int count = 0;
         for (List<Integer> collectionOfLottoNumber : collectionOfLottoNumbers) {
             if (correctCountIncludingBonus(collectionOfLottoNumber, numbers, bonusNumber)) {
@@ -40,7 +40,7 @@ public class Judgment {
         return count;
     }
 
-    private int calculateThird(List<Integer>numbers, int bonusNumber) {
+    private int calculateThird(List<Integer> numbers, int bonusNumber) {
         int count = 0;
         for (List<Integer> collectionOfLottoNumber : collectionOfLottoNumbers) {
             if (correctCount(collectionOfLottoNumber, numbers) == 5 && !correctCountIncludingBonus(
@@ -51,7 +51,7 @@ public class Judgment {
         return count;
     }
 
-    private int calculateFourth(List<Integer>numbers) {
+    private int calculateFourth(List<Integer> numbers) {
         int count = 0;
         for (List<Integer> collectionOfLottoNumber : collectionOfLottoNumbers) {
             if (correctCount(collectionOfLottoNumber, numbers) == 4) {
@@ -61,7 +61,7 @@ public class Judgment {
         return count;
     }
 
-    private int calculateFifth(List<Integer>numbers) {
+    private int calculateFifth(List<Integer> numbers) {
         int count = 0;
         for (List<Integer> collectionOfLottoNumber : collectionOfLottoNumbers) {
             if (correctCount(collectionOfLottoNumber, numbers) == 3) {
@@ -85,8 +85,9 @@ public class Judgment {
         return count;
     }
 
-    public boolean correctCountIncludingBonus(List<Integer> actualNumbers, List<Integer> expectedNumbers, int bonusNumber) {
-        if (matchBonusNumber(actualNumbers, bonusNumber) ) {
+    public boolean correctCountIncludingBonus(List<Integer> actualNumbers, List<Integer> expectedNumbers,
+                                              int bonusNumber) {
+        if (matchBonusNumber(actualNumbers, bonusNumber)) {
             return correctCount(actualNumbers, expectedNumbers) == 5;
         }
         return false;

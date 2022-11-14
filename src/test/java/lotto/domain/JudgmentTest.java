@@ -11,8 +11,8 @@ class JudgmentTest {
     @Test
     void createFirstCount() {
         Judgment judgment = new Judgment(List.of(List.of(1, 2, 3, 4, 5, 6),
-                                         List.of(2, 3, 4, 5, 6, 7),
-                                         List.of(1, 2, 3, 4, 5, 6)), List.of(1, 2, 3, 4, 5, 6), 7);
+                List.of(2, 3, 4, 5, 6, 7),
+                List.of(1, 2, 3, 4, 5, 6)), List.of(1, 2, 3, 4, 5, 6), 7);
         assertEquals(2, judgment.firstCount);
     }
 

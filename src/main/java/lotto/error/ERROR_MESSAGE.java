@@ -11,7 +11,11 @@ public enum ERROR_MESSAGE {
     NOT_DUPLICATION_OF_BONUS_NUMBER("[ERROR] 보너스 번호는 로또 번호와 중복이 없어야 합니다.");
 
     private final String message;
-    ERROR_MESSAGE(String message) {this.message = message;}
+
+    ERROR_MESSAGE(String message) {
+        this.message = message;
+    }
+
     public String getMessage() {
         return message;
     }

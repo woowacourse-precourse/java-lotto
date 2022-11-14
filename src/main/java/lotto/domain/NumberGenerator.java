@@ -30,7 +30,7 @@ public class NumberGenerator {
         }
     }
 
-    private  void validateUnit(String money) {
+    private void validateUnit(String money) {
         if (!money.matches("^.*.000$")) {
             throw new IllegalArgumentException(ERROR_MESSAGE.NOT_MATCH_UNIT_MONEY.getMessage());
         }
@@ -46,19 +46,19 @@ public class NumberGenerator {
     }
 
     private void printGeneratedNumbers() {
-        System.out.println(quantity+"개를 구매했습니다.");
+        System.out.println(quantity + "개를 구매했습니다.");
         for (List<Integer> collectionOfLottoNumber : collectionOfLottoNumbers) {
             sortNumbers(collectionOfLottoNumber);
         }
     }
 
-    private  void sortNumbers(List<Integer> numbers) {
+    private void sortNumbers(List<Integer> numbers) {
         ArrayList<Integer> sortedNumbers = new ArrayList<>(numbers);
         Collections.sort(sortedNumbers);
         System.out.print("[");
-        for(int i = 0; i < sortedNumbers.size()-1; i++){
-            System.out.print(sortedNumbers.get(i)+", ");
+        for (int i = 0; i < sortedNumbers.size() - 1; i++) {
+            System.out.print(sortedNumbers.get(i) + ", ");
         }
-        System.out.println(sortedNumbers.get(sortedNumbers.size()-1)+"]");
+        System.out.println(sortedNumbers.get(sortedNumbers.size() - 1) + "]");
     }
 }
