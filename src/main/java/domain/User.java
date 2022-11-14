@@ -27,8 +27,8 @@ public class User {
     }
 
     public void buyTicketMoney(int money) {
-        if (!(money % 1000 == 0)) {
-            throw new IllegalArgumentException("[ERROR] 금액이 올바르지 않습니다");
+        if (!(money % 1000 == 0) ) {
+            throw new IllegalArgumentException("[ERROR] 1000원 단위만 입력이 가능합니다.");
         }
         this.money = money;
         numberOfTickets = money / 1000;

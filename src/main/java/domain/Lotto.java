@@ -41,7 +41,7 @@ public class Lotto {
 
     public void isBoundary(List<Integer> numbers) {
         for (int i = 0; i < numbers.size(); i++) {
-            if (0 < numbers.get(i) && numbers.get(i) < 46) {
+            if (!(0 < numbers.get(i) && numbers.get(i) < 46)) {
                 throw new IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
             }
         }
