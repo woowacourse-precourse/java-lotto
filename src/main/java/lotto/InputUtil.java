@@ -21,9 +21,23 @@ public class InputUtil {
         return checkedNumbers;
     }
     private void checkValidity(String target) throws IllegalArgumentException{
-
+        char[] words = target.toCharArray();
+        for(char word : words){
+            if(!Character.isDigit(word)){
+                new IllegalArgumentException(ERROR_INVALID_INPUT);
+            }
+        }
     }
     private ArrayList<Integer> checkNumbersValidity(String target) throws IllegalArgumentException{
+        ArrayList<Integer> outcome = new ArrayList<>();
+        String[] parsedTarget = target.split(",");
+        for(String word : parsedTarget){
+            Integer number;
 
+            checkValidity(word);
+            number=Integer.parseInt(word);
+            outcome.add(number);
+        }
+        return outcome;
     }
 }
