@@ -7,8 +7,8 @@ import java.util.List;
 
 public class Controller {
     Purchase purchase;
-    List<Integer> lottoAnswer = new ArrayList<>();
     String bonusNumber;
+    List<Integer> lottoAnswer = new ArrayList<>();
 
     public void buyLotto() throws IllegalArgumentException {
         Message.startMessage();
@@ -18,8 +18,8 @@ public class Controller {
         String inputAnswer = Console.readLine();
         Lotto.validateInput(lottoAnswer, inputAnswer);
 
-        Lotto lotto = new Lotto(lottoAnswer);
         Message.inputBonusNumberMessage();
+        Lotto lotto = new Lotto(lottoAnswer);
 
         bonusNumber = Console.readLine();
         lotto.getLottoBonusNumber(bonusNumber);

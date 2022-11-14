@@ -8,10 +8,11 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class User {
-    public List<Lotto> userLotto = new ArrayList<>();
+    public List<Lotto> userLotto;
     public int achieveMoney;
 
     public User() {
+        userLotto = new ArrayList<>();
     }
 
     public void getUserLotto(int price) {

@@ -1,6 +1,5 @@
 package lotto;
 
-
 public class Purchase {
     public int price;
 
