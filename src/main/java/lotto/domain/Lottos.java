@@ -33,6 +33,15 @@ public class Lottos {
         return purchasedLottos;
     }
 
+    public Results generateResults(Lotto winningLotto, Bonus bonus) {
+        Results results = new Results();
+
+        for (Lotto lotto : lottos) {
+            results.addResult(lotto.generateResult(winningLotto, bonus));
+        }
+        return results;
+    }
+
     private void add(Lotto lotto) {
         lottos.add(lotto);
     }
