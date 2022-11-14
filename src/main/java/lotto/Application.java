@@ -7,6 +7,7 @@ public class Application {
         // TODO: 프로그램 구현
         System.out.println("구입금액을 입력해 주세요.");
         Integer numOfLotto = isUserPaymentValid(userPayment());
+        System.out.println(numOfLotto+"개를 구매했습니다.");
     }
 
     public static String userPayment () {
