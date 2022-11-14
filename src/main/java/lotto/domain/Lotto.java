@@ -24,6 +24,7 @@ public class Lotto {
     private void validate(List<Integer> numbers) {
         validateNumbersLength(numbers);
         validateNumbersRange(numbers);
+        validateContainDuplicateNumber(numbers);
     }
 
     private void validateNumbersLength(List<Integer> numbers){
@@ -35,6 +36,12 @@ public class Lotto {
     private void validateNumbersRange(List<Integer> numbers){
         if(ValidateUtils.isNumbersRangeOver(numbers)){
             ValidateUtils.throwIllegalArgumentException(Constants.RANGE_OVER_LOTTO_NUMBER_MESSAGE);
+        }
+    }
+
+    private void validateContainDuplicateNumber(List<Integer> numbers){
+        if(ValidateUtils.isContainDuplicatedNumber(numbers)){
+            ValidateUtils.throwIllegalArgumentException(Constants.DUPLICATED_LOTTO_NUMBER_MESSAGE);
         }
     }
 
