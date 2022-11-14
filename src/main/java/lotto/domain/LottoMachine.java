@@ -27,14 +27,11 @@ public class LottoMachine {
 	}
 
 	private List<Integer> createLottoNumbers() {
-		List<Integer> randomNumbers = Randoms.pickUniqueNumbersInRange(
+		return Randoms.pickUniqueNumbersInRange(
 			Number.MIN.getValue(),
 			Number.MAX.getValue(),
 			Number.SIZE.getValue()
 		);
-		List<Integer> lottoNumbers = new ArrayList<>(randomNumbers);
-		Collections.sort(lottoNumbers);
-		return lottoNumbers;
 	}
 
 }

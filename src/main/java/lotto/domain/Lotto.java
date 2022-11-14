@@ -12,7 +12,9 @@ public class Lotto {
 	public Lotto(List<Integer> numbers) {
 		validateSize(numbers);
 		validateDuplicate(numbers);
-		this.numbers = new ArrayList<>(numbers);
+		List<Integer> lottoNumbers = new ArrayList<>(numbers);
+		Collections.sort(lottoNumbers);
+		this.numbers = lottoNumbers;
 	}
 
 	public List<Integer> getNumbers() {
