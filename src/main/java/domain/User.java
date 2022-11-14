@@ -10,6 +10,7 @@ public class User {
     private Lotto winningLotto;
     private int buyPrice;
     private int bonusNumber;
+    private float grossReturn;
 
     public void startLottoGame() {
         lottoGame = new LottoGame();
@@ -33,6 +34,13 @@ public class User {
         lottoGame.confirmLotteriesPrized(winningLotto, bonusNumber);
 
         lottoGame.printWinningStatistics();
+
+        grossReturn = calculateEarningRate();
+        System.out.println("총 수익률은 " + grossReturn + "%입니다.");
+    }
+
+    private float calculateEarningRate() {
+        return lottoGame.calculateTotalEarning() / buyPrice * 100;
     }
 
     public void inputBuyPrice() {
