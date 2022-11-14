@@ -11,10 +11,11 @@ public class Controller {
     List<List<Integer>> lottoNumbers;
     List<Integer> winningNumbers;
     int bonusNumber;
+    int money;
 
 
     public void run() {
-        int money = utils.inputMoney();
+        money = utils.inputMoney();
         int lottoTicket = utils.countTicket(money);
         createLotto(lottoTicket);
         setWinningNumbers();
