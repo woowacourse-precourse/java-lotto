@@ -57,7 +57,7 @@ class ApplicationTest extends NsTest {
     @Test
     void 범위_밖의_값_입력() {
         assertSimpleTest(() -> {
-            runException("1000","1,2,3,4,5,46");
+            runException("1000", "1,2,3,4,5,46");
             assertThat(output()).contains(ERROR_MESSAGE);
         });
     }
@@ -65,7 +65,15 @@ class ApplicationTest extends NsTest {
     @Test
     void 구분자가_쉼표가_아닐_때() {
         assertSimpleTest(() -> {
-            runException("1000","1 2 3 4 5 6");
+            runException("1000", "1 2 3 4 5 6");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
+    @Test
+    void 천원_단위가_아닐_때() {
+        assertSimpleTest(() -> {
+            runException("1200");
             assertThat(output()).contains(ERROR_MESSAGE);
         });
     }
