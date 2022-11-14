@@ -36,7 +36,6 @@ public class Lotto {
         int runCycle = runMoney / MININUM_LOTTO_PURCHASE;
         int[] ranks = {0,0,0,0,0,0};
         printHowMuchPurchase(runCycle);
-        System.out.println("1000입력" + runCycle);//
         List<List<Integer>> randomLottoNumbers = new ArrayList<>();
         Lotto myLotto = new Lotto(getLottoNumbers());
         int bonus = getBonusNumber();
@@ -50,12 +49,11 @@ public class Lotto {
         for (int i = 0; i < runCycle; i++) {
             ranks[compareNumbers(myLotto.numbers, randomLottoNumbers.get(i), bonus)]++;
         }
-        for(int i=0; i<ranks.length; i++)
-            System.out.print(ranks[i]);
+        /*for(int i=0; i<ranks.length; i++)
+            System.out.print(ranks[i]);*/
         System.out.println();
         printWinStat(ranks, runMoney);
 
     }
 
-    // TODO: 추가 기능 구현
 }
