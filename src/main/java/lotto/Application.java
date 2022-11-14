@@ -1,5 +1,6 @@
 package lotto;
 
+import lotto.controller.LottoShop;
 import lotto.domain.*;
 import lotto.utils.StringToIntConverter;
 import lotto.view.ProjectView;

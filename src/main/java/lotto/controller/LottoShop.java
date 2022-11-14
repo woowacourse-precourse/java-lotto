@@ -1,5 +1,9 @@
-package lotto.domain;
+package lotto.controller;
 
+import lotto.domain.IssuedLotto;
+import lotto.domain.LottoWinningNumber;
+import lotto.domain.Seller;
+import lotto.domain.WinningResult;
 import lotto.utils.StringToListConverter;
 import lotto.view.ProjectView;
 
