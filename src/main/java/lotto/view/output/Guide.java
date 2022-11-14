@@ -34,43 +34,8 @@ public class Guide {
     }
 
     public void printResult(Map<RankingType, Integer> countByRankingType){
-        System.out.println(getResult(countByRankingType));
-    }
-
-    public String getResult(Map<RankingType, Integer> countByRankingType){
-        StringBuilder sb = new StringBuilder();
-        List<RankingType> rankingTypesKeys = Arrays.asList(RankingType.FIRST
-                , RankingType.SECOND
-                , RankingType.THIRD
-                , RankingType.FOURTH
-                , RankingType.FIFTH);
-        for (RankingType rankingTypesKey : rankingTypesKeys) {
-            sb.append(getConditionString(rankingTypesKey.getCondition()));
-            sb.append(getBonusConditionString(rankingTypesKey.isNeedBonus()));
-            sb.append(getPrizeMoney(rankingTypesKey.getPrizeMoney()));
-            sb.append(getCountString(countByRankingType.get(rankingTypesKey)));
-            sb.append("\n");
-        }
-        return sb.toString().trim();
-    }
-
-    private String getConditionString(int condition){
-        return String.format("%d개 일치", condition);
-    }
-
-    private String getBonusConditionString(boolean isNeedBonus){
-        if(isNeedBonus){
-            return ", 보너스 볼 일치";
-        }
-        return "";
-    }
-
-    private String getPrizeMoney(int prizeMoney){
-        return String.format(" (%,d원)",prizeMoney);
-    }
-
-    private String getCountString(int count){
-        return String.format(" - %d개", count);
+        ResultStatics resultStatics = new ResultStatics();
+        System.out.println(resultStatics.getString(countByRankingType));
     }
 
     public void printProfitRate(double profitRate) {
