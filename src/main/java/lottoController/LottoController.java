@@ -5,9 +5,15 @@ import lottoService.LottoService;
 
 public class LottoController {
 
-    LottoService lottoService = new LottoService();
+   private static final LottoService lottoService = new LottoService();
 
     public void startLottoGame(){
-        lottoService.gameProgress();
+        try{
+            lottoService.gameProgress();
+        }catch (IllegalArgumentException e){
+            return;
+        }
+
+
     }
 }
