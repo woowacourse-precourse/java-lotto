@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.function.Predicate;
 
 import static constant.Config.INIT_COUNT;
@@ -71,11 +72,10 @@ public class Lotto {
         List<Integer> winningNumbers = winningLotto.getWinningLotto();
         int bonusNumber = winningLotto.getBonusNumber();
 
-        Map<Win, Integer> winningResult = new HashMap<>();
         int matchCount = getMatchCount(winningNumbers);
-        setWinningResult(winningResult, matchCount, bonusNumber);
+        boolean containsBonusBall = isContainsBonusBall(bonusNumber);
 
-        return new WinningResult(winningResult);
+        return setWinningResult(matchCount, containsBonusBall);
     }
 
     private int getMatchCount(List<Integer> winningNumbers) {
@@ -85,25 +85,21 @@ public class Lotto {
                 .count();
     }
 
-    private void setWinningResult(Map<Win, Integer> winningResult, int matchCount, int bonusNumber) {
-        for (Win win : Win.values()) {
-            if (isMatch(win, matchCount, bonusNumber)) {
-                putWinningResult(winningResult, win);
-                break;
-            }
-        }
+    private boolean isContainsBonusBall(int bonusNumber) {
+        return numbers.contains(bonusNumber);
+    }
+
+    private WinningResult setWinningResult(int matchCount, boolean containsBonusBall) {
+        Map<Win, Integer> winningResult = new HashMap<>();
+
+        Optional<Win> ranking = Win.getRanking(matchCount, containsBonusBall);
+
+        ranking.ifPresent(win -> putWinningResult(winningResult, win));
+        return new WinningResult(winningResult);
     }
 
     private void putWinningResult(Map<Win, Integer> winningResult, Win win) {
         int count = winningResult.getOrDefault(win, INIT_COUNT);
         winningResult.put(win, ++count);
-    }
-
-    private boolean isMatch(Win win, int matchCount, int bonusNumber) {
-        if (win.isEqualsMatchCount(matchCount) && !win.isBonusBall()) {
-            return true;
-        }
-
-        return win.isEqualsMatchCount(matchCount) && numbers.contains(bonusNumber);
     }
 }

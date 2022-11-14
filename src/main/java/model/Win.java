@@ -1,5 +1,8 @@
 package model;
 
+import java.util.Arrays;
+import java.util.Optional;
+
 public enum Win {
     FIRST(6, false, 2_000_000_000),
     SECOND(5, true, 30_000_000),
@@ -29,7 +32,21 @@ public enum Win {
         return winningAmount;
     }
 
-    public boolean isEqualsMatchCount(int matchCount) {
-        return this.matchCount == matchCount;
+    public static Optional<Win> getRanking(int matchCount, boolean containsBonusBall) {
+        return Arrays.stream(values())
+                .filter(win -> isMatch(win, matchCount, containsBonusBall))
+                .findAny();
+    }
+
+    private static boolean isMatch(Win win, int matchCount, boolean containsBonusBall) {
+        if(win.isBonusBall()) {
+            return isEqualsMatchCount(win, matchCount) && containsBonusBall;
+        }
+
+        return isEqualsMatchCount(win, matchCount);
+    }
+
+    private static boolean isEqualsMatchCount(Win win, int matchCount) {
+        return win.matchCount == matchCount;
     }
 }
