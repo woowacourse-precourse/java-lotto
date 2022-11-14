@@ -232,6 +232,8 @@ public class Application {
     }
 
     private static void printLottoTicketHistory() {
+        System.out.println("당첨 통계");
+        System.out.println("---");
         System.out.println(WinningPlace.FIFTH_PLACE.getMessage() + winningHistory.get(WinningPlace.FIFTH_PLACE) + "개");
         System.out.println(WinningPlace.FOURTH_PLACE.getMessage() + winningHistory.get(WinningPlace.FOURTH_PLACE) + "개");
         System.out.println(WinningPlace.THIRD_PLACE.getMessage() + winningHistory.get(WinningPlace.THIRD_PLACE) + "개");
