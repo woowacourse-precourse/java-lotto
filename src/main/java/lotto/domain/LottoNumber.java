@@ -20,7 +20,7 @@ public class LottoNumber implements Comparable<LottoNumber>{
         return this.sub(lottoNumber);
     }
 
-    public int sub(LottoNumber lottoNumber) {
+    private int sub(LottoNumber lottoNumber) {
         return number - lottoNumber.mapToInt();
     }
 
