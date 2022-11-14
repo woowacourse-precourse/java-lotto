@@ -37,5 +37,9 @@ public enum Rank {
         }
         return rankName;
     }
-
+    public static String getRankNameByMatchState(List<Integer> match){
+        Rank rank = Rank.findByMatches(match);
+        return rank.name();
+    }
+    
 }
