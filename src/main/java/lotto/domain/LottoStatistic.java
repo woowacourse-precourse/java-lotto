@@ -4,7 +4,6 @@ import lotto.Lotto;
 
 import java.text.DecimalFormat;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class LottoStatistic {
@@ -13,8 +12,8 @@ public class LottoStatistic {
     private final Lotto win_lotto;
     private final int cost;
 
-    private Map<Rank,Integer> rankMap = new HashMap<>();
-    private double profitRate=0;
+    private Map<Rank, Integer> rankMap = new HashMap<>();
+    private double profitRate = 0;
 
     public LottoStatistic(LottoBundle lottoBundle, int bonus_num, Lotto win_lotto, int cost) {
         this.lottoBundle = lottoBundle;
@@ -24,59 +23,62 @@ public class LottoStatistic {
         compareBundle();
         calculateProfitRate();
     }
+
     @Override
-    public String toString(){
+    public String toString() {
         DecimalFormat df = new DecimalFormat("###,###");
         String print = "\n당첨 통계\n---\n";
-        for(Rank rank: Rank.values()){
-            print += rank.getCounts()+"개 일치";
-            if(rank == Rank.Second_Place)
-                print+=", 보너스 볼 일치";
-            print +=" (" +df.format(rank.getPrice())+ "원) - ";
-            print += rankMap.getOrDefault(rank,0)+"개\n";
+        for (Rank rank : Rank.values()) {
+            print += rank.getCounts() + "개 일치";
+            if (rank == Rank.Second_Place)
+                print += ", 보너스 볼 일치";
+            print += " (" + df.format(rank.getPrice()) + "원) - ";
+            print += rankMap.getOrDefault(rank, 0) + "개\n";
         }
-        print+="총 수익률은 "+String.format("%.1f", profitRate)+"%입니다.";
+        print += "총 수익률은 " + String.format("%.1f", profitRate) + "%입니다.";
         return print;
     }
-    private void calculateProfitRate(){
-        for(Map.Entry<Rank,Integer> entry: rankMap.entrySet()){
+
+    private void calculateProfitRate() {
+        for (Map.Entry<Rank, Integer> entry : rankMap.entrySet()) {
             Rank rank = entry.getKey();
             Integer value = entry.getValue();
-            profitRate+=rank.getPrice()*value;
+            profitRate += rank.getPrice() * value;
         }
 
 
-        profitRate/=cost;
-        profitRate*=100;
+        profitRate /= cost;
+        profitRate *= 100;
     }
-    private void compareBundle(){
-        for(Lotto lotto: lottoBundle.getLottoList()){
+
+    private void compareBundle() {
+        for (Lotto lotto : lottoBundle.getLottoList()) {
             int count = compareWin_lotto(lotto);
             boolean bonus = compareBonusNum(lotto);
             if (count == 6)
-                rankMap.put(Rank.First_Place,rankMap.getOrDefault(Rank.First_Place,0)+1);
+                rankMap.put(Rank.First_Place, rankMap.getOrDefault(Rank.First_Place, 0) + 1);
             if (count == 5 && bonus)
-                rankMap.put(Rank.Second_Place,rankMap.getOrDefault(Rank.Second_Place,0)+1);
+                rankMap.put(Rank.Second_Place, rankMap.getOrDefault(Rank.Second_Place, 0) + 1);
             if (count == 5)
-                rankMap.put(Rank.Third_Place,rankMap.getOrDefault(Rank.Third_Place,0)+1);
+                rankMap.put(Rank.Third_Place, rankMap.getOrDefault(Rank.Third_Place, 0) + 1);
             if (count == 4)
-                rankMap.put(Rank.Fourth_Place,rankMap.getOrDefault(Rank.Fourth_Place,0)+1);
+                rankMap.put(Rank.Fourth_Place, rankMap.getOrDefault(Rank.Fourth_Place, 0) + 1);
             if (count == 3)
-                rankMap.put(Rank.Fifth_Place,rankMap.getOrDefault(Rank.Fifth_Place,0)+1);
+                rankMap.put(Rank.Fifth_Place, rankMap.getOrDefault(Rank.Fifth_Place, 0) + 1);
 
         }
     }
-    private int compareWin_lotto(Lotto lotto){
-        int count =0;
-        for(int user_num : lotto.getNumbers()){
-            if(win_lotto.getNumbers().contains(user_num))
+
+    private int compareWin_lotto(Lotto lotto) {
+        int count = 0;
+        for (int user_num : lotto.getNumbers()) {
+            if (win_lotto.getNumbers().contains(user_num))
                 count++;
         }
         return count;
     }
-    private boolean compareBonusNum(Lotto lotto){
+
+    private boolean compareBonusNum(Lotto lotto) {
         return lotto.getNumbers().contains(bonus_num);
     }
-
-
 }

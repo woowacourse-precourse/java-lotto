@@ -8,7 +8,7 @@ import java.util.List;
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class LottoController {
-    public void start(){
+    public void start() {
         //구입 금액 입력
         int cost = costInput();
 
@@ -27,34 +27,35 @@ public class LottoController {
         //보너스 번호 입력
         int bonus_num = bonusInput(win_lotto);
 
-
-
         //로또 번호를 비교해서 통계결과를 출력해주는 클래스 생성
-        LottoStatistic ls = new LottoStatistic(lb, bonus_num, win_lotto,cost);
+        LottoStatistic ls = new LottoStatistic(lb, bonus_num, win_lotto, cost);
         System.out.println(ls);
     }
-    private int costInput(){
+
+    private int costInput() {
         System.out.println("구입금액을 입력해 주세요.");
         String cost_str = readLine();
-        try{
+        try {
             return Integer.parseInt(cost_str);
-        }catch (NumberFormatException e) {
+        } catch (NumberFormatException e) {
             throw new IllegalArgumentException("[ERROR]");
         }
     }
-    public int cost2count(int cost){
-        int count = cost/1000;
-        if(cost%1000!=0 || count<=0)
+
+    public int cost2count(int cost) {
+        int count = cost / 1000;
+        if (cost % 1000 != 0 || count <= 0)
             throw new IllegalArgumentException("[ERROR]");
-        System.out.println("\n"+count + "개를 구매했습니다.");
+        System.out.println("\n" + count + "개를 구매했습니다.");
         return count;
     }
-    private Lotto lottoInput(){
+
+    private Lotto lottoInput() {
         System.out.println("당첨번호를 입력해 주세요.");
         String lotto_str = readLine();
         String[] num_list = lotto_str.split(",");
         List<Integer> lottoNumber = new ArrayList<>();
-        for(String num_str : num_list) {
+        for (String num_str : num_list) {
             try {
                 int num = Integer.parseInt(num_str);
                 lottoNumber.add(num);
@@ -64,31 +65,22 @@ public class LottoController {
         }
         return new Lotto(lottoNumber);
     }
-    private int bonusInput(Lotto lotto){
+
+    private int bonusInput(Lotto lotto) {
         System.out.println("\n보너스번호를 입력해 주세요.");
         String bonus_str = readLine();
         try {
-//            if(isString_in_1to9(bonus_str))
-//                throw new IllegalArgumentException();
             int bonus_num = Integer.parseInt(bonus_str);
-            if(bonus_num<1 && bonus_num>45)
+            if (bonus_num < 1 && bonus_num > 45)
                 throw new IllegalArgumentException("[ERROR]");
-            if(isBonusDuplicate(bonus_num,lotto))
+            if (isBonusDuplicate(bonus_num, lotto))
                 throw new IllegalArgumentException("[ERROR]");
             return bonus_num;
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("[ERROR]");
         }
     }
-//    private boolean isString_in_1to9(String str) {
-//        return str.matches("[1-9.]+");
-//    }
     private boolean isBonusDuplicate(int num, Lotto lotto) {
         return lotto.getNumbers().contains(num);
-//        for(int lotto_num : lotto.getNumbers()){
-//            if(num == lotto_num)
-//                return true;
-//        }
-//        return false;
     }
 }

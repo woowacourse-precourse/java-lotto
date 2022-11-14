@@ -4,7 +4,6 @@ import camp.nextstep.edu.missionutils.Randoms;
 import lotto.Lotto;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class LottoBundle {
@@ -15,17 +14,18 @@ public class LottoBundle {
         this.count = count;
         this.lottoList = createLottoList();
     }
+
     @Override
-    public String toString(){
-        String print ="";
-        for(Lotto lotto: this.lottoList){
-            print +="[";
-            for(int lotto_num : lotto.getNumbers()){
-                print+=lotto_num;
+    public String toString() {
+        String print = "";
+        for (Lotto lotto : this.lottoList) {
+            print += "[";
+            for (int lotto_num : lotto.getNumbers()) {
+                print += lotto_num;
                 print += ", ";
             }
-            print = print.substring(0,print.length()-2);
-            print +="]\n";
+            print = print.substring(0, print.length() - 2);
+            print += "]\n";
         }
         return print;
     }
@@ -34,15 +34,16 @@ public class LottoBundle {
         return lottoList;
     }
 
-    private List<Lotto> createLottoList(){
+    private List<Lotto> createLottoList() {
         List<Lotto> lottoList1 = new ArrayList<>();
-        while(this.count-->0){
+        while (this.count-- > 0) {
             //로또 한개 생성 후 로또 뭉치에 추가
-            lottoList1.add( createOneLotto());
+            lottoList1.add(createOneLotto());
         }
         return lottoList1;
     }
-    private Lotto createOneLotto(){
+
+    private Lotto createOneLotto() {
         List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
 //        Collections.sort(numbers);
         return new Lotto(numbers);
