@@ -23,7 +23,7 @@ public final class Output {
         }
     }
 
-    public static void printWinningStatistics(Statistics statistics) {
+    public static void printTotalResult(Statistics statistics, Amount amount) {
         System.out.println("\n" + STATISTICS_START_MESSAGE);
         System.out.println(CONTOUR);
         Map<Prize, Integer> statisticsResult = statistics.getStatisticsResult();
@@ -37,9 +37,10 @@ public final class Output {
             }
             System.out.printf(STATISTICS_NO_BONUS_MESSAGE, prize.getMatchCount(), prize.getReward(), statisticsResult.get(prize));
         }
+        printTotalYield(statistics, amount);
     }
 
-    public static void printTotalYield(Statistics statistics, Amount amount) {
+    private static void printTotalYield(Statistics statistics, Amount amount) {
         System.out.printf(YIELD_MESSAGE, statistics.calculateYiled(amount));
     }
 }
