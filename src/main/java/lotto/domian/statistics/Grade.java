@@ -12,7 +12,7 @@ public class Grade {
         this.bonusNumber = bonusNumber;
     }
 
-    public String returnLottoGrade(List<Integer> lottoNumbers) {
+    public Prize returnLottoGrade(List<Integer> lottoNumbers) {
         int correctNumbers = countCorrectNumbers(lottoNumbers);
         if (correctNumbers == 5) {
             return checkLottoNumbersContainBonusNumber(lottoNumbers);
@@ -20,24 +20,24 @@ public class Grade {
         return checkLottoGrade(correctNumbers);
     }
 
-    public String checkLottoGrade(int correctNumbers) {
+    public Prize checkLottoGrade(int correctNumbers) {
         if (correctNumbers == 6) {
-            return "FIRST";
+            return Prize.FIRST;
         }
         if (correctNumbers == 4) {
-            return "FOURTH";
+            return Prize.FOURTH;
         }
         if (correctNumbers == 3) {
-            return "FIFTH";
+            return Prize.FIFTH;
         }
         return null;
     }
 
-    public String checkLottoNumbersContainBonusNumber(List<Integer> lottoNumbers) {
+    public Prize checkLottoNumbersContainBonusNumber(List<Integer> lottoNumbers) {
         if (lottoNumbers.contains(bonusNumber)) {
-            return "SECOND";
+            return Prize.SECOND;
         }
-        return "THIRD";
+        return Prize.THIRD;
     }
 
     public int countCorrectNumbers(List<Integer> lottoNumbers) {

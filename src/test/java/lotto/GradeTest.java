@@ -1,6 +1,7 @@
 package lotto;
 
 import lotto.domian.statistics.Grade;
+import lotto.domian.statistics.Prize;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -29,10 +30,10 @@ public class GradeTest {
         Grade grade = new Grade(List.of(1, 2, 3, 4, 5, 6),3);
 
         // when
-        String result = grade.checkLottoNumbersContainBonusNumber(List.of(1, 2, 3, 10, 22, 12));
+        Prize result = grade.checkLottoNumbersContainBonusNumber(List.of(1, 2, 3, 10, 22, 12));
 
         // then
-        assertThat(result).isEqualTo("SECOND");
+        assertThat(result).isEqualTo(Prize.SECOND);
     }
 
     @DisplayName("발행한 로또의 등수를 확인한다.")
@@ -42,10 +43,10 @@ public class GradeTest {
         Grade grade = new Grade(List.of(1, 2, 3, 4, 5, 6), 3);
 
         // when
-        String result = grade.checkLottoGrade(6);
+        Prize result = grade.checkLottoGrade(6);
 
         // then
-        assertThat(result).isEqualTo("FIRST");
+        assertThat(result).isEqualTo(Prize.FIRST);
     }
 
     @DisplayName("발행한 로또의 등수를 반환한다.")
@@ -55,9 +56,9 @@ public class GradeTest {
         Grade grade = new Grade(List.of(1, 2, 3, 4, 5, 6), 7);
 
         // when
-        String result = grade.returnLottoGrade(List.of(1, 2, 3, 4, 5, 7));
+        Prize result = grade.returnLottoGrade(List.of(1, 2, 3, 4, 5, 7));
 
         // then
-        assertThat(result).isEqualTo("SECOND");
+        assertThat(result).isEqualTo(Prize.SECOND);
     }
 }
