@@ -26,4 +26,9 @@ public class InputView {
     return inputReader.readWinningNumber();
   }
 
+  public BonusNumber readBonusNumber(WinningNumber winningNumber) {
+    System.out.println();
+    System.out.println(GuideMessage.INPUT_BONUS_NUMBER.getMessage());
+    return inputReader.readBonusNumber(winningNumber);
+  }
 }
