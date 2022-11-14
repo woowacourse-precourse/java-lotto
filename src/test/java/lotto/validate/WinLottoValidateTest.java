@@ -22,4 +22,11 @@ class WinLottoValidateTest {
         assertThatThrownBy(() -> winLottoValidate.validate(lotto, 6))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+    @Test
+    public void bonusValidateTest() throws Exception {
+        assertThatThrownBy(() -> winLottoValidate.bonusRangeValidate(0))
+                .isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> winLottoValidate.bonusRangeValidate(46))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }

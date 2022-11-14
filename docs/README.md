@@ -26,7 +26,7 @@
 ## Win Lotto
 - [x] 당첨 번호와 보너스 번호 유효한지 확인 후 저장
 - [x] 보너스 번호 중복 확인, 예외시 Exception
-- [ ] 보너스 번호가 범위 안의 숫자인지 확인, 예외시 Exception
+- [x] 보너스 번호가 범위 안의 숫자인지 확인, 예외시 Exception
 ## Win Lotto Generate
 - [ ] 당첨 번호 ask 출력
 - [ ] 당첨 번호 입력
