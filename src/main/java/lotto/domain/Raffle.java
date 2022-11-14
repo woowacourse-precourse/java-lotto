@@ -19,4 +19,9 @@ public class Raffle {
         }
         return winningNumber;
     }
+
+    public int inputBonusNumber() {
+        String userInput = Console.readLine();
+        return Integer.parseInt(userInput);
+    }
 }
