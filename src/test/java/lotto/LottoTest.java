@@ -24,4 +24,17 @@ class LottoTest {
     }
 
     // 아래에 추가 테스트 작성 가능
+    @Test
+    void validate_over45() {
+        assertThatThrownBy(() -> new Lotto(List.of(1, 2, 3, 4, 5, 100)))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("[ERROR] 1~45 범위 안의 수만 입력하세요");
+    }
+
+    @Test
+    void validate_under1() {
+        assertThatThrownBy(() -> new Lotto(List.of(0, 2, 3, 4, 5, 6)))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("[ERROR] 1~45 범위 안의 수만 입력하세요");
+    }
 }
