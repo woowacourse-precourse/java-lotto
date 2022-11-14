@@ -36,4 +36,8 @@ public class WinLotto {
         return numberOfRank;
     }
 
+    public Map<LottoRank, Integer> getResult() {
+        return result;
+    }
+
 }

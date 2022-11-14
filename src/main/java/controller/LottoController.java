@@ -50,7 +50,7 @@ public class LottoController {
         resultView.displaySeparator();
         resultView.displayPercentageProfit(profit.getPercentageProfit());
         winLotto = new WinLotto(lotteries, winnerNumber, bonusNumber);
-        resultView.displayWinners(winLotto);
+        resultView.displayWinners(winLotto.getResult());
     }
 
 }

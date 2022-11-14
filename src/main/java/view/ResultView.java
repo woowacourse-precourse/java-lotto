@@ -1,10 +1,11 @@
 package view;
 
 import domain.Lotto;
-import domain.WinLotto;
 import util.LottoMessage;
+import util.LottoRank;
 
 import java.util.List;
+import java.util.Map;
 
 public class ResultView {
 
@@ -28,7 +29,7 @@ public class ResultView {
         System.out.println(LottoMessage.LINE_SEPARATOR);
     }
 
-    public void displayWinners(WinLotto winLotto) {
+    public void displayWinners(Map<LottoRank, Integer> result) {
 
     }
 }
