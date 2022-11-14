@@ -1,6 +1,7 @@
 package lotto;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
@@ -48,5 +49,11 @@ public class Buyer {
             );
         }
         return (lotteryTickets);
+    }
+
+    public void sortLotteryNumbers(List<List<Integer>> tickets) {
+        for (List<Integer> ticket : tickets) {
+            Collections.sort(ticket);
+        }
     }
 }
