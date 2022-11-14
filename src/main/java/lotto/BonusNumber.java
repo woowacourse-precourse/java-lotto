@@ -13,16 +13,16 @@ public class BonusNumber {
         return this.bonusNumber;
     }
 
+    public boolean bonusMatch(Lotto lotto) {
+        checkBonusNumberSet();
+        return lotto.getNumbers().contains(this.getBonusNumber());
+    }
+
     private void checkBonusNumberSet() {
         if (this.getBonusNumber() == null) {
             System.out.println("[ERROR]보너스 번호가 입력되어 있지 않습니다.");
             throw new IllegalArgumentException("[ERROR]보너스 번호가 입력되어 있지 않습니다.");
         }
-    }
-
-    public boolean bonusMatch(Lotto lotto) {
-        checkBonusNumberSet();
-        return lotto.getNumbers().contains(this.getBonusNumber());
     }
 
     private void validateBonusNumberDuplicate(Integer bonusNumber, Lotto lotto) {
