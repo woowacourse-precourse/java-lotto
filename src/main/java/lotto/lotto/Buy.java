@@ -6,5 +6,4 @@ public class Buy {
     public int lottoQuantity(int amount) {
         return amount / LOTTO_PRICE;
     }
-
 }
