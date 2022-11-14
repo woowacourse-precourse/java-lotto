@@ -8,8 +8,8 @@ public class BonusNumber {
     private static final int MAX_NUMBER_RANGE = 45;
     private final int bonusNumber;
 
-    public BonusNumber(int inputNumber, List<Integer> winningNumbers) {
-        validate(inputNumber, winningNumbers);
+    public BonusNumber(int inputNumber, WinningNumbers winningNumbers) {
+        validate(inputNumber, winningNumbers.getWinningNumbers());
         this.bonusNumber = inputNumber;
     }
 
