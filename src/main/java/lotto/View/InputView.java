@@ -1,5 +1,6 @@
 package lotto.View;
 
+import lotto.Dto.Lotto;
 import lotto.Dto.Money;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
@@ -14,8 +15,11 @@ public class InputView {
         return money;
     }
 
-    public void printWinningNumbers(){
+    public Lotto printWinningNumbers(){
         System.out.println(INPUT_WINNING_NUMBERS);
+        Lotto winningNumbers = new Lotto(readLine());
+        System.out.println();
+        return winningNumbers;
     }
 
     public void printbonusNumber(){
