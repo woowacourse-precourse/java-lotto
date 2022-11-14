@@ -90,6 +90,15 @@ class ApplicationTest extends NsTest {
     }
 
 
+    @Test
+    void reduplication_LottoNumbers() {
+        assertSimpleTest(() -> {
+            runException("1000", "1,2,3,4,5,5");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
+
     @Override
     public void runMain() {
         Application.main(new String[] {});
