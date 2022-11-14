@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class LottoService {
-    private Lotto lotto;
-    private UserLotto userLotto;
 
     public List<LottoRank> createLottoResult(List<Integer> lotto, List<List<Integer>> userLotto) {
         List<LottoRank> lottoResult = new ArrayList<>();
@@ -56,6 +54,12 @@ public class LottoService {
         return LottoRank.BLANK;
     }
 
+    public int getLottoAmount(int money) {
+        int amount = money/1000;
+
+        return amount;
+    }
+
     public int calculateProfit(List<LottoRank> lottoResult) {
         int profit = 0;
 
@@ -64,11 +68,5 @@ public class LottoService {
         }
 
         return profit;
-    }
-
-    public int getLottoAmount(int money) {
-        int amount = money/1000;
-
-        return amount;
     }
 }
