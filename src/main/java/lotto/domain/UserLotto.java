@@ -11,8 +11,11 @@ public class UserLotto {
 
     public UserLotto(String lottoAmount) {
         validateIsNumeric(lottoAmount);
+
         int tmpLottoAmount = Preprocessor.convertStringToInt(lottoAmount);
+
         validateCanDivideThousand(tmpLottoAmount);
+
         this.lottoAmount = tmpLottoAmount;
     }
 
@@ -44,10 +47,10 @@ public class UserLotto {
             boolean bonusMatching = checkBonusCorrect(bonusNumber, lotto.getLotto());
             Prize prize = Prize.getPrize(matchingCount, bonusMatching);
             int resultIndex = prize.ordinal();
-            if (prize.equals(Prize.NONE)) { // 꽝은 결과에 필요없음
-                continue;
+
+            if (!prize.equals(Prize.NONE)) { // 꽝은 결과에 필요없음
+                lottoResult.set(resultIndex, lottoResult.get(resultIndex) + 1);
             }
-            lottoResult.set(resultIndex, lottoResult.get(resultIndex) + 1);
         }
         return lottoResult;
     }

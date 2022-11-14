@@ -10,6 +10,7 @@ public class Lotto {
         validateLottoSize(numbers);
         validateLottoRange(numbers);
         validateLottoDuplication(numbers);
+
         this.numbers = numbers;
     }
 
