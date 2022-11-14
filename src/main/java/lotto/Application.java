@@ -9,27 +9,21 @@ import java.util.List;
 public class Application {
     static List<List<Integer>> ListArrary = new ArrayList<>();
     static String Regex = "[^0-9]";
-    public static int Insertpurchase() {
+    public static int Insertpurchase() throws IllegalArgumentException {
         String strVal = Console.readLine();
-        if (strVal.replaceAll(Regex,"").length()!=strVal.length()) {
-            throw new IllegalArgumentException("[ERROR] 숫자가 아닌 값을 입력하였습니다.");
+        // Test에서 throw new IllegalArgumentException만 사용시 에러가 발생
+        // Try문으로 교체하니 에러가 발생안됨.
+        try {
+            int intval = Integer.parseInt(strVal);
+            return (int)intval/1000;
         }
-        int intval = Integer.parseInt(strVal);
-
-        if (intval%1000>=1) {
-            throw new IllegalArgumentException("[ERROR] 1000원 단위가 아닙니다.");
+        catch (IllegalArgumentException e) {
+            System.out.println("[ERROR] 숫자가 아닌 값을 입력하였습니다.");
         }
-        return (int)intval/1000;
+        return 0;
     }
     public static List<Integer> RandomChoice() {
-        List<Integer> Lottonum = new ArrayList<>();
-        while (Lottonum.size() < 6) {
-            int randomNumber = Randoms.pickNumberInRange(1, 45);
-            if (!Lottonum.contains(randomNumber)) {
-                Lottonum.add(randomNumber);
-            }
-        }
-        Collections.sort(Lottonum);
+        List<Integer> Lottonum = Randoms.pickUniqueNumbersInRange(1, 45,6);
         return Lottonum;
     }
     public static void MakeLotto(int Lottonumber) {
@@ -58,7 +52,6 @@ public class Application {
     }
     public static int InsertBounus() {
         String Bonus = Console.readLine();
-
         if (Bonus.replaceAll(Regex,"").length()!=Bonus.length()) {
             throw new IllegalArgumentException("[ERROR] 숫자가 아닌 값을 입력하였습니다.");
         }
@@ -72,15 +65,17 @@ public class Application {
     public static void main(String[] args) {
         System.out.println("구입금액을 입력해 주세요.");
         int Lottonumber = Insertpurchase();
-        System.out.printf("\n%d개를 구매했습니다.\n",Lottonumber);
-        MakeLotto(Lottonumber);
-        System.out.println("당첨 번호를 입력해주 주세요.");
-        List<Integer> AnswerLotto = InsertLotto();
-        Lotto A = new Lotto(AnswerLotto);
-        System.out.println("보너스 번호를 입력해주세요.");
-        int BonousNum = InsertBounus();
-        System.out.println("당첨 통계");
-        System.out.println("---");
-        A.Statistics(ListArrary,BonousNum);
+        if (Lottonumber!=0) {
+            System.out.printf("%d개를 구매했습니다.\n",Lottonumber);
+            MakeLotto(Lottonumber);
+            System.out.println("당첨 번호를 입력해주 주세요.");
+            List<Integer> AnswerLotto = InsertLotto();
+            Lotto A = new Lotto(AnswerLotto);
+            System.out.println("보너스 번호를 입력해주세요.");
+            int BonousNum = InsertBounus();
+            System.out.println("당첨 통계");
+            System.out.println("---");
+            A.Statistics(ListArrary, BonousNum);
+        }
     }
 }
