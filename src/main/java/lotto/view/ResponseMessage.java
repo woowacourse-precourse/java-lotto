@@ -25,4 +25,9 @@ public class ResponseMessage {
         System.out.println(responseMessage);
     }
 
+    public static void printBonusNumber() {
+        initStringBuilder();
+        responseMessage.append("보너스 번호를 입력해 주세요.");
+        System.out.println(responseMessage);
+    }
 }
