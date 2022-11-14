@@ -11,6 +11,7 @@ import lotto.domain.Rank;
 public class OutputView {
     private static final String NEW_LINE = "\n";
     private static final String OUTPUT_LOTTOS_GUIDE = "%s개를 구매했습니다.";
+    private static final String OUTPUT_LOTTO_RESULT_GUIDE = "당첨 통계\n---";
 
     private final OutputViewFormatter outputViewFormatter;
 
@@ -31,7 +32,7 @@ public class OutputView {
     }
 
     public void outputLottoResult(LottoResult lottoResult) {
-        System.out.println("당첨 통계\n---");
+        System.out.println(OUTPUT_LOTTO_RESULT_GUIDE);
         String result = Arrays.stream(sortRankByReward())
                 .filter(rank -> rank != Rank.MISS)
                 .map(rank -> outputViewFormatter.outputRankFormat(rank, lottoResult.rankCount(rank)))
