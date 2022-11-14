@@ -1,11 +1,14 @@
 package lotto;
 
+import lotto.domain.Player;
+import lotto.domain.RandomNumber;
 import lotto.view.Print;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
-import static lotto.Player.*;
+import static lotto.domain.Player.*;
 
 public class Application {
     public static void main(String[] args) {
@@ -15,25 +18,27 @@ public class Application {
         Player.getMoney();
         Print.howmanyLottos(numberOfLottos);
 
+        Compare.randomLottos = new HashMap<>();
+        Compare.userList = new ArrayList<>();
         for (int i = 0; i < numberOfLottos; i++) {
             List<Integer> createdRandomNumbers = RandomNumber.create();
             Lotto lotto = new Lotto(createdRandomNumbers);
             List<Integer> getRandomNumbers = lotto.getNumbers();
+            Compare.randomLottos.put(i,getRandomNumbers);
             Print.getLottos(getRandomNumbers);
         }
 
-
-
-
-
-        //Lotto.printLottos(lotto);
-
         Print.requestWinNumbers();
-        Player.getWinNumbers();
+        List<Integer> correctNumbers = Player.getWinNumbers();
+        for (int i = 0; i < correctNumbers.size(); i++) {
+            Compare.userList.add(correctNumbers.get(i));
+        }
         Print.winNumbers();
         Print.requestBonusNumber();
         Player.getBonusNumber();
         Print.bonusNumber();
+
+        Compare.numbers();
 
 
     }

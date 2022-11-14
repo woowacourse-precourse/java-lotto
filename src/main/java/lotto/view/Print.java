@@ -1,12 +1,9 @@
 package lotto.view;
 
-import lotto.Lotto;
-
-import java.util.ArrayList;
 import java.util.List;
 
-import static lotto.Player.bonusNumber;
-import static lotto.Player.winNumbers;
+import static lotto.domain.Player.bonusNumber;
+import static lotto.domain.Player.winNumbers;
 
 public class Print {
     final static String GET_USER_MONEY = "구입 금액을 입력해 주세요.";
