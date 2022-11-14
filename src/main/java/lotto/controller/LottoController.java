@@ -40,23 +40,26 @@ public class LottoController {
         return bonusNumber;
     }
 
-    public void setWinningLotto() {
-        WinningLotto winningLotto = lottoService.setWinningLotto(inputWinningNumber(),inputBonusNumber());
+    public WinningLotto setWinningLotto() {
+        return lottoService.setWinningLotto(inputWinningNumber(),inputBonusNumber());
     }
 
-
-    public void start(){
-        User user = new User();
-        int lottoAmount = getLottoAmount(user);//로또 구매 금액 입력// 몇개 구매 ~
-
-        user.buyLottos(lottoAmount);
-        showLottoDetail(user);
-
-        setWinningLotto();
-
-// 당첨 통계
-        user.getLottoResults(winningLotto);
+    public void showLottoResult(User user) {
         message.lottoResultMessage();
         message.lottoProfitMessage(user.getLottoProfit());
     }
+
+    public void start(){
+        User user = new User();
+        int lottoAmount = getLottoAmount(user);
+
+        user.buyLottos(lottoAmount);
+        showLottoDetail(user);
+        WinningLotto winningLotto = setWinningLotto();
+
+        showLottoResult(user);
+        user.getLottoResults(winningLotto);
+    }
+
+
 }
