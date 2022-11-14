@@ -23,8 +23,8 @@ public class LottoAnswer extends Lotto {
             checkNumberArea(bonusNum);
             checkDuplicatedNumberOrThrows(bonusNum);
         } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
-            throw new NoSuchElementException();
+//            System.out.println(e.getMessage());
+            throw new IllegalArgumentException(e.getMessage());
         }
     }
 

@@ -32,8 +32,8 @@ public class Lotto {
             isNotDuplicatedNumberOrThrows(lottoNumber);
             checkNumberValid(lottoNumber);
         } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
-            throw new NoSuchElementException();
+//            System.out.println(e.getMessage());
+            throw new IllegalArgumentException(e.getMessage());
         }
     }
 
