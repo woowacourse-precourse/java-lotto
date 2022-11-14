@@ -44,6 +44,12 @@ public class ServiceInput {
     private static String getInputWinningNumbers() {
 
         String inputWinningNumbers = Console.readLine();
+        validateInputWinningNumbers(inputWinningNumbers);
+
+        return inputWinningNumbers;
+    }
+
+    private static void validateInputWinningNumbers(String inputWinningNumbers){
 
         if (Validator.isEmpty(inputWinningNumbers)){
             Message.printInputErrorEmpty();
@@ -54,20 +60,23 @@ public class ServiceInput {
             Message.printInputErrorIsNotComma();
             throw new IllegalArgumentException();
         }
-
-        return inputWinningNumbers;
     }
 
     private static List<String> getSplitInputWinningNumbers(){
 
         String inputWinningNumbers = getInputWinningNumbers();
+
         List<String> splitInputWinningNumbers = Arrays.asList(inputWinningNumbers.split("\\s*,\\s*"));
+        validateSplitInputWinningNumbers(splitInputWinningNumbers);
+
+        return splitInputWinningNumbers;
+    }
+
+    private static void validateSplitInputWinningNumbers(List<String> splitInputWinningNumbers){
 
         if (Validator.isListhasCharacter(splitInputWinningNumbers)){
             Message.printInputErrorHasCharacter();
             throw new IllegalArgumentException();
         }
-
-        return splitInputWinningNumbers;
     }
 }
