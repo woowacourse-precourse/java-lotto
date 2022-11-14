@@ -10,7 +10,7 @@ public class View {
         try {
             System.out.println(s);
         } catch (IllegalArgumentException e) {
-            System.out.println(e);
+            throw e;
         }
     }
 
@@ -18,7 +18,17 @@ public class View {
         try {
             System.out.print(s);
         } catch (IllegalArgumentException e) {
-            System.out.println(e);
+            throw e;
+        }
+    }
+
+    public void printListOfBuyLotto(List<Lotto> list){
+        try {
+            for(Lotto l : list){
+                System.out.println(l.getNumbers().toString());
+            }
+        } catch (IllegalArgumentException e) {
+            throw e;
         }
     }
 
