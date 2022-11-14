@@ -9,7 +9,6 @@ public class WinnerNumber {
     public static final int LOTTO_NUMBER = 0;
     public static final int BONUS_NUMBER = 1;
 
-
     private static final WinnerNumberValidator validator = new WinnerNumberValidator();
     private final List<Integer> numbers;
     private final int bonusNumber;
@@ -26,5 +25,9 @@ public class WinnerNumber {
                 .map(Integer::parseInt)
                 .sorted()
                 .collect(Collectors.toList());
+    }
+
+    public int getBonusNumber() {
+        return bonusNumber;
     }
 }
