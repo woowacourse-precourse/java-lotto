@@ -37,7 +37,12 @@ public class InputManager {
         return result;
     }
 
-    public int inputBonusNumber() {
-        return 0;
+    public int inputBonusNumber(List<Integer> winningNumbers) {
+        System.out.println("보너스 번호를 입력해 주세요.");
+        String input = Console.readLine();
+        if (!Verifier.isValidBonusNumber(input, winningNumbers)) {
+            throw new IllegalArgumentException();
+        }
+        return Integer.parseInt(input);
     }
 }

@@ -2,7 +2,8 @@ package lotto;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 class VerifierTest {
@@ -31,7 +32,7 @@ class VerifierTest {
     void isValidNumberTest() {
         String input = "0";
         boolean result = false;
-        assertThat(Verifier.isValidNumber(input)).isEqualTo(result);
+        assertThat(Verifier.isValidLottoNumber(input)).isEqualTo(result);
     }
 
     @Test
@@ -39,5 +40,13 @@ class VerifierTest {
         String[] input = {"1", "2", "3", "4", "5"};
         boolean result = false;
         assertThat(Verifier.isValidWinningNumbers(input)).isEqualTo(result);
+    }
+
+    @Test
+    void isValidBonusNumberTest() {
+        String input = "6";
+        List<Integer> winningNumbers = List.of(1,2,3,4,5,6);
+        boolean result = false;
+        assertThat(Verifier.isValidBonusNumber(input, winningNumbers)).isEqualTo(result);
     }
 }

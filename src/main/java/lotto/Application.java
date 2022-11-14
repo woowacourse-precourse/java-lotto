@@ -13,5 +13,7 @@ public class Application {
         customer.purchaseLotto(money);
         ui.printPurchaseHistory(customer);
         List<Integer> winningNumbers = inputManager.inputWinningNumbers();
+        int bonusNumber = inputManager.inputBonusNumber(winningNumbers);
+        System.out.println(bonusNumber);
     }
 }

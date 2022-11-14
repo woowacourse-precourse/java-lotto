@@ -26,14 +26,24 @@ public class Verifier {
             return false;
         }
         for (String value : values) {
-            if (!isValidNumber(value)) {
+            if (!isValidLottoNumber(value)) {
                 return false;
             }
         }
         return true;
     }
 
-    public static boolean isValidNumber(String value) {
+    public static boolean isValidBonusNumber(String bonusNumber, List<Integer> winningNumbers) {
+        if (!isValidLottoNumber(bonusNumber)) {
+            return false;
+        }
+        if (winningNumbers.contains(Integer.parseInt(bonusNumber))) {
+            return false;
+        }
+        return true;
+    }
+
+    public static boolean isValidLottoNumber(String value) {
         if (!isInteger(value)) {
             return false;
         }
