@@ -12,6 +12,6 @@
   - 5등: 번호 3개 일치
 - [✔] 구매한 로또의 개수와 각 로또의 번호를 출력한다. UserOutput - printLottos
 - [✔] 당첨내역을 출력한다. UserOutput - printWinningLists
-- [] 수익률을 출력한다. UserOutput - printRateOfReturns
+- [✔] 수익률을 출력한다. UserOutput - printRateOfReturns
 
 

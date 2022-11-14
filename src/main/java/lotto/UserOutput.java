@@ -10,9 +10,9 @@ public class UserOutput {
     // 당첨내역 (noti, count)
     // 수익률
     private static final String BUY_LOTTO_COUNT_MSG = "개를 구매했습니다.";
-    private static final String WINNING_STATS_MSG = "당첨통계\n---";
+    private static final String WINNING_STATS_MSG = "당첨통계%n---";
     private static final String WINNING_STATS_DETAIL_MSG = "%s - %d개%n";
-    private static final String WINNING_RATE_MSG = "총 수익률은 %.2f %%입니다.";
+    private static final String WINNING_RATE_MSG = "총 수익률은 %.2f %%입니다.%n";
 
     public static void printLottoCount(int count){
         System.out.println(count+BUY_LOTTO_COUNT_MSG);
@@ -48,4 +48,7 @@ public class UserOutput {
         }
     }
 
+    public static void printWinningRate(float rate){
+        System.out.printf(WINNING_RATE_MSG,rate);
+    }
 }
