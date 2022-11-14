@@ -9,17 +9,20 @@ import lotto.userinterface.Input;
 
 public class Application {
     public static void main(String[] args) {
-        String initialMoneyInput = Input.getInputWithMessage(GameMessage.ASK_FOR_INITIAL_MONEY.getMessage());
-        ExceptionHandler.isStringNumeric(initialMoneyInput);
+        try {
+            String initialMoneyInput = Input.getInputWithMessage(GameMessage.ASK_FOR_INITIAL_MONEY.getMessage());
+            ExceptionHandler.isStringNumeric(initialMoneyInput);
+            Player player = new Player(Long.parseLong(initialMoneyInput));
+            Machine lottoMachine = new Machine();
+            player.buyLottoTickets(lottoMachine);
 
-        Player player = new Player(Long.parseLong(initialMoneyInput));
-        Machine lottoMachine = new Machine();
-        player.buyLottoTickets(lottoMachine);
+            Organizer organizer = new Organizer();
+            organizer.setWinningNumbersFromInput();
+            organizer.setBonusNumberFromInput();
 
-        Organizer organizer = new Organizer();
-        organizer.setWinningNumbersFromInput();
-        organizer.setBonusNumberFromInput();
-
-        player.checkResult(organizer);
+            player.checkResult(organizer);
+        } catch (IllegalArgumentException e) {
+            e.printStackTrace();
+        }
     }
 }
