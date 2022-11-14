@@ -1,5 +1,8 @@
 package lotto.viewer;
 
+import lotto.domain.Buyer;
+import lotto.domain.Lotto;
+
 public class inputView {
     public static final String PURCHASE_REQUEST = "구입금액을 입력해 주세요.";
     public static final String PURCHASE_NUMBER = "개를 구매했습니다.";
@@ -19,5 +22,8 @@ public class inputView {
     }
     public static void showBonusRequest() {
         System.out.println(BONUS_REQUEST);
+    }
+    public static void showAllLotto(Buyer buyer) {
+        buyer.showAllLotto();
     }
 }

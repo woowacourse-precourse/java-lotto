@@ -23,4 +23,8 @@ public class Buyer {
         return lottos.stream()
                 .anyMatch(lotto -> equals(newLotto));
     }
+    public void showAllLotto() {
+        lottos.stream()
+                .forEach(System.out::println);
+    }
 }

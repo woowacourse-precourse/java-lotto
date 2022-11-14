@@ -2,6 +2,7 @@ package lotto.domain;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
@@ -19,6 +20,7 @@ public class Lotto {
     }
 
     public static Lotto from(List<Integer> lotto) {
+        lotto.sort(Collections.reverseOrder());
         return new Lotto(lotto);
     }
     public static Lotto generateLotto() {
@@ -66,7 +68,6 @@ public class Lotto {
                 .filter(winningNumber::contains)
                 .count();
     }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -78,5 +79,8 @@ public class Lotto {
     @Override
     public int hashCode() {
         return Objects.hash(numbers);
+    }
+    public void showLotto() {
+        System.out.println(this);
     }
 }
