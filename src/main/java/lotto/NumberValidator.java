@@ -13,6 +13,7 @@ public class NumberValidator {
     private static final String INVALID_LOTTO_NUMBER_COUNT_ERROR_MESSAGE = "[ERROR] 로또 번호는 6개 이어야 합니다.";
     private static final String INVALID_LOTTO_NUMBER_RANGE_ERROR_MESSAGE = "[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.";
     private static final String DUPLICATED_LOTTO_NUMBER_ERROR_MESSAGE = "[ERROR] 로또 번호는 중복되지 않아야 합니다.";
+    private static final String DUPLICATED_BONUS_NUMBER_ERROR_MESSAGE = "[ERROR] 보너스 번호는 당첨 로또 번호와 중복되지 않아야 합니다.";
 
     private static final String MATCHER = "[+-]?\\d*(\\.\\d+)?";
     private static final String DELIMITER = ",";
@@ -92,6 +93,33 @@ public class NumberValidator {
 
         if (duplicated.size() != LOTTO_NUMBER_COUNT) {
             throw new IllegalArgumentException(DUPLICATED_LOTTO_NUMBER_ERROR_MESSAGE);
+        }
+    }
+
+    public static void isValidBonusNumber(String bonusNumber, String winningLottoNumber) {
+        isValidNumber(bonusNumber);
+        isValidBonusNumberRange(bonusNumber);
+        isDuplicateWithLottoNumbers(bonusNumber, winningLottoNumber);
+    }
+
+    private static void isValidNumber(String bonusNumber) {
+        if (!bonusNumber.matches(MATCHER)) {
+            throw new IllegalArgumentException(INVALID_LOTTO_NUMBER_ERROR_MESSAGE);
+        }
+    }
+
+    private static void isValidBonusNumberRange(String bonusNumber) {
+        if (!isBetween(Integer.parseInt(bonusNumber))) {
+            throw new IllegalArgumentException(INVALID_LOTTO_NUMBER_RANGE_ERROR_MESSAGE);
+        }
+    }
+
+    private static void isDuplicateWithLottoNumbers(String bonusNumber, String winningLottoNumber) {
+        List<String> numbers = Arrays.stream(winningLottoNumber.split(DELIMITER))
+                .collect(Collectors.toList());
+
+        if (numbers.contains(bonusNumber)) {
+            throw new IllegalArgumentException(DUPLICATED_BONUS_NUMBER_ERROR_MESSAGE);
         }
     }
 }

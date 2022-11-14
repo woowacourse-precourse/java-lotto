@@ -25,9 +25,13 @@ public class InputView {
         return winningLottoNumbers;
     }
 
-    public static String getWinningBonusNumber() {
+    public static String getWinningBonusNumber(String winningLottoNumber) {
         System.out.println();
         System.out.println(WINNING_LOTTO_BONUS_NUMBER_COMMENT);
-        return Console.readLine();
+        String bonusNumber = Console.readLine();
+
+        NumberValidator.isValidBonusNumber(bonusNumber, winningLottoNumber);
+
+        return bonusNumber;
     }
 }
