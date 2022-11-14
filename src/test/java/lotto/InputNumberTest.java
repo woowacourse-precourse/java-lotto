@@ -31,4 +31,13 @@ public class InputNumberTest {
                 })
                 .withMessage("[ERROR] 당첨번호는 6개여야 합니다.");
     }
+
+    @DisplayName("보너스번호가 1개가 아닐 때 예외 발생하는지 확인")
+    @Test
+    void 보너스번호_예외_테스트() {
+        assertThatIllegalArgumentException().isThrownBy(() -> {
+                    InputNumber.parseBonusNumber("2, 4");
+                })
+                .withMessage("[ERROR] 보너스 번호는 1개여야 합니다.");
+    }
 }
