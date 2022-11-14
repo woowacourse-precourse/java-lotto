@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Player {
+    public static final int minimumMoney = 1000;
+    public static final int pricePerPiece = 1000;
     private int numberOfPurchase;
     private int money;
     private double yield;
@@ -16,16 +18,16 @@ public class Player {
         lottoNumbers = new ArrayList<>();
     }
 
-    public int purchaseLotto() throws IllegalArgumentException{
+    public int purchaseLotto() throws IllegalArgumentException {
         manager.requestMoneyStatementPrint();
         int money = manager.inputMoney();
-        if (money < 1000) {
+        if (money < minimumMoney) {
             throw new IllegalArgumentException(ErrorMessage.IS_LACK.toString());
         }
-        if (money % 1000 != 0) {
+        if (money % pricePerPiece != 0) {
             throw new IllegalArgumentException(ErrorMessage.IS_NOT_DIVISIBLE_BY_1000.toString());
         }
-        numberOfPurchase = money / 1000;
+        numberOfPurchase = money / pricePerPiece;
         this.money = money;
         return numberOfPurchase;
     }
@@ -53,7 +55,7 @@ public class Player {
     }
 
     public void showResult() {
-        System.out.println("\n" +"당첨 통계");
+        System.out.println("\n" + "당첨 통계");
         System.out.println("---");
         System.out.println("3개 일치 (5,000원) - " + result[0] + "개");
         System.out.println("4개 일치 (50,000원) - " + result[1] + "개");

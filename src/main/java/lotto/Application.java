@@ -10,8 +10,7 @@ public class Application {
             player.makeGenerate();
             player.calculateResult();
             player.showResult();
-        }
-        catch(IllegalArgumentException e) {
+        } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
     }
