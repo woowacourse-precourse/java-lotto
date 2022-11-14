@@ -1,20 +1,27 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.Randoms;
+
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class RandomLottoNumber {
-  List<Integer> numbers;
+  ArrayList<Integer> numbers;
 
   public RandomLottoNumber() {
     setRandomNumber();
   }
 
   private void setRandomNumber() {
-    numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+    List<Integer> random_numbers;
+    random_numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+    numbers = new ArrayList<>(random_numbers);
+    Collections.sort(numbers);
   }
 
   public List<Integer> getRandomNumber() {
     return numbers;
   }
+
 }
