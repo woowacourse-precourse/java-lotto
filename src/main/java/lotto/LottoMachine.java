@@ -6,13 +6,8 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.*;
 
 public class LottoMachine {
-    private final List<Integer> normalNumbers;
-    private final int bonusNumber;
-
-    public LottoMachine(List<Integer> normalNumbers, int bonusNumber) {
-        this.normalNumbers = normalNumbers;
-        this.bonusNumber = bonusNumber;
-    }
+    private List<Integer> normalNumbers;
+    private int bonusNumber;
 
     public String getMoney() {
         System.out.println("구매금액을 입력해주세요.");
@@ -58,6 +53,24 @@ public class LottoMachine {
         LottoContainer lottoContainer = new LottoContainer(lottos);
 
         return lottoContainer;
+    }
+
+    public void setNormalNumbers() {
+        System.out.println("당첨 번호를 입력해 주세요.");
+        String input = Console.readLine();
+        String[] tokenized = input.split(",");
+
+        this.normalNumbers = new ArrayList<>();
+        for(String token: tokenized) {
+            normalNumbers.add(Integer.parseInt(token));
+        }
+    }
+
+    public void setBonusNumber() {
+        System.out.println("보너스 번호를 입력해 주세요.");
+        String input = Console.readLine();
+
+        this.bonusNumber = Integer.parseInt(input);
     }
 
 }
