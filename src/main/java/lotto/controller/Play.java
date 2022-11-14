@@ -16,10 +16,14 @@ public class Play {
     List<Lotto> lottoTicket = new ArrayList<>();
 
     public void play() {
-        getPlayerInput();
-        Output.printYourStatistics(
-            statistics.checkPrizeQuantity(cashier.getAnswerNumber(), cashier.getBonusNumber(), lottoTicket),
-            statistics.myStat(cashier.getReceivedMoney()));
+        try {
+            getPlayerInput();
+            Output.printYourStatistics(
+                statistics.checkPrizeQuantity(cashier.getAnswerNumber(), cashier.getBonusNumber(), lottoTicket),
+                statistics.myStat(cashier.getReceivedMoney()));
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+        }
 
     }
 
