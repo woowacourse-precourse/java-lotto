@@ -43,6 +43,10 @@ public enum Rank {
         return condition + " (" + numberFormat.format(prize) + "원)";
     }
 
+    public int getPrize() {
+        return prize;
+    }
+
     public static void main(String[] args) {
         System.out.println(Rank.FOURTH);
     }

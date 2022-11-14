@@ -3,15 +3,15 @@ package lotto;
 public class Money {
     private static final int THOUSAND = 1_000;
     private static final int ZERO = 0;
-    private int amount;
+    private final int amount;
 
     public Money(int amount) {
         validate(amount);
         this.amount = amount;
     }
 
-    public void decreaseAmount(int value) {
-        amount -= value;
+    public Money decreaseAmount(int value) {
+        return new Money(amount - value);
     }
 
     private void validate(int amount) {

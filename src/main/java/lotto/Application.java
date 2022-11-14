@@ -28,6 +28,8 @@ public class Application {
         println("---");
         Map<Rank, Integer> winningHistory = getWinningHistory(winningNumber, bonus, purchasedLottos);
         printWinningHistory(winningHistory);
+
+        double rateOfReturn = LottoCalculator.getRateOfReturn(winningHistory, money);
     }
 
     private static void printPurchasedLottos(List<Lotto> purchasedLottos) {

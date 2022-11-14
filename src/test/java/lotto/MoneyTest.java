@@ -33,7 +33,7 @@ class MoneyTest {
     void decreaseAmount() {
         Money money = new Money(3000);
 
-        money.decreaseAmount(2000);
+        money = money.decreaseAmount(2000);
 
         assertThat(money.getAmount()).isEqualTo(1000);
     }

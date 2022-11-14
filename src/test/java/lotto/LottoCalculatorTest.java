@@ -2,7 +2,9 @@ package lotto;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -18,5 +20,17 @@ class LottoCalculatorTest {
         Optional<Rank> rank = LottoCalculator.calculateRank(winningNumbers, bonus, ticket);
 
         assertThat(rank.orElseThrow()).isEqualTo(Rank.SECONDS);
+    }
+
+    @DisplayName("수익률을 계산한다. 8000원의 구입 금액으로 5등 하나 당첨이면 수익률은 62.5%다.")
+    @Test
+    void rateOfReturn() {
+        Map<Rank, Integer> winningHistory = new LinkedHashMap<>();
+        winningHistory.put(Rank.FIFTH, 1);
+        Money purchasePrice = new Money(8000);
+
+        double rateOfReturn = LottoCalculator.getRateOfReturn(winningHistory, purchasePrice);
+
+        assertThat(rateOfReturn).isEqualTo(62.5);
     }
 }

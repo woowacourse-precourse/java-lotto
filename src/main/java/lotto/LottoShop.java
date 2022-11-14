@@ -12,7 +12,7 @@ public class LottoShop {
         List<Lotto> lottos = new ArrayList<>();
         while (money.getAmount() != ZERO) {
             lottos.add(issueLotto());
-            money.decreaseAmount(LOTTO_PRICE);
+            money = money.decreaseAmount(LOTTO_PRICE);
         }
         return lottos;
     }

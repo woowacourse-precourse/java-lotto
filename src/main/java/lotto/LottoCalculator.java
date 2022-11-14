@@ -1,6 +1,7 @@
 package lotto;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 public class LottoCalculator {
@@ -17,5 +18,12 @@ public class LottoCalculator {
 
     private static boolean containsBonus(Lotto ticket, Bonus bonus) {
         return ticket.getNumbers().contains(bonus.getNumber());
+    }
+
+    public static double getRateOfReturn(Map<Rank, Integer> winningHistory, Money purchasePrice) {
+        Integer totalPrize = winningHistory.entrySet().stream()
+                .map(entry -> entry.getKey().getPrize() * entry.getValue())
+                .reduce(0, Integer::sum);
+        return (double) totalPrize / purchasePrice.getAmount() * 100;
     }
 }
