@@ -7,31 +7,39 @@ import lotto.util.constants.WinningScore;
 
 public class LottoResult {
 
-    private Map<WinningScore, Integer> winningScore;
+    private Map<WinningScore, Integer> winningScoreResult;
+    private int bonusNumber;
 
-    public LottoResult() {
-        this.winningScore = new HashMap<>() {{
+    public LottoResult(int bonusNumber) {
+        this.winningScoreResult = new HashMap<>() {{
             put(WinningScore.THREE, 0);
             put(WinningScore.FOUR, 0);
             put(WinningScore.FIVE, 0);
             put(WinningScore.BONUS, 0);
             put(WinningScore.SIX, 0);
         }};
+        this.bonusNumber = bonusNumber;
     }
 
-    public Map<WinningScore, Integer> getWinningScore() {
-        return this.winningScore;
+    public Map<WinningScore, Integer> getWinningScoreResult() {
+        return this.winningScoreResult;
     }
 
-    public void computeWinningScore(List<Lotto> userLottoTickets, Lotto winningLotto) {
-        for (Lotto userLotto : userLottoTickets) {
-            WinningScore winningScore = compareLottoNumber(userLotto.getNumbers(), winningLotto.getNumbers());
-            this.winningScore.put(winningScore, this.winningScore.get(winningScore) + 1);
+    public void computeWinningScore(Lotto userLotto, Lotto winningLotto) {
+        WinningScore winningScore = compareNumber(userLotto.getNumbers(), winningLotto.getNumbers());
+        if (isBonusScore(winningScore, userLotto.getNumbers())) {
+            winningScoreResult.put(WinningScore.BONUS, winningScoreResult.get(WinningScore.BONUS) + 1);
+            return;
         }
+        winningScoreResult.put(winningScore, winningScoreResult.get(winningScore) + 1);
     }
 
-    public WinningScore compareLottoNumber(List<Integer> userLotto, List<Integer> winningLotto) {
-        int count = (int) userLotto.stream().filter(num -> winningLotto.contains(num)).count();
+    public WinningScore compareNumber(List<Integer> userNumber, List<Integer> winningNumber) {
+        int count = (int) userNumber.stream().filter(num -> winningNumber.contains(num)).count();
         return WinningScore.getScore(count);
+    }
+
+    public boolean isBonusScore(WinningScore winningScore, List<Integer> userNumber) {
+        return winningScore == WinningScore.FIVE && userNumber.contains(bonusNumber);
     }
 }
