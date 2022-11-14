@@ -111,9 +111,9 @@ public class Lotto {
         }
     }
 
-/*    public String CalcProfit(){
+    public String CalcProfit(){
         int money = winLottoNumber[0] * 5000 + winLottoNumber[1] * 50000 + winLottoNumber[2] * 1500000 + winLottoNumber[3] * 30000000 + winLottoNumber[4] * 2000000000;
         profit = (double) money / pay *100;
         return String.format("%.1f",profit);
-    }*/
+    }
 }
