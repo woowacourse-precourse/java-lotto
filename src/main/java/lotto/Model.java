@@ -66,7 +66,7 @@ public class Model {
         return purchaseAmount / 1000;
     }
 
-    public static ArrayList<Integer> SortArrayList(ArrayList<Integer> arraylist) {
+    public static List<Integer> SortArrayList(List<Integer> arraylist) {
         Collections.sort(arraylist);
         return arraylist;
     }
