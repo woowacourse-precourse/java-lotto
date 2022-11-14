@@ -7,6 +7,7 @@ import java.util.List;
 
 public class Shop {
     private static final int PRICE = 1000;
+    private static final String MULTIPLE_ERROR = "[ERROR] 구입금액이 가격으로 나누어 떨어지지 않습니다";
 
     public List<Lotto> buyLottos(int money) {
         isMultipleOfPrice(money);
@@ -28,7 +29,7 @@ public class Shop {
 
     private static void isMultipleOfPrice(int money) {
         if (money % PRICE != 0) {
-            System.out.println("[ERROR] 구입금액이 가격으로 나누어 떨어지지 않습니다");
+            System.out.println(MULTIPLE_ERROR);
             throw new IllegalArgumentException();
         }
     }
