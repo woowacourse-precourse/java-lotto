@@ -28,7 +28,7 @@ public class InputLotto {
         List<String> stringsNumberList = splitCommas(value); // ,(쉼표)로 나누기
         List<Integer> numberList = toIntList(stringsNumberList);
         Lotto lotto = new Lotto(numberList);
-        exceptionHandling.removeDuplicateNumber(numberList);
+//        exceptionHandling.removeDuplicateNumber(numberList);
         return numberList;
     }
 
