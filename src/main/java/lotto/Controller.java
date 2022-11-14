@@ -112,12 +112,12 @@ public class Controller {
         View.Output(inputRealLottoBonusNumber);
         Integer realLottoBonusNumber = Model.MakeStringToInteger(inputRealLottoBonusNumber);
 
-        // 보너스 번호 추가
-        realLottoNumbers.add(realLottoBonusNumber);
-
         // Lotto 클래스 생성
         Lotto lotto = new Lotto(realLottoNumbers);
 
+        // 보너스 번호 추가
+        realLottoNumbers.add(realLottoBonusNumber);
+        
         // 로또 번호 분석
         LinkedHashMap<Integer, Integer> lottoResult = Controller.AnalyzePlayerNumbers
                 (realLottoNumbers, publishedLottoArray);
