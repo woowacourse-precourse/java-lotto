@@ -1,7 +1,6 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -9,9 +8,11 @@ import java.util.List;
 public class Application {
     //region 상수
     private static final String EMPTY_STRING = "";
+    private static final String COMMA = ",";
     private static final String REGEX = "[0-9]+";
     private static final int lottoPrice = 1000;
     //endregion
+
     //region 변수
     public static int lottoNumber;
     private static int bonusNumber;
@@ -34,13 +35,9 @@ public class Application {
             return;
         }
     }
-
-
-
     //endregion
 
     //region 메서드
-
     private static void CheckEarningRate() {
         winningStats.CalculateEarningRate(lottoNumber * lottoPrice);
         winningStats.PrintEarningRate();
@@ -51,7 +48,6 @@ public class Application {
         winningStats.PrintWinningStats();
     }
 
-
     private static void GetBonusNumber() {
         System.out.println(PrintMessage.bonusNumber);
         String userInput = getUserInputData();
@@ -60,38 +56,26 @@ public class Application {
     }
 
     private static void BonusValidate(String userInput) {
-        String errorMessage = "";
-
-        errorMessage = CheckOnlyNumber(userInput);
-        if(!errorMessage.isEmpty())
-            Error.error(errorMessage);
-
-        errorMessage = CheckNumberSize(userInput);
-        if(!errorMessage.isEmpty())
-            Error.error(errorMessage);
-
-        errorMessage = CheckSameNumber(userInput);
-        if(!errorMessage.isEmpty())
-            Error.error(errorMessage);
+        CheckOnlyNumber(userInput);
+        CheckNumberSize(userInput);
+        CheckSameNumber(userInput);
     }
 
-    private static String CheckSameNumber(String userInput) {
+    private static void CheckSameNumber(String userInput) {
         int num = Integer.parseInt(userInput);
+
         if(winningLotto.CheckContainNumber(num))
-            return Error.errMsg_ExistSameNumber;
-
-        return EMPTY_STRING;
+            Error.error(Error.errMsg_ExistSameNumber);
     }
 
-    private static String CheckNumberSize(String userInput) {
+    private static void CheckNumberSize(String userInput) {
         int num = Integer.parseInt(userInput);
+
         if(num < 1)
-            return Error.errMsg_WrongLottoNumber;
+            Error.error(Error.errMsg_WrongLottoNumber);
 
         if(num > 45)
-            return Error.errMsg_WrongLottoNumber;
-
-        return EMPTY_STRING;
+            Error.error(Error.errMsg_WrongLottoNumber);
     }
 
     private static void GetWinningNumber() {
@@ -101,20 +85,20 @@ public class Application {
     }
 
     private static void CastWinningNumberToLotto(String str){
-        List<String> commaSplits = Arrays.asList(str.split(","));
+        List<String> commaSplits = SplitString(str);
         List<Integer> winningNumber = new ArrayList<>();
+
         for(String commaSplit : commaSplits){
-            String errorMessage = CheckOnlyNumber(commaSplit);
-            if(!errorMessage.isEmpty()) {
-                Error.error(errorMessage);
-                return;
-            }
+            CheckOnlyNumber(commaSplit);
             winningNumber.add(Integer.valueOf(commaSplit));
         }
+
         winningLotto = new Lotto(winningNumber);
     }
 
-
+    private static List<String> SplitString(String str){
+        return Arrays.asList(str.split(COMMA));
+    }
     public static String getUserInputData(){
         String input = Console.readLine();
         return input;
@@ -135,32 +119,20 @@ public class Application {
     }
 
     private static void SalesValidate(String userInput) {
-        String errorMessage;
-
-        errorMessage = CheckOnlyNumber(userInput);
-        if(!errorMessage.isEmpty())
-            Error.error(errorMessage);
-
-        errorMessage = CheckPrice(userInput);
-        if(!errorMessage.isEmpty())
-            Error.error(errorMessage);
+        CheckOnlyNumber(userInput);
+        CheckPrice(userInput);
     }
 
-    private static String CheckPrice(String userInput) {
+    private static void CheckPrice(String userInput) {
         int userPay = Integer.parseInt(userInput);
 
         if(userPay % lottoPrice != 0)
-            return Error.errMsg_WrongPurchaseAmount;
-
-        return EMPTY_STRING;
+            Error.error(Error.errMsg_WrongPurchaseAmount);
     }
 
-
-    public static String CheckOnlyNumber(String str){
+    public static void CheckOnlyNumber(String str){
         if(!str.matches(REGEX))
-            return Error.errMsg_ExistNotNumber;
-
-        return EMPTY_STRING;
+            Error.error(Error.errMsg_ExistNotNumber);
     }
     //endregion
 }
