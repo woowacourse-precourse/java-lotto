@@ -36,7 +36,6 @@ public class LottoGameController {
             gameCleanUp();
         } catch (IllegalArgumentException illegalArgumentException) {
             System.out.println(illegalArgumentException.getMessage());
-            errorContent = "";
         }
     }
 
@@ -45,6 +44,7 @@ public class LottoGameController {
         winningNumberService = new WinningNumberService();
         bonusNumberService = new BonusNumberService();
         calculateResultService = new CalculateResultService();
+        errorContent = "";
     }
 
     public void gameCleanUp() {
