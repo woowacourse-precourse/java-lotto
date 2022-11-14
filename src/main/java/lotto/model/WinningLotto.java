@@ -7,6 +7,7 @@ import static lotto.constant.WinningLottoConstants.DUPLICATE_WINNING_NUMBER_EXIS
 import static lotto.constant.WinningLottoConstants.INVALID_RANGED_WINNING_LOTTO_INPUT_MSG;
 import static lotto.constant.WinningLottoConstants.INVALID_WINNING_LOTTO_INPUT_FORM_MSG;
 import static lotto.constant.WinningLottoConstants.INVALID_WINNING_LOTTO_SIZE_MSG;
+import static lotto.constant.WinningLottoConstants.SLICE_DELIMITER;
 
 import java.util.Arrays;
 import java.util.List;
@@ -30,9 +31,7 @@ public class WinningLotto {
 
     private void validate(String userInput) {
         isBlank(userInput);
-        canSplit(userInput);
-        isConsistWithProperRange(userInput);
-        hasDuplicateNumber(userInput);
+        validateSlicedUserInputByDelimiter(userInput);
     }
 
     private void isBlank(String userInput) {
@@ -41,14 +40,22 @@ public class WinningLotto {
         }
     }
 
-    private void canSplit(String userInput) {
-        if (userInput.split(",").length != LOTTO_SIZE) {
+    private void validateSlicedUserInputByDelimiter(String userInput) {
+        final String[] slicedUserInput = userInput.split(SLICE_DELIMITER);
+
+        isValidInputForm(slicedUserInput);
+        isConsistWithProperRange(slicedUserInput);
+        hasDuplicateNumber(slicedUserInput);
+    }
+
+    private void isValidInputForm(String[] slicedUserInput) {
+        if (slicedUserInput.length != LOTTO_SIZE) {
             throw new IllegalArgumentException(INVALID_WINNING_LOTTO_INPUT_FORM_MSG);
         }
     }
 
-    private void isConsistWithProperRange(String userInput) {
-        for (String piece : userInput.split(",")) {
+    private void isConsistWithProperRange(String[] slicedUserInput) {
+        for (String piece : slicedUserInput) {
             isInRange(piece);
         }
     }
@@ -83,8 +90,8 @@ public class WinningLotto {
         }
     }
 
-    private void hasDuplicateNumber(String userInput) {
-        if (Arrays.stream(userInput.split(","))
+    private void hasDuplicateNumber(String[] slicedUserInput) {
+        if (Arrays.stream(slicedUserInput)
                 .distinct()
                 .count() != LOTTO_SIZE) {
             throw new IllegalArgumentException(DUPLICATE_WINNING_NUMBER_EXIST_MSG);
@@ -92,7 +99,7 @@ public class WinningLotto {
     }
 
     private List<Integer> toList(String userInput) {
-        return Arrays.stream(userInput.split(","))
+        return Arrays.stream(userInput.split(SLICE_DELIMITER))
                 .mapToInt(Integer::parseInt)
                 .boxed()
                 .collect(Collectors.toList());

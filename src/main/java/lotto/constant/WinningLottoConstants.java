@@ -6,4 +6,5 @@ public class WinningLottoConstants {
     public static final String INVALID_WINNING_LOTTO_INPUT_FORM_MSG = "잘못된 형식의 당첨 번호 입력입니다";
     public static final String INVALID_RANGED_WINNING_LOTTO_INPUT_MSG = "잘못된 범위의 당첨 번호가 포함된 입력입니다";
 
+    public static final String SLICE_DELIMITER = ",";
 }
