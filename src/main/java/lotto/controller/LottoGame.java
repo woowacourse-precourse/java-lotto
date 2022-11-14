@@ -1,5 +1,6 @@
 package lotto.controller;
 
+import lotto.domain.WinningNumber;
 import lotto.util.LottoRank;
 import lotto.domain.Customer;
 import lotto.domain.Lotto;
@@ -37,9 +38,7 @@ public class LottoGame {
     private List<LottoRank> getLottoRanks(List<Lotto> lottos) {
         List<Integer> winningNumbers = lottoGameView.inputWinningNumbers();
         int bonusNumber = lottoGameView.inputBonusNumber();
-
-        return lottoCompany
-                .generateWinningNumber(winningNumbers, bonusNumber)
-                .getRanks(lottos);
+        WinningNumber winningNumber = lottoCompany.generateWinningNumber(winningNumbers, bonusNumber);
+        return customer.getRanks(lottos, winningNumber);
     }
 }

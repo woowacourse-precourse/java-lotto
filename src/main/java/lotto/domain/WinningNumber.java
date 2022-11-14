@@ -21,26 +21,12 @@ public class WinningNumber {
         this.bonusNumber = bonusNumber;
     }
 
-    public int getHitCount(Lotto lotto) {
-        return (int) winningNumbers.stream()
-                .filter(lotto::isContain)
-                .count();
+    public boolean isContainedWinningNumber(int number) {
+        return winningNumbers.contains(number);
     }
 
-    public boolean isHitBonusNumber(Lotto lotto) {
-        return lotto.isContain(bonusNumber);
-    }
-
-    public LottoRank getRank(Lotto lotto) {
-        return Arrays.stream(LottoRank.values())
-                .filter(lottoRank -> lottoRank.equal(getHitCount(lotto), isHitBonusNumber(lotto)))
-                .findAny().orElse(LottoRank.NOTHING);
-    }
-
-    public List<LottoRank> getRanks(List<Lotto> lottos) {
-        return lottos.stream()
-                .map(this::getRank)
-                .collect(Collectors.toList());
+    public boolean isEqualToBonusNumber(int number) {
+        return bonusNumber == number;
     }
 
     private void validateNumberCount(List<Integer> winningNumbers) {
