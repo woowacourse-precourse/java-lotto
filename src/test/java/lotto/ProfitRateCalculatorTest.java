@@ -5,8 +5,10 @@ import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.InstanceOfAssertFactories.MAP;
 
 public class ProfitRateCalculatorTest {
 
@@ -27,8 +29,10 @@ public class ProfitRateCalculatorTest {
         lottos.add(new Lotto(List.of(2, 13, 22, 32, 38, 45)));
         lottos.add(new Lotto(List.of(1, 3, 5, 14, 22, 45)));
         ProfitRateCalculator profitRateCalculator = new ProfitRateCalculator();
+        LottoMachine lottoMachine = new LottoMachine();
+        Map<Rank, Integer> rankResult = lottoMachine.makeRankResult(lottos, winningNumber, bonusNumber);
         //when
-        double profitRate = profitRateCalculator.calculate(lottos, money, winningNumber, bonusNumber);
+        double profitRate = profitRateCalculator.calculate(rankResult, money);
         //then
         assertThat(profitRate).isEqualTo(62.5);
     }

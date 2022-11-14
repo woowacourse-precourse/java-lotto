@@ -14,6 +14,8 @@ public class LottoStore {
         int bonusNumber = InputConsole.bonusNumber();
         Map<Rank, Integer> rankResult = lottoMachine.makeRankResult(lottos, winningNumber, bonusNumber);
         OutputConsole.printWinningList(rankResult);
-        OutputConsole.printProfitRate(lottos, money, winningNumber, bonusNumber);
+        ProfitRateCalculator profitRateCalculator = new ProfitRateCalculator();
+        double profitRate = profitRateCalculator.calculate(rankResult, money);
+        OutputConsole.printProfitRate(profitRate);
     }
 }
