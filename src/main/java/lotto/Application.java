@@ -1,10 +1,7 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
-import lotto.domain.Compare;
-import lotto.domain.Lotto;
-import lotto.domain.Rank;
-import lotto.domain.Winning;
+import lotto.domain.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,12 +32,19 @@ public class Application {
         Winning.addBonus(inputBonus);
 
         Compare compare = new Compare();
+
+        Report report = new Report(Rank.None);
+
         for(int i = 0; i < allLotto.size(); i++){
             int matchNumber = compare.matchCount(allLotto.get(i),Winning.numbers);
             boolean matchBonus = compare.matchBonus(allLotto.get(i), Winning.numbers);
 
-            System.out.println(Rank.valueOf(matchNumber, matchBonus));
+            Rank rank = Rank.valueOf(matchNumber, matchBonus);
+
+            report = new Report(rank);
+            report.winningCount(matchNumber, matchBonus);
         }
+        reportPrint(report.winningCount);
     }
 
     public static void inputPrint(){
@@ -57,6 +61,17 @@ public class Application {
 
     public static void bonusPrint(){
         System.out.println("보너스 번호를 입력해 주세요.");
+    }
+
+    public static void reportPrint(Integer[] winningCount){
+        System.out.println("당첨 통계");
+        System.out.println("---");
+        System.out.println("3개 일치 (5,000원) - " + winningCount[1] + "개");
+        System.out.println("4개 일치 (50,000원) - " + winningCount[2] + "개");
+        System.out.println("5개 일치 (1,500,000원) - " + winningCount[3] + "개");
+        System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - " + winningCount[4] + "개");
+        System.out.println("6개 일치 (2,000,000,000원) - " + winningCount[5] + "개");
+        //System.out.println("총 수익률은 " + 1 + "%입니다.");
     }
 
     public static void disableWarning() {
