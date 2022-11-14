@@ -25,4 +25,9 @@ public class ResultLotto {
         double result = (double)sumTotalMoney() / (double)buyMoney;
         return String.format("%.1f",result*100);
     }
+
+    private int sumTotalMoney(){
+        return map.keySet().stream().map(x -> x.getPrice()*map.get(x)).
+                mapToInt(Integer::intValue).sum();
+    }
 }
