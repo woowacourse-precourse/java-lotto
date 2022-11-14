@@ -1,10 +1,11 @@
-package lotto;
+package lotto.domain;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class LottoTest {
@@ -24,4 +25,19 @@ class LottoTest {
     }
 
     // 아래에 추가 테스트 작성 가능
+    @DisplayName("로또 번호 중 1 ~ 45 사이의 숫자가 아닌 수가 있으면 예외가 발생한다.")
+    @Test
+    void createLottoByOutOfRange() {
+        assertThatThrownBy(() -> new Lotto(List.of(1, 2, 3, 4, 5, 50)))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+    
+    @Test
+    void 로또_번호_리스트_리턴_테스트() {
+        List<Integer> testNumbers = List.of(1, 2, 3, 4, 5, 6);
+
+        Lotto lotto = new Lotto(testNumbers);
+
+        assertThat(lotto.getNumbers()).isEqualTo(testNumbers);
+    }
 }
