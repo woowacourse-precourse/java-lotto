@@ -4,6 +4,8 @@ import lotto.numbers.BonusNumber;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
@@ -23,7 +25,12 @@ class BonusNumberTest {
             .isInstanceOf(IllegalArgumentException.class);
   }
 
+  @DisplayName("당첨 번호와 같지 않은 보너스 넘버 판별")
   @Test
   void validBonusNumber() {
+    assertThat(BonusNumber.validBonusNumber("2", List.of(5)))
+            .isEqualTo(2);
+    assertThatThrownBy(() -> BonusNumber.validBonusNumber("2", List.of(2)))
+            .isInstanceOf(IllegalArgumentException.class);
   }
 }
