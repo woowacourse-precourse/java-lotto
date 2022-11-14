@@ -3,6 +3,7 @@ package lotto;
 import lotto.domain.Lotto;
 import lotto.domain.LottoNumberCreator;
 import lotto.domain.LottoStore;
+import lotto.ui.InputUi;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -35,9 +36,12 @@ class LottoTest {
         String money = "100kd";
         InputStream is = new ByteArrayInputStream(money.getBytes());
         System.setIn(is);
-        LottoStore lottoStore = new LottoStore(new LottoNumberCreator());
 
-        assertThatThrownBy(() -> lottoStore.buyLotto())
+        LottoStore lottoStore = new LottoStore(new LottoNumberCreator());
+        InputUi inputUi = new InputUi();
+        String buyAmountBill = inputUi.inputBuyAmount();
+
+        assertThatThrownBy(() -> lottoStore.buyLotto(buyAmountBill))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -47,9 +51,12 @@ class LottoTest {
         String money = "11111";
         InputStream is = new ByteArrayInputStream(money.getBytes());
         System.setIn(is);
-        LottoStore lottoStore = new LottoStore(new LottoNumberCreator());
 
-        assertThatThrownBy(() -> lottoStore.buyLotto())
+        LottoStore lottoStore = new LottoStore(new LottoNumberCreator());
+        InputUi inputUi = new InputUi();
+        String buyAmountBill = inputUi.inputBuyAmount();
+
+        assertThatThrownBy(() -> lottoStore.buyLotto(buyAmountBill))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 }
