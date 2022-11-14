@@ -19,4 +19,6 @@ public class Constant {
             = "[ERROR] 로또 번호는 6개의 숫자로 이루어져야 합니다.";
     public static final String DUPLICATE_NUMBER_ERROR
             = "[ERROR] 로또 번호는 중복되지 않아야 합니다.";
+    public static final String DUPLICATE_BONUS_NUMBER_ERROR
+            = "[ERROR] 보너스 번호가 로또 번호에 포함됩니다.";
 }
