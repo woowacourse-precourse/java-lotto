@@ -12,6 +12,7 @@ public class Game {
     public static final Integer maximumLottoNumber = 45;
     public static final Integer numberToDraw = 6;
 
+
     public enum Rank{
         FIRST,
         SECOND,
