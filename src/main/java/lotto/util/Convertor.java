@@ -2,16 +2,13 @@ package lotto.util;
 
 import java.util.ArrayList;
 import java.util.List;
-import lotto.machine.Lotto;
 
 public class Convertor {
     private final static String COMMA = ",";
 
     public static Integer toPurchasePrice(String arg) {
-        Validator.checkIfNumeric(arg);
-        Validator.checkIfInThousands(arg);
-
         Integer purchasePrice = toNumericValue(arg);
+        Validator.checkIfInThousands(purchasePrice);
         return purchasePrice;
     }
 

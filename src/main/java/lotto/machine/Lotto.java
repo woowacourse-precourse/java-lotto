@@ -4,8 +4,7 @@ import java.util.List;
 import lotto.util.Validator;
 
 public class Lotto {
-
-    private final List<Integer> lottoNumbers;
+    private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
         Validator.checkSize(numbers);
@@ -13,11 +12,10 @@ public class Lotto {
         numbers.forEach(number -> {
             Validator.checkRange(number);
         });
-
-        lottoNumbers = numbers;
+        this.numbers = numbers;
     }
 
-    public List<Integer> getLottoNumbers() {
-        return lottoNumbers;
+    public List<Integer> getNumbers() {
+        return numbers;
     }
 }

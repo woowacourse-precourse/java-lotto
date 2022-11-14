@@ -12,15 +12,16 @@ public class Winner {
     public Winner(String winningNumbers, String bonusNumber) {
         this.winningNumbers = new Lotto(Convertor.separate(winningNumbers));
         this.bonusNumber = Convertor.toNumericValue(bonusNumber);
+
         Validator.checkIfWinningNumbersContainBonusNumber(
-                this.winningNumbers.getLottoNumbers(),
+                this.winningNumbers.getNumbers(),
                 this.bonusNumber
         );
         Validator.checkRange(this.bonusNumber);
     }
 
     public List<Integer> getWinningNumbers() {
-        return winningNumbers.getLottoNumbers();
+        return winningNumbers.getNumbers();
     }
 
     public Integer getBonusNumber() {

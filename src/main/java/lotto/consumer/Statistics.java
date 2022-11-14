@@ -8,18 +8,16 @@ import lotto.util.Calculator;
 
 public class Statistics {
     private final Map<Integer, Integer> statistics;
-    private final List<Integer> profit;
 
     public Statistics(Profit profit) {
-        this.profit = profit.getProfit();
-        statistics = createStatistics();
+        statistics = createStatisticsBy(profit.getProfit());
     }
 
     public Map<Integer, Integer> getStatistics() {
         return statistics;
     }
 
-    private Map<Integer, Integer> createStatistics() {
+    private Map<Integer, Integer> createStatisticsBy(List<Integer> profit) {
         int initialWinCount = 0;
         Map<Integer, Integer> initialStatistics = new LinkedHashMap<>();
         for (Ranks ranks : Ranks.values()) {
