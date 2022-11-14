@@ -1,10 +1,10 @@
 package lotto.domain;
 
-import static lotto.utils.MessagesUtil.*;
+import static lotto.utils.message.StaticMessagesUtil.*;
 
 import lotto.utils.ConsoleUtil;
-import lotto.utils.RankUtil;
-import lotto.utils.RewardUtil;
+import lotto.utils.winning.RankUtil;
+import lotto.utils.winning.RewardUtil;
 
 public class WinningResult {
     private int first;

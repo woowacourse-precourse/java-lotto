@@ -1,4 +1,4 @@
-package lotto.utils;
+package lotto.utils.winning;
 
 public enum RewardUtil {
     FIRST(2000000000),

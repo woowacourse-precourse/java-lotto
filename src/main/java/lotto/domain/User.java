@@ -1,25 +1,25 @@
 package lotto.domain;
 
-import static lotto.utils.DynamicMessagesUtil.*;
-import static lotto.utils.MessagesUtil.*;
+import static lotto.utils.message.DynamicMessagesUtil.*;
+import static lotto.utils.message.StaticMessagesUtil.*;
+import static lotto.utils.validate.NumberValidator.validateBuyMoney;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 import lotto.utils.ConsoleUtil;
-import lotto.utils.RankUtil;
-import lotto.validate.NumberValidator;
+import lotto.utils.validate.NumberValidator;
+import lotto.utils.winning.RankUtil;
 
 public class User {
     private int money;
     private List<Lotto> lottos = new ArrayList<>();
-    private NumberValidator validator = new NumberValidator();
 
     public void buyLotto() {
         ConsoleUtil.showMessage(INPUT_BUY_MONEY.getMessage());
         String input = ConsoleUtil.input();
-        validator.validateBuyMoney(input);
+        validateBuyMoney(input);
 
         money = Integer.parseInt(input);
 
@@ -28,6 +28,10 @@ public class User {
             Lotto lotto = new Lotto(numbers);
             lottos.add(lotto);
         }
+    }
+
+    public void validateBuyMoney(String money) {
+        NumberValidator.validateBuyMoney(money);
     }
 
     public void showBuyAmount() {
@@ -51,10 +55,6 @@ public class User {
         return numbers.stream()
                 .map(String::valueOf)
                 .collect(Collectors.toList());
-    }
-
-    public void validateBuyMoney(String money) {
-        validator.validateBuyMoney(money);
     }
 
     public void showWinningResult(Winning winning) {

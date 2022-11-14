@@ -1,6 +1,6 @@
-package lotto.utils;
+package lotto.utils.message;
 
-public enum MessagesUtil {
+public enum StaticMessagesUtil {
     INPUT_BUY_MONEY("구입금액을 입력해 주세요."),
     INPUT_WINNING_NUMBERS("\n당첨 번호를 입력해 주세요."),
     INPUT_BONUS_NUMBER("\n보너스 번호를 입력해 주세요."),
@@ -8,7 +8,7 @@ public enum MessagesUtil {
 
     private final String message;
 
-    MessagesUtil(String message) {
+    StaticMessagesUtil(String message) {
         this.message = message;
     }
 

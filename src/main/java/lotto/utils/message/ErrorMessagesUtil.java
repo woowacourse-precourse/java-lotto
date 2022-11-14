@@ -1,10 +1,6 @@
-package lotto.error;
+package lotto.utils.message;
 
-import static lotto.utils.NumberUtil.*;
-
-import lotto.utils.NumberUtil;
-
-public enum ErrorType {
+public enum ErrorMessagesUtil {
     PREFIX("[ERROR] "),
     ONLY_NUMBERS("숫자만 입력할 수 있습니다."),
     NOT_BLANK("공백은 입력할 수 없습니다."),
@@ -17,15 +13,11 @@ public enum ErrorType {
 
     private final String message;
 
-    ErrorType(String message) {
+    ErrorMessagesUtil(String message) {
         this.message = message;
     }
 
-    /*public String getMessage() {
-
-    }*/
-
-    public String showMessage() {
+    public String getMessage() {
         return PREFIX.message + this.message;
     }
 

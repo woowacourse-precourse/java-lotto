@@ -1,24 +1,23 @@
 package lotto.domain;
 
-import static lotto.utils.MessagesUtil.INPUT_BONUS_NUMBER;
-import static lotto.utils.MessagesUtil.INPUT_WINNING_NUMBERS;
+import static lotto.utils.message.StaticMessagesUtil.INPUT_BONUS_NUMBER;
+import static lotto.utils.message.StaticMessagesUtil.INPUT_WINNING_NUMBERS;
+import static lotto.utils.validate.NumberValidator.validateNumbersSize;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 import lotto.utils.ConsoleUtil;
-import lotto.validate.NumberValidator;
+import lotto.utils.validate.NumberValidator;
 
 public class Winning {
     private List<Integer> numbers;
     private int bonusNumber;
-    private NumberValidator validator;
 
     public Winning() {
         this.numbers = new ArrayList<>();
         this.bonusNumber = 0;
-        this.validator = new NumberValidator();
     }
 
     public void inputNumber() {
@@ -42,15 +41,15 @@ public class Winning {
 
     private void validateInputNumber(String[] splitNumbers) {
         List<String> distinctNumbers = getDistinctNumbers(splitNumbers);
-        validator.validateNumbersSize(distinctNumbers);
+        validateNumbersSize(distinctNumbers);
 
         for (String number : distinctNumbers) {
-            validator.validateInputNumber(number);
+            NumberValidator.validateInputNumber(number);
         }
     }
 
     private void validateBonusNumber(String input) {
-        validator.validateInputNumber(input);
+        NumberValidator.validateInputNumber(input);
     }
 
     private List<Integer> convertStringToInteger(String[] splitNumbers) {

@@ -1,4 +1,4 @@
-package lotto.utils;
+package lotto.utils.message;
 
 public enum DynamicMessagesUtil {
     BUY_AMOUNT("\n%s개를 구매했습니다."),
