@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class WinCalculation {
+
     private int count=0;
     private boolean bonusCheck = true;
     List<List<Object>> rank = new ArrayList<>();
@@ -43,19 +44,33 @@ public class WinCalculation {
     }
 
     public List<List<Object>> winCal(List<Integer> win, List<List<Integer>>lottos,int bonus) {
-        for(int i=0;i< lottos.size();i++){
+        for (List<Integer> lotto : lottos) {
             winCalculation();
-            winCount(win,lottos.get(i));
-            if(count == 5) {
-               bonusCheck =  bonusNumber(bonus,lottos.get(i));
+            winCount(win, lotto);
+            if (count == 5) {
+                bonusCheck = bonusNumber(bonus, lotto);
             }
-            rank(count,bonusCheck);
+            rank(count, bonusCheck);
         }
-        System.out.println(rank);
         return rank;
     }
 
     private void rank(int count, boolean bonusCheck){
         rank.add(new ArrayList<>(Arrays.asList(count,bonusCheck)));
+    }
+
+    public List<WinDetail> rankResult(List<List<Object>> rank){
+        List<WinDetail> result = new ArrayList<>();
+        for (List<Object> objects : rank) {
+            int match = (int) objects.get(0);
+            boolean bonus = (boolean) objects.get(1);
+
+            result.add(findRank(match, bonus));
+        }
+        return result;
+    }
+
+    private WinDetail findRank(int match, boolean bonus){
+        return WinDetail.findRankBy(match,bonus);
     }
 }
