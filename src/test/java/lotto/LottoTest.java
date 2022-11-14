@@ -6,6 +6,8 @@ import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -85,6 +87,16 @@ class LottoTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+    @DisplayName("당첨 번호와 보너스 번호를 로또번호와 비교")
+    @Test
+    void compareLottoTest() {
+        PrintLotto printLotto = new PrintLotto();
+        PrintLotto.winnigCashType winThree = PrintLotto.winnigCashType.winThree;
+        List<Integer> lotto = Arrays.asList(10,22,34,43,23,6);
+        int[] winningLotto = {10,22,34,1,5,4};
+        int bnsNum = 7;
 
+        assertEquals(winThree, printLotto.inquiry(lotto, winningLotto, bnsNum));
+    }
 
 }
