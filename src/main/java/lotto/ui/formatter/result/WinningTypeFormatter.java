@@ -4,9 +4,7 @@ import lotto.domain.winningresult.WinningType;
 import lotto.ui.formatter.OutputFormatter;
 
 public class WinningTypeFormatter implements OutputFormatter<WinningType> {
-    private static final String MONEY_UNIT = "원";
-    private static final String OPEN_BRACE = " (";
-    private static final String CLOSE_BRACE = ")";
+    private static final String PRICE_FORMAT = " (%,d원)";
 
     @Override
     public String outputFormat(WinningType winningType) {
@@ -22,13 +20,6 @@ public class WinningTypeFormatter implements OutputFormatter<WinningType> {
     }
 
     private void appendWinningPrice(StringBuilder format, WinningType winningType) {
-        format.append(OPEN_BRACE)
-                .append(convertNumberWithComma(winningType))
-                .append(MONEY_UNIT)
-                .append(CLOSE_BRACE);
-    }
-
-    private static String convertNumberWithComma(WinningType winningType) {
-        return String.format("%,d", winningType.getReward());
+        format.append(String.format(PRICE_FORMAT, winningType.getReward()));
     }
 }

@@ -7,11 +7,11 @@ import lotto.domain.winningresult.LottoStatistics;
 import lotto.ui.formatter.OutputFormatter;
 
 public class StatisticsFormatter implements OutputFormatter<LottoStatistics> {
-    private static final String WINNING_RESULT_PREFIX = "당첨 통계";
+    private static final String RESULT_PREFIX = "당첨 통계";
     private static final String RESULT_START_DIVIDER = "---";
     private static final String LINE_BREAK = "\n";
-    private static final String COUNT_DASH = " - ";
-    private static final String COUNT_UNIT = "개";
+    private static final String RESULT_COUNT_FORMAT = " - %d개";
+    private static final String EARN_RATE_FORMAT = "총 수익률은 %,.1f%%입니다.";
 
     private final OutputFormatter<WinningType> winningTypeFormatter;
 
@@ -32,7 +32,7 @@ public class StatisticsFormatter implements OutputFormatter<LottoStatistics> {
 
     private void appendStatisticsPrefix(StringBuilder winningResultsFormat) {
         winningResultsFormat
-                .append(WINNING_RESULT_PREFIX)
+                .append(RESULT_PREFIX)
                 .append(LINE_BREAK)
                 .append(RESULT_START_DIVIDER)
                 .append(LINE_BREAK);
@@ -48,20 +48,13 @@ public class StatisticsFormatter implements OutputFormatter<LottoStatistics> {
 
     private StringBuilder getSingleResultFormatWithCount(int count, WinningType o) {
         return new StringBuilder(winningTypeFormatter.outputFormat(o))
-                .append(COUNT_DASH)
-                .append(count)
-                .append(COUNT_UNIT)
+                .append(String.format(RESULT_COUNT_FORMAT, count))
                 .append(LINE_BREAK);
     }
 
     private void appendRewardRate(StringBuilder winningResultsFormat, LottoStatistics lottoStatistics) {
+        double rate = lottoStatistics.getRewardRate();
         winningResultsFormat
-                .append("총 수익률은 ")
-                .append(rateFormat(lottoStatistics.getRewardRate()))
-                .append("%입니다.");
-    }
-
-    private static String rateFormat(double rate) {
-        return String.format("%,.1f", BigDecimal.valueOf(rate));
+                .append(String.format(EARN_RATE_FORMAT, BigDecimal.valueOf(rate)));
     }
 }
