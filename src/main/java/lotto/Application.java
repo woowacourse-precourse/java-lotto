@@ -15,6 +15,10 @@ public class Application {
         int bonusNumber = makeLottoBonusNumber();
         lotto.validateBonus(bonusNumber);
 
+        UI ui = new UI();
+        ui.requestInput();
+
+        User user = new User(ui.getCost());
     }
 
     private static int makeLottoBonusNumber() {
