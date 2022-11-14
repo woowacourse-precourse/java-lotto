@@ -16,4 +16,14 @@ public class PrizeTest {
         // then
         assertThat(gradeNum).isEqualTo(1);
     }
+
+    @DisplayName("enum 변수에 맞는 상금을 반환한다.")
+    @Test
+    void getPrice() {
+        // given
+        int price = Prize.getPrice(Prize.FIRST);
+
+        // then
+        assertThat(price).isEqualTo(2_000_000_000);
+    }
 }
