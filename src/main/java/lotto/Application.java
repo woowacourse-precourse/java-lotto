@@ -10,6 +10,7 @@ public class Application {
         int user_buy_num = HowManyLotto();
         List<Integer>[] user_lotto = UserLotto(user_buy_num);
         PrintUserLotto(user_lotto);
+        List<Integer> answer = MakeAnswer();
     }
 
     static int HowManyLotto() {
@@ -60,6 +61,23 @@ public class Application {
             answer.add(Integer.parseInt(input_num[i]));
         }
 
+        if (!CheckAnswer(answer)) {
+            throw  new IllegalArgumentException("[ERROR] 1부터 45사이의 쉼표로 구분된 서로 다른 6개의 숫자를 입력해 주세요.");
+        }
+
         return answer;
+    }
+
+    static boolean CheckAnswer(List<Integer> answer) {
+        Collections.sort(answer);
+        Set<Integer> unique_answer = new HashSet<>(answer);
+
+        if (answer.size() != 6 || unique_answer.size() != 6) return false;
+
+        for (int i=0; i < answer.size(); i++) {
+            if (answer.get(i) < 1 || answer.get(i) > 45) return false;
+        }
+
+        return true;
     }
 }
