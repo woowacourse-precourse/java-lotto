@@ -1,5 +1,7 @@
 package lotto;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.regex.Pattern;
 
 public class Validators {
@@ -51,6 +53,35 @@ public class Validators {
 
         if (budget % PRICE_PER_LOTTERY != 0) {
             isValid = false;
+        }
+
+        return isValid;
+    }
+
+    public static void validateJackpot(String jackpot) {
+        if (!validateJackpotDelimiter(jackpot) || !validateJackpotType(jackpot)) {
+            throw new IllegalArgumentException(Exceptions.THREE.getMessages());
+        }
+    }
+
+    private static boolean validateJackpotDelimiter(String jackpot) {
+        boolean isValid = true;
+
+        if (!jackpot.contains(DELIMITER)) {
+            isValid = false;
+        }
+
+        return isValid;
+    }
+
+    private static boolean validateJackpotType(String jackpot) {
+        boolean isValid = true;
+        List<String> jackpotParts = Arrays.asList(jackpot.split(DELIMITER));
+
+        for (String jackpotPart : jackpotParts) {
+            if (REG_EXP.matcher(jackpotPart).find()) {
+                isValid = false;
+            }
         }
 
         return isValid;
