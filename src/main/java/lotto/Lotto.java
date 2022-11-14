@@ -67,4 +67,20 @@ public class Lotto {
         }
         return ticket;
     }
+    public static int compare(List<Integer> winNum, List<List<Integer>> ticket, int index){
+        int result = -3, bonusnum = winNum.get(6);
+        winNum.remove(6);
+        for(int i=0;i<ticket.get(index).size();i++){
+            if(winNum.contains(ticket.get(index).get(i))){
+                result++;
+            }
+        }
+        for(int i=0;i<ticket.get(index).size();i++){
+            if(result==2 && bonusnum == ticket.get(index).get(i)){
+                result+=2;
+            }
+        }
+        winNum.add(bonusnum);
+        return result;
+    }
 }
