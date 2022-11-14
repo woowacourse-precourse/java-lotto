@@ -19,13 +19,28 @@ public class Game {
     }
 
     void run(){
+        Display display = new Display();
         Input input = new Input();
+
+        display.printMoneyGuide();
         int playerMoney = input.inputMoney();
         Money money = new Money(playerMoney);
 
         int numberOfLottos = money.numberOfPurchase();
         List<Lotto> purchasedLottos = lottos(numberOfLottos);
+        display.printPurchasedLottos(numberOfLottos, purchasedLottos);
+
+        display.inputWinGuide();
+        List<Integer> winNumbers = input.inputWinNumber();
+        display.inputBonusGuide();
+        int bonusNumber = input.inputBonusNumber();
+
+        List<RANK> ranks = result(purchasedLottos, winNumbers, bonusNumber);
+        int sumOfPrize = calculatePrize(ranks);
+        double profitRate = calculateProfitRate(sumOfPrize, playerMoney);
+        display.printResult(ranks, profitRate);
     }
+
 
     List<Lotto> lottos(int numberOfLotto){
         List<Lotto> purchasedLotto = new ArrayList<>();
