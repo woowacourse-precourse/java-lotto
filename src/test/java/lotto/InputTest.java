@@ -24,4 +24,17 @@ class InputTest {
             e.getMessage().contains(ERROR_MESSAGE);
         }
     }
+
+    @DisplayName("구입 금액이 1000단위인지 확인한다.")
+    @Test
+    void checkMoneyDivide() {
+        final String ERROR_MESSAGE = "[ERROR]";
+        try{
+            Input input = new Input();
+            String money = "1004";
+            input.inputValidate(money);
+        } catch(IllegalArgumentException e){
+            e.getMessage().contains(ERROR_MESSAGE);
+        }
+    }
 }
