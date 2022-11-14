@@ -62,4 +62,7 @@ public class OutputView {
         return LottoPaper;
     }
 
+    public static void printException(Exception e) {
+        System.out.println(e.getMessage());
+    }
 }
