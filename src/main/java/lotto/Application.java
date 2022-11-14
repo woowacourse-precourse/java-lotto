@@ -54,12 +54,40 @@ public class Application {
             int countOfMatch = myLottos.get(i).getNumberOfMatch(winningNum,bounusNum);
             boolean isMatchBounus = myLottos.get(i).isContainBounus(bounusNum);
             Ranking thisRank = Ranking.getRank(countOfMatch, isMatchBounus);
-//            System.out.println("현재 등수 : "+thisRank + "상금 : "+price);
+//            System.out.priintln("현재 등수 : "+thisRank + "상금 : "+price);
             updateLottosMap(myLottosMap, thisRank);
         }
+        displayResult(myLottosMap, buyingValue);
 
 
     }
+
+//    3개 일치 (5,000원) - 1개
+//4개 일치 (50,000원) - 0개
+//5개 일치 (1,500,000원) - 0개
+//5개 일치, 보너스 볼 일치 (30,000,000원) - 0개
+//6개 일치 (2,000,000,000원) - 0개
+    public static void displayResult(Map<Ranking, Integer> map, int buyingValue){
+        int resultTotal =0;
+
+        System.out.println("3개 일치 ("+String.valueOf(Ranking.FIFTH.getMoney()).replaceAll("\\B(?=(\\d{3})+(?!\\d))", ",")+") - "+map.get(Ranking.FIFTH)+"개");
+        resultTotal += map.get(Ranking.FIFTH) * Ranking.FIFTH.getMoney();
+
+        System.out.println("4개 일치 ("+String.valueOf(Ranking.FOURTH.getMoney()).replaceAll("\\B(?=(\\d{3})+(?!\\d))", ",")+") - "+map.get(Ranking.FOURTH)+"개");
+        resultTotal += map.get(Ranking.FOURTH) * Ranking.FOURTH.getMoney();
+
+        System.out.println("5개 일치 ("+String.valueOf(Ranking.THIRD.getMoney()).replaceAll("\\B(?=(\\d{3})+(?!\\d))", ",")+") - "+map.get(Ranking.THIRD)+"개");
+        resultTotal += map.get(Ranking.THIRD) * Ranking.THIRD.getMoney();
+
+        System.out.println("5개 일치 ("+String.valueOf(Ranking.SECOND.getMoney()).replaceAll("\\B(?=(\\d{3})+(?!\\d))", ",")+") - "+map.get(Ranking.SECOND)+"개");
+        resultTotal += map.get(Ranking.SECOND) * Ranking.SECOND.getMoney();
+
+        System.out.println("6개 일치 ("+String.valueOf(Ranking.FIRST.getMoney()).replaceAll("\\B(?=(\\d{3})+(?!\\d))", ",")+") - "+map.get(Ranking.FIRST)+"개");
+        resultTotal += map.get(Ranking.FIRST) * Ranking.FIRST.getMoney();
+
+        System.out.println("총 수익률은 "+(float)resultTotal/buyingValue+"%입니다");
+    }
+
     public static void updateLottosMap(Map<Ranking, Integer> lottosMap, Ranking ranking){
         if (ranking != Ranking.NONE)
         {
