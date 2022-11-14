@@ -51,7 +51,16 @@ public class Controller {
         }
     }
 
-    public void run(){
+    public String calculateYield(int price) {
+        int sum = 0;
+        for (Rank rank : ranks) {
+            sum += rank.getCount() * rank.getPrizeMoney();
+        }
+        float yield = sum / price;
+        return String.format("%.2f", yield);
+    }
+
+    public void run() {
         view.printLine("구입금액을 입력해 주세요.");
         int priceNumber = view.inputPrice();
         view.printLine("");
