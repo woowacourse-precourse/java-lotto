@@ -3,11 +3,15 @@ package lotto.domain;
 import lotto.constant.WinningConstants;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
+import static lotto.constant.GameConstants.LOTTO_PRICE;
+
 public class GameResult {
     private final List<Integer> result;
+    private float profitRate;
 
     public GameResult() {
         int placeRange = WinningConstants.values().length;
@@ -53,6 +57,16 @@ public class GameResult {
             return false;
         }
         return !needsBonusNumber || hasBonusNumber;
+    }
+
+    public void calculateProfitRate(int numberLotto) {
+        int expenditure = LOTTO_PRICE * numberLotto;
+        int income = Arrays.stream(WinningConstants.values())
+                .map(this::calculatePrize)
+                .mapToInt(i -> i)
+                .sum();
+
+        profitRate = 100.0f * income / expenditure;
     }
 
     private int calculatePrize(WinningConstants nthPlace) {
