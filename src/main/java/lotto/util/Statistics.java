@@ -1,5 +1,6 @@
 package lotto.util;
 
+import lotto.domain.Buyer;
 import lotto.domain.Lotto;
 import lotto.domain.WinLotto;
 import lotto.enums.IntEnum;
@@ -42,7 +43,17 @@ public class Statistics {
             rank.set(count, rank.get(count) + 1);
         }
     }
+
     public List<Integer> getRank() {
         return rank.stream().skip(3).collect(Collectors.toList());
+    }
+
+    public double calculateProfitRate(Buyer buyer) {
+        int profit = 0;
+        List<Integer> cutRank = rank.stream().skip(3).collect(Collectors.toList());
+        for (int index = 0; index < reward.size(); index++) {
+            profit += cutRank.get(index) * reward.get(index);
+        }
+        return Math.round((profit / (double) buyer.getBuyPrice() * 100) * 10) / 10.0;
     }
 }
