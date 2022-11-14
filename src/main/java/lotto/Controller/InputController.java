@@ -3,6 +3,7 @@ package lotto.Controller;
 import lotto.Model.Lotto;
 import lotto.Model.Number;
 import lotto.Model.Price;
+import lotto.View.InputView;
 import lotto.View.OutputView;
 
 import java.util.ArrayList;
@@ -20,7 +21,8 @@ public class InputController {
     public InputController() {
         this.price = new Price();
         LottoController lottoController = new LottoController(price.getLottoTicketCount());
-        this.lottoBox = lottoController.getlottoBox();
+        this.lottoBox = new ArrayList<>(lottoController.getlottoBox());
+        InputView.lottoCount(price.getLottoTicketCount());
         OutputView.lottoNumber(lottoBox);
         this.num = new Number();
         this.lotto = new Lotto(num.getWinningNumberList());

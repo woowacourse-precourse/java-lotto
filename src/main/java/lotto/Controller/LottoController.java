@@ -1,7 +1,6 @@
 package lotto.Controller;
 
 import camp.nextstep.edu.missionutils.Randoms;
-import lotto.Utils.Validator.ListValidator;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,7 +10,7 @@ public class LottoController {
     private final List<List<Integer>> lottoNumber;
 
     public LottoController(int tickets) {
-        this.lottoNumber = lottoGenerator(tickets);
+        this.lottoNumber =  new ArrayList<>(lottoGenerator(tickets));
     }
 
     public List<List<Integer>> getlottoBox() {
