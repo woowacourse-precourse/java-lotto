@@ -1,5 +1,6 @@
 package lotto;
 
+import camp.nextstep.edu.missionutils.Console;
 import lotto.domain.Lotto;
 import lotto.domain.LottoGenerator;
 import lotto.domain.LottoReference;
@@ -10,9 +11,10 @@ public class Application {
         LottoGenerator lottoGenerator;
         WinningNumber winningNumber;
         int[] result = new int[7];
+        int totalProfit = 0;
 
         System.out.println("구입금액을 입력해주세요.");
-        String purchaseAmount = camp.nextstep.edu.missionutils.Console.readLine();
+        String purchaseAmount = Console.readLine();
         lottoGenerator = new LottoGenerator(Integer.parseInt(purchaseAmount));
         int generateCount = lottoGenerator.getGenerateCount();
         Lotto[] lottoGroup = new Lotto[generateCount];
@@ -26,9 +28,9 @@ public class Application {
         }
 
         System.out.println("당첨 번호를 입력해 주세요.");
-        String winInputNumber = camp.nextstep.edu.missionutils.Console.readLine();
+        String winInputNumber = Console.readLine();
         System.out.println("보너스 번호를 입력해 주세요.");
-        String bonusInputNumber = camp.nextstep.edu.missionutils.Console.readLine();
+        String bonusInputNumber = Console.readLine();
         
         winningNumber = new WinningNumber(winInputNumber, Integer.parseInt(bonusInputNumber));
 
@@ -38,12 +40,12 @@ public class Application {
         }
 
         System.out.println("당첨 통계\n---");
-        System.out.println(LottoReference.FIFTH.getWinInformation() + " - " + result[5]);
-        System.out.println(LottoReference.FOURTH.getWinInformation() + " - " + result[4]);
-        System.out.println(LottoReference.THIRD.getWinInformation() + " - " + result[3]);
-        System.out.println(LottoReference.SECOND.getWinInformation() + " - " + result[2]);
-        System.out.println(LottoReference.FIRST.getWinInformation() + " - " + result[1]);
-
-
+        for (int rank = 5; rank >= 1; rank--) {
+            System.out.println(LottoReference.getRankByMatchCount(rank).getWinInformation()+ " - " + result[rank] + "개");
+            if (result[rank] != 0) {
+                totalProfit += LottoReference.getRankByMatchCount(rank).getPrizeMoney() * result[rank];
+            }
+        }
+        System.out.println("총 수익률은 " + Math.round((double) totalProfit / Integer.parseInt(purchaseAmount)* 1000) / 10.0 + "%입니다.");
     }
 }
