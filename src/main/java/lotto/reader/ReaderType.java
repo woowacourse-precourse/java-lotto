@@ -2,7 +2,6 @@ package lotto.reader;
 
 import java.util.List;
 import lotto.filter.BonusDuplicationFilter;
-import lotto.filter.BonusSizeFilter;
 import lotto.filter.CashUnitFilter;
 import lotto.filter.Filter;
 import lotto.filter.LottoDuplicationFilter;
@@ -39,8 +38,7 @@ public enum ReaderType {
     BONUS {
         @Override
         public Reader getReader() {
-            List<Filter> filters = List.of(new BonusSizeFilter(),
-                    new NumberFilter(),
+            List<Filter> filters = List.of(new NumberFilter(),
                     new LottoRangeFilter(),
                     new BonusDuplicationFilter());
 
