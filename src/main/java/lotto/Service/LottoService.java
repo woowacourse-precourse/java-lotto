@@ -6,10 +6,10 @@ import java.util.List;
 
 public interface LottoService {
 
-    void priceValidate(int price);
     void buyLottos();
     void generateLottos();
     List<Integer> generateRandomNum(int count);
-    String printResult();
-    String calcLottos(Lotto index);
+    void printResult();
+    void calcLottos(Lotto index);
+    boolean isPlay();
 }

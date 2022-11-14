@@ -1,37 +1,38 @@
 package lotto.Service;
 
-import lotto.Model.BonusLotto;
-import lotto.Model.Lotto;
+import lotto.Model.*;
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class LottoServiceImpl implements LottoService{
 
-    private List<Lotto> lottos;
+    private final List<Lotto> lottos;
     private BonusLotto bonus;
     private Lotto ansLotto;
-
-    @Override
-    public void priceValidate(int price) {
-        if(price % 1000 != 0) throw new IllegalArgumentException("[ERROR] 로또 구입 가격은 1000으로 나누어 떨어져야 합니다.");
+    private final Map<String, Integer> lottosMap;
+    private final Profit profit;
+    private Cash cash;
+    public LottoServiceImpl(){
+        this.lottos = new ArrayList<>();
+        this.lottosMap = new HashMap<>();
+        this.profit = new Profit();
     }
 
     @Override
     public void buyLottos() {
         System.out.println("구입금액을 입력해 주세요.");
-        int price = Integer.parseInt(readLine());
-        this.priceValidate(price);
-        int cnt = price / 1000;
-        System.out.println(cnt+"개를 구매했습니다.");
-        lottos = new ArrayList<>();
-        while(lottos.size() < cnt){
-            lottos.add(new Lotto(generateRandomNum(6)));
+        cash = new Cash(readLine());
+        if(cash.getLottoCnt() == 0) return;
+        System.out.println(cash.getLottoCnt()+"개를 구매했습니다.");
+        while(lottos.size() < cash.getLottoCnt()){
+            List <Integer> lotto = generateRandomNum(6).stream().sorted().collect(Collectors.toList());
+            lottos.add(new Lotto(lotto));
+            System.out.println(lotto);
         }
     }
 
@@ -53,16 +54,31 @@ public class LottoServiceImpl implements LottoService{
     }
 
     @Override
-    public String printResult() {
+    public void printResult() {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("당첨 통계 \n");
         stringBuilder.append("--- \n");
-        lottos.stream().map(this::calcLottos).forEach(stringBuilder::append);
-        return stringBuilder.toString();
+        lottos.forEach(this::calcLottos);
+        for(Rank rank : Rank.values()){
+            stringBuilder.append(Rank.getGradeForDisplay(rank.toString())).append(" - ").append(lottosMap.getOrDefault(rank.toString(), 0)).append("개\n");
+        }
+        stringBuilder.append("총 수익률은 ").append(profit.getProfits(cash.getMoney())).append("%입니다.");
+        System.out.println(stringBuilder);
     }
 
     @Override
-    public String calcLottos(Lotto lotto) {
-        return lotto.toString();
+    public void calcLottos(Lotto lotto) {
+        int count = (int) lotto.getNumbers().stream().filter(o -> ansLotto.getNumbers().stream().anyMatch(Predicate.isEqual(o))).count();
+        int bouns_cnt = (int) lotto.getNumbers().stream().filter(o -> o.equals(bonus.getNum())).count();
+        if(!Rank.getGrade(count,bouns_cnt).equals("NONE")){
+            int money = Rank.valueOf(Rank.getGrade(count,bouns_cnt)).getMoney();
+            profit.setMoney(profit.getMoney() + money);
+            lottosMap.put(Rank.getGrade(count,bouns_cnt),lottosMap.getOrDefault(Rank.getGrade(count,bouns_cnt),0)+1);
+        }
+    }
+
+    @Override
+    public boolean isPlay() {
+        return this.lottos.size() > 0;
     }
 }
