@@ -80,7 +80,7 @@ public class GameManager {
             result.put(ranking, 1);
             return;
         }
-        result.put(ranking, ranking.getNumberCount() + 1);
+        result.put(ranking, result.get(ranking) + 1);
     }
 
     public double getProfit(int lottoPrice) {
