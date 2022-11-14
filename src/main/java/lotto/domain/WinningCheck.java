@@ -26,12 +26,8 @@ public class WinningCheck {
 
 		double returnRatio = (double)winningPrice / purchasePrice * 100;
 
-		String roundReturnRatio = String.format("%.1f", returnRatio);
-
-		DecimalFormat decFormat = new DecimalFormat("###,###.#");
-		String formattedRoundReturnRatio = decFormat.format(Double.parseDouble(roundReturnRatio));
-
-		return formattedRoundReturnRatio;
+		DecimalFormat decFormat = new DecimalFormat("###,###.0");
+		return decFormat.format(returnRatio);
 	}
 
 	private static int getHitCount(Lotto lotto, Lotto winningNumbers) {
