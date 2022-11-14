@@ -11,4 +11,8 @@ public class LottoRepository {
     public void save(Lotto lotto) {
         publishedLotto.add(lotto);
     }
+
+    public List<Lotto> getPublishedLotto() {
+        return this.publishedLotto;
+    }
 }

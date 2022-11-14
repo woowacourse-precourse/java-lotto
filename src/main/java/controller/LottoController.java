@@ -1,8 +1,12 @@
 package controller;
 
+import domain.Lotto;
 import service.LottoService;
 import service.MoneyService;
 import view.InputView;
+import view.OutputView;
+
+import java.util.List;
 
 public class LottoController {
     private final MoneyService moneyService;
@@ -22,5 +26,9 @@ public class LottoController {
         int purchaseAmount = moneyService.getPurchaseAmount();
         lottoService.publishLotto(purchaseAmount);
     }
-    
+
+    private void getPublishedLotto() {
+        List<Lotto> lotto = lottoService.getPublishedLotto();
+        OutputView.noticePublishedLotto(lotto);
+    }
 }

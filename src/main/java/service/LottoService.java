@@ -27,4 +27,8 @@ public class LottoService {
             lottoRepository.save(publishLotto);
         }
     }
+
+    public List<Lotto> getPublishedLotto() {
+        return lottoRepository.getPublishedLotto();
+    }
 }
