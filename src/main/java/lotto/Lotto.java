@@ -4,9 +4,6 @@ import java.util.List;
 
 public class Lotto {
     private final List<Integer> numbers;
-    private int lottoCount;
-    private int bonusNumber;
-
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
@@ -14,13 +11,6 @@ public class Lotto {
     }
     public List<Integer> getNumbers(){
         return this.numbers;
-    }
-    public void changeLottoCount(int lottoCount){
-        this.lottoCount = lottoCount;
-    }
-
-    public void changeBonusNumber(int bonusNumber){
-        this.bonusNumber = bonusNumber;
     }
 
     private void validate(List<Integer> numbers) {
