@@ -2,14 +2,13 @@ package View;
 
 import camp.nextstep.edu.missionutils.Console;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class Input {
-    public static int getPurchaseMoney() {
-        return stringToInteger(Console.readLine());
+    public static String getPurchaseMoney() {
+        return Console.readLine().trim();
     }
 
     public static List<Integer> getWinningNumbers() {
