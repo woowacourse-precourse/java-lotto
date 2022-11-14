@@ -26,6 +26,13 @@ public class User {
         }
     }
 
+    public  void printLottoList() {
+        System.out.println(lottoList.size() + "개를 구매했습니다.");
+        for (Lotto lotto : lottoList) {
+            lotto.printNumbers();
+        }
+    }
+
     public static List<Lotto> createLottoList(int purchasePrice) {
         int range = purchasePrice / 1000;
         List<Lotto> lottoList = new ArrayList<>();
