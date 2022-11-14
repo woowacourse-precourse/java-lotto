@@ -3,18 +3,28 @@ package lotto.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import static lotto.model.LottoNumberCreator.*;
+
 public class Consumer {
-    private final List<Lotto> lottos;
+    public static final int WON = 1000;
 
-    public Consumer(){
-        lottos = new ArrayList<>();
+    private int money = 0;
+    private final List<Lotto> lottos = new ArrayList<>();
+
+    public Consumer(int money) {
+        this.money = money;
     }
 
-    public Consumer(List<Lotto> lottos) {
-        this.lottos = lottos;
+    public void createLottos() {
+        int lottoAmount = divideMoneyIntoLottoPrice();
+
+        for (int i = 0; i < lottoAmount; i++) {
+            Lotto lotto = new Lotto(createRandomNumbers());
+            this.lottos.add(lotto);
+        }
     }
 
-    private int divideMoneyIntoLottoPrice(int money){
-        return money / 1000;
+    public int divideMoneyIntoLottoPrice() {
+        return money / WON;
     }
 }
