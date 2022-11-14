@@ -10,8 +10,8 @@ import java.util.Map;
 public class OutputPrinter {
     public OutputPrinter() {}
 
-    public void printPurchasedNumbers(long bundleSize, List<List<Integer>> lottoBundle) {
-        System.out.println(bundleSize + "개를 구매했습니다.");
+    public void printPurchasedNumbers(List<List<Integer>> lottoBundle) {
+        System.out.println(lottoBundle.size() + "개를 구매했습니다.");
 
         for (List<Integer> singleLotto : lottoBundle) {
             Collections.sort(singleLotto);

@@ -16,10 +16,9 @@ public class Application {
     public static void main(String[] args) {
         try {
             long startMoney = numbersReceiver.insertMoney();
-            long lottosBundleSize = buyer.countLottos(startMoney);
 
-            List<List<Integer>> purchasedLottos = buyer.receiveLottos(lottosBundleSize);
-            outputPrinter.printPurchasedNumbers(lottosBundleSize,purchasedLottos);
+            List<List<Integer>> purchasedLottos = buyer.receiveLottos(startMoney);
+            outputPrinter.printPurchasedNumbers(purchasedLottos);
 
             List<Integer> basicWinningNumbers = numbersReceiver.setBasicNumbers();
             Lotto lotto = new Lotto(basicWinningNumbers);

@@ -18,7 +18,8 @@ public class Buyer {
         return money / lottoPrice;
     }
 
-    public List<List<Integer>> receiveLottos(long lottoNumbers) {
+    public List<List<Integer>> receiveLottos(long money) {
+        long lottoNumbers = countLottos(money);
         final int minimumNumber = 1;
         final int maximumNumber = 45;
         final int lottoLength = 6;
