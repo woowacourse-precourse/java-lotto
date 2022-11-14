@@ -5,7 +5,7 @@ import camp.nextstep.edu.missionutils.Console;
 public class Ui {
 
     public static int inputPurchaseAmount() throws IllegalArgumentException {
-        printPurchaseAmountInput();
+        printPurchaseAmountInputStatement();
         String input = inputString();
         throwExceptionIfNotNumber(input);
         int purchaseAmount = Integer.parseInt(input);
@@ -13,7 +13,7 @@ public class Ui {
         return purchaseAmount;
     }
 
-    private static void printPurchaseAmountInput() {
+    private static void printPurchaseAmountInputStatement() {
         System.out.println("구입금액을 입력해 주세요.");
     }
 

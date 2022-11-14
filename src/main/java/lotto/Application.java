@@ -10,7 +10,7 @@ public class Application {
             int lottoTickets = LottoVendingMachine.getLottoTickets(purchaseAmount);
             List<Lotto> lottos = LottoVendingMachine.getLottos(lottoTickets);
             LottoDrawMachine lottoDrawMachine = new LottoDrawMachine();
-//            lottoDrawMachine.printResultWinning(lottos);
+            lottoDrawMachine.viewPrizes(lottos);
         } catch (IllegalArgumentException e) {
             System.out.println(e);
         }

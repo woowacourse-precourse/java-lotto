@@ -1,6 +1,7 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
+import java.text.DecimalFormat;
 import java.util.Arrays;
 import java.util.List;
 import java.util.function.Function;
@@ -15,6 +16,11 @@ public class LottoDrawMachine {
     private Lotto winningNumbers;
     private final int bonusNumber;
 
+    public LottoDrawMachine() throws IllegalArgumentException {
+        winningNumbers = createWinningNumbers();
+        bonusNumber = createBonusNumber();
+    }
+
     public Lotto getWinningNumbers() {
         return winningNumbers;
     }
@@ -23,17 +29,16 @@ public class LottoDrawMachine {
         return bonusNumber;
     }
 
-    public LottoDrawMachine() throws IllegalArgumentException {
-        winningNumbers = createWinningNumbers();
-        bonusNumber = createBonusNumber();
-    }
-
     private Lotto createWinningNumbers() throws IllegalArgumentException {
-        System.out.println("당첨 번호를 입력해 주세요.");
+        printWinningNumbersInputStatement();
         String input = Console.readLine();
         throwExceptionWinningNumbers(input);
         List<String> numbersOfString = Arrays.asList(input.split(","));
         return (new Lotto(convertStringListToIntList(numbersOfString, Integer::parseInt)));
+    }
+
+    private void printWinningNumbersInputStatement() {
+        System.out.println("당첨 번호를 입력해 주세요.");
     }
 
     private void throwExceptionWinningNumbers(String str) throws IllegalArgumentException {
@@ -115,4 +120,64 @@ public class LottoDrawMachine {
         }
     }
 
+    public void viewPrizes(List<Lotto> lottos) {
+        printWinningStatsStatement();
+        int[] rankingCount = compareLottos(lottos);
+        int earnedMoney = WinningStats(rankingCount);
+        printRateOfReturn(earnedMoney, lottos.size());
+    }
+
+    private void printWinningStatsStatement() {
+        System.out.println("당첨 통계");
+        System.out.println("---");
+    }
+
+    private int[] compareLottos(List<Lotto> lottos) {
+        int[] result = new int[Division.MAX_VALUE + 2];
+        Arrays.fill(result, 0);
+        lottos.stream().forEach(lotto ->
+                result[compareNumbers(lotto)]++);
+        return result;
+    }
+
+    private int compareNumbers(Lotto lotto) {
+        List<Integer> numbers = lotto.getNumbers();
+        long hits = numbers.stream().filter(old ->
+                        winningNumbers.getNumbers().contains(old))
+                .count();
+        boolean bonusBall = numbers.contains(bonusNumber);
+        if ((hits > 5) || (hits == 5 && bonusBall)) {
+            hits++;
+        }
+        return (int) hits;
+    }
+
+    private int WinningStats(int[] rankingCount) {
+        int earnedMoney = 0;
+        for (int idx = Division.MIN_VALUE; idx < rankingCount.length; idx++) {
+            Division division = Division.of(idx);
+            printRanking(rankingCount[idx], division);
+            earnedMoney += division.getPrize() * rankingCount[idx];
+        }
+        return earnedMoney;
+    }
+
+    private void printRanking(int count, Division division) {
+        String output = String.valueOf(division.getMatchCount()) + "개 일치";
+        if (division == Division.SECOND) {
+            output += ", 보너스 볼 일치";
+        }
+        String prize = new DecimalFormat("###,###").format(division.getPrize());
+        output += " (" + prize + "원) - " + String.valueOf(count) + "개";
+        System.out.println(output);
+    }
+
+    private void printRateOfReturn(int earnedMoney, int lottosSize) {
+        Double rateOfReturn;
+        rateOfReturn = 100.0;
+        if (lottosSize != 0) {
+            rateOfReturn = (double) earnedMoney / (double) (lottosSize * 1000) * 100.0;
+        }
+        System.out.printf("총 수익률은 %.1f%%입니다.", rateOfReturn);
+    }
 }

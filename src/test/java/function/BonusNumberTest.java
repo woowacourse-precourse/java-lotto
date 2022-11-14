@@ -47,37 +47,37 @@ public class BonusNumberTest extends NsTest {
     @DisplayName("1개의 숫자가 아닌 경우")
     @Test
     void isNotSingeNumber() {
-        assertThatThrownBy(() -> {
+        assertSimpleTest(() -> {
             runException("8000", "1,2,3,4,5,6", "1,2");
-        }).isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("[ERROR]: 보너스 번호는 1개의 숫자만 입력 가능합니다.");
+            assertThat(output()).contains("[ERROR]: 보너스 번호는 1개의 숫자만 입력 가능합니다.");
+        });
     }
 
     @DisplayName("숫자가 아닌 경우")
     @Test
     void isNotNumber() {
-        assertThatThrownBy(() -> {
+        assertSimpleTest(() -> {
             runException("8000", "1,2,3,4,5,6", "b");
-        }).isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("[ERROR]: 보너스 번호는 1개의 숫자만 입력 가능합니다.");
+            assertThat(output()).contains("[ERROR]: 보너스 번호는 1개의 숫자만 입력 가능합니다.");
+        });
     }
 
     @DisplayName("숫자의 범위가 1 ~ 45까지가 아님")
     @Test
     void isNotRangeFrom1To45() {
-        assertThatThrownBy(() -> {
+        assertSimpleTest(() -> {
             runException("8000", "1,2,3,4,5,6", "66");
-        }).isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("[ERROR]: 숫자의 범위는 1 ~ 45까지여야 합니다.");
+            assertThat(output()).contains("[ERROR]: 숫자의 범위는 1 ~ 45까지여야 합니다.");
+        });
     }
 
     @DisplayName("당첨 번호들 중 중복값이 존재")
     @Test
     void duplicateNumberInPurchaseAmount() {
-        assertThatThrownBy(() -> {
+        assertSimpleTest(() -> {
             runException("8000", "1,2,3,4,5,6", "6");
-        }).isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("[ERROR]: 보너스 번호는 당첨 번호와 중복되면 안됩니다.");
+            assertThat(output()).contains("[ERROR]: 보너스 번호는 당첨 번호와 중복되면 안됩니다.");
+        });
     }
 
     @Override
