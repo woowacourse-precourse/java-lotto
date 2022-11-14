@@ -11,14 +11,17 @@ import java.util.stream.Collectors;
 
 public class User {
 
+
+
     public int money() {
         System.out.println("구입금액을 입력해 주세요");
         String money_input = Console.readLine();
         int money = Integer.MAX_VALUE;
         try {
             money = Integer.parseInt(money_input);
-        } catch (Exception e) {
-            System.out.println("[Error]" + e.getMessage());
+        } catch (IllegalArgumentException e) {
+            System.out.println("[ERROR]");
+            System.out.println(e.getMessage());
             throw e;
         }
         return money;
@@ -28,7 +31,7 @@ public class User {
         int num = 0;
         num = money / 1000 ;
         if (money % 1000 != 0) {
-            System.out.println("[Error]1,000 단위의 금액을 입력하세요");
+            System.out.println("[ERROR]1,000 단위의 금액을 입력하세요");
             throw new IllegalArgumentException();
         }
 
@@ -68,7 +71,8 @@ public class User {
             String[] winning_array = winning_input.split(",");
             winning_number = Arrays.stream(winning_array).map(Integer::parseInt).collect(Collectors.toList());
         } catch (IllegalArgumentException e) {
-            System.out.println("[Error]" + e.getMessage());
+            System.out.println("[ERROR]" + e.getMessage());
+            throw e;
         }
         return winning_number;
     }
@@ -80,11 +84,12 @@ public class User {
         try{
             bonus_number = Integer.parseInt(bonus_input);
         } catch (IllegalArgumentException e) {
-            System.out.println("[Error]" + e.getMessage());
+            System.out.println("[ERROR]" + e.getMessage());
+            throw e;
         }
 
         if(bonus_number < 1 || bonus_number > 45) {
-            System.out.println("[Error]1~45 사이의 숫자를 입력해야 합니다.");
+            System.out.println("[ERROR]1~45 사이의 숫자를 입력해야 합니다.");
             throw new IllegalArgumentException();
         }
 
