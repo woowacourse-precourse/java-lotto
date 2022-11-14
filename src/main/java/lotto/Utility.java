@@ -116,6 +116,11 @@ public abstract class Utility {
         return totalPrizeAmount;
     }
 
+    public static void printProfitPercentage(double profitPercentage){
+        String message = "총 수익률은 "+profitPercentage+"%입니다";
+        printMessage(message);
+    }
+
     public static double calculateProfitPercentage(long spentAmount, long totalPrizeAmount){
         return Math.round((totalPrizeAmount/spentAmount)*10)/10.0;
     }
