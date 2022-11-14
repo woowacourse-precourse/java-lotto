@@ -7,5 +7,6 @@ public class Application {
         Input input = new Input();
         int purchaseAmount = input.getPurchaseAmount();
         List<Integer> winningNumber = input.getWinningNumber();
+        int bonusNumber = input.getBonusNumber();
     }
 }
