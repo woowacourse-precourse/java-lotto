@@ -1,6 +1,6 @@
 package lotto.controller;
 
-import lotto.controller.request.CalculateWinningRequest;
+import lotto.controller.request.JudgeWinningRequest;
 import lotto.controller.request.LottoPurchaseRequest;
 import lotto.controller.result.LottoPurchaseResult;
 import lotto.controller.result.WinningResult;
@@ -27,7 +27,7 @@ public class LottoController {
         return new LottoPurchaseResult(lottos);
     }
 
-    public WinningResult calculateWinning(final CalculateWinningRequest request) {
+    public WinningResult judgeWinning(final JudgeWinningRequest request) {
         Money principle = request.getPrinciple();
         List<Lotto> lottos = request.getLottos();
         WinningNumber winningNumber = request.getWinningNumber();

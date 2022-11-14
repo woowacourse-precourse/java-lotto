@@ -6,13 +6,13 @@ import lotto.domain.winningnumber.WinningNumber;
 
 import java.util.List;
 
-public class CalculateWinningRequest {
+public class JudgeWinningRequest {
 
     private final Money principle;
     private final List<Lotto> lottos;
     private final WinningNumber winningNumber;
 
-    public CalculateWinningRequest(
+    public JudgeWinningRequest(
             final Money principle,
             final List<Lotto> lottos,
             final WinningNumber winningNumber

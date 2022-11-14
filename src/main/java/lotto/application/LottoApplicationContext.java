@@ -2,7 +2,7 @@ package lotto.application;
 
 import lotto.application.config.LottoApplicationConfig;
 import lotto.controller.LottoController;
-import lotto.controller.request.CalculateWinningRequest;
+import lotto.controller.request.JudgeWinningRequest;
 import lotto.controller.request.LottoPurchaseRequest;
 import lotto.controller.result.LottoPurchaseResult;
 import lotto.controller.result.WinningResult;
@@ -65,13 +65,13 @@ public class LottoApplicationContext {
     }
 
     public void calculateWin() {
-        CalculateWinningRequest request = new CalculateWinningRequest(
+        JudgeWinningRequest request = new JudgeWinningRequest(
                 payment,
                 purchaseResult.getLottos(),
                 winningNumber
         );
 
-        winningResult = lottoController.calculateWinning(request);
+        winningResult = lottoController.judgeWinning(request);
     }
 
     public void showStatistics() {
