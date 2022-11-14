@@ -1,5 +1,4 @@
 package lotto.Controller;
-
 import lotto.Model.DataProcessing;
 import lotto.View.ErrorUtil;
 import lotto.Model.Lotto;
@@ -7,7 +6,6 @@ import lotto.View.OutputView;
 import java.util.ArrayList;
 import java.util.List;
 import static camp.nextstep.edu.missionutils.Console.readLine;
-
 public class LottoRaffle {
     private List<Integer> lottodto;
     private List<Integer> countwindto;
@@ -16,7 +14,7 @@ public class LottoRaffle {
     private int countdto;
     private int bonusdto;
     private int[] resultwindto;
-    public LottoRaffle() {
+    public void lottoRaffle() {
         try {
             readyMoney();
             readyLottoNumber();
