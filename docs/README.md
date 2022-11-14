@@ -30,7 +30,7 @@
 
 
 #### Lotto
-- [ ] 로또 생성 Lotto#Lotto(List<Integer> numbers)
+- [X] 로또 생성 Lotto#Lotto(List<Integer> numbers)
   - [X] 로또 번호 리스트의 사이즈가 6인지 검증 Lotto#validateLottoSize(List<Integer> numbers)
   - [X] 로또의 각 번호가 1~45 숫자 범위 내에 있는지 검증 Lotto#validateEachNumberInRange(List<Integer> numbers)
   - [X] 로또의 각 번호가 중복되는지 검증 Lotto#validateHasDuplicate(List<Integer> numbers)
