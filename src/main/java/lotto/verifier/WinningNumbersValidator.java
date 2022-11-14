@@ -62,6 +62,12 @@ public class WinningNumbersValidator {
     }
 
     private boolean isNumbersFrom1To45(List<Integer> winningNumbers) {
+        for (int winningNumber : winningNumbers) {
+            if (!(1 <= winningNumber && winningNumber <= 45)) {
+                return false;
+            }
+        }
+
         return true;
     }
 
