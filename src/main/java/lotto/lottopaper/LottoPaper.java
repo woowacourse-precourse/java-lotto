@@ -18,11 +18,11 @@ public class LottoPaper {
         return new ArrayList<>(Collections.nCopies(Rank.LENGTH, ZERO));
     }
 
-    public List<Integer> checkLottos(List<Integer> userNumbers, Integer bonusNumber) {
+    public List<Integer> checkLottos(Lotto userLotto, Integer bonusNumber) {
         List<Integer> resultRanks = initRanks();
 
         for (Lotto lotto : lottos) {
-            int rank = lotto.getRank(userNumbers, bonusNumber);
+            int rank = lotto.getRank(userLotto, bonusNumber);
             resultRanks.set(rank, resultRanks.get(rank)+1);
         }
 

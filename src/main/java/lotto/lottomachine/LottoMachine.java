@@ -1,9 +1,8 @@
 package lotto.lottomachine;
 
-import java.util.Collections;
 import java.util.List;
+import lotto.domain.Lotto;
 import lotto.domain.validation.LottoBonusValidation;
-import lotto.domain.validation.LottoNumbersValidation;
 import lotto.lottopaper.LottoPaper;
 import lotto.view.OutputView;
 import lotto.view.InputView;
@@ -13,12 +12,11 @@ public class LottoMachine {
 
     private static final int INIT_NUMBER = 0;
     private int lottoPrice;
-    private List<Integer> userNumbers;
+    private Lotto userLotto;
     private Integer userBonus;
 
     public LottoMachine() {
         lottoPrice = INIT_NUMBER;
-        userNumbers = Collections.emptyList();
         userBonus = INIT_NUMBER;
     }
 
@@ -35,7 +33,7 @@ public class LottoMachine {
     }
 
     public void showStats(LottoPaper lottoPaper) {
-            List<Integer> ranks = lottoPaper.checkLottos(userNumbers, userBonus);
+            List<Integer> ranks = lottoPaper.checkLottos(userLotto, userBonus);
             OutputView.showResult(ranks, lottoPrice);
     }
 
@@ -47,14 +45,13 @@ public class LottoMachine {
 
     public void inputUserNumbers() {
         List<Integer> inputLottoNumbers = InputView.inputLottoNumbers();
-        LottoNumbersValidation.validate(inputLottoNumbers);
-        userNumbers =  inputLottoNumbers;
+        userLotto =  new Lotto(inputLottoNumbers);
     }
 
     public void inputUserBonus() {
         String bonus = InputView.inputBonusNumber();
         LottoBonusValidation.validate(bonus);
-        LottoBonusValidation.validateDuplicateNumber(userNumbers, bonus);
+        LottoBonusValidation.validateDuplicateNumber(userLotto, bonus);
         userBonus =  Integer.valueOf(bonus);
     }
 }
