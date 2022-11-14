@@ -1,6 +1,6 @@
-package lotto.userinterface.validator;
+package lotto.validator;
 
-import lotto.userinterface.condition.Condition;
+import lotto.condition.Condition;
 
 import java.util.List;
 

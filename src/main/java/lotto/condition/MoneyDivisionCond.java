@@ -1,4 +1,4 @@
-package lotto.userinterface.condition;
+package lotto.condition;
 
 public class MoneyDivisionCond implements Condition {
 

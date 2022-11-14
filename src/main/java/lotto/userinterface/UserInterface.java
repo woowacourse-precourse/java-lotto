@@ -1,10 +1,10 @@
 package lotto.userinterface;
 
 import camp.nextstep.edu.missionutils.Console;
-import lotto.userinterface.condition.Condition;
-import lotto.userinterface.condition.MinimumMoneyCond;
-import lotto.userinterface.condition.MoneyDivisionCond;
-import lotto.userinterface.validator.Validator;
+import lotto.condition.Condition;
+import lotto.condition.MinimumMoneyCond;
+import lotto.condition.MoneyDivisionCond;
+import lotto.validator.Validator;
 
 import java.util.Arrays;
 import java.util.List;

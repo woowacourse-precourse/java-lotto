@@ -1,12 +1,12 @@
 package lotto.userinterface.validator;
 
-import lotto.userinterface.condition.Condition;
-import org.assertj.core.api.Assertions;
+import lotto.condition.Condition;
+import lotto.validator.Validator;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
 class ValidatorTest {
 
