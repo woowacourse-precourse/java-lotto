@@ -11,3 +11,23 @@ public class Lotto {
         validate(numbers);
         this.numbers = numbers;
     }
+
+    private void validate(List<Integer> numbers) {
+        validateLottoSize(numbers);
+        validateLottoDuplicate(numbers);
+
+    }
+
+    private void validateLottoDuplicate(List<Integer> numbers) {
+        Set<Integer> numberSet = new HashSet<>(numbers);
+        if (numbers.size() != numberSet.size()){
+            throw new IllegalArgumentException();
+        }
+    }
+
+    private void validateLottoSize(List<Integer> numbers) {
+        if (numbers.size() != 6) {
+            throw new IllegalArgumentException();
+        }
+    }
+
