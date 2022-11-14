@@ -18,7 +18,7 @@ public class WinningNumber {
     public WinningNumber(String input) {
         List<String> inputSlices = Arrays.stream(input.split(",")).map(String::trim).collect(Collectors.toList());
         for (String slice : inputSlices) {
-            validateSlice(slice, "로또 번호");
+            validateSlice(slice);
         }
         List<Integer> winningNumbers = inputSlices.stream().map(Integer::parseInt).collect(Collectors.toList());
         LottoValidator.validateOverlap(winningNumbers);
@@ -29,25 +29,22 @@ public class WinningNumber {
         winningNumberSet.addAll(winningNumbers);
     }
 
-    private void validateSlice(String slice, String type) {
+    private void validateSlice(String slice) {
         for (int i = 0; i < slice.length(); i++) {
             if (!Character.isDigit(slice.charAt(i))) {
-                System.out.println("[ERROR] " + type + " 입력 형식이 잘못되었습니다.");
-                throw new IllegalArgumentException();
+                throw new IllegalArgumentException(ErrorMessage.WINNING_NUMBER_FORMAT_ERROR);
             }
         }
     }
 
     public void setBonusNumber(String input) {
-        validateSlice(input, "보너스 번호");
+        validateSlice(input);
         bonusNumber = Integer.parseInt(input);
         if (bonusNumber < 1 || bonusNumber > 45) {
-            System.out.println("[ERROR] 보너스 번호 범위가 올바르지 않습니다.");
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ErrorMessage.WINNING_NUMBER_RANGE_ERROR);
         }
         if (winningNumberSet.contains(bonusNumber)) {
-            System.out.println("[ERROR] 보너스 번호가 당첨 번호와 중복됩니다.");
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ErrorMessage.WINNING_NUMBER_DUPLICATE_ERROR);
         }
     }
 

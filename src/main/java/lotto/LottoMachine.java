@@ -4,7 +4,6 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.NoSuchElementException;
 
 public class LottoMachine {
 
@@ -14,11 +13,15 @@ public class LottoMachine {
     private long investment;
     private long reward;
     private int[] result = new int[6];
-    private static long[] rewardList = {5000L, 50000L, 1500000L, 30000000L, 200000000L};
-    private static String[] resultWords = {"3개 일치 (5,000원)", "4개 일치 (50,000원)", "5개 일치 (1,500,000원)",
+    private static final long[] rewardList = {5000L, 50000L, 1500000L, 30000000L, 200000000L};
+    private static final String[] resultWords = {"3개 일치 (5,000원)", "4개 일치 (50,000원)", "5개 일치 (1,500,000원)",
             "5개 일치, 보너스 볼 일치 (30,000,000원)", "6개 일치 (2,000,000,000원)"};
 
     private static final long lottoPrice = 1000;
+
+    public LottoMachine(String input) {
+        buyLotto(input);
+    }
 
     public void buyLotto(String input) {
         validatePrice(input);
@@ -35,14 +38,12 @@ public class LottoMachine {
     private void validatePrice(String price) {
         for (int i = 0; i < price.length(); i++) {
             if (!Character.isDigit(price.charAt(i))) {
-                System.out.println("[ERROR] 입력 금액은 정수여야 합니다.");
-                throw new NoSuchElementException();
+                throw new IllegalArgumentException(ErrorMessage.INPUT_AMOUNT_FORMAT_ERROR);
             }
         }
         investment = Long.parseLong(price);
         if (investment % lottoPrice != 0 || investment / lottoPrice <= 0) {
-            System.out.println("[ERROR] 입력 금액은 " + lottoPrice + "원 이상의 " + lottoPrice + "원 단위 금액이어야 합니다.");
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ErrorMessage.INPUT_AMOUNT_UNIT_ERROR);
         }
     }
 

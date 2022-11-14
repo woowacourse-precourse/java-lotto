@@ -9,8 +9,7 @@ public class LottoValidator {
         HashSet<Integer> appeared = new HashSet<>();
         for (int number : numbers) {
             if (appeared.contains(number)) {
-                System.out.println("[ERROR] 로또 번호에 중복된 숫자가 포함되어 있습니다.");
-                throw new IllegalArgumentException();
+                throw new IllegalArgumentException(ErrorMessage.LOTTO_NUMBER_DUPLICATED_ERROR);
             }
             appeared.add(number);
         }
@@ -18,16 +17,14 @@ public class LottoValidator {
 
     public static void validateSize(List<Integer> numbers) {
         if (numbers.size() != 6) {
-            System.out.println("[ERROR] 로또 번호 개수가 지정된 크기와 다릅니다.");
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ErrorMessage.LOTTO_NUMBER_COUNT_ERROR);
         }
     }
 
     public static void validateRange(List<Integer> numbers) {
         for (int number : numbers) {
             if (number < 1 || number > 45) {
-                System.out.println("[ERROR] 로또 번호의 범위가 올바르지 않습니다.");
-                throw new IllegalArgumentException();
+                throw new IllegalArgumentException(ErrorMessage.LOTTO_NUMBER_RANGE_ERROR);
             }
         }
     }
