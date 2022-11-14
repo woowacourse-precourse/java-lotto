@@ -13,8 +13,8 @@ public class LottoController {
     }
 
     public void run() {
-        Lottos lottos = lottoService.buyLotto();
-        WinningNumber winningNumber = lottoService.winnerAnnouncement();
+        Lottos lottos = lottoService.createLottos();
+        WinningNumber winningNumber = lottoService.createWinnerNumber();
 
         lottoService.computeWinningStatistics(lottos.get(), winningNumber);
     }

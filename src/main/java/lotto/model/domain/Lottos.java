@@ -9,7 +9,7 @@ public class Lottos {
 
     public Lottos(List<List<Integer>> randomNumbers) {
         lottos = randomNumbers.stream()
-                .map(lottoNumbers -> new Lotto(lottoNumbers))
+                .map(Lotto::new)
                 .collect(Collectors.toList());
     }
 

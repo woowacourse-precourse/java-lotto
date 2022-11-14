@@ -16,7 +16,7 @@ public class LottoService {
     private static final int NUM_MAX = 45;
     private static final int LOTTO_SIZE = 6;
 
-    public Lottos buyLotto() {
+    public Lottos createLottos() {
         String money = InputView.requestMoney();
         PayingMoney payingMoney = new PayingMoney(money);
         int numOfLottoBuying = payingMoney.countNumberOfLottoBuying();
@@ -27,7 +27,7 @@ public class LottoService {
         return lottos;
     }
 
-    public WinningNumber winnerAnnouncement() {
+    public WinningNumber createWinnerNumber() {
         String winningNumber = InputView.requestWinningNumber();
         String bonusNumber = InputView.requestBonusNumber();
 

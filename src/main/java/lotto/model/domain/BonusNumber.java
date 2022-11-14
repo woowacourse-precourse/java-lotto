@@ -45,7 +45,7 @@ public class BonusNumber {
         return winningNumber.contains(bonusNumber);
     }
 
-    boolean isBonusMatch(Lotto lotto) {
+    boolean isBonusNumberMatch(Lotto lotto) {
         return lotto.contains(bonusNumber);
     }
 }

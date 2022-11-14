@@ -47,15 +47,15 @@ public class WinningNumber {
 
     private Rank createRank(Lotto lotto) {
         double numOfMatch = this.lotto.countMatch(lotto);
-        boolean isBonusMatch = bonusNumber.isBonusMatch(lotto);
+        boolean isBonusNumberMatch = bonusNumber.isBonusNumberMatch(lotto);
 
-        if (isSecondScore(numOfMatch, isBonusMatch)) {
+        if (isSecondScore(numOfMatch, isBonusNumberMatch)) {
             numOfMatch = SECOND_SCORE;
         }
         return RankCreator.create(numOfMatch);
     }
 
-    private boolean isSecondScore(double numOfMatch, boolean isBonusMatch) {
-        return numOfMatch == THIRD_SCORE && isBonusMatch;
+    private boolean isSecondScore(double numOfMatch, boolean isBonusNumberMatch) {
+        return numOfMatch == THIRD_SCORE && isBonusNumberMatch;
     }
 }
