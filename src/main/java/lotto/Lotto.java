@@ -1,14 +1,13 @@
 package lotto;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 public class Lotto {
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
+        checkDuplication(numbers);
         checkRange(numbers);
         this.numbers = numbers;
     }
@@ -16,6 +15,13 @@ public class Lotto {
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
             System.out.println("[ERROR] 로또 번호는 6개의 숫자여야 합니다.");
+            throw new IllegalArgumentException();
+        }
+    }
+    private void checkDuplication(List<Integer> numbers){
+        Set<Integer> set = new HashSet<>(numbers);
+        if (set.size() != numbers.size()) {
+            System.out.println("[ERROR] 로또 번호는 중복이 불가능 합니다.");
             throw new IllegalArgumentException();
         }
     }
@@ -29,10 +35,12 @@ public class Lotto {
         }
     }
 
+
+
+
     public void checkPlusNumber(int plusNumber) {
         if (numbers.contains(plusNumber)) {
-            System.out.println("[ERROR] 보너스 번호는 당첨 번호와 중복이 불가능합니다.");
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR] 보너스 번호는 당첨 번호와 중복이 불가능합니다.");
         }
     }
 

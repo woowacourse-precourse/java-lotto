@@ -29,4 +29,38 @@ public class Controller {
         Lotto winningLotto = new Lotto(numbers);
         return winningLotto;
     }
+
+    public HashMap<Rank,Integer> getRankMap(List<Integer>[] resultList){
+        HashMap<Rank,Integer> rankMap = new HashMap<>(6);
+        for (List<Integer> result: resultList) {
+            int count = result.get(0);
+            int bonus = result.get(1);
+            Rank rank = getRank(count, bonus);
+            if (rankMap.get(rank)==null) {
+                rankMap.put(rank,1);
+                continue;
+            }
+            rankMap.put(rank, rankMap.get(rank)+1);
+        }
+        return rankMap;
+    }
+
+    public Rank getRank(int count, int bonus) {
+        if (count==6){
+            return Rank.FIRST;
+        }
+        if (count==5 && bonus==1){
+            return Rank.SECOND;
+        }
+        if (count==5 && bonus==0) {
+            return Rank.THIRD;
+        }
+        if (count==4) {
+            return Rank.FOURTH;
+        }
+        if (count==3) {
+            return Rank.FIFTH;
+        }
+        return Rank.NOTHING;
+    }
 }

@@ -1,6 +1,7 @@
 package lotto;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
@@ -9,7 +10,15 @@ public class Console {
 
     public int inputMoney() {
         System.out.println("구입금액을 입력해 주세요.");
-        int money = Integer.valueOf(readLine());
+        String input = readLine();
+        String replacedInput = input.replaceAll("[^0-9]", "");
+        if (input != replacedInput) {
+            System.out.println("[ERROR] 올바른 숫자를 입력하세요.");
+            throw new IllegalArgumentException();
+        }
+
+        int money = Integer.valueOf(replacedInput);
+        System.out.println(money);
         return money;
     }
 
@@ -28,7 +37,31 @@ public class Console {
         int number = Integer.parseInt(readLine());
         return number;
     }
-    public void outputResult(List<Integer> result){
+
+    public void outputIssuedLotto(int count,List<Integer>[] issuedList) {
+        System.out.println(count+"개를 구매했습니다.");
+        for (List<Integer> lotto : issuedList) {
+            System.out.println(lotto);
+        }
+
+    }
+
+    public void outputResult(HashMap<Rank,Integer> rankMap){
+        System.out.println("당첨 통계\n" + "---");
+        for (Rank rank: Rank.values()) {
+            if (rank.getCount()==0) {
+                break;
+            }
+            if (rankMap.get(rank)==null){
+                rankMap.put(rank,0);
+            }
+            int cnt = rankMap.get(rank);
+            if (rank.getCount()==5 && rank.getBonus()==1) {
+                System.out.println(rank.getCount()+"개 일치, 보너스 볼 일치 ("+rank.getMoney()+") - "+cnt+"개");
+                continue;
+            }
+            System.out.println(rank.getCount()+"개 일치 ("+rank.getMoney()+") - "+cnt+"개");
+        }
 
     }
 }
