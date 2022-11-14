@@ -1,6 +1,6 @@
 package lotto.store;
 
-import lotto.enumeration.LottoErrorMessage;
+import lotto.ValidCheck;
 import lotto.enumeration.LottoInformation;
 
 import java.util.ArrayList;
@@ -20,12 +20,6 @@ public class LottoMachine {
         return lottoMachine;
     }
 
-    private void validatePayUnit(int pay) {
-        if (pay % 1000 != 0) {
-            throw new IllegalArgumentException(LottoErrorMessage.UNIT_ERROR.getErrorMessage());
-        }
-    }
-
     private List<Integer> extractRandomNumbers() {
         return camp.nextstep.edu.missionutils.Randoms
                 .pickUniqueNumbersInRange(LottoInformation.START_LOTTO_NUMBER_RANGE.toInteger(),
@@ -42,7 +36,7 @@ public class LottoMachine {
     }
 
     public List<Lotto> pickLotteries(int pay) {
-        validatePayUnit(pay);
+        ValidCheck.isPayUnit(pay);
         AtomicInteger startIndex = new AtomicInteger();
         List<Lotto> lotteries = new ArrayList<>();
 

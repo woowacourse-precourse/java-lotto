@@ -1,7 +1,7 @@
 package lotto.user;
 
+import lotto.ValidCheck;
 import lotto.enumeration.ConsoleAlert;
-import lotto.enumeration.LottoErrorMessage;
 import lotto.enumeration.LottoRankInformation;
 import lotto.store.Lotto;
 import lotto.store.LottoDraw;
@@ -10,7 +10,6 @@ import lotto.store.LottoMachine;
 import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicLong;
-import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 public class Customer {
@@ -19,25 +18,13 @@ public class Customer {
     private final int pay;
 
     public Customer(String readline) {
-        validateNumeric(readline);
+        ValidCheck.isNumeric(readline);
         this.pay = Integer.parseInt(readline);
         lotteries = buyLotteries(pay);
     }
 
     private List<Lotto> buyLotteries(int pay) {
         return LottoMachine.getInstance().pickLotteries(pay);
-    }
-
-    private void validateNumeric(String readline) {
-        if (!Pattern.matches("^[1-9]\\d*$", readline)) {
-            throw new IllegalArgumentException(LottoErrorMessage.NUMERIC_ERROR.getErrorMessage());
-        }
-    }
-
-    private void validateDuplication(int bonusNumber, List<Integer> matchNumbers) {
-        if (matchNumbers.contains(bonusNumber)) {
-            throw new IllegalArgumentException(LottoErrorMessage.DUPLICATE_WIN_AND_BONUS_ERROR.getErrorMessage());
-        }
     }
 
     public String toLottoString() {
@@ -55,7 +42,7 @@ public class Customer {
     }
 
     public List<Boolean> matchBonusNumber(int bonusNumber, List<Integer> matchNumbers) {
-        validateDuplication(bonusNumber, matchNumbers);
+        ValidCheck.isDuplication(bonusNumber, matchNumbers);
         AtomicInteger startIndex = new AtomicInteger();
 
         return lotteries.stream().map(matchNumber -> {

@@ -1,8 +1,10 @@
 package lotto.store;
 
-import lotto.enumeration.LottoErrorMessage;
+import lotto.ValidCheck;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 public class Lotto {
     private final List<Integer> numbers;
@@ -10,7 +12,7 @@ public class Lotto {
     public Lotto(List<Integer> numbers) {
         validate(numbers);
         List<Integer> lottoNumbers = new ArrayList<>(numbers);
-        validateDuplication(lottoNumbers);
+        ValidCheck.isDuplication(lottoNumbers);
         Collections.sort(lottoNumbers);
         this.numbers = lottoNumbers;
     }
@@ -35,10 +37,5 @@ public class Lotto {
     public boolean compareBonusNumber(int bonusNumber) {
         return numbers.contains(bonusNumber);
     }
-    
-    private void validateDuplication(List<Integer> lottoNumbers) {
-        if(new HashSet<>(lottoNumbers).size() != lottoNumbers.size()) {
-            throw new IllegalArgumentException(LottoErrorMessage.DUPLICATION_ERROR.getErrorMessage());
-        }
-    }
+
 }
