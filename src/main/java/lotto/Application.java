@@ -11,11 +11,10 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Application {
-    private final static String inputPriceMessage = "구입금액을 입력해 주세요.";
-    private final static String inputWinningNumbersMessage = "당첨 번호를 입력해 주세요.";
-    private final static String inputBonusNumberMessage = "보너스 번호를 입력해 주세요.";
-    private final static String priceNonNumericErrorMessage = "[ERROR] 구입금액은 숫자여야 합니다.";
-    private final static String bonusNonNumericErrorMessage = "[ERROR] 보너스 번호는 숫자여야 합니다.";
+    private final static String PRICE_INPUT_MESSAGE = "구입금액을 입력해 주세요.";
+    private final static String WINNING_NUMBERS_INPUT_MESSAGE = "당첨 번호를 입력해 주세요.";
+    private final static String BONUS_INPUT_MESSAGE = "보너스 번호를 입력해 주세요.";
+
 
     public static void main(String[] args) {
         try {
@@ -24,13 +23,13 @@ public class Application {
             System.out.println(e.getMessage());
         }
     }
-    
+
     public static void simulate() {
-        int price = readNumber(inputPriceMessage, priceNonNumericErrorMessage);
+        int price = readNumber(PRICE_INPUT_MESSAGE, ErrorMessage.PRICE_NON_NUMERIC);
         Simulator lottoSimulator = new Simulator(price);
         printPurchaseHistory(lottoSimulator);
-        Lotto winning = new Lotto(readNumbers(inputWinningNumbersMessage));
-        int bonus = readNumber(inputBonusNumberMessage, bonusNonNumericErrorMessage);
+        Lotto winning = new Lotto(readNumbers(WINNING_NUMBERS_INPUT_MESSAGE));
+        int bonus = readNumber(BONUS_INPUT_MESSAGE, ErrorMessage.BONUS_NON_NUMERIC);
         List<Integer> wins = lottoSimulator
                 .setWinning(winning, bonus)
                 .getStatistic();
@@ -57,7 +56,7 @@ public class Application {
                     .map(Integer::parseInt)
                     .collect(Collectors.toList());
         } catch (Exception e) {
-            throw new IllegalArgumentException("[ERROR] 잘못된 숫자와 쉼표 형식입니다.");
+            throw new IllegalArgumentException(ErrorMessage.NUMBERS_PARSE);
         }
     }
 
