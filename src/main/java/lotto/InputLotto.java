@@ -51,11 +51,12 @@ public class InputLotto {
         return Integer.parseInt(value);
     }
 
-    public int inputBonusNumber(){
+    public int inputBonusNumber(List<Integer> winNumbers){
         ExceptionHandling exceptionHandling = new ExceptionHandling();
         String value = inputValueOfUser();
-        exceptionHandling.outRangeLottoNumber(value);
+        exceptionHandling.outRangeLottoNumber(value); // 1 ~ 45인지 검사
         int bonusNumber = toInts(value);
+        exceptionHandling.containsBonusNumber(winNumbers, bonusNumber); // 입력한 보너스 번호가 당첨 번호에 포함인지 검사
         return bonusNumber;
     }
 
