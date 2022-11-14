@@ -6,19 +6,19 @@ import java.util.stream.Collectors;
 
 public enum Rank {
 
-    FAIL(0, false, 0, 0),
-    FIFTH(3, false, 5_000, 5),
-    FOURTH(4, false, 50_000, 4),
-    THIRD(5, false, 1_500_000, 3),
-    SECOND(5, true, 30_000_000, 2),
-    FIRST(6, false, 2_000_000_000, 1);
+    FAIL(0, false, 0L, 0),
+    FIFTH(3, false, 5_000L, 5),
+    FOURTH(4, false, 50_000L, 4),
+    THIRD(5, false, 1_500_000L, 3),
+    SECOND(5, true, 30_000_000L, 2),
+    FIRST(6, false, 2_000_000_000L, 1);
 
     private final int count;
     private final boolean bonus;
-    private final int reward;
+    private final Long reward;
     private final int ranking;
 
-    Rank(int count, boolean bonus, int reward, int ranking) {
+    Rank(int count, boolean bonus, Long reward, int ranking) {
         this.count = count;
         this.bonus = bonus;
         this.reward = reward;
@@ -87,7 +87,7 @@ public enum Rank {
         return bonus;
     }
 
-    public int getReward() {
+    public Long getReward() {
         return reward;
     }
 
