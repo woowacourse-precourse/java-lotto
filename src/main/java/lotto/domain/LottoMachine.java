@@ -26,11 +26,29 @@ public class LottoMachine extends Lotto{
         return Optional.of(new LottoMachine(convertStringToNumber(numbers)));
     }
 
-    public void addBonusNumber(int bonusNumber) {
+    public void addBonusNumber(int bonusNumber) throws IllegalArgumentException{
+        validate(bonusNumber);
         this.bonusNumber = bonusNumber;
     }
 
     public int getBonusNumber() {
         return bonusNumber;
+    }
+
+    //validate check
+    public void validate(int bonusNumber) {
+        validateBonusNumber(bonusNumber);
+        validateBonusNumberRange(bonusNumber);
+    }
+    public void validateBonusNumber(int bonusNumber) {
+        if (getNumbers().contains(bonusNumber)) {
+            throw new IllegalArgumentException("[ERROR] 보너스 번호는 당첨 번호와 중복될 수 없습니다.");
+        }
+    }
+
+    public void validateBonusNumberRange(int bonusNumber) {
+        if (bonusNumber < MIN_NUMBER || bonusNumber > MAX_NUMBER) {
+            throw new IllegalArgumentException("[ERROR] 보너스 번호는 1~45 사이의 숫자여야 합니다.");
+        }
     }
 }
