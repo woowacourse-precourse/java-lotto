@@ -81,9 +81,8 @@ class LottoStoreTest {
             @ValueSource(strings = {"1,2,3,4,5", "12,23,34,21,24,123", "123,234,345,456,567,678"})
             @DisplayName("IllegalArgumentException 예외가 발생한다.")
             void invalid_input_length_exception_test(String invalidInput) {
-                assertThatThrownBy(() -> lottoStore.createWinningLotto(invalidInput))
-                        .isInstanceOf(IllegalArgumentException.class)
-                        .hasMessage(LottoExceptionMessageUtils.INVALID_NUMBER_LENGTH
+                assertIllegalArgumentExceptionWithMessage(() -> lottoStore.createWinningLotto(invalidInput),
+                        LottoExceptionMessageUtils.INVALID_NUMBER_LENGTH
                                 .findExceptionMessage(invalidInput.length()));
             }
         }
