@@ -12,8 +12,9 @@ public class LottoController {
 
         //주어진 개수의 로또 뭉치 생성
         LottoBundle lb = new LottoBundle(count);
+
         //생성된 로또 뭉치 출력
-        //System.out.println(lb);
+        System.out.println(lb);
 
         //당첨번호 입력
         //Lotto win_lotto = lottoInput();
