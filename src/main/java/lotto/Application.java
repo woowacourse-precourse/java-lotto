@@ -12,7 +12,8 @@ public class Application {
 
     public static int BONUS;
     public static Lotto winningLotto;
-    public static List<Integer> record = new ArrayList<>(Arrays.asList(0, 0, 0, 0, 0)); //로또 통계 기록용 리스트
+    public static List<Integer> record = new ArrayList<>(List.of(0, 0, 0, 0, 0)); //로또 통계 기록용 리스트
+    public static String payMoney;
 
     public static List<Integer> makeRandom() {
         List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
@@ -21,8 +22,8 @@ public class Application {
 
     public static int buyLotto() {
         System.out.println("구매금액을 입력해 주세요.");
-        String money = Console.readLine();
-        int lottoNumber = Integer.parseInt(money) / 1000;
+        payMoney = Console.readLine();
+        int lottoNumber = Integer.parseInt(payMoney) / 1000;
 
         return lottoNumber;
     }
@@ -55,7 +56,8 @@ public class Application {
 
     public static void bonusNumber() {
         System.out.println("\n보너스 번호를 입력해 주세요.");
-        BONUS = Integer.parseInt(Console.readLine());
+        String tempBonus = Console.readLine();
+        BONUS = Integer.parseInt(tempBonus);
     }
 
     public static boolean validBonus(List<Integer> tempLottoNumbers) {
@@ -94,21 +96,22 @@ public class Application {
                 element = record.get(1);
                 record.set(1, ++element);
             }
-            else if (count == 5 && !validBonus(tempLottoNumbers)) { //보너스x
-                element = record.get(2);
-                record.set(2, ++element);
-            }
             else if (count == 5 && validBonus(tempLottoNumbers)) { //보너스o
                 element = record.get(3);
                 record.set(3, ++element);
             }
+            else if (count == 5 && !validBonus(tempLottoNumbers)) { //보너스x
+                element = record.get(2);
+                record.set(2, ++element);
+            }
+
             else if (count == 6) { //보너스o
                 element = record.get(4);
                 record.set(4, ++element);
             }
         }
     }
-    
+
     public static void printStat() {
         System.out.println("\n당첨 통계\n---");
         System.out.println("3개 일치 (5,000원) - " + record.get(0) + "개");
@@ -116,6 +119,22 @@ public class Application {
         System.out.println("5개 일치 (1,500,000원) - " + record.get(2) + "개");
         System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - " + record.get(3) + "개");
         System.out.println("6개 일치 (2,000,000,000원) - " + record.get(4) + "개");
+    }
+
+    public static void printYield() {
+        double earnMoney = 0;
+
+        List<Integer> money = new ArrayList<>(List.of(5000, 50000, 1500000, 30000000, 2000000000));
+
+        for (int idx = 0; idx < money.size(); idx++) {
+            System.out.println("moneyList : " + money.get(idx) + ", recordList : " + record.get(idx));
+            earnMoney += (money.get(idx) * record.get(idx));
+        }
+        double pay = Double.parseDouble(payMoney);
+        System.out.println("earnMoney : " + earnMoney + ", payMoney : " + pay);
+        double yield = earnMoney/pay * 100.0;
+
+        System.out.println("총 수익률은 " + String.format("%.1f", yield) + "%입니다.");
     }
 
     public static void main(String[] args) {
@@ -126,5 +145,6 @@ public class Application {
         bonusNumber();
         recordStat();
         printStat();
+        printYield();
     }
 }
