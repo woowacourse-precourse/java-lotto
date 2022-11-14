@@ -1,13 +1,11 @@
 package lotto.generator;
 
-import static lotto.constant.Constants.UNIT_OF_LOTTO_PURCHASE;
-import static lotto.validator.UserInputValidator.validateStringIsNumeric;
-
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 import lotto.constant.LottoNumber;
 import lotto.domain.Lotto;
+import lotto.domain.Payment;
 
 public class LottoGenerator {
 
@@ -15,15 +13,10 @@ public class LottoGenerator {
         return new Lotto(numbers);
     }
 
-    public static List<Lotto> generateByMoney(String money) {
-        validateStringIsNumeric(money);
-        return generateByMoney(Integer.parseInt(money));
-    }
-
-    public static List<Lotto> generateByMoney(int money) {
-        int availableQuantity = calculateAvailableQuantity(money);
+    public static List<Lotto> generateByPayment(Payment payment) {
+        int numberOfAvailablePurchases = payment.getNumberOfAvailablePurchases();
         List<Lotto> purchasedLottos = new ArrayList<>();
-        for (int purchasingQuantity = 0; purchasingQuantity < availableQuantity; purchasingQuantity++) {
+        for (int purchasingQuantity = 0; purchasingQuantity < numberOfAvailablePurchases; purchasingQuantity++) {
             purchasedLottos.add(
                     new Lotto(
                             Randoms.pickUniqueNumbersInRange(
@@ -36,9 +29,5 @@ public class LottoGenerator {
         }
 
         return purchasedLottos;
-    }
-
-    private static int calculateAvailableQuantity(int money) {
-        return money / UNIT_OF_LOTTO_PURCHASE;
     }
 }
