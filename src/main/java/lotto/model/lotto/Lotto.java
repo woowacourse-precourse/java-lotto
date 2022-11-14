@@ -1,8 +1,5 @@
 package lotto.model.lotto;
 
-import lotto.model.statistics.LottoResult;
-import lotto.model.winningnumbers.WinningNumbers;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,11 +19,6 @@ public class Lotto {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException();
         }
-    }
-
-    public LottoResult check(WinningNumbers winningNumbers) {
-        // TODO 구현 필요
-        return LottoResult.MISS;
     }
 
     public List<Integer> getNumbers() {

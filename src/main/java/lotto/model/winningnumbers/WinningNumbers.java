@@ -1,6 +1,7 @@
 package lotto.model.winningnumbers;
 
 import lotto.model.lotto.Lotto;
+import lotto.model.statistics.LottoResult;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -20,6 +21,11 @@ public class WinningNumbers {
         }
 
         this.bonusNumber = bonusNumber;
+    }
+
+    public LottoResult checkLotto(Lotto lotto) {
+        // TODO 구현 필요
+        return LottoResult.MISS;
     }
 
     private static void validate(List<Integer> numbers, int bonusNumber) {

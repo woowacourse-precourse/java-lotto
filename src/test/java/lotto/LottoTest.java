@@ -48,7 +48,7 @@ class LottoTest {
                 () -> {
                     Lotto lotto = LottoGenerator.autoGenerate();
                     WinningNumbers winningNumbers = new WinningNumbers(List.of(1, 13, 14, 16, 38, 42), 45);
-                    assertThat(lotto.check(winningNumbers)).isEqualTo(LottoResult.SECOND);
+                    assertThat(winningNumbers.checkLotto(lotto)).isEqualTo(LottoResult.SECOND);
                 },
                 List.of(38, 16, 42, 13, 14, 45)
         );
@@ -61,7 +61,7 @@ class LottoTest {
                 () -> {
                     Lotto lotto = LottoGenerator.autoGenerate();
                     WinningNumbers winningNumbers = new WinningNumbers(List.of(1, 13, 14, 16, 38, 42), 3);
-                    assertThat(lotto.check(winningNumbers)).isEqualTo(LottoResult.THIRD);
+                    assertThat(winningNumbers.checkLotto(lotto)).isEqualTo(LottoResult.THIRD);
                 },
                 List.of(38, 16, 42, 13, 14, 45)
         );
@@ -75,7 +75,7 @@ class LottoTest {
                     Lotto lotto = LottoGenerator.autoGenerate();
                     WinningNumbers winningNumbers = new WinningNumbers(List.of(1, 3, 13, 16, 42, 43), 45);
 
-                    assertThat(lotto.check(winningNumbers)).isEqualTo(LottoResult.FOURTH);
+                    assertThat(winningNumbers.checkLotto(lotto)).isEqualTo(LottoResult.FOURTH);
                 },
                 List.of(38, 16, 42, 13, 14, 45)
         );
