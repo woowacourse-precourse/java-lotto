@@ -20,4 +20,10 @@ public class Validation {
         }
     }
 
+    public void checkNull(String input) throws IllegalArgumentException {
+        if (input.isBlank()) {
+            throw new IllegalArgumentException(Error.IS_NULL.message());
+        }
+    }
+
 }
