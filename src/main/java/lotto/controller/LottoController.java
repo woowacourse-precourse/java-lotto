@@ -1,9 +1,6 @@
 package lotto.controller;
 
-import lotto.domain.Lotto;
-import lotto.domain.PurchasedLottos;
-import lotto.domain.WinningLotto;
-import lotto.domain.WinningStatistics;
+import lotto.domain.*;
 import lotto.view.ConsoleView;
 
 import java.util.List;
@@ -57,5 +54,13 @@ public class LottoController {
     private void showWinningResult() {
         ConsoleView.printBlankLine();
         ConsoleView.printWinningStatistic(winningStatistics);
+        showProfitRate();
+    }
+
+    private void showProfitRate() {
+        int purchasedAmount = purchasedLottos.getLottos().size() * LottoCondition.PRICE.getNumber();
+        float profitRate = winningStatistics.calculateProfitRate(purchasedAmount);
+        String profitRateWithFormat = String.format("%.1f", profitRate);
+        ConsoleView.printProfitRate(profitRateWithFormat);
     }
 }

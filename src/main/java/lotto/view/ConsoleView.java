@@ -60,6 +60,12 @@ public class ConsoleView {
         }
     }
 
+    public static void printProfitRate(String profitRate) {
+        System.out.print(ConsoleMessage.OUTPUT_PROFIT_RATE_BEFORE_RATE.getMessage());
+        System.out.print(profitRate);
+        System.out.println(ConsoleMessage.OUTPUT_PROFIT_RATE_AFTER_RATE.getMessage());
+    }
+
     private static void printLottoNumbers(Lotto lotto) {
         String numbers = lotto.getNumbers().stream()
                 .map(String::valueOf)

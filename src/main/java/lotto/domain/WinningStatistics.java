@@ -17,6 +17,11 @@ public class WinningStatistics {
         return winningStatistics;
     }
 
+    public float calculateProfitRate(int purchasedAmount) {
+        long profit = getProfit();
+        return profit / (float) purchasedAmount * 100;
+    }
+
     private void initWinningStatistics() {
         Arrays.stream(Rank.values())
                 .forEach(rank -> winningStatistics.put(rank, 0));
