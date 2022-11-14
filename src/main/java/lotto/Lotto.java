@@ -24,6 +24,11 @@ public class Lotto {
         }
     }
 
+    public void validateBonus(int bonusNumber) {
+        if (bonusNumber < 1 || bonusNumber > 45) {
+            throw new IllegalArgumentException();
+        }
+    }
 
     // TODO: 추가 기능 구현
 }
