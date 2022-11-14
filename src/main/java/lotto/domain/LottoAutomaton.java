@@ -20,7 +20,8 @@ public class LottoAutomaton {
     }
 
     public List<Integer> createNumbers() {
-        numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+        numbers = Randoms.pickUniqueNumbersInRange(NumbersType.START_INCLUSIVE.getValue(),
+                NumbersType.END_INCLUSIVE.getValue(), NumbersType.NUMBERS_SIZE.getValue());
         return numbers;
     }
 }
