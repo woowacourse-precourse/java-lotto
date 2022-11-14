@@ -26,6 +26,7 @@ public class Lottos {
 
         lottos.stream()
                 .map(lotto -> lotto.getWinningPrize(winningNumbers))
+                .filter(prize -> prize != Prize.NO_PRIZE)
                 .forEach(prize -> result.increaseWinningCount(prize));
 
         return result;
