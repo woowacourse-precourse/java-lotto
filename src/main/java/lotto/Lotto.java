@@ -8,6 +8,8 @@ import java.util.List;
 import java.util.Set;
 
 public class Lotto {
+    private static final int LOTTO_SIZE = 6;
+
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
@@ -21,14 +23,14 @@ public class Lotto {
     }
 
     private void validateSize(List<Integer> numbers) {
-        if (numbers.size() != 6) {
+        if (numbers.size() != LOTTO_SIZE) {
             throw new InvalidSizeLottoNumberException();
         }
     }
 
     private void validateDuplicate(List<Integer> numbers) {
         Set<Integer> nonDuplicateNumbers = new HashSet<>(numbers);
-        if (nonDuplicateNumbers.size() != 6) {
+        if (nonDuplicateNumbers.size() != LOTTO_SIZE) {
             throw new DuplicateLottoNumberException();
         }
     }
