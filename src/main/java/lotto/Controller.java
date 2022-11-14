@@ -51,13 +51,14 @@ public class Controller {
         }
     }
 
-    public String calculateYield(int price) {
-        int sum = 0;
+    public double calculateYield(int price) {
+        double sum = 0;
         for (Rank rank : ranks) {
             sum += rank.getCount() * rank.getPrizeMoney();
         }
-        float yield = sum / price;
-        return String.format("%.2f", yield);
+        double yield = sum / price * 100;
+        yield = Math.round((yield * 100)) / 100.0;
+        return yield;
     }
 
     public void run() {
@@ -74,6 +75,7 @@ public class Controller {
         makeWinningNumbers();
         view.printLine("");
 
-        view.printResult(ranks, calculateYield(priceNumber*1000));
+        checkLottoNumbers();
+        view.printResult(ranks, calculateYield(priceNumber * 1000));
     }
 }
