@@ -3,6 +3,7 @@ package lotto;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Gambler {
@@ -32,6 +33,16 @@ public class Gambler {
         for (Lotto l:this.gamblerLotto) {
             l.printLotto();
         }
+    }
+
+    public List<Integer> checkAllLotto(List<Integer> winningNumbers){
+        List<Integer> allLottoResult = new ArrayList<>(Arrays.asList(0,0,0,0,0));
+        for (Lotto currentLotto : this.gamblerLotto){
+            int place = currentLotto.compareWithWinningNumbers(winningNumbers);
+            System.out.println(place);
+            allLottoResult.set(place, allLottoResult.get(place) + 1);
+        }
+        return allLottoResult;
     }
 
 }
