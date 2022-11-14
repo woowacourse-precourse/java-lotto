@@ -8,6 +8,8 @@ public class Lotto {
     private final List<Integer> lotto;
     public static final int LOTTO_COUNT = 6;
     public static final int LOTTO_BONUS_COUNT = 1;
+    public static int LOTTO_MIN_RANGE = 1;
+    public static int LOTTO_MAX_RANGE = 45;
 
     public Lotto(List<Integer> winningNumbers) {
         validateSizeWinningNumber(winningNumbers);
@@ -27,11 +29,20 @@ public class Lotto {
         }
     }
 
+    public void validateRange(List<Integer> numbers){
+        for (int number : numbers){
+            if (number < LOTTO_MIN_RANGE || number > LOTTO_MAX_RANGE){
+                throw new IllegalArgumentException(OVER_OR_UNDER_RANGE.print(LOTTO_MIN_RANGE, LOTTO_MAX_RANGE));
+            }
+        }
+    }
+
     public void validateDuplicateBonusAndWinningNumber(int number){
         if(lotto.contains(number)){
             throw new IllegalArgumentException(DUPLICATION_WINNING_NUMBER_AND_BONUS_NUMBER.print());
         }
     }
+
 
     public void setBonusNumber(int number){
         validateDuplicateBonusAndWinningNumber(number);
