@@ -1,6 +1,10 @@
 package lotto;
 
+import lotto.constants.LottoConstants;
+
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Lotto {
     private final List<Integer> numbers;
@@ -11,10 +15,20 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
-        if (numbers.size() != 6) {
+        sizeCheck(numbers);
+        duplicationCheck(numbers);
+    }
+
+    private void sizeCheck(List<Integer> numbers) {
+        if (numbers.size() != LottoConstants.LENGTH.getValue()) {
             throw new IllegalArgumentException();
         }
     }
 
-    // TODO: 추가 기능 구현
+    private void duplicationCheck(List<Integer> numbers) {
+        Set<Integer> numbersWithoutDuplication = new HashSet<>(numbers);
+        if (numbers.size() != numbersWithoutDuplication.size()) {
+            throw new IllegalArgumentException();
+        }
+    }
 }
