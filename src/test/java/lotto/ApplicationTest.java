@@ -88,7 +88,7 @@ class ApplicationTest extends NsTest {
 
     @DisplayName("로또 번호 결과와 예상 결과 같은지 확인한다. ")
     @Test
-    void getLottoResultByLottoCount() {
+    void getLottoResultByBuyList() {
         Application application = new Application();
         List<LottoNumber> buyList = new ArrayList<>();
         buyList.add(new LottoNumber(Arrays.asList(6, 5, 4, 3, 2, 0)));
@@ -96,6 +96,15 @@ class ApplicationTest extends NsTest {
         int bonusNumber = 7;
 
         assertThat(application.getLottoResult(buyList, winningLotto, bonusNumber)).containsExactly(0, 0, 1, 0, 0);
+    }
+
+    @DisplayName("로또 번호 결과로 총 수익률구해 예상 결과와 같은지 확인. ")
+    @Test
+    void getTotalProfitByLottoResult() {
+        Application application = new Application();
+        List<Integer> lottoResult = List.of(0, 0, 0, 0, 1);
+
+        assertThat(application.getTotalProfit(lottoResult)).isEqualTo(62.5);
     }
 
     @Override
