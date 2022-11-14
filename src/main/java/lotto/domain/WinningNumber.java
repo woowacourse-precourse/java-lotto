@@ -20,6 +20,7 @@ public class WinningNumber {
         return winningNumber;
     }
     public void checkBonus(String bonus){
+        validateBonusNumber(bonus);
         validateRange(Integer.parseInt(bonus));
         validateDuplicate(Integer.parseInt(bonus),winningNumber);
     }
@@ -30,6 +31,10 @@ public class WinningNumber {
     private void validateDuplicate(int bonus, List<Integer> winningNumber){
         if(winningNumber.contains(bonus))
             throw new IllegalArgumentException("[ERROR] 보너스 숫자는 당첨 번호와 중복되면 안됩니다.");
+    }
+    private void validateBonusNumber(String bonus){
+        if(!bonus.matches("^[0-9]*$"))
+            throw new IllegalArgumentException("[ERROR] 숫자만 입력가능 합니다.");
     }
     private void validateNumber(String input){
         if(!input.matches("^[0-9,]*$"))
