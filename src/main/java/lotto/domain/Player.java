@@ -6,18 +6,23 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Player {
+    private static final String GET_MONEY_MESSAGE = "구입금액을 입력해 주세요.";
+    private static final String GET_WINNING_NUMBERS_MESSAGE = "당첨 번호를 입력해 주세요.";
+    private static final String GET_BONUS_NUMBER_MESSAGE = "보너스 번호를 입력해 주세요.";
+    private static final String NUMBER_ERROR = "[ERROR] 숫자가 아닌 값이 있습니다.";
+
     public static int getMoney() {
-        System.out.println("구입금액을 입력해 주세요.");
+        System.out.println(GET_MONEY_MESSAGE);
         return getNumber();
     }
 
     public static List<Integer> getWinningNumbers() {
-        System.out.println("당첨 번호를 입력해 주세요.");
+        System.out.println(GET_WINNING_NUMBERS_MESSAGE);
         return getNumbers();
     }
 
     public static int getBonusNumber() {
-        System.out.println("보너스 번호를 입력해 주세요.");
+        System.out.println(GET_BONUS_NUMBER_MESSAGE);
         return getNumber();
     }
 
@@ -38,7 +43,7 @@ public class Player {
         try {
             isNumber(line);
         } catch (Exception e) {
-            System.out.println("[ERROR] 숫자가 아닌 값이 있습니다");
+            System.out.println(NUMBER_ERROR);
             return 0;
         }
         return Integer.parseInt(line);
@@ -52,7 +57,7 @@ public class Player {
             try {
                 isNumber(component);
             } catch (Exception e) {
-                System.out.println("[ERROR] 숫자가 아닌 값이 있습니다");
+                System.out.println(NUMBER_ERROR);
                 return null;
             }
             int number = Integer.parseInt(component);
