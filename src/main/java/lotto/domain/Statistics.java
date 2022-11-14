@@ -53,7 +53,16 @@ public class Statistics {
     }
 
     private int calculateEarning(){
-        return 0;
+        int earning = 0;
+
+        for(Grade grade : Grade.values()){
+            int count = gradeCount.get(grade);
+            if(count > 0){
+                earning += grade.getPrize() * count;
+            }
+        }
+
+        return earning;
     }
 
     public Map<Grade, Integer> getGradeCount() {
