@@ -83,4 +83,13 @@ public class LottoProgram {
 		}
 		return count;
 	}
+
+	public StoreMap totalResult() {
+		StoreMap storeMap = new StoreMap();
+		for (List<Integer> oneLotto : randomNumbers) {
+			Rank.valueOf(checkWinNum(oneLotto, lotto.getLotto()), checkBonus(oneLotto));
+			initCount();
+		}
+		return storeMap;
+	}
 }
