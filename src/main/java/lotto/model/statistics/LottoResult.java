@@ -1,5 +1,7 @@
 package lotto.model.statistics;
 
+import java.text.DecimalFormat;
+
 public enum LottoResult {
     FIRST(1, 6, false, 2000000000),
     SECOND(2, 5, true, 30000000),
@@ -9,6 +11,7 @@ public enum LottoResult {
     MISS(0, 0, false, 0)
     ;
 
+    private static final DecimalFormat decimalFormatter = new DecimalFormat("###,###");
     private final int grade;
     private final int matchCount;
     private final boolean doesMatchBonusBall;
@@ -32,7 +35,17 @@ public enum LottoResult {
     }
 
     public String getDescription() {
-        // TODO 구현 필요
-        return "3개 일치 (5,000원)";
+        if(this.equals(MISS)) {
+            return "꽝";
+        }
+
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append(matchCount).append("개 일치");
+        if(doesMatchBonusBall) {
+            stringBuilder.append(", 보너스 볼 일치");
+        }
+        stringBuilder.append(" (").append(decimalFormatter.format(prize)).append("원)");
+
+        return stringBuilder.toString();
     }
 }
