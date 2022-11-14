@@ -85,4 +85,28 @@ class ResultTest {
         assertThat(result.getResult().get(Rank.SECOND)).isEqualTo(0);
         assertThat(result.getResult().get(Rank.THIRD)).isEqualTo(1);
     }
+
+    @DisplayName("로또 리스트가 {1,2,3,4,5,6}, {1,2,3,4,5,7} 로 주어질 때 당첨번호가 {1,2,3,4,5,6} 이고 보너스 번호가 7이면 1등과 2등이다")
+    @Test
+    void createLottoRankFirstAndSecond() {
+        // given
+        Lotto perchasedLotto1 = new Lotto(new ArrayList<>(List.of(1, 2, 3, 4, 5, 6)));
+        Lotto perchasedLotto2 = new Lotto(new ArrayList<>(List.of(1, 2, 3, 4, 5, 7)));
+        Lotto winningLotto = new Lotto(new ArrayList<>(List.of(1, 2, 3, 4, 5, 6)));
+        Bonus bonus = new Bonus(winningLotto.getNumbers(), 7);
+        Lottos lottos = new Lottos();
+        lottos.addLotto(perchasedLotto1);
+        lottos.addLotto(perchasedLotto2);
+
+        // when
+        result.initWinningRank();
+        result.matchLottoAndWinningLotto(lottos, winningLotto, bonus);
+
+        // then
+        assertThat(result.getResult().get(Rank.FIRST)).isEqualTo(1);
+        assertThat(result.getResult().get(Rank.SECOND)).isEqualTo(1);
+        assertThat(result.getResult().get(Rank.THIRD)).isEqualTo(0);
+        assertThat(result.getResult().get(Rank.FORTH)).isEqualTo(0);
+        assertThat(result.getResult().get(Rank.FIFTH)).isEqualTo(0);
+    }
 }
