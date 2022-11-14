@@ -17,8 +17,8 @@ public class Lotto {
     }
 
     public int lottoChecker(List<Integer> winNumbers, int bonusNumber) {
-        int rank = 6, count = 0;
-        count = compareNumber(winNumbers, numbers);
+        int rank = 6;
+        int count = compareNumber(winNumbers, numbers);
 
         if (count == 6) rank = 1;
         if (count >= 3 && count < 6) {
@@ -48,7 +48,10 @@ public class Lotto {
     }
 
     private Boolean secondPlaceCheck(int bonusNumber) {
-        if (numbers.contains(bonusNumber)) return true;
-        return false;
+        return numbers.contains(bonusNumber);
+    }
+
+    public List<Integer> getNumbers() {
+        return numbers;
     }
 }
