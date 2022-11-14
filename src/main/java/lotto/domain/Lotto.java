@@ -2,6 +2,7 @@ package lotto.domain;
 
 import lotto.utils.ErrorMessage;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -34,7 +35,8 @@ public class Lotto {
     }
 
     private void sortLottoNumbers(List<Integer> numbers) {
-        Collections.sort(numbers);
+        List<Integer> notImmutableList = new ArrayList<>(numbers);
+        Collections.sort(notImmutableList);
     }
 
     public void printLotto() {
