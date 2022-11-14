@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -74,6 +75,19 @@ class ApplicationTest extends NsTest {
 
         assertThat(numbersOfRanks.get(Rank.FIFTH)).isEqualTo(1);
         assertThat(numbersOfRanks.get(Rank.FOURTH)).isEqualTo(1);
+    }
+
+    @DisplayName("수익금을 더한다.")
+    @Test
+    void sumOfProceeds() {
+        Map<Rank, Integer> numbersOfRanks = new HashMap<>();
+        numbersOfRanks.put(Rank.FIFTH, 2);
+        numbersOfRanks.put(Rank.FOURTH, 2);
+        numbersOfRanks.put(Rank.THIRD, 0);
+        numbersOfRanks.put(Rank.SECOND, 0);
+        numbersOfRanks.put(Rank.FIRST, 0);
+
+        assertThat(Application.sumOfProceeds(numbersOfRanks)).isEqualTo(110000);
     }
 
     @Override

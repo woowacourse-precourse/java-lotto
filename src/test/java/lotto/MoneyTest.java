@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -22,5 +23,12 @@ class MoneyTest {
     void getNumberToPublishLottos() {
         Money money = new Money(8000);
         assertEquals(8, money.getNumberToPublishLottos());
+    }
+
+    @DisplayName("수익률을 반환한다.")
+    @Test
+    void calculateYield() {
+        Money money = new Money(8000);
+        assertThat(money.calculateYield(5000)).isEqualTo("62.5");
     }
 }

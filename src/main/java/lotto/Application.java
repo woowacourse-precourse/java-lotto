@@ -21,6 +21,7 @@ public class Application {
         Numbers numbers = new Numbers(winningNumbers, toInt(Console.readLine()));
 
         printTotalResultComment(numbersOfRanks(lottos, numbers));
+        printYieldComment(money, sumOfProceeds(numbersOfRanks(lottos, numbers)));
     }
 
     private static void printInputMoneyComment() {
@@ -48,7 +49,12 @@ public class Application {
     }
 
     private static int toInt(String input) {
-        return Integer.parseInt(input);
+        try {
+            return Integer.parseInt(input);
+        } catch (IllegalArgumentException e) {
+            throw new IllegalArgumentException("[ERROR] 숫자만 입력해야 합니다.");
+        }
+
     }
 
     private static String[] spilt(String input) {
@@ -77,5 +83,17 @@ public class Application {
         System.out.println("당첨 통계\n---");
         Arrays.stream(Rank.values()).limit(5).sorted(Comparator.reverseOrder()).forEach(rank ->
                 System.out.println(rank.getComment() + " - " + numbersOfRanks.get(rank) + "개"));
+    }
+
+    public static Long sumOfProceeds(Map<Rank, Integer> numbersOfRanks) {
+        List<Long> proceeds = new ArrayList<>();
+        Arrays.stream(Rank.values()).limit(5).forEach(rank ->
+                proceeds.add((long) numbersOfRanks.get(rank) * rank.getPrice()));
+
+        return proceeds.stream().mapToLong(proceed -> proceed).sum();
+    }
+
+    public static void printYieldComment(Money money, Long sumOfProceeds) {
+        System.out.println("총 수익률은 " + money.calculateYield(sumOfProceeds) + "%입니다.");
     }
 }
