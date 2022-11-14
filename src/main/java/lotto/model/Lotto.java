@@ -38,10 +38,10 @@ public class Lotto {
         return result;
     }
 
-    public Prize getPrize(WinningNumbers winningNumbers) {
+    public LottoPrize getPrize(WinningNumbers winningNumbers) {
         CompareResult compareResult = compareWith(winningNumbers);
 
-        return Prize.toPrize(compareResult);
+        return LottoPrize.toPrize(compareResult);
     }
 
     public int getWinningAmount(WinningNumbers winningNumbers) {

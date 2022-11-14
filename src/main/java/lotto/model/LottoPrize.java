@@ -3,7 +3,7 @@ package lotto.model;
 import java.util.HashMap;
 import java.util.Map;
 
-public enum Prize {
+public enum LottoPrize {
     FIRST(2_000_000_000),
     SECOND(30_000_000),
     THIRD(1_500_000),
@@ -11,7 +11,7 @@ public enum Prize {
     FIFTH(5_000),
     NO_PRIZE(0);
 
-    private static final Map<CompareResult, Prize> compareResultToPrize = new HashMap<>();
+    private static final Map<CompareResult, LottoPrize> compareResultToPrize = new HashMap<>();
     private final int money;
 
     static {
@@ -24,10 +24,11 @@ public enum Prize {
         compareResultToPrize.put(new CompareResult(3, false), FIFTH);
     }
 
-    private Prize(int money) {
+    private LottoPrize(int money) {
         this.money = money;
     }
-    public static Prize toPrize(CompareResult lottoResult) {
+
+    public static LottoPrize toPrize(CompareResult lottoResult) {
         return compareResultToPrize.getOrDefault(lottoResult, NO_PRIZE);
     }
 

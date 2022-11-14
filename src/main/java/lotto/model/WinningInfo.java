@@ -8,21 +8,21 @@ public class WinningInfo {
     private static final int THIRD = 2;
     private static final int FOURTH = 3;
     private static final int FIFTH = 4;
-    private static final Map<Prize, Integer> indices = new HashMap<>();
+    private static final Map<LottoPrize, Integer> indices = new HashMap<>();
     private final List<Integer> winningCounts;
 
     static {
-        indices.put(Prize.FIRST, FIRST);
-        indices.put(Prize.SECOND, SECOND);
-        indices.put(Prize.THIRD, THIRD);
-        indices.put(Prize.FOURTH, FOURTH);
-        indices.put(Prize.FIFTH, FIFTH);
+        indices.put(LottoPrize.FIRST, FIRST);
+        indices.put(LottoPrize.SECOND, SECOND);
+        indices.put(LottoPrize.THIRD, THIRD);
+        indices.put(LottoPrize.FOURTH, FOURTH);
+        indices.put(LottoPrize.FIFTH, FIFTH);
     }
 
     public WinningInfo() {
         winningCounts = new ArrayList<>();
 
-        for (int index = 0; index < Prize.values().length - 1; index++) {
+        for (int index = 0; index < LottoPrize.values().length - 1; index++) {
             winningCounts.add(0);
         }
     }
@@ -31,8 +31,8 @@ public class WinningInfo {
         this.winningCounts = winningCounts;
     }
 
-    public void increaseWinningCount(Prize prize) {
-        int index = indices.get(prize);
+    public void increaseWinningCount(LottoPrize lottoPrize) {
+        int index = indices.get(lottoPrize);
 
         winningCounts.set(index, winningCounts.get(index) + 1);
     }
