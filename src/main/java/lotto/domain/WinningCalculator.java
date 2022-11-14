@@ -1,5 +1,6 @@
 package lotto.domain;
 
+import static lotto.constant.LottoRule.COUNT_OF_NUMBERS;
 import static lotto.constant.LottoRule.END_NUMBER;
 import static lotto.constant.LottoRule.START_NUMBER;
 import static lotto.constant.WinningResult.RANK_1;
@@ -102,7 +103,7 @@ public class WinningCalculator {
     }
 
     private void checkLengthOfNumbers(List<Integer> numbers) {
-        if (numbers.size() == 6) {
+        if (numbers.size() == COUNT_OF_NUMBERS) {
             return;
         }
         throw new IllegalArgumentException("[ERROR] 당첨 번호는 6개여야 합니다.");
