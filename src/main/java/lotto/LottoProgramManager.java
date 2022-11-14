@@ -9,9 +9,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class LottoProgramManager {
+    private List<Lotto> lottoBought;
     private Lotto answer;
     private int bonus;
-    private List<Lotto> lottoBought;
 
     public void runProgram() {
         try {
