@@ -13,4 +13,10 @@ public class GameResult {
         int placeRange = WinningConstants.values().length;
         result = new ArrayList<>(Collections.nCopies(placeRange + 1, 0));
     }
+
+    private int countMatchingNumber(List<Integer> lottoNumbers, List<Integer> winningNumbers) {
+        return (int) lottoNumbers.stream()
+                .filter(winningNumbers::contains)
+                .count();
+    }
 }
