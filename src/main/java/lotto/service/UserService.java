@@ -45,9 +45,6 @@ public class UserService {
         return lottoResults;
     }
 
-    /**
-     * 로또 하나가 특정 회차에 몇 등 당첨인지 알려줍니다.
-     */
     private LottoResultType getEachResult(Lotto lotto, Long roundId) {
         return Arrays.stream(LottoResultType.values())
                 .filter(result -> result.isAcquired(lotto, roundId))

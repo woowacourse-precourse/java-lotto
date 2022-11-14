@@ -19,6 +19,9 @@ public enum StepType {
         return prevStep;
     }
 
+    /**
+     * 다음 단계(nextStep)와 이전 단계(prevStep)를 매핑해주는 코드입니다.
+     */
     static {
         StepType[] stepTypes = StepType.values();
         int bound = stepTypes.length - 1;
