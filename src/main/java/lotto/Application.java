@@ -8,7 +8,7 @@ public class Application {
 
 	public static void main(String[] args) {
 		// TODO: 프로그램 구현
-
+		
 		int payment = User.getPayment();
 		int purchaseQuantity = payment / Constant.PAYMENT_UNIT.value;
 
@@ -124,7 +124,10 @@ public class Application {
 
 		int totalPrizeMoney = getTotalPrizeMoney(payment, result);
 
-		System.out.println(totalPrizeMoney);
+		double rateOfReturn = (double) totalPrizeMoney / payment * 100;
+		
+		String message = "총 수익률은 " + String.format("%.1f", rateOfReturn) + "%입니다.";
+		System.out.println(message);
 	}
 
 	public static int getTotalPrizeMoney(int payment, List<Integer> result) {
@@ -141,7 +144,6 @@ public class Application {
 
 			totalPrizeMoney += numberOfTimes * getPrizeMoney(numberOfNumbers);
 		}
-
 		return totalPrizeMoney;
 	}
 
