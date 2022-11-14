@@ -17,6 +17,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
+import lotto.constant.ErrorMessage;
 import lotto.constant.WinningResult;
 
 public class WinningCalculator {
@@ -92,7 +93,7 @@ public class WinningCalculator {
             validateNumbers(numbers);
         }
         catch (NumberFormatException e) {
-            throw new IllegalArgumentException("[ERROR] 숫자가 너무 큽니다.");
+            throw new IllegalArgumentException(ErrorMessage.WINNING_NUMBERS_HAVE_TOO_BIG);
         }
     }
 
@@ -106,7 +107,7 @@ public class WinningCalculator {
         if (numbers.size() == COUNT_OF_NUMBERS) {
             return;
         }
-        throw new IllegalArgumentException("[ERROR] 당첨 번호는 6개여야 합니다.");
+        throw new IllegalArgumentException(ErrorMessage.WINNING_NUMBERS_INCORRECT_COUNT);
     }
 
     private void checkRangeOfNumberInNumbers(List<Integer> numbers) {
@@ -114,7 +115,7 @@ public class WinningCalculator {
             if (START_NUMBER <= number && number <= END_NUMBER) {
                 continue;
             }
-            throw new IllegalArgumentException("[ERROR] 범위에 맞는 당첨 번호를 입력해주세요.");
+            throw new IllegalArgumentException(ErrorMessage.WINNING_NUMBERS_INCORRECT_RANGE);
         }
     }
 
@@ -123,7 +124,7 @@ public class WinningCalculator {
         if (numbers.size() == numbersDeletedDuplication.size()) {
             return;
         }
-        throw new IllegalArgumentException("[ERROR] 당첨 번호가 중복되었습니다.");
+        throw new IllegalArgumentException(ErrorMessage.WINNING_NUMBERS_DUPLICATED);
     }
 
     private void validateBonusNumberRaw(String bonusNumberRaw) {
@@ -132,7 +133,7 @@ public class WinningCalculator {
             checkRangeOfBonusNumber(bonusNumber);
             checkBonusNumberIsContainWinningNumbers(bonusNumber);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("[ERROR] 숫자가 너무 큽니다.");
+            throw new IllegalArgumentException(ErrorMessage.BONUS_NUMBER_TOO_BIG);
         }
     }
 
@@ -140,12 +141,12 @@ public class WinningCalculator {
         if (START_NUMBER <= bonusNumber && bonusNumber <= END_NUMBER) {
             return;
         }
-        throw new IllegalArgumentException("[ERROR] 범위에 맞는 보너스 번호를 입력해주세요.");
+        throw new IllegalArgumentException(ErrorMessage.BONUS_NUMBER_INCORRECT_RANGE);
     }
 
     private void checkBonusNumberIsContainWinningNumbers(int bonusNumber) {
         if (this.numbers.contains(bonusNumber)) {
-            throw new IllegalArgumentException("[ERROR] 당첨 번호에 없는 보너스 번호를 입력해주세요.");
+            throw new IllegalArgumentException(ErrorMessage.BONUS_NUMBER_IN_WINNING_NUMBERS_ALREADY);
         }
     }
 }
