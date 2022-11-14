@@ -1,5 +1,6 @@
 package lotto.controller;
 
+import camp.nextstep.edu.missionutils.Console;
 import lotto.domain.Lotto;
 import lotto.domain.LottoMachine;
 import lotto.domain.User;
@@ -11,6 +12,7 @@ import java.util.List;
 public class LottoController {
     private User user = new User();
     private LottoMachine lottoMachine = new LottoMachine();
+    private Lotto winningLotto;
 
     public void init() {
         playLotto();
@@ -22,6 +24,7 @@ public class LottoController {
         List<Lotto> lottos = issue(lottoNum);
         user.receive(lottos);
         Printer.divide();
+        draw();
 
     }
 
@@ -36,6 +39,10 @@ public class LottoController {
         Printer.print(lottoNum + LottoMessage.PURCHASE_DONE.getMessage());
         Printer.printLottos(lottos);
         return lottos;
+    }
+
+    private void draw() {
+        Printer.print(LottoMessage.INPUT_NUMBERS.getMessage());
     }
 
 }
