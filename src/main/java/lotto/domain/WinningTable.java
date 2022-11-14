@@ -10,9 +10,9 @@ public enum WinningTable {
     FIFTH(5000, 3, false),
     LOSE(0);
 
-    int price;
-    int numberOfCorrected;
-    boolean isBonusCorrected;
+    private final int price;
+    private int numberOfCorrected;
+    private boolean isBonusCorrected;
 
     WinningTable(int price) {
         this.price = price;
