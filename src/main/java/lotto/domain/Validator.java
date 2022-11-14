@@ -27,9 +27,8 @@ public class Validator {
     public boolean validateWinningNumber(String input){
         try{
             validatePermissionPatter(input);
-            String winningNumber = input.replaceAll(",", "");
-            validateNumeric(winningNumber);
-            List<Integer> winningNumberList = LottoNumber.winningNumberToList(winningNumber);
+            validateNumeric(input.replaceAll(",", ""));
+            List<Integer> winningNumberList = LottoNumber.winningNumberToList(input);
             for(int i = 0; i < LOTTO_SIZE; i++){
                 validateLottoNumberBound(winningNumberList.get(i));
             }
