@@ -66,10 +66,11 @@ final class LottoStatistic {
     }
 
     private double getRate(Map<LottoPrize, Integer> prizeCount) {
-        int totalPrize = prizeCount.keySet()
+        long totalPrize = prizeCount.keySet()
                 .stream()
                 .map(key -> key.getPrize() * prizeCount.get(key))
-                .reduce(0, Integer::sum);
+                .mapToLong(prize -> (long) prize)
+                .reduce(0, Long::sum);
         int totalPurchaseAmount = LottoConstants.LOTTO_PRICE.value() * lottos.size();
         return (double) totalPrize / totalPurchaseAmount * 100;
     }
