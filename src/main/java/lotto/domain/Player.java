@@ -42,11 +42,17 @@ public class Player {
         }
     }
 
-    public void compare(List<Lotto> lottos) {
+    public void compare(List<Lotto> lottos, int lottoBonusNumber) {
+        Boolean hasBonusNumber = isEqualBonusNumber(lottoBonusNumber);
+
         for (Lotto lotto : lottos) {
             int matchingNumber = lotto.getMatchingNumber(numbers);
         }
 
+    }
+
+    public boolean isEqualBonusNumber(int lottoBonusNumber) {
+        return (this.bonusNumber == lottoBonusNumber);
     }
 
 }

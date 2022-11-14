@@ -40,7 +40,7 @@
   - [X] 컴퓨터의 수(6자리)와 플레이어의 수(6자리)를 비교할 수 있다. - Player#compare()
     - [X] 몇 개의 숫자가 일치하는지 알 수 있다. - Lotto#getMatchingNumber()
     - [X] 특정 자리에 특정 숫자가 있는지 알 수 있다. - Lotto#hasPlace()
-  - [ ] 컴퓨터의 수(1자리)와 플레이어의 수(1자리)를 비교할 수 있다.
+  - [X] 컴퓨터의 수(1자리)와 플레이어의 수(1자리)를 비교할 수 있다. - Player#isEqualBonusNumber()
 - [X] 당첨 내역을 출력할 수 있다. - PrizeCount#toString()
   - [X] 당첨 기준과 금액을 알 수 있다. - Prize#toString()
     - [X] 숫자 3자리마다 콤마를 찍을 수 있다. - NumberFormator#divideEvery3Digits()
