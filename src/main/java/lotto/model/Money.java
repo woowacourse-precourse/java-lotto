@@ -12,12 +12,9 @@ public class Money {
     }
 
     private void validateUnit(int money) {
-        try {
-            if (money % MIN_BUY_UNIT != 0) {
-                throw new IllegalArgumentException(ERROR_UNIT);
-            }
-        } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
+        if (money % MIN_BUY_UNIT != 0) {
+            System.out.println(ERROR_UNIT);
+            throw new IllegalArgumentException(ERROR_UNIT);
         }
     }
 

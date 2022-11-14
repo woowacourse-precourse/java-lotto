@@ -19,7 +19,7 @@ public class LottoStoreController {
         statics.calculateStatics(buyer, store);
 
         OutputView.printWinnings(statics);
-        OutputView.printYield(buyer, statics);
+        OutputView.printYield(buyer.getMoney(), statics);
     }
 
     private Buyer createBuyer() {
@@ -30,6 +30,7 @@ public class LottoStoreController {
     private LottoStore createLottoStore() {
         List<Integer> lotteryNumbers = InputView.inputNumbers();
         int bonusNumber = InputView.inputBonusNumber();
+
         return new LottoStore(lotteryNumbers, bonusNumber);
     }
 }

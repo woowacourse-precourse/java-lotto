@@ -23,24 +23,24 @@ public class LottoStatics {
         return staticsInfo;
     }
 
-    public int getTotalPrize() {
-        int totalPrize = 0;
+    public long getTotalPrize() {
+        long totalPrize = 0;
         for (Winning value : Winning.values()) {
-            totalPrize += value.getPrize() * staticsInfo.get(value);
+            totalPrize += (long) value.getPrize() * staticsInfo.get(value);
         }
         return totalPrize;
     }
 
     public void calculateStatics(Buyer buyer, LottoStore store) {
         for (Lotto lotto : buyer.getLottos()) {
-            calculatePrize(lotto, store);
+            updateStaticsInfo(lotto, store);
         }
     }
 
-    public void calculatePrize(Lotto lotto, LottoStore store) {
+    public void updateStaticsInfo(Lotto lotto, LottoStore store) {
         int sameCount = calculateSameCount(lotto, store);
         boolean bonus = isBonus(lotto, store);
-        
+
         Winning prize = Winning.findWinning(sameCount, bonus);
         staticsInfo.put(prize, staticsInfo.get(prize) + 1);
     }

@@ -2,7 +2,6 @@ package lotto.view;
 
 import java.util.HashMap;
 import java.util.List;
-import lotto.model.Buyer;
 import lotto.model.Lotto;
 import lotto.model.LottoStatics;
 import lotto.model.Winning;
@@ -31,8 +30,8 @@ public class OutputView {
         }
     }
 
-    public static void printYield(Buyer buyer, LottoStatics statics) {
-        float yield = (statics.getTotalPrize() / (float) buyer.getMoney()) * 100;
+    public static void printYield(int money, LottoStatics statics) {
+        float yield = (statics.getTotalPrize() / (float) money) * 100;
         System.out.printf(MESSAGE_YIELD, yield);
     }
 }

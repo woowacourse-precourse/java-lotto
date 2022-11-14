@@ -18,7 +18,7 @@ public class Buyer {
     private void buyLottos() {
         List<Lotto> lottos = new ArrayList<>();
         for (int i = 0; i < countLottos; i++) {
-            lottos.add(Lotto.make());
+            lottos.add(Lotto.makeRandom());
         }
         this.lottos = lottos;
     }
@@ -29,9 +29,5 @@ public class Buyer {
 
     public int getMoney() {
         return money;
-    }
-
-    public int getCountLottos() {
-        return countLottos;
     }
 }
