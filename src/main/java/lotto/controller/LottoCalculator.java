@@ -1,6 +1,5 @@
 package lotto.controller;
 
-import lotto.*;
 import lotto.model.RankOfLotto;
 
 import java.util.List;
