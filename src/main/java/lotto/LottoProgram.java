@@ -1,11 +1,11 @@
 package lotto;
 
 import lotto.io.View;
-import lotto.model.Amount;
-import lotto.model.Lotto;
-import lotto.model.LottoRank;
-import lotto.model.WinnerLotto;
-import lotto.model.LottoResult;
+import lotto.domain.Amount;
+import lotto.domain.Lotto;
+import lotto.domain.LottoRank;
+import lotto.domain.WinnerLotto;
+import lotto.domain.LottoResult;
 
 import java.util.List;
 import java.util.Map;

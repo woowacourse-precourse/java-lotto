@@ -1,8 +1,8 @@
 package lotto.io;
 
-import lotto.model.Lotto;
-import lotto.model.LottoRank;
-import lotto.model.LottoResult;
+import lotto.domain.Lotto;
+import lotto.domain.LottoRank;
+import lotto.domain.LottoResult;
 
 import java.util.List;
 import java.util.Map;

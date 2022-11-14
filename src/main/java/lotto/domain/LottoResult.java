@@ -1,4 +1,4 @@
-package lotto.model;
+package lotto.domain;
 
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -28,6 +28,6 @@ public class LottoResult {
             count.addAndGet(value);
             plusAmount.addAndGet(key.getReward() * value);
         });
-        return plusAmount.get() / ((double)count.get() * Amount.LOTTO_AMOUNT) * 100.0;
+        return plusAmount.get() / ((double) count.get() * Amount.LOTTO_AMOUNT) * 100.0;
     }
 }

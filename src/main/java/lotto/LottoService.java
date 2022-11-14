@@ -1,16 +1,16 @@
 package lotto;
 
-import lotto.model.Amount;
-import lotto.model.Lotto;
-import lotto.model.LottoRank;
-import lotto.model.WinnerLotto;
+import lotto.domain.Amount;
+import lotto.domain.Lotto;
+import lotto.domain.LottoRank;
+import lotto.domain.WinnerLotto;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
-import static lotto.model.Lotto.createLotto;
+import static lotto.domain.Lotto.createLotto;
 
 public class LottoService {
 

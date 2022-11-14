@@ -1,4 +1,4 @@
-package lotto.model;
+package lotto.domain;
 
 import lotto.utils.Validator;
 
@@ -6,8 +6,8 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static lotto.model.LottoNumber.toLottoNumber;
-import static lotto.model.LottoRank.matchRank;
+import static lotto.domain.LottoNumber.toLottoNumber;
+import static lotto.domain.LottoRank.matchRank;
 
 public class WinnerLotto {
     private static final String BONUS_DUPLICATE = "보너스번호가 당첨번호와 중복됩니다.";
