@@ -73,4 +73,19 @@ public class Lotto {
         return calculatePrize(count, isBonus);
     }
 
+    public static Winning calculatePrize(int count, boolean isBonus) {
+        if (count == 6) {
+            return Winning.SIX;
+        } else if (count == 5) {
+            if (isBonus) {
+                return Winning.FIVE_WITH_BONUS;
+            }
+            return Winning.FIVE;
+        } else if (count == 4) {
+            return Winning.FOUR;
+        } else if (count == 3) {
+            return Winning.THREE;
+        }
+        return Winning.NONE;
+    }
 }
