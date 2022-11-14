@@ -3,6 +3,7 @@ package lotto;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
@@ -15,7 +16,8 @@ class ValidationTest {
         validation = new Validation();
     }
 
-    @ParameterizedTest
+    @DisplayName("입력값이 문자를 포함하는지 확인")
+    @ParameterizedTest(name = "{displayName} : {0}")
     @CsvSource({"a", "1a", "-"})
     void 문자가_포함된_입력(String input) {
         try {
@@ -25,7 +27,8 @@ class ValidationTest {
         }
     }
 
-    @ParameterizedTest
+    @DisplayName("숫자 범위 확인")
+    @ParameterizedTest(name = "{displayName} : {0}")
     @CsvSource({"0", "46", "-1"})
     void 범위를_벗어난_숫자(int number) {
         try {

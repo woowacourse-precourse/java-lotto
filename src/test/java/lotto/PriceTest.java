@@ -2,6 +2,7 @@ package lotto;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
@@ -9,7 +10,8 @@ class PriceTest {
 
     Price price;
 
-    @ParameterizedTest
+    @DisplayName("입력값이 문자를 포함하는지 확인")
+    @ParameterizedTest(name = "{displayName} : {0}")
     @CsvSource({"100a", "abcd", "100!", "100-"})
     void 문자가_포함된_입력(String input) {
         try {
@@ -19,7 +21,8 @@ class PriceTest {
         }
     }
 
-    @ParameterizedTest
+    @DisplayName("입력값이 천 단위가 아닐 때")
+    @ParameterizedTest(name = "{displayName} : {0}")
     @CsvSource({"123", "1234", "12345", "123456", "1234567"})
     void 천단위가_아닐때(String input) {
         try {
