@@ -16,4 +16,14 @@ public class StringTest {
         // then
         assertThat(yield).isEqualTo("5,427.7");
     }
+
+    @Test
+    void ShouldBeIntegerWhenParse() {
+        // given
+        String numberRaw = "01";
+        // when
+        int number = Integer.parseInt(numberRaw);
+        // then
+        assertThat(number).isEqualTo(1);
+    }
 }
