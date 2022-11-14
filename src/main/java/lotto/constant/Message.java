@@ -20,4 +20,5 @@ public final class Message {
     public static final String INVALID_MONEY_UNIT_INPUT_MESSAGE = "구입 금액은 1,000원 단위여야 합니다.";
     public static final String INVALID_MONEY_INPUT_FORMAT_MESSAGE = "구입 금액은 숫자만 입력 가능합니다.";
     public static final String INVALID_WINNING_LOTTO_INPUT_FORMAT_MESSAGE = "입력 형식이 알맞지 않습니다.";
+    public static final String INPUT_NOT_DIGIT = "숫자만 입력 가능합니다.";
 }
