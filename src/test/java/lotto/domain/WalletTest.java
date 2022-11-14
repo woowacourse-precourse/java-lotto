@@ -12,7 +12,7 @@ public class WalletTest {
 
     @DisplayName("구입 금액을 입력받아 구매 가능한 로또 티켓의 수를 반환한다")
     @Test
-    void calculate_Maximum_Number_Of_LottoTickets_Can_Purchase() {
+    void calculateMaximumNumberOfLottoTicketsCanPurchase() {
         // given
         Wallet wallet = new Wallet(5000);
 
@@ -26,7 +26,7 @@ public class WalletTest {
     @DisplayName("구입 금액이 티켓 가격보다 작은 경우 예외가 발생하는지 확인한다")
     @ParameterizedTest
     @ValueSource(ints = {-1000, -500, 0, 1, 100})
-    void check_Normal_Amount(int money) {
+    void checkNormalAmount(int money) {
         assertThatThrownBy(() -> new Wallet(money))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("입력된 구입 금액이 티켓 가격보다 작습니다.");
@@ -35,7 +35,7 @@ public class WalletTest {
     @DisplayName("구입 금액이 티켓 가격으로 나누어 떨어지지 않는 경우 예외가 발생하는지 확인한다")
     @ParameterizedTest
     @ValueSource(ints = {1001, 2500, 55555})
-    void check_Money_Divisible_By_Ticket_Price(int money) {
+    void checkMoneyDivisibleByTicketPrice(int money) {
         assertThatThrownBy(() -> new Wallet(money))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("구입 금액이 티켓 가격으로 나누어 떨어지지 않습니다.");
