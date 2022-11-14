@@ -10,13 +10,13 @@ public class WinningNumber {
     private final int bonusNumber;
 
     public WinningNumber(String inputWinningNumbers, String inputBonusNumber) {
-        List<Integer> winnigNumbers = inputToWinnigNumbers(inputWinningNumbers);
+        List<Integer> winningNumbers = inputToWinnigNumbers(inputWinningNumbers);
         int bonusNumber = inputToBonusNumber(inputBonusNumber);
 
-        winningNumbersValidate(winnigNumbers);
+        winningNumbersValidate(winningNumbers);
         bonusNumberValidate(bonusNumber);
 
-        this.winningNumbers = winnigNumbers;
+        this.winningNumbers = winningNumbers;
         this.bonusNumber = bonusNumber;
     }
 
