@@ -13,6 +13,7 @@ public class Application {
     public static void main(String[] args) {
         int lottoCount = getLottoCount(inputAmount());
         final List<Lotto> lottos = getLottoList(lottoCount);
+        printLottoList(lottos);
         final WinningLotto winningLotto = getWinningLotto();
     }
 
@@ -49,10 +50,15 @@ public class Application {
         return new Lotto(numbers);
     }
 
+    private static void printLottoList(List<Lotto> lottos) {
+        System.out.println(lottos.size() + "개를 구매했습니다.");
+        lottos.forEach(lotto -> System.out.println(lotto.toString()));
+    }
+
     protected static WinningLotto getWinningLotto() throws IllegalArgumentException {
-        Lotto lotto = getWinningLottoNumber(inputLottoString());
+        Lotto lotto = getWinningLottoNumber(inputWinningLotto());
         try {
-            int bonus = Integer.parseInt(inputBonus());
+            int bonus = Integer.parseInt(inputWinningBonus());
             return new WinningLotto(lotto, bonus);
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("[ERROR] 보너스 번호로 숫자가 아닌 값을 입력했습니다.");
@@ -65,12 +71,12 @@ public class Application {
                                     .collect(Collectors.toList());
         return new Lotto(number);
     }
-    private static String inputLottoString() {
+    private static String inputWinningLotto() {
         System.out.println("당첨 번호를 입력해 주세요.");
         return Console.readLine();
     }
 
-    private static String inputBonus() {
+    private static String inputWinningBonus() {
         System.out.println("보너스 번호를 입력해 주세요.");
         return Console.readLine();
     }
