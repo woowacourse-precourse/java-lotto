@@ -9,6 +9,10 @@ public class Payment {
         this.amount = amount;
     }
 
+    public Payment(Payment oth) {
+        this.amount = oth.amount;
+    }
+
     public int getLottoCount() {
         return amount / TICKET_PRICE;
     }

@@ -2,14 +2,15 @@ package lotto.model.statistics;
 
 import lotto.model.payment.Payment;
 
-import java.util.List;
+import java.util.Map;
 
 public class LottoStatistics {
-    private Payment payment;
-    private List<LottoResult> results;
+    private final Payment payment;
+    private final Map<LottoResult, Integer> resultMap;
 
-    LottoStatistics(Payment payment, List<LottoResult> results) {
-        // TODO 구현 필요
+    LottoStatistics(Payment payment, Map<LottoResult, Integer> resultMap) {
+        this.payment = payment;
+        this.resultMap = resultMap;
     }
 
     public String getHistoryDescription() {
