@@ -18,11 +18,11 @@ public class LotteryShop {
         return numbers;
     }
 
-    private void validate(int totalPayment) {
-        if (totalPayment % LOTTO_PRICE != 0) {
+    private void validate(int amount) {
+        if (amount % LOTTO_PRICE != 0) {
             throw new IllegalArgumentException("[ERROR] 1000단위로 입력해 주세요.");
         }
-        if (totalPayment - LOTTO_PRICE < 0) {
+        if (amount - LOTTO_PRICE < 0) {
             throw new IllegalArgumentException("[ERROR] 금액이 부족합니다.");
         }
     }
