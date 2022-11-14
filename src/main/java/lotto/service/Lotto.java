@@ -24,4 +24,16 @@ public class Lotto {
 			throw new IllegalArgumentException();
 		}
 	}
+
+	public boolean contains(Integer integer) {
+		return numbers.contains(integer);
+	}
+
+	public int[] getLotto() {
+		return numbers.stream().mapToInt(Integer::intValue).toArray();
+	}
+
+	public int size() {
+		return numbers.size();
+	}
 }

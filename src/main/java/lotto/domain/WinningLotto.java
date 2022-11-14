@@ -3,6 +3,7 @@ package lotto.domain;
 import java.util.HashMap;
 import java.util.List;
 
+import lotto.service.Lotto;
 import lotto.util.Rank;
 
 public class WinningLotto {
@@ -25,8 +26,8 @@ public class WinningLotto {
 		result.put(6, 0);
 	}
 
-	public static HashMap<Integer, Integer> produceResult(List<List<Integer>> lotteryTickets) {
-		for (List<Integer> lotteryTicket : lotteryTickets) {
+	public static HashMap<Integer, Integer> produceResult(List<Lotto> lotteryTickets) {
+		for (Lotto lotteryTicket : lotteryTickets) {
 			Comparison comparison = new Comparison(WinningLotto.winningLotto, WinningLotto.bonusNumber);
 			matchCount = comparison.matchLottoCount(lotteryTicket);
 			isMatchBonusNumber = comparison.isMatchBonusNumber(lotteryTicket);

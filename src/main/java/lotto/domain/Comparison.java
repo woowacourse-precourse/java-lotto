@@ -2,6 +2,8 @@ package lotto.domain;
 
 import java.util.List;
 
+import lotto.service.Lotto;
+
 public class Comparison {
 	static List<Integer> winningLotto;
 	static int bonusNumber;
@@ -11,12 +13,12 @@ public class Comparison {
 		this.bonusNumber = bonusNumber;
 	}
 
-	public static int matchLottoCount(List<Integer> myLotto) {
+	public static int matchLottoCount(Lotto myLotto) {
 		return (int) winningLotto.stream()
 			.filter(myLotto::contains).count();
 	}
 
-	public static boolean isMatchBonusNumber (List<Integer> myLotto) {
+	public static boolean isMatchBonusNumber (Lotto myLotto) {
 		return myLotto.contains(bonusNumber);
 	}
 }

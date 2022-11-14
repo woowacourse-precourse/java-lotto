@@ -8,6 +8,7 @@ import org.assertj.core.util.Lists;
 import lotto.domain.LotterySeller;
 import lotto.domain.Prize;
 import lotto.domain.WinningLotto;
+import lotto.service.Lotto;
 import lotto.view.Input;
 import lotto.view.Output;
 
@@ -25,7 +26,7 @@ public class Operation {
 		int ticketCount = Input.enterMoney();
 		Output.printTicketCount(ticketCount);
 
-		List<List<Integer>> lotteryTickets = LotterySeller.sellLottery(ticketCount);
+		List<Lotto> lotteryTickets = LotterySeller.sellLottery(ticketCount);
 		Output.printLotto(lotteryTickets);
 
 		List<Integer> winningLotto = Lists.newArrayList(Input.enterWinningNumber());

@@ -9,6 +9,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import lotto.domain.WinningLotto;
+import lotto.service.Lotto;
 
 public class WinningLottoTest {
 	HashMap<Integer, Integer> lottoResult = new HashMap<>();
@@ -18,13 +19,13 @@ public class WinningLottoTest {
 	@DisplayName("당첨된 로또 개수 확인")
 	@Test
 	void countWinningLotto() {
-		List<List<Integer>> LotteryTickets = List.of(
-			List.of(1, 2, 3, 4, 5, 6),
-			List.of(1, 2, 3, 4, 5, 7),
-			List.of(1, 2, 3, 4, 5, 45),
-			List.of(1, 2, 3, 4, 44, 45),
-			List.of(1, 2, 3, 43, 44, 45),
-			List.of(1, 2, 42, 43, 44, 45));
+		List<Lotto> LotteryTickets = List.of(
+			(Lotto)List.of(1, 2, 3, 4, 5, 6),
+			(Lotto)List.of(1, 2, 3, 4, 5, 7),
+			(Lotto)List.of(1, 2, 3, 4, 5, 45),
+			(Lotto)List.of(1, 2, 3, 4, 44, 45),
+			(Lotto)List.of(1, 2, 3, 43, 44, 45),
+			(Lotto)List.of(1, 2, 42, 43, 44, 45));
 
 		lottoResult = WinningLotto.produceResult(LotteryTickets);
 

@@ -1,10 +1,12 @@
 package lotto.view;
 
 import java.text.DecimalFormat;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
 import lotto.service.EarningRate;
+import lotto.service.Lotto;
 import lotto.util.Rank;
 
 public class Output {
@@ -14,9 +16,9 @@ public class Output {
 		System.out.println(totalNumberOfLotto + "개를 구매했습니다.");
 	}
 
-	public static void printLotto(List<List<Integer>> lotteryTickets) {
-		for (List<Integer> lotteryTicket : lotteryTickets) {
-			System.out.println(lotteryTicket);
+	public static void printLotto(List<Lotto> lotteryTickets) {
+		for (Lotto lotteryTicket : lotteryTickets) {
+			System.out.println(Arrays.toString(lotteryTicket.getLotto()));
 		}
 	}
 
