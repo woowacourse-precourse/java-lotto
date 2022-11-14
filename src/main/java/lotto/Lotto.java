@@ -17,7 +17,7 @@ public class Lotto {
 
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
-            throw new IllegalArgumentException(ErrorMessage.NOT_ENOUGH_NUM.message);
+            throw new IllegalArgumentException(ErrorMessage.NOT_SIX_NUM.message);
         }
         Set<Integer> noDuplicate = new HashSet<>(numbers);
         if (noDuplicate.size() != 6) {

@@ -48,7 +48,7 @@ public class WinningNumberMaker {
 
     public void validateInputSplitByComma() {
         if (this.inputSplitByComma.length != 6) {
-            throw new IllegalArgumentException(ErrorMessage.NOT_ENOUGH_NUM.message);
+            throw new IllegalArgumentException(ErrorMessage.NOT_SIX_NUM.message);
         }
         for (String winningNumberStr : inputSplitByComma) {
             validateWinningNumberStr(winningNumberStr);
