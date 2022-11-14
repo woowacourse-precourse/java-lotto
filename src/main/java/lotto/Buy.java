@@ -43,23 +43,43 @@ public class Buy {
     public static List<Integer> inputWinningNumber() {
         System.out.println("당첨 번호를 입력해 주세요.");
         String numbers = Console.readLine();
-        List<Integer> winningNumbers = new ArrayList<>();
+        List<Integer> winningNumbers;
         try {
-            winningNumbers = makeWinningNumbers(numbers);
+            List<String> temporaryWinningNumbers = Arrays.asList(numbers.split(","));
+            Check.isNumber(temporaryWinningNumbers);
+            Check.rightRange(temporaryWinningNumbers, START_NUMBER, FINAL_NUMBER);
+            Check.numberDuplicate(temporaryWinningNumbers);
+            Check.winningNumberCount(temporaryWinningNumbers);
 
-            System.out.println("보너스 번호를 입력해 주세요.");
-            String temporaryBonusNumbers = Console.readLine();
-            Check.isNumber(temporaryBonusNumbers);
-            int bonusNumber = Integer.parseInt(temporaryBonusNumbers);
-            Check.rightRange(bonusNumber, START_NUMBER, FINAL_NUMBER);
-            Check.numberDuplicate(winningNumbers, bonusNumber);
-            winningNumbers.add(bonusNumber);
+            winningNumbers = makeIntNumbers(temporaryWinningNumbers);
 
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
+            return inputWinningNumber();
         }
 
         return winningNumbers;
+    }
+
+    public static int inputBonusNumber(List<Integer> winningNumbers) {
+        System.out.println("보너스 번호를 입력해 주세요.");
+        String bonusNumbers = Console.readLine();
+        int bonusNumber;
+        try {
+            List<String> temporaryBonusNumbers = Arrays.asList(bonusNumbers.split(","));
+            Check.bonusNumberCount(temporaryBonusNumbers);
+            Check.isNumber(temporaryBonusNumbers);
+            Check.rightRange(temporaryBonusNumbers, START_NUMBER, FINAL_NUMBER);
+
+            bonusNumber = Integer.parseInt(temporaryBonusNumbers.get(0));
+            Check.numberDuplicate(winningNumbers, bonusNumber);
+
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+            return inputBonusNumber(winningNumbers);
+        }
+
+        return bonusNumber;
     }
 
 
