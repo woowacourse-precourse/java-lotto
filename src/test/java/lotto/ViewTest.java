@@ -1,6 +1,7 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import lotto.view.View;
 import org.junit.jupiter.api.Test;
 
 import java.util.HashMap;
