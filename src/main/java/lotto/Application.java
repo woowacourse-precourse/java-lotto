@@ -6,6 +6,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 public class Application {
 
@@ -13,27 +14,11 @@ public class Application {
 
     // 로또 구입 메소드
     private static int buyLottoCount() {
-//        System.out.println("구입금액을 입력해 주세요.");
-//        try {
-//
-//            int money = Integer.parseInt(Console.readLine());
-//            if(money%1000 != 0) {
-//                System.out.println("[ERROR] 구입금액은 1000원 단위로 입력해야 합니다.");
-//                throw new IllegalArgumentException();
-//            }
-//            int lottoCount = money/1000;
-//            return lottoCount;
-//        } catch(NumberFormatException e) {
-//            System.out.println("[ERROR] 구입금액은 숫자로 입력해야 합니다.");
-//            throw e;
-//        }
-
-
         System.out.println("구입금액을 입력해 주세요.");
         String input = Console.readLine();
         if(!checkNumber(input)) {
             System.out.println("[ERROR] 구입금액은 숫자로 입력해야 합니다.");
-            throw new IllegalArgumentException();
+            throw new NoSuchElementException();
         }
         int money = Integer.parseInt(input);
         if(money%1000 != 0) {
