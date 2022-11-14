@@ -131,11 +131,11 @@ public class LottoLogic {
     }
 
     private void calculateEarning() {
-        this.earning = 5000 * this.threeHit
-                + 50000 * this.fourHit
-                + 1500000 * this.fiveHit
-                + 30000000 * this.fiveHitAndBonus
-                + 2000000000 * this.sixHit;
+        this.earning = Hit.THREEHIT.getValue() * this.threeHit
+                + Hit.FOURHIT.getValue() * this.fourHit
+                + Hit.FIVEHIT.getValue() * this.fiveHit
+                + Hit.FIVEHITANDBONUS.getValue() * this.fiveHitAndBonus
+                + Hit.SIXHIT.getValue() * this.sixHit;
     }
 
     private void calculateEarningRate() {

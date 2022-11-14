@@ -1,6 +1,7 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
+import lotto.domain.Hit;
 import lotto.domain.LottoLogic;
 
 import java.util.List;
@@ -58,11 +59,11 @@ public class UI {
         this.lottoLogic.calculateResult();
         System.out.println("당첨 통계");
         System.out.println("---");
-        System.out.println("3개 일치 (5,000원) - " + this.lottoLogic.getThreeHit() + "개");
-        System.out.println("4개 일치 (50,000원) - " + this.lottoLogic.getFourHit() + "개");
-        System.out.println("5개 일치 (1,500,000원) - " + this.lottoLogic.getFiveHit() + "개");
-        System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - " + this.lottoLogic.getFiveHitAndBonus() + "개");
-        System.out.println("6개 일치 (2,000,000,000원) - " + this.lottoLogic.getSixHit() + "개");
+        System.out.println(Hit.THREEHIT.getMessage() + " (" + Hit.THREEHIT.getMoney() + ") - " + this.lottoLogic.getThreeHit() + "개");
+        System.out.println(Hit.FOURHIT.getMessage() + " (" + Hit.FOURHIT.getMoney() + ") - " + this.lottoLogic.getFourHit() + "개");
+        System.out.println(Hit.FIVEHIT.getMessage() + " (" + Hit.FIVEHIT.getMoney() + ") - " + this.lottoLogic.getFiveHit() + "개");
+        System.out.println(Hit.FIVEHITANDBONUS.getMessage() + " (" + Hit.FIVEHITANDBONUS.getMoney() + ") - " + this.lottoLogic.getFiveHitAndBonus() + "개");
+        System.out.println(Hit.SIXHIT.getMessage() + " (" + Hit.SIXHIT.getMoney() + ") - " + this.lottoLogic.getSixHit() + "개");
         System.out.println("총 수익률은 " + this.lottoLogic.getEarningRate() + "%입니다.");
     }
 }
