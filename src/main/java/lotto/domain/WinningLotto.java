@@ -1,12 +1,10 @@
 package lotto.domain;
 
 import java.util.List;
+import lotto.resource.Constant;
 import lotto.view.message.ExceptionMessage;
 
 public class WinningLotto {
-    private static final int BEGIN_NUMBER = 1;
-    private static final int END_NUMBER = 45;
-
     private final Lotto lotto;
     private final int bonusNumber;
 
@@ -35,6 +33,6 @@ public class WinningLotto {
     }
 
     private boolean isInvalidNumber(Integer number) {
-        return number < BEGIN_NUMBER || number > END_NUMBER;
+        return number < Constant.BEGIN_NUMBER.getValue() || number > Constant.END_NUMBER.getValue();
     }
 }

@@ -1,10 +1,9 @@
 package lotto.domain;
 
+import lotto.resource.Constant;
 import lotto.view.message.ExceptionMessage;
 
 public class Price {
-    private static final int MIN_PURCHASE_PRICE = 1000;
-
     private final Integer purchasePrice;
 
     public Price(Integer purchasePrice) {
@@ -29,7 +28,7 @@ public class Price {
     }
 
     private boolean isPriceInUnitsOfOneThousandWon(Integer purchasePrice) {
-        return purchasePrice % MIN_PURCHASE_PRICE == 0;
+        return purchasePrice % Constant.PRICE_PER_LOTTO.getValue() == 0;
     }
 
     public Integer getPurchasePrice() {

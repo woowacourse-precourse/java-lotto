@@ -3,24 +3,21 @@ package lotto.domain;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
+import lotto.resource.Constant;
 
 public class LottoGenerator {
-    private static final int BEGIN_NUMBER = 1;
-    private static final int END_NUMBER = 45;
-    private static final int REQUIRED_NUMBER_COUNT = 6;
-    private static final int PRICE_PER_LOTTO = 1000;
-
     private final int lottoCount;
 
     private List<Lotto> lottoTicket = new ArrayList<>();
 
     public LottoGenerator(Price price) {
-        this.lottoCount = price.getPurchasePrice() / PRICE_PER_LOTTO;
+        this.lottoCount = price.getPurchasePrice() / Constant.PRICE_PER_LOTTO.getValue();
     }
 
     public List<Lotto> generateLotto() {
         for (int i = 0; i < lottoCount; i++) {
-            Lotto lotto = new Lotto(Randoms.pickUniqueNumbersInRange(BEGIN_NUMBER, END_NUMBER, REQUIRED_NUMBER_COUNT));
+            Lotto lotto = new Lotto(Randoms.pickUniqueNumbersInRange(Constant.BEGIN_NUMBER.getValue(),
+                    Constant.END_NUMBER.getValue(), Constant.REQUIRED_NUMBER_COUNT.getValue()));
             lottoTicket.add(lotto);
         }
         return lottoTicket;
