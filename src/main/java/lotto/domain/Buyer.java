@@ -1,7 +1,9 @@
 package lotto.domain;
 
+import lotto.enums.IntEnum;
 import lotto.validate.BuyerValidate;
 
+import static lotto.enums.IntEnum.*;
 import static lotto.enums.IntEnum.LOTTO_PRICE;
 
 public class Buyer {
@@ -14,5 +16,13 @@ public class Buyer {
 
     private void validate(int buyPrice) {
         new BuyerValidate().validate(buyPrice, LOTTO_PRICE.getValue());
+    }
+
+    public int getBuyPrice() {
+        return buyPrice;
+    }
+
+    public int getBuyLottoCount() {
+        return buyPrice / LOTTO_PRICE.getValue();
     }
 }
