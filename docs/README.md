@@ -16,8 +16,8 @@
 - [x] 로또 번호의 일치 갯수를 구한다.  -Analyze#matchCount
 - [x] 사용자의 모든 로또에 대한 일치 갯수를 구한다.  -Analyzer#matchCountPerLotto
 - [x] 사용자 로또의 보너스 번호 포함 여부를 판단한다.   -Analyze#matchBonus
+- [x] 2등 여부를 판단한다.  -Analyze#judgeSecondPrize
 - [x] 일치한 숫자 갯수의 빈도를 구한다.  -Analyze#getMatchFrequency
-- [] 결과 정보에 따른 정보를 enum에서 가져온다.  -Analyze#getEnum
 - [] 수익률을 계산한다.  -Analyze#profit
 
 ## 5. 결과 정보와 enum을 비교한다.  - Print()

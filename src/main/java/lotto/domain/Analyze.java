@@ -48,10 +48,29 @@ public class Analyze {
         return bonusMatchPerLotto;
     }
 
+    public List<Integer> judgeSecondPrize(){
+        List<Integer> judgeSecond = new ArrayList<>();
+        for (int i = 0; i < userLottos.size(); i++){
+            int number = 0;
+            if(matchCountPerLotto().get(i) == 5 && matchBonus().get(i) == 1){
+                number = 2;
+            }
+            judgeSecond.add(number);
+        }
+        return judgeSecond;
+    }
+
+    public List<Integer> finalMatchCountPerLotto(){
+        List<Integer> finalMatch = new ArrayList<>();
+        for(int i = 0; i < matchCountPerLotto().size(); i++){
+            finalMatch.add(matchCountPerLotto().get(i) + judgeSecondPrize().get(i));
+        }
+        return  finalMatch;
+    }
     public List<Integer> getMatchFrequency(){
         List<Integer> matchFrequency = new ArrayList<>();
-        for (int i = 3; i < 7; i++){
-            matchFrequency.add(Collections.frequency(matchCountPerLotto(), i));
+        for (int i = 3; i < 8; i++){
+            matchFrequency.add(Collections.frequency(finalMatchCountPerLotto(), i));
         }
         return matchFrequency;
     }
