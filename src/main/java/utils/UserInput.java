@@ -35,7 +35,7 @@ public class UserInput {
         return userInputMoney / 1000;
     }
 
-    // 당첨번호 입력, 유효성검사 후 로또 객체 생성
+    // 당첨번호 입력
     public void inputLottoNumber() {
         String userInputLottoNumbers = Console.readLine();
 
@@ -44,6 +44,14 @@ public class UserInput {
         Lotto lotto = new Lotto(lottoNumbers);
 
         game.setLotto(lotto);
+    }
+
+    // 보너스번호 입력
+    public void inputBonusNumber() {
+        String userInputBonusNumber = Console.readLine();
+
+        validateInputIsNum(userInputBonusNumber);
+
     }
 
     // 사용자 입력이 숫자인지 유효성 검사
@@ -85,5 +93,18 @@ public class UserInput {
         }
 
         return lottoNumbers;
+    }
+
+    // 보너스번호가 당첨번호와 중복되는지 유효성 검사
+    private void validateDuplicateBonusNumber(String userInput) {
+        int userInputBonusNumber = Integer.parseInt(userInput);
+        Lotto lotto = game.getLotto();
+        List<Integer> lottoNumbers = lotto.getNumbers();
+
+        for (Integer lottoNumber : lottoNumbers) {
+            if(lottoNumber == userInputBonusNumber) {
+                throw new IllegalArgumentException("[ERROR] 당첨번호와 중복되지 않는 보너스번호를 입력해주세요.");
+            }
+        }
     }
 }
