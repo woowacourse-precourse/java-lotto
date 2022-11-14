@@ -24,4 +24,12 @@ public class LottoMachine extends Lotto{
     public static LottoMachine initLottoMachineNumber(String numbers) {
         return new LottoMachine(convertStringToNumber(numbers));
     }
+
+    public void addBonusNumber(int bonusNumber) {
+        this.bonusNumber = bonusNumber;
+    }
+
+    public int getBonusNumber() {
+        return bonusNumber;
+    }
 }
