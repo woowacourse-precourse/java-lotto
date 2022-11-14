@@ -16,15 +16,14 @@ public class WinLottoGenerate {
         }
     }
 
-    private void winNumberValidate(String[] winNumber) {
+    private void winNumberValidate(String winNumber) {
         isDigit(winNumber);
     }
 
-    private void isDigit(String[] winNumber) {
-        for (String number : winNumber) {
-            if (!number.chars().allMatch(Character::isDigit)) {
-                throw new IllegalArgumentException();
-            }
+    private void isDigit(String winNumber) {
+        String inputValidate = winNumber.replaceAll("[0-9,]","");
+        if(inputValidate.length()>0){
+            throw new IllegalArgumentException("[ERROR] 입력값이 유효하지 않습니다.");
         }
     }
 
@@ -43,8 +42,9 @@ public class WinLottoGenerate {
 
     private Lotto askWinNumber() {
         Output.askWinNumber();
-        String[] winNumber = Console.readLine().split(",");
-        winNumberValidate(winNumber);
+        String winNumberInput = Console.readLine();
+        winNumberValidate(winNumberInput);
+        String[] winNumber = winNumberInput.split(",");
         List<Integer> numbers = Arrays.stream(winNumber).map(Integer::parseInt).collect(Collectors.toList());
         Lotto winLotto = new Lotto(numbers);
         return winLotto;

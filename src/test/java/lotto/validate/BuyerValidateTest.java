@@ -21,4 +21,10 @@ class BuyerValidateTest {
                 .isInstanceOf(IllegalArgumentException.class);
 
     }
+    @Test
+    public void buyerPriceIsPlusTest() throws Exception{
+        assertThatThrownBy(() -> buyerValidate.validate(-10000,4000))// 구입금액, 로또 한장의 금액
+                .isInstanceOf(IllegalArgumentException.class);
+
+    }
 }

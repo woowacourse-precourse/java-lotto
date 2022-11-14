@@ -7,11 +7,9 @@ import lotto.output.Output;
 public class BuyerGenerate {
 
     private void digitValidate(String input) {
-        char[] inputArray = input.toCharArray();
-        for (char tmp : inputArray) {
-            if (!Character.isDigit(tmp)) {
-                throw new IllegalArgumentException("[ERROR] 입력값이 숫자가 아닙니다.");
-            }
+        String inputValidate = input.replaceAll("[0-9]","");
+        if(inputValidate.length()>0){
+            throw new IllegalArgumentException("[ERROR] 입력값이 유효하지 않습니다.");
         }
     }
 
