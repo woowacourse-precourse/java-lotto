@@ -1,4 +1,4 @@
-package lotto.domain.winning;
+package lotto.domain.winning.statistic;
 
 import java.text.DecimalFormat;
 import java.util.Comparator;
@@ -6,6 +6,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
+import lotto.domain.winning.WinningDetail;
+import lotto.domain.winning.WinningRank;
 import lotto.util.Calculator;
 
 public class WinningStatistic {

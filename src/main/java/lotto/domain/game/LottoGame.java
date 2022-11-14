@@ -8,7 +8,7 @@ import lotto.domain.lotto.LottoMachine;
 import lotto.domain.winning.WinningDetail;
 import lotto.domain.winning.WinningNumber;
 import lotto.domain.winning.WinningNumberComparator;
-import lotto.domain.winning.WinningStatistic;
+import lotto.domain.winning.statistic.WinningStatistic;
 
 public class LottoGame {
     
