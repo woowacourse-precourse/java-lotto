@@ -5,7 +5,7 @@
 - [x] 0원 보다 작은지 확인, 예외시 Exception
 
 ## Buyer Generate
-- [ ] 로또 구입 금액 ask 출력
+- [x] 로또 구입 금액 ask 출력
 - [ ] 로또 구입 금액 입력
 - [ ] 입력된 값이 숫자인지 확인 예외시 Exception
 - [ ] 입력된 구입 금액으로 Buyer 클래스 생성
