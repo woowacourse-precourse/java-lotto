@@ -64,4 +64,8 @@ public class LottoService {
         lottoResult.calculateLottoRanks(lotteryTickets, winningNumber);
         return lottoResult;
     }
+
+    public void showLottoResult(LottoResult lottoResult) {
+        OutputView.showLottoResult(lottoResult);
+    }
 }

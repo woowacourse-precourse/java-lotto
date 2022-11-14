@@ -19,7 +19,7 @@ public class LottoController {
             WinningNumber winningNumbers = lottoService.getWinningNumsWithBonus();
 
             LottoResult lottoResult = lottoService.getLottoResult(lotteryTickets, winningNumbers);
-
+            lottoService.showLottoResult(lottoResult);
 
         } catch (Exception e) {
             System.out.println(e.getMessage());
