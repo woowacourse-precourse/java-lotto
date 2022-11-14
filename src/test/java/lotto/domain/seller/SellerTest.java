@@ -1,4 +1,4 @@
-package lotto.seller;
+package lotto.domain.seller;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -28,5 +28,5 @@ public class SellerTest {
             .isInstanceOf(IllegalArgumentException.class);
     }
 
-    
+
 }
