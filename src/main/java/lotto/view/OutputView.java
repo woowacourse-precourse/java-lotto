@@ -29,4 +29,11 @@ public class OutputView {
         }
         System.out.println(String.format(RESULT_YEILD, resultLotto.calYield(buyMoney)));
     }
+
+    public String selectMessage(MatchMoney matchMoney){
+        if(matchMoney.getBonus()){
+            return RESULT_MATCH_;
+        }
+        return RESULT_MATCH;
+    }
 }
