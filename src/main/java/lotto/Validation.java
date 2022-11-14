@@ -81,6 +81,10 @@ public class Validation {
         }
     }
 
+    public void validateIsNumber(String bonus) {
+        validateByRegex(REGEX_NOT_NUMBER, bonus);
+    }
+    
     private List<Integer> separateNumbers(String result) {
         try {
             return Arrays.stream(result.split(","))

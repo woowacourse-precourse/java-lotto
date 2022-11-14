@@ -46,6 +46,7 @@ public class GameManager {
     private Integer getBonusNumber() {
         Printer.printInfoInputBonus();
         String bonus = Console.readLine();
+        validation.validateIsNumber(bonus);
 
         return Integer.parseInt(bonus);
     }
