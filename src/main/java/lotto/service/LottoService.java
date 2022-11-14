@@ -6,8 +6,8 @@ import lotto.domain.WinningNumbers;
 import lotto.domain.Rank;
 
 public class LottoService {
-    private WinningNumbers winningNumbers;
     private final Lottery lottery;
+    private WinningNumbers winningNumbers;
 
     public LottoService(int purchaseNumber) {
         this.lottery = Lottery.buy(purchaseNumber);

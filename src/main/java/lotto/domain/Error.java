@@ -10,8 +10,8 @@ public enum Error {
     LOTTO_NUMBERS_IS_CONTAIN_DUPLICATE("로또 번호에는 중복이 없어야 합니다."),
     BONUS_NUMBER_IS_DUPLICATE_WITH_WINNING_NUMBERS("보너스번호는 당첨번호에 포함되지 않는 번호여야 합니다.");
 
-    private final String message;
     private static final String MESSAGE_PREFIX = "[ERROR] ";
+    private final String message;
 
     Error(String message) {
         this.message = message;
