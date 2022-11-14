@@ -12,12 +12,12 @@ public class Statistics {
         this.winningLottoCounter = rankCount.countRank();
     }
 
-    public int computeTotalPrice() {
+    public long computeTotalPrice() {
         Set<Rank> ranks = winningLottoCounter.keySet();
-        int totalPrice = 0;
+        long totalPrice = 0;
 
         for (Rank rank : ranks) {
-            int price = rank.computePrice(winningLottoCounter.get(rank));
+            long price = rank.computePrice(winningLottoCounter.get(rank));
             totalPrice += price;
         }
 

@@ -19,7 +19,7 @@ public class StatisticsController extends Controller{
 
     public void printEarningRate(int money, Statistics statistics) {
         EarningRate earningRate = new EarningRate(money);
-        int totalPrice = statistics.computeTotalPrice();
+        long totalPrice = statistics.computeTotalPrice();
         double rate = earningRate.computeEarningRate(totalPrice);
         outputView.printOutputEarningRate(rate);
     }

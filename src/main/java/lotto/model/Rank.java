@@ -4,25 +4,25 @@ import java.text.DecimalFormat;
 import java.util.Arrays;
 
 public enum Rank {
-    FIFTH(3, 5000),
-    FOURTH(4, 50000),
-    THIRD(5, 1500000),
-    SECOND(5, 30000000) {
+    FIFTH(3, 5000L),
+    FOURTH(4, 50000L),
+    THIRD(5, 1500000L),
+    SECOND(5, 30000000L) {
         @Override
         public String toString() {
             return getMatchingState() + BONUS_MATCHING_STATE + getPriceState();
         }
     },
-    FIRST(6, 2000000000),
-    NOTHING(0, 0);
+    FIRST(6, 2000000000L),
+    NOTHING(0, 0L);
 
     private static final String MATCHING_STATE = "%d개 일치";
     private static final String BONUS_MATCHING_STATE = ", 보너스 볼 일치";
     private static final String PRICE_STATE = " (%s원)";
     private final int matchingNumber;
-    private final int price;
+    private final long price;
 
-    Rank(int matchingNumber, int price) {
+    Rank(int matchingNumber, long price) {
         this.matchingNumber = matchingNumber;
         this.price = price;
     }
@@ -41,7 +41,7 @@ public enum Rank {
                 .orElse(Rank.NOTHING);
     }
 
-    public int computePrice(int numberOfWinningLotto) {
+    public long computePrice(int numberOfWinningLotto) {
         return price * numberOfWinningLotto;
     }
 
