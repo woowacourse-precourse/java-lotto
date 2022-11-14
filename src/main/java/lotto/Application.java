@@ -15,6 +15,12 @@ public class Application {
 
         System.out.printf("\n%d개를 구매했습니다.",moneyInt);
         printLottoList(lottoList);
+
+        System.out.println("\n당첨 번호를 입력해주세요");
+        String winNumberString = Console.readLine();
+        System.out.println("\n보너스 번호를 입력해주세요");
+        String bonusNumString = Console.readLine();
+        List<Integer> winNumberList = makeWinNumberList(winNumberString);
     }
 
     public static int moneyExceptionHandling(String moneyString){
@@ -46,5 +52,19 @@ public class Application {
         for(int i = 0; i< lottoList.size(); i++){
             System.out.println(lottoList.get(i));
         }
+    }
+
+    public static List<Integer> makeWinNumberList(String winNumberString){
+        List<Integer> winNumberList = new java.util.ArrayList<>(Collections.emptyList());
+        try{
+            String[] numListStr = winNumberString.split(",");
+            for(int i = 0; i< numListStr.length;i++){
+                winNumberList.add(Integer.parseInt(numListStr[i]));
+            }
+        }catch(Exception e){
+            System.out.println("[ERROR] 당첨번호를 쉼표(,)를 사용해 구분해 입력해주세요.");
+            throw new IllegalArgumentException();
+        }
+        return winNumberList;
     }
 }
