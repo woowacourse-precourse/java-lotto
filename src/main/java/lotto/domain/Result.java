@@ -3,6 +3,11 @@ package lotto.domain;
 import java.util.List;
 
 public class Result {
+    public static final int FIRST_PLACE_REWARD = 2000000000;
+    public static final int SECOND_PLACE_REWARD = 30000000;
+    public static final int THIRD_PLACE_REWARD = 1500000;
+    public static final int FOURTH_PLACE_REWARD = 50000;
+    public static final int FIFTH_PLACE_REWARD = 5000;
     private final List<PlaceStatus> myPlaces;
     private int FIRST_PLACE = 0;
     private int SECOND_PLACE = 0;
@@ -61,7 +66,7 @@ public class Result {
     }
 
     public int getReward() {
-        return (this.FIRST_PLACE * 2000000000) + (this.SECOND_PLACE * 30000000) +
-            (this.THIRD_PLACE * 1500000) + (this.FOURTH_PLACE * 50000) + (this.FIFTH_PLACE * 5000);
+        return (this.FIRST_PLACE * FIRST_PLACE_REWARD) + (this.SECOND_PLACE * SECOND_PLACE_REWARD) +
+            (this.THIRD_PLACE * THIRD_PLACE_REWARD) + (this.FOURTH_PLACE * FOURTH_PLACE_REWARD) + (this.FIFTH_PLACE * FIFTH_PLACE_REWARD);
     }
 }

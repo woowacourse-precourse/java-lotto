@@ -15,14 +15,9 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
-        try {
-            if (numbers.size() != 6) {
-                throw new IllegalArgumentException(ErrorStatus.NUMBERS_SIZE.printError());
-            }
-        } catch (IllegalArgumentException error) {
-            System.out.println(ErrorStatus.NUMBERS_SIZE.printError());
+        if (numbers.size() != 6) {
+            throw new IllegalArgumentException(ErrorStatus.NUMBERS_SIZE.printError());
         }
-
     }
 
     public int getNumber(int index) {
