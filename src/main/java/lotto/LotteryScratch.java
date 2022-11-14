@@ -10,7 +10,6 @@ public class LotteryScratch {
     WinningNumber winningNumber;
     User user;
     List<Lotto> lottos;
-    int count;
 
     public LotteryScratch(WinningNumber winningNumber, List<Lotto> lottos, User user) {
         this.user = user;
@@ -36,20 +35,24 @@ public class LotteryScratch {
         List<Integer> temp = new ArrayList<>(winningNumber.getWinningLotto().getNumbers());
         temp.retainAll(lottoNumbers);
         int size = temp.size();
+        Rank r = judgeRank(lotto, size);
+        ranks.put(r, ranks.get(r) + 1);
+    }
 
+    public Rank judgeRank (Lotto lotto, int size) {
+        List<Integer> lottoNumbers = lotto.getNumbers();
         if (size == 6) {
-            ranks.put(Rank.RANK1, ranks.get(Rank.RANK1) + 1);
+           return Rank.RANK1;
         } else if (size == 5) {
             if (lottoNumbers.contains(winningNumber.getBonusNumber())) {
-                ranks.put(Rank.RANK2, ranks.get(Rank.RANK2) + 1);
-            } else {
-                ranks.put(Rank.RANK3, ranks.get(Rank.RANK3) + 1);
+                return Rank.RANK2;
             }
+            return Rank.RANK3;
         } else if (size == 4) {
-            ranks.put(Rank.RANK4, ranks.get(Rank.RANK4) + 1);
+            return Rank.RANK4;
         } else if (size == 3) {
-            ranks.put(Rank.RANK5, ranks.get(Rank.RANK5) + 1);
+            return Rank.RANK5;
         }
-
+        return Rank.RANK_NONE;
     }
 }

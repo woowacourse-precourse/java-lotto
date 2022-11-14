@@ -12,9 +12,9 @@ public class UIManager {
     /**
      * 구매 금액 입력
      */
-    public int enterPurchaseAmount() {
+    public String enterPurchaseAmount() {
         System.out.println(UIMessages.ENTER_PURCHASE_AMOUNT.getText());
-        return Integer.parseInt(Console.readLine());
+        return Console.readLine();
     }
 
     /**
@@ -53,6 +53,9 @@ public class UIManager {
         System.out.println(UIMessages.WINNING_STATS.getText());
         Map<Rank, Integer> ranks = user.getRanks();
         for (Rank r : ranks.keySet()) {
+            if(r.getCondition().equals(Rank.RANK_NONE.getCondition())) {
+                continue;
+            }
             System.out.println(r.getCondition() + " ("
                     + String.format("%,d", r.getWinnings()) + UIMessages.WON.getText() +  ") - "
                     + ranks.get(r) + UIMessages.UNIT.getText());
