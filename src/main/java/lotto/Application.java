@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Application {
+    final static int MAX_LENGTH = 6;
     public static String inputPurchaseAmount() {
         System.out.println("구입금액을 입력해 주세요.");
         String amount = Console.readLine();
@@ -27,6 +28,12 @@ public class Application {
         return randomNumbers;
     }
 
+    public static void printRandomNumbers(List<List<Integer>> randomNumbers, int count) {
+        for (int i = 0; i < count; i++) {
+            System.out.println(randomNumbers.get(i));
+        }
+    }
+
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         int amount = Integer.parseInt(inputPurchaseAmount());
@@ -36,7 +43,6 @@ public class Application {
         List<List<Integer>> randomNumbers = new ArrayList<List<Integer>>();
 
         randomNumbers = saveRandomNumbers(count, randomNumbers);
-
-        System.out.println(randomNumbers);
+        printRandomNumbers(randomNumbers, count);
     }
 }
