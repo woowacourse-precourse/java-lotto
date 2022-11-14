@@ -1,6 +1,8 @@
 package lotto;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import static lotto.Prize.*;
 
@@ -28,6 +30,22 @@ public class Winning {
         if (cnt == 4) return FORTH;
         if (cnt == 3) return FIFTH;
         return NOTHING;
+    }
+
+    public void printAnalysis(List<Lotto> lottos, int price) {
+
+        Map<Prize, Integer> statistics = new HashMap<>();
+        for (Lotto lotto : lottos) {
+            statistics.merge(analysis(lotto), 1, (value, putValue) -> value + 1);
+        }
+        printStatistics(statistics);
+    }
+
+    private static void printStatistics(Map<Prize, Integer> statistics) {
+
+        for (Prize prize : PRIZES) {
+            prize.printPrize(statistics.getOrDefault(prize, 0));
+        }
     }
 
 }
