@@ -10,10 +10,10 @@ public class LotteryTickets {
     public List<Lotto> lottoTickets;
 
     public LotteryTickets(int totalPurchaseNum) {
-        this.lottoTickets = createLottery(totalPurchaseNum);
+        this.lottoTickets = createLotteryTickets(totalPurchaseNum);
     }
 
-    public List<Lotto> createLottery(int totalPurchaseNum) {
+    public List<Lotto> createLotteryTickets(int totalPurchaseNum) {
         List<Lotto> newLottoTickets = new ArrayList<>();
         for (int i = 0; i < totalPurchaseNum; i++) {
             newLottoTickets.add(makeNewLotto());
