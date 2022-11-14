@@ -62,7 +62,7 @@ public class Application {
             System.out.print("[");
             for(int j=0; j < 6; j++){
                 System.out.print(randomLottos.get(i).get(j));
-                if(j != 5) System.out.print(randomLottos.get(i).get(j) + ", ");
+                if(j != 5) System.out.print(", ");
             }
             System.out.print("]");
             System.out.println();
