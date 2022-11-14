@@ -28,8 +28,10 @@ public class LottoServiceView {
 
     public void checkMonetaryUnit(String input) {
 
+        int lastIndex = input.length() - 1;
+
         for (int i = 0; i < 3; i++) {
-            if (!(input.charAt(i) == '0')) {
+            if ((input.charAt(lastIndex - i) != '0')) {
                 throw new IllegalArgumentException("[ERROR] 구매 금액의 최소 단위는 1,000 입니다. 1,000 단위로 다시 입력해주세요.");
             }
         }
