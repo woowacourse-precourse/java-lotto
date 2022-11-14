@@ -19,7 +19,7 @@ public class Application {
 
         printLottoList(lottoList);
     }
-    
+
     public static String inputMoney() {
         String input;
         System.out.println("구입금액을 입력해 주세요.");
@@ -69,5 +69,13 @@ public class Application {
         for (Lotto i : lottos) {
             i.printLotto();
         }
+    }
+    
+    public static String[] inputWinNumber() {
+        System.out.println("당첨 번호를 입력해 주세요.");
+        String input = Console.readLine();
+        String[] result = input.split(",");
+
+        return result;
     }
 }
