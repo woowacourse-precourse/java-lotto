@@ -1,11 +1,14 @@
 package lotto;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import dto.IssueLottoInfo;
 import dto.Lotto;
 import dto.LottoGameInfo;
+import util.ConfirmWinning;
 import util.ExceptionUtil;
 import util.InputUtil;
 import util.PrintUtil;
@@ -43,12 +46,12 @@ public class LottoGameController {
 
 	}
 
-	// 발행번호 출력하기 
+	// 발행번호 출력하기
 	public void printIssueLotto() {
 		PrintUtil.printPurchaseResult(lottoGameInfo.getInputPrice());
 		PrintUtil.printIssueLotto(lottoGameInfo.getIssueLotto());
 	}
-	
+
 	// 당첨번호 입력받기
 	public void inputWinningNumber() {
 		Lotto winnigNumbers = new Lotto(InputUtil.inputWinnigNumber());
@@ -58,19 +61,21 @@ public class LottoGameController {
 	// 보너스 번호 입력받기
 	public void inputBonusNumber() {
 		int bonusNumber = InputUtil.inputBonusNumber();
-		if(!ValidateUtil.checkDuplicates(lottoGameInfo.getWinningNumber(),bonusNumber)) {
+		if (ValidateUtil.checkDuplicates(lottoGameInfo.getWinningNumber(), bonusNumber)) {
 			ExceptionUtil.makeException("보너스 번호는 당첨번호와 중복될 수 없습니다.");
 		}
-		
+
 		lottoGameInfo.setBonusNumber(bonusNumber);
-		
+
 	}
 
 	// 결과 계산하기
 	public void calculateResult() {
-		// TODO: 추가 기능 구현
+		ConfirmWinning confirmWinning = new ConfirmWinning(lottoGameInfo);
+		confirmWinning.confirmWinning();
+		
 	}
-	
+
 	// 결과 출력하기
 	public void printResult() {
 		// TODO: 추가 기능 구현
