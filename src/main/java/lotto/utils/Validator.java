@@ -106,7 +106,7 @@ public class Validator {
         for (String number : getNumbers(input)) {
             int luckyNumber = Integer.parseInt(number);
             if (exist.get(luckyNumber) > LottoStatus.LIMIT.getValue()) {
-                throw new IllegalArgumentException("로또 번호는 중복되지 않아야 합니다.");
+                throw new IllegalArgumentException(LUCKY_NUMBER_DUPLICATION.toString());
             }
         }
     }
