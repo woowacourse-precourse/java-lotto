@@ -51,4 +51,10 @@ public class Judgment {
             throw new IllegalArgumentException(NO_6_NUMBERS_ERROR_MESSAGE);
         }
     }
+    
+    public void checkNumbersRange(List<Integer> numbers, int fromNumber, int toNumber) {
+        for (Integer number : numbers) {
+            checkRange(number, fromNumber, toNumber);
+        }
+    }
 }
