@@ -30,6 +30,7 @@ public class Lotto {
     private void validate() {
         sizeValidate();
         numberFormatValidate();
+        overlapValidate();
     }
 
     private void sizeValidate() {
@@ -48,5 +49,12 @@ public class Lotto {
         if (number > LottoInfo.MAX_NUMBER.getValue() || number < LottoInfo.MIN_NUMBER.getValue()) {
             throw new IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
         }
+    }
+
+    private void overlapValidate() {
+        if (lotto.stream().distinct().count() != LottoInfo.LOTTO_LENGTH.getValue()) {
+            throw new IllegalArgumentException("[ERROR] 로또 번호는 중되지 않아야 합니다.");
+        }
+
     }
 }
