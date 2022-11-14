@@ -14,9 +14,9 @@ public class Calculator {
         earn = 0;
 
         for (Lotto lotto : lottos) {
-            Result result = lotto.computeResult(winningNumbers, bonusNumber);
-            resultCounts.put(result, resultCounts.get(result) + 1);
-            earn += stringToInt(result.getMoney());
+            Result computedResult = lotto.computeResult(winningNumbers, bonusNumber);
+            resultCounts.computeIfPresent(computedResult, (result, count) -> count + 1);
+            earn += stringToInt(computedResult.getMoney());
         }
 
         return resultCounts;
@@ -40,6 +40,6 @@ public class Calculator {
         if (money == 0 || earn == 0) {
             return 0;
         }
-        return  ((double) money / (double) earn) * 100;
+        return  ((double) earn / (double) money) * 100;
     }
 }
