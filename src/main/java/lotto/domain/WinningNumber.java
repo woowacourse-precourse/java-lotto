@@ -2,11 +2,7 @@ package lotto.domain;
 
 import lotto.util.ErrorMessage;
 import lotto.util.LottoConstant;
-import lotto.util.LottoRank;
-
-import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class WinningNumber {
     private final List<Integer> winningNumbers;

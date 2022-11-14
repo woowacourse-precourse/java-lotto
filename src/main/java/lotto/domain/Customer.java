@@ -3,16 +3,20 @@ package lotto.domain;
 import camp.nextstep.edu.missionutils.Randoms;
 import lotto.util.LottoConstant;
 import lotto.util.LottoRank;
-
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class Customer {
-    public List<Lotto> purchaseLottos(int money) {
-        return IntStream.range(0, getLottoCount(money))
+
+    public WinningNumber generateWinningNumber(List<Integer> winningNumbers, int bonusNumber) {
+        return new WinningNumber(winningNumbers, bonusNumber);
+    }
+
+    public Lottos purchaseLottos(int money) {
+        return new Lottos(IntStream.range(0, getLottoCount(money))
                 .mapToObj(index -> purchaseLotto())
-                .collect(Collectors.toList());
+                .collect(Collectors.toList()));
     }
 
     public int getLottoCount(int money) {
@@ -30,9 +34,4 @@ public class Customer {
                 LottoConstant.NUMBER_COUNT.getValue());
     }
 
-    public List<LottoRank> getRanks(List<Lotto> lottos, WinningNumber winningNumber) {
-        return lottos.stream()
-                .map(lotto -> lotto.getRank(winningNumber))
-                .collect(Collectors.toList());
-    }
 }

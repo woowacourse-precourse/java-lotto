@@ -2,7 +2,6 @@ package lotto.domain;
 
 import lotto.util.LottoConstant;
 import lotto.util.LottoRank;
-
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.HashSet;

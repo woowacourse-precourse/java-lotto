@@ -1,6 +1,7 @@
 package lotto.view;
 
 import camp.nextstep.edu.missionutils.Console;
+import lotto.domain.Lottos;
 import lotto.util.InformationMessage;
 import lotto.domain.Lotto;
 import lotto.util.LottoRank;
@@ -52,9 +53,9 @@ public class LottoGameView {
         return Integer.parseInt(inputNumber);
     }
 
-    public void printLottos(List<Lotto> lottos) {
-        System.out.println(lottos.size() + InformationMessage.PRINT_PURCHASE_COUNT.getMessage());
-        lottos.forEach(this::printSortedLotto);
+    public void printLottos(Lottos lottos) {
+        System.out.println(lottos.getLottoCount() + InformationMessage.PRINT_PURCHASE_COUNT.getMessage());
+        lottos.getlottos().forEach(this::printSortedLotto);
     }
 
     public void printSortedLotto(Lotto lotto) {
