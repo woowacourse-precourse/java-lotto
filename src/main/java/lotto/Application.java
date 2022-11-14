@@ -1,10 +1,13 @@
 package lotto;
 
 import lotto.domain.LottoGroup;
+import lotto.domain.RankingType;
 import lotto.domain.WinningNumber;
 import lotto.view.input.Generator;
 import lotto.view.input.UserInput;
 import lotto.view.output.Guide;
+
+import java.util.Map;
 
 public class Application {
     static Guide guide = new Guide();
@@ -26,6 +29,8 @@ public class Application {
         guide.printInputBonusGuide();
         winningNumber.updateBonus(userInput.getBonusNumber());
 
-        // 결과 출력
+        guide.printResultGuide();
+        Map<RankingType, Integer> countByRankingType = lottoGroup.getCountByRankingType(winningNumber);
+        guide.printResult(countByRankingType);
     }
 }
