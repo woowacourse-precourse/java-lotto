@@ -191,4 +191,21 @@ public class Application {
     static void printQuantityOfLotto(int quantity) {
         System.out.println(quantity + "개를 구매했습니다.");
     }
+
+    static void printLottoTickets(Set<List<Integer>> lottoTickets) {
+        for (List<Integer> lottoTicket : lottoTickets) {
+            System.out.println(formLottoTicket(lottoTicket));
+        }
+    }
+
+    static String formLottoTicket(List<Integer> lottoTicket) {
+        List<String> ticket = new ArrayList<>();
+        for (Integer eachNumber : lottoTicket) {
+            ticket.add(String.valueOf(eachNumber));
+        }
+        String openBracket = "[";
+        String closeBracket = "]";
+        String printFormat = String.join(",", ticket);
+        return openBracket + printFormat + closeBracket;
+    }
 }
