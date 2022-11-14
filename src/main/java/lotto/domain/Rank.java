@@ -17,8 +17,8 @@ public class Rank {
         return ranking;
     }
 
-    public static Rank getRanking(Lotto winningLotto, int bonusNumber, List<Lotto> lottos) {
-        LinkedHashMap<Integer, Integer> ranking = createRankingBoard();
+    public static Rank getLottosRanking(Lotto winningLotto, int bonusNumber, List<Lotto> lottos) {
+        LinkedHashMap<Integer, Integer> lottoRanking = createRankingBoard();
         List<Integer> winningLottoNumbers = winningLotto.getLottoNumbers();
         List<Integer> rightNumbers, wrongNumbers;
         int rightNumberCnt;
@@ -28,13 +28,13 @@ public class Rank {
             wrongNumbers = getWrongNumbers(winningLottoNumbers, lotto);
             rightNumberCnt = rightNumbers.size();
 
-            ranking = checkLottoRanking(ranking, bonusNumber, wrongNumbers, rightNumberCnt);
+            lottoRanking = getLottoRanking(lottoRanking, bonusNumber, wrongNumbers, rightNumberCnt);
         }
-        return new Rank(ranking);
+        return new Rank(lottoRanking);
     }
 
-    private static LinkedHashMap<Integer, Integer> checkLottoRanking(LinkedHashMap<Integer, Integer> ranking, int bonusNumber, List<Integer> wrongNumbers, int rightNumberCnt) {
-        Integer lottoRank = getLottoRank(rightNumberCnt, wrongNumbers, bonusNumber);
+    private static LinkedHashMap<Integer, Integer> getLottoRanking(LinkedHashMap<Integer, Integer> ranking, int bonusNumber, List<Integer> wrongNumbers, int rightNumberCnt) {
+        Integer lottoRank = checkLottoRanking(rightNumberCnt, wrongNumbers, bonusNumber);
         if (lottoRank != null) {
             ranking.put(lottoRank, ranking.get(lottoRank) + 1);
         }
@@ -42,7 +42,7 @@ public class Rank {
         return ranking;
     }
 
-    private static Integer getLottoRank(int rightNumberCnt, List<Integer> wrongNumbers, int bonusNumber) {
+    private static Integer checkLottoRanking(int rightNumberCnt, List<Integer> wrongNumbers, int bonusNumber) {
         Integer ranking = null;
         if (rightNumberCnt == SIX_CORRECT) {
             ranking = FIRST_PLACE;
