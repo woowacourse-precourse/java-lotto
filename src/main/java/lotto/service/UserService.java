@@ -46,4 +46,7 @@ public class UserService {
         revenue = (float) (Math.round(((hitValueSum / payAmount) * 100)) / 100.0);
     }
 
+    public float getRevenue(){
+        return revenue;
+    }
 }
