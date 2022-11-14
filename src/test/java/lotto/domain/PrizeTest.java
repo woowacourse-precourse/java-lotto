@@ -75,6 +75,7 @@ class PrizeTest {
     @DisplayName("1~45 사이가 아닌 숫자를 입력하면 에러가 발생한다.")
     @Test
     void bonusNumbersOverRangeInputExceptionTest() {
+        prize.setPrizeNumbers(List.of(1, 2, 3, 4, 5, 6));
         ScannerInput("46");
         Assertions.assertThrows(IllegalArgumentException.class, () -> {
             prize.inputBonusNumber();
@@ -103,10 +104,11 @@ class PrizeTest {
     @DisplayName("1~45사이의 올바른 숫자를 입력하면 통과한다.")
     @Test
     void bonusNumbersInputTest() {
-        ScannerInput("5");
+        prize.setPrizeNumbers(List.of(1, 2, 3, 4, 5, 6));
+        ScannerInput("8");
         prize.inputBonusNumber();
         int bonusNumber = prize.getBonusNumber();
-        Assertions.assertEquals(bonusNumber, 5);
+        Assertions.assertEquals(bonusNumber, 8);
     }
 
 
