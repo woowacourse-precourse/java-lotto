@@ -1,10 +1,9 @@
 package lotto.domain;
 
-import lotto.utils.Constant;
-import lotto.utils.ErrorMessage;
+import lotto.constant.Constant;
+import lotto.constant.ErrorMessage;
 
 import java.util.Arrays;
-import java.util.List;
 
 public class BonusNumber {
     private int bonusNumber;

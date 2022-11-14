@@ -1,7 +1,7 @@
 package lotto.domain;
 
-import lotto.utils.Constant;
-import lotto.utils.ErrorMessage;
+import lotto.constant.Constant;
+import lotto.constant.ErrorMessage;
 
 import java.util.ArrayList;
 import java.util.Arrays;

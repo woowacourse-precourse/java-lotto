@@ -1,11 +1,6 @@
 package lotto.views;
 
 import camp.nextstep.edu.missionutils.Console;
-import lotto.utils.Constant;
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 
 public class Input {
 

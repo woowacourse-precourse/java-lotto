@@ -1,12 +1,11 @@
 package lotto;
 
 import lotto.domain.*;
-import lotto.utils.Constant;
+import lotto.constant.Constant;
 import lotto.utils.Ranking;
 import lotto.views.Input;
 import lotto.views.Output;
 
-import javax.print.attribute.standard.RequestingUserName;
 import java.util.HashMap;
 import java.util.List;
 

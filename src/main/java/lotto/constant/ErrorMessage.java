@@ -1,4 +1,4 @@
-package lotto.utils;
+package lotto.constant;
 
 public class ErrorMessage {
     public static final String LOTTO_MUST_THOUSAND_PRICE = "[ERROR] 구매금액은 1000원 단위여야 합니다.";
