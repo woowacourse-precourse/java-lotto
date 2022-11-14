@@ -3,6 +3,7 @@ package lotto.domain;
 import java.util.List;
 
 public class Lotto {
+
     static final int SIZE_OF_NUMBERS = 6;
     static final int MAXIMUM_NUMBER = 45;
     static final int MINIMUM_NUMBER = 1;
@@ -18,7 +19,7 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
-        if (!(validateSize(numbers)&&validateRange(numbers) && validateDuplication(numbers))) {
+        if (!(validateSize(numbers) && validateRange(numbers) && validateDuplication(numbers))) {
             throw new IllegalArgumentException();
         }
     }

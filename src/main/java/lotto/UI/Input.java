@@ -3,6 +3,7 @@ package lotto.UI;
 import camp.nextstep.edu.missionutils.Console;
 
 public class Input {
+
     public static int getAnswerInInteger(String request) {
         try {
             String answer = getAnswer(request);

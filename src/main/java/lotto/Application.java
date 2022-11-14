@@ -27,7 +27,7 @@ public class Application {
 
     static String getPrintResultFormat(List<Integer> result) {
         StringBuilder resultPrintFormat = new StringBuilder();
-        for (Ranking ranking: Ranking.values()) {
+        for (Ranking ranking : Ranking.values()) {
             int count = result.get(ranking.value());
             resultPrintFormat.append(String.format(ranking.printFormat(), count));
         }

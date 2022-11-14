@@ -4,6 +4,7 @@ import java.util.List;
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class Generator {
+
     private final List<Integer> winNumber;
 
     public Generator() {

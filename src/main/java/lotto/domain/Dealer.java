@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 public class Dealer {
+
     private final Generator generator;
     private final List<Integer> result;
     private final float earningRate;
@@ -27,19 +28,20 @@ public class Dealer {
 
     private float calculateEarningRate(int purchaseAmount) {
         long earning = 0;
-        for (Ranking ranking: Ranking.values()) {
-            earning += (long)result.get(ranking.value()) * ranking.prizeMoney();
+        for (Ranking ranking : Ranking.values()) {
+            earning += (long) result.get(ranking.value()) * ranking.prizeMoney();
         }
 
-        return (float)earning / purchaseAmount * 100;
+        return (float) earning / purchaseAmount * 100;
     }
 
     private void make(Map<Lotto, Bonus> lotteries) {
         List<Integer> winNumber = generator.getWinNumber();
 
-        for (Lotto lotto: lotteries.keySet()) {
+        for (Lotto lotto : lotteries.keySet()) {
             int bonusNumber = lotteries.get(lotto).getBonusNumber();
-            int matchingCount = (int)lotto.getNumbers().stream().filter(i -> winNumber.contains(i)).count();
+            int matchingCount = (int) lotto.getNumbers().stream().filter(i -> winNumber.contains(i))
+                    .count();
 
             if (rankingIsSecond(bonusNumber, matchingCount)) {
                 increaseRankingCount(Ranking.second);
@@ -52,12 +54,11 @@ public class Dealer {
     }
 
     private boolean rankingIsSecond(int bonusNumber, int matchingCount) {
-        return Ranking.second.matchingCount() == matchingCount && generator.getWinNumber().contains(bonusNumber);
+        return Ranking.second.matchingCount() == matchingCount && generator.getWinNumber()
+                .contains(bonusNumber);
     }
 
     private void increaseRankingCount(Ranking ranking) {
         result.set(ranking.value(), result.get(ranking.value()) + 1);
     }
-
-
 }
