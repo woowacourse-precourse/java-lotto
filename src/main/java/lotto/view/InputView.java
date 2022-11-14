@@ -10,24 +10,24 @@ import java.util.stream.Stream;
 import static lotto.view.InputString.*;
 
 public class InputView {
-    public int inputMoney(){
+    public static int inputMoney(){
         System.out.println(PURCHASE_MONEY_MESSAGE);
         return checkAndConvertToInt(Console.readLine());
     }
 
-    public List<Integer> inputWinningNumber(){
+    public static List<Integer> inputWinningNumber(){
         System.out.println(WINNING_NUMBER_MESSAGE);
         String input = Console.readLine();
         checkIntAndComma(input);
         return convertToListInt(input);
     }
 
-    public int inputBonusNumber(){
+    public static int inputBonusNumber(){
         System.out.println(BONUS_NUMBER_MESSAGE);
         return checkAndConvertToInt(Console.readLine());
     }
     
-    private int checkAndConvertToInt(String input){
+    private static int checkAndConvertToInt(String input){
         try {
             return Integer.parseInt(input);
         } catch (NumberFormatException e) {
@@ -35,14 +35,14 @@ public class InputView {
         }
     }
 
-    private void checkIntAndComma(String input){
+    private static void checkIntAndComma(String input){
         String pattern = "[0-9,]+";
         if (!Pattern.matches(pattern, input)){
             throw new IllegalArgumentException(NO_NUMBER_AND_COMMA_INPUT.toString());
         }
     }
 
-    private List<Integer> convertToListInt(String input){
+    private static List<Integer> convertToListInt(String input){
         List<String> temp = Stream.of(input.split("\\s*,\\s*")).collect(Collectors.toList());
         List<Integer> conversion = temp.stream().map(s -> Integer.parseInt(s)).collect(Collectors.toList());
         return conversion;
