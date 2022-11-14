@@ -59,6 +59,7 @@ public class Output {
     }
     public void totalBenefit(double yield) {
         DecimalFormat formatter = new DecimalFormat("###,###.0");
-        System.out.println("총 수익률은 "+formatter.format(yield)+"%입니다.");
+        if(yield == 0.0) {System.out.println("총 수익률은 "+0.0+"%입니다.");}
+        if(yield > 0) { System.out.println("총 수익률은 "+formatter.format(yield)+"%입니다.");}
     }
 }
