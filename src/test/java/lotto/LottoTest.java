@@ -31,14 +31,29 @@ class LottoTest {
     @Test
     void createLottoSucceedInput() {
         Console console = System.console();
-
     }
 
     //로또 랜덤 숫자 6개를 확인한다.
     @DisplayName("로또 자동 출력 번호 테스트하기")
     @Test
-    void checkLottoSize(){
+    void checkLottoSize() {
         assertThat(new Lotto(new RandomNumbers()).getLottoSixNumbers()).hasSize(6);
+    }
+
+    @Test
+    void 로또_숫자_범위_확인() {
+        Lotto lotto = new Lotto(new RandomNumbers());
+        for (Integer lottoNumber : lotto.getLottoSixNumbers()) {
+            assertThat(lottoNumber).isLessThanOrEqualTo(45);
+        }
+    }
+
+    @Test
+    void 당첨_숫자_확인(){
+        Lotto lotto = new Lotto(List.of(6,3,4,2,1,5));
+        Lotto winningLotto = new Lotto(List.of(4,5,6,7,8,10));
+
+        assertThat(lotto.matchCountNumbers(winningLotto)).isEqualTo(3);
     }
     // 아래에 추가 테스트 작성 가능
 }
