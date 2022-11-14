@@ -1,12 +1,14 @@
 package lotto.model;
 
+import lotto.view.OutputView;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 public class WinCount {
 
-    List<Integer> rankCount = new ArrayList<>(Arrays.asList(0,0,0,0,0,0));
+    List<Integer> rankCount = new ArrayList<>(Arrays.asList(0,0,0,0,0));
+    OutputView outputView = new OutputView();
 
 
     public List<Integer> winCount(List<WinDetail> result) {
@@ -52,5 +54,15 @@ public class WinCount {
         thirdCount(winDetail);
         fourthCount(winDetail);
         fifthCount(winDetail);
+    }
+
+    public void printCount(List<Integer> rankCount){
+        outputView.rankMsg();
+        outputView.fifthMsg(rankCount.get(4));
+        outputView.fourthMsg(rankCount.get(3));
+        outputView.thirdMsg(rankCount.get(2));
+        outputView.secondMsg(rankCount.get(1));
+        outputView.firstMsg(rankCount.get(0));
+
     }
 }

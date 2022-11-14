@@ -35,4 +35,30 @@ public class OutputView {
     public void userLottoMsg(int index, List<List<Integer>> lotto) {
         System.out.println(lotto.get(index));
     }
+
+    public void rankMsg(){
+        System.out.println("당첨 통계");
+        System.out.println("---");
+    }
+
+    public void fifthMsg(int count) {
+        System.out.println("3개 일치 (5,000원) - " + count + "개");
+    }
+
+    public void fourthMsg(int count){
+        System.out.println("4개 일치 (50,000원) - " + count + "개");
+    }
+
+    public void thirdMsg(int count){
+        System.out.println("5개 일치 (1,500,000원) - " + count + "개");
+    }
+
+    public void secondMsg(int count){
+        System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - " + count + "개");
+    }
+
+    public void firstMsg(int count) {
+        System.out.println("6개 일치 (2,000,000,000원) - " + count + "개");
+    }
+
 }
