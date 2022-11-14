@@ -21,6 +21,20 @@ public class Statistics {
         return numberOfGrades;
     }
 
+    public double getProfit(List<List<Integer>> lottosNumber) {
+        double prizePercentage = (double) getTotalPrize(lottosNumber) / lottosNumber.size() * 0.1;
+        return Math.round(prizePercentage * 10) / 10.0;
+    }
+
+    private int getTotalPrize(List<List<Integer>> lottosNumber) {
+        int totalPrize = 0;
+        List<Prize> grades = getEachLottoGrade(lottosNumber);
+        for (Prize grade : grades) {
+            totalPrize += Prize.getPrice(grade);
+        }
+        return totalPrize;
+    }
+
     private List<Prize> getEachLottoGrade(List<List<Integer>> lottosNumber) {
         List<Prize> grades = new ArrayList<>();
         Grade grade = new Grade(winningNumbers, bonusNumber);
