@@ -1,5 +1,7 @@
 package lotto.console;
 
+import static lotto.console.InputParser.*;
+
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.List;
@@ -11,19 +13,11 @@ public class Input {
     }
 
     public int readInt() {
-        try {
-            return Integer.parseInt(readLine());
-        } catch (NumberFormatException exception) {
-            throw new IllegalArgumentException("숫자를 입력해 주세요.");
-        }
+        return parseNumber(readLine());
     }
 
-    public List<Integer> readIntList() {
+    public List<Integer> readStandardWinningNumbers() {
         String line = readLine();
-        try {
-            return InputParser.parseIntList(line, ",");
-        } catch (NumberFormatException exception) {
-            throw new IllegalArgumentException("‘,’로 구분해서 숫자들을 입력해주세요.");
-        }
+        return parseStandardWinningNumbers(line);
     }
 }
