@@ -11,6 +11,7 @@ public class Lotto {
     public Lotto(List<Integer> numbers) {
         validateSize(numbers);
         validateDuplication(numbers);
+        validateRange(numbers);
         this.numbers = numbers;
     }
 
@@ -26,6 +27,17 @@ public class Lotto {
         HashSet<Integer> deduplication = new HashSet<>(numbers);
         if (deduplication.size() != Setting.LOTTO_SIZE) {
             throw new IllegalArgumentException("[ERROR] 중복된 숫자를 입력할 수 없습니다.");
+        }
+    }
+
+    // 1 이상 45 이하의 숫자들인지 검증하는 기능
+    private void validateRange(List<Integer> numbers) {
+        long validNumber = numbers.stream()
+                                    .filter(number -> number >= Setting.LOTTO_MIN_NUMBER)
+                                    .filter(number -> number <= Setting.LOTTO_MAX_NUMBER)
+                                    .count();
+        if (validNumber != Setting.LOTTO_SIZE) {
+            throw new IllegalArgumentException("[ERROR] 1이상 45이하의 숫자를 입력해야 합니다.");
         }
     }
 }
