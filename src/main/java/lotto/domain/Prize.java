@@ -24,11 +24,23 @@ public enum Prize {
         //2등과 3증 차이 구분
         if (catchPoint == 5) {
             if (bonusPoint) return second;
-            return fourth;
+            return third;
         }
         return Arrays.stream(values())
             .filter(prize -> prize.catchPoint == catchPoint)
             .findAny().orElse(error);
+    }
+
+    public int getMoney() {
+        return money;
+    }
+
+    public int getCatchPoint() {
+        return catchPoint;
+    }
+
+    public boolean isBonusCatchPoint() {
+        return bonusCatchPoint;
     }
 
     @Override
