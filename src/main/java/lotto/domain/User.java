@@ -8,6 +8,16 @@ import java.util.List;
 
 public class User {
     //2주차 피드백 반영
+    static final String INPUT_MONEY_STR = "구입금액을 입력해 주세요.";
+    static final String INPUT_WINNING_NUMBER_STR = "당첨 번호를 입력해 주세요.";
+    static final String INPUT_BONUS_NUMBER_STR = "보너스 번호를 입력해 주세요.";
+    static final String NOT_NUMBER_ERROR_MSG = "[ERROR] 숫자를 입력해주세요!";
+    static final String UNDER_THAN_LOTTO_CHARGE_ERROR_MSG ="[ERROR] 로또 1장의 구매가격은 1000원 입니다! 1000이상의 수를 입력해주세요";
+    static final String UNIT_ERROR_MSG ="[ERROR] 1000 단위로 입력해주세요!";
+    static final String CIPHER_ERROR_MSG = "[ERROR] 콤마를 기준으로 6자리를 입력해주세요!";
+    static final String NOT_NUMBER_ERROR_IN_WINNING_NUMBER_MSG = "[ERROR] 콤마를 기준으로 숫자만 입력해주세요!";
+    static final String DUPLICATE_NUMBER_ERROR_MSG = "[ERROR] 중복된 숫자를 입력했습니다!";
+    static final String RANGE_ERROR_MSG = "[ERROR] 1~45범위로 숫자를 입력해주세요!";
     static final int LOTTO_CHARGE = 1000;
 
     private int money;
@@ -15,7 +25,7 @@ public class User {
     private int bonusNumber;
 
     public void inputMoney() {
-        System.out.println("구입금액을 입력해 주세요.");
+        System.out.println(INPUT_MONEY_STR);
         String money = Console.readLine();
         try {
             validateMoney(money);
@@ -26,7 +36,7 @@ public class User {
     }
 
     public void inputWinningNumbers(){
-        System.out.println("당첨 번호를 입력해 주세요.");
+        System.out.println(INPUT_WINNING_NUMBER_STR);
         String winningNumbers = Console.readLine();
 
         try {
@@ -39,7 +49,7 @@ public class User {
     }
 
     public void inputBonusNumber(){
-        System.out.println("보너스 번호를 입력해 주세요.");
+        System.out.println(INPUT_BONUS_NUMBER_STR);
         String bonusNumber = Console.readLine();
         try {
             validateBonusNumber(bonusNumber);
@@ -62,23 +72,23 @@ public class User {
     }
 
     public void validateMoney(String money) {
-        int convertMoney = 0;
+        int convertMoney;
         try {
             convertMoney = Integer.parseInt(money);
         }catch (NumberFormatException e){
-            throw new IllegalArgumentException("[ERROR] 숫자를 입력해주세요!");
+            throw new IllegalArgumentException(NOT_NUMBER_ERROR_MSG);
         }
         if (convertMoney < LOTTO_CHARGE) {
-            throw new IllegalArgumentException("[ERROR] 로또 1장의 구매가격은 1000원 입니다! 1000이상의 수를 입력해주세요");
+            throw new IllegalArgumentException(UNDER_THAN_LOTTO_CHARGE_ERROR_MSG);
         }
-        if(convertMoney % 1000 != 0){
-            throw new IllegalArgumentException("[ERROR] 1000 단위로 입력해주세요!");
+        if(convertMoney % LOTTO_CHARGE != 0){
+            throw new IllegalArgumentException(UNIT_ERROR_MSG);
         }
     }
 
     public void validateWinningNumbers(String winningNumbers){
         if(winningNumbers.chars().filter(c -> c == ',').count() != 5){
-            throw new IllegalArgumentException("[ERROR] 콤마를 기준으로 6자리를 입력해주세요!");
+            throw new IllegalArgumentException(CIPHER_ERROR_MSG);
         }
 
         String [] numbers = winningNumbers.split(",");
@@ -86,9 +96,9 @@ public class User {
 
         for(String number : numbers){
             try {Integer.parseInt(number);
-            }catch (NumberFormatException e){throw new IllegalArgumentException("[ERROR] 콤마를 기준으로 숫자만 입력해주세요!");}
-            if(duplicateCheck.contains(number)){throw new IllegalArgumentException("[ERROR] 중복된 숫자를 입력했습니다!");}
-            if(Integer.parseInt(number)<1 || Integer.parseInt(number)>45){throw new IllegalArgumentException("[ERROR] 1~45범위로 숫자를 입력해주세요!");}
+            }catch (NumberFormatException e){throw new IllegalArgumentException(NOT_NUMBER_ERROR_IN_WINNING_NUMBER_MSG);}
+            if(duplicateCheck.contains(number)){throw new IllegalArgumentException(DUPLICATE_NUMBER_ERROR_MSG);}
+            if(Integer.parseInt(number)<1 || Integer.parseInt(number)>45){throw new IllegalArgumentException(RANGE_ERROR_MSG);}
             duplicateCheck.add(number);
         }
     }
@@ -98,11 +108,11 @@ public class User {
         try{
             convertBonusNumber = Integer.parseInt(bonusNumber);
         }catch (NumberFormatException e){
-            throw new IllegalArgumentException("[ERROR] 한 개의 숫자만 입력해주세요!");
+            throw new IllegalArgumentException(NOT_NUMBER_ERROR_MSG);
         }
 
         if(convertBonusNumber<1 || convertBonusNumber>45){
-            throw new IllegalArgumentException("[ERROR] 1~45범위로 숫자를 입력해주세요!");
+            throw new IllegalArgumentException(RANGE_ERROR_MSG);
         }
     }
 
