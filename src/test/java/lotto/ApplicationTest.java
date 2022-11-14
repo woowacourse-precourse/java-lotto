@@ -281,6 +281,15 @@ class ApplicationTest extends NsTest {
         });
     }
 
+    @DisplayName("당첨 숫자에 구분자(',')를 5개 초과로 넣으면 에러가 발생한다")
+    @Test
+    void 예외_테스트13() {
+        assertSimpleTest(() -> {
+            runException("1000", "1,2,3,4,5,6,");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
