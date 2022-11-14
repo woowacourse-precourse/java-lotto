@@ -55,6 +55,13 @@ public class Lotto {
             throw new IllegalArgumentException(String.format(DUPLICATE_ERROR));
         }
     }
+
+    private int calDistinctCountFromArray(String[] arr) {
+        return (int) Arrays.stream(arr)
+                .distinct()
+                .count();
+    }
+
     private List<Integer> convertStringArrToIntegerList(String[] array) {
         return Arrays.stream(array)
                 .map(Integer::parseInt)
