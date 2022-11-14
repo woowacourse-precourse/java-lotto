@@ -15,6 +15,25 @@ public class Valid {
     public static String[] lotto_answer_valid(String answer){
         return answer.split(",");
 
+    public static void check_Range(String str) {
+        String[] input = str.split(",");
+        for(int i = 0; i < input.length; i++){
+            Integer num = Integer.valueOf(input[i]);
+            if(num > 45 || num < 1){
+                throw new IllegalArgumentException(range_Message + num);
+            }
+        }
+    }
+
+    public static void check_Range(List<Integer> numbers) {
+        for(int i = 0; i < numbers.size(); i++){
+            int num = numbers.get(i);
+            if(num > 45 || num < 1){
+                throw new IllegalArgumentException(range_Message + num);
+            }
+        }
+    }
+
     public static void check_under_thousand(String str) {
         Integer num = Integer.valueOf(str);
         if(num % 1000 != 0){
