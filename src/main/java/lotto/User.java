@@ -30,7 +30,7 @@ public class User {
         return purchasePrice;
     }
 
-    public List<Lotto> getLottoList(){
+    public List<Lotto> getLottoList() {
         return lottoList;
     }
 

@@ -9,14 +9,14 @@ import java.util.List;
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
-        try{
+        try {
             runApplication();
-        }catch (Exception e){
+        } catch (Exception e) {
             System.out.println(e.getMessage());
         }
     }
 
-    public static void runApplication(){
+    public static void runApplication() {
         System.out.println("구입금액을 입력해 주세요.");
         User user = new User(Console.readLine());
         user.printLottoList();

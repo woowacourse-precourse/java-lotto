@@ -26,12 +26,13 @@ public class Lotto {
         return numbers;
     }
 
-    public void printNumbers(){
+    public void printNumbers() {
         List<Integer> numbers = new ArrayList<>(this.numbers);
         Collections.sort(numbers);
         System.out.println(numbers);
     }
-    public static Lotto createPurchaseLotto(){
+
+    public static Lotto createPurchaseLotto() {
         List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
         return new Lotto(numbers);
     }

@@ -16,7 +16,7 @@ public class Calculator {
         this.history = createHistory();
     }
 
-    public HashMap<String, Integer> getHistory(){
+    public HashMap<String, Integer> getHistory() {
         return history;
     }
 
