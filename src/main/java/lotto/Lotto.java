@@ -4,7 +4,7 @@ import java.util.List;
 
 import static lotto.LottoConstant.*;
 import static lotto.LottoErrorMessage.*;
-import static lotto.LottoSeller.printMessage;
+import static lotto.view.LottoSeller.printMessage;
 
 public class Lotto {
     private final List<Integer> numbers;
@@ -18,8 +18,17 @@ public class Lotto {
         return numbers.contains(number);
     }
 
-    public List<Integer> getNumbers() {
-        return this.numbers;
+    public int countNumberOfMatching(Lotto userLotto) {
+        int count = 0;
+        for (int i = 0; i < LOTTO_SIZE; i++) {
+            int userNumber = numbers.get(i);
+
+            if (userLotto.hasNumber(userNumber)) {
+                count++;
+            }
+        }
+
+        return count;
     }
 
     private void validate(List<Integer> numbers) {
