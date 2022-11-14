@@ -63,7 +63,15 @@ public class GameManager {
                 count++;
         }
 
+        count = checkSecondPrize(lotto, count);
+
         return Ranking.checkNumberCount(count);
+    }
+
+    public int checkSecondPrize(List<Integer> lotto, int count) {
+        if (lotto.contains(bonusNumber.getBonusNumber()) && count == Ranking.THIRD_PLACE.getNumberCount())
+            return Ranking.SECOND_PLACE.getNumberCount();
+        return count;
     }
 
     public void addRankingInResult(HashMap<Ranking, Integer> result, Ranking ranking) {
