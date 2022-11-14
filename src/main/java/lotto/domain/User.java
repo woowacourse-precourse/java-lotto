@@ -29,7 +29,7 @@ public class User {
         return Integer.parseInt(Console.readLine());
     }
 
-    public int setCount(int price) {
+    private int setCount(int price) {
         return price / 1000;
     }
 }
