@@ -29,11 +29,24 @@ public class Lotto {
 
     private void validate() {
         sizeValidate();
+        numberFormatValidate();
     }
 
     private void sizeValidate() {
         if (lotto.size() != LottoInfo.LOTTO_LENGTH.getValue()) {
             throw new IllegalArgumentException("[ERROR] 로또 번호는 6자리만 입력 가능합니다.");
+        }
+    }
+
+    private void numberFormatValidate() {
+        for (Integer number : lotto) {
+            eachNumberFormatValidate(number);
+        }
+    }
+
+    private void eachNumberFormatValidate(int number) {
+        if (number > LottoInfo.MAX_NUMBER.getValue() || number < LottoInfo.MIN_NUMBER.getValue()) {
+            throw new IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
         }
     }
 }
