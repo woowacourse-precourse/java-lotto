@@ -15,5 +15,9 @@ public class Application {
         int count = Money.calcmoney();
         List<List<Integer>> numbers = new ArrayList<>();
         RandomNumber.randomNumber(count,numbers);
+        List<Integer> lottoNumber = new ArrayList<>();
+        Lotto.lottoNumber(lottoNumber);
+        Lotto lotto = new Lotto(lottoNumber);
+        int bonus = Lotto.bonusNumber();
     }
 }
