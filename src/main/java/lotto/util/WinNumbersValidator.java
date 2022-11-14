@@ -3,12 +3,10 @@ package lotto.util;
 import java.util.Arrays;
 import java.util.regex.Pattern;
 import lotto.common.InputErrors;
+import lotto.common.LottoConstants;
 
 public class WinNumbersValidator implements Validator {
     private static final String DIAMETER = ",";
-    private static final int LOTTO_NUMBER_MIN_RANGE = 1;
-    private static final int LOTTO_NUMBER_MAX_RANGE = 45;
-    private static final int LOTTO_SIZE = 6;
 
     @Override
     public void validate(String userInput) throws IllegalArgumentException {
@@ -41,14 +39,14 @@ public class WinNumbersValidator implements Validator {
     }
 
     private void validateRange(int number) {
-        if (number < LOTTO_NUMBER_MIN_RANGE ||
-                number > LOTTO_NUMBER_MAX_RANGE) {
+        if (number < LottoConstants.LOTTO_NUMBER_MIN_RANGE ||
+                number > LottoConstants.LOTTO_NUMBER_MAX_RANGE) {
             throw new IllegalArgumentException(InputErrors.WIN_NUMBER_OUT_OF_RANGE.getMessage());
         }
     }
 
     private void validateSize(String userInput) {
-        if (userInput.split(DIAMETER).length != LOTTO_SIZE) {
+        if (userInput.split(DIAMETER).length != LottoConstants.LOTTO_SIZE) {
             throw new IllegalArgumentException(InputErrors.WIN_NUMBER_MISMATCH_SIZE.getMessage());
         }
     }

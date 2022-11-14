@@ -2,11 +2,9 @@ package lotto.util;
 
 import java.util.regex.Pattern;
 import lotto.common.InputErrors;
+import lotto.common.LottoConstants;
 
 public class BonusNumberValidator implements Validator {
-    private static final int LOTTO_NUMBER_MIN_RANGE = 1;
-    private static final int LOTTO_NUMBER_MAX_RANGE = 45;
-
     @Override
     public void validate(String userInput) throws IllegalArgumentException {
         validateNotNull(userInput);
@@ -29,8 +27,8 @@ public class BonusNumberValidator implements Validator {
 
     private void validateRange(String userInput) {
         int number = Integer.parseInt(userInput);
-        if (number < LOTTO_NUMBER_MIN_RANGE ||
-                number > LOTTO_NUMBER_MAX_RANGE) {
+        if (number < LottoConstants.LOTTO_NUMBER_MIN_RANGE ||
+                number > LottoConstants.LOTTO_NUMBER_MAX_RANGE) {
             throw new IllegalArgumentException(InputErrors.BONUS_NUMBER_OUT_OF_RANGE.getMessage());
         }
     }
