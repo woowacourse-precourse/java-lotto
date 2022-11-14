@@ -64,16 +64,4 @@ class LottoTest {
         );
     }
 
-    @DisplayName("로또 번호를 오름차순 정렬할 수 있다.")
-    @Test
-    void getSortedNumbers() {
-        assertThat(new Lotto(BEFORE).getSortedNumbers()).isEqualTo(AFTER);
-    }
-
-    @DisplayName("로또 번호를 오름차순 정렬하여 출력한다.")
-    @Test
-    void testToString() {
-        assertThat(new Lotto(BEFORE).toString()).isEqualTo(AFTER_STRING);
-    }
-
 }
