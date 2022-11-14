@@ -2,6 +2,7 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
 import lotto.entity.Lotto;
+import lotto.exception.Bonus;
 import lotto.exception.InputNumbers;
 import lotto.exception.PurchaseAmount;
 
@@ -34,5 +35,13 @@ public class Application {
         InputNumbers.checkException(stringNumbers);
         System.out.println();
         return stringNumbers;
+    }
+
+    public static int askBonus() {
+        System.out.println("보너스 번호를 입력해 주세요.");
+        String bonus = Console.readLine();
+        Bonus.checkException(bonus);
+        System.out.println();
+        return Integer.parseInt(bonus);
     }
 }
