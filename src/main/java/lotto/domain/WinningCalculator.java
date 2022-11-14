@@ -40,6 +40,7 @@ public class WinningCalculator {
     }
 
     public void setBonusNumber(String bonusNumberRaw) {
+        validateBonusNumberRaw(bonusNumberRaw);
         int bonusNumberConverted = Integer.parseInt(bonusNumberRaw);
         bonusNumber = bonusNumberConverted;
     }
@@ -122,5 +123,13 @@ public class WinningCalculator {
             return;
         }
         throw new IllegalArgumentException("[ERROR] 당첨 번호가 중복되었습니다.");
+    }
+
+    private void validateBonusNumberRaw(String bonusNumberRaw) {
+        try {
+            int bonusNumberConverted = Integer.parseInt(bonusNumberRaw);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("[ERROR] 숫자가 너무 큽니다.");
+        }
     }
 }
