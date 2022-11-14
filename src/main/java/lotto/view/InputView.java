@@ -7,18 +7,16 @@ import java.util.List;
 import java.util.stream.Collectors;
 import lotto.util.Validator;
 
-public class BuyerView {
+public class InputView {
     private static final String MESSAGE_INPUT_MONEY = "구입금액을 입력해 주세요.";
     private static final String MESSAGE_INPUT_NUMBERS = "당첨 번호를 입력해 주세요.";
     private static final String MESSAGE_INPUT_BONUS_NUMBER = "보너스 번호를 입력해 주세요.";
 
     private static final Validator validator = new Validator();
 
-    public static int inputMoney() {
+    public static String inputMoney() {
         System.out.println(MESSAGE_INPUT_MONEY);
-        String input = readLine();
-        validator.validateInput(input);
-        return Integer.parseInt(input);
+        return readLine();
     }
 
     public static List<Integer> inputNumbers() {

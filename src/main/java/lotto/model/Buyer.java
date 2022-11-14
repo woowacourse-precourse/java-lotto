@@ -11,10 +11,9 @@ public class Buyer {
     private int money;
     private int countLottos;
 
-    public Buyer(int inputMoney) {
-        Money money = new Money(inputMoney);
+    public Buyer(Money money) {
         this.money = money.getMoney();
-        this.countLottos = inputMoney / MIN_BUY_UNIT;
+        this.countLottos = this.money / MIN_BUY_UNIT;
         buyLottos();
     }
 

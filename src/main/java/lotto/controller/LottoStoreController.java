@@ -1,18 +1,20 @@
 package lotto.controller;
 
+import static lotto.view.OutputView.printStatics;
+import static lotto.view.OutputView.printYield;
+
 import java.util.List;
 import lotto.model.Buyer;
 import lotto.model.LottoStatics;
 import lotto.model.LottoStore;
-import lotto.view.BuyerView;
+import lotto.model.Money;
+import lotto.view.InputView;
 
 public class LottoStoreController {
-    private static final String MESSAGE_YIELD = "총 수익률은 %.1f%%입니다.";
-
-    private final BuyerView input;
+    private final InputView input;
 
     public LottoStoreController() {
-        this.input = new BuyerView();
+        this.input = new InputView();
     }
 
     public void run() {
@@ -22,12 +24,12 @@ public class LottoStoreController {
         LottoStore store = createLottoStore();
         LottoStatics statics = new LottoStatics();
         statics.calculateStatics(buyer, store);
-        statics.printStatics();
+        printStatics(statics);
         printYield(buyer, statics);
     }
 
     private Buyer createBuyer() {
-        int money = input.inputMoney();
+        Money money = new Money(InputView.inputMoney());
         return new Buyer(money);
     }
 
@@ -35,10 +37,5 @@ public class LottoStoreController {
         List<Integer> lotteryNumbers = input.inputNumbers();
         int bonusNumber = input.inputBonusNumber();
         return new LottoStore(lotteryNumbers, bonusNumber);
-    }
-
-    private void printYield(Buyer buyer, LottoStatics statics) {
-        float yield = (statics.getTotalPrize() / (float) buyer.getMoney()) * 100;
-        System.out.printf(MESSAGE_YIELD, yield);
     }
 }
