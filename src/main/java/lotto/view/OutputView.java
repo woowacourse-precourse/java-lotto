@@ -9,12 +9,10 @@ import java.util.List;
 import static lotto.Game.count;
 import static lotto.Game.lottos;
 
-public class OutputView{
+public class OutputView extends View{
     private static List<Integer> sortedList;
-    private static void changeLine(){
-        System.out.println();
-    }
     public static void countView(){
+        changeLine();
         System.out.printf("%d개를 구매했습니다.",count);
         changeLine();
     }
@@ -37,6 +35,7 @@ public class OutputView{
         System.out.printf("%d개 일치 (%s) - %d개", winning.match,winning.priceText,winning.count);
     }
     private static void resultTitleView(){
+        changeLine();
         System.out.println("당첨 통계");
         System.out.println("---");
     }

@@ -2,7 +2,7 @@ package lotto.view;
 
 import camp.nextstep.edu.missionutils.Console;
 
-public class InputView {
+public class InputView extends View{
     public static String inputMoneyView(){
         System.out.println("구입금액을 입력해 주세요.");
         return Console.readLine();
@@ -14,6 +14,7 @@ public class InputView {
     }
 
     public static String inputBonusView(){
+        changeLine();
         System.out.println("보너스 번호를 입력해 주세요.");
         return Console.readLine();
     }
