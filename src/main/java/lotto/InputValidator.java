@@ -1,10 +1,12 @@
 package lotto;
 
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 public class InputValidator {
-    public void validateLotto(List<Integer> lotto){
+    public void validateLotto(List<Integer> lotto) {
         validateLottoSize(lotto);
         validateDuplicatedLotto(lotto);
         for (Integer number : lotto) {
@@ -12,7 +14,15 @@ public class InputValidator {
         }
     }
 
-    public void validateBonusNumber(int bonusNumber){
+    public void validateOnlyNumbers(String inputString) {
+        String regexOnlyNumbers = "^[0-9]*$";
+        Matcher matcherOnlyNumbers = Pattern.compile(regexOnlyNumbers).matcher(inputString);
+        if (!matcherOnlyNumbers.matches()){
+            throw new IllegalArgumentException("[ERROR] 숫자만 입력해주세요.");
+        }
+    }
+
+    public void validateBonusNumber(int bonusNumber) {
         validateLottoNumber(bonusNumber);
     }
 
