@@ -36,4 +36,29 @@ class LottoGradeCounterTest {
             assertThat(v).isEqualTo(expect);
         });
     }
+
+    @Test
+    @DisplayName("카운트업을 전체 2회씩 실행")
+    void countUpTwice() throws Exception {
+        //given
+        LottoGradeCounter counter = new LottoGradeCounter();
+        //when
+        counter.countByOne(LottoGrade.BANG);
+        counter.countByOne(LottoGrade.BANG);
+        counter.countByOne(LottoGrade.FIFTH);
+        counter.countByOne(LottoGrade.FIFTH);
+        counter.countByOne(LottoGrade.FOURTH);
+        counter.countByOne(LottoGrade.FOURTH);
+        counter.countByOne(LottoGrade.THIRD);
+        counter.countByOne(LottoGrade.THIRD);
+        counter.countByOne(LottoGrade.SECOND);
+        counter.countByOne(LottoGrade.SECOND);
+        counter.countByOne(LottoGrade.FIRST);
+        counter.countByOne(LottoGrade.FIRST);
+        int expect = 2;
+        //then
+        counter.forEach((k,v) -> {
+            assertThat(v).isEqualTo(expect);
+        });
+    }
 }

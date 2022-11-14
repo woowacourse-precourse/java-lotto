@@ -67,11 +67,11 @@
   - [X] 수익률을 제대로 계산하는가
 - [X] LottoFactory
   - [X] 원하는 개수만큼 로또를 생성하는가
-- [ ] LottoGradeCounter
+- [X] LottoGradeCounter
   - [X] LottoGradeCounter 생성시 초기값을 제대로 넣는가
   - [X] 프린트용 LottoGradeCounter를 전송시 꽝을 제외하고 전송하는가
-  - [ ] 카운트업을 제대로 동작하는가
-  - [ ] forEach가 제대로 동작하는가
+  - [X] 카운트업을 제대로 동작하는가
+  - [X] forEach가 제대로 동작하는가
 - [ ] LottoMatcher
   - [ ] 로또 비교를 제대로 수행하는가 
 - [ ] Lottos
