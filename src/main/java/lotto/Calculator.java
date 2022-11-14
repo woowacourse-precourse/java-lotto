@@ -22,19 +22,19 @@ public class Calculator {
      * @return resultList
      */
     public List<Integer> calculateCorrectNum() {
-        List<Integer> resultList = new ArrayList<>();
+        List<Integer> result = new ArrayList<>();
         for (List<Integer> lotto : purchasedLottos) {
             List<Integer> correctNumbers = winningNum.stream().filter(x -> lotto.contains(x))
                     .collect(Collectors.toList());
             if (correctNumbers.size() == 5 && isBonusCorrect(lotto)) {
-                resultList.add(-1);
+                result.add(-1);
                 continue;
             }
             if (correctNumbers.size() >= 3) {
-                resultList.add(correctNumbers.size());
+                result.add(correctNumbers.size());
             }
         }
-        return resultList;
+        return result;
     }
 
     /**
@@ -53,11 +53,11 @@ public class Calculator {
      */
     public LinkedHashMap<Result, Integer> countResultRank(List<Integer> resultList) {
         LinkedHashMap<Result, Integer> stats = new LinkedHashMap<>();
-        List<Result> resultEnums = List.of(Result.values());
-        for (Result resultEnum : resultEnums) {
-            List<Integer> rankCount = resultList.stream().filter(x -> x == resultEnum.correctCount()).collect(Collectors.toList());
+        List<Result> ranks = List.of(Result.values());
+        for (Result rank : ranks) {
+            List<Integer> rankCount = resultList.stream().filter(x -> x == rank.correctCount()).collect(Collectors.toList());
             int count = rankCount.size();
-            stats.put(resultEnum, count);
+            stats.put(rank, count);
         }
         return stats;
     }
@@ -69,8 +69,8 @@ public class Calculator {
      */
     public double calcProfit(LinkedHashMap<Result, Integer> stats) {
         double profit = 0;
-        for (Result keyEnum : stats.keySet()) {
-            profit += keyEnum.prize() * stats.get(keyEnum);
+        for (Result key : stats.keySet()) {
+            profit += key.prize() * stats.get(key);
         }
         double spent = Manager.COST * purchasedLottos.size();
         return (profit / spent) * 100;
@@ -82,16 +82,16 @@ public class Calculator {
      */
     public void showStats(LinkedHashMap<Result, Integer> stats) {
         System.out.println("\n당첨 통계\n---");
-        for (Result keyEnum : stats.keySet()) {
-            int correctCount = keyEnum.correctCount();
+        for (Result key : stats.keySet()) {
+            int correctCount = key.correctCount();
             if (correctCount == -1) {
                 correctCount = 5;
             }
             String bonus = "";
-            if (keyEnum.correctCount() == -1) {
+            if (key.correctCount() == -1) {
                 bonus = ", 보너스 볼 일치";
             }
-            System.out.println(correctCount + "개 일치" + bonus + " (" + keyEnum.prizeString() + "원)" + " - " + stats.get(keyEnum) + "개");
+            System.out.println(correctCount + "개 일치" + bonus + " (" + key.prizeString() + "원)" + " - " + stats.get(key) + "개");
         }
         System.out.println("총 수익률은 " + calcProfit(stats) + "%입니다.");
     }
