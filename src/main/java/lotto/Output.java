@@ -25,7 +25,7 @@ public class Output {
 				continue;
 			}
 			if (rank == Rank.SECOND) {
-				System.out.println(rank.getMatchCount() + "개 일치, 보너스 볼 일치(" + rank.getMoney() + "원) - "
+				System.out.println(rank.getMatchCount() + "개 일치, 보너스 볼 일치 (" + rank.getMoney() + "원) - "
 					+ result.get(rank.getMatchCount()) + "개");
 				continue;
 			}
@@ -34,7 +34,7 @@ public class Output {
 		}
 	}
 
-	public static void printEarningRate(int earningMoney, int paidMoney) {
-		System.out.println("총 수익률은 " + EarningRate.calculate(earningMoney, paidMoney) + "입니다.");
+	public static void printEarningRate(int paidMoney, Long earningMoney) {
+		System.out.println("총 수익률은 " + EarningRate.calculate(paidMoney, earningMoney) + "%입니다.");
 	}
 }

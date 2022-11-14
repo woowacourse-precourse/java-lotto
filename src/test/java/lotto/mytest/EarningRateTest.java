@@ -9,14 +9,14 @@ import lotto.EarningRate;
 
 public class EarningRateTest {
 	int paidMoney;
-	int earningMoney;
+	Long earningMoney;
 	double earningRate;
 
 	@DisplayName("수익률 계산 확인")
 	@Test
 	void earningRate() {
 		paidMoney = 8000;
-		earningMoney = 5000;
+		earningMoney = 5000L;
 		earningRate = EarningRate.calculate(paidMoney, earningMoney);
 		assertThat(earningRate).isEqualTo(62.5);
 	}

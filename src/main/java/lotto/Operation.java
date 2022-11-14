@@ -28,5 +28,8 @@ public class Operation {
 		WinningLotto winningLottoResult = new WinningLotto(winningLotto, bonusNumber);
 		HashMap<Integer, Integer> result = winningLottoResult.produceResult(lotteryTickets);
 		Output.printResult(result);
+
+		Long earningMoney = Prize.getTotalPrizeMoney(result);
+		Output.printEarningRate(ticketCount * 1000, earningMoney);
 	}
 }
