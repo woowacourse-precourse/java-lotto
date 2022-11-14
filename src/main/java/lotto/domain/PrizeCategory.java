@@ -8,10 +8,10 @@ public enum PrizeCategory {
     Six("2,000,000,000원", 6);
 
     String winnings;
-    int matchcount;
+    int matchCount;
 
-    PrizeCategory(String winnings, int matchcount) {
+    PrizeCategory(String winnings, int matchCount) {
         this.winnings = winnings;
-        this.matchcount = matchcount;
+        this.matchCount = matchCount;
     }
 }
