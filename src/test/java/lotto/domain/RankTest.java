@@ -14,5 +14,14 @@ class RankTest {
         assertThat(Rank.NOTHING.getMatch()).isEqualTo(0);
     }
 
-
+    @DisplayName("등수 상금과 실제 금액이 일치하는지 확인한다")
+    @Test
+    void getRankPriceTest() {
+        assertThat(Rank.FIRST.getPrice().getMoney())
+                .isEqualTo(new Money(2_000_000_000).getMoney());
+        assertThat(Rank.SECOND.getPrice().getMoney())
+                .isEqualTo(new Money(30_000_000).getMoney());
+        assertThat(Rank.NOTHING.getPrice().getMoney())
+                .isEqualTo(new Money(0).getMoney());
+    }
 }
