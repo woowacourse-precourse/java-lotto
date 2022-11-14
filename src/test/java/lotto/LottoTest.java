@@ -80,6 +80,6 @@ class LottoTest {
         int bonus = 11;
 
         List<Integer> rankCount = Application.getRankCount(lotteries, winningNumbers, bonus);
-        assertThat(rankCount.toString()).isEqualTo("[0, 0, 0, 0, 1, 0 ]");
+        assertThat(rankCount.toString()).isEqualTo("[0, 0, 0, 0, 1, 0]");
     }
 }
