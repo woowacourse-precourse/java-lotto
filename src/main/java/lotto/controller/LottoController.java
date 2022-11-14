@@ -14,22 +14,47 @@ public class LottoController {
     private final OutputView outputView = OutputView.getInstance();
 
     public void run() {
-        int amount = inputView.inputPurchaseAmount();
-        PurchaseAmount purchaseAmount = new PurchaseAmount(amount);
+        PurchaseAmount purchaseAmount = inputPurchaseAmount();
 
-        int numberOfLottos = purchaseAmount.getNumberOfLottos();
-        outputView.printNumberOfLottos(numberOfLottos);
+        printNumberOfLottos(purchaseAmount);
 
-        Lottos lottos = LottoFactory.generate(numberOfLottos);
-        outputView.printLottos(lottos);
+        Lottos lottos = generateLottos(purchaseAmount.getNumberOfLottos());
+        WinningNumbers winningNumbers = inputWinningNumbers();
 
+        printLottosInfo(lottos);
+        printLottosResult(lottos, winningNumbers);
+        printProfitRate(purchaseAmount, lottos, winningNumbers);
+    }
+
+    private PurchaseAmount inputPurchaseAmount() {
+        int purchaseAmount = inputView.inputPurchaseAmount();
+        return new PurchaseAmount(purchaseAmount);
+    }
+
+    private WinningNumbers inputWinningNumbers() {
         List<Integer> regularNumbers = inputView.inputWinningNumbers();
         int bonusNumber = inputView.inputBonusNumber();
 
-        WinningNumbers winningNumbers = new WinningNumbers(regularNumbers, bonusNumber);
+        return new WinningNumbers(regularNumbers, bonusNumber);
+    }
 
+    private void printNumberOfLottos(PurchaseAmount purchaseAmount) {
+        outputView.printNumberOfLottos(purchaseAmount.getNumberOfLottos());
+    }
+
+    private void printLottosInfo(Lottos lottos) {
+        outputView.printLottos(lottos);
+    }
+
+    private void printLottosResult(Lottos lottos, WinningNumbers winningNumbers) {
         outputView.printWinningInfo(lottos.getWinningInfo(winningNumbers));
+    }
 
+    private void printProfitRate(PurchaseAmount purchaseAmount, Lottos lottos, WinningNumbers winningNumbers) {
         outputView.printProfitRate(purchaseAmount.calculateProfitRate(lottos.getWinningAmount(winningNumbers)));
+    }
+
+    private Lottos generateLottos(int numberOfLottos) {
+        return LottoFactory.generate(numberOfLottos);
     }
 }
