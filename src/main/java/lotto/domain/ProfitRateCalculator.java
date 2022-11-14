@@ -24,6 +24,10 @@ public class ProfitRateCalculator {
         double totalMoney = getTotalMoney(three, four, five, fiveBonus, six);
         double profitRate = calculateProfitRate(money, totalMoney);
 
+        return roundOffProfitRate(profitRate);
+    }
+
+    private static String roundOffProfitRate(double profitRate) {
         return String.format("%.1f", profitRate);
     }
 
