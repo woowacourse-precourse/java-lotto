@@ -62,18 +62,6 @@ public class Model {
         PRIZE_RANKINGS = makeNumberByRanking(prizeRankings);
     }
 
-    private HashMap<Integer, Integer> makeNumberByRanking (List<Integer> prizeRankings) {
-        HashMap<Integer, Integer> numberByRanking = new HashMap<>();
-
-        for (int temp = Ranking.FIRST.getRanking(); temp <= Ranking.FIFTH.getRanking(); temp++) {
-            numberByRanking.put(temp, 0);
-        }
-
-        inputNumberByRanking(prizeRankings, numberByRanking);
-
-        return numberByRanking;
-    }
-
     private void checkBonusNumber(List<Integer> prizeRankings){
         int changedRanking;
 
@@ -84,6 +72,18 @@ public class Model {
                 prizeRankings.set(temp, changedRanking);
             }
         }
+    }
+
+    private HashMap<Integer, Integer> makeNumberByRanking (List<Integer> prizeRankings) {
+        HashMap<Integer, Integer> numberByRanking = new HashMap<>();
+
+        for (int temp = Ranking.FIRST.getRanking(); temp <= Ranking.FIFTH.getRanking(); temp++) {
+            numberByRanking.put(temp, 0);
+        }
+
+        inputNumberByRanking(prizeRankings, numberByRanking);
+
+        return numberByRanking;
     }
 
     private int upRanking (List<Integer> usersLotto, int bonusNumber) {
