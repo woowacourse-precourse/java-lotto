@@ -5,7 +5,7 @@ import java.util.List;
 
 public class UserInputValidator {
     public static void moneyUnitValidate(int money) throws IllegalArgumentException {
-        if (money % 10 != 0) {
+        if (money % 1000 != 0) {
             throw new IllegalArgumentException("[ERROR] 1000원 단위의 금액만 입력해야 합니다.");
         }
     }
