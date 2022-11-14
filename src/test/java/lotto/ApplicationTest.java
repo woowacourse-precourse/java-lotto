@@ -47,9 +47,67 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    void 같은번호여러장() {
+        assertRandomUniqueNumbersInRangeTest(
+                () -> {
+                    run("8000", "1,2,3,4,5,6", "7");
+                    assertThat(output()).contains(
+                            "8개를 구매했습니다.",
+                            "[1, 2, 3, 4, 5, 7]",
+                            "[1, 2, 3, 4, 5, 7]",
+                            "[1, 2, 3, 4, 5, 7]",
+                            "[1, 2, 3, 4, 5, 7]",
+                            "[1, 2, 3, 4, 5, 7]",
+                            "[1, 2, 3, 4, 5, 7]",
+                            "[1, 2, 3, 4, 5, 7]",
+                            "[1, 2, 3, 4, 5, 7]",
+                            "3개 일치 (5,000원) - 0개",
+                            "4개 일치 (50,000원) - 0개",
+                            "5개 일치 (1,500,000원) - 0개",
+                            "5개 일치, 보너스 볼 일치 (30,000,000원) - 8개",
+                            "6개 일치 (2,000,000,000원) - 0개",
+                            "총 수익률은 3000000.0%입니다."
+                    );
+                },
+                List.of(1, 2, 3, 4, 5, 7),
+                List.of(1, 2, 3, 4, 5, 7),
+                List.of(1, 2, 3, 4, 5, 7),
+                List.of(1, 2, 3, 4, 5, 7),
+                List.of(1, 2, 3, 4, 5, 7),
+                List.of(1, 2, 3, 4, 5, 7),
+                List.of(1, 2, 3, 4, 5, 7),
+                List.of(1, 2, 3, 4, 5, 7)
+        );
+    }
+
+    @Test
     void 예외_테스트() {
         assertSimpleTest(() -> {
             runException("1000j");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
+    @Test
+    void 입력금액이_1000미만_예외() {
+        assertSimpleTest(() -> {
+            runException("999");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
+    @Test
+    void 입력금액이_음수인경우_예외() {
+        assertSimpleTest(() -> {
+            runException("-2000");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
+    @Test
+    void 입력금액이_공백인경우_예외() {
+        assertSimpleTest(() -> {
+            runException(" ");
             assertThat(output()).contains(ERROR_MESSAGE);
         });
     }
