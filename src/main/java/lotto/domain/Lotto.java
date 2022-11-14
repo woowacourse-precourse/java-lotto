@@ -19,10 +19,6 @@ public class Lotto {
         this.numbers = numbers;
     }
 
-    public List<Integer> getNumbers() {
-        return numbers;
-    }
-
     private void validateSize(List<Integer> numbers) {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException(SIZE_ERROR_MESSAGE);
@@ -42,5 +38,9 @@ public class Lotto {
         if (differentNumbers.size() != numbers.size()) {
             throw new IllegalArgumentException(DUPLICATE_ERROR_MESSAGE);
         }
+    }
+
+    public List<Integer> getNumbers() {
+        return numbers;
     }
 }
