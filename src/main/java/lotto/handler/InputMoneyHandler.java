@@ -14,7 +14,7 @@ public class InputMoneyHandler {
         boolean checkNumeric = inputMoney.matches("[+-]?\\d*(\\.\\d+)?");
 
         if(!checkNumeric){
-            throw new IllegalArgumentException(ERROR_ORDER);
+            throw new IllegalArgumentException(ERROR_ORDER+" 입력 금액은 숫자여야 합니다.");
         }
     }
 
@@ -22,7 +22,7 @@ public class InputMoneyHandler {
         int money = Integer.parseInt(inputMoney);
 
         if(money == 0) {
-            throw new IllegalArgumentException(ERROR_ORDER);
+            throw new IllegalArgumentException(ERROR_ORDER+" 입력 금액은 0이 아니어야 합니다.");
         }
     }
 
@@ -31,7 +31,7 @@ public class InputMoneyHandler {
         int money = Integer.parseInt(inputMoney);
 
         if(money % userLottoService.LOTTO_PRICE  != 0) {
-            throw new IllegalArgumentException(ERROR_ORDER);
+            throw new IllegalArgumentException(ERROR_ORDER+" 입력 금액은 1000단위로 나누어저야 합니다.");
         }
     }
 }
