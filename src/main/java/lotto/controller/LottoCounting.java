@@ -41,7 +41,7 @@ public class LottoCounting {
         lottoBox.put(oneLottoPaper,howManyNumbersCorrect);
     }
 
-    private int compareLottoAndCount(Lotto oneLottoPaper, Lotto winningLotto){
+    int compareLottoAndCount(Lotto oneLottoPaper, Lotto winningLotto){
         int lottoCount = 0;
         List<Integer> lottoNumbers = oneLottoPaper.getNumbers();
         for (Integer oneLottoNumber : lottoNumbers) {
