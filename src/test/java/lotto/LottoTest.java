@@ -24,4 +24,38 @@ class LottoTest {
     }
 
     // 아래에 추가 테스트 작성 가능
+    @DisplayName("로또 번호의 개수가 6개 미만이면 예외가 발생한다.")
+    @Test
+    void createLottoByUnderSize() {
+        assertThatThrownBy(() -> new Lotto(List.of(1, 2, 3, 4, 5)))
+                .isInstanceOf(IllegalArgumentException.class);
+
+    }
+
+    @DisplayName("범위를 벗어난 숫자가 있으면 예외가 발생한다.")
+    @Test
+    void createLottoByOverRangeNumber() {
+        assertThatThrownBy(() -> new Lotto(List.of(1, 2, 3, 4, 5, 55)))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void createLottoByOverRangeNumber2() {
+        assertThatThrownBy(() -> new Lotto(List.of(0, 2, 3, 4, 5, 45)))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("아무것도 들어오지 않았을 때 예외가 발생한다.")
+    @Test
+    void createLottoByNothing() {
+        assertThatThrownBy(() -> new Lotto(List.of()))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("음수가 들어왔을 때 예외가 발생한다.")
+    @Test
+    void createLottoBy() {
+        assertThatThrownBy(() -> new Lotto(List.of(1, 2, 3, 4, -1, 6)))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
