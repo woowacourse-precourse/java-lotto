@@ -9,6 +9,9 @@ import java.util.stream.Collectors;
 
 
 public class InputView {
+    private static final int LOTTO_SIZE = 6;
+    private static final int START_VALUE = 1;
+    private static final int END_VALUE = 45;
 
     public int inputMoney() {
         System.out.println("구입금액을 입력해 주세요.");
@@ -17,6 +20,52 @@ public class InputView {
         isValidationForMoney(money);
 
         return money;
+    }
+
+    public List<Integer> inputWinningLottoNumbers() {
+        System.out.println("당첨 번호를 입력해 주세요.");
+        List<Integer> winningLottoNumbers = convertIntegerList(Console.readLine());
+
+        isCorrectLottoSize(winningLottoNumbers);
+        isCorrectLottoNumber(winningLottoNumbers);
+        isUnique(winningLottoNumbers);
+
+        return winningLottoNumbers;
+    }
+
+    private void isCorrectLottoNumber(List<Integer> winningLottoNumbers) {
+        Long incorrectNumberCount = winningLottoNumbers.stream()
+                .filter(n -> (n < START_VALUE || n > END_VALUE))
+                .count();
+
+        if (incorrectNumberCount > 0) {
+            throw new IllegalArgumentException(ErrorMessage.INVALID_INPUT.getMessage());
+        }
+    }
+
+    private void isUnique(List<Integer> winningLottoNumbers) {
+        for (int i = 0; i < 6; i++) {
+            if (!(winningLottoNumbers.indexOf(winningLottoNumbers.get(i)) == i)) {
+                throw new IllegalArgumentException(ErrorMessage.INVALID_INPUT.getMessage());
+            }
+        }
+    }
+
+    private void isCorrectLottoSize(List<Integer> winningLottoNumbers) {
+        if (winningLottoNumbers.size() > LOTTO_SIZE) {
+            throw new IllegalArgumentException(ErrorMessage.INVALID_INPUT.getMessage());
+        }
+    }
+
+    private List<Integer> convertIntegerList(String numbers) {
+        try {
+            return Arrays.stream(numbers.split(","))
+                    .mapToInt(number -> Integer.parseInt(number))
+                    .boxed()
+                    .collect(Collectors.toList());
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException(ErrorMessage.INVALID_INPUT.getMessage());
+        }
     }
 
     private void isValidationForMoney(int money) {
