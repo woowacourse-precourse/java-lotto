@@ -33,7 +33,7 @@ public class UserInterface {
         System.out.println();
         System.out.println(INPUT_WINNING_NUMBERS_ANNOUNCEMENT);
         String numbersRaw = Console.readLine();
-//        InputValidator.checkInputWinningNumbers(numbersRaw);
+        InputValidator.checkInputWinningNumbers(numbersRaw);
         return numbersRaw;
     }
 
