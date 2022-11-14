@@ -19,6 +19,8 @@ public class OutputView {
     private static final String STATISTIC_HEADER = "당첨 통계" + NEW_LINE + "---";
     private static final String STATISTIC_BODY = "%d개 일치%s (%s원) - %d개";
     private static final String MATCH_BONUS_BALL = "보너스 볼 일치";
+    private static final String TOTAL_YIELD = "총 수익률은 %.1f%%입니다.";
+    private static final int ONE_HUNDRED = 100;
 
     private static final Map<Integer, String> winnings = new LinkedHashMap<>() {{
         put(2000000000, "2,000,000,000");
