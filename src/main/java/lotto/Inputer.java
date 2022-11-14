@@ -5,6 +5,8 @@ import java.util.List;
 public class Inputer {
 
     public int inputMoney(){
+
+
         return 0;
     }
 

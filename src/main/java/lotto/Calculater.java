@@ -4,7 +4,7 @@ import java.util.List;
 
 public class Calculater {
 
-    public int caculateRevenue(List<Inputer> winList){
+    public int caculateRevenue(List<Integer> winList){
         return 0;
 
     }
