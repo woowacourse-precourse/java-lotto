@@ -33,6 +33,19 @@ public class InputView {
         return winningLottoNumbers;
     }
 
+    public int inputBonusNumber() {
+        System.out.println("보너스 번호를 입력해 주세요.");
+        int bonusNumber = convertInteger(Console.readLine());
+        isCorrectBonusNumber(bonusNumber);
+        return bonusNumber;
+    }
+
+    private void isCorrectBonusNumber(int bonusNumber) {
+        if (bonusNumber < START_VALUE || bonusNumber > END_VALUE) {
+            throw new IllegalArgumentException(ErrorMessage.INVALID_INPUT.getMessage());
+        }
+    }
+
     private void isCorrectLottoNumber(List<Integer> winningLottoNumbers) {
         Long incorrectNumberCount = winningLottoNumbers.stream()
                 .filter(n -> (n < START_VALUE || n > END_VALUE))
