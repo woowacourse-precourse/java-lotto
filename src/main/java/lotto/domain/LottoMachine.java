@@ -42,11 +42,11 @@ public class LottoMachine {
         return lottos;
     }
 
-    public void saveWinningNumber(List<Integer> numbers, int bonusNumber) {
-        if (checkDuplication(numbers, bonusNumber) == false) {
+    public void saveWinningNumber(Lotto lotto, int bonusNumber) {
+        if (checkDuplication(lotto.getNumbers(), bonusNumber) == false) {
             throw new IllegalArgumentException(DUPLICATION_BOUNUS_NUMBER);
         }
-        winningLotto = new WinningLotto(new Lotto(numbers), bonusNumber);
+        winningLotto = new WinningLotto(lotto, bonusNumber);
     }
 
     private Lotto createRandomNumbers() {
