@@ -32,14 +32,14 @@ public enum Ranking {
     }
 
     public static List<Ranking> makeRankingList() {
-        List<Ranking> rankingList = new ArrayList<>();
-        Ranking[] rankingArr = Ranking.values();
+        List<Ranking> rankings = new ArrayList<>();
+        Ranking[] ranking = Ranking.values();
 
         for (int i = 4; i >= 0; i--) {
-            rankingList.add(rankingArr[i]);
+            rankings.add(ranking[i]);
         }
 
-        return rankingList;
+        return rankings;
     }
 
     public int getMoney() {

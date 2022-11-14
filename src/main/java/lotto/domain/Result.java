@@ -13,12 +13,12 @@ public class Result {
     }
 
     private void makeWinningResult(List<Ranking> rankings) {
-        List<Ranking> rankingList = Ranking.makeRankingList();
+        List<Ranking> rankingResult = Ranking.makeRankingList();
 
         for (Ranking ranking : rankings) {
             result.put(ranking, result.getOrDefault(ranking, 0) + 1);
         }
-        for (Ranking ranking : rankingList) {
+        for (Ranking ranking : rankingResult) {
             if (!result.containsKey(ranking)) {
                 result.put(ranking, 0);
             }
@@ -26,10 +26,10 @@ public class Result {
     }
 
     public long calculateTotalMoney() {
-        List<Ranking> rankingList = Ranking.makeRankingList();
+        List<Ranking> rankingResult = Ranking.makeRankingList();
         long sum = 0;
 
-        for (Ranking ranking : rankingList) {
+        for (Ranking ranking : rankingResult) {
             if (result.containsKey(ranking)) {
                 int money = ranking.getMoney();
                 int count = result.get(ranking);
