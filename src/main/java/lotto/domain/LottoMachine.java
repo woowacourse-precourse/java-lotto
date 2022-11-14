@@ -22,13 +22,13 @@ public class LottoMachine {
     }
 
     private void validBill(Money money) {
-        if (money.getMoney() % LottoConstants.LOTTO_PRICE != 0) {
+        if (money.getValue() % LottoConstants.LOTTO_PRICE != 0) {
             throw ErrorCode.NOT_BILL.getException();
         }
     }
 
     private List<Lotto> buyLottoTicket(Money money) {
-        int count = money.getMoney() / LottoConstants.LOTTO_PRICE;
+        int count = money.getValue() / LottoConstants.LOTTO_PRICE;
         List<Lotto> lottoList = new ArrayList<>();
 
         for (; count > 0; count--) {

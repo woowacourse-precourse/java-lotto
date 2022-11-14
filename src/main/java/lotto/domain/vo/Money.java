@@ -1,7 +1,6 @@
 package lotto.domain.vo;
 
 import lotto.domain.constants.ErrorCode;
-import lotto.domain.constants.LottoConstants;
 
 public class Money {
 
@@ -12,7 +11,7 @@ public class Money {
         this.value = value;
     }
 
-    public int getMoney() {
+    public int getValue() {
         return value;
     }
 
