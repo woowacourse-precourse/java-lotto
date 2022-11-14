@@ -8,7 +8,7 @@ import java.util.List;
 
 public class Inputer {
 
-    List<Integer> lottoNumbers;
+    List<Integer> inputlottoNumbers;
 
     public int moneyandCount() throws IllegalArgumentException {
         String input = Console.readLine();
@@ -27,8 +27,8 @@ public class Inputer {
 
     public void inputlotto() throws IllegalArgumentException {
         String input = Console.readLine();
-        lottoNumbers = splitToken(input);
-        for(int data : lottoNumbers) {
+        inputlottoNumbers = splitToken(input);
+        for(int data : inputlottoNumbers) {
             if(!validToken(data)) {
                 System.out.println("[ERROR] : Invalid argument!");
                 throw new IllegalArgumentException();
@@ -42,7 +42,11 @@ public class Inputer {
             System.out.println("[ERROR] : Invalid argument!");
             throw new IllegalArgumentException();
         }
-        lottoNumbers.add(Integer.parseInt(input));
+        inputlottoNumbers.add(Integer.parseInt(input));
+    }
+
+    public List<Integer> getInputlottoNumbers() {
+        return inputlottoNumbers;
     }
 
     private List<Integer> splitToken(String data) {
