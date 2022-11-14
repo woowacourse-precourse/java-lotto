@@ -27,7 +27,8 @@ public class Application {
             printLottoTicketHistory();
 
             printWinningsOutOfBuyingPrice(inputPrice);
-        } catch (Exception e) {
+        } catch (LottoException e) {
+            System.out.println(e.getMessage());
         }
 
     }
@@ -35,7 +36,7 @@ public class Application {
     public static int checkUserInputCondition(String input) {
         for (int i = 0; i < input.length(); i++) {
             if (!Character.isDigit(input.charAt(i))) {
-                throw new IllegalArgumentException(ErrorResponse.INPUT_CONTAINS_CHAR_ERROR.getErrorMessage());
+                throw new LottoException(ErrorResponse.INPUT_CONTAINS_CHAR_ERROR);
             }
         }
 
@@ -44,7 +45,7 @@ public class Application {
 
     public static int convertBuyingPriceIntoTicketAmount(int buyingPrice) {
         if (buyingPrice % 1000 != 0) {
-            throw new IllegalArgumentException(ErrorResponse.INPUT_BUYING_RANGE_ERROR.getErrorMessage());
+            throw new LottoException(ErrorResponse.INPUT_BUYING_RANGE_ERROR);
         }
 
         return buyingPrice / 1000;
@@ -65,24 +66,11 @@ public class Application {
     private static List<Lotto> buyLotto() {
         String userInput = Console.readLine();
         System.out.println();
-        int buyingPrice, ticketAmount;
-
-        try {
-            buyingPrice = checkUserInputCondition(userInput);
-        } catch (IllegalArgumentException e) {
-            System.out.println(ErrorResponse.INPUT_CONTAINS_CHAR_ERROR.getErrorMessage());
-            throw new IllegalArgumentException();
-        }
+        int buyingPrice = checkUserInputCondition(userInput);
 
         inputPrice = buyingPrice;
 
-        try {
-            ticketAmount = convertBuyingPriceIntoTicketAmount(buyingPrice);
-        } catch (IllegalArgumentException e) {
-            System.out.println(ErrorResponse.INPUT_BUYING_RANGE_ERROR.getErrorMessage());
-            throw new IllegalArgumentException();
-        }
-
+        int ticketAmount = convertBuyingPriceIntoTicketAmount(buyingPrice);
         List<Lotto> lottoTickets = getLottoTickets(ticketAmount);
 
         return lottoTickets;
@@ -99,7 +87,7 @@ public class Application {
 
     public static String validateWinnerNumberContainsComma(String userInput) {
         if (!userInput.contains(",")) {
-            throw new IllegalArgumentException(ErrorResponse.INPUT_WITHOUT_COMMA_ERROR.getErrorMessage());
+            throw new LottoException(ErrorResponse.INPUT_WITHOUT_COMMA_ERROR);
         }
 
         return userInput;
@@ -109,7 +97,7 @@ public class Application {
         String[] trimmedInput = userInput.split(",");
 
         if (trimmedInput.length != 6) {
-            throw new IllegalArgumentException(ErrorResponse.INPUT_WRONG_SIZE_ERROR.getErrorMessage());
+            throw new LottoException(ErrorResponse.INPUT_WRONG_SIZE_ERROR);
         }
 
         return userInput;
@@ -129,7 +117,7 @@ public class Application {
     public static void validateWinnerNumberRange(List<Integer> winnerNumber) {
         for (Integer eachNumber : winnerNumber) {
             if (eachNumber < 1 || eachNumber > 45) {
-                throw new IllegalArgumentException(ErrorResponse.INPUT_LOTTO_RANGE_ERROR.getErrorMessage());
+                throw new LottoException(ErrorResponse.INPUT_LOTTO_RANGE_ERROR);
             }
         }
     }
@@ -137,37 +125,18 @@ public class Application {
     private static List<Integer> inputWinnerNumber() {
         System.out.println("당첨 번호를 입력해 주세요.");
         String userInput = Console.readLine();
-        String commaValidated, sizeValidated;
 
-        try {
-            commaValidated = validateWinnerNumberContainsComma(userInput);
-        } catch (IllegalArgumentException e) {
-            System.out.println(ErrorResponse.INPUT_WITHOUT_COMMA_ERROR.getErrorMessage());
-            throw new IllegalArgumentException();
-        }
-
-        try {
-            sizeValidated = validateWinnerNumberSize(commaValidated);
-        } catch (IllegalArgumentException e) {
-            System.out.println(ErrorResponse.INPUT_WITHOUT_COMMA_ERROR.getErrorMessage());
-            throw new IllegalArgumentException();
-        }
-
+        String commaValidated = validateWinnerNumberContainsComma(userInput);
+        String sizeValidated = validateWinnerNumberSize(commaValidated);
         List<Integer> convertedWinnerNumber = convertStringWinnerNumberIntoListWinnerNumber(sizeValidated);
-
-        try {
-            validateWinnerNumberRange(convertedWinnerNumber);
-        } catch (IllegalArgumentException e) {
-            System.out.println(ErrorResponse.INPUT_LOTTO_RANGE_ERROR);
-            throw new IllegalArgumentException();
-        }
+        validateWinnerNumberRange(convertedWinnerNumber);
 
         return convertedWinnerNumber;
     }
 
     public static int validateBonusNumberRange(int bonusNumber) {
         if (bonusNumber < 1 || bonusNumber > 45) {
-            throw new IllegalArgumentException(ErrorResponse.INPUT_BONUS_NUMBER_RANGE_ERROR.getErrorMessage());
+            throw new LottoException(ErrorResponse.INPUT_LOTTO_RANGE_ERROR);
         }
 
         return bonusNumber;
@@ -176,21 +145,8 @@ public class Application {
     private static int inputBonusNumber() {
         System.out.println("보너스 번호를 입력해 주세요.");
         String userInput = Console.readLine();
-        int bonusNumber;
 
-        try {
-            bonusNumber = checkUserInputCondition(userInput);
-        } catch (IllegalArgumentException e) {
-            System.out.println(ErrorResponse.INPUT_LOTTO_RANGE_ERROR.getErrorMessage());
-            throw new IllegalArgumentException();
-        }
-
-        try {
-            bonusNumber = validateBonusNumberRange(bonusNumber);
-        } catch (IllegalArgumentException e) {
-            System.out.println(ErrorResponse.INPUT_BONUS_NUMBER_RANGE_ERROR);
-            throw new IllegalArgumentException();
-        }
+        int bonusNumber = checkUserInputCondition(userInput);
 
         return bonusNumber;
     }
