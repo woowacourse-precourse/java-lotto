@@ -1,5 +1,7 @@
 package lotto;
 
+import static lotto.InputError.*;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,12 +13,10 @@ public class InputConvert {
     }
     private static void lottoValidate(String input) {
         if (isInputLengthZero(input)) {
-            System.out.print("[ERROR] 아무것도 입력되지 않았습니다.");
-            throw new IllegalArgumentException();
+            NOTHING.createError();
         }
         if (!isAllCharacterNumberAndComma(input)) {
-            System.out.print("[ERROR] 입력 형식에 맞게 입력되어야 합니다.");
-            throw new IllegalArgumentException();
+            WRONG_FORMAT.createError();
         }
     }
     private static boolean isInputLengthZero(String input) {
@@ -42,12 +42,10 @@ public class InputConvert {
     }
     private static void oneNumberValidate(String input) {
         if (isInputLengthZero(input)) {
-            System.out.print("[ERROR] 아무것도 입력되지 않았습니다.");
-            throw new IllegalArgumentException();
+           NOTHING.createError();
         }
         if (!isAllCharacterNumber(input)) {
-            System.out.print("[ERROR] 입력 형식에 맞게 입력되어야 합니다.");
-            throw new IllegalArgumentException();
+            WRONG_FORMAT.createError();
         }
     }
     private static boolean isAllCharacterNumber(String input) {
