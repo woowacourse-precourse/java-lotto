@@ -16,22 +16,24 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
-        if (numbers.size() != 6) {
-            throw new IllegalArgumentException(ErrorMessages.isNotMatch("로또 번호"));
+        if (numbers.size() != Constants.MAX_COUNT) {
+            throw new IllegalArgumentException(ErrorMessages.isNotMatch(Constants.LOTTO));
         }
         for (int number : numbers) {
-            if (number < 1 || number > 45) {
-                throw new IllegalArgumentException(ErrorMessages.isOutOfBounds("로또 번호"));
+            if (number < Constants.MIN || number > Constants.MAX) {
+                throw new IllegalArgumentException(ErrorMessages.isOutOfBounds(Constants.LOTTO));
             }
         }
         Set<Integer> removeRepeatedNumbers = new HashSet<>(numbers);
-        if (removeRepeatedNumbers.size() != 6) {
-            throw new IllegalArgumentException(ErrorMessages.isRepeated("로또 번호"));
+        if (removeRepeatedNumbers.size() != Constants.MAX_COUNT) {
+            throw new IllegalArgumentException(ErrorMessages.isRepeated(Constants.LOTTO));
         }
     }
 
     public static Lotto createLotto() {
-        List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+        List<Integer> numbers = Randoms.pickUniqueNumbersInRange(
+                Constants.MIN, Constants.MAX, Constants.MAX_COUNT
+        );
         return new Lotto(numbers);
     }
 
@@ -40,7 +42,9 @@ public class Lotto {
     }
 
     public Rank match(WinningNumbers winningNumbers) {
-        int matchCount = (int) numbers.stream().filter(winningNumbers.winningNumbers::contains).count();
+        int matchCount = (int) numbers.stream()
+                .filter(winningNumbers.winningNumbers::contains)
+                .count();
         boolean matchBonusNumber = numbers.contains(winningNumbers.bonusNumber);
         return Rank.of(matchCount, matchBonusNumber);
     }

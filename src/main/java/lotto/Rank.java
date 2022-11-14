@@ -29,7 +29,10 @@ public enum Rank {
             }
             return THIRD;
         }
-        return Arrays.stream(Rank.values()).filter(rank -> rank.match == match).findAny().orElse(OUT);
+        return Arrays.stream(Rank.values())
+                .filter(rank -> rank.match == match)
+                .findAny()
+                .orElse(OUT);
     }
 
     public long getMoney() {

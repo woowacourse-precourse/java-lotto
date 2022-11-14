@@ -15,7 +15,7 @@ public class Person {
     }
 
     public static Person from (long principal) {
-        long size = principal / 1000;
+        long size = principal / Constants.PRICE;
         List<Lotto> lottos = new ArrayList<>();
         for (long i = 0; i < size; i++) {
             lottos.add(Lotto.createLotto());
@@ -24,7 +24,7 @@ public class Person {
     }
 
     public static Person from (List<Lotto> lottos) {
-        return new Person(lottos, lottos.size() * 1000L);
+        return new Person(lottos, lottos.size() * Constants.PRICE);
     }
 
     public void printLottos() {
