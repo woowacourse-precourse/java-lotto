@@ -28,8 +28,8 @@ public class PrintLotto {
 
     }
 
-    public void startPrintList(int cash, int[] winnintLotto, int bounusNumber) {
-        compormationWinning(winnintLotto, bounusNumber);
+    public void startPrintList(int cash, List<Integer> winningLotto, int bounusNumber) {
+        compormationWinning(winningLotto, bounusNumber);
         winningCountList(cash);
     }
 
@@ -37,13 +37,15 @@ public class PrintLotto {
         issuanceCount = cnt;
         MakeLottoNumber makeLottoNumber = new MakeLottoNumber();
         System.out.println(issuanceCount+"개를 구매했습니다.");
-        for(int i=0; i<issuanceCount; i++) {
-            lottoList.add(makeLottoNumber.returnLottoNumber());
+
+        for (int i = 0; i < issuanceCount; i++) {
+            List<Integer> tmp= makeLottoNumber.returnLottoNumber();
+            lottoList.add(tmp);
             System.out.println(lottoList.get(i));
         }
     }
 
-    public void compormationWinning(int[] winningLotto, int bonusNumber) {
+    public void compormationWinning(List<Integer> winningLotto, int bonusNumber) {  // 당첨 번호와 발행 로또 번호를 비교
         for(int i = 0; i<issuanceCount; i++) {
             winnigCashType tmp = inquiry(lottoList.get(i), winningLotto, bonusNumber);
             if(tmp.getWinningCnt() != 0){
@@ -74,10 +76,10 @@ public class PrintLotto {
         return prizeMoney;
     }
 
-    public winnigCashType inquiry(List<Integer> lotto, int[] winningLotto, int bonusNumber) { // 당첨 번호에 따른 당첨타입 enum 값을 리턴
+    public winnigCashType inquiry(List<Integer> lotto, List<Integer> winningLotto, int bonusNumber) { // 당첨 번호에 따른 당첨타입 enum 값을 리턴
         int winningCount = 0;
-        for(int j = 0; j<winningLotto.length; j++){
-            if(lotto.contains(winningLotto[j])){
+        for(int j = 0; j<winningLotto.size(); j++){
+            if(lotto.contains(winningLotto.get(j))){
                 winningCount++;
             }
         }

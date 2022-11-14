@@ -93,7 +93,7 @@ class LottoTest {
         PrintLotto printLotto = new PrintLotto();
         PrintLotto.winnigCashType winThree = PrintLotto.winnigCashType.winThree;
         List<Integer> lotto = Arrays.asList(10,22,34,43,23,6);
-        int[] winningLotto = {10,22,34,1,5,4};
+        List<Integer> winningLotto = Arrays.asList(10,22,34,1,5,4);
         int bnsNum = 7;
 
         assertEquals(winThree, printLotto.inquiry(lotto, winningLotto, bnsNum));
