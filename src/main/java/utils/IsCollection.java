@@ -1,7 +1,5 @@
 package utils;
 
-import constants.LottoConstant;
-
 import java.util.List;
 
 public class IsCollection {

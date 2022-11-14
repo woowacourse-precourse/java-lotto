@@ -11,7 +11,6 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class WinningLottoTest {
-
     private Lotto lotto;
 
     @BeforeEach
@@ -34,5 +33,4 @@ public class WinningLottoTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(IllegalArgument.DUPLICATION.getMessage());
     }
-
 }
