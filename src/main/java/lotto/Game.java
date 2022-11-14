@@ -5,6 +5,19 @@ import java.util.List;
 
 public class Game {
 
+    enum RANK {
+        NOTHING("0"),FIVE("5000"), FOUR("50000"), THREE("1500000"),
+        TWO("30000000"), ONE("2000000000");
+
+        final private String prize;
+        public String getPrize(){
+            return prize;
+        }
+        private RANK(String prize){
+            this.prize = prize;
+        }
+    }
+
     void run(){
         Input input = new Input();
         int playerMoney = input.inputMoney();
