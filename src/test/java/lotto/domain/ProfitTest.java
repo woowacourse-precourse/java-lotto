@@ -1,6 +1,9 @@
 package lotto.domain;
 
+import static org.assertj.core.api.Assertions.*;
+
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 class ProfitTest {
 
@@ -16,6 +19,12 @@ class ProfitTest {
         prizeCount.addPrizeCount(Prize.FIFTH);
         profit = new Profit(prizeCount);
         profit.calculate(PURCHASE_AMOUNT);
+    }
+
+    @Test
+    void testToString() {
+        String message = "총 수익률은 " + RATE + "%" + "입니다.";
+        assertThat(profit.toString()).isEqualTo(message);
     }
 
 }
