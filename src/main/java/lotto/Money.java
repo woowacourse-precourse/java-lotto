@@ -3,15 +3,25 @@ package lotto;
 public class Money {
 
   private final int money;
+  private int numOfLotto;
 
   public Money(int money) {
     validate(money);
     this.money = money;
+    setNumOfLotto();
   }
 
   public void validate(int money) {
     validateMinimum(money);
     validateDevided(money);
+  }
+
+  public void setNumOfLotto() {
+    numOfLotto = money / 1000;
+  }
+
+  public int getNumOfLotto(){
+    return numOfLotto;
   }
 
   public void validateMinimum(int money) {
