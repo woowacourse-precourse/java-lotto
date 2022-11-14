@@ -34,6 +34,7 @@ public class LottoForm {
 
         ExceptionHandler.checkDuplicateNumber(winningNumbers);
         ExceptionHandler.checkOutOfRange(winningNumbers);
+        ExceptionHandler.checkInvalidSize(winningNumbers);
 
         return winningNumbers;
     }
