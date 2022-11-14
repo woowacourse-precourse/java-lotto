@@ -1,5 +1,7 @@
 package lotto.ExceptionChecker;
 
+import java.util.NoSuchElementException;
+
 public class MoneyInputChecker {
 
     private final int number;
@@ -24,9 +26,9 @@ public class MoneyInputChecker {
             }
 
         } catch (Exception IllegalArgumentException) {
-            System.out.println("[ERROR] 1000원 단위로 입력해주세요. ");//에러시 수행
-
-            throw IllegalArgumentException; //최상위 클래스가 아니라면 무조건 던져주자
+            System.out.println("[ERROR] 1000원 단위로 입력해주세요. ");
+            IllegalArgumentException.printStackTrace();
+            throw new NoSuchElementException();
         }
     }
 }

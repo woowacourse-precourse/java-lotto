@@ -10,8 +10,6 @@ import lotto.ExceptionChecker.Lotto;
 import lotto.ExceptionChecker.MoneyInputChecker;
 
 public class Inputer {
-    List<Integer> a = new ArrayList<>();
-    Lotto lotto = new Lotto(a);;
 
     private static final String REGEX = ",";
 
