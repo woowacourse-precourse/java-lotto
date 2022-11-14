@@ -27,4 +27,24 @@ public class CheckException {
             throw new IllegalArgumentException("[ERROR] 중복된 번호가 있습니다.");
         }
     }
+
+    public static void checkWinningNumbers(List<Integer> winningNumbers) throws IllegalArgumentException {
+        for (int winningNumber : winningNumbers) {
+            checkValidBoundary(winningNumber);
+        }
+    }
+
+    public static void checkBonusNumber(int bonusNumber) throws IllegalArgumentException {
+        checkValidBoundary(bonusNumber);
+    }
+
+    public static void checkValidBoundary(int number) throws IllegalArgumentException {
+        try {
+            if (number < 1 || number > 45) {
+                throw new IllegalArgumentException("[ERROR] 로또 번호는 1 ~ 45 범위의 숫자여야 합니다.");
+            }
+        } catch (NumberFormatException numberFormatException) {
+            throw new IllegalArgumentException("[ERROR] 숫자 형태로 입력해주세요.");
+        }
+    }
 }
