@@ -2,6 +2,7 @@ package lotto.domain;
 
 public class LottoAmount {
     private static final int MIN_COST = 1000;
+    private static final double DECIMAL = 1.0;
     private static final String NOT_NATURAL_NUMBER_ERROR = "[ERROR] 금액은 " + MIN_COST + " 이상이어야 합니다.";
     private static final String NOT_DIVISIBLE_NUMBER_ERROR = "[ERROR] 금액은 " + MIN_COST + "단위여야 합니다.";
     private final int money;
@@ -30,5 +31,9 @@ public class LottoAmount {
         if (money % MIN_COST != 0) {
             throw new IllegalArgumentException(NOT_DIVISIBLE_NUMBER_ERROR);
         }
+    }
+
+    public double calculateProfit(long prizeSum) {
+        return DECIMAL * prizeSum / money * 100;
     }
 }

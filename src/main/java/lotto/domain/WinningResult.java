@@ -16,4 +16,15 @@ public class WinningResult {
     public Map<Ranking, Integer> getWinningResult() {
         return winningResult;
     }
+
+    public long calculatePrizeSum() {
+        int prizeSum = 0;
+        for (Ranking ranking : Ranking.values()) {
+            if (ranking == Ranking.DEFAULT) {
+                continue;
+            }
+            prizeSum += ranking.multiple(winningResult.getOrDefault(ranking, 0));
+        }
+        return prizeSum;
+    }
 }

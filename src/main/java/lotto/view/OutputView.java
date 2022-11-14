@@ -71,4 +71,9 @@ public class OutputView {
         stringBuilder.append(str);
     }
 
+    public static void printProfit(double profit) {
+        String sentence = String.format("총 수익률은 %.1f%s입니다.", profit, "%");
+        System.out.println(sentence);
+    }
+
 }
