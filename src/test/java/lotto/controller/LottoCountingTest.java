@@ -22,15 +22,15 @@ class LottoCountingTest {
     // 위에서부터 6개 일치, 5개 일치 및 보너스번호 일치, 5개 일치, 4개 일치, 3개 일치, 2개 일치, 1개 일치, 0개 일치 2개 순으로 나열했다.
     // 1등,2등,3등,4등,5등, 당첨없음, 당첨없음 순이다.
     Lotto[] lottoPaperInput = new Lotto[]{
-            new Lotto(List.of(1, 2, 3, 4, 5, 6)), // 6
-            new Lotto(List.of(1, 2, 4, 5, 6, 8)), // 5
-            new Lotto(List.of(1, 2, 3, 4, 5, 7)), // 5
-            new Lotto(List.of(1, 2, 3, 4, 9, 19)), // 4
-            new Lotto(List.of(4, 5, 6, 7, 8, 9)), // 3
-            new Lotto(List.of(1, 5, 10, 20, 30, 40)), // 2
-            new Lotto(List.of(1, 10, 20, 30, 40, 45)), // 1
-            new Lotto(List.of(10, 20, 30, 40, 42, 44)), // 0
-            new Lotto(List.of(20, 30, 40, 41, 42, 43)), // 0
+            new Lotto(List.of(1, 2, 3, 4, 5, 6)), // 6, 1등
+            new Lotto(List.of(1, 2, 4, 5, 6, 8)), // 5, 2등
+            new Lotto(List.of(1, 2, 3, 4, 5, 7)), // 5, 3등
+            new Lotto(List.of(1, 2, 3, 4, 9, 19)), // 4, 4등
+            new Lotto(List.of(4, 5, 6, 7, 8, 9)), // 3, 5등
+            new Lotto(List.of(1, 5, 10, 20, 30, 40)), // 2, 탈락
+            new Lotto(List.of(1, 10, 20, 30, 40, 45)), // 1, 탈락
+            new Lotto(List.of(10, 20, 30, 40, 42, 44)), // 0, 탈락
+            new Lotto(List.of(20, 30, 40, 41, 42, 43)), // 0, 탈락
     };
 
     int bonusNumber = 8;
