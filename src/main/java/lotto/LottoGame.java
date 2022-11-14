@@ -9,6 +9,7 @@ public class LottoGame {
     public int purchaseAmount;
     public List<Integer> winningNumber;
     public int bonusNumber;
+    public List<Lotto> issuedLotto;
 
     public void play() {
         Input input = new Input();
@@ -26,7 +27,7 @@ public class LottoGame {
     }
 
     public List<Lotto> issueLotto() {
-        List<Lotto> issuedLotto = new ArrayList<Lotto>(purchaseAmount);
+        this.issuedLotto = new ArrayList<Lotto>(purchaseAmount);
         for(int i=0; i<purchaseAmount; i++) {
             List<Integer> newLottoNumbers = generateLottoNumbers();
             Lotto newLotto = new Lotto(newLottoNumbers);
