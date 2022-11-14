@@ -3,7 +3,7 @@ package lotto.controller;
 import lotto.domain.Lotto;
 import lotto.domain.LottoGenerator;
 import lotto.domain.LottoMachine;
-import lotto.domain.WinNumber;
+import lotto.domain.UserNumber;
 import lotto.view.InputView;
 import lotto.view.OutputView;
 
@@ -14,7 +14,7 @@ public class LottoController {
     public void start() {
         LottoMachine lottoMachine = new LottoMachine(InputView.inputPurchasePrice());
         makeLotto(lottoMachine.getRound());
-        WinNumber winNumber = new WinNumber(InputView.inputWinNumbers(), InputView.inputBonusNumbers());
+        UserNumber userNumber = new UserNumber(InputView.inputWinNumbers(), InputView.inputBonusNumbers());
     }
 
     private void makeLotto(int round) {

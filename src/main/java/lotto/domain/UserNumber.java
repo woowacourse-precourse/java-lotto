@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public class WinNumber {
+public class UserNumber {
     private static final String WIN_NUMBER_TYPE_ERROR_MESSAGE = "[ERROR] 숫자, 쉼표 외의 문자를 입력하셨습니다.";
     private static final String BONUS_NUMBER_TYPE_ERROR_MESSAGE = "[ERROR] 숫자 외의 문자를 입력하셨습니다.";
     private static final String SAME_ERROR_MESSAGE = "[ERROR] 보너스 번호는 당첨 번호와 중복되면 안 됩니다.";
@@ -13,7 +13,7 @@ public class WinNumber {
     private Lotto winNumbers;
     private int bonusNumber;
 
-    public WinNumber(String winNumbers, String bonusNumber) {
+    public UserNumber(String winNumbers, String bonusNumber) {
         validateWinNumbersType(winNumbers);
         validateBonusNumbers(bonusNumber);
         validateSame(winNumbers, bonusNumber);
