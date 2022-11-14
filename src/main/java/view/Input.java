@@ -14,4 +14,9 @@ public class Input {
         System.out.println(Message.INPUT_LOTTO_NUMBER.getValue());
         return Console.readLine();
     }
+
+    public String inputBonusNumber() {
+        System.out.println(Message.INPUT_BONUS_NUMBER.getValue());
+        return Console.readLine();
+    }
 }
