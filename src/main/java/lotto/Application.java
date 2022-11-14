@@ -93,10 +93,26 @@ public class Application {
      * 보너스 번호를 입력받음
      * @return 보너스 번호
      */
-    public static int pickBonusNumber(){
-        // TODO: 보너스 숫자 하나를 입력받아 리턴
-        // TODO: 잘못된 값을 입력했을 경우 예외처리
+    public static int pickBonusNumber(Lotto luckyLotto){
+        int bonusNumber;
+        try{
+            bonusNumber = Integer.parseInt(Console.readLine());
+        } catch(NumberFormatException e){
+            throw new IllegalArgumentException("[ERROR] 숫자 이외의 값을 입력할 수 없습니다.");
+        }
+
+        validateBonusNumber(bonusNumber, luckyLotto.getLottoNumbers());
+
         return 0;
+    }
+
+    public static void validateBonusNumber(int bonusNumber, List<Integer> luckyNumber){
+        if (bonusNumber < 1 || bonusNumber > 45){
+            throw new IllegalArgumentException("[ERROR] 1~45 범위를 벗어나는 값을 입력할 수 없습니다.");
+        }
+        if (luckyNumber.stream().anyMatch(i -> i.equals(bonusNumber))){
+            throw new IllegalArgumentException("[ERROR] 기존 당첨 번호와 중복된 숫자를 입력할 수 없습니다.");
+        }
     }
 
     /**
