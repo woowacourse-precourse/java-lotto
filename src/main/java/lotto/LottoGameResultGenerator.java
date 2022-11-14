@@ -11,6 +11,7 @@ public class LottoGameResultGenerator {
         Map<Integer, Integer> winningDetails = new HashMap<>();
         initializeWinningDetails(winningDetails);
         calculateWinningDetails(winningDetails, lottos, winningNumbers, bonusNumber);
+        int profits = calculateProfits(winningDetails);
         LottoGameResult lottoGameResult = new LottoGameResult();
         return lottoGameResult;
     }
@@ -28,6 +29,7 @@ public class LottoGameResultGenerator {
                                                 WinningNumbers winningNumbers,
                                                 BonusNumber bonusNumber) {
         for (Lotto lotto : lottos) {
+            // winningCount세는 것도 update안에 넣는 게 어떨지?
             int winningCount = getWinningCount(lotto, winningNumbers);
             updateWinningDetails(lotto, winningDetails, bonusNumber, winningCount);
         }
@@ -59,6 +61,7 @@ public class LottoGameResultGenerator {
         if (winningCount == 6) {
             return 2_000_000_000;
         }
+        // if를 6 5 4 3 순으로 하지 말고 6 4 3 보너스확인 이렇게 하면 지금처럼 if 두개 중첩되는 걸 뺄 수 있음
         if (winningCount == 5) {
             if (lotto.contains(bonusNumber.getNumber())) {
                 return 30_000_000;
@@ -69,5 +72,13 @@ public class LottoGameResultGenerator {
             return 50_000;
         }
         return 5_000;
+    }
+
+    private static int calculateProfits(Map<Integer, Integer> winningDetails) {
+        int profits = 0;
+        for (int prizeMoney : winningDetails.keySet()) {
+            profits += prizeMoney * winningDetails.get(prizeMoney);
+        }
+        return profits;
     }
 }
