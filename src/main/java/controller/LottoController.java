@@ -1,28 +1,33 @@
 package controller;
 
-import camp.nextstep.edu.missionutils.Console;
-import domain.LottoNumberList;
-import domain.LottoPurAmount;
+import domain.MatchingNumber;
+import domain.WinningNumber;
 import lotto.Lotto;
 import view.InputView;
 import view.OutputView;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class LottoController {
     InputController inputController = new InputController();
-    String bonusnumber;
+    OutputController outputController = new OutputController();
+
     public void lottoStart() {
-        InputView.printLottoPrice();
-        Integer lottopuramount = inputController.insertLottoAmount();
-        LottoPurAmount lottoPurAmount = new LottoPurAmount(lottopuramount);
-        OutputView.printBuyLottoNumber(lottoPurAmount);
+        try {
+            int lottoPurAmount = inputController.insertLottoAmount();
+            OutputView.printBuyLottoNumber(lottoPurAmount);
+            List<Lotto> lottos = new ArrayList<>(inputController.makeLottoNumberList(lottoPurAmount));
+            OutputView.printAllLottoNumber(lottos);
+            WinningNumber winningNumber = new WinningNumber(inputController.insertLottoNumber());
 
-        LottoNumberList lottoNumberList = new LottoNumberList(inputController.makeLottoNumberList(lottoPurAmount));
-        OutputView.printAllLottoNumber(lottoNumberList.getLottolist());
-
-        InputView.printInputLottoNumber();
-        Lotto lotto = new Lotto(inputController.insertLottoNumber());
-        InputView.printInputBonusNumber();
-        bonusnumber = Console.readLine();
-        InputView.printWinResult();
+            InputView.printInputBonusNumber();
+            int bonusNumber = inputController.insertBonusNumber();
+            MatchingNumber matchingNumber = new MatchingNumber(outputController.matchingNumber(lottos,winningNumber.getWinNumbers(),bonusNumber));
+            OutputView.printResult(matchingNumber);
+            OutputView.printProfit(outputController.winningAmount(matchingNumber),lottoPurAmount);
+        }   catch (IllegalArgumentException e) {
+            System.out.println(e);
+        }
     }
 }
