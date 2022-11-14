@@ -20,4 +20,11 @@ public class PurchasePriceInputValidationTest {
         assertThatThrownBy(() -> purchasePriceInputValidation.validateConsistedOnlyOfNumbers("800a"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @DisplayName("구입금액이 1000으로 나누어떨어지지 않을 경우, 예외가 발생한다.")
+    @Test
+    void validateDividedByThousandTest() {
+        assertThatThrownBy(() -> purchasePriceInputValidation.validateDividedByThousand("8500"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
