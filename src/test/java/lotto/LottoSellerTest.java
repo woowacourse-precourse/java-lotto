@@ -3,6 +3,7 @@ package lotto;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static lotto.Constant.*;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -19,10 +20,10 @@ class LottoSellerTest {
     @Test
     void 구입금액에_따른_로또개수_테스트() {
         purchase.payAmount = 8000;
-        assertThat(purchase.getNumberOfTickets()).isEqualTo(8);
+        assertThat(purchase.countNumberOfTickets()).isEqualTo(8);
     }
     @Test
-    void 예외_테스트() {
+    void 구매금액_예외_테스트() {
         String money = "8100";
 
         Exception exception = assertThrows(IllegalArgumentException.class, () ->

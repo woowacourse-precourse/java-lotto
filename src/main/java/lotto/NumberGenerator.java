@@ -18,8 +18,7 @@ public class NumberGenerator {
         for (int i = 0; i < this.numberOfLotto; i++) {
             List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
 
-            Lotto lotto = new Lotto(numbers);
-            this.myLotto.add(lotto.getNumbers());
+            this.myLotto.add(numbers);
         }
 
     }

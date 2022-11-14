@@ -14,6 +14,8 @@ public class GameController {
         LottoSeller orderLotto = new LottoSeller();
 
         orderLotto.getPayAmount();
+        orderLotto.countNumberOfTickets();
+        orderLotto.generateTickets();
         orderLotto.printTicket();
     }
 
