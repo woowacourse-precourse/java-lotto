@@ -1,13 +1,8 @@
-# 프로그램 로직
-1. 구입 금액을 입력받는다.
-1-1. 입력이 잘못되었을 경우, throw IllegalArgumentException 
-1-2. 그렇지 않은 경우, List<lotto>에 입력값/1000만큼 로또 뽑아서 append
-2. 번호를 오름차순 정렬하여 저장한 뒤 출력한다.
-3. 당첨 번호와 보너스 번호를 입력받는다.
-4. 모든 구매 lotto에 대해서, 당첨 번호와 보너스 번호 각각의 일치 여부를 계산한다.
-5. 이에 대한 정보를 Enum에 각각 저장한다.
-6. 수익률을 계산해서 반환한다.
 # 기능 목록
+
+기능을 Application, UI, Domain으로 분리
+
+---
 
 ## UI 계층
 1. 구입 금액을 입력받는 메서드 : getInputMoney()
@@ -16,17 +11,31 @@
 4. 보너스 번호를 입력받는 메서드 : getInputBonusNumber()
 5. 당첨 통계를 출력하는 메서드 : printWinningStats()
 
-## 도메인 계층
-1. Lotto 클래스
- - validate() : 입력받은 List의 유효성을 판단한다.
- - getNumberOfOverlapping() : 두 로또의 숫자 중 겹치는 숫자의 개수를 반환한다.
- - getRank() : 해당 로또의 등수를 계산한다.
+---
 
-2. 일치 개수 별로 저장하는 Enum - 멤버로 일치 개수와 당첨금액?
-3. 구입 금액의 유효성 판단하는 메서드 - 유효하지 않을 경우 IllegalArgumentException 반환
-4. 당첨 번호의 유효성을 판단하는 메서드 - validateWinningNumberInput()
-5. 구매한 로또 개수를 입력받아 Lotto 객체 List 반환하는 메서드 - createRandomLottoNumbers()
-6. 입력받은 당첨 로또 번호를 List로 변환하는 메서드
-7. 로또 번호 리스트와 당첨 번호로부터 각 등수의 개수를 계산해 반환하는 메서드 - getRankList();
-8. 수익률 계산하는 메서드
- - 당첨 등수 별로 상금 계산하는 메서드 - getReward()
+## 도메인 계층
+1. 구입 금액의 유효성 판단하는 메서드 : validatePriceInput()
+2. 당첨 번호의 숫자 범위를 검증하는 메서드 : validateNumberRange()
+3. 당첨 번호의 숫자 중복 여부를 검증하는 메서드 : validateOverlapping()
+4. 당첨 번호의 유효성을 판단하는 메서드 : validateWinningNumberInput()
+5. 문자열 형태의 input을 정수 리스트로 변환하는 메서드 : trimLottoNumberInput()
+6. 구매한 로또 개수를 입력받아 Lotto 객체 List 반환하는 메서드 : createRandomLottoNumbers()
+7. 수익률 계산하는 메서드 : getYield()
+8. 등수에 따른 당첨금 반환하는 메서드 : getReward()
+9. 로또 번호 리스트와 당첨 번호로부터 각 등수의 개수를 계산해 반환하는 메서드 - getRankList()
+
+---
+
+## Lotto 클래스
+ 랜덤으로 생성된 로또 번호 객체를 관리
+ - 멤버 변수 : List<Integer> numbers
+ - 메서드
+1. 객체와 입력받은 정수 리스트에서 일치하는 수의 개수를 반환하는 메서드 : getNumberOfOverlapping()
+2. 객체 생성 시 입력의 유효성을 검증하는 메서드 : validate()
+3. 객체의 당첨 등수를 반환하는 메서드 : getRank()
+
+## Rank enum
+ 로또 등수 별 정보를 저장하는 enum
+  - reward : 당첨금
+  - overlappingNumber : 일치하는 수의 개수
+  - bonusBall : 보너스볼 일치 개수
