@@ -82,6 +82,55 @@ public class Application {
             System.out.println(myLotto.get(i).getNumbers());
         }
     }
+
+    // 당첨 로또 입력 메소드
+    private static Lotto winningLotto() {
+        System.out.println("당첨 번호를 입력해 주세요.");
+        String numbers = Console.readLine();
+        String[] tempWinningLotto = numbers.split(",");
+
+        winningNumbersException(tempWinningLotto);
+
+        List<Integer> winningLotto = new ArrayList<>();
+        for(int i = 0; i < LOTTO_NUM_SIZE; i++) {
+            winningLotto.add(Integer.parseInt(tempWinningLotto[i]));
+        }
+        Lotto lotto = new Lotto(winningLotto);
+        return lotto;
+    }
+
+    // 당첨 로또 입력 예외처리
+    private static void winningNumbersException(String[] tempWinningLottoNumbers) {
+        if(tempWinningLottoNumbers.length != LOTTO_NUM_SIZE) {
+            System.out.println("[ERROR] 로또 번호는 6개여야 합니다.");
+            throw new IllegalArgumentException();
+        }
+        for(int i = 0; i < LOTTO_NUM_SIZE; i++) {
+            if(Integer.parseInt(tempWinningLottoNumbers[i]) < 1 || 45 < Integer.parseInt(tempWinningLottoNumbers[i])) {
+                numberInputException();
+            }
+        }
+    }
+
+    // 보너스 번호 입력 메소드
+    private static int bonusLottoNumber(Lotto winningLotto) {
+        System.out.println("보너스 번호를 입력해 주세요.");
+        int bonusNumber = Integer.parseInt(Console.readLine());
+        if(bonusNumber < 1 || 45 < bonusNumber) {
+            numberInputException();
+        }
+        if(winningLotto.getNumbers().contains(bonusNumber)) {
+            System.out.println("[ERROR] 유효하지 않은 번호입니다.");
+            throw new IllegalArgumentException();
+        }
+        return bonusNumber;
+    }
+
+    // 로또 숫자 범위 예외처리
+    private static void numberInputException() {
+        System.out.println("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
+        throw new IllegalArgumentException();
+    }
     public static void main(String[] args) {
 
     }
