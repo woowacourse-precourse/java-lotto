@@ -21,7 +21,7 @@ public class WinningLottoNumber {
         validator.validateWinningNumber(splitNumber);
         this.winningNumber = Arrays.asList(splitNumber).stream().map(String::trim).mapToInt(Integer::valueOf).boxed()
                 .collect(Collectors.toList());
-        validator.isNumber(bonusNumber);
+        validator.validateBonusNumber(bonusNumber);
         this.bonusNumber = Integer.parseInt(bonusNumber);
     }
 
