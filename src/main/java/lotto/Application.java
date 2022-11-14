@@ -17,5 +17,6 @@ public class Application {
         }
         int bonusNum= user.bonusInput();
         Lotto lotto = new Lotto(answerNum);
+        List<List<Integer>> tmp =  lotto.lottoNumber(parseInput);
     }
 }

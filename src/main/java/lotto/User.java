@@ -63,4 +63,14 @@ public class User {
         String bonusNum = Console.readLine();
         return Integer.valueOf(bonusNum);
     }
+    public static void output(List<Integer> num){
+        String  aaa ="[";
+        aaa+=String.valueOf(num.get(0));
+        for(int i=1;i<num.size();i++){
+            aaa+=", ";
+            aaa+=String.valueOf(num.get(i));
+        }
+        aaa+="]";
+        System.out.println(aaa);
+    }
 }
