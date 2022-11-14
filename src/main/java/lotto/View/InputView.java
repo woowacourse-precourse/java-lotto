@@ -1,7 +1,12 @@
 package lotto.View;
 
-import camp.nextstep.edu.missionutils.Console;
 import lotto.Domain.Message;
+
+import camp.nextstep.edu.missionutils.Console;
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class InputView {
     private static final int LOTTO_MIN_NUM = 1;
@@ -21,4 +26,21 @@ public class InputView {
         }
 
     }
+
+    public static List<Integer> getWinningNums() {
+        System.out.println(Message.INPUT_LOTTO_WNNING_NUM_MESSAGE);
+        String winningNumsInput = Console.readLine();
+
+        List<Integer> winningNums = makeWinningNumsToList(winningNumsInput);
+        return winningNums;
+    }
+
+    private static List<Integer> makeWinningNumsToList(String winningNumsInput) {
+        try {
+            return Arrays.stream(winningNumsInput.split(",")).map(Integer::parseInt).collect(Collectors.toList());
+        } catch (Exception e) {
+            throw new IllegalArgumentException(String.format(Message.ERROR_LOTTO_NUM, LOTTO_MIN_NUM, LOTTO_MAX_MUM));
+        }
+    }
+
 }
