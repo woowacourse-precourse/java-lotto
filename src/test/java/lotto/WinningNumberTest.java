@@ -28,6 +28,6 @@ public class WinningNumberTest {
     @DisplayName("당첨 번호는 쉼표로 나눈다.")
     @Test
     void divideWinningNumberByComma() {
-        
+
     }
 }
