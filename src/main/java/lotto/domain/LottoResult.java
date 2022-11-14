@@ -9,28 +9,6 @@ final class LottoResult {
         this.containBonus = containBonus;
     }
 
-    public boolean isFirstPrize() {
-        return sameCount == LottoSameCount.SIX_SAME;
-    }
-
-    public boolean isSecondPrize() {
-        return sameCount == LottoSameCount.FIVE_SAME
-                && containBonus == LottoContainBonus.CONTAIN;
-    }
-
-    public boolean isThirdPrize() {
-        return sameCount == LottoSameCount.FIVE_SAME
-                && containBonus == LottoContainBonus.NOT_CONTAIN;
-    }
-
-    public boolean isFourthPrize() {
-        return sameCount == LottoSameCount.FOUR_SAME;
-    }
-
-    public boolean isFifthPrize() {
-        return sameCount == LottoSameCount.THREE_SAME;
-    }
-
     public LottoPrize calculatePrize() {
         if (isFirstPrize()) {
             return LottoPrize.FIRST_PRIZE;
@@ -50,6 +28,28 @@ final class LottoResult {
         return LottoPrize.ZERO;
     }
 
+    private boolean isFirstPrize() {
+        return sameCount == LottoSameCount.SIX_SAME;
+    }
+
+    private boolean isSecondPrize() {
+        return sameCount == LottoSameCount.FIVE_SAME
+                && containBonus == LottoContainBonus.CONTAIN;
+    }
+
+    private boolean isThirdPrize() {
+        return sameCount == LottoSameCount.FIVE_SAME
+                && containBonus == LottoContainBonus.NOT_CONTAIN;
+    }
+
+    private boolean isFourthPrize() {
+        return sameCount == LottoSameCount.FOUR_SAME;
+    }
+
+    private boolean isFifthPrize() {
+        return sameCount == LottoSameCount.THREE_SAME;
+    }
+    
     @Override
     public boolean equals(Object other) {
         return other instanceof LottoResult &&
