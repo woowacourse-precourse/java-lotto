@@ -1,6 +1,7 @@
-package lotto;
+package lotto.domain;
 
 import lotto.data.Error;
+import lotto.domain.ExceptionHandler;
 
 import java.util.List;
 

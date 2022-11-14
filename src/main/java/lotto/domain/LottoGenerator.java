@@ -1,6 +1,7 @@
-package lotto;
+package lotto.domain;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import lotto.presentation.LottoPrinter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,15 +11,20 @@ public class LottoGenerator {
     private final int startNumber;
     private final int endNumber;
     private final int numberCount;
+    private final int priceUnit;
+    private final LottoPrinter lottoPrinter;
 
-    public LottoGenerator(int startNumber, int endNumber, int numberCount) {
+    public LottoGenerator(int startNumber, int endNumber, int numberCount, int priceUnit, LottoPrinter lottoPrinter) {
         this.startNumber = startNumber;
         this.endNumber = endNumber;
         this.numberCount = numberCount;
+        this.priceUnit = priceUnit;
+        this.lottoPrinter = lottoPrinter;
     }
 
-    public List<Lotto> createLottos(int count) {
+    public List<Lotto> createLottos(int price) {
         List<Lotto> lottos = new ArrayList<>();
+        int count = createLottoCount(price);
 
         for (int i = 0; i < count; i++) {
             List<Integer> numbers = createLotto();
@@ -35,5 +41,12 @@ public class LottoGenerator {
 
     private List<Integer> sortLottoNumbers(List<Integer> numbers) {
         return numbers.stream().sorted().collect(Collectors.toList());
+    }
+
+    private int createLottoCount(int price) {
+        int count = price / priceUnit;
+        lottoPrinter.printLottoCount(count);
+
+        return count;
     }
 }
