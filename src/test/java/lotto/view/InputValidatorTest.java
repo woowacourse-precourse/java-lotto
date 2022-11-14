@@ -1,6 +1,7 @@
 package lotto.view;
 
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -30,6 +31,7 @@ public class InputValidatorTest {
         );
     }
 
+
     @DisplayName("숫자로 변환하는 과정을 담당함")
     @ParameterizedTest
     @MethodSource("oneInteger")
@@ -58,5 +60,17 @@ public class InputValidatorTest {
     @ValueSource(strings = {"234 ", "a234", "1,2,,3", "1,2,3,a"})
     void case4(String input) {
         assertThrows(IllegalArgumentException.class, () -> InputValidator.splitToIntegers(input));
+    }
+
+    @DisplayName("toInt 메서드는 int 범위를 넘는 숫자가 들어오면 IEA 예외")
+    @Test
+    void case5() {
+        assertThrows(IllegalArgumentException.class, () -> InputValidator.toInt("22000000000"));
+    }
+
+    @DisplayName("toLong 메서드는 long 범위를 넘는 숫자가 들어오면 IEA 예외")
+    @Test
+    void case6() {
+        assertThrows(IllegalArgumentException.class, () -> InputValidator.toInt("220000000000000000000"));
     }
 }
