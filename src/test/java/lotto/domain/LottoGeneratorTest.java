@@ -22,7 +22,7 @@ public class LottoGeneratorTest {
     void 로또_번호_오름차순() {
         List<Integer> numbers = Arrays.asList(6,5,4,3,2,1);
         List<Integer> sortNumbers = LottoGenerator.getInstance.sortLotto(numbers);
-        assertThat(List.of(1,2,3,4,5,6)).isEqualTo(sortNumbers);
+        assertThat(sortNumbers).isEqualTo(List.of(1,2,3,4,5,6));
     }
 
     @DisplayName("구매자가 구매한 장수만큼 로또를 발급한다.")
