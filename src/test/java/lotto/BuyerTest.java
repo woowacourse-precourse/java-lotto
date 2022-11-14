@@ -24,19 +24,19 @@ public class BuyerTest {
         String smallerThanOneThousand = "800";
 
         System.setIn(new ByteArrayInputStream(notMultipleOfThousand.getBytes()));
-        assertThatThrownBy(buyer::readPurchaseAmount)
+        assertThatThrownBy(() -> buyer.validatePurchaseAmount(UserInterface.readPurchaseAmount()))
                 .isInstanceOf(IllegalArgumentException.class);
 
         System.setIn(new ByteArrayInputStream(notNumber.getBytes()));
-        assertThatThrownBy(buyer::readPurchaseAmount)
+        assertThatThrownBy(() -> buyer.validatePurchaseAmount(UserInterface.readPurchaseAmount()))
                 .isInstanceOf(IllegalArgumentException.class);
 
         System.setIn(new ByteArrayInputStream(startWithZero.getBytes()));
-        assertThatThrownBy(buyer::readPurchaseAmount)
+        assertThatThrownBy(() -> buyer.validatePurchaseAmount(UserInterface.readPurchaseAmount()))
                 .isInstanceOf(IllegalArgumentException.class);
 
         System.setIn(new ByteArrayInputStream(smallerThanOneThousand.getBytes()));
-        assertThatThrownBy(buyer::readPurchaseAmount)
+        assertThatThrownBy(() -> buyer.validatePurchaseAmount(UserInterface.readPurchaseAmount()))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -49,7 +49,7 @@ public class BuyerTest {
         List<List<Integer>> lotteryTickets;
 
         System.setIn(new ByteArrayInputStream(eightThousand.getBytes()));
-        purchaseAmount = buyer.readPurchaseAmount();
+        purchaseAmount = UserInterface.readPurchaseAmount();
         lotteryTickets = buyer.pickLotteryNumbers(Integer.parseInt(purchaseAmount) / 1000);
         assertEquals(8, lotteryTickets.size());
     }
