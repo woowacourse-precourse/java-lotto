@@ -17,7 +17,7 @@ public class OutputView {
 	private static final String LOTTO_NUMBER_INTRO = "[";
 	private static final String LOTTO_NUMBER_BOUNDARY = ", ";
 	private static final String LOTTO_NUMBER_OUTRO = "]";
-	private static final int LOTTO_NUMBER_CONTROL_LEGNTH = 2;
+	private static final int LOTTO_NUMBER_CONTROL_LENGTH = 2;
 	private static final String PRINT_PRIZE_RESULT_INTRO = "\n당첨 통계";
 	private static final String PRINT_PRIZE_RESULT_BORDER_LINE = "---";
 	private static final String PRINT_PRIZE_RESULT_FRONT = "%d개 일치";
@@ -34,7 +34,7 @@ public class OutputView {
 		for (Lotto lotto : lottoTickets) {
 			StringBuilder lottoNumbers = new StringBuilder(LOTTO_NUMBER_INTRO);
 			createTicketPrint(lottoNumbers, lotto);
-			lottoNumbers.delete(lottoNumbers.length() - LOTTO_NUMBER_CONTROL_LEGNTH, lottoNumbers.length());
+			lottoNumbers.delete(lottoNumbers.length() - LOTTO_NUMBER_CONTROL_LENGTH, lottoNumbers.length());
 			lottoNumbers.append(LOTTO_NUMBER_OUTRO);
 			System.out.println(lottoNumbers);
 		}
