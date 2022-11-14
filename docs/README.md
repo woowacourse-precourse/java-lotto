@@ -71,7 +71,7 @@
 ## ⚠️ 예외 처리 - Validation
 
 - [x] `IllegalArgumentException`을 발생시킨다.
-    - [ ] 에러문구는 `"[ERROR]"` 로 시작한다.
+    - [x] 에러문구는 `"[ERROR]"` 로 시작한다.
     - [x] ⚠️ 로또번호에 대해 잘못된값 예외 - validateBasicNumber
     - [x] ⚠️ 보너스번호 대해 잘못된값 예외 - validateBonusNumber
     - [x] ⚠️ 입력 금액에 대해 잘못된 값 예외 - validateMoney
