@@ -1,37 +1,44 @@
 package lotto;
 
+import net.bytebuddy.utility.visitor.ExceptionTableSensitiveMethodVisitor;
+
 import java.util.List;
 import java.util.Map;
 
 public class Application {
     public static void main(String[] args) {
-        User user = new User();
+        try {
+            User user = new User();
 
-        Print.printInsertMoney();
-        long money = Input.readLong();
+            Print.printInsertMoney();
+            long money = Input.readLong();
 
-        user.payMoney(money);
-        user.buyLotto();
 
-        Print.printLotto(user.getUserLottos());
+            user.payMoney(money);
+            user.buyLotto();
 
-        WinningNumbers winningNumbers = new WinningNumbers();
+            Print.printLotto(user.getUserLottos());
 
-        Print.printWinningNumber();
-        List<Integer> newWinningNumbers = Input.readListInteger(",");
-        winningNumbers.newWinningNumbers(newWinningNumbers);
+            WinningNumbers winningNumbers = new WinningNumbers();
 
-        Print.printBonusNumber();
-        int newBonusNumber = Input.readInteger();
-        winningNumbers.newBonusNumber(newBonusNumber);
+            Print.printWinningNumber();
+            List<Integer> newWinningNumbers = Input.readListInteger(",");
+            winningNumbers.newWinningNumbers(newWinningNumbers);
 
-        Judgment judgment = new Judgment(user, winningNumbers);
+            Print.printBonusNumber();
+            int newBonusNumber = Input.readInteger();
+            winningNumbers.newBonusNumber(newBonusNumber);
 
-        RankCounter rankCounter = judgment.calculateRank();
-        Print.printRankCounter(rankCounter);
+            Judgment judgment = new Judgment(user, winningNumbers);
 
-        double yield = judgment.calculateYield();
-        Print.printYield(yield);
+            RankCounter rankCounter = judgment.calculateRank();
+            Print.printRankCounter(rankCounter);
 
+            double yield = judgment.calculateYield();
+            Print.printYield(yield);
+
+        } catch(Exception e){
+            System.out.println(e.getMessage());
+        }
     }
 }
