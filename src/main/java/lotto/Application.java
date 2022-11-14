@@ -86,10 +86,15 @@ public class Application {
             throw new IllegalArgumentException("[ERROR]Bonus input error");
         }
 
-        if (bonus < 1 || bonus > 45) throw new IllegalArgumentException("[ERROR]Bonus input error");
+        isBonusOutOfRange(bonus);
         isBonusNotDuplicated(winningLotto, bonus);
 
         return bonus;
+    }
+
+    public static void isBonusOutOfRange(int bonus) {
+        if (bonus < 1 || bonus > 45)
+            throw new IllegalArgumentException("[ERROR]Bonus input error");
     }
 
     public static void isBonusNotDuplicated(Lotto winningLotto, int bonus) {
