@@ -36,7 +36,7 @@ public class Manager {
                 .mapToInt(purchaseLotto -> (int) purchaseLotto.stream().filter(lotto::contains).count())
                 .forEach(matchCount -> matchCounts[matchCount] += 1);
 
-        return Arrays.copyOfRange(matchCounts, 3, 8);
+        return Arrays.copyOfRange(matchCounts, 3, 7);
     }
 
 }
