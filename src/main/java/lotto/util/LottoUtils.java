@@ -38,4 +38,12 @@ public class LottoUtils {
             throw new IllegalArgumentException();
         }
     }
+
+    public static void checkNumberInRange(List<Integer> numbers) {
+        for(int number : numbers){
+            if(number<START_NUMBER || number>END_NUMBER){
+                throw new IllegalArgumentException();
+            }
+        }
+    }
 }

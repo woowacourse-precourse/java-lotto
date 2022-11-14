@@ -36,6 +36,7 @@ public class LottoService {
     public void setWinningNumber(String inputWinningNumber) {
         List<Integer> winningNumber = LottoUtils.parsingNumberBySeparator(inputWinningNumber);
         LottoUtils.checkUniqueNumbers(winningNumber);
+        LottoUtils.checkNumberInRange(winningNumber);
         Lotto winningLotto = new Lotto(winningNumber);
         new WinningLotto(winningLotto);
     }
