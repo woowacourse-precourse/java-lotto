@@ -56,27 +56,20 @@ public class WinningResult {
             Integer integer = result.get(rank);
             result.put(rank, integer + 1);
         }
-
     }
 
     private Rank countRankOne(int count, boolean bonusFlag) {
-        if(count == 6) {
+        if(count == 6)
             return Rank.FIRST;
-        }
-        else if(count == 5 && bonusFlag) {
+        else if(count == 5 && bonusFlag)
             return Rank.SECOND;
-        }
-        else if(count == 5) {
+        else if(count == 5)
             return Rank.THIRD;
-        }
-        else if(count == 4) {
+        else if(count == 4)
             return Rank.FOURTH;
-        }
-        else if(count == 3) {
+        else if(count == 3)
             return Rank.FIFTH;
-        }
-        else {
+        else
             return Rank.NONE;
-        }
     }
 }
