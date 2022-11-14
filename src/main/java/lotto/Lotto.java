@@ -6,12 +6,11 @@ import java.util.List;
 import java.util.Set;
 
 public class Lotto {
-    private final List<Integer> numbers;
+    private final List<Integer> numbers ;
 
     public Lotto(List<Integer> numbers) {
         validateSize(numbers);
         validateDuplicate(numbers);
-        Collections.sort(numbers);
         this.numbers = numbers;
     }
 
@@ -26,6 +25,10 @@ public class Lotto {
         if (nonDuplicateNumbers.size() != 6) {
             throw new IllegalArgumentException("[ERROR] 중복된 번호가 있습니다.");
         }
+    }
+
+    public List<Integer> getNumbers() {
+        return List.copyOf(numbers);
     }
 
     @Override
