@@ -9,7 +9,7 @@ import java.util.List;
  */
 public class Lotto {
 
-    public final static int LOTTO_COST = 1000;
+
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {

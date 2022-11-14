@@ -2,6 +2,7 @@ package lotto;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import domain.LottoPublisher;
 import dto.ScratchResult;
 import java.util.List;
 import domain.Lotto;
@@ -52,7 +53,7 @@ public class LottoPocketTest {
 
                 assertThat(info.getTotalEarning()).isEqualTo(expectedTotalEarning);
                 assertThat(info.getEarningRate()).isEqualTo(
-                        (double) expectedTotalEarning * 100 / lottos.size() / Lotto.LOTTO_COST);
+                        (double) expectedTotalEarning * 100 / lottos.size() / LottoPublisher.LOTTO_COST);
 
                 assertThat(info.getCountOfGrade(LottoGrade.FIRST)).isEqualTo(0);
                 assertThat(info.getCountOfGrade(LottoGrade.SECOND)).isEqualTo(1);

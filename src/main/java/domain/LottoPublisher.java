@@ -9,10 +9,10 @@ import java.util.stream.Stream;
  * 로또 발행을 담당하는 클래스
  */
 public class LottoPublisher {
-
+    public final static int LOTTO_COST = 1000;
     public static List<Lotto> publishLottos(int money) {
         validateMultipleOfLottoCost(money);
-        int lottoCount = money / Lotto.LOTTO_COST;
+        int lottoCount = money / LOTTO_COST;
 
         List<Lotto> lottos = Stream.generate(() -> publishLotto()).limit(lottoCount)
                 .collect(Collectors.toUnmodifiableList());
@@ -25,8 +25,8 @@ public class LottoPublisher {
     }
 
     private static void validateMultipleOfLottoCost(int money) {
-        if (money % Lotto.LOTTO_COST != 0 || money / Lotto.LOTTO_COST == 0) {
-            throw new IllegalArgumentException("구매 금액은 " + Lotto.LOTTO_COST + "의 배수여야 합니다");
+        if (money % LOTTO_COST != 0 || money / LOTTO_COST == 0) {
+            throw new IllegalArgumentException("구매 금액은 " + LOTTO_COST + "의 배수여야 합니다");
         }
     }
 }

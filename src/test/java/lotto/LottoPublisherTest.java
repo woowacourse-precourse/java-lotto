@@ -38,7 +38,7 @@ public class LottoPublisherTest extends NsTest {
         @DisplayName("무작위로 생성된 여러개의 로또를 반환한다.")
         void publish_random_Lotto() {
             assertRandomUniqueNumbersInRangeTest(() -> {
-                List<Lotto> lottos = LottoPublisher.publishLottos(Lotto.LOTTO_COST * 2);
+                List<Lotto> lottos = LottoPublisher.publishLottos(LottoPublisher.LOTTO_COST * 2);
                 List<Lotto> wantLottos = List.of(new Lotto(List.of(1, 2, 3, 4, 5, 6)),
                         new Lotto(List.of(6, 7, 8, 9, 10, 11)), new Lotto(List.of(1, 3, 5, 6, 9, 11)));
 

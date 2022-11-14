@@ -42,6 +42,6 @@ public class LottoPocket {
     }
 
     private double getEarningRate(double totalEarning) {
-        return (totalEarning * 100) / (lottoGroup.size() * Lotto.LOTTO_COST);
+        return (totalEarning * 100) / (lottoGroup.size() * LottoPublisher.LOTTO_COST);
     }
 }
