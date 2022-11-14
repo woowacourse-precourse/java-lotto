@@ -4,6 +4,7 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -62,6 +63,15 @@ class LottoTest {
         ticketNumbers.collectTickets();
     }
 
+    @DisplayName("정렬된 로또 번호 세트 넘겨주기")
+    @Test
+    void showTheAllTicket(){
+        TicketNumbers ticketNumbers = new TicketNumbers(3);
+        ticketNumbers.collectTickets();
+    }
+
+
+
     // 당첨 번호 입력 테스트
     @DisplayName("당첨번호는 숫자로만 이뤄져야한다")
     @Test
@@ -105,5 +115,57 @@ class LottoTest {
         int bonum = bonusNumber.makeBonusNumber();
         System.out.println("numbers = " + numbers);
         System.out.println("bonum = " + bonum);
+    }
+
+    @DisplayName("제공된 Lotto 클래스의 정렬된 번호 넘겨주기")
+    @Test
+    void lottoTest(){
+        List<Integer> numbers = new ArrayList<>();
+        numbers.add(10);
+        numbers.add(2);
+        numbers.add(3);
+        numbers.add(4);
+        numbers.add(5);
+        numbers.add(6);
+        Lotto lotto = new Lotto(numbers);
+        List<Integer> returnNumbers = lotto.returnNumbers();
+        System.out.println("returnNumbers = " + returnNumbers);
+    }
+
+    @DisplayName("Lotto는 중복 번호가 없어야 한다")
+    @Test
+    void lottoDuplicatedTest(){
+        List<Integer> numbers = new ArrayList<>();
+        numbers.add(1);
+        numbers.add(2);
+        numbers.add(3);
+        numbers.add(4);
+        numbers.add(5);
+        numbers.add(5);
+        assertThatThrownBy(()->new Lotto(numbers))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    //로또 번호 맞는지 판단하는 기능
+    @DisplayName("당첨번호와 로또번호 가져오기")
+    @Test
+    void CheckScoreTest(){
+        List<Integer> numbers = new ArrayList<>();
+        numbers.add(10);
+        numbers.add(2);
+        numbers.add(3);
+        numbers.add(4);
+        numbers.add(5);
+        numbers.add(6);
+        Lotto lotto = new Lotto(numbers);
+        TicketNumbers ticketNumbers = new TicketNumbers(3);
+        List<Integer> lottoNumbers = lotto.returnNumbers();
+        List<List<Integer>> tickets = ticketNumbers.collectTickets();
+        BonusNumber bonusNumber = new BonusNumber("30", lottoNumbers);
+        int bbonusNumber = bonusNumber.makeBonusNumber();
+        CheckScore checkScore = new CheckScore(lottoNumbers, tickets, bbonusNumber);
+        List<Integer> score = checkScore.showScoreList();
+        System.out.println("lottoNumbers = " + lottoNumbers);
+        System.out.println("score = " + score);
     }
 }
