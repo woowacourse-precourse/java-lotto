@@ -11,11 +11,11 @@ public class Random {
         return randomNumbers;
     }
 
-    public static List<List<Integer>> getLottoNumber(int purchaseQuantity) {
-        List<List<Integer>> lottoNumbers = new ArrayList<>();
+    public static List<Lotto> getLottoNumber(int purchaseQuantity) {
+        List<Lotto> lottos = new ArrayList<>();
         for (int i = 0; i < purchaseQuantity; i++) {
-            lottoNumbers.add(getRandomNumber());
+            lottos.add(new Lotto(getRandomNumber()));
         }
-        return lottoNumbers;
+        return lottos;
     }
 }
