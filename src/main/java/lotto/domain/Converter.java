@@ -13,20 +13,20 @@ public class Converter {
         if (InputValidator.isEmpty(input)) {
             throw new IllegalArgumentException(INPUT_EMPTY_ERROR.toString());
         }
-        if (!InputValidator.isNumber(input)) {
+        if (InputValidator.isNotNumber(input)) {
             throw new IllegalArgumentException(MONEY_NUMBER_ERROR.toString());
         }
-        if (!InputValidator.isInLimit(input)) {
+        if (InputValidator.isOutOfLimit(input)) {
             throw new IllegalArgumentException(MONEY_LIMIT_ERROR.toString());
         }
-        return  Integer.parseInt(input);
+        return Integer.parseInt(input);
     }
 
     public static List<Integer> changeToWinningNumber(String input) {
         if (InputValidator.isEmpty(input)) {
             throw new IllegalArgumentException(INPUT_EMPTY_ERROR.toString());
         }
-        if (InputValidator.isCorrectSeparator(input)) {
+        if (InputValidator.isNotCorrectSeparator(input)) {
             throw new IllegalArgumentException(SEPARATOR_ERROR.toString());
         }
         return WinningNumberSplit.splitWinningNumber(input);
@@ -36,9 +36,9 @@ public class Converter {
         if (InputValidator.isEmpty(input)) {
             throw new IllegalArgumentException(INPUT_EMPTY_ERROR.toString());
         }
-        if (!InputValidator.isNumber(input)) {
+        if (InputValidator.isNotNumber(input)) {
             throw new IllegalArgumentException(BONUS_NOT_NUMBER_ERROR.toString());
         }
-        return  Integer.parseInt(input);
+        return Integer.parseInt(input);
     }
 }

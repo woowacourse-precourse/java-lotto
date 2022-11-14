@@ -16,24 +16,24 @@ public class InputValidator {
         return input.isBlank();
     }
 
-    public static boolean isNumber(String input) {
+    public static boolean isNotNumber(String input) {
         for (char number : input.toCharArray()) {
             if (!Character.isDigit(number)) {
-                return false;
+                return true;
             }
         }
-        return true;
+        return false;
     }
 
-    public static boolean isInLimit(String input) {
+    public static boolean isOutOfLimit(String input) {
         BigInteger number = new BigInteger(input);
         if (number.compareTo(BigInteger.valueOf(MAX_MONEY)) > 0) {
-            return false;
+            return true;
         }
-        return true;
+        return false;
     }
 
-    public static boolean isCorrectSeparator(String input) {
+    public static boolean isNotCorrectSeparator(String input) {
         if (input.contains(SEPARATOR) && countSeparator(input) == SEPARATOR_NUMBER) {
             return false;
         }
