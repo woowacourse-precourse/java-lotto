@@ -3,6 +3,8 @@ package ExceptionCollections;
 import enumCollections.Exceptions;
 
 public class PaymentException extends CommonException {
+    static final int PRICE_PER_LOTTO = 1000;
+
     public static void validate(String payment) {
         hasCharacters(payment);
         validateUnit(stringToInteger(payment));
