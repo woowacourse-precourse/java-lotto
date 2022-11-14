@@ -3,8 +3,8 @@
 ## 구현할 기능 목록
 - [ ] 입력
     - [x] 로또 구입 금액 (잘못된 값일 경우 예외처리)
-    - [ ] 당첨 번호
-    - [ ] 보너스 번호
+    - [x] 당첨 번호
+    - [x] 보너스 번호
 - [x] 1~45까지 서로 다른 임의의 수 6개를 생성한다 - LottoGenerator#createLottoNumbers()
 - [x] 로또의 수량만큼 6개의 수가 담긴 리스트들을 생성한다 - LottoGenerator#buyLottos()
 - [x] 발행한 로또 번호와 당첨 번호를 비교한다 - Lotto#compareLotto()

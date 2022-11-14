@@ -29,7 +29,7 @@ public class Application {
         for (Lotto lotto:mylottos) {
             System.out.println(lotto.toString());
         }
-        
+
         System.out.println("당첨 번호를 입력해 주세요.");
         int[] winningNumber_= Arrays.stream(Console.readLine().split(",")).mapToInt(Integer::parseInt).toArray();
         List<Integer> winningNumber = Arrays.stream(winningNumber_).boxed().collect(Collectors.toList());
@@ -37,6 +37,10 @@ public class Application {
         System.out.println("보너스 번호를 입력해 주세요.");
         int bonusNumber = Integer.parseInt(Console.readLine());
 
-        
+        int[] result = {0,0,0,0,0,0};
+
+        for (Lotto lotto:mylottos) {
+            result[lotto.compareLotto(winningNumber,bonusNumber).getValue()]++;
+        }
     }
 }

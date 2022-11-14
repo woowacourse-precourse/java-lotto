@@ -22,7 +22,7 @@ public class Lotto {
 
     // TODO: 추가 기능 구현
     //발행한 로또와 당첨번호를 비교한다
-    public Optional<당첨> compareLotto(List<Integer> winningNumber, int bonusNumber){
+    public 당첨 compareLotto(List<Integer> winningNumber, int bonusNumber){
         int matchingCount=0;
         HashSet<Integer> winningSet = new HashSet<>(winningNumber);
         for(int number:numbers){
