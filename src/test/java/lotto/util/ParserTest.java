@@ -1,13 +1,15 @@
 package lotto.util;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.*;
 
 class ParserTest {
 
+    @DisplayName("숫자 개수가 6개가 아닐때 예외가 발생한다")
     @Test
-    void 숫자_개수가_6개가_아닐때_예외가_발생한다() {
+    void createWrongSizeNumber() {
         // given
         String inputString = "1,2,3,4,5,6,7";
 
@@ -17,8 +19,9 @@ class ParserTest {
                 .hasMessageContaining("당첨 숫자 개수는 6개여야 합니다.");
     }
 
+    @DisplayName("정해진 구분자가 아닐때 예외가 발생한다")
     @Test
-    void 정해진_구분자가_아닐때_예외가_발생한다() {
+    void createWrongSeparator() {
         // given
         String inputString = "1@2@3@4@5@6";
 
@@ -28,8 +31,9 @@ class ParserTest {
                 .hasMessageContaining("구분자 ','와 1 ~ 45 숫자 이외는 입력할 수 없습니다.");
     }
 
+    @DisplayName("공백이 존재하면 예외가 발생한다")
     @Test
-    void 공백이_존재하면_예외가_발생한다() {
+    void createStringWithSpace() {
         // given
         String inputString = "1 2 3 4 5 6";
 
@@ -39,8 +43,9 @@ class ParserTest {
                 .hasMessageContaining("구분자 ','와 1 ~ 45 숫자 이외는 입력할 수 없습니다.");
     }
 
+    @DisplayName("숫자 입력 범위를 벗어나면 예외가 발생한다1")
     @Test
-    void 숫자_입력_범위를_벗어나면_예외가_발생한다1() {
+    void createWrongNumberOverMax() {
         // given
         String inputString = "1,2,3,4,5,46";
 
@@ -50,8 +55,9 @@ class ParserTest {
                 .hasMessageContaining("구분자 ','와 1 ~ 45 숫자 이외는 입력할 수 없습니다.");
     }
 
+    @DisplayName("숫자 입력 범위를 벗어나면 예외가 발생한다2")
     @Test
-    void 숫자_입력_범위를_벗어나면_예외가_발생한다2() {
+    void createWrongNumberOverMin() {
         // given
         String inputString = "0,1,2,3,4,5";
 
@@ -61,8 +67,9 @@ class ParserTest {
                 .hasMessageContaining("구분자 ','와 1 ~ 45 숫자 이외는 입력할 수 없습니다.");
     }
 
+    @DisplayName("중복된 숫자가 존재하면 예외가 발생한다2")
     @Test
-    void 중복된_숫자가_존재하면_예외가_발생한다2() {
+    void createDuplicateNumberInString제() {
         // given
         String inputString = "1,2,3,4,5,5";
 
