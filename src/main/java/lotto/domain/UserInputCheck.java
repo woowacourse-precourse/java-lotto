@@ -3,7 +3,7 @@ package lotto.domain;
 import lotto.util.Validation;
 
 public class UserInputCheck {
-    static String purchaseAmountCheck(String userInput) {
+    static Integer purchaseAmountCheck(String userInput) {
         try {
             Validation.isNumber(userInput);
             Validation.isHigherThanMinPrice(userInput);
@@ -11,6 +11,6 @@ public class UserInputCheck {
         } catch (IllegalArgumentException err) {
             System.out.println(err);
         }
-        return userInput;
+        return Integer.parseInt(userInput);
     }
 }

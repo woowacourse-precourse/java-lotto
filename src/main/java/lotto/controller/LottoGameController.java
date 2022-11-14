@@ -1,7 +1,6 @@
 package lotto.controller;
 
 import lotto.domain.LottoGame;
-import lotto.domain.UserInputCheck;
 import lotto.view.InputMessage;
 
 public class LottoGameController {
