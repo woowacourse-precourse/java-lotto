@@ -12,6 +12,9 @@ public class LottoSystem {
             new WinInfo(3, 0, 5000, 5)
     );
 
+    public static final WinInfo noWin = new WinInfo(-1,-1,0,-1);
+
+
     private List<Integer> winNumbers;
     private int bonusNumbers;
 
