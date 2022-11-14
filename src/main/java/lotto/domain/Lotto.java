@@ -34,6 +34,7 @@ public class Lotto {
     public Lotto (String input){
         String[] stringArr = input.split(DELIMITER);
         validateLottoNumbers(stringArr);
+        this.numbers = convertStringArrToIntegerList(stringArr);
     }
 
     private void validateLottoNumbers(String[] stringArr) {
@@ -53,4 +54,9 @@ public class Lotto {
         if (arr.length != distinctCount) {
             throw new IllegalArgumentException(String.format(DUPLICATE_ERROR));
         }
+    }
+    private List<Integer> convertStringArrToIntegerList(String[] array) {
+        return Arrays.stream(array)
+                .map(Integer::parseInt)
+                .collect(collectingAndThen(toList(), Collections::unmodifiableList));
     }
