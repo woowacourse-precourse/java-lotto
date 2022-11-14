@@ -32,14 +32,14 @@ public class Controller {
     public void compareTwoNumbers(List<Integer> lottoNumbers) {
         int count = 0;
         for (int i = 0; i < winningNumbers.size(); i++) {
-            if (i == winningNumbers.size() - 1 && count == 5) {
+            if (i == winningNumbers.size() - 1 && count == 5 && lottoNumbers.contains(winningNumbers.get(i))) {
                 Rank.valueOf("FIFTH_BONUS").increaseCount();
             } else if (lottoNumbers.contains(winningNumbers.get(i))) {
                 count++;
             }
         }
         Rank[] values = Rank.values();
-        for(int i = 0; i< values.length; i++){
+        for (int i = 0; i <= count - 3 && i != values.length - 1; i++) {
             values[i].increaseCount();
         }
     }
