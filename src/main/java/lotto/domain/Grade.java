@@ -21,6 +21,10 @@ public enum Grade {
         return condition;
     }
 
+    public int getMatchCount() {
+        return matchCount;
+    }
+
     public int getPrize() {
         return prize;
     }
