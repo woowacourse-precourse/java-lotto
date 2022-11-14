@@ -8,13 +8,15 @@
   - [x] 지정된 양식에 따라 로또 번호를 문자열로 변환한다. Lotto#getString()
   - [x] 발행된 모든 로또 번호를 가져온다. Ticket#getAll()
 - [ ] 당첨 번호를 입력 받고 저장한다.
+  - [ ] 당첨 번호를 입력 받는다.
   - [x] 콤마로 구분되어 입력된 값을 숫자형으로 변환한다. Lotto#from()
   - [x] 입력된 숫자가 6개인지 확인한다. Validator#isNotCorrectLottoNumberSize()
   - [x] 입력된 숫자가 1 ~ 45 인지 확인한다. Validator#hasNotCorrectRangeNumbers()
-  - [ ] 당첨 번호를 저장한다.
+  - [x] 당첨 번호를 저장한다. Draw#constrocutor
 - [ ] 보너스 번호를 입력 받고 저장한다.
+  - [ ] 보너스 번호를 입력 받는다.
   - [x] 1 ~ 45 숫자인지 확인한다. Validator#hasNotCorrectRangeNumber()
-  - [ ] 보너스 번호를 저장한다.
+  - [x] 보너스 번호를 저장한다. Draw#setBonus()
 - [ ] 당첨과 낙첨 조건을 설정하고 비교한다.
   - [x] 당첨 조건을 설정한다 PrizeType#Enum
   - [ ] 당첨 번호, 보너스 번호를 비교한다.
