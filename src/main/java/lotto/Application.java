@@ -44,13 +44,13 @@ public class Application {
         try {
             return Integer.valueOf(userInput);
         } catch (Exception e){
-            throw new IllegalArgumentException(Error.ERROR_PURCHASE_INPUT);
+            throw new IllegalArgumentException(ERROR.PURCHASE_INPUT);
         }
     }
 
     public static void validateMoney(int money) throws IllegalArgumentException {
         if (money <= 0 || money % lottoPrice != 0) {
-            throw new IllegalArgumentException(Error.ERROR_PURCHASE_DIVIDE);
+            throw new IllegalArgumentException(ERROR.PURCHASE_DIVIDE);
         }
     }
 
@@ -65,7 +65,7 @@ public class Application {
                 int number = Integer.parseInt(input);
                 winningNumbers.add(number);
             }catch (Exception e){
-                throw new IllegalArgumentException(Error.ERROR_LOTTO_NUMBERS);
+                throw new IllegalArgumentException(ERROR.LOTTO_NUMBERS);
             }
         }
         validateWinning();
@@ -75,11 +75,11 @@ public class Application {
         Set<Integer> winnings = new HashSet<>(winningNumbers);
 
         if (winningNumbers.size() != 6 || winnings.size() != 6) {
-            throw new IllegalArgumentException(Error.ERROR_LOTTO_NUMBERS);
+            throw new IllegalArgumentException(ERROR.LOTTO_NUMBERS);
         }
         for (Integer winningNumber : winningNumbers) {
             if (winningNumber < 1 || winningNumber > 45) {
-                throw new IllegalArgumentException(Error.ERROR_LOTTO_NUMBERS);
+                throw new IllegalArgumentException(ERROR.LOTTO_NUMBERS);
             }
         }
     }
@@ -91,18 +91,18 @@ public class Application {
         try {
             bonusNumber = Integer.parseInt(userInput);
         } catch (Exception e){
-            throw new IllegalArgumentException(Error.ERROR_BONUS_NUMBER);
+            throw new IllegalArgumentException(ERROR.BONUS_NUMBER);
         }
         validateBonus();
     }
 
     public static void validateBonus(){
         if (bonusNumber < 1 || bonusNumber > 45) {
-            throw new IllegalArgumentException(Error.ERROR_BONUS_NUMBER);
+            throw new IllegalArgumentException(ERROR.BONUS_NUMBER);
         }
 
         if (winningNumbers.contains(bonusNumber)) {
-            throw new IllegalArgumentException(Error.ERROR_BONUS_NUMBER);
+            throw new IllegalArgumentException(ERROR.BONUS_NUMBER);
         }
     }
 
