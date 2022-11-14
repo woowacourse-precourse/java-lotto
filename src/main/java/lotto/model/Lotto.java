@@ -1,4 +1,7 @@
-package lotto;
+package lotto.model;
+
+import lotto.utils.ErrorStatus;
+import lotto.utils.Validation;
 
 import java.util.List;
 
@@ -7,14 +10,17 @@ public class Lotto {
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
+        Validation.validateOthers(numbers);
         this.numbers = numbers;
     }
 
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ErrorStatus.NUMBERS_SIZE.printError());
         }
     }
 
-    // TODO: 추가 기능 구현
+    public int getNumber(int index) {
+        return numbers.get(index);
+    }
 }
