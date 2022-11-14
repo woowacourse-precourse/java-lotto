@@ -78,6 +78,7 @@ public class Compute {
             if (containsBonusNumber && count == WinType.MATCH5.winTypeValue) {
                 String key = WinType.MATCH5_PLUS_BONUS.winTypeKey;
                 winRecords.put(key, winRecords.get(key) + 1);
+                break;
             }
             else if (count == winType.winTypeValue) {
                 String key = winType.winTypeKey;
