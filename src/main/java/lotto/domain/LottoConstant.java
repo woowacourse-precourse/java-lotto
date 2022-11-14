@@ -6,8 +6,12 @@ public enum LottoConstant {
     ENDTO(45);
 
     private int value;
-    
+
     LottoConstant(int value) {
         this.value = value;
+    }
+
+    public int getValue() {
+        return this.value;
     }
 }
