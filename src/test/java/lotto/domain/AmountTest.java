@@ -12,29 +12,21 @@ class AmountTest {
     void validateCanDivideIntoOneThousand() {
         //given
         int value = 1200;
-        int price = 1000;
         //when
         //then
         assertThatThrownBy(() -> {
-                      if (value % price == 0) {
-                          return;
-                      }
-                      System.out.println("[ERROR] 금액은 1000원 단위로만 입력 가능합니다.");
-                      throw new IllegalArgumentException("[ERROR] 금액은 1000원 단위로만 입력 가능합니다.");
-                  })
-                  .isInstanceOf(IllegalArgumentException.class)
-                  .hasMessageContaining("[ERROR]");
+            new Amount(value);
+        }).isInstanceOf(IllegalArgumentException.class);
     }
 
     @DisplayName("구매금액을 로또 금액으로 나누었을때 로또 수량이 잘 반환되는지 테스트")
     @Test
     void calculateLottoCount() {
         //given
-        int value = 2000;
-        int price = 1000;
+        Amount amount = new Amount(3000);
         //when
-        int lottoCount = value / price;
+        int lottoCount = amount.calculateLottoCount();
         //then
-        assertThat(lottoCount).isEqualTo(2);
+        assertThat(lottoCount).isEqualTo(3);
     }
 }
