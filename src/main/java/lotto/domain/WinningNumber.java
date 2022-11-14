@@ -10,8 +10,15 @@ public class WinningNumber {
 
     public WinningNumber(Lotto lotto, int bonusNumber) {
         validateDuplicateNumber(lotto, bonusNumber);
+        validateRange(bonusNumber);
         this.lotto = lotto;
         this.bonusNumber = bonusNumber;
+    }
+
+    private void validateRange(int bonusNumber) {
+        if (bonusNumber < Lotto.MIN_NUM || bonusNumber > Lotto.MAX_NUM) {
+            throw new IllegalArgumentException(Lotto.VALID_RANGE);
+        }
     }
 
     public Ranking calculateRanking(Lotto otherLottoNumbers) {
