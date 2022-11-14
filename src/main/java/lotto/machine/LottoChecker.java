@@ -14,9 +14,11 @@ public class LottoChecker {
     private final List<Integer> WINNING_NUMBERS;
     private final int BONUS_NUMBER;
     private final int LOTTO_PRICE = 1000;
+    private final int NONE = 0;
+    private final int MAKE_PERCENT = 100;
+    private final Map<Prize, Integer> result = new HashMap<>();
 
     private List<Lotto> lottos = new ArrayList<>();
-    private Map<Prize, Integer> result = new HashMap<>();
 
     public LottoChecker(List<Integer> winningNumbers, int bonusNumber) {
         this.WINNING_NUMBERS = winningNumbers;
@@ -114,13 +116,13 @@ public class LottoChecker {
     }
 
     public String getProfitRate(long totalPrizeMoney) {
-        if (totalPrizeMoney == 0) {
+        if (totalPrizeMoney == NONE) {
             return "0.0";
         }
         DecimalFormat df = new DecimalFormat("#.0");
         df.setRoundingMode(RoundingMode.HALF_UP);
         double moneyUsed = (double) lottos.size() * LOTTO_PRICE;
-        double profitRate = totalPrizeMoney / moneyUsed * 100;
+        double profitRate = ( totalPrizeMoney / moneyUsed ) * MAKE_PERCENT;
         return df.format(profitRate);
     }
 
