@@ -12,7 +12,7 @@ public class LottoLogic {
     private static final int ONE_LOTTO = 1000;
     private int money;
     private int numberOfLotto;
-    private List<Lotto> buyLottoList;
+    private List<Lotto> myLottos;
     private List<Integer> prizeNumbers;
     private int bonusNumber;
     private double earning;
@@ -38,9 +38,9 @@ public class LottoLogic {
     }
 
     private void buyLotto() {
-        this.buyLottoList = new ArrayList<>();
+        this.myLottos = new ArrayList<>();
         for (int i = 0; i < this.numberOfLotto; i++) {
-            this.buyLottoList.add(new Lotto(createLottoNumber()));
+            this.myLottos.add(new Lotto(createLottoNumber()));
         }
     }
 
@@ -48,8 +48,8 @@ public class LottoLogic {
         return Randoms.pickUniqueNumbersInRange(START_LOTTO, END_LOTTO, LOTTO_NUMBER);
     }
 
-    public List<Lotto> getBuyLottoList() {
-        return this.buyLottoList;
+    public List<Lotto> getMyLottos() {
+        return this.myLottos;
     }
 
     public List<Integer> getPrizeNumbers() {
@@ -103,7 +103,7 @@ public class LottoLogic {
     }
 
     private void calculateCountHit() {
-        for (Lotto lotto : this.buyLottoList) {
+        for (Lotto lotto : this.myLottos) {
             int hitCount = comparePrizeNumber(lotto);
             if (hitCount >= 3) {
                 boolean bonusHit = compareBonusNumber(lotto);

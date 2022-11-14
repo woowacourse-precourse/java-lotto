@@ -33,29 +33,29 @@ public class Validation {
         }
     }
 
-    public static void isNumberList(List<String> inputList) {
-        for (String value : inputList) {
+    public static void isNumberList(List<String> input) {
+        for (String value : input) {
             isNumberType(value);
         }
     }
 
-    public static void isValidLength(List<String> prizeNumberList) {
-        if (prizeNumberList.size() != LOTTO_LENGTH) {
+    public static void isValidLength(List<String> prizeNumbers) {
+        if (prizeNumbers.size() != LOTTO_LENGTH) {
             throw new IllegalArgumentException(ERROR_MESSAGE + INVALID_LENGTH_MESSAGE);
         }
     }
 
-    public static void isContainDuplicateNumber(List<String> valueList) {
-        Set<String> listSet = new HashSet<>(valueList);
+    public static void isContainDuplicateNumber(List<String> value) {
+        Set<String> listSet = new HashSet<>(value);
         if (listSet.size() != LOTTO_LENGTH) {
             throw new IllegalArgumentException(ERROR_MESSAGE + DUPLICATE_MESSAGE);
         }
     }
 
-    public static void isValidNumberRange(List<String> valueList) {
+    public static void isValidNumberRange(List<String> value) {
         int number;
         for (int i = 0; i < LOTTO_LENGTH; i++) {
-            number = Integer.parseInt(valueList.get(i));
+            number = Integer.parseInt(value.get(i));
             if (number < START_LOTTO_NUMBER || number > END_LOTTO_NUMBER) {
                 throw new IllegalArgumentException(ERROR_MESSAGE + INVALID_NUMBER_RANGE);
             }

@@ -38,8 +38,8 @@ public class UI {
     }
 
     private void printLottoNumber() {
-        for (int i = 0; i < this.lottoLogic.getBuyLottoList().size(); i++) {
-            System.out.println(this.lottoLogic.getBuyLottoList().get(i).getNumbers());
+        for (int i = 0; i < this.lottoLogic.getMyLottos().size(); i++) {
+            System.out.println(this.lottoLogic.getMyLottos().get(i).getNumbers());
         }
     }
 
@@ -69,12 +69,12 @@ public class UI {
         return List.of(value.split(","));
     }
 
-    public List<Integer> stringListToIntegerList(List<String> stringList) {
-        List<Integer> integerList = new ArrayList<>();
-        for (String stringValue : stringList) {
-            integerList.add(Integer.parseInt(stringValue));
+    public List<Integer> stringListToIntegerList(List<String> stringValues) {
+        List<Integer> integerValues = new ArrayList<>();
+        for (String value : stringValues) {
+            integerValues.add(Integer.parseInt(value));
         }
-        return integerList;
+        return integerValues;
     }
 
     public void printLottoResult() {
