@@ -11,7 +11,7 @@ import java.util.List;
 public class Application {
 
     public static void main(String[] args) {
- 
+
     }
 
     // num개의 lotto를 발행하는 함수
@@ -80,5 +80,16 @@ public class Application {
         return 8 - same;
     }
 
-
+    public static long revenue(List<Lotto> lottos, Lotto winningLotto, int bonus){
+        long revenue = 0;
+        for(Lotto lotto : lottos){
+            int rank = lottoRank(lotto, winningLotto, bonus);
+            if(rank > 5){
+                continue;
+            }
+            Rank[] values = Rank.values();
+            revenue += values[rank - 1].getMoney();
+        }
+        return revenue;
+    }
 }
