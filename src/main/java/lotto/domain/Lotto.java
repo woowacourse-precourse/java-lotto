@@ -23,11 +23,18 @@ public class Lotto {
 
     private void validate(List<Integer> numbers) {
         validateNumbersLength(numbers);
+        validateNumbersRange(numbers);
     }
 
     private void validateNumbersLength(List<Integer> numbers){
         if (ValidateUtils.isInvalidLottoNumberLength(numbers)) {
             ValidateUtils.throwIllegalArgumentException(Constants.INCORRECT_LOTTO_NUMBER_LENGTH_MESSAGE);
+        }
+    }
+
+    private void validateNumbersRange(List<Integer> numbers){
+        if(ValidateUtils.isNumbersRangeOver(numbers)){
+            ValidateUtils.throwIllegalArgumentException(Constants.RANGE_OVER_LOTTO_NUMBER_MESSAGE);
         }
     }
 
