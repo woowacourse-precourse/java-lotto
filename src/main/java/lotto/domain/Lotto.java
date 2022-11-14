@@ -65,3 +65,12 @@ public class Lotto {
         return numbers;
     }
 
+    public static Lotto of() {
+        List<Integer> randomLottoNumbers = generateRandomLottoNumbers();
+        return new Lotto(randomLottoNumbers);
+    }
+
+    private static List<Integer> generateRandomLottoNumbers() {
+        List<Integer> randomLottoNumbers = Randoms.pickUniqueNumbersInRange(MIN_NUMBER, MAX_NUMBER, LOTTO_COUNT);
+        return randomLottoNumbers;
+    }
