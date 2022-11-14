@@ -39,4 +39,12 @@ public class LottoRepository {
     public int getMoney() {
         return money;
     }
+
+    public int getLottoQuantity() {
+        return lottoQuantity;
+    }
+
+    public List<Lotto> getLottoNumbers() {
+        return lottoNumbers;
+    }
 }
