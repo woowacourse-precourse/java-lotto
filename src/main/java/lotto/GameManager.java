@@ -38,41 +38,33 @@ public class GameManager {
         LottoResultDto resultDto = new LottoResultDto(resultNumbers, bonusNumber);
         Checker checker = new Checker(resultDto);
 
-        // - 당첨통계 출력
-        Map<ResultPrice, Integer> totalScore = checker.getTotalScore(lottoGroup);
-        return totalScore;
+        return checker.getTotalScore(lottoGroup);
     }
 
     private Integer getBonusNumber() {
-        // 보너스 번호 입력
         Printer.printInfoInputBonus();
         String bonus = Console.readLine();
+
         return Integer.parseInt(bonus);
     }
 
     private List<Integer> getResultNumbers() {
-        // 당첨번호 입력
         Printer.printInfoInputResult();
         String result = Console.readLine();
-        List<Integer> resultNumber = Arrays.stream(result.split(","))
+
+        return Arrays.stream(result.split(","))
                 .map(Integer::parseInt)
                 .collect(Collectors.toList());
-        return resultNumber;
     }
 
     private List<Lotto> getLottoGroup(int money) {
-        List<Lotto> lottoGroup = publisher.getLottoGroup(money);
-        // - 구매한 로또 목록 출력
-        return lottoGroup;
+        return publisher.getLottoGroup(money);
     }
 
     private int getMoney() {
-        // 구입금액입력
         Printer.printInfoMoneyInput();
-        String moneyInput = Console.readLine();
-        int money = 0;
 
-        money = Integer.parseInt(moneyInput);
-        return money;
+        String moneyInput = Console.readLine();
+        return Integer.parseInt(moneyInput);
     }
 }
