@@ -18,7 +18,7 @@ class ResultTest {
 
         Result result = new Result(lottoTickets, winningNumbers, bonusNumber);
 
-        assertThat(result.getResult())
+        assertThat(result.getPrizeCount())
                 .isNotEmpty()
                 .containsKey(Prize.SECOND)
                 .contains(entry(Prize.FIRST, 1));
@@ -35,7 +35,7 @@ class ResultTest {
 
         Result result = new Result(lottoTickets, winningNumbers, bonusNumber);
 
-        assertThat(result.getResult())
+        assertThat(result.getPrizeCount())
                 .isNotEmpty()
                 .containsKey(Prize.FIFTH)
                 .contains(entry(Prize.SECOND, 1))
@@ -53,7 +53,7 @@ class ResultTest {
 
         Result result = new Result(lottoTickets, winningNumbers, bonusNumber);
 
-        assertThat(result.getResult())
+        assertThat(result.getPrizeCount())
                 .isNotEmpty()
                 .containsKey(Prize.FOURTH)
                 .contains(entry(Prize.THIRD, 1))
@@ -69,7 +69,7 @@ class ResultTest {
         BonusNumber bonusNumber = new BonusNumber(13, winningNumbers);
         Result result = new Result(lottoTickets, winningNumbers, bonusNumber);
 
-        assertThat(result.getResult())
+        assertThat(result.getPrizeCount())
                 .isNotEmpty()
                 .doesNotContainValue(1);
     }

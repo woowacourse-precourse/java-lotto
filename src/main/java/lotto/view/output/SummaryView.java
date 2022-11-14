@@ -12,11 +12,11 @@ public class SummaryView {
         System.out.println("---");
         for (Prize e : Prize.values()) {
             if (e.equals(Prize.SECOND)) {
-                System.out.printf("%d개 일치, 보너스 볼 일치 (%s원) - %d개" + "%n", e.getWinningCount(),
-                        intToCommaString(e.getPrize()), result.getResult().get(e));
+                System.out.printf("%d개 일치, 보너스 볼 일치 (%s원) - %d개" + "%n", e.getMatchingCount(),
+                        intToCommaString(e.getReward()), result.getPrizeCount().get(e));
             }
-            System.out.printf("%d개 일치 (%s원) - %d개" + "%n", e.getWinningCount(), intToCommaString(e.getPrize()),
-                    result.getResult().get(e));
+            System.out.printf("%d개 일치 (%s원) - %d개" + "%n", e.getMatchingCount(), intToCommaString(e.getReward()),
+                    result.getPrizeCount().get(e));
         }
     }
 
@@ -30,7 +30,7 @@ public class SummaryView {
     public static void showEarning(Result result, int amount) {
         float prizeMoney = 0;
         for (Prize e : Prize.values()) {
-            prizeMoney += e.getPrize() * result.getResult().get(e);
+            prizeMoney += e.getReward() * result.getPrizeCount().get(e);
         }
         float f = (prizeMoney / (amount * 1_000)) * 100;
         System.out.println();
