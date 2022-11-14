@@ -29,9 +29,9 @@ class LottoTest {
     @Test
     void changeStringToList() {
 
-        Maker changeStringToList = new Maker();
+        Inputer inputer =new Inputer();
 
-        assertEquals(changeStringToList.lottoWinList("1,2,3,4,5,6"), List.of(1, 2, 3, 4, 5, 6));
+        assertEquals(inputer.lottoWinList("1,2,3,4,5,6"), List.of(1, 2, 3, 4, 5, 6));
     }
 
 
