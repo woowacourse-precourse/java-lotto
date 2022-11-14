@@ -21,9 +21,9 @@ public class RankingView {
             msg.append(rankInfo.getPriceMsg());
             msg.append(" - "+rank.getRank().get(rankInfo)+"개\n");
         }
-        msg.append("총 수익률은");
+        msg.append("총 수익률은 ");
         msg.append(String.format("%.1f", profit));
-        msg.append("입니다.");
+        msg.append("%입니다.");
 
         return msg.toString();
     }

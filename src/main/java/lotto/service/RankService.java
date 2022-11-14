@@ -73,6 +73,7 @@ public class RankService {
             totalProfit += ranking.getRank().get(rankInfo) * rankInfo.getMoney();
         }
         totalProfit /= user.getMoney();
+        totalProfit *= 100;
         return totalProfit;
     }
 }

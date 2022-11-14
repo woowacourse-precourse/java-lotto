@@ -39,7 +39,7 @@ public class ProfitTest {
                 + RankInfo.THIRD.getMoney()
                 + RankInfo.SECOND.getMoney()
                 + RankInfo.FIRST.getMoney()) / (double)(user.getMoney());
-
+        result *= 100;
         assertThat(profit).isEqualTo(result);
     }
 
@@ -59,7 +59,7 @@ public class ProfitTest {
                 + RankInfo.THIRD.getMoney()
                 + RankInfo.SECOND.getMoney()
                 + RankInfo.FIRST.getMoney()) / (double)(user.getMoney());
-
+        profit *= 100;
         assertThat(profitView).contains(String.format("%.1f", profit));
         System.out.println(profitView);
     }
