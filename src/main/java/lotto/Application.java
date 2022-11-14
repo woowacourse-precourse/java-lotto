@@ -14,7 +14,6 @@ public class Application {
         List<List<Integer>> lottoList = buyLotto(money);
         Map<String, List<Integer>> luckyNumMap = digitInput();
         Lotto mylotto = new Lotto(luckyNumMap.get("luckyNums"));
-
     }
 
 
@@ -38,10 +37,10 @@ public class Application {
         System.out.println("구입금액을 입력해 주세요");
         int purchaseMoney = Integer.parseInt(Console.readLine());
         int purchaseAmount = purchaseMoney / 1000;
-        System.out.println(purchaseAmount+"개를 구매했습니다.");
         if (purchaseMoney%1000!=0){
             throw new IllegalArgumentException("[ERROR] 1000원 단위의 금액을 입력하십시오.");
         }
+        System.out.println(purchaseAmount+"개를 구매했습니다.");
         return purchaseMoney;
     }
 
