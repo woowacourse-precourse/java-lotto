@@ -17,10 +17,10 @@ public enum Rank {
         this.prize = prize;
     }
 
-    public String getMessage() {
+    public String getMessage(int count) {
         DecimalFormat decimalFormat = new DecimalFormat("###,###");
         String formatPrize = decimalFormat.format(prize);
-        return String.format(message, formatPrize);
+        return String.format(message, formatPrize, count);
     }
 
     public int getPrize() {
