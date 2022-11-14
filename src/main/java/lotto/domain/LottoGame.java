@@ -6,7 +6,7 @@ import java.util.List;
 public class LottoGame {
     private List<List<Integer>> lottos;
 
-    public int GetUserInput() {
+    public int getUserAmount() {
         String userInput = Console.readLine();
         return UserInputCheck.purchaseAmountCheck(userInput);
     }

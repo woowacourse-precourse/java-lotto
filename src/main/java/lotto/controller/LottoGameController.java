@@ -10,7 +10,7 @@ public class LottoGameController {
     public void lottoGameStart() {
         LottoGame lottoGame = new LottoGame();
         inputMessage.gameStart();
-        int amount = lottoGame.GetUserInput();
+        int amount = lottoGame.getUserAmount();
         int count = amount / 1000;
         inputMessage.purchaseAmountMessage(amount);
         List<List<Integer>> lotts = lottoGame.getLottos(count);
