@@ -1,5 +1,11 @@
 # 미션 - 로또
 
+___
+
+<span style="font-size: 25px; color:orange"><strong>!!!구현할 기능 목록을 정리해놓은 내용은 해당 README 파일이 아닌, `docs/README.md` 파일을 참고하세요.</strong></span>
+
+___
+
 ## 🔍 진행 방식
 
 - 미션은 **기능 요구 사항, 프로그래밍 요구 사항, 과제 진행 요구 사항** 세 가지로 구성되어 있다.
