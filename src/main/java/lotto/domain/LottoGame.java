@@ -13,7 +13,6 @@ public class LottoGame {
 
     public List<List<Integer>> getLottos(int count) {
         List<List<Integer>> lottos = LottosGenerator.lottoGenerate(count);
-        this.lottos = lottos;
         return lottos;
     }
 

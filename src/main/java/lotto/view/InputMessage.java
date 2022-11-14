@@ -17,10 +17,11 @@ public class InputMessage {
         System.out.println(PURCHASE_AMOUNT_MESSAGE);
     }
 
-    public void purchaseAmountMessage(int amount) {
+    public Integer purchaseAmountMessage(int amount) {
         String format = String.format(NUMBER_PURCAHSES, amount / 1000);
         System.out.println(amount);
         System.out.println(format);
+        return amount;
     }
 
     public void purchasedLottoNumberMessage(List<List<Integer>> lotts) {
@@ -28,15 +29,17 @@ public class InputMessage {
         System.out.println(INPUT_WINNING_NUMBER);
     }
 
-    public void winningNumberMessage(List<Integer> winningNumber){
+    public List<Integer> winningNumberMessage(List<Integer> winningNumber){
         String number = winningNumber.stream()
                 .map(String::valueOf)
                 .collect(Collectors.joining(","));
         System.out.println(number);
         System.out.println(INPUT_BONUS_NUMBER);
+        return winningNumber;
     }
 
-    public void bonusNumberMessage(Integer bonusNumber) {
+    public int bonusNumberMessage(Integer bonusNumber) {
         System.out.println(bonusNumber);
+        return bonusNumber;
     }
 }

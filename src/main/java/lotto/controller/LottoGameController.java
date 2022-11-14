@@ -10,14 +10,9 @@ public class LottoGameController {
     public void lottoGameStart() {
         LottoGame lottoGame = new LottoGame();
         inputMessage.gameStart();
-        int amount = lottoGame.getUserAmount();
-        int count = amount / 1000;
-        inputMessage.purchaseAmountMessage(amount);
-        List<List<Integer>> lotts = lottoGame.getLottos(count);
-        inputMessage.purchasedLottoNumberMessage(lotts);
-        List<Integer> winningNumber = lottoGame.getWinningNumber();
-        inputMessage.winningNumberMessage(winningNumber);
-        Integer bonusNumber = lottoGame.getBonusNumber();
-        inputMessage.bonusNumberMessage(bonusNumber);
+        int amount = inputMessage.purchaseAmountMessage(lottoGame.getUserAmount());
+        inputMessage.purchasedLottoNumberMessage(lottoGame.getLottos(amount/1000));
+        List<Integer> winningNumber = inputMessage.winningNumberMessage(lottoGame.getWinningNumber());
+        int bonusNumber = inputMessage.bonusNumberMessage(lottoGame.getBonusNumber());
     }
 }
