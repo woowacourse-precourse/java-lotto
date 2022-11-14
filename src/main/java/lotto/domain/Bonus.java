@@ -12,6 +12,14 @@ public class Bonus {
         this.bonusNumber = bonusNumber;
     }
 
+    public static void bonusIsNumeric(String bonusNumber) {
+        String pattern = "^[0-9]*$";
+        if (!Pattern.matches(pattern, bonusNumber)) {
+            System.out.println("[ERROR} 보너스 번호는 양의 정수 형태이어야 합니다.");
+            throw new IllegalArgumentException("[ERROR] 잘못된 형식의 보너스 번호");
+        }
+    }
+
     public int getBonusNumber() {
         return this.bonusNumber;
     }
@@ -28,14 +36,6 @@ public class Bonus {
         if (!(1 <= bonusNumber && bonusNumber <= 45)) {
             System.out.println("[ERROR} 보너스 번호의 범위는 1 ~ 45 사이어야만 합니다.");
             throw new IllegalArgumentException("[ERROR] 잘못된 보너스 번호 범위");
-        }
-    }
-
-    public static void bonusIsNumeric(String bonusNumber) {
-        String pattern = "^[0-9]*$";
-        if (!Pattern.matches(pattern, bonusNumber)) {
-            System.out.println("[ERROR} 보너스 번호는 양의 정수 형태이어야 합니다.");
-            throw new IllegalArgumentException("[ERROR] 잘못된 형식의 보너스 번호");
         }
     }
 }

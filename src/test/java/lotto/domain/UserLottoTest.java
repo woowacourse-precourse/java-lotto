@@ -2,13 +2,11 @@ package lotto.domain;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvSource;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
 class UserLottoTest {
     @DisplayName("로또 결과 리스트 반환")
@@ -20,17 +18,17 @@ class UserLottoTest {
         Lotto lotto4 = new Lotto(List.of(1, 2, 3, 4, 5, 7)); // 2등
         Lotto lotto5 = new Lotto(List.of(1, 2, 3, 4, 5, 8)); // 3등
 
-        List<Lotto> boughtLotto = new ArrayList<Lotto>();
+        List<Lotto> lottos = new ArrayList<Lotto>();
         List<Integer> winningNumbers = new ArrayList<Integer>(List.of(1, 2, 3, 4, 5, 6));
         int bonusNumber = 7;
 
-        boughtLotto.add(lotto1);
-        boughtLotto.add(lotto2);
-        boughtLotto.add(lotto3);
-        boughtLotto.add(lotto4);
-        boughtLotto.add(lotto5);
+        lottos.add(lotto1);
+        lottos.add(lotto2);
+        lottos.add(lotto3);
+        lottos.add(lotto4);
+        lottos.add(lotto5);
 
-        assertThat(UserLotto.createLottoResult(boughtLotto, winningNumbers, bonusNumber)).
+        assertThat(UserLotto.createLottoResult(lottos, winningNumbers, bonusNumber)).
                 isEqualTo(new ArrayList<Integer>(List.of(1, 1, 1, 0, 1)));
     }
 }

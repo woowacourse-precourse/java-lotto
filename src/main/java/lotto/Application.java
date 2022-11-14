@@ -23,13 +23,13 @@ public class Application {
     public static void main(String[] args) {
         UserLotto user = createUserLotto();
         int lottoCount = user.getLottoCount();
-        List<Lotto> boughtLotto = createBoughtLotto(lottoCount);
+        List<Lotto> lottos = getLottoList(lottoCount);
 
-        printBoughtLottoList(boughtLotto);
+        printLottoList(lottos);
 
         Lotto winningNumbers = createWinningNumbers();
         Bonus bonusNumber = createBonusNumber(winningNumbers);
-        List<Integer> lottoResult = createLottoResult(boughtLotto, winningNumbers.getLotto(),
+        List<Integer> lottoResult = createLottoResult(lottos, winningNumbers.getLotto(),
                 bonusNumber.getBonusNumber());
 
         printLottoStatistics(createLottoStatisticsMessage(lottoResult));
@@ -41,7 +41,7 @@ public class Application {
         return new UserLotto(readLine());
     }
 
-    public static List<Lotto> createBoughtLotto(int lottoCount) {
+    public static List<Lotto> getLottoList(int lottoCount) {
         printLottoCount(lottoCount);
         return createLottoList(lottoCount);
     }

@@ -13,14 +13,6 @@ public enum Prize {
     private final int matchingCount;
     private final int prizeMoney;
 
-    public int getPrizeMoney() {
-        return this.prizeMoney;
-    }
-
-    public int getMatchingCount() {
-        return this.matchingCount;
-    }
-
     Prize(int matchingCount, int prizeMoney) {
         this.matchingCount = matchingCount;
         this.prizeMoney = prizeMoney;
@@ -34,6 +26,14 @@ public enum Prize {
                 .filter(prize -> prize.matchingCount == lottoMatchingCount)
                 .findFirst()
                 .orElse(NONE);
+    }
+
+    public int getPrizeMoney() {
+        return this.prizeMoney;
+    }
+
+    public int getMatchingCount() {
+        return this.matchingCount;
     }
 
 }

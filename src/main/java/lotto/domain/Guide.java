@@ -12,7 +12,7 @@ public class Guide {
     }
 
     public static void printLottoCount(int LottoCount) {
-        System.out.println("\n" + Integer.toString(LottoCount) + "개를 구매했습니다.");
+        System.out.println("\n" + LottoCount + "개를 구매했습니다.");
     }
 
     public static void printGetWinningNumber() {
@@ -23,8 +23,8 @@ public class Guide {
         System.out.println("\n보너스 번호를 입력해 주세요.");
     }
 
-    public static void printBoughtLottoList(List<Lotto> boughtLotto) {
-        for (Lotto lotto : boughtLotto) {
+    public static void printLottoList(List<Lotto> lottos) {
+        for (Lotto lotto : lottos) {
             System.out.println(lotto.getLotto());
         }
     }
