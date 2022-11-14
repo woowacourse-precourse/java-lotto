@@ -15,4 +15,10 @@ public class Calculator {
         }
         return totalWinningPrize;
     }
+
+    public static String getYield(long totalWinningPrize, int purchaseAmount) {
+        double percentage = (double) totalWinningPrize / (double) purchaseAmount * 100;
+        double yield = (double) Math.round(percentage * 10) / 10;
+        return yield + "%";
+    }
 }
