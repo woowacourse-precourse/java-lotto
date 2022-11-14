@@ -3,7 +3,6 @@ package lotto.domain;
 import lotto.exception.DuplicateLottoNumberException;
 import lotto.exception.InvalidRangeLottoNumberException;
 
-import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;

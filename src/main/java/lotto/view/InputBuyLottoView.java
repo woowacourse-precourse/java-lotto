@@ -1,8 +1,6 @@
 package lotto.view;
 
 import lotto.exception.BuyLottoFormatException;
-import lotto.exception.BuyLottoMoneyFormat;
-
 import java.util.regex.Pattern;
 
 public final class InputBuyLottoView extends InputView {
