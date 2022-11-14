@@ -24,9 +24,9 @@
 
 
 
-- ToDoList
-  - CompareNumberWithBonus 함수 분리
-  - Lotto private number 사용하여 기능 구현
+- 2 주차 주요 피드백
+  - 클래스(객체)를 분리하는 연습
+  - 도메인 로직에 대한 단위 테스트를 작성하는 연습
 
 ## 기능 요구 사항
 🚀 기능 요구 사항
