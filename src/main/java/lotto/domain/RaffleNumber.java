@@ -15,7 +15,7 @@ public class RaffleNumber {
     public void inputWinningNumber() {
         System.out.println(Message.INPUT_WINNING);
         String userInput = Console.readLine();
-        setBonusNumber(userInput);
+        setWinningNumber(userInput);
     }
 
     public void setWinningNumber(String userInput) {
