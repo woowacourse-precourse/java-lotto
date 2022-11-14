@@ -1,8 +1,7 @@
-package lotto.score;
+package lotto.domain.score;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import lotto.domain.score.Score;
 import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -36,7 +35,7 @@ class ScoreTest {
 
     @ParameterizedTest
     @CsvSource(value = {"3:1", "4:0"}, delimiterString = ":")
-    void 스코어가_3점_1점_혹은_3점_0점이면_4등입니다(final Integer normal, final Integer bonus) {
+    void 스코어가_3점_1점_혹은_4점_0점이면_4등입니다(final Integer normal, final Integer bonus) {
         var actual = this.scoreGenerator.generateMatchString(normal, bonus);
         assertThat(actual).isEqualTo("4개 일치");
     }
