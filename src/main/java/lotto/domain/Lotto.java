@@ -56,4 +56,21 @@ public class Lotto {
 	public List<Integer> getLottoNumbers() {
 		return numbers;
 	}
+
+	public int countMatchesWithWinningLotto(List<Integer> winningLotto, Lotto userLotto) {
+		int matchCount = 0;
+
+		for (int number : userLotto.numbers) {
+			if (winningLotto.contains(number)) {
+				matchCount++;
+			}
+		}
+
+		return matchCount;
+	}
+
+	public boolean isMatchWithBonusNumber(int bonusNumber, Lotto userLotto) {
+		return userLotto.numbers.contains(bonusNumber);
+	}
+
 }

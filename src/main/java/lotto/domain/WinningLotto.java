@@ -92,4 +92,13 @@ public class WinningLotto {
 			throw new IllegalArgumentException(NOT_VALID_NUMBER);
 		}
 	}
+
+	public static List<Integer> getWinningLotto() {
+		return winningLotto;
+	}
+
+	public static int getBonusNumber() {
+		return bonusNumber;
+	}
+
 }

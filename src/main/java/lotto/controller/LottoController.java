@@ -11,6 +11,7 @@ public class LottoController {
 		displayPurchasedLottoAmount();
 		displayPurchasedLottos();
 		createWinningLottoAndBonusNumber();
+		displayWinningStatistics();
 
 	}
 
@@ -44,5 +45,10 @@ public class LottoController {
 	private static void createBonusNumber() {
 		LottoView.displayInputBonusNumber();
 		LottoService.createBonusNumber(LottoView.getUserInput());
+	}
+
+	private static void displayWinningStatistics() {
+		LottoService.calculateStatistics();
+		LottoView.displayWinningStatistics();
 	}
 }

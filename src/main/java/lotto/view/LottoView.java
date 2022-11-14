@@ -1,12 +1,14 @@
 package lotto.view;
 
 import static camp.nextstep.edu.missionutils.Console.*;
+import static lotto.domain.constant.ResultConstant.*;
 import static lotto.view.constant.InputMessage.*;
 import static lotto.view.constant.OutputMessage.*;
 
 import java.util.List;
 
 import lotto.domain.Lotto;
+import lotto.domain.Result;
 
 public class LottoView {
 
@@ -36,4 +38,13 @@ public class LottoView {
 		System.out.println(INPUT_BONUS_NUMBER);
 	}
 
+	public static void displayWinningStatistics() {
+		System.out.println(OUTPUT_WINNING_STATISTICS);
+		System.out.println(OUTPUT_WINNING_STATISTICS_DIVIDER);
+		System.out.printf(OUTPUT_WINNING_STATISTICS_FORMAT_5TH, Result.getStatisticsByRank(FIFTH_PLACE));
+		System.out.printf(OUTPUT_WINNING_STATISTICS_FORMAT_4TH, Result.getStatisticsByRank(FOURTH_PLACE));
+		System.out.printf(OUTPUT_WINNING_STATISTICS_FORMAT_3RD, Result.getStatisticsByRank(THIRD_PLACE));
+		System.out.printf(OUTPUT_WINNING_STATISTICS_FORMAT_2ND, Result.getStatisticsByRank(SECOND_PLACE));
+		System.out.printf(OUTPUT_WINNING_STATISTICS_FORMAT_1ST, Result.getStatisticsByRank(FIRST_PLACE));
+	}
 }

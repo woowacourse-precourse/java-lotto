@@ -1,7 +1,11 @@
 package lotto.service;
 
+import java.util.List;
+
+import lotto.domain.Lotto;
 import lotto.domain.Lottos;
 import lotto.domain.Money;
+import lotto.domain.Result;
 import lotto.domain.WinningLotto;
 
 public class LottoService {
@@ -26,4 +30,11 @@ public class LottoService {
 		WinningLotto.createBonusNumber(bonusNumber);
 	}
 
+	public static void calculateStatistics() {
+		List<Lotto> userLottos = Lottos.getLottos();
+		List<Integer> winningLotto = WinningLotto.getWinningLotto();
+		int bonusNumber = WinningLotto.getBonusNumber();
+
+		Result.calculateStatistics(userLottos, winningLotto, bonusNumber);
+	}
 }
