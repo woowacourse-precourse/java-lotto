@@ -20,6 +20,16 @@ public class WinningResult {
         return winningResult;
     }
 
+    public long prizeSum(){
+        return winningResult.entrySet().stream().
+                mapToLong(entry -> entry.getKey().multiple(entry.getValue())).sum();
+    }
+
+    public float profit(int money){
+        long prizeSum = prizeSum();
+        return ((float) prizeSum / (float) money) * 100;
+    }
+
     private void putInit(){
         Rank[] values = Rank.values();
         for (Rank value : values) {
@@ -45,15 +55,4 @@ public class WinningResult {
 
         return ranks;
     }
-
-    public long prizeSum(){
-        return winningResult.entrySet().stream().
-                mapToLong(entry -> entry.getKey().multiple(entry.getValue())).sum();
-    }
-
-    public float profit(int money){
-        long prizeSum = prizeSum();
-        return ((float) prizeSum / (float) money) * 100;
-    }
-
 }
