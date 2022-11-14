@@ -1,6 +1,9 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
+import java.util.ArrayList;
+import java.util.List;
 
 // enum 사용해보자
 public class User {
@@ -26,5 +29,17 @@ public class User {
         if ((money % 1000) != 0) {
             throw new IllegalArgumentException("[ERROR] 1000원 단위로 구매해주세요.");
         }
+    }
+
+    public List<Lotto> getUserLotto() {
+        int numOfLotto = money / 1000;
+        List<Lotto> userLotto = new ArrayList<>();
+
+        for (int i = 0; i < numOfLotto; i++) {
+            List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+            Lotto tempLotto = new Lotto(numbers);
+            userLotto.add(tempLotto);
+        }
+        return userLotto;
     }
 }
