@@ -9,9 +9,7 @@ public class Validator {
     public static boolean hasNotCharacter(String numbers){
 
         final String REGEX = "[0-9]+";
-        if (!numbers.matches(REGEX)){
-            return false;
-        }
+        if (!numbers.matches(REGEX)) return false;
 
         return true;
     }
@@ -31,9 +29,7 @@ public class Validator {
     public static boolean isNotComma(String inputWinningNumbers) {
 
         String[] splitInputWinningNumbers = inputWinningNumbers.split(",");
-        if (splitInputWinningNumbers.length != Constant.LOTTO_SIZE){
-            return true;
-        }
+        if (splitInputWinningNumbers.length != Constant.LOTTO_SIZE) return true;
 
         return false;
     }
@@ -41,6 +37,7 @@ public class Validator {
     private static boolean isNotSameIndex(int index1, int index2){
         return index1 != index2;
     }
+
     private static boolean isSame(int num1, int num2){
         return num1 == num2;
     }
@@ -48,9 +45,7 @@ public class Validator {
     public static boolean isListhasCharacter(List<String> inputNumbersList) {
 
         for(int i=0; i<inputNumbersList.size(); i++){
-            if (!hasNotCharacter(inputNumbersList.get(i))){
-                return true;
-            }
+            if (!hasNotCharacter(inputNumbersList.get(i))) return true;
         }
 
         return false;
@@ -59,9 +54,7 @@ public class Validator {
     public static boolean isListRangeOut(List<Integer> numbersList){
 
         for (int i=0; i< numbersList.size(); i++){
-            if (isRangeOut(numbersList.get(i))){
-                return true;
-            }
+            if (isRangeOut(numbersList.get(i))) return true;
         }
 
         return false;
