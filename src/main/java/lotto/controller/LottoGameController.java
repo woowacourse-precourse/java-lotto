@@ -1,5 +1,6 @@
 package lotto.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 import lotto.domain.Lotto;
 import lotto.domain.LottoHistory;
@@ -41,7 +42,8 @@ public class LottoGameController {
     public void printTickets(String amount, List<Lotto> tickets) {
         PrintGuideMessage.printPurchaseGuide(game.calculateQuantity(amount));
         for (Lotto ticket : tickets) {
-            List<Integer> numbers = ticket.getNumbers();
+            List<Integer> numbers = new ArrayList<>(ticket.getNumbers());
+            ticket.ascending(numbers);
             System.out.println(numbers.toString());
         }
     }
