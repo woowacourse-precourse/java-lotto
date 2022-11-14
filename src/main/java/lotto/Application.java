@@ -18,5 +18,7 @@ public class Application {
         List<Lotto> lottos = purchase.createLottos();
         printLottos(lottos);
 
+        List<Integer> numbers = getNumbers();
+
     }
 }
