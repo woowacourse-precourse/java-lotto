@@ -44,6 +44,10 @@ public enum PrizeMoney {
         return money;
     }
 
+    public int getIntegerMoney() {
+        return Integer.parseInt(money.replace(",", ""));
+    }
+
     public int getCountOfMatch() {
         return countOfMatch;
     }

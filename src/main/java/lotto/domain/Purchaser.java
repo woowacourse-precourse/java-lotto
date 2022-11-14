@@ -29,6 +29,10 @@ public class Purchaser {
                 .collect(Collectors.toList());
     }
 
+    public int getMoney() {
+        return money;
+    }
+
     private int computeNumberOfLotto(int money) {
         return money / 1000;
     }
