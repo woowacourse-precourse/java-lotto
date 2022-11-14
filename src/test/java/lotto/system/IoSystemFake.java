@@ -5,7 +5,7 @@ import java.util.List;
 
 public class IoSystemFake implements IoSystem {
     private final List<String> inputs = new ArrayList<>();
-    private Integer index;
+    private Integer index = 0;
 
     public IoSystemFake(String... input) {
         this.inputs.addAll(List.of(input));
@@ -13,7 +13,6 @@ public class IoSystemFake implements IoSystem {
 
     @Override
     public String input() {
-        this.index = 0;
         return inputs.get(index++);
     }
 
