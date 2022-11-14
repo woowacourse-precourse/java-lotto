@@ -15,7 +15,14 @@ public class Progress {
 
         WinningNumberToList winningNumberToList = new WinningNumberToList();
         winningNumberToList.setWinNumbers(UserInput.inputWinNumber()); // 당첨 번호 입력 후 리스트 저장
+        new Lotto(winningNumberToList.winNumbers);
 
         int bonusNum = UserInput.inputBonusNumber();
+
+        System.out.println("당첨 통계");
+        System.out.println("---");
+
+        LottoCheck lottoCheck = new LottoCheck(lottoNumbers.lottoNums, winningNumberToList.winNumbers, bonusNum);
+
     }
 }
