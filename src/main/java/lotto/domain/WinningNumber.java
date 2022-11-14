@@ -3,8 +3,8 @@ package lotto.domain;
 import java.util.HashSet;
 import java.util.List;
 
-import lotto.domain.lottoConstant.Constant;
-import lotto.domain.lottoConstant.errorMessage.WinningNumberError;
+import lotto.lottoConstant.Constant;
+import lotto.lottoConstant.errorMessage.WinningNumberError;
 
 public class WinningNumber {
 	private final List<Integer> winningNumber;

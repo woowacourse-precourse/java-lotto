@@ -2,8 +2,8 @@ package lotto.domain;
 
 import java.util.List;
 
-import lotto.domain.lottoConstant.Constant;
-import lotto.domain.lottoConstant.errorMessage.BonusNumberError;
+import lotto.lottoConstant.Constant;
+import lotto.lottoConstant.errorMessage.BonusNumberError;
 
 public class BonusNumber {
 	private final int bonusNumber;

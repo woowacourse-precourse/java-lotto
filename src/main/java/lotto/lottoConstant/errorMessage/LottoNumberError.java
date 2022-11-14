@@ -1,4 +1,4 @@
-package lotto.domain.lottoConstant.errorMessage;
+package lotto.lottoConstant.errorMessage;
 
 public class LottoNumberError {
 	public static final String LOTTO_SIZE_ERROR_MESSAGE = "[ERROR] 로또 번호는 6개여야 합니다.";

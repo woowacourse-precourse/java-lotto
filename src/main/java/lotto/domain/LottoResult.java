@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-import lotto.domain.lottoConstant.Constant;
+import lotto.lottoConstant.Constant;
 
 public class LottoResult {
 	private final Map<LottoRanking, Integer> LottoResult = new EnumMap<>(LottoRanking.class);

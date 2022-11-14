@@ -1,6 +1,6 @@
 package lotto.domain;
 
-import lotto.domain.lottoConstant.errorMessage.InputMoneyError;
+import lotto.lottoConstant.errorMessage.InputMoneyError;
 
 public class LottoAmount {
 	private static final int MIN_UNIT = 1000;

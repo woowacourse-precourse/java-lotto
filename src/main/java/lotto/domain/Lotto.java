@@ -5,8 +5,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import lotto.domain.lottoConstant.Constant;
-import lotto.domain.lottoConstant.errorMessage.LottoNumberError;
+import lotto.lottoConstant.Constant;
+import lotto.lottoConstant.errorMessage.LottoNumberError;
 
 public class Lotto {
 	private final List<Integer> numbers;

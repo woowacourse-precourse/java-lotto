@@ -6,10 +6,10 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import camp.nextstep.edu.missionutils.Console;
-import lotto.domain.lottoConstant.Constant;
-import lotto.domain.lottoConstant.errorMessage.BonusNumberError;
-import lotto.domain.lottoConstant.errorMessage.InputMoneyError;
-import lotto.domain.lottoConstant.errorMessage.WinningNumberError;
+import lotto.lottoConstant.Constant;
+import lotto.lottoConstant.errorMessage.BonusNumberError;
+import lotto.lottoConstant.errorMessage.InputMoneyError;
+import lotto.lottoConstant.errorMessage.WinningNumberError;
 
 public class InputView {
 	private static final String INPUT_USER_MONEY_MESSAGE = "구입금액을 입력해 주세요.";

@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import camp.nextstep.edu.missionutils.Randoms;
-import lotto.domain.lottoConstant.Constant;
+import lotto.lottoConstant.Constant;
 
 public class LottoTicket {
 	private final List<Lotto> lottoTickets = new ArrayList<>();
