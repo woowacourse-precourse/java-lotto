@@ -9,6 +9,8 @@ public class Lotto {
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
+        validateDuplication(numbers);
+        validateRange(numbers);
         this.numbers = numbers;
     }
 
@@ -17,13 +19,19 @@ public class Lotto {
             throw new IllegalArgumentException(Message.ERROR.get() + Message.ERROR_INCORRECT_QUANTITY.get());
         }
 
+
+    }
+
+    private void validateDuplication(List<Integer> numbers) {
         Set<Integer> checkDuplication = new HashSet<>(numbers);
         if (numbers.size() != checkDuplication.size()) {
             throw new IllegalArgumentException(Message.ERROR.get() + Message.ERROR_DUPLICATED.get());
         }
+    }
 
-        for (int i = 0; i < numbers.size(); i++) {
-            if ((numbers.get(i) < 0) || (numbers.get(i) > 45)) {
+    private void validateRange(List<Integer> numbers) {
+        for (Integer number : numbers) {
+            if ((number < 0) || (number > 45)) {
                 throw new IllegalArgumentException(Message.ERROR.get() + Message.ERROR_INCORRECT_RANGE.get());
             }
         }
