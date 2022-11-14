@@ -15,7 +15,7 @@ public class Lotto {
         this.numbers = numbers;
     }
 
-    public void validate(List<Integer> numbers) throws IllegalArgumentException {
+    private void validate(List<Integer> numbers) throws IllegalArgumentException {
         checkNumberLength(numbers);
 
         for (Integer number : numbers) {
@@ -25,7 +25,7 @@ public class Lotto {
         makeSureUniqueNumbers(numbers);
     }
 
-    public void validateBonus(int bonusNumer) throws IllegalArgumentException {
+    private void validateBonus(int bonusNumer) throws IllegalArgumentException {
         checkNumberRange(bonusNumer);
 
         makeSureUniqueNumber(bonusNumer, numbers);
@@ -44,7 +44,8 @@ public class Lotto {
         return result;
     }
 
-    public List<Boolean> matchBonus(int bonusNumber, List<List<Integer>> lottoBundle) {
+    public List<Boolean> matchBonus(int bonusNumber, List<List<Integer>> lottoBundle) throws IllegalArgumentException {
+        validateBonus(bonusNumber);
         List<Boolean> result = new ArrayList<>();
         for (List<Integer> singleLotto : lottoBundle) {
             result.add(singleLotto.contains(bonusNumber));
