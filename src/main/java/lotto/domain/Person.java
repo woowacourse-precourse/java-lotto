@@ -53,4 +53,7 @@ public class Person {
         return Math.round((sumPrize()/results.size())*10/10.0);
     }
 
+    public List<LottoPrize> getLottoResult() {
+        return results;
+    }
 }
