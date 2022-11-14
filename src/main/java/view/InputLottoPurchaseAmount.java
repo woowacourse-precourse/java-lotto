@@ -1,6 +1,6 @@
-package utils;
+package view;
 
-import static utils.InputLottoPurchaseAmountConstants.*;
+import static view.InputLottoPurchaseAmountConstants.*;
 
 import camp.nextstep.edu.missionutils.Console;
 

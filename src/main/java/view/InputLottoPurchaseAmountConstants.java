@@ -1,4 +1,4 @@
-package utils;
+package view;
 
 public class InputLottoPurchaseAmountConstants {
 
