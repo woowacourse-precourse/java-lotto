@@ -31,6 +31,7 @@ public class Lotto {
                 return 0;
             }
         }
+        return 0;
     }
 
     private void sortAscendingOrder(){
