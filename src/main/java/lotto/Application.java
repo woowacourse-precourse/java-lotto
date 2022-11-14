@@ -16,6 +16,7 @@ public class Application {
         purchase.printCount();
 
         List<Lotto> lottos = purchase.createLottos();
+        printLottos(lottos);
 
     }
 }
