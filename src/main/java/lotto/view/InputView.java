@@ -18,14 +18,8 @@ public class InputView {
         System.out.println(PURCHASE_AMOUNT_MESSAGE);
         String input = Console.readLine();
 
-        int purchaseAmount;
-        try {
-            purchaseAmount = stringToInt(input);
-            validateUnitStandard(purchaseAmount);
-        } catch (IllegalArgumentException illegalArgumentException) {
-            System.out.println(illegalArgumentException.getMessage());
-            return -1;
-        }
+        int purchaseAmount = stringToInt(input);
+        validateUnitStandard(purchaseAmount);
 
         return purchaseAmount;
     }
