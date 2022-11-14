@@ -29,7 +29,7 @@ public class BonusNumber {
     }
 
     private void validateNumbers(String str) {
-        if (str.chars().allMatch(Character::isDigit)) {
+        if (!str.chars().allMatch(Character::isDigit)) {
             throw new IllegalArgumentException(Error.IS_NOT_NUMBER.getMessage());
         }
     }
