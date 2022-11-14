@@ -52,15 +52,15 @@ public class AnalyseTest {
     @Test
     @DisplayName("로또 분석")
     void AnalyseLotto() throws Exception {
-        Prize[] prizes = new Prize[] {
+        Prize[] prizes = new Prize[]{
                 Prize.FIRST, Prize.SECOND, Prize.THIRD, Prize.FOURTH, Prize.FIFTH, Prize.ZERO
         };
         int index = 0;
         Method method = InvokeMethod();
 
-        for(; index<6; index++) {
+        for (; index < 6; index++) {
             method.invoke(analyse, lottos.get(index), prize);
-            if(index==5) { // 하나도 당첨되지 않았을 때
+            if (index == 5) { // 하나도 당첨되지 않았을 때
                 assertThat(Analyse.getStats().get(prizes[index])).isEqualTo(1);
 
                 return;

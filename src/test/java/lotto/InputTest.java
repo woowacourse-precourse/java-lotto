@@ -20,7 +20,7 @@ public class InputTest {
     private final List<String> prize = List.of(
             "1, 2, 3, 4, 5, 47", "가나다", "abc", "123abc", "1, 2, 3, 4, 5"
     );
-    private final List<String> budget = List.of("999","abc","가","10990","1~947");
+    private final List<String> budget = List.of("999", "abc", "가", "10990", "1~947");
     private final List<String> bonus = List.of("0", "47", "abc", "가", "@@!");
 
     private Method invokeMethod(String declaredMethod) throws NoSuchMethodException {
@@ -31,12 +31,12 @@ public class InputTest {
     }
 
     private void getCountErr(Method method, List<String> whichCase) {
-        for(String inputCase : whichCase) {
-            System.out.println("input: "+inputCase);
+        for (String inputCase : whichCase) {
+            System.out.println("input: " + inputCase);
             try {
                 method.invoke(input, inputCase);
             } catch (InvocationTargetException e) {
-                if(e.getTargetException().getMessage().contains(ERROR_MSG)) {
+                if (e.getTargetException().getMessage().contains(ERROR_MSG)) {
                     countErr++;
                 }
             } catch (IllegalAccessException e) {
@@ -57,7 +57,7 @@ public class InputTest {
 
         getCountErr(method, prize);
 
-        System.out.println("countErr: "+countErr);
+        System.out.println("countErr: " + countErr);
         assertEquals(countErr, prize.size());
     }
 
@@ -68,7 +68,7 @@ public class InputTest {
 
         getCountErr(method, budget);
 
-        System.out.println("countErr: "+countErr);
+        System.out.println("countErr: " + countErr);
         assertEquals(countErr, budget.size());
     }
 
@@ -79,7 +79,7 @@ public class InputTest {
 
         getCountErr(method, bonus);
 
-        System.out.println("countErr: "+countErr);
+        System.out.println("countErr: " + countErr);
         assertEquals(countErr, bonus.size());
     }
 

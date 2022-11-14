@@ -43,9 +43,9 @@ class LottoTest {
     @DisplayName("발행된 로또의 수량과 로또 발행 횟수가 다르면 예외가 발생한다.")
     void createDiffLottoSizeFromPublishNum() {
         List<Lotto> lotto = new ArrayList<>(List.of(
-                new Lotto(List.of(1,2,3,4,5,6)),
-                new Lotto(List.of(11,12,13,14,15,16)),
-                new Lotto(List.of(21,22,23,24,25,26))
+                new Lotto(List.of(1, 2, 3, 4, 5, 6)),
+                new Lotto(List.of(11, 12, 13, 14, 15, 16)),
+                new Lotto(List.of(21, 22, 23, 24, 25, 26))
         ));
         assertThatThrownBy(() -> Lotto.validateLotto(lotto, 2))
                 .isInstanceOf(IllegalArgumentException.class);

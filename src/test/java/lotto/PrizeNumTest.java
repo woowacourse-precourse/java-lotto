@@ -61,7 +61,7 @@ public class PrizeNumTest extends NsTest {
         try {
             method.invoke(prizeNum, bonus);
         } catch (InvocationTargetException e) {
-            if(e.getTargetException().getMessage().contains(InputTest.ERROR_MSG)) {
+            if (e.getTargetException().getMessage().contains(InputTest.ERROR_MSG)) {
                 gotErrMsg = true;
             }
         }
