@@ -22,7 +22,7 @@ public class InputView {
     private static void isValidGetUserPriceNumber(String strUserPrice){
         if(!InputValid.checkPriceUnit(strUserPrice)){
             System.out.println(EXCEPTED_UNIT_OF_PRICE_MESSAGE.getMessage());
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(EXCEPTED_UNIT_OF_PRICE_MESSAGE.getMessage());
         }
     }
 
@@ -41,7 +41,7 @@ public class InputView {
     private static void isValidGetLottoNumber(String strLottoNumber){
         if(!InputValid.checkLottoNumber(strLottoNumber)){
             System.out.println(EXCEPTED_LOTTO_MESSAGE.getMessage());
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(EXCEPTED_LOTTO_MESSAGE.getMessage());
         }
     }
 
