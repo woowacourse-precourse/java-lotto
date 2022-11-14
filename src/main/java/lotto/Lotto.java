@@ -6,11 +6,14 @@ import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 import static lotto.I_O_System.BAGIC_ERROR_MESSAGE;
+import static lotto.I_O_System.Lottey_max;
 
 public class Lotto {
     private final List<Integer> numbers;
+    private final int Five_Match = 5;
     public static int Bounus_Win;
     public static int[] Number_of_Win;
+
 
 
     private final int Tree_Matche_Money = 5000;
@@ -27,7 +30,7 @@ public class Lotto {
 
     private void validate(List<Integer> numbers) {
         try {
-            if (numbers.size() != 6) {
+            if (numbers.size() != Lottey_max) {
                 throw new IllegalArgumentException(BAGIC_ERROR_MESSAGE);
             }
         } catch (IllegalArgumentException ex) {
@@ -68,7 +71,7 @@ public class Lotto {
     private void Check_Winning_Number(List<Integer> Winning_Number, List<Integer> numbers, int Bonus_Number) {
         List<Integer> matchList = Winning_Number.stream().filter(o -> numbers.stream()
                 .anyMatch(Predicate.isEqual(o))).collect(Collectors.toList());
-        if (matchList.size() == 5) {
+        if (matchList.size() == Five_Match) {
             Bonus_Check(Bonus_Number, numbers);
         }
         Number_of_Win[matchList.size()] += 1;
@@ -88,7 +91,7 @@ public class Lotto {
             Bounus_Win++;
             return;
         }
-        Number_of_Win[5] -= 1;
+        Number_of_Win[Five_Match] -= 1;
     }
 
 
