@@ -39,7 +39,7 @@ public class WinningNumberLotto extends Lotto {
         try {
             Integer.parseInt(input);
         } catch (Exception e) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR] 보너스 번호는 숫자 하나여야 합니다. -> VALIDATE 조건 추가");
         }
     }
 

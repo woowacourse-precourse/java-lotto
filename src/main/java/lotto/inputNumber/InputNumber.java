@@ -30,7 +30,7 @@ public class InputNumber {
                     .map(s -> Integer.parseInt(s))
                     .collect(Collectors.toList());
         } catch (Exception e) {
-            throw new IllegalArgumentException("당첨 번호 입력이 잘못되었습니다.");
+            throw new IllegalArgumentException("[ERROR] 당첨 번호 입력이 잘못되었습니다.");
         }
     }
 
