@@ -1,19 +1,23 @@
 package lotto;
 import camp.nextstep.edu.missionutils.Console;
+import static lotto.Validator.*;
 public class Input {
     public static String getPurchaseMoney(){
         String purchasedMoney = Console.readLine();
-        // validate 해야함.
+        if (!isValidatePurchaseMoney(purchasedMoney))
+            purchasedMoney = getPurchaseMoney();
         return purchasedMoney;
     }
     public static String getWinningNumber(){
         String WinningNumber = Console.readLine();
-        // validate 해야 함
+        if (!isValidateWinningMoney(WinningNumber))
+            WinningNumber = getWinningNumber();
         return WinningNumber;
     }
     public static String getBonusNumber(){
         String BonusNumber = Console.readLine();
-        // validate 해야 함
+        if (!isValidateBonusMoney(BonusNumber))
+            BonusNumber = getBonusNumber();
         return BonusNumber;
     }
 }
