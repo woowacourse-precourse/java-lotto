@@ -4,6 +4,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Statistics {
+    private static final int DEFAULT_STATISTIC_VALUE = 0;
+    private static final int INCREASING_VALUE = 1;
+    private static final int REVENUE_INITIAL_VALUE = 0;
+    private static final int REVENUE_RATIO_VALUE = 100;
     private Map<Prize, Integer> statisticsResult;
 
     public Statistics() {
@@ -16,7 +20,7 @@ public class Statistics {
             if (prize == Prize.NOTHING) {
                 continue;
             }
-            statisticsResult.put(prize, 0);
+            statisticsResult.put(prize, DEFAULT_STATISTIC_VALUE);
         }
     }
 
@@ -24,17 +28,17 @@ public class Statistics {
         if (prize == Prize.NOTHING) {
             return;
         }
-        statisticsResult.merge(prize, 1, (oldValue, newValue) -> oldValue + 1);
+        statisticsResult.merge(prize, INCREASING_VALUE, (oldValue, newValue) -> oldValue + INCREASING_VALUE);
     }
 
     public float calculateYiled(Amount amount) {
-        float revenue = 0;
+        float revenue = REVENUE_INITIAL_VALUE;
         for (Prize prize : statisticsResult.keySet()) {
-            if (statisticsResult.get(prize) > 0) {
+            if (statisticsResult.get(prize) > DEFAULT_STATISTIC_VALUE) {
                 revenue += prize.getReward() * statisticsResult.get(prize);
             }
         }
-        return (revenue / amount.getValue()) * 100;
+        return (revenue / amount.getValue()) * REVENUE_RATIO_VALUE;
     }
 
     public Map<Prize, Integer> getStatisticsResult() {

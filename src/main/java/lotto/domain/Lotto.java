@@ -5,8 +5,12 @@ import java.util.List;
 import java.util.Set;
 
 public class Lotto {
-    private static final String INVALID_INPUT_COUNT_MESSAGE = "[ERROR] 로또는 6개의 번호를 입력해야 합니다.";
-    private static final String INVALID_NUMBER_RANGE_MESSAGE = "[ERROR] 로또는 1부터 45까지의 숫자를 입력해야 합니다. 문제가 생긴 값 = ";
+    private static final int LOTTO_NUMBER_SIZE = 6;
+    private static final int LOTTO_START_RANGE = 1;
+    private static final int LOTTO_END_RANGE = 45;
+    private static final int START_INDEX = 0;
+    private static final String INVALID_INPUT_COUNT_MESSAGE = "[ERROR] 로또는 " + LOTTO_NUMBER_SIZE + "개의 번호를 입력해야 합니다.";
+    private static final String INVALID_NUMBER_RANGE_MESSAGE = "[ERROR] 로또는 " + LOTTO_START_RANGE + "부터 " + LOTTO_END_RANGE + "까지의 숫자를 입력해야 합니다. 문제가 생긴 값 = ";
     private static final String INVALID_DUPLICATED_NUMBER_MESSAGE = "[ERROR] 중복된 숫자가 포함되어서는 안됩니다.";
     private final List<Integer> numbers;
 
@@ -18,15 +22,16 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
-        if (numbers.size() != 6) {
-            System.out.println(INVALID_INPUT_COUNT_MESSAGE);
-            throw new IllegalArgumentException(INVALID_INPUT_COUNT_MESSAGE);
+        if (numbers.size() == LOTTO_NUMBER_SIZE) {
+            return;
         }
+        System.out.println(INVALID_INPUT_COUNT_MESSAGE);
+        throw new IllegalArgumentException(INVALID_INPUT_COUNT_MESSAGE);
     }
 
     private void validateNumberRange(List<Integer> numbers) {
         for (int number : numbers) {
-            if (number >= 1 && number <= 45) {
+            if (number >= LOTTO_START_RANGE && number <= LOTTO_END_RANGE) {
                 continue;
             }
             System.out.println(INVALID_NUMBER_RANGE_MESSAGE + number);
@@ -52,7 +57,7 @@ public class Lotto {
 
         Result result = new Result();
 
-        for (int i = 0; i < winningNumbers.size(); i++) {
+        for (int i = START_INDEX; i < winningNumbers.size(); i++) {
             if (numbers.contains(winningNumbers.get(i))) {
                 result.increaseMatchCount();
             }

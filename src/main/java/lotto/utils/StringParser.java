@@ -6,6 +6,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public final class StringParser {
+    private static final int START_INDEX = 0;
+    private static final int FIVE_MATCHED_COUNT = 5;
+    private static final String OPEN_SQUARE_BRACKET = "[";
+    private static final String COMMA = ", ";
+    private static final String CLOSE_SQUARE_BRACKET = "]";
     private static final String INVALID_PARSE_STRING_TO_INTEGER_MESSAGE = "[ERROR] 로또 번호는 숫자를 입력해야 합니다.";
     private StringParser() {
     }
@@ -23,15 +28,15 @@ public final class StringParser {
     public static String parseLottoToString(Lotto lotto) {
         StringBuilder sb = new StringBuilder();
         List<Integer> numbers = lotto.getNumbers();
-        sb.append("[");
-        for (int i = 0; i < numbers.size(); i++) {
+        sb.append(OPEN_SQUARE_BRACKET);
+        for (int i = START_INDEX; i < numbers.size(); i++) {
             sb.append(numbers.get(i));
-            if (i == 5) {
+            if (i == FIVE_MATCHED_COUNT) {
                 break;
             }
-            sb.append(", ");
+            sb.append(COMMA);
         }
-        sb.append("]");
+        sb.append(CLOSE_SQUARE_BRACKET);
         return sb.toString();
     }
 
