@@ -37,10 +37,18 @@ public class ExceptionHandler {
 
     public static void checkValidationWinningNumber(String input) throws IllegalArgumentException {
         try {
+            isSixNumbers(input);
             isOnlyCommaAndNumber(input);
             isAllDifferentNumbers(input);
         } catch (IllegalArgumentException illegalArgumentException) {
             throw makeIllegalArgumentException(Message.INPUT_WINNING_NUMBER_ERROR);
+        }
+    }
+
+    private static void isSixNumbers(String input) throws IllegalArgumentException {
+        String[] numbers = input.split(COMMA);
+        if (numbers.length != Number.SIX.getValue()) {
+            throw new IllegalArgumentException();
         }
     }
 
