@@ -1,4 +1,4 @@
-package lotto.Output;
+package lotto.Output.Statistic;
 
 public enum PrintWinning {
     WIN_THREE("당첨 통계%n" + "---%n" + "3개 일치 (5,000원) - %d개"),

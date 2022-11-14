@@ -1,5 +1,6 @@
 package lotto.Domain;
 
+import lotto.Domain.MainValue.Money;
 import org.assertj.core.api.SoftAssertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

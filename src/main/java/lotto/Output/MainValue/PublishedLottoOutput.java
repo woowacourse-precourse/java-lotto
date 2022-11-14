@@ -1,4 +1,4 @@
-package lotto.Output;
+package lotto.Output.MainValue;
 
 import java.util.List;
 import java.util.Set;

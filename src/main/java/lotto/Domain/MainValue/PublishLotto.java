@@ -1,4 +1,4 @@
-package lotto.Domain;
+package lotto.Domain.MainValue;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import lotto.Input.LottoValue;

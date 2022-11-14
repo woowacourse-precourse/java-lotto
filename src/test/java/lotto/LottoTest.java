@@ -1,6 +1,6 @@
 package lotto;
 
-import lotto.Domain.Lotto;
+import lotto.Domain.MainValue.Lotto;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

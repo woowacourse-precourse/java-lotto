@@ -1,11 +1,15 @@
 package lotto;
 
-import lotto.Domain.*;
+import lotto.Domain.MainValue.Bonus;
+import lotto.Domain.MainValue.Lotto;
+import lotto.Domain.MainValue.Money;
+import lotto.Domain.MainValue.PublishLotto;
+import lotto.Domain.Statistic.Statistic;
 import lotto.Input.InputNumber;
-import lotto.Output.PublishedLottoOutput;
+import lotto.Output.Profit;
+import lotto.Output.MainValue.PublishedLottoOutput;
 
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
 
 public class Application {
@@ -21,9 +25,9 @@ public class Application {
 
         Statistic statistic =
                 new Statistic(application.sixNum, application.bonusNum, application.publishedLottos);
-        Map<String,Integer> winningMap = statistic.winningMap;
+
         Profit profit = new Profit();
-        profit.printProfit(winningMap,application.publishedLottos.size()*1000);
+        profit.printProfit(statistic.prizeRanks,application.publishedLottos.size()*1000);
         } catch (IllegalArgumentException e) {
             System.out.println(ERROR+e.getMessage());
         }

@@ -1,4 +1,4 @@
-package lotto.Domain;
+package lotto.Domain.MainValue;
 
 import lotto.Domain.Exception.CheckException;
 

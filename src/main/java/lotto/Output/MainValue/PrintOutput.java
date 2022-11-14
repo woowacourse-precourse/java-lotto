@@ -1,4 +1,4 @@
-package lotto.Output;
+package lotto.Output.MainValue;
 
 public enum PrintOutput {
     BUY("%d개를 구매했습니다.%n"),
