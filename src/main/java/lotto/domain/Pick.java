@@ -28,4 +28,17 @@ public class Pick {
 
         return scores;
     }
+
+    public void drawLottoes(List<Lotto> lottoes) {
+        int rank;
+
+        for (Lotto lotto : lottoes) {
+            rank = lotto.draw(answer, bonus);
+            scores.set(rank, scores.get(rank) + 1);
+        }
+    }
+
+    public List<Integer> getScores() {
+        return scores;
+    }
 }
