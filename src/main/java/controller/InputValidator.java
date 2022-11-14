@@ -47,4 +47,23 @@ public class InputValidator {
             }
         }
     }
+
+    public void checkBonusNumber(String bonusNumer) {
+        isDigitBonusNumber(bonusNumer);
+        checkBonusNumberRange(bonusNumer);
+    }
+
+    public void isDigitBonusNumber(String bonusNumber) {
+        for(int i=0; i<bonusNumber.length(); i++) {
+            if(!Character.isDigit(bonusNumber.charAt(i))) {
+                throw new IllegalArgumentException("[ERROR] 숫자를 입력하세요.");
+            }
+        }
+    }
+
+    public void checkBonusNumberRange(String bonusNumber) {
+        if(Integer.parseInt(bonusNumber) > 45 || Integer.parseInt(bonusNumber) < 1) {
+            throw new IllegalArgumentException("[ERROR] 숫자를 입력하세요.");
+        }
+    }
 }
