@@ -1,9 +1,11 @@
 package lotto;
 
 import lotto.domain.lotto.domain.Lotto;
+import lotto.domain.lotto.verifier.InputNumberVerifier;
 import lotto.domain.user.domain.User;
 import lotto.domain.user.presentation.UserController;
 import lotto.domain.user.service.UserService;
+import lotto.global.util.Util;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -43,6 +45,13 @@ class LottoTest {
     @Test
     void isNumberFrom1To45() {
         assertThatThrownBy(() -> new Lotto(List.of(1, 2, 3, 4, 5, 46)))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("보너스 숫자는 1개의 숫자만 입력해야한다.")
+    @Test
+    void bonusNumberOnly1() {
+        assertThatThrownBy(() -> InputNumberVerifier.bonusNumberVerifier(new Lotto(List.of(1, 2, 3, 4, 5, 6)), "1,2"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 }
