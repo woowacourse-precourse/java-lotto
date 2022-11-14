@@ -18,7 +18,7 @@ public class Lotto {
         }
     }
 
-    private int lottoNum(){
+    public static int lottoNum(){
         int amount = input();
         if(amount % 1000 != 0){
             throw new IllegalArgumentException();
