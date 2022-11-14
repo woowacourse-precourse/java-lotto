@@ -26,15 +26,6 @@ class LottoTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
     
-    @DisplayName("로또 번호를 배열 형태의 문자열로 반환한다.")
-    @Test
-    void getPrintByNumbers() {
-        List<Integer> lottoNumbers = new ArrayList<>(List.of(1, 2, 4, 3, 5, 6));
-        
-        assertThat(new Lotto(lottoNumbers).getStringByNumbers())
-                .isEqualTo("[1, 2, 3, 4, 5, 6]");
-    }
-    
     @DisplayName("로또 번호는 오름차순으로 정렬되어야 한다.")
     @Test
     void getNumbers() {

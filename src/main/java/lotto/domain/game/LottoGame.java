@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Optional;
 import lotto.domain.lotto.Lotto;
 import lotto.domain.lotto.LottoMachine;
+import lotto.domain.lotto.LottoView;
 import lotto.domain.winning.WinningDetail;
 import lotto.domain.winning.WinningNumber;
 import lotto.domain.winning.WinningNumberComparator;
@@ -59,7 +60,7 @@ public class LottoGame {
         System.out.println(lottos.size() + "개를 구매했습니다.");
         
         for (Lotto lotto : lottos) {
-            System.out.println(lotto.getStringByNumbers());
+            LottoView.printNumbersByArrayFormat(lotto);
         }
     }
     

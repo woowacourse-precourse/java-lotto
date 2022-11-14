@@ -3,7 +3,6 @@ package lotto.domain.lotto;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class Lotto {
     
@@ -18,10 +17,6 @@ public class Lotto {
     
     public List<Integer> getNumbers() {
         return numbers;
-    }
-    
-    public String getStringByNumbers() {
-        return "[" + numbers.stream().map(String::valueOf).collect(Collectors.joining(", ")) + "]";
     }
     
     private void validate(List<Integer> numbers) {
