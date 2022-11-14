@@ -28,6 +28,7 @@ public class PrizeCount {
         for (Prize prize : Prize.values()) {
             message.append(prize).append(" - ").append(items.get(prize)).append("개").append("\n");
         }
+        message.deleteCharAt(message.lastIndexOf("\n"));
 
         return message.toString();
     }
