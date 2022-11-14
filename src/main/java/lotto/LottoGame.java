@@ -5,6 +5,9 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.Map;
 
 public class LottoGame {
+    private static final String inputSuffix = "을(를) 입력해 주세요.";
+    private static final String resultPrefix = "당첨 통계\n---";
+
     private final WinningNumbers winningNumbers;
     private final Person person;
 
@@ -14,22 +17,29 @@ public class LottoGame {
     }
 
     public static LottoGame start() {
-        System.out.println("구입금액을 입력해 주세요.");
+        Person person = generatePerson();
+        WinningNumbers winningNumbers = generateWinningNumbers();
+        return new LottoGame(winningNumbers, person);
+    }
+
+    private static Person generatePerson() {
+        System.out.println(Constants.MONEY + inputSuffix);
         Person person = Person.from(Parser.money(Console.readLine()));
         person.printLottos();
+        return person;
+    }
 
-        System.out.println("당첨 번호를 입력해 주세요.");
+    private static WinningNumbers generateWinningNumbers() {
+        System.out.println(Constants.WINNING_NUMBER + inputSuffix);
         Lotto winningNumbers = new Lotto(Parser.numbers(Console.readLine()));
-        System.out.println("보너스 번호를 입력해 주세요.");
-        int bonusNumber = Parser.number(Console.readLine());
-        WinningNumbers winner = new WinningNumbers(winningNumbers, bonusNumber);
 
-        return new LottoGame(winner, person);
+        System.out.println(Constants.BONUS + inputSuffix);
+        int bonusNumber = Parser.number(Console.readLine());
+        return new WinningNumbers(winningNumbers, bonusNumber);
     }
 
     public void result() {
-        System.out.println("당첨 통계");
-        System.out.println("---");
+        System.out.println(resultPrefix);
         printResult(person.matchResult(winningNumbers));
     }
 
@@ -40,6 +50,7 @@ public class LottoGame {
             }
             System.out.printf(rank + " - %d개\n", matchResult.get(rank));
         }
-        System.out.printf("총 수익률은 %.1f%%입니다.", person.yield(matchResult));
+        String printYield = String.format("총 수익률은 %.1f%%입니다.", person.yield(matchResult));
+        System.out.println(printYield);
     }
 }
