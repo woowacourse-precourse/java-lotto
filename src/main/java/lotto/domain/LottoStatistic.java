@@ -27,13 +27,15 @@ public class LottoStatistic {
     @Override
     public String toString(){
         DecimalFormat df = new DecimalFormat("###,###");
-        String print = "당첨 통계\n---\n";
+        String print = "\n당첨 통계\n---\n";
         for(Rank rank: Rank.values()){
-            print += rank.getCounts()+"개 일치 (";
-            print += df.format(rank.getPrice())+ "원) - ";
+            print += rank.getCounts()+"개 일치";
+            if(rank == Rank.Second_Place)
+                print+=", 보너스 볼 일치";
+            print +=" (" +df.format(rank.getPrice())+ "원) - ";
             print += rankMap.getOrDefault(rank,0)+"개\n";
         }
-        print+="총 수익률은 "+String.format("%.2f", profitRate)+"%입니다.";
+        print+="총 수익률은 "+String.format("%.1f", profitRate)+"%입니다.";
         return print;
     }
     private void calculateProfitRate(){

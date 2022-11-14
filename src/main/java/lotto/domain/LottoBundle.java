@@ -44,7 +44,7 @@ public class LottoBundle {
     }
     private Lotto createOneLotto(){
         List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
-        Collections.sort(numbers);
+//        Collections.sort(numbers);
         return new Lotto(numbers);
     }
 }

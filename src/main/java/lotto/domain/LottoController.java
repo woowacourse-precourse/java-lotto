@@ -39,14 +39,14 @@ public class LottoController {
         try{
             return Integer.parseInt(cost_str);
         }catch (NumberFormatException e) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR]");
         }
     }
     public int cost2count(int cost){
         int count = cost/1000;
         if(cost%1000!=0 || count<=0)
-            throw new IllegalArgumentException();
-        System.out.println(count + "개를 구매했습니다.");
+            throw new IllegalArgumentException("[ERROR]");
+        System.out.println("\n"+count + "개를 구매했습니다.");
         return count;
     }
     private Lotto lottoInput(){
@@ -59,25 +59,25 @@ public class LottoController {
                 int num = Integer.parseInt(num_str);
                 lottoNumber.add(num);
             } catch (NumberFormatException e) {
-                throw new IllegalArgumentException();
+                throw new IllegalArgumentException("[ERROR]");
             }
         }
         return new Lotto(lottoNumber);
     }
     private int bonusInput(Lotto lotto){
-        System.out.println("보너스번호를 입력해 주세요.");
+        System.out.println("\n보너스번호를 입력해 주세요.");
         String bonus_str = readLine();
         try {
 //            if(isString_in_1to9(bonus_str))
 //                throw new IllegalArgumentException();
             int bonus_num = Integer.parseInt(bonus_str);
             if(bonus_num<1 && bonus_num>45)
-                throw new IllegalArgumentException();
+                throw new IllegalArgumentException("[ERROR]");
             if(isBonusDuplicate(bonus_num,lotto))
-                throw new IllegalArgumentException();
+                throw new IllegalArgumentException("[ERROR]");
             return bonus_num;
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR]");
         }
     }
 //    private boolean isString_in_1to9(String str) {
