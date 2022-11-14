@@ -24,7 +24,9 @@ public class WinningNumber {
     public List<Integer> convertStringToList(String input){
         List<Integer> winningNumbers = new ArrayList<>();
         StringTokenizer st = new StringTokenizer(input, ",");
-        winningNumbers.add(Integer.parseInt(st.nextToken()));
+        for (int i = 0; i < winning_cnt; i++) {
+            winningNumbers.add(Integer.parseInt(st.nextToken()));
+        }
         return winningNumbers;
     }
 
