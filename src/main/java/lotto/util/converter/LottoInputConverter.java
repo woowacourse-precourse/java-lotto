@@ -5,6 +5,7 @@ import lotto.util.Validator;
 
 import java.util.List;
 
+import static lotto.exception.ExceptionType.*;
 import static lotto.util.converter.LottoInputConverter.LottoInputValidator.*;
 
 public class LottoInputConverter {
@@ -57,25 +58,25 @@ public class LottoInputConverter {
 
         LOTTO_INPUT_NULL((String input) -> {
             if (input == null) {
-                throw new IllegalArgumentException();
+                throw new IllegalArgumentException(NULL_INPUT.getMessage());
             }
         }),
 
         LOTTO_INPUT_USER_PURCHASE_COST((String input) -> {
             if (!input.matches(USER_BUY_MONEY_PATTERN)) {
-                throw new IllegalArgumentException();
+                throw new IllegalArgumentException(NOT_NUMBER.getMessage());
             }
         }),
 
         LOTTO_INPUT_WINNING_NUMBER((String input) -> {
             if (!input.matches(LOTTO_MAIN_NUMBER_INPUT_PATTERN)) {
-                throw new IllegalArgumentException();
+                throw new IllegalArgumentException(WINNING_LOTTO_NUMBER_INPUT_PATTERN_NOT_MATCH.getMessage());
             }
         }),
 
         LOTTO_INPUT_BONUS_NUMBER((String input) -> {
             if (!input.matches(LOTTO_BONUS_NUMBER_INPUT_PATTERN)) {
-                throw new IllegalArgumentException();
+                throw new IllegalArgumentException(NOT_NUMBER.getMessage());
             }
         }),
         ;
