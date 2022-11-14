@@ -23,7 +23,7 @@ public class DataInput {
         ValidateNumber(input);
         ValidateAmountUnit(input);
 
-        return Integer.parseInt(input);
+        return Integer.parseInt(input) / 1000;
     }
 
     public static int BonusNumber() {
@@ -44,8 +44,8 @@ public class DataInput {
     public static String UserInput(String Message) {
         System.out.println(Message);
         String input = Console.readLine();
-
-        return input.replace("\n", "");
+        input = input.replaceAll("\\s+","");
+        return input;
     }
 
     private static void ValidateNumber(String input) {
@@ -57,14 +57,13 @@ public class DataInput {
 
     private static void ValidateAmountUnit(String input) {
         if (!input.substring(input.length()-3, input.length()).equals("000")) {
-            System.out.println(ERROR_MESSAGE_UNIT);
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ERROR_MESSAGE_UNIT);
         }
     }
 
     private static int ValidateRange(String input) {
         int bonusNumber = Integer.parseInt(input);
-        if (bonusNumber >= MINIMUM_NUMBER_OF_LOTTO && bonusNumber <= MAXIMUM_NUMBER_OF_LOTTO) {
+        if (bonusNumber < MINIMUM_NUMBER_OF_LOTTO || bonusNumber > MAXIMUM_NUMBER_OF_LOTTO) {
             System.out.println(ERROR_MESSAGE_RANGE);
             throw new IllegalArgumentException();
         }
@@ -72,7 +71,6 @@ public class DataInput {
     }
 
     private static void ValidateFormat(String input) {
-        input = input.trim();
         if(input.matches(VALID_FORMAT_PATTERN)){
             System.out.println(ERROR_MESSAGE_FORMAT);
             throw new IllegalArgumentException();
