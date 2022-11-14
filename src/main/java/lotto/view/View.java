@@ -17,7 +17,7 @@ public class View {
         return money;
     }
 
-    public void validateMoney(long money) {
+    private void validateMoney(long money) {
         if (money % 1000 != 0) {
             throw new IllegalArgumentException("[ERROR] 입력금액은 1000원 단위여야 합니다.");
         }
