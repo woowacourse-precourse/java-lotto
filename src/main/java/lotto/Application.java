@@ -8,7 +8,7 @@ public class Application {
     static List<Integer> winningNumbers;
     static int bonusNumber;
     public enum Places{
-        FIFTH, FOURTH, THIRD, SECOND, FIRST, OTHERS
+        FIRST,SECOND,THIRD, FOURTH,FIFTH, OTHERS
     }
     public static void main(String[] args) {
 
