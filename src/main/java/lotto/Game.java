@@ -19,7 +19,9 @@ public class Game {
         init();
         int money = view.requestMoney();
         lottoNumberSave(money);
-
+        view.showMessage(money/1000+SHOW_LOTTO);
+        view.lottoNumberShow(total_lotto);
+        
     }
 
     public void lottoNumberSave(int money){

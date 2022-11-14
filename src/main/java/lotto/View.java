@@ -13,12 +13,14 @@ public class View {
     public Exception exception=new Exception();
     public LottoMaker lottoMaker= new LottoMaker();
 
+
+
     public View(Scanner scanner) {
         this.scanner = scanner;;
     }
 
     public int requestMoney(){
-        int inputMoney = StringtoIntegerInput(Console.readLine());
+        int inputMoney = stringtoIntegerInput(Console.readLine());
         if(exception.isNumeric(inputMoney)&&exception.divThousandOfMoney(inputMoney)
         &&exception.lessThanThousand(inputMoney)){
 
@@ -36,12 +38,23 @@ public class View {
     }
 
     public int requestBonusLottoNumber(){
-        int inputNumber = StringtoIntegerInput(Console.readLine());
+        int inputNumber = stringtoIntegerInput(Console.readLine());
         if(exception.lottoValidator(inputNumber))return inputNumber;
         throw new IllegalArgumentException("ERROR");
     }
 
-    public int StringtoIntegerInput(String input){
+    public int stringtoIntegerInput(String input){
         return Integer.parseInt(input);
+    }
+
+    public void showMessage(String message){
+        System.out.println(message);
+    }
+
+    public void lottoNumberShow(List<Lotto> lottos){
+
+        for(int i=0;i<lottos.size();i++){
+            System.out.println('['+lottos.get(i).getNumbers()+']');
+        }
     }
 }
