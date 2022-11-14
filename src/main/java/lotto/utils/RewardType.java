@@ -1,6 +1,9 @@
 package lotto.utils;
 
-enum RewardType {
+import java.util.Arrays;
+import java.util.NoSuchElementException;
+
+public enum RewardType {
     FIRST(6, 2000000000),
     SECOND(5, 30000000),
     THIRD(5, 1500000),
@@ -8,17 +11,30 @@ enum RewardType {
     FIFTH(3, 5000),
     MISS(0, 0);
 
-    private int num;
+    private int matchNum;
     private int reward;
 
-    RewardType(int num, int reward){
-        this.num = num;
+    RewardType(int matchNum, int reward){
+        this.matchNum = matchNum;
         this.reward = reward;
     }
+
     public int getnum() {
-        return num;
+        return matchNum;
     }
     public int getreward(){
         return reward;
     }
+
+    public static RewardType getRating(final int matchNum, final boolean containBonusBall){
+        if (matchNum == THIRD.matchNum && !containBonusBall){
+            return THIRD;
+        }
+        if (matchNum < FIFTH.matchNum){
+            return MISS;
+        }
+        return Arrays.stream(values()).filter(rating -> rating.matchNum == matchNum).findAny()
+                .orElseThrow(NoSuchElementException::new);
+    }
+
 }
