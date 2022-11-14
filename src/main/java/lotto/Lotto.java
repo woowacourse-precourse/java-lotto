@@ -17,4 +17,15 @@ public class Lotto {
     }
 
     // TODO: 추가 기능 구현
+    public void getNumbers() {
+        String result = "[";
+        for (int idx = 0; idx < this.numbers.size(); idx++) {
+            result += this.numbers.get(idx);
+            if (idx != this.numbers.size()-1) {
+                result += ", ";
+            }
+        }
+        result += "]";
+        System.out.println(result);
+    }
 }
