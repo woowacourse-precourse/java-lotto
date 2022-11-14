@@ -11,6 +11,9 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
+        if (numbers.isEmpty()) {
+            throw new IllegalArgumentException("[ERROR] 공백이 입력됐습니다.");
+        }
         if (numbers.size() != 6) {
             throw new IllegalArgumentException();
         }
