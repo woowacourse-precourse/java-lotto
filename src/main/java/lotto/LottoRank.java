@@ -1,7 +1,7 @@
 package lotto;
 
 public enum LottoRank {
-    NONE(2, 0),
+    NONE(0, 0),
     RANK5(3, 5000),
     RANK4(4, 50000),
     RANK3(5, 1500000),
@@ -18,11 +18,7 @@ public enum LottoRank {
 
     public static LottoRank findRank(int matchingCount) {
         for (LottoRank rank : LottoRank.values()) {
-            if (matchingCount <= NONE.matchingCount) {
-                break;
-            }
-
-            if (matchingCount == rank.matchingCount) {
+            if (rank.matchingCount == matchingCount) {
                 return rank;
             }
         }
