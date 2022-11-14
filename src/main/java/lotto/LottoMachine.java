@@ -55,6 +55,11 @@ public class LottoMachine {
         return lottoContainer;
     }
 
+    public void setWinningNumbers() {
+        setNormalNumbers();
+        setBonusNumber();
+    }
+
     public void setNormalNumbers() {
         System.out.println("당첨 번호를 입력해 주세요.");
         String input = Console.readLine();
