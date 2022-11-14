@@ -27,14 +27,14 @@
     - [x] 로또 번호에 특정 수가 있는지 확인한다. - Lotto#hasNumber
     - [x] 발행한 로또 번호와 보너스 번호를 비교한다. - Lotto#hasNumber
 - [x] 발행한 로또들과 당첨 번호를 비교하여 당첨 통계를 낸다. - WinningResult#compileStatistics
-- [x] 총 상금을 계산한다.
-- [x] 수익률을 계산한다.
+- [x] 총 상금을 계산한다. - WinningStatistics#calculateTotalPrize
+- [x] 수익률을 계산한다. - Money#calculateYield
   - 예외) 소수점 둘째 자리에서 반올림되지 않은 경우
-- [x] 로또 구입 수량을 계산한다.
-- [x] 로또 구입금액을 입력받는다.
-- [x] 당첨 번호를 입력받는다.
-- [x] 보너스 번호를 입력받는다.
-- [x] 구매한 로또들의 번호를 출력한다.
-- [x] 당첨 통계를 출력한다.
-- [x] 수익률을 출력한다.
-- [x] 구현한 기능들을 연결해준다.
+- [x] 로또 구입 수량을 계산한다. - Money#calculateQuantity
+- [x] 로또 구입금액을 입력받는다. - InputView#inputMoney
+- [x] 당첨 번호를 입력받는다. - InputView#inputWinningNumbers
+- [x] 보너스 번호를 입력받는다. - InputView#inputBonusNumber
+- [x] 구매한 로또들의 번호를 출력한다. - OutputView#printLottos
+- [x] 당첨 통계를 출력한다. - OutputView#printWinningStatistics
+- [x] 수익률을 출력한다. - OutputView#printYield
+- [x] 구현한 기능들을 연결해준다. - LottoController#run
