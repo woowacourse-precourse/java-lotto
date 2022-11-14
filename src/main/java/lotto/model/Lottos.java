@@ -1,4 +1,4 @@
-package lotto;
+package lotto.model;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import lotto.model.Lotto;
@@ -8,11 +8,10 @@ import java.util.List;
 import java.util.Collections;
 
 public class Lottos {
-    private List<Lotto> lottos;
+    public List<Lotto> lottos = new ArrayList<>();
 
     public Lottos(int ticketAmount) {
         generateNumber(ticketAmount);
-        printNumber();
     }
 
     private void generateNumber(int ticketAmount) {
@@ -24,9 +23,13 @@ public class Lottos {
         }
     }
 
-    public void printNumber() {
+    public void printLottos() {
         for (int oneLotto = 0; oneLotto < lottos.size(); oneLotto++) {
-            System.out.println(lottos.get(oneLotto));
+            System.out.println(lottos.get(oneLotto).getLotto());
         }
+    }
+
+    public Lotto getLottos(int index) {
+        return lottos.get(index);
     }
 }

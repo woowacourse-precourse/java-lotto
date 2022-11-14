@@ -1,32 +1,39 @@
-package lotto;
+package lotto.model;
 
-import lotto.model.GameMessage;
+import lotto.model.enums.ErrorMessage;
+import lotto.validator.Validator;
 
 public class LuckyBonus {
     public static int luckyBonus;
 
     public LuckyBonus(String inputLuckyBonus) {
-        validateLength(inputLuckyBonus);
-        validateInteger(inputLuckyBonus);
+        validateBonusDigit(inputLuckyBonus);
         int tempLuckyBonus = convertBonusType(inputLuckyBonus);
+        validateBonusRange(tempLuckyBonus);
         validateBonusInclude(tempLuckyBonus);
+        luckyBonus = tempLuckyBonus;
     }
 
-    private void validateLength(String inputLuckyBonus) {
-        if (inputLuckyBonus.length() != 1) {
-            throw new IllegalArgumentException(GameMessage.BONUS_ERROR_MESSAGE.getMessage());
+    private void validateBonusDigit(String inputLuckyBonus) {
+        try {
+            Validator.validateDigit(inputLuckyBonus);
+        } catch (IllegalArgumentException bonusDigitError){
+            ErrorMessage.DIGIT_ERROR_MESSAGE.printMessage();
         }
     }
 
-    private void validateInteger(String inputLuckyBonus) {
-        if (!Character.isDigit(inputLuckyBonus.charAt(0))) {
-            throw new IllegalArgumentException(GameMessage.INTEGER_ERROR_MESSAGE.getMessage());
+    private void validateBonusRange(int tempLuckyBonus) {
+        try {
+            Validator.validateBonusRange(tempLuckyBonus);
+        } catch (IllegalArgumentException bonusRangeError) {
+            ErrorMessage.RANGE_ERROR_MESSAGE.printMessage();
         }
     }
 
     private void validateBonusInclude(int tempLuckyBonus) {
         if (LuckySix.luckySix.isIncludeBonus(tempLuckyBonus)) {
-            throw new IllegalArgumentException(GameMessage.LUCKY_DUPLICATE_ERROR_MESSAGE.getMessage());
+            ErrorMessage.LUCKY_DUPLICATE_ERROR_MESSAGE.printMessage();
+            throw new IllegalAccessError();
         }
     }
 

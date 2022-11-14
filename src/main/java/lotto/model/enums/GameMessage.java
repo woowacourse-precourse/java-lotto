@@ -3,7 +3,7 @@ package lotto.model.enums;
 public enum GameMessage {
     PRICE_MESSAGE("구입금액을 입력해 주세요."),
     PURCHASE_MESSAGE("개를 구매했습니다."),
-    LUCKY_NUMBER_MESSAGE("당첨 번호를 입력해 주세요."),
+    SIX_NUMBER_MESSAGE("당첨 번호를 입력해 주세요."),
     BONUS_NUMBER_MESSAGE("보너스 번호를 입력해 주세요."),
     STATISTIC_MESSAGE("당첨 통계\n---"),
     WINNING_3_RESULT_MESSAGE("3개 일치 (5,000원) - "),

@@ -1,35 +1,33 @@
-package lotto;
+package lotto.model;
 
-import lotto.model.enums.GameMessage;
+import lotto.model.enums.ErrorMessage;
+import lotto.validator.Validator;
 
-public class Purchase {
+public class Price {
     public final int price;
 
-    public Purchase(String inputPrice) {
-        validatePrice(inputPrice);
+    public Price(String inputPrice) {
+        validateInteger(inputPrice);
         int price = convertPriceType(inputPrice);
-        validateUnderPrice(price);
-        validateDivision(price);
+        validatePrice(price);
         this.price = price;
     }
 
-    private void validatePrice(String inputPrice) {
-        for (int index = 0; index < inputPrice.length(); index++) {
-            if (!Character.isDigit(inputPrice.charAt(index))) {
-                throw new IllegalArgumentException(GameMessage.INTEGER_ERROR_MESSAGE.getMessage());
-            }
+    private void validateInteger(String inputPrice) {
+        try {
+            Validator.validateDigit(inputPrice);
+        } catch (IllegalArgumentException integerError) {
+            ErrorMessage.DIGIT_ERROR_MESSAGE.printMessage();
+            throw integerError;
         }
     }
 
-    private void validateUnderPrice(int price) {
-        if (price < 1000) {
-            throw new IllegalArgumentException(GameMessage.PRICE_ERROR_MESSAGE.getMessage());
-        }
-    }
-
-    private void validateDivision(int price) {
-        if (price % 1000 != 0) {
-            throw new IllegalArgumentException(GameMessage.PRICE_ERROR_MESSAGE.getMessage());
+    private void validatePrice(int price) {
+        try {
+            Validator.validatePrice(price);
+        } catch (IllegalArgumentException priceError) {
+            ErrorMessage.PRICE_ERROR_MESSAGE.printMessage();
+            throw priceError;
         }
     }
 

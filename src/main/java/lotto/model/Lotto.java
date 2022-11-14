@@ -1,16 +1,13 @@
-package lotto;
+package lotto.model;
 
-import lotto.model.GameMessage;
+import lotto.model.enums.ErrorMessage;
+import lotto.validator.Validator;
 
 import java.util.List;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 public class Lotto {
-    private final int LOTTO_NUMBER_SIZE = 6;
-    private final int MIN_NUMBER = 1;
-    private final int MAX_NUMBER = 45;
-
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
@@ -21,21 +18,34 @@ public class Lotto {
     }
 
     private void validateLength(List<Integer> numbers) {
-        if (numbers.size() != LOTTO_NUMBER_SIZE) {
-            throw new IllegalArgumentException(GameMessage.LENGTH_ERROR_MESSAGE.getMessage());
+        try {
+            Validator.validateLength(numbers);
+        } catch (IllegalArgumentException lengthError) {
+            ErrorMessage.LENGTH_ERROR_MESSAGE.printMessage();
+            throw lengthError;
         }
     }
 
     private void validateRange(List<Integer> numbers) {
-        if (numbers.stream().anyMatch(number -> number < MIN_NUMBER || number > MAX_NUMBER)) {
-            throw new IllegalArgumentException(GameMessage.RANGE_ERROR_MESSAGE.getMessage());
+        try {
+            Validator.validateRange(numbers);
+        } catch (IllegalArgumentException rangeError) {
+            ErrorMessage.RANGE_ERROR_MESSAGE.printMessage();
+            throw rangeError;
         }
     }
 
     private void validateDuplicate(List<Integer> numbers) {
-        if (numbers.size() != numbers.stream().distinct().count()) {
-            throw new IllegalArgumentException(GameMessage.DUPLICATE_ERROR_MESSAGE.getMessage());
+        try {
+            Validator.validateDuplicate(numbers);
+        } catch (IllegalArgumentException duplicateError) {
+            ErrorMessage.DUPLICATE_ERROR_MESSAGE.printMessage();
+            throw duplicateError;
         }
+    }
+
+    public List<Integer> getLotto() {
+        return numbers;
     }
 
     public boolean isIncludeBonus(int luckyBonus) {
