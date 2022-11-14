@@ -8,4 +8,6 @@ public class LottoService implements LottoServiceUseCase {
     public ResponseBuyLottoDto buyLotto(String money) {
         return null;
     }
+
+    private int countLotto
 }

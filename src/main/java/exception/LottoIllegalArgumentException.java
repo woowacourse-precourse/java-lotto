@@ -1,12 +1,11 @@
 package exception;
 
-public class LottoIllegalArgumentException {
+import exception.type.CustomIllegalArgumentException;
 
-    private static final String PREFIX_ERROR = "[ERROR] ";
+public class LottoIllegalArgumentException extends CustomIllegalArgumentException {
     private String message;
 
     public LottoIllegalArgumentException(String message) {
-        this.message = message;
-        System.out.println(PREFIX_ERROR + message);
+        super(message);
     }
 }
