@@ -23,7 +23,7 @@ public class OutputView {
         System.out.println("\n당첨 통계\n" + "---");
 
         for (int i = 0; i < result.length; i++) {
-            System.out.println(result[i] + "개");
+            System.out.println(Reward.values()[i].getMessage() + result[i] + "개");
         }
     }
 
