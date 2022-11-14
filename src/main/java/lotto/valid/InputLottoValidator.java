@@ -2,6 +2,11 @@ package lotto.valid;
 
 public class InputLottoValidator {
 
+    public void validateMoney(String money) {
+        isDigitMoney(money);
+        isThousandUnitMoney(money);
+    }
+
     public void isDigitMoney(String money) {
 
         for (int i = 0; i < money.length(); i++) {
@@ -11,7 +16,7 @@ public class InputLottoValidator {
         }
     }
 
-    public void validateMoney(String money) {
+    public void isThousandUnitMoney(String money) {
         int integerMoney = Integer.parseInt(money);
 
         if (integerMoney == 0 || integerMoney % 1000 != 0) {
