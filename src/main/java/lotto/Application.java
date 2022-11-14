@@ -56,7 +56,7 @@ public class Application {
     }
 
     static Bonus getBonusNumber() {
-        int bonusNumber = Input.getAnswerInInteger(Request.bonusNumber.value();
+        int bonusNumber = Input.getAnswerInInteger(Request.bonusNumber.value());
         Bonus bonus = new Bonus(bonusNumber);
         return bonus;
     }
