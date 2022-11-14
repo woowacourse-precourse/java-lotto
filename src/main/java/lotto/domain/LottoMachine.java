@@ -1,6 +1,8 @@
 package lotto.domain;
 
 
+import java.util.List;
+
 public class LottoMachine {
 
     private WinningLotto winningLotto;
@@ -16,6 +18,10 @@ public class LottoMachine {
             matchBonusNumber = winningLotto.isMatchBonusNumber(lotto);
         }
         return LottoPrize.getPrize(count, matchBonusNumber);
+    }
+
+    public List<LottoPrize> getPrizeResult(Lottos lottos) {
+        return lottos.mapToLottoPrize(this::compareWinningLotto);
     }
 
 }

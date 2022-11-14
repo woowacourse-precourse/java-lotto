@@ -1,6 +1,8 @@
 package lotto.domain;
 
 import java.util.List;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 public class Lottos {
 
@@ -10,4 +12,9 @@ public class Lottos {
         this.lottos = lottos;
     }
 
+    public List<LottoPrize> mapToLottoPrize(Function<Lotto, LottoPrize> function) {
+        return lottos.stream()
+                .map(function)
+                .collect(Collectors.toList());
+    }
 }
