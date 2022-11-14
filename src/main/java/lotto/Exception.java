@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 public class Exception {
     public static int isInteger(String str) {
         int integer;
+
         try {
             integer = Integer.parseInt(str);
         } catch (NumberFormatException e) {

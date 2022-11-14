@@ -10,9 +10,11 @@ import java.util.stream.Collectors;
 
 public class LottoMachine {
     int bonusNumber;
+
     public Lotto inputWinningNumber() {
         System.out.println("당첨 번호를 입력해 주세요.");
         String inputNumber = Console.readLine();
+
         return checkThatWinningNumberIsRightInput(inputNumber);
     }
 
@@ -22,6 +24,7 @@ public class LottoMachine {
 
     public void inputBonusNumber() {
         System.out.println("보너스 번호를 입력해 주세요.");
+
         try {
             bonusNumber = Integer.parseInt(Console.readLine());
         } catch (NumberFormatException e) {
@@ -31,6 +34,7 @@ public class LottoMachine {
 
     public Lotto checkThatWinningNumberIsRightInput(String inputNumber) {
         List<String> winningNumberTemp = splitNumber(inputNumber);
+
         return new Lotto(Exception.changeListStringToInteger(winningNumberTemp));
     }
 
