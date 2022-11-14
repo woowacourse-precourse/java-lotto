@@ -1,9 +1,6 @@
 package lotto;
 
-import lotto.domain.Lotto;
-import lotto.domain.Money;
-import lotto.domain.Result;
-import lotto.domain.User;
+import lotto.domain.*;
 
 import java.util.*;
 import java.text.DecimalFormat;
@@ -13,7 +10,7 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 public class View {
 
     public void printError(String errMsg){
-        System.out.println("[ERROR] " + errMsg);
+        System.out.println(Const.ERROR + errMsg);
     }
 
     public void printUserLottos(User user){
