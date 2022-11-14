@@ -41,7 +41,7 @@ public class LottoView {
     }
 
     public static void printWinningStatistics(List<Integer> result, double returnRate) {
-        System.out.println(STATISTICS_INFO_MESSAGE);
+        System.out.println(BLANK_LINE + STATISTICS_INFO_MESSAGE);
         printResultOfWin(result);
         System.out.println(MessageFormat.format(RATE_OF_RETURN_MESSAGE, returnRate));
     }
