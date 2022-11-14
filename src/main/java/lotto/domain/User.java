@@ -6,21 +6,21 @@ import lotto.util.UserInput;
 
 public class User {
 
-    private int money;
+    private int lottoMoney;
     private int nLottoTickets;
 
     public User(){
-        Message.printInputUserMoney();
-        setMoney();
+        Message.printInputUserLottoMoney();
+        setLottoMoney();
 
         setnLottoTickets();
     }
 
-    private void setMoney() {
-        this.money = UserInput.getMoney();
+    private void setLottoMoney() {
+        this.lottoMoney = UserInput.getLottoMoney();
     }
 
     private void setnLottoTickets() {
-        this.nLottoTickets = this.money / Constant.LOTTO_PRICE;
+        this.nLottoTickets = this.lottoMoney / Constant.LOTTO_PRICE;
     }
 }

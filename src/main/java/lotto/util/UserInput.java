@@ -5,38 +5,38 @@ import lotto.constant.Message;
 
 public class UserInput {
 
-    public static int getMoney(){
-        String inputMoney = getInputMoney();
-        int money = Converter.StringToInteger(inputMoney);
-        validateMoney(money);
+    public static int getLottoMoney(){
+        String inputLottoMoney = getInputLottoMoney();
+        int lottoMoney = Converter.StringToInteger(inputLottoMoney);
+        validateLottoMoney(lottoMoney);
 
-        return money;
+        return lottoMoney;
     }
 
-    private static void validateMoney(int money) {
+    private static void validateLottoMoney(int lottoMoney) {
 
-        if(!Validator.isLottoMoney(money)){
-            Message.printInputErrorUserMoney();
+        if(!Validator.isLottoMoney(lottoMoney)){
+            Message.printInputErrorUserLottoMoney();
             throw new IllegalArgumentException();
         }
     }
 
-    private static String getInputMoney(){
+    private static String getInputLottoMoney(){
 
-        String inputMoney = Console.readLine();
-        validateInputMoney(inputMoney);
+        String inputLottoMoney = Console.readLine();
+        validateInputLottoMoney(inputLottoMoney);
 
-        return inputMoney;
+        return inputLottoMoney;
     }
 
-    private static void validateInputMoney(String inputMoney) {
+    private static void validateInputLottoMoney(String inputLottoMoney) {
 
-        if (!Validator.hasNotCharacter(inputMoney)){
+        if (!Validator.hasNotCharacter(inputLottoMoney)){
             Message.printInputErrorHasCharacter();
             throw new IllegalArgumentException();
         }
 
-        if (Validator.isEmpty(inputMoney)){
+        if (Validator.isEmpty(inputLottoMoney)){
             Message.printInputErrorEmpty();
             throw new IllegalArgumentException();
         }
