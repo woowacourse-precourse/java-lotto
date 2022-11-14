@@ -14,8 +14,7 @@ public class Lotto {
     public Lotto(List<Integer> numbers) {
         validateNumberSize(numbers);
         validateIsDistinct(numbers);
-        sortLottoNumbers(numbers);
-        this.numbers = numbers;
+        this.numbers = sortLottoNumbers(numbers);
     }
 
     public Lotto(String winningNumbers) {
@@ -24,8 +23,7 @@ public class Lotto {
         validateNumberSize(convertedNumber);
         validateIsDistinct(convertedNumber);
         checkNumberInRange(convertedNumber);
-        sortLottoNumbers(convertedNumber);
-        this.numbers = convertedNumber;
+        this.numbers = sortLottoNumbers(convertedNumber);
     }
 
     public List<Integer> getNumbers() {
@@ -46,9 +44,10 @@ public class Lotto {
         }
     }
 
-    private void sortLottoNumbers(List<Integer> numbers) {
+    private List<Integer> sortLottoNumbers(List<Integer> numbers) {
         List<Integer> notImmutableList = new ArrayList<>(numbers);
         Collections.sort(notImmutableList);
+        return notImmutableList;
     }
 
     public void validateDistinctInBonusNumber(int bonusNumber) {
