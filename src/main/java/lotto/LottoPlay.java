@@ -1,6 +1,9 @@
 package lotto;
 
+import lotto.constant.ErrorOutputMessage;
 import lotto.util.MessageUtil;
+
+import static lotto.constant.ErrorOutputMessage.*;
 
 public class LottoPlay {
 
@@ -12,10 +15,13 @@ public class LottoPlay {
 
     public void play() {
         messageUtil.printPurchaseInput();
-        LottoPurchase purchaseInfo = lottoPurchase.getPurchaseInfo();
-        LottoWinningNumber winningNumbersInfo = lottoWinningNumber.getWinningNumbersInfo();
-        LottoPrize lottoPrize = new LottoPrize(winningNumbersInfo);
-        lottoPrize.getLottoStats(purchaseInfo.getUserLottos(), purchaseInfo.getPurchaseAmount());
+        try {
+            LottoPurchase purchaseInfo = lottoPurchase.getPurchaseInfo();
+            LottoWinningNumber winningNumbersInfo = lottoWinningNumber.getWinningNumbersInfo();
+            LottoPrize lottoPrize = new LottoPrize(winningNumbersInfo);
+            lottoPrize.getLottoStats(purchaseInfo.getUserLottos(), purchaseInfo.getPurchaseAmount());
+        } catch (IllegalArgumentException e) {
+        }
     }
 }
 

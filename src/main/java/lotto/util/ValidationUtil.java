@@ -8,18 +8,47 @@ import static lotto.constant.LottoNumber.*;
 public class ValidationUtil {
 
     /**
-     * 구매 금액이 1000원 단위로 나누어 떨어지는지 검증한다.
+     * 구매 금액에 대한 모든 검증을 진행한다.
+     * @param amount 구매 금액
+     * @return 구매 금액 (int)
+     */
+    public int validatePurchase(String amount) {
+        validateNumberType(amount);
+        return validateRemainder(amount);
+    }
+
+    /**
+     * 구매 금액에 숫자로만 이루어졌는지 확인한다.
      * @param amount 구매 금액
      */
-    public void validatePurchase(int amount) {
-        if (amount % PURCHASE_AMOUNT_COND.getNumber() != 0) {
-            throw new IllegalArgumentException(PURCHASE);
+    private void validateNumberType(String amount) {
+        try {
+            Integer.parseInt(amount);
+        } catch (Exception e) {
+            System.out.println(PURCHASE_TYPE);
+            throw new IllegalArgumentException(PURCHASE_TYPE);
         }
+    }
+
+    /**
+     * 구매 금액이 1000원 단위로 나누어 떨어지는지 검증한다.
+     * @param amount 구매 금액
+     * @return 구매 금액 (int)
+     */
+    private int validateRemainder(String amount) {
+        int purchaseAmount = Integer.parseInt(amount);
+        if (purchaseAmount % PURCHASE_AMOUNT_COND.getNumber() != 0) {
+            System.out.println(PURCHASE_REMAINDER);
+            throw new IllegalArgumentException(PURCHASE_REMAINDER);
+        }
+
+        return purchaseAmount;
     }
 
     /**
      * 당첨 번호에 대한 모든 검증을 진행한다.
      * @param input 입력한 당첨 번호
+     * @return 당첨 번호 배열
      */
     public String[] validateWinningAmount(String input) {
         String[] winningAmounts = input.split(",");
@@ -37,6 +66,7 @@ public class ValidationUtil {
      */
     private void validateWinningCount(String[] inputNums) {
         if (inputNums.length != MAX_COUNT.getNumber()) {
+            System.out.println(NUMBER_COUNT);
             throw new IllegalArgumentException(NUMBER_COUNT);
         }
     }
@@ -50,6 +80,7 @@ public class ValidationUtil {
                 .noneMatch(str -> str.equals(" ") || str.equals(""));
 
         if (!result) {
+            System.out.println(NUMBER_BLANK);
             throw new IllegalArgumentException(NUMBER_BLANK);
         }
     }
@@ -60,6 +91,7 @@ public class ValidationUtil {
      */
     private void validateDuplicate(String[] inputNums) {
         if (Arrays.stream(inputNums).distinct().count() != MAX_COUNT.getNumber()) {
+            System.out.println(NUMBER_DUPLICATE);
             throw new IllegalArgumentException(NUMBER_DUPLICATE);
         }
     }
@@ -74,6 +106,7 @@ public class ValidationUtil {
                 .noneMatch(this::isNotCorrectRange);
 
         if (!result) {
+            System.out.println(NUMBER_RANGE);
             throw new IllegalArgumentException(NUMBER_RANGE);
         }
     }
@@ -84,6 +117,7 @@ public class ValidationUtil {
      */
     public void validateBonusRange(int bonusNum) {
         if (isNotCorrectRange(bonusNum)) {
+            System.out.println(NUMBER_RANGE);
             throw new IllegalArgumentException(NUMBER_RANGE);
         }
     }
