@@ -7,7 +7,7 @@ import java.util.List;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomUniqueNumbersInRangeTest;
 import static lotto.Game.makeWinning;
-import static lotto.Game.winning;
+import static lotto.Game.winningNumbers;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class GameTest extends NsTest {
@@ -36,17 +36,65 @@ public class GameTest extends NsTest {
     }
 
     @Test
+    void firstTest() {
+        assertRandomUniqueNumbersInRangeTest(
+                () -> {
+                    run("1000", "1,2,3,4,5,6", "7");
+                    assertThat(output()).contains(
+                            "6개 일치 (2,000,000,000원) - 1개"
+                    );
+                },
+                List.of(1, 2, 3, 4, 5, 6)
+        );
+    }
+    @Test
+    void secondTest() {
+        assertRandomUniqueNumbersInRangeTest(
+                () -> {
+                    run("2000", "1,2,3,4,5,6", "7");
+                    assertThat(output()).contains(
+                            "5개 일치, 보너스 볼 일치 (30,000,000원) - 1개"
+                    );
+                },
+                List.of(1, 2, 3, 4, 5, 7),
+                List.of(1, 2, 3, 4, 7, 8)
+        );
+    }
+    @Test
+    void thirdTest() {
+        assertRandomUniqueNumbersInRangeTest(
+                () -> {
+                    run("2000", "1,2,3,4,5,6", "7");
+                    assertThat(output()).contains(
+                            "5개 일치 (1,500,000원) - 1개"
+                    );
+                },
+                List.of(1, 2, 3, 4, 5, 8),
+                List.of(1, 2, 3, 4, 7, 8)
+        );
+    }
+    @Test
+    void fourthTest() {
+        assertRandomUniqueNumbersInRangeTest(
+                () -> {
+                    run("2000", "1,2,3,4,5,6", "7");
+                    assertThat(output()).contains(
+                            "4개 일치 (50,000원) - 2개"
+                    );
+                },
+                List.of(1, 2, 3, 4, 7, 8),
+                List.of(1, 2, 4, 5, 7, 8)
+        );
+    }
+
+    @Test
     void allWinningCaseTest() {
         assertRandomUniqueNumbersInRangeTest(
                 () -> {
                     run("15000", "1,2,3,4,5,6", "7");
                     assertThat(output()).contains(
-                            "3개 일치 (5,000원) - 5개",
-                            "4개 일치 (50,000원) - 4개",
                             "5개 일치 (1,500,000원) - 3개",
-                            "5개 일치, 보너스 볼 일치 (30,000,000원) - 2개",
-                            "6개 일치 (2,000,000,000원) - 1개",
-                            "총 수익률은 13764833.3%입니다."
+                            "5개 일치, 보너스 볼 일치 (30,000,000원) - 2개"
                     );
                 },
                 List.of(1, 2, 3, 4, 5, 6),
@@ -61,9 +109,9 @@ public class GameTest extends NsTest {
                 List.of(1, 2, 3, 4, 8, 9),
                 List.of(1, 2, 3, 9, 10, 11),
                 List.of(1, 2, 3, 9, 10, 11),
-                List.of(1, 2, 3, 9, 10, 11),
-                List.of(1, 2, 3, 9, 10, 11),
-                List.of(1, 2, 3, 9, 10, 11)
+                List.of(1, 2, 3, 7, 10, 11),
+                List.of(1, 2, 3, 7, 10, 11),
+                List.of(1, 2, 3, 7, 10, 11)
         );
     }
     @Override

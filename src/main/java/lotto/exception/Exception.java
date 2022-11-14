@@ -6,17 +6,10 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public enum Exception{
-    INPUT_ERROR("[ERROR] 입력금액은 1000원단위여야 합니다."),
-    OUT_OF_RANGE_ERROR("[ERROR] 1~45사이의 숫자여야합니다."),
-    DUPLICATED_ERROR("[ERROR] 서로 다른 숫자를 입력해야합니다."),
-    NOT_NUMBER_ERROR("[ERROR] 공백 없이 ,와 숫자를 입력해야합니다."),
-    WRONG_COUNT_ERROR("[ERROR] 6개의 숫자를 입력해야합니다.");
-    public String error;
+import static lotto.exception.ExceptionMessage.*;
 
-    Exception(String error){
-        this.error = error;
-    }
+public class Exception{
+
     private static void throwException(Boolean bool,String error){
         if(bool) throw new IllegalArgumentException(error);
     }

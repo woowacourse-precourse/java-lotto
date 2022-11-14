@@ -14,7 +14,7 @@ public class Game extends View {
     public static List<Lotto> lottos = new ArrayList<>();
     public static String input;
     public static Integer count;
-    public static Lotto winning;
+    public static Lotto winningNumbers;
     public static Integer bonusNumber;
     public static Double rate;
     public Game(){
@@ -70,7 +70,7 @@ public class Game extends View {
             catchOutOfRangeException(num);
             newList.add(num);
         });
-        winning = new Lotto(newList);
+        winningNumbers = new Lotto(newList);
     }
 
     public static void ResultView(){
