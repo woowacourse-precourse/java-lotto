@@ -19,7 +19,7 @@ public class Input {
         System.out.println(INPUT_LOTTO_PURCHASE_AMOUNT);
         String input = Console.readLine();
 
-        if(!isNumber(input)) {
+        if (!isNumber(input)) {
             throw new IllegalArgumentException(ERROR_NUMBER_FORMAT);
         }
 
@@ -27,7 +27,7 @@ public class Input {
     }
 
     private static boolean isNumber(String input) {
-        try{
+        try {
             Integer.parseInt(input);
         } catch (NumberFormatException e) {
             return false;
