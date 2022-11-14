@@ -35,4 +35,8 @@ public class Buyer {
     private int roundDownLottoPriceUnits(int won) {
         return won - (won % LOTTO_PRICE);
     }
+
+    public List<Lotto> getLottos() {
+        return lottos;
+    }
 }
