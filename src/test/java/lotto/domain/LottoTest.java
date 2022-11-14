@@ -1,14 +1,18 @@
 package lotto.domain;
 
+import java.util.stream.Stream;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.MethodSource;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import static org.junit.jupiter.params.provider.Arguments.*;
 
 class LottoTest {
     @DisplayName("로또 번호의 개수가 6개가 넘어가면 예외가 발생한다.")
@@ -42,5 +46,25 @@ class LottoTest {
         boolean actual = lotto.isMatch(number);
         //then
         assertThat(actual).isEqualTo(expected);
+    }
+
+    @ParameterizedTest(name = "{index} : 로또 번호 비교 테스트 (비교 결과 : {1})")
+    @MethodSource("parametersProvider")
+    void 로또_비교_테스트(List<Integer> userNumbers, int expected) {
+        //given
+        Lotto winningLotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+        Lotto userLotto = new Lotto(userNumbers);
+        //when
+        int actual = userLotto.compare(winningLotto);
+        //then
+        assertThat(actual).isEqualTo(expected);
+    }
+
+    static Stream<Arguments> parametersProvider() {
+        return Stream.of(
+            arguments(List.of(1, 2, 3, 4, 5, 6), 6),
+            arguments(List.of(11, 12, 13, 14, 15, 6), 1),
+            arguments(List.of(11, 12, 13, 14, 15, 16), 0)
+        );
     }
 }
