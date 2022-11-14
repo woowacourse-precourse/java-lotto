@@ -28,15 +28,15 @@ public class AboutInputOutput {
         System.out.println(count + "개를 구매했습니다.");
     }
 
-    public List<Integer> inputNumbers() {
-        String[] winningNumbers =  Console.readLine().split(",");
-        return orderedNumbers(winningNumbers);
-    }
-
     public void printLottoSet(List<List<Integer>> lottoSet) {
         for (List<Integer> lotto : lottoSet) {
             System.out.println(lotto);
         }
+    }
+
+    public List<Integer> inputNumbers() {
+        String[] winningNumbers =  Console.readLine().split(",");
+        return orderedNumbers(winningNumbers);
     }
 
     public List<Integer> orderedNumbers(String[] winningNumbers) {
