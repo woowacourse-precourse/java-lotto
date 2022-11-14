@@ -31,6 +31,7 @@ public class I_O_System {
     private int Ticket = 0;
 
     public boolean Enter_Price() {
+        Money_Enter =0;
         Enter_Number = Console.readLine();
         if (!Differnet_Error()) {
             return false;

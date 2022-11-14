@@ -9,8 +9,8 @@ import static lotto.I_O_System.BAGIC_ERROR_MESSAGE;
 
 public class Lotto {
     private final List<Integer> numbers;
-    public static int Bounus_Win = 0;
-    private static int[] Number_of_Win = {0, 0, 0, 0, 0, 0, 0};
+    public static int Bounus_Win;
+    public static int[] Number_of_Win;
 
 
     private final int Tree_Matche_Money = 5000;
@@ -21,27 +21,42 @@ public class Lotto {
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
-        check_duplicate_numbers(numbers);
+        check_duplicate(numbers);
         this.numbers = numbers;
     }
 
     private void validate(List<Integer> numbers) {
-        if (numbers.size() != 6) {
-            throw new IllegalArgumentException(BAGIC_ERROR_MESSAGE);
-
+        try {
+            if (numbers.size() != 6) {
+                throw new IllegalArgumentException(BAGIC_ERROR_MESSAGE);
+            }
+        } catch (IllegalArgumentException ex) {
+            System.out.println(ex.getMessage());
+            throw ex;
         }
     }
 
     // TODO: 추가 기능 구현
-    private void check_duplicate_numbers(List<Integer> numbers) {
+    private void check_duplicate(List<Integer> numbers) {
         for (int i = 0; i < numbers.size(); i++) {
+            check_duplicate_numbers(numbers, i);
+        }
+    }
+
+    private void check_duplicate_numbers(List<Integer> numbers, int i) {//중복 숫자가 있다면 에러 출력
+        try {
             if (Collections.frequency(numbers, numbers.get(i)) != 1)
                 throw new IllegalArgumentException(BAGIC_ERROR_MESSAGE);
+        } catch (IllegalArgumentException ex) {
+            System.out.println(ex.getMessage());
+            throw ex;
         }
     }
 
     public void Check_Lottey(int Bonus_Number, List<Integer> Winning_Number, List<List<Integer>> mylist) {
         I_O_System IO = new I_O_System();
+        Number_of_Win = new int[7];
+        Bounus_Win = 0;
         int Jackpot = 0;
         for (int i = 0; i < mylist.size(); i++) {
             Check_Winning_Number(Winning_Number, mylist.get(i), Bonus_Number);
@@ -61,7 +76,7 @@ public class Lotto {
 
     private int Winning_Jackpot(int Jackpot) {
         int[] Jackpot_Money = {Tree_Matche_Money, Four_Matche_Money, Five_Matche_Money, Six_Matche_Money, Five_Matche_Money_Bonus};
-        for (int i = 0; i < Jackpot_Money.length-1; i++) {
+        for (int i = 0; i < Jackpot_Money.length - 1; i++) {
             Jackpot += Jackpot_Money[i] * Number_of_Win[i + 3];
         }
         Jackpot += Jackpot_Money[4] * Bounus_Win;
@@ -73,7 +88,7 @@ public class Lotto {
             Bounus_Win++;
             return;
         }
-        Number_of_Win[5] -=1;
+        Number_of_Win[5] -= 1;
     }
 
 
