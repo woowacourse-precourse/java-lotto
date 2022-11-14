@@ -46,4 +46,10 @@ public class LottoProgram {
 		}
 	}
 
+	public void lottoNum() {
+		messagePrint.inputWinNumPrint();
+		String winningNumber = Console.readLine();
+		String[] winNum = winningNumber.split(",");
+	}
+
 }
