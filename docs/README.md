@@ -12,7 +12,13 @@
 보너스 번호 저장
 ### NumberOfCorrespondedNumberStorage
 - 일치한 번호의 개수 저장
-> ## View : 출력 관리
+> ## View : 입출력 관리
+### MoneyReceiver
+- 금액을 입력받음
+### LottoWinNumberReceiver
+- 당첨번호를 입력받음
+### BonusNumberReceiver
+- 보너스번호를 입력받음
 ### ConstantMents
 - 어플리케이션 진행중 사용되는 각종 출력 양식을 상수화
 ### IssuedLottoPrinter
@@ -22,12 +28,8 @@
 > ## Controller : 알고리즘 관리
 ### 도메인 로직
 #### Casher
-- 입력 금액을 받아
 - 1000원 단위로 떨어지는 티켓수 발행
 - 남은 금액은 예외처리 후 반환
-#### LottoSetter
-- 당첨 번호 입력받음
-- 보너스 번호 입력받음
 #### WinResultManager
 - 일치하는 번호의 개수, 금액을 반환
 #### EarningRateCalculator
