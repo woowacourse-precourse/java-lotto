@@ -25,4 +25,22 @@ public class Lotto {
     public List<Integer> getNumbers(){
         return numbers;
     }
+
+    @Override
+    public String toString() {
+        StringBuilder builder = new StringBuilder();
+        builder.append('[');
+        int i = 0;
+        int iMax = numbers.size() - 1;
+
+        while (true) {
+            builder.append(numbers.get(i));
+            if (i == iMax) {
+                return builder.append(']').toString();
+            }
+
+            builder.append(", ");
+            ++i;
+        }
+    }
 }
