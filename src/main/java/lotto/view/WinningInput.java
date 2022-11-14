@@ -45,8 +45,8 @@ public class WinningInput {
 
     private static void winningIntArrToList(int[] winningIntArr) {
         winningNumbers = new ArrayList<>(winningIntArr.length);
-        for (int i : winningIntArr) {
-            winningNumbers.add(i);
+        for (int number : winningIntArr) {
+            winningNumbers.add(number);
         }
     }
 
@@ -80,8 +80,8 @@ public class WinningInput {
 
     private static void validateInputString(String winningInput) {
         String[] numberStringCheck = winningInput.split(",");
-        for (String s : numberStringCheck) {
-            if (s.charAt(0) < '0' || s.charAt(0) > '9') {
+        for (String number : numberStringCheck) {
+            if (number.charAt(0) < '0' || number.charAt(0) > '9') {
                 throw new IllegalArgumentException(ErrorMessage.ERROR_WINNING_NUMBER.getErrorMessage());
             }
         }
