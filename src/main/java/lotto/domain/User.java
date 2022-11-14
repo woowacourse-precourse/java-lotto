@@ -9,6 +9,8 @@ import static java.lang.Character.isDigit;
 public class User {
     static final String INPUT_MONEY = "구입금액을 입력해 주세요.";
     static final String INPUT_WINNING_NUMBERS = "당첨 번호를 입력해 주세요.";
+    static final String INPUT_BONUS_NUMBER = "보너스 번호를 입력해 주세요.";
+
     private int userMoney;
     private List<Integer> winningNumbers;
     private int bonusNumber;
@@ -44,6 +46,15 @@ public class User {
         checkWinningNumbersDuplicate(winningNumbers);
 
         return winningNumbers;
+    }
+
+    public int inputBonusNumber() {
+        System.out.println(INPUT_BONUS_NUMBER);
+
+        String inputNumber = Console.readLine();
+        checkInteger(inputNumber);
+
+        return bonusNumber;
     }
 
     public List<Integer> splitNumbers(String numbers) {
