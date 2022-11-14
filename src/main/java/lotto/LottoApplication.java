@@ -50,9 +50,21 @@ public class LottoApplication {
     }
 
     private void validatePurchase(int purchase) {
+        validateUnit(purchase);
+        validateNegative(purchase);
+    }
+
+    private void validateUnit(int purchase) {
         if (purchase % PRICE != 0) {
             throw new IllegalArgumentException(
                 String.format("금액은 %d원 단위로 입력해야 합니다. 입력 : %s", PRICE, purchase));
+        }
+    }
+
+    private void validateNegative(int purchase) {
+        if (purchase < 0) {
+            throw new IllegalArgumentException(
+                String.format("로또를 구입할 수 없는 금액입니다. 입력 : %d", purchase));
         }
     }
 
