@@ -52,4 +52,12 @@ public class Lotto {
         }
         return generatedLottoNumber;
     }
+
+    public int checkNumberMatch(int target, int inputNumber) {
+        if (target == inputNumber) {
+            return 1;
+        }
+        return 0;
+    }
+
 }
