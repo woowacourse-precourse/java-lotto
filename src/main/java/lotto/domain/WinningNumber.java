@@ -11,6 +11,13 @@ public class WinningNumber {
     public WinningNumber(String winInput, int bonusNumber) {
         splitInput(winInput);
         this.bonusNumber = bonusNumber;
+        try {
+            checkWinNumberSize(winNumber);
+            checkDuplicateNumber(winNumber);
+            checkNumbersRange(winNumber);
+        } catch (IllegalAccessException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     private void splitInput(String winInput) {
@@ -35,27 +42,29 @@ public class WinningNumber {
         Set<Integer> numSet = new HashSet<>(tempWinNumber);
 
         if (numSet.size() != tempWinNumber.size()) {
-            System.out.println("중복된 요소가 있습니다!");
+            System.err.println("중복된 요소가 있습니다!");
             throw new IllegalAccessException("[ERROR]: Duplicate!");
         }
         return true;
     }
 
-    private Boolean checkWinNumberSize(List<Integer> winNumber) throws IllegalAccessException {
-        if (winNumber.size() != 6) {
-            System.out.println("당첨번호 숫자는 6개입니다!");
+    private Boolean checkWinNumberSize(List<Integer> winNumbers) throws IllegalAccessException {
+        if (winNumbers.size() != 6) {
+            System.err.println("당첨번호 숫자는 6개입니다!");
             throw new IllegalAccessException("[ERROR]: NOT CORRECT SIZE!");
         }
         return true;
     }
 
     private Boolean checkNumbersRange(List<Integer> winNumbers) throws IllegalAccessException {
-        for (Integer winNumber: winNumbers) {
-            if (!checkCorrectNumber(winNumber)){
+        for (Integer number: winNumbers) {
+            if (!checkCorrectNumber(number)){
+                System.err.println("당첨번호가 유효한 숫자가 아닙니다");
                 throw new IllegalAccessException("[ERROR]: NOT CORRECT WINNING NUMBER!");
             }
         }
         if (!checkCorrectNumber(bonusNumber)) {
+            System.err.println("보너스 번호가 유효한 숫자가 아닙니다");
             throw new IllegalAccessException("[ERROR]: NOT CORRECT BONUS NUMBER!");
         }
         return true;
