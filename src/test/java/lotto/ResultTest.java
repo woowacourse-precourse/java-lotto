@@ -109,4 +109,22 @@ class ResultTest {
         assertThat(result.getResult().get(Rank.FORTH)).isEqualTo(0);
         assertThat(result.getResult().get(Rank.FIFTH)).isEqualTo(0);
     }
+
+    @DisplayName("1등과 2등이 당첨되면 총 상금은 2,030,000,000원이 산출된다.")
+    @Test
+    void createPrizeRankFirstAndSecond() {
+        // given
+        int matchCount1 = Rank.FIRST.getCorrectCount();
+        int matchCount2 = Rank.SECOND.getCorrectCount();
+        boolean matchBonus = true;
+        result.initWinningRank();
+        result.updateResult(matchCount1, matchBonus);
+        result.updateResult(matchCount2, matchBonus);
+
+        // when
+        int totalPrize = result.getTotalPrize();
+
+        // then
+        assertThat(totalPrize).isEqualTo(2030000000);
+    }
 }
