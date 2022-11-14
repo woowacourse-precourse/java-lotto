@@ -9,12 +9,12 @@ public class UserLottoController {
     private static UserLottoService userLottoService;
 
     private UserLottoController() {
+        userLottoService = UserLottoService.getInstance();
     }
 
     public static UserLottoController getInstance() {
         if (instance == null) {
             instance = new UserLottoController();
-            userLottoService = UserLottoService.getInstance();
         }
         return instance;
     }
@@ -23,6 +23,11 @@ public class UserLottoController {
         OutputView.printAskPurchaseAmount();
         String purchaseAmount = InputView.input();
         userLottoService.validate(purchaseAmount);
+        userLottoService.issueLotto(Long.parseLong(purchaseAmount));
+    }
+
+    public void printIssuedLotteries() {
+        OutputView.printIssuedLotteries(userLottoService.getLotteries());
     }
 
 
