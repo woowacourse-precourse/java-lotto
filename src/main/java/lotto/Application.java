@@ -9,7 +9,7 @@ public class Application {
     static int numberOfTickets = 0;
 
 
-    public static void inputPurchaseAmount() {
+    public static void enterPurchaseAmount() {
 
         String strAmount = Console.readLine();
         long amount = Long.parseLong(strAmount);
@@ -27,11 +27,28 @@ public class Application {
     }
 
 
+    public static int[] enterTheWinningNumber() {
+        System.out.println("당첨 번호를 입력해 주세요.");
+        String strWinningNums = Console.readLine();
+        String[] tmpArr = strWinningNums.split(",");
+        int[] winningNums = new int[tmpArr.length];
+
+        for (int i = 0; i < tmpArr.length; ++i) {
+            winningNums[i] = Integer.parseInt(tmpArr[i]);
+        }
+        return winningNums;
+
+    }
+
+
     public static void main(String[] args) {
         // TODO: 프로그램 구현
 
-        inputPurchaseAmount();
+        enterPurchaseAmount();
         printNumberOfTickets();
+
+        int[] winningNums = enterTheWinningNumber();
+
 
     }
 }
