@@ -4,6 +4,8 @@ import lotto.utils.Converter;
 
 import java.util.List;
 
+import static lotto.resources.ValidationPattern.*;
+
 public class LottoWinningNumber extends Lotto {
     private static final String EXCEPTION_MESSAGE = "1~45 사이 숫자를 입력해 주시기 바랍니다.";
     private final int bonusNumber;
@@ -14,29 +16,23 @@ public class LottoWinningNumber extends Lotto {
 
     private LottoWinningNumber(List<Integer> winningNumber, String bonus) {
         super(winningNumber);
-        int bonusNumber = validateInputIsNumber(bonus);
-        this.bonusNumber = validateDuplicate(bonusNumber);
+        this.bonusNumber = validate(bonus);
     }
 
     public WinningResult getResult(IssuedLotto issuedLotto) {
         return issuedLotto.compare(super.getNumbers(), bonusNumber);
     }
 
-    private int validateInputIsNumber(String bonus) {
-        int bonusNumber;
-        try {
-            bonusNumber = Integer.parseInt(bonus);
-            validateRange(bonusNumber);
-        } catch (NumberFormatException e) {
-            throw new IllegalArgumentException(EXCEPTION_MESSAGE);
-        }
-        return bonusNumber;
+    private int validate(String bonus) {
+        int bonusNumber = validateInputIsNumber(bonus);
+        return validateDuplicate(bonusNumber);
     }
 
-    private void validateRange(int bonusNumber) {
-        if (bonusNumber < 1 || bonusNumber > 45) {
-            throw new IllegalArgumentException(EXCEPTION_MESSAGE);
+    private int validateInputIsNumber(String bonus) {
+        if(LOTTO_RANGE.isValid(bonus)){
+            return Integer.parseInt(bonus);
         }
+        throw new IllegalArgumentException(EXCEPTION_MESSAGE);
     }
 
     private int validateDuplicate(int bonusNumber) {
