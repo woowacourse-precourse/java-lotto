@@ -65,5 +65,22 @@ public class Application {
 
         // 보너스 번호를 추가
         winningLotto.add(bonus);
+
+        // 응모한 로또들과 정답 로또를 비교하여 몇 등을 몇 번 했는지에 대한 결과를 리스트로 반환
+        Calculator calculator = new Calculator(lottoLists, winningLotto);
+        List<Integer> result = calculator.getResult();
+
+        // 결과 리스트에 따른 문구 출력
+        PrintResult(result);
+
+
+    }
+    public static void PrintResult(List<Integer> result) {
+        System.out.println("당첨 통계\n" + "---");
+        System.out.println("3개 일치 (5,000원) - " + result.get(4) + "개");
+        System.out.println("4개 일치 (50,000원) - " + result.get(3) + "개");
+        System.out.println("5개 일치 (1,500,000원) - " + result.get(2) + "개");
+        System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - " + result.get(1) + "개");
+        System.out.println("6개 일치 (2,000,000,000원) - " + result.get(0) + "개");
     }
 }
