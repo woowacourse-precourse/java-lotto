@@ -11,6 +11,17 @@ package lotto.valid;
 -[ ] Lotto 보너스번호 입력(3,4,5)
  */
 public class Valid {
+        int size = str.split(",").length;   //TODO: ChageType을 이용한 리펙토링
+        if(size != 6){
+            throw new IllegalArgumentException(size_Message + size);
+        }
+    }
+
+    public static void check_size(List<Integer> numbers){
+        if(numbers.size() != 6){
+            throw new IllegalArgumentException(size_Message + numbers.size());
+        }
+    }
 
     public static void check_number(String str){
         str = str.replace(",", "");
