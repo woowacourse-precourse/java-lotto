@@ -5,22 +5,28 @@ public class PurchaseService {
     private final static int PRICE = 1000;
     private final static int MIN = 0;
 
-    int purchaseAmount;
+    private int purchaseAmount;
 
     public void parsePurchaseInput(String input){
-        isInteger(input);
-        isNegative(purchaseAmount);
-        isMultipleOf1000(purchaseAmount);
+        calculateAmount(input);
     }
 
     public int getPurchaseAmount() {
         return purchaseAmount;
     }
 
+    private void calculateAmount(String input){
+            isInteger(input);
+            int totalAmount = Integer.parseInt(input);
+            isNegative(totalAmount);
+            isMultipleOf1000(totalAmount);
+            purchaseAmount = totalAmount/PRICE;
+    }
+
     private void isInteger(String input){
-        try{
-            purchaseAmount = Integer.parseInt(input);
-        }catch (NumberFormatException e){
+        final String numberRegex= "[0-9]+";
+
+        if(!input.matches(numberRegex)){
             throw new IllegalArgumentException("[ERROR] 구매 금액은 숫자여야 합니다.");
         }
     }
@@ -33,7 +39,7 @@ public class PurchaseService {
 
     private void isMultipleOf1000(int input){
         if(input % PRICE != 0){
-            throw new IllegalArgumentException("[ERROR} 구매 금액은 1000의 배수여야 합니다");
+            throw new IllegalArgumentException("[ERROR] 구매 금액은 1000의 배수여야 합니다");
         }
     }
 
