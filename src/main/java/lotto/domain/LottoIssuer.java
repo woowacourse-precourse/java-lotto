@@ -6,11 +6,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class LottoIssuer {
+
+    public Lotto issueLotto(List<Integer> numbers) {
+        return new Lotto(numbers);
+    }
+
     public Lotto issueLotto() {
         return new Lotto(randomNumberGenerator());
     }
 
-    private List<Integer> randomNumberGenerator() {
+    public List<Integer> randomNumberGenerator() {
         return Randoms.pickUniqueNumbersInRange(1, 45, 6);
     }
 }
