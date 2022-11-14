@@ -6,6 +6,7 @@ import java.util.List;
 
 public class PlayLotto {
     CreateLotto createLotto = new CreateLotto();
+
     public List<List<Integer>> playLottoTicketCount(Integer ticketCount) {
         List<List<Integer>> allLottoNumber = new ArrayList<>();
         for (int i = 0; i < ticketCount; i++) {
@@ -17,13 +18,13 @@ public class PlayLotto {
     }
 
     public List<Integer> seprateTicket(List<List<Integer>> RandomLottoTicket, String inputWinningNumber, String inputBonusNumber) {
-        List<Integer> correctNumber = new ArrayList<>(List.of(0,0,0,0,0));
+        List<Integer> correctNumber = new ArrayList<>(List.of(0, 0, 0, 0, 0));
         for (List<Integer> eachTicket : RandomLottoTicket) {
             int compareWinning = compareTicketAndWinningNumber(eachTicket, inputWinningNumber);
             boolean compareBonus = compareTicketAndBonusNumber(eachTicket, inputBonusNumber);
-            int compareReward = compareReward(compareWinning,compareBonus);
+            int compareReward = compareReward(compareWinning, compareBonus);
             if (compareReward < 5) {
-                 correctNumber.set(compareReward,correctNumber.get(compareReward)+1);
+                correctNumber.set(compareReward, correctNumber.get(compareReward) + 1);
             }
         }
         return correctNumber;
@@ -34,11 +35,12 @@ public class PlayLotto {
         int countWinning = 0;
         for (Integer ticketNumber : ticket) {
             if (winning.contains(ticketNumber)) {
-                countWinning ++;
+                countWinning++;
             }
         }
         return countWinning;
     }
+
     public boolean compareTicketAndBonusNumber(List<Integer> ticket, String bonus) {
         Integer bonusNumber = createLotto.bonusNumber(bonus);
         boolean countbonus = false;
