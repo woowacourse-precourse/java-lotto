@@ -52,4 +52,12 @@ public class LottoGame {
             checkIsPrized(matchedCount, bonus);
         }
     }
+
+    private void checkIsBonusPrized(int matchedCount, int bonus) {
+        int matchCount;
+        if (bonus == 1 && matchedCount == 5) {
+            matchCount = matchCounts.get(matchedCount);
+            matchCounts.set(matchCounts.size() - 1, matchCount + 1);
+        }
+    }
 }
