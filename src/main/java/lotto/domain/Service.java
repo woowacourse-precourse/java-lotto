@@ -10,6 +10,7 @@ public class Service {
 
     private List<Lotto> lottoTickets;
     private List<Integer> winningNumbers;
+    private int bonusNumber;
 
     public Service(int nLottoTickets){
         setLottoTickets(nLottoTickets);
@@ -19,6 +20,7 @@ public class Service {
         Message.printInputServiceWinningNumbers();
         setWinningNumbers();
         Message.printInputServiceBonusNumber();
+        setBonusNumber();
     }
 
     private void setLottoTickets(int nLottoTickets){
@@ -32,5 +34,9 @@ public class Service {
 
     public void setWinningNumbers() {
         this.winningNumbers = ServiceInput.getWinningNumbers();
+    }
+
+    private void setBonusNumber(){
+        this.bonusNumber = ServiceInput.getBonusNumber();
     }
 }
