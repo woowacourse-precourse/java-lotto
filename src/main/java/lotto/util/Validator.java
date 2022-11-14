@@ -54,7 +54,7 @@ public class Validator {
         }
     }
 
-    public boolean checkValidNumber(int number) {
+    public static boolean checkValidNumber(int number) {
         if (number < MIN_LOTTO_NUMBER || number > MAX_LOTTO_NUMBER) {
             throw new IllegalArgumentException(RANGE_OVER_NUMBER);
         }
