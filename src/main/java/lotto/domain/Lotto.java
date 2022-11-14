@@ -28,8 +28,8 @@ public class Lotto {
                 matchCount++;
             }
         }
-        if (matchCount == 5 && !matchBonus) {
-            return matchCount + 1;
+        if (matchCount == 5 && matchBonus) {
+            return Rank.SECOND.getIndex();
         }
         return matchCount;
     }
