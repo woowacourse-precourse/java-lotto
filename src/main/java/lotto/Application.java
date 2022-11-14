@@ -91,15 +91,21 @@ public class Application {
     }
 
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
-        int purchase = inputMoney() / 1000;
-        List<Lotto> myLottos = buyLotto(purchase);
-        printMyLotto(myLottos);
-        WinningLotto winningLotto = inputWinNumber();
-        inputBonusNumber(winningLotto);
-        MyResult myResult = new MyResult(myLottos, winningLotto);
-        printMyLottoResult(myResult);
-        printYield(myResult, purchase * 1000);
+        try{
+            int purchase = inputMoney() / 1000;
+            List<Lotto> myLottos = buyLotto(purchase);
+            printMyLotto(myLottos);
+            WinningLotto winningLotto = inputWinNumber();
+            inputBonusNumber(winningLotto);
+            MyResult myResult = new MyResult(myLottos, winningLotto);
+            printMyLottoResult(myResult);
+            printYield(myResult, purchase * 1000);
+        }
+        catch (IllegalArgumentException exception){
+            System.out.print("[ERROR] ");
+            System.out.println(exception.getMessage());
+        }
+
     }
 }
 

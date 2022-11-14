@@ -13,12 +13,12 @@ public class Lotto {
 
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("6개 숫자를 입력해주세요");
         }
         List<Integer> compareNumbers = new ArrayList<>();
         for(int number : numbers){
             if(compareNumbers.contains(number)){
-                throw new IllegalArgumentException();
+                throw new IllegalArgumentException("6개 숫자는 서로 달라야 합니다.");
             }
             compareNumbers.add(number);
         }

@@ -19,7 +19,7 @@ public class WinningLotto {
 
     private void checkWinLength(List<String> splitNum) {
         if (splitNum.size() != 6) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("6개 숫자를 입력해주세요.");
         }
     }
 
@@ -28,10 +28,10 @@ public class WinningLotto {
         for (String input : splitInput) {
             int winNumber = Integer.parseInt(input);
             if (winNumber < 1 || winNumber > 45) {
-                throw new IllegalArgumentException();
+                throw new IllegalArgumentException("로또 번호는 1부터 45 사이의 숫자여야 합니다.");
             }
             if (winNumbers.contains(winNumber)) {
-                throw new IllegalArgumentException();
+                throw new IllegalArgumentException("로또 번호는 중복되지 않습니다.");
             }
             winNumbers.add(winNumber);
         }
@@ -41,7 +41,7 @@ public class WinningLotto {
     private void compareBonusWithWin(int bonus) {
         for (int winNumber : this.winNumbers) {
             if (bonus == winNumber) {
-                throw new IllegalArgumentException();
+                throw new IllegalArgumentException("보너스 번호는 또로 번호와 중복되선 안됩니다.");
             }
         }
     }
@@ -50,12 +50,12 @@ public class WinningLotto {
         try {
             int bonus = Integer.parseInt(input);
             if (bonus < 1 || bonus > 45) {
-                throw new IllegalArgumentException();
+                throw new IllegalArgumentException("보너스 번호는 1부터 45 사이의 숫자여야 합니다.");
             }
             compareBonusWithWin(bonus);
             return bonus;
         } catch (NumberFormatException exception) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("숫자를 입력해 주세요");
         }
 
     }
