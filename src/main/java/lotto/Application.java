@@ -16,7 +16,8 @@ public class Application {
             statistic statistic_result = new statistic(
                     victory_number.victory_normal_number,
                     victory_number.victory_bonus_number,
-                    pick_number.pick_member);
+                    pick_number.pick_member,
+                    check_price.input_price);
             //끝
         }
     }

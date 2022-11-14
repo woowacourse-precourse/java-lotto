@@ -3,7 +3,7 @@ package lotto;
 import camp.nextstep.edu.missionutils.Console;
 
 public class price {
-  public String input_price;
+  public final String input_price;
   public int program_out = 0;
   public price(){
     System.out.println("구매금액을 입력해 주세요.");

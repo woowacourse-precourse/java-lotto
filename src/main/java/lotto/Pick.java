@@ -17,20 +17,13 @@ public class Pick {
     }
 
   }
-  //숫자뽑기
+  //숫자뽑기 및 6자리 확인 및 중복확인
   private void pick_number(){
+    //숫자뽑기
     List<Integer> sample_number =  pickUniqueNumbersInRange(1,46,6);
-    if(repeated(sample_number)){
-      pick_member.add(sample_number);
-      System.out.println(sample_number.toString());
-    }
-  }
-  // 중복 숫자 확인
-  private boolean repeated(List<Integer> numbers) {
-    HashSet<Integer> check_repeat = new HashSet<>(numbers);
-    if (numbers.size() == check_repeat.size()) {
-      return true;
-    }
-    return false;
+    //6자리 확인 및 중복확인
+    Lotto check_pick_number = new Lotto(sample_number);
+    pick_member.add(sample_number);
+    System.out.println(sample_number.toString());
   }
 }
