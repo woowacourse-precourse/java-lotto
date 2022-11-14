@@ -6,6 +6,7 @@ import lotto.views.InputView;
 import lotto.views.OutputView;
 
 public class LottoController {
+
     private final LottoService lottoService = new LottoService();
     private final InputValidator inputValidator = new InputValidator();
     private final InputView inputView = new InputView();
@@ -17,7 +18,7 @@ public class LottoController {
         try {
             isRestart = inputValidator.validateInputPrice(inputPrice);
         } catch (IllegalArgumentException exception) {
-            System.out.println(exception.getMessage());
+            printLogInfo(exception);
             return;
         }
         determineNextMove(isRestart, Integer.parseInt(inputPrice));
@@ -46,7 +47,12 @@ public class LottoController {
         try {
             inputValidator.validateInputLottoNumber(inputLottoNumber);
         } catch (IllegalArgumentException exception) {
-            System.out.println(exception.getMessage());
+            printLogInfo(exception);
         }
     }
+
+    private static void printLogInfo(IllegalArgumentException exception) {
+        System.out.println(exception.getMessage());
+    }
+
 }
