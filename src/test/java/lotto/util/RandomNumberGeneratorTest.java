@@ -1,6 +1,6 @@
 package lotto;
 
-import lotto.exception.Validator;
+import lotto.validator.Validator;
 import lotto.util.RandomNumberGenerator;
 import org.junit.jupiter.api.Test;
 
