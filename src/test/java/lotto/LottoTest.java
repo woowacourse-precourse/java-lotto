@@ -31,7 +31,7 @@ class LottoTest {
     @DisplayName("입력된 금액이 1000으로 나누어 떨어지지 않으면 예외가 발생한다.")
     @Test
     void validatePaymentTest() {
-        int inValidPayment = 14123;
+        String inValidPayment = "14123";
 
         Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
         assertThatThrownBy(() -> lotto.validatePayment(inValidPayment)).isInstanceOf(IllegalArgumentException.class);
