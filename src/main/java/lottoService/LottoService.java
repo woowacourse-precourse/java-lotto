@@ -17,7 +17,7 @@ public class LottoService {
 
     private static final LottoGameMessage lottoGameMessage = new LottoGameMessage();
 
-    public void gameProgress(){
+    public void gameProgress() throws IllegalArgumentException{
         Player player = new Player();
 
         inputPurchasePriceAndCheckException(player);
@@ -141,26 +141,32 @@ public class LottoService {
         return bonusNumber;
     }
 
-    public void isDuplicate(List<Integer> winningLottoNumbers){
+    public void isDuplicate(List<Integer> winningLottoNumbers) throws IllegalArgumentException{
         Set<Integer> checkDuplicateNumber = new HashSet<>();
 
         for (Integer winningLottoNumber : winningLottoNumbers) {
-            if(checkDuplicateNumber.contains(winningLottoNumber))
+            if(checkDuplicateNumber.contains(winningLottoNumber)) {
+                System.out.println(Constant.EXIST_DUPLICATE_NUMBER_EXCEPTION);
                 throw new IllegalArgumentException(Constant.EXIST_DUPLICATE_NUMBER_EXCEPTION);
+            }
 
             checkDuplicateNumber.add(winningLottoNumber);
         }
     }
 
-    public void hasSixLottoNumber(String inputPlayerLottoPickNumbers){
-        if(inputPlayerLottoPickNumbers.split(",").length != 6)
+    public void hasSixLottoNumber(String inputPlayerLottoPickNumbers) throws IllegalArgumentException{
+        if(inputPlayerLottoPickNumbers.split(",").length != 6) {
+            System.out.println(Constant.NOT_MATCH_PICK_NUMBER_EXCEPTION);
             throw new IllegalArgumentException(Constant.NOT_MATCH_PICK_NUMBER_EXCEPTION);
+        }
     }
 
-    public void isValidRange(List<Integer> winningLottoNumbers){
+    public void isValidRange(List<Integer> winningLottoNumbers) throws IllegalArgumentException{
         for (Integer number : winningLottoNumbers) {
-            if(Constant.LOTTO_START_NUMBER > number || Constant.LOTTO_END_NUMBER < number)
+            if(Constant.LOTTO_START_NUMBER > number || Constant.LOTTO_END_NUMBER < number) {
+                System.out.println(Constant.NOT_VALID_RANGE_EXCEPTION);
                 throw new IllegalArgumentException(Constant.NOT_VALID_RANGE_EXCEPTION);
+            }
         }
     }
 
@@ -176,10 +182,11 @@ public class LottoService {
         System.out.println(sortedPlayerLottoNumbers);
     }
 
-    public void isNumber(String number){
+    public void isNumber(String number) throws IllegalArgumentException{
         try {
             Integer.parseInt(number);
         }catch (NumberFormatException e){
+            System.out.println(Constant.NOT_NUMBER_EXCEPTION);
             throw new IllegalArgumentException(Constant.NOT_NUMBER_EXCEPTION);
         }
     }
