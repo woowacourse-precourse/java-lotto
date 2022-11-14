@@ -36,13 +36,13 @@ public class WinningCalculator {
     public void setWinningNumbers(String numbersRaw) {
         validateNumbersRaw(numbersRaw);
         List<Integer> winningNumbers = convertStringToIntegerList(numbersRaw);
-        numbers = winningNumbers;
+        this.numbers = winningNumbers;
     }
 
     public void setBonusNumber(String bonusNumberRaw) {
         validateBonusNumberRaw(bonusNumberRaw);
-        int bonusNumberConverted = Integer.parseInt(bonusNumberRaw);
-        bonusNumber = bonusNumberConverted;
+        int bonusNumber = Integer.parseInt(bonusNumberRaw);
+        this.bonusNumber = bonusNumber;
     }
 
     public WinningResult getResultOfOneLotto(Lotto lotto) {
@@ -113,7 +113,7 @@ public class WinningCalculator {
             if (START_NUMBER <= number && number <= END_NUMBER) {
                 continue;
             }
-            throw new IllegalArgumentException("[ERROR] 범위에 맞는 번호를 당첨 번호를 입력해주세요.");
+            throw new IllegalArgumentException("[ERROR] 범위에 맞는 당첨 번호를 입력해주세요.");
         }
     }
 
@@ -127,9 +127,18 @@ public class WinningCalculator {
 
     private void validateBonusNumberRaw(String bonusNumberRaw) {
         try {
-            int bonusNumberConverted = Integer.parseInt(bonusNumberRaw);
+            int bonusNumber = Integer.parseInt(bonusNumberRaw);
+            checkRangeOfBonusNumber(bonusNumber);
+            checkBonusNumberIsContainWinningNumbers(bonusNumber);
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("[ERROR] 숫자가 너무 큽니다.");
         }
+    }
+
+    private void checkRangeOfBonusNumber(int bonusNumber) {
+        if (START_NUMBER <= bonusNumber && bonusNumber <= END_NUMBER) {
+            return;
+        }
+        throw new IllegalArgumentException("[ERROR] 범위에 맞는 보너스 번호를 입력해주세요.");
     }
 }
