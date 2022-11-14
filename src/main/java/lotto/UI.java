@@ -88,12 +88,10 @@ public class UI {
         System.out.printf("6개 일치 (2,000,000,000원) - %d개%n",Lotto_Choice_Result.get(6));
     }
 
-    
+    public void Rate_Of_Return_Print(String Rate_Of_Return){
+        System.out.printf("총 수익률은 %s%입니다.%n",Rate_Of_Return);
+    }
 
-
-
-
-}
 
 
 
