@@ -23,7 +23,7 @@ public class OutputView {
 
     public static void printWinningHistory(Map<Rank, Integer> winningHistory) {
         System.out.println(RESULT_TITLE_MESSAGE);
-        for (Rank rank : winningHistory.keySet()) {
+        for (Rank rank : Rank.values()) {
             if (rank == Rank.NONE) {
                 continue;
             }
