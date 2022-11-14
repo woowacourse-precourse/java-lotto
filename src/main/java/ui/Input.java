@@ -12,9 +12,15 @@ public class Input {
         return money;
     }
 
-    List<Integer> getWinningNumber(){
+    List<Integer> getWinningNumber() {
         String userInput = Console.readLine();
         List<Integer> winningNumber = InputNumber.parseWinningNumber(userInput);
         return winningNumber;
+    }
+
+    List<Integer> getBonusNumber() {
+        String userInput = Console.readLine();
+        List<Integer> bonusNumber = InputNumber.parseBonusNumber(userInput);
+        return bonusNumber;
     }
 }
