@@ -1,5 +1,6 @@
 package lotto.validator;
 
+import lotto.model.enums.ErrorMessage;
 import lotto.model.enums.GameMessage;
 
 import java.util.List;
@@ -12,7 +13,7 @@ public class Validator {
     public static void validateDigit(String userInput) {
         for (int index = 0; index < userInput.length(); index++) {
             if (!Character.isDigit(userInput.charAt(index))) {
-                throw new IllegalArgumentException();
+                throw new IllegalArgumentException("[ERROR] 숫자를 입력해야 합니다.");
             }
         }
     }
@@ -23,9 +24,14 @@ public class Validator {
         }
     }
 
-    //예외추가!!!
+    public static void validateElement(String inputLuckySix) {
+        String testElement = inputLuckySix.replaceAll(",", "");
+        if (!Character.isDigit(Integer.parseInt(testElement))) {
+            throw new IllegalArgumentException();
+        }
+    }
+
     public static void validateSixNumber(String inputLuckySix) {
-        String[] tempInputLuckySix = inputLuckySix.split(",");
         for (int index = 0; index < inputLuckySix.length(); index++) {
             char oneNumber = inputLuckySix.charAt(index);
             if (oneNumber == ',') {
