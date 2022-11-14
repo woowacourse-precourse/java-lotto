@@ -1,5 +1,6 @@
 package lotto.domain.lotto;
 
+import lotto.domain.jackpot.Jackpot;
 import lotto.domain.jackpot.JackpotResult;
 
 import java.util.Arrays;
@@ -41,33 +42,35 @@ public class Lotto {
 
     public static void compare_prepare(List<List<Integer>> purchased_lotto,
                                                 String jackpot_number,
-                                                        String bonus_number){
+                                                        String bonus_number,
+                                                                JackpotResult jr){
 
         for (List<Integer> one_of_lotto : purchased_lotto) {
             Lotto lotto = new Lotto(one_of_lotto);
-            compare_list_to_list(lotto, jackpot_number, bonus_number);
+            compare_list_to_list(lotto, jackpot_number, bonus_number,jr);
         }
 
     }
 
-    private static void compare_list_to_list(Lotto lotto, String jackpot_number,String bonus_number){
+    public static void compare_list_to_list(Lotto lotto, String jackpot_number
+                                                    ,String bonus_number,JackpotResult jr){
         List<String> jackpot_number_list= Arrays.asList(jackpot_number.split(","));
         List<Integer> lotto_list = lotto.numbers;
-
         Collections.sort(jackpot_number_list);
         Collections.sort(lotto_list);
-        JackpotResult jr=new JackpotResult();
         for (String jackpot : jackpot_number_list) {
             compare_jackpot_number(Integer.parseInt(jackpot), lotto_list,jr);
         }
-        if (JackpotResult.return_jackpot_count()!=6){
+        if (jr.return_jackpot_count()!=6){
             compare_bonus_number(Integer.parseInt(bonus_number),lotto_list,jr);
         }
+        int hit_jk = jr.return_jackpot_count();
+        int hit_bn = jr.return_bonus_count();
 
         jr.reset_count();
     }
 
-    private static void compare_jackpot_number(int jackpot, List<Integer> lotto_list,
+    public static void compare_jackpot_number(int jackpot, List<Integer> lotto_list,
                                                                         JackpotResult jr){
         for (Integer lotto_num : lotto_list) {
             if (jackpot == lotto_num) {
@@ -77,7 +80,7 @@ public class Lotto {
         }
     }
 
-    private static void compare_bonus_number(int bonus,List<Integer> lotto_list,
+    public static void compare_bonus_number(int bonus,List<Integer> lotto_list,
                                                                     JackpotResult jr){
         if (lotto_list.contains(bonus)){
             jr.hit_bonus();
