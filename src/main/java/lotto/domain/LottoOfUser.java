@@ -22,4 +22,10 @@ public class LottoOfUser {
         }
         return userPrize;
     }
+
+    public void printAllLotto() {
+        for (Lotto lotto : lottos) {
+            lotto.sortedAndPrint();
+        }
+    }
 }

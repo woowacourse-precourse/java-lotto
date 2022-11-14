@@ -15,7 +15,7 @@ public class MainProgram {
     public void run() {
         int money = consoleProgram.requestMoney();
         LottoOfUser userLotto = businessProgram.generateUserLotto(money);
-        // 발행한 로또 출력
+        businessProgram.printUserLotto(userLotto);
         LottoOfAnswer answerLotto = consoleProgram.requestAnswerLottoWithBonusNumber();
         businessProgram.printUserLottoResults(userLotto,answerLotto);
     }

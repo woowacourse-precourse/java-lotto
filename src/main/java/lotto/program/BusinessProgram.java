@@ -28,4 +28,8 @@ public class BusinessProgram {
         PrizeOfUser userPrize = userLotto.matchWithAnswer(answerLotto);
         userPrize.printPrize();
     }
+
+    public void printUserLotto(LottoOfUser userLotto) {
+        userLotto.printAllLotto();
+    }
 }

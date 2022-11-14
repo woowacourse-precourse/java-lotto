@@ -23,11 +23,30 @@ public class PrizeOfUser {
     }
 
     public void printPrize() {
+        printPrizeStatistics();
+        printEarnings();
+    }
+
+    private void printPrizeStatistics() {
         Iterator<Prize> prizeIterator = prizes.keySet().iterator();
         while (prizeIterator.hasNext()) {
             Prize eachPrize = prizeIterator.next();
             Integer eachPrizeCount = prizes.get(eachPrize);
             eachPrize.printPrizeStatistics(eachPrizeCount);
         }
+    }
+
+    private void printEarnings() {
+        Iterator<Prize> prizeIterator = prizes.keySet().iterator();
+        int ticket = 0;
+        int earning = 0;
+        while (prizeIterator.hasNext()) {
+            Prize eachPrize = prizeIterator.next();
+            Integer eachPrizeCount = prizes.get(eachPrize);
+            ticket += eachPrizeCount;
+            earning += eachPrize.calculateEachEarning(eachPrizeCount);
+        }
+        String earningRate = String.format("%.1f", earning / (ticket * 1000.0));
+        System.out.println("총 수익률은 "+earningRate+"%입니다.");
     }
 }

@@ -56,4 +56,8 @@ public class Lotto {
         }
         return count;
     }
+
+    public void sortedAndPrint() {
+
+    }
 }
