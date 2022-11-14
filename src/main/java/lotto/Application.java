@@ -5,22 +5,14 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.Set;
 import java.util.HashSet;
-import java.util.Map;
 import java.util.EnumMap;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class Application {
-    private static final int lottoPrice = 1000;
-    private static final String lottoPriceString = addComma(lottoPrice);
-    private static final String errorMsg1 = "[ERROR] 구입금액은 숫자를 입력해야 합니다.";
-    private static final String errorMsg2 =
-            "[ERROR] 구입 금액은 " + lottoPriceString + "원으로 나누어 떨어지는 자연수여야 합니다.";
-    private static final String errorMsg3 =
-            "[ERROR] 로또 번호는 1 ~ 45 사이의 중복되지 않는 6자리 자연수여야 합니다.";
-    private static final String errorMsg4 =
-            "[ERROR] 보너스 번호는 1 ~ 45 사이의 로또 번호와 중복되지 않는 1자리 자연수여야 합니다.";
+    static final int lottoPrice = 1000;
+    static final String lottoPriceString = addComma(lottoPrice);
 
     private static List<Integer> winningNumbers;
     private static Integer bonusNumber;
@@ -52,13 +44,13 @@ public class Application {
         try {
             return Integer.valueOf(userInput);
         } catch (Exception e){
-            throw new IllegalArgumentException(errorMsg1);
+            throw new IllegalArgumentException(Error.ERROR_PURCHASE_INPUT);
         }
     }
 
     public static void validateMoney(int money) throws IllegalArgumentException {
         if (money <= 0 || money % lottoPrice != 0) {
-            throw new IllegalArgumentException(errorMsg2);
+            throw new IllegalArgumentException(Error.ERROR_PURCHASE_DIVIDE);
         }
     }
 
@@ -73,7 +65,7 @@ public class Application {
                 int number = Integer.parseInt(input);
                 winningNumbers.add(number);
             }catch (Exception e){
-                throw new IllegalArgumentException(errorMsg3);
+                throw new IllegalArgumentException(Error.ERROR_LOTTO_NUMBERS);
             }
         }
         validateWinning();
@@ -83,11 +75,11 @@ public class Application {
         Set<Integer> winnings = new HashSet<>(winningNumbers);
 
         if (winningNumbers.size() != 6 || winnings.size() != 6) {
-            throw new IllegalArgumentException(errorMsg3);
+            throw new IllegalArgumentException(Error.ERROR_LOTTO_NUMBERS);
         }
         for (Integer winningNumber : winningNumbers) {
             if (winningNumber < 1 || winningNumber > 45) {
-                throw new IllegalArgumentException(errorMsg3);
+                throw new IllegalArgumentException(Error.ERROR_LOTTO_NUMBERS);
             }
         }
     }
@@ -99,18 +91,18 @@ public class Application {
         try {
             bonusNumber = Integer.parseInt(userInput);
         } catch (Exception e){
-            throw new IllegalArgumentException(errorMsg4);
+            throw new IllegalArgumentException(Error.ERROR_BONUS_NUMBER);
         }
         validateBonus();
     }
 
     public static void validateBonus(){
         if (bonusNumber < 1 || bonusNumber > 45) {
-            throw new IllegalArgumentException(errorMsg4);
+            throw new IllegalArgumentException(Error.ERROR_BONUS_NUMBER);
         }
 
         if (winningNumbers.contains(bonusNumber)) {
-            throw new IllegalArgumentException(errorMsg4);
+            throw new IllegalArgumentException(Error.ERROR_BONUS_NUMBER);
         }
     }
 
