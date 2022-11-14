@@ -26,8 +26,9 @@
 
 
 - LottoApplicationSetting
-  - [ ] 해당 정보에 따라 객체(LottoShop)를 생성 
-  - [ ] 해당 정보에 따라 객체(LottoRewardCoordinator)를 생성
+  - [x] 해당 정보에 따라 객체(LottoShop)를 생성
+  - [x] 해당 정보에 따라 객체(WinningNumber)를 생성
+  - [x] 해당 정보에 따라 객체(LottoRewardCoordinator)를 생성
   - LottoSetting
     - [x] 변경 가능한 정보들을 enum 값으로 담고 있음
   - WinningNumberSetting
