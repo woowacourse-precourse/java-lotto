@@ -1,5 +1,7 @@
 package lotto;
 
+import lotto.manageLotto.Lotto;
+import lotto.manageLotto.LottoManager;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

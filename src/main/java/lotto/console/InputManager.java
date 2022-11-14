@@ -1,6 +1,8 @@
-package lotto;
+package lotto.console;
 
 import camp.nextstep.edu.missionutils.Console;
+import lotto.manageLotto.LottoManager;
+import lotto.ProgramManager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,7 +10,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 // 사용자의 입력과 그에 대한 예외처리 담당
-public class UserManager {
+public class InputManager {
 
     // 0으로 시작하지 않는 숫자 입력 (각 자리별 범위 : 0 ~ 9)
     private static final String PRICE_REGEX = "^[^0][0-9]*$";

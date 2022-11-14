@@ -1,8 +1,9 @@
-package lotto;
+package lotto.manageLotto;
 
 import java.util.*;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import lotto.ProgramManager;
 
 // 로또 발행 및 통계 담당
 public class LottoManager {

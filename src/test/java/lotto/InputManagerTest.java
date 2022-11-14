@@ -1,5 +1,6 @@
 package lotto;
 
+import lotto.console.InputManager;
 import org.junit.jupiter.api.Test;
 
 import java.io.*;
@@ -8,7 +9,7 @@ import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 
-public class UserManagerTest {
+public class InputManagerTest {
 
     // 사용자 입력
     void putSystemInput(String input) {
@@ -25,7 +26,7 @@ public class UserManagerTest {
     void getPrice_테스트() {
         String price = Integer.toString(ProgramManager.LOTTO_PRICE);
         putSystemInput(price);
-        assertThat(ProgramManager.LOTTO_PRICE).isEqualTo(UserManager.getInput_price());
+        assertThat(ProgramManager.LOTTO_PRICE).isEqualTo(InputManager.getInput_price());
     }
 
     @Test
@@ -34,7 +35,7 @@ public class UserManagerTest {
         putSystemInput(price);
 
         assertSimpleTest(() ->
-                assertThatThrownBy(UserManager::getInput_price)
+                assertThatThrownBy(InputManager::getInput_price)
                         .isInstanceOf(IllegalArgumentException.class));
     }
 
@@ -44,7 +45,7 @@ public class UserManagerTest {
         putSystemInput(price);
 
         assertSimpleTest(() ->
-                assertThatThrownBy(UserManager::getInput_price)
+                assertThatThrownBy(InputManager::getInput_price)
                         .isInstanceOf(IllegalArgumentException.class));
     }
 
@@ -54,7 +55,7 @@ public class UserManagerTest {
         putSystemInput(price);
 
         assertSimpleTest(() ->
-                assertThatThrownBy(UserManager::getInput_price)
+                assertThatThrownBy(InputManager::getInput_price)
                         .isInstanceOf(IllegalArgumentException.class));
     }
 
@@ -64,7 +65,7 @@ public class UserManagerTest {
         putSystemInput(price);
 
         assertSimpleTest(() ->
-                assertThatThrownBy(UserManager::getInput_price)
+                assertThatThrownBy(InputManager::getInput_price)
                         .isInstanceOf(IllegalArgumentException.class));
     }
 
@@ -75,7 +76,7 @@ public class UserManagerTest {
     void getInput_predictLottoNumber_테스트() {
         String userPredictLottoNumber = "1,2,3,4,5,6";
         putSystemInput(userPredictLottoNumber);
-        assertThat(UserManager.convertStringToIntegerList(userPredictLottoNumber)).isEqualTo(UserManager.getInput_predictLottoNumber());
+        assertThat(InputManager.convertStringToIntegerList(userPredictLottoNumber)).isEqualTo(InputManager.getInput_predictLottoNumber());
     }
 
     @Test
@@ -83,7 +84,7 @@ public class UserManagerTest {
         String userPredictLottoNumber = "1,앍,3,4,5,6";
         putSystemInput(userPredictLottoNumber);
         assertSimpleTest(() ->
-                assertThatThrownBy(UserManager::getInput_predictLottoNumber)
+                assertThatThrownBy(InputManager::getInput_predictLottoNumber)
                         .isInstanceOf(IllegalArgumentException.class));
     }
 
@@ -92,7 +93,7 @@ public class UserManagerTest {
         String userPredictLottoNumber = "1,2, ,4,5,6";
         putSystemInput(userPredictLottoNumber);
         assertSimpleTest(() ->
-                assertThatThrownBy(UserManager::getInput_predictLottoNumber)
+                assertThatThrownBy(InputManager::getInput_predictLottoNumber)
                         .isInstanceOf(IllegalArgumentException.class));
     }
 
@@ -101,7 +102,7 @@ public class UserManagerTest {
         String userPredictLottoNumber = "1,2,3, 4,5,6";
         putSystemInput(userPredictLottoNumber);
         assertSimpleTest(() ->
-                assertThatThrownBy(UserManager::getInput_predictLottoNumber)
+                assertThatThrownBy(InputManager::getInput_predictLottoNumber)
                         .isInstanceOf(IllegalArgumentException.class));
     }
 
@@ -110,7 +111,7 @@ public class UserManagerTest {
         String userPredictLottoNumber = "1,23,4,5,6";
         putSystemInput(userPredictLottoNumber);
         assertSimpleTest(() ->
-                assertThatThrownBy(UserManager::getInput_predictLottoNumber)
+                assertThatThrownBy(InputManager::getInput_predictLottoNumber)
                         .isInstanceOf(IllegalArgumentException.class));
     }
 
@@ -119,7 +120,7 @@ public class UserManagerTest {
         String userPredictLottoNumber = "1,2,46,4,5,6";
         putSystemInput(userPredictLottoNumber);
         assertSimpleTest(() ->
-                assertThatThrownBy(UserManager::getInput_predictLottoNumber)
+                assertThatThrownBy(InputManager::getInput_predictLottoNumber)
                         .isInstanceOf(IllegalArgumentException.class));
     }
 
@@ -128,7 +129,7 @@ public class UserManagerTest {
         String userPredictLottoNumber = "1,2,0,4,5,6";
         putSystemInput(userPredictLottoNumber);
         assertSimpleTest(() ->
-                assertThatThrownBy(UserManager::getInput_predictLottoNumber)
+                assertThatThrownBy(InputManager::getInput_predictLottoNumber)
                         .isInstanceOf(IllegalArgumentException.class));
     }
 
@@ -139,7 +140,7 @@ public class UserManagerTest {
     void getInput_predictBonusLottoNumber_테스트() {
         String userPredictBonusLottoNumber = "22";
         putSystemInput(userPredictBonusLottoNumber);
-        assertThat(Integer.parseInt(userPredictBonusLottoNumber)).isEqualTo(UserManager.getInput_predictBonusLottoNumber());
+        assertThat(Integer.parseInt(userPredictBonusLottoNumber)).isEqualTo(InputManager.getInput_predictBonusLottoNumber());
     }
 
     @Test
@@ -147,7 +148,7 @@ public class UserManagerTest {
         String userPredictBonusLottoNumber = "앍";
         putSystemInput(userPredictBonusLottoNumber);
         assertSimpleTest(() ->
-                assertThatThrownBy(UserManager::getInput_predictBonusLottoNumber)
+                assertThatThrownBy(InputManager::getInput_predictBonusLottoNumber)
                         .isInstanceOf(IllegalArgumentException.class));
     }
 
@@ -156,7 +157,7 @@ public class UserManagerTest {
         String userPredictBonusLottoNumber = "06";
         putSystemInput(userPredictBonusLottoNumber);
         assertSimpleTest(() ->
-                assertThatThrownBy(UserManager::getInput_predictBonusLottoNumber)
+                assertThatThrownBy(InputManager::getInput_predictBonusLottoNumber)
                         .isInstanceOf(IllegalArgumentException.class));
     }
 
@@ -165,7 +166,7 @@ public class UserManagerTest {
         String userPredictBonusLottoNumber = " ";
         putSystemInput(userPredictBonusLottoNumber);
         assertSimpleTest(() ->
-                assertThatThrownBy(UserManager::getInput_predictBonusLottoNumber)
+                assertThatThrownBy(InputManager::getInput_predictBonusLottoNumber)
                         .isInstanceOf(IllegalArgumentException.class));
     }
 
@@ -174,7 +175,7 @@ public class UserManagerTest {
         String userPredictBonusLottoNumber = "46";
         putSystemInput(userPredictBonusLottoNumber);
         assertSimpleTest(() ->
-                assertThatThrownBy(UserManager::getInput_predictBonusLottoNumber)
+                assertThatThrownBy(InputManager::getInput_predictBonusLottoNumber)
                         .isInstanceOf(IllegalArgumentException.class));
     }
 
@@ -183,7 +184,7 @@ public class UserManagerTest {
         String userPredictBonusLottoNumber = "0";
         putSystemInput(userPredictBonusLottoNumber);
         assertSimpleTest(() ->
-                assertThatThrownBy(UserManager::getInput_predictBonusLottoNumber)
+                assertThatThrownBy(InputManager::getInput_predictBonusLottoNumber)
                         .isInstanceOf(IllegalArgumentException.class));
     }
 
