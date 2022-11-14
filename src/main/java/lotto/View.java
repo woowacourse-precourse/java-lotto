@@ -1,5 +1,8 @@
 package lotto;
 
+import java.lang.reflect.Array;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
@@ -32,7 +35,7 @@ public class View {
                 + enumMap.getOrDefault(WinningRank.three, 0) + "개");
         System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - "
                 +enumMap.getOrDefault(WinningRank.two,0)+"개");
-        System.out.print("6개 일치 (2,000,000,000원) - "+enumMap.getOrDefault(WinningRank.one,0)+"개");
+        System.out.println("6개 일치 (2,000,000,000원) - "+enumMap.getOrDefault(WinningRank.one,0)+"개");
     }
 
     public void printEarningsRate(double rate) {

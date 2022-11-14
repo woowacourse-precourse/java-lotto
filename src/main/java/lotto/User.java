@@ -2,9 +2,7 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class User {
     public int inputCost;
@@ -22,7 +20,7 @@ public class User {
     }
 
     private void correctNumber(String inputCost) {
-        for (int i = 0; i <inputCost.length() ; i++) {
+        for (int i = 0; i < inputCost.length(); i++) {
             char tempNum = inputCost.charAt(i);
             if (!(tempNum >= '0' && tempNum <= '9')) {
                 throw new IllegalArgumentException("[ERROR] 구매금액이 숫자가 아닙니다.");
@@ -38,12 +36,15 @@ public class User {
     }
 
     public static List<Integer> getLottoNumbers() {
-        return Randoms.pickUniqueNumbersInRange(1, 45, 6);
+        List<Integer> result = new ArrayList<>(
+                Randoms.pickUniqueNumbersInRange(1, 45, 6));
+        result.sort(Comparator.naturalOrder());
+        return result;
     }
 
     public void getPurchaseLottoList() {
         List<List<Integer>> result = new ArrayList<>();
-        for (int i = 0; i < inputCost/1000; i++) {
+        for (int i = 0; i < inputCost / 1000; i++) {
             result.add(getLottoNumbers());
         }
         this.purchaseLottoList = result;

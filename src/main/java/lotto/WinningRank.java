@@ -1,7 +1,7 @@
 package lotto;
 
 public enum WinningRank {
-    one(2000_000_000,0),
+    one(2_000_000_000,0),
     two(30_000_000,1),
     three(1_500_000,2),
     four(50_000,3),

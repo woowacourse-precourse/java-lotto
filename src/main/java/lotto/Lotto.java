@@ -23,11 +23,10 @@ public class Lotto {
         if (result.stream().distinct().count() != 6) {
             throw new IllegalArgumentException("[ERROR] 입력 숫자가 중복되었습니다.");
         }
-        ;
+
     }
 
     public ContainStatus isContainNumber(int LottoNumber) {
-
         return ContainStatus.setContainStatus(numbers.contains(LottoNumber));
     }
 
@@ -54,7 +53,6 @@ public class Lotto {
         for (List<Integer> lotto : getPurchaseLottoList) {
             WinningRank winningRank = getWinningRank(lotto, input);
             enumMap.put(winningRank, enumMap.getOrDefault(winningRank, 0) + 1);
-
         }
         return enumMap;
     }
@@ -72,7 +70,6 @@ public class Lotto {
         if (result == 6) {
             return WinningRank.two;
         }
-
         if (result == 5) {
             return WinningRank.three;
         }
@@ -84,8 +81,6 @@ public class Lotto {
         }
         return WinningRank.notThing;
     }
-
-    // TODO: 추가 기능 구현
 }
 
 
