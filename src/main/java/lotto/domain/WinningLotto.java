@@ -1,6 +1,7 @@
 package lotto.domain;
 
-import lotto.exception.Validator;
+import lotto.validator.BonusNumberValidator;
+import lotto.validator.LottoNumberValidator;
 
 import java.util.Collections;
 import java.util.List;
@@ -20,12 +21,12 @@ public class WinningLotto {
     }
 
     public void setBonusNumber(String bonusNumber) {
-        Validator.validateBonusNumber(lotto, bonusNumber);
+        BonusNumberValidator.validate(lotto, bonusNumber);
         this.bonusNumber = Integer.parseInt(bonusNumber);
     }
 
     public WinningLotto(String input) {
-        Validator.validateLottoString(input);
+        LottoNumberValidator.validate(input);
         List<Integer> lotto = convertStringToList(input);
         Collections.sort(lotto);
         this.lotto = new Lotto(lotto);

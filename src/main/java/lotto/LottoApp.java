@@ -1,9 +1,10 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
-import lotto.exception.Validator;
 import lotto.domain.Lottos;
 import lotto.domain.WinningLotto;
+import lotto.validator.LottoNumberValidator;
+import lotto.validator.MoneyValidator;
 
 import java.util.List;
 
@@ -13,7 +14,7 @@ public class LottoApp {
         try {
             LottoView.printBuyRequest();
             String money = Console.readLine().trim();
-            Validator.validateMoneyString(money);
+            MoneyValidator.validate(money);
             int count = lottoService.calBuyingCount(Integer.parseInt(money));
 
             LottoView.printBuyNumber(count);
@@ -22,7 +23,7 @@ public class LottoApp {
 
             LottoView.printWinningLottoRequest();
             String lotto = Console.readLine().trim();
-            Validator.validateLottoString(lotto);
+            LottoNumberValidator.validate(lotto);
             WinningLotto winningLotto = new WinningLotto(lotto);
 
             LottoView.printBonusNumberRequest();
