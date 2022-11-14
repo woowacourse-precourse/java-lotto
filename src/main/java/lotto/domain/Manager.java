@@ -3,7 +3,6 @@ package lotto.domain;
 import lotto.domain.enums.Number;
 import lotto.util.ExceptionHandler;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class Manager {
@@ -41,20 +40,36 @@ public class Manager {
         return lottos;
     }
 
-    public int getCorrectCount(List<Integer> userLotto) {
-        int correctCount = 0;
+    public void judgeResult(User user) {
+        List<Lotto> userLottos = user.getLottos();
+        for (int i = 0; i < userLottos.size(); i++) {
+            int correctCount = getCorrectCount(userLottos.get(i));
+            boolean isCorrectBonus = isCorrectBonus(userLottos.get(i));
+            int rank = judgeRank(correctCount, isCorrectBonus);
+            user.updateRank(rank);
+        }
+    }
 
-        for (int index = 0; index < Number.LOTTO_SIZE.getValue(); index++) {
-            if (winningNumbers.contains(userLotto.get(index)) || bonusNumber == userLotto.get(index)) {
+    public int getCorrectCount(Lotto lotto) {
+        List<Integer> lottoNumbers = lotto.getNumbers();
+
+        int correctCount = 0;
+        for (int i = 0; i < lottoNumbers.size(); i++) {
+            Integer lottoNumber = lottoNumbers.get(i);
+            if (isCorrectNumber(lottoNumber)) {
                 correctCount++;
             }
         }
-
         return correctCount;
     }
 
-    public boolean isCorrectBonus(List<Integer> userLotto) {
-        return userLotto.contains(this.bonusNumber);
+    private boolean isCorrectNumber(Integer lottoNumber) {
+        return winningNumbers.contains(lottoNumber);
+    }
+
+    private boolean isCorrectBonus(Lotto userLotto) {
+        List<Integer> numbers = userLotto.getNumbers();
+        return numbers.contains(bonusNumber);
     }
 
     public int judgeRank(int correctCount, boolean isCorrectBonus) {
