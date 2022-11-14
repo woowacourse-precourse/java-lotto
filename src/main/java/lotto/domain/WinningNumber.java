@@ -16,7 +16,8 @@ public class WinningNumber {
     private static final String charIsNotNumber = "잘못된 문자 입력입니다.";
     private final List<Integer> numbers;
 
-    private WinningNumber(List<Integer> numbers){
+    private WinningNumber(String string){
+        List<Integer> numbers = StringToIntegerList(string);
         validate(numbers);
         this.numbers = numbers;
     }
