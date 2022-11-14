@@ -26,7 +26,7 @@ public class Lotto {
      */
     private void validateDuplication(List<Integer> numbers) {
         for (int i = 0; i < numbers.size(); ++i) {
-            if (numbers.indexOf(numbers.get(i)) != -1) {
+            if (numbers.indexOf(numbers.get(i)) != i) {
                 System.out.println("[ERROR] 로또 번호 중 중복이 있습니다.");
                 throw new IllegalArgumentException();
             }
