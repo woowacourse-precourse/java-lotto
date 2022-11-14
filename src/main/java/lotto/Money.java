@@ -16,10 +16,10 @@ public class Money {
 
     private void validate(String inputMoney) {
         validateForDigit(inputMoney);
-        validateByLotteryPrice(Integer.parseInt(inputMoney));
+        validateByMinimumAmountUnit(Integer.parseInt(inputMoney));
     }
 
-    private void validateByLotteryPrice(int inputMoney) {
+    private void validateByMinimumAmountUnit(int inputMoney) {
         if (inputMoney % 1000 != 0) {
             throw new IllegalArgumentException("[ERROR] 구입금액은 1000원 단위여야만 합니다.");
         }
