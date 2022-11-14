@@ -1,5 +1,9 @@
 package domain;
 
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+
 public enum Rank {
 
     FAIL(0, false, 0),
@@ -17,5 +21,40 @@ public enum Rank {
         this.count = count;
         this.bonus = bonus;
         this.reward = reward;
+    }
+
+    public Rank value(int count, boolean bonus){
+        for(Rank rank : Rank.values()){
+            if(rank.count == count && rank.bonus == bonus){
+                return rank;
+            }
+        }
+        return FAIL;
+    }
+
+    public static boolean isNotFail(Rank rank){
+        return rank != FAIL;
+    }
+
+    public boolean isThirdCount(int count){
+        return count == THIRD.count;
+    }
+
+    public List<Rank> getRank(){
+        return Arrays.stream(Rank.values())
+                .filter(Rank::isNotFail)
+                .collect(Collectors.toUnmodifiableList());
+    }
+
+    public int getCount() {
+        return count;
+    }
+
+    public boolean isBonus() {
+        return bonus;
+    }
+
+    public int getReward() {
+        return reward;
     }
 }
