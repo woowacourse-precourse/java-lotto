@@ -1,5 +1,6 @@
 package lotto.domain.lottomachine.lottoticket;
 
+import lotto.domain.lottomachine.payment.Payment;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -9,7 +10,6 @@ import org.junit.jupiter.params.provider.CsvSource;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -19,7 +19,7 @@ class LottoTicketSystemTest {
 
     @BeforeEach
     void setUp() {
-        lottoTicketSystem = new LottoTicketSystem();
+        lottoTicketSystem = LottoTicketSystem.getInstance();
     }
 
     @DisplayName("convertMoneyIntoTickets 메소드에 금액을 입력하였을 때 티켓 장수를 반환하는지 확인")
@@ -71,7 +71,8 @@ class LottoTicketSystemTest {
     @DisplayName("issueLottoTicket 메소드에 금액을 입력하면 금액에 맞는 장수의 LottoTickets 객체를 반환하는지 확인")
     @ParameterizedTest(name = "{index} : {0}원 -> {1}장")
     @CsvSource({"15000, 15", "2000, 2", "6000, 6"})
-    void issueLottoTickets_test(int money, int numberOfTickets) throws NoSuchMethodException, IllegalAccessException, InvocationTargetException {
+    void issueLottoTickets_test(int amount, int numberOfTickets) throws NoSuchMethodException, IllegalAccessException, InvocationTargetException {
+        Payment money = Payment.from(amount);
         LottoTickets tickets = lottoTicketSystem.issueLottoTickets(money);
 
         assertThat(tickets.size()).isEqualTo(numberOfTickets);
