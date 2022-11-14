@@ -122,18 +122,12 @@ class LottoStatsTest {
 
     }
 
-
     private Optional<StatsType> compareLotto(Lotto lotto, Lotto winningNumber, Integer bonus){
         Long score = lotto.sameNumber(winningNumber,bonus);
         return Arrays.stream(StatsType.values())
                 .filter(type -> type.getScore() == score)
                 .findFirst();
     }
-
-
-
-
-
 
     @Test
     @DisplayName("수익률 계산 테스트")
