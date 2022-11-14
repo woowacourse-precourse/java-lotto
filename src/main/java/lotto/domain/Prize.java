@@ -15,7 +15,7 @@ public enum Prize {
         this.expression = expression;
     }
 
-    public int calculate(Integer value) {
+    public double calculate(Integer value) {
         return expression.apply(value);
     }
 }

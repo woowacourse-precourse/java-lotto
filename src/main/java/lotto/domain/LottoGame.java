@@ -7,6 +7,11 @@ import java.util.Arrays;
 import java.util.List;
 
 public class LottoGame {
+    private static final int EACH_LOTTO_COST = 1000;
+    private static final int LOTTO_START_NUMBER = 1;
+    private static final int LOTTO_END_NUMBER = 45;
+    private static final int LOTTO_NUMBER_COUNT = 6;
+
     private int lottoCount;
     private int bonusResult = 0;
     private double rateOfReturn;
@@ -19,14 +24,14 @@ public class LottoGame {
     }
 
     public int countLotto(int cost) {
-        lottoCount = cost / 1000;
+        lottoCount = cost / EACH_LOTTO_COST;
 
         return lottoCount;
     }
 
     public void createRandomLotto() {
         for (int i = 0; i < lottoCount; i++) {
-            List<Integer> lottoNumber = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+            List<Integer> lottoNumber = Randoms.pickUniqueNumbersInRange(LOTTO_START_NUMBER, LOTTO_END_NUMBER, LOTTO_NUMBER_COUNT);
             lotteries.add(new Lotto(lottoNumber));
         }
     }
@@ -54,11 +59,11 @@ public class LottoGame {
     }
 
     public void setRateOfReturn() {
-        rateOfReturn = ((calculateProfit()) / (lottoCount * 1000.0)) * 100;
+        rateOfReturn = ((calculateProfit()) / (lottoCount * EACH_LOTTO_COST)) * 100;
     }
 
-    private int calculateProfit() {
-        int profit = 0;
+    private double calculateProfit() {
+        double profit = 0;
         Prize first = Prize.CALCULATE_FIRST;
         profit += first.calculate(lottoResults.get(6));
         Prize second = Prize.CALCULATE_SECOND;

@@ -3,6 +3,8 @@ package lotto.domain;
 import camp.nextstep.edu.missionutils.Console;
 
 public class User {
+    private static final int EACH_LOTTO_COST = 1000;
+
     int lottoCost = 0;
 
     public int getLottoCost() {
@@ -31,7 +33,7 @@ public class User {
     }
 
     private void judgeCostValidate() {
-        if (lottoCost % 1000 != 0) {
+        if (lottoCost % EACH_LOTTO_COST != 0) {
             throw new IllegalArgumentException("[ERROR] 금액은 1000원 단위로 입력해야 합니다.");
         }
     }
