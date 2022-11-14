@@ -7,6 +7,7 @@ import lotto.domain.Wallet;
 import lotto.utils.Constant;
 import lotto.utils.Ranking;
 import lotto.views.Input;
+import lotto.views.Output;
 
 import javax.print.attribute.standard.RequestingUserName;
 import java.util.HashMap;
@@ -15,12 +16,14 @@ import java.util.List;
 public class GameManager {
 
     private final Input input;
+    private final Output output;
     private Wallet wallet;
     private Lotto winningNumber;
     private BonusNumber bonusNumber;
     private Prize prize;
 
     public GameManager(Input input) {
+        this.output = new Output();
         this.input = input;
     }
 
@@ -34,6 +37,8 @@ public class GameManager {
         bonusNumber = new BonusNumber(input.getBonusNumber());
         winningNumber.validateDistinctInBonusNumber(bonusNumber.getBonusNumber());
         prize = new Prize(makePrize());
+
+        output.printPrize(prize);
 
     }
 
