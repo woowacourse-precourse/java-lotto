@@ -117,6 +117,7 @@ public class Service {
 	}
 
 	public void checkbonusNumber(String number) {
+		exception.checkNumberSize(number);
 		exception.chackBonusNumberSameLottoNumber(number, lotto.getNumbers());
 	}
 
