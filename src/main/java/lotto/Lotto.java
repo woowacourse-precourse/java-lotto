@@ -14,6 +14,10 @@ public class Lotto {
         this.numbers = numbers;
     }
 
+    public List<Integer> getNumbers() {
+        return numbers;
+    }
+
     public static Lotto numberOf(List<Integer> numbers) {
         validate(numbers);
 
