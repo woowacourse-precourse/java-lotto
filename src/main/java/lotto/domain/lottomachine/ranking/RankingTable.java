@@ -1,5 +1,7 @@
 package lotto.domain.lottomachine.ranking;
 
+import lotto.domain.lottomachine.payment.Payment;
+
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.text.DecimalFormat;
@@ -15,17 +17,32 @@ public class RankingTable {
         this.frequenciesByRank = frequenciesByRank;
     }
 
-    public String calculateRateOfReturn(int money) {
+    public String calculateRateOfReturn(Payment money) {
         BigDecimal currentValue = calculateCurrentValue();
-        BigDecimal originalValue = BigDecimal.valueOf(money);
+        BigDecimal originalValue = money.createBigDecimal();
         return changeToRateOfReturnFormat(currentValue.divide(originalValue, 3, RoundingMode.HALF_UP));
     }
 
     private BigDecimal calculateCurrentValue() {
         return frequenciesByRank.entrySet()
                 .stream()
-                .map(entry -> BigDecimal.valueOf(entry.getKey().getCash()).multiply(BigDecimal.valueOf(entry.getValue())))
+                .map(this::multiplyCashAndFrequency)
                 .reduce(BigDecimal.ZERO, BigDecimal::add);
+    }
+
+    private BigDecimal multiplyCashAndFrequency(Map.Entry<Ranking, Integer> entry) {
+        BigDecimal cash = BigDecimal.valueOf(getCashOfRanking(entry));
+        BigDecimal frequency = BigDecimal.valueOf(getFrequency(entry));
+        return cash.multiply(frequency);
+    }
+
+    private int getCashOfRanking(Map.Entry<Ranking, Integer> entry) {
+        Ranking value = entry.getKey();
+        return value.getCash();
+    }
+
+    private int getFrequency(Map.Entry<Ranking, Integer> entry) {
+        return entry.getValue();
     }
 
     private String changeToRateOfReturnFormat(BigDecimal rateOfReturn) {
@@ -37,7 +54,7 @@ public class RankingTable {
         return frequenciesByRank.entrySet()
                 .stream()
                 .sorted(Comparator.comparing(entry -> entry.getKey().getCash()))
-                .map(entry ->List.of(entry.getKey().getNumberOfMatching(), entry.getKey().getCashInDecimalFormat(), String.valueOf(entry.getValue())))
+                .map(entry -> List.of(entry.getKey().getNumberOfMatching(), entry.getKey().getCashInDecimalFormat(), String.valueOf(entry.getValue())))
                 .collect(Collectors.toList());
     }
 }

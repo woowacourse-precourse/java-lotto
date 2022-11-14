@@ -1,5 +1,6 @@
 package lotto.domain.lottomachine.ranking;
 
+import lotto.domain.lottomachine.payment.Payment;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -59,7 +60,7 @@ class RankingTableTest {
     @ParameterizedTest
     @MethodSource("provideArgumentsForRateOfReturnTest")
     void calculateRateOfReturn_test(int money, String expected) {
-        String actual = rankingTable.calculateRateOfReturn(money);
+        String actual = rankingTable.calculateRateOfReturn(Payment.from(money));
 
         assertThat(actual).isEqualTo(expected);
     }
