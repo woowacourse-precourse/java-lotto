@@ -228,4 +228,9 @@ public class Application {
         sumOfPrize += totalRank.get(5) * 5000L;
         return sumOfPrize;
     }
+
+    static double calculateRateOfReturn(long sumOfPrize, int purchaseAmount) {
+        double RateOfReturn = (double) sumOfPrize / (double) purchaseAmount;
+        return RateOfReturn;
+    }
 }
