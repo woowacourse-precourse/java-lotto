@@ -28,13 +28,11 @@ public class LottoMachine {
 
     private void validateMoney(String input){
         if(!input.matches("[0-9]+")){
-            System.out.println("[ERROR] 숫자만 입력해 주세요");
             throw new IllegalArgumentException("[ERROR] 숫자만 입력해 주세요");
 
         }
         int money = Integer.parseInt(input);
         if(money == 0  || money % LOTTO_PRICE != 0){
-            System.out.println("[ERROR] 1000원 단위로 입력해 주세요");
             throw new IllegalArgumentException("[ERROR] 1000원 단위로 입력해 주세요");
         }
     }
