@@ -17,6 +17,12 @@ public class LottoResult {
     private int money;
     private int bonusNumber;
 
+    public void printAllResult() {
+        buyNewLottos();
+        getWinningNumberAndBonusNumber();
+        lottosStatistics();
+    }
+
     public void buyNewLottos() {
         money = lottoView.getMoney();
         System.out.println();
@@ -50,7 +56,7 @@ public class LottoResult {
         }
     }
 
-    public void printLottosNumbers(int count) {
+    private void printLottosNumbers(int count) {
         System.out.println(count + "개를 구매했습니다.");
         LottoGenerator lottoGenerator = new LottoGenerator();
         lottos = lottoGenerator.generateLotto(count);
