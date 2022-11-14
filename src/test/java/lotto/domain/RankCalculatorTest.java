@@ -1,6 +1,5 @@
 package lotto.domain;
 
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -26,7 +25,6 @@ public class RankCalculatorTest {
                 new Lotto(List.of(13, 14, 16, 38, 42, 45)),
                 new Lotto(List.of(8, 21, 23, 41, 42, 43))
         );
-
         userNumber = new UserNumber("1,2,3,4,5,6", "7");
         rankCalculator = new RankCalculator(lottoTickets, userNumber);
     }
@@ -57,6 +55,7 @@ public class RankCalculatorTest {
                 Map.entry(Rank.FIFTH, 0),
                 Map.entry(Rank.NONE, 0)
         );
+
         assertThat(rankCalculator.initializeRank()).isEqualTo(expectedRank);
     }
 }

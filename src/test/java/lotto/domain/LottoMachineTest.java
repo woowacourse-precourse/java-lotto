@@ -46,7 +46,6 @@ public class LottoMachineTest {
     @CsvSource({"8000,8000", "10000,10000", "25000,25000"})
     void createRightPurchasePrice(String purchasePrice, int expected) {
         LottoMachine lottoMachine = new LottoMachine(purchasePrice);
-
         assertThat(lottoMachine.getPurchasePrice()).isEqualTo(expected);
     }
 
@@ -55,7 +54,6 @@ public class LottoMachineTest {
     @CsvSource({"8000,8", "10000,10", "25000,25"})
     void createRightRound(String purchasePrice, int expected) {
         LottoMachine lottoMachine = new LottoMachine(purchasePrice);
-
         assertThat(lottoMachine.getRound()).isEqualTo(expected);
     }
 }
