@@ -1,5 +1,6 @@
 package lotto.domain;
 
+import org.assertj.core.api.AssertionsForClassTypes;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -46,6 +47,15 @@ class LottoResultTest {
                 List.of(21, 22, 23, 24, 25, 7) // second 2
         );
         System.setOut(System.out);
+    }
+
+    //수익률 계산하기
+    @DisplayName("수익률 계산 테스트")
+    @Test
+    void calculateYieldTest() {
+        setResultMapTest();
+        System.out.println(lottoResult.getYield());
+        AssertionsForClassTypes.assertThat(lottoResult.getYield()).isEqualTo(1231100);
     }
 
     //서비스 로직
