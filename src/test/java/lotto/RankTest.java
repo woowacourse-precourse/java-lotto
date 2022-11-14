@@ -1,13 +1,24 @@
 package lotto;
 
+import lotto.controller.RankController;
+import lotto.domain.lotto.Lotto;
+import lotto.domain.lotto.WinLotto;
+import lotto.domain.user.User;
 import lotto.service.RankService;
+import lotto.view.Rank;
+
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.*;
 
 public class RankTest {
+    Rank rank = new Rank();
     RankService rankService = new RankService();
+    RankController rankController = new RankController(rankService, rank);
 
     @Test
     @DisplayName("당첨 번호 입력 테스트")
@@ -48,5 +59,64 @@ public class RankTest {
         assertThatThrownBy(
                 () -> rankService.generateWinningLotto(winningNumbers, bonus)
         ).isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    @DisplayName("등수 계산 테스트")
+    void ranking(){
+        String winningNumber = "1,2,3,4,5,6";
+        String bonus = "7";
+        List<Lotto> lottos = testLottos();
+
+        User user = new User(lottos.size() * 1000);
+        buylotto(lottos, user);
+
+        WinLotto winLotto = rankService.generateWinningLotto(winningNumber, bonus);
+        List<Integer> ranking = rankService.calculateRanking(user, winLotto);
+
+        List<Integer> result = new ArrayList<>(List.of(0, 1, 1, 1, 1, 1));
+        assertThat(ranking).isEqualTo(result);
+    }
+
+    @Test
+    @DisplayName("등수 계산 테스트")
+    void rankingView(){
+        String winningNumber = "1,2,3,4,5,6";
+        String bonus = "7";
+        List<Lotto> lottos = testLottos();
+
+        User user = new User(lottos.size() * 1000);
+        buylotto(lottos, user);
+
+        String rankingView = rankController.statistics(user, winningNumber, bonus);
+
+        String result = "3개 일치 (5,000원) - 1개\n" +
+                "4개 일치 (50,000원) - 1개\n" +
+                "5개 일치 (1,500,000원) - 1개\n" +
+                "5개 일치, 보너스 볼 일치 (30,000,000원) - 1개\n" +
+                "6개 일치 (2,000,000,000원) - 1개";
+
+        assertThat(rankingView).contains(result);
+        System.out.println(rankingView);
+    }
+
+    private void buylotto(List<Lotto> lottos, User user){
+        for (Lotto lotto : lottos){
+            user.buyLotto(lotto);
+        }
+    }
+
+    private List<Lotto> testLottos(){
+
+        List<Integer> first = new ArrayList<>(List.of(1,2,3,4,5,6));
+        List<Integer> second = new ArrayList<>(List.of(1,2,3,4,5,7));
+        List<Integer> third = new ArrayList<>(List.of(1,2,3,4,5,8));
+        List<Integer> fourth = new ArrayList<>(List.of(1,2,3,4,8,9));
+        List<Integer> fifth = new ArrayList<>(List.of(1,2,3,7,8,9));
+
+        return new ArrayList<>(
+                List.of(new Lotto(first), new Lotto(second),
+                        new Lotto(third), new Lotto(fourth),
+                        new Lotto(fifth)));
     }
 }
