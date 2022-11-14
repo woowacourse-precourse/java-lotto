@@ -10,6 +10,7 @@ public class LottoController {
         LottoTicket lottoTicket = buyTickets(amount);
         WinningNumber winningNumber = inputWinningNumber();
         WinningResult winningResult = getWinningResult(lottoTicket, winningNumber);
+        printResult(amount, winningResult);
     }
 
     private WinningNumber inputWinningNumber() {
@@ -39,4 +40,9 @@ public class LottoController {
     private WinningResult getWinningResult(LottoTicket lottoTicket, WinningNumber winningNumbers) {
         return lottoTicket.calculateWinningStatistic(winningNumbers);
     }
+
+    private void printResult(LottoAmount amount, WinningResult winningResult) {
+        OutputView.printWinningStatistic(winningResult);
+    }
+
 }
