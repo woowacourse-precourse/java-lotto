@@ -12,4 +12,8 @@ public class WinningNumber {
     public void inputWinningNumber(String input) {
         winningNumber = new Lotto(input);
     }
+
+    public Lotto getWinningNumber() {
+        return winningNumber;
+    }
 }

@@ -17,7 +17,7 @@ public class OutputView {
     private static final String THIRD_PLACE = "5개 일치 (1,500,000원) - %d개\n";
     private static final String SECOND_PLACE = "5개 일치, 보너스 볼 일치 (30,000,000원) - %d개\n";
     private static final String FIRST_PLACE = "6개 일치 (2,000,000,000원) - %d개\n";
-    private static final String YIELD = "총 수익률은 %d%%입니다.";
+    private static final String YIELD = "총 수익률은 %.1f%%입니다.";
 
     public void printLottos(List<Lotto> lottos) {
         System.out.println();
@@ -38,7 +38,7 @@ public class OutputView {
         System.out.printf(FIRST_PLACE, winningHistory.get(TWO_BILLION));
     }
 
-    public void printYield(int yield) {
+    public void printYield(double yield) {
         System.out.printf(YIELD, yield);
     }
 }

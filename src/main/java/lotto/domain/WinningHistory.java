@@ -9,7 +9,7 @@ import static lotto.domain.WinningMoney.*;
 
 public class WinningHistory {
     private Map<WinningMoney,Integer> winningHistory;
-    private int yield;
+    private double yield;
 
     public WinningHistory () {
         winningHistory = new HashMap<>();
@@ -72,10 +72,10 @@ public class WinningHistory {
                 sum += winningHistory.get(winningMoney) * winningMoney.getWinningMoney();
             }
         }
-        yield = Math.round(sum / money * 100);
+        yield = Math.round((double) sum / money * 1000) / 10.0;
     }
 
-    public int getYield() {
+    public double getYield() {
         return yield;
     }
 }
