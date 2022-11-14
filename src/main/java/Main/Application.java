@@ -1,12 +1,10 @@
 package Main;
 
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import Print.Message;
 import User.User;
-import camp.nextstep.edu.missionutils.Randoms;
+import lotto.BuyLotto;
 import lotto.Lotto;
 
 public class Application {
@@ -21,18 +19,7 @@ public class Application {
     		return;
     	}
     	
-    	List<Lotto> arr = new ArrayList<>();
-    	
-    	Message.LOTTO_COUNT.print_count(n);
-    	for(int i = 0; i < n; i++) {
-    		arr.add(new Lotto(input()));
-    		
-    		ArrayList<Integer> numbers = new ArrayList<>(arr.get(i).getnumber());
-    		
-    		Collections.sort(numbers);
-    		
-    		System.out.println(numbers);
-    	}
+		List<Lotto> arr = BuyLotto.print(n);
     	
     	List<Integer> win_number = user.winning_number();
     	
@@ -85,13 +72,5 @@ public class Application {
     
     public static boolean check_bonus_number(List<Integer> arr, int bonus_number) {
     	return arr.contains(bonus_number);
-    }
-    
-    public static List<Integer> input(){
-    	List<Integer> input_number;
-    	
-    	input_number = Randoms.pickUniqueNumbersInRange(1, 45, 6);
-    	
-    	return input_number;
     }
 }
