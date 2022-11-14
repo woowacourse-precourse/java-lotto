@@ -9,13 +9,13 @@ import static lotto.utils.Converter.convertToIntegerList;
 
 public class InputView {
 
-    public int readAmountOfLottoPrice() {
+    public static int readAmountOfLottoPrice() {
         String playerInput = readLine();
         validateLottoPurchaseAmount(playerInput);
         return Integer.parseInt(playerInput);
     }
 
-    public List<Integer> readWinningNumbers() {
+    public static List<Integer> readWinningNumbers() {
         String playerInput = readLine();
         validateLottoWinningNumber(playerInput);
         return convertToIntegerList(playerInput);
