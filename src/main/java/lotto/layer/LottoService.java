@@ -14,7 +14,7 @@ import lotto.domain.WinningLotto;
 public class LottoService {
 
     private static final String ERROR_DUPLICATE = "당첨 번호와 보너스 번호는 중복될 수 없습니다.";
-    Table table;
+    private final Table table;
 
     public LottoService(Table table) {
         this.table = table;
