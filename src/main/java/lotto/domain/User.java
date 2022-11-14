@@ -2,32 +2,25 @@ package lotto.domain;
 
 import lotto.constant.Constant;
 import lotto.constant.Message;
-import lotto.util.Validator;
+import lotto.util.UserInput;
 
 public class User {
 
     private int money;
     private int nLottoTickets;
 
-    public User(int money){
-        setMoney(money);
+    public User(){
+        Message.printInputUserMoney();
+        setMoney();
 
-        setnLottoTickets(money);
+        setnLottoTickets();
     }
 
-    private void setMoney(int money) {
-        this.money = money;
+    private void setMoney() {
+        this.money = UserInput.getMoney();
     }
 
-    private void setnLottoTickets(int money) {
-        this.nLottoTickets = money / Constant.LOTTO_PRICE;
-    }
-
-    public int getMoney() {
-        return money;
-    }
-
-    public int getnLottoTickets() {
-        return nLottoTickets;
+    private void setnLottoTickets() {
+        this.nLottoTickets = this.money / Constant.LOTTO_PRICE;
     }
 }
