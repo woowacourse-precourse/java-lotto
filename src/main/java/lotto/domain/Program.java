@@ -1,4 +1,4 @@
-package lotto;
+package lotto.domain;
 
 import java.util.List;
 
@@ -7,8 +7,6 @@ public class Program {
     int numOfLottos, bonus;
     ListOfLottos lottoList;
     List<Integer> winner;
-
-
 
     public void lottoSetup() {
         view.printMoneyInputMsg();
@@ -23,4 +21,5 @@ public class Program {
         view.printBonusInputMsg();
         bonus = view.getBonusInput(winner);
     }
+
 }
