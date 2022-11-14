@@ -15,6 +15,9 @@ public class Comparison {
             if (sum == 5) {
                 bonusCheck = compareLottoNum(lotto.getNumbers(), ticket.getBonusNum());
             }
+            if (sum > 2) {
+                saveResult(sum, bonusCheck);
+            }
         }
     }
 
@@ -33,5 +36,14 @@ public class Comparison {
             }
         }
         return count;
+    }
+
+    private void saveResult(int sum, boolean bonusCheck) {
+        if(sum == 5 && bonusCheck) {
+            savedResult.put("5B", savedResult.getOrDefault("5B", 0) + 1);
+            return;
+        }
+        String key = Integer.toString(sum);
+        savedResult.put(key, savedResult.getOrDefault(key,0)+1);
     }
 }
