@@ -18,6 +18,8 @@ public class GameController {
         LottoMachine lottos = buyLotto(inputMoney);
         User user = new User(inputMoney, lottos.getLottos());
         WinningNumber winnerNumber = getWinningNumber();
+
+        List<Rank> ranks = getRanks(user.getLottos(), winnerNumber);
     }
 
     public LottoMachine buyLotto(int money) {
@@ -34,5 +36,15 @@ public class GameController {
         int bonusNumber = InputView.getBonusNumber();
 
         return new WinningNumber(lotto, bonusNumber);
+    }
+
+    public List<Rank> getRanks(List<Lotto> lottos, WinningNumber winningNumber) {
+        List<Rank> ranks = new ArrayList<>();
+
+        for (Lotto lotto : lottos) {
+            Rank rank = Rank.calculate(lotto, winningNumber);
+            ranks.add(rank);
+        }
+        return ranks;
     }
 }
