@@ -63,6 +63,6 @@ public class UserLotto {
             }
             total += prize.getPrizeMoney() * lottoResult.get(prize.ordinal());
         }
-        return total / (double) this.getLottoCount();
+        return (total / (double) lottoAmount) * 100;
     }
 }
