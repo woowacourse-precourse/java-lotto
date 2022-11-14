@@ -37,4 +37,13 @@ public class LottoProgram {
 		}
 	}
 
+	public void message(List<List<Integer>> randomNumbers) {
+		for (List<Integer> list : randomNumbers) {
+			List<Integer> sortRandomNumbers = new ArrayList<>();
+			sortRandomNumbers.addAll(list);
+			Collections.sort(sortRandomNumbers);
+			messagePrint.changeList(sortRandomNumbers);
+		}
+	}
+
 }
