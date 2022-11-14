@@ -14,9 +14,10 @@ public class Lotto {
 
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(Validator.LENGTH_OVER_NUMBER);
         }
         Validator.checkDuplication(numbers);
+        Validator.checkLength(numbers);
     }
 
     public List<Integer> getNumbers() {
