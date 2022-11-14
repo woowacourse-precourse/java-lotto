@@ -40,6 +40,10 @@ public class LottoRepository {
         this.winningNumbers = winningNumbers;
     }
 
+    public void saveBonusNumber(int bonusNumber) {
+        this.bonusNumber = bonusNumber;
+    }
+
     public int getMoney() {
         return money;
     }
@@ -56,4 +60,7 @@ public class LottoRepository {
         return winningNumbers.getNumbers();
     }
 
+    public int getBonusNumber() {
+        return bonusNumber;
+    }
 }
