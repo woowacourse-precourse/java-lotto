@@ -22,7 +22,7 @@ public class Lotto {
     }
 
     public MatchCount getMatchResult(LottoNumber lottoNumber) {
-        int match = (int) lottoNumber.winningNumbers.getNumbers().stream()
+        int match = (int) lottoNumber.winningNumbers.stream()
                 .filter(num -> numbers.contains(num))
                 .count();
         int bonusMatch = 0;

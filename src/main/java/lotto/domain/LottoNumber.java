@@ -7,11 +7,12 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class LottoNumber {
-    public final Lotto winningNumbers;
+    public final List<Integer> winningNumbers;
     public final int bonusNumber;
 
     public LottoNumber(String winningNumbers, String bonusNumber) {
-        Lotto winningNumbersInteger = new Lotto(convertStringToInteger(winningNumbers));
+        List<Integer> winningNumbersInteger = convertStringToInteger(winningNumbers);
+        Validation.validLotto(winningNumbersInteger);
         validBonusNumber(bonusNumber);
         this.winningNumbers = winningNumbersInteger;
         this.bonusNumber = Integer.parseInt(bonusNumber);
