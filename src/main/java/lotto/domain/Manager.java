@@ -46,7 +46,7 @@ public class Manager {
             int correctCount = getCorrectCount(userLottos.get(i));
             boolean isCorrectBonus = isCorrectBonus(userLottos.get(i));
             int rank = judgeRank(correctCount, isCorrectBonus);
-            user.updateRank(rank);
+            user.updateRankAndWinningAmount(rank);
         }
     }
 
