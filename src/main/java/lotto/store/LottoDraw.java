@@ -1,6 +1,6 @@
 package lotto.store;
 
-import lotto.ValidCheck;
+import lotto.error.ValidCheck;
 
 import java.util.Arrays;
 import java.util.List;

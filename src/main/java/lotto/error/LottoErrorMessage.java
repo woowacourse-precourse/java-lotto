@@ -1,4 +1,4 @@
-package lotto.enumeration;
+package lotto.error;
 
 public enum LottoErrorMessage {
     COMMA_ERROR("[ERROR] 쉼표로 구분된 6개 숫자를 입력해 주시기 바랍니다."),

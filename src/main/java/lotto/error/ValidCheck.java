@@ -1,6 +1,6 @@
-package lotto;
+package lotto.error;
 
-import lotto.enumeration.LottoErrorMessage;
+import lotto.error.LottoErrorMessage;
 
 import java.util.HashSet;
 import java.util.List;

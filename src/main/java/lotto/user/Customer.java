@@ -1,6 +1,6 @@
 package lotto.user;
 
-import lotto.ValidCheck;
+import lotto.error.ValidCheck;
 import lotto.enumeration.ConsoleAlert;
 import lotto.enumeration.LottoRankInformation;
 import lotto.store.Lotto;
