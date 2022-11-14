@@ -1,10 +1,12 @@
 package lotto.controller;
 
-import static lotto.service.LottoService.*;
-
+import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 
 import lotto.Notice;
+import lotto.Rank;
+import lotto.domain.Lotto;
 import lotto.domain.LottoMachine;
 import lotto.domain.LottoStore;
 import lotto.domain.User;
@@ -13,7 +15,7 @@ import lotto.view.Input;
 import lotto.view.Output;
 
 public class RunController {
-	public static void start() {
+	public void start() {
 		Output.printNotice(Notice.START.getNoticeMessage());
 		int money = getCurrentMoney();
 
@@ -21,27 +23,36 @@ public class RunController {
 			drawLottery(money);
 		}
 	}
+	private int getCurrentMoney() {
+		String numbers = Input.numbers();
 
-	private static void drawLottery(int money) {
+		try {
+			return Integer.parseInt(numbers);
+		} catch (IllegalArgumentException e) {
+			Output.printNotice(Notice.ERROR.getNoticeMessage());
+			return 0;
+		}
+	}
+
+	private boolean isNotNull(int value) {
+		return value != 0;
+	}
+
+	private void drawLottery(int money) {
 		User user = new User(money);
 		LottoStore seller = buyLottoByMoney(user.getMoney());
 
 		LottoMachine machine = pickThisRoundLotto();
 
 		if (machine != null) {
-			user.setPrizeMoney(getMoneyByLotto(seller , machine));
-			Output.printCount(user.getPrizeMoney());
+			user.setPrizeMoney(getRanking(seller , machine));
 
-			user.setRateOfReturn(calculateRateOfReturn(user.getPrizeMoney(), user.getMoney()));
+			user.setRateOfReturn(new LottoService().getRateOfReturn(user.getPrizeMoney(), user.getMoney()));
 			Output.printRateOfReturn(user.getRateOfReturn());
 		}
 	}
 
-	private static boolean isNotNull(int value) {
-		return value != 0;
-	}
-
-	private static LottoStore buyLottoByMoney(int quantity) {
+	private LottoStore buyLottoByMoney(int quantity) {
 		LottoStore seller = new LottoStore(quantity);
 
 		seller.setLotto(publishLottoByQuantity(seller.getQuantity()));
@@ -49,14 +60,23 @@ public class RunController {
 		return seller;
 	}
 
-	private static List<Integer> getMoneyByLotto(LottoStore seller, LottoMachine machine) {
-		return getWinningRanking(seller.getLotto(), machine.getWinningNumbers(), machine.getBonusNumber());
+	private int getRanking(LottoStore seller, LottoMachine machine) {
+		Map<Rank, Integer> ranking = new LottoService().getWinningRanking(seller.getLotto(), machine.getWinningNumbers(), machine.getBonusNumber());
+
+		ranking.entrySet().stream()
+				.sorted(Collections.reverseOrder());
+		Output.printRank(ranking);
+
+		return getMoneyByLotto(ranking);
+	}
+	private int getMoneyByLotto(Map<Rank, Integer> rank) {
+		return new LottoService().getPrizeMoney(rank);
 	}
 
-	private static List<List<Integer>> publishLottoByQuantity(int quantity) {
+	private List<List<Integer>> publishLottoByQuantity(int quantity) {
 		Output.printResult(quantity, Notice.PURCHASE.getNoticeMessage());
 
-		List<List<Integer>> lotto = publishLotteries(quantity);
+		List<List<Integer>> lotto = new LottoService().publishLotteries(quantity);
 
 		for (List<Integer> integers : lotto) {
 			Output.printPublishLotteries(integers);
@@ -65,25 +85,26 @@ public class RunController {
 		return lotto;
 	}
 
-	private static LottoMachine pickThisRoundLotto() {
-		List<Integer> winningNumbers = pickWinningNumbers();
+	private LottoMachine pickThisRoundLotto() {
+		List<Integer> winningnUmbers = pickWinningNumbers();
 
-		if (winningNumbers != null) {
+		if (winningnUmbers != null) {
+			Lotto lotto = new Lotto(winningnUmbers);
 			Object bonusNumber = pickBonusNumber();
 			if (bonusNumber != null) {
-				return new LottoMachine(winningNumbers, (int)bonusNumber);
+				return new LottoMachine(lotto.getNumbers(), (int)bonusNumber);
 			}
 		}
 
 		return null;
 	}
 
-	private static List<Integer> pickWinningNumbers() {
+	private List<Integer> pickWinningNumbers() {
 		Output.printNotice(Notice.WINNING_NUMBERS.getNoticeMessage());
 		String winningNumbers = Input.numbers();
 
 		try {
-			return convertStringToList(winningNumbers);
+			return new LottoService().convertStringToList(winningNumbers);
 		} catch (IllegalArgumentException e) {
 			Output.printNotice(Notice.ERROR.getNoticeMessage() + "숫자만 입력해주세요");
 
@@ -91,7 +112,7 @@ public class RunController {
 		}
 	}
 
-	private static Object pickBonusNumber() {
+	private Object pickBonusNumber() {
 		Output.printNotice(Notice.BONUS_NUMBER.getNoticeMessage());
 		String bonusNumber = Input.numbers();
 
@@ -104,14 +125,4 @@ public class RunController {
 		}
 	}
 
-	private static int getCurrentMoney() {
-		String numbers = Input.numbers();
-
-		try {
-			return Integer.parseInt(numbers);
-		} catch (IllegalArgumentException e) {
-			Output.printNotice(Notice.ERROR.getNoticeMessage());
-			return 0;
-		}
-	}
 }

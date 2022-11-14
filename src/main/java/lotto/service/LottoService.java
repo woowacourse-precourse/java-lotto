@@ -3,18 +3,20 @@ package lotto.service;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.EnumMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 import camp.nextstep.edu.missionutils.Randoms;
-import lotto.Ranking;
+import lotto.Rank;
 import lotto.domain.Lotto;
 
 public class LottoService {
-	static final int PERCENT = 100;
-	private static final String LOTTO_REGEX = ",";
+	final int PERCENT = 100;
+	private final String LOTTO_REGEX = ",";
 
-	public static List<List<Integer>> publishLotteries(int quantity) {
+	public List<List<Integer>> publishLotteries(int quantity) {
 		List<List<Integer>> candidate = new ArrayList<>();
 
 		for (int i = 0; i < quantity; i++) {
@@ -26,17 +28,13 @@ public class LottoService {
 		return candidate;
 	}
 
-	public static List<Integer> getWinningRanking(List<List<Integer>> candidate, List<Integer> winningNumbers,
+	public Map<Rank, Integer> getWinningRanking(List<List<Integer>> candidate, List<Integer> winningNumbers,
 			int bonusNumber) {
 
 		return countWinningNumber(candidate, winningNumbers, bonusNumber);
 	}
 
-	public static String calculateRateOfReturn(List<Integer> winningCount, double money) {
-		return LottoService.getRateOfReturn(winningCount, money);
-	}
-
-	private static List<Integer> pickLottoNumbers() {
+	private List<Integer> pickLottoNumbers() {
 		List<Integer> lottoNumbers = new ArrayList<>(Randoms.pickUniqueNumbersInRange(1, 45, 6));
 
 		Collections.sort(lottoNumbers);
@@ -44,50 +42,43 @@ public class LottoService {
 		return lottoNumbers;
 	}
 
-	private static void publishLotto(List<List<Integer>> candidateLotto, List<Integer> candidate) {
+	private void publishLotto(List<List<Integer>> candidateLotto, List<Integer> candidate) {
 		candidateLotto.add(candidate);
 	}
 
-	private static List<Integer> countWinningNumber(List<List<Integer>> candidate, List<Integer> winningNumbers, int bonusNumber) {
-		List<Integer> ranking = Arrays.asList(0,0,0,0,0);
+	private Map<Rank, Integer> countWinningNumber(List<List<Integer>> candidate, List<Integer> winningNumbers, int bonusNumber) {
+		Map<Rank, Integer> rank = new EnumMap<>(Rank.class);
 
 		for (List<Integer> integers : candidate) {
+			boolean checkPoint = false;
 			int count = compareNumbers(integers, winningNumbers);
 
-			if (count >= Ranking.NUMBER_TO_CONVERT_SCORE_TO_RANK.getValue()) {
-				int rank = judgement(count, checkBonus(integers, bonusNumber));
-
-				reviseScore(ranking, rank);
+			if (count == 5) {
+				checkPoint = checkBonus(integers, bonusNumber);
 			}
-		}
-
-		return ranking;
-	}
-
-	private static int judgement(int count, boolean bonus) {
-		int rank = count - Ranking.NUMBER_TO_CONVERT_SCORE_TO_RANK.getValue();
-
-		if (rank == Ranking.THIRD_PLACE.getValue()) {
-			if (bonus)
-				rank = Ranking.SECOND_PLACE.getValue();
+			Rank key = Rank.of(count, checkPoint);
+			rank.put(key, rank.getOrDefault(key, 0) + 1);
 		}
 
 		return rank;
 	}
 
-	private static void reviseScore(List<Integer> ranking, int rank) {
-		ranking.set(rank, getScore(ranking, rank));
+	public int getPrizeMoney(Map<Rank, Integer> rank) {
+		int prizeMoney = 0;
+
+		for (Map.Entry<Rank, Integer> entry : rank.entrySet()) {
+			prizeMoney += entry.getKey().getPrizeMoney() * entry.getValue();
+		}
+
+
+		return prizeMoney;
 	}
 
-	private static int getScore(List<Integer> ranking, int index) {
-		return ranking.get(index) + Ranking.SCORE.getValue();
-	}
-
-	private static boolean checkBonus(List<Integer> candidate, int bonusNumber) {
+	private boolean checkBonus(List<Integer> candidate, int bonusNumber) {
 		return candidate.contains(bonusNumber);
 	}
 
-	private static int compareNumbers(List<Integer> candidate, List<Integer> winningNumbers) {
+	private int compareNumbers(List<Integer> candidate, List<Integer> winningNumbers) {
 		int count = 0;
 
 		for (int i = 0; i < candidate.size(); i++) {
@@ -96,31 +87,19 @@ public class LottoService {
 			}
 		}
 
-		if (count == Ranking.PERFECT.getValue()) {
-			count++;
-		}
+	//	if (count == Ranking.PERFECT.getValue()) {
+	//		count++;
+	//	}
 
 		return count;
 	}
 
-	private static String getRateOfReturn(List<Integer> winningCount, double money) {
-		int revenue = sumRevenue(winningCount);
+	public String getRateOfReturn(int prizeMoney, double money) {
 
-		return String.format("%.1f", (revenue / money) * PERCENT);
+		return String.format("%.1f", (prizeMoney / money) * PERCENT);
 	}
 
-	private static int sumRevenue(List<Integer> winningCount) {
-		int sum = 0;
-		List<Integer> prizeMoney = Arrays.asList(5_000, 50_000, 1_500_000, 30_000_000, 2_000_000_000);
-
-		for (int i = 0; i < winningCount.size(); i++) {
-			sum += winningCount.get(i) * prizeMoney.get(i);
-		}
-
-		return sum;
-	}
-
-	public static List<Integer> convertStringToList(String numbers) {
+	public List<Integer> convertStringToList(String numbers) {
 		List<String> lotto = Arrays.asList(numbers.split(LOTTO_REGEX));
 
 		return lotto.stream()

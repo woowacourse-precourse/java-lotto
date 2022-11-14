@@ -7,7 +7,7 @@ import lotto.Notice;
 public class User {
 	private int LOTTO_PRICE = 1000;
 	private int money;
-	private List<Integer> prizeMoney;
+	private int prizeMoney;
 	private String rateOfReturn;
 
 	public User(int money) {
@@ -22,7 +22,7 @@ public class User {
 		return rateOfReturn;
 	}
 
-	public List<Integer> getPrizeMoney() {
+	public int getPrizeMoney() {
 		return prizeMoney;
 	}
 
@@ -30,7 +30,7 @@ public class User {
 		this.rateOfReturn = rateOfReturn;
 	}
 
-	public void setPrizeMoney(List<Integer> prizeMoney) {
+	public void setPrizeMoney(int prizeMoney) {
 		this.prizeMoney = prizeMoney;
 	}
 
