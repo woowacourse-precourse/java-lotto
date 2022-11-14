@@ -50,6 +50,8 @@ public class Application {
         }
     }
 
+    public static boolean isNumber(char charAtIndex) { return (charAtIndex >= '0' && charAtIndex <= '9'); }
+
     public static void isInputNumber(String numberInput) {
         int inputLength = numberInput.length();
         for (int index = 0; index < inputLength; index++) {
@@ -123,8 +125,6 @@ public class Application {
     }
 
     public static boolean isComma(char charAtIndex) { return charAtIndex == ','; }
-
-    public static boolean isNumber(char charAtIndex) { return (charAtIndex >= '0' && charAtIndex <= '9'); }
 
     public static void isInputCommaAndNumber(String numberInput) {
         int inputLength = numberInput.length();
