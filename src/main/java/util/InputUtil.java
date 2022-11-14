@@ -58,8 +58,20 @@ public class InputUtil {
 
 	public static int inputBonusNumber() {
 
+		System.out.println("보너스 번호를 입력해 주세요.");
+		String inputValue = Console.readLine();
+		if (!ValidateUtil.isNumber(inputValue)) {
+			ExceptionUtil.makeException("보너스번호는 숫자로 입력해야 합니다.");
+		}
 		
-		return 0;
+		int bonusNumber = Integer.parseInt(inputValue);
+		
+		if (!ValidateUtil.checkRange(bonusNumber)) {
+			ExceptionUtil.makeException("보너스번호는 1부터 45 사이의 숫자여야 합니다.");
+		}
+		
+		
+		return bonusNumber;
 	}
 
 }
