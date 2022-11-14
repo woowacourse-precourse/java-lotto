@@ -14,7 +14,8 @@ public class Application {
         SecondPlace(value -> value * 30_000_000),
         ThirdPlace(value -> value * 1_500_000),
         FourthPlace(value -> value * 50_000),
-        FifthPlace(value -> value * 5000);
+        FifthPlace(value -> value * 5000),
+        Nothing(value->0);
 
         private Function<Integer, Integer> expression;
 
@@ -37,9 +38,11 @@ public class Application {
         boughtLottos = buyLotto(boughtLottos, MONEY);
         printLottos(boughtLottos);
 
+        System.out.println("당첨 번호를 입력해 주세요.");
         input = readInput();
         List<Integer> pickedNumbers = validatePickedNumbers(input);
 
+        System.out.println("보너스 번호를 입력해 주세요.");
         input = readInput();
         int bonusNum = parseInt(input);
         if (pickedNumbers.contains(bonusNum) || bonusNum < 1 || bonusNum > 45) {
@@ -121,7 +124,7 @@ public class Application {
             return result;
         }
 
-        return null;
+        return LotteryWon.Nothing;
     }
 
     public static List<Integer> validatePickedNumbers(String input) {
