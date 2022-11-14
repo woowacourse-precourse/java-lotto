@@ -2,14 +2,17 @@ package lotto.domain;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class WalletTest {
 
     @DisplayName("구입 금액을 입력받아 구매 가능한 로또 티켓의 수를 반환한다")
     @Test
-    void calculate_Maximum_Number_Of_LottoTickets_Can_Purchase_Test() {
+    void calculate_Maximum_Number_Of_LottoTickets_Can_Purchase() {
         // given
         Wallet wallet = new Wallet(5000);
 
@@ -20,4 +23,12 @@ public class WalletTest {
         assertThat(countOfTickets).isEqualTo(5);
     }
 
+    @DisplayName("구입 금액이 1000으로 나누어 떨어지지 않는 경우 예외가 발생하는지 확인한다")
+    @ParameterizedTest
+    @ValueSource(ints = {100, 1001, 2500, 55555})
+    void check_Money_Divisible_By_1000(int money) {
+        assertThatThrownBy(() -> new Wallet(money))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("구입 금액이 티켓 가격으로 나누어 떨어지지 않습니다.");
+    }
 }
