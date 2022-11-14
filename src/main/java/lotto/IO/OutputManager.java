@@ -9,7 +9,7 @@ import java.util.Map;
 
 public class OutputManager {
     public static void printError(String error) {
-        System.out.println("[Error] " + error);
+        System.out.println("[ERROR] " + error);
     }
 
     public static void printEmptyLine() {
