@@ -75,7 +75,6 @@ public class Application {
         issue_Numbers_Output(issue_Numbers);
 
 
-
 //        int num = Integer.parseInt(Console.readLine());
 //        System.out.println(number);
 //        Lotto winning_number = new Lotto(number);
