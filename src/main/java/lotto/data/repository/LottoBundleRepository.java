@@ -1,8 +1,10 @@
 package lotto.data.repository;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
-import lotto.data.dto.LottoBundleDto;
+import java.util.Optional;
+import lotto.data.entity.LottoBundle;
 
 public class LottoBundleRepository {
 
@@ -23,19 +25,16 @@ public class LottoBundleRepository {
         }
     }
 
-    private static final List<LottoBundleDto> purchasedLottos = new ArrayList<>();
+    private final HashMap<Long, List<LottoBundle>> lottoBundleRepository = new HashMap<>();
 
-    public List<LottoBundleDto> getPurchasedLottos() {
-        return purchasedLottos;
+    public Optional<List<LottoBundle>> findById(Long id) {
+        return Optional.ofNullable(lottoBundleRepository.getOrDefault(id, new ArrayList<>()));
     }
 
-    public void addPurchasedLotto(LottoBundleDto lottoBundleDto) {
-        purchasedLottos.add(lottoBundleDto);
+    public void save(LottoBundle lottoBundle) {
+        Long ownerId = lottoBundle.getOwnerId();
+        List<LottoBundle> lottoBundles = lottoBundleRepository.getOrDefault(ownerId, new ArrayList<>());
+        lottoBundles.add(lottoBundle);
+        lottoBundleRepository.put(ownerId, lottoBundles);
     }
-
-    public void clearRepository() {
-        purchasedLottos.clear();
-    }
-
-
 }
