@@ -115,8 +115,8 @@ public class Lotto {
         return Console.readLine();
     }
 
-    public List<Integer> inputLottoNumber() {
-        StringTokenizer st = new StringTokenizer(Console.readLine(), ",");
+    public List<Integer> inputLottoNumber(String input) {
+        StringTokenizer st = new StringTokenizer(input, ",");
         List<Integer> winningLottoNumber = new ArrayList<>();
         for (int i = 0; i < 6; i++) {
             String currentDigit = st.nextToken();
