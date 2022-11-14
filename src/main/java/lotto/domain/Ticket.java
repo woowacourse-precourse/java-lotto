@@ -20,7 +20,7 @@ public class Ticket {
 
     public static Ticket purchase(int money) {
         List<Lotto> tickets = new ArrayList<>();
-        int count = money / UNIT_PRICE;
+        int count = calculatePurchaseCount(money);
 
         for (int index = 0; index < count; index++) {
             tickets.add(Lotto.createLottoNumbers());
@@ -29,7 +29,11 @@ public class Ticket {
         return new Ticket(count, tickets);
     }
 
-    public String getPurchaseContext() {
+    private static int calculatePurchaseCount(int money) {
+        return money / UNIT_PRICE;
+    }
+
+    public String getPurchaseMessage() {
         StringBuilder message = new StringBuilder();
 
         for (Lotto ticket : tickets) {

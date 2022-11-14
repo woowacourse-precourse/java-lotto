@@ -13,32 +13,65 @@ import java.util.List;
 
 public class LottoController {
 
-    // TODO 분리
-    public void process() {
+    public void start() {
         try {
-            MoneyDto moneyDto = InputView.inputMoney();
-            int money = moneyDto.getMoney();
-
-            // 로또 구매 >> Ticket.purchase();
-            Ticket tickets = Ticket.purchase(money);
-            int count = tickets.size();
-            String lottoNumbers = tickets.getPurchaseContext();
-            OutputView.printPurchaseLottoMessage(count, lottoNumbers);
-
-            WinningNumbersDto winningNumbersDto = InputView.inputWinningNumbers();
-
-            BonusNumberDto bonusNumberDto = InputView.inputBonusNumber(winningNumbersDto);
-
-            // 당첨 통계 계산
-            Win win = Win.compare(tickets, winningNumbersDto.getWinningNumbers(), bonusNumberDto.getBonusNumber());
-            double winnings = win.getWinnings();
-            List<Integer> winningsCount = win.getWinningsCount();
-            OutputView.printWinnings(winningsCount);
-            RateOfReturn rateOfReturn = new RateOfReturn(winnings, money);
-            OutputView.printRateOfReturn(rateOfReturn.calculate());
+            process();
         } catch (IllegalArgumentException exception) {
             OutputView.printExceptionMessage(exception);
             return;
         }
+    }
+
+    public void process() {
+        WinningNumbersDto winningNumbersDto;
+        BonusNumberDto bonusNumberDto;
+        Win win;
+        int money = getInputMoney();
+        Ticket tickets = Ticket.purchase(money);
+
+        printPurchaseLotto(tickets);
+
+        winningNumbersDto = InputView.inputWinningNumbers();
+        bonusNumberDto = InputView.inputBonusNumber(winningNumbersDto);
+        win = calculateWinnings(tickets, winningNumbersDto, bonusNumberDto);
+
+        printWinnings(win);
+        printRateOfReturn(money, win);
+    }
+
+    private void printRateOfReturn(int money, Win win) {
+        double rate = getRateOfReturn(money, win);
+        OutputView.printRateOfReturn(rate);
+    }
+
+    private double getRateOfReturn(int money, Win win) {
+        double winnings = win.getWinnings();
+        RateOfReturn rateOfReturn = new RateOfReturn(winnings, money);
+
+        return rateOfReturn.calculate();
+    }
+
+    private void printWinnings(Win win) {
+        List<Integer> winningsCount = win.getWinningsCount();
+        OutputView.printWinnings(winningsCount);
+    }
+
+    private Win calculateWinnings(Ticket tickets, WinningNumbersDto winningNumbersDto, BonusNumberDto bonusNumberDto) {
+        Win win = new Win();
+        win.compareAllLotto(tickets, winningNumbersDto.getWinningNumbers(), bonusNumberDto.getBonusNumber());
+
+        return win;
+    }
+
+    private void printPurchaseLotto(Ticket tickets) {
+        int count = tickets.size();
+        String lottoNumbers = tickets.getPurchaseMessage();
+
+        OutputView.printPurchaseLottoMessage(count, lottoNumbers);
+    }
+
+    private int getInputMoney() {
+        MoneyDto moneyDto = InputView.inputMoney();
+        return moneyDto.getMoney();
     }
 }

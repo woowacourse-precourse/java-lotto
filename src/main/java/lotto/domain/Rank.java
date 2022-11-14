@@ -22,6 +22,10 @@ public enum Rank {
         this.winningStats = winningStats;
     }
 
+    public boolean isEtc() {
+        return this == ETC;
+    }
+
     public int getWinnings() {
         return winnings;
     }

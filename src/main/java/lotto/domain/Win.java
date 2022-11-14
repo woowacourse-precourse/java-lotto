@@ -1,48 +1,55 @@
 package lotto.domain;
 
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import static lotto.domain.Rank.*;
 
 public class Win {
     private Map<Rank, Integer> ranking;
 
+    public Win() {
+        this(initRanking());
+    }
+
     public Win(Map<Rank, Integer> ranking) {
         this.ranking = ranking;
     }
 
-    // TODO 분리
-    public static Win compare(Ticket ticket, List<Integer> winningNumbers, int bonusNumber) {
-        int count = ticket.size();
-        Map<Rank, Integer> ranking = new LinkedHashMap<>();
+    public void compareAllLotto(Ticket ticket, List<Integer> winningNumbers, int bonusNumber) {
+        int lottoCount = ticket.size();
         Comparison comparison = new Comparison();
 
-        init(ranking);
-
-        for (int i = 0; i < count; i++) {
-            Lotto lotto = ticket.get(i);
-            int win = comparison.countWinningNumbers(lotto, winningNumbers);
-            int bonus = comparison.countBonusNumber(lotto, bonusNumber);
-
-            Rank rank = findByWinAndBonus(win, bonus);
-
-            if (rank == ETC) {
-                continue;
-            }
-
-            ranking.put(rank, ranking.get(rank) + 1);
+        for (int lottoIndex = 0; lottoIndex < lottoCount; lottoIndex++) {
+            Lotto lotto = ticket.get(lottoIndex);
+            compareLotto(winningNumbers, bonusNumber, comparison, lotto);
         }
-
-        return new Win(ranking);
     }
 
-    private static void init(Map<Rank, Integer> ranking) {
+    private void compareLotto(List<Integer> winningNumbers, int bonusNumber, Comparison comparison, Lotto lotto) {
+        int win = comparison.countWinningNumbers(lotto, winningNumbers);
+        int bonus = comparison.countBonusNumber(lotto, bonusNumber);
+
+        Rank rank = findByWinAndBonus(win, bonus);
+
+        if (rank.isEtc()) {
+            return;
+        }
+
+        increaseRankCount(rank);
+    }
+
+    private void increaseRankCount(Rank rank) {
+        ranking.put(rank, ranking.get(rank) + 1);
+    }
+
+    private static Map<Rank, Integer> initRanking() {
+        Map<Rank, Integer> ranking = new LinkedHashMap<>();
+
         for (Rank rank : Rank.values()) {
             ranking.put(rank, 0);
         }
+
+        return ranking;
     }
 
     public List<Integer> getWinningsCount() {
