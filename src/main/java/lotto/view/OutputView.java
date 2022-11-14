@@ -9,7 +9,7 @@ public class OutputView {
     private OutputView() {
     }
 
-    public OutputView getInstance() {
+    public static OutputView getInstance() {
         if (instance == null) {
             instance = new OutputView();
         }

@@ -9,9 +9,10 @@ import java.util.stream.Collectors;
 public class InputView {
     private static InputView instance;
 
-    private InputView() {}
+    private InputView() {
+    }
 
-    public InputView getInstance() {
+    public static InputView getInstance() {
         if (instance == null) {
             instance = new InputView();
         }
