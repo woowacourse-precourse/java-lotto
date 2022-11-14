@@ -30,6 +30,7 @@ public class WinningCalculator {
     }
 
     public void setWinningNumbers(String numbersRaw) {
+        validate(numbersRaw);
         List<Integer> winningNumbers = convertStringToIntegerList(numbersRaw);
         numbers = winningNumbers;
     }
@@ -77,5 +78,14 @@ public class WinningCalculator {
             winningResult = RANK_2;
         }
         return winningResult;
+    }
+
+    private void validate(String numbersRaw) {
+        try {
+            List<Integer> number = convertStringToIntegerList(numbersRaw);
+        }
+        catch (NumberFormatException e) {
+            throw new IllegalArgumentException("[ERROR] 숫자가 너무 큽니다.");
+        }
     }
 }
