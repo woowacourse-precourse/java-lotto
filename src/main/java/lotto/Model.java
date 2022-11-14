@@ -6,6 +6,7 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.List;
+import lotto.Lotto.LottoReward;
 
 public class Model {
     /**
@@ -100,5 +101,17 @@ public class Model {
 
     public static Double CalculateEarningRate(Integer spending, Integer income) {
         return Math.round(income / spending * 100 * 100) / 10.0;
+    }
+
+    public Integer CalculateEarningSum(LinkedHashMap<Integer, Integer> analyzedResult) {
+        List<Integer> analyzedResultKeys = new ArrayList<>(analyzedResult.keySet());
+
+        Integer sum = 0;
+
+        for (int i = 0; i < 6; i++) {
+            sum = sum + LottoReward.getRewardByRank(i) * analyzedResult.get(i);
+        }
+
+        return sum;
     }
 }
