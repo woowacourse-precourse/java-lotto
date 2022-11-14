@@ -13,5 +13,4 @@ public class OutputViewConstants {
     public static final String message = "message";
     public static final String benefit = "benefit";
     public static final String DECIMAL_FORMATTER = "###,##0.0";
-    public static final String GROSS_EARNINGS = "총 수익률은 %d%입니다.";
 }

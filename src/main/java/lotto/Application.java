@@ -10,25 +10,33 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Application {
-    public static void main(String[] args) {
-        LottoController lottoController = new LottoController();
-        UserController userController = new UserController();
+    private static final LottoController lottoController = new LottoController();
+    private static final UserController userController = new UserController();
 
+    public static void main(String[] args) {
         int investmentAmount = userController.getInputMoney();
         int lottoCount = lottoController.getLottoCount(investmentAmount);
 
+        List<Lotto> lottos = getLottos(lottoCount);
+        User user = new User(investmentAmount, lottos);
+        double benefit = compareAndTreatLottoNumbers(user);
+
+        OutputView.printGrossEarnings(lottoController.getGrossEarnings(benefit, investmentAmount));
+    }
+
+    private static List<Lotto> getLottos(int lottoCount) {
         List<Lotto> lottos = new ArrayList<>();
         for (int i = 0; i < lottoCount; i++) {
             lottos.add(lottoController.getLotto());
         }
+        return lottos;
+    }
 
-        User user = new User(investmentAmount, lottos);
+    private static double compareAndTreatLottoNumbers(User user) {
         Lotto prizeLotto = lottoController.getPrizeLotto();
         int bonusNumber = lottoController.getBonusNumber(prizeLotto);
 
         OutputView.printDividingLine();
-        double benefit = lottoController.compareNumbers(user.getLottos(), prizeLotto, bonusNumber);
-
-        OutputView.printGrossEarnings(lottoController.getGrossEarnings(benefit, investmentAmount));
+        return lottoController.compareNumbers(user.getLottos(), prizeLotto, bonusNumber);
     }
 }
