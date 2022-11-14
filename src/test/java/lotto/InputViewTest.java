@@ -29,6 +29,28 @@ public class InputViewTest {
     }
 
     @Test
+    void 입력_예외_2() {
+        String str = "0";
+        InputStream in = new ByteArrayInputStream(str.getBytes());
+        System.setIn(in);
+        InputView inputView = new InputView();
+        inputView.inputMoney();
+        assertThat(out.toString()).contains(error)
+                .doesNotContain(purchase);
+    }
+
+    @Test
+    void 입력_예외_3() {
+        String str = "가";
+        InputStream in = new ByteArrayInputStream(str.getBytes());
+        System.setIn(in);
+        InputView inputView = new InputView();
+        inputView.inputMoney();
+        assertThat(out.toString()).contains(error)
+                .doesNotContain(purchase);
+    }
+
+    @Test
     void 정상_입력() {
         String str = "10000";
         String ten = "10개";
