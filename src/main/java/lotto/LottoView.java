@@ -7,6 +7,33 @@ import java.util.regex.Pattern;
 
 public class LottoView {
 
+    public static void run() {
+        int cost = buyAmount();
+        if (cost == -1) {
+            return;
+        }
+        int count = cost / 1000;
+        List<Lotto> buyLottos = Lotto.buyMyLottos(count);
+
+        Lotto lotto = winningNumber();
+        if (lotto == null) {
+            return;
+        }
+        int bonus = bonusNumber();
+        if (bonus == -1) {
+            return;
+        }
+        printResult(buyLottos, lotto, bonus, cost);
+    }
+
+    public static void printResult(List<Lotto> lottos, Lotto lotto, int bonus, int cost) {
+        List<Integer> win = lotto.checkLottoAll(lottos, bonus);
+        Lotto.printWin(win);
+        Lotto.caculateProfit(win, cost);
+    }
+
+
+
     public static int buyAmount() {
         System.out.println("구입금액을 입력해주세요.");
         try {
