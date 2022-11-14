@@ -32,6 +32,19 @@ public class LottoMachineInputViewNumbersTest {
             .isInstanceOf(IllegalArgumentException.class);
     }
 
+    @DisplayName("로또 번호에서 마지막에 ,로 입력하면 예외가 발생한다.")
+    @Test
+    void inputLottoNumbersByLastComma() {
+        //given
+        String userInput = "1,2,3,4,5,6,";
+        InputStream in = new ByteArrayInputStream(userInput.getBytes());
+        System.setIn(in);
+
+        // when then
+        assertThatThrownBy(() -> lottoMachine.inputUserNumbers())
+            .isInstanceOf(IllegalArgumentException.class);
+    }
+
     @DisplayName("로또 번호는 숫자로 입력하지 않으면 예외가 발생한다.")
     @Test
     void inputLottoNumbersByNotNumber() {

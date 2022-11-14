@@ -67,11 +67,11 @@ class LottoTest {
         // given
         Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
         Integer bonus = 7;
-        List<Integer> userNumbers = List.of(1, 2, 3, 4, 5, 6);
+        Lotto userLotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
         int answerRank = 1;
 
         // when
-        int rank = lotto.getRank(userNumbers, bonus);
+        int rank = lotto.getRank(userLotto, bonus);
 
         // then
         assertThat(rank).isEqualTo(answerRank);
@@ -83,11 +83,11 @@ class LottoTest {
         // given
         LottoPaper lottoPaper = generateTestLottos();
         Integer bonus = 7;
-        List<Integer> userNumbers = List.of(8, 21, 23, 41, 42, 43);
+        Lotto userLotto = new Lotto(List.of(8, 21, 23, 41, 42, 43));
         List<Integer> answerRanks = List.of(3, 1, 0, 0, 0, 1);
 
         // when
-        List<Integer> ranks = lottoPaper.checkLottos(userNumbers, bonus);
+        List<Integer> ranks = lottoPaper.checkLottos(userLotto, bonus);
 
         // then
         assertThat(ranks).isEqualTo(answerRanks);
