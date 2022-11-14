@@ -1,5 +1,6 @@
 package lotto;
 
+import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -46,11 +47,31 @@ public class ServiceTest {
 
     @DisplayName("로또 티켓을 원하는 개수만큼 생성해 반환하는 메서드 테스트")
     @Test
-    void createLotteryTickets() {
+    void createLotteryTicketsTest() {
         int numberOfLotteryTickets = 10;
 
         assertThat(service.createLotteryTickets(numberOfLotteryTickets).size())
                 .isEqualTo(numberOfLotteryTickets);
     }
 
+    @DisplayName("','를 기준으로 문자열 리스트를 반환하는 기능 테스트")
+    @Test
+    void splitByCommasTest() {
+        String testString = "1,2,3";
+
+        assertThat(service.splitByCommas(testString)).isEqualTo(List.of("1", "2", "3"));
+    }
+
+    @DisplayName("문자열 리스트를 정수 리스트로 반환하는 기능 테스트")
+    @Test
+    void stringsToIntegersTest() {
+        assertThat(service.stringsToIntegers(List.of("1", "2", "3"))).isEqualTo(List.of(1, 2, 3));
+    }
+
+    @DisplayName("문자열 리스트가 정수가 아니라면 예외 발생")
+    @Test
+    void stringToIntegerExceptionTest() {
+        assertThatIllegalArgumentException()
+                .isThrownBy(() -> service.stringsToIntegers(List.of("1", "2", "문자열")));
+    }
 }
