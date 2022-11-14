@@ -3,9 +3,10 @@ package lotto.domain;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class LottoGenerator {
     public static final LottoGenerator getInstance = new LottoGenerator();
@@ -25,11 +26,10 @@ public class LottoGenerator {
     }
 
     public List<Integer> sortLotto(List<Integer> numbers) {
-        List<Integer> sort = new ArrayList<>();
-        for (int i = 0; i < numbers.size(); i++) {
-            sort.add(numbers.get(i));
-        }
-        sort.sort(Comparator.naturalOrder());
+        List<Integer> sort = numbers;
+        sort = sort.stream()
+                .sorted()
+                .collect(Collectors.toList());
         return sort;
     }
 }
