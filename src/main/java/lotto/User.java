@@ -15,7 +15,7 @@ public class User {
 
     public void inputWinningLottoNumbers() {
         String number = Console.readLine();
-
+        validateWinningLottoNumbers(number);
     }
 
     private void validateMoney(String money) {
@@ -25,6 +25,20 @@ public class User {
         validateNumeric(money);
         validateMoreThan1000Won(money);
         validateMoneyDivided1000Won(money);
+    }
+
+    private void validateWinningLottoNumbers(String number) {
+        validateInputNothing(number);
+        validateInputBlank(number);
+        validateInputWithBlank(number);
+        validateInputSixNumbers(number);
+        validateInputDuplicatedNumbers(number);
+        validateSeparator(number);
+        String[] numbers = number.split(",");
+        for (String num : numbers) {
+            validateNumeric(num);
+            validateNumberRange(num);
+        }
     }
 
     private void validateInputNothing(String input) {
