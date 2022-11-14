@@ -58,12 +58,12 @@ public class User {
             int count = countRanking.get(lottoRanking);
             totalReturn = totalReturn.add(BigInteger.valueOf((long) count * lottoRanking.getPrice()));
         }
-
+        System.out.println(totalReturn);
         BigDecimal rateOfReturn = new BigDecimal(totalReturn);
-        rateOfReturn = rateOfReturn.subtract(BigDecimal.valueOf(purchasePrice));
+//        rateOfReturn = rateOfReturn.subtract(BigDecimal.valueOf(purchasePrice));
         rateOfReturn = rateOfReturn.divide(BigDecimal.valueOf(purchasePrice), 5, RoundingMode.HALF_UP).multiply(BigDecimal.valueOf(100));
 
-        return rateOfReturn.setScale(2, RoundingMode.HALF_UP);
+        return rateOfReturn.setScale(1, RoundingMode.HALF_UP);
     }
 
     public void setCountRanking(Lotto lotto){
