@@ -108,7 +108,15 @@ public abstract class Utility {
         return message;
     }
 
-    public static double profitPercentage(long spentAmount, long totalPrizeAmount){
+    public static long calculateTotalPrizeAmount(List <Integer> lottoResult){
+        long totalPrizeAmount = 0;
+        for(int i= 0; i<winEnumNames.size(); i++){
+            totalPrizeAmount = totalPrizeAmount + Win.valueOf(winEnumNames.get(i)).calculateTotalPrize(lottoResult.get(i));
+        }
+        return totalPrizeAmount;
+    }
+
+    public static double calculateProfitPercentage(long spentAmount, long totalPrizeAmount){
         return Math.round((totalPrizeAmount/spentAmount)*100)/100.0;
     }
 }
