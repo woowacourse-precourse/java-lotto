@@ -86,6 +86,14 @@ class ApplicationTest extends NsTest {
         });
     }
 
+    @Test
+    void 보너스_값이_중복될_때() {
+        assertSimpleTest(() -> {
+            runException("12000", "1,10,12,15,16,20", "15");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
