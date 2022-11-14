@@ -1,28 +1,28 @@
 package lotto.model;
 
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.stream.Collectors;
 
 public enum Rank {
 
-    FIFTH_RANK(3, Bonus.FALSE, "5,000원"),
-    FOURTH_RANK(4, Bonus.FALSE, "50,000원"),
-    THIRD_RANK(5, Bonus.FALSE, "1,500,000원"),
-    SECOND_RANK(5, Bonus.TRUE, "30,000,000원"),
-    FIRST_RANK(6, Bonus.FALSE, "2,000,000,000원"),
-    NOT_WINNER(-1, Bonus.FALSE, "-1");
+    FIFTH_RANK(3, Bonus.FALSE, "5,000원", 5000),
+    FOURTH_RANK(4, Bonus.FALSE, "50,000원", 50000),
+    THIRD_RANK(5, Bonus.FALSE, "1,500,000원", 1500000),
+    SECOND_RANK(5, Bonus.TRUE, "30,000,000원", 30000000),
+    FIRST_RANK(6, Bonus.FALSE, "2,000,000,000원", 2000000000),
+    NOT_WINNER(-1, Bonus.FALSE, "0", 0);
 
     private final int matchedNumber;
     private final Bonus bonus;
     private final String price;
+    private int priceAmount;
 
-    Rank(int matchedNumber, Bonus bonus, String price){
+    Rank(int matchedNumber, Bonus bonus, String price, int priceAmount){
         this.matchedNumber = matchedNumber;
         this.bonus = bonus;
         this.price = price;
+        this.priceAmount = priceAmount;
     }
 
     public static Rank getRank(int matchedNumber, Bonus bonus){
@@ -48,5 +48,9 @@ public enum Rank {
 
     public Boolean isNeedBonus() {
         return bonus == Bonus.TRUE;
+    }
+
+    public int getPriceAmount(){
+        return priceAmount;
     }
 }
