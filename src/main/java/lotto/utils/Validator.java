@@ -35,14 +35,22 @@ public class Validator {
         }
     }
 
-    public void isValidBonusNumber(int bonusNumber) {
+    public void isValidBonusNumber(List<Integer> lottoNumbers, int bonusNumber) {
         if(!isLottoRange(bonusNumber)) {
             throw new IllegalArgumentException(ErrorMessage.LOTTO_NUMBER_IS_NOT_VALID_RANGE.toString());
+        }
+        if (!isNotDuplicatedNumber(lottoNumbers, bonusNumber)) {
+            throw new IllegalArgumentException(ErrorMessage.LOTTO_NUMBER_IS_DUPLICATED.toString());
         }
     }
 
     private boolean isLottoRange(int bonusNumber) {
         return 1 <= bonusNumber && bonusNumber <= 45;
+    }
+
+    private boolean isNotDuplicatedNumber(List<Integer> lottoNumbers, int bonusNumber) {
+        lottoNumbers.add(bonusNumber);
+        return (new HashSet<>(lottoNumbers)).size() == 7;
     }
 
     private boolean isLottoRange(List<Integer> lottoNumbers) {

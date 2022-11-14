@@ -16,16 +16,12 @@ public class InputView {
         return input;
     }
 
-    public List<Integer> inputLottoNumber() {
+    public List<Integer> inputLottoNumbers() {
         System.out.println(InputMessage.INPUT_WINNING_NUMBER);
         List<Integer> lottoNumbers = Arrays.stream(Console.readLine().split(",")).map(Integer::parseInt).collect(Collectors.toList());
         validator.isValidLottoNumbers(lottoNumbers);
-        return lottoNumbers;
-    }
-
-    public int inputBonusNumber() {
         System.out.println(InputMessage.INPUT_BONUS_NUMBER);
-        int input = Integer.parseInt(Console.readLine());
-        return input;
+        int bonusNumber = Integer.parseInt(Console.readLine());
+        return lottoNumbers;
     }
 }
