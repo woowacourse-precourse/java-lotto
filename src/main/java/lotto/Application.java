@@ -187,4 +187,8 @@ public class Application {
             return 5;
         return 0;
     }
+
+    static void printQuantityOfLotto(int quantity) {
+        System.out.println(quantity + "개를 구매했습니다.");
+    }
 }
