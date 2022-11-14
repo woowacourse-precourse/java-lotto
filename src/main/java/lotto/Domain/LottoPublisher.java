@@ -18,6 +18,7 @@ public class LottoPublisher {
 
     public List<Integer> makeRandomLottoNumber() {
         List<Integer> randomLottoNumberList = Randoms.pickUniqueNumbersInRange(LOTTO_RANDOM_RANGE_START, LOTTO_RANDOM_RANGE_END, LOTTO_NUMBER_SIZE);
+        randomLottoNumberList = sortRandomLottoNumber(randomLottoNumberList);
 
         return randomLottoNumberList;
     }
