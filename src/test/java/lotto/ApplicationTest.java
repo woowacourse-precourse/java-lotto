@@ -98,6 +98,14 @@ class ApplicationTest extends NsTest {
         });
     }
 
+    @Test
+    void check_Bonus_Range() {
+        assertSimpleTest(() -> {
+            runException("1000", "1,2,3,4,5,6", "47");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
 
     @Override
     public void runMain() {
