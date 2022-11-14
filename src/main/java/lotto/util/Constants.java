@@ -27,4 +27,9 @@ public class Constants {
     public static final String ERROR_BONUS_NUMBER_DUPLICATED = ERROR + "보너스 번호는 당첨 입력 번호와 중복되지 않아야 합니다.";
     public static final String ERROR_BONUS_NUMBER_Range = ERROR + "보너스 번호는 1부터 45 사이의 숫자여야 합니다.";
 
+    // 당첨 통계 메시지 관련 상수
+    public static final String WINNING_RATE_SCRIPT = "당첨 통계";
+    public static final String WINNING_RATE_SCRIPT_BAR = "---";
+    public static final String PROFIT_RATE_SCRIPT_FRONT = "총 수익률은 ";
+    public static final String PROFIT_RATE_SCRIPT_BACK = "%입니다.";
 }

@@ -58,9 +58,11 @@ public class Utils {
         return false;
     }
 
-    public static boolean isNumber(char ch) {
-        if ((ch >= '0') && (ch <= +'9')) {
-            return true;
+    public static boolean isContain(int checkNumber, List<Integer> numbers) {
+        for (int index = 0; index < numbers.size(); index++) {
+            if (checkNumber == numbers.get(index)) {
+                return true;
+            }
         }
 
         return false;

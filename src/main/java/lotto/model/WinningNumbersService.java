@@ -19,6 +19,10 @@ public class WinningNumbersService {
         return numbersList;
     }
 
+    public WinningNumbers getWinningNumbers() {
+        return winningNumbers;
+    }
+
     public int getWinningBonusNumber(String bonusNumber) {
         return Utils.convertToInt(bonusNumber);
     }

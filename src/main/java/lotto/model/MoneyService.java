@@ -14,4 +14,8 @@ public class MoneyService {
     public int getLottoCount() {
         return (Utils.convertToInt(money) / 1000);
     }
+
+    public int getMoney() {
+        return Utils.convertToInt(money);
+    }
 }

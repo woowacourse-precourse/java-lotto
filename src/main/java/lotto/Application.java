@@ -1,7 +1,14 @@
 package lotto;
 
+import lotto.controller.LottoController;
+
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        LottoController lottoGame = new LottoController();
+        try {
+            lottoGame.start();
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+        }
     }
 }

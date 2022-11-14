@@ -1,34 +1,48 @@
 package lotto.controller;
 
-import lotto.model.MoneyService;
-import lotto.model.LottoService;
-import lotto.model.WinningNumbersService;
+import lotto.model.*;
 import lotto.view.InputView;
 import lotto.view.OutputView;
 
 public class LottoController {
     private LottoService lottoService;
+    private MoneyService moneyService;
     private WinningNumbersService winningNumbersService;
+    private WinningMoneyService winningMoneyService;
 
-    public LottoController() {
-        createLottos(getMoney());
-        getWinningNumbers();
+    public void start() {
+        purchaseLottos(insertMoney());
+        pickWinningNumbers();
+        profit();
     }
 
-    private int getMoney() {
-        MoneyService money = new MoneyService(InputView.inputMoney());
+    private int insertMoney() {
+        moneyService = new MoneyService(InputView.inputMoney());
 
-        return money.getLottoCount();
+        return moneyService.getLottoCount();
     }
 
-    private void createLottos(int lottoCount) {
+    private void purchaseLottos(int lottoCount) {
         OutputView.outputAnnounceMoney(lottoCount);
         lottoService = new LottoService(lottoCount);
         OutputView.outputLottoList(lottoService.getLottoList());
     }
 
-    private void getWinningNumbers() {
-        winningNumbersService = new WinningNumbersService(InputView.inputWinningNumbers()
-                , InputView.inputWinningBonus());
+    private void pickWinningNumbers() {
+        winningNumbersService = new WinningNumbersService(InputView.inputWinningNumbers(),
+                InputView.inputWinningBonus());
+    }
+
+    private void profit() {
+        OutputView.outputWinningScript();
+        WinningNumbers winningNumbers = winningNumbersService.getWinningNumbers();
+
+        winningMoneyService = new WinningMoneyService(winningNumbers, lottoService.getLottoList());
+        winningMoneyService.doAllRank();
+
+
+        OutputView.outputWinningOrder(winningMoneyService.getRanking());
+        OutputView.outputProfitRate(winningMoneyService.calculateProfitRate(moneyService.getMoney(),
+                winningMoneyService.calculateWinningMoney()));
     }
 }

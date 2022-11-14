@@ -22,7 +22,6 @@ public class LottoService {
 
     public Lotto createLotto() {
         List<Integer> numbers = Utils.getIntegerList(1, 45, 6);
-        System.out.println(numbers);
         Lotto createdLotto = new Lotto(numbers);
         lottoList.add(createdLotto);
 
