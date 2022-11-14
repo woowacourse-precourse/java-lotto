@@ -43,6 +43,37 @@ public class Input {
         }
     }
 
+    public int getBonusNumber(List<Integer> winningNumbers){
+        System.out.println("보너스 번호를 입력해 주세요.");
+        String bonusNumber = Console.readLine();
+        try {
+            validateBonusNumber(bonusNumber, winningNumbers);
+        } catch (Exception e){
+            System.out.println(ERROR_MESSAGE + e.getMessage());
+            return getBonusNumber(winningNumbers);
+        }
+        return Integer.parseInt(bonusNumber);
+    }
+
+    private void validateBonusNumber(String bonusNumber, List<Integer> winningNumbers) {
+        parseInt(bonusNumber);
+        int bonusNum = Integer.parseInt(bonusNumber);
+        if(!(bonusNum >=1 && bonusNum <=45)) {
+            throw new IllegalArgumentException("범위 내에 입력해주세요.");
+        }
+        if(winningNumbers.contains(bonusNum)) {
+            throw new IllegalArgumentException("당첨 번호와 중복됩니다. 다시 입력해주세요.");
+        }
+    }
+
+    private void parseInt(String number) {
+        try {
+            Integer.parseInt(number);
+        }catch (Exception e){
+            throw new IllegalArgumentException("숫자만 입력해주세요.");
+        }
+    }
+
     private Lotto convertLettersToNumbers(List<String> stringWinningAmount) {
         try {
             List<Integer> winningNumbers = new ArrayList<>();
