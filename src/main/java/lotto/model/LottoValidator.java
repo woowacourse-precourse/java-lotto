@@ -26,8 +26,6 @@ public class LottoValidator {
 	public static void isDistinctNumbers(List<Integer> answer, Integer bonus){
 		List<Integer> joinNums = new ArrayList<>();
 		joinNums.addAll(answer);
-//		if (bonus != null) {
-//		}
 		joinNums.add(bonus);
 		List<Integer> distinctNums = joinNums.stream()
 				.distinct()
