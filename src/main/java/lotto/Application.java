@@ -5,6 +5,7 @@ import static lotto.view.OutputView.*;
 
 import java.util.List;
 import lotto.domain.Lotto;
+import lotto.domain.Player;
 import lotto.domain.Purchase;
 
 public class Application {
@@ -18,7 +19,11 @@ public class Application {
         List<Lotto> lottos = purchase.createLottos();
         printLottos(lottos);
 
+        askNumbers();
         List<Integer> numbers = getNumbers();
+
+        askBonusNumber();
+        int bonusNumber = getInt();
 
     }
 }
