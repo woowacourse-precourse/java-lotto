@@ -14,7 +14,6 @@ public class UserInput {
     }
 
     private static void validateLottoMoney(int lottoMoney) {
-
         if(!Validator.isLottoMoney(lottoMoney)){
             Message.printInputErrorUserLottoMoney();
             throw new IllegalArgumentException();
@@ -22,7 +21,6 @@ public class UserInput {
     }
 
     private static String getInputLottoMoney(){
-
         String inputLottoMoney = Console.readLine();
         validateInputLottoMoney(inputLottoMoney);
 
@@ -30,7 +28,6 @@ public class UserInput {
     }
 
     private static void validateInputLottoMoney(String inputLottoMoney) {
-
         if (Validator.isEmpty(inputLottoMoney)){
             Message.printInputErrorEmpty();
             throw new IllegalArgumentException();

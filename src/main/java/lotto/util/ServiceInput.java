@@ -13,7 +13,6 @@ import java.util.List;
 public class ServiceInput {
 
     public static List<Integer> getLottoNumbers(){
-
         List<Integer> numbers = new ArrayList<>(
                 Randoms.pickUniqueNumbersInRange(Constant.LOTTO_START_NUMBER, Constant.LOTTO_END_NUMBER, Constant.LOTTO_SIZE)
         );
@@ -28,7 +27,6 @@ public class ServiceInput {
     }
 
     public static List<Integer> getWinningNumbers(){
-
         List<String> splitInputWinningNumbers = getSplitInputWinningNumbers();
 
         List<Integer> winningNumbers = new ArrayList<>();
@@ -41,7 +39,6 @@ public class ServiceInput {
     }
 
     private static void validateWinningNumbers(List<Integer> winningNumbers) {
-
         if (Validator.isListRangeOut(winningNumbers)){
             Message.printInputErrorRangeOut();
             throw new IllegalArgumentException();
@@ -63,7 +60,6 @@ public class ServiceInput {
     }
 
     private static void validateBonusNumber(int bonusNumber) {
-
         if (Validator.isRangeOut(bonusNumber)){
             Message.printInputErrorRangeOut();
             throw new IllegalArgumentException();
@@ -71,7 +67,6 @@ public class ServiceInput {
     }
 
     private static String getInputWinningNumbers() {
-
         String inputWinningNumbers = Console.readLine();
         validateInputWinningNumbers(inputWinningNumbers);
 
@@ -79,7 +74,6 @@ public class ServiceInput {
     }
 
     private static void validateInputWinningNumbers(String inputWinningNumbers){
-
         if (Validator.isEmpty(inputWinningNumbers)){
             Message.printInputErrorEmpty();
             throw new IllegalArgumentException();
@@ -92,7 +86,6 @@ public class ServiceInput {
     }
 
     private static List<String> getSplitInputWinningNumbers(){
-
         String inputWinningNumbers = getInputWinningNumbers();
 
         List<String> splitInputWinningNumbers = Arrays.asList(inputWinningNumbers.split("\\s*,\\s*"));
@@ -102,7 +95,6 @@ public class ServiceInput {
     }
 
     private static void validateSplitInputWinningNumbers(List<String> splitInputWinningNumbers){
-
         if (Validator.isListhasCharacter(splitInputWinningNumbers)){
             Message.printInputErrorHasCharacter();
             throw new IllegalArgumentException();

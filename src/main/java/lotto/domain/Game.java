@@ -27,7 +27,6 @@ public class Game {
     }
 
     public void runGame(){
-
         Message.printStartWinningStatistics();
 
         // 사용자 로또 순환 하면서 1. 일치 개수 얻기, 2. 등수 얻기, 3. 해당 등수 없으면 continue, 있으면 결과 추가
@@ -85,7 +84,6 @@ public class Game {
     }
 
     private int getSameCount(List<Integer> lottoNumbers){
-
         List<Integer> equalLottoNumbers = new ArrayList<>(lottoNumbers);
         equalLottoNumbers.retainAll(service.getWinningNumbers());
 
@@ -97,7 +95,6 @@ public class Game {
     }
 
     private int getRank(int sameCount, List<Integer> lottoNumbers) {
-
         for (int i=0; i< WinningInfo.values().length; i++){
 
             if (sameCount == Constant.CHECK_BONUS_COUNT){
@@ -113,7 +110,6 @@ public class Game {
     }
 
     private int checkBonusNumberRank(List<Integer> lottoNumbers) {
-
         if(lottoNumbers.contains(service.getBonusNumber())){
             return WinningInfo.SECONDRANK.getRank();
         }
