@@ -118,6 +118,14 @@ class ApplicationTest extends NsTest {
         });
     }
 
+    @Test
+    void 당첨_번호_개수가_많은_경우() {
+        assertSimpleTest(() -> {
+            runException("28000", "1,10,12,5,16,3,4");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
