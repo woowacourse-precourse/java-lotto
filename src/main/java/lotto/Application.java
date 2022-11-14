@@ -3,10 +3,10 @@ package lotto;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class Application {
     public static void main(String[] args) {
         Price price = new Price();
-
         Number num = new Number();
         Lotto lotto = new Lotto(num.getWinningNumberList());
         List<Integer> moneyList = new ArrayList<>();
@@ -15,14 +15,14 @@ public class Application {
             Generator generator =new Generator();
             Match match = new Match(lotto.getLottoNumbers(), generator.getlottoNumbers(), num.getBonusNumber());
             moneyList.add(match.getResults());
+            View.lottoNumber(generator.getlottoNumbers());
         }
         View.prizes(moneyList);
-        float yield = calculateYield(price.getInputPrice(), moneyList.stream().reduce(Integer::sum).get());
-        View.yield(yield);
+        View.yield(calculateYield(price.getInputPrice(), moneyList.stream().reduce(Integer::sum).get()));
     }
 
     public static float calculateYield(int price, int income){
-        return income/price;
+        return (float)income/price;
     }
 
 }

@@ -9,7 +9,7 @@ import java.util.Set;
 public class Validation {
 
     public static void Integer(String string) {
-        if (!string.matches("-?\\\\d+")) {
+        if (!string.matches("-?\\d+")) {
             View.errorMessage("입력값이 옳지 않습니다.");
             throw new IllegalArgumentException();
         }
