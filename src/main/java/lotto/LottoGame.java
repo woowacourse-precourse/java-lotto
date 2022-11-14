@@ -12,15 +12,19 @@ import lotto.view.OutputView;
 
 public class LottoGame {
     public static void run() {
-        Money money = new Money(InputView.getMoneyInput());
-        List<Lotto> lottos = new Shop(money).buyLotto();
-        WinningNumbers winningNumbers = new WinningNumbers(InputView.getWinningInput(), InputView.getBonusInput());
+        try {
+            Money money = new Money(InputView.getMoneyInput());
+            List<Lotto> lottos = new Shop(money).buyLotto();
+            WinningNumbers winningNumbers = new WinningNumbers(InputView.getWinningInput(), InputView.getBonusInput());
 
-        Calculator rankCountMatch = new Calculator(winningNumbers, lottos);
-        PrizeMoney prizeMoney = new PrizeMoney(money, rankCountMatch.getTotalPrice());
+            Calculator rankCountMatch = new Calculator(winningNumbers, lottos);
+            PrizeMoney prizeMoney = new PrizeMoney(money, rankCountMatch.getTotalPrice());
 
-        OutputView.printWinningInfo(rankCountMatch);
-        OutputView.printProfit(prizeMoney.getProfit());
+            OutputView.printWinningInfo(rankCountMatch);
+            OutputView.printProfit(prizeMoney.getProfit());
+        } catch (IllegalArgumentException error) {
+            OutputView.printString(error.getMessage());
+        }
+
     }
-
 }
