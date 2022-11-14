@@ -3,6 +3,7 @@ package lotto.domain;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
@@ -16,6 +17,7 @@ public class Computer {
 
     public List<Integer> createLottoNumbers(){
         List<Integer> numbers = Randoms.pickUniqueNumbersInRange(STRAT_RANGE, END_RANGE, LOTTO_NUMBER_LENGTH);
+        Collections.sort(new ArrayList<>(numbers));
         return numbers;
     }
 
