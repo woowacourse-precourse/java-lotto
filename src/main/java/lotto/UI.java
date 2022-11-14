@@ -10,10 +10,12 @@ public class UI {
     private static final String PURCHASE_LOTTO_MESSAGE = "개를 구매했습니다.";
     private static final String PRIZE_INPUT_MESSAGE = "당첨 번호를 입력해 주세요.";
     private static final String BONUS_INPUT_MESSAGE = "보너스 번호를 입력해 주세요.";
-    private final LottoLogic lottoLogic;
+    private LottoLogic lottoLogic;
 
     public UI() {
-        lottoLogic = new LottoLogic(moneyInput());
+        String money = moneyInput();
+        setMoney(money);
+
         printNumberOfLotto();
         printLottoNumber();
 
@@ -25,12 +27,15 @@ public class UI {
         printLottoResult();
     }
 
-    private int moneyInput() {
+    private String moneyInput() {
         System.out.println(MONEY_INPUT_MESSAGE);
         String moneyInput = Console.readLine();
-        Validation.validateMoneyInput(moneyInput);
+        return moneyInput;
+    }
 
-        return Integer.parseInt(moneyInput);
+    private void setMoney(String moneyInput){
+        Validation.validateMoneyInput(moneyInput);
+        lottoLogic = new LottoLogic(Integer.parseInt(moneyInput));
     }
 
     private void printNumberOfLotto() {
