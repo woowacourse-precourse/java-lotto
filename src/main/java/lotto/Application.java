@@ -35,4 +35,9 @@ public class Application {
         return true;
     }
 
+    private static List<Lotto> buyLotto(int money) {
+        LottoMachine lottoMachine = new LottoMachine();
+        return lottoMachine.buyLotto(money);
+    }
+
 }
