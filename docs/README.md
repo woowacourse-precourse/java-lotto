@@ -37,5 +37,5 @@
 ### 11. 수익률 출력 [✓] 
 <br>
 
-### 12. LottoController 작성(복권 구입 시작) [ ] <br>
+### 12. LottoController 작성(복권 구입 시작) [✓] <br>
 
