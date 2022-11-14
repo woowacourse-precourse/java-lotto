@@ -26,7 +26,7 @@ public class Lotto {
 
     // TODO: 추가 기능 구현
     private CompareResult compareWith(WinningNumbers winningNumbers) {
-        CompareResult result = new CompareResult(0, false);
+        CompareResult result = CompareResult.getDefault();
 
         for (Integer number : numbers) {
             result = winningNumbers.judgeMatchOrBonus(number, result);

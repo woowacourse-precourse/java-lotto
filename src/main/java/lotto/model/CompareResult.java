@@ -5,9 +5,14 @@ import java.util.Objects;
 public class CompareResult {
     private final int winningNumbersMatchCount;
     private final boolean hasBonus;
+
     public CompareResult(int winningNumbersMatchCount, boolean hasBonus) {
         this.winningNumbersMatchCount = winningNumbersMatchCount;
         this.hasBonus = hasBonus;
+    }
+
+    public static CompareResult getDefault() {
+        return new CompareResult(0, false);
     }
 
     public CompareResult oneMoreNumberMatched() {
