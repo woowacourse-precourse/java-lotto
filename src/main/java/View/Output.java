@@ -27,7 +27,7 @@ public class Output {
     }
 
     public static void yield(float yield) {
-        System.out.printf(ResultStatistics.getMessage(ResultStatistics.YIELD), yield);
+        printFormatResultStatistics(ResultStatistics.YIELD, Float.toString(yield));
     }
 
     public static void showResultStatistics(EnumMap<RankNumber, Integer> resultStatistics) {
@@ -43,7 +43,7 @@ public class Output {
             }
             printFormatResultStatistics(
                     rank,
-                    resultStatistics.get(ResultStatistics.getRankNumber(rank))
+                    resultStatistics.get(ResultStatistics.getRankNumber(rank)).toString()
             );
         }
     }
@@ -66,7 +66,7 @@ public class Output {
         System.out.println(ResultStatistics.getMessage(rank));
     }
 
-    public static void printFormatResultStatistics(ResultStatistics rank, int value) {
+    public static void printFormatResultStatistics(ResultStatistics rank, String value) {
         System.out.printf(ResultStatistics.getMessage(rank).concat("\n"), value);
     }
 
