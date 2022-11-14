@@ -28,4 +28,8 @@ public class Output {
             System.out.println(lottoNumber);
         }
     }
+
+    void printWinningNumberInputMessage() {
+        System.out.println(WINNING_NUMBER_INPUT_MESSAGE);
+    }
 }
