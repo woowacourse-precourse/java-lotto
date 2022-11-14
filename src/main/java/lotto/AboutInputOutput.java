@@ -24,6 +24,10 @@ public class AboutInputOutput {
         return money;
     }
 
+    public void outputLottoCount(int count) {
+        System.out.println(count + "개를 구매했습니다.");
+    }
+
     public List<Integer> inputNumbers() {
         String[] winningNumbers =  Console.readLine().split(",");
         return orderedNumbers(winningNumbers);

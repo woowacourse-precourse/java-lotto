@@ -18,14 +18,13 @@ public class Application {
 
         // 구매할 로또 수 계산 후 안내문구 출력
         BuyLotto buyLotto = new BuyLotto(money);
-        int howManyLotto = buyLotto.lottoCount;
-        System.out.println(howManyLotto + "개를 구매했습니다.");
+        io.outputLottoCount(buyLotto.lottoCount);
 
-        // 구매한 로또 목록 리스트 생성
+        // 구매한 로또 목록 리스트 생성, 여기부터는 buylottos에서 할 일?
         List<List<Integer>> lottoLists = new ArrayList<>();
 
         // 구매할 로또 수에 맞게 응모 로또 제작
-        for (int i = 0; i < howManyLotto; i++) {
+        for (int i = 0; i < buyLotto.lottoCount; i++) {
             List<Integer> lottoNumbers = new ArrayList<>(Randoms.pickUniqueNumbersInRange(1, 45, 6));
             Collections.sort(lottoNumbers);
             lottoLists.add(lottoNumbers);
@@ -55,7 +54,6 @@ public class Application {
         io.printResult(result);
 
         // 수익률 계산
-        float rateOfReturn = calculator.getRateOfReturn(money, result);
-        io.printRateOfReturn(rateOfReturn);
+        io.printRateOfReturn(calculator.getRateOfReturn(money, result));
     }
 }
