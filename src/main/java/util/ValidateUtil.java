@@ -20,7 +20,8 @@ public class ValidateUtil {
 		return numbers.size() == chcekNumber.size();
 	}
 
-	public static boolean checkListSize(List<Integer> numbers, int i) {
+	@SuppressWarnings("rawtypes")
+	public static boolean checkListSize(List numbers, int i) {
 		return numbers.size() == i;
 	}
 }
