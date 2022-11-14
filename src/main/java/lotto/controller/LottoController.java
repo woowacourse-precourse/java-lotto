@@ -31,6 +31,7 @@ public class LottoController {
 
         output.printStatisticsMessage();
 
+        output.printStatistics(service.calculateStatistics(), service.readMoney());
     }
 
 }
