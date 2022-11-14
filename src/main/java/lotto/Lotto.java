@@ -24,6 +24,35 @@ public class Lotto {
         }
     }
 
+    public void startLotto() {
+        InputLotto inputLotto = new InputLotto();
+
+        ShowMessage.showInputAmountBuy(); // "구입 금액을 입력해 주세요"를 출력
+        long numberOfLotto = inputLotto.inputValueToints(); // 구입 금액 입력
+        numberOfLotto = lottoCount(numberOfLotto); // 로또의 개수
+        ShowMessage.showHowManyBuy(numberOfLotto); // "n개를 구매했습니다."를 출력
+
+        List<Lotto> lottoList = createLotto(numberOfLotto); // 로또 생성
+        ShowMessage.showLottoNumber(lottoList); // 로또 리스트 출력
+
+        ShowMessage.showInputLottoNumber(); // "당첨 번호를 입력해 주세요."를 출력
+        List<Integer> winNumbers = inputLotto.inputValueSplitCommas(); // 당첨 번호 입력
+
+        ShowMessage.showInputBonusNumber(); // "보너스 번호를 입력해 주세요."를 출력
+        int bonusNumber = inputLotto.inputBonusNumber(winNumbers); // 보너스 번호 입력
+
+        WinLotto winLotto = new WinLotto();
+        winLotto.setBonusNumber(bonusNumber); // 보너스 번호를 객체에 저장
+        List<WinLotto> compareNumber = compareLottos(lottoList, winNumbers); // 당첨 번호 개수와 보너스 번호 포함 여부를 저장
+
+        for (WinLotto number : compareNumber) {
+            System.out.println("보너스 번호:" + number.getBonusNumber() + ":");
+            System.out.println("당첨 번호 개수" + number.getWinLottoCount() + ":");
+            System.out.println("보너스 번호 포함 여부:" + number.getIsBonusNumber() + ":");
+        }
+
+    }
+
     public List<Integer> getLottoNumbers() {
         return numbers;
     }
@@ -58,22 +87,33 @@ public class Lotto {
         return lotto;
     }
 
-    public List<Integer> compareLottos(List<Lotto> lottoNumber, List<Integer> winNumber) {
-        List<Integer> compareNumber = new ArrayList<>();
+    public List<WinLotto> compareLottos(List<Lotto> lottoNumber, List<Integer> winNumber) {
+        List<WinLotto> compareNumber = new ArrayList<>();
         for (int i = 0; i < lottoNumber.size(); i++) {
-            WinLotto winLotto = compareLotto(lottoNumber.get(i), winNumber);
-            compareNumber.add(winLotto.getWinLottoNumber().size());
-            System.out.println("당첨 번호의 개수:" + compareNumber.get(i) + ":");
+            WinLotto winLotto = compareLotto(lottoNumber.get(i), winNumber); // 로또 번호와 당첨 번호를 비교
+            compareBonusNumber(winLotto, lottoNumber.get(i)); // 보너스 번호 포함인지 검사
+            compareNumber.add(winLotto);
         }
         return compareNumber;
     }
 
-    // 로또 번호와 당첨 번호를 비교하여 같은 번호인 것을 WinLottoNumber에 저장하여 반환
-    public WinLotto compareLotto(Lotto lottoNumber, List<Integer> winNumber){
-        WinLotto winLottoNumber = new WinLotto(lottoNumber.getLottoNumbers().stream()
+    // 당첨 번호의 개수를 저장
+    public WinLotto compareLotto(Lotto lottoNumber, List<Integer> winNumber) {
+        WinLotto winLotto = new WinLotto();
+        int winNumberCount = lottoNumber.getLottoNumbers().stream()
                 .filter(number -> winNumber.stream().anyMatch(Predicate.isEqual(number)))
-                .collect(Collectors.toList()));
-        return winLottoNumber;
+                .collect(Collectors.toList()).size();
+        winLotto.setWinLottoCount(winNumberCount);
+        return winLotto;
+    }
+
+    public WinLotto compareBonusNumber(WinLotto winLotto, Lotto lottoNumber) {
+        for (int i = 0; i < lottoNumber.getLottoNumbers().size(); i++) {
+            if (lottoNumber.getLottoNumbers().contains(winLotto.getBonusNumber())) {
+                winLotto.setIsBonusNumber(true);
+            }
+        }
+        return winLotto;
     }
 
 }
