@@ -10,8 +10,10 @@ public class OutputView {
     }
 
     public static void printPaidLotto(Integer lottoCount, LottoTicketDTO lottoTicketDTO) {
-        System.out.printf(OutputMessage.INFO_LOTTO_COUNT.getValue(),
-            lottoCount / LottoNumberRule.LOTTO_PRICE.getValue());
+        System.out.printf(
+            OutputMessage.INFO_LOTTO_COUNT.getValue(),
+            lottoCount / LottoNumberRule.LOTTO_PRICE.getValue()
+        );
         printLottoNumbers(lottoTicketDTO);
     }
 
