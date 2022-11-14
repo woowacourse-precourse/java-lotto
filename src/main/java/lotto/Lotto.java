@@ -20,7 +20,9 @@ public class Lotto {
     }
 
     public static Lotto generateRandomLotto() {
-        return new Lotto(Randoms.pickUniqueNumbersInRange(MIN_LOTTO_NUMBER, MAX_LOTTO_NUMBER, LOTTO_SIZE));
+        List<Integer> lottos = Randoms.pickUniqueNumbersInRange(MIN_LOTTO_NUMBER, MAX_LOTTO_NUMBER, LOTTO_SIZE);
+        Collections.sort(lottos);
+        return new Lotto(lottos);
     }
 
     private void validateLottoValue(List<Integer> numbers) {
