@@ -1,16 +1,6 @@
 # 로또 미션 기능 요구사항
 
 
-## 설계구조
-- UI
-  - InputView.class
-  - Message.class
-- Core
-  - Controller.package
-    - LottoController.class
-  - domain.package
----
-
 ### ✅ 구현할 기능 목록
 1) 입력
     - [x] 로또 구매 금액을 입력한다.
