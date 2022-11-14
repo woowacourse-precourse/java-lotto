@@ -4,6 +4,7 @@ import lotto.Data.LottoEnum;
 import lotto.Data.UserMoney;
 import lotto.view.Output;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 public class WinLottoResult {
@@ -24,11 +25,11 @@ public class WinLottoResult {
         int[] checkWinResult = new int[LottoEnum.values().length];
 
         for(int i = 0; i < checkWinPrice.length; i++){
-            if(checkWinPrice[i] == 3){ checkWinResult[0] += 1;}
-            if(checkWinPrice[i] == 4){ checkWinResult[1] += 1;}
+            if(checkWinPrice[i]%10 == 3){ checkWinResult[0] += 1;}
+            if(checkWinPrice[i]%10 == 4){ checkWinResult[1] += 1;}
             if(checkWinPrice[i] == 5){ checkWinResult[2] += 1;}
-            if(checkWinPrice[i] == 14){ checkWinResult[3] += 1;}
-            if(checkWinPrice[i] == 6){ checkWinResult[4] += 1;}
+            if(checkWinPrice[i] == 15){ checkWinResult[3] += 1;}
+            if(checkWinPrice[i]%10 == 6){ checkWinResult[4] += 1;}
         }
         return checkWinResult;
     }
@@ -38,7 +39,6 @@ public class WinLottoResult {
         for(int i = 0; i < lottoList.size(); i++){
             if(lottoList.get(i) == Integer.parseInt(inputBonusNumber.INPUT_BONUS_NUMBER)) {
                 count += 10;
-                continue;
             }
             if(answerLotto.contains(lottoList.get(i))) count++;
 
@@ -57,9 +57,10 @@ public class WinLottoResult {
     public void calBenefit(int profitMoney, UserMoney userMoney) {
         Output output = new Output();
         double userInputMoney = userMoney.getMoney();
-        double answer = profitMoney * 100 / userInputMoney;
-        System.out.println(answer);
-        double yield = Double.parseDouble(String.format("%.2f",answer));
+        double answer = (profitMoney) / userInputMoney;
+
+        double yield = Math.round(answer*1000)/10.0;
+
         output.totalBenefit(yield);
     }
 }

@@ -48,7 +48,7 @@ public class Output {
         winLottoResult.profitMoney += count * LottoEnum.THIRD.getNumber();
     }
     public void secondPlace(int count){
-        DecimalFormat formatter = new DecimalFormat("###,###.##");
+        DecimalFormat formatter = new DecimalFormat("###,###,###.#");
         System.out.println("5개 일치, 보너스 볼 일치 ("+formatter.format(LottoEnum.SECOND.getNumber())+"원) - "+count+"개");
         winLottoResult.profitMoney += count * LottoEnum.SECOND.getNumber();
     }
@@ -58,6 +58,7 @@ public class Output {
         winLottoResult.profitMoney += count * LottoEnum.FIRST.getNumber();
     }
     public void totalBenefit(double yield) {
-        System.out.println("총 수익률은 "+yield+"%입니다.");
+        DecimalFormat formatter = new DecimalFormat("###,###.0");
+        System.out.println("총 수익률은 "+formatter.format(yield)+"%입니다.");
     }
 }
