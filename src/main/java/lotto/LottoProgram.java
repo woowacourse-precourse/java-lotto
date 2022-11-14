@@ -59,4 +59,12 @@ public class LottoProgram {
 	public void matchLotto(List<Integer> lottoNumbers) {
 		lotto = new Lotto(lottoNumbers);
 	}
+
+	public void inputBonus() {
+		messagePrint.inputBonusNumPrint();
+		String bonusNumber = Console.readLine();
+		checkBonusNum(bonusNumber);
+		bonusNum = Integer.parseInt(bonusNumber);
+		exception.lottoOverLap(lotto.getLotto(), bonusNum);
+	}
 }
