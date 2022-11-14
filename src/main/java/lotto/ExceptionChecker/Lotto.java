@@ -1,5 +1,6 @@
 package lotto.ExceptionChecker;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.NoSuchElementException;
 
@@ -8,8 +9,25 @@ public class Lotto {
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
+        validateOverlap(numbers);
         validateRange(numbers);
         this.numbers = numbers;
+    }
+
+    private void validateOverlap(List<Integer> numbers) {
+        HashSet<Integer> overlapChecker = new HashSet<>(numbers);
+            try {
+                if (overlapChecker.size() != 6) {
+                    throw new IllegalArgumentException();
+                }
+
+            } catch (Exception IllegalArgumentException) {
+                System.out.println("[ERROR] 중복된 숫자를 입력하지 말아주세요. ");
+                IllegalArgumentException.printStackTrace();
+                throw new NoSuchElementException();
+            }
+
+
     }
 
 
@@ -43,7 +61,8 @@ public class Lotto {
             }
         } catch (Exception IllegalArgumentException) {
             System.out.println("[ERROR] 6개의 숫자를 입력해주세요. ");//에러시 수행
-            throw IllegalArgumentException; //최상위 클래스가 아니라면 무조건 던져주자
+            IllegalArgumentException.printStackTrace();
+            throw new NoSuchElementException(); //최상위 클래스가 아니라면 무조건 던져주자
         }
     }
 

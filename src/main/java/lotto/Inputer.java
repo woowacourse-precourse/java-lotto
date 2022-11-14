@@ -13,6 +13,8 @@ public class Inputer {
 
     private static final String REGEX = ",";
 
+    private List<Integer> LOTTO_LIST;
+
 
     public int inputMoney() {
 
@@ -30,6 +32,8 @@ public class Inputer {
         Lotto lotto = new Lotto(lottoWinList(lottoWin));
         List<Integer> lottoWinNumberList = lotto.lottoReturn();
 
+        this.LOTTO_LIST = lottoWinNumberList;
+
         return lottoWinNumberList;
     }
 
@@ -37,7 +41,7 @@ public class Inputer {
         String bonusNumber = readLine();
 
         IntegerChecker integerChecker = new IntegerChecker(bonusNumber);
-        BonusNumberChecker bonusNumberChecker = new BonusNumberChecker(integerChecker.numberReturn());
+        BonusNumberChecker bonusNumberChecker = new BonusNumberChecker(integerChecker.numberReturn(),LOTTO_LIST);
 
         return bonusNumberChecker.bonusReturn();
     }
