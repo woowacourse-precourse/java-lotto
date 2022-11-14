@@ -1,8 +1,8 @@
 package lotto.domain;
 
-public class Salesman {
+import static lotto.domain.Constants.LOTTO_PRICE;
 
-	private final static int LOTTO_PRICE = 1000;
+public class Salesman {
 
 	public int sellLotto(int purchaseBudget) {
 		validate(purchaseBudget);
