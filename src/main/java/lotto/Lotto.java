@@ -18,9 +18,27 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
-        if (numbers.size() != 6) {
+        if (validateSizeOf(numbers) || validateBoundOf(numbers) || validateDuplicationOf(numbers)) {
             throw new IllegalArgumentException();
         }
+    }
+
+    private Boolean validateSizeOf(List<Integer> numbers) {
+        if (numbers.size() != 6) return true;
+        return false;
+    }
+
+    private Boolean validateBoundOf(List<Integer> numbers) {
+        return numbers.stream()
+                .anyMatch(number -> number < 1 || number > 45);
+    }
+
+    private Boolean validateDuplicationOf(List<Integer> numbers) {
+        return numbers.stream()
+                .mapToLong(targetNumber -> numbers.stream()
+                        .filter(targetNumber::equals)
+                        .count())
+                .anyMatch(count -> count >= 2);
     }
 
     public Integer countNumbersIncluded(List<Integer> winningNumbers) {
