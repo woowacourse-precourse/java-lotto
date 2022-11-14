@@ -2,6 +2,7 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
 
+import java.util.Arrays;
 import java.util.List;
 
 public class Application {
@@ -19,5 +20,12 @@ public class Application {
 
         LottoGenerator generator = new LottoGenerator();
         Lotto[] mylottos = generator.buyLottos(lottoQuantity);
+
+        System.out.println(lottoQuantity+"개를 구매했습니다.");
+        for (Lotto lotto:mylottos) {
+            System.out.println(lotto.toString());
+        }
+
+        
     }
 }
