@@ -37,7 +37,7 @@ public class InputManager {
         List<Integer> winNumberList = new ArrayList<Integer>();
         int tempNumber;
 
-        checkLenght(winNumber);
+        checkLenght(winNumber, inputData);
         for (int i = 0; i < winNumber.length; i++) {
             if (checkNum(winNumber[i])) {
                 tempNumber = Integer.parseInt(winNumber[i]);
@@ -52,7 +52,7 @@ public class InputManager {
         for (int i = 0; i < winNumberList.size(); i++) {
             checklist[winNumberList.get(i)] += 1;
             if (checklist[winNumberList.get(i)] > 1) {
-                throw new IllegalArgumentException("[ERROR]중복된 숫자는 사용할수 없습니다");
+                throw new IllegalArgumentException("[ERROR] 중복된 숫자는 사용할수 없습니다");
             }
         }
     }
@@ -65,9 +65,10 @@ public class InputManager {
         return result;
     }
 
-    private void checkLenght(String[] winNumber) {
-        if (winNumber.length != 6) {
-            throw new IllegalArgumentException("6개의 숫자만 가능합니다.");
+    private void checkLenght(String[] winNumber, String inputData) {
+        char lastCharacter = inputData.charAt(inputData.length() - 1);
+        if (winNumber.length != 6 || lastCharacter == ',') { // 숫자가 6개만 들어왔는지 그리고 마지막 인풋값이 ,가 아닌지 체크
+            throw new IllegalArgumentException("[ERROR] 입력값이 잘못되었습니다.");
         }
     }
     private boolean checkNum(String target) {
