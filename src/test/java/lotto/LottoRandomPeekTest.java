@@ -1,7 +1,7 @@
 package lotto;
 
 import lotto.domain.Lotto;
-import lotto.domain.LottoRandomPeek;
+import lotto.util.LottoRandomPeek;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

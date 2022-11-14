@@ -1,8 +1,8 @@
 package lotto.service;
 
 import lotto.domain.Buyer;
-import lotto.domain.LottoRandomPeek;
-import lotto.domain.Statistics;
+import lotto.util.LottoRandomPeek;
+import lotto.util.Statistics;
 import lotto.domain.WinLotto;
 import lotto.generate.BuyerGenerate;
 import lotto.generate.WinLottoGenerate;

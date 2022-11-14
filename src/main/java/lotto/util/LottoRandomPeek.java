@@ -1,6 +1,7 @@
-package lotto.domain;
+package lotto.util;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import lotto.domain.Lotto;
 import lotto.enums.IntEnum;
 
 import java.util.*;

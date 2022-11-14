@@ -1,5 +1,8 @@
-package lotto.domain;
+package lotto.util;
 
+import lotto.domain.Buyer;
+import lotto.domain.Lotto;
+import lotto.domain.WinLotto;
 import lotto.enums.IntEnum;
 
 import java.util.ArrayList;
