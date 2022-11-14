@@ -9,6 +9,8 @@ public class Constant {
     public static final String WINNING_NUMBER_REGEX = "^[1-9,]*$";
     public static final String COMMA = ",";
     public static final String BONUS_NUMBER_REGEX = "^[1-9]*$";
+    public static final String ROUND_SECOND_DECIMAL_PLACE = "%.1f";
+    public static final String PERCENT = "100.0";
 
     public static final String ERROR_MSG_SAME_NUMBER = "[ERROR] 서로 다른 숫자로 구성되어 있지 않습니다.";
     public static final String ERROR_MSG_OTHER_NUMBER_BETWEEN_1_AND_45 = "[ERROR] 로또 번호가 1과 45사이의 수로 구성되어 있지 않습니다.";

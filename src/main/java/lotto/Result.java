@@ -1,5 +1,8 @@
 package lotto;
 
+import static util.Constant.*;
+
+import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -21,7 +24,6 @@ public class Result {
             updateResult(checkMatchCount(lotto, winngingLotto), matchBonus(lotto, bonus.getBonus()));
         }
     }
-
 
     // 당첨 번호와 로또 번호를 비교하여 같은 수의 개수를 반환하는 기능
     public int checkMatchCount(Lotto lotto, Lotto winningLotto) {
@@ -62,6 +64,15 @@ public class Result {
         }
     }
 
+    // 수익률을 산출하는 기능
+    public String calculateYield(int money) {
+        BigDecimal totalPrize = BigDecimal.valueOf(getTotalPrize());
+        BigDecimal purchaseMoney = BigDecimal.valueOf(money);
+        BigDecimal percent = new BigDecimal(PERCENT);
+        BigDecimal yield = totalPrize.divide(purchaseMoney).multiply(percent);
+        return String.format(ROUND_SECOND_DECIMAL_PLACE, yield);
+    }
+
     // 총 상금을 산출하는 기능
     public int getTotalPrize() {
         for (Rank rank : result.keySet()) {
@@ -69,7 +80,6 @@ public class Result {
         }
         return prize;
     }
-
 
     // 결과를 반환하는 기능
     public Map<Rank, Integer> getResult() {
