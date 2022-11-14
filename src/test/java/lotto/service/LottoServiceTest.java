@@ -42,7 +42,7 @@ public class LottoServiceTest {
             //given
             String price = "6000";
             //when
-            int retPrice = lottoService.validePrice(price);
+            Integer retPrice = lottoService.validePrice(price);
             //then
             Assertions.assertThat(retPrice).isEqualTo(Integer.parseInt(price));
         }
