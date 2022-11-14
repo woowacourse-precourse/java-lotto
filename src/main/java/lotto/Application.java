@@ -20,6 +20,9 @@ public class Application {
         //당첨 번호 입력 받기
         Lotto winningNums = InputNum.askWinningNumbers();
 
+        //보너스 번호 입력 받기
+        int bonusNum = InputNum.askBonusNum();
+
 
     }
 

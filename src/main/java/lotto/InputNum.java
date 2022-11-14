@@ -20,14 +20,30 @@ public class InputNum {
         System.out.println("당첨 번호를 입력해 주세요.");
 
         String InputNums = Console.readLine();
-        validate(InputNums);
+        validateLotto(InputNums);
 
         return new Lotto(changStringToInteger(InputNums));
     }
 
-    private static void validate(String InputNums){
-        if(!InputNums.contains(",") || InputNums.matches("[a-zA-Z ㄱ-ㅎㅏ-ㅣ가-힣]")){
-            throw new IllegalArgumentException("[ERROR] 쉼표로 구분하여 1~45사이의 정수를 입력하여 주세요.");
+    public static int askBonusNum(){
+        System.out.println("보너스 번호를 입력해 주세요.");
+
+        String inputNum = Console.readLine();
+        validateBonus(inputNum);
+
+        return Integer.valueOf(inputNum);
+    }
+
+    private static void validateLotto(String InputNums){
+        if(!InputNums.contains(",") || InputNums.matches("[a-zA-Z ㄱ-ㅎㅏ-ㅣ가-힣.]")){
+            throw new IllegalArgumentException("[ERROR] 쉼표로 구분하여 1~45사이의 숫자를 입력하여 주세요.");
+        }
+    }
+
+    private static void validateBonus(String inputNum) {
+        int Num = Integer.valueOf(inputNum);
+        if(inputNum.length() != 1 || Num < 1 || Num > 45 || inputNum.matches("[a-zA-Z ㄱ-ㅎㅏ-ㅣ가-힣.,]")){
+            throw new IllegalArgumentException("[ERROR] 1~45사이의 숫자 1개를 입력하여 주세요.");
         }
     }
 
