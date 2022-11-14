@@ -18,6 +18,7 @@ public class User {
     static final String NOT_NUMBER_ERROR_IN_WINNING_NUMBER_MSG = "[ERROR] 콤마를 기준으로 숫자만 입력해주세요!";
     static final String DUPLICATE_NUMBER_ERROR_MSG = "[ERROR] 중복된 숫자를 입력했습니다!";
     static final String RANGE_ERROR_MSG = "[ERROR] 1~45범위로 숫자를 입력해주세요!";
+    static final String DUPLICATE_BONUS_NUMBER_AND_WINNING_NUMBER_ERROR_MSG="[ERROR] 당첨 번호에 없는 숫자를 입력해주세요!";
     static final char CHAR_COMMA = ',';
     static final String STRING_COMMA = ",";
     static final int NUMBER_OF_COMMA = 5;
@@ -116,6 +117,10 @@ public class User {
 
         if(convertBonusNumber<1 || convertBonusNumber>45){
             throw new IllegalArgumentException(RANGE_ERROR_MSG);
+        }
+
+        if(winningNumbers.contains(Integer.parseInt(bonusNumber))){
+            throw new IllegalArgumentException(DUPLICATE_BONUS_NUMBER_AND_WINNING_NUMBER_ERROR_MSG);
         }
     }
 
