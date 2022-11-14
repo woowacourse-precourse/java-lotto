@@ -1,14 +1,14 @@
 package lotto.data.repository;
 
-public class UserRepository {
+public class AccountRepository {
 
-    private static UserRepository instance;
+    private static AccountRepository instance;
 
-    private UserRepository() {
+    private AccountRepository() {
         userCount = 0L;
     }
 
-    public static UserRepository getInstance() {
+    public static AccountRepository getInstance() {
         if (instance == null) {
             assignNewInstance();
         }
@@ -16,8 +16,8 @@ public class UserRepository {
     }
 
     private static void assignNewInstance() {
-        synchronized (UserRepository.class) {
-            instance = new UserRepository();
+        synchronized (AccountRepository.class) {
+            instance = new AccountRepository();
         }
     }
 

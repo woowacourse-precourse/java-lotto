@@ -9,7 +9,7 @@ import lotto.type.LottoResultType;
 import lotto.type.MessageType;
 import lotto.type.StepType;
 import lotto.service.UserService;
-import lotto.service.LogInService;
+import lotto.service.AccountService;
 import lotto.view.LottoBundleView;
 import lotto.view.LottoResultView;
 import utils.InputReader;
@@ -21,7 +21,7 @@ import utils.Logger;
 public class LottoController {
 
     private StepType currentStep;
-    private final LogInService logInService;
+    private final AccountService accountService;
     private final UserService userService;
     private final AdminService adminService;
     private final LottoBundleView lottoBundleView;
@@ -30,7 +30,7 @@ public class LottoController {
     private Long userId;
     private LottoController() {
         currentStep = StepType.INIT;
-        logInService = new LogInService();
+        accountService = new AccountService();
         userService = new UserService();
         adminService = new AdminService();
         lottoBundleView = new LottoBundleView();
@@ -49,7 +49,7 @@ public class LottoController {
     }
 
     private void init() {
-        userId = logInService.getNewId();
+        userId = accountService.getNewId();
         currentStep = currentStep.getNextStep();
     }
 

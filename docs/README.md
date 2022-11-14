@@ -20,7 +20,7 @@
       - LottoBundle: 저장되는 로또 묶음
       - WinNumber: 저장되는 당첨 및 보너스 번호
     - repository
-      - UserRepository: 유저 아이디 개수 저장소
+      - AccountRepository: 계정 저장소
       - LottoBundleRepository: 구매 로또 저장소
       - LottoWinNumberRepository: 당첨 번호 저장소
   - #### controller
@@ -31,7 +31,7 @@
       - .decideBonusNumber(): 보너스 번호를 정합니다.
       - .getResult(): 결과를 출력합니다.
   - #### service
-    - LogInService: 유저마다 다른 아이디를 부여해주는 서비스입니다.
+    - AccountService: 유저마다 다른 아이디를 부여해주는 서비스입니다.
       - .getNewId(): 새로운 아이디를 발급합니다. 
     - UserService: 일반 유저가 접근 가능한 서비스입니다.
       - .purchaseLottoBundle(): 로또를 구매합니다.
