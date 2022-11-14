@@ -20,6 +20,7 @@ public class LottoController {
 
             WinningList winningList = createWinningList(lottos, totalPrizeNumbers);
             printWinningList(winningList);
+            printRateofProfit(winningList, purchaseMoney);
         } catch (IllegalArgumentException error) {
             printErrorMessage(error.getMessage());
         }
