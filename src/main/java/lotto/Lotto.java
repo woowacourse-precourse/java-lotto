@@ -16,5 +16,14 @@ public class Lotto {
         }
     }
 
-    // TODO: 추가 기능 구현
+    private void checkDuplicate(){
+
+    }
+
+    private void checkRange(){
+        int minNUm = 1;
+        int maxNum = 45;
+
+    }
+
 }
