@@ -38,4 +38,28 @@ class LottoTest {
         assertThat(lotto.hasBonusNumber(bonusNumber)).isEqualTo(expected);
     }
 
+    //로또의 생성자 테스트(=유효성 검사)
+    @DisplayName("유효하지 않은 리스트로 로또를 생성하려고하면 예외가 발생한다.")
+    @ParameterizedTest
+    @MethodSource("provideInvalidNumbers")
+    void lottoConstructorTest(List<Integer> invalidNumbers) {
+        assertThatThrownBy(() -> new Lotto(invalidNumbers))
+            .isInstanceOf(IllegalArgumentException.class);
+    }
+    private static Stream<Arguments> provideInvalidNumbers() {
+
+        return Stream.of(
+            //범위 오류
+            Arguments.of(List.of(1,2,3,4,5,68)),
+            Arguments.of(List.of(1,26,3,48,15,6)),
+            Arguments.of(List.of(13,21,92,24,15,6)),
+            //중복 오류
+            Arguments.of(List.of(1,2,3,5,5,11)),
+            Arguments.of(List.of(1,1,3,5,6,11)),
+            //크기 오류
+            Arguments.of(List.of(1,2,3,4)),
+            Arguments.of(List.of(1,2,3,4,5,6,7,8,9))
+        );
+    }
+
 }
