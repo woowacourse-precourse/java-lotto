@@ -1,5 +1,8 @@
 package lotto.domain;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Purchase {
 
     private static final int LOTTO_PRICE = 1_000;
@@ -19,8 +22,14 @@ public class Purchase {
         }
     }
 
-    public int getCount() {
-        return count;
+    public List<Lotto> createLottos() {
+        List<Lotto> lottos = new ArrayList<>();
+
+        for (int i = 0; i < this.count; i++) {
+            lottos.add(new Lotto(NumberGenerator.createDifferentRandomNumbers()));
+        }
+
+        return lottos;
     }
 
 }
