@@ -56,7 +56,8 @@ public class UI {
     }
 
     public void printLottoResult() {
-        this.lottoLogic.calculateResult();
+        this.lottoLogic.countHit();
+        this.lottoLogic.setEarningRate();
         System.out.println("당첨 통계");
         System.out.println("---");
         System.out.println(Hit.THREEHIT.getMessage() + " (" + Hit.THREEHIT.getMoney() + ") - " + this.lottoLogic.getThreeHit() + "개");

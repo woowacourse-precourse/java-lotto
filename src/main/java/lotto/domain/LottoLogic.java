@@ -12,7 +12,6 @@ public class LottoLogic {
     private List<Lotto> myLottos;
     private List<Integer> prizeNumbers;
     private int bonusNumber;
-    private double earning;
     private double earningRate;
     private int threeHit = 0;
     private int fourHit = 0;
@@ -23,12 +22,8 @@ public class LottoLogic {
     public LottoLogic(String money) {
         validateMoney(money);
         this.money = Integer.parseInt(money);
-        this.numberOfLotto = calculateNumberOfLotto();
+        this.numberOfLotto = Calculator.calculateNumberOfLotto(this.money);
         this.buyLotto();
-    }
-
-    private int calculateNumberOfLotto() {
-        return this.money / LottoValue.ONE_LOTTO_PRICE.getValue();
     }
 
     public int getNumberOfLotto() {
@@ -74,6 +69,10 @@ public class LottoLogic {
         return this.earningRate;
     }
 
+    public int getMoney() {
+        return this.money;
+    }
+
     public void setPrizeNumbers(List<String> prizeNumbers) {
         validatePrizeNumbers(prizeNumbers);
         this.prizeNumbers = stringListToIntegerList(prizeNumbers);
@@ -84,26 +83,16 @@ public class LottoLogic {
         this.bonusNumber = Integer.parseInt(bonusNumber);
     }
 
-    private int comparePrizeNumber(Lotto lotto) {
-        int count = 0;
-        for (int prizeNumber : this.prizeNumbers) {
-            if (lotto.getNumbers().contains(prizeNumber)) {
-                count++;
-            }
-        }
-        return count;
-    }
-
-    private boolean compareBonusNumber(Lotto lotto) {
-        return lotto.getNumbers().contains(this.bonusNumber);
-    }
-
-    private void calculateCountHit() {
-        for (Lotto lotto : this.myLottos) {
-            int hitCount = comparePrizeNumber(lotto);
-            if (hitCount >= 3) {
-                boolean bonusHit = compareBonusNumber(lotto);
+    public void countHit() {
+        for (Lotto lotto : myLottos) {
+            int hitCount = Calculator.comparePrizeNumber(lotto, this.prizeNumbers);
+            if (hitCount == 5) {
+                boolean bonusHit = Calculator.compareBonusNumber(lotto, this.bonusNumber);
                 countLottoHit(hitCount, bonusHit);
+                continue;
+            }
+            if (hitCount >= 3) {
+                countLottoHit(hitCount, false);
             }
         }
     }
@@ -126,22 +115,8 @@ public class LottoLogic {
         }
     }
 
-    private void calculateEarning() {
-        this.earning = Hit.THREEHIT.getValue() * this.threeHit
-                + Hit.FOURHIT.getValue() * this.fourHit
-                + Hit.FIVEHIT.getValue() * this.fiveHit
-                + Hit.FIVEHITANDBONUS.getValue() * this.fiveHitAndBonus
-                + Hit.SIXHIT.getValue() * this.sixHit;
-    }
-
-    private void calculateEarningRate() {
-        this.earningRate = this.earning / this.money * 100;
-    }
-
-    public void calculateResult() {
-        calculateCountHit();
-        calculateEarning();
-        calculateEarningRate();
+    public void setEarningRate() {
+        this.earningRate = Calculator.calculateEarningRate(this);
     }
 
     private void validateMoney(String money) {
