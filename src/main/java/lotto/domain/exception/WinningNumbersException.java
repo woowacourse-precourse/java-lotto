@@ -14,11 +14,14 @@ public class WinningNumbersException {
 
     public String winningNumbersVerification(String readLine) {
         List<String> words = cutWord(readLine);
-        validateBetween(words);
         validateNumbers(words);
-        validateDuplicate(words);
+
+
         validateZero(words);
         validateCharacters(words);
+
+        validateBetween(words);
+        validateDuplicate(words);
         return readLine;
     }
 
@@ -56,7 +59,7 @@ public class WinningNumbersException {
 
     private void validateZero(List<String> words) {
         for (String oneWord : words) {
-            if (oneWord.equals('0')) {
+            if (oneWord.equals("0")) {
                 throw new IllegalArgumentException(ExceptionMessage.ZERO_INPUT);
             }
         }
