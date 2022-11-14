@@ -43,13 +43,7 @@ public class GameOutputHandler {
         for(int ranking = 5; ranking >= 1; ranking--){
             int howManyNumbersCorrect = WinningPrize.findEnumByRank(ranking).getHowManyNumbersIncluded();
             int winningMoney = WinningPrize.findEnumByRank(ranking).getWinningMoney();
-            int amountOfThatRanking;
-
-            try{
-                amountOfThatRanking = winningCounts.get(ranking);
-            }catch(NullPointerException ex){
-                amountOfThatRanking = 0;
-            }
+            int amountOfThatRanking = getThisNumbersRanking(winningCounts,ranking);
 
             totalEarnMoney += (winningMoney * amountOfThatRanking);
             boolean isSecondRank = (ranking == 2);
@@ -61,6 +55,13 @@ public class GameOutputHandler {
         double rate = ((double)totalEarnMoney / (double)buyingMoney) * 100;
         double roundOff = Math.round(rate * 100.0) / 100.0;
         System.out.print("총 수익률은 " + roundOff + "%입니다.");
+    }
+    private int getThisNumbersRanking(Map<Integer, Integer> winningCounts,int ranking){
+        try{
+            return winningCounts.get(ranking);
+        }catch(NullPointerException ex){
+            return 0;
+        }
     }
     private void printWinningRecordOneByOne(int numbersCorrect, int winningMoney, int amountOfThatRanking, boolean isSecondRank){
         StringBuilder printMake = new StringBuilder();
