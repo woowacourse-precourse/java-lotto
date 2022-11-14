@@ -27,7 +27,7 @@ public class Lotto {
 
     private void checkOverRange(List<Integer> numbers){
         for(int i =0;i<6;i++){
-            if(numbers.get(i) > 46) throw new IllegalArgumentException("[ERROR]");
+            if(numbers.get(i) > 46 || numbers.get(i) < 1) throw new IllegalArgumentException("[ERROR]");
         }
     }
     // TODO: 추가 기능 구현
