@@ -19,7 +19,7 @@ public class LottoGame {
     static List<Lotto> lottos;
     static WinningNumber winningNumber;
 
-    public void run() {
+    public static void run() {
         purchaseLotto();
         enterWinningNumber();
         enterBonusNumber();
@@ -28,7 +28,7 @@ public class LottoGame {
         getRateOfReturn();
     }
 
-    public void purchaseLotto() {
+    private static void purchaseLotto() {
         printLottoPurchaseInputNotice();
         purchaseAmount = readAmountOfLottoPrice();
 
@@ -37,22 +37,22 @@ public class LottoGame {
         printLottoPurchaseResult(lottos);
     }
 
-    public void enterWinningNumber() {
+    private static void enterWinningNumber() {
         printWinningNumberInputNotice();
         winningNumbers = readWinningNumbers();
     }
 
-    public void enterBonusNumber() {
+    private static void enterBonusNumber() {
         printBonusNumberInputNotice();
         bonusNumber = readBonusNumber();
     }
 
-    public void getResultOfLotto() {
+    private static void getResultOfLotto() {
         rankingCount = WinningService.compareAllLottoWithWinningNumbers(lottos, winningNumber);
         printWinningStatistics(rankingCount);
     }
 
-    public void getRateOfReturn() {
+    private static void getRateOfReturn() {
         long reward = RewardService.calcuateReward(rankingCount);
         double rateOfReturn = RewardService.calculateRateOfReturn(purchaseAmount, reward);
         printRateOfReturn(rateOfReturn);
