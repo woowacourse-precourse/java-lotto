@@ -2,7 +2,6 @@ package lotto;
 
 import lotto.type.Rank;
 
-import java.math.BigInteger;
 import java.util.Arrays;
 import java.util.EnumMap;
 
@@ -15,16 +14,19 @@ public class LottoResult {
 
     public float calculateEarningRatio(Integer buyPrice) {
         float ratio;
-        BigInteger totalWinning = new BigInteger("0");
+        Long totalWinning = (long)0;
 
         for (Rank rank : Rank.values()) {
-            totalWinning = totalWinning.add(BigInteger.valueOf(rank.getWinningMoney() * ranks.getOrDefault(rank, 0)));
+            totalWinning = totalWinning + Long.valueOf(rank.getWinningMoney()) * ranks.getOrDefault(rank, 0);
         }
-
-        ratio = totalWinning.divide(BigInteger.valueOf(buyPrice))
-                .floatValue();
+        System.out.println(totalWinning);
+        ratio = 100 * (totalWinning / (Float.valueOf(buyPrice)));
 
         return ratio;
+    }
+
+    public Integer getWinningCount(Rank rank) {
+        return this.ranks.getOrDefault(rank, 0);
     }
 
     @Override
