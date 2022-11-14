@@ -3,7 +3,6 @@ package lotto.domain;
 import static lotto.domain.LottoConstant.LOTTO_NUMBER_LENGTH;
 import static lotto.domain.LottoConstant.LOTTO_NUMBER_MAX_VALUE;
 import static lotto.domain.LottoConstant.LOTTO_NUMBER_MIN_VALUE;
-import static lotto.exception.InputValidator.ERROR_MESSAGE_PREFIX;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -29,22 +28,21 @@ public class Lotto {
         return numbers.contains(bonusNumber);
     }
 
-    //numbers의 불변을 유지하기 위해 Collections.unmodifiableList를 통해 반환
     public List<Integer> getNumbers() {
         return Collections.unmodifiableList(numbers);
     }
 
     private void validate(List<Integer> numbers) {
         if (isWrongNumberOfValues(numbers)) {
-            throw new IllegalArgumentException(ERROR_MESSAGE_PREFIX + "로또 번호의 갯수는 6개여야합니다.");
+            throw new IllegalArgumentException("로또 번호의 갯수는 6개여야합니다.");
         }
 
         if (isDuplicate(numbers)) {
-            throw new IllegalArgumentException(ERROR_MESSAGE_PREFIX + "로또 번호가 중복됩니다.");
+            throw new IllegalArgumentException("로또 번호가 중복됩니다.");
         }
 
         if (isWrongRange(numbers)) {
-            throw new IllegalArgumentException(ERROR_MESSAGE_PREFIX + "로또 번호는 1 이상 45 이하의 정수입니다.");
+            throw new IllegalArgumentException("로또 번호는 1 이상 45 이하의 정수입니다.");
         }
     }
 

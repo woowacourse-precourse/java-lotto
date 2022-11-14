@@ -9,8 +9,6 @@ import java.util.List;
 
 public class InputValidator {
 
-    public static final String ERROR_MESSAGE_PREFIX = "[ERROR] ";
-    
     public void validateMoney(String money) {
         validateValueIsNumber(money);
         validateValueCanDivideOneThousand(money);
@@ -37,31 +35,31 @@ public class InputValidator {
 
     private void validateValueIsDuplicate(String input, List<Integer> winningNumbers) {
         if (winningNumbers.contains(Integer.parseInt(input))) {
-            throw new IllegalArgumentException(ERROR_MESSAGE_PREFIX + "보너스 번호가 당첨 번호와 중복됩니다.");
+            throw new IllegalArgumentException("보너스 번호가 당첨 번호와 중복됩니다.");
         }
     }
 
     private void validateValueIsNumber(String money) {
         if (!money.chars().allMatch(Character::isDigit)) {
-            throw new IllegalArgumentException(ERROR_MESSAGE_PREFIX + "숫자를 입력해주세요.");
+            throw new IllegalArgumentException("숫자를 입력해주세요.");
         }
     }
 
     private void validateValueCanDivideOneThousand(String money) {
         if (Integer.parseInt(money) % 1000 != 0) {
-            throw new IllegalArgumentException(ERROR_MESSAGE_PREFIX + "1000으로 나누어 떨어지는 숫자를 입력해주세요.");
+            throw new IllegalArgumentException("1000으로 나누어 떨어지는 숫자를 입력해주세요.");
         }
     }
 
     private void validateValueUseComma(String input) {
         if (!input.contains(",")) {
-            throw new IllegalArgumentException(ERROR_MESSAGE_PREFIX + "콤마(,)를 통해 숫자를 구분해주세요.");
+            throw new IllegalArgumentException("콤마(,)를 통해 숫자를 구분해주세요.");
         }
     }
 
     private void validateValueRange(String input) {
         if (isNotRightRangeNumber(input)) {
-            throw new IllegalArgumentException(ERROR_MESSAGE_PREFIX + "1 이상 45 이하의 숫자를 입력하여야 합니다.");
+            throw new IllegalArgumentException("1 이상 45 이하의 숫자를 입력하여야 합니다.");
         }
     }
 
@@ -72,7 +70,7 @@ public class InputValidator {
 
     private void validateNumberOfValue(List<String> inputValues) {
         if (inputValues.size() != LOTTO_NUMBER_LENGTH) {
-            throw new IllegalArgumentException(ERROR_MESSAGE_PREFIX + "로또 번호는 6자리를 입력하여야 합니다.");
+            throw new IllegalArgumentException("로또 번호는 6자리를 입력하여야 합니다.");
         }
     }
 }

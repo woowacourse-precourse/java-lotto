@@ -1,7 +1,5 @@
 package lotto.domain;
 
-import static lotto.exception.InputValidator.ERROR_MESSAGE_PREFIX;
-
 import java.util.Arrays;
 
 public enum LottoResult {
@@ -40,7 +38,7 @@ public enum LottoResult {
         return Arrays.stream(LottoResult.values())
                 .filter(lottoResult -> lottoResult.hasSameNumberOfMatches(numberOfMatches))
                 .findFirst()
-                .orElseThrow(() -> new IllegalArgumentException(ERROR_MESSAGE_PREFIX + "당첨번호 일치 갯수는 0~6개 입니다"));
+                .orElseThrow(() -> new IllegalArgumentException("당첨번호 일치 갯수는 0~6개 입니다"));
     }
 
     private boolean hasSameNumberOfMatches(int numberOfMatches) {
