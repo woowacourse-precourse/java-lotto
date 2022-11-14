@@ -5,6 +5,10 @@ import java.util.List;
 import java.util.Set;
 
 public class Lotto {
+    static final int MIN_NUMBER = 1;
+    static final int MAX_NUMBER = 45;
+    static final int LOTTO_SIZE = 6;
+    static final int PRICE_OF_LOTTO = 1000;
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
@@ -19,7 +23,7 @@ public class Lotto {
     }
 
     private boolean checkSize(List<Integer> numbers) {
-        return numbers.size() != Application.LOTTO_SIZE;
+        return numbers.size() != LOTTO_SIZE;
 
     }
 
@@ -30,7 +34,7 @@ public class Lotto {
 
     private boolean checkOutOfRange(List<Integer> numbers) {
         for (Integer number : numbers) {
-            if (number > Application.MAX_NUMBER || number < Application.MIN_NUMBER) {
+            if (number > MAX_NUMBER || number < MIN_NUMBER) {
                 return true;
             }
         }
