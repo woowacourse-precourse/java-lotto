@@ -9,12 +9,18 @@ public class InputView {
     public static int getLottoPrice() {
         System.out.println(LOTTO_PURCHASE_PRICE_COMMENT);
         String lottoPrice = Console.readLine();
+
         NumberValidator.isValidPurchasePrice(lottoPrice);
+
         return Integer.parseInt(lottoPrice);
     }
 
     public static String getWinningLottoNumbers() {
         System.out.println(WINNING_LOTTO_NUMBER_COMMENT);
-        return Console.readLine();
+        String winningLottoNumbers = Console.readLine();
+
+        NumberValidator.isValidLottoNumbers(winningLottoNumbers);
+
+        return winningLottoNumbers;
     }
 }
