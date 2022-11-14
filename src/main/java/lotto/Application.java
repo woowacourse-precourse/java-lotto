@@ -9,21 +9,44 @@ import java.util.List;
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
-        int NumberOfLotto = getNumberOfLotto();
+        String input = inputMoney();
+        if (!validateMoney(input)) {
+            return;
+        }
+        int NumberOfLotto = getNumberOfLotto(input);
 
         List<Lotto> lottoList = makeBunchOfLotto(NumberOfLotto);
 
         printLottoList(lottoList);
     }
-
-    public static int getNumberOfLotto() {
+    
+    public static String inputMoney() {
+        String input;
         System.out.println("구입금액을 입력해 주세요.");
-        String input = Console.readLine();
-        int money = 0;
-        if (!input.matches("[+-]?\\d*(\\.\\d+)?")) {
-            throw new IllegalArgumentException("[ERROR] 금액을 제대로 입력해주세요.");
+        input = Console.readLine();
+        return input;
+    }
+
+    public static boolean validateMoney(String input) {
+        int money;
+        try {
+            if (!input.matches("[+-]?\\d*(\\.\\d+)?")) {
+                throw new IllegalArgumentException();
+            }
+            money = Integer.parseInt(input);
+            if (money < 1000 || money % 1000 != 0) {
+                throw new IllegalArgumentException();
+            }
+        } catch (IllegalArgumentException e) {
+            System.out.println("[ERROR] 금액을 제대로 입력해주세요.");
+            return false;
         }
-        money = Integer.parseInt(input);
+        return true;
+    }
+
+    public static int getNumberOfLotto(String input) {
+        int money = Integer.parseInt(input);
+
         return money / 1000;
     }
 
