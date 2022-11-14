@@ -58,4 +58,11 @@ public class User {
             throw new IllegalArgumentException(Error.NOT_DIVIDED_1000WON.getMessage());
         }
     }
+
+    private void validateInputSixNumbers(String input) {
+        String[] numbers = input.split(",");
+        if (numbers.length != 6) {
+            throw new IllegalArgumentException(Error.NOT_SIX_NUMBERS.getMessage());
+        }
+    }
 }
