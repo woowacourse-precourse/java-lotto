@@ -7,9 +7,7 @@ public class Game {
     List<List<Integer>> myLottoNumbers = new ArrayList<>();
     List<Integer> winningLottoNumbers = new ArrayList<>();
     int bonusNumber;
-
-    List<Integer> compareResult = new ArrayList<>();
-
+    List<Integer> myCorrectNumberResult = new ArrayList<>();
 
     public void buyLotto() {
         LottoSeller lottoPurchase = new LottoSeller();
@@ -31,17 +29,14 @@ public class Game {
         bonusNumber = numberDrawing.bonusNumber;
     }
 
-    public void func(){
-        NumberChecker numberChecker = new NumberChecker(winningLottoNumbers, myLottoNumbers);
+    public void getResult(){
+        NumberChecker numberChecker = new NumberChecker(winningLottoNumbers, bonusNumber, myLottoNumbers);
         numberChecker.compareNumber();
-        //
-        System.out.println(numberChecker.myNumber);
-        System.out.println(numberChecker.numberOfCorrectNumbers);
-        System.out.println(numberChecker.winningNumber);
-        //
-        compareResult = numberChecker.numberOfCorrectNumbers;
+
+//        myCorrectNumberResult = numberChecker.numberOfCorrectNumbers;
+
+
+     //   PrizeResult.secondWinner_5_bonus.getRank();
+
     }
-
-
-
 }
