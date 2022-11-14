@@ -98,13 +98,28 @@ public class Application {
         }
     }
 
+    public static List<Integer> inputBonusNumber(List<Integer> winningNumbers){
+        // 입력된 값이 1~45 사이인가?, 기존의 번호와 중복되는 건 없는가?
+        String bonusNumber = Console.readLine();
+        boolean isDigit = Pattern.matches("^[0-9]{1,2}$", bonusNumber); // 0~9의 숫자로만 1자이상 2자이하인지
+        if (!isDigit) {
+            throw new IllegalArgumentException();
+        }
+        isBetweenCertainNumbers(bonusNumber, 1, 45);
+        if (winningNumbers.contains(Integer.valueOf(bonusNumber))){
+            throw new IllegalArgumentException();
+        }
+        winningNumbers.add(Integer.valueOf(bonusNumber));
+        return winningNumbers;
+    }
+
     public static void main(String[] args) {
         String a = Console.readLine();
         int a2 = stringInputToInt(a);
         Gambler p1 = new Gambler(a2);
         p1.buyingLotto();
         p1.printAllLotto();
-        List<Integer> ll = inputWinningNumbers();
-        System.out.println(ll);
+        
+
     }
 }
