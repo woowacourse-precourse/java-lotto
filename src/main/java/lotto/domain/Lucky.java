@@ -1,6 +1,8 @@
 package lotto.domain;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 public class Lucky {
     public List<Integer> compareNumbers(List<List<Integer>> user, List<Integer> com, int bonusNumber) {
