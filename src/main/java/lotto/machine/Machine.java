@@ -84,9 +84,13 @@ public class Machine {
     }
 
     public List<Integer> Insert_Winning_numbers() {
-        return Arrays.stream(Console.readLine().split(","))
-                .map(Integer::parseInt)
-                .collect(Collectors.toList());
+        try {
+            return Arrays.stream(Console.readLine().split(","))
+                    .map(Integer::parseInt)
+                    .collect(Collectors.toList());
+        } catch (Exception err) {
+            throw new IllegalArgumentException(LOTTO_FORM_ERROR.getErrorMessage());
+        }
     }
 
     private void Winning_number_validate(List<Integer> Winning_numbers) {
@@ -98,7 +102,7 @@ public class Machine {
     private void insert_Bonus_number() {
         try {
             Bonus = Integer.valueOf(Console.readLine());
-        }catch (NumberFormatException err){
+        }catch (Exception err){
             throw new IllegalArgumentException(BONUS_FORM_ERROR.getErrorMessage());
         }
         ValidCheck.Bonus(Bonus, Winning_numbers);
