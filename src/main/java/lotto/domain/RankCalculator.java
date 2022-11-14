@@ -15,11 +15,20 @@ public class RankCalculator {
     }
 
     private Map<Rank, Integer> countRank(List<Lotto> lottoTickets, UserNumber userNumber) {
-        Map<Rank, Integer> ranks = new HashMap<>();
+        Map<Rank, Integer> ranks = initializeRank();
 
         for (Lotto lottoTicket : lottoTickets) {
             Rank rank = compareLottoWithUser(lottoTicket, userNumber);
-            ranks.put(rank, ranks.getOrDefault(rank, 0) + 1);
+            ranks.put(rank, ranks.get(rank) + 1);
+        }
+        return ranks;
+    }
+
+    public Map<Rank, Integer> initializeRank() {
+        Map<Rank, Integer> ranks = new HashMap<>();
+
+        for (Rank rank : Rank.values()) {
+            ranks.put(rank, 0);
         }
         return ranks;
     }
