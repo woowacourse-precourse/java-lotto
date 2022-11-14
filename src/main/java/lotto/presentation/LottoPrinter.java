@@ -2,7 +2,9 @@ package lotto.presentation;
 
 import lotto.data.LottoRank;
 import lotto.data.OutputPrint;
+import lotto.domain.Lotto;
 
+import java.util.List;
 import java.util.Map;
 
 public class LottoPrinter {
@@ -30,5 +32,11 @@ public class LottoPrinter {
     public void printWinningStatistic() {
         OutputPrint.OUTPUT_WINNING_STATISTIC.printMessage();
         OutputPrint.OUTPUT_BORDER.printMessage();
+    }
+
+    public void printLottos(List<Lotto> lottos) {
+        for (Lotto lotto : lottos) {
+            lotto.printNumbers();
+        }
     }
 }
