@@ -1,6 +1,6 @@
 package lotto.service;
 
-import static lotto.utils.Constants.NUMBER_OF_RANKING;
+import static lotto.utils.Constants.LAST_PLACE;
 
 import lotto.domain.Lotto;
 import lotto.domain.Ranking;
@@ -9,7 +9,7 @@ import java.util.List;
 
 public class WinningService {
     public static int[] compareAllLottoWithWinningNumbers(List<Lotto> lottos, WinningNumber winningNumber) {
-        int[] rankingCount = new int[NUMBER_OF_RANKING + 1];
+        int[] rankingCount = new int[LAST_PLACE + 1];
 
         for (Lotto lotto : lottos) {
             int ranking = compareWithWinningNumbers(lotto, winningNumber);
@@ -31,7 +31,7 @@ public class WinningService {
         if (matchingNumberCount == Ranking.SECOND.getMatchingNumberCount() && hasBonusNumber(lotto, bonusNumber)) {
             return Ranking.SECOND.getPlace();
         }
-        return NUMBER_OF_RANKING + 3 - matchingNumberCount;
+        return LAST_PLACE + 3 - matchingNumberCount;
     }
 
     private static int compareWithoutBonusNumber(Lotto lotto, List<Integer> winningNumbers) {

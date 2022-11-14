@@ -8,5 +8,6 @@ public final class Constants {
     public static final int LOTTO_MIN = 1;
     public static final int LOTTO_MAX = 45;
 
-    public static final int NUMBER_OF_RANKING = Ranking.values().length;
+    public static final int LAST_PLACE = Ranking.values().length;
+    public static final int FIRST_PLACE = 1;
 }
