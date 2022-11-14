@@ -18,7 +18,11 @@ public class Purchase {
         this.price = Integer.parseInt(price);
     }
 
-    public void validatePurchase(String price) throws IllegalArgumentException {
+    public int getPrice() {
+        return price;
+    }
+
+    private void validatePurchase(String price) throws IllegalArgumentException {
         for (int index = 0; index < price.length(); index++) {
             if (price.charAt(index) >= charZero && price.charAt(index) <= charNine) {
                 continue;
