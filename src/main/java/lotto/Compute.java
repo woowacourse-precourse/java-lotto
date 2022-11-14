@@ -67,5 +67,17 @@ public class Compute {
 
         return winRecords;
     }
+
+    private float computeProfit(int money, HashMap<String, Integer> winRecords) {
+        float profit = 0;
+
+        for (WinType winType : WinType.values()) {
+            profit += winRecords.get(winType.winTypeKey) * winType.prizeMoney;
+        }
+
+        profit = (float) money / profit;
+
+        return profit;
+    }
 }
 
