@@ -1,11 +1,12 @@
 package lotto;
 
+import lotto.Model.DataProcessing;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-class UnitTest {
+class DomainTest {
     @DisplayName("split한 string배열의 길이가 6인지 테스트")
     @Test
     void splitLottoTest() {
