@@ -1,6 +1,7 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
+
 import java.util.*;
 
 public class User {
@@ -15,7 +16,7 @@ public class User {
     public void getLottoTickets() {
         inputAmount();
         countTicket();
-        buyTickets(this.lottoTicketCount);
+        buyTickets();
         printTicketCount();
         printLottoTickets();
     }
@@ -29,7 +30,7 @@ public class User {
         this.purchasingAmount = userInputAmount;
     }
 
-    private void validate(int purchasingAmount) throws IllegalArgumentException{
+    private void validate(int purchasingAmount) throws IllegalArgumentException {
         if (purchasingAmount % LOTTO_PRICE != 0) {
             throw new IllegalArgumentException("[ERROR] 구매 금액이 1000으로 나누어 떨어지지 않습니다");
         }
@@ -39,7 +40,14 @@ public class User {
         this.lottoTicketCount = this.purchasingAmount / LOTTO_PRICE;
     }
 
-    private void buyTickets(int lottoTicketCount) {
+    private void buyTickets() {
+        for (int index = 0; index < this.lottoTicketCount; index++) {
+            Lotto lotto = new Lotto(generateRandomNumbers());
+            lottoTickets.add(lotto);
+        }
+    }
+
+    private List<Integer> generateRandomNumbers() {
     }
 
     private void printTicketCount() {
