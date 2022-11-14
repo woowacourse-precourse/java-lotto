@@ -4,17 +4,19 @@ import static lotto.constant.MoneyConstants.CHARACTER_IN_MONEY_MSG;
 import static lotto.constant.MoneyConstants.EMPTY_MONEY_MSG;
 import static lotto.constant.MoneyConstants.INVALID_MONEY_MSG;
 import static lotto.constant.MoneyConstants.LOTTO_PRICE;
+import static lotto.constant.MoneyConstants.RATE_FORMAT;
 import static lotto.constant.MoneyConstants.REMAINDER_IN_MONEY_MSG;
 import static lotto.constant.MoneyConstants.TO_PERCENTAGE;
+import static lotto.constant.MoneyConstants.ZERO;
 
 public class Money {
     private int money;
 
-    public static Money from(String userInput){
+    public static Money from(String userInput) {
         return new Money(userInput);
     }
 
-    private Money(String userInput){
+    private Money(String userInput) {
         validate(userInput);
 
         this.money = Integer.parseInt(userInput);
@@ -25,10 +27,10 @@ public class Money {
     }
 
     public String calculateProfitRate(Result result) {
-        return String.format("%.1f",(double)result.calculateProfit()/this.money *TO_PERCENTAGE);
+        return String.format(RATE_FORMAT, (double) result.calculateProfit() / this.money * TO_PERCENTAGE);
     }
 
-    private void validate(String userInput){
+    private void validate(String userInput) {
         isBlank(userInput);
         isConsistsWithOnlyDigits(userInput);
         isIntegerRange(userInput);
@@ -62,7 +64,7 @@ public class Money {
     }
 
     private void isDividedClearlyByLottoPrice(String userInput) {
-        if (Integer.parseInt(userInput) % LOTTO_PRICE != 0) {
+        if (Integer.parseInt(userInput) % LOTTO_PRICE != ZERO) {
             throw new IllegalArgumentException(REMAINDER_IN_MONEY_MSG);
         }
     }
