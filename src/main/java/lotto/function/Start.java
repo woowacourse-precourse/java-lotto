@@ -36,4 +36,16 @@ public class Start {
         return price;
     }
 
+    public static List<List<Integer>> showLotto(int price){
+        int trials = price/1000;
+        System.out.println(trials +"개를 구매했습니다.");
+        List<List<Integer>> Lotto = new ArrayList<>();
+        for(int i=0;i<trials;i++){
+            List<Integer> numbers = makeNumbers();
+            Lotto.add(numbers);
+            showNumbers(numbers);
+        }
+        return Lotto;
+    }
+
 }
