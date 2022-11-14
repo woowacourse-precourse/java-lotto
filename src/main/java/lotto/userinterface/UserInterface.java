@@ -8,6 +8,7 @@ import lotto.condition.ConditionGenerator;
 import lotto.message.MessageGenerator;
 import lotto.validator.Validator;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -52,7 +53,7 @@ public class UserInterface {
     }
 
     public static void printLottos(List<Lotto> lottos) {
-        String purchaseCountMessage = MessageGenerator.getPurchaseCountMessage(lottos.size());
+        String purchaseCountMessage = MessageGenerator.getPurchaseConfirmMessage(lottos.size());
         System.out.println(purchaseCountMessage);
 
         for (Lotto lotto : lottos) {
@@ -78,5 +79,15 @@ public class UserInterface {
 
     private static String getConcatenatedString(List<Integer> numbers, String input) {
         return String.join(",", numbers.stream().map((Integer number) -> Integer.toString(number)).collect(Collectors.toList())) + "," + input;
+    }
+
+    public static void printResult(HashMap<Hit, Integer> result) {
+        for (Hit hit : result.keySet()) {
+            System.out.println(MessageGenerator.getLottoResultMessage(hit, result.get(hit)));
+        }
+    }
+
+    public static void printEarningRate(float earningRate) {
+        System.out.println(MessageGenerator.getEarningRateMessage(earningRate));
     }
 }
