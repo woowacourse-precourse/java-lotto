@@ -40,4 +40,8 @@ public class MyView {
 		model.addAttribute("bonusNumber", bonus);
 		System.out.println();
 	}
+
+	public void printAnalysis() {
+
+	}
 }
