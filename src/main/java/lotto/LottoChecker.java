@@ -1,5 +1,7 @@
 package lotto;
 
+import lotto.message.Message;
+
 import java.math.RoundingMode;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -90,7 +92,7 @@ public class LottoChecker {
     }
 
     void printEachPrizeWinCount() {
-        System.out.println(Messages.PRIZE_RESULT.message);
+        System.out.println(Message.PRIZE_RESULT.message);
         printPrizeWinCount(Prize.FIFTH);
         printPrizeWinCount(Prize.FOURTH);
         printPrizeWinCount(Prize.THIRD);

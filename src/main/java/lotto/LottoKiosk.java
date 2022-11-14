@@ -6,6 +6,8 @@ import java.util.stream.Collectors;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
+import lotto.message.ErrorMessage;
+import lotto.message.Message;
 
 public class LottoKiosk {
     private final int LOTTO_PRICE = 1000;
@@ -24,7 +26,7 @@ public class LottoKiosk {
     }
 
     void askHowMuch() {
-        System.out.println(Messages.REQUEST_MONEY.message);
+        System.out.println(Message.REQUEST_MONEY.message);
     }
 
     void moneyInserted() {
@@ -69,7 +71,7 @@ public class LottoKiosk {
     }
 
     void showHowManyLotto() {
-        System.out.println("\n" + howMany + Messages.HOW_MANY_SOLD.message);
+        System.out.println("\n" + howMany + Message.HOW_MANY_SOLD.message);
     }
 
     void makeAllLotto() {

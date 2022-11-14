@@ -1,4 +1,4 @@
-package lotto;
+package lotto.message;
 
 public enum ErrorMessage {
     MONEY_NOT_A_NUMBER("[ERROR] 구입금액은 숫자여야 합니다."),
@@ -12,7 +12,7 @@ public enum ErrorMessage {
     DUPLICATE_EXIST("[ERROR] 로또 번호에 중복된 숫자가 존재합니다.");
 
 
-    final String message;
+    public final String message;
 
     ErrorMessage(String message) {
         this.message = message;

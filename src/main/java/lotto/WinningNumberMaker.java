@@ -3,7 +3,9 @@ package lotto;
 import java.util.ArrayList;
 import java.util.List;
 
+import lotto.message.ErrorMessage;
 import camp.nextstep.edu.missionutils.Console;
+import lotto.message.Message;
 
 public class WinningNumberMaker {
     private final int START_NUM = 1;
@@ -29,7 +31,7 @@ public class WinningNumberMaker {
     }
 
     void requestWinningNumber() {
-        System.out.println(Messages.ENTER_WINNING_NUMBER.message);
+        System.out.println(Message.ENTER_WINNING_NUMBER.message);
     }
 
     void getWinningNumberInput() {
@@ -85,7 +87,7 @@ public class WinningNumberMaker {
     }
 
     void requestBonusNumber() {
-        System.out.println(Messages.ENTER_BONUS_NUMBER.message);
+        System.out.println(Message.ENTER_BONUS_NUMBER.message);
     }
 
     void getBonusNumberInput() {

@@ -3,6 +3,7 @@ package lotto;
 import java.io.ByteArrayInputStream;
 import java.util.List;
 
+import lotto.message.ErrorMessage;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
