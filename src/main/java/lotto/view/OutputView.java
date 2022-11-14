@@ -21,7 +21,7 @@ public class OutputView {
         System.out.println(STATISTICS);
     }
 
-    public static void printResult(String result) {
+    public static void printPlaceResult(String result) {
         System.out.println(result);
     }
 
