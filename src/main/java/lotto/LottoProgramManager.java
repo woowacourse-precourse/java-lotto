@@ -28,11 +28,11 @@ public class LottoProgramManager {
         int price = InputManager.scanMoney();
 
         if(LottoConfig.LOTTO_PRICE == 0)
-            throw new IllegalArgumentException(ErrorCode.LOTTO_PRICE_ZERO.getErrorMessage());
+            throw new IllegalArgumentException(ErrorCode.LOTTO_PRICE_ZERO.getValue());
         if(price <= 0)
-            throw new IllegalArgumentException(ErrorCode.WRONG_PURCHASE_TYPE.getErrorMessage());
+            throw new IllegalArgumentException(ErrorCode.WRONG_PURCHASE_TYPE.getValue());
         if(price % LottoConfig.LOTTO_PRICE != 0)
-            throw new IllegalArgumentException(ErrorCode.WRONG_PURCHASE_PRICE.getErrorMessage());
+            throw new IllegalArgumentException(ErrorCode.WRONG_PURCHASE_PRICE.getValue());
 
         OutputManager.printLottoBought(price / LottoConfig.LOTTO_PRICE);
         return price / LottoConfig.LOTTO_PRICE;

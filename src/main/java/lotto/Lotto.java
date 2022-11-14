@@ -15,15 +15,15 @@ public class Lotto {
 
     private void validate(List<Integer> numbers) throws IllegalArgumentException {
         if (numbers.size() != 6) {
-            throw new IllegalArgumentException(ErrorCode.WRONG_SIZE.getErrorMessage());
+            throw new IllegalArgumentException(ErrorCode.WRONG_SIZE.getValue());
         }
 
         for(int i = 0; i < numbers.size(); i++) {
             if(numbers.get(i) < 1 || numbers.get(i) > 45) {
-                throw new IllegalArgumentException(ErrorCode.OUT_RANGE.getErrorMessage());
+                throw new IllegalArgumentException(ErrorCode.OUT_RANGE.getValue());
             }
             if(numbers.subList(0, i).contains(numbers.get(i))) {
-                throw new IllegalArgumentException(ErrorCode.DUPLICATE.getErrorMessage());
+                throw new IllegalArgumentException(ErrorCode.DUPLICATE.getValue());
             }
         }
     }

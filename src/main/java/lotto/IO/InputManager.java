@@ -3,7 +3,6 @@ package lotto.IO;
 import camp.nextstep.edu.missionutils.Console;
 import lotto.IO.message.ErrorCode;
 import lotto.IO.message.IOMessage;
-import lotto.Lotto;
 
 import java.util.Arrays;
 import java.util.List;
@@ -18,7 +17,7 @@ public class InputManager {
 
             return price;
         } catch(Exception e) {
-            throw new IllegalArgumentException(ErrorCode.WRONG_PURCHASE_TYPE.getErrorMessage());
+            throw new IllegalArgumentException(ErrorCode.WRONG_PURCHASE_TYPE.getValue());
         }
     }
 
@@ -30,7 +29,7 @@ public class InputManager {
                     .map(Integer::parseInt)
                     .collect(Collectors.toList());
         } catch (Exception e) {
-            throw new IllegalArgumentException(ErrorCode.WRONG_ANSWER.getErrorMessage());
+            throw new IllegalArgumentException(ErrorCode.WRONG_ANSWER.getValue());
         } finally {
             OutputManager.printEmptyLine();
         }
@@ -42,7 +41,7 @@ public class InputManager {
 
             return Integer.parseInt(Console.readLine());
         } catch (Exception e) {
-            throw new IllegalArgumentException(ErrorCode.WRONG_ANSWER.getErrorMessage());
+            throw new IllegalArgumentException(ErrorCode.WRONG_ANSWER.getValue());
         } finally {
             OutputManager.printEmptyLine();
         }

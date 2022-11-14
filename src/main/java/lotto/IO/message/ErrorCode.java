@@ -13,5 +13,5 @@ public enum ErrorCode {
     private final String value;
 
     ErrorCode(String value) { this.value = value; }
-    public String getErrorMessage() { return "[Error] " + value; }
+    public String getValue() { return value; }
 }

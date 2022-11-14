@@ -6,6 +6,14 @@ import lotto.Lotto;
 import java.util.List;
 
 public class OutputManager {
+    public static void printError(String error) {
+        System.out.println("[Error] " + error);
+    }
+
+    public static void printMessage(String message) {
+        System.out.println(message);
+    }
+
     public static void printEmptyLine() {
         System.out.println(IOMessage.EMPTY_LINE.getMessage());
     }
@@ -18,7 +26,7 @@ public class OutputManager {
         for(Lotto lotto : lottoList) {
             printLotto(lotto);
         }
-        OutputManager.printEmptyLine();
+        printEmptyLine();
     }
 
     private static void printLotto(Lotto lotto) {
