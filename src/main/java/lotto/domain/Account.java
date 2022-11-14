@@ -11,7 +11,7 @@ public class Account {
     private WinningCalculator winningCalculator;
     private Map<WinningResult, Integer> results = new LinkedHashMap();
     private int count;
-    private int winningAmount;
+    private long winningAmount;
 
     public Account(WinningCalculator winningCalculator) {
         this.winningCalculator = winningCalculator;
