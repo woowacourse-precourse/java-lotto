@@ -43,12 +43,12 @@ public class InputValidator {
 
         int money = Integer.parseInt(userInput);
 
-        if (money % 1000 != 0) {
-            throw new IllegalArgumentException(Messages.ERROR_MONEY_UNIT.getMessage());
-        }
-
         if (money < 1000) {
             throw new IllegalArgumentException(Messages.ERROR_MONEY_MIN.getMessage());
+        }
+
+        if (money % 1000 != 0) {
+            throw new IllegalArgumentException(Messages.ERROR_MONEY_UNIT.getMessage());
         }
     }
 
@@ -69,7 +69,7 @@ public class InputValidator {
         }
 
         if (inputNum < 1 || inputNum > 45) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(Messages.ERROR_LOTTO_NUMBER_RANGE.getMessage());
         }
     }
 }
