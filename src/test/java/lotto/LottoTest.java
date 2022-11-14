@@ -6,6 +6,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import java.util.List;
 import java.util.stream.Collectors;
+import lotto.exception.BonusNumberDuplicationError;
 import lotto.exception.LottoNumberException;
 import lotto.exception.MoneyNotDividedByPriceException;
 import lotto.exception.MoneyRangeException;
@@ -71,8 +72,18 @@ class LottoTest {
         assertThat(money.calculateLottoCount()).isEqualTo(3);
     }
 
+    @DisplayName("보너스 번호와 당첨 번호가 중복될시 예외가 발생한다.")
+    @Test
+    void bonusNumberDuplication() {
+        List<LottoNumber> winningNumbers = convertIntegerListToLottoNumberList(
+                List.of(1, 2, 3, 4, 5, 6));
+        LottoNumber bonusNumber = new LottoNumber(6);
+        assertThatThrownBy(() -> new WinningLotto(winningNumbers, bonusNumber))
+                .isInstanceOf(BonusNumberDuplicationError.class);
+    }
+
     private List<LottoNumber> convertIntegerListToLottoNumberList(List<Integer> numbers) {
-        return numbers.stream().map((number) -> new LottoNumber(number))
+        return numbers.stream().map(LottoNumber::new)
                 .collect(Collectors.toList());
     }
 }
