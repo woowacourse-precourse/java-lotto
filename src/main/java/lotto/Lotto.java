@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
+import javax.swing.ListModel;
 
 public class Lotto {
     private final List<Integer> numbers;
@@ -37,5 +38,27 @@ public class Lotto {
         if (purchaseAmount % 1000 != 0) {
             throw new IllegalArgumentException("[ERROR] 구입 금액이 유효하지 않습니다.");
         }
+    }
+
+    public Solution(String inputLottoAmount) {
+        Integer inputNumbers = Model.MakeStringToInteger(inputLottoAmount);
+        Integer lottoAmount = Model.CountLottoAmount(inputNumbers);
+
+        final List<List<Integer>> publishedLottoArray = PublishLotto(lottoAmount);
+
+        View.Output(lottoAmount+"개를 구매했습니다.");
+        for (List<Integer> list : publishedLottoArray) {
+            View.Output(Model.ListToString(list));
+        }
+
+        View.Output("당첨 번호를 입력해 주세요.");
+        String inputRealLottoNumber = View.Input();
+
+        String[] splittedRealLottoNumbers = Model.SplitInput(inputRealLottoNumber);
+        List<Integer> realLottoNumbers = Model.MakeStringToListInteger(splittedRealLottoNumbers);
+
+        View.Output("보너스 번호를 입력해 주세요.");
+        String inputRealLottoBonusNumber = View.Input();
+        Integer realLottoBonusNumber = Model.MakeStringToInteger(inputRealLottoBonusNumber);
     }
 }
