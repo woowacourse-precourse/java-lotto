@@ -2,7 +2,7 @@ package lotto.controller;
 
 import java.util.List;
 import lotto.domain.LottoMachine;
-import lotto.domain.LottoResult;
+import lotto.domain.LottoJudge;
 import lotto.domain.vo.BuyLottoList;
 import lotto.domain.vo.Lotto;
 import lotto.domain.vo.LottoWithBonus;
@@ -23,10 +23,10 @@ public class LottoController {
 
         LottoWithBonus lottoWithBonus = inputBonus(inputLotto());
 
-        LottoResult lottoResult = new LottoResult(buyLottoList, lottoWithBonus);
+        LottoJudge lottoJudge = new LottoJudge(buyLottoList, lottoWithBonus);
 
-        outputHandler.winningStatistics(lottoResult);
-        outputHandler.printYield(lottoResult);
+        outputHandler.winningStatistics(lottoJudge);
+        outputHandler.printYield(lottoJudge);
     }
 
     private BuyLottoList buyLotto(Money money) {

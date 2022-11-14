@@ -8,11 +8,11 @@ import lotto.domain.vo.BuyLottoList;
 import lotto.domain.vo.Lotto;
 import lotto.domain.vo.LottoWithBonus;
 
-public class LottoResult {
+public class LottoJudge {
 
     private Map<LottoReference, Integer> lottoResult;
 
-    public LottoResult(BuyLottoList buyLottoList, LottoWithBonus lottoWithBonus) {
+    public LottoJudge(BuyLottoList buyLottoList, LottoWithBonus lottoWithBonus) {
         this.lottoResult = calculateResult(buyLottoList, lottoWithBonus);
     }
 

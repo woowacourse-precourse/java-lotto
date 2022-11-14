@@ -6,13 +6,13 @@ import java.text.DecimalFormat;
 import java.util.Map;
 import lotto.domain.LottoMachine;
 import lotto.domain.LottoReference;
-import lotto.domain.LottoResult;
+import lotto.domain.LottoJudge;
 import lotto.domain.vo.Lotto;
 
 public class OutputHandler {
 
-    public void winningStatistics(LottoResult lottoResult) {
-        Map<LottoReference, Integer> result = lottoResult.getValue();
+    public void winningStatistics(LottoJudge lottoJudge) {
+        Map<LottoReference, Integer> result = lottoJudge.getValue();
         DecimalFormat moneyFormat = new DecimalFormat("###,###");
 
         System.out.println("당첨 통계");
@@ -27,8 +27,8 @@ public class OutputHandler {
         }
     }
 
-    public void printYield(LottoResult lottoResult) {
-        Map<LottoReference, Integer> result = lottoResult.getValue();
+    public void printYield(LottoJudge lottoJudge) {
+        Map<LottoReference, Integer> result = lottoJudge.getValue();
         DecimalFormat floatFormat = new DecimalFormat("###,###.#");
 
         float yield = LottoReference.getYield(result);

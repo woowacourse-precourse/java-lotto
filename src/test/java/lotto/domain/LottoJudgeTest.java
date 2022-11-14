@@ -12,7 +12,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
-class LottoResultTest {
+class LottoJudgeTest {
 
     Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
     LottoWithBonus lottoWithBonus = new LottoWithBonus(lotto, 7);
@@ -27,8 +27,8 @@ class LottoResultTest {
                 new Lotto(inputHandler.stringToList(inputString)));
         BuyLottoList buyLottoList = new BuyLottoList(buyList);
 
-        LottoResult lottoResult = new LottoResult(buyLottoList, lottoWithBonus);
-        System.out.println(lottoResult.getValue());
-        assertThat(lottoResult.getValue().toString()).isEqualTo("{" + result + "=1}");
+        LottoJudge lottoJudge = new LottoJudge(buyLottoList, lottoWithBonus);
+        System.out.println(lottoJudge.getValue());
+        assertThat(lottoJudge.getValue().toString()).isEqualTo("{" + result + "=1}");
     }
 }
