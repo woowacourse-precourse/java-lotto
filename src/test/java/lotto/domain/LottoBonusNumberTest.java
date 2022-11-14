@@ -27,4 +27,16 @@ public class LottoBonusNumberTest {
     void number(int number) {
         assertThat(LottoBonusNumber.of(number).number()).isEqualTo(number);
     }
+
+    @DisplayName("숫자와 값이 같은지 반환한다.")
+    @Test
+    void equalNumber() {
+        LottoBonusNumber bonusNumber = LottoBonusNumber.of(3);
+
+        Assertions.assertAll(
+                () -> assertThat(bonusNumber.equalNumber(2)).isFalse(),
+                () -> assertThat(bonusNumber.equalNumber(3)).isTrue(),
+                () -> assertThat(bonusNumber.equalNumber(4)).isFalse()
+        );
+    }
 }
