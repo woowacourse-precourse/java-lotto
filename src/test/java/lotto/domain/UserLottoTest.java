@@ -7,6 +7,8 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.List;
 
+import static lotto.constant.ErrorConstant.ERROR_DUPLICATE_NUMBER;
+import static lotto.constant.ErrorConstant.ERROR_NOT_VALID_COUNT;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
 public class UserLottoTest {
@@ -18,10 +20,13 @@ public class UserLottoTest {
         assertThatIllegalArgumentException()
                 .isThrownBy(() -> new UserLotto(input));
     }
+
     @DisplayName("로또 번호의 개수가 6개인지 검증")
     @Test
-    void createLottoByOverSize() {
+    void isValidSizeOfLotto() {
         assertThatIllegalArgumentException()
-                .isThrownBy(() -> new Lotto(List.of(1, 2, 3, 4, 5, 6, 7)));
+                .isThrownBy(() -> new Lotto(List.of(1, 2, 3, 4, 5, 6, 7)))
+                .withMessageStartingWith(ERROR_NOT_VALID_COUNT);
     }
+
 }

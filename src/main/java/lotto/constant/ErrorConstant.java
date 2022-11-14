@@ -6,5 +6,6 @@ public class ErrorConstant {
     public static final String ERROR_NOT_VALID_MONEY = "[ERROR] 유효하지 않은 금액입니다.";
 
     public static final String ERROR_NOT_VALID_COUNT = "[ERROR] 로또 번호가 6개가 아닙니다.";
+    public static final String ERROR_DUPLICATE_NUMBER = "[ERROR] 로또 번호가 중복되었습니다.";
 
 }
