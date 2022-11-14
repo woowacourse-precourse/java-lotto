@@ -38,7 +38,6 @@ public class Lotto {
         }
     }
 
-    // TODO: 추가 기능 구현
     public String toString() {
         return Arrays.toString(numbers.toArray());
     }
@@ -57,7 +56,7 @@ public class Lotto {
         return TWO_LOTTERIES - uniqueNumbers.size();
     }
 
-    public boolean hasBonusNumber(int bonusNumber) {
-        return this.numbers.contains(bonusNumber);
+    public boolean contain(int number) {
+        return this.numbers.contains(number);
     }
 }

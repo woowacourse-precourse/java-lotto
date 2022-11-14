@@ -1,6 +1,7 @@
 package lotto;
 
 import lotto.domain.Lotto;
+import lotto.domain.WinningLotto;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -46,7 +47,8 @@ class LottoTest {
     @Test
     void lottoHasBonusNumber() {
         Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
-        boolean result = lotto.hasBonusNumber(1);
+        WinningLotto winningLotto = new WinningLotto(new Lotto(List.of(1, 2, 3, 4, 5, 6)), 1);
+        boolean result = winningLotto.isBonusNumberIn(lotto);
 
         assertThat(result).isEqualTo(true);
     }
