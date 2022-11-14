@@ -47,7 +47,7 @@ public class Controller {
             }
         }
         for (int i = 0; i <= count - 3 && i != ranks.length - 1; i++) {
-            if(i==3){
+            if (i == 3) {
                 continue;
             }
             ranks[i].increaseCount();
