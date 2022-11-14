@@ -28,8 +28,13 @@ public class Lotto {
         }
     }
 
-    //private void filterNonNumbers()
-
+    private void isAlreadyExisted(List<Integer> numbers) {
+        for(int numberIndex=0; numberIndex<6; numberIndex++){
+            if(numbers.contains(numbers.get(numberIndex))){
+                throw new IllegalArgumentException("[ERROR] 중복되는 수가 있습니다.");
+            }
+        }
+    }
 
     // TODO: 추가 기능 구현
     // TODO: 번호 유효성 검사
