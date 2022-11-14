@@ -1,9 +1,5 @@
 package lotto;
 
-import java.util.List;
-
-import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
-import static camp.nextstep.edu.missionutils.Randoms.pickUniqueNumbersInRange;
 
 public class Application {
     public static void main(String[] args) {
@@ -16,5 +12,6 @@ public class Application {
         Lotto lotto = new Lotto(ui.getWinningNumbers());
         ui.inputBonus();
         lotto.validateBonus(ui.getBonus());
+        user.makeLottoNumbers();
     }
 }
