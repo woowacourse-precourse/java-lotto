@@ -16,9 +16,9 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
-        Validator.validateLength(numbers, LOTTO_NUMBER_LENGTH);
-        Validator.validateRange(numbers, LOTTO_NUMBER_LENGTH);
-        Validator.validateDuplication(numbers, LOTTO_NUMBER_LENGTH);
+        Validator.validateLength(numbers, LOTTO_NUMBERS_LENGTH);
+        Validator.validateRange(numbers, LOTTO_NUMBERS_LENGTH);
+        Validator.validateDuplication(numbers, LOTTO_NUMBERS_LENGTH);
     }
 
     @Override
