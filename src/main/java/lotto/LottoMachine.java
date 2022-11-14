@@ -24,7 +24,7 @@ public class LottoMachine {
         }
 
         if (money % 1000 > 0) {
-            throw new IllegalArgumentException("[ERROR] 구매금액은 1000원 단위가 아닙니다.");
+            throw new IllegalArgumentException("[ERROR] 구매금액이 1000원 단위가 아닙니다.");
         }
     }
 
