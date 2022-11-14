@@ -1,6 +1,5 @@
 package lotto;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Judge {
@@ -32,7 +31,7 @@ public class Judge {
         }
     }
 
-    public boolean allNumber(String numbers) {
+    public boolean isAllNumber(String numbers) {
         String[] num = numbers.split(",");
         for(String n : num) {
             if(!isNumber(n)){
@@ -43,7 +42,7 @@ public class Judge {
     }
 
     public boolean inputValueIsNumber(String numbers, String num) {
-        return allNumber(numbers) && isNumber(num);
+        return isAllNumber(numbers) && isNumber(num);
     }
 
     public boolean isNotContain(Lotto lotto, int bonus) {

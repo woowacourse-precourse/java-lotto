@@ -3,9 +3,7 @@ package lotto;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Stream;
 
 public class LottoGenerator {
@@ -31,14 +29,14 @@ public class LottoGenerator {
         return lottos;
     }
 
-    public void changeToNumber(String numbers, String bonus) {
+    public Lotto changeToNumber(String numbers) {
+        judge.isAllNumber(numbers);
         String[] num = numbers.split(",");
         List<Integer> revertNumbers = new ArrayList<>();
         for(String n : num) {
             revertNumbers.add(Integer.parseInt(n));
         }
-        winNumbers = new Lotto(revertNumbers);
-        bonusNumber = Integer.parseInt(bonus);
+        return new Lotto(revertNumbers);
     }
 
     private void showAllLottos(List<Lotto> lottoList) {

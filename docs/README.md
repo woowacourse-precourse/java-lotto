@@ -49,20 +49,35 @@
   - 수익율 계산
 
 ## 기능 목록
+
+### 입력값 유효성 검사
 - [x] 구입 금액이 1000으로 나누어 떨어지는지 확인하는 기능. - Judge#correctAmount()
 - [x] 입력한 당첨 번호, 보너스 번호가 숫자들로 이뤄져 있는지 확인한다. - Judge#allNumber()
 - [x] 입력한 당첨 번호, 보너스 번호가 1 - 45 범위에 있는지 확인한다. - Lotto#isCorrectRange()
-- [x] 로또를 발급한다. - LottoGenerator#createLottoNumbers()
-  - [x] 로또 번호가 6자리 인지 확인한다.
-  - [x] 중복되는 로또 번호가 있는지 확인한다.
-- [x] 발급받은 로또 번호와 입력받은 당첨 번호를 비교한다. - Manager#compare()
-  - [x] 몇 개의 숫자가 있는지 알 수 있다. - Judge#containCount()
-  - [x] 맞은 개수에 따른 결과를 분리한다.
-    - [x] 1등체크하는 함수 부터 5등까지 각각 구현해 놓는다.
 - [x] 보너스 번호가 당첨 번호와 겹치지 않는지 확인한다. - Judge#notContain()
+
+### 로또 발급
+- [x] 로또를 발급한다. - LottoGenerator#createLottoNumbers()
+  - [x] 로또 번호가 6자리 인지 확인한다. - Lotto#isCorrectRange()
+  - [x] 중복되는 로또 번호가 있는지 확인한다. - Lotto#checkDuplicatedNumber()
+
+### 당첨번호와 비교
+- [x] 발급받은 로또 번호와 입력받은 당첨 번호를 비교한다. - LottoManager#compare()
+  - [x] 몇 개의 숫자가 있는지 알 수 있다. - Judge#containCount()
+  - [x] 맞은 개수에 따른 결과를 분리한다. - LottoManager#checkResult()
+    - [x] 1등체크하는 함수 부터 5등까지 각각 구현해 놓는다. - LottoManager
+
+### 결과
 - [x] 발행한 로또 수량 및 번호를 출력한다.
   - [x] 로또 번호는 오름차순으로 정렬해 보여준다.
 - [x] 당첨 내역을 출력한다.
   - [x] 수익률은 소수점 둘째 자리에서 반올림한다.
+
+### 예외처리
 - [x] 예외 상황 시 에러 문구를 출력한다. 에러 문구는 "[ERROR]"로 시작한다.
+
+### 그 외
 - [x] Java Enum을 이용해서 하드코딩이 나올만한 부분 처리하기.
+
+### 테스트 관련 오류
+- [ ] List.of로 받아서 정렬시 오류발생.

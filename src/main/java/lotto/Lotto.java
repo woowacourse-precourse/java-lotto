@@ -40,7 +40,6 @@ public class Lotto {
     }
 
     public void printSortedNumbers() {
-        Collections.sort(numbers);
         System.out.println(numbers);
     }
 }
