@@ -8,7 +8,7 @@
     - [X] 플레이어로 부터 입력 받은 값을 int로 변환한다. - convertInput
     - [X] 입력 받은 값이 0인지 확인한다. - validationZeroAmount
     - [X] 입력 받은 값이 1,000 단위인지 확인한다. - validationAmount
-    - [X] 입력 받은 값을 통해 로또 구매 개수를 확인한다. - buyLottoQuantity
+    - [X] 입력 받은 값을 통해 로또 구매 개수를 확인한다. - Buy.lottoQuantity
     - [ ] `,`로 구분된 7개의 당첨 번호를 받는다. (마지막 값은 보너스 번호이다.)
         - [ ] 당첨 번호를 리스트로 변환한다.
 
