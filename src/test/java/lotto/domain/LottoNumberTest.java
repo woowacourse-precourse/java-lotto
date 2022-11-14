@@ -5,6 +5,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class LottoNumberTest {
 
@@ -13,6 +14,22 @@ class LottoNumberTest {
     @BeforeEach
     void setUp() {
         lottoNumber = new LottoNumber(1);
+    }
+
+    @DisplayName("로또 번호 중 0이 있으면 예외 발생")
+    @Test
+    void validateMinimumRange() {
+        assertThatThrownBy(() -> new LottoNumber(0))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("[ERROR] 로또 번호는 1~45 사이의 숫자 이어야 합니다.");
+    }
+
+    @DisplayName("로또 번호 중 46이 있으면 예외 발생")
+    @Test
+    void validateMaximumRange() {
+        assertThatThrownBy(() -> new LottoNumber(46))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("[ERROR] 로또 번호는 1~45 사이의 숫자 이어야 합니다.");
     }
 
     @DisplayName("equals 메소드 테스트")

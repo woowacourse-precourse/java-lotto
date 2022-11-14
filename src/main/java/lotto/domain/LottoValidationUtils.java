@@ -21,7 +21,6 @@ public class LottoValidationUtils {
     public static void validate(List<Integer> numbers) {
         validateSize(numbers);
         validateDuplication(numbers);
-        validateRange(numbers);
     }
 
     private static void validateSize(List<Integer> numbers) {
@@ -37,13 +36,7 @@ public class LottoValidationUtils {
         }
     }
 
-    private static void validateRange(List<Integer> numbers) {
-        for (int number : numbers) {
-            validateEachRange(number);
-        }
-    }
-
-    public static void validateEachRange(int number) {
+    public static void validateRange(int number) {
         if (isOutRange(number)) {
             throw new IllegalArgumentException(ERROR_NOT_VALID_NUMBER_RANGE);
         }
