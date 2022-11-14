@@ -1,11 +1,10 @@
 package lotto;
 
+import static camp.nextstep.edu.missionutils.Randoms.pickUniqueNumbersInRange;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-
-import static camp.nextstep.edu.missionutils.Console.readLine;
-import static camp.nextstep.edu.missionutils.Randoms.pickUniqueNumbersInRange;
 
 public class Buyer {
     private static final String ERROR_MESSAGE = "[ERROR]";
