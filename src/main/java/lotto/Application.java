@@ -1,7 +1,14 @@
 package lotto;
 
+import lotto.system.Program;
+
 public class Application {
+
+    private static final Program program = new Program();
+
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        program.startProgram();
+        program.winningProgram();
+        program.statisticsProgram();
     }
 }
