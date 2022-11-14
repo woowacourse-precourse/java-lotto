@@ -4,16 +4,23 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Statistics {
-    private int[] winningCount;
+    private int[] gradeCount;
     private int earningRate;
 
     public Statistics(List<Integer> winningNumbers, List<Lotto> lottos){
-        compare(winningNumbers, lottos);
+        countGrade(winningNumbers, lottos);
         calculateEarningRate();
     }
 
-    private void compare(List<Integer> winningNumbers, List<Lotto> lottos){
+    private void countGrade(List<Integer> winningNumbers, List<Lotto> lottos){
+        for(Lotto lotto : lottos){
+            int grade = compare(winningNumbers, lotto);
+            gradeCount[grade]++;
+        }
+    }
 
+    private int compare(List<Integer> winningNumbers, Lotto lotto){
+        return 0;
     }
 
     private void calculateEarningRate(){
@@ -24,8 +31,8 @@ public class Statistics {
         return 0;
     }
 
-    public int[] getWinningCount() {
-        return winningCount;
+    public int[] getGradeCount() {
+        return gradeCount;
     }
 
     public int getEarningRate() {
@@ -35,7 +42,7 @@ public class Statistics {
     @Override
     public String toString() {
         return "Statistics{" +
-                "winningCount=" + Arrays.toString(winningCount) +
+                "winningCount=" + Arrays.toString(gradeCount) +
                 ", earningRate=" + earningRate +
                 '}';
     }
