@@ -18,7 +18,7 @@ public class LottosValidationUtils {
     }
 
     private static boolean isDivided(int purchasePrice) {
-        return ((purchasePrice % Player.LOTTO_PRICE) == CRITERION_ZERO);
+        return ((purchasePrice % LottosCreator.LOTTO_PRICE) == CRITERION_ZERO);
     }
 
     public static void validateSize(int buyLottoCount, List<List<Integer>> lottoNumbers) {

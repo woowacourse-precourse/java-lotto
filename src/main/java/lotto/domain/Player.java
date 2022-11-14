@@ -7,8 +7,6 @@ import java.util.List;
 
 public class Player {
 
-    public static final int LOTTO_PRICE = 1000;
-
     private final Lottos lottos;
     private final int purchasePrice;
 

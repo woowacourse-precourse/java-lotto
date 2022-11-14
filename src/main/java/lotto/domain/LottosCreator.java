@@ -5,6 +5,8 @@ import java.util.stream.Collectors;
 
 public class LottosCreator {
 
+    public static final int LOTTO_PRICE = 1000;
+
     private LottosCreator() {
     }
 
@@ -21,7 +23,7 @@ public class LottosCreator {
 
     public static int calculateLottoCount(int purchasePrice) {
         LottosValidationUtils.validateCanPurchase(purchasePrice);
-        return purchasePrice / Player.LOTTO_PRICE;
+        return purchasePrice / LOTTO_PRICE;
     }
 
     private static List<Lotto> mapToLotto(List<List<Integer>> lottoNumbers) {
