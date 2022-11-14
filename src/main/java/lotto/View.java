@@ -99,6 +99,9 @@ public class View {
     public void printWinnerInputMsg() {
         System.out.println("당첨 번호를 입력해 주세요.");
     }
+    public void printBonusInputMsg() {
+        System.out.println("보너스 번호를 입력해 주세요.");
+    }
 
 
 }
