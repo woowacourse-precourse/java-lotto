@@ -15,22 +15,38 @@ public class Application {
 
         // TODO: 프로그램 구현
         System.out.println("구입금액을 입력해 주세요.");
-        int LottoCount = purchaseInput();
+        int LottoCount = purchaseInput(); // 8000
 
         System.out.println("\n" + LottoCount + "개를 구매했습니다.");
         MakeLotto(LottoCount);
 
         System.out.println("당첨 번호를 입력해 주세요");
-        List<Integer> LottoNumbers = WinningNumber();
-        System.out.println("보너스 번호를 입력해 주세요.");
+        List<Integer> LottoNumbers = WinningNumber(); // [1,2,3,4,5,6]
+        System.out.println();
 
+        System.out.println("보너스 번호를 입력해 주세요.");
+        int BonusNum = BonusNumber();
+        System.out.println();
+
+        System.out.println("당첨 통계");
+        System.out.println("---");
+        // Lotto lotto = new Lotto(LottoNumbers);
+
+    }
+
+    private static int BonusNumber() {
+        int Bonus = Integer.parseInt(Console.readLine());
+        if (Bonus < 0 || Bonus > 46){
+            throw new IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
+        }
+        return Bonus;
     }
 
     public static List<Integer> WinningNumber(){
         String WinningNum = Console.readLine();
         List<String> SplitNum = List.of(WinningNum.split(","));
         List<Integer> IntSplitNum = SplitNum.stream()
-                                            .map(s -> Integer.parseInt(s))
+                                            .map(Integer::parseInt)
                                             .collect(Collectors.toList());
         return IntSplitNum;
 
