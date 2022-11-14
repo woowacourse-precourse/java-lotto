@@ -23,14 +23,15 @@ public class NumberGenerator {
 
     public int enterPurchasePrice() {
         String purchasePrice = Console.readLine();
-        int purchasePriceInt = exceptionInvalidPurchasePrice(purchasePrice);
-        exceptionDividedIntoThousands(purchasePriceInt);
+        int purchasePriceInt = LottoException.exceptionInvalidPurchasePrice(purchasePrice);
+        LottoException.exceptionDividedIntoThousands(purchasePriceInt);
         return purchasePriceInt;
     }
 
     public void enterLottoNumbers() {
-        String lottoNumber = Console.readLine();
-        exceptionInvalidLottoNumber(lottoNumber);
+        String inputLottoNumbers = Console.readLine();
+        String[] lottoNumbers = LottoException.exceptionInvalidLottoNumber(inputLottoNumbers);
+        computerLotto = addComputerNumber(new ArrayList<>(Arrays.asList(lottoNumbers)));
     }
 
     public List<Integer> addComputerNumber(List<String> computerLottoString) {
@@ -53,30 +54,6 @@ public class NumberGenerator {
         for (List<Integer> lotto : autoLotto) {
             Stream<Integer> sorted = Collections.unmodifiableCollection(lotto).stream().sorted();
             System.out.println(Arrays.toString(sorted.toArray()));
-        }
-    }
-
-    private int exceptionInvalidPurchasePrice(String purchasePrice){
-
-        try {
-            return Integer.parseInt(purchasePrice);
-        } catch (Exception e) {
-            throw new IllegalArgumentException(LottoConstant.ERROR_MESSAGE + ExceptionConstant.INVALID_PURCHASE_PRICE);
-        }
-    }
-
-    public void exceptionDividedIntoThousands(int purchasePrice) throws IllegalArgumentException{
-        if (purchasePrice % 1000 != 0) {
-            throw new IllegalArgumentException(LottoConstant.ERROR_MESSAGE + ExceptionConstant.INCORRECT_DIVIDED_PURCHASE_PRICE);
-        }
-    }
-
-    private void exceptionInvalidLottoNumber(String lottoNumber) throws IllegalArgumentException{
-        try {
-            String[] lottoNumbers = lottoNumber.split(",");
-            computerLotto = addComputerNumber(new ArrayList<>(Arrays.asList(lottoNumbers)));
-        } catch (NumberFormatException exception) {
-            throw new IllegalStateException(LottoConstant.ERROR_MESSAGE + ExceptionConstant.INVALID_LOTTO_RANGE);
         }
     }
 }
