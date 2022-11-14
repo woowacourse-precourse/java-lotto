@@ -7,7 +7,7 @@ public class LottoNumber implements Comparable<LottoNumber>{
     private final int number;
 
     public LottoNumber(int number) {
-        LottoValidationUtils.validateRange(number);
+        LottoNumberValidUtils.validateRange(number);
         this.number = number;
     }
 

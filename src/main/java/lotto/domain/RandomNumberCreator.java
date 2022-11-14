@@ -16,8 +16,8 @@ public class RandomNumberCreator {
 
     public static List<Integer> createLottoNumber() {
         List<Integer> randomNumbers = Randoms.pickUniqueNumbersInRange(
-                MINIMUM_LOTTO_NUMBER,
-                MAXIMUM_LOTTO_NUMBER,
+                LottoNumberValidUtils.MINIMUM_LOTTO_NUMBER,
+                LottoNumberValidUtils.MAXIMUM_LOTTO_NUMBER,
                 CRITERION_LOTTO_SIZE);
         return new ArrayList<>(randomNumbers);
     }
