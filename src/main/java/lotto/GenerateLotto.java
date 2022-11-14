@@ -6,8 +6,8 @@ import camp.nextstep.edu.missionutils.Randoms;
 import org.assertj.core.util.Sets;
 
 public class GenerateLotto {
-    private List<List<Integer>> lottoNumberGroup = new ArrayList<>();
-    private int lottoQuantity;
+    private final int lottoQuantity;
+    private final List<List<Integer>> lottoNumberGroup = new ArrayList<>();
     private List<Integer> lottoNumbers;
 
     public GenerateLotto(int lottoQuantity) {
