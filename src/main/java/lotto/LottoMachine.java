@@ -19,6 +19,7 @@ public class LottoMachine {
     }
 
     public static Integer getNumberOfLotto(Integer purchaseAmount) {
+        validate(purchaseAmount);
         return (purchaseAmount / UNIT_AMOUNT);
     }
 
@@ -26,5 +27,11 @@ public class LottoMachine {
         return IntStream.range(0, getNumberOfLotto(purchaseAmount))
                 .mapToObj(i -> createLottoNumbers())
                 .collect(Collectors.toList());
+    }
+
+    private static void validate(Integer purchaseAmount) {
+        if (purchaseAmount % UNIT_AMOUNT != 0 || purchaseAmount == 0) {
+            throw new IllegalArgumentException("UNIT_AMOUNT_ERROR");
+        }
     }
 }

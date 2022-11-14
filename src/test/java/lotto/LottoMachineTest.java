@@ -2,6 +2,8 @@ package lotto;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.List;
 
@@ -34,5 +36,13 @@ class LottoMachineTest {
         Integer purchaseAmount = 8000;
         List<List<Integer>> multipleLottoNumbers = LottoMachine.createMultipleLottoNumbers(purchaseAmount);
         assertThat(multipleLottoNumbers.size()).isEqualTo(8);
+    }
+
+    @DisplayName("구입 금액이 1000으로 나누어 떨어지지 않는 경우 예외가 발생한다.")
+    @ParameterizedTest
+    @ValueSource(ints = {8500, 700, 0, 1234})
+    void createLottoNumbersByNonMultipleOfUnitAmount(Integer purchaseAmount) {
+        assertThatThrownBy(() -> LottoMachine.createMultipleLottoNumbers(purchaseAmount))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 }
