@@ -23,4 +23,19 @@ public class BonusTest {
         //then
         assertThrows(IllegalArgumentException.class, () -> bonusNumber.numberCount(input));
     }
+
+    @Test
+    public void 보너스번호숫자인지검증() throws Exception{
+        //given
+        String input = "a";
+
+        //when
+        try{
+            bonusNumber.notNumber(input);
+        }catch (Exception e){
+            System.out.println(e);
+        }
+        //then
+        assertThrows(IllegalArgumentException.class, () -> bonusNumber.notNumber(input));
+    }
 }
