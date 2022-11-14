@@ -18,7 +18,18 @@ public enum BonusNumberValidator implements Validator{
                 int number = Integer.parseInt(input);
                 return !(number < Config.LOTTO_START_NUMBER || number > Config.LOTTO_END_NUMBER);
             }
-    )
+    ),
+    IS_PARSEABLE(
+            "[ERROR] 입력 형식이 잘못되었습니다.",
+            (String input) -> {
+                try {
+                    Integer.parseInt(input);
+                    return true;
+                } catch (NumberFormatException e) {
+                    return false;
+                }
+            }
+    ),
     ;
 
     private final String errorMessage;
