@@ -4,8 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Application {
+    private static final String ERROR_MESSAGE = "[ERROR]";
+
     public static void main(String[] args) {
         LottoProgram lottoProgram = new LottoProgram();
-        lottoProgram.play();
+        try {
+            lottoProgram.play();
+        } catch (IllegalArgumentException e) {
+            System.out.println(ERROR_MESSAGE + e);
+        }
     }
 }
