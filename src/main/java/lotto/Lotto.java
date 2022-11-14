@@ -8,7 +8,6 @@ public class Lotto {
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
-        numbers = sortAscendingOrder(numbers);
         this.numbers = numbers;
     }
 
@@ -27,21 +26,10 @@ public class Lotto {
             if (this.numbers.get(j) == pickedNumber) {
                 return 1;
             }
-            if (this.numbers.get(j) < pickedNumber) {
+            if (this.numbers.get(j) > pickedNumber) {
                 return 0;
             }
         }
         return 0;
-    }
-
-    private List<Integer> sortAscendingOrder(List<Integer> numbers){
-        numbers.sort(new Comparator<Integer>() {
-            @Override
-            public int compare(Integer o1, Integer o2) {
-                return o1-o2;
-            }
-        });
-
-        return numbers;
     }
 }

@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.function.Function;
@@ -53,11 +54,12 @@ public class Application {
 
         int totalIncome = calculateTotalGain(boughtLottos, pickedNumbers, bonusNum);
         float rateOfReturn = getRateOfReturn(totalIncome, MONEY);
-        System.out.println("총 수익률은 "+rateOfReturn+"%입니다.");
+        System.out.printf("총 수익률은 %.2f",rateOfReturn);
+        System.out.println("입니다.");
     }
 
     public static float getRateOfReturn(int totalIncome, final int MONEY) {
-        float rateOfReturn = totalIncome/MONEY;
+        float rateOfReturn = (float) totalIncome/MONEY * 100;
         return rateOfReturn;
     }
 
@@ -84,14 +86,11 @@ public class Application {
         System.out.println("4개 일치 (50,000원) - "+history.get(LotteryWon.FourthPlace)+"개");
         System.out.println("5개 일치 (1,500,000원) - "+history.get(LotteryWon.ThirdPlace)+"개");
         System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - "+history.get(LotteryWon.SecondPlace)+"개");
-        System.out.println("6개 일치 (2,000,000,000원) - "+history.get(LotteryWon.FifthPlace)+"개");
+        System.out.println("6개 일치 (2,000,000,000원) - "+history.get(LotteryWon.FirstPlace)+"개");
     }
 
     public static HashMap<LotteryWon, Integer> updateHistory(HashMap<LotteryWon, Integer> history, LotteryWon income) {
-        if (history.containsKey(income)) {
-            history.replace(income, history.get(income) + 1);
-            return history;
-        }
+        history.replace(income, history.get(income) + 1);
         return history;
     }
 
@@ -102,6 +101,7 @@ public class Application {
         history.put(LotteryWon.ThirdPlace,0);
         history.put(LotteryWon.FourthPlace,0);
         history.put(LotteryWon.FifthPlace,0);
+        history.put(LotteryWon.Nothing,0);
 
         return history;
     }
@@ -175,7 +175,6 @@ public class Application {
                     lottoNumbers.append(", ");
                 }
             }
-
             lottoNumbers.append("]\n");
         }
 
