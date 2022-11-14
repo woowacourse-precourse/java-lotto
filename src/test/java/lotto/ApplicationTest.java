@@ -72,7 +72,7 @@ class ApplicationTest extends NsTest {
         Application application = new Application();
         int money = 12345;
 
-        assertThatThrownBy(() -> application.saveLotto(money))
+        assertThatThrownBy(() -> application.buyLotto(money))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -83,7 +83,7 @@ class ApplicationTest extends NsTest {
         int money = 3000;
         int result = 3;
 
-        assertThat(application.saveLotto(money).size()).isEqualTo(result);
+        assertThat(application.buyLotto(money).size()).isEqualTo(result);
     }
 
     @DisplayName("로또 번호 결과와 예상 결과 같은지 확인한다. ")
