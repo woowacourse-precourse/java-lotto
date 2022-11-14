@@ -56,7 +56,7 @@ public class LottoList {
      * 전체 로또 발행 함수
      */
     public void setAllLottoList() {
-        for(BigInteger lottoIndex = lottoCount; lottoIndex.compareTo(BigInteger.ZERO) > 0 ; lottoIndex.subtract(BigInteger.ONE)) {
+        for(BigInteger lottoIndex = lottoCount; lottoIndex.compareTo(BigInteger.ZERO) > 0 ; lottoIndex = lottoIndex.subtract(BigInteger.ONE)) {
             List<Integer> numbers = getLottoNumbers();
             lottos.add(new Lotto(numbers));
         }

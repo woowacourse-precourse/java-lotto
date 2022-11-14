@@ -1,7 +1,7 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
-import org.assertj.core.internal.BigIntegers;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -17,7 +17,11 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 class ApplicationTest extends NsTest {
     private static final String ERROR_MESSAGE = "[ERROR]";
 
-
+    static LottoList lottos;
+    @BeforeAll
+    static void createLottoList() {
+        lottos = new LottoList(new BigInteger("8000"));
+    }
 
     @Test
     void 기능_테스트() {
@@ -87,7 +91,7 @@ class ApplicationTest extends NsTest {
 
     @Test
     void 로또랜덤갯수생성_테스트() {
-
+        assertThat(lottos.getLottoAmount()).isEqualTo(BigInteger.valueOf(8L));
     }
 
     @Override
