@@ -36,7 +36,9 @@ public class WinningNumbers {
         List<Integer> distinctNumbers = numbers.stream()
                 .distinct()
                 .collect(Collectors.toList());
-        validate(distinctNumbers);
+        if (distinctNumbers.size() < 6) {
+            throw new IllegalArgumentException("중복된 숫자가 있습니다.");
+        }
     }
 
     public void checkScope(List<Integer> numbers) {
