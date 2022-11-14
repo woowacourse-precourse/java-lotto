@@ -31,12 +31,13 @@ public class InputView {
 
     public static List<Integer> inputWinningNumbers() {
         System.out.println(WINNING_NUMBERS_MESSAGE);
-        return toIntegerList(Console.readLine());
+        String input = Console.readLine();
+        validateWinningNumbersInput(input);
+        return toIntegerList(input);
     }
 
     private static List<Integer> toIntegerList(String input) {
         try {
-            validateWinningNumbersInput(input);
             return Arrays.stream(input.split(DELIMITER))
                     .map(Integer::parseInt)
                     .collect(Collectors.toList());
