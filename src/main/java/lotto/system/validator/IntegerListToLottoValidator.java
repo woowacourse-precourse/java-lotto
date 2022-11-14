@@ -13,15 +13,11 @@ public class IntegerListToLottoValidator {
 	public static final int MAX_LOTTO_NUMBER = 45;
 
 	public static void validate(List<Integer> target) {
-		try {
-			hasLottoSize(target);
-			isSortedAsc(target);
-			for (Integer number : target) {
-				isNumberInValidRange(number);
-				hasDuplicatingNumber(number, target);
-			}
-		} catch (ClassCastException exception) {
-			throw new IllegalStateException();
+		hasLottoSize(target);
+		isSortedAsc(target);
+		for (Integer number : target) {
+			isNumberInValidRange(number);
+			hasDuplicatingNumber(number, target);
 		}
 	}
 
