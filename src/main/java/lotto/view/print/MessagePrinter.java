@@ -42,7 +42,7 @@ public class MessagePrinter {
         System.out.println(NOTIFY_INPUT_BONUS_NUMBER);
     }
 
-    public void printWinningRecord(Statistics statistics) {
+    public void printDynamicWinningRecord(Statistics statistics) {
         Map<Rank, Integer> rankRecord = statistics.getRankRecord();
         for (Rank rank : rankRecord.keySet()) {
             System.out.printf((NOTIFY_WINNING_RECORD) + "%n" + rank.getReward() + rankRecord.get(rank));
