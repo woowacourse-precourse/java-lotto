@@ -5,6 +5,7 @@ import java.util.List;
 public class WinningNumbers {
     private final List<Integer> regularNumbers;
     private final int bonusNumber;
+
     public WinningNumbers(List<Integer> regularNumbers, int bonusNumber) {
         this.regularNumbers = regularNumbers;
         this.bonusNumber = bonusNumber;
@@ -18,7 +19,7 @@ public class WinningNumbers {
         return bonusNumber == number;
     }
 
-    public CompareResult judgeMatchOrBonus(Integer number, CompareResult compareResult) {
+    public CompareResult judgeWinningNumberOrBonus(Integer number, CompareResult compareResult) {
         if (isWinningNumber(number)) {
             return compareResult.oneMoreNumberMatched();
         }

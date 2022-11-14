@@ -1,13 +1,10 @@
 package lotto.model;
 
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvSource;
 
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 class WinningNumbersTest {
     WinningNumbers winningNumbers = new WinningNumbers(
@@ -18,11 +15,11 @@ class WinningNumbersTest {
     @Test
     void 어떤_숫자가_당첨번호_혹은_보너스인지_확인하는_기능() {
         CompareResult compareResult = new CompareResult(0, false);
-        compareResult = winningNumbers.judgeMatchOrBonus(1, compareResult);
-        compareResult = winningNumbers.judgeMatchOrBonus(7, compareResult);
-        compareResult = winningNumbers.judgeMatchOrBonus(0, compareResult);
-        compareResult = winningNumbers.judgeMatchOrBonus(9, compareResult);
-        compareResult = winningNumbers.judgeMatchOrBonus(3, compareResult);
+        compareResult = winningNumbers.judgeWinningNumberOrBonus(1, compareResult);
+        compareResult = winningNumbers.judgeWinningNumberOrBonus(7, compareResult);
+        compareResult = winningNumbers.judgeWinningNumberOrBonus(0, compareResult);
+        compareResult = winningNumbers.judgeWinningNumberOrBonus(9, compareResult);
+        compareResult = winningNumbers.judgeWinningNumberOrBonus(3, compareResult);
         assertThat(compareResult).isEqualTo(new CompareResult(2, true));
     }
 
