@@ -3,6 +3,8 @@ package lotto.domain;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
+import lotto.resource.Rank;
 
 public class LottoRating {
     private final List<Lotto> lottoBunch;
@@ -18,6 +20,9 @@ public class LottoRating {
     public void rate() {
         for (Lotto lotto : lottoBunch) {
             int matchingCount = compareLotto(lotto);
+            if (isWinning(matchingCount)) {
+                saveWinningCount(matchingCount, lotto);
+            }
         }
     }
 
@@ -29,6 +34,29 @@ public class LottoRating {
             }
         }
         return matchingCount;
+    }
+
+    private boolean isWinning(int matchingCount) {
+        return matchingCount >= Rank.FIFTH.getMatchingCount();
+    }
+
+    public void saveWinningCount(int matchingCount, Lotto lotto) {
+        boolean isSecond = Objects.equals(Rank.SECOND.getMatchingCount(), matchingCount) && hasBonusNumber(lotto);
+        if (isSecond) {
+            String tier = Rank.SECOND.getTier();
+            winningCountRepository.put(tier, winningCountRepository.getOrDefault(tier, 0) + 1);
+        }
+
+        for (Rank value : Rank.values()) {
+            if (Objects.equals(value.getMatchingCount(), matchingCount) && !isSecond) {
+                String tier = value.getTier();
+                winningCountRepository.put(tier, winningCountRepository.getOrDefault(tier, 0) + 1);
+            }
+        }
+    }
+
+    private boolean hasBonusNumber(Lotto lotto) {
+        return lotto.getNumbers().contains(winningLotto.getBonusNumber());
     }
 
     public Map<String, Integer> getWinningCountRepository() {
