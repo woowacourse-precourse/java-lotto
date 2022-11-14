@@ -27,7 +27,7 @@ public class Controller {
             output.printResult(lottoResult);
 
         } catch (IllegalArgumentException e) {
-            output.printErrorMessage();
+            output.printErrorMessage(e.getMessage());
         }
     }
 

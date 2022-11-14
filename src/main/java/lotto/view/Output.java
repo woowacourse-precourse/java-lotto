@@ -14,8 +14,6 @@ public class Output {
     private final String MESSAGE_TO_PRINT_YIELD_A = "총 수익률은 ";
     private final String MESSAGE_TO_PRINT_YIELD_B = "%입니다.";
 
-    private final String MESSAGE_OF_ERROR = "[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.";
-
     // user의 로또 출력하기
     public void printUserLottos(UserLottos userLottos) {
         printLottosCount(userLottos);
@@ -35,8 +33,8 @@ public class Output {
     }
 
     //에러메시지 출력하기
-    public void printErrorMessage() {
-        System.out.println(MESSAGE_OF_ERROR);
+    public void printErrorMessage(String errorMessage) {
+        System.out.println(errorMessage);
     }
 
     //출력 위해 로또 정렬하기 - 서비스 로직
