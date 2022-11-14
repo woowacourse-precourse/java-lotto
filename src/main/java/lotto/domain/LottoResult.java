@@ -14,11 +14,13 @@ final class LottoResult {
     }
 
     public boolean isSecondPrize() {
-        return sameCount == LottoSameCount.FIVE_SAME && containBonus == LottoContainBonus.CONTAIN;
+        return sameCount == LottoSameCount.FIVE_SAME
+                && containBonus == LottoContainBonus.CONTAIN;
     }
 
     public boolean isThirdPrize() {
-        return sameCount == LottoSameCount.FIVE_SAME && containBonus == LottoContainBonus.NOT_CONTAIN;
+        return sameCount == LottoSameCount.FIVE_SAME
+                && containBonus == LottoContainBonus.NOT_CONTAIN;
     }
 
     public boolean isFourthPrize() {

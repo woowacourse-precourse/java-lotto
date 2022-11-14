@@ -50,15 +50,19 @@ public final class Lotto {
     }
 
     private boolean isUnique(List<Integer> numbers) {
-        return numbers.stream().distinct().count() == LottoConstants.LOTTO_LENGTH.value();
+        return numbers.stream()
+                .distinct()
+                .count() == LottoConstants.LOTTO_LENGTH.value();
     }
 
     private boolean isOverRange(List<Integer> numbers) {
-        return numbers.stream().anyMatch(it -> it > LottoConstants.LOTTO_END_INCLUSIVE.value());
+        return numbers.stream()
+                .anyMatch(it -> it > LottoConstants.LOTTO_END_INCLUSIVE.value());
     }
 
     private boolean isUnderRange(List<Integer> numbers) {
-        return numbers.stream().anyMatch(it -> it < LottoConstants.LOTTO_START_INCLUSIVE.value());
+        return numbers.stream()
+                .anyMatch(it -> it < LottoConstants.LOTTO_START_INCLUSIVE.value());
     }
 
     public String toPrintableFormat() {
