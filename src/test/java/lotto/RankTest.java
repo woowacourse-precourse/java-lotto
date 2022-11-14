@@ -5,7 +5,7 @@ import lotto.domain.lotto.Lotto;
 import lotto.domain.lotto.WinLotto;
 import lotto.domain.user.User;
 import lotto.service.RankService;
-import lotto.view.Rank;
+import lotto.view.RankingView;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -16,9 +16,9 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.*;
 
 public class RankTest {
-    Rank rank = new Rank();
+    RankingView rankingView = new RankingView();
     RankService rankService = new RankService();
-    RankController rankController = new RankController(rankService, rank);
+    RankController rankController = new RankController(rankService, rankingView);
 
     @Test
     @DisplayName("당첨 번호 입력 테스트")
@@ -82,9 +82,11 @@ public class RankTest {
         buylotto(lottos, user);
 
         WinLotto winLotto = rankService.generateWinningLotto(winningNumber, bonus);
-        List<Integer> ranking = rankService.calculateRanking(user, winLotto);
+        List<Integer> ranking = new ArrayList<>
+                (rankService.calculateRanking(user, winLotto).getRank().values());
 
-        List<Integer> result = new ArrayList<>(List.of(0, 1, 1, 1, 1, 1));
+
+        List<Integer> result = new ArrayList<>(List.of(2, 1, 1, 1, 1, 0));
         assertThat(ranking).isEqualTo(result);
     }
 
@@ -100,7 +102,7 @@ public class RankTest {
 
         String rankingView = rankController.statistics(user, winningNumber, bonus);
 
-        String result = "3개 일치 (5,000원) - 1개\n" +
+        String result = "3개 일치 (5,000원) - 2개\n" +
                 "4개 일치 (50,000원) - 1개\n" +
                 "5개 일치 (1,500,000원) - 1개\n" +
                 "5개 일치, 보너스 볼 일치 (30,000,000원) - 1개\n" +
@@ -123,10 +125,11 @@ public class RankTest {
         List<Integer> third = new ArrayList<>(List.of(1,2,3,4,5,8));
         List<Integer> fourth = new ArrayList<>(List.of(1,2,3,4,8,9));
         List<Integer> fifth = new ArrayList<>(List.of(1,2,3,7,8,9));
+        List<Integer> fifth2 = new ArrayList<>(List.of(1,2,3,7,8,9));
 
         return new ArrayList<>(
                 List.of(new Lotto(first), new Lotto(second),
                         new Lotto(third), new Lotto(fourth),
-                        new Lotto(fifth)));
+                        new Lotto(fifth), new Lotto(fifth2)));
     }
 }

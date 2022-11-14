@@ -1,5 +1,7 @@
 package lotto.service;
 
+import lotto.domain.rank.Rank;
+import lotto.domain.rank.RankInfo;
 import lotto.domain.lotto.Lotto;
 import lotto.domain.lotto.WinLotto;
 import lotto.domain.user.User;
@@ -30,12 +32,12 @@ public class RankService {
         }
     }
 
-    public List<Integer> calculateRanking(User user, WinLotto lotto){
-        List<Integer> ranking = new ArrayList<>(List.of(0, 0, 0, 0, 0, 0));
+    public Rank calculateRanking(User user, WinLotto lotto){
+        Rank ranking = new Rank();
 
         for (Lotto boughtLotto : user.getLotto()){
             int rank = calculateRanking(boughtLotto, lotto);
-            ranking.set(rank, ranking.get(rank) + 1);
+            ranking.count(rank);
         }
         return ranking;
     }
