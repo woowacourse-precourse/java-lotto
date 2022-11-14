@@ -26,9 +26,11 @@ public class Application {
 
         for(Lotto lotto : lottos){
             int cnt = lotto.countMatchedNumbers(winningNums);
-            boolean isBonusmatched = lotto.checkBonusMatched(winningNums.get(bonusNumIdx));
+            boolean isBonusmatched = lotto.checkBonusMatched(winningNums.get(bonusNumIdx),cnt);
+            Rank rank = lotto.getRank(winningNums);
             System.out.println("cnt = " + cnt);
             System.out.println("isBonusmatched = " + isBonusmatched);
+            System.out.println("rank = " + rank);
         }
         
         

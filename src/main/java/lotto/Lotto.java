@@ -28,8 +28,8 @@ public class Lotto {
     public int countMatchedNumbers(List<Integer> winningNums) {
         int matchNumCnt = 0;
 
-        for(int num : winningNums){
-            if(isMatched(num,0,5)){
+        for(int i = 0; i < 6; i++){
+            if(isMatched(winningNums.get(i),0,5)){
                 matchNumCnt += 1;
             }
         }
@@ -39,8 +39,9 @@ public class Lotto {
     }
 
     //보너스 번호 일치 여부
-    public boolean checkBonusMatched(int bonusNum) {
-        if (isMatched(bonusNum,0,5)){
+    public boolean checkBonusMatched(int bonusNum,int matchNumCnt) {
+        int secondRankCont = 5;
+        if (isMatched(bonusNum,0,5) && matchNumCnt == secondRankCont){
             return true;
         }
         return false;
@@ -65,8 +66,14 @@ public class Lotto {
     }
 
 
-    //당첨 통계 메소드 구현
+    //등수를 구하는 메소드 구현
+    public Rank getRank(List<Integer> winningNums) {
+        int bonusNumIdx = 6;
 
+        int matchedNumCnt = countMatchedNumbers(winningNums);
+        boolean isbonusMatched = checkBonusMatched(winningNums.get(bonusNumIdx),matchedNumCnt);
+        return Rank.getRank(matchedNumCnt,isbonusMatched);
+    }
     
 
 }
