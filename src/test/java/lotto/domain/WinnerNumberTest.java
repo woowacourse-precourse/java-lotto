@@ -26,7 +26,7 @@ class WinnerNumberTest {
         // given
         // when
         // then
-        assertThatThrownBy(() -> new WinnerNumber(List.of(inputLottoNumber, "45")))
+        assertThatThrownBy(() -> new WinningNumber(List.of(inputLottoNumber, "45")))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(exceptionMessage);
     }
@@ -43,7 +43,7 @@ class WinnerNumberTest {
         // given
         // when
         // then
-        assertThatThrownBy(() -> new WinnerNumber(List.of(inputLottoNumber, inputBonusNumber)))
+        assertThatThrownBy(() -> new WinningNumber(List.of(inputLottoNumber, inputBonusNumber)))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(exceptionMessage);
     }

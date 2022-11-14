@@ -15,7 +15,7 @@ public class InputView {
         System.out.println(InputMessage.INVALID_INPUT_PRICE);
     }
 
-    public List<String> inputWinnerNumber() {
+    public List<String> inputWinningNumber() {
         String lottoNumber = inputLottoNumber();
         String bonusNumber = inputBonusNumber();
         return List.of(lottoNumber, bonusNumber);
