@@ -67,4 +67,19 @@ public class Application {
         }
         return winNumberList;
     }
+
+    public static int bonusNumber(String bonusNumStr){
+        int bonusNumber=0;
+        try{
+            bonusNumber = Integer.parseInt(bonusNumStr);
+        }catch(Exception e){
+            System.out.println("[ERROR] 보너스 번호를 숫자로 입력해주세요.");
+            throw new IllegalArgumentException();
+        }
+        if(bonusNumber<0 || bonusNumber > 45){
+            System.out.println("[ERROR] 보너스 번호를 숫자로 입력해주세요.");
+            throw new IllegalArgumentException();
+        }
+        return bonusNumber;
+    }
 }
