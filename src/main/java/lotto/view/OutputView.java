@@ -31,8 +31,8 @@ public class OutputView {
 	public static void printWinningResult(Map<Rank, Integer> scoreBoard) {
 		System.out.println(RESULT_HEADER_MESSAGE);
 
-		List<Rank> ranks = List.of(Rank.FIFTH, Rank.FOURTH, Rank.THIRD, Rank.SECOND, Rank.FIRST);
-		for (Rank rank : ranks) {
+		List<Rank> rankWithoutMiss = List.of(Rank.FIFTH, Rank.FOURTH, Rank.THIRD, Rank.SECOND, Rank.FIRST);
+		for (Rank rank : rankWithoutMiss) {
 			System.out.printf(
 				createWinningResultMessage(rank),
 				rank.getHitNumberCount(),
