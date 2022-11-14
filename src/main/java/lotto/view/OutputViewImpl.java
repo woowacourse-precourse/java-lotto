@@ -45,6 +45,11 @@ public class OutputViewImpl implements OutputView {
 		}
 	}
 
+	@Override
+	public void printProfitPercentageMessage(Profit profit) {
+		System.out.printf(PROFIT_MESSAGE_FORMAT, profit);
+	}
+
 	private String convertToScoreMessageFormat(ScoreInfo scoreInfo, Score score) {
 		return String.format(SCORE_MESSAGE_FORMAT,
 				score.getDescription(),
@@ -54,10 +59,5 @@ public class OutputViewImpl implements OutputView {
 
 	private String convertPriceToMoneyFormat(Integer price) {
 		return new DecimalFormat(MONEY_DECIMAL_PATTERN).format(price);
-	}
-
-	@Override
-	public void printProfitPercentageMessage(Profit profit) {
-		System.out.printf(PROFIT_MESSAGE_FORMAT, profit);
 	}
 }

@@ -1,16 +1,14 @@
 package lotto.system.validator;
 
+import lotto.vo.LottoInfo;
+
 import java.util.Collections;
 import java.util.List;
 
 public class IntegerListToLottoValidator {
-
-	public static final String INVALID_NUMBER_RANGE_MESSAGE = "생성된 숫자가 로또 숫자의 범위에 맞지 않습니다.";
-	public static final String INVALID_LIST_SIZE_MESSAGE = "로또 숫자의 개수와 맞지 않습니다.";
-	public static final String DUPLICATING_NUMBER_MESSAGE = "로또 숫자 중 중복되는 숫자가 있습니다.";
-	public static final int LOTTO_SIZE = 6;
-	public static final int MIN_LOTTO_NUMBER = 1;
-	public static final int MAX_LOTTO_NUMBER = 45;
+	public static final String INVALID_NUMBER_RANGE_MESSAGE = "입력한 숫자가 로또 숫자의 범위에 맞지 않습니다.";
+	public static final String INVALID_LIST_SIZE_MESSAGE = "입력한 숫자의 개수가 로또 숫자의 개수와 맞지 않습니다.";
+	public static final String DUPLICATING_NUMBER_MESSAGE = "입력한 로또 숫자 중 중복되는 숫자가 있습니다.";
 
 	public static void validate(List<Integer> target) {
 		hasLottoSize(target);
@@ -28,7 +26,7 @@ public class IntegerListToLottoValidator {
 	}
 
 	private static void isNumberInValidRange(Integer target) {
-		if (target < MIN_LOTTO_NUMBER || MAX_LOTTO_NUMBER < target) {
+		if (target < LottoInfo.MIN_LOTTO_NUMBER || LottoInfo.MAX_LOTTO_NUMBER < target) {
 			throw new IllegalArgumentException(INVALID_NUMBER_RANGE_MESSAGE);
 		}
 	}
@@ -38,7 +36,7 @@ public class IntegerListToLottoValidator {
 	}
 
 	private static void hasLottoSize(List<Integer> target) {
-		if (target.size() != LOTTO_SIZE) {
+		if (target.size() != LottoInfo.LOTTO_SIZE) {
 			throw new IllegalArgumentException(INVALID_LIST_SIZE_MESSAGE);
 		}
 	}

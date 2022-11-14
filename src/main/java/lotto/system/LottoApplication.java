@@ -15,7 +15,7 @@ public class LottoApplication {
 	private OutputView outputView;
 
 	public void run() {
-		doSetting();
+		injectDependencies();
 		try {
 			lottoController.runLotto();
 		} catch (IllegalArgumentException exception) {
@@ -23,7 +23,7 @@ public class LottoApplication {
 		}
 	}
 
-	private void doSetting() {
+	private void injectDependencies() {
 		inputView = new InputViewImpl();
 		outputView = new OutputViewImpl();
 		lottoService = new LottoServiceImpl();
