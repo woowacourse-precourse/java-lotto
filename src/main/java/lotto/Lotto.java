@@ -15,7 +15,9 @@ public class Lotto {
         Validation.numberRangeValidation(numbers);
         Validation.numberDuplicateValidation(numbers);
     }
-
+    public List<Integer> getNumbers(){
+        return numbers;
+    }
     @Override
     public String toString() {
         StringBuffer result = new StringBuffer();
