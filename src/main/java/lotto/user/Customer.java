@@ -1,6 +1,7 @@
 package lotto.user;
 
 import lotto.enumeration.ConsoleAlert;
+import lotto.enumeration.LottoErrorMessage;
 import lotto.enumeration.LottoRankInformation;
 import lotto.store.Lotto;
 import lotto.store.LottoDraw;
@@ -13,9 +14,6 @@ import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 public class Customer {
-    private static final String NUMERIC_ERROR = "[ERROR] 숫자를 입력해 주시기 바랍니다.";
-    private static final String DUPLICATION_ERROR = "[ERROR] 당첨 번호와 보너스 번호에 중복된 숫자가 있습니다.";
-
     private final List<Lotto> lotteries;
     private final Map<LottoRankInformation, Integer> rankings = createRankings();
     private final int pay;
@@ -32,13 +30,13 @@ public class Customer {
 
     private void validateNumeric(String readline) {
         if (!Pattern.matches("^[1-9]\\d*$", readline)) {
-            throw new IllegalArgumentException(NUMERIC_ERROR);
+            throw new IllegalArgumentException(LottoErrorMessage.NUMERIC_ERROR.getErrorMessage());
         }
     }
 
     private void validateDuplication(int bonusNumber, List<Integer> matchNumbers) {
         if (matchNumbers.contains(bonusNumber)) {
-            throw new IllegalArgumentException(DUPLICATION_ERROR);
+            throw new IllegalArgumentException(LottoErrorMessage.DUPLICATE_WIN_AND_BONUS_ERROR.getErrorMessage());
         }
     }
 

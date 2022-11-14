@@ -1,9 +1,10 @@
 package lotto.store;
 
+import lotto.enumeration.LottoErrorMessage;
+
 import java.util.*;
 
 public class Lotto {
-    private static final String DUPLICATION_ERROR = "[ERROR] 숫자에 중복이 있습니다.";
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
@@ -37,7 +38,7 @@ public class Lotto {
     
     private void validateDuplication(List<Integer> lottoNumbers) {
         if(new HashSet<>(lottoNumbers).size() != lottoNumbers.size()) {
-            throw new IllegalArgumentException(DUPLICATION_ERROR);
+            throw new IllegalArgumentException(LottoErrorMessage.DUPLICATION_ERROR.getErrorMessage());
         }
     }
 }

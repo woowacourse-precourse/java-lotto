@@ -1,5 +1,7 @@
 package lotto.store;
 
+import lotto.enumeration.LottoErrorMessage;
+
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
@@ -7,11 +9,6 @@ import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 public class LottoDraw {
-    private static final String COMMA_ERROR = "[ERROR] 쉼표로 구분된 6개 숫자를 입력해 주시기 바랍니다.";
-    private static final String DUPLICATION_ERROR = "[ERROR] 입력된 숫자에 중복이 있습니다.";
-    private static final String RANGE_ERROR = "[ERROR] 1~45 사이의 수를 입력해 주시기 바랍니다.";
-    private static final String NUMERIC_ERROR = "[ERROR] 숫자를 입력해 주시기 바랍니다.";
-
     private static LottoDraw lottoDraw;
 
     private LottoDraw() {
@@ -47,25 +44,25 @@ public class LottoDraw {
 
     private void validateComma(String readline) {
         if (readline.split(",").length != 6) {
-            throw new IllegalArgumentException(COMMA_ERROR);
+            throw new IllegalArgumentException(LottoErrorMessage.COMMA_ERROR.getErrorMessage());
         }
     }
 
     private void validateNumeric(String[] readline) {
         if (!Pattern.matches("^\\d*$", String.join("", readline))) {
-            throw new IllegalArgumentException(NUMERIC_ERROR);
+            throw new IllegalArgumentException(LottoErrorMessage.NUMERIC_ERROR.getErrorMessage());
         }
     }
 
     private void validateDuplication(List<Integer> winNumbers) {
         if (new HashSet<>(winNumbers).size() != winNumbers.size()) {
-            throw new IllegalArgumentException(DUPLICATION_ERROR);
+            throw new IllegalArgumentException(LottoErrorMessage.DUPLICATION_ERROR.getErrorMessage());
         }
     }
 
     private void validateRange(List<Integer> winNumbers) {
         if (winNumbers.stream().anyMatch(winNumber -> winNumber < 1 || winNumber > 45)) {
-            throw new IllegalArgumentException(RANGE_ERROR);
+            throw new IllegalArgumentException(LottoErrorMessage.RANGE_ERROR.getErrorMessage());
         }
     }
 

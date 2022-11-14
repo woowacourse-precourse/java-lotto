@@ -1,5 +1,6 @@
 package lotto.store;
 
+import lotto.enumeration.LottoErrorMessage;
 import lotto.enumeration.LottoInformation;
 
 import java.util.ArrayList;
@@ -7,8 +8,6 @@ import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class LottoMachine {
-    private static final String UNIT_ERROR = "[ERROR] 올바른 단위가 아닙니다.";
-
     private static LottoMachine lottoMachine;
 
     private LottoMachine() {
@@ -23,7 +22,7 @@ public class LottoMachine {
 
     private void validatePayUnit(int pay) {
         if (pay % 1000 != 0) {
-            throw new IllegalArgumentException(UNIT_ERROR);
+            throw new IllegalArgumentException(LottoErrorMessage.UNIT_ERROR.getErrorMessage());
         }
     }
 
