@@ -59,10 +59,12 @@ public class Application {
         return bonusnumber;
     }
     public static void printresult(List<Integer> result){
+        int totalmoney = 0;
         System.out.println("\n당첨 통계\n---");
         for(PrizeInfo info : PrizeInfo.values()){
             int index = info.ordinal();
             System.out.println(info.getCount()+" "+info.getPrintMoney()+" - "+result.get(index)+"개");
+            totalmoney += (info.getRealMoney()* result.get(index));
         }
     }
 }
