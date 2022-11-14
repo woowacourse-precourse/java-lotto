@@ -1,6 +1,7 @@
 package view;
 
 import domain.Lotto;
+import domain.WinLotto;
 import util.LottoMessage;
 
 import java.util.List;
@@ -25,5 +26,9 @@ public class ResultView {
 
     public void displaySeparator() {
         System.out.println(LottoMessage.LINE_SEPARATOR);
+    }
+
+    public void displayWinners(WinLotto winLotto) {
+
     }
 }

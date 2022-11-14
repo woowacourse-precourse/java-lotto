@@ -4,6 +4,7 @@ import domain.Lotto;
 import domain.LottoMachine;
 import domain.Profit;
 import domain.Money;
+import domain.WinLotto;
 import input.MoneyInput;
 import input.NumberInput;
 import view.RequestView;
@@ -24,6 +25,7 @@ public class LottoController {
     private Lotto winnerNumber;
     private int bonusNumber;
     private Profit profit;
+    private WinLotto winLotto;
 
     public void purchase() {
         requestView.displayEnterPurchaseAmount();
@@ -47,6 +49,8 @@ public class LottoController {
         resultView.displayWinStatistics();
         resultView.displaySeparator();
         resultView.displayPercentageProfit(profit.getPercentageProfit());
+        winLotto = new WinLotto(lotteries, winnerNumber, bonusNumber);
+        resultView.displayWinners(winLotto);
     }
 
 }

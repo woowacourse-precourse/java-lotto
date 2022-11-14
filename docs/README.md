@@ -33,7 +33,7 @@
 - [x] "당첨 통계"를 출력한다. ResultView#displayWinStatistics()
 - [x] "---"를 출력한다. ResultView#displaySeparator()
 - [x] 수익률을 출력한다. ResultView#displayPercentageProfit()
-- [ ] 당첨 조건별 일치 갯수와 보너스 볼 일치별 갯수를 출력한다. ResultView#displayWinners()
+- [x] 당첨 조건별 일치 갯수와 보너스 볼 일치별 갯수를 출력한다. ResultView#displayWinners()
 
 ## 클래스별 각 역할과 책임
 - LottoController: 전체 프로그램 흐름(입력, 출력 등)
