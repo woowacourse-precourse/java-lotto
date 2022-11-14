@@ -55,4 +55,10 @@ public class WinLotto {
             winningResult.put(ranking, winningResult.get(ranking) + 1);
         }
     }
+
+    public long calculatePrizeSum(){
+        return winningResult.entrySet().stream()
+                .mapToLong(entry -> entry.getKey().getPrize() * entry.getValue())
+                .sum();
+    }
 }
