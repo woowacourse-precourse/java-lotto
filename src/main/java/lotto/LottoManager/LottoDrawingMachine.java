@@ -19,13 +19,17 @@ public class LottoDrawingMachine {
 
         validateDrawnNumbersPattern(drawn_lines);
 
-        validateAllDrawnNumbers(drawn_lines);
+        validateAllDrawnNumbersRange(drawn_lines);
+
+        winning_numbers = makeWinning_numbers(drawn_lines);
+
+        bonus_number = makeBonus_number(drawn_lines);
     }
 
     public static void drawLottoForTest(List<String> drawn_lines) {
         validateDrawnNumbersPattern(drawn_lines);
 
-        validateAllDrawnNumbers(drawn_lines);
+        validateAllDrawnNumbersRange(drawn_lines);
     }
 
     private static List<String> drawLottoNumbers() {
@@ -46,29 +50,44 @@ public class LottoDrawingMachine {
         }
     }
 
-    private static void validateAllDrawnNumbers(List<String> drawn_lines) {
+    private static void validateAllDrawnNumbersRange(List<String> drawn_lines) {
         List<Integer> all_drawn_numbers = makeDrawnLinesToNumbers(drawn_lines);
 
         if (all_drawn_numbers.stream()
                 .filter(LottoDrawingMachine::validateDrawnNumberRange)
-                .count() != FIVE.getIntValue()) {
+                .distinct()
+                .count() != SEVEN.getIntValue()) {
             throw new IllegalArgumentException(DRAW_LOTTO_RANGE_ERROR.getMessage());
         }
     }
 
     private static List<Integer> makeDrawnLinesToNumbers(List<String> drawn_lines) {
-        winning_numbers =
-                Arrays.stream(drawn_lines.get(ZERO.getIntValue()).split(","))
-                        .map(Integer::parseInt)
-                        .collect(Collectors.toList());
-        bonus_number = Integer.parseInt(drawn_lines.get(ONE.getIntValue()));
+        List<Integer> winning_line = makeWinning_numbers(drawn_lines);
+        int bonus_line = makeBonus_number(drawn_lines);
 
         return Stream.concat(
-                winning_numbers.stream(), Stream.of(bonus_number)
+                winning_line.stream(), Stream.of(bonus_line)
                 ).collect(Collectors.toList());
     }
 
-    private static boolean validateDrawnNumberRange(Integer num) {
+    private static List<Integer> makeWinning_numbers(List<String> drawn_lines) {
+        return Arrays.stream(drawn_lines.get(ZERO.getIntValue()).split(","))
+                .map(Integer::parseInt)
+                .sorted()
+                .collect(Collectors.toList());
+    }
+
+    private static int makeBonus_number(List<String> drawn_lines) {
+        return Integer.parseInt(drawn_lines.get(ONE.getIntValue()));
+    }
+
+    private static boolean validateDrawnNumberRange(int num) {
         return num > ZERO.getIntValue() && num <= FOURTY_FIVE.getIntValue();
     }
+
+//    public static int calculatePrize(Lotto lotto) {
+//        lotto.getNumbers()
+//                .stream().
+//
+//    }
 }

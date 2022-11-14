@@ -18,13 +18,10 @@ public class Application {
         consumers.add(new_consumer);
 
 //        추첨
-        LottoDrawingMachine lottoDrawingMachine = new LottoDrawingMachine();
+        LottoDrawingMachine.drawLotto();
 
 //        당첨 확인
-        consumers.forEach(consumer ->
-                consumer.checkPrize(
-                        lottoDrawingMachine.getWinning_numbers(), lottoDrawingMachine.getBonus_number()
-                ));
+        consumers.forEach(Consumer::checkPrize);
     }
 
 }

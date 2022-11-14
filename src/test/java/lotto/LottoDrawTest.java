@@ -33,7 +33,7 @@ public class LottoDrawTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
-    @DisplayName("로또 당첨 번호 입력 시 1부터 45까지의 숫자로 입력해야한다")
+    @DisplayName("로또 당첨 번호 입력 시 1부터 45까지의 중복되지 않은 숫자로 입력해야한다")
     @Test
     void 로또추첨_예외처리_테스트3() {
         assertThatThrownBy(() -> LottoDrawingMachine.drawLottoForTest(List.of("1,2,3,4,5,46", "7")))
@@ -44,6 +44,7 @@ public class LottoDrawTest {
 
         assertThatThrownBy(() -> LottoDrawingMachine.drawLottoForTest(List.of("1,2,3,4,5,45", "46")))
                 .isInstanceOf(IllegalArgumentException.class);
+
     }
 }
 
