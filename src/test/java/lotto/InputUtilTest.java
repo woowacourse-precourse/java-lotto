@@ -8,6 +8,8 @@ import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintStream;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -38,6 +40,36 @@ public class InputUtilTest {
 	void inputPriceisRight() {
 		SetSystemInput("3000");
 		assertThat(InputUtil.inputPurchaseAmount()).isEqualTo(3000);
+	}
+	
+	@DisplayName("당첨번호 입력 - 6개 미만 당첨번호 입력")
+	@Test
+	void inputWinningNumbersJust5() {
+		SetSystemInput("1,2,3,4,5");
+		assertThatThrownBy(() -> InputUtil.inputWinnigNumber())
+		.isInstanceOf(IllegalArgumentException.class);
+	}
+	
+	@DisplayName("당첨번호 입력 - 숫자가 아닌 당첨번호 입력")
+	@Test
+	void inputWinningNumbersNotNumber() {
+		SetSystemInput("1,2,3,4,5,jd");
+		assertThatThrownBy(() -> InputUtil.inputWinnigNumber())
+		.isInstanceOf(IllegalArgumentException.class);
+	}
+	
+	@DisplayName("당첨번호 입력 - 올바른 당첨번호 입력")
+	@Test
+	void inputWinningNumbersIsRight() {
+		SetSystemInput("1,2,3,4,5,6");
+		List<Integer> expect = new ArrayList<>();
+		expect.add(1);
+		expect.add(2);
+		expect.add(3);
+		expect.add(4);
+		expect.add(5);
+		expect.add(6);
+		assertThat(InputUtil.inputWinnigNumber()).isEqualTo(expect);
 	}
 
 	
