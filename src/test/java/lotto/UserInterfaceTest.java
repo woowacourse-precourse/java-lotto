@@ -67,6 +67,16 @@ class UserInterfaceTest {
         }
 
         @Test
+        @DisplayName("숫자0 입력은 예외처리한다.")
+        void amount_input_is_zero() {
+            UserInterface ui = new UserInterface();
+            input("0");
+
+            assertThatThrownBy(() -> ui.requestPurchaseAmount())
+                    .isInstanceOf(IllegalArgumentException.class);
+        }
+
+        @Test
         @DisplayName("숫자+문자 입력은 예외처리한다.")
         void amount_input_is_combined_with_number_and_string() {
             UserInterface ui = new UserInterface();
