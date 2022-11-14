@@ -1,11 +1,9 @@
-package Main;
+package lotto;
 
 import java.util.List;
 
 import Print.Result;
 import User.User;
-import lotto.BuyLotto;
-import lotto.Lotto;
 
 public class Application {
     public static void main(String[] args) {
