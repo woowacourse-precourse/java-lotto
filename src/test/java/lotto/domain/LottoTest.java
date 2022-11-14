@@ -29,6 +29,6 @@ class LottoTest {
 	@Test
 	void createLottoBySort() {
 		Lotto lotto = new Lotto(List.of(6, 5, 4, 3, 2, 1));
-		assertEquals(lotto.getNumbers(), List.of(1, 2, 3, 4, 5, 6));
+		assertEquals(lotto.getLottoNumbers(), List.of(1, 2, 3, 4, 5, 6));
 	}
 }

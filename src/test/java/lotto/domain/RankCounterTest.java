@@ -38,7 +38,7 @@ class RankCounterTest {
 			);
 			RankCounter rankCounter = new RankCounter(lottoTickets, winningNumbers);
 			System.out.println(ranks);
-			assertEquals(rankCounter.getRanks(), ranks);
+			assertEquals(rankCounter.getScoreBoard(), ranks);
 		}
 
 		@Test
@@ -66,7 +66,7 @@ class RankCounterTest {
 			);
 			RankCounter rankCounter = new RankCounter(lottoTickets, winningNumbers);
 			System.out.println(ranks);
-			assertEquals(rankCounter.getRanks(), ranks);
+			assertEquals(rankCounter.getScoreBoard(), ranks);
 		}
 
 		@Test
@@ -94,7 +94,7 @@ class RankCounterTest {
 			);
 			RankCounter rankCounter = new RankCounter(lottoTickets, winningNumbers);
 			System.out.println(ranks);
-			assertEquals(rankCounter.getRanks(), ranks);
+			assertEquals(rankCounter.getScoreBoard(), ranks);
 		}
 	}
 }

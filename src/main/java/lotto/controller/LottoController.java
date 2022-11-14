@@ -15,27 +15,40 @@ public class LottoController {
 
 	public void play() {
 		try {
-			LottoStore lottoStore = new LottoStore(InputView.PURCHASE_AMOUNT.scanInput());
-			List<Lotto> lottoTickets = buyLottoTickets(lottoStore.getNumberOfTickets());
-			WinningNumbers winningNumbers = new WinningNumbers(InputView.WINNING_NUMBERS.scanInput(),
-				InputView.BONUS_NUMBER.scanInput());
-			calculateResult(lottoStore.getPurchaseAmount(), lottoTickets, winningNumbers);
+			LottoStore lottoStore = receivePurchaseAmount();
+			List<Lotto> lottoTickets = getLottoTickets(lottoStore.getNumberOfTickets());
+			WinningNumbers winningNumbers = scanWinningNumbersAndBonusNumber();
+			RankCounter scoreBoard = recordRanks(lottoTickets, winningNumbers);
+			calculateProfitRate(lottoStore.getPurchaseAmount(), scoreBoard);
 		} catch (IllegalArgumentException e) {
 			System.out.println(e.getMessage());
 		}
 	}
 
-	private List<Lotto> buyLottoTickets(int numberOfTickets) {
-		LottoMachine lottoMachine = new LottoMachine(numberOfTickets);
-		OutputView.printNumberOfTickets(numberOfTickets);
-		OutputView.printLottoTickets(lottoMachine);
-		return lottoMachine.getLottoTickets();
+	private LottoStore receivePurchaseAmount() {
+		LottoStore lottoStore = new LottoStore(InputView.PURCHASE_AMOUNT.scanInput());
+		OutputView.printNumberOfTickets(lottoStore.getNumberOfTickets());
+		return lottoStore;
 	}
 
-	private void calculateResult(int purchaseAmount, List<Lotto> lottoTickets, WinningNumbers winningNumbers) {
-		RankCounter rankCounter = new RankCounter(lottoTickets, winningNumbers);
-		ProfitRateCalculator profitRateCalculator = new ProfitRateCalculator(rankCounter.getRanks(), purchaseAmount);
-		OutputView.printWinningResult(rankCounter.getRanks());
-		OutputView.printProfitRate(profitRateCalculator.getProfitRate());
+	private List<Lotto> getLottoTickets(int numberOfTickets) {
+		LottoMachine lottoTicketPrinter = new LottoMachine(numberOfTickets);
+		OutputView.printLottoTickets(lottoTicketPrinter);
+		return lottoTicketPrinter.getLottoTickets();
+	}
+
+	private WinningNumbers scanWinningNumbersAndBonusNumber() {
+		return new WinningNumbers(InputView.WINNING_NUMBERS.scanInput(), InputView.BONUS_NUMBER.scanInput());
+	}
+
+	private RankCounter recordRanks(List<Lotto> lottoTickets, WinningNumbers winningNumbers) {
+		RankCounter scoreBoard = new RankCounter(lottoTickets, winningNumbers);
+		OutputView.printWinningResult(scoreBoard.getScoreBoard());
+		return scoreBoard;
+	}
+
+	private void calculateProfitRate(int purchaseAmount, RankCounter scoreBoard) {
+		ProfitRateCalculator calculator = new ProfitRateCalculator(scoreBoard.getScoreBoard(), purchaseAmount);
+		OutputView.printProfitRate(calculator.getProfitRate());
 	}
 }

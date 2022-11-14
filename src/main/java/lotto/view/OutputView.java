@@ -23,8 +23,8 @@ public class OutputView {
 	}
 
 	public static void printLottoTickets(LottoMachine lottoMachine) {
-		for (Lotto lottoTickets : lottoMachine.getLottoTickets()) {
-			System.out.println(Arrays.toString(lottoTickets.getNumbers().toArray()));
+		for (Lotto lottoTicket : lottoMachine.getLottoTickets()) {
+			System.out.println(Arrays.toString(lottoTicket.getLottoNumbers().toArray()));
 		}
 	}
 

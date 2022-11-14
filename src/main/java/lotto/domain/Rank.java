@@ -27,7 +27,7 @@ public enum Rank {
 		}
 
 		List<Rank> rankWithoutSecond = List.of(MISS, FIFTH, FOURTH, THIRD, FIRST);
-		return rankWithoutSecond.get(getRankWithoutSecondIndex(hitNumberCount));
+		return rankWithoutSecond.get(getListIndex(hitNumberCount));
 	}
 
 	public int getHitNumberCount() {
@@ -46,7 +46,7 @@ public enum Rank {
 		return isContainsBonusNumber && SECOND.hitNumberCount == hitNumberCount;
 	}
 
-	private static int getRankWithoutSecondIndex(int hitNumberCount) {
+	private static int getListIndex(int hitNumberCount) {
 		return Math.max(hitNumberCount - 2, MISS.hitNumberCount);
 	}
 

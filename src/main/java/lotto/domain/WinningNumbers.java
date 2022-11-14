@@ -21,7 +21,7 @@ public class WinningNumbers {
 	}
 
 	public List<Integer> getWinningNumbers() {
-		return lottoNumbers.getNumbers();
+		return lottoNumbers.getLottoNumbers();
 	}
 
 	public int getBonusNumbers() {

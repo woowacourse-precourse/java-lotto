@@ -7,43 +7,41 @@ import java.util.List;
 import java.util.Map;
 
 public class RankCounter {
-	private final Map<Rank, Integer> ranks;
+	private final Map<Rank, Integer> scoreBoard;
 
 	public RankCounter(List<Lotto> lottoTickets, WinningNumbers winningNumbers) {
-		this.ranks = countRanks(lottoTickets, winningNumbers);
+		this.scoreBoard = recordScoreBoard(lottoTickets, winningNumbers);
 	}
 
-	public Map<Rank, Integer> getRanks() {
-		return Collections.unmodifiableMap(ranks);
+	public Map<Rank, Integer> getScoreBoard() {
+		return Collections.unmodifiableMap(scoreBoard);
 	}
 
-	private Map<Rank, Integer> countRanks(List<Lotto> lottoTickets, WinningNumbers winningNumbers) {
-		Map<Rank, Integer> ranks = getCountRanksMap();
-
+	private Map<Rank, Integer> recordScoreBoard(List<Lotto> lottoTickets, WinningNumbers winningNumbers) {
+		Map<Rank, Integer> scoreBoard = getNewScoreBoard();
 		for (Lotto lottoTicket : lottoTickets) {
-			Rank key = countRank(lottoTicket, winningNumbers);
-			ranks.put(key, ranks.get(key) + 1);
+			Rank key = judgeRank(lottoTicket, winningNumbers);
+			scoreBoard.put(key, scoreBoard.get(key) + 1);
 		}
-		return ranks;
+		return scoreBoard;
 	}
 
-	private Map<Rank, Integer> getCountRanksMap() {
-		Map<Rank, Integer> ranks = new HashMap<>();
-
+	private Map<Rank, Integer> getNewScoreBoard() {
+		Map<Rank, Integer> newScoreBoard = new HashMap<>();
 		for (Rank rank : Rank.values()) {
-			ranks.put(rank, 0);
+			newScoreBoard.put(rank, 0);
 		}
-		return ranks;
+		return newScoreBoard;
 	}
 
-	private Rank countRank(Lotto lottoTicket, WinningNumbers winningNumbers) {
-		List<Integer> intersection = new ArrayList<>(lottoTicket.getNumbers());
+	private Rank judgeRank(Lotto lottoTicket, WinningNumbers winningNumbers) {
+		List<Integer> intersection = new ArrayList<>(lottoTicket.getLottoNumbers());
 		intersection.retainAll(winningNumbers.getWinningNumbers());
 		return Rank.of(intersection.size(), isContainsBonusNumber(lottoTicket, winningNumbers));
 	}
 
 	private boolean isContainsBonusNumber(Lotto lottoTicket, WinningNumbers winningNumbers) {
-		return lottoTicket.getNumbers().contains(winningNumbers.getBonusNumbers());
+		return lottoTicket.getLottoNumbers().contains(winningNumbers.getBonusNumbers());
 	}
 
 }
