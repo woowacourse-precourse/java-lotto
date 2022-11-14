@@ -14,6 +14,8 @@
 - 금액 입력 확인 
   - [x] 숫자인지 체크  
     &rarr; IllegalArgumentException, [ERROR] 입력한 금액이 숫자인지 확인하세요.
+  - [x] 1000 이하인지 체크  
+    &rarr; IllegalArgumentException, [ERROR] 최소 1000원부터 게임 가능합니다.
   - [x] 1000 으로 나눠 떨어지는지 체크  
     &rarr; IllegalArgumentException, [ERROR] 입력한 금액이 1000원으로 나누어 떨어지는지 확인하세요.
 - 당첨 번호 입력 확인  
