@@ -12,7 +12,8 @@ public class WinningLotto extends Lotto {
     }
 
     public WinningLotto(List<Integer> numbers, int bonusNumber) {
-        super(numbers);
+        this(numbers);
+        checker.checkBoundary(bonusNumber);
         checker.checkDuplicated(numbers, bonusNumber);
         this.bonusNumber = bonusNumber;
     }
