@@ -41,7 +41,7 @@ public class Lotto {
         }
     }
 
-    public Solution(String inputLottoAmount) {
+    public void Solution(String inputLottoAmount) {
         Integer inputNumbers = Model.MakeStringToInteger(inputLottoAmount);
         Integer lottoAmount = Model.CountLottoAmount(inputNumbers);
 
@@ -61,5 +61,7 @@ public class Lotto {
         View.Output("보너스 번호를 입력해 주세요.");
         String inputRealLottoBonusNumber = View.Input();
         Integer realLottoBonusNumber = Model.MakeStringToInteger(inputRealLottoBonusNumber);
+
+        new Lotto(realLottoNumbers);
     }
 }
