@@ -11,9 +11,6 @@ public class Game {
 
   private int numOfLotto;
   private List<Lotto> lotteries;
-  private Lotto winningNumber;
-  private int bonusNumber;
-  List<Integer> winningNumbers = new ArrayList<>();
   private final Map<Ranking, Integer> winningResult = new EnumMap<>(Ranking.class);
 
   public Game() {
@@ -46,6 +43,29 @@ public class Game {
 
   public List<Lotto> getLotteries() {
     return lotteries;
+  }
+
+  // 당첨 번호와 보너스 번호 입력 받아서 저장
+  public WinningNumbers inputNumber(String inputWinningNumber, String inputBonusNum) {
+    return new WinningNumbers(inputWinningNumber(inputWinningNumber), inputBonusNum(inputBonusNum));
+  }
+
+  // 당첨 번호 입력 받기
+  public Lotto inputWinningNumber(String input) {
+
+    List<String> inputNumbers = List.of(input.split(","));
+    List<Integer> winningNumbers = new ArrayList<>();
+
+    for (String number : inputNumbers) {
+      winningNumbers.add(Integer.parseInt(number));
+    }
+
+    return new Lotto(winningNumbers);
+  }
+
+  // 보너스 번호 입력 받기
+  public int inputBonusNum(String input) {
+    return Integer.parseInt(input);
   }
 
   // 맞춘 개수와 보너스 넘버 포함 여부로 랭킹 알아보기
