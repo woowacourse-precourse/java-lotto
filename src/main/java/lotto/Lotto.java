@@ -2,6 +2,7 @@ package lotto;
 
 import java.util.List;
 import java.util.Collections;
+import java.util.Iterator;
 
 
 
@@ -40,5 +41,14 @@ public class Lotto {
             return true;
         }
         return false;
+    }
+    public void printLotto() {
+        Iterator<Integer> itr = numbers.listIterator();
+        System.out.print("[");
+        while (itr.hasNext()) {
+            System.out.print(itr.next()+", ");
+        }
+        System.out.println(numbers.get(numbers.size()-1)+"]");
+
     }
 }
