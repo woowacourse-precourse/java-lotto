@@ -74,4 +74,12 @@ public class WinLotto {
             throw new IllegalArgumentException("[ERROR] 보너스 번호는 당첨 번호와 서로 중복되지 않는 숫자여야 합니다.");
         }
     }
+
+    public List<Integer> getWinNumbers() {
+        return this.winNumbers;
+    }
+
+    public Integer getBonusNumber() {
+        return this.bonusNumber;
+    }
 }

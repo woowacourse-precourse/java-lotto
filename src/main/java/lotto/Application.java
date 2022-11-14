@@ -3,6 +3,7 @@ package lotto;
 import camp.nextstep.edu.missionutils.Console;
 import lotto.domain.*;
 
+import java.util.Arrays;
 import java.util.List;
 
 public class Application {
@@ -16,6 +17,8 @@ public class Application {
         printPurchasedLottos(lottos);
 
         WinLotto winLotto = new WinLotto(askWinNumbers(), askBonusNumber());
+        Statistics statistics = new Statistics(lottos, winLotto, purchasePrice);
+        printStatisticsResult(statistics);
     }
 
     public static String askPurchasePrice() {
@@ -44,5 +47,21 @@ public class Application {
         for (Lotto lotto : lottos) {
             System.out.println(lotto.getNumbers());
         }
+        System.out.println();
+    }
+
+    public static void printStatisticsResult(Statistics statistics) {
+        System.out.println("당첨 통계");
+        System.out.println("---");
+        for (int index = 4; index >= 0; index--) {
+            Rank rank = Rank.values()[index];
+            System.out.print(rank.getMatchCount() + "개 일치");
+            if (rank == Rank.SECOND) {
+                System.out.print(", 보너스 볼 일치");
+            }
+            System.out.print(" (" + String.format("%,d", rank.getReward()) + "원) - ");
+            System.out.println(statistics.getResult().get(rank) + "개");
+        }
+        System.out.printf("총 수익률은 %.1f%%입니다.", statistics.getYield());
     }
 }
