@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public class InputLottoValidator {
 
@@ -40,7 +41,8 @@ public class InputLottoValidator {
     }
 
     private void isDistinguishComma(String winningNumbers) {
-        if (winningNumbers.length() - winningNumbers.replace(",", "").length() != WINNING_NUMBER_COUNT-1) {
+        if (winningNumbers.length() - winningNumbers.replace(",", "").length()
+            != WINNING_NUMBER_COUNT - 1) {
             throw new IllegalArgumentException("[ERROR] 번호는 쉼표를 기준으로 구분하여야 합니다.");
         }
     }
@@ -52,8 +54,9 @@ public class InputLottoValidator {
     }
 
     private void checkRangeWinningNumbers(String winningNumbers) {
-        List<Integer> distinguishWinningNumbers = (List<Integer>) Arrays.asList(
-            winningNumbers.split(",")).stream().mapToInt(Integer::parseInt);
+        List<Integer> distinguishWinningNumbers = Arrays.asList(winningNumbers.split(",")).stream()
+            .map(s -> Integer.parseInt(s)).collect(
+                Collectors.toList());
         if (!distinguishWinningNumbers.stream().allMatch(v -> v >= 1 && v <= 45)) {
             throw new IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
         }
