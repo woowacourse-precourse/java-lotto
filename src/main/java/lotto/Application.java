@@ -39,13 +39,12 @@ public class Application {
         return lottoCount; //받에서 sout ~개를 구입하였습니다.
     }
 
-//    /*로또 번호 자동생성 메소드*/
-//    public List<Integer> makeLottoNumber(){
-//        List<Integer> lottoNumbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
-//        System.out.println(lottoNumbers);
-//        return lottoNumbers;
-//
-//    }
+    /*로또 번호 자동생성 메소드*/
+    public List<Integer> makeLottoNumber(){
+        List<Integer> lottoNumbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+        System.out.println(lottoNumbers);
+        return lottoNumbers;
+    }
 
 
 }
