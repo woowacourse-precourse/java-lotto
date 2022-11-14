@@ -6,7 +6,7 @@ import java.util.List;
 
 public class Buy {
 
-    public static int isRightMoney(String money) {
+    public static int isRightNumber(String money) {
         char[] splitMoney = money.toCharArray();
         for(int i=0; i<splitMoney.length; i++) {
             if(!Character.isDigit(splitMoney[i])) {

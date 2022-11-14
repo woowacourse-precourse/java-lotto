@@ -10,7 +10,7 @@ class BuyTest {
     @Test
     void buyLottoNotByThousand() {
         String money = "1234";
-        Assertions.assertThatThrownBy(() -> Buy.isRightMoney(money))
+        Assertions.assertThatThrownBy(() -> Buy.isRightNumber(money))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("[ERROR]");
 
