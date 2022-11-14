@@ -49,4 +49,11 @@ public class Lotto {
         }
         return countSame;
     }
+
+    boolean isBonusNumber(int bonusNumber){
+        boolean bonus;
+        if(this.numbers.contains(bonusNumber))
+            return true;
+        return false;
+    }
 }
