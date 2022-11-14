@@ -54,7 +54,7 @@ public class Report {
                 continue;
             }
             // 5개의 모든 숫자가 맞을 경우
-            if (matchReport.currentHitCount() == 5) {
+            if (matchReport.currentHitCount() == 6) {
                 Integer amountOfFirstPrize = matchResultMap.get(FIRST);
                 amountOfFirstPrize += 1;
                 matchResultMap.replace(FIRST, amountOfFirstPrize);

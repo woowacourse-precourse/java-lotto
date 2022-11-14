@@ -25,13 +25,7 @@ public class LottoProcess {
 
     public static void run() {
         System.out.println(INPUT_COST_MASSAGE);
-        Integer moneyInput = 0;
-        try {
-            String str = Console.readLine();
-            moneyInput = Integer.parseInt(str);
-        } catch (IllegalArgumentException e) {
-            System.out.println(ERROR_CODE + GAME_MONEY_TYPE_EXCEPTION_MESSAGE);
-        }
+        Integer moneyInput = getMoneyInput();
 
         Money money = Money.from(moneyInput);
         Lottos lottos = Lottos.from(money.currentTime());
@@ -65,5 +59,16 @@ public class LottoProcess {
 
         System.out.println(ConsoleOut.TOTAL_PRIZE_MESSAGE_PRE + interest
             + ConsoleOut.TOTAL_PRIZE_MESSAGE_POST);
+    }
+
+    private static Integer getMoneyInput() {
+        Integer moneyInput = 0;
+        try {
+            String str = Console.readLine();
+            moneyInput = Integer.parseInt(str);
+        } catch (IllegalArgumentException e) {
+            System.out.println(ERROR_CODE + GAME_MONEY_TYPE_EXCEPTION_MESSAGE);
+        }
+        return moneyInput;
     }
 }
