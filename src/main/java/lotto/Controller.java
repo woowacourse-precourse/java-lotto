@@ -104,7 +104,7 @@ public class Controller {
         final List<List<Integer>> publishedLottoArray = Model.PublishLotto(lottoCount);
 
         // 로또 발행 출력
-        View.Output(lottoAmount+"개를 구매했습니다.");
+        View.Output(lottoAmount+"원을 구매했습니다.");
         for (List<Integer> list : publishedLottoArray) {
             View.Output(list.toString());
         }
