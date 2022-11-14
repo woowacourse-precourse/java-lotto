@@ -61,4 +61,5 @@
     - ```printInputWinningNumber``` : 당첨 번호 입력 멘트 출력
     - ```printBonusNumber``` : 보너스 번호 입력 멘트 출력
     - ```printWinningStatistics``` : 당첨 통계 멘트 출력
+    - ```printYield``` : 총 수익률 멘트 출력 
 
