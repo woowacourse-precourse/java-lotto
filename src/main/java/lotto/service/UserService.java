@@ -52,7 +52,7 @@ public class UserService {
     }
 
     public void validateMoney(int money) {
-        if (money % LOTTO_PRICE == 0) return;
+        if (0<money && money % LOTTO_PRICE == 0) return;
         throw new IllegalArgumentException(PAY_MONEY_ERROR);
     }
 
