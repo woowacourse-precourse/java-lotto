@@ -28,20 +28,21 @@ public class LottoJudge {
         int matcherCount = countByMatcher(userLotto);
         boolean isContainBonus = checkByBonus(userLotto);
 
-        if (matcherCount == 6) {
-            return LottoPlace.MATCHED_6;
+        if (matcherCount == LottoPlace.FIRST.getMatchCount()) {
+            return LottoPlace.FIRST;
         }
-        if (matcherCount == 5) {
-            if (isContainBonus) {
-                return LottoPlace.MATCHED_5_WITH_BONUS;
-            }
-            return LottoPlace.MATCHED_5;
+        if (matcherCount == LottoPlace.SECOND.getMatchCount()
+                && isContainBonus == LottoPlace.SECOND.isBonusCheck()) {
+            return LottoPlace.SECOND;
         }
-        if (matcherCount == 4) {
-            return LottoPlace.MATCHED_4;
+        if (matcherCount == LottoPlace.THIRD.getMatchCount()) {
+            return LottoPlace.THIRD;
         }
-        if (matcherCount == 3) {
-            return LottoPlace.MATCHED_3;
+        if (matcherCount == LottoPlace.FORTH.getMatchCount()){
+            return LottoPlace.FORTH;
+        }
+        if (matcherCount == LottoPlace.FIFTH.getMatchCount()){
+            return LottoPlace.FIFTH;
         }
         return LottoPlace.NONE;
     }
