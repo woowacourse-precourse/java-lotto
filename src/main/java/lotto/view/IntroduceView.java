@@ -21,7 +21,7 @@ public class IntroduceView extends View {
 
     private void getIntroduceMessage() {
         printLine("┏━━━━━━━━━━┓");
-        printLine("    게임 소개");
+        printLine("   게임 소개");
         printLine("┗━━━━━━━━━━┛");
         printLine("로또를 시뮬레이션할 수 있는 놀라운 게임이에요.");
         printLine("금액과 당첨 번호와 보너스를 입력하면 당첨 내역 및 수익률를 확인할 수 있어요.");
