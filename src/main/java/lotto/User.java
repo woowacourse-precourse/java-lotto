@@ -77,4 +77,11 @@ public class User {
         }
     }
 
+    private void validateSeparator(String input) {
+        String excludedSeparator = input.replace(",", "");
+        if (input.length() - excludedSeparator.length() != 5) {
+            throw new IllegalArgumentException(Error.SEPARATOR.getMessage());
+        }
+    }
+
 }
