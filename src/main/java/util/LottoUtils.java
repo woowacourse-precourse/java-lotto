@@ -88,9 +88,8 @@ public class LottoUtils {
 
     public static String getProfitPercentage(Rank rank, int inputMoney) {
         int totalProfit = calculateProfit(rank.getRank());
-        double profitPercent = totalProfit / inputMoney;
+        double profitPercent = (double)totalProfit / (double)inputMoney * 100.0;
         String roundedPercent = String.format("%.1f", profitPercent);
-
         return roundedPercent;
     }
 
