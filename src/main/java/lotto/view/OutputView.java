@@ -21,7 +21,7 @@ public final class OutputView {
     }
 
     public static void printYield(float yield) {
-        String formattedYield = Util.makeFloatFormatted(yield, Constant.PRECISION);
+        String formattedYield = Util.makeFloatFormatted(yield, Constant.YIELD_PRECISION);
         printIOMessage("총 수익률은 " + formattedYield + "%입니다.");
     }
 
