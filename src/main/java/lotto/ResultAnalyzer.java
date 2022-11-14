@@ -17,6 +17,12 @@ public class ResultAnalyzer {
     }
 
     public int determineRank(Lotto lotto) {
-        return 0;
+        Matcher matcher = new Matcher();
+        int hit = matcher.getCountOfCommonElement(lotto, winNumbers);
+        int rank = Prize.valueOfHit(hit).getRank();
+        if (hit == 5 && matcher.doesContainBonusNumber(lotto, bonusNumber)) {
+            rank--;
+        }
+        return rank;
     }
 }
