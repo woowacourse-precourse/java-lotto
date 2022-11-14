@@ -31,9 +31,15 @@ public class Application {
     }
 
     public static Integer getNumberOfLotto(int money) {
-        return money / lottoPrice;
+        int numOfLotto = money / lottoPrice;
+        printNumberOfLotto(numOfLotto);
+        return numOfLotto;
     }
-    
+
+    public static void printNumberOfLotto(int numOfLotto) {
+        System.out.println(numOfLotto + "개를 구매했습니다.");
+    }
+
     public static void main(String[] args) {
         // TODO: 프로그램 구현
     }
