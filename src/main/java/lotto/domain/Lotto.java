@@ -26,7 +26,7 @@ public class Lotto {
     }
 
     private void sizeCheck(List<Integer> numbers) {
-        if(numbers.size() != LOTTO_SIZE) {
+        if((numbers.size() % LOTTO_SIZE) != 0) {
             throw new IllegalArgumentException(SIZE_CHECK_ERROR);
         }
     }
@@ -46,6 +46,18 @@ public class Lotto {
                 throw new IllegalArgumentException(LIMIT_CHECK_ERROR);
             }
         }
+    }
+
+    public List<Integer> getNumbers() {
+        return this.numbers;
+    }
+
+    public boolean contains(int number) {
+        return this.numbers.contains(number);
+    }
+
+    public boolean add(int number) {
+        return this.numbers.add(number);
     }
 
 }
