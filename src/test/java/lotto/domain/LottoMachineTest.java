@@ -47,4 +47,15 @@ public class LottoMachineTest {
         Assertions.assertThatThrownBy(() -> lottoMachine.addBonusNumber(Integer.parseInt(bonusNumber)))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @Test
+    @DisplayName("보너스 숫자 예외 테스트(보너스 숫자가 1~45 범위를 벗어나는 경우)")
+    void OutOfRangeBonusExceptionTest() {
+        String numbers = "20,10,3,2,41,24";
+        LottoMachine lottoMachine = LottoMachine.initLottoMachineNumber(numbers).get();
+
+        String bonusNumber = "46";
+        Assertions.assertThatThrownBy(() -> lottoMachine.addBonusNumber(Integer.parseInt(bonusNumber)))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
