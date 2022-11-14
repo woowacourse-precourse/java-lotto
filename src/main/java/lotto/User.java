@@ -34,4 +34,8 @@ public class User {
 
         return lottos;
     }
+
+    public List<List<Integer>> getUserLottos() {
+        return new ArrayList<>(userLottos);
+    }
 }
