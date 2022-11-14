@@ -76,7 +76,7 @@ class LottoKioskTest {
         System.setIn(byteInput);
         //given
         LottoKiosk lottoKiosk = new LottoKiosk();
-        lottoKiosk.insertMoney();
+        lottoKiosk.getMoney();
         //when
         long chargedMoney = lottoKiosk.showInsertedMoney();
         //then
@@ -94,7 +94,7 @@ class LottoKioskTest {
         System.setIn(byteInput);
         //given
         LottoKiosk lottoKiosk = new LottoKiosk();
-        lottoKiosk.insertMoney();
+        lottoKiosk.getMoney();
         //when
         lottoKiosk.calculateLottoAmount();
         //then
@@ -109,7 +109,7 @@ class LottoKioskTest {
 
         LottoKiosk lottoKiosk = new LottoKiosk();
         //when
-        List<Integer> sixLottoNumbers = lottoKiosk.makeUniqueSixLottoNumbers();
+        List<Integer> sixLottoNumbers = lottoKiosk.makeLottoNumbers();
         //then
         assertThat(sixLottoNumbers).allSatisfy(o -> assertThat(o).isBetween(LOTTO_START_NUM, LOTTO_END_NUM));
         assertThat(sixLottoNumbers.size()).isEqualTo(LOTTO_NUM_COUNT);
@@ -123,10 +123,9 @@ class LottoKioskTest {
         //given
         LottoKiosk lottoKiosk = new LottoKiosk();
         //when
-        List<Integer> sixLottoNumbers = lottoKiosk.makeUniqueSixLottoNumbers();
-        List<Integer> sortedLottoNumbers = lottoKiosk.sortUniqueSixLottoNumbers(sixLottoNumbers);
+        List<Integer> lottoNumbers = lottoKiosk.makeLottoNumbers();
         //then
-        assertThat(sortedLottoNumbers).isSortedAccordingTo(Comparator.naturalOrder());
+        assertThat(lottoNumbers).isSortedAccordingTo(Comparator.naturalOrder());
     }
 
     @DisplayName("[오류 테스트] 로또 숫자가 6개보다 적음")
@@ -179,7 +178,7 @@ class LottoKioskTest {
         //given
         LottoKiosk lottoKiosk = new LottoKiosk();
         //when
-        lottoKiosk.insertMoney();
+        lottoKiosk.getMoney();
         lottoKiosk.calculateLottoAmount();
         lottoKiosk.makeAllLotto();
         //then
