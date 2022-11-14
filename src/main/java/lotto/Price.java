@@ -7,10 +7,24 @@ public class Price {
     public Price() {
         KeyboardInput k = new KeyboardInput();
         text = k.read();
-//        if (!validate())
-//            throw new IllegalArgumentException();
+        if (!validate())
+            throw new IllegalArgumentException();
         price = Integer.parseInt(text);
     }
 
-   
+    private boolean validate() {
+        if (!isNumber())
+            return false;
+        return true;
+    }
+
+    private boolean isNumber() {
+        try {
+            Integer.parseInt(text);
+            return true;
+        }
+        catch (NumberFormatException e) {
+            return false;
+        }
+    }
 }
