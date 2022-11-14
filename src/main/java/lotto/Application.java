@@ -28,21 +28,25 @@ public class Application {
     private static final String NOT_NUMBER_ERROR_MESSAGE = "[ERROR] 입력 값은 숫자여야 합니다.";
 
     public static void main(String[] args) {
-        int payment = inputPrice();
-        List<Lotto> lotteries = purchaseLotteries(payment);
+        try {
+            int payment = inputPrice();
+            List<Lotto> lotteries = purchaseLotteries(payment);
 
-        List<Integer> winningNumbers = inputWinningNumbers();
-        int bonus = inputBonusNumber(winningNumbers);
+            List<Integer> winningNumbers = inputWinningNumbers();
+            int bonus = inputBonusNumber(winningNumbers);
 
-        List<Integer> rankCount = getRankCount(
-                lotteries,
-                winningNumbers,
-                bonus
-        );
+            List<Integer> rankCount = getRankCount(
+                    lotteries,
+                    winningNumbers,
+                    bonus
+            );
 
-        String rateOfReturn = getRateOfReturn(rankCount, payment);
+            String rateOfReturn = getRateOfReturn(rankCount, payment);
 
-        printStatistics(rankCount, rateOfReturn);
+            printStatistics(rankCount, rateOfReturn);
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     public static int inputPrice() {
@@ -52,8 +56,7 @@ public class Application {
         validateNumber(paymentInput);
         int payment = Integer.parseInt(paymentInput);
         if (payment % 1000 != 0) {
-            System.out.println(INVALID_PAYMENT_ERROR_MESSAGE);
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(INVALID_PAYMENT_ERROR_MESSAGE);
         }
         System.out.println();
         return payment;
@@ -67,8 +70,7 @@ public class Application {
                     .map(Integer::parseInt)
                     .collect(Collectors.toList());
         }catch (NumberFormatException e){
-            System.out.println(INVALID_FORMAT_ERROR_MESSAGE);
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(INVALID_FORMAT_ERROR_MESSAGE);
         }
         validateWinningNumbersSize(winningNumbers);
         validateWinningNumbersRange(winningNumbers);
@@ -78,16 +80,14 @@ public class Application {
 
     public static void validateWinningNumbersSize(List<Integer> winningNumbers) {
         if (winningNumbers.size()!=6) {
-            System.out.println(INVALID_WINNING_NUMBER_SIZE_ERROR_MESSAGE);
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(INVALID_WINNING_NUMBER_SIZE_ERROR_MESSAGE);
         }
     }
 
     public static void validateWinningNumbersRange(List<Integer> winningNumbers){
         for (Integer winningNumber : winningNumbers) {
             if (winningNumber < 1 || winningNumber > 45) {
-                System.out.println(OUT_OF_RANGE_NUMBER_ERROR_MESSAGE);
-                throw new IllegalArgumentException();
+                throw new IllegalArgumentException(OUT_OF_RANGE_NUMBER_ERROR_MESSAGE);
             }
         }
     }
@@ -115,8 +115,7 @@ public class Application {
 
         // 보너스 번호가 당첨 번호에 있는지 확인
         if (winningNumbers.contains(bonus)) {
-            System.out.println(DUPLICATED_BONUS_NUMBER_ERROR_MESSAGE);
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(DUPLICATED_BONUS_NUMBER_ERROR_MESSAGE);
         }
     }
 
@@ -124,15 +123,13 @@ public class Application {
         try{
             Integer.parseInt(input);
         } catch (NumberFormatException e){
-            System.out.println(NOT_NUMBER_ERROR_MESSAGE);
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(NOT_NUMBER_ERROR_MESSAGE);
         }
     }
 
     public static void validateValidRangeNumber(int num) {
         if (num < 1 || num > 45) {
-            System.out.println(OUT_OF_RANGE_NUMBER_ERROR_MESSAGE);
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(OUT_OF_RANGE_NUMBER_ERROR_MESSAGE);
         }
     }
 
