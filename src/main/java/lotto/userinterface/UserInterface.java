@@ -1,6 +1,8 @@
 package lotto.userinterface;
 
 import camp.nextstep.edu.missionutils.Console;
+import lotto.Lotto;
+import lotto.MessageGenerator;
 import lotto.condition.Condition;
 import lotto.condition.MinimumMoneyCond;
 import lotto.condition.MoneyDivisionCond;
@@ -56,5 +58,14 @@ public class UserInterface {
 
     private static String getInput() {
         return Console.readLine();
+    }
+
+    public static void printLottos(List<Lotto> lottos) {
+        String purchaseCountMessage = MessageGenerator.getPurchaseCountMessage(lottos.size());
+        System.out.println(purchaseCountMessage);
+
+        for (Lotto lotto : lottos) {
+            System.out.println(lotto);
+        }
     }
 }
