@@ -22,6 +22,15 @@ public class Application {
         randomPickLotteries(lotteries, numberOfLotteries);
 
         printInputWinLotto();
+        WinLotto winLotto = getWinLottoInputFromUser();
+    }
+
+    private static WinLotto getWinLottoInputFromUser() {
+        Scanner scanner = new Scanner(System.in);
+        String input = scanner.nextLine();
+        //TODO: 입력 검증 후 보너스 번호 입력
+
+        return null;
     }
 
     private static void printInputWinLotto() {
