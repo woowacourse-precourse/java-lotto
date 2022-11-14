@@ -38,9 +38,6 @@ class LottoServiceTest {
                 .sorted(Comparator.comparing(Prize::getRanking).reversed())
                 .collect(Collectors.toList());
 
-        for (Prize prize : collect) {
-            System.out.println(prize.systemMessage + " - " + winningDetails.get(prize));
-        }
     }
 
 
@@ -51,7 +48,6 @@ class LottoServiceTest {
 
         for (Lotto lotto : lottos) {
             Assertions.assertThat(lotto.getUserLottoNumbers().size()).isEqualTo(6);
-            System.out.println("lotto = " + lotto.getUserLottoNumbers());
         }
 
         Assertions.assertThat(lottos.size()).isEqualTo(10);

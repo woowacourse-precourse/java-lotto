@@ -6,9 +6,6 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
-import static util.Constant.*;
-
 class InputConverterTest {
 
     @DisplayName("금액 입력 변환 테스트")

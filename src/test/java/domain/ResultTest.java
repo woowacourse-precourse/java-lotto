@@ -116,7 +116,7 @@ class ResultTest {
     @DisplayName("상금 조회 테스트")
     @Test
     void getPrizeTest1() {
-        Prize prize = result.getPrize(Rank.first);
+        Prize prize = result.getPrizes(Rank.first);
 
         Assertions.assertThat(prize).isEqualTo(Prize.firstPrize);
     }
@@ -124,7 +124,7 @@ class ResultTest {
     @DisplayName("상금 조회 테스트")
     @Test
     void getPrizeTest2() {
-        Prize prize = result.getPrize(Rank.third);
+        Prize prize = result.getPrizes(Rank.third);
 
         Assertions.assertThat(prize).isEqualTo(Prize.thirdPrize);
     }
@@ -132,7 +132,7 @@ class ResultTest {
     @DisplayName("상금 조회 테스트")
     @Test
     void getPrizeTest3() {
-        Prize prize = result.getPrize(Rank.nothing);
+        Prize prize = result.getPrizes(Rank.nothing);
 
         Assertions.assertThat(prize).isEqualTo(Prize.nothing);
     }
