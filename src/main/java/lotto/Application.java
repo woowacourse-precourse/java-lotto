@@ -31,7 +31,7 @@ public class Application {
             System.out.println(lottonumbers.get(i));
         }
     }
-    public static List<Integer> askwinningnum(){
+    public static List<Integer> askwinningnumbers(){
         System.out.println("\n당첨 번호를 입력해 주세요.");
         List<Integer> winningnumbers = new ArrayList<>();
         String input = Console.readLine();
@@ -40,5 +40,12 @@ public class Application {
             winningnumbers.add(Integer.valueOf(number));
         }
         return winningnumbers;
+    }
+    public static int askbonusnumber(){
+        System.out.println("\n보너스 번호를 입력해 주세요.");
+        String input = Console.readLine();
+        int bonusnumber = Integer.parseInt(input);
+
+        return bonusnumber;
     }
 }
