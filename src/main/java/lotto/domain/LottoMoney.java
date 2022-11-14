@@ -11,6 +11,10 @@ public class LottoMoney {
         this.money = money;
     }
 
+    public int getMoney() {
+        return money;
+    }
+
     public int calculateLottoTicket(){
         return money / MIN_COST;
     }
