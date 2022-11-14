@@ -24,4 +24,8 @@ public class LottoView {
         System.out.println(purchaseAmount + PURCHASE_LOTTO_COUNT_RESULT_MESSAGE);
         lottoNumbers.forEach(System.out::println);
     }
+
+    public static String getWinningNumber() {
+        return Console.readLine();
+    }
 }
