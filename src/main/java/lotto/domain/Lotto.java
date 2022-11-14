@@ -10,6 +10,8 @@ import java.util.stream.Collectors;
 public class Lotto {
 
     public static final int PRICE = 1000;
+    public static final int MIN_NUMBER = 1;
+    public static final int MAX_NUMBER = 45;
 
     private final List<Integer> numbers;
 
@@ -41,7 +43,7 @@ public class Lotto {
 
     public void checkNumberRange(List<Integer> numbers) {
         for (int number : numbers) {
-            if (number < 1 || number > 45) {
+            if (number < MIN_NUMBER || number > MAX_NUMBER) {
                 throw new IllegalArgumentException("[ERROR] 로또 번호는 1~45 사이의 숫자이어야 합니다.");
             }
         }
