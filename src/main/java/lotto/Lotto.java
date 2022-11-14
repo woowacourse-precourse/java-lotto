@@ -20,7 +20,7 @@ public class Lotto {
                 .collect(Collectors.toList());
     }
 
-    public static Lotto createLotto() {
+    public static Lotto create() {
         List<Integer> numbers = Randoms.pickUniqueNumbersInRange(LOWER_BOUND_NUMBER, UPPER_BOUND_NUMBER,
                 LOTTO_NUMBERS_SIZE);
         return new Lotto(numbers);
