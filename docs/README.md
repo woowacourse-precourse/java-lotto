@@ -25,6 +25,10 @@
     - 등수, 일치하는 번호 개수, 보너스볼 일치 여부, 당첨금
     - ```getWinning``` : 당첨 개수, 보너스볼 당첨 여부를 확인해 WinningEnum을 반환
 
+### **Game 클래스**
+- #### **로또 게임 시작**
+    - ```start``` : 게임 시작
+
 ### **Money 클래스**
 - #### **로또 구입 금액**
     - ```inputMoney``` : 로또 구입할 금액 입력
@@ -50,9 +54,11 @@
     - ```bonusNumber``` : 보너스 로또 번호 반환
     - ```inputBonusNumber``` : 보너스 로또 번호 입력
     - ```validateBonusNumberIsRightNumber``` : 입력한 보너스 번호 검증 및 예외처리
+
+### **Exception 클래스**
+- #### **IllegalArgumentException 상속**
+    - prefix로 "[ERROR]" 지정
     
-
-
 ### **Output 클래스**
 - #### **출력 기능**
     - ```printInputMoney``` : 구입 금액 입력 멘트 출력
