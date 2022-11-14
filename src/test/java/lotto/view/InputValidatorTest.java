@@ -71,6 +71,6 @@ public class InputValidatorTest {
     @DisplayName("toLong 메서드는 long 범위를 넘는 숫자가 들어오면 IEA 예외")
     @Test
     void case6() {
-        assertThrows(IllegalArgumentException.class, () -> InputValidator.toInt("220000000000000000000"));
+        assertThrows(IllegalArgumentException.class, () -> InputValidator.toInt("2200000000000000000000000"));
     }
 }
