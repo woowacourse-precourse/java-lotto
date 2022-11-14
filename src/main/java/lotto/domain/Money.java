@@ -9,7 +9,6 @@ public final class Money {
     private static final String NEGATIVE_MESSAGE = "돈에는 양수가 들어와야 합니다";
     private static final String MULTIPLE_MESSAGE =
             "돈에는 " + LottoConstants.LOTTO_PRICE + "의 배수가 들어와야 합니다";
-    private static final int unit = 1000;
     private final long amount;
 
     /**
@@ -36,7 +35,7 @@ public final class Money {
     }
 
     private boolean isMultipleOfUnit(long amount) {
-        return amount % unit == 0;
+        return amount % LottoConstants.LOTTO_PRICE == 0;
     }
 
     /**
@@ -44,7 +43,7 @@ public final class Money {
      *
      * @return 실제 구매 가능한 로또의 수를 나타내는 정수값
      */
-    public long ableToBuy() {
-        return amount / unit;
+    public long ableToBuy(int eachPrice) {
+        return amount / eachPrice;
     }
 }

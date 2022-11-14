@@ -1,6 +1,7 @@
 package lotto.view;
 
 import handler.OutputHandler;
+import lotto.constant.LottoConstants;
 import lotto.domain.Lotto;
 import lotto.domain.LottoScoreDto;
 import lotto.domain.Lottos;
@@ -55,7 +56,7 @@ public final class OutputView {
      */
 
     public void printLottoAmountMessage(Money money) {
-        outputHandler.printf(LOTTO_AMOUNT_MESSAGE, money.ableToBuy());
+        outputHandler.printf(LOTTO_AMOUNT_MESSAGE, money.ableToBuy(LottoConstants.LOTTO_PRICE));
     }
 
     /**

@@ -1,5 +1,6 @@
 package lotto.domain;
 
+import lotto.constant.LottoConstants;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -27,6 +28,6 @@ public class MoneyTest {
     @ParameterizedTest
     @ValueSource(ints = {1, 50, 2342})
     void case3(int count) {
-        assertThat(new Money(count * 1000).ableToBuy()).isEqualTo(count);
+        assertThat(new Money(count * 1000L).ableToBuy(LottoConstants.LOTTO_PRICE)).isEqualTo(count);
     }
 }
