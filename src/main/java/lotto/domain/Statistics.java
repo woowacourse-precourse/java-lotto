@@ -2,7 +2,7 @@ package lotto.domain;
 
 public class Statistics {
 
-    public final float rateOfReturn;
+    public final double rateOfReturn;
     public final String resultMessage;
 
     public Statistics(int purchaseAmount, int firstCount, int secondCount, int thirdCount, int fourthCount, int fifthCount) {
@@ -10,9 +10,10 @@ public class Statistics {
         this.resultMessage = statisticsMessage(firstCount, secondCount, thirdCount, fourthCount, fifthCount);
     }
 
-    private float statisticsReturn(int purchaseAmount, int firstCount, int secondCount, int thirdCount, int fourthCount, int fifthCount) {
-        int income = 5000*fifthCount + 50000*fourthCount + 1500000*thirdCount + 30000000*secondCount + 2000000000*firstCount;
-        return (float) (income / purchaseAmount * 100);
+    private double statisticsReturn(double purchaseAmount, int firstCount, int secondCount, int thirdCount, int fourthCount, int fifthCount) {
+        double income = 5000*fifthCount + 50000*fourthCount + 1500000*thirdCount + 30000000*secondCount + 2000000000*firstCount;
+        double rate = income/purchaseAmount * 100;
+        return rate;
     }
 
     private String statisticsMessage(int firstCount, int secondCount, int thirdCount, int fourthCount, int fifthCount) {
@@ -23,7 +24,7 @@ public class Statistics {
                 + "5개 일치 (1,500,000원) - " + thirdCount +"개\n"
                 + "5개 일치, 보너스 볼 일치 (30,000,000원) - " + secondCount +"개\n"
                 + "6개 일치 (2,000,000,000원) - " + firstCount +"개\n"
-                + "총 수익률은 " + String.format("%.2f", rateOfReturn) + "%입니다.\n";
+                + "총 수익률은 " + String.format("%.1f", rateOfReturn) + "%입니다.\n";
         return message;
     }
 }
