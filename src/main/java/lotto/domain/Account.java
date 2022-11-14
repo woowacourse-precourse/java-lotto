@@ -9,8 +9,8 @@ import java.util.Map;
 import lotto.constant.WinningResult;
 
 public class Account {
-    private WinningCalculator winningCalculator;
-    private Map<WinningResult, Integer> results = new LinkedHashMap();
+    private final WinningCalculator winningCalculator;
+    private final Map<WinningResult, Integer> results = new LinkedHashMap<>();
     private int count;
     private long winningAmount;
 
@@ -26,8 +26,7 @@ public class Account {
 
     public void saveResult(List<Lotto> lottos) {
         this.count = lottos.size();
-        lottos.stream()
-                .forEach(lotto -> saveOneLotto(lotto));
+        lottos.forEach(this::saveOneLotto);
         calculateWinningAmountByResults();
     }
 
@@ -39,8 +38,7 @@ public class Account {
         double yieldRaw = winningAmount / ((double) (count * AMOUNT_OF_ONE_LOTTO));
         double yieldPercent = yieldRaw * 100;
         DecimalFormat decFormat = new DecimalFormat("###,##0.0");
-        String yield = decFormat.format(yieldPercent);
-        return yield;
+        return decFormat.format(yieldPercent);
     }
 
     private void saveOneLotto(Lotto lotto) {
