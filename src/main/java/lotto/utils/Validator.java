@@ -1,5 +1,6 @@
 package lotto.utils;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.regex.Pattern;
 import lotto.domain.ErrorMessage;
@@ -28,6 +29,9 @@ public class Validator {
         if(!isSixNumbers(lottoNumbers)) {
             throw new IllegalArgumentException(ErrorMessage.LOTTO_NUMBER_IS_NOT_SIX_NUMBERS.toString());
         }
+        if(!hasNotDuplicateNumber(lottoNumbers)) {
+            throw new IllegalArgumentException(ErrorMessage.LOTTO_NUMBER_IS_DUPLICATED.toString());
+        }
     }
 
     private boolean isLottoRange(List<Integer> lottoNumbers) {
@@ -38,6 +42,10 @@ public class Validator {
 
     private boolean isSixNumbers(List<Integer> lottoNumbers) {
         return lottoNumbers.size() == 6;
+    }
+
+    private boolean hasNotDuplicateNumber(List<Integer> lottoNumbers) {
+        return (new HashSet<>(lottoNumbers)).size() == 6;
     }
 
     private boolean isNumber(String input) {
