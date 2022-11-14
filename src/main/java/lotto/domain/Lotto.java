@@ -1,19 +1,31 @@
 package lotto.domain;
 
-import java.util.HashSet;
 import java.util.List;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Set;
+import java.util.HashSet;
 
 public class Lotto {
+    private static final int lottoMinNumber = 1;
+    private static final int lottoMaxNumber = 45;
+    private static final int lottoLength = 6;
+
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
-        this.numbers = numbers;
+        List<Integer> sortList = new ArrayList<>(numbers);
+        Collections.sort(sortList);
+        this.numbers = sortList;
+    }
+
+    public List<Integer> getNumbers() {
+        return this.numbers;
     }
 
     private void validate(List<Integer> numbers) {
-        if (numbers.size() != 6) {
+        if (numbers.size() != lottoLength) {
             throw new IllegalArgumentException("[ERROR] 로또 번호는 6자리 숫자입니다.");
         }
         if (dupCheck(numbers)) {
@@ -32,7 +44,7 @@ public class Lotto {
 
     private boolean rangeCheck(List<Integer> numbers) {
         for (int number : numbers) {
-            if (number < 1 || number > 45)
+            if (number < lottoMinNumber || number > lottoMaxNumber)
                 return true;
         }
         return false;
