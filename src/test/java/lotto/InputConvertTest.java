@@ -3,6 +3,9 @@ package lotto;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
+import java.io.ByteArrayOutputStream;
+import java.io.OutputStream;
+import java.io.PrintStream;
 import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -48,5 +51,25 @@ public class InputConvertTest {
     void lottoNumberConvert2() {
         String input = "1,2,3,4,20,45";
         assertThat(InputConvert.lottoNumber(input)).isEqualTo(List.of(1, 2, 3, 4, 20, 45));
+    }
+    @DisplayName("에러가 발생한 경우 에러메세지를 출력한다.")
+    @Test
+    void lottoNumberInputConvertErrorForPrint() {
+        String input = "1,2,3,4,5,";
+        OutputStream out = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(out));
+        assertThatThrownBy(() -> InputConvert.lottoNumber(input))
+                .isInstanceOf(IllegalArgumentException.class);
+        assertThat(out.toString()).isEqualTo("[ERROR] 입력 형식에 맞게 입력되어야 합니다.");
+    }
+    @DisplayName("아무런 입력이 없어 에러가 발생한 경우 에러메세지를 출력한다.")
+    @Test
+    void lottoNumberInputConvertErrorByNothingForPrint() {
+        String input = "";
+        OutputStream out = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(out));
+        assertThatThrownBy(() -> InputConvert.lottoNumber(input))
+                .isInstanceOf(IllegalArgumentException.class);
+        assertThat(out.toString()).isEqualTo("[ERROR] 아무것도 입력되지 않았습니다.");
     }
 }
