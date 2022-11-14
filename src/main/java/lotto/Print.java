@@ -46,7 +46,7 @@ public class Print {
         System.out.println("총 수익률은 " + yieldFormat + "%입니다.");
     }
 
-    private static String numberComma(double number) {
+    private static String numberComma(int number) {
         return NumberFormat.getInstance().format(number);
     }
 
