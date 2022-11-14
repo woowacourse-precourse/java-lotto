@@ -10,15 +10,17 @@ import static lotto.LottoResult.*;
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
-        int price = getLotteryTicketPrice();
-        int tickets = countPaidLotteryTickets(price);
+        int cash = getLotteryTicketPrice();
+        int tickets = countPaidLotteryTickets(cash);
         List<List<Integer>> ticketNumbers = paidLotteryNumberGenerator(tickets);
-        List<Integer> winningNumbers =getLotteryWinningNumbers();
+        List<Integer> winningNumbers = getLotteryWinningNumbers();
         int bonusNumber = getLotteryBonusNumber();
 
-        lotteryStatistics(compareResult(winningNumbers,ticketNumbers,bonusNumber)); ;
-        int sum = sumOfAllPrizes(compareResult(winningNumbers,ticketNumbers,bonusNumber));
-        earningRatioCalculator(price,sum);
+        lotteryStatistics(compareResult(winningNumbers, ticketNumbers, bonusNumber));
+        ;
+        int sum = sumOfAllPrizes(compareResult(winningNumbers, ticketNumbers, bonusNumber));
+        double earningRatio = earningRatioCalculator(cash, sum);
+        System.out.println("총 수익률은 " + earningRatio + "% 입니다");
 
 
     }

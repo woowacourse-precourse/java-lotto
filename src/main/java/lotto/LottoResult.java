@@ -40,8 +40,8 @@ public class LottoResult {
         }
         return sum;
     }
-    public static int earningRatioCalculator(int totalMoney, int totalPrize) {
-        int earnedRatio = totalPrize / totalMoney * 100;
+    public static double earningRatioCalculator(int totalMoney, int totalPrize) {
+        double earnedRatio = (double)totalPrize / (double)totalMoney * 100;
         return earnedRatio;
     }
 
@@ -50,11 +50,11 @@ public class LottoResult {
         System.out.println("당첨 통계");
         System.out.println("---");
 
-        System.out.printf("3개 일치 (%d원) - %d개", PrizeList.FIFTH.money(), resultList.get(3));
-        System.out.printf("4개 일치 (%d원) - %d개", PrizeList.FOURTH.money(), resultList.get(4));
-        System.out.printf("5개 일치 (%d원) - %d개", PrizeList.THIRD.money(), resultList.get(5));
-        System.out.printf("5개 일치, 보너스 볼 일치 (%d원) - %d개", PrizeList.SECOND.money(), resultList.get(7));
-        System.out.printf("6개 일치 (%d원) - %d개", PrizeList.FIRST.money(), resultList.get(6));
+        System.out.printf("3개 일치 (%d원) - %d개\n", PrizeList.FIFTH.money(), resultList.get(3));
+        System.out.printf("4개 일치 (%d원) - %d개\n", PrizeList.FOURTH.money(), resultList.get(4));
+        System.out.printf("5개 일치 (%d원) - %d개\n", PrizeList.THIRD.money(), resultList.get(5));
+        System.out.printf("5개 일치, 보너스 볼 일치 (%d원) - %d개\n", PrizeList.SECOND.money(), resultList.get(7));
+        System.out.printf("6개 일치 (%d원) - %d개\n", PrizeList.FIRST.money(), resultList.get(6));
     }
 
 }
