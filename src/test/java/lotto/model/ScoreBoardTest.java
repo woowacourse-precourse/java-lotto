@@ -12,6 +12,6 @@ class ScoreBoardTest {
     @DisplayName("스코어 보드 생성 확인")
     void checkScoreBoardInit() {
         ScoreBoard scoreBoard = new ScoreBoard();
-        Assertions.assertThat(scoreBoard.rankAndScore.size()).isEqualTo(5);
+        Assertions.assertThat(scoreBoard.getRankAndScore().size()).isEqualTo(5);
     }
 }

@@ -1,13 +1,10 @@
 package lotto.model;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class ScoreBoard {
 
-    public Map<String, Integer> rankAndScore = new HashMap<>();
+    private Map<String, Integer> rankAndScore = new LinkedHashMap<>();
 
     public ScoreBoard() {
         initScoreBoard();
@@ -22,7 +19,11 @@ public class ScoreBoard {
     }
 
     public void plusScore(String rank) {
-        rankAndScore.replace(rank, rankAndScore.get(rank) + 1);
+        this.rankAndScore.replace(rank, this.rankAndScore.get(rank) + 1);
+    }
+
+    public Map<String, Integer> getRankAndScore() {
+        return this.rankAndScore;
     }
 
 }

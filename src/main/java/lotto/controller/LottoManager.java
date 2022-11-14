@@ -1,7 +1,5 @@
-package lotto;
+package lotto.controller;
 
-import lotto.controller.LottoGenerator;
-import lotto.controller.ValidationException;
 import lotto.model.Lotto;
 import lotto.model.UserLottoNum;
 import lotto.view.InputView;
@@ -11,9 +9,24 @@ import java.util.List;
 
 public class LottoManager {
 
-    UserLottoNum userLottoNum;
-    Lotto targetLottoNum;
-    int bonusNumber;
+    public UserLottoNum userLottoNum;
+    public Lotto targetLottoNum;
+    public int bonusNumber;
+
+    public CountMatchNum countMatchNum;
+
+
+    public LottoManager() {
+        countMatchNum = new CountMatchNum();
+    }
+
+    public void startLotto() {
+        userWantLotto();
+        setWinningLottoNum();
+        setBonusNumber();
+        countMatchNum.doMatchNumber(userLottoNum, targetLottoNum, bonusNumber);
+
+    }
 
     public void userWantLotto() {
 
@@ -41,6 +54,11 @@ public class LottoManager {
         this.bonusNumber = Integer.parseInt(bonusInput);
     }
 
+
+    public static void main(String[] args) {
+        LottoManager lottoManager = new LottoManager();
+        lottoManager.startLotto();
+    }
 
 
 }

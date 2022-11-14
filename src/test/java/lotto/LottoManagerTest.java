@@ -1,5 +1,6 @@
 package lotto;
 
+import lotto.controller.LottoManager;
 import lotto.model.Lotto;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -48,4 +49,6 @@ class LottoManagerTest {
         Assertions.assertThat(lottoManager.targetLottoNum.getLotto())
                 .isEqualTo(new Lotto(List.of(1, 2, 3, 4, 5, 6)).getLotto());
     }
+
+
 }

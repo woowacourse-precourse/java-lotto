@@ -5,7 +5,7 @@ import camp.nextstep.edu.missionutils.Console;
 public class InputView {
 
     public static String priceInput() {
-        System.out.println("구입 금액을 입력하세요 : ");
+        System.out.println("구입금액을 입력해 주세요.");
         String userMoney = Console.readLine();
 
         return userMoney;
@@ -19,7 +19,7 @@ public class InputView {
     }
 
     public static String bonusInput() {
-        System.out.println("보너스 번호를 입력해 주세요");
+        System.out.println("보너스 번호를 입력해 주세요.");
         String bonusInput = Console.readLine();
 
         return bonusInput;

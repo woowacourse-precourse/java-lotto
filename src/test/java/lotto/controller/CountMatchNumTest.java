@@ -10,8 +10,6 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 class CountMatchNumTest {
 
     CountMatchNum countMatchNum;
@@ -26,18 +24,17 @@ class CountMatchNumTest {
     @DisplayName("사용자 로또와 당첨 로또의 당첨 수 구하기")
     void countScore() {
         Assertions.assertThat(countMatchNum.countMatchNumber(
-                new Lotto(List.of(1, 2, 3, 4, 5, 6)), new Lotto(List.of(5, 4, 3, 2, 1, 7))
+                new Lotto(List.of(1, 2, 3, 4, 5, 6)), new ArrayList<>(List.of(5, 4, 3, 2, 1, 7)) {
+                }
         )).isEqualTo(5);
     }
 
     @Test
     void checkScoreIncrease() {
-        Lotto lotto = new Lotto(new ArrayList<>(List.of(1, 2, 3, 4, 7, 8)));
+        Lotto lotto = new Lotto(new ArrayList<>(List.of(1, 42, 3, 4, 7, 2)));
 
-        userLottoNum = new UserLottoNum(new ArrayList<Lotto>(List.of(lotto)));
-        countMatchNum.DoMatchNumber(userLottoNum, new Lotto(List.of(5, 4, 3, 2, 1, 7)));
-
-        System.out.println("countMatchNum.scoreBoard.rankAndScore = " + countMatchNum.scoreBoard.rankAndScore);
+        userLottoNum = new UserLottoNum(new ArrayList<>(List.of(lotto)));
+        countMatchNum.doMatchNumber(userLottoNum, new Lotto(List.of(5, 4, 3, 2, 1, 7)), 5);
 
     }
 }

@@ -1,14 +1,11 @@
 package lotto.controller;
 
 import lotto.model.*;
+import lotto.view.OutputView;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class CountMatchNum {
-
-    public final static int SCORE_BOARD = 5;
     ScoreAndRank scoreAndRank;
     ScoreBoard scoreBoard;
 
@@ -17,26 +14,32 @@ public class CountMatchNum {
         scoreBoard = new ScoreBoard();
     }
 
-    public void DoMatchNumber(UserLottoNum userLottoNum, Lotto targetLottoNum) {
+    public void doMatchNumber(UserLottoNum userLottoNum, Lotto targetLottoNum, int bonusNum) {
         int count;
+        List<Integer> targetNumber = targetLottoNum.getLotto();
+        List<Lotto> userLottoNumbers = userLottoNum.getUserLottoNumbers();
 
-        for (Lotto userLottoNumber : userLottoNum.getUserLottoNumbers()) {
-            count = countMatchNumber(userLottoNumber, targetLottoNum);
-
-            scoreBoard.plusScore(scoreAndRank.scoreRank.get(count));
+        for (Lotto userLottoNumber : userLottoNumbers) {
+            count = countMatchNumber(userLottoNumber, targetNumber);
+            if(count == 5 && targetNumber.contains(bonusNum)) {
+                scoreBoard.plusScore(scoreAndRank.getScoreRank().get(7));
+                continue;
+            }
+            if(count >=3 ) {
+                scoreBoard.plusScore(scoreAndRank.getScoreRank().get(count));
+            }
         }
+        OutputView.printRank(scoreBoard);
     }
 
-    public int countMatchNumber(Lotto userLottoNumber, Lotto targetLottoNum) {
+    public int countMatchNumber(Lotto userLottoNumber, List<Integer> targetNumber) {
         int count = 0;
-        List<Integer> targetNumber = targetLottoNum.getLotto();
 
         for (Integer lotto : userLottoNumber.getLotto()) {
             if (targetNumber.contains(lotto)) {
                 count++;
             }
         }
-        System.out.println("count = " + count);
         return count;
     }
 }
