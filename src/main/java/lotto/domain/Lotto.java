@@ -30,4 +30,15 @@ public class Lotto {
     public List<Integer> get() {
         return numbers;
     }
+
+    public int countSameNum(WinningNums winningNums) {
+        return (int) numbers.stream()
+                .filter(n -> winningNums.getWinningNums().contains(n))
+                .count();
+    }
+
+    public boolean isContainsBonus(WinningNums winningNums) {
+        return numbers.contains(winningNums.getBonusNum());
+    }
+
 }
