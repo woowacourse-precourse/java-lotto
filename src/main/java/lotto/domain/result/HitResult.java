@@ -12,36 +12,37 @@ import lotto.domain.lottery.WinningLotto;
 public class HitResult {
 
     private final Map<Rank, Integer> result = new EnumMap<>(Rank.class);
+    List<Rank> ranks = new ArrayList<>();
 
     public HitResult(LottoGroup lottoGroup,
             WinningLotto winningLotto, BonusNumber bonusNumber) {
+        calculate(lottoGroup, winningLotto, bonusNumber);
+    }
+
+    private void calculate(LottoGroup lottoGroup,
+            WinningLotto winningLotto, BonusNumber bonusNumber) {
+        int hitCount;
         initializeResult();
-        List<Rank> ranks = new ArrayList<>();
         for (Lotto lotto : lottoGroup.getLottoGroup()) {
-            ranks.add(calculateRank(lotto, winningLotto, bonusNumber));
+            hitCount = lotto.getMatchCount(winningLotto);
+            ranks.add(Rank.getRank(hitCount, lotto.contains(bonusNumber)));
         }
         updateResult(ranks);
     }
 
     private void initializeResult() {
-        for (Rank rank : Rank.getAllRanks()) {
+        for (Rank rank : Rank.getAllRanksExceptNone()) {
             result.put(rank, 0);
         }
     }
 
     private void updateResult(List<Rank> ranks) {
         for (Rank rank : ranks) {
-            result.put(rank, result.get(rank) + 1);
+            result.put(rank, result.getOrDefault(rank, 0) + 1);
         }
     }
 
     public Map<Rank, Integer> getHitResult() {
         return result;
-    }
-
-    public Rank calculateRank(Lotto lotto,
-            WinningLotto winningLotto, BonusNumber bonusNumber) {
-        int hitCount = lotto.getMatchCount(winningLotto);
-        return Rank.getRank(hitCount, lotto.contains(bonusNumber));
     }
 }
