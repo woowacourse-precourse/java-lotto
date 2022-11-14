@@ -16,4 +16,8 @@ public class Convert {
                         .map(number->Integer.parseInt(number))
                         .collect(Collectors.toList()));
     }
+    public static Integer bonusConvert(String bonus,Lotto winningNumber){
+        InputValidation.bonusNumberValidation(bonus,winningNumber);
+        return Integer.parseInt(bonus);
+    }
 }
