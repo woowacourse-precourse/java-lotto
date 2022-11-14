@@ -86,7 +86,7 @@
 
 ## ✏ 과제를 진행하며 배운 점
 
-* ### MVC 패턴이란?[[참조](https://murphymoon.tistory.com/entry/%EC%9A%B0%EC%95%84%ED%95%9C-%ED%85%8C%ED%81%AC-MVC-%EB%A6%AC%EB%B7%B0-%EB%A0%88%EC%9D%B4%EC%96%B4-MVC-%ED%8C%A8%ED%84%B4-5%EB%A0%88%EC%9D%B4%EC%96%B4)]
+* ### MVC 패턴이란? [[참조](https://murphymoon.tistory.com/entry/%EC%9A%B0%EC%95%84%ED%95%9C-%ED%85%8C%ED%81%AC-MVC-%EB%A6%AC%EB%B7%B0-%EB%A0%88%EC%9D%B4%EC%96%B4-MVC-%ED%8C%A8%ED%84%B4-5%EB%A0%88%EC%9D%B4%EC%96%B4)]
 
     **'기능에 따라 나눈 메서드들을 어떤 클래스에 담아야 하는지는 어떻게 알 수 있을까?'** 에 대한 가이드를 여러 개발자들이 수정에 수정을 거쳐 나온 템플릿이 바로 **MVC 패턴!**
     
@@ -95,10 +95,116 @@
   * View : 사용자에게 보일 사용자 인터페이스를 담당하는 레이어
   * Controller : Model과 View를 연결해주는 레이어
 
-  입력은 Controller에게 가고, Controller는 값을 처리해줄 Model을 찾아 알아서 연결시켜 주고, 처리한 값을 View에 넘겨 가공된 결과물을 보여주는 과정을 거친다.
+  입력은 Controller에게 가고, Controller는 값을 처리해줄 Model을 찾아 알아서 연결시켜 주고, 처리한 값을 View에 넘겨 결과물을 가공해 돌려주는 과정을 거친다.
 
   따라서 MVC 패턴을 사용하면 입출력을 담당하는 View와 로직을 담당하는 Model을 독립적으로 개발을 진행할 수 있게 된다. 
   
-  유효성 검증은 보통 프론트엔드에서 처리해 들어오지만, 프리코스 과제 특성상 입력은 일관되게 `readLine()`을 통해 받으므로, 모델까지 접근 후 유효성 검사해야 해야겠다.
-* ### Enum을 사용해 전략 패턴 구현하기[[참조](https://doohyun.tistory.com/64)]
+  유효성 검증은 보통 프론트엔드에서 처리해 들어오지만, 프리코스 과제 특성상 입력은 일관되게 `readLine()`을 통해 받으므로, DTO에서 처리하는 과정을 거치면 좋을 것 같다.
+
+* ### Enum을 사용해 전략 패턴 구현하기 [[참조](https://doohyun.tistory.com/64)]
+  Java 에서는 열거형에 행위(메소드)를 추가할 수 있다. 각 열거형 원소마다 다르게 구현한 메서드를 추가해준다면, 확장이 필요할 때 if문을 수정해 분기점을 늘리지 않고도 상황에 따라 다른 행위를 할 수 있도록, 즉, 다형성을 갖추게 할 수 있는 것이다.
+
+  <details markdown="1">
+  <summary>예제 코드</summary>
+
+  ```java
+  /**
+  * CODE_FOR_SAMPLE 의 Enum 전략
+  *
+  * Created by Doohyun on 2017. 4. 25..
+  */
+  public enum EnumCodeForSampleStrategy {
+
+  CODE_A (CODE.CODE_FOR_SAMPLE.CODE_A){
+  @Override
+  public void saveData() {
+  saveDataForRootCode();
+  }
+
+       @Override
+       public List<String> getChildCodeList() {
+           return Arrays.asList(CODE.CODE_FOR_SAMPLE.CODE_A_1, CODE.CODE_FOR_SAMPLE.CODE_A_2);
+       }
+  },
+
+  CODE_B (CODE.CODE_FOR_SAMPLE.CODE_B){
+  @Override
+  public void saveData() {
+  saveDataForRootCode();
+  }
+
+       @Override
+       public List<String> getChildCodeList() {
+           return Arrays.asList(CODE.CODE_FOR_SAMPLE.CODE_B_1, CODE.CODE_FOR_SAMPLE.CODE_B_2, CODE.CODE_FOR_SAMPLE.CODE_B_3);
+       }
+  },
+
+  /**
+  * 기존 아무 일도 하지 않던 CODE A_1 은 아무것도 재정의하지 않음.
+    */
+    CODE_A_1 (CODE.CODE_FOR_SAMPLE.CODE_A_1);
+
+  String code;
+
+  EnumCodeForSampleStrategy(String code) {
+  this.code = code;
+  }
+
+  public String getCode() {
+  return code;
+  }
+
+  /**
+  * 오직 루트코드만이 해야할 일 정의
+  *
+  * <pre>
+  *     기존의 공통된 루트코드의 기능을 Concrete 메소드로 제작
+  * </pre>
+  */
+  protected final void saveDataForRootCode() {
+  System.out.printf("%s 관련 테이블 업데이트\n", getCode());
+
+       System.out.println("하위 컬럼 업데이트");
+       for (String code :  getChildCodeList()) {
+           System.out.printf("%s 관련 테이블 업데이트\n", code);
+       }
+  }
+
+  /**
+  * 아무 행위도 하지 않는 Hooker
+  *
+  * <pre>
+  *     선택적으로 기능을 정의할 것!
+  * </pre>
+  */
+  public void saveData(){
+  }
+
+  /**
+  * 아무 행위도 하지 않는 Hooker
+  *
+  * <pre>
+  *     선택적으로 기능을 정의할 것!
+  * </pre>
+  */
+  public List<String> getChildCodeList() {
+  return Collections.emptyList();
+  }
+  }
+  ```
+
+  </details>
   
+* ### DTO, DAO, Repository 이해하기 [[참조](https://azderica.github.io/00-java-repositorys/)]
+  * DTO
+    * 각각의 계층끼리 기능 동작에 필요한 데이터를 주고 받기 위해 정보를 담아놓는 객체. 즉, 계층이 아닌 물건이다.
+    * 필요한 정보가 한 객체 안에 담겨 있기 때문에, 메서드가 받는 매개변수도 굉장히 깔끔해지고, 데이터를 찾기 쉬워진다. 
+  * Repository
+    * DB와 어플리케이션 사이에 존재해, 데이터를 조회해 어플리케이션으로 넘기거나, 어플리케이션에서 데이터를 받아 DB에 저장해주는 계층이다.
+    * DTO로는 저장이 안되므로, Entity를 만들어줘야 한다.
+  * Entity
+    * 자바에서 DB 데이터를 조작할 수 있도록, 테이블과 필드를 1:1 매칭 시켜 놓은 객체이다.
+    * Entity는 DB의 데이터를 전달해주고 Service에서 사용할 비즈니스 로직만을 가져야한다.
+  * DAO
+    * DTO에서 Entity로, 혹은 그 반대로 바꿔주는 역할을 하는 계층이다.
+    * 특정 서비스가 Repository의 일부 기능만 사용할 수 있어야할 때(Ex. 유저가 당첨 번호를 조회 하되, 저장하면 안될 때), 기능을 DAO의 메소드로 분리해 접근을 못하도록 막을 수도 있다.
