@@ -32,6 +32,12 @@ public class InputValidator {
         }
     }
 
+    public static void validateBonusNumberRange(int bonusNumber) {
+        if (bonusNumber < MINIMUM_LOTTO_NUMBER || MAXIMUM_LOTTO_NUMBER < bonusNumber) {
+            throw new IllegalArgumentException("[ERROR] 보너스 번호의 숫자 범위는 1~45까지입니다. bonusNumber: " + bonusNumber);
+        }
+    }
+
     public static void validateSplitSize(List<Integer> winningNumbers) {
         if (winningNumbers.size() != Lotto.LOTTO_SIZE) {
             throw new IllegalArgumentException("[ERROR] 입력된 숫자가 로또 당첨 번호 수에 맞지 않습니다. winningNumbers: " + winningNumbers);

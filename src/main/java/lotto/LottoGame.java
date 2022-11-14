@@ -40,8 +40,17 @@ public class LottoGame {
 
         InputValidator.validateSplitSize(winningNumbers);
         InputValidator.validateWinningNumbersRange(winningNumbers);
-        InputValidator.validateDuplicateWinningNumbers(winningNumbers);
 
         return winningNumbers;
+    }
+
+    private static int inputBonusNumber() {
+        String inputBonusNumber = Input.getBonusNumber();
+        InputValidator.validateDigits(inputBonusNumber);
+
+        int bonusNumber = Integer.parseInt(inputBonusNumber);
+        InputValidator.validateBonusNumberRange(bonusNumber);
+
+        return bonusNumber;
     }
 }
