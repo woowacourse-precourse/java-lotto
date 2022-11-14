@@ -2,14 +2,21 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Controller {
     private View view;
     private List<Lotto> lottoNumbers;
     private List<Integer> winningNumbers;
+    private Rank[] values;
 
-    private Rank rank;
+    public void Controller() {
+        view = new View();
+        lottoNumbers = new ArrayList<>();
+        winningNumbers = new ArrayList<>();
+        values = Rank.values();
+    }
 
     public void makeLottoNumbers(int number) {
         for (int i = 0; i < number; i++) {
@@ -33,12 +40,11 @@ public class Controller {
         int count = 0;
         for (int i = 0; i < winningNumbers.size(); i++) {
             if (i == winningNumbers.size() - 1 && count == 5 && lottoNumbers.contains(winningNumbers.get(i))) {
-                Rank.valueOf("FIFTH_BONUS").increaseCount();
+                values[values.length - 1].increaseCount();
             } else if (lottoNumbers.contains(winningNumbers.get(i))) {
                 count++;
             }
         }
-        Rank[] values = Rank.values();
         for (int i = 0; i <= count - 3 && i != values.length - 1; i++) {
             values[i].increaseCount();
         }
