@@ -44,4 +44,14 @@ public class LottoGeneratorTest {
         // then
         assertEquals(6, numbers.size());
     }
+
+    @Test
+    @DisplayName("랜덤으로 생성된 로또 번호는 중복이 없다.")
+    void duplicationTest() {
+        // when
+        long deduplicatedCount = numbers.stream().distinct().count();
+
+        // then
+        assertEquals(numbers.size(), deduplicatedCount);
+    }
 }
