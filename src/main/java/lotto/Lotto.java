@@ -32,13 +32,13 @@ public class Lotto {
 
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
-            throw new IllegalArgumentException("[ERROR] 로또 번호는 6개여야 합니다.");
+            throw new IllegalArgumentException("로또 번호는 6개여야 합니다.");
         }
     }
 
     private void validateNumbers(int number) {
         if (number < 1 || number > 45)
-            throw new IllegalArgumentException("[ERROR] 로또 번호 범위는 1~45입니다.");
+            throw new IllegalArgumentException("로또 번호 범위는 1~45입니다.");
     }
 
     private List<Integer> distinctNumbers(List<Integer> numbers) {

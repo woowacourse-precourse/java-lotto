@@ -38,7 +38,8 @@ public class LotteryMachine {
     }
 
     private void validateAmount(int amount) {
-        if (amount % AMOUNT_UNIT != 0)
-            throw new IllegalArgumentException("[ERROR] 입력 금액은 1000단위여야 합니다.");
+        if (amount % AMOUNT_UNIT != 0){
+            throw new IllegalArgumentException("입력 금액은 1000단위여야 합니다.");
+        }
     }
 }
