@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import static lotto.constance.InputExceptionConstance.*;
+import static lotto.constance.OutputViewConstance.*;
 import static lotto.view.OutputView.*;
 
 public enum Stats {

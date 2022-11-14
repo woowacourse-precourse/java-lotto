@@ -20,4 +20,7 @@ public class Presenter {
         String bonusNumber = Console.readLine();
         return validatesBonusNumber(bonusNumber);
     }
+
+    private Presenter() {
+    }
 }

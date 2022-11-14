@@ -13,4 +13,7 @@ public class InputExceptionConstance {
     public static final int BONUS_NUMBER_LENGTH = 1;
     public static final String COMMA = ",";
     public static final int DIVIDING_NUMBER = 1000;
+
+    private InputExceptionConstance() {
+    }
 }
