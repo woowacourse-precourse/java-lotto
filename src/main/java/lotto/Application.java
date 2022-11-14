@@ -9,14 +9,18 @@ import java.util.List;
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
+        System.out.println("구입금액을 입력해 주세요.");
         int purchasePrice = getPurchasePrice(Console.readLine());
+        List<Lotto> lottoList = createLottoList(purchasePrice);
+        printLottoList(lottoList);
+        System.out.println("당첨 번호를 입력해 주세요.");
         List<Integer> winningLottoNumbers = getWinningLottoNumbers(Console.readLine());
         Lotto winningLotto = new Lotto(winningLottoNumbers);
-        List<Lotto> lottoList = createLottoList(purchasePrice);
+        System.out.println("보너스 번호를 입력해 주세요.");
         int bonusNumber = getBonusNumber(Console.readLine(), winningLottoNumbers);
         HashMap<String, Integer> history = createHistory(lottoList, winningLotto, bonusNumber);
-        double profits = getProfits(history);
-        double yieldRate = getYieldRate(purchasePrice, profits);
+        double yieldRate = getYieldRate(purchasePrice, getProfits(history));
+        printYieldRate(yieldRate);
     }
 
     public static int getPurchasePrice(String input) {
@@ -135,4 +139,26 @@ public class Application {
     public static double getYieldRate(int purchasePrice, double profits) {
         return (profits / purchasePrice) * 100;
     }
+
+    public static void printLottoList(List<Lotto> lottoList) {
+        System.out.println(lottoList.size() + "개를 구매했습니다.");
+        for (Lotto lotto : lottoList) {
+            System.out.println(lotto.getNumbers());
+        }
+    }
+
+    public static void printWinningStats(HashMap<String, Integer> resultMap) {
+        System.out.println("당첨 통계");
+        System.out.println("---");
+        System.out.println("3개 일치 (5,000원) - " + resultMap.get("3") + "개");
+        System.out.println("4개 일치 (50,000원) - " + resultMap.get("4") + "개");
+        System.out.println("5개 일치 (1,500,000원) - " + resultMap.get("5") + "개");
+        System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - " + resultMap.get("5+") + "개");
+        System.out.println("6개 일치 (2,000,000,000원) - " + resultMap.get("6") + "개");
+    }
+
+    public static void printYieldRate(double yieldRate){
+        System.out.println("총 수익률은 "+ yieldRate +"%입니다.");
+    }
+
 }
