@@ -9,14 +9,24 @@ import java.util.List;
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
+        try{
+            runApplication();
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public static void runApplication(){
         System.out.println("구입금액을 입력해 주세요.");
         User user = new User(Console.readLine());
+        user.printLottoList();
         System.out.println("당첨 번호를 입력해 주세요.");
         List<Integer> winningLottoNumbers = getWinningLottoNumbers(Console.readLine());
         Lotto winningLotto = new Lotto(winningLottoNumbers);
         System.out.println("보너스 번호를 입력해 주세요.");
         int bonusNumber = getBonusNumber(Console.readLine(), winningLottoNumbers);
         Calculator calculator = new Calculator(winningLotto, user.getLottoList(), bonusNumber);
+        calculator.printHistory();
         Yield yield = new Yield(user.getPurchasePrice(), getProfits(calculator.getHistory()));
         yield.printYieldRate();
     }
@@ -63,15 +73,5 @@ public class Application {
         profits += history.get("5+") * 30000000;
         profits += history.get("6") * 2000000000;
         return profits;
-    }
-
-    public static void printWinningStats(HashMap<String, Integer> resultMap) {
-        System.out.println("당첨 통계");
-        System.out.println("---");
-        System.out.println("3개 일치 (5,000원) - " + resultMap.get("3") + "개");
-        System.out.println("4개 일치 (50,000원) - " + resultMap.get("4") + "개");
-        System.out.println("5개 일치 (1,500,000원) - " + resultMap.get("5") + "개");
-        System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - " + resultMap.get("5+") + "개");
-        System.out.println("6개 일치 (2,000,000,000원) - " + resultMap.get("6") + "개");
     }
 }
