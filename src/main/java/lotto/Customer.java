@@ -2,6 +2,7 @@ package lotto;
 
 public class Customer {
     private int money;
+
     Customer(String input)throws IllegalArgumentException{
             int cash = validate(input);
             setMoney(cash);

@@ -8,7 +8,7 @@
     MIN : 최소 금액
     MOD : 금액 단위
 
-#**구매자 (Customer)**
+#구매자 (Customer)
  
     금액을 입력 받고 금액이 올바르다면 저장
 
@@ -26,8 +26,19 @@
 **getMoney**
 
     고객의 금액 정보를 전달
+#로또 저장소 (DB)
 
-# **로또 판매점 (Store)**
+    생성된 로또를 저장하는 보관소
+
+**insert**
+
+    생성된 로또를 저장소에 추가
+
+**selectAt**
+   
+     보관된 로또를 반환
+
+#로또 판매점 (Store)
 
     
 **setCustomer**
@@ -38,7 +49,6 @@
     makeLotto : 
     saveLotto :
 
-buy
 
 
     
