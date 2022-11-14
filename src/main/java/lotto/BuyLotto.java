@@ -1,9 +1,9 @@
 package lotto;
 
-public class inputMoney {
+public class BuyLotto {
     private final String money;
     static String numberOfLottoPurchased = "%d개를 구매했습니다.%n";
-    public inputMoney(String money) {
+    public BuyLotto(String money) {
         validate(money);
         this.money = money;
     }

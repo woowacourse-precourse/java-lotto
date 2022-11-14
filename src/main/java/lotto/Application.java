@@ -7,7 +7,7 @@ public class Application {
         // TODO: 프로그램 구현
         try {
             String inputMoney = Console.readLine();
-            inputMoney buyLotto = new inputMoney(inputMoney);
+            BuyLotto buyLotto = new BuyLotto(inputMoney);
             buyLotto.buyLottoprint();
             int numberOflottos = buyLotto.buyLotto();
             makeLottos makeLottos = new makeLottos(numberOflottos);

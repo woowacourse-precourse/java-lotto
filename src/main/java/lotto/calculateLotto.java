@@ -12,10 +12,10 @@ public class calculateLotto {
     static String totalrateMessage = "총 수익률은 %s%%입니다.";
 
     calculateLotto(){
-        //System.out.println(lottoinputMessage);
+        System.out.println(lottoinputMessage);
         String inputLotto = Console.readLine();
         this.inputLottto = convertLottos(inputLotto);
-        //System.out.println(bonusinputMessage);
+        System.out.println(bonusinputMessage);
         String bonusLotto = Console.readLine();
         this.bonusLotto = convertBonus(bonusLotto);
     }
@@ -37,7 +37,6 @@ public class calculateLotto {
             boolean isBonus = false;
             List<Integer> list =lotto.getNumbers().stream().filter( i -> (inputLottto.getNumbers().stream().anyMatch(Predicate.isEqual(i))))
                     .collect(Collectors.toList());
-            System.out.println(list);
             if(lotto.getNumbers().contains(bonusLotto) && list.size()== 5) {
                 isBonus =true;
             }
