@@ -7,7 +7,7 @@ public class PriceQuantity {
     private int money;
     private int quantity;
 
-    PriceQuantity(int money) {
+    public PriceQuantity(int money) {
         this.money = money;
         isValidateMoney(money);
         calculateQuantity();

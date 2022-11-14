@@ -32,12 +32,9 @@ public class Lotto {
     }
 
     public static Lotto createRandomNumbers() {
-        TreeSet<Integer> randomNumberSet = new TreeSet<>();
-        while (randomNumberSet.size() != SIZE) {
-            int randomNumber = Randoms.pickNumberInRange(MIN_VALUE, MAX_VALUE);
-            randomNumberSet.add(randomNumber);
-        }
-        List<Integer> randomNumberList = new ArrayList<>(randomNumberSet);
+        List<Integer> randomList = Randoms.pickUniqueNumbersInRange(MIN_VALUE, MAX_VALUE, SIZE);
+        List<Integer> randomNumberList = new ArrayList<>(randomList);
+        Collections.sort(randomNumberList);
         return new Lotto(randomNumberList);
     }
 

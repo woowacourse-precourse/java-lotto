@@ -9,7 +9,7 @@ public class WinningLotto {
     private Lotto winningNumber;
     private int bonusNumber;
 
-    WinningLotto(Lotto winningNumber, int bonusNumber) {
+    public WinningLotto(Lotto winningNumber, int bonusNumber) {
         validateBonusDuplication(winningNumber,bonusNumber);
         validateBonusNumberScope(bonusNumber);
         this.winningNumber = winningNumber;
