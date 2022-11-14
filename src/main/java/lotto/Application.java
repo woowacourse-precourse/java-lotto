@@ -8,6 +8,7 @@ import java.util.List;
 
 import static lotto.message.gameMessages.*;
 import static lotto.message.errorMessages.*;
+import static lotto.message.resultMessages.*;
 
 public class Application {
     public static void main(String[] args) {
@@ -18,6 +19,8 @@ public class Application {
         int bonusNumber = bonusLotto();
         List<List> compareResult = compareLotto(purchaseLotto,winnerLotto,bonusNumber);
         List<Integer> winCnt = gameResult(compareResult);
+        printResult(winCnt);
+
     }
 
     public static int buyLotto(){
@@ -187,5 +190,14 @@ public class Application {
         winLottoCnt.add(fourth);
         winLottoCnt.add(fifth);
         return winLottoCnt;
+    }
+
+    public static void printResult(List<Integer> winLottoCnt){
+        System.out.println(RESULT_STATS);
+        System.out.println(FIFTH_RESULT + winLottoCnt.get(4)+UNIT);
+        System.out.println(FOURTH_RESULT + winLottoCnt.get(3)+UNIT);
+        System.out.println(THIRD_RESULT+ winLottoCnt.get(2)+UNIT);
+        System.out.println(SECOND_RESULT + winLottoCnt.get(1)+UNIT);
+        System.out.println(FIRST_RESULT + winLottoCnt.get(0)+UNIT);
     }
 }
