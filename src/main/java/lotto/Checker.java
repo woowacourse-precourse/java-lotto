@@ -8,7 +8,7 @@ import java.util.List;
 
 
 public class Checker {
-    public int checkNumber(String input) {
+    public int checkNumber(String input) throws IllegalArgumentException{
 
         int number = checkNumeric(input);
 
@@ -18,7 +18,7 @@ public class Checker {
 
     }
 
-    public int checkNumeric(String input) {
+    public int checkNumeric(String input) throws IllegalArgumentException{
         int result = -1;
         try {
             result = Integer.parseInt(input);
@@ -29,14 +29,14 @@ public class Checker {
         return result;
     }
 
-    public void checkNegative(int input) {
+    public void checkNegative(int input) throws IllegalArgumentException{
         if (input < 0) {
             String errorMessage = String.format(LOTTO_CHECKER_ERROR, input, LOTTO_CHECKER_ERROR_NEGATIVE);
             printAndThrowError(errorMessage);
         }
     }
 
-    public void checkPayment(int input) {
+    public void checkPayment(int input) throws IllegalArgumentException{
         if (input < 1000) {
             String errorMessage = String.format(LOTTO_CHECKER_ERROR, input, LOTTO_CHECKER_ERROR_LACK_OF_AMOUNT);
             printAndThrowError(errorMessage);
@@ -45,10 +45,16 @@ public class Checker {
 
     public int checkAmountInput(String input) {
 
-        int amount = checkNumber(input);
+        int amount=-1;
 
-        this.checkPayment(amount);
-        this.checkRemain(amount);
+        try{
+            amount = checkNumber(input);
+
+            this.checkPayment(amount);
+            this.checkRemain(amount);
+        } catch (IllegalArgumentException illegalArgumentException) {
+            amount=-1;
+        }
 
         return amount;
     }
