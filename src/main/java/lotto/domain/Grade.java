@@ -1,6 +1,6 @@
 package lotto.domain;
 
-public enum WinningClass {
+public enum Grade {
     FIRST("6개 일치", 2000000000),
     SECOND("5개 일치, 보너스 볼 일치", 30000000),
     THIRD("5개 일치", 1500000),
@@ -10,7 +10,7 @@ public enum WinningClass {
     private final String condition;
     private final int prize;
 
-    WinningClass(String condition, int prize) {
+    Grade(String condition, int prize) {
         this.condition = condition;
         this.prize = prize;
     }
