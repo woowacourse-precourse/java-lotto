@@ -77,4 +77,9 @@ public class LottoService {
     private void storeBonusNumber(String bonusNumberInput) {
         bonusNumber = new BonusNumber(bonusNumberInput, winningLotto.getWinningLottoNumbers());
     }
+
+    public void calculateUserLottos() {
+        LottoCalculator lottoCalculator = new LottoCalculator(userLottoInfo, winningLotto, bonusNumber);
+        lottoCalculator.calculate();
+    }
 }
