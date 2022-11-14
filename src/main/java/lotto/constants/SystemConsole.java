@@ -29,24 +29,12 @@ public class SystemConsole {
         System.out.println(SystemMessage.LINE_MESSAGE);
     }
 
-    public void WINNING_RANKING_FIFTH(List<Integer> winningRanking, int i) {
-        System.out.println(Rank.FIFTH.getMatch() + SystemMessage.THIRD_CORRECT_RANK_MESSAGE + winningRanking.get(i) + SystemMessage.UNIT_MESSAGE);
+    public void WINNING_RANKING(int c, int m, int p) {
+        System.out.println(m+ "개 일치 (" + NumberFormat.getNumberInstance().format(p) + "원) - " +c+ "개");
     }
 
-    public void WINNING_RANKING_FOURTH(List<Integer> winningRanking, int i) {
-        System.out.println(Rank.FOURTH.getMatch() + SystemMessage.FOURTH_CORRECT_RANK_MESSAGE + winningRanking.get(i) + SystemMessage.UNIT_MESSAGE);
-    }
-
-    public void WINNING_RANKING_THIRD(List<Integer> winningRanking, int i) {
-        System.out.println(Rank.THIRD.getMatch() + SystemMessage.FIFTH_CORRECT_RANK_MESSAGE + winningRanking.get(i) + SystemMessage.UNIT_MESSAGE);
-    }
-
-    public void WINNING_RANKING_SECOND(List<Integer> winningRanking, int i) {
-        System.out.println(Rank.SECOND.getMatch() + SystemMessage.SECOND_CORRECT_RANK_MESSAGE + winningRanking.get(i) + SystemMessage.UNIT_MESSAGE);
-    }
-
-    public void WINNING_RANKING_FIRST(List<Integer> winningRanking, int i) {
-        System.out.println(Rank.FIRST.getMatch() + SystemMessage.FIRST_CORRECT_RANK_MESSAGE + winningRanking.get(i) + SystemMessage.UNIT_MESSAGE);
+    public void WINNING_RANKING_SECOND(int c, int m, int p) {
+        System.out.println(m+"개 일치, 보너스 볼 일치 ("+NumberFormat.getNumberInstance().format(p)+"원) - "+c+"개");
     }
 
     public void GROSS_YIELDS(double revenue) {

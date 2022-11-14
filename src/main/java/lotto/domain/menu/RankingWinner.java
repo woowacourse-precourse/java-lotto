@@ -19,8 +19,8 @@ public class RankingWinner {
         this.yieldCalculation = yieldCalculation;
     }
 
-    public List<Integer> findAWinner(List<Integer> sameNumberCount, List<Integer> bonusNumbers) {
-        List<Integer> winningRanking = winningStatistics.countCheck(sameNumberCount, bonusNumbers);
+    public void findAWinner(List<Integer> sameNumberCount, List<Integer> bonusNumbers) {
+        List<Integer> winningRanking = winningStatistics.countCheck(sameNumberCount, bonusNumbers);  // ok
 
         SystemConsole systemConsole = new SystemConsole();
         systemConsole.WINNING_STATISTICS();
@@ -32,30 +32,19 @@ public class RankingWinner {
         int calculation = totalPrizeMoney.totalCalculation(sameNumberCount, winningRanking);
         double revenue = yieldCalculation.revenue(calculation);
         systemConsole.GROSS_YIELDS(revenue);
-
-        return null;
     }
 
-    private void SystemConsole(List<Integer> winningRanking, SystemConsole systemConsole, int i) {
+    private void systemConsole(List<Integer> winningRanking, SystemConsole systemConsole) {
+        for (Rank rank : Rank.values()) {
+            int rankIndex = rank.ordinal();
+            int c = winningRanking.get(rankIndex);
 
-        if (i == 0) {
-            systemConsole.WINNING_RANKING_FIFTH(winningRanking, i);
-        }
+            if (rank == Rank.SECOND) {
+                systemConsole.WINNING_RANKING_SECOND(c, rank.getMatch(), rank.getMoney());
+                continue;
+            }
 
-        if (i == 1) {
-            systemConsole.WINNING_RANKING_FOURTH(winningRanking, i);
-        }
-
-        if (i == 2) {
-            systemConsole.WINNING_RANKING_THIRD(winningRanking, i);
-        }
-
-        if (i == 3) {
-            systemConsole.WINNING_RANKING_SECOND(winningRanking, i);
-        }
-
-        if (i == 4) {
-            systemConsole.WINNING_RANKING_FIRST(winningRanking, i);
+            systemConsole.WINNING_RANKING(c, rank.getMatch(), rank.getMoney());
         }
     }
 }
