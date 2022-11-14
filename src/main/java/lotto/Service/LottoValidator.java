@@ -22,9 +22,17 @@ public class LottoValidator {
     }
 
     public void validate(List<Integer> numbers, int bonusNumber) {
-        //TODO: 여기서 당첨 Lotto와 번호가 중복인지도 체크해야 한다.
-        
+        validate(numbers);
 
+        if (bonusNumber > MAX_LOTTO_RANGE || bonusNumber < MIN_LOTTO_RANGE) {
+            System.out.print(RANGE_ERROR_MESSAGE);
+            throw new IllegalArgumentException();
+        }
+
+        if (numbers.contains(bonusNumber)) {
+            System.out.print(DUPLICATION_ERROR_MESSAGE);
+            throw new IllegalArgumentException();
+        }
     }
 
     public void checkLottoSize(List<Integer> numbers) {
