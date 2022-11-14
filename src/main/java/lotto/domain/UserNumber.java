@@ -26,4 +26,8 @@ public class UserNumber {
         return lotto;
     }
 
+    public void sort(List<Integer> lotto){
+        lotto.sort(Comparator.naturalOrder());
+    }
+
 }
