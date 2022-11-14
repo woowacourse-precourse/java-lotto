@@ -24,44 +24,79 @@ public class Report {
         // TODO: 2022/11/11 matchReport list를 갖고 점수 계산
         for (MatchReport matchReport : matchReports) {
             // 3개 맞춤 prize
-            if (matchReport.currentHitCount() == 3 || (matchReport.currentHitCount() == 2
-                && matchReport.currentBonus() == true)) {
-                Integer amountOfFifthPrize = matchResultMap.get(FIFTH);
-                amountOfFifthPrize += 1;
-                matchResultMap.replace(FIFTH, amountOfFifthPrize);
+            if (isFifthRank(matchReport)) {
                 continue;
             }
             // 4개 맞춤 prize
-            if (matchReport.currentHitCount() == 4 || (matchReport.currentHitCount() == 3
-                && matchReport.currentBonus() == true)) {
-                Integer amountOfFourthPrize = matchResultMap.get(FOURTH);
-                amountOfFourthPrize += 1;
-                matchResultMap.replace(FOURTH, amountOfFourthPrize);
+            if (isFourthRank(matchReport)) {
                 continue;
             }
             // 5개의 숫자 맞을 경우
-            if (matchReport.currentHitCount() == 5) {
-                Integer amountOfThirdPrize = matchResultMap.get(THIRD);
-                amountOfThirdPrize += 1;
-                matchResultMap.replace(THIRD, amountOfThirdPrize);
+            if (isThirdRank(matchReport)) {
                 continue;
             }
             // 4개의 숫자와 하나의 보너스가 맞을 경우
-            if (matchReport.currentHitCount() == 4 && matchReport.currentBonus() == true) {
-                Integer amountOfSecondPrize = matchResultMap.get(SECOND);
-                amountOfSecondPrize += 1;
-                matchResultMap.replace(SECOND, amountOfSecondPrize);
+            if (isSecondRank(matchReport)) {
                 continue;
             }
             // 5개의 모든 숫자가 맞을 경우
-            if (matchReport.currentHitCount() == 6) {
-                Integer amountOfFirstPrize = matchResultMap.get(FIRST);
-                amountOfFirstPrize += 1;
-                matchResultMap.replace(FIRST, amountOfFirstPrize);
+            if (isFirstRank(matchReport)) {
                 continue;
             }
         }
         return matchResultMap;
+    }
+
+    private boolean isFirstRank(MatchReport matchReport) {
+        if (matchReport.currentHitCount() == 6) {
+            Integer amountOfFirstPrize = matchResultMap.get(FIRST);
+            amountOfFirstPrize += 1;
+            matchResultMap.replace(FIRST, amountOfFirstPrize);
+            return true;
+        }
+        return false;
+    }
+
+    private boolean isSecondRank(MatchReport matchReport) {
+        if (matchReport.currentHitCount() == 4 && matchReport.currentBonus() == true) {
+            Integer amountOfSecondPrize = matchResultMap.get(SECOND);
+            amountOfSecondPrize += 1;
+            matchResultMap.replace(SECOND, amountOfSecondPrize);
+            return true;
+        }
+        return false;
+    }
+
+    private boolean isThirdRank(MatchReport matchReport) {
+        if (matchReport.currentHitCount() == 5) {
+            Integer amountOfThirdPrize = matchResultMap.get(THIRD);
+            amountOfThirdPrize += 1;
+            matchResultMap.replace(THIRD, amountOfThirdPrize);
+            return true;
+        }
+        return false;
+    }
+
+    private boolean isFourthRank(MatchReport matchReport) {
+        if (matchReport.currentHitCount() == 4 || (matchReport.currentHitCount() == 3
+            && matchReport.currentBonus() == true)) {
+            Integer amountOfFourthPrize = matchResultMap.get(FOURTH);
+            amountOfFourthPrize += 1;
+            matchResultMap.replace(FOURTH, amountOfFourthPrize);
+            return true;
+        }
+        return false;
+    }
+
+    private boolean isFifthRank(MatchReport matchReport) {
+        if (matchReport.currentHitCount() == 3 || (matchReport.currentHitCount() == 2
+            && matchReport.currentBonus() == true)) {
+            Integer amountOfFifthPrize = matchResultMap.get(FIFTH);
+            amountOfFifthPrize += 1;
+            matchResultMap.replace(FIFTH, amountOfFifthPrize);
+            return true;
+        }
+        return false;
     }
 
     public String TotalInterest(int userMoney) {
