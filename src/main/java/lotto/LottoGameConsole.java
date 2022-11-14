@@ -19,14 +19,16 @@ public class LottoGameConsole {
     private final Emcee emcee = new Emcee();
     private final Player player = new Player();
     private final LottoPublisher publisher = new LottoPublisher();
+    private final LottoMatcher matcher = new LottoMatcher();
     private final Validator validator = new Validator();
 
     public void startLottoGame() {
         emcee.guideGame();
         int payment = handlePayment();
-        // Lotto 발행
-        // 당첨 lotto 생성
-        // 당첨 결과 처리, 출력
+        List<Lotto> publishedLottos = publishLottos(payment);
+        WinningLotto winningLotto = createWinningLotto();
+        Map<Rank, Integer> tallyOfRanks = matcher.matchAllLottos(publishedLottos, winningLotto);
+        handlePrizeOfLottoGame(tallyOfRanks, payment);
     }
 
     private int handlePayment() {
