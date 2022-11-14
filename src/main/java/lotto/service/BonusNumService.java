@@ -4,7 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 
 import java.util.List;
 
-public class BonusNumMaker {
+public class BonusNumService {
 
     public int make(List<Integer> winningNum) {
         System.out.println("보너스 번호를 입력해 주세요.");

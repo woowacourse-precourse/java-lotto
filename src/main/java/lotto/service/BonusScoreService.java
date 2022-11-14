@@ -1,22 +1,20 @@
 package lotto.service;
 
 import lotto.domain.Lotto;
-import lotto.domain.Policy;
+import lotto.domain.Score;
 
 import java.util.List;
 
 public class BonusScoreService {
 
-    NumberMatcher numberMatcher = new NumberMatcher();
-
     public void bonusCase(List<Lotto> allLotto, List<Integer> winningNums, int bonusNum) {
 
         for (Lotto lotto : allLotto) {
             List<Integer> lottoNumbers = lotto.getNumbers();
-            int num = numberMatcher.countSameNumber(lottoNumbers, winningNums);
+            int num = NumberMatcher.countSameNumber(lottoNumbers, winningNums);
             if (num == 5 && lottoNumbers.contains(bonusNum)) {
 
-                Policy.increaseBonusCount();
+                Score.increaseBonusCount();
 
                 adjust();
             }
@@ -24,10 +22,10 @@ public class BonusScoreService {
     }
 
     private static void adjust() {
-        Integer fiveMatchCount = Policy.count.get(2);
-        Policy.count.add(2, fiveMatchCount - 1);
+        Integer fiveMatchCount = Score.count.get(2);
+        Score.count.add(2, fiveMatchCount - 1);
 
-        Integer sixMatchCount = Policy.count.get(3);
-        Policy.count.add(3, sixMatchCount - 1);
+        Integer sixMatchCount = Score.count.get(3);
+        Score.count.add(3, sixMatchCount - 1);
     }
 }

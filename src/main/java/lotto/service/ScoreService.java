@@ -1,12 +1,13 @@
 package lotto.service;
 
-import lotto.domain.Policy;
+import lotto.domain.Match;
+import lotto.domain.Score;
 
 import java.util.List;
 
 public class ScoreService {
 
-    public void countStatus(List<Integer> sameNumberCount) {
+    public void calculateScore(List<Integer> sameNumberCount) {
         initCount();
         for (int i = 0; i < sameNumberCount.size(); i++) {
             compare(sameNumberCount, i);
@@ -14,25 +15,25 @@ public class ScoreService {
     }
 
     private void compare(List<Integer> sameNumberList, int i) {
-        for (int j = 0; j < Policy.match.size(); j++) {
+        for (int j = 0; j < Match.values().length; j++) {
 
-            if (sameNumberList.get(i) == Policy.match.get(j)) {
+            if (sameNumberList.get(i) == Match.values()[j].getMatch()) {
 
                 increaseCount(j);
             }
         }
     }
 
-    public static void increaseCount(int index) {
-        Integer num = Policy.count.get(index);
+    private void increaseCount(int index) {
+        Integer num = Score.count.get(index);
         num++;
-        Policy.count.add(index, num);
-        System.out.println(Policy.count.get(index));
+        Score.count.add(index, num);
+        System.out.println(Score.count.get(index));
     }
 
     private void initCount() {
         for (int i = 0; i < 4; i++) {
-            Policy.count.add(0);
+            Score.count.add(0);
         }
     }
 }

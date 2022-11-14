@@ -17,35 +17,26 @@ public class Controller {
     BonusNum bonusNum;
     public void run() {
 
-        setAllLotto();
+        setAllLotto(); // 도메인 로직
 
         printAllLotto();
 
-        setWinningNum();
+        setWinningNum(); // 도메인 로직
 
-        setBonusNum();
+        setBonusNum(); // 도메인 로직
 
-        List<Integer> sameNumberCount = getSameNumberCount();
+        List<Integer> sameNumberCount = getSameNumberCount(); // 도메인 로직 (핵심)
 
-        printScore(sameNumberCount);
+        getScore(sameNumberCount); // 도메인 로직! (핵심)
+
+        printScore();
 
         printEarningRate();
     }
 
-    private void setBonusNum() {
-        BonusNumMaker bonusNumMaker = new BonusNumMaker();
-
-        bonusNum = new BonusNum(bonusNumMaker.make(winningNum.getNumbers()));
-    }
-
-    private void setWinningNum() {
-        WinningNumMaker winningNumMaker = new WinningNumMaker();
-        winningNum = new WinningNum(winningNumMaker.make());
-    }
-
     private void setAllLotto() {
-        LottoWalletService walletMaker = new LottoWalletService();
-        wallet = new LottoWallet(walletMaker.putLottoInWallet());
+        LottoWalletService walletService = new LottoWalletService();
+        wallet = new LottoWallet(walletService.putLottoInWallet());
     }
 
     private void printAllLotto() {
@@ -54,18 +45,31 @@ public class Controller {
         lottoView.printAllLotto(wallet.getLottoWallet());
     }
 
+    private void setWinningNum() {
+        WinningNumService winningNumService = new WinningNumService();
+        winningNum = new WinningNum(winningNumService.make());
+    }
+
+    private void setBonusNum() {
+        BonusNumService bonusNumService = new BonusNumService();
+
+        bonusNum = new BonusNum(bonusNumService.make(winningNum.getNumbers()));
+    }
+
     private List<Integer> getSameNumberCount() {
         NumberMatcher numberMatcher = new NumberMatcher();
         return numberMatcher.matchedNums(wallet.getLottoWallet(), winningNum.getNumbers());
     }
 
-    private void printScore(List<Integer> sameNumberCount) {
+    private void getScore(List<Integer> sameNumberCount){
         ScoreService scoreService = new ScoreService();
         scoreService.calculateScore(sameNumberCount);
 
         BonusScoreService bonusScoreService = new BonusScoreService();
         bonusScoreService.bonusCase(wallet.getLottoWallet(), winningNum.getNumbers(), bonusNum.getNumbers());
+    }
 
+    private void printScore() {
         ScorePrint scorePrint = new ScorePrint();
         scorePrint.printScoreBoard();
     }

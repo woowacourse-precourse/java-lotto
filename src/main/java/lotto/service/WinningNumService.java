@@ -5,12 +5,18 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.List;
 
-public class WinningNumMaker {
+public class WinningNumService {
 
     public List<Integer> make() {
 
         List<Integer> tmp = new ArrayList<>();
 
+        getInputAndValidate(tmp);
+
+        return tmp;
+    }
+
+    private void getInputAndValidate(List<Integer> tmp) {
         System.out.println("당첨 번호를 입력해 주세요.");
 
         String numbersAsString = Console.readLine();
@@ -25,8 +31,6 @@ public class WinningNumMaker {
             }
         }
         sizeCheck(tmp);
-
-        return tmp;
     }
 
 
