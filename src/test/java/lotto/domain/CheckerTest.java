@@ -1,5 +1,6 @@
 package lotto.domain;
 
+import lotto.config.LottoStatus;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -8,6 +9,7 @@ import java.io.InputStream;
 import java.util.HashMap;
 import java.util.List;
 
+import static lotto.config.LottoStatus.*;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class CheckerTest {
@@ -55,12 +57,12 @@ class CheckerTest {
                 List.of(1,2,3,4,5,6)    // 6
         );
 
-        HashMap<Integer, Integer> result = new HashMap<>() {{
-            put(3, 1);
-            put(4, 0);
-            put(5, 0);
-            put(6, 0);
-            put(7, 0);
+        HashMap<LottoStatus, Integer> result = new HashMap<>() {{
+            put(THREE, 1);
+            put(FOUR, 1);
+            put(FIVE, 1);
+            put(SIX_WITH_BONUS, 1);
+            put(SIX, 1);
         }};
 
         for (int i = 0;i < numbers.size();i++) {

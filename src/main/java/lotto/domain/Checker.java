@@ -1,42 +1,38 @@
 package lotto.domain;
 
 import camp.nextstep.edu.missionutils.Console;
+import lotto.config.LottoStatus;
 
 import java.util.*;
 import java.util.Map.Entry;
 
 import static lotto.config.BaseValidation.INVALID_FORMAT;
+import static lotto.config.BaseValidation.INVALID_LOTTO_STATUS;
 import static lotto.config.Constant.*;
+import static lotto.config.LottoStatus.*;
 
 public class Checker {
 
-    private static final String INSERT_WINNING_NUMBER = "당첨 번호를 입력해 주세요.";
-    private static final String INSERT_BONUS_NUMBER = "보너스 번호를 입력해 주세요.";
-    private static final String WINNING_STATS = "당첨 통계\n---";
-    private static final String THREE_WINNING = "3개 일치 (5,000원) - ";
-    private static final String FOUR_WINNING = "4개 일치 (50,000원) - ";
-    private static final String FIVE_WINNING = "5개 일치 (1,500,000원) - ";
-    private static final String FIVE_WINNING_ONE_BONUS = "5개 일치, 보너스 볼 일치 (30,000,000원) - ";
-    private static final String SIX_WINNING = "6개 일치 (2,000,000,000원) - ";
-    private static final String SHOW_RETURN_RATE_FRONT = "총 수익률은 ";
-    private static final String SHOW_RETURN_RATE_BACK = "%입니다.";
+    private final View view = new View();
 
     private List<Integer> winningNumbers = new ArrayList<>();
-    private HashMap<Integer, Integer> winningStats = new HashMap<>() {{
-        put(3, 0);
-        put(4, 0);
-        put(5, 0);
-        put(6, 0);
-        put(7, 0);
+    private HashMap<LottoStatus, Integer> winningStats = new HashMap<>() {{
+        put(THREE, 0);
+        put(FOUR, 0);
+        put(FIVE, 0);
+        put(SIX_WITH_BONUS, 0);
+        put(SIX, 0);
     }};
+    private LottoStatus status = INVALID;
     private int bonusNumber;
     private int key;
     private double returnRate;
 
     public void insertWinningNumbers() {
-        System.out.println(INSERT_WINNING_NUMBER);
 
+        view.insertWinningNumber();
         String winningNumber = Console.readLine();
+
         try {
             int[] numbers = Arrays.stream(winningNumber.split(",")).mapToInt(Integer::parseInt).toArray();
 
@@ -51,7 +47,8 @@ public class Checker {
     }
 
     public void insertBonusNumber() {
-        System.out.println(INSERT_BONUS_NUMBER);
+
+        view.insertBonusNumber();
 
         try {
             bonusNumber = Integer.parseInt(Console.readLine());
@@ -73,64 +70,52 @@ public class Checker {
 
         int oldCount;
 
-        key = 0;
+        try {
+            key = 0;
+            checkNumber(lotto);
+            status = status.getStatus(key);
 
-        checkWinningNumber(lotto);
+            if (status == SIX_WITH_BONUS) { // 당첨 번호와 같은 번호가 6개이면 보너스 번호 당첨 여부 확인
+                status = checkBonusNumber(lotto);
+            }
 
-        if (key == 5) { // 당첨 번호가 5개 동일하면 보너스 번호 당첨 여부 확인
-            checkBonusNumber(lotto);
-        }
+            if (winningStats.containsKey(status)) {
+                oldCount = winningStats.get(status);
+                winningStats.replace(status, oldCount, oldCount + 1);
+            }
 
-        if (winningStats.containsKey(key)) {
-            oldCount = winningStats.get(key);
-            winningStats.replace(key, oldCount, oldCount + 1);
+        } catch (Exception e) {
+            throw new IllegalArgumentException(INVALID_LOTTO_STATUS.getMessage());
         }
 
     }
 
-    private void checkWinningNumber(List<Integer> lotto) {
-        for (int number : winningNumbers) {
-            if (lotto.contains(number)) {
+    private void checkNumber(List<Integer> lotto) {
+        for (int number : lotto) {
+            if (winningNumbers.contains(number) || number == bonusNumber) {
                 key++;
             }
         }
     }
 
-    private void checkBonusNumber(List<Integer> lotto) {
+    private LottoStatus checkBonusNumber(List<Integer> lotto) {
         if (lotto.contains(bonusNumber)) {
-            key += 2;
+            return SIX_WITH_BONUS;
         }
+        return SIX;
     }
 
-    public HashMap<Integer, Integer> getWinningStats() {
+    public HashMap<LottoStatus, Integer> getWinningStats() {
         return winningStats;
     }
 
     public void showWinningStats() {
 
-        System.out.println(WINNING_STATS);
+        view.startWinningStats();
 
-        for (Entry<Integer, Integer> entry : winningStats.entrySet()) {
+        for (Entry<LottoStatus, Integer> entry : winningStats.entrySet()) {
 
-            if (entry.getKey() == 3) {
-                System.out.println(THREE_WINNING + entry.getValue());
-            }
-
-            if (entry.getKey() == 4) {
-                System.out.println(FOUR_WINNING + entry.getValue());
-            }
-
-            if (entry.getKey() == 5) {
-                System.out.println(FIVE_WINNING + entry.getValue());
-            }
-
-            if (entry.getKey() == 7) {
-                System.out.println(FIVE_WINNING_ONE_BONUS + entry.getValue());
-            }
-
-            if (entry.getKey() == 6) {
-                System.out.println(SIX_WINNING + entry.getValue());
-            }
+            view.showWinningStatsValueByKey(entry.getKey(), entry.getValue());
 
         }
 
@@ -138,34 +123,44 @@ public class Checker {
 
     public void calculateRateOfReturn(int payMoney) {
 
-        double sum = 0;
+        double total = 0;
 
-        for (Entry<Integer, Integer> entry : winningStats.entrySet()) {
+        for (Entry<LottoStatus, Integer> entry : winningStats.entrySet()) {
 
-            if (entry.getKey() == 3) {
-                sum += THREE_PRICE * entry.getValue();
-            }
+            LottoStatus status = entry.getKey();
+            int count = entry.getValue();
 
-            if (entry.getKey() == 4) {
-                sum += FOUR_PRICE * entry.getValue();
-            }
-
-            if (entry.getKey() == 5) {
-                sum += FIVE_PRICE * entry.getValue();
-            }
-
-            if (entry.getKey() == 7) {
-                sum += FIVE_ONE_PRICE * entry.getValue();
-            }
-
-            if (entry.getKey() == 6) {
-                sum += SIX_PRICE * entry.getValue();
-            }
+            total += calculateTotalWinningAmount(status, count);
 
         }
 
-        returnRate = (sum / payMoney) * 100;
+        returnRate = (total / payMoney) * 100;
 
+    }
+
+    public double calculateTotalWinningAmount(LottoStatus status, int count) {
+
+        if (status == THREE) {
+            return THREE_PRICE * count;
+        }
+
+        if (status == FOUR) {
+            return FOUR_PRICE * count;
+        }
+
+        if (status == FIVE) {
+            return FIVE_PRICE * count;
+        }
+
+        if (status == SIX_WITH_BONUS) {
+            return SIX_WITH_BONUS_PRICE * count;
+        }
+
+        if (status == SIX) {
+            return SIX_PRICE * count;
+        }
+
+        return 0;
     }
 
     public double getReturnRate() {
