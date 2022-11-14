@@ -39,6 +39,9 @@ public class DefaultView implements View {
     private void renderLottos() {
         String lottosSize = request(controller::outputLottoSize);
         System.out.println(Views.LOTTOS_COUNT.render(lottosSize));
+
+        String lottos = request(controller::outputLottos);
+        System.out.println(lottos);
     }
     
 }

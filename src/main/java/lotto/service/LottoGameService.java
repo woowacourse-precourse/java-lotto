@@ -18,4 +18,8 @@ public class LottoGameService {
     public int getLottosSize() {
         return lottos.size();
     }
+
+    public String getLottosToString() {
+        return lottos.toString();
+    }
 }
