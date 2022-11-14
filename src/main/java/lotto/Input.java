@@ -7,15 +7,15 @@ public class Input {
 
     public int buyLotto() {
         System.out.println("구입금액을 입력해 주세요.");
-        String purchasedValueReader = Console.readLine();
+        int purchasedValueReader = 0;
 
-        for (int i = 0; i < purchasedValueReader.length(); i++){
-            if (purchasedValueReader.charAt(i) < '0' || purchasedValueReader.charAt(i) > '9'){
-                output.wrongNumberException();
-            }
+        try{
+            purchasedValueReader = Integer.parseInt(Console.readLine());
+        }catch (Exception e){
+            output.wrongNumberException();
         }
 
-        return Integer.parseInt(purchasedValueReader);
+        return purchasedValueReader;
     }
 
 
