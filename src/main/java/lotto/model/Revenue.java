@@ -34,4 +34,7 @@ public class Revenue {
         int count = revenueStatics.get(rankName);
         revenueStatics.put(rankName, ++count);
     }
+    public void settleRevenue(int winnings){
+        revenue+=winnings;
+    }
 }
