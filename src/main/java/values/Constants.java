@@ -17,6 +17,7 @@ public class Constants {
 
     public static class Util {
         public static final String LOTTO_NUMBER_SEPARATOR = ",";
+        public static final String MONEY_REGEX = "[0-9]+";
     }
 
     public static class Digit {

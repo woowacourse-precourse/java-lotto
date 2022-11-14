@@ -8,13 +8,14 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import static util.LottoUtils.validate;
+import static util.ExceptionHandler.validateBonusNumber;
+import static util.ExceptionHandler.validateLottoNumbers;
 
 public class Lotto {
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
-        validate(numbers);
+        validateLottoNumbers(numbers);
         this.numbers = numbers;
     }
 
@@ -45,7 +46,7 @@ public class Lotto {
 
     public static int generateBonusNumber() {
         int bonusNumber = LottoUtils.getBonusNumber();
-        validate(bonusNumber);
+        validateBonusNumber(bonusNumber);
 
         return bonusNumber;
     }

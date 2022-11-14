@@ -9,49 +9,13 @@ import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 import static values.Constants.Console.TOTAL_PROFIT_PERCENT_MESSAGE;
 import static values.Constants.Digit.*;
-import static values.Constants.Error.*;
 import static values.Constants.Util.LOTTO_NUMBER_SEPARATOR;
 
 public class LottoUtils {
 
-    public static void validate(List<Integer> numbers) {
-        validateNumbersSize(numbers);
-        validateDuplication(numbers);
-        validateNumbersRange(numbers);
-    }
-
-    public static void validate(int bonusNumber) {
-        if (!(bonusNumber >= 1 && bonusNumber <= 45)) {
-            throw new IllegalArgumentException(RANGE_ERROR_MESSAGE);
-        }
-    }
-
-
-    private static void validateNumbersSize(List<Integer> numbers) {
-        if (numbers.size() != 6) {
-            throw new IllegalArgumentException(SIZE_ERROR_MESSAGE);
-        }
-    }
-
-    private static void validateDuplication(List<Integer> numbers) {
-        List<Integer> duplicationRemoved = numbers.stream().distinct().collect(Collectors.toList());
-
-        if (duplicationRemoved.size() != 6) {
-            throw new IllegalArgumentException(DUPLICATION_ERROR_MESSAGE);
-        }
-    }
-
-    private static void validateNumbersRange(List<Integer> numbers) {
-        numbers.forEach(num -> {
-            if (!(num >= 1 && num <= 45)) {
-                throw new IllegalArgumentException(RANGE_ERROR_MESSAGE);
-            }
-        });
-    }
 
     public static int getLottoCntByMoney(Money money) {
         return money.getMoney() / LOTTO_PRICE;
@@ -88,7 +52,7 @@ public class LottoUtils {
 
     public static String getProfitPercentage(Rank rank, int inputMoney) {
         int totalProfit = calculateProfit(rank.getRank());
-        double profitPercent = (double)totalProfit / (double)inputMoney * 100.0;
+        double profitPercent = (double) totalProfit / (double) inputMoney * 100.0;
         String roundedPercent = String.format("%.1f", profitPercent);
         return roundedPercent;
     }
@@ -103,15 +67,15 @@ public class LottoUtils {
                 totalProfit += FIRST_PLACE_PRIZE * cnt;
             } else if (rank.equals(SECOND_PLACE)) {
                 totalProfit += SECOND_PLACE_PRIZE * cnt;
-            } else if (rank.equals(THIRD_PLACE)){
+            } else if (rank.equals(THIRD_PLACE)) {
                 totalProfit += THIRD_PLACE_PRIZE * cnt;
-            } else if (rank.equals(FOURTH_PLACE)){
+            } else if (rank.equals(FOURTH_PLACE)) {
                 totalProfit += FOURTH_PLACE_PRIZE * cnt;
             } else if (rank.equals(FIFTH_PLACE)) {
                 totalProfit += FIFTH_PLACE_PRIZE * cnt;
             }
         }
-        return  totalProfit;
+        return totalProfit;
     }
 
 
