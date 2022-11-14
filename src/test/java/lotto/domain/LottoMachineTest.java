@@ -36,4 +36,15 @@ public class LottoMachineTest {
         lottoMachine.addBonusNumber(Integer.parseInt(bonusNumber));
         Assertions.assertThat(lottoMachine.getBonusNumber()).isEqualTo(30);
     }
+
+    @Test
+    @DisplayName("보너스 숫자 예외 테스트(보너스 숫자가 당첨 번호와 중복되는 경우)")
+    void DuplicatedBonusExceptionTest() {
+        String numbers = "20,10,3,2,41,24";
+        LottoMachine lottoMachine = LottoMachine.initLottoMachineNumber(numbers).get();
+
+        String bonusNumber = "10";
+        Assertions.assertThatThrownBy(() -> lottoMachine.addBonusNumber(Integer.parseInt(bonusNumber)))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
