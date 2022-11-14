@@ -8,13 +8,13 @@ public class calculateLotto {
     int bonusLotto;
     static String lottoinputMessage = "로또번호 입력하세요.";
     static String bonusinputMessage = "보너스번호 입력하세요.";
-    static String totalrateMessage = "총 수익률은 %s%% 입니다.";
+    static String totalrateMessage = "총 수익률은 %s%%입니다.";
 
     calculateLotto(){
-        System.out.println(lottoinputMessage);
+        //System.out.println(lottoinputMessage);
         String inputLotto = Console.readLine();
         this.inputLottto = convertLottos(inputLotto);
-        System.out.println(bonusinputMessage);
+        //System.out.println(bonusinputMessage);
         String bonusLotto = Console.readLine();
         this.bonusLotto = convertBonus(bonusLotto);
     }
@@ -42,7 +42,7 @@ public class calculateLotto {
                 count[1]=1;
             }
             int index = gradeNumber(count);
-            if(index>0)correctNumber[index] +=1;
+            if(index>=0)correctNumber[index] +=1;
         }
         return Arrays.stream(correctNumber)
                 .boxed()

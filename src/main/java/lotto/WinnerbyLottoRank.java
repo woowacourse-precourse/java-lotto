@@ -23,7 +23,7 @@ public enum WinnerbyLottoRank {
         if(prize.get().equals(30_000_000)){
             System.out.print(", 보너스 볼 일치");
         }
-        System.out.print(" ("+String.format("%,d", prize.get())+") - ");
+        System.out.print(" ("+String.format("%,d", prize.get())+"원) - ");
         System.out.printf("%d개%n",prizeLottoNumber);
     }
 

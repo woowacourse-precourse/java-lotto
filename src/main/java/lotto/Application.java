@@ -18,6 +18,7 @@ public class Application {
             makeLottos.printLottoNumbers();
             calculateLotto calculateLotto = new calculateLotto();
             List<Integer> list = calculateLotto.winLotto(makeLottos.getLottosNumber());
+
             double l = calculateLotto.rateLotto(numberOflottos,list);
             calculateLotto.printWinLotto(list,l);
         }catch (IllegalArgumentException e){
