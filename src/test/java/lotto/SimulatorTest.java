@@ -76,4 +76,33 @@ public class SimulatorTest {
                 List.of(6, 5, 4, 3, 2, 1)
         );
     }
+
+    @DisplayName("보너스 번호가 1과 45 사이일 경우 정상 처리된다.")
+    @Test
+    void setBonusNumberByValidRange() {
+        Simulator simulator = new Simulator(1000);
+        simulator.setWinning(new Lotto(List.of(1, 2, 3, 4, 5, 6)), 23);
+    }
+
+    @DisplayName("보너스 번호가 45보다 클 경우 예외가 발생한다.")
+    @Test
+    void setBonusNumberBiggerThanValidRange() {
+        Simulator simulator = new Simulator(1000);
+        assertThatThrownBy(
+                () -> simulator.setWinning(
+                        new Lotto(List.of(1, 2, 3, 4, 5, 6)),
+                        46))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("보너스 번호가 1보다 작을 경우 예외가 발생한다.")
+    @Test
+    void setBonusNumberLessThanValidRange() {
+        Simulator simulator = new Simulator(1000);
+        assertThatThrownBy(
+                () -> simulator.setWinning(
+                        new Lotto(List.of(1, 2, 3, 4, 5, 6)),
+                        0))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
