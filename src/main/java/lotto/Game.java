@@ -15,7 +15,7 @@ public class Game {
         gameConsole = new GameConsole();
     }
 
-    public void start() {
+    public void run() {
         int purchase = gameConsole.inputPurchase();
         user = new User(purchase);
 
