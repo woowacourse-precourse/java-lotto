@@ -31,4 +31,13 @@ public class Service {
 		}
 	}
 
+	public List<Integer> userInputNumber() {
+		String number = Console.readLine();
+		String[] splitLottoNumber = number.split(",");
+		for (int i = 0; i < Constant.LOTTO_LENGTH; i++) {
+			lottoNumber.add(Integer.parseInt(splitLottoNumber[i]));
+		}
+		return lottoNumber;
+	}
+
 }
