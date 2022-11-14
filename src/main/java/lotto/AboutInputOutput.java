@@ -20,6 +20,7 @@ public class AboutInputOutput {
             money = Integer.parseInt(Console.readLine());
         } catch (NumberFormatException e) {
             System.out.println(ERROR_ENTER_ONLY_NUMBERS);
+            throw new IllegalArgumentException();
         }
         return money;
     }
@@ -46,7 +47,7 @@ public class AboutInputOutput {
                 numbers.add(Integer.valueOf(winningNumber));
             } catch (NumberFormatException e) {
                 System.out.println(ERROR_ENTER_ONLY_NUMBERS);
-                break;
+                throw new IllegalArgumentException();
             }
         }
         Collections.sort(numbers);
@@ -59,6 +60,7 @@ public class AboutInputOutput {
             bonus = Integer.parseInt(Console.readLine());
         } catch (NumberFormatException e) {
             System.out.println(ERROR_ENTER_ONLY_NUMBERS);
+            throw new IllegalArgumentException();
         }
 
         if (numbers.contains(bonus)) {
