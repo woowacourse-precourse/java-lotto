@@ -8,6 +8,7 @@ import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
 public class WinningLottoTest {
+    
     @ParameterizedTest
     @MethodSource("parameterProvider")
     void 당첨_로또_테스트(int winningNumberCount, boolean hasBonus, WinningLotto result) {
