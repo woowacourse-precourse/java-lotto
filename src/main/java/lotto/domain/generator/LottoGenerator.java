@@ -13,11 +13,12 @@ public class LottoGenerator {
     private static final int MINIMUM_NUMBER = 1;
     private static final int MAXIMUM_NUMBER = 45;
     private static final int NUMBER_COUNT = 6;
-    private static final int DIVIDED_NUMBER = 1000;
+    private static final int MONEY_UNIT = 1000;
 
     private final Lottos lottos;
 
     public LottoGenerator(MoneyRequest moneyRequest) {
+        moneyValidation(moneyRequest);
         int quantity = getAvailableQuantity(moneyRequest.getMoney());
         this.lottos = createLotto(quantity);
     }
@@ -33,10 +34,28 @@ public class LottoGenerator {
     }
 
     private int getAvailableQuantity(int money) {
-        return Math.floorDiv(money, DIVIDED_NUMBER);
+        return Math.floorDiv(money, MONEY_UNIT);
     }
 
     public Lottos getLottos() {
         return lottos;
+    }
+
+    public void moneyValidation(MoneyRequest moneyRequest) {
+        int money = moneyRequest.getMoney();
+        if (isNotEnough(money)) {
+            throw new IllegalArgumentException("최소 구매금액은 1000원 입니다.");
+        }
+        if (isThousandOneUnit(money)) {
+            throw new IllegalArgumentException("1000원 단위로 입력해주세요.");
+        }
+    }
+
+    private boolean isNotEnough(int money) {
+        return Math.floorDiv(money, MONEY_UNIT) == 0;
+    }
+
+    private boolean isThousandOneUnit(int money) {
+        return getAvailableQuantity(money) != 0;
     }
 }
