@@ -29,6 +29,10 @@ public class LottoReader {
         return lottoResult;
     }
 
+    private String roundOff(double lottoYield) {
+        return String.format("%.1f", lottoYield);
+    }
+
     private int calculateTotalAmount() {
         int totalWinningAmount = 0;
 
