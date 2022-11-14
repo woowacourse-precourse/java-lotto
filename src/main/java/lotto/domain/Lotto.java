@@ -17,10 +17,6 @@ public class Lotto {
         return numbers.toString();
     }
 
-    public List<Integer> getNumbers() {
-        return numbers;
-    }
-
     public MatchCount getMatchResult(LottoNumber lottoNumber) {
         int match = (int) lottoNumber.winningNumbers.stream()
                 .filter(num -> numbers.contains(num))
