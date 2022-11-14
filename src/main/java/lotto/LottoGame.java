@@ -6,17 +6,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class LottoGame {
-    public List<Lotto> lottoList = new ArrayList<>();
+    private List<Lotto> lottoList = new ArrayList<>();
     private int purchaseAmount;
     private int lottoAmount;
+    private List<Integer> winningNumbers = new ArrayList<>();
+    private int bonusNumber;
 
     public LottoGame() {
         this.purchaseAmount = Input.EnterPurchaseAmount();
         this.lottoAmount = lottoAmount(purchaseAmount);
         makeLotto();
         printLottoList();
-        Input.EnterWinningNumber();
-        Input.EnterBonusNumber();
+        winningNumbers = Input.EnterWinningNumber();
+        bonusNumber = Input.EnterBonusNumber();
     }
 
     private int lottoAmount(int purchaseAmount) {
@@ -35,10 +37,10 @@ public class LottoGame {
     }
 
     private void printLottoList() {
-        System.out.println();
         System.out.println(lottoAmount + "개를 구매했습니다.");
         for (Lotto lotto : lottoList) {
             lotto.printLotto();
         }
+        System.out.println();
     }
 }

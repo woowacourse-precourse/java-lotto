@@ -11,16 +11,15 @@ public class Input {
     public static int EnterPurchaseAmount() {
         System.out.println("구입금액을 입력해 주세요.");
         String purchaseAmount = Console.readLine();
-
+        System.out.println();
         return Integer.valueOf(purchaseAmount);
     }
 
     // 당첨 번호 입력 기능
     public static List<Integer> EnterWinningNumber() {
         System.out.println("당첨 번호를 입력해 주세요.");
-
         String winningNumber = Console.readLine();
-
+        System.out.println();
         return Arrays.stream(winningNumber.split(",")).map(i -> Integer.valueOf(i)).collect(Collectors.toList());
     }
 
@@ -28,6 +27,7 @@ public class Input {
     public static int EnterBonusNumber() {
         System.out.println("보너스 번호를 입력해 주세요.");
         String bonusNumber = Console.readLine();
+        System.out.println();
         return Integer.valueOf(bonusNumber);
     }
 }
