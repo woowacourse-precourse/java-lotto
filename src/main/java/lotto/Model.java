@@ -86,4 +86,14 @@ public class Model {
 
         return result;
     }
+
+    public static List<List<Integer>> PublishLotto(Integer lottoAmount) {
+        List<List<Integer>> lottoList = new ArrayList<>();
+
+        for (int i = 1; i < 6; i++) {
+            lottoList.add(CreateLottoNumber());
+        }
+
+        return lottoList;
+    }
 }
