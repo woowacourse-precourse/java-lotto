@@ -14,4 +14,7 @@ public class Lottos {
         return lottos;
     }
 
+    public int getSizeOfLottoLines() {
+        return this.lottos.size();
+    }
 }
