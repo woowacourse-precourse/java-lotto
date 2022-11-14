@@ -1,7 +1,10 @@
 package lotto;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
 
 public class Lotto {
     public enum uiMessage{
@@ -46,7 +49,9 @@ public class Lotto {
     static void lottoSystem(){
         System.out.println("구입금액을 입력해 주세요.");
         String payment = Console.readLine();
-        System.out.println(amountOfLotto(payment)+"개를 구매했습니다.");
+        Integer amountOfLotto = amountOfLotto(payment);
+        System.out.println(amountOfLotto+"개를 구매했습니다.");
+        System.out.println(getRandomLottoNumber(amountOfLotto));
     }
     static Integer amountOfLotto(String lottoPayment){
         try{
@@ -63,6 +68,14 @@ public class Lotto {
             throw new IllegalArgumentException();
         }
     }
-
+    static ArrayList<List<Integer>> getRandomLottoNumber(int amountOfLotto){
+        ArrayList<List<Integer>> randomLottoNumber = new ArrayList<>();
+        for(int amount=0;amount<amountOfLotto;amount++){
+            List<Integer> lottoNumbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+            Collections.sort(lottoNumbers);
+            randomLottoNumber.add(lottoNumbers);
+        }
+        return randomLottoNumber;
+    }
 }
 
