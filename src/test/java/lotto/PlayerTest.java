@@ -1,12 +1,9 @@
 package lotto;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static org.junit.jupiter.api.Assertions.*;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
-import java.util.List;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -24,7 +21,8 @@ class PlayerTest {
         int expect = 8;
         assertThat(result).isEqualTo(expect);
     }
-    @DisplayName("로또 구입 금액으로 1234원을 입력하면 예외가 발생한다")
+
+    @DisplayName("로또 구입 금액으로 1234원을 입력하면 예외가 발생한트")
     @Test
     void purchaseLottoException() {
         String input = "1234";
@@ -33,25 +31,5 @@ class PlayerTest {
         Assertions.assertThrows(IllegalArgumentException.class, () -> {
             player.purchaseLotto();
         });
-    }
-
-    @Test
-    void getLottoNumbers() {
-    }
-
-    @Test
-    void checkGetLottoNumbers() {
-    }
-
-    @Test
-    void makeGenerate() {
-    }
-
-    @Test
-    void calculateResult() {
-    }
-
-    @Test
-    void showResult() {
     }
 }
