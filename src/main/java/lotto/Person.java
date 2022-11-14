@@ -7,9 +7,11 @@ import java.util.Map;
 
 public class Person {
     private final List<Lotto> lottos;
+    private final long principal;
 
-    private Person(List<Lotto> lottos) {
+    private Person(List<Lotto> lottos, long principal) {
         this.lottos = lottos;
+        this.principal = principal;
     }
 
     public static Person from (long principal) {
@@ -18,11 +20,11 @@ public class Person {
         for (long i = 0; i < size; i++) {
             lottos.add(Lotto.createLotto());
         }
-        return new Person(lottos);
+        return new Person(lottos, principal);
     }
 
     public static Person from (List<Lotto> lottos) {
-        return new Person(lottos);
+        return new Person(lottos, lottos.size() * 1000L);
     }
 
     public void printLottos() {
@@ -40,5 +42,13 @@ public class Person {
             matchResult.put(rank, matchResult.get(rank) + 1);
         }
         return matchResult;
+    }
+
+    public double yield(Map<Rank, Integer> matchResult) {
+        long profit = 0;
+        for (Rank rank : matchResult.keySet()) {
+            profit += rank.getMoney() * matchResult.get(rank);
+        }
+        return profit * 100.0 / principal;
     }
 }
