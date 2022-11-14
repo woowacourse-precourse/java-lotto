@@ -20,7 +20,10 @@ public class Lotto {
 
     public Lotto(List<Integer> winNumbers, Integer bonusNumber) {
         Lotto.winNumbers =  winNumbers;
+
+        Validator.bonusNumber(bonusNumber);
         Lotto.bonusNumber = bonusNumber;
+
         this.numbers = null;
     }
 

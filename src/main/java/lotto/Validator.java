@@ -49,4 +49,15 @@ public class Validator {
             }
         }
     }
+
+    public static void bonusNumber(Integer bonusNumber) {
+        if (bonusNumber < 1 || bonusNumber > 45) {
+            throw new IllegalArgumentException(
+                    Constant.ERROR + " " + Constant.MIN_NUMBER + "과 "
+                            + Constant.MAX_NUMBER + " 사이의 번호를 입력해 주세요.");
+        }
+        if (Lotto.isContainedWinNumber(bonusNumber)) {
+            throw new IllegalArgumentException(Constant.ERROR + " 보너스 번호는 당첨 번호와 중복되지 않아야합니다.");
+        }
+    }
 }

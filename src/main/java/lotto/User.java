@@ -56,8 +56,11 @@ public class User {
         System.out.println(Constant.ASK_BONUS_NUMBER);
         String input = Console.readLine();
 
-        Validator.bonusNumber(input);
-        bonusNumber = Integer.valueOf(input);
+        try {
+            bonusNumber = Integer.valueOf(input);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException(Constant.ERROR + " 보너스 번호를 숫자로 입력해주세요.");
+        }
 
         return bonusNumber;
     }
