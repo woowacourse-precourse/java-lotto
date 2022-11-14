@@ -11,8 +11,8 @@ class LottoTicketTest {
 	@DisplayName("구매 갯수만큼 티켓이 발행되는지")
 	@Test
 	void createLottoTickets() {
-		int userMoney = 10000;
-		LottoTicket lottoTicket = new LottoTicket(userMoney);
+		int ticketCount = 10;
+		LottoTicket lottoTicket = new LottoTicket(ticketCount);
 
 		List<Lotto> lottoTickets = lottoTicket.getLottoTickets();
 
