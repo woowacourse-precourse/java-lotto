@@ -1,5 +1,6 @@
 package lotto.controller;
 
+import lotto.resource.MessageType;
 import lotto.resource.WinningType;
 import lotto.model.LottoStore;
 import lotto.model.LottoWinningAnalyzer;
@@ -12,41 +13,33 @@ import java.util.List;
 import static lotto.view.LottoSeller.*;
 
 public class LottoProgram {
-    private static final int INIT_WINNING_COUNT = 0;
 
     private List<Lotto> lottoTickets;
-    private WinningLotto winningLotto;
     private EnumMap<WinningType, Integer> winningResult;
-
-    public LottoProgram() {
-        winningResult = new EnumMap<>(WinningType.class);
-
-        for (WinningType type : WinningType.values()) {
-            winningResult.put(type, INIT_WINNING_COUNT);
-        }
-    }
+    private LottoWinningAnalyzer analyzer;
 
     public void run() {
-        List<Integer> numbers;
-        int bonusNumber, purchasePrice;
-
-        purchasePrice = receivePurchasePrice();
+        int purchasePrice = receivePurchasePrice();
         buyLotto(purchasePrice);
-        numbers = receiveWinningNumbers();
-        bonusNumber = receiveBonusNumber();
 
-        initializeWinningLotto(numbers, bonusNumber);
-        initializeWinningResult();
-
-        printWinningResult(purchasePrice);
+        printWinningResult(receiveWinningNumbers(), receiveBonusNumber());
+        printProfit(purchasePrice);
     }
 
-    private void printWinningResult(int purchasePrice) {
-        LottoWinningAnalyzer analyzer = new LottoWinningAnalyzer(winningResult);
+    private void printWinningResult(List<Integer> numbers, int bonusNumber) {
+        WinningLotto winningLotto = new WinningLotto(new Lotto(numbers), bonusNumber);
 
-        analyzer.printWinningResult();
+        initializeWinningResult(winningLotto);
 
-        analyzer.printProfit(purchasePrice);
+        winningResult.forEach((key, value) -> {
+            printMessage(String.format(key.getMessage(), value));
+        });
+    }
+
+    private void printProfit(int purchasePrice) {
+        double profit = calculateProfit(purchasePrice);
+
+        printMessage(String.format(MessageType.WINNING_RESULT.getMessage(), profit));
     }
 
     private void buyLotto(int price) {
@@ -57,27 +50,12 @@ public class LottoProgram {
         printLottoNumbers(lottoTickets);
     }
 
-    private void initializeWinningLotto(List<Integer> numbers, int bonusNumber) {
-        this.winningLotto = new WinningLotto(new Lotto(numbers), bonusNumber);
+    private double calculateProfit(int purchasePrice) {
+        return analyzer.calculateProfit(purchasePrice);
     }
 
-    private void initializeWinningResult() {
-        for (int i = 0; i < lottoTickets.size(); i++) {
-            Lotto lottoTicket = lottoTickets.get(i);
-            int count = winningLotto.countWinningNumber(lottoTicket);
-
-            if (count >= WinningType.THREE.getNumberOfMatching())
-                updateWinningResult(count);
-        }
-    }
-
-    private void updateWinningResult(int count) {
-        WinningType type = winningResult.keySet().stream().
-                filter(winningType -> winningType.getNumberOfMatching() == count)
-                .findAny()
-                .get();
-        int currentCount = winningResult.get(type);
-
-        winningResult.put(type, currentCount + 1);
+    private void initializeWinningResult(WinningLotto winningLotto) {
+        analyzer = new LottoWinningAnalyzer(winningLotto);
+        winningResult = analyzer.calculateWinningResult(lottoTickets);
     }
 }

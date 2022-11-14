@@ -1,33 +1,50 @@
 package lotto.model;
 
-import lotto.resource.MessageType;
 import lotto.resource.WinningType;
 
 import java.util.EnumMap;
+import java.util.List;
 
-import static lotto.view.LottoSeller.printMessage;
 
 public class LottoWinningAnalyzer {
+    private static final int INIT_WINNING_COUNT = 0;
     private static final int DECIMAL_POINT = 2;
 
     private EnumMap<WinningType, Integer> winningResult;
+    private WinningLotto winningLotto;
 
-    public LottoWinningAnalyzer(EnumMap<WinningType, Integer> winningResult) {
-        this.winningResult = winningResult;
+    public LottoWinningAnalyzer(WinningLotto winningLotto) {
+        this.winningLotto = winningLotto;
+        winningResult = new EnumMap<>(WinningType.class);
+
+        for (WinningType type : WinningType.values()) {
+            winningResult.put(type, INIT_WINNING_COUNT);
+        }
     }
 
-    public void printWinningResult() {
-        winningResult.forEach((key, value) -> {
-            printMessage(String.format(key.getMessage(), value));
-        });
+    public EnumMap<WinningType, Integer> calculateWinningResult(List<Lotto> lottoTickets) {
+        for (int i = 0; i < lottoTickets.size(); i++) {
+            Lotto lottoTicket = lottoTickets.get(i);
+            int count = winningLotto.countWinningNumber(lottoTicket);
+
+            if (count >= WinningType.THREE.getNumberOfMatching())
+                updateWinningResult(count);
+        }
+
+        return winningResult;
     }
 
-    public void printProfit(int userMoney) {
-        printMessage(String.format(
-                MessageType.WINNING_RESULT.getMessage(), calculateProfit(userMoney)));
+    private void updateWinningResult(int count) {
+        WinningType type = winningResult.keySet().stream().
+                filter(winningType -> winningType.getNumberOfMatching() == count)
+                .findAny()
+                .get();
+        int currentCount = winningResult.get(type);
+
+        winningResult.put(type, currentCount + 1);
     }
 
-    private double calculateProfit(int userMoney) {
+    public double calculateProfit(int userMoney) {
         double winningMoney = getSumAllWinningMoney();
         double profit = winningMoney / userMoney * 100;
         double roundDecimalPoint = Math.pow(10, DECIMAL_POINT);
