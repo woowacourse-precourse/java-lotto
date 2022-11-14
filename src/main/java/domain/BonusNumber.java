@@ -18,4 +18,10 @@ public class BonusNumber {
         int bonus = Integer.parseInt(input);
         return bonus;
     }
+
+    public void numberRange(int bonus){
+        if(bonus < MIN_NUMBER || bonus > MAX_NUMBER){
+            throw new IllegalArgumentException(BonusExceptionType.NOT_MATCH_BONUS_RANGE.getErrorMessage());
+        }
+    }
 }
