@@ -1,4 +1,4 @@
-package lotto.message;
+package lotto.IO.message;
 
 public enum ErrorCode {
     WRONG_SIZE("로또 번호는 수 6개로 이루어져야 합니다."),

@@ -1,10 +1,9 @@
 package lotto;
 
-import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import camp.nextstep.edu.missionutils.Randoms;
-import lotto.message.ErrorCode;
+import lotto.IO.message.ErrorCode;
 
 public class Lotto {
     private final List<Integer> numbers;

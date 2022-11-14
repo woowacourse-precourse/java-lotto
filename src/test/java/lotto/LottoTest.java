@@ -1,6 +1,6 @@
 package lotto;
 
-import lotto.message.ErrorCode;
+import lotto.IO.message.ErrorCode;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;

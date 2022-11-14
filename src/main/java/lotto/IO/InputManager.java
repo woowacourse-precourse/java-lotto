@@ -1,23 +1,20 @@
-package lotto;
+package lotto.IO;
 
 import camp.nextstep.edu.missionutils.Console;
-import lotto.message.ErrorCode;
-import lotto.message.IOMessage;
+import lotto.IO.message.ErrorCode;
+import lotto.IO.message.IOMessage;
+import lotto.Lotto;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class IOManager {
-    private static void printEmptyLine() {
-        System.out.println(IOMessage.EMPTY_LINE.getMessage());
-    }
-
+public class InputManager {
     public static int scanMoney() throws IllegalArgumentException {
         try {
             System.out.println(IOMessage.ASK_PRICE.getMessage());
             int price = Integer.parseInt(Console.readLine());
-            printEmptyLine();
+            OutputManager.printEmptyLine();
 
             return price;
         } catch(Exception e) {
@@ -35,7 +32,7 @@ public class IOManager {
         } catch (Exception e) {
             throw new IllegalArgumentException(ErrorCode.WRONG_ANSWER.getErrorMessage());
         } finally {
-            printEmptyLine();
+            OutputManager.printEmptyLine();
         }
     }
 
@@ -47,22 +44,7 @@ public class IOManager {
         } catch (Exception e) {
             throw new IllegalArgumentException(ErrorCode.WRONG_ANSWER.getErrorMessage());
         } finally {
-            printEmptyLine();
+            OutputManager.printEmptyLine();
         }
-    }
-
-    public static void printLottoBought(int num) {
-        System.out.println(num + IOMessage.LOTTO_BUY_NUM.getMessage());
-    }
-
-    public static void printLottoList(List<Lotto> lottoList) {
-        for(Lotto lotto : lottoList) {
-            printLotto(lotto);
-        }
-        printEmptyLine();
-    }
-
-    private static void printLotto(Lotto lotto) {
-        System.out.println(lotto.toString());
     }
 }

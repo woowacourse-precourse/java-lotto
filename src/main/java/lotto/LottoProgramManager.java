@@ -1,8 +1,9 @@
 package lotto;
 
+import lotto.IO.InputManager;
+import lotto.IO.OutputManager;
 import lotto.config.LottoConfig;
-import lotto.message.ErrorCode;
-import lotto.message.IOMessage;
+import lotto.IO.message.ErrorCode;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,7 +25,7 @@ public class LottoProgramManager {
     }
 
     private int buyLotto() throws IllegalArgumentException {
-        int price = IOManager.scanMoney();
+        int price = InputManager.scanMoney();
 
         if(LottoConfig.LOTTO_PRICE == 0)
             throw new IllegalArgumentException(ErrorCode.LOTTO_PRICE_ZERO.getErrorMessage());
@@ -33,7 +34,7 @@ public class LottoProgramManager {
         if(price % LottoConfig.LOTTO_PRICE != 0)
             throw new IllegalArgumentException(ErrorCode.WRONG_PURCHASE_PRICE.getErrorMessage());
 
-        IOManager.printLottoBought(price / LottoConfig.LOTTO_PRICE);
+        OutputManager.printLottoBought(price / LottoConfig.LOTTO_PRICE);
         return price / LottoConfig.LOTTO_PRICE;
     }
 
@@ -44,12 +45,12 @@ public class LottoProgramManager {
             lottoBought.add(new Lotto(Lotto.generateRandomLottoNumbers()));
         }
 
-        IOManager.printLottoList(lottoBought);
+        OutputManager.printLottoList(lottoBought);
     }
 
     private void getAnswerAndBonus() {
-        answer = new Lotto(IOManager.scanAnswer());
-        bonus = IOManager.scanBonus();
+        answer = new Lotto(InputManager.scanAnswer());
+        bonus = InputManager.scanBonus();
     }
 
     private int rankLotto() {
