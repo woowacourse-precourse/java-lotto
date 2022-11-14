@@ -1,6 +1,7 @@
 package lotto.view;
 
 import camp.nextstep.edu.missionutils.Console;
+import lotto.domain.TotalPrizeNumbers;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -34,6 +35,7 @@ public class Input {
             checkNumber(splitedInput.get(i));
         }
         List<Integer> prizeNumbers = parsePrizeNumbers(splitedInput);
+        TotalPrizeNumbers.validatePrizeNumbers(prizeNumbers);
 
         return prizeNumbers;
     }
