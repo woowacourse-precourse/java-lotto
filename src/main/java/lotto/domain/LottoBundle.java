@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import lotto.Lotto;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class LottoBundle {
@@ -45,7 +46,8 @@ public class LottoBundle {
 
     private Lotto createOneLotto() {
         List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
-//        Collections.sort(numbers);
-        return new Lotto(numbers);
+        List<Integer> numberlist = new ArrayList<>(numbers);
+        Collections.sort(numberlist);
+        return new Lotto(numberlist);
     }
 }
