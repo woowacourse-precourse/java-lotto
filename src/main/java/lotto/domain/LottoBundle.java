@@ -30,6 +30,10 @@ public class LottoBundle {
         return print;
     }
 
+    public List<Lotto> getLottoList() {
+        return lottoList;
+    }
+
     private List<Lotto> createLottoList(){
         List<Lotto> lottoList1 = new ArrayList<>();
         while(this.count-->0){
