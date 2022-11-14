@@ -3,13 +3,15 @@ package lotto;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.text.DecimalFormat;
+import java.util.Arrays;
 import java.util.List;
 
 public class UI {
 
     Domain domain = new Domain();
     DecimalFormat moneyFormatter = new DecimalFormat("###,###");
-    public String getInputMoney(){
+
+    public String getInputMoney() {
         System.out.println("구입금액을 입력해 주세요.");
         return Console.readLine();
     }
@@ -34,8 +36,13 @@ public class UI {
     public void printWinningStats(List<Integer> rankList, int numberOfLottos) {
         System.out.println("당첨 통계");
         System.out.println("---");
-        for (int i = 3; i < 8; i++) {
-            System.out.println(i + "개 일치 (" + moneyFormatter.format(domain.getReward(8 - i)) + "원) - " + rankList.get(8 - i) + "개");
+
+        for (int rank = 5; rank > 0; rank++) {
+            String stringRank = Domain.rankStringMapper.get(rank);
+            Rank tempRank = Rank.valueOf(stringRank);
+
+            System.out.println(tempRank.getOverlappingNumber() + "개 일치" + ", 보너스볼 일치 ".repeat(tempRank.getBonusBall())+"(" +
+                    moneyFormatter.format(domain.getReward(rank)) + "원) - " + rankList.get(rank) + "개");
         }
         System.out.println("총 수익률은 " + domain.getYield(rankList, numberOfLottos) + "입니다.");
     }
