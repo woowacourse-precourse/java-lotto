@@ -15,7 +15,7 @@ public class Checker {
     private static final int INCREASE_NUMBER = 1;
 
     private final LottoResultDto lottoResultDto;
-    private Map<ResultPrice, Integer> totalScore = new HashMap<>() {{
+    private final Map<ResultPrice, Integer> totalScore = new HashMap<>() {{
         Arrays.stream(ResultPrice.values())
                 .forEach(price -> put(price, 0));
     }};
