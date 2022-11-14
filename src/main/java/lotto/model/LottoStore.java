@@ -7,8 +7,8 @@ public class LottoStore {
     private Lotto lotto;
     private int bonusNumber;
 
-    public LottoStore(List<Integer> lottoNumbers, int bonusNumber) {
-        lotto = new Lotto(lottoNumbers);
+    public LottoStore(Lotto lotto, int bonusNumber) {
+        this.lotto = lotto;
 
         Validator.validateBonusNumber(lotto, bonusNumber);
         this.bonusNumber = bonusNumber;

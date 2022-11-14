@@ -12,8 +12,7 @@ public class Money {
     }
 
     private void validateUnit(int money) {
-        if (money % MIN_BUY_UNIT != 0) {
-            System.out.println(ERROR_UNIT);
+        if (money % MIN_BUY_UNIT != 0 || money <= 0) {
             throw new IllegalArgumentException(ERROR_UNIT);
         }
     }

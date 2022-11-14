@@ -1,7 +1,7 @@
 package lotto.controller;
 
-import java.util.List;
 import lotto.model.Buyer;
+import lotto.model.Lotto;
 import lotto.model.LottoStatics;
 import lotto.model.LottoStore;
 import lotto.model.Money;
@@ -28,9 +28,9 @@ public class LottoStoreController {
     }
 
     private LottoStore createLottoStore() {
-        List<Integer> lotteryNumbers = InputView.inputNumbers();
+        Lotto lotto = new Lotto(InputView.inputNumbers());
         int bonusNumber = InputView.inputBonusNumber();
 
-        return new LottoStore(lotteryNumbers, bonusNumber);
+        return new LottoStore(lotto, bonusNumber);
     }
 }
