@@ -3,6 +3,15 @@ package lotto.domain;
 import java.util.List;
 
 public class LottoEarnings {
+    public static double calculateEarningRate(
+            final List<Integer> matchResult,
+            final List<Boolean> hasBonus,
+            final int price
+    ) {
+        int prize = calculatePrize(matchResult, hasBonus);
+        return (double) prize / price * 100;
+    }
+
     public static int calculatePrize(final List<Integer> matchResult, final List<Boolean> hasBonus) {
         int prize = 0;
         for (int i = 0; i < matchResult.size(); i++) {
