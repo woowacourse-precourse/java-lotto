@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.TreeMap;
 
+import static lotto.domain.Lotto.LOTTO_PRICE;
 import static lotto.domain.Rank.*;
 
 public class Statistics {
@@ -31,6 +32,16 @@ public class Statistics {
 
     public Map<Rank, Integer> getRankRecord() {
         return rankRecord;
+    }
+
+    private String  roundToTwoDecimalPlaces() {
+        return String.format("%.2f", calculateEarningsRate());
+    }
+
+    private double calculateEarningsRate() {
+        int payment = calculateNumberOfLottosPaid() * LOTTO_PRICE;
+        long earnings = calculateEarnings();
+        return (double) payment / earnings;
     }
 
     private int calculateNumberOfLottosPaid() {

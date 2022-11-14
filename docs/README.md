@@ -79,7 +79,7 @@
   - [X] 총 몇 개의 로또를 구매 했는지 계산 - Statistics#calculateNumberOfLottosPaid()
   - [X] 로또 등수 별로 상금 정보 초기화
   - [X] 총 당첨 수익 계산 - Statistics#calculateEarnings()
-  - [ ] 소수점 둘째 자리에서 반올림 처리 (ex. 100.0%, 51.5%, 1,000,000,0%) - Statistics#roundToTwoDecimalPlaces()
+  - [X] 소수점 둘째 자리에서 반올림 처리 (ex. 100.0%, 51.5%, 1,000,000.0%) - Statistics#roundToTwoDecimalPlaces()
   
 #### ErrorType 
 - [X] 입력 에러 관련 에러 타입 상수 선언
