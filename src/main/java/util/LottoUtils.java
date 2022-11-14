@@ -88,69 +88,34 @@ public class LottoUtils {
         return bonusNumber;
     }
 
-    public static Rank compareLottoNumber(Lotto winningNumber, int bonusNumber, List<Lotto> lottos) {
-        LinkedHashMap<Integer, Integer> ranking = new LinkedHashMap<>();
-        List<Integer> winningLottoNumbers = winningNumber.getLottoNumbers();
-        List<Integer> rightNumbers = new ArrayList<>();
-        List<Integer> wrongNumbers = new ArrayList<>();
-        lottos.forEach(lotto -> {
-            //getRightORWrongNumbers
-            List<Integer> lottoNumbers = lotto.getLottoNumbers();
-            for (int i = 0; i < LOTTO_NUMBER_COUNT; i++) {
-                if (lottoNumbers.get(i) == winningLottoNumbers.get(i)) {
-                    rightNumbers.add(lottoNumbers.get(i));
-                    continue;
-                }
-                wrongNumbers.add(lottoNumbers.get(i));
-            }
-            //checkFirstPlace
-            if (rightNumbers.size() == LOTTO_NUMBER_COUNT) {
-                if (!ranking.containsKey(FIRST_PLACE)) {
-                    ranking.put(FIRST_PLACE, 1);
-                    return;
-                }
-                ranking.put(FIRST_PLACE, ranking.get(FIRST_PLACE) + 1);
-            }
-            //checkSecondPlace
-            if (rightNumbers.size() == 5 && wrongNumbers.contains(bonusNumber)) {
-                if (!ranking.containsKey(SECOND_PLACE)) {
-                    ranking.put(SECOND_PLACE, 1);
-                    return;
-                }
-                ranking.put(SECOND_PLACE, ranking.get(SECOND_PLACE) + 1);
-            }
-            //checkOtherPlace
-            int rank = rightNumbers.size();
 
-            if (!ranking.containsKey(rank)) {
-                ranking.put(rank, 1);
-                return;
-            }
-            ranking.put(rank, ranking.get(rank) + 1);
-        });
-        return new Rank(ranking);
-    }
-
-    public static String calculateProfit(Rank rank, int inputMoney) {
-        int totalProfit = 0;
-        LinkedHashMap<Integer, Integer> ranking = rank.getRank();
-        Set<Integer> places = ranking.keySet();
-        for (Integer place : places) {
-            if (place == FIRST_PLACE) {
-                totalProfit += FIRST_PLACE_PRIZE;
-            } else if (place == SECOND_PLACE) {
-                totalProfit += SECOND_PLACE_PRIZE;
-            } else if (place == THIRD_PLACE) {
-                totalProfit += THIRD_PLACE_PRIZE;
-            } else if (place == FOURTH_PLACE) {
-                totalProfit += FOURTH_PLACE_PRIZE;
-            } else if (place == FIFTH_PLACE) {
-                totalProfit += FIFTH_PLACE_PRIZE;
-            }
-        }
+    public static String getProfitPercentage(Rank rank, int inputMoney) {
+        int totalProfit = calculateProfit(rank.getRank());
         double profitPercent = totalProfit / inputMoney;
         String roundedPercent = String.format("%.1f", profitPercent);
+
         return roundedPercent;
+    }
+
+    private static int calculateProfit(LinkedHashMap<Integer, Integer> rankData) {
+        int totalProfit = 0;
+        Set<Integer> ranking = rankData.keySet();
+
+        for (Integer rank : ranking) {
+            Integer cnt = rankData.get(rank);
+            if (rank.equals(FIRST_PLACE)) {
+                totalProfit += FIRST_PLACE_PRIZE * cnt;
+            } else if (rank.equals(SECOND_PLACE)) {
+                totalProfit += SECOND_PLACE_PRIZE * cnt;
+            } else if (rank.equals(THIRD_PLACE)){
+                totalProfit += THIRD_PLACE_PRIZE * cnt;
+            } else if (rank.equals(FOURTH_PLACE)){
+                totalProfit += FOURTH_PLACE_PRIZE * cnt;
+            } else if (rank.equals(FIFTH_PLACE)) {
+                totalProfit += FIFTH_PLACE_PRIZE * cnt;
+            }
+        }
+        return  totalProfit;
     }
 
 
