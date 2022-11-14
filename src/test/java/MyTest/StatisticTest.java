@@ -1,4 +1,4 @@
-package lotto;
+package MyTest;
 
 import lotto.domain.Lotto;
 import lotto.domain.Purchase;
