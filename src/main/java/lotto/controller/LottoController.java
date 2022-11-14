@@ -1,12 +1,10 @@
 package lotto.controller;
 
 import java.util.List;
-import java.util.Map;
-import lotto.domain.LottoResult;
-import lotto.domain.HaveLotto;
-import lotto.domain.LottoMachine;
+import lotto.domain.BuyLottoList;
 import lotto.domain.Lotto;
-import lotto.domain.LottoReference;
+import lotto.domain.LottoMachine;
+import lotto.domain.LottoResult;
 import lotto.domain.LottoWithBonus;
 import lotto.domain.Money;
 import lotto.veiw.InputHandler;
@@ -22,10 +20,10 @@ public class LottoController {
         Money money = inputMoney();
         LottoMachine lottoMachine = new LottoMachine(money);
 
-        HaveLotto haveLotto = new HaveLotto(lottoMachine.getBuyLottoList());
+        BuyLottoList buyLottoList = new BuyLottoList(lottoMachine.getBuyLottoList());
         LottoWithBonus lottoWithBonus = inputBonus(inputLotto());
 
-        LottoResult lottoResult = new LottoResult(haveLotto, lottoWithBonus);
+        LottoResult lottoResult = new LottoResult(buyLottoList, lottoWithBonus);
 
         outputHandler.winningStatistics(lottoResult);
         outputHandler.printYield(lottoResult);

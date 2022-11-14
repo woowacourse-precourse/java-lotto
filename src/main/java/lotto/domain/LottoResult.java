@@ -9,15 +9,15 @@ public class LottoResult {
 
     private Map<LottoReference, Integer> lottoResult;
 
-    public LottoResult(LottoMachine lottoMachine, LottoWithBonus lottoWithBonus) {
-        this.lottoResult = calculateResult(lottoMachine, lottoWithBonus);
+    public LottoResult(BuyLottoList buyLottoList, LottoWithBonus lottoWithBonus) {
+        this.lottoResult = calculateResult(buyLottoList, lottoWithBonus);
     }
 
     public Map<LottoReference, Integer> getValue() {
         return this.lottoResult;
     }
 
-    private Map<LottoReference, Integer> calculateResult(LottoMachine lottoMachine,
+    private Map<LottoReference, Integer> calculateResult(BuyLottoList lottoMachine,
             LottoWithBonus lottoWithBonus) {
         Map<LottoReference, Integer> result = new HashMap<>();
         Lotto myLotto = lottoWithBonus.getLotto();
