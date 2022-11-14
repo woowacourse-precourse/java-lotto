@@ -13,10 +13,10 @@ public class Program {
     List<Integer> winner;
     Map<Ranking, Integer> result;
     double profitRate;
-    public void run(List<Lotto> lottoList, List<Integer> winner, int bonus) {
+    public void run() {
         lottoSetup();
         winSetup();
-        result(lottoList, winner, bonus);
+        result();
     }
     public void lottoSetup() {
         printMsg.printMoneyInputMsg();
@@ -34,7 +34,7 @@ public class Program {
         printMsg.printBonusInputMsg();
         bonus = view.getBonusInput(winner);
     }
-    public void result(List<Lotto> lottoList, List<Integer> winner, int bonus) {
+    public void result() {
         drawLotto = new DrawLotto(lottoList, winner, bonus);
         result = drawLotto.checkListOfLottos();
         printMsg.printResult(result);

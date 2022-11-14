@@ -33,7 +33,7 @@ public class View {
     public void validateUniqueNumbersInput(List<Integer> numbers) {
         List<Integer> noDuplicates = new ArrayList<>();
         for (int num : numbers) {
-            validateUniqueNumber(numbers, num);
+            validateUniqueNumber(noDuplicates, num);
             noDuplicates.add(num);
         }
     }
