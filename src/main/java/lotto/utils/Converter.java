@@ -1,10 +1,10 @@
-package lotto.domain;
+package lotto.utils;
 
-import static lotto.domain.ErrorMessage.BONUS_NOT_NUMBER_ERROR;
-import static lotto.domain.ErrorMessage.INPUT_EMPTY_ERROR;
-import static lotto.domain.ErrorMessage.MONEY_LIMIT_ERROR;
-import static lotto.domain.ErrorMessage.MONEY_NUMBER_ERROR;
-import static lotto.domain.ErrorMessage.SEPARATOR_ERROR;
+import static lotto.utils.ErrorMessage.BONUS_NOT_NUMBER_ERROR;
+import static lotto.utils.ErrorMessage.INPUT_EMPTY_ERROR;
+import static lotto.utils.ErrorMessage.MONEY_LIMIT_ERROR;
+import static lotto.utils.ErrorMessage.MONEY_NUMBER_ERROR;
+import static lotto.utils.ErrorMessage.SEPARATOR_ERROR;
 
 import java.util.List;
 

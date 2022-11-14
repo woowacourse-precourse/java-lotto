@@ -1,8 +1,8 @@
-package lotto.domain;
+package lotto.utils;
 
 import static lotto.constant.LottoGameRule.SEPARATOR;
-import static lotto.domain.ErrorMessage.NOT_NUMBER_ERROR;
-import static lotto.domain.ErrorMessage.WINNING_INPUT_NUMBER_ERROR;
+import static lotto.utils.ErrorMessage.NOT_NUMBER_ERROR;
+import static lotto.utils.ErrorMessage.WINNING_INPUT_NUMBER_ERROR;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -11,11 +11,12 @@ import lotto.domain.LottoResult;
 import lotto.domain.PrizeType;
 
 public class OutputView {
+    private static final String NEW_LINE = "\n";
     private static final String ENTER_PURCHASE_MONEY_MESSAGE = "구입금액을 입력해 주세요.";
-    private static final String PURCHASE_LOTTO_COUNT_MESSAGE = "\n{0}개를 구매했습니다.";
-    private static final String ENTER_WINNING_NUMBER_MESSAGE = "\n당첨 번호를 입력해 주세요.";
-    private static final String ENTER_BONUS_NUMBER_MESSAGE = "\n보너스 번호를 입력해 주세요.";
-    private static final String WINNING_STATISTICS = "\n당첨 통계\n---\n";
+    private static final String PURCHASE_LOTTO_COUNT_MESSAGE = NEW_LINE + "{0}개를 구매했습니다.";
+    private static final String ENTER_WINNING_NUMBER_MESSAGE = NEW_LINE + "당첨 번호를 입력해 주세요.";
+    private static final String ENTER_BONUS_NUMBER_MESSAGE = NEW_LINE + "보너스 번호를 입력해 주세요.";
+    private static final String WINNING_STATISTICS = NEW_LINE + "당첨 통계" + NEW_LINE + "---" + NEW_LINE;
     private static final String PROFIT_FORMAT = "#,###.0";
     private static final String PROFIT_RATE = "총 수익률은 {0}%입니다.";
 

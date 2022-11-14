@@ -1,4 +1,4 @@
-package lotto.domain;
+package lotto.utils;
 
 public enum ErrorMessage {
     INPUT_EMPTY_ERROR("입력하신 값이 없습니다."),
@@ -15,6 +15,7 @@ public enum ErrorMessage {
     BONUS_NOT_NUMBER_ERROR("보너스 번호는 양의 정수만 있어야 합니다."),
     BONUS_NUMBER_DUPLICATED_ERROR("보너스 번호는 당첨 번호와 중복되지 않아야 합니다.");
 
+    private static final String ERROR_FORMAT = "[ERROR] ";
     private final String message;
 
     ErrorMessage(String message) {
@@ -23,6 +24,6 @@ public enum ErrorMessage {
 
     @Override
     public String toString() {
-        return "[ERROR] " + message;
+        return ERROR_FORMAT + message;
     }
 }

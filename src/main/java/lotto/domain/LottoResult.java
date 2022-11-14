@@ -30,20 +30,12 @@ public class LottoResult {
     }
 
     private void countWinningNumber(Lotto lotto, Lotto winningLotto, int bonusNumber) {
-        int count = 0;
-        for (int number : winningLotto.getNumbers()) {
-            if (lotto.isContainNumber(number)) {
-                count += 1;
-            }
-        }
-        if (lotto.isContainNumber(bonusNumber)) {
-            addResult(count, true);
-        }
-        addResult(count, false);
+        int count = lotto.compare(winningLotto.getNumbers());
+        addResult(count, lotto.isContainBonusNumber(bonusNumber));
     }
 
-    private void addResult(int count, boolean isBonus) {
-        PrizeType type = PrizeType.getPrizeType(count, isBonus);
+    private void addResult(int count, boolean bonus) {
+        PrizeType type = PrizeType.getPrizeType(count, bonus);
         if (type != null) {
             result.put(type, getResult().get(type) + 1);
         }

@@ -12,17 +12,13 @@ import lotto.view.OutputView;
 public class LottoGame {
     public void start() {
         try {
-            playGame();
+            OutputView.printInputMoney();
+            Money money = new Money(InputView.inputPurchaseMoney());
+            Lottos lottos = makeLotto(money.countLotto());
+            winStatics(lottos, drawLottery(), money);
         } catch (IllegalArgumentException e) {
             OutputView.printErrorMessage(e.getMessage());
         }
-    }
-
-    private void playGame() {
-        OutputView.printInputMoney();
-        Money money = new Money(InputView.inputPurchaseMoney());
-        Lottos lottos = makeLotto(money.countLotto());
-        winStatics(lottos, drawLottery(), money);
     }
 
     private Lottos makeLotto(int lottoCount) {

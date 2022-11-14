@@ -1,4 +1,4 @@
-package lotto.domain;
+package lotto.utils;
 
 import static lotto.constant.LottoGameRule.SEPARATOR;
 

@@ -1,7 +1,7 @@
 package lotto.domain;
 
-import static lotto.domain.ErrorMessage.MONEY_UNIT_ERROR;
-import static lotto.domain.ErrorMessage.UNDER_MONEY_ERROR;
+import static lotto.utils.ErrorMessage.MONEY_UNIT_ERROR;
+import static lotto.utils.ErrorMessage.UNDER_MONEY_ERROR;
 
 public class Money {
     private static final int UNIT_MONEY = 1_000;
