@@ -9,7 +9,7 @@ public class WinningInfo {
     private static final int FOURTH = 3;
     private static final int FIFTH = 4;
     private static final Map<Prize, Integer> indices = new HashMap<>();
-    private final List<Integer> winningCounts = new ArrayList<>();
+    private final List<Integer> winningCounts;
 
     static {
         indices.put(Prize.FIRST, FIRST);
@@ -20,9 +20,15 @@ public class WinningInfo {
     }
 
     public WinningInfo() {
-        for (int index = 0; index < Prize.values().length; index++) {
+        winningCounts = new ArrayList<>();
+
+        for (int index = 0; index < Prize.values().length - 1; index++) {
             winningCounts.add(0);
         }
+    }
+
+    public WinningInfo(List<Integer> winningCounts) {
+        this.winningCounts = winningCounts;
     }
 
     public void increaseWinningCount(Prize prize) {
