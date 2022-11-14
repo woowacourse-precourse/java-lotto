@@ -30,6 +30,9 @@ public class MainView {
 
             LottoWinningDiscriminator discriminator = new LottoWinningDiscriminator(winningNumber, bonusNumber);
             List<LottoRank> winningResult = discriminator.discriminate(purchasedLotto);
+
+            new ResultView(new LottoResult(winningResult, purchaseAmount))
+                    .printWinningStats();
         } catch (IllegalArgumentException e) {
             Logger.printError(e.getMessage());
         }
