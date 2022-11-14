@@ -34,6 +34,12 @@ public class InputChecker {
         }
         return true;
     }
+    public boolean isNumberInRange(Integer bonus){
+        if(bonus<1 || bonus>45){
+            throw new IllegalArgumentException(ErrorMessage.LOTTO_RANGE_ERROR.print());
+        }
+        return true;
+    }
     public boolean checkInputMoney(String input) throws IllegalArgumentException{
         if(!isDigit(input) || !isMultipleThousand(Integer.parseInt(input))){
             return false;
@@ -53,7 +59,7 @@ public class InputChecker {
             throw new IllegalArgumentException(ErrorMessage.INPUT_LOTTO_NUMBERS_NOT_NUMERIC.print());
         }
 
-        if(!isNotDuplication(Integer.parseInt(input), winningLotto)) {
+        if(isNotDuplication(Integer.parseInt(input), winningLotto) && isNumberInRange(Integer.parseInt(input))) {
             return true;
         }
         return false;
