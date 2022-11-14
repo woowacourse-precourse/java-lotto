@@ -18,4 +18,8 @@ public class Host {
     private boolean isIssued(List<Integer> numbers){
         return false;
     }
+
+    public void showWinResult(User user){
+        System.out.println("당첨 통계\n---\n");
+    }
 }

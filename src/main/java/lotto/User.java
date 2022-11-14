@@ -19,7 +19,9 @@ public class User {
     }
 
     public void showWholeLotto() {
+        System.out.printf("%d개를 구매했습니다.", wholeLotto.size());
         wholeLotto.forEach(System.out::println);
+        System.out.println();
     }
 
     public List<Lotto> getWholeLotto() {

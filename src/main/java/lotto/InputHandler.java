@@ -17,6 +17,7 @@ public class InputHandler {
         System.out.println("구입금액을 입력해 주세요.");
         int cash = Integer.parseInt(Console.readLine());
         inputValidator.validatePurchaseAmount(cash);
+        System.out.println();
 
         return cash;
     }
@@ -26,14 +27,16 @@ public class InputHandler {
         String input = Console.readLine();
         List<Integer> winNumbers = Arrays.stream(input.split(",")).mapToInt(Integer::parseInt).boxed().collect(Collectors.toList());
         inputValidator.validateLotto(winNumbers);
+        System.out.println();
 
         return winNumbers;
     }
 
     public int inputBonusNumber() {
-        System.out.println("\n보너스 번호를 입력해 주세요.");
+        System.out.println("보너스 번호를 입력해 주세요.");
         int bonusNumber = Integer.parseInt(Console.readLine());
         inputValidator.validateBonusNumber(bonusNumber);
+        System.out.println();
 
         return bonusNumber;
     }

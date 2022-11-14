@@ -16,6 +16,4 @@ public class StatisticsAnalyzer {
         return 0;
     }
 
-    public void showWinResult() {
-    }
 }
