@@ -10,7 +10,7 @@ import camp.nextstep.edu.missionutils.Console;
 public class InputView {
 
     private final static Pattern NUMBER_ONLY_PATTERN = Pattern.compile("\\d+");
-    private final static Pattern LOTTO_NUMBERS_FORMAT = Pattern.compile("\\d,\\d,\\d,\\d,\\d,\\d");
+    private final static Pattern LOTTO_NUMBERS_FORMAT = Pattern.compile("\\d+,\\d+,\\d+,\\d+,\\d+,\\d+");
     private static final String LOTTO_NUMBERS_SEPARATOR = ",";
 
     public long promptAmount() {
