@@ -4,6 +4,7 @@ import lotto.controller.EnterWinningNumber;
 import lotto.controller.LottoPurchase;
 import lotto.domain.Lotto;
 import lotto.domain.WinningLotto;
+import lotto.view.ResultPrint;
 
 import java.util.List;
 
@@ -15,7 +16,7 @@ public class Application {
         EnterWinningNumber enterWinningNumber = new EnterWinningNumber();
         WinningLotto winningLotto = enterWinningNumber.enterWinngLottoNumber();
 
-        winningLotto.compareLotto(purchaseLottos);
-        winningLotto.getLottoRank();
+        ResultPrint resultPrint = new ResultPrint();
+        resultPrint.winningStatistics(winningLotto.getLottoRank());
     }
 }
