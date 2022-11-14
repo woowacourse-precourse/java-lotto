@@ -20,14 +20,15 @@ public class LottoController {
     }
 
     private void purchaseLottos() {
-        int payment = ConsoleView.inputPurchasePrice();
-        List<Lotto> randomLottos = createRandomLottos(payment);
+        int inputPrice = ConsoleView.inputPurchasePrice();
+        Payment payment = new Payment(inputPrice);
+        List<Lotto> randomLottos = createRandomLottos(payment.getAvailableLottoAmount());
         purchasedLottos = new PurchasedLottos(randomLottos);
     }
 
-    private List<Lotto> createRandomLottos(int payment) {
+    private List<Lotto> createRandomLottos(int lottoAmount) {
         List<Lotto> randomLottos = new ArrayList<>();
-        for (int i = 0; i < payment / 1000; i++) {
+        for (int i = 0; i < lottoAmount; i++) {
             Lotto lotto = createRandomLotto();
             randomLottos.add(lotto);
         }

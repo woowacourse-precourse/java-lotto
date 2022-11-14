@@ -10,6 +10,12 @@ import java.util.stream.Collectors;
 public class InputValidator {
     private static final String INPUT_DELIMITER = ",";
 
+    public static void validatePayment(int payment, int eachPrice) {
+        if (payment % eachPrice != 0) {
+            throw new IllegalArgumentException(ErrorMessage.INVALID_PURCHASE_PRICE.getMessage());
+        }
+    }
+
     public static int changeInputToInt(String input) {
         if (!isNumeric(input)) {
             throw new IllegalArgumentException(ErrorMessage.NOT_DIGIT.getMessage());
