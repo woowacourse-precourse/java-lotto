@@ -45,8 +45,6 @@ public class Application {
         List<String> rankInfoWithCounts = totalResult.getRankInfoWithCounts(rankCounts);
         String yield = totalResult.getYield(rankCounts);
 
-        OutputView.printTotalResultHeader();
-        OutputView.printRankInfoWithCounts(rankInfoWithCounts);
-        OutputView.printYield(yield);
+        OutputView.printTotalResult(rankInfoWithCounts, yield);
     }
 }
