@@ -16,19 +16,22 @@ public class MoneyTest {
         assertThatIllegalArgumentException().isThrownBy(() -> new Money(-1000));
     }
 
+    @DisplayName("어떤 가격으로 잔돈이 생기는지 알 수 있다")
     @ParameterizedTest(name = "{0}으로 {1}짜리를 사면 잔돈이 생긴다={2}")
     @CsvSource(value = {"15000,1500,false", "10000,1100,true"}, delimiter = ',')
     void decide_whether_changes_are_made_by_price(int amount, int price, boolean expected) {
         assertThat(new Money(amount).hasChangesWith(price)).isEqualTo(expected);
     }
 
+    @DisplayName("어떤 가격으로 살 수 있는 양을 알 수 있다")
     @ParameterizedTest(name = "{0}으로 {1}짜리를 {2}개 살 수 있다")
     @CsvSource(value = {"15000,1500,10", "10000,1100,9"}, delimiter = ',')
     void count_affordable_by_price(int amount, int price, int expected) {
         assertThat(new Money(amount).countAffordableFor(price)).isEqualTo(expected);
     }
 
-    @ParameterizedTest(name = "금액 {0} + 금액 {1} = {2}")
+    @DisplayName("금액끼리 더할 수 있다")
+    @ParameterizedTest(name = "{0} + {1} = {2}")
     @CsvSource(value = {"15000,1500,16500", "10000,1100,11100"}, delimiter = ',')
     void add_money(int amount, int otherAmount, int expected) {
         Money addedMoney = new Money(amount).add(new Money(otherAmount));

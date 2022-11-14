@@ -10,7 +10,8 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 public class LottoNumberTest {
 
-    @ParameterizedTest(name = "범위 1~45 밖의 로또 번호 {0}은 IllegalArgument 예외를 발생시킨다")
+    @DisplayName("범위 1~45 밖의 로또 번호는 IllegalArgument 예외를 발생시킨다")
+    @ParameterizedTest(name = "{0}은 예외발생")
     @ValueSource(ints = {0, 46})
     void number_out_of_range_1_to_45_throws_IllegalArgumentException(Integer number) {
         assertThatIllegalArgumentException().isThrownBy(() -> new LottoNumber(number));
