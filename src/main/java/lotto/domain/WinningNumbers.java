@@ -4,9 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class WinningNumbers {
     private final List<Integer> numbers;
@@ -21,21 +19,45 @@ public class WinningNumbers {
         System.out.println(Message.WINNING_NUMBERS_REQUEST);
 
         String numbersInput = Console.readLine();
-        validateNumbers(numbersInput);
+
+        return  validateNumbers(numbersInput);
+    }
+
+    private List<Integer> validateNumbers(String numbersInput) {
+        validateNumbersIsCorrectInputForm(numbersInput);
 
         List<Integer> numbers = new ArrayList<>();
         Arrays.stream(numbersInput.split(",")).forEach(v -> numbers.add(Integer.parseInt(v)));
 
+        validateNumbersIsInRange(numbers);
+
+        validateNumbersIsNotDuplicated(numbers);
+
         return numbers;
+    }
+
+    private void validateNumbersIsCorrectInputForm(String numbersInput){
+        if(!numbersInput.matches("^(\\d,){5}\\d$")){
+            throw new IllegalArgumentException("[ERROR] 당첨 번호는 숫자 6개를 쉼표(,)로 구분해야 합니다.");
+        }
+    }
+
+    private void validateNumbersIsInRange(List<Integer> numbers){
+        if(!numbers.stream().allMatch(v -> v>=LottoGenerator.LOTTO_NUMBER_RANGE_START && v<=LottoGenerator.LOTTO_NUMBER_RANGE_END)){
+            throw new IllegalArgumentException("[ERROR] 당첨 번호는 1~45 사이의 숫자여야 합니다.");
+        }
+    }
+
+    private void validateNumbersIsNotDuplicated(List<Integer> numbers){
+        if(numbers.stream().distinct().count() != numbers.size()){
+            throw new IllegalArgumentException("[ERROR] 당첨 번호는 중복이 없어야 합니다.");
+        }
     }
 
     private int initializeBonus(){
         return 0;
     }
 
-    private void validateNumbers(String numbersInput){
-
-    }
 
     private void validateBonus(){
 
