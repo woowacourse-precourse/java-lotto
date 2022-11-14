@@ -1,6 +1,17 @@
-## Features
-
+## Lotto class
+  - 생성자 
+    - validate, checkRangeOfNumbers, checkDuplicatedNumber 메소드를 차례로 호출한다.
+    - parameters인 numbers를 로컬 변수인 numbers에 저장한다.
+  - validate()
+    - numbers의 길이가 6이 아니면 `IllegalArgumentException`를 발생시킨다.
+  - checkRangeOfNumbers 메소드
+    - numbers의 각 값이 1에서 45 사이의 값이 아니면 `IllegalArgumentException`를 발생시킨다.
+  - checkDuplicatedNumber
+    - numbers에 중복된 값이 있는지 확인한다.
+    - 이때 numbers는 오름차순으로 정렬되어 있으므로 인접한 값만 확인하면 된다.
+    - 이 과정에서 중복된 값이 발견되면 `IllegalArgumentException`를 발생시킨다.
 ---
+## Features
 
 - 로또 구입 금액을 입력 받는다.
   - inputMoney 메소드
@@ -18,12 +29,9 @@
     - 예외가 발생할 시 `IllegalArgumentException`과 함께 에러메시지를 출력한다.
   - createLotto 메소드
     - `inputLottonumber`메소드에서 생성된 문자열배열에서 순서대로 정수로 변환하여 lottoList에 저장한다.
-    - lottoList를 오름차순으로 정렬시킨 뒤 해당 리스트의 유효성을 검사하기 위해 `checkValidityOfLotto`메소드를 호출한다.
-    - 예외가 발생할 시 `IllegalArgumentException`를 발생시킨다.
-  - checkValidityOfLotto 메소드
-    - 로또 리스트의 길이가 6인지 확인한다.
-    - 로또 리스트가 오름차순으로 정렬되어 있기 때문에, 인접한 두 값이 같은지 확인하여 중복된 값이 있는지 판별한다.
-    - 예외가 발생할 시 `IllegalArgumentException`를 발생시킨다.
+    - lottoList를 오름차순으로 정렬시킨 뒤 Lotto객체를 생성하여 반환한다.
+    - 이 과정에서 예외가 발생할 시 `IllegalArgumentException`를 발생시킨다.
+
 
 - 보너스 번호를 입력 받는다.
   - inputBonusNumber 메소드
