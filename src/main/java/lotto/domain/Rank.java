@@ -20,7 +20,7 @@ public enum Rank {
         this.prizeMoney = prizeMoney;
     }
 
-    public boolean getRank(int cnt, boolean bonusFlag) {
+    public boolean matchRank(int cnt, boolean bonusFlag) {
         return cnt == this.correctness && bonusFlag == this.bonusFlag;
     }
 

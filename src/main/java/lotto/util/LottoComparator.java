@@ -1,6 +1,5 @@
 package lotto.util;
 
-import lotto.config.InputConfig;
 import lotto.domain.Lotto;
 import lotto.domain.Rank;
 
@@ -22,7 +21,7 @@ public class LottoComparator {
         boolean bonus = hasBonusNumber(ownLotto, bonusNumber);
 
         for (Rank rank : Rank.values()) {
-            if (rank.getRank(cnt, bonus)) {
+            if (rank.matchRank(cnt, bonus)) {
                 return rank;
             }
         }
