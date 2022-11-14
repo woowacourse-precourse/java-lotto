@@ -6,20 +6,20 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class GameController {
-    public void start(){
-        try{
+
+    public void start() {
+        try {
             Buyer buyer = buyLottos();
             WinningNumber winningNumber = generateWinningNumber();
             checkMatchedNumber(buyer, winningNumber);
-        }catch (IllegalArgumentException e){
+        } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
 
     }
 
 
-
-    private Buyer buyLottos(){
+    private Buyer buyLottos() {
         GameView.printMoneyInputMsg();
         String input = getInput();
         NumbersValidator.isNumeric(input);
@@ -30,14 +30,14 @@ public class GameController {
     }
 
 
-    private WinningNumber generateWinningNumber(){
+    private WinningNumber generateWinningNumber() {
         return new WinningNumber(
                 getWinningNumber(),
                 getBonusNumber()
         );
     }
 
-    private List<Integer> getWinningNumber(){
+    private List<Integer> getWinningNumber() {
         GameView.printWinningNumInputMsg();
         String[] winningNumberInput = getInput().split(",");
         NumbersValidator.isNumerics(winningNumberInput);
@@ -47,7 +47,7 @@ public class GameController {
                 .collect(Collectors.toList());
     }
 
-    private int getBonusNumber(){
+    private int getBonusNumber() {
         GameView.printBonusNumInputMsg();
         String bonusNumberInput = getInput();
         NumbersValidator.isNumeric(bonusNumberInput);
@@ -55,7 +55,7 @@ public class GameController {
         return Integer.parseInt(bonusNumberInput);
     }
 
-    private String getInput(){
+    private String getInput() {
         return Console.readLine().strip();
     }
 

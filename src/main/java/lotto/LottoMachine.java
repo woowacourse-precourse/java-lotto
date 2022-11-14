@@ -5,6 +5,7 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class LottoMachine {
+
     public static final int MONEY_UNIT = 1000;
 
     public static List<Lotto> buyLottos(int money) {

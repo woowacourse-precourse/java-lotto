@@ -1,11 +1,15 @@
 package lotto;
 
+import static java.util.stream.Collectors.toMap;
+import static lotto.WinningCase.FIFTH_PLACE;
+import static lotto.WinningCase.FIRST_PLACE;
+import static lotto.WinningCase.FOURTH_PLACE;
+import static lotto.WinningCase.SECOND_PLACE;
+import static lotto.WinningCase.THIRD_PLACE;
+
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
-
-import static java.util.stream.Collectors.*;
-import static lotto.WinningCase.*;
 
 public class Buyer {
 
@@ -28,12 +32,12 @@ public class Buyer {
     private double rateOfReturn;
 
 
-    Buyer(int money){
+    Buyer(int money) {
         lottos = LottoMachine.buyLottos(money);
         usedMoney = money;
     }
 
-    public void checkWinningNumber(WinningNumber winningNumber){
+    public void checkWinningNumber(WinningNumber winningNumber) {
         winningResult = Arrays.stream(WinningCase.values())
                 .collect(toMap(winningCase -> winningCase, winningCase -> 0L));
 
@@ -41,16 +45,17 @@ public class Buyer {
                 .filter(lotto -> winningNumber.countMatchedNumbers(lotto) > normalization)
                 .forEach(lotto -> {
                     long matched = winningNumber.countMatchedNumbers(lotto) - normalization;
-                    if( matched == bonusCountPlace && winningNumber.isBonusNumberMatched(lotto)) {
+                    if (matched == bonusCountPlace && winningNumber.isBonusNumberMatched(lotto)) {
                         matched = secondPlaceIdx;
                     }
-                    WinningCase key = winningCases.get((int)matched);
-                    winningResult.put(key, winningResult.get(key) + 1);});
+                    WinningCase key = winningCases.get((int) matched);
+                    winningResult.put(key, winningResult.get(key) + 1);
+                });
 
         calculateRateOfReturn(winningResult);
     }
 
-    private void calculateRateOfReturn(Map<WinningCase, Long> winningResult){
+    private void calculateRateOfReturn(Map<WinningCase, Long> winningResult) {
         long earnedMoney = winningResult.entrySet().stream()
                 .map(entry -> entry.getKey().getPrice() * entry.getValue())
                 .reduce(0L, Long::sum);

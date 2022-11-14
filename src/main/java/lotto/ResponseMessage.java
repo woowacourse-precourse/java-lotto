@@ -10,7 +10,6 @@ public enum ResponseMessage {
     RATE_OF_RETURN_SUFFIX("%입니다.");
 
 
-
     private final String msg;
 
     ResponseMessage(String msg) {

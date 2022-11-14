@@ -16,11 +16,11 @@ public class Lotto {
         this.numbers = numbers;
     }
 
-    public static Lotto generate(){
+    public static Lotto generate() {
         return new Lotto(Randoms.pickUniqueNumbersInRange(START, END, SIZE));
     }
 
-    public List<Integer> getNumbers(){
+    public List<Integer> getNumbers() {
         return numbers;
     }
 }
