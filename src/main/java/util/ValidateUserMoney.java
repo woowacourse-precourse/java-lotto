@@ -8,6 +8,7 @@ public class ValidateUserMoney {
 
     private static final char MIN_NUMBER_CHAR ='0';
     private static final char MAX_NUMBER_CHAR ='9';
+    private static final int NO_MONEY=0;
     private static final int CURRENCY_UNIT=1000;
     static int userMoney;
 
@@ -38,8 +39,8 @@ public class ValidateUserMoney {
 
     }
 
-    private static void isNoMoney(int parseInt) {
-        if(parseInt==0){
+    private static void isNoMoney(int money) {
+        if(money==NO_MONEY){
             throw new IllegalArgumentException(ErrorMessage.ERROR_NO_MONEY.getMessage());
         }
 
