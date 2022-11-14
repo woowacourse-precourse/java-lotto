@@ -1,14 +1,12 @@
 package View;
 
 import ExceptionCollections.WinningNumbersExeption;
+import ExceptionCollections.BonusNumberException;
 import camp.nextstep.edu.missionutils.Console;
-import enumCollections.Exceptions;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class Input {
     public static String getPurchaseMoney() {
@@ -19,15 +17,14 @@ public class Input {
         List<String> winningNumbers = Arrays.stream(Console.readLine().split(","))
                 .collect(Collectors.toList());
         WinningNumbersExeption.validateWinningNumber(winningNumbers);
-        return winningNumbers.stream().map(number -> Integer.valueOf(number))
+        return winningNumbers.stream()
+                .map(number -> Integer.valueOf(number))
                 .collect(Collectors.toList());
     }
 
-    public static int getBonusNumber() {
-        return stringToInteger(Console.readLine());
-    }
-
-    public static int stringToInteger(String value) {
-        return Integer.valueOf(value);
+    public static int getBonusNumber(List<Integer> winningNumbers) {
+        String bonusNumber = Console.readLine();
+        BonusNumberException.validateNumber(winningNumbers, bonusNumber);
+        return Integer.valueOf(bonusNumber);
     }
 }
