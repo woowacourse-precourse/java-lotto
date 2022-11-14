@@ -30,7 +30,7 @@ class MoneyValidatorTest {
 
     @Test
     void 최소금액이_1000원_미만인_경우_예외_발생() {
-        assertThatThrownBy(() -> MoneyValidator.validateValue(999))
+        assertThatThrownBy(() -> MoneyValidator.validateMinimumValue(999))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(ExceptionType.MONEY_MINIMUM_VALUE_EXCEPTION.getMessage());
     }
