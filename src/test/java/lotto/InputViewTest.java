@@ -1,13 +1,11 @@
 package lotto;
 
-import org.assertj.core.api.Assert;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.io.*;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class InputViewTest {
     String error = "[ERROR]";
@@ -28,5 +26,16 @@ public class InputViewTest {
         inputView.inputMoney();
         assertThat(out.toString()).contains(error)
                 .doesNotContain(purchase);
+    }
+
+    @Test
+    void 정상_입력() {
+        String str = "10000";
+        String ten = "10개";
+        InputStream in = new ByteArrayInputStream(str.getBytes());
+        System.setIn(in);
+        InputView inputView = new InputView();
+        inputView.inputMoney();
+        assertThat(out.toString()).contains(ten);
     }
 }
