@@ -1,5 +1,6 @@
 package lotto;
 
+import lotto.ENUMS.ErrorMessages;
 import lotto.ENUMS.Rank;
 
 import java.util.HashMap;
@@ -11,18 +12,18 @@ public class User {
     Map<Rank, Integer> ranks = new HashMap<>();
 
     User(int purchaseAmount) {
+        validatePurchaseAmount(purchaseAmount);
         this.purchaseAmount = purchaseAmount;
         for (Rank rank : Rank.values()) {
             ranks.put(rank, 0);
         }
     }
 
-    public void validatePurchaseAmount() {
-
-    }
-
-    public void recordRanks() {
-
+    public void validatePurchaseAmount(int purchaseAmount) {
+        if(purchaseAmount % LotteryDrawMachine.ea != 0) {
+            throw new IllegalArgumentException(ErrorMessages.ERROR_SIGN.getErrorMessage()
+                    + " " + ErrorMessages.DIVIDE_ERROR.getErrorMessage());
+        }
     }
 
     public void settleEarningsRate() {
