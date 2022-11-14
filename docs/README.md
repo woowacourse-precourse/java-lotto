@@ -25,8 +25,6 @@
 ## 이번에 노력해야할점
 1. 다른사람의 코드를 리뷰하며 느낀점 -> 코드리뷰는 리소스가 매우 많이 드는 일이다.
 2. 이 리소스 줄여주기 위해서는 읽기좋은 코드작성 그리고 주석을 적극적으로 사용해야할것같다.
-3. 의존성 주입패턴 고려해보기
-
 
 ## 기능 요구사항
 ## 프로그래밍 요구사항
@@ -41,15 +39,16 @@
 7. 보너스번호 기능
 
 ## 구현기능 목록
-1. 대략적인 README.md 작성
-2. lotto 에 중복된 숫자가 있는 경우 예외를 던지는 기능
-3. lotto 클래스의 getter 기능과 테스트
-4. lotto repository 의 create 기능과 테스트
-5. lotto 가 당첨번호와 몇개 일치하는지 알려주는 기능과 테스트
-6. 보너스번호 매치 기능과 테스트
-7. 로또를 구매하는 기능과 테스트
-8. 수익률을 구하는 기능과 테스트
-9. 숫자 생성 후 sorting 하는 기능
-10. 당첨금을 계산하는 기능과 테스트
-11. 금액만큼 로또를 구매하는 기능과 테스트
-
+1. [x] (docs): 대략적인 README.md 작성
+2. [x] (Lotto): lotto 에 중복된 숫자가 있는 경우 예외를 던지는 기능
+3. [x] (Lotto): lotto 클래스의 getter 기능과 테스트
+4. [x] (LottoRepository): lotto repository 의 create 기능과 테스트
+5. [x] (LottoProcessor): lotto 가 당첨번호와 몇개 일치하는지 알려주는 기능과 테스트
+6. [x] (LottoProcessor): 보너스번호 매치 기능과 테스트
+7. [x] (LottoProcessor, MoneyProcessor): 로또를 구매하는 기능과 테스트
+8. [x] (MoneyProcessor): 수익률을 구하는 기능과 테스트
+9. [x] (LottoProcessor): 숫자 생성 후 sorting 하는 기능
+10. [x] (MoneyProcessor): 당첨금을 계산하는 기능과 테스트
+11. [x] (LottoFacade): 금액만큼 로또를 구매하는 기능과 테스트
+12. [x] (ValidatorProcessor): 구매기능의 예외처리 기능과 테스트
+13. [ ] (LottoFacade): 당첨번호를 등록하는 기능과 테스트
