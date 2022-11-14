@@ -33,4 +33,15 @@ public class RankResult {
             rankMap.put(rank, previousCount + 1);
         }
     }
+
+    public float getProfit(int money) {
+        return ((float) getReward() / (float) money) * 100;
+    }
+
+    private long getReward() {
+        return rankMap.entrySet()
+                .stream()
+                .mapToLong(entry -> (long) entry.getKey().getWinMoney() * entry.getValue())
+                .sum();
+    }
 }
