@@ -24,6 +24,7 @@ public class Application {
         application.printInsertWinningNumber();
         application.insertWinningNumber();
         application.printInsertBonusNumber();
+        application.insertBonusNumberSaveNumber();
     }
 
     private void printInsertPrice(){
