@@ -10,16 +10,6 @@ public class LottoStore {
 
     private final Integer LOTTO_AMOUNT_EACH = 1000;
 
-    private int countLottos(Integer amount) {
-        Integer numOfLotto = amount / LOTTO_AMOUNT_EACH;
-        announceNumberOfIssuedLotto(numOfLotto);
-        return numOfLotto;
-    }
-
-    private void announceNumberOfIssuedLotto(Integer numOfLotto) {
-        System.out.printf("%d개를 구매했습니다.\n", numOfLotto);
-    }
-
     public List<Lotto> issueLottos(Integer receivedAmount) {
         Integer numOfLotto = countLottos(receivedAmount);
 
@@ -36,11 +26,24 @@ public class LottoStore {
         return lottos;
     }
 
-
     private Lotto autoIssueLotto() {
-        List<Integer> autoIssuedNumber = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+        List<Integer> autoIssuedNumber =
+                Randoms.pickUniqueNumbersInRange(1, 45, 6);
+
         Collections.sort(autoIssuedNumber);
-        Lotto issuedLotto = new Lotto(autoIssuedNumber);
-        return issuedLotto;
+
+        return new Lotto(autoIssuedNumber);
     }
+
+    private int countLottos(Integer amount) {
+        Integer numOfLotto = amount / LOTTO_AMOUNT_EACH;
+        announceNumberOfIssuedLotto(numOfLotto);
+        return numOfLotto;
+    }
+
+    private void announceNumberOfIssuedLotto(Integer numOfLotto) {
+        System.out.printf("%d개를 구매했습니다.\n", numOfLotto);
+    }
+
+
 }
