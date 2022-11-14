@@ -23,8 +23,4 @@ public class User {
         wholeLotto.forEach(System.out::println);
         System.out.println();
     }
-
-    public List<Lotto> getWholeLotto() {
-        return wholeLotto;
-    }
 }

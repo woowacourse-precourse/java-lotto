@@ -8,7 +8,8 @@ public class Host {
     int bonusNumber;
 
     public void registerWinningInformation(List<Integer> winNumbers, int bonusNumber){
-
+        this.winNumbers = winNumbers;
+        this.bonusNumber = bonusNumber;
     }
 
     public Lotto issueLotto(){
