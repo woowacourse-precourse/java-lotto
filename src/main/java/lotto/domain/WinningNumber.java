@@ -1,13 +1,13 @@
 package lotto.domain;
 
+import java.awt.*;
 import java.util.HashSet;
 import java.util.List;
 
+import lotto.domain.lottoConstant.Constant;
+import lotto.domain.lottoConstant.errorMessage.WinningNumberError;
+
 public class WinningNumber {
-	private static final String VALID_WIN_NUMBER_ERROR_MESSAGE = "[ERROR] 당첨 번호는 1~45의 범위를 가지며, 6개입니다.";
-	private static final int DEFAULT_SIZE = 6;
-	private static final int MAX_VALUE = 45;
-	private static final int MIN_VALUE = 1;
 	private final List<Integer> winningNumber;
 
 	public WinningNumber(List<Integer> winNumbers) {
@@ -23,20 +23,20 @@ public class WinningNumber {
 	private void validWinningNumber(List<Integer> winningNumber) {
 		if (isWrongSize(winningNumber) || isDuplicateNumber(winningNumber) || isWrongRangeWinningNumber(
 			winningNumber)) {
-			throw new IllegalArgumentException(VALID_WIN_NUMBER_ERROR_MESSAGE);
+			throw new IllegalArgumentException(WinningNumberError.VALID_WIN_NUMBER_ERROR_MESSAGE);
 		}
 	}
 
 	private boolean isDuplicateNumber(List<Integer> winNumbers) {
-		return new HashSet<>(winNumbers).size() != DEFAULT_SIZE;
+		return new HashSet<>(winNumbers).size() != Constant.LOTTO_SIZE;
 	}
 
 	private boolean isWrongRangeWinningNumber(List<Integer> winNumbers) {
-		return !winNumbers.stream().allMatch(num -> MIN_VALUE <= num && num <= MAX_VALUE);
+		return !winNumbers.stream().allMatch(num -> Constant.MIN_VALUE <= num && num <= Constant.MAX_VALUE);
 	}
 
 	private boolean isWrongSize(List<Integer> winNumbers) {
-		return winNumbers.size() != DEFAULT_SIZE;
+		return winNumbers.size() != Constant.LOTTO_SIZE;
 	}
 
 	public List<Integer> getWinningNumber() {

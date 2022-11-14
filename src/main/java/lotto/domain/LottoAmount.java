@@ -1,7 +1,8 @@
 package lotto.domain;
 
+import lotto.domain.lottoConstant.errorMessage.InputMoneyError;
+
 public class LottoAmount {
-	private static final String INPUT_MONEY_ERROR_MESSAGE = "[ERROR] 구입 금액은 1000원 단위로 입력하셔야 합니다.";
 	private static final int MIN_UNIT = 1000;
 	private static final int PERCENT_NUMBER = 100;
 	private static final int ZERO_NUMBER = 0;
@@ -14,7 +15,7 @@ public class LottoAmount {
 
 	private static void validMoney(int money) {
 		if (isNotDividedInto1000Units(money)) {
-			throw new IllegalArgumentException(INPUT_MONEY_ERROR_MESSAGE);
+			throw new IllegalArgumentException(InputMoneyError.INPUT_MONEY_ERROR_MESSAGE);
 		}
 	}
 

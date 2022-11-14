@@ -6,9 +6,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+import lotto.domain.lottoConstant.Constant;
+
 public class LottoResult {
-	private static final int BASE_NUMBER = 0;
-	private static final int UPDATE_ONE = 1;
 	private final Map<LottoRanking, Integer> LottoResult = new EnumMap<>(LottoRanking.class);
 
 	public LottoResult(List<LottoRanking> lottoRankings) {
@@ -19,13 +19,13 @@ public class LottoResult {
 	private void settingLottoResult() {
 		List<LottoRanking> rank = Arrays.stream(LottoRanking.values()).collect(Collectors.toList());
 		for (LottoRanking lottoRank : rank) {
-			LottoResult.put(lottoRank, BASE_NUMBER);
+			LottoResult.put(lottoRank, Constant.ZERO_NUMBER);
 		}
 	}
 
 	private void createLottoResult(List<LottoRanking> lottoRankings) {
 		for (LottoRanking lottoRanking : lottoRankings) {
-			int winLottoCount = LottoResult.get(lottoRanking) + UPDATE_ONE;
+			int winLottoCount = LottoResult.get(lottoRanking) + Constant.UPDATE_ONE_COUNT;
 			LottoResult.put(lottoRanking, winLottoCount);
 		}
 	}

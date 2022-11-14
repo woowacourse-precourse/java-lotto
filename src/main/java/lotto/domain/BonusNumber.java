@@ -2,10 +2,10 @@ package lotto.domain;
 
 import java.util.List;
 
+import lotto.domain.lottoConstant.Constant;
+import lotto.domain.lottoConstant.errorMessage.BonusNumberError;
+
 public class BonusNumber {
-	private static final String VALID_BONUS_NUMBER_ERROR_MESSAGE = "[ERROR] 보너스 번호는 1~45의 범위를 가지며, 1개입니다.";
-	private static final int MAX_VALUE = 45;
-	private static final int MIN_VALUE = 1;
 	private final int bonusNumber;
 
 	public BonusNumber(int number, List<Integer> winNumbers) {
@@ -15,12 +15,12 @@ public class BonusNumber {
 
 	private void validBonusNumber(int bonusNumber, List<Integer> winNumbers) {
 		if (isWrongRangeBonusNumber(bonusNumber) || isDuplicate(bonusNumber, winNumbers)) {
-			throw new IllegalArgumentException(VALID_BONUS_NUMBER_ERROR_MESSAGE);
+			throw new IllegalArgumentException(BonusNumberError.VALID_BONUS_NUMBER_ERROR_MESSAGE);
 		}
 	}
 
 	private boolean isWrongRangeBonusNumber(int bonusNumber) {
-		return !(MIN_VALUE <= bonusNumber && bonusNumber <= MAX_VALUE);
+		return !(Constant.MIN_VALUE <= bonusNumber && bonusNumber <= Constant.MAX_VALUE);
 	}
 
 	private boolean isDuplicate(int bonusNumber, List<Integer> winNumbers) {
