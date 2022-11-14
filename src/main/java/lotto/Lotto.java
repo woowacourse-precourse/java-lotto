@@ -14,6 +14,9 @@ public class Lotto {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException();
         }
+        if (isDuplicated(numbers)) {
+            throw new IllegalArgumentException();
+        }
     }
 
     private boolean isDuplicated(List<Integer> numbers) {
@@ -28,7 +31,7 @@ public class Lotto {
         boolean matchBonus = matchBonusNumber(bonusNumber);
 
         int numberOfMatch = countMatchingNumber(winningNumbers);
-        if(matchBonus) {
+        if (matchBonus) {
             numberOfMatch++;
         }
 
@@ -38,8 +41,8 @@ public class Lotto {
 
     private int countMatchingNumber(List<Integer> winningNumbers) {
         int count = 0;
-        for(int number: numbers) {
-            if(winningNumbers.contains(number)) {
+        for (int number : numbers) {
+            if (winningNumbers.contains(number)) {
                 count++;
             }
         }
@@ -52,15 +55,15 @@ public class Lotto {
     }
 
     private Rank getRank(int matchingCount, boolean matchBonus) {
-        if(matchingCount == 5) {
-            if(matchBonus) {
+        if (matchingCount == 5) {
+            if (matchBonus) {
                 return Rank.BONUS;
             }
             return Rank.FIVE;
         }
 
-        for(Rank rank: Rank.values()) {
-            if(rank.getMatchingCount() == matchingCount) {
+        for (Rank rank : Rank.values()) {
+            if (rank.getMatchingCount() == matchingCount) {
                 return rank;
             }
         }
