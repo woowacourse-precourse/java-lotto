@@ -2,8 +2,15 @@ package lotto.view;
 
 import camp.nextstep.edu.missionutils.Console;
 
+import java.util.List;
+
 public class LottoServiceView {
-    
+
+    public List<Integer> inputWinningNumber() {
+
+        
+    }
+
     public int buyLotto() {
 
         System.out.println("구입금액을 입력해 주세요.");
