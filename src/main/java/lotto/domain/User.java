@@ -48,11 +48,15 @@ public class User {
     public List<List<Integer>> buyLotto() {
         List<List<Integer>> totalBuyLotto = new ArrayList<>();
         int lottoAmount = inputMoney() / ONEGAMECOST;
+
+
+
         for (int i = 0; i < lottoAmount; i++) {
             totalBuyLotto.add(Lotto.create());
         }
-        OutputView.blankLine();
-        System.out.println(totalBuyLotto.size() + "개를 구매했습니다.");
+
+        OutputView.printBuyResult(totalBuyLotto.size());
+
         for (List<Integer> eachLotto : totalBuyLotto) {
             System.out.println(eachLotto);
         }
