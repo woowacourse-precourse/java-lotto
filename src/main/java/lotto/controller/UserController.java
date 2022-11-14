@@ -68,4 +68,12 @@ public class UserController {
         winningStatsView.showWinning(numberOfWinningTypes);
         userRepository.setUserNumberOfWinningTypes(numberOfWinningTypes);
     }
+
+    public void showRateOfReturnAndSave() {
+        int prize = userService.calculateUserPrize(userRepository.getUser().getNumberOfWinningTypes());
+        userRepository.setUserPrizeMoney(prize);
+        String rateOfReturn = userService.calculateTheRateOfReturn(userRepository.getUser().getPrizeMoney(),
+                userRepository.getUser().getPurchaseMoney());
+        winningStatsView.showRateOfReturn(rateOfReturn);
+    }
 }
