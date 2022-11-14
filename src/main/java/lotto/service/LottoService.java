@@ -33,11 +33,14 @@ public class LottoService {
         return payment/LOTTO_PAYMENT;
     }
 
-    public void setWinningNumber(String inputWinningNumber) {
+    public Lotto setWinningNumber(String inputWinningNumber) {
         List<Integer> winningNumber = LottoUtils.parsingNumberBySeparator(inputWinningNumber);
         LottoUtils.checkUniqueNumbers(winningNumber);
-        LottoUtils.checkNumberInRange(winningNumber);
+
+        for(int number :winningNumber){
+            LottoUtils.checkNumberInRange(number);
+        }
         Lotto winningLotto = new Lotto(winningNumber);
-        new WinningLotto(winningLotto);
+        return winningLotto;
     }
 }
