@@ -1,5 +1,6 @@
 package lotto.controller;
 
+import java.util.List;
 import lotto.domain.Lotto;
 import lotto.domain.User;
 import lotto.service.LottoService;
@@ -16,14 +17,14 @@ public class LottoController {
         message.buyLottoMessage(lottoAmount);
 
         User user = new User();
-        user.setLottos(lottoAmount);
+        user.buyLottos(lottoAmount);
 
         for(Lotto lotto : user.getLottos()){
             message.lottoDetailMessage(lotto);
         }
 
         String inputWinningNumber = message.inputWinningNumberMessage();
-        Lotto winningLotto = lottoService.setWinningNumber(inputWinningNumber);
+        List<Integer> winningLotto = lottoService.setWinningNumber(inputWinningNumber);
         String inputBonusNumber = message.inputBonusNumberMessage();
         int bonusNumber = lottoService.setBonusNumber(inputBonusNumber);
 

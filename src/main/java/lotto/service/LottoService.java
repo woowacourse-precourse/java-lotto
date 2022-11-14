@@ -1,7 +1,6 @@
 package lotto.service;
 
 import java.util.List;
-import lotto.domain.Lotto;
 import lotto.domain.WinningLotto;
 import lotto.util.LottoUtils;
 
@@ -33,15 +32,15 @@ public class LottoService {
         return payment/LOTTO_PAYMENT;
     }
 
-    public Lotto setWinningNumber(String inputWinningNumber) {
+    public List<Integer> setWinningNumber(String inputWinningNumber) {
         List<Integer> winningNumber = LottoUtils.parsingNumberBySeparator(inputWinningNumber);
         LottoUtils.checkUniqueNumbers(winningNumber);
 
         for(int number :winningNumber){
             LottoUtils.checkNumberInRange(number);
         }
-        Lotto winningLotto = new Lotto(winningNumber);
-        return winningLotto;
+
+        return winningNumber;
     }
 
     public int setBonusNumber(String inputBonusNumber){
@@ -54,7 +53,7 @@ public class LottoService {
         }
     }
 
-    public void setWinningLotto(Lotto winningLotto, int bonusNumber) {
+    public void setWinningLotto(List<Integer> winningLotto, int bonusNumber) {
         new WinningLotto(winningLotto,bonusNumber);
     }
 }

@@ -9,7 +9,7 @@ public class User {
 
     private List<Lotto> lottos;
 
-    public void setLottos(int lottoAmount){
+    public void buyLottos(int lottoAmount){
         lottos = new ArrayList<>();
 
         while (lottos.size()<lottoAmount){

@@ -2,21 +2,18 @@ package lotto.domain;
 
 import java.util.List;
 
-public class WinningLotto {
+public class WinningLotto extends Lotto {
 
-    private Lotto winningLotto;
     private int bonusNumber;
 
-    public WinningLotto(Lotto winningLotto, int bonusNumber) {
-        this.winningLotto = winningLotto;
+    public WinningLotto(List<Integer> numbers,int bonusNumber) {
+        super(numbers);
         this.bonusNumber = bonusNumber;
         checkContainsBonusNumber();
     }
 
     public void checkContainsBonusNumber() {
-        List<Integer> winningNumbers= winningLotto.getNumbers();
-
-        if(winningNumbers.contains(bonusNumber)){
+        if(getNumbers().contains(bonusNumber)){
             throw new IllegalArgumentException("[ERROR] 입력한 보너스 번호가 이미 당첨 번호에 존재합니다.");
         }
     }
