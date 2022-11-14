@@ -47,14 +47,14 @@ public enum ConsoleMessage {
         }
     };
 
-    public static final String START_MSG ="구입금액을 입력해주세요.";
-    public static final String PURCHASE_MSG ="%d개를 구매했습니다.";
-    private static final String WINNING_NUMBER_MSG = "당첨 번호를 입력해 주세요";
-    private static final String BONUS_NUMBER_MSG = "보너스 번호를 입력해주세요";
+    public static final String START_MSG ="\n구입금액을 입력해주세요.";
+    public static final String PURCHASE_MSG ="\n%d개를 구매했습니다.";
+    private static final String WINNING_NUMBER_MSG = "\n당첨 번호를 입력해 주세요";
+    private static final String BONUS_NUMBER_MSG = "\n보너스 번호를 입력해주세요";
 
     //Result 결과에 따라 다른 값을 입력하기 위해 %d, %s를 사용함
     private static final String RESULT_MSG =
-            "당첨 통계\n" +
+            "\n당첨 통계\n" +
             "---\n" +
             "3개 일치 (5,000원) - %d개\n" +
             "4개 일치 (50,000원) - %d개\n" +
