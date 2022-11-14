@@ -1,7 +1,12 @@
 package lotto.domain;
 
+import camp.nextstep.edu.missionutils.Console;
+
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class WinningNumbers {
     private final List<Integer> numbers;
@@ -13,14 +18,22 @@ public class WinningNumbers {
     }
 
     private List<Integer> initializeNumbers(){
-        return Collections.EMPTY_LIST;
+        System.out.println(Message.WINNING_NUMBERS_REQUEST);
+
+        String numbersInput = Console.readLine();
+        validateNumbers(numbersInput);
+
+        List<Integer> numbers = new ArrayList<>();
+        Arrays.stream(numbersInput.split(",")).forEach(v -> numbers.add(Integer.parseInt(v)));
+
+        return numbers;
     }
 
     private int initializeBonus(){
         return 0;
     }
 
-    private void validateNumbers(){
+    private void validateNumbers(String numbersInput){
 
     }
 
