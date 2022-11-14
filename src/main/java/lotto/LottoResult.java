@@ -11,20 +11,20 @@ public class LottoResult {
         result = new HashMap<>();
     }
 
-    public void add(Rank rank) {
-        if (!result.containsKey(rank.name())) {
-            result.put(rank.name(), 1);
+    public void add(Ranking ranking) {
+        if (!result.containsKey(ranking.name())) {
+            result.put(ranking.name(), 1);
             return;
         }
-        int count = result.get(rank.name());
-        result.put(rank.name(), count + 1);
+        int count = result.get(ranking.name());
+        result.put(ranking.name(), count + 1);
     }
 
     public long calculateProfits() {
         long profits = 0;
         for (String grade : result.keySet()) {
             int count = result.get(grade);
-            profits += ((long) Rank.valueOf(grade).getPrize() * count);
+            profits += ((long) Ranking.valueOf(grade).getPrize() * count);
         }
         return profits;
     }

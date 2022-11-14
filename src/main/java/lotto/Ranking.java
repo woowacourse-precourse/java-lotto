@@ -2,7 +2,8 @@ package lotto;
 
 import java.util.Arrays;
 
-public enum Rank {
+// enum toString
+public enum Ranking {
     FIRST(6, 2_000_000_000),
     SECOND(5, 30_000_000),
     THIRD(5, 1_500_000),
@@ -13,12 +14,24 @@ public enum Rank {
     private final int matchCount;
     private final int prize;
 
-    Rank(int matchCount, int prize) {
+    Ranking(int matchCount, int prize) {
         this.matchCount = matchCount;
         this.prize = prize;
     }
 
-    public static Rank getRank(int matchCount, boolean bonus) {
+    public static Ranking rank(Lotto lotto, WinningLotto winningLotto, BonusNumber bonusNumber) {
+        int matchCount = winningLotto.countSameNumber(lotto);
+        if (matchCount == Ranking.SECOND.getMatchCount()) {
+            return Ranking.of(matchCount, checkBonusNumber(lotto, bonusNumber));
+        }
+        return Ranking.of(matchCount, false);
+    }
+
+    private static boolean checkBonusNumber(Lotto lotto, BonusNumber bonusNumber) {
+        return bonusNumber.existIn(lotto);
+    }
+
+    public static Ranking of(int matchCount, boolean bonus) {
         if (matchCount == THIRD.matchCount && !bonus) {
             return THIRD;
         }
