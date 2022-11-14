@@ -6,8 +6,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class UserInterface {
-    public int inputPaidMoney() {
-        System.out.println("구입 금액을 입력해 주세요.");
+    public int inputOnlyNumber() {
         String input = Console.readLine();
         if (!validateInputOnlyNumber(input)) {
             throw new IllegalArgumentException();
@@ -16,7 +15,6 @@ public class UserInterface {
     }
 
     public List<Integer> inputWinningNumbers() {
-        System.out.println("당첨 번호를 입력해 주세요.");
         String input = Console.readLine();
         if (!validateInputNumberAndComma(input)) {
             throw new IllegalArgumentException();

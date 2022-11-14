@@ -15,19 +15,19 @@ class UserInterfaceTest {
         return new ByteArrayInputStream(input.getBytes());
     }
 
-    @DisplayName("숫자 이외의 구입 금액 입력 시 에러 발생")
+    @DisplayName("숫자 이외의 문자 입력 시 에러 발생")
     @Test
-    void 구입_금액_문자_포함시_에러_발생() {
+    void 숫자_이외의_문자_포함시_에러_발생() {
         System.setIn(generateUserInput("-8000v"));
-        assertThatThrownBy(userInterface::inputPaidMoney)
+        assertThatThrownBy(userInterface::inputOnlyNumber)
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
-    @DisplayName("숫자만 있는 구입 금액 입력")
+    @DisplayName("숫자만 있는 입력")
     @Test
-    void 구입_금액_숫자만_테스트() {
+    void 숫자만_입력() {
         System.setIn(generateUserInput("123456789"));
-        int money = userInterface.inputPaidMoney();
+        int money = userInterface.inputOnlyNumber();
         assertThat(money).isEqualTo(123456789);
     }
 
