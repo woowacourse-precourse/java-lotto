@@ -13,19 +13,19 @@ public class ResultTest {
     private static Stream<Arguments> provideUserLottosAndAnswer() {
         return Stream.of(
                 Arguments.of(List.of(),0),
-                Arguments.of(List.of(5),5_000),
-                Arguments.of(List.of(4),50_000),
-                Arguments.of(List.of(3),1_500_000),
-                Arguments.of(List.of(2),30_000_000),
-                Arguments.of(List.of(1),2_000_000_000),
-                Arguments.of(List.of(1,1,1,1),8_000_000_000L)
+                Arguments.of(List.of(Rank.from(5)),5_000),
+                Arguments.of(List.of(Rank.from(4)),50_000),
+                Arguments.of(List.of(Rank.from(3)),1_500_000),
+                Arguments.of(List.of(Rank.from(2)),30_000_000),
+                Arguments.of(List.of(Rank.from(1)),2_000_000_000),
+                Arguments.of(List.of(Rank.from(1),Rank.from(1),Rank.from(1),Rank.from(1)),8_000_000_000L)
         );
     }
 
     @ParameterizedTest
     @DisplayName("로또를 통해 발생한 수익을 계산한다.")
     @MethodSource("provideUserLottosAndAnswer")
-    void countContainedLottoNumbers(List<Integer> resultList, long answer) {
+    void countContainedLottoNumbers(List<Rank> resultList, long answer) {
         //given
         Result statics = Result.of(resultList);
         //when

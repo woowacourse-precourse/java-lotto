@@ -20,7 +20,7 @@ public class WinningManagerTest {
                                 new Lotto(List.of(1, 2, 3, 4, 9, 10)),
                                 new Lotto(List.of(1, 2, 3, 9, 10, 11)))
                         ),
-                        List.of(1, 2, 3, 4, 5)
+                        List.of(Rank.from(1),Rank.from(2),Rank.from(3),Rank.from(4),Rank.from(5))
                 ),
                 Arguments.of(
                         Lottos.of(List.of(
@@ -30,7 +30,7 @@ public class WinningManagerTest {
                                 new Lotto(List.of(9, 8, 4, 3, 2, 1)),
                                 new Lotto(List.of(9, 8, 7, 3, 2, 1))))
                         ,
-                        List.of(1, 2, 3, 4, 5)
+                        List.of(Rank.from(1),Rank.from(2),Rank.from(3),Rank.from(4),Rank.from(5))
                 ),
                 Arguments.of(
                         Lottos.of(List.of(

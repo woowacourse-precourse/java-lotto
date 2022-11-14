@@ -17,18 +17,18 @@ public class MoneyTest {
 
     private static Stream<Arguments> provideMoneyAndResultAndRateAnswer() {
         return Stream.of(
-                Arguments.of(Money.from("8000"), Result.of(List.of(5)),"62.5"),
-                Arguments.of(Money.from("344000"), Result.of(List.of(5)),"1.5"),
-                Arguments.of(Money.from("20000"), Result.of(List.of(5)),"25.0"),
-                Arguments.of(Money.from("13000"), Result.of(List.of(5)),"38.5"),
-                Arguments.of(Money.from("10000"), Result.of(List.of(5)),"50.0"),
-                Arguments.of(Money.from("1000"), Result.of(List.of(5)),"500.0"),
-                Arguments.of(Money.from("1000"), Result.of(List.of(5)),"500.0"),
-                Arguments.of(Money.from("1000"), Result.of(List.of(5)),"500.0"),
-                Arguments.of(Money.from("1000"), Result.of(List.of(4)),"5000.0"),
-                Arguments.of(Money.from("1000"), Result.of(List.of(3)),"150000.0"),
-                Arguments.of(Money.from("1000"), Result.of(List.of(2)),"3000000.0"),
-                Arguments.of(Money.from("1000"), Result.of(List.of(1)),"200000000.0")
+                Arguments.of(Money.from("8000"), Result.of(List.of(Rank.from(5))),"62.5"),
+                Arguments.of(Money.from("344000"), Result.of(List.of(Rank.from(5))),"1.5"),
+                Arguments.of(Money.from("20000"), Result.of(List.of(Rank.from(5))),"25.0"),
+                Arguments.of(Money.from("13000"), Result.of(List.of(Rank.from(5))),"38.5"),
+                Arguments.of(Money.from("10000"), Result.of(List.of(Rank.from(5))),"50.0"),
+                Arguments.of(Money.from("1000"), Result.of(List.of(Rank.from(5))),"500.0"),
+                Arguments.of(Money.from("1000"), Result.of(List.of(Rank.from(5))),"500.0"),
+                Arguments.of(Money.from("1000"), Result.of(List.of(Rank.from(5))),"500.0"),
+                Arguments.of(Money.from("1000"), Result.of(List.of(Rank.from(4))),"5000.0"),
+                Arguments.of(Money.from("1000"), Result.of(List.of(Rank.from(3))),"150000.0"),
+                Arguments.of(Money.from("1000"), Result.of(List.of(Rank.from(2))),"3000000.0"),
+                Arguments.of(Money.from("1000"), Result.of(List.of(Rank.from(1))),"200000000.0")
         );
     }
 

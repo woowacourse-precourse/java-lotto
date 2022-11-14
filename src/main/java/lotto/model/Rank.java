@@ -1,5 +1,8 @@
 package lotto.model;
 
+import static lotto.constant.RankConstants.INVALID_RANK_VALUE_MSG;
+import static lotto.constant.RankConstants.TO_ENUM;
+
 import java.util.HashSet;
 import java.util.Set;
 
@@ -9,9 +12,6 @@ public enum Rank {
     NO_3(1_500_000, "5개 일치 (1,500,000원)"),
     NO_2(30_000_000, "5개 일치, 보너스 볼 일치 (30,000,000원)"),
     NO_1(2_000_000_000, "6개 일치 (2,000,000,000원)");
-
-    private static final String TO_ENUM = "NO_";
-    private static final String INVALID_RANK_VALUE_MSG = "유효하지 않은 순위값입니다";
 
     private static final Set<String> validRankNames = new HashSet<>();
 

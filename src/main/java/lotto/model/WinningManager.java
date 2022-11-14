@@ -1,11 +1,11 @@
 package lotto.model;
 
 import static lotto.constant.BonusBallConstants.DUPLICATED_BONUSBALL_INPUt_MSG;
-import static lotto.constant.WinningManagerConstants.FIRST_RANK;
+import static lotto.constant.RankConstants.VALID_LOTTO_RANK;
+import static lotto.constant.WinningManagerConstants.FIRST_RANK_VALUE;
 import static lotto.constant.WinningManagerConstants.MATCHED_ALL;
 import static lotto.constant.WinningManagerConstants.NEED_TO_CHECK_BONUSBALL;
-import static lotto.constant.WinningManagerConstants.TO_RANK;
-import static lotto.constant.WinningManagerConstants.VALID_LOTTO_RANK;
+import static lotto.constant.WinningManagerConstants.TO_RANK_VALUE;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -27,8 +27,8 @@ public class WinningManager {
         this.bonusBall = bonusBall;
     }
 
-    public List<Integer> resultBy(Lottos lottos) {
-        return toRankList(lottos);
+    public List<Rank> resultBy(Lottos lottos) {
+        return toRanks(lottos);
     }
 
     private void validate(BonusBall bonusBall) {
@@ -37,22 +37,23 @@ public class WinningManager {
         }
     }
 
-    private List<Integer> toRankList(Lottos lottos) {
+    private List<Rank> toRanks(Lottos lottos) {
         return lottos.provideLottos().stream()
-                .mapToInt(userLotto -> toRank(userLotto))
+                .mapToInt(userLotto -> toRankValue(userLotto))
                 .boxed()
-                .filter(rank -> rank <= VALID_LOTTO_RANK)
+                .filter(rankValue -> rankValue <= VALID_LOTTO_RANK)
+                .map(rankValue -> Rank.from(rankValue))
                 .collect(Collectors.toList());
     }
 
-    private int toRank(Lotto lotto) {
+    private int toRankValue(Lotto lotto) {
         int matchedNumberCount = lotto.countContainedNumbersIn(winningLotto.getLotto());
 
         if (matchedNumberCount == MATCHED_ALL) {
-            return FIRST_RANK;
+            return FIRST_RANK_VALUE;
         }
         matchedNumberCount = checkBonusBall(lotto, matchedNumberCount);
-        return TO_RANK - matchedNumberCount;
+        return TO_RANK_VALUE - matchedNumberCount;
     }
 
     private int checkBonusBall(Lotto lotto, int matchedNumberCount) {

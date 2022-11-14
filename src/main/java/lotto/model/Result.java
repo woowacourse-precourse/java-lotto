@@ -13,11 +13,11 @@ import java.util.Map;
 public class Result {
     private Map<Rank, Integer> result;
 
-    public static Result of(List<Integer> ranks) {
+    public static Result of(List<Rank> ranks) {
         return new Result(ranks);
     }
 
-    private Result(List<Integer> ranks) {
+    private Result(List<Rank> ranks) {
         this.result = new HashMap<>();
         initResult();
         store(ranks);
@@ -50,10 +50,9 @@ public class Result {
         }
     }
 
-    private void store(List<Integer> ranks) {
-        for (Integer rankValue : ranks) {
-            Rank currentRank = Rank.from(rankValue);
-            result.put(currentRank, result.get(currentRank) + INCREASE_AMOUNT);
+    private void store(List<Rank> ranks) {
+        for (Rank rank : ranks) {
+            result.put(rank, result.get(rank) + INCREASE_AMOUNT);
         }
     }
 }
