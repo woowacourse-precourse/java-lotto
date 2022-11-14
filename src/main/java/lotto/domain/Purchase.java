@@ -5,7 +5,8 @@ public class Purchase {
     public int calculateAmount(String amount){
         validateNumber(amount);
         validate(Integer.parseInt(amount));
-        return Integer.parseInt(amount)/1000;
+        int total = Integer.parseInt(amount);
+        return total;
     }
 
     private void validate(int amount){

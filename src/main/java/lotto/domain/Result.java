@@ -49,12 +49,8 @@ public class Result {
         return false;
     }
 
-    public String calculateRate(int purchase, int win){
-        System.out.println((win*100)/(double) purchase);
-        double doubleWin = Double.valueOf(win);
-        double doublePurchase = Double.valueOf(purchase);
-        double rate =(doubleWin*100)/doublePurchase;
-        return String.format("%.1f",rate);
+    public double calculateRate(int purchase, int win){
+        return Double.valueOf((double) win/purchase)*100;
     }
 
     public ResultType makeTotalWinnings(int check, boolean bonus){

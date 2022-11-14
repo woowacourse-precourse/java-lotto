@@ -3,8 +3,10 @@ package lotto.domain;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class LottoNumbers {
 
@@ -17,8 +19,8 @@ public class LottoNumbers {
         return lotto;
     }
     public List<Integer> generateLotto(){
-        List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
-        return sortLotto(numbers);
+        List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6).stream().sorted().collect(Collectors.toList());
+        return numbers;
     }
     public List<Integer> sortLotto(List<Integer> numbers){
         Collections.sort(numbers);

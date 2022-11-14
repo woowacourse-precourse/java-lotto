@@ -14,7 +14,7 @@ public class Play {
     private static final String INPUT_WINNING_MESSAGE = "당첨 번호를 입력해 주세요.";
     private static final String INPUT_BONUS_MESSAGE = "보너스 번호를 입력해 주세요.";
     private static final String WINNING_MESSAGE = "당첨 통계\n" +"---";
-    private static final String RATE_MESSAGE = "총 수익률은 %f%입니다.";
+    private static final String RATE_MESSAGE = "총 수익률은 %.1f%%입니다.";
 
     private Purchase purchase = new Purchase();
     private LottoNumbers lottoNumbers = new LottoNumbers();
@@ -22,27 +22,26 @@ public class Play {
     private WinningNumber winningNumber = new WinningNumber();
     private String[] savedWinningNumber = new String[6];
     private Result result = new Result();
+    private int total = 0;
 
     public void startPlay(){
         System.out.println(START_MESSAGE);
 
         String amount = Console.readLine();
-        int total = 0;
         try{
             total = purchase.calculateAmount(amount);
         } catch (Exception e){
             System.out.println(e.getMessage());
         }
 
-        System.out.println("\n"+total+CHECK_MESSAGE);
-        lotto = lottoNumbers.printLotto(total);
+        System.out.println("\n"+(total/1000)+CHECK_MESSAGE);
+        lotto = lottoNumbers.printLotto(total/1000);
         lottoNumbers.displayLotto(lotto);
 
         System.out.println("\n"+INPUT_WINNING_MESSAGE);
         String winning = Console.readLine();
 
         Lotto winningLotto = new Lotto(winningNumber.numberToString(winning));
-        System.out.println(winningLotto.getLotto());
 
         List<Integer> winLotto = winningNumber.numberToString(winning);
 
@@ -53,13 +52,14 @@ public class Play {
 
         Map<ResultType,Integer> totalResult = result.calculateLotto(lotto,winLotto,bonus);
 
-        result.printResult(totalResult);
 
-        System.out.println(result.makePrize(totalResult));
+//        System.out.println(result.makePrize(totalResult));
         int prize = result.makePrize(totalResult);
-        System.out.println("\n"+WINNING_MESSAGE);
 
-        System.out.println(result.calculateRate(total,prize));
+        System.out.println("\n"+WINNING_MESSAGE);
+        result.printResult(totalResult);
+        double profit = result.calculateRate(total,prize);
+        System.out.printf(RATE_MESSAGE, profit);
 
     }
 
