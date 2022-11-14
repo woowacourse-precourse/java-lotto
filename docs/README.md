@@ -2,7 +2,7 @@
 
 ## 기능 목록
 
-- [ ] 1부터 45까지의 서로 다른 임의의 수 6개를 생성한다. - NumberGenerator#createRandomNumbers();
+- [x] 1부터 45까지의 서로 다른 임의의 수 6개를 생성한다. - NumberGenerator#createRandomNumbers();
 - [ ] 금액만큼 로또를 발행한다. - Issue#createLotto();
 - [ ] 사용자의 로또 번호와 당첨 번호를 비교할 수 있다. - LottoService#compare();
     - [ ] 당첨 번호 중 몇 개의 숫자가 일치하는지 알 수 있다. - Judgment#correctCount();
