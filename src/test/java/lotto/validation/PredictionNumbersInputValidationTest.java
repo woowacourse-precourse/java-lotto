@@ -31,4 +31,11 @@ public class PredictionNumbersInputValidationTest {
         assertThatThrownBy(() -> predictionNumbersInputValidation.validateNoDuplicateNumbers(List.of(1, 2, 3, 4, 5, 5)))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @DisplayName("예측 번호 중 1보다 작거나 45보다 큰 값이 있으면 예외가 발생한다.")
+    @Test
+    void validateNumbersRangeTest() {
+        assertThatThrownBy(() -> predictionNumbersInputValidation.validateNumbersRange(List.of(1, 2, 3, 4, 5, 50)))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
