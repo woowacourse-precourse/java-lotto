@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class LottoTest {
@@ -23,5 +24,10 @@ class LottoTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
-    // 아래에 추가 테스트 작성 가능
+    @DisplayName("asSortedList 메소드를 통해 받은 List가 sort 되었는지 확인한다.")
+    @Test
+    void checkLottoListIsSorted() {
+        assertThat(new Lotto(List.of(6,5,4,3,2,1)).asSortedList())
+                .isEqualTo(List.of(1,2,3,4,5,6));
+    }
 }
