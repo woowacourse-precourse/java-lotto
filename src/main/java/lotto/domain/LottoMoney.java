@@ -15,7 +15,7 @@ public class LottoMoney {
     }
 
     private long validate(long money) {
-        if (money % LOTTO_PRICE == 0 && money != 0) {
+        if (money % LOTTO_PRICE == 0 && money > 0) {
             return money;
         }
         Output.printExceptionMessage(UNIT_OF_MONEY_ERROR);
