@@ -33,7 +33,10 @@ public class LottoGenerator {
     }
 
     private void printLottos(List<Lotto> lottoList) {
-
+        System.out.println(lottoList.size() + "개를 구매했습니다.");
+        for (Lotto lotto : lottoList) {
+            printLotto(lotto);
+        }
     }
 
     private void printLotto(Lotto lotto) {
