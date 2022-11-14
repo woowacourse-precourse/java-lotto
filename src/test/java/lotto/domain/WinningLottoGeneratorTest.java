@@ -34,6 +34,29 @@ class WinningLottoGeneratorTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+    @DisplayName("보너스 값과 일반 번호 중 중복되는 값이 주어지면 오류 반환")
+    @Test
+    void givenDuplicateNumber_whenCreateWinningLotto_thenThrowError() {
+        //given
+        List<Integer> numbers = new ArrayList<>(List.of(1, 2, 3, 4, 5, 7));
+        Integer bonus = 7;
+
+        //when//then
+        assertThatThrownBy(() -> WinningLottoGenerator.generateWinningLotto(numbers, bonus))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+    @DisplayName("일반 당첨 번호에 중복되는 값이 주어지면 오류 반환")
+    @Test
+    void givenDuplicateNumberInNormalNumbers_whenCreateWinningLotto_thenThrowError() {
+        //given
+        List<Integer> numbers = new ArrayList<>(List.of(1, 2, 3, 4, 5, 5));
+        Integer bonus = 6;
+
+        //when//then
+        assertThatThrownBy(() -> WinningLottoGenerator.generateWinningLotto(numbers, bonus))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
     @DisplayName("입력값이 주어지면 Winning Lotto를 생성한다")
     @Test
     void givenInput_whenCreateWinningLotto_thenReturnInstance() {
