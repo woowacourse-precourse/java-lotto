@@ -215,7 +215,7 @@ class ApplicationTest extends NsTest {
         WinCalculation winCalculation = new WinCalculation();
         List<Integer> win = List.of(1,2,3,4,5,6);
         List<Integer> number = List.of(6,4,7,8,1,9);
-        int count = winCalculation.WinCount(win,number);
+        int count = winCalculation.winCount(win,number);
         assertThat(count).isEqualTo(3);
     }
 
