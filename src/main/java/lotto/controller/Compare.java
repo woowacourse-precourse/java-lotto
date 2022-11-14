@@ -17,7 +17,6 @@ public class Compare {
     public Compare(List<List<Integer>> userLotto, Lotto winLotto, int bonusLotto) {
         for (int paper = 0; paper < userLotto.size(); paper++) {
             this.count = CountLotto(userLotto.get(paper),winLotto,paper);
-            System.out.println(count);
             if (count == 5) {
                 bonusHit = IsBonus(userLotto.get(paper), bonusLotto);
             }
