@@ -3,7 +3,6 @@ package lotto.domain.strategy;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.List;
-import lotto.domain.LottoNumber;
 import lotto.domain.LottoNumberGenerateStrategy;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -16,9 +15,8 @@ public class RandomLottoNumberGenerateStrategyTest {
     void setUp() {
         this.lottoNumberGenerateStrategy = new RandomLottoNumberGenerateStrategy() {
             @Override
-            public List<LottoNumber> generateNumbers() {
-                return List.of(LottoNumber.of(1), LottoNumber.of(2), LottoNumber.of(3),
-                        LottoNumber.of(4), LottoNumber.of(5), LottoNumber.of(6));
+            public List<Integer> generateNumbers() {
+                return List.of(1, 2, 3, 4, 5, 6);
             }
         };
     }
@@ -27,7 +25,6 @@ public class RandomLottoNumberGenerateStrategyTest {
     @Test
     void generateNumber() {
         assertThat(lottoNumberGenerateStrategy.generateNumbers())
-                .containsExactly(LottoNumber.of(1), LottoNumber.of(2), LottoNumber.of(3),
-                        LottoNumber.of(4), LottoNumber.of(5), LottoNumber.of(6));
+                .containsExactly(1, 2, 3, 4, 5, 6);
     }
 }

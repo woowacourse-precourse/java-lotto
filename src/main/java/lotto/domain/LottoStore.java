@@ -19,9 +19,6 @@ public class LottoStore {
     }
 
     private Lotto createLotto() {
-        return new Lotto(lottoNumberGenerateStrategy.generateNumbers()
-                .stream()
-                .map(LottoNumber::number)
-                .collect(Collectors.toList()));
+        return new Lotto(lottoNumberGenerateStrategy.generateNumbers());
     }
 }

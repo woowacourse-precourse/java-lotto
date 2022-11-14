@@ -15,9 +15,8 @@ public class LottoStoreTest {
     void setUp() {
         LottoNumberGenerateStrategy lottoNumberGenerateStrategy = new RandomLottoNumberGenerateStrategy() {
             @Override
-            public List<LottoNumber> generateNumbers() {
-                return List.of(LottoNumber.of(1), LottoNumber.of(2), LottoNumber.of(3),
-                        LottoNumber.of(4), LottoNumber.of(5), LottoNumber.of(6));
+            public List<Integer> generateNumbers() {
+                return List.of(1, 2, 3, 4, 5, 6);
             }
         };
 

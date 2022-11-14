@@ -2,8 +2,6 @@ package lotto.domain.strategy;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.List;
-import java.util.stream.Collectors;
-import lotto.domain.LottoNumber;
 import lotto.domain.LottoNumberGenerateStrategy;
 
 public class RandomLottoNumberGenerateStrategy implements LottoNumberGenerateStrategy {
@@ -12,10 +10,7 @@ public class RandomLottoNumberGenerateStrategy implements LottoNumberGenerateStr
     private static final int LOTTO_SIZE = 6;
 
     @Override
-    public List<LottoNumber> generateNumbers() {
-        return Randoms.pickUniqueNumbersInRange(LOTTO_NUMBER_MIN, LOTTO_NUMBER_MAX, LOTTO_SIZE)
-                .stream()
-                .map(LottoNumber::of)
-                .collect(Collectors.toList());
+    public List<Integer> generateNumbers() {
+        return Randoms.pickUniqueNumbersInRange(LOTTO_NUMBER_MIN, LOTTO_NUMBER_MAX, LOTTO_SIZE);
     }
 }
