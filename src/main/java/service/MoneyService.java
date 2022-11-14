@@ -38,4 +38,8 @@ public class MoneyService {
             throw new IllegalArgumentException(Error.PURCHASE_AMOUNT_VALUE.getText());
         }
     }
+
+    public int getPurchaseAmount() {
+        return moneyRepository.getMoney();
+    }
 }

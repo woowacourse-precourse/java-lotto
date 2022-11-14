@@ -6,4 +6,8 @@ public class MoneyRepository {
     public void save(int money) {
         this.money = money;
     }
+
+    public int getMoney() {
+        return this.money;
+    }
 }

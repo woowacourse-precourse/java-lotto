@@ -19,4 +19,16 @@ public enum Rule {
         return this.price;
     }
 
+    public int getMinNumber() {
+        return minNumber;
+    }
+
+    public int getMaxNumber() {
+        return maxNumber;
+    }
+
+    public int getCount() {
+        return count;
+    }
+
 }
