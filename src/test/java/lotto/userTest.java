@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import lotto.domain.User;
+import lotto.utils.Notice;
 
 public class userTest {
 	@DisplayName("돈이 1000원 단위로 떨어지지 않을 경우 예외가 발생한다.")
