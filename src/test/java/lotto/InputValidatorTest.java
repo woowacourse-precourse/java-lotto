@@ -94,7 +94,14 @@ public class InputValidatorTest {
         @ParameterizedTest
         @CsvSource(value = {"0", "100"})
         void BonusNumberOutOfRange(int bonusNumber) {
-            assertThatThrownBy(() -> inputValidator.validateBonusNumberBetween1And45(bonusNumber))
+            assertThatThrownBy(() -> inputValidator.validateBonusNumber(bonusNumber, List.of(1,2,3,4,5,6)))
+                    .isInstanceOf(IllegalArgumentException.class);
+        }
+
+        @DisplayName("보너스 번호의 숫자가 당첨 번호에 포함되어 있으면 예외가 발생한다.")
+        @Test
+        void BonusNumberInWinningNumber() {
+            assertThatThrownBy(() -> inputValidator.validateBonusNumber(1, List.of(1,2,3,4,5,6)))
                     .isInstanceOf(IllegalArgumentException.class);
         }
     }
