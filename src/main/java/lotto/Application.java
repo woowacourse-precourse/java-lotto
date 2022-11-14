@@ -12,7 +12,6 @@ public class Application {
         try {
             Money purchasePrice = new Money(askPurchasePrice());
             Ticket tickets = new Ticket(purchasePrice);
-
             LottoGenerator generator = new LottoGenerator();
             List<Lotto> lottos = generator.createLottos(tickets);
             printPurchasedLottos(lottos);
