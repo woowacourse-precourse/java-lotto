@@ -1,11 +1,11 @@
-package lotto.domain;
+package lotto.domain.vo;
 
 import lotto.domain.constants.ErrorCode;
 import lotto.domain.constants.LottoConstants;
 
 public class Money {
 
-    private int value;
+    private final int value;
 
     public Money(int value) {
         validateMoney(value);

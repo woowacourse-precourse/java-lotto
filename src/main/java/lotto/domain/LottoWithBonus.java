@@ -3,11 +3,12 @@ package lotto.domain;
 import java.util.List;
 import lotto.domain.constants.ErrorCode;
 import lotto.domain.constants.LottoConstants;
+import lotto.domain.vo.Lotto;
 
 public class LottoWithBonus {
 
-    Lotto lotto;
-    int bonusNumber;
+    private Lotto lotto;
+    private int bonusNumber;
 
     public LottoWithBonus(Lotto lotto, int bonusNumber) {
         validateContains(lotto, bonusNumber);

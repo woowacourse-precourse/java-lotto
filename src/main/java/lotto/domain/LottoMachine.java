@@ -5,10 +5,12 @@ import java.util.ArrayList;
 import java.util.List;
 import lotto.domain.constants.ErrorCode;
 import lotto.domain.constants.LottoConstants;
+import lotto.domain.vo.Lotto;
+import lotto.domain.vo.Money;
 
 public class LottoMachine {
 
-    List<Lotto> buyLottoList;
+    private List<Lotto> buyLottoList;
 
     public LottoMachine(Money money) {
         validBill(money);

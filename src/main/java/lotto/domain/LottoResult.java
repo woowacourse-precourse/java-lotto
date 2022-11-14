@@ -4,6 +4,8 @@ import static lotto.domain.LottoReference.NOPE;
 
 import java.util.HashMap;
 import java.util.Map;
+import lotto.domain.vo.BuyLottoList;
+import lotto.domain.vo.Lotto;
 
 public class LottoResult {
 

@@ -1,12 +1,12 @@
 package lotto.controller;
 
 import java.util.List;
-import lotto.domain.BuyLottoList;
-import lotto.domain.Lotto;
+import lotto.domain.vo.BuyLottoList;
+import lotto.domain.vo.Lotto;
 import lotto.domain.LottoMachine;
 import lotto.domain.LottoResult;
 import lotto.domain.LottoWithBonus;
-import lotto.domain.Money;
+import lotto.domain.vo.Money;
 import lotto.veiw.InputHandler;
 import lotto.veiw.OutputHandler;
 
