@@ -8,6 +8,8 @@ import java.util.Collections;
 
 public class Application {
     static final int lottoPrice = 1000;
+    static final int startNumber = 1;
+    static final int endNumber = 45;
 
     public static Integer getMoney() {
         int money = readMoney();
@@ -26,7 +28,7 @@ public class Application {
     }
 
     public static void validMoney(int money) throws IllegalArgumentException {
-        if (money < 1000) {
+        if (money < lottoPrice) {
             throw new IllegalArgumentException("[ERROR]: 구입금액으로 로또를 구매할 수 없습니다.");
         }
         if (money % lottoPrice != 0) {
@@ -49,7 +51,7 @@ public class Application {
         List<Integer> lottoNums;
 
         for (int i = 0; i < numOfLotto; i++) {
-            lottoNums = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+            lottoNums = Randoms.pickUniqueNumbersInRange(startNumber, endNumber, 6);
             Collections.sort(lottoNums);
             Lotto newLotto = new Lotto(lottoNums);
             newLotto.printNumbers();
@@ -95,10 +97,10 @@ public class Application {
 
     public static void checkRange(List<Integer> inputNums) throws IllegalArgumentException {
         for (int num : inputNums) {
-            if (num < 1) {
+            if (num < startNumber) {
                 throw new IllegalArgumentException("[ERROR]: 1보다 작은 당첨번호를 입력하였습니다. " + num);
             }
-            if (num > 45) {
+            if (num > endNumber) {
                 throw new IllegalArgumentException("[ERROR]: 45보다 큰 당첨번호를 입력하였습니다. " + num);
             }
         }
