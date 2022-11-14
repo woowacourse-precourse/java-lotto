@@ -13,4 +13,11 @@ public class Statistics {
         put(FOURTH_PLACE, 0);
         put(FIFTH_PLACE, 0);
     }};
+
+    public void record(Rank rank) {
+        if (rank == UNRANK) {
+            return;
+        }
+        rankRecord.put(rank, rankRecord.get(rank) + 1);
+    }
 }
