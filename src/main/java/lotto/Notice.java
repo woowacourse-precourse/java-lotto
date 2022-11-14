@@ -1,7 +1,6 @@
 package lotto;
 
 import java.text.DecimalFormat;
-import java.util.List;
 import java.util.Map;
 
 public class Notice {
@@ -17,7 +16,8 @@ public class Notice {
     }
 
     public void purchaseNumber() {
-        System.out.println(PURCHASE_NUMBER);
+        User clerk = new User();
+        System.out.println(clerk.purchasePrice + PURCHASE_NUMBER);
     }
 
     public void winningNumber() {
