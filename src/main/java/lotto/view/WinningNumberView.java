@@ -49,7 +49,7 @@ public class WinningNumberView {
         for (int index = 0; index < winningNumbers.length(); index++) {
             winningNumber = winningNumbers.charAt(index);
             if (winningNumbers.contains(String.valueOf(winningNumber))) {
-                throw new IllegalArgumentException("[ERROR] 당첨번호는 중복되어서는 안됩니다")
+                throw new IllegalArgumentException("[ERROR] 당첨번호는 중복되어서는 안됩니다");
             }
         }
     }
