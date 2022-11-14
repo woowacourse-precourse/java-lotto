@@ -40,7 +40,7 @@ public class Validator {
     public static void isValidLength(String input, int givenLength) {
         IllegalArgumentException exit_Program
                 = new IllegalArgumentException(ErrorStatements.SHOUT_INVALID_LENGTH_ERROR.alarmed());
-        if (input.length() != givenLength) {
+        if (input.length() > givenLength) {
             throw exit_Program;
         }
     }
