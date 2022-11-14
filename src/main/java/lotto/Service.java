@@ -88,4 +88,12 @@ public class Service {
 			prize.put(LottoRank.FIFTH_PLACE.getWinnerPrize(), prize.get(FIFTH_PLACE.getWinnerPrize()) + 1);
 	}
 
+	public int totalPrize() {
+		int total = 0;
+		for (int key : prize.keySet()) {
+			total += key * prize.get(key);
+		}
+		return total;
+	}
+
 }
