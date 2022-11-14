@@ -28,6 +28,14 @@ public class WinningDecision {
         }
     }
 
+    public void setMyPrizes() {
+        for (int i = 0; i < myLotto.size(); i++) {
+            List<Integer> myNumbers = myLotto.get(i).getNumbers();
+            int matchingCount = getMatchingCount(myNumbers);
+            increasePrizeCount(matchingCount, myNumbers);
+        }
+    }
+
     private int getMatchingCount(List<Integer> myNumbers) {
         int cnt = 0;
         for (int myNumber : myNumbers) {
