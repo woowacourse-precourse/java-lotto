@@ -1,5 +1,6 @@
 package lotto.domain;
 
+import lotto.dto.ResultResponse;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -42,7 +43,7 @@ public class WinningNumber {
         return luckyNumber.getNumbers();
     }
 
-    public HashMap<Integer, Integer> checkLotto(List<Lotto> lotteries) {
+    public ResultResponse checkLotto(List<Lotto> lotteries) {
         HashMap<Integer, Integer> result = new HashMap<>();
         HashSet<Integer> exist = new HashSet<>();
 
@@ -51,7 +52,7 @@ public class WinningNumber {
         for (int index = 0; index < lotteries.size(); index++) {
             addResult(result, getNumbers(lotteries, index), getCount(lotteries, exist, index));
         }
-        return result;
+        return new ResultResponse(result);
     }
 
     private void addResult(HashMap<Integer, Integer> result, List<Integer> numbers, int count) {

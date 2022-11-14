@@ -1,13 +1,13 @@
 package lotto.controller;
 
 import lotto.domain.Lotto;
+import lotto.dto.ResultResponse;
 import lotto.service.LottoService;
 import lotto.domain.WinningNumber;
 import lotto.view.OutputView;
 import lotto.utils.Converter;
 import lotto.utils.Validator;
 import lotto.view.InputView;
-import java.util.HashMap;
 import java.util.List;
 
 public class LottoController {
@@ -35,7 +35,7 @@ public class LottoController {
             List<Integer> luckyNumber = inputLuckyNumber();
             String bonusNumberInput = inputBonusNumber(luckyNumber);
 
-            HashMap<Integer, Integer> result = checkLotto(issuedLotteries, luckyNumber, bonusNumberInput);
+            ResultResponse result = checkLotto(issuedLotteries, luckyNumber, bonusNumberInput);
             outputView.outputWinningStatistics(result);
             outputView.outputEarningRate(lottoService.getEarningRate(
                     purchasingAmount, lottoService.getEarning(result)));
@@ -50,7 +50,7 @@ public class LottoController {
         return bonusNumberInput;
     }
 
-    private HashMap<Integer, Integer> checkLotto(List<Lotto> issuedLotteries, List<Integer> luckyNumber, String bonusNumberInput) {
+    private ResultResponse checkLotto(List<Lotto> issuedLotteries, List<Integer> luckyNumber, String bonusNumberInput) {
         WinningNumber winningNumber = new WinningNumber(new Lotto(luckyNumber), Integer.parseInt(bonusNumberInput));
         return winningNumber.checkLotto(issuedLotteries);
     }

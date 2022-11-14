@@ -2,7 +2,8 @@ package lotto.view;
 
 import lotto.domain.WinningNumberStatus;
 import lotto.domain.Lotto;
-import java.util.HashMap;
+import lotto.dto.ResultResponse;
+
 import java.util.List;
 
 import static lotto.domain.NoticeMessage.ADDITIONAL_SECOND;
@@ -18,13 +19,13 @@ public class OutputView {
         System.out.println();
     }
 
-    public void outputWinningStatistics(HashMap<Integer, Integer> result) {
+    public void outputWinningStatistics(ResultResponse result) {
         System.out.println("당첨 통계");
         System.out.println("---");
         for (int rank = WinningNumberStatus.FIFTH.getOrder(); rank >= WinningNumberStatus.FIRST.getOrder(); rank--) {
             WinningNumberStatus winningNumberStatus = WinningNumberStatus.getWinningNumberStatusByOrder(rank);
             System.out.println(winningNumberStatus.getCount() + "개 일치" + getAdditionalSecondNotice(rank)
-                    + " (" + getProcessedMoney(winningNumberStatus.getMoney())+ "원) - " + result.get(rank) + "개");
+                    + " (" + getProcessedMoney(winningNumberStatus.getMoney())+ "원) - " + result.getResult().get(rank) + "개");
         }
     }
 

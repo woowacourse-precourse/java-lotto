@@ -1,10 +1,9 @@
 package lotto.domain;
 
+import lotto.dto.ResultResponse;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -39,9 +38,9 @@ class WinningNumberTest {
         );
         WinningNumber winningNumber = new WinningNumber(new Lotto(List.of(1, 2, 3, 4, 5, 6)), 7);
 
-        HashMap<Integer, Integer> result = winningNumber.checkLotto(issueNumbers);
+        ResultResponse result = winningNumber.checkLotto(issueNumbers);
 
-        assertEquals(count, result.get(WinningNumberStatus.FIRST.getOrder()));
+        assertEquals(count, result.getResult().get(WinningNumberStatus.FIRST.getOrder()));
     }
 
     @Test
@@ -56,9 +55,9 @@ class WinningNumberTest {
         );
         WinningNumber winningNumber = new WinningNumber(new Lotto(List.of(1, 2, 3, 4, 5, 6)), 7);
 
-        HashMap<Integer, Integer> result = winningNumber.checkLotto(issueNumbers);
+        ResultResponse result = winningNumber.checkLotto(issueNumbers);
 
-        assertEquals(count, result.get(WinningNumberStatus.SECOND.getOrder()));
+        assertEquals(count, result.getResult().get(WinningNumberStatus.SECOND.getOrder()));
     }
 
     @Test
@@ -74,9 +73,9 @@ class WinningNumberTest {
         );
         WinningNumber winningNumber = new WinningNumber(new Lotto(List.of(1, 2, 3, 4, 5, 6)), 7);
 
-        HashMap<Integer, Integer> result = winningNumber.checkLotto(issueNumbers);
+        ResultResponse result = winningNumber.checkLotto(issueNumbers);
 
-        assertEquals(count, result.get(WinningNumberStatus.THIRD.getOrder()));
+        assertEquals(count, result.getResult().get(WinningNumberStatus.THIRD.getOrder()));
     }
 
     @Test
@@ -93,9 +92,9 @@ class WinningNumberTest {
         );
         WinningNumber winningNumber = new WinningNumber(new Lotto(List.of(1, 2, 3, 4, 5, 6)), 7);
 
-        HashMap<Integer, Integer> result = winningNumber.checkLotto(issueNumbers);
+        ResultResponse result = winningNumber.checkLotto(issueNumbers);
 
-        assertEquals(count, result.get(WinningNumberStatus.FOURTH.getOrder()));
+        assertEquals(count, result.getResult().get(WinningNumberStatus.FOURTH.getOrder()));
     }
 
     @Test
@@ -113,8 +112,8 @@ class WinningNumberTest {
         );
         WinningNumber winningNumber = new WinningNumber(new Lotto(List.of(1, 2, 3, 4, 5, 6)), 7);
 
-        HashMap<Integer, Integer> result = winningNumber.checkLotto(issueNumbers);
+        ResultResponse result = winningNumber.checkLotto(issueNumbers);
 
-        assertEquals(count, result.get(WinningNumberStatus.FIFTH.getOrder()));
+        assertEquals(count, result.getResult().get(WinningNumberStatus.FIFTH.getOrder()));
     }
 }

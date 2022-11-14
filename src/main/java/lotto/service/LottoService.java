@@ -4,10 +4,10 @@ import camp.nextstep.edu.missionutils.Randoms;
 import lotto.domain.Lotto;
 import lotto.domain.LottoStatus;
 import lotto.domain.WinningNumberStatus;
+import lotto.dto.ResultResponse;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.List;
 
 public class LottoService {
@@ -37,11 +37,11 @@ public class LottoService {
         return money / LottoStatus.PRICE.getValue();
     }
 
-    public double getEarning(HashMap<Integer, Integer> count) {
+    public double getEarning(ResultResponse count) {
         double earning = 0;
         for (int rank = WinningNumberStatus.FIRST.getOrder(); rank <= WinningNumberStatus.FIFTH.getOrder(); rank++) {
             WinningNumberStatus winningNumberStatus = WinningNumberStatus.getWinningNumberStatusByOrder(rank);
-            earning += count.get(rank) * winningNumberStatus.getMoney();
+            earning += count.getResult().get(rank) * winningNumberStatus.getMoney();
         }
         return earning;
     }
