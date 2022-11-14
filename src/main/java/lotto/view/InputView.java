@@ -15,13 +15,14 @@ public class InputView {
     private static final int DELIMITER_COUNT = 5;
     private static final String TYPE_WRONG = "[ERROR] 정확히 숫자(또는 액수)를 입력해주세요.";
     private static final String WINNING_NUMBERS_DELIMITER_ERROR = "[ERROR] 구분자로 , 를 사용해야합니다.";
+    private static final String BONUS_NUMBER_TYPE_WRONG = "[ERROR] 보너스 번호는 1부터 45 사이의 숫자로 입력해주세요.";
 
     public static int inputAmount() {
         System.out.println(ASK_PURCHASE_AMOUNT);
-        return convertToInt(Console.readLine());
+        return convertPurcahseAmountToInt(Console.readLine());
     }
 
-    private static int convertToInt(String input) {
+    private static int convertPurcahseAmountToInt(String input) {
         if (!input.matches("[1-9][0-9]*")) {
             throw new IllegalArgumentException(TYPE_WRONG);
         }
@@ -47,9 +48,16 @@ public class InputView {
 
     private static int inputBonusNumber() {
         System.out.println(ASK_BONUS_NUMBER);
-        int bonusNumber = Integer.parseInt(Console.readLine());
+        int bonusNumber = convertBonusNumberToInt(Console.readLine());
         System.out.println();
         return bonusNumber;
+    }
+    private static int convertBonusNumberToInt(String input) {
+        if (!input.matches("[0-9]*")) {
+            throw new IllegalArgumentException(BONUS_NUMBER_TYPE_WRONG);
+        }
+
+        return Integer.parseInt(input);
     }
 
     private static List<Integer> convertToList(String inputWinningNumbers) {
