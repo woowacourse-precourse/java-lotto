@@ -1,7 +1,6 @@
 package lotto.domain.publish;
 
 import camp.nextstep.edu.missionutils.Randoms;
-import lotto.constant.LottoNumbers;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -18,27 +17,19 @@ public class NumberPublication {
 
     public List<List<Integer>> publishNumbers(int quantity) {
         lottoPublications = new ArrayList<>();
-        for(int count = 0; count < quantity; count++) {
-            List<Integer> lottoNumbers = generateLotto();
-            sortLottoNumbers(lottoNumbers);
+        for (int count = 0; count < quantity; count++) {
+            List<Integer> lottoNumbers = Randoms.pickUniqueNumbersInRange(LOTTO_MIN.getNumber(), LOTTO_MAX.getNumber(), LOTTO_LENGTH.getNumber());
+            lottoNumbers = sort(lottoNumbers);
             lottoPublications.add(lottoNumbers);
         }
         return lottoPublications;
     }
 
-    private List<Integer> generateLotto() {
-        List<Integer> lottoNumbers = new ArrayList<>();
-        while(lottoNumbers.size() != LOTTO_LENGTH.getNumber()) {
-            int randomNumber = Randoms.pickNumberInRange(LOTTO_MIN.getNumber(), LOTTO_MAX.getNumber());
-            if(!lottoNumbers.contains(randomNumber)) {
-                lottoNumbers.add(randomNumber);
-            }
-        }
-        return lottoNumbers;
-    }
+    private List<Integer> sort(List<Integer> lottoNumbers) {
+        List<Integer> lottos = new ArrayList<>(lottoNumbers); //unmodifiableList -> 새로 객체 생성
+        lottos.sort(Comparator.naturalOrder());
 
-    private void sortLottoNumbers(List<Integer> lottoNumbers) {
-        lottoNumbers.sort(Comparator.naturalOrder());
+        return lottos;
     }
 
     public List<List<Integer>> getLottoPublications() {
