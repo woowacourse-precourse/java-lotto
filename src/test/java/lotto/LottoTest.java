@@ -77,4 +77,20 @@ class LottoTest {
                 .isInstanceOf(IllegalArgumentException.class);;
     }
 
+    @DisplayName("구입 금액에 따라 로또를 발행한다.")
+    @Test
+    void createLotteries() {
+        // given
+        String money = "10000";
+
+        // when
+        Game game = new Game();
+        game.setLotteries(money);
+
+        // then
+        assertThat(game.getLotteries().stream()
+                .map(Lotto::getNumbers)
+                .count())
+                .isEqualTo(10);
+    }
 }
