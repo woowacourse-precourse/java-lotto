@@ -40,4 +40,11 @@ class LottoTest {
         assertThatThrownBy(() -> new CalculatedService().lottoSize(new Money("4050")))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @DisplayName("형식에 맞게 입력이 들어오는지 확인한다.")
+    @Test
+    void creatWinningNumbers() {
+        assertThatThrownBy(() -> new Lotto("1, 2, 3,4,5,6"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
