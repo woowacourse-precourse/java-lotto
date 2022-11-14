@@ -2,7 +2,7 @@ package lotto.view;
 
 public final class ErrorMessage {
     public static void numberInRangeError(int startInclusive, int encInclusive) {
-        System.out.printf("[ERROR] 입력 값의 범위는 %d부터 %d 사이의 숫자여야 합니다.\n");
+        System.out.printf("[ERROR] 입력 값의 범위는 %d부터 %d 사이의 숫자여야 합니다.\n",startInclusive,encInclusive);
     }
 
     public static void duplicationListError() {
