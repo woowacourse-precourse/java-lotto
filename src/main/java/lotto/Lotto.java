@@ -48,8 +48,9 @@ public class Lotto {
         int correct = 0;
 
         for(int num : numbers) {
-            if(answer.contains(num))
+            if(answer.contains(num)) {
                 correct++;
+            }
         }
 
         return rank(correct, numbers.contains(bonus));
