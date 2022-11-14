@@ -11,10 +11,25 @@ public enum WinningConstants {
     private final int requiredWinningNumber;
     private final boolean hasBonusNumber;
     private final int reward;
+    private final String message;
 
     WinningConstants(int requiredWinningNumber, boolean hasBonusNumber, int reward) {
         this.requiredWinningNumber = requiredWinningNumber;
         this.hasBonusNumber = hasBonusNumber;
         this.reward = reward;
+        this.message = makeMessage(requiredWinningNumber, hasBonusNumber, reward);
+    }
+
+    private String makeMessage(int requiredWinningNumber, boolean hasBonusNumber, int reward) {
+        StringBuilder stringBuilder = new StringBuilder();
+
+        stringBuilder.append("%d개 일치");
+        if (hasBonusNumber) {
+            stringBuilder.append(", 보너스 볼 일치");
+        }
+        stringBuilder.append(" (%,d원) - %%d개");
+
+        String message = stringBuilder.toString();
+        return String.format(message, requiredWinningNumber, reward);
     }
 }
