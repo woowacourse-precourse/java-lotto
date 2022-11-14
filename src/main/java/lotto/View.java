@@ -71,6 +71,13 @@ public class View {
         validateUniqueNumbersInput(numbersInteger);
         return numbersInteger;
     }
+    public int getBonusNumberInput(List<Integer> numbers) {
+        String bonusString = Console.readLine();
+        int bonus = validateIsNumber(bonusString);
+        validateNumberInRange(bonus);
+        validateUniqueBonusNumberInput(numbers, bonus);
+        return bonus;
+    }
 
 }
 
