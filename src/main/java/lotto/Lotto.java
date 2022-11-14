@@ -3,6 +3,7 @@ package lotto;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.List;
 import java.util.stream.Collectors;
+import lotto.utils.Validator;
 
 public class Lotto {
 
@@ -14,6 +15,7 @@ public class Lotto {
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
+        Validator.validateLottoNumber(numbers);
         this.numbers = numbers.stream()
                 .sorted()
                 .collect(Collectors.toList());
@@ -27,5 +29,10 @@ public class Lotto {
 
     public List<Integer> getNumbers() {
         return numbers;
+    }
+
+    @Override
+    public String toString() {
+        return numbers.toString();
     }
 }
