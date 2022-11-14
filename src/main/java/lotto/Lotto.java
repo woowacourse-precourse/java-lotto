@@ -82,7 +82,7 @@ public class Lotto {
             }
         }
     }
-/*    public void CheckLottoNumber(int[][]arr, int[] winNumber){ // 일치 개수 찾기
+    public void CheckLottoNumber(int[][]arr, int[] winNumber){ // 일치 개수 찾기
         int cnt = 0;
         int bonusCount = 0;
         for(int i = 0; i< lottoQuantity; i++){
@@ -111,7 +111,7 @@ public class Lotto {
         }
     }
 
-    public String CalcProfit(){
+/*    public String CalcProfit(){
         int money = winLottoNumber[0] * 5000 + winLottoNumber[1] * 50000 + winLottoNumber[2] * 1500000 + winLottoNumber[3] * 30000000 + winLottoNumber[4] * 2000000000;
         profit = (double) money / pay *100;
         return String.format("%.1f",profit);
