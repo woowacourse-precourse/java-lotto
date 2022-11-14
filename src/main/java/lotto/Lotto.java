@@ -5,7 +5,7 @@ import java.util.List;
 import lotto.Application.Places;
 import lotto.Application.NumberType;
 import static lotto.Application.noOfLottoWinAt;
-import static lotto.Application.numberTypeCheck;
+import static lotto.Application.numberType;
 
 public class Lotto {
     private final List<Integer> numbers;
@@ -32,9 +32,9 @@ public class Lotto {
         int countWinningNumbers = 0;
         boolean isBonusNumber = false;
         for (int number : numbers) {
-            if(numberTypeCheck[number] == NumberType.WINNING)
+            if(numberType[number] == NumberType.WINNING)
                 countWinningNumbers++;
-            if(numberTypeCheck[number] == NumberType.BONUS)
+            if(numberType[number] == NumberType.BONUS)
                 isBonusNumber = true;
         }
         return compareResult(countWinningNumbers, isBonusNumber);
