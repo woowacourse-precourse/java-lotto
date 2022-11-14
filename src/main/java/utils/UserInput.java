@@ -15,7 +15,7 @@ public class UserInput {
         String price = Console.readLine();
         Validation.validIsDigit(price);
         validMoneyUnit(Integer.parseInt(price));
-        return calculateNumOfLotto(Integer.parseInt(price));
+        return Integer.parseInt(price);
     }
 
     public static LottoNumber inputLottoNumbers() {
@@ -32,9 +32,5 @@ public class UserInput {
             System.out.println(NOT_RADIX_1000);
             throw new IllegalArgumentException(NOT_RADIX_1000);
         }
-    }
-
-    private static int calculateNumOfLotto(int price) {
-        return price / MONEY_UNIT;
     }
 }

@@ -15,13 +15,14 @@ import static constant.Constant.MONEY_UNIT;
 public class Play {
 
     public void start() {
-        int numOfLotto = UserInput.inputPrice();
+        int price = UserInput.inputPrice();
+        int numOfLotto = price/MONEY_UNIT;
         List<Lotto> lottoTickets = createLottoTickets(numOfLotto);
         Output.showLottoTickets(lottoTickets);
 
         LottoNumber lottoNumber = UserInput.inputLottoNumbers();
         Result result = new Result(lottoTickets, lottoNumber);
-        result.calculateReturnOfRate(numOfLotto * MONEY_UNIT);
+        result.calculateReturnOfRate(price);
     }
 
     private List<Lotto> createLottoTickets(int numOfLotto) {
