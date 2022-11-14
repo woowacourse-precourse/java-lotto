@@ -51,7 +51,9 @@ public class UserInput {
         String userInputBonusNumber = Console.readLine();
 
         validateInputIsNum(userInputBonusNumber);
+        validateDuplicateBonusNumber(userInputBonusNumber);
 
+        game.setBonusNumber(Integer.parseInt(userInputBonusNumber));
     }
 
     // 사용자 입력이 숫자인지 유효성 검사
