@@ -12,8 +12,18 @@
   - [v] 당첨내역으로 총 당첨금을 계산한다. - Judge#countPrizeMoney
   - [v] 당청금과 구매금으로 수익률을 계산한다. - Judge#countEarningsRate
 
+입력
+- [v] 로또 구입 금액을 입력 받는다. - Input#receiveMoney
+- [ ] 당첨번호를 입력 받는다. - Input#receiveWinningNumbers
+- [ ] 보너스 번호를 입력 받는다. - Input#receiveBonusNuber
 
-
+출력
+- [ ] 로또 구입 금액을 입력받는 문구를 출력한다. - Output#giveMeMoney
+- [ ] 발행한 로또 수량을 출력한다. - Output#lottoQuantity
+- [ ] 발행한 로또 번호를 출력한다. - Output#lotteriesNumbers
+- [ ] 당첨 내역을 출력한다. - Output#winningHistory
+- [ ] 수익률을 출력한다. - Output#earningRate
+- [ ] 예외 메시지를 출력한다. -  
 ## 🔍 진행 방식
 
 - 미션은 **기능 요구 사항, 프로그래밍 요구 사항, 과제 진행 요구 사항** 세 가지로 구성되어 있다.
