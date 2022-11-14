@@ -9,6 +9,7 @@ import java.util.List;
 public class LottoNumbers {
     public List<List<Integer>> lottoNums;
     private int buyAmount;
+
     public LottoNumbers(int buyAmount) {
         this.buyAmount = buyAmount;
         lottoNums = new ArrayList<>();
@@ -17,7 +18,7 @@ public class LottoNumbers {
 
     private void setLottoNumbers() {
         List<Integer> lotto = new ArrayList<>();
-        for (int i=0; i<buyAmount; i++) {
+        for (int i = 0; i < buyAmount; i++) {
             lotto = Randoms.pickUniqueNumbersInRange(1, 45, 6); //중복 숫자는 리스트에 저장 하지 않음.
             Collections.sort(lotto);
 

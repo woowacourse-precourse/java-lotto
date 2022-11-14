@@ -6,10 +6,10 @@ public class Progress {
     public static void run() {
         BuyAmount buyAmount = new BuyAmount(UserInput.inputMoney());
         int buyLotto = buyAmount.buyLotto;  // 로또 구매 수량
-        System.out.println(buyLotto+"개를 구매했습니다.");
+        System.out.println(buyLotto + "개를 구매했습니다.");
 
         LottoNumbers lottoNumbers = new LottoNumbers(buyLotto);
-        for (List<Integer> lotto: lottoNumbers.lottoNums) {
+        for (List<Integer> lotto : lottoNumbers.lottoNums) {
             System.out.println(lotto);
         }
 
