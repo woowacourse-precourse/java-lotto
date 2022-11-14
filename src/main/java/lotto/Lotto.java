@@ -18,8 +18,6 @@ public class Lotto {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException(Message.ERROR.get() + Message.ERROR_INCORRECT_QUANTITY.get());
         }
-
-
     }
 
     private void validateDuplication(List<Integer> numbers) {
