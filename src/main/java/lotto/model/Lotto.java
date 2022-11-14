@@ -30,8 +30,4 @@ public class Lotto {
     public boolean isContain(int number) {
         return this.numbers.contains(number);
     }
-
-    public void printLottoNumbers() {
-        System.out.println(this.numbers);
-    }
 }
