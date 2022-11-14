@@ -71,3 +71,14 @@
   - [X] Map<Rank, Integer> 자료 구조를 활용해 1~5등까지 각각 0개씩 초기화
 - [ ] 발행된 Lotto 수와 총 당첨금 정보를 활용해 수익률 계산 - Statistics#calculateEarningsRate()
   - [ ] 소수점 둘째 자리에서 반올림 처리 (ex. 100.0%, 51.5%, 1,000,000,0%) - Statistics#roundToTwoDecimalPlaces()
+  
+
+### Test
+
+#### Lotto
+- [X] 로또 번호의 개수가 6개가 넘어가면 예외가 발생한다. - LottoTest#createLottoByOverSize()
+- [X] 로또 번호에 중복된 숫자가 있으면 예외가 발생한다. - LottoTest#createLottoByDuplicatedNumber()
+- [X] 로또 번호 중 1~45 숫자 범위 내에 없는 수가 있으면 예외가 발생한다. - LottoTest#createLottoByExceedNumberRange()
+- [ ] 로또 생성 시 오름차순으로 정렬된다. - LottoTest#createLottoByAscendingOrder()
+- [ ] 로또 번호 중 보너스 번호와 일치여부를 확인할 수 있다. - LottoTest#containsBonusNumber()
+- [ ] 로또 번호 리스트를 조회할 수 있다. - LottoTest#getLottoNumbers()
