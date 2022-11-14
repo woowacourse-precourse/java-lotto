@@ -11,13 +11,6 @@ public class LottoIssuer {
     }
 
     private List<Integer> randomNumberGenerator() {
-        List<Integer> numbers = new ArrayList<>();
-        while (numbers.size() < 6) {
-            int randomNumber = Randoms.pickNumberInRange(1, 45);
-            if (!numbers.contains(randomNumber)) {
-                numbers.add(randomNumber);
-            }
-        }
-        return numbers;
+        return Randoms.pickUniqueNumbersInRange(1, 45, 6);
     }
 }
