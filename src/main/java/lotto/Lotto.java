@@ -30,9 +30,7 @@ public class Lotto {
 
     public void validatePayment(String payment) {
 
-        if (!payment.matches("^[0-9]*$")) {
-            throw new IllegalArgumentException("[ERROR] 숫자만 입력해주세요.");
-        }
+        checkIfTheInputIsInteger(payment);
 
         if (Integer.parseInt(payment) % 1000 != 0) {
             throw new IllegalArgumentException("[ERROR] 1000원 단위로 떨어지는 숫자를 입력해주세요.");
