@@ -1,6 +1,9 @@
 package lotto.domain;
 
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Lotto {
     private final List<Integer> numbers;
@@ -14,6 +17,18 @@ public class Lotto {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException();
         }
+
+        if (checkDuplicateNumber(numbers)) {
+            System.err.println("중복된 요소가 있습니다!");
+            throw new IllegalArgumentException("[ERROR]");
+        }
+    }
+
+    private Boolean checkDuplicateNumber(List<Integer> numbers) throws IllegalArgumentException{
+        List<Integer> tempLottoNumber = new ArrayList<>(numbers);
+        Set<Integer> numSet = new HashSet<>(tempLottoNumber);
+
+        return numSet.size() != tempLottoNumber.size();
     }
 
     public int lottoChecker(List<Integer> winNumbers, int bonusNumber) {
