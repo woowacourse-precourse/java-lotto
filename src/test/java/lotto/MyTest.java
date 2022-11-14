@@ -22,5 +22,15 @@ public class MyTest {
         }
     }
 
+    @Test
+    @DisplayName("로또 번호는 1에서 45사이의 숫자만 가져야 한다.")
+    void 로또_번호는_1에서_45사이의_숫자만_가져야_한다(){
+        List<Integer> testNumbers = Arrays.asList(0, 46, 100, 55, -100);
+        InputValidator inputValidator = new InputValidator();
+        for (Integer testNumber : testNumbers) {
+            assertThatThrownBy(() -> inputValidator.validateLottoNumber(testNumber)).isInstanceOf(IllegalArgumentException.class);
+        }
+    }
+
 
 }
