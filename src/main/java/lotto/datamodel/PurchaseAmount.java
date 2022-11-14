@@ -19,7 +19,7 @@ public class PurchaseAmount {
     }
 
     public int moneyValid(int money){
-        if (money % 1000 != 0) {
+        if (money % 1000 != 0 || money == 0) {
             throw new IllegalArgumentException();
         }
         return money / 1000;
