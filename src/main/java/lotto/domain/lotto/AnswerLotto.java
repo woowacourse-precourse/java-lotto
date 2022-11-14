@@ -19,9 +19,9 @@ public class AnswerLotto {
     public Score compareLotto(Lotto randomLotto) {
         var score = Score.generateEmptyScore();
 
-        var correctCount = answerLotto.compareCount(randomLotto);
-
+        var correctCount = answerLotto.getCountByCompareLotto(randomLotto);
         score = score.plusNormal(correctCount);
+
         if (randomLotto.hasLottoNumber(bonusNumber)) {
             score = score.plusBonus();
         }
@@ -29,9 +29,7 @@ public class AnswerLotto {
     }
 
     private void validateBonusNumberIsDuplicatedAtLotto(Lotto answerLotto, LottoNumber bonusNumber) {
-        var numbers = answerLotto.numbers();
-
-        if (numbers.contains(bonusNumber.number())) {
+        if (answerLotto.hasLottoNumber(bonusNumber)) {
             throw new IllegalArgumentException(ERROR_DUPLICATED_BONUS_NUMBER);
         }
     }
