@@ -27,7 +27,7 @@ public class InputView {
 	private static String validateInteger(String string) {
 		if (!string.chars().allMatch(Character::isDigit)) {
 			System.out.println("[ERROR] 숫자를 입력해주셔야 합니다.");
-			return "1000";
+			return string.replaceAll("[^0-9]", "");
 		}
 		return string;
 	}
