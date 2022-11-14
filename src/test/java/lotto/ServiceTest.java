@@ -1,6 +1,7 @@
 package lotto;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Stream;
 import org.junit.jupiter.api.BeforeEach;
@@ -94,6 +95,18 @@ public class ServiceTest {
         assertThat(service.sumAllWinnings(rankTypes)).isEqualTo(sumAllWinnings);
     }
 
+    @DisplayName("로또 당첨이 순위별로 몇개가 되었는지 반환하는 테스트")
+    @ParameterizedTest
+    @MethodSource("provideRankTypesAndCountEachRanks")
+    void countByWinningRanks(List<RankType> rankTypes, List<Integer> eachRanksCount) {
+        List<Integer> rankCounts = new ArrayList<>();
+        for(RankType rankType : RankType.values()) {
+            int rankCount = Collections.frequency(rankTypes, rankType);
+            rankCounts.add(rankCount);
+        }
+        assertThat(rankCounts).isEqualTo(eachRanksCount);
+    }
+
     private static Stream<Arguments> provideLottoAndWinningNumber() {
         int bonusNumber = 20;
         WinningNumber winningNumber = new WinningNumber(new Lotto(List.of(1, 2, 3, 4, 5, 6)), bonusNumber);
@@ -115,6 +128,15 @@ public class ServiceTest {
                 Arguments.of(List.of(RankType.FIRST, RankType.FOURTH, RankType.FIFTH), 2_000_055_000),
                 //당첨 안된 경우
                 Arguments.of(List.of(RankType.NONE, RankType.NONE, RankType.NONE), 0)
+        );
+    }
+
+    private static Stream<Arguments> provideRankTypesAndCountEachRanks() {
+        List<RankType> rankTypes = new ArrayList<>();
+        return Stream.of(
+                Arguments.of(List.of(RankType.FIRST,RankType.FIRST, RankType.SECOND, RankType.THIRD), List.of(2, 1, 1, 0, 0, 0)),
+                Arguments.of(List.of(RankType.FOURTH, RankType.FOURTH, RankType.FOURTH), List.of(0, 0, 0, 3, 0, 0)),
+                Arguments.of(List.of(RankType.NONE, RankType.NONE, RankType.NONE), List.of(0, 0, 0, 0, 0, 3))
         );
     }
 }

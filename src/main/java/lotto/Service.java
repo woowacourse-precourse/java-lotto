@@ -2,6 +2,7 @@ package lotto;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public class Service {
@@ -77,6 +78,14 @@ public class Service {
            isMatchNumber = isMatchNumber(winningNumber.getBonus(), lotto.getNumbers());
        }
        return RankType.findRankType(matchNumberCount, isMatchNumber);
+    }
+
+    public List<RankType> getLotteriesRanks(LottoGroup lottoGroup, WinningNumber winningNumber) {
+        List<RankType> rankTypes = new ArrayList<>();
+        for(Lotto lotto : lottoGroup.getAllLotteryTickets()) {
+            rankTypes.add(getLotteryRank(lotto, winningNumber));
+        }
+        return rankTypes;
     }
 
 
