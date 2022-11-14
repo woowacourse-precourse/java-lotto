@@ -97,6 +97,9 @@ getGrade 메소드를 통해 리스트를 반환받아 여기로 넘겨줘야 �
 
 ### 2. 예외 테스트에서 IllegalArgumentException 이 정상 작동하는데 fail이 나온다...
 해결중...
+...
 
+## 미션 진행중 만난 궁금증과 문제에 대한 이야기를 WIKI에 담아 두었습니다.
+https://github.com/ywj9811/java-lotto/wiki
 
 **추후 추가 및 수정 가능**
