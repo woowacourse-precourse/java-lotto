@@ -1,5 +1,7 @@
 package lotto.model;
 
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Stream;
 
@@ -27,5 +29,11 @@ public class Lotto {
         if (numberOfUniqueNumbers != PROPER_QUANTITY) {
             throw new IllegalArgumentException(DUPLICATE_ERROR_MESSAGE);
         }
+    }
+    public boolean has(int number){
+        return numbers.contains(number);
+    }
+    public List<Integer> getLotto(){
+        return Collections.unmodifiableList(numbers);
     }
 }
