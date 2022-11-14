@@ -46,9 +46,89 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 예외_테스트() {
+    void 로또_금액이_숫자가_아닐_때() {
         assertSimpleTest(() -> {
             runException("1000j");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
+    @Test
+    void 로또_금액이_1000원_단위가_아닐_때() {
+        assertSimpleTest(() -> {
+            runException("1001");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
+    @Test
+    void 당첨_번호에_숫자가_아닌_게_있을_때() {
+        assertSimpleTest(() -> {
+            runException("10000", "1,2,3,4,5,a");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
+    @Test
+    void 당첨_번호가_6개가_아닐_때() {
+        assertSimpleTest(() -> {
+            runException("10000", "1,2,3,4,5,6,7", "8");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
+    @Test
+    void 당첨_번호에_1미만의_숫자가_있을_때() {
+        assertSimpleTest(() -> {
+            runException("10000", "0,2,3,4,5,6", "7");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
+    @Test
+    void 당첨_번호에_45초과의_숫자가_있을_때() {
+        assertSimpleTest(() -> {
+            runException("10000", "1,2,3,4,5,46", "7");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
+    @Test
+    void 당첨_번호에_중복된_숫자가_있을_때() {
+        assertSimpleTest(() -> {
+            runException("10000", "1,1,3,4,5,6", "7");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
+    @Test
+    void 보너스_번호가_숫자가_아닐_때() {
+        assertSimpleTest(() -> {
+            runException("10000", "1,2,3,4,5,6", "b");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
+    @Test
+    void 보너스_번호가_1미만의_숫자일_때() {
+        assertSimpleTest(() -> {
+            runException("10000", "1,2,3,4,5,6", "0");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
+    @Test
+    void 보너스_번호가_45초과의_숫자일_때() {
+        assertSimpleTest(() -> {
+            runException("10000", "1,2,3,4,5,6", "46");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
+    @Test
+    void 보너스_번호가_중복된_숫자일_때() {
+        assertSimpleTest(() -> {
+            runException("10000", "1,1,3,4,5,6", "6");
             assertThat(output()).contains(ERROR_MESSAGE);
         });
     }
