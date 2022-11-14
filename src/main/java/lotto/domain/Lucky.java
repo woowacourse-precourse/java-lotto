@@ -39,4 +39,19 @@ public class Lucky {
         System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - " + compareResult.get(7) + "개");
         System.out.println("6개 일치 (2,000,000,000원) - " + compareResult.get(1) + "개");
     }
+
+    public String profitResult(HashMap<Integer, Integer> compareResult, int price) {
+        double result = 0;
+        double sum = 0;
+        sum += compareResult.get(5)*5000;
+        sum += compareResult.get(4)*50000;
+        sum += compareResult.get(3)*1500000;
+        sum += compareResult.get(7)*30000000;
+        sum += compareResult.get(1)*2000000000;
+
+        result = sum/price*100;
+        String profitResult = String.format("%.1f", result);
+
+        return profitResult;
+    }
 }
