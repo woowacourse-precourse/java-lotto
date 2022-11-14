@@ -10,15 +10,18 @@ public class UI {
     private static final String PURCHASE_LOTTO_MESSAGE = "개를 구매했습니다.";
     private static final String PRIZE_INPUT_MESSAGE = "당첨 번호를 입력해 주세요.";
     private static final String BONUS_INPUT_MESSAGE = "보너스 번호를 입력해 주세요.";
-
     private final LottoLogic lottoLogic;
 
     public UI() {
         lottoLogic = new LottoLogic(moneyInput());
         printNumberOfLotto();
         printLottoNumber();
-        setPrizeNumbers();
-        setBonusNumber();
+
+        List<String> prizeNumbers = prizeNumbersInput();
+        setPrizeNumbers(prizeNumbers);
+        String bonusNumber = bonusNumberInput();
+        setBonusNumber(bonusNumber);
+
         printLottoResult();
     }
 
@@ -40,20 +43,25 @@ public class UI {
         }
     }
 
-    private void setPrizeNumbers() {
+    private List<String> prizeNumbersInput() {
         System.out.println(PRIZE_INPUT_MESSAGE);
         String prizeNumberInput = Console.readLine();
-        List<String> prizeNumbers = sliceInputNumber(prizeNumberInput);
-        Validation.validatePrizeNumberInput(prizeNumbers);
+        return sliceInputNumber(prizeNumberInput);
+    }
 
+    private void setPrizeNumbers(List<String> prizeNumbers) {
+        Validation.validatePrizeNumberInput(prizeNumbers);
         this.lottoLogic.setPrizeNumbers(stringListToIntegerList(prizeNumbers));
     }
 
-    private void setBonusNumber() {
+    private String bonusNumberInput() {
         System.out.println(BONUS_INPUT_MESSAGE);
         String bonusInput = Console.readLine();
-        Validation.validateBonusInput(bonusInput, this.lottoLogic.getPrizeNumbers());
+        return bonusInput;
+    }
 
+    private void setBonusNumber(String bonusInput) {
+        Validation.validateBonusInput(bonusInput, this.lottoLogic.getPrizeNumbers());
         this.lottoLogic.setBonusNumber(Integer.parseInt(bonusInput));
     }
 
