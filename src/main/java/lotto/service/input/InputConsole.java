@@ -28,4 +28,9 @@ public class InputConsole {
         return new LottoNumbers(tempCorrectLottoNumbers);
     }
 
+    public static LottoNumber readBonusNumber() {
+        String readLine = Console.readLine();
+        return new LottoNumber(Transfer.toInteger(readLine));
+    }
+
 }
