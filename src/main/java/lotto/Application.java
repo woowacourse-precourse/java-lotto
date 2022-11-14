@@ -9,8 +9,8 @@ package lotto;
  * [O] 당첨 통계 계산
  * [O] 총 수익률 계산
  * [O/O] 입력 예외 처리(로또 구매 갯수 / 당첨 로또번호 입력)
- * [X] 단위 테스트 생성
- * [X] 테스트 확인
+ * [O] 단위 테스트 생성
+ * [O] 테스트 확인
  */
 
 import camp.nextstep.edu.missionutils.Console;
@@ -74,7 +74,7 @@ public class Application {
         printUserAllWinningInfo(result, purchaseLottoPrice);
     }
 
-    private static void printUserAllWinningInfo(Map<WINNING, Integer> result, int purchaseLottoPrice) {
+    public static void printUserAllWinningInfo(Map<WINNING, Integer> result, int purchaseLottoPrice) {
         double totalSumOfWinning = 0;
 
         for (WINNING WINNING : result.keySet()) {
