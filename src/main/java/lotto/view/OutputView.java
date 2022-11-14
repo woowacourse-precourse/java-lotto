@@ -1,6 +1,5 @@
 package lotto.view;
 
-import java.util.HashMap;
 import java.util.List;
 
 public class OutputView {
@@ -45,5 +44,9 @@ public class OutputView {
                 + ticketResult.get(FIVE_AND_BONUS_MATCH_INDEX) + "개");
         System.out.println(SIX_MATCHES + "개 일치 (2,000,000,000원) - "
                 + ticketResult.get(SIX_MATCH_INDEX) + "개");
+    }
+
+    private  static void printLottoYield(double lottoYield){
+        System.out.print(Math.round(lottoYield*10)/10.0);
     }
 }
