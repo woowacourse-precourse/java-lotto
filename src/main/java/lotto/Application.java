@@ -14,7 +14,7 @@ public class Application {
             Money money = inputPurchasePrice();
             List<Lotto> purchasedLottos = purchaseLotto(money);
             Lotto winningNumber = inputWinningNumber();
-            Bonus bonus = inputBonusNumber();
+            Bonus bonus = inputBonusNumber(winningNumber);
             Map<Rank, Integer> winningHistory = getWinningHistory(purchasedLottos, winningNumber, bonus);
             CalculateRateOfReturn(money, winningHistory);
         } catch (IllegalArgumentException e) {
@@ -40,10 +40,10 @@ public class Application {
         return InputHandler.readWinningNumber();
     }
 
-    private static Bonus inputBonusNumber() {
+    private static Bonus inputBonusNumber(Lotto winningNumber) {
         println();
         println(INPUT_BONUS_NUMBER);
-        return InputHandler.readBonusNumber();
+        return InputHandler.readBonusNumber(winningNumber);
     }
 
     private static Map<Rank, Integer> getWinningHistory(List<Lotto> purchasedLottos, Lotto winningNumber, Bonus bonus) {

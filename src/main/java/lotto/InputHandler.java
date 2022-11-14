@@ -1,5 +1,6 @@
 package lotto;
 
+import static lotto.ErrorMessages.DUPLICATE_NUMBER;
 import static lotto.ErrorMessages.NOT_DIGIT;
 
 import camp.nextstep.edu.missionutils.Console;
@@ -22,9 +23,13 @@ public class InputHandler {
                 .collect(Collectors.toList()));
     }
 
-    public static Bonus readBonusNumber() {
+    public static Bonus readBonusNumber(Lotto winningNumber) {
         String input = readLine();
         int amount = parseInt(input);
+        Bonus bonus = new Bonus(amount);
+        if (winningNumber.getNumbers().contains(bonus.getNumber())) {
+            throw new IllegalArgumentException(DUPLICATE_NUMBER);
+        }
         return new Bonus(amount);
     }
 
