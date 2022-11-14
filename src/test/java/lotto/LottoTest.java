@@ -56,6 +56,6 @@ class LottoTest {
     @DisplayName("구입 금액만큼 로또가 발행되었는지 확인")
     @Test
     void 당첨_로또() {
-        assertThat(Application.getWinningLotto("1,2,3,4,5,6").getNumbers()).isEqualTo(List.of(1,2,3,4,5,6));
+        assertThat(Application.getWinningLottoNumber("1,2,3,4,5,6").getNumbers()).isEqualTo(List.of(1,2,3,4,5,6));
     }
 }

@@ -13,10 +13,10 @@ public class Application {
     public static void main(String[] args) {
         int lottoCount = getLottoCount(inputAmount());
         final List<Lotto> lottos = getLottoList(lottoCount);
-        final Lotto winningLotto = getWinningLotto(inputLottoString());
+        final WinningLotto winningLotto = getWinningLotto();
     }
 
-    protected static int getLottoCount(String inputAmount) throws IllegalArgumentException {
+    protected static int getLottoCount(String inputAmount) {
         if(inputAmount.length() == 0)
             throw new IllegalArgumentException("[ERROR] 로또 구입 금액을 입력하지 않았습니다.");
         try {
@@ -24,7 +24,7 @@ public class Application {
             if(amount % 1000 != 0)
                 throw new IllegalArgumentException("[ERROR] 로또 구입 금액은 1,000원 단위로 입력해야 합니다.");
             return amount / 1000;
-        } catch (NumberFormatException e) {
+        } catch (Exception e) {
             throw new IllegalArgumentException("[ERROR] 금액을 잘못 입력했습니다.");
         }
 
@@ -49,7 +49,17 @@ public class Application {
         return new Lotto(numbers);
     }
 
-    protected static Lotto getWinningLotto(String inputString) {
+    protected static WinningLotto getWinningLotto() throws IllegalArgumentException {
+        Lotto lotto = getWinningLottoNumber(inputLottoString());
+        try {
+            int bonus = Integer.parseInt(inputBonus());
+            return new WinningLotto(lotto, bonus);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("[ERROR] 보너스 번호로 숫자가 아닌 값을 입력했습니다.");
+        }
+    }
+
+    protected static Lotto getWinningLottoNumber(String inputString) {
         List<String> str = Arrays.asList(inputString.split(","));
         List<Integer> number = str.stream().map(s -> Integer.parseInt(s))
                                     .collect(Collectors.toList());
@@ -57,6 +67,11 @@ public class Application {
     }
     private static String inputLottoString() {
         System.out.println("당첨 번호를 입력해 주세요.");
+        return Console.readLine();
+    }
+
+    private static String inputBonus() {
+        System.out.println("보너스 번호를 입력해 주세요.");
         return Console.readLine();
     }
 }
