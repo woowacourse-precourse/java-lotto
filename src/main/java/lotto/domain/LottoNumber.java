@@ -8,6 +8,8 @@ import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static lotto.utils.Messages.ERROR_MESSAGE;
+
 public class LottoNumber {
 
     public static List<Integer> createLotto(){
@@ -23,5 +25,11 @@ public class LottoNumber {
         return winningNumberList;
     }
 
+    public static void validateBonusNumber(Lotto lotto, int bonusNumber){
+        List<Integer> lottoNumber = lotto.getLottoNumber();
+        if(lottoNumber.contains(bonusNumber)){
+            throw new IllegalArgumentException(ERROR_MESSAGE + "보너스 넘버가 중복됩니다.");
+        }
+    }
 
 }
