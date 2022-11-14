@@ -54,4 +54,11 @@ public class GameResult {
         }
         return !needsBonusNumber || hasBonusNumber;
     }
+
+    private int calculatePrize(WinningConstants nthPlace) {
+        int reward = nthPlace.getReward();
+        int place = nthPlace.getPlace();
+        int count = result.get(place);
+        return reward * count;
+    }
 }
