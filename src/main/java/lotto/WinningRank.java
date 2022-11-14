@@ -25,7 +25,6 @@ public enum WinningRank {
             if(rank.rightNumCnt == rightNumCnt && rank !=SECOND) return rank;
         }
 
-
         System.out.println("[ERROR] 일치하는 번호의 개수를 찾을 수 없습니다.");
         throw new IllegalArgumentException();
     }
