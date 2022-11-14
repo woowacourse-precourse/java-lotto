@@ -43,14 +43,14 @@ public class LottoRating {
     public void saveWinningCount(int matchingCount, Lotto lotto) {
         boolean isSecond = Objects.equals(Rank.SECOND.getMatchingCount(), matchingCount) && hasBonusNumber(lotto);
         if (isSecond) {
-            String tier = Rank.SECOND.getTier();
-            winningCountRepository.put(tier, winningCountRepository.getOrDefault(tier, 0) + 1);
+            String second = Rank.SECOND.name();
+            winningCountRepository.put(second, winningCountRepository.getOrDefault(second, 0) + 1);
         }
 
         for (Rank value : Rank.values()) {
             if (Objects.equals(value.getMatchingCount(), matchingCount) && !isSecond) {
-                String tier = value.getTier();
-                winningCountRepository.put(tier, winningCountRepository.getOrDefault(tier, 0) + 1);
+                String rankName = value.name();
+                winningCountRepository.put(rankName, winningCountRepository.getOrDefault(rankName, 0) + 1);
             }
         }
     }
