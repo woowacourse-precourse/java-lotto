@@ -20,4 +20,10 @@ public class LottoProgramTest {
 		assertThat(lottoProgram.checkBonus(lottoNumbers)).isEqualTo(true);
 	}
 
+	@Test
+	public void checkBonus_테스트_실패() {
+		List<Integer> lottoNumbers = new ArrayList<>(List.of(1, 2, 3, 4, 5, 6));
+		lottoProgram.bonusNum = 7;
+		assertThat(lottoProgram.checkBonus(lottoNumbers)).isEqualTo(false);
+	}
 }
