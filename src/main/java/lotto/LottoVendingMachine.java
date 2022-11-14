@@ -2,6 +2,7 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 public class LottoVendingMachine {
@@ -20,6 +21,7 @@ public class LottoVendingMachine {
         List<Lotto> lottos = new ArrayList<>();
         for (int count = 0; count < lottoTickets; count++) {
             List<Integer> numbers = Randoms.pickUniqueNumbersInRange(MIN_VALUE, MAX_VALUE, LOTTO_NUMBERS_SIZE);
+            numbers.sort(Comparator.naturalOrder());
             Lotto lotto = new Lotto(numbers);
             lottos.add(lotto);
         }
