@@ -40,7 +40,7 @@ public class Lotto {
 
     private boolean isDuplicated(List<Integer> numbers) {
         HashSet<Integer> numberSet = new HashSet<>(numbers);
-        if (numberSet.size() != numbers.size()) return false;
+        if (numberSet.size() != numbers.size()) return true;
         return false;
     }
 
