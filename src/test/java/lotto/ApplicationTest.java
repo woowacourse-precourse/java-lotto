@@ -108,7 +108,6 @@ class ApplicationTest extends NsTest {
      * returns: winningPlace: 입력 인자에 해당하는 순위 반환
      */
     @DisplayName("로또 당첨 번호와 사용자의 로또 번호의 일치 여부에 따른 1위 순위 반환 확인")
-
     @Test
     public void countCorrespondingNumbersTest_FirstPlace() {
         //given
@@ -250,6 +249,38 @@ class ApplicationTest extends NsTest {
 
         //then
         assertEquals(expectedValue, actualValue);
+    }
+
+    /**
+     * validateWinnerNumberContainsComma(param1)
+     * param1: String userInput: 사용자 입력 당첨 번호
+     * returns 사용자 입력 userInput 반환
+     * throws IllegalArgumentException when 쉽표로 구분되지 않은 입력
+     */
+
+    @DisplayName("사용자는 당첨번호를 쉽표로 구분하여 입력해야 한다.")
+    @Test
+    public void validateWinnerNumberContainsCommaTest() {
+        //given
+        String userInput = "1,2,3,4,5,6";
+        String expectedValue = "1,2,3,4,5,6";
+        //when
+        String actualValue = Application.validateWinnerNumberContainsComma(userInput);
+
+        //then
+        assertEquals(expectedValue, actualValue);
+    }
+
+    @DisplayName("사용자는 당첨 번호를 쉽표로 구분하여 입력하지 않은 경우에는 IAE 예외 발생한다.")
+    @Test
+    public void validateWinnerNumberContainsCommaTest_ExceptionCase() {
+        //given
+        String userInputWithBlank = "1 2 3 4 5 6";
+        //when
+
+        //then
+        assertThatThrownBy(() -> Application.validateWinnerNumberContainsComma(userInputWithBlank))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 
     @Override
