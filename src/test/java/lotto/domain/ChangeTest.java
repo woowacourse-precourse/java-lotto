@@ -38,4 +38,11 @@ class ChangeTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+    @DisplayName("마지막 자리에 문자가 입력되었으면 예외가 발생한다.")
+    @Test
+    void lottoNumberTest_마지막_자리에_문자(){
+        assertThatThrownBy(() -> Change.lottoNumber("1,2,3,4,5,a"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
 }
