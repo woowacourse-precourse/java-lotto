@@ -13,7 +13,7 @@ public class Lottos {
         this.lottos.add(lotto);
     }
 
-    public ArrayList<Lotto> getLotts(){
+    public ArrayList<Lotto> getLottos(){
         return this.lottos;
     }
 

@@ -17,7 +17,7 @@ public class LottoPublicationTest {
     @Test
     void publicationLottoByCount(){
         Lottos lottos = LottoPublication.publicationLottos(8);
-        assertThat(lottos.getLotts().size()).isEqualTo(8);
+        assertThat(lottos.getLottos().size()).isEqualTo(8);
     }
 
     @DisplayName("로또 번호 오름차순 정렬 테스트")
