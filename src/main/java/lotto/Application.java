@@ -1,6 +1,7 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.*;
 
@@ -113,5 +114,28 @@ public class Application {
     static void exceptDuplicatedNumber(List<Integer> lottoNumbers, int bonusNumber) {
         if (lottoNumbers.contains(bonusNumber))
             throw new IllegalArgumentException("[ERROR] 보너스 번호가 중복된 숫자입니다.");
+    }
+
+    static Set<List<Integer>> generateUniqueLottoTickets(int numberOfTickets) {
+        Set<List<Integer>> existentTicket = new HashSet<>();
+        int numberOfGeneratedTickets = 0;
+        while (numberOfGeneratedTickets < numberOfTickets) {
+            List<Integer> generatedTicket = generateRandomLottoTicket();
+            if (existentTicket.contains(generatedTicket))
+                continue;
+            existentTicket.add(generatedTicket);
+            numberOfGeneratedTickets++;
+        }
+        return existentTicket;
+    }
+
+    static List<Integer> generateRandomLottoTicket() {
+        List<Integer> LottoTicket = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+        return sortRandomLottoTicket(LottoTicket);
+    }
+
+    static List<Integer> sortRandomLottoTicket(List<Integer> LottoTicket) {
+        Collections.sort(LottoTicket);
+        return LottoTicket;
     }
 }
