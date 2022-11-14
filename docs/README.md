@@ -35,7 +35,7 @@
 - [x] 당첨번호 모두 숫자 or "," 인지 확인 예외시 Exception
 - [x] 보너스 번호 ask 출력
 - [x] 보너스 번호 입력
-- [ ] 보너스 번호 숫자인지 확인 예외시 Exception
+- [x] 보너스 번호 숫자인지 확인 예외시 Exception
 - [ ] 입력된 당첨번호, 보너스 번호로 Win Lotto 클래스 생성
 
 ## Statistics

@@ -11,5 +11,10 @@ class WinLottoGenerateTest {
         assertThatThrownBy(() ->new WinLottoGenerate().winNumberValidate("1400a"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+    @Test
+    public void bonusInputValidateTest() throws Exception{
+        assertThatThrownBy(() ->new WinLottoGenerate().winNumberValidate("14e"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 
 }
