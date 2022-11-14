@@ -18,14 +18,9 @@ public class LottoMachine {
 
     public static Map<Reward, Integer> calculateResult(List<Lotto> userLotto, Lotto winningNumber, int bonusNumber) {
         Map<Reward, Integer> result = makeBlankResult();
-        for (int i = 0; i < userLotto.size(); i++) {
-            int bingo = userLotto.get(i)
-                    .getNumbers()
-                    .stream()
-                    .filter(s -> winningNumber.isContain(s))
-                    .mapToInt(n -> 1)
-                    .sum();
 
+        for (int i = 0; i < userLotto.size(); i++) {
+            int bingo = calculateBingo(userLotto, winningNumber, i);
             boolean bonus = userLotto.get(i).isContain(bonusNumber);
 
             if (3 <= bingo && bingo <= 6) {
@@ -45,5 +40,16 @@ public class LottoMachine {
         }};
 
         return result;
+    }
+
+    public static int calculateBingo(List<Lotto> userLotto, Lotto winningNumber, int idx) {
+        int bingo = userLotto.get(idx)
+                .getNumbers()
+                .stream()
+                .filter(s -> winningNumber.isContain(s))
+                .mapToInt(n -> 1)
+                .sum();
+
+        return bingo;
     }
 }
