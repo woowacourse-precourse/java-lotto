@@ -31,14 +31,14 @@ public class Lotto {
     }
 
     //발행한 로또와 당첨번호를 비교한다
-    public 당첨 compareLotto(List<Integer> winningNumber, int bonusNumber) {
+    public Statistics compareLotto(List<Integer> winningNumber, int bonusNumber) {
         int matchingCount = 0;
         HashSet<Integer> winningSet = new HashSet<>(winningNumber);
         for (int number : numbers) {
             if (winningSet.contains(number))
                 matchingCount++;
         }
-        return 당첨.getRank(matchingCount, numbers.contains(bonusNumber));
+        return Statistics.getRank(matchingCount, numbers.contains(bonusNumber));
     }
 
     @Override

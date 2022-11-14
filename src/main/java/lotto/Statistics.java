@@ -1,9 +1,8 @@
 package lotto;
 
 import java.util.Arrays;
-import java.util.Optional;
 
-public enum 당첨 {
+public enum Statistics {
     FIRST(0, 6, 2000000000, "6개 일치 (2,000,000,000원)"),
     SECOND(1, 5, 30000000, "5개 일치, 보너스 볼 일치 (30,000,000원)"),
     THIRD(2, 5, 1500000, "5개 일치 (1,500,000원)"),
@@ -16,7 +15,7 @@ public enum 당첨 {
     private final String result;
 
 
-    당첨(int value, int matchingNumbers, int prize, String result) {
+    Statistics(int value, int matchingNumbers, int prize, String result) {
         this.value = value;
         this.matchingNumbers = matchingNumbers;
         this.prize = prize;
@@ -35,18 +34,18 @@ public enum 당첨 {
         return result;
     }
 
-    public static 당첨 valueOfValue(int v) {
+    public static Statistics valueOfValue(int v) {
         return Arrays.stream(values())
-                .filter(당첨 -> 당첨.value == v)
+                .filter(Statistics -> Statistics.value == v)
                 .findFirst()
                 .orElse(null);
     }
 
-    public static 당첨 getRank(int matchingCount, boolean isBonus) {
+    public static Statistics getRank(int matchingCount, boolean isBonus) {
         if (!isBonus && matchingCount == 5)
             return THIRD;
-        return Arrays.stream(당첨.values())
-                .filter(당첨 -> 당첨.matchingNumbers == matchingCount)
+        return Arrays.stream(Statistics.values())
+                .filter(Statistics -> Statistics.matchingNumbers == matchingCount)
                 .findFirst()
                 .orElse(null);
     }

@@ -5,6 +5,7 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.*;
 import java.util.stream.Collectors;
 
+
 public class Application {
     private static final String ERROR_MESSAGE = "[ERROR] ";
 
@@ -44,7 +45,6 @@ public class Application {
         System.out.println("당첨 번호를 입력해 주세요.");
         int[] winningNumber_ = Arrays.stream(Console.readLine().split(",")).mapToInt(Integer::parseInt).toArray();
         List<Integer> winningNumber = Arrays.stream(winningNumber_).boxed().collect(Collectors.toList());
-        Lotto winngLotto = new Lotto(winningNumber);
 
         System.out.println("보너스 번호를 입력해 주세요.");
         int bonusNumber = Integer.parseInt(Console.readLine());
@@ -52,7 +52,7 @@ public class Application {
         int[] result = {0, 0, 0, 0, 0, 0};
         int earnings = 0;
         for (Lotto lotto : mylottos) {
-            당첨 rank = lotto.compareLotto(winningNumber, bonusNumber);
+            Statistics rank = lotto.compareLotto(winningNumber, bonusNumber);
             if (rank == null) continue;
             result[rank.getValue()]++;
             earnings += rank.getPrize();
@@ -62,7 +62,7 @@ public class Application {
         System.out.println("당첨 통계");
         System.out.println("---");
         for (int i = 4; i >= 0; i--) {
-            System.out.println(당첨.valueOfValue(i).getResult().replace("_", ",") + " - " + result[i] + "개");
+            System.out.println(Statistics.valueOfValue(i).getResult().replace("_", ",") + " - " + result[i] + "개");
         }
         System.out.println("총 수익률은 " + String.format("%.1f", earningsRate) + "%입니다.");
 
