@@ -1,6 +1,7 @@
 package lotto.view;
 
 import camp.nextstep.edu.missionutils.Console;
+import lotto.common.Constant;
 import lotto.exception.InputException;
 
 import java.util.Arrays;
@@ -53,7 +54,7 @@ public class InputView {
     }
 
     private static void isBonusNumberDigit(String bonusNumber) {
-        if (bonusNumber.length() != 1 || !bonusNumber.matches(REG_XP_DIGITS)) {
+        if (bonusNumber.length() != Constant.BONUS_NUMBER_SIZE || !bonusNumber.matches(REG_XP_DIGITS)) {
             throw new IllegalArgumentException(InputException.BONUS_LOTTO_INVALID_FORM.message());
         }
     }

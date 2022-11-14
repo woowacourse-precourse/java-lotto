@@ -1,5 +1,6 @@
 package lotto.domain;
 
+import lotto.common.Constant;
 import lotto.exception.InputException;
 
 import java.util.ArrayList;
@@ -19,7 +20,7 @@ public final class UserLotto {
     }
 
     public int findBonusNumberWinCount(List<Integer> lotto) {
-        return (int) IntStream.range(0, 6)
+        return (int) IntStream.range(0, Constant.LOTTO_SIZE)
                 .filter(i -> lotto.get(i).equals(bonusNumber))
                 .count();
     }
@@ -32,29 +33,29 @@ public final class UserLotto {
     }
 
     private void isValidLottoCount(List<Integer> winNumbers) {
-        if (winNumbers.size() != 6) {
+        if (winNumbers.size() != Constant.LOTTO_SIZE) {
             throw new IllegalArgumentException(InputException.LOTTO_INVALID_COUNT.message());
         }
     }
 
     private void isValidLottoRange(List<Integer> winNumbers) {
         long count = winNumbers.stream()
-                .filter(num -> 1 <= num && num <= 45)
+                .filter(num -> Constant.MIN_LOTTO_RANGE <= num && num <= Constant.MAX_LOTTO_RANGE)
                 .count();
 
-        if (count != 6) {
+        if (count != Constant.LOTTO_SIZE) {
             throw new IllegalArgumentException(InputException.LOTTO_INVALID_RANGE.message());
         }
     }
 
     private void hasNotDuplicateLotto(List<Integer> winNumbers) {
-        if (winNumbers.stream().distinct().count() != 6) {
+        if (winNumbers.stream().distinct().count() != Constant.LOTTO_SIZE) {
             throw new IllegalArgumentException(InputException.LOTTO_DUPLICATE_DIGIT.message());
         }
     }
 
     private void isValidBonusLottoRange(int bonusNumber) {
-        if ( 1 > bonusNumber || bonusNumber > 45) {
+        if ( Constant.MAX_LOTTO_RANGE > bonusNumber || bonusNumber > Constant.MAX_LOTTO_RANGE) {
             throw new IllegalArgumentException(InputException.BONUS_LOTTO_INVALID_FORM.message());
         }
     }

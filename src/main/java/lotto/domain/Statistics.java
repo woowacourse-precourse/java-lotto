@@ -7,6 +7,12 @@ import java.util.Map;
 
 public class Statistics {
 
+    private static final int DEFAULT_VALUE = 0;
+    private static final int PLUS_VALUE = 1;
+    private static final int MIN_MATCH_COUNT = 3;
+    private static final int MAX_MATCH_COUNT = 6;
+    private static final int PERCENTAGE = 100;
+
     public final Map<LottoRank, Integer> winLottoInfo = new HashMap<>();
 
     private int winAmount;
@@ -17,14 +23,14 @@ public class Statistics {
 
     private void initLottoInfoMap() {
         for(LottoRank rank : LottoRank.values()) {
-            winLottoInfo.put(rank, 0);
+            winLottoInfo.put(rank, DEFAULT_VALUE);
         }
     }
 
     public void setLottoWinResultToMap(int matchCount, int bonusCount) {
-        if (matchCount >= 3 && matchCount <= 6) {
+        if (matchCount >= MIN_MATCH_COUNT && matchCount <= MAX_MATCH_COUNT) {
             LottoRank rank = LottoRank.of(matchCount, bonusCount);
-            winLottoInfo.put(rank, winLottoInfo.get(rank) + 1);
+            winLottoInfo.put(rank, winLottoInfo.get(rank) + PLUS_VALUE);
         }
     }
 
@@ -38,7 +44,7 @@ public class Statistics {
 
     public double findLottoYield(int purchaseAmount) {
         double quotient = (double) winAmount / (double) purchaseAmount;
-        String result = String.format("%.1f", quotient * 100);
+        String result = String.format("%.1f", quotient * PERCENTAGE);
         return Double.parseDouble(result);
     }
 

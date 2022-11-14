@@ -1,5 +1,6 @@
 package lotto.domain;
 
+import lotto.common.Constant;
 import lotto.exception.InputException;
 
 import java.util.ArrayList;
@@ -22,12 +23,12 @@ public final class Lotties {
     }
 
     public int getLottoPublishCount() {
-        return purchaseAmount / 1000;
+        return purchaseAmount / Constant.LOTTO_PRICE;
     }
 
 
     private static void isDividedByLottoAmount(int purchaseAmount) {
-        if (purchaseAmount % 1000 != 0) {
+        if (purchaseAmount % Constant.LOTTO_PRICE != 0) {
             throw new IllegalArgumentException(InputException.MONEY_NOT_DIVIDE_BY_LOTTO_UNIT.message());
         }
     }

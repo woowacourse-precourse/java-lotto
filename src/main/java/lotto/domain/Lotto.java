@@ -1,5 +1,7 @@
 package lotto.domain;
 
+import lotto.common.Constant;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.IntStream;
@@ -18,13 +20,13 @@ public final class Lotto {
     }
 
     public int findLottoWinCount(List<Integer> userLotto) {
-        return (int) IntStream.range(0, 6)
+        return (int) IntStream.range(0, Constant.LOTTO_SIZE)
                 .filter(i -> userLotto.contains(numbers.get(i)))
                 .count();
     }
 
     public int findBonusNumberWinCount(int bonusNumber) {
-        return (int) IntStream.range(0, 6)
+        return (int) IntStream.range(0, Constant.LOTTO_SIZE)
                 .filter(i -> numbers.get(i).equals(bonusNumber))
                 .count();
     }
