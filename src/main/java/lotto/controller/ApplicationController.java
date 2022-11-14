@@ -21,6 +21,7 @@ public class ApplicationController {
         int purchaseAmount = inputValidator.convertStringIntoInt(input_purchaseAmount);
         inputValidator.validatePurchaseAmount(purchaseAmount);
         player.setPurchaseAmount(purchaseAmount);
+
         control_CountIssueingLotto();
     }
 
@@ -28,6 +29,7 @@ public class ApplicationController {
         int lottocount = seller.countIssueingLotto(player.getPurchaseAmount());
         player.setLottoCount(lottocount);
         outputView.printLottoCount(player.getLottoCount());
+
         control_IssueingLotto();
     }
 
@@ -35,6 +37,7 @@ public class ApplicationController {
         List<Lotto> lottoNumbers = seller.issueLotto(player.getLottoCount());
         player.setLottoNumbers(lottoNumbers);
         outputView.printLottoNumber(player.getLottoNumbers());
+
         control_WinningNumber();
     }
 
@@ -43,6 +46,7 @@ public class ApplicationController {
         List<Integer> winningNumber = inputValidator.convertStringIntoList(input_WinningNumber);
         inputValidator.validateWinningNumber(winningNumber);
         player.setWinningNumber(winningNumber);
+
         // TODO: 보너스 번호 과정 제어 기능 호출
     }
 }
