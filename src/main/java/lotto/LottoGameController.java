@@ -3,7 +3,7 @@ package lotto;
 import dto.LottoGameInfo;
 
 /**
-* LottoGameController
+* 
 * 로또 게임 진행
 * 
 * @author mirasoy
@@ -19,8 +19,9 @@ public class LottoGameController {
 	
 	
 	//구입금액 입력받기
-	public void enterPurchaseAmount(){
-	  // TODO: 추가 기능 구현
+	public void inputPurchaseAmount(){
+		
+	
 	}
 
 	//로또 발행하기
