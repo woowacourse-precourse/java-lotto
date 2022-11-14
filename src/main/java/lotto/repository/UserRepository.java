@@ -35,6 +35,10 @@ public class UserRepository {
         this.user.setBonusNumber(bonusNumber);
     }
 
+    public void setUserNumberOfWinningTypes(ArrayList<Integer> numberOfWinningTypes) {
+        this.user.setNumberOfWinningTypes(numberOfWinningTypes);
+    }
+
     public User getUser() {
         return this.user;
     }
