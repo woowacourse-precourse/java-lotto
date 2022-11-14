@@ -135,8 +135,9 @@ public class Application {
 
     public static List<Integer> generateSortedRandomNumbers() {
         List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
-        Collections.sort(numbers);
-        return numbers;
+        List<Integer> newNumbers = new ArrayList<>(numbers);
+        Collections.sort(newNumbers);
+        return newNumbers;
     }
 
     public static List<Lotto> purchaseLotteries(int payment) {
