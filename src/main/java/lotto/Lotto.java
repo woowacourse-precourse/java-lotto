@@ -41,7 +41,6 @@ public class Lotto {
     public static void printLotto(List<Integer> Lotto){
         System.out.println(Lotto);
     }
-
     public static String checkBonus(List<Integer> wnum){
         if(getBonus(bonusNum(),wnum)){
             return(WinNumber.FIVE_BALL_BONUS.getBall());
@@ -56,20 +55,30 @@ public class Lotto {
         for(i = 0; i < buy; i++){
             lotto.add(generateLotto());
         }
-        System.out.println("");
-        System.out.println((i)+InputMessage.BUY_NUM.print());
+        printBuy(i);
         for(List<Integer> number : lotto){
             printLotto(number);
         }
+        winCheck = getBonus(lotto,getWinCheck(winCheck,lotto));
+        calculate(winCheck);
+        calculateEarn(winCheck);
+    }
+    public static void printBuy(int i){
+        System.out.println("");
+        System.out.println((i)+InputMessage.BUY_NUM.print());
+    }
+    public static List<String> getWinCheck(List<String> winCheck, List<List<Integer>> lotto){
         List<Integer> winNum = winner();
         for(List<Integer> wnum : lotto){
             winCheck.add(String.valueOf(getWin(wnum,winNum)));
         }
+        return winCheck;
+    }
+    public static List<String> getBonus(List<List<Integer>> lotto, List<String> winCheck){
         if(winCheck.contains(WinNumber.FIVE_BALL.getBall())){
             winCheck.set(winCheck.indexOf(WinNumber.FIVE_BALL.getBall()), checkBonus(lotto.get(winCheck.indexOf(WinNumber.FIVE_BALL.getBall()))));
         }
-        calculate(winCheck);
-        calculateEarn(winCheck);
+        return winCheck;
     }
     public static List<Integer> generateLotto(){
         List<Integer> Lotto = new ArrayList<>();
