@@ -54,7 +54,7 @@ public class ControlLottoGame {
         return bonusNumber;
     }
 
-    public float calculateEarningRate(List<Integer> winningCount, int quantity) {
+    public double calculateEarningRate(List<Integer> winningCount, int quantity) {
         int payedPrice = quantity * 1000;
         int earnedPrice = 0;
 
@@ -65,7 +65,7 @@ public class ControlLottoGame {
         earnedPrice += winningCount.get(4) * CorrectValue.FIVE_BONUS_CORRECT.get();
         String earnedRate = String.format("%.1f", (double) 100 * earnedPrice / payedPrice);
 
-        return Float.parseFloat(earnedRate);
+        return Double.parseDouble(earnedRate);
     }
 }
 
