@@ -10,6 +10,7 @@
 
 
 - [x] 입력받는 금액에 따라 겹치지 않는 1 ~ 45 사이의 랜덤한 숫자 6개를 생성하는 기능
+  - [x] 랜덤으로 생성된 `List<Integer>` 오름차순으로 정렬하는 기능
    
    
 - [x] 위의 결과를 출력하는 기능
@@ -25,7 +26,7 @@
 -[x] 보너스 번호를 입력 받는 기능
     - [x] 입력 받은 값이 숫자가 아닌 값인 경우 `IllegalArgumentException` 발생 시키는 기능
     - [x] 입력 받은 값이 1~45 사이의 정수가 아닌 수일 경우 `IllegalArgumentException` 발생 시키는 기능
-    - [ ] 입력받은 값의 위의 당첨번호와 겹치는 경우 `IllegalArgumentException` 발생 시키는 기능
+    - [x] 입력받은 값의 위의 당첨번호와 겹치는 경우 `IllegalArgumentException` 발생 시키는 기능
 
 
 - [x] 당첨 번호와 랜덤넘버를 비교하는 기능
