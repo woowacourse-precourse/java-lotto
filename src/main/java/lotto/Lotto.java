@@ -1,11 +1,11 @@
 package lotto;
 
-import org.w3c.dom.ranges.RangeException;
-
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
+
+import static Constant.ErrorMessage.*;
 
 public class Lotto {
     private final List<Integer> numbers;
@@ -25,7 +25,7 @@ public class Lotto {
         Set<Integer> set = new HashSet<>(numbers);
 
         if (set.size() != numbers.size()) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(LOTTO_DUPLICATE);
         }
     }
 
@@ -35,13 +35,13 @@ public class Lotto {
                 .collect(Collectors.toList());
 
         if (outRange.size() != 0) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(OUT_RANGE);
         }
     }
 
     private void checkNumber() {
         if (numbers.size() != 6) {
-            throw new IllegalArgumentException("[ERROR] 개수 이상");
+            throw new IllegalArgumentException(INVALID_NUMBER);
         }
     }
 

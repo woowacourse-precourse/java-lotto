@@ -1,8 +1,9 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
-
 import java.util.List;
+import static Constant.ErrorMessage.NOT_INTEGER;
+import static Constant.ErrorMessage.UNITS_THOUSAND;
 
 public class Purchase {
 
@@ -11,7 +12,7 @@ public class Purchase {
     public List<Lotto> lottoPurchase() {
         this.purchaseAmount = numericAmount(Console.readLine());
         if (purchaseAmount % 1000 != 0) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(UNITS_THOUSAND);
         }
 
         LottoGenerator lottoGenerator = new LottoGenerator(purchaseAmount);
@@ -22,7 +23,7 @@ public class Purchase {
         try {
             return Integer.parseInt(amount);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("정수만 입력 가능합니다.");
+            throw new IllegalArgumentException(NOT_INTEGER);
         }
     }
 }

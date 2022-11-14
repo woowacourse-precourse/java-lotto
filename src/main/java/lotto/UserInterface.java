@@ -1,17 +1,18 @@
 package lotto;
 
 import java.util.*;
+import static Constant.GameMessage.*;
 
 public class UserInterface {
 
     private HashMap<Rank, Integer> rankCount;
 
     void printEnterAmout() {
-        System.out.println("구입금액을 입력해 주세요.");
+        System.out.println(ENTER_AMOUNT);
     }
 
     void printEnterWinningNumber() {
-        System.out.println("\n당첨 번호를 입력해 주세요.");
+        System.out.println(ENTER_WINNING_NUMBER);
     }
     void printPurchasedLotto(List<Lotto> lottos) {
         System.out.println("\n" + lottos.size() + "개를 구매했습니다.");
@@ -20,8 +21,7 @@ public class UserInterface {
     }
 
     void printWinningHistory(HashMap<Rank, Integer> rankCount) {
-        System.out.println("\n당첨 통계");
-        System.out.println("---");
+        System.out.println(WINNING_STATISTICS);
         this.rankCount = rankCount;
         Arrays.stream(Rank.values())
                 .sorted(Comparator.reverseOrder())
@@ -33,9 +33,9 @@ public class UserInterface {
     private String printRank(Rank rank) {
         String result = "";
 
-        result += rank.getMatchCount() + "개 일치";
+        result += rank.getMatchCount() + MATCHING;
         if (rank == Rank.SECOND) {
-            result += ", 보너스 볼 일치";
+            result += BONUS_MATCHING;
         }
         result += " (" + rank.getDottedWinningAmount() + "원) - ";
         result += rankCount.get(rank) + "개";
