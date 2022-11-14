@@ -20,11 +20,9 @@ public class WinningLotto {
         this.winningNumber = utils.StringToWinningLottoNumber();
         this.bonus = utils.StringToBonus(this.winningNumber);
         this.winningCount = new HashMap<>(){{
-                put(Rank.FIRST, ZERO);
-                put(Rank.SECOND, ZERO);
-                put(Rank.THIRD, ZERO);
-                put(Rank.FOURTH, ZERO);
-                put(Rank.FIFTH, ZERO);
+            for (Rank key : Rank.values()) {
+                put(key, ZERO);
+            }
         }};
     }
 
@@ -49,11 +47,11 @@ public class WinningLotto {
     }
 
     private Rank getRank(boolean checkBonus, int winningNumberCount) {
-        if (winningNumberCount >= Rank.SECOND.getWinningMoney() && checkBonus) {
-            return Rank.SECOND;
-        }
-        if (winningNumberCount >= Rank.FIRST.getWinningCount()) {
+        if (winningNumberCount >= Rank.FIRST.getWinningCount() && !checkBonus) {
             return Rank.FIRST;
+        }
+        if (winningNumberCount >= Rank.SECOND.getWinningCount()) {
+            return Rank.SECOND;
         }
         if (winningNumberCount >= Rank.THIRD.getWinningCount()) {
             return Rank.THIRD;
