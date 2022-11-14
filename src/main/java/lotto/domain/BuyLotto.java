@@ -28,7 +28,7 @@ public class BuyLotto {
         if (price % LOTTO_PRICE != 0) {
             throw new IllegalArgumentException(PrintMessages.ERROR_MONEY_RANGE.getMessage());
         }
-        if (price < 1000) {
+        if (price < LOTTO_PRICE) {
             throw new IllegalArgumentException(PrintMessages.ERROR_MONEY_MIN.getMessage());
         }
 
@@ -42,6 +42,7 @@ public class BuyLotto {
             lottoList.add(lotto.getNumbers());
         }
     }
+
     public void showLottos() {
         for (List<Integer> list : lottoList) {
             System.out.println(list);

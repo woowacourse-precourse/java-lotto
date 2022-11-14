@@ -6,7 +6,6 @@ import java.util.List;
 public class WonNumber {
     public List<Integer> wonNumber = new ArrayList<>();
 
-//    public static int bonusNumber;
     public InPutSystem inPutSystem = new InPutSystem();
 
     public WonNumber() {
