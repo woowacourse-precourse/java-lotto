@@ -32,7 +32,7 @@ public class InputController extends Controller {
         int quantity = money / Env.LOTTO_PRICE;
         Ticket ticket = Ticket.getInstance();
 
-        for (int count = 0; count > quantity; count++) {
+        for (int count = 0; count < quantity; count++) {
             ticket.insert(Lotto.fromRandomNumbers());
         }
     }
