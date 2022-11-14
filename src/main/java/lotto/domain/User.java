@@ -13,4 +13,8 @@ public class User {
         return Integer.parseInt(amount);
     }
 
+    public void receive(List<Lotto> lottos) {
+        this.lottos = lottos;
+    }
+
 }

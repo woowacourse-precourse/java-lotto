@@ -13,18 +13,29 @@ public class LottoController {
     private LottoMachine lottoMachine = new LottoMachine();
 
     public void init() {
-        Printer.print(LottoMessage.INPUT_AMOUNT.getMessage());
-        sell();
+        playLotto();
     }
 
-    private void sell() {
-        int amount = user.buy();
-        int lottoNum = amount / 1000;
+    private void playLotto() {
+        int lottoNum = sell();
+        Printer.divide();
+        List<Lotto> lottos = issue(lottoNum);
+        user.receive(lottos);
         Printer.divide();
 
+    }
+
+    private int sell() {
+        Printer.print(LottoMessage.INPUT_AMOUNT.getMessage());
+        int amount = user.buy();
+        return amount / 1000;
+    }
+
+    private List<Lotto> issue(int lottoNum) {
         List<Lotto> lottos = lottoMachine.issueLottos(lottoNum);
         Printer.print(lottoNum + LottoMessage.PURCHASE_DONE.getMessage());
         Printer.printLottos(lottos);
+        return lottos;
     }
 
 }
