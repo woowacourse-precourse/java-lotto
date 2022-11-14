@@ -19,8 +19,8 @@
 
 ## 기능 목록
 - [x] 양의 정수를 입력받을 수 있다. - UserInterFace#inputInteger()
-- [ ] 로또 구입 금액을 기억할 수 있다. - Buyer#setMoney()
-- [ ] 로또 구입 금액을 얻을 수 있다. - Buyer#getMoney()
+- [x] 로또 구입 금액을 기억할 수 있다. - Buyer#setMoney()
+- [x] 로또 구입 금액을 얻을 수 있다. - Buyer#getMoney()
 - [ ] 금액에 해당하는 로또 발행수를 알 수 있다. - Judgment#countLottos()
    - [ ] 입력 받은 금액이 양의 정수가 아니면 에러 메시지를 출력 후 종료할 수 있다.
    - [ ] 입력 받은 금액이 1,000원으로 나누어 떨어지지 않으면 에러 메시지를 출력 후 종료할 수 있다.
