@@ -10,8 +10,8 @@ public enum LottoRank {
     SECOND(5, 30000000),
     FIRST(6, 2000000000);
 
-    private int matchCount;
-    private int reward;
+    private final int matchCount;
+    private final int reward;
 
     LottoRank(int matchCount, int reward) {
         this.matchCount = matchCount;
@@ -34,7 +34,7 @@ public enum LottoRank {
             return Stream.of(LottoRank.values())
                     .filter(value -> value.matchCount == count)
                     .findFirst()
-                    .orElseThrow(() -> new IllegalArgumentException("카운트개수가 올바르지 않음"));
+                    .orElseThrow(IllegalArgumentException::new);
         }
         if (isBonus) {
             return SECOND;
