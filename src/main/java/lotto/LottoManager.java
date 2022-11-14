@@ -125,7 +125,7 @@ public class LottoManager {
         System.out.println("---");
         System.out.println("3개 일치 (5,000원) - " + lottoResult.get(5000) + "개");
         System.out.println("4개 일치 (50,000원) - " + lottoResult.get(50000) + "개");
-        System.out.println("5개 일치 (1,500,000) - " + lottoResult.get(1500000) + "개");
+        System.out.println("5개 일치 (1,500,000원) - " + lottoResult.get(1500000) + "개");
         System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - " + lottoResult.get(30000000) + "개");
         System.out.println("6개 일치 (2,000,000,000원) - " + lottoResult.get(2000000000) + "개");
         System.out.printf("총 수익률은 %.1f%%입니다.", revenue * 100);
