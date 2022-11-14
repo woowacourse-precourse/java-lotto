@@ -10,8 +10,9 @@ public class LottoManager {
   private static final int endInclusive = 45;
   private static final int pickCount = 6;
 
-  private final List<Lotto> lottos;
-  private final List<Integer> winningNumbers;
+  private List<Lotto> lottos;
+  private List<Integer> winningNumbers;
+  private int bonnusNumber;
 
   LottoManager(int payment){
     lottos = new ArrayList<>();
@@ -49,16 +50,42 @@ public class LottoManager {
       throw new IllegalArgumentException("[ERROR] 당첨 번호의 개수가 맞지 않습니다.");
     }
     for(String element : winningNumbers){
-      int number;
-      try{
-        number = Integer.parseInt(element);
-      }catch (NumberFormatException e){
-        throw new IllegalArgumentException("[ERROR] 숫자만 입력해주세요.");
-      }
+      int number = isNumber(element);
 
-      if(!((number>=startInclusive) && (number<=endInclusive))){
-        throw new IllegalArgumentException("[ERROR] 입력 숫자의 범위를 지켜주세요.");
-      }
+      checkRange(number);
     }
+  }
+
+  private void checkRange(int number){
+    if(!((number>=startInclusive) && (number<=endInclusive))){
+      throw new IllegalArgumentException("[ERROR] 입력 숫자의 범위를 지켜주세요.");
+    }
+  }
+
+  private int isNumber(String input){
+    int number;
+    try{
+      number = Integer.parseInt(input);
+    }catch (NumberFormatException e){
+      throw new IllegalArgumentException("[ERROR] 숫자만 입력해주세요.");
+    }
+
+    return number;
+  }
+
+  public void setBonnusNumber(String bonnusNumber){
+    correctBonnusNumber(bonnusNumber.split(" "));
+    this.bonnusNumber = Integer.parseInt(bonnusNumber);
+    System.out.println(this.bonnusNumber);
+  }
+
+  private void correctBonnusNumber(String[] bonnusNumbers){
+    if(bonnusNumbers.length != 1){
+      throw new IllegalArgumentException("[ERROR] 보너스 번호의 개수가 맞지 않습니다.");
+    }
+
+    int number = isNumber(bonnusNumbers[0]);
+
+    checkRange(number);
   }
 }

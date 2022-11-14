@@ -12,7 +12,7 @@ public class Application {
         payment = getCountOfLotto(payment);
         LottoManager lottoManager = new LottoManager(payment);
         lottoManager.setWinningNumbers(UserInputUi.ENTERWINNINGNUMBER.getAnswer());
-
+        lottoManager.setBonnusNumber(UserInputUi.ENTERBONNUSNUMBER.getAnswer());
     }
 
     public static int getCountOfLotto(int payment){
