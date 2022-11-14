@@ -21,7 +21,7 @@ public class ResultView {
         System.out.println(lottosOutputFormatter.outputFormat(lottos));
     }
 
-    public void printWinningResult(LottoStatistics lottoStatistics) {
+    public void printStatistics(LottoStatistics lottoStatistics) {
         System.out.print(LINE_BREAK);
         System.out.println(lottoStatisticsFormatter.outputFormat(lottoStatistics));
     }
