@@ -16,9 +16,14 @@ public class Lotto {
 
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR] 당첨 번호가 여섯 자리가 아닙니다.");
         }
-        if(numbers.stream().distinct().count() != 6) throw new IllegalArgumentException("[ERROR]");
+        if(numbers.stream().distinct().count() != 6) throw new IllegalArgumentException("[ERROR] 중복된 숫자가 존재합니다.");
+        for (int number : numbers) {
+            if (number < 1 || number > 45) {
+                throw new IllegalArgumentException("[ERROR] 당첨 번호가 범위 밖의 숫자입니다.");
+            }
+        }
     }
 
     // TODO: 추가 기능 구현
