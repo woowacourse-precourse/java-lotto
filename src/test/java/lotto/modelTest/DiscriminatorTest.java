@@ -85,5 +85,54 @@ public class DiscriminatorTest {
 
         assertThat(matches.size()).isEqualTo(expectedBonusCount);
     }
+    @Test
+    @DisplayName("3개 이상 맞춘 로또들만 결과에 집계된다.")
+    public void countMatchedLotteries(){
+        int expectedMatchCount=5;
+        List<List<Integer>> matches;
 
+        String raffleNumbers="1,45,5,11,23,20";
+        String bonusNumber="15";
+
+        // 순서대로 2개, 3개, 4개, 5개, 5개+보너스, 6개 맞춘 로또들이다.
+        List<Lotto> lotteries=List.of(
+                new Lotto(List.of(1,45,6,7,8,2)), // 2개 맞춘 로또
+                new Lotto(List.of(1,45,6,7,8,20)), // 3개 맞춘 로또
+                new Lotto(List.of(1,45,5,7,8,20)), // 4개 맞춘 로또
+                new Lotto(List.of(1,45,5,11,23,28)), // 5개 맞춘 로또
+                new Lotto(List.of(1,45,5,11,23,15)), // 5개 + 보너스 맞춘 로또
+                new Lotto(List.of(1,45,5,11,23,20))); // 6개 맞춘 로또
+
+        RaffleNumber raffleNumber = new RaffleNumber(raffleNumbers, bonusNumber);
+
+        Discriminator discriminator = new Discriminator(raffleNumber);
+        discriminator.discriminate(lotteries);
+        matches=discriminator.getMatches();
+        assertThat(matches.size()).isEqualTo(expectedMatchCount);
+    }
+    @Test
+    @DisplayName("3개 이상 맞춘 로또들만 결과에 집계된다.")
+    public void checkMatchLotteriesResult(){
+        List<List<Integer>> expectedMatchCountResult=List.of(List.of(3,0), List.of(4,0), List.of(5,0), List.of(5,1), List.of(6,0));
+        List<List<Integer>> matches;
+
+        String raffleNumbers="1,45,5,11,23,20";
+        String bonusNumber="15";
+
+        // 순서대로 2개, 3개, 4개, 5개, 5개+보너스, 6개 맞춘 로또들이다.
+        List<Lotto> lotteries=List.of(
+                new Lotto(List.of(1,45,6,7,8,2)), // 2개 맞춘 로또
+                new Lotto(List.of(1,45,6,7,8,20)), // 3개 맞춘 로또
+                new Lotto(List.of(1,45,5,7,8,20)), // 4개 맞춘 로또
+                new Lotto(List.of(1,45,5,11,23,28)), // 5개 맞춘 로또
+                new Lotto(List.of(1,45,5,11,23,15)), // 5개 + 보너스 맞춘 로또
+                new Lotto(List.of(1,45,5,11,23,20))); // 6개 맞춘 로또
+
+        RaffleNumber raffleNumber = new RaffleNumber(raffleNumbers, bonusNumber);
+
+        Discriminator discriminator = new Discriminator(raffleNumber);
+        discriminator.discriminate(lotteries);
+        matches=discriminator.getMatches();
+        assertThat(matches).containsExactlyElementsOf(expectedMatchCountResult);
+    }
 }
