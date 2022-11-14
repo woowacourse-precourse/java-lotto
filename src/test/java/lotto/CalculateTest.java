@@ -21,4 +21,12 @@ public class CalculateTest {
     void 로또수량_테스트(){
         assertThat(Calculate.calculatePurchaseQuantity(15000)).isEqualTo(15);
     }
+
+    @DisplayName("구입 금액에 따른 수익률을 출력한다.")
+    @Test
+    void 수익률_계산_테스트(){
+        assertThat(Calculate.calculateYield(10000,5000)).isEqualTo("50.0%");
+        assertThat(Calculate.calculateYield(1000,0)).isEqualTo("0.0%");
+        assertThat(Calculate.calculateYield(7000,5000)).isEqualTo("71.4%");
+    }
 }
