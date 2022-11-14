@@ -9,4 +9,9 @@ public class Calculate {
         }
         throw new IllegalArgumentException("[ERROR] 구입금액이 1000원 단위가 아닙니다.");
     }
+
+    public static String calculateYield(int money, int winnings) {
+        double yield = ((double) winnings / money) * 100;
+        return String.format("%.1f", yield).concat("%");
+    }
 }
