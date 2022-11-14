@@ -19,22 +19,26 @@ public class Statistics {
         return statistics;
     }
 
-    private void updateStatistics(List<Integer> totalProfit) {
-        for (Integer profit : totalProfit) {
-            if (statistics.containsKey(profit)) {
-                int winCount = statistics.get(profit);
-                statistics.replace(profit, winCount + 1);
-            }
-        }
-    }
-
     private Map<Integer, Integer> createStatistics() {
-        int winCount = INITIAL_COUNT;
+        int initialWinCount = INITIAL_COUNT;
         final Map<Integer, Integer> initialStatistics = new LinkedHashMap<>();
 
         for (Ranks ranks : Ranks.values()) {
-            initialStatistics.put(ranks.getPrizeMoney(), winCount);
+            initialStatistics.put(ranks.getPrizeMoney(), initialWinCount);
         }
         return initialStatistics;
+    }
+
+    private void updateStatistics(List<Integer> totalProfit) {
+        for (Integer profit : totalProfit) {
+            updateWinCount(profit);
+        }
+    }
+
+    private void updateWinCount(Integer profit) {
+        if (statistics.containsKey(profit)) {
+            int winCount = statistics.get(profit);
+            statistics.replace(profit, winCount + 1);
+        }
     }
 }
