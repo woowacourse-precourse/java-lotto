@@ -34,6 +34,12 @@ public class Exception {
 			throw new IllegalArgumentException(Constants.ERROR_RE_DUPLICATION_LOTTO);
 		}
 	}
+
+	public void checkBonusOnlyNumber(String input) throws IllegalArgumentException {
+		if (!Pattern.matches("^[0-9]*$", input)) {
+			throw new IllegalArgumentException(Constants.ERROR_BONUS_ONLY_NUMBER);
+		}
+	}
 }
 
 
