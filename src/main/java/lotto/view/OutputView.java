@@ -14,7 +14,7 @@ public class OutputView {
     private static final String PURCHASE_COUNT = "개를 구매했습니다.";
     private static final String HISTORY = "\n%d개 일치 (%s원) - %d개";
     private static final String SECOND_HISTORY = "\n%d개 일치, 보너스 볼 일치 (%s원) - %d개";
-    private static final String PROFIT = "총 수익률은 %.2f%%입니다.";
+    private static final String PROFIT = "총 수익률은 %.1f%%입니다.";
 
     public static void printPurchaseLotto(int ticketCnt) {
         System.out.println(ticketCnt + PURCHASE_COUNT);
