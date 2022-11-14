@@ -1,6 +1,7 @@
 package lotto.domain;
 
 import lotto.exception.DuplicateLottoNumberException;
+import lotto.exception.InvalidRangeLottoNumberException;
 import lotto.exception.InvalidSizeLottoNumberException;
 
 import java.util.HashSet;
@@ -10,6 +11,8 @@ import java.util.stream.Collectors;
 
 public class Lotto {
     private static final int LOTTO_SIZE = 6;
+    private static final int MIN_RANGE = 1;
+    private static final int MAX_RANGE = 45;
 
     private final List<Integer> numbers;
 
@@ -21,12 +24,23 @@ public class Lotto {
 
     private void validate(List<Integer> numbers) {
         validateSize(numbers);
+        validateRange(numbers);
         validateDuplicate(numbers);
     }
 
     private void validateSize(List<Integer> numbers) {
         if (numbers.size() != LOTTO_SIZE) {
             throw new InvalidSizeLottoNumberException();
+        }
+    }
+
+    private void validateRange(List<Integer> numbers) {
+        numbers.forEach(this::validateRange);
+    }
+
+    private void validateRange(Integer number) {
+        if (!(MIN_RANGE <= number && number <= MAX_RANGE)) {
+            throw new InvalidRangeLottoNumberException();
         }
     }
 
