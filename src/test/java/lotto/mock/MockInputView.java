@@ -2,12 +2,18 @@ package lotto.mock;
 
 import lotto.view.InputViewImpl;
 
-public class MockInputView extends InputViewImpl {
+import java.util.Arrays;
+import java.util.Iterator;
 
-	public static final String MOCK_VALUE = "14000";
+public class MockInputView extends InputViewImpl {
+	public final Iterator<String> mockInputs;
+
+	public MockInputView(String... mockInputs) {
+		this.mockInputs = Arrays.stream(mockInputs).iterator();
+	}
 
 	@Override
 	protected String readInput() {
-		return MOCK_VALUE;
+		return mockInputs.next();
 	}
 }
