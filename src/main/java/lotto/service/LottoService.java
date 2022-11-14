@@ -1,5 +1,10 @@
 package lotto.service;
 
+import java.util.List;
+import lotto.domain.Lotto;
+import lotto.domain.WinningLotto;
+import lotto.util.LottoUtils;
+
 public class LottoService {
 
     final static int LOTTO_PAYMENT = 1000;
@@ -26,5 +31,11 @@ public class LottoService {
             throw new IllegalArgumentException();
         }
         return payment/LOTTO_PAYMENT;
+    }
+
+    public void setWinningNumber(String inputWinningNumber) {
+        List<Integer> winningNumber = LottoUtils.parsingNumberBySeparator(inputWinningNumber);
+        Lotto winningLotto = new Lotto(winningNumber);
+        new WinningLotto(winningLotto);
     }
 }
