@@ -6,7 +6,7 @@ import java.util.List;
 public class WonNumber {
     public List<Integer> wonNumber = new ArrayList<>();
 
-    public int bonusNumber;
+//    public static int bonusNumber;
     public InPutSystem inPutSystem = new InPutSystem();
 
     public WonNumber() {
@@ -22,6 +22,7 @@ public class WonNumber {
 
     public void bonusNumber() {
         int bonusNumber = Integer.parseInt(inPutSystem.inputNumber());
+        BonusNumber.BONUS_NUMBER.setNumber(bonusNumber);
     }
 
     public void validate(List<Integer> wonNumber) {
