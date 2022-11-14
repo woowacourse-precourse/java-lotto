@@ -85,7 +85,7 @@ class ValidateTest {
     @Test
     void rangeOfNumber(){
         int number = 46;
-        assertThatThrownBy(() -> test.correctNumberRange(46))
+        assertThatThrownBy(() -> test.correctNumberRange(number))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(ErrorMessage.NOT_NUMBER_RANGE.getErrorMessage());
     }
