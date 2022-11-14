@@ -10,18 +10,10 @@ import static lotto.util.Const.*;
 
 public class LottoMachine {
 
-    private final int count;
-    private final List<Lotto> lottos;
-
-    public LottoMachine(int count) {
-        this.count = count;
-        this.lottos = order(count);
-    }
-
-    private List<Lotto> order(int count) {
+    public static List<Lotto> order(int quantity) {
         List<Lotto> lottos = new ArrayList<>();
 
-        while (lottos.size() != count) {
+        while (lottos.size() != quantity) {
             lottos.add(makeLotto());
         }
 
@@ -37,13 +29,5 @@ public class LottoMachine {
                 .stream()
                 .sorted()
                 .collect(Collectors.toList());
-    }
-
-    public int getCount() {
-        return count;
-    }
-
-    public List<Lotto> getLottos() {
-        return lottos;
     }
 }
