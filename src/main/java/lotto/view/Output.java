@@ -20,18 +20,20 @@ public class Output {
 	private static final String PRINT_FIRST_PRIZE = "6개 일치 (2,000,000,000원) - %d개";
 	private static final String PRINT_RETURN_RATIO = "총 수익률은 %s%%입니다.";
 	public static void printLotteries(List<Lotto> lotteries) {
+		printNewLine();
 		System.out.printf(PRINT_PURCHASE_COUNT + "\n", lotteries.size());
 		for (Lotto lotto : lotteries) {
 			List<Integer> copiedLottoNumbers = new ArrayList<>(lotto.getNumbers());
 			Collections.sort(copiedLottoNumbers);
 			System.out.println(copiedLottoNumbers.toString());
 		}
-		System.out.println();
+		printNewLine();
 	}
 
 	public static void printWinningStatistics(List<Lotto> lotteries, WinningNumbersIncludingBonus winnings) {
 		List<Prize> prizes = WinningCheck.getPrizes(lotteries, winnings);
 
+		printNewLine();
 		System.out.println(PRINT_WINNING_STATISTICS);
 		System.out.println(PRINT_HORIZONTAL_LINE);
 		System.out.printf(PRINT_FIFTH_PRIZE + "\n", Collections.frequency(prizes, Prize.FIFTH));
@@ -40,8 +42,10 @@ public class Output {
 		System.out.printf(PRINT_SECOND_PRIZE + "\n", Collections.frequency(prizes, Prize.SECOND));
 		System.out.printf(PRINT_FIRST_PRIZE + "\n", Collections.frequency(prizes, Prize.FIRST));
 		System.out.printf(PRINT_RETURN_RATIO + "\n", WinningCheck.getReturnRatio(prizes, lotteries.size() * 1_000));
-		System.out.println();
+		printNewLine();
 	}
 
-
+	public static void printNewLine() {
+		System.out.println();
+	}
 }

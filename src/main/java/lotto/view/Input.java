@@ -42,8 +42,6 @@ public class Input {
 		String input = Console.readLine();
 
 		validateIsNumber(input);
-		int bonusNumber = Integer.parseInt(input);
-
-		return bonusNumber;
+		return Integer.parseInt(input);
 	}
 }
