@@ -20,7 +20,7 @@ public class Application {
         List<List> compareResult = compareLotto(purchaseLotto,winnerLotto,bonusNumber);
         List<Integer> winCnt = gameResult(compareResult);
         printResult(winCnt);
-
+        getMoney(winCnt, purchaseAmount);
     }
 
     public static int buyLotto(){
@@ -199,5 +199,16 @@ public class Application {
         System.out.println(THIRD_RESULT+ winLottoCnt.get(2)+UNIT);
         System.out.println(SECOND_RESULT + winLottoCnt.get(1)+UNIT);
         System.out.println(FIRST_RESULT + winLottoCnt.get(0)+UNIT);
+    }
+
+    public static void getMoney(List<Integer> winLottoCnt, int purchaseAmount){
+        int gettingMoney = 0;
+        int buyingMoney = purchaseAmount*1000;
+        gettingMoney+=FIRST_PRIZE*winLottoCnt.get(0);
+        gettingMoney+=SECOND_PRIZE*winLottoCnt.get(1);
+        gettingMoney+=THIRD_PRIZE*winLottoCnt.get(2);
+        gettingMoney+=FOURTH_PRIZE*winLottoCnt.get(3);
+        gettingMoney+=FIFTH_PRIZE*winLottoCnt.get(4);
+        System.out.println(gettingMoney);
     }
 }
