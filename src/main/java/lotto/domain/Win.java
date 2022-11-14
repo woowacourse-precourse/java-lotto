@@ -34,4 +34,11 @@ public class Win {
         }
     }
 
+    public List<Integer> getNumbers() {
+        return numbers;
+    }
+
+    public int getBonus() {
+        return bonus;
+    }
 }

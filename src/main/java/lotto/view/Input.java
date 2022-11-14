@@ -8,6 +8,8 @@ import java.util.stream.Collectors;
 
 public class Input {
 
+    private Input() {}
+
     public static int inputAmount() {
         System.out.println("구입금액을 입력해 주세요.");
         return getInteger(Console.readLine(), "[ERROR] 구입금액은 숫자여야 합니다.");
