@@ -1,6 +1,8 @@
-package lotto;
+package ui;
 
 import camp.nextstep.edu.missionutils.Console;
+import lotto.CheckInputIllegal;
+import message.InputMessage;
 
 public class InputServiceImpl implements InputService{
     CheckInputIllegal checkInputIllegal = new CheckInputIllegal();
@@ -22,7 +24,7 @@ public class InputServiceImpl implements InputService{
     public String getUserNumsMessage() {
         System.out.println(InputMessage.USER_NUMS.getMessage());
         userInput = Console.readLine();
-//        checkInputIllegal.checkUserInputIllegal(userInput);
+        checkInputIllegal.checkUserInputIllegal(userInput);
         return userInput;
     }
 
@@ -30,7 +32,7 @@ public class InputServiceImpl implements InputService{
     public String getUserBonusNumMessage() {
         System.out.println(InputMessage.USER_BONUS_NUM.getMessage());
         userBonus = Console.readLine();
-//        checkInputIllegal.checkUserBonusIllegal(userBonus);
+        checkInputIllegal.checkUserBonusIllegal(userBonus);
         return userBonus;
     }
 }

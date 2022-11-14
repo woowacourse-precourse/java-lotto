@@ -1,4 +1,4 @@
-package lotto;
+package ui;
 
 public interface InputService {
     int getUserPayMessage();

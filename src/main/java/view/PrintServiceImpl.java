@@ -1,4 +1,7 @@
-package lotto;
+package ui;
+
+import domain.Rank;
+import message.PrintMessage;
 
 import java.util.List;
 import java.util.Map;
