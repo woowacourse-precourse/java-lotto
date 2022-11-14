@@ -19,7 +19,7 @@ public class CheckerTest {
     @DisplayName("당첨번호와 일치하는 번호의 개수를 알 수 있다.")
     @Test
     void countSameNumbersTest() {
-        Kiosk.winningNumbers = List.of(1, 2, 3, 7, 8, 9);
+        Checker.winningNumbers = List.of(1, 2, 3, 7, 8, 9);
         Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
         assertThat(Checker.countSameNumbers(lotto)).isEqualTo(3);
     }
@@ -34,22 +34,15 @@ public class CheckerTest {
         );
         Buyer buyer = new Buyer();
         buyer.buy(lottos);
-        Checker.winningNumbers = List.of(1, 2, 3, 7, 8, 9);
-        Checker.bonusNumber = 1;
-        EnumMap<RankNumber, Integer> expected = new EnumMap<RankNumber, Integer>(RankNumber.class);
-        expected.put(RankNumber.FIRST, 1);
-        expected.put(RankNumber.SECOND, 0);
-        expected.put(RankNumber.THIRD, 0);
-        expected.put(RankNumber.FOURTH, 0);
-        expected.put(RankNumber.FIFTH, 2);
-        assertThat(Checker.compareAllLottos(buyer, List.of(1, 2, 3, 7, 8, 9), 4))
-                .isEqualTo(expected);
+        assertThat(Checker.compareAllLottos(buyer, List.of(1, 2, 3, 7, 8, 9), 1))
+                .isEqualTo(
+                        getExpected(1, 0, 0, 0, 2)
+                );
     }
 
     @DisplayName("2등 당첨 확인")
     @Test
     void winSecondPrizeTest() {
-        Kiosk.winningNumbers = List.of(1, 2, 3, 7, 8, 9);
         List<Lotto> lottos = List.of(
                 new Lotto(List.of(1, 2, 3, 4, 5, 6)),
                 new Lotto(List.of(3, 4, 5, 6, 7, 8)),
@@ -58,13 +51,26 @@ public class CheckerTest {
         );
         Buyer buyer = new Buyer();
         buyer.buy(lottos);
-        EnumMap<RankNumber, Integer> expected = new EnumMap<RankNumber, Integer>(RankNumber.class);
-        expected.put(RankNumber.FIRST, 1);
-        expected.put(RankNumber.SECOND, 1);
-        expected.put(RankNumber.THIRD, 0);
-        expected.put(RankNumber.FOURTH, 0);
-        expected.put(RankNumber.FIFTH, 2);
-        assertThat(Checker.compareAllLottos(buyer, List.of(1, 2, 3, 7, 8, 9), 3)).isEqualTo(expected);
+        assertThat(Checker.compareAllLottos(buyer, List.of(1, 2, 3, 7, 8, 9), 3))
+                .isEqualTo(
+                        getExpected(1, 1, 0, 0, 2)
+                );
+    }
+
+    private EnumMap<RankNumber, Integer> getExpected(
+            int first,
+            int second,
+            int third,
+            int fourth,
+            int fifth
+    ) {
+        EnumMap<RankNumber, Integer> expected = new EnumMap<>(RankNumber.class);
+        expected.put(RankNumber.FIRST, first);
+        expected.put(RankNumber.SECOND, second);
+        expected.put(RankNumber.THIRD, third);
+        expected.put(RankNumber.FOURTH, fourth);
+        expected.put(RankNumber.FIFTH, fifth);
+        return expected;
     }
 
 //    @DisplayName("총 당첨 금액 계산")
