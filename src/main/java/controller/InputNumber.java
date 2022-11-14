@@ -12,7 +12,7 @@ public class InputNumber {
         List<String> parsedString = new ArrayList<>(Arrays.asList(userInput.split("\\s*,\\s*")));
         List<Integer> winningNumber = new ArrayList<>();
         for (String parsed : parsedString) {
-            winningNumber.add(Integer.parseInt(parsed.trim()));
+            winningNumber.add(Integer.parseInt(parsed));
         }
         if(isAppropriateLength(winningNumber)){
             return winningNumber;
@@ -22,7 +22,10 @@ public class InputNumber {
 
     public static List<Integer> parseBonusNumber(String userInput) {
         List<Integer> bonusNumber = new ArrayList<>();
-        bonusNumber.add(Integer.parseInt(userInput.trim()));
+        List<String> parsedString = new ArrayList<>(Arrays.asList(userInput.split("\\s*,\\s*")));
+        for(String parsed : parsedString){
+            bonusNumber.add(Integer.parseInt(parsed));
+        }
         if(isAppropriateBonusLength(bonusNumber)){
             return bonusNumber;
         }
