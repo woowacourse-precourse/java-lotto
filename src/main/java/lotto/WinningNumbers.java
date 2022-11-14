@@ -27,8 +27,9 @@ public class WinningNumbers {
         this.winningNumbers = winningNumbers;
 
         printGuideMessage(GuideMessageType.BONUS_NUMBER.message);
-        int bonusNumber = Integer.parseInt(setNumber());
-        this.bonusNumber = bonusNumber;
+        String bonusNumber = setNumber();
+        validateBonusNumber(bonusNumber);
+        this.bonusNumber = Integer.parseInt(bonusNumber);
     }
 
     private String setNumber() {
