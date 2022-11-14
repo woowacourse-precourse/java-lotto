@@ -16,14 +16,23 @@ public class LottoScanner {
 
     public static int readPurchaseAmount() {
         System.out.println(READ_MONEY_PROMPT);
+        int purchaseAmount = readLineAsInteger();
+        validateDividedBy1_000(purchaseAmount);
+        return purchaseAmount;
+    }
+
+    private static void validateDividedBy1_000(int purchaseAmount) {
+        if ((purchaseAmount % 1000) != 0) {
+            throw new IllegalArgumentException(SHOULD_BE_DIVIDED_BY_1000);
+        }
+    }
+
+    private static int readLineAsInteger() {
         int purchaseAmount;
         try {
             purchaseAmount = Integer.parseInt(Console.readLine());
         } catch (Exception e) {
             throw new IllegalArgumentException(REQUIRE_NUMERIC_VALUE);
-        }
-        if ((purchaseAmount % 1000) != 0) {
-            throw new IllegalArgumentException(SHOULD_BE_DIVIDED_BY_1000);
         }
         return purchaseAmount;
     }
