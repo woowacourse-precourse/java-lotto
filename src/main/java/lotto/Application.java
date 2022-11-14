@@ -11,5 +11,8 @@ public class Application {
         LottoShop lottoShop = new LottoShop(purchasePrice);
         List<Lotto> purchaseLottos = lottoShop.publishLotto();
         LottoInterface.purchasedLottosInformation(purchaseLottos);
+
+        Lotto winningLottoNum = new Lotto(LottoInterface.winningLottoNum());
+        int bonus = LottoInterface.getBonusNumber();
     }
 }
