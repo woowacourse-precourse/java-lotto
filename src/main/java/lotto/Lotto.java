@@ -16,5 +16,19 @@ public class Lotto {
         }
     }
 
-    // TODO: 추가 기능 구현
+    public Rank compare(Lotto WinningLotto) {
+        return null;
+    }
+
+    private int countMatchingNumber() {
+        return 0;
+    }
+
+    private boolean matchBonusNumber() {
+        return true;
+    }
+
+    private Rank getRank(int matchingCount, boolean matchBonus) {
+        return null;
+    }
 }
