@@ -34,9 +34,9 @@ public enum LottoRank {
         return winMoney * cnt;
     }
 
-    @Override
+
     public String toString() {
-        return matchCount + "개 일치" + " " + "(" + splitByComma(winMoney) + "원)";
+        return String.format("%d개 일치%s (%s원)", matchCount, isBonus(), splitByComma(winMoney));
     }
 
     private String splitByComma(Integer winMoney) {
@@ -51,6 +51,13 @@ public enum LottoRank {
             cnt += 1;
         }
         return result.toString();
+    }
+
+    private String isBonus() {
+        if (bonus == 1) {
+            return ", 보너스 볼 일치";
+        }
+        return "";
     }
 
     public int matchCount() {
