@@ -83,4 +83,12 @@ public class WinnerNumberDto {
             throw new IllegalArgumentException("[ERROR] 로또 번호에 정수값이 아닌 값이 포함되어 있습니다.");
         }
     }
+
+    public List<Integer> getWinnerNumbers() {
+        return this.winnerNumbers;
+    }
+
+    public int getBonusNumber() {
+        return this.bonusNumber;
+    }
 }
