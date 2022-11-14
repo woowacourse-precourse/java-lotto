@@ -51,7 +51,14 @@ public class User {
     }
 
     public int getBonusInput() {
-        String BonusInput = readLine();
-        return Integer.parseInt(BonusInput);
+        String bonusInput = readLine();
+        validateRange(Integer.parseInt(bonusInput));
+        return Integer.parseInt(bonusInput);
+    }
+
+    private void validateRange(int bonus) {
+        if (bonus > 45 || bonus < 1) {
+            throw new IllegalArgumentException("[ERROR] 1~45 사이 숫자를 입력해주세요.");
+        }
     }
 }

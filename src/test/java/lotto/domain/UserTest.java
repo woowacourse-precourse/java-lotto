@@ -104,4 +104,14 @@ public class UserTest {
 
         assertThat(user.getBonusInput()).isEqualTo(Integer.parseInt(input));
     }
+
+    @DisplayName("유저의 보너스 번호가 1~45 사이가 아니라면 예외가 발생한다.")
+    @Test
+    void createBonusByWrongRange() {
+        String input = "800";
+        setUp(input);
+
+        Throwable exception = assertThrows(IllegalArgumentException.class, user::getBonusInput);
+        assertEquals("[ERROR] 1~45 사이 숫자를 입력해주세요.", exception.getMessage());
+    }
 }
