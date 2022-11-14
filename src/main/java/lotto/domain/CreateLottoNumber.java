@@ -9,6 +9,7 @@ public class CreateLottoNumber {
 
     public static List<Integer> createRandomLotto(){
         return sortLotto(camp.nextstep.edu.missionutils.Randoms.pickUniqueNumbersInRange(1, 45, 6));
+
         /*List<Integer> tempList = new ArrayList<>();
         tempList.add(1);
         tempList.add(2);

@@ -11,7 +11,7 @@ public class LottoNumber {
     private static final int LOTTO_MAX_SIZE = 6;
     private static final int ZERO = 0;
 
-    public static List<Integer> getLottoNumbers(){
+    public static List<Integer> getLottoNumbers() {
         return makeInputToNumber(printInputLottoNumber());
     }
 
@@ -19,7 +19,7 @@ public class LottoNumber {
         return sortListUpper(lottoStringToInt(cutInput(removeWhiteSpace(lineNumber))));
     }
 
-    private static String removeWhiteSpace(String existWhiteSpace){
+    private static String removeWhiteSpace(String existWhiteSpace) {
         return existWhiteSpace.replaceAll("\\s", "");
     }
 
@@ -35,7 +35,7 @@ public class LottoNumber {
         return cutLottoNumber;
     }
 
-    public static int getBonusNumber(){
+    public static int getBonusNumber() {
         return returnBonusToInt(printInputLottoBonusNumber());
     }
 
@@ -43,7 +43,7 @@ public class LottoNumber {
         return Integer.parseInt(bonusInput);
     }
 
-    public static List<Integer> sortListUpper(List<Integer> sortYet){
+    public static List<Integer> sortListUpper(List<Integer> sortYet) {
         List<Integer> sortComplete = new ArrayList<>();
         Collections.sort(sortYet);
         sortComplete = sortYet;
