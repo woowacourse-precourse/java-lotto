@@ -14,6 +14,12 @@ public class ErrorUtil {
         }
     }
 
+    public void errorInputLottoLastWord(String numbers) {
+        if (numbers.charAt(numbers.length() - 1) == ',') {
+            throw new IllegalArgumentException("[ERROR] 올바른 형식이 아닙니다.");
+        }
+    }
+
     public void errorInputLottoNumber(String[] lottoNumbers) {
         for (String lottoNumber : lottoNumbers) {
             if (Integer.parseInt(lottoNumber) < 1 || Integer.parseInt(lottoNumber) > 45) {

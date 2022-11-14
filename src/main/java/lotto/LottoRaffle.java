@@ -54,6 +54,7 @@ public class LottoRaffle {
         List<Integer> numbers = new ArrayList<>();
         ErrorUtil errorUtil = new ErrorUtil();
         DataProcessing dataProcessing = new DataProcessing();
+        errorUtil.errorInputLottoLastWord(lottoNumbers);
         String[] splitNumber = dataProcessing.splitLottoNumber(lottoNumbers);
         for (String s : splitNumber) numbers.add(Integer.parseInt(s));
         errorUtil.errorOverlapLottoNumber(numbers);
