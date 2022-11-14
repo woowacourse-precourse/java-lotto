@@ -19,8 +19,11 @@ public class LottoService {
 	List<Lotto> lottoTicket = LottoNumberGenerator.createManyLotto(paidAmount / LOTTO_PRICE);
 	lottery = new LottoPurchase(lottoTicket);
 
-	LottoTicketDTO lottoTicketDTO = new LottoTicketDTO(lottery.getLottery().stream()
-	    .map(Lotto -> Lotto.getLottoNumbers()).collect(Collectors.toList()));
+	LottoTicketDTO lottoTicketDTO = new LottoTicketDTO(
+	    lottery.getLottery()
+		.stream()
+		.map(Lotto -> Lotto.getLottoNumbers())
+		.collect(Collectors.toList()));
 	return lottoTicketDTO;
     }
 
