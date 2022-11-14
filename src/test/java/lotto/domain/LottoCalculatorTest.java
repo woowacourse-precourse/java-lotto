@@ -16,4 +16,13 @@ class LottoCalculatorTest {
 
         Assertions.assertThat(money).isEqualTo(Money.of(2000005000));
     }
+
+    @DisplayName("수익률을 구한다.")
+    @Test
+    void getRatio() {
+        List<LottoPrize> lottoPrizes = new ArrayList<>(List.of(LottoPrize.FIFTH));
+        double profitRate = LottoCalculator.getProfitRate(new User(8000), lottoPrizes);
+
+        Assertions.assertThat(profitRate).isEqualTo(62.5);
+    }
 }
