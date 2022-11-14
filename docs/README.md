@@ -28,11 +28,12 @@
     - [x]  로또 개수만큼 발행 기능 → issueLotto
 4. InputValidator
     - [x]  로또 구입 금액이 1,000원으로 나누어 떨어지는지 검증 기능 → validatePurchaseAmount
-    - [ ]  당첨 번호를 쉼표 기준으로 입력했는지 검증 기능 → validateWinningNumber_Diveded_Comma
     - [ ]  당첨 번호 6개를 입력했는지 검증 기능 → validateNumberOfWinningNumbers
     - [ ]  각 당첨 번호 및 보너스 번호가 1~45 사이의 숫자로 이루어졌는지 검증 기능 → isBetween1And45
     - [x]  문자열을 숫자로 변환해주는 기능 → convertStringIntoInt
-    - [ ]  문자열을 리스트로 변환해주는 기능 → convertStringIntoList 
+    - [x]  문자열을 리스트로 변환해주는 기능 → convertStringIntoList 
+
+        당첨 번호를 쉼표 기준으로 입력했는지 검증
 
 ### view
 
