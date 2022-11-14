@@ -45,7 +45,7 @@ public class Application {
     }
 
     private static Lotto inputWinningLotto() {
-        Output.println(INPUT_WINNING_NUMBERS_MESSAGE);
+        Output.println("\n" + INPUT_WINNING_NUMBERS_MESSAGE);
         Lotto winningLotto = Input.inputWinningNumbers();
         return winningLotto;
     }
