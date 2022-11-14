@@ -18,12 +18,8 @@ public class Controller {
     }
 
     public void play() {
-        Long purchaserId = -1L;
-        int money = 0;
-
         try {
-            money = inputView.inputMoney();
-            purchaserId = lottoService.generatePurchaser(money);
+            Long purchaserId = lottoService.generatePurchaser(inputView.inputMoney());
             lottoService.buyLotto(purchaserId);
             printLottos(lottoService.findPurchaserLottos(purchaserId));
         } catch (IllegalArgumentException e) {
