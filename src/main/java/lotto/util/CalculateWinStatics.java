@@ -1,7 +1,5 @@
 package lotto.util;
 
-import lotto.util.MatchUtil;
-
 import java.util.List;
 
 import static lotto.model.WinningPrize.*;
