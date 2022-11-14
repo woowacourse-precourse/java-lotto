@@ -51,7 +51,7 @@ public class LottoBuyView {
         char value;
         for (int i = 0; i < input.length(); i++) {
             value = input.charAt(i);
-            if (value < '0' || value > '9') {
+            if (value < '1' || value > '9') {
                 throw new IllegalArgumentException("[ERROR] 구매 금액은 숫자만 입력되어야 합니다.");
             }
         }
