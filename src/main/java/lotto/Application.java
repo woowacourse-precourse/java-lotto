@@ -5,8 +5,8 @@ import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Comparator;
 import java.util.Collections;
+import java.util.stream.Collectors;
 
 public class Application {
 
@@ -21,6 +21,19 @@ public class Application {
         MakeLotto(LottoCount);
 
         System.out.println("당첨 번호를 입력해 주세요");
+        List<Integer> LottoNumbers = WinningNumber();
+        System.out.println("보너스 번호를 입력해 주세요.");
+
+    }
+
+    public static List<Integer> WinningNumber(){
+        String WinningNum = Console.readLine();
+        List<String> SplitNum = List.of(WinningNum.split(","));
+        List<Integer> IntSplitNum = SplitNum.stream()
+                                            .map(s -> Integer.parseInt(s))
+                                            .collect(Collectors.toList());
+        return IntSplitNum;
+
 
     }
 
