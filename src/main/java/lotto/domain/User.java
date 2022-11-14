@@ -6,15 +6,21 @@ import java.util.List;
 
 public class User {
     private int purchaseAmount;
-    private List<Lotto> LotteryNumbers;
+    private List<Lotto> lotteryNumbers;
 
     public void inputPurchaseAmount(String input){
         validate(input);
         this.purchaseAmount = Integer.parseInt(input);
     }
 
+    public int getPurchaseAmount(){
+        return purchaseAmount;
+    }
 
-    
+    public List<Lotto> getLotteryNumbers(){
+        return lotteryNumbers;
+    }
+
     private void validate(String input) throws RuntimeException{
         char c;
 
