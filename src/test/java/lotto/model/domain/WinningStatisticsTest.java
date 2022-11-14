@@ -2,7 +2,7 @@ package lotto.model.domain;
 
 import java.util.List;
 import java.util.Map;
-import lotto.model.dto.WinningNumberDto;
+import lotto.model.dto.WinningLottoDto;
 import lotto.model.dto.WinningStatisticsDto;
 import org.assertj.core.api.Assertions;
 import org.assertj.core.data.Offset;
@@ -24,9 +24,9 @@ class WinningStatisticsTest {
         String validWinningNumber = "1,2,3,4,5,6";
         String validBonusNumber = "7";
         WinningLotto winningNumber = new WinningLotto(validWinningNumber, validBonusNumber);
-        WinningNumberDto winningNumberDto = winningNumber.toDto();
-        Lotto winningLotto = winningNumberDto.getLotto();
-        BonusNumber bonusNumber = winningNumberDto.getBonusNumber();
+        WinningLottoDto winningLottoDto = winningNumber.toDto();
+        Lotto winningLotto = winningLottoDto.getLotto();
+        BonusNumber bonusNumber = winningLottoDto.getBonusNumber();
         WinningStatistics winningStatistics = new WinningStatistics(lottos, winningLotto, bonusNumber);
         WinningStatisticsDto winningStatisticsDto = winningStatistics.toDto();
         Map<Rank, Integer> rankAndRankCount = winningStatisticsDto.getRankAndRankCount();
@@ -60,9 +60,9 @@ class WinningStatisticsTest {
         String validWinningNumber = "1,2,3,4,5,6";
         String validBonusNumber = "7";
         WinningLotto winningNumber = new WinningLotto(validWinningNumber, validBonusNumber);
-        WinningNumberDto winningNumberDto = winningNumber.toDto();
-        Lotto winningLotto = winningNumberDto.getLotto();
-        BonusNumber bonusNumber = winningNumberDto.getBonusNumber();
+        WinningLottoDto winningLottoDto = winningNumber.toDto();
+        Lotto winningLotto = winningLottoDto.getLotto();
+        BonusNumber bonusNumber = winningLottoDto.getBonusNumber();
         WinningStatistics winningStatistics = new WinningStatistics(lottoReward5000, winningLotto, bonusNumber);
         WinningStatisticsDto winningStatisticsDto = winningStatistics.toDto();
 

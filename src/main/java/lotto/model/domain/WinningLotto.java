@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
-import lotto.model.dto.WinningNumberDto;
+import lotto.model.dto.WinningLottoDto;
 import lotto.utils.Utils;
 
 public class WinningLotto {
@@ -38,7 +38,7 @@ public class WinningLotto {
                 .collect(Collectors.toList());
     }
 
-    public WinningNumberDto toDto() {
-        return new WinningNumberDto(lotto, bonusNumber);
+    public WinningLottoDto toDto() {
+        return new WinningLottoDto(lotto, bonusNumber);
     }
 }

@@ -3,12 +3,12 @@ package lotto.model.dto;
 import lotto.model.domain.BonusNumber;
 import lotto.model.domain.Lotto;
 
-public class WinningNumberDto {
+public class WinningLottoDto {
 
     private final Lotto lotto;
     private final BonusNumber bonusNumber;
 
-    public WinningNumberDto(Lotto lotto, BonusNumber bonusNumber) {
+    public WinningLottoDto(Lotto lotto, BonusNumber bonusNumber) {
         this.lotto = lotto;
         this.bonusNumber = bonusNumber;
     }

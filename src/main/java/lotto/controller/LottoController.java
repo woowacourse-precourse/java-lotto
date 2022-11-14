@@ -3,7 +3,7 @@ package lotto.controller;
 import java.util.Map;
 import lotto.model.domain.Rank;
 import lotto.model.dto.LottosDto;
-import lotto.model.dto.WinningNumberDto;
+import lotto.model.dto.WinningLottoDto;
 import lotto.model.dto.WinningStatisticsDto;
 import lotto.model.service.LottoService;
 import lotto.view.InputView;
@@ -19,7 +19,7 @@ public class LottoController {
 
     public void run() {
         LottosDto lottosDto = buyLotto();
-        WinningNumberDto winningLotto = announceWinningLotto();
+        WinningLottoDto winningLotto = announceWinningLotto();
 
         computeWinningStatistics(lottosDto, winningLotto);
     }
@@ -32,15 +32,15 @@ public class LottoController {
         return lottosDto;
     }
 
-    private WinningNumberDto announceWinningLotto() {
+    private WinningLottoDto announceWinningLotto() {
         String winningNumber = InputView.requestWinningNumber();
         String bonusNumber = InputView.requestBonusNumber();
 
         return lottoService.createWinningNumber(winningNumber, bonusNumber);
     }
 
-    private void computeWinningStatistics(LottosDto lottosDto, WinningNumberDto winningNumberDto) {
-        WinningStatisticsDto winningStatisticsDto = lottoService.createWinningStatistics(lottosDto, winningNumberDto);
+    private void computeWinningStatistics(LottosDto lottosDto, WinningLottoDto winningLottoDto) {
+        WinningStatisticsDto winningStatisticsDto = lottoService.createWinningStatistics(lottosDto, winningLottoDto);
         Map<Rank, Integer> rankAndRankCount = winningStatisticsDto.getRankAndRankCount();
         double totalYield = winningStatisticsDto.getTotalYield();
 
