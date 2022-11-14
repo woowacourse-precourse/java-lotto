@@ -44,6 +44,12 @@ public class Lotto {
         }
     }
 
+    public int countSameNumber(WinningLotto winningLotto) {
+        return (int) numbers.stream()
+                .filter(winningLotto::isContain)
+                .count();
+    }
+
     public boolean isContain(int number) {
         return this.numbers.contains(number);
     }

@@ -51,4 +51,8 @@ public class WinningLotto {
             throw new IllegalArgumentException(INVALID_NUMBER_RANGE);
         }
     }
+
+    public boolean isContain(int number) {
+        return this.winningLotto.isContain(number);
+    }
 }
