@@ -46,4 +46,21 @@ public class Lotto {
     public List<Integer> getNumbers() {
         return numbers;
     }
+
+    public Result generateResult(Lotto winningLotto, Bonus bonus) {
+        List<Integer> winningNumbers = winningLotto.getNumbers();
+
+        Result result = new Result();
+
+        for (int i = 0; i < winningNumbers.size(); i++) {
+            if (numbers.contains(winningNumbers.get(i))) {
+                result.increaseMatchCount();
+            }
+
+            if (result.isFiveHit() && numbers.contains(bonus.getNumber())) {
+                result.matchBonus();
+            }
+        }
+        return result;
+    }
 }
