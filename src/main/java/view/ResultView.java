@@ -8,7 +8,15 @@ import java.text.DecimalFormat;
 import java.util.List;
 import java.util.Map;
 
-import static util.Constant.*;
+import static util.Constant.LINE_SEPARATOR;
+import static util.Constant.SAMES_FORMAT;
+import static util.Constant.SAME_BONUS_BALL;
+import static util.Constant.OPEN_BRACKET;
+import static util.Constant.KOREA_MONEY_UNIT;
+import static util.Constant.CLOSE_BRACKET;
+import static util.Constant.HYPHEN_WITH_SPACE;
+import static util.Constant.DEFAULT_ZERO;
+import static util.Constant.KOREA_BASICS_UNIT;
 import static util.LottoMessage.PROFIT_INFO;
 import static util.LottoMessage.PERCENTAGE;
 import static util.LottoMessage.SUFFIX;
