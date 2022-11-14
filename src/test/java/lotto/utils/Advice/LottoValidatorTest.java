@@ -64,7 +64,7 @@ class LottoValidatorTest {
         String firstPlace = "1,2,3,4,5,6,,,";
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
                 () -> new Lotto(firstPlace));
-        assertThat(exception.getMessage()).isEqualTo("[ERROR] \",\" 를 사용하여 로또번호를 구매해 주세요");
+        assertThat(exception.getMessage()).isEqualTo("[ERROR] \",\" 를 사용하여 올바른 입력을 해 주세요");
     }
 
     @DisplayName("쉼표로 숫자를 구분하지 않으면 예외가 발생한다. : 쉼표랑 다른 구분자 있을 때")
@@ -73,7 +73,7 @@ class LottoValidatorTest {
         String firstPlace = "1,2,3,4/5/6";
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
                 () -> new Lotto(firstPlace));
-        assertThat(exception.getMessage()).isEqualTo("[ERROR] \",\" 를 사용하여 로또번호를 구매해 주세요");
+        assertThat(exception.getMessage()).isEqualTo("[ERROR] \",\" 를 사용하여 올바른 입력을 해 주세요");
     }
 
     @DisplayName("쉼표로 숫자를 구분하지 않으면 예외가 발생한다. : 쉼표가 없을 때")
@@ -82,7 +82,7 @@ class LottoValidatorTest {
         String firstPlace = "1/2/3/4/5/6";
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
                 () -> new Lotto(firstPlace));
-        assertThat(exception.getMessage()).isEqualTo("[ERROR] \",\" 를 사용하여 로또번호를 구매해 주세요");
+        assertThat(exception.getMessage()).isEqualTo("[ERROR] \",\" 를 사용하여 올바른 입력을 해 주세요");
     }
 
     @DisplayName("쉼표로 숫자를 구분하지 않으면 예외가 발생한다. : 공백이 있을 때")
@@ -91,6 +91,6 @@ class LottoValidatorTest {
         String firstPlace = "1, 2, 3, 4, 5, 6";
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
                 () -> new Lotto(firstPlace));
-        assertThat(exception.getMessage()).isEqualTo("[ERROR] \",\" 를 사용하여 로또번호를 구매해 주세요");
+        assertThat(exception.getMessage()).isEqualTo("[ERROR] \",\" 를 사용하여 올바른 입력을 해 주세요");
     }
 }
