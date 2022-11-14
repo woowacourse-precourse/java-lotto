@@ -14,14 +14,25 @@ public class Winning extends Valid {
 
     public void pickNum() throws IllegalArgumentException {
         String[] input = Console.readLine().split(",");
-        this.numbers = saveNumbers(input);
-        validate(this.numbers);
+        List<Integer> saveNumbers = saveNumbers(input);
+        validate(saveNumbers);
+        this.numbers = saveNumbers;
+    }
+
+    public void pickBonus() throws IllegalArgumentException {
+        String input = Console.readLine();
+        validate(input);
+        this.bonus = Integer.parseInt(input);
     }
 
     private void validate(List<Integer> numbers) throws IllegalArgumentException {
         isCorrectSize(numbers);
         isCorrectRange(numbers);
         isNoDuplicate(numbers);
+    }
+
+    private void validate(String bonus) throws IllegalArgumentException {
+        isCorrectRange(List.of(Integer.parseInt(bonus)));
     }
 
     private List<Integer> saveNumbers(String[] numbers) {
