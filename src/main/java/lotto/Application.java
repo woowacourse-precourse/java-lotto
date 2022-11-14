@@ -138,4 +138,21 @@ public class Application {
         Collections.sort(LottoTicket);
         return LottoTicket;
     }
+
+    static int checkWinningLottoTicket(List<Integer> lottoTicket, List<Integer> lottoNumbers) {
+        int winningNumberCount = 0;
+        for (int eachNumber : lottoTicket) {
+            if (lottoNumbers.contains(eachNumber))
+                winningNumberCount++;
+        }
+        return winningNumberCount;
+    }
+
+    static boolean checkBonusNumber(List<Integer> lottoTicket, int bonusNumber) {
+        for (int eachNumber : lottoTicket) {
+            if (eachNumber == bonusNumber
+                return true;
+        }
+        return false;
+    }
 }
