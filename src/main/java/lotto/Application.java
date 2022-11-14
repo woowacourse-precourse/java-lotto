@@ -14,5 +14,9 @@ public class Application {
 
         Lotto winningLottoNum = new Lotto(LottoInterface.winningLottoNum());
         int bonus = LottoInterface.getBonusNumber();
+        System.out.println("bonus : " + bonus);
+
+        // statistics
+        LottoInterface.winningStatistics(purchaseLottos, winningLottoNum, bonus);
     }
 }

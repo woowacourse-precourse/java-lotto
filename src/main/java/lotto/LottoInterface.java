@@ -40,10 +40,16 @@ public class LottoInterface {
         System.out.println("보너스 번호를 입력해 주세요.");
         String inputBonus = Console.readLine();
 
-        if (ErrorCheck.isValidNumber(Console.readLine())) {
+        if (ErrorCheck.isValidNumber(inputBonus)) {
             bonus = Integer.parseInt(inputBonus);
         }
 
         return bonus;
+    }
+
+    public static void winningStatistics(List<Lotto> purchaseLottos, Lotto winningLottoNum, int bonus){
+        System.out.println("당첨 통계" );
+        System.out.println("---");
+        LottoShop.confirmRank(purchaseLottos, winningLottoNum, bonus);
     }
 }

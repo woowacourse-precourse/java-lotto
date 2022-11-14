@@ -35,4 +35,29 @@ public class LottoShop {
 
         return newLottos;
     }
+
+    public static void confirmRank(List<Lotto> purchaseLottos, Lotto winningLottoNum, int bonus){
+        for(Lotto lotto : purchaseLottos){
+            int rightNumCnt = howManyRightWinningNum(winningLottoNum, lotto);
+            boolean isContainBonus = checkContainBonus(winningLottoNum, bonus);
+        }
+    }
+
+    public static boolean checkContainBonus(Lotto winningLottoNum, int bonus){
+        List<Integer> winningLottoNums = winningLottoNum.getNumber();
+        if(winningLottoNums.contains(bonus)) return true;
+
+        return false;
+    }
+
+    public static int howManyRightWinningNum(Lotto winningLottoNum, Lotto lotto){
+        List<Integer> winningLottoNums = winningLottoNum.getNumber();
+        List<Integer> lottoNums = lotto.getNumber();
+
+        lottoNums.retainAll(winningLottoNums);
+        int rightNumCnt = lottoNums.size();
+        System.out.println("몇개나 맞았나? : " + rightNumCnt);
+
+        return rightNumCnt;
+    }
 }
