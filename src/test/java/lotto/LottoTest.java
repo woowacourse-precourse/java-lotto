@@ -3,8 +3,10 @@ package lotto;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
 import java.util.List;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class LottoTest {
@@ -24,4 +26,19 @@ class LottoTest {
     }
 
     // 아래에 추가 테스트 작성 가능
+    @DisplayName("로또 번호가 1 ~ 45가 아니면 예외가 발생한다.")
+    @Test
+    void createLottoByaRangeOfNumbers() {
+        assertThatThrownBy(() -> new Lotto(List.of(1, 2, 3, 4, 5, 47)))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void 보너스_일치_출력() {
+        Compare compare = new Compare();
+        int sameNumber = compare.compareNumbers(Arrays.asList(1, 2, 3, 4, 5, 9, 35), Arrays.asList(1, 3, 5, 2, 9, 35));
+
+        assertThat(sameNumber).isEqualTo(-1);
+    }
+
 }
