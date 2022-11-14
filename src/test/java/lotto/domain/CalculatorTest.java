@@ -3,11 +3,18 @@ package lotto.domain;
 import static lotto.domain.Calculator.hasNotBonus;
 import static org.assertj.core.api.Assertions.assertThat;
 
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.mockito.InjectMocks;
 
 class CalculatorTest {
+
+    @InjectMocks
+    private Calculator target;
+
     Lotto sampleLotto1 = new Lotto(List.of(1, 2, 3, 4, 5, 6));
     Lotto sampleLotto2 = new Lotto(List.of(45, 44, 43, 42, 41, 40));
     Lotto sampleLotto3 = new Lotto(List.of(5, 6, 7, 8, 9, 10));
@@ -44,6 +51,15 @@ class CalculatorTest {
         assertThat(getRankCount1.calculateRank(sampleWinningNubmers3, sampleLotto1)).isEqualTo(Rank.FIRST);
         assertThat(getRankCount1.calculateRank(sampleWinningNumbers1, sampleLotto1)).isEqualTo(Rank.NOTHING);
         assertThat(getRankCount1.calculateRank(sampleWinningNubmers2, sampleLotto3)).isEqualTo(Rank.FIFTH);
+    }
+
+    @DisplayName("로또번호 중 당첨번호의 개수를 옳게 계산하는지 확인한다")
+    @Test
+    void checkWinningNumberMatcingCount() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException  {
+        Method method = Calculator.class.getDeclaredMethod("getWinningNumberMatch", WinningNumbers.class, Lotto.class);
+        method.setAccessible(true);
+        int result = (int)method.invoke( target, sampleWinningNumbers1, sampleLotto1);
+        assertThat(result).isEqualTo(0);
     }
 
 }
