@@ -1,11 +1,10 @@
 package lotto.Controller;
 
-import camp.nextstep.edu.missionutils.Randoms;
-import java.util.ArrayList;
 import java.util.EnumMap;
 import java.util.List;
 import java.util.Map;
 import lotto.Domain.Lotto;
+import lotto.Domain.LottoMachine;
 import lotto.Domain.Reward;
 import lotto.View.InputView;
 import lotto.View.OutputView;
@@ -27,7 +26,7 @@ public class LottoGame {
         int amount = InputView.getAmount();
         OutputView.printAmount(amount);
 
-        userLotto = publishLotto(amount);
+        userLotto = LottoMachine.publishLotto(amount);
         OutputView.printUserLotto(userLotto);
 
         winningNumber = InputView.getWinningNumber();
@@ -37,15 +36,6 @@ public class LottoGame {
         calculateResult(userLotto, winningNumber, bonusNumber);
 
         OutputView.printStatistics(amount, result);
-    }
-
-    public List<Lotto> publishLotto(int count) {
-        List<Lotto> lotto = new ArrayList<>();
-
-        for (int i = 0; i < count; i++) {
-            lotto.add(new Lotto(Randoms.pickUniqueNumbersInRange(1, 45, 6)));
-        }
-        return lotto;
     }
 
     public void calculateResult(List<Lotto> userLotto, Lotto winningNumber, int bonusNumber) {
@@ -63,6 +53,5 @@ public class LottoGame {
                 result.put((Reward.getRanKing(bingo, bonus)), result.get(Reward.getRanKing(bingo, bonus)) + 1);
             }
         }
-
     }
 }
