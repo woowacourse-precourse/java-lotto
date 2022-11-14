@@ -19,5 +19,6 @@ public class Game {
         int lottoAmount = service.getLottoAmount(balance);
 
         List<Lotto> lottos = service.generateLottos(lottoAmount);
+        ui.printLottos(lottos);
     }
 }

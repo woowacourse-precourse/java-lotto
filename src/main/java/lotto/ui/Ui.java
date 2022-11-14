@@ -1,6 +1,8 @@
 package lotto.ui;
 
 import camp.nextstep.edu.missionutils.Console;
+import java.util.List;
+import lotto.domain.Lotto;
 
 public class Ui {
     public String inputBalance() {
@@ -8,5 +10,12 @@ public class Ui {
         String in = Console.readLine();
 
         return in;
+    }
+
+    public void printLottos(List<Lotto> lottos) {
+        System.out.printf("%d개를 구매했습니다.\n", lottos.size());
+        for (Lotto lotto : lottos) {
+            System.out.println(lotto.getNumbers().toString());
+        }
     }
 }
