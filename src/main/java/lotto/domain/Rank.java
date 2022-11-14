@@ -13,28 +13,37 @@ public enum Rank {
     private final int value;
     private final int count;
 
-    Rank(int rank,int value,int count){
-        this.rank=rank;
-        this.value=value;
-        this.count=count;
+    Rank(int rank, int value, int count) {
+
+        this.rank = rank;
+        this.value = value;
+        this.count = count;
     }
-    public int getRank(){
+
+    public int getRank() {
+
         return rank;
     }
-    public int getValue(){
+
+    public int getValue() {
+
         return value;
     }
-    public int getCount(){
+
+    public int getCount() {
+
         return count;
     }
-    public static Rank getRank(int count,boolean containsBonus){
-        if(count== SECOND.getCount()&&containsBonus){
+
+    public static Rank findRank(int count, boolean containsBonus) {
+
+        if (count == SECOND.getCount() && containsBonus) {
             return SECOND;
         }
-        for(Rank rank:Rank.values()){
-                if(count==rank.getCount()){
-                    return rank;
-                }
+        for (Rank rank : Rank.values()) {
+            if (count == rank.getCount()) {
+                return rank;
+            }
         }
         return LOST;
     }

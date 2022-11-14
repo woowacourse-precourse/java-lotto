@@ -8,14 +8,17 @@ public class Judgement {
     private int[] result;
 
     public Judgement() {
+
         this.result = new int[6];
     }
 
     public int[] getResult() {
+
         return this.result;
     }
 
     public void checkWin(Set<Integer> winner, allLotto alllotto, String bonusNumber, Money money) {
+
         for (int i = 0; i < alllotto.sizeLotto(); i++) {
             Set<Integer> tempWinner = new HashSet<>();
             tempWinner.addAll(winner);
@@ -27,21 +30,25 @@ public class Judgement {
     }
 
     public int checkPlaceWin(Set<Integer> tempwinner, Set<Integer> transformLotto, String bonusNumber, Money money) {
+
         tempwinner.retainAll(transformLotto);
-        Rank rank = Rank.getRank(tempwinner.size(), isContainsBonus(tempwinner, bonusNumber));
+        Rank rank = Rank.findRank(tempwinner.size(), isContainsBonus(tempwinner, bonusNumber));
         money.sumWinningMoney(rank);
         return rank.getRank();
     }
 
     public boolean isContainsBonus(Set<Integer> tempwinner, String bonusNumber) {
+
         return tempwinner.contains(Integer.parseInt(bonusNumber));
     }
 
     public void resultUpdate(int[] result, int place) {
+
         result[place]++;
     }
 
     public void printResult(int[] result) {
+
         System.out.println();
         System.out.println("당첨 통계");
         System.out.println("---");
