@@ -1,6 +1,5 @@
 package lotto;
 
-import java.util.Collections;
 import java.util.List;
 
 public class Lotto {
@@ -17,8 +16,8 @@ public class Lotto {
         }
         // checking unique
         boolean[] isUsed = new boolean[45 + 1];
-        for(int w : numbers){
-            if(isUsed[w]) throw new IllegalArgumentException("[ERROR] 중복된 숫자가 존재해서는 안됩니다.");
+        for (int w : numbers) {
+            if (isUsed[w]) throw new IllegalArgumentException("[ERROR] 중복된 숫자가 존재해서는 안됩니다.");
             isUsed[w] = true;
         }
     }

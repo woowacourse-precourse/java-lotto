@@ -15,9 +15,9 @@ public class Application {
         // TODO: 프로그램 구현
         try {
             init();
-        }catch(IllegalArgumentException e){
+        } catch (IllegalArgumentException e) {
             System.out.println("[ERROR] 잘못된 입력입니다.");
-            return ;
+            return;
         }
         checkingLotto();
         getLottoNumbers();
@@ -36,7 +36,7 @@ public class Application {
         for (LottoPrice lp : LottoPrice.values()) {
             sum += Long.parseLong(lp.getPrice().replace(",", "")) * result[lp.getNum()];
         }
-        System.out.println(String.format("총 수익률은 %.1f%%입니다.", (double) sum * 100 / amount));
+        System.out.printf("총 수익률은 %.1f%%입니다.%n", (double) sum * 100 / amount);
     }
 
     private static void calc() {
@@ -68,7 +68,8 @@ public class Application {
     }
 
     private static void validateTokens(StringTokenizer st) {
-        if (st.countTokens() != 6) throw new IllegalArgumentException(String.format("%s : %s\n", Exceptions.ERROR_MESSAGE.msg, Exceptions.NOT_6_ELEMENT.msg));
+        if (st.countTokens() != 6)
+            throw new IllegalArgumentException(String.format("%s : %s\n", Exceptions.ERROR_MESSAGE.msg, Exceptions.NOT_6_ELEMENT.msg));
     }
 
     private static void validateNumbers(int num) {
@@ -90,7 +91,7 @@ public class Application {
         String input = Console.readLine();
         try {
             checkingAmount(input);
-        }catch (IllegalArgumentException e){
+        } catch (IllegalArgumentException e) {
             throw e;
         }
         amount = Integer.parseInt(input);
@@ -100,7 +101,7 @@ public class Application {
         result = new int[7];
         Arrays.fill(result, 0);
         // making lottos
-        System.out.println(String.format("%d개를 구매했습니다.", amount / 1000));
+        System.out.printf("%d개를 구매했습니다.%n", amount / 1000);
         for (int i = 0; i < amount / 1000; i++) {
             lottos.add(new Lotto(Randoms.pickUniqueNumbersInRange(LottoSystemInfo.START.num, LottoSystemInfo.LAST.num, LottoSystemInfo.COUNT.num)));
         }
@@ -117,9 +118,11 @@ public class Application {
 
 
         // amount가 1000으로 나눠떨이지지 않는 경우
-        if (amount % 1000 != 0) throw new IllegalArgumentException(String.format("%s : %s\n", Exceptions.ERROR_MESSAGE.msg, Exceptions.NOT_DIVIDED.msg));
+        if (amount % 1000 != 0)
+            throw new IllegalArgumentException(String.format("%s : %s\n", Exceptions.ERROR_MESSAGE.msg, Exceptions.NOT_DIVIDED.msg));
 
         // amount가 음수 일 경우
-        if (amount < 0) throw new IllegalArgumentException(String.format("%s : %s\n", Exceptions.ERROR_MESSAGE.msg, Exceptions.NEGATIVE_AMOUNT.msg));
+        if (amount < 0)
+            throw new IllegalArgumentException(String.format("%s : %s\n", Exceptions.ERROR_MESSAGE.msg, Exceptions.NEGATIVE_AMOUNT.msg));
     }
 }
