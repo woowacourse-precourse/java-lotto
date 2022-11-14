@@ -48,7 +48,6 @@ class ValidateTest {
     void validUserWinningNumber() {
         List<Integer> testcase1 = new ArrayList<>(List.of(1, 2, 3, 4, 5, 48));
         List<Integer> testcase2 = new ArrayList<>(List.of(1, 2, 3, 5, 5, 6));
-        List<Integer> testcase3 = new ArrayList<>(List.of(1, 2, 3, 5, 7, 5));
         assertThatThrownBy(() -> test.validUserWinningNumber(testcase1))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(ErrorMessage.NOT_NUMBER_RANGE.getErrorMessage());
