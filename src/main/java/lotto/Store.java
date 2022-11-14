@@ -7,7 +7,10 @@ public class Store {
     public void sellLotto() {
     }
 
-    private void validateInputMoney() {
+    private void validateInputMoney(int money) {
+        if (money % 1000 != 0) {
+            throw new IllegalArgumentException();
+        }
     }
 
     // 로또를 발행한다.

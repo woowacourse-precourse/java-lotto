@@ -29,7 +29,7 @@
   - 수익률 출력하기.. format: 총 수익률은 n%입니다. - printRate
 ### 로또 가게 - Store
 - [ ] 로또 구입 금액을 입력하면 구입 금액에 해당하는 만큼 로또를 발행해야 한다. - sellLotto
-  - [ ] 로또 1장의 가격은 1,000원이다. - valid1000Unit
+  - [x] 로또 1장의 가격은 1,000원이다. - validateInputMoney
   - [x] 로또를 발행한다. - issueLotto
   - [ ] 로또 번호는 오름차순으로 정렬하여 보여준다. - sortLotto
   - [ ] 발행한 로또 수량 및 번호를 출력한다. - printLottoInform
