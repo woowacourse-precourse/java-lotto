@@ -30,7 +30,7 @@ public class LottoServiceView {
 
         for (int i = 0; i < 3; i++) {
             if (!(input.charAt(i) == '0')) {
-                throw new IllegalArgumentException("[ERROR] 구매 금액의 최소 단위는 1,000 입니다. 1,000 단위로 다시 입력해주세요");
+                throw new IllegalArgumentException("[ERROR] 구매 금액의 최소 단위는 1,000 입니다. 1,000 단위로 다시 입력해주세요.");
             }
         }
     }
@@ -48,7 +48,7 @@ public class LottoServiceView {
         for (int i = 0; i < input.length(); i++) {
             value = input.charAt(i);
             if (value < '0' || value > '9') {
-                throw new IllegalArgumentException("[ERROR] 구매 금액은 숫자만 입력되어야 합니다");
+                throw new IllegalArgumentException("[ERROR] 구매 금액은 숫자만 입력되어야 합니다.");
             }
         }
     }
