@@ -14,7 +14,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @DisplayName("LottoService 테스트")
 class LottoServiceTest {
-	private final LottoService lottoService = new LottoService();
+	private final LottoService lottoService = new LottoServiceImpl();
 
 	@Nested
 	@DisplayName("createLottos 테스트")

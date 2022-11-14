@@ -2,6 +2,7 @@ package lotto.system;
 
 import lotto.controller.LottoController;
 import lotto.service.LottoService;
+import lotto.service.LottoServiceImpl;
 import lotto.view.InputView;
 import lotto.view.InputViewImpl;
 import lotto.view.OutputView;
@@ -25,7 +26,7 @@ public class LottoApplication {
 	private void doSetting() {
 		inputView = new InputViewImpl();
 		outputView = new OutputViewImpl();
-		lottoService = new LottoService();
+		lottoService = new LottoServiceImpl();
 		lottoController = new LottoController(inputView, outputView, lottoService);
 	}
 }
