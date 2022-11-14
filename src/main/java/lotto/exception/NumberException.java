@@ -15,10 +15,11 @@ public class NumberException {
         isMultipleOfThousand(userInput);
     }
 
-    public static void checkUserInputNumber(String userInput){
+    public static void checkUserInputNumber(String userInput) {
         isNumberInLotto(userInput);
         isValidSeparator(userInput);
         isNotDuplicate(userInput);
+        isValidSize(userInput);
         isValidRange(userInput);
     }
 
@@ -76,6 +77,13 @@ public class NumberException {
             if (userInput.charAt(userInputIndex) != SEPARATOR) {
                 throw new IllegalArgumentException("[ERROR] 로또 번호의 구분자는 쉼표(,)여야 합니다.");
             }
+        }
+    }
+
+    public static void isValidSize(String userInput) {
+        List<String> splitUserInput = Arrays.asList(userInput.split(","));
+        if (splitUserInput.size() != 6) {
+            throw new IllegalArgumentException("[ERROR] 로또 번호의 개수는 6개여야 합니다.");
         }
     }
 }
