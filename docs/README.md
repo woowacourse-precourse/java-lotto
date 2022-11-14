@@ -9,14 +9,13 @@
 - [X] 보너스 번호 입력 받기 - NumberScanner#inputBonusNumber()
   - [X] 정수로 변환할 수 없는 경우 예외처리 - NumberScanner#validateParseInt(String input, ErrorType errorType)
 
-- [ ] 구입금액 입력 안내 메시지 출력
-- [ ] 구매한 로또 수 출력
-- [ ] 구매한 로또 리스트 출력
-- [ ] 당첨 번호 입력 안내 메시지 출력
-- [ ] 보너스 번호 입력 안내 메시지 출력
-- [ ] 당첨 통계 출력
-    -[ ] 당첨 내역 (구매한 로또 리스트가 로또 등수 별로 몇 개씩 당첨 됐는지)
-    -[ ] 총 수익률
+- [X] 구입금액 입력 안내 메시지 출력 - MessagePrinter#printStaticPaymentNotification()
+- [ ] 구매한 로또 수 출력 - MessagePrinter#printDynamicLottoAmount(Buyer buyer)
+- [ ] 구매한 로또 리스트 출력 - MessagePrinter#printDynamicBoughtLottos(Buyer buyer)
+- [ ] 당첨 번호 입력 안내 메시지 출력 - MessagePrinter#printStaticWinningLottoNumbersNotification()
+- [ ] 보너스 번호 입력 안내 메시지 출력 - MessagePrinter#printStaticBonusNumberNotification()
+- [ ] 당첨 내역 출력(구매한 로또 리스트가 로또 등수 별로 몇 개씩 당첨 됐는지) - MessagePrinter#printWinningRecord()
+- [ ] 총 수익률 출력 - MessagePrinter#printEarningsRate()
 ---
 
 
