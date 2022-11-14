@@ -8,12 +8,12 @@ public class GameController {
         User user = new User(input.amount());
         LottoSeller lottoSeller = new LottoSeller();
         user.buyLotto(lottoSeller);
-        print.Lotto(user);
+        print.lotto(user);
 
         WinningNumber winningNumber = input.winningNumAndBonusNum();
 
         Calculator calc = new Calculator(winningNumber.getWinningNum(), winningNumber.getBonusNum(), user.getLotto());
-        print.WinningStat(calc);
-        print.Yield(calc);
+        print.winningStat(calc);
+        print.yield(calc);
     }
 }

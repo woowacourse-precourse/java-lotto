@@ -20,30 +20,6 @@ public class Calculator {
         calcYield();
     }
 
-    private enum Prize {
-        FIRST_PLACE(1, 2000000000),
-        SECOND_PLACE(2, 30000000),
-        THIRD_PLACE(3, 1500000),
-        FOURTH_PLACE(4, 50000),
-        FIFTH_PLACE(5, 5000);
-
-        private final int place;
-        private final int prize;
-
-        private Prize(int place, int prize) {
-            this.place = place;
-            this.prize = prize;
-        }
-
-        public int getPrize() {
-            return prize;
-        }
-
-        public int getPlace() {
-            return place;
-        }
-    }
-
     private int matchCount(List<Integer> lottoNum) {
         int count = 0;
         for (int num : lottoNum) {
@@ -98,9 +74,9 @@ public class Calculator {
 
     private void calcYield() {
         double profit = 0;
-        for(Prize prize: Prize.values()) {
-            if (rankCount.containsKey(prize.place)) {
-                profit += rankCount.get(prize.place) * prize.prize;
+        for(Rank rank: Rank.values()) {
+            if (rankCount.containsKey(rank.getPlace())) {
+                profit += rankCount.get(rank.getPlace()) * rank.getPrize();
             }
         }
         yield = (profit/(1000*lotto.size()))*100;
