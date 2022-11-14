@@ -2,34 +2,30 @@ package lotto.domain;
 
 import lotto.LottoRank;
 
-import java.util.HashMap;
 import java.util.List;
 
 public class LottoEstimator {
     private final static int MIN_MATCH_NUMBERS = 3;
-    private final static int PURCHASE_PRICE_UNIT = 1000;
+    private final static int LOTTO_PRICE_UNIT = 1000;
 
     private final WinningLotto winningLotto;
-    private final List<Lotto> purchasedLotteries;
-    private final HashMap<LottoRank, Integer> rankStatics = new HashMap<>();
+    private LottoStatics lottoStatics;
 
-    public LottoEstimator(List<Lotto> purchasedLotteries, Lotto winningLotto, int bonusNumber) {
-        this.purchasedLotteries = purchasedLotteries;
-        this.winningLotto = new WinningLotto(winningLotto, bonusNumber);
-
-        for (LottoRank lottoRank : LottoRank.values()) {
-            rankStatics.put(lottoRank, 0);
-        }
+    public LottoEstimator(WinningLotto winningLotto) {
+        this.winningLotto = winningLotto;
     }
 
-    public HashMap<LottoRank, Integer> estimate() {
-        purchasedLotteries.forEach(this::rankLotto);
-        return rankStatics;
+    public void estimate(List<Lotto> lotteries) {
+        lottoStatics = new LottoStatics();
+        lotteries.forEach(this::rankLotto);
+        lottoStatics.calculateProfitRate(lotteries.size() * LOTTO_PRICE_UNIT);
+
+        lottoStatics.print();
     }
 
-    private void rankLotto(Lotto lotto) {
-        int matchCount = lotto.getMatchCountWith(winningLotto.numbers());
-        boolean hasBonusNumber = lotto.hasBonusNumber(winningLotto.bonusNumber());
+    public void rankLotto(Lotto lotto) {
+        int matchCount = winningLotto.getMatchCountWith(lotto);
+        boolean hasBonusNumber = winningLotto.isBonusNumberIn(lotto);
 
         if (matchCount < MIN_MATCH_NUMBERS) {
             return;
@@ -37,22 +33,9 @@ public class LottoEstimator {
 
         for (LottoRank lottoRank : LottoRank.values()) {
             if (lottoRank.matchLottoRank(matchCount, hasBonusNumber)) {
-                int currentRankCount = rankStatics.get(lottoRank);
-                rankStatics.put(lottoRank, ++currentRankCount);
+                lottoStatics.win(lottoRank);
                 return;
             }
         }
-    }
-
-    public float getRateOfProfit() {
-        int purchasePrice = purchasedLotteries.size() * PURCHASE_PRICE_UNIT;
-        float profit = 0;
-
-        for (LottoRank lottoRank : LottoRank.values()) {
-            profit += rankStatics.get(lottoRank) * lottoRank.price;
-        }
-        float rateOfProfit = (profit / purchasePrice) * 100;
-
-        return Math.round(rateOfProfit * 10) / 10.0f;
     }
 }

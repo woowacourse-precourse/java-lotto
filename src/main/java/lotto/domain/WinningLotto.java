@@ -7,8 +7,9 @@ public class WinningLotto {
     private final int bonusNumber;
 
     public static WinningLotto create() {
-        Lotto winningLotto = new Lotto(new InputView().readWinningLotto());
-        int bonusNumber = new InputView().readBonusNumber();
+        InputView input = new InputView();
+        Lotto winningLotto = new Lotto(input.readWinningLotto());
+        int bonusNumber = input.readBonusNumber();
 
         return new WinningLotto(winningLotto, bonusNumber);
     }
