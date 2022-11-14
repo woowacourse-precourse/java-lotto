@@ -37,11 +37,9 @@ public class Application {
     }
 
     private static Lottos generatePurchasedLottos(int lottoCount) {
-        // 로또 발행하는 부분
         Lottos lottos = new Lottos();
         lottos.generateLottos(lottoCount);
 
-        // 발행된 로또 출력하는 부분
         Output.printPurchasedLottos(lottos.checkLottos());
         return lottos;
     }
