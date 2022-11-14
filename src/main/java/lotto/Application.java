@@ -106,4 +106,19 @@ public class Application {
 
         return lotto;
     }
+
+    public static List<Integer> getLottoNumbers(String input) {
+        List<Integer> lottos = new ArrayList<>();
+        String[] inputs = input.split(",");
+
+        if (inputs.length != 6) {
+            throw new IllegalArgumentException("[ERROR] 당첨 번호는 6개이어야 합니다.");
+        }
+
+        for (int i = 0; i < 6; i++) {
+            lottos.add(getLottoNumber(inputs[i]));
+        }
+
+        return lottos;
+    }
 }
