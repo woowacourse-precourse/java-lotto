@@ -3,6 +3,9 @@ package lotto.service;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class CalculatorTest {
@@ -18,6 +21,22 @@ public class CalculatorTest {
 
         // then
         assertEquals(10, purchaseCount);
+    }
+
+    @Test
+    @DisplayName("Map에 저장된 당첨 금액과 당첨 횟수를 가지고 총 당첨 금액을 계산한다.")
+    void totalWinningPrizeTest() {
+        // given
+        Map<Integer, Integer> prizes = new HashMap<>();
+        for (WinningResult result : WinningResult.values()) {
+            prizes.put(result.getPrize(), 2);
+        }
+
+        // when
+        long totalWinningPrize = Calculator.sumWinningPrize(prizes);
+
+        // then
+        assertEquals(4_063_110_000L, totalWinningPrize);
     }
 
     @Test
