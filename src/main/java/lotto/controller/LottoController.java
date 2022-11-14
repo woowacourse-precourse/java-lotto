@@ -16,15 +16,20 @@ public class LottoController {
     private WinningNumber winningNumber;
 
     public void init() {
-        String payMoney = loadPayMoney();
+        try{
+            String payMoney = loadPayMoney();
 
-        printBuyNumber(payMoney);
-        printLottoNumber(generateLottoNumbers(payMoney));
-        loadWinningNumber();
-        loadBonusNumber();
-        printLottoRank(lottoGenerator.getLotteries(), winningNumber.getWinningNumbers(),
-            winningNumber.getBonusNumber());
-        printLottoProfit(lottoJudge.getRankCount(), Integer.parseInt(payMoney));
+            printBuyNumber(payMoney);
+            printLottoNumber(generateLottoNumbers(payMoney));
+            loadWinningNumber();
+            loadBonusNumber();
+            printLottoRank(lottoGenerator.getLotteries(), winningNumber.getWinningNumbers(),
+                winningNumber.getBonusNumber());
+            printLottoProfit(lottoJudge.getRankCount(), Integer.parseInt(payMoney));
+        } catch(IllegalArgumentException e) {
+            LottoOutput.printErrorMessage(e.getMessage());
+        }
+
     }
 
 

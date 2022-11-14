@@ -16,6 +16,9 @@ public class InputLottoValidator {
     }
 
     private void isDigit(String inputValue) {
+        if (inputValue.equals("")) {
+            throw new IllegalArgumentException("[ERROR] 숫자를 입력하여야 합니다.");
+        }
 
         for (int i = 0; i < inputValue.length(); i++) {
             if (!Character.isDigit(inputValue.charAt(i))) {
@@ -73,15 +76,8 @@ public class InputLottoValidator {
 
     public void validateBonusNumber(String bonusNumber, String winningNumbers) {
         isDigit(bonusNumber);
-        checkCountBonusNumber(bonusNumber);
         duplicateBonusNumber(bonusNumber, winningNumbers);
         checkRangeBonusNumber(bonusNumber);
-    }
-
-    public void checkCountBonusNumber(String bonusNumber) {
-        if (bonusNumber.length() != 1) {
-            throw new IllegalArgumentException("[ERROR] 1개의 번호를 입력하여야 합니다.");
-        }
     }
 
     private void duplicateBonusNumber(String bonusNumber, String winningNumbers) {

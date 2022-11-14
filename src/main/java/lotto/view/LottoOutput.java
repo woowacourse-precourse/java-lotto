@@ -35,4 +35,8 @@ public class LottoOutput {
     public static void printLottoProfit(String lottoProfit) {
         System.out.printf("총 수익률은 %s%%입니다.\n", lottoProfit);
     }
+
+    public static void printErrorMessage(String message) {
+        System.out.println(message);
+    }
 }
