@@ -26,6 +26,7 @@ public class Simulator {
 
     public void setWinning(Lotto winning, int bonus) {
         this.winning = winning;
+        Lotto.validateRange(bonus);
         this.bonus = bonus;
     }
 
@@ -49,6 +50,7 @@ public class Simulator {
         }
         return lottos;
     }
+
     public static Lotto generate() {
         List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
         return new Lotto(numbers);
