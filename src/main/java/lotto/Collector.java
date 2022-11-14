@@ -17,10 +17,10 @@ public class Collector {
         List<Integer> winningNumbers = winningNumberVerifier.askWinningNumber();
         int bonusNumber = bonusNumberVerifier.askBonusNumber();
 
-        List<Integer> RankResults = getRankResults(winningNumbers, bonusNumber, lottoList);
-        printRankResults(RankResults);
+        List<Integer> rankResults = getRankResults(winningNumbers, bonusNumber, lottoList);
+        printRankResults(rankResults);
 
-        return null;
+        return rankResults;
     }
 
     private List<Integer> getRankResults(List<Integer> winningNumbers, int bonusNumber, List<Lotto> lottoList) {
