@@ -7,8 +7,8 @@ import static lotto.util.Const.*;
 public class ParserValidator {
 
     public static void check(String[] inputString) throws IllegalArgumentException {
-        checkSize(inputString);
         checkNumberCondition(inputString);
+        checkSize(inputString);
         checkUnique(inputString);
     }
 
