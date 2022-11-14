@@ -15,7 +15,7 @@ public class LottoMachine {
         return input;
     }
 
-    public void validate(String input) {
+    public void validateMoney(String input) {
         int money;
         try {
             money = Integer.parseInt(input);
@@ -41,7 +41,7 @@ public class LottoMachine {
 
     public LottoContainer buy() {
         String input = getMoney();
-        validate(input);
+        validateMoney(input);
         int lottoCount = getLottoCount(input);
 
         List<Lotto> lottos = new ArrayList<>();
@@ -64,13 +64,6 @@ public class LottoMachine {
         for(String token: tokenized) {
             normalNumbers.add(Integer.parseInt(token));
         }
-    }
-
-    public void setBonusNumber() {
-        System.out.println("보너스 번호를 입력해 주세요.");
-        String input = Console.readLine();
-
-        this.bonusNumber = Integer.parseInt(input);
     }
 
 }
