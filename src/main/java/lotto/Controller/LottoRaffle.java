@@ -4,10 +4,8 @@ import lotto.Model.DataProcessing;
 import lotto.View.ErrorUtil;
 import lotto.Model.Lotto;
 import lotto.View.OutputView;
-
 import java.util.ArrayList;
 import java.util.List;
-
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class LottoRaffle {
@@ -54,7 +52,6 @@ public class LottoRaffle {
         Controller controller = new Controller();
         lottoNumber(controller.inputLottoNumber());
     }
-
     public void lottoNumber(String lottoNumbers) {
         List<Integer> numbers = new ArrayList<>();
         ErrorUtil errorUtil = new ErrorUtil();
@@ -96,8 +93,7 @@ public class LottoRaffle {
         }
         setBoxRandom(boxNumbers);
     }
-    public void countWinLotto(List<Integer> lottoNumber, List<List<Integer>> boxRandomNumber,
-                              int count, int bonusNumber) {
+    public void countWinLotto(List<Integer> lottoNumber, List<List<Integer>> boxRandomNumber, int count, int bonusNumber) {
         List<Integer> countWinLotto = new ArrayList<>();
         DataProcessing dataProcessing = new DataProcessing();
         for (int i=0;i<count;++i)
