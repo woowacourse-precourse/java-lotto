@@ -5,7 +5,7 @@ import lotto.domain.UserLotto;
 import lotto.validation.InputValidation;
 
 public class InputView {
-    private static final String REQUEST_MONEY_MESSAGE = "구입금액을 입력해 주세요.";
+    private static final String MESSAGE_REQUEST_MONEY = "구입금액을 입력해 주세요.";
 
     public static UserLotto inputUserMoney() {
         printRequestMoneyInputMessage();
@@ -16,6 +16,6 @@ public class InputView {
     }
 
     private static void printRequestMoneyInputMessage() {
-        System.out.println(REQUEST_MONEY_MESSAGE);
+        System.out.println(MESSAGE_REQUEST_MONEY);
     }
 }
