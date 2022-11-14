@@ -333,6 +333,40 @@ class ApplicationTest extends NsTest {
         assertEquals(expectedValue, actualValue);
     }
 
+    /**
+     * validateWinnerNumberRange(param1)
+     * param1: List<Integer> winnerNumber
+     * throws IllegalArgumentException when 당첨금액의 수가 1~45 범위를 벗어나는 경우
+     */
+    @DisplayName("사용자 입력한 당첨금액의 수가 1~45 범위를 벗어나면 예외가 발생해야 한다.")
+    @Test
+    public void validateWinnerNumberRangeTest() {
+        //given
+        List<Integer> winnerNumber = Arrays.asList(1, 2, 3, 4, 5, 56);
+        //when
+
+        //then
+        assertThatThrownBy(() -> Application.validateWinnerNumberRange(winnerNumber))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    /**
+     * validateBonusNumberRange(param1)
+     * param1: int bonusNumber: 사용자가 입력한 보너스 번호
+     * throws IllegalArgumentException when 보너스 번호가 1~45 범위를 벗어나는 경우
+     */
+    @DisplayName("사용자가 입력한 보너스 번호의 수가 1~45 범위를 벗어나면 예외가 발생해야 한다.")
+    @Test
+    public void validateBonusNumberRangeTest() {
+        //given
+        int bonusNumber = 46;
+        //when
+
+        //then
+        assertThatThrownBy(() -> Application.validateBonusNumberRange(bonusNumber))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
