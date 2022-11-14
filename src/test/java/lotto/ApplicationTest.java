@@ -1,6 +1,7 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -12,8 +13,9 @@ import static org.assertj.core.api.Assertions.assertThat;
 class ApplicationTest extends NsTest {
     private static final String ERROR_MESSAGE = "[ERROR]";
 
+    @DisplayName("기능 테스트")
     @Test
-    void 기능_테스트() {
+    void basic() {
         assertRandomUniqueNumbersInRangeTest(
                 () -> {
                     run("8000", "1,2,3,4,5,6", "7");
@@ -46,12 +48,34 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @DisplayName("예외 테스트")
     @Test
-    void 예외_테스트() {
+    void notValidPurchase() {
         assertSimpleTest(() -> {
             runException("1000j");
             assertThat(output()).contains(ERROR_MESSAGE);
         });
+    }
+
+    @DisplayName("5개 당첨 / 5개 당첨 + 보너스 볼 / 6개 당첨 구분하기")
+    @Test
+    void distinguishBonus() {
+        String[] inputs = {"3000", "1,2,3,4,5,6", "7"};
+        assertRandomUniqueNumbersInRangeTest(
+                () -> {
+                    run(inputs);
+                    assertThat(output()).contains(
+                            "3개 일치 (5,000원) - 0개",
+                            "4개 일치 (50,000원) - 0개",
+                            "5개 일치 (1,500,000원) - 1개",
+                            "5개 일치, 보너스 볼 일치 (30,000,000원) - 1개",
+                            "6개 일치 (2,000,000,000원) - 1개"
+                    );
+                },
+                List.of(1, 2, 3, 4, 5, 43),
+                List.of(1, 2, 3, 4, 5, 6),
+                List.of(1, 2, 3, 4, 5, 7)
+        );
     }
 
     @Override
