@@ -10,6 +10,7 @@ public class LottoGameSimulator {
     private List<Lotto> Lottos;
     private WinningNumbers winningNumbers;
     private int paidMoney;
+
     public LottoGameSimulator() {
     }
 
@@ -17,8 +18,8 @@ public class LottoGameSimulator {
         try {
             buyLotto();
             printLottos();
-            getInputOfWinningNumbers();
-            getInputOfBonusNumber();
+            selectWinningNumbers();
+            selectBonusNumber();
             generateResult();
             printResult();
         } catch (IllegalArgumentException exception) {
@@ -52,18 +53,40 @@ public class LottoGameSimulator {
         MessagePrinter.printGeneratedLottoNumbers(Lottos);
     }
 
-    public void getInputOfWinningNumbers() {
+    public void selectWinningNumbers() {
+        String winningNumbersInput = getInputOfWinningNumbers();
+        validateWinningNumbers(winningNumbersInput);
+        generateWinningNumbers(winningNumbersInput);
+    }
+
+    public String getInputOfWinningNumbers() {
         MessagePrinter.printWinningNumbersInputRequest();
         String winningNumbersInput = Inputter.readLine();
+        return winningNumbersInput;
+    }
+
+    public void validateWinningNumbers(String winningNumbersInput) {
         WinningNumbersValidator.validate(winningNumbersInput);
+    }
+
+    public void generateWinningNumbers(String winningNumbersInput) {
         winningNumbers = WinningNumbersGenerator.generateWinningNumbers(winningNumbersInput);
     }
 
-    public void getInputOfBonusNumber() {
+    public void selectBonusNumber() {
+        String bonusNumberInput = getInputOfBonusNumber();
+        validateBonusNumber(bonusNumberInput);
+        registerBonusNumberToWinningNumbers(bonusNumberInput);
+    }
+
+    public String getInputOfBonusNumber() {
         MessagePrinter.printBonusNumberInputRequest();
         String bonusNumberInput = Inputter.readLine();
+        return bonusNumberInput;
+    }
+
+    public void validateBonusNumber(String bonusNumberInput) {
         BonusNumberValidator.validate(bonusNumberInput, winningNumbers);
-        registerBonusNumberToWinningNumbers(bonusNumberInput);
     }
 
     public void registerBonusNumberToWinningNumbers(String bonusNumberInput) {
