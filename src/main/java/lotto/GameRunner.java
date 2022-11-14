@@ -4,10 +4,13 @@ import camp.nextstep.edu.missionutils.Console;
 import lotto.mvc.controller.LottoGameController;
 import lotto.mvc.util.LottoGameStatus;
 
-public class GameRunner {
+public final class GameRunner {
 
     private static final String DEFAULT_PLAYER_INPUT = "";
     private static final LottoGameController controller = new LottoGameController();
+
+    private GameRunner() {
+    }
 
     public static void run(LottoGameStatus lottoGameStatus) {
         while (!lottoGameStatus.isExit()) {
