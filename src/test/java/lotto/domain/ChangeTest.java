@@ -24,10 +24,17 @@ class ChangeTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
-    @DisplayName("','가 2개 이상 입력이 되었는지 확인하는 기능")
+    @DisplayName("','가 2개 이상 입력이 되었으면 예외가 발생한다.")
     @Test
     void lottoNumberTest_콤마가_2개(){
         assertThatThrownBy(() -> Change.lottoNumber("1,,2,3,4,5,6"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("첫번째 자리에 문자가 입력되었으면 예외가 발생한다.")
+    @Test
+    void lottoNumberTest_첫번째_자리에_문자(){
+        assertThatThrownBy(() -> Change.lottoNumber("a,2,3,4,5,6"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
