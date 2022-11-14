@@ -13,7 +13,7 @@ public class LottoManager {
     private final int FOURTH_PRIZE = 50000;
     private final int FIFTH_PRIZE = 5000;
     private int[] prize = new int[]{ 0, 0, 0, 0, 0 };
-    private int[] rewards = new int[]{ FIRST_PRIZE, SECOND_PRIZE, THIRD_PRIZE, FOURTH_PRIZE, FIFTH_PRIZE };
+    private final int[] rewards = new int[]{ FIRST_PRIZE, SECOND_PRIZE, THIRD_PRIZE, FOURTH_PRIZE, FIFTH_PRIZE };
     private final Judge judge;
     private final LottoGenerator lottoGenerator;
     private List<Lotto> userLottos;
@@ -59,6 +59,10 @@ public class LottoManager {
         if(judge.isNumber(bNumber)) {
             bonusNumber = Integer.parseInt(bNumber);
         }
+    }
+
+    public void checkContain() {
+        judge.isNotContain(winningNumbers, bonusNumber);
     }
 
     private void isFirst(int correct) {

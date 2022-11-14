@@ -6,6 +6,7 @@ public class Application {
         lottoManager.inputAmount();
         lottoManager.inputWinningNumbers();
         lottoManager.inputBonusNumber();
+        lottoManager.checkContain();
         lottoManager.compare();
         lottoManager.calcYield();
         lottoManager.printResult();
