@@ -52,7 +52,6 @@ public class ServiceInput {
             throw new IllegalArgumentException();
         }
     }
-
     private static String getInputWinningNumbers() {
 
         String inputWinningNumbers = Console.readLine();
@@ -90,5 +89,17 @@ public class ServiceInput {
             Message.printInputErrorHasCharacter();
             throw new IllegalArgumentException();
         }
+    }
+
+    private static String getInputBonusNumber(){
+        String inputBonusNumber = Console.readLine();
+        validateInputBonusNumber(inputBonusNumber);
+
+        return getInputBonusNumber();
+    }
+
+    private static void validateInputBonusNumber(String inputBonusNumber) {
+
+        // TODO: 예외처리1,2 구현
     }
 }
