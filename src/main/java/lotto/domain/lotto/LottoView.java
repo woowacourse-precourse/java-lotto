@@ -6,7 +6,7 @@ import lotto.util.View;
 public class LottoView {
     
     public static void printNumbersByArrayFormat(Lotto lotto) {
-        View.print(getNumbersTextByArrayFormat(lotto));
+        View.println(getNumbersTextByArrayFormat(lotto));
     }
     
     public static String getNumbersTextByArrayFormat(Lotto lotto) {
