@@ -1,44 +1,28 @@
 package lotto.domain;
 
+
 import static org.assertj.core.api.Assertions.assertThat;
 
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 public class RankTest {
 
-    @Test
-    void FIRST_테스트() {
-        Rank rank = Rank.of(6, true);
-        assertThat(rank).isEqualTo(rank.FIRST);
-    }
-
-    @Test
-    void SECOND_테스트() {
-        Rank rank = Rank.of(5, true);
-        assertThat(rank).isEqualTo(rank.SECOND);
-    }
-
-    @Test
-    void THIRD_테스트() {
-        Rank rank = Rank.of(5, false);
-        assertThat(rank).isEqualTo(rank.THIRD);
-    }
-
-    @Test
-    void FOURTH_테스트() {
-        Rank rank = Rank.of(4, false);
-        assertThat(rank).isEqualTo(rank.FOURTH);
-    }
-
-    @Test
-    void FIFTH_테스트() {
-        Rank rank = Rank.of(3, false);
-        assertThat(rank).isEqualTo(rank.FIFTH);
-    }
-
-    @Test
-    void NOTHING_테스트() {
-        Rank rank = Rank.of(0, false);
-        assertThat(rank).isEqualTo(rank.NOTHING);
+    @DisplayName("일치하는 숫자의 개수와 보너스볼의 존재유무는 등수를 반환한다.")
+    @ParameterizedTest
+    @CsvSource({
+        "0, false, NOTHING",
+        "1, false, NOTHING",
+        "2, false, NOTHING",
+        "3, false, FIFTH",
+        "4, false, FOURTH",
+        "5, false, THIRD",
+        "5, true,  SECOND",
+        "6, false, FIRST",
+    })
+    void 순위_검증_테스트(int equalCnt, boolean isBonus, Rank expected) {
+        Rank rank = Rank.of(equalCnt,isBonus);
+        assertThat(rank).isEqualTo(expected);
     }
 }
