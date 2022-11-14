@@ -20,7 +20,7 @@ public class Controll {
             buyTicket();
             outputView.printLotto(buyer.getLottoNumber());
             winnginTicket();
-            compareLotto();
+            comparison.compareLotto(buyer.getLottoNumber(), winningTicket);
         } catch (IllegalArgumentException e) {
             outputView.printMessage(e.getMessage());
         }
@@ -37,10 +37,5 @@ public class Controll {
 
         outputView.printMessage("\n" + Message.BONUS_NUMBER.getMessage());
         winningTicket.saveBonus(inputView.inputNum());
-    }
-
-    private void compareLotto() {
-        comparison.compareLotto(buyer.getLottoNumber(), winningTicket);
-
     }
 }
