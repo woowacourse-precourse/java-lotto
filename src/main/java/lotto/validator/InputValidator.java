@@ -100,7 +100,7 @@ public class InputValidator {
 
     private static boolean checkNumberInWinningNumber(String bonusNumber) {
         Lotto winningLotto = LottoRepository.getLastWinningLotto();
-        if(winningLotto.getNumbers().contains(winningLotto)){
+        if(winningLotto.getNumbers().contains(Integer.parseInt(bonusNumber))){
             return true;
         }
         return false;

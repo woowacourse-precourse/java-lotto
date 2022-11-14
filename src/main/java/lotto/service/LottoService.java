@@ -14,9 +14,6 @@ import java.util.stream.Collectors;
 
 public class LottoService {
 
-    public Integer luckyCount;
-    public Integer secondaryCount;
-
     public static Integer getTheNumberOfLotto(String purchaseMoney) {
         InputValidator.checkUserInputMoney(purchaseMoney);
         savePurchaseMoney(purchaseMoney);

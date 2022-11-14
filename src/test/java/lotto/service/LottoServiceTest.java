@@ -38,4 +38,16 @@ class LottoServiceTest {
         lottoService.createWinningLotto(winningNumber);
         assertThat(LottoRepository.getLastWinningLotto().getNumbers().size()).isEqualTo(6);
     }
+
+    @Test
+    void compareLotto() {
+    }
+
+    @Test
+    void getWinningAmount() {
+    }
+
+    @Test
+    void getProfit() {
+    }
 }
