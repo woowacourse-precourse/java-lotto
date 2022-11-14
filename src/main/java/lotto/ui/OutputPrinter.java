@@ -29,13 +29,21 @@ public class OutputPrinter {
         WinningNumbers[] allWinningNumbers = WinningNumbers.values();
         for (int winningNumberIndex = 0; winningNumberIndex < allWinningNumbers.length - 1; winningNumberIndex++) {
             WinningNumbers key = allWinningNumbers[winningNumberIndex];
-            int matches = key.getMatch();
-            long reward = key.getReward();
-            long winningCounter = winningCase.getOrDefault(key, 0L);
-            DecimalFormat commaInMoney = new DecimalFormat("###,###");
-
-            System.out.println(matches + "개 일치 (" + commaInMoney.format(reward) + "원) - " + winningCounter + "개");
+            System.out.println(outputResultFormat(key, winningCase, allWinningNumbers[winningNumberIndex]));
         }
+    }
+
+    private String outputResultFormat(WinningNumbers key, Map<WinningNumbers, Long> winningCase, WinningNumbers rank) {
+        int matches = key.getMatch();
+        long reward = key.getReward();
+        long winningCounter = winningCase.getOrDefault(key, 0L);
+        DecimalFormat commaInMoney = new DecimalFormat("###,###");
+
+        if (rank == WinningNumbers.FIVE_BONUS) {
+            return matches + "개 일치, 보너스 볼 일치 (" + commaInMoney.format(reward) + "원) - " + winningCounter + "개";
+        }
+
+        return matches + "개 일치 (" + commaInMoney.format(reward) + "원) - " + winningCounter + "개";
     }
 
     private void printRewardRate(double rawRatio) {
