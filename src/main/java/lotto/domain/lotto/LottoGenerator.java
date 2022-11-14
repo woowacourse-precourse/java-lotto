@@ -22,7 +22,9 @@ public class LottoGenerator {
         return new Lotto(
                 Randoms.pickUniqueNumbersInRange(
                     MINIMUM_LOTTO_NUMBER, MAXIMUM_LOTTO_NUMBER, MAXIMUM_LOTTO_COUNT
-                )
+                ).stream()
+                        .sorted()
+                        .collect(Collectors.toList())
         );
     }
 }

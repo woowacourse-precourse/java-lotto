@@ -19,6 +19,4 @@ public class LottoGroup {
     public List<Lotto> getLottos() {
         return Collections.unmodifiableList(lottos);
     }
-
-
 }

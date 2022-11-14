@@ -3,6 +3,7 @@ package lotto.domain.lotto;
 import lotto.domain.number.LottoNumber;
 import lotto.resource.message.ErrorMessage;
 
+import java.util.Arrays;
 import java.util.List;
 
 public class Lotto {
@@ -49,5 +50,8 @@ public class Lotto {
         return numbers.size();
     }
 
-
+    @Override
+    public String toString() {
+        return Arrays.toString(numbers.toArray());
+    }
 }
