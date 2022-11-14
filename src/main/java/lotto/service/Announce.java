@@ -3,7 +3,6 @@ package lotto.service;
 import lotto.constant.LottoConstant;
 
 public class Announce {
-
     static public void announceInputMessage() {
         System.out.println(LottoConstant.INPUT_MESSAGE);
     }
