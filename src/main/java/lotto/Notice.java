@@ -16,8 +16,8 @@ public class Notice {
     }
 
     public void purchaseNumber() {
-        User clerk = new User();
-        System.out.println(clerk.purchasePrice + PURCHASE_NUMBER);
+        User user = new User();
+        System.out.println(user.purchasePrice + PURCHASE_NUMBER);
     }
 
     public void winningNumber() {
