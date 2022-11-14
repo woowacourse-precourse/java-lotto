@@ -2,6 +2,7 @@ package lotto;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Pattern;
 
 public class ControlLottoGame {
 
@@ -27,6 +28,18 @@ public class ControlLottoGame {
         return winningNumbers;
     }
 
+    public boolean validateNumber(String input) {
+        try {
+            if (!Pattern.matches("^[0-9]*$", input)) {
+                throw new IllegalArgumentException(Message.ERROR.get() + Message.ERROR_INCORRECT_RANGE.get());
+            }
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+            return false;
+        }
+        return true;
+    }
+
     public int inputToBonusNumber(String input, List<Integer> winningNumbers) {
         int bonusNumber = Integer.parseInt(input);
 
@@ -44,15 +57,13 @@ public class ControlLottoGame {
     public float calculateEarningRate(List<Integer> winningCount, int quantity) {
         int payedPrice = quantity * 1000;
         int earnedPrice = 0;
-        String earnedRate;
 
         earnedPrice += winningCount.get(0) * CorrectValue.THREE_CORRECT.get();
         earnedPrice += winningCount.get(1) * CorrectValue.FOUR_CORRECT.get();
         earnedPrice += winningCount.get(2) * CorrectValue.FIVE_CORRECT.get();
         earnedPrice += winningCount.get(3) * CorrectValue.SIX_CORRECT.get();
         earnedPrice += winningCount.get(4) * CorrectValue.FIVE_BONUS_CORRECT.get();
-        double rate = (double) earnedPrice / payedPrice;
-        earnedRate = String.format("%.1f", rate * 100);
+        String earnedRate = String.format("%.1f", (double) 100 * earnedPrice / payedPrice);
 
         return Float.parseFloat(earnedRate);
     }
@@ -71,7 +82,7 @@ enum CorrectValue {
         this.value = value;
     }
 
-    public int get(){
+    public int get() {
         return value;
     }
 }
