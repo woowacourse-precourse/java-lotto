@@ -33,22 +33,17 @@ public class GameManager {
         Printer.printMoneyReturn(moneyReturn);
     }
 
-    private Map<ResultPrice, Integer> getTotalScore(List<Lotto> lottoGroup) {
-        List<Integer> resultNumbers = getResultNumbers();
-        Integer bonusNumber = getBonusNumber();
+    private int getMoney() {
+        Printer.printInfoMoneyInput();
 
-        LottoResultDto resultDto = new LottoResultDto(resultNumbers, bonusNumber);
-        Checker checker = new Checker(resultDto);
+        String money = Console.readLine();
+        validation.validateMoneyInput(money);
 
-        return checker.getTotalScore(lottoGroup);
+        return Integer.parseInt(money);
     }
 
-    private Integer getBonusNumber() {
-        Printer.printInfoInputBonus();
-        String bonus = Console.readLine();
-        validation.validateIsNumberInput(bonus);
-
-        return Integer.parseInt(bonus);
+    private List<Lotto> getLottoGroup(int money) {
+        return publisher.getLottoGroup(money);
     }
 
     private List<Integer> getResultNumbers() {
@@ -61,16 +56,22 @@ public class GameManager {
                 .collect(Collectors.toList());
     }
 
-    private List<Lotto> getLottoGroup(int money) {
-        return publisher.getLottoGroup(money);
+    private Integer getBonusNumber() {
+        Printer.printInfoInputBonus();
+        String bonus = Console.readLine();
+        validation.validateIsNumberInput(bonus);
+
+        return Integer.parseInt(bonus);
     }
 
-    private int getMoney() {
-        Printer.printInfoMoneyInput();
+    private Map<ResultPrice, Integer> getTotalScore(List<Lotto> lottoGroup) {
+        List<Integer> resultNumbers = getResultNumbers();
+        Integer bonusNumber = getBonusNumber();
 
-        String money = Console.readLine();
-        validation.validateMoneyInput(money);
+        LottoResultDto resultDto = new LottoResultDto(resultNumbers, bonusNumber);
+        Checker checker = new Checker(resultDto);
 
-        return Integer.parseInt(money);
+        return checker.getTotalScore(lottoGroup);
     }
+
 }
