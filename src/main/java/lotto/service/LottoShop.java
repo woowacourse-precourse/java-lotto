@@ -9,7 +9,11 @@ import lotto.model.LottoRule;
 
 public class LottoShop {
 
-    public List<Lotto> buy(int lottoCount) {
+    private static final int UNIT_PRICE = 1_000;
+
+    public List<Lotto> buy(int purchasePrice) {
+        validate(purchasePrice);
+        int lottoCount = purchasePrice / UNIT_PRICE;
         List<Lotto> lottos = new ArrayList<>();
 
         for (int cnt = 0; cnt < lottoCount; cnt++) {
@@ -17,6 +21,16 @@ public class LottoShop {
         }
 
         return lottos;
+    }
+
+    private void validate(int purchasePrice) {
+        if (purchasePrice < UNIT_PRICE) {
+            throw new IllegalArgumentException("입력값이 " + UNIT_PRICE + "보다 낮습니다. 로또를 구매할 수 없습니다.");
+        }
+
+        if (purchasePrice % UNIT_PRICE != 0) {
+            throw new IllegalArgumentException("입력값이 " + UNIT_PRICE + "으로 나누어떨어지지 않습니다.");
+        }
     }
 
     private Lotto issueLotto() {

@@ -7,16 +7,16 @@ import lotto.model.Lotto;
 import lotto.model.Prize;
 import lotto.model.WinLotto;
 import lotto.service.Calculate;
-import lotto.service.Convert;
 import lotto.service.LottoShop;
 import lotto.service.Statistics;
+import lotto.view.Input;
 import lotto.view.Print;
 
 public class LottoSimulate {
 
     private final Print print = new Print();
 
-    private final Convert convert = new Convert();
+    private final Input input = new Input();
 
     private final LottoShop lottoShop = new LottoShop();
 
@@ -38,27 +38,23 @@ public class LottoSimulate {
 
     private int inputPurchasePrice() {
         print.requestPurchasePrice();
-        String input = Console.readLine();
-        return convert.toInt(input);
+        return input.number();
     }
 
     private List<Lotto> buyLottos(int purchasePrice) {
-        int lottoCount = convert.toLottoCount(purchasePrice);
-        List<Lotto> lottos = lottoShop.buy(lottoCount);
+        List<Lotto> lottos = lottoShop.buy(purchasePrice);
         print.lottoNumbers(lottos);
         return lottos;
     }
 
     private List<Integer> inputWinLottoNumbers() {
         print.requestWinLottoNumber();
-        String input = Console.readLine();
-        return convert.toWinLottoNumbers(input);
+        return input.numbers();
     }
 
     private int inputWinLottoBonusNumber() {
         print.requestBonusNumber();
-        String input = Console.readLine();
-        return convert.toWinLottoBonusNumber(input);
+        return input.number();
     }
 
     private Map<Prize, Integer> getLottoStatics(WinLotto winLotto, List<Lotto> lottos) {
