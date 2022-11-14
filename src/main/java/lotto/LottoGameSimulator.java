@@ -59,5 +59,6 @@ public class LottoGameSimulator {
 
     public void printResult() {
         MessagePrinter.printWinningDetails(lottoGameResult.getWinningDetails());
+        MessagePrinter.printEarningRate(lottoGameResult.getEarningRate());
     }
 }

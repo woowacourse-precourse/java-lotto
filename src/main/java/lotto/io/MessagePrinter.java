@@ -37,4 +37,9 @@ public class MessagePrinter {
                 String.format("5개 일치, 보너스 볼 일치 (30,000,000원) - %d개\n", winningDetails.get(30_000_000)) +
                 String.format("6개 일치 (2,000,000,000원) - %d개", winningDetails.get(2_000_000_000)));
     }
+
+    public static void printEarningRate(double earningRate) {
+        String roundedEarningRate = String.format("%.1f", earningRate);
+        System.out.println("총 수익률은 " + roundedEarningRate +"%입니다.");
+    }
 }
