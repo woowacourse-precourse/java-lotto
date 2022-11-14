@@ -29,4 +29,17 @@ class StringValidatorTest {
 		assertThatThrownBy(() -> stringValidator.checkIsMultipliedBy1000("30001"))
 			.isInstanceOf(IllegalArgumentException.class);
 	}
+
+	@DisplayName("보너스 번호가 숫자가 아니라면 예외가 발생한다.")
+	@Test
+	void validateBonusStringTest1() {
+		assertThatThrownBy(() -> stringValidator.validateBonusString("3하"))
+			.isInstanceOf(IllegalArgumentException.class);
+	}
+	@DisplayName("보너스 번호가 범위 내의 숫자가 아니라면 예외가 발생한다.")
+	@Test
+	void validateBonusStringTest2() {
+		assertThatThrownBy(() -> stringValidator.validateBonusString("46"))
+			.isInstanceOf(IllegalArgumentException.class);
+	}
 }

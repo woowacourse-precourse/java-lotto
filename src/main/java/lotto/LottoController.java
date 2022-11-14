@@ -11,6 +11,8 @@ public class LottoController {
 
 	private MyModel model;
 	private MyView view;
+	private
+	StringValidator stringValidator = new StringValidator();
 
 	public LottoController(MyModel model, MyView view) {
 		this.model = model;
@@ -30,7 +32,6 @@ public class LottoController {
 	}
 
 	private int getMoney() {
-		StringValidator stringValidator = new StringValidator();
 		view.getMoneyRequest();
 		String moneyString = (String)model.getAttribute("money");
 		stringValidator.validateMoneyString(moneyString);
@@ -57,6 +58,8 @@ public class LottoController {
 	}
 
 	private void registerBonusNumber() {
+		view.getBonusNumber();
+		String bonusNumber = (String)model.getAttribute("bonusNumber");
 
 	}
 
