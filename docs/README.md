@@ -21,7 +21,9 @@
 - Convert class
     > 유효성 검증이 끝난 입력을 요구에 맞게 변환
     ````
-
+    1. 구매 금액을 Integer 변환
+    2. 당첨 번호를 Lotto 변환
+    3. 보너스 번호를 Integer 변환
     ````
  
 - Purchase Class
