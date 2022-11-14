@@ -16,18 +16,6 @@ public class ControlLottoGame {
         return input / 1000;
     }
 
-    public List<Integer> inputToWinningNumbers(String input) {
-        List<Integer> winningNumbers = new ArrayList<>();
-        String[] inputNumbers = input.split(",");
-
-        for (String inputNumber : inputNumbers) {
-            String noSpace = inputNumber.trim();
-            winningNumbers.add(Integer.parseInt(noSpace));
-        }
-
-        return winningNumbers;
-    }
-
     public boolean validateNumber(String input) {
         try {
             if (!Pattern.matches("^[0-9]*$", input)) {
@@ -38,6 +26,18 @@ public class ControlLottoGame {
             return false;
         }
         return true;
+    }
+
+    public List<Integer> inputToWinningNumbers(String input) {
+        List<Integer> winningNumbers = new ArrayList<>();
+        String[] inputNumbers = input.split(",");
+
+        for (String inputNumber : inputNumbers) {
+            String noSpace = inputNumber.trim();
+            winningNumbers.add(Integer.parseInt(noSpace));
+        }
+
+        return winningNumbers;
     }
 
     public int inputToBonusNumber(String input, List<Integer> winningNumbers) {
