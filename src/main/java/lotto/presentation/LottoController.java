@@ -14,6 +14,7 @@ public class LottoController {
 
         List<Lotto> clientLotto = buyLotto();
         Lotto winLotto = inputWinLotto();
+        int bonusNum = inputBonusNum();
 
     }
 
@@ -37,5 +38,10 @@ public class LottoController {
     private Lotto inputWinLotto() {
         String lottoNumberInput = getInput(ViewValue.INSERT_NUMBER_INFO.getValue());
         return lottoFacade.registerWinLotto(lottoNumberInput);
+    }
+
+    private int inputBonusNum() {
+        String bonusInput = getInput(ViewValue.INSERT_BONUS_INFO.getValue());
+        return Integer.parseInt(bonusInput);
     }
 }
