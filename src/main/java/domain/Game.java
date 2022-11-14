@@ -20,4 +20,7 @@ public class Game {
         return winning_numbers;
     }
 
+    public static void setWinning_numbers(List<Integer> InputNumber){
+        winning_numbers=InputNumber;
+    }
 }
