@@ -2,7 +2,6 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
-import com.sun.jdi.connect.spi.Connection;
 
 import java.util.*;
 import java.util.stream.Collectors;
