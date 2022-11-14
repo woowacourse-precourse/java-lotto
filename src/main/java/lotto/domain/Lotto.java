@@ -31,5 +31,5 @@ public class Lotto {
     public void printNumbers() {
         System.out.println(numbers);
     }
-    
+
 }
