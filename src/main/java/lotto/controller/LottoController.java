@@ -9,10 +9,20 @@ import lotto.view.Message;
 
 public class LottoController {
 
+    private User user;
     private Message message = new Message();
     private LottoService lottoService = new LottoService();
 
-    public int getLottoAmount(User user){
+    public void start() {
+        user = new User();
+
+        user.buyLottos(getLottoAmount());
+        showLottoDetail();
+        user.getLottoResults(setWinningLotto());
+        showLottoResult();
+    }
+
+    public int getLottoAmount() {
         String inputPayment = message.inputPaymentMessage();
         int lottoPayment = lottoService.inputPaymentToNumber(inputPayment);
         user.setLottoPayment(lottoPayment);
@@ -22,44 +32,28 @@ public class LottoController {
         return lottoAmount;
     }
 
-    public void showLottoDetail(User user){
-        for(Lotto lotto : user.getLottos()){
+    public void showLottoDetail() {
+        for (Lotto lotto : user.getLottos()) {
             message.lottoDetailMessage(lotto);
         }
     }
 
-    public List<Integer> inputWinningNumber(){
+    public List<Integer> inputWinningNumber() {
         String inputWinningNumber = message.inputWinningNumberMessage();
-        List<Integer> winningNumber = lottoService.setWinningNumber(inputWinningNumber);
-        return winningNumber;
+        return lottoService.setWinningNumber(inputWinningNumber);
     }
 
-    public int inputBonusNumber(){
+    public int inputBonusNumber() {
         String inputBonusNumber = message.inputBonusNumberMessage();
-        int bonusNumber = lottoService.setBonusNumber(inputBonusNumber);
-        return bonusNumber;
+        return lottoService.setBonusNumber(inputBonusNumber);
     }
 
     public WinningLotto setWinningLotto() {
-        return lottoService.setWinningLotto(inputWinningNumber(),inputBonusNumber());
+        return lottoService.setWinningLotto(inputWinningNumber(), inputBonusNumber());
     }
 
-    public void showLottoResult(User user) {
+    public void showLottoResult() {
         message.lottoResultMessage();
         message.lottoProfitMessage(user.getLottoProfit());
     }
-
-    public void start(){
-        User user = new User();
-        int lottoAmount = getLottoAmount(user);
-
-        user.buyLottos(lottoAmount);
-        showLottoDetail(user);
-        WinningLotto winningLotto = setWinningLotto();
-
-        showLottoResult(user);
-        user.getLottoResults(winningLotto);
-    }
-
-
 }
