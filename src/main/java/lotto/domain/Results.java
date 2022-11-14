@@ -23,4 +23,8 @@ public class Results {
         }
         return statistics;
     }
+
+    public List<Result> getResults() {
+        return results;
+    }
 }
