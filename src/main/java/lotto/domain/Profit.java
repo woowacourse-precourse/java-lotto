@@ -6,21 +6,16 @@ public class Profit {
 
     public Profit() {
     }
+    public double calProfitRate(List<Integer> winningPrices, int lottoPrice, int place) {
+        double winningAmount = winningPrices.stream().mapToInt(Integer::intValue).sum();
+        double purchaseAmount = (lottoPrice * winningPrices.size());
+        double profitRate = winningAmount / purchaseAmount * 100;
 
-    private int calProfit(int winningPrice, int lottoPrice) {
-        return winningPrice - lottoPrice;
+        return roundPlace(profitRate, place);
     }
 
-    public double calProfitRate(List<Integer> winningPrices, int lottoPrice) {
-        return sumProfit(winningPrices, lottoPrice) / (lottoPrice * winningPrices.size())  * 100;
-    }
-
-    private int sumProfit(List<Integer> winningPrices, int lottoPrice) {
-        int sum = 0;
-        for (Integer winningPrice : winningPrices) {
-            sum = sum + calProfit(winningPrice, lottoPrice);
-        }
-
-        return sum;
+    private double roundPlace(double d, int place) {
+        double pow = Math.pow(10, place - 1);
+        return Math.round(d * pow) / pow;
     }
 }
