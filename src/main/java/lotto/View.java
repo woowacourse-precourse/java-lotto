@@ -9,6 +9,10 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class View {
 
+    public void printStart(){
+        System.out.println("구입금액을 입력해 주세요.");
+    }
+
     public void printError(String errMsg){
         System.out.println(Const.ERROR + errMsg);
     }
@@ -23,15 +27,11 @@ public class View {
             System.out.println(nums);
         }
     }
-    public List<String> printLottos(){
-        List<String> numbers = new ArrayList<>();
+    public void printLottos(){
         System.out.println("당첨 번호를 입력해 주세요.");
-        String winningNumber = readLine();
-        numbers.add(winningNumber);
+    }
+    public void printBonus(){
         System.out.println("보너스 번호를 입력해 주세요.");
-        String bonusNumber = readLine();
-        numbers.add(bonusNumber);
-        return numbers;
     }
 
     public void printResult(Result result){

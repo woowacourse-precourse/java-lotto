@@ -38,11 +38,16 @@ public class LottoController {
     }
 
     private void read() {
+        view.printStart();
         String moneyInput = readLine();
         user = new User(MoneyCheck.check(moneyInput));
         view.printUserLottos(user);
-        List<String> numbers = view.printLottos();
-        lotto = new Lotto(WinningNumberCheck.check(numbers.get(0)));
-        bonus = BonusCheck.check(numbers.get(1), lotto);
+        view.printLottos();
+        String winningNumber = readLine();
+        List<Integer> winningNumbers = WinningNumberCheck.check(winningNumber);
+        lotto = new Lotto(winningNumbers);
+        view.printBonus();
+        String bonusNumber = readLine();
+        bonus =  BonusCheck.check(bonusNumber,lotto);
     }
 }

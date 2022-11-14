@@ -14,10 +14,10 @@ public class Lotto {
 
     private void validate(List<Integer> numbers) {
         if (numbers.size() != Const.COUNT) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(Const.AMOUNT_ERRMSG);
         }
         if (duplicateCheck(numbers)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(Const.DUPLICATE_ERRMSG);
         }
     }
 
