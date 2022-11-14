@@ -67,7 +67,7 @@ public class WinningNumber {
 
     private void validate(List<Integer> numbers){
         if(numbers.size() != Resoure.numberSize){
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ErrorResource.errorStart+ ErrorResource.numberCountNotFit);
         }
     }
 
