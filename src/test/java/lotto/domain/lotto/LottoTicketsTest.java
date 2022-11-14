@@ -8,7 +8,6 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.*;
 
 class LottoTicketsTest {
-
 	@DisplayName("컴퓨터 생성 로또의 개수가 제시된 금액에 따라 계산된 개수와 일치하는 것을 확인한다")
 	@Test
 	void verifyIssuedLottoSameAsDesignatedCount() {

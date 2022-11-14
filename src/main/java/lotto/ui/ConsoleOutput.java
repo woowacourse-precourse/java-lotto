@@ -1,7 +1,5 @@
 package lotto.ui;
 
-import lotto.domain.util.Rule;
-
 import java.util.List;
 
 public class ConsoleOutput {
@@ -17,8 +15,7 @@ public class ConsoleOutput {
 
 	public static final String RESULT_TITLE = "\n당첨 통계";
 	public static final String LINE = "---";
-	public static final String RESULT_CONTENT = "%d개 일치 (%s) - %d개\n";
-	public static final String RESULT_CONTENT_BONUS = "%d개 일치, 보너스 볼 일치 (%s) - %d개\n";
+
 	public static final String PROFIT_MESSAGE = "총 수익률은 %s%%입니다.";
 
 	public static void PrintErrorMessage(String message) {
@@ -34,24 +31,20 @@ public class ConsoleOutput {
 	}
 
 	public static void PrintNotificationMessage(int purchasedLotto) {
-		System.out.printf(PURCHASED_LOTTO_NUMBERS,purchasedLotto);
+		System.out.printf(PURCHASED_LOTTO_NUMBERS, purchasedLotto);
 	}
 
 	public static void PrintIssuedLotto(List<Integer> numbers) {
 		System.out.println(numbers);
 	}
 
-	public static void PrintResultMessage(int specialMatch, int[] counting) {
+	public static void PrintResultMessage(String content) {
 		System.out.println(RESULT_TITLE);
 		System.out.println(LINE);
-		System.out.printf(RESULT_CONTENT, Rule.FIFTH_PRIZE.getMatch(),Rule.FIFTH_PRIZE.getReward(), counting[0]);
-		System.out.printf(RESULT_CONTENT, Rule.FOURTH_PRIZE.getMatch(),Rule.FOURTH_PRIZE.getReward(), counting[1]);
-		System.out.printf(RESULT_CONTENT, Rule.THIRD_PRIZE.getMatch(),Rule.THIRD_PRIZE.getReward(), counting[2]);
-		System.out.printf(RESULT_CONTENT_BONUS, Rule.SECOND_PRIZE.getMatch(),Rule.SECOND_PRIZE.getReward(), specialMatch);
-		System.out.printf(RESULT_CONTENT, Rule.FIRST_PRIZE.getMatch(),Rule.FIRST_PRIZE.getReward(), counting[3]);
+		System.out.println(content);
 	}
 
 	public static void PrintProfitMessage(String profit) {
-		System.out.printf(PROFIT_MESSAGE,profit);
+		System.out.printf(PROFIT_MESSAGE, profit);
 	}
 }

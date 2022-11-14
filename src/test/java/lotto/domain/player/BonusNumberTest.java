@@ -57,5 +57,4 @@ class BonusNumberTest {
 		assertThatThrownBy(() -> BonusNumber.from(input, winningNumber))
 				.isInstanceOf(NumberFormatException.class);
 	}
-
 }

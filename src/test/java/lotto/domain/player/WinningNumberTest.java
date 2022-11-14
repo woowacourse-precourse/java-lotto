@@ -8,7 +8,6 @@ import org.junit.jupiter.params.provider.ValueSource;
 import static org.assertj.core.api.Assertions.*;
 
 class WinningNumberTest {
-
 	@DisplayName("유저가 당첨번호 입력시 WinningNumber 객체 생성을 확인한다")
 	@ParameterizedTest
 	@ValueSource(strings = {"1,2,3,4,5,6", "5,10,20,30,40,45"})

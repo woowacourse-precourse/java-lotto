@@ -11,7 +11,6 @@ import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class ValidationConfigTest {
-
 	@DisplayName("유저가 입력한 구입금액이 숫자로만 이루어져 있는지 검증한다")
 	@ParameterizedTest
 	@ValueSource(strings = {"1,000", "10l", "ABab"})

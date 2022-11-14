@@ -8,7 +8,6 @@ import org.junit.jupiter.params.provider.CsvSource;
 import static org.assertj.core.api.Assertions.*;
 
 class PurchaseCountTest {
-
 	@DisplayName("유저가 구입금액을 입력시 PurchaseCount 객체 생성을 확인한다")
 	@Test
 	void verifyPurchaseCountProperlyProcessed() {
@@ -24,5 +23,4 @@ class PurchaseCountTest {
 		int actual = PurchaseCount.from(purchaseAmount).toLotto();
 		assertThat(actual).isEqualTo(expected);
 	}
-
 }

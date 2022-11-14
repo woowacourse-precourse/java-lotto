@@ -8,7 +8,6 @@ import org.junit.jupiter.params.provider.ValueSource;
 import static org.assertj.core.api.Assertions.*;
 
 class PurchaseAmountTest {
-
 	@DisplayName("유저가 구입금액을 입력시 PurchaseAmount 객체 생성을 확인한다")
 	@ParameterizedTest
 	@ValueSource(strings = {"1000", "50000"})

@@ -5,7 +5,6 @@ import lotto.ui.ConsoleInput;
 import static lotto.ui.ConsoleOutput.*;
 
 public class Player {
-
 	ConsoleInput consoleInput = new ConsoleInput();
 
 	public String receivePurchaseAmount() {

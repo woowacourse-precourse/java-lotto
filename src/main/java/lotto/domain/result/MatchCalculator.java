@@ -6,7 +6,6 @@ import lotto.domain.player.BonusNumber;
 import lotto.domain.player.WinningNumber;
 
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 public class MatchCalculator {
@@ -17,21 +16,21 @@ public class MatchCalculator {
 
 	public static void findMatch(WinningNumber winningNumber, BonusNumber bonusNumber, LottoTickets lottoTickets) {
 		for (Lotto lotto : lottoTickets.getLottoTickets()) {
-			getLottoMatch(lotto, winningNumber.toNumbers());
-			getBonusMatch(lotto, lottoMatch, bonusNumber.toNumber());
+			getLottoMatch(lotto, winningNumber);
+			getBonusMatch(lotto, lottoMatch, bonusNumber);
 			countMatches(lottoMatch);
 		}
 	}
 
-	private static void getLottoMatch(Lotto lotto, List<Integer> winningNumber) {
+	private static void getLottoMatch(Lotto lotto, WinningNumber winningNumber) {
 		Set<Integer> checkLottoMatch = new HashSet<>(lotto.getNumbers());
-		checkLottoMatch.retainAll(winningNumber);
+		checkLottoMatch.retainAll(winningNumber.toNumbers());
 		lottoMatch = checkLottoMatch.size();
 	}
 
-	private static void getBonusMatch(Lotto lotto, int lottoMatch, int bonusNumber) {
+	private static void getBonusMatch(Lotto lotto, int lottoMatch, BonusNumber bonusNumber) {
 		bonusMatch = 0;
-		if ((lotto.getNumbers().contains(bonusNumber))) {
+		if ((lotto.getNumbers().contains(bonusNumber.toNumber()))) {
 			bonusMatch = 1;
 		}
 		recordBonusMatch(lottoMatch, bonusMatch);
