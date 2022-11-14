@@ -3,13 +3,14 @@ package lotto.domain;
 import java.util.ArrayList;
 import java.util.List;
 
-public class WinningLotto {
+import static lotto.domain.Preset.LOTTO_MAX_VALUE;
+import static lotto.domain.Preset.LOTTO_MIN_VALUE;
 
-    private final List<Integer> numbersWithBonus;
+public class WinningLotto {
 
     public WinningLotto(List<Integer> numbers, int bonusNumber) {
 
-        this.numbersWithBonus = createWinningLotto(numbers, bonusNumber);
+        List<Integer> numbersWithBonus = createWinningLotto(numbers, bonusNumber);
     }
 
     public static List<Integer> createWinningLotto(List<Integer> numbers, int bonusNumber) {
@@ -33,7 +34,7 @@ public class WinningLotto {
     }
 
     public static void checkOutOfRange(int number) {
-        if (number < 1 || number > 45)
+        if (number < LOTTO_MIN_VALUE || number > LOTTO_MAX_VALUE)
             throw new IllegalArgumentException("[ERROR] input error");
     }
 
