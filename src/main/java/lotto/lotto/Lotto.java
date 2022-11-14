@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
+import lotto.exception.LottoException;
 
 public class Lotto {
     private final List<Integer> numbers;
@@ -15,7 +16,7 @@ public class Lotto {
 
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
-            throw new IllegalArgumentException();
+            throw new LottoException(this.getClass());
         }
     }
 
@@ -30,9 +31,9 @@ public class Lotto {
         for (int buyCount = 0; buyCount < count; buyCount++) {
             Lotto lotto =
                     new Lotto(Lotto.createLottoNumbers()
-                    .stream()
-                    .sorted()
-                    .collect(Collectors.toList()));
+                            .stream()
+                            .sorted()
+                            .collect(Collectors.toList()));
             lottos.add(lotto);
         }
 
