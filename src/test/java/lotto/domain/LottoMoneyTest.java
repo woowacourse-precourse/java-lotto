@@ -3,8 +3,7 @@ package lotto.domain;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static org.assertj.core.api.Assertions.assertThatNoException;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.assertj.core.api.Assertions.*;
 
 class LottoMoneyTest {
 
@@ -26,5 +25,12 @@ class LottoMoneyTest {
     @Test
     void correctLottoMoney(){
         assertThatNoException().isThrownBy(() -> new LottoMoney(100000));
+    }
+
+    @DisplayName("로또 구매 금액을 1000원으로 나누면 로또 티켓 개수가 나온다.")
+    @Test
+    void correctLottoTicketCount(){
+        LottoMoney money = new LottoMoney(5000);
+        assertThat(money.calculateLottoTicket()).isEqualTo(5);
     }
 }
