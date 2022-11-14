@@ -35,9 +35,14 @@ public class View {
     public void printResult(Rank[] values, double yield) {
         try {
             printLine("당첨 통계\n---");
-            for (Rank rank : values) {
-                System.out.println(rank.getSameNumber() + "개 일치"
-                        + "(" + rank.getPrizeMoney() + ")" + " - " + rank.getCount() + "개");
+            for (int i = 0; i < values.length; i++) {
+                if (i == 3) {
+                    System.out.println(values[i].getSameNumber() + "개 일치, 보너스 볼 일치 "
+                            + "(" + values[i].getPrizeMoney() + ")" + " - " + values[i].getCount() + "개");
+                } else {
+                    System.out.println(values[i].getSameNumber() + "개 일치 "
+                            + "(" + values[i].getPrizeMoney() + ")" + " - " + values[i].getCount() + "개");
+                }
             }
             System.out.println("총 수익률은 " + yield + "%입니다.");
         } catch (IllegalArgumentException e) {
@@ -54,7 +59,7 @@ public class View {
             }
             return i / 1000;
         } catch (IllegalArgumentException e) {
-            System.out.println("[Error] 로또 구입 금액이 올바르지 않습니다.");
+            System.out.println("[ERROR] 로또 구입 번호가 올바르지 않습니다.");
             throw e;
         }
     }
@@ -73,7 +78,7 @@ public class View {
             }
             return numbers;
         } catch (IllegalArgumentException e) {
-            System.out.println("[Error] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
+            System.out.println("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
             throw e;
         }
     }
@@ -83,7 +88,7 @@ public class View {
             printLine("보너스 번호를 입력해 주세요.");
             return Integer.parseInt(Console.readLine());
         } catch (IllegalArgumentException e) {
-            System.out.println("[Error] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
+            System.out.println("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
             throw e;
         }
     }
