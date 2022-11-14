@@ -18,15 +18,15 @@ public class PrintMachine {
     }
     public static void winningResult(long [] countResult)
     {
-        System.out.println("당첨 통계\n" + "---");
-        System.out.println("3개 일치 (5,000원) - " + countResult[3]+ "개");
-        System.out.println("4개 일치 (50,000원) - "+ countResult[4]+ "개");
-        System.out.println("5개 일치 (1,500,000원) - "+ countResult[5] + "개");
-        System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - "+ countResult[7] + "개");
-        System.out.println("6개 일치 (2,000,000,000원) - "+ countResult[6] + "개");
+        System.out.println(WinningMessage.STATICS.getMessage());
+        System.out.println(WinningMessage.THIRD_MATCH.getMessage() + countResult[3]+ WinningMessage.VOLUME.getMessage());
+        System.out.println(WinningMessage.FORTH_MATCH.getMessage() + countResult[4]+ WinningMessage.VOLUME.getMessage());
+        System.out.println(WinningMessage.FIFTH_MATCH.getMessage() + countResult[5] + WinningMessage.VOLUME.getMessage());
+        System.out.println(WinningMessage.BONUS_MATCH.getMessage() + countResult[7] + WinningMessage.VOLUME.getMessage());
+        System.out.println(WinningMessage.SIXTH_MATCH.getMessage() + countResult[6] + WinningMessage.VOLUME.getMessage());
     }
     public static void yieldOfLotto(double value){
-        System.out.println("총 수익률은 " + value + "%입니다.");
+        System.out.println("총 수익률은 " + (float)value + "%입니다.");
     }
     public static void printLottoPapers(List<LottoPaper> lottoPapers) {
         for (LottoPaper lottoPaper : lottoPapers) {
