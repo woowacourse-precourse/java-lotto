@@ -26,9 +26,12 @@ public class DefaultView implements View {
 
         System.out.println(Views.REQUEST_BONUS_NUMBER.render());
         request(controller::inputBonusNumber);
+
+        renderStatics();
     }
 
     private void request(Consumer<String> consumer) {
+
         String input = Console.readLine();
         try {
             consumer.accept(input);
@@ -49,5 +52,10 @@ public class DefaultView implements View {
         String lottos = request(controller::outputLottos);
         System.out.println(lottos);
     }
-    
+
+    private void renderStatics() {
+        System.out.println(Views.STATICS.render());
+        System.out.println(Views.DIVIDER.render());
+    }
+
 }
