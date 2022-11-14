@@ -1,8 +1,11 @@
 package lotto.domain;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+
+import static camp.nextstep.edu.missionutils.Randoms.pickUniqueNumbersInRange;
 
 public class Lotto {
     private final List<Integer> numbers;
@@ -23,5 +26,15 @@ public class Lotto {
         }
     }
 
-    // TODO: 추가 기능 구현
+    // input 개수만큼 로또 발행
+    public static List<Lotto> IssueLotto(int count) {
+        List<Lotto> lotteries = new ArrayList<>();
+
+        for (int i = 0; i < count; i++) {
+            List<Integer> lottoNumber = pickUniqueNumbersInRange(1, 45, 6);
+            Lotto lotto = new Lotto(lottoNumber);
+            lotteries.add(lotto);
+        }
+        return lotteries;
+    }
 }

@@ -9,7 +9,7 @@ import static lotto.service.LottoService.stringToIntList;
 
 public class InputView {
     public static int inputMoney() throws IllegalArgumentException {
-        System.out.print("로또 구입 금액을 입력하시오: ");
+        System.out.print("로또 구입 금액을 입력하시오 : ");
         return inputMoneyException(Console.readLine());
     }
 
@@ -21,7 +21,7 @@ public class InputView {
     }
 
     public static int inputBonusNumber() throws IllegalArgumentException {
-        System.out.print("보너스 번호를 입력하시오");
+        System.out.print("보너스 번호를 입력하시오 : ");
         return bonusException(Console.readLine());
     }
 }
