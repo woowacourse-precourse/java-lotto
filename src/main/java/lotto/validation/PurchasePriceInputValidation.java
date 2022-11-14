@@ -1,6 +1,11 @@
 package lotto.validation;
 
 public class PurchasePriceInputValidation {
+    public void validate(String inputPurchasePrice) {
+        validateConsistedOnlyOfNumbers(inputPurchasePrice);
+        validateDividedByThousand(inputPurchasePrice);
+    }
+
     public void validateConsistedOnlyOfNumbers(String inputPurchasePrice) {
         try {
             Integer.parseInt(inputPurchasePrice);
