@@ -10,8 +10,8 @@ public class Lotto {
 
     public Lotto(List<Integer> lotto) {
         this.lotto = lotto;
-        lottoNumberSort();
         validate();
+        lottoNumberSort();
     }
 
     public static Lotto generator() {
