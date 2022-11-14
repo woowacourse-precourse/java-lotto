@@ -1,7 +1,9 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -47,7 +49,7 @@ public class User {
     private List<Lotto> lottos;
     private int price;
     private float earningRate;
-    private int[] rankingCount=new int[5];
+    private int[] rankingCount=new int[] {0, 0,0,0,0,0};
 
 
     public User(int price) {
@@ -77,8 +79,9 @@ public class User {
 
     private List<Integer> createNumbers() {
         List<Integer> numbers =Randoms.pickUniqueNumbersInRange(1, 45, 6);
-        Collections.sort(numbers);
+//        Collections.sort(numbers);
         return numbers;
+
     }
     public void printNumbersOfLottos(){
         for (Lotto lotto: this.lottos) {
@@ -104,8 +107,8 @@ public class User {
                 rankingCount[ranking.getOrder()]=rankingCount[ranking.getOrder()]+1;
             }
         }
-        float temp = (float)(100.0*((float)sum/(float)lottos.size()));
-        this.earningRate = Math.round(temp*10);
+        float temp = (float)(100.0*((float)sum/(float)this.price));
+        this.earningRate = Math.round(temp*10)/(float)10.0;
     }
     public void printPrizeResult(){
         System.out.println("당첨 통계\n---");
@@ -119,6 +122,6 @@ public class User {
                 this.rankingCount[WinningRanking.SECOND.getOrder()]);
         System.out.printf("6개 일치 (%d) - %d개\n", WinningRanking.FIRST_WITHOUT_BONUS.getPrize(),
                 this.rankingCount[WinningRanking.FIRST_WITHOUT_BONUS.getOrder()]);
-        System.out.printf("총 수익률은 %f%%입니다.\n", this.earningRate);
+        System.out.printf("총 수익률은 %.1f%%입니다.\n", this.earningRate);
     }
 }
