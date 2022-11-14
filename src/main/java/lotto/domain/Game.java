@@ -19,6 +19,8 @@ public class Game {
         askPrice();
         int purchasePrice = price.inputPurchaseAmount();
         showNumberOfPurchase();
+        numberGenerator.testRandomNumberGenerator();
+        numberGenerator.sortLottoNumbers(numberGenerator.numbers);
         numberGenerator.showPurchaseLottery(getCount());
         askWinningNumber();
         String winningNumbers = winningNumber.inputWinningNumbers();
@@ -65,7 +67,7 @@ public class Game {
                         prizeMoney.getCount());
             }
             if (!prizeMoney.equals(prizeBonus)) {
-                System.out.printf("%d개 일치 (%s원)- %d개\n", prizeMoney.getMatchingNumbers(),
+                System.out.printf("%d개 일치 (%s원) - %d개\n", prizeMoney.getMatchingNumbers(),
                         formatCommaInPrize(prizeMoney.getPrize()), prizeMoney.getCount());
             }
         }
