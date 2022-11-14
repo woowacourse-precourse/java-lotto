@@ -1,4 +1,4 @@
-package lotto.helper.factory.stub;
+package lotto.helper.stub;
 
 import lotto.mvc.controller.LottoGameController;
 import lotto.mvc.util.LottoGameStatus;

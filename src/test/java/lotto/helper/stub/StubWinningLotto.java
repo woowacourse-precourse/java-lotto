@@ -1,4 +1,4 @@
-package lotto.helper.factory.stub;
+package lotto.helper.stub;
 
 import java.util.List;
 import lotto.domain.Lotto;

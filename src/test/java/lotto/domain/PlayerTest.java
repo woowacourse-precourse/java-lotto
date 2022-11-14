@@ -4,7 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import java.math.BigDecimal;
 import java.util.List;
-import lotto.helper.factory.stub.StubWinningLotto;
+import lotto.helper.stub.StubWinningLotto;
 import lotto.helper.util.PlayerTestUtils;
 import lotto.util.number.LottoNumberFactory;
 import lotto.util.ranking.LottoRanking;

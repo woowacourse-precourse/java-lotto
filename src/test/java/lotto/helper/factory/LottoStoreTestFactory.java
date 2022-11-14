@@ -6,7 +6,7 @@ import lotto.domain.LottoPurchaseAmount;
 import lotto.domain.LottoStore;
 import lotto.domain.Player;
 import lotto.helper.exception.CannotReflectionException;
-import lotto.helper.factory.stub.StubWinningLotto;
+import lotto.helper.stub.StubWinningLotto;
 import lotto.helper.util.ReflectionFieldUtils;
 import lotto.util.ranking.LottoRanking;
 

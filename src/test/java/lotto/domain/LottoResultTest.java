@@ -6,7 +6,7 @@ import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
-import lotto.helper.factory.stub.StubWinningLotto;
+import lotto.helper.stub.StubWinningLotto;
 import lotto.helper.util.LottoResultTestUtils;
 import lotto.util.number.LottoNumberFactory;
 import lotto.util.ranking.LottoRanking;

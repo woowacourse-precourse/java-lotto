@@ -2,7 +2,7 @@ package lotto.mvc.controller;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import lotto.helper.factory.stub.StubLottoGameController;
+import lotto.helper.stub.StubLottoGameController;
 import lotto.mvc.util.LottoGameStatus;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
