@@ -32,13 +32,18 @@ public class Application {
 
     private static int enterMoney() {
         System.out.println(Constants.CONSOLE_MONEY);
-
         int money = Integer.parseInt(Console.readLine());
+        validateMoney(money);
+        return money;
+    }
+
+    private static void validateMoney(int money) {
         if (money % Constants.MONEY_TERMS != 0) {
             throw new IllegalArgumentException(Constants.LOTTO_MONEY_EXCEPTION);
         }
-
-        return money;
+        if (money <= 0) {
+            throw new IllegalArgumentException(Constants.LOTTO_MONEY_EXCEPTION);
+        }
     }
 
     private static List<Integer> enterWinningNumbers() {
