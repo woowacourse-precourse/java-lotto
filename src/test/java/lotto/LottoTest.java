@@ -30,5 +30,12 @@ class LottoTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+    @DisplayName("유저의 로또 번호와 당첨 번호를 대조해본다.")
+    @Test
+    void createCheckerBywinningNumsCheck() {
+        Checker checker = new Checker(List.of(1,2,3,4,5,6), List.of(1,2,3,4,5,6));
+        assertEquals(6, checker.winningNumCheck());
+    }
+
 
 }
