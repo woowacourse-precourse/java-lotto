@@ -39,5 +39,17 @@ public class Lotto {
         }
         return bonus;
     }
+
+    public static int compareNumber(List<Integer> numbers, List<Integer> lottoNumber, int bonus){
+        List<Integer> compareNumber = new ArrayList<>(numbers);
+        compareNumber.retainAll(lottoNumber);
+        if (compareNumber.size() == 5){
+            if (numbers.contains(bonus)){
+                return -1;
+            }
+        }
+        return compareNumber.size();
+
+    }
     // TODO: 추가 기능 구현
 }
