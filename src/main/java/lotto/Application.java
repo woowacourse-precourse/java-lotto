@@ -20,6 +20,12 @@ public class Application {
 
         List<Lotto> lotteries = new LinkedList<>();
         randomPickLotteries(lotteries, numberOfLotteries);
+
+        printInputWinLotto();
+    }
+
+    private static void printInputWinLotto() {
+        System.out.println(Message.INPUT_LOTTO_WIN.message);
     }
 
     public static void randomPickLotteries(List<Lotto> lotteries, int numberOfLotteries) {
