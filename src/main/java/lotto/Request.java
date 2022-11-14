@@ -12,7 +12,8 @@ public class Request {
 	private String userInputBonusNumber;
 	private List<Integer> winningNumbers;
 
-	public Request() {}
+	public Request() {
+	}
 
 	public void requestBettingMoney() {
 		System.out.println(EnumRequestMessage.BET.getValue());
@@ -20,13 +21,13 @@ public class Request {
 	}
 
 	public void validateBettingMoney() {
-		if(!Pattern.matches(EnumPatterns.BET.getValue(), userInputBettingMoney)) {
+		if (!Pattern.matches(EnumPatterns.BET.getValue(), userInputBettingMoney)) {
 			throw new IllegalArgumentException(EnumError.INVALID_INPUT.getValue());
 		}
 
 		int input = Integer.parseInt(userInputBettingMoney);
 
-		if(input > EnumNumeric.BET_LIMIT_EXCESS.getValue() || input <= EnumNumeric.BET_OVER_FLOW.getValue()) {
+		if (input > EnumNumeric.BET_LIMIT_EXCESS.getValue() || input <= EnumNumeric.BET_OVER_FLOW.getValue()) {
 			throw new IllegalArgumentException(EnumError.LIMIT_EXCESS.getValue());
 		}
 	}
@@ -49,7 +50,7 @@ public class Request {
 	public void splitUserInput() {
 		String[] splitUserInput = userInputWinningNumbers.split(EnumPatterns.SPLITTER.getValue());
 
-		if(splitUserInput.length != EnumNumeric.LOTTO_NUMBERS_BOUND.getValue()) {
+		if (splitUserInput.length != EnumNumeric.LOTTO_NUMBERS_BOUND.getValue()) {
 			throw new IllegalArgumentException(EnumError.DIGIT_MISMATCH.getValue());
 		}
 	}
@@ -57,8 +58,8 @@ public class Request {
 	public void isLottoNumbers() {
 		String[] splitUserInput = userInputWinningNumbers.split(EnumPatterns.SPLITTER.getValue());
 
-		for(String eachNumber : splitUserInput) {
-			if(!Pattern.matches(EnumPatterns.WINNING_NUMBERS.getValue(), eachNumber)) {
+		for (String eachNumber : splitUserInput) {
+			if (!Pattern.matches(EnumPatterns.WINNING_NUMBERS.getValue(), eachNumber)) {
 				throw new IllegalArgumentException(EnumError.OUT_OF_BOUNDS.getValue());
 			}
 		}
@@ -68,8 +69,8 @@ public class Request {
 		String[] splitUserInput = userInputWinningNumbers.split(EnumPatterns.SPLITTER.getValue());
 		winningNumbers = new ArrayList<>();
 
-		for(String eachNumbers : splitUserInput) {
-			if(winningNumbers.contains(Integer.parseInt(eachNumbers))) {
+		for (String eachNumbers : splitUserInput) {
+			if (winningNumbers.contains(Integer.parseInt(eachNumbers))) {
 				throw new IllegalArgumentException(EnumError.DUPLICATED.getValue());
 			}
 
@@ -77,7 +78,7 @@ public class Request {
 		}
 	}
 
-	public List<Integer> getWinningNumbers () {
+	public List<Integer> getWinningNumbers() {
 		return winningNumbers;
 	}
 
@@ -92,13 +93,13 @@ public class Request {
 	}
 
 	public void isBonusNumber() {
-		if(!Pattern.matches(EnumPatterns.BONUS_NUMBER.getValue(), userInputBonusNumber)) {
+		if (!Pattern.matches(EnumPatterns.BONUS_NUMBER.getValue(), userInputBonusNumber)) {
 			throw new IllegalArgumentException(EnumError.INVALID_INPUT.getValue());
 		}
 	}
 
 	public void validateDuplicationWithWinningNumbers() {
-		if(winningNumbers.contains(Integer.parseInt(userInputBonusNumber))) {
+		if (winningNumbers.contains(Integer.parseInt(userInputBonusNumber))) {
 			throw new IllegalArgumentException(EnumError.DUPLICATED.getValue());
 		}
 	}

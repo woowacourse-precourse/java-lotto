@@ -6,12 +6,13 @@ import java.util.Collections;
 import java.util.List;
 
 public class UserBet {
+
 	private int bettingMoney;
 	private int amount;
 
 	private List<List<Integer>> myLottos;
 
-	public UserBet(String userInput){
+	public UserBet(String userInput) {
 		bettingMoney = Integer.parseInt(userInput);
 		checkAmount();
 		buyLottos();
@@ -29,7 +30,7 @@ public class UserBet {
 	public void buyLottos() {
 		myLottos = new ArrayList<>();
 
-		while(myLottos.size() < amount) {
+		while (myLottos.size() < amount) {
 			List<Integer> randomLotto = new ArrayList<>();
 			randomLotto.addAll(
 					Randoms.pickUniqueNumbersInRange(
@@ -51,7 +52,7 @@ public class UserBet {
 	public void printResult() {
 		System.out.println(amount + EnumResult.BET_RESULT.getValue());
 
-		for(List<Integer> lottos : myLottos) {
+		for (List<Integer> lottos : myLottos) {
 			System.out.println(lottos);
 		}
 	}

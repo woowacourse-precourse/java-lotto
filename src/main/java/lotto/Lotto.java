@@ -4,34 +4,35 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Lotto {
-    private List<Integer> numbers;
 
-    public Lotto(List<Integer> numbers) {
-        validateLength(numbers);
-        validateDuplication(numbers);
-        this.numbers = numbers;
-    }
+	private List<Integer> numbers;
 
-    // TODO: 추가 기능 구현
-    public List<Integer> getWinningNumbers() {
-        return numbers;
-    }
+	public Lotto(List<Integer> numbers) {
+		validateLength(numbers);
+		validateDuplication(numbers);
+		this.numbers = numbers;
+	}
 
-    public void validateLength(List<Integer> numbers) {
-        if(numbers.size() != EnumNumeric.LOTTO_NUMBERS_BOUND.getValue()) {
-            throw new IllegalArgumentException(EnumError.OUT_OF_BOUNDS.getValue());
-        }
-    }
+	// TODO: 추가 기능 구현
+	public List<Integer> getWinningNumbers() {
+		return numbers;
+	}
 
-    public void validateDuplication(List<Integer> numbers) {
-        List<Integer> DuplicationValidator = new ArrayList<>();
+	public void validateLength(List<Integer> numbers) {
+		if (numbers.size() != EnumNumeric.LOTTO_NUMBERS_BOUND.getValue()) {
+			throw new IllegalArgumentException(EnumError.OUT_OF_BOUNDS.getValue());
+		}
+	}
 
-        for(int number : numbers) {
-            if(DuplicationValidator.contains(number)) {
-                throw new IllegalArgumentException(EnumError.DUPLICATED.getValue());
-            }
+	public void validateDuplication(List<Integer> numbers) {
+		List<Integer> DuplicationValidator = new ArrayList<>();
 
-            DuplicationValidator.add(number);
-        }
-    }
+		for (int number : numbers) {
+			if (DuplicationValidator.contains(number)) {
+				throw new IllegalArgumentException(EnumError.DUPLICATED.getValue());
+			}
+
+			DuplicationValidator.add(number);
+		}
+	}
 }
