@@ -18,6 +18,7 @@ public class Lotto {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException();
         }
+        isNumbersInRange(numbers);
     }
 
     // TODO: 추가 기능 구현
@@ -30,5 +31,13 @@ public class Lotto {
 
     public List<Integer> getNumbers() {
         return numbers;
+    }
+
+    public void isNumbersInRange(List<Integer> targetNumbers) {
+        for(Integer item : targetNumbers) {
+            if (item < 1 || item > 45) {
+                throw new IllegalArgumentException("[ERROR] 1부터 45 사이의 숫자를 입력해주세요.");
+            }
+        }
     }
 }
