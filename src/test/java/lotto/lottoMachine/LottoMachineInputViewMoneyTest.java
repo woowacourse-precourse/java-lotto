@@ -12,7 +12,9 @@ import org.junit.jupiter.api.Test;
 
 public class LottoMachineInputViewMoneyTest {
 
+    private static final String ERROR_MESSAGE = "[ERROR]";
     private static LottoMachine lottoMachine;
+
 
     @BeforeEach
     void init() {
@@ -29,7 +31,8 @@ public class LottoMachineInputViewMoneyTest {
 
         // when then
         assertThatThrownBy(() -> lottoMachine.buyLotto())
-            .isInstanceOf(IllegalArgumentException.class);
+            .isInstanceOf(IllegalArgumentException.class)
+            .hasMessageContaining(ERROR_MESSAGE);
     }
 
     @DisplayName("로또구입 금액은 숫자가 아니면 예외가 발생한다.")
@@ -42,6 +45,7 @@ public class LottoMachineInputViewMoneyTest {
 
         // when then
         assertThatThrownBy(() -> lottoMachine.buyLotto())
-            .isInstanceOf(IllegalArgumentException.class);
+            .isInstanceOf(IllegalArgumentException.class)
+            .hasMessageContaining(ERROR_MESSAGE);
     }
 }

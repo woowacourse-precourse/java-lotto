@@ -12,6 +12,7 @@ import org.junit.jupiter.api.Test;
 
 public class LottoMachineInputViewNumbersTest {
 
+    private static final String ERROR_MESSAGE = "[ERROR]";
     private static LottoMachine lottoMachine;
 
     @BeforeEach
@@ -29,7 +30,8 @@ public class LottoMachineInputViewNumbersTest {
 
         // when then
         assertThatThrownBy(() -> lottoMachine.inputUserNumbers())
-            .isInstanceOf(IllegalArgumentException.class);
+            .isInstanceOf(IllegalArgumentException.class)
+            .hasMessageContaining(ERROR_MESSAGE);
     }
 
     @DisplayName("로또 번호에서 마지막에 ,로 입력하면 예외가 발생한다.")
@@ -42,7 +44,8 @@ public class LottoMachineInputViewNumbersTest {
 
         // when then
         assertThatThrownBy(() -> lottoMachine.inputUserNumbers())
-            .isInstanceOf(IllegalArgumentException.class);
+            .isInstanceOf(IllegalArgumentException.class)
+            .hasMessageContaining(ERROR_MESSAGE);
     }
 
     @DisplayName("로또 번호는 숫자로 입력하지 않으면 예외가 발생한다.")
@@ -55,7 +58,8 @@ public class LottoMachineInputViewNumbersTest {
 
         // when then
         assertThatThrownBy(() -> lottoMachine.inputUserNumbers())
-            .isInstanceOf(IllegalArgumentException.class);
+            .isInstanceOf(IllegalArgumentException.class)
+            .hasMessageContaining(ERROR_MESSAGE);
     }
 
     @DisplayName("중복된 숫자로 로또 번호를 입력하면 예외가 발생한다.")
@@ -68,7 +72,8 @@ public class LottoMachineInputViewNumbersTest {
 
         // when then
         assertThatThrownBy(() -> lottoMachine.inputUserNumbers())
-            .isInstanceOf(IllegalArgumentException.class);
+            .isInstanceOf(IllegalArgumentException.class)
+            .hasMessageContaining(ERROR_MESSAGE);
     }
 
     @DisplayName("로또 번호는 6개의 숫자로 구성되지 않으면 예외가 발생한다.")
@@ -81,6 +86,7 @@ public class LottoMachineInputViewNumbersTest {
 
         // when then
         assertThatThrownBy(() -> lottoMachine.inputUserNumbers())
-            .isInstanceOf(IllegalArgumentException.class);
+            .isInstanceOf(IllegalArgumentException.class)
+            .hasMessageContaining(ERROR_MESSAGE);
     }
 }
