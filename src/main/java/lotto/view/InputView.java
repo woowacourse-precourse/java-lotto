@@ -19,6 +19,7 @@ public class InputView {
         String input = Console.readLine();
 
         int purchaseAmount = stringToInt(input);
+        validatePositiveNumber(purchaseAmount);
         validateUnitStandard(purchaseAmount);
 
         return purchaseAmount;
