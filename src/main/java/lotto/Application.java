@@ -17,5 +17,12 @@ public class Application {
             moneyList.add(match.getResults());
         }
         View.prizes(moneyList);
+        float yield = calculateYield(price.getInputPrice(), moneyList.stream().reduce(Integer::sum).get());
+        View.yield(yield);
     }
+
+    public static float calculateYield(int price, int income){
+        return income/price;
+    }
+
 }
