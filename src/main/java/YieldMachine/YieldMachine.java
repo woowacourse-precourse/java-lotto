@@ -88,8 +88,8 @@ public class YieldMachine {
                     = String.format("%d개 일치 (%,d원) - %d개", matchingNumber.get(0), prize, countOfRewards.get(index));
             System.out.printf(message + "\n");
         }
-        String yieldMessage = String.format("%.1f", yield);
-        System.out.println("총 수익률은 " + yieldMessage + "%입니다.");
+        String yieldMessage = String.format("총 수익률은 %.1f%c입니다.", yield, 37);
+        System.out.println(yieldMessage);
     }
 
     public List<Integer> getCountOfRewards() {
