@@ -13,8 +13,12 @@ public class InputView {
         inputChecker=new InputChecker();
     }
 
-    public String inputMoney() throws IllegalArgumentException{
+    public String inputMoney() {
         System.out.println(SystemMessage.INPUT_PURCHASE_MONEY.print());
+        return Console.readLine();
+    }
+    public String inputWinningNumber() throws IllegalArgumentException{
+        System.out.println(SystemMessage.INPUT_WINNING_LOTTO_NUMBER.print());
         return Console.readLine();
     }
 }

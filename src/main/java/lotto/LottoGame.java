@@ -8,6 +8,7 @@ import lotto.view.InputView;
 import lotto.view.OutputView;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -44,5 +45,12 @@ public class LottoGame {
             }
         }
         outputView.printLottoNumbersAll(lottos);
+    }
+    public void getLottoWinningNumberInput(){
+        String input=inputView.inputWinningNumber();
+        List<String> inputWinningLottoNumbers = Arrays.asList(input.split(","));
+        if(inputChecker.checkInputWinningLottoNumbers(inputWinningLottoNumbers)){
+
+        }
     }
 }
