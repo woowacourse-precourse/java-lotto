@@ -24,4 +24,25 @@ public class Money {
     public long countAffordableFor(long price) {
         return amount / price;
     }
+
+    public Money add(Money money) {
+        return new Money(amount + money.amount);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o)
+            return true;
+        if (o == null || getClass() != o.getClass())
+            return false;
+
+        Money money = (Money)o;
+
+        return amount == money.amount;
+    }
+
+    @Override
+    public int hashCode() {
+        return (int)(amount ^ (amount >>> 32));
+    }
 }

@@ -27,4 +27,12 @@ public class MoneyTest {
     void count_affordable_by_price(int amount, int price, int expected) {
         assertThat(new Money(amount).countAffordableFor(price)).isEqualTo(expected);
     }
+
+    @ParameterizedTest(name = "금액 {0} + 금액 {1} = {2}")
+    @CsvSource(value = {"15000,1500,16500", "10000,1100,11100"}, delimiter = ',')
+    void add_money(int amount, int otherAmount, int expected) {
+        Money addedMoney = new Money(amount).add(new Money(otherAmount));
+
+        assertThat(addedMoney).isEqualTo(new Money(expected));
+    }
 }
