@@ -9,16 +9,20 @@ import java.util.List;
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
-        Money purchasePrice = new Money(askPurchasePrice());
-        Ticket tickets = new Ticket(purchasePrice);
+        try {
+            Money purchasePrice = new Money(askPurchasePrice());
+            Ticket tickets = new Ticket(purchasePrice);
 
-        LottoGenerator generator = new LottoGenerator();
-        List<Lotto> lottos = generator.createLottos(tickets);
-        printPurchasedLottos(lottos);
+            LottoGenerator generator = new LottoGenerator();
+            List<Lotto> lottos = generator.createLottos(tickets);
+            printPurchasedLottos(lottos);
 
-        WinLotto winLotto = new WinLotto(askWinNumbers(), askBonusNumber());
-        Statistics statistics = new Statistics(lottos, winLotto, purchasePrice);
-        printStatisticsResult(statistics);
+            WinLotto winLotto = new WinLotto(askWinNumbers(), askBonusNumber());
+            Statistics statistics = new Statistics(lottos, winLotto, purchasePrice);
+            printStatisticsResult(statistics);
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     public static String askPurchasePrice() {
