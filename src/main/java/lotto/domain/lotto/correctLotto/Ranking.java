@@ -14,6 +14,7 @@ public enum Ranking {
     FIFTHRANKING(3, 5, 5000),
     ;
 
+    private static final Integer SECOND_RANKING_COUNT = 6;
     private int count;
     private int rankingValue;
     private long reward;
@@ -32,4 +33,18 @@ public enum Ranking {
         return reward;
     }
 
+    public static Ranking makeRanking(int count, boolean bonus) {
+        if (count < SECOND_RANKING_COUNT) {
+            return Arrays.stream(Ranking.values())
+                    .filter(ranking -> ranking.count == count)
+                    .findFirst()
+                    .orElse(OUTOFRANKNG);
+        }
+
+        if (count == SECOND_RANKING_COUNT && bonus == true) {
+            return Ranking.SECONDRANKING;
+        }
+
+        return Ranking.FIRSTRANKING;
+    }
 }
