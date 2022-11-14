@@ -1,4 +1,4 @@
-package lotto;
+package lotto.ExceptionChecker;
 
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -25,5 +25,10 @@ class LottoTest {
         assertThatThrownBy(() -> new Lotto(List.of(1, 2, 3, 4, 5, 5)))
                 .isInstanceOf(NoSuchElementException.class);
     }
-
+    @DisplayName("적은 숫자가 1~45 범위를 넘어간다.")
+    @Test
+    void createLottoByOverlap() {
+        assertThatThrownBy(() -> new Lotto(List.of(1, 46, 3, 4, 5, 6)))
+                .isInstanceOf(NoSuchElementException.class);
+    }
 }
