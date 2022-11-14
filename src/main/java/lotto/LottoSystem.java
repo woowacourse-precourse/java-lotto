@@ -30,7 +30,16 @@ public class LottoSystem {
     }
 
 
-
+    public WinInfo judgeWin(List<Integer> target) {
+        int matchedCnt = getMatchedCnt(target);
+        int bonusMatchedCnt = getBonusMatchedCnt(target);
+        for (WinInfo winInfo : this.winInformations) {
+            if (winInfo.match(matchedCnt, bonusMatchedCnt)) {
+                return winInfo;
+            }
+        }
+        return this.noWin;
+    }
 
     private int getMatchedCnt(List<Integer> target) {
         int result = 0;
