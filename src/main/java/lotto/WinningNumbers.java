@@ -88,4 +88,8 @@ public class WinningNumbers {
     public List<Integer> getWinningNumbers() {
         return this.winningNumbers;
     }
+
+    public int getBonusNumber() {
+        return this.bonusNumber;
+    }
 }
