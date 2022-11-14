@@ -16,6 +16,8 @@ public class Application {
         EnterWinningNumber enterWinningNumber = new EnterWinningNumber();
         WinningLotto winningLotto = enterWinningNumber.enterWinngLottoNumber();
 
+        winningLotto.compareLotto(purchaseLottos);
+
         ResultPrint resultPrint = new ResultPrint();
         resultPrint.winningStatistics(winningLotto.getLottoRank());
     }
