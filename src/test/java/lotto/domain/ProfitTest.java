@@ -20,7 +20,7 @@ class ProfitTest {
     void case1() {
         List<Integer> winningPrices = List.of(5000, 5000, 5000, 0, 0);
 
-        assertThat(p.calProfitRate(winningPrices, BuyLotto.LOTTO_PRICE,2)).isEqualTo(300.0);
+        assertThat(p.calProfitRate(winningPrices,2)).isEqualTo(300.0);
     }
 
     @DisplayName("수익률 계산 케이스2")
@@ -28,7 +28,7 @@ class ProfitTest {
     void case2() {
         List<Integer> winningPrices = List.of(5000, 0, 0, 0, 0, 0, 0 ,0);
 
-        assertThat(p.calProfitRate(winningPrices, BuyLotto.LOTTO_PRICE,2)).isEqualTo(62.5);
+        assertThat(p.calProfitRate(winningPrices,2)).isEqualTo(62.5);
     }
 
 
@@ -37,7 +37,7 @@ class ProfitTest {
     void case3() {
         List<Integer> winningPrices = List.of(0, 0, 0, 0, 2000000000);
 
-        assertThat(p.calProfitRate(winningPrices, BuyLotto.LOTTO_PRICE,2)).isEqualTo(40000000.0);
+        assertThat(p.calProfitRate(winningPrices, 2)).isEqualTo(40000000.0);
     }
 
     @DisplayName("수익률 계산 케이스4")
@@ -45,6 +45,6 @@ class ProfitTest {
     void case4() {
         List<Integer> winningPrices = List.of(0, 0, 0, 30000000, 2000000000);
 
-        assertThat(p.calProfitRate(winningPrices, BuyLotto.LOTTO_PRICE,2)).isEqualTo(40600000.0);
+        assertThat(p.calProfitRate(winningPrices,2)).isEqualTo(40600000.0);
     }
 }
