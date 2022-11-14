@@ -2,8 +2,11 @@ package lotto.domain;
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.*;
@@ -16,6 +19,17 @@ class LottoServiceTest {
     @BeforeEach
     void beforeEach() {
         lottoService = new LottoService();
+    }
+
+    @Test
+    @DisplayName("발생한 로또 오름차순 정렬 테스트")
+    void sortedLottoNumbersTest() {
+
+        List<Integer> lottoNumbers = Arrays.asList(21, 34, 5, 22, 47, 43);
+
+        lottoService.sortedLottoNumbers(lottoNumbers);
+
+        assertThat(lottoNumbers).isEqualTo(Arrays.asList(5, 21, 22, 34, 43, 47));
     }
 
     @Test
