@@ -97,14 +97,17 @@ public class Application {
         System.out.print("당첨 번호를 입력해 주세요.");
         String myPickNum = Console.readLine();
 
-        String[] myPickNumArray = myPickNum.split(",");
+        String[] numbers = myPickNum.split(",");
 
         List<Integer> myLottoNum = new ArrayList<Integer>();
 
-        for (int i = 0; i < myPickNumArray.length; i++) {
-            int myNum = Integer.parseInt(myPickNumArray[i]);
-            myLottoNum.add(myNum);
-            Collections.sort(myLottoNum);
+        for (int i = 0; i < numbers.length; i++) {
+            try {
+                myLottoNum.add(Integer.parseInt(numbers[i]));
+                Collections.sort(myLottoNum);
+            } catch (NumberFormatException e) {
+                throw new IllegalArgumentException("[ERROR] 입력 타입 오류.");
+            }
         }
         return myLottoNum;
     }
@@ -117,13 +120,22 @@ public class Application {
      */
     public static int bonusNum(List<Integer> myLottoNum) {
         System.out.print("보너스 번호를 입력해 주세요.");
-        int bonusPick = Integer.parseInt(Console.readLine());
-        int bonusNum = 0;
+        int bonusPick = 0;
+        try {
+            bonusPick = Integer.parseInt(Console.readLine());
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("[ERROR] 입력 타입 오류.");
+        }
 
+        int bonusNum = 0;
+        if (myLottoNum.contains(bonusPick)) {
+            throw new IllegalArgumentException("[ERROR] 중복입력.에러 발생.");
+        }
         if (!myLottoNum.contains(bonusPick)) {
             bonusNum = bonusPick;
         }
 
         return bonusNum;
     }
+
 }
