@@ -12,7 +12,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import lotto.domain.lottery.BonusNumber;
-import lotto.domain.Comparator;
 import lotto.domain.lottery.Lotto;
 import lotto.domain.lottery.LottoGroup;
 import lotto.domain.lottery.WinningLotto;
@@ -35,13 +34,12 @@ public class Result {
 
     public List<Integer> calculateMatchResults(LottoGroup lottoGroup,
             WinningLotto winningLotto, BonusNumber bonusNumber) {
-        Comparator comparator = new Comparator();
         List<Integer> matchResults = new ArrayList<>(Arrays.asList(0, 0, 0, 0, 0));
         int matchCount = 0;
         for (Lotto lotto : lottoGroup.getLottoGroup()) {
-            matchCount = comparator.getMatchCount(lotto, winningLotto.getNumbers());
+            matchCount = lotto.getMatchCount(winningLotto.getNumbers());
             if (matchCount == 5) {
-                setMatchResultsWithBonusNumber(bonusNumber.getNumber(), comparator, matchResults, lotto);
+                setMatchResultsWithBonusNumber(bonusNumber.getNumber(), matchResults, lotto);
                 continue;
             }
             if (matchCount >= 3) {
@@ -66,14 +64,14 @@ public class Result {
         return SIX_MATCHES.getKey();
     }
 
-    private void setMatchResultsWithBonusNumber(int bonusNumber, Comparator comparator, List<Integer> matchResults,
+    private void setMatchResultsWithBonusNumber(int bonusNumber, List<Integer> matchResults,
             Lotto lotto) {
-        int index = getIndexWithBonusNumber(bonusNumber, lotto, comparator);
+        int index = getIndexWithBonusNumber(bonusNumber, lotto);
         matchResults.set(index, matchResults.get(index) + 1);
     }
 
-    private int getIndexWithBonusNumber(int bonusNumber, Lotto lotto, Comparator comparator) {
-        if (!comparator.hasBonusNumber(lotto, bonusNumber)) {
+    private int getIndexWithBonusNumber(int bonusNumber, Lotto lotto) {
+        if (!lotto.hasBonusNumber(bonusNumber)) {
             return FIVE_MATCHES_WITHOUT_BONUS.getKey();
         }
         return FIVE_MATCHES_WITH_BONUS.getKey();

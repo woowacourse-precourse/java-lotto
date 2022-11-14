@@ -3,6 +3,7 @@ package lotto.domain.lottery;
 import static lotto.constant.SystemValue.LOTTERY_NUMBERS_SIZE;
 
 import java.util.List;
+import java.util.function.Predicate;
 
 public class Lotto {
 
@@ -20,8 +21,15 @@ public class Lotto {
         checkConflictValid(numbers);
     }
 
-    public List<Integer> getNumbers() {
-        return numbers;
+    public int getMatchCount(List<Integer> winningNumbers) {
+        long matchCount = numbers.stream()
+                .filter(number -> winningNumbers.stream().anyMatch(Predicate.isEqual(number)))
+                .count();
+        return Long.valueOf(matchCount).intValue();
+    }
+
+    public boolean hasBonusNumber(int bonusNumber) {
+        return numbers.contains(bonusNumber);
     }
 
     public static void checkSizeValid(List<Integer> numbers) {
