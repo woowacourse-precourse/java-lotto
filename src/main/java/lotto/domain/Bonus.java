@@ -20,7 +20,7 @@ public class Bonus {
         return Integer.parseInt(removeSpace(input));
     }
 
-    public int get() {
+    public int getBonusNumber() {
         return bonusNumber;
     }
 }

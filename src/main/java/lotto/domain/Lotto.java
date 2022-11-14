@@ -5,8 +5,7 @@ import static lotto.util.Formatter.verifyRangeOfLottoNumber;
 import java.util.List;
 
 public class Lotto {
-    private final List<Integer> numbers; // private 변경 불가
-    // Lotto에 필드(인스턴스 변수)를 추가할 수 없다.
+    private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
@@ -25,7 +24,7 @@ public class Lotto {
         }
     }
 
-    public List<Integer> get() {
+    public List<Integer> getWinningNumbers() {
         return numbers;
     }
 

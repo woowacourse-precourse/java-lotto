@@ -1,6 +1,7 @@
 package lotto.controller;
 
 import static lotto.domain.Purchase.LOTTO_PRICE;
+import static lotto.util.Formatter.formatWinningNumbersInput;
 import static lotto.util.Validation.validateDuplicates;
 
 import java.util.ArrayList;
@@ -13,7 +14,6 @@ import lotto.domain.Purchase;
 import lotto.domain.Ranking;
 import lotto.domain.Statistics;
 import lotto.domain.Yield;
-import lotto.util.Formatter;
 import lotto.view.InputView;
 import lotto.view.OutputView;
 
@@ -59,14 +59,14 @@ public class LottoController {
 
     private static void setWinningNumbers() {
         OutputView.printWinningNumberInput();
-        Lotto lotto = new Lotto(Formatter.formatWinningNumbersInput(InputView.getInput()));
-        winningNumbers = lotto.get();
+        Lotto lotto = new Lotto(formatWinningNumbersInput(InputView.getInput()));
+        winningNumbers = lotto.getWinningNumbers();
     }
 
     private static void setBonusNumber() {
         OutputView.printBonusNumberInput();
         Bonus bonus = new Bonus(InputView.getInput());
-        bonusNumber = bonus.get();
+        bonusNumber = bonus.getBonusNumber();
     }
 
     private static void aggregateStatisticResults() {
