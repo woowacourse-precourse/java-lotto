@@ -41,4 +41,8 @@ public class Wallet {
             System.out.println(l.getNumbers().toString());
         }
     }
+
+    public List<Lotto> getMyLottos() {
+        return myLottos;
+    }
 }
