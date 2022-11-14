@@ -7,14 +7,23 @@ import java.util.List;
 
 public class LottoResult {
 
-    LottoView lottoView = new LottoView();
-    List<List<Integer>> lottos = new ArrayList<>();
+    private LottoView lottoView = new LottoView();
+    private List<List<Integer>> lottos = new ArrayList<>();
+    private List<Integer> winningNumber;
     private int money;
+    private int bonusNumber;
 
     public void buyNewLottos() {
         money = lottoView.getMoney();
         System.out.println();
         printLottosNumbers(money / 1000);
+    }
+
+    public void getWinningNumberAndBonusNumber() {
+        System.out.println();
+        winningNumber = lottoView.getWinningNumber();
+        System.out.println();
+        bonusNumber = lottoView.getBonusNumber(winningNumber);
     }
 
     public void printLottosNumbers(int count) {
