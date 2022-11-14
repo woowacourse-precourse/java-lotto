@@ -18,4 +18,11 @@ public class Ui {
             System.out.println(lotto.getNumbers().toString());
         }
     }
+
+    public String inputMatchNumbers() {
+        System.out.println("당첨 번호를 입력해 주세요.");
+        String in = Console.readLine();
+
+        return in;
+    }
 }

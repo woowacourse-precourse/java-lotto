@@ -20,5 +20,7 @@ public class Game {
 
         List<Lotto> lottos = service.generateLottos(lottoAmount);
         ui.printLottos(lottos);
+
+        String inputMatchNumbers = ui.inputMatchNumbers();
     }
 }
