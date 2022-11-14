@@ -88,6 +88,9 @@ public class View {
     public void printMoneyInputMsg() {
         System.out.println("구입금액을 입력해 주세요.");
     }
+    public void printNumberOfLottosMsg(int numOfLottos) {
+        System.out.println(numOfLottos+"개를 구매했습니다.");
+    }
 
 
 }
