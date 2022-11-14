@@ -62,22 +62,16 @@ public class LottoGame {
     }
 
     public static void statisticsInput(Integer sameNumber) {
-        switch (sameNumber) {
-            case 3:
-                FIFTH.count++;
-                break;
-            case 4:
-                FOURTH.count++;
-                break;
-            case 5:
-                THIRD.count++;
-                break;
-            case 7:
-                SECOND.count++;
-                break;
-            case 6:
-                FIRST.count++;
-                break;
+        if (sameNumber == 3) {
+            FIFTH.count++;
+        } else if (sameNumber == 4) {
+            FOURTH.count++;
+        } else if (sameNumber == 5) {
+            THIRD.count++;
+        } else if (sameNumber == 7) {
+            SECOND.count++;
+        } else if (sameNumber == 6) {
+            FIRST.count++;
         }
     }
 
