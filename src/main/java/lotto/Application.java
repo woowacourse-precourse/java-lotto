@@ -7,4 +7,5 @@ public class Application {
         LottoApplication lottoApplication = new LottoApplication();
         lottoApplication.play();
     }
+
 }

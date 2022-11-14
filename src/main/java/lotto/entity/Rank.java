@@ -42,7 +42,7 @@ public enum Rank {
     @Override
     public String toString() {
         StringBuilder output = new StringBuilder();
-        output.append(count).append("개 일치");
+        output.append(String.format("%d개 일치", count));
         if (bonus) {
             output.append(", 보너스 볼 일치");
         }

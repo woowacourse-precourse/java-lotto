@@ -24,7 +24,8 @@ public class WinningLotto {
     private void validateRange(int bonus) {
         if (outOfRange(bonus)) {
             throw new IllegalArgumentException(
-                "보너스 번호는 " + RANGE_START + "부터 " + RANGE_END + " 사이의 숫자여야 합니다. 입력 : " + bonus);
+                String.format("보너스 번호는 %d부터 %d사이 숫자여야 합니다. 입력 : %d", RANGE_START, RANGE_END,
+                    bonus));
         }
     }
 
@@ -34,7 +35,8 @@ public class WinningLotto {
 
     private void validateDuplication(int bonus) {
         if (winningLotto.contains(bonus)) {
-            throw new IllegalArgumentException("보너스 번호는 로또 번호와 중복된 숫자를 가지면 안됩니다. 입력 : " + bonus);
+            throw new IllegalArgumentException(
+                String.format("보너스 번호는 로또 번호와 중복된 숫자를 가지면 안됩니다. 입력 : %d", bonus));
         }
     }
 

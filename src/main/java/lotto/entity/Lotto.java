@@ -30,14 +30,15 @@ public class Lotto {
     private void validateCount(List<Integer> numbers) {
         if (numbers.size() != COUNT) {
             throw new IllegalArgumentException(
-                "로또는 " + COUNT + "개를 가져야 합니다. 입력 : " + numbers);
+                String.format("로또는 %d개를 가져야 합니다. 입력 : %s", COUNT, numbers));
         }
     }
 
     private void validateRange(List<Integer> numbers) {
         if (hasOutOfRangeNumber(numbers)) {
             throw new IllegalArgumentException(
-                "로또 번호는 " + RANGE_START + "부터 " + RANGE_END + " 사이의 숫자여야 합니다. 입력 : " + numbers);
+                String.format("로또 번호는 %d부터 %d사이 숫자여야 합니다. 입력 : %s", RANGE_START, RANGE_END,
+                    numbers));
         }
     }
 
@@ -52,14 +53,15 @@ public class Lotto {
 
     private void validateDuplication(List<Integer> numbers) {
         if (hasDuplication(numbers)) {
-            throw new IllegalArgumentException("로또 번호는 중복된 숫자를 가지면 안됩니다. 입력 : " + numbers);
+            throw new IllegalArgumentException(
+                String.format("로또 번호는 중복된 숫자를 가지면 안 됩니다. 입력 : %s", numbers));
         }
     }
 
     private boolean hasDuplication(List<Integer> numbers) {
         return numbers.stream()
             .distinct()
-            .count() != COUNT;
+            .count() != numbers.size();
     }
 
     public boolean contains(int number) {
