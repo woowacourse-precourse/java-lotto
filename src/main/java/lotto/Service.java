@@ -9,6 +9,7 @@ public class Service {
 
     private static final int LOTTERY_PRICE = 1000;
     private static final int BONUS_CRITERIA = 5;
+    private static final int HUNDRED = 100;
     private static final String NUMBER_REGEX = "[+-]?\\d*(\\.\\d+)?";
 
     Exception exception = new Exception();
@@ -113,6 +114,11 @@ public class Service {
             allWinnings += rankType.getReward();
         }
         return allWinnings;
+    }
+
+    public double calculateTotalReturn(double investment, double income) {
+        double result = income * HUNDRED / investment;
+        return result;
     }
 
 

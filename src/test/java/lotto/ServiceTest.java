@@ -9,10 +9,12 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.MethodSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
+import static org.assertj.core.api.Assertions.in;
 
 public class ServiceTest {
 
@@ -98,13 +100,20 @@ public class ServiceTest {
     @DisplayName("로또 당첨이 순위별로 몇개가 되었는지 반환하는 테스트")
     @ParameterizedTest
     @MethodSource("provideRankTypesAndCountEachRanks")
-    void countByWinningRanks(List<RankType> rankTypes, List<Integer> eachRanksCount) {
+    void countByWinningRanksTest(List<RankType> rankTypes, List<Integer> eachRanksCount) {
         List<Integer> rankCounts = new ArrayList<>();
         for(RankType rankType : RankType.values()) {
             int rankCount = Collections.frequency(rankTypes, rankType);
             rankCounts.add(rankCount);
         }
         assertThat(rankCounts).isEqualTo(eachRanksCount);
+    }
+
+    @DisplayName("로또 당첨 수익률 테스트")
+    @ParameterizedTest
+    @CsvSource(value = {"8000:5000:62.5", "5000:10000:200"}, delimiter = ':')
+    void calculateTotalReturnTest(int investment, int income, double result) {
+        assertThat(service.calculateTotalReturn(investment, income)).isEqualTo(result);
     }
 
     private static Stream<Arguments> provideLottoAndWinningNumber() {
