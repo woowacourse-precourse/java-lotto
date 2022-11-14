@@ -22,7 +22,6 @@ public class CheckWinningLotto {
 
     private List<Integer> checkWinningTotal(List<List<Integer>> comparedNumber, List<Integer> winningNumber, int bonusNumber) {
         List<Integer> totalCount = new ArrayList<>();
-
         for (int i = 0; i < comparedNumber.size(); i++) {
             int correctCount = checkWinning(comparedNumber.get(i), winningNumber);
             if (correctCount >= 3) {
@@ -30,6 +29,7 @@ public class CheckWinningLotto {
             }
 
             if ((correctCount == 5) && (checkWinningBonus(comparedNumber.get(i), bonusNumber))) {
+                totalCount.remove(totalCount.size()-1);
                 totalCount.add(4);
             }
         }
