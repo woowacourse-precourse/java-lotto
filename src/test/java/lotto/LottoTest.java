@@ -3,6 +3,7 @@ package lotto;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.math.BigInteger;
 import java.util.List;
 import java.util.Map;
 
@@ -46,5 +47,15 @@ class LottoTest {
         );
 
     }
-    // 아래에 추가 테스트 작성 가능
+
+    @DisplayName("로또 금액 계산.")
+    @Test
+    void calculateWinningAmount() {
+        Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+
+        Map<Lotto.LottoMatch, Integer> lottoStatistics = Map.of(MATCH_THREE, 1, MATCH_FOUR, 1,
+                MATCH_FIVE, 1, MATCH_FIVE_WITH_BONUS, 1, MATCH_SIX, 1);
+
+        assertThat(lotto.calculateWinningAmount(lottoStatistics)).isEqualTo(BigInteger.valueOf(2031555000));
+    }
 }

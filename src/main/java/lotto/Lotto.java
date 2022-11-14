@@ -1,8 +1,7 @@
 package lotto;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.math.BigInteger;
+import java.util.*;
 
 public class Lotto {
     private final List<Integer> numbers;
@@ -19,7 +18,7 @@ public class Lotto {
     }
 
     public Map<LottoMatch, Integer> calculateLottoStatistics(List<List<Integer>> userLottoList, int bonusNumber) {
-        Map<LottoMatch, Integer> calculateResult = new HashMap<>();
+        Map<LottoMatch, Integer> calculateResult = new TreeMap<>();
 
         for (List<Integer> current : userLottoList) {
             LottoMatch currentResult = this.calculateSingleLottoResult(current, bonusNumber);
@@ -32,7 +31,6 @@ public class Lotto {
                 }
             }
         }
-
         return calculateResult;
     }
 
@@ -68,6 +66,25 @@ public class Lotto {
         return null;
     }
 
+    public BigInteger calculateWinningAmount(Map<LottoMatch, Integer> lottoStatistics) {
+        BigInteger result = new BigInteger("0");
+        for (LottoMatch key : lottoStatistics.keySet()) {
+            int value = lottoStatistics.get(key);
+            if (key == LottoMatch.MATCH_THREE) {
+                result = result.add(WinningAmount.MATCH_THREE.getValue().multiply(BigInteger.valueOf(value)));
+            } else if (key == LottoMatch.MATCH_FOUR) {
+                result = result.add(WinningAmount.MATCH_FOUR.getValue().multiply(BigInteger.valueOf(value)));
+            } else if (key == LottoMatch.MATCH_FIVE) {
+                result = result.add(WinningAmount.MATCH_FIVE.getValue().multiply(BigInteger.valueOf(value)));
+            } else if (key == LottoMatch.MATCH_FIVE_WITH_BONUS) {
+                result = result.add(WinningAmount.MATCH_FIVE_WITH_BONUS.getValue().multiply(BigInteger.valueOf(value)));
+            } else if (key == LottoMatch.MATCH_SIX) {
+                result = result.add(WinningAmount.MATCH_SIX.getValue().multiply(BigInteger.valueOf(value)));
+            }
+        }
+        return result;
+    }
+
     public enum LottoMatch {
         MATCH_THREE(0),
         MATCH_FOUR(1),
@@ -79,6 +96,24 @@ public class Lotto {
 
         LottoMatch(int value) {
             this.value = value;
+        }
+    }
+
+    public enum WinningAmount {
+        MATCH_THREE("5000"),
+        MATCH_FOUR("50000"),
+        MATCH_FIVE("1500000"),
+        MATCH_FIVE_WITH_BONUS("30000000"),
+        MATCH_SIX("2000000000");
+
+        private final BigInteger value;
+
+        WinningAmount(String value) {
+            this.value = new BigInteger(value);
+        }
+
+        public BigInteger getValue() {
+            return this.value;
         }
     }
 }
