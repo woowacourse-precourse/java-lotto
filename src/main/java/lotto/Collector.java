@@ -27,7 +27,9 @@ public class Collector {
 
         for (Lotto lotto : lottoList) {
             Rank rank = lotto.compare(winningNumbers, bonusNumber);
-            rankResults[rank.ordinal()]++;
+            if(rank != null) {
+                rankResults[rank.ordinal()]++;
+            }
         }
 
         return Arrays.stream(rankResults).boxed().collect(Collectors.toList());
