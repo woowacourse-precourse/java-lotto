@@ -22,7 +22,7 @@ public class LottoMachine {
         int count = money.getCurrentMoney() / LOTTO_PRICE;
         money.paid(LOTTO_PRICE, count);
 
-        ArrayList<Lotto> lottos = new ArrayList<>();
+        List<Lotto> lottos = new ArrayList<>();
         for (int i = ZERO; i < count; i++) {
             List<Integer> numbers = Randoms.pickUniqueNumbersInRange(START_RANDOM, END_RANDOM, RANDOM_COUNT);
             lottos.add(new Lotto(numbers));
@@ -40,8 +40,8 @@ public class LottoMachine {
         return new CorrectLottoNumbers(correctLottoNumbers);
     }
 
-    private static ArrayList<LottoNumber> combineCorrectLottoNumbers(LottoNumbers correctNumbers, LottoNumber bonusNumber) {
-        ArrayList<LottoNumber> combineLottoNumbers = new ArrayList<>();
+    private static List<LottoNumber> combineCorrectLottoNumbers(LottoNumbers correctNumbers, LottoNumber bonusNumber) {
+        List<LottoNumber> combineLottoNumbers = new ArrayList<>();
         for (LottoNumber lottoNumber : correctNumbers.getLottoNumbers()) {
             combineLottoNumbers.add(lottoNumber);
         }
