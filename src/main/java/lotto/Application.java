@@ -7,22 +7,13 @@ import lotto.Domain.WinningPrize;
 import java.util.List;
 
 public class Application {
-    private boolean systemError = false;
-    private int money = 0;
-
-    private Lotto answerValue = null;
     private static LottoClerk lottoClerk;
     private static LottoMachine lottoMachine;
+    private boolean systemError = false;
 
-    public int getBonus() {
-        return bonus;
-    }
-
-    public void setBonus(int bonus) {
-        this.bonus = bonus;
-    }
-
+    private int money = 0;
     private int bonus = 0;
+    private Lotto answerValue = null;
 
     public Application() {
         lottoClerk = new LottoClerk();
@@ -30,25 +21,12 @@ public class Application {
         this.inputMoney();
     }
 
-    public static void main(String[] args) {
-        Application app = new Application();
-        if (app.systemError)
-            return;
-        lottoClerk.sayBuyLotto(lottoMachine.makeLottoCount(app.getMoney()));
-        app.giveLotto();
-        app.answerLotto();
-        if (app.systemError)
-            return;
-        app.bonusLotto();
-        if (app.systemError)
-            return;
-        List<WinningPrize> winningPrizes = lottoMachine.makeStatistics(app.getBonus(), app.getAnswerValue());
-        lottoClerk.sayResult(winningPrizes, app.getMoney());
+    public int getBonus() {
+        return bonus;
     }
 
-    public void giveLotto() {
-        lottoMachine.makeLottoReceipt();
-        lottoClerk.sayLottoReceipt(lottoMachine.getLottoReceipt());
+    public Lotto getAnswerValue() {
+        return answerValue;
     }
 
     public int getMoney() {
@@ -57,6 +35,11 @@ public class Application {
 
     public boolean getSystemError() {
         return systemError;
+    }
+
+    public void giveLotto() {
+        lottoMachine.makeLottoReceipt();
+        lottoClerk.sayLottoReceipt(lottoMachine.getLottoReceipt());
     }
 
     public void inputMoney() {
@@ -68,7 +51,6 @@ public class Application {
             errorCatcher(ErrorMessage.NOTTHOUSANDSNUMBER.getErrorMessage());
         }
     }
-
 
     public boolean errorCatcher(String errorMessage) {
         try {
@@ -100,7 +82,19 @@ public class Application {
         }
     }
 
-    public Lotto getAnswerValue() {
-        return answerValue;
+    public static void main(String[] args) {
+        Application app = new Application();
+        if (app.systemError)
+            return;
+        lottoClerk.sayBuyLotto(lottoMachine.makeLottoCount(app.getMoney()));
+        app.giveLotto();
+        app.answerLotto();
+        if (app.systemError)
+            return;
+        app.bonusLotto();
+        if (app.systemError)
+            return;
+        List<WinningPrize> winningPrizes = lottoMachine.makeStatistics(app.getBonus(), app.getAnswerValue());
+        lottoClerk.sayResult(winningPrizes, app.getMoney());
     }
 }

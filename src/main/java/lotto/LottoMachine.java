@@ -7,9 +7,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class LottoMachine {
+    private int count = 0;
     ArrayList<Lotto> lottoReceipt = new ArrayList<>();
 
-    int count = 0;
+    public ArrayList<Lotto> getLottoReceipt() {
+        return lottoReceipt;
+    }
 
     public int makeLottoCount(int money) {
         count = money / 1000;
@@ -22,10 +25,6 @@ public class LottoMachine {
             Lotto lotto = new Lotto(lottoNumber);
             lottoReceipt.add(lotto);
         }
-    }
-
-    public ArrayList<Lotto> getLottoReceipt() {
-        return lottoReceipt;
     }
 
     public List<WinningPrize> makeStatistics(int bonus, Lotto answerValue) {
@@ -63,5 +62,4 @@ public class LottoMachine {
             return WinningPrize.THREE;
         return WinningPrize.OTHER;
     }
-
 }
