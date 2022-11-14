@@ -26,7 +26,6 @@ public class Application {
             money = Lotto.check_input_validate(input);
         } catch (IllegalArgumentException e) {
             System.out.println("[ERROR] 구입 금액의 입력은 숫자만 가능합니다.");
-            return;
         }
 
         try {
@@ -35,7 +34,6 @@ public class Application {
             }
         } catch (IllegalArgumentException e) {
             System.out.println("[ERROR] 로또 구입의 최소 단위는 1,000원 입니다.");
-            return;
         }
 
         num = money / 1000;
@@ -43,7 +41,8 @@ public class Application {
         System.out.println("\n" + num + "개를 구매했습니다.");
 
         for (int i = 0; i < num; i++) {
-            buy_lists.add(new Lotto(Lotto.buy_lotto()));
+            List<Integer> buying_lotto = new ArrayList<>(Lotto.buy_lotto());
+            buy_lists.add(new Lotto(buying_lotto));
         }
 
         for (Lotto list : buy_lists) {
