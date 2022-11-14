@@ -1,6 +1,10 @@
 package lotto.domain;
 
+import java.text.DecimalFormat;
+
 public class Yield {
+
+    DecimalFormat df = new DecimalFormat("###,###.0");
 
     private final double yield;
 
@@ -14,5 +18,10 @@ public class Yield {
 
     public double getYield() {
         return yield;
+    }
+
+    @Override
+    public String toString() {
+        return df.format(yield);
     }
 }
