@@ -28,6 +28,6 @@ public class OutputImpl implements Output {
             System.out.println(
                     win.getPrizeInformation() + " (" + win.getPrizeMoneyTag() + ") - " + winResult.get(win) + "개");
         }
-        System.out.println("총 수익률은 " + rateOfReturn + "% 입니다.");
+        System.out.println("총 수익률은 " + rateOfReturn + "%입니다.");
     }
 }
