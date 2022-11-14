@@ -2,7 +2,7 @@ package view;
 
 import camp.nextstep.edu.missionutils.Console;
 import lotto.domain.PurchasedAmount;
-정import lotto.domain.Validator;
+import lotto.domain.Validator;
 import lotto.domain.WinningLotto;
 
 import java.lang.reflect.Array;
