@@ -8,9 +8,9 @@ import java.util.List;
 public class LottoMachine {
 
     public static final Integer UNIT = 1000;
-    private static final Integer NUMBER_RANGE_BOT = 1;
-    private static final Integer NUMBER_RANGE_TOP = 45;
-    private static final Integer LOTTO_NUMBER_SIZE = 6;
+    public static final Integer NUMBER_RANGE_BOT = 1;
+    public static final Integer NUMBER_RANGE_TOP = 45;
+    public static final Integer LOTTO_NUMBER_SIZE = 6;
 
     public static List<Lotto> getRandomLottos(Integer money) {
         List<Lotto> lottos = new ArrayList<>();
