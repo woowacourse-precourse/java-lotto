@@ -1,6 +1,6 @@
 package lotto.model;
 
-import static lotto.constants.LottoConstant.LOTTERY_NUMBER_SEPARATOR;
+import static lotto.constants.LottoConstant.LOTTO_NUMBER_SEPARATOR;
 import static lotto.constants.LottoConstant.LOTTO_PRICE;
 import static lotto.validator.ErrorMessages.INVALID_PAID_MONEY_ERROR_MESSAGE;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
@@ -68,7 +68,7 @@ public class CustomerTest {
 
         result = result.replaceAll(" ", "");
         result = result.substring(1, result.length() - 2);
-        String[] tempResult = result.split(LOTTERY_NUMBER_SEPARATOR);
+        String[] tempResult = result.split(LOTTO_NUMBER_SEPARATOR);
         int[] afterResult = Arrays.stream(tempResult).mapToInt(Integer::parseInt).toArray();
 
         //then

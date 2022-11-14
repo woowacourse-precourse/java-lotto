@@ -1,6 +1,5 @@
 package lotto.validator;
 
-import static lotto.constants.LottoConstant.VALID_LOTTERY_NUMBER_LENGTH;
 import static lotto.constants.LottoConstant.VALID_MAX_RANGE;
 import static lotto.validator.BonusNumberValidator.hasValidBonusNumber;
 import static lotto.validator.ErrorMessages.DUPLICATE_BONUS_NUMBER_ERROR_MESSAGE;
