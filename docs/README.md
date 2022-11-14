@@ -67,6 +67,8 @@
 
 
 #### Statistics
-- [ ] 구매한 모든 로또에 대해 몇 등을 기록했는지 저장 - Statistics#record()
+- [ ] 구매한 모든 로또에 대해 몇 등을 기록했는지 저장 - Statistics#record(Rank rank)
+  - [X] Map<Rank, Integer> 자료 구조를 활용해 1~5등까지 각각 0개씩 초기화 
+  - [ ] Rank.UNRANK("3개 미만 당첨")에 해당하는 경우는 따로 저장하지 않도록 처리 - Statistics#validateUnrank()
 - [ ] 발행된 Lotto 수와 총 당첨금 정보를 활용해 수익률 계산 - Statistics#calculateEarningsRate()
   - [ ] 소수점 둘째 자리에서 반올림 처리 (ex. 100.0%, 51.5%, 1,000,000,0%) - Statistics#roundToTwoDecimalPlaces()
