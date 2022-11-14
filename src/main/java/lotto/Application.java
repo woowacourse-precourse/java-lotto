@@ -25,8 +25,13 @@ public class Application {
     public static int askmoney(){
         System.out.println("구입금액을 입력해 주세요.");
         String input = Console.readLine();
-        int buymoney = Integer.parseInt(input), buylotto;
+        int buymoney, buylotto;
 
+        for(int i=0;i<input.length();i++){
+            if(input.charAt(i)<'0' || input.charAt(i)>'9')
+                throw new IllegalArgumentException("[ERROR] 숫자를 입력해 주세요.");
+        }
+        buymoney = Integer.parseInt(input);
         if(buymoney%1000 != 0)
             throw new IllegalArgumentException("[ERROR] 금액은 천원 단위여야 합니다.");
         buylotto = buymoney / 1000;
@@ -53,8 +58,12 @@ public class Application {
     public static int askbonusnumber(List<Integer> winningnumbers){
         System.out.println("\n보너스 번호를 입력해 주세요.");
         String input = Console.readLine();
-        int bonusnumber = Integer.parseInt(input);
-
+        int bonusnumber;
+        for(int i=0;i<input.length();i++){
+            if(input.charAt(i)<'0'||input.charAt(i)>'9')
+                throw new IllegalArgumentException("[ERROR] 숫자 하나만 입력해 주세요.");
+        }
+        bonusnumber = Integer.parseInt(input);
         if(bonusnumber<1 || bonusnumber>45)
             throw new IllegalArgumentException("[ERROR] 보너스 번호는 1에서 45사이의 숫자여야 합니다.");
         if(winningnumbers.contains(bonusnumber))
