@@ -3,10 +3,7 @@ package lotto;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class Application {
@@ -20,6 +17,10 @@ public class Application {
         List<Integer> prize = prizeNumber(Console.readLine());
         System.out.println("보너스 번호를 입력해 주세요.");
         Integer bonus = bonusNumber(Console.readLine());
+        System.out.println("당첨 통계");
+        System.out.println("---");
+        Map<Ranking, Integer> result = lotteryResult(userLottoTotal, prize, bonus);
+        lottoResultOutput(result);
     }
 
     public static String userPayment () {
@@ -67,5 +68,50 @@ public class Application {
 
     public static Integer bonusNumber (String bonusInput) {
         return Integer.parseInt(bonusInput);
+    }
+
+
+    public static Map<Ranking, Integer> lotteryResult (List<List<Integer>> userLotto, List<Integer> prize, Integer bonus) {
+        Map<Ranking, Integer> result = new HashMap<>();
+        result.put(Ranking.FIRST, 0);
+        result.put(Ranking.SECOND, 0);
+        result.put(Ranking.THIRD, 0);
+        result.put(Ranking.FOURTH, 0);
+        result.put(Ranking.FIFTH, 0);
+        for (List<Integer> lotto : userLotto) {
+            Ranking resultRanking = Ranking.find(lotteryComparison(lotto, prize, bonus));
+            if (resultRanking != null) {
+                result.put(resultRanking, result.get(resultRanking)+1);
+            }
+        }
+
+        return result;
+    }
+
+    public static Float lotteryComparison(List<Integer> userLotto, List<Integer> prize, Integer bonus) {
+        Integer sameLottoCount = 0;
+        for ( int i = 0 ; i < userLotto.size() ; i++) {
+            if (prize.contains(userLotto.get(i))) {
+                sameLottoCount++;
+            }
+        }
+        if (sameLottoCount.equals(5)) {
+            Float result = sameLottoCount + isBonus(userLotto, bonus);
+            return result;
+        }
+        return sameLottoCount.floatValue();
+    }
+
+    public static Float isBonus(List<Integer> userLotto, Integer bonus) {
+        if (userLotto.contains(bonus)) {
+            return 0.5f;
+        }
+        return 0.0f;
+    }
+
+    public static void lottoResultOutput(Map<Ranking, Integer> lotteryResult) {
+        for (Ranking rk : Ranking.values()) {
+            System.out.println(rk.getDescription() + " - " + lotteryResult.get(rk)+"개");
+        }
     }
 }
