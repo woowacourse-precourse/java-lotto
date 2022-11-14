@@ -1,8 +1,5 @@
 package domain.UserLotto;
 
-import domain.UserLotto.UserLotto;
-import domain.UserLotto.UserLottoService;
-
 public class UserLottoController {
     UserLottoService userLottoService = new UserLottoService();
 

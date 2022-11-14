@@ -1,6 +1,6 @@
 package view;
 
-import Rank;
+import domain.RankInfo.Rank;
 import domain.RankInfo.RankInfo;
 
 import java.util.regex.Matcher;

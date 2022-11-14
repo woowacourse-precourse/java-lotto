@@ -1,11 +1,9 @@
 package domain.Money;
 
-import MoneyService;
-
 import java.util.regex.Pattern;
 
 public class MoneyController {
-    private final static String FORMAT = "^[0-9]*$";
+    private final static String FORMAT = "^\\d*$";
     private final MoneyService moneyService = new MoneyService();
 
     public Money getPurchaseAmount(String purchaseAmount) {

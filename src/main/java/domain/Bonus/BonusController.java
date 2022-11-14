@@ -5,7 +5,7 @@ import domain.Lotto.Lotto;
 import java.util.regex.Pattern;
 
 public class BonusController {
-    private static final String FORMAT = "^[0-9]*$";
+    private static final String FORMAT = "^\\d*$";
     private final BonusService bonusService = new BonusService();
 
     public Bonus createBonusNumber(String bonusNumber, Lotto lotto) {
