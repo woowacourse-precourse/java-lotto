@@ -28,7 +28,7 @@
     - [x] 서로 다른 숫자 6개를 입력 받는다.(쉼표를 기준으로)
     - [x] 위에서 입력 받은 숫자 6개를 제외한 보너스 숫자 1개를 입력 받는다.
     - [ ] 로또 번호를 잘못 입력 받았을 경우 IllegalArgumentException를 발생시킨다.
-        - [ ] 입력 받은 로또 번호가 서로 다른 숫자 6개가 아닌 경우 IllegalArgumentException을 발생시킨다.
+        - [x] 입력 받은 로또 번호가 서로 다른 숫자 6개가 아닌 경우 IllegalArgumentException을 발생시킨다.
         - [ ] 보너스 숫자가 1개가 아니라면 IllegalArgumentException을 발생시킨다.
         - [ ] 보너스 숫자가 입력 받은 6개의 숫자 중 하나일 경우 IllegalArgumentException을 발생시킨다.
         - [ ] 숫자가 1~45의 범위의 숫자가 아니라면 IllegalArgumentException을 발생시킨다.
