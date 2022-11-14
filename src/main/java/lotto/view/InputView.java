@@ -20,9 +20,9 @@ public final class InputView {
         }
     }
 
-    public int getAmount() {
+    public long getAmount() {
         String input = inputHandler.readLine();
-        return InputValidator.toInt(input);
+        return InputValidator.toLong(input);
     }
 
     public List<Integer> getLotteryNumber() {

@@ -7,14 +7,14 @@ public final class Money {
     private static final String MULTIPLE_MESSAGE =
             "돈에는 " + LottoConstants.LOTTO_PRICE.value() + "의 배수가 들어와야 합니다";
     private static final int unit = 1000;
-    private final int amount;
+    private final long amount;
 
-    public Money(int amount) {
+    public Money(long amount) {
         validate(amount);
         this.amount = amount;
     }
 
-    private void validate(int amount) {
+    private void validate(long amount) {
         if (!isPositive(amount)) {
             throw new IllegalArgumentException(NEGATIVE_MESSAGE);
         }
@@ -23,15 +23,15 @@ public final class Money {
         }
     }
 
-    private boolean isPositive(int amount) {
-        return amount > 0;
+    private boolean isPositive(long amount) {
+        return amount > 0L;
     }
 
-    private boolean isMultipleOfUnit(int amount) {
+    private boolean isMultipleOfUnit(long amount) {
         return amount % unit == 0;
     }
 
-    public int ableToBuy() {
+    public long ableToBuy() {
         return amount / unit;
     }
 }
