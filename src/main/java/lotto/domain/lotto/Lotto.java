@@ -34,7 +34,12 @@ public class Lotto {
     }
 
     private void validateNumbersByNumberRange(List<Integer> numbers) {
-
+        String expression = "^[1-9]{1}$|^[1-3]{1}[0-9]{1}$|^4{1}[0-5]{1}$";
+        for (Integer number : numbers) {
+            if (!number.toString().matches(expression)) {
+                throw new IllegalArgumentException("[ERROR] 1~45의 범위의 숫자만 입력해주세요.");
+            }
+        }
     }
 
     public List<Integer> getNumbers() {

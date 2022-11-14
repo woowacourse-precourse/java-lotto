@@ -23,7 +23,10 @@ public class WinningLotto {
     }
 
     private void validateBonusByNumberRange(int bonus) {
-
+        String expression = "^[1-9]{1}$|^[1-3]{1}[0-9]{1}$|^4{1}[0-5]{1}$";
+        if (!String.valueOf(bonus).matches(expression)) {
+            throw new IllegalArgumentException("[ERROR] 1~45의 범위의 숫자만 입력해주세요.");
+        }
     }
 
 
