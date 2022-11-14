@@ -229,7 +229,7 @@ v3 release
 
 ---
 
-git merge -> renechoi
+git merge renechoi3 -> renechoi
 
 </details>
 
