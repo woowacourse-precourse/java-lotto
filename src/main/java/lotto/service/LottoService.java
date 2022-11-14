@@ -1,4 +1,4 @@
-package lotto;
+package lotto.service;
 
 import static lotto.ui.ConsoleMessage.INPUT_BONUS_NUMBER;
 import static lotto.ui.ConsoleMessage.INPUT_PRICE;
