@@ -23,15 +23,8 @@ public class PrizeNumber {
         prizelotto.sort(Comparator.naturalOrder());
     }
 
-    public Integer bonusNumber(List<Integer> prizelotto) {
-        boolean checkbonusnumber = false;
-        Integer bonus = 0;
-        while (checkbonusnumber = false) {
-            bonus = Integer.valueOf(Console.readLine());
-            if (!prizelotto.contains(bonus)) {
-                checkbonusnumber = true;
-            }
-        }
+    public Integer bonusNumber() {
+        Integer bonus = Integer.valueOf(Console.readLine());
         return bonus;
     }
 }
