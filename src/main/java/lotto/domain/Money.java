@@ -45,10 +45,6 @@ public class Money {
         return new Money(this.money + money.money);
     }
 
-    public Money multiply(int value) {
-        return new Money(this.money * value);
-    }
-
     public boolean notZero() {
         return this.money != 0;
     }
