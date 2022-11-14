@@ -11,12 +11,13 @@ import lotto.domain.Profit;
 import lotto.service.LottoDrawService;
 import lotto.service.LottoIssueService;
 import lotto.service.LottoWinningNumberService;
+import lotto.service.MoneyService;
 import lotto.view.OutputView;
 
 public class LottoGameController {
 
     public static void start() {
-        Money money = new Money(inputMoney());
+        Money money = MoneyService.createMoney();
         OutputView.printLottoAmount(money);
         LottoTicket lottoTicket = issueTicket(money.calculateLottoAmount());
 
