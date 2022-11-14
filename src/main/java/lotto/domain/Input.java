@@ -20,4 +20,9 @@ public class Input {
         }
         return numbers;
     }
+    public int bonusNumber() {
+        System.out.println("보너스 번호를 입력해 주세요.");
+        int bonus = Integer.valueOf(Console.readLine());
+        return bonus;
+    }
 }
