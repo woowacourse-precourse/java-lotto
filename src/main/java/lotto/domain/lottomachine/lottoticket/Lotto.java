@@ -30,7 +30,7 @@ public class Lotto {
 
     public String countNumbersConsistentWith(WinningNumbers winningNumbers, WinningNumber bonusNumber) {
         String count = winningNumbers.countSameValue(numbers);
-        String bonusCount = bonusNumber.checkSameValue(numbers);
+        String bonusCount = bonusNumber.countSameValue(numbers);
         if (isFive(count)) {
             return count + bonusCount;
         }
