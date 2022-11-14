@@ -19,8 +19,8 @@ public class Calculator {
 
     public static double getEarningRate(List<Integer> result) {
         try {
-            int numberOfLotto = result.stream().mapToInt(Integer::intValue).sum();
-            return Math.round(getWinningAmount(result) / numberOfLotto / PRICE_PER_LOTTO * PERCENT * 10) / 10.0;
+            double numberOfLotto = result.stream().mapToInt(Integer::intValue).sum();
+            return Math.round(getWinningAmount(result) * PERCENT * 10 / numberOfLotto / PRICE_PER_LOTTO) / 10.0;
         } catch (ArrayIndexOutOfBoundsException ex) {
             throw new IllegalArgumentException("[ERROR] 잘못된 결과가 전달됐습니다. ");
         }
