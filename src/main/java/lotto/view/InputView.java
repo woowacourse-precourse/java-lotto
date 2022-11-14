@@ -26,10 +26,14 @@ public class InputView {
             }
             winningNumber.add(number);
         }
+        isMaxLen(winningNumber);
+        return winningNumber;
+    }
+
+    private static void isMaxLen(List<Integer> winningNumber) {
         if (winningNumber.size() != MAX_LEN) {
             throw new NumberFormatException();
         }
-        return winningNumber;
     }
 
     public static int getBonusNumber() throws NumberFormatException {
