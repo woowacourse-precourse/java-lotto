@@ -68,5 +68,7 @@ public class Application {
         // 보너스 번호 입력 기능 구현
         System.out.println("보너스 번호를 입력해주세요.");
         int bonusNumber = Integer.parseInt(Console.readLine());
+
+        lotto.printWinningResult(randomNumbers, count);
     }
 }
