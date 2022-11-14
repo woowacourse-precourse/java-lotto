@@ -18,6 +18,6 @@ public class LottoAmountTest {
     @DisplayName("로또 갯수는 1000원 당 1개이다")
     @Test
     void createLottoAmount() {
-        assertThat(LottoAmount.getLottoAmount(2000L)).isEqualTo(2);
+        assertThat(LottoAmount.getLottoAmount(2000L)).isEqualTo(2L);
     }
 }
