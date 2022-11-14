@@ -14,4 +14,8 @@ public class Output {
         System.out.println(Ranking.SECOND_PLACE.getPrintSentence() + " - " + prize.getValue(Ranking.SECOND_PLACE) + "개");
         System.out.println(Ranking.FIRST_PLACE.getPrintSentence() + " - " + prize.getValue(Ranking.FIRST_PLACE) + "개");
     }
+
+    public void printProfit(double profit) {
+        System.out.println("총 수익률은 " + String.format("%.1f", profit) + "%입니다.");
+    }
 }

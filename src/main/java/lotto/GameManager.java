@@ -39,7 +39,7 @@ public class GameManager {
         prize = new Prize(makePrize());
 
         output.printPrize(prize);
-
+        output.printProfit(getProfit(lottoPrice));
     }
 
     public int changeNumberOfLottoToBuy(int lottoPrice) {
@@ -90,4 +90,14 @@ public class GameManager {
         result.put(ranking, ranking.getNumberCount() + 1);
     }
 
+    public double getProfit(int lottoPrice) {
+        long result = 0;
+        result += prize.getValue(Ranking.FIRST_PLACE) * Ranking.FIRST_PLACE.getMoney();
+        result += prize.getValue(Ranking.SECOND_PLACE) * Ranking.SECOND_PLACE.getMoney();
+        result += prize.getValue(Ranking.THIRD_PLACE) * Ranking.THIRD_PLACE.getMoney();
+        result += prize.getValue(Ranking.FOURTH_PLACE) * Ranking.FOURTH_PLACE.getMoney();
+        result += prize.getValue(Ranking.FIFTH_PLACE) * Ranking.FIFTH_PLACE.getMoney();
+
+        return (double) result / (double) lottoPrice * 100.0;
+    }
 }
