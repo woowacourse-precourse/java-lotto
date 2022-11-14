@@ -41,7 +41,7 @@ public class OutputView {
     private static void printProfit(double profit) {
         System.out.print(String.format(INFORM_PROFIT, profit));
     }
-
+    
     private static void printTotalResults(Map<LottoResult, Integer> winningCounts) {
         Arrays.stream(LottoResult.values())
                 .filter(result -> result.win())
