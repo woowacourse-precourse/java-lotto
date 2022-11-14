@@ -6,6 +6,7 @@ import view.InputView;
 import view.OutputView;
 
 import java.util.List;
+import java.util.Map;
 
 public class LottoGameController {
     private final LottoGenerator lottoTicketGenerator = new LottoGenerator();
@@ -14,6 +15,8 @@ public class LottoGameController {
         LottoPurchaseAmount lottoPurchaseAmount = inputMoney();
         LottoTickets lottoTickets = purchaseLotto(lottoPurchaseAmount.calculateNumberOfLottoTickets());
         WinningTicket winningTicket = getWinningTicket();
+        LottoResult lottoResult = getLottoResult(lottoTickets, winningTicket);
+        printResult(lottoResult.getLottoResult());
     }
 
     private LottoPurchaseAmount inputMoney() {
@@ -32,5 +35,13 @@ public class LottoGameController {
         List<Integer> winningTicket = InputView.inputWinningNumbers();
         int bonusNumber = InputView.inputBonusNumber();
         return lottoTicketGenerator.generateWinningTicket(winningTicket, bonusNumber);
+    }
+
+    private LottoResult getLottoResult(LottoTickets lottoTickets, WinningTicket winningTicket) {
+        return new LottoResult(lottoTickets.getResult(winningTicket));
+    }
+
+    private void printResult(Map<Ranking, Integer> winningResult) {
+        OutputView.printWinningStatistics(winningResult);
     }
 }
