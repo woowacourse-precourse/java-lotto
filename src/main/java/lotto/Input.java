@@ -24,4 +24,11 @@ public class Input {
 
         return Arrays.stream(winningNumber.split(",")).map(i -> Integer.valueOf(i)).collect(Collectors.toList());
     }
+
+    // 보너스 번호 입력 기능
+    public static int EnterBonusNumber() {
+        System.out.println("보너스 번호를 입력해 주세요.");
+        String bonusNumber = Console.readLine();
+        return Integer.valueOf(bonusNumber);
+    }
 }
