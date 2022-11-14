@@ -1,4 +1,4 @@
-package lotto;
+package lotto; // lotto 즉 숫자 관련 만
 
 import java.util.List;
 
