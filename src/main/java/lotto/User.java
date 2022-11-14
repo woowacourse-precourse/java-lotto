@@ -8,25 +8,26 @@ import java.util.List;
 
 public class User {
     private List<Lotto> lottos = new ArrayList<>();
-    private int money;
 
-    public void buyLotto() {
-        System.out.println("구입금액을 입력해 주세요.");
-        money = toInteger(Console.readLine());
-        int lottoSheetCount = money / 1000;
+    public void buyLotto(String input) {
+        validateInteger(input);
+        int money = Integer.parseInt(input);
+        canBuyLotto(money);
 
-        for (int ticket = 0; ticket < lottoSheetCount; ticket++) {
+        for (int ticket = 0; ticket < money / 1000; ticket++) {
             List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
             lottos.add(new Lotto(numbers));
         }
     }
 
-    public int toInteger(String input) {
-        if (!input.matches("^[0-9]*$")) {
-            throw new IllegalArgumentException("[ERROR] 숫자만 입력해 주세요.");
+    private void validateInteger(String input) {
+        if (input.matches("^[0-9]*$")) {
+            return;
         }
+        throw new IllegalArgumentException("[ERROR] 숫자만 입력해 주세요.");
+    }
 
-        int money = Integer.parseInt(input);
+    private void canBuyLotto(int money) {
         if (money < 1000) {
             throw new IllegalArgumentException("[ERROR] 1,000원 이상을 입력해 주세요.");
         }
@@ -34,8 +35,6 @@ public class User {
         if (money % 1000 != 0) {
             throw new IllegalArgumentException("[ERROR] 1,000원으로 나누어 떨어지는 금액만 입력해 주세요.");
         }
-
-        return money;
     }
 
     public int getLottoSheetCount() {
