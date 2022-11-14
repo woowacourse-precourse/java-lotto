@@ -3,6 +3,7 @@ package lotto.domain.lotto;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
+import lotto.common.LottoConstants;
 
 public class Lotto {
     private final List<Integer> numbers;
@@ -31,7 +32,7 @@ public class Lotto {
     }
 
     private void validateSize(List<Integer> numbers) {
-        if (numbers.size() != 6) {
+        if (numbers.size() != LottoConstants.LOTTO_SIZE) {
             throw new IllegalArgumentException();
         }
     }
