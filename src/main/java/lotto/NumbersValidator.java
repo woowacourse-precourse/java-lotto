@@ -1,10 +1,9 @@
 package lotto;
 
-import static java.math.BigInteger.ZERO;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
-import java.util.zip.ZipError;
 
 public class NumbersValidator {
 
@@ -32,5 +31,17 @@ public class NumbersValidator {
         if(!Objects.equals(money % LottoMachine.MONEY_UNIT, 0)){
             throw new IllegalArgumentException();
         }
+    }
+
+    public static void isNumeric(String input){
+        if (!input.chars().mapToObj(i -> (char)i)
+                .allMatch(Character::isDigit)){
+            throw new IllegalArgumentException();
+        }
+    }
+
+    public static void isNumerics(String[] inputs){
+       Arrays.stream(inputs)
+               .forEach(NumbersValidator::isNumeric);
     }
 }
