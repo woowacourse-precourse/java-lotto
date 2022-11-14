@@ -8,7 +8,6 @@ import lotto.domain.Payment;
 import lotto.domain.WinningLotto;
 import lotto.domain.WinningStatistics;
 import lotto.generator.LottoGenerator;
-import lotto.generator.WinningLottoGenerator;
 import lotto.view.UserInputView;
 import lotto.view.UserOutputView;
 
@@ -48,7 +47,7 @@ public class LottoGame {
 
         UserInputView.printInputBonusNumber();
         String bonusNumber = Console.readLine();
-        return WinningLottoGenerator.generate(winningLotto, bonusNumber);
+        return new WinningLotto(winningLotto, bonusNumber);
     }
 
     private LottoWinningResult checkWinning(List<Lotto> purchasedLottos, WinningLotto winningLotto) {

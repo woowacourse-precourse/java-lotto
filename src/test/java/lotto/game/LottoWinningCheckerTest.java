@@ -6,7 +6,6 @@ import lotto.constant.LottoWinningRanking;
 import lotto.domain.Lotto;
 import lotto.domain.WinningLotto;
 import lotto.generator.LottoGenerator;
-import lotto.generator.WinningLottoGenerator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -18,7 +17,7 @@ class LottoWinningCheckerTest {
         // given
         Lotto purchsedLotto = LottoGenerator.generateByNumbers("1,2,3,4,5,6");
         Lotto lottoWithWinningNumbers = LottoGenerator.generateByNumbers("7,8,9,10,11,12");
-        WinningLotto winningLotto = WinningLottoGenerator.generate(lottoWithWinningNumbers, 13);
+        WinningLotto winningLotto = new WinningLotto(lottoWithWinningNumbers, 13);
         LottoWinningChecker lottoWinningChecker = new LottoWinningChecker(winningLotto);
 
         // when
@@ -34,7 +33,7 @@ class LottoWinningCheckerTest {
         // given
         Lotto purchsedLotto = LottoGenerator.generateByNumbers("1,2,3,4,5,6");
         Lotto lottoWithWinningNumbers = LottoGenerator.generateByNumbers("1,2,3,4,7,8");
-        WinningLotto winningLotto = WinningLottoGenerator.generate(lottoWithWinningNumbers, 9);
+        WinningLotto winningLotto = new WinningLotto(lottoWithWinningNumbers, 9);
         LottoWinningChecker lottoWinningChecker = new LottoWinningChecker(winningLotto);
 
         // when
@@ -50,7 +49,7 @@ class LottoWinningCheckerTest {
         // given
         Lotto purchsedLotto = LottoGenerator.generateByNumbers("1,2,3,4,5,6");
         Lotto lottoWithWinningNumbers = LottoGenerator.generateByNumbers("1,2,3,4,5,7");
-        WinningLotto winningLotto = WinningLottoGenerator.generate(lottoWithWinningNumbers, 8);
+        WinningLotto winningLotto = new WinningLotto(lottoWithWinningNumbers, 8);
         LottoWinningChecker lottoWinningChecker = new LottoWinningChecker(winningLotto);
 
         // when
@@ -66,7 +65,7 @@ class LottoWinningCheckerTest {
         // given
         Lotto purchsedLotto = LottoGenerator.generateByNumbers("1,2,3,4,5,6");
         Lotto lottoWithWinningNumbers = LottoGenerator.generateByNumbers("1,2,3,4,5,7");
-        WinningLotto winningLotto = WinningLottoGenerator.generate(lottoWithWinningNumbers, 6);
+        WinningLotto winningLotto = new WinningLotto(lottoWithWinningNumbers, 6);
         LottoWinningChecker lottoWinningChecker = new LottoWinningChecker(winningLotto);
 
         // when
@@ -82,7 +81,7 @@ class LottoWinningCheckerTest {
         // given
         Lotto purchsedLotto = LottoGenerator.generateByNumbers("1,2,3,4,5,6");
         Lotto lottoWithWinningNumbers = LottoGenerator.generateByNumbers("1,2,3,4,5,6");
-        WinningLotto winningLotto = WinningLottoGenerator.generate(lottoWithWinningNumbers, 7);
+        WinningLotto winningLotto = new WinningLotto(lottoWithWinningNumbers, 7);
         LottoWinningChecker lottoWinningChecker = new LottoWinningChecker(winningLotto);
 
         // when
