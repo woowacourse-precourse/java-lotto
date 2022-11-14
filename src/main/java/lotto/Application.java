@@ -8,20 +8,21 @@ import java.util.List;
 public class Application {
 
     public static void main(String[] args) {
-        int purchaseAmount = getPurchaseAmount();
-        Publisher publisher = new Publisher(purchaseAmount);
-        publisher.issueLotto();
-        Output.printLotteries(publisher.getLotteries());
+        try {
+            int purchaseAmount = getPurchaseAmount();
+            Publisher publisher = new Publisher(purchaseAmount);
+            Output.printLotteries(publisher.getLotteries());
 
-        Lotto winNumber = getWinNumber();
-        int bonusNumber = getBonusNumber();
-        Dealer dealer = new Dealer(publisher, winNumber, bonusNumber);
-        List<Integer> result = dealer.getResult();
-        float earningRate = dealer.getEarningRate();
+            Dealer dealer = new Dealer(publisher, getWinNumber(), getBonusNumber());
+            List<Integer> result = dealer.getResult();
+            float earningRate = dealer.getEarningRate();
 
-        String resultPrintFormat = getPrintResultFormat(result);
-        Output.printResult(resultPrintFormat);
-        Output.printEarningRate(earningRate);
+            String resultPrintFormat = getPrintResultFormat(result);
+            Output.printResult(resultPrintFormat);
+            Output.printEarningRate(earningRate);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     static String getPrintResultFormat(List<Integer> result) {
@@ -54,7 +55,9 @@ public class Application {
         }
     }
 
-    static int getBonusNumber() {
-        return Input.getAnswerInInteger(Request.bonusNumber.value());
+    static Bonus getBonusNumber() {
+        int bonusNumber = Input.getAnswerInInteger(Request.bonusNumber.value();
+        Bonus bonus = new Bonus(bonusNumber);
+        return bonus;
     }
 }
