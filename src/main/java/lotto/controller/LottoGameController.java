@@ -2,10 +2,11 @@ package lotto.controller;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
-import lotto.domain.LottoWinningNumbers;
+import lotto.domain.LottoGame;
+import lotto.domain.LottoGameResult;
 import lotto.domain.Money;
+import lotto.number.LottoWinningNumbers;
 import lotto.ticket.LottoTicket;
 import lotto.ticket.LottoTickets;
 import lotto.view.InputView;
@@ -17,6 +18,10 @@ public class LottoGameController {
 		LottoTickets lottoTickets = getLottoTickets(new Money(InputView.inputMoney()));
 		OutputView.printLottoTickets(lottoTickets.getLottoTickets()); 
 		LottoWinningNumbers lottoWinningNumbers = getWinningNumbers();
+		
+		LottoGame lottoGame = new LottoGame(lottoTickets, lottoWinningNumbers);
+        LottoGameResult lottoGameResult = lottoGame.getMatchingResult();
+        
 	}
 	
 	private LottoWinningNumbers getWinningNumbers() {

@@ -28,4 +28,7 @@ public class Money {
     public int getTickets() {
     	return tickets;
     }
+    public int getValue() {
+    	return value;
+    }
 }
