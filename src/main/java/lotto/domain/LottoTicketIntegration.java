@@ -11,7 +11,7 @@ public class LottoTicketIntegration {
         lottoTicketIntegration = new ArrayList<>();
     }
 
-    public void addNumbersIntegration(List<Integer> randomNumbers) {
+    public void put(List<Integer> randomNumbers) {
         lottoTicketIntegration.add(randomNumbers);
     }
 
