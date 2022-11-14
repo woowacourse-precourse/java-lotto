@@ -1,5 +1,6 @@
 package lotto;
 
+import java.util.stream.Collectors;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -14,7 +15,8 @@ class LottoTest {
     @Test
     void createAndGetLotto() {
         List<Integer> expected = List.of(1, 2, 3, 4, 5, 6);
-        List<Integer> actual = new Lotto(List.of(1, 2, 3, 4, 5, 6)).getNumbers();
+        List<Integer> actual = new Lotto(List.of(1, 2, 3, 4, 5, 6)).getNumbers()
+                .stream().map(LottoNumber::getNumber).collect(Collectors.toList());
         assertThat(actual).isEqualTo(expected);
     }
 
@@ -57,7 +59,8 @@ class LottoTest {
     @Test
     void getLottoNumbersForAddMoreNumber() {
         assertThatThrownBy(() -> {
-            new Lotto(List.of(1, 2, 3, 4, 5, 6)).getNumbers().add(32);
+            new Lotto(List.of(1, 2, 3, 4, 5, 6))
+                    .getNumbers().add(new LottoNumber(32));
         }).isInstanceOf(UnsupportedOperationException.class);
     }
 
