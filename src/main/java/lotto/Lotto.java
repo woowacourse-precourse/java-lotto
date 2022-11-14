@@ -11,7 +11,7 @@ public class Lotto {
     private static final String IS_DUPLICATED_LOTTO_NUMBER = "중복되는 로또 번호가 있습니다.";
     private final List<LottoNumber> numbers;
 
-    public Lotto(List<LottoNumber> numbers) {
+    public Lotto(List<Integer> numbers) {
         validateLottoValue(numbers);
         this.numbers = numbers;
     }
@@ -21,14 +21,14 @@ public class Lotto {
         validateIsNotDuplicatedNumberInLotto(numbers);
     }
 
-    private void validateIsNotDuplicatedNumberInLotto(List<LottoNumber> numbers) {
+    private void validateIsNotDuplicatedNumberInLotto(List<Integer> numbers) {
         if (numbers.size() != LOTTO_SIZE) {
             throw new IllegalArgumentException(LOTTO_SIZE_IS_NOT_6);
         }
     }
 
-    private void validateLottoSize(List<LottoNumber> numbers) {
-        Set<LottoNumber> lottoNumbers = Sets.newHashSet(numbers);
+    private void validateLottoSize(List<Integer> numbers) {
+        Set<Integer> lottoNumbers = Sets.newHashSet(numbers);
         if (lottoNumbers.size() != LOTTO_SIZE) {
             throw new IllegalArgumentException(IS_DUPLICATED_LOTTO_NUMBER);
         }
