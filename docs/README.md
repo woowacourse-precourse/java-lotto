@@ -23,11 +23,12 @@
 -[x] 로또 기계 - Class Lottomachine
   - [x] 랜덤 마킹 구현 - buyLotto()
 
--[ ] 로또 통계 - Class LottoStatistics
-  - [ ] 사용자가 구매한 로또의 당첨 여부 구현
-  - [ ] 당첨된 로또 등수 판별 구현
-  - [ ] 당첨된 로또 등수별 당첨 갯수 구현
-  - [ ] 총 수익률 출력 구현
+-[x] 로또 통계 - Class LottoStatistics
+  - [x] 사용자가 구매한 로또의 당첨 여부 구현 - printResult()
+  - [x] 당첨된 로또 등수 판별 구현 - printCountByRank()
+  - [x] 당첨된 로또 등수별 당첨 갯수 구현 - rankCount()
+  - [x] 총 수익 계산 구현 - getTotalPrize()
+  - [x] 총 수익률 출력 구현 - getRateOfReturn()
 
 -[ ] 유틸 - Class Util
   - [x] 문자열이 숫자열인지 아닌지 판별 여부 구현 - isNumberic()
