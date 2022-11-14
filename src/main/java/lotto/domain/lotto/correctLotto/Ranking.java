@@ -15,6 +15,8 @@ public enum Ranking {
     ;
 
     private static final Integer SECOND_RANKING_COUNT = 6;
+    private static final Integer POINT = 1;
+    private static final Integer INITIAL_VALUE = 0;
     private int count;
     private int rankingValue;
     private long reward;
@@ -47,4 +49,17 @@ public enum Ranking {
 
         return Ranking.FIRSTRANKING;
     }
+
+    public static Map<Ranking, Integer> makeRankingCount(Rankings rankings) {
+        Map<Ranking, Integer> rankingCount = new HashMap<>();
+        for (Ranking ranking : Ranking.values()) {
+            rankingCount.put(ranking, INITIAL_VALUE);
+        }
+
+        for (Ranking ranking : rankings.getRankings()) {
+            rankingCount.merge(ranking, POINT, (v1, v2) -> v1 + POINT);
+        }
+        return rankingCount;
+    }
+
 }
