@@ -4,16 +4,19 @@ import java.util.List;
 
 public class Valid {
     public static final int lottoPrice = 1000;
+    public static final int lottoSize = 6;
+    public static final int startLottoNum = 1;
+    public static final int endLottoNum = 45;
 
     public void isCorrectSize(List<Integer> numbers) throws IllegalArgumentException {
-        if (numbers.size() != 6) {
+        if (numbers.size() != lottoSize) {
             throw new IllegalArgumentException();
         }
     }
 
     public void isCorrectRange(List<Integer> numbers) throws IllegalArgumentException {
         if (!numbers.stream()
-                .allMatch(number -> (number > 0 && number < 46))) {
+                .allMatch(number -> (number >= startLottoNum && number <= endLottoNum))) {
             throw new IllegalArgumentException();
         }
     }
