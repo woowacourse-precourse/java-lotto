@@ -9,6 +9,9 @@ import java.util.stream.Collectors;
 
 public class LottoGenerator {
     public static final int LOTTO_PRICE = 1000;
+    public static final int LOTTO_NUMBER_START = 1;
+    public static final int LOTTO_NUMBER_END = 45;
+    public static final int LOTTO_NUMBER_COUNT = 6;
 
     public static List<Lotto> sellLottos(int money) {
         List<Lotto> lottos = new ArrayList<>();
@@ -19,7 +22,7 @@ public class LottoGenerator {
     }
 
     private static Lotto makeSortedRandomNumbers() {
-        List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6)
+        List<Integer> numbers = Randoms.pickUniqueNumbersInRange(LOTTO_NUMBER_START, LOTTO_NUMBER_END, LOTTO_NUMBER_COUNT)
                 .stream()
                 .sorted()
                 .collect(Collectors.toList());
