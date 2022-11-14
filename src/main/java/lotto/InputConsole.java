@@ -21,6 +21,12 @@ public class InputConsole {
         return money;
     }
 
+    private static void validateMoney(String money) {
+        if (!isEnoughMoney(money) || !isOneThousandUnits(money) || !isDigit(money)) {
+            throw new IllegalArgumentException();
+        }
+    }
+
     private static boolean isEnoughMoney(String money) {
         if (Integer.parseInt(money) < LOTTO_PRICE) {
             return false;
