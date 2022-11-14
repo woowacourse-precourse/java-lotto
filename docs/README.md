@@ -14,7 +14,7 @@
    - 유저의 구입 금액을 입력받아 로또 셋업하는 메소드 (lottoSetup)
    - 유저의 당첨 번호를 입력받아 랭킹 계산 전까지 셋업하는 메소드 (winSetup)
    - 로또 순위 계산하는 메소드 (findRank)
-3. Input 클래스: user input 클래스
+3. View 클래스: user input 클래스
     - 구입 금액 입력 받아서 로또 뽑기 회수 리턴, 예외 상황 시 에러 발생시키는 메소드 (getMoneyInput)
       - 구입 금액이 1000으로 나눠떨어지지 않으면 IllegalArgumentException 발생시키는 메소드 (validateIsDivisible)
       - 입력값이 숫자가 아닌 값이 있으면 IllegalArgumentException 발생시키는 메소드 (validateIsNumber)
