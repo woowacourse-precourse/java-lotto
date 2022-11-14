@@ -1,12 +1,14 @@
 package lotto.Domain;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 public class LottoCalculator {
     LottoMaker lottoMaker;
     Lotto lottoAnswer;
     Bonus bonus;
+
+    public LottoCalculator(){}
 
     public LottoCalculator(LottoMaker lottoMaker, Lotto lottoAnswer, Bonus bonus){
         this.lottoMaker = lottoMaker;
@@ -15,35 +17,40 @@ public class LottoCalculator {
     }
 
     // 전체 로또 비교기
-    public void lottoComparator(){
-        LottoMaker lottoMaker = this.lottoMaker;
-        Lotto lottoAnswer = this.lottoAnswer;
-        Bonus bonus = this.bonus;
+    public List<Rank> lottoComparator(LottoMaker lottoMaker, Lotto answer, Bonus bonus){
+        List<Rank> rank = new ArrayList<>();
+        for(Lotto eachLotto : lottoMaker.getLottoTickets()){
+            rank.add(lottoRanker(eachLotto, answer, bonus));
+        }
+        return rank;
     }
 
     // 하나의 로또에 대한 당첨 결과 반환기
-    public int lottoRanker(Lotto user,Lotto answer,Bonus bonus){
+    public Rank lottoRanker(Lotto user, Lotto answer, Bonus bonus){
         int equalNumber = getEqualNumber(user,answer);
-        if((equalNumber == 5) && hasBonus(user,bonus)){
-            equalNumber++;
-        }
-        return equalNumber;
+        return Rank.findRank(equalNumber, hasBonus(user, bonus));
     }
     
     // 하나의 로또에 대한 일치하는 번호갯수 반환기
     public int getEqualNumber(Lotto user,Lotto answer){
-        Lotto userAnswer = user;
-        Lotto lottoAnswer = answer;
-        Set<Integer> equalNumbers = new HashSet<>();
+        int equalNumbers = 0;
+        List<Integer> userNumbers = user.getNumbers();
+        List<Integer> answerNumbers = answer.getNumbers();
 
-        for(Lotto number : user){
-
+        for(Integer number : userNumbers){
+            if (answerNumbers.contains(number)){
+                equalNumbers++;
+            }
         }
+
+        return equalNumbers;
     }
 
     // 보너스를 가지고 있다면 true반환
     public boolean hasBonus(Lotto user, Bonus bonus){
-        return true;
+        List<Integer> userNumbers = user.getNumbers();
+        int bonusNumber = bonus.getBonus();
+        return userNumbers.contains(bonusNumber);
     }
 
 }

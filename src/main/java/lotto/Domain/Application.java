@@ -16,7 +16,8 @@ public class Application {
         // 금액만큼의 로또를 발행한다.
         int lotteryAmount = cashier.getLotteryAmount();
         LottoMaker lottoMaker = new LottoMaker();
-        lottoMaker.issueLotteryTickets(lotteryAmount);
+        lottoMaker.issueLottoTickets(lotteryAmount);
+        lottoMaker.printLottoTickets();
 
         // 당첨 번호를 입력받는다.
         LottoIOHandler lottoIOHandler = new LottoIOHandler();

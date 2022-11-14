@@ -19,7 +19,7 @@ public class LottoMakerTest {
     @Test
     void publishLotteryTicketsTest(){
         // given
-        List<Integer> ticket = lottoMaker.publishLotteryTicket();
+        List<Integer> ticket = lottoMaker.publishLottoTicket();
         boolean result = true;
         // when
         for (Integer lotto:ticket) {
@@ -38,9 +38,9 @@ public class LottoMakerTest {
         // given
         int lotteryAmount = 1;
         // when
-        lottoMaker.issueLotteryTickets(lotteryAmount);
+        lottoMaker.issueLottoTickets(lotteryAmount);
         // then
-        List<Lotto> tickets = lottoMaker.getLotteryTickets();
+        List<Lotto> tickets = lottoMaker.getLottoTickets();
         assertThat(tickets.size()).isEqualTo(lotteryAmount);
     }
 
