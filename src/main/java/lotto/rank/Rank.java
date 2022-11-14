@@ -10,12 +10,12 @@ public enum Rank {
 
     private final int number;
     private final boolean bonusYN;
-    private final long winAmount;
+    private final long winProfit;
 
-    Rank(int number, boolean bonusYN, long winAmount) {
+    Rank(int number, boolean bonusYN, long winProfit) {
         this.number = number;
         this.bonusYN = bonusYN;
-        this.winAmount = winAmount;
+        this.winProfit = winProfit;
     }
 
     public static Rank getRank(int number, boolean bonusYN) {
@@ -31,8 +31,8 @@ public enum Rank {
         return null;
     }
 
-    public long getWinAmount() {
-        return winAmount;
+    public long getWinProfit() {
+        return winProfit;
     }
 
 
