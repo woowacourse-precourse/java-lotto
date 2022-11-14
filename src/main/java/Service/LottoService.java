@@ -19,20 +19,15 @@ public class LottoService {
 
     public void set_lotto(){
         int userMoney = getUserMoney();
-        int tickets = buyTickets(userMoney);
-        getAllLotto(tickets);
+        Ticket ticket = new Ticket();
+        int ticketNum = ticket.getTicketNum(userMoney);
+        getAllLotto(ticketNum);
     }
 
     private int getUserMoney() throws IllegalArgumentException{
         RequestUser.requestMoney();
         String userInput = Console.readLine();
         return userMoneyValidate.validateGetMoney(userInput);
-    }
-
-    public int buyTickets(int money){
-        Ticket ticket = new Ticket();
-        int ticketNum = ticket.getTicketNum(money);
-        return ticketNum;
     }
 
     public List<List<Integer>> getAllLotto(int tickets){

@@ -1,9 +1,11 @@
 package lotto;
 
+import Service.LottoService;
 import exception.LottoExceptionType;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import utils.RandomNumberLottoGenerator;
+import view.SystemMessage;
 
 import java.util.List;
 import java.util.Set;
@@ -67,5 +69,22 @@ class LottoTest {
         for(int num : finalLotto){
             System.out.printf(num + " ");
         }
+    }
+
+    @Test
+    public void 자동로또만들기() throws Exception{
+        //given
+        LottoService lottoService = new LottoService();
+        List<List<Integer>> allLotto = lottoService.getAllLotto(8);
+
+        for(List<Integer> list : allLotto){
+            for(int val : list){
+                System.out.printf(val + " ");
+            }
+            System.out.println("");
+        }
+        //when
+
+        //then
     }
 }
