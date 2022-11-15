@@ -33,9 +33,10 @@
     - [예외사항] List<Integer>를 받을 때 6개가 아니면 예외
     - [예외사항] 중복이 있으면 예외
     - [예외사항] 로또 시작 숫자(1) 부터 로또 끝 숫자(45) 범위를 넘어가면 예외
-    - String getLottoPrinting() 로또의 값을 주어진 형태로 만들어서 String 으로 반환해줌
+    - String toPrintableFormat() 로또의 값을 주어진 형태로 만들어서 String 으로 반환해줌
     - boolean contains(int number) 로또 안에 특정 숫자가 있는지 확인함
-    - int getSame(Lotto);
+    - boolean contains(BonusNumber) 로또 안에 보너스 넘버가 있는지 확인함
+    - int getSame(Lotto) 겹치는 숫자들의 수를 반환함
 2. Money
     - 1000의 배수로 로또에 사용되는 돈을 관리하는 객체
     - [예외사항] 1000의 배수가 아니라면 예외
@@ -47,8 +48,9 @@
 4. Lottos
     - 생성된 로또들을 담당하는 객체
     - List<Lotto>가 필요함
-    - 그냥 List<Lotto>를 반환하는 것 대신, Lottos 를 통해 반환하고, getLottos 를 한다면 immutable list 를 보냄
-5. MissionRandom
+    - Stream<Lotto> toStream() 로또를 stream 으로 반환함
+    - int size() 들어있는 로또들의 수를 반환함
+5. RandomPicker
     - 랜덤을 DI 하는 역할을 가지고 있음.
     - 인터페이스를 통해 LottoCreator 에 주입됨
     - List<Integer> pickUniqueNumbersInRange(int startInclusive,int endInclusive, int count);
@@ -67,16 +69,13 @@
 8. LottoScoreDto
     - 로또 점수를 전달함
     - 3개, 4개, 5개, 5개+보너스, 6개, 수익률이 필요함
-    - long getThree()
-    - long getFour()
-    - long getFive()
-    - long getFiveBonus()
+    - int nthPrizeCount() 등수에 포함된 사람들의 수가 필요함
     - double getRate() 가 필요함
 9. LottoStatistic
     - 로또 통계 계산을 담당함
     - WinningLottery 와 Lottos 가 필요함
     - LottoStatistic(WinningLottery,Lottos);
-    - public LottoScoreDto getScore();
+    - LottoScoreDto calculateStatistic() 결과를 계산해서 dto 형태로 return 함
 10. InputHandler
     - InputView 와 System 과의 의존성을 낮추는 중간 객체
     - String readLine() 가 필요함
@@ -85,9 +84,11 @@
 12. InputView
     - 사용자의 입력을 담당하는 객체
     - inputHandler 가 필요함
-    - int getAmount() 금액을 가져옴.
-    - [예외사항] 숫자만으로 이루어 지지 않음
-    - List<Integer> getWinLotteryNumbers()
+    - long inputLong() long 타입의 숫자를 반환함
+    - [예외사항] 숫자만으로 이루어 지지 않음, 범위를 벗어남
+    - int inputInt() int 타입의 숫자를 반환함
+    - [예외사항] 숫자만으로 이루어지지 않음, 범위를 벗어남
+    - List<Integer> inputListIntegers()
     - [예외사항] 숫자,숫자 형태로 이루어 지지 않음
 13. OutputHandler
     - OutputView 와 System 과의 의존성을 낮추는 중간 객체
@@ -101,9 +102,9 @@
     - void printInputWinNumbers() 당첨 번호를 입력하라는 내용
     - void printInputBonusNumber() 보너스 번호를 입력하라는 내용
     - void printStatistics(LottoScoreDto) 통계를 추천하는 것
-15. LottoMachine
+15. LottoWinningSystem
     - 처음부터 끝까지 관리하는 컨트롤러의 역할을 함
-    - view 가 필요함, MissionRandom 이 필요함
+    - view 가 필요함, PickNumbers 가 필요함
 
 # 구현에서 신경쓸 부분
 
