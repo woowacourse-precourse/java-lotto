@@ -1,0 +1,28 @@
+# 미션 - 로또
+
+## 기능 목록
+- [x] 사용자의 로또 번호와, 이번 회차의 로또 번호를 비교할 수 있다. - Player.compareLottos()
+  - [x] 사용자의 로또 한장을 확인한다. - Player.confirmLotto()
+  - [x] 사용자의 로또 한장의 결과를 기록한다. - Player.putLottoResults()
+    - [x] 로또 한장의 같은 갯수를 가져온다. - LottoResult.getSameCount()
+    - [x] 로또 한장의 보너스 번호를 바꾼다. -LottoResult.setSamePlusLotto()
+- [x] 사용자는 로또를 구입할 수 있다. - Player.buyLotto()
+  - [x] 구입 금액을 설정한다. - Player.setBuyMoney()
+    - [x] 나누어 떨어지지 않으면 예외가 발생한다. - Check.haveRest() 
+  - [x] 1 ~ 45의 로또 번호를 발행할 수 있다. - Player.publishRandomNumbers()
+- [x] 로또 번호의 개수 예외를 검사한다. - Lotto.Validate()
+- [x] 로또 번호의 중복 예외를 검사한다. - Lotto.duplicate()
+  - [x] 중복 예외를 검사한다. - Check.checkDuplicate()
+- [x] 로또 번호의 범위 예외를 검사한다. - Lotto.range()
+  - [x] 범위 예외를 검사한다. - Check.checkRange()
+- [x] 로또 당첨 번호를 가져온다. - Lotto.getNumbers()
+- [x] 보너스 번호의 중복 예외를 검사한다. - PlusLotto.duplicate()
+  - [x] 중복 예외를 검사한다. - Check.checkDuplicate()
+- [x] 보너스 번호의 범위 예외를 검사한다. - PlusLotto.range()
+  - [x] 범위 예외를 검사한다. - Check.checkRange()
+- [x] 보너스 번호를 기져온다. - PlusLotto.getNumber()
+- [x] 사용자가 발행한 로또를 출력할 수 있다. - Player.printPublishLotto() 
+- [x] 사용자는 당첨 내역, 수익률을 출력할 수 있다. - Player.printRankYield()
+  - [x] 사용자의 로또 결과를 간편하게 기록한다. - Player.setLottoResultsRank
+    - [x] 로또 결과의 등수를 기록한다. - Player.setRankAmount()
+- [x] 예외에 따라 메세지를 출력할 수 있다. - CustomException.getMessage()
