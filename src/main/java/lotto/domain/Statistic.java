@@ -44,6 +44,10 @@ public enum Statistic {
         return count;
     }
 
+    public static void initStatistic() {
+        Stream.of(values()).forEach(win -> win.count = 0);
+    }
+
     public static long getTotalPrize() {
         long totalPrize = 0;
         for(Statistic win : values()) {
