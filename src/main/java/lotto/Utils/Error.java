@@ -1,4 +1,4 @@
-package lotto.UI;
+package lotto.Utils;
 
 public class Error {
     public void amountInput() {
