@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -26,7 +27,7 @@ public class PurchasedLotto {
         validate(purchaseCost);
         this.cost = purchaseCost;
 
-        purchasedLottoNumbers = publishLottos(this.cost);
+        this.purchasedLottoNumbers = publishLottos(this.cost);
     }
 
     //구입 금액 검증
@@ -45,17 +46,5 @@ public class PurchasedLotto {
             lottos.add(lotto);
         }
         return lottos;
-    }
-
-    //수익률 계산
-    public Double calculateReturn(List<Integer> winNumbers, Integer bonusNumber) {
-        Double winnings = 0.0;
-        for (Lotto lotto : purchasedLottoNumbers) {
-            winnings += Double.valueOf(lotto.checkWin(winNumbers, bonusNumber).getValue());
-        }
-
-        Double returnRate = winnings / this.cost * 100.0;
-        returnRate = Math.round(returnRate * 10.0) / 10.0;
-        return returnRate;
     }
 }
