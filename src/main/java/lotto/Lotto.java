@@ -71,13 +71,13 @@ public class Lotto {
         lottoQuantity = pay / 1000;
         return lottoQuantity;
     }
-    public void Lotto_number(int[][]arr, int i , List<Integer> numbers){
+    public void Lotto_number(int[][]winLottoNumber, int i , List<Integer> numbers){
         for(int j =0; j< numbers.size(); j++){
-            arr[i][j] = numbers.get(j);
+            winLottoNumber[i][j] = numbers.get(j);
         }
         for(int k =0; k< numbers.size(); k++) {
             for (int l = k + 1; l < numbers.size(); l++) {
-                if (arr[i][k] == arr[i][l])
+                if (winLottoNumber[i][k] == winLottoNumber[i][l])
                     System.out.println("[ERROR]: 로또 번호는 중복된 숫자가 아니여야 합니다.");
             }
         }
