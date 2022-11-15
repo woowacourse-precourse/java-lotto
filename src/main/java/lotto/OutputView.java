@@ -14,5 +14,18 @@ public class OutputView {
         }
     }
 
+    public void printRankingHistory(Rank[] rankings) {
+        System.out.println("당첨 통계");
+        System.out.println("---");
+
+        for (Rank ranking : rankings) {
+            if (ranking.getMatchedNumberCount() > 2) {
+                System.out.println(ranking);
+            }
+
+        }
+
+    }
+
 
 }

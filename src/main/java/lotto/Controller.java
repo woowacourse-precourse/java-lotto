@@ -15,7 +15,18 @@ public class Controller {
         List<Lotto> lottoTickets = lottoGenerator.makeQuickPickTicketsBy(lottoMoney);
         outputView.printTickets(lottoTickets);
 
+        RankingService rankingService = makeRankingService();
+        Rank[] rankings = rankingService.calculateRankings(lottoTickets);
+        outputView.printRankingHistory(rankings);
+       
 
+    }
+
+    public RankingService makeRankingService() {
+        Lotto winningNumbers = new Lotto(inputView.getWinningNumbers());
+        LottoNumber bonusNumber = new LottoNumber(inputView.getBonusNumber());
+
+        return new RankingService(winningNumbers, bonusNumber);
     }
 
 
