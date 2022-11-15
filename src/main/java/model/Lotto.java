@@ -2,7 +2,7 @@ package model;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashMap;
+import java.util.EnumMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
@@ -90,7 +90,7 @@ public class Lotto {
     }
 
     private WinningResult setWinningResult(int matchCount, boolean containsBonusBall) {
-        Map<Win, Integer> winningResult = new HashMap<>();
+        Map<Win, Integer> winningResult = new EnumMap<>(Win.class);
 
         Optional<Win> ranking = Win.getRanking(matchCount, containsBonusBall);
 

@@ -8,6 +8,7 @@ import java.util.EnumMap;
 import java.util.List;
 import java.util.Map;
 
+import static constant.Config.INIT_COUNT;
 import static constant.Config.MAX_NUMBER;
 import static constant.Config.MIN_NUMBER;
 import static constant.Config.NUMBER_COUNT;
@@ -45,13 +46,24 @@ public class Lottos {
     }
 
     public WinningResult getTotalWinningResult(WinningLotto winningLotto) {
-        Map<Win, Integer> winningResults = new EnumMap<>(Win.class);
+        Map<Win, Integer> winningResults = initWinningResults();
 
         for (Lotto lotto : lottos) {
-            WinningResult winningResult = lotto.getWinningResult(winningLotto);
-            winningResults.putAll(winningResult.getWinningResult());
+            WinningResult result = lotto.getWinningResult(winningLotto);
+            Map<Win, Integer> winningResult = result.getWinningResult();
+            winningResult.forEach((win, count) -> winningResults.merge(win, count, Integer::sum));
         }
 
         return new WinningResult(winningResults);
+    }
+
+    private Map<Win, Integer> initWinningResults() {
+        Map<Win, Integer> winningResults = new EnumMap<>(Win.class);
+
+        for (Win win : Win.values()) {
+            winningResults.put(win, INIT_COUNT);
+        }
+
+        return winningResults;
     }
 }
