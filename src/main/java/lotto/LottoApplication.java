@@ -42,7 +42,7 @@ public class LottoApplication {
         WinningNumber winningNumber = setting.createWinningNumber(winningNumbers, bonusNumbers);
         RewardCoordinator rewardCoordinator = setting.createRewardCoordinator(winningNumber, purchasePrice);
         String result = rewardCoordinator.getRewardResult(lottos);
-        printResults(result);
+        output.print(result);
     }
 
     private Integer inputInteger(InputRequestMessage message) {
@@ -62,10 +62,5 @@ public class LottoApplication {
 
         output.print("\n" + lottos.size() + "개를 구매했습니다.");
         output.print(lottosNumber);
-    }
-
-    private void printResults(String result) {
-        output.print("\n당첨통계\n---");
-        output.print(result);
     }
 }
