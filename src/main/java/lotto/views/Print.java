@@ -1,7 +1,7 @@
 package lotto.views;
 
-import lotto.domain.Lotto;
-import lotto.domain.RankCounter;
+import lotto.model.Lotto;
+import lotto.model.RankCounter;
 
 import java.text.DecimalFormat;
 import java.util.List;

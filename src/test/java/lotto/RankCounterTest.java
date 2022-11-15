@@ -1,15 +1,11 @@
 package lotto;
 
-import lotto.domain.Rank;
-import lotto.domain.RankCounter;
-import org.assertj.core.api.Assertions;
+import lotto.model.Rank;
+import lotto.model.RankCounter;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.util.List;
-
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 class RankCounterTest {
     @DisplayName("순위 계수기 초기 값 테스트")

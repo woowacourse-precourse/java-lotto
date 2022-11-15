@@ -1,13 +1,10 @@
 package lotto;
 
-import lotto.domain.*;
-import lotto.utils.LottoGenerator;
-import org.assertj.core.api.Assertions;
+import lotto.model.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.lang.reflect.Field;
-import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
