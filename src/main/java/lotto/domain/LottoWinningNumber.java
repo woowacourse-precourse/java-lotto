@@ -22,7 +22,6 @@ public class LottoWinningNumber {
         System.out.println("당첨 번호를 입력해 주세요.");
         String userInput = Console.readLine();
         List<String> temporaryList = new ArrayList<String>(Arrays.asList(userInput.split(",")));
-        System.out.println(temporaryList);
         List<Integer> numbers = temporaryList.stream().map(Integer::parseInt).collect(Collectors.toList());
         setNumbers(numbers);
     }

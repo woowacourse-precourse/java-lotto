@@ -1,9 +1,19 @@
 package lotto.domain;
 
 import camp.nextstep.edu.missionutils.Console;
+import java.util.List;
 
 public class Cashier {
     static final int LOTTO_PRICE = 1000;
+    private int lottoAmount;
+
+    public Cashier() {
+        this.lottoAmount = 0;
+    }
+
+    public int getLottoAmount() {
+        return lottoAmount;
+    }
 
     private int checkInputPrice(int userValue) {
         if (!isBiggerThanZero(userValue)) {
@@ -17,10 +27,18 @@ public class Cashier {
         return userValue;
     }
 
-    public int sellLotto(int userValue) {
-        int lottoAmount = checkInputPrice(userValue) / 1000;
+    public void sellLotto(int userValue, List<Lotto> lottos) {
+        lottoAmount = checkInputPrice(userValue) / 1000;
         System.out.println(lottoAmount + "개를 구매했습니다.");
-        return lottoAmount;
+        releaseLotto(lottos);
+    }
+
+    private void releaseLotto(List<Lotto> lottos) {
+        for (int i = 0; i < lottoAmount; i++) {
+            Lotto purchasedLotto = new Lotto();
+            System.out.println(purchasedLotto.getNumbers());
+            lottos.add(purchasedLotto);
+        }
     }
 
     private boolean isBiggerThanZero(int userValue) {

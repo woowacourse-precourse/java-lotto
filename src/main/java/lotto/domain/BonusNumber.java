@@ -32,7 +32,7 @@ public class BonusNumber {
             return Integer.parseInt(userInput);
         } catch (NumberFormatException e) {
             System.out.println("[ERROR] 숫자가 아닌 값이 입력되었습니다.");
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR] 숫자가 아닌 값이 입력되었습니다.");
         }
     }
 
