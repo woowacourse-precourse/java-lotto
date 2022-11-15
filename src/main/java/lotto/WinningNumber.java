@@ -15,7 +15,7 @@ public class WinningNumber {
         numbers = validateWinningNumber(Console.readLine());
 
         printRequestBonusNumberMessage();
-        bonusNumber = validateNumber(Console.readLine());
+        bonusNumber = validateNumber(numbers, Console.readLine());
     }
 
     private static void printRequestWinningNumberMessage() {
@@ -43,8 +43,7 @@ public class WinningNumber {
         List<Integer> winningNumber = new ArrayList<>();
         String[] numbers = inputNumbers.split(",");
         for (String n : numbers) {
-            ;
-            winningNumber.add(validateNumber(n));
+            winningNumber.add(validateNumber(winningNumber, n));
         }
 
         if (winningNumber.size() != 6) {
@@ -54,18 +53,18 @@ public class WinningNumber {
         return winningNumber;
     }
 
-    private int validateNumber(String number) {
+    private int validateNumber(List<Integer> numbers, String number) {
         int n = convertStringToNumber(number);
         if (isNotValidNumber(n)) {
             throw new IllegalArgumentException(ErrorMessage.NUMERIC_RANGE_ERROR.getMessage());
         }
-        if (isDuplicatedNumber(n)) {
+        if (isDuplicatedNumber(numbers, n)) {
             throw new IllegalArgumentException(ErrorMessage.DUPLICATED_NUMBER_ERROR.getMessage());
         }
         return n;
     }
 
-    private boolean isDuplicatedNumber(int n) {
+    private boolean isDuplicatedNumber(List<Integer> numbers, int n) {
         return numbers.contains(n);
     }
 
