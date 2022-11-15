@@ -8,14 +8,9 @@ import java.util.*;
 public class RaffleMachine {
 
     public Map<Rank, Integer> getWinnerPerRank(List<Lotto> lottos, List<Integer> normalNumbers, Integer bonusNumbers) {
-        // TODO : Integer 0으로 초기화하여 구현
         Map<Rank, Integer> winnerPerRank = new HashMap<>();
-        winnerPerRank.put(Rank.FIRST, 0);
-        winnerPerRank.put(Rank.SECOND, 0);
-        winnerPerRank.put(Rank.THIRD, 0);
-        winnerPerRank.put(Rank.FOURTH, 0);
-        winnerPerRank.put(Rank.FIFTH, 0);
-        winnerPerRank.put(Rank.NONE, 0);
+
+        initializeHashMapWithZero(winnerPerRank);
 
         for (Lotto lotto : lottos) {
             Rank rank = decideRank(lotto, normalNumbers, bonusNumbers);
@@ -23,6 +18,15 @@ public class RaffleMachine {
             winnerPerRank.put(rank, winnerCount);
         }
         return winnerPerRank;
+    }
+
+    private void initializeHashMapWithZero(Map<Rank, Integer> winnerPerRank) {
+        winnerPerRank.put(Rank.FIRST, 0);
+        winnerPerRank.put(Rank.SECOND, 0);
+        winnerPerRank.put(Rank.THIRD, 0);
+        winnerPerRank.put(Rank.FOURTH, 0);
+        winnerPerRank.put(Rank.FIFTH, 0);
+        winnerPerRank.put(Rank.NONE, 0);
     }
 
     private Rank decideRank(Lotto lotto, List<Integer> normalNumbers, Integer bonusNumber) {

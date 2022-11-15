@@ -14,7 +14,6 @@ class RaffleResultCalculatorTest {
 
     @Test
     void 로또_상금_수익률_계산() {
-        //TODO: HASHMAP 리팻터링 필요
         HashMap<Rank, Integer> winnerPerRank = new HashMap<>();
 
         winnerPerRank.put(Rank.FIRST, 0);
