@@ -49,13 +49,20 @@ public class Lotto {
     }
     
     public List<Integer> validateWin(List<String> input) throws IllegalArgumentException{
+        IllegalArgumentException exception = new IllegalArgumentException();
         String[] temp = input.get(0).split(",");
         List<Integer> result = new ArrayList<>();
         for(int n = 0; n < 6; n++){
             int tempNum = val(input, n);
+            if (result.contains(tempNum)){
+                throw exception;
+            }
             result.add(tempNum);
         }
         bonus = val(input, 7);
+        if(result.contains(bonus)){
+            throw exception;
+        }
         return result;
     }
     
