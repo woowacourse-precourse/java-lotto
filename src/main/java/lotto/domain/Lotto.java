@@ -75,4 +75,10 @@ public class Lotto {
     public boolean compareBonusNumber(LottoNumber bonusNumber) {
         return this.numbers.contains(bonusNumber.getLottoNumber());
     }
+
+    public Rank matchRank(Lotto winningNumbers, LottoNumber bonusNumber) {
+        int matchCount = compareWinningNumbers(winningNumbers);
+        boolean hasBonusHit = compareBonusNumber(bonusNumber);
+        return Rank.of(matchCount, hasBonusHit);
+    }
 }
