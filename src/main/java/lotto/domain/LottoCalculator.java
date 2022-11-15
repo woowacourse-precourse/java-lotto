@@ -10,21 +10,22 @@ import java.util.Map;
 public class LottoCalculator {
     private final Input input;
     private final List<Lotto> lottos;
+    private Map<Integer, Integer> winningLotto;
 
     public LottoCalculator(Input input) {
         this.input = input;
         LottoGenerator lottoGenerator = new LottoGenerator(input.countingLotto());
         lottos = lottoGenerator.getLottos();
+        winningLotto = initialWinningLotto();
     }
 
     public void checkHit() {
-        Map<Integer, Integer> winningLotto = initialWinningLotto();
         int correct;
         int bonusNumber = input.getBonusNumber();
         List<Integer> winningNumber = input.getWinningNumber();
         for (Lotto lotto : lottos) {
             correct = countCorrectNumber(lotto, winningNumber, bonusNumber);
-            printWinningRecord(correct);
+            markUp(correct);
         }
     }
 
@@ -36,7 +37,7 @@ public class LottoCalculator {
         return winningLotto;
     }
 
-    private void printWinningRecord(int correct) {
+    private void markUp(int correct) {
         if (correct == 3) {
 
         }
