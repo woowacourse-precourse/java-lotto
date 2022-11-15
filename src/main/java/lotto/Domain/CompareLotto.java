@@ -13,4 +13,18 @@ public class CompareLotto {
             }
         }
     }
+
+    public void addWinningBonus(List<Integer> lotto, int bonusNumber) {
+        if (lotto.contains(bonusNumber)) {
+            winningBonus++;
+        }
+    }
+
+    public int getTheNumberOfWins() {
+        return this.theNumberOfWins;
+    }
+
+    public int getWinningBonus() {
+        return this.winningBonus;
+    }
 }
