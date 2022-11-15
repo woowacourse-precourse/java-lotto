@@ -1,6 +1,7 @@
 package lotto.domain.lotto;
 
 import static lotto.constant.ErrorMessage.ERROR_MESSAGE_OF_CONSTRUCTOR;
+import static lotto.domain.lotto.Lotto.lottoNumberCount;
 import static lotto.domain.utils.Number.validateRange;
 
 import camp.nextstep.edu.missionutils.Randoms;
@@ -22,20 +23,20 @@ public class LottoNumbers {
    */
   public static List<Integer> createDistinctLottoNumbers(){
     List<Integer> numbers = Randoms
-        .pickUniqueNumbersInRange(Lotto.firstLottoNumber(), Lotto.lastLottoNumber(), Lotto.lottoNumberCount());
+        .pickUniqueNumbersInRange(Lotto.firstLottoNumber(), Lotto.lastLottoNumber(), lottoNumberCount());
     validateLottoNumbers(numbers);
     return removeDuplicateNumbers(numbers);
   }
 
-  private static List<Integer> removeDuplicateNumbers(List<Integer> numbers) {
+
+  public static List<Integer> removeDuplicateNumbers(List<Integer> numbers) {
     Set<Integer> distinctNumbers = Set.copyOf(numbers);
     return new ArrayList<>(List.copyOf(distinctNumbers));
   }
 
-  private static void validateLottoNumbers(List<Integer> numbers) {
+  public static void validateLottoNumbers(List<Integer> numbers) {
     for(Integer number: numbers) {
       validateRange( number );
     }
   }
-
 }
