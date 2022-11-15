@@ -1,5 +1,6 @@
 package lotto;
 
+import camp.nextstep.edu.missionutils.Randoms;
 public class LottoMachine {
 
     private final int buyLineMoney = 1000;
