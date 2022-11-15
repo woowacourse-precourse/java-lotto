@@ -6,11 +6,8 @@ import lotto.controller.dto.MoneyDto;
 import lotto.controller.dto.WinningNumbersDto;
 import lotto.domain.LottoRank;
 
-import java.util.ArrayList;
 import java.util.EnumMap;
-import java.util.List;
 import java.util.Map;
-import java.util.function.Supplier;
 
 public class DefaultView implements View {
 
@@ -51,15 +48,11 @@ public class DefaultView implements View {
         controller.inputWinningNumbers(dto);
     }
 
-    private String request(Supplier<String> supplier) {
-        return supplier.get();
-    }
-
     private void renderLottos() {
-        String lottosSize = request(controller::outputLottoSize);
+        String lottosSize = controller.outputLottoSize();
         System.out.println(Views.LOTTOS_COUNT.render(lottosSize));
 
-        String lottos = request(controller::outputLottos);
+        String lottos = controller.outputLottos();
         System.out.println(lottos);
     }
 
