@@ -21,7 +21,7 @@
     - 입력 제약조건: 1000의 배수 수가 입력되어야 한다.
 - [x] 당첨 번호를 입력한다. #inputWinningNumbers()
     - 입력 제약조건: comma로 구분된 1 이상 45 이하의 정수를 6개가 입력되어야한다.
-- [ ] 보너스 번호를 입력한다.
+- [x] 보너스 번호를 입력한다. #inputBonusNumber(winningNumbers)
     - 입력 제약조건: 1이상 45 이하의 정수 1개가 입력되어야한다.
 
 > 각 입력 제약조건을 벗어나면, "[ERROR]"를 포함하는 출력과 IllegalArgumentException를 발생시키고 프로그램이 종료시킨다.

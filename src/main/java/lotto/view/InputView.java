@@ -39,7 +39,14 @@ public class InputView {
             arrayList.add(Integer.parseInt(number));
         }
         return arrayList;
+    }
 
+    public Integer inputBonusNumber(List<Integer> winningNumbers) {
+        String input = Console.readLine();
+        validateCastInteger(input);
+        validateRange(input);
+        validateNotContainWinningNumbers(input, winningNumbers);
+        return Integer.valueOf(input);
     }
 
     private void validateCastInteger(String input) {
@@ -108,6 +115,14 @@ public class InputView {
         if (number < 1 || 45 < number) {
             throw new IllegalArgumentException(
                     ExceptionErrorType.INPUT_NUMBER_BETWEEN_1_45.getDescription()
+            );
+        }
+    }
+
+    private void validateNotContainWinningNumbers(String bonusNumber, List<Integer> winningNumbers) {
+        if (winningNumbers.contains(Integer.parseInt(bonusNumber))) {
+            throw new IllegalArgumentException(
+                    ExceptionErrorType.INPUT_NUMBER_NOT_IN_WINNING_NUMBERS.getDescription()
             );
         }
     }

@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayInputStream;
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
@@ -126,6 +127,54 @@ class InputViewTest {
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessageContaining("[ERROR]");
 
+        }
+    }
+
+    @Nested
+    @DisplayName("보너스 번호를 입력한다. 제약 조건에 맞지 않으면 예외발생를 시킨다.")
+    class inputBonusNumber {
+        List<Integer> winningNumbers = List.of(1, 2, 3, 4, 5, 6);
+        @Test
+        @DisplayName("숫자가 아닐때 예외발생")
+        void validateCastInteger() {
+            // Given
+            String input = "ㅋ";
+
+            // When
+            command(input);
+
+            // Then
+            assertThatThrownBy(() -> inputView.inputBonusNumber(winningNumbers))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessageContaining("[ERROR]");
+        }
+        @Test
+        @DisplayName("1~45 범위가 아닐때 예외발생")
+        void validateRange() {
+            // Given
+            String input = "88";
+
+            // When
+            command(input);
+
+            // Then
+            assertThatThrownBy(() -> inputView.inputBonusNumber(winningNumbers))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessageContaining("[ERROR]");
+        }
+        @Test
+        @DisplayName("당첨 번호에 존재하는 값을 보너스 번호로 입력하면 예외발생")
+        void validateNotContainWinningNumbers() {
+            // Given
+            String input = "1";
+
+            // When
+            command(input);
+
+            // Then
+            assertThatThrownBy(() -> inputView.inputBonusNumber(winningNumbers))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessageContaining("[ERROR]");
         }
     }
 
