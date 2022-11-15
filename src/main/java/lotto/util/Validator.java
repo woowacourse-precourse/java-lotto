@@ -1,8 +1,6 @@
 package lotto.util;
 
 public class Validator {
-    public Validator() {}
-
     public static <T> void validateNotNull(T object) {
         if (object == null) {
             ErrorHandler.throwException(ErrorMessage.NULL);

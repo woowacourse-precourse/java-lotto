@@ -15,10 +15,6 @@ public interface Console {
             System.out.println(message.text());
         }
 
-        public static void printLine(Message message, String text) {
-            System.out.println(message.text() + text);
-        }
-
         public static void print(String text) {
             System.out.print(text);
         }

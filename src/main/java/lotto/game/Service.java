@@ -19,8 +19,7 @@ public class Service {
     private Map<Integer, Integer> drawScore;
     private int bonusScore;
 
-    public Service() {
-    }
+    public Service() {}
 
     public int generateQuantity(String purchaseAmount) {
         quantity = Purchase

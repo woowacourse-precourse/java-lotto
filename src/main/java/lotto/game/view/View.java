@@ -9,8 +9,7 @@ public class View {
     private static final String TRIPLE_DASH = "---";
     private static final String RESULT_UNIT = "개";
 
-    public View() {
-    }
+    public View() {}
 
     public String inputPurchaseAmount() {
         Console.Out.printLine(Message.INPUT_PURCHASE_AMOUNT);
@@ -41,8 +40,8 @@ public class View {
         Console.Out.printLine(Message.OUTPUT_MATCH_TOTAL);
         Console.Out.printLine(TRIPLE_DASH);
         Console.Out.printLine(formatResult(
-                        Message.OUTPUT_THREE_MATCHES,
-                        drawScore.getOrDefault(THREE, DEFAULT_SCORE)));
+                Message.OUTPUT_THREE_MATCHES,
+                drawScore.getOrDefault(THREE, DEFAULT_SCORE)));
         Console.Out.printLine(formatResult(
                 Message.OUTPUT_FOUR_MATCHES,
                 drawScore.getOrDefault(FOUR, DEFAULT_SCORE)));

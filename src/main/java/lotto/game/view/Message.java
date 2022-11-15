@@ -22,7 +22,6 @@ public enum Message {
     OUTPUT_EARNINGS_RATE_PREFIX("총 수익률은 "),
     OUTPUT_EARNINGS_RATE_POSTFIX("입니다.");
 
-
     private final String text;
 
     Message(String text) {

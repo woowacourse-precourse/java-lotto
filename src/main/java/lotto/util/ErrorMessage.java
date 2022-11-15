@@ -9,8 +9,7 @@ public enum ErrorMessage {
     LOTTO_NUMBERS_NOT_IN_RANGE("[ERROR] 로또 번호는 1이상 45이하 정수입니다."),
     INVALID_PURCHASE_UNIT("[ERROR] 구입 금액은 1,000원 단위입니다."),
     BONUS_NUMBER_REPEATED("[ERROR] 당첨 번호와 보너스 번호는 중복될 수 없습니다.");
-
-
+    
     private final String text;
 
     ErrorMessage(String text) {
