@@ -1,6 +1,9 @@
 package lotto.Model;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+import java.util.regex.Pattern;
 
 public class Lotto {
     private final List<Integer> numbers;
@@ -14,10 +17,13 @@ public class Lotto {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException("보너스 번호를 제외한 로또 번호는 6개를 입력해야 합니다.");
         }
-        if (numbers.stream().anyMatch(s -> s < 1 || s > 45)){
-            throw new IllegalArgumentException("[ERROR] 1~45 범위를 벗어나는 값을 입력할 수 없습니다.");
+        for (int n : numbers){
+            if (n < 1 || n > 45){
+                throw new IllegalArgumentException("[ERROR] 1~45 범위를 벗어나는 값을 입력할 수 없습니다.");
+            }
         }
-        if (numbers.stream().distinct().count() != 6){
+        Set<Integer> uniqueNumbers = new HashSet<>(numbers);
+        if (numbers.size() != uniqueNumbers.size()){
             throw new IllegalArgumentException("[ERROR] 중복된 숫자를 입력할 수 없습니다.");
         }
     }
