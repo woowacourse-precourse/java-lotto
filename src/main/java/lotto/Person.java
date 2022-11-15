@@ -10,13 +10,25 @@ import java.util.List;
 public class Person {
     private List<Lotto> lottos = new ArrayList<>();
     private int purchaseAmount = 0;
-    private LottoScoreResult lottoScoreResult;
-
+    private int totalLottoPrize = 0;
+    private LottoScoreResult lottoScoreResult = new LottoScoreResult();
     public void buyLottos() {
         purchaseAmount = Input.inputPurchaseAmount();
         for (int i = 0; i < purchaseAmount; i += Game.LOTTO_PRICE) {
             lottos.add(new Lotto(createRandomLottoNum()));
         }
+    }
+
+    public void calculateTotalLottoPrize() {
+        int totalPrize = 0;
+        totalPrize= lottoScoreResult.winScoreList.get(0) * 0
+                + lottoScoreResult.winScoreList.get(1) * LottoPrize.FIFTH_PRIZE.lottoPrize
+                + lottoScoreResult.winScoreList.get(2) * LottoPrize.SECOND_PRIZE.lottoPrize
+                + lottoScoreResult.winScoreList.get(3) * LottoPrize.THIRD_PRIZE.lottoPrize
+                + lottoScoreResult.winScoreList.get(4) * LottoPrize.FOURTH_PRIZE.lottoPrize
+                + lottoScoreResult.winScoreList.get(5) * LottoPrize.FIFTH_PRIZE.lottoPrize;
+        totalLottoPrize = totalPrize;
+
     }
 
     private List<Integer> createRandomLottoNum() {
