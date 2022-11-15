@@ -11,6 +11,11 @@ public enum Ranking {
     FOURTH(4, 50_000, "4개 일치 (50,000원) - "), // 4등
     FIFTH(3, 5_000, "3개 일치 (5,000원) - "), // 5등
     MISS(0, 0, "");
+    Ranking(int countOfMatch, int winningAmount, String message) {
+        this.countOfMatch = countOfMatch;
+        this.winningAmount = winningAmount;
+        this.message = message;
+    }
 
     private static final int WINNING_MIN_COUNT = 3;
     private static final String ERROR_MESSAGE = "[ERROR]";
@@ -38,11 +43,7 @@ public enum Ranking {
         throw new IllegalArgumentException(ERROR_MESSAGE);
     }
 
-    Ranking(int countOfMatch, int winningAmount, String message) {
-        this.countOfMatch = countOfMatch;
-        this.winningAmount = winningAmount;
-        this.message = message;
-    }
+
 
     public int getCountOfMatch() {
         return countOfMatch;
