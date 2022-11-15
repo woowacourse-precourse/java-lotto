@@ -15,4 +15,9 @@ public class WinningLotto {
         this.bonusNumber = bonusNumber;
         this.winningNumbers = winningNumbers;
     }
+    public Rank getRankOf(Lotto userLotto) {
+        int matchCount = userLotto.calculateMatchCount(winningNumbers);
+        boolean isBonusNumber = userLotto.checkBonusNumber(bonusNumber);
+        return Rank.lottoMatchRank(matchCount, isBonusNumber);
+    }
 }

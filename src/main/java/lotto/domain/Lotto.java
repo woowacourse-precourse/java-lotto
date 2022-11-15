@@ -20,5 +20,17 @@ public class Lotto {
         LottoValidation.isValidLotto(numbers);
     }
 
-    // TODO: 추가 기능 구현
+    public int calculateMatchCount(List<Integer> winningNumbers) {
+        int matchCount = 0;
+        for (Integer lottoNumber : numbers) {
+            if (winningNumbers.contains(lottoNumber)) {
+                matchCount++;
+            }
+        }
+        return matchCount;
+    }
+
+    public boolean checkBonusNumber(int bonusNumber) {
+        return numbers.contains(bonusNumber);
+    }
 }

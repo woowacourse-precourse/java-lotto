@@ -18,6 +18,10 @@ public class UserLotto {
         createLottos();
     }
 
+    public int getUserMoney() {
+        return userMoney;
+    }
+
     public List<Lotto> getUserLottos() {
         return userLottos;
     }
