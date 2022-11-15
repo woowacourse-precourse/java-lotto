@@ -14,4 +14,20 @@ public class Score {
         bonusCount ++;
     }
 
+    public static Integer firstCount() {
+        return count.get(3);
+    }
+
+    public static Integer thirdCount() {
+        return count.get(2);
+    }
+
+    public static Integer fourthCount() {
+        return count.get(1);
+    }
+
+    public static Integer fifthCount() {
+        return count.get(0);
+    }
+
 }
