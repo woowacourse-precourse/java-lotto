@@ -40,7 +40,7 @@ public class LottoMachine {
     }
 
     private static boolean isBonus(Lotto lotto, int bonus) {
-        return lotto.getNumbers().contains(bonus);
+        return Lotto.isBonus(lotto, bonus);
     }
 
 
