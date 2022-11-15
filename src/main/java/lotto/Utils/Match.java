@@ -1,17 +1,17 @@
-package lotto.Controller;
+package lotto.Utils;
 
 
 import java.util.HashSet;
 import java.util.List;
 
-public class MatchController {
+public class Match {
 
     private final int lottoResults;
     public final List<Integer> winningNumbers;
     public final List<Integer> lotto;
     public final int bonusNumber;
 
-    public MatchController(List<Integer> winningNumers, List<Integer> lotto, int bounusNumber) {
+    public Match(List<Integer> winningNumers, List<Integer> lotto, int bounusNumber) {
         this.winningNumbers= winningNumers;
         this.lotto = lotto;
         this.bonusNumber=bounusNumber;

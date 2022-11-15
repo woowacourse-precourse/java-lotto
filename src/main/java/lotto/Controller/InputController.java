@@ -1,8 +1,8 @@
 package lotto.Controller;
 
-import lotto.Model.Lotto;
+import lotto.Model.*;
 import lotto.Model.Number;
-import lotto.Model.Price;
+import lotto.Utils.Match;
 import lotto.View.InputView;
 import lotto.View.OutputView;
 
@@ -20,21 +20,37 @@ public class InputController {
 
     public InputController() {
         this.price = new Price();
-        LottoController lottoController = new LottoController(price.getLottoTicketCount());
-        this.lottoBox = new ArrayList<>(lottoController.getlottoBox());
-        InputView.lottoCount(price.getLottoTicketCount());
-        OutputView.lottoNumber(lottoBox);
+        this.lottoBox = generateLotto();
+        viewLottoBox();
         this.num = new Number();
         this.lotto = new Lotto(num.getWinningNumberList());
     }
 
     public void inputController() {
+        List<Integer> yieldList = CalculateLotto();
+        viewYieldResult(yieldList);
+    }
+
+    public List<Integer> CalculateLotto() {
         List<Integer> yieldList = new ArrayList<>();
         for (List<Integer> lottoTicket : lottoBox) {
-            MatchController match = new MatchController(lotto.getLottoNumbers(), lottoTicket, num.getBonusNumber());
+            Match match = new Match(lotto.getLottoNumbers(), lottoTicket, num.getBonusNumber());
             yieldList.add(match.getResults());
         }
+        return yieldList;
+    }
 
+    public List<List<Integer>> generateLotto() {
+        LottoGenerator lottoGenerator = new LottoGenerator(price.getLottoTicketCount());
+        return (lottoGenerator.getlottoBox());
+    }
+
+    public void viewLottoBox() {
+        InputView.lottoCount(price.getLottoTicketCount());
+        OutputView.lottoNumber(lottoBox);
+    }
+
+    public void viewYieldResult(List<Integer> yieldList) {
         OutputView.prizes(yieldList);
         OutputView.yield(calculateYield(price.getInputPrice(), yieldList.stream().reduce(Integer::sum).get()));
     }

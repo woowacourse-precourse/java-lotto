@@ -1,15 +1,15 @@
-package lotto.Controller;
+package lotto.Model;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class LottoController {
+public class LottoGenerator {
 
     private final List<List<Integer>> lottoNumber;
 
-    public LottoController(int tickets) {
+    public LottoGenerator(int tickets) {
         this.lottoNumber =  new ArrayList<>(lottoGenerator(tickets));
     }
 

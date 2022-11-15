@@ -10,9 +10,6 @@ import java.util.Objects;
 
 public class OutputView {
 
-    public static void errorMessage(String message) {
-        System.out.println(String.format("[ERROR] %s", message));
-    }
 
     public static void moneyPrizes(int match, String prize, int count) {
 

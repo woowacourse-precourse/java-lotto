@@ -2,13 +2,14 @@ package lotto.Model;
 
 import camp.nextstep.edu.missionutils.Console;
 import lotto.Utils.Validator.IntegerValidator;
-import lotto.Utils.Validator.PriceValidator;
+import lotto.Utils.Validator.Number.PriceValidator;
 import lotto.View.InputView;
 
 public class Price {
 
     private final int inputPrice;
     private final int lottoTicketCount;
+    private final static int ERROR_PRICE=0;
 
     public Price() {
         this.inputPrice = inputPrice();
@@ -27,7 +28,7 @@ public class Price {
     public int inputPrice() {
         InputView.buyLotto();
         String price = Console.readLine();
-        IntegerValidator.Integer(price);
+        PriceValidator.checkPrice(price);
         return Integer.parseInt(price);
     }
 

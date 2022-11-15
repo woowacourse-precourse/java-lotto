@@ -3,7 +3,7 @@ package lotto.Model;
 import lotto.Utils.Converter;
 import lotto.Utils.Validator.IntegerValidator;
 import lotto.Utils.Validator.ListValidator;
-import lotto.Utils.Validator.NumberValidator;
+import lotto.Utils.Validator.Number.NumberValidator;
 import lotto.View.InputView;
 import camp.nextstep.edu.missionutils.Console;
 
@@ -31,10 +31,7 @@ public class Number {
     private List<Integer> inputNumber() {
         InputView.winNumber();
         String[] inputString = Console.readLine().split(",");
-        for(String str : inputString){
-            IntegerValidator.Integer(str);
-        }
-        ListValidator.Overlaped(inputString);
+        NumberValidator.checkNumber(inputString);
         return Converter.stringArrayToIntegerList(inputString);
     }
 
