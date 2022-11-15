@@ -9,7 +9,7 @@ import java.util.List;
 
 public class OutputView {
     public static void showTicketAmount(int ticketAmount) {
-        System.out.println(ticketAmount+GameMessage.PURCHASE_MESSAGE.getMessage());
+        System.out.println(ticketAmount + GameMessage.PURCHASE_MESSAGE.getMessage());
     }
 
     public static void showDrawNumber(List<Lotto> lottos) {
