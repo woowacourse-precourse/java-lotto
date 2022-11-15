@@ -6,7 +6,7 @@ import java.util.Map;
 
 public class Statistics {
     private Map<Prize, Integer> prizeTable = new HashMap<>();
-    private int earnedMoney = 0;
+    private int earnedMoney;
 
     public void setPrizeTable(List<List<Integer>> results){
         initPrizeTable();
@@ -48,20 +48,22 @@ public class Statistics {
     }
 
     public void setEarnedMoney(){
+        int tempMoney = 0;
         for (Prize prize: Prize.values()){
             int money = prize.getMoney();
             int quantity = prizeTable.get(prize);
 
-            earnedMoney += money*quantity;
+            tempMoney += money*quantity;
         }
+        earnedMoney = tempMoney;
     }
 
     public double calculateRate(int userPurchaseAmount){
         double inputMoney = (double) userPurchaseAmount;
         double returnedMoney = (double) earnedMoney;
 
-        double rate = inputMoney/returnedMoney;
-        rate = Math.round((rate*100)/100);
+        double rate = returnedMoney/inputMoney *100.0;
+        rate = (double)Math.round(rate*10)/10;
 
         return rate;
     }
