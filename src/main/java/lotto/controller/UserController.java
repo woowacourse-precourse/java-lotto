@@ -52,7 +52,7 @@ public class UserController {
         winningStatsView.showLineBreak();
         gameProgressView.showEnterBonusNumberMessage();
         String bonusNumber = userService.enterBonusNumber();
-        // TODO : 예외 처리 필요
+        exceptionService.exceptionHandlingOfBonusNumber(userRepository.getUser().getWinningNumbers().getNumbers(), bonusNumber);
         userRepository.setUserBonusNumber(Integer.parseInt(bonusNumber));
     }
 
