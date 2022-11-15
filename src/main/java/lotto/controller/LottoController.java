@@ -1,5 +1,6 @@
 package lotto.controller;
 
+import lotto.domain.Bonus;
 import lotto.domain.Lotto;
 import lotto.domain.LottoCreator;
 import lotto.view.Input;
@@ -13,7 +14,8 @@ public class LottoController {
     private static int price;
     private static int lottoQuantity;
     private static List<Lotto> lottoContainer;
-    private static Lotto winningLotto;
+    static Lotto winningLotto;
+    static Bonus bonusNumber;
 
     //로또 프로그램 실행 메서드
     public static void execute() {
@@ -28,6 +30,7 @@ public class LottoController {
         //당첨 번호 입력하기
         getWinningLotto();
         //보너스 번호 입력하기
+        getBonusNumber();
     }
 
     public static void getPrice() {
@@ -44,6 +47,11 @@ public class LottoController {
     }
 
     public static void getWinningLotto() {
-        Lotto lotto = new Lotto(Input.inputWinningNumber());
+        winningLotto = new Lotto(Input.inputWinningNumber());
     }
+
+    public static void getBonusNumber() {
+        bonusNumber = new Bonus(Input.inputBonusNumber(), winningLotto);
+    }
+
 }
