@@ -6,28 +6,28 @@ import lotto.domain.Lotto;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Counter {
+public class Input {
     private static final String inputAmountMessage = "구입 금액을 입력해 주세요.";
     private static final String inputNumbersMessage = "당첨 번호를 입력해 주세요.";
     private static final String inputBonusMessage = "보너스 번호를 입력해 주세요.";
 
-    public int inputAmount() {
+    public static int inputAmount() {
         System.out.println(inputAmountMessage);
         int amount = parseStrToInt(Console.readLine());
         return amountValidate(amount);
     }
 
-    public List<Integer> inputNumbers() {
+    public static List<Integer> inputNumbers() {
         System.out.println(inputNumbersMessage);
         return parseStrToList(Console.readLine());
     }
 
-    public int inputBonus(Lotto lotto) {
+    public static int inputBonus(Lotto lotto) {
         System.out.println(inputBonusMessage);
         return bonusValidate(lotto, parseStrToInt(Console.readLine()));
     }
 
-    private int parseStrToInt(String input) {
+    private static int parseStrToInt(String input) {
         int result;
 
         try {
@@ -38,13 +38,13 @@ public class Counter {
         return result;
     }
 
-    private int amountValidate(int amount) {
+    private static int amountValidate(int amount) {
         if (amount % Lotto.lottoPrice != 0)
             throw new IllegalArgumentException("[ERROR] 구입 금액은 1,000원 단위로 입력해야 합니다.");
         return amount;
     }
 
-    private int bonusValidate(Lotto lotto, int bonus) {
+    private static int bonusValidate(Lotto lotto, int bonus) {
         if (lotto.getNumbers().contains(bonus))
             throw new IllegalArgumentException("[ERROR] 보너스 번호는 로또 번호와 중복 될 수 없습니다.");
         if (bonus < Lotto.lottoMinNumber || bonus > Lotto.lottoMaxNumber)
@@ -52,7 +52,7 @@ public class Counter {
         return bonus;
     }
 
-    private List<Integer> parseStrToList(String input) {
+    private static List<Integer> parseStrToList(String input) {
         String[] numbers = input.split(",");
         List<Integer> result = new ArrayList<>();
 

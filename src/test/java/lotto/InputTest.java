@@ -10,7 +10,7 @@ import lotto.domain.Lotto;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.DisplayName;
 
-import lotto.ui.Counter;
+import lotto.ui.Input;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -25,9 +25,8 @@ public class InputTest {
         System.setOut(new PrintStream(out));
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
-        Counter counter = new Counter();
         try {
-            counter.inputAmount();
+            Input.inputAmount();
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
@@ -42,9 +41,8 @@ public class InputTest {
         System.setOut(new PrintStream(out));
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
-        Counter counter = new Counter();
         try {
-            counter.inputAmount();
+            Input.inputAmount();
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
@@ -59,10 +57,9 @@ public class InputTest {
         System.setOut(new PrintStream(out));
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
-        Counter counter = new Counter();
         Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
         try {
-            counter.inputBonus(lotto);
+            Input.inputBonus(lotto);
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
@@ -77,10 +74,9 @@ public class InputTest {
         System.setOut(new PrintStream(out));
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
-        Counter counter = new Counter();
         Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
         try {
-            counter.inputBonus(lotto);
+            Input.inputBonus(lotto);
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
