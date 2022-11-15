@@ -1,9 +1,9 @@
-package lotto;
+package lotto.ui;
 
 import camp.nextstep.edu.missionutils.Console;
+import lotto.validator.Validator;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class Input {
