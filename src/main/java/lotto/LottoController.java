@@ -6,62 +6,59 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 import camp.nextstep.edu.missionutils.Console;
-import lotto.model.InputValidator;
+import lotto.model.Constants;
 import lotto.model.Lotto;
 import lotto.model.Result;
+import lotto.model.User;
 import lotto.model.WinningLotto;
+import lotto.model.vallidator.NumberValidator;
 import lotto.view.InputView;
 import lotto.view.OutputView;
 
 public class LottoController {
+    private static final String SPLIT_REGEX = ",";
+
     private final InputView inputView = InputView.getInstance();
     private final OutputView outputView = OutputView.getInstance();
 
     public void run() {
         try {
-            int money = money();
-            List<Lotto> lottos = buy(money);
+            User user = getUser();
+            outputView.printLottoNumbers(user.getLottos());
+
             WinningLotto winningLotto = new WinningLotto(new Lotto(winningNumbers()), bonusNumber());
-            Result result = new Result(winningLotto, lottos, money);
+            Result result = new Result(winningLotto, user);
             outputView.printStatistics(result);
+
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
-
     }
 
-    private int money() {
+    private User getUser() {
         inputView.printInputMoney();
         String input = Console.readLine();
-        InputValidator.checkMoney(input);
+        NumberValidator.validate(input);
 
-        return Integer.parseInt(input);
-    }
-
-    private List<Lotto> buy(int money) {
-        int amount = money / Constants.LOTTO_PRICE;
-        List<Lotto> lottos = IntStream.range(0, amount).mapToObj(index -> Lotto.generate())
-                .collect(Collectors.toList());
-
-        outputView.printLottoNumbers(lottos);
-
-        return lottos;
+        return new User(Integer.parseInt(input));
     }
 
     private List<Integer> winningNumbers() {
         inputView.printInputLotto();
         String input = Console.readLine();
-        InputValidator.checkLottoNumbers(input);
 
-        String[] numbers = input.split(Constants.SPLIT_REGEX);
+        String[] numbers = input.split(SPLIT_REGEX);
+        NumberValidator.validate(numbers);
 
-        return Arrays.stream(numbers).map(Integer::parseInt).collect(Collectors.toList());
+        return Arrays.stream(numbers)
+                .map(Integer::parseInt)
+                .collect(Collectors.toList());
     }
 
     private int bonusNumber() {
         inputView.printInputBonus();
         String input = Console.readLine();
-        InputValidator.checkBonusNumber(input);
+        NumberValidator.validate(input);
 
         return Integer.parseInt(input);
     }

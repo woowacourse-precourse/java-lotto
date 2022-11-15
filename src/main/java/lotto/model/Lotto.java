@@ -2,8 +2,10 @@ package lotto.model;
 
 import java.util.List;
 
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+import lotto.model.vallidator.LottoValidator;
 import camp.nextstep.edu.missionutils.Randoms;
-import lotto.Constants;
 
 public class Lotto {
     private final List<Integer> numbers;
@@ -14,32 +16,17 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
-        isValidLength(numbers);
-        isAllUnique(numbers);
-        isAllInRange(numbers);
+        LottoValidator.validate(numbers);
     }
 
-    private void isValidLength(List<Integer> numbers) {
-        if (numbers.size() != Constants.NUMBER_LENGTH) {
-            throw new IllegalArgumentException(LottoError.LENGTH.message());
-        }
+    public static List<Lotto> buyLottos(int money) {
+        int amount = money / Constants.LOTTO_PRICE;
+        return IntStream.range(0, amount)
+                .mapToObj(index -> Lotto.generate())
+                .collect(Collectors.toList());
     }
 
-    private void isAllUnique(List<Integer> numbers) {
-        if (numbers.stream().distinct().count() != Constants.NUMBER_LENGTH) {
-            throw new IllegalArgumentException(LottoError.UNIQUE.message());
-        }
-    }
-
-    private void isAllInRange(List<Integer> numbers) {
-        for (Integer number : numbers) {
-            if (number < Constants.NUMBER_RANGE_START || number > Constants.NUMBER_RANGE_END) {
-                throw new IllegalArgumentException(LottoError.RANGE.message());
-            }
-        }
-    }
-
-    public static Lotto generate() {
+    private static Lotto generate() {
         return new Lotto(Randoms.pickUniqueNumbersInRange(
                 Constants.NUMBER_RANGE_START, Constants.NUMBER_RANGE_END, Constants.NUMBER_LENGTH));
     }

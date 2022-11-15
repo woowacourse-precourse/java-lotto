@@ -10,11 +10,11 @@ public class Result {
     private final Map<Rank, Integer> result = new HashMap<>();
     private final float rateOfReturn;
 
-    public Result(WinningLotto winningLotto, List<Lotto> lottos, int money) {
-        for (Lotto lotto : lottos) {
+    public Result(WinningLotto winningLotto, User user) {
+        for (Lotto lotto : user.getLottos()) {
             computeRank(winningLotto, lotto);
         }
-        this.rateOfReturn = computeRateOfReturn(money, computeTotalReturn());
+        this.rateOfReturn = computeRateOfReturn(user.getMoney(), computeTotalReturn());
     }
 
     private void computeRank(WinningLotto winningLotto, Lotto lotto) {

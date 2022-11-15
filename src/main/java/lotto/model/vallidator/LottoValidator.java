@@ -7,8 +7,8 @@ import lotto.model.Lotto;
 public class LottoValidator {
     public static void validate(List<Integer> numbers){
         isValidLength(numbers);
-        isUnique(numbers);
         isInRange(numbers);
+        isUnique(numbers);
     }
 
     public static void validate(Lotto lotto, int number){
