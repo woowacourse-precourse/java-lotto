@@ -1,4 +1,4 @@
-package wootech;
+package lotto;
 
 public class User {
     private int count;
