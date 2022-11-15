@@ -35,7 +35,7 @@ public class LottoSeller {
         try {
             return receiveNumber();
         } catch (Exception e) {
-            return receivePurchasePrice();
+            return receiveNumber();
         }
     }
 
@@ -60,7 +60,7 @@ public class LottoSeller {
         try {
             return receiveNumber();
         } catch (Exception e) {
-            return receiveBonusNumber();
+            return receiveNumber();
         }
     }
 
