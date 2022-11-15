@@ -18,6 +18,13 @@ public class Application {
         return Integer.parseInt(payment) / 1000;
     }
 
+    public static void checkLottoNumber(int checkNumber) {
+        if (checkNumber < 1 || checkNumber > 45) {
+            System.out.println("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
+            throw new IllegalArgumentException();
+        }
+    }
+
     public static List<Integer> getWinningNumbers() {
         System.out.println("당첨 번호를 입력해 주세요.");
         String winningNumbersInput = readLine();
@@ -25,10 +32,7 @@ public class Application {
                 .map(Integer::parseInt)
                 .collect(Collectors.toList());
         for (int number: winningNumbers) {
-            if (number < 1 || number > 45) {
-                System.out.println("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
-                throw new IllegalArgumentException();
-            }
+            checkLottoNumber(number);
         }
         return winningNumbers;
     }
