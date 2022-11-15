@@ -9,6 +9,7 @@ import static util.validation.ValidationUtil.isInteger;
 import static util.validation.ValidationUtil.isUnitsOf1000Won;
 import static util.validation.ValidationUtil.isWithinValidRange;
 
+import exception.InvalidLottoException;
 import exception.InvalidLottoSizeException;
 import exception.LottoNumberDuplicatedException;
 import exception.NotInUnitsOf1000WonException;
@@ -46,11 +47,11 @@ public class Validator {
         }
 
         if (!areInteger(numbers)) {
-            throw new IllegalArgumentException();
+            throw new NotIntegerException();
         }
 
         if (!areValidNumbers(numbers)) {
-            throw new IllegalArgumentException();
+            throw new InvalidLottoException();
         }
     }
 
