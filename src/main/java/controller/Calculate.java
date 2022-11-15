@@ -1,7 +1,9 @@
 package controller;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Calculate {
     private static final int PURCHASE_UNIT = 1000;
@@ -35,22 +37,32 @@ public class Calculate {
         return NO_WINNING;
     }
 
-    public static int getWinningPrice(String winning){
-        if(winning.equals(FIRST)){
+    public static int getWinningPrice(String winning) {
+        if (winning.equals(FIRST)) {
             return Winning.FIRST.getReward();
         }
-        if(winning.equals(SECOND)){
+        if (winning.equals(SECOND)) {
             return Winning.SECOND.getReward();
         }
-        if(winning.equals(THIRD)){
+        if (winning.equals(THIRD)) {
             return Winning.THIRD.getReward();
         }
-        if(winning.equals(FOURTH)){
+        if (winning.equals(FOURTH)) {
             return Winning.FOURTH.getReward();
         }
-        if(winning.equals(FIFTH)){
+        if (winning.equals(FIFTH)) {
             return Winning.FIFTH.getReward();
         }
         return NOTHING_REWARD;
     }
+
+    public static void getWinningCount(String winning, Map<String, Integer> assembledWinning) {
+        if(winning.equals(NO_WINNING)){
+            return;
+        }
+        int count = assembledWinning.get(winning);
+        assembledWinning.replace(winning, ++count);
+    }
+
+
 }
