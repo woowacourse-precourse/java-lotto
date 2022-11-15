@@ -1,10 +1,10 @@
 package lotto.veiw;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
+import static lotto.domain.constants.ErrorCode.NOT_NUMBER;
 
 import java.util.ArrayList;
 import java.util.List;
-import lotto.domain.constants.ErrorCode;
 
 public class InputHandler {
 
@@ -31,7 +31,7 @@ public class InputHandler {
             try {
                 numbers.add(Integer.valueOf(input));
             } catch (Exception e) {
-                throw ErrorCode.NOT_NUMBER.getException();
+                throw NOT_NUMBER.getException();
             }
         }
         return numbers;
@@ -41,7 +41,7 @@ public class InputHandler {
         try {
             return Integer.parseInt(input);
         } catch (Exception e) {
-            throw ErrorCode.NOT_NUMBER.getException();
+            throw NOT_NUMBER.getException();
         }
     }
 }
