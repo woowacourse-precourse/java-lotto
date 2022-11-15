@@ -13,6 +13,10 @@ public class WinningLotto {
         return winningLotto.compareWithAnotherLotto(lotto);
     }
 
+    public boolean contains(int number) {
+        return winningLotto.contains(number);
+    }
+
     private void readWinningLotto() {
         winningLotto = new Lotto(InputView.readWinningNumber());
     }

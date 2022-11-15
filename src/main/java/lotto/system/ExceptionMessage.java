@@ -16,4 +16,5 @@ public final class ExceptionMessage {
     public static final String NUMBER_NOT_DISTINCT = "[ERROR] 당첨번호는 중복되서는 안됩니다.";
 
     public static final String NUMBER_OUT_OF_TYPE_RANGE = "[ERROR] 입력된 숫자는 정상적인 범위의 값이 아닙니다.";
+    public static final String BONUS_NUMBER_EXISTS_IN_WINNING_LOTTO = "[ERROR] 입력된 보너스 넘버는 당첨번호에 이미 존재합니다.";
 }
