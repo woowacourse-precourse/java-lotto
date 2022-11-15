@@ -7,9 +7,9 @@ import java.util.stream.Collectors;
 import lotto.domain.Lotto;
 import lotto.domain.LottoRepository;
 import lotto.domain.Money;
-import lotto.type.Prize;
+import lotto.domain.Prize;
 import lotto.view.LottoDto;
-import lotto.view.LottoInput;
+import lotto.domain.LottoInput;
 import lotto.view.PrizeDto;
 
 public class LottoService {

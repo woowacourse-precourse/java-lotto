@@ -3,7 +3,6 @@ package lotto.domain;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import lotto.type.Prize;
 
 public class Lotto {
     private final List<Integer> numbers;

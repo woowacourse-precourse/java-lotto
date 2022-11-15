@@ -5,7 +5,7 @@ import static java.util.stream.Collectors.groupingBy;
 
 import java.util.List;
 import java.util.Map;
-import lotto.type.Prize;
+import lotto.domain.Prize;
 
 public class PrizeDto {
     private final List<Prize> prizes;

@@ -1,7 +1,6 @@
-package lotto.view;
+package lotto.domain;
 
 import java.util.List;
-import lotto.domain.Money;
 import lotto.validator.LottoValidator;
 
 public class LottoInput {
