@@ -15,5 +15,12 @@ public class LottoGenerator {
         return sortLottoNumbers;
     }
 
+    private void haveOnlyNumbers(String price) {
+        final String numberRegex = "[0-9]+";
+        if (!price.matches(numberRegex)) {
+            throw new IllegalArgumentException("[ERROR] 구입 금액은 숫자만 입력하세요");
+        }
+    }
+
 }
 
