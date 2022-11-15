@@ -5,6 +5,7 @@ import java.util.Objects;
 public class PurchaseMoney {
 
     private static final String PURCHASE_MONEY_ERROR_MESSAGE = "[ERROR] 구매 금액은 1000원 단위이어야 합니다.";
+    private static final String EXCEEDED_PURCHASE_MONEY_ERROR_MESSAGE = "[ERROR] 구매 금액은 최대 10만 원까지 가능합니다.";
     private static final int MAX_PURCHASE_MONEY = 100000;
     private static final int PURCHASE_MONEY_UNIT = 1000;
     private static final int ZERO = 0;
@@ -17,8 +18,12 @@ public class PurchaseMoney {
     }
 
     private void validatePositivePurchaseMoney(final int purchaseMoney) {
-        if (purchaseMoney > MAX_PURCHASE_MONEY || purchaseMoney < PURCHASE_MONEY_UNIT || purchaseMoney % PURCHASE_MONEY_UNIT != ZERO) {
+        if (purchaseMoney < PURCHASE_MONEY_UNIT || purchaseMoney % PURCHASE_MONEY_UNIT != ZERO) {
             throw new IllegalArgumentException(PURCHASE_MONEY_ERROR_MESSAGE);
+        }
+
+        if (purchaseMoney > MAX_PURCHASE_MONEY) {
+            throw new IllegalArgumentException(EXCEEDED_PURCHASE_MONEY_ERROR_MESSAGE);
         }
     }
 
