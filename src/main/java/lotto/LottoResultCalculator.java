@@ -7,6 +7,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class LottoResultCalculator {
+    private static final int RANK_OFFSET = 7;
     private List<Integer> winningNums;
     private int bonusNum;
 
@@ -74,8 +75,7 @@ public class LottoResultCalculator {
             return Optional.empty();
         }
 
-        int rankOffset = 7;
-        return Optional.of(Rank.values()[rankOffset - matchedWinningNumCnt]);
+        return Optional.of(Rank.values()[RANK_OFFSET - matchedWinningNumCnt]);
     }
 
 
@@ -89,8 +89,7 @@ public class LottoResultCalculator {
     }
 
     private int compareWithBonusNum(Lotto lotto) {
-        if (lotto.getNumbers()
-                .contains(bonusNum)) {
+        if (lotto.getNumbers().contains(bonusNum)) {
             return 1;
         }
 
