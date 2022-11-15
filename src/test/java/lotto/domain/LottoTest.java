@@ -39,6 +39,13 @@ class LottoTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+    @DisplayName("올바른 번호가 입력된다면 로또는 정상적으로 생성된다.")
+    @Test
+    void createLottoByRightNumber() {
+        Lotto lotto = new Lotto(List.of(1, 2, 15, 32, 44, 45));
+        assertInstanceOf(Lotto.class, lotto);
+    }
+
     @DisplayName("로또를 서로 비교했을 때 매칭되는 숫자의 수를 올바르게 반환하는지 확인.")
     @Test
     void lottoMatchingCountTest() {
