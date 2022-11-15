@@ -18,4 +18,12 @@ public class LottoBuyer {
 
         System.out.println();
     }
+
+    public int getPurchasePrice() {
+        return purchasePrice;
+    }
+
+    public void setLottos(List<Lotto> lottos) {
+        this.lottos = lottos;
+    }
 }
