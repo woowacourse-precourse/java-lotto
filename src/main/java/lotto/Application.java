@@ -18,8 +18,9 @@ public class Application {
     }
 
     private static void printProfitRate(int prizeMoney, int purchasingAmount) {
-        float profitRate = prizeMoney / (float)purchasingAmount * 100;
-        System.out.println("총 수익률은 " + profitRate + "%입니다.");
+        float profitRate = (float)prizeMoney / (float)purchasingAmount * 100;
+        System.out.printf("총 수익률은 %.1f", profitRate);
+        System.out.println("%입니다.");
 
     }
 }
