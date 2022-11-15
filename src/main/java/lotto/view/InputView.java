@@ -8,14 +8,18 @@ import java.util.List;
 import static lotto.view.OutputView.printPriceInputMessage;
 
 public class InputView {
-    public static int lottoPurchaseMoney = 0;
-    public final int PRICE_PER_LOTTO = 1000;
     private static final String COMMA = ",";
+    private static final String REGEX = "[0-9]+";
+    private static final String MONEY_INPUT_ERROR = "[ERROR] 로또를 구매하시려면 천원 단위의 금액만 가능합니다.";
+    private static final String MONEY_INPUT_CONTAIN_STRING_ERROR = "[ERROR] 로또 구입 금액 입력이 잘못되었습니다.";
+
 
     public static int inputLottoPurchaseMoney() {
         printPriceInputMessage();
-        lottoPurchaseMoney = Integer.parseInt(Console.readLine());
-        return lottoPurchaseMoney;
+        String lottoPurchaseMoney = Console.readLine();
+        validateContainWord(lottoPurchaseMoney);
+        validateThousandUnit(lottoPurchaseMoney);
+        return Integer.parseInt(lottoPurchaseMoney);
     }
 
     public static List<Integer> inputWinningNumber() {
@@ -29,6 +33,19 @@ public class InputView {
 
     public static int inputBonusNumber() {
         return Integer.parseInt(Console.readLine());
+    }
+
+    private static void validateContainWord(String lottoMoney) {
+        if(!lottoMoney.matches(REGEX)) {
+            throw new IllegalArgumentException(MONEY_INPUT_CONTAIN_STRING_ERROR);
+        }
+    }
+
+    private static void validateThousandUnit(String lottoMoney) {
+        int money = Integer.parseInt(lottoMoney);
+        if(money % 1000 != 0) {
+            throw new IllegalArgumentException(MONEY_INPUT_ERROR);
+        }
     }
 
 }
