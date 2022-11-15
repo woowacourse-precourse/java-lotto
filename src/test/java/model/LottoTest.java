@@ -18,7 +18,9 @@ import static model.Win.FOURTH;
 import static model.Win.SECOND;
 import static model.Win.THIRD;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatCode;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class LottoTest {
@@ -51,6 +53,19 @@ class LottoTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("로또 번호는 1~45 범위여야 합니다.");
 
+    }
+
+    @Test
+    void 로또_번호가_정상이면_예외가_발생하지_않는다() {
+        assertAll(
+                () -> assertThatCode(() -> {
+                    new Lotto(List.of(1, 2, 3, 4, 5, 6));
+                }).doesNotThrowAnyException(),
+
+                () -> assertThatCode(() -> {
+                    new Lotto(List.of(1, 2, 3, 4, 5, 45));
+                }).doesNotThrowAnyException()
+        );
     }
 
     @Test
