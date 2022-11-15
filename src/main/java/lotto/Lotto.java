@@ -4,9 +4,9 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public class Lotto {
+import static lotto.LottoMachine.LOTTO_NUMBER_SIZE;
 
-    private static final Integer SIZE = 6;
+public class Lotto {
 
     private final List<Integer> numbers;
 
@@ -30,7 +30,7 @@ public class Lotto {
     }
 
     private static void validate(List<Integer> numbers) {
-        if (numbers.size() != SIZE) {
+        if (numbers.size() != LOTTO_NUMBER_SIZE) {
             throw new IllegalArgumentException();
         }
 
