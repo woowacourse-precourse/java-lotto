@@ -2,6 +2,10 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
 
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+
 public class UserInput {
 
     private static final int LOTTO_MAX_NUMBER = 45;
@@ -45,5 +49,26 @@ public class UserInput {
     static int lottoBonusNumber(String bonus){
         validateBonusNumber(bonus);
         return Integer.parseInt(bonus);
+    }
+    static List<String> userNumber(){
+        String[] cutComma = Console.readLine().split(",");
+
+        return Arrays.asList(cutComma);
+    }
+
+    static void validateNumber(List<String> number){
+        for (int i=0;i<number.size();i++){
+            if(!number.get(i).matches("[0-9]+")){
+                throw new IllegalArgumentException(ERROR_NUMBER_MESSAGE);
+            }
+            if(Integer.parseInt(number.get(i))<LOTTO_MIN_NUMBER || Integer.parseInt(number.get(i))>LOTTO_MAX_NUMBER){
+                throw new IllegalArgumentException(ERROR_NUMBER_MESSAGE);
+            }
+        }
+    }
+
+    static List<Integer> lottoNumber(List<String> userNumber){
+        validateNumber(userNumber);
+        return userNumber.stream().map(s -> Integer.parseInt(s)).collect(Collectors.toList());
     }
 }
