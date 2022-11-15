@@ -1,5 +1,6 @@
 package lotto;
 
+import java.util.Collections;
 import java.util.List;
 
 public class LottoTicket {
@@ -13,5 +14,9 @@ public class LottoTicket {
         System.out.println(ticketAmount + "개를 구매했습니다.");
 
         lottoTickets = lottoSeller.inputLottoNumber(ticketAmount);
+    }
+
+    public List<Lotto> getLottoTickets(){
+        return Collections.unmodifiableList()
     }
 }
