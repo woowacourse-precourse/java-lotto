@@ -50,17 +50,19 @@ public class Consumer {
         return Integer.parseInt(inputValue);
     }
 
+    public static HashSet<Integer> compareTwoHashSet(HashSet<Integer> original, HashSet<Integer> comparator) {
+        comparator.retainAll(original);
+        return comparator;
+    }
     public static List<Integer> calcStat(Lotto winNumber, int bonus) {
         List<Integer> stat = new ArrayList<>(STATISTICS_INIT);
         HashSet winNumbers = new HashSet(winNumber.getNumbers());
         for (Lotto lotto : lottos) {
-            HashSet<Integer> myNumbers = new HashSet(lotto.getNumbers());
-            myNumbers.retainAll(winNumbers);
+            HashSet<Integer> myNumbers = compareTwoHashSet(winNumbers, new HashSet(lotto.getNumbers()));
             if (Prize.sizeToInd(myNumbers.size()) < Prize.THREE.getIndex()) {
                 continue;
             }
-            if (Prize.sizeToInd(myNumbers.size()) == Prize.FIVE.getIndex()
-                    && winNumbers.contains(bonus)) {
+            if (Prize.sizeToInd(myNumbers.size()) == Prize.FIVE.getIndex() && winNumbers.contains(bonus)) {
                 stat.set(Prize.FIVE.getIndex(), stat.get(Prize.FIVE.getIndex()) + 1);
                 continue;
             }
