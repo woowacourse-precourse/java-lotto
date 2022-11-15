@@ -7,6 +7,7 @@ import lotto.domain.LottoShop;
 import lotto.domain.Ranker;
 import lotto.domain.Ticket;
 import lotto.domain.WinningResult;
+import lotto.ui.ErrorUI;
 import lotto.ui.LottosPrintUI;
 import lotto.ui.PurchaseUI;
 import lotto.ui.RateOfReturnUI;
@@ -18,13 +19,18 @@ import java.util.Map;
 
 public class LottoController {
     public void run() {
-        Ticket ticket = purchase();
-        List<Lotto> lottos = exchange(ticket);
-        printPurchaseLotto(lottos);
-        Ranker ranker = inputNumber();
-        Map<WinningResult, Integer> result = ranker.rankTotal(lottos);
-        printResult(result);
-        printRateOfReturn(result, ticket);
+        try {
+            Ticket ticket = purchase();
+            List<Lotto> lottos = exchange(ticket);
+            printPurchaseLotto(lottos);
+            Ranker ranker = inputNumber();
+            Map<WinningResult, Integer> result = ranker.rankTotal(lottos);
+            printResult(result);
+            printRateOfReturn(result, ticket);
+        } catch (IllegalArgumentException e) {
+            ErrorUI ui = new ErrorUI();
+            ui.printError(e.getMessage());
+        }
     }
     private Ticket purchase() {
         PurchaseUI ui = new PurchaseUI();
