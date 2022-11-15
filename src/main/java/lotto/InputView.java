@@ -1,5 +1,7 @@
 package lotto;
 
+import static camp.nextstep.edu.missionutils.Console.readLine;
+
 public class InputView{
 
     private void printMessage(String message) {
@@ -7,7 +9,8 @@ public class InputView{
     }
 
     public String requestUserMoney(){
-
+        printMessage("구입 금액을 입력해주세요.");
+        return readLine();
     }
 
     public String requestWinningNumbers(){
