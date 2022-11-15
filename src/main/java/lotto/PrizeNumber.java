@@ -5,12 +5,12 @@ import java.util.List;
 import static lotto.Constants.*;
 import static lotto.message.ExceptionMessage.*;
 
-public class PrizeNumbers {
+public class PrizeNumber {
 
     private final List<Integer> numbers;
     private final int bonusNumber;
 
-    public PrizeNumbers(List<Integer> numbers, int bonusNumber) {
+    public PrizeNumber(List<Integer> numbers, int bonusNumber) {
         validate(numbers);
         duplicate(numbers);
         numbersRangeValidate(numbers);
