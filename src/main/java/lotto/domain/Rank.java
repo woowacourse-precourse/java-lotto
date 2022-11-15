@@ -30,7 +30,7 @@ public enum Rank {
         return this.index;
     }
 
-    public Rank getRank(int index) {
+    public static Rank getRank(int index) {
         return Arrays.stream(values())
                 .filter(rank -> rank.index == index)
                 .findAny()

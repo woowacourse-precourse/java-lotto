@@ -11,4 +11,15 @@ public class Calculator {
             result.set(rank.getIndex(), result.get(rank.getIndex() + 1));
         }
     }
+
+    public static float calRevenue (List<Integer> result, int amount) {
+        float totalMoney = 0;
+
+        for (int ret : result) {
+            Rank rank = Rank.getRank(result.indexOf(ret));
+            totalMoney += rank.getWinAmount() * ret;
+        }
+
+        return Math.round(totalMoney / amount * 100 / 100.0);
+    }
 }
