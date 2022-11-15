@@ -1,5 +1,7 @@
 package lotto.domain;
 
+import java.util.Arrays;
+
 public enum LottoPrize {
   FIFTH(3, 0, 5000),
   FOURTH(4, 0, 50000),
@@ -30,31 +32,19 @@ public enum LottoPrize {
     return money;
   }
 
-  private static boolean isMatchNumbersCount(int matchCount, int bonusCount, LottoPrize prize) {
-    return matchCount == prize.getMatchNumberCount() && bonusCount == prize.getMatchBonusCount();
+  private boolean isMatchNumbersCount(int matchCount, int bonusCount) {
+    return matchCount == matchNumberCount && bonusCount == matchBonusCount;
   }
 
+  private static LottoPrize findPrizeByCounts(int matchCount, int bonusCount) {
+    return Arrays.stream(LottoPrize.values())
+        .filter(prize -> prize.isMatchNumbersCount(matchCount, bonusCount))
+        .findAny()
+        .orElse(LottoPrize.MATCH_NOTING);
+  }
+
+
   public static LottoPrize of(int matchCount, int bonusCount) {
-    if (isMatchNumbersCount(matchCount, bonusCount, LottoPrize.FIFTH)) {
-      return LottoPrize.FIFTH;
-    }
-
-    if (isMatchNumbersCount(matchCount, bonusCount, LottoPrize.FOURTH)) {
-      return LottoPrize.FOURTH;
-    }
-
-    if (isMatchNumbersCount(matchCount, bonusCount, LottoPrize.THIRD)) {
-      return LottoPrize.THIRD;
-    }
-
-    if (isMatchNumbersCount(matchCount, bonusCount, LottoPrize.SECOND)) {
-      return LottoPrize.SECOND;
-    }
-
-    if (isMatchNumbersCount(matchCount, bonusCount, LottoPrize.FIRST)) {
-      return LottoPrize.FIRST;
-    }
-
-    return LottoPrize.MATCH_NOTING;
+    return findPrizeByCounts(matchCount, bonusCount);
   }
 }
