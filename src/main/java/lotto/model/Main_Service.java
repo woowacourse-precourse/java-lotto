@@ -47,16 +47,9 @@ public class Main_Service {
     }
 
     private boolean check_Bonus(List<Integer> difference, int bonusNumber) {
-        if (difference.contains(bonusNumber)) { // bonus까지 맞췄을 경우
-            return true;
-        }
-        return false;
+        return difference.contains(bonusNumber);
     }
-
-    private int get_Index(List<Integer> eachLottoNumbers, List<Integer> winNumbers, int bonusNumber) {
-        HashMap<Integer, List<Integer>> index_map = init_Map();
-        List<Integer> difference = make_Difference(eachLottoNumbers, winNumbers);
-        int match_cnt = count_MatchingNumbers(eachLottoNumbers, winNumbers);
+    private int process_Rule(HashMap<Integer, List<Integer>> index_map, int match_cnt, List<Integer> difference, int bonusNumber) {
         if (match_cnt < 3) {
             return -1;
         }
@@ -67,6 +60,13 @@ public class Main_Service {
             return index_map.get(match_cnt).get(0);
         }
         return index_map.get(match_cnt).get(0);
+    }
+
+    private int get_Index(List<Integer> eachLottoNumbers, List<Integer> winNumbers, int bonusNumber) {
+        HashMap<Integer, List<Integer>> index_map = init_Map();
+        List<Integer> difference = make_Difference(eachLottoNumbers, winNumbers);
+        int match_cnt = count_MatchingNumbers(eachLottoNumbers, winNumbers);
+        return process_Rule(index_map, match_cnt, difference, bonusNumber);
     }
 
     public int[] organize_Details(List<Lotto> all_Lotto, List<Integer> winNumbers, int bonusNumber) {
