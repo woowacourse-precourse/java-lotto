@@ -3,8 +3,11 @@ package lotto.domain;
 import lotto.LottoRank;
 
 import java.util.HashMap;
+import java.util.StringJoiner;
 
 public class LottoStatics {
+    private final static String RATE_OF_PROFIT = "총 수익률은 %.1f%%입니다.";
+
     private final HashMap<LottoRank, Integer> rankStatics = new HashMap<>();
     private float profitRate;
 
@@ -30,11 +33,16 @@ public class LottoStatics {
         profitRate =  Math.round(rateOfProfit * 10) / 10.0f;
     }
 
-    public HashMap<LottoRank, Integer> rankStatics() {
-        return rankStatics;
+    public String getProfitRateResult() {
+        return String.format(RATE_OF_PROFIT, profitRate);
     }
 
-    public float profitRate() {
-        return profitRate;
+    public String getRankStaticsResult() {
+        StringJoiner result = new StringJoiner("\n");
+        for (LottoRank lottoRank : LottoRank.values()) {
+            result.add(lottoRank.getResult(rankStatics.get(lottoRank)));
+        }
+
+        return result.toString();
     }
 }
