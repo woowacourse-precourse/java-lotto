@@ -11,6 +11,7 @@ import java.util.List;
 public class Application {
 
     public static void main(String[] args) {
+
         String input;
         List<Integer> winningNums = new ArrayList<>();
         int buyMoney = 0;
@@ -20,25 +21,30 @@ public class Application {
         List<Lotto> lottos = new ArrayList<>();
         System.out.println("구입금액을 입력해 주세요.");
         input = Console.readLine();
-        isInt(input);
-        buyMoney = Integer.parseInt(input);
-        checkPayMoney(buyMoney);
-        System.out.println(buyMoney/1000 + "개를 구매했습니다.");
-        lottoNum = checkPayMoney(buyMoney);
-        lottos = makeLottoNumber(lottos, lottoNum);
-        printLottos(lottos);
-        System.out.println("당첨 번호를 입력해 주세요.");
-        input = Console.readLine();
-        String[] inputs = input.split(",");
-        winningNums = stringToIntList(inputs);
-        Lotto winningLotto = new Lotto(winningNums);
-        System.out.println("보너스 번호를 입력해 주세요.");
-        input = Console.readLine();
-        bonusNum = Integer.parseInt(input);
-        System.out.println("당첨통계\n---");
-        printWinning(lottos, winningLotto, bonusNum);
-        long revenue = revenue(lottos, winningLotto, bonusNum);
-        revenuePrint(buyMoney, revenue);
+        try {
+            int x = Integer.parseInt(input);
+            buyMoney = Integer.parseInt(input);
+            checkPayMoney(buyMoney);
+            System.out.println(buyMoney/1000 + "개를 구매했습니다.");
+            lottoNum = checkPayMoney(buyMoney);
+            lottos = makeLottoNumber(lottos, lottoNum);
+            printLottos(lottos);
+            System.out.println("당첨 번호를 입력해 주세요.");
+            input = Console.readLine();
+            String[] inputs = input.split(",");
+            winningNums = stringToIntList(inputs);
+            Lotto winningLotto = new Lotto(winningNums);
+            System.out.println("보너스 번호를 입력해 주세요.");
+            input = Console.readLine();
+            bonusNum = Integer.parseInt(input);
+            System.out.println("당첨통계\n---");
+            printWinning(lottos, winningLotto, bonusNum);
+            long revenue = revenue(lottos, winningLotto, bonusNum);
+            revenuePrint(buyMoney, revenue);
+        } catch(IllegalArgumentException e){
+            System.out.println("[ERROR] " +e.getMessage());
+        }
+
     }
 
     // num개의 lotto를 발행하는 함수
@@ -134,14 +140,6 @@ public class Application {
         for(int i = 0; i < 5; i++){
             Rank[] values = Rank.values();
             System.out.println(values[4-i].getPrinting() + " - " + win[4-i] + "개");
-        }
-    }
-
-    public static void isInt(String str){
-        try{
-            int x = Integer.parseInt(str);
-        } catch (NumberFormatException e){
-            throw new IllegalArgumentException("[ERROR] 구매 금액은 숫자만 가능합니다.");
         }
     }
 }
