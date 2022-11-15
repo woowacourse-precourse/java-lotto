@@ -1,12 +1,15 @@
 package lotto.domain;
 
 import java.util.List;
+import java.util.stream.Collectors;
+import lotto.view.ExceptionMessage;
 
 public class Lotto {
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
+        checkUniqueNumbers(numbers);
         this.numbers = numbers;
     }
 
@@ -18,5 +21,16 @@ public class Lotto {
 
     public List<Integer> getNumbers() {
         return numbers;
+    }
+
+    public void checkUniqueNumbers(List<Integer> numbers) {
+        List<Integer> uniqueNumbers = numbers.stream()
+                .distinct()
+                .collect(Collectors.toList());
+
+        if (numbers.size() != uniqueNumbers.size()) {
+            ExceptionMessage.overlabNumberError();
+            throw new IllegalArgumentException();
+        }
     }
 }

@@ -7,12 +7,10 @@ import lotto.util.LottoUtils;
 
 public class User {
 
-
     private static List<LottoGrade> lottoGrades;
     private int lottoPayment;
     private List<Lotto> lottos;
     private double profit;
-
 
     public void buyLottos(int lottoAmount) {
         lottos = new ArrayList<>();

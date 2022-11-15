@@ -31,17 +31,6 @@ public class LottoUtils {
         }
     }
 
-    public static void checkUniqueNumbers(List<Integer> numbers) {
-        List<Integer> uniqueNumbers = numbers.stream()
-                .distinct()
-                .collect(Collectors.toList());
-
-        if (numbers.size() != uniqueNumbers.size()) {
-            ExceptionMessage.overlabNumberError();
-            throw new IllegalArgumentException();
-        }
-    }
-
     public static void checkNumberInRange(int number) {
         if (number < START_NUMBER || number > END_NUMBER) {
             ExceptionMessage.numberRangeError();

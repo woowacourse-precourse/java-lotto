@@ -23,7 +23,6 @@ public class LottoService {
 
     public List<Integer> setWinningNumber(String inputWinningNumber) {
         List<Integer> winningNumber = LottoUtils.parsingNumberBySeparator(inputWinningNumber);
-        LottoUtils.checkUniqueNumbers(winningNumber);
 
         for (int number : winningNumber) {
             LottoUtils.checkNumberInRange(number);
