@@ -15,7 +15,7 @@ public class Cli {
    * Function that receives user input to purchase lotto.
    * @return amount of purchase.
    */
-  public static int getPurchaseAmount() {
+  public static int inputPurchaseAmount() {
     System.out.println("구입금액을 입력해 주세요.");
     String amount = readLine();
 

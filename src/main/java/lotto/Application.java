@@ -1,6 +1,6 @@
 package lotto;
 
-import static lotto.Cli.getPurchaseAmount;
+import static lotto.Cli.inputPurchaseAmount;
 import static lotto.Cli.print;
 
 import camp.nextstep.edu.missionutils.Randoms;
@@ -10,7 +10,7 @@ import java.util.stream.Collectors;
 
 public class Application {
     public static void main(String[] args) {
-        int amount = getPurchaseAmount();
+        int amount = inputPurchaseAmount();
         int purchaseCount = amount / 1000;
         List<Lotto> lottoList = createLotto(purchaseCount);
         print(lottoList);
