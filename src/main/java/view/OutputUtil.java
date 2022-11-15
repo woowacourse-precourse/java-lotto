@@ -29,7 +29,9 @@ public class OutputUtil {
         PURCHASE_RESULT= "\n"+Integer.toString(size)+PURCHASE_RESULT;
         System.out.println(PURCHASE_RESULT);
         for (Lotto lotto: lottos) {
-            System.out.println(lotto);
+            LottoDto lottoDto = lotto.sendDto();
+            List<Integer> numbers = lottoDto.numbers;
+            System.out.println(numbers);
         }
     }
 
