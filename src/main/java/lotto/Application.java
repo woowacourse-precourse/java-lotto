@@ -4,13 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Application {
-    Input input;
-    List<Lotto> userBuyLottoGroup;
-    CreateUserLottoNumbers createUserLottoNumbers;
-    Output output;
-    MatchCondition matchCondition;
 
     int amount;
+    InputView inputView;
+    List<Lotto> userBuyLottoGroup;
+    CreateUserLottoNumbers createUserLottoNumbers;
+    OutputView outputView;
+    MatchingCondition matchingCondition;
+
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         Application application = new Application();
@@ -21,37 +22,35 @@ public class Application {
         }catch (IllegalArgumentException r){
             System.out.println(r.getMessage());
         }
-
-
-
     }
 
     public Application(){
-        input = new Input();
+        inputView = new InputView();
         userBuyLottoGroup = new ArrayList<>();
         createUserLottoNumbers = new CreateUserLottoNumbers();
-        output  = new Output();
-        matchCondition = new MatchCondition();
+        outputView = new OutputView();
+        matchingCondition = new MatchingCondition();
         amount = 0;
     }
 
     public void buyLotto(){
-        amount = input.inputMoney();
+        amount = inputView.inputMoney();
+        
         userBuyLottoGroup = createUserLottoNumbers.createUserLottoNumber(amount);
-        output.userBuyLottoNumbers(userBuyLottoGroup);
+
+        outputView.printUserBuyLottoNumbers(userBuyLottoGroup);
     }
 
     public void printPrizeResult(){
-        List<Integer> winningNumber = input.inputWinningLottosNumber();
-        int bonsNumber = input.inputBonusNumber(winningNumber);
-        List<Integer> placeResult = matchCondition.getMatchResult(userBuyLottoGroup,winningNumber,bonsNumber);
-        output.lottoMatchResult(placeResult);
-        double profit = matchCondition.calculRateOfReturn(amount,placeResult);
-        output.printRateOfReturn(profit);
+        List<Integer> winningNumber = inputView.inputWinningLottosNumber();
+        int bonsNumber = inputView.inputBonusNumber(winningNumber);
+
+        List<Integer> placeResult = matchingCondition.getMatchResult(userBuyLottoGroup,winningNumber,bonsNumber);
+        outputView.printUserLottoMatchResult(placeResult);
+
+        double profit = matchingCondition.calculateRateOfReturn(amount,placeResult);
+        outputView.printRateOfReturn(profit);
 
     }
-
-
-
 
 }
