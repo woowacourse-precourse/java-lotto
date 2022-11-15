@@ -1,7 +1,7 @@
 package lotto.domain;
 
 import lotto.PrizeMoney;
-import ui.UserInterface;
+import lotto.ui.UserInterface;
 
 import java.util.ArrayList;
 import java.util.Arrays;

@@ -1,4 +1,4 @@
-package ui;
+package lotto.ui;
 
 import camp.nextstep.edu.missionutils.Console;
 import lotto.domain.Lotto;
