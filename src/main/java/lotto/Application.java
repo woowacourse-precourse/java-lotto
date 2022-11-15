@@ -107,7 +107,7 @@ public class Application {
         }
         for(int i = 0; i < 5; i++){
             Rank[] values = Rank.values();
-            System.out.println(values[4-i].getPrinting() + " - " + win[i] + "개");
+            System.out.println(values[4-i].getPrinting() + " - " + win[4-i] + "개");
         }
     }
 }
