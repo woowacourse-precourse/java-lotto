@@ -1,37 +1,11 @@
-package lotto.business;
+package lotto.domain.winningLotto;
 
 import lotto.exception.LottoException;
 import lotto.setting.Setting;
-import lotto.ui.Output;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
+public class ValidateWinningLotto {
 
-import static camp.nextstep.edu.missionutils.Console.readLine;
-
-public class PickLotto {
-
-    public List<Integer> lottoNumbers(){
-        String inputLottoNumber = inputLottoNumber().replaceAll(" ", "");
-        validateInputLottoNumber(inputLottoNumber);
-
-        return Arrays.stream(inputLottoNumber.split(",")).mapToInt(Integer::parseInt).boxed().collect(Collectors.toList());
-    }
-
-    public int bonusNumber(){
-        String inputBonusNumber = inputBonusNumber();
-        validateBonusNumberIsRightNumber(inputBonusNumber);
-
-        return Integer.parseInt(inputBonusNumber);
-    }
-
-    private String inputLottoNumber(){
-        Output.printInputWinningNumber();
-        return readLine();
-    }
-
-    private void validateInputLottoNumber(String inputLottoNumber){
+    public void validateInputLottoNumber(String inputLottoNumber){
         validateInputLottoNumberIsTotal(inputLottoNumber);
         validateInputLottoNumberIsRightSeparator(inputLottoNumber);
     }
@@ -58,17 +32,11 @@ public class PickLotto {
         }
     }
 
-    private String inputBonusNumber(){
-        Output.printBonusNumber();
-        return readLine();
-    }
-
-    private void validateBonusNumberIsRightNumber(String input){
+    public void validateBonusNumberIsRightNumber(String input){
         try{
             validateInputNumberIsBetween(Integer.parseInt(input));
         }catch (Exception e){
             throw new LottoException("하나의 숫자를 입력해야합니다.");
         }
     }
-
 }

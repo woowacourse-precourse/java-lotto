@@ -1,35 +1,45 @@
 package lotto.domain;
 
-import lotto.business.PickLotto;
+import lotto.domain.money.Money;
+import lotto.domain.money.ValidateMoney;
+import lotto.domain.winningLotto.ValidateWinningLotto;
+import lotto.domain.winningLotto.WinningLotto;
 import lotto.setting.Setting;
 import lotto.setting.WinningEnum;
 import lotto.ui.Output;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
+import static camp.nextstep.edu.missionutils.Console.readLine;
 import static camp.nextstep.edu.missionutils.Randoms.pickUniqueNumbersInRange;
 
 public class Game {
 
-    private static PickLotto pickLotto = new PickLotto();
-
     public void start(){
+        Money money = inputMoney();
 
-        Money money = new Money();
-        List<Lotto> myLotto = myLotto(money.boughtLottoCount());
+        List<Lotto> myLotto = myLotto(money.countBoughtLotto());
 
-        List<Integer> pickLottoNumber = pickLotto.lottoNumbers();
-        int pickBonusNumber = pickLotto.bonusNumber();
-
-        List<WinningEnum> myWinnings = myLottoToWinning(myLotto, pickLottoNumber, pickBonusNumber);
-        statistics(myWinnings);
-        total(myWinnings, money.getLongMoney());
+        WinningLotto winningLotto = inputWinningLotto();
+        winningLotto.statistics(myLotto);
+        winningLotto.total(myLotto, money.getMoney());
     }
 
-    public List<Lotto> myLotto(int lottoCount){
+    public Money inputMoney(){
+        Output.printInputMoney();
+        String money = readLine();
+
+        ValidateMoney validateMoney = new ValidateMoney();
+        validateMoney.validate(money);
+
+        return new Money(validateMoney.validatedMoneyToLong(money));
+    }
+
+    public List<Lotto> myLotto(int countBoughtLotto){
         List<Lotto> myLotto = new ArrayList<>();
 
-        for(int i=0; i<lottoCount; i++){
+        for(int i=0; i<countBoughtLotto; i++){
             List<Integer> boughtLotto = pickUniqueNumbersInRange(Setting.LOTTO_MIN_NUMBER, Setting.LOTTO_MAX_NUMBER, Setting.LOTTO_PICK_NUMBER);
             myLotto.add(new Lotto(boughtLotto));
             Output.printBoughtLottoNumbers(boughtLotto);
@@ -38,41 +48,30 @@ public class Game {
         return myLotto;
     }
 
-    public List<WinningEnum> myLottoToWinning(List<Lotto> myLotto, List<Integer> pickLottoNumber, int pickBonusNumber){
-        List<WinningEnum> winnings = new ArrayList<>();
+    public WinningLotto inputWinningLotto(){
+        List<Integer> lottoNumbers = winningLottoNumbers();
+        int bonusNumber = winningBonusNumber();
 
-        for(Lotto lotto : myLotto){
-            WinningEnum winning = lotto.getRank(pickLottoNumber, pickBonusNumber);
-            if(winning != null) {
-                winnings.add(winning);
-            }
-        }
-
-        return winnings;
+        return new WinningLotto(lottoNumbers, bonusNumber);
     }
 
-    public void statistics(List<WinningEnum> winnings){
-        Map<WinningEnum, Integer> statistics = new HashMap<>();
+    public List<Integer> winningLottoNumbers(){
+        Output.printInputWinningNumber();
+        String lottoNumbers = readLine().replaceAll(" ", "");
 
-        for(WinningEnum winning : winnings){
-            if (statistics.containsKey(winning)) {
-                int counting = statistics.get(winning).intValue();
-                statistics.put(winning, counting++);
-            } else {
-                statistics.put(winning, 1);
-            }
-        }
+        ValidateWinningLotto validateWinningLotto = new ValidateWinningLotto();
+        validateWinningLotto.validateInputLottoNumber(lottoNumbers);
 
-        Output.printWinningStatistics(statistics);
+        return Arrays.stream(lottoNumbers.split(",")).mapToInt(Integer::parseInt).boxed().collect(Collectors.toList());
     }
 
-    public void total(List<WinningEnum> winnings, Long money){
-        Long total = 0L;
+    public int winningBonusNumber(){
+        Output.printBonusNumber();
+        String bonusNumber =  readLine();
 
-        for(WinningEnum winning : winnings){
-            total += Long.valueOf(winning.getWinningAmount());
-        }
+        ValidateWinningLotto validateWinningLotto = new ValidateWinningLotto();
+        validateWinningLotto.validateBonusNumberIsRightNumber(bonusNumber);
 
-        Output.printYield(total / (double)money * 100);
+        return Integer.parseInt(bonusNumber);
     }
 }

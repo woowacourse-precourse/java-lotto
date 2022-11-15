@@ -18,7 +18,7 @@ public class Lotto {
         return WinningEnum.getWinning(correctNumberCount, isCorrectBonusNumber);
     }
 
-    public int countCorrectNumbers(List<Integer> lottoNumbers){
+    private int countCorrectNumbers(List<Integer> lottoNumbers){
         int correctNumber = 0;
 
         for(Integer bought: lottoNumbers){
@@ -29,7 +29,7 @@ public class Lotto {
         return correctNumber;
     }
 
-    public boolean isCorrectBonusNumber(int correctCount){
+    private boolean isCorrectBonusNumber(int correctCount){
         if(numbers.contains(correctCount)){
             return true;
         }
