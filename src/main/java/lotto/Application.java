@@ -8,7 +8,8 @@ import java.util.*;
 public class Application {
     public static <integer> void main(String[] args) {
         // TODO: 프로그램 구현
-        lottoStart();
+
+        Message.Start();
 
         int money = inputNum();
 
@@ -18,7 +19,7 @@ public class Application {
 
         if (numberLotto > 0) {
 
-            countLotto(numberLotto);
+            Message.Count(numberLotto);
 
         }
 
@@ -26,31 +27,25 @@ public class Application {
 
         outputNumber(listLotto);
 
-        winMsg();
+        Message.win();
 
         List<Integer> inputNum = inputNumber();
 
         Lotto lotto = new Lotto(inputNum);
 
-        bonusMsg();
+        Message.bonus();
 
         int bonusNum = inputNum();
 
 
         HashMap<Integer, Integer> resultLotto = containLotto(inputNum, listLotto, bonusNum);
 
-        //checkBonus(inputNum, listLotto, bonusNum);
-
-        resultMsg(resultLotto);
-
+        Message.lotto(resultLotto);
 
         double percentage = resultPercentage(resultLotto, money);
 
-        msgPercentage(percentage);
-    }
+        Message.percentage(percentage);
 
-    public static void lottoStart() {
-        System.out.println("구매금액을 입력해 주세요.");
     }
 
     public static int inputNum() {
@@ -82,9 +77,6 @@ public class Application {
         }
     }
 
-    public static void countLotto(int cntLotto) {
-        System.out.println(cntLotto + "개를 구매했습니다.");
-    }
 
     public static HashSet<List> randomLotto(int numLotto) {
         HashSet<List> numberLotto = new HashSet<>();
@@ -106,9 +98,6 @@ public class Application {
         }
     }
 
-    public static void winMsg() {
-        System.out.println("당첨 번호를 입력해 주세요.");
-    }
 
     public static List<Integer> inputNumber() {
         List<Integer> winNum = new ArrayList<>();
@@ -125,9 +114,6 @@ public class Application {
         return winNum;
     }
 
-    private static void bonusMsg() {
-        System.out.println("보너스 번호를 입력해 주세요.");
-    }
 
     private static HashMap<Integer, Integer> containLotto(List<Integer> lotto, HashSet<List> listLotto, int bonusNum) {
 
@@ -170,16 +156,6 @@ public class Application {
     }
 
 
-    private static void resultMsg(HashMap<Integer, Integer> result) {
-        System.out.println("당첨 통계");
-        System.out.println("---");
-        System.out.println("3개 일치 (5,000원) - " + result.get(5000) + "개");
-        System.out.println("4개 일치 (50,000원) - " + result.get(50000) + "개");
-        System.out.println("5개 일치 (1,500,000원) - " + result.get(1500000) + "개");
-        System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - " + result.get(30000000) + "개");
-        System.out.println("6개 일치 (2,000,000,000원) - " + result.get(2000000000) + "개");
-
-    }
 
     private static double resultPercentage(HashMap<Integer, Integer> result, int money) {
         double sumReward = 0;
@@ -192,13 +168,7 @@ public class Application {
 
     }
 
-    private static void msgPercentage(double percentage) {
-        System.out.println("총 수익률은 " + String.format("%.1f", percentage) + "%입니다.");
-    }
 
-    //  private static HashMap<Integer, Integer> checkBonus(List<Integer> lotto, HashSet<List> listLotto, int bonusNum) {
-
-    // }
 
 }
 
