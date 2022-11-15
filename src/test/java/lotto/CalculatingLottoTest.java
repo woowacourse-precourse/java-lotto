@@ -68,4 +68,9 @@ class CalculatingLottoTest {
     void calculateAllLottoTest() {
         assertThat(calculatingLotto.calculateAllLotto(winningLotto, 7, allLotto)).isEqualTo(List.of(1,2,3,4,5,0,0));
     }
+
+    @Test
+    void countRankTest() {
+        assertThat(calculatingLotto.countRank(List.of(1,2,3,4,5,0,0))).isEqualTo(List.of(1,1,1,1,1));
+    }
 }
