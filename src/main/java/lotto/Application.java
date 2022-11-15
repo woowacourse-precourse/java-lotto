@@ -3,9 +3,7 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import org.assertj.core.internal.Doubles;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 public class Application {
     public static void main(String[] args) {
@@ -20,6 +18,18 @@ public class Application {
         printLottos(lottos);
 
         List<Integer> myLotto = getMyBonusNumbers(getMyLottoNumbers());
+
+        HashMap<String, List<Integer>> result = new HashMap<>();
+        List<Integer> myLottoPriceList = new ArrayList<>(Arrays.asList(0,0,0,0,0));
+        List<Integer> prize = new ArrayList<>(Arrays.asList(0));
+
+        result.put("myLotto", myLotto);
+        result.put("myLottoPriceList", myLottoPriceList);
+        result.put("prize", prize);
+
+        for (Lotto l: lottos) {
+            l.checkWinLotto(result);
+        }
 
     }
 
