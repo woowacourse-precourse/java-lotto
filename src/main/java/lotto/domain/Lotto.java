@@ -43,6 +43,15 @@ public class Lotto {
         return numbers.contains(number);
     }
 
+    @Override
+    public String toString() {
+        return "[" +
+                numbers.stream()
+                        .map(String::valueOf)
+                        .collect(Collectors.joining(", ")) +
+                "]";
+    }
+
     public enum LottoNumberValidator {
 
         LOTTO_NUMBER_SIZE((List<Integer> numbers) -> {

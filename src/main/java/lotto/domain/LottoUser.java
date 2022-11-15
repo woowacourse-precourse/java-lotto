@@ -33,6 +33,10 @@ public class LottoUser {
         return new ArrayList<>(randomLottos);
     }
 
+    public void showUserRandomLottos() {
+        randomLottos.forEach(System.out::println);
+    }
+
     private void purchaseRandomLottos(final int purchaseCost) {
         final int purchaseLottoCount = purchaseCost / LOTTO_BASIC_COST;
         for (int i = 0; i < purchaseLottoCount; i++) {
