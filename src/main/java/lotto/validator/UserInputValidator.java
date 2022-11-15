@@ -17,8 +17,8 @@ public class UserInputValidator {
     }
 
     public static void winNumberRangeValidate(List<Integer> inputNumber) throws IllegalArgumentException {
-        for (int i = 0; i < inputNumber.size(); i++) {
-            if (!(1 <= inputNumber.get(i) && inputNumber.get(i) <= 45)) {
+        for (Integer num : inputNumber) {
+            if (!(1 <= num && num <= 45)) {
                 throw new IllegalArgumentException("[ERROR] 당첨 번호는 1부터 45 사이의 숫자여야 합니다.");
             }
         }
@@ -27,12 +27,11 @@ public class UserInputValidator {
     public static void winNumberDuplicateValidate(List<Integer> inputNumber) throws IllegalArgumentException {
         List<Integer> checkInput = new ArrayList<>();
 
-        for (int i = 0; i < inputNumber.size(); i++) {
-            int checkNum = inputNumber.get(i);
-            if (checkInput.contains(checkNum)) {
+        for (Integer num : inputNumber) {
+            if (checkInput.contains(num)) {
                 throw new IllegalArgumentException("[ERROR] 중복된 숫자가 입력되었습니다.");
             }
-            checkInput.add(checkNum);
+            checkInput.add(num);
         }
     }
 
