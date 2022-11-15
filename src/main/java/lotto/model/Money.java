@@ -8,7 +8,6 @@ public class Money {
     public Money(String inputMoney){
         int money = convertNumber(inputMoney);
         validateMoney(money);
-        validateMoneyRange(money);
 
         this.number = money/1000;
     }
@@ -33,6 +32,7 @@ public class Money {
             PrintError.MONEY_NUMBER.print();
             throw new IllegalArgumentException();
         }
+        validateMoneyRange(money);
     }
 
     // 입력된 돈이 1000이상인지 확인
