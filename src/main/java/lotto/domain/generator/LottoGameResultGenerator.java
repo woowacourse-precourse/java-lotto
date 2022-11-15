@@ -1,12 +1,20 @@
 package lotto.domain.generator;
 
+import lotto.domain.Rank;
 import lotto.domain.Lotto;
 import lotto.domain.LottoGameResult;
 import lotto.domain.WinningNumbers;
-
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import static lotto.LottoConstants.MIN_WINNING_COUNT;
+import static lotto.domain.Rank.FIFTH;
+import static lotto.domain.Rank.FOURTH;
+import static lotto.domain.Rank.THIRD;
+import static lotto.domain.Rank.SECOND;
+import static lotto.domain.Rank.FIRST;
+
 
 public class LottoGameResultGenerator {
     private final Map<Integer, Integer> winningDetails;
@@ -18,11 +26,9 @@ public class LottoGameResultGenerator {
     }
 
     private void initializeWinningDetails() {
-        winningDetails.put(5_000, 0);
-        winningDetails.put(50_000, 0);
-        winningDetails.put(1_500_000, 0);
-        winningDetails.put(30_000_000, 0);
-        winningDetails.put(2_000_000_000, 0);
+        for (Rank rank : Rank.values()) {
+            winningDetails.put(rank.prizeMoney(), 0);
+        }
     }
 
     public LottoGameResult generateLottoGameResult(List<Lotto> lottos,
@@ -30,9 +36,7 @@ public class LottoGameResultGenerator {
                                                    int paidMoney) {
         calculateWinningDetails(lottos, winningNumbers);
         calculateEarningRate(paidMoney);
-
-        LottoGameResult lottoGameResult = new LottoGameResult(winningDetails, earningRate);
-        return lottoGameResult;
+        return new LottoGameResult(winningDetails, earningRate);
     }
 
     private void calculateWinningDetails(List<Lotto> lottos, WinningNumbers winningNumbers) {
@@ -53,7 +57,7 @@ public class LottoGameResultGenerator {
     }
 
     private void updateWinningDetails(Lotto lotto, WinningNumbers winningNumbers, int winningCount) {
-        if (winningCount < 3) {
+        if (winningCount < MIN_WINNING_COUNT.getValue()) {
             return;
         }
 
@@ -65,19 +69,19 @@ public class LottoGameResultGenerator {
 
     private int getPrizeMoneyByWinningCount(Lotto lotto, WinningNumbers winningNumbers, int winningCount) {
         int bonusNumber = winningNumbers.getBonusNumber();
-        if (winningCount == 6) {
-            return 2_000_000_000;
+        if (winningCount == FIRST.winningCount()) {
+            return FIRST.prizeMoney();
         }
-        if (winningCount == 4) {
-            return 50_000;
+        if (winningCount == FOURTH.winningCount()) {
+            return FOURTH.prizeMoney();
         }
-        if (winningCount == 3) {
-            return 5_000;
+        if (winningCount == FIFTH.winningCount()) {
+            return FIFTH.prizeMoney();
         }
         if (lotto.contains(bonusNumber)) {
-            return 30_000_000;
+            return SECOND.prizeMoney();
         }
-        return 1_500_000;
+        return THIRD.prizeMoney();
     }
 
     private void calculateEarningRate(int paidMoney) {
