@@ -2,6 +2,7 @@ package lotto.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.regex.Pattern;
 import lotto.Lotto;
 import lotto.LottoAnalyzer;
@@ -26,12 +27,14 @@ public class LottoGameService {
 
     private void validPurchaseAmount(final String purchaseAmount) {
         if (!Pattern.matches("^[0-9]*$", purchaseAmount)) {
-            throw new IllegalArgumentException(
+            System.out.println(ErrorMessage.PURCHASE_AMOUNT_NOT_NUMBER.getErrorMessage());
+            throw new NoSuchElementException(
                 ErrorMessage.PURCHASE_AMOUNT_NOT_NUMBER.getErrorMessage());
         }
 
         int value = Integer.parseInt(purchaseAmount);
         if (value % Const.LOTTO_TICKET_PRICE.getValue() != 0) {
+            System.out.println(ErrorMessage.PURCHASE_AMOUNT_DIVIDE_1000WON.getErrorMessage());
             throw new IllegalArgumentException(
                 ErrorMessage.PURCHASE_AMOUNT_DIVIDE_1000WON.getErrorMessage());
         }
@@ -47,10 +50,12 @@ public class LottoGameService {
         String[] winningNumbers = numbers.split(",");
         for (String number : winningNumbers) {
             if (!Pattern.matches("^[0-9]*$", number)) {
+                System.out.println(ErrorMessage.LOTTO_NUMBER_NOT_NUMBER.getErrorMessage());
                 throw new IllegalArgumentException(
                     ErrorMessage.LOTTO_NUMBER_NOT_NUMBER.getErrorMessage());
             }
             if (Integer.parseInt(number) < 1 || Integer.parseInt(number) > 45) {
+                System.out.println(ErrorMessage.LOTTO_NUMBER_RANGE.getErrorMessage());
                 throw new IllegalArgumentException(
                     ErrorMessage.LOTTO_NUMBER_RANGE.getErrorMessage());
             }
@@ -72,15 +77,18 @@ public class LottoGameService {
 
     private void validBonusNumber(final String number) {
         if (!Pattern.matches("^[0-9]*$", number)) {
+            System.out.println(ErrorMessage.LOTTO_NUMBER_NOT_NUMBER.getErrorMessage());
             throw new IllegalArgumentException(
                 ErrorMessage.LOTTO_NUMBER_NOT_NUMBER.getErrorMessage());
         }
 
         int bonusNumber = Integer.parseInt(number);
         if (bonusNumber < 1 || bonusNumber > 45) {
+            System.out.println(ErrorMessage.LOTTO_NUMBER_RANGE.getErrorMessage());
             throw new IllegalArgumentException(ErrorMessage.LOTTO_NUMBER_RANGE.getErrorMessage());
         }
         if (winningNumbers.contains(bonusNumber)) {
+            System.out.println(ErrorMessage.BONUS_NUMBER_OVERLAP.getErrorMessage());
             throw new IllegalArgumentException(ErrorMessage.BONUS_NUMBER_OVERLAP.getErrorMessage());
         }
     }
