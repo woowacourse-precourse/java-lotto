@@ -25,7 +25,6 @@ public class Output {
     public static void printWinningStatistic() {
         System.out.println(STATISTIC_OUTPUT);
     }
-
     public static void printProfit(double profit) {
         System.out.println("총 수익률은 " + String.format("%.1f",profit) + "%입니다.\n");
     }

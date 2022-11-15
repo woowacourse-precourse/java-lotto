@@ -57,12 +57,14 @@ public class Validator {
             throw new IllegalArgumentException("[ERROR] 로또 구입 금액이 1000으로 나누어 떨어지지 않습니다");
         }
     }
+
     public static void checkEmpty(String Input) throws IllegalArgumentException {
         if (Input.isEmpty())
         {
             throw new IllegalArgumentException("[ERROR] 입력한 값이 공백입니다.");
         }
     }
+
     public static void isValidateInteger(String Input) throws IllegalArgumentException {
         try {
             Integer.parseInt(Input);

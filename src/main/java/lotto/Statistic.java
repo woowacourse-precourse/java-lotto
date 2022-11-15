@@ -15,14 +15,6 @@ public class Statistic {
         MatchedCount = new LinkedHashMap<>();
     }
 
-    public Map<Integer, Integer> getStatistic(){
-        return this.MatchedCount;
-    }
-
-    public Integer getStatisticNumber(int number) {
-        return this.MatchedCount.get(number);
-    }
-
     public void addMatchedCount(int number){
        MatchedCount.put(number, MatchedCount.getOrDefault(number,0)+1);
     }
@@ -71,7 +63,7 @@ public class Statistic {
         for (matchedCountMessage message : matchedCountMessage.values()) {
             profit += message.getMatchNumberPrice() * MatchedCount.getOrDefault(message.getMatchNumber(),0);
         }
-        profit = ( profit / purchasedMoney)  * 100;
+        profit = (profit / purchasedMoney)  * 100;
         return profit;
     }
 }

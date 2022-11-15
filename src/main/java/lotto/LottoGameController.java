@@ -15,7 +15,8 @@ public class LottoGameController {
             getInput();
             compareResult();
             printStatistic();
-        }catch (IllegalArgumentException e) {
+        }
+        catch (IllegalArgumentException e) {
             System.out.println("프로그램이 정상적으로 종료되었습니다.");
         }
     }
@@ -37,5 +38,4 @@ public class LottoGameController {
     public void printStatistic(){
         lottoGame.printStatistic();
     };
-
 }
