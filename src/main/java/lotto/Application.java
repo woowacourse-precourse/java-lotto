@@ -50,10 +50,12 @@ public class Application {
         String[] winingLottoInput = input.split(",");
 
         List<Integer> winingLottoNumbers = new ArrayList<>();
-        for(int i = 0; i < 6; i++) {
+
+        for (int i = 0; i < 6; i++) { // 수정해야함.
             Integer number = Integer.parseInt(winingLottoInput[i]);
             winingLottoNumbers.add(number);
         }
+
         return new Lotto(winingLottoNumbers);
     }
 
