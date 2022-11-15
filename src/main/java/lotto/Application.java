@@ -15,12 +15,10 @@ public class Application {
             Machine machine = new Machine();
             Console console = new Console();
 
-            int count = console.inputCellCount();
-            List<Lotto> lottos = machine.draw(count);
+            List<Lotto> lottos = machine.draw(console.inputCellCount());
             console.printBuyLottos(lottos);
 
             WinningNumber winningNumber = console.inputWinningNumber();
-
             Map<Rank, Integer> rankings = machine.checkRanking(winningNumber, lottos.toArray(new Lotto[0]));
 
             double yieldRate = machine.calculateYieldRate(rankings);
