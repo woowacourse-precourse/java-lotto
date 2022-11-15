@@ -7,11 +7,11 @@ import java.util.List;
 
 public class LottoGame {
     InputMoney inputMoney = new InputMoney();
-    UserMoney userMoney = inputMoney.inputMoney();
     WinLottoResult winLottoResult = new WinLottoResult();
 
     public void run() {
         try {
+            UserMoney userMoney = inputMoney.inputMoney();
             countLottos(userMoney);
             pickRandomLottos(inputMoney.lottoPapers);
             List<Integer> randomLottoLists = inputLottoNumbers();
@@ -21,17 +21,17 @@ public class LottoGame {
             System.out.println(e.getMessage());
         }
     }
-    public void countLottos(UserMoney userMoney) {
+    private void countLottos(UserMoney userMoney) {
         inputMoney.calculateLottoPapers(userMoney);
     }
 
-    public void pickRandomLottos(int lottoPapers) {
+    private void pickRandomLottos(int lottoPapers) {
         PickRandomLottoLists pickRandomLotto = new PickRandomLottoLists();
 
         pickRandomLotto.pickRandomLottoNumbers(lottoPapers);
     }
 
-    public List<Integer> inputLottoNumbers() {
+    private List<Integer> inputLottoNumbers() {
         InputWinningNumbers inputWinningNumbers = new InputWinningNumbers();
         InputBonusNumber inputBonusNumber = new InputBonusNumber();
 
@@ -40,7 +40,7 @@ public class LottoGame {
         return sixLottoNumbers;
     }
 
-    public void winLottosResult(List<Integer> answerLotto, List<List<Integer>> dataLotto) {
+    private void winLottosResult(List<Integer> answerLotto, List<List<Integer>> dataLotto) {
         WinLottoResult winLottoResult = new WinLottoResult();
         winLottoResult.checkWinLottoResult(answerLotto, dataLotto);
     }
