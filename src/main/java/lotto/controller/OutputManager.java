@@ -9,11 +9,11 @@ import lotto.model.statistics.LottoStatistics;
 import lotto.view.ConsoleOutputView;
 
 public class OutputManager {
-    public final String PAYMENT_INPUT_ALERT = "구입금액을 입력해 주세요.";
-    public final String WINNING_LOTTO_INPUT_ALERT = "당첨 번호를 입력해 주세요.";
-    public final String BONUS_NUMBER_INPUT_ALERT = "보너스 번호를 입력해 주세요.";
-    public final String STATISTICS_LABEL = "당첨 통계";
-    public final String DIVIDER = "---";
+    private final String PAYMENT_INPUT_ALERT = "구입금액을 입력해 주세요.";
+    private final String WINNING_LOTTO_INPUT_ALERT = "당첨 번호를 입력해 주세요.";
+    private final String BONUS_NUMBER_INPUT_ALERT = "보너스 번호를 입력해 주세요.";
+    private final String STATISTICS_LABEL = "당첨 통계";
+    private final String DIVIDER = "---";
 
     private static final DecimalFormat integerWithCommaFormatter = new DecimalFormat("###,###");
     private static final DecimalFormat floatWithCommaAndOneDecimalFormatter = new DecimalFormat("###,###.#");
