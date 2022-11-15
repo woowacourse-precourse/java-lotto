@@ -93,6 +93,12 @@
   - [X] 로또 각 번호가 중복되는 에러
   - [X] 로또 당첨 번호가 보너스 번호를 포함하는 에러
 - [X] 입력 에러 메시지 반환
+
+
+#### LottoController
+- [X] 로또 구매 정보 출력 - LottoController#printPurchaseList(Buyer buyer)
+- [ ] 구매한 로또 당첨 여부 확인 및 기록 - LottoController#checkAndRecord(Lotto lotto, WinningLotto winningLotto)
+- [ ] 로또 당첨 정보 출력 - LottoController#printWinningRecord(Statistics statistics)
 ---
 
 
