@@ -55,7 +55,7 @@ public class PrizeNumbers {
     }
 
     private boolean isOutOfRange(int number) {
-        return !(NUMBER_MIN_RANGE < number && number < NUMBER_MAX_RANGE);
+        return !(NUMBER_MIN_RANGE <= number && number <= NUMBER_MAX_RANGE);
     }
 
     private void duplicateBonusNumber(List<Integer> numbers, int bonusNumber) {
