@@ -2,6 +2,7 @@ package lotto;
 
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static message.ErrorMessage.*;
 
@@ -39,8 +40,6 @@ public class Lotto {
             if (num > startRange || num < endRange) throw new IllegalArgumentException(ABOVE_ELEMENT.getStatus());
         }
     }
-
-
 
     public List<Integer> getNumbers() {
         return numbers;

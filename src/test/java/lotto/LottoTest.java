@@ -106,7 +106,7 @@ class Prize {
         List<Integer> input = List.of(1,2,3,4,5,6);
         int bonus = 7;
 
-        Assertions.assertThat(calculateGrade.grade(lotto, input, bonus)).isEqualTo(2_000_000_000);
+        Assertions.assertThat(calculateGrade.grade(lotto, input, bonus)).isEqualTo(1);
     }
 
     @DisplayName("2등 등수를 출력한다.")
@@ -116,7 +116,7 @@ class Prize {
         List<Integer> input = List.of(1,2,3,4,5,7);
         int bonus = 6;
 
-        Assertions.assertThat(calculateGrade.grade(lotto, input, bonus)).isEqualTo(30_000_000);
+        Assertions.assertThat(calculateGrade.grade(lotto, input, bonus)).isEqualTo(2);
     }
 
     @DisplayName("3등 등수를 출력한다.")
@@ -126,7 +126,7 @@ class Prize {
         List<Integer> input = List.of(1,2,3,4,5,8);
         int bonus = 7;
 
-        Assertions.assertThat(calculateGrade.grade(lotto, input, bonus)).isEqualTo(1_500_000);
+        Assertions.assertThat(calculateGrade.grade(lotto, input, bonus)).isEqualTo(3);
     }
 
     @DisplayName("4등 등수를 출력한다.")
@@ -136,7 +136,7 @@ class Prize {
         List<Integer> input = List.of(1,2,3,4,7,8);
         int bonus = 7;
 
-        Assertions.assertThat(calculateGrade.grade(lotto, input, bonus)).isEqualTo(50_000);
+        Assertions.assertThat(calculateGrade.grade(lotto, input, bonus)).isEqualTo(4);
     }
 
     @DisplayName("5등 등수를 출력한다.")
@@ -146,7 +146,7 @@ class Prize {
         List<Integer> input = List.of(1,2,3,10,11,12);
         int bonus = 7;
 
-        Assertions.assertThat(calculateGrade.grade(lotto, input, bonus)).isEqualTo(5_000);
+        Assertions.assertThat(calculateGrade.grade(lotto, input, bonus)).isEqualTo(5);
     }
 }
 
@@ -172,28 +172,28 @@ class CalculateTest{
     void getProfit1() {
         long profit = (long) 2000000000*2 + 30000000;
         List<Integer> result = List.of(0,2,1,0,0,0);
-        Assertions.assertThat(calculate.earningRate(result, 3000)).isEqualTo("134333233.3");
+        Assertions.assertThat(calculate.earningRate(result, 3000)).isEqualTo("134333333.3%");
     }
 
     @DisplayName("수익률을 구한다")
     @Test
     void getProfit2() {
         List<Integer> result = List.of(0,0,0,0,2,1);
-        Assertions.assertThat(calculate.earningRate(result, 3000)).isEqualTo("3400.0");
+        Assertions.assertThat(calculate.earningRate(result, 3000)).isEqualTo("3500.0%");
     }
 
     @DisplayName("수익률을 구한다")
     @Test
     void getProfit3() {
         List<Integer> result = List.of(0,1,1,1,1,1);
-        Assertions.assertThat(calculate.earningRate(result, 5000)).isEqualTo("40631000.0");
+        Assertions.assertThat(calculate.earningRate(result, 5000)).isEqualTo("40631100.0%");
     }
 
     @DisplayName("수익률을 구한다")
     @Test
     void getProfit4() {
         List<Integer> result = List.of(0,0,0,0,0,1);
-        Assertions.assertThat(calculate.earningRate(result, 6000)).isEqualTo("-16.7");
+        Assertions.assertThat(calculate.earningRate(result, 6000)).isEqualTo("83.3%");
 
     }
 }

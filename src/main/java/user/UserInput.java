@@ -1,5 +1,7 @@
 package user;
 
+import camp.nextstep.edu.missionutils.Console;
+
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -7,6 +9,16 @@ import java.util.stream.Collectors;
 import static message.ErrorMessage.*;
 
 public class UserInput {
+    public int inputMoney() {
+        int money = 0;
+        try {
+            money = Integer.parseInt(Console.readLine());
+        } catch (IllegalArgumentException e) {
+            System.out.println(INVALID_NUMBER.getStatus());
+        }
+        return money;
+    }
+
     public List<Integer> userLotto(String str) {
         if (!(str.contains(","))) throw new IllegalArgumentException(USER_INPUT_ERROR.getStatus());
 

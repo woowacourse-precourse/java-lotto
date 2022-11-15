@@ -9,7 +9,10 @@ public enum ErrorMessage {
     INCORRECT_MONEY_UNIT("[ERROR] 1000원 단위로 입력해야 합니다."),
 
     USER_INPUT_ERROR("[ERROR] 당첨번호는 쉼표를 기준으로 구분해야 합니다."),
-    INPUT_COUNT_ERROR("[ERROR] 당첨번호는 6개를 입력해야 합니다.");
+    INPUT_COUNT_ERROR("[ERROR] 당첨번호는 6개를 입력해야 합니다."),
+
+    INVALID_NUMBER("[ERROR] 잘못된 숫자입니다.");
+
 
     private String status;
 
