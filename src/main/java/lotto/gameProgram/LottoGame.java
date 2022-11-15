@@ -67,12 +67,16 @@ public class LottoGame {
     }
 
     public void lottoGame() {
-        start();
-        buyLotto();
-        winNumber();
-        winNumberCheck();
-        bonusNumber();
-        winningResult();
-        returnRate();
+        try {
+            start();
+            buyLotto();
+            winNumber();
+            winNumberCheck();
+            bonusNumber();
+            winningResult();
+            returnRate();
+        }   catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
+        }
     } 
 }

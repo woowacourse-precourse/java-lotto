@@ -1,14 +1,11 @@
 package lotto.gameSetting;
 
-import  java.util.NoSuchElementException;
-
 public class UserInput {
     public static void moneyNumberCheck(String money) {
         try {
             Integer.parseInt(money);
         } catch (NumberFormatException e) {
-            System.out.println(ExceptionMessage.NUMBER_EXCEPTION.message());
-            throw new NoSuchElementException();
+            throw new IllegalArgumentException(ExceptionMessage.NUMBER_EXCEPTION.message());
         }
     }
     
