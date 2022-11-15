@@ -1,5 +1,6 @@
 package lotto.controller;
 
+import lotto.domain.Calculator;
 import lotto.domain.Lotto;
 import lotto.domain.NumberGenerator;
 import lotto.utils.Validator;
@@ -20,17 +21,19 @@ public class LottoSystem {
 
     public LottoSystem() {}
 
-    public void start() {
+    public List<Lotto> purchaseLotto() {
         String input = inputView.inputMoney();
         int money = validator.convertToInt(input);
         if (!validator.isValidPrice(money)) {
             throw new IllegalArgumentException(INVALID_PRICE.getMessage());
         }
-        List<Lotto> userLottos = purchaseLotto(money);
+        List<Lotto> userLottos = createLotto(money);
         outputView.outputUserLottos(userLottos);
+
+        return userLottos;
     }
 
-    public void draw() {
+    public List<?> drawLotto() {
         String inputWonNumber = inputView.inputWonNumber();
         List<Integer> wonNumber = validator.convertToIntList(inputWonNumber);
         Lotto wonLotto = new Lotto(wonNumber);
@@ -38,9 +41,19 @@ public class LottoSystem {
         String inputBonusNumber = inputView.inputBonusNumber();
         int bonusNumber = validator.convertToInt(inputBonusNumber);
         validateBonusNumber(wonNumber, bonusNumber);
+
+        return List.of(wonLotto, bonusNumber);
     }
 
-    private List<Lotto> purchaseLotto(int money) {
+    public void getLottoResult(List<Lotto> userLottos, List<?> wonLottoInfo) {
+        Lotto wonLotto = (Lotto) wonLottoInfo.get(0);
+        int bonusNumber = (int) wonLottoInfo.get(1);
+
+        Calculator calculator = new Calculator(wonLotto, bonusNumber);
+        calculator.calculateLottoResult(userLottos);
+    }
+
+    private List<Lotto> createLotto(int money) {
         int lottoCnt = money / 1000;
         List<Lotto> lottos = new ArrayList<>();
         for (int i = 0; i < lottoCnt; i++) {
