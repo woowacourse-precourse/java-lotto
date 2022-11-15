@@ -4,10 +4,10 @@ import java.util.function.Function;
 
 public enum Result {
     THREE(3, false, value -> value * 5000L),
-    FOUR(4, true, value -> value * 50000L),
+    FOUR(4, false, value -> value * 50000L),
     FIVE(5, false, value -> value * 1500000L),
     FIVE_AND_BONUS(5, true, value -> value * 30000000L),
-    SIX(6, true, value -> value * 2000000000L);
+    SIX(6, false, value -> value * 2000000000L);
 
     private final int winningPoint;
     private final boolean bonusPoint;
