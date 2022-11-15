@@ -17,5 +17,10 @@ public class Game {
         for (List<Integer> winLotto : winLottos) {
             System.out.println(winLotto);
         }
+        System.out.println(INPUT_LOTTO_NUMBER.getMessage());
+        List<Integer> list = user.userLotto(Console.readLine());
+        List<Integer> usersLotto = new Lotto(list).getNumbers();
+        System.out.println(INPUT_BONUS_NUMBER.getMessage());
+        int bonusNumber = user.getBonusNumber(Integer.parseInt(Console.readLine()));
     }
 }
