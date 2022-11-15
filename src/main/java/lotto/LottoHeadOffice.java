@@ -10,21 +10,24 @@ public class LottoHeadOffice {
     private int bonusNum;
 
     LottoHeadOffice() {
+        inputWinningNum();
+        System.out.println();
+        inputBonusNum();
     }
 
-    public void inputWinningNum() {
+    private void inputWinningNum() {
         System.out.println("당첨 번호를 입력해 주세요.");
         String s = Console.readLine();
-        // validate 검사
+        // validate 검사 (입력형식, 중복되지 않는지)
         for (String digit : s.split(",")) {
             this.winningNum.add(Integer.valueOf(digit));
         }
     }
 
-    public void inputBonusNum() {
+    private void inputBonusNum() {
         System.out.println("보너스 번호를 입력해 주세요.");
         String s = Console.readLine();
-        // validate 검사
+        // validate 검사 (입력형식, winningnum이랑 중복되지 않는지)
         this.bonusNum = s.charAt(0);
     }
 }
