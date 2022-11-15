@@ -2,7 +2,7 @@ package lotto;
 
 import java.util.List;
 
-import static Exception.Error.*;
+import static view.Error.*;
 
 public class Lotto {
     private final List<Integer> numbers;
