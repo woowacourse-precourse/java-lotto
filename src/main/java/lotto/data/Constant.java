@@ -1,4 +1,4 @@
-package lotto.message;
+package lotto.data;
 
 public enum Constant {
     START_NUMBER(1),

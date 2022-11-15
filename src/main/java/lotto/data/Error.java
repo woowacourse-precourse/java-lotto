@@ -1,4 +1,4 @@
-package lotto.message;
+package lotto.data;
 
 public enum Error {
     OUT_OF_RANGE("복권 하나는 1000원입니다. 1000원 단위로 입력해주세요."),

@@ -1,4 +1,4 @@
-package lotto.message;
+package lotto.data;
 
 public enum InputForm {
     INPUT_PRICE("구입금액을 입력해 주세요."),
