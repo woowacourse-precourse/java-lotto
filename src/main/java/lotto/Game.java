@@ -17,8 +17,6 @@ public class Game {
     private List<Integer> user_number;
     private int bonus_user_number;
 
-
-
     private final String INPUT_MONEY = "구입금액을 입력해 주세요.";
     private final String SHOW_LOTTO ="개를 구매했습니다.";
     private final String INPUT_LOTTO = "당첨 번호를 입력해 주세요.";
@@ -31,11 +29,9 @@ public class Game {
         view.lottoNumberShow(total_lotto,(money/1000)+SHOW_LOTTO);
         user_number=requestLottoNumber();
         bonus_user_number=requestBonusLottoNumber();
-
-
     }
 
-    public void lottoNumberSave(int money){
+    private void lottoNumberSave(int money){
         for(int i=0;i<money/1000;i++){
             List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1,45,6);
             Lotto lotto = new Lotto(numbers);
@@ -43,19 +39,18 @@ public class Game {
         }
     }
 
-    public int requestMoney(){
+    private int requestMoney(){
 
         view.showMessage(INPUT_MONEY);
         int inputMoney = stringtoIntegerInput(Console.readLine());
-        if(exception.isNumeric(inputMoney)&&exception.divThousandOfMoney(inputMoney)
-                &&exception.lessThanThousand(inputMoney)){
+        if(exception.moneyValidator(inputMoney)){
 
             return inputMoney;
         }
         throw new IllegalArgumentException("ERROR");
     }
 
-    public List<Integer> requestLottoNumber(){
+    private List<Integer> requestLottoNumber(){
 
         view.showMessage(INPUT_LOTTO);
         String inputNumber = view.input();
@@ -64,7 +59,7 @@ public class Game {
 
     }
 
-    public int requestBonusLottoNumber(){
+    private int requestBonusLottoNumber(){
 
         view.showMessage(INPUT_BONUS_LOTTO);
         int inputNumber = stringtoIntegerInput(view.input());
@@ -76,8 +71,9 @@ public class Game {
         throw new IllegalArgumentException("ERROR");
     }
 
-    public int stringtoIntegerInput(String input){
-        return Integer.parseInt(input);
+    private int stringtoIntegerInput(String input){
+        if(exception.isNumeric(input))return Integer.parseInt(input);
+        throw new IllegalArgumentException("ERROR");
     }
 
     private void init(){
@@ -86,5 +82,9 @@ public class Game {
         lottoMaker = new LottoMaker();
         total_lotto = new ArrayList<>();
         exception = new Exception();
+    }
+
+    private void compare(){
+
     }
 }

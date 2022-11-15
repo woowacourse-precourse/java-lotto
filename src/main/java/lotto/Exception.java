@@ -5,17 +5,15 @@ import java.util.HashSet;
 public class Exception {
 
     //숫자가 아닌 문자 입력시 예외처리
-    public boolean isNumeric(int money){
-        return true;
-    }
-
-    public boolean divThousandOfMoney(int money){
-        if(money%1000==0)return true;
+    public boolean isNumeric(String number){
+        for(int i=0;i<number.length();i++){
+            if('0'<=number.charAt(i)&&number.charAt(i)<='9')return true;
+        }
         return false;
     }
 
-    public boolean lessThanThousand(int money){
-        if(money>1000)return true;
+    public boolean moneyValidator(int money){
+        if(money%1000==0&&money>1000)return true;
         return false;
     }
 
