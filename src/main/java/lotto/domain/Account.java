@@ -11,7 +11,7 @@ import lotto.constant.WinningResult;
 public class Account {
     private final WinningCalculator winningCalculator;
     private final Map<WinningResult, Integer> winningResultTable = new LinkedHashMap<>();
-    private int count;
+    private int countOfLottos;
     private long winningAmount;
 
     public Account(WinningCalculator winningCalculator) {
@@ -25,9 +25,9 @@ public class Account {
     }
 
     public void saveResult(List<Lotto> lottos) {
-        this.count = lottos.size();
+        this.countOfLottos = lottos.size();
         lottos.forEach(this::saveOneLotto);
-        calculateWinningAmountByResults();
+        calculateWinningAmountByResultTable();
     }
 
     public Map<WinningResult, Integer> getWinningResultTable() {
@@ -35,7 +35,7 @@ public class Account {
     }
 
     public String getYield() {
-        double yieldRaw = winningAmount / ((double) (count * PRICE_OF_ONE_LOTTO));
+        double yieldRaw = winningAmount / ((double) (countOfLottos * PRICE_OF_ONE_LOTTO));
         double yieldPercent = yieldRaw * 100;
         DecimalFormat decFormat = new DecimalFormat("###,##0.0");
         return decFormat.format(yieldPercent);
@@ -48,10 +48,12 @@ public class Account {
         winningResultTable.put(winningResult, nextCountOfWinningResult);
     }
 
-    private void calculateWinningAmountByResults() {
+    private void calculateWinningAmountByResultTable() {
         this.winningAmount = 0;
         for (WinningResult winningResult: winningResultTable.keySet()) {
-            this.winningAmount += winningResultTable.get(winningResult) * winningResult.getMoney();
+            int winningCount = winningResultTable.get(winningResult);
+            long winningMoney = winningResult.getMoney();
+            this.winningAmount += winningCount * winningMoney;
         }
     }
 }
