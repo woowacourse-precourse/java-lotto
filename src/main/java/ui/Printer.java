@@ -1,5 +1,6 @@
 package ui;
 
+import dto.ResultDto;
 import lotto.Lotto;
 
 import java.util.Collections;
@@ -30,13 +31,13 @@ public class Printer {
         System.out.println(UiText.ENTER_BONUS_NUMBER.getTxt());
     }
 
-    public void printWinningStatistics() {
+    public void printWinningStatistics(ResultDto dto) {
         System.out.println(UiText.WINNING_STATISTICS.getTxt());
-        System.out.println(UiText.THREE_MATCHES.getTxt());
-        System.out.println(UiText.FOUR_MATCHES.getTxt());
-        System.out.println(UiText.FIVE_MATCHES.getTxt());
-        System.out.println(UiText.FIVE_AND_BONUS_MATCHES.getTxt());
-        System.out.println(UiText.SIX_MATCHES.getTxt());
+        System.out.println(UiText.THREE_MATCHES.getTxt() + dto.getThreeCount() + "개");
+        System.out.println(UiText.FOUR_MATCHES.getTxt() + dto.getFourCount() + "개");
+        System.out.println(UiText.FIVE_MATCHES.getTxt() + dto.getFiveCount() + "개");
+        System.out.println(UiText.FIVE_AND_BONUS_MATCHES.getTxt() + dto.getFiveBonusCount() + "개");
+        System.out.println(UiText.SIX_MATCHES.getTxt() + dto.getSixCount() + "개");
         System.out.println(UiText.GROSS_RETURN.getTxt());
     }
 
