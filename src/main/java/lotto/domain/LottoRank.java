@@ -38,4 +38,7 @@ public enum LottoRank {
         return this.hasBonusNumber == hasBonusNumber;
     }
 
+    public int calculateProfit(int count) {
+        return prizeMoney * count;
+    }
 }
