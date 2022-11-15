@@ -33,7 +33,9 @@ public class UserInput {
         String input = Console.readLine();
         List<Integer> numbers = convertToList(input);
 
-        int bonus = -1; // to be implemented
+        System.out.println("보너스 번호를 입력해 주세요.");
+        String input2 = Console.readLine();
+        Integer bonus = convertToBonus(input2);
 
         return new WinningNumbers(numbers, bonus);
     }
@@ -43,6 +45,11 @@ public class UserInput {
                 .filter(UserInput::validateNumber)
                 .map(Integer::parseInt)
                 .collect(Collectors.toList());
+    }
+
+    private static Integer convertToBonus(String input) {
+        validateNumber(input);
+        return Integer.parseInt(input);
     }
 
     private static boolean validateNumber(String input) {
