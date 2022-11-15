@@ -22,6 +22,14 @@ public enum LottoRank {
         this.description = description;
     }
 
+    public static LottoRank getRank(int winningNumberCount, boolean hasBonusNumber) {
+        return Arrays.stream(LottoRank.values())
+                .filter(r -> r.correctWinningNumberCount(winningNumberCount))
+                .filter(r -> r.correctBonusNumber(hasBonusNumber))
+                .findAny()
+                .orElse(LOSE);
+    }
+
     public boolean correctWinningNumberCount(int winningNumberCount) {
         return this.winningNumberCount == winningNumberCount;
     }
