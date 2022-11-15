@@ -9,6 +9,10 @@ public class Lotto {
     private static final int START_INCLUSIVE = 1;
     private static final int END_INCLUSIVE = 45;
     private static final int NUMBERS_SIZE = 6;
+    private static final int BONUS_SCORE = 1;
+    private static final int BONUS_SCORELESS = 0;
+    private static final int BONUS_COUNT = 4;
+
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
@@ -40,7 +44,14 @@ public class Lotto {
     }
 
     public int calculateBonus(Lotto draw, int bonus) {
-        return 1;
+        if ((int) numbers
+                .stream()
+                .filter(draw.numbers::contains)
+                .count() == BONUS_COUNT
+                && numbers.contains(bonus)) {
+            return BONUS_SCORE;
+        }
+        return BONUS_SCORELESS;
     }
 
     @Override
