@@ -15,13 +15,12 @@ public class LottoController {
 	public void run() {
 		try {
 			LottoTickets lottoTickets = perchaseLottoTickets();
+			OutputView.printLottoTickets(lottoTickets.getLottoTickets());
 			Lotto lotto = new Lotto(LottoNumbersGenerator.generate(InputView.lottoNumbers()));
 			LottoBonus lottoBonus = new LottoBonus(LottoBonusGenerator.generate(InputView.bonusNumber()),
 				lotto.getNumbers());
-
 			Stat stat = getStat(lottoTickets, lotto, lottoBonus);
 			OutputView.printLottoStat(stat.getStat());
-
 			EarningsRate earningsRate = new EarningsRate(stat.getStat(), lottoTickets.getLottoTickets());
 			OutputView.printEarningsRate(earningsRate.getEarningsRate());
 		} catch (IllegalArgumentException e) {
@@ -38,7 +37,6 @@ public class LottoController {
 
 	private static LottoTickets perchaseLottoTickets() {
 		LottoTickets lottoTickets = new LottoTickets(InputView.purchaseLotto());
-		OutputView.printLottoTickets(lottoTickets.getLottoTickets());
 		return lottoTickets;
 	}
 }

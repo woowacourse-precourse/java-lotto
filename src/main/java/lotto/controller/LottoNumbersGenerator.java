@@ -15,7 +15,7 @@ public class LottoNumbersGenerator {
 
 	private static void validate(String lottoNumbers) {
 		if (!isConsistValidCharacters(lottoNumbers)) {
-			throw new IllegalArgumentException(INPUT_ONLY_NUMBER.getMessage());
+			throw new IllegalArgumentException(INPUT_NUMBER_AND_COMMA_ONLY.getMessage());
 		}
 	}
 
