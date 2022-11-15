@@ -5,6 +5,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import java.lang.reflect.Method;
 import java.util.List;
+import lotto.Bonus;
 import lotto.Lotto;
 import lotto.Score;
 import org.junit.jupiter.api.BeforeAll;
@@ -54,7 +55,7 @@ public class UahanBankTest {
     @Test
     void testChangeLottoToMoney() {
         Lotto wonLotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
-        List<Integer> bonusLotto = List.of(7);
+        Bonus bonusLotto = new Bonus(List.of(7));
         Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
 
         assertThat(uahanBank.changeLottoToMoney(wonLotto, bonusLotto, lotto)).isEqualTo(WINNING_RANK_AMOUNT[0]);

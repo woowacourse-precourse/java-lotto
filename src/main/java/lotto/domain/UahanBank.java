@@ -5,6 +5,7 @@ import static lotto.Config.*;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import lotto.Bonus;
 import lotto.Lotto;
 import lotto.Score;
 
@@ -31,10 +32,10 @@ public class UahanBank {
         return Collections.unmodifiableList(scores);
     }
 
-    public int changeLottoToMoney(Lotto wonLotto, List<Integer> bonusLotto, Lotto lotto){
+    public int changeLottoToMoney(Lotto wonLotto, Bonus bonusLotto, Lotto lotto){
         int receivedMoney = 0;
 
-        Score score = calculateLottoToScore(wonLotto.getNumbers(), bonusLotto, lotto.getNumbers());
+        Score score = calculateLottoToScore(wonLotto.getNumbers(), bonusLotto.getNumbers(), lotto.getNumbers());
 
         for(int index = 0; index < rankScores.size(); index++){
             if(rankScores.get(index).compareTo(score) == 0){

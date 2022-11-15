@@ -45,11 +45,11 @@
 
 뽑은 보너스 번호 내역
 
-- [ ] 당첨 번호 유효성 판단
-    - [ ] 번호 내역이 존재하는지 확인 - checkExistedLotto
-    - [ ] 보너스 번호 길이가 올바른지 확인 - checkBonusLength
-    - [ ] 번호들이 지정된 범위에 있는지 확인 - checkRangeNumber
-    - [ ] 중복된 번호가 있는지 확인 - checkDuplicatedNumber
+- [x] 당첨 번호 유효성 판단
+    - [x] 번호 내역이 존재하는지 확인 - checkExistedLotto
+    - [x] 보너스 번호 길이가 올바른지 확인 - checkBonusLength
+    - [x] 번호들이 지정된 범위에 있는지 확인 - checkRangeNumber
+    - [x] 중복된 번호가 있는지 확인 - checkDuplicatedNumber
 
 ## 점수(`Score`)
 

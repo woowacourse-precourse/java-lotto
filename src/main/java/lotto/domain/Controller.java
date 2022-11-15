@@ -8,6 +8,7 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import lotto.Bonus;
 import lotto.Lotto;
 import lotto.Score;
 
@@ -45,7 +46,7 @@ public class Controller {
         printPublishedLotto(lottos);
         lottoMachine.draw(wins, bonuses);
 
-        int profit = calculateWonLotto(lottos, new Lotto(wins), bonuses);
+        int profit = calculateWonLotto(lottos, new Lotto(wins), new Bonus(bonuses));
         printYield(money, profit);
     }
 
@@ -82,7 +83,7 @@ public class Controller {
         });
     }
 
-    private int calculateWonLotto(List<Lotto> lottos, Lotto wonLotto, List<Integer> bonusLotto) {
+    private int calculateWonLotto(List<Lotto> lottos, Lotto wonLotto, Bonus bonusLotto) {
         int profit = 0;
         List<Integer> rankCounts = new ArrayList<>(Collections.nCopies(WINNING_RANK_AMOUNT.length, 0));
         for(int index = 0; index < lottos.size(); index++){
