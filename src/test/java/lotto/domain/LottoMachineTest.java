@@ -28,10 +28,9 @@ class LottoMachineTest {
     @DisplayName("compute 메소드는 WinningList를 생성한다.")
     void computeLottoResult() {
         Lottos lottos = new Lottos(10);
-        TotalPrizeNumbers totalPrizeNumbers = new TotalPrizeNumbers(List.of(1,2,3,4,5,6), 7);
+        TotalPrizeNumbers totalPrizeNumbers = new TotalPrizeNumbers(List.of(1, 2, 3, 4, 5, 6), 7);
 
-        assertThat(lottoMachine.compute(lottos, totalPrizeNumbers))
-                .isInstanceOf(WinningList.class);
+        assertThat(lottoMachine.compute(lottos, totalPrizeNumbers)).isInstanceOf(WinningList.class);
     }
 
     @Test
@@ -53,8 +52,6 @@ class LottoMachineTest {
         WinningList winningList = new WinningList(winningInfo);
 
         // 수익률: (55000 / 90000) * 100 = 61.1
-        assertThat(String.format("%.1f",
-                calculateRateOfProfit(winningList, purchaseMoney)))
-                .isEqualTo("61.1");
+        assertThat(String.format("%.1f", calculateRateOfProfit(winningList, purchaseMoney))).isEqualTo("61.1");
     }
 }
