@@ -24,21 +24,25 @@ public class LottoGame {
     }
 
     public void run() {
-        long playerMoney = numbersConverter.convertMoney(input.scanMoney());
-        int playerLottoQuantity = lottoCalculator.getLottoQuantity(playerMoney);
+        try {
+            long playerMoney = numbersConverter.convertMoney(input.scanMoney());
+            int playerLottoQuantity = lottoCalculator.getLottoQuantity(playerMoney);
 
-        List<Lotto> playerLotto = numbersGenerator.getLottos(playerLottoQuantity);
-        output.printPlayerLotto(playerLottoQuantity, playerLotto);
+            List<Lotto> playerLotto = numbersGenerator.getLottos(playerLottoQuantity);
+            output.printPlayerLotto(playerLottoQuantity, playerLotto);
 
-        List<Integer> winningLotto = numbersConverter.convertScanNumbersToWinningNumbers(input.scanNumbers());
-        int bonusNumber = numbersConverter.convertBonus(input.scanBonus());
+            List<Integer> winningLotto = numbersConverter.convertScanNumbersToWinningNumbers(input.scanNumbers());
+            int bonusNumber = numbersConverter.convertBonus(input.scanBonus());
 
-        Map<Integer, Integer> resultBoard = getStatistic(winningLotto, bonusNumber, playerLotto);
-        output.printStatistic(resultBoard);
+            Map<Integer, Integer> resultBoard = getStatistic(winningLotto, bonusNumber, playerLotto);
+            output.printStatistic(resultBoard);
 
-        long rewardMoney = lottoCalculator.getRewardMoney(resultBoard);
-        double rate = lottoCalculator.getRate(rewardMoney, playerMoney);
-        output.printRate(rate);
+            long rewardMoney = lottoCalculator.getRewardMoney(resultBoard);
+            double rate = lottoCalculator.getRate(rewardMoney, playerMoney);
+            output.printRate(rate);
+        }catch (IllegalArgumentException e){
+            output.printMessage(e.getMessage());
+        }
     }
 
     private Map<Integer, Integer> getStatistic(List<Integer> winningNumbers, int bonusNumber, List<Lotto> playerLotto) {
