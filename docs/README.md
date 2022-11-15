@@ -10,17 +10,17 @@
   - 4등: 4개 번호 일치 / 50,000원 
   - 5등: 3개 번호 일치 / 5,000원
 - [X] 로또 구입 금액 입력 시 구입 금액에 해당하는 로또 발행 - Generator#generate
-  - [ ] 로또 1장 가격:  1000원
-  - [ ] 구입 금액 1000으로 나누어 떨어지지 않으면 ```IllegalArgumentException```, ```"[Error]"``` 로 시작하는 에러메시지 출력후 종료
+  - [X] 로또 1장 가격:  1000원
+  - [X] 구입 금액 1000으로 나누어 떨어지지 않으면 ```IllegalArgumentException```, ```"[Error]"``` 로 시작하는 에러메시지 출력후 종료
   - [X] 발행한 로또 수량 및 번호 출력 - Generator#printGeneratedLotto
-    - [ ] 오름차순 정렬
+    - [X] 오름차순 정렬
 - [X] 추첨 시 당첨 번호 입력 - Drawer#drawLotto
-  - [ ] 잘못된 값 입력 시 ```IllegalArgumentException```, ```"[Error]"``` 로 시작하는 에러메시지 출력후 종료
+  - [X] 잘못된 값 입력 시 ```IllegalArgumentException```, ```"[Error]"``` 로 시작하는 에러메시지 출력후 종료
 - [X] 추첨 시 보너스 번호 입력 - Drawer#drawBonusNumber
   - [ ] 잘못된 값 입력 시 ```IllegalArgumentException```, ```"[Error]"``` 로 시작하는 에러메시지 출력후 종료
 - [X] 사용자가 구매한 로또 번호와 당첨 번호 비교 - Drawer#compare
   - [X] 당첨 내역 계산 Drawer#Calculater#calculateWin
-    - [ ] 출력
+    - [X] 출력
   - [X] 수익률 계산 Drawer#Calculater#calcualteYield
     - [X] 소수점 둘째 자리에서 반올림
-    - [ ] 출력
+    - [X] 출력
