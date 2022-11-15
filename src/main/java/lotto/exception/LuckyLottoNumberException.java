@@ -39,6 +39,12 @@ public class LuckyLottoNumberException {
         }
     }
 
+    public void checkDuplicatedLottoBonusNumber(List<Integer> inputLuckyNumbers, int bonusLottoNumber) {
+        if (inputLuckyNumbers.contains(bonusLottoNumber)) {
+            throw new IllegalArgumentException(Constant.ERROR_MESSAGE + "보너스 번호가 당첨 번호와 중복됩니다.");
+        }
+    }
+
 
 
 }
