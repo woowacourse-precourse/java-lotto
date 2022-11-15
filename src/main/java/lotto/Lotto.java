@@ -34,7 +34,7 @@ public class Lotto {
         else return false;
     }
 
-    public Integer getNumberOfMatch(List<Integer> num, Integer bounus){
+    public Integer getNumberOfMatch(List<Integer> num){
         int count=0;
         for(Integer a : num){
             if(this.numbers.contains(a)) count++;

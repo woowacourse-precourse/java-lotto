@@ -60,7 +60,7 @@ public class Application {
         }};
         for (int i=0;i<countOfLotto;i++)
         {
-            int countOfMatch = myLottos.get(i).getNumberOfMatch(winningNum,bounusNum);
+            int countOfMatch = myLottos.get(i).getNumberOfMatch(winningNum);
             boolean isMatchBounus = myLottos.get(i).isContainBounus(bounusNum);
             Ranking thisRank = Ranking.getRank(countOfMatch, isMatchBounus);
 //            System.out.priintln("현재 등수 : "+thisRank + "상금 : "+price);
