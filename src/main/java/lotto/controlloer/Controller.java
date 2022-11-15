@@ -20,7 +20,7 @@ public class Controller {
         try {
             Buyer buy = new Buyer(inputMoney());
             LottoGroup lottoGroup = buyLotto(buy);
-            AnswerLotto answerLotto = getAnswerLotto();
+            AnswerLotto answerLotto = new AnswerLotto(getLottoAnswerNumber(), inputBonusNumber());
             Map<WinningRank, Integer> winningDetails = WinningStatistics.getWinningDetails(
                     lottoGroup, answerLotto);
             printWinningMessage();
@@ -39,15 +39,6 @@ public class Controller {
         printLottoGroup(lottoGroup, buy.getNumOfLotto());
         return lottoGroup;
     }
-
-    private AnswerLotto getAnswerLotto(){
-        AnswerLotto answerLotto = new AnswerLotto(getLottoAnswerNumber(), inputBonusNumber());
-        return answerLotto;
-    }
-
-
-
-
 
 
     private void printWinningInformation(Map<WinningRank, Integer> winningDetails) {
