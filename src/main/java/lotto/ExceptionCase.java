@@ -27,4 +27,13 @@ public class ExceptionCase {
 
         return true;
     }
+
+    private static boolean checkDivideThousand(String input) {
+
+        if (Integer.parseInt(input) % 1000 == 0) {
+            return true;
+        }
+
+        return false;
+    }
 }
