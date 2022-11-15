@@ -48,4 +48,23 @@ public class Lotto {
         }
     }
 
+    public int countOfMatch(Lotto lotto) {
+        int countOfMatch = 0;
+        for (LottoNumber number : numbers) {
+            countOfMatch += getMatchingCount(lotto, number);
+        }
+        return countOfMatch;
+    }
+
+    private int getMatchingCount(Lotto lotto, LottoNumber number) {
+        if (lotto.isContains(number)) {
+            return 1;
+        }
+        return 0;
+    }
+
+    public boolean isContains(LottoNumber bonusNo) {
+        return numbers.contains(bonusNo);
+    }
+
 }
