@@ -1,12 +1,12 @@
 package lotto.domain;
 
 import lotto.utils.Ranking;
-import java.util.HashMap;
+import java.util.Map;
 
 public class Prize {
-    private final HashMap<Ranking, Integer> prize;
+    private final Map<Ranking, Integer> prize;
 
-    public Prize(HashMap<Ranking, Integer> prize) {
+    public Prize(Map<Ranking, Integer> prize) {
         this.prize = prize;
     }
 
