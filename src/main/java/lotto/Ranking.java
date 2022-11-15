@@ -2,11 +2,11 @@ package lotto;
 
 public enum Ranking {
 
-    FIFTH(3, "5,000원", false),
-    FOURTH(4, "50,000원", false),
-    THRID(5, "1,500,000원", false),
-    SECOND(5, "30,000,000원", true),
-    FIRST(6, "2,000,000,000원", false);
+    FIFTH(3, "5,000", false),
+    FOURTH(4, "50,000", false),
+    THRID(5, "1,500,000", false),
+    SECOND(5, "30,000,000", true),
+    FIRST(6, "2,000,000,000", false);
 
     private final int match;
     private final String money;
