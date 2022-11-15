@@ -3,6 +3,7 @@ package lotto;
 import lotto.domain.Generator;
 import lotto.domain.Purchase;
 import lotto.domain.RaffleNumber;
+import lotto.domain.Roulette;
 import lotto.ui.Printer;
 
 import java.util.List;
@@ -22,5 +23,15 @@ public class Application {
         RaffleNumber raffleNumber = new RaffleNumber();
         raffleNumber.inputWinningNumber();
         raffleNumber.inputBonusNumber();
+
+        Roulette roulette = new Roulette(raffleNumber.winningNumber, raffleNumber.bonusNumber);
+        roulette.setLottoStatus();
+        for (Lotto one : myLotto) {
+            int sameNumber = roulette.compareWithWinningNumber(one.getNumbers());
+            if (sameNumber < 3) {
+                continue;
+            }
+            roulette.countLotto(one.getNumbers(), sameNumber);
+        }
     }
 }

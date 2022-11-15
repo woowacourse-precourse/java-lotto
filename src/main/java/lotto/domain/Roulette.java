@@ -30,8 +30,20 @@ public class Roulette {
         return count;
     }
 
-    public void countLotto(int count) {
-        String rank = Rank.of(count);
+    public void countLotto(List<Integer> myLotto, int count) {
+        String rank;
+        if (count == 5) {
+            rank = hasBonusNumber(myLotto);
+        } else {
+            rank = Rank.of(count);
+        }
         lottoStatus.put(rank, lottoStatus.get(rank) + 1);
+    }
+
+    public String hasBonusNumber(List<Integer> myLotto) {
+        if (myLotto.contains(bonusNumber)) {
+            return Rank.SECOND.name();
+        }
+        return Rank.THIRD.name();
     }
 }
