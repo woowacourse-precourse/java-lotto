@@ -66,4 +66,34 @@ class PlayerTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("[ERROR] 6개의 숫자를 입력해야합니다");
     }
+
+    @DisplayName("1~45 사이에 숫자가 아닌 경우")
+    @Test
+    public void stringToListError3Test() {
+        String input = "11,24,31,45,78,41";
+
+        assertThatThrownBy(() -> player.stringToList(input))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("[ERROR] 1~45 사이에 숫자만 입력 가능합니다");
+    }
+
+    @DisplayName("숫자가 아닌 값을 입력한 경우")
+    @Test
+    public void bonusErrorTest() {
+        String input = "abc";
+
+        assertThatThrownBy(() -> player.bonusValidate(input))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("[ERROR] 숫자만 입력 가능합니다");
+    }
+
+    @DisplayName("1~45 사이에 숫자가 아닌 경우")
+    @Test
+    public void bonusError2Test() {
+        String input = "63";
+
+        assertThatThrownBy(() -> player.bonusValidate(input))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("[ERROR] 1~45 사이에 숫자만 입력 가능합니다");
+    }
 }
