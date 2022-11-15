@@ -9,13 +9,13 @@ import static lotto.domain.exceptions.WinNumInputException.*;
 
 public class Exception {
 
-    public static void paymentInputCheck(String inputPayment) {
+    public static void paymentInputCheck(String inputPayment) throws IllegalArgumentException {
         paymentTypeError(inputPayment);
         StartLotto.payment = Integer.parseInt(inputPayment);
         paymentChangeError();
     }
 
-    public static void winNumInputErrorCheck(String inputWinNums) {
+    public static void winNumInputErrorCheck(String inputWinNums) throws IllegalArgumentException {
         winNumFormatError(inputWinNums);
         String[] tmpWinNums = inputWinNums.split(",");
         winNumDuplicate(tmpWinNums);
@@ -27,7 +27,7 @@ public class Exception {
         }
     }
 
-    public static void bonusErrorCheck(String inputBonusNum) {
+    public static void bonusErrorCheck(String inputBonusNum) throws IllegalArgumentException {
         bonusTypeError(inputBonusNum);
         StartLotto.bonusNum = Integer.parseInt(inputBonusNum);
         bonusRangeError();
