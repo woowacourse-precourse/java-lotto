@@ -27,6 +27,7 @@ public class LottoController {
     private final HashMap<StepType, Runnable> stepMapper;
     private Long userId;
     private Long roundId;
+
     private LottoController() {
         currentStep = StepType.INIT;
         accountService = new AccountService();
