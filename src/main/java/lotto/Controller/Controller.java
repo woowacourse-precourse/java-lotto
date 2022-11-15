@@ -6,21 +6,21 @@ import lotto.Domain.Rank;
 
 public class Controller {
     private LottoService lottoService;
-    private PlayerService playerService;
+    private WinningLottoService winningLottoService;
     private RankingService rankingService;
 
     public Controller() {
         Player player = new Player();
         Rank rank = new Rank();
         this.lottoService = new LottoService(player);
-        this.playerService = new PlayerService(player);
+        this.winningLottoService = new WinningLottoService(player);
         this.rankingService = new RankingService(rank, player);
     }
 
     public void play() {
         try{
-            this.lottoService.lottoService();
-            this.playerService.winningNumberService();
+            this.lottoService.purchaseLottoService();
+            this.winningLottoService.winningNumberService();
             this.rankingService.rankService();
         } catch(IllegalArgumentException exception) {
             System.out.println(exception.getMessage());
