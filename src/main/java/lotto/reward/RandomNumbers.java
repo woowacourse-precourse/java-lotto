@@ -4,24 +4,20 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.*;
 
-public class RandomNumbers implements Comparable<RandomNumbers> {
+public class RandomNumbers {
     private static final int START_NUMBER = 1;
     private static final int END_NUMBER = 45;
     private static final int COUNT = 6;
-    private static final List<Lotto> lottoNumbers = new ArrayList<>();
+    private static List<Numbers> lottoNumbers = new ArrayList<>();
 
-    public Lotto createRandomNumbers() {
-        Lotto lotto = new Lotto(Randoms.pickUniqueNumbersInRange(START_NUMBER, END_NUMBER, COUNT));
-        lottoNumbers.add(lotto);
-        return lotto;
+    static {
+        for (int i = START_NUMBER; i <= END_NUMBER; i++) {
+            lottoNumbers.add(Numbers.of(i));
+        }
     }
-
-    public List<Lotto> getLottoNumbers(){
-        return lottoNumbers;
-    }
-
-    @Override
-    public int compareTo(RandomNumbers o) {
-        return 0;
+    public List<Numbers> getLottoNumbers() {
+        Randoms.pickUniqueNumbersInRange(START_NUMBER, END_NUMBER, COUNT);
+        Collections.shuffle(lottoNumbers);
+        return lottoNumbers.subList(START_NUMBER,COUNT);
     }
 }
