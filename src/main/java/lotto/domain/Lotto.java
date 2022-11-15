@@ -18,6 +18,10 @@ public class Lotto {
         if (numbers.size() != Constants.LOTTO_NUMBERS_SIZE) {
             throw new IllegalArgumentException(Constants.IS_NOT_LOTTO_NUMBERS_SIZE_ERROR_MESSAGE);
         }
+        Set<Integer> checkNumbers = new HashSet<>(numbers);
+        if (checkNumbers.size() != LOTTO_NUMBERS_SIZE) {
+            throw new IllegalArgumentException(LOTTO_NUMBERS_ARE_DUPLICATED_ERROR_MESSAGE);
+        }
     }
 
     public int getSameNumberCount(Lotto winningLotto, Lotto userLotto) {

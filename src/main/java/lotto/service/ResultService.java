@@ -1,5 +1,6 @@
 package lotto.service;
 
+import static lotto.Constants.LOTTO_NUMBERS_ARE_DUPLICATED_ERROR_MESSAGE;
 import static lotto.Constants.LOTTO_NUMBERS_SIZE;
 import static lotto.Constants.LOTTO_NUMBERS_SIZE_IS_INVALID_ERROR_MESSAGE;
 import static lotto.Constants.LOTTO_NUMBER_IS_NOT_IN_RANGE_ERROR_MESSAGE;
@@ -38,26 +39,37 @@ public class ResultService {
         return Arrays.asList(input.split(LOTTO_WINNING_NUMBERS_SEPARATOR));
     }
 
-    public void validate(List<String> winningNumbers) {
+    public void validateWinningNumbers(List<String> winningNumbers) throws IllegalArgumentException {
         for (String number : winningNumbers) {
             validateNumber(number);
         }
         if (winningNumbers.size() != LOTTO_NUMBERS_SIZE) {
-            ErrorHandler.handle(LOTTO_NUMBERS_SIZE_IS_INVALID_ERROR_MESSAGE);
+            throw new IllegalArgumentException(LOTTO_NUMBERS_SIZE_IS_INVALID_ERROR_MESSAGE);
         }
     }
 
-    public void validateNumber(String number) {
+    public void validateBonusNumber(String number) {
+        validateNumber(number);
+        validateBonusNumberDuplicated(number);
+    }
+
+    private void validateNumber(String number) throws IllegalArgumentException {
         if (!number.chars().allMatch(Character::isDigit)) {
-            ErrorHandler.handle(LOTTO_NUMBER_IS_NOT_NUMBER_ERROR_MESSAGE);
+            throw new IllegalArgumentException(LOTTO_NUMBER_IS_NOT_NUMBER_ERROR_MESSAGE);
         }
         int parsed = Integer.parseInt(number);
         if (parsed < MINIMUM_LOTTO_NUMBER || parsed > MAXIMUM_LOTTO_NUMBER) {
-            ErrorHandler.handle(LOTTO_NUMBER_IS_NOT_IN_RANGE_ERROR_MESSAGE);
+            throw new IllegalArgumentException(LOTTO_NUMBER_IS_NOT_IN_RANGE_ERROR_MESSAGE);
         }
     }
 
-    public void saveWinningNumbers(List<String> winningNumbers) {
+    private void validateBonusNumberDuplicated(String bonusNumber) throws IllegalArgumentException {
+        if (resultRepository.findWinningLotto().hasBonusNumber(Integer.parseInt(bonusNumber))) {
+            throw new IllegalArgumentException(LOTTO_NUMBERS_ARE_DUPLICATED_ERROR_MESSAGE);
+        }
+    }
+
+    public void saveWinningNumbers(List<String> winningNumbers) throws IllegalArgumentException {
         resultRepository.save(
                 new Lotto(winningNumbers.stream()
                         .map(Integer::parseInt)

@@ -29,14 +29,14 @@ public class ResultController {
         OutputView.printAskWinningNumbers();
         String input = InputView.input();
         List<String> winningNumbers = resultService.splitWinningNumbers(input);
-        resultService.validate(winningNumbers);
+        resultService.validateWinningNumbers(winningNumbers);
         resultService.saveWinningNumbers(winningNumbers);
     }
 
     public void enterBonusNumber() {
         OutputView.printAskBonusNumber();
         String bonusNumber = InputView.input();
-        resultService.validateNumber(bonusNumber);
+        resultService.validateBonusNumber(bonusNumber);
         resultService.saveBonusNumber(bonusNumber);
     }
 
