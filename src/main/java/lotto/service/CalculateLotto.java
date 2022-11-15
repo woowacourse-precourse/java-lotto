@@ -1,4 +1,6 @@
-package lotto;
+package lotto.service;
+
+import lotto.model.ResultEnum;
 
 public class CalculateLotto {
     private final static int INIT_VALUES = 0;

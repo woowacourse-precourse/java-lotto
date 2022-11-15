@@ -1,9 +1,10 @@
-package lotto;
+package lotto.view;
 
 import java.text.NumberFormat;
 import java.util.EnumMap;
 import java.util.List;
 import lotto.model.Lotto;
+import lotto.model.ResultEnum;
 
 public class Message {
 

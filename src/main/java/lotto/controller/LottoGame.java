@@ -2,11 +2,11 @@ package lotto.controller;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
-import lotto.CalculateLotto;
+import lotto.service.CalculateLotto;
 import lotto.model.Lotto;
-import lotto.ManagementLotto;
-import lotto.Message;
-import lotto.ProcessVariable;
+import lotto.service.ManagementLotto;
+import lotto.view.Message;
+import lotto.service.ProcessVariable;
 
 public class LottoGame {
 

@@ -1,4 +1,4 @@
-package lotto;
+package lotto.model;
 
 public enum ResultEnum {
     //HIT_NONE(0, false, 0),
