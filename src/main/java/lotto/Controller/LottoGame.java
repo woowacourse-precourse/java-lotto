@@ -16,13 +16,13 @@ public class LottoGame {
     public void startGame() {
         getAmount();
         buyLotto();
-        printUserLotto();
+        showUserLotto();
 
         winningNumber = InputView.getWinningNumber();
-        OutputView.printWinningNumber();
+        showWinningNumber();
 
         bonusNumber = InputView.getBonusNumber(winningNumber);
-        OutputView.printStatistics(amount, LottoMachine.calculateResult(userLotto, winningNumber, bonusNumber));
+        showStatistics();
     }
 
     public void getAmount() {
@@ -38,7 +38,15 @@ public class LottoGame {
         userLotto = LottoMachine.publishLotto(amount);
     }
 
-    public void printUserLotto() {
+    public void showUserLotto() {
         OutputView.printUserLotto(userLotto);
+    }
+
+    public void showWinningNumber() {
+        OutputView.printWinningNumber();
+    }
+
+    public void showStatistics() {
+        OutputView.printStatistics(amount, LottoMachine.calculateResult(userLotto, winningNumber, bonusNumber));
     }
 }
