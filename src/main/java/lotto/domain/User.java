@@ -1,5 +1,6 @@
 package lotto.domain;
 
+import static lotto.utils.ConsoleUtil.*;
 import static lotto.utils.message.DynamicMessagesUtil.*;
 import static lotto.utils.message.NumberMessageUtil.LOTTO_COUNT;
 import static lotto.utils.message.NumberMessageUtil.LOTTO_MAX;
@@ -11,7 +12,6 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
-import lotto.utils.ConsoleUtil;
 import lotto.utils.validate.NumberValidator;
 import lotto.utils.winning.RankUtil;
 
@@ -21,18 +21,25 @@ public class User {
     private WinningResult result = new WinningResult();
 
     public void buyLotto() {
-        ConsoleUtil.showMessage(INPUT_BUY_MONEY.getMessage());
-        String input = ConsoleUtil.input();
+        showMessage(INPUT_BUY_MONEY.getMessage());
+        String input = input();
         validateBuyMoney(input);
 
+        int buyAmount = getBuyAmount(input);
+        createLotto(buyAmount);
+    }
+
+    private int getBuyAmount(String input) {
         money = Integer.parseInt(input);
         int buyAmount = money / LOTTO_PRICE.getNumber();
+        return buyAmount;
+    }
 
+    private void createLotto(int buyAmount) {
         while(buyAmount-- > 0) {
             List<Integer> numbers = Randoms.pickUniqueNumbersInRange(
                     LOTTO_MIN.getNumber(), LOTTO_MAX.getNumber(), LOTTO_COUNT.getNumber());
-            Lotto lotto = new Lotto(numbers);
-            lottos.add(lotto);
+            lottos.add(new Lotto(numbers));
         }
     }
 
@@ -48,7 +55,7 @@ public class User {
     private void showBuyAmount() {
         String message = BUY_AMOUNT.getMessage();
         String param = String.valueOf(getBuyAmount());
-        ConsoleUtil.showParamMessage(message, param);
+        showParamMessage(message, param);
     }
 
     public int getBuyAmount() {
@@ -62,7 +69,7 @@ public class User {
 
             String param = String.join(JOIN_NUMBERS_DELIMITER.getMessage(), numbers);
             String message = LOTTO_NUMBERS.getMessage();
-            ConsoleUtil.showParamMessage(message, param);
+            showParamMessage(message, param);
         }
     }
 
@@ -92,7 +99,7 @@ public class User {
         String message = PROFIT.getMessage();
         double profitRate = getProfitRate(profit);
 
-        ConsoleUtil.showParamMessage(message, profitRate);
+        showParamMessage(message, profitRate);
     }
 
     private double getProfitRate(long profit) {
