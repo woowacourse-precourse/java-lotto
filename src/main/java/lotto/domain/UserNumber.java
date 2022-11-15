@@ -16,23 +16,17 @@ public class UserNumber {
     }
 
     public List<Integer> generateLotto() {
-        List<Integer> lotto = new ArrayList<>();
-        while (lotto.size() < 6) {
-            int lottonumber = Randoms.pickNumberInRange(1, 45);
-            if (!lotto.contains(lottonumber)){
-                lotto.add(lottonumber);
-            }
-        }
+        List<Integer> lotto = Randoms.pickUniqueNumbersInRange(1, 45, 6);
         return lotto;
     }
 
-    public void sort(List<Integer> lotto){
+    public void sort(List<Integer> lotto) {
         lotto.sort(Comparator.naturalOrder());
     }
 
-    public List<List> addLottos(int lottocount){
+    public List<List> addLottos(int lottocount) {
         List<List> userlottos = new ArrayList<>();
-        for (int i = 0; i < lottocount; i++){
+        for (int i = 0; i < lottocount; i++) {
             List<Integer> lotto = generateLotto();
             sort(lotto);
             userlottos.add(lotto);
