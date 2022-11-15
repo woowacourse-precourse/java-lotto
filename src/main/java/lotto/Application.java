@@ -26,6 +26,8 @@ public class Application {
             Rank rank = agreementLotto(agreementCount, bonusAgreement);
             prizeList(rank);
         }
+        yield(buyMoney);
+
         System.out.println(resultRankMap);
 //        DecimalFormat decFormat = new DecimalFormat("###,###");
 //        String prizeMoney2 = decFormat.format(prizeMoney);
@@ -226,6 +228,33 @@ public class Application {
 
         System.out.println(rank);
         return rank;
+    }
+
+    /**
+     * 8. yield (당첨금 수익률 계산) 보완중 <br/>
+     * ((당첨금총액 - 매입금액)/매입금액)*100 <br/>
+     * 수익률은 소숫점 둘째자리에서 반올림 한다. <br/>
+     * 수익률 프린트
+     * 
+     * @return
+     */
+    public static void yield(int buyMoney) {
+        double yield = 0.0;
+        int money = buyMoney * 1000;
+
+        int sumPrizeMoney = 0;
+
+        for (Rank rank : Rank.values()) {
+            if (resultRankMap.containsKey(rank)) {
+                int prizeMoney = rank.getprizeMoney();
+                int prizeCount = resultRankMap.get(rank);
+                sumPrizeMoney += prizeMoney * prizeCount;
+            }
+        }
+        yield = ((double) (sumPrizeMoney - money) / money) * 100;
+        String yield2 = String.format("%.1f", yield);
+        System.out.println("총 수익률은 " + yield2 + "%입니다.");
+
     }
 
 }
