@@ -29,15 +29,15 @@ public class LottoService {
         return List.of(getCountOfLotto(), lottoRepository.findAll());
     }
 
-    public List<WinResultStatus> createWinResults(WinningNumber winningNumber) {
+    public List<WinResultStatus> createWinResultStatuses(WinningNumber winningNumber) {
         List<WinResultStatus> winResults = new ArrayList<>();
         lottoRepository.findAll()
                 .forEach(lotto -> winResults.add(lotto.getWinResult(winningNumber)));
         return winResults;
     }
 
-    public List<Object> createLottoResult(List<WinResultStatus> winResults) {
-        return List.of(createStatistics(winResults), calculateEarningsRate(winResults));
+    public List<Object> createLottoResult(List<WinResultStatus> winResultStatuses) {
+        return List.of(createStatistics(winResultStatuses), calculateEarningsRate(winResultStatuses));
     }
 
     private double calculateEarningsRate(List<WinResultStatus> winResults) {
