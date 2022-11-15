@@ -1,6 +1,8 @@
 package lotto;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
+import lotto.view.InputView;
 import lotto.view.OutputView;
 
 import java.util.*;
@@ -13,14 +15,19 @@ public class Game {
   private List<Lotto> lotteries;
   private final Map<Ranking, Integer> winningResult = new EnumMap<>(Ranking.class);
   private Money money;
+  private WinningNumbers winningNumbers;
 
   public Game() {
     this.lotteries = new ArrayList<>();
   }
 
   public void setMoney(String input) {
-    this.money = new Money(Integer.parseInt(input));
-    numOfLotto = money.getNumOfLotto();
+    try {
+      this.money = new Money(Integer.parseInt(input));
+      numOfLotto = money.getNumOfLotto();
+    } catch (NumberFormatException e) {
+      System.out.println("[ERROR] 입력 값은 숫자여야 합니다." );
+    }
   }
 
   // 랜덤 번호 생성하기
@@ -36,7 +43,7 @@ public class Game {
     }
   }
 
-  // 총 로또 만들기
+  // 1. 구입 금액에 따른 총 로또 만들기
   public void setLotteries(String input) {
     setMoney(input);
     makeLotto(numOfLotto);
@@ -46,9 +53,15 @@ public class Game {
     return lotteries;
   }
 
-  // 당첨 번호와 보너스 번호 입력 받아서 저장
+  public void printLotteriesNumber() {
+    for (Lotto lotto : lotteries) {
+      System.out.println(lotto.getNumbers());
+    }
+  }
+
+  // 2. 당첨 번호와 보너스 번호 입력 받아서 저장
   public WinningNumbers inputNumber(String inputWinningNumber, String inputBonusNum) {
-    return new WinningNumbers(inputWinningNumber(inputWinningNumber), inputBonusNum(inputBonusNum));
+    return this.winningNumbers = new WinningNumbers(inputWinningNumber(inputWinningNumber), inputBonusNum(inputBonusNum));
   }
 
   // 당첨 번호 입력 받기
@@ -105,7 +118,7 @@ public class Game {
     return sameNumber;
   }
 
-  // 로또 전체를 당첨 번호와 돌아가면서 비교하고 등수당 당첨 개수 구하는 메서드
+  // 3. 로또 전체를 당첨 번호와 돌아가면서 비교하고 등수당 당첨 개수 구하는 메서드
   public Map<Ranking, Integer> compareAll(List<Lotto> lotteries, Lotto winningNumber, int bonusNumber) {
     initialWinningResult();
     for (Lotto lotto : lotteries) {
@@ -116,11 +129,6 @@ public class Game {
       }
     }
     return winningResult;
-  }
-
-  // 당첨 통계 출력하는 메서드
-  public void printResult() {
-    OutputView.printWinningStatistics(winningResult);
   }
 
   // 총 당첨금
@@ -134,7 +142,7 @@ public class Game {
     return winPrize;
   }
 
-  // 총 수익률
+  // 5. 총 수익률
   public double earningsPercent(double winPrize) {
     double earningsPercent = winPrize / money.getMoney() * 100;
     return Math.round(earningsPercent * 10) / 10.0;
