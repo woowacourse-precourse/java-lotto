@@ -2,20 +2,25 @@ package lotto;
 import camp.nextstep.edu.missionutils.Console;
 import lotto.Lotto;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public class Money {
     public static int calcmoney (){
-        System.out.println("구입금액을 입력해 주세요.");
-        String inputMoney = Console.readLine();
-        errorOnlyNumber(inputMoney);
-        int money = Integer.parseInt(inputMoney);
-        errorOnlyThousand(money);
-        int lotto = money / 1000;
-        System.out.println(lotto + "개를 구매했습니다.");
-        return lotto;
+        try {
+            System.out.println("구입금액을 입력해 주세요.");
+            String inputMoney = Console.readLine();
+            errorOnlyNumber(inputMoney);
+            int money = Integer.parseInt(inputMoney);
+            errorOnlyThousand(money);
+            int lotto = money / 1000;
+            System.out.println(lotto + "개를 구매했습니다.");
+            return lotto;
+        } catch (Exception e){
+            return 0;
+        }
     }
 
     public static void calcPrize(List<List<Integer>> numbers , List<Integer> lottoNumber , int bouns){
@@ -48,11 +53,11 @@ public class Money {
         System.out.println("총 수익률은 " + rate + "%입니다.");
     }
 
-    private static void errorOnlyNumber(String input){
-        for (int i=0 ; i<input.length() ; i++){
-            if(input.charAt(i) > 57 || input.charAt(i) <48){
-                throw new IllegalArgumentException("[ERROR] 숫자만 입력해주세요.");
-            }
+    private static void errorOnlyNumber(String input ){
+        try {
+            Integer.parseInt(input);
+        } catch (Exception e){
+           System.out.println("[ERROR] 숫자만 입력해 주세요.");
         }
     }
 
