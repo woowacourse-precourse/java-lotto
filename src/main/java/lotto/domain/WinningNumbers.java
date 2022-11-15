@@ -14,7 +14,7 @@ public class WinningNumbers {
         validateDuplicateNumber();
     }
 
-    public void validateDuplicateNumber() {
+    private void validateDuplicateNumber() {
         if (winningNumbers.contains(bonusNumber)) {
             throw new IllegalArgumentException(DUPLICATE_NUMBER_ERROR);
         }
