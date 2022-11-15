@@ -8,14 +8,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Buyer {
-    private final int AMOUNT_PER_LOTTO = 1000;
+    private static final int AMOUNT_PER_LOTTO = 1000;
     private int purchased;
-    private List<Lotto> lottos = new ArrayList<>();
+    private List<Lotto> lottos;
+
 
     /**
      * 입력한 금액을 바탕으로 구매한 로또의 개수를 설정(로또 1장 당 1000원)
      */
-    public Buyer(int budget){
+    public void buyLotto(int budget){
         validateBudget(budget);
         purchased = budget / AMOUNT_PER_LOTTO;
     }
@@ -28,6 +29,33 @@ public class Buyer {
         if (amount % 1000 != 0 || amount <= 0){
             throw new IllegalArgumentException("[ERROR] 로또 구입 금액은 1000원 단위로 입력해야 합니다.");
         }
+    }
+
+    /**
+     * 1~45 사이의 랜덤한 로또 번호 6자리를 선택
+     */
+    public void pickLottoNumbers(){
+        while (lottos.size() < purchased){
+            List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+            if (validateLottoNumber(numbers, lottos)){
+                lottos.add(new Lotto(numbers));
+            }
+        }
+    }
+
+    /**
+     * 로또 번호가 겹치지 않도록 검증
+     * @param numbers 로또 번호로 사용할 랜덤으로 선택한 숫자들
+     * @param lottos 로또 번호가 선택된 로또들
+     * @return 중복된 값인지 여부
+     */
+    public static boolean validateLottoNumber(List<Integer> numbers, List<Lotto> lottos){
+        for(Lotto lotto : lottos){
+            if (lotto.getLottoNumbers().equals(numbers)){
+                return false;
+            }
+        }
+        return true;
     }
 
 }
