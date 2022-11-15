@@ -9,48 +9,47 @@ import java.util.Objects;
 
 public class Controller {
     static View view = new View();
-    Lotto lotto;
+    static Domain logic = new Domain();
+    static Lotto lotto;
     static String input;
-    static EnumMap<Money, Integer> map = new EnumMap<>(Money.class);
+    static EnumMap<Money, Integer> winningMap = new EnumMap<>(Money.class);
     static Computer[] computers;
 
     void start() {
-        long inMoney;
+        long Money;
         try {
-            startMoney();
-            startMoneyException();
-            inMoney = inMoney();
-            getComputers(inMoney);
-            winningNumber();
-            winningNumberException();
-            Bonus();
-            BonusException();
-            inBonus();
-            checkWinning();
-            Result(inMoney);
+            insertMoney();
+            insertMoneyException();
+            Money = restoreMoney();
+            initComputers(Money);
+            insertWinningNumber();
+            insertWinningNumberException();
+            insertBonus();
+            insertBonusException();
+            restoreBonus();
+            findWinning();
+            Result(Money);
         } catch (IllegalArgumentException e) {
             if (!Objects.equals(e.getMessage(), null)) System.out.println(e.getMessage());
         }
     }
 
     private void Result(long inMoney) {
-        Domain domain = new Domain();
-        long result = domain.checkWinningMoney(map);
+        long result = logic.calWinningMoney(winningMap);
         view.printBenfit(inMoney, result);
     }
 
-    private void checkWinning() {
-        Domain domain = new Domain();
-        domain.checkWinning(computers, map, lotto);
-        view.printResult(map);
+    private void findWinning() {
+        logic.findWinning(computers, winningMap, lotto);
+        view.printResult(winningMap);
     }
 
-    private void inBonus() {
+    private void restoreBonus() {
         int bonus = Integer.parseInt(input);
         lotto.getNumbers().add(bonus);
     }
 
-    private Long inMoney() {
+    private Long restoreMoney() {
         return Long.parseLong(input);
     }
 
@@ -58,27 +57,27 @@ public class Controller {
         return Console.readLine();
     }
 
-    public void BonusException() throws IllegalArgumentException {
+    public void insertBonusException() throws IllegalArgumentException {
         Exception ex = new Exception();
         ex.inputWinningBonus(input);
     }
 
-    private void Bonus() {
+    private void insertBonus() {
         view.inputBonus();
         input = getInput();
     }
 
-    public void startMoneyException() throws IllegalArgumentException {
+    public void insertMoneyException() throws IllegalArgumentException {
         Exception ex = new Exception();
         ex.initialInput(input);
     }
 
-    private void startMoney() {
+    private void insertMoney() {
         view.startMention();
         input = getInput();
     }
 
-    private void getComputers(long inMoney) {
+    private void initComputers(long inMoney) {
         computers = new Computer[(int)inMoney / 1000];
         for (int i = 0; i < inMoney / 1000; i++) computers[i] = new Computer();
         view.purchaseNumber((int)inMoney / 1000, computers);
@@ -86,7 +85,7 @@ public class Controller {
     }
 
 
-    public void winningNumberException() throws IllegalArgumentException {
+    public void insertWinningNumberException() throws IllegalArgumentException {
         List<Integer> lottoList = new ArrayList<>();
         String[] str = input.split(",");
         addWinningNum(str, lottoList);
@@ -94,7 +93,7 @@ public class Controller {
         System.out.println();
     }
 
-    private void winningNumber() {
+    private void insertWinningNumber() {
         view.inputNumber();
         input = getInput();
     }

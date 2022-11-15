@@ -68,7 +68,7 @@ class ApplicationTest extends NsTest {
         Integer[] number = {1, 2, 3, 4, 5, 6, 7};
         List<Integer> list1 = new ArrayList<>(List.of(number));
         List<Integer> list2 = new ArrayList<>(List.of(number));
-        assertThat(domain.checkWinningCount(list1, list2)).isEqualTo(7);
+        assertThat(domain.findWinningCount(list1, list2)).isEqualTo(7);
     }
 
     @Test
@@ -81,7 +81,7 @@ class ApplicationTest extends NsTest {
         map.put(Money.valueOf(Ranking[2]), 0);
         map.put(Money.valueOf(Ranking[3]), 0);
         map.put(Money.valueOf(Ranking[4]), 1);
-        assertThat(domain.checkWinningMoney(map)).isEqualTo(2000005000);
+        assertThat(domain.calWinningMoney(map)).isEqualTo(2000005000);
     }
 
     @Override

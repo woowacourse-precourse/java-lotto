@@ -7,20 +7,20 @@ import java.util.Objects;
 public class Domain {
     String[] Ranking = {"first", "second", "third", "fourth", "fifth"};
 
-    void checkWinning(Computer[] computers, EnumMap<Money, Integer> map, Lotto lotto) {
+    void findWinning(Computer[] computers, EnumMap<Money, Integer> map, Lotto lotto) {
         for (Computer computer : computers) {
-            int count = checkWinningCount(computer.getNumbers(), lotto.getNumbers());
-            Money money = WinningKey(count);
+            int count = findWinningCount(computer.getNumbers(), lotto.getNumbers());
+            Money money = findWinningKey(count);
             map.put(money, map.getOrDefault(money, 0) + 1);
         }
     }
 
-    Money WinningKey(int count) {
+    Money findWinningKey(int count) {
         if (count >= 3) return Money.valueOf(Ranking[Math.abs(count - 7)]);
         return Money.notThing;
     }
 
-    int checkWinningCount(List<Integer> computers, List<Integer> lottoList) {
+    int findWinningCount(List<Integer> computers, List<Integer> lottoList) {
         int count = 0;
         for (int i = 0; i < lottoList.size() - 1; i++) {
             if (computers.contains(lottoList.get(i))) count++;
@@ -30,7 +30,7 @@ public class Domain {
         return count;
     }
 
-    Long checkWinningMoney(EnumMap<Money, Integer> map) {
+    Long calWinningMoney(EnumMap<Money, Integer> map) {
         long result = 0;
         for (Money money : map.keySet())
             result += (long) map.getOrDefault(money, 0) * Money.valueOf(String.valueOf(money)).getMoney();
