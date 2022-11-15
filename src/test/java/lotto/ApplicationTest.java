@@ -73,14 +73,6 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 로또_구입갯수_테스트() {
-        assertSimpleTest(() -> {
-            run("8000");
-            assertThat(output()).contains("8개");
-        });
-    }
-
-    @Test
     void 당첨번호_중복테스트() {
         assertSimpleTest(() -> {
             assertThatThrownBy(() -> runException("1000", "1,2,3,4,5,5"));
