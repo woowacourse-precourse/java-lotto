@@ -1,6 +1,7 @@
 package lotto;
 
-import lotto.userinterface.UserInterface;
+import lotto.userinterface.ConsoleIn;
+import lotto.userinterface.ConsoleOut;
 
 import java.util.HashMap;
 import java.util.List;
@@ -8,15 +9,15 @@ import java.util.List;
 public class Application {
     public static void main(String[] args) {
         try {
-            Integer money = UserInterface.getMoney();
+            Integer money = ConsoleIn.getMoney();
 
             List<Lotto> randomLottos = LottoMachine.getRandomLottos(money);
 
-            UserInterface.printLottos(randomLottos);
+            ConsoleOut.printLottos(randomLottos);
 
-            List<Integer> answerNumbers = UserInterface.getLottoNumbers();
+            List<Integer> answerNumbers = ConsoleIn.getLottoNumbers();
 
-            Integer bonusNumber = UserInterface.getBonusNumber(answerNumbers);
+            Integer bonusNumber = ConsoleIn.getBonusNumber(answerNumbers);
 
             Lotto answerLotto = Lotto.numberOf(answerNumbers);
 
@@ -24,8 +25,8 @@ public class Application {
 
             Float earningRate = Calculator.getEarningRate(result, money);
 
-            UserInterface.printResult(result);
-            UserInterface.printEarningRate(earningRate);
+            ConsoleOut.printResult(result);
+            ConsoleOut.printEarningRate(earningRate);
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
