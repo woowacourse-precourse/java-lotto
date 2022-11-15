@@ -43,6 +43,13 @@ public class ExceptionTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+    @DisplayName("보너스 번호의 첫 숫자가 0으로 시작하면 예외가 발생한다")
+    @Test
+    void createExceptionTest6() {
+        assertThatThrownBy(() -> new Exception().checkBonusNumber("05"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
 
 
 
