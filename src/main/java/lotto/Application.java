@@ -23,6 +23,7 @@ public class Application {
         if (money == null) return;
         user.SetMoney(money);
 
+
         //사용자 돈으로 로또 구매
         user.BuyLotto();
 
@@ -31,12 +32,12 @@ public class Application {
         //사용자에게 로또 번호 입력받음
         List<Integer> lottoNumber = userInput.GetLottoNumber();
         if (lottoNumber == null) return;
-        user.SetAnswerNumber(userInput.GetLottoNumber());
+        user.SetAnswerNumber(lottoNumber);
 
         //사용자에게 보너스 번호 입력받음
         Integer bonus = userInput.GetBonusNumber();
         if (bonus == null) return;
-        user.SetBonusNumber(userInput.GetBonusNumber());
+        user.SetBonusNumber(bonus);
 
         //로또 결과 도출
         result.CalculateResult(user);
