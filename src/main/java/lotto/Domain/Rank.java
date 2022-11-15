@@ -11,14 +11,6 @@ public enum Rank {
     FIFTH(3, 5000),
     BOTTOM(0, 0);
 
-    public int getMatchCount() {
-        return matchCount;
-    }
-
-    public int getPrice() {
-        return price;
-    }
-
     private final int matchCount;
     private final int price;
 
@@ -38,6 +30,13 @@ public enum Rank {
             return SECOND;
         }
         return Arrays.stream(Rank.values()).filter(rank -> rank.getMatchCount() == num).findAny().orElse(BOTTOM);
+    }
+
+    public int getMatchCount() {
+        return matchCount;
+    }
+    public int getPrice() {
+        return price;
     }
 
 }
