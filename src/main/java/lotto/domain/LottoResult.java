@@ -14,6 +14,7 @@ public class LottoResult {
         resultMap = setResultMap(userLottos, winningLotto);
         yield = calculateYield(money);
     }
+
     public Map<Rank, Integer> setResultMap(UserLottos userLottos, WinningLotto winningLotto) {
         Map<Rank, Integer> resultMap = new HashMap<>();
         Set<Lotto> lottoSet = userLottos.getUserLottos();
@@ -24,6 +25,7 @@ public class LottoResult {
         }
         return resultMap;
     }
+
     public void addToResultMap(Rank rank, Map<Rank, Integer> resultMap) {
         if (rank == null) {
             return;
@@ -32,6 +34,7 @@ public class LottoResult {
         int winningCount = resultMap.getOrDefault(rank, 0);
         resultMap.put(rank, winningCount + 1);
     }
+
     public double calculateYield(double money) {
         long totalPrize = 0;
         for (Rank rank : Rank.values()) {
@@ -42,7 +45,7 @@ public class LottoResult {
 
         return Math.round((totalPrize / money) * 1000) / 10.0;
     }
-    //getter 모음
+
     public Map<Rank, Integer> getResultMap() {
         return this.resultMap;
     }
@@ -51,7 +54,6 @@ public class LottoResult {
         return this.yield;
     }
 
-    //서비스로직 - 문자열로 형변환
     public String getResultString() {
         StringBuffer sb = new StringBuffer();
 
