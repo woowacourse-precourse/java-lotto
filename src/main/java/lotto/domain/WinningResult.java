@@ -10,8 +10,15 @@ public class WinningResult {
 
     public WinningResult(Lotto winningLotto, Number bonusNumber) {
         validateBonusDuplicate(winningLotto, bonusNumber);
+        initRanks();
         this.winningLotto = winningLotto;
         this.bonusNumber = bonusNumber;
+    }
+
+    private void initRanks() {
+        for (Rank rank : Rank.values()) {
+            results.put(rank, 0);
+        }
     }
 
     private void validateBonusDuplicate(Lotto winningLotto, Number bonusNumber) {
@@ -26,6 +33,7 @@ public class WinningResult {
 
     public void compareLotto(Lotto purchaseLotto) {
         Rank rank = Rank.decide(countCoincide(purchaseLotto), isCoincideBonus(purchaseLotto));
+        System.out.println(rank);
         addRank(rank);
     }
 
@@ -41,6 +49,15 @@ public class WinningResult {
     }
 
     public void addRank(Rank rank) {
-        results.put(rank, results.getOrDefault(rank, 0) + 1);
+        results.put(rank, results.get(rank) + 1);
+    }
+
+    public double calculateTotalWinningAmount() {
+        double totalWinningAmount = 0L;
+        for (Map.Entry<Rank, Integer> result : results.entrySet()) {
+            totalWinningAmount += result.getKey().winningAmount * result.getValue();
+        }
+
+        return totalWinningAmount;
     }
 }

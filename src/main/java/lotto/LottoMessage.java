@@ -47,4 +47,8 @@ public class LottoMessage {
         System.out.println(SECOND_WINNING + results.getOrDefault(Rank.SECOND, 0) + COUNT);
         System.out.println(FIRST_WINNING + results.getOrDefault(Rank.FIRST, 0) + COUNT);
     }
+
+    public void printProfitPercentage(double profitPercentage) {
+        System.out.println("총 수익률은 " + profitPercentage + "입니다.");
+    }
 }

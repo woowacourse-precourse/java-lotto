@@ -37,4 +37,9 @@ public class LottoController {
         WinningResult winningResult = lottoService.calculateResult();
         lottoMessage.printWinningResult(winningResult);
     }
+
+    public void showWinningProfitPercentage() {
+        double profitPercentage = lottoService.calculateProfitPercentage();
+        lottoMessage.printProfitPercentage(profitPercentage);
+    }
 }

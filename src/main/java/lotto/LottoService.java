@@ -13,8 +13,10 @@ public class LottoService {
     private final RandomGenerator randomGenerator = new RandomGenerator();
     private final List<Lotto> lotteries = new ArrayList<>();
     private WinningResult winningResult;
+    private Money purchaseMoney;
 
     public void purchase(Money money) {
+        purchaseMoney = money;
         int buyQuantity = money.getWon() / 1000;
 
         for (int i = 0; i < buyQuantity; i++) {
@@ -39,6 +41,12 @@ public class LottoService {
         }
 
         return winningResult;
+    }
+
+    public double calculateProfitPercentage() {
+        double totalWinningAmount = winningResult.calculateTotalWinningAmount();
+
+        return totalWinningAmount / purchaseMoney.getWon() * 100.0;
     }
 
     private List<Number> convertToNumbers(String input) {
