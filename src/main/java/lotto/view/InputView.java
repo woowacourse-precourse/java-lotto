@@ -39,6 +39,7 @@ public class InputView {
     }
 
     private static void printInputBonusNumber() {
+        System.out.println();
         System.out.println(INPUT_BONUS_NUMBERS);
     }
 }

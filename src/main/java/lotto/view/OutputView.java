@@ -19,16 +19,21 @@ public class OutputView {
     }
 
     public static void printPurchaseLottoMessage(int count, String message) {
+        System.out.println();
         System.out.println(count + LOTTO_COUNT_MESSAGE);
         System.out.println(message);
     }
     
     public static void printWinnings(List<Integer> winningsCounts) {
+        System.out.println();
         System.out.println(WINNING_STATS_WORD );
         System.out.println(SEPARATOR);
 
         int rankIndex = 0;
         for (Rank rank : Rank.values()) {
+            if (rank.isEtc()) {
+                continue;
+            }
             System.out.println(rank.getWinningStats() + winningsCounts.get(rankIndex++) + LOTTO_UNIT);
         }
     }
