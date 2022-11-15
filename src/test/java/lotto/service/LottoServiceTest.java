@@ -1,6 +1,7 @@
 package lotto.service;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
@@ -68,6 +69,18 @@ class LottoServiceTest {
         void notNumberInput() {
             // given
             final String input = "INVALID";
+
+            // when
+
+            // then
+            assertThrows(IllegalStateException.class, () -> LottoService.getWinningNumber(input));
+        }
+
+        @Test
+        @DisplayName("[실패] - 올바르지 않은 형식이 입력된 경우(문자열포함)")
+        void notNumberIsInInput() {
+            // given
+            final String input = "a,1,2,3,4,5";
 
             // when
 
