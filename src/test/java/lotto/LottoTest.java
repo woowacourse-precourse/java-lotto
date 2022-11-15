@@ -62,4 +62,11 @@ class LottoTest {
         List<Integer> common = lotto1.getCommonNumbers(lotto2);
         Assertions.assertThat(common.size()).isEqualTo(4);
     }
+
+    @DisplayName("로또에 어떤 숫자가 있는지 확인하는 기능을 테스트한다.")
+    @Test
+    void contains() {
+        Lotto lotto = new Lotto(Arrays.asList(3, 2, 1, 5, 4, 6));
+        Assertions.assertThat(lotto.contains(1)).isEqualTo(true);
+    }
 }
