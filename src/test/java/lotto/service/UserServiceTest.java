@@ -100,4 +100,29 @@ public class UserServiceTest {
             );
         }
     }
+
+    @Nested
+    @DisplayName("보너스 번호, 예외 처리")
+    @TestInstance(TestInstance.Lifecycle.PER_CLASS)
+    class bonusNumberExceptionTest {
+        @ParameterizedTest
+        @MethodSource("data")
+        void case1(String numbers, String bonusNumber) {
+            userService.setMoneyToUser("1000");
+            userService.setNumbersToUser(numbers);
+            Assertions.assertThatThrownBy(() -> userService.setBonusNumber(bonusNumber))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessageContaining("ERROR");
+        }
+
+        Stream<Arguments> data() {
+            return Stream.of(
+                    Arguments.of("1,2,3,4,5,6", "6"),
+                    Arguments.of("1,2,3,4,5,6", "i"),
+                    Arguments.of("1,2,3,4,45,6", "0"),
+                    Arguments.of("1,2,3,4,45,6", "46"),
+                    Arguments.of("1,2,3,4,45,6", "-1")
+            );
+        }
+    }
 }
