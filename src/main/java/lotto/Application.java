@@ -14,12 +14,20 @@ public class Application {
     static final float third = 1500000;
     static final float fourth = 50000;
     static final float fifth = 5000;
-
+    static final int lottoPrice = 1000;
     public static void main(String[] args) {
         
         
         //구입금액
-        int buyMoney = inputBuyMoney();
+        int buyMoney =0;
+        try {
+            buyMoney = inputBuyMoney();
+        }
+        catch (Exception e){
+            System.out.println(e.getMessage());
+            return;
+        }
+
 
         //로또 구매및 출력
         ArrayList<Lotto> lottoList = buyLotto(countPurchaseLotto(buyMoney));
@@ -177,25 +185,28 @@ public class Application {
     static int inputBuyMoney(){
         System.out.println("구입금액을 입력해주세요.");
         String input = Console.readLine();
-        // TODO: 유효성 검사
-
         int buyMoney=0;
-        ////todo: 1000원으로 나누어떨어지지않으면 오류발생시키기 추가예정
-        try {
-            buyMoney = Integer.parseInt(Console.readLine());
+
+        if(!isValidNumber(input)){
+            throw new IllegalArgumentException("[ERROR] "+lottoPrice+"원 이상의 올바른 숫자를 입력해주세요");
         }
-        catch (Exception e){
-            System.out.println(e.getMessage());
-        }
+        buyMoney = Integer.parseInt(input);
         return buyMoney;
     }
-    static boolean isValidNumber(String input){
+    static boolean isValidNumber(String input)  {
+        //숫자만 입력했는지 확인
         try{
             Integer.parseInt(input);
         }
-        catch (NumberFormatException e){
+        catch (Exception e){
             return false;
         }
+        int inputNumber = Integer.parseInt(input);
+        //1000원 이상의 1000원으로 나누어떨어지는 숫자인지 확인
+        if(inputNumber % lottoPrice !=0){
+            return false;
+        }
+
         return true;
     }
 
