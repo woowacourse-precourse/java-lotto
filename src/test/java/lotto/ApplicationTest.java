@@ -1,6 +1,7 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -46,6 +47,7 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @DisplayName("투자 금액 입력값에 문자가 존재하는 경우 에러 메세지를 출력합니다.")
     @Test
     void 예외_테스트() {
         assertSimpleTest(() -> {
@@ -54,6 +56,19 @@ class ApplicationTest extends NsTest {
         });
     }
 
+    @DisplayName("당첨 번호 입력값에 공백이 존재하면 예외를 발생합니다.")
+    @Test
+    void 당첨번호_공백_예외_테스트(){
+
+    }
+
+    @DisplayName("투자 금액 입력값이 1000원 단위가 아니면 예외를 발생합니다.")
+    @Test
+    void 투자금액_예외_테스트(){
+
+    }
+
+    @DisplayName()
     @Override
     public void runMain() {
         Application.main(new String[]{});
