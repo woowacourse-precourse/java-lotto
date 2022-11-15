@@ -1,5 +1,6 @@
 package lotto.domain;
 
+import static lotto.Enum.Values.*;
 import camp.nextstep.edu.missionutils.Randoms;
 import lotto.Enum.Notice;
 import lotto.Lotto;
@@ -9,7 +10,7 @@ import java.util.*;
 public class LottoGenerator {
 
     public List<Lotto> createLottoNumbers(String amount) {
-        Notice.BUY_MESSAGE.buy(Integer.parseInt(amount) / 1000);
+        Notice.BUY_MESSAGE.buy(Integer.parseInt(amount) / LOTTO_AMOUNT.getValue());
         List<Lotto> lottos = new ArrayList<>();
         for (int i = 0; i < Integer.parseInt(amount) / 1000; i++) {
             lottos.add(generateLotto());
@@ -18,7 +19,7 @@ public class LottoGenerator {
     }
 
     public Lotto generateLotto() {
-        List<Integer> lotto = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+        List<Integer> lotto = Randoms.pickUniqueNumbersInRange(MAX_VALUE.getValue(), MAX_VALUE.getValue(), COUNT.getValue());
         List<Integer> realLotto = new ArrayList<>();
         for(Integer num : lotto) {
             realLotto.add(num);

@@ -1,6 +1,6 @@
 package lotto.domain;
 
-import lotto.Enum.Errors;
+import static lotto.Enum.Errors.*;
 import lotto.Lotto;
 
 import java.util.List;
@@ -9,12 +9,12 @@ public class Judge {
 
     public void correctAmount(String amount) {
         if(Integer.parseInt(amount) % 1000 != 0){
-            throw new IllegalArgumentException(Errors.NOT_CORRECT_AMOUNT.getName());
+            throw new IllegalArgumentException(NOT_CORRECT_AMOUNT.getName());
         }
     }
     public void amountIsNaturalNumber(String amount) {
         if(Integer.parseInt(amount) <= 0) {
-            throw new IllegalArgumentException(Errors.IS_NATURAL_NUMBER.getName());
+            throw new IllegalArgumentException(IS_NATURAL_NUMBER.getName());
         }
     }
     public void amountIsValid(String amount) {
@@ -37,7 +37,7 @@ public class Judge {
         try{
             Integer.parseInt(num);
         } catch(Exception e) {
-            throw new IllegalArgumentException(Errors.NOT_CORRECT_INPUT.getName());
+            throw new IllegalArgumentException(NOT_CORRECT_INPUT.getName());
         }
     }
 
@@ -50,7 +50,7 @@ public class Judge {
 
     public void isNotContain(Lotto lotto, int bonus) {
         if(lotto.getNumbers().contains(bonus)) {
-            throw new IllegalArgumentException(Errors.BONUS_NUMBER_NOT_UNIQUE.getName());
+            throw new IllegalArgumentException(BONUS_NUMBER_NOT_UNIQUE.getName());
         }
     }
 }

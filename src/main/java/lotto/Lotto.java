@@ -1,7 +1,7 @@
 package lotto;
 
-import lotto.Enum.Errors;
-import lotto.Enum.Values;
+import static lotto.Enum.Errors.*;
+import static lotto.Enum.Values.*;
 
 import java.util.*;
 
@@ -15,7 +15,7 @@ public class Lotto {
 
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
-            throw new IllegalArgumentException(Errors.NOT_CORRECT_SIZE.getName());
+            throw new IllegalArgumentException(NOT_CORRECT_SIZE.getName());
         }
         checkDuplicatedNumber(numbers);
         isCorrectRange(numbers);
@@ -23,8 +23,8 @@ public class Lotto {
 
     private void isCorrectRange(List<Integer> numbers) {
         numbers.stream().forEach(x -> {
-            if(x < Values.MIN_VALUE.getValue() || x > Values.MAX_VALUE.getValue()){
-                throw new IllegalArgumentException(Errors.NOT_CORRECT_RANGE.getName());
+            if(x < MIN_VALUE.getValue() || x > MAX_VALUE.getValue()){
+                throw new IllegalArgumentException(NOT_CORRECT_RANGE.getName());
             }
         });
     }
@@ -35,7 +35,7 @@ public class Lotto {
 
     private void checkDuplicatedNumber(List<Integer> numbers) {
         if(numbers.stream().distinct().count() != 6) {
-            throw new IllegalArgumentException(Errors.IS_NOT_UNIQUE.getName());
+            throw new IllegalArgumentException(IS_NOT_UNIQUE.getName());
         }
     }
 

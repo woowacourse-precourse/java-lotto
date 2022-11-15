@@ -1,6 +1,6 @@
 package lotto.domain;
 
-import lotto.Enum.Prize;
+import static lotto.Enum.Prize.*;
 import lotto.Lotto;
 import lotto.view.Input;
 import lotto.view.Output;
@@ -10,11 +10,11 @@ import java.util.List;
 public class LottoManager {
 
     private final int[] rewards = new int[]{
-            Prize.FIRST_PRIZE.getPrize(),
-            Prize.SECOND_PRIZE.getPrize(),
-            Prize.THIRD_PRIZE.getPrize(),
-            Prize.FOURTH_PRIZE.getPrize(),
-            Prize.FIFTH_PRIZE.getPrize()
+            FIRST_PRIZE.getPrize(),
+            SECOND_PRIZE.getPrize(),
+            THIRD_PRIZE.getPrize(),
+            FOURTH_PRIZE.getPrize(),
+            FIFTH_PRIZE.getPrize()
     };
     private final int[] prize = new int[]{ 0, 0, 0, 0, 0 };
     private List<Lotto> userLottos;
@@ -73,30 +73,30 @@ public class LottoManager {
     }
 
     private void isFirst(int correct) {
-        if(correct == Prize.FIRST_PRIZE.getContained()) {
+        if(correct == FIRST_PRIZE.getContained()) {
             prize[0]++;
         }
     }
     private void isSecond(int correct, boolean bonus) {
-        if(correct == Prize.SECOND_PRIZE.getContained() && bonus) {
+        if(correct == SECOND_PRIZE.getContained() && bonus) {
             prize[1]++;
         }
     }
 
     private void isThird(int correct, boolean bonus) {
-        if(correct == Prize.THIRD_PRIZE.getContained() && !bonus) {
+        if(correct == THIRD_PRIZE.getContained() && !bonus) {
             prize[2]++;
         }
     }
 
     private void isFourth(int correct) {
-        if(correct == Prize.FOURTH_PRIZE.getContained()) {
+        if(correct == FOURTH_PRIZE.getContained()) {
             prize[3]++;
         }
     }
 
     private void isFifth(int correct) {
-        if(correct == Prize.FIFTH_PRIZE.getContained()) {
+        if(correct == FIFTH_PRIZE.getContained()) {
             prize[4]++;
         }
     }
