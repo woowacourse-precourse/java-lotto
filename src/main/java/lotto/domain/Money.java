@@ -20,7 +20,10 @@ public class Money {
     }
 
     public int calcLottoQuantity() {
-        return amount.intValue() / 1000;
+        return amount.intValue() / LottoConstant.AMOUNT_UNIT;
     }
 
+    public boolean checkAmountUnit(int unit) {
+        return this.amount % unit == 0;
+    }
 }
