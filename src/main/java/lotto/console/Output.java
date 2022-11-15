@@ -63,8 +63,8 @@ public class Output {
         System.out.println(printChart.PRINT_SIX.getValue() + sixNumber + printChart.PRINT_GE.getValue());
     }
 
-    public void reportRateOfReturn(String totalReturn) {
-        System.out.println(printChart.REPORT_RATE.getValue() + totalReturn + printChart.PRINT_PERCENT.getValue());
+    public void reportRateOfReturn(double totalReturn) {
+        System.out.println(printChart.REPORT_RATE.getValue() + String.format("%,.1f", totalReturn) + printChart.PRINT_PERCENT.getValue());
     }
 
     public void printErrorMessage(String message) {

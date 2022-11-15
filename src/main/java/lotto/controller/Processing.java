@@ -23,7 +23,7 @@ public class Processing {
 
     }
 
-    private String calculateTotalReturn(List<Integer> ranking, int money) {
+    private double calculateTotalReturn(List<Integer> ranking, int money) {
 
         return calculator.getyield(reward.rewardMoneys(ranking), money);
 
