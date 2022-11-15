@@ -5,6 +5,10 @@ public class InputView {
 
     private InputView(){}
 
+    public void printInputMoney(){
+        System.out.println(InputMessage.MONEY.message());
+    }
+
     public static InputView getInstance(){
         return instance;
     }
