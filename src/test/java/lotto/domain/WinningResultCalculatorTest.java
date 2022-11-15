@@ -31,7 +31,7 @@ class WinningResultCalculatorTest {
     @DisplayName("당첨 금 출력")
     @Test
     void calculatePrizeMoney() {
-        assertThat(winningResultCalculator.calculateReturnRatio(4_000)).isEqualTo(5.225E7);
+        assertThat(winningResultCalculator.generateReturnRatio(4_000,winningStatus)).isEqualTo(5.225E7);
     }
 
     @BeforeEach
@@ -42,7 +42,7 @@ class WinningResultCalculatorTest {
         lottos.add(Lotto.generateFromRawValues(List.of(1, 2, 3, 4, 5, 7)));
         lottos.add(Lotto.generateFromRawValues(List.of(1, 2, 3, 4, 5, 7)));
 
-        winningStatus = winningResultCalculator.createWinningStatus(lottos
+        winningStatus = winningResultCalculator.generateWinningStatus(lottos
                 , winningNumbers.generateFromRawValues(List.of(1, 2, 3, 4, 5, 6), 7));
 
         result = new TreeMap<>();
