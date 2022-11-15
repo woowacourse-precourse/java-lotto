@@ -275,7 +275,7 @@ LottoPlayer
 - [ ] 로또 실행
   - [x] 로또 발권
 
-EarningCalculator
-- [ ] 로또 일치 검사
-  - [ ] 5개 일치일 경우 보너스 검사
-- [ ] 수익률 계산
+EarningRateCalculator
+- [x] 로또 일치 검사
+  - [x] 5개 일치일 경우 보너스 검사
+- [x] 수익률 계산
