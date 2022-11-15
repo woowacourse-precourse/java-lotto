@@ -37,13 +37,30 @@ public class Lotto {
         return 0;
     }
     
-    public List<String> winning(){
+    public List<String> winInput(){
         List<String> results = new ArrayList<>();
         String winningInput = Console.readLine().strip();
         String bonus = Console.readLine().strip();
         results.add(winningInput);
         results.add(bonus);
         return results;
+    }
+    
+    public List<Integer> validateWin(List<String> input) throws IllegalArgumentException{
+        String[] temp = input.get(0).split(",");
+        List<Integer> result = new ArrayList<>();
+        try{
+            for(String i : temp){
+                int tempNum = Integer.valueOf(i);
+                result.add(tempNum);
+            }
+            int tempN = Integer.valueOf(input.get(1));
+            result.add(tempN);
+            return result;
+        }
+        catch(Exception e){
+            throw e;
+        }
     }
     
     public List<Integer> gen(){
