@@ -43,7 +43,7 @@ class LottoCalculatorTest {
         lottoCalculator.calculateResult(lottos, winningLotto, bonusNumber);
         double profitRate = lottoCalculator.calculateProfitRate(amount);
 
-        Assertions.assertThat(profitRate).isEqualTo(200.0f);
+        Assertions.assertThat(profitRate).isEqualTo(200.0D);
     }
 
     @Test
