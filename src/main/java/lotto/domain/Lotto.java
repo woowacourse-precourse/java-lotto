@@ -44,7 +44,10 @@ public class Lotto {
     }
 
     public static List<Integer> generateLottoTicket() {
-        List<Integer> lottoTicket = Randoms.pickUniqueNumbersInRange(LOTTO_MIN_NUMBER, LOTTO_MAX_NUMBER, LOTTO_SIZE);
+        return sortedLottoTicket(Randoms.pickUniqueNumbersInRange(LOTTO_MIN_NUMBER, LOTTO_MAX_NUMBER, LOTTO_SIZE));
+    }
+
+    public static List<Integer> sortedLottoTicket(List<Integer> lottoTicket) {
         return lottoTicket.stream().sorted().collect(Collectors.toList());
     }
 

@@ -15,7 +15,7 @@ public class LottoNumber {
     public void validate(List<Integer> winningNumber, int bonusNumber) {
         if (isDuplicate(winningNumber, bonusNumber)) {
             throw new IllegalArgumentException("[ERROR] 입력한 당첨 번호와 보너스 숫자가 중복입니다.");
-        } else if (isNumberRange(bonusNumber)) {
+        } else if (!isNumberRange(bonusNumber)) {
             throw new IllegalArgumentException("[ERROR] 입력한 당첨 번호의 숫자가 1-45 사이가 아닙니다.");
         }
     }
@@ -25,7 +25,7 @@ public class LottoNumber {
     }
 
     private Boolean isNumberRange(int bonusNumber) {
-        return number >= LOTTO_MIN_NUMBER && number <= LOTTO_MAX_NUMBER;
+        return bonusNumber >= LOTTO_MIN_NUMBER && bonusNumber <= LOTTO_MAX_NUMBER;
     }
 
     public Integer getLottoNumber() {
