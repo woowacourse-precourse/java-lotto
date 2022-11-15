@@ -16,6 +16,7 @@ public class OutputView {
     }
 
     public static void printAmount(int amount) {
+        System.out.println();
         System.out.printf("%d개를 구매했습니다.\n", amount);
     }
 
@@ -54,5 +55,9 @@ public class OutputView {
         }
         String yield = String.format("%.1f", (double) sum / (double) (amount * 1000) * 100.0);
         System.out.println("총 수익률은 " + yield + "%입니다.");
+    }
+
+    public static void askMoney() {
+        System.out.println("구입금액을 입력해 주세요.");
     }
 }

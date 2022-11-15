@@ -5,19 +5,16 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import lotto.Domain.Lotto;
 import lotto.Validator.LottoValidator;
-import lotto.Validator.MoneyValidator;
 
 public class InputView {
-    public static int getAmount() {
-        System.out.println("구입금액을 입력해 주세요.");
 
-        return getMoney(Console.readLine());
+    public static String getInput() {
+        String input = Console.readLine();
+        return input;
     }
 
-    public static int getMoney(String input) {
-        MoneyValidator.validateMoney(input);
+    public static int calculateAmount(String input) {
         int money = Integer.parseInt(input);
-        System.out.println();
 
         return money / 1000;
     }

@@ -1,10 +1,12 @@
 package lotto.Validator;
 
 public class MoneyValidator {
-    public static void validateMoney(String input) {
+    public static int validateMoney(String input) {
         isNumber(input);
         isMultiplesOf1000(input);
         isOverThan1000(input);
+
+        return Integer.parseInt(input);
     }
 
     public static void isNumber(String input) {
