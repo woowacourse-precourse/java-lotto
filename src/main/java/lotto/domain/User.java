@@ -8,7 +8,7 @@ import java.util.List;
 
 public class User {
 
-    private List<Integer> winningNumber = new ArrayList<>();
+    private List<Integer> winningNumber;
     private Integer bonusNumber;
     Validate validate = new Validate();
 
@@ -20,11 +20,10 @@ public class User {
         List<String> numbers = List.of(input.split(","));
 
         validate.validateLottoNum(numbers);
-
+        winningNumber = new ArrayList<>();
         for (String num : numbers) {
             winningNumber.add(Integer.parseInt(num));
         }
-
     }
 
     public List<Integer> getWinningNumber() {
