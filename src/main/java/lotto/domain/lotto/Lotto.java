@@ -57,8 +57,7 @@ public class Lotto {
                                                     ,String bonus_number,JackpotResult jr){
         List<String> jackpot_number_list= Arrays.asList(jackpot_number.split(","));
         List<Integer> lotto_list = lotto.numbers;
-        Collections.sort(jackpot_number_list);
-        Collections.sort(lotto_list);
+
         for (String jackpot : jackpot_number_list) {
             compare_jackpot_number(Integer.parseInt(jackpot), lotto_list,jr);
         }

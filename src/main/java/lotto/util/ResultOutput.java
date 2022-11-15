@@ -1,7 +1,7 @@
 package lotto.util;
 
 import lotto.domain.prize.PrizeResult;
-import lotto.rate.Rate;
+import lotto.domain.rate.Rate;
 
 import java.util.HashMap;
 
