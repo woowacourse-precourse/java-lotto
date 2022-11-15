@@ -3,6 +3,8 @@ package lotto.domain;
 import lotto.exception.LottoException;
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -23,5 +25,31 @@ class UserTest {
 
         user.inputPurchaseAmount(good);
         assertThat(Integer.parseInt(good)).isEqualTo(user.getPurchaseAmount());
+    }
+
+    @Test
+    void 복권개수_계산(){
+        User user = new User();
+        String good = "3000";
+        user.inputPurchaseAmount(good);
+
+        user.setLotteryCount();
+
+        assertThat(3).isEqualTo(user.getLotteryCount());
+    }
+
+    @Test
+    void 사용자_복권_생성(){
+        User user = new User();
+        String good = "3000";
+        user.inputPurchaseAmount(good);
+        user.setLotteryCount();
+
+        user.lotteryNumberGenerator();
+
+        List<Lotto> lotteryNumbers = user.getLotteryNumbers();
+        for(int i=0; i<user.getLotteryCount(); i++){
+            System.out.println(lotteryNumbers.get(i).getNumbers());
+        }
     }
 }
