@@ -8,8 +8,8 @@ import java.util.Map;
 import lotto.type.Prize;
 
 public class PrizeDto {
-    private List<Prize> prizes;
-    private Double yield;
+    private final List<Prize> prizes;
+    private final Double yield;
 
     public PrizeDto(List<Prize> prizes, Double yield) {
         this.prizes = prizes;
