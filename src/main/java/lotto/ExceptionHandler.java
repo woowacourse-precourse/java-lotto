@@ -21,5 +21,8 @@ public class ExceptionHandler extends IllegalArgumentException{
         if (options.equals("Nospace")) {
             throw new IllegalArgumentException("[ERROR] 띄어쓰기는 불가합니다.");
         }
+        if (options.equals("onlyNumber")) {
+            throw new IllegalArgumentException("[ERROR] 숫자 이외의 글자는 들어갈 수 없습니다.");
+        }
     }
 }
