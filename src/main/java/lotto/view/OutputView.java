@@ -1,30 +1,30 @@
 package lotto.view;
 
+import lotto.domain.Lotto;
+
 import java.text.DecimalFormat;
 import java.util.List;
 
 public class OutputView {
-    private static final String BOUGHT_LOTTO_COUNT = "%d개를 구매했습니다.";
-    private static final String LOTTO_WIN_RESULT = "%d개 일치%s (%s원) - %d개";
-    private static final String BONUS_WIN = ", 보너스 볼 일치";
-    private static final String RATE_OF_RETURN = "총 수익률은 %.1f%%입니다.";
-    private static final String RESULT_HEADER = "\n당첨 통계\n---";
-    private static final String EMPTY_STRING = "";
-    private static final DecimalFormat MONEY_FORMAT = new DecimalFormat("###,###");
-
-    private OutputView() {
-    }
-    public static void printIssuedLotto(List<List<Integer>> lottos) {
-        printLottoCnt(lottos.size());
-        printLottos(lottos);
+    public void print_LottoCnt(int lottoCnt) {
+        System.out.println(lottoCnt + "개를 구매했습니다.");
     }
 
-    private static void printLottoCnt(int cnt) {
-        System.out.printf("\n" + BOUGHT_LOTTO_COUNT + "\n", cnt);
+    public static void print_RandomLottoNumbers(List<Lotto> allLottoNumber) {
+        for (Lotto eachLotto : allLottoNumber) {
+            System.out.println(eachLotto.getNumbers().toString());
+        }
     }
 
-    private static void printLottos(List<List<Integer>> lottos) {
-        lottos.forEach(System.out::println);
+    public static void print_winningStats(int[] win_stats) {
+        System.out.printf("3개 일치 (5,000원) - %d개\n", win_stats[0]);
+        System.out.printf("4개 일치 (50,000원) - %d개\n", win_stats[1]);
+        System.out.printf("5개 일치 (1,500,000원) - %d개\n", win_stats[2]);
+        System.out.printf("5개 일치, 보너스 볼 일치 (30,000,000원) - %d개\n", win_stats[3]);
+        System.out.printf("6개 일치 (2,000,000,000원) - %d개\n", win_stats[4]);
     }
 
+    public static void print_yield(String yield) {
+        System.out.printf("총 수익률은 %s입니다.", yield);
+    }
 }
