@@ -39,4 +39,12 @@ public class WinningTicket {
 
         return lottoNumbers;
     }
+
+    void validateIsNum(String[] splitInput) {
+        for (String number : splitInput) {
+            if (!User.isNum(number)) {
+                throw new IllegalArgumentException("[ERROR] 숫자만 입력하세요");
+            }
+        }
+    }
 }
