@@ -23,4 +23,33 @@ public class BuyLotto {
       Lottos.add(numbers);
     }
   }
+
+  void matchLottos(){
+    for(int i=0; i<LottoCount; i++){
+
+    }
+  }
+
+  void matchLotto(List<Integer> Lotto){
+    int match_count_3 = 0;
+    int match_count_4 = 0;
+    int match_count_5 = 0;
+    int match_count_bonus = 0;
+    int match_count_6 = 0;
+    for(int i=0; i<6; i++){
+      int match_count = 0;
+      if(LottoNumber.Lottonumber.contains(Lottos.get(i))){
+        match_count++;
+      }
+      if(match_count == 3) match_count_3++;
+      else if(match_count == 4) match_count_4++;
+      else if(match_count == 5 ) match_count_5++;
+
+    }
+    System.out.println(String.format("3개 일치 (5,000원) - %d개", match_count_3));
+    System.out.println("4개 일치 (5,000원) - %d개");
+    System.out.println("5개 일치 (5,000원) - %d개");
+    System.out.println("5개 일치, 보너스 볼 일치 (5,000원) - %d개");
+    System.out.println("3개 일치 (5,000원) - %d개");
+  }
 }

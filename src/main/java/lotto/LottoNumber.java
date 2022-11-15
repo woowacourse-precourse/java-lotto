@@ -5,7 +5,7 @@ import java.util.List;
 
 public class LottoNumber {
 
-  private List<Integer> Lottonumber;
+  public static List<Integer> Lottonumber;
 
   LottoNumber(){
     String[] numbers = Console.readLine().split(",");
