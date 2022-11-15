@@ -56,4 +56,15 @@ public class CompareNumber {
         }
         return false;
     }
+
+    public float calculationYield(String inputMoney){
+        int money = Integer.parseInt(inputMoney);
+        float sum = 0;
+        for(int i=0; i<lottoResult.size(); i++){
+            Rank rank = Rank.valueOf(i);
+            sum += rank.getPrize() * lottoResult.get(i);
+        }
+        return (sum/money) * 100;
+    }
+
 }
