@@ -1,18 +1,19 @@
 package lotto;
 
 public enum LotteryWin {
-    FIRST_GRADE("2,000,000,000"),
-    SECOND_GRADE("30,000,000"),
-    THIRD_GRADE("1,500,000"),
-    FOURTH_GRADE("50,000"),
-    FIFTH_GRADE("5,000");
+    FIRST_GRADE(2000000000),
+    SECOND_GRADE(30000000),
+    THIRD_GRADE(1500000),
+    FOURTH_GRADE(50000),
+    FIFTH_GRADE(5000),
+    NOTHING(0);
 
-    private String lotteryWinMoney;
+    private int lotteryWinMoney;
 
-    private LotteryWin(String lotteryWinMoney) {
+    private LotteryWin(int lotteryWinMoney) {
         this.lotteryWinMoney = lotteryWinMoney;
     }
-    public String getLotteryWinMoney() {
+    public int getLotteryWinMoney() {
         return lotteryWinMoney;
     }
 }
