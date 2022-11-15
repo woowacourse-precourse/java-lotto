@@ -20,10 +20,10 @@ class ValidatorTest {
                 getTrueCondition()
         );
         // when
-        Integer notPassConditionIndex = validator.getNotPassConditionIndex(conditions, "");
+        Condition notPassCondition = validator.getNotPassCondition(conditions, "");
 
         // then
-        assertThat(notPassConditionIndex).isEqualTo(-1);
+        assertThat(notPassCondition).isNull();
     }
 
     @Test
@@ -34,10 +34,10 @@ class ValidatorTest {
                 getFalseCondition()
         );
         // when
-        Integer notPassConditionIndex = validator.getNotPassConditionIndex(conditions, "");
+        Condition notPassCondition = validator.getNotPassCondition(conditions, "");
 
         // then
-        assertThat(notPassConditionIndex).isEqualTo(1);
+        assertThat(notPassCondition).isNotNull();
     }
 
     private Condition getTrueCondition() {

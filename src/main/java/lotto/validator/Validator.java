@@ -14,14 +14,13 @@ public class Validator {
         return instance;
     }
 
-    public Integer getNotPassConditionIndex(List<Condition> conditions, String input) {
-        for (int index = 0; index < conditions.size(); index++) {
-            Condition condition = conditions.get(index);
+    public Condition getNotPassCondition(List<Condition> conditions, String input) {
+        for (Condition condition : conditions) {
             if (!condition.isSatisfied(input)) {
-                return index;
+                return condition;
             }
         }
 
-        return -1;
+        return null;
     }
 }

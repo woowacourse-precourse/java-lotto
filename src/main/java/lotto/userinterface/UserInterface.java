@@ -25,10 +25,9 @@ public class UserInterface {
         String input = getInput();
         List<Condition> conditions = ConditionGenerator.getLottoNumberCondition();
 
-        Integer notPassConditionIndex = validator.getNotPassConditionIndex(conditions, input);
+        Condition notPassCondition = validator.getNotPassCondition(conditions, input);
 
-        if (notPassConditionIndex != -1) {
-            Condition notPassCondition = conditions.get(notPassConditionIndex);
+        if (notPassCondition != null) {
             throw new IllegalArgumentException(ErrorMessageGenerator.getErrorMessage(notPassCondition));
         }
 
@@ -40,10 +39,9 @@ public class UserInterface {
         String input = getInput();
         List<Condition> conditions = ConditionGenerator.getMoneyCondition();
 
-        Integer notPassConditionIndex = validator.getNotPassConditionIndex(conditions, input);
+        Condition notPassCondition = validator.getNotPassCondition(conditions, input);
 
-        if (notPassConditionIndex != -1) {
-            Condition notPassCondition = conditions.get(notPassConditionIndex);
+        if (notPassCondition != null) {
             throw new IllegalArgumentException(ErrorMessageGenerator.getErrorMessage(notPassCondition));
         }
 
@@ -69,10 +67,9 @@ public class UserInterface {
 
         String numbers = getConcatenatedString(answerNumbers, input);
 
-        Integer notPassConditionIndex = validator.getNotPassConditionIndex(conditions, numbers);
+        Condition notPassCondition = validator.getNotPassCondition(conditions, input);
 
-        if (notPassConditionIndex != -1) {
-            Condition notPassCondition = conditions.get(notPassConditionIndex);
+        if (notPassCondition != null) {
             throw new IllegalArgumentException(ErrorMessageGenerator.getErrorMessage(notPassCondition));
         }
 
