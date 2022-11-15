@@ -4,6 +4,8 @@ import static lotto.validator.ErrorMessage.DIVISIBLE_WITH_THOUSAND;
 import static lotto.validator.ErrorMessage.NOT_ENOUGH_MONEY;
 import static lotto.validator.ErrorMessage.INVALID_FORMAT;
 
+import java.util.NoSuchElementException;
+
 
 public class InputValidationUtils {
 
@@ -44,8 +46,7 @@ public class InputValidationUtils {
     public static void validateFormat(final String input) {
         if (!isNumber(input)) {
             System.out.println(INVALID_FORMAT.message());
-            throw new IllegalArgumentException(
-                INVALID_FORMAT.message());
+            throw new NoSuchElementException();
         }
     }
 
