@@ -7,7 +7,6 @@ import lotto.view.OutputView;
 
 
 public class UserLottoBuyingService {
-
     UserInputLottoInfoException userInputLottoInfoException = new UserInputLottoInfoException();
     InputView inputView = new InputView();
     OutputView outputView = new OutputView();
@@ -17,5 +16,11 @@ public class UserLottoBuyingService {
         String buyingPrice = inputView.inputUserLottoBuyingPrice();
         checkThisBuyingPriceIsValid(buyingPrice);
         return Long.parseLong(buyingPrice);
+    }
+    public void checkThisBuyingPriceIsValid(String buyingPrice) {
+        userInputLottoInfoException.checkInputIsEmpty(buyingPrice, "입력이 null 입니다. 금액을 입력해주세요");
+        userInputLottoInfoException.verifyExistBlank(buyingPrice, "금액 입력 값으로 공백이 있습니다.");
+        userInputLottoInfoException.isInputValueOnlyNumber(buyingPrice,"금액 입력 값으로는 숫자만 가능합니다.");
+        userInputLottoInfoException.isDividedByThousand(buyingPrice, "입력 금액의 최소 단위는 천원입니다.");
     }
 }
