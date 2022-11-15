@@ -2,6 +2,8 @@ package lotto.ui;
 
 import lotto.machine.Lotto;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class UI {
@@ -19,7 +21,9 @@ public class UI {
 
     public static void lotto(List<Lotto> lotto) {
         for(int index = 0; index<lotto.size(); index++){
-            System.out.println(lotto.get(index).get_value());
+            List<Integer> numbers = new ArrayList<>(lotto.get(index).get_value());
+            Collections.sort(numbers);
+            System.out.println(numbers);
         }
         System.out.println();
     }
@@ -29,6 +33,7 @@ public class UI {
     }
 
     public static void Winning_number(List<Integer> Winning_numbers) {
+        Collections.sort(Winning_numbers);
         System.out.println(Winning_numbers+"\n");
     }
 
