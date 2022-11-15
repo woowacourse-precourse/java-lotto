@@ -1,17 +1,23 @@
 package lotto.game.domain;
 
+import java.util.Arrays;
+
 public enum LottoGrade {
-    FIRST(Money.of(2_000_000_000L)),
-    SECOND(Money.of(30_000_000L)),
-    THIRD(Money.of(1_500_000L)),
-    FOURTH(Money.of(50_000L)),
-    FIFTH(Money.of(5_000L)),
-    NOTHING(Money.ZERO);
+    FIRST(Money.of(2_000_000_000L), 6, false),
+    SECOND(Money.of(30_000_000L), 5, true),
+    THIRD(Money.of(1_500_000L), 5, false),
+    FOURTH(Money.of(50_000L), 4, false),
+    FIFTH(Money.of(5_000L), 3, false),
+    NOTHING(Money.ZERO, 0, false);
 
     private final Money prize;
+    private final int matchCount;
+    private final boolean isBonus;
 
-    LottoGrade(Money money) {
+    LottoGrade(Money money, int matchCount, boolean isBonus) {
         this.prize = money;
+        this.matchCount = matchCount;
+        this.isBonus = isBonus;
     }
 
     public Money getPrize() {
@@ -19,14 +25,13 @@ public enum LottoGrade {
     }
 
     public static LottoGrade confirmWinning(int winningCount, boolean bonusMatch) {
-        if (winningCount == 6) return FIRST;
-        if (bonusMatch) {
-            winningCount++;
+        if (bonusMatch && winningCount == 5) {
+            return SECOND;
         }
-        if (winningCount == 6) return SECOND;
-        if (winningCount == 5) return THIRD;
-        if (winningCount == 4) return FOURTH;
-        if (winningCount == 3) return FIFTH;
-        return NOTHING;
+        return Arrays.stream(values())
+                .filter(grade -> !grade.isBonus)
+                .filter(grade -> grade.matchCount == winningCount)
+                .findAny()
+                .orElse(NOTHING);
     }
 }

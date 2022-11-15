@@ -48,7 +48,7 @@ class LottoServiceTest {
     }
 
     @Test
-    @DisplayName("로또 번호가 3개 같고 보너스 번호가 맞으면 4등이어야 한다")
+    @DisplayName("로또 번호가 3개 같고 보너스 번호가 맞으면 5등이어야 한다")
     void winningConfirmBy3NumberMatchAndBonusMatch() {
         // given
         WinningLotto winningLotto = WinningLotto.of("1,2,3,4,5,6", "7");
@@ -56,7 +56,7 @@ class LottoServiceTest {
 
         // expect
         assertThat(lottoService.confirmWinning(winningLotto, lotto))
-                .isEqualTo(LottoGrade.FOURTH);
+                .isEqualTo(LottoGrade.FIFTH);
     }
 
     @Test

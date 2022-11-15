@@ -55,7 +55,7 @@ class LottoGradeTest {
     }
 
     @Test
-    @DisplayName("당첨 번호가 4개이고 보너스 번호가 맞으면 3등을 반환한다.")
+    @DisplayName("당첨 번호가 4개이고 보너스 번호가 맞으면 4등을 반환한다.")
     void createLottoGradeByWinningCount4AndBonusMatch() {
         // given
         int winningCount = 4;
@@ -63,7 +63,7 @@ class LottoGradeTest {
 
         // expect
         assertThat(LottoGrade.confirmWinning(winningCount, bonusMatch))
-                .isEqualTo(LottoGrade.THIRD);
+                .isEqualTo(LottoGrade.FOURTH);
     }
 
     @Test
@@ -79,7 +79,7 @@ class LottoGradeTest {
     }
 
     @Test
-    @DisplayName("당첨 번호가 3개이고 보너스 번호가 맞으면 4등을 반환한다.")
+    @DisplayName("당첨 번호가 3개이고 보너스 번호가 맞으면 5등을 반환한다.")
     void createLottoGradeByWinningCount3AndBonusMatch() {
         // given
         int winningCount = 3;
@@ -87,7 +87,7 @@ class LottoGradeTest {
 
         // expect
         assertThat(LottoGrade.confirmWinning(winningCount, bonusMatch))
-                .isEqualTo(LottoGrade.FOURTH);
+                .isEqualTo(LottoGrade.FIFTH);
     }
 
     @Test
@@ -103,7 +103,7 @@ class LottoGradeTest {
     }
 
     @Test
-    @DisplayName("당첨 번호가 2개이고 보너스 번호가 맞으면 5등을 반환한다.")
+    @DisplayName("당첨 번호가 2개이고 보너스 번호가 맞으면 낫싱을 반환한다.")
     void createLottoGradeByWinningCount2AndBonusMatch() {
         // given
         int winningCount = 2;
@@ -111,6 +111,6 @@ class LottoGradeTest {
 
         // expect
         assertThat(LottoGrade.confirmWinning(winningCount, bonusMatch))
-                .isEqualTo(LottoGrade.FIFTH);
+                .isEqualTo(LottoGrade.NOTHING);
     }
 }
