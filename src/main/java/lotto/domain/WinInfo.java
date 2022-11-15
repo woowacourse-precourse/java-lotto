@@ -1,25 +1,50 @@
 package lotto.domain;
 
 public enum WinInfo {
-    FIFTH(3, "5,000"),
-    FOURTH(4, "50,000"),
-    THIRD(5, "1,500,000"),
-    SECOND(5, "30,000,000"),
-    FIRST(6, "2,000,000,000");
+    NONE(0, ""),
+    FIFTH(5000, "3개 일치 (%,d원) - %d개"),
+    FOURTH(50000, "4개 일치 (%,d원) - %d개"),
+    THIRD(1500000, "5개 일치 (%,d원) - %d개"),
+    SECOND(30000000, "5개 일치, 보너스 볼 일치 (%,d원) - %d개"),
+    FIRST(2000000000, "6개 일치 (%,d원) - %d개");
 
-    private final int match;
-    private final String winnings;
+    private final int reward;
+    private final String format;
 
-    WinInfo(int match, String winnings) {
-        this.match = match;
-        this.winnings = winnings;
+    WinInfo(int reward, String format) {
+        this.reward = reward;
+        this.format = format;
     }
 
-    public int getMatch() {
-        return this.match;
+    public static WinInfo convert(int count, boolean bonus) {
+        if (count == 6) {
+            return FIRST;
+        }
+
+        if (count == 5 && bonus) {
+            return SECOND;
+        }
+
+        if (count == 5) {
+            return THIRD;
+        }
+
+        if (count == 4) {
+            return FOURTH;
+        }
+
+        if (count == 3) {
+            return FIFTH;
+        }
+
+        return NONE;
     }
 
-    public String getWinnings() {
-        return this.winnings;
+    public int getReward() {
+        return reward;
+    }
+
+    public String getFormat() {
+        return format;
     }
 }
