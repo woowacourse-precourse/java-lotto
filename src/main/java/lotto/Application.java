@@ -7,7 +7,8 @@ import java.util.List;
 
 public class Application {
     public static void main(String[] args) {
-        int money = askMoney();
+        System.out.println("구입금액을 입력해 주세요.");
+        int money = Buy.isRightNumber(Console.readLine());
         int count = Buy.buyLotto(money);
 
         System.out.println(count+"개를 구매했습니다.");
@@ -30,11 +31,6 @@ public class Application {
         printResults(forPrint, money);
 
 
-    }
-
-    public static int askMoney() {
-        System.out.println("구입금액을 입력해 주세요.");
-        return Buy.isRightNumber(Console.readLine());
     }
 
     public static Lotto askWinLotto() {
@@ -68,7 +64,7 @@ public class Application {
 
         if (winNum.contains(bonus)) {
             System.out.println("[ERROR] 로또 숫자가 중복됩니다.");
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR] 로또 숫자가 중복됩니다.");
         }
 
         if (bonus < 1 || bonus > 45) {
