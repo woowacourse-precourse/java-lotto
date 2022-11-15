@@ -11,11 +11,7 @@ public class PrizeNumber {
     private final int bonusNumber;
 
     public PrizeNumber(List<Integer> numbers, int bonusNumber) {
-        validate(numbers);
-        duplicate(numbers);
-        numbersRangeValidate(numbers);
-        bonusNumberRangeValidate(bonusNumber);
-        duplicateBonusNumber(numbers, bonusNumber);
+        validate(numbers, bonusNumber);
         this.numbers = numbers;
         this.bonusNumber = bonusNumber;
     }
@@ -28,16 +24,32 @@ public class PrizeNumber {
         return bonusNumber;
     }
 
-    private void validate(List<Integer> numbers) {
-        if (numbers.size() != LOTTO_NUMBERS_COUNT) {
+    private void validate(List<Integer> numbers, int bonusNumber) {
+        sizeValidate(numbers);
+        duplicateValidate(numbers);
+        numbersRangeValidate(numbers);
+        bonusNumberRangeValidate(bonusNumber);
+        duplicateBonusNumber(numbers, bonusNumber);
+    }
+
+    private void sizeValidate(List<Integer> numbers) {
+        if (!isSizeEq(numbers)) {
             throw new IllegalArgumentException(SIZE_EXCEPTION);
         }
     }
 
-    private void duplicate(List<Integer> numbers) {
-        if (numbers.size() != numbers.stream().distinct().count()) {
+    private boolean isSizeEq(List<Integer> numbers) {
+        return numbers.size() != LOTTO_NUMBERS_COUNT;
+    }
+
+    private void duplicateValidate(List<Integer> numbers) {
+        if (isDuplicateExist(numbers)) {
             throw new IllegalArgumentException(DUPLICATE_EXCEPTION);
         }
+    }
+
+    private boolean isDuplicateExist(List<Integer> numbers) {
+        return numbers.size() != numbers.stream().distinct().count();
     }
 
     private void numbersRangeValidate(List<Integer> numbers) {
