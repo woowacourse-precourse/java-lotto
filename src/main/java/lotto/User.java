@@ -20,5 +20,7 @@ public class User {
 
     public void textTicketcount() {
         System.out.printf(countTicket()+"개를 구매했습니다.");
+        System.out.println();
     }
+
 }
