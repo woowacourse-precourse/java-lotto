@@ -17,6 +17,18 @@ public class Lotto {
         validate(number);
         numbers.add(number);
     }
+    public int compareWithRandomNumbers(List<Integer> randomNumbers){
+        int sucess=0;
+        for(int i=0;i<numbers.size()-1;i++){
+            if(randomNumbers.contains(numbers.get(i)))sucess++;
+        }
+        if(sucess==6)return 1;
+        if(sucess==5&&randomNumbers.contains(numbers.get(6)))return 2;
+        if(sucess==5)return 3;
+        if(sucess==4)return 4;
+        if(sucess==3)return 5;
+        return 0;
+    }
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException(exceptionHeader+wrongNumberSize);

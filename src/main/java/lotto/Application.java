@@ -7,10 +7,59 @@ import java.util.*;
 import java.util.regex.Pattern;
 
 import static lotto.collectionPrintout.*;
+enum Rate {
+    FIVE(5, "3개 일치 (5,000원)") {
+        int calculate(int num) {
+            return num * 5000;
+        }
+    },
+    FOUR(4, "4개 일치 (50,000원)") {
+        //"4개 일치 (50,000원)"),
+        int calculate(int num) {
+            return num * 50000;
+        }
+    },
+    THREE(3, "5개 일치 (1,500,000원)") {
+        //"5개 일치 (1,500,000원)"),
+        int calculate(int num) {
+            return num * 1500000;
+        }
+    },
+    TWO(2, "5개 일치, 보너스 볼 일치 (30,000,000원)") {
+        //"),
+        int calculate(int num) {
+            return num * 30000000;
+        }
+    },
+    ONE(1, "6개 일치 (2,000,000,000원)") {
+        //,
+        int calculate(int num) {
+            return num * 2000000000;
+        }
+    };
 
+    private final int rate;
+    private final String str;
+
+    Rate(int num, String str) {
+        this.rate = num;
+        this.str = str;
+    }
+
+    public int getRate() {
+        return rate;
+    }
+
+    public String getStr() {
+        return str;
+    }
+
+    abstract int calculate(int num);
+}
 public class Application {
-
     static int lottoNumber;
+    static int inputMoney;
+    static int[] stats = {0, 0, 0, 0, 0, 0};
     static List<List<Integer>> randomNumbers=new ArrayList<>();
 
     public static void getMoney(){
@@ -22,14 +71,38 @@ public class Application {
             throw new IllegalArgumentException(exceptionHeader+notInteger);
         }
 
-        int inputMoney = Integer.parseInt(inputStr);
+        inputMoney = Integer.parseInt(inputStr);
         if(inputMoney%1000!=0){
             throw new IllegalArgumentException(exceptionHeader+wrongUnit);
         }
 
         lottoNumber=inputMoney/1000;
-        System.out.print(lottoNumber+inputMoneyPrint);
+        System.out.println(lineBreak+lottoNumber+inputMoneyPrint);
     }
+    public static void makeRandomNumbers() {
+        for (int lotto=0;lotto<lottoNumber;lotto++) {
+            List<Integer> pickNumbers = Randoms.pickUniqueNumbersInRange(1, 45, 7);
+            Collections.sort(pickNumbers);
+            randomNumbers.add(pickNumbers);
+            printOut(lotto);
+        }
+    }
+
+    public static void getWinningNumbers(){
+        System.out.println(lineBreak+winningNumbersStr);
+        Lotto lotto=new Lotto(stringToListInteger(Console.readLine()));
+        System.out.println(lineBreak+bonusNumbersStr);
+        lotto.addBonusNumber(Integer.parseInt(Console.readLine()));
+
+        statsCalculate(lotto);
+    }
+
+    public static void statsCalculate(Lotto lotto) {
+        for (int i = 0; i < randomNumbers.size(); i++) {
+            stats[lotto.compareWithRandomNumbers(randomNumbers.get(i))]++;
+        }
+    }
+
     public static void printOut(int num) {
         List<Integer> numbers=randomNumbers.get(num);
 
@@ -40,20 +113,6 @@ public class Application {
         System.out.print(numbers.get(6));
         System.out.println("]");
     }
-    public static void makeRandomNumbers() {
-        for (int lotto=0;lotto<lottoNumber;lotto++) {
-            List<Integer> pickNumbers = Randoms.pickUniqueNumbersInRange(1, 45, 7);
-            Collections.sort(pickNumbers);
-            randomNumbers.add(pickNumbers);
-            printOut(lotto);
-        }
-    }
-    public static void getWinningNumbers(){
-        System.out.println(winningNumbersStr);
-        Lotto lotto=new Lotto(stringToListInteger(Console.readLine()));
-        System.out.println(bonusNumbersStr);
-        lotto.addBonusNumber(Integer.parseInt(Console.readLine()));
-    }
     public static List<Integer> stringToListInteger(String str) {
         String[] strArray = str.split(",");
         List<Integer> list=new ArrayList<>();
@@ -63,11 +122,14 @@ public class Application {
         }
         return list;
     }
+
+
     public static void main(String[] args) {
 
         getMoney();
         makeRandomNumbers();
         getWinningNumbers();
+        printOutResult();
 
     }
 }
