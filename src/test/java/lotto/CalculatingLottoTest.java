@@ -72,5 +72,8 @@ class CalculatingLottoTest {
     @Test
     void countRankTest() {
         assertThat(calculatingLotto.countRank(List.of(1,2,3,4,5,0,0))).isEqualTo(List.of(1,1,1,1,1));
+        assertThat(calculatingLotto.countRank(List.of(1,0,0,0,0))).isEqualTo(List.of(1,0,0,0,0));
+        assertThat(calculatingLotto.countRank(List.of(1,0,0,5,0))).isEqualTo(List.of(1,0,0,0,1));
+        assertThat(calculatingLotto.countRank(List.of(0,0,0,0,0,0))).isEqualTo(List.of(0,0,0,0,0));
     }
 }
