@@ -12,7 +12,6 @@ import domain.userLotto.UserLotto;
 import domain.userLotto.UserLottoController;
 
 public class GameView {
-
     private final MoneyController moneyController = new MoneyController();
     private final UserLottoController userLottoController = new UserLottoController();
     private final LottoController lottoController = new LottoController();
@@ -20,7 +19,6 @@ public class GameView {
     private final RankInfoController rankInfoController = new RankInfoController();
     private final InputMessage inputMessage = new InputMessage();
     private final OutputMessage outputMessage = new OutputMessage();
-
 
     public void start() {
         Money money = moneyController.createMoney(inputMessage.inputPurchaseAmount());
