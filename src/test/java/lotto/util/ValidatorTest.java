@@ -11,15 +11,12 @@ public class ValidatorTest {
 
     @Nested
     class IsNumber {
-        @DisplayName("주어진 문자열이 숫자가 아닌 경우 예외가 발생한다.")
+        @DisplayName("주어진 문자열이 숫자가 아닌 경우 False를 반환한다.")
         @Test
         void isNumberTest_숫자가아닌경우() {
             String input = "asdfadf1";
 
-            Assertions.assertThatThrownBy(
-                            () -> Validator.isNumber(input)
-                    )
-                    .isInstanceOf(IllegalArgumentException.class);
+            Assertions.assertThat(Validator.isNumber(input)).isFalse();
         }
 
         @DisplayName("주어진 문자열이 숫자인 경우 True를 반환한다.")

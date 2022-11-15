@@ -3,7 +3,6 @@ package lotto.util;
 import java.util.List;
 
 public class Validator {
-    private static final String MONEY_NOT_NUMBER = "[ERROR] 구매 금액은 숫자여야 합니다.";
     public static final int START_NUMBER = 1;
     public static final int END_NUMBER = 45;
     public static final int LOTTO_SIZE = 6;
@@ -15,7 +14,7 @@ public class Validator {
         try {
             int money = Integer.parseInt(input);
         } catch (NumberFormatException numberFormatException) {
-            throw new IllegalArgumentException(MONEY_NOT_NUMBER);
+            return false;
         }
         return true;
     }
