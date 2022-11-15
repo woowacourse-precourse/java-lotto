@@ -16,7 +16,9 @@ public class Lotto {
 
     public List<Integer> getNumbers() {
         List<Integer> copyNumbers = new ArrayList<>();
-        for (int n : numbers) copyNumbers.add(n);
+        for (int n : numbers) {
+            copyNumbers.add(n);
+        }
         return copyNumbers;
     }
 

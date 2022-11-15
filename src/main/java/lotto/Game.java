@@ -23,7 +23,8 @@ public class Game {
     }
 
     public List<Integer> inputNumbers() {
-        System.out.println("\n" + String.format(PURCHASE_RESULT.message(), user.getLotteryCount(), user.getLotteryList()));
+        System.out.println(
+                "\n" + String.format(PURCHASE_RESULT.message(), user.getLotteryCount(), user.getLotteryList()));
         System.out.println(WINNING_NUMBERS.message());
         String numbers = camp.nextstep.edu.missionutils.Console.readLine();
         return checker.checkNumbersInput(numbers);
@@ -52,7 +53,9 @@ public class Game {
 
     public void printResults(User user) {
         List<List<Result>> userResults = user.getResults();
-        for (List<Result> results1 : userResults) System.out.println("!--Test: " + results1);
+        for (List<Result> results1 : userResults) {
+            System.out.println("!--Test: " + results1);
+        }
     }
 
     public void printCoincideResult(User user) {
