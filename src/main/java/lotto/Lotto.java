@@ -1,5 +1,6 @@
 package lotto;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -24,5 +25,21 @@ public class Lotto {
     @Override
     public String toString() {
         return numbers.toString();
+    }
+
+    public List<Integer> calcResult(List<Integer> winningNumbers, int bonusNumber) {
+        List<Integer> result = new ArrayList<>();
+        int hit = 0, bonusHit = 0;
+        for(int num : numbers) {
+            if(winningNumbers.contains(num)) {
+                hit++;
+            }
+            if(num == bonusNumber) {
+                bonusHit++;
+            }
+        }
+        result.add(hit);
+        result.add(bonusHit);
+        return result;
     }
 }

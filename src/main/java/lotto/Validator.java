@@ -1,5 +1,7 @@
 package lotto;
 
+import java.util.List;
+
 public class Validator {
     public static boolean isNumeric(String input) throws IllegalArgumentException {
         try {
@@ -17,5 +19,4 @@ public class Validator {
         }
         return true;
     }
-
 }

@@ -2,7 +2,7 @@
 - [x] 사용자로부터 로또 구입 금액을 입력 받는다. _**- inputAmount()**_
   - [x] 숫자가 아닐 경우 `IllegalArgumentException` 및 `[ERROR]`로 시작하는 에러 메세지 출력 _**- isNumeric()**_
   - [x] 1000원 단위가 아닐 경우 `IllegalArgumentException` 및 `[ERROR]`로 시작하는 에러 메세지 출력 _**- isThousands()**_
-- [ ] 사용자로부터 당첨 번호 6개와 보너스 번호 1개를 입력받는다.
+- [x] 사용자로부터 당첨 번호 6개와 보너스 번호 1개를 입력받는다.
   - [ ] 숫자 중복은 불가능하다.
   - [ ] 숫자 범위가 1 ~ 45가 아닐 경우 `IllegalArgumentException` 및 `[ERROR]`로 시작하는 에러 메세지 출력
 - [x] 구입 금액만큼 로또를 발행 _**- publishLotto()**_
