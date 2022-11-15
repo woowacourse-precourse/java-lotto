@@ -1,3 +1,5 @@
+package lotto;
+
 import controller.LottoController;
 import domain.lotto.LottoRepository;
 import service.LottoService;
