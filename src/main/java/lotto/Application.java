@@ -31,7 +31,8 @@ public class Application {
         gradeList = lotto.saveResult(user.getBoughtLotto());
         lotto.printResult(gradeList);
         totalPrice = lotto.totalPrice(gradeList);
-
+        System.out.println(totalPrice);
+        user.marginRate(lottoCount, totalPrice);
 
     }
 }
