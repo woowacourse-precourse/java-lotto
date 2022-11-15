@@ -24,5 +24,8 @@ public enum Grade {
         return null;
     }
 
+    public int getReward(){
+        return reward;
+    }
 
 }
