@@ -30,4 +30,20 @@ public class UserInput {
         return Integer.parseInt(money)/1000;
     }
 
+    static String userBonus(){
+        return Console.readLine();
+    }
+
+    static void validateBonusNumber(String bonus){
+        if(Integer.parseInt(bonus)<LOTTO_MIN_NUMBER || Integer.parseInt(bonus)>LOTTO_MAX_NUMBER) {
+            throw new IllegalArgumentException(ERROR_NUMBER_MESSAGE);
+        }
+        if(!bonus.matches("[0-9]+")){
+            throw new IllegalArgumentException(ERROR_NUMBER_MESSAGE);
+        }
+    }
+    static int lottoBonusNumber(String bonus){
+        validateBonusNumber(bonus);
+        return Integer.parseInt(bonus);
+    }
 }
