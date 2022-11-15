@@ -25,6 +25,10 @@ public class User {
         }
     }
 
+    public int getPurchaseCount() {
+        return purchaseCount;
+    }
+
     public List<Lotto> getLottos() {
         return lottos;
     }
