@@ -31,10 +31,18 @@ public class Application {
 
         WinningLotto winningLotto = new WinningLotto();
         System.out.println("\n당첨 번호를 입력해 주세요.");
-        winningLotto.receiveWinningNumber();
+        try {
+            winningLotto.receiveWinningNumber();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
 
         System.out.println("\n보너스 번호를 입력해 주세요.");
-        winningLotto.receiveBonusNumber();
+        try {
+            winningLotto.receiveBonusNumber();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
 
         System.out.println("\n당첨 통계\n" +
                 "---");
