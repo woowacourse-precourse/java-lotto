@@ -47,4 +47,12 @@ public class ValidCheck {
             throw new IllegalArgumentException(Error.RANGE_ERROR.getText());
         }
     }
+
+    public static void formatCheckPrice(String InputValue) {
+        InputValue = InputValue.replaceAll(" ", "");
+        String pattern = "\\d+000";
+        if (!InputValue.matches(pattern)) {
+            throw new IllegalArgumentException(Error.PURCHASE_UNIT_ERROR.getText());
+        }
+    }
 }
