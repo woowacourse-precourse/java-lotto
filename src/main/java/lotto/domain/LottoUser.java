@@ -25,6 +25,10 @@ public class LottoUser {
         purchaseRandomLottos(purchaseCost);
     }
 
+    public int getPurchaseCost() {
+        return purchaseCost;
+    }
+
     public List<Lotto> getRandomLottos() {
         return new ArrayList<>(randomLottos);
     }

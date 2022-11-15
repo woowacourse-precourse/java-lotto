@@ -36,6 +36,10 @@ public enum LottoRank {
         this.message = message;
     }
 
+    public long getPrizeMoney() {
+        return prizeMoney;
+    }
+
     public static LottoRank getLottoRank(final Tuple key) {
         final List<Object> keys = key.toList();
         if (is2ndRank(keys)) {

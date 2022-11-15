@@ -31,6 +31,16 @@ public class LottoAnalyzer {
         makeWinningStatus();
     }
 
+    public void showLottoStatistics() {
+        System.out.println("\n당첨 통계");
+        System.out.println("---");
+        winningStatus.forEach((k, v) -> System.out.println(k + " - " + v + "개"));
+
+        final double profitPercent =
+                ((double) calculateWinningPriceSum() / lottoUser.getPurchaseCost()) * 100;
+        System.out.println(String.format("총 수익률은 %.1f", profitPercent) + "%입니다.");
+    }
+
     private void makeWinningStatus() {
         lottoUser.getRandomLottos().stream()
                 .filter(this::winLottoFilter)
@@ -44,5 +54,11 @@ public class LottoAnalyzer {
 
     private boolean winLottoFilter(final Lotto lotto) {
         return lotto.getMatchingNumberCount(winningLotto) >= MIN_MATCHING_NUMBER_TO_WIN;
+    }
+
+    private long calculateWinningPriceSum() {
+        return winningStatus.entrySet().stream()
+                .mapToLong(e -> e.getKey().getPrizeMoney() * e.getValue())
+                .sum();
     }
 }
