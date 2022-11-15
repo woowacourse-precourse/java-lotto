@@ -13,13 +13,13 @@ public enum RankNumber {
         this.number = number;
     }
 
-    public static int getRankNumber(RankNumber rank) {
+    public static int get(RankNumber rank) {
         return rank.number;
     }
 
     public static RankNumber getRank(int sameNumbers) {
         for (RankNumber rank : RankNumber.values()) {
-            if (rank.getRankNumber(rank) == sameNumbers) {
+            if (rank.get(rank) == sameNumbers) {
                 return rank;
             }
         }

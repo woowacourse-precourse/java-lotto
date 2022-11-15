@@ -6,8 +6,11 @@ import enumCollections.Winnings;
 import java.util.EnumMap;
 
 public class Calculator {
+    static final int PERCENTAGE = 100;
+    static final double NUMBER_FOR_DIGIT = 10.0;
+
     public static Double getYield(int payment, EnumMap<RankNumber, Integer> resultStatistics) {
-        return getRoundedYield((getTotalWinnings(resultStatistics) / (double) payment) * 100);
+        return getRoundedYield((getTotalWinnings(resultStatistics) / (double) payment) * PERCENTAGE);
     }
 
     private static int getTotalWinnings(EnumMap<RankNumber, Integer> resultStatistics) {
@@ -19,6 +22,6 @@ public class Calculator {
     }
 
     private static double getRoundedYield(double yield) {
-        return Math.round(yield * 10.0) / 10.0;
+        return Math.round(yield * NUMBER_FOR_DIGIT) / NUMBER_FOR_DIGIT;
     }
 }
