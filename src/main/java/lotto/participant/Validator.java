@@ -1,15 +1,19 @@
 package lotto.participant;
 
+import lotto.domain.constant.ErrorMessage;
+
 import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import static lotto.domain.constant.ErrorMessage.*;
+
 public class Validator {
 
     public void validatePayment(String payment) {
         if (!isPositiveInteger(payment) || !isAvailablePayment(payment))
-            throw new IllegalArgumentException("[ERROR] 구입 금액은 1,000원 단위의 수이어야 합니다.");
+            throw new IllegalArgumentException(PAYMENT_UNIT_SHOULD_BE_1000.getErrorMessage());
     }
 
     private boolean isPositiveInteger(String string) {
@@ -29,7 +33,7 @@ public class Validator {
 
     private void validateFormOfWinningNumbers(String winningNumbers) {
         if (!winningNumbers.matches("[1-9][0-9]*,[1-9][0-9]*,[1-9][0-9]*,[1-9][0-9]*,[1-9][0-9]*,[1-9][0-9]*")) {
-            throw new IllegalArgumentException("[ERROR] 당첨 번호들의 형태가 잘못되었습니다.");
+            throw new IllegalArgumentException(FORM_OF_WINNING_NUMBERS_IS_WRONG.getErrorMessage());
         }
     }
 
@@ -38,7 +42,7 @@ public class Validator {
                 .filter(number -> 1 <= number && number <= 45)
                 .collect(Collectors.toSet());
         if (collection.size() != 6) {
-            throw new IllegalArgumentException("[ERROR] 당첨 번호들의 값이 잘못되었습니다.");
+            throw new IllegalArgumentException(VALUES_OF_WINNING_NUMBERS_ARE_WRONG.getErrorMessage());
         }
     }
 
@@ -49,13 +53,13 @@ public class Validator {
 
     private void validateFormOfBonusNumber(String bonusNumber) {
         if (!bonusNumber.matches("[1-9][0-9]*") || !(Integer.parseInt(bonusNumber) <= 45)) {
-            throw new IllegalArgumentException("[ERROR] 보너스 번호 입력이 잘못되었습니다.");
+            throw new IllegalArgumentException(FORM_OF_BONUS_NUMBER_IS_WRONG.getErrorMessage());
         }
     }
 
     private void validateDuplicationOfBonusNumber(int bonusNumber, List<Integer> winningNumbers) {
         if (winningNumbers.contains(bonusNumber)) {
-            throw new IllegalArgumentException("[ERROR] 보너스 번호가 당첨 번호와 중복되었습니다.");
+            throw new IllegalArgumentException(BONUS_NUMBER_AND_WINNING_NUMBER_IS_DUPLICATED.getErrorMessage());
         }
     }
 }

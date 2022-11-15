@@ -5,6 +5,9 @@ import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
 
+import static lotto.domain.constant.ErrorMessage.LENGTH_OF_LOTTO_NUMBERS_SHOULD_BE_SIX;
+import static lotto.domain.constant.ErrorMessage.LOTTO_NUMBERS_SHOULD_BE_UNIQUE;
+
 public class Lotto {
 
     private final List<Integer> numbers;
@@ -21,13 +24,13 @@ public class Lotto {
 
     private void validateSize(List<Integer> numbers) {
         if (numbers.size() != 6) {
-            throw new IllegalArgumentException("[ERROR] 로또 번호들은 6개의 숫자로 구성되어야 합니다..");
+            throw new IllegalArgumentException(LENGTH_OF_LOTTO_NUMBERS_SHOULD_BE_SIX.getErrorMessage());
         }
     }
 
     private void validateDuplication(List<Integer> numbers) {
         if (new HashSet<>(numbers).size() != 6) {
-            throw new IllegalArgumentException("[ERROR] 로또 번호들은 서러 다른 수이어야 합니다.");
+            throw new IllegalArgumentException(LOTTO_NUMBERS_SHOULD_BE_UNIQUE.getErrorMessage());
         }
     }
 
