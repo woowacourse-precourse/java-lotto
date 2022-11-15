@@ -1,7 +1,16 @@
 package lotto;
 
+import lotto.controller.LottoGame;
+import lotto.view.LottoPrinter;
+
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        LottoGame lottoGame = new LottoGame();
+        try {
+            lottoGame.play();
+        } catch (IllegalArgumentException ex) {
+            LottoPrinter lottoPrinter = new LottoPrinter();
+            lottoPrinter.printErrorMessage(ex.getMessage());
+        }
     }
 }
