@@ -7,7 +7,10 @@ import java.util.List;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomUniqueNumbersInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
+import static lotto.Application.getRandomNumbers;
+import static lotto.Application.getResult;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class ApplicationTest extends NsTest {
     private static final String ERROR_MESSAGE = "[ERROR]";
@@ -50,6 +53,63 @@ class ApplicationTest extends NsTest {
     void 예외_테스트() {
         assertSimpleTest(() -> {
             runException("1000j");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
+    @Test
+    void 로또_구입금액이_1000의_배수가_아닐때_예외_발생() {
+        assertSimpleTest(() -> {
+            runException("1300");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
+    @Test
+    void 랜덤으로_6개의_숫자_생성() {
+        assertThat(getRandomNumbers().size()).isEqualTo(6);
+    }
+
+    @Test
+    void 당첨_등수_테스트() {
+        assertThat(getResult(List.of(11,22,33,44,15,35), 25, List.of(11,22,33,44,15,25)))
+            .isEqualTo(Rank.SECOND);
+    }
+
+    @Test
+    void 당첨_등수_테스트2() {
+        assertThat(getResult(List.of(1,2,3,4,5,6), 7, List.of(12,13,14,15,16,17)))
+            .isEqualTo(Rank.NONE);
+    }
+
+    @Test
+    void 당첨번호_5개_입력시_예외_발생() {
+        assertSimpleTest(() -> {
+            runException("1000", "1,2,3,4,5");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
+    @Test
+    void 당첨번호_범위_벗어날시_예외_발생() {
+        assertSimpleTest(() -> {
+            runException("1000", "1,2,3,4,50,60");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
+    @Test
+    void 당첨번호_중복시_예외_발생() {
+        assertSimpleTest(() -> {
+            runException("1000", "1,2,3,4,5,5");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
+    @Test
+    void 당첨번호_보너스번호_중복시_예외_발생() {
+        assertSimpleTest(() -> {
+            runException("1000", "1,2,3,4,5,6", "6");
             assertThat(output()).contains(ERROR_MESSAGE);
         });
     }
