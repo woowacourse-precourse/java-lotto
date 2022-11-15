@@ -32,5 +32,8 @@ public class LottoInputNumbersService {
         return result;
     }
 
-
+    public int parsingBonusNumber(String bonusNumber) {
+        int result = Integer.parseInt(bonusNumber);
+        return result;
+    }
 }
