@@ -20,4 +20,7 @@ public enum Prize {
         this.numsOfWinner = 0;
     }
 
+    private void plusNumsOfWinner() {
+        this.numsOfWinner++;
+    }
 }
