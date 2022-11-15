@@ -44,4 +44,13 @@ public class ComputerTest {
         assertThatThrownBy(Computer::new)
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @DisplayName("당첨 번호가 1보다 작으면 예외가 발생한다.")
+    @Test
+    void createComputerWithSmallNumber() {
+        String input = "0,1,2,3,4,5";
+        System.setIn(new ByteArrayInputStream(input.getBytes()));
+        assertThatThrownBy(Computer::new)
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
