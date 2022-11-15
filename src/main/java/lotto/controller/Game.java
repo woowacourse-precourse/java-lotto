@@ -25,6 +25,7 @@ public class Game {
 
     private int setBonusNumber(Lotto lotto) {
         int bonusNumber = InputView.inputBonusNumber();
+        lotto.validateBonus(bonusNumber);
         return bonusNumber;
         }
 }
