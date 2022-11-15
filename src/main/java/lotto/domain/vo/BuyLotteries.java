@@ -2,11 +2,11 @@ package lotto.domain.vo;
 
 import java.util.List;
 
-public class BuyLottoList {
+public class BuyLottos {
 
     private final List<Lotto> buyLottoList;
 
-    public BuyLottoList(List<Lotto> buyLottoList) {
+    public BuyLottos(List<Lotto> buyLottoList) {
         this.buyLottoList = buyLottoList;
     }
 
