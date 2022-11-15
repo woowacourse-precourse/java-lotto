@@ -12,6 +12,7 @@ public class OutputView {
     private static final String WINNING_DETAILS_MESSAGE = "%d개 일치 (%s원) - %d개\n";
     private static final String WINNING_DETAILS_WITH_BONUS_MESSAGE = "%d개 일치, 보너스 볼 일치 (%s원) - %d개\n";
     private static final String LOTTO_YIELD_MESSAGE = "총 수익률은 %.1f%%입니다.\n";
+    private static final String SEPARATOR_PATTERN = "###,###";
 
     public static void printHowManyLottoUserPurchased(int lottoQuantity) {
         System.out.printf(HOW_MANY_LOTTO_USER_PURCHASED_MESSAGE, lottoQuantity);
@@ -30,7 +31,7 @@ public class OutputView {
         winningDetails.entrySet().stream()
                 .filter(entry -> entry.getKey() != WinningRank.LAST_PLACE)
                 .forEach(entry -> {
-                    DecimalFormat df = new DecimalFormat("###,###");
+                    DecimalFormat df = new DecimalFormat(SEPARATOR_PATTERN);
                     if (entry.getKey() == WinningRank.SECOND_PLACE) {
                         System.out.printf(WINNING_DETAILS_WITH_BONUS_MESSAGE,
                                 entry.getKey().getMatchingCount(), df.format(entry.getKey().getWinningPrice()),
