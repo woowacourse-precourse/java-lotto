@@ -1,11 +1,10 @@
 package lotto;
 
+import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
-
-import camp.nextstep.edu.missionutils.Randoms;
 
 public class LottoController {
 
@@ -32,7 +31,7 @@ public class LottoController {
 	public List<Lotto> generateLottos() {
 		int money = getMoney();
 		List<Lotto> lottos = new ArrayList<>();
-		for (int i = 0; i < money/1000; i++) {
+		for (int i = 0; i < money/Prices.LOTTO_PRICE.getPrice(); i++) {
 			Lotto lotto = generateLotto();
 			lottos.add(lotto);
 		}
@@ -114,12 +113,12 @@ public class LottoController {
 	}
 
 	public String getProfitMsg(List<Lotto> lottos, List<Integer> analysis) {
-		double payment = lottos.size() * 1000;
-		int[] earnings = {5000, 50000, 1500000, 30000000, 2000000000};
+		double payment = lottos.size() * Prices.LOTTO_PRICE.getPrice();
+		int[] earnings = Prices.LOTTO_PRICE.getPrize();
 		double sum = 0;
 		for (int i = 0; i < analysis.size(); i++) {
 			sum += analysis.get(i) * earnings[i];
 		}
-		return "총 수익률은 " + Math.round(sum / payment * 1000) / 10.0 + "%입니다.";
+		return "총 수익률은 " + Math.round(sum / payment * Prices.LOTTO_PRICE.getPrice()) / 10.0 + "%입니다.";
 	}
 }

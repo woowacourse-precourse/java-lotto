@@ -1,8 +1,7 @@
 package lotto;
 
-import java.util.List;
-
 import camp.nextstep.edu.missionutils.Console;
+import java.util.List;
 
 public class MyView {
 
