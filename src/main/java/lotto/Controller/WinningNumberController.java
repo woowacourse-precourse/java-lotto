@@ -11,6 +11,7 @@ import java.util.Map;
 
 public class WinningNumberController {
     private static LottoService lottoService = new LottoService();
+    private static LottoController lottoController = new LottoController();
     private static WinningLotto winningLotto;
     private static Map<Integer, Integer> resultMap;
 
@@ -30,9 +31,8 @@ public class WinningNumberController {
     }
 
     private void compareLottoNumbers() {
-        LottoController lottoController = new LottoController();
-
         List<Lotto> totalLotto = lottoController.getTotalLottoInstance();
+
         resultMap = lottoService.compareLottoNumbers(totalLotto, winningLotto);
     }
 
@@ -40,5 +40,10 @@ public class WinningNumberController {
         OutputView outputView = new OutputView();
 
         outputView.printWinningResult(resultMap);
+
+        final int money = lottoController.getMoney();
+        double rate = lottoService.getEarningRate(resultMap, money);
+
+        outputView.printEarningRate(rate);
     }
 }

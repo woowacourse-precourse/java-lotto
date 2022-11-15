@@ -7,6 +7,7 @@ import lotto.View.InputView;
 import lotto.View.OutputView;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class LottoController {
@@ -14,6 +15,7 @@ public class LottoController {
     private static final int MIN_COST = ValidNumbers.MIN_COST.getValue();
     private static LottoService lottoService = new LottoService();
     private static List<Lotto> totalLotto = new ArrayList<>();
+    private static int money = 0;
 
     public void start() {
         input();
@@ -23,7 +25,7 @@ public class LottoController {
     private void input() {
         InputView inputView = new InputView();
 
-        int money = inputView.readMoney();
+        money = inputView.readMoney();
 
         Lotto lotto;
         int quantity = (money / MIN_COST);
@@ -40,7 +42,10 @@ public class LottoController {
     }
 
     public List<Lotto> getTotalLottoInstance() {
-        return totalLotto;
+        return Collections.unmodifiableList(totalLotto);
     }
 
+    public int getMoney() {
+        return money;
+    }
 }
