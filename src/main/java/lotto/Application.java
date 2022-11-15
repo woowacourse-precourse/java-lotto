@@ -3,6 +3,7 @@ package lotto;
 import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Application {
@@ -30,15 +31,32 @@ public class Application {
         }
     }
 
+    // 3.당첨 번호 입력
+    static void createWinningNums(List<Integer> winningNums) {
+        System.out.print("당첨 번호를 입력해 주세요.");
+
+        String nums = Console.readLine();
+        List<String> letters = new ArrayList<String>(Arrays.asList(nums.split(",")));
+
+        for (int idx = 0; idx < letters.size(); idx++) {
+            int num = Integer.parseInt(letters.get(idx));
+            winningNums.add(num);
+        }
+    }
+
     public static void main(String[] args) {
 
         List<List<Integer>> lottos = new ArrayList<>();
+        List<Integer> winningNums = new ArrayList<>();
 
         // 로또 구입
         int sheets = buyLotto();
 
         // 로또 발행
         createLotto(sheets,lottos);
+
+        // 당첨 번호
+        createWinningNums(winningNums);
     }
 }
 
