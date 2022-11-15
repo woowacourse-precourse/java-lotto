@@ -19,14 +19,17 @@ public class LottoMachine {
     }
 
     public void getInputMoney() {
-        String input = Console.readLine();
-        int money = Integer.parseInt(input);
+        String money = Console.readLine();
         validateMoney(money);
-        this.paid = Integer.parseInt(input);
+        this.paid = Integer.parseInt(Console.readLine());
     }
 
-    public void validateMoney(int money) {
-        if (money % LOTTO_PRICE != 0) {
+    public void validateMoney(String input) {
+        if (input.matches("[^0-9]")) {
+            throw new IllegalArgumentException("[ERROR] 숫자만 입력해주세요.");
+        }
+        int money = Integer.parseInt(input);
+        if( money != 0 && LOTTO_PRICE != 0) {
             throw new IllegalArgumentException("[ERROR] 1000원 단위로 입력해주세요.");
         }
     }
