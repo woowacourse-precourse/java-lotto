@@ -18,38 +18,18 @@ public class User {
     }
 
     public void start() {
-        String inputValue = "";
         int price;
         int count;
         List<Lotto> lottos;
-
-        System.out.println("구입금액을 입력해 주세요.");
-        inputValue = input();
-        validate(inputValue);
-        price = Integer.parseInt(inputValue);
-
+        price = inputPrice();
         count = setCount(price);
-        System.out.println("\n" + count + "개를 구매했습니다.");
-
         lottos = lottoManager.createLottos(count);
-        for (Lotto lotto : lottos) {
-            System.out.println(lotto.getNumbers());
-        }
-
-        System.out.println("\n당첨 번호를 입력해 주세요.");
-        lottoManager.setLuckyNumbers(input());
-
-        System.out.println("\n보너스 번호를 입력해 주세요.");
-        lottoManager.setBonusNumbers(input());
-
-        for (Lotto lotto : lottos) {
-            int index = lottoManager.getRankingIndex(lotto);
-            addStatistics(index);
-        }
-
+        printLottos(lottos, count);
+        inputLuckyNumber();
+        inputBonusNumber();
+        setStatistics(lottos);
         addEarnings();
-        System.out.println(getStatisitcs());
-        System.out.println(getEarningRatio(price));
+        printResult(price);
     }
 
     private void validate(String input) {
@@ -60,16 +40,51 @@ public class User {
             throw new IllegalArgumentException(ErrorMessage.PRICE_ERROR.getMessage());
         }
     }
+    private int inputPrice() {
+        System.out.println("구입금액을 입력해 주세요.");
+        String inputValue = input();
+        validate(inputValue);
+        return Integer.parseInt(inputValue);
+    }
 
-    public static boolean isNumeric(String input) {
+    private void printLottos(List<Lotto> lottos, int count) {
+        System.out.println("\n" + count + "개를 구매했습니다.");
+        for (Lotto lotto : lottos) {
+            System.out.println(lotto.getNumbers());
+        }
+    }
+
+    private void inputLuckyNumber() {
+        System.out.println("\n당첨 번호를 입력해 주세요.");
+        lottoManager.setLuckyNumbers(input());
+    }
+
+    private void inputBonusNumber() {
+        System.out.println("\n보너스 번호를 입력해 주세요.");
+        lottoManager.setBonusNumbers(input());
+    }
+
+    private void setStatistics(List<Lotto> lottos) {
+        for (Lotto lotto : lottos) {
+            int index = lottoManager.getRankingIndex(lotto);
+            addStatistics(index);
+        }
+    }
+
+    private void printResult(int price) {
+        System.out.println(getStatisitcs());
+        System.out.println(getEarningRatio(price));
+    }
+
+    private static boolean isNumeric(String input) {
         return input != null && input.matches("[-+]?\\d*\\.?\\d+");
     }
 
-    public static boolean checkAmount(String input) {
+    private static boolean checkAmount(String input) {
         return Integer.parseInt(input) >= 1000;
     }
 
-    public static boolean isDividedThousand(String input) {
+    private static boolean isDividedThousand(String input) {
         return Integer.parseInt(input) % 1000 == 0;
     }
 
