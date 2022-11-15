@@ -27,7 +27,7 @@ public class Application {
         try {
             int amount = requestAmount();
             List<Lotto> issuedLottes = createLottos(amount);
-            printissuedLottos(issuedLottes);
+            printIssuedLottos(issuedLottes);
             PrizeNumber prizeNumber = requestPrizeNumber();
             Map<Rank, Integer> results = getLottoResults(issuedLottes, prizeNumber);
             printResults(results);
@@ -87,7 +87,7 @@ public class Application {
         return Integer.parseInt(input);
     }
 
-    private static void printissuedLottos(List<Lotto> lottos) {
+    private static void printIssuedLottos(List<Lotto> lottos) {
         String message = String.format(RESPONSE_LOTTO_SIZE, lottos.size());
         System.out.println(message);
         for (Lotto lotto : lottos) {
