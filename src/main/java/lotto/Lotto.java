@@ -1,6 +1,8 @@
 package lotto;
 
-import static lotto.LottoNumberRange.*;
+import static lotto.util.Validator.validatePlayNumbersCount;
+import static lotto.util.Validator.validatePlayNumbersDuplication;
+import static lotto.util.Validator.validatePlayNumbersRange;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -18,27 +20,16 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
-        if (numbers.size() != 6) {
-            throw new IllegalArgumentException();
-        }
+        validatePlayNumbersCount(numbers);
     }
 
     // TODO: 추가 기능 구현
     private void validateRange(List<Integer> numbers) {
-        int minRange = MIN.getValue();
-        int maxRange = MAX.getValue();
-
-        boolean isOverRange = numbers.stream()
-                .anyMatch(number -> !(minRange <= number && number <= maxRange));
-        if (isOverRange) {
-            throw new IllegalArgumentException();
-        }
+        validatePlayNumbersRange(numbers);
     }
 
     private void validateDuplication(List<Integer> numbers) {
-        if (numbers.size() != numbers.stream().distinct().count()) {
-            throw new IllegalArgumentException();
-        }
+        validatePlayNumbersDuplication(numbers);
     }
 
     private List<Integer> ascendingOrder(List<Integer> numbers) {
