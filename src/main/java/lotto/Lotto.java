@@ -1,6 +1,5 @@
 package lotto;
 
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import lotto.constants.ExceptionMessage;
@@ -39,9 +38,9 @@ public class Lotto {
     }
 
     private void validateDuplicate(List<Integer> numbers) {
-        HashSet<Integer> hashSet = new HashSet<>((numbers));
+        HashSet<Integer> redundancyRemoval = new HashSet<>((numbers));
 
-        if (hashSet.size() != DIGIT_NUM) {
+        if (redundancyRemoval.size() != DIGIT_NUM) {
             throw new IllegalArgumentException(ExceptionMessage.DUPLICATION_INPUT);
         }
     }
@@ -53,15 +52,18 @@ public class Lotto {
     }
 
     public void validateCharacters(List<Integer> numbers) {
+        StringBuilder word = new StringBuilder();
         for (int lotto : numbers) {
             String oneWord = String.valueOf(lotto);
-            if (!(oneWord.matches(REGULAR_PATTERN))) {
-                throw new IllegalArgumentException(ExceptionMessage.NON_NUMERIC_CHARACTERS);
-            }
+            word.append(oneWord);
+        }
+
+        if (!(word.toString().matches(REGULAR_PATTERN))) {
+            throw new IllegalArgumentException(ExceptionMessage.NON_NUMERIC_CHARACTERS);
         }
     }
 
-    public ArrayList getNumbers() {
-        return new ArrayList(numbers);
+    public List<Integer> getNumbers() {
+        return numbers;
     }
 }

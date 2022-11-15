@@ -34,7 +34,7 @@ public class LottoGameManagement {
     private List<Integer> getBonusNumbers(List<List<Integer>> randomLotto, Lotto lottoAnswer,
             List<Integer> sameNumberCount) {
 
-        int bonus = additionalNumber.getBonus();
+        int bonus = additionalNumber.getBonus(lottoAnswer);
         BonusBallAndLotto bonusBallAndLotto = new BonusBallAndLotto(new BonusNumberCase());
 
         return bonusBallAndLotto.getCorrectLocation(lottoAnswer, randomLotto, sameNumberCount,

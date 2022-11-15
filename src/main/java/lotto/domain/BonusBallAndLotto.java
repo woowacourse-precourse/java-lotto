@@ -17,13 +17,13 @@ public class BonusBallAndLotto {
     public List<Integer> getCorrectLocation(Lotto lottoAnswer, List<List<Integer>> random,
             List<Integer> resultNumber, int bonus) {
 
-        List<Integer> WinningNumbers = lottoAnswer.getNumbers();
+        List<Integer> winningNumbers = lottoAnswer.getNumbers();
         List<Integer> result = new ArrayList<>();
 
         for (Integer integer : resultNumber) {
             int bonusCaseCount = 0;
             int correctNumberCheck = 0;
-            bonusCaseCount = getBonusCaseCount(random, bonus, WinningNumbers, integer,
+            bonusCaseCount = getBonusCaseCount(random, bonus, winningNumbers, integer,
                     bonusCaseCount, correctNumberCheck);
 
             result.add(bonusCaseCount);
@@ -32,11 +32,11 @@ public class BonusBallAndLotto {
     }
 
     private int getBonusCaseCount(List<List<Integer>> random, int bonus,
-            List<Integer> WinningNumbers, Integer integer,
+            List<Integer> winningNumbers, Integer integer,
             int bonusCaseCount, int correctNumberCheck) {
 
         if (integer == BONUS_CONDITIONS) {
-            bonusCaseCount = bonusNumberCase.getBonusCount(random, bonus, WinningNumbers,
+            bonusCaseCount = bonusNumberCase.getBonusCount(random, bonus, winningNumbers,
                     bonusCaseCount, correctNumberCheck);
         }
         return bonusCaseCount;
