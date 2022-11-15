@@ -20,9 +20,9 @@
 - [X] 당첨 결과 확인
   - [X] 당첨 숫자와 비교
   - [X] 보너스 숫자와 비교
-- [ ] 당첨 내역 출력
-- [ ] 수익률 계산 및 출력
-- [ ] 프로그램 종료
+- [X] 당첨 내역 출력
+- [X] 수익률 계산 및 출력
+- [X] 프로그램 종료
 
 
 ## Commit log
@@ -63,4 +63,11 @@
   - test: bonus validation test
   - feat: compare lottos with winning lotto and bonus
   - test: count test
+  - feat: add enum numbers
+  - feat: calculate rank
+  - test: test calculate rank
+  - feat: return rank
+  - refactor: test return rank
+  - fix: fix UnsupportedOperationException error
+  - feat: print yield
 
