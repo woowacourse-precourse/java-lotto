@@ -7,7 +7,7 @@ import util.validation.ValidationUtil;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class InputUtilTest {
-    @DisplayName("checkSizeTest")
+    @DisplayName("로또의 숫자 개수 테스트")
     @Test
     void checkSizeTest() {
         boolean origin = ValidationUtil.checkSize(List.of(1, 2, 3));
@@ -15,7 +15,7 @@ public class InputUtilTest {
         assertThat(origin).isEqualTo(true);
     }
 
-    @DisplayName("haveDuplicatedNumbersTest")
+    @DisplayName("로또의 숫자가 중복되었는지 테스트")
     @Test
     void haveDuplicatedNumbersTest() {
         boolean origin = ValidationUtil.
@@ -24,7 +24,7 @@ public class InputUtilTest {
         assertThat(origin).isEqualTo(true);
     }
 
-    @DisplayName("isIntegerTest")
+    @DisplayName("로또 번호로 숫자가 입력되었는지 테스트")
     @Test
     void isIntegerTest() {
         boolean origin = ValidationUtil.isInteger("abc");
@@ -33,7 +33,7 @@ public class InputUtilTest {
 
     }
 
-    @DisplayName("isUnitsOf1000WonTest")
+    @DisplayName("구입 금액이 1000원 단위인지 테스트")
     @Test
     void isUnitsOf1000WonTest() {
         boolean origin = ValidationUtil.isUnitsOf1000Won("1000");
@@ -41,7 +41,7 @@ public class InputUtilTest {
         assertThat(origin).isEqualTo(true);
     }
 
-    @DisplayName("haveUndefinedNumberTest")
+    @DisplayName("로또 번호가 빈 칸이 아닌지 테스트")
     @Test
     void haveUndefinedNumberTest() {
         boolean origin = ValidationUtil.haveUndefinedNumber(List.of("", "1"));
@@ -49,7 +49,7 @@ public class InputUtilTest {
         assertThat(origin).isEqualTo(true);
     }
 
-    @DisplayName("areValidNumbersTest")
+    @DisplayName("로또 번호가 유효한지 테스트")
     @Test
     void areValidNumbersTest() {
         boolean origin = ValidationUtil
@@ -58,7 +58,7 @@ public class InputUtilTest {
         assertThat(origin).isEqualTo(true);
     }
 
-    @DisplayName("isDuplicatedWithWinningNumbersTest")
+    @DisplayName("보너스 번호가 당첨 번호와 중복되는지 테스트")
     @Test
     void isDuplicatedWithWinningNumbersTest() {
         boolean origin = ValidationUtil.isDuplicatedWithWinningNumbers("1",
