@@ -1,5 +1,8 @@
 package lotto;
 
+import camp.nextstep.edu.missionutils.Randoms;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class Lotto {
@@ -17,8 +20,17 @@ public class Lotto {
     }
 
     // TODO: 추가 기능 구현
+    public int[] countWinningResult(List<List<Integer>> userRandomNumber, int count, int[] matches) {
+        for (int i = 0; i < count; i++) {
+            int matchCount = checkWinningNumbers(userRandomNumber.get(i));
+            matches = returnWinningResult(matchCount, matches);
+        }
+
+        return matches;
+    }
+
     // 당첨 번호와 사용자 추첨 번호 일치 여부 확인
-    private int checkWinningNumbers(List<Integer> userNumbers) {
+    public int checkWinningNumbers(List<Integer> userNumbers) {
         int matchCount = 0;
 
         for (int i = 0; i < userNumbers.size(); i++) {
@@ -34,7 +46,7 @@ public class Lotto {
     }
 
     // n개 일치 저장하기
-    private int[] saveWinningResult(int matchCount, int[] matches) {
+    public int[] returnWinningResult(int matchCount, int[] matches) {
         if (matchCount == 3) {
             matches[0]++;
         }
@@ -54,19 +66,13 @@ public class Lotto {
         return matches;
     }
 
-    // 당첨 내역 출력
-    public void printWinningResult(List<List<Integer>> randomNumber, int count) {
-        int[] matches = {0, 0, 0, 0};
+    public List<Integer> saveWinningNumbers(String[] tempWinningNumbers, int maxLottoLength) {
+        List<Integer> numbers = new ArrayList<>();
 
-        for (int i = 0; i < count; i++) {
-            int matchCount = checkWinningNumbers(randomNumber.get(i));
-            matches = saveWinningResult(matchCount, matches);
+        for (int i = 0; i < maxLottoLength; i++) {
+            numbers.add(Integer.parseInt(tempWinningNumbers[i]));
         }
 
-        System.out.println("당첨 통계");
-        System.out.println("---");
-        for (int i = 0; i < matches.length; i++) {
-            System.out.println((i + 3) + "개 일치 - " + matches[i] + "개");
-        }
+        return numbers;
     }
 }
