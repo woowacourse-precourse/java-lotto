@@ -1,7 +1,6 @@
 package lotto;
 
 import lotto.domain.game.LottoGame;
-import lotto.system.IoSystem;
 import lotto.system.IoSystemImpl;
 
 public class Application {
