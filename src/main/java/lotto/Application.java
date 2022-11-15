@@ -14,11 +14,12 @@ public class Application {
         //구입금액
         Scanner sc = new Scanner(System.in);
         System.out.println("구입금액을 입력해주세요.");
-
+        
+        //1000원으로 나누어떨어지지않으면 오류발생시키기 추가예정
         int buyMoney = sc.nextInt();
 
         //로또 구매및 출력
-        ArrayList<Lotto> lottoList = buyLotto();
+        ArrayList<Lotto> lottoList = buyLotto(countPurchaseLotto(buyMoney));
         
         //당첨번호 입력받기
         //보너스 번호 입력받기
@@ -28,12 +29,11 @@ public class Application {
 
     }
     static int countPurchaseLotto(int buyMoney) {
-        int countPurase=0;
 
-        return countPurase;
+        return buyMoney % 1000;
     }
 
-    static ArrayList<Lotto> buyLotto(){
+    static ArrayList<Lotto> buyLotto(int countPurchase){
 
         ArrayList<Lotto> lottoList = new ArrayList<Lotto>();
         //List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
