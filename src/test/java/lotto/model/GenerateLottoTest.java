@@ -15,7 +15,6 @@ import java.util.stream.Stream;
 import static org.junit.jupiter.api.Assertions.*;
 
 class GenerateLottoTest {
-    GenerateLotto generateLotto;
     private static final int UNIT = 1000;
     static Stream<Arguments> LottoTickets() {
         return Stream.of(
@@ -28,8 +27,7 @@ class GenerateLottoTest {
     @ParameterizedTest(name="입력 금액만큼의 로또 발행 확인")
     @MethodSource("LottoTickets")
     void setLottoTest(int input, int size) {
-        generateLotto = new GenerateLotto();
-        List<Lotto> newLotto = generateLotto.setLotto(input/UNIT);
-        assertEquals(newLotto.size(), size);
+        GenerateLotto generateLotto = new GenerateLotto(input/UNIT);
+        assertEquals(generateLotto.getLotto().size(), size);
     }
 }

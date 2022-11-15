@@ -9,13 +9,9 @@ import java.util.List;
 public class OutputView {
     private static final String PURCHASE_OUTPUT = "개를 구매했습니다.";
 
-    public static void lottoTicketsOut() {
+    public static void lottoTicketsOut(int tickets, List<Lotto> newLotto) {
         System.out.println();
-        Money money = new Money();
-        System.out.println(money.getLottoTickets() + PURCHASE_OUTPUT);
-
-        GenerateLotto generateLotto = new GenerateLotto();
-        List<Lotto> newLotto = generateLotto.getLotto();
+        System.out.println(tickets + PURCHASE_OUTPUT);
 
         for(Lotto lotto: newLotto) {
             System.out.println(lotto.getLotto());

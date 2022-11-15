@@ -15,11 +15,12 @@ public class WinningNumbers {
     private static final int MIN_NUM = 1;
     private static final int NUM_SIZE = 6;
 
-    public void setWinningNumbers() {
-        String input = InputView.getWinningNumbers();
-        winningNumbers = splitNumbers(input);
-        input = InputView.getBonusNumber();
-        bonusNumber = isBonusValid(input);
+    public WinningNumbers(String numbers, String bonus) {
+        setWinningNumbers(numbers, bonus);
+    }
+    public void setWinningNumbers(String numbers, String bonus) {
+        winningNumbers = splitNumbers(numbers);
+        bonusNumber = isBonusValid(bonus);
     }
     private List<Integer> splitNumbers(String input) {
         List<String> winningNumSplit = List.of(input.split(","));
@@ -67,5 +68,11 @@ public class WinningNumbers {
             throw new IllegalArgumentException(Error.DUPLICATE.getError());
         }
         return num;
+    }
+    public List<Integer> getWinningNumbers() {
+        return winningNumbers;
+    }
+    public int getBonusNumber() {
+        return bonusNumber;
     }
 }
