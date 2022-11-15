@@ -34,7 +34,7 @@ public class LottoController {
     }
 
     public void showWinningResult() {
-        WinningResult winningResult = lottoService.result();
+        WinningResult winningResult = lottoService.calculateResult();
         lottoMessage.printWinningResult(winningResult);
     }
 }

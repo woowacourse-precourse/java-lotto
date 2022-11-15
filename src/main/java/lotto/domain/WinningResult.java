@@ -1,21 +1,23 @@
 package lotto.domain;
 
-import java.util.HashMap;
+import java.util.EnumMap;
 import java.util.Map;
 
 public class WinningResult {
     private final Lotto winningLotto;
     private final Number bonusNumber;
-    private final Map<Rank, Integer> results;
-
-    public WinningResult(Lotto winningLotto, Number bonusNumber, Map<Rank, Integer> results) {
-        this.winningLotto = winningLotto;
-        this.bonusNumber = bonusNumber;
-        this.results = results;
-    }
+    private final Map<Rank, Integer> results = new EnumMap<Rank, Integer>(Rank.class);
 
     public WinningResult(Lotto winningLotto, Number bonusNumber) {
-        this(winningLotto, bonusNumber, new HashMap<>());
+        validateBonusDuplicate(winningLotto, bonusNumber);
+        this.winningLotto = winningLotto;
+        this.bonusNumber = bonusNumber;
+    }
+
+    private void validateBonusDuplicate(Lotto winningLotto, Number bonusNumber) {
+        if (winningLotto.getNumbers().contains(bonusNumber)) {
+            throw new IllegalArgumentException();
+        }
     }
 
     public Map<Rank, Integer> getResults() {

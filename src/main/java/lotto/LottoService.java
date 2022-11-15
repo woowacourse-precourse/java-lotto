@@ -33,7 +33,7 @@ public class LottoService {
         winningResult = new WinningResult(winningNumber, bonusNumber);
     }
 
-    public WinningResult result() {
+    public WinningResult calculateResult() {
         for (Lotto lotto : lotteries) {
             winningResult.compareLotto(lotto);
         }
