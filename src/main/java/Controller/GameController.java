@@ -1,17 +1,11 @@
 package Controller;
 
 import Service.LottoService;
-import Service.View;
+import Service.gradeService;
 import Utils.utils;
-import domain.Game;
 
-import java.util.Collections;
-import java.util.List;
-import java.util.stream.Collectors;
-
-import static Controller.mainController.get_stactiscs;
-import static Controller.mainController.print_gain;
 import static Service.View.*;
+import static domain.Gain.set_totalGain;
 import static domain.Game.*;
 
 public class GameController {
@@ -28,10 +22,10 @@ public class GameController {
         setWinning_numbers(utils.change_StringToInt(winningNumbers_Input));
         read_bonusNumber();
         print_Message_Winning_Stastistics();
-        mainController.setGrades();
-        mainController.grade_count();
+        gradeService.setGrades();
+        gradeService.grade_count();
         print_Stactistics();
-        mainController.set_totalGain();
+        set_totalGain();
         print_totalGain();
 
     }

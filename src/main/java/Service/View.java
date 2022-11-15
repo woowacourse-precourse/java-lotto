@@ -3,7 +3,8 @@ package Service;
 import camp.nextstep.edu.missionutils.Console;
 import domain.Game;
 
-import static Controller.mainController.*;
+import static Service.gradeService.*;
+import static domain.Gain.get_stactiscs;
 import static domain.Game.getLottoCount;
 
 public class View {
@@ -18,13 +19,13 @@ public class View {
     public static final String MESSAGE_SIX_FORMAT = "6개 일치 (2,000,000,000원) - ";
     public static final String MESSAGE_STACTISTICS_FORMAT = "당첨 통계" + "\n";
     public static final boolean NOT_DIVISON_AMOUNT = Game.paymentAmount % Game.LottoPrice != 0;
-    public static final int EXACT_FORMAT=11;
+    public static final int EXACT_FORMAT = 11;
 
     public static void read_WinningNumbers() {
         System.out.print(MESSAGE_WINNINGNUMBERS_INPUT_FORMAT);
         Game.winningNumbers_Input = Console.readLine();
 
-        if(Game.winningNumbers_Input.length()!=EXACT_FORMAT) throw new IllegalArgumentException();
+        if (Game.winningNumbers_Input.length() != EXACT_FORMAT) throw new IllegalArgumentException();
     }
 
     public static boolean read_buyingLottoAmount() {
@@ -44,8 +45,8 @@ public class View {
 
     public static void read_bonusNumber() {
         System.out.print(MESSAGE_BONUSNUMBER_INPUT_FORMAT + "\n");
-        String bonusNumber=Console.readLine();
-        if(!bonusNumber.matches("^[0-9]{1}$|^[1-3]{1}[0-9]{1}$|^4{1}[0-5]{1}$")) throw new IllegalArgumentException();
+        String bonusNumber = Console.readLine();
+        if (!bonusNumber.matches("^[0-9]{1}$|^[1-3]{1}[0-9]{1}$|^4{1}[0-5]{1}$")) throw new IllegalArgumentException();
         Game.bonusNumber = Integer.parseInt(bonusNumber);
     }
 

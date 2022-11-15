@@ -1,7 +1,6 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.Randoms;
-import Service.gradeService;
 import domain.Game;
 import domain.Grade;
 import org.assertj.core.api.AbstractComparableAssert;
@@ -12,7 +11,7 @@ import java.util.List;
 
 
 import static Service.LottoService.lottoSpawner;
-import static Controller.mainController.setGrades;
+import static Service.gradeService.setGrades;
 import static domain.Game.getLottoCount;
 import static domain.Grade.getGrade;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -79,8 +78,8 @@ class LottoTest {
     @DisplayName("구입한 로또의 갯수를 출력하는 기능 추가")
     @Test
     void getLottoCountTest() {
-        Game.paymentAmount=8000;
-       // assertThatThrownBy(() ->).isInstanceOf(IllegalArgumentException.class);
+        Game.paymentAmount = 8000;
+        // assertThatThrownBy(() ->).isInstanceOf(IllegalArgumentException.class);
         assertThat(getLottoCount()).isEqualTo(8);
     }
 
