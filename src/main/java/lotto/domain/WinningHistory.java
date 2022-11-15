@@ -48,7 +48,7 @@ public enum WinningHistory {
         if (isSecondPrize(rankData) && matchBonus) {
             return isMatchNumber(rankData.matchNumbers, matchNumbers);
         } else if (isThirdPrize(rankData) && !matchBonus) {
-           return isMatchNumber(rankData.matchNumbers, matchNumbers);
+            return isMatchNumber(rankData.matchNumbers, matchNumbers);
         } else if (!isSecondPrize(rankData) && !isThirdPrize(rankData)) {
             return isMatchNumber(rankData.matchNumbers, matchNumbers);
         }
