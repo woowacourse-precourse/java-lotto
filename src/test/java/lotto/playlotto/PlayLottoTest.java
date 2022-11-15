@@ -42,6 +42,7 @@ class PlayLottoTest {
 
     }
 
+    @DisplayName("로또 번호들과 일치하는 값이 존재할 때 True 반환")
     @Test
     void check_num() {
 
@@ -54,6 +55,7 @@ class PlayLottoTest {
         assertThat(condition).isTrue();
     }
 
+    @DisplayName("보너스 번호와 일치하는 번호가 존재할 때 True 반환")
     @Test
     void check_bonus() {
         PlayLotto lotto = new PlayLotto();
@@ -64,6 +66,7 @@ class PlayLottoTest {
 
     }
 
+    @DisplayName("일치하는 번호갯수와 보너스 일치 갯수를 전달하면 필드에 결과를 반영한다.")
     @Test
     void check_result() {
     }
