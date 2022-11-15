@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
+import java.util.Collections;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomUniqueNumbersInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
@@ -20,7 +21,7 @@ class ApplicationTest extends NsTest {
                     assertThat(output()).contains(
                             "8개를 구매했습니다.",
                             "[8, 21, 23, 41, 42, 43]",
-                            "[3, 5, 11, 16, 32, 38]",
+                            "[3, 5,  11, 16, 32, 38]",
                             "[7, 11, 16, 35, 36, 44]",
                             "[1, 8, 11, 31, 41, 42]",
                             "[13, 14, 16, 38, 42, 45]",

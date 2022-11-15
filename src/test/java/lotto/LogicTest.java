@@ -71,6 +71,4 @@ public class LogicTest {
     void 보너스_당첨_정상_테스트() {
         assertThat(logic.setBonus("7", List.of(1, 2, 3, 4, 5, 6))).isEqualTo(7);
     }
-
-
 }

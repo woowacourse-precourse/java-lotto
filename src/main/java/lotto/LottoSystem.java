@@ -30,6 +30,7 @@ public class LottoSystem {
         piecesInput(); // 사용자 금액 입력받기
         userLottosInput(); // 금액만큼의 로또 발급 후 로또 출력하기
         setJackpots(); // 정답 및 보너스 번호 받기
+        evaluatePrice(); // 총 당첨 금액 측정
     }
     void piecesInput() {
         this.pieces = logic.checkPieces(view_input.getPieces());
@@ -54,5 +55,13 @@ public class LottoSystem {
 
     public int getBonus() {
         return bonus;
+    }
+
+    void evaluatePrice() {
+        view_output.preShowPrice();
+        int[] corrects = logic.getCorrects(getJackpots(), userLottos, bonus);
+        view_output.showPrice(corrects[0], corrects[1], corrects[2], corrects[3], corrects[4]);
+        long prices = logic.getPrices(corrects[0], corrects[1], corrects[2], corrects[3], corrects[4]);
+        view_output.showProfits(prices, 1000 * pieces);
     }
 }
