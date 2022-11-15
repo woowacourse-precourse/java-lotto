@@ -23,6 +23,9 @@ public class JudgeMent {
         return countCorrect;
     }
 
+    public Map<Reward,Integer> getCorrectResult(){
+        return this.correctResult;
+    }
     public boolean bonusCheck(List<Integer> numbers, int bonusNumber) {
         if (numbers.contains(bonusNumber)){
             return true;
