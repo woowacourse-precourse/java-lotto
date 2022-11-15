@@ -1,4 +1,4 @@
-package View;
+package view;
 
 import domain.LottoRank;
 import domain.Lotto;
