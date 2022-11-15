@@ -12,7 +12,10 @@ public class LottoAccounting {
     private static final String _5th_reward = "5000";
 
     // 수익률 계산 함수
-    public static BigDecimal getROR(int[] matchTable, int money) {
+    public static BigDecimal getROR(LottoGame game) {
+        int[] matchTable = game.getMatchTable();
+        int money = game.getMoney();
+
         validateMatchTable(matchTable);
 
         BigDecimal reward = new BigDecimal(sumReward(matchTable));

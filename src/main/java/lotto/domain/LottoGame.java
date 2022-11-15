@@ -129,16 +129,16 @@ public class LottoGame {
     }
 
     // setter
+    private void setMoney(int money) {
+        this._money = money;
+    }
+
     public void setLotto(List<Lotto> lotto) {
         this._lotto = lotto;
     }
 
     public void setMatchTable(int[] matchTable) {
         this._match_table = matchTable;
-    }
-
-    public void setMoney(int money) {
-        this._money = money;
     }
 
     public void setWinningLotto(Lotto winningLotto) {

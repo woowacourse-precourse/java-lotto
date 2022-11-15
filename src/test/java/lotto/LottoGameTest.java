@@ -87,7 +87,10 @@ public class LottoGameTest {
         int[] matches = {0, 0, 0, 0, 1};
         int money = 8000;
 
-        BigDecimal result = LottoAccounting.getROR(matches, money);
+        LottoGame game = new LottoGame(money);
+        game.setMatchTable(matches);
+
+        BigDecimal result = LottoAccounting.getROR(game);
         BigDecimal expected = new BigDecimal("62.5");
 
         Assertions.assertThat(result).isEqualTo(expected);

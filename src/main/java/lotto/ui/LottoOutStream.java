@@ -20,10 +20,7 @@ public class LottoOutStream {
     }
 
     public static void showROR(LottoGame game) {
-        int[] matchTable = game.getMatchTable();
-        int money = game.getMoney();
-
-        System.out.print("총 수익률은 " + getFormROR(LottoAccounting.getROR(matchTable, money)) + "%입니다.");
+        System.out.print("총 수익률은 " + getFormROR(LottoAccounting.getROR(game)) + "%입니다.");
     }
 
     private static String getFormROR(BigDecimal ror) {
