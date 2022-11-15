@@ -18,26 +18,32 @@ public class CalculatorTest {
         @Test
         @DisplayName("정상 실행")
         void success1() {
-            assertThat(Calculator.getEarningRate(Arrays.asList(0, 0, 0, 0, 1, 0, 0))).isEqualTo(5000.0);
+            assertThat(Calculator.getEarningRate(Arrays.asList(0, 0, 0, 0, 1, 0, 0))).isEqualTo("5000.0");
         }
 
         @Test
         @DisplayName("정상 실행")
         void success2() {
-            assertThat(Calculator.getEarningRate(Arrays.asList(0, 0, 0, 0, 0, 1, 2))).isEqualTo(166.7);
+            assertThat(Calculator.getEarningRate(Arrays.asList(0, 0, 0, 0, 0, 1, 2))).isEqualTo("166.7");
         }
 
         @Test
         @DisplayName("정상 실행")
         void success3() {
-            assertThat(Calculator.getEarningRate(Arrays.asList(0, 0, 0, 0, 1, 0, 200))).isEqualTo(24.9);
+            assertThat(Calculator.getEarningRate(Arrays.asList(0, 0, 0, 0, 1, 0, 200))).isEqualTo("24.9");
+        }
+
+        @Test
+        @DisplayName("정상 실행")
+        void success4() {
+            assertThat(Calculator.getEarningRate(Arrays.asList(0, 1, 0, 0, 0, 0, 0))).isEqualTo("200000000.0");
         }
 
         @Test
         @DisplayName("예외 실행: 배열 크기 오류 테스트")
         void fail1() {
             assertThatIllegalArgumentException()
-                    .isThrownBy(() -> Calculator.getEarningRate(Arrays.asList(1, 2, 3, 4, 5, 6, 7)));
+                    .isThrownBy(() -> Calculator.getEarningRate(Arrays.asList(1, 2, 3, 4, 5, 6)));
         }
 
 

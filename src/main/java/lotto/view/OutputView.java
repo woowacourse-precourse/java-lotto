@@ -29,7 +29,7 @@ public class OutputView {
         System.out.println("보너스 번호를 입력해 주세요.");
     }
 
-    public static void printStatic(List<Integer> numbers, double yield) {
+    public static void printStatic(List<Integer> numbers, String yield) {
         System.out.print("당첨 통계\n---\n");
         for (int place = 5; place >= 1; place--) {
             System.out.println(
@@ -38,7 +38,7 @@ public class OutputView {
                     getNumberOfWinSentence(numbers, place)
             );
         }
-        System.out.println("총 수익률은 " + new BigDecimal(yield) + "%입니다.");
+        System.out.println("총 수익률은 " + yield + "%입니다.");
     }
 
     private static String getCollectSentence(int place) {
