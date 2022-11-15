@@ -3,10 +3,11 @@ package util.validation;
 import static java.util.stream.Collectors.toList;
 
 import java.util.List;
+import lotto.Lotto;
 
 public class ValidationUtil {
     public static boolean checkSize(List<Integer> numbers) {
-        return numbers.size() != 6;
+        return numbers.size() != Lotto.SIZE;
     }
 
     public static boolean haveDuplicatedNumbers(List<Integer> numbers) {
@@ -24,7 +25,7 @@ public class ValidationUtil {
     }
 
     public static boolean isUnitsOf1000Won(String purchasePrice) {
-        return Integer.parseInt(purchasePrice) % 1000 == 0;
+        return Integer.parseInt(purchasePrice) % Lotto.PRICE == 0;
     }
 
     public static boolean haveUndefinedNumber(List<String> numbers) {
@@ -52,7 +53,7 @@ public class ValidationUtil {
     }
 
     public static boolean haveSixNumbers(List<String> numbers) {
-        return numbers.size() == 6;
+        return numbers.size() == Lotto.SIZE;
     }
 
     public static boolean areDuplicated(List<String> numbers) {
@@ -73,13 +74,12 @@ public class ValidationUtil {
     }
 
     public static boolean checkSize(String bonusNumber) {
-        return bonusNumber.length() != 1;
+        return bonusNumber.length() != Lotto.BONUS_SIZE;
     }
-
 
     public static boolean isWithinValidRange(String input) {
         int number = Integer.parseInt(input);
 
-        return (number >= 1) && (number <= 45);
+        return (number >= Lotto.FIRST_NUMBER) && (number <= Lotto.LAST_NUMBER);
     }
 }
