@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import camp.nextstep.edu.missionutils.Randoms;
+
 import lotto.ErrorMessage;
 
 /**
@@ -29,10 +30,10 @@ public class Lotto {
 
 	public static Lotto newInstance() {
 		final List<Integer> numbers = Randoms
-			.pickUniqueNumbersInRange(LOTTO_MIN_NUMBER, LOTTO_MAX_NUMBER, NUMBER_OF_LOTTO)
-			.stream()
-			.sorted()
-			.collect(Collectors.toList());
+				.pickUniqueNumbersInRange(LOTTO_MIN_NUMBER, LOTTO_MAX_NUMBER, NUMBER_OF_LOTTO)
+				.stream()
+				.sorted()
+				.collect(Collectors.toList());
 		return new Lotto(numbers);
 	}
 
@@ -55,11 +56,18 @@ public class Lotto {
 		if (isInvalidLottoNumber(numbers)) {
 			throw new IllegalArgumentException(ErrorMessage.isInvalidLottoNumber());
 		}
+		if (isDuplicatedNumber(numbers)) {
+			throw new IllegalArgumentException(ErrorMessage.isDuplicatedLottoNumber());
+		}
+	}
+
+	private boolean isDuplicatedNumber(List<Integer> numbers) {
+		return numbers.size() != numbers.stream().distinct().count();
 	}
 
 	private boolean isInvalidLottoNumber(List<Integer> numbers) {
 		return numbers.stream()
-			.anyMatch(number -> number < LOTTO_MIN_NUMBER || number > LOTTO_MAX_NUMBER);
+				.anyMatch(number -> number < LOTTO_MIN_NUMBER || number > LOTTO_MAX_NUMBER);
 	}
 
 }
