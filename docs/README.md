@@ -82,7 +82,7 @@
   - [x] 등수 리스트를 만드는 기능 - Ranking Enum
   - [x] 로또 하나에 대한 등수를 매기는 기능 - Ranking Enum
 
-- [ ] **당첨 통계를 출력하는 기능** - OutputView
+- [x] **당첨 통계를 출력하는 기능** - OutputView
     - [x] 당첨 개수를 확인하는 기능 - GameResult
     - [x] 총 상금을 계산하는 기능 - GameResult
     - [x] 수익률을 계산하는 기능 - NumberOfLottos
