@@ -32,4 +32,9 @@ public class Service {
 
         return lottoNumbers;
     }
+
+    public String getWinningNumberInput() {
+        String input = Console.readLine();
+        return input;
+    }
 }

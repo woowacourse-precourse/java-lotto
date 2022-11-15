@@ -13,6 +13,9 @@ public class Application {
 
             view.purchaseMsg(moneyInput);
             List<List<Integer>> lottoNumberList = service.createNumber(moneyInput);
+
+            view.registerWinningNumberMsg();
+            String winningNumberInput = service.getWinningNumberInput();
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
