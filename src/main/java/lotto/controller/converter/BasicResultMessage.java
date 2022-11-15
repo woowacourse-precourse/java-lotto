@@ -1,5 +1,6 @@
 package lotto.controller.converter;
 
+import lotto.domain.Player;
 import lotto.domain.info.Rank;
 
 import java.text.DecimalFormat;
@@ -15,9 +16,12 @@ public class BasicResultMessage implements ResultMessage {
     private final Rank[] rankValues = Rank.values();
 
     @Override
-    public void printResult(final List<Rank> ranks, final int price) {
+    public void printResult(final Player player) {
+        List<Rank> ranks = player.getResults();
+        int amount = player.getAmount();
+
         String rankMessage = createRankMessage(ranks);
-        String rateMessage = createRateMessage(ranks, price);
+        String rateMessage = createRateMessage(ranks, amount);
 
         System.out.println("당첨 통계 \n ---");
         System.out.print(rankMessage);
@@ -40,24 +44,23 @@ public class BasicResultMessage implements ResultMessage {
     }
 
     private String createMessageEachRank(final Rank value, final List<Rank> ranks) {
-        StringBuilder builder = new StringBuilder();
         int rankCountInList = Collections.frequency(ranks, value);
 
         String bonusMessage = "";
         if (value.isBonus()) {
-            bonusMessage = ", 보너스 볼 일치 ";
+            bonusMessage = ", 보너스 볼 일치";
         }
         String price = formatter.format(value.getPrice());
         return String.format("%d개 일치%s (%s원) - %d개 \n", value.getCount(), bonusMessage, price, rankCountInList);
     }
 
-    public String createRateMessage (final List<Rank> ranks, final int price) {
+    public String createRateMessage (final List<Rank> ranks, final int amount) {
         int sum = 0;
         for (Rank rank : ranks) {
             sum += rank.getPrice();
         }
 
-        double rate = calculateRate(sum, price);
+        double rate = calculateRate(sum, amount);
 
         String rateFormat = floatFormatter.format(rate);
         if (!rateFormat.contains(".")) {
@@ -67,8 +70,8 @@ public class BasicResultMessage implements ResultMessage {
         return "총 수익률은 "+rateFormat+"%입니다.";
     }
 
-    private double calculateRate(final int sum, final int price) {
-        double rate = ((double) sum) / ((double) price) * 100.0;
+    private double calculateRate(final int sum, final int amount) {
+        double rate = ((double) sum) / ((double) amount) * 100.0;
         return Math.round(rate * 100) / 100.0;
     }
 }

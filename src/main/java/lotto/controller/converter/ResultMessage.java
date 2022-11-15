@@ -1,9 +1,7 @@
 package lotto.controller.converter;
 
-import lotto.domain.info.Rank;
-
-import java.util.List;
+import lotto.domain.Player;
 
 public interface ResultMessage {
-    void printResult(List<Rank> ranks, int price);
+    void printResult(Player player);
 }
