@@ -9,6 +9,7 @@ import org.junit.jupiter.params.provider.CsvSource;
 
 import java.util.List;
 
+import static lotto.message.ExceptionMessage.AMOUNT_EXCEPTION;
 import static org.assertj.core.api.Assertions.*;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
@@ -20,7 +21,8 @@ class IssueTest {
     @DisplayName("구입 금액이 1,000으로 나누어 떨어지지 않으면 예외가 발생한다.")
     void amountException() {
         assertThatThrownBy(() -> issue.createLotto(1100))
-                .isInstanceOf(IllegalArgumentException.class);
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining(AMOUNT_EXCEPTION);
     }
 
     @ParameterizedTest
