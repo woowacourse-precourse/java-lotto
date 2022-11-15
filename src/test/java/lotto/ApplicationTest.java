@@ -92,11 +92,29 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    @DisplayName("구입 금액 입력이 비어있을 때 오류가 나야 한다")
+    void emptyPurchaseCostTest() {
+        assertSimpleTest(() -> {
+            runException(" ");
+            assertThat(output()).contains(ErrorType.EMPTY_STR.getErrorMsg());
+        });
+    }
+
+    @Test
     @DisplayName("구입 금액이 1000의 배수가 아닐 경우 오류가 나야 한다.")
     void invalidPurchaseCostTest() {
         assertSimpleTest(() -> {
             runException("80001");
             assertThat(output()).contains(ErrorType.INVALID_PURCHASE_COST.getErrorMsg());
+        });
+    }
+
+    @Test
+    @DisplayName("당첨번호가 비어있을 때 오류가 나야 한다")
+    void emptyWinningNumberTest() {
+        assertSimpleTest(() -> {
+            runException(" ");
+            assertThat(output()).contains(ErrorType.EMPTY_STR.getErrorMsg());
         });
     }
 
@@ -133,6 +151,15 @@ class ApplicationTest extends NsTest {
         assertSimpleTest(() -> {
             runException("8000", "1,2,3,4,5,46");
             assertThat(output()).contains(ErrorType.INVALID_RANGE.getErrorMsg());
+        });
+    }
+
+    @Test
+    @DisplayName("보너스 번호 입력이 비어있을 때 오류가 나야 한다")
+    void emptyBonusNumberTest() {
+        assertSimpleTest(() -> {
+            runException(" ");
+            assertThat(output()).contains(ErrorType.EMPTY_STR.getErrorMsg());
         });
     }
 
