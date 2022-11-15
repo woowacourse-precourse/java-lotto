@@ -5,6 +5,14 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 import java.util.*;
 
 public class Application {
+    public static void validateString(String inputText){
+        try{
+            Integer.parseInt(inputText);
+        }catch(NumberFormatException e){
+            throw new IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
+        }
+    }
+
     // 로또 자동번호 생성
     public static List<HashSet<Integer>> createAutoNumbers(int numberOfPurchases) {
         System.out.println(String.format("%d개를 구매했습니다.", numberOfPurchases));
@@ -118,7 +126,9 @@ public class Application {
 
     public static void main(String[] args) {
         // TODO: 프로그램 구현
-        int numberOfPurchases = Integer.valueOf(readLine());
+        String purchaseMoney = readLine();
+        validateString(purchaseMoney);
+        int numberOfPurchases = Integer.parseInt(purchaseMoney)/1000;
         List<HashSet<Integer>> autoNumbers = createAutoNumbers(numberOfPurchases);
         List<Integer> lottoNumber = createLottoNumber();
         Lotto validateLottoNumber = new Lotto(lottoNumber);
