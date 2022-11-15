@@ -22,6 +22,7 @@ public class LottoGameController {
     int fourth = 0;
     int second = 0;
     int first = 0;
+    DecimalFormat df = new DecimalFormat("0.0");
 
     public void LottoSystem(InputMessages inputMessages, OutputMessages outputMessages) {
         setRandomList(inputMessages, outputMessages);
@@ -119,6 +120,15 @@ public class LottoGameController {
                 first++;
             }
         }
+    }
+
+    public void printResult(OutputMessages outputMessages) {
+        int prize = 0;
+        prize = 5000*fifth + 50000*fourth + 1500000*third + 30000000*second + 2000000000*first;
+
+        String earningRate = df.format(((double) prize/(double) Integer.parseInt(inputCash))*100.0);
+
+        outputMessages.totalResultMsg(fifth, fourth, third, second, first, earningRate);
     }
 
 
