@@ -3,6 +3,8 @@ package lotto;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 
 public class IOUtil {
     public static int moneyInput() {
@@ -53,6 +55,23 @@ public class IOUtil {
         for (Lotto lotto : lottos) {
             sb.append(lotto).append("\n");
         }
+        System.out.println(sb);
+        return sb.toString();
+    }
+
+    public static String printWinningBoard(Map<WinningResult, Integer> board) {
+        System.out.println("당첨 통계\n---");
+        StringBuilder sb = new StringBuilder();
+        for (WinningResult result : WinningResult.values()) {
+            sb.append(result).append(" - ").append(board.get(result)).append("개\n");
+        }
+        System.out.println(sb);
+        return sb.toString();
+    }
+
+    public static String printYield(double yield) {
+        StringBuilder sb = new StringBuilder();
+        sb.append("총 수익률은 ").append(yield).append("%입니다.");
         System.out.println(sb);
         return sb.toString();
     }

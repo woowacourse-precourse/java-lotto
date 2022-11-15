@@ -3,6 +3,7 @@ package lotto;
 import java.util.HashSet;
 import java.util.List;
 import camp.nextstep.edu.missionutils.Randoms;
+import java.util.Optional;
 import java.util.Set;
 
 public class Lotto {
@@ -32,6 +33,24 @@ public class Lotto {
     public static Lotto publishLotto() {
         List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
         return new Lotto(numbers);
+    }
+
+    public Optional<WinningResult> calculate(Lotto answer, int bonusNumber) {
+        int hitCount = 0;
+        boolean hitBonus = false;
+        if (numbers.contains(bonusNumber)) {
+            hitCount++;
+            hitBonus = true;
+        }
+        for (int i=0 ; i<numbers.size() ; i++) {
+            if (numbers.get(i) == bonusNumber) {
+                continue;
+            }
+            if (answer.numbers.contains(numbers.get(i))) {
+                hitCount++;
+            }
+        }
+        return WinningResult.valueOf(hitCount, hitBonus);
     }
 
     @Override
