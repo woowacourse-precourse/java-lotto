@@ -2,6 +2,7 @@ package lotto.ui;
 
 import lotto.domain.Lotto;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -18,10 +19,11 @@ public class LottosPrintUI {
     }
 
     private void printLotto(Lotto lotto) {
-        Collections.sort(lotto.getNumbers());
+        List<Integer> orderModifiableLottos = new ArrayList<>(lotto.getNumbers());
+        Collections.sort(orderModifiableLottos);
         System.out.print("[");
         System.out.print(String.join(", ",
-                lotto.getNumbers().stream().map(String::valueOf).collect(Collectors.toList())));
+                orderModifiableLottos.stream().map(String::valueOf).collect(Collectors.toList())));
         System.out.println("]");
     }
 
