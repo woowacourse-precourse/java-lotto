@@ -87,30 +87,111 @@ public class Application {
         return Math.round((reward * 100 / investment_money) * 10) / 10.0;
     }
 
-    public static void printHowManyLottery(List<Lotto> all_lottery){
+    public static void printHowManyLottery(List<Lotto> all_lottery) {
         System.out.println(all_lottery.size() + "개를 구매했습니다.");
-        for (Lotto lotto: all_lottery
+        for (Lotto lotto : all_lottery
         ) {
             lotto.printNumbers();
         }
     }
-    public  static void lotteryStart(){
+
+    public enum ERROR {
+        MONEY,
+        WIN_NUM,
+        BONUS
+    }
+
+    public static long countChar(String str, char ch) {
+        return str.chars()
+                .filter(c -> c == ch)
+                .count();
+    }
+
+    public static void checkException(String input, int error_num) {
+        String money_pattern = "^\\d*$";
+        String lottery_pattern = "^[1-9]$|^[1-3]\\d$|^4[0-5]$";
+
+        if (error_num == ERROR.MONEY.ordinal() && (!input.matches(money_pattern))) {
+            System.out.println("[ERROR] 구입금액 입력 오류");
+            throw new IllegalArgumentException();
+        }
+        if (error_num == ERROR.MONEY.ordinal() && Integer.parseInt(input) % 1000 != 0){
+            System.out.println("[ERROR] 구입금액 입력 오류");
+            throw new IllegalArgumentException();
+        }
+
+        if (error_num == ERROR.WIN_NUM.ordinal()) {
+            checkWinNum(input);
+        }
+        if (error_num == ERROR.BONUS.ordinal() && !input.matches(lottery_pattern)) {
+            throw new IllegalArgumentException("[ERROR] 보너스 번호 입력 오류");
+        }
+    }
+
+    public static void checkWinNum(String input){
+        if (countChar(input, ',') != 5) {
+            System.out.println("[ERROR] 당첨 번호 입력 오류");
+            throw new IllegalArgumentException();
+        }
+        String[] numbers = input.split(",");
+        if (rangeError(numbers)) {
+            System.out.println("[ERROR] 당첨 번호 입력 오류");
+            throw new IllegalArgumentException();
+        }
+    }
+    public static Boolean rangeError(String[] numbers) {
+        boolean is_range_error = false;
+        List<Integer> nums = new ArrayList<>();
+        for (String num : numbers) nums.add(Integer.valueOf(num));
+        for (int num : nums
+        ) {
+            if (num < 1 || num > 45) {
+                is_range_error = true;
+            }
+        }
+        return is_range_error;
+    }
+
+    public static List<Lotto> buyLottery() {
         System.out.println("구입금액을 입력 주세요.");
-        int money = Integer.parseInt(readLine());
+        String input = readLine();
+        checkException(input, ERROR.MONEY.ordinal());
+        int money = Integer.parseInt(input);
         List<Lotto> all_lottery = buyLottery(money);
         printHowManyLottery(all_lottery);
+        return all_lottery;
+    }
 
+    public static Lotto winLottery() {
         System.out.println("당첨 번호를 입력해 주세요.");
-        String[] win_nums = readLine().split(",");
+        String input = readLine();
+        checkException(input, ERROR.WIN_NUM.ordinal());
+        String[] win_nums = input.split(",");
         List<Integer> nums = new ArrayList<>();
-        for(String num : win_nums) nums.add(Integer.valueOf(num));
-        Lotto win_lottery = new Lotto(nums);
+        for (String num : win_nums) nums.add(Integer.valueOf(num));
+        return new Lotto(nums);
+    }
 
+    public static int bonus() {
         System.out.println("보너스 번호를 입력해 주세요.");
-        int bonus = Integer.parseInt(readLine());
+        String input = readLine();
+        checkException(input, ERROR.BONUS.ordinal());
+        return Integer.parseInt(input);
+    }
 
-        System.out.println("당첨 통계\n" + "---");
-        printHowManyMatches(all_lottery,win_lottery,bonus);
-        System.out.println("총 수익률은 " + rateOfReturn(all_lottery.size(),lotteryRanks(all_lottery,win_lottery,bonus)) + "%입니다.");
+    public static void lotteryStart() {
+        try {
+            List<Lotto> all_lottery = buyLottery();
+            Lotto win_lottery = winLottery();
+            int bonus = bonus();
+
+            System.out.println("당첨 통계\n" + "---");
+            printHowManyMatches(all_lottery, win_lottery, bonus);
+            System.out.println("총 수익률은 " + rateOfReturn(all_lottery.size(), lotteryRanks(all_lottery, win_lottery, bonus)) + "%입니다.");
+
+        }
+        catch (Exception ignored){
+        }
+
     }
 }
