@@ -1,5 +1,6 @@
 package lotto;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
@@ -17,8 +18,7 @@ public class User {
 
     public void enterPrice(){
         System.out.println("구입금액을 입력해 주세요.");
-        Scanner sc = new Scanner(System.in);
-        this.lottoPrice = sc.nextInt();
+        this.lottoPrice = Integer.valueOf(Console.readLine());
     }
 
     public void printLottoEA(){
@@ -52,15 +52,13 @@ public class User {
 
     public void enterWinningNumbers(){
         System.out.println("당첨 번호를 입력해 주세요");
-        Scanner sc = new Scanner(System.in);
-        this.numberString = sc.nextLine();
+        this.numberString = Console.readLine();
         enter(numberString);
     }
 
     public void enterBonusNumber(){
         System.out.println("보너스 번호를 입력해 주세요.");
-        Scanner sc = new Scanner(System.in);
-        this.bonusNumber = sc.nextInt();
+        this.bonusNumber = Integer.valueOf(Console.readLine());
     }
 
     private void enter(String nums){
