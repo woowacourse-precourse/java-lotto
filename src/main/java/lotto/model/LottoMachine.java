@@ -2,9 +2,9 @@ package lotto.model;
 
 import java.util.ArrayList;
 import java.util.List;
+import lotto.util.ErrorMessage;
+import lotto.util.LottoConstants;
 import lotto.util.RandomUtil;
-import lotto.util.constants.GameConstants;
-import lotto.util.constants.LottoConstants;
 
 public class LottoMachine {
     private final int purchaseAmount;
@@ -14,7 +14,7 @@ public class LottoMachine {
     public LottoMachine(int purchaseAmount) {
         validate(purchaseAmount);
         this.purchaseAmount = purchaseAmount;
-        this.lottoTicketCount = this.purchaseAmount / LottoConstants.LOTTO_TICKET_PRICE;
+        this.lottoTicketCount = this.purchaseAmount / LottoConstants.LOTTO_PRICE_UNIT;
         publishLottoTickets();
     }
 
@@ -32,12 +32,12 @@ public class LottoMachine {
 
     private void validate(int purchaseAmount) {
         if (!isDivisibleBy1000(purchaseAmount)) {
-            throw new IllegalArgumentException(GameConstants.ERROR_IS_NOT_DIVISIBLE_BY_1000);
+            throw new IllegalArgumentException(ErrorMessage.IS_NOT_DIVISIBLE_LOTTO);
         }
     }
 
     private boolean isDivisibleBy1000(int number) {
-        return number % LottoConstants.LOTTO_TICKET_PRICE == 0;
+        return number % LottoConstants.LOTTO_PRICE_UNIT == 0;
     }
 
     private void publishLottoTickets() {

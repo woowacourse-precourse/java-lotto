@@ -3,7 +3,6 @@ package lotto.util;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.List;
-import lotto.util.constants.LottoConstants;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
@@ -22,7 +21,7 @@ class RandomUtilTest {
         void 숫자_범위_테스트() {
             List<Integer> lottoNumbers = RandomUtil.pickUniqueNumbers();
             assertThat(lottoNumbers.stream().allMatch(
-                    n -> n >= LottoConstants.LOTTO_NUMBER_MIN && n <= LottoConstants.LOTTO_NUMBER_MAX)).isEqualTo(true);
+                    n -> n >= LottoConstants.LOTTO_MIN_NUMBER && n <= LottoConstants.LOTTO_MAX_NUMBER)).isEqualTo(true);
         }
 
         @Test

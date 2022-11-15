@@ -1,6 +1,7 @@
 package lotto.model;
 
-import lotto.util.constants.LottoConstants;
+import lotto.util.ErrorMessage;
+import lotto.util.LottoConstants;
 
 public class Bonus {
     private int number;
@@ -16,11 +17,11 @@ public class Bonus {
 
     private void validate(int number) {
         if (!isSameRangeAsLottoNumber(number)) {
-            throw new IllegalArgumentException(LottoConstants.ERROR_IS_NOT_SAME_RANGE_LOTTO_NUMBER);
+            throw new IllegalArgumentException(ErrorMessage.IS_NOT_RANGE_LOTTO_NUMBER);
         }
     }
 
     private boolean isSameRangeAsLottoNumber(int number) {
-        return LottoConstants.LOTTO_NUMBER_MIN <= number && number <= LottoConstants.LOTTO_NUMBER_MAX;
+        return LottoConstants.LOTTO_MIN_NUMBER <= number && number <= LottoConstants.LOTTO_MAX_NUMBER;
     }
 }

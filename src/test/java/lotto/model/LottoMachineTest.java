@@ -4,7 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import java.util.List;
-import lotto.util.constants.LottoConstants;
+import lotto.util.LottoConstants;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -56,7 +56,7 @@ class LottoMachineTest {
     void 로또_티켓_발행_숫자_중복_테스트() {
         for (Lotto lotto : lottoTickets) {
             assertThat(lotto.getNumbers().stream().allMatch(
-                    n -> n >= LottoConstants.LOTTO_NUMBER_MIN && n <= LottoConstants.LOTTO_NUMBER_MAX))
+                    n -> n >= LottoConstants.LOTTO_MIN_NUMBER && n <= LottoConstants.LOTTO_MAX_NUMBER))
                     .isEqualTo(true);
         }
     }

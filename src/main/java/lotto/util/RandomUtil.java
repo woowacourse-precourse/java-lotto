@@ -3,7 +3,6 @@ package lotto.util;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.List;
 import java.util.stream.Collectors;
-import lotto.util.constants.LottoConstants;
 
 public class RandomUtil {
     public static List<Integer> pickNumbers() {
@@ -12,7 +11,7 @@ public class RandomUtil {
     }
 
     public static List<Integer> pickUniqueNumbers() {
-        return Randoms.pickUniqueNumbersInRange(LottoConstants.LOTTO_NUMBER_MIN,
-                LottoConstants.LOTTO_NUMBER_MAX, LottoConstants.LOTTO_TICKET_SIZE);
+        return Randoms.pickUniqueNumbersInRange(LottoConstants.LOTTO_MIN_NUMBER,
+                LottoConstants.LOTTO_MAX_NUMBER, LottoConstants.LOTTO_TICKET_SIZE);
     }
 }

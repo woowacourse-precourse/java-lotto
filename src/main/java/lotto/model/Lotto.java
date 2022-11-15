@@ -1,7 +1,8 @@
 package lotto.model;
 
 import java.util.List;
-import lotto.util.constants.LottoConstants;
+import lotto.util.ErrorMessage;
+import lotto.util.LottoConstants;
 
 public class Lotto {
     private final List<Integer> numbers;
@@ -23,7 +24,7 @@ public class Lotto {
 
     private void validateSize(int numberSize) {
         if (!isSameSizeAsLotto(numberSize)) {
-            throw new IllegalArgumentException(LottoConstants.ERROR_IS_NOT_SAME_LOTTO_SIZE);
+            throw new IllegalArgumentException(ErrorMessage.IS_NOT_LOTTO_SIZE);
         }
     }
 
@@ -33,18 +34,18 @@ public class Lotto {
 
     private void validateRange(List<Integer> numbers) {
         if (!isSameRangeAsLottoNumber(numbers)) {
-            throw new IllegalArgumentException(LottoConstants.ERROR_IS_NOT_SAME_RANGE_LOTTO_NUMBER);
+            throw new IllegalArgumentException(ErrorMessage.IS_NOT_RANGE_LOTTO_NUMBER);
         }
     }
 
     private boolean isSameRangeAsLottoNumber(List<Integer> numbers) {
         return numbers.stream()
-                .allMatch(num -> num >= LottoConstants.LOTTO_NUMBER_MIN && num <= LottoConstants.LOTTO_NUMBER_MAX);
+                .allMatch(num -> num >= LottoConstants.LOTTO_MIN_NUMBER && num <= LottoConstants.LOTTO_MAX_NUMBER);
     }
 
     private void validateUniqueNumber(List<Integer> numbers) {
         if (isDuplicateNumber(numbers)) {
-            throw new IllegalArgumentException(LottoConstants.ERROR_IS_NOT_UNIQUE_LOTTO_NUMBER);
+            throw new IllegalArgumentException(ErrorMessage.IS_NOT_UNIQUE_LOTTO_NUMBER);
         }
     }
 
