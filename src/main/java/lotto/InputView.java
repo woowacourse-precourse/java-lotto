@@ -19,6 +19,7 @@ public class InputView{
     }
 
     public String requestBonusNumber(){
-
+        printMessage("보너스 번호를 입력해주세요.");
+        return readLine();
     }
 }
