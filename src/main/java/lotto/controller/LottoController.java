@@ -7,6 +7,7 @@ import lotto.model.Computer;
 import lotto.model.enumeration.Exception;
 import lotto.view.OutputView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class LottoController {
@@ -26,7 +27,6 @@ public class LottoController {
     private int purchaseLotto() {
         OutputView.printLottoStart();
         int inputMoney = inputPurchaseMoney();
-        OutputView.printNumberofLotto(inputMoney);
 
         return inputMoney;
     }
@@ -40,7 +40,9 @@ public class LottoController {
     }
 
     private List<List<Integer>> generateRandomNumbers(int inputMoney) {
+
         List<List<Integer>> computerRandomNumbers = computer.createRandomNumbers(inputMoney);
+        OutputView.printNumberOfLotto(inputMoney);
         OutputView.printRandomNumbers(computerRandomNumbers);
 
         return computerRandomNumbers;
@@ -49,7 +51,7 @@ public class LottoController {
     private int[] compareLottoNumbers(int inputMoney, List<List<Integer>> computerRandomNumbers) {
 
         OutputView.printLottoNumbers();
-        String[] lottoNumbers = inputLottoNumbers();
+        List<Integer> lottoNumbers = inputLottoNumbers();
         OutputView.printBonusNumber();
         int bonusNumber = inputBonusNumber();
 
@@ -58,8 +60,17 @@ public class LottoController {
         return result;
     }
 
-    private String[] inputLottoNumbers() {
-        return Console.readLine().split(",");
+    private List<Integer> inputLottoNumbers() {
+
+        String[] inputNumbers = Console.readLine().split(",");
+
+        List<Integer> lottoNumbers = new ArrayList<>();
+
+        for (String inputNumber: inputNumbers) {
+            int lottonumber = Integer.parseInt(inputNumber);
+            lottoNumbers.add(lottonumber);
+        }
+        return lottoNumbers;
     }
 
     private int inputBonusNumber() {

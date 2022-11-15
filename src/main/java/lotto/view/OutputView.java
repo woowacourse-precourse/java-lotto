@@ -14,7 +14,7 @@ public class OutputView {
         System.out.println(WRITE_PURCHASE_AMOUNT);
     }
 
-    public static void printNumberofLotto(int inputMoney) {
+    public static void printNumberOfLotto(int inputMoney) {
         System.out.println("\n" + (inputMoney/1000) + "개를 구매했습니다.");
     }
 
