@@ -30,20 +30,23 @@ public class Lotto {
         }
     }
     // TODO: 추가 기능 구현
-    public static List<List<Integer>> lottoNumber(int num) {
+    public static List<Integer> chooseLotto(List<Integer> temp,List<Integer> ans){
+        for(int idx =0;idx<ans.size();idx++){
+            if (temp.contains(ans.get(idx))){
+                throw new IllegalArgumentException();
+            }
+            temp.add(ans.get(idx));
+        }
+        return temp;
+    }
+    public static List<List<Integer>> lottoNumber(int num) {//로또 번호 추출 함수
         User user = new User();
         List<List<Integer>> answer = new ArrayList<>();
         for (int idx = 0; idx <num; idx++) {
             List<Integer>  temp = new ArrayList<>();
-            List<Integer>   ans= Randoms.pickUniqueNumbersInRange(1, 45, 6);
+            List<Integer>  ans= Randoms.pickUniqueNumbersInRange(1, 45, 6);
             //1~45사이의 숫자를 6개 뽑는 경우의 수
-            for(int q =0;q<ans.size();q++){
-                if (temp.contains(ans.get(q))){
-                    throw new IllegalArgumentException();
-                }
-                temp.add(ans.get(q));
-            }
-            Collections.sort(temp);
+            Collections.sort(chooseLotto(temp,ans));
             user.output(temp);
             answer.add(temp);
         }
@@ -72,12 +75,6 @@ public class Lotto {
             int bonusflag = 0;
             cnt = lottoCheck(num.get(idx));
             bonusflag = bonusCheck(num.get(idx),bonus);
-//            for (int numIdx = 0;numIdx<num.get(idx).size();numIdx++){
-//                if(num.get(idx).contains(bonus)){
-//                    bonusflag =1;
-//                }
-//            }
-            //밑에 if문들 함수 만들기
             if (cnt==6){  //등수 개수를 체크함
                 arr[cnt]++;
             }
