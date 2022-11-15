@@ -3,7 +3,9 @@ package lotto;
 import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Domain {
@@ -107,6 +109,25 @@ public class Domain {
             }
 
             prizeList.add(Rank.valueOf(hitCount, hitBonus));
+        }
+    }
+
+    // TODO: 당첨 통계를 출력한다.
+    public void printWinStatistics(){
+        DecimalFormat decFormat = new DecimalFormat("###,###");
+        System.out.println(ENTER + "당첨 통계" + ENTER + "---");
+        for(Rank rank : Rank.values()){
+            if(rank.getHitBonus()){
+                System.out.println(rank.getHitCount() + "개 일치, 보너스 볼 일치 " +
+                        "(" + decFormat.format(rank.getPrizeMoney()) + "원) - " +
+                        Collections.frequency(prizeList, rank) + "개");
+                continue;
+            }else if(rank.getHitCount() == 0){
+                continue;
+            }
+            System.out.println(rank.getHitCount() + "개 일치" +
+                    " (" + decFormat.format(rank.getPrizeMoney()) + "원) - " +
+                    Collections.frequency(prizeList, rank) + "개");
         }
     }
 }
