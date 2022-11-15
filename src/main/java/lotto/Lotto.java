@@ -1,5 +1,6 @@
 package lotto;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Lotto {
@@ -14,7 +15,70 @@ public class Lotto {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException();
         }
+        if (isDuplicated(numbers)) {
+            throw new IllegalArgumentException();
+        }
     }
 
-    // TODO: 추가 기능 구현
+    private boolean isDuplicated(List<Integer> numbers) {
+        List<Integer> numbersCopy = new ArrayList<>(numbers);
+        while (!numbersCopy.isEmpty()) {
+            int currentNumber = numbersCopy.get(0);
+            numbersCopy.remove(0);
+
+            if (numbersCopy.contains(currentNumber)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    public List<Integer> getNumbers() {
+        return numbers;
+    }
+
+    public Rank compare(List<Integer> winningNumbers, int bonusNumber) {
+        boolean matchBonus = matchBonusNumber(bonusNumber);
+
+        int numberOfMatch = countMatchingNumber(winningNumbers);
+        if (matchBonus) {
+            numberOfMatch++;
+        }
+
+        Rank rank = getRank(numberOfMatch, matchBonus);
+        return rank;
+    }
+
+    private int countMatchingNumber(List<Integer> winningNumbers) {
+        int count = 0;
+        for (int number : numbers) {
+            if (winningNumbers.contains(number)) {
+                count++;
+            }
+        }
+
+        return count;
+    }
+
+    private boolean matchBonusNumber(int bonusNumber) {
+        return numbers.contains(bonusNumber);
+    }
+
+    private Rank getRank(int matchingCount, boolean matchBonus) {
+        if (matchingCount == 6) {
+            if (matchBonus) {
+                return Rank.BONUS;
+            }
+            return Rank.SIX;
+        }
+
+        for (Rank rank : Rank.values()) {
+            if (rank.getMatchingCount() == matchingCount) {
+                return rank;
+            }
+        }
+
+        return null;
+    }
 }
