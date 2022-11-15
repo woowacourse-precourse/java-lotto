@@ -18,7 +18,7 @@ public enum Prize {
         this.stringAmount = stringAmount;
     }
 
-    public Prize winHistory(int matchN, int bonusN){
+    public static Prize winHistory(int matchN, int bonusN){
         if (matchN == 6)
             return FIRST_PLACE;
         if (matchN ==5 && bonusN ==1)
