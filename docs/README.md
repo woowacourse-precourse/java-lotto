@@ -13,6 +13,6 @@
 - 수익률 계산 - calculateEarn()
 - 에러 처리 - errorHandling()
 ## 출력
-- 당첨 내역 출력
+- 당첨 내역 출력 - printWinningHistory()
 - 생성 로또 출력 - printCreatedLotto()
 - 에러 문구 출력 - printError()

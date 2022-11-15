@@ -9,6 +9,10 @@ public class Output {
         this.winningLotto = winningLotto;
     }
 
-
+    public void printWinningHistory() {
+        for (int key = 3; key <= 7; key++) {
+            
+        }
+    }
 
 }

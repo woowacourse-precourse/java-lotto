@@ -44,6 +44,7 @@ public class LottoCalculator {
         if (key == 7) {
             return count * 2000000000;
         }
+        return 0;
     }
 
     public void checkHit() {
