@@ -25,6 +25,7 @@ public class Lotto {
         UserLottoNumbersResult(userAmount, userLottoNumbers);
         lottoWinNumbers = LottoWinNumbers();
         bonusWinNumber = BonusWinNumber();
+        LottoResult(lottoWinNumbers, bonusWinNumber, userLottoNumbers);
     }
 
     private void validate(List<Integer> numbers) {
@@ -79,5 +80,44 @@ public class Lotto {
         System.out.println("보너스 번호를 입력해 주세요.");
         bonusWinNumber = Integer.parseInt(Console.readLine());
         return bonusWinNumber;
+    }
+
+
+    private void LottoResult (List<Integer> lottoWinNumbers, Integer bonusWinNumber, ArrayList<List<Integer>> userLottoNumbersList) {
+        int match3 = 0, match4 = 0, match5 = 0, matchBonus5 = 0, match6 = 0;
+        for (List<Integer> userLottoNumbers: userLottoNumbersList) {
+            int count = 0, bonus = 0;
+            for(Integer userLottoNumber: userLottoNumbers) {
+                if (lottoWinNumbers.contains(userLottoNumber)) {
+                    count++;
+                }
+                if (userLottoNumber.equals(bonusWinNumber)) {
+                    bonus++;
+                }
+                if (count == 3) {
+                    match3++;
+                }
+                if (count == 4) {
+                    match4++;
+                }
+                if (count == 5 && bonus == 0) {
+                    match5++;
+                }
+                if (count == 5 && bonus == 1) {
+                    matchBonus5++;
+                }
+                if (count == 6) {
+                    match6++;
+                }
+            }
+        }
+        System.out.println();
+        System.out.println("당첨 통계");
+        System.out.println("---");
+        System.out.println("3개 일치 (5,000원) - " + match3);
+        System.out.println("4개 일치 (50,000원) - " + match4);
+        System.out.println("5개 일치 (1,500,000원) - " + match5);
+        System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - " + matchBonus5);
+        System.out.println("6개 일치 (2,000,000,000원) - " + match6);
     }
 }
