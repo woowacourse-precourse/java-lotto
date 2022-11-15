@@ -3,7 +3,6 @@ package lotto.service;
 public class ProcessVariable {
 
     private static final Integer LOTTO_DIVIDE_PRICE = 1000;
-    private final ValidInput validInput = new ValidInput();
 
     public Integer convertToInteger(String input) {
         try {
@@ -14,7 +13,7 @@ public class ProcessVariable {
     }
 
     public Integer calculateLottoAmount(Integer price) {
-        validInput.validCashAmount(price, LOTTO_DIVIDE_PRICE);
+        ValidInput.validCashAmount(price, LOTTO_DIVIDE_PRICE);
         return price / LOTTO_DIVIDE_PRICE;
     }
 }

@@ -5,6 +5,7 @@ import java.util.EnumMap;
 import java.util.List;
 import java.util.Objects;
 import lotto.model.Lotto;
+import lotto.model.LottoAnswer;
 import lotto.model.LottoEnum;
 import lotto.model.ResultEnum;
 
