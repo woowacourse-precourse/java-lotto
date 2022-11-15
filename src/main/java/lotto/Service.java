@@ -34,6 +34,11 @@ public class Service {
 
     public String getWinningNumberInput() {
         String input = Console.readLine().trim();
+        checkWinningNumber0(input);
+        return input;
+    }
+
+    public void checkWinningNumber0(String input) {
         if (!input.contains(",")) {
             throw new IllegalArgumentException("[ERROR] 올바른 형식이 아닙니다.");
         }
@@ -45,11 +50,10 @@ public class Service {
         if (winningNumberSet.size() != winningNumbers.length) {
             throw new IllegalArgumentException("[ERROR] 중복된 숫자는 입력할 수 없습니다.");
         }
-        checkWinningNumber(winningNumbers);
-        return input;
+        checkWinningNumber1(winningNumbers);
     }
 
-    private void checkWinningNumber(String[] winningNumbers) {
+    public void checkWinningNumber1(String[] winningNumbers) {
         for (String winningNumber : winningNumbers) {
             try {
                 Integer.parseInt(winningNumber);
