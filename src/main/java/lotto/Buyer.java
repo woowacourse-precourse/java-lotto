@@ -7,19 +7,17 @@ import java.util.List;
 
 public class Buyer {
     private static final char INVALID_MOST_SIGNIFICANT_DIGIT = '0';
-    private static final int SMALLEST_UNIT = 1000;
+    private static final int SMALLEST_MONETARY_UNIT = 1000;
     private static final int SMALLEST_LOTTERY_NUMBER = 1;
     private static final int BIGGEST_LOTTERY_NUMBER = 45;
     private static final int LOTTERY_NUMBER_COUNT = 6;
 
-    private int purchaseAmount;
     private List<Lotto> boughtTickets;
-
     public Buyer(String purchaseAmount) {
         validateBeingDigits(purchaseAmount);
         validateFormat(purchaseAmount);
         validateBeingMultipleOfThousand(purchaseAmount);
-        this.purchaseAmount = Integer.parseInt(purchaseAmount);
+        pickLotteryNumbers(Integer.parseInt(purchaseAmount) / SMALLEST_MONETARY_UNIT);
     }
 
     private void validateBeingDigits(String userInput) {
@@ -43,7 +41,7 @@ public class Buyer {
     }
 
     private void validateBeingMultipleOfThousand(String userInput) {
-        if (Integer.parseInt(userInput) % SMALLEST_UNIT != 0) {
+        if (Integer.parseInt(userInput) % SMALLEST_MONETARY_UNIT != 0) {
             throw (new IllegalArgumentException(ExceptionMessage.PURCHASE_AMOUNT_EXCEPTION
                     .toString()));
         }
@@ -55,9 +53,8 @@ public class Buyer {
         }
     }
 
-    public void pickLotteryNumbers() {
+    public void pickLotteryNumbers(int ticketCount) {
         boughtTickets = new ArrayList<>();
-        int ticketCount = purchaseAmount / 1000;
 
         for (int i = 0; i < ticketCount; i++) {
             boughtTickets.add(new Lotto(
