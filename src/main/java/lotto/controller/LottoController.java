@@ -9,13 +9,16 @@ public class LottoController {
     LottoService lottoService = new LottoService();
 
     public void startLotto() {
-        int money = Integer.parseInt(InputView.inputMoney());
         try {
+            int money = Integer.parseInt(InputView.inputMoney());
+
             lottoService.buyLotto(money);
             initWinningLotto();
             initBonusNumber();
             lottoProgress();
 
+        } catch (NumberFormatException e) {
+            System.out.println("[ERROR] 금액은 숫자만 입력 가능합니다.");
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
@@ -50,6 +53,10 @@ public class LottoController {
     public void lottoProgress() {
         lottoService.initResultLotto();
         lottoService.saveResultLotto();
+        lottoResult();
+    }
+
+    public void lottoResult() {
         showUserLottiesResult();
 
         lottoService.calculateReward();
