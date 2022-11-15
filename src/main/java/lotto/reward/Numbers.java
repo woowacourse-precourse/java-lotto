@@ -1,6 +1,6 @@
 package lotto.reward;
 
-import lotto.utils.Exception;
+import lotto.utils.MoneyFalseException;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -41,7 +41,7 @@ public class Numbers implements Comparable<Numbers> {
     public static Numbers of(String input) {
         Matcher matcher = CORRECT_NUMBER_PATTERN.matcher(input);
         if (!matcher.find()) {
-            throw new IllegalArgumentException(Exception.catchException());
+            throw new IllegalArgumentException(MoneyFalseException.catchException());
         }
         return of(String.valueOf(Integer.parseInt(input)));
     }

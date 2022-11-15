@@ -1,6 +1,6 @@
 package lotto.caculation;
 
-import lotto.utils.Exception;
+import lotto.utils.MoneyFalseException;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -18,7 +18,7 @@ public class Money {
     private void checkPattern(String input) {
         Matcher matcher = CORRECT_MONEY_PATTERN.matcher(input);
         if (!matcher.find()) {
-            throw new IllegalArgumentException(Exception.catchException());
+            throw new IllegalArgumentException(MoneyFalseException.catchException());
         }
     }
 

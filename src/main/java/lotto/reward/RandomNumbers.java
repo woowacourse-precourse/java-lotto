@@ -4,7 +4,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.*;
 
-public class RandomNumbers {
+public class RandomNumbers implements NumberStrategy{
     private static final int START_NUMBER = 1;
     private static final int END_NUMBER = 45;
     private static final int COUNT = 6;
@@ -15,6 +15,7 @@ public class RandomNumbers {
             lottoNumbers.add(Numbers.of(i));
         }
     }
+    @Override
     public List<Numbers> getLottoNumbers() {
         Randoms.pickUniqueNumbersInRange(START_NUMBER, END_NUMBER, COUNT);
         Collections.shuffle(lottoNumbers);
