@@ -14,6 +14,16 @@ public class WinningLotto {
         this.bonusNumber = bonusNumber;
     }
 
+    public int countMatchingNumbers(List<Integer> lottoNumbers) {
+        return (int) lottoNumbers.stream()
+                .filter(lotto.getNumbers()::contains)
+                .count();
+    }
+
+    public boolean isContainingBonusNumber(List<Integer> lottoNumbers) {
+        return lottoNumbers.contains(bonusNumber);
+    }
+
     private void validate(Lotto lotto, int bonusNumber) {
         LottoNumberValidator.validateInRange(bonusNumber);
         validateBonusNumberDuplicate(lotto.getNumbers(), bonusNumber);
