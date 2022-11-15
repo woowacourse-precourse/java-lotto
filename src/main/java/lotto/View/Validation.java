@@ -16,7 +16,7 @@ public class Validation {
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
-        return (isMoney || isRightUnit || isNotZero);
+        return (isMoney && isRightUnit && isNotZero);
     }
 
     boolean validateIsMoney(String input) throws IllegalArgumentException {
