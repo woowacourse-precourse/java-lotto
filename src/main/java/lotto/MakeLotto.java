@@ -8,7 +8,7 @@ import static lotto.Constant.SHOW_BUY_COUNT;
 import static lotto.Game.GeneratedLotto;
 
 public class MakeLotto {
-    public static void LottoGenerator(int nLotto) {
+    public static void LottoGenerator(int nLotto) { //생성기
         System.out.println("\n" + nLotto + SHOW_BUY_COUNT);
         for (int i = 0; i < nLotto; i++) {
             List<Integer> lottoNumbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
