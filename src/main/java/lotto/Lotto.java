@@ -21,6 +21,12 @@ public class Lotto {
         Collections.sort(this.numbers);
     }
 
+    public int count(Lotto other) {
+        return (int) other.numbers.stream()
+                .filter(this::checkContains)
+                .count();
+    }
+
     protected boolean checkContains(int number) {
         return numbers.contains(number);
     }
