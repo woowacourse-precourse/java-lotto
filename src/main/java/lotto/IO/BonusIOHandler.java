@@ -30,7 +30,7 @@ public class BonusIOHandler extends IOHandler {
     // 보너스 번호가 당첨 번호와 중복되는 수인지 체크한다.
     private void duplicationCheck(List<Integer> numbers){
         if(numbers.contains(this.bonus)){
-            throw new IllegalArgumentException("[ERROR] 입력하신 번호는 당첨번호와 중복됩니다.");
+            throw new IllegalArgumentException("[ERROR] 입력하신 보너스 번호는 당첨번호와 중복됩니다.");
         }
     }
 }
