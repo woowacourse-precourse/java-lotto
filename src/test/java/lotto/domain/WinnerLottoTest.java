@@ -1,8 +1,5 @@
-package lotto;
+package lotto.domain;
 
-import lotto.domain.Lotto;
-import lotto.domain.LottoRank;
-import lotto.domain.WinnerLotto;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -45,20 +42,6 @@ public class WinnerLottoTest {
     void bonusDuplicate() {
         assertThatThrownBy(() -> new WinnerLotto("1,2,3,4,5,6", "4"))
                 .isInstanceOf(IllegalArgumentException.class);
-    }
-
-    @DisplayName("문자열을 Lotto 도메인으로 convert 한다.")
-    @Test
-    void convertToLotto() {
-        //given
-        String inputNumbers = "1,2,3,4,5,6";
-        WinnerLotto winnerLotto = new WinnerLotto(inputNumbers, "7");
-
-        //when
-        Lotto lotto = winnerLotto.getWinLotto();
-
-        //then
-        assertThat(lotto.getNumbers().isEmpty()).isFalse();
     }
 
     @DisplayName("당첨번호가 3개 미만이고 보너스번호가 일치하지 않으면 당첨내역이 없다.")
