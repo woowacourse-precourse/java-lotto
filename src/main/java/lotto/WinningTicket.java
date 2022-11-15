@@ -65,4 +65,13 @@ public class WinningTicket {
         validateBonusNumber(bonus);
         this.bonusNumber = Integer.parseInt(bonus);
     }
+
+    private String inputBonusNumber() {
+        String userInput;
+
+        System.out.println("보너스 번호를 입력해 주세요.");
+        userInput = Console.readLine();
+
+        return userInput;
+    }
 }
