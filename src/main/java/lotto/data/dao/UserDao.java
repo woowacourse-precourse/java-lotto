@@ -7,6 +7,7 @@ import java.util.Optional;
 import lotto.data.dto.LottoQueryDto;
 import lotto.data.entity.LottoBundle;
 import lotto.data.entity.LottoRound;
+import lotto.data.entity.WinNumber;
 import lotto.data.repository.LottoBundleRepository;
 import lotto.data.repository.WinNumberRepository;
 import lotto.type.ExceptionType;
@@ -45,14 +46,10 @@ public class UserDao {
         Long userId = lottoQueryDto.getUserId();
         HashMap<Long, List<LottoBundle>> userIdMapper = getLottoRound(roundId).getUserIdMapper();
         List<LottoBundle> lottoBundles = userIdMapper.getOrDefault(userId, null);
-        if(isNull(lottoBundles)) {
+        if(lottoBundles == null) {
             throw ExceptionType.NULL_PURCHASE.getException();
         }
         return lottoBundles;
-    }
-
-    private boolean isNull(List<LottoBundle> lottoBundles) {
-        return lottoBundles == null;
     }
 
     private LottoRound getLottoRound(Long roundId) {
@@ -61,5 +58,13 @@ public class UserDao {
             throw ExceptionType.NULL_ROUND.getException();
         }
         return selectedLottoRound.get();
+    }
+
+    public WinNumber getWinNumber(Long roundId) {
+        Optional<WinNumber> selectedWinNumber = winNumberRepository.findById(roundId);
+        if (selectedWinNumber.isEmpty()) {
+            throw ExceptionType.NULL_WIN_NUMBER.getException();
+        }
+        return selectedWinNumber.get();
     }
 }

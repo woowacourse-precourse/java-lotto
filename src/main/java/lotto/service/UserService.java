@@ -11,6 +11,7 @@ import lotto.data.dto.LottoDto;
 import lotto.data.dto.LottoQueryDto;
 import lotto.data.entity.Lotto;
 import lotto.data.entity.LottoBundle;
+import lotto.data.entity.WinNumber;
 import lotto.type.LottoResultType;
 
 public class UserService {
@@ -35,19 +36,20 @@ public class UserService {
 
     public HashMap<LottoResultType, Integer> getMyResult(LottoQueryDto lottoQueryDto) {
         HashMap<LottoResultType, Integer> lottoResults = new HashMap<>();
-        List<LottoBundle> lottoBundles = userDao.selectLottoBundles(lottoQueryDto);
         Long roundId = lottoQueryDto.getRoundId();
+        WinNumber winNumber = userDao.getWinNumber(roundId);
+        List<LottoBundle> lottoBundles = userDao.selectLottoBundles(lottoQueryDto);
         lottoBundles.stream()
                 .map(LottoBundle::getLottos)
                 .flatMap(Collection::stream)
-                .map(lotto -> this.getEachResult(lotto, roundId))
+                .map(lotto -> this.getEachResult(lotto, winNumber))
                 .forEach(result -> lottoResults.put(result, lottoResults.getOrDefault(result, 0) + 1));
         return lottoResults;
     }
 
-    private LottoResultType getEachResult(Lotto lotto, Long roundId) {
+    private LottoResultType getEachResult(Lotto lotto, WinNumber winNumber) {
         return Arrays.stream(LottoResultType.values())
-                .filter(result -> result.isAcquired(lotto, roundId))
+                .filter(result -> result.isAcquired(lotto, winNumber))
                 .findFirst()
                 .get();
     }

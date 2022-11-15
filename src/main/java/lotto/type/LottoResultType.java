@@ -1,9 +1,8 @@
 package lotto.type;
 
-import java.util.Optional;
+import java.util.Set;
 import lotto.data.entity.Lotto;
 import lotto.data.entity.WinNumber;
-import lotto.data.repository.WinNumberRepository;
 import utils.DecimalFormatter;
 
 public enum LottoResultType {
@@ -39,32 +38,20 @@ public enum LottoResultType {
         return viewMessage;
     }
 
-    public boolean isAcquired(Lotto lotto, Long roundId) {
-        boolean checkWinNumber = getMatches(lotto, roundId) >= matchCount;
-        boolean checkBonus = !needBonusMatch || hasBonusNumber(lotto, roundId);
+    public boolean isAcquired(Lotto lotto, WinNumber winNumber) {
+        boolean checkWinNumber = getMatches(lotto, winNumber.getWinNumbers()) >= matchCount;
+        boolean checkBonus = !needBonusMatch || hasBonusNumber(lotto, winNumber.getBonusNumber());
         return checkWinNumber && checkBonus;
     }
 
-    private static final WinNumberRepository winNumberRepository = WinNumberRepository.getInstance();
-
-    private static int getMatches(Lotto lotto, Long roundId) {
-        WinNumber winNumber = findWinNumber(roundId);
+    private static int getMatches(Lotto lotto, Set<Integer> winNumbers) {
         return (int) lotto.getNumbers()
                 .stream()
-                .filter(number -> winNumber.getWinNumbers().contains(number))
+                .filter(winNumbers::contains)
                 .count();
     }
 
-    private static boolean hasBonusNumber(Lotto lotto, Long roundId) {
-        WinNumber winNumber = findWinNumber(roundId);
-        return lotto.getNumbers().contains(winNumber.getBonusNumber());
-    }
-
-    private static WinNumber findWinNumber(Long roundId) {
-        Optional<WinNumber> selectedWinNumber = winNumberRepository.findById(roundId);
-        if (selectedWinNumber.isEmpty()) {
-            throw new NullPointerException();
-        }
-        return selectedWinNumber.get();
+    private static boolean hasBonusNumber(Lotto lotto, Integer bonusNumber) {
+        return lotto.getNumbers().contains(bonusNumber);
     }
 }
