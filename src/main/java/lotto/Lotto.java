@@ -1,16 +1,19 @@
 package lotto;
 
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Lotto {
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
-
         validate(numbers);
-
-        this.numbers = numbers;
+        List<Integer> nums = new ArrayList<>();
+        nums.addAll(numbers);
+        Collections.sort(nums);
+        this.numbers = nums;
     }
 
     private void validate(List<Integer> numbers) {
@@ -36,6 +39,7 @@ public class Lotto {
         return matchNumCnt;
     }
 
+
     //보너스 번호 일치 여부
     public boolean checkBonusMatched(int bonusNum,int matchNumCnt) {
         int secondRankCont = 5;
@@ -55,7 +59,7 @@ public class Lotto {
                 return true;
             } else if (key < numbers.get(mid)) {
                 return isMatched(key,low,mid-1);
-            } else if (key > numbers.get(mid)) {
+            } else {
                 return isMatched(key,mid+1,high);
             }
         }
@@ -65,11 +69,10 @@ public class Lotto {
 
 
     //등수를 구하는 메소드 구현
-    public Rank getRank(List<Integer> winningNums) {
-        int bonusNumIdx = 6;
+    public Rank getRank(List<Integer> winningNums, boolean isbonusMatched) {
 
         int matchedNumCnt = countMatchedNumbers(winningNums);
-        boolean isbonusMatched = checkBonusMatched(winningNums.get(bonusNumIdx),matchedNumCnt);
+
         return Rank.getRank(matchedNumCnt,isbonusMatched);
     }
 

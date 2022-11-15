@@ -35,7 +35,7 @@ public class Calculator {
         for(Lotto lotto : lottos){
             int cnt = lotto.countMatchedNumbers(WinningNumbers);
             boolean isBonusmatched = lotto.checkBonusMatched(bonus,cnt);
-            Rank rank = lotto.getRank(WinningNumbers);
+            Rank rank = lotto.getRank(WinningNumbers,isBonusmatched);
             rank.setCount(rank.getCount()+1);
 //            System.out.println("cnt = " + cnt);
 //            System.out.println("isBonusmatched = " + isBonusmatched);

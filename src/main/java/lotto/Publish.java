@@ -14,9 +14,8 @@ public class Publish {
         List<Lotto> lottos = new ArrayList<>();
 
         for (int i = 0; i<lotto_cnt; i++){
-            List<Integer> nums = new ArrayList<>();
-            nums.addAll(Randoms.pickUniqueNumbersInRange(1, 45, 6));
-            nums = OrderASC(nums);
+            List<Integer> nums = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+
             Print.printNumbers(nums);
             Lotto lotto = new Lotto(nums);
             lottos.add(lotto);
@@ -47,10 +46,6 @@ public class Publish {
     }
 
 
-    public static List<Integer> OrderASC(List<Integer> nums){
-        Collections.sort(nums);
-        return nums;
-    }
 
 
 
