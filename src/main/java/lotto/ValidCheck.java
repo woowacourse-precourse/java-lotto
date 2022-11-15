@@ -43,7 +43,7 @@ public class ValidCheck {
         if (!InputValue.matches(pattern)) {
             throw new IllegalArgumentException(Error.NONDIGIT_ERROR.getText());
         }
-        if (Integer.parseInt(InputValue) < 1 || Integer.parseInt(InputValue) < 1) {
+        if (Integer.parseInt(InputValue) < 1 || Integer.parseInt(InputValue) > 45) {
             throw new IllegalArgumentException(Error.RANGE_ERROR.getText());
         }
     }
