@@ -24,31 +24,12 @@ public class Lotto {
     }
 
     public void startLotto() {
-        InputLotto inputLotto = new InputLotto();
-
-        ShowMessage.showInputAmountBuy(); // "구입 금액을 입력해 주세요"를 출력
-        long numberOfLotto = inputLotto.inputValueToints(); // 구입 금액 입력
-        numberOfLotto = lottoCount(numberOfLotto); // 로또의 개수
-        ShowMessage.showHowManyBuy(numberOfLotto); // "n개를 구매했습니다."를 출력
-
-        List<Lotto> lottoList = createLotto(numberOfLotto); // 로또 생성
-        ShowMessage.showLottoNumber(lottoList); // 로또 리스트 출력
-
-        ShowMessage.showInputLottoNumber(); // "당첨 번호를 입력해 주세요."를 출력
-        List<Integer> winNumbers = inputLotto.inputValueSplitCommas(); // 당첨 번호 입력
-
-        ShowMessage.showInputBonusNumber(); // "보너스 번호를 입력해 주세요."를 출력
-        int bonusNumber = inputLotto.inputBonusNumber(winNumbers); // 보너스 번호 입력
-
-        WinLotto winLotto = new WinLotto();
-        winLotto.setBonusNumber(bonusNumber); // 보너스 번호를 객체에 저장
-        List<WinLotto> winLottoList = compareLottos(lottoList, winNumbers); // 당첨 번호 개수와 보너스 번호 포함 여부를 저장
-
-        ShowMessage.showLottoStatistics(); // "당첨 통계\n---"를 출력
-        Map<WinStatistics, Long> lottoStatisticsMap = calculateLotto(winLottoList); // 정산
-        WinStatistics.showWinStatistics(lottoStatisticsMap); // 정산 결과 출력
-        WinStatistics.calculateProfit(lottoStatisticsMap); // 총 수익률 계산
-
+        long numberOfLotto = buyLotto(); // 구매할 로또의 개수
+        List<Lotto> lottoList = createLottoList(numberOfLotto); // 로또 리스트 생성
+        List<Integer> winNumbers = winLottoNumber(); // 당첨 번호 입력
+        int bonusNumber = bonusNumber(winNumbers);
+        List<WinLotto> winLottoList = createWinLottoList(lottoList, bonusNumber, winNumbers); // 당첨 번호 개수와 보너스 번호 포함 여부를 저장
+        Map<WinStatistics, Long> lottoStatisticsMap = lottoStatistics(winLottoList);
 //        for (WinLotto number : winLottoList) {
 //            System.out.println("보너스 번호:" + number.getBonusNumber() + ":");
 //            System.out.println("당첨 번호 개수" + number.getWinLottoCount() + ":"); // matchNum
@@ -60,6 +41,50 @@ public class Lotto {
 //        System.out.println(lottoStatisticsMap.get(WinStatistics.THIRD));
 //        System.out.println(lottoStatisticsMap.get(WinStatistics.SECOND));
 //        System.out.println(lottoStatisticsMap.get(WinStatistics.FIRST));
+    }
+
+    public long buyLotto() {
+        InputLotto inputLotto = new InputLotto();
+        ShowMessage.showInputAmountBuy(); // "구입 금액을 입력해 주세요"를 출력
+        long numberOfLotto = inputLotto.inputValueToints(); // 구입 금액 입력
+        numberOfLotto = lottoCount(numberOfLotto); // 로또의 개수
+        ShowMessage.showHowManyBuy(numberOfLotto); // "n개를 구매했습니다."를 출력
+        return numberOfLotto;
+    }
+
+    public List<Lotto> createLottoList(long numberOfLotto) {
+        List<Lotto> lottoList = createLotto(numberOfLotto); // 로또 생성
+        ShowMessage.showLottoNumber(lottoList); // 로또 리스트 출력
+        return lottoList;
+    }
+
+    public List<Integer> winLottoNumber(){
+        InputLotto inputLotto = new InputLotto();
+        ShowMessage.showInputLottoNumber(); // "당첨 번호를 입력해 주세요."를 출력
+        List<Integer> winNumbers = inputLotto.inputValueSplitCommas(); // 당첨 번호 입력
+        return winNumbers;
+    }
+
+    public int bonusNumber(List<Integer> winNumbers){
+        InputLotto inputLotto = new InputLotto();
+        ShowMessage.showInputBonusNumber(); // "보너스 번호를 입력해 주세요."를 출력
+        int bonusNumber = inputLotto.inputBonusNumber(winNumbers); // 보너스 번호 입력
+        return bonusNumber;
+    }
+
+    public List<WinLotto> createWinLottoList(List<Lotto> lottoList, int bonusNumber, List<Integer> winNumbers){
+        WinLotto winLotto = new WinLotto();
+        winLotto.setBonusNumber(bonusNumber); // 보너스 번호를 객체에 저장
+        List<WinLotto> winLottoList = compareLottos(lottoList, winNumbers); // 당첨 번호 개수와 보너스 번호 포함 여부를 저장
+        return winLottoList;
+    }
+
+    public Map<WinStatistics, Long> lottoStatistics(List<WinLotto> winLottoList){
+        ShowMessage.showLottoStatistics(); // "당첨 통계\n---"를 출력
+        Map<WinStatistics, Long> lottoStatisticsMap = calculateLotto(winLottoList); // 정산
+        WinStatistics.showWinStatistics(lottoStatisticsMap); // 정산 결과 출력
+        WinStatistics.calculateProfit(lottoStatisticsMap); // 총 수익률 계산
+        return lottoStatisticsMap;
     }
 
     public List<Integer> getLottoNumbers() {
@@ -85,11 +110,6 @@ public class Lotto {
         sortLottoNumberAscending(lotto);
         return lotto;
     }
-
-//    public List<Integer> createLottoNumber() {
-//        List<Integer> lottoNumbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
-//        return lottoNumbers;
-//    }
 
     public List<Integer> sortLottoNumberAscending(List<Integer> lotto) {
         List<Integer> lottos = new ArrayList<>(lotto);
