@@ -10,7 +10,18 @@
 - [x] Controller 내부에는 Model과 View의 코드가 있어도 된다.
 - [x] View가 Model로부터 데이터를 받을 때, 반드시 Controller에서 받아야 한다.
 
+
+<p align="center">
+  <img src="./lotto.PNG"/>
+</p>
+
+- 모든 숫자는 단순 예시입니다. 
+- 위의 도식을 아래와 같이 설명할 수 있습니다.
+
 ### Model
+
+
+
 
 - Purchase 모델
 
