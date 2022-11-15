@@ -9,9 +9,9 @@ public interface LottoService {
 
     LottoPurchaseInfo getLottoPurchase();
 
-    LottoWinNumberInfo getLottoWinNumbers();
+    String getLottoWinNumbers();
 
-    LottoWinNumberInfo getLottoBonusNumber();
+    int getLottoBonusNumber();
 
     List<Lotto> createLottoNumbers(int lottoGameCount);
 
