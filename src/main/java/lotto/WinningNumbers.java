@@ -4,23 +4,23 @@ import java.util.List;
 import java.util.Objects;
 
 public class WinningNumbers {
-    private final List<LottoItem> lottoItems;
-    private final LottoItem bonusNumber;
+    private final List<Integer> lottos;
+    private final Integer bonusNumber;
 
-    public WinningNumbers(List<LottoItem> lottoItems, LottoItem lottoItem) {
-        this.lottoItems = lottoItems;
+    public WinningNumbers(List<Integer> lottos, Integer lottoItem) {
+        this.lottos = lottos;
         this.bonusNumber = lottoItem;
     }
 
-    private void validate(List<LottoItem> numbers) {
+    private void validate(List<Lotto> numbers) {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException("[ERROR]");
         }
     }
 
     private void validateBonusNumberDuplicate(
-            List<LottoItem> lottoItems,
-            LottoItem bonusNumber
+            List<Lotto> lottoItems,
+            Lotto bonusNumber
     ) {
         if (lottoItems.contains(bonusNumber)) {
             throw new IllegalArgumentException("[ERROR]");
@@ -28,17 +28,17 @@ public class WinningNumbers {
     }
 
     public boolean hasLottoNumber(Integer lottoItem) {
-        return lottoItem.equals(lottoItem);
+        return lottos.contains(lottoItem);
     }
 
     public boolean hasBonusNumber(Integer lottoItem) {
-        return lottoItem.equals(lottoItem);
+        return lottos.equals(lottoItem);
     }
 
     @Override
     public String toString() {
         return "WinningNumbers{" +
-                "lottoNumbers=" + lottoItems +
+                "lottoNumbers=" + lottos +
                 ", bonusNumber=" + bonusNumber +
                 '}';
     }
@@ -52,13 +52,13 @@ public class WinningNumbers {
             return false;
         }
         WinningNumbers that = (WinningNumbers) o;
-        return Objects.equals(lottoItems, that.lottoItems) && Objects
+        return Objects.equals(lottos, that.lottos) && Objects
                 .equals(bonusNumber, that.bonusNumber);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(lottoItems, bonusNumber);
+        return Objects.hash(lottos, bonusNumber);
     }
 
 }

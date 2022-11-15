@@ -2,6 +2,7 @@ package lotto;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -32,14 +33,14 @@ public class LottoController {
     }
 
     private WinningNumbers printWinningNumber() {
-        List<LottoItem> lottoItems = new ArrayList<>();
+        List<Integer> lottoItems = new ArrayList<>();
         for (Integer number : winningNumber()) {
-            lottoItems.add(new LottoItem(number));
+            lottoItems.add(number);
         }
 
-        LottoItem lottoItem = new LottoItem(bonusNumber());
+        Integer bonusNumber = new Integer(bonusNumber());
 
-        return new WinningNumbers(lottoItems, lottoItem);
+        return new WinningNumbers(lottoItems, bonusNumber);
     }
 
     public static List<Integer> winningNumber() {
@@ -63,8 +64,8 @@ public class LottoController {
             System.out.printf(generateResultMessage(prize, number));
         }
 
-        double rate = Math.floor(lottoResult.getRate() * 100) / 100 ;
-        System.out.printf("총 수익률은 %.2f 입니다.", rate);
+        double rate = Math.floor(lottoResult.getRate() * 100) ;
+        System.out.printf("총 수익률은 %.1f%% 입니다.", rate);
     }
 
     public String generateResultMessage(LottoPrize prize, int number) {
@@ -72,7 +73,7 @@ public class LottoController {
             return "";
         }
         if (prize == LottoPrize.SECOUND) {
-            return String.format("%d개, 보너스 볼 일치 %d개 (%d)원 ", prize.getLottoNumberMatches(), prize.getReward().get(), number);
+            return String.format("%d개 일치, 보너스 볼 일치 (%d)원 - %d개 \n", prize.getLottoNumberMatches(), prize.getReward().get(), number);
         }
         return String.format("%d개 일치 (%d원) - %d개 \n", prize.getLottoNumberMatches(), prize.getReward().get(), number);
     }
