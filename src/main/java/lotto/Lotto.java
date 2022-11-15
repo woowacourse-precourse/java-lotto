@@ -78,5 +78,12 @@ public class Lotto {
         }
     }
 
+    public void totalRank(List<List<Integer>> LottoPaper) {
+
+        for (int i = 0; i < LottoPaper.size(); i++) {
+            RankLine(LottoPaper.get(i));
+        }
+    }
+
 
 }
