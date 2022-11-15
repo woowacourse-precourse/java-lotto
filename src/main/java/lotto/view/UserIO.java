@@ -26,10 +26,10 @@ public class UserIO {
             throw new IllegalArgumentException(messages.INVALID_FORMAT_MONEY.getErrorMsg());
         }
         int money = Integer.valueOf(input);
-        System.out.println(money + "\n");
         if (money % 1000 != 0) {
             throw new IllegalArgumentException(messages.INVALID_NUMBER_MONEY.getErrorMsg());
         }
+        System.out.println(money + "\n");
         return money;
     }
 
@@ -68,5 +68,9 @@ public class UserIO {
 
     public List<Lotto> getUserLottoList() {
         return this.userLotto;
+    }
+
+    public void setUserLotto(List<Lotto> userLotto) {
+        this.userLotto = userLotto;
     }
 }
