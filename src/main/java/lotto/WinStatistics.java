@@ -61,11 +61,8 @@ public enum WinStatistics {
         long lottoCount = 0;
         int i = 0;
         for (WinStatistics winStatistics : WinStatistics.values()) {
-//            System.out.println("lottoStatistics" + lottoStatisticsMap.get(winStatistics));
-//            System.out.println("prize:" + prizeList.get(i));
             profit += lottoStatisticsMap.get(winStatistics) * prizeList.get(i);
             lottoCount += lottoStatisticsMap.get(winStatistics);
-//            System.out.println("lottoCount:" + lottoCount);
             i++;
         }
         showProfitLotto(profit, lottoCount);
