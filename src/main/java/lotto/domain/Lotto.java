@@ -20,6 +20,10 @@ public class Lotto {
         validate(numbers);
         this.numbers = numbers;
     }
+    public List<Integer> getNumbers() {
+        return numbers;
+    }
+
 
 
 
