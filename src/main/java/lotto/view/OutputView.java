@@ -1,6 +1,6 @@
 package lotto.view;
 
-import static lotto.constant.Message.INPUT_MONEY;
+import static lotto.constant.Message.INPUT_PURCHASE_MONEY;
 import static lotto.constant.Message.LOTTO_GENERATED;
 
 import java.util.List;
@@ -8,8 +8,8 @@ import lotto.lotto.Lotto;
 
 public class OutputView {
 
-    public static void printInputMoney() {
-        System.out.println(INPUT_MONEY);
+    public static void printInputPurchaseMoney() {
+        System.out.println(INPUT_PURCHASE_MONEY);
     }
 
     public static void printGeneratedLotto(List<Lotto> lottos) {

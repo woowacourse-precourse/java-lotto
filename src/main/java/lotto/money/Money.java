@@ -3,9 +3,9 @@ package lotto.money;
 import static lotto.constant.Rules.LOTTO_PRICE;
 
 import java.text.DecimalFormat;
-import lotto.exception.money.MoneyNotDividedByPriceException;
-import lotto.exception.money.MoneyNotPositiveIntegerException;
-import lotto.exception.money.MoneyRangeException;
+import lotto.exception.money.PurchaseMoneyNotDividedByPriceException;
+import lotto.exception.money.PurchaseMoneyNotPositiveIntegerException;
+import lotto.exception.money.PurchaseMoneyRangeException;
 
 public class Money {
 
@@ -22,14 +22,14 @@ public class Money {
 
     private static void validate(String money) {
         if (!verifyPositiveInteger(money)) {
-            throw new MoneyNotPositiveIntegerException();
+            throw new PurchaseMoneyNotPositiveIntegerException();
         }
         int moneyValue = Integer.parseInt(money);
         if (!verifyRange(moneyValue)) {
-            throw new MoneyRangeException();
+            throw new PurchaseMoneyRangeException();
         }
         if (!verifyDividedByPrice(moneyValue)) {
-            throw new MoneyNotDividedByPriceException();
+            throw new PurchaseMoneyNotDividedByPriceException();
         }
     }
 

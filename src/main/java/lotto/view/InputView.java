@@ -7,8 +7,8 @@ import lotto.money.Money;
 
 public class InputView {
 
-    public static Money inputMoney() {
-        String money = readLine();
-        return createPurchaseMoney(money);
+    public static Money inputPurchaseMoney() {
+        String purchaseMoney = readLine();
+        return createPurchaseMoney(purchaseMoney);
     }
 }
