@@ -12,7 +12,7 @@ public class WinningResult {
         this.totalResult = conversionLotto(winningNumber, lottos);
     }
 
-    public Map<LottoRating, Integer> conversionLotto(WinningLotto winningNumber, List<Lotto> lottos) {
+    private Map<LottoRating, Integer> conversionLotto(WinningLotto winningNumber, List<Lotto> lottos) {
         Map<LottoRating, Integer> totalResult = new EnumMap<>(LottoRating.class);
         totalResult.put(LottoRating.FIFTH, 0);
         totalResult.put(LottoRating.FOURTH, 0);
@@ -56,5 +56,15 @@ public class WinningResult {
 
     public Integer getCount(LottoRating lottoRating) {
         return totalResult.getOrDefault(lottoRating, 0);
+    }
+
+    public double createProfit(String purchaseAmount) {
+        double money = Double.parseDouble(purchaseAmount);
+        long sum = 0;
+        for (LottoRating key : totalResult.keySet()) {
+            sum += totalResult.get(key) * key.getWinningMoney();
+        }
+
+        return sum / money * 100;
     }
 }
