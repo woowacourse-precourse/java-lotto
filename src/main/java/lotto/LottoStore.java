@@ -52,6 +52,6 @@ public class LottoStore {
 
 	private void bonus() {
 		bonusNumber = Util.strToInt(ConsoleIn.readLine());
-//		Verify.verifyBonus(bonusNumber);
+		Verify.verifyBonus(bonusNumber, goal);
 	}
 }
