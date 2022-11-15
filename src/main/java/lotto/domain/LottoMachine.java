@@ -15,6 +15,7 @@ public class LottoMachine extends Lotto {
 
     public static List<Integer> convertStringToNumber(String numbers) {
         List<Integer> convertNumbers = new ArrayList<>();
+        validateSeparator(numbers);
 
         for (String number : numbers.split(",")) {
             validateIsNumber(number);
@@ -64,6 +65,12 @@ public class LottoMachine extends Lotto {
             Integer.parseInt(number);
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException(ExceptionMessage.NUMBER_FORMAT_ERROR.getMessage());
+        }
+    }
+
+    public static void validateSeparator(String numbers) {
+        if (!numbers.contains(",")) {
+            throw new IllegalArgumentException(ExceptionMessage.NONE_SEPARATOR_ERROR.getMessage());
         }
     }
 
