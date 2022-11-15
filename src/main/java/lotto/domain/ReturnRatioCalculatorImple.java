@@ -8,6 +8,10 @@ public class ReturnRatioCalculatorImple implements ReturnRatioCalculator{
     @Override
     public double calculateReturnRatio(double expenses, Map<Rank, Integer> winningStatus ) {
         calculateTotalPrizeMoney(winningStatus);
+        return calculatePercent(expenses);
+    }
+
+    private double calculatePercent(double expenses){
         return (totalPrizeMoney / expenses) * 100;
     }
 
