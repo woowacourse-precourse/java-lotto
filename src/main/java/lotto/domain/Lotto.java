@@ -25,8 +25,8 @@ public class Lotto {
             .count();
     }
 
-    public static boolean isBonus(Lotto lotto, int bonus) {
-        return lotto.numbers.contains(bonus);
+    public static boolean isBonus(Lotto lotto, Bonus bonus) {
+        return lotto.numbers.contains(bonus.getBonusNum());
     }
 
     private void validateSize(List<Integer> numbers) {
