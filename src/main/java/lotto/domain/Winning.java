@@ -48,4 +48,8 @@ public class Winning {
         return numbers.stream()
                 .anyMatch(number -> number < MIN_LOTTO || number > MAX_LOTTO);
     }
+
+    private boolean isIncludeBonus(String bonusNumber) {
+        return winningNumbers.contains(Integer.parseInt(bonusNumber));
+    }
 }
