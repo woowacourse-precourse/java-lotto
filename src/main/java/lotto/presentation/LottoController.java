@@ -31,10 +31,19 @@ public class LottoController {
 
         List<Lotto> clientLotto = lottoFacade.buyLotto(parseNumber(moneyInput));
 
+        printLottoNumber(clientLotto);
+        return clientLotto;
+    }
+
+    private String inputWithMessage(String message) {
+        System.out.println(message);
+        return Console.readLine();
+    }
+
+    private void printLottoNumber(List<Lotto> clientLotto) {
         System.out.println(clientLotto.size()+ViewValue.BUY_INFO_DONE.getValue());
 
         clientLotto.forEach(lotto -> System.out.println(lotto.getNumbers()));
-        return clientLotto;
     }
 
     private Integer parseNumber(String stringInput) {
@@ -44,11 +53,6 @@ public class LottoController {
             System.out.println(ErrorMessageEnum.ERROR_MESSAGE_VALIDATE.getValue());
             throw new NoSuchElementException();
         }
-    }
-
-    private String inputWithMessage(String message) {
-        System.out.println(message);
-        return Console.readLine();
     }
 
     private Lotto inputWinLotto() {
