@@ -42,10 +42,10 @@ public class Controller {
         // 분석 결과를 담는 LinkedHashMap을 만든다.
         LinkedHashMap<Integer, Integer> result = Model.CreateAnalyzedResultLinkedHashMap();
 
+        // 로또 보너스 숫자와 로또 숫자 집합을를 준비한다.
         Integer lottoBonusNumber = numbers.get(6);
         List<Integer> lottoNumbers = numbers;
         lottoNumbers.remove(6);
-
         HashSet<Integer> lottoNumbersSet = Model.MakeListToSet(lottoNumbers);
 
         // 발행된 로또들을 분석한다.
