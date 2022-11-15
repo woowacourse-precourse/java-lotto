@@ -7,9 +7,9 @@ public class Application {
         //TODO: 프로그램 구현
         try {
             UserLotto userLotto = new UserLotto();
+            userLotto.startGame();
         } catch (Exception e) {
             System.out.println(e.getMessage());
-            throw e;
         }
     }
 }
