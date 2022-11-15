@@ -60,7 +60,8 @@ public class Lotto {
         return this.bonus;
     }
 
-    public void sortListInAscending(List<Integer> numbers){
+    private void sortListInAscending(List<Integer> numbers){
         numbers.sort(Comparator.naturalOrder());
     }
+
 }
