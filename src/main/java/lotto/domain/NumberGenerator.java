@@ -14,9 +14,6 @@ public class NumberGenerator {
     private static final String regexWinningNumber = "^\\d,\\d,\\d,\\d,\\d,\\d$";
     private static final String regexBonusNumber = "^\\d$";
 
-    public NumberGenerator() {
-    }
-
     public NumberGenerator(int start, int end, int count) {
         numbers = Randoms.pickUniqueNumbersInRange(start, end, count);
     }
@@ -28,11 +25,9 @@ public class NumberGenerator {
     public void setWinningNumber() {
         String input = inputWinningNumber();
         validateWinningNumber(input);
-        String[] inputNumber = splitStr(input);
-        numbers = new ArrayList<>();
-        for (int i = 0; i < inputNumber.length; i++) {
-            numbers.add(Integer.parseInt(inputNumber[i]));
-        }
+        numbers.clear();
+        Set<Integer> set = remainUniqueNumber(input);
+        numbers.addAll(set);
     }
 
     private String inputWinningNumber() {
@@ -43,11 +38,7 @@ public class NumberGenerator {
         if (!str.matches(regexWinningNumber)) {
             throw new IllegalArgumentException();
         }
-        String[] inputNumber = splitStr(str);
-        Set<Integer> set = new HashSet<>();
-        for (int i = 0; i < inputNumber.length; i++) {
-            set.add(Integer.parseInt(inputNumber[i]));
-        }
+        Set<Integer> set = remainUniqueNumber(str);
         if (set.size() != 6) {
             throw new IllegalArgumentException();
         }
@@ -56,6 +47,15 @@ public class NumberGenerator {
                 throw new IllegalArgumentException();
             }
         }
+    }
+
+    private Set<Integer> remainUniqueNumber(String str) {
+        String[] inputNumber = splitStr(str);
+        Set<Integer> set = new HashSet<>();
+        for (int i = 0; i < inputNumber.length; i++) {
+            set.add(Integer.parseInt(inputNumber[i]));
+        }
+        return set;
     }
 
     private String[] splitStr(String str) {
