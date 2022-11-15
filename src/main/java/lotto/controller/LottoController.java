@@ -3,11 +3,13 @@ package lotto.controller;
 import lotto.domain.Lotto;
 import lotto.domain.LottoCalculator;
 import lotto.domain.LottoGenerator;
+import lotto.domain.Rank;
 import lotto.domain.User;
 import lotto.view.InputView;
 import lotto.view.OutputView;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class LottoController {
 
@@ -18,6 +20,7 @@ public class LottoController {
     private Lotto winningLotto;
     private User user = new User();
     private LottoGenerator lottoGenerator = new LottoGenerator();
+    private LottoCalculator lottoCalculator = new LottoCalculator();
 
     public void buyLotto() {
         InputView.requestAmount();
@@ -41,5 +44,11 @@ public class LottoController {
 
         InputView.requestBonusNumber();
         bonusNumber = user.inputOfBonusNumber(winningLotto);
+    }
+
+    public void calculateLottoResult() {
+        Map<Rank, Integer> lottoResult = lottoCalculator.calculateResult(lottos, winningLotto, bonusNumber);
+        double profitRate = lottoCalculator.calculateProfitRate(moneyAmount);
+        OutputView.printLottoResult(lottoResult, profitRate);
     }
 }
