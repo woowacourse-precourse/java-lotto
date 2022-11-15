@@ -39,6 +39,6 @@ public class Ui {
     }
 
     public void printTotalProfit(WinningResult winningResult, String purchaseAmount) {
-        System.out.printf("총 수익률은 %.1f입니다.", winningResult.createProfit(purchaseAmount));
+        System.out.printf("총 수익률은 %.1f%%입니다.", winningResult.createProfit(purchaseAmount));
     }
 }
