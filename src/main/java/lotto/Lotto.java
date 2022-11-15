@@ -54,4 +54,21 @@ public class Lotto {
     private boolean isNotInLottoNumberRange(int number) {
         return number < MIN_VALUE || number > MAX_VALUE;
     }
+
+    public int match(WinningLotto winningLotto) {
+        int matchCount = 0;
+        for (int number : winningLotto.getNumbers()) {
+            if (numbers.contains(number)) {
+                matchCount = matchCount + 1;
+            }
+        }
+        return matchCount;
+    }
+
+    public boolean matchBonus(int bonusNumber) {
+        if (numbers.contains(bonusNumber)) {
+            return true;
+        }
+        return false;
+    }
 }
