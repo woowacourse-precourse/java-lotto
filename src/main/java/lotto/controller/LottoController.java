@@ -25,7 +25,7 @@ public class LottoController {
     }
 
     private static WinningStatistics compieWinningStatistics(List<Lotto> lottos, Lotto winningNumbers,
-                                                          LottoNumber bonusNumber) {
+                                                             LottoNumber bonusNumber) {
         WinningResult winningResult = new WinningResult(winningNumbers, bonusNumber);
         WinningStatistics winningStatistics = winningResult.compileStatistics(lottos);
         OutputView.printWinningStatistics(winningStatistics);

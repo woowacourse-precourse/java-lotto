@@ -1,12 +1,15 @@
 package lotto.domain;
 
-import static lotto.constant.Constants.ErrorMessage.MAXIMUM_AMOUNT;
-import static lotto.constant.Constants.ErrorMessage.MINIMUM_AMOUNT;
+import static lotto.constant.Constants.ErrorMessage.OVER_MAXIMUM_AMOUNT;
+import static lotto.constant.Constants.ErrorMessage.LESS_MINIMUM_AMOUNT;
 import static lotto.constant.Constants.ErrorMessage.NON_UNIT_AMOUNT;
+import static lotto.constant.Constants.Money.MAXIMUM_AMOUNT;
+import static lotto.constant.Constants.Money.MINIMUM_AMOUNT;
 
 import lotto.constant.Constants;
 
 public class Money {
+    public static final double HUNDRED = 100D;
     private final int amount;
 
     public Money(int amount) {
@@ -21,18 +24,18 @@ public class Money {
     }
 
     public double calculateYield(long totalPrize) {
-        return 100D * totalPrize / amount;
+        return HUNDRED * totalPrize / amount;
     }
 
     private static void validateMinimumAmount(int money) {
-        if (money < Constants.Money.MINIMUM_AMOUNT) {
-            throw new IllegalArgumentException(MINIMUM_AMOUNT);
+        if (money < MINIMUM_AMOUNT) {
+            throw new IllegalArgumentException(LESS_MINIMUM_AMOUNT);
         }
     }
 
     private static void validateMaximumAmount(int money) {
-        if (money > Constants.Money.MAXIMUM_AMOUNT) {
-            throw new IllegalArgumentException(MAXIMUM_AMOUNT);
+        if (money > MAXIMUM_AMOUNT) {
+            throw new IllegalArgumentException(OVER_MAXIMUM_AMOUNT);
         }
     }
 

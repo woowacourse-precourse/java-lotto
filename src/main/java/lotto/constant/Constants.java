@@ -34,8 +34,8 @@ public final class Constants {
     public static final class ErrorMessage {
         public static final String NON_NUMBER = "[ERROR] 숫자가 아닌 문자가 입력되었습니다.";
         public static final String ALREADY_CONTAINS_BONUS_NUMBER = "[ERROR] 보너스 번호가 당첨 번호에 포함되어 있습니다.";
-        public static final String MINIMUM_AMOUNT = "[ERROR] 최소 1,000원 이상 구매해야 합니다.";
-        public static final String MAXIMUM_AMOUNT = "[ERROR] 구입 한도는 최대 10만원까지입니다.";
+        public static final String LESS_MINIMUM_AMOUNT = "[ERROR] 최소 1,000원 이상 구매해야 합니다.";
+        public static final String OVER_MAXIMUM_AMOUNT = "[ERROR] 구입 한도는 최대 10만원까지입니다.";
         public static final String NON_UNIT_AMOUNT = "[ERROR] 1,000원 단위로 입력해야 합니다.";
         public static final String OVER_RANGE = "[ERROR] 1~45 범위 밖의 숫자가 포함되어 있습니다.";
         public static final String WRONG_SIZE = "[ERROR] 로또는 숫자가 6개이어야 합니다.";
