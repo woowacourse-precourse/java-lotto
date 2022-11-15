@@ -1,7 +1,17 @@
 package lotto;
 
+import lotto.domain.Controller;
+import lotto.utils.Logger;
+import lotto.utils.Logger.LogType;
+
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        Config.validate();
+        Controller gameController = Controller.getInstance();
+        try {
+            gameController.run();
+        }catch (IllegalArgumentException e){
+            Logger.log(e.getMessage(), LogType.ERROR);
+        }
     }
 }
