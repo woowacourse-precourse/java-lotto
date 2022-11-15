@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 import lotto.enums.EtcNumber;
 import lotto.enums.InputMessage;
 
+import java.util.Collections;
 import java.util.List;
 
 public class InputView {
@@ -25,7 +26,7 @@ public class InputView {
         String inputWinningNumbers = Console.readLine();
         validateInputWinningLotto(inputWinningNumbers);
         List<Integer> winningNumbers = conversionUtility.convertStringWinningNumbersToList(inputWinningNumbers);
-        validateNumberRange(winningNumbers);
+        validateNumber(winningNumbers);
         System.out.println();
 
         return winningNumbers;
@@ -42,13 +43,22 @@ public class InputView {
     }
 
     public void validateInputMoney(String inputMoney) {
-        if (isNumber(inputMoney) && isBiggerThanThousand(inputMoney) && isDivideByThousand(inputMoney)) {
-            return;
+
+        if (!isNumber(inputMoney)) {
+            throw new IllegalArgumentException(InputMessage.ERROR_MESSAGE.getMessage());
         }
-        throw new IllegalArgumentException(InputMessage.ERROR_MESSAGE.getMessage());
+
+        if (!isBiggerThanThousand(inputMoney)) {
+            throw new IllegalArgumentException(InputMessage.ERROR_MESSAGE.getMessage());
+        }
+
+        if (!isDivideByThousand(inputMoney)) {
+            throw new IllegalArgumentException(InputMessage.ERROR_MESSAGE.getMessage());
+        }
     }
 
     public boolean isNumber(String input) {
+
         for (int index = EtcNumber.ZERO.getNumber(); index < input.length(); index++) {
             char number = input.charAt(index);
             if (!Character.isDigit(number)) {
@@ -72,10 +82,9 @@ public class InputView {
     }
 
     public void validateInputWinningLotto(String inputWinningNumbers) {
-        if (isNumberOrSeparator(inputWinningNumbers)) {
-            return;
+        if (!isNumberOrSeparator(inputWinningNumbers)) {
+            throw new IllegalArgumentException(InputMessage.ERROR_MESSAGE.getMessage());
         }
-        throw new IllegalArgumentException(InputMessage.ERROR_MESSAGE.getMessage());
     }
 
     public boolean isNumberOrSeparator(String inputWinningNumbers) {
@@ -89,19 +98,28 @@ public class InputView {
         return true;
     }
 
-    public void validateNumberRange(List<Integer> winningNumbers) {
+    public void validateNumber(List<Integer> winningNumbers) {
         for (int number : winningNumbers) {
             if (number < 1 || number > 45) {
+                throw new IllegalArgumentException(InputMessage.ERROR_MESSAGE.getMessage());
+            }
+        }
+
+        for (int number : winningNumbers) {
+            if (Collections.frequency(winningNumbers, number) > 1) {
                 throw new IllegalArgumentException(InputMessage.ERROR_MESSAGE.getMessage());
             }
         }
     }
 
     void validateInputBonusNumber(String inputBonusNumber) {
-        if (isNumber(inputBonusNumber) && isRangeRight(inputBonusNumber)) {
-            return;
+        if (!isNumber(inputBonusNumber)) {
+            throw new IllegalArgumentException(InputMessage.ERROR_MESSAGE.getMessage());
         }
-        throw new IllegalArgumentException(InputMessage.ERROR_MESSAGE.getMessage());
+
+        if (!isRangeRight(inputBonusNumber)) {
+            throw new IllegalArgumentException(InputMessage.ERROR_MESSAGE.getMessage());
+        }
     }
 
     public boolean isRangeRight(String inputBonusNumber) {
