@@ -1,6 +1,7 @@
 package lotto.view;
 
 import static lotto.LottoConstant.GAME_START_MESSAGE;
+import static lotto.LottoConstant.INPUT_WINNING_LOTTO_NUMBER_MESSAGE;
 import static lotto.LottoConstant.PURCHASE_LOTTO_COUNT_RESULT_MESSAGE;
 
 import camp.nextstep.edu.missionutils.Console;
@@ -27,5 +28,9 @@ public class LottoView {
 
     public static String getWinningNumber() {
         return Console.readLine();
+    }
+
+    public static void printInputLottoWinningMessage() {
+        System.out.println(INPUT_WINNING_LOTTO_NUMBER_MESSAGE);
     }
 }
