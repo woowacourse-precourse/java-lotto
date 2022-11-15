@@ -1,9 +1,9 @@
 package lotto.domain;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import lotto.LottoNumberValidation;
 import lotto.dto.WinningLottoNumber;
 import lotto.dto.WinningNumberCount;
-import lotto.exception.ErrorCode;
 import lotto.exception.PayMoneyException;
 
 import java.util.ArrayList;
@@ -14,36 +14,8 @@ public class Lotto {
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
-        validate(numbers);
+        LottoNumberValidation lottoNumberValidation = new LottoNumberValidation(numbers);
         this.numbers = numbers;
-    }
-
-    private void validate(List<Integer> numbers) {
-        if (numbers.size() != 6) {
-            throw new IllegalArgumentException();
-        }
-
-        duplicateValid(numbers);
-        winningNumbersValid(numbers);
-    }
-
-    private void duplicateValid(List<Integer> numbers) {
-        int currentCount = numbers.size();
-        int distinctCount = (int) numbers.stream().distinct().count();
-
-        if (currentCount != distinctCount) {
-            throw new IllegalArgumentException(ErrorCode.ERROR.getMessage());
-        }
-    }
-
-    private void winningNumbersValid(List<Integer> winningNumbers) {
-        if (!isNumberRange(winningNumbers)) {
-            throw new IllegalArgumentException(ErrorCode.ERROR.getMessage());
-        }
-    }
-
-    private boolean isNumberRange(List<Integer> winningNumbers) {
-        return winningNumbers.stream().allMatch(number -> number >= 1 && number <= 45);
     }
 
     public static int moneyOfQuantity(int pay) throws PayMoneyException {
@@ -55,8 +27,8 @@ public class Lotto {
         return getQuantity(pay, lottoPrice);
     }
 
-    private static int getQuantity(int pay, int lottoPrice) {
-        return pay / lottoPrice;
+    private static int getQuantity(int pay, int price) {
+        return pay / price;
     }
 
     public static List<Lotto> createLottoNumbers(int quantity) {
