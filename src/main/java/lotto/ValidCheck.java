@@ -18,12 +18,6 @@ public class ValidCheck {
         }
     }
 
-    public static void validateBounus(Integer number) {
-        if (number > 45 || number < 1) {
-            throw new IllegalArgumentException(Error.RANGE_ERROR.getText());
-        }
-    }
-
     public static void formatCheckLotto(String InputValue) {
         InputValue = InputValue.replaceAll(" ", "");
         String pattern = "(.+,+).+";
@@ -43,4 +37,14 @@ public class ValidCheck {
         }
     }
 
+    public static void formatCheckBonus(String InputValue) {
+        InputValue = InputValue.replaceAll(" ", "");
+        String pattern = "\\d+";
+        if (!InputValue.matches(pattern)) {
+            throw new IllegalArgumentException(Error.NONDIGIT_ERROR.getText());
+        }
+        if (Integer.parseInt(InputValue) < 1 || Integer.parseInt(InputValue) < 1) {
+            throw new IllegalArgumentException(Error.RANGE_ERROR.getText());
+        }
+    }
 }
