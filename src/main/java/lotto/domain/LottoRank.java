@@ -1,5 +1,7 @@
 package lotto.domain;
 
+import java.util.*;
+
 public enum LottoRank {
     RANK_5(3, false, 5000, "3개 일치 (5,000원)"),
     RANK_4(4, false, 50000, "4개 일치 (50,000원)"),
@@ -17,5 +19,14 @@ public enum LottoRank {
         this.IS_BONUS_NEEDED = isBonusNeeded;
         this.PRIZE_MONEY = prizeMoney;
         this.PRIZE_DESCRIPTION = prizeDescription;
+    }
+
+    public static List<LottoRank> getSortedValues() {
+        List<LottoRank> sortedLottoRank = new ArrayList<>(Arrays.asList(LottoRank.values()));
+
+        sortedLottoRank.sort(Comparator.comparingLong(rank -> rank.PRIZE_MONEY));
+        Collections.reverse(sortedLottoRank);
+
+        return sortedLottoRank;
     }
 }

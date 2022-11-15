@@ -16,11 +16,9 @@ public class LottoCompare {
         int correctCount = lottoAnswer.getCorrectCount(lotto);
         boolean containBonus = lottoAnswer.isContainBonus(lotto);
 
-        for (LottoRank lottoRank : LottoRank.values()) {
-            if (lottoRank.IS_BONUS_NEEDED && !containBonus) {
-                continue;
-            }
-            if (correctCount == lottoRank.CORRECT_COUNT_CONDITION) {
+        for (LottoRank lottoRank : LottoRank.getSortedValues()) {
+            if (correctCount == lottoRank.CORRECT_COUNT_CONDITION
+                    && (!lottoRank.IS_BONUS_NEEDED || containBonus)) {
                 return lottoRank;
             }
         }
