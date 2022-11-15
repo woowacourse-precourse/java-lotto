@@ -1,11 +1,18 @@
 package lotto.model;
 
+import static lotto.utils.ConstantUtil.ERROR;
+import static lotto.utils.ConstantUtil.LOTTO_NUMBER_SIZE;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 public class Lotto {
+    private static final String SIZE_ERROR_MESSAGE = ERROR + "로또 번호의 개수는 6개이어야 합니다.";
+    private static final String DUPLICATES_ERROR_MESSAGE = ERROR + "로또 번호에 중복된 숫자가 있습니다.";
+
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
@@ -34,11 +41,25 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
-        Validator validator = new Validator();
+        validateNumberSize(numbers);
+        validateDuplicateNumber(numbers);
+        validateNumberRange(numbers);
+    }
 
-        validator.validateNumberSize(numbers);
-        validator.validateDuplicateNumber(numbers);
-        validator.validateNumberRange(numbers);
+    private void validateNumberSize(List<Integer> numbers) {
+        if (numbers.size() != LOTTO_NUMBER_SIZE) {
+            throw new IllegalArgumentException(SIZE_ERROR_MESSAGE);
+        }
+    }
+
+    private void validateDuplicateNumber(List<Integer> numbers) {
+        List<Integer> distinctNumbers = numbers.stream()
+                .distinct()
+                .collect(Collectors.toList());
+
+        if (numbers.size() != distinctNumbers.size()) {
+            throw new IllegalArgumentException(DUPLICATES_ERROR_MESSAGE);
+        }
     }
 
     @Override
