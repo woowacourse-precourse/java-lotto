@@ -1,5 +1,8 @@
 package lotto.domain;
 
+import java.util.Collections;
+import java.util.List;
+
 public class WinningLotto {
     private static final String ERROR_DUPLICATED_BONUS_NUMBER = "[ERROR] 보너스 번호와 당첨 번호는 중복될 수 없습니다.";
     private final Lotto lotto;
@@ -15,5 +18,13 @@ public class WinningLotto {
         if (lotto.getLottoNumbers().contains(bonusNumber)) {
             throw new IllegalArgumentException(ERROR_DUPLICATED_BONUS_NUMBER);
         }
+    }
+
+    public List<Integer> getLottoNumbers() {
+        return Collections.unmodifiableList(lotto.getLottoNumbers());
+    }
+
+    public BonusNumber getBonusNumber() {
+        return this.bonusNumber;
     }
 }
