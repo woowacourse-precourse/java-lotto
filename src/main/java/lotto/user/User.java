@@ -2,6 +2,8 @@ package lotto.user;
 
 import camp.nextstep.edu.missionutils.Console;
 import lotto.lotto.BoughtLotto;
+import lotto.lotto.validation.ValidationLottoNumbers;
+import lotto.user.validation.ValidationPurchasePrice;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,14 +26,11 @@ public class User {
     }
 
     private void validateMoney(String money) {
-        if (!checkInputInteger(money)) {
-            throw new IllegalArgumentException("[ERROR] 금액은 자연수여야 합니다.");
-        }
-        if (!checkInputNumber(money)) {
-            throw new IllegalArgumentException("[ERROR] 금액은 " + LOTTO_PRICE + "원 단위여야 합니다.");
-        }
-        if (!checkInputPositive(money)) {
-            throw new IllegalArgumentException("[ERROR] 금액은 양수여야 합니다.");
+        ValidationPurchasePrice validationPurchasePrice = ValidationPurchasePrice.validate(money);
+        if (validationPurchasePrice.getIsThrow()) {
+            String errorMessage = validationPurchasePrice.getErrorMessage();
+            System.out.println(errorMessage);
+            throw new IllegalArgumentException(errorMessage);
         }
     }
 
@@ -60,17 +59,5 @@ public class User {
 
     private void printInputMessage() {
         System.out.println("구입금액을 입력해 주세요.");
-    }
-
-    private boolean checkInputInteger(String money) {
-        return Pattern.matches("^[0-9]*$", money);
-    }
-
-    private boolean checkInputNumber(String money) {
-        return Integer.parseInt(money) % LOTTO_PRICE == 0;
-    }
-
-    private boolean checkInputPositive(String money) {
-        return Integer.parseInt(money) >= 0;
     }
 }

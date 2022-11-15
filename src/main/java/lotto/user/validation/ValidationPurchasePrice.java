@@ -1,5 +1,9 @@
 package lotto.user.validation;
 
+import lotto.lotto.validation.ValidationLottoNumbers;
+
+import java.util.Arrays;
+import java.util.List;
 import java.util.function.Function;
 import java.util.regex.Pattern;
 
@@ -27,5 +31,12 @@ public enum ValidationPurchasePrice {
         this.expression = expression;
         this.errorMessage = errorMessage;
         this.isThrow = isThrow;
+    }
+
+    public static ValidationPurchasePrice validate(String price) {
+        return Arrays.stream(ValidationPurchasePrice.values())
+                .filter(v -> !v.expression.apply(price))
+                .findFirst()
+                .orElse(NORMAL);
     }
 }
