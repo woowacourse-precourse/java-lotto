@@ -32,6 +32,15 @@ public class LottoResult {
         int winningCount = resultMap.getOrDefault(rank, 0);
         resultMap.put(rank, winningCount + 1);
     }
+    public double calculateYield(double money) {
+        long totalPrize = 0;
+        for (Rank rank : Rank.values()) {
+            int count = resultMap.getOrDefault(rank, 0);
+            long prize = rank.getPrize();
+            totalPrize += count * prize;
+        }
 
+        return Math.round((totalPrize / money) * 1000) / 10.0;
+    }
 
 }
