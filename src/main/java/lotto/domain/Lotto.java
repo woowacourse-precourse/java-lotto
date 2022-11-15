@@ -15,7 +15,7 @@ public class Lotto {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException();
         }
-        for (Integer num: numbers) {
+        for (Integer num : numbers) {
             if (num > 45 || num < 1) {
                 System.out.println(Message.LOTTO_NUM_RANGE_ERROR.get());
                 throw new IllegalArgumentException();
@@ -26,8 +26,9 @@ public class Lotto {
             }
         }
     }
+
     // TODO: 추가 기능 구현
-    public List<Integer> getNumbers(){
+    public List<Integer> getNumbers() {
         return numbers;
     }
 }

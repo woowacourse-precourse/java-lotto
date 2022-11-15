@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class WinningLottoNumber {
+
     Lotto lotto;
     private int winNumber;
     private int bonusNumber;
@@ -14,9 +15,10 @@ public class WinningLottoNumber {
         this.lotto = new Lotto(numbers);
     }
 
-    public int setBonusNumber(String number){
+    public int setBonusNumber(String number) {
         return validateBonusNumber(number);
     }
+
     private List<Integer> validate(String input) {
         List<Integer> numbers = new ArrayList<>();
 
@@ -32,7 +34,7 @@ public class WinningLottoNumber {
         return numbers;
     }
 
-    private int validateBonusNumber(String number){
+    private int validateBonusNumber(String number) {
         int bonus = Integer.parseInt(number);
         if (bonus < 1 || bonus > 45) {
             System.out.println(Message.BONUS_NUM_RANGE_ERROR.get());
@@ -44,18 +46,10 @@ public class WinningLottoNumber {
         }
         return bonus;
     }
-    public Lotto getLotto(){
+
+    public Lotto getLotto() {
         return lotto;
     }
-
-
-
-
-
-
-
-
-
 
 
 }

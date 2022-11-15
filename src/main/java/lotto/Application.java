@@ -12,11 +12,11 @@ public class Application {
     public static void main(String[] args) {
         Money money = new Money(InputView.inputMoney());
         LottoCard lottoCard = new LottoCard(money.getMoney());
-//        List<List<Integer>> newlottoCard = lottoCard.getlottocard();
         WinningLottoNumber winningLotto = new WinningLottoNumber(InputView.inputWinLottoNumber());
         int bonusNum = winningLotto.setBonusNumber(InputView.inputBonusLottoNumber());
 
-        WinningStatistics winningStatistics = new WinningStatistics(lottoCard, winningLotto, bonusNum);
+        WinningStatistics winningStatistics = new WinningStatistics(lottoCard, winningLotto,
+            bonusNum);
 
     }
 }

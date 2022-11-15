@@ -24,7 +24,7 @@ public class LottoCard {
         }
     }
 
-    public List<List<Integer>> getlottocard(){
+    public List<List<Integer>> getlottocard() {
         return lottocard;
     }
 

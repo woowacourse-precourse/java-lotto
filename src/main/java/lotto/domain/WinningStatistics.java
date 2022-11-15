@@ -36,8 +36,6 @@ public class WinningStatistics {
         System.out.println("5개 일치 (1,500,000원) - " + winResult.get("5"));
         System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - " + winResult.get("5+"));
         System.out.println("6개 일치 (2,000,000,000원) - " + winResult.get("6"));
-
-
     }
 
     private void checkCountOfLottoCard() {
@@ -64,7 +62,7 @@ public class WinningStatistics {
             winResult.put("5+", winCnt + 1);
             return;
         }
-        if(cnt >= 3){
+        if (cnt >= 3) {
             String count = Integer.toString(cnt);
             int winCnt = winResult.get(count);
             winResult.put(count, winCnt);
