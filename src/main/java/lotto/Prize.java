@@ -20,8 +20,7 @@ public class Prize {
     public Prize() {
         int lottoCount = purchaseLotto();
         System.out.printf(PURCHASE_LOTTO, lottoCount);
-        List<Lotto> myLotto = makeMyLotto(lottoCount);
-        showMyLotto(myLotto);
+        makeMyLotto(lottoCount);
     }
 
     public int purchaseLotto() {
@@ -32,17 +31,13 @@ public class Prize {
         return money / LOTTO_COUNT;
     }
 
-    public List<Lotto> makeMyLotto(Integer lottoCount) {
+    public void makeMyLotto(Integer lottoCount) {
         for (int i = 1; i <= lottoCount; i++){
             List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
             Collections.sort(numbers);
             Lotto lotto = new Lotto(numbers);
             myLottos.add(lotto);
         }
-        return myLottos;
-    }
-
-    public void showMyLotto(List<Lotto> myLottos){
         for(Lotto lotto : myLottos) {
             System.out.println(lotto.getLotto());
         }
