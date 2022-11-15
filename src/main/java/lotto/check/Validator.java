@@ -1,11 +1,10 @@
 package lotto.check;
 
-import lotto.Game;
+import lotto.domain.Game;
 import lotto.exception.Exception;
 
 import java.util.Arrays;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -80,10 +79,6 @@ public class Validator {
         }
     }
     public static void isInputNumber(String cash){
-        /*if(!cash.matches("[+-]?\\d*(\\.\\d+)?")){
-            System.out.println("[ERROR] 숫자 입력");
-            throw new IllegalArgumentException(Exception.NOT_NUMBER.getExceptionMessage());
-        }*/
         try{
             Integer.parseInt(cash);
         }catch (NumberFormatException e){

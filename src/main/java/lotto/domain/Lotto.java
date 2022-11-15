@@ -1,6 +1,5 @@
 package lotto.domain;
 
-import lotto.Game;
 import lotto.Input;
 import lotto.check.Validator;
 import lotto.exception.Exception;
