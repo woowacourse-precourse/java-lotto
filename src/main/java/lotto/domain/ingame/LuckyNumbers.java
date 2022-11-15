@@ -31,7 +31,7 @@ public class LuckyNumbers {
 
     private static void validateBallsUnique(List<Integer> balls) {
         if (balls.size()!= balls.stream().distinct().count()) {
-            throw new IllegalArgumentException("[ERROR] 로또 번호는 중복될 수 없습니다.");
+            throw new IllegalArgumentException("로또 번호는 중복될 수 없습니다.");
         }
     }
 
@@ -50,7 +50,7 @@ public class LuckyNumbers {
 
         for (Integer ball : balls) {
             if (ball < LOTTO_MIN || ball > LOTTO_MAX) {
-                throw new IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
+                throw new IllegalArgumentException("로또 번호는 1부터 45 사이의 숫자여야 합니다.");
             }
         }
     }

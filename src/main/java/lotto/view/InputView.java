@@ -51,13 +51,13 @@ public class InputView {
 
     private static void validate(String input) {
         if (!input.matches("^[0-9]+$")) {
-            throw new IllegalArgumentException("[ERROR] 숫자가 아닌 입력입니다.");
+            throw new IllegalArgumentException("숫자가 아닌 입력입니다.");
         }
     }
 
     private static void validateLuckyBalls(String input) {
         if (!PATTERN.matcher(input).matches()) {
-            throw new IllegalArgumentException("[ERROR] 잘못된 로또 번호 입력 형식입니다.");
+            throw new IllegalArgumentException("잘못된 로또 번호 입력 형식입니다.");
         }
     }
 

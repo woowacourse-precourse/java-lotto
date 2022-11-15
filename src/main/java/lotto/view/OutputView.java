@@ -54,4 +54,7 @@ public class OutputView {
         return formatter.format(number);
     }
 
+    public static void showError(String message) {
+        System.out.printf(ERROR_MESSAGE,message);
+    }
 }

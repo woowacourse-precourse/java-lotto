@@ -17,7 +17,7 @@ public class Payment {
     private void validate(int amount) {
 
         if (amount == 0 || amount % LOTTO_PRICE != 0) {
-            throw new IllegalArgumentException("[ERROR] 적절하지 않은 구입금액입니다.");
+            throw new IllegalArgumentException("적절하지 않은 구입금액입니다.");
         }
     }
 

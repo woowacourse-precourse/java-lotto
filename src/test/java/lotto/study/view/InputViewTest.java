@@ -185,10 +185,14 @@ class InputViewTest {
         System.setIn(inputStream);
 
         //when
-        int result = InputView.inputPayment();
+//        int result = InputView.inputPayment();
 
         //then
         assertThat(output.toString().contains("[ERROR]"));
+        assertThatThrownBy(() -> InputView.inputPayment())
+                .isInstanceOf(IllegalArgumentException.class);
+
+
     }
 
 }

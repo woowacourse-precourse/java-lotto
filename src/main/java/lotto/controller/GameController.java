@@ -13,13 +13,19 @@ import java.util.List;
 public class GameController {
     public void run() {
 
-        final Payment payment = makePayment();
-        final List<Lotto> userLotto = issueLotto(payment.getTicket());
-        OutputView.showLotto(userLotto);
+        try {
+            final Payment payment = makePayment();
+            final List<Lotto> userLotto = issueLotto(payment.getTicket());
+            OutputView.showLotto(userLotto);
 
-        final LuckyNumbers luckyNumbers = makeLuckyNumbers();
-        final Statistic statistic = makeStatistic(userLotto,luckyNumbers, payment.getAmount());
-        OutputView.showStatistic(statistic);
+            final LuckyNumbers luckyNumbers = makeLuckyNumbers();
+            final Statistic statistic = makeStatistic(userLotto,luckyNumbers, payment.getAmount());
+            OutputView.showStatistic(statistic);
+
+        } catch (IllegalArgumentException exception) {
+
+            OutputView.showError(exception.getMessage());
+        }
     }
 
 
