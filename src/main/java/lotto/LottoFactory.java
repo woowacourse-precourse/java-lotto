@@ -6,11 +6,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class LottoFactory {
-    private final int LOTTO_START_NUMBER = 1;
-    private final int LOTTO_END_NUMBER = 45;
-    private final int LOTTO_NUMBER_COUNT = 6;
+import static lotto.LottoConstants.*;
 
+public class LottoFactory {
     public Lotto createLotto() {
         List<Integer> lottoNumbers = createLottoNumbers();
         return new Lotto(lottoNumbers);
@@ -22,7 +20,7 @@ public class LottoFactory {
     }
 
     private List<Integer> createLottoNumbers() {
-        return Randoms.pickUniqueNumbersInRange(LOTTO_START_NUMBER, LOTTO_END_NUMBER, LOTTO_NUMBER_COUNT);
+        return Randoms.pickUniqueNumbersInRange(LOTTO_START_NUMBER.getValue(), LOTTO_END_NUMBER.getValue(), LOTTO_NUMBER_COUNT.getValue());
     }
 
     public List<Lotto> createLottos(int quantity) {
