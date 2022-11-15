@@ -11,12 +11,20 @@ public class Game {
         WinningNumber winningNumber = new WinningNumber();
         winningNumber.generator();
         Earning earning = new Earning();
+        WinningHistory winningHistory = new WinningHistory();
 
         Calculator calculator = new Calculator();
+
+        double earningAmount = 0;
         for (Lotto purchasedLotto : purchasedLottos) {
             calculator.calculate(purchasedLotto.getLottoNumber(), winningNumber.getWinningLotto(), winningNumber.getBonusNumber());
-            System.out.println(earning.calculate(calculator.getSameCmt(), calculator.getBonusCorrect()));
+            earningAmount += earning.calculate(calculator.getSameCmt(), calculator.getBonusCorrect());
+            earning.RankCalculate(calculator.getSameCmt(), calculator.getBonusCorrect(), winningHistory);
+            System.out.println(earningAmount);
         }
+
+        winningHistory.print();
+        System.out.println(earning.rateCalculate(lottoCount*1000, earningAmount));
     }
 
     public void printPurchasedLottos(List<Lotto> purchasedLottos) {
