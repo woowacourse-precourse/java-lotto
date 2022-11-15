@@ -39,6 +39,8 @@ public class Application {
         // 당첨 내역 출력
         int lottoProfit = PrintWinHistory(winningStatus);
 
+        // 수익률을 출력
+        OutputRateOfReturn(lottoProfit,purchaseAmount);
     }
 
     public static int GetUserInputOfPurchaseAmount(String purchaseAmount) {
@@ -108,5 +110,11 @@ public class Application {
         return (money * count);
     }
 
+    public static void OutputRateOfReturn(int lottoProfit, String purchaseAmount){
+        double lottoReturn = ((double) lottoProfit / Integer.parseInt(purchaseAmount)) * 100;
 
+        DecimalFormat df = new DecimalFormat("0.0");
+        String result3 = df.format(lottoReturn);
+        System.out.println("총 수익률은 " + result3 + "%입니다.");
+    }
 }
