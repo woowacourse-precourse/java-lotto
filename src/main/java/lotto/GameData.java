@@ -25,5 +25,9 @@ public enum GameData {
         return this.printWord;
     }
 
+    public Integer getCount() {
+        return this.count;
+    }
+
 
 }
