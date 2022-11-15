@@ -39,6 +39,8 @@ public class LotteryResult {
         return prize;
     }
 
-
+    public int getRankCount(final Rank rank) {
+        return result.getOrDefault(rank, 0);
+    }
 
 }
