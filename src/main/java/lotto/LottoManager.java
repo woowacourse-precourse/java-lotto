@@ -114,13 +114,27 @@ public class LottoManager {
         }
         double revenue = calculateRevenue(lottoResult, amount);
 
+        printPrizeMoney(lottoResult);
+        printRevenue(revenue);
+    }
+
+    public void printPrizeMoney(HashMap<Integer, Integer> lottoResult) {
         System.out.println("당첨 통계");
         System.out.println("---");
-        System.out.println("3개 일치 (5,000원) - " + lottoResult.get(5000) + "개");
-        System.out.println("4개 일치 (50,000원) - " + lottoResult.get(50000) + "개");
-        System.out.println("5개 일치 (1,500,000원) - " + lottoResult.get(1500000) + "개");
-        System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - " + lottoResult.get(30000000) + "개");
-        System.out.println("6개 일치 (2,000,000,000원) - " + lottoResult.get(2000000000) + "개");
+        for (PrizeMoney prizeMoney : PrizeMoney.values()) {
+            int countEqual = prizeMoney.getCountEqual();
+            int count = lottoResult.get(prizeMoney.getPrizeMoney());
+            String prize = prizeMoney.getPrizeMoneyOutput();
+            boolean bonusNumber = prizeMoney.getBonusNumberEqual();
+            if (bonusNumber) {
+                System.out.printf("%d개 일치, 보너스 볼 일치 (%s) - %d개\n", countEqual, prize, count);
+                continue;
+            }
+            System.out.printf("%d개 일치 (%s) - %d개\n", countEqual, prize, count);
+        }
+    }
+
+    public void printRevenue(double revenue) {
         System.out.printf("총 수익률은 %.1f%%입니다.", revenue * 100);
     }
 }
