@@ -44,4 +44,7 @@ public class Lotto {
                 Constants.NUMBER_RANGE_START, Constants.NUMBER_RANGE_END, Constants.NUMBER_LENGTH));
     }
 
+    public List<Integer> getNumbers() {
+        return numbers;
+    }
 }
