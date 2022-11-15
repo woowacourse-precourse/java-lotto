@@ -28,6 +28,13 @@ public class Lotto_Controller {
     }
 
     public void start_Lotto() {
-        //Enter_Purchase_Amount();
+        Enter_Purchase_Amount();
+    }
+
+    public void Enter_Purchase_Amount() {
+        money = input_numbers.input_Money();
+        lottoCnt = main_service.get_NumberOfLotto(money);
+        output_view.print_LottoCnt(lottoCnt);
+//        Generate_And_Print_Random_Lotto_Numbers();
     }
 }
