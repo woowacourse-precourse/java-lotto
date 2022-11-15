@@ -10,15 +10,17 @@ public class LottoWinNumberInfo extends WinNumberValidator {
     private List<Integer> lottoWinNumbers;
     private int bonusNumber;
 
-    public LottoWinNumberInfo(String inputWinNumbers) {
+    public LottoWinNumberInfo(String inputWinNumbers, int bonusNumber) {
         List<Integer> winNumbers = lottoNumberToList(inputWinNumbers);
         validateNumbers(winNumbers);
         this.lottoWinNumbers = winNumbers;
-    }
-
-    public LottoWinNumberInfo(int bonusNumber) {
         this.bonusNumber = bonusNumber;
     }
+
+    public LottoWinNumberInfo() {
+
+    }
+
 
     private List<Integer> lottoNumberToList(String inputWinNumbers) {
         return Arrays.stream(inputWinNumbers

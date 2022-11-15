@@ -22,10 +22,8 @@ public class LottoController {
     public void runLotto() {
         // 1. 로또 구매
         LottoPurchaseInfo lottoPurchaseInfo = getLottoPurchase();
-        // 2. 당첨 번호 입력
-        LottoWinNumberInfo lottoWinNumberInfo = getLottoWinNumbers();
-        // 3. 보너스 번호 입력
-        lottoWinNumberInfo = getLottoBonusNumber();
+        // 2,3. 당첨 번호, 보너스 번호 입력
+        LottoWinNumberInfo lottoWinNumberInfo = getInputWinNumbers();
 
         // 4. 결재한 금액만큼 로또 생성
         List<Lotto> lottoNumbers = createLottoNumbers(lottoPurchaseInfo.getLottoGameCount());
@@ -38,24 +36,23 @@ public class LottoController {
 
     }
 
-    private List<String> getLottoRank(List<Lotto> lottoNumbers, LottoWinNumberInfo lottoWinNumberInfo) {
-        return service.getLottoRank(lottoNumbers, lottoWinNumberInfo);
-    }
+    private LottoWinNumberInfo getInputWinNumbers() {
+        String lottoWinNumbers = getLottoWinNumbers();
+        int lottoBonusNumber = getLottoBonusNumber();
 
+        return new LottoWinNumberInfo(lottoWinNumbers, lottoBonusNumber);
+    }
 
     private LottoPurchaseInfo getLottoPurchase() {
-        LottoPurchaseInfo lottoPurchaseInfo = service.getLottoPurchase();
-        return lottoPurchaseInfo;
+        return service.getLottoPurchase();
     }
 
-    private LottoWinNumberInfo getLottoWinNumbers() {
-        LottoWinNumberInfo lottoWinNumberInfo = service.getLottoWinNumbers();
-        return lottoWinNumberInfo;
+    private String getLottoWinNumbers() {
+        return service.getLottoWinNumbers();
     }
 
-    private LottoWinNumberInfo getLottoBonusNumber() {
-        LottoWinNumberInfo lottoWinNumberInfo = service.getLottoBonusNumber();
-        return lottoWinNumberInfo;
+    private int getLottoBonusNumber() {
+        return service.getLottoBonusNumber();
     }
 
     private List<Lotto> createLottoNumbers(int lottoGameCount) {
@@ -63,7 +60,7 @@ public class LottoController {
         outputView.printLottoNumbers(lottoNumbers);
         return lottoNumbers;
     }
-
-
-
+    private List<String> getLottoRank(List<Lotto> lottoNumbers, LottoWinNumberInfo lottoWinNumberInfo) {
+        return service.getLottoRank(lottoNumbers, lottoWinNumberInfo);
+    }
 }
