@@ -19,4 +19,13 @@ public class InputView {
 
         return Integer.parseInt(input);
     }
+    public List<Integer> getWinningNumbers() {
+        System.out.println(MESSAGE_TO_GET_WINNING_NUMBER);
+        String input = Console.readLine().trim(); //띄어쓰기 고려
+
+        return castToList(input);
+    }
+
+
+
 }
