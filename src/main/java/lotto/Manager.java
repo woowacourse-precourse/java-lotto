@@ -6,7 +6,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 public class Manager {
 	private List<Lotto> lottos;
-	
+
 	private Lotto makeLotto() {
 		List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
 		return new Lotto(numbers);
@@ -18,6 +18,8 @@ public class Manager {
 			lottos.add(makeLotto());
 		}
 	}
-	
-	
+
+	public void printLottos() {
+		System.out.println(lottos.toString());
+	}
 }
