@@ -1,5 +1,6 @@
 package lotto.util;
 
+import lotto.domain.jackpot.Jackpot;
 import lotto.domain.prize.PrizeResult;
 import lotto.domain.rate.Rate;
 
@@ -17,6 +18,9 @@ public class ResultOutput {
 		System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - "+prize_five_and_bonus()+"개");
 		System.out.println("6개 일치 (2,000,000,000원) - "+prize_six()+"개");
 		System.out.println("총 수익률은 "+Rate.calculate_rate(result_map)+"%입니다.");
+		Jackpot.set_jackpot_and_bonus_number_static_zero();
+		PrizeResult.set_prize_map_clear();
+		set_result_map_clear();
 	}
 
 	private static int prize_three(){
@@ -54,4 +58,7 @@ public class ResultOutput {
 		return result_map.get("6개 일치");
 	}
 
+	public static void set_result_map_clear(){
+		result_map.clear();
+	}
 }

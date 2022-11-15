@@ -49,4 +49,8 @@ public class PrizeResult {
 	public static HashMap<String,Integer> prize_map_return(){
 		return prize_map;
 	}
+
+	public static void set_prize_map_clear(){
+		prize_map=new LinkedHashMap<>();
+	}
 }

@@ -48,4 +48,9 @@ public class Jackpot {
         JackpotResult jr=new JackpotResult();
         Lotto.compare_prepare(PickNumber.get_purchased_lotto_list(),jackpot_number_static,bonus_number_static,jr);
     }
+
+    public static void set_jackpot_and_bonus_number_static_zero(){
+        jackpot_number_static="";
+        bonus_number_static="";
+    }
 }
