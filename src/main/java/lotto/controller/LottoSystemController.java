@@ -2,6 +2,7 @@ package lotto.controller;
 
 import lotto.domain.Lotto;
 import lotto.domain.LottoVendingMachine;
+import lotto.domain.Rank;
 import lotto.domain.WinningNumbers;
 import lotto.domain.WinningResultCalculator;
 import lotto.view.inputView.InputView;
@@ -10,6 +11,7 @@ import lotto.view.outputView.OutputView;
 import lotto.view.outputView.OutputViewImple;
 
 import java.util.List;
+import java.util.Map;
 
 
 public class LottoSystemController {
@@ -35,8 +37,11 @@ public class LottoSystemController {
         List<Integer> rawValuse = inputView.inputWinningNumbers();
         Integer bonusNumber = inputView.inputBonusNumber();
         WinningNumbers createdWinningNumbers = winningNumbers.generateFromRawValues(rawValuse, bonusNumber);
-        outputView.printWinningStatus(winningResultCalculator.createWinningStatus(lottos, createdWinningNumbers));
-        outputView.printReturnRatio(winningResultCalculator.calculateReturnRatio(expenses));
+
+        Map<Rank, Integer> winningStatusResult = winningResultCalculator.generateWinningStatus(lottos,createdWinningNumbers);
+        outputView.printWinningStatus(winningStatusResult);
+        double returnRatioResult = winningResultCalculator.generateReturnRatio(expenses,winningStatusResult);
+        outputView.printReturnRatio(returnRatioResult);
     }
 
 }
