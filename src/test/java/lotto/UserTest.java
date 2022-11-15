@@ -1,6 +1,7 @@
 package lotto;
 
 import lotto.domain.User;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
@@ -8,6 +9,7 @@ import static org.assertj.core.api.Assertions.*;
 
 class UserTest {
 
+    @DisplayName("유저가 돈을 투입할 때 예외 테스트")
     @ParameterizedTest
     @CsvSource({"1000,true","1001,false"})
     void userPayMoneyTest(String input, boolean expectedException) throws Exception {
@@ -23,6 +25,7 @@ class UserTest {
         }
     }
 
+    @DisplayName("유저 돈 투입 시 발생하는 게임 횟수 값 테스트")
     @ParameterizedTest
     @CsvSource({"1000,1","2000,2","18000,18"})
     void userBuyLottoTest(String input, int lottoCount) {

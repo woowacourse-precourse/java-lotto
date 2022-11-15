@@ -3,6 +3,7 @@ package lotto;
 import lotto.domain.Lotto;
 import lotto.domain.Rank;
 import lotto.domain.WinningNumbers;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.lang.reflect.Field;
@@ -13,6 +14,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class WinningNumbersTest {
+    @DisplayName("당첨 번호 값 테스트")
     @Test
     void winningNumberInputTest() throws Exception {
         WinningNumbers winningNumbers = new WinningNumbers();
@@ -30,6 +32,7 @@ class WinningNumbersTest {
         }
     }
 
+    @DisplayName("당첨 번호 예외 테스트")
     @Test
     void winningNumberInputExceptionTest() throws Exception {
         WinningNumbers winningNumbers = new WinningNumbers();
@@ -53,12 +56,12 @@ class WinningNumbersTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+    @DisplayName("보너스 번호 입력 값 테스트")
     @Test
     void bonusNumberInputTest() throws Exception {
         WinningNumbers winningNumbers = new WinningNumbers();
         Integer[] inputs = {1,2,3,4,5,6};
         winningNumbers.newWinningNumbers(new ArrayList<>(List.of(inputs)));
-
 
         int testNumber = 7;
         winningNumbers.newBonusNumber(testNumber);
@@ -70,6 +73,7 @@ class WinningNumbersTest {
         assertThat(bonusNumber).isEqualTo(testNumber);
     }
 
+    @DisplayName("보너스 번호 예외 테스트")
     @Test
     void bonusNumberInputExceptionTest() throws Exception {
         WinningNumbers winningNumbers = new WinningNumbers();
@@ -83,6 +87,7 @@ class WinningNumbersTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+    @DisplayName("보너스 번호 당첨 번호와 중복 예외 테스트")
     @Test
     void bonusNumberDuplicateTest() throws Exception {
         WinningNumbers winningNumbers = new WinningNumbers();
@@ -95,6 +100,7 @@ class WinningNumbersTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+    @DisplayName("로또 순위 반환 값 테스트")
     @Test
     void rankingLotto() {
         WinningNumbers winningNumbers = new WinningNumbers();
