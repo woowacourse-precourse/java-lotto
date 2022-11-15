@@ -29,4 +29,8 @@ public class OutputView {
         System.out.println(FIVE_BONUS_NUMBER_MATCHES+winningResult.get(Reword.TWO_WORD.word)+DEPENDENT_NOUN);
         System.out.println(SIX_MATCHES+winningResult.get(Reword.ONE_WORD.word)+DEPENDENT_NOUN);
     }
+
+    public void printYield(float yield) {
+        System.out.println(OUTPUT_YIELD+yield+LAST_WORD);
+    }
 }
