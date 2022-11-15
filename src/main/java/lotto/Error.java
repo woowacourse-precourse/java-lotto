@@ -2,11 +2,14 @@ package lotto;
 
 import java.util.List;
 import java.util.stream.Collectors;
+import static lotto.LottoConst.LOTTO_MIN_NUMBER;
+import static lotto.LottoConst.LOTTO_MAX_NUMBER;
 import static lotto.LottoConst.LOTTO_NUMBER_COUNT;
+import static lotto.LottoConst.LOTTO_PRICE;
 
 public class Error {
     static void purchasePrice(int purchasePrice) {
-        if (purchasePrice % LottoConst.LOTTO_PRICE != 0) {
+        if (purchasePrice % LOTTO_PRICE != 0) {
             throw new IllegalArgumentException("[ERROR] 로또 구매 금액을 정확히 입력 해 주세요. 금액 : " + purchasePrice);
         }
     }
@@ -29,15 +32,15 @@ public class Error {
     }
 
     static void sizeWinningNumber(List<Integer> winningNumber) {
-        if (winningNumber.size() != LottoConst.LOTTO_NUMBER_COUNT) {
+        if (winningNumber.size() != LOTTO_NUMBER_COUNT) {
             throw new IllegalArgumentException("[ERROR] 로또번호의 개수가 유효하지 않습니다.");
         }
     }
 
     static void rangeWinningNumber(List<Integer> winningNumber) {
         long validRangeNumberCount = winningNumber.stream()
-                .filter(number -> number >= LottoConst.LOTTO_MIN_NUMBER)
-                .filter(number -> number <= LottoConst.LOTTO_MAX_NUMBER)
+                .filter(number -> number >= LOTTO_MIN_NUMBER)
+                .filter(number -> number <= LOTTO_MAX_NUMBER)
                 .count();
 
         if (validRangeNumberCount != LottoConst.LOTTO_NUMBER_COUNT) {
