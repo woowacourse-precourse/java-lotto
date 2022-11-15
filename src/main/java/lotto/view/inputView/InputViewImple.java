@@ -5,7 +5,7 @@ import lotto.view.util.InputUtil;
 
 import java.util.List;
 
-import static lotto.domain.messages.ErrorMessages.EXPENSES_RANGE_ERROR_MESSAGE;
+import static lotto.domain.messages.ErrorMessages.EXPENSES_INPUT_FORMAT_ERROR_MESSAGE;
 import static lotto.domain.messages.ErrorMessages.WINNIG_NUMBERS_INPUT_FORMAT_ERROR_MESSAGE;
 
 public class InputViewImple implements InputView {
@@ -16,7 +16,7 @@ public class InputViewImple implements InputView {
             System.out.println("구입금액을 입력해 주세요.");
             return Integer.parseInt(Console.readLine());
         }catch (Exception e){
-            throw new IllegalArgumentException(EXPENSES_RANGE_ERROR_MESSAGE);
+            throw new IllegalArgumentException(EXPENSES_INPUT_FORMAT_ERROR_MESSAGE);
         }
     }
 
