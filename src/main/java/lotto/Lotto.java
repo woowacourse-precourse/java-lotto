@@ -1,5 +1,6 @@
 package lotto;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -53,6 +54,7 @@ public class Lotto {
             validateLottoNumberRange(i, numbers);
         }
         validateLength(numbers);
+        validateDuplicateNumbers(numbers);
     }
 
     private void validateBlank(int initialValue, List<Integer> numbers) {
@@ -71,6 +73,15 @@ public class Lotto {
         if (numbers.size() != LOTTO_DEFAULT_LENGTH) {
             throw new IllegalArgumentException("[ERROR] 로또 번호 길이가 올바르지 않습니다.");
         }
+    }
+
+    private void validateDuplicateNumbers(List<Integer> numbers) {
+        List<Integer> tempNumbers = new ArrayList<>();
+        numbers.forEach(number -> {
+            if (tempNumbers.contains(number))
+                throw new IllegalArgumentException("[ERROR] 중복된 숫자가 포함되어 있습니다.");
+            tempNumbers.add(number);
+        });
     }
 
     public List<Integer> getNumbers() {
