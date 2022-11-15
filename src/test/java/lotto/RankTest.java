@@ -89,28 +89,6 @@ public class RankTest {
         assertThat(ranking).isEqualTo(result);
     }
 
-    @Test
-    @DisplayName("등수 계산 테스트")
-    void rankingView(){
-        String winningNumber = "1,2,3,4,5,6";
-        String bonus = "7";
-        List<Lotto> lottos = testLottos();
-
-        User user = new User(String.valueOf(lottos.size() * 1000));
-        buylotto(lottos, user);
-
-        String rankingView = rankController.statistics(user, winningNumber, bonus);
-
-        String result = "3개 일치 (5,000원) - 2개\n" +
-                "4개 일치 (50,000원) - 1개\n" +
-                "5개 일치 (1,500,000원) - 1개\n" +
-                "5개 일치, 보너스 볼 일치 (30,000,000원) - 1개\n" +
-                "6개 일치 (2,000,000,000원) - 1개";
-
-        assertThat(rankingView).contains(result);
-        System.out.println(rankingView);
-    }
-
     private void buylotto(List<Lotto> lottos, User user){
         for (Lotto lotto : lottos){
             user.buyLotto(lotto);

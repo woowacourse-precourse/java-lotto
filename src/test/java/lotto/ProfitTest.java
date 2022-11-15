@@ -43,26 +43,6 @@ public class ProfitTest {
         assertThat(profit).isEqualTo(result);
     }
 
-    @Test
-    @DisplayName("수익률 View 테스트")
-    void ProfitView(){
-        String winningNumber = "1,2,3,4,5,6";
-        String bonus = "7";
-        List<Lotto> lottos = testLottos();
-
-        User user = new User(String.valueOf(lottos.size() * 1000));
-        buylotto(lottos, user);
-        String profitView = rankController.statistics(user, winningNumber, bonus);
-
-        double profit = (RankInfo.FIFTH.getMoney() * 2
-                + RankInfo.FOURTH.getMoney()
-                + RankInfo.THIRD.getMoney()
-                + RankInfo.SECOND.getMoney()
-                + RankInfo.FIRST.getMoney()) / (double)(user.getMoney());
-        profit *= 100;
-        assertThat(profitView).contains(String.format("%.1f", profit));
-        System.out.println(profitView);
-    }
     private void buylotto(List<Lotto> lottos, User user){
         for (Lotto lotto : lottos){
             user.buyLotto(lotto);
