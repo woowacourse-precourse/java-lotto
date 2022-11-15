@@ -42,7 +42,7 @@ public class InputView {
     }
 
     public void validateSeparator(String input) {
-        String REGEX = "^\\d,\\d,\\d,\\d,\\d,\\d$";
+        String REGEX = "^\\d{1,2},\\d{1,2},\\d{1,2},\\d{1,2},\\d{1,2},\\d{1,2}$";
         String SEPARATOR_ERROR_MESSAGE = "[ERROR] 6개의 숫자를 쉼표(,)로 구분하여 입력하세요.";
 
         if (!Pattern.matches(REGEX, input)) {
