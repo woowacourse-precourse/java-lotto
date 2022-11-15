@@ -1,6 +1,9 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Input {
     private static final String DELIMITER = ",";
@@ -19,5 +22,11 @@ public class Input {
         }
     }
 
+    public static List<Integer> winningNumber() {
+        String input = Console.readLine();
 
+        return Stream.of(input.split(DELIMITER))
+                .map(Input::convertToInt)
+                .collect(Collectors.toList());
+    }
 }
