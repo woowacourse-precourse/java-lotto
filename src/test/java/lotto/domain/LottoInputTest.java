@@ -1,5 +1,6 @@
 package lotto.domain;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import java.util.List;
@@ -11,7 +12,20 @@ import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
 public class LottoInputTest {
-
+    @Test
+    @DisplayName("예외없이 LottoInput 이 생성되어야한다")
+    public void LottoInput_생성테스트(){
+        //given
+        Money expectedMoney = Money.of(10000L);
+        List<Integer> expectedWinningNumbers = List.of(1, 10, 11, 13, 35, 40);
+        int expectedBonusNumber = 17;
+        //when
+        LottoInput lottoInput = LottoInput.create(expectedWinningNumbers, expectedBonusNumber, expectedMoney);
+        //then
+        assertThat(lottoInput.getBonusNumber()).isEqualTo(expectedBonusNumber);
+        assertThat(lottoInput.getWinningNumbers()).isEqualTo(expectedWinningNumbers);
+        assertThat(lottoInput.getMoney()).isEqualTo(expectedMoney);
+    }
     @Test
     @DisplayName("Money 생성시 단위가 1000 이 아닐시 IllegalArgumentException 발생")
     public void 예외테스트_1() {
