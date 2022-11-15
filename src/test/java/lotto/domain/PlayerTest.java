@@ -2,11 +2,11 @@ package lotto.domain;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
 import lotto.Application;
+import lotto.constant.ExceptionConstants;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
-import static lotto.constant.ExceptionConstants.*;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class PlayerTest extends NsTest {
@@ -16,7 +16,7 @@ public class PlayerTest extends NsTest {
     void ThrowExceptionIfPurchaseAmountIsNotNaturalNumber() {
         assertSimpleTest(() -> {
             runException("a");
-            assertThat(output()).contains(NOT_NATURAL_NUMBER.toString());
+            assertThat(output()).contains(ExceptionConstants.NOT_NATURAL_NUMBER.toString());
         });
     }
 
@@ -25,7 +25,7 @@ public class PlayerTest extends NsTest {
     void ThrowExceptionIfPurchaseAmountWithLeadingZero() {
         assertSimpleTest(() -> {
             runException("01000");
-            assertThat(output()).contains(LEADING_ZERO.toString());
+            assertThat(output()).contains(ExceptionConstants.LEADING_ZERO.toString());
         });
     }
 
@@ -34,7 +34,7 @@ public class PlayerTest extends NsTest {
     void ThrowExceptionIfPurchaseAmountIndivisible() {
         assertSimpleTest(() -> {
             runException("1500");
-            assertThat(output()).contains(INDIVISIBLE_PURCHASE_AMOUNT.toString());
+            assertThat(output()).contains(ExceptionConstants.INDIVISIBLE_PURCHASE_AMOUNT.toString());
         });
     }
 
