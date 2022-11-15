@@ -14,19 +14,7 @@ public enum Reward {
     private final List<Integer> matchingNumber;
     private final int index;
 
-    public Integer getPrize() {
-        return prize;
-    }
-
-    public Integer getIndex() {
-        return index;
-    }
-
-    public List<Integer> getMatchingNumber() {
-        return matchingNumber;
-    }
-
-    private Reward(Integer prize, List<Integer> matchingNumber, int index) {
+    Reward(Integer prize, List<Integer> matchingNumber, int index) {
         this.prize = prize;
         this.matchingNumber = matchingNumber;
         this.index = index;
@@ -37,5 +25,17 @@ public enum Reward {
                 .filter(reward -> reward.matchingNumber.equals(numberOfMatching))
                 .findAny()
                 .orElse(null);
+    }
+
+    public Integer getPrize() {
+        return prize;
+    }
+
+    public Integer getIndex() {
+        return index;
+    }
+
+    public List<Integer> getMatchingNumber() {
+        return matchingNumber;
     }
 }

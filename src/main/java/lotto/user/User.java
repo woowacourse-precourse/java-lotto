@@ -25,6 +25,17 @@ public class User {
         }
     }
 
+    private void printInputMessage() {
+        System.out.println("구입금액을 입력해 주세요.");
+    }
+
+    private int inputPurchasePrice() {
+        printInputMessage();
+        String input = Console.readLine();
+        validatePurchasePrice(input);
+        return Integer.parseInt(input);
+    }
+
     private void validatePurchasePrice(String money) {
         ValidationPurchasePrice validationPurchasePrice = ValidationPurchasePrice.validate(money);
         if (validationPurchasePrice.getIsThrow()) {
@@ -48,16 +59,5 @@ public class User {
 
     public List<BoughtLotto> getLottos() {
         return lottos;
-    }
-
-    private int inputPurchasePrice() {
-        printInputMessage();
-        String input = Console.readLine();
-        validatePurchasePrice(input);
-        return Integer.parseInt(input);
-    }
-
-    private void printInputMessage() {
-        System.out.println("구입금액을 입력해 주세요.");
     }
 }

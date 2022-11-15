@@ -46,18 +46,18 @@ public class Yield {
         this.yield = totalYield / totalCost * 100;
     }
 
+    private void calculateAllLottoReward(List<BoughtLotto> boughtLottos) {
+        for (BoughtLotto boughtLotto: boughtLottos) {
+            calculateOneLottoReward(boughtLotto);
+        }
+    }
+
     private void calculateOneLottoReward(BoughtLotto boughtLotto) {
         List<Integer> numberOfMatching = findCountOfSameNumberWithWinningNumber(boughtLotto);
         Reward reward = Reward.getReward(numberOfMatching);
         if (reward != null) {
             int index = reward.getIndex();
             countOfRewards.set(index, countOfRewards.get(index) + 1);
-        }
-    }
-
-    private void calculateAllLottoReward(List<BoughtLotto> boughtLottos) {
-        for (BoughtLotto boughtLotto: boughtLottos) {
-            calculateOneLottoReward(boughtLotto);
         }
     }
 
