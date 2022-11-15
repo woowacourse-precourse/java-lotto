@@ -7,6 +7,8 @@ public class Application {
         int money = Input.inputMoney();
 
         // 로또 구입 금액에 따른 로또 개수 계산
+        int count = Judgement.buyLotto(money);
+        System.out.println(count);
 
         // 당첨 번호 입력 받기 // 예외 처리 (1~45 자리 수, int가 아닌 경우, 6자리 수, 중복 문자 제거)
 
