@@ -5,7 +5,10 @@ import lotto.controller.LottoController;
 import lotto.model.Lotto;
 import lotto.model.LottoRaffleRecord;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Map;
 
 import static lotto.config.Constants.LottoInput.*;
 import static lotto.config.Constants.LottoOutput.STATISTICS_TITLE;
@@ -15,11 +18,10 @@ import static lotto.view.LottoStatisticFormat.*;
 public class View {
 
     private final LottoController lottoController;
-    private LottoRaffleRecord lottoRaffleRecord;
     private final Reader reader;
-
+    private List<Lotto> lottos;
+    private LottoRaffleRecord lottoRaffleRecord;
     private Long money;
-    List<Lotto> lottos;
 
     public View() {
         lottoController = new LottoController();

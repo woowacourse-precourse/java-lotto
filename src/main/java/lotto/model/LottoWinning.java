@@ -9,25 +9,6 @@ public class LottoWinning {
     private Lotto winLotto;
     private int winBonus;
 
-    public static class Builder {
-        private Lotto winLotto;
-        private int winBonus;
-
-        public Builder winLotto(Lotto winLotto) {
-            this.winLotto = winLotto;
-            return this;
-        }
-
-        public Builder winBonus(int winBonus) {
-            this.winBonus = winBonus;
-            return this;
-        }
-
-        public LottoWinning build() {
-            return new LottoWinning(this);
-        }
-    }
-
     protected LottoWinning() {
     }
 
@@ -56,5 +37,24 @@ public class LottoWinning {
 
     public int getWinBonus() {
         return winBonus;
+    }
+
+    public static class Builder {
+        private Lotto winLotto;
+        private int winBonus;
+
+        public Builder winLotto(Lotto winLotto) {
+            this.winLotto = winLotto;
+            return this;
+        }
+
+        public Builder winBonus(int winBonus) {
+            this.winBonus = winBonus;
+            return this;
+        }
+
+        public LottoWinning build() {
+            return new LottoWinning(this);
+        }
     }
 }

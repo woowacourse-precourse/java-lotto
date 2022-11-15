@@ -5,7 +5,8 @@ import lotto.model.Lotto;
 import lotto.model.LottoRaffleRecord;
 import lotto.model.LottoWinning;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.List;
 import java.util.stream.Collectors;
 
 public class LottoRaffleService {

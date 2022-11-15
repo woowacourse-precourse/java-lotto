@@ -11,10 +11,8 @@ import java.util.List;
 public class LottoController {
 
     private final LottoPublishService lottoPublishService = new LottoPublishService();
-    private LottoRaffleService lottoRaffleService;
-
     private final LottoWinning.Builder builder = new LottoWinning.Builder();
-
+    private LottoRaffleService lottoRaffleService;
     private List<Lotto> lottos;
 
     public List<Lotto> buyLotto(Long money) {
