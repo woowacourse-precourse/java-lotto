@@ -1,13 +1,21 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import static lotto.Application.*;
+import static org.assertj.core.api.Assertions.assertThat;
+
+
+import java.util.HashMap;
 import java.util.List;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomUniqueNumbersInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class ApplicationTest extends NsTest {
     private static final String ERROR_MESSAGE = "[ERROR]";
@@ -53,6 +61,33 @@ class ApplicationTest extends NsTest {
             assertThat(output()).contains(ERROR_MESSAGE);
         });
     }
+
+    @Test
+    void 숫자_범위_예외_테스트() {
+        List test = List.of(1, 3, 43, 5, 13, 99);
+        assertThatThrownBy(() -> {
+            isValidateNumbers(test);
+        }).isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void 초기_설정_테스트() {
+        HashMap test = new HashMap<Integer, Integer>() {{
+            put(3, 0);
+            put(4, 0);
+            put(5, 0);
+            put(6, 0);
+            put(7, 0);
+        }};
+        HashMap compare = setMap();
+        Assertions.assertThat(test).isEqualTo(compare);
+    }
+    @Test
+    public void count_설정_테스트() {
+        Assertions.assertThat(checkIsSeven(5,1)).isEqualTo(7);
+        Assertions.assertThat(checkIsSeven(3,1)).isEqualTo(3);
+    }
+
 
     @Override
     public void runMain() {
