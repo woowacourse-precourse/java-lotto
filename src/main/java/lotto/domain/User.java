@@ -2,11 +2,12 @@ package lotto.domain;
 
 import lotto.constant.Constant;
 import lotto.constant.Message;
+import lotto.util.Converter;
 import lotto.util.UserInput;
 
 public class User {
 
-    private int lottoMoney;
+    private LottoMoney lottoMoney;
     private int nLottoTickets;
 
     public User(){
@@ -18,15 +19,18 @@ public class User {
     }
 
     private void setLottoMoney() {
-        this.lottoMoney = UserInput.getLottoMoney();
+        String inputLottoMoney = UserInput.getInputLottoMoney();
+        int lottoMoney = Converter.StringToInteger(inputLottoMoney);
+
+        this.lottoMoney = new LottoMoney(lottoMoney);
     }
 
     private void setnLottoTickets() {
-        this.nLottoTickets = this.lottoMoney / Constant.LOTTO_PRICE;
+        this.nLottoTickets = this.lottoMoney.getMoney() / Constant.LOTTO_PRICE;
     }
 
     public int getLottoMoney() {
-        return lottoMoney;
+        return lottoMoney.getMoney();
     }
 
     public int getnLottoTickets() {

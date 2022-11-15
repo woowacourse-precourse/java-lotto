@@ -4,23 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 import lotto.constant.Message;
 
 public class UserInput {
-
-    public static int getLottoMoney(){
-        String inputLottoMoney = getInputLottoMoney();
-        int lottoMoney = Converter.StringToInteger(inputLottoMoney);
-        validateLottoMoney(lottoMoney);
-
-        return lottoMoney;
-    }
-
-    private static void validateLottoMoney(int lottoMoney) {
-        if(!Validator.isLottoMoney(lottoMoney)){
-            Message.printInputErrorUserLottoMoney();
-            throw new IllegalArgumentException();
-        }
-    }
-
-    private static String getInputLottoMoney(){
+    public static String getInputLottoMoney(){
         String inputLottoMoney = Console.readLine();
         validateInputLottoMoney(inputLottoMoney);
 
