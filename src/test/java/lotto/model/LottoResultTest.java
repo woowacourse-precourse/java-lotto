@@ -18,6 +18,14 @@ class LottoResultTest {
         assertThat(lottoResult.getWinningNumbers()).contains(1,2,33,4,5,45);
     }
 
+    @Test
+    void 보너스번호_테스트(){
+        String input = "30";
+        LottoResult lottoResult = new LottoResult("1,2,3,4,5,6");
+        lottoResult.setBonusNumber("10");
+        assertThat(lottoResult.getBonusNumber()).isEqualTo(10);
+    }
+
     @DisplayName("형식에 맞지 않는 당첨 번호가 입력되면 예외를 발생시킨다.")
     @ParameterizedTest
     @CsvSource(value = {"1,a,2,3,4,5", "1,,2,3,4,5,6", "1,2,3,4,5", "1,2,3,4,5,6,7"})
