@@ -31,14 +31,14 @@ public class WinNumber {
         validateInputIsDuplicated(tokens);
     }
 
-    private static void validateInputIsDuplicated(String[] tokens) {
+    private void validateInputIsDuplicated(String[] tokens) {
         int noDuplicatedSize = Arrays.stream(tokens).collect(Collectors.toSet()).size();
         if (noDuplicatedSize != LottoConstants.LOTTO_NUM) {
             throw new IllegalArgumentException(UIConstants.DUPLICATED_WIN_NUMBERS);
         }
     }
 
-    private static void validateLottoNumber(String[] tokens) {
+    private void validateLottoNumber(String[] tokens) {
         if (tokens.length != LottoConstants.LOTTO_NUM) {
             throw new IllegalArgumentException(UIConstants.INVALID_WIN_NUMBERS_COUNT);
         }
