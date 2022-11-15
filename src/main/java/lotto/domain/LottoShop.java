@@ -40,7 +40,7 @@ public class LottoShop {
     }
 
     private void printLotto(List<Lotto> lottos) {
-        LottoShopView.printLottos(lottos);
+        LottoShopView.printLottoQuantity(lottos);
         LottoShopView.printLottos(lottos);
     }
 }
