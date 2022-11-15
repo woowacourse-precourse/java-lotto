@@ -1,4 +1,4 @@
-package lotto;
+package lotto.domain;
 
 import camp.nextstep.edu.missionutils.Console;
 
@@ -6,7 +6,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class WinNumber {
+    private final List<Integer> WINNER_NUMBER;
+    private final int BONUS_NUMBER;
 
+    public WinNumber(){
+        WINNER_NUMBER = winnerNumber();
+        BONUS_NUMBER = bonusNumber();
+    }
     public List<Integer> winnerNumber() {
         String inputWinNum;
         String[] numberSplit;
@@ -24,12 +30,20 @@ public class WinNumber {
         return  winnerNumber;
     }
 
-    public int bonusNumber() {
+    private int bonusNumber() {
         int bonusNum;
 
         System.out.println("보너스 번호를 입력해 주세요.");
         bonusNum = Integer.parseInt(Console.readLine());
 
         return bonusNum;
+    }
+
+    public List<Integer> getWINNER_NUMBER() {
+        return WINNER_NUMBER;
+    }
+
+    public int getBONUS_NUMBER() {
+        return BONUS_NUMBER;
     }
 }
