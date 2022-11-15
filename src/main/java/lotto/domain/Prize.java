@@ -41,4 +41,12 @@ public enum Prize {
                 .filter(prize -> prize != EMPTY)
                 .collect(Collectors.toList());
     }
+
+    public int getMoney() {
+        return money;
+    }
+
+    public int getMatchLottoNumber() {
+        return matchLottoNumber;
+    }
 }
