@@ -121,6 +121,18 @@ public class Application {
         return earningsRate;
     }
 
+    // 11. 당첨 통계
+    static void getWinningStatistics(List<Integer> lottosResult, double earningsRate) {
+        System.out.println("당첨 통계");
+        System.out.println("---");
+        System.out.println("3개 일치 (5,000원) - " + lottosResult.get(3) + "개");
+        System.out.println("4개 일치 (50,000원) - " + lottosResult.get(4) + "개");
+        System.out.println("5개 일치 (1,500,000원) - " + lottosResult.get(5) + "개");
+        System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - " + lottosResult.get(0) + "개");
+        System.out.println("6개 일치 (2,000,000,000원) - " + lottosResult.get(6) + "개");
+        System.out.println("총 수익률은 " + earningsRate + "%" + "입니다.");
+    }
+
     public static void main(String[] args) {
 
         List<Lotto> lottos = new ArrayList<>();
@@ -146,6 +158,9 @@ public class Application {
 
         // 수익률
         double earningsRate = getEarningsRate(sheets,totalWinningPrice);
+
+        // 당첨 통계
+        getWinningStatistics(lottosResult,earningsRate);
     }
 }
 
