@@ -7,12 +7,6 @@ import java.util.List;
 public class EarningRateCalculator {
     private static final Integer STANDARD_UNIT = 1000;
 
-    private static final Integer FIFTH_PLACE_PRIZE = 5000;
-    private static final Integer FOURTH_PLACE_PRIZE = 50000;
-    private static final Integer THIRD_PLACE_PRIZE = 1500000;
-    private static final Integer SECOND_PLACE_PRIZE = 30000000;
-    private static final Integer FIRST_PLACE_PRIZE = 2000000000;
-
     private Integer fifthPlaceCount = 0;
     private Integer fourthPlaceCount = 0;
     private Integer thirdPlaceCount = 0;
@@ -30,7 +24,7 @@ public class EarningRateCalculator {
         calculatePrize();
         calculateEarningRate(lottos.size());
         System.out.println(prize);
-        printer.printWinningStatistics(fifthPlaceCount, fourthPlaceCount , thirdPlaceCount, secondPlaceCount, firstPlaceCount,
+        printer.printWinningStatistics(Prize.FIFTH_PLACE_PRIZE.prize, Prize.FOURTH_PLACE_PRIZE.prize , Prize.THIRD_PLACE_PRIZE.prize, Prize.SECOND_PLACE_PRIZE.prize, Prize.FIRST_PLACE_PRIZE.prize,
                 earningRate);
     }
 
@@ -67,9 +61,9 @@ public class EarningRateCalculator {
     }
 
     private void calculatePrize() {
-        prize = (fifthPlaceCount * FIFTH_PLACE_PRIZE) + (fourthPlaceCount * FOURTH_PLACE_PRIZE) +
-                (thirdPlaceCount * THIRD_PLACE_PRIZE) + (secondPlaceCount * SECOND_PLACE_PRIZE) +
-                (firstPlaceCount * FIRST_PLACE_PRIZE);
+        prize = (fifthPlaceCount * Prize.FIFTH_PLACE_PRIZE.prize) + (fourthPlaceCount * Prize.FOURTH_PLACE_PRIZE.prize) +
+                (thirdPlaceCount * Prize.THIRD_PLACE_PRIZE.prize) + (secondPlaceCount * Prize.SECOND_PLACE_PRIZE.prize) +
+                (firstPlaceCount * Prize.FIRST_PLACE_PRIZE.prize);
     }
 
     private void calculateEarningRate(Integer numberOfLottos) {
