@@ -8,4 +8,8 @@ public class LottoGenerator {
         List<Integer> randomNumbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
         return new Lotto(randomNumbers);
     }
+
+    public static Lotto generateByNumberList(List<Integer> numbers) {
+        return new Lotto(numbers);
+    }
 }
