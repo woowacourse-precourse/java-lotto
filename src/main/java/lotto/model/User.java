@@ -8,6 +8,7 @@ import java.util.List;
 public class User {
     private Integer budget = 0;
     private List<Lotto> lottos = new ArrayList<>();
+    private Integer profit = 0;
 
     public User(){
 
@@ -37,4 +38,10 @@ public class User {
     private List<Integer> generateLottoNumbers(){
         return Randoms.pickUniqueNumbersInRange(1, Game.maximumLottoNumber, Game.numberToDraw);
     }
+
+    public void calculateProfit(){
+
+
+    }
+
 }

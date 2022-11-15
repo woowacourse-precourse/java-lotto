@@ -52,4 +52,17 @@ public class Lotto {
     public List<Integer> getNumbers() {
         return numbers;
     }
+
+    public Rank getRank(List<Integer> winningNumbers, Integer bonus){
+        Integer matchedCount = countMatched(winningNumbers);
+        Integer bonusCount = countBonus(bonus);
+        Rank lottoRank = Rank.NONE;
+        for (Rank rank : Rank.asSortedList()){
+            if (rank.getMatchedCount() <= matchedCount && rank.getBonusCount() <= bonusCount) {
+                lottoRank = rank;
+            }
+        }
+        return lottoRank;
+    }
+
 }

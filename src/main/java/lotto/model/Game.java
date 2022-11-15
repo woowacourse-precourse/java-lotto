@@ -42,19 +42,8 @@ public class Game {
     }
 
     private void validateBonusByDistinction(Integer bonus){
-        if (winningLotto.countBonus(bonus) == 1) throw new IllegalArgumentException();
+        if (winningLotto.countBonus(bonus) > 0) throw new IllegalArgumentException();
     }
 
-    public Rank judgeRank(Lotto lotto){
-        Integer matchedCount = lotto.countMatched(winningLotto.getNumbers());
-        Integer bonusCount = lotto.countBonus(bonus);
-        Rank lottoRank = Rank.NONE;
-        for (Rank rank : Rank.asSortedList()){
-            if (rank.getMatchedCount() <= matchedCount && rank.getBonusCount() <= bonusCount) {
-                lottoRank = rank;
-            }
-        }
-        return lottoRank;
-    }
 
 }
