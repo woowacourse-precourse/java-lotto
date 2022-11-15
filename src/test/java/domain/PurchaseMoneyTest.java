@@ -20,7 +20,7 @@ class PurchaseMoneyTest {
     @ValueSource(strings = {"1400", "2300", "1700", "2500"})
     void incorrectUnit(String input) {
         assertThatThrownBy(() -> new PurchaseMoney(input))
-                .hasMessage("[ERROR] 구입 금액은 1000원 단위로 가능합니다");
+                .hasMessage("[ERROR] 구입 금액은 1000원 단위로 가능합니다.");
     }
 
     @ParameterizedTest
@@ -28,7 +28,7 @@ class PurchaseMoneyTest {
     @ValueSource(strings = {"10k" , "11h", "1h1", "h11"})
     void incorrectData(String input){
         assertThatThrownBy(() -> new PurchaseMoney(input))
-                .hasMessage("[ERROR] 숫자 문자열이 아닙니다. 숫자 문자열만 입력해 주세요.");
+                .hasMessage("[ERROR] 숫자 문자열이 아닙니다.");
     }
 
     @ParameterizedTest

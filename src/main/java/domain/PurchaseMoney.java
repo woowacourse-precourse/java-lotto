@@ -28,7 +28,7 @@ public class PurchaseMoney {
         try {
             return Integer.parseInt(purchaseMoney);
         } catch (Exception e) {
-            throw new IllegalArgumentException("[ERROR] 숫자 문자열이 아닙니다. 숫자 문자열만 입력해 주세요.");
+            throw new IllegalArgumentException("[ERROR] 숫자 문자열이 아닙니다.");
         }
     }
 
@@ -39,7 +39,7 @@ public class PurchaseMoney {
     }
 
     private void checkRange(int money) {
-        if ( money <= MIN_RANGE) {
+        if ( money < MIN_RANGE) {
             throw new IllegalArgumentException("[ERROR] 최소 " + MIN_RANGE + "원 이상부터 구입이 가능합니다.");
 
         }
