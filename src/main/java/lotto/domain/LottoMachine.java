@@ -28,7 +28,11 @@ public class LottoMachine extends Lotto {
         return Optional.of(new LottoMachine(convertStringToNumber(numbers)));
     }
 
-    public void addBonusNumber(int bonusNumber) throws IllegalArgumentException {
+    public void addBonusNumber(String inputBonusNumber) throws IllegalArgumentException {
+        validateIsNumber(inputBonusNumber);
+
+        int bonusNumber = Integer.parseInt(inputBonusNumber);
+
         validate(bonusNumber);
         this.bonusNumber = bonusNumber;
     }
@@ -59,7 +63,7 @@ public class LottoMachine extends Lotto {
         try {
             Integer.parseInt(number);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException(ExceptionMessage.WINNING_NUMBER_ERROR.getMessage());
+            throw new IllegalArgumentException(ExceptionMessage.NUMBER_FORMAT_ERROR.getMessage());
         }
     }
 }

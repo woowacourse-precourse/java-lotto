@@ -33,7 +33,7 @@ public class LottoMachineTest {
         }
 
         String bonusNumber = "30";
-        lottoMachine.addBonusNumber(Integer.parseInt(bonusNumber));
+        lottoMachine.addBonusNumber(bonusNumber);
         Assertions.assertThat(lottoMachine.getBonusNumber()).isEqualTo(30);
     }
 
@@ -44,7 +44,7 @@ public class LottoMachineTest {
         LottoMachine lottoMachine = LottoMachine.initLottoMachineNumber(numbers).get();
 
         String bonusNumber = "10";
-        Assertions.assertThatThrownBy(() -> lottoMachine.addBonusNumber(Integer.parseInt(bonusNumber)))
+        Assertions.assertThatThrownBy(() -> lottoMachine.addBonusNumber(bonusNumber))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -55,7 +55,18 @@ public class LottoMachineTest {
         LottoMachine lottoMachine = LottoMachine.initLottoMachineNumber(numbers).get();
 
         String bonusNumber = "46";
-        Assertions.assertThatThrownBy(() -> lottoMachine.addBonusNumber(Integer.parseInt(bonusNumber)))
+        Assertions.assertThatThrownBy(() -> lottoMachine.addBonusNumber(bonusNumber))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    @DisplayName("보너스 숫자 예외 테스트(보너스 숫자 입력이 숫자로 변환이 안되는 케이스)")
+    void BonusNumericalExceptionTest() {
+        String numbers = "20,10,3,2,41,24";
+        LottoMachine lottoMachine = LottoMachine.initLottoMachineNumber(numbers).get();
+
+        String bonusNumber = "4a";
+        Assertions.assertThatThrownBy(() -> lottoMachine.addBonusNumber(bonusNumber))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 }

@@ -36,12 +36,7 @@ public class LottoController {
 
     public void initBonusNumber() {
         String bonusNumber = InputView.inputBonusNumber();
-
-        try {
-            lottoService.saveBonusNumber(bonusNumber);
-        } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
-        }
+        lottoService.saveBonusNumber(bonusNumber);
     }
 
     public void lottoProgress() {

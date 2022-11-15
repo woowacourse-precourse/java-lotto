@@ -28,7 +28,7 @@ public class LottoService {
     }
 
     public void saveBonusNumber(String bonusNumber) {
-        lottoMachine.addBonusNumber(Integer.parseInt(bonusNumber));
+        lottoMachine.addBonusNumber(bonusNumber);
     }
 
     public void initResultLotto() {
@@ -84,7 +84,7 @@ public class LottoService {
                 / ROUND_NUMBER;
     }
 
-    //테스트를 위한 메서드
+    // 테스트를 위한 메서드
     public User getUserForTest() {
         return user;
     }
