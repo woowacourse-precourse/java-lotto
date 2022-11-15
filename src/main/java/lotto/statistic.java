@@ -38,10 +38,10 @@ public class statistic {
   }
   //교집합
   private List<Integer> intersection(List<Integer> left_side, List<Integer> right_side){
-    List<Integer> result = new ArrayList<>();
-    result.addAll(left_side);
-    result.retainAll(right_side);
-    return result;
+    List<Integer> plus = new ArrayList<>();
+    plus.addAll(left_side);
+    plus.retainAll(right_side);
+    return plus;
   }
   //최종 통계 및 출력
   private void medal_result(int[] input_result, String ratio){
