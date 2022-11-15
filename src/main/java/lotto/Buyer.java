@@ -17,7 +17,7 @@ public class Buyer {
     public Buyer(int purchase){
         validate(purchase);
         this.purchase = purchase;
-        this.purchasedLottos = buyLottos(purchase/1000);
+        this.purchasedLottos = putchaseLottos(purchase/1000);
     }
 
     private void validate(int purchase){
@@ -26,15 +26,19 @@ public class Buyer {
         }
     }
 
-    private List<Lotto> buyLottos(int cnt){
+    private List<Lotto> putchaseLottos(int cnt){
         List<Lotto> purchasedLottos = new ArrayList<>();
 
+        System.out.println(cnt+"개를 구매했습니다.");
         for(int i=0;i<cnt;i++){
             List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+            System.out.println(numbers);
             purchasedLottos.add(new Lotto(numbers));
         }
+
         return purchasedLottos;
     }
+
 
     public void getResult(){
 

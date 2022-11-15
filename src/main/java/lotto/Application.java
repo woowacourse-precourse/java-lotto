@@ -1,17 +1,15 @@
 package lotto;
 
-import static camp.nextstep.edu.missionutils.Console.readLine;
-import static lotto.Utils.string2int;
+import static lotto.Utils.*;
 
 
 public class Application {
 
     public static void main(String[] args) {
         try{
-            System.out.println("구입금액을 입력해 주세요.");
-            int purchase = string2int(readLine());
-
+            int purchase = getPurchase();
             Buyer buyer = new Buyer(purchase);
+
 
 
         }catch(IllegalArgumentException e){
