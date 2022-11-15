@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.assertj.core.api.Assertions.*;
 
 public class LottoTest {
 
@@ -42,5 +42,13 @@ public class LottoTest {
     void createLottoWithDuplication() {
         assertThatThrownBy(() -> new Lotto(List.of(1, 2, 3, 4, 5, 5)))
                 .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("로또의 출력 형식을 확인한다.")
+    @Test
+    void toString_메서드_테스트() {
+        Lotto lotto = new Lotto(List.of(37, 5, 22, 14, 6, 43));
+        assertThat(lotto.toString())
+                .isEqualTo("[5, 6, 14, 22, 37, 43]");
     }
 }
