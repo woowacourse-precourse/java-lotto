@@ -12,7 +12,6 @@ public class UserInput {
     private static final String INPUT_LOTTO_WIN_NUMBER = "당첨 번호를 입력해 주세요.";
     private static final String INPUT_BONUS_NUMBER = "보너스 번호를 입력해 주세요.";
     private static final String ERROR_LOTTO_NUMBER_RANGE = "로또 번호는 1부터 45 사이의 숫자여야 합니다.";
-    private static final String ERROR_LOTTO_NUMBER_DUPLICATE = "로또 번호는 서로 다른 숫자로 이루어져야 합니다.";
     private static final String ERROR_INPUT_MONEY = "로또 구입 금액은 1000원 단위의 숫자여야 합니다.";
     private static final String ERROR_NULL_INPUT = "값을 입력해야 합니다.";
 
@@ -60,17 +59,7 @@ public class UserInput {
             throw new IllegalArgumentException(ERROR_LOTTO_NUMBER_RANGE);
         }
 
-        if (inputLottoWinNumber.size() != inputLottoWinNumber.stream().distinct().count()) {
-            throw new IllegalArgumentException(ERROR_LOTTO_NUMBER_DUPLICATE);
-        }
-
-        final List<Integer> lottoWinNumber = stringListToIntegerList(inputLottoWinNumber);
-
-        if (!lottoWinNumber.stream().allMatch(n -> (n >= 1 && n <= 45))) {
-            throw new IllegalArgumentException(ERROR_LOTTO_NUMBER_RANGE);
-        }
-
-        return new Lotto(lottoWinNumber);
+        return new Lotto(stringListToIntegerList(inputLottoWinNumber));
     }
 
     private static String getInput() {
