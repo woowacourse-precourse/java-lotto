@@ -14,4 +14,7 @@ public class BuyLotto {
         return games;
     }
 
+    public static void saveEachLottoNumbers(List<List<Integer>> userLottoNumbers,List <Integer> eachLottoNumbers){
+        userLottoNumbers.add(eachLottoNumbers);
+    }
 }
