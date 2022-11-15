@@ -28,7 +28,7 @@ public class OutputView {
         System.out.println("보너스 번호를 입력해 주세요.");
     }
 
-    public static void printPlayerNumbers(List<List<Integer>> allPlayerNumbers) {
+    public static void printAllPlayerNumbers(List<List<Integer>> allPlayerNumbers) {
         for (List<Integer> playerNumbers : allPlayerNumbers) {
             System.out.println(playerNumbers);
         }

@@ -11,7 +11,6 @@ import lotto.domain.Lotto;
 import lotto.domain.LottoResult;
 import lotto.domain.Player;
 import lotto.domain.Purchase;
-import lotto.domain.Rank;
 import lotto.domain.Ranking;
 import lotto.domain.Statistics;
 import lotto.domain.Yield;
@@ -49,7 +48,7 @@ public class LottoController {
     private static void publishPlayerNumbers() {
         Player player = new Player(ticketNumber);
         allPlayerNumbers = new ArrayList<>(player.getAllPlayerNumbers());
-        OutputView.printPlayerNumbers(allPlayerNumbers);
+        OutputView.printAllPlayerNumbers(allPlayerNumbers);
     }
 
     private static void determineWinningNumbersAndBonusNumber() {
@@ -73,8 +72,8 @@ public class LottoController {
     private static void aggregateStatisticResults() {
         LottoResult result = new LottoResult(winningNumbers, bonusNumber, allPlayerNumbers);
         Ranking ranking = new Ranking(result.getMatches(), result.getBonusMatches());
-        Statistics statistics = new Statistics(ranking.getRankings());
-        OutputView.printStatistics(statistics.getRankWithStatistics());
+        Statistics statistics = new Statistics(ranking.getPlayerRankings());
+        OutputView.printStatistics(statistics.getStatistics());
     }
 
     private static void calculateYield() {

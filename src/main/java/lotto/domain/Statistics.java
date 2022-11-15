@@ -5,23 +5,23 @@ import java.util.List;
 public class Statistics {
 
     public Statistics(List<Rank> rankings) {
-        initializeStatistics(rankings);
-        aggregateRankingsToStatistics(rankings);
+        initializeCountsInRank(rankings);
+        aggregateRankingStatistics(rankings);
     }
 
-    private static void initializeStatistics(List<Rank> rankings) {
+    private static void initializeCountsInRank(List<Rank> rankings) {
         for (Rank rank : rankings) {
             rank.initializeRankCount(rank);
         }
     }
 
-    private static void aggregateRankingsToStatistics(List<Rank> rankings) {
+    private static void aggregateRankingStatistics(List<Rank> rankings) {
         for (Rank ranking : rankings) {
             ranking.addCount(ranking);
         }
     }
 
-    public List<Rank> getRankWithStatistics() {
+    public List<Rank> getStatistics() {
          return List.of(Rank.values());
     }
 
