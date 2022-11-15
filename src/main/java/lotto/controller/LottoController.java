@@ -36,4 +36,8 @@ public class LottoController {
             lottos.add(lotto);
         }
     }
+
+    public List<Lotto> getLottos() {
+        return lottos;
+    }
 }
