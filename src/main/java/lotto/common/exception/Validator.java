@@ -10,7 +10,7 @@ import static lotto.common.constant.NumberConstant.LOTTO_MIN_VALUE;
 
 public class Validator {
 
-    private static Pattern PATTERN = Pattern.compile("^[\\d]+,[\\d]+,[\\d]+,[\\d]+,[\\d]+,[\\d]+$");
+    private static Pattern LOTTO_PATTERN = Pattern.compile("^[\\d]+,[\\d]+,[\\d]+,[\\d]+,[\\d]+,[\\d]+$");
 
     public static int validateInt(String str){
         try {
@@ -27,7 +27,7 @@ public class Validator {
     }
 
     public static void validateLottoNumbers(String lottoNumbers) {
-        if (!PATTERN.matcher(lottoNumbers).matches()) {
+        if (!LOTTO_PATTERN.matcher(lottoNumbers).matches()) {
             throw new IllegalArgumentException(" 로또 숫자를 형식에 맞게 입력해야 합니다.");
         }
     }
