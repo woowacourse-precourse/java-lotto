@@ -4,7 +4,7 @@ import lotto.exception.DuplicateLottoNumberException;
 
 import java.util.List;
 
-public class LottoValidator extends CanValidateLotto<List<Integer>> {
+public class LottoValidator extends AbstractLottoValidator<List<Integer>> {
     @Override
     public void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {

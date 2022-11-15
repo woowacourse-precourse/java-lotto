@@ -5,7 +5,7 @@ import lotto.exception.DuplicateLottoNumberException;
 
 import java.util.Map;
 
-public class WinningLottoValidator extends CanValidateLotto<Map<Integer, Boolean>> {
+public class WinningLottoValidator extends AbstractLottoValidator<Map<Integer, Boolean>> {
     @Override
     public void validate(Map<Integer, Boolean> winningNumbers) {
         if (winningNumbers.size() !=
