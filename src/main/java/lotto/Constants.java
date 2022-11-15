@@ -3,6 +3,9 @@ package lotto;
 public class Constants {
 
 	public static final int MINIMUM_MONEY_UNIT = 1000;
+	public static final int LOTTO_UNDER_BOUNDARY = 1;
+	public static final int LOTTO_UPPER_BOUNDARY = 45;
+	public static final int LOTTO_LENGTH = 6;
 
 	public static final String PRINT_INPUT_MONEY = "구입금액을 입력해 주세요.";
 
