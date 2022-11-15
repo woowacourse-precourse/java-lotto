@@ -41,6 +41,7 @@ public class Application {
     }
 
     static List<Integer> inputLottoNumbers(String numbers) {
+        System.out.println("당첨 번호를 입력해 주세요.");
         numbers = Console.readLine();
         return replaceSeparator(numbers);
     }
@@ -89,6 +90,7 @@ public class Application {
     }
 
     static int inputBonusNumber(String number) {
+        System.out.println("보너스 번호를 입력해 주세요.");
         number = Console.readLine();
         return convertBonusNumber(number);
     }
@@ -141,10 +143,18 @@ public class Application {
 
     static Map<Integer, Integer> checkTotalRank(Set<List<Integer>> lottoTickets, List<Integer> lottoNumbers, int bonusNumber) {
         Map<Integer, Integer> totalRank = new HashMap<>();
+        initializeTotalRank(totalRank);
         for (List<Integer> lottoTicket : lottoTickets) {
             int winNumberCount = checkWinningLottoTicket(lottoTicket, lottoNumbers);
             boolean winBonusNumber = checkBonusNumber(lottoTicket, bonusNumber);
             totalRank = addRank(totalRank, checkWinRank(winNumberCount, winBonusNumber));
+        }
+        return totalRank;
+    }
+
+    static Map<Integer, Integer> initializeTotalRank(Map<Integer, Integer> totalRank) {
+        for (int rank = 1; rank <= 5; rank++) {
+            totalRank.put(rank, 0);
         }
         return totalRank;
     }
