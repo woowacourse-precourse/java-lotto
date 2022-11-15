@@ -20,4 +20,10 @@ public class WinNumbers {
     public Lotto getWinNumbers() {
         return this.winNumbers;
     }
+
+    public int getBonusNumber() {
+        return this.bonusNumber;
+    }
+
+
 }
