@@ -32,4 +32,14 @@ public class InputValidationUtils {
 	private static boolean isOutOfBound(final int number) {
 		return number > MAX_NUMBER || number < MIN_NUMBER;
 	}
+
+	public static void validateFormat(final String input) {
+		try {
+			Integer.parseInt(input);
+		} catch (NumberFormatException ex) {
+			throw new IllegalArgumentException(
+				ERR_MESSAGE_HEAD + "잘못된 형식의 입력입니다."
+			);
+		}
+	}
 }

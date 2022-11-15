@@ -27,4 +27,14 @@ public class InputValidationUtilsTest {
 			).isInstanceOf(IllegalArgumentException.class)
 			.hasMessageContaining(ERROR_MESSAGE);
 	}
+
+	@DisplayName("입력된 문자열이 숫자로만 이루어져 있는지 검증할 수 있다.")
+	@ParameterizedTest
+	@ValueSource(strings = {"rksdfk", "r나다라1", "13456l"})
+	void validateFormat_입력된_문자열이_숫자로만_이루어져_있는지_검증(final String input) {
+		Assertions.assertThatThrownBy(
+				() -> InputValidationUtils.validateFormat(input)
+			).isInstanceOf(IllegalArgumentException.class)
+			.hasMessageContaining(ERROR_MESSAGE);
+	}
 }
