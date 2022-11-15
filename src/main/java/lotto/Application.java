@@ -9,9 +9,13 @@ public class Application {
         User user = new User();
         LotteryMachine lotteryMachine = new LotteryMachine();
 
-        user.purchaseLottery(lotteryMachine);
+        try {
+            user.purchaseLottery(lotteryMachine);
 
-        lotteryMachine.drawLottery();
-        user.checkResult(lotteryMachine);
+            lotteryMachine.drawLottery();
+            user.checkResult(lotteryMachine);
+        } catch (IllegalArgumentException illegalArgumentException) {
+
+        }
     }
 }

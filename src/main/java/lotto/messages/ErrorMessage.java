@@ -1,7 +1,7 @@
 package lotto.messages;
 
 public enum ErrorMessage {
-    PREFIX_ERROR_MESSAGE("[ERROR]"),
+    PREFIX_ERROR_MESSAGE("[ERROR] "),
     MONEY_INPUT_ERROR_MESSAGE(PREFIX_ERROR_MESSAGE.getMessage()
             + "구입 금액은 천원 단위의 숫자여야 합니다."),
     DRAW_NUMBER_INPUT_ERROR_MESSAGE(PREFIX_ERROR_MESSAGE.getMessage()
