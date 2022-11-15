@@ -1,7 +1,7 @@
 package lotto;
 
-import lotto.console.ConsoleIn;
-import lotto.console.ConsoleOut;
+import lotto.domain.console.ConsoleIn;
+import lotto.domain.console.ConsoleOut;
 import lotto.domain.lotto.Lotto;
 import lotto.domain.lottocalculator.Calculator;
 import lotto.domain.lottomachine.LottoMachine;

@@ -1,4 +1,4 @@
-package lotto.console;
+package lotto.domain.console;
 
 import lotto.Hit;
 import lotto.domain.lotto.Lotto;
