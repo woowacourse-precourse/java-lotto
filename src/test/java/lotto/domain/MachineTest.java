@@ -1,11 +1,15 @@
 package lotto.domain;
 
+import lotto.enums.PrizeOfLotto;
 import lotto.model.Lotto;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.lang.reflect.Field;
 import java.math.BigInteger;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -36,6 +40,43 @@ class MachineTest {
 
         // Then
         assertThat(countOfPurchasedLottos).isEqualTo(purchaseNumberOfLottos);
+    }
+
+    @Test
+    @DisplayName("당첨 번호, 보너스 번호를 기준으로 로또의 등수를 판단하여 구매한 로또의 당첨 결과를 업데이트한다.")
+    void judge() throws NoSuchFieldException, IllegalAccessException {
+        // Given
+        List<Lotto> lottos = List.of(
+                new Lotto(List.of(8, 21, 23, 41, 42, 43)),
+                new Lotto(List.of(3, 5, 11, 16, 32, 38)),
+                new Lotto(List.of(7, 11, 16, 35, 36, 44)),
+                new Lotto(List.of(1, 8, 11, 31, 41, 42)),
+                new Lotto(List.of(13, 14, 16, 38, 42, 45)),
+                new Lotto(List.of(7, 11, 30, 40, 42, 43)),
+                new Lotto(List.of(2, 13, 22, 32, 38, 45)),
+                new Lotto(List.of(1, 3, 5, 14, 22, 45))
+        );
+
+        List<Integer> winningNumbers = List.of(1, 2, 3, 4, 5, 6);
+        Integer bonusNumber = 7;
+        Machine machine = new Machine(winningNumbers, bonusNumber);
+
+        Field resultOfLottos = machine.getClass().getDeclaredField("resultOfLottos");
+        resultOfLottos.setAccessible(true);
+
+        // When
+        machine.judge(lottos);
+
+        Map<String, Integer> result = new HashMap<>(Map.of(
+                PrizeOfLotto.FIRST.getRank(), 0,
+                PrizeOfLotto.SECOND.getRank(), 0,
+                PrizeOfLotto.THIRD.getRank(), 0,
+                PrizeOfLotto.FOURTH.getRank(), 0,
+                PrizeOfLotto.FIFTH.getRank(), 1
+        ));
+
+        // Then
+        assertThat(resultOfLottos.get(machine)).isEqualTo(result);
     }
 
 }
