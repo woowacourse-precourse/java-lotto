@@ -78,7 +78,7 @@ public class CorrectLottoNumber {
 			if (winningLottoNumber.contains(number))
 				correctNumbers++;
 		}
-		if (winningLottoNumber.contains(bonusNumber))
+		if (userLottoOne.contains(bonusNumber))
 			correctBonusNumbers++;
 
 		if (correctNumbers == 5 && correctBonusNumbers == 1)
