@@ -1,4 +1,4 @@
-package lotto;
+package lotto.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -35,6 +35,20 @@ class LottoTest {
             assertThatThrownBy(() -> new Lotto(List.of(1, 2, 3, 4, 5)))
                 .isInstanceOf(IllegalArgumentException.class);
         }
+
+        @Test
+        @DisplayName("로또 번호의 입력 범위를 벗어나면 예외가 발생한다. (초과시)")
+        void createLottoByOutOfRangeNumber1() {
+            assertThatThrownBy(() -> new Lotto(List.of(1, 2, 3, 4, 5, 46)))
+                .isInstanceOf(IllegalArgumentException.class);
+        }
+
+        @Test
+        @DisplayName("로또 번호의 입력 범위를 벗어나면 예외가 발생한다. (미달시)")
+        void createLottoByOutOfRangeNumber2() {
+            assertThatThrownBy(() -> new Lotto(List.of(0, 2, 3, 4, 5, 6)))
+                .isInstanceOf(IllegalArgumentException.class);
+        }
     }
 
     @Nested
@@ -48,6 +62,4 @@ class LottoTest {
             assertThat(lotto).isInstanceOf(Lotto.class);
         }
     }
-
-
 }
