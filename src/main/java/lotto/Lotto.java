@@ -17,18 +17,18 @@ public class Lotto {
 
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
-            throw new IllegalArgumentException("[ERROR]");
+            throw new IllegalArgumentException("[ERROR] 6개의 숫자를 입력해야 합니다.");
         }
     }
 
     private void DuplicatedNumber(List<Integer> numbers){
         Set<Integer> checkNumbers = new HashSet<Integer>(numbers);
-        if(checkNumbers.size() != numbers.size()) throw new IllegalArgumentException("[ERROR]");
+        if(checkNumbers.size() != numbers.size()) throw new IllegalArgumentException("[ERROR] 중복된 숫자를 입력할 수 없습니다.");
     }
 
     private void checkOverRange(List<Integer> numbers){
         for(int i =0;i<6;i++){
-            if(numbers.get(i) > 46 || numbers.get(i) < 1) throw new IllegalArgumentException("[ERROR]");
+            if(numbers.get(i) > 46 || numbers.get(i) < 1) throw new IllegalArgumentException("[ERROR] 1부터 45 사이의 숫자여야 합니다.");
         }
     }
 

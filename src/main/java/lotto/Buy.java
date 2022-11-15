@@ -17,7 +17,7 @@ public class Buy {
 
     private void validata(int price){
         if(price % 1000 != 0){
-            throw new IllegalArgumentException("[ERROR]");
+            throw new IllegalArgumentException("[ERROR] 1000원 단위의 금액을 입력해야 합니다.");
         }
     }
 

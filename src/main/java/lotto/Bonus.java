@@ -14,7 +14,7 @@ public class Bonus {
     }
 
     private void checkOverRange(int bonus){
-            if(bonus > 46 || bonus < 1) throw new IllegalArgumentException("[ERROR]");
+            if(bonus > 46 || bonus < 1) throw new IllegalArgumentException("[ERROR] 1부터 46사이의 숫자여야 합니다.");
     }
 
 }
