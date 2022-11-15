@@ -1,5 +1,6 @@
 package lotto.domain;
 
+import lotto.constant.LotteryRank;
 import lotto.constant.Status;
 import lotto.domain.constant.LottoProperty;
 import lotto.constant.ValidationErrorMessage;
@@ -8,6 +9,7 @@ import lotto.domain.LotteryResult;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 public class User {
@@ -19,6 +21,7 @@ public class User {
         validate(money);
         this.money = money;
         lotteryTickets = new ArrayList<>();
+        lotteryResult = new LotteryResult();
     }
 
     public void validate (int money) throws IllegalArgumentException {
@@ -40,6 +43,14 @@ public class User {
         List<List<Integer>> lotteryNumbers = new ArrayList<>();
         return lotteryTickets.stream().map(Lotto::getNumbers)
                 .collect(Collectors.toList());
+    }
+
+    public void addResult(String id, LotteryRank rank) {
+        lotteryResult.add(id, rank);
+    }
+
+    public Map<LotteryRank, Integer> countWinningTickets() {
+        return lotteryResult.findWinningInformation();
     }
 
     public boolean hasMoney() {
