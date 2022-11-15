@@ -14,19 +14,25 @@ public class LottoController {
 
     public void run() {
         try {
-            lottoView.printMoneyQuestion();
-            NumberOfLotto = getNumberOfLotto();
-            List<Lotto> lottoList = makeBunchOfLotto(NumberOfLotto);
-            lottoView.printLottoList(lottoList);
-            lottoView.printWinNumberQuestion();
-            Lotto winNumber = getWinLottoNumber(inputWinNumber());
-            lottoView.printBonusNumberQuestion();
-            int bonusNumber = inputBonusNumber(winNumber);
-            getStatistics(lottoList,winNumber,bonusNumber);
-            lottoView.printStatistics(prizes, profit);
+            startLotto();
         } catch (IllegalArgumentException e) {
             return ;
         }
+    }
+
+    public void startLotto() {
+        lottoView.printMoneyQuestion();
+        NumberOfLotto = getNumberOfLotto();
+        List<Lotto> lottoList = makeBunchOfLotto(NumberOfLotto);
+        lottoView.printLottoList(lottoList);
+        lottoView.printWinNumberQuestion();
+
+        Lotto winNumber = getWinLottoNumber(inputWinNumber());
+        lottoView.printBonusNumberQuestion();
+        int bonusNumber = inputBonusNumber(winNumber);
+
+        getStatistics(lottoList,winNumber,bonusNumber);
+        lottoView.printStatistics(prizes, profit);
     }
 
     public String inputMoney() {
