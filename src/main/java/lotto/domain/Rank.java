@@ -26,4 +26,8 @@ public enum Rank {
                 filter(rank -> rank.compare.test(count, bonus))
                 .findAny().get();
     }
+
+    public int getReward() {
+        return reward;
+    }
 }
