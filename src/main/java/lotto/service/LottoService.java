@@ -38,9 +38,13 @@ public class LottoService {
     }
 
     public List<Integer> inputWinningNumbers(View view) throws IllegalArgumentException {
+        view.printInputWinningMessage();
+        return separateInputWinningNumbers(Console.readLine());
+    }
+
+    public List<Integer> separateInputWinningNumbers(String input) throws IllegalArgumentException {
         try {
-            view.printInputWinningMessage();
-            return Arrays.stream(Console.readLine().split(","))
+            return Arrays.stream(input.split(","))
                     .map(Integer::parseInt)
                     .collect(Collectors.toList());
         } catch (Exception e) {
