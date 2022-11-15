@@ -7,6 +7,7 @@ import lotto.view.Terminal;
 import lotto.view.View;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class LottoSystem {
@@ -24,6 +25,7 @@ public class LottoSystem {
         List<Lotto> boughtLottos = new ArrayList<>();
         for(int i = 0; i < lottoCount; i++) {
             List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+            Collections.sort(numbers);
             boughtLottos.add(new Lotto(numbers));
         }
     }
