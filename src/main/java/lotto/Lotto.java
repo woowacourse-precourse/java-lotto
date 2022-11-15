@@ -10,6 +10,7 @@ public class Lotto {
     public Lotto(List<Integer> numbers) {
         validate(numbers);
         validateInputDuplicatedNumbers(numbers);
+        validateNumberRange(numbers);
         this.numbers = numbers;
     }
 
@@ -23,6 +24,14 @@ public class Lotto {
         Set<Integer> number = new HashSet<>(numbers);
         if (number.size() != 6) {
             throw new IllegalArgumentException(Error.DUPLICATED_NUMBERS.getMessage());
+        }
+    }
+
+    private void validateNumberRange(List<Integer> numbers) {
+        for (int num : numbers) {
+            if (num < 1 || num > 45) {
+                throw new IllegalArgumentException(Error.NUMBER_OUT_OF_RANGE.getMessage());
+            }
         }
     }
 
