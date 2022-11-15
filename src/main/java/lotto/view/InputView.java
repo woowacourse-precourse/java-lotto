@@ -2,20 +2,13 @@ package lotto.view;
 
 import camp.nextstep.edu.missionutils.Console;
 
+import java.util.NoSuchElementException;
+
 public class InputView {
     private static final String INPUT_TYPE_IS_NOT_PROPER = "[ERROR] 잘못된 입력 형식입니다.";
     public static String inputWinningLotto() {
         String lotto = Console.readLine();
-        validateLottoType(lotto);
         return lotto;
-    }
-
-    private static void validateLottoType(String lotto) {
-        try {
-            String.format("%d,%d,%d,%d,%d,%d", lotto.charAt(0), lotto.charAt(2), lotto.charAt(4), lotto.charAt(6), lotto.charAt(8), lotto.charAt(10));
-        } catch (RuntimeException e) {
-            throw new RuntimeException(INPUT_TYPE_IS_NOT_PROPER);
-        }
     }
 
     public static Integer inputMoney() {
@@ -28,11 +21,12 @@ public class InputView {
         try {
             Integer.parseInt(money);
         } catch (IllegalArgumentException e) {
-            throw new RuntimeException(INPUT_TYPE_IS_NOT_PROPER);
+            System.out.println(INPUT_TYPE_IS_NOT_PROPER);
+            throw new NoSuchElementException(INPUT_TYPE_IS_NOT_PROPER);
         }
     }
 
-    public static Integer inputBonusNumber() {
+    public static int inputBonusNumber() {
         String bonusNumber = Console.readLine();
         validateBonusNumberType(bonusNumber);
         return Integer.parseInt(bonusNumber);
