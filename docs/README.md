@@ -4,25 +4,27 @@
 
 
 
-- [ ] 구매 금액을 입력받는 기능.　　　　　　　　　　　　　　"getMoneyForLotto"
-    - [ ] ‘구입금액을 입력해 주세요’ 출력 　　　　　　　　　"printMoneyForLotto"
-    - [ ] 구매 금액 입력 예외 사항 　　　　　　　
-        - [ ] 숫자가 맞는가?　　　　　　　　　　　　　　　"isItNumber"
-        - [ ] 1000으로 나누어 떨어지는가?　　　　　　　　"divideBy1000"
+- [x] 구매 금액을 입력받는 기능.　　　　　　　　　　　　　　"getMoneyForLotto"
+    - [x] ‘구입금액을 입력해 주세요’ 출력 　　　　　　　　　"printMoneyForLotto"
+    - [x] 구매 금액 입력 예외 사항 　　　　　　　
+        - [x] 숫자가 맞는가?　　　　　　　　　　　　　　　"isItNumber"
+        - [x] 1000으로 나누어 떨어지는가?　　　　　　　　"divideBy1000"
+        - [x] 0 일땐 그냥 종료되는가?
+        - [x] 수가 매우 클때 종료되는가?
       
 <br/>
 
 
-- [ ] 구매 금액을 통해 로또 구매 개수를 계산하는 기능.　　　　　"countNumOfLotto"
-    - [ ] 로또 구매 개수를 출력한다.　　　　　　　　　　 　　　"printNumOfLotto"
+- [x] 구매 금액을 통해 로또 구매 개수를 계산하는 기능.　　　　　"countNumOfLotto"
+    - [x] 로또 구매 개수를 출력한다.　　　　　　　　　　 　　　"printNumOfLotto"
 
 <br/>
 
-- [ ] 로또 구매 개수만큼의 로또 번호를 생성하는 기능.　　　　　"generateLottoDigits"
-    - [ ] 6자리의 번호를 1~45 범위 내에서 선택한다.　　　　　"selectLottoDigits"
-    - [ ] 선택한 번호들은 중복이 없어야 한다.　　　　　　　　　"checkDuplicateInDigits"
-    - [ ] [ 8, 21, 23, 41, 42, 43] 의 형식으로 출력한다.　　　　"printLottoDigits"
-    - [ ] 만든 6개 로또를 리스트에 저장한다.　　　　　　　　　"saveLottoToBox"
+- [x] 로또 구매 개수만큼의 로또 번호를 생성하는 기능.　　　　　"generateLottoDigits"
+    - [x] 6자리의 번호를 1~45 범위 내에서 선택한다.　　　　　"selectLottoDigits"
+    - [x] 선택한 번호들은 중복이 없어야 한다.　　　　　　　　　"checkDuplicateInDigits"
+    - [x] [ 8, 21, 23, 41, 42, 43] 의 형식으로 출력한다.　　　　"printLottoDigits"
+    - [x] 만든 6개 로또를 리스트에 저장한다.　　　　　　　　　"saveLottoToBox"
 
 <br/>
 
@@ -44,8 +46,8 @@
         - [x] 보너스가 1~45 내에 있는가?
 <br/>
 
-- [ ] 당첨 통계를 보여준다.　　　　　　　　　　　　　　　　　　　"showLottoResult"
-    - [ ] ‘당첨 통계 —- 3개 일치 (5000원)  - 1개’ 출력　　　　　　"printLottoResult"
-    - [ ] 로또 당첨 통계를 계산한다.　　　　　　　　　　　　　　　"calculateSameLottoNum"
-    - [ ] 보너스 일치 여부를 계산한다.　　　　　　　　　　　　　　"checkBonusIncluded"
-    - [ ] 수익률을 계산한다.　　　　　　　　　　　　　　　　　　　"calculateYieldRate"
+- [x] 당첨 통계를 보여준다.　　　　　　　　　　　　　　　　　　　"showLottoResult"
+    - [x] ‘당첨 통계 —- 3개 일치 (5000원)  - 1개’ 출력　　　　　　"printLottoResult"
+    - [x] 로또 당첨 통계를 계산한다.　　　　　　　　　　　　　　　"calculateSameLottoNum"
+    - [x] 보너스 일치 여부를 계산한다.　　　　　　　　　　　　　　"checkBonusIncluded"
+    - [x] 수익률을 계산한다.　　　　　　　　　　　　　　　　　　　"calculateYieldRate"
