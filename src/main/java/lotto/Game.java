@@ -12,5 +12,16 @@ public class Game {
         System.out.println(buyLottoCount+"개를 구매했습니다.");
         return buyLottoCount;
     }
-
+    private static List<Lotto> setLottoBuckets(int buyLottoCount){
+        List<Lotto> lottoBuckets = new ArrayList<>();
+        for (int i=0;i<buyLottoCount;i++) {
+            List<Integer> numbers=new ArrayList<>();
+            List<Integer> randomNumbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+            numbers.addAll(randomNumbers);
+            Collections.sort(numbers);
+            Lotto lotto = new Lotto(numbers);
+            lottoBuckets.add(lotto);
+        }
+        return lottoBuckets;
+    }
 }
