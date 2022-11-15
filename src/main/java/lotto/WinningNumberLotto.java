@@ -47,6 +47,9 @@ public class WinningNumberLotto extends Lotto {
         if (!checkRange(input)) {
             throw new IllegalArgumentException("[ERROR] 보너스 번호는 1부터 45의 값을 입력해주세요.");
         }
+        if (!checkDuplicated(input)) {
+            throw new IllegalArgumentException("[ERROR] 보너스 번호는 당첨 번호와 중복되지 않은 값으로 입력해주세요.");
+        }
     }
 
     private void printBonusMessage() {
