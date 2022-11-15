@@ -18,6 +18,7 @@ public class LottoServiceImpl implements LottoService {
         game.inputLottoCount();
         game.generateLotto();
         game.generateAwardLotto();
+        game.generateBonusNumber();
         List<Lotto> generatedLotto = game.getGeneratedLotto();
         for(int i =0;i<generatedLotto.size();i++){
             Lotto currentLotto = generatedLotto.get(i);

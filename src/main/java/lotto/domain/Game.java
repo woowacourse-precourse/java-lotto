@@ -32,13 +32,22 @@ public class Game {
     public void generateAwardLotto(){
         InputPrintView.inputView_First();
         awardLotto= new Lotto(InputLotto.getInput());
+    }
+    public void generateBonusNumber(){
         InputPrintView.inputView_Second();
-        bonusNumber = InputLotto.getInput().get(0);
+        List<Integer> bonusInput = InputLotto.getInput();
+        isBonusJustOne(bonusInput);
+        bonusNumber = bonusInput.get(0);
         isBonusUnique(bonusNumber);
     }
     public void updateGame(LottoProperties lottoProperties){
         gameCount[lottoProperties.getIndex()]++;
         totalPrize+=lottoProperties.getPrice();
+    }
+    private void isBonusJustOne(List<Integer> bonusInput){
+        if(bonusInput.size()!=1){
+            ErrorHandler.bonusSizeOverException();
+        }
     }
     private void isBonusUnique(int bonusNumber){
         if(awardLotto.getNumbers().contains(bonusNumber)){

@@ -4,6 +4,9 @@ public class ErrorHandler {
     public static void sizeOverException(){
         errorThrow(ERROR_PREFIX + "로또 번호는 6개 입력되어야 합니다.");
     }
+    public static void bonusSizeOverException(){
+        errorThrow(ERROR_PREFIX + "보너스 번호는 1개 입력되어야 합니다.");
+    }
     public static void numberUnCorrectException(){
         errorThrow(ERROR_PREFIX+"로또 번호는 1-45사이로 입력되어야 합니다.");
     }
