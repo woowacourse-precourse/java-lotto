@@ -15,10 +15,12 @@ public class Lotto {
 		if (numbers.size() != 6) {
 			throw new IllegalArgumentException();
 		}
-		HashSet<Integer> set = new HashSet<Integer>(numbers);
-		if (numbers.size() != set.size()) {
-			throw new IllegalArgumentException();
+		for (int i = 0; i < numbers.size() - 1; i++) {
+			if (numbers.get(i) >= numbers.get(i + 1)) {
+				throw new IllegalArgumentException();
+			}
 		}
+	}
 
 	}
 
