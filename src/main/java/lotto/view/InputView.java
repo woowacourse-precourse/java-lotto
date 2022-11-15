@@ -8,8 +8,7 @@ import lotto.validation.LottoValidation;
 import java.util.ArrayList;
 import java.util.List;
 
-import static lotto.constant.MessageConstant.MESSAGE_INPUT_MONEY;
-import static lotto.constant.MessageConstant.MESSAGE_INPUT_WINNING_NUMBER;
+import static lotto.constant.MessageConstant.*;
 
 public class InputView {
     public static UserLotto inputUserMoney() {
@@ -37,7 +36,7 @@ public class InputView {
         System.out.println(MESSAGE_INPUT_WINNING_NUMBER);
     }
 
-    public static List<Integer> castToList(String inputWinning) {
+    private static List<Integer> castToList(String inputWinning) {
         List<Integer> winningNumbers = new ArrayList<>();
 
         for(String input : inputWinning.split(",")) {
@@ -46,5 +45,20 @@ public class InputView {
         }
 
         return winningNumbers;
+    }
+
+    public static int inputBonusNumber() {
+        OutputView.printBlankLine();
+        printRequestBonusNumberMessage();
+        String inputBonus = Console.readLine();
+
+        InputValidation.isValidInput(inputBonus);
+        LottoValidation.isValidRangeOfBonusNumber(inputBonus);
+
+        return Integer.parseInt(inputBonus);
+    }
+
+    private static void printRequestBonusNumberMessage() {
+        System.out.println(MESSAGE_INPUT_BONUS_NUMBER);
     }
 }

@@ -21,7 +21,7 @@ public class LottoValidation {
         if (!checkDuplicateNumber(lotto)) {
             throw new IllegalArgumentException(ERROR_DUPLICATE_NUMBER);
         }
-        if (!isValidRangeOfLotto(lotto)) {
+        if (!isValidRangeOfLottoNumbers(lotto)) {
             throw new IllegalArgumentException(ERROR_OUT_OF_RANGE);
         }
 
@@ -40,7 +40,7 @@ public class LottoValidation {
         }
         return true;
     }
-    private static boolean isValidRangeOfLotto(final List<Integer> lotto) {
+    private static boolean isValidRangeOfLottoNumbers(List<Integer> lotto) {
         for (int number : lotto) {
             if (number < LOTTO_MIN_NUMBER || number > LOTTO_MAX_NUMBER) {
                 return false;
@@ -49,4 +49,11 @@ public class LottoValidation {
         return true;
     }
 
+    public static void isValidRangeOfBonusNumber(String inputBonus) {
+        int bonusNumber = Integer.parseInt(inputBonus);
+
+        if (bonusNumber < LOTTO_MIN_NUMBER || bonusNumber > LOTTO_MAX_NUMBER) {
+            throw new IllegalArgumentException(ERROR_OUT_OF_RANGE);
+        }
+    }
 }

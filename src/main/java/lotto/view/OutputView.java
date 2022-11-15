@@ -8,7 +8,7 @@ import java.util.List;
 import static lotto.constant.MessageConstant.MESSAGE_OUTPUT_COUNT;
 
 public class OutputView {
-    private static void printBlankLine() {
+    public static void printBlankLine() {
         System.out.println();
     }
 
