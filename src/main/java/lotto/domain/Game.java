@@ -15,8 +15,9 @@ public class Game {
         String purchase = Console.readLine();
         List<Lotto> lottoNumbers = showBoughtNumbers(purchase);
         WinningNumber winningNumber = makeWinningNumber();
-        getResult(lottoNumbers, winningNumber);
-        System.out.println(Resource.revenuePercentFront);
+        int totalBill=getResult(lottoNumbers, winningNumber);
+        float revenuePercent = getRevenuePercent(purchase,totalBill);
+        System.out.print(Resource.revenuePercentFront+revenuePercent);
         System.out.println(Resource.revenuePercentBack);
     }
 
@@ -31,6 +32,7 @@ public class Game {
             showResult(result,key);
         }
     }
+
     private void showResult(Map<Reward, Integer> result, Reward key) {
         if(key.getNumber()==0){
             return;
@@ -44,7 +46,14 @@ public class Game {
         System.out.println(result.get(key)+Resource.countOfCorrectNumberBack);
     }
 
-//    public void getRevenuePercent()
+    public float getRevenuePercent(String purchase,int bill){
+        float originalPurchase = Float.parseFloat(purchase);
+        float totalBill = (float)bill/originalPurchase;
+        totalBill *=1000.0;
+        totalBill = Math.round(totalBill);
+        totalBill /=10.0;
+        return totalBill;
+    }
 
     private WinningNumber makeWinningNumber() {
         System.out.println(Resource.inputOfWinningNumber);
