@@ -125,7 +125,9 @@ public class LottoService {
 
         return totalPrizeMoney;
     }
-
-
+    public static double calculateRateOfReturn(HashMap<Integer, Integer> ranks, int money){
+        int totalPrizeMoney = calculatePrizeMoney(ranks);
+        return (totalPrizeMoney/money)*100;
+    }
 
 }
