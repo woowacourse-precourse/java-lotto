@@ -1,13 +1,14 @@
 package lotto.controller;
 
-import lotto.Input;
+import lotto.domain.LottoCount;
+import lotto.view.Input;
 
 public class LottoGame {
+    String purchaseAmount;
     Input input = new Input();
 
     public void start() {
-        input.lottoPurchaseAmount();
-
+        LottoCount lottoCount = new LottoCount(input.lottoPurchaseAmount());
         input.lottoWinningNumbers();
 
         input.lottoBonusNumber();
