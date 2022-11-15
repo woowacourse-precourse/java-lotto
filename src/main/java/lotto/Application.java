@@ -4,21 +4,12 @@ import static lotto.Lotto.printLotto;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
-import com.sun.nio.sctp.IllegalReceiveException;
-import java.util.ArrayDeque;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.NoSuchElementException;
-import java.util.Queue;
 
 
 public class Application {
 
-
-    static Map<String, Integer> map = new HashMap<>();
-    static Queue<String> queue = new ArrayDeque<>();
     static double income = 0;
     static String ERROR_MESSAGE = "[ERROR] 구입금액은 숫자만 입력 가능합니다.";
 
@@ -35,11 +26,10 @@ public class Application {
         int amount = Integer.parseInt(strAmount);
 
         if (amount % 1000 != 0) {
-            throw new NoSuchElementException("[ERROR] 1000의 배수만 입력 가능합니다.");
+            throw new IllegalArgumentException("[ERROR] 1000의 배수만 입력 가능합니다.");
         }
         return amount;
     }
-
 
     public static int printNumberOfTickets(int amount) {
 
@@ -58,7 +48,7 @@ public class Application {
         for (int i = 0; i < tmpArr.length; ++i) {
             for (char c : tmpArr[i].toCharArray()) {
                 if (!Character.isDigit(c)) {
-                    throw new IllegalReceiveException("[ERROR] 당첨 번호는 숫자만 입력 가능합니다.");
+                    throw new IllegalArgumentException("[ERROR] 당첨 번호는 숫자만 입력 가능합니다.");
                 }
             }
             winningNums[i] = Integer.parseInt(tmpArr[i]);
@@ -78,8 +68,7 @@ public class Application {
 
     }
 
-
-    public static int enterBonusNum(){
+    public static int enterBonusNum() {
         System.out.println("보너스 번호를 입력해 주세요.");
         String tmp = Console.readLine();
         for (char c : tmp.toCharArray()) {
@@ -90,7 +79,8 @@ public class Application {
         int bonusNum = Integer.parseInt(tmp);
         List<Integer> winningNumsList = new ArrayList<>();
         if (winningNumsList.contains(bonusNum) || bonusNum < 1 || 45 < bonusNum) {
-            throw new IllegalArgumentException("[ERROR] 보너스 번호는 1 부터 45 사이의 숫자이며 당첨 번호와 중복될 수 없습니다.");
+            throw new IllegalArgumentException(
+                "[ERROR] 보너스 번호는 1 부터 45 사이의 숫자이며 당첨 번호와 중복될 수 없습니다.");
         }
         return bonusNum;
     }
@@ -107,7 +97,6 @@ public class Application {
         return bonusNum;
     }
 
-
     public static Lotto generateLotto() {
 
         List<Integer> lottoList = new ArrayList<>();
@@ -117,7 +106,6 @@ public class Application {
         return lotto;
 
     }
-
 
     public static List<Lotto> generateAllLotto(int numberOfTickets) {
 
@@ -133,66 +121,35 @@ public class Application {
         return allLottoList;
     }
 
-
-    public static void insertToMapAndQueue() {
-
-        queue.addAll(List.of("3개 일치 (5,000원)", "4개 일치 (50,000원)", "5개 일치 (1,500,000원)",
-            "5개 일치, 보너스 볼 일치 (30,000,000원)", "6개 일치 (2,000,000,000원)"
-        ));
-
-        map.put("3개 일치 (5,000원)", 0);
-        map.put("4개 일치 (50,000원)", 0);
-        map.put("5개 일치 (1,500,000원)", 0);
-        map.put("5개 일치, 보너스 볼 일치 (30,000,000원)", 0);
-        map.put("6개 일치 (2,000,000,000원)", 0);
+    public static void getIncomeOfLotto(Lotto lotto, int bonusNum, int cnt) {
+        if (cnt == 6) {
+            income += 2000000000;
+            LottoRank.SIX.setCnt(LottoRank.SIX.getCnt() + 1);
+        } else if (cnt == 5 && Lotto.contains(lotto, bonusNum)) {
+            income += 30000000;
+            LottoRank.FIVE_WITH_BONUS.setCnt(LottoRank.FIVE_WITH_BONUS.getCnt() + 1);
+        } else if (cnt == 5) {
+            income += 1500000;
+        } else if (cnt == 4) {
+            income += 50000;
+            LottoRank.FOUR.setCnt(LottoRank.FOUR.getCnt() + 1);
+        } else if (cnt == 3) {
+            income += 5000;
+            LottoRank.THREE.setCnt(LottoRank.THREE.getCnt() + 1);
+        }
     }
 
 
-    public static double income(List<Lotto> allLotto, int[] winningNums, int bonusNum, int amount) {
+    public static double getTotalIncome(List<Lotto> allLotto, int[] winningNums, int bonusNum) {
 
         for (Lotto lotto : allLotto) {
-
             int cnt = 0;
-
             for (int winningNum : winningNums) {
-
                 if (Lotto.contains(lotto, winningNum)) {
                     ++cnt;
-
                 }
             }
-
-            if (cnt == 6) {
-                map.put("6개 일치 (2,000,000,000원)",
-                    map.getOrDefault("6개 일치 (2,000,000,000원)", 0) + 1);
-                income += 2000000000;
-
-
-            } else if (cnt == 5) {
-
-                if (Lotto.contains(lotto, bonusNum)) {
-                    map.put("5개 일치, 보너스 볼 일치 (30,000,000원)",
-                        map.getOrDefault("5개 일치, 보너스 볼 일치 (30,000,000원)", 0) + 1);
-                    income += 30000000;
-                    continue;
-
-                }
-
-                map.put("5개 일치 (1,500,000원)",
-                    map.getOrDefault("5개 일치 (1,500,000원)", 0) + 1);
-                income += 1500000;
-
-            } else if (cnt == 4) {
-                map.put("4개 일치 (50,000원)",
-                    map.getOrDefault("4개 일치 (50,000원)", 0) + 1);
-                income += 50000;
-
-            } else if (cnt == 3) {
-                map.put("3개 일치 (5,000원)",
-                    map.getOrDefault("3개 일치 (5,000원)", 0) + 1);
-                income += 5000;
-
-            }
+            getIncomeOfLotto(lotto, bonusNum, cnt);
 
         }
         return income;
@@ -202,13 +159,13 @@ public class Application {
 
         System.out.println("당첨 통계");
         System.out.println("---");
-
-        while (!queue.isEmpty()) {
-            String key = queue.poll();
-            int value = map.get(key);
-            System.out.println(key + " - " + value + "개");
-        }
-
+        System.out.println(LottoRank.THREE.getMessage() + " - " + LottoRank.THREE.getCnt() + "개");
+        System.out.println(LottoRank.FOUR.getMessage() + " - " + LottoRank.FOUR.getCnt() + "개");
+        System.out.println(LottoRank.FIVE.getMessage() + " - " + LottoRank.FIVE.getCnt() + "개");
+        System.out.println(
+            LottoRank.FIVE_WITH_BONUS.getMessage() + " - " + LottoRank.FIVE_WITH_BONUS.getCnt()
+                + "개");
+        System.out.println(LottoRank.SIX.getMessage() + " - " + LottoRank.SIX.getCnt() + "개");
         System.out.print("총 수익률은 ");
         System.out.printf("%.1f", rateOfReturn);
         System.out.println("%입니다.");
@@ -224,10 +181,8 @@ public class Application {
         int[] winningNums = enterWinningNumber();   // 당첨 번호 입력
         int bonusNum = validateBonusNum(winningNums);   // 보너스 번호 입력
 
-        insertToMapAndQueue();
-
         // 이렇게 말고 각 로또에 대해 하나씩 income구하는 방식으로 쪼갤 수 있음
-        double income = income(allLotto, winningNums, bonusNum, amount);
+        double income = getTotalIncome(allLotto, winningNums, bonusNum);
         printResult((double) (income / amount * 100));
 
     }
