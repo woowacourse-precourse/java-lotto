@@ -48,7 +48,7 @@ public class OutputView {
         return String.format(RANK_RESULT_MESSAGE,ranking.getCorrectNums(),ranking.getReward(),count);
     }
 
-    private  void printProfitRate(double profitRate){
+    public  void printProfitRate(double profitRate){
         printMessage(String.format(PROFIT_RATE_MESSAGE,profitRate,'%'));
     }
 
