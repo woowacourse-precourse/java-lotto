@@ -22,6 +22,16 @@ public class ResultAnalyzer {
         return (double) Math.round((income / expense * 100) * 10) / 10;
     }
 
+    public int[] makeRankRecord(List<Lotto> wholeLotto){
+        int[] rankRecord = {0, 0, 0, 0, 0, 0, 0};
+
+        for (Lotto lotto : wholeLotto) {
+            int rank = determineRank(lotto);
+            rankRecord[rank]++;
+        }
+        return rankRecord;
+    }
+
     public int determineRank(Lotto lotto) {
         Matcher matcher = new Matcher();
         int hit = matcher.getCountOfCommonElement(lotto, winNumbers);

@@ -98,13 +98,26 @@ class LottoTest {
         Lotto invalidLotto = new Lotto(Arrays.asList(1, 2, 8, 9, 10, 11));
         List<Integer> winNumber = Arrays.asList(1, 2, 3, 4, 5, 6);
         int bonusNumber = 7;
-
         ResultAnalyzer resultAnalyzer = new ResultAnalyzer(winNumber, bonusNumber);
+
         assertThat(resultAnalyzer.determineRank(lottoWithFirstPrize)).isEqualTo(1);
         assertThat(resultAnalyzer.determineRank(lottoWithSecondPrize)).isEqualTo(2);
         assertThat(resultAnalyzer.determineRank(lottoWithThirdPrize)).isEqualTo(3);
         assertThat(resultAnalyzer.determineRank(lottoWithFourthPrize)).isEqualTo(4);
         assertThat(resultAnalyzer.determineRank(lottoWithFifthPrize)).isEqualTo(5);
         assertThat(resultAnalyzer.determineRank(invalidLotto)).isEqualTo(6);
+    }
+
+    @Test
+    @DisplayName("수익률을 계산한다.")
+    void 수익률을_계산한다() {
+        List<Integer> winNumber = Arrays.asList(1, 2, 3, 4, 5, 6);
+        int bonusNumber = 7;
+        ResultAnalyzer resultAnalyzer = new ResultAnalyzer(winNumber, bonusNumber);
+        List<Lotto> wholeLotto = Arrays.asList(new Lotto(Arrays.asList(1, 2, 3, 4, 5, 8)), new Lotto(Arrays.asList(9, 2, 10, 4, 5, 8)), new Lotto(Arrays.asList(1, 2, 3, 4, 5, 10)));
+        int[] rankRecord = resultAnalyzer.makeRankRecord(wholeLotto); // {0,0,0,2,0,1,0}
+        double expense = 3000;
+        double income = 3005000;
+        assertThat(resultAnalyzer.calculateRateOfReturn(wholeLotto, rankRecord)).isEqualTo((double) Math.round(income / expense * 100 * 10) / 10);
     }
 }

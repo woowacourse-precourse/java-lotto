@@ -4,10 +4,10 @@ import java.util.Arrays;
 
 public enum Prize {
     FIRST(1, 6, "6개 일치", 2000000000L),
-    SECOND(2, 5, "5개 일치, 보너스 볼 일치", 30000000),
-    THIRD(3, 5, "5개 일치", 1500000),
-    FOURTH(4, 4, "4개 일치", 50000),
-    FIFTH(5, 3, "3개 일치", 5000),
+    SECOND(2, 5, "5개 일치, 보너스 볼 일치", 30000000L),
+    THIRD(3, 5, "5개 일치", 1500000L),
+    FOURTH(4, 4, "4개 일치", 50000L),
+    FIFTH(5, 3, "3개 일치", 5000L),
     INVALID(6, -1, "꽝", 0);
 
     private final int rank;

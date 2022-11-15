@@ -42,21 +42,11 @@ public class Host {
         ResultAnalyzer resultAnalyzer = new ResultAnalyzer(winNumbers, bonusNumber);
         DecimalFormat df = new DecimalFormat("###,###");
         List<Lotto> userLotto = user.getWholeLotto();
-        int[] rankRecord = collectResultOfWholeLotto(resultAnalyzer, userLotto);
+        int[] rankRecord = resultAnalyzer.makeRankRecord(userLotto);
         for (int i = 5; i > 0; i--) {
             Prize prize = Prize.valueOfRank(i);
             System.out.printf("%s (%s원) - %d개\n", prize.getDescription(), df.format(prize.getCashPrize()), rankRecord[i]);
         }
         System.out.printf("총 수익률은 %.1f%%입니다.\n", resultAnalyzer.calculateRateOfReturn(userLotto, rankRecord));
-    }
-
-    private int[] collectResultOfWholeLotto(ResultAnalyzer resultAnalyzer, List<Lotto> userLotto) {
-        int[] rankRecord = {0, 0, 0, 0, 0, 0, 0};
-
-        for (Lotto lotto : userLotto) {
-            int rank = resultAnalyzer.determineRank(lotto);
-            rankRecord[rank]++;
-        }
-        return rankRecord;
     }
 }
