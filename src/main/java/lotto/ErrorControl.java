@@ -10,11 +10,9 @@ public class ErrorControl {
     public ErrorControl(){
     }
 
-    public void ticketPurchaseStrError(String str){
-       for(int i = 0; i < str.length(); i++){
-           if(Character.isDigit(str.charAt(i)) == false)
-               throw new IllegalArgumentException(ErrorMessage.PurchaseStr.getMsg());
-       }
+    public void strError(String str){
+       if(!str.matches("-?\\d+"))
+           throw new IllegalArgumentException((ErrorMessage.PurchaseStr.getMsg()));
     }
     public void ticketPurchaseThousandError(int num){
         if(num%1000 != 0)

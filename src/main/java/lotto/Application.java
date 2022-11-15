@@ -28,10 +28,11 @@ public class Application {
         result(correctLotto, bonusNumber, lottos);
         printResult(lottos);
     }
+
     static public int getTicket(){
         System.out.println("구입금액을 입력해 주세요");
         String input = Console.readLine();
-        errorControl.ticketPurchaseStrError(input);
+        errorControl.strError(input);
         int purchase = Integer.parseInt(input);
         errorControl.ticketPurchaseThousandError(purchase);
         int ticket = Integer.parseInt(input) / 1000;
@@ -66,6 +67,7 @@ public class Application {
     static public int getBonusNumber(){
         System.out.println("보너스 번호를 입력해 주세요");
         String input = Console.readLine();
+        errorControl.strError(input);
         int bonusNumber = Integer.parseInt(input);
         System.out.println();
         return bonusNumber;
@@ -98,5 +100,4 @@ public class Application {
         System.out.println("6개 일치 (2,000,000,000원) - " + hitSix + "개");
         System.out.printf("총 수익률은 " + "%.1f" + "%%입니다.", yield);
     }
-
 }

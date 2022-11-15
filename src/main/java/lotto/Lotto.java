@@ -22,11 +22,6 @@ public class Lotto {
     }
 
     // TODO: 추가 기능 구현
-    /*
-    public void makeLotto(){
-        numbers = Randoms.pickUniqueNumbersInRange(1, 45, ticketNumbers);
-    }*/
-
     public List<Integer> getLotto() {
         return numbers;
     }
