@@ -17,5 +17,8 @@ public class WinningNumbers {
         }
     }
 
+    public LottoNumber getBonus() {
+        return bonus;
+    }
 
 }
