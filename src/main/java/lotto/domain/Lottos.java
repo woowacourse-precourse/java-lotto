@@ -5,8 +5,11 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.List;
 
-import static lotto.utils.Exceptions.*;
+import static lotto.utils.Exceptions.isNumber;
+import static lotto.utils.Exceptions.checkPay;
+
 import static lotto.view.GameOutput.getLottoNum;
+
 public class Lottos{
     public static int money ;
 
@@ -18,17 +21,17 @@ public class Lottos{
 
     public void makeLottos(int num){
         for (int i=0; i<num; i++){
-            Lottos.add(make_lotto());
+            Lottos.add(makeLotto());
         }
     }
 
-    public Lotto make_lotto(){
+    public Lotto makeLotto(){
         List<Integer> RandomNumbers = new Random().getRandomNumbers();
         System.out.println(RandomNumbers);
         return new Lotto(RandomNumbers);
     }
 
-    public Lotto get_lotto(int index){
+    public Lotto getLotto(int index){
         return Lottos.get(index);
     }
 

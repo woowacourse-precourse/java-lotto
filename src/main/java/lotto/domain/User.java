@@ -2,13 +2,14 @@ package lotto.domain;
 
 import camp.nextstep.edu.missionutils.Console;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import static lotto.utils.Exceptions.*;
+import static lotto.utils.Exceptions.checkBonusNum;
+import static lotto.utils.Exceptions.checkInput;
+import static lotto.utils.Exceptions.checkDuplicated;
 
 public class User{
 
@@ -36,7 +37,11 @@ public class User{
         return Integer.parseInt(Console.readLine());
     }
 
-    public int get_index(int index){
+    public static int getBonusBall(){
+        return bonusBall;
+    }
+
+    public int getIndex(int index){
         return userNumList.get(index);
     }
 }

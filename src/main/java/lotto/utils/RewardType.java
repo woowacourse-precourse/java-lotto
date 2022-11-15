@@ -19,10 +19,11 @@ public enum RewardType {
         this.reward = reward;
     }
 
-    public int getnum() {
+    public int getNum() {
         return matchNum;
     }
-    public int getreward(){
+
+    public int getReward(){
         return reward;
     }
 

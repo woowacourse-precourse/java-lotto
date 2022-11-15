@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Set;
 
 public class Exceptions {
+
     public static void isNumber(String str){
         try{
             Integer.parseInt(str);
@@ -31,7 +32,7 @@ public class Exceptions {
         };
     };
 
-     public static void checkInput(List<Integer> numList){
+    public static void checkInput(List<Integer> numList){
         if (numList.size() != 6 ){
             throw new IllegalArgumentException("[ERROR] 수는 6개를 입력하셔야 합니다.");
         }
@@ -40,5 +41,5 @@ public class Exceptions {
                 throw new IllegalArgumentException("[ERROR] 1에서 45까지의 숫자만 가능합니다.");
             }
         }
-     }
+    }
 }
