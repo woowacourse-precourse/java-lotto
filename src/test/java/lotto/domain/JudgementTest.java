@@ -3,6 +3,8 @@ package lotto.domain;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.List;
 
@@ -11,12 +13,11 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class JudgementTest {
     private Judgement judgement;
-    private WinningLotto winningLotto;
+    private final WinningLotto winningLotto = new WinningLotto(new Lotto(List.of(1, 2, 3, 4, 5, 6)), new Bonus(7));
 
     @BeforeEach
     void init() {
         judgement = new Judgement();
-        winningLotto = new WinningLotto(new Lotto(List.of(1, 2, 3, 4, 5, 6)), new Bonus(7));
     }
 
     @DisplayName("로또 1등 판정")
