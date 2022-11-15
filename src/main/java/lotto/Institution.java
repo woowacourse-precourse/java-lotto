@@ -57,6 +57,18 @@ public class Institution {
         }
     }
 
+    public Integer calculateSumOfPrizeMoney(List<PrizeWinner> prizeWinners) {
+        Integer prizeMoneySum=0;
+
+        for(PrizeWinner prizeWinner : prizeWinners) {
+            Integer prizeMoney = prizeWinner.getCount() * prizeWinner.getPrizeMoney();
+
+            prizeMoneySum += prizeMoney;
+        }
+
+        return prizeMoneySum;
+    }
+
     public void announceWinnerResult(List<PrizeWinner> prizeWinners, User user) {
         for(PrizeWinner prizeWinner : prizeWinners) {
             System.out.println(prizeWinner.toString());
