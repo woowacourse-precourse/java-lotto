@@ -13,8 +13,8 @@ public class MakeLottoNumber {
 
 
     public List<Integer> returnLottoNumber() {
-        List<Integer> tmp = new ArrayList<>();
-        tmp = Randoms.pickUniqueNumbersInRange(rangeStartValue, rangeEndValue, 6);
+        List<Integer> tmp;
+        tmp = Randoms.pickUniqueNumbersInRange(rangeStartValue, rangeEndValue, maxNumber);
         List<Integer> lottoNumbers = new ArrayList<Integer>();
         lottoNumbers.addAll(tmp);
         Collections.sort(lottoNumbers);

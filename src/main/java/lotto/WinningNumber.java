@@ -39,7 +39,7 @@ public class WinningNumber {
         return winningArray;
     }
 
-    private boolean isNumeric(String s) {
+    private boolean isNumeric(String s) { // input string이 숫자인지 문자인지 판단
         try {
             Double.parseDouble(s);
             return true;
@@ -48,7 +48,7 @@ public class WinningNumber {
         }
     }
 
-    private boolean inRange(int num) {
+    private boolean inRange(int num) { // 범위 안에 드는지 판단
         if((1 > num || num > 45)){
             throw new IllegalArgumentException();
         }
