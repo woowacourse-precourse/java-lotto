@@ -5,6 +5,7 @@ import lotto.domain.WinningLotto;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.io.ByteArrayInputStream;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -46,8 +47,10 @@ class LottoTest {
     @DisplayName("로또 번호 중 보너스 번호가 있는지 확인")
     @Test
     void lottoHasBonusNumber() {
+        final byte[] buf = String.join("\n", "1,2,3,4,5,6","7").getBytes();
+        System.setIn(new ByteArrayInputStream(buf));
         Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
-        WinningLotto winningLotto = new WinningLotto(new Lotto(List.of(1, 2, 3, 4, 5, 6)), 7);
+        WinningLotto winningLotto = WinningLotto.create();
         boolean result = winningLotto.isBonusNumberIn(lotto);
 
         assertThat(result).isEqualTo(false);

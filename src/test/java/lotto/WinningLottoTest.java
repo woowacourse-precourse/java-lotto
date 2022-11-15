@@ -1,11 +1,10 @@
 package lotto;
 
-import lotto.domain.Lotto;
 import lotto.domain.WinningLotto;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.util.List;
+import java.io.ByteArrayInputStream;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
@@ -14,8 +13,9 @@ class WinningLottoTest {
     @Test
     void createWinningLottoByDuplicateBonusNumber() {
         assertThatThrownBy(() -> {
-            Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
-            new WinningLotto(lotto, 6);
+            final byte[] buf = String.join("\n", "1,2,3,4,5,6","6").getBytes();
+            System.setIn(new ByteArrayInputStream(buf));
+            WinningLotto.create();
         }).isInstanceOf(IllegalArgumentException.class);
     }
 }
