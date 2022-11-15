@@ -26,4 +26,13 @@ public class WinResultManagerTest {
         List<CorrectNumber> expected = new ArrayList<>(Arrays.asList(CorrectNumber.FIVE_BONUS));
         assertThat(WinResultManager.getCorrectedNumbersWithWin(tickets, winNumbers, bonus)).isEqualTo(expected);
     }
+
+    @Test
+    void mappingEnumResultTest() {
+        List<CorrectNumber> resultCollection = new ArrayList<>();
+        resultCollection.add(CorrectNumber.THREE);
+        resultCollection.add(CorrectNumber.THREE);
+        resultCollection.add(CorrectNumber.FOUR);
+        WinResultManager.correctCaseCollector(resultCollection);
+    }
 }
