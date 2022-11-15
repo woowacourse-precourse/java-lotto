@@ -3,6 +3,7 @@ package lotto.Controller;
 import java.util.List;
 import lotto.Domain.Lotto;
 import lotto.Domain.LottoMachine;
+import lotto.Validator.LottoValidator;
 import lotto.Validator.MoneyValidator;
 import lotto.View.InputView;
 import lotto.View.OutputView;
@@ -17,8 +18,7 @@ public class LottoGame {
         getAmount();
         buyLotto();
         showUserLotto();
-
-        winningNumber = InputView.getWinningNumber();
+        getWinningNumber();
         showWinningNumber();
 
         bonusNumber = InputView.getBonusNumber(winningNumber);
@@ -40,6 +40,13 @@ public class LottoGame {
 
     public void showUserLotto() {
         OutputView.printUserLotto(userLotto);
+    }
+
+    public void getWinningNumber() {
+        String input = InputView.getInput();
+        Lotto lotto = InputView.calculateWinningNumber(input);
+        LottoValidator.validateWinningNumber(lotto);
+        winningNumber = lotto;
     }
 
     public void showWinningNumber() {

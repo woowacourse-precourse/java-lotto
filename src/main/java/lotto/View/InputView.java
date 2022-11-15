@@ -19,13 +19,11 @@ public class InputView {
         return money / 1000;
     }
 
-    public static Lotto getWinningNumber() {
-        String inputNumber = Console.readLine();
-        Lotto lotto = new Lotto(Stream.of(inputNumber.split("\\s*,\\s*"))
+    public static Lotto calculateWinningNumber(String input) {
+        Lotto lotto = new Lotto(Stream.of(input.split("\\s*,\\s*"))
                 .map(s -> Integer.parseInt(s))
                 .collect(Collectors.toList()));
 
-        LottoValidator.validateWinningNumber(lotto);
         return lotto;
     }
 
