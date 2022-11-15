@@ -1,5 +1,6 @@
 package lotto.domain;
 
+import java.util.Collections;
 import java.util.List;
 
 import static lotto.util.ExceptionHandler.validateLottoNumbers;
@@ -13,7 +14,7 @@ public class Lotto {
     }
 
     public List<Integer> getLottoNumbers() {
-        return numbers;
+        return Collections.unmodifiableList(numbers);
     }
 
 }
