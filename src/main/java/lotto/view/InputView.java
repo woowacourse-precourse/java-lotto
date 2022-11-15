@@ -13,7 +13,7 @@ public class InputView {
         try {
             return Integer.parseInt(readLine());
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException(Error.WRONG_AMOUNT.getMessage());
+            throw new IllegalArgumentException(Error.NOT_INT.getMessage());
         }
     }
 
