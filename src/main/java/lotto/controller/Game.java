@@ -12,7 +12,8 @@ public class Game {
         int count = lottoCashier.getLottoCount(money);
         List<Lotto> lottos = lottoCashier.createLottoList(count);
 
-        winningNumbers = setWinningNumbers();
+        Lotto winningNumbers = setWinningNumbers();
+        int bonusNumber = setBonusNumber(winningNumbers);
 
     }
 
@@ -21,4 +22,9 @@ public class Game {
         Lotto winningNumber = new Lotto(inputNumbers);
         return winningNumber;
     }
+
+    private int setBonusNumber(Lotto lotto) {
+        int bonusNumber = InputView.inputBonusNumber();
+        return bonusNumber;
+        }
 }

@@ -30,4 +30,10 @@ public class InputView {
                 .collect(Collectors.toList());
         return winningNumbers;
     }
+    public static int inputBonusNumber() {
+        String bonusNumber = Console.readLine();
+        System.out.println(bonusNumber);
+        return parseInt(bonusNumber);
+    }
+
 }
