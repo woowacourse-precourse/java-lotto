@@ -68,11 +68,11 @@ public class Service {
 
     public String getLuckyNumberInput(String winningNumberInput) {
         String input = Console.readLine();
-        checkLuckyNumber(input, winningNumberInput);
+        checkLuckyNumber0(input, winningNumberInput);
         return input;
     }
 
-    private void checkLuckyNumber(String input, String winningNumberInput) {
+    public void checkLuckyNumber0(String input, String winningNumberInput) {
         try {
             int luckyNumber = Integer.parseInt(input);
             if (!(luckyNumber > 0) || !(luckyNumber < 46)) {
@@ -84,7 +84,7 @@ public class Service {
         }
     }
 
-    private void checkLuckyNumber1(int luckyNumber, String winningNumberInput) {
+    public void checkLuckyNumber1(int luckyNumber, String winningNumberInput) {
         String[] winningNumbers = winningNumberInput.split(",");
         for (String winningNumber : winningNumbers) {
             if (luckyNumber == Integer.parseInt(winningNumber)) {

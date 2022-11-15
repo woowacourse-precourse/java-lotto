@@ -69,6 +69,32 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    @DisplayName("4. 예외 1: 당첨 번호와 중복되는 경우")
+    void test8() {
+        Service service = new Service();
+        String winningNumber = "1,2,3,4,5,6";
+        String luckyNumber = "6";
+        assertSimpleTest(() -> assertThatThrownBy(() -> service.checkLuckyNumber0(luckyNumber, winningNumber)).isInstanceOf(IllegalArgumentException.class));
+    }
+
+    @Test
+    @DisplayName("4. 예외 2: 숫자를 입력하지 않은 경우")
+    void test9() {
+        Service service = new Service();
+        String winningNumber = "1,2,3,4,5,6";
+        String luckyNumber = "문자";
+        assertSimpleTest(() -> assertThatThrownBy(() -> service.checkLuckyNumber0(luckyNumber, winningNumber)).isInstanceOf(IllegalArgumentException.class));
+    }
+
+    @Test
+    @DisplayName("4. 예외 3: 1 ~ 45 범위를 벗어나는 경우")
+    void test10() {
+        Service service = new Service();
+        String winningNumber = "1,2,3,4,5,6";
+        String luckyNumber = "46";
+        assertSimpleTest(() -> assertThatThrownBy(() -> service.checkLuckyNumber0(luckyNumber, winningNumber)).isInstanceOf(IllegalArgumentException.class));
+    }
+    @Test
     void 기능_테스트() {
         assertRandomUniqueNumbersInRangeTest(
                 () -> {
