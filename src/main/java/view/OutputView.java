@@ -9,6 +9,7 @@ public class OutputView {
 
     public static void printLottoCount(LottoCount count) {
         System.out.printf(PRINT_NUMBER_OF_LOTTO_COUNT, count.getLottoCount());
+        System.out.println();
     }
     public static void printLottoCollection(LottoCollection lottoCollection){
         for (Lotto lotto : lottoCollection.copyCollection()) {
