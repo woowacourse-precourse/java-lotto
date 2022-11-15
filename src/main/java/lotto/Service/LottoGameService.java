@@ -12,6 +12,10 @@ public class LottoGameService {
             throw new IllegalArgumentException();
         }
     }
-
+    public void isValidCash(Integer cash) {
+        if (cash%1000!=0) {
+            throw new IllegalArgumentException();
+        }
+    }
 
 }
