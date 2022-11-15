@@ -22,6 +22,26 @@ public class LottoCounting {
         return countedWinningPaper;
     }
 
+    public int calculateEarningMoney(Map<Integer, Integer> winningCounts){
+        int totalEarnMoney = 0;
+
+        for(int ranking = 1; ranking <= 5; ranking++){
+            int winningMoney = WinningPrize.findEnumByRank(ranking).getWinningMoney();
+            int amountOfThatRanking = getThisRankingsAmount(winningCounts,ranking);
+
+            totalEarnMoney += (winningMoney * amountOfThatRanking);
+        }
+        return totalEarnMoney;
+    }
+
+    public int getThisRankingsAmount(Map<Integer, Integer> winningCounts, int ranking){
+        try{
+            return winningCounts.get(ranking);
+        }catch(NullPointerException ex){
+            return 0;
+        }
+    }
+
     private void addOneWinningPrize(Map<Integer,Integer> countedLotto,int howMuchCorrect,Lotto oneLottoPaper,int bonusNumber){
 
         int ranking = WinningPrize.findRanking(howMuchCorrect,oneLottoPaper,bonusNumber);

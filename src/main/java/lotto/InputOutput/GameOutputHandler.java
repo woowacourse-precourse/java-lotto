@@ -1,13 +1,13 @@
 package lotto.InputOutput;
 
 import lotto.controller.Lotto;
+import lotto.controller.LottoCounting;
 import lotto.controller.WinningPrize;
 
 import java.util.Arrays;
 import java.util.Map;
 
 public class GameOutputHandler {
-    static int totalEarnMoney;
 
     public void requestHowMuchToBuy(){
         System.out.println("구입 금액을 입력해 주세요.");
@@ -32,37 +32,31 @@ public class GameOutputHandler {
         System.out.println("보너스 번호를 입력해 주세요.");
     }
 
-    public void printAllRecord(Map<Integer, Integer> winningCounts, int buyingMoney){
-        printWinningRecord(winningCounts);
-        printProfitRate(buyingMoney);
+    public void printAllRecord(Map<Integer, Integer> winningCounts, int buyingMoney, LottoCounting lottoCounter){
+        printWinningRecord(winningCounts,lottoCounter);
+
+        int earnedMoney = lottoCounter.calculateEarningMoney(winningCounts);
+        printProfitRate(earnedMoney,buyingMoney);
     }
 
-    public void printWinningRecord(Map<Integer, Integer> winningCounts){
-        totalEarnMoney = 0;
+    public void printWinningRecord(Map<Integer, Integer> winningCounts, LottoCounting lottoCounter){
         System.out.print("당첨 통계\n---\n");
         for(int ranking = 5; ranking >= 1; ranking--){
             int howManyNumbersCorrect = WinningPrize.findEnumByRank(ranking).getHowManyNumbersIncluded();
             int winningMoney = WinningPrize.findEnumByRank(ranking).getWinningMoney();
-            int amountOfThatRanking = getThisNumbersRanking(winningCounts,ranking);
+            int amountOfThatRanking = lottoCounter.getThisRankingsAmount(winningCounts,ranking);
 
-            totalEarnMoney += (winningMoney * amountOfThatRanking);
             boolean isSecondRank = (ranking == 2);
             printWinningRecordOneByOne(howManyNumbersCorrect,winningMoney,amountOfThatRanking,isSecondRank);
         }
     }
 
-    private void printProfitRate(int buyingMoney){
+    private void printProfitRate(int totalEarnMoney, int buyingMoney){
         double rate = ((double)totalEarnMoney / (double)buyingMoney) * 100;
         double roundOff = Math.round(rate * 100.0) / 100.0;
         System.out.print("총 수익률은 " + roundOff + "%입니다.");
     }
-    private int getThisNumbersRanking(Map<Integer, Integer> winningCounts,int ranking){
-        try{
-            return winningCounts.get(ranking);
-        }catch(NullPointerException ex){
-            return 0;
-        }
-    }
+
     private void printWinningRecordOneByOne(int numbersCorrect, int winningMoney, int amountOfThatRanking, boolean isSecondRank){
         StringBuilder printMake = new StringBuilder();
         printMake.append(String.format("%d개 일치",numbersCorrect));
