@@ -38,7 +38,7 @@ public class LottoGame {
 	private void getBonusNumber() {
 		print.newLine();
 		print.message(Message.BONUS_NUMBER);
-		bonusBall = new BonusBall(readLine());
+		bonusBall = new BonusBall(readLine(), winningNumber.getWinningNumbers());
 	}
 
 	private void getScore() {

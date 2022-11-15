@@ -2,17 +2,23 @@ package lotto.domain.model;
 
 import lotto.domain.ErrorMessage;
 
+import java.util.List;
+
 public class BonusBall {
 	private final int bonusBall;
 
-	public BonusBall(String number) {
+	public BonusBall(String number, List<Integer> winningNumber) {
 		bonusBall = validateInt(number);
-		validateRange(bonusBall);
+		validateRange(winningNumber);
 	}
 
-	private void validateRange(int bonusBall) {
+	private void validateRange(List<Integer> winningNumbers) {
 		if (bonusBall < 1 || 45 < bonusBall) {
 			System.out.println(ErrorMessage.ERROR_WRONG_RANGE.getError_message());
+			throw new IllegalArgumentException();
+		}
+		if (winningNumbers.contains(bonusBall)){
+			System.out.println(ErrorMessage.ERROR_OVERLAP.getError_message());
 			throw new IllegalArgumentException();
 		}
 	}
