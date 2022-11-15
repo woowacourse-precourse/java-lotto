@@ -21,15 +21,14 @@ public class WinningLotto extends Lotto {
         lottoValidator.validate(numbers, bonusNumber);
     }
 
-    public int compareAndCount(Lotto lotto) {
+    public int getWinningResult(Lotto lotto) {
         LottoService lottoService = new LottoService();
 
         List<Integer> lottoNumbers = lotto.getNumbers();
         List<Integer> winningNumbers = this.getNumbers();
 
         int count = lottoService.countWinning(lottoNumbers, winningNumbers);
-        if (count == LottoResult.FIVE_WINS.getValue()
-                && lottoNumbers.contains(this.bonusNumber)) {
+        if (count == LottoResult.FIVE_WINS.getValue() && lottoNumbers.contains(bonusNumber)) {
             count = LottoResult.FIVE_AND_BONUS_WINS.getValue();
         }
 
