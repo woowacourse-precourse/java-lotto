@@ -9,16 +9,13 @@ import java.util.List;
 public class LottoNumber {
     private static final int LENGTH = 6;
 
-    public List<Integer> generateLottoNumber() {
-        List<Integer> winNumber = new ArrayList<Integer>();
-        while (winNumber.size() < LENGTH) {
-            Integer randomNumber = Randoms.pickNumberInRange(1, 45);
-            if (!winNumber.contains(randomNumber)) {
-                winNumber.add(randomNumber);
-            }
+    public List<List<Integer>> generateLottoNumber(int numberOfLotto) {
+        List<List<Integer>> lottoNumbers = new ArrayList<>();
+        for (int i = 0; i < numberOfLotto; i++) {
+            List<Integer> lottoNumber = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+            Collections.sort(lottoNumber);
+            lottoNumbers.add(lottoNumber);
         }
-        Collections.sort(winNumber);
-
-        return winNumber;
+        return lottoNumbers;
     }
 }
