@@ -73,6 +73,7 @@ public class Analyze {
         for (int i = 3; i < 8; i++){
             matchFrequency.add(Collections.frequency(finalMatchCountPerLotto(), i));
         }
+        Collections.swap(matchFrequency, 3, 4);
         return matchFrequency;
     }
 
@@ -82,7 +83,7 @@ public class Analyze {
         for (int i = 0; i < getMatchFrequency().size(); i++){
             totalPrize += getMatchFrequency().get(i) * winnings.get(i);
         }
-        return totalPrize / (lottoCount * countingNumber);
+        return (totalPrize * 100) / (lottoCount * countingNumber);
     }
 
 }

@@ -5,11 +5,11 @@ import java.util.Arrays;
 import java.util.List;
 
 public enum PrizeCategory {
-    THREE("5,000원", 5000, 3),
-    FOUR("50,000원", 50000, 4),
-    FIVE("1,500,000원", 1500000, 5),
-    SIX("2,000,000,000원", 2000000000, 6),
-    SIXBONUS("30,000,000원", 30000000, 7);
+    THREE(" (5,000원)", 5000, 3),
+    FOUR(" (50,000원)", 50000, 4),
+    FIVE(" (1,500,000원)", 1500000, 5),
+    SIXBONUS(", 보너스 볼 일치 (30,000,000원)", 30000000, 5),
+    SIX(" (2,000,000,000원)", 2000000000, 6);
 
 
     String winningsPrint;
