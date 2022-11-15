@@ -14,9 +14,9 @@ public class LottoNumber {
         this.number = number;
     }
 
-    private void validateBoundary(int number) {
+    private void validateBoundary(final int number) {
         if (number < MIN_NUMBER || number > MAX_NUMBER) {
-            throw new IllegalArgumentException("[ERROR] 로또 번호의 허용 범위를 벗어난 숫자입니다.");
+            throw new IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
         }
     }
 
