@@ -20,4 +20,15 @@ public class LottoAccountant {
         return lottoResults;
     }
 
+    public float calculateRateOfReturn(List<LottoResult> lottoResults, int lottoPrice) {
+        Long winningsSum = 0L;
+
+        for (LottoResult lottoResult : lottoResults) {
+            winningsSum += lottoResult.getWinnings();
+        }
+
+        float ratioOfReturn = (float) winningsSum / (float) (lottoResults.size() * lottoPrice) * 100;
+
+        return Math.round((ratioOfReturn * 10) / 10.0);
+    }
 }
