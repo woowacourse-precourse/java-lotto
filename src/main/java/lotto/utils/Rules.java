@@ -1,25 +1,20 @@
 package lotto.utils;
 
-public enum Rules {
-    LOTTO_SIZE(6),
-    LOTTO_MIN_NUMBER(1),
-    LOTTO_MAX_NUMBER(45),
-    SCORE_PER_LOTTO_NUMBER(2),
-    SCORE_BONUS_NUMBER(1),
-    FIRST_CLASS_COUNT(6),
-    SECOND_CLASS_COUNT(5),
-    THIRD_CLASS_COUNT(5),
-    FIRTH_CLASS_COUNT(4),
-    FIFTH_CLASS_COUNT(3),
-    PRICE_PER_LOTTO(1000);
+public abstract class Rules {
+    public static int LOTTO_SIZE = 6;
+    public static int LOTTO_MIN_NUMBER = 1;
+    public static int LOTTO_MAX_NUMBER = 45;
 
-    private int value;
+    public static int SCORE_PER_LOTTO_NUMBER = 2;
+    public static int SCORE_BONUS_NUMBER = 1;
 
-    Rules(int value) {
-        this.value = value;
-    }
+    public static int FIRST_CLASS_COUNT = 6;
+    public static int SECOND_CLASS_COUNT = 5;
+    public static int THIRD_CLASS_COUNT = 5;
+    public static int FIRTH_CLASS_COUNT = 4;
+    public static int FIFTH_CLASS_COUNT = 3;
 
-    public int getValue() {
-        return this.value;
-    }
+    public static int PRICE_PER_LOTTO = 1000;
+
+    public static String SEPARATOR_WINNING_NUMBERS = ",";
 }

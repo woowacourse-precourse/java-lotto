@@ -22,7 +22,7 @@ public class WinningNumbers {
     }
 
     private void validateNumberRange(int number) throws IllegalArgumentException {
-        if ((number < Rules.LOTTO_MIN_NUMBER.getValue()) || (number > Rules.LOTTO_MAX_NUMBER.getValue())) {
+        if ((number < Rules.LOTTO_MIN_NUMBER) || (number > Rules.LOTTO_MAX_NUMBER)) {
             throw new IllegalArgumentException(Errors.ERROR_LOTTO_NUMBER_RANGE.getValue());
         }
     }
@@ -43,7 +43,7 @@ public class WinningNumbers {
     private int includeNumberCount(Lotto lotto) {
         int includeNumberCount = 0;
         int lottoNumber;
-        for (int lottoIndex = 0; lottoIndex < Rules.LOTTO_SIZE.getValue(); lottoIndex++) {
+        for (int lottoIndex = 0; lottoIndex < Rules.LOTTO_SIZE; lottoIndex++) {
             lottoNumber = lotto.findLottoNumber(lottoIndex);
             if (winningNumbers.containNumber(lottoNumber)) {
                 includeNumberCount = includeNumberCount + 1;
@@ -57,9 +57,9 @@ public class WinningNumbers {
     }
 
     private int calculateScore(int includeNumberCount, boolean includeBonusNumber) {
-        int score = includeNumberCount * Rules.SCORE_PER_LOTTO_NUMBER.getValue();
-        if ((includeNumberCount == Rules.SECOND_CLASS_COUNT.getValue()) && includeBonusNumber) {
-            score = score + Rules.SCORE_BONUS_NUMBER.getValue();
+        int score = includeNumberCount * Rules.SCORE_PER_LOTTO_NUMBER;
+        if ((includeNumberCount == Rules.SECOND_CLASS_COUNT) && includeBonusNumber) {
+            score = score + Rules.SCORE_BONUS_NUMBER;
         }
         return score;
     }

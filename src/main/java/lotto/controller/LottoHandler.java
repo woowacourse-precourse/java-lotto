@@ -5,6 +5,7 @@ import lotto.model.RankCounter;
 import lotto.model.User;
 import lotto.model.WinningNumbers;
 import lotto.utils.Input;
+import lotto.utils.Rules;
 import lotto.view.Print;
 
 import java.util.List;
@@ -32,7 +33,7 @@ public class LottoHandler {
 
     public void pickWinningNumber() throws IllegalArgumentException {
         Print.printWinningNumber();
-        List<Integer> newWinningNumbers = Input.readListInteger(",");
+        List<Integer> newWinningNumbers = Input.readListInteger(Rules.SEPARATOR_WINNING_NUMBERS);
         winningNumbers.newWinningNumbers(newWinningNumbers);
     }
 

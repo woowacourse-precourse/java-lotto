@@ -12,7 +12,7 @@ public class GameMoney {
     }
 
     static void validateAvailableOfPurchase(long insertMoney) throws IllegalArgumentException {
-        if (insertMoney % Rules.PRICE_PER_LOTTO.getValue() != 0) {
+        if (insertMoney % Rules.PRICE_PER_LOTTO != 0) {
             throw new IllegalArgumentException(Errors.ERROR_GAME_MONEY_AVAILABLE.getValue());
         }
     }
@@ -22,6 +22,6 @@ public class GameMoney {
     }
 
     public int numberOfPurchases() {
-        return (int) money / Rules.PRICE_PER_LOTTO.getValue();
+        return (int) money / Rules.PRICE_PER_LOTTO;
     }
 }

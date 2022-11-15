@@ -32,7 +32,7 @@ public class Print {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("[");
         stringBuilder.append(lotto.findLottoNumber(0));
-        for (int numberIndex = 1; numberIndex < Rules.LOTTO_SIZE.getValue(); numberIndex++) {
+        for (int numberIndex = 1; numberIndex < Rules.LOTTO_SIZE; numberIndex++) {
             stringBuilder.append(", ");
             stringBuilder.append(lotto.findLottoNumber(numberIndex));
         }
