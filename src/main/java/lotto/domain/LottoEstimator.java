@@ -15,15 +15,15 @@ public class LottoEstimator {
         this.winningLotto = winningLotto;
     }
 
-    public void estimate(List<Lotto> lotteries) {
+    public LottoStatics estimate(List<Lotto> lotteries) {
         lottoStatics = new LottoStatics();
         lotteries.forEach(this::rankLotto);
         lottoStatics.calculateProfitRate(lotteries.size() * LOTTO_PRICE_UNIT);
 
-        lottoStatics.print();
+        return lottoStatics;
     }
 
-    public void rankLotto(Lotto lotto) {
+    private void rankLotto(Lotto lotto) {
         int matchCount = winningLotto.getMatchCountWith(lotto);
         boolean hasBonusNumber = winningLotto.isBonusNumberIn(lotto);
 

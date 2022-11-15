@@ -1,7 +1,6 @@
 package lotto.domain;
 
 import lotto.LottoRank;
-import lotto.view.OutputView;
 
 import java.util.HashMap;
 
@@ -31,10 +30,11 @@ public class LottoStatics {
         profitRate =  Math.round(rateOfProfit * 10) / 10.0f;
     }
 
-    public void print() {
-        OutputView outputView = new OutputView();
+    public HashMap<LottoRank, Integer> rankStatics() {
+        return rankStatics;
+    }
 
-        outputView.printWinStatics(rankStatics);
-        outputView.printRateOfProfit(profitRate);
+    public float profitRate() {
+        return profitRate;
     }
 }
