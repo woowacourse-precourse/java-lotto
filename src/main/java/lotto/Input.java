@@ -24,9 +24,15 @@ public class Input {
 
     public static List<Integer> winningNumber() {
         String input = Console.readLine();
-
+        checkContainDelimiter(input);
         return Stream.of(input.split(DELIMITER))
                 .map(Input::convertToInt)
                 .collect(Collectors.toList());
+    }
+
+    private static void checkContainDelimiter(String input) {
+        if (!input.contains(DELIMITER)) {
+            throw new IllegalArgumentException(SEPARATOR_ERROR);
+        }
     }
 }
