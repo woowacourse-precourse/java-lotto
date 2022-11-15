@@ -20,8 +20,8 @@ public class LottoMachine {
             return reward;
         }
 
-        RANKING(int price) {
-            this.reward = price;
+        RANKING(int reward) {
+            this.reward = reward;
         }
     }
 
@@ -29,7 +29,7 @@ public class LottoMachine {
     private int paid;
     public ArrayList<Lotto> lottos = new ArrayList<>();
     private int[] result;
-    private int revenue;
+    private long revenue;
 
     public LottoMachine() {}
 
@@ -100,7 +100,7 @@ public class LottoMachine {
     public void calculateRevenue(){
         revenue = 0;
         for(int i=1; i<result.length; i++){
-            int reward = RANKING.valueOf("RANK"+i).getReward();
+            long reward = RANKING.valueOf("RANK"+i).getReward();
             revenue += reward * result[i];
         }
     }
