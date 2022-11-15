@@ -12,7 +12,7 @@ public class Application {
         int userPrice = inputUserPrice();
 
         Buy userBuy = new Buy(userPrice);
-        userBuy.printRandomLotto();
+        userBuy.printRandomLottos();
 
         List<Integer> userNumbers = inputNumbers();
         Lotto userLotto = new Lotto(userNumbers);

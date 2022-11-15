@@ -3,7 +3,6 @@ package lotto;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class Buy {
@@ -44,24 +43,11 @@ public class Buy {
         return randomLottoCount;
     }
 
-    public void printRandomLotto(){
-        System.out.println(randomLottos.size()/6+"개룰 구매했습니다.");
-        List<Integer> seperateRandomLotto = new ArrayList<>();
-
-        for(int i = 0 ; i< randomLottos.size()/6 ; i++){
-            int target = randomLottos.get(i);
-            seperateRandomLotto.add(target);
+    public void printRandomLottos() {
+        System.out.println(randomLottos.size()/6+"개를 구매했습니다.");
+        for (int i = 0; i < randomLottos.size() / 6; i++) {
+            result.printSixRange(randomLottos,i);
         }
-        Collections.sort(seperateRandomLotto);
-        System.out.println(seperateRandomLotto);
+    }
         // 6번 반복, result class로 옮기기.
     }
-
-    public void printSixRange(int row){
-        for(int j=row*6 ; j<(row+1)*6 ; j++){
-            System.out.print(randomLottos.get(j));
-            if(j%6 < 5) System.out.print(",");
-        }
-        System.out.println("]");
-    }
-}
