@@ -57,4 +57,12 @@ public class WinningTicket {
 
         return lottoNumbers;
     }
+
+    void setBonusNumber() {
+        String bonus;
+
+        bonus = inputBonusNumber();
+        validateBonusNumber(bonus);
+        this.bonusNumber = Integer.parseInt(bonus);
+    }
 }
