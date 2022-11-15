@@ -21,14 +21,15 @@
 - [X] 로또번호 랜덤생성기 구현 - LottoGenerator
   - [X] 구입기능 구현 - LottoGenerator 생성자
   - [X] 생성해야 할 로또 수 리턴하는 메소드 - getGenerateCount
-    - [X] 1000원 단위, 1000원 단위X-> 예외처리
+    - [X] 1000원 단위, 1000원 단위X 체크 - LottoGenereator#checkMoneyUnit
   - [X] 생성번호 필요조건: 중복X. 번호개수는 6개 고정 - LottoGenerator#createLottoNumber
-  
 
 
 - [X] 당첨 번호 구현 WinningNumber
   - [X] 당첨번호 입력 조건: 번호개수 6, 중복X, 쉼표 기준 
-    -  중복X WinningNumber#noDuplicateNumber
+    -  중복확인 - WinningNumber#checkDuplicateNumber
+    -  번호 개수 6개 확인 - WinningNumber#checkWinNumberSize
+    -  번호 범위 유효확인 - WinningNumber#checkNumberRange
   - [X] 보너스 번호 입력 조건, 당첨번호와 중복X
 
 
@@ -38,8 +39,12 @@
     - [X] 당첨 갯수에 따른 순위 제공 Lotto#rankCheck
 
   
-- [] 결과 출력 OutputPrinter
-  - [] 당첨내역
-  - [] 수익률 기능
+- [X] 결과 출력
+  - [X] 당첨내역
+  - [X] 수익률
 
-- [] 등수 출력 내용, Enum 적용 
+
+- [X] 등수 출력 내용: Enum - LottoReference
+  - [X] 등수로 Enum 내 열거 상수 조회 - LottoReference#getRankByMatchCount
+  - [X] 등수에 따른 상금 및 설명 출력 - LottoReference#getWinInformation
+  - [X] 등수에 따른 상금 출력 - LottoReference#getPrizeMoney

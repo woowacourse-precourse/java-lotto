@@ -17,7 +17,6 @@ public enum LottoReference {
             rankCashing.put(rankPlace.rank, rankPlace);
         }
     }
-    //private final int matchCount;
     private final int rank;
     private final String matching;
     private final String prizeRefer;
@@ -28,7 +27,6 @@ public enum LottoReference {
         this.matching = matching;
         this.prizeRefer = prizeRefer;
         this.prizeMoney = prizeMoney;
-        //this.matchCount = matchCount;
     }
 
     public static LottoReference getRankByMatchCount(final int matchCount) {
@@ -37,7 +35,6 @@ public enum LottoReference {
         }
         return rankCashing.get(matchCount);
     }
-
 
     public String getMatching() {
         return matching;
