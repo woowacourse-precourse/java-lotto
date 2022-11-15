@@ -28,9 +28,6 @@ public class Calculator {
     }
 
     public static float calculateRevenueRate(int revenue, int cost) {
-        if(cost==0) {
-            throw new IllegalArgumentException("[ERROR] 0으로 나눌 수 없습니다.");
-        }
         return ((float)revenue)/((float)cost) * 100;
     }
 

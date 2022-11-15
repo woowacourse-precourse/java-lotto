@@ -13,7 +13,7 @@ class LottoTest {
     @DisplayName("로또를 잘 생성하는지 검증")
     @MethodSource("createNumbers")
     void lottoTest(final List<Integer> numbers) {
-        Lotto lotto = new Lotto(numbers);
+        new Lotto(numbers);
     }
 
     static Stream<List<Integer>> createNumbers() {

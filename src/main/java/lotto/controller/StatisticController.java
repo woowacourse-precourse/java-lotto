@@ -2,12 +2,10 @@ package lotto.controller;
 
 import lotto.domain.Lotto;
 import lotto.domain.Statistic;
-import java.io.IOException;
 import java.util.List;
 
 import static lotto.service.Calculator.*;
 import static lotto.console.Output.*;
-import static lotto.console.Output.BufferedRecorder.*;
 
 
 public class StatisticController {
@@ -15,8 +13,12 @@ public class StatisticController {
     private static final int[] countStatistic = {-1,-1,-1,0,0,0,0,0};
 
 
-    private void updateStatisticCount(List<Lotto> lottoList, List<Integer> winningLotto) throws IOException {
-        writeStatistics();
+    private void updateStatisticCount(
+            List<Lotto> lottoList,
+            List<Integer> winningLotto
+    ) {
+        System.out.println();
+        printStatistics();
 
         lottoList.stream()
                 .map(Lotto::getNumbers)
@@ -25,27 +27,28 @@ public class StatisticController {
                 .forEach(x -> countStatistic[x] += 1);
     }
 
-    private void recordGrade() throws IOException {
+    private void recordGrade() {
         for(int i = 3; i < 8; i++) {
-            writeGrading(i, countStatistic[i]);
+            printGrading(i, countStatistic[i]);
         }
     }
 
-    private void recordRevenueRate() throws IOException {
+    private void recordRevenueRate() {
         int totalRevenue = 0;
 
         for(int i = 3; i < 8; i++) {
             totalRevenue += countStatistic[i] * Statistic.getRevenue(i);
         }
 
-        writeRevenueRate(calculateRevenueRate(totalRevenue, getCost()));
+        printRevenueRate(calculateRevenueRate(totalRevenue, getCost()));
     }
 
-    public void runStatisticController(List<Lotto> lottoList, List<Integer> winningLotto) throws IOException {
+    public void runStatisticController(
+            List<Lotto> lottoList,
+            List<Integer> winningLotto
+    ) {
         updateStatisticCount(lottoList, winningLotto);
         recordGrade();
         recordRevenueRate();
-//        printBufferedStream();
-
     }
 }

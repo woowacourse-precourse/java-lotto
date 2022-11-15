@@ -4,24 +4,23 @@ import java.util.List;
 
 import static lotto.console.Input.*;
 import static lotto.console.Output.*;
+import static lotto.service.Validation.isNonContains;
 
 public class WinningLottoController {
 
     public List<Integer> createWinningLotto() {
+        System.out.println();
         printInputWinningNumber();
 
         return inputSixNumber();
     }
 
     public void addBonusNumber(List<Integer> winningLotto) {
+        System.out.println();
         printInputBonusNumber();
 
         int bonusNumber = inputNumber();
-
-        if(winningLotto.contains(bonusNumber)) {
-            throw new IllegalArgumentException("[ERROR] 이 보너스 번호는 유효하지 않습니다.");
-        }
-
+        isNonContains(winningLotto, bonusNumber);
         winningLotto.add(bonusNumber);
     }
 
