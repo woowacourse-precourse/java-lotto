@@ -7,6 +7,12 @@ import lotto.constants.Error;
 import lotto.constants.Number;
 
 public class LottoNumber {
+    public static void exceptionLottoNumber(List<Integer> lotto) {
+        exceptionDuplication(lotto);
+        exceptionRange(lotto);
+        exceptionSize(lotto);
+    }
+
     public static void exceptionDuplication(List<Integer> lotto) {
         Set<Integer> lottoSet = new HashSet<>(lotto);
 
