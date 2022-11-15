@@ -67,5 +67,16 @@ public class Lotto {
         }
     }
 
+    public void RankLine (List<Integer> LottoPaperLine) {
+        int rankPoint = compareWinNumberAndLottoPaperPoint(LottoPaperLine);
+
+        if (rankPoint < 100) {
+            RankLineUnderHundred(rankPoint);
+        }
+        if (rankPoint >= 100) {
+            RankLineOverHundred(rankPoint);
+        }
+    }
+
 
 }
