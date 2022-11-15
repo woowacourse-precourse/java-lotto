@@ -10,8 +10,8 @@ import lotto.domain.lottery.BonusNumber;
 import lotto.domain.lottery.LottoGroup;
 import lotto.domain.lottery.WinningLotto;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 class HitResultTest {
 
@@ -23,81 +23,24 @@ class HitResultTest {
         lottoGroup = new LottoGroup(3, fixedNumberGenerator); // [1, 2, 3, 4, 5, 6]
     }
 
-    @Test
-    @DisplayName("로또 번호들 중 당첨의 수를 카운트합니다 - 6개 매칭")
-    void calculateMatchResults_6_hits() {
-        WinningLotto winningLotto = new WinningLotto("1,2,3,4,5,6");
-        BonusNumber bonusNumber = new BonusNumber("7", winningLotto);
+    @ParameterizedTest
+    @CsvSource({
+            "'1,2,3,4,5,6', '7', 0, 0, 0, 0, 3",
+            "'1,2,3,4,5,10', '6', 0, 0, 0, 3, 0",
+            "'1,2,3,4,5,10', '7', 0, 0, 3, 0, 0",
+            "'1,2,3,4,10,11', '7', 0, 3, 0, 0, 0",
+            "'1,2,3,10,11,12', '7', 3, 0, 0, 0, 0",
+            "'1,2,10,11,12,13', '7', 0, 0, 0, 0, 0"
+    })
+    public void calculateMatchResults(String winningNumbers, String bonus, int hit3, int hit4, int hit5, int hit5WithBonus, int hit6) {
+        System.out.println("winningNumbers = " + winningNumbers);
+        WinningLotto winningLotto = new WinningLotto(winningNumbers);
+        BonusNumber bonusNumber = new BonusNumber(bonus, winningLotto);
 
         HitResult result = new HitResult(lottoGroup, winningLotto, bonusNumber);
         List<Integer> results = new ArrayList<>(result.getHitResultExceptNone().values());
 
         assertThat(results)
-                .isEqualTo(List.of(0, 0, 0, 0, 3));
-    }
-
-    @Test
-    @DisplayName("로또 번호들 중 당첨의 수를 카운트합니다 - 5개 매칭 & 보너스 매칭")
-    void calculateMatchResults_5_hits_with_bonus() {
-        WinningLotto winningLotto = new WinningLotto("1,2,3,4,5,10");
-        BonusNumber bonusNumber = new BonusNumber("6", winningLotto);
-
-        HitResult result = new HitResult(lottoGroup, winningLotto, bonusNumber);
-        List<Integer> results = new ArrayList<>(result.getHitResultExceptNone().values());
-
-        assertThat(results)
-                .isEqualTo(List.of(0, 0, 0, 3, 0));
-    }
-
-    @Test
-    @DisplayName("로또 번호들 중 당첨의 수를 카운트합니다 - 5개 매칭")
-    void calculateMatchResults_5_hits() {
-        WinningLotto winningLotto = new WinningLotto("1,2,3,4,5,10");
-        BonusNumber bonusNumber = new BonusNumber("7", winningLotto);
-
-        HitResult result = new HitResult(lottoGroup, winningLotto, bonusNumber);
-        List<Integer> results = new ArrayList<>(result.getHitResultExceptNone().values());
-
-        assertThat(results)
-                .isEqualTo(List.of(0, 0, 3, 0, 0));
-    }
-
-    @Test
-    @DisplayName("로또 번호들 중 당첨의 수를 카운트합니다 - 4개 매칭")
-    void calculateMatchResults_4_hits() {
-        WinningLotto winningLotto = new WinningLotto("1,2,3,4,10,11");
-        BonusNumber bonusNumber = new BonusNumber("7", winningLotto);
-
-        HitResult result = new HitResult(lottoGroup, winningLotto, bonusNumber);
-        List<Integer> results = new ArrayList<>(result.getHitResultExceptNone().values());
-
-        assertThat(results)
-                .isEqualTo(List.of(0, 3, 0, 0, 0));
-    }
-
-    @Test
-    @DisplayName("로또 번호들 중 당첨의 수를 카운트합니다 - 3개 매칭")
-    void calculateMatchResults_3_hits() {
-        WinningLotto winningLotto = new WinningLotto("1,2,3,10,11,12");
-        BonusNumber bonusNumber = new BonusNumber("7", winningLotto);
-
-        HitResult result = new HitResult(lottoGroup, winningLotto, bonusNumber);
-        List<Integer> results = new ArrayList<>(result.getHitResultExceptNone().values());
-
-        assertThat(results)
-                .isEqualTo(List.of(3, 0, 0, 0, 0));
-    }
-
-    @Test
-    @DisplayName("로또 번호들 중 당첨의 수를 카운트합니다 - 상금 없음")
-    void calculateMatchResults_0_hits() {
-        WinningLotto winningLotto = new WinningLotto("1,2,10,11,12,13");
-        BonusNumber bonusNumber = new BonusNumber("7", winningLotto);
-
-        HitResult result = new HitResult(lottoGroup, winningLotto, bonusNumber);
-        List<Integer> results = new ArrayList<>(result.getHitResultExceptNone().values());
-
-        assertThat(results)
-                .isEqualTo(List.of(0, 0, 0, 0, 0));
+                .isEqualTo(List.of(hit3, hit4, hit5, hit5WithBonus, hit6));
     }
 }
