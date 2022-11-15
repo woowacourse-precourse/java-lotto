@@ -13,14 +13,18 @@ public class GameManager {
   }
 
   public void lottoGameStart() {
-    buyLotto();
-    printBuyLottoList();
-    prizeLotto = getPrizeNumberByUserInput();
-    bonusNumber = getBonusNumberByUserInput();
-    PrizeStatistics prizeStatistics = new PrizeStatistics(prizeLotto, bonusNumber);
-    showPrizeStatistics(prizeStatistics);
-    user.setPrizeMoney(prizeStatistics.calculatePrizeMoney());
-    printShowReturnRateMessage(user.calculateReturnRate());
+    try{
+      buyLotto();
+      printBuyLottoList();
+      prizeLotto = getPrizeNumberByUserInput();
+      bonusNumber = getBonusNumberByUserInput();
+      PrizeStatistics prizeStatistics = new PrizeStatistics(prizeLotto, bonusNumber);
+      showPrizeStatistics(prizeStatistics);
+      user.setPrizeMoney(prizeStatistics.calculatePrizeMoney());
+      printShowReturnRateMessage(user.calculateReturnRate());
+    }catch (Exception e) {
+      System.out.println(e.getMessage());
+    }
   }
 
   private void buyLotto() {

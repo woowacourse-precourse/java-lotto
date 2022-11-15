@@ -14,13 +14,13 @@ public class LottoValidator {
 
   private static void checkNumbersCount(List<Integer> numbers) {
     if (numbers.size() != NUMBER_COUNT) {
-      throw new IllegalArgumentException("숫자의 개수가 잘못되었습니다!");
+      throw new IllegalArgumentException("[ERROR] 숫자의 개수가 잘못되었습니다.");
     }
   }
 
   private static void checkHasDuplicateNumber(List<Integer> numbers) {
     if (numbers.stream().distinct().count() != numbers.size()) {
-      throw new IllegalArgumentException("중복되는 숫자가 있습니다!");
+      throw new IllegalArgumentException("[ERROR] 중복되는 숫자가 있습니다.");
     }
   }
 
@@ -32,7 +32,7 @@ public class LottoValidator {
 
   public static void checkIsNumberInRange(int number) {
     if (!isInRange(number)) {
-      throw new IllegalArgumentException("범위를 벗어나는 숫자가 있습니다!");
+      throw new IllegalArgumentException("[ERROR] 범위를 벗어나는 숫자가 있습니다.");
     }
   }
 
