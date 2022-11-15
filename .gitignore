@@ -30,3 +30,9 @@ out/
 
 ### VS Code ###
 .vscode/
+
+### MAC ###
+.DS_Store
+
+### Java class file ###
+myApplicationTest.java
