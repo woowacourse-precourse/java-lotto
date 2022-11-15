@@ -11,8 +11,8 @@ public class Lotto {
 
     public Lotto(List<Integer> numbers) {
         checkSize(numbers);
-        checkDuplicated(numbers);
         checkRange(numbers);
+        checkDuplicated(numbers);
         this.numbers = numbers;
     }
 
@@ -22,18 +22,18 @@ public class Lotto {
         }
     }
 
-    private void checkDuplicated(List<Integer> numbers) {
-        Set<Integer> set = new HashSet<>(numbers);
-        if (set.size() != numbers.size()) {
-            throw new IllegalArgumentException(LOTTO_DUPLICATED_ERROR.getMessage());
-        }
-    }
-
     private void checkRange(List<Integer> numbers) {
         for (Integer i : numbers) {
             if (i < 1 || i > 45) {
                 throw new IllegalArgumentException(LOTTO_RANGE_ERROR.getMessage());
             }
+        }
+    }
+
+    private void checkDuplicated(List<Integer> numbers) {
+        Set<Integer> set = new HashSet<>(numbers);
+        if (set.size() != numbers.size()) {
+            throw new IllegalArgumentException(LOTTO_DUPLICATED_ERROR.getMessage());
         }
     }
 }
