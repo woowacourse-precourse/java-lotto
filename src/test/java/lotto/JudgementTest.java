@@ -4,26 +4,33 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.Arrays;
+import java.util.List;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.ValueSource;
+import org.junit.jupiter.params.provider.CsvSource;
 
 class JudgementTest {
-    @Test
-    void 같은_숫자_세기_테스트() {
-        Judgement judgement = new Judgement();
-        int input = judgement.correctCount(Arrays.asList(1, 2, 3, 4, 5, 6),Arrays.asList(7, 2, 3, 4, 5, 6));
+    private static List<Integer> NUMBERS = Arrays.asList(1, 2, 3, 4, 5, 6);
+    private Judgement judgement;
 
-        assertThat(input).isEqualTo(5);
+    @BeforeEach
+    void setUp() {
+        judgement = new Judgement();
     }
 
-    @Test
-    void 보너스_숫자_포함_테스트() {
-        Judgement judgement = new Judgement();
-        boolean falseInput = judgement.hasBonusNumbers(13, Arrays.asList(1, 14, 15, 22, 33, 34));
-        boolean trueInput = judgement.hasBonusNumbers(14, Arrays.asList(1, 14, 15, 22, 33, 34));
+    @ParameterizedTest
+    @CsvSource({"1, 2, 3, 4, 5, 6, 6", "11, 2, 3, 4, 5, 6, 5", "11, 12, 3, 4, 5, 6, 4", "11, 12, 13, 4, 5, 6, 3",
+            "11, 12, 13, 14, 5, 6, 2", "11, 12, 13, 14, 15, 6, 1", "11, 12, 13, 14, 15, 16, 0"})
+    void 같은_숫자_세기_테스트(int number1, int number2, int number3, int number4, int number5, int number6, int expected) {
+        int input = judgement.correctCount(Arrays.asList(number1, number2, number3, number4, number5, number6),
+                NUMBERS);
+        assertThat(input).isEqualTo(expected);
+    }
 
-        assertThat(falseInput).isEqualTo(false);
-        assertThat(trueInput).isEqualTo(true);
+    @ParameterizedTest
+    @CsvSource({"10, false", "1, true"})
+    void 보너스_숫자_포함_테스트(int bonusNumber, boolean include) {
+        assertThat(judgement.hasBonusNumbers(bonusNumber, NUMBERS)).isEqualTo(include);
     }
 }
