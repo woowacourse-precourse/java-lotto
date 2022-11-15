@@ -19,6 +19,13 @@ public class LottoCalculator {
         winningLotto = initialWinningLotto();
     }
 
+    public double calculateEarn() {
+        int purchaseAmount = input.getPurchaseAmount();
+        for (int key = 3; key <= 7; key++) {
+            
+        }
+    }
+
     public void checkHit() {
         int correct;
         int bonusNumber = input.getBonusNumber();

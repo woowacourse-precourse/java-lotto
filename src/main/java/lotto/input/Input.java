@@ -24,6 +24,10 @@ public class Input {
         return purchaseAmount / 1000;
     }
 
+    public int getPurchaseAmount() {
+        return purchaseAmount;
+    }
+
     public List<Integer> getWinningNumber() {
         return winningNumber;
     }
