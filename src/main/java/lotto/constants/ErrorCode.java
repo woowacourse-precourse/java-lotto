@@ -11,8 +11,9 @@ public class ErrorCode {
             " 번호는 총 6개로 구성되어야 합니다.";
     public static final String INVALID_NUMERIC_CONFIGURATION = ERROR_MESSAGE +
             " 번호는 중복되지 않는 숫자로 구성되어야 합니다.";
-
     public static final String INVALID_NUMBER_RANGE = ERROR_MESSAGE +
-            " 번호는 1부터 45사이의 숫자여야 합니다.";
+            " 번호는 1부터 45사이의 숫자이어야 합니다.";
+    public static final String INVALID_BONUS_NUMBER = ERROR_MESSAGE +
+            " 보너스 번호는 한 자리 숫자이어야 한다.";
 
 }
