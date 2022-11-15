@@ -7,6 +7,8 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -20,6 +22,22 @@ class WinningNumberViewTest {
     @BeforeEach
     void beforeEach() {
         winningNumberView = new WinningNumberView();
+    }
+
+    @ParameterizedTest
+    @DisplayName("입력된 당첨번호 유효 테스트")
+    @CsvSource(value = {"123: [ERROR] 당첨번호의 개수는 6개", "\\n:[ERROR] 당첨번호의 개수는 6개", ", ,,:[ERROR] 당첨번호의 개수는 6개",
+            ",,,, ,:[ERROR] 당첨번호의 개수는 6개", "ab2c ,5de, 4fg,3hi,j1k,lm:[ERROR] 당첨번호는 1", "1,2,3,4,5,46:[ERROR] 당첨번호는 1",
+            "1,2,3,4,5,1:[ERROR] 당첨번호는 중복", "1,2,3,3, 3,3:[ERROR] 당첨번호는 중복"}
+            , delimiter = ':')
+    void inputWinningNumberTest(String winningNumbers, String expectedErrorMessage) {
+
+        InputStream inputStream = new ByteArrayInputStream(winningNumbers.getBytes());
+        System.setIn(inputStream);
+
+        assertThatThrownBy(() -> winningNumberView.inputWinningNumber())
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining(expectedErrorMessage);
     }
 
     @Test
@@ -38,10 +56,10 @@ class WinningNumberViewTest {
     @Test
     void inputStringParsing() {
 
-        String input = " 123 ";
-        String expected = "123";
+        String input = " 123, 456, 789";
+        String[] expected = {"123", "456", "789"};
 
-        String result = winningNumberView.inputStringParsing(input);
+        String[] result = winningNumberView.inputStringParsing(input);
 
         assertThat(result).isEqualTo(expected);
     }
