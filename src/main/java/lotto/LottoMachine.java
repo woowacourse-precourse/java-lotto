@@ -2,9 +2,7 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 public class LottoMachine {
 
@@ -13,15 +11,18 @@ public class LottoMachine {
         for (int i = 0; i < lottoCount; i++) {
             List<Integer> numbers =
                     Randoms.pickUniqueNumbersInRange(1, 45, 6);
+            numbers = sortLottoNumbers(numbers);
             totalLotteries.add(numbers);
         }
         return totalLotteries;
     }
 
-    public List<List<Integer>> sortLottoNumbers(List<List<Integer>> totalLotteries) {
-        for (List<Integer> lotto : totalLotteries) {
-            Collections.sort(lotto);
+    public List<Integer> sortLottoNumbers(List<Integer> numbers) {
+        TreeSet<Integer> lottery = new TreeSet<>(numbers);
+        for (int num : numbers) {
+            lottery.add(num);
         }
-        return totalLotteries;
+        List<Integer> numbersList = List.copyOf(lottery);
+        return numbersList;
     }
 }

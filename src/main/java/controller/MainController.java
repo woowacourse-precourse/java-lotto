@@ -30,7 +30,6 @@ public class MainController {
 
     public void makeLottoController() {
         totalLotteries = new LottoMachine().createLotto(lottoCount);
-        new LottoMachine().sortLottoNumbers(totalLotteries);
         OutputView.printLotteries(totalLotteries);
         makeWinningLottoController();
     }
