@@ -13,7 +13,7 @@ public class Bonus {
     }
 
     private void validateBonusNumisDuplicate(int bonusNum, Lotto lotto){
-        if (lotto.getNumbers().contains(bonusNum)){
+        if (Lotto.isWinningLottoHasBouns(bonusNum,lotto)){
             throw new IllegalArgumentException(ErrorMessage.DUPLICATE_BONUSNUM);
         }
     }
