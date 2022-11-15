@@ -8,7 +8,7 @@ public class Manager {
     public final int LOTTO_MAX = 45;
     public final int LOTTO_LENGTH = 6;
     public final int RANK_LENGTH = 6;
-
+    public final int LOTTO_PRICE = 1000;
     public final String INPUT_MONEY = "구입금액을 입력해 주세요.";
     public final String PURCHASE_MENT = "개를 구매했습니다.";
     public final String INPUT_WINNING = "당첨 번호를 입력해 주세요.";
@@ -62,9 +62,9 @@ public class Manager {
         if(!isNumber(input))
             QuitProgram("[ERROR] 금액은 숫자로만 구성된 문자열이어야 합니다.");
         int money = Integer.parseInt(input);
-        if(money < 1000)
+        if(money < LOTTO_PRICE)
             QuitProgram("[ERROR] 최소 1000원 이상의 금액을 입력해주세요.");
-        if(money % 1000 != 0)
+        if(money % LOTTO_PRICE != 0)
             QuitProgram("[ERROR] 금액은 1000원으로 나누어 떨어져야 합니다.");
         return money;
     }
