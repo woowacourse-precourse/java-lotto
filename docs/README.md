@@ -16,6 +16,9 @@
 ---
 # Class
 
+## Constants class
+- [ ] 각종 필요한 상수 and 문자열
+
 ## 💸 Lotto class (like 티비에 나오는 공 돌아가는 기계)
 - [ ] 당첨 번호 확인 후 저장
   - [ ] 로또 번호 개수가 6개 맞는가?
