@@ -11,17 +11,25 @@ public class AboutInputOutput {
     String PLEASE_ENTER_NUMBERS = "당첨 번호를 입력해 주세요.";
     String ERROR_ENTER_ONLY_NUMBERS = "[ERROR] 숫자만 입력해주세요";
     String PLEASE_ENTER_BONUS_NUMBER = "보너스 번호를 입력해 주세요.";
-    String ERROR_DUPLICATED_NUMBER = "[Error] 로또 번호는 중복될 수 없습니다.";
+    String ERROR_DUPLICATED_NUMBER = "[ERROR] 로또 번호는 중복될 수 없습니다.";
 
     public Integer inputMoney() {
+        String inputMoney = Console.readLine();
+        return validateMoney(inputMoney);
+    }
+
+    public Integer validateMoney(String inputMoney) {
         int money = 0;
 
-        try {
-            money = Integer.parseInt(Console.readLine());
-        } catch (NumberFormatException e) {
-            System.out.println(ERROR_ENTER_ONLY_NUMBERS);
-            throw new IllegalArgumentException();
+        while(money == 0) {
+            try {
+                money = Integer.parseInt(inputMoney);
+            } catch (NumberFormatException e) {
+                System.out.println(ERROR_ENTER_ONLY_NUMBERS);
+                inputMoney();
+            }
         }
+
         return money;
     }
 
