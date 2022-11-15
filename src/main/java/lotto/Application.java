@@ -98,6 +98,9 @@ public class Application {
     }
 
     public static void validLuckyNumbers(List<Integer> inputNums) throws IllegalArgumentException {
+        if (inputNums.size() != 6) {
+            throw new IllegalArgumentException(ErrorMessage.LOTTO_SIZE_ERROR);
+        }
         if(inputNums.size() != inputNums.stream().distinct().count()){
             throw new IllegalArgumentException(ErrorMessage.DUPLICATED_LUCKY_NUMBER);
         }
