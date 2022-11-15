@@ -35,9 +35,8 @@ public class Score {
     }
 
     public String resultMatchCount() {
-        var allCount = normal + bonus;
 
-        if (allCount < MIN_COUNT) {
+        if (normal< MIN_COUNT) {
             return MESSAGE_NOTHING;
         }
 
@@ -45,7 +44,7 @@ public class Score {
             return String.format(MESSAGE_N_AMOUNT_CORRECT + MESSAGE_BONUS_CORRECT, normal);
         }
 
-        return String.format(MESSAGE_N_AMOUNT_CORRECT, allCount);
+        return String.format(MESSAGE_N_AMOUNT_CORRECT, normal);
     }
 
     @Override
