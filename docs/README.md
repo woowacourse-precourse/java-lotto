@@ -59,7 +59,7 @@
     - 당첨 번호 일치 개수, 보너스번호 일치 여부가 주어지면 알맞은 WinInfo를 반환하는지
 
 - [ ] LottoUser 테스트
-  - [ ] validation 테스트
+  - [x] validation 테스트
   - [ ] buyLotto 테스트
     - 돈의 양 만큼 로또를 샀는지
   - [ ] checkWin 테스트
