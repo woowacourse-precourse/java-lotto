@@ -1,6 +1,9 @@
 package lotto.domain.money;
 
+import java.util.Objects;
+
 public class Money {
+
     public static final String ERROR_MONEY_IS_NUMBER = "[ERROR] 돈은 숫자만 입력 받을 수 있습니다.";
     public static final String ERROR_MONEY_GREATER_THAN_MIN_NUMBER = "[ERROR] 돈은 최소 금액 보다 커야합니다.";
     public static final String ERROR_MONEY_DIVIDE_MIN_NUMBER = "[ERROR] 돈은 최소금액으로 나누어 떨어져야 합니다.";
@@ -45,6 +48,10 @@ public class Money {
         }
     }
 
+    public static Money generateZeroMoney() {
+        return new Money(0L);
+    }
+
     public Long calculateAvailablePurchaseCount() {
         return this.amount / MIN_NUMBER;
     }
@@ -59,5 +66,29 @@ public class Money {
 
     public Money plus(Money money) {
         return new Money(this.amount + money.amount);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Money money = (Money) o;
+        return Objects.equals(amount, money.amount);
+    }
+
+    @Override
+    public String toString() {
+        return "Money{" +
+                "amount=" + amount +
+                '}';
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(amount);
     }
 }
