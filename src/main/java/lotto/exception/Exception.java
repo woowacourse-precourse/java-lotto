@@ -27,6 +27,15 @@ public class Exception {
         }
     }
 
+    public static void validateNumberRange(List<Integer> numbers) {
+        boolean isOutOfRange = numbers.stream()
+                .anyMatch(num -> (num < MIN || num > MAX));
+
+        if(isOutOfRange) {
+            throwException(WRONG_RANGE_MESSAGE);
+        }
+    }
+
     public static void throwException(String message) {
         throw new IllegalArgumentException(ERROR + message);
     }
