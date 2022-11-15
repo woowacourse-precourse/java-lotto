@@ -17,7 +17,7 @@ public class ManagementLotto {
     }
 
     public Lotto generateLottoNumber() {
-        List<Integer> lottoNumber = new ArrayList<>();
+        List<Integer> lottoNumber;
         lottoNumber = Randoms.pickUniqueNumbersInRange(
             LottoEnum.START_NUM.getValue(), LottoEnum.END_NUM.getValue(),
             LottoEnum.SIZE.getValue());
@@ -26,11 +26,11 @@ public class ManagementLotto {
         return new Lotto(lottoNumber);
     }
 
-    public void checkLottooNumber() {
+    public void makeWinNumber() {
 
     }
 
-    public void calcROI() {
+    public void checkLottoNumber() {
 
     }
 }

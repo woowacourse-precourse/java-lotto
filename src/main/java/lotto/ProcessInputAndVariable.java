@@ -1,9 +1,15 @@
 package lotto;
 
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+
 public class ProcessInputAndVariable {
+
     private static final Integer LOTTO_DIVIDE_PRICE = 1000;
     private final ValidInput validInput = new ValidInput();
-    public Integer convertToInteger (String input) {
+
+    public Integer convertToInteger(String input) {
         try {
             return Integer.parseInt(input);
         } catch (IllegalArgumentException e) {
@@ -11,8 +17,15 @@ public class ProcessInputAndVariable {
         }
     }
 
-    public Integer calculateLottoAmount (Integer price) {
+    public Integer calculateLottoAmount(Integer price) {
         validInput.validCashAmount(price, LOTTO_DIVIDE_PRICE);
         return price / LOTTO_DIVIDE_PRICE;
+    }
+
+    public Lotto makeWinNumber(String input) {
+        List<Integer> inputNumberList = Arrays.stream(input.split(",")).map(Integer::parseInt)
+            .collect(Collectors.toList());
+
+        return new Lotto(inputNumberList);
     }
 }

@@ -37,6 +37,6 @@ public class LottoGame {
         message.printPlsInputWinNumber();
         String winNumber = Console.readLine();
 
-        return ;
+        return processInputAndVariable.makeWinNumber(winNumber);
     }
 }
