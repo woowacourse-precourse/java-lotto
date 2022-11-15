@@ -157,5 +157,19 @@ class LottoServiceTest {
             // then
             assertThrows(IllegalStateException.class, () -> LottoService.getBonusNumber(input));
         }
+
+        @Test
+        @DisplayName("[성공]")
+        void success() {
+            // given
+            final String input = "1";
+            final int number = Integer.parseInt(input);
+
+            // when
+            final int result = LottoService.getBonusNumber(input);
+
+            // then
+            assertEquals(number, result);
+        }
     }
 }
