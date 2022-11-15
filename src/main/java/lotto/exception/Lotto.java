@@ -1,5 +1,6 @@
 package lotto.exception;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Lotto {
@@ -12,20 +13,22 @@ public class Lotto {
         this.numbers = numbers;
     }
 
-    public List<Integer> getNumbers(){
+    public List<Integer> getNumbers() {
         return numbers;
     }
 
-    private void validateNumber(List<Integer> numbers){
+    private void validateNumber(List<Integer> numbers) {
         validateNumberSize(numbers);
         validateDuplicateNumbers(numbers);
         validateNumbersRange(numbers);
     }
+
     private void validateNumberSize(List<Integer> numbers) {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException();
         }
     }
+
     private void validateDuplicateNumbers(List<Integer> numbers) {
         if (numbers.size() != numbers.stream().distinct().count()) {
             throw new IllegalArgumentException("[ERROR] 중복된 번호를 사용하지 않아야 합니다.");
