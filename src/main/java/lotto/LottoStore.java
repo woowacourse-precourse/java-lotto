@@ -2,12 +2,19 @@ package lotto;
 
 public class LottoStore {
 
-	public LottoStore() {
+	private int moneyBuyLotto;
 
+	public LottoStore() {
+		moneyBuyLotto = 0;
 	}
 
-	private void open() {
-		ConsoleOut.printInputMoney();
+	public void open() {
+		buy();
+	}
 
+	private void buy() {
+		ConsoleOut.printInputMoney();
+		moneyBuyLotto = Util.strToInt(ConsoleIn.readLine());
+		Verify.verifyThousandUnit(moneyBuyLotto);
 	}
 }
