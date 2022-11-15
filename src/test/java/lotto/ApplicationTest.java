@@ -86,6 +86,14 @@ class ApplicationTest extends NsTest {
                 .isThrownBy(() -> new Money(input));
     }
 
+    @ParameterizedTest
+    @DisplayName("구입 금액 입력값이 숫자가 아니기 때문에 IllegalArgumentException테스트")
+    @ValueSource(strings = {"01000", "0500", "0300", "050000", "090000"})
+    void 로또구입금액_0으로_시작할때_예외발생_테스트(String input) {
+        assertThatIllegalArgumentException()
+                .isThrownBy(() -> new Money(input));
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
