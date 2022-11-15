@@ -9,6 +9,7 @@ public class Game {
     static Validation validation = new Validation();
     static int purchase;
     static Lotto winningNumber;
+    static int bonusNumber;
 
     static void setPurchase(String input) throws IllegalArgumentException {
         validation.checkNull(input);
@@ -25,6 +26,14 @@ public class Game {
             number.add(Integer.parseInt(token));
         }
         winningNumber = new Lotto(number);
+    }
+
+    static void setBonusNumber(String input) throws IllegalArgumentException {
+        validation.checkNull(input);
+        validation.checkNumeric(input);
+        bonusNumber = Integer.parseInt(input);
+        validation.checkNumberInRange(bonusNumber);
+        validation.checkBonusDuplicate(winningNumber, bonusNumber);
     }
 
 }
