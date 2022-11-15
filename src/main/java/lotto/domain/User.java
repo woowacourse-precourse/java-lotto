@@ -19,9 +19,13 @@ public class User {
         userLottos = new ArrayList<>();
         int numberOfPurchases = gameMoney.numberOfPurchases();
         for (int lottoCount = 0; lottoCount < numberOfPurchases; lottoCount++) {
-            Lotto newLotto = LottoGenerator.generatorLotto();
-            userLottos.add(newLotto);
+            addLotto();
         }
+    }
+
+    private void addLotto() {
+        Lotto newLotto = LottoGenerator.generatorLotto();
+        userLottos.add(newLotto);
     }
 
     public int getLottoCount() {
