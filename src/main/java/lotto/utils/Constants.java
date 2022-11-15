@@ -25,4 +25,8 @@ public class Constants {
     public static final String RANGE_OVER_LOTTO_NUMBER_MESSAGE = "[ERROR] 1~45 사이의 숫자를 입력하세요.";
 
     public static final String PURCHASE_LOTTO_COUNT_MESSAGE = "개를 구매했습니다.";
+
+    public static final String LOTTO_WINNING_NUMBER_MESSAGE = "당첨 번호를 입력해 주세요.";
+
+    public static final String LOTTO_BONUS_NUMBER_MESSAGE = "보너스 번호를 입력해 주세요.";
 }
