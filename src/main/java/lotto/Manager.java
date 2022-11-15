@@ -45,7 +45,7 @@ public class Manager {
 		win = separateWinInput(input);
 	}
 
-	public List<Integer> separateWinInput(String input) {
+	private List<Integer> separateWinInput(String input) {
 		List<Integer> result = new ArrayList<Integer>();
 		List<String> splited = Arrays.asList(input.split(SPLIT));
 		if (splited.size() != 6) {
