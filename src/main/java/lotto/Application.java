@@ -25,12 +25,13 @@ public class Application {
         }
     }
 
-    static void inputPrice() {
+    static int inputPrice() {
         priceMessage();
         String price = Console.readLine();
         System.out.println();
         checkPriceDigit(price);
         checkPrice(Integer.parseInt(price));
+        return Integer.parseInt(price)/1000;
     }
 
     static void numberMessage() {
@@ -120,13 +121,15 @@ public class Application {
         checkBonusRange(Integer.parseInt(number));
         checkBonusDuplication(Integer.parseInt(number), numbers);
     }
-    
+
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         try {
-            inputPrice();
+            int count = inputPrice();
             List<Integer> result = inputNumbers();
             inputBonusNumbers(result);
+            List<Lotto> lottos = Lotto.createLottos(count);
+            System.out.println(lottos);
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }

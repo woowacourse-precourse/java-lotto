@@ -19,14 +19,14 @@ public class Lotto {
     }
 
     // TODO: 추가 기능 구현
-    private List<Integer> createNum() {
+    private static List<Integer> createLottoNum() {
         return Randoms.pickUniqueNumbersInRange(1, 45, 6);
     }
 
-    private List<Lotto> createLottos(int cnt) {
+    static List<Lotto> createLottos(int cnt) {
         List<Lotto> lottos = new ArrayList<>();
         for (int i = 0; i < cnt; i++) {
-            Lotto lotto = new Lotto(createNum());
+            Lotto lotto = new Lotto(createLottoNum());
             lottos.add(lotto);
         }
         return lottos;
