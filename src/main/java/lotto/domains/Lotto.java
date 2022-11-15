@@ -7,7 +7,7 @@ import java.util.List;
 public class Lotto {
     private final List<Integer> numbers;
 
-    private int bonusNumber;
+    private Integer bonusNumber;
 
     public Lotto(List<Integer> numbers, int bonusNumber) {
         Validator.validateLottoNumber(numbers);
@@ -26,6 +26,10 @@ public class Lotto {
     }
 
     public int getBonusNumber() {
-        return bonusNumber;
+        try {
+            return bonusNumber;
+        } catch (NullPointerException e) {
+            throw new IllegalArgumentException("[ERROR] 보너스 번호가 초기화 되지 않았습니다.");
+        }
     }
 }
