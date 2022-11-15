@@ -27,7 +27,7 @@ public class Controller {
             Lotto lottoCheck = new Lotto(lottoNumber);
             lottoNumber = lottoCheck.lottoNumberSort();
             Set common = server.compareLottoNumber(lottoNumber, winLottoNumber);
-            server.countMatchNumber(common);
+            putMatchNumberCount(server.countMatchNumber(common));
         }
     }
 
@@ -35,5 +35,9 @@ public class Controller {
         for(int match = 3; match < 8; match++){
             matchNumberCount.put(match, 0);
         }
+    }
+
+    public void putMatchNumberCount(int matchNumber) {
+        matchNumberCount.put(matchNumber, matchNumberCount.get(matchNumber) + 1);
     }
 }
