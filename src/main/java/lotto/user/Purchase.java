@@ -25,4 +25,18 @@ public class Purchase {
     public int calculateQuantity() {
         return Integer.parseInt(purchaseAmount) / Constant.PURCHASE_UNIT;
     }
+
+    public double calculateEarningsRate(int totalPrize) {
+        return (double) totalPrize / (calculateQuantity() * Constant.PURCHASE_UNIT);
+    }
+
+    static class PurchaseValidator extends Validator {
+        private static final int PURCHASE_UNIT = 1_000;
+
+        public static void validateUnitOfThousand(String purchaseAmount) {
+            if (Integer.parseInt(purchaseAmount) % PURCHASE_UNIT != 0) {
+                ErrorHandler.throwException(ErrorMessage.INVALID_PURCHASE_UNIT);
+            }
+        }
+    }
 }
