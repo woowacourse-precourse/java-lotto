@@ -14,18 +14,17 @@ public class Lotto {
 
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
-            throw new IllegalArgumentException("[ERROR]당첨 숫자는 6가지로 입력해 주세요.");
+            throw new IllegalArgumentException("[ERROR] 당첨 숫자는 6가지로 입력해 주세요.");
         }
         Set<Integer> duplicateCheckSet = new HashSet<>(numbers);
         if (duplicateCheckSet.size() != numbers.size()) {
-            throw new IllegalArgumentException("[ERROR]당첨 숫자는 중복 없이 입력해 주세요.");
+            throw new IllegalArgumentException("[ERROR] 당첨 숫자는 중복 없이 입력해 주세요.");
         }
         for (int i = 0; i < numbers.size(); i++){
             if (numbers.get(i) < 1 || numbers.get(i) > 45) {
-                throw new IllegalArgumentException("[ERROR]당첨 숫자는 1에서 45사이의 숫자를 입력해 주세요.");
+                throw new IllegalArgumentException("[ERROR] 당첨 숫자는 1에서 45사이의 숫자를 입력해 주세요.");
             }
         }
-        System.out.println(numbers);
     }
 
     public void lottoCheck(List<Integer> numbers, int bonusNumber, List<List<Integer>> userLotto) {
@@ -80,6 +79,8 @@ public class Lotto {
     }
 
     public void printPrize(int[] prizeCount) {
+        System.out.println("당첨 통계");
+        System.out.println("---");
         System.out.println("3개 일치 (5,000원) - " + prizeCount[4]+"개");
         System.out.println("4개 일치 (50,000원) - " + prizeCount[3]+"개");
         System.out.println("5개 일치 (1,500,000원) - " + prizeCount[2]+"개");
@@ -92,7 +93,7 @@ public class Lotto {
         double invest = userLotto.size()*1000;
         double revenue = 5000*prizeCount[4] + 50000*prizeCount[3] + 1500000*prizeCount[2] + 30000000*prizeCount[1] + 2000000000*prizeCount[0];
         rateOfRevenue = (revenue / invest) * 100;
-        String roundRateOfRevenue = String.format("%.2f",rateOfRevenue);
+        String roundRateOfRevenue = String.format("%.1f",rateOfRevenue);
         System.out.println("총 수익률은 "+ roundRateOfRevenue +"%입니다.");
 
     }
