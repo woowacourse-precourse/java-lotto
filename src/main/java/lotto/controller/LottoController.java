@@ -17,6 +17,8 @@ public class LottoController {
     private OutputView outputView = new OutputView();
 
     private List<Lotto> lottos = new ArrayList<>();
+    private int predictionMatchCnt = 0;
+    private int bonusMatchCnt = 0;
 
     public void playLottoGame() {
         int purchasePrice = inputView.userInputPurchasePrice();
@@ -55,24 +57,30 @@ public class LottoController {
         List<List<Integer>> ret = new ArrayList<>();
 
         for (Lotto lotto : lottos) {
-            int predictionMatchCnt = 0;
-            int bonusMatchCnt = 0;
+            predictionMatchCnt = 0;
+            bonusMatchCnt = 0;
 
             List<Integer> lottoNumbers = lotto.getNumbers();
 
-            for (int idx = 0; idx < QUANTITY_OF_LOTTO_DIGITS; idx++) {
-                if (lottoNumbers.contains(predictionNumbers.get(idx))) {
-                    predictionMatchCnt++;
-                }
-            }
-
-            if (lottoNumbers.contains(bonusNumber)) {
-                bonusMatchCnt++;
-            }
-
+            increasePredictionMatchCnt(lottoNumbers, predictionNumbers);
+            increaseBonusMatchCnt(lottoNumbers, bonusNumber);
             ret.add(Arrays.asList(predictionMatchCnt, bonusMatchCnt));
         }
 
         return ret;
+    }
+
+    public void increasePredictionMatchCnt(List<Integer> lottoNumbers, List<Integer> predictionNumbers) {
+        for (int idx = 0; idx < QUANTITY_OF_LOTTO_DIGITS; idx++) {
+            if (lottoNumbers.contains(predictionNumbers.get(idx))) {
+                predictionMatchCnt++;
+            }
+        }
+    }
+
+    public void increaseBonusMatchCnt(List<Integer> lottoNumbers, int bonusNumber) {
+        if (lottoNumbers.contains(bonusNumber)) {
+            bonusMatchCnt++;
+        }
     }
 }
