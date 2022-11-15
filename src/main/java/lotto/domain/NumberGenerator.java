@@ -3,12 +3,15 @@ package lotto.domain;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.Collections;
 import java.util.List;
+import lotto.exception.ExceptionHandler;
 
 public class NumberGenerator {
 
+    ExceptionHandler exception = new ExceptionHandler();
+
     public List<Integer> createRandomNumbers() {
         List<Integer> randomNumbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
-        // ErrorHandler#createLottoNumberError(randomNumbers);
+        exception.createLottoNumberException(randomNumbers);
         randomNumbers = sortAscendingOrder(randomNumbers);
         return randomNumbers;
     }
