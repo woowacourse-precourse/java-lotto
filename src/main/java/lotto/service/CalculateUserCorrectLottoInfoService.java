@@ -41,5 +41,15 @@ public class CalculateUserCorrectLottoInfoService {
         }
         return count;
     }
+    public int compareBonusNumber(int bonusNumber, List<Integer> lottoNumbers, int count) {
+        if (lottoNumbers.contains(bonusNumber)) {
+            if (count == CORRECT_FIVE_NUMBERS) {
+                count = CORRECT_FIVE_AND_BONUS_NUMBER;
+                return count;
+            }
+            count += INCREASE_COUNT_NUMBER;
+        }
+        return count;
+    }
 
 }
