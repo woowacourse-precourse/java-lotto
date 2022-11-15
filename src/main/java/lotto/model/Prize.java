@@ -1,5 +1,6 @@
 package lotto.model;
 
+import java.util.Arrays;
 import java.util.function.Function;
 
 public enum Prize {
@@ -21,5 +22,12 @@ public enum Prize {
 
     public Integer calculate(int count) {
         return expression.apply(count);
+    }
+
+    public static Prize getPrizeByScore(Double score) {
+        return Arrays.stream(values())
+                .filter(value -> score.equals(value.prize))
+                .findAny()
+                .orElse(null);
     }
 }
