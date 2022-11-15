@@ -1,6 +1,7 @@
 package lotto.participant;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import lotto.constant.LottoForm;
 import lotto.domain.Lotto;
 
 import java.util.ArrayList;
@@ -27,6 +28,8 @@ public class LottoPublisher {
     }
 
     private List<Integer> publishLottoNumbers() {
-        return Randoms.pickUniqueNumbersInRange(1, 45, 6);
+        return Randoms.pickUniqueNumbersInRange(LottoForm.STARTING_NUMBER.getNumber(),
+                LottoForm.ENDING_NUMBER.getNumber(),
+                LottoForm.COUNT_NUMBER.getNumber());
     }
 }
