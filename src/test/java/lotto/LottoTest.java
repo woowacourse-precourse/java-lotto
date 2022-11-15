@@ -34,5 +34,11 @@ class LottoTest {
         assertThatThrownBy(() -> new Lotto(List.of(1, 2, 3, 4, 5, 46)))
                 .isInstanceOf(IllegalArgumentException.class);
     }
-
+    @DisplayName("로또 게산기가 정확한지 체크한다.")
+    @Test
+    void checkCompare() {
+        Lotto lotto = new Lotto(List.of(1,2,3,4,5,6));
+        Lotto userLotto = new Lotto(List.of(1,2,3,4,5,6));
+        assertThat(lotto.compare(userLotto)).isEqualTo(6);
+    }
 }
