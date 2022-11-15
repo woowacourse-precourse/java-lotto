@@ -10,27 +10,27 @@ import static lotto.Constant.*;
 public class LottoDrawing {
     List<Integer> winningNumbers = new ArrayList<>();
     int bonusNumber;
-    public List<Integer> getWinningNumber(){
-        //이거 조금 분리해야하나 ?
+
+    public void getWinningNumber() {
         System.out.println(MESSAGE_INPUT_WINNING_NUMBER);
+        String winningNumber = Console.readLine();
 
-        String winningNumberInput = Console.readLine();
-        String[] WinningNumberInputs = winningNumberInput.split(",");
-        List<Integer> tempNumbers = new ArrayList<>();
-        for(String number: WinningNumberInputs){
-            tempNumbers.add(Integer.parseInt(number));
-        }
-
-        Lotto winningLotto = new Lotto(tempNumbers);
-        winningNumbers = winningLotto.getNumbers();
-
-        return winningLotto.getNumbers();
+        List<Integer> winningNumbers = changeStringToNumberList(winningNumber);
+        Lotto winningLotto = new Lotto(winningNumbers);
+        this.winningNumbers = winningLotto.getNumbers();
     }
 
-    public int getBonusNumber(){
-        System.out.println(MESSAGE_INPUT_BONUS_NUMBER);
-        bonusNumber = Integer.parseInt(Console.readLine());
+    private List<Integer> changeStringToNumberList(String input) {
+        String[] tempInputs = input.split(",");
+        List<Integer> numbers = new ArrayList<>();
+        for (String number : tempInputs) {
+            numbers.add(Integer.parseInt(number));
+        }
+        return numbers;
+    }
 
-        return bonusNumber;
+    public void getBonusNumber() {
+        System.out.println(MESSAGE_INPUT_BONUS_NUMBER);
+        this.bonusNumber = Integer.parseInt(Console.readLine());
     }
 }
