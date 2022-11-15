@@ -5,14 +5,17 @@ import java.util.List;
 import java.util.Map;
 
 public class LottoWin {
-    public static Map<Prize, Integer> getPrizeMap(List<Lotto> lottos, Lotto luckyNums, int bonusNum) {
-        Map<Prize, Integer> prizeMap = new HashMap<>();
+    public static Map<Integer, Integer> getPrizeMap(List<Lotto> lottos, Lotto luckyNums, int bonusNum) {
+        Map<Integer, Integer> prizeMap = new HashMap<>();
 
         for (Lotto lotto : lottos) {
-            Prize tempMoney = getPrizeMoney(lotto, luckyNums, bonusNum);
-            prizeMap.put(tempMoney, prizeMap.getOrDefault(tempMoney, 0) + 1);
+            Prize temp = getPrizeMoney(lotto, luckyNums, bonusNum);
+            int tempRank = temp.getRank();
+            if (tempRank != 6) {
+                prizeMap.put(tempRank, prizeMap.getOrDefault(tempRank, 0) + 1);
+            }
         }
-        
+
         return prizeMap;
     }
 

@@ -2,15 +2,23 @@ package lotto;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Collections;
-import java.util.Map;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class Application {
     static final int lottoPrice = 1000;
     static final int startNumber = 1;
     static final int endNumber = 45;
+
+    static final Map<Integer, Prize> prizeList = new HashMap<>() {{
+        put(1, Prize.FIRST);
+        put(2, Prize.SECOND);
+        put(3, Prize.THIRD);
+        put(4, Prize.FOURTH);
+        put(5, Prize.FIFTH);
+        put(0, Prize.NOTHING);
+    }};
+
 
     public static Integer getMoney() {
         int money = readMoney();
@@ -125,10 +133,23 @@ public class Application {
     }
 
     public static int getResult(List<Lotto> lottos, Lotto luckyNums, int bonusNum) {
-        Map<Prize, Integer> prizeMap = LottoWin.getPrizeMap(lottos, luckyNums, bonusNum);
-        printResult(prizeMap);
-        int totalPrize = getTotalPrize(prizeMap);
+        Map<Integer, Integer> prizeMap = LottoWin.getPrizeMap(lottos, luckyNums, bonusNum);
+        int result = printResult(prizeMap);
+        int totalPrize = getProfit(prizeMap);
         return totalPrize;
+    }
+
+    public static int printResult(Map<Integer, Integer> prizeMap) {
+        int total = 0;
+        System.out.println("당첨 통계");
+        System.out.println("---");
+        for (int i = 0; i < prizeList.size(); i++) {
+            int temp = prizeMap.getOrDefault(i + 1, 0);
+            int price = prizeList.get(i + 1).getPrize();
+            System.out.println(temp +"개 일치 (" + price + ")원 - " + temp + "개");
+            total += temp * price;
+        }
+        return total;
     }
     
     public static void main(String[] args) {
