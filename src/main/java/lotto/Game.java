@@ -24,6 +24,19 @@ public class Game {
         return result;
     }
 
+    public String getRate (List<Integer> grades, int money) {
+        long profit = 0;
+
+        profit += (long) 2_000_000_000 * grades.get(1);
+        profit += (long) 30_000_000 * grades.get(2);
+        profit += (long) 1_500_000 * grades.get(3);
+        profit += (long) 50_000 * grades.get(4);
+        profit += (long) 5_000 * grades.get(5);
+
+        double result = profit / (double) money * 100;
+        return String.format("%.1f", result) + "%";
+    }
+
     public int getGrade(List<Integer> lotto, List<Integer> input, int bonusNumber) {
         int count = 0;
         for (int i = 0; i < input.size(); i++) {
@@ -55,5 +68,6 @@ public class Game {
         System.out.println(INPUT_BONUS_NUMBER.getMessage());
         int bonusNumber = user.getBonusNumber(Integer.parseInt(Console.readLine()));
         List<Integer> grades = correctLottoCount(winLottos, usersLotto, bonusNumber);
+        String profitRate = getRate(grades, money);
     }
 }
