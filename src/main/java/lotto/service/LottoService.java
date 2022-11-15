@@ -1,6 +1,7 @@
 package lotto.service;
 
 import java.util.List;
+import lotto.view.ExceptionMessage;
 import lotto.util.LottoUtils;
 
 public class LottoService {
@@ -14,7 +15,8 @@ public class LottoService {
 
     public int getLottoAmount(int payment) {
         if (payment % LOTTO_PAYMENT != 0) {
-            throw new IllegalArgumentException("[ERROR] 로또 금액 단위로 입력해야 합니다.");
+            ExceptionMessage.paymentUnitError();
+            throw new IllegalArgumentException();
         }
         return payment / LOTTO_PAYMENT;
     }
@@ -35,7 +37,8 @@ public class LottoService {
             LottoUtils.checkNumberInRange(bonusNumber);
             return bonusNumber;
         } catch (Exception e) {
-            throw new IllegalArgumentException("[ERROR] 숫자가 아닌 값이 입력되었습니다.");
+            ExceptionMessage.inputNumberError();
+            throw e;
         }
     }
 }

@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
+import lotto.view.ExceptionMessage;
 
 public class LottoUtils {
 
@@ -24,8 +25,9 @@ public class LottoUtils {
                     .sorted()
                     .collect(Collectors.toList());
             return numbers;
-        } catch (Exception e) {
-            throw new IllegalArgumentException("[ERROR] 숫자가 아닌 값이 입력되었습니다.");
+        } catch (IllegalArgumentException  e) {
+            ExceptionMessage.inputNumberError();
+            throw e;
         }
     }
 
@@ -35,24 +37,25 @@ public class LottoUtils {
                 .collect(Collectors.toList());
 
         if (numbers.size() != uniqueNumbers.size()) {
-            throw new IllegalArgumentException("[ERROR] 중복된 번호가 당첨될 수 없습니다.");
+            ExceptionMessage.overlabNumberError();
+            throw new IllegalArgumentException();
         }
     }
 
     public static void checkNumberInRange(int number) {
         if (number < START_NUMBER || number > END_NUMBER) {
-            throw new IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
+            ExceptionMessage.numberRangeError();
+            throw new IllegalArgumentException();
         }
     }
 
     public static int inputToNumber(String input) {
-        int number;
-
         try {
-            number = Integer.parseInt(input);
+            int number = Integer.parseInt(input);
             return number;
-        } catch (Exception e) {
-            throw new IllegalArgumentException("[ERROR] 숫자가 아닌 값이 입력되었습니다.");
+        }catch (IllegalArgumentException e){
+            ExceptionMessage.inputNumberError();
+            throw e;
         }
     }
 }

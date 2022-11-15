@@ -55,4 +55,9 @@ public class Message {
     public void lottoProfitMessage(String lottoProfit) {
         System.out.println("총 수익률은 " + lottoProfit + "%입니다.");
     }
+
+    public void errorMessage() {
+        System.out.print("[ERROR] ");
+        System.out.println(ExceptionMessage.getException());
+    }
 }

@@ -14,6 +14,14 @@ public class LottoController {
     private Message message = new Message();
     private LottoService lottoService = new LottoService();
 
+    public void run() {
+        try {
+            start();
+        }catch (IllegalArgumentException e){
+            message.errorMessage();
+        }
+    }
+
     public void start() {
         user = new User();
 

@@ -2,6 +2,7 @@ package lotto.domain;
 
 import java.util.List;
 import java.util.function.Predicate;
+import lotto.view.ExceptionMessage;
 
 public class WinningLotto extends Lotto {
 
@@ -15,7 +16,8 @@ public class WinningLotto extends Lotto {
 
     public void checkContainsBonusNumber() {
         if (getNumbers().contains(bonusNumber)) {
-            throw new IllegalArgumentException("[ERROR] 입력한 보너스 번호가 이미 당첨 번호에 존재합니다.");
+            ExceptionMessage.existBonusNumberError();
+            throw new IllegalArgumentException();
         }
     }
 
