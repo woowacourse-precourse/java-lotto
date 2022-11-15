@@ -78,6 +78,13 @@ public class InputValidatorTest {
             assertThatThrownBy(() -> inputValidator.validateWinningNumber(winningNumber))
                     .isInstanceOf(IllegalArgumentException.class);
         }
+
+        @DisplayName("당첨 번호에 중복된 숫자가 있으면 예외가 발생한다.")
+        @Test
+        void WinningNumberIsDuplicated() {
+            assertThatThrownBy(() -> inputValidator.validateWinningNumber(List.of(1, 2, 3, 4, 5, 5)))
+                    .isInstanceOf(IllegalArgumentException.class);
+        }
     }
 
     @DisplayName("보너스 번호 테스트")
@@ -94,14 +101,14 @@ public class InputValidatorTest {
         @ParameterizedTest
         @CsvSource(value = {"0", "100"})
         void BonusNumberOutOfRange(int bonusNumber) {
-            assertThatThrownBy(() -> inputValidator.validateBonusNumber(bonusNumber, List.of(1,2,3,4,5,6)))
+            assertThatThrownBy(() -> inputValidator.validateBonusNumber(bonusNumber, List.of(1, 2, 3, 4, 5, 6)))
                     .isInstanceOf(IllegalArgumentException.class);
         }
 
         @DisplayName("보너스 번호의 숫자가 당첨 번호에 포함되어 있으면 예외가 발생한다.")
         @Test
         void BonusNumberInWinningNumber() {
-            assertThatThrownBy(() -> inputValidator.validateBonusNumber(1, List.of(1,2,3,4,5,6)))
+            assertThatThrownBy(() -> inputValidator.validateBonusNumber(1, List.of(1, 2, 3, 4, 5, 6)))
                     .isInstanceOf(IllegalArgumentException.class);
         }
     }
