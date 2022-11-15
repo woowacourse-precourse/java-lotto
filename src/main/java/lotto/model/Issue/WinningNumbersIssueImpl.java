@@ -1,6 +1,7 @@
 package lotto.model.Issue;
 
 import lotto.model.WinningNumbers;
+import lotto.utils.ErrorMessage;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -36,7 +37,7 @@ public class WinningNumbersIssueImpl implements WinningNumbersIssue{
     private void validateDuplicatedNumbers(List<Integer> numbers){
         long count = numbers.stream().distinct().count();
         if (count != 6){
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ErrorMessage.DUPLICATED_WINNING_NUMBERS.message);
         }
     }
 }

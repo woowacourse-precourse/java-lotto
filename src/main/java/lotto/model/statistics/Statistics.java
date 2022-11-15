@@ -1,5 +1,7 @@
 package lotto.model.statistics;
 
+import lotto.utils.ErrorMessage;
+
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.HashMap;
@@ -39,7 +41,7 @@ public class Statistics {
         try {
             yield = prize.divide(money, 3, RoundingMode.HALF_UP).multiply(BigDecimal.valueOf(100));
         }catch (Exception e){
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ErrorMessage.CANNOT_CALCULATE_YIELD.message);
         }
     }
 

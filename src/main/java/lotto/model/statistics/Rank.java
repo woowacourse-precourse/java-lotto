@@ -1,5 +1,7 @@
 package lotto.model.statistics;
 
+import lotto.utils.ErrorMessage;
+
 import java.util.Arrays;
 import java.util.function.BiPredicate;
 
@@ -26,7 +28,7 @@ public enum Rank {
         return Arrays.stream(values())
                 .filter(rank -> rank.matchCase.test(sameCount, isMatchBonus))
                 .findFirst()
-                .orElseThrow(() -> new IllegalArgumentException());
+                .orElseThrow(() -> new IllegalArgumentException(ErrorMessage.INVALID_MATCH_TYPE_RANK.message));
     }
 
     public Integer getSameCount(){

@@ -1,5 +1,7 @@
 package lotto.model;
 
+import lotto.utils.ErrorMessage;
+
 import java.util.List;
 
 public class Lotto {
@@ -21,13 +23,13 @@ public class Lotto {
 
     private void validateSize(List<Integer> numbers){
         if (numbers.size() != 6) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ErrorMessage.FAILED_CREATE_LOTTO.message);
         }
     }
 
     private void validateDuplicated(List<Integer> numbers){
         if (numbers.stream().distinct().count() != 6){
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ErrorMessage.FAILED_CREATE_LOTTO.message);
         }
     }
 }
