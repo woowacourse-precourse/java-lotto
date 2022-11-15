@@ -28,7 +28,7 @@ public class InputView {
 
     public List<Integer> inputDraw() {
         System.out.println(INPUT_DRAW_MESSAGE);
-        List<String> input = Arrays.asList(Console.readLine().split(","));
+        List<String> input = Arrays.asList(Console.readLine().replace(" ", "").split(","));
         String joinInput = String.join("", input);
         validation.validateIsNumber(joinInput);
         List<Integer> draw = input.stream()
@@ -39,7 +39,7 @@ public class InputView {
 
     public int inputBonus() {
         System.out.println(INPUT_BONUS_MESSAGE);
-        String input = Console.readLine();
+        String input = Console.readLine().replace(" ", "");
         validation.validateIsNumber(input);
         return Integer.parseInt(input);
     }
