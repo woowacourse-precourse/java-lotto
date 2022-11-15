@@ -8,6 +8,7 @@ import java.util.List;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomUniqueNumbersInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class ApplicationTest extends NsTest {
     private static final String ERROR_MESSAGE = "[ERROR]";
@@ -52,6 +53,51 @@ class ApplicationTest extends NsTest {
             runException("1000j");
             assertThat(output()).contains(ERROR_MESSAGE);
         });
+    }
+
+    @Test
+    void 유저_로또_구매_성공(){
+        runTest(() -> {
+            Input.buyLotto();
+        }, "10000");
+    }
+
+    @Test
+    void 유저_로또_구매_실패(){
+        runTest(() -> {
+            assertThatThrownBy(() -> Input.buyLotto())
+                    .isInstanceOf(IllegalArgumentException.class);
+        }, "1000j");
+
+        runTest(() -> {
+            assertThatThrownBy(() -> Input.buyLotto())
+                    .isInstanceOf(IllegalArgumentException.class);
+        }, "1000J");
+
+        runTest(() -> {
+            assertThatThrownBy(() -> Input.buyLotto())
+                    .isInstanceOf(IllegalArgumentException.class);
+        }, "1100");
+    }
+
+    @Test
+    void 유저_당첨_번호_입력_성공(){
+        runTest(() -> {
+            Input.userInputLottoNumber();
+        }, "1,2,3,4,5,6");
+    }
+
+    @Test
+    void 유저_당첨_번호_입력_실패(){
+        runTest(() -> {
+            assertThatThrownBy(() -> Input.userInputLottoNumber())
+                    .isInstanceOf(IllegalArgumentException.class);
+        }, "1,2,3,3,4,5");
+
+        runTest(() -> {
+            assertThatThrownBy(() -> Input.userInputLottoNumber())
+                    .isInstanceOf(IllegalArgumentException.class);
+        }, "1,2,3,4,5,6,7");
     }
 
     @Override
