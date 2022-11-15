@@ -31,6 +31,9 @@ public class IssueImpl implements Issue {
     }
 
     private void validate(int amount) {
+        if (isZero(amount)) {
+            throw new IllegalArgumentException(AMOUNT_EXCEPTION);
+        }
         if (!isMultipleOfLottoPrice(amount)) {
             throw new IllegalArgumentException(AMOUNT_EXCEPTION);
         }
@@ -38,5 +41,9 @@ public class IssueImpl implements Issue {
 
     private boolean isMultipleOfLottoPrice(int amount) {
         return amount % LOTTO_PRICE == 0;
+    }
+
+    private boolean isZero(int amount) {
+        return amount == 0;
     }
 }
