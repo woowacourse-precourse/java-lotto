@@ -30,7 +30,6 @@ public class InputViewConsole implements InputView {
         return Integer.valueOf(userInput);
     }
 
-
     private void isStringNumeric(String userInput) {
         if (!userInput.matches(NUMERIC_PATTERN)) {
             throw new IllegalArgumentException(Error.LOTTO_NUMBER_IS_NOT_NUMERIC.getMessage());
@@ -44,7 +43,6 @@ public class InputViewConsole implements InputView {
         isWinningNumbersNumeric(splitInputs);
         return mapToIntegerList(splitInputs);
     }
-
 
     private void isWinningNumbersNumeric(String[] splitInputs) {
         for (String numString : splitInputs) {
