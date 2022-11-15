@@ -13,17 +13,17 @@ public class User {
 
     }
 
-    public static int lotteryPurchaseAmount(){
+    public int lotteryPurchaseAmount(){
         System.out.println("구입금액을 입력해 주세요.");
         String input = Console.readLine();
         int lotteryPurchaseAmount = Integer.parseInt(input);
         if (lotteryPurchaseAmount % 1000 != 0){
             throw new IllegalArgumentException();
         }
-        return (lotteryPurchaseAmount / LOTTO_PRICE);
+        return (lotteryPurchaseAmount);
     }
 
-    List<Integer> winningNumber(){
+    public List<Integer> winningNumber(){
         System.out.println("당첨 번호를 입력해 주세요.");
         String input = Console.readLine();
         String[] splitInput = input.split(",");

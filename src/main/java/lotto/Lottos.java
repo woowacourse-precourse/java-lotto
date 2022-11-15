@@ -10,15 +10,13 @@ public class Lottos {
         this.lottos = new ArrayList<>(lottos);
     }
 
-    public static Lottos publishLottos(int count) {
+    public static List<Lotto> publishLottos(int count) {
         List<Lotto> lottos = new ArrayList<>();
         while (count-- > 0){
           Lotto newLotto = new Lotto(RandomNumGenerator.makeUniqueLottoNum());
           lottos.add(newLotto);
         }
-        return new Lottos(lottos);
+        return lottos;
     }
-
-
 }
 
