@@ -1,6 +1,7 @@
 package service;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import exception.CheckingException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,7 +20,7 @@ public class LottoService {
     // 사용자 추첨 번호 생성
     public List<Integer> makeUserRandomNumbers() {
         List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
-
+        CheckingException checkingException = new CheckingException(numbers);
         return numbers;
     }
 
