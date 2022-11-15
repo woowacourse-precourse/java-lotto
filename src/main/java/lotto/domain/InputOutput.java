@@ -40,4 +40,8 @@ public class InputOutput {
         System.out.println(LottoResult.FIRST_WIN + " - " + winHistory.get("FIRST_WIN") + "개");
     }
 
+    public void printRateOfProfit(double profit) {
+        System.out.println("총 수익률은 " + profit + "%입니다.");
+    }
+
 }

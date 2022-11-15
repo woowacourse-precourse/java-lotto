@@ -17,7 +17,7 @@
     - 5등: 3개 번호 일치 / 5,000원
 - [x] 당첨 내역을 출력한다. - InputOutput#printWinHistory()
 - [x] 수익률을 소수점 둘째 자리까지 계산한다. - Calculate#calculateRateOfProfit()
-- [ ] 수익률을 출력한다. - InputOutput#printRateOfProfit()
+- [x] 수익률을 출력한다. - InputOutput#printRateOfProfit()
 - [ ] 예외상황 시 에러 문구를 출력한다. - ErrorHandler
   - [ ] 로또 구입 금액을 입력 받을 때 예외상황 - getLottoBuyAmountError()
     - [ ] 입력값이 숫자가 아닐 경우 예외처리한다. - noNumberError()
