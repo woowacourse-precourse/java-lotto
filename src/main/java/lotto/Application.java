@@ -27,23 +27,22 @@ public class Application {
         return money;
     }
 
-    public static Integer readMoney() throws IllegalArgumentException {
+    public static Integer readMoney() {
         System.out.println("구입금액을 입력해주세요.");
         String userInput = Console.readLine();
         try {
             return Integer.parseInt(userInput);
         } catch (Exception e){
-            String errorMsg = ErrorMessage.INVALID_INPUT.getErrorMsg();
-            throw new IllegalArgumentException(errorMsg);
+            throw new IllegalArgumentException(ErrorMessage.INVALID_INPUT);
         }
     }
 
     public static void validMoney(int money) throws IllegalArgumentException {
         if (money < lottoPrice) {
-            throw new IllegalArgumentException(ErrorMessage.TOO_LOW_PRICE.getErrorMsg());
+            throw new IllegalArgumentException(ErrorMessage.TOO_LOW_PRICE);
         }
         if (money % lottoPrice != 0) {
-            throw new IllegalArgumentException(ErrorMessage.NOT_PERFECT_PRICE.getErrorMsg());
+            throw new IllegalArgumentException(ErrorMessage.NOT_PERFECT_PRICE);
         }
     }
 
@@ -79,7 +78,7 @@ public class Application {
         return luckyNums;
     }
 
-    public static List<Integer> readLuckyNumbers() throws IllegalArgumentException {
+    public static List<Integer> readLuckyNumbers(){
         System.out.println("당첨 번호를 입력해 주세요.");
         String userInput = Console.readLine();
         String[] inputs = userInput.split(",");
@@ -90,7 +89,7 @@ public class Application {
                 int num = Integer.parseInt(input);
                 numbers.add(num);
             } catch (Exception e) {
-                throw new IllegalArgumentException(ErrorMessage.INVALID_INPUT.getErrorMsg());
+                throw new IllegalArgumentException(ErrorMessage.INVALID_INPUT);
             }
         }
 
@@ -101,17 +100,17 @@ public class Application {
 
     public static void validLuckyNumbers(List<Integer> inputNums) throws IllegalArgumentException {
         if(inputNums.size() != inputNums.stream().distinct().count()){
-            throw new IllegalArgumentException(ErrorMessage.DUPLICATED.getErrorMsg());
+            throw new IllegalArgumentException(ErrorMessage.DUPLICATED_LUCKY_NUMBER);
         }
     }
 
     public static void checkRange(List<Integer> inputNums) throws IllegalArgumentException {
         for (int num : inputNums) {
             if (num < startNumber) {
-                throw new IllegalArgumentException(ErrorMessage.LOW_INPUT_ERROR.getErrorMsg() + num);
+                throw new IllegalArgumentException(ErrorMessage.LOW_INPUT_ERROR);
             }
             if (num > endNumber) {
-                throw new IllegalArgumentException(ErrorMessage.HIGH_INPUT_ERROR.getErrorMsg() + num);
+                throw new IllegalArgumentException(ErrorMessage.HIGH_INPUT_ERROR);
             }
         }
     }
@@ -123,25 +122,35 @@ public class Application {
         return bonusNum;
     }
 
-    public static int readBonusNumbers() {
+    public static int readBonusNumbers() throws IllegalArgumentException {
         System.out.println("보너스 번호를 입력해 주세요.");
         String userInput = Console.readLine();
         try {
             return Integer.parseInt(userInput);
         } catch (Exception e) {
-            throw new IllegalArgumentException(ErrorMessage.INVALID_INPUT.getErrorMsg());
+            throw new IllegalArgumentException(ErrorMessage.INVALID_INPUT);
         }
     }
 
     public static void getResult(List<Lotto> lottos, Lotto luckyNums, int bonusNum) {
         Map<Integer, Integer> prizeMap = LottoWin.getPrizeMap(lottos, luckyNums, bonusNum);
-        int result = printResult(prizeMap);
-        float profit = getProfit(result, lottos.size());
+        int price = getTotalPrice(prizeMap);
+        printResult(prizeMap);
+        float profit = getProfit(price, lottos.size());
         printProfit(profit);
     }
 
-    public static int printResult(Map<Integer, Integer> prizeMap) {
+    public static int getTotalPrice(Map<Integer, Integer> prizeMap) {
         int total = 0;
+        for (int i = prizeList.size() - 1; i > 0; i--) {
+            int temp = prizeMap.getOrDefault(i, 0);
+            int price = prizeList.get(i).getPrize();
+            total += temp * price;
+        }
+        return total;
+    }
+
+    public static void printResult(Map<Integer, Integer> prizeMap) {
         System.out.println("당첨 통계");
         System.out.println("---");
         for (int i = prizeList.size() - 1; i > 0; i--) {
@@ -149,16 +158,15 @@ public class Application {
             int winNum = prizeList.get(i).getNumOfLucky();
             int price = prizeList.get(i).getPrize();
             String commaNum = NumberFormat.getInstance(Locale.US).format(price);
-            System.out.print(winNum +"개 일치");
+            String msg = "";
+            msg += winNum +"개 일치";
             if (price == 30_000_000) {
-                System.out.print(", 보너스 볼 일치");
+                msg += ", 보너스 볼 일치";
             }
-            System.out.println(" ("+ commaNum + ")원 - " + temp + "개");
-            total += temp * price;
+            msg += " ("+ commaNum + ")원 - " + temp + "개";
+            System.out.println(msg);
         }
-        return total;
     }
-
     public static float getProfit(Integer totalPrice, Integer numOfLottos) {
         int initialPrice = numOfLottos * lottoPrice;
         float profit = ((totalPrice) / (float) initialPrice) * 100;

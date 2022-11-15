@@ -11,9 +11,9 @@ public class Lotto {
         this.numbers = numbers;
     }
 
-    private void validate(List<Integer> numbers) {
+    private void validate(List<Integer> numbers) throws IllegalArgumentException{
         if (numbers.size() != 6) {
-            throw new IllegalArgumentException(ErrorMessage.LOTTO_SIZE_ERROR.getErrorMsg());
+            throw new IllegalArgumentException(ErrorMessage.LOTTO_SIZE_ERROR);
         }
     }
 
@@ -24,7 +24,7 @@ public class Lotto {
 
     public void validBonusNumber(Integer bonusNum) throws IllegalArgumentException {
         if (this.numbers.contains(bonusNum)) {
-            throw new IllegalArgumentException(ErrorMessage.DUPLICATED_BONUS_NUMBER.getErrorMsg());
+            throw new IllegalArgumentException(ErrorMessage.DUPLICATED_BONUS_NUMBER);
         }
     }
 
