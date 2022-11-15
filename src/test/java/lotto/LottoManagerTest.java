@@ -17,6 +17,7 @@ public class LottoManagerTest extends NsTest {
     @DisplayName("입력 금액이 정수가 아니면 예외가 발생한다.")
     @Test
     void 입력_금액_정수_테스트() {
+        assertThatThrownBy(() -> new LottoManager().insertMoney("1000j")).isInstanceOf(IllegalArgumentException.class);
         assertThatThrownBy(() -> new LottoManager().insertMoney("abcd")).isInstanceOf(IllegalArgumentException.class);
     }
 
