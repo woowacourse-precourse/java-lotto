@@ -32,6 +32,7 @@ public class InputValidatorImpl implements InputValidator {
         }
     }
 
+    @Override
     public void validateWinningNumbersAreInteger(String[] inputValue) {
         try {
             for (String value : inputValue) {
