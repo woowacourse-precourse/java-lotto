@@ -33,4 +33,20 @@ public class GeneratorTest {
         assertThat(winningSummary).isEqualTo(expectSummary);
     }
 
+    @Test
+    void judgeWinningCountTest_2() throws NoSuchMethodException, IllegalAccessException, InvocationTargetException {
+        Method method = Generator.class.getDeclaredMethod("judgeWinningCount", Lotto.class);
+        method.setAccessible(true);
+
+        List<Integer> winningNumbers = new ArrayList<Integer>(Arrays.asList(1, 2, 3, 4, 5, 6));
+        Lotto.setWinningNumbers(winningNumbers);
+        Lotto.setBonusNumber(7);
+        Lotto lotto = new Lotto(Arrays.asList(1, 2, 3, 4, 7, 10));
+        HashMap<String, Integer> winningSummary = (HashMap<String, Integer>)method.invoke(Generator.class, lotto);
+
+        HashMap<String, Integer> expectSummary = new HashMap<String, Integer>();
+        expectSummary.put("winningCount", 4);
+        expectSummary.put("bonusCount", 1);
+        assertThat(winningSummary).isEqualTo(expectSummary);
+    }
 }
