@@ -17,7 +17,13 @@ public class UserInterface {
     }
 
     public List<Integer> getWinningNumbers() {
-
+        String input = Console.readLine();
+        validation.isValidWinningNumbersInput(input);
+        List<Integer> winningNumbers = Arrays.stream(input.split(","))
+                .map(Integer::parseInt)
+                .collect(Collectors.toList());
+        validation.isValidWinningNumbers(winningNumbers);
+        return winningNumbers;
     }
 
     public int getBonusNumber() {
