@@ -51,7 +51,7 @@ public class InputWinningNumbersHandler {
     }
 
     private void checkInRangeNumber(int index, List<Integer> winningNumbers) {
-        if(winningNumbers.get(index) < 1 || winningNumbers.get(index) > 45)    {
+        if(winningNumbers.get(index) < output.UNDER_LIMIT || winningNumbers.get(index) > output.UPPER_LIMIT)    {
             throw new IllegalArgumentException(output.ERROR_ORDER+" 로또 번호는 1부터 45 사이의 숫자여야 합니다.");}
     }
 }

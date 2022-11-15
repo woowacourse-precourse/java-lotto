@@ -7,6 +7,8 @@ import java.text.DecimalFormat;
 
 public class Output {
     public final String ERROR_ORDER = "[ERROR]";
+    public final int UNDER_LIMIT = 1;
+    public final int UPPER_LIMIT = 45;
     WinLottoResult winLottoResult = new WinLottoResult();
 
     public void inputMoneyOrder() {

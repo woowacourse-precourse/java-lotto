@@ -22,7 +22,7 @@ public class InputBonusNumberHandler {
     private void checkInRange(String bonusNumber) {
         Output output = new Output();
 
-        if(Integer.parseInt(bonusNumber) < 1 || Integer.parseInt(bonusNumber) > 45) {
+        if(Integer.parseInt(bonusNumber) < output.UNDER_LIMIT || Integer.parseInt(bonusNumber) > output.UPPER_LIMIT) {
             throw new IllegalArgumentException(output.ERROR_ORDER+" 보너스 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
         }
     }
