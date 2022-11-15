@@ -10,8 +10,9 @@ import static lotto.constant.ErrorMessage.*;
 public class Validator {
 
     public void validatePayment(String payment) {
-        if (!isPositiveInteger(payment) || !isAvailablePayment(payment))
+        if (!isPositiveInteger(payment) || !isAvailablePayment(payment)) {
             throw new IllegalArgumentException(PAYMENT_UNIT_SHOULD_BE_1000.getErrorMessage());
+        }
     }
 
     private boolean isPositiveInteger(String string) {
