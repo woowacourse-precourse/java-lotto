@@ -132,10 +132,10 @@ public class Application {
         }
     }
 
-    public static int getResult(List<Lotto> lottos, Lotto luckyNums, int bonusNum) {
+    public static float getResult(List<Lotto> lottos, Lotto luckyNums, int bonusNum) {
         Map<Integer, Integer> prizeMap = LottoWin.getPrizeMap(lottos, luckyNums, bonusNum);
         int result = printResult(prizeMap);
-        int totalPrize = getProfit(prizeMap);
+        float totalPrize = getProfit(result, lottos.size());
         return totalPrize;
     }
 
@@ -151,7 +151,13 @@ public class Application {
         }
         return total;
     }
-    
+
+    public static float getProfit(Integer totalPrice, Integer numOfLottos) {
+        int initalPrice = numOfLottos * lottoPrice;
+        float profit = 100 * totalPrice / (float) initalPrice;
+        profit = Math.round(profit * 10) / 10;
+        return profit;
+    }
     public static void main(String[] args) {
         // TODO: 프로그램 구현
     }
