@@ -1,14 +1,15 @@
 package lotto.domain;
 
-import static lotto.Input.PurchaseInput.inputPrice;
+import static lotto.input.PurchaseInput.inputPrice;
 
 import java.util.ArrayList;
 import java.util.List;
-import lotto.Output.Message;
+import lotto.output.Message;
 
 public class PurchaseLotto {
     public static int purchaseAmount;
     private static final int LOTTO_PRICE = 1000;
+
     public static List<List<Integer>> printPurchaseLottos() {
         List<List<Integer>> lottos = new ArrayList<>();
         getPurchaseAmount(inputPrice);
@@ -16,7 +17,7 @@ public class PurchaseLotto {
         return lottos;
     }
 
-    public static void getPurchaseAmount(String inputPrice) {
+    private static void getPurchaseAmount(String inputPrice) {
         purchaseAmount = Integer.parseInt(inputPrice) / LOTTO_PRICE;
         System.out.println(purchaseAmount + Message.PURCHASE_COUNT.getMessage());
     }

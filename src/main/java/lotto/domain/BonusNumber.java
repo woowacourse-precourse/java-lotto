@@ -1,6 +1,6 @@
 package lotto.domain;
 
-import static lotto.view.BonusInput.bonusInput;
+import static lotto.input.BonusInput.bonusInput;
 
 import java.util.List;
 

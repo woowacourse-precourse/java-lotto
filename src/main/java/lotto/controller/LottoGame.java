@@ -1,17 +1,25 @@
 package lotto.controller;
 
-import static lotto.view.LottoBuyer.purchaseAmount;
-import static lotto.view.LottoBuyer.purchaseLotto;
-import static lotto.view.BonusInput.*;
-import static lotto.view.WinningInput.*;
+import static lotto.domain.BonusNumber.bonus;
+import static lotto.domain.BonusNumber.getBonusResult;
+import static lotto.domain.PurchaseLotto.printPurchaseLottos;
+import static lotto.domain.PurchaseLotto.purchaseAmount;
+import static lotto.domain.WinningNumber.getWinningResult;
+import static lotto.domain.WinningNumber.winningCount;
+import static lotto.input.BonusInput.bonusInput;
+import static lotto.input.PurchaseInput.inputPurchasePrice;
+import static lotto.input.BonusInput.inputBonusNumber;
+import static lotto.input.WinningInput.inputWinningNumber;
+import static lotto.input.WinningInput.winningInput;
+import static lotto.input.WinningInput.winningNumbers;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.List;
 
-import lotto.domain.LottoRank;
-import lotto.domain.ErrorMessage;
-import lotto.view.Message;
+import lotto.output.LottoRank;
+import lotto.output.ErrorMessage;
+import lotto.output.Message;
 
 public class LottoGame {
     private static final int LOTTO_PRICE = 1000;
@@ -21,7 +29,8 @@ public class LottoGame {
     public void start() {
         List<List<Integer>> lottos;
         try {
-            lottos = purchaseLotto();
+            inputPurchasePrice();
+            lottos = printPurchaseLottos();
             inputWinningNumber();
             inputBonusNumber();
             validateDuplicate(winningInput, bonusInput);

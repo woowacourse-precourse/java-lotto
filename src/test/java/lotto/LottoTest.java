@@ -1,18 +1,18 @@
 package lotto;
 
+import static lotto.domain.BonusNumber.bonus;
+import static lotto.domain.BonusNumber.getBonusResult;
 import static lotto.domain.Lotto.createLotto;
-import static lotto.domain.LottoRank.getRankResult;
-import static lotto.view.BonusInput.bonus;
-import static lotto.view.BonusInput.bonusInput;
-import static lotto.view.BonusInput.getBonusResult;
-import static lotto.view.WinningInput.getWinningResult;
-import static lotto.view.WinningInput.winningCount;
+import static lotto.output.LottoRank.getRankResult;
+import static lotto.domain.WinningNumber.getWinningResult;
+import static lotto.domain.WinningNumber.winningCount;
+import static lotto.input.BonusInput.bonusInput;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import lotto.domain.LottoRank;
+import lotto.output.LottoRank;
 import lotto.domain.Lotto;
 
 import org.junit.jupiter.api.DisplayName;
