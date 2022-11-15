@@ -7,13 +7,14 @@ import java.util.List;
 
 import static lotto.domain.Lotto.issueLotto;
 import static lotto.view.InputView.*;
+import static lotto.view.OutputView.printLottoNumber;
 
 public class LottoService {
     public static void lottoService() {
         int count, bonus;
         Lotto inputLottoNumber;
         try {
-            count = inputMoney();
+            count = inputMoney() / 1000;
             inputLottoNumber = inputLottoNumber();
             bonus = inputBonusNumber();
         } catch (IllegalArgumentException e) {
@@ -21,6 +22,8 @@ public class LottoService {
             return;
         }
         List<Lotto> issuedLotteries = issueLotto(count);
+        printLottoNumber(count, issuedLotteries);
+
     }
 
     public static List<Integer> stringToIntList(String input) {
