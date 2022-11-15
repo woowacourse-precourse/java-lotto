@@ -34,7 +34,7 @@ public class WinningLotto {
     }
 
     private void checkFormatValid(String winningNumber) {
-        boolean isFormat = Pattern.matches("^([0-9],){5}[0-9]$", winningNumber);
+        boolean isFormat = Pattern.matches("^([0-9]+,){5}[0-9]+$", winningNumber);
         if (!isFormat) {
             throw new IllegalArgumentException(WINNING_NUMBERS_FORMAT_ERROR);
         }
