@@ -45,7 +45,7 @@ public class UserService {
         System.out.println(printString);
     }
 
-    public int stringToInter(String scanNum){
+    public int stringToInter(String scanNum) {
         int money;
         try {
             money = Integer.parseInt(scanNum);
@@ -56,7 +56,7 @@ public class UserService {
     }
 
     public void validateMoney(int money) {
-        if (0<money && money % LOTTO_PRICE == 0) return;
+        if (0 < money && money % LOTTO_PRICE == 0) return;
         throw new IllegalArgumentException(PAY_MONEY_ERROR);
     }
 

@@ -18,8 +18,8 @@ class LottoServiceTest {
     void generateNumsRangeTest() {
         Lotto lotto = lottoService.issueLotto();
         List<Integer> result = lotto.getNumbers().stream()
-            .filter(x -> x <= LOTTO_RANGE_END && LOTTO_RANGE_START <= x)
-            .collect(Collectors.toList());
+                .filter(x -> x <= LOTTO_RANGE_END && LOTTO_RANGE_START <= x)
+                .collect(Collectors.toList());
         assertThat(result).containsAll(lotto.getNumbers());
     }
 
@@ -28,7 +28,7 @@ class LottoServiceTest {
     void generateNumsDistinctTest() {
         Lotto lotto = lottoService.issueLotto();
         List<Integer> result = lotto.getNumbers().stream()
-            .distinct().collect(Collectors.toList());
+                .distinct().collect(Collectors.toList());
         assertThat(result).containsAll(lotto.getNumbers());
     }
 

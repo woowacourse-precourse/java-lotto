@@ -12,14 +12,14 @@ class WinningLottoServiceTest {
     @Test
     void scanWinningNums() {
         assertThatThrownBy(() -> winningLottoService.changeToList("dk"))
-            .isInstanceOf(IllegalArgumentException.class);
+                .isInstanceOf(IllegalArgumentException.class);
     }
 
     @DisplayName("보너스 번호로 입력한 숫자가 문자인 경우 에외가 발생한다.")
     @Test
     void scanNumbers() {
         assertThatThrownBy(() -> winningLottoService.changeToInteger("dk"))
-            .isInstanceOf(IllegalArgumentException.class);
+                .isInstanceOf(IllegalArgumentException.class);
     }
 
 }

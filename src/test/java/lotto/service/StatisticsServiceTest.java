@@ -28,12 +28,12 @@ class StatisticsServiceTest {
 
     static Stream<Arguments> generatedData() {
         return Stream.of(
-            Arguments.of(Arrays.asList(1, 2, 3, 4, 5, 6), Arrays.asList(1, 0, 0, 0, 0, 0)),
-            Arguments.of(Arrays.asList(1, 2, 3, 4, 5, 7), Arrays.asList(0, 1, 0, 0, 0, 0)),
-            Arguments.of(Arrays.asList(1, 2, 3, 4, 5, 8), Arrays.asList(0, 0, 1, 0, 0, 0)),
-            Arguments.of(Arrays.asList(1, 2, 3, 4, 9, 10), Arrays.asList(0, 0, 0, 1, 0, 0)),
-            Arguments.of(Arrays.asList(1, 2, 3, 10, 11, 12), Arrays.asList(0, 0, 0, 0, 1, 0)),
-            Arguments.of(Arrays.asList(1, 2, 24, 34, 44, 45), Arrays.asList(0, 0, 0, 0, 0, 1))
+                Arguments.of(Arrays.asList(1, 2, 3, 4, 5, 6), Arrays.asList(1, 0, 0, 0, 0, 0)),
+                Arguments.of(Arrays.asList(1, 2, 3, 4, 5, 7), Arrays.asList(0, 1, 0, 0, 0, 0)),
+                Arguments.of(Arrays.asList(1, 2, 3, 4, 5, 8), Arrays.asList(0, 0, 1, 0, 0, 0)),
+                Arguments.of(Arrays.asList(1, 2, 3, 4, 9, 10), Arrays.asList(0, 0, 0, 1, 0, 0)),
+                Arguments.of(Arrays.asList(1, 2, 3, 10, 11, 12), Arrays.asList(0, 0, 0, 0, 1, 0)),
+                Arguments.of(Arrays.asList(1, 2, 24, 34, 44, 45), Arrays.asList(0, 0, 0, 0, 0, 1))
         );
     }
 
