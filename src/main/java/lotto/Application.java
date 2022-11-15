@@ -15,23 +15,17 @@ import static lotto.GenerateNumber.generateSixRandomNumbers;
 
 public class Application {
     public static void main(String[] args) {
-        //GenerateNumber generatingNumber = new GenerateNumber();
-        //Calculation calculation = new Calculation();
-
-        // 사용자에게 구입금액 입력 받기
+        Calculation calculation = new Calculation();
         System.out.println("구입금액을 입력해 주세요.");
         int purchaseAmount = receivePurchaseAmount();
         List<Lotto> purchasedLotties = generatePurchasedLottoBundle(purchaseAmount);
         printPurchasedLotties(purchasedLotties);
-        // 당첨번호 입력받기
         System.out.println("당첨 번호를 입력해 주세요.");
         List<Integer> winningNumber = receiveWinningNumber();
-        // 보너스 번호 입력받기
         System.out.println("보너스 번호를 입력해 주세요.");
         int bonusNumber = receiveBonusNumber();
-        System.out.println(winningNumber);
-        System.out.println(bonusNumber);
-
+        List<Integer> prizeResult = calculation.calculateWinningStatistics(purchasedLotties,winningNumber,bonusNumber);
+        printPrizeStatistics(prizeResult,purchaseAmount);
     }
 
     public static int receivePurchaseAmount(){
@@ -78,7 +72,7 @@ public class Application {
     public static List<Integer> receiveWinningNumber(){
         String winningNumber = Console.readLine();
         System.out.printf("\n");
-        //validateWinningNumber(winningNumber);
+        validateWinningNumber(winningNumber);
         List<String> winningNumbers = Arrays.asList(winningNumber.split(","));
         List<Integer> finalWinningNumbers = new ArrayList<>();
         for (int index = 0; index < winningNumbers.size(); index++){
@@ -88,16 +82,16 @@ public class Application {
         return finalWinningNumbers;
     }
 
-    public static void validateWinningNumber(List<String> winningNumber){
-        for (int index = 0; index < winningNumber.size(); index++) {
+    public static void validateWinningNumber(String winningNumber){
+        for (int index = 0; index < winningNumber.length(); index++) {
             if (index % 2 == 0) {
-                if (!(winningNumber.get(index).equals(","))) {
+                if (!(String.valueOf(winningNumber.charAt(index)).equals(","))) {
                     throw new IllegalArgumentException("[ERROR] 쉼표로 구분하여 숫자를 하나씩 입력해주세요.");
                 }
             }
             if (index % 2 != 0) {
-                validIsComposedOfNumber(winningNumber.get(index));
-                int Number = Integer.valueOf(winningNumber.get(index));
+                validIsComposedOfNumber(String.valueOf(winningNumber.charAt(index)));
+                int Number = Integer.valueOf(winningNumber.charAt(index));
                 if (!(Number >= 1 && Number <= 45)) {
                     throw new IllegalArgumentException("[ERROR] 1~45 범위의 숫자만 입력해주세요.");
                 }
@@ -128,6 +122,18 @@ public class Application {
         if (!(numbers >= 1 && numbers <= 45)){
             throw new IllegalArgumentException("[ERROR] 1~45 범위의 하나의 숫자만 입력해주세요.");
         }
+    }
+    public static void printPrizeStatistics(List<Integer> prizeResult, int purchaseAmount){
+        float yeild = Calculation.calculateYield(prizeResult.get(6),purchaseAmount);
+        System.out.println("당첨 통계");
+        System.out.println("---");
+        System.out.printf("3개 일치 (5,000원) - %d개\n",prizeResult.get(5));
+        System.out.printf("4개 일치 (50,000원) - %d개\n",prizeResult.get(4));
+        System.out.printf("5개 일치 (1,500,000원) - %d개\n",prizeResult.get(3));
+        System.out.printf("5개 일치, 보너스 볼 일치 (30,000,000원) - %d개\n",prizeResult.get(2));
+        System.out.printf("6개 일치 (2,000,000,000원) - %d개\n",prizeResult.get(1));
+        System.out.printf(String.format("총 수익률은 %.1f",yeild));
+        System.out.println("%입니다.");
     }
 
 }

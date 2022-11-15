@@ -1,5 +1,6 @@
 package lotto;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -62,14 +63,16 @@ public class Calculation {
 
     public static List<Integer> calculateWinningStatistics(List<Lotto> lottoBundle, List<Integer> prizeNumber,
                                                            int bonusNumber){
-        List<Integer> eachNumberOfRank = List.of(0,0,0,0,0);
+        List<Integer> eachNumberOfRank = new ArrayList<>();
+        for (int number = 0; number < 6; number++){
+            eachNumberOfRank.add(0);
+        }
         int totalPrizeMoney = 0;
-        float yeild = 0;
         for (int number = 0; number < lottoBundle.size(); number++ ){
             List<Integer> lotto = lottoBundle.get(number).getOneLotto();
             InformationOfRank rank = calculateRank(lotto,prizeNumber,bonusNumber);
-            int rankCount = eachNumberOfRank.get(rank.rank-1);
-            eachNumberOfRank.set(rank.rank-1,rankCount+1);
+            int rankCount = eachNumberOfRank.get(rank.rank);
+            eachNumberOfRank.set(rank.rank,rankCount);
             totalPrizeMoney += rank.prizeMoney;
         }
         eachNumberOfRank.add(totalPrizeMoney);
