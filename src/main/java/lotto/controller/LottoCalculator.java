@@ -7,7 +7,6 @@ import java.util.List;
 public class LottoCalculator {
     public static int rankOfThisLotto(List<Integer> myLotto, List<Integer> winningLotto, int bonusNumber) {
         int count = 0;
-        int remainNumber;
         for (int number : myLotto) {
             if (winningLotto.contains(number)) {
                 count++;
