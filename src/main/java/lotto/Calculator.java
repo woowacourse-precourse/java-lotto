@@ -12,7 +12,7 @@ public class Calculator {
     }
 
     public double profit() {
-        int benefit = 0;
+        long benefit = 0;
 
         for (Prize prize : prizes) {
             benefit += prize.reward();
