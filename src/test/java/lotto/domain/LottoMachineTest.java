@@ -10,9 +10,9 @@ class LottoMachineTest {
 
     private final LottoMachine lottoMachine = new LottoMachine();
 
-    @DisplayName("로또 번호의 개수가 6개가 넘어가면 예외가 발생한다.")
+    @DisplayName("로또 번호의 개수가 6개가 아니면 예외가 발생한다.")
     @Test
-    void createLottoByOverSize() {
+    void createLottoByOverSizeOrUnderSize() {
         assertThatThrownBy(() -> lottoMachine.validateLottoNumber(List.of(1, 2, 3, 4, 5, 6, 7)))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("6개의 숫자가 아닙니다.");
