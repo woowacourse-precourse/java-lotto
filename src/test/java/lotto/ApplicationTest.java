@@ -1,6 +1,8 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import java.util.HashMap;
+import java.util.Map;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -12,6 +14,7 @@ import static lotto.Application.*;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class ApplicationTest extends NsTest {
+
     private static final String ERROR_MESSAGE = "[ERROR]";
 
     @Test
@@ -64,7 +67,7 @@ class ApplicationTest extends NsTest {
 
     @DisplayName("로또 번호와 당첨 번호에서 같은 숫자의 개수를 센다")
     @Test
-    void matchWinningNumbersTest(){
+    void matchWinningNumbersTest() {
         Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
         List<Integer> answer = List.of(1, 3, 19, 20, 21, 22);
         int match = 2;
@@ -72,10 +75,37 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void matchBonusTest(){
+    void matchBonusTest() {
         Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
         String bonus = "4";
         boolean result = true;
         assertThat(matchBonus(lotto, bonus)).isEqualTo(result);
+    }
+
+    @Test
+    void RankingTest() {
+        List<Lotto> lottoTickets = List.of(
+            new Lotto(List.of(1, 2, 3, 4, 5, 6)),
+            new Lotto(List.of(1, 2, 3, 4, 5, 10)),
+            new Lotto(List.of(1, 2, 3, 4, 5, 7)),
+            new Lotto(List.of(1, 2, 3, 4, 5, 9)),
+            new Lotto(List.of(1, 2, 7, 8, 9, 10))
+        );
+        List<Integer> winningNumbers = List.of(1, 2, 3, 4, 5, 6);
+        String bonus = "7";
+
+        Map<RankEnum, Integer> history = calculateWinning(lottoTickets, winningNumbers, bonus);
+
+        Map<RankEnum, Integer> result = new HashMap<>();
+        result.put(RankEnum.RANK1, 1);
+        result.put(RankEnum.RANK2, 1);
+        result.put(RankEnum.RANK3, 2);
+        result.put(RankEnum.RANK4, 0);
+        result.put(RankEnum.RANK5, 0);
+        result.put(RankEnum.NOTHING, 1);
+
+        for (RankEnum rank : history.keySet()){
+            assertThat(history.get(rank)).isEqualTo(result.get(rank));
+        }
     }
 }
