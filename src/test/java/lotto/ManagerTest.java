@@ -37,6 +37,14 @@ public class ManagerTest extends NsTest {
         assertThat(output()).contains(ERROR_MESSAGE);
     }
 
+    @DisplayName("예외: 당첨 번호에 중복값이 있는 경우")
+    @Test
+    void hasDuplicatedWin() {
+        run("1,2,3,3,4,5");
+        manager.setWin();
+        assertThat(output()).contains(ERROR_MESSAGE);
+    }
+
     @Override
     public void runMain() {
         return;
