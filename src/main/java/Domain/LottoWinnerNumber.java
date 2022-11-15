@@ -1,9 +1,19 @@
 package Domain;
 
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+
 public class LottoWinnerNumber {
 
     public LottoWinnerNumber(String winnerLottoNumber) {
         validInputWinNumber(winnerLottoNumber);
+    }
+
+    public List<Integer> convertWinnerNumber(String winnerLottoNumber) {
+        return Arrays.stream(winnerLottoNumber.split(","))
+                .map(Integer::parseInt)
+                .collect(Collectors.toList());
     }
 
     private void validInputWinNumber(String winnerLottoNumber) {
