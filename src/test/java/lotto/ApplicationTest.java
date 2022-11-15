@@ -9,6 +9,8 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
 import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 import java.util.List;
@@ -117,6 +119,15 @@ class ApplicationTest extends NsTest {
         ByteArrayInputStream in = new ByteArrayInputStream(input.getBytes(StandardCharsets.UTF_8));
         System.setIn(in);
         Assertions.assertThat(Application.askBonusNumber()).isEqualTo(10);
+    }
+
+    @Test
+    @DisplayName("보너스 번호를 올바르게 입력했을 때 숫자를 반환하는지 확인한다.")
+    void printProfit() {
+        ByteArrayOutputStream output = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(output));
+        Application.printProfit(2000L, 4000000000L);
+        Assertions.assertThat(output.toString()).isEqualTo("총 수익률은 2000000.0%입니다.\n");
     }
 
 
