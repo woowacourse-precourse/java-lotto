@@ -1,6 +1,7 @@
 package lotto;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class CalculatingLotto {
@@ -57,11 +58,26 @@ public class CalculatingLotto {
 
     public List<Integer> calculateAllLotto(List<Integer> winningLotto, int bonus, List<List<Integer>> allLotto){
         List<Integer> allRank=new ArrayList<>();
-        for(int index=0;index<allLotto.size();index++){
+        int index=0;
+        for(index=0;index<allLotto.size();index++){
             int rank=calculateLottoRank(winningLotto,bonus,allLotto.get(index));
             allRank.add(rank);
         }
+
         return allRank;
+    }
+
+    public List<Integer> countRank(List<Integer> allRank){
+        int[] rankCount=new int[5];
+        int index=0;
+        for(index=0;index<allRank.size();index++){
+            rankCount[allRank.get(index)-1]++;
+        }
+        List<Integer> rankingCount= new ArrayList<>();
+        for(index=0;index<rankCount.length;index++){
+            rankingCount.add(rankCount[index]);
+        }
+        return rankingCount;
     }
 
 }
