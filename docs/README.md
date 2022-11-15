@@ -13,9 +13,11 @@
     - dto
       - LottoDto: 입력 받을 때 생성되는 로또 숫자
       - LottoBundleDto: 액수를 입력해 생성되는 로또 묶음
+      - LottoBundleResponseDto: 로또 구매 결과 반환용
       - LottoWinNumberDto: 입력한 당첨 번호
       - LottoBonusNumberDto: 입력한 보너스 번호
-      - LottoQueryDto: 구매 로또 조회용도
+      - LottoQueryDto: 로또 당첨 결과 조회용
+      - LottoQueryResponseDto: 로또 당첨 결과 반환용
     - entity
       - Account: 유저 ID 저장용
       - Lotto: 발행된 로또 번호 저장용
@@ -48,9 +50,9 @@
       - .setBonusNumber(): 보너스 번호를 정합니다.
       - .finishRound(): 현재 진행중인 회차를 종료합니다.
   - #### view
-    - LottoBundleView: 구매한 로또의 번호를 알려줍니다.
+    - LottoBundleResponseView: 구매한 로또의 번호를 알려줍니다.
       - .stringify(): 로또 번호를 출력 형식에 맞게 문자열화 합니다.
-    - LottoResultView: 로또 당첨 내역을 알려줍니다.
+    - LottoQueryResponseView: 로또 당첨 내역을 알려줍니다.
       - .stringify(): 당첨 내역을 출력 형식에 맞게 문자열화 합니다.
   - #### utils
     - InputReader

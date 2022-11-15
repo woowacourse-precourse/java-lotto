@@ -4,24 +4,26 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.StringJoiner;
 import java.util.concurrent.atomic.AtomicInteger;
+import lotto.data.dto.LottoQueryResponseDto;
 import lotto.type.ConstantNumberType;
 import lotto.type.LottoResultType;
 import lotto.type.MessageType;
 import utils.DecimalFormatter;
 
-public class LottoResultView {
+public class LottoQueryResponseView {
 
-    public LottoResultView() {
+    public LottoQueryResponseView() {
     }
 
-    public String stringify(HashMap<LottoResultType, Integer> myResult) {
+    public String stringify(LottoQueryResponseDto lottoQueryResponseDto) {
+        HashMap<LottoResultType, Integer> lottoResults = lottoQueryResponseDto.getLottoResults();
         StringJoiner stringJoiner = new StringJoiner("\n");
         stringJoiner.add(MessageType.RESULT_HEAD.getMessage());
         Arrays.stream(LottoResultType.values())
                 .limit(LottoResultType.values().length-1)
-                .map(resultType -> getEachResultMessage(myResult, resultType))
+                .map(resultType -> getEachResultMessage(lottoResults, resultType))
                 .forEach(stringJoiner::add);
-        stringJoiner.add(getYield(myResult));
+        stringJoiner.add(getYield(lottoResults));
         return stringJoiner.toString();
     }
 

@@ -1,6 +1,5 @@
 package lotto.data.dto;
 
-import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -13,11 +12,10 @@ import utils.Validator.StringValidator;
 public class LottoBundleDto {
 
     private Long ownerId;
-    private Long roundId;
-    private final List<LottoDto> lottos;
+    private final List<LottoDto> lottoDtos;
 
-    public LottoBundleDto(List<LottoDto> lottos) {
-        this.lottos = Collections.unmodifiableList(lottos);
+    public LottoBundleDto(List<LottoDto> lottoDtos) {
+        this.lottoDtos = lottoDtos;
     }
 
     public static LottoBundleDto createWithInput(String input) {
@@ -61,19 +59,11 @@ public class LottoBundleDto {
         return ownerId;
     }
 
-    public Long getRoundId() {
-        return roundId;
-    }
-
-    public List<LottoDto> getLottos() {
-        return lottos;
+    public List<LottoDto> getLottoDtos() {
+        return lottoDtos;
     }
 
     public void setOwnerId(Long ownerId) {
         this.ownerId = ownerId;
-    }
-
-    public void setRoundId(Long roundId) {
-        this.roundId = roundId;
     }
 }

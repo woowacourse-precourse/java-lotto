@@ -3,16 +3,17 @@ package lotto.controller;
 import java.util.HashMap;
 import lotto.data.dto.BonusNumberDto;
 import lotto.data.dto.LottoBundleDto;
+import lotto.data.dto.LottoBundleResponseDto;
 import lotto.data.dto.LottoQueryDto;
+import lotto.data.dto.LottoQueryResponseDto;
 import lotto.data.dto.WinNumberDto;
 import lotto.service.AdminService;
-import lotto.type.LottoResultType;
 import lotto.type.MessageType;
 import lotto.type.StepType;
 import lotto.service.UserService;
 import lotto.service.AccountService;
-import lotto.view.LottoBundleView;
-import lotto.view.LottoResultView;
+import lotto.view.LottoBundleResponseView;
+import lotto.view.LottoQueryResponseView;
 import utils.InputReader;
 import utils.Logger;
 
@@ -22,8 +23,8 @@ public class LottoController {
     private final AccountService accountService;
     private final UserService userService;
     private final AdminService adminService;
-    private final LottoBundleView lottoBundleView;
-    private final LottoResultView lottoResultView;
+    private final LottoBundleResponseView lottoBundleResponseView;
+    private final LottoQueryResponseView lottoQueryResponseView;
     private final HashMap<StepType, Runnable> stepMapper;
     private long userId;
     private long roundId;
@@ -33,8 +34,8 @@ public class LottoController {
         accountService = new AccountService();
         userService = new UserService();
         adminService = new AdminService();
-        lottoBundleView = new LottoBundleView();
-        lottoResultView = new LottoResultView();
+        lottoBundleResponseView = new LottoBundleResponseView();
+        lottoQueryResponseView = new LottoQueryResponseView();
         stepMapper = mapStepTypes();
     }
 
@@ -57,9 +58,9 @@ public class LottoController {
         Logger.log(MessageType.BUY.getMessage());
         LottoBundleDto lottoBundleDto = LottoBundleDto.createWithInput(InputReader.readLine());
         lottoBundleDto.setOwnerId(userId);
-        userService.purchaseLottoBundle(lottoBundleDto);
-        roundId = lottoBundleDto.getRoundId();
-        Logger.log(lottoBundleView.stringify(lottoBundleDto));
+        LottoBundleResponseDto lottoBundleResponseDto = userService.purchaseLottoBundle(lottoBundleDto);
+        roundId = lottoBundleResponseDto.getRoundId();
+        Logger.log(lottoBundleResponseView.stringify(lottoBundleResponseDto));
         currentStep = currentStep.getNextStep();
     }
 
@@ -80,8 +81,8 @@ public class LottoController {
     private void giveResult() {
         adminService.finishRound();
         LottoQueryDto lottoQueryDto = new LottoQueryDto(roundId, userId);
-        HashMap<LottoResultType, Integer> myResult = userService.getMyResult(lottoQueryDto);
-        Logger.log(lottoResultView.stringify(myResult));
+        LottoQueryResponseDto lottoQueryResponseDto = userService.getMyResult(lottoQueryDto);
+        Logger.log(lottoQueryResponseView.stringify(lottoQueryResponseDto));
         currentStep = currentStep.getNextStep();
     }
 
