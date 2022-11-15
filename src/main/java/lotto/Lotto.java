@@ -23,7 +23,7 @@ public class Lotto {
         this.numbers = numbers;
     }
 
-    private void validateBetween(List<Integer> numbers) {
+    public void validateBetween(List<Integer> numbers) {
         for (Integer lotto : numbers) {
             if (!(lotto >= START_BETWEEN_NUMBER && lotto <= LAST_BETWEEN_NUMBER)) {
                 throw new IllegalArgumentException(ExceptionMessage.NUMBERS_BETWEEN);
@@ -31,13 +31,13 @@ public class Lotto {
         }
     }
 
-    private void validate(List<Integer> numbers) {
+    public void validate(List<Integer> numbers) {
         if (numbers.size() != LOTTO_SIZE_NUM) {
             throw new IllegalArgumentException(ExceptionMessage.DUPLICATION_INPUT);
         }
     }
 
-    private void validateDuplicate(List<Integer> numbers) {
+    public void validateDuplicate(List<Integer> numbers) {
         HashSet<Integer> redundancyRemoval = new HashSet<>((numbers));
 
         if (redundancyRemoval.size() != DIGIT_NUM) {
@@ -45,7 +45,7 @@ public class Lotto {
         }
     }
 
-    private void validateNumbers(List<Integer> numbers) {
+    public void validateNumbers(List<Integer> numbers) {
         if (numbers.size() != DIGIT_NUM) {
             throw new IllegalArgumentException(ExceptionMessage.NOT_INPUT);
         }
