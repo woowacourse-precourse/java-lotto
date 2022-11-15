@@ -9,9 +9,9 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
 class InputValidatorTest {
-    private static final String ONLY_NUMBER = "-123," + ExceptionMessage.ERROR + ExceptionMessage.NON_NUMERIC_INPUT;
-    private static final String START_WITH_ZERO = "012," + ExceptionMessage.ERROR + ExceptionMessage.START_WItH_ZERO;
-    private static final String NO_ZERO = "0," + ExceptionMessage.ERROR + ExceptionMessage.ZERO_INPUT;
+    private static final String ONLY_NUMBER = "-123," + ExceptionMessage.NON_NUMERIC_INPUT;
+    private static final String START_WITH_ZERO = "012," + ExceptionMessage.START_WItH_ZERO;
+    private static final String NO_ZERO = "0," + ExceptionMessage.ZERO_INPUT;
 
     private final InputValidator inputValidator = new InputValidator();
 

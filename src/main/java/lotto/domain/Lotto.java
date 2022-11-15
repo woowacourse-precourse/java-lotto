@@ -23,10 +23,10 @@ public class Lotto {
 
     private void validate(List<Integer> numbers) {
         if (numbers.size() != NumberUtil.LOTTO_NUMBER_COUNT) {
-            throw new IllegalArgumentException(ExceptionMessage.ERROR + ExceptionMessage.NUMERIC_LENGTH);
+            throw new IllegalArgumentException(ExceptionMessage.NUMERIC_LENGTH);
         }
         if (isDuplicated(numbers)) {
-            throw new IllegalArgumentException(ExceptionMessage.ERROR + ExceptionMessage.DUPLICATED_NUMBER);
+            throw new IllegalArgumentException(ExceptionMessage.DUPLICATED_NUMBER);
         }
     }
 

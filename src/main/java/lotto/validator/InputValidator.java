@@ -10,13 +10,13 @@ public class InputValidator {
 
     public boolean validateInputPrice(String inputPrice) {
         if (!inputPrice.matches(RegularExpressionUtil.ONLY_NUMBER_CHECK)) {
-            throw new IllegalArgumentException(ExceptionMessage.ERROR + ExceptionMessage.NON_NUMERIC_INPUT);
+            throw new IllegalArgumentException(ExceptionMessage.NON_NUMERIC_INPUT);
         }
         if (isZero(Integer.parseInt(inputPrice))) {
-            throw new IllegalArgumentException(ExceptionMessage.ERROR + ExceptionMessage.ZERO_INPUT);
+            throw new IllegalArgumentException(ExceptionMessage.ZERO_INPUT);
         }
         if (isStartWithZero(inputPrice.charAt(FIRST_INDEX))) {
-            throw new IllegalArgumentException(ExceptionMessage.ERROR + ExceptionMessage.START_WItH_ZERO);
+            throw new IllegalArgumentException(ExceptionMessage.START_WItH_ZERO);
         }
         return isNotValidPrice(Integer.parseInt(inputPrice));
     }

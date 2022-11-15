@@ -12,13 +12,13 @@ public class WinningNumberValidator {
 
     public void validateLottoNumber(String inputLottoNumber) {
         if (!inputLottoNumber.matches(RegularExpressionUtil.LOTTO_NUMBER_CHECK)) {
-            throw new IllegalArgumentException(ExceptionMessage.ERROR + ExceptionMessage.WINNING_FORMAT_ERROR);
+            throw new IllegalArgumentException(ExceptionMessage.WINNING_FORMAT_ERROR);
         }
         if (isDuplicatedNumber(List.of(inputLottoNumber.split(MessageFormatUtil.COMMA)))) {
-            throw new IllegalArgumentException(ExceptionMessage.ERROR + ExceptionMessage.DUPLICATED_NUMBER);
+            throw new IllegalArgumentException(ExceptionMessage.DUPLICATED_NUMBER);
         }
         if (isOutOfBounds(List.of(inputLottoNumber.split(MessageFormatUtil.COMMA)))) {
-            throw new IllegalArgumentException(ExceptionMessage.ERROR + ExceptionMessage.OUT_OF_BOUNDS);
+            throw new IllegalArgumentException(ExceptionMessage.OUT_OF_BOUNDS);
         }
     }
 
@@ -49,13 +49,13 @@ public class WinningNumberValidator {
 
     public void validateBonusNumber(String bonusNumber, List<Integer> numbers) {
         if (!bonusNumber.matches(RegularExpressionUtil.BONUS_NUMBER_CHECK)) {
-            throw new IllegalArgumentException(ExceptionMessage.ERROR + ExceptionMessage.NON_NUMERIC_INPUT);
+            throw new IllegalArgumentException(ExceptionMessage.NON_NUMERIC_INPUT);
         }
         if (Integer.parseInt(bonusNumber) < MINIMUM_NUMBER || Integer.parseInt(bonusNumber) > MAXIMUM_NUMBER) {
-            throw new IllegalArgumentException(ExceptionMessage.ERROR + ExceptionMessage.OUT_OF_BOUNDS);
+            throw new IllegalArgumentException(ExceptionMessage.OUT_OF_BOUNDS);
         }
         if (numbers.contains(Integer.parseInt(bonusNumber))) {
-            throw new IllegalArgumentException(ExceptionMessage.ERROR + ExceptionMessage.DUPLICATED_NUMBER);
+            throw new IllegalArgumentException(ExceptionMessage.DUPLICATED_NUMBER);
         }
     }
 }
