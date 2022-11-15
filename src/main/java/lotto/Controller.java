@@ -26,15 +26,16 @@ public class Controller {
         view.print(Text.BUDGET_INPUT);
         String budgetInput = Console.readLine();
         user.setBudget(toInteger(budgetInput));
-
     }
 
     private Integer toInteger(String budgetInput){
         try {
-            return Integer.parseInt(budgetInput);
+            Integer budget = Integer.parseInt(budgetInput);
+            return budget;
         }
         catch (Exception exception){
-            throw new IllegalArgumentException("[ERROR] 이 입력은 정수여야 합니다.");
+            System.out.print("[ERROR]");
+            throw new IllegalArgumentException();
         }
     }
 
@@ -49,9 +50,8 @@ public class Controller {
             return string.split(",");
         }
         catch (Exception exception){
-            throw new IllegalArgumentException(
-                    "[ERROR] 이 입력은 ','로 구분되는 정수들의 나열이어야 합니다."
-            );
+            System.out.println("[ERROR] 이 입력은 ','로 구분되는 정수들의 나열이어야 합니다.");
+            throw new IllegalArgumentException();
         }
     }
 
@@ -65,9 +65,8 @@ public class Controller {
             return winningNumbers;
         }
         catch (Exception exception){
-            throw new IllegalArgumentException(
-                    "[ERROR] 이 입력은 ','로 구분되는 정수들의 나열이어야 합니다."
-            );
+            System.out.println("[ERROR] 이 입력은 ','로 구분되는 정수들의 나열이어야 합니다.");
+            throw new IllegalArgumentException();
         }
     }
 
