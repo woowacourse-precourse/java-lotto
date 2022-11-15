@@ -6,11 +6,13 @@ public class ValidateNumber {
     private static final String NOT_1000_UNIT_MESSAGE = "[ERROR] 구매 금액은 1000원 단위여야 합니다.";
     private static final Integer STANDARD_MONEY = 1000;
 
-    public static void validatePurchaseMoney(String purchaseMoney) {
+    public static Integer validatePurchaseMoney(String purchaseMoney) {
         Integer money = Integer.valueOf(purchaseMoney);
         isOverStandardMoney(money);
         isUnitStandardMoney(money);
         isNumeric(purchaseMoney);
+
+        return money;
     }
 
     private static void isOverStandardMoney(Integer purchaseMoney) {
