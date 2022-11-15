@@ -103,4 +103,8 @@ public class LottoService {
     public List<Lotto> getLotteries() {
         return lotteries;
     }
+
+    public Map<Integer, Integer> getMatches() {
+        return matches;
+    }
 }
