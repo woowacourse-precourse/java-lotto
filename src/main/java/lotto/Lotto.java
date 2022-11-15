@@ -25,6 +25,16 @@ public class Lotto {
         return lottoNumbers;
     }
 
+    public int countNumberOfMatchesWith(Lotto anotherLotto) {
+        int count = 0;
+        for (LottoNumber number : anotherLotto.getNumbers()) {
+            if (numbers.contains(number)) {
+                count++;
+            }
+        }
+        return count;
+    }
+
 
     private void validate(List<Integer> numbers) {
         validateLength(numbers);
