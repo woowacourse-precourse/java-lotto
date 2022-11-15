@@ -32,5 +32,10 @@ public class LottoController {
         System.out.println(lottosCount + "개를 구매했습니다.");
         return lottosCount;
     }
+    static List<Integer> createLottoNumber(){
+        List<Integer> lottoNumbers = new ArrayList<>(Randoms.pickUniqueNumbersInRange(1,45,6));
+        Collections.sort(lottoNumbers);
+        return lottoNumbers;
+    }
 
 }
