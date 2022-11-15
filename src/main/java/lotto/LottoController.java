@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.regex.Pattern;
 
@@ -20,10 +21,10 @@ public class LottoController {
         for (int i=0;i<count;i++){
             System.out.println(lottos.get(i).getNumbers());
         }
-        getInput();
+        getInput(lottos);
     }
 
-    public void getInput() {
+    public void getInput(List<Lotto> lottos) {
         System.out.println("당첨 번호를 입력해 주세요.");
         String input = Console.readLine();
         inputValueVerificate(input);
@@ -35,6 +36,7 @@ public class LottoController {
         System.out.println("보너스 번호를 입력해 주세요.");
         String bonuseInput = Console.readLine();
         bonusValidate(bonuseInput, userLotto);
+        calculateLotto(lottos, userLotto.getNumbers(), Integer.parseInt(bonuseInput));
     }
 
     public List<Lotto> makeLotto(int count){
@@ -44,6 +46,46 @@ public class LottoController {
             lottos.add(lotto);
         }
         return lottos;
+    }
+
+    public void calculateLotto(List<Lotto> lottos, List<Integer> userLotto, int bonusNum) {
+        LottoService lottoService = new LottoService();
+        List<Integer> result = new ArrayList<>();
+        for (int i=0;i<lottos.size();i++){
+            int count = lottoService.matchNumbers(lottos.get(i).getNumbers(), userLotto);
+            boolean isBonusMatch = lottoService.matchBonus(lottos.get(i).getNumbers(), bonusNum);
+            if (count == 5 && isBonusMatch) {
+               count = 2;
+            }
+            result.add(count);
+        }
+    }
+
+    public List<Integer> winningResult(List<Integer> result){
+        List<Integer> answer = Arrays.asList(0, 0, 0, 0, 0);
+        for (Integer number:result){
+            if (number == 3) {
+                Integer tmp = answer.get(0);
+                answer.set(0, tmp + 1);
+            }
+            if (number == 4) {
+                Integer tmp = answer.get(1);
+                answer.set(1, tmp + 1);
+            }
+            if (number == 5) {
+                Integer tmp = answer.get(2);
+                answer.set(2, tmp + 1);
+            }
+            if (number == 2){
+                Integer tmp = answer.get(3);
+                answer.set(3, tmp + 1);
+            }
+            if (number == 6) {
+                Integer tmp = answer.get(4);
+                answer.set(4, tmp + 1);
+            }
+        }
+        return answer;
     }
 
     public void bonusValidate(String input, Lotto userLotto) {
