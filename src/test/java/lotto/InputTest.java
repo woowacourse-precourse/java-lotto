@@ -1,10 +1,16 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import controller.InputController;
 import resources.Error;
 import controller.Validator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
+import java.util.Arrays;
+import java.util.List;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -44,6 +50,17 @@ public class InputTest extends NsTest {
         String[] winningNumbers = {"1","2","3","4","5"};
         assertThatThrownBy(() -> validator.isCorrectSize(winningNumbers,Error.SIZE))
                 .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("당첨 번호 입력할 때 쉼표로 구분해서 입력받았는지 확인")
+    @Test
+    void isCorrectlyEnter() {
+        InputController inputController = new InputController();
+        String lottoNumber = "3,6,9,12,15,18";
+        InputStream input = new ByteArrayInputStream(lottoNumber.getBytes());
+        System.setIn(input);
+        List<Integer> testLottoNumber = Arrays.asList(3,6,9,12,15,18);
+        assertThat(inputController.inputWinningNumber()).isEqualTo(testLottoNumber);
     }
 
     @Override
