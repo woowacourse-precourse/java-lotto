@@ -84,7 +84,7 @@ public class LottoService {
     }
 
     private String getLottoRate() {
-        DecimalFormat RateFormat = new DecimalFormat("###,###.0");
+        DecimalFormat RateFormat = new DecimalFormat("###,##0.0");
         return RateFormat.format((totalProfit / buyMoney) * DECIMAL_PLACE);
     }
 
