@@ -16,7 +16,7 @@ public class LottoAutomaton {
         return numbers;
     }
 
-    public int getCount(String amount) {
+    public int getQuantity(String amount) {
         return Integer.parseInt(amount) / PRICE;
     }
 

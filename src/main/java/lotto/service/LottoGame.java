@@ -18,7 +18,7 @@ public class LottoGame {
     }
 
     public int calculateQuantity(String amount) {
-        return automatonRepository.getCount(amount);
+        return automatonRepository.getQuantity(amount);
     }
 
     public List<Lotto> createLottoTickets(String amount) {

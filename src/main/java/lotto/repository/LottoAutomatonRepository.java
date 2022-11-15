@@ -15,8 +15,8 @@ public class LottoAutomatonRepository extends LottoAutomaton {
     }
 
     @Override
-    public int getCount(String amount) {
-        return super.getCount(amount);
+    public int getQuantity(String amount) {
+        return super.getQuantity(amount);
     }
 
     @Override

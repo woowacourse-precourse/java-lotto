@@ -25,7 +25,7 @@ class LottoAutomatonTest {
         String amount = "10000";
 
         // when
-        int count = automaton.getCount(amount);
+        int count = automaton.getQuantity(amount);
 
         // then
         assertThat(count).isEqualTo(10);
