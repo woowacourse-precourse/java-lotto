@@ -6,14 +6,17 @@ import java.util.*;
 
 public class Lotto {
     private final List<Integer> numbers;
-
+    public static final int TICKET_PRICE = 1000;
+    public static final int MIN = 1;
+    public static final int MAX = 45;
+    public static final int SELECTED_NUMBER = 6;
     public Lotto(List<Integer> numbers) {
         validate(numbers);
         this.numbers = numbers;
     }
 
     private void validate(List<Integer> numbers) {
-        if (numbers.size() != 6) {
+        if (numbers.size() != SELECTED_NUMBER) {
             throw new IllegalArgumentException();
         }
         Set<Integer> checkDupe = new HashSet<Integer>(numbers);
@@ -21,7 +24,7 @@ public class Lotto {
             throw new IllegalArgumentException("로또 숫자들은 달라야 합니다");
         }
         for (Integer i: numbers) {
-            if (i < 1 || i > 45) {
+            if (i < MIN || i > MAX) {
                 throw new IllegalArgumentException("[ERROR] 로또 숫자들은 1~45 의 범위 안에 있어야합니다.");
             }
         }
@@ -32,7 +35,7 @@ public class Lotto {
         System.out.printf("%d개를 구매했습니다.%n", count);
         List<List<Integer>> lottos = new ArrayList<>();
         for (int i=0; i < count; i++) {
-            List<Integer> lotto = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+            List<Integer> lotto = Randoms.pickUniqueNumbersInRange(MIN, MAX, SELECTED_NUMBER);
             lottos.add(lotto);
             System.out.println(lotto);
         }
@@ -40,17 +43,17 @@ public class Lotto {
     }
 
     public static void checkBuyAmount(Integer amount) {
-        if (amount % 1000 != 0) {
-            throw new IllegalArgumentException("구입 금액은 1,000원 단위");
+        if (amount % TICKET_PRICE != 0) {
+            throw new IllegalArgumentException("[ERROR] 구입 금액은 1,000원 단위");
         }
     }
 
     public void validBonus(Integer bonus) {
         if (numbers.contains(bonus)) {
-            throw new IllegalArgumentException("보너스 번호가 이미 로또 당첨번호 중 하나입니다.");
+            throw new IllegalArgumentException("[ERROR] 보너스 번호가 이미 로또 당첨번호 중 하나입니다.");
         }
-        if (bonus < 1 || bonus > 45) {
-            throw new IllegalArgumentException("보너스 번호의 숫자 범위는 1~45 입니다.");
+        if (bonus < MIN || bonus > MAX) {
+            throw new IllegalArgumentException("[ERROR] 보너스 번호의 숫자 범위는 1~45 입니다.");
         }
     }
 
@@ -59,7 +62,7 @@ public class Lotto {
         for (List<Integer> lotto: lottos) {
             List<Integer> copiedNumbers = new ArrayList<>(numbers);
             copiedNumbers.removeAll(lotto);
-            Integer matched = 6 - copiedNumbers.size();
+            Integer matched = SELECTED_NUMBER - copiedNumbers.size();
             if (matched == 3) {
                 places = incrementPlace(places, 0);
             }

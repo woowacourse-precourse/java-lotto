@@ -7,48 +7,14 @@ import java.util.Collections;
 import java.util.List;
 
 public class Application {
-    public static List<Integer> inputConversion(String input) {
-        String[] nums = input.split(",");
-        List<Integer> numbers = new ArrayList<>();
-        for (String num:nums) {
-            try {
-                numbers.add(Integer.parseInt(num));
-            } catch (Exception e){
-                throw new IllegalArgumentException("[Error] 로또 숫자는 Integer 이어야 합니다.");
-            }
-        }
-        return numbers;
-    }
     public static void main(String[] args) {
-        System.out.println("구입금액을 입력해 주세요.");
-        Integer amount;
-        Integer bonus;
+        PlayLotto game = new PlayLotto();
         try {
-            amount = Integer.valueOf(Console.readLine());
-        } catch (Exception e) {
-            throw new IllegalArgumentException("구매 금액은 숫자여야 합니다.");
+            game.start();
         }
-
-        Lotto.checkBuyAmount(amount);
-        Integer lottoTicketNumber = amount/1000;
-        List<List<Integer>> lottos = Lotto.generateLotto(lottoTicketNumber);
-
-        //로또 당첨 번호 입력 받기
-        System.out.println("당첨 번호를 입력해 주세요.");
-        Lotto firstPlace = new Lotto(inputConversion(Console.readLine()));
-        System.out.println("보너스 번호를 입력해 주세요.");
-        try {
-            bonus = Integer.valueOf(Console.readLine());
-        } catch (Exception e) {
-            throw new IllegalArgumentException("보너스 번호는 Integer이어야 합니다");
+        catch (Exception e){
+            System.out.println(e.getMessage());
         }
-        //보너스 번호 validity check
-        firstPlace.validBonus(bonus);
-
-        //places: [5등,4등,3등,2등,1등]
-        List<Integer> places = firstPlace.countWins(lottos, bonus);
-
-        firstPlace.printStats(places,amount);
 
     }
 }
