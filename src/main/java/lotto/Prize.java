@@ -6,9 +6,9 @@ public enum Prize {
     prize_2(0,"3등", 1500000),
     prize_3(0,"4등", 50000),
     prize_4(0,"5등", 5000),
-    prize_5(0,"아무것도아님",0),
-    prize_6(0,"아무것도아님2",0),
-    prize_7(0,"아무것도아님2",0);
+    prize_5(0,"none",0),
+    prize_6(0,"none",0),
+    prize_7(0,"none",0);
 
     private int count;
     private final String name;
@@ -23,10 +23,6 @@ public enum Prize {
 
     public void addWinLotteryCount(){
         this.count++;
-    }
-
-    public String getWinLotteryName(){
-        return this.name;
     }
 
     public Integer getWinLotteryPrize(){
