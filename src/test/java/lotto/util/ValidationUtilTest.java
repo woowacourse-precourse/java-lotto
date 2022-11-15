@@ -152,8 +152,8 @@ class ValidationUtilTest {
     }
 
     @Test
-    @DisplayName("당첨 번호의 범위가 1~45를 벗어나면 예외가 발생한다.")
-    void 당첨_번호_범위_테스트() throws Exception {
+    @DisplayName("로또 번호의 범위가 1~45를 벗어나면 예외가 발생한다.")
+    void 로또_번호_범위_테스트() throws Exception {
         //given
         ValidationUtil validationUtil = new ValidationUtil();
         Method method = validationUtil.getClass().getDeclaredMethod("validateWinningRange", String[].class);
@@ -179,6 +179,39 @@ class ValidationUtilTest {
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessageContaining(NUMBER_RANGE);
         }
-
     }
+    @Test
+    @DisplayName("당첨 번호에 대한 통합 테스트를 진행한다.")
+    void 당첨_번호_통합_테스트() throws Exception {
+        //given
+        ValidationUtil validationUtil = new ValidationUtil();
+
+        //when
+        String correctNums = "1,2,3,4,5,6";
+        String wrongBlankNums = "1,,3,4,5,6";
+        String wrongCountNums = "1, 2, 3, 4, 5,";
+        String wrongDuplicatedNums = "1,2,3,4,5,5";
+        String wrongRangeNums = "1,2,3,47,5,6";
+
+        //then
+        String[] correctResult = validationUtil.validateWinningAmount(correctNums);
+        assertThat(correctResult).isEqualTo(new String[]{"1", "2", "3", "4", "5", "6"});
+
+        assertThatThrownBy(() -> validationUtil.validateWinningAmount(wrongBlankNums))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining(NUMBER_BLANK);
+
+        assertThatThrownBy(() -> validationUtil.validateWinningAmount(wrongCountNums))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining(NUMBER_COUNT);
+
+        assertThatThrownBy(() -> validationUtil.validateWinningAmount(wrongDuplicatedNums))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining(NUMBER_DUPLICATE);
+
+        assertThatThrownBy(() -> validationUtil.validateWinningAmount(wrongRangeNums))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining(NUMBER_RANGE);
+    }
+
 }
