@@ -28,7 +28,7 @@ public class Input {
 
     private static List<Integer> inputLotteryNumber() {
         String lotteryWinningNumber = Console.readLine();
-        return Util.separateNumberWithComma();
+        return Util.separateNumberWithComma(lotteryWinningNumber);
     }
 
 }
