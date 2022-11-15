@@ -19,6 +19,8 @@ public class Application {
 
         int bonus = inputBouns();
         Bonus userBonus = new Bonus(bonus);
+
+        userLotto.getCompareTarget();
     }
 
     private static int inputUserPrice(){
