@@ -17,6 +17,7 @@ public class RankService {
         return rankService;
     }
 
+
     public Rank getLottosRanking(Lotto winningLotto, int bonusNumber, List<Lotto> lottos) {
         LinkedHashMap<Integer, Integer> lottoRanking = createRankingBoard();
         List<Integer> winningLottoNumbers = winningLotto.getLottoNumbers();

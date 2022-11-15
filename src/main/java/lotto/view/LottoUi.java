@@ -16,6 +16,7 @@ public class LottoUi {
     }
     private final LottoService lottoService = LottoService.getLottoService();
 
+
     public static void printInputWinningNumberMessage(){
         System.out.println(INPUT_WINNING_NUMBERS_MESSAGE);
     }

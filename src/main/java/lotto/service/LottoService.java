@@ -25,6 +25,7 @@ public class LottoService {
         return lottoService;
     }
 
+
     public List<Lotto> generateLottos(int lottoCnt) {
         List<Lotto> lottos = new ArrayList<>();
 

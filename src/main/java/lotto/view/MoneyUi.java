@@ -14,6 +14,7 @@ public class MoneyUi {
         System.out.println(INPUT_MONEY_MESSAGE);
     }
 
+
     public static Money inputMoney() {
         MoneyService moneyService = MoneyService.getMoneyService();
 

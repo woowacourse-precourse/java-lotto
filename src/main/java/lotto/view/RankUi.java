@@ -13,9 +13,10 @@ public class RankUi {
 
     public static void printRanking(Rank rank) {
         LinkedHashMap<Integer, Integer> ranking = rank.getRank();
+        Integer cnt;
         for (int i = FIFTH_PLACE; i <= FIRST_PLACE; i++) {
             Hit hit = getHit(i);
-            Integer cnt = ranking.get(i);
+            cnt = ranking.get(i);
             System.out.printf(hit.getMessage(), cnt);
         }
     }
