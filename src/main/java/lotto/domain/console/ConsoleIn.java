@@ -1,7 +1,7 @@
 package lotto.domain.console;
 
 import camp.nextstep.edu.missionutils.Console;
-import lotto.Util;
+import lotto.Utils;
 import lotto.condition.Condition;
 import lotto.condition.ConditionGenerator;
 import lotto.message.ErrorMessageGenerator;
@@ -24,7 +24,7 @@ public class ConsoleIn {
             throw new IllegalArgumentException(ErrorMessageGenerator.getErrorMessage(notPassCondition));
         }
 
-        return Util.getParsedNumbers(input);
+        return Utils.getParsedNumbers(input);
     }
 
 
@@ -46,7 +46,7 @@ public class ConsoleIn {
         String input = getInput();
         List<Condition> conditions = ConditionGenerator.getBonusNumberCondition();
 
-        String numbers = Util.getConcatenatedString(answerNumbers) + "," + input;
+        String numbers = Utils.getConcatenatedString(answerNumbers) + "," + input;
 
         Condition notPassCondition = Validator.getNotPassCondition(conditions, numbers);
 

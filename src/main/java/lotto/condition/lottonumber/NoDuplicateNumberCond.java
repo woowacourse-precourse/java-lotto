@@ -1,6 +1,6 @@
 package lotto.condition.lottonumber;
 
-import lotto.Util;
+import lotto.Utils;
 import lotto.condition.Condition;
 
 import java.util.HashSet;
@@ -21,7 +21,7 @@ public class NoDuplicateNumberCond implements Condition {
 
     @Override
     public Boolean isSatisfied(String input) {
-        List<Integer> numbers = Util.getParsedNumbers(input);
+        List<Integer> numbers = Utils.getParsedNumbers(input);
         Set<Integer> uniqueNumbers = new HashSet<>();
 
         for (Integer number : numbers) {

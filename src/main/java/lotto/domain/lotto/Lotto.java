@@ -1,6 +1,6 @@
 package lotto.domain.lotto;
 
-import lotto.Util;
+import lotto.Utils;
 import lotto.condition.Condition;
 import lotto.condition.ConditionGenerator;
 import lotto.validator.Validator;
@@ -26,7 +26,7 @@ public class Lotto {
 
     public static Lotto numberOf(List<Integer> numbers) {
         List<Condition> conditions = ConditionGenerator.getLottoCreationCond();
-        String number = Util.getConcatenatedString(numbers);
+        String number = Utils.getConcatenatedString(numbers);
 
         Condition notPassCondition = Validator.getNotPassCondition(conditions, number);
 

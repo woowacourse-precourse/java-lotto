@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class Util {
+public class Utils {
 
     public static List<Integer> getParsedNumbers(String input) {
         return Arrays.stream(input.split(","))

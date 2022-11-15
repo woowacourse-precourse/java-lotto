@@ -1,6 +1,6 @@
 package lotto.condition.lottonumber;
 
-import lotto.Util;
+import lotto.Utils;
 import lotto.condition.Condition;
 
 import static lotto.domain.lottomachine.LottoMachine.LOTTO_NUMBER_SIZE;
@@ -19,7 +19,7 @@ public class InSizeCond implements Condition {
 
     @Override
     public Boolean isSatisfied(String input) {
-        return Util.getParsedNumbers(input).size() <= LOTTO_NUMBER_SIZE;
+        return Utils.getParsedNumbers(input).size() <= LOTTO_NUMBER_SIZE;
     }
 
     @Override
