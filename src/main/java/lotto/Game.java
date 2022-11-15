@@ -23,7 +23,10 @@ public class Game {
         if (setBonus()) {
             return;
         }
-
+        for (List<Integer> randomNumbers : calculator.lotteries) {
+            lotto.compareLotto(randomNumbers, bonusNum);
+        }
+        calculator.printResult();
     }
 
     private boolean setCalculator() {
