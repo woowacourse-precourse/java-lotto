@@ -52,7 +52,8 @@ public class LottoMachine {
     }
 
     public void printLottos(){
-        System.out.println(paid/LOTTO_PRICE +"개를 구매했습니다.");
+        int createdNum = paid/LOTTO_PRICE;
+        System.out.println(createdNum +"개를 구매했습니다.");
         for(Lotto lotto:lottos){
             System.out.println(lotto.getNumbers());
         }
