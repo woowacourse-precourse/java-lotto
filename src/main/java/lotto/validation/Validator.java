@@ -11,6 +11,7 @@ public class Validator {
     private static final String FROM_ONE_TO_FORTY_FIVE = "1부터 45 사이의 숫자여야 합니다.";
     private static final String DUPLICATION_NUMBER = "중복된 숫자는 입력할 수 없습니다.";
     private static final String INPUT_SIX_NUMBERS = "숫자 6개를 입력해주세요.";
+    private static final Character ZERO_NUMBER = '0';
     private static final int THOUSAND = 1000;
     private static final int ZERO = 0;
     private static final int LAST_NUMBER = 45;
@@ -24,7 +25,7 @@ public class Validator {
     }
 
     private static void isFirstNumberZero(String money) {
-        if (money.charAt(0) == '0') {
+        if (money.charAt(ZERO) == ZERO_NUMBER) {
             throw new IllegalArgumentException(FIRST_NUMBER_ZERO);
         }
     }
