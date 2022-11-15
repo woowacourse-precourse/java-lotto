@@ -1,5 +1,7 @@
 package lotto.controller;
 
+import static lotto.constant.LottoConstant.AMOUNT_LIMIT;
+
 import java.util.List;
 import lotto.service.LottoService;
 import lotto.view.InputView;
@@ -27,7 +29,7 @@ public class LottoController {
 
         lottoService.generateByAmount(amount);
 
-        outputView.printWithLine((amount / 1000) + OutputView.BUY_COMPLETE);
+        outputView.printWithLine((amount / AMOUNT_LIMIT) + OutputView.BUY_COMPLETE);
         outputView.print(lottoService.showLottos());
         return amount;
     }
@@ -47,7 +49,7 @@ public class LottoController {
     }
 
     private void result(List<Integer> winningNumbers, int bonusNumber) {
-        outputView.print(lottoService.당첨계산(winningNumbers, bonusNumber));
+        outputView.print(OutputView.RESULT + lottoService.checkWinning(winningNumbers, bonusNumber));
     }
 
 }
