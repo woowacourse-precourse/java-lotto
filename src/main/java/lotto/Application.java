@@ -6,7 +6,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.*;
 
 public class Application {
-    public static void main(String[] args) {
+    public static void main(String[] args){
         // TODO: 프로그램 구현
         int money = inputMoney();
 
@@ -33,7 +33,7 @@ public class Application {
             profits += result.getOrDefault(p, 0) * p.getMoney();
         }
 
-        System.out.printf(String.format("총 수익률은 %.1f%%입니다.\n", profits / money * 100));
+        System.out.println(String.format("총 수익률은 %.1f%%입니다.\n", profits / money * 100));
     }
 
     private static Map<Prize, Integer> calculatePrize(List<List<Integer>> boughtLottos,
@@ -60,7 +60,7 @@ public class Application {
 
         List<List<Integer>> lottos = new ArrayList<>();
         for (int i = 0; i < count; i++) {
-            List<Integer> lotto = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+            List<Integer> lotto = new ArrayList<>(Randoms.pickUniqueNumbersInRange(1, 45, 6));
             lotto.sort(Comparator.naturalOrder());
             lottos.add(lotto);
         }
@@ -81,8 +81,14 @@ public class Application {
 
     private static int inputMoney() {
         System.out.println("구입금액을 입력해 주세요.");
-        
-        int money = Integer.parseInt(Console.readLine());
+
+        int money;
+        try {
+            money = Integer.parseInt(Console.readLine());
+        } catch (NumberFormatException e) {
+            System.out.println("[ERROR] 구입금액은 숫자만 입력해야 합니다.");
+            throw new IllegalArgumentException("[ERROR] 구입금액은 숫자만 입력해야 합니다.");
+        }
         if (money % 1000 != 0) {
             System.out.println("[ERROR] 구입 금액은 1,000원 단위로 입력해야 합니다.");
             throw new IllegalArgumentException();
