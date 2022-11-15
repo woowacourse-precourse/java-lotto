@@ -74,22 +74,27 @@ public class PlayLotto {
 
     public void print5th(List<Integer> correctNumber) {
         System.out.printf("3개 일치 (5,000원) - " + correctNumber.get(4) + "개");
+        System.out.println();
     }
 
     public void print4th(List<Integer> correctNumber) {
         System.out.printf("4개 일치 (50,000원) - " + correctNumber.get(3) + "개");
+        System.out.println();
     }
 
     public void print3rd(List<Integer> correctNumber) {
         System.out.printf("5개 일치 (1,500,000원) - " + correctNumber.get(2) + "개");
+        System.out.println();
     }
 
     public void print2nd(List<Integer> correctNumber) {
         System.out.printf("5개 일치, 보너스 볼 일치 (30,000,000원) - " + correctNumber.get(1) + "개");
+        System.out.println();
     }
 
     public void print1st(List<Integer> correctNumber) {
         System.out.printf("6개 일치 (2,000,000,000원) - " + correctNumber.get(0) + "개");
+        System.out.println();
     }
 
     public int profit5th(List<Integer> correctNumber) {
