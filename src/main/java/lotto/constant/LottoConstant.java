@@ -7,7 +7,12 @@ public enum LottoConstant {
     LOTTO_BONUS_NUMBER_COUNT(1),
     LEAST_REWARD_NUMBER_COUNT(3),
     PRICE(1000),
-    PERCENTAGE(100);
+    PERCENTAGE(100),
+    FIRST_MONEY(2000000000),
+    SECOND_MONEY(30000000),
+    THIRD_MONEY(1500000),
+    FOURTH_MONEY(50000),
+    FIFTH_MONEY(5000);
     private final int number;
 
     LottoConstant(int number) {

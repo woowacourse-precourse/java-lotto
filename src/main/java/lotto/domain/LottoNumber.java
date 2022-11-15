@@ -8,6 +8,7 @@ import java.util.List;
 
 import static lotto.constant.LottoConstant.END_NUMBER;
 import static lotto.constant.LottoConstant.START_NUMBER;
+import static lotto.constant.MessageConstant.PURCHASE_MESSAGE;
 
 public class LottoNumber {
 
@@ -36,6 +37,7 @@ public class LottoNumber {
     }
 
     public void printUserAllLotto() {
+        System.out.println(String.format(PURCHASE_MESSAGE.getMessage(), lottoCount));
         for (List<Integer> lotto: userAllLotto) {
             System.out.println(lotto);
         }

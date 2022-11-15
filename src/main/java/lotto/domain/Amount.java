@@ -18,4 +18,8 @@ public class Amount {
         InputValidation.isValidUnit(amount);
         return amount / PRICE.getValue();
     }
+
+    public int getAmount() {
+        return amount;
+    }
 }
