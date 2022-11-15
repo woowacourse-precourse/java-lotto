@@ -9,8 +9,20 @@ import static lotto.ErrorCode.*;
 public class Logic {
 
     int checkPieces(String input) {
-        // implement
-        return 0;
+        throwInputExceptions(input.length() > 3,
+                PRICE_INCORRECT_INPUT);
+        for(int i = input.length() - 1; i >= input.length() - 3; --i) {
+            throwInputExceptions(input.charAt(i) == '0', PRICE_INCORRECT_INPUT);
+        }
+        int ans = 0;
+        char c;
+        for(int i = 0; i <= input.length() - 4; ++i) {
+            ans *= 10;
+            c = input.charAt(i);
+            throwInputExceptions(c >= '0' && c <= '9', PRICE_INCORRECT_INPUT);
+            ans += c - '0';
+        }
+        return ans;
     }
 
     List<Integer> lotto_Validate(List<Integer> numbers) {
