@@ -10,15 +10,9 @@ public class Money {
     public static int calcmoney (){
         System.out.println("구입금액을 입력해 주세요.");
         String inputMoney = Console.readLine();
-        for (int i=0 ; i<inputMoney.length() ; i++){
-            if (inputMoney.charAt(i) < 48 || inputMoney.charAt(i) > 57){
-                throw new IllegalArgumentException("[ERROR] 숫자만 입력해주세요.");
-            }
-        }
+        errorOnlyNumber(inputMoney);
         int money = Integer.parseInt(inputMoney);
-        if (money % 1000 != 0){
-            throw new IllegalArgumentException("[ERROR] 천원 단위로 입력해주세요.");
-        }
+        errorOnlyThousand(money);
         int lotto = money / 1000;
         System.out.println(lotto + "개를 구매했습니다.");
         return lotto;
@@ -49,7 +43,21 @@ public class Money {
 
     public static void prizeRate(HashMap<Integer, Integer> prize, int num){
         int sum = prize.get(3)*5000 + prize.get(4)*50000 + prize.get(5)*1500000 + prize.get(-1)*30000000 + prize.get(6)*200000000;
-        double rate = sum / (num*1000) * 100;
+        double rate = (sum / (num*1000)) * 100;
         System.out.println("총 수익률은 " + rate + "%입니다.");
+    }
+
+    private static void errorOnlyNumber(String input){
+        for (int i=0 ; i<input.length() ; i++){
+            if(input.charAt(i) > 57 || input.charAt(i) <48){
+                throw new IllegalArgumentException("[ERROR] 숫자만 입력해주세요.");
+            }
+        }
+    }
+
+    private static void errorOnlyThousand(int money){
+        if (money % 1000 != 0){
+            throw new IllegalArgumentException("[ERROR] 천원 단위로 입력해주세요.");
+        }
     }
 }

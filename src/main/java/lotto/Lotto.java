@@ -1,7 +1,10 @@
 package lotto;
 
+import java.nio.channels.IllegalChannelGroupException;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.List;
 import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
@@ -11,10 +14,15 @@ public class Lotto {
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
+        System.out.println(numbers);
         this.numbers = numbers;
         }
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6 ) {
+            throw new IllegalArgumentException();
+        }
+        Set<Integer> set = new HashSet<>(numbers);
+        if(set.size() < numbers.size()){
             throw new IllegalArgumentException();
         }
     }
@@ -24,9 +32,7 @@ public class Lotto {
         String[] listSplit = lottoNumber.split(",");
         for(int i=0 ; i<listSplit.length ; i++ ){
             lotto.add(Integer.parseInt(listSplit[i]));
-            if (lotto.get(i) < 1  || lotto.get(i) >45 ){
-                throw new IllegalArgumentException("[ERROR] 숫자 범위는 1~45까지 입니다.");
-            }
+            error(lotto.get(i));
         }
     }
 
@@ -34,9 +40,7 @@ public class Lotto {
         System.out.println("보너스 번호를 입력해 주세요.");
         String bonusNumber = Console.readLine();
         int bonus = Integer.parseInt(bonusNumber);
-        if (bonus < 1 || bonus > 45) {
-            throw new IllegalArgumentException("[ERROR] 숫자 범위는 1~45까지 입니다.");
-        }
+        error(bonus);
         return bonus;
     }
 
@@ -49,7 +53,12 @@ public class Lotto {
             }
         }
         return compareNumber.size();
+    }
 
+    private static void error(int num){
+        if(num < 1 || num >45){
+            throw new IllegalArgumentException("[ERROR] 숫자 범위는 1~45까지 입니다.");
+        }
     }
     // TODO: 추가 기능 구현
 }
