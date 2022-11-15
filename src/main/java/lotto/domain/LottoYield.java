@@ -1,6 +1,9 @@
 package lotto.domain;
 
 public class LottoYield {
+    public static double computeYield(double totalPurchase){
+        return (computeTotalRevenue()/totalPurchase)*100;
+    }
 
     public static double computeTotalRevenue() {
         double totalRevenue = 0;
