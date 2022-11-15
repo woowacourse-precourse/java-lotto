@@ -84,11 +84,11 @@
   - [x] getStatistics 테스트
     - 주어진 WinInfo의 통계를 잘 반환하는지
 
-- [ ] LottoUser 테스트
+- [x] LottoUser 테스트
   - [x] validation 테스트
   - [x] buyLotto 테스트
     - 돈의 양 만큼 로또를 샀는지, Lotto의 검증 형식에 맞춰서 번호를 생성했는지
-  - [ ] checkWin 테스트
+  - [x] checkWin 테스트
     - 주어진 로또에 대해 알맞은 WinInfo를 가지게 되었는지, LottoSystem테스트의 테스트케이스 재활용
   - [x] getReturnRate 테스트
     - 주어진 WinInfo에 대해 수익률을 잘 계산하는지

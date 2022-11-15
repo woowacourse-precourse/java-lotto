@@ -63,20 +63,21 @@ public class LottoUserTest {
         List<Lotto> lottos = List.of(
                 //matched 6 bonus 0
                 new Lotto(List.of(1,2,3,4,5,6)),
+                new Lotto(List.of(5,3,2,6,1,4)),
                 //matched 5 bonus 1
                 new Lotto(List.of(1,7,3,4,5,6)),
-                //matched 5 bonus 1
-                new Lotto(List.of(1,2,3,7,5,6)),
+                new Lotto(List.of(1,3,2,7,6,5)),
                 //matched 5 bonus 0
                 new Lotto(List.of(1,2,8,4,5,6)),
-                //matched 5 bonus 0
-                new Lotto(List.of(1,2,3,4,11,6)),
+                new Lotto(List.of(1,4,3,2,11,6)),
                 //matched 4 bonus 0
                 new Lotto(List.of(1,2,9,4,11,6)),
+                new Lotto(List.of(1,9,2,11,4,6)),
                 //matched 4 bonus 1
                 new Lotto(List.of(1,2,3,4,11,7)),
                 //matched 3 matched 0
                 new Lotto(List.of(1,2,3,17,11,13)),
+                new Lotto(List.of(13,17,11,2,3,1)),
                 //matched 3 bonus 1
                 new Lotto(List.of(1,2,3,17,11,7)),
                 //matched 2 bonus 0
@@ -92,12 +93,15 @@ public class LottoUserTest {
         );
         List<WinInfo> winInformations = List.of(
                 WinInfo.WIN1,
+                WinInfo.WIN1,
                 WinInfo.WIN2,
                 WinInfo.WIN2,
                 WinInfo.WIN3,
                 WinInfo.WIN3,
                 WinInfo.WIN4,
                 WinInfo.WIN4,
+                WinInfo.WIN4,
+                WinInfo.WIN5,
                 WinInfo.WIN5,
                 WinInfo.WIN5,
                 WinInfo.NO_WIN,
