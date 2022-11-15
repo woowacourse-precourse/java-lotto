@@ -1,5 +1,6 @@
 package lotto.management;
 
+import lotto.enums.Message;
 public class Purchase {
 
     private static final int LOTTO_PRICE = 1000;
@@ -19,14 +20,14 @@ public class Purchase {
 
     private void isNumber(String purchaseMoney){
         if (!purchaseMoney.matches(NUMBER_REGEX)) {
-            throw new IllegalArgumentException("[ERROR] 숫자로 입력받아야 합니다.");
+            throw new IllegalArgumentException(Message.ERROR_NOT_NUMBER.getMessage());
         }
     }
 
     private void validDivide(String purchaseMoney) {
         int amount = Integer.parseInt(purchaseMoney);
         if (amount % LOTTO_PRICE > 0) {
-            throw new IllegalArgumentException("[ERROR] 구매 금액이 1000원 단위여야 합니다.");
+            throw new IllegalArgumentException(Message.ERROR_NOT_THOUSAND_DIVIDE.getMessage());
         }
     }
 

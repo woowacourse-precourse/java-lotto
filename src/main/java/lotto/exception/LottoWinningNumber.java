@@ -1,5 +1,6 @@
 package lotto.exception;
 
+import lotto.enums.Message;
 import java.util.List;
 
 public class LottoWinningNumber extends Lotto {
@@ -30,13 +31,13 @@ public class LottoWinningNumber extends Lotto {
 
     private void validateBonusNumbersRange(int bonusNumber) {
         if (LOTTO_START_NUMBER > bonusNumber || bonusNumber > LOTTO_END_NUMBER) {
-            throw new IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
+            throw new IllegalArgumentException(Message.ERROR_NUMBER_RANGE.getMessage());
         }
     }
 
     private void checkDuplicateBonusNumber(List<Integer> winningNumbers, int bonusNumber) {
         if (winningNumbers.contains(bonusNumber)) {
-            throw new IllegalArgumentException("[ERROR] 보너스 번호가 당첨 번호와 겹치지 않아야 합니다");
+            throw new IllegalArgumentException(Message.ERROR_DUPLICATE_BONUS_NUMBER.getMessage());
         }
     }
 }
