@@ -7,7 +7,7 @@ public class Application {
         View view = new View();
         try {
             view.run();
-        } catch (Exception e) {
+        } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
     }
