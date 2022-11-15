@@ -30,20 +30,21 @@
         
 - [x] 당첨 번호 입력 받을 수 있다.
   - StaffListener#listenMainWinningNumbers()
-- [ ] 당첨 번호의 유효성을 체크할 수 있다.
-  - WinningNumbers#inputWinningMainNumbers()
-  - 예외)
-    - [ ] 쉼표를 기준으로 옳은 자리인지 검증
-      - WinningNumbers#validateSize()
-    - [ ] 옳은 범위의 자연수인지 검증
-      - WinningNumbers#validateRange()
+- [ ] 입력 받은 문자를 Integer리스트로 변환할 수 있다.
+  - 예외) Integer타입으로 변환할 수 없으면 예외 발생
+  - WinningNumbers#converToIntegerList();
 - [ ] 보너스 번호 한 자리를 입력 받는다.
-  - WinningNumbers#inputWinningBonusNumber()
-  - 예외)
-    - [ ] 쉼표를 기준으로 옳은 자리인지 검증
-      - WinningNumbers#validateSize()
-    - [ ] 옳은 범위의 자연수인지 검증
-      - WinningNumbers#validateRange()
+  - StaffListener#listenWinningBonusNumber()
+- [ ] 입력 받은 문자를 Integer로 변환할 수 있다.
+  - WinningNumbers#converToInteger();
+  - 예외) Integer타입으로 변환할 수 없으면 예외 발생
+- [ ] 당첨 번호의 유효성을 체크할 수 있다.
+  - [ ] 옳은 자릿수인지 검증
+    Lotto#validateSize()
+  - [ ] 옳은 범위의 자연수인지 검증
+    - Lotto#validateRange()
+- [ ] 입력 받은 메인번호 리스트와 보너스 넘버로 WinningNumbers 클래스를 만들 수 있다.
+  - WinningNumbers#of()
 
 - [ ] 입력받는 로또의 개수 만큼, 각 로또가 몇 자리씩 맞췄는지 파악할 수 있다.
   - LottoChecker#checkLottos()
