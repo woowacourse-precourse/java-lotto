@@ -9,11 +9,11 @@ import java.util.stream.Collectors;
 
 public class DataProcess {
     enum Reward_Amount{
-        EQUALTHREE(5000),
-        EQUALFOUL(50000),
-        EUQALFIVE(1500000),
-        EQUALBONUS(30000000),
-        EQUALSIX(2000000000);
+        EQUALTHREE(5),
+        EQUALFOUL(50),
+        EUQALFIVE(1500),
+        EQUALBONUS(30000),
+        EQUALSIX(2000000);
 
         private final long amount;
         Reward_Amount(long amount) {this.amount = amount; }
@@ -34,10 +34,10 @@ public class DataProcess {
     public static int[] CalculateReward(List<List<Integer>> lottoNumber, List<Integer> winningNumber, int bonusNumber, int count) {
         int[] matching_number = new int[NUMBER_OF_WINNING_COUNT];
         for(int i = 0; i < count; i++) {
-            List<Integer> numbers = lottoNumber.get(i).stream()
+            List<Integer> numbers = new ArrayList<>(lottoNumber.get(i).stream()
                     .filter(old -> winningNumber.stream()
                             .anyMatch(Predicate.isEqual(old)))
-                    .collect(Collectors.toList());
+                    .collect(Collectors.toList()));
             int correct_number = numbers.size();
             if(correct_number > 2)
                 matching_number[correct_number-3]++;
@@ -54,14 +54,14 @@ public class DataProcess {
         long totalReward = 0;
         Reward_Amount[] Reward = Reward_Amount.values();
         for(int i = 0; i < matching_number.length; i++){
-            totalReward = Reward[i].amount * matching_number[i];
+            totalReward += Reward[i].amount * matching_number[i];
         }
         return totalReward;
     }
 
-    public static float CalculateIncome(long totalReward, int count){
-        float income = totalReward / count;
-        income /= 10.0;
-        return income;
+    public static double CalculateIncome(long totalReward, int count){
+        double income = (double) totalReward / count;
+        income *= 100.0;
+        return Math.round(income*100)/100.0;
     }
 }
