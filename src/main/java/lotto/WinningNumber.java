@@ -14,9 +14,9 @@ public class WinningNumber {
     public WinningNumber() {
         try{
             setWinningNumbers();
-            validateWinningNumber(this.winningNumbers);
+            validateWinningNumber(winningNumbers);
             setBonusNumber();
-            validateBonusNumber(this.winningNumbers, this.bonusNumber);
+            validateBonusNumber(winningNumbers, bonusNumber);
         }catch (IllegalArgumentException e){
             System.out.println(e.getMessage());
         }
