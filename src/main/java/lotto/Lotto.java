@@ -9,6 +9,7 @@ public class Lotto {
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
+        checkOverlap(numbers);
         this.numbers = numbers;
     }
 
@@ -40,6 +41,16 @@ public class Lotto {
         }
 
         return payedLotto;
+    }
+
+    public int compareLotto(List<Integer> winningNumber, List<Integer> payedLotto){
+        int matches = 0;
+
+        for (int i = 0; i < winningNumber.size(); i++){
+            if (payedLotto.contains(winningNumber.get(i))) matches++;
+        }
+
+        return matches;
     }
 
 
