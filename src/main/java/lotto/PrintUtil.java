@@ -1,5 +1,7 @@
 package lotto;
 
+import java.sql.SQLOutput;
+import java.util.ArrayList;
 import java.util.List;
 
 public class PrintUtil {
@@ -32,5 +34,33 @@ public class PrintUtil {
 
     public static void inputBonusNumberGuide() {
         System.out.println("보너스 번호를 입력해 주세요.");
+    }
+
+    public static void printStatistics(List<Integer> ranks) {
+        System.out.println("당첨 통계");
+        System.out.println("---");
+
+        int[] rankCount = new int[5];
+
+        for(int rank : ranks){
+            if(rank > 5) continue;
+            rankCount[rank-1]++;
+        }
+
+        printRankCount(rankCount);
+    }
+
+    private static void printRankCount(int[] rankCount) {
+        for(int i = 0 ; i < rankCount.length ; i++){
+            printWinList(rankCount[i], i);
+        }
+    }
+
+    private static void printWinList(int rank, int idx) {
+        if(idx == 0) System.out.println("6개 일치 (2,000,000,000원) - " + rank + "개");
+        if(idx == 1) System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - " + rank + "개");
+        if(idx == 2) System.out.println("5개 일치 (1,500,000원) - " + rank + "개");
+        if(idx == 3) System.out.println("4개 일치 (50,000원) - " + rank + "개");
+        if(idx == 4) System.out.println("3개 일치 (5,000원) - " + rank + "개");
     }
 }

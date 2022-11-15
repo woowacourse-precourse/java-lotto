@@ -71,4 +71,32 @@ public class LottoUtil {
     }
 
 
+    public static List<Integer> creatRank(List<Integer> winStatistics, List<Boolean> bonusStatistics) {
+
+        List<Integer> ranks = new ArrayList<>();
+
+        for(int i = 0 ; i < winStatistics.size() ; i++){
+            ranks.add(getRank(winStatistics.get(i), bonusStatistics.get(i)));
+        }
+
+        PrintUtil.printStatistics(ranks);
+        return ranks;
+    }
+
+    private static Integer getRank(Integer winNumber, Boolean bonus) {
+
+        int rank = 8;
+
+        if(winNumber == 5 && bonus){
+            winNumber++;
+        }
+
+        if(winNumber == 6){
+            winNumber ++;
+        }
+
+        rank -= winNumber;
+
+        return rank;
+    }
 }
