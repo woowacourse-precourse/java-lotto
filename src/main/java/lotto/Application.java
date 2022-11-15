@@ -25,6 +25,7 @@ public class Application {
         //당첨번호 입력받기
         ArrayList<Integer> luckyList = inputLuckyNumber();
         //보너스 번호 입력받기
+
         //당첨 확인
         //당첨통계
         //수익률 출력
@@ -60,6 +61,12 @@ public class Application {
         }
 
         return luckyList;
+    }
+
+    static int inputBonusNumber() {
+        int bonusNumber=0;
+
+        return bonusNumber;
     }
 
 
