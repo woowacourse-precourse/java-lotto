@@ -4,7 +4,7 @@ import java.text.DecimalFormat;
 
 public class Yield {
 
-    DecimalFormat df = new DecimalFormat("###,###.0");
+    DecimalFormat df = new DecimalFormat("#,##0.0");
 
     private final double yield;
 
