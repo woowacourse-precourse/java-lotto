@@ -22,11 +22,12 @@ public class WinningNumberValidatorTest {
 		String wrongInputPlace = "123456,,,,,";
 		String outboundNumber = "1,2,47,3,4,5";
 		String outRangeNumber = "1,2,3,4,5,6,7,8";
-		String correct = "1,2,3,4,5,6";
+		// String correct = "1,2,3,4,5,6";
+		String correct = "3,11,18,33,43,45";
 
 		//	then
 		// System.out.println(winningNumberValidator.runWinningNumberValidator(outRangeNumber));
-		assertThatThrownBy(() -> winningNumberValidator.runWinningNumberValidator(outRangeNumber))
+		assertThatThrownBy(() -> winningNumberValidator.runWinningNumberValidator(correct))
 			.isInstanceOf(IllegalArgumentException.class)
 			.hasMessageContaining(COMMA_CLASSIFICATION.getErrorMessage());
 	}
