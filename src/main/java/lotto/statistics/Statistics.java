@@ -3,8 +3,8 @@ package lotto.statistics;
 import java.util.EnumMap;
 import java.util.List;
 import java.util.Map;
-import lotto.ticket.Winning;
 import lotto.console.Constants;
+import lotto.ticket.Winning;
 
 public class Statistics {
 

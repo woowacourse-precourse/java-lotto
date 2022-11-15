@@ -26,12 +26,7 @@ public class User {
         return lottos;
     }
 
-    public void printLotto() {
-        for (Lotto lotto : this.lottos) {
-            System.out.println(lotto.getNumbers());
-        }
-        System.out.println();
+    public int getMoney() {
+        return money;
     }
-
-
 }
