@@ -30,7 +30,7 @@ public class Application {
     }
 
     static List<Lotto> createLottoList(int lottoNum){
-        List<Lotto> lottoList = new ArrayList<>(8);
+        List<Lotto> lottoList = new ArrayList<>(lottoNum);
         for (int lottoIndex = 0; lottoIndex < lottoNum; lottoIndex++) {
             lottoList.add(new Lotto(createLotto()));
         }
