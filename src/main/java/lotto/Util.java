@@ -32,6 +32,7 @@ public class Util {
             Integer.parseInt(str);
             return true;
         }catch(NumberFormatException e){
+            System.out.println(ErrorMsg.NUM_FORMAT_MSG.getErrorMsg());
             throw new IllegalArgumentException(ErrorMsg.NUM_FORMAT_MSG.getErrorMsg());
         }
     }
@@ -44,6 +45,7 @@ public class Util {
             }
             return true;
         }catch(NumberFormatException e){
+            System.out.println(ErrorMsg.NUM_FORMAT_MSG.getErrorMsg());
             throw new IllegalArgumentException(ErrorMsg.NUM_FORMAT_MSG.getErrorMsg());
         }
     }
