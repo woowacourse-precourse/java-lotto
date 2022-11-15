@@ -20,6 +20,11 @@ public class Lotto {
         if (checkDupe.size() != numbers.size()) {
             throw new IllegalArgumentException("로또 숫자들은 달라야 합니다");
         }
+        for (Integer i: numbers) {
+            if (i < 1 || i > 45) {
+                throw new IllegalArgumentException("[ERROR] 로또 숫자들은 1~45 의 범위 안에 있어야합니다.");
+            }
+        }
     }
 
     // TODO: 추가 기능 구현
@@ -46,5 +51,7 @@ public class Lotto {
             throw new IllegalArgumentException("보너스 번호의 숫자 범위는 1~45 입니다.");
         }
     }
+
+    public void
 
 }
