@@ -2,8 +2,6 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import net.bytebuddy.implementation.bytecode.Throw;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 
 import java.util.ArrayList;

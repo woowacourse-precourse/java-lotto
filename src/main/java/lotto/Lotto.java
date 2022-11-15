@@ -20,6 +20,7 @@ public class Lotto {
         if(count==5&&temp.contains(bonus))count=-1;
         return count;
     }
+
     private void validate(List<Integer> numbers) {
         if (numbers.size() > 6 || numbers.size() != numbers.stream().distinct().count()) {
             throw new IllegalArgumentException("[ERROR]6자리 미만이거나 중복하는 값이 존재합니다.");
