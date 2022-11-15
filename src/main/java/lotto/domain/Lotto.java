@@ -1,5 +1,6 @@
 package lotto.domain;
 
+import static lotto.domain.LottoBonus.*;
 import static lotto.utils.ErrorMessage.*;
 
 import java.util.HashSet;
@@ -7,6 +8,7 @@ import java.util.List;
 import java.util.Set;
 
 public class Lotto {
+	private final static int LOTTO_SIZE = 6;
 	private final List<Integer> numbers;
 
 	public Lotto(List<Integer> numbers) {
@@ -31,11 +33,11 @@ public class Lotto {
 	}
 
 	private static boolean isValidRange(List<Integer> numbers) {
-		return numbers.stream().allMatch(n -> n >= 1 && n <= 45);
+		return numbers.stream().allMatch(n -> n >= MIN_NUMBER && n <= MAX_NUMBER);
 	}
 
 	private static boolean isConsistOfSixNumbers(List<Integer> numbers) {
-		return numbers.size() == 6;
+		return numbers.size() == LOTTO_SIZE;
 	}
 
 	private static boolean isDuplicatedNumbers(List<Integer> numbers) {

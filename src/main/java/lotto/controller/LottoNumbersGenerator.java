@@ -3,7 +3,6 @@ package lotto.controller;
 import static lotto.utils.ErrorMessage.*;
 import static lotto.utils.TypeConversion.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class LottoNumbersGenerator {

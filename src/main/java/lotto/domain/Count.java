@@ -6,11 +6,13 @@ import java.util.List;
 import java.util.Map;
 
 public class Count {
+	public final static String LOTTO = "lotto";
+	public final static String BONUS = "bonus";
 	private List<Map<String, Integer>> count;
 
-	public Count(Lotto lotto, LottoBonus lottoBonus, LottoTickets lottoTickets) {
+	public Count(List<Integer> lotto, int lottoBonus, List<LottoTicket> lottoTickets) {
 		count = new ArrayList<>();
-		for (LottoTicket lottoTicket : lottoTickets.getLottoTickets()) {
+		for (LottoTicket lottoTicket : lottoTickets) {
 			Map<String, Integer> ticket = getTicket(lotto, lottoBonus, lottoTicket);
 			count.add(ticket);
 		}
@@ -20,10 +22,10 @@ public class Count {
 		return count;
 	}
 
-	private Map<String, Integer> getTicket(Lotto lotto, LottoBonus lottoBonus, LottoTicket lottoTicket) {
+	private Map<String, Integer> getTicket(List<Integer> lotto, int lottoBonus, LottoTicket lottoTicket) {
 		Map<String, Integer> ticket = new HashMap<>();
-		ticket.put("lotto", countLottoNumber(lotto.getNumbers(), lottoTicket.getNumbers()));
-		ticket.put("bonus", countBonusNumber(lottoBonus.getBonusNumber(), lottoTicket.getNumbers()));
+		ticket.put(LOTTO, countLottoNumber(lotto, lottoTicket.getNumbers()));
+		ticket.put(BONUS, countBonusNumber(lottoBonus, lottoTicket.getNumbers()));
 		return ticket;
 	}
 

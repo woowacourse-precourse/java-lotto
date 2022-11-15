@@ -5,6 +5,8 @@ import static lotto.utils.ErrorMessage.*;
 import java.util.List;
 
 public class LottoBonus {
+	public final static int MIN_NUMBER = 1;
+	public final static int MAX_NUMBER = 45;
 	private int bonusNumber;
 
 	public LottoBonus(int bonusNumber, List<Integer> numbers) {
@@ -30,6 +32,6 @@ public class LottoBonus {
 	}
 
 	private static boolean isValidRange(int bonusNumber) {
-		return bonusNumber >= 1 && bonusNumber <= 45;
+		return bonusNumber >= MIN_NUMBER && bonusNumber <= MAX_NUMBER;
 	}
 }

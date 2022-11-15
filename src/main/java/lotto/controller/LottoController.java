@@ -30,7 +30,7 @@ public class LottoController {
 	}
 
 	private static Stat getStat(LottoTickets lottoTickets, Lotto lotto, LottoBonus lottoBonus) {
-		Count count = new Count(lotto, lottoBonus, lottoTickets);
+		Count count = new Count(lotto.getNumbers(), lottoBonus.getBonusNumber(), lottoTickets.getLottoTickets());
 		Grade grade = new Grade(count.getCount());
 		Stat stat = new Stat(grade.getGrade());
 		return stat;

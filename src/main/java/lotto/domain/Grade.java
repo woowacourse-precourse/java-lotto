@@ -1,5 +1,7 @@
 package lotto.domain;
 
+import static lotto.domain.Count.*;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -10,7 +12,7 @@ public class Grade {
 	public Grade(List<Map<String, Integer>> count) {
 		grade = new ArrayList<>();
 		for (Map<String, Integer> ticket : count) {
-			grade.add(getType(ticket.get("lotto"), ticket.get("bonus")));
+			grade.add(getType(ticket.get(LOTTO), ticket.get(BONUS)));
 		}
 	}
 
