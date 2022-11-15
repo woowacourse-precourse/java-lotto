@@ -68,6 +68,16 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @Test
+    void 구매금액_1000보다_적을_때_예외테스트() {
+        String input = "0";
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> exception.validateIsLessThanThousand(input))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessageContaining("[ERROR]구매금액은 1000 이상이어야 합니다.")
+        );
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
