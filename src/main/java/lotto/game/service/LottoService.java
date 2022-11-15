@@ -1,5 +1,7 @@
 package lotto.game.service;
 
+import static lotto.game.LottoConst.*;
+
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
@@ -13,7 +15,7 @@ public class LottoService {
         List<Lotto> lottos = new ArrayList<>();
         long lottoCount = money.getValue() / 1000;
         for (int i = 0; i < lottoCount; i++) {
-            List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+            List<Integer> numbers = Randoms.pickUniqueNumbersInRange(MIN_LOTTO_NUM, MAX_LOTTO_NUM, LOTTO_SIZE);
             lottos.add(new Lotto(numbers));
         }
         return lottos;

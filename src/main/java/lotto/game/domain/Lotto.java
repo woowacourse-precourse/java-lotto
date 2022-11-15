@@ -1,6 +1,7 @@
 package lotto.game.domain;
 
 import static lotto.game.ExceptionConst.*;
+import static lotto.game.LottoConst.*;
 
 import java.util.List;
 
@@ -17,7 +18,7 @@ public class Lotto {
     }
 
     private void validateSize(List<Integer> numbers) {
-        if (numbers.size() != 6) {
+        if (numbers.size() != LOTTO_SIZE) {
             throw new IllegalArgumentException(NOT_SIX_NUMBER_MESSAGE);
         }
     }
@@ -26,13 +27,13 @@ public class Lotto {
         long noDuplicateCount = numbers.stream()
                 .distinct()
                 .count();
-        if (noDuplicateCount != 6) {
+        if (noDuplicateCount != LOTTO_SIZE) {
             throw new IllegalArgumentException(DUPLICATE_NUMBER_MESSAGE);
         }
     }
 
     protected void validateLottoNumber(Integer number) {
-        if (number >= 1 && number <= 45) {
+        if (number >= MIN_LOTTO_NUM && number <= MAX_LOTTO_NUM) {
             return;
         }
         throw new IllegalArgumentException(ILLEGAL_LOTTO_NUMBER_MESSAGE);
