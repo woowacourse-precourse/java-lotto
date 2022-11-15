@@ -5,7 +5,7 @@ import lotto.view.ExceptionMessage;
 
 public class WinningLotto extends Lotto {
 
-    private int bonusNumber;
+    private final int bonusNumber;
 
     public WinningLotto(List<Integer> numbers, int bonusNumber) {
         super(numbers);
