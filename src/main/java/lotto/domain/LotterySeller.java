@@ -16,4 +16,8 @@ public class LotterySeller {
 		}
 		return lotteryTickets;
 	}
+
+	public static List<Lotto> getLotteryTickets() {
+		return lotteryTickets;
+	}
 }

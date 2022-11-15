@@ -36,4 +36,8 @@ public class WinningLotto {
 		}
 		return prizeResult;
 	}
+
+	public static EnumMap<Rank, Integer> getPrizeResult() {
+		return prizeResult;
+	}
 }

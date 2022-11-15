@@ -3,6 +3,7 @@ package lotto.service;
 import static lotto.util.Constants.*;
 
 public class Money {
+	private static int ticketCount;
 
 	public Money() {
 	}
@@ -22,6 +23,10 @@ public class Money {
 	}
 
 	public static int calculateMaximumLottoCount(String input) {
-		return Integer.parseInt(input) / LOTTO_PRICE;
+		return ticketCount = Integer.parseInt(input) / LOTTO_PRICE;
+	}
+
+	public static int getTicketCount() {
+		return ticketCount;
 	}
 }
