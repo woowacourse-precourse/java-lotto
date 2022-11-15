@@ -28,27 +28,7 @@ public class Game {
 
     public void runGame(){
         Message.printStartWinningStatistics();
-
-        // 사용자 로또 순환 하면서 1. 일치 개수 얻기, 2. 등수 얻기, 3. 해당 등수 없으면 continue, 있으면 결과 추가
-        List<Lotto> lottoTickets = service.getLottoTickets();
-        for (int i=0; i < lottoTickets.size(); i++){
-
-            Lotto lottoTicket = lottoTickets.get(i);
-            List<Integer> lottoNumbers = lottoTicket.getNumbers();
-
-            //1. 일치 개수 얻기
-            int sameCount = getSameCount(lottoNumbers);
-
-            //2. 등수 얻기
-            int rank = getRank(sameCount, lottoNumbers);
-
-            //3. 해당 등수 없으면 continue, 있으면 결과 추가
-            if (isNotRank(rank)){
-                continue;
-            }
-            
-            setWinningResult(rank);
-        }
+        setWinningResult();
 
         setWinningPrize();
         Message.printWinningStatistics(this.winningResult);
@@ -57,7 +37,25 @@ public class Game {
         Message.printProfitRate(this.profitRate);
     }
 
-    private void setWinningResult(int rank) {
+    // 사용자 로또 순환 하면서 1. 일치 개수 얻기, 2. 등수 얻기, 3. 해당 등수 없으면 continue, 있으면 결과 추가
+    private void setWinningResult(){
+        List<Lotto> lottoTickets = service.getLottoTickets();
+        for (int i=0; i < lottoTickets.size(); i++){
+
+            List<Integer> lottoNumbers = lottoTickets.get(i).getNumbers();
+
+            int sameCount = getSameCount(lottoNumbers);
+            int rank = getRank(sameCount, lottoNumbers);
+
+            if (isNotRank(rank)){
+                continue;
+            }
+
+            setResult(rank);
+        }
+    }
+
+    private void setResult(int rank) {
         this.winningResult[rank - 1] += 1;
     }
 
