@@ -18,10 +18,14 @@ public class Application {
     private static void mainUI() {
         LottoSystem lottoSystem = new LottoSystem();
         LottoUser user = buyLottoUI(lottoSystem);
+
+        user.buyLotto();
         lottoInfoUI(user.getLottos());
 
         setWinNumbersUI(lottoSystem);
         setBonusNumbersUI(lottoSystem);
+
+
     }
 
     private static LottoUser buyLottoUI(LottoSystem lottoSystem) {
@@ -35,7 +39,6 @@ public class Application {
         }
 
         LottoUser user = new LottoUser(money, lottoSystem);
-        user.buyLotto();
         return user;
     }
 
