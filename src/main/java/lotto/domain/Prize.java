@@ -1,12 +1,12 @@
 package lotto.domain;
 
 public enum Prize {
-    LOSING_TICKET(0, 0, "0"),
-    FIFTH_PLACE(3, 5000, "(5,000원)"),
-    FOURTH_PLACE(4, 50000, "(50,000원)"),
-    THIRD_PLACE(5, 1500000, "(1,500,000원)"),
+    LOSING_TICKET(0, 0, " 0"),
+    FIFTH_PLACE(3, 5000, " (5,000원)"),
+    FOURTH_PLACE(4, 50000, " (50,000원)"),
+    THIRD_PLACE(5, 1500000, " (1,500,000원)"),
     SECOND_PLACE(5, 30000000, ", 보너스 볼 일치 (30,000,000원)"),
-    FIRST_PLACE(6, 2000000000, "(2,000,000,000원)");
+    FIRST_PLACE(6, 2000000000, " (2,000,000,000원)");
 
     private final int matchN;
     private final int amount;
