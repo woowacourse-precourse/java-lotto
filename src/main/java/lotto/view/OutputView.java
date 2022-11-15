@@ -1,5 +1,6 @@
 package lotto.view;
 
+import lotto.model.Lotto;
 import lotto.model.Lottos;
 import lotto.model.WinningResult;
 import lotto.model.enums.GameMessage;
@@ -11,8 +12,10 @@ public class OutputView {
         System.out.println(ticketAmount+GameMessage.PURCHASE_MESSAGE.getMessage());
     }
 
-    public static void showDrawNumber(Lottos lottos) {
-        lottos.printLottos();
+    public static void showDrawNumber(List<Lotto> lottos) {
+        for (Lotto oneLotto : lottos) {
+            oneLotto.printLotto();
+        }
     }
 
     public static void showWinningResult(List<Integer> winningResult) {
