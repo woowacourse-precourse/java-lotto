@@ -2,7 +2,11 @@ package domain;
 
 import view.ErrorMessage;
 
+import java.util.HashSet;
 import java.util.List;
+
+import static controller.Util.validateDuplicate;
+import static controller.Util.validateSize;
 
 public class LottoCompany {
 
@@ -12,12 +16,9 @@ public class LottoCompany {
     public LottoCompany(List<Integer> winningNumbers, int winningBonus) {
         this.winningBonus = winningBonus;
         validateRange(winningBonus);
+        validateSize(winningNumbers);
+        validateDuplicate(winningNumbers);
         this.winningNumbers = winningNumbers;
-    }
-
-    private void validateRange(int lottoWinningBonus) {
-        if (lottoWinningBonus < 1 || lottoWinningBonus > 45)
-            throw new IllegalArgumentException(ErrorMessage.NOT_RANGE.getErrorMessage());
     }
 
     public List<Integer> getWinningNumbers() {
@@ -26,5 +27,11 @@ public class LottoCompany {
 
     public int getWinningBonus() {
         return winningBonus;
+    }
+
+
+    private void validateRange(int lottoWinningBonus) {
+        if (lottoWinningBonus < 1 || lottoWinningBonus > 45)
+            throw new IllegalArgumentException(ErrorMessage.NOT_RANGE.getErrorMessage());
     }
 }
