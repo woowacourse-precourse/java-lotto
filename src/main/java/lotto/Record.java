@@ -92,10 +92,7 @@ public class Record {
 
     private static String getTotalReturnMessage(LottoTickets lottoTickets) {
         double totalReturn = lottoTickets.getTotalReturn();
-        String message = ResultMessage.TOTAL_RETURN_FRONT.getMessage()
-                + totalReturn
-                + ResultMessage.TOTAL_RETURN_BACK.getMessage()
-                + ReferenceValue.LINE_BREAK;
+        String message = String.format(ResultMessage.TOTAL_RETURN.getMessage(), totalReturn);
 
         return message;
     }
@@ -157,8 +154,7 @@ public class Record {
     public enum ResultMessage {
 
         BORDER("당첨 통계 \n---"),
-        TOTAL_RETURN_FRONT("총 수익률은 "),
-        TOTAL_RETURN_BACK("%입니다.");
+        TOTAL_RETURN("총 수익률은 %,.1f%%입니다.");
 
         private final String message;
 
