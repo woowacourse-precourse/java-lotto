@@ -6,10 +6,10 @@ import lotto.util.Convertor;
 
 public class View {
     private static final String GET_MONEY_MESSAGE = "구입 금액을 입력해 주세요.";
-    private static final String PURCHASE_INFORMATION_MESSAGE = "%d개를 구매했습니다.%n";
+    private static final String PURCHASE_INFORMATION_MESSAGE = "%n%d개를 구매했습니다.%n";
     private static final String GET_LOTTO_NUMBERS_MESSAGE = "당첨 번호를 입력해 주세요.";
-    private static final String GET_BONUS_NUMBERS_MESSAGE = "보너스 번호를 입력해 주세요.";
-    private static final String RESULT_TITLE = "당첨 통계" + "\n" + "---";
+    private static final String GET_BONUS_NUMBERS_MESSAGE = "%n보너스 번호를 입력해 주세요.%n";
+    private static final String RESULT_TITLE = "%n당첨 통계%n---%n";
     private static final String GET_RESULT_MESSAGE = "%s - %d개%n";
     private static final String GET_PROFIT_RATES_MESSAGE = "총 수익률은 %.1f%%입니다.";
 
@@ -44,11 +44,11 @@ public class View {
     }
 
     public static void printInputBonusNumber() {
-        System.out.println(GET_BONUS_NUMBERS_MESSAGE);
+        System.out.printf(GET_BONUS_NUMBERS_MESSAGE);
     }
 
     public static void printResult(int[] lottoResult) {
-        System.out.println(RESULT_TITLE);
+        System.out.printf(RESULT_TITLE);
 
         for (int i = 0; i < lottoResult.length; i++) {
             String winningMessage = WinnerInfo.values()[i].getWinningMessage();
