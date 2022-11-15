@@ -10,6 +10,11 @@ import java.util.Scanner;
 import java.util.stream.Collectors;
 
 public class Application {
+    final float first = 2000000000;
+    final float second = 30000000;
+    final float third = 1500000;
+    final float fourth = 50000;
+    final float fifth = 5000;
     public static void main(String[] args) {
         
         
@@ -78,7 +83,13 @@ public class Application {
 
     static ArrayList<Integer> winCount(List<Lotto> lottoList, List<Integer> luckyList, int bonusNumber){
         ArrayList<Integer> winList = new ArrayList<Integer>();
-        ArrayList<Integer> difference;
+        List<Integer> lotto;
+        List<Integer> difference;
+        int firstPlace= 0;
+        int secondPlace= 0;
+        int thirdPlace= 0;
+        int fourthPlace= 0;
+        int fifthPlace= 0;
         /*
         * 구매한 로또번호와 당첨번호를 차집합을 통해 비교
         * 차집합이 0일경우 1등
@@ -87,7 +98,36 @@ public class Application {
         * 차집합이 2일경우 4등
         * 차집합이 3일경우 5등
         */
+        for(int i=0; i<lottoList.size(); i++){
+            lotto = lottoList.get(i).getNumbers();
 
+            difference = lotto.stream()
+            .filter(k -> !luckyList.contains(k))
+            .collect(Collectors.toList());
+
+            if(difference.size() == 0){
+                firstPlace += 1;
+            }
+            if(difference.size() == 1){
+                if(difference.get(0) == bonusNumber){
+                    secondPlace += 1;
+                }
+                else {
+                    thirdPlace +=1;
+                }
+            }
+            if(difference.size() ==2){
+                fourthPlace +=1;
+            }
+            if(difference.size() ==3){
+                fifthPlace += 1;
+            }
+        }
+        winList.add(firstPlace);
+        winList.add(secondPlace);
+        winList.add(thirdPlace;
+        winList.add(fourthPlace);
+        winList.add(fifthPlace);
 
         return winList;
     }
