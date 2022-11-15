@@ -7,6 +7,15 @@ public class LottoResult {
     private int thirdCount;
     private int fourthCount;
     private int fifthCount;
+    private float profit;
+
+    public float getProfit() {
+        return profit;
+    }
+
+    public void setProfit(float profit) {
+        this.profit = profit;
+    }
 
     public int getFirstCount() {
         return firstCount;
