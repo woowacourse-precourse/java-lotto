@@ -10,19 +10,19 @@ public class Output {
     public static final String PROFIT_EVENT_MESSAGE = "총 수익률은 $profit%입니다.";
     public static final String REPLACE_PROFIT_FROM = "$profit";
 
-    public void blankLine() {
+    public static void blankLine() {
         System.out.println(BLANK_LINE);
     }
 
-    public void purchaseEventMessage() {
+    public static void purchaseEventMessage() {
         System.out.println(PURCHASE_EVENT_MESSAGE);
     }
 
-    public void afterPurchaseEventMessage(int number) {
+    public static void afterPurchaseEventMessage(int number) {
         System.out.println(number + AFTER_PURCHASE_EVENT_MESSAGE);
     }
 
-    public void winNumberEventMessage() {
+    public static void winNumberEventMessage() {
         System.out.println(WIN_NUMBER_EVENT_MESSAGE);
     }
 
