@@ -60,7 +60,7 @@ public class LottoController {
         System.out.println("당첨 통계");
         for (LottoPrize prize : LottoPrize.values()) {
             int number = lottoResult.getPrize(prize);
-            System.out.println();
+            System.out.printf(generateResultMessage(prize, number));
         }
 
         double rate = Math.floor(lottoResult.getRate() * 100) / 100 ;
@@ -74,6 +74,6 @@ public class LottoController {
         if (prize == LottoPrize.SECOUND) {
             return String.format("%d개, 보너스 볼 일치 %d개 (%d)원 ", prize.getLottoNumberMatches(), prize.getReward().get(), number);
         }
-        return String.format("%d개, 보너스 볼 일치 %d개 (%d)원", prize.getLottoNumberMatches(), prize.getReward().get(), number);
+        return String.format("%d개 일치 (%d원) - %d개 \n", prize.getLottoNumberMatches(), prize.getReward().get(), number);
     }
 }
