@@ -12,6 +12,17 @@ public class LottoWinning {
         this.bonus = bonus;
         if (numbers.contains(bonus))
             throw new IllegalArgumentException("보너스 번호와 당첨 번호는 일치할 수 없습니다.");
+        printStatus(compareEqaulsLotto(winning),money);
+    }
+
+    public void printStatus(int[] count, Integer money) {
+        double benefit = getBenefit(count, money);
+        System.out.println("3개 일치 (5,000원) - "+count[0]+"개");
+        System.out.println("4개 일치 (50,000원) - "+count[1]+"개");
+        System.out.println("5개 일치 (1,500,000원) - "+count[2]+"개");
+        System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - "+count[4]+"개");
+        System.out.println("6개 일치 (2,000,000,000원) - "+count[3]+"개");
+        System.out.println("총 수익률은 "+String.format("%.1f",benefit)+"%입니다.");
     }
 
     public static double getBenefit(int[] count, Integer inputMoney) {
@@ -46,5 +57,4 @@ public class LottoWinning {
         }
         return count;
     }
-
 }
