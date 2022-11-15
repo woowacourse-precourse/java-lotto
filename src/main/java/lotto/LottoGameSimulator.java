@@ -5,6 +5,7 @@ import lotto.domain.Lotto;
 import lotto.domain.LottoMatch;
 import lotto.ui.Display;
 import lotto.ui.LottoScanners;
+import lotto.util.LottoValidator;
 
 import java.util.List;
 import java.util.Map;
@@ -27,6 +28,7 @@ public class LottoGameSimulator {
 
             String winningNumber = setWinningNumber();
             String bonusNumber = setBonusNumber();
+            LottoValidator.validateBonusNumberDuplication(winningNumber, bonusNumber);
 
             checkLottoResult(lottoPacks, winningNumber, bonusNumber);
         } catch (Exception e) {

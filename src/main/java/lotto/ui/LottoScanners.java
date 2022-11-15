@@ -1,6 +1,7 @@
 package lotto.ui;
 
 import camp.nextstep.edu.missionutils.Console;
+import lotto.util.LottoValidator;
 
 public class LottoScanners {
 

@@ -4,7 +4,7 @@ import lotto.domain.Lotto;
 import lotto.domain.LottoCalculator;
 import lotto.domain.LottoGenerator;
 import lotto.domain.LottoMatch;
-import lotto.ui.LottoValidator;
+import lotto.util.LottoValidator;
 
 import java.util.Arrays;
 import java.util.List;
@@ -26,8 +26,6 @@ public class LottoController {
     }
 
     public Map<LottoMatch, Integer> calWinningPrize(List<Lotto> lottoPacks, String winingNumber, String bonusNumber) {
-        LottoValidator.validateBonusNumberDuplication(winingNumber, bonusNumber);
-
         List<Integer> winningNumbers = Arrays.stream(winingNumber.split(",")).map(Integer::parseInt)
                 .collect(Collectors.toUnmodifiableList());
 
