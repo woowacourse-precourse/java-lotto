@@ -5,7 +5,6 @@ import static lotto.LottoConstant.BONUS_NUMBER_INPUT_IS_NOT_NUMBER_ERROR_MESSAGE
 import static lotto.LottoConstant.PURCHASE_AMOUNT_INPUT_IS_NOT_FALL_APART_ERROR_MESSAGE;
 import static lotto.LottoConstant.PURCHASE_AMOUNT_INPUT_IS_NOT_NUMBER_ERROR_MESSAGE;
 import static lotto.LottoConstant.PURCHASE_AMOUNT_INPUT_IS_TOO_LOW_TO_BUY_LOTTO_ERROR_MESSAGE;
-import static lotto.LottoConstant.WINNING_LOTTO_NUMBER_INPUT_HAS_SAME_NUMBER_ERROR_MESSAGE;
 import static lotto.LottoConstant.WINNING_LOTTO_NUMBER_INPUT_IS_NOT_IN_LOTTO_RANGE_ERROR_MESSAGE;
 import static lotto.LottoConstant.WINNING_LOTTO_NUMBER_INPUT_IS_NOT_MATCH_REGEX_ERROR_MESSAGE;
 
@@ -16,7 +15,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-import java.util.Set;
 import java.util.stream.Collectors;
 import lotto.domain.Lotto;
 import lotto.domain.Result;
@@ -63,12 +61,9 @@ public class LottoService {
         if (!input.matches(WINNING_NUMBER_INPUT_VALIDATE_REGEX)) {
             throw new IllegalStateException(WINNING_LOTTO_NUMBER_INPUT_IS_NOT_MATCH_REGEX_ERROR_MESSAGE);
         }
-        Set<Integer> numbers = Arrays.stream(input.split(","))
+        List<Integer> numbers = Arrays.stream(input.split(","))
                 .map(Integer::parseInt)
-                .collect(Collectors.toSet());
-        if (numbers.size() < 6) {
-            throw new IllegalStateException(WINNING_LOTTO_NUMBER_INPUT_HAS_SAME_NUMBER_ERROR_MESSAGE);
-        }
+                .collect(Collectors.toList());
         if (!numbers.stream().allMatch(number -> (number >= 1 && number <= 45))) {
             throw new IllegalStateException(WINNING_LOTTO_NUMBER_INPUT_IS_NOT_IN_LOTTO_RANGE_ERROR_MESSAGE);
         }
