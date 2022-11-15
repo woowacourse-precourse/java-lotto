@@ -3,11 +3,10 @@ package lotto;
 import java.util.HashSet;
 import java.util.List;
 
-public class validations {
+public class Validations {
 
     private static final int LOTTO_PRICE = 1_000;
     private static final int LOTTO_LENGTH = 6;
-
 
     // 구입 금액의 유효성을 체크하는 함수
     public static void checkCostValid(String cost){
