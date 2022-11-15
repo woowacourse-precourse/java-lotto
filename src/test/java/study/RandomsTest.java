@@ -41,7 +41,7 @@ public class RandomsTest {
     private void checkRange() {
         for (int number : numbers) {
             if (number > LottoConfig.RANGE_MAX || number < LottoConfig.RANGE_MIN) {
-                throw new IllegalArgumentException(ExceptionMessage.ERROR_RANGE);
+                throw new IllegalArgumentException(ExceptionMessage.ERROR_RANGE.getMessage());
             }
         }
     }

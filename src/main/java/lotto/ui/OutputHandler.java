@@ -3,6 +3,7 @@ package lotto.ui;
 import lotto.domain.LottoReward;
 import lotto.domain.Player;
 import lotto.domain.Statistics;
+import lotto.message.PrintMessage;
 
 import java.util.List;
 import java.util.Map;
@@ -17,8 +18,8 @@ public class OutputHandler {
     }
 
     public void showStatistics() {
-        System.out.println("당첨 통계");
-        System.out.println("---");
+        System.out.println(PrintMessage.MESSAGE_STATISTICS);
+        System.out.println(PrintMessage.MESSAGE_LINE);
 
         Map<LottoReward, Integer> winningHistory = statistics.getWinningHistory();
         showWinningHistory(winningHistory);
@@ -26,15 +27,19 @@ public class OutputHandler {
     }
 
     private void showWinningHistory(Map<LottoReward, Integer> winningHistory) {
-        System.out.printf("3개 일치 (%,d원) - %d개\n", LottoReward.FIFTH.REWARD, winningHistory.get(LottoReward.FIFTH));
-        System.out.printf("4개 일치 (%,d원) - %d개\n", LottoReward.FOURTH.REWARD, winningHistory.get(LottoReward.FOURTH));
-        System.out.printf("5개 일치 (%,d원) - %d개\n", LottoReward.THIRD.REWARD, winningHistory.get(LottoReward.THIRD));
-        System.out.printf("5개 일치, 보너스 볼 일치 (%,d원) - %d개\n",
+        System.out.printf(PrintMessage.MESSAGE_FIFTH.getMessage(),
+                LottoReward.FIFTH.REWARD, winningHistory.get(LottoReward.FIFTH));
+        System.out.printf(PrintMessage.MESSAGE_FOURTH.getMessage(),
+                LottoReward.FOURTH.REWARD, winningHistory.get(LottoReward.FOURTH));
+        System.out.printf(PrintMessage.MESSAGE_THIRD.getMessage(),
+                LottoReward.THIRD.REWARD, winningHistory.get(LottoReward.THIRD));
+        System.out.printf(PrintMessage.MESSAGE_SECOND.getMessage(),
                 LottoReward.SECOND.REWARD, winningHistory.get(LottoReward.SECOND));
-        System.out.printf("6개 일치 (%,d원) - %,d개\n", LottoReward.FIRST.REWARD, winningHistory.get(LottoReward.FIRST));
+        System.out.printf(PrintMessage.MESSAGE_FIRST.getMessage(),
+                LottoReward.FIRST.REWARD, winningHistory.get(LottoReward.FIRST));
     }
 
     private void showRateOfReturn() {
-        System.out.printf("총 수익률은 %.1f%%입니다.\n", statistics.getRateOfReturn());
+        System.out.printf(PrintMessage.MESSAGE_RATE_OF_RETURN.getMessage(), statistics.getRateOfReturn());
     }
 }

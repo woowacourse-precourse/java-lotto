@@ -14,18 +14,15 @@ public class Validator {
         isDuplicated(numbers);
     }
 
-    public static void validatePrice(String money) {
+    public static void validatePrice(int money) {
         try {
-            validatePrice(Integer.parseInt(money));
+            isInRange(money);
+            isCorrectMoney(money);
         }
         catch (NumberFormatException e){
-            throw new IllegalArgumentException(ExceptionMessage.ERROR_FORMAT);
+            System.out.println(ExceptionMessage.ERROR_FORMAT.getMessage());
+            throw new IllegalArgumentException(ExceptionMessage.ERROR_FORMAT.getMessage());
         }
-    }
-
-    public static void validatePrice(int money) {
-        isInRange(money);
-        isCorrectMoney(money);
     }
 
     public static void validateBonusNumber(int bonusNumber, Lotto winningLotto) {
@@ -35,13 +32,13 @@ public class Validator {
 
     private static void isDuplicatedWithLotto(int bonusNumber, Lotto winningLotto) {
         if (winningLotto.getNumbers().contains(bonusNumber)) {
-            throw new IllegalArgumentException(ExceptionMessage.ERROR_DUPLICATED);
+            throw new IllegalArgumentException(ExceptionMessage.ERROR_DUPLICATED.getMessage());
         }
     }
 
     private static void isCorrectSize(List<Integer> numbers) {
         if (numbers.size() != LottoConfig.NUMBER_COUNT) {
-            throw new IllegalArgumentException(ExceptionMessage.ERROR_COUNT);
+            throw new IllegalArgumentException(ExceptionMessage.ERROR_COUNT.getMessage());
         }
     }
 
@@ -50,27 +47,28 @@ public class Validator {
                 .distinct()
                 .collect(Collectors.toList());
         if (numbers.size() != distinctNumbers.size()) {
-            throw new IllegalArgumentException(ExceptionMessage.ERROR_DUPLICATED);
+            throw new IllegalArgumentException(ExceptionMessage.ERROR_DUPLICATED.getMessage());
         }
     }
 
     private static void isInRange(List<Integer> numbers) {
         for (int number : numbers) {
             if (number < LottoConfig.RANGE_MIN || number > LottoConfig.RANGE_MAX) {
-                throw new IllegalArgumentException(ExceptionMessage.ERROR_RANGE);
+                throw new IllegalArgumentException(ExceptionMessage.ERROR_RANGE.getMessage());
             }
         }
     }
 
     private static void isInRange(int money) {
         if (money > LottoConfig.BUY_MAX_PRICE || money < LottoConfig.BUY_MIN_PRICE) {
-            throw new IllegalArgumentException(ExceptionMessage.ERROR_BUY_PRICE);
+            throw new IllegalArgumentException(ExceptionMessage.ERROR_BUY_PRICE.getMessage());
         }
     }
 
     private static void isCorrectMoney(int money) {
         if (money % LottoConfig.PRICE != 0) {
-            throw new IllegalArgumentException(ExceptionMessage.ERROR_PRICE);
+            System.out.println(ExceptionMessage.ERROR_PRICE.getMessage());
+            throw new IllegalArgumentException(ExceptionMessage.ERROR_PRICE.getMessage());
         }
     }
 }

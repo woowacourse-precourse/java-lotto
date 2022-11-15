@@ -1,6 +1,7 @@
 package lotto.ui;
 
 import lotto.domain.*;
+import lotto.message.PrintMessage;
 
 import java.util.List;
 
@@ -17,17 +18,17 @@ public class LottoSimulator {
     }
 
     public void start() {
-        System.out.println("금액을 입력해 주세요.");
+        System.out.println(PrintMessage.MESSAGE_ENTER_PRICE.getMessage());
         inputMoney();
 
         int count = buyLotto();
-        System.out.printf("%d개를 구매했습니다.\n", count);
+        System.out.printf(PrintMessage.MESSAGE_BUY_LOTTO.getMessage(), count);
         showLotteries();
 
-        System.out.println("당첨 번호를 입력해 주세요.");
+        System.out.println(PrintMessage.MESSAGE_ENTER_WINNING_NUMBER);
         Lotto winningLotto = inputWinningNumber();
 
-        System.out.println("보너스 번호를 입력해 주세요.");
+        System.out.println(PrintMessage.MESSAGE_ENTER_BONUS_NUMBER);
         int bonusNumber = inputLottoBonusNumber(winningLotto);
 
         List<LottoReward> lottoRewards = calculate(winningLotto, bonusNumber);

@@ -17,7 +17,9 @@ public class InputHandler {
             money = Integer.parseInt(Console.readLine());
             Validator.validatePrice(money);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException(ExceptionMessage.ERROR_FORMAT);
+            Validator.validatePrice(money);
+            System.out.println(ExceptionMessage.ERROR_FORMAT.getMessage());
+            throw new IllegalArgumentException(ExceptionMessage.ERROR_FORMAT.getMessage());
         }
 
         return money;
@@ -33,7 +35,8 @@ public class InputHandler {
                     .collect(Collectors.toList());
             Validator.validateNumbers(numbers);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException(ExceptionMessage.ERROR_FORMAT);
+            System.out.println(ExceptionMessage.ERROR_FORMAT.getMessage());
+            throw new IllegalArgumentException(ExceptionMessage.ERROR_FORMAT.getMessage());
         }
 
         return numbers;
