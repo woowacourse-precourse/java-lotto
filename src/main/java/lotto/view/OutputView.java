@@ -10,6 +10,8 @@ public class OutputView {
     private static final char ARRAY_END = ']';
     private static final String ARRAY_SEPARATOR = ", ";
 
+    private static final String EXCEPTION_PREFIX = "[ERROR] ";
+
     public static void printPurchase(List<Lotto> lottos) {
         System.out.println(lottos.size() + "개를 구매했습니다.");
     }
@@ -28,5 +30,9 @@ public class OutputView {
                 .map(String::valueOf)
                 .collect(Collectors.joining(ARRAY_SEPARATOR));
         System.out.println(ARRAY_BEGIN + separatedNumbers + ARRAY_END);
+    }
+
+    public static void printException(String detailedMessage) {
+        System.out.println(EXCEPTION_PREFIX + detailedMessage);
     }
 }

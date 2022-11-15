@@ -24,8 +24,8 @@ public class Game {
             Money profit = sumProfitsOf(ranks);
             double profitRate = capital.calculateProfitRateOf(profit);
             StatisticsView.printStatistics(ranks, profitRate);
-        }
-        catch (IllegalArgumentException exception){
+        } catch (IllegalArgumentException exception) {
+            OutputView.printException(exception.getMessage());
         }
     }
 
