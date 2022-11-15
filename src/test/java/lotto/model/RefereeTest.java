@@ -67,6 +67,18 @@ class RefereeTest {
         Assertions.assertEquals(referee.calculatePrizeOfEachTicket(strikeThree), 3.0);
     }
 
+    @DisplayName("수익률 계산하기")
+    @Test
+    void calculateProfitRate() {
+        List<List<Integer>> userNumbers = new ArrayList<>();
+        userNumbers.add(strikeThree);
+
+        referee.calculatePrizeOfAllTicket(userNumbers);
+
+        int inputMoney = 8000;
+        Assertions.assertEquals(referee.calculateProfitRate(inputMoney), 62.5);
+    }
+
     @DisplayName("총수익 계산하기")
     @Test
     void calculateTotalProfit() {
