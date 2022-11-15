@@ -49,5 +49,7 @@ public class LotteryController {
         return LottoFactory.lottos;
     }
 
-
+    private WinningNumbers makeWinNums() {
+        return LottoFactory.createWinNums(Input.inputWinningLotteryNumber(), Input.inputBonusNumber());
+    }
 }
