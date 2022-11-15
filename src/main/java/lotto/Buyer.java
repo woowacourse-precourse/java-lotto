@@ -1,7 +1,8 @@
 package lotto;
 
-import camp.nextstep.edu.missionutils.*;
+import camp.nextstep.edu.missionutils.Console;
 
+import java.io.*;
 import java.util.*;
 
 public class Buyer {
@@ -37,9 +38,15 @@ public class Buyer {
     }
 
     private void printLottoInfos(List<Lotto> lottos) {
-        System.out.println(lottos.size() + "개를 구매했습니다.");
-        for (Lotto lotto : lottos) {
-            System.out.println(lotto.toString());
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+        try {
+            bw.write(lottos.size() + "개를 구매했습니다.\n");
+            for (Lotto lotto : lottos) {
+                bw.write(lotto.toString() + "\n");
+            }
+            bw.close();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
     }
 }
