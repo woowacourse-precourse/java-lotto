@@ -21,6 +21,10 @@ public class LottoResult {
         lottoResult.put(lottoRank, lottoResult.get(lottoRank) + 1);
     }
 
+    public double getRateOfProfit(int purchaseLottoMoney) {
+        return calculateRateOfProfit(getTotalProfit(), purchaseLottoMoney);
+    }
+
     public int getTotalProfit() {
         int profit = 0;
         for (LottoRank lottoRank : lottoResult.keySet()) {
