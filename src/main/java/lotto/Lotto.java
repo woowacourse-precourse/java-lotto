@@ -1,7 +1,5 @@
 package lotto;
 
-import camp.nextstep.edu.missionutils.Randoms;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,6 +18,7 @@ public class Lotto {
     }
 
     // TODO: 추가 기능 구현
+    // 당첨 번호와 사용자 추첨 번호 일치 결과 저장
     public int[] countWinningResult(List<List<Integer>> userRandomNumber, int count, int[] matches) {
         for (int i = 0; i < count; i++) {
             int matchCount = checkWinningNumbers(userRandomNumber.get(i));
@@ -45,7 +44,7 @@ public class Lotto {
         return matchCount;
     }
 
-    // n개 일치 저장하기
+    // 일치 결과 리턴
     public int[] returnWinningResult(int matchCount, int[] matches) {
         if (matchCount == 3) {
             matches[0]++;
@@ -64,15 +63,5 @@ public class Lotto {
         }
 
         return matches;
-    }
-
-    public List<Integer> saveWinningNumbers(String[] tempWinningNumbers, int maxLottoLength) {
-        List<Integer> numbers = new ArrayList<>();
-
-        for (int i = 0; i < maxLottoLength; i++) {
-            numbers.add(Integer.parseInt(tempWinningNumbers[i]));
-        }
-
-        return numbers;
     }
 }

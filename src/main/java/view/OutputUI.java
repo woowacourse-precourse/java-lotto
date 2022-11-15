@@ -1,7 +1,7 @@
 package view;
 
 import lotto.Lotto;
-import service.LottoService;
+import service.LottoUserService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,7 +17,7 @@ public class OutputUI {
 
     // 사용자 랜덤 숫자 출력
     public List<List<Integer>> printUserRandomNumbers(int count) {
-        LottoService lottoService = new LottoService();
+        LottoUserService lottoService = new LottoUserService();
         List<List<Integer>> userRandomNumbers = new ArrayList<>();
 
         userRandomNumbers = lottoService.saveUserRandomNumbers(count, userRandomNumbers);

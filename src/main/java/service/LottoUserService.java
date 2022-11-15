@@ -5,8 +5,10 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
-public class LottoService {
+public class LottoUserService {
     final static int MAX_LOTTO_LENGTH = 6;
+
+    // 사용자 추첨 번호 저장하기
     public List<List<Integer>> saveUserRandomNumbers(int count, List<List<Integer>> userRandomNumbers) {
         for (int i = 1; i <= count; i++) {
             userRandomNumbers.add(makeUserRandomNumbers());
@@ -14,12 +16,14 @@ public class LottoService {
         return userRandomNumbers;
     }
 
+    // 사용자 추첨 번호 생성
     public List<Integer> makeUserRandomNumbers() {
         List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
 
         return numbers;
     }
 
+    // 입력된 당첨 번호 추출하기
     public List<Integer> changeTypeOfWinningNumbers(String[] tempWinningNumbers) {
         List<Integer> numbers = new ArrayList<>();
 
