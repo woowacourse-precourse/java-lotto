@@ -40,5 +40,14 @@ public class InputView {
         }
         return true;
     }
+    public List<Integer> castToList(String input) {
+        List<Integer> winningNumbers = new ArrayList<>();
 
+        for (String number : input.split(",")) {
+            isNumber(number.trim());
+            winningNumbers.add(Integer.valueOf(number.trim()));
+        }
+
+        return winningNumbers;
+    }
 }
