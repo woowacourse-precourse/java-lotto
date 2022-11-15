@@ -1,6 +1,7 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import lotto.domain.Lotto;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -8,7 +9,9 @@ import java.util.List;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomUniqueNumbersInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static lotto.exception.InputException.inputMoneyException;
+import static lotto.service.LottoService.countMatchingNumber;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class ApplicationTest extends NsTest {
     private static final String ERROR_MESSAGE = "[ERROR]";
@@ -79,6 +82,19 @@ class ApplicationTest extends NsTest {
             runException("1000", "1,2,3,4,5,6", "46");
             assertThat(output()).contains("[ERROR] 보너스 번호는 1부터 45 사이의 숫자여야 합니다.");
         });
+    }
+
+    @Test
+    void 로또_값이_일치하는_개수() {
+        // given
+        Lotto lottoA = new Lotto(List.of(1,2,3,4,5,6));
+        Lotto lottoB = new Lotto(List.of(2,6,7,8,9,10));
+
+        // when
+        int count = countMatchingNumber(lottoA, lottoB);
+
+        // then
+        assertEquals(count, 2);
     }
 
     @Override
