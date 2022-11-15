@@ -6,7 +6,6 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 import java.io.ByteArrayInputStream;
 
-import static org.junit.jupiter.api.Assertions.*;
 
 class UserTest {
     @ParameterizedTest
