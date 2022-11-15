@@ -7,6 +7,8 @@ import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 class BonusTest {
     private Lotto winningLotto;
@@ -24,10 +26,14 @@ class BonusTest {
     }
 
     @DisplayName("로또 번호와 보너스 번호를 비교해 일치하는지 확인한다.")
-    @Test
-    void isMatch() {
-        Bonus bonus = new Bonus(7, winningLotto);
-        boolean actual = bonus.isMatch(List.of(7, 8, 9, 10, 11, 12));
-        assertThat(actual).isTrue();
+    @ParameterizedTest
+    @CsvSource(value = {"7, true", "9, true", "11, true", "13,false", "14, false"})
+    void isMatch(int bonusNumber, boolean expected) {
+        List<Integer> lottoNumbers = List.of(7, 8, 9, 10, 11, 12);
+
+        Bonus bonus = new Bonus(bonusNumber, winningLotto);
+        boolean actual = bonus.isMatch(lottoNumbers);
+
+        assertThat(actual).isEqualTo(expected);
     }
 }
