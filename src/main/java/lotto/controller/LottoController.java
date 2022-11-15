@@ -121,6 +121,10 @@ public class LottoController {
         return winningLog;
     }
 
+    public void setWinningLog(int[] winningLog) {
+        this.winningLog = winningLog;
+    }
+
     public double computeRateOfReturn(int purchasePrice) {
         int sum = 0;
 
