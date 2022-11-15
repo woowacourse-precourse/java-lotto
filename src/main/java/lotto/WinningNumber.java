@@ -7,30 +7,44 @@ import java.util.*;
 public class WinningNumber {
     private static final String REQUEST_WINNING_NUMBER_MESSAGE = "당첨 번호를 입력해 주세요.";
     private static final String REQUEST_BONUS_NUMBER_MESSAGE = "보너스 번호를 입력해 주세요.";
-    private final List<Integer> winningNumber;
+    private final List<Integer> numbers;
     private final int bonusNumber;
 
     public WinningNumber() {
         printRequestWinningNumberMessage();
-        winningNumber = validateWinningNumber(Console.readLine());
+        numbers = validateWinningNumber(Console.readLine());
+
         printRequestBonusNumberMessage();
         bonusNumber = validateNumber(Console.readLine());
     }
 
-    private void printRequestWinningNumberMessage() {
+    private static void printRequestWinningNumberMessage() {
         System.out.println(REQUEST_WINNING_NUMBER_MESSAGE);
     }
 
-    private void printRequestBonusNumberMessage() {
+    private static void printRequestBonusNumberMessage() {
         System.out.println(REQUEST_BONUS_NUMBER_MESSAGE);
+    }
+
+    private static int convertStringToNumber(String number) {
+        try {
+            int n = Integer.parseInt(number);
+            return n;
+        } catch (Exception e) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    private static boolean isNotValidNumber(int n) {
+        return n < 1 || n > 45;
     }
 
     private List<Integer> validateWinningNumber(String inputNumbers) {
         List<Integer> winningNumber = new ArrayList<>();
         String[] numbers = inputNumbers.split(",");
-        for (String number : numbers) {
-            int n = validateNumber(number);
-            winningNumber.add(n);
+        for (String n : numbers) {
+            ;
+            winningNumber.add(validateNumber(n));
         }
 
         if (winningNumber.size() != 6) {
@@ -48,20 +62,15 @@ public class WinningNumber {
         return n;
     }
 
-    private int convertStringToNumber(String number) {
-        try {
-            int n = Integer.parseInt(number);
-            return n;
-        } catch (Exception e) {
-            throw new IllegalArgumentException();
-        }
-    }
-
-    private boolean isNotValidNumber(int n) {
-        return n < 1 || n > 45;
-    }
-
     private boolean isDuplicatedNumber(int n) {
-        return winningNumber.contains(n);
+        return numbers.contains(n);
+    }
+
+    public List<Integer> getNumbers() {
+        return numbers;
+    }
+
+    public int getBonusNumber() {
+        return bonusNumber;
     }
 }
