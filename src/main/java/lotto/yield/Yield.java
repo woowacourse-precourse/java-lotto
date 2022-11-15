@@ -75,6 +75,7 @@ public class Yield {
     }
 
     private void printAllYield() {
+        System.out.println("\n당첨 통계 \n" + "---");
         for (Reward reward: Reward.values()) {
             Integer prize = reward.getPrize();
             List<Integer> matchingNumber = reward.getMatchingNumber();

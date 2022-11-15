@@ -46,10 +46,11 @@ public class User {
 
     public void printLottos() {
         int countOfLotto = lottos.size();
-        System.out.println(countOfLotto + "개를 구매했습니다.");
+        System.out.println("\n" + countOfLotto + "개를 구매했습니다.");
         for (BoughtLotto lotto : lottos) {
             printOneLotto(lotto);
         }
+        System.out.println();
     }
 
     private void printOneLotto(BoughtLotto lotto) {
