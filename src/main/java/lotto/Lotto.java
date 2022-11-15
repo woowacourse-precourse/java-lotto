@@ -22,4 +22,14 @@ public class Lotto {
         }
         return false;
     }
+
+    public int countNumbers(Lotto winnerLotto){
+        int cnt = 0;
+        for(int num : winnerLotto.numbers){
+            if(this.containNumbers(num)){
+                cnt++;
+            }
+        }
+        return cnt;
+    }
 }
