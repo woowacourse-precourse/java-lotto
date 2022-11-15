@@ -2,8 +2,8 @@ package lotto;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 
 public class Service {
 
@@ -13,7 +13,6 @@ public class Service {
     private static final String NUMBER_REGEX = "[+-]?\\d*(\\.\\d+)?";
 
     Exception exception = new Exception();
-
 
     public int toInt(String string) {
         if (!isInteger(string)) {
@@ -83,15 +82,16 @@ public class Service {
 
     public List<RankType> getLotteriesRanks(LottoGroup lottoGroup, WinningNumber winningNumber) {
         List<RankType> rankTypes = new ArrayList<>();
+
         for (Lotto lotto : lottoGroup.getAllLotteryTickets()) {
             rankTypes.add(getLotteryRank(lotto, winningNumber));
         }
         return rankTypes;
     }
 
-
     public int matchNumberCount(List<Integer> numbers, List<Integer> comparisonCriteria) {
         int count = 0;
+
         for (int loopCount = 0; numbers.size() > loopCount; loopCount++) {
             if (comparisonCriteria.contains(numbers.get(loopCount))) {
                 count++;

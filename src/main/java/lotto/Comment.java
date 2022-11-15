@@ -51,4 +51,8 @@ public class Comment {
     public void printTotalReturn(double totalReturn) {
         System.out.println("총 수익률은 " + String.format("%.1f", totalReturn) + "%입니다.");
     }
+
+    public void printErrorMessage() {
+        System.out.println("[ERROR]: 사용자의 입력이 잘못 되었습니다.");
+    }
 }
