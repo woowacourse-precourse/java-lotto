@@ -17,6 +17,11 @@ public class Application {
         LottoProgram lottoProgram = new LottoProgram(lottoController);
 
         // 로또 프로그램 실행
-        lottoProgram.run();
+        try {
+            lottoProgram.run();
+        } catch (IllegalArgumentException exception) {
+            System.out.println(exception.getMessage());
+        }
+
     }
 }

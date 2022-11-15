@@ -64,8 +64,8 @@ public class LottoProgram {
         System.out.println(ASK_FOR_ORDER_PRICE_MESSAGE);
         Integer orderPrice = parseOrderPriceWithValidation(Console.readLine());
         if ((orderPrice % LOTTO_PRICE.getValue()) != 0) {
-            System.out.printf("[ERROR] 로또는 %d원 단위로 구매할 수 있습니다.\n", LOTTO_PRICE.getValue());
-            throw new IllegalArgumentException();
+            String errorMessage = String.format("[ERROR] 로또는 %d원 단위로 구매할 수 있습니다.", LOTTO_PRICE.getValue());
+            throw new IllegalArgumentException(errorMessage);
         }
         return orderPrice;
     }
@@ -124,8 +124,8 @@ public class LottoProgram {
         try {
             return Integer.parseInt(orderPrice);
         } catch (NumberFormatException e) {
-            System.out.printf("[ERROR] 로또는 %d원 단위로 구매할 수 있습니다.\n", LOTTO_PRICE);
-            throw new IllegalArgumentException();
+            String errorMessage = String.format("[ERROR] 로또는 %d원 단위로 구매할 수 있습니다.", LOTTO_PRICE.getValue());
+            throw new IllegalArgumentException(errorMessage);
         }
     }
 
@@ -133,8 +133,8 @@ public class LottoProgram {
         try {
             return Integer.parseInt(number);
         } catch (NumberFormatException e) {
-            System.out.printf("[ERROR] 로또 번호는 %d부터 %d 사이의 숫자여야 합니다.\n", LOTTO_START_NUMBER.getValue(),LOTTO_END_NUMBER);
-            throw new IllegalArgumentException();
+            String errorMessage = String.format("[ERROR] 로또 번호는 %d부터 %d 사이의 숫자여야 합니다.", LOTTO_START_NUMBER.getValue(), LOTTO_END_NUMBER.getValue());
+            throw new IllegalArgumentException(errorMessage);
         }
     }
 
@@ -149,8 +149,8 @@ public class LottoProgram {
         numberSet.add(bonusNumber);
 
         if (numberSet.size() != (LOTTO_NUMBER_COUNT.getValue() + 1)) {
-            System.out.println("[ERROR] 로또 번호는 중복되지 않는 6개의 숫자와 보너스 숫자 1개로 구성됩니다.");
-            throw new IllegalArgumentException();
+            String errorMessage = "[ERROR] 로또 번호는 중복되지 않는 6개의 숫자와 보너스 숫자 1개로 구성됩니다.";
+            throw new IllegalArgumentException(errorMessage);
         }
     }
 }
