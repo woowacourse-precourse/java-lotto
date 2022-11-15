@@ -5,6 +5,7 @@ import lotto.LottoMessage;
 import lotto.LottoService;
 import lotto.domain.Lotto;
 import lotto.domain.Money;
+import lotto.domain.WinningResult;
 
 import java.util.List;
 
@@ -30,5 +31,10 @@ public class LottoController {
         String bonusNumber = Console.readLine();
 
         lottoService.setWinningNumber(winningNumber, bonusNumber);
+    }
+
+    public void showWinningResult() {
+        WinningResult winningResult = lottoService.result();
+        lottoMessage.printWinningResult(winningResult);
     }
 }
