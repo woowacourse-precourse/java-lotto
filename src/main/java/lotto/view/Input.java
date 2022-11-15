@@ -31,9 +31,9 @@ public class Input {
         }
     }
 
-    public static Lotto inputLottoNumbers(String numbers) {
+    public static Lotto inputLottoNumbers() {
         System.out.println(INPUT_LOTTO_NUMBERS);
-        numbers = Console.readLine();
+        String numbers = Console.readLine();
         return replaceSeparator(numbers);
     }
 
@@ -59,9 +59,9 @@ public class Input {
         }
     }
 
-    public static int inputBonusNumber(String number) {
+    public static int inputBonusNumber() {
         System.out.println(INPUT_BONUS_NUMBER);
-        number = Console.readLine();
+        String number = Console.readLine();
         return convertBonusNumber(number);
     }
 

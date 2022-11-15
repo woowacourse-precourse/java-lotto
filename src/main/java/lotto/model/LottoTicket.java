@@ -12,7 +12,11 @@ public class LottoTicket {
         this.ticket = generateRandomLottoTicket();
     }
 
-    public List<Integer> generateRandomLottoTicket() {
+    public List<Integer> getTicket() {
+        return ticket;
+    }
+
+    private List<Integer> generateRandomLottoTicket() {
         List<Integer> LottoTicket = Randoms.pickUniqueNumbersInRange(1, 45, 6);
         return sortRandomLottoTicket(LottoTicket);
     }
