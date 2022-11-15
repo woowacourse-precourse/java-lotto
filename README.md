@@ -229,19 +229,37 @@ public class Lotto {
 
 ## 기능 목록 정리
 
--[x] 구입 가격을 입력 받는 메서드 - `setPerchasePrice`
-    -[x] 1000으로 나눠떨어지지 않는 경우 예외 처리 - `IllegalArgumentException`
--[x] 구입 가격을 기준으로 발행한 로또의 수량 및 번호를 출력한다. `publishPerchasedLottoNumbers`
--[x] 당첨 번호를 입력을 쉼표를 기준으로 입력받는 메서드 - `getLottoNumbers`
--[x] 보너스 번호를 입력 받는다. `setLottoBonusNumber`
-    -[x] 입력을 받을 때 범위를 벗어나거나 중복된 숫자가 들어오면 발생하는 예외 - `IllegalArgumentException`
--[x] 각 일치하는 갯수에 대한 결과를 찾는 메서드 `findMatchCount`
-    -[x] 구입한 로또 번호에 대해서 당첨 번호와 비교해서 몇개가 맞는지 확인하는 메서드 - `getMatchCountWithLotto`
--[x] 수익율 계산 메서드 - `calcWinningPrice`
-
 -[x] 당첨금을 `Enum`으로 처리
+-[x] 상수를 인터페이스에 넣어서 따로 처리
 
--[x] 중복에 대한 예외처리
+### Manager class
+
+-[x] 구입 가격을 입력 받는 메서드 - `setPerchasePrice`
+-[x] 구입 가격을 기준으로 발행한 로또의 수량 및 번호를 출력한다. `publishPerchasedLottos`
+-[x] 각 일치하는 갯수에 대한 결과를 찾는 메서드 `findMatchCount`
+-[x] 수익율 계산 메서드 - `calculateYield`
+
+### Lotto class
+
+-[x] 로또 번호는 생성자를 통해서 입력 받는다.
+-[x] 보너스 번호를 입력 받는다. `setLottoBonusNumber`
+-[x] 구입한 로또 번호에 대해서 당첨 번호와 비교해서 몇개가 맞는지 확인하는 메서드 - `getMatchCountWithLotto`
+
+### LottoUI
+
+-[x] 구매할 금액을 입력받는 메서드 - `setPurchasePrice`
+-[x] 구매한 금액에 맞춰서 로또 발급해주는 메서드 - `publishLottos`
+-[x] 로또 번호를 입력받아서 설정하는 메서드 - `setLottoNumber`
+-[x] 로또 보너스 번호를 설정하는 메서드 - 'setBonusNumber'
+-[x] 발급받은 로또에 대한 결과를 출력해주는 메서드 - `getLottoResult`
+
+### validate class
+
+-[x] 입력을 받을 때 범위를 벗어나면 발생하는 예외 - `validateInputLength`
+-[x] 중복된 숫자가 들어오면 발생하는 예외 - `validateDuplicate`
+-[x] 숫자 범위를 넘어가면 발생하는 예외 - `validateRange`
+-[x] 숫자가 아닌 것이 들어오면 발생하는 예외 - `validateIsNumber`
+-[x] 1000으로 나눠떨어지지 않는 경우 예외 처리
 
 ## 고민하는 것들
 

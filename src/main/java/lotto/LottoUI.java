@@ -35,7 +35,7 @@ public class LottoUI {
     public void setPurchasePrice() {
         System.out.println("구입금액을 입력해 주세요.");
         String input = Console.readLine().trim();
-        validateIsNumber(input);
+        Validation.validateIsNumber(input);
 
         manager.setPurchasePrice(Integer.parseInt(input));
     }
@@ -43,9 +43,9 @@ public class LottoUI {
     public void setBonusNumber() {
         System.out.println("보너스 번호를 입력해 주세요.");
         String input = Console.readLine().trim();
-        validateIsNumber(input);
+        Validation.validateIsNumber(input);
         bonusNumber = Integer.parseInt(input);
-        validateRange(bonusNumber);
+        Validation.validateRange(bonusNumber);
     }
 
     public void publishLottos() {
@@ -57,7 +57,7 @@ public class LottoUI {
         String[] input = Console.readLine().trim().split(",");
 
         List<Integer> lottoNumbers = Arrays.stream(input)
-                .peek(eachNumber -> validateIsNumber(eachNumber))
+                .peek(eachNumber -> Validation.validateIsNumber(eachNumber))
                 .mapToInt(Integer::parseInt)
                 .boxed()
                 .collect(Collectors.toList());
@@ -65,19 +65,5 @@ public class LottoUI {
         lotto =  new Lotto(lottoNumbers);
     }
 
-    private void validateIsNumber(String each) {
-        try {
-            Integer.parseInt(each);
-        } catch (IllegalArgumentException e) {
-            System.out.println("[ERROR] 입력이 숫자가 아닙니다.");
-            throw new IllegalArgumentException();
-        }
-    }
 
-    private void validateRange(int number) {
-        if (number < LottoConst.START_RANGE || LottoConst.END_RANGE < number) {
-            System.out.println("[ERROR] 범위를 벗어난 숫자입니다.");
-            throw new IllegalArgumentException();
-        }
-    }
 }

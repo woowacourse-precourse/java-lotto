@@ -1,32 +1,16 @@
 package lotto;
 
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 public class Lotto {
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
-        validateInputLength(numbers);
-        validateDuplicate(numbers);
+        Validation.validateInputLength(numbers);
+        Validation.validateDuplicate(numbers);
         this.numbers = numbers;
     }
 
-    private void validateInputLength(List<Integer> numbers) {
-        if (numbers.size() != LottoConst.LOTTO_LENGTH) {
-            System.out.println("[ERROR] 입력된 숫자가 너무 많습니다.");
-            throw new IllegalArgumentException();
-        }
-    }
-
-    private void validateDuplicate(List<Integer> numbers) {
-        Set<Integer> deletedDuplicate = new HashSet<>(numbers);
-        if (deletedDuplicate.size() != numbers.size()) {
-            System.out.println("[ERROR] 중복된 숫자가 있습니다.");
-            throw new IllegalArgumentException();
-        }
-    }
 
     public void setLottoBonusNumber(int number) {
         if (number < LottoConst.START_RANGE || number > LottoConst.END_RANGE) {

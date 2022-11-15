@@ -10,7 +10,7 @@ public class Manager {
     private Integer purchasePrice;
 
     public void setPurchasePrice(int purchasePrice) {
-        validatePurchasePrice(purchasePrice);
+        Validation.validatePurchasePrice(purchasePrice);
         this.purchasePrice = purchasePrice;
     }
 
@@ -47,12 +47,5 @@ public class Manager {
         totalWinnings += matchCounts[3] * WinningPrice.MATCH_5_AND_BONUS.getPrice();
         totalWinnings += matchCounts[4] * WinningPrice.MATCH_6.getPrice();
         return Math.round(totalWinnings * 1000 / (double) purchasePrice) / (double) 10;
-    }
-
-    private void validatePurchasePrice(int purchasePrice) {
-        if (purchasePrice % LottoConst.PURCHASE_UNIT != 0) {
-            System.out.println("[ERROR] 구매할 수 없는 금액입니다.");
-            throw new IllegalArgumentException();
-        }
     }
 }
