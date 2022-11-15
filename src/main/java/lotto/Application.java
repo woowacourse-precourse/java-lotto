@@ -3,7 +3,6 @@ package lotto;
 import statements.ErrorStatements;
 import utils.ConsoleUserInput;
 import utils.ConsoleUserOutput;
-import utils.Validator;
 
 import java.util.List;
 
@@ -44,11 +43,11 @@ public class Application {
         }
 
         out.showResultForm();
-        out.showTheNumberOfThreeMatchedTickets(lottoCounter.threeMatchedTickets());
-        out.showTheNumberOfFourMatchedTickets(lottoCounter.fourMatchedTickets());
-        out.showTheNumberOfFiveMatchedTickets(lottoCounter.fiveMatchedTickets());
-        out.showTheNumberOfFiveAndBonusMatchedTickets(lottoCounter.fiveAndBonusMatchedTickets());
-        out.showTheNumberOfSixMatchedTickets(lottoCounter.sixMatchedTickets());
+        out.showTheNumberOfThreeMatchedTickets(lottoCounter.getThreeMatchedTickets());
+        out.showTheNumberOfFourMatchedTickets(lottoCounter.getFourMatchedTickets());
+        out.showTheNumberOfFiveMatchedTickets(lottoCounter.getFiveMatchedTickets());
+        out.showTheNumberOfFiveAndBonusMatchedTickets(lottoCounter.getFiveAndBonusMatchedTickets());
+        out.showTheNumberOfSixMatchedTickets(lottoCounter.getSixMatchedTickets());
         out.showLottoYield(principal, lottoCounter.addAllPrizeMoney());
         }catch (IllegalArgumentException exit){
             System.out.println(ErrorStatements.SHOUT_INVALID_FORMAT_ERROR.alarmed());
