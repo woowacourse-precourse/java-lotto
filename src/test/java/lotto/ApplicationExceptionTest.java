@@ -37,10 +37,19 @@ class ApplicationExceptionTest extends NsTest {
     }
 
     @Test
-    void 보너스_금액이_숫자가_아니면_예외가_발생한다() {
+    void 보너스_번호가_숫자가_아니면_예외가_발생한다() {
         assertSimpleTest(() -> {
             run("1000", "1,2,3,4,5,6", "asdf");
             assertThat(output()).contains(ERROR_MESSAGE + " " + PARSE_ERROR_MESSAGE
+            );
+        });
+    }
+
+    @Test
+    void 보너스_번호가_1_45_외의_숫자면_예외가_발생한다() {
+        assertSimpleTest(() -> {
+            run("1000", "1,2,3,4,5,6", "56");
+            assertThat(output()).contains(ERROR_MESSAGE + " " + OUT_OF_RANGE_NUMBER_ERROR
             );
         });
     }

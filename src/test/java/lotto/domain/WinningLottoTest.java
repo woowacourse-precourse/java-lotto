@@ -14,6 +14,7 @@ import java.util.List;
 import java.util.stream.Stream;
 
 import static lotto.support.ErrorMessage.DUPLICATED_NUMBER_ERROR;
+import static lotto.support.ErrorMessage.OUT_OF_RANGE_NUMBER_ERROR;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatNoException;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -45,6 +46,18 @@ class WinningLottoTest {
             assertThatThrownBy(() -> new WinningLotto(lotto, bonusNumber))
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessage(DUPLICATED_NUMBER_ERROR);
+        }
+
+        @Test
+        void 보너스_번호가_1_45_숫자면_예외가_발생한다() {
+            //given
+            Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+            int bonusNumber = 0;
+
+            //when then
+            assertThatThrownBy(() -> new WinningLotto(lotto, bonusNumber))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessage(OUT_OF_RANGE_NUMBER_ERROR);
         }
     }
 
