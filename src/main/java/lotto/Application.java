@@ -12,13 +12,18 @@ public class Application {
         // TODO: 프로그램 구현
 
         int buyMoney = buyLotto();
-        List<Integer> lottoRandomNum = lottoRandomNum();
         List<List<Integer>> buyLottoPrint = buyLottoPrint(buyMoney);
         Lotto myLottoNum = myLottoNum();
         int bonusNum = bonusNum(myLottoNum);
-        int lottoStart = lottoStart(lottoRandomNum, myLottoNum);
-        boolean bonusAgreement = bonusAgreement(bonusNum, lottoRandomNum);
-        int agreementLotto = agreementLotto(lottoStart, bonusAgreement);
+
+        for (int j = 0; j < buyLottoPrint.size(); j++) {
+            List<Integer> lottoRandomNum = buyLottoPrint.get(j);
+
+            int lottoStart = lottoStart(lottoRandomNum, myLottoNum);
+            boolean bonusAgreement = bonusAgreement(bonusNum, lottoRandomNum);
+            int agreementLotto = agreementLotto(lottoStart, bonusAgreement);
+            int prizeMoney = prizeMoney(agreementLotto);
+        }
     }
 
 //    int lottoStart;
@@ -106,7 +111,7 @@ public class Application {
 
         for (int i = 0; i < numbers.length; i++) {
             try {
-                myLottoNum.add(Integer.parseInt(numbers[i]));
+                myLottoNum.add(Integer.parseInt(numbers[i].trim()));
                 Collections.sort(myLottoNum);
             } catch (NumberFormatException e) {
                 throw new IllegalArgumentException("[ERROR] 입력 타입 오류.");
@@ -201,6 +206,44 @@ public class Application {
         if (lottoStart == 3) {
             agreementLotto = 5;
         }
+
+        System.out.println(agreementLotto);
         return agreementLotto;
     }
+
+    // 당첨금
+    /**
+     * 5. prizeMoney (int lottoStart) - (당첨금 출력) 보완중 <br/>
+     * DecimalFormat을 이용한 숫자 세자리마다 ,콤마찍기 <br/>
+     * 따로 DecimalFormat 메서드 만들지 고민
+     * 
+     * @param lottoStart
+     * @return
+     */
+    public static int prizeMoney(int agreementLotto) {
+//        DecimalFormat decFormat = new DecimalFormat("###,###");
+//        String prizeMoney2 = decFormat.format(prizeMoney);
+
+        int prizeMoney = 0;
+
+        for (int i = 1; i < 6; i++) {
+            if (agreementLotto == i) {
+                prizeMoney = 2000000000;
+            }
+            if (agreementLotto == i) {
+                prizeMoney = 30000000;
+            }
+            if (agreementLotto == i) {
+                prizeMoney = 1500000;
+            }
+            if (agreementLotto == i) {
+                prizeMoney = 50000;
+            }
+            if (agreementLotto == i) {
+                prizeMoney = 5000;
+            }
+        }
+        return prizeMoney;
+    }
+
 }
