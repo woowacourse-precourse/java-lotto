@@ -1,11 +1,13 @@
 package lotto.view;
 
 import camp.nextstep.edu.missionutils.Console;
+import jdk.jshell.spi.ExecutionControl;
 import lotto.domian.lotto.LottoGenerator;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
 
 public class LottoView {
@@ -13,16 +15,27 @@ public class LottoView {
     private static final int MIN_LOTTO_NUMBER = 1;
     private static final int MAX_LOTTO_NUMBER = 45;
 
+    final String REGEX = "^[0-9]*?";
+
     public int getMoney() {
         System.out.println("구입금액을 입력해 주세요.");
-        int money = Integer.parseInt(Console.readLine());
+        String money = Console.readLine();
         validateMoney(money);
-        return money;
+        return Integer.parseInt(money);
     }
 
-    private void validateMoney(int money) {
-        if (money % 1000 != 0) {
+    private void validateMoney(String money) {
+        checkOnlyNumber(money);
+
+        if (Integer.parseInt(money) % 1000 != 0) {
             throw new IllegalArgumentException("[ERROR] 구입 금액은 1,000원 단위여야 합니다.");
+        }
+    }
+
+    private void checkOnlyNumber(String money) {
+        if (!money.matches(REGEX)) {
+            System.out.println("[ERROR] 형식에 맞는 값을 입력해야 합니다.");
+            throw new NoSuchElementException();
         }
     }
 
@@ -51,7 +64,9 @@ public class LottoView {
 
     public int getBonusNumber(List<Integer> numbers) {
         System.out.println("보너스 번호를 입력해 주세요.");
-        int bonusNumber = Integer.parseInt(Console.readLine());
+        String inputBonusNumber = Console.readLine();
+        checkOnlyNumber(inputBonusNumber);
+        int bonusNumber = Integer.parseInt(inputBonusNumber);
         validateBonusNumber(numbers, bonusNumber);
         return bonusNumber;
     }
