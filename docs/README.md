@@ -28,8 +28,8 @@
     - [x] 복권이 2등인지 확인한다. (Tested)
       - [x] 복권이 보너스 번호를 포함하는지 확인한다. (Tested)
   - [x] 수익률을 계산한다. (Tested)
-- [x] 당첨 결과를 출력한다. (Tested)
-- [x] 총 수익률을 출력한다. (Tested)
+- [x] 당첨 결과를 출력한다. (No test required)
+- [x] 총 수익률을 출력한다. (No test required)
 
 ## 기능 요구사항
 
