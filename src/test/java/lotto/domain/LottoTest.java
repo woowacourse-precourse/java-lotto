@@ -34,7 +34,7 @@ class LottoTest {
 
     @DisplayName("보너스 번호를 가졌는지 알 수 있다")
     @Test
-    void decide_lotto_contains_() {
+    void decide_lotto_contains_bonus_number() {
         Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
         LottoNumber bonusNumber = new LottoNumber(1);
 
