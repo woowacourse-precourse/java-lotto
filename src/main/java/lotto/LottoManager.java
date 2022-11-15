@@ -27,7 +27,7 @@ public class LottoManager {
         for (Lotto myLotto : myLottoList) {
             int eachScore = compareSameNumberBetweenTwoLotto(myLotto, answerLotto);
             if (myLotto.getSetOfLottoNumbers().contains(bonusNumber)) {
-                eachScore++;
+                eachScore = eachScore + 10;
             }
 
             score.put(eachScore, score.getOrDefault(eachScore, 0) + 1);
