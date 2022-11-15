@@ -83,10 +83,18 @@ public class UserInterface {
     public List<Integer> requestWinningNumbers() {
         output(MSG_REQUEST_WINNING_NUMBERS);
         String input = input();
-        validateWinningString(input);
+        validateWinningNumbers(input);
         return Arrays.stream(input.split(FORMAT_SPLITTER_WINNING_NUMBERS))
                 .map(Integer::parseInt)
                 .collect(Collectors.toList());
+    }
+
+    private void validateWinningNumbers(String input){
+        validateWinningString(input);
+        List<String> splits = List.of(input.split(FORMAT_SPLITTER_WINNING_NUMBERS));
+        for(String split : splits){
+            validateAs_JavaInteger(split);
+        }
     }
 
     private void validateWinningString(String input) {
