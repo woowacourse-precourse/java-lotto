@@ -24,21 +24,23 @@ public class Lotto {
 	}
 
 	public Lotto(List<Integer> numbers) {
+		validate(numbers);
 		this.numbers = numbers;
-		validate();
 	}
 
 	public Lotto(String winLottoNumber,String bonusNumber) {
 		isNumber(winLottoNumber);
-		this.numbers = convertStringToList(winLottoNumber);
-		isAlreadyIncludeNumber(bonusNumber);
-		validate();
+		isNumber(bonusNumber);
+		List<Integer> winLottoNumbers = convertStringToList(winLottoNumber);
+		isAlreadyIncludeNumber(winLottoNumbers,bonusNumber);
+		validate(winLottoNumbers);
+		this.numbers = winLottoNumbers;
 	}
 
-	private void validate() {
-		isLengthRight();
-		isInRangeNumber();
-		isAnotherNumber();
+	private void validate(List<Integer> numbers) {
+		isLengthRight(numbers);
+		isInRangeNumber(numbers);
+		isAnotherNumber(numbers);
 	}
 
 	public void isNumber(String number) {
@@ -50,13 +52,13 @@ public class Lotto {
 		}
 	}
 
-	public void isLengthRight() {
+	public void isLengthRight(List<Integer> numbers) {
 		if (numbers.size() != LOTTO_LENGTH) {
 			throw new IllegalArgumentException(NOT_THE_RIGHT_LOTTO_LENGTH);
 		}
 	}
 
-	public void isInRangeNumber() {
+	public void isInRangeNumber(List<Integer> numbers) {
 		for (Integer num : numbers) {
 			if (num < LOTTO_START_NUMBER || num > LOTTO_END_NUMBER) {
 				throw new IllegalArgumentException(NOT_THE_RIGHT_RANGE);
@@ -64,7 +66,7 @@ public class Lotto {
 		}
 	}
 
-	public void isAnotherNumber() {
+	public void isAnotherNumber(List<Integer> numbers) {
 		int removeDisticntSize  = (int) numbers.stream()
 				.distinct()
                 .count();
@@ -81,7 +83,7 @@ public class Lotto {
 				.collect(Collectors.toList());
 	}
 
-	public void isAlreadyIncludeNumber(String number) {
+	public void isAlreadyIncludeNumber(List<Integer> numbers,String number) {
 		Integer num = Integer.parseInt(number);
 		if (numbers.contains(num)){
             throw new IllegalArgumentException(NOT_THE_ANOTHER_NUMBER);
