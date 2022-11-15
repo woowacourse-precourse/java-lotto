@@ -34,13 +34,13 @@ public class LottoProcess {
     }
 
     public int compareWinningNumbers(List<Integer> lotto, List<Integer> winningNumbers){
-        int countMachingNumber=START_COUNT;
+        int countMatchingNumber=START_COUNT;
 
         for(int number : lotto){
-            if(winningNumbers.contains(number)) countMachingNumber++;
+            if(winningNumbers.contains(number)) countMatchingNumber++;
         }
 
-        return countMachingNumber;
+        return countMatchingNumber;
     }
 
     public List<Integer> decideRanks(){
