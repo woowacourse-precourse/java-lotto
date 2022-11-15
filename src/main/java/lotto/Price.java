@@ -5,33 +5,34 @@ public class Price {
     private int price = 0;
 
     public Price() {
-        KeyboardInput k = new KeyboardInput();
-        text = k.read();
-        try {
-            if (!validate())
-                throw new IllegalArgumentException();
-            price = Integer.parseInt(text);
-        }
-        catch (IllegalArgumentException e) {
+        text = inputPrice();
+        if(!validate(text)) {
             System.out.println(ErrorMessage.PRICE.get());
+            throw new IllegalArgumentException();
         }
+        price = Integer.parseInt(text);
     }
 
     public int get() {
         return price;
     }
 
-    private boolean validate(){
-        if (!isNumber())
+    private String inputPrice() {
+        KeyboardInput k = new KeyboardInput();
+        return k.read();
+    }
+
+    private boolean validate(String text){
+        if (!isNumber(text))
             return false;
-        if (!isPositiveNumber())
+        if (!isPositiveNumber(text))
             return false;
-        if (!isDividedBy1000())
+        if (!isDividedBy1000(text))
             return false;
         return true;
     }
 
-    private boolean isNumber() {
+    private boolean isNumber(String text) {
         try {
             Integer.parseInt(text);
             return true;
@@ -41,14 +42,14 @@ public class Price {
         }
     }
 
-    private boolean isPositiveNumber() {
+    private boolean isPositiveNumber(String text) {
         int price = Integer.parseInt(text);
         if (price > 0)
             return true;
         return false;
     }
 
-    private boolean isDividedBy1000() {
+    private boolean isDividedBy1000(String text) {
         int price = Integer.parseInt(text);
         if ((price % 1000) == 0)
             return true;
