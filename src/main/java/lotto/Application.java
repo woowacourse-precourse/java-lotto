@@ -18,7 +18,7 @@ public class Application {
 
             double profitRate = calculator.getProfitRate(results, money);
             System.out.printf("총 수익률은 %,.1f%%입니다.", profitRate);
-        } catch(IllegalArgumentException e) {
+        } catch (IllegalArgumentException e) {
             System.out.println("[ERROR] " + e.getMessage());
         }
     }
