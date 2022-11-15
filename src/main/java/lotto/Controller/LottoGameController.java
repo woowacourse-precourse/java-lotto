@@ -1,9 +1,6 @@
 package lotto.Controller;
 
-import lotto.Domain.BonusNumber;
-import lotto.Domain.Lotto;
-import lotto.Domain.LottoPublisher;
-import lotto.Domain.PurchasingLotto;
+import lotto.Domain.*;
 import lotto.View.InputView;
 import lotto.View.OutputView;
 
@@ -12,29 +9,34 @@ import java.util.List;
 
 public class LottoGameController {
 
-    InputView inputView;
-    OutputView outputView;
+    InputView inputView = new InputView();
+    OutputView outputView = new OutputView();
     PurchasingLotto purchasingLotto;
     LottoPublisher lottoPublisher;
+    Lotto lotto;
+    BonusNumber bonusNumber;
+    CompareLotto compareLotto;
+    MatchWinning matchWinning;
 
-    List<List<Integer>> userInputLottoNumberList = new ArrayList<>();
-    int bonusNumber;
+    List<List<Integer>> publishedLottoNumberList = new ArrayList<>();
 
     public void gameStart() {
         purchaseLotto();
         inputLottoNumberAndBonus();
+        printLottoResult();
     }
 
     public void purchaseLotto() {
+        System.out.println("hi");
         String purchasing = inputView.inputPurchasing();
         int purchasingAmount = translateStringToInteger(purchasing);
         outputView.printEmptyLine();
         new PurchasingLotto(purchasingAmount);
         outputView.printTheNumberOfLotto(purchasingLotto.getAmountOfLotto());
         for (int i = 0; i < purchasingLotto.getAmountOfLotto(); i++) {
-            userInputLottoNumberList.add(lottoPublisher.makeRandomLottoNumber());
+            publishedLottoNumberList.add(lottoPublisher.makeRandomLottoNumber());
         }
-        outputView.printLottoNumber(userInputLottoNumberList);
+        outputView.printLottoNumber(publishedLottoNumberList);
     }
 
     public void inputLottoNumberAndBonus() {
@@ -45,6 +47,18 @@ public class LottoGameController {
         String bonusNumberUserInput = inputView.inputBonusNumber();
         int bonusNumber = translateStringToInteger(bonusNumberUserInput);
         new BonusNumber(bonusNumber);
+    }
+
+    public void printLottoResult() {
+        int profit = 0;
+        for (int i = 0; i < publishedLottoNumberList.size(); i++) {
+            new CompareLotto(publishedLottoNumberList.get(i), lotto.getNumbers(), bonusNumber.getBonusNumber());
+            int theNumberOfWins = compareLotto.getTheNumberOfWins();
+            int winningBonus = compareLotto.getWinningBonus();
+            matchWinning.matchThePrice(theNumberOfWins, winningBonus);
+        }
+        outputView.printResultOfLotto();
+        outputView.printProfit();
     }
 
     private List<Integer> translateStringToIntegerList(String text) {
@@ -62,5 +76,9 @@ public class LottoGameController {
         int integerNumber = Integer.parseInt(text);
 
         return integerNumber;
+    }
+
+    public List<List<Integer>> getUserInputLottoNumberList() {
+        return this.getUserInputLottoNumberList();
     }
 }
