@@ -1,6 +1,7 @@
 package lotto.controller;
 
 import static lotto.view.OutputView.printLottoPurchaseCount;
+import static lotto.view.OutputView.printTotalLottos;
 
 import lotto.domain.lotto.TotalLottos;
 import lotto.domain.purchaseAmount.PurchaseAmount;
@@ -21,6 +22,7 @@ public class LottoController {
 
     public static TotalLottos takeTotalLottos(long lottoPurchaseCount) {
         TotalLottos totalLottos = new TotalLottos(lottoPurchaseCount);
+        printTotalLottos(totalLottos);
 
         return totalLottos;
     }
