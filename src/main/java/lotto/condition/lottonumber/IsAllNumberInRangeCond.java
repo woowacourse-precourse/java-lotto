@@ -27,7 +27,7 @@ public class IsAllNumberInRangeCond implements Condition {
         for (String chunk : chunks) {
             List<String> numbers = List.of(chunk.split(""));
 
-            if (!isDigit(numbers) || !isInRange(Integer.parseInt(chunk))) {
+            if (!isAllDigit(numbers) || !isInRange(Integer.parseInt(chunk))) {
                 return false;
             }
         }
@@ -40,7 +40,7 @@ public class IsAllNumberInRangeCond implements Condition {
         return ERROR_MESSAGE;
     }
 
-    private Boolean isDigit(List<String> digits) {
+    private Boolean isAllDigit(List<String> digits) {
         return digits.stream().allMatch((String number) -> Character.isDigit(number.charAt(SINGLE_DIGIT)));
     }
 
