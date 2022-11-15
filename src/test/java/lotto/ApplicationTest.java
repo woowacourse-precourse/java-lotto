@@ -1,8 +1,6 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
-import lotto.domain.Lotto;
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import lotto.exception.Exception;
 import java.util.List;
@@ -75,6 +73,16 @@ class ApplicationTest extends NsTest {
                 assertThatThrownBy(() -> exception.validateIsLessThanThousand(input))
                         .isInstanceOf(IllegalArgumentException.class)
                         .hasMessageContaining("[ERROR]구매금액은 1000 이상이어야 합니다.")
+        );
+    }
+
+    @Test
+    void 보너스번호_문자_입력시_예외테스트() {
+        String input = "C";
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> exception.validateIsNumeric(input))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessageContaining("[ERROR]숫자만 입력해주세요.")
         );
     }
 
