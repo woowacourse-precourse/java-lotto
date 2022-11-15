@@ -1,6 +1,7 @@
 package lotto.model;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import camp.nextstep.edu.missionutils.Randoms;
@@ -17,7 +18,9 @@ public class LottoGenerator {
         List<List<Integer>> lottoTicket = new ArrayList<>();
 
         while (ticketCount != 0) {
-            lottoTicket.add(createLottoNumber());
+            List<Integer> LottoNumbers = createLottoNumber();
+            Collections.sort(LottoNumbers);
+            lottoTicket.add(LottoNumbers);
             ticketCount--;
         }
         return lottoTicket;
