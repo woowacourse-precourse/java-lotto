@@ -15,7 +15,6 @@ public class Rate {
 
 		double money = Integer.parseInt(BuyLotto.USER_MONEY_return());
 		List<Integer> prize_money_list = prize_money_list_return(hashMap);
-		System.out.println("prize_money_list = " + prize_money_list);
 		double money_sum = prize_money_sum(prize_money_list);
 		double result_rate = Math.round(((money_sum / money) * 100)*100)/100.0;
 		return result_rate;
