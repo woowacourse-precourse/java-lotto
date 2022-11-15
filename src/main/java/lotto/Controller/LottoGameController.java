@@ -15,8 +15,9 @@ public class LottoGameController {
     InputView inputView;
     OutputView outputView;
     PurchasingLotto purchasingLotto;
+    LottoPublisher lottoPublisher;
 
-    List<Lotto> userInputLottoNumberList = new ArrayList<>();
+    List<List<Integer>> userInputLottoNumberList = new ArrayList<>();
     int bonusNumber;
 
     public void gameStart() {
@@ -30,7 +31,10 @@ public class LottoGameController {
         outputView.printEmptyLine();
         new PurchasingLotto(purchasingAmount);
         outputView.printTheNumberOfLotto(purchasingLotto.getAmountOfLotto());
-        outputView.printLottoNumber(purchasingLotto.getPurchase());
+        for (int i = 0; i < purchasingLotto.getAmountOfLotto(); i++) {
+            userInputLottoNumberList.add(lottoPublisher.makeRandomLottoNumber());
+        }
+        outputView.printLottoNumber(userInputLottoNumberList);
     }
 
     public void inputLottoNumberAndBonus() {
