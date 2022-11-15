@@ -16,6 +16,11 @@ public class LuckyLottoNumberException {
         checkLottoNumberBetweenOneAndFortyFive(inputLuckyNumbers);
     }
 
+    public void checkLottoBonusNumberExceptions(List<Integer> inputLuckyNumbers, int bonusLottoNumber) {
+        checkLottoBonusNumberBetweenOneAndFortyFive(bonusLottoNumber);
+        checkDuplicatedLottoBonusNumber(inputLuckyNumbers, bonusLottoNumber);
+    }
+
 
 
 }
