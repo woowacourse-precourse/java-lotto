@@ -2,7 +2,7 @@ package lotto.buyLotto;
 
 import camp.nextstep.edu.missionutils.Console;
 
-public class GetMoney extends RuntimeException {
+public class GetMoney {
     public int getMoneyFromUser() {
         try {
             int money = Integer.parseInt(Console.readLine());
