@@ -8,22 +8,22 @@ import java.util.Collections;
 import java.util.List;
 
 public class LottoAutoGenerator {
-    public static List<Lotto> generateLottoCollection(int money) {
-        List<Lotto> groupOfLotto = new ArrayList<>();
+    public static List<Lotto> generateBunchOfLottos(int money) {
+        List<Lotto> bunchOfLottos = new ArrayList<>();
         int amountOfLotto = money / LottoRule.COST.getValue();
         int countOfLotto = 0;
 
         //난수 생성 라이브러리에서 오류가 생긴 경우에는 생성한 에러 문구를 출력하고 그 배열을 제외하되 종료시키지는 않는다.
         while (countOfLotto < amountOfLotto) {
             try {
-                groupOfLotto.add(generateLotto());
+                bunchOfLottos.add(generateLotto());
                 countOfLotto++;
             } catch (IllegalArgumentException error) {
                 System.out.println(error.getMessage());
             }
         }
 
-        return groupOfLotto;
+        return bunchOfLottos;
     }
 
     public static Lotto generateLotto() {

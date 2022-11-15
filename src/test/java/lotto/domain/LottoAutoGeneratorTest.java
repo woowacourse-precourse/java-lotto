@@ -16,7 +16,7 @@ class LottoAutoGeneratorTest {
         int money = 7000;
 
         //when
-        List<Lotto> result = LottoAutoGenerator.generateLottoCollection(money);
+        List<Lotto> result = LottoAutoGenerator.generateBunchOfLottos(money);
 
         //then
         assertThat(result.size())

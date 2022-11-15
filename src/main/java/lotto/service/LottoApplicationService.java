@@ -11,7 +11,7 @@ public class LottoApplicationService {
     private final ConsoleInput consoleInput = new ConsoleInput();
     private final ConsoleOutput consoleOutput = new ConsoleOutput();
     private Money money;
-    private LottoCollection lottoCollection;
+    private BunchOfLottos bunchOfLottos;
     private WinningLotto winningLotto;
 
     private LottoStatistic statistic;
@@ -21,16 +21,16 @@ public class LottoApplicationService {
         money = Money.of(InputParser.parseToInteger(consoleInput.readInput()));
     }
 
-    public void createLottos() {
-        lottoCollection = LottoCollection.of(
-                LottoAutoGenerator.generateLottoCollection(money.getMoney())
+    public void createBunchOfLottos() {
+        bunchOfLottos = BunchOfLottos.of(
+                LottoAutoGenerator.generateBunchOfLottos(money.getMoney())
         );
-        consoleOutput.printAmountOfLottos(money.getMoney());
-        consoleOutput.printAllNumberOfLottoCollection(lottoCollection);
+        consoleOutput.printInformationAboutAmountOfLotto(money.getMoney());
+        consoleOutput.printAllNumbersInBunchOfLottos(bunchOfLottos);
     }
 
     public void createWinningLottoNumbers() {
-        consoleOutput.printDirectiveAboutInputWinningNumber();
+        consoleOutput.printDirectiveAboutInputWinningNumbers();
         List<Integer> winningBalls =
                 InputParser.parseAllElementToInteger(
                         InputParser.divideInputBySeparator(consoleInput.readInput()));
@@ -41,7 +41,7 @@ public class LottoApplicationService {
     }
 
     public void getStatisticOfLotto() {
-        statistic = LottoStatistic.of(lottoCollection.countLottoAward(winningLotto));
-        consoleOutput.printStatisticOfWiningLotto(statistic, money.getMoney());
+        statistic = LottoStatistic.of(bunchOfLottos.countLottoAward(winningLotto));
+        consoleOutput.printInformationAboutStatisticOfWinningLotto(statistic, money.getMoney());
     }
 }
