@@ -2,7 +2,7 @@ package lotto;
 
 public enum WinInfo {
 
-    NO_WIN(-1, -1, 0, -1),
+    NO_WIN(-1, -1, 0, 0),
     WIN1(6, 0, 2000000000, 1),
     WIN2(5, 1, 30000000, 2),
     WIN3(5, 0, 1500000, 3),
