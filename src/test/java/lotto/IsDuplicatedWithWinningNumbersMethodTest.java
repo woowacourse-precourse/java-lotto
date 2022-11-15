@@ -18,7 +18,7 @@ class IsDuplicatedWithWinningNumbersMethodTest {
 
     @DisplayName("당첨 번호와 보너스 번호가 중복되면 예외가 발생한다.")
     @Test
-    void IsDuplicatedWithWinningNumbersMethodExceptionTest1() {
+    void isDuplicatedWithWinningNumbersMethodExceptionTest1() {
         initializeNumberType();
         for (int winningNumber : winningNumbers)
             numberType[winningNumber] = NumberType.WINNING;
@@ -30,7 +30,7 @@ class IsDuplicatedWithWinningNumbersMethodTest {
 
     @DisplayName("당첨 번호와 보너스 번호가 다르면 예외가 발생하지 않는다.")
     @Test
-    void IsDuplicatedWithWinningNumbersMethodExceptionTest2() {
+    void isDuplicatedWithWinningNumbersMethodExceptionTest2() {
         initializeNumberType();
         for (int winningNumber : winningNumbers)
             numberType[winningNumber] = NumberType.WINNING;
