@@ -51,10 +51,11 @@ public class GameOutputHandler {
         }
     }
 
-    private void printProfitRate(int totalEarnMoney, int buyingMoney){
+    public void printProfitRate(int totalEarnMoney, int buyingMoney){
         double rate = ((double)totalEarnMoney / (double)buyingMoney) * 100;
         double roundOff = Math.round(rate * 100.0) / 100.0;
-        System.out.print("총 수익률은 " + roundOff + "%입니다.");
+        String output = insertCommaInRate(roundOff);
+        System.out.print("총 수익률은 " + output + "%입니다.");
     }
 
     private void printWinningRecordOneByOne(int numbersCorrect, int winningMoney, int amountOfThatRanking, boolean isSecondRank){
@@ -81,5 +82,11 @@ public class GameOutputHandler {
         }
 
         return forMake.reverse().toString();
+    }
+    private String insertCommaInRate(double input){
+        int integerInInput = (int)input;
+        double belowDecimalPoint = input - (double)integerInInput;
+        String decimalPointOutput = Double.toString(belowDecimalPoint).substring(1);
+        return insertCommaInInteger(integerInInput) + decimalPointOutput;
     }
 }
