@@ -1,10 +1,10 @@
-package lotto.util;
+package lotto.service;
 
 import java.util.ArrayList;
 import java.util.List;
-import lotto.consumer.Profit;
-import lotto.machine.Tickets;
-import lotto.machine.Winner;
+import lotto.domain.Profit;
+import lotto.domain.Matcher;
+import lotto.domain.Winner;
 
 public class Calculator {
     private final List<List<Integer>> lottoTickets;

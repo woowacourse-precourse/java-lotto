@@ -3,9 +3,9 @@ package lotto.ui;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
-import lotto.machine.Ranks;
-import lotto.machine.Tickets;
-import lotto.util.Calculator;
+import lotto.service.Ranks;
+import lotto.service.Tickets;
+import lotto.service.Calculator;
 
 public class Output {
     private static final int INITIAL_COUNT = 0;

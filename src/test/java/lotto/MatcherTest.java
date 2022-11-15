@@ -1,7 +1,7 @@
 package lotto;
 
 import java.util.List;
-import lotto.util.Matcher;
+import lotto.domain.Matcher;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

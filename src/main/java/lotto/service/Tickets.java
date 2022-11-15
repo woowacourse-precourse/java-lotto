@@ -1,4 +1,4 @@
-package lotto.machine;
+package lotto.service;
 
 import static lotto.Constants.*;
 
@@ -6,6 +6,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import lotto.domain.Lotto;
 
 public class Tickets {
     private final List<List<Integer>> tickets;

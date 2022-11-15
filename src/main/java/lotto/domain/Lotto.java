@@ -1,4 +1,4 @@
-package lotto.machine;
+package lotto.domain;
 
 import static lotto.Constants.*;
 

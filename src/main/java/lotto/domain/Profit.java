@@ -1,6 +1,6 @@
-package lotto.consumer;
+package lotto.domain;
 
-import lotto.machine.Ranks;
+import lotto.service.Ranks;
 
 public class Profit {
     private final Integer profit;

@@ -1,8 +1,9 @@
-package lotto.machine;
+package lotto.domain;
 
 import static lotto.Constants.*;
 
 import java.util.List;
+import lotto.domain.Lotto;
 
 public class Winner {
     private final Integer bonusNumber;

@@ -1,12 +1,12 @@
 package lotto;
 
 import java.util.List;
-import lotto.machine.Tickets;
-import lotto.machine.Winner;
+import lotto.service.Tickets;
+import lotto.domain.Winner;
 import lotto.ui.Input;
 import lotto.ui.Output;
-import lotto.util.Calculator;
-import lotto.util.Convertor;
+import lotto.service.Calculator;
+import lotto.service.Convertor;
 
 public class Application {
     public static void main(String[] args) {

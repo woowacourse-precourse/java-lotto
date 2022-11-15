@@ -1,4 +1,4 @@
-package lotto.util;
+package lotto.service;
 
 import static lotto.Constants.*;
 

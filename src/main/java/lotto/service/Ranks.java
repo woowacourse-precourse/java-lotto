@@ -1,4 +1,4 @@
-package lotto.machine;
+package lotto.service;
 
 import java.util.Arrays;
 
