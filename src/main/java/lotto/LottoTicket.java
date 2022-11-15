@@ -18,7 +18,8 @@ public class LottoTicket {
         canBuyLotto(money);
 
         for (int ticket = ZERO; ticket < money / PRICE_OF_A_TICKET; ticket++) {
-            List<Integer> numbers = Randoms.pickUniqueNumbersInRange(MINIMUM_LOTTO_NUMBER, MAXIMUM_LOTTO_NUMBER, LOTTO_SIZE);
+            List<Integer> numbers = Randoms
+                    .pickUniqueNumbersInRange(MINIMUM_LOTTO_NUMBER, MAXIMUM_LOTTO_NUMBER, LOTTO_SIZE);
             lottos.add(new Lotto(numbers));
         }
 
