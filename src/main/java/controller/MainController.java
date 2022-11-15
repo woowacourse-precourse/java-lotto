@@ -49,7 +49,7 @@ public class MainController {
         bonusNumber = InputView.inputBonusNumber();
         winningNumberCount = new LottoBank().compareBonusNumber(lottoCount, bonusNumber,
                 lotteries, winningLottery);
-        OutputView.printResult(winningNumberCount);
+        OutputView.printWinningResult(winningNumberCount);
         OutputView.printWinningMessage();
         profitRateController();
     }

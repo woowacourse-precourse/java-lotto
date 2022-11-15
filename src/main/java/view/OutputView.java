@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class OutputView {
+    private static int winningCount;
     public static void printLottoCount(int lottoCount) {
         System.out.println();
         System.out.printf("%d개를 구매했습니다.\n", lottoCount);
@@ -22,23 +23,26 @@ public class OutputView {
         System.out.println();
     }
 
-    public static void printResult(int[] winningNumberMatchCount) {
-        List<Integer> winningNumberMatchCounts = Arrays.stream(winningNumberMatchCount)
+    public static void printWinningResult(int[] winningNumberCount) {
+        List<Integer> winningCountList = Arrays.stream(winningNumberCount)
                 .boxed().collect(Collectors.toList());
-        int winningCount = 3;
+        winningCount = 3;
         for (LottoRank lottoRank : LottoRank.values()) {
-            int rankMatchCount = Collections.frequency(winningNumberMatchCounts, winningCount);
-            System.out.println(lottoRank.getValue() + " - " + rankMatchCount + "개");
-            if (winningCount == 5) {
-                winningCount = 7;
-                continue;
-            }
-            if (winningCount == 7) {
-                winningCount = 6;
-                continue;
-            }
-            winningCount++;
+            int winningCountByRank = Collections.frequency(winningCountList, winningCount);
+            System.out.println(lottoRank.getValue() + " - " + winningCountByRank + "개");
+            changeWinningCount(winningCountList);
         }
+    }
+
+    public static int changeWinningCount(List<Integer> winningCountList) {
+        winningCount++;
+        if (winningCount == 7) {
+            winningCount = 6;
+        }
+        if (winningCount == 6) {
+            winningCount = 7;
+        }
+        return winningCount;
     }
 
     public static void printWinningMessage() {
