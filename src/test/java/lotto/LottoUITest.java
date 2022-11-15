@@ -13,10 +13,11 @@ class LottoUITest {
     @Test
     void stringInput() throws Exception {
         //Given
+        LottoUI lottoUI = new LottoUI(new Manager());
         System.setIn(new ByteArrayInputStream("1,a,3,4,5,6".getBytes()));
 
         //When
-        assertThatThrownBy(() -> LottoUI.getLottoNumber())
+        assertThatThrownBy(() -> lottoUI.getLottoNumber())
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -24,10 +25,11 @@ class LottoUITest {
     @Test
     void floatInput() throws Exception {
         //Given
+        LottoUI lottoUI = new LottoUI(new Manager());
         System.setIn(new ByteArrayInputStream("1,1.1,3,4,5,6".getBytes()));
 
         //When
-        assertThatThrownBy(() -> LottoUI.getLottoNumber())
+        assertThatThrownBy(() -> lottoUI.getLottoNumber())
                 .isInstanceOf(IllegalArgumentException.class);
     }
 }

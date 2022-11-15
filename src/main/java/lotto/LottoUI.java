@@ -14,8 +14,15 @@ public class LottoUI {
 
     }
 
+    public void setPurchasePrice() {
+        System.out.println("구입금액을 입력해 주세요.");
+        String input = Console.readLine().trim();
+        validateIsNumber(input);
 
-    public static Lotto getLottoNumber() {
+        manager.setPurchasePrice(Integer.parseInt(input));
+    }
+
+    public Lotto getLottoNumber() {
         System.out.println("당첨 번호를 입력해 주세요.");
         String[] input = Console.readLine().trim().split(",");
 
@@ -28,7 +35,7 @@ public class LottoUI {
         return new Lotto(lottoNumbers);
     }
 
-    private static void validateIsNumber(String each) {
+    private void validateIsNumber(String each) {
         try {
             Integer.parseInt(each);
         } catch (IllegalArgumentException e) {
