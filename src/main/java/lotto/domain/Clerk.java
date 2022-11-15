@@ -10,11 +10,18 @@ public class Clerk {
 
         validateBlank(input);
         money = validateNumeric(input);
+        validateZero(money);
         validateRest(money);
 
         lottoQuantity = money / Constants.LOTTO_PRICE.getValue();
 
         return lottoQuantity;
+    }
+
+    private void validateZero(int money) {
+        if (money == 0) {
+            throw new IllegalArgumentException("0원은 입력받을 수 없습니다.");
+        }
     }
 
     private void validateRest(int money) {

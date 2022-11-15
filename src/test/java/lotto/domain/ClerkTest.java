@@ -2,6 +2,7 @@ package lotto.domain;
 
 import static org.assertj.core.api.Assertions.*;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 class ClerkTest {
@@ -24,6 +25,16 @@ class ClerkTest {
         assertThatThrownBy(() -> clerk.giveLottoQuantity(input))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("수가 아닌 입력이 있습니다.");
+    }
+
+    @DisplayName("0원이 입력되면 예외를 발생한다.")
+    @Test
+    void inputZeroMoney() {
+        String input = "0";
+
+        assertThatThrownBy(() -> clerk.giveLottoQuantity(input))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("0원은 입력받을 수 없습니다.");
     }
 
     @Test
