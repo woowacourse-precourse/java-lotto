@@ -15,7 +15,7 @@ public class Lotto {
     }
 
     public List<Integer> getNumbers() {
-        return sortNumbers(numbers);
+        return numbers;
     }
 
     private void validateNumber(List<Integer> numbers) {
