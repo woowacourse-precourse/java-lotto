@@ -47,6 +47,7 @@ public class Game {
     }
 
     public void changeWinningNumbers(List<Integer> winningNumbers){
+        if(winningNumbers.contains(null)) throw new IllegalArgumentException("[ERROR} 숫자는 공백이 있을 수 없습니다.");
         this.winningNumbers = winningNumbers;
     }
 
