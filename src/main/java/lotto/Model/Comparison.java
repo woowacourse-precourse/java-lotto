@@ -1,5 +1,7 @@
 package lotto.Model;
 
+import static java.util.stream.IntStream.*;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -27,13 +29,9 @@ public class Comparison {
     }
 
     private int compareLottoNum(final List<Integer> numbers, final Lotto ticket) {
-        int count = 0;
-        for (int num : ticket.getNumbers()) {
-            if (numbers.contains(num)) {
-                count++;
-            }
-        }
-        return count;
+        return (int) numbers.stream()
+            .filter(value -> ticket.getNumbers().contains(value))
+            .count();
     }
 
     private void saveResult(final int sum, final boolean bonusCheck) {
