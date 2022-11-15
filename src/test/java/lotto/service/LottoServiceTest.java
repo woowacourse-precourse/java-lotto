@@ -51,7 +51,6 @@ class LottoServiceTest {
     }
 
     private static Stream<Arguments> initInputMoneyAndWinningResults() {
-        Map<Prize, Long> winningResult = createWinningResults(0L, 0L, 0L, 0L, 0L);
         return Stream.of(
                 Arguments.of("5000", createWinningResults(0, 0, 0, 0, 1), 100.0),
                 Arguments.of("10000", createWinningResults(0, 0, 0, 1, 1), 550.0),
