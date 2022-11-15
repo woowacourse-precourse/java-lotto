@@ -6,9 +6,11 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
+import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomUniqueNumbersInRangeTest;
 import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -19,6 +21,17 @@ class LottoServiceTest {
     @BeforeEach
     void beforeEach() {
         lottoService = new LottoService();
+    }
+
+    @Test
+    @DisplayName("1~45 사이 6자리 랜덤값을 오름차순으로 정렬하는지 통합 테스트")
+    void generateLottoNumbersTest() {
+
+        List<Integer> result = lottoService.generateLottoNumbers();
+        List<Integer> expected = lottoService.cloneList(result);
+        Collections.sort(expected);
+
+        assertThat(result).isEqualTo(expected);
     }
 
     @Test
