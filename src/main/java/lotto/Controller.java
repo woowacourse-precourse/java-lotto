@@ -39,12 +39,7 @@ public class Controller {
 
     public static LinkedHashMap<Integer, Integer> AnalyzePlayerNumbers
             (List<Integer> numbers, List<List<Integer>> publishedLottoArray) {
-        LinkedHashMap<Integer, Integer> result = new LinkedHashMap<>();
-        result.put(5, 0);
-        result.put(4, 0);
-        result.put(3, 0);
-        result.put(2, 0);
-        result.put(1, 0);
+        LinkedHashMap<Integer, Integer> result = Model.CreateAnalyzedResultLinkedHashMap();
 
         Integer lottoBonusNumber = numbers.get(6);
         List<Integer> lottoNumbers = numbers;
@@ -131,9 +126,9 @@ public class Controller {
         View.Output("---");
         DecimalFormat formatter = new DecimalFormat("###,###");
         for (int i = 5; 0 < i; i--) {
-            Integer correctNumber = LottoReward.getCorrectNumberByRank(i);
+            Integer correctNumber = LottoReward.GetCorrectNumberByRank(i);
             Integer result = lottoResult.get(i);
-            Integer reward = LottoReward.getRewardByRank(i);
+            Integer reward = LottoReward.GetRewardByRank(i);
             String rewardPrint = formatter.format(reward);
 
             if (i == 2) {

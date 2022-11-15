@@ -18,7 +18,11 @@ public class LottoEnum {
             this.reward = reward;
         }
 
-        public static Integer getRewardByRank(Integer rank) {
+        public Integer GetRank() {
+            return rank;
+        }
+
+        public static Integer GetRewardByRank(Integer rank) {
             for (LottoReward e : LottoReward.values()) {
                 if (e.rank == rank) {
                     return e.reward;
@@ -27,7 +31,7 @@ public class LottoEnum {
             return null;
         }
 
-        public static Integer getCorrectNumberByRank(Integer rank) {
+        public static Integer GetCorrectNumberByRank(Integer rank) {
             for (LottoReward e : LottoReward.values()) {
                 if (e.rank == rank) {
                     return e.correctCount;

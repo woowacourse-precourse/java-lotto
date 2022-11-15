@@ -116,9 +116,19 @@ public class Model {
         Integer sum = 0;
 
         for (int i = 1; i < 6; i++) {
-            sum = sum + LottoReward.getRewardByRank(i) * analyzedResult.get(i);
+            sum = sum + LottoReward.GetRewardByRank(i) * analyzedResult.get(i);
         }
 
         return sum;
+    }
+
+    public static LinkedHashMap<Integer, Integer> CreateAnalyzedResultLinkedHashMap() {
+        LinkedHashMap<Integer, Integer> result = new LinkedHashMap<>();
+
+        for (LottoReward c : LottoReward.values()) {
+            result.put(c.GetRank(), 0);
+        }
+
+        return result;
     }
 }
