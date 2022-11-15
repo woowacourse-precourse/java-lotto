@@ -25,15 +25,19 @@ public class LottoSystemController {
     }
 
     public void runLottoSystem() {
-        int paymentAmount = requestPaymentAmount();
-        List<Lotto> publishedLotto = requestPublishNLotto(paymentAmount);
-        List<String> winningNumbers = requestInputWinningNumbers();
-        int bonusNumber = requestBonusNumber();
+        try {
+            int paymentAmount = requestPaymentAmount();
+            List<Lotto> publishedLotto = requestPublishNLotto(paymentAmount);
+            List<String> winningNumbers = requestInputWinningNumbers();
+            int bonusNumber = requestBonusNumber();
 
-        requestFinalStatistic(publishedLotto, winningNumbers, bonusNumber, paymentAmount);
+            requestFinalStatistic(publishedLotto, winningNumbers, bonusNumber, paymentAmount);
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+        }
     }
 
-    private int requestPaymentAmount() {
+    private int requestPaymentAmount() throws IllegalArgumentException {
         output.printMessage(OutputMessage.REQUEST_PAYMENT_AMOUNT);
         return input.inputPaymentAmount();
     }
@@ -45,12 +49,12 @@ public class LottoSystemController {
         return publishedLotto;
     }
 
-    private List<String> requestInputWinningNumbers() {
+    private List<String> requestInputWinningNumbers() throws IllegalArgumentException {
         output.printMessage(OutputMessage.REQUEST_WINNING_NUMBER);
         return input.inputWinningNumbers();
     }
 
-    private int requestBonusNumber() {
+    private int requestBonusNumber() throws IllegalArgumentException{
         output.printMessage(OutputMessage.REQUEST_BONUS_NUMBER);
         return input.inputBonusNumber();
     }
