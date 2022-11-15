@@ -28,12 +28,12 @@ public class WinningResult {
     }
 
     public Map<Rank, Integer> getResults() {
+        results.remove(Rank.NONE);
         return results;
     }
 
     public void compareLotto(Lotto purchaseLotto) {
         Rank rank = Rank.decide(countCoincide(purchaseLotto), isCoincideBonus(purchaseLotto));
-        System.out.println(rank);
         addRank(rank);
     }
 

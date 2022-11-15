@@ -9,16 +9,14 @@ import java.util.Map;
 
 public class LottoMessage {
     private static final String PURCHASE_MESSAGE = "구입금액을 입력해 주세요.";
-    private static final String WINNING_NUMBER = "당첨 번호를 입력해 주세요.";
-    private static final String BONUS_NUMBER = "보너스 번호를 입력해 주세요.";
+    private static final String PURCHASE_COMPLETED = "\n%d개를 구매했습니다.\n";
+    private static final String WINNING_NUMBER = "\n당첨 번호를 입력해 주세요.";
+    private static final String BONUS_NUMBER = "\n보너스 번호를 입력해 주세요.";
 
-    private static final String WINNING_RESULT = "당첨 통계\n" + "---";
-    private static final String FIFTH_WINNING = "3개 일치 (5,000원) - ";
-    private static final String FOURTH_WINNING = "4개 일치 (50,000원) - ";
-    private static final String THIRD_WINNING = "5개 일치 (1,500,000원) - ";
-    private static final String SECOND_WINNING = "5개 일치, 보너스 볼 일치 (30,000,000원) - ";
-    private static final String FIRST_WINNING = "6개 일치 (2,000,000,000원) - ";
-    private static final String COUNT = "개";
+    private static final String WINNING_RESULT = "\n당첨 통계\n" + "---";
+    private static final String COMMON_WINNING_FORMAT = "%d개 일치 (%,d원) - %d개";
+    private static final String SECOND_WINNING_FORMAT = "%d개 일치, 보너스 볼 일치 (%,d원) - %d개";
+    private static final String PROFIT_PERCENTAGE =  "총 수익률은 %.1f%%입니다.";
 
 
     public void printPurchaseMessage() {
@@ -26,7 +24,10 @@ public class LottoMessage {
     }
 
     public void printPurchasedLotteries(List<Lotto> lotteries) {
-        lotteries.forEach(System.out::println);
+        System.out.format(PURCHASE_COMPLETED, lotteries.size());
+        for (Lotto lotto : lotteries) {
+            System.out.println(lotto);
+        }
     }
 
     public void printInputWinningNumber() {
@@ -41,15 +42,22 @@ public class LottoMessage {
         Map<Rank, Integer> results = winningResult.getResults();
 
         System.out.println(WINNING_RESULT);
-        System.out.println(FIFTH_WINNING + results.getOrDefault(Rank.FIFTH, 0) + COUNT);
-        System.out.println(FOURTH_WINNING + results.getOrDefault(Rank.FOURTH, 0) + COUNT);
-        System.out.println(THIRD_WINNING + results.getOrDefault(Rank.THIRD, 0) + COUNT);
-        System.out.println(SECOND_WINNING + results.getOrDefault(Rank.SECOND, 0) + COUNT);
-        System.out.println(FIRST_WINNING + results.getOrDefault(Rank.FIRST, 0) + COUNT);
+        for (Map.Entry<Rank, Integer> result : results.entrySet()) {
+            System.out.println(makeWinningPrint(result));
+        }
+    }
+
+    private String makeWinningPrint(Map.Entry<Rank, Integer> result) {
+        Rank rank = result.getKey();
+        String winningFormat = COMMON_WINNING_FORMAT;
+        if (rank.equals(Rank.SECOND)) {
+            winningFormat = SECOND_WINNING_FORMAT;
+        }
+
+        return String.format(winningFormat, rank.getCoincideCount(), rank.getWinningAmount(), result.getValue());
     }
 
     public void printProfitPercentage(double profitPercentage) {
-        System.out.format("총 수익률은 %.1f%%입니다.", profitPercentage);
-        System.out.println();
+        System.out.format(PROFIT_PERCENTAGE, profitPercentage);
     }
 }

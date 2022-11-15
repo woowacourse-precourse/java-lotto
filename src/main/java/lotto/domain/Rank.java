@@ -3,25 +3,37 @@ package lotto.domain;
 import java.util.Arrays;
 
 public enum Rank {
-    FIRST(2_000_000_000L, 6),
-    SECOND(30_000_000L, 5, true),
-    THIRD(1_500_000L, 5),
-    FOURTH(50_000L, 4),
-    FIFTH(5_000L, 3),
-    NONE(0L, 0);
+    NONE(0, 0),
+    FIFTH(5_000, 3),
+    FOURTH(50_000, 4),
+    THIRD(1_500_000, 5),
+    SECOND(30_000_000, 5, true),
+    FIRST(2_000_000_000, 6);
 
-    long winningAmount;
+    int winningAmount;
     int coincideCount;
     boolean coincideBonus;
 
-    Rank(long winningAmount, int coincideCount, boolean coincideBonus) {
+    Rank(int winningAmount, int coincideCount, boolean coincideBonus) {
         this.winningAmount = winningAmount;
         this.coincideCount = coincideCount;
         this.coincideBonus = coincideBonus;
     }
 
-    Rank(long winningAmount, int coincideCount) {
+    Rank(int winningAmount, int coincideCount) {
         this(winningAmount, coincideCount, false);
+    }
+
+    public int getWinningAmount() {
+        return winningAmount;
+    }
+
+    public int getCoincideCount() {
+        return coincideCount;
+    }
+
+    public boolean isCoincideBonus() {
+        return coincideBonus;
     }
 
     public static Rank decide(long coincideCount, boolean coincideBonus) {
