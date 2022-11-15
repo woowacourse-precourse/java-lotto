@@ -1,5 +1,8 @@
 package lotto.view;
 
+import static lotto.value.CountValue.COUNT_DIVIDER;
+import static lotto.value.CountValue.COUNT_UNIT;
+
 import lotto.domain.place.MatchResult;
 import lotto.domain.statistics.PlaceHistory;
 
@@ -14,11 +17,6 @@ public class PlaceHistoryMessage {
     public static PlaceHistoryMessage makePlaceHistoryMessage(PlaceHistory placeHistory) {
         return new PlaceHistoryMessage(placeHistory);
     }
-    /*
-     * 1. 이것 팩토리 함수 만들기
-     * 2. 이이상한거 테스트 삭제하기
-     * 3. rate 관련 메시지 객체를 따로 만들기
-     * */
 
     private static void removeLastSeparator(StringBuffer stringBuffer) {
         stringBuffer.setLength(stringBuffer.length() - 1);
@@ -38,13 +36,14 @@ public class PlaceHistoryMessage {
         removeLastSeparator(stringBuffer);
     }
 
-    private void appendLine(StringBuffer stringBuffer,
-                            MatchResult matchResult) {
+    private void appendLine(StringBuffer stringBuffer, MatchResult matchResult) {
         stringBuffer.append(createHistoryLine(matchResult));
     }
 
     private String createHistoryLine(MatchResult matchResult) {
-        return String.format("%s - %d개\n", matchResult, placeHistory.getMatchResults().get(matchResult));
+        return String.format("%s%s%d%s\n", matchResult, COUNT_DIVIDER.getValue(),
+                placeHistory.getMatchResults().get(matchResult),
+                COUNT_UNIT.getValue());
     }
 
 }
