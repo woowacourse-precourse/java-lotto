@@ -1,5 +1,7 @@
 package lotto.domain;
 
+import java.util.List;
+
 public enum Rank {
     FIRST(6, 2_000_000_000),
     SECOND(5, 30_000_000),
@@ -16,5 +18,10 @@ public enum Rank {
     Rank(int matchCount, int matchMoney) {
         this.matchCount = matchCount;
         this.matchMoney = matchMoney;
+    }
+
+    public static boolean isMatchedBonusNumber(Lotto lotto, int bonusNumber) {
+        List<Integer> lottoNumbers = lotto.getLottoNumbers();
+        return lottoNumbers.contains(bonusNumber);
     }
 }
