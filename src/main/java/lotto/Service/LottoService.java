@@ -72,4 +72,22 @@ public class LottoService {
 
         return count;
     }
+
+    public double getEarningRate(Map<Integer, Integer> resultMap, int money) {
+        double rate = 0.0;
+        double totalProfit = 0;
+
+        for (LottoResult lottoResult : LottoResult.values()) {
+            int key = lottoResult.getValue();
+            if (resultMap.containsKey(key)) {
+                int count = resultMap.get(key);
+                totalProfit += lottoResult.getPrize() * count;
+            }
+        }
+
+        rate = money / totalProfit;
+        rate = (1 / rate) * 100;
+
+        return rate;
+    }
 }
