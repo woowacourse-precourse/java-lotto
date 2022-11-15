@@ -5,6 +5,8 @@ import lotto.domain.rank.LottoRank;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.mockito.MockedStatic;
 import org.mockito.Mockito;
 
@@ -63,8 +65,9 @@ public class LottiesTest {
     }
 
     @DisplayName("로또와 당첨 번호를 비교해서 일치하는 개수를 반환한다.")
-    @Test
-    void getMatchCountByLottoAndUserLotto() {
+    @ParameterizedTest
+    @CsvSource({"FIRST, 1", "SECOND, 1", "FOURTH, 2"})
+    void getMatchCountByLottoAndUserLotto(LottoRank rank, int count) {
         try (MockedStatic<Randoms> randoms = Mockito.mockStatic(Randoms.class)) {
             int publishCount = 4;
             int bonusNum = 32;
@@ -74,9 +77,7 @@ public class LottiesTest {
 
             Map<LottoRank, Long> lottoWinCount = lotties.generateLottoRankMap(userLotto, bonusNum);
 
-            assertThat(lottoWinCount.get(LottoRank.FIRST)).isEqualTo(1);
-            assertThat(lottoWinCount.get(LottoRank.SECOND)).isEqualTo(1);
-            assertThat(lottoWinCount.get(LottoRank.FOURTH)).isEqualTo(2);
+            assertThat(lottoWinCount.get(rank)).isEqualTo(count);
         }
     }
 
