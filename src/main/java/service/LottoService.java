@@ -5,7 +5,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
-public class LottoUserService {
+public class LottoService {
     final static int MAX_LOTTO_LENGTH = 6;
 
     // 사용자 추첨 번호 저장하기

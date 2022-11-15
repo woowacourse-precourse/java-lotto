@@ -1,7 +1,7 @@
 package controller;
 
 import lotto.Lotto;
-import service.LottoUserService;
+import service.LottoService;
 import view.InputUI;
 import view.OutputUI;
 
@@ -11,7 +11,7 @@ public class GameController {
     private int count = 0;
     private InputUI inputUI;
     private OutputUI outputUI;
-    private LottoUserService lottoService;
+    private LottoService lottoService;
     private Lotto lotto;
     private int bonusNumber;
     List<List<Integer>> userRandomNumbers;
@@ -20,7 +20,7 @@ public class GameController {
     public void runGame() {
         inputUI = new InputUI();
         outputUI = new OutputUI();
-        lottoService = new LottoUserService();
+        lottoService = new LottoService();
 
         startGame();
         doGame();
