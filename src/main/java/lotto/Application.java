@@ -33,6 +33,13 @@ public class Application {
             Error("중복된 숫자가 존재해서는 안됩니다.");
         }
     }
+    public static void RedundancyCheck(List<Integer> WinningNumber,int BonusNumber){
+        for(int i : WinningNumber){
+            if(i==BonusNumber){
+                Error("중복된 숫자가 존재해서는 안됩니다.");
+            }
+        }
+    }
     public static void RangeCheck(List<Integer> WinningNumber){
         for(int i = 0; i < WinningNumber.size(); i++){
             if(WinningNumber.get(i)>46||WinningNumber.get(i)<1){
@@ -40,10 +47,14 @@ public class Application {
             }
         }
     }
+    public static void RangeCheck(int BonusNumber){
+        if(BonusNumber>46||BonusNumber<1){
+            Error("당첨 번호는 1~45 사이의 숫자여야 합니다.");
+        }
+    }
     public static List<Integer> setWinningNumber(){
         System.out.println();
         System.out.println("당첨 번호를 입력해 주세요");
-
         String[] TempNumber = Console.readLine().split(",");
 
         List<Integer>WinningNumber = new ArrayList<>();
@@ -51,8 +62,19 @@ public class Application {
         for(String i : TempNumber){
             WinningNumber.add(Integer.parseInt(i));
         }
+        RedundancyCheck(WinningNumber);
+        RangeCheck(WinningNumber);
         Collections.sort(WinningNumber);
         return WinningNumber;
+    }
+    public static int setBonus(List<Integer> WinningNumber){
+        System.out.println();
+        System.out.println("보너스 번호를 입력해 주세요.");
+        int BonusNumbber;
+        BonusNumbber = Integer.parseInt(Console.readLine());
+        RangeCheck(BonusNumbber);
+        RedundancyCheck(WinningNumber,BonusNumbber);
+        return BonusNumbber;
     }
     public static List<Lotto> MakeGame(int NumberOfGame){
         List<Lotto> AllGame = new ArrayList<>();
@@ -78,6 +100,8 @@ public class Application {
         int NumberOfGame = PrintPurchaseResult(Amount);
         AllGame = MakeGame(NumberOfGame);
         PrintAllGame(AllGame);
+        List<Integer> Winning = setWinningNumber();
+        int BonusNumber = setBonus(Winning);
     }
     public static void main(String[] args) {
         // TODO: 프로그램 구현
