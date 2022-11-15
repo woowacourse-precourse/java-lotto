@@ -22,7 +22,7 @@ public class BuyLotto {
 
     public  static void valid_devideNum(int buyNum) {
         if (buyNum % 1000 != 0) {
-            throw new IllegalArgumentException("[ERROR] : 1000 단위의 숫자만 입력해주세요");
+            System.out.println("[ERROR]");
         }
     }
 
