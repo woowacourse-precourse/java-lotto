@@ -7,7 +7,8 @@ public class Lotto {
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
-        this.numbers = numbers;
+        this.numbers = new ArrayList<>(numbers);
+        Collections.sort(this.numbers);
     }
 
     private void validate(List<Integer> numbers) {
@@ -23,7 +24,6 @@ public class Lotto {
 
     // TODO: 추가 기능 구현
     public void printLotto() {
-        sort();
         System.out.print("[");
         for (int i = 0; i < numbers.size(); i++) {
             System.out.print(numbers.get(i));
@@ -34,17 +34,13 @@ public class Lotto {
         System.out.println("]");
     }
 
-    private void sort() {
-        Collections.sort(this.numbers);
-    }
-
     private boolean isDuplicatedNumber(List<Integer> number) {
         Set<Integer> set = new HashSet<>(number);
 
         return number.size() != set.size();
     }
 
-    public Prize compareLotto(Lotto winNumber, int bonusNumber) {
+    public Prize[] compareLotto(Lotto winNumber, int bonusNumber) {
         int index = 0;
         Prize[] prize = Prize.values();
         Set<Integer> thisSet = new HashSet<>(this.numbers);
@@ -52,12 +48,13 @@ public class Lotto {
         Set<Integer> bonus = new HashSet<>(List.of(bonusNumber));
         win.retainAll(thisSet);
         if (win.size() == 5 && thisSet.retainAll(bonus)) {
-            return Prize.second;
+            index = 5;
         }
         if (win.size() - 2 >= 0) {
             index = win.size() - 2;
         }
-        return prize[index];
+        prize[index].addCount();
+        return prize;
     }
 
     public List<Integer> getNumbers() {
