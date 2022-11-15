@@ -33,6 +33,9 @@ public class Application {
         System.out.println("구입금액을 입력해 주세요.");
         String input = readInput();
         final int MONEY = validateMoneyInput(input);
+        if (MONEY == 0) {
+            return;
+        }
 
         List<Lotto> boughtLottos = new ArrayList<Lotto>();
         boughtLottos = buyLotto(boughtLottos, MONEY);
@@ -154,11 +157,15 @@ public class Application {
     public static List<Integer> validatePickedNumbers(String input) {
         String[] numbers = input.split(",");
         List<Integer> pickedNumbers = new ArrayList<Integer>();
-
         if (numbers.length != 6) {
             throw new IllegalArgumentException("[ERROR]");
         }
+        pickedNumbers = checkExceptionCondition(numbers, pickedNumbers);
 
+        return pickedNumbers;
+    }
+
+    public static List<Integer> checkExceptionCondition(String[] numbers, List<Integer> pickedNumbers) {
         for (int i = 0; i < numbers.length; i++) {
             int number = parseInt(numbers[i]);
 
@@ -170,7 +177,6 @@ public class Application {
             }
             pickedNumbers.add(number);
         }
-
         return pickedNumbers;
     }
 
