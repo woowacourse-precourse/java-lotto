@@ -28,10 +28,18 @@ public class Lotto {
         }
     }
 
-    public static List<Integer> pickLottoNumbers () {
+    public static List<Integer> pickLottoNumbers() {
         List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
         numbers.sort(Comparator.naturalOrder());
 
         return numbers;
+    }
+
+    public void printLottoNumbers() {
+        System.out.println(numbers);
+    }
+
+    public List<Integer> getLottoNumbers() {
+        return Collections.unmodifiableList(numbers);
     }
 }
