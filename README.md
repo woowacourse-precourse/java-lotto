@@ -185,7 +185,7 @@ BUILD SUCCESSFUL in 0s
 
 #### 사용 예시
 
-```java
+``` java
 List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
 ```
 
@@ -197,7 +197,7 @@ List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
 - `Lotto`에 필드(인스턴스 변수)를 추가할 수 없다.
 - `Lotto`의 패키지 변경은 가능하다.
 
-```java
+``` java
 public class Lotto {
     private final List<Integer> numbers;
 
@@ -225,3 +225,5 @@ public class Lotto {
 - **Git의 커밋 단위는 앞 단계에서 `docs/README.md`에 정리한 기능 목록 단위**로 추가한다.
     - [커밋 메시지 컨벤션](https://gist.github.com/stephenparish/9941e89d80e2bc58a153) 가이드를 참고해 커밋 메시지를 작성한다.
 - 과제 진행 및 제출 방법은 [프리코스 과제 제출](https://github.com/woowacourse/woowacourse-docs/tree/master/precourse) 문서를 참고한다.
+
+# 구현할 기능 목록

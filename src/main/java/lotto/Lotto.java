@@ -11,6 +11,7 @@ public class Lotto {
     public Lotto(List<Integer> numbers) {
         validate(numbers);
         validateLottoNumbersRange(numbers);
+        validateContainNumber(numbers);
         this.numbers = numbers;
     }
 
@@ -28,7 +29,11 @@ public class Lotto {
     private static List<Integer> randomLottoNumbers() {
         List<Integer> lottoNumbers = new ArrayList<>();
         while (lottoNumbers.size() < STATIC_LOTTO_NUMBERS_SIZE) {
-            lottoNumbers.add(RandomNum(MIN_LOTTO_NUMBER, MAX_LOTTO_NUMBER));
+            int num = RandomNum(MIN_LOTTO_NUMBER, MAX_LOTTO_NUMBER);
+            if (lottoNumbers.contains(num)){
+                System.out.println("[ERROR] 로또 번호에 중복된 숫자가 있으면 예외 발생");
+            }
+            lottoNumbers.add(num);
         }
         return lottoNumbers;
     }
@@ -45,6 +50,15 @@ public class Lotto {
             return startNum;
         }
         return startNum + RANDOM.nextInt(endNum - startNum + 1);
+    }
+
+    public static Lotto newLottoWinningNumbers(String WinningNumbers) {
+        ArrayList<Integer> setLottoNumbers = new ArrayList<>();
+        for (String number : WinningNumbers.split(",")) {
+            validateInt(number);
+            setLottoNumbers.add(Integer.parseInt(number));
+        }
+        return new Lotto(setLottoNumbers);
     }
 
     public List<Integer> getLottoNumbers() {
@@ -69,6 +83,15 @@ public class Lotto {
     private void validateNumberRange(Integer number) {
         if (number < MIN_LOTTO_NUMBER || number > MAX_LOTTO_NUMBER) {
             throw new IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
+        }
+    }
+    private void validateContainNumber(List<Integer> Numbers) {
+        ArrayList<Integer> li = new ArrayList<>();
+        for(Integer number : Numbers) {
+            if (li.contains(number)){
+                System.out.println("[ERROR] 로또 번호에 중복된 숫자가 있으면 예외가 발생");
+            }
+            li.add(number);
         }
     }
 }
