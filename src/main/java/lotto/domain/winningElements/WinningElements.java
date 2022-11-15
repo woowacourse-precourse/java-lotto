@@ -1,13 +1,13 @@
 package lotto.domain.winningElements;
 
+import static lotto.domain.winningElements.WinningNumbersValidator.validateAfterParse;
+import static lotto.domain.winningElements.WinningNumbersValidator.validateBeforeParse;
+
 import lotto.view.InputView;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
-
-import static lotto.domain.winningElements.WinningNumbersValidator.validateAfterParse;
-import static lotto.domain.winningElements.WinningNumbersValidator.validateBeforeParse;
 
 public class WinningElements {
     static List<Integer> winningNumbers;
@@ -35,6 +35,8 @@ public class WinningElements {
 
     public static int getBonusNumber() {
         String receivedBonusNumber = InputView.receiveBonusNumber();
+
+        BonusNumberValidator.validate(receivedBonusNumber, winningNumbers);
 
         int bonusNumber = Integer.parseInt(receivedBonusNumber);
 
