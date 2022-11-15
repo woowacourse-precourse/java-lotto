@@ -48,8 +48,8 @@
     
 
 # 테스트
-- [ ] LottoSystem 테스트
-  - [ ] validation 테스트
+- [x] LottoSystem 테스트
+  - [x] validation 테스트
   - [x] 당첨정보 반환 테스트
 
 - [x] WinInfo 테스트
