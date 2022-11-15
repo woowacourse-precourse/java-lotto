@@ -34,7 +34,7 @@ public class Game {
         return gameNumbers.contains(bonusNumber);
     }
 
-    public String compareNumbers(List<Integer> gameNumbers, User user) {
+    private String compareNumbers(List<Integer> gameNumbers, User user) {
         int count = 0;
         for (int gameNumber : gameNumbers) {
             if (user.getWinningNumbers().contains(gameNumber)) count++;

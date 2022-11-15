@@ -32,13 +32,13 @@ class GameTest {
 //            idx++;
 //        }
 //    }
-    @Test
-    void compareNumbers() {
-        User testUser = new User();
-        testUser.setMoney("8000");
-        testUser.setWinningNumbers("1,2,3,4,5,9");
-        testUser.setBonusNumber("7");
-        Game testGame = new Game(testUser.getMoney());
-        assertThat(testGame.compareNumbers(List.of(1, 2, 3, 4, 5, 7), testUser)).isEqualTo("SECOND");
-    }
+//    @Test
+//    void compareNumbers() {
+//        User testUser = new User();
+//        testUser.setMoney("8000");
+//        testUser.setWinningNumbers("1,2,3,4,5,9");
+//        testUser.setBonusNumber("7");
+//        Game testGame = new Game(testUser.getMoney());
+//        assertThat(testGame.compareNumbers(List.of(1, 2, 3, 4, 5, 7), testUser)).isEqualTo("SECOND");
+//    }
 }

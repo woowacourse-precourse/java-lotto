@@ -7,8 +7,8 @@ public class User {
     private int money;
     private int earnMoney;
     private int bonusNumber;
-    private List<Integer> winningNumbers;
-    private Map<String, Integer> result;
+    private final List<Integer> winningNumbers;
+    private final Map<String, Integer> result;
 
     public User() {
         this.money = -1;
