@@ -7,8 +7,8 @@ import java.util.List;
 
 public class Player {
     private static final String GET_MONEY_MESSAGE = "구입금액을 입력해 주세요.";
-    private static final String GET_WINNING_NUMBERS_MESSAGE = "당첨 번호를 입력해 주세요.";
-    private static final String GET_BONUS_NUMBER_MESSAGE = "보너스 번호를 입력해 주세요.";
+    private static final String GET_WINNING_NUMBERS_MESSAGE = "\n당첨 번호를 입력해 주세요.";
+    private static final String GET_BONUS_NUMBER_MESSAGE = "\n보너스 번호를 입력해 주세요.";
     private static final String NUMBER_ERROR = "[ERROR] 숫자가 아닌 값이 있습니다.";
 
     public static int getMoney() {

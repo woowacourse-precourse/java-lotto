@@ -12,7 +12,7 @@ public class Shop {
     public List<Lotto> buyLottos(int money) {
         isMultipleOfPrice(money);
         int amount = money / PRICE;
-        System.out.printf("%d개를 구매했습니다.%n", amount);
+        System.out.printf("%n%d개를 구매했습니다.%n", amount);
         List<Lotto> lottos = new ArrayList<>();
         while (lottos.size() < amount) {
             Lotto lotto = createLotto();
