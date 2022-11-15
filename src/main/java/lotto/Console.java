@@ -42,7 +42,14 @@ public class Console {
 
     public int inputPlusNumber() {
         System.out.println("보너스 번호를 입력해 주세요.");
-        int number = Integer.parseInt(readLine());
+        int number = 0;
+        try{
+            number = Integer.parseInt(readLine());
+
+        } catch (NumberFormatException e){
+            System.out.println("[ERROR] 보너스 번호는 정수형이어야 합니다.");
+            throw new IllegalArgumentException("[ERROR] 보너스 번호는 정수형이어야 합니다.");
+        }
         return number;
     }
 
