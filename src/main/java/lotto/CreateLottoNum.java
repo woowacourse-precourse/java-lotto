@@ -23,11 +23,9 @@ public class CreateLottoNum {
         return userLottoNumbers;
     }
     private static List<Integer> generateLottoNumber() {
-        List<Integer> tmpLottoNumber = Randoms.pickUniqueNumbersInRange(MIN_LOTTO_NUM
-                , MAX_LOTTO_NUM, COUNT_LOTTO_NUM);
-        System.out.println(tmpLottoNumber);
+        List<Integer> tmpLottoNumber = new ArrayList<>(Randoms.pickUniqueNumbersInRange(MIN_LOTTO_NUM
+                , MAX_LOTTO_NUM, COUNT_LOTTO_NUM));
         Collections.sort(tmpLottoNumber);
-        System.out.println(tmpLottoNumber);
         return tmpLottoNumber;
     }
 }
