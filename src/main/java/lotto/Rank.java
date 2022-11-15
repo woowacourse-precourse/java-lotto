@@ -1,5 +1,7 @@
 package lotto;
 
+import static validation.Validator.ERROR_MESSAGE;
+
 public enum Rank {
     FIRST(6, 2_000_000_000),
     SECOND(5, 30_000_000),
@@ -20,5 +22,42 @@ public enum Rank {
         return winningMoney;
     }
 
+    public static Rank of(int countOfMatchingNumbers, boolean includesBonusNumber) {
+        if (isLessThanThreeMatches(countOfMatchingNumbers)) {
+            return LOSE;
+        }
 
+        if (isSecondRank(countOfMatchingNumbers, includesBonusNumber)) {
+            return SECOND;
+        }
+
+        Rank rank = getRank(countOfMatchingNumbers);
+        if (rank != null) {
+            return rank;
+        }
+
+        throw new IllegalArgumentException(ERROR_MESSAGE + countOfMatchingNumbers + "는 유효하지 않은 값입니다.");
+    }
+
+    private static boolean isLessThanThreeMatches(int countOfMatchingNumbers) {
+        return countOfMatchingNumbers < 3;
+    }
+
+    private static boolean isSecondRank(int countOfMatchingNumbers, boolean includesBonusNumber) {
+        return SECOND.checkCountOfMatches(countOfMatchingNumbers) && includesBonusNumber;
+    }
+
+    private static Rank getRank(int countOfMatchingNumbers) {
+        for (Rank rank : values()) {
+            if (rank.checkCountOfMatches(countOfMatchingNumbers)) {
+                return rank;
+            }
+        }
+
+        return null;
+    }
+
+    private boolean checkCountOfMatches(int countOfMatchingNumbers) {
+        return this.countOfMatchingNumbers == countOfMatchingNumbers;
+    }
 }
