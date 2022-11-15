@@ -20,5 +20,4 @@ public class WinningLottoTicketTest {
         winningLottoTicket.countWinningLotto(WinningLotto.NOTHING);
         assertThat(winningLottoTicket.getWinningLottoCount().get(winningLotto)).isEqualTo(1);
     }
-
 }
