@@ -30,7 +30,7 @@ public class User {
         this.money = Integer.parseInt(money);
     }
 
-    public void inputWinningNumbers(){
+    public void inputWinningNumbers() {
         // 실행 결과 예시와 맞추기 위해 한 칸 띄우기
         System.out.println();
         System.out.println(INPUT_WINNING_NUMBER_STR);
@@ -38,32 +38,32 @@ public class User {
 
         try {
             userValidate.validateWinningNumbers(winningNumbers);
-        }catch (IllegalArgumentException e) {
+        } catch (IllegalArgumentException e) {
             throw new IllegalArgumentException(e);
         }
 
-        this.winningNumbers= new Lotto(convertToList(winningNumbers)).getNumbers();
+        this.winningNumbers = new Lotto(convertToList(winningNumbers)).getNumbers();
     }
 
-    public void inputBonusNumber(){
+    public void inputBonusNumber() {
         // 실행 결과 예시와 맞추기 위해 한 칸 띄우기
         System.out.println();
         System.out.println(INPUT_BONUS_NUMBER_STR);
         String bonusNumber = Console.readLine();
         try {
-            userValidate.validateBonusNumber(winningNumbers,bonusNumber);
-        }catch(IllegalArgumentException e){
+            userValidate.validateBonusNumber(winningNumbers, bonusNumber);
+        } catch (IllegalArgumentException e) {
             throw new IllegalArgumentException(e);
         }
         this.bonusNumber = Integer.parseInt(bonusNumber);
     }
 
-    public List<Integer> convertToList(String winningNumbers){
+    public List<Integer> convertToList(String winningNumbers) {
         List<Integer> convertWinningNumbers = new ArrayList<>();
 
-        String [] numbers = winningNumbers.split(STRING_COMMA);
+        String[] numbers = winningNumbers.split(STRING_COMMA);
 
-        for(String number : numbers){
+        for (String number : numbers) {
             convertWinningNumbers.add(Integer.parseInt(number));
         }
 

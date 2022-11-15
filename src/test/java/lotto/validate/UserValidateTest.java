@@ -17,7 +17,7 @@ class UserValidateTest {
     private UserValidate userValidate;
 
     @BeforeEach
-    void setUp(){
+    void setUp() {
         userValidate = new UserValidate();
     }
 
@@ -37,7 +37,7 @@ class UserValidateTest {
 
     @DisplayName("money에 1000원 단위가 아닌 값이 들어가면 예외가 발생한다.")
     @Test
-    void 천원_단위가_아닌_값_입력_inputMoney(){
+    void 천원_단위가_아닌_값_입력_inputMoney() {
         assertThatThrownBy(() -> userValidate.validateMoney("1200"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
@@ -51,35 +51,35 @@ class UserValidateTest {
 
     @DisplayName("winningNumber에 콤마로 구분하여 6자리를 넣지 않으면 예외가 발생한다.(1)")
     @Test
-    void 다섯_자리만_입력_inputWinningNumber(){
+    void 다섯_자리만_입력_inputWinningNumber() {
         assertThatThrownBy(() -> userValidate.validateWinningNumbers("1,2,3,4,5"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
     @DisplayName("winningNumber에 콤마로 구분하여 6자리를 넣지 않으면 예외가 발생한다.(2)")
     @Test
-    void 일곱_자리_입력_inputWinningNumber(){
+    void 일곱_자리_입력_inputWinningNumber() {
         assertThatThrownBy(() -> userValidate.validateWinningNumbers("1,2,3,4,5,6,7"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
     @DisplayName("winningNumber에 콤마와 숫자 이외의 값을 넣으면 예외가 발생한다.")
     @Test
-    void 숫자_이외의_값_입력_inputWinningNumber(){
+    void 숫자_이외의_값_입력_inputWinningNumber() {
         assertThatThrownBy(() -> userValidate.validateWinningNumbers("1,2,3,4,5,ㅂ"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
     @DisplayName("winningNumber에 숫자의 입력 범위는 1~45이다. 넘어가면 예외가 발생한다.")
     @Test
-    void 범위_테스트_inputWinningNumber(){
+    void 범위_테스트_inputWinningNumber() {
         assertThatThrownBy(() -> userValidate.validateWinningNumbers("2,22,222,2222,22222,222222"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
     @DisplayName("winningNumber에 숫자중복이 발생하면 예외가 발생한다.")
     @Test
-    void 중복_테스트_inputWinningNumber(){
+    void 중복_테스트_inputWinningNumber() {
         assertThatThrownBy(() -> userValidate.validateWinningNumbers("1,2,3,4,5,1"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
@@ -87,21 +87,21 @@ class UserValidateTest {
     @DisplayName("bonusNumber에 숫자 이외의 값이 입력되면 예외가 발생한다.")
     @Test
     void 숫자_이외의_값_입력_BonusNumber() {
-        assertThatThrownBy(() -> userValidate.validateBonusNumber(List.of(1,2,3,4,5,6),"a"))
+        assertThatThrownBy(() -> userValidate.validateBonusNumber(List.of(1, 2, 3, 4, 5, 6), "a"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
     @DisplayName("bonusNumber에 1~45이외의 숫자를 입력하면 예외가 발생한다.")
     @Test
     void 범위_테스트_BonusNumber() {
-        assertThatThrownBy(() -> userValidate.validateBonusNumber(List.of(1,2,3,4,5,6),"46"))
+        assertThatThrownBy(() -> userValidate.validateBonusNumber(List.of(1, 2, 3, 4, 5, 6), "46"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
     @DisplayName("bonusNumber가 winningNumber에 들어있으면 예외가 발생한다.")
     @Test
     void winningNumber에_들어있는지_테스트_BonusNumber() {
-        assertThatThrownBy(() -> userValidate.validateBonusNumber(List.of(1,2,3,4,5,6),"2"))
+        assertThatThrownBy(() -> userValidate.validateBonusNumber(List.of(1, 2, 3, 4, 5, 6), "2"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 

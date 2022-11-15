@@ -9,16 +9,16 @@ public class LottoValidate {
     static final String RANGE_ERROR_MSG = "[ERROR] 1~45범위로 숫자를 입력해주세요!";
     static final int LOTTO_SIZE = 6;
     static final int START_OF_RANGE = 1;
-    static final int END_OF_RANGE=45;
-    static final int DUPLICATE_CRITERIA=1;
+    static final int END_OF_RANGE = 45;
+    static final int DUPLICATE_CRITERIA = 1;
 
-    public void validate(List<Integer> numbers){
+    public void validate(List<Integer> numbers) {
         sizeValidate(numbers);
         duplicateValidate(numbers);
         rangeValidate(numbers);
     }
 
-    private void sizeValidate(List<Integer> numbers){
+    private void sizeValidate(List<Integer> numbers) {
         if (numbers.size() != LOTTO_SIZE) {
             throw new IllegalArgumentException(SIZE_NUMBER_ERROR_MSG);
         }
@@ -32,9 +32,9 @@ public class LottoValidate {
         }
     }
 
-    private void rangeValidate(List<Integer> numbers){
+    private void rangeValidate(List<Integer> numbers) {
         for (int number : numbers) {
-            if(number<START_OF_RANGE || number>END_OF_RANGE){
+            if (number < START_OF_RANGE || number > END_OF_RANGE) {
                 throw new IllegalArgumentException(RANGE_ERROR_MSG);
             }
         }

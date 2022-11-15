@@ -25,8 +25,9 @@ public class Lotto {
     private void validate(List<Integer> numbers) {
         new LottoValidate().validate(numbers);
     }
+
     // TODO: 추가 기능 구현
-    public List<Integer> getNumbers(){
+    public List<Integer> getNumbers() {
         return this.numbers;
     }
 }

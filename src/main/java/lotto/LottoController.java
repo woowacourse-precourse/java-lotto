@@ -11,7 +11,7 @@ public class LottoController {
     Computer computer = new Computer();
     LottoProcess lottoProcess;
 
-    public void start(){
+    public void start() {
         List<List<Integer>> lottos = inputProcess();
         List<Integer> ranks;
 
@@ -21,7 +21,7 @@ public class LottoController {
         lottoProcess.calculateRateOfReturn(lottoProcess.countRanks(ranks));
     }
 
-    private List<List<Integer>> inputProcess(){
+    private List<List<Integer>> inputProcess() {
         List<List<Integer>> lottos;
 
         user.inputMoney();

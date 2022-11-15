@@ -13,7 +13,7 @@ class ComputerTest {
     private Computer computer;
 
     @BeforeEach
-    void setUp(){
+    void setUp() {
         computer = new Computer();
     }
 

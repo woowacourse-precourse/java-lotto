@@ -16,19 +16,19 @@ public class Computer {
     static final int VALID_TIME_CRITERIA = 0;
     static final int PASS_TURN = -1;
 
-    public List<Integer> createLottoNumbers(){
+    public List<Integer> createLottoNumbers() {
         List<Integer> numbers = Randoms.pickUniqueNumbersInRange(START_RANGE, END_RANGE, LOTTO_NUMBER_LENGTH);
         List<Integer> sortedNumbers = new ArrayList<>(numbers);
         Collections.sort(sortedNumbers);
         return sortedNumbers;
     }
 
-    public List<List<Integer>> createLottos(int money){
+    public List<List<Integer>> createLottos(int money) {
         int times = countTimes(money);
 
         List<List<Integer>> lottos = new ArrayList<>();
 
-        while(times>VALID_TIME_CRITERIA){
+        while (times > VALID_TIME_CRITERIA) {
             List<Integer> lotto = new Lotto(createLottoNumbers()).getNumbers();
             lottos.add(lotto);
             times += PASS_TURN;
@@ -36,7 +36,7 @@ public class Computer {
         return lottos;
     }
 
-    public int countTimes(int money){
+    public int countTimes(int money) {
         int times = money / LOTTO_CHARGE;
         // 실행 결과 예시와 맞추기 위해 한 칸 띄우기
         System.out.println();
@@ -44,8 +44,8 @@ public class Computer {
         return times;
     }
 
-    public void printLottos(List<List<Integer>> lottos){
-        for (List<Integer> lotto : lottos){
+    public void printLottos(List<List<Integer>> lottos) {
+        for (List<Integer> lotto : lottos) {
             System.out.println(lotto);
         }
     }

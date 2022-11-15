@@ -12,7 +12,7 @@ public class Application {
         try {
             LottoController lottoController = new LottoController();
             lottoController.start();
-        }catch (IllegalArgumentException e){
+        } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
     }
