@@ -6,9 +6,16 @@ public class Money {
     private final int money;
 
     public Money(int money) {
+        validateZero(money);
         validateOneThousandUnit(money);
         this.money = money;
 
+    }
+
+    public void validateZero(int money) {
+        if (money == ZERO) {
+            throw new IllegalArgumentException("구매 금액은 0원 이상이어야 합니다.");
+        }
     }
 
     public void validateOneThousandUnit(int money) {
