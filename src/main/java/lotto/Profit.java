@@ -5,6 +5,7 @@ import static lotto.constant.StandardConstant.MONEY_UNIT_STANDARD;
 import static lotto.constant.StandardConstant.ROUND_STANDARD;
 
 import java.util.List;
+import lotto.constant.MatchingType;
 
 public class Profit {
 

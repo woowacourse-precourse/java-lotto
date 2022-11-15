@@ -11,8 +11,8 @@ import static lotto.constant.OutputConstant.PROFIT_MESSAGE;
 
 import java.util.List;
 import lotto.Lotto;
-import lotto.MatchingType;
-import lotto.PrizeType;
+import lotto.constant.MatchingType;
+import lotto.constant.PrizeType;
 import lotto.Profit;
 import lotto.Quantity;
 import lotto.WinningStat;

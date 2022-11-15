@@ -11,7 +11,7 @@ import static lotto.constant.StandardConstant.LOTTO_NUMBERS_COUNT_STANDARD;
 import static lotto.constant.StandardConstant.MONEY_UNIT_STANDARD;
 
 import java.util.List;
-import lotto.LottoNumberRange;
+import lotto.constant.LottoNumberRange;
 
 public class Validator {
 

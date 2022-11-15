@@ -1,5 +1,7 @@
 package lotto;
 
+import lotto.constant.MatchingType;
+
 public class WinningStat {
 
     private final MatchingType matchingType;

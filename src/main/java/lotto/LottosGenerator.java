@@ -1,7 +1,7 @@
 package lotto;
 
-import static lotto.LottoNumberRange.MAX;
-import static lotto.LottoNumberRange.MIN;
+import static lotto.constant.LottoNumberRange.MAX;
+import static lotto.constant.LottoNumberRange.MIN;
 import static lotto.constant.StandardConstant.LOTTO_NUMBERS_COUNT_STANDARD;
 
 import camp.nextstep.edu.missionutils.Randoms;

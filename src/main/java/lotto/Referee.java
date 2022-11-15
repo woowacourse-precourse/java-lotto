@@ -1,12 +1,13 @@
 package lotto;
 
-import static lotto.MatchingType.FIVE_WITH_BONUS_MATCH;
-import static lotto.MatchingType.NOT_MATCH;
+import static lotto.constant.MatchingType.FIVE_WITH_BONUS_MATCH;
+import static lotto.constant.MatchingType.NOT_MATCH;
 import static lotto.constant.NumberConstant.ZERO;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import lotto.constant.MatchingType;
 
 public class Referee {
 
