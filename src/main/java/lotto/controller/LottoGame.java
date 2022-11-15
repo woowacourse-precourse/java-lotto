@@ -1,21 +1,17 @@
 package lotto.controller;
 
-import static lotto.model.Constant.FIFTH_PRIZE;
-import static lotto.model.Constant.FIRST_PRIZE;
-import static lotto.model.Constant.FOURTH_PRIZE;
 import static lotto.model.Constant.MINIMUM_SAME_NUMBER;
 import static lotto.model.Constant.MONEY_UNIT;
-import static lotto.model.Constant.PRIZE_COUNT;
-import static lotto.model.Constant.ROUNDED_NUMBER;
-import static lotto.model.Constant.SECOND_PRIZE;
-import static lotto.model.Constant.THIRD_PRIZE;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 import lotto.model.Constant;
 import lotto.model.Lotto;
+import lotto.model.Rank;
 import lotto.model.WinningLotto;
 import lotto.view.LottoInputView;
 import lotto.view.LottoOutputView;
@@ -74,16 +70,24 @@ public class LottoGame {
     }
 
     public void checkWinningLotto() {
-        int[] winningCount = new int[PRIZE_COUNT];
-        for (int i = 0; i < lottos.size(); i++) {
-            Lotto userLotto = lottos.get(i);
+        Map<Rank, Integer> rankResult = initializeRankResult();
+        for (Lotto userLotto : lottos) {
             int sameNumberCount = winningLotto.countSameNumber(userLotto);
-            if(isWinningLotto(sameNumberCount)) {
-                winningCount[sameNumberCount-MINIMUM_SAME_NUMBER]++;
+            if (isWinningLotto(sameNumberCount)) {
+                Rank rank = winningLotto.calculateRank(userLotto);
+                rankResult.put(rank, rankResult.get(rank) + 1);
             }
         }
-        double profitPercentage = calculateProfitPercentage(winningCount);
-        lottoOutputView.printWinningStatistic(winningCount, profitPercentage);
+        double profitPercentage = calculateProfitPercentage(rankResult);
+        lottoOutputView.printWinningStatistic(rankResult, profitPercentage);
+    }
+
+    public Map<Rank, Integer> initializeRankResult() {
+        Map<Rank, Integer> rankResult = new HashMap<>();
+        for(Rank rank: Rank.values()) {
+            rankResult.put(rank, 0);
+        }
+        return rankResult;
     }
 
     public boolean isWinningLotto(int sameNumberCount) {
@@ -93,17 +97,15 @@ public class LottoGame {
         return false;
     }
 
-    public double calculateProfitPercentage(int[] winningCount) {
+    public double calculateProfitPercentage(Map<Rank, Integer> rankResult) {
         int purchaseAmount = lottos.size() * MONEY_UNIT;
-        int[] prizeMoneys = {FIFTH_PRIZE, FOURTH_PRIZE, THIRD_PRIZE, SECOND_PRIZE, FIRST_PRIZE};
         int profit = 0;
-        for (int i = 0; i < winningCount.length; i++) {
-            int rankingCount = winningCount[i];
-            int prizeMoney = prizeMoneys[i];
+        for (Rank rank : rankResult.keySet()) {
+            int rankingCount = rankResult.get(rank);
+            int prizeMoney = rank.getReward();
             profit += (rankingCount * prizeMoney);
         }
         double profitPercentage = (double) profit / purchaseAmount;
-        double roundedPercentage = Math.round(profitPercentage * ROUNDED_NUMBER) / ROUNDED_NUMBER;
-        return roundedPercentage;
+        return profitPercentage;
     }
 }
