@@ -1,5 +1,7 @@
 package lotto.view;
 
+import static lotto.util.Constants.*;
+
 import java.text.DecimalFormat;
 import java.util.EnumMap;
 import java.util.List;
@@ -9,10 +11,10 @@ import lotto.service.Lotto;
 import lotto.util.Rank;
 
 public class Output {
-	static DecimalFormat formatter = new DecimalFormat("###,###");
+	static DecimalFormat formatter = new DecimalFormat(MONEY_FORMAT);
 
 	public static void printTicketCount(int totalNumberOfLotto) {
-		System.out.println(totalNumberOfLotto + "개를 구매했습니다.");
+		System.out.println(totalNumberOfLotto + OUTPUT_LOTTO_AMOUNT);
 	}
 
 	public static void printLotto(List<Lotto> lotteryTickets) {
@@ -22,24 +24,27 @@ public class Output {
 	}
 
 	public static void printResult(EnumMap<Rank, Integer> result) {
-		System.out.println("당첨 통계");
-		System.out.println("---");
+		System.out.println(STATISTICS);
+		System.out.println(STATISTICS_WINNING);
 		for (Rank rank : Rank.values()) {
 			if (rank == Rank.NOTHING) {
 				continue;
 			}
 			if (rank == Rank.SECOND) {
 				System.out.println(
-					rank.getMatchCount() + "개 일치, 보너스 볼 일치 (" + formatter.format(rank.getMoney()) + "원) - "
-						+ result.get(rank) + "개");
+					rank.getMatchCount() + STATISTICS_WINNING_COUNT + STATISTICS_WINNING_BONUS + formatter.format(
+						rank.getMoney()) + STATISTICS_WINNING_MONEY
+						+ result.get(rank) + STATISTICS_WINNING_COUNT_MONEY);
 				continue;
 			}
 			System.out.println(
-				rank.getMatchCount() + "개 일치 (" + formatter.format(rank.getMoney()) + "원) - " + result.get(rank) + "개");
+				rank.getMatchCount() + STATISTICS_WINNING_COUNT_WITH_BRACKET + formatter.format(rank.getMoney())
+					+ STATISTICS_WINNING_MONEY + result.get(rank) + STATISTICS_WINNING_COUNT_MONEY);
 		}
 	}
 
 	public static void printEarningRate(int paidMoney, Long earningMoney) {
-		System.out.println("총 수익률은 " + EarningRate.calculate(paidMoney, earningMoney) + "%입니다.");
+		System.out.println(
+			STATISTICS_PROFIT + EarningRate.calculate(paidMoney, earningMoney) + STATISTICS_PROFIT_PERCENT);
 	}
 }
