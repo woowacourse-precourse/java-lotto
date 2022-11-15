@@ -1,8 +1,12 @@
 package lotto;
+package lotto.domain;
 
+import controller.Lottery;
 import domain.Lotto;
+import exception.InputException;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import service.Extraction;
 
 import java.util.List;
 
@@ -25,4 +29,17 @@ class LottoTest {
     }
 
     // 아래에 추가 테스트 작성 가능
+    @DisplayName("구매금액이 1,000단위가 아니면 예외가 발생한다.")
+    @Test
+    void 구매금액_1000단위_예외발생() {
+        assertThatThrownBy(() -> InputException.validateInputAmount("1001"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("구매금액이 숫자가 아니면 예외가 발생한다.")
+    @Test
+    void 구매금액_숫자아님_예외발생() {
+        assertThatThrownBy(() -> InputException.validateInputAmount("1a000"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
