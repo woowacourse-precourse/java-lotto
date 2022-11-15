@@ -35,7 +35,7 @@ public class Input {
             checkNumber(splitedInput.get(i));
         }
         List<Integer> prizeNumbers = parsePrizeNumbers(splitedInput);
-        TotalPrizeNumbers.validatePrizeNumbers(prizeNumbers);
+        TotalPrizeNumbers.validateNormalNumbers(prizeNumbers);
 
         return prizeNumbers;
     }

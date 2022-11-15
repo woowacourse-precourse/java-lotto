@@ -25,15 +25,15 @@ public class TotalPrizeNumbers {
         this.totalPrizeNumbers = createTotalPrizeNumbers(normalNumbers, bonusNumber);
     }
 
-    public static void validatePrizeNumbers(List<Integer> prizeNumbers) {
-        Set<Integer> uniquePrizeNumbers = new HashSet<>(prizeNumbers);
-        if (prizeNumbers.size() != LOTTO_TOTAL_COUNT) {
+    public static void validateNormalNumbers(List<Integer> normalNumbers) {
+        Set<Integer> uniquePrizeNumbers = new HashSet<>(normalNumbers);
+        if (normalNumbers.size() != LOTTO_TOTAL_COUNT) {
             throw new IllegalArgumentException(PRIZENUMBER_SIZE_IS_NOT_SIX);
         }
-        if (uniquePrizeNumbers.size() != prizeNumbers.size()) {
+        if (uniquePrizeNumbers.size() != normalNumbers.size()) {
             throw new IllegalArgumentException(DUPLICATE_PRIZENUMBER_EXISTS);
         }
-        for (Integer prizeNumber : prizeNumbers) {
+        for (Integer prizeNumber : normalNumbers) {
             if (prizeNumber < MINIMUM_PRIZENUMBER || prizeNumber > MAXIMUM_PRIZENUMBER) {
                 throw new IllegalArgumentException(PRIZENUMEBR_IS_NOT_IN_RANGE);
             }
