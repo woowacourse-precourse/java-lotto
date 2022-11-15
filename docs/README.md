@@ -1,0 +1,38 @@
+- 도메인 로직(클래스[객체]별 구분)
+  - 가격 입력시 로또 발행 개수, 1000원으로 나눠떨어지지 않을시 예외처리 : QuantityCalculator
+    - 주어진 금액에 맞는 발행 개수 계산 : calculateProperQuantity()
+  - 로또 발행 : IssuingMachine
+    - 로또 번호를 만들어서 Lotto 객체에 넣은 뒤, 이 Lotto들의 리스트 생성 : makeLotteryList()
+      - 여섯자리의 랜덤 숫자 생성 : makeOneLottery()
+  - 입력받은 당첨넘버와 발행된 로또 비교하여 당첨내역 만들기 : PrizeListGenerator
+    - 로또 리스트를 순회하며 당첨번호와의 일치를 계산하여 점수로 변환 : iterateLotteriesForStatistic()
+      - 당첨 번호가 담긴 Map을 확인하여 주어진 로또 번호와 일치하는 요소가 있다면 점수 추가 : checkIfLotteryContainsWinningnumber()
+      - 등수 기준이 담긴 Map에 각 로또의 점수에 따라 개수 기록 : makeNoteToWinnerResult()
+        - 점수에 맞는 Enum을 반환 : getCorrespondingPrizeStandard()
+      - 등수 기준이 담긴 Map에 당첨되지 않은 로또의 개수 기록 : noteNotRecordedPrizeStandardsToWinnerResult()
+    - 당첨 기준과 당첨된 로또의 개수가 담긴 Map을 반환 : returnWinnerResult()
+  - 수익률 계산하기 : YieldCalculator
+    - 로또 구매 금액과 결과 금액을 통해 수익률 계산 : computeYield()
+      - 당첨 기준과 당첨된 로또의 개수가 담긴 Map을 보고 이에 알맞는 상금을 계산 : convertResultIntoMoney()
+
+- UI 로직
+  - 입력
+    - 가격입력받기 : PriceGetter
+      - 유저의 로또 구입 금액 입력받고, 잘못된 입력에 대해서는 예외처리 : getBuyingMoney()
+    - 당첨번호 입력 + 보너스 번호 입력 : WinnerNumberGetter
+      - 당첨번호를 입력받아서 Map에 저장하여 반환 : getLotteryWinningNumbersInput()
+        - 입력받은 번호의 범위를 확인 : checkNumberRange()
+      - 보너스 번호를 입력받아서 반환 : getBonusInput()
+  - 출력
+    - 로또 내역 출력 : LotteryListPrinter
+      - 모든 로또 내역을 형식에 맞게 출력 : printAllLottery()
+    - 당첨통계(내역 + 수익률) 출력 : PrizeListPrinter
+      - 당첨 통계 출력 : printWinStatistic()
+
+- 상수 관리 클래스 : ConstValue 
+  - 로또 게임의 룰과 관련된 숫자들 : Numbers
+  - 에러 메시지들 : ErrorMessages
+
+- 당첨 기준을 명시한 Enum : PrizeStandards
+  - 당첨금액과, 등수 계산시 필요한 점수를 값으로 가짐
+  - 주어진 점수에 맞는 Enum을 리턴하는 기능 : getProperStandard()
