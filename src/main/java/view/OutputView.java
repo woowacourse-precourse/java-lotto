@@ -27,7 +27,7 @@ public class OutputView {
         System.out.printf(LOTTOS_COUNT, lottos.size());
 
         for (Lotto lotto : lottos) {
-            System.out.println(lotto.getNumbers());
+            System.out.println(lotto);
         }
     }
 

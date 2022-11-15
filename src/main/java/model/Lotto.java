@@ -102,4 +102,9 @@ public class Lotto {
         int count = winningResult.getOrDefault(win, INIT_COUNT);
         winningResult.put(win, ++count);
     }
+
+    @Override
+    public String toString() {
+        return numbers.toString();
+    }
 }
