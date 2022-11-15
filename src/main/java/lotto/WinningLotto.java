@@ -3,7 +3,7 @@ package lotto;
 import java.util.List;
 
 public class WinningLotto extends Lotto {
-    private static final String BONUS_IS_NOT_UNIQUE_MESSAGE ="[ERROR] 보너스 번호는 당첨 번호와 중복이 존재할 수 없습니다.";
+    public static final String BONUS_IS_NOT_UNIQUE_MESSAGE ="[ERROR] 보너스 번호는 당첨 번호와 중복이 존재할 수 없습니다.";
 
     private int bonusNumber;
 
