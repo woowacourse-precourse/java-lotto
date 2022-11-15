@@ -27,7 +27,7 @@ public class LottoStatisticsService {
 
     private void printStatistics(SortedMap<LottoRank, Integer> countOfRank) {
         StringBuilder sb = new StringBuilder();
-        countOfRank.forEach((key, value) -> sb.append(key).append(" - ").append(value).append("媛�").append('\n'));
+        countOfRank.forEach((key, value) -> sb.append(key).append(" - ").append(value).append("개").append('\n'));
         System.out.print(sb);
     }
 
