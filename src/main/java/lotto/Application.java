@@ -28,9 +28,7 @@ public class Application {
         int bonusNumber = getBonusNumber();
 
         // phase 5) 당첨 통계 출력하기
-        List<Integer> score = countScoreCandidate(candidateLotto, winningLotto, bonusNumber);
-        int totalPrize = printWinningResult(score);
-        printYield(totalPrize, payedMoney);
+        printLottoStatistics(candidateLotto, winningLotto, bonusNumber,payedMoney);
 
     }
 
@@ -62,9 +60,9 @@ public class Application {
         }
     }
     public static void validateOneTo45(List<Integer> numbers){
-        for (int index = 0; index < 6; index++){
+        for (int index = 0; index < numbers.size(); index++){
             int tmpNum = numbers.get(index);
-            if (tmpNum >= 1 || tmpNum <= 45)
+            if (tmpNum < 1 || tmpNum > 45)
                 throw new IllegalArgumentException(NUMBER_VARIATION.getMessage());
         }
     }
@@ -89,7 +87,9 @@ public class Application {
         return totalPrize;
     }
     public static void printYield(int totalPrize, int payedMoney){
-        System.out.println("총 수익률은 " + String.format("%.2f", totalPrize/payedMoney*100) + "%입니다.");
+        double stat = (double) totalPrize/payedMoney*100;
+        String statStr = String.format("%.1f", stat);
+        System.out.println("총 수익률은 " + statStr + "%입니다.");
     }
     public static List<Integer> countScoreCandidate(List<Lotto> candidateLotto,
                                          Lotto winningLotto,
@@ -139,6 +139,9 @@ public class Application {
                                             Lotto winningLotto,
                                             int bonusNumber,
                                             int payedMoney){
+        System.out.println();
+        System.out.println("당첨 통계");
+        System.out.println("---");
         List<Integer> score = countScoreCandidate(candidateLotto, winningLotto, bonusNumber);
         int totalPrize = printWinningResult(score);
         printYield(totalPrize, payedMoney);
