@@ -1,12 +1,10 @@
 package lotto;
 
-import camp.nextstep.edu.missionutils.Randoms;
-import java.util.ArrayList;
 import java.util.List;
 
 public class Lotto {
-    private static final String ERROR_MESSAGE = "[ERROR] ";
-    private static final String LOTTO_OUT_OF_RANGE_ERROR = "로또 번호는 6개여야 합니다.";
+    private static final String ERROR_MESSAGE = "[ERROR]";
+    private static final String LOTTO_OUT_OF_RANGE_ERROR = " 로또 번호는 6개여야 합니다.";
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {

@@ -5,14 +5,14 @@ import java.util.List;
 import lotto.view.OutputView;
 
 public class Winning {
-    private static final String ERROR_MESSAGE = "[ERROR] ";
-    private static final String LOTTO_OUT_OF_RANGE_ERROR = "로또 번호는 6개여야 합니다.";
-    private static final String WINNING_NOT_NUMBER_ERROR = "입력 값이 숫자가 아닙니다.";
-    private static final String WINNING_NOT_IN_RANGE_ERROR = "당첨번호는 1 ~ 45 사이의 수 이어야 합니다.";
-    private static final String WINNING_DUPLICATED_ERROR = "당첨번호에 중복이 있습니다.";
-    private static final String BONUS_NUMBER_NOT_NUMBER_ERROR = "보너스 번호는 숫자여야 합니다.";
-    private static final String BONUS_NUMBER_OUT_OF_RANGE_ERROR = "보너스 번호는 1 ~ 45 사이의 수 이어야 합니다.";
-    private static final String BONUS_NUMBER_DUPLICATED_ERROR = "보너스 번호와 당첨 번호가 중복됩니다.";
+    private static final String ERROR_MESSAGE = "[ERROR]";
+    private static final String LOTTO_OUT_OF_RANGE_ERROR = " 로또 번호는 6개여야 합니다.";
+    private static final String WINNING_NOT_NUMBER_ERROR = " 입력 값이 숫자가 아닙니다.";
+    private static final String WINNING_NOT_IN_RANGE_ERROR = " 당첨번호는 1 ~ 45 사이의 수 이어야 합니다.";
+    private static final String WINNING_DUPLICATED_ERROR = " 당첨번호에 중복이 있습니다.";
+    private static final String BONUS_NUMBER_NOT_NUMBER_ERROR = " 보너스 번호는 숫자여야 합니다.";
+    private static final String BONUS_NUMBER_OUT_OF_RANGE_ERROR = " 보너스 번호는 1 ~ 45 사이의 수 이어야 합니다.";
+    private static final String BONUS_NUMBER_DUPLICATED_ERROR = " 보너스 번호와 당첨 번호가 중복됩니다.";
 
     public Winning() {
     }
@@ -58,7 +58,7 @@ public class Winning {
         sum += prizeList[3] * 30000000;
         sum += prizeList[4] * 200000000;
 
-        result =  ((float) sum  / (float) existCost) * 100;
+        result = ((float) sum / (float) existCost) * 100;
 
         return result;
     }

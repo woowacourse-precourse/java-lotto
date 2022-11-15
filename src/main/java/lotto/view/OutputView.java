@@ -4,7 +4,6 @@ import java.util.List;
 import lotto.Lotto;
 
 public class OutputView {
-    private static final String ERROR_MESSAGE = "[ERROR] ";
     private static final String LOTTO_TICKET_AMOUNT = "개를 구매했습니다.";
     private static final String WINNING_STATUS = "당첨 통계";
     private static final String LINE = "---";
