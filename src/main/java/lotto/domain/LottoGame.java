@@ -11,7 +11,7 @@ public class LottoGame {
     public int purchaseAmount, bonusNumber, totalProfit;
     public List<Integer> winningNumber, gameResult;
     public List<Lotto> issuedLotto;
-    public float profitRate;
+    public double profitRate;
     public Input input;
     public Output output;
 
@@ -75,12 +75,10 @@ public class LottoGame {
         return totalProfit;
     }
 
-    public float getProfitRate() {
+    public double getProfitRate() {
         getTotalProfit();
+        double profitRate = (double) totalProfit / (purchaseAmount*1000) * 100;
 
-        this.profitRate = totalProfit / (purchaseAmount*1000);
-        profitRate = Math.round((profitRate*10)/10.0); // 소수점 둘째자리에서 반올림
-
-        return this.profitRate;
+        return profitRate;
     }
 }
