@@ -16,7 +16,6 @@
 - [x] 로또 번호의 범위 예외를 검사한다. - Lotto.range()
   - [x] 범위 예외를 검사한다. - Check.checkRange()
 - [x] 로또 당첨 번호를 가져온다. - Lotto.getNumbers()
-- [x] 로또를 오름차순 정렬한다. - Lotto.ascendingSort()
 - [x] 보너스 번호의 중복 예외를 검사한다. - PlusLotto.duplicate()
   - [x] 중복 예외를 검사한다. - Check.checkDuplicate()
 - [x] 보너스 번호의 범위 예외를 검사한다. - PlusLotto.range()

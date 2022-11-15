@@ -29,7 +29,7 @@ class RankTest {
         String fiveBonusMessage = fiveBonus.getMessage();
         String sixMessage = six.getMessage();
 
-        assertThat(fiveBonusMessage).isEqualTo("5개 일치, 보너스 볼 일치 (30,000,000원) - ");
-        assertThat(sixMessage).isEqualTo("6개 일치 (2,000,000,000원) - ");
+        assertThat(fiveBonusMessage).isEqualTo("5개 일치, 보너스 볼 일치 (30,000,000원) - 0개");
+        assertThat(sixMessage).isEqualTo("6개 일치 (2,000,000,000원) - 0개");
     }
 }
