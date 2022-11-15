@@ -10,7 +10,8 @@ public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         int lottoCount = inputMoney();
-
+        User user = new User(lottoCount);
+        Lotto winningNumber = new Lotto(inputWinningNumber());
     }
     // 돈을 입력받아서 로또 개수를 반환
     public static int inputMoney() {
@@ -27,6 +28,13 @@ public class Application {
         return count;
 
 
+    }
+    public static List<Integer> createLottoNumber() {
+        List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+        // 정렬 오름차ㅣ
+        numbers = numbers.stream().sorted().collect(Collectors.toList());
+        System.out.println(numbers);
+        return numbers;
     }
 
 
