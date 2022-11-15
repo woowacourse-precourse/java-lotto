@@ -73,7 +73,7 @@ public class LottoController {
         LottoResult result = new LottoResult(winningNumbers, allPlayerNumbers, bonusNumber);
         Ranking ranking = new Ranking(result.getMatches(), result.getBonusMatches());
         Statistics statistics = new Statistics(ranking.getRankings());
-        OutputView.printStatistics(statistics.getRank());
+        OutputView.printStatistics(statistics.getRankWithStatistics());
     }
 
     private static void calculateYield() {

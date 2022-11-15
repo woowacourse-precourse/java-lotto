@@ -80,7 +80,7 @@ class ApplicationTest extends NsTest {
                 List.of(1, 2, 3, 4, 5, 40, 41),
                 List.of(1, 2, 40, 41, 42, 43),
                 List.of(4, 5, 6, 40, 41, 42)
-                );
+        );
     }
 
     @Override
