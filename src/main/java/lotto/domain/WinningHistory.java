@@ -37,7 +37,7 @@ public class WinningHistory {
 
     private void validateUnique(int bonusNumber, Lotto winningNumber) {
         if (winningNumber.getNumbers().contains(bonusNumber)) {
-            throw new IllegalArgumentException(Error.IS_NOT_UNIQUE.getMessage());
+            throw new IllegalArgumentException(Error.UNIQUE_NUMBER.getMessage());
         }
     }
 

@@ -1,10 +1,7 @@
 package lotto.domain;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.HashSet;
-import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.SortedSet;
@@ -39,14 +36,14 @@ public class Lotto {
 
     private void validateRange(Set<Integer> unValidatedNumbers) {
         if (unValidatedNumbers.stream().anyMatch(range -> range < 1 || range > 45)) {
-            throw new IllegalArgumentException(Error.IS_NOT_RANGE.getMessage());
+            throw new IllegalArgumentException(Error.RANGE.getMessage());
         }
     }
 
     private void validateNumbers(Set<String> separateCommas) {
         for (String separateComma : separateCommas) {
             if (!separateComma.chars().allMatch(Character::isDigit)) {
-                throw new IllegalArgumentException(Error.IS_NOT_NUMBER.getMessage());
+                throw new IllegalArgumentException(Error.NUMBER.getMessage());
             }
         }
     }
@@ -58,7 +55,7 @@ public class Lotto {
 
     private void validateSixNumber(Set<Integer> numbers) {
         if (numbers.size() != 6) {
-            throw new IllegalArgumentException(Error.IS_NOT_SIX.getMessage());
+            throw new IllegalArgumentException(Error.COUNT.getMessage());
         }
     }
 

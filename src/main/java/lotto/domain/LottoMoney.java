@@ -13,7 +13,7 @@ public class LottoMoney {
 
     private void validateNumber(String input) {
         if (!input.chars().allMatch(Character::isDigit)) {
-            throw new IllegalArgumentException(Error.IS_NOT_NUMBER.getMessage());
+            throw new IllegalArgumentException(Error.NUMBER.getMessage());
         }
     }
 
@@ -23,7 +23,7 @@ public class LottoMoney {
 
     private void validateDivided() {
         if ((money % 1000 != 0) || (money / 1000 == 0)) {
-            throw new IllegalArgumentException(Error.IS_NOT_DIVIDED.getMessage());
+            throw new IllegalArgumentException(Error.MONEY.getMessage());
         }
     }
 
