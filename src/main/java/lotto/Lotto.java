@@ -16,6 +16,10 @@ public class Lotto {
             throw new IllegalArgumentException();
         }
     }
+    
+    public void print_Numbers(){
+        System.out.println(numbers);
+    }
 
     public int get_CorrectNumbers(Lotto WinningNumber, int bonus){
         int count = 0;
