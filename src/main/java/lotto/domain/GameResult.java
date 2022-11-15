@@ -51,7 +51,7 @@ public class GameResult {
         return counts;
     }
 
-    public static Integer calculateRateOfReturn(List<Integer> counts) {
+    public static Integer calculateSum(List<Integer> counts) {
         List<Integer> amount = new ArrayList<>(Arrays.asList(Constant.WINNING_FIFTH_AMOUNT, Constant.WINNING_FOURTH_AMOUNT, Constant.WINNING_THIRD_AMOUNT, Constant.WINNING_SECOND_AMOUNT, Constant.WINNING_FIRST_AMOUNT));
         int result = 0;
 
@@ -59,5 +59,9 @@ public class GameResult {
             result += amount.get(i) * counts.get(i);
         }
         return result;
+    }
+
+    public static Double calculateRateOfReturn(int purchaseAmount, int sum) {
+        return sum * 100.0 / purchaseAmount;
     }
 }
