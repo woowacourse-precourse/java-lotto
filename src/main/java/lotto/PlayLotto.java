@@ -97,6 +97,15 @@ public class PlayLotto {
         System.out.println();
     }
 
+    public void printRanking(List<Integer> correctNumber) {
+        print5th(correctNumber);
+        print4th(correctNumber);
+        print3rd(correctNumber);
+        print2nd(correctNumber);
+        print1st(correctNumber);
+    }
+
+
     public int profit5th(List<Integer> correctNumber) {
         return correctNumber.get(4) * Reward.FIFTH.getAmount();
     }
