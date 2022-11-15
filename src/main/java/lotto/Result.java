@@ -24,7 +24,7 @@ public class Result {
         for (int sheet = 0; sheet < userLottos.size(); sheet++) {
             Lotto lotto = userLottos.get(sheet);
             compareEachLotto(winningLotto, bonus, lotto);
-            compareResult();
+            calculateResult();
             count = 0;
             bonus_index = 0;
         }
@@ -42,7 +42,7 @@ public class Result {
         }
     }
 
-    private void compareResult() {
+    private void calculateResult() {
         winFirst();
         winSecond();
         winThird();
