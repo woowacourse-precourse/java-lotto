@@ -2,7 +2,6 @@ package lotto.service;
 
 import lotto.Enum.LottoInfo;
 import lotto.Enum.WinningPrice;
-import lotto.Enum.WinningType;
 import lotto.entity.GeneratedLottos;
 import lotto.entity.Lotto;
 import lotto.entity.User;
@@ -12,9 +11,7 @@ import lotto.utils.Validation;
 import lotto.view.SystemMessage;
 import lotto.view.UserRequest;
 
-import java.lang.reflect.WildcardType;
 import java.util.*;
-
 
 public class LottoService {
 
@@ -117,8 +114,10 @@ public class LottoService {
         for (int i = 0; i < rankPrice.size(); i++) {
             winningAmount += rankPrice.get(i) * rankCount.get(i);
         }
+        user.setYield((double) (winningAmount / purchaseAmount));
+    }
 
-        user.setYield((long) (winningAmount / purchaseAmount));
-
+    public double roundsYeild(Long yield) {
+        return Math.round(yield * 10) / 10.0;
     }
 }

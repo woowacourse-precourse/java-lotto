@@ -33,8 +33,8 @@
 - ✅ **`printWinning`** → 당첨내역 출력
 
 ### <span style = "color:skyblue" >getYeild</span> : 수익률 계산
-- 🟩 **`getYield`** → 수익률 계산
-- 🟩 **`roundsYield`** → 소수점 둘째 자리에서 반올림
+- ✅ **`getYield`** → 수익률 계산
+- ✅ **`roundsYield`** → 소수점 둘째 자리에서 반올림
 - 🟩 **`printYield`** → 수익률 출력
 
 ### +) 예외상황

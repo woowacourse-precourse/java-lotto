@@ -43,4 +43,8 @@ public class SystemMessage {
     public static void printWinningHistory(int rank, int count) {
         System.out.println(rankType.get(rank-1) + "("+rankPrice.get(rank-1)+")"+" - "+count+"개");
     }
+
+    public static void printYield(double yield) {
+        System.out.println("총 수익률은 "+yield+"입니다.");
+    }
 }

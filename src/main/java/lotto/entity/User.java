@@ -8,7 +8,7 @@ public class User {
     private List<Integer> userNumber;
     private int bonusNumber;
     private int lottoAmount;
-    private Long yield;
+    private double yield;
     private HashMap<Integer, Integer> winning = new HashMap<>(){
         {
             put(5, 0);
@@ -54,11 +54,11 @@ public class User {
         this.bonusNumber = bonusNumber;
     }
 
-    public Long getYield() {
+    public double getYield() {
         return yield;
     }
 
-    public void setYield(Long yield) {
+    public void setYield(double yield) {
         this.yield = yield;
     }
 
