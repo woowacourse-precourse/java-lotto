@@ -19,10 +19,6 @@ public enum WinningResult {
         this.announcement = announcement;
     }
 
-    public String getRank() {
-        return rank;
-    }
-
     public long getMoney() {
         return money;
     }
