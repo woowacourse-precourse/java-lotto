@@ -24,7 +24,8 @@ public class LottoFactory {
 
     private static void checkVaildity(Integer price) {
         if (price % LOTTO_PRICE != 0 || price == 0) {
-            throw new IllegalArgumentException(ERROR_INVALID_ARGUMENT);
+            System.out.println(ERROR_INVALID_ARGUMENT);
+            throw new IllegalArgumentException();
         }
     }
 }

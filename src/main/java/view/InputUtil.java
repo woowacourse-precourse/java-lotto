@@ -25,7 +25,8 @@ public class InputUtil {
         char[] words = target.toCharArray();
         for(char word : words){
             if(!Character.isDigit(word)){
-                new IllegalArgumentException(ERROR_INVALID_INPUT);
+                System.out.println(ERROR_INVALID_INPUT);
+                throw new IllegalArgumentException();
             }
         }
     }
