@@ -1,6 +1,7 @@
 package lotto;
 
 import lotto.view.InputView;
+import lotto.view.OutputView;
 
 import java.math.BigInteger;
 

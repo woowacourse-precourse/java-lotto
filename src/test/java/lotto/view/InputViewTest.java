@@ -18,7 +18,6 @@ class InputViewTest {
     @Nested
     @DisplayName("로또 구입금액을 입력한다. 제약 조건에 맞지 않으면 예외발생를 시킨다.")
     class insertMoney {
-
         @Test
         @DisplayName("양의 수가 아닐때 예외발생")
         void validateCastPositiveBigInteger() {

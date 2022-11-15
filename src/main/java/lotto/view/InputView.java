@@ -6,7 +6,11 @@ import lotto.enums.ExceptionErrorType;
 import java.math.BigInteger;
 
 public class InputView {
+    private static final OutputView outputView = new OutputView();
+
     public BigInteger insertMoney() {
+        outputView.announceInsertMoney();
+
         String input = Console.readLine();
         validateCastPositiveBigInteger(input);
         validateMinMoney(input);
