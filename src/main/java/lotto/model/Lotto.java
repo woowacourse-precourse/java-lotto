@@ -1,5 +1,6 @@
 package lotto.model;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -9,6 +10,7 @@ public class Lotto {
     public Lotto(List<Integer> numbers) {
         validate(numbers);
         InRange(numbers);
+        isNotDuplicate(numbers);
         this.numbers = numbers;
     }
 
@@ -33,5 +35,14 @@ public class Lotto {
             throw new IllegalArgumentException("[ERROR] 로또 번호가 1보다 작아 범위를 벗어났습니다.");
         }
     }
-    // TODO: 추가 기능 구현
+
+    private static void isNotDuplicate(List<Integer> numbers) {
+        List<Integer> checknumbers = new ArrayList<>();
+        for (int number : numbers) {
+            if (checknumbers.contains(number)) {
+                throw new IllegalArgumentException("[ERROR] 로또 번호 내 중복이 존재합니다.");
+            }
+            checknumbers.add(number);
+        }
+    }
 }

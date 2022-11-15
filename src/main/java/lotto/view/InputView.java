@@ -17,7 +17,6 @@ public class InputView {
     public static List<Integer> InputWinNumber() {
         System.out.println("당첨 번호를 입력해 주세요.");
         String input = readLine();
-        isNotDuplicate(input);
         List<Integer> inputs = List.of(input.split(",")).stream()
                 .map(s -> Integer.parseInt(s))
                 .collect(Collectors.toList());
@@ -34,16 +33,6 @@ public class InputView {
     private static void OnlyOne(String input) {
         if (input.contains(",") || input.contains(" ")) {
             throw new IllegalArgumentException("[ERROR] 보너스 번호가 1개 이상입니다.");
-        }
-    }
-
-    private static void isNotDuplicate(String input) {
-        String checkinput = "";
-        for (char charinput : input.toCharArray()) {
-            if (checkinput.contains(String.valueOf(charinput))) {
-                throw new IllegalArgumentException("[ERROR] 로또 번호 내 중복이 존재합니다.");
-            }
-            checkinput += String.valueOf(charinput);
         }
     }
 }
