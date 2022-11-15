@@ -1,5 +1,6 @@
 package lotto;
 
+import lotto.domain.Lotto;
 import lotto.domain.Player;
 
 public class Game {
@@ -11,5 +12,6 @@ public class Game {
 
     public void start() {
         player.getPurchaseCost();
+        player.purchaseLotto();
     }
 }
