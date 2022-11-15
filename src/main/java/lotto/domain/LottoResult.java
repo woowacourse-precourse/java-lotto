@@ -19,6 +19,10 @@ public class LottoResult {
         return totalCost;
     }
 
+    public Map<Lotto, LottoRank> getRanks() {
+        return ranks;
+    }
+
     public Long getTotalPrize() {
         return totalPrize;
     }
