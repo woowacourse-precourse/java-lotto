@@ -54,7 +54,7 @@ public class Judgement {
         System.out.println("5개 일치 (1,500,000원) - " + search(5, false) + "개");
         System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - " + search(5, true) + "개");
         System.out.println("6개 일치 (2,000,000,000원) - " + search(6, false) + "개");
-        System.out.println("총 수익률은 " + this.returnRate + "%입니다.");
+        System.out.println("총 수익률은 " + String.format("%.1f", this.returnRate) + "%입니다.");
     }
 
     private int search(int count, boolean flag){
@@ -105,7 +105,6 @@ public class Judgement {
     }
 
     private void computeReturnRate(){
-        float returnMoney = (float) this.purchaseMoney - (float) this.requiredMoney;
-        this.returnRate = (float) ((1 - (returnMoney / (float) purchaseMoney)) * 100.0);
+        this.returnRate = (float) ((float)this.requiredMoney / (float)this.purchaseMoney * 100.0);
     }
 }
