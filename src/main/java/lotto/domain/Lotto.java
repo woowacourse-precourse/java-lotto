@@ -18,14 +18,14 @@ public class Lotto {
 
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
-            throw new IllegalArgumentException(Validation.ERROR_MESSAGE);
+            throw new IllegalArgumentException(ErrorMessage.NUMBER_ERROR.getMessage());
         }
     }
 
     private void validateDuplicatedNumber(List<Integer> numbers) {
         long count = countDuplicatedNumber(numbers);
         if(count != numbers.size()) {
-            throw new IllegalArgumentException(Validation.ERROR_MESSAGE);
+            throw new IllegalArgumentException(ErrorMessage.DUPLICATION_ERROR.getMessage());
         }
     }
 
