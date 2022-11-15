@@ -39,5 +39,6 @@ public class WinningNumberController {
     private void result() {
         OutputView outputView = new OutputView();
 
+        outputView.printWinningResult(resultMap);
     }
 }
