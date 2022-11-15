@@ -13,7 +13,7 @@ public class InputMoneyValidator {
     private InputMoneyValidator() {
     }
 
-    private static final int ZERO = 0;
+    private static final Integer ZERO = 0;
     private static final String NUMBER_REGEXP = "\\d+$";
 
     public static void validate(String input) {

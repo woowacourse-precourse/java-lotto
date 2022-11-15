@@ -32,7 +32,7 @@ public class InputCorrectLottoValidator {
         }
     }
 
-    public static boolean isNumberInRange(int number) {
+    public static boolean isNumberInRange(Integer number) {
         return (number >= MIN_NUMBER.getNumber()) && (number <= MAX_NUMBER.getNumber());
     }
 

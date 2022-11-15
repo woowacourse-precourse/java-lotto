@@ -12,15 +12,15 @@ public class LottoGenerateManager {
     private LottoGenerateManager() {
     }
 
-    public static List<Lotto> generateTotalLotto(int totalBuyPrice) {
-        int buyLottoCount = totalBuyPrice / LottoConfig.THOUSAND.getNumber();
+    public static List<Lotto> generateTotalLotto(Integer totalBuyPrice) {
+        Integer buyLottoCount = totalBuyPrice / LottoConfig.THOUSAND.getNumber();
         printTotalLottoCount(buyLottoCount);
         return createTotalLottoRepeatedly(buyLottoCount);
     }
 
     private static List<Lotto> createTotalLottoRepeatedly(Integer lottoCount) {
         List<Lotto> newTotalLotto = new ArrayList<>(lottoCount+1);
-        for (int i = 0; i < lottoCount; i++) {
+        for (Integer i = 0; i < lottoCount; i++) {
             newTotalLotto.add(generateLotto());
         }
         return newTotalLotto;

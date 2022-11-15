@@ -6,13 +6,13 @@ public enum LottoConfig {
     MAX_LENGTH(6),
     THOUSAND(1000);
 
-    private final int number;
+    private final Integer number;
 
-    LottoConfig(int number) {
+    LottoConfig(Integer number) {
         this.number = number;
     }
 
-    public int getNumber() {
+    public Integer getNumber() {
         return number;
     }
 }
