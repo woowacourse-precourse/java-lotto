@@ -46,7 +46,7 @@ public class CommonExceptionTest {
     @Test
     void 당첨_번호_개수_테스트() {
         assertThatIllegalArgumentException().isThrownBy(
-                () -> WinningNumbersExeption.validateNumberLength(List.of("1", "2", "3", "4"), 6)
+                () -> WinningNumbersExeption.validateNumberLength(List.of("1", "2", "3", "4"))
         );
     }
 

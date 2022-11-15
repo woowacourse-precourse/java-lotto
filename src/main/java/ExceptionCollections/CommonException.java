@@ -8,6 +8,7 @@ public class CommonException {
     static final String NUMBER = "^[0-9]*$";
     static final int LOTTO_MINIMUM_NUMBER = 1;
     static final int LOTTO_MAXIMUM_NUMBER = 45;
+    static final int LOTTO_NUMBER_LENGTH = 6;
 
     public static boolean hasCharacters(String number) {
         if (!number.matches(NUMBER)) {
@@ -16,8 +17,8 @@ public class CommonException {
         return false;
     }
 
-    public static void validateNumberLength(List<String> numbers, int length) {
-        if (numbers.size() != length) {
+    public static void validateNumberLength(List<? extends Object> numbers) {
+        if (numbers.size() != LOTTO_NUMBER_LENGTH) {
             throw new IllegalArgumentException(Exceptions.getMessage(Exceptions.WRONG_NUMBER_LENGTH));
         }
     }
@@ -25,6 +26,18 @@ public class CommonException {
     public static void validateNumberRange(int number) {
         if (number < LOTTO_MINIMUM_NUMBER || number > LOTTO_MAXIMUM_NUMBER) {
             throw new IllegalArgumentException(Exceptions.getMessage(Exceptions.OUT_OF_NUMBER_RANGE));
+        }
+    }
+
+    public static void hasDuplicatedNumber(List<? extends Object> numbers, String number) {
+        if (numbers.indexOf(number) != numbers.lastIndexOf(number)) {
+            throw new IllegalArgumentException(Exceptions.getMessage(Exceptions.HAS_DUPLICATED_NUMBER));
+        }
+    }
+
+    public static void hasDuplicatedNumber(List<? extends Object> numbers, int number) {
+        if (numbers.indexOf(number) != numbers.lastIndexOf(number)) {
+            throw new IllegalArgumentException(Exceptions.getMessage(Exceptions.HAS_DUPLICATED_NUMBER));
         }
     }
 
