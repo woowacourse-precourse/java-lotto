@@ -1,5 +1,6 @@
 package lotto;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -8,13 +9,13 @@ enum winNumTimes{THREE, FOUR, FIVE, BONUS, SIX};
 public class Lotto {
     private final List<Integer> numbers;
     private static int bonusNum;
-    private static List<Integer> winNumbers;
+    private static List<Integer> winNumbers=new ArrayList<>();
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
         this.numbers = numbers;
         for(int i = 0; i < 5;i++){
-            this.winNumbers.add(0);
+            winNumbers.add(0);
         }
     }
 
@@ -75,10 +76,11 @@ public class Lotto {
     public float getReturnRate(int userInputMoney){
         float all=0;
         int money[] = {5000, 50000, 1500000, 30000000, 2000000000};
-        for(int i = 0; i < 6; i++){
+        for(int i = 0; i < 5; i++){
             all += money[i] * winNumbers.get(i);
         }
-        return all/userInputMoney;
+        all = all/(userInputMoney*10);
+        return all;
     }
 
     public List<Integer>getWinNums(){
