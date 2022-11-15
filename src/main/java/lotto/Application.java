@@ -33,19 +33,26 @@ public class Application {
 
     private static String validateInputAmountString(String inputString) {
 
-        if (!Pattern.matches("^\\s?[1-9]+\\d*0{3}\\s?$",inputString))
-            throw new IllegalArgumentException("[Error] The amount must be Interger that can be divisible by 1000.");
+        if (!Pattern.matches("^\\s?[1-9]+\\d*0{3}\\s?$", inputString))
+            throw new IllegalArgumentException("[ERROR] The amount must be Interger that can be divisible by 1000.");
 
         return inputString;
     }
 
-    private static boolean validateDrawlNumbersString() {
-        // TODO : 함수 구현
-
-        return false;
+    private static String validateInputWinningNumbersString(String inputString) {
+        if (!Pattern.matches("^\\s?(\\d+\\s)+\\d+\\s?$", inputString))
+            throw new IllegalArgumentException("[ERROR] The Winning numbers are invalid.");
+        return inputString;
     }
 
-    private static List<Lotto> purchaseLotteries(){
+    private static String validateInputBonusNumberString(String inputString) {
+        if (!Pattern.matches("^\\s?\\d+\\s?$", inputString))
+            throw new IllegalArgumentException(("[ERROR] The Bonus number is invalid."));
+
+        return inputString;
+    }
+
+    private static List<Lotto> purchaseLotteries() {
         LotteryStore ls = new LotteryStore();
 
         System.out.println("구입금액을 입력해 주세요.");
@@ -58,29 +65,36 @@ public class Application {
 
         return results;
     }
-    private static void setDrawlNumbers(){
+
+    private static List<Integer> setInputWinningNumbers() {
+        List<Integer> results = new ArrayList<>();
+
+        System.out.println("당첨 번호를 입력해주세요.");
+        String inputNumbersString = validateInputWinningNumbersString(readLine());
+        Arrays.stream(inputNumbersString.split("\\s"))
+                .mapToInt(Integer::parseInt)
+                .forEach(x -> results.add(x));
+        return results;
+    }
+
+    private static int setInputBonusNumber() {
+        System.out.println("보너스 번호를 입력해 주세요.");
+        return Integer.parseInt(validateInputBonusNumberString(readLine()));
 
     }
 
-    private static void printResults(){
+    private static void printResults() {
 
     }
 
     public static void main(String[] args) {
         LotteryHostAgency lha = new LotteryHostAgency();
+        lottories = purchaseLotteries();
 
-        lottories =  purchaseLotteries();
+        List<Integer> inputNumbers = setInputWinningNumbers();
+        int inputBonusNumber = setInputBonusNumber();
 
-        System.out.println("당첨 번호를 입력해주세요.");
-        String inputNumbersString = readLine();
-        validateDrawlNumbersString();
-        List<Integer> inputNumbers = new ArrayList<>();
-        Arrays.stream(inputNumbersString.split("\\s"))
-                .mapToInt(Integer::parseInt)
-                .forEach(x -> inputNumbers.add(x));
-        System.out.println("보너스 번호를 입력해 주세요.");
-        int inputBonusNumber = Integer.parseInt(readLine());
-
+        System.out.println(inputNumbers.size());
         lha.draw(inputNumbers, inputBonusNumber);
         List<LotteryHostAgency.WinningCriteria> results = lottories.parallelStream().map(lha::getResult).collect(Collectors.toList());
         printWiningStats(results);
