@@ -26,7 +26,7 @@ public class LottoMachine {
         validateLottoNumbersInRange(numbers);
     }
 
-    public List<Integer> generateLottoNumber() {
+    private List<Integer> generateLottoNumber() {
         List<Integer> numbers = Randoms.pickUniqueNumbersInRange(LottoConstants.MIN_LOTTO_NUMBER_RANGE.getValue(),
                 LottoConstants.MAX_LOTTO_NUMBER_RANGE.getValue(), LottoConstants.LOTTO_NUMBERS_LENGTH.getValue());
 
