@@ -13,4 +13,15 @@ public class Print {
             System.out.println(userlottos.get(i));
         }
     }
+
+    public void winningMoney(List<Integer> matchFrequency){
+        List<String> winningsPrint = PrizeCategory.getWinningsPrint();
+        List<Integer> matchCount = PrizeCategory.getMatchCount();
+        for (int i = 0; i < matchFrequency.size(); i++){
+            System.out.println(String.format("%d개 일치%s - %d개",
+                    matchCount.get(i),
+                    winningsPrint.get(i),
+                    matchFrequency.get(i)));
+        }
+    }
 }
