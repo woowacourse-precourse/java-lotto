@@ -7,6 +7,9 @@ public class Lotto {
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
+        if (validateNumbers(numbers)){
+            throw new IllegalArgumentException("[ERROR]");
+        }
         this.numbers = new ArrayList<>(numbers);
     }
 
@@ -36,6 +39,12 @@ public class Lotto {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException();
         }
+    }
+
+    private boolean validateNumbers(List<Integer> numbers){
+        Set<Integer> setNumbers = new HashSet<>(numbers);
+        if (setNumbers.size() != 6) return true;
+        return false;
     }
 
     // TODO: 추가 기능 구현

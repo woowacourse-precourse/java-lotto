@@ -1,12 +1,16 @@
 package domain;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import view.InputView;
+
 import java.util.ArrayList;
 import java.util.List;
+
 
 public class LottoAnalysis{
 
     public final List<Lotto> lottoList;
+    public InputView inputView = new InputView();
 
     public LottoAnalysis() {
         this.lottoList = new ArrayList<>();

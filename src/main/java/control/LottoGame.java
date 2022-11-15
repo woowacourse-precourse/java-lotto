@@ -18,7 +18,6 @@ public class LottoGame {
     }
 
     public void playLotto() {
-
         int purchaseQuantity = inputView.purchaseAmount();
         lottoAnalysis.makeLottoList(purchaseQuantity);
         outputView.printAmount(purchaseQuantity);
