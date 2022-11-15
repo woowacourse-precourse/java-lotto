@@ -1,8 +1,9 @@
 package lotto.service;
 
-
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import lotto.domain.Lotto;
 import lotto.domain.Rank;
 import lotto.domain.WinningLotto;
@@ -34,4 +35,27 @@ public class WinningStatisticService {
         return lotto.getNumbers().contains(bonusNumber);
     }
 
+    public void showWinningStatistic(int purchasedPrice) {
+        Map<Rank, Integer> rankCountMap = getRankCountMap();
+        double yield = getYield(getTotalAmount(rankCountMap), purchasedPrice);
+    }
+
+    private Map<Rank, Integer> getRankCountMap() {
+        Map<Rank, Integer> rankCountMap = new HashMap<>();
+        List.of(Rank.values()).forEach(rank -> rankCountMap.put(rank, getRankCount(rank)));
+        return rankCountMap;
+    }
+
+    public Integer getRankCount(Rank rank) {
+        return rankCountRepository.findOne(rank);
+    }
+
+    private long getTotalAmount(Map<Rank, Integer> rankCountMap) {
+        return rankCountMap.entrySet().stream()
+            .mapToLong(entry -> (long) entry.getKey().getWinningAmount() * entry.getValue()).sum();
+    }
+
+    private double getYield(long totalAmount, int purchasedPrice) {
+        return ((double) totalAmount / purchasedPrice) * 100;
+    }
 }
