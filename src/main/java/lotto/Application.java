@@ -35,16 +35,20 @@ public class Application {
 
         return winningNumbers;
     }
+
+    private static void computeRecord(Lottos lottos, WinningNumbers winningNumbers, Money money) {
+        Compute compute = new Compute(lottos, winningNumbers, money);
+        Output.winRecordEventMessage(compute.getWinRecords());
+        Output.profitEventMessage(compute.getProfit());
+    }
+
     public static void main(String[] args) {
         try {
             Money money = purchaseAmount();
             NumberOfLotto numberOfLotto = buyLotto(money);
             Lottos lottos = issueLotto(numberOfLotto);
             WinningNumbers winningNumbers = setWinningNumbers();
-
-            Compute compute = new Compute(lottos, winningNumbers, money);
-            Output.winRecordEventMessage(compute.getWinRecords());
-            Output.profitEventMessage(compute.getProfit());
+            computeRecord(lottos, winningNumbers, money);
         }
         catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
