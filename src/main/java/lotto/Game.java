@@ -5,17 +5,18 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.LogManager;
 
 public class Game {
 
     static int bonus;
     static Lotto winningNumbers;
     static LottoTickets lottoTickets;
-    public static double price;
+    public static Long price;
 
     Game(String input) {
         checkInputError(input);
-        this.price = Double.parseDouble(input);
+        this.price = Long.valueOf(input);
     }
 
     public static void play() {
@@ -48,7 +49,7 @@ public class Game {
     }
 
     private static void enterLottoTickets() {
-        int counts = (int) price / ReferenceValue.Lotto.PRICE.getValue();
+        long counts =  price / ReferenceValue.Lotto.PRICE.getValue().longValue();
         System.out.println(Record.getBuyCounts(counts));
 
         List<Lotto> allLottery = new ArrayList<>();
@@ -137,9 +138,9 @@ public class Game {
     }
 
     private static boolean checkPriceRangeError(String input) {
-        double price = Double.parseDouble(input);
-        double minPrice = (double) ReferenceValue.Lotto.PRICE.getValue();
-        double maxPrice = minPrice * ReferenceValue.Lotto.MAX_COUNTS.getValue();
+        Long price = Long.valueOf(input);
+        Long minPrice = (long) ReferenceValue.Lotto.PRICE.getValue();
+        Long maxPrice = minPrice * ReferenceValue.Lotto.MAX_COUNTS.getValue();
 
         if (price < minPrice || price > maxPrice) {
             Record.printPriceRangeError();
@@ -150,7 +151,7 @@ public class Game {
     }
 
     private static boolean checkPriceError(String input) {
-        double price = Double.parseDouble(input);
+        Long price = Long.valueOf(input);
 
         if (price % ReferenceValue.Lotto.PRICE.getValue() != ReferenceValue.NOTHING) {
             Record.printPriceError();
@@ -162,7 +163,7 @@ public class Game {
 
     public static boolean checkNumberError(String input) {
         try {
-            Double.valueOf(input);
+            Long.valueOf(input);
         } catch (NumberFormatException e) {
             Record.printNumberError();
             return true;

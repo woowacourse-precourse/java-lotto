@@ -8,7 +8,7 @@ import java.util.Map;
 
 public class LottoTickets {
 
-    private static int size;
+    private static Integer size;
     private static List<Lotto> lottoTickets = new ArrayList<>();
     private static List<LottoResult> lottoLottoResults = new ArrayList<>();
     private static List<Integer> lottoMatches = new ArrayList<>();
@@ -39,24 +39,26 @@ public class LottoTickets {
         return lottoResult;
     }
 
-    public double getTotalReturn() {
+    public Double getTotalReturn() {
 
-        double purchaseAmount = (double) getPurchaseAmount();
-        double winningAmounts = (double) getWinningAmounts();
+        Double purchaseAmount = getPurchaseAmount();
+        Double winningAmounts = getWinningAmounts();
 
-        double totalReturn = (winningAmounts / purchaseAmount) * ReferenceValue.MULTIPLE_HUNDRED;
-        double totalReturnPercent = Math.round(totalReturn * ReferenceValue.MULTIPLE_FIRST_DECIMAL) / ReferenceValue.DIVIDE_FIRST_DECIMAL;
+        Double totalReturn = Double.valueOf((winningAmounts / purchaseAmount) * ReferenceValue.MULTIPLE_HUNDRED.doubleValue());
+        Double totalReturnPercent = Math.round(totalReturn * ReferenceValue.MULTIPLE_FIRST_DECIMAL)
+                / ReferenceValue.DIVIDE_FIRST_DECIMAL;
+
 
         return totalReturnPercent;
     }
 
-    private static double getPurchaseAmount() {
-        return size * ReferenceValue.Lotto.PRICE.getValue();
+    private static Double getPurchaseAmount() {
+        return size.doubleValue() * ReferenceValue.Lotto.PRICE.getValue();
     }
 
-    public static int getWinningAmounts() {
-        int sum = 0;
-        int size = ReferenceValue.Lotto.SIZE.getValue();
+    public static Double getWinningAmounts() {
+        double sum = 0;
+        Long size = ReferenceValue.Lotto.SIZE.getValue().longValue();
 
         for (int index = 0; index < size; index++) {
             int count = lottoMatches.get(index);
@@ -66,9 +68,9 @@ public class LottoTickets {
         return sum;
     }
 
-    private static int getMatchesMoney(int index, int count) {
+    private static Long getMatchesMoney(int index, int count) {
 
-        int money = 0;
+        Long money = 0L;
 
         for (ReferenceValue.WinningStats winningStats : ReferenceValue.WinningStats.values()) {
             if (winningStats.equalsIndex(index)) {

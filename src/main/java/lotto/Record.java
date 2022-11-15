@@ -48,7 +48,7 @@ public class Record {
         return EnterMessage.WINNING_NUMBER.getMessage();
     }
 
-    public static String getBuyCounts(int counts) {
+    public static String getBuyCounts(long counts) {
         return String.format(EnterMessage.BUY_THINGS.getMessage(), counts);
     }
 

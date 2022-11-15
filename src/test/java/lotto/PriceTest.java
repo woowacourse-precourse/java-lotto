@@ -23,6 +23,14 @@ public class PriceTest extends NsTest {
     }
 
     @Test
+    void 예외_공백_테스트() {
+        assertSimpleTest(() -> {
+            runException(" ");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
+    @Test
     void 예외_천단위_가격_테스트() {
         assertSimpleTest(() -> {
             runException("1200");
