@@ -2,7 +2,7 @@ package lotto.domain;
 
 import java.util.List;
 
-import static lotto.service.ExceptionHandler.validateLottoNumbers;
+import static lotto.util.ExceptionHandler.validateLottoNumbers;
 
 public class Lotto {
     private final List<Integer> numbers;

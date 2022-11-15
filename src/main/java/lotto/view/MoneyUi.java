@@ -4,7 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 import lotto.domain.Money;
 import lotto.service.MoneyService;
 
-import static lotto.service.ExceptionHandler.validateInputtedMoney;
+import static lotto.util.ExceptionHandler.validateInputtedMoney;
 import static lotto.util.LottoUtils.printEnter;
 import static lotto.values.Constants.Console.INPUT_MONEY_MESSAGE;
 

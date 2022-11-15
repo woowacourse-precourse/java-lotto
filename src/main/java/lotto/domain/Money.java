@@ -1,9 +1,9 @@
 package lotto.domain;
 
-import static lotto.service.ExceptionHandler.validateMoney;
+import static lotto.util.ExceptionHandler.validateMoney;
 
 public class Money {
-    private int money;
+    private final int money;
 
     public Money(int money) {
         validateMoney(money);

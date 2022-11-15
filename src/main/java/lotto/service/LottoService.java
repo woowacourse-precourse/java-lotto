@@ -13,7 +13,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import static lotto.service.ExceptionHandler.validateBonusNumber;
+import static lotto.util.ExceptionHandler.validateBonusNumber;
 import static lotto.values.Constants.Digit.LOTTO_PRICE;
 import static lotto.values.Constants.Util.LOTTO_NUMBER_SEPARATOR;
 
