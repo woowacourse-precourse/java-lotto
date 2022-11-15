@@ -6,7 +6,7 @@ import lotto.system.RandomLottoSystem;
 import lotto.system.SettlementSystem;
 
 public class LottoGame {
-    private static final String ERROR_UN_SOLVING = "[ERROR] + %s";
+    private static final String ERROR_UN_SOLVING = "[ERROR] %s";
     private final IoSystem io;
 
     public LottoGame(IoSystem ioSystem) {
