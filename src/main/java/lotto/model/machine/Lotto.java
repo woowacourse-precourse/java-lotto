@@ -1,5 +1,6 @@
 package lotto.model.machine;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 
@@ -18,7 +19,7 @@ public class Lotto implements Comparable<WinningNumber> {
     public Lotto(List<Integer> numbers) {
         validateSize(numbers);
         validateDuplicate(numbers);
-        this.numbers = numbers;
+        this.numbers = new ArrayList<>(numbers);
     }
 
     private void validateSize(List<Integer> numbers) {
