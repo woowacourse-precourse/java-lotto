@@ -28,6 +28,6 @@ public class OutputView {
     }
 
     public static void printProfitRate(double profitRate) {
-        System.out.println(GameMessage.PROFIT_HEAD_MESSAGE.getMessage() + profitRate + GameMessage.PROFIT_TAIL_MESSAGE.getMessage());
+        System.out.println(GameMessage.PROFIT_HEAD_MESSAGE.getMessage() + String.format("%.1f", profitRate) + GameMessage.PROFIT_TAIL_MESSAGE.getMessage());
     }
 }
