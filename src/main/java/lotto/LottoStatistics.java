@@ -19,11 +19,25 @@ public class LottoStatistics {
         this.lottos = lottos;
 
         initStatistics();
+
+        updateStatistics();
     }
 
     private void initStatistics() {
         for (Rank rank : values()) {
             statistics.put(rank, INIT_COUNT);
         }
+    }
+
+    private void updateStatistics() {
+        for (Lotto lotto : lottos) {
+            Rank rank = winningLotto.getRankOfLotto(lotto);
+
+            statistics.put(rank, addCount(rank));
+        }
+    }
+
+    private int addCount(Rank rank) {
+        return statistics.get(rank) + ONE_COUNT;
     }
 }
