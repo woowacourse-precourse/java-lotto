@@ -7,24 +7,27 @@ import java.util.List;
 
 public class Application {
     public static void main(String[] args) {
+        try {
+            Integer money = UserInterface.getMoney();
 
-        Integer money = UserInterface.getMoney();
+            List<Lotto> randomLottos = LottoMachine.getRandomLottos(money);
 
-        List<Lotto> randomLottos = LottoMachine.getRandomLottos(money);
+            UserInterface.printLottos(randomLottos);
 
-        UserInterface.printLottos(randomLottos);
+            List<Integer> answerNumbers = UserInterface.getLottoNumbers();
 
-        List<Integer> answerNumbers = UserInterface.getLottoNumbers();
+            Integer bonusNumber = UserInterface.getBonusNumber(answerNumbers);
 
-        Integer bonusNumber = UserInterface.getBonusNumber(answerNumbers);
+            Lotto answerLotto = Lotto.numberOf(answerNumbers);
 
-        Lotto answerLotto = Lotto.numberOf(answerNumbers);
+            HashMap<Calculator.Hit, Integer> result = Calculator.getLottoResult(randomLottos, answerLotto, bonusNumber);
 
-        HashMap<Calculator.Hit, Integer> result = Calculator.getLottoResult(randomLottos, answerLotto, bonusNumber);
+            Float earningRate = Calculator.getEarningRate(result, money);
 
-        Float earningRate = Calculator.getEarningRate(result, money);
-
-        UserInterface.printResult(result);
-        UserInterface.printEarningRate(earningRate);
+            UserInterface.printResult(result);
+            UserInterface.printEarningRate(earningRate);
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+        }
     }
 }
