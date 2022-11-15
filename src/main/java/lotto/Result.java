@@ -5,8 +5,6 @@ import java.util.*;
 import static lotto.Prize.*;
 
 public class Result {
-
-
     private int count;
     private List<Integer> winningNumber;
     private int bonusNumber;
@@ -53,11 +51,11 @@ public class Result {
     public void printWinningStatistics(){
         System.out.println("당첨 통계");
         System.out.println("---");
-        System.out.printf("3개 일치 (%d)원 - %d개\n", Fifth.getPrizeMoney(), winningStatistics.get(Fifth));
-        System.out.printf("4개 일치 (%d)원 - %d개\n", Fourth.getPrizeMoney(),winningStatistics.get(Fourth));
-        System.out.printf("5개 일치 (%d)원 - %d개\n", Third.getPrizeMoney(), winningStatistics.get(Third));
-        System.out.printf("5개 일치, 보너스 볼 일치 (%d)원 - %d개\n", Second.getPrizeMoney(), winningStatistics.get(Second));
-        System.out.printf("6개 일치 (%d)원 - %d개\n", First.getPrizeMoney(), winningStatistics.get(First));
+        System.out.printf("3개 일치 (%,d원) - %d개\n", Fifth.getPrizeMoney(), winningStatistics.get(Fifth));
+        System.out.printf("4개 일치 (%,d원) - %d개\n", Fourth.getPrizeMoney(),winningStatistics.get(Fourth));
+        System.out.printf("5개 일치 (%,d원) - %d개\n", Third.getPrizeMoney(), winningStatistics.get(Third));
+        System.out.printf("5개 일치, 보너스 볼 일치 (%,d원) - %d개\n", Second.getPrizeMoney(), winningStatistics.get(Second));
+        System.out.printf("6개 일치 (%,d원) - %d개\n", First.getPrizeMoney(), winningStatistics.get(First));
         System.out.printf("총 수익률은 %.1f%%입니다.", Judgement.calculateEarningRate(count*1000, calculateTotalPrizeMoney()));
     }
 

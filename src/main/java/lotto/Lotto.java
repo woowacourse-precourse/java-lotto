@@ -2,6 +2,7 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Lotto {
@@ -17,6 +18,11 @@ public class Lotto {
             System.out.println("[ERROR] 로또 번호는 6개의 숫자로 이루어져야 합니다.");
             throw new IllegalArgumentException();
         }
+        List<Integer> sortOfNumbers = new ArrayList<>();
+        for (Integer number:numbers){
+            Input.validateNotDuplicated(sortOfNumbers, String.valueOf(number));
+            sortOfNumbers.add(number);
+        }
     }
 
     public List<Integer> getNumbers() {
@@ -24,8 +30,4 @@ public class Lotto {
     }
 
     // TODO: 추가 기능 구현
-
-//    public List<Integer> getRandomLottoNumber() {
-//        List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
-//    }
 }

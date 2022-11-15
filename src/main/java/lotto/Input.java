@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Pattern;
 
 public class Input {
     public static int inputMoney() {
@@ -34,12 +35,17 @@ public class Input {
     }
 
     public static void validateNumber(String input) {
-        try {
-            Integer.parseInt(input);
-        } catch(NumberFormatException exception) {
+        String pattern = "^[0-9]*$";
+        if (!Pattern.matches(pattern, input)){
             System.out.println("[ERROR] 숫자를 입력해주세요.");
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR] 숫자를 입력해주세요.");
         }
+//        try {
+//            Integer.parseInt(input);
+//        } catch(NumberFormatException exception) {
+//            System.out.println("[ERROR] 숫자를 입력해주세요.");
+//            throw new IllegalArgumentException("[ERROR] 숫자를 입력해주세요.");
+//        }
     }
 
     public static void validateUnitIs1000(int input) {
