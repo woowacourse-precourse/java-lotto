@@ -13,18 +13,23 @@ public class Sample {
     private static final String WINNING_STATISTICS_PRINT_FORM = "%correctNumber개 일치 (%money원) - %count개" + System.lineSeparator();
     private static final String WINNING_STATISTICS_PRINT_BONUS_FORM = "%correctNumber개 일치, 보너스 볼 일치 (%money원) - %count개" + System.lineSeparator();
     private static final String WINNING_YIELD_PRINT_FORM = "총 수익률은 %yield%입니다." + System.lineSeparator();
-    public int stringToInt(String line){ // Lotto-valid-001
+    public int stringToInt(String line){ // Lotto-valid-001, WinningStatistics-valid-002
         try{
             int number = Integer.parseInt(line);
-            if (number % 1000 != 0) {
-                System.out.println(ILLEGAL_ARGUMENT_ERROR_MESSAGE);
-                throw new IllegalArgumentException();
-            }
             return number;
         } catch (NumberFormatException e){
             System.out.println(ILLEGAL_ARGUMENT_ERROR_MESSAGE);
             throw new IllegalArgumentException();
         }
+    }
+
+    public int getPayMoney(String line){ // Lotto-valid-001
+        int payMoney = stringToInt(line);
+        if (payMoney % 1000 != 0) {
+            System.out.println(ILLEGAL_ARGUMENT_ERROR_MESSAGE);
+            throw new IllegalArgumentException();
+        }
+        return payMoney;
     }
 
     public List<Lotto> getLottos(int numberPurchase){ // Lotto-create-001
@@ -68,21 +73,13 @@ public class Sample {
         }
     }
 
-    public int getBonusNumber(String line){ // WinningStatistics-valid-002
-        try{
-            int bonusNumber = Integer.parseInt(line);
-            validBonusNumber(bonusNumber);
-            return bonusNumber;
-        } catch (NumberFormatException e){
-            System.out.println(ILLEGAL_ARGUMENT_ERROR_MESSAGE);
-            throw new IllegalArgumentException();
-        }
-    }
-    public void validBonusNumber(int bonusNumber){ // WinningStatistics-valid-002
+    public int validBonusNumber(String line){ // WinningStatistics-valid-002
+        int bonusNumber = stringToInt(line);
         if (bonusNumber < 1 || bonusNumber > 45){
             System.out.println(ILLEGAL_ARGUMENT_ERROR_MESSAGE);
             throw new IllegalArgumentException();
         }
+        return bonusNumber;
     }
 
     public List<LottoWinning> getWinningStatistics(List<Lotto> lottos, List<Integer> winningNumbers, int bonusNumber){ // WinningStatistics-compare-001
@@ -132,12 +129,12 @@ public class Sample {
         return message;
     }
 
-    public String printYield(List<LottoWinning> winningStatistics, int buyPrice){
+    public String printYield(List<LottoWinning> winningStatistics, int buyPrice){ // WinningStatistics-yield-001
         String message = WINNING_YIELD_PRINT_FORM;
         message = message.replace("%yield",String.valueOf(getYield(winningStatistics, buyPrice)));
         return message;
     }
-    public double getYield(List<LottoWinning> winningStatistics, int buyPrice){
+    public double getYield(List<LottoWinning> winningStatistics, int buyPrice){ //WinningStatistics-yield-001
         double getPrice = 0;
         for (LottoWinningEnum lottoWinningEnum : LottoWinningEnum.values()){
             int correctNumber = lottoWinningEnum.getCorrectNumber();
