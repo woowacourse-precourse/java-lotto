@@ -3,25 +3,6 @@ package lotto;
 import java.util.*;
 
 public class LottoNumberCheck {
-
-    public enum Bye {
-        FIVE(5_000),
-        FOUR(50_000),
-        THREE(1_500000),
-        TWO(30_000000),
-        ONE(2_000000000);
-
-        final private int bye;
-
-        private int getBye() {
-            return bye;
-        }
-
-        Bye(int bye) {
-            this.bye = bye;
-        }
-    }
-
     private static Map<String, Integer> correctNumber; // 당첨 번호를 저장할 Map
     private static Map<List<Integer>, Integer> checkLotto;
     private static List<Integer> countPrizeNumber; // 당첨 번호 갯수 (3개이상 맞춘 것만) 저장하는 List
@@ -139,8 +120,8 @@ public class LottoNumberCheck {
             total += value.getPrizeMoney() * myPrizeMoney.get(count);
             count++;
         }
-        double add = ((double) total / myMoney) * 100;
-        add = Math.round(add*10)/10.0;
-        System.out.println("총 수익률은 " + add + "%입니다.");
+        double yield = ((double) total / myMoney) * 100;
+        yield = Math.round(yield*10)/10.0;
+        Message.printYield(yield);
     }
 }
