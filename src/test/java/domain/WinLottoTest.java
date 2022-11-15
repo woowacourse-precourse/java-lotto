@@ -1,6 +1,5 @@
 package domain;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import util.LottoRank;
@@ -8,6 +7,8 @@ import util.LottoRank;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 class WinLottoTest {
 
@@ -24,7 +25,7 @@ class WinLottoTest {
 
         WinLotto winLotto = new WinLotto(lotteries, winnerNumber, bonusNumber);
         Map<LottoRank, Integer> lottoRankIntegerMap = winLotto.getResult();
-        Assertions.assertThat(lottoRankIntegerMap.get(LottoRank.FIRST)).isEqualTo(2);
+        assertThat(lottoRankIntegerMap.get(LottoRank.FIRST)).isEqualTo(2);
     }
 
     @DisplayName("당첨로또들의 수익을 알맞게 집계하는지 확인")
@@ -39,7 +40,7 @@ class WinLottoTest {
         int bonusNumber = 7;
 
         WinLotto winLotto = new WinLotto(lotteries, winnerNumber, bonusNumber);
-        Assertions.assertThat(winLotto.getProfit()).isEqualTo(2_030_000_000);
+        assertThat(winLotto.getProfit()).isEqualTo(2_030_000_000);
     }
 
 }
