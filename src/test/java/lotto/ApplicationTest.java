@@ -3,14 +3,49 @@ package lotto;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
+import java.io.InputStream;
+import java.io.StringBufferInputStream;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomUniqueNumbersInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
+import static lotto.Application.*;
 
 class ApplicationTest extends NsTest {
+
     private static final String ERROR_MESSAGE = "[ERROR]";
+
+    @Test
+    void get_lotto_answer_검사(){
+        InputStream stdin = System.in;
+        System.setIn(new StringBufferInputStream("1,2,3,4,5,6"));
+        Lotto lotto = get_lotto_answer();
+        assertThat(lotto.return_lotto().size()).isEqualTo(6);
+    }
+
+    @Test
+    void get_lotto_numbers_검사(){
+        List<Lotto> test_lottos =get_lotto_numbers(8000);
+        assertThat(test_lottos.size()).isEqualTo(8);
+    }
+
+    @Test
+    void verify_lotto_검사(){
+        List<Integer> numbers = new ArrayList<Integer>(Arrays.asList(1,2,3,4,5,6));
+        Lotto input_lotto = new Lotto(numbers);
+        Lotto answer_lotto = new Lotto(numbers);
+        assertThat(verify_lotto(input_lotto, answer_lotto, 7)).isEqualTo(2000000000);
+    }
+
+    @Test
+    void win_lotto_number_검사(){
+        int[] win_lotto = {0,0,0,0,0};
+        win_lotto = win_lotto_number(win_lotto, 50000);
+        assertThat(win_lotto[1]).isEqualTo(1);
+    }
 
     @Test
     void 기능_테스트() {
