@@ -1,5 +1,6 @@
 package lotto.view;
 
+import java.text.DecimalFormat;
 import java.util.List;
 
 import static lotto.domain.Rank.*;
@@ -29,11 +30,25 @@ public class OutputView {
     public void printWinningLog(int[] winningLog) {
         System.out.println("\n당첨 통계");
         System.out.println("---");
-        System.out.println("3개 일치 (" + FIFTH.getPrize() + "원) -  " + winningLog[FIFTH.getWinningLogIdx()] + "개");
-        System.out.println("4개 일치 (" + FOURTH.getPrize() + "원) -  " + winningLog[FOURTH.getWinningLogIdx()] + "개");
-        System.out.println("5개 일치 (" + THIRD.getPrize() + "원) -  " + winningLog[THIRD.getWinningLogIdx()] + "개");
-        System.out.println("5개 일치, 보너스 볼 일치 (" + SECOND.getPrize() + "원) -  " + winningLog[SECOND.getWinningLogIdx()] + "개");
-        System.out.println("6개 일치 (" + FIRST.getPrize() + "원) -  " + winningLog[FIRST.getWinningLogIdx()] + "개");
+        printWinningLogForRanks(FIFTH.getPredictionMatchCnt(), FIFTH.getPrize(), winningLog[FIFTH.getWinningLogIdx()]);
+        printWinningLogForRanks(FOURTH.getPredictionMatchCnt(), FOURTH.getPrize(), winningLog[FOURTH.getWinningLogIdx()]);
+        printWinningLogForRanks(THIRD.getPredictionMatchCnt(), THIRD.getPrize(), winningLog[THIRD.getWinningLogIdx()]);
+        printWinningLogForSecondRank(SECOND.getPredictionMatchCnt(), SECOND.getPrize(), winningLog[SECOND.getWinningLogIdx()]);
+        printWinningLogForRanks(FIRST.getPredictionMatchCnt(), FIRST.getPrize(), winningLog[FIRST.getWinningLogIdx()]);
+    }
+
+    public void printWinningLogForRanks(int predictionMatchCnt, int prize, int counts) {
+        DecimalFormat formatter = new DecimalFormat("###,###");
+
+        String message = "%d개 일치 (%s원) - %d개\n";
+        System.out.printf(message, predictionMatchCnt, formatter.format(prize), counts);
+    }
+
+    public void printWinningLogForSecondRank(int predictionMatchCnt, int prize, int counts) {
+        DecimalFormat formatter = new DecimalFormat("###,###");
+
+        String message = "%d개 일치, 보너스 볼 일치 (%s원) - %d개\n";
+        System.out.printf(message, predictionMatchCnt, formatter.format(prize), counts);
     }
 
     public void printRateOfReturn(double rateOfReturn) {
