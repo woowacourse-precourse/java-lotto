@@ -5,7 +5,12 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.assertj.core.api.Assertions.linesOf;
+
 public class ExceptionTest {
 
     @DisplayName("로또 구입 금액이 0으로 시작하면 예외가 발생한다.")
@@ -53,14 +58,14 @@ public class ExceptionTest {
     @DisplayName("보너스 번호가 당첨번호와 중복되면 예외가 발생한다")
     @Test
     void createExceptionTest7() {
-        assertThatThrownBy(() -> new Exception().checkBonusNumberOverLap("7","1,2,3,4,5,7"))
+        assertThatThrownBy(() -> new Exception().checkBonusNumberOverLap("7",List.of(1,2,3,7,37,37)))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
     @DisplayName("당첨 번호가 숫자가 아니라면 예외가 발생한다")
     @Test
     void createExceptionTest8() {
-        assertThatThrownBy(() -> new Exception().checkBonusNumberOverLap("7","a,2,3,4,5,7"))
+        assertThatThrownBy(() -> new Exception().winningNumberRange("a,2,3,4,5,7"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
