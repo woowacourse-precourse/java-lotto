@@ -38,13 +38,9 @@ public class InputView {
     }
 
     private static List<Integer> toIntegerList(String input) {
-        try {
-            return Arrays.stream(input.split(DELIMITER))
-                    .map(Integer::parseInt)
-                    .collect(Collectors.toList());
-        } catch (NumberFormatException e) {
-            throw new IllegalArgumentException(PARSE_ERROR_MESSAGE);
-        }
+        return Arrays.stream(input.split(DELIMITER))
+                .map(InputView::toInteger)
+                .collect(Collectors.toList());
     }
 
     private static void validateWinningNumbersInput(String input) {
