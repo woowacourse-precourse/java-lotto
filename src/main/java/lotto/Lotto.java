@@ -21,8 +21,9 @@ public class Lotto {
     public Lotto(List<Integer> numbers) {
         validate(numbers);
 
-        this.numbers = new ArrayList<>(numbers);
+        this.numbers = numbers;
     }
+
 
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
@@ -31,7 +32,7 @@ public class Lotto {
     }
 
     public static Lotto generateLottoNumbers() {
-        List<Integer> numbers = pickUniqueNumbersInRange(1, 45, 6);
+        List<Integer> numbers = new ArrayList<>(pickUniqueNumbersInRange(1, 45, 6));
 
         return new Lotto(numbers);
     }
@@ -43,12 +44,10 @@ public class Lotto {
         }
     }
 
-    public static List<Lotto> getLottos() {
-        return Collections.unmodifiableList(number);
-    }
+
 
     public static List<Integer> getNumbers() {
-        return Collections.unmodifiableList(numbers);
+        return numbers;
     }
 
     public static LottoPrize confirmWinning(WinningNumbers winningNumbers) {
@@ -62,19 +61,7 @@ public class Lotto {
         return LottoPrize.match(lottoNumberMatches, bonusNumberMatches);
     }
 
-    public static Map<LottoPrize, Integer> checkWinning(WinningNumbers winningNumbers) {
-        Map<LottoPrize, Integer> result = new HashMap<>();
-        for (LottoPrize prize : LottoPrize.values()) {
-            result.put(prize, 0);
-        }
 
-        for (Lotto lotto : lottos) {
-            LottoPrize prize = lotto.confirmWinning(winningNumbers);
-            result.put(prize, result.get(prize) + 1);
-        }
-
-        return Collections.unmodifiableMap(result);
-    }
 
     @Override
     public String toString() {
