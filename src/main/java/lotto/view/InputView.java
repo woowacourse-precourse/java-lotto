@@ -41,12 +41,12 @@ public class InputView {
 
     public int userInputBonusNumber() {
         outputView.printBonusNumberMessage();
-        String userInputBonusNumber = Console.readLine();
+        String inputBonusNumber = Console.readLine();
 
         BonusNumberInputValidation bonusNumberInputValidation = new BonusNumberInputValidation();
-        bonusNumberInputValidation.validate(predictionNumbers, userInputBonusNumber);
+        bonusNumberInputValidation.validate(predictionNumbers, inputBonusNumber);
 
-        int bonusNumber = splitStringByCommaAndParseInt(userInputBonusNumber).get(0);
+        int bonusNumber = splitStringByCommaAndParseInt(inputBonusNumber).get(0);
         return bonusNumber;
     }
 
