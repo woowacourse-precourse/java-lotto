@@ -10,6 +10,11 @@ public class Money {
 
     private final int money;
 
+    public Money(int money) {
+        validate(money);
+        this.money = money;
+    }
+
     public Money(String money) {
         validate(money);
         this.money = Integer.parseInt(money);
@@ -19,11 +24,14 @@ public class Money {
         if (!verifyPositiveInteger(money)) {
             throw new MoneyNotPositiveIntegerException();
         }
-        int moneyValue = Integer.parseInt(money);
-        if (!verifyRange(moneyValue)) {
+        validate(Integer.parseInt(money));
+    }
+
+    private void validate(int money) {
+        if (!verifyRange(money)) {
             throw new MoneyRangeException();
         }
-        if (!verifyDividedByPrice(moneyValue)) {
+        if (!verifyDividedByPrice(money)) {
             throw new MoneyNotDividedByPriceException();
         }
     }
