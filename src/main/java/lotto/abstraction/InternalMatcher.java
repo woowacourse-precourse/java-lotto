@@ -1,5 +1,6 @@
 package lotto.abstraction;
 
+
 // 역할 정의 : 내부 처리
 public interface InternalMatcher {
 

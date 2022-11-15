@@ -1,5 +1,6 @@
 package lotto.domain;
 
+
 import lotto.shell.Shell;
 
 public class LottoTicket {

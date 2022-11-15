@@ -1,10 +1,7 @@
 package lotto.shell;
 
 import static java.lang.Integer.parseInt;
-
-
 import camp.nextstep.edu.missionutils.Console;
-
 import lotto.abstraction.ShellInterface;
 
 // 사용자 입력 담당 책임

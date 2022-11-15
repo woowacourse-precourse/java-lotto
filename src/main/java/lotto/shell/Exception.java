@@ -1,6 +1,5 @@
 package lotto.shell;
 
-
 import static lotto.shell.AlertEnumeration.AMOUNT_EXCEPTION;
 import static lotto.shell.AlertEnumeration.INVALID_EXCEPTION;
 import static lotto.shell.AlertEnumeration.SIZE_EXCEPTION;

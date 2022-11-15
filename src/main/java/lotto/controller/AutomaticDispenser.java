@@ -1,7 +1,7 @@
 package lotto.controller;
 
-import static camp.nextstep.edu.missionutils.Randoms.pickUniqueNumbersInRange;
 
+import static camp.nextstep.edu.missionutils.Randoms.pickUniqueNumbersInRange;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;

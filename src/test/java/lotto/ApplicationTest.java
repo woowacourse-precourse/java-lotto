@@ -2,9 +2,7 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
-
 import java.util.List;
-
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomUniqueNumbersInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -27,7 +25,8 @@ class ApplicationTest extends NsTest {
                             "[7, 11, 30, 40, 42, 43]",
                             "[2, 13, 22, 32, 38, 45]",
                             "[1, 3, 5, 14, 22, 45]",
-                            "3개 일치 (5,000원) - 1개",
+                            "3개 일치 (5,00"
+                                    + "0원) - 1개",
                             "4개 일치 (50,000원) - 0개",
                             "5개 일치 (1,500,000원) - 0개",
                             "5개 일치, 보너스 볼 일치 (30,000,000원) - 0개",
