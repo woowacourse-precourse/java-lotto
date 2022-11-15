@@ -52,11 +52,10 @@ public class LottoGame {
         for (int order=0; order< issuedLotto.size(); order++) {
             Lotto lotto = issuedLotto.get(order);
             Rank rank = lotto.calculateRank(winningNumber, bonusNumber);
-            System.out.println(rank.getTitle());
 
             if (rank != Rank.NO_PLACE) {
                 int place = rank.getPlace();
-                // gameResult.set(place, gameResult.get(place)+1);
+                gameResult.set(place, gameResult.get(place)+1);
             }
         }
     }
