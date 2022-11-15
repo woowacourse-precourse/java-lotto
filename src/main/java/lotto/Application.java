@@ -2,6 +2,11 @@ package lotto;
 
 import static camp.nextstep.edu.missionutils.Console.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import camp.nextstep.edu.missionutils.Randoms;
+
 public class Application {
 	
 	static final String PAY_MONEY_MESSAGE = "구입금액을 입력해 주세요.";
@@ -16,24 +21,80 @@ public class Application {
 	static final int LOTTO_PRICE = 1000;
 	static final long[] PRIZE_BY_RANK = {2000000000, 30000000, 1500000, 50000, 5000};
     
+	private final static List<Lotto> numbers = new ArrayList<Lotto>();
+	
 	public static void main(String[] args) {
 		String input = inputMoney();
 		start(input);
-		
+		purchaseRandomNumbers(input);
+		printLottoNumbers();
         
     }
 	
 	
 	// input 
-    public static String inputMoney() {
+	public static String inputMoney() {
     	System.out.println(PAY_MONEY_MESSAGE);
     	return readLine().replace(" ", "");
     }
     
+	public static String[] inputWinNumber() {
+	   System.out.println(WIN_NUMBER_MESSAGE);
+	   return readLine().split(",");
+	}
+   
+	public static String inputBonusNumber() {
+	   System.out.println(BONUS_NUMBER_MESSAGE);
+	   return readLine().replace(" ", "");	
+	}
+   
+   
+   // output   
+	public static void outputPurchase(String input) {
+		List<Lotto> numbers = printLottoNumbers();
+		System.out.println(purchaseLottoAmount(input) + PAY_CHECK_MESSAGE);
+		for (Lotto number : numbers) {
+			System.out.println(number.getLottoNumbers());
+		}
+	}
+   
+	public static void outputLottoNumbers(){
+		System.out.println();
+	}
+   
+	public static void outputWinStatistics() {
+		System.out.println();
+	}
+   
+	public static void outputWinRate() {
+		System.out.printf("총 수익률은 %.1f%%입니다.");
+	}
+   
+   
+   // methods
+	public static int purchaseLottoAmount(String input) {
+		return Integer.parseInt(input) / LOTTO_PRICE;
+	}
+   
+    public static List<Lotto> printLottoNumbers(){
+    	return numbers;
+    }
+    
+	private static Lotto purchaseNumbers() {
+		return new Lotto(Randoms.pickUniqueNumbersInRange(MIN_NUMBER, MAX_NUMBER, LOTTO_SIZE));
+	}
+   
+	public static void purchaseRandomNumbers(String input) {
+		int purchaseHowMany = purchaseLottoAmount(input);
+		for (int i = 0; i < purchaseHowMany; i++) {
+			numbers.add(purchaseNumbers());
+			}
+	}
+   
     
     // exceptions
 	public static void start(String input) {
-    	if(!purchaseValidate(input)) {
+		if(!purchaseValidate(input)) {
     		throw new IllegalArgumentException();
     	}
     	System.out.println();
