@@ -1,6 +1,5 @@
 package lotto.service;
 
-import java.util.Set;
 import lotto.data.dao.AdminDao;
 import lotto.data.dto.BonusNumberDto;
 import lotto.data.dto.WinNumberDto;
@@ -18,20 +17,16 @@ public class AdminService {
     }
 
     public void setWinNumber(WinNumberDto winNumberDto) {
-        Set<Integer> winNumbers = winNumberDto.getWinNumbers();
-        winNumberBuilder.winNumbers(winNumbers);
+        winNumberBuilder.winNumbers(winNumberDto.getWinNumbers());
     }
 
     public void setBonusNumber(BonusNumberDto bonusNumberDto) {
-        int bonusNumber = bonusNumberDto.getBonusNumber();
-        winNumberBuilder.bonusNumber(bonusNumber);
+        winNumberBuilder.bonusNumber(bonusNumberDto.getBonusNumber());
     }
 
     public void finishRound() {
-        WinNumber winNumber = winNumberBuilder.build();
-        Long roundId = adminDao.getCurrentRoundId();
-        winNumber.setRoundId(roundId);
-        adminDao.insertWinNumber(winNumber);
+        winNumberBuilder.roundId(adminDao.getCurrentRoundId());
+        adminDao.insertWinNumber(winNumberBuilder.build());
         adminDao.setNextRound();
     }
 }
