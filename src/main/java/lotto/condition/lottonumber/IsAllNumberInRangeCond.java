@@ -4,8 +4,8 @@ import lotto.condition.Condition;
 
 import java.util.List;
 
-import static lotto.LottoMachine.NUMBER_RANGE_BOT;
-import static lotto.LottoMachine.NUMBER_RANGE_TOP;
+import static lotto.domain.lottomachine.LottoMachine.NUMBER_RANGE_BOT;
+import static lotto.domain.lottomachine.LottoMachine.NUMBER_RANGE_TOP;
 
 public class IsAllNumberInRangeCond implements Condition {
 

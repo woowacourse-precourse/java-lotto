@@ -4,7 +4,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import static lotto.LottoMachine.LOTTO_NUMBER_SIZE;
+import static lotto.domain.lottomachine.LottoMachine.LOTTO_NUMBER_SIZE;
 
 public class Lotto {
 

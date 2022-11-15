@@ -1,4 +1,4 @@
-package lotto;
+package lotto.domain.lottomachine;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import lotto.domain.lotto.Lotto;

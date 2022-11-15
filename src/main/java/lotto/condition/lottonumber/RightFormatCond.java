@@ -1,7 +1,7 @@
 package lotto.condition.lottonumber;
 
-import lotto.LottoMachine;
 import lotto.condition.Condition;
+import lotto.domain.lottomachine.LottoMachine;
 
 public class RightFormatCond implements Condition {
 

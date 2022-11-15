@@ -3,6 +3,7 @@ package lotto;
 import lotto.console.ConsoleIn;
 import lotto.console.ConsoleOut;
 import lotto.domain.lotto.Lotto;
+import lotto.domain.lottomachine.LottoMachine;
 
 import java.util.HashMap;
 import java.util.List;
