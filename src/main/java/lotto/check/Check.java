@@ -1,6 +1,6 @@
 package lotto.check;
 
-import lotto.domain.Game;
+import lotto.Game;
 import lotto.view.Print;
 
 import java.util.List;

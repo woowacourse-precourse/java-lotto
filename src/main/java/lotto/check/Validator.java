@@ -1,6 +1,6 @@
 package lotto.check;
 
-import lotto.domain.Game;
+import lotto.Game;
 import lotto.exception.Exception;
 
 import java.util.Arrays;
