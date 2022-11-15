@@ -6,20 +6,18 @@ import lotto.model.LottoWinning;
 import lotto.service.LottoPublishService;
 import lotto.service.LottoRaffleService;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class LottoController {
 
-    private LottoPublishService lottoPublishService = new LottoPublishService();
+    private final LottoPublishService lottoPublishService = new LottoPublishService();
     private LottoRaffleService lottoRaffleService;
 
-    private LottoWinning lottoWinning;
-    private LottoWinning.Builder builder;
+    private final LottoWinning.Builder builder = new LottoWinning.Builder();
 
     private List<Lotto> lottos;
 
-    public List<Lotto> buyLotto(int money) {
+    public List<Lotto> buyLotto(Long money) {
         lottos = lottoPublishService.publish(money);
         return lottos;
     }
@@ -32,14 +30,13 @@ public class LottoController {
         builder.winBonus(bonus);
     }
 
-    public List<Integer> raffle() {
+    public LottoRaffleRecord raffle() {
         initRaffler();
-        LottoRaffleRecord result = lottoRaffleService.raffle(lottos);
-        return new ArrayList<>(result.getPrizeRecord().values());
+        return lottoRaffleService.raffle(lottos);
     }
 
     private void initRaffler() {
-        lottoWinning = new LottoWinning(builder);
+        LottoWinning lottoWinning = new LottoWinning(builder);
         lottoRaffleService = new LottoRaffleService(lottoWinning);
     }
 }
