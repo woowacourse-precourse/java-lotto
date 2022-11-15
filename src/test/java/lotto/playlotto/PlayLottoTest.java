@@ -80,9 +80,9 @@ class PlayLottoTest {
         int correct_num_count = 6;
         int correct_bonus = 0;
 
-
-    }
-    void print_yeild() {
+        game.check_result(correct_num_count, correct_bonus);
+        int win = game.getWin_count().get(4);
+        assertThat(win).isEqualTo(1);
     }
 
     @Test
