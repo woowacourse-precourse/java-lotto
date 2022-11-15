@@ -39,6 +39,8 @@ public class LottoController {
         List<List<Integer>> matchCounts = computeMatchCounts(predictionNumbers, bonusNumber);
         recordWinningLog(matchCounts);
         outputView.printWinningLog(winningLog);
+
+        double rateOfReturn = computeRateOfReturn(purchasePrice);
     }
 
     public int computeAmountOfLotto(int purchasePrice) {
@@ -117,5 +119,17 @@ public class LottoController {
 
     public int[] getWinningLog() {
         return winningLog;
+    }
+
+    public double computeRateOfReturn(int purchasePrice) {
+        int sum = 0;
+
+        sum += FIFTH.getPrize() * winningLog[FIFTH.getWinningLogIdx()];
+        sum += FOURTH.getPrize() * winningLog[FOURTH.getWinningLogIdx()];
+        sum += THIRD.getPrize() * winningLog[THIRD.getWinningLogIdx()];
+        sum += SECOND.getPrize() * winningLog[SECOND.getWinningLogIdx()];
+        sum += FIRST.getPrize() * winningLog[FIRST.getWinningLogIdx()];
+
+        return ((double)sum / purchasePrice) * 100;
     }
 }
