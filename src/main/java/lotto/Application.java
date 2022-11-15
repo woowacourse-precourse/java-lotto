@@ -7,9 +7,11 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 
+import static camp.nextstep.edu.missionutils.Console.readLine;
+
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        lotteryStart();
     }
 
     public static List<Lotto> buyLottery(int money) {
@@ -83,5 +85,32 @@ public class Application {
         double investment_money = lottery_cnt * 1000;
 
         return Math.round((reward * 100 / investment_money) * 10) / 10.0;
+    }
+
+    public static void printHowManyLottery(List<Lotto> all_lottery){
+        System.out.println(all_lottery.size() + "개를 구매했습니다.");
+        for (Lotto lotto: all_lottery
+        ) {
+            lotto.printNumbers();
+        }
+    }
+    public  static void lotteryStart(){
+        System.out.println("구입금액을 입력 주세요.");
+        int money = Integer.parseInt(readLine());
+        List<Lotto> all_lottery = buyLottery(money);
+        printHowManyLottery(all_lottery);
+
+        System.out.println("당첨 번호를 입력해 주세요.");
+        String[] win_nums = readLine().split(",");
+        List<Integer> nums = new ArrayList<>();
+        for(String num : win_nums) nums.add(Integer.valueOf(num));
+        Lotto win_lottery = new Lotto(nums);
+
+        System.out.println("보너스 번호를 입력해 주세요.");
+        int bonus = Integer.parseInt(readLine());
+
+        System.out.println("당첨 통계\n" + "---");
+        printHowManyMatches(all_lottery,win_lottery,bonus);
+        System.out.println("총 수익률은 " + rateOfReturn(all_lottery.size(),lotteryRanks(all_lottery,win_lottery,bonus)) + "%입니다.");
     }
 }
