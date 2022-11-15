@@ -9,7 +9,7 @@ public class Application {
             controller.run();
         }
         catch(IllegalArgumentException e){
-            System.out.println("[Error] " + e.getMessage());
+            System.out.println(e.getMessage());
         }
     }
 }
