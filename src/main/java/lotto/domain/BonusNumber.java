@@ -13,6 +13,7 @@ public class BonusNumber {
     private int validate(String userInput, List<Integer> winningNumber) {
         Validator.numberFormatCheck(userInput);
         int number = Integer.parseInt(userInput);
+        Validator.containsCheck(number, winningNumber);
         return number;
     }
 

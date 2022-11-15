@@ -54,4 +54,10 @@ public class Validator {
         }
         return elements;
     }
+
+    public static void containsCheck(int target, List<Integer> numbers) {
+        if (numbers.contains(target)) {
+            throw new IllegalArgumentException();
+        }
+    }
 }
