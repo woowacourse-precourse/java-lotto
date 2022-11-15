@@ -15,12 +15,7 @@ public enum OutputMessageGenerator {
         return String.format(PURCHASE_LOTTO_MESSAGE_FORMAT, lottoCount);
     }
 
-    public static List<String> getAllLottoNumbersByAscendingOrder(List<Lotto> lotteries) {
-        return lotteries.stream()
-                .map(OutputMessageGenerator::getLottoNumbersByAscendingOrder)
-                .collect(Collectors.toList());
-    }
-    private static String getLottoNumbersByAscendingOrder(Lotto lotto) {
+    public static String getLottoNumbersByAscendingOrder(Lotto lotto) {
         return lotto.getNumbers().stream()
                 .sorted()
                 .collect(Collectors.toList())

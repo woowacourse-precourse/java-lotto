@@ -20,8 +20,8 @@ public class OutputMessageGeneratorTest {
     @DisplayName("오름차순으로 정렬한 로또 번호를 문자열로 반환한다.")
     @Test
     void getAllLottoNumbersByAscendingOrderTest() {
-        List<Lotto> lotteries = List.of(new Lotto(List.of(1, 4, 5, 6, 2, 3)));
-        assertThat(getAllLottoNumbersByAscendingOrder(lotteries))
-                .isEqualTo(List.of("[1, 2, 3, 4, 5, 6]"));
+        Lotto lotto = new Lotto(List.of(1, 4, 5, 6, 2, 3));
+        assertThat(getLottoNumbersByAscendingOrder(lotto))
+                .isEqualTo("[1, 2, 3, 4, 5, 6]");
     }
 }
