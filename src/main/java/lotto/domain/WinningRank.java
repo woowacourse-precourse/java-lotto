@@ -23,11 +23,7 @@ public enum WinningRank {
         this.winningAmount = winningPrice;
     }
 
-    public static Map<WinningRank, Integer> getWinningDetails() {
-        Map<WinningRank, Integer> winningDetails = new EnumMap<>(WinningRank.class);
-        Arrays.stream(values()).forEach(winningRank -> winningDetails.put(winningRank, 0));
-        return winningDetails;
-    }
+
 
     public static WinningRank findWinningRank(int matchingCount, boolean containsBonusNumber) {
         return Arrays.stream(values())

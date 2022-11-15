@@ -1,5 +1,7 @@
 package lotto.domain;
 
+import java.util.Arrays;
+import java.util.EnumMap;
 import java.util.List;
 import java.util.Map;
 
@@ -24,16 +26,22 @@ public class WinningStatistics {
         return numbers.contains(bonusNumber);
     }
 
+    public static Map<WinningRank, Integer> createWinningDetails() {
+        Map<WinningRank, Integer> winningDetails = new EnumMap<>(WinningRank.class);
+        Arrays.stream(WinningRank.values()).forEach(winningRank -> winningDetails.put(winningRank, 0));
+        return winningDetails;
+    }
+
     public static Map<WinningRank, Integer> getWinningDetails(LottoGroup lottoGroup, AnswerLotto answerLotto) {
-        Map<WinningRank, Integer> winningDetails = WinningRank.getWinningDetails();
-        
+        Map<WinningRank, Integer> winningDetails = createWinningDetails();
+
         for (Lotto lotto : lottoGroup.getLottoGroup()) {
             int count = compareWithAnswer(lotto, answerLotto);
             boolean containsBonusNumber = compareWithBonusNumber(lotto, answerLotto, count);
             WinningRank winningRank = WinningRank.findWinningRank(count, containsBonusNumber);
             winningDetails.replace(winningRank, winningDetails.get(winningRank) + 1);
         }
-        
+
         return winningDetails;
     }
     public static long getWinningAmount(Map<WinningRank, Integer> winningDetails) {
