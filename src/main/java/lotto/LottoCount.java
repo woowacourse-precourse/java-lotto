@@ -1,7 +1,7 @@
 package lotto;
 
 public class LottoCount {
-    private static final String VALID_LOTTO_MINUS_MESSAGE = "로또 갯수가 마이너스 입니다.";
+    private static final String VALID_LOTTO_MINUS_MESSAGE = "[ERROR] 로또 갯수가 마이너스 입니다.";
     private int lottoCount;
 
     public LottoCount(int lottoCount) {
