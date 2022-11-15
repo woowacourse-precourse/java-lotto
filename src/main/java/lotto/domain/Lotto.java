@@ -21,14 +21,16 @@ public class Lotto {
 
     private void validateLottoSize(List<Integer> numbers) {
         if (numbers.size() != 6) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ErrorMessage
+                    .GET_ERROR_FOR_INPUT_WINNING_NUMBER_SIZE
+                    .getMessage());
         }
     }
 
     private void validateLottoNumberDuplication(List<Integer> numbers) {
         if (numbers.stream().distinct().count() != LOTTO_SIZE) {
             throw new IllegalArgumentException(ErrorMessage
-                    .GET_ERROR_FOR_INPUT_WINNING_NUMBER_SIZE
+                    .GET_ERROR_FOR_INPUT_WINNING_NUMBER_DUPLICATE
                     .getMessage());
         }
     }
