@@ -5,7 +5,6 @@ import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 import static lotto.Winning.*;
-import static lotto.Winning.FirstPlace;
 
 public class Util {
     // 로또 당첨 확인 로직
@@ -23,26 +22,26 @@ public class Util {
     // 당첨된 로또 갯수 확인
     public void setWinningCount(int bonusNumber, List<Integer> userNumber, int match) {
         if (match == 3) {
-            FifthPlace.setCount(FifthPlace.getCount() + 1);
+            FIFTH_PLACE.setCount(FIFTH_PLACE.getCount() + 1);
             return;
         }
 
         if (match == 4) {
-            FourthPlace.setCount(FourthPlace.getCount() + 1);
+            FOURTH_PLACE.setCount(FOURTH_PLACE.getCount() + 1);
             return;
         }
 
         if (match == 5) {
             if (userNumber.contains(bonusNumber)) {
-                SecondPlace.setCount(SecondPlace.getCount() + 1);
+                SECOND_PLACE.setCount(SECOND_PLACE.getCount() + 1);
                 return;
             }
-            ThirdPlace.setCount(ThirdPlace.getCount() + 1);
+            THIRD_PLACE.setCount(THIRD_PLACE.getCount() + 1);
             return;
         }
 
         if (match == 6) {
-            FirstPlace.setCount(FirstPlace.getCount() + 1);
+            FIRST_PLACE.setCount(FIRST_PLACE.getCount() + 1);
         }
     }
 }

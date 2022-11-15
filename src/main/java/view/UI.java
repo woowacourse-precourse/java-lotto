@@ -14,7 +14,7 @@ import static lotto.Winning.*;
 
 public class UI {
 
-    public void printMessage(Comment comment){
+    public void printMessage(Comment comment) {
         System.out.println(comment.getMessage());
     }
 
@@ -22,7 +22,7 @@ public class UI {
     public int inputCoin() {
         try {
             return Integer.parseInt(Console.readLine());
-        } catch (IllegalStateException | NumberFormatException e ) {
+        } catch (IllegalStateException | NumberFormatException e) {
             System.out.println(e.getMessage());
             System.out.println(ERROR_NOT_NUMBER.getMessage());
             System.out.println(Arrays.toString(e.getStackTrace()));
@@ -101,11 +101,11 @@ public class UI {
     }
 
     public void printMatch() {
-        System.out.println(FifthPlace.getDESCRIPTION() + " " + FifthPlace.getSRING_PRICE() + " - " + FifthPlace.getCount() + "개");
-        System.out.println(FourthPlace.getDESCRIPTION() + " " + FourthPlace.getSRING_PRICE() + " - " + FourthPlace.getCount() + "개");
-        System.out.println(ThirdPlace.getDESCRIPTION() + " " + ThirdPlace.getSRING_PRICE() + " - " + ThirdPlace.getCount() + "개");
-        System.out.println(SecondPlace.getDESCRIPTION() + " " + SecondPlace.getSRING_PRICE() + " - " + SecondPlace.getCount() + "개");
-        System.out.println(FirstPlace.getDESCRIPTION() + " " + FirstPlace.getSRING_PRICE() + " - " + FirstPlace.getCount() + "개");
+        System.out.println(FIFTH_PLACE.getDESCRIPTION() + " " + FIFTH_PLACE.getSRING_PRICE() + " - " + FIFTH_PLACE.getCount() + "개");
+        System.out.println(FOURTH_PLACE.getDESCRIPTION() + " " + FOURTH_PLACE.getSRING_PRICE() + " - " + FOURTH_PLACE.getCount() + "개");
+        System.out.println(THIRD_PLACE.getDESCRIPTION() + " " + THIRD_PLACE.getSRING_PRICE() + " - " + THIRD_PLACE.getCount() + "개");
+        System.out.println(SECOND_PLACE.getDESCRIPTION() + " " + SECOND_PLACE.getSRING_PRICE() + " - " + SECOND_PLACE.getCount() + "개");
+        System.out.println(FIRST_PLACE.getDESCRIPTION() + " " + FIRST_PLACE.getSRING_PRICE() + " - " + FIRST_PLACE.getCount() + "개");
     }
 
     public void printYield(int money) {
@@ -114,10 +114,10 @@ public class UI {
     }
 
     public int getPrizeMoney() {
-        return (FifthPlace.getCount() * FifthPlace.getPRICE())
-                + (FourthPlace.getCount() * FourthPlace.getPRICE())
-                + (ThirdPlace.getCount() * ThirdPlace.getPRICE())
-                + (SecondPlace.getCount() * SecondPlace.getPRICE())
-                + (FirstPlace.getCount() * FirstPlace.getPRICE());
+        return (FIFTH_PLACE.getCount() * FIFTH_PLACE.getPRICE())
+                + (FOURTH_PLACE.getCount() * FOURTH_PLACE.getPRICE())
+                + (THIRD_PLACE.getCount() * THIRD_PLACE.getPRICE())
+                + (SECOND_PLACE.getCount() * SECOND_PLACE.getPRICE())
+                + (FIRST_PLACE.getCount() * FIRST_PLACE.getPRICE());
     }
 }
