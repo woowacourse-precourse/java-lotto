@@ -19,12 +19,20 @@ public class Lotto {
 
    private void validate(List<Integer> numbers) {
         validateUserInput(numbers);
+        validateNumberRange(numbers);
     }
 
     private void validateUserInput(List<Integer> numbers) {
         if (numbers.size() != LOTTO_LENGTH) {
-            throw new IllegalArgumentException("총 6개의 숫자를 입력하셔야 합니다.")
+            throw new IllegalArgumentException("총 6개의 숫자를 입력하셔야 합니다.");
         }
+    }
+    private void validateNumberRange(List<Integer> numbers) {
+        numbers.forEach(number -> {
+            if (number < MIN_LOTTO_NUMBER || number > MAX_LOTTO_NUMBER) {
+                throw new IllegalArgumentException("숫자는 1 ~ 45 중 골라야 합니다.");
+            }
+        });
     }
 }
 
