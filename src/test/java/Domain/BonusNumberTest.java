@@ -1,5 +1,6 @@
 package Domain;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -28,6 +29,16 @@ class BonusNumberTest {
     }
 
     @Test
+    @DisplayName("보너스 번호는 당첨 번호와 중복되면 예외가 발생한다.")
     void duplicateInputBonusNumber() {
+        //given
+        String inputBonusNumber = "5";
+        BonusNumber bonusNumber = new BonusNumber(inputBonusNumber);
+        List<Integer> winnerLottoNumber = new ArrayList<>(Arrays.asList(1, 3, 5, 6, 7, 8, 9));
+
+        //then
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            bonusNumber.duplicateInputBonusNumber(winnerLottoNumber); //when
+        });
     }
 }
