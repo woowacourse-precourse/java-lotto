@@ -16,8 +16,8 @@ public class LottoService {
     private User user = new User();
     private LottoMachine lottoMachine;
 
-    public void buyLotto(int money) {
-        user = User.initUserLotto(money);
+    public void buyLotto(String inputMoney) {
+        user = User.initUserLotto(inputMoney);
     }
 
     public void saveWinningLotto(String bonusNumber) {
@@ -48,7 +48,7 @@ public class LottoService {
                 continue;
             }
 
-            if ( winningCount == 5 && checkBonusNumber(bonusNumber, lottoNumbers)) {
+            if (winningCount == 5 && checkBonusNumber(bonusNumber, lottoNumbers)) {
                 user.saveResult(RewardFactory.createBonusReward());
             } else {
                 user.saveResult(RewardFactory.createRewardByLottoCount(winningCount));
@@ -84,7 +84,6 @@ public class LottoService {
         return Math.round((double) totalReward / totalMoney * PROFIT_CALCULATE_NUMBER)
                 / ROUND_NUMBER;
     }
-
 
     //테스트를 위한 메서드
     public User getUserForTest() {

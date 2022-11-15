@@ -11,10 +11,10 @@ public class UserTest {
     @Test
     @DisplayName("구매 금액을 입력받아서 로또 구매 후 로또 개수 확인하는 테스트")
     void buyLottoTest() {
-        int money = 5000;
+        String inputMoney = "5000";
         int expected = 5;
 
-        User user = User.initUserLotto(money);
+        User user = User.initUserLotto(inputMoney);
 
         Assertions.assertThat(user.getLottoCount()).isEqualTo(expected);
         Assertions.assertThat(user.getLotties().size()).isEqualTo(expected);
@@ -23,16 +23,25 @@ public class UserTest {
     @Test
     @DisplayName("1000원 이하 구매 금액 입력 테스트")
     void minimumMoneyTest() {
-        int money = 500;
+        String inputMoney = "500";
 
-        assertThatThrownBy(() -> User.initUserLotto(money))
+        assertThatThrownBy(() -> User.initUserLotto(inputMoney))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
     @DisplayName("1000원으로 나누어 떨어지지 않는 구매 금액 입력 테스트")
     void dividedMoneyTest() {
-        int money = 2500;
+        String inputMoney = "2500";
+
+        assertThatThrownBy(() -> User.initUserLotto(inputMoney))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    @DisplayName("숫자가 아닌 구매 금액 입력 테스트")
+    void notNumberMoneyTest() {
+        String money = "a";
 
         assertThatThrownBy(() -> User.initUserLotto(money))
                 .isInstanceOf(IllegalArgumentException.class);

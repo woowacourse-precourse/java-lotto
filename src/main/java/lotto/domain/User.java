@@ -18,11 +18,14 @@ public class User {
         this.lottoCount = money / Lotto.PRICE;
     }
 
-    public User() {}
+    public User() {
+    }
 
-    public static User initUserLotto(int money) {
-        User user = new User(money);
+    public static User initUserLotto(String inputMoney) {
+        int money = Integer.parseInt(inputMoney);
+
         validate(money);
+        User user = new User(money);
 
         for (int i = 0; i < user.getLottoCount(); i++) {
             user.addUserLotto();
@@ -40,6 +43,7 @@ public class User {
         validateMoneyMinimum(money);
         validateMoneyDivided(money);
     }
+
     public static void validateMoneyMinimum(int money) {
         if (money < Lotto.PRICE) {
             throw new IllegalArgumentException("[ERROR] 금액은 1000원 이상이어야 합니다.");
@@ -65,16 +69,8 @@ public class User {
         return lottoCount;
     }
 
-    public void setLottoCount(int lottoCount) {
-        this.lottoCount = lottoCount;
-    }
-
     public int getRewardMoney() {
         return rewardMoney;
-    }
-
-    public void setRewardMoney(int rewardMoney) {
-        this.rewardMoney = rewardMoney;
     }
 
     public List<Lotto> getLotties() {

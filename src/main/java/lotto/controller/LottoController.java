@@ -10,9 +10,7 @@ public class LottoController {
 
     public void startLotto() {
         try {
-            int money = Integer.parseInt(InputView.inputMoney());
-
-            lottoService.buyLotto(money);
+            lottoService.buyLotto(InputView.inputMoney());
             initWinningLotto();
             initBonusNumber();
             lottoProgress();

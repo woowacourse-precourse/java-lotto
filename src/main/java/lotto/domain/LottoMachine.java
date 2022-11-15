@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public class LottoMachine extends Lotto{
+public class LottoMachine extends Lotto {
 
     private int bonusNumber;
 
@@ -26,7 +26,7 @@ public class LottoMachine extends Lotto{
         return Optional.of(new LottoMachine(convertStringToNumber(numbers)));
     }
 
-    public void addBonusNumber(int bonusNumber) throws IllegalArgumentException{
+    public void addBonusNumber(int bonusNumber) throws IllegalArgumentException {
         validate(bonusNumber);
         this.bonusNumber = bonusNumber;
     }
@@ -40,6 +40,7 @@ public class LottoMachine extends Lotto{
         validateBonusNumber(bonusNumber);
         validateBonusNumberRange(bonusNumber);
     }
+
     public void validateBonusNumber(int bonusNumber) {
         if (getNumbers().contains(bonusNumber)) {
             throw new IllegalArgumentException("[ERROR] 보너스 번호는 당첨 번호와 중복될 수 없습니다.");
