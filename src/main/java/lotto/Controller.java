@@ -42,6 +42,6 @@ public class Controller {
 
     private void getResult() {
         System.out.println("당첨 통계\n---");
-        service.printStat(lottos, winNumbers, bonusNumber);
+        System.out.println(service.getStatText(lottos, winNumbers, bonusNumber));
     }
 }

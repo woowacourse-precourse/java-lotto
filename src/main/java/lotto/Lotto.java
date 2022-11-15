@@ -20,6 +20,10 @@ public class Lotto {
         if (numbers.size() != numbers.stream().distinct().count()) {
             throw new IllegalArgumentException();
         }
+
+        if (numbers.stream().filter(integer -> integer < 1 || integer > 45).count() > 0) {
+            throw new IllegalArgumentException();
+        }
     }
 
     public void print() {
