@@ -32,11 +32,11 @@ public class Game {
         String winningNumbers = ui.receiveInput(MESSAGE_WINNING_NUMBER);
         String bonusNumber = ui.receiveInput(MESSAGE_BONUS_NUMBER);
         WinningLotto winningLotto = WinningLotto.of(winningNumbers, bonusNumber);
-
         List<LottoGrade> lottoGrades = lottoService.confirmAllLottos(winningLotto, lottos);
         TotalResult totalResult = TotalResult.of(lottoGrades);
-
         ui.printTotalResult(totalResult);
-        ui.printProfitRate(lottoService.calculateProfitPercent(money, lottoService.calculateTotalProfit(lottoGrades)));
+
+        Money totalProfit = lottoService.calculateTotalProfit(lottoGrades);
+        ui.printProfitRate(lottoService.calculateProfitPercent(money, totalProfit));
     }
 }
