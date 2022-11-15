@@ -20,7 +20,7 @@ public class MatchLotto {
 
         for (Lotto lotto : lottos) {
             int winningRank = getRank(lotto, winningNumbers, bonusNumber);
-//            calculateResult(winningRank);
+            calculateResult(winningRank);
         }
 
         double yield = revenue / (double) inputAmount * 100;
@@ -59,6 +59,33 @@ public class MatchLotto {
             return 4;
         }
         return 5;
+    }
+
+    public void calculateResult(int winningRank) {
+        //5등이내에 들지 않는 경우
+        if (winningRank == 0) {
+            return;
+        }
+        if (winningRank == 1) {
+            rank1++;
+            revenue += 2000000000;
+        }
+        if (winningRank == 2) {
+            rank2++;
+            revenue += 30000000;
+        }
+        if (winningRank == 3) {
+            rank3++;
+            revenue += 1500000;
+        }
+        if (winningRank == 4) {
+            rank4++;
+            revenue += 50000;
+        }
+        if (winningRank == 5) {
+            rank5++;
+            revenue += 5000;
+        }
     }
 
 }
