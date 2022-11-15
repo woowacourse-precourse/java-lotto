@@ -2,7 +2,9 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Game {
 
@@ -12,7 +14,10 @@ public class Game {
     static Lotto winningNumber;
     static List<Lotto> lottos;
     static int bonusNumber;
+    static Map<String, Integer> winningStatus;
     static final int LOTTO_PRICE = 1000;
+    static final int NONE = 0;
+    static final int WIN = 1;
 
     static void setPurchase(String input) throws IllegalArgumentException {
         validation.checkNull(input);
@@ -49,6 +54,44 @@ public class Game {
         bonusNumber = Integer.parseInt(input);
         validation.checkNumberInRange(bonusNumber);
         validation.checkBonusDuplicate(winningNumber, bonusNumber);
+    }
+
+    static void initializeWinningStatus() {
+        winningStatus = new HashMap<>();
+        for (Rank rank : Rank.values()) {
+            winningStatus.put(rank.getMessage(), NONE);
+        }
+    }
+
+    static int getWins(Lotto lotto) {
+        int wins = NONE;
+        for (int number : lotto.getNumbers()) {
+            if (winningNumber.hasNumber(number)) {
+                wins += WIN;
+            }
+        }
+        if (wins == Rank.THIRD.getWins() && lotto.hasNumber(bonusNumber)) {
+            return Rank.SECOND.getWins();
+        }
+        return wins;
+    }
+
+    static String getRank(Lotto lotto) {
+        int wins = getWins(lotto);
+        for (Rank rank : Rank.values()) {
+            if (wins == rank.getWins()) {
+                return rank.getMessage();
+            }
+        }
+        return Rank.UNRANKED.getMessage();
+    }
+
+    static void calculateWinningStatus() {
+        initializeWinningStatus();
+        for (Lotto lotto : lottos) {
+            String rank = getRank(lotto);
+            winningStatus.put(rank, winningStatus.get(rank) + WIN);
+        }
     }
 
 }
