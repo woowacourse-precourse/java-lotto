@@ -9,7 +9,7 @@ import lotto.io.Output;
 import lotto.model.LottoWallet;
 import lotto.model.Winning;
 import lotto.model.WinningNumber;
-import lotto.model.WinningStatus;
+import lotto.model.WinningInformation;
 
 public class LottoMachine implements Runnable {
     private final Input input;
@@ -31,22 +31,22 @@ public class LottoMachine implements Runnable {
             output.printLottos(count, wallet.getLottos());
 
             WinningNumber winningNumber = getWinningNumber();
-            WinningStatus winningStatus = getWinningStatus(count, wallet, winningNumber);
+            WinningInformation winningInformation = getWinningStatus(wallet, winningNumber);
 
-            output.printResult(winningStatus);
+            output.printResult(winningInformation.getWinningCounts(), winningInformation.getYield(count));
         } catch (RuntimeException exception) {
             output.printError(exception);
         }
     }
 
-    private WinningStatus getWinningStatus(int count, LottoWallet wallet, WinningNumber winningNumber) {
+    private WinningInformation getWinningStatus(LottoWallet wallet, WinningNumber winningNumber) {
         List<Winning> winnings = wallet.getLottos().stream()
                 .map(winningNumber::compareToWinningNumber)
                 .filter(Optional::isPresent)
                 .map(Optional::get)
                 .collect(Collectors.toList());
 
-        return new WinningStatus(winnings, count);
+        return new WinningInformation(winnings);
     }
 
     private int getCount() {
