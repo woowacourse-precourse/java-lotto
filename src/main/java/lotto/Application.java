@@ -60,10 +60,18 @@ public class Application {
         return boughtLottos;
     }
 
+    public static void printBoughtLottos(List<Lotto> boughtLottos) {
+        for (Lotto boughtLotto: boughtLottos) {
+            boughtLotto.printLottoNumbers();
+        }
+        System.out.println();
+    }
+
     public static void main(String[] args) {
         int payment = validatePayment();
+        List<Lotto> myLottos = buyLottos(payment);
+        printBoughtLottos(myLottos);
         List<Integer> winningNumbers = getWinningNumbers();
         int bonusNumber = getBonusNumber();
-        List<Lotto> myLottos = buyLottos(payment);
     }
 }
