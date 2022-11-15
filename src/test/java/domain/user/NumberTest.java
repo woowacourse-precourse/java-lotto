@@ -1,6 +1,5 @@
-package domain.number;
+package domain.user;
 
-import domain.user.Number;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
