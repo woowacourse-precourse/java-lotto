@@ -27,9 +27,10 @@ public class LottoController {
         moneyAmount = user.inputOfMoneyAmount();
         int lottoAmount = moneyAmount / 1000;
         OutputView.printAmount(lottoAmount);
+        generateLottos(lottoAmount);
     }
 
-    public void generateLottos(int lottoAmount) {
+    private void generateLottos(int lottoAmount) {
         for (int i = 0; i < lottoAmount; i++) {
             Lotto lotto = lottoGenerator.makeLotto();
             lottos.add(lotto);
