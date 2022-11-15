@@ -1,6 +1,6 @@
-package lotto.domain;
+package lotto.Util;
 
-import org.w3c.dom.ls.LSOutput;
+import lotto.domain.ErrorMessage;
 
 import java.util.List;
 

@@ -1,10 +1,10 @@
 package lotto.controller;
 
+import lotto.Util.Validation;
 import lotto.domain.*;
 import lotto.view.OutputView;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.StringTokenizer;
 
