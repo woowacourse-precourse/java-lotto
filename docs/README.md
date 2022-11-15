@@ -1,3 +1,6 @@
+
+<img src="lotto_mvc.png">
+
 # MODEL
 
 ## 1. Lotto
