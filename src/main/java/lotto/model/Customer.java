@@ -4,19 +4,19 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Customer {
-    private final PurchasePrice money;
+    private final PurchasePrice purchasePrice;
     private List<Lotto> lotteries;
 
-    public Customer(PurchasePrice money) {
-        this.money = money;
+    public Customer(PurchasePrice purchasePrice) {
+        this.purchasePrice = purchasePrice;
     }
 
     public void buy(List<Lotto> lotteries) {
         setLotto(lotteries);
     }
 
-    public PurchasePrice getMoney() {
-        return money;
+    public PurchasePrice getPurchasePrice() {
+        return purchasePrice;
     }
 
     public List<Lotto> getLotteries() {
@@ -28,7 +28,7 @@ public class Customer {
     }
 
     public double calculateProfit(MatchResult matchResult) {
-        return matchResult.getTotalPrizeMoney() / money.getPrice() * 100;
+        return matchResult.getTotalPrizeMoney() / purchasePrice.getPurchasePrice() * 100;
     }
 
     private void setLotto(List<Lotto> lotteries) {

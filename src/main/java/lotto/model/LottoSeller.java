@@ -11,12 +11,12 @@ public class LottoSeller {
     }
 
     public int calculateQuantity(PurchasePrice purchasePrice) {
-        return purchasePrice.getPrice() / Lotto.PRICE;
+        return purchasePrice.getPurchasePrice() / Lotto.PRICE;
     }
 
     public void sellLotteriesTo(Customer customer) {
         customer.buy(
-                IntStream.range(0, calculateQuantity(customer.getMoney()))
+                IntStream.range(0, calculateQuantity(customer.getPurchasePrice()))
                         .mapToObj((i) -> lottoNumberGenerator.generate())
                         .collect(Collectors.toList())
         );
