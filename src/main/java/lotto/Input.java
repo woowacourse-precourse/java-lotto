@@ -15,12 +15,7 @@ public class Input {
     public static long inputMoney() {
         Message.INPUT_MONEY.print();
         String str = Console.readLine().trim();
-        try {
-            Validation.validateMoney(str);
-        } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
-            return INVALID;
-        }
+        Validation.validateMoney(str);
         return Long.parseLong(str);
     }
 
@@ -29,14 +24,9 @@ public class Input {
         String str = Console.readLine();
         List<Integer> numbers = new ArrayList<>();
         String[] splitStr = str.split(DELIMITER);
-        try {
-            for (String s : splitStr) {
-                Validation.validateNumber(s.trim());
-                numbers.add(Integer.parseInt(s.trim()));
-            }
-        } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
-            return null;
+        for (String s : splitStr) {
+            Validation.validateNumber(s.trim());
+            numbers.add(Integer.parseInt(s.trim()));
         }
         return numbers;
     }
@@ -44,13 +34,8 @@ public class Input {
     public static int inputBonus() {
         Message.INPUT_BONUS_NUMBER.print();
         String str = Console.readLine().trim();
-        try {
-            Validation.validateNumber(str);
-            Validation.validateRange(str);
-        } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
-            return INVALID;
-        }
+        Validation.validateNumber(str);
+        Validation.validateRange(str);
         return Integer.parseInt(str);
     }
 }

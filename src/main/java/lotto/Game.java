@@ -14,36 +14,23 @@ public class Game {
     int bonusNum;
 
     public void init() {
-        if (setCalculator()) {
-            return;
-        }
-        if (setLotto()) {
-            return;
-        }
-        if (setBonus()) {
-            return;
-        }
+        setCalculator();
+        setLotto();
+        setBonus();
         for (List<Integer> randomNumbers : calculator.lotteries) {
             lotto.compareLotto(randomNumbers, bonusNum);
         }
         calculator.printResult();
     }
 
-    private boolean setCalculator() {
+    private void setCalculator() {
         long money = Input.inputMoney();
-        if (money == INVALID) {
-            return true;
-        }
         calculator = new Calculator(money);
         Message.BLANK_LINE.print();
-        return false;
     }
 
     private boolean setLotto() {
         List numbers = Input.inputLotto();
-        if (numbers == null) {
-            return true;
-        }
         lotto = new Lotto(numbers);
         Message.BLANK_LINE.print();
         return false;
@@ -51,12 +38,7 @@ public class Game {
 
     private boolean setBonus() {
         int bonus = Input.inputBonus();
-        try {
-            lotto.isBonusDuplicate(bonus);
-        } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
-            return true;
-        }
+        lotto.isBonusDuplicate(bonus);
         bonusNum = bonus;
         Message.BLANK_LINE.print();
         return false;
