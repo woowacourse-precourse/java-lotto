@@ -70,4 +70,22 @@ public class ViewValidatorTest {
         assertThatNoException()
                 .isThrownBy(() -> viewValidator.validateNumberType("11"));
     }
+
+    @DisplayName("빈 문자열이 들어가면 예외가 발생한다")
+    @Test
+    void createNumberByEmptyString() {
+        ViewValidator viewValidator = new ViewValidator();
+
+        assertThatThrownBy(() -> viewValidator.validateEmptyString(""))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("빈 문자열이 들어가지 않으면 예외가 발생하지 않는다")
+    @Test
+    void createNumberByFilledString() {
+        ViewValidator viewValidator = new ViewValidator();
+
+        assertThatNoException()
+                .isThrownBy(() -> viewValidator.validateEmptyString("1234"));
+    }
 }
