@@ -5,6 +5,7 @@ public class LottoGameController {
 
     public void run() {
         LottoAmount amount = inputMoney();
+        Lottos lottos = purchaseLotto(amount.makeLottoTickets());
 
     }
 
@@ -13,4 +14,9 @@ public class LottoGameController {
         return new LottoAmount(Input.getNumber());
     }
 
+    private Lottos purchaseLotto(int lottoTickets) {
+        Lottos lottos = lottoGenerator.makeLottos(lottoTickets);
+        SystemMessage.purchaseLotto(lottoTickets, lottos);
+        return lottos;
+    }
 }
