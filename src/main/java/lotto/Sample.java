@@ -9,8 +9,6 @@ public class Sample {
     private static final String HOW_MANY_BUY_STRING = "개를 구매했습니다." + System.lineSeparator(); // Lotto-print-001
     private static final String ILLEGAL_ARGUMENT_ERROR_MESSAGE = "[ERROR] Illegal Argument";
     private static final String WINNING_STATISTICS_START_MESSAGE = "당첨 통계" + System.lineSeparator() + "---" + System.lineSeparator();
-    private static final String WINNING_STATISTICS_PRINT_FORM = "%correctNumber개 일치 (%money원) - %count개" + System.lineSeparator();
-    private static final String WINNING_STATISTICS_PRINT_BONUS_FORM = "%correctNumber개 일치, 보너스 볼 일치 (%money원) - %count개" + System.lineSeparator();
     private static final String WINNING_YIELD_PRINT_FORM = "총 수익률은 %yield%입니다." + System.lineSeparator();
     public int stringToInt(String line){ // Lotto-valid-001, WinningStatistics-valid-002
         try{
@@ -49,28 +47,16 @@ public class Sample {
         return printString;
     }
 
-    public List<Integer> getWinningNumber(String line){ // WinningStatistics-valid-001
+    public Lotto getWinningNumber(String line){ // WinningStatistics-valid-001
         try {
             List<Integer> winningNumbers = Arrays.stream(line.split(",")).map(Integer::parseInt).collect(Collectors.toList());
-            validWinningNumbers(winningNumbers);
-            return winningNumbers;
+            return new Lotto(winningNumbers);
         } catch (NumberFormatException e){
             System.out.println(ILLEGAL_ARGUMENT_ERROR_MESSAGE);
             throw new IllegalArgumentException();
         }
     }
-    public void validWinningNumbers(List<Integer> winningNumbers){ // WinningStatistics-valid-001
-        if (winningNumbers.size() != 6){
-            System.out.println(ILLEGAL_ARGUMENT_ERROR_MESSAGE);
-            throw new IllegalArgumentException();
-        }
-        for (Integer winningNumber : winningNumbers){
-            if (winningNumber < 1 || winningNumber > 45) {
-                System.out.println(ILLEGAL_ARGUMENT_ERROR_MESSAGE);
-                throw new IllegalArgumentException();
-            }
-        }
-    }
+
 
     public int validBonusNumber(String line){ // WinningStatistics-valid-002
         int bonusNumber = stringToInt(line);
@@ -84,29 +70,15 @@ public class Sample {
     public List<LottoWinning> getWinningStatistics(List<Lotto> lottos, List<Integer> winningNumbers, int bonusNumber){ // WinningStatistics-compare-001
         List<LottoWinning> winningStatistics = new ArrayList<>();
         for (Lotto lotto : lottos){
-            int lottoCorrectNumber = getCorrectNumber(lotto, winningNumbers);
-            boolean bonus = false;
-            if (lottoCorrectNumber == 5)
-                hitBonus(lotto, bonusNumber);
+            int lottoCorrectNumber = lotto.getCorrectNumber(winningNumbers);
+            boolean bonus = lottoCorrectNumber == 5 && lotto.hitBonus(bonusNumber);
+
             LottoWinning lottoWinning = new LottoWinning(lottoCorrectNumber, bonus);
             winningStatistics.add(lottoWinning);
         }
         return winningStatistics;
     }
-    public int getCorrectNumber(Lotto lotto, List<Integer> winningNumbers){ // WinningStatistics-compare-001
-        List<Integer> lottoNumbers = lotto.getNumbers();
-        int correctTime = 0;
-        for (Integer winningNumber : winningNumbers){
-            if (lottoNumbers.contains(winningNumber)){
-                correctTime += 1;
-            }
-        }
-        return correctTime;
-    }
 
-    public boolean hitBonus(Lotto lotto, int bonus){ // WinningStatistics-compare-001
-        return lotto.getNumbers().contains(bonus);
-    }
 
     public String printWinningStatistics(List<LottoWinning> winningStatistics){ //WinningStatistics-print-001
         String message = WINNING_STATISTICS_START_MESSAGE;

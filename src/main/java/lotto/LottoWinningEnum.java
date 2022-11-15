@@ -21,7 +21,7 @@ public enum LottoWinningEnum { // WinningStatistics-print-001
             + "개 일치 ("
             + MONEY_STRING_KEY
             + "원) - "
-            + MONEY_STRING_KEY + "개"
+            + COUNT_NUMBER_STRING_KEY + "개"
             + System.lineSeparator(); // $correctnumber개 일치 ($money원) - $count개
 
     LottoWinningEnum(int correctNumber, boolean hitBonus, int money) {

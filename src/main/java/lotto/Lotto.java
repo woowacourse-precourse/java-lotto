@@ -11,9 +11,16 @@ public class Lotto { // Lotto-create-001
         this.numbers = numbers;
     }
 
-    private void validate(List<Integer> numbers) {
+    private void validate(List<Integer> numbers) { // WinningStatistics-valid-001
         if (numbers.size() != 6) {
+            System.out.println(ErrorMessage.ILLEGAL_ARGUMENT_ERROR_MESSAGE.getMessage());
             throw new IllegalArgumentException();
+        }
+        for (Integer winningNumber : numbers){
+            if (winningNumber < 1 || winningNumber > 45) {
+                System.out.println(ErrorMessage.ILLEGAL_ARGUMENT_ERROR_MESSAGE.getMessage());
+                throw new IllegalArgumentException();
+            }
         }
     }
 
@@ -25,6 +32,20 @@ public class Lotto { // Lotto-create-001
 
     public List<Integer> getNumbers(){ // Lotto-print-001
         return this.numbers;
+    }
+
+    public int getCorrectNumber(List<Integer> winningNumbers){ // WinningStatistics-compare-001
+        int correctNumber = 0;
+        for (Integer winningNumber : winningNumbers){
+            if (this.numbers.contains(winningNumber)){
+                correctNumber += 1;
+            }
+        }
+        return correctNumber;
+    }
+
+    public boolean hitBonus(int bonus){ // WinningStatistics-compare-001
+        return this.numbers.contains(bonus);
     }
     // TODO: 추가 기능 구현
 }

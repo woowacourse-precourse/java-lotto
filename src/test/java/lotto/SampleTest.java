@@ -16,19 +16,19 @@ class SampleTest {
         this.sample = new Sample();
     }
     @Test
-    void stringToIntTest1(){
-        assertThatThrownBy(() -> sample.stringToInt("12ab12"))
+    void getPayMoneyTest1(){
+        assertThatThrownBy(() -> sample.getPayMoney("12ab12"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
-    void stringToIntTest2(){
-        assertThatThrownBy(() -> sample.stringToInt("123452853740958342000"))
+    void getPayMoneyTest2(){
+        assertThatThrownBy(() -> sample.getPayMoney("123452853740958342000"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
     @Test
-    void stringToIntTest3(){
-        assertThatThrownBy(() -> sample.stringToInt("135700"))
+    void getPayMoneyTest3(){
+        assertThatThrownBy(() -> sample.getPayMoney("135700"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
     @Test
@@ -83,7 +83,7 @@ class SampleTest {
     @Test
     void getWinningNumberTest1(){
         assertThat(sample.getWinningNumber("1,2,3,4,5,6"))
-                .contains(1,2,3,4,5,6);
+                .isEqualTo(new Lotto(List.of(1,2,3,4,5,6)));
     }
 
     @Test
@@ -100,13 +100,13 @@ class SampleTest {
 
     @Test
     void getBonusNumberTest1(){
-        assertThat(sample.getBonusNumber("4"))
+        assertThat(sample.validBonusNumber("4"))
                 .isEqualTo(4);
     }
 
     @Test
     void getBonusNumberTest2(){
-        assertThatThrownBy(() -> sample.getBonusNumber("0"))
+        assertThatThrownBy(() -> sample.validBonusNumber("0"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
