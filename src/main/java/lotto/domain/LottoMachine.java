@@ -5,13 +5,27 @@ import camp.nextstep.edu.missionutils.Randoms;
 import lotto.Lotto;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class LottoMachine {
+    public enum RANKING{
+        RANK1(2000000000),
+        RANK2(30000000),
+        RANK3(1500000),
+        RANK4(50000),
+        RANK5(5000);
+
+        private int reward;
+        public int getReward(){
+            return reward;
+        }
+
+        RANKING(int price) {
+            this.reward = price;
+        }
+    }
+
     private final int LOTTO_PRICE = 1000;
-    private final int[] PRIZE = { 0, 2000000000, 30000000, 1500000, 50000, 5000};
     private int paid;
     public ArrayList<Lotto> lottos = new ArrayList<>();
     private int[] result;
@@ -20,6 +34,7 @@ public class LottoMachine {
     public LottoMachine() {}
 
     public void getInputMoney(){
+
         System.out.println("구입 금액을 입력해 주세요");
         String money = Console.readLine();
         validateMoney(money);
@@ -27,6 +42,7 @@ public class LottoMachine {
     }
 
     private void validateMoney(String input){
+        System.out.println("[ERROR]");
         if(!input.matches("[0-9]+")){
             throw new IllegalArgumentException("[ERROR] 숫자만 입력해 주세요");
 
@@ -80,7 +96,8 @@ public class LottoMachine {
 
     public void calculateRevenue(){
         for(int i=1; i<result.length; i++){
-            revenue += PRIZE[i] * result[i];
+            int reward = RANKING.valueOf("RANK"+i).getReward();
+            revenue += reward * result[i];
         }
     }
     public void printResult(){
