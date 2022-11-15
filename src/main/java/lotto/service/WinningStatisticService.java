@@ -4,8 +4,10 @@ import static lotto.util.PrintService.printWinningStatistic;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import lotto.domain.Lotto;
 import lotto.domain.Rank;
 import lotto.domain.WinningLotto;
@@ -25,8 +27,8 @@ public class WinningStatisticService {
         printWinningStatistic(rankCountMap, yield);
     }
 
-    private Map<Rank, Integer> getRankCountMap() {
-        Map<Rank, Integer> rankCountMap = new HashMap<>();
+    Map<Rank, Integer> getRankCountMap() {
+        Map<Rank, Integer> rankCountMap = new LinkedHashMap<>();
         List.of(Rank.values()).forEach(rank -> rankCountMap.put(rank, getRankCount(rank)));
         return rankCountMap;
     }
@@ -35,30 +37,36 @@ public class WinningStatisticService {
         return rankCountRepository.findOne(rank);
     }
 
-    private long getTotalAmount(Map<Rank, Integer> rankCountMap) {
+    long getTotalAmount(Map<Rank, Integer> rankCountMap) {
         return rankCountMap.entrySet().stream()
-            .mapToLong(entry -> (long) entry.getKey().getWinningAmount() * entry.getValue()).sum();
+            .mapToLong(entry -> (long) entry.getKey().getWinningAmount() * entry.getValue())
+            .sum();
     }
 
-    private double getYield(long totalAmount, int purchasedPrice) {
-        return ((double) totalAmount / purchasedPrice) * 100;
+    double getYield(long totalAmount, int purchasePrice) {
+        return ((double) totalAmount / purchasePrice) * 100;
     }
 
     public void saveRankCount(List<Lotto> lottos, WinningLotto winningLotto) {
         lottos.forEach(lotto -> {
-            int matchedNumber = getMatchedNumber(lotto, winningLotto.getLotto().getNumbers());
-            boolean hasBonusNumber = hasBonusNumber(lotto, winningLotto.getBonusNumber());
-            Rank.of(matchedNumber, hasBonusNumber).ifPresent(rankCountRepository::save);
+            getRank(lotto, winningLotto).ifPresent(rankCountRepository::save);
         });
     }
 
-    private Integer getMatchedNumber(Lotto lotto, List<Integer> winningLottoNumbers) {
+    Optional<Rank> getRank(Lotto lotto, WinningLotto winningLotto) {
+        int matchedNumber = getMatchedNumber(lotto, winningLotto.getLotto().getNumbers());
+        boolean hasBonusNumber = hasBonusNumber(lotto, winningLotto.getBonusNumber());
+        return Rank.of(matchedNumber, hasBonusNumber);
+    }
+
+    int getMatchedNumber(Lotto lotto, List<Integer> winningLottoNumbers) {
         List<Integer> lottoNumbers = new ArrayList<>(lotto.getNumbers());
         lottoNumbers.retainAll(winningLottoNumbers);
         return lottoNumbers.size();
     }
 
-    private boolean hasBonusNumber(Lotto lotto, int bonusNumber) {
-        return lotto.getNumbers().contains(bonusNumber);
+    boolean hasBonusNumber(Lotto lotto, int bonusNumber) {
+        return lotto.getNumbers()
+            .contains(bonusNumber);
     }
 }
