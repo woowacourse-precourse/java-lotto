@@ -1,8 +1,10 @@
 package utils;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import lotto.LottoNumber;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class NumberGenerator {
 
@@ -11,9 +13,13 @@ public class NumberGenerator {
     private static final int PICKING_NUMBER = 6;
 
     public static List<Integer> generateSixRandomNumber() {
-        List<Integer> lottoNumbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+        List<Integer> lottoNumbers = Randoms.pickUniqueNumbersInRange(FROM_INDEX, END_INDEX, PICKING_NUMBER);
         return lottoNumbers;
     }
-
-
+    public static List<LottoNumber> generate(final List<Integer> lottoNums) {
+        return lottoNums.stream()
+                .map(LottoNumber::getInstance)
+                .sorted()
+                .collect(Collectors.toList());
+    }
 }
