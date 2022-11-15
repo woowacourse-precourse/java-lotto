@@ -106,6 +106,6 @@ public class User {
 
     public float calculateYield() {
         float yield = (float) (fifth * 5000 + fourth * 50000 + third * 1500000 + second * 30000000 + first * 2000000000) / cost * 100;
-        return yield;
+        return (float) (Math.round(yield * 10) / 10.0);
     }
 }

@@ -121,4 +121,5 @@ class UserTest {
 
         assertThat(yield).isEqualTo(500.0f);
     }
+
 }
