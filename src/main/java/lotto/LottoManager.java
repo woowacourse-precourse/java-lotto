@@ -71,6 +71,26 @@ public class LottoManager {
         }
     }
 
+    public void start() {
+        Map<Integer, Integer> result;
+        List<Lotto> lotto;
+        List<Integer> winningNumber;
+
+        int userMoney = this.getMoney();
+
+        lotto = this.publishLottoForPrice(userMoney);
+
+        winningNumber = this.GenerateLottoNumbers();
+
+        int bonusNumber = this.GenerateBonusNumber();
+
+        result = Referee.compare(bonusNumber, winningNumber, lotto);
+
+        this.printWinningMessage(result);
+
+        this.printProfit(userMoney, result);
+    }
+
     public List<Integer> GenerateLottoNumbers() {
         Information.INPUT_WINNING_NUM_MESSAGE.printMessage();
         String inputLottoNumbers = Console.readLine();
