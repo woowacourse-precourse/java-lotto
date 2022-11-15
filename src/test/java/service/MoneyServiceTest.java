@@ -3,12 +3,13 @@ package service;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
+import repository.MoneyRepository;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class MoneyServiceTest {
-    MoneyService moneyService = new MoneyService();
+    MoneyService moneyService = new MoneyService(new MoneyRepository());
 
     @DisplayName("구입 금액 입력 형식 검사")
     @ParameterizedTest

@@ -2,18 +2,21 @@ package service;
 
 import domain.Lotto;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
+import repository.LottoRepository;
 import view.OutputView;
 
+import java.util.EnumMap;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class LottoServiceTest {
-    LottoService lottoService = new LottoService();
+    LottoService lottoService = new LottoService(new LottoRepository());
 
     @DisplayName("로또 발행 검사")
     @ParameterizedTest
@@ -57,8 +60,42 @@ public class LottoServiceTest {
     public void 보너스_번호_입력_중복_예외(String number) {
         String winningNumbers = "1,2,10,6,9,14";
         lottoService.saveWinningNumbers(winningNumbers);
-        
+
         IllegalArgumentException e = assertThrows(IllegalArgumentException.class, () -> lottoService.saveBonusNumber(number));
         assertThat(e.getMessage()).isEqualTo(Error.BONUS_NUMBER_IN_WINNING_NUMBER.getText());
+    }
+
+    @DisplayName("1등 당첨 검사")
+    @Test
+    public void 모두_일치_확인() {
+        LottoRepository lottoRepository = new LottoRepository();
+        lottoService = new LottoService(lottoRepository);
+
+        Lotto publishedLotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+        lottoRepository.save(publishedLotto);
+        lottoRepository.saveWinningNumbers(List.of(1, 2, 3, 4, 5, 6));
+        lottoRepository.saveBonusNumber(45);
+
+        lottoService.saveWinners();
+        EnumMap<Winner, Integer> winners = lottoService.getWinners();
+
+        assertThat(winners.get(Winner.FIRST_PLACE)).isEqualTo(1);
+    }
+
+    @DisplayName("보너스 당첨 검사")
+    @Test
+    public void 보너스_당첨_확인() {
+        LottoRepository lottoRepository = new LottoRepository();
+        lottoService = new LottoService(lottoRepository);
+
+        Lotto publishedLotto = new Lotto(List.of(1, 2, 3, 4, 5, 7));
+        lottoRepository.save(publishedLotto);
+        lottoRepository.saveWinningNumbers(List.of(1, 2, 3, 4, 5, 6));
+        lottoRepository.saveBonusNumber(7);
+
+        lottoService.saveWinners();
+        EnumMap<Winner, Integer> winners = lottoService.getWinners();
+
+        assertThat(winners.get(Winner.SECOND_PLACE)).isEqualTo(1);
     }
 }
