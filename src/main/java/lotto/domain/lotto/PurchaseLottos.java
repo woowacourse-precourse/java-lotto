@@ -2,6 +2,7 @@ package lotto.domain.lotto;
 
 import static lotto.domain.lotto.Lotto.makeRandomLotto;
 import static lotto.message.PrintMessage.createPurchaseQuantityMsg;
+import static lotto.value.MoneyUnit.KRW;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,7 +25,7 @@ public class PurchaseLottos {
     }
 
     public int calculateAmount() {
-        return quantity() * 1000;
+        return quantity() * KRW.getPrice();
     }
 
     //로또들이 있어, 이 객체 역할: placeHistory 생성 . 출력 역할으 ㄴ또 누군감 ㅏㅌ아야 함.

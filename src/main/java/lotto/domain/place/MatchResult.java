@@ -6,7 +6,7 @@ import static lotto.domain.place.PlaceCondition.FOURTH_PLACE_CONDITION;
 import static lotto.domain.place.PlaceCondition.NONE_CONDITION;
 import static lotto.domain.place.PlaceCondition.SECOND_PLACE_CONDITION;
 import static lotto.domain.place.PlaceCondition.THIRD_PLACE_CONDITION;
-import static lotto.message.LottoLine.LOTTO_CURRENCY_UNIT;
+import static lotto.value.MoneyUnit.KRW;
 
 import java.util.Arrays;
 
@@ -45,6 +45,6 @@ public enum MatchResult {
 
     @Override
     public String toString() {
-        return String.format("%s (%,d%s)", matchMessage, matchAmount, LOTTO_CURRENCY_UNIT.getValue());
+        return String.format("%s (%,d%s)", matchMessage, matchAmount, KRW.getUnitChar());
     }
 }

@@ -1,5 +1,7 @@
 package lotto.validation;
 
+import static lotto.value.MoneyUnit.KRW;
+
 public class InputAmountValidation {
 
     private static boolean isUnitFor(int unit, int inputAmount) {
@@ -22,7 +24,7 @@ public class InputAmountValidation {
     }
 
     private static void validateUnit(int inputAmount) {
-        if (!isUnitFor(1000, inputAmount)) {
+        if (!isUnitFor(KRW.getPrice(), inputAmount)) {
             throw new IllegalArgumentException("[ERROR] 입력한 금액이 1,000원 단위가 아닙니다.");
         }
     }

@@ -1,6 +1,7 @@
 package lotto.domain;
 
 import static lotto.validation.InputAmountValidation.validateInputAmount;
+import static lotto.value.MoneyUnit.KRW;
 
 public class PurchaseAmount {
 
@@ -16,6 +17,6 @@ public class PurchaseAmount {
     }
 
     public int quantity() {
-        return this.amount / 1000;
+        return this.amount / KRW.getPrice();
     }
 }
