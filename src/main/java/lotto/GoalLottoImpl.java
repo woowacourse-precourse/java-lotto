@@ -31,7 +31,7 @@ public class GoalLottoImpl implements GoalLotto{
         try {
         int num = Integer.parseInt(split);
         result.add(num);
-        }catch (IllegalArgumentException e){
+        }catch (NumberFormatException e){
             throw new IllegalArgumentException("[ERROR] 당첨 번호를 제대로 입력해주세요");
         }
     }

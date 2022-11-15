@@ -8,5 +8,6 @@ public interface BuyLotto {
     public void validate();
     public ArrayList<Lotto> getLottos();
 
+    public int getMoney();
     public List<Integer> getLottoNumber();
 }
