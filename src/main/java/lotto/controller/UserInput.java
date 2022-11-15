@@ -43,6 +43,7 @@ public class UserInput {
         System.out.println();
 
         hasOnlyNumber(userInput);
+        isStartedNotZero(userInput);
 
         int bonusNumber = Integer.valueOf(userInput);
         validNumber(bonusNumber);
@@ -55,6 +56,7 @@ public class UserInput {
         String[] stringNumbers = input.split(",");
         List<Integer> numbers = new ArrayList<>();
         for (String number: stringNumbers) {
+            isStartedNotZero(number);
             int lottoNumber = Integer.valueOf(number);
             numbers.add(lottoNumber);
         }
