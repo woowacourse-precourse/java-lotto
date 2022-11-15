@@ -1,6 +1,7 @@
 package lotto.domain;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import lotto.enums.ExceptionErrorType;
 import lotto.enums.PrizeOfLotto;
 import lotto.model.Lotto;
 
@@ -34,16 +35,22 @@ public class Machine {
     }
 
     public static List<Lotto> generateLottos(BigInteger numberOfLottos) {
-        List<Lotto> lottos = new ArrayList<>();
-        for (BigInteger bi = BigInteger.valueOf(0);
-             bi.compareTo(numberOfLottos) < 0;
-             bi = bi.add(BigInteger.ONE)) {
+        try {
+            List<Lotto> lottos = new ArrayList<>();
+            for (BigInteger bi = BigInteger.valueOf(0);
+                 bi.compareTo(numberOfLottos) < 0;
+                 bi = bi.add(BigInteger.ONE)) {
 
-            List<Integer> lottoNumbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
-            List<Integer> sortedLottoNumbers = lottoNumbers.stream().sorted().collect(Collectors.toList());
-            lottos.add(new Lotto(sortedLottoNumbers));
+                List<Integer> lottoNumbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+                List<Integer> sortedLottoNumbers = lottoNumbers.stream().sorted().collect(Collectors.toList());
+                lottos.add(new Lotto(sortedLottoNumbers));
+            }
+            return lottos;
+        } catch (OutOfMemoryError error) {
+            throw new IllegalArgumentException(
+                    ExceptionErrorType.TOO_BIG_INPUT_NUMBER.getDescription()
+            );
         }
-        return lottos;
     }
 
     public Map<String, Integer> judge(List<Lotto> lottos) {
