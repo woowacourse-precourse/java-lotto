@@ -1,5 +1,6 @@
 package lotto;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -9,7 +10,7 @@ public class LottoResult {
     private int equalCount;
     private boolean isBonus;
 
-    private Map<Result, Integer> resultMap;
+    private Map<Result, Integer> resultMap = new HashMap<>();
 
     public void getResult(List<Lotto> lottos, WinNumber winNumber, BonusNumber bonusNumber) {
         initResultMap();
