@@ -47,11 +47,16 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 예외_테스트() {
+    void 예외_테스트1() {
         assertSimpleTest(() -> {
             runException("1000j");
             assertThat(output()).contains(ERROR_MESSAGE);
         });
+    }
+
+    @Test
+    void 예외_테스트2() {
+        assertThat("[ERROR] 숫자가 아닙니다").contains(ERROR_MESSAGE);
     }
 
     @Override
