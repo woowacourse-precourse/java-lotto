@@ -44,7 +44,7 @@ public class LottoTicket {
     }
 
     public int getTicketCount() {
-        return this.ticketCount;
+        return ticketCount;
     }
 
     public List<Lotto> getTicket() {
