@@ -1,31 +1,29 @@
 package lotto.view;
 
-import camp.nextstep.edu.missionutils.Console;
 import lotto.config.LottoPrizeRules;
 import lotto.controller.LottoController;
 import lotto.model.Lotto;
 import lotto.model.LottoRaffleRecord;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 import static lotto.config.Constants.LottoInput.*;
 import static lotto.config.Constants.LottoOutput.STATISTICS_TITLE;
 import static lotto.config.Constants.LottoOutput.TELL_PURCHASED_LOTTO_COUNT;
-import static lotto.exception.LottoException.FORBID_EMPTY;
-import static lotto.exception.LottoException.NOT_NUMBER;
 import static lotto.view.LottoStatisticFormat.*;
 
 public class View {
 
     private final LottoController lottoController;
     private LottoRaffleRecord lottoRaffleRecord;
+    private final Reader reader;
 
     private Long money;
     List<Lotto> lottos;
 
     public View() {
         lottoController = new LottoController();
+        reader = new Reader();
     }
 
     public void run() {
@@ -39,7 +37,7 @@ public class View {
 
     private void askPurchase() {
         System.out.println(ASK_HOW_MUCH_WILL_YOU_BUY);
-        money = readLongNumber();
+        money = reader.readLongNumber();
         lottos = lottoController.buyLotto(money);
         System.out.println();
     }
@@ -58,14 +56,14 @@ public class View {
 
     private void askWinningNumbers() {
         System.out.println(ASK_WINNING_NUMBERS);
-        List<Integer> input = readNumbers();
+        List<Integer> input = reader.readNumbers();
         lottoController.inputWinLotto(new Lotto(input));
         System.out.println();
     }
 
     private void askBonusNumbers() {
         System.out.println(ASK_BONUS_NUMBER);
-        lottoController.inputWinBonus(readLongNumber().intValue());
+        lottoController.inputWinBonus(reader.readLongNumber().intValue());
         System.out.println();
     }
 
@@ -96,29 +94,5 @@ public class View {
         result += addWinningMoney(prize.getWinningMoney());
         result += addWinningCount(count);
         return result;
-    }
-
-    private List<Integer> readNumbers() {
-        String input = Console.readLine();
-        List<String> numbers = Arrays.asList(input.split(","));
-        numbers.forEach(this::isNumeric);
-        return numbers.stream().map(Integer::parseInt).collect(Collectors.toList());
-    }
-
-    private Long readLongNumber() {
-        String input = Console.readLine();
-        isNumeric(input);
-        return Long.parseLong(input);
-    }
-
-    private void isNumeric(String input) {
-        if (input == null) {
-            throw new IllegalArgumentException(FORBID_EMPTY.getErrorMessage());
-        }
-        try {
-            Long.parseLong(input);
-        } catch (NumberFormatException e) {
-            throw new IllegalArgumentException(NOT_NUMBER.getErrorMessage());
-        }
     }
 }
