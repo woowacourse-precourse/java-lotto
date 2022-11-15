@@ -65,12 +65,6 @@ public class LottoSystemService {
         numbers.add(Integer.parseInt(number));
     }
 
-    public void validate(){
-        if (numbers.size() > 6){
-            System.out.println("[ERROR] 당첨 번호의 길이가 올바르지 않습니다.");
-            throw new IllegalArgumentException("[ERROR] 당첨 번호의 길이가 올바르지 않습니다.");
-        }
-    }
     public void setBonusLottoNumbers() {
         String inputNumber = Console.readLine();
         bonusNumber = Integer.parseInt(inputNumber);
@@ -95,7 +89,6 @@ public class LottoSystemService {
 
     public void setTotal() {
         List<List<Integer>> userLottoNumbers = user.getUserLottoNumber();
-        System.out.println("test2");
         int hitIndex;
         hit = Arrays.asList(0, 0, 0, 0, 0);
 

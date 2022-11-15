@@ -36,12 +36,12 @@ public class LottoController {
     public void inputWinningNumber(){
         System.out.println(ANSWER_MESSAGE);
         lottoSystemService.setAnswerLottoNumbers();
+        lottoSystemService.saveLottoNumbers();
     }
 
     public void inputBonusNumber(){
         System.out.println(BONUS_MESSAGE);
         lottoSystemService.setBonusLottoNumbers();
-        lottoSystemService.saveLottoNumbers();
     }
 
     public void printStatistics(){
