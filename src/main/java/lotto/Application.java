@@ -2,6 +2,7 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Application {
@@ -24,7 +25,17 @@ public class Application {
         System.out.println(NumberOfGame + "개를 구매했습니다.");
     }
     public static List<Integer> setWinningNumber(){
-        
+        System.out.println();
+        System.out.println("당첨 번호를 입력해 주세요");
+
+        String[] TempNumber = Console.readLine().split(",");
+
+        List<Integer>WinningNumber = new ArrayList<>();
+
+        for(String i : TempNumber){
+            WinningNumber.add(Integer.parseInt(i));
+        }
+        return WinningNumber;
     }
     public static void UI(){
 
