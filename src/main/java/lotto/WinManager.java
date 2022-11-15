@@ -21,6 +21,10 @@ public class WinManager {
         printAll();
     }
 
+    public HashMap<String, Integer> get() {
+        return matches;
+    }
+
     private void initializeMatches() {
         matches.put("3", 0);
         matches.put("4", 0);
@@ -77,17 +81,7 @@ public class WinManager {
         System.out.println("5개 일치 (1,500,000원) - " + matches.get("5") + "개");
         System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - " + matches.get("5+1") + "개");
         System.out.println("6개 일치 (2,000,000,000원) - " + matches.get("6") + "개");
-
-//        System.out.println("winLotto = " + winNumbers);
-//        System.out.println("winLotto = " + bonusNumber);
-//
-//        for (int i = 0; i< lottoList.size(); i++) {
-//            System.out.println("lottoList.get(i).getNumbers() = " + this.lottoList.get(i).getNumbers());
-//        }
-//
-//        for(String key : matches.keySet()){
-//            System.out.println("[Key]:" + key + " [Value]:" + matches.get(key));
-//        }
     }
+
 
 }
