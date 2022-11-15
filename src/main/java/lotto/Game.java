@@ -12,16 +12,13 @@ public class Game {
         winningNumber.generator();
         Earning earning = new Earning();
         WinningHistory winningHistory = new WinningHistory();
-
         Calculator calculator = new Calculator();
-
         double earningAmount = 0;
         for (Lotto purchasedLotto : purchasedLottos) {
             calculator.calculate(purchasedLotto.getLottoNumber(), winningNumber.getWinningLotto(), winningNumber.getBonusNumber());
             earningAmount += earning.calculate(calculator.getSameCmt(), calculator.getBonusCorrect());
             earning.RankCalculate(calculator.getSameCmt(), calculator.getBonusCorrect(), winningHistory);
         }
-
         winningHistory.print();
         System.out.println("총 수익률은 " + earning.rateCalculate(lottoCount*1000, earningAmount) + "%입니다.");
     }
@@ -31,5 +28,4 @@ public class Game {
             System.out.println(purchasedLotto.getLottoNumber());
         }
     }
-
 }

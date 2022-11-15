@@ -6,10 +6,10 @@ public class Calculator {
 
     private int sameCmt;
     private int bonusCorrect;
+
     public void calculate(List<Integer> purchasedLotto, List<Integer> winningLotto, int bonusNumber) {
         initializedValues();
         sameCmt = comparePurchasedWithWinningLotto(purchasedLotto, winningLotto);
-
         if(sameCmt == 5) {
             if(purchasedLotto.contains(bonusNumber)) {
                 bonusCorrect++;

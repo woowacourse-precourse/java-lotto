@@ -44,7 +44,6 @@ public class Lotto {
         if(isDuplicated(numbers)){
             throw new IllegalArgumentException("[ERROR] 로또 번호 사이에 중복이 존재합니다.");
         }
-
     }
 
     private boolean isDuplicated(List<Integer> numbers) {
