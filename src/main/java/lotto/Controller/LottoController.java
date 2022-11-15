@@ -28,12 +28,22 @@ public class LottoController {
         Output.printLottoNumbers(buyer.getLottos());
     }
 
-    public void createLuckyLotto(){
+    public Lotto createLuckyNumber(){
         System.out.println("당첨 번호를 입력해 주세요.");
         List<Integer> luckyNumbers = Input.integerListInput();
-        Lotto lotto = new Lotto(luckyNumbers);
+        Lotto luckyLotto = new Lotto(luckyNumbers);
+        return luckyLotto;
+    }
+
+    public int createBonusNumber(){
         System.out.println("보너스 번호를 입력해 주세요.");
         int bonusNumber = Input.intInput();
+        return bonusNumber;
+    }
+
+    public void createLuckyLotto(){
+        List<Integer> luckyNumbers = createLuckyNumber().getLottoNumbers();
+        int bonusNumber = createBonusNumber();
         luckyLotto = new LuckyLotto(luckyNumbers, bonusNumber);
     }
 
