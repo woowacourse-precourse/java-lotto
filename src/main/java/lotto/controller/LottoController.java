@@ -6,6 +6,7 @@ import lotto.Rank.Rank;
 import lotto.model.Money;
 import lotto.model.WinningBonusNumber;
 import lotto.model.WinningLottoNumbers;
+import lotto.utils.Validates;
 import lotto.view.*;
 import lotto.Lotto;
 
@@ -18,6 +19,8 @@ public class LottoController {
     private WinningBonusNumber winningBonusNumber;
     private InputView inputView;
     private OutputView outputView;
+    private StatisticsView statisticsView;
+    private Validates validates;
     private Lotto lotto;
     private List<Lotto> lottoList;
     private Rank[] ranks;
@@ -30,25 +33,31 @@ public class LottoController {
         money = new Money();
         inputView = new InputView();
         outputView = new OutputView();
+        statisticsView = new StatisticsView();
         lottoList = new ArrayList<>();
         winningBonusNumber = new WinningBonusNumber();
         winningLottoNumbers = new WinningLottoNumbers();
         ranks = Rank.values();
+        validates = new Validates();
     }
-
-    public void run() {
-
-
-        init();
-        System.out.println(ranks);
+    public void inputPurchaseMoney() {
         inputView.purchaseLotto();
-//        InputView.purchaseLotto();
-        int purchaseMoney = Integer.valueOf(Console.readLine());
-//        System.out.println("purchaseMoney = " + purchaseMoney);
-        saveMoney(purchaseMoney);
-        System.out.println("money = " + money.getMoney());
-        makeLottoNumbers(lottoList, purchaseMoney);
+        try{
+            int purchaseMoney = Integer.parseInt(Console.readLine());
+            if (validates.validatePurchaseMoney(purchaseMoney)) {
+                saveMoney(purchaseMoney);
+            }
+        }catch (IllegalArgumentException e){
+            System.out.println("[ERROR] 로또 구입 금액이 올바르지 않습니다.");
+            throw e;
+        }
 
+
+    }
+    public void run() {
+        init();
+        inputPurchaseMoney();
+        makeLottoNumbers(lottoList, money.getMoney());
         outputView.lottoNumber(calculateLottoCount(money.getMoney()), lottoList);
         inputView.winnigNumber();
         String lottoNumbers = Console.readLine();
@@ -57,13 +66,21 @@ public class LottoController {
         inputView.bonusNumber();
         String bonusNumber = Console.readLine();
         saveWinningBonusNumber(bonusNumber);
-        System.out.println("winningBonusNumber.getBonusNumber = " + winningBonusNumber.getBonusNumber());
 
         compareTwoNumbers(winningLottoNumbers.getWinningLottoNumbers());
         checkLotto();
-        
+        statisticsView.printResult(ranks,calculateYield(money.getMoney()));
 
 
+    }
+    public double calculateYield(int purchaseMoney) {
+        double sum = 0;
+        for (Rank rank : ranks) {
+            sum += rank.getCount() * rank.getPrizeMoney();
+        }
+        double yield = sum / purchaseMoney * 100;
+        yield = Math.round((yield * 100)) / 100.0;
+        return yield;
     }
     public void checkLotto() {
         for (Lotto l : lottoList) {
@@ -73,19 +90,27 @@ public class LottoController {
     public void compareTwoNumbers(List<Integer> lottoNumbers) {
         List<Integer> winningLottoNumber = winningLottoNumbers.getWinningLottoNumbers();
         int count = 0;
-        for (int i = 0; i < winningLottoNumber.size(); i++) {//6ㄱㅐ
-            if (i == winningLottoNumber.size() - 1 && count == 5 && lottoNumbers.contains(winningBonusNumber.getBonusNumber())) {
-                ranks[3].increase();
-            } else if (lottoNumbers.contains(winningLottoNumber.get(i))) {
+        int bonus=0;
+        for (int i = 0; i < winningLottoNumber.size()-1; i++) {//6ㄱㅐ
+            if (lottoNumbers.contains(winningLottoNumber.get(i))) {
                 count++;
             }
-        }
-        for (int i = 0; i <= count - 3 && i != ranks.length - 1; i++) {
-            if (i == 3) {
-                continue;
+            if (lottoNumbers.contains(winningBonusNumber.getBonusNumber())) {
+                bonus++;
             }
-            ranks[i].increase();
         }
+        if(count <3) return;
+            if (bonus == 1 && count == 6) {
+                System.out.println("bonus");
+                ranks[3].increase();
+            }else if(bonus == 0 && count == 6){
+                ranks[4].increase();
+            }
+            else if(bonus == 0){
+                ranks[count - 3].increase();
+            }
+
+
     }
     public void saveWinningBonusNumber(String bonusNumber) {
         winningBonusNumber.setBonusNumber(Integer.valueOf(bonusNumber));
