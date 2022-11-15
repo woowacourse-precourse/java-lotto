@@ -10,10 +10,32 @@ public enum Winning {
     private final String DESCRIPTION;
     private final String SRING_PRICE;
     private final int PRICE;
+    private int count;
 
     Winning(String DESCRIPTION, String SRING_PRICE, int PRICE) {
         this.DESCRIPTION = DESCRIPTION;
         this.SRING_PRICE = SRING_PRICE;
         this.PRICE = PRICE;
+        this.count = 0;
+    }
+
+    public String getDESCRIPTION() {
+        return DESCRIPTION;
+    }
+
+    public String getSRING_PRICE() {
+        return "("+SRING_PRICE+")";
+    }
+
+    public int getPRICE() {
+        return PRICE;
+    }
+
+    public int getCount() {
+        return count;
+    }
+
+    public void setCount(int count) {
+        this.count = count;
     }
 }
