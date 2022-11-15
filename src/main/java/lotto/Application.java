@@ -1,27 +1,32 @@
 package lotto;
 
-import camp.nextstep.edu.missionutils.Randoms;
-
+import java.lang.management.MonitorInfo;
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.List;
+
+import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class Application {
+    private static final String ERROR_MESSAGE = "[ERROR] ";
+
+
     public static void main(String[] args) {
         // TODO: 프로그램 구현
+        InputView inputView = new InputView();
+        OutputView outputView = new OutputView();
+        LottoFactory lottoFactory = new LottoFactory();
+
+        LottoController lottoController = new LottoController(inputView, outputView, lottoFactory);
+        lottoController.lottery();
     }
 
 
-    public int userInput(String s) {
-        int number=0;
-        try{
-            number=Integer.parseInt(s);
-            if(number<1000 || number%1000!=0){
-                throw new IllegalArgumentException();
-            }
-            return number/1000;
-        }
-        catch(NumberFormatException e){
-            throw new IllegalArgumentException();
-        }
+
+
+
+
+    public static void printErrorMessage(String s){
+        System.out.println(ERROR_MESSAGE+s);
     }
+
 }
