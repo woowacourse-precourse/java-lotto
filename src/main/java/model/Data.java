@@ -15,6 +15,8 @@ public class Data {
     public String purchaseAmount;
     public String winningNumber;
     public String BonusNumber;
+
+    public String[] winningNumberSplit;
     public HashMap<Integer, Integer> winningStatistics = new HashMap<>();
     public List<Integer> winningLottoNumber = new ArrayList<>();
     public List<Integer>[] userLotto;
@@ -40,8 +42,7 @@ public class Data {
         numberOfLotto = numberOfLotto / 1000;
     }
 
-    public void makeWinningLottoNumber(){
-        String[] winningNumberSplit = winningNumber.split(",");
+    public void makeWinningLottoNumber() {
         for (int i = 0; i < winningNumberSplit.length; i++) {
             winningLottoNumber.add(Integer.valueOf(winningNumberSplit[i]));
         }
@@ -58,7 +59,7 @@ public class Data {
             return;
         }
         if (winningLottoCount == 5) {
-            if (userLotto.contains(BonusNumber)) {
+            if (userLotto.contains(Integer.parseInt(BonusNumber))) {
                 winningLottoCount = 7;
             }
         }
@@ -72,10 +73,14 @@ public class Data {
                 sum += winningStatistics.get(i) * revenue[i];
             }
         }
+        if(sum==0){
+            yield=0;
+            return;
+        }
         yield = ((double) sum / (double) Integer.parseInt(purchaseAmount)) * 100;
     }
 
-    public void initializeUserLotto(){
+    public void initializeUserLotto() {
         userLotto = new ArrayList[numberOfLotto];
         for (int i = 0; i < numberOfLotto; i++) {
             userLotto[i] = new ArrayList<Integer>();
