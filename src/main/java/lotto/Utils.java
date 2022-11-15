@@ -4,6 +4,8 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import lotto.enums.Error;
+import lotto.enums.LottoInfo;
 
 public class Utils {
     public static void validateLottoNumbers(List<Integer> numbers) {

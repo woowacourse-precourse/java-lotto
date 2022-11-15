@@ -1,9 +1,14 @@
-package lotto;
+package lotto.controller;
 
 import java.util.ArrayList;
 import java.util.EnumMap;
 import java.util.List;
 import java.util.Map;
+import lotto.Utils;
+import lotto.domain.Lotto;
+import lotto.enums.Error;
+import lotto.enums.LottoInfo;
+import lotto.enums.WinningResult;
 
 public class LottoMachine {
     private List<Lotto> lottos;

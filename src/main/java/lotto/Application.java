@@ -1,6 +1,9 @@
 package lotto;
 
 import java.util.List;
+import lotto.controller.LottoMachine;
+import lotto.enums.LottoInfo;
+import lotto.veiw.UserInterface;
 
 public class Application {
     public static final UserInterface userInterface = new UserInterface();

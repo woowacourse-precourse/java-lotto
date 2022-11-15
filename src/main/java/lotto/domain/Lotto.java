@@ -1,7 +1,8 @@
-package lotto;
+package lotto.domain;
 
 import java.util.Collections;
 import java.util.List;
+import lotto.Utils;
 
 public class Lotto {
     private final List<Integer> numbers;

@@ -1,4 +1,4 @@
-package lotto;
+package lotto.enums;
 
 public enum Error {
     ZERO_MONEY_ERROR("[ERROR] 구입 금액은 최소 1000원이어야 합니다."),

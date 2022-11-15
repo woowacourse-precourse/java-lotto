@@ -1,4 +1,4 @@
-package lotto;
+package lotto.veiw;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.util.Arrays;
@@ -6,6 +6,9 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
+import lotto.domain.Lotto;
+import lotto.enums.Error;
+import lotto.enums.WinningResult;
 
 public class UserInterface {
     public void printLottos(List<Lotto> lottos) {
