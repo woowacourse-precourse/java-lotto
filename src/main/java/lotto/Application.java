@@ -1,6 +1,6 @@
 package lotto;
 
-import lotto.domain.LottoStore;
+import lotto.UI.LottoStore;
 
 public class Application {
     public static void main(String[] args) {

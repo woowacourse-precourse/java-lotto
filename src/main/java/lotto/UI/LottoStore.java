@@ -1,6 +1,7 @@
-package lotto.domain;
+package lotto.UI;
 
 import camp.nextstep.edu.missionutils.Console;
+import lotto.domain.*;
 
 import java.util.List;
 import java.util.stream.Stream;
