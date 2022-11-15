@@ -1,7 +1,5 @@
 package lotto.domain;
 
-import lotto.util.errorMessage.ErrorMessage;
-
 public class LottoPieces {
 
     private static final int MIN_UNIT = 1000;
@@ -18,6 +16,6 @@ public class LottoPieces {
     }
 
     private static int getQuotient(Money money) {
-        return money.getMoney() / MIN_UNIT;
+        return Money.getQuotient(money);
     }
 }
