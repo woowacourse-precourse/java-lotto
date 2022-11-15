@@ -23,14 +23,10 @@ public class Lotto {
     }
 
     // TODO: 추가 기능 구현
-    static List<Lotto> creatLottoNumbers(int lottoCount) {
-        List<Lotto> purchaseLotto = new ArrayList<>();
+    static Lotto creatLottoNumbers(int lottoCount) {
+        List<Integer> lotto = Randoms.pickUniqueNumbersInRange(numberMinRage, numberMaxRage, numberCount);
 
-        for (int i = 0; i < lottoCount; i++) {
-            List<Integer> lotto = Randoms.pickUniqueNumbersInRange(numberMinRage, numberMaxRage, numberCount);
-            purchaseLotto.add(new Lotto(lotto));
-        }
 
-        return purchaseLotto;
+        return new Lotto(lotto);
     }
 }

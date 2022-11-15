@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Buyer {
+    private final List<Lotto> purchaseLotto = new ArrayList<>();
     private int lottoAmount;
 
     static void validConsistByNumber(String purchaseAmount) {
@@ -33,12 +34,12 @@ public class Buyer {
         return purchaseAmount;
     }
 
-    public List<Lotto> buyLotto(){
+    public void buyLotto() {
         PurchaseAmountUnit purchaseAmountUnit = PurchaseAmountUnit.LOTTO_PURCHASE_UNIT;
         int lottoCount = purchaseAmountUnit.purchaseAmount(lottoAmount);
 
-        List<Lotto> purchaseLotto = Lotto.creatLottoNumbers(lottoCount);
-
-        return purchaseLotto;
+        while (purchaseLotto.size() < lottoCount) {
+            purchaseLotto.add(Lotto.creatLottoNumbers(lottoCount));
+        }
     }
 }
