@@ -1,6 +1,7 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import java.util.*;
 public class LottoMachine {
 
     private final int buyLineMoney = 1000;
@@ -13,5 +14,13 @@ public class LottoMachine {
         int money = Integer.parseInt(inputMoney);
 
         return money / buyLineMoney;
+    }
+
+    public List<Integer> makeBuyLottoLine() {
+        List<Integer> LottoLine = new ArrayList<>();
+
+        LottoLine = Randoms.pickUniqueNumbersInRange(minLottoNumber, maxLottoNumber, oneLineLottoNumber);
+
+        return LottoLine;
     }
 }
