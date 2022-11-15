@@ -1,5 +1,7 @@
 package lotto;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Lotto {
@@ -7,14 +9,25 @@ public class Lotto {
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
-        this.numbers = numbers;
+        this.numbers = sortNumbers(numbers);
     }
 
+    private List<Integer> sortNumbers(List<Integer> numbers){
+        try{
+            Collections.sort(numbers);
+        }catch (UnsupportedOperationException e){
+            List<Integer> modifiableNumbers = new ArrayList<Integer>(numbers);
+            Collections.sort(modifiableNumbers);
+            return modifiableNumbers;
+        }
+        return numbers;
+    }
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException();
         }
     }
-
-    // TODO: 추가 기능 구현
+    public List<Integer> getNumbers() {
+        return numbers;
+    }
 }
