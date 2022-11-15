@@ -1,12 +1,14 @@
 package lotto.service;
 
 import lotto.domain.Lotto;
+import lotto.domain.Rank;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -38,5 +40,20 @@ public class LottoServiceTest {
         String result = lottoService.getProfitRate();
 
         assertThat(result).isEqualTo("62.5");
+    }
+
+    @DisplayName("2등 당첨시 3등과 중복 당첨되지 않는다.")
+    @Test
+    void checkProfitRate() {
+        lotteries.add(new Lotto(List.of(1, 2, 3, 4, 5, 7)));
+
+        LottoService lottoService = new LottoService(lotteries, winnings, bonus, buyMoney);
+        Map<Integer, Integer> matches = lottoService.getMatches();
+        List<Integer> result = new ArrayList<>();
+
+        result.add(matches.getOrDefault(Rank.SECOND_RANK.getMatch(), 0));
+        result.add(matches.getOrDefault(Rank.THIRD_RANK.getMatch(), 0));
+
+        assertThat(result).isEqualTo(List.of(1, 0));
     }
 }
