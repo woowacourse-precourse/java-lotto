@@ -32,4 +32,8 @@ public class WinLotto {
         }
         return common;
     }
+
+    public boolean isBonusCorrect(Lotto userLotto) {
+        return userLotto.getNumbers().contains(bonusNumber);
+    }
 }
