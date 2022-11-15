@@ -32,7 +32,7 @@ public class Application {
 
     public static void saveInput(){
         System.out.println("구입금액을 입력해 주세요.");
-        gameData.changeMoney( Integer.parseInt(Console.readLine()) );
+        gameData.changeMoney( Console.readLine() );
         gameData.changeLottoCount(gameData.getMoney() / LOTTO_PRICE);
         System.out.println(gameData.getLottoCount()+"개를 구매했습니다.");
         publishLotto();
