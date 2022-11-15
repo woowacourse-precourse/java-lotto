@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class LottoMachine {
+
     public enum RANKING{
         RANK1(2000000000),
         RANK2(30000000),
@@ -19,16 +20,14 @@ public class LottoMachine {
         public int getReward(){
             return reward;
         }
-
         RANKING(int reward) {
             this.reward = reward;
         }
     }
-
     private final int LOTTO_PRICE = 1000;
     private int paid;
     public ArrayList<Lotto> lottos = new ArrayList<>();
-    private int[] result;
+    private int[] countRanking;
     private long revenue;
 
     public LottoMachine() {}
@@ -62,6 +61,7 @@ public class LottoMachine {
         }
         return lottos;
     }
+
     public void printLottos(){
         System.out.println(paid/LOTTO_PRICE +"개를 구매했습니다.");
         for(Lotto lotto:lottos){
@@ -70,17 +70,17 @@ public class LottoMachine {
     }
 
     public void getResult(List<Integer> winningNum, int bonusNum){
-        result = new int[6];
+        countRanking = new int[6];
         for(Lotto lotto:lottos){
             List<Integer> numbers =  new ArrayList<>(lotto.getNumbers());
-            Integer rank = getRank(winningNum, bonusNum, numbers);
+            int rank = getRank(winningNum, bonusNum, numbers);
             if (rank > 5) continue;
-            result[rank] += 1;
+            countRanking[rank] += 1;
         }
         calculateRevenue();
     }
 
-    private Integer getRank(List<Integer> winningNum, int bonusNum, List<Integer> numbers) {
+    private int getRank(List<Integer> winningNum, int bonusNum, List<Integer> numbers) {
         boolean isBonusNum = numbers.contains(bonusNum);
 
         numbers.retainAll(winningNum);
@@ -89,7 +89,6 @@ public class LottoMachine {
         if(numbers.size()==5 && isBonusNum){
             rank -=1;
         }
-
         if(numbers.size()==6){
             rank =1;
         }
@@ -99,20 +98,21 @@ public class LottoMachine {
 
     public void calculateRevenue(){
         revenue = 0;
-        for(int i=1; i<result.length; i++){
+        for(int i = 1; i< countRanking.length; i++){
             long reward = RANKING.valueOf("RANK"+i).getReward();
-            revenue += reward * result[i];
+            revenue += reward * countRanking[i];
         }
     }
+
     public void printResult(){
         String rate = String.format("%.1f", (double) revenue * 100 / paid);
         System.out.println("당첨 통계");
         System.out.println("---");
-        System.out.println("3개 일치 (5,000원) - "+result[5]+"개");
-        System.out.println("4개 일치 (50,000원) - "+result[4]+"개");
-        System.out.println("5개 일치 (1,500,000원) - "+ result[3]+"개");
-        System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - "+result[2]+"개");
-        System.out.println("6개 일치 (2,000,000,000원) - "+result[1]+"개");
+        System.out.println("3개 일치 (5,000원) - "+ countRanking[5]+"개");
+        System.out.println("4개 일치 (50,000원) - "+ countRanking[4]+"개");
+        System.out.println("5개 일치 (1,500,000원) - "+ countRanking[3]+"개");
+        System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - "+ countRanking[2]+"개");
+        System.out.println("6개 일치 (2,000,000,000원) - "+ countRanking[1]+"개");
         System.out.println("총 수익률은 " + rate + "%입니다.");
     }
 
