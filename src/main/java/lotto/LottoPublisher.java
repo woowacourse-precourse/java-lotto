@@ -16,13 +16,16 @@ public class LottoPublisher {
 
     public List<Lotto> createLotto(int money){
         int cnt = checkMoney(money);
+        System.out.println(cnt+"개를 구매했습니다.");
         insertMoney(money);
         List<Lotto> ret = new ArrayList<>();
         for(int i=0; i<cnt; i++){
             List<Integer> lottoNums = Randoms.pickUniqueNumbersInRange(1, 45, lottoNum);
             Lotto lotto = new Lotto(lottoNums);
+            System.out.println(lotto.getNumbers());
             ret.add(lotto);
         }
+
         return ret;
     }
 
