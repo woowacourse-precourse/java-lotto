@@ -1,6 +1,6 @@
-package util;
+package lotto;
 
-import lotto.Lotto;
+import dto.ResultDto;
 import ui.ExceptionMessage;
 
 import java.util.ArrayList;
@@ -8,7 +8,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public class LottoMaker {
+public class LottoService {
 
     private static final Integer MIN = 1;
     private static final Integer MAX = 45;
@@ -20,6 +20,19 @@ public class LottoMaker {
         isValidParser(splitInput);
         isUniqueNumber(splitInput);
         return makeLotto(splitInput);
+    }
+
+    public static ResultDto makeGrossReturn(ResultDto resultDto, Double money) {
+        double sum = 0;
+
+        sum += (resultDto.getThreeCount() * 5000);
+        sum += (resultDto.getFourCount() * 50000);
+        sum += (resultDto.getFiveCount() * 1500000);
+        sum += (resultDto.getFiveBonusCount() * 30000000);
+        sum += (resultDto.getSixCount() * 2000000000);
+
+        resultDto.setGrossReturn(sum / money * 100.0);
+        return resultDto;
     }
 
     private static void isValidNumber(String[] input) {
