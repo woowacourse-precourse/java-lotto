@@ -17,7 +17,7 @@ public class BuyLottoImpl implements BuyLotto{
     @Override
     public int getLottoCount() {
         validate();
-        return lottoPrice/money;
+        return money/lottoPrice;
     }
 
     @Override
