@@ -1,5 +1,9 @@
 package lotto;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 public enum WinInfo {
 
     NO_WIN(-1, -1, 0, 0),
@@ -45,6 +49,17 @@ public enum WinInfo {
             }
         }
         throw new RuntimeException(String.format("WinInfo에 order=%d인 상수가 존재하지 않음",order));
+    }
+
+    public static Map<WinInfo,Integer> getStatistics(List<WinInfo> winInformations){
+        Map<WinInfo,Integer> result = new HashMap<>();
+        for(WinInfo winInfo : winInformations){
+            if(!result.containsKey(winInfo)){
+                result.put(winInfo,0);
+            }
+            result.put(winInfo,result.get(winInfo) + 1);
+        }
+        return result;
     }
 
     public long getWinMoney(){
