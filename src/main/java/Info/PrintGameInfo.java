@@ -21,7 +21,7 @@ public class PrintGameInfo {
     public static final String USER_INPUT_ZERO = "0원으로는 하나도 살 수 없습니다.";
     public static final String PURCHASE_COUNT = "개를 구매했습니다.";
 
-    public static final String OVER_LOTTO_COUNT = "선택가능한 로또 숫자 갯수를 넘겼습니다.";
+    public static final String OVER_LOTTO_COUNT = "선택가능한 로또 숫자 갯수가 아닙니다.";
     public static final String OUT_OF_RANGE = "로또 숫자의 범위 밖의 숫자를 선택하였습니다.";
     public static final String DUPLICATE = "사용자의 입력 중 중복되는 값이 존재합니다.";
     public static final String BONNUS_NUMBER_EXIST = "보너스 번호의 값이 이미 당첨 번호에 선택되었습니다.";
@@ -110,5 +110,8 @@ public class PrintGameInfo {
         return PROFIT_FORMAT + String.format("%.1f%%입니다.", profit);
     }
 
+    public static String getOverLottoCount() {
+        return ERROR + OVER_LOTTO_COUNT;
+    }
 
 }

@@ -64,7 +64,7 @@ public class Application {
         InputException.outOfDigitException(userInput);
 
         int bonnusNumber = Integer.valueOf(userInput);
-        Lotto.isOutOfRange(bonnusNumber);
+        Lotto.isOutOfRangeException(bonnusNumber);
         return bonnusNumber;
     }
 }

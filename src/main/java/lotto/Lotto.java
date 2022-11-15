@@ -22,13 +22,15 @@ public class Lotto {
 
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
-            throw new IllegalArgumentException(PrintGameInfo.OVER_LOTTO_COUNT);
+            throw new IllegalArgumentException(PrintGameInfo.getOverLottoCount());
         }
     }
 
     // TODO: 추가 기능 구현
-    public static boolean isOutOfRange(Integer number) {
-        return number > LOTTO_MAX_NUMBER || number < LOTTO_MIN_NUMBER;
+    public static void isOutOfRangeException(Integer number) {
+        if (number > LOTTO_MAX_NUMBER || number < LOTTO_MIN_NUMBER) {
+            throw new IllegalArgumentException(PrintGameInfo.getOutOfRange());
+        }
     }
 
     /**
@@ -61,9 +63,7 @@ public class Lotto {
 
     private void outOfRangeExceptioin(List<Integer> numbers) {
         for(Integer number : numbers) {
-            if(isOutOfRange(number)) {
-                throw new IllegalArgumentException(PrintGameInfo.getOutOfRange());
-            }
+            isOutOfRangeException(number);
         }
     }
 
