@@ -1,6 +1,5 @@
 package lotto.Model;
 
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -27,24 +26,24 @@ public class Lotto {
     }
 
     private void validateSize(List<Integer> numbers){
-        if(numbers.size()!=6){
+        if(numbers.size()!=LottoInfo.LOTTO_SIZE.getNumber()) {
             throw new IllegalArgumentException(String.valueOf(ErrorResponse.INVALID_LOTTO_SIZE));
         }
     }
 
     private void validateRange(List<Integer> numbers) {
         for (Integer number : numbers) {
-            if (number < 1 || number > 45) {
+            if (number < LottoInfo.LOTTO_START_RANGE.getNumber() || number > LottoInfo.LOTTO_END_RANGE.getNumber()) {
                 throw new IllegalArgumentException(String.valueOf(ErrorResponse.INVALID_LOTTO_NUMBER_RANGE));
             }
         }
     }
 
-    private void validateDuplication(List<Integer> numbers){
-        int[] count = new int[46];
-        for(Integer number: numbers) {
+    private void validateDuplication(List<Integer> numbers) {
+        int[] count = new int[LottoInfo.LOTTO_END_RANGE.getNumber() + 1];
+        for (Integer number : numbers) {
             count[number]++;
-            if(count[number]>1){
+            if (count[number] > 1) {
                 throw new IllegalArgumentException(String.valueOf(ErrorResponse.INVALID_UNIQUE_NUMBER));
             }
         }

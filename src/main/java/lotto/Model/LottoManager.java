@@ -15,26 +15,22 @@ public class LottoManager {
 
     public static final Map<Integer, Integer> winningHistory = new HashMap<>();
 
-    private static final String INTEGER_REGEX = "-?\\d+";
     private static final String WINNING_NUMBER_SPLIT_REGEX = ",";
-    private static final int LOTTO_NUMBER_START = 1;
-    private static final int LOTTO_NUMBER_END = 45;
 
-    private static final int LOTTO_SIZE = 6;
-    private static final int PRICE_PER_LOTTO_TICKET = 1000;
+    private static final double PERCENTAGE = 100.f;
 
     public LottoManager(){
         initialize();
     }
 
     public String getEarningRate() {
-        double rate = jackpot / (double) inputMoney * 100.f;
+        double rate = jackpot / (double) inputMoney * PERCENTAGE;
         return String.valueOf(rate);
     }
 
     public List<Integer> getWinningRecords() {
         List<Integer> record = new ArrayList<>();
-        for (int index = 3; index < LOTTO_SIZE + 2; index++) {
+        for (int index = 3; index < LottoInfo.LOTTO_SIZE.getNumber() + 2; index++) {
             record.add(winningHistory.get(index));
         }
         return record;
@@ -42,7 +38,7 @@ public class LottoManager {
 
     private int getMatchingCount(Lotto lotto) {
         int count = 0;
-        for (int index = 0; index < LOTTO_SIZE; index++) {
+        for (int index = 0; index < LottoInfo.LOTTO_SIZE.getNumber(); index++) {
             if (winnings.contains(lotto.getNumber(index))) {
                 count++;
             }
@@ -50,33 +46,33 @@ public class LottoManager {
         return count;
     }
 
+
+    private int calculatePrize(int count) {
+        if (count == 5 && winnings.contains(bonusNumber)) {
+            winningHistory.put(6, winningHistory.get(6) + 1);
+            return PrizeMoney.PRIZE_FOR_FIVE_MATCHING.getMoney();
+        }
+        if (count == 6) {
+            winningHistory.put(7, winningHistory.get(7) + 1);
+            return PrizeMoney.PRIZE_FOR_SIX_MATCHING.getMoney();
+        }
+        winningHistory.put(count, winningHistory.get(count) + 1);
+        if (count == 5) {
+            return PrizeMoney.PRIZE_FOR_FIVE_MATCHING.getMoney();
+        }
+        if (count == 4) {
+            return PrizeMoney.PRIZE_FOR_FOUR_MATCHING.getMoney();
+        }
+        if (count == 3) {
+            return PrizeMoney.PRIZE_FOR_THREE_MATCHING.getMoney();
+        }
+        return 0;
+    }
+
     public void compare() {
         for (Lotto lotto : userLotto) {
             int count = getMatchingCount(lotto);
-            if (count == 5 && winnings.contains(bonusNumber)) {
-                winningHistory.put(6, winningHistory.get(6) + 1);
-                jackpot += PrizeMoney.PRIZE_FOR_FIVE_MATCHING_WITH_BONUS.getMoney();
-                continue;
-            }
-            if (count == 6) {
-                winningHistory.put(7, winningHistory.get(7) + 1);
-                jackpot += PrizeMoney.PRIZE_FOR_SIX_MATCHING.getMoney();
-                continue;
-            }
-            if (count == 5) {
-                winningHistory.put(5, winningHistory.get(5) + 1);
-                jackpot += PrizeMoney.PRIZE_FOR_FIVE_MATCHING.getMoney();
-                continue;
-            }
-            if (count == 4) {
-                winningHistory.put(4, winningHistory.get(4) + 1);
-                jackpot += PrizeMoney.PRIZE_FOR_FOUR_MATCHING.getMoney();
-                continue;
-            }
-            if (count == 3) {
-                winningHistory.put(3, winningHistory.get(3) + 1);
-                jackpot += PrizeMoney.PRIZE_FOR_THREE_MATCHING.getMoney();
-            }
+            jackpot += calculatePrize(count);
         }
     }
 
@@ -87,7 +83,7 @@ public class LottoManager {
         }catch(Exception e){
             System.out.println(ErrorResponse.INVALID_LOTTO_NUMBER);
         }
-        if (number < LOTTO_NUMBER_START || number > LOTTO_NUMBER_END) {
+        if (number < LottoInfo.LOTTO_START_RANGE.getNumber() || number > LottoInfo.LOTTO_END_RANGE.getNumber()) {
             throw new IllegalArgumentException(String.valueOf(ErrorResponse.INVALID_LOTTO_NUMBER_RANGE));
         }
     }
@@ -103,9 +99,9 @@ public class LottoManager {
         bonusNumber = Integer.parseInt(input);
     }
 
-    private static String[] getSplitWinningNumbers(String input){
+    private static String[] getSplitWinningNumbers(String input) {
         String[] numbers = input.split(WINNING_NUMBER_SPLIT_REGEX);
-        if (numbers.length != 6) {
+        if (numbers.length != LottoInfo.LOTTO_SIZE.getNumber()) {
             throw new IllegalArgumentException(String.valueOf(ErrorResponse.INVALID_WINNING_NUMBERS));
         }
         return numbers;
@@ -128,7 +124,7 @@ public class LottoManager {
             }
         }
 
-        if (winnings.size() != LOTTO_SIZE) {
+        if (winnings.size() != LottoInfo.LOTTO_SIZE.getNumber()) {
             throw new IllegalArgumentException(String.valueOf(ErrorResponse.INVALID_WINNING_NUMBERS));
         }
     }
@@ -143,10 +139,10 @@ public class LottoManager {
         }catch(IllegalArgumentException e){
             System.out.println(ErrorResponse.INVALID_MONEY);
         }
-        if (inputMoney % PRICE_PER_LOTTO_TICKET != 0) {
+        if (inputMoney % LottoInfo.PRICE_PER_LOTTO_TICKET.getNumber() != 0) {
             throw new IllegalArgumentException(String.valueOf(ErrorResponse.INVALID_LOTTO_PURCHASE_PRICE));
         }
-        ticketNumber = inputMoney / PRICE_PER_LOTTO_TICKET;
+        ticketNumber = inputMoney / LottoInfo.PRICE_PER_LOTTO_TICKET.getNumber();
     }
 
     public static int getTicketNumber(){

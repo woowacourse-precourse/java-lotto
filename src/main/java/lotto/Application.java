@@ -11,11 +11,11 @@ public class Application {
         issueLotto();
         printIssuedLotto();
         getWinningNumbers();
-        getWinningPrize();
-        getEarningRate();
+        showWinningPrize();
+        showEarningRate();
     }
 
-    private static void getWinningPrize(){
+    private static void showWinningPrize(){
         manager.compare();
         view.printWinningHistory(manager.getWinningRecords());
     }
@@ -41,7 +41,7 @@ public class Application {
         manager.getUserMoney(money);
     }
 
-    private static void getEarningRate(){
+    private static void showEarningRate(){
         String rate = manager.getEarningRate();
         view.printEarningRate(rate);
     }
