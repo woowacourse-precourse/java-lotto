@@ -1,6 +1,7 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import lotto.validate.Validator;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -50,10 +51,9 @@ class ApplicationTest extends NsTest {
 
     @Test
     void 예외_테스트() {
-        assertSimpleTest(() -> {
-            runException("1000j");
-            assertThat(output()).contains(ERROR_MESSAGE);
-        });
+        assertThatThrownBy(()->{
+            Validator.validatePrice("1000j");
+        }).isInstanceOf(IllegalArgumentException.class);
     }
 
     @Override

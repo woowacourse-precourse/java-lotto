@@ -38,11 +38,6 @@ public class RandomsTest {
         }
     }
 
-    @Test
-    void test() {
-        System.out.println(numbers);
-    }
-
     private void checkRange() {
         for (int number : numbers) {
             if (number > LottoConfig.RANGE_MAX || number < LottoConfig.RANGE_MIN) {

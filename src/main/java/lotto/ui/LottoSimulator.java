@@ -34,13 +34,11 @@ public class LottoSimulator {
         showStatistics(lottoRewards);
     }
 
-    // 돈 입력
     private void inputMoney() {
         int money = inputHandler.inputMoney();
         player.setMoney(money);
     }
 
-    // 로또 구매
     private int buyLotto() {
         int money = player.getMoney();
         List<Lotto> lotteries = lottoGenerator.generateLotto(money);
@@ -49,30 +47,25 @@ public class LottoSimulator {
         return lotteries.size();
     }
 
-    // 구매한 로또 출력
     private void showLotteries() {
         List<Lotto> lotteries = player.getLottos();
         lotteries.forEach(System.out::println);
     }
 
-    // 당첨 번호 입력
     private Lotto inputWinningNumber() {
         List<Integer> numbers = inputHandler.inputLottoNumber();
         return lottoGenerator.generateWinningLotto(numbers);
     }
 
-    // 보너스 번호 입력
     private int inputLottoBonusNumber(Lotto winningLotto) {
         return inputHandler.inputLottoBonusNumber(winningLotto);
     }
 
-    // 당첨 로또 분석 및 반환
     private List<LottoReward> calculate(Lotto winningLotto, int bonusNumber) {
         LottoChecker lottoChecker = new LottoChecker(winningLotto, bonusNumber);
         return lottoChecker.calculate(player.getLottos());
     }
 
-    // 통계 출력
     private void showStatistics(List<LottoReward> lottoRewards) {
         OutputHandler outputHandler = new OutputHandler(lottoRewards, player);
         outputHandler.showStatistics();

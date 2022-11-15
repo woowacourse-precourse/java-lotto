@@ -14,6 +14,15 @@ public class Validator {
         isDuplicated(numbers);
     }
 
+    public static void validatePrice(String money) {
+        try {
+            validatePrice(Integer.parseInt(money));
+        }
+        catch (NumberFormatException e){
+            throw new IllegalArgumentException(ExceptionMessage.ERROR_FORMAT);
+        }
+    }
+
     public static void validatePrice(int money) {
         isInRange(money);
         isCorrectMoney(money);
