@@ -25,7 +25,7 @@ public class ExceptionHandler {
     }
 
     public static void checkValidationWinningNumber(String input) throws IllegalArgumentException {
-        String[] tokens = applyTrim(input);
+        String[] tokens = InputUtil.trimInput(input);
         try {
             isSixNumbers(tokens);
             isOnlyCommaAndNumber(tokens);
@@ -34,14 +34,6 @@ public class ExceptionHandler {
         } catch (IllegalArgumentException illegalArgumentException) {
             throw new IllegalArgumentException();
         }
-    }
-
-    public static String[] applyTrim(String input) {
-        String[] tokens = input.split(Message.COMMA.getMessage());
-        for (int index = 0; index < tokens.length; index++) {
-            tokens[index] = tokens[index].trim();
-        }
-        return tokens;
     }
 
     private static void isSixNumbers(String[] tokens) throws IllegalArgumentException {

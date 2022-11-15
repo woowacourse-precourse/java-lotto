@@ -1,6 +1,7 @@
 package lotto.domain;
 
-import lotto.util.ExceptionHandler;
+import lotto.util.InputUtil;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,7 +11,7 @@ public class Manager {
     private int bonusNumber;
 
     public void setWinningNumbers(String input) {
-        String[] numbers = ExceptionHandler.applyTrim(input);
+        String[] numbers = InputUtil.trimInput(input);
         for (String number : numbers) {
             winningNumbers.add(Integer.parseInt(number));
         }
