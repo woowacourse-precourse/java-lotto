@@ -12,7 +12,6 @@ public class User {
     private int money;
     private long totalPrize;
     private int numberOfLotteries;
-    private double rateOfReturn;
     private List<Lotto> lotteries;
     private Map<Result, Integer> winningLotteryCounts = new TreeMap<>();
 
@@ -26,6 +25,10 @@ public class User {
         this.money = lotteryMachine.getUserMoneyInput();
         this.numberOfLotteries = lotteryMachine.calculateNumOfLotteries(this.money);
         this.lotteries = lotteryMachine.generateLotteries(this.numberOfLotteries);
+    }
+
+    public void checkResult(LotteryMachine lotteryMachine) {
+        lotteryMachine.showResult(this.money, this.lotteries, this.winningLotteryCounts);
     }
 
     public int getMoney() {
@@ -58,10 +61,6 @@ public class User {
 
     public void setNumberOfLotteries(int numberOfLotteries) {
         this.numberOfLotteries = numberOfLotteries;
-    }
-
-    public void setRateOfReturn(double rateOfReturn) {
-        this.rateOfReturn = rateOfReturn;
     }
 
     public void setLotteries(List<Lotto> lotteries) {

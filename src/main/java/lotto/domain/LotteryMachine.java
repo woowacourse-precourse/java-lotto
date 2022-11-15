@@ -4,7 +4,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import lotto.inputValidators.MoneyValidator;
 import lotto.inputValidators.NumberValidator;
 import lotto.messages.InputMessage;
-import lotto.messages.LotteryMessage;
+import lotto.messages.LotteryMachineMessage;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -14,10 +14,6 @@ import java.util.Map;
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class LotteryMachine {
-
-    private static final int MINIMUM_MATCH_NUMBER = 3;
-    private static final int FIVE_NUMBERS_MATCH = 5;
-    private static final String WINNING_STATISTICS_MESSAGE = "당첨 통계\n---";
 
     private Lotto winningLotto;
     private int bonusNumber;
@@ -34,7 +30,7 @@ public class LotteryMachine {
 
     public int calculateNumOfLotteries(int money) {
         int numberOfLotteries = money / LotteryNumber.LOTTERY_PRICE.getNumber();
-        System.out.println(numberOfLotteries + LotteryMessage.PURCHASED_LOTTERY_NUMBER_MESSAGE.getMessage());
+        System.out.println(numberOfLotteries + LotteryMachineMessage.PURCHASED_LOTTERY_NUMBER_MESSAGE.getMessage());
         return numberOfLotteries;
     }
 
@@ -54,6 +50,7 @@ public class LotteryMachine {
     public void drawLottery() {
         System.out.println(InputMessage.WINNING_LOTTERY_INPUT_MESSAGE.getMessage());
         String[] winningNumbersInput = readLine().split(",");
+        System.out.println();
 
         NumberValidator.validateWinningNumbers(winningNumbersInput);
         List<Integer> winningNumbers = new ArrayList<>();
@@ -68,29 +65,32 @@ public class LotteryMachine {
     private int drawBonusNumber() {
         System.out.println(InputMessage.BONUS_NUMBER_INPUT_MESSAGE.getMessage());
         String bonusNumberInput = readLine();
+        System.out.println();
 
         NumberValidator.validateBonusNumber(bonusNumberInput, winningLotto.getNumbers());
         return Integer.parseInt(bonusNumberInput);
     }
 
-    public void showResult(User user) {
-        System.out.println(WINNING_STATISTICS_MESSAGE);
-        aggregateResult(user.getLotteries(), user.getWinningLotteryCounts());
+    public void showResult(int userMoney, List<Lotto> userLotteries, Map<Result, Integer> userWinningLotteryCounts) {
+        System.out.println(LotteryMachineMessage.WINNING_STATISTICS_MESSAGE.getMessage());
+        aggregateResult(userLotteries, userWinningLotteryCounts);
         for (Result result : Result.values()) {
-            System.out.println(result.getMessage() + user.getWinningLotteryCounts().get(result)
+            System.out.println(result.getMessage() + userWinningLotteryCounts.get(result)
                     + result.getUnitMessage());
         }
-
+        long totalPrize = calculateTotalPrize(userWinningLotteryCounts);
+        double rateOfReturn = calculateRateOfReturn(userMoney, totalPrize);
+        printRateOfReturn(rateOfReturn);
     }
 
-    private void aggregateResult(List<Lotto> userLotteries, Map<Result, Integer> userWinningCounts) {
+    private void aggregateResult(List<Lotto> userLotteries, Map<Result, Integer> userWinningLotteryCounts) {
         for (Lotto userLottery : userLotteries) {
             int count = countMatchNumbers(userLottery);
-            if (count < MINIMUM_MATCH_NUMBER) {
+            if (count < LotteryNumber.MINIMUM_MATCH_NUMBER.getNumber()) {
                 continue;
             }
             Result result = getResult(count, userLottery);
-            userWinningCounts.put(result, userWinningCounts.get(result) + 1);
+            userWinningLotteryCounts.put(result, userWinningLotteryCounts.get(result) + 1);
         }
     }
 
@@ -107,7 +107,7 @@ public class LotteryMachine {
     }
 
     private Result getResult(int count, Lotto userLottery) {
-        if (count != FIVE_NUMBERS_MATCH) {
+        if (count != LotteryNumber.FIVE_NUMBERS_MATCH.getNumber()) {
             return Result.findResultByCount(count);
         }
         List<Integer> userLotteryNumbers = userLottery.getNumbers();
@@ -117,20 +117,23 @@ public class LotteryMachine {
         return Result.FIVE_NUMBERS_MATCH;
     }
 
-    public void calculateTotalPrize(User user) {
+    public long calculateTotalPrize(Map<Result, Integer> userWinningLotteryCounts) {
         long totalPrize = 0;
         for (Result result : Result.values()) {
-            long prize = user.getWinningLotteryCounts().get(result) * result.getPrize();
+            long prize = userWinningLotteryCounts.get(result) * result.getPrize();
             totalPrize += prize;
         }
-        user.setTotalPrize(totalPrize);
+        return totalPrize;
     }
 
-    public void calculateRateOfReturn(User user) {
-        int userMoney = user.getMoney();
-        long totalPrize = user.getTotalPrize();
-        double rateOfReturn = (double)totalPrize / userMoney;
-        user.setRateOfReturn(rateOfReturn);
+    public double calculateRateOfReturn(int userMoney, long userTotalPrize) {
+        return (double)userTotalPrize / userMoney * LotteryNumber.PERCENT.getNumber();
+    }
+
+    private void printRateOfReturn(double rateOfReturn) {
+        System.out.print(LotteryMachineMessage.RATE_OF_RETURN_MESSAGE_PREFIX.getMessage());
+        System.out.print(String.format("%.1f", rateOfReturn));
+        System.out.println(LotteryMachineMessage.RATE_OF_RETURN_MESSAGE_POSTFIX.getMessage());
     }
 
     public void setWinningLotto(Lotto winningLotto) { // for test

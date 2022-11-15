@@ -1,7 +1,7 @@
 package lotto.domain;
 
 public enum Result {
-    THREE_NUMBERS_MATCH(3, 5, 5_000, "3개 일치 (5,000원) -"),
+    THREE_NUMBERS_MATCH(3, 5, 5_000, "3개 일치 (5,000원) - "),
     FOUR_NUMBERS_MATCH(4, 4, 50_000, "4개 일치 (50,000원) - "),
     FIVE_NUMBERS_MATCH(5, 3, 1_500_000, "5개 일치 (1,500,000원) - "),
     FIVE_NUMBERS_AND_BONUS_NUMBER_MATCH(5, 2, 30_000_000, "5개 일치, 보너스 볼 일치 (30,000,000원) - "),

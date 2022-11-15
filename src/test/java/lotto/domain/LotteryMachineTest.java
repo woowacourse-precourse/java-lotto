@@ -70,7 +70,7 @@ public class LotteryMachineTest {
     public void CompileStatisticsTest() {
         lotteryMachine.setWinningLotto(new Lotto(List.of(1,2,3,4,5,6)));
         lotteryMachine.setBonusNumber(7);
-        lotteryMachine.showResult(user);
+        lotteryMachine.showResult(7000, user.getLotteries(), user.getWinningLotteryCounts());
         assertThat(user.getWinningLotteryCounts().get(Result.SIX_NUMBERS_MATCH)).isEqualTo(2);
         assertThat(user.getWinningLotteryCounts().get(Result.FIVE_NUMBERS_AND_BONUS_NUMBER_MATCH)).isEqualTo(1);
         assertThat(user.getWinningLotteryCounts().get(Result.FIVE_NUMBERS_MATCH)).isEqualTo(1);
