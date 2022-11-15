@@ -11,6 +11,7 @@ public class Application {
         List<Integer>[] user_lotto = UserLotto(user_buy_num);
         PrintUserLotto(user_lotto);
         List<Integer> answer = MakeAnswer();
+        int bonus_num = MakeBonus(answer);
     }
 
     static int HowManyLotto() {
@@ -79,5 +80,15 @@ public class Application {
         }
 
         return true;
+    }
+
+    static int MakeBonus(List<Integer> answer) {
+        System.out.println("\n보너스 번호를 입력해 주세요.");
+        String input = Console.readLine();
+        int bonus_num = Integer.parseInt(input);
+
+        if (answer.contains(bonus_num)) {
+            throw new IllegalArgumentException("[ERROR] 당첨 번호 외의 번호를 입력해 주세요.");
+        } return bonus_num;
     }
 }
