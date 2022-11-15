@@ -1,6 +1,10 @@
 package lotto;
 
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
+import lotto.domain.validator.LottoNumberValidator;
+import lotto.util.ErrorMessages;
 
 public class Lotto {
     private final List<Integer> numbers;
@@ -12,7 +16,10 @@ public class Lotto {
 
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ErrorMessages.MORE_THAN_SIX.getMessage());
+        }
+        if(numbers.stream().distinct().count() < 6 ){
+            throw new IllegalArgumentException(ErrorMessages.HAS_OVERLAP_NUMBER.getMessage());
         }
     }
 
@@ -31,6 +38,7 @@ public class Lotto {
         builder.append("]");
         return builder.toString();
     }
+
 
 
 

@@ -1,10 +1,12 @@
 package lotto;
 
+import java.util.Arrays;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class LottoTest {
@@ -24,4 +26,11 @@ class LottoTest {
     }
 
     // 아래에 추가 테스트 작성 가능
+//    @DisplayName("당첨 번호화 로또 번호 일치 갯수 계산하여 반환한다.")
+//    @Test
+//    void getCompareResultMethodTest(){
+//        Lotto playerLotto = new Lotto(Arrays.asList(1,2,3,7,9,11));
+//        List<Integer> winningNumbers = Arrays.asList(1,2,3,4,5,6);
+//        assertThat(playerLotto.getCompareResult(winningNumbers)).isEqualTo(3);
+//    }
 }
