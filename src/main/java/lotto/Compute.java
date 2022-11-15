@@ -53,8 +53,8 @@ public class Compute {
         int count = matchingNumbers.size();
 
         for (LottoWinType winType : LottoWinType.values()) {
-            if (containsBonusNumber == winType.getWinBonusNumber() && count == LottoWinType.FIVE_BONUS.getValue()) {
-                String key = winType.getKey();
+            if (containsBonusNumber && count == LottoWinType.FIVE.getValue()) {
+                String key = LottoWinType.FIVE_BONUS.getKey();
                 winRecords.put(key, winRecords.get(key) + 1);
                 break;
             }
