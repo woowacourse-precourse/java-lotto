@@ -1,16 +1,16 @@
 package lotto.ui;
 
 public class MoneyException {
-    boolean b=false;
-    public boolean result(){
-        return b;
+    int flag=0;
+    public int result(){
+        return flag;
     }
     public MoneyException(int money) {
         if (money % 1000 != 0) {
-            b=false;
+            flag=0;
         }
         if (money%1000==0){
-            b=true;
+            flag=1;
         }
     }
 }

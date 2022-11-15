@@ -1,5 +1,8 @@
 package lotto.domain;
 
+import camp.nextstep.edu.missionutils.Console;
+import lotto.ui.WinningCount;
+
 import java.util.List;
 
 public class Bonus {
