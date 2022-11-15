@@ -7,6 +7,7 @@ public enum Rank {
     SECOND(5, true, 30_000_000, "5개 일치, 보너스 볼 일치 (30,000,000원) - %d개"),
     FIRST(6, false, 2_000_000_000, "6개 일치 (2,000,000,000원) - %d개");
 
+    private final int SECOND_AND_THIRD = 5;
     private final int match;
     private final boolean bonus;
     private final int prize;
@@ -20,7 +21,10 @@ public enum Rank {
     }
 
     public boolean hasSameRank(int match, boolean bonus) {
-        return this.match == match && this.bonus == bonus;
+        if (match == SECOND_AND_THIRD) {
+            return this.bonus == bonus;
+        }
+        return this.match == match;
     }
 
     public String getText() {
