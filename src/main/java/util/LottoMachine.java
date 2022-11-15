@@ -10,8 +10,13 @@ public class LottoMachine {
     public static List<Lotto> getLotto(int count) {
         List<Lotto> lottos = new ArrayList<>();
         for(int i = 0 ; i < count ; i++) {
-            lottos.add(new Lotto(Randoms.pickUniqueNumbersInRange(1, 45, 6)));
+            lottos.add(new Lotto(getRandomLotto()));
         }
         return lottos;
+    }
+
+    private static List<Integer> getRandomLotto() {
+        List<Integer> prelist = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+        return prelist.subList(0, 6);
     }
 }
