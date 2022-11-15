@@ -42,4 +42,14 @@ public class Compare {
         }
         return hitCount;
     }
+
+    public static List<Integer> getWinningCount(
+            List<Integer> winningNumber,
+            List<Integer> bonusNumber,
+            List<Integer> lottoNumber) {
+        List<Integer> winningCount = new ArrayList<>();
+        winningCount.add(compareWithWinningNumber(winningNumber,lottoNumber));
+        winningCount.add(compareWithBonusNumber(bonusNumber,lottoNumber));
+        return winningCount;
+    }
 }
