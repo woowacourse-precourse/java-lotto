@@ -18,5 +18,10 @@ public class OutputView {
     public static void printCheckAmount(int amount) {
         System.out.printf(CHECK_AMOUNT_MASSAGE + "%n", amount);
     }
+    public static void printPurchasedNumbers(List<Lotto> purchasedNumbers) {
+        for (Lotto lotto : purchasedNumbers) {
+            System.out.println(lotto.getNumbers().toString());
+        }
+    }
 
 }

@@ -11,9 +11,12 @@ public class Game {
     public void startLottoGame() {
         int money = InputView.inputLottoAmount();
         LottoCashier lottoCashier = new LottoCashier();
+
         int count = lottoCashier.getLottoCount(money);
         OutputView.printCheckAmount(count);
+
         List<Lotto> lottos = lottoCashier.createLottoList(count);
+        OutputView.printPurchasedNumbers(lottos);
 
         Lotto winningNumbers = setWinningNumbers();
         int bonusNumber = setBonusNumber(winningNumbers);
