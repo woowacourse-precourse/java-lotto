@@ -30,6 +30,11 @@ public class LottoGameController {
         return cash;
     }
 
+    public int calculateCount(String input) {
+        lottoGameService.isValidCash(Integer.parseInt(input));
+        return Math.floorDiv(Integer.parseInt(input), 1000);
+    }
+
 
 }
 
