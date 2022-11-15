@@ -58,5 +58,4 @@ public class InputView {
         IntStream parsedToInt = stream.mapToInt(Integer::parseInt);
         return parsedToInt.boxed().collect(Collectors.toList());
     }
-
 }

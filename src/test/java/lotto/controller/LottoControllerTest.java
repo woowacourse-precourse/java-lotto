@@ -59,7 +59,6 @@ public class LottoControllerTest {
         assertSimpleTest(() -> {
             assertThat(lottoController.getWinningLog()).isEqualTo(new int[] {1, 1, 0, 0, 0});
         });
-
     }
 
     @Test
