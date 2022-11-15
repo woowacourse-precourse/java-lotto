@@ -2,7 +2,7 @@ package lotto;
 
 import static lotto.Error.PRICE_UNIT_ERROR;
 
-public class Purchase {
+public class LottoPrice {
 
     public static boolean checkPrice(int price) {
         if (price % 1000 != 0) {
