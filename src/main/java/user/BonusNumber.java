@@ -26,20 +26,20 @@ public class BonusNumber {
         validateInputRange(bonusNumber);
     }
 
-    private static void validateInputFormat(String userInput) {
+    private void validateInputFormat(String userInput) {
         if (!userInput.matches(LottoConstants.REGEX.pattern())) {
             throw new IllegalArgumentException(UIConstants.INVALID_BONUS_INPUT_FORMAT);
         }
     }
 
-    private static int validateBonusNumberIsDuplicated(int bonusNumber, String userInput, List<Integer> winNumbers) {
+    private int validateBonusNumberIsDuplicated(int bonusNumber, String userInput, List<Integer> winNumbers) {
         if (winNumbers.contains(bonusNumber)) {
             throw new IllegalArgumentException(UIConstants.DUPLICATED_BONUS_NUMBER);
         }
         return bonusNumber;
     }
 
-    private static void validateInputRange(int bonusNumber) {
+    private void validateInputRange(int bonusNumber) {
         if (bonusNumber < LottoConstants.MIN_LOTTO_VALUE ||
                 bonusNumber > LottoConstants.MAX_LOTTO_VALUE) {
             throw new IllegalArgumentException(UIConstants.INVALID_RANGE_BONUS_NUMBER);
