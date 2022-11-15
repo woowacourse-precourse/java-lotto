@@ -90,31 +90,9 @@ public class Lotto {
         return String.format("%.1f", (double) totalPrize / totalPayment * 100);
     }
 
-    public int inputTotalPayment() {
-        String payment = Console.readLine();
-        validator.validatePayment(payment);
-        return Integer.parseInt(payment);
-    }
 
-    public static int inputBonusNumber() {
-        String bonus = Console.readLine();
-        return Integer.parseInt(bonus);
-    }
 
-    public List<Integer> inputLottoNumber(String input) {
-        StringTokenizer st = new StringTokenizer(input, ",");
-        List<Integer> winningLottoNumber = new ArrayList<>();
-        for (int i = 0; i < 6; i++) {
-            String currentDigit = st.nextToken();
 
-            validator.checkIfTheInputIsInteger(currentDigit);
-
-            winningLottoNumber.add(Integer.parseInt(currentDigit));
-
-        }
-
-        return winningLottoNumber;
-    }
 
     public static void showLottoPaymentReceipt(int totalPayment, List<List<Integer>> generatedLotto) {
         String receipt = "";
