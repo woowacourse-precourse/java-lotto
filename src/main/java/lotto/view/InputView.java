@@ -1,7 +1,9 @@
 package lotto.view;
 
 import camp.nextstep.edu.missionutils.Console;
-import lotto.model.LottoCompany;
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class InputView {
 
@@ -19,32 +21,40 @@ public class InputView {
 		return instance;
 	}
 
-	public LottoCompany createWinningLotto() {
+	public List<Integer> winningNumber() {
 		String winningNumberInput = Console.readLine();
-		String bonusNumberInput = Console.readLine();
 
-		return new LottoCompany(winningNumberInput, bonusNumberInput);
+		validateNull(ERROR_INPUT_NULL);
+		List<Integer> lotto = new ArrayList<>();
+		for (String number : winningNumberInput.split(",")) {
+			lotto.add(Integer.parseInt(number));
+		}
+		return lotto;
 	}
 
+	public int bonusNumber() {
+		String bonusNumberInput = Console.readLine();
+		validateNull(ERROR_INPUT_NULL);
+
+		return Integer.parseInt(bonusNumberInput);
+	}
 	public int createPurchaseAmount() {
-		String purchaseAmountInput;
-		do {
-			purchaseAmountInput = Console.readLine();
-		} while (validatePurchaseAmount(purchaseAmountInput));
+		String purchaseAmountInput = Console.readLine();
+		validateNull(purchaseAmountInput);
+		validatePurchaseAmount(purchaseAmountInput);
 
 		return Integer.parseInt(purchaseAmountInput);
 	}
 
-	private boolean validatePurchaseAmount(String input) {
-		if (!(isAllDigit(input))) {
-			System.out.println(ERROR_INPUT_INT);
-			return true;
-		}
+	private void validateNull(String input) {
 		if(input.isEmpty()) {
 			System.out.println(ERROR_INPUT_NULL);
-			return true;
 		}
-		return false;
+	}
+	private void validatePurchaseAmount(String input) {
+		if (!(isAllDigit(input))) {
+			throw new IllegalArgumentException(ERROR_INPUT_INT);
+		}
 	}
 
 	private boolean isAllDigit(String input) {

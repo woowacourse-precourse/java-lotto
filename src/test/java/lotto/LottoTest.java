@@ -5,7 +5,6 @@ import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.EnumMap;
 import java.util.Map;
-import lotto.controller.MainController;
 import lotto.model.Lotto;
 import lotto.model.LottoCompany;
 import lotto.model.LottoMachine;
@@ -69,8 +68,8 @@ class LottoTest {
     void matchCountingtest() throws NoSuchMethodException {
         // TODO: 이 테스트가 통과할 수 있게 구현 코드 작성
         LottoCompany lottoCompany = new LottoCompany(
-            "8,21,23,41,42,43",
-            "22");
+            List.of(8,21,23,41,42,43),
+            22);
 		Wallet wallet = new LottoMachine(8000).buyLotto();
         PrizeChecker prizeChecker = new PrizeChecker(lottoCompany, wallet.getMyLotto());
 		Method method = prizeChecker.getClass().getDeclaredMethod("countingMatch", List.class, List.class);
@@ -96,8 +95,8 @@ class LottoTest {
 		// TODO: 이 테스트가 통과할 수 있게 구현 코드 작성\
 		//given
 		LottoCompany lottoCompany = new LottoCompany(
-			"8,21,23,41,42,43",
-			"22"
+			List.of(8,21,23,41,42,43),
+			22
 		);
 		List<Lotto> lottos = new ArrayList<>();
 		PrizeChecker prizeChecker = new PrizeChecker(lottoCompany, lottos);
@@ -122,8 +121,8 @@ class LottoTest {
 		// TODO: 이 테스트가 통과할 수 있게 구현 코드 작성\
 		//given
 		LottoCompany lottoCompany = new LottoCompany(
-			"8,21,23,41,42,43",
-			"22"
+			List.of(8,21,23,41,42,43),
+			22
 		);
 		List<Lotto> lottos = new ArrayList<>();
 		lottos.add(new Lotto(List.of(8, 21, 22, 41, 42, 43))); //2등
@@ -149,8 +148,8 @@ class LottoTest {
 	void PrizeCheckerTest() {
 		// TODO: 이 테스트가 통과할 수 있게 구현 코드 작성
 		LottoCompany lottoCompany = new LottoCompany(
-			"8,21,23,41,42,43",
-			"22"
+			List.of(8,21,23,41,42,43),
+			22
 		);
 		List<Lotto> lottos = new ArrayList<>();
 		lottos.add(new Lotto(List.of(8, 21, 23, 41, 42, 43))); //1등
@@ -169,8 +168,8 @@ class LottoTest {
 	void calculationYieldTest() {
 		// TODO: 이 테스트가 통과할 수 있게 구현 코드 작성
 		LottoCompany lottoCompany = new LottoCompany(
-			"8,21,23,41,42,43",
-			"22"
+			List.of(8,21,23,41,42,43),
+			22
 		);
 		List<Lotto> lottos = new ArrayList<>();
 		lottos.add(new Lotto(List.of(8, 21, 2, 3, 4, 43))); //5등

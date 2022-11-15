@@ -1,27 +1,29 @@
 package lotto.model;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class LottoCompany {
 
+	private final String ERROR_BONUS_NUMBER = "[ERROR] 보너스 번호가 당첨번호와 중복됩니다.";
 	private final List<Integer> winningNumber;
 	private final int bonusNumber;
 
-	public LottoCompany(String winningNumber, String bonusNumber) {
-		Lotto validateNumber = new Lotto(stringToLotte(winningNumber));
+	public LottoCompany(List<Integer> winningNumber, int bonusNumber) {
+		Lotto validateNumber = new Lotto(winningNumber);
 		this.winningNumber = validateNumber.getNumbers();
-		this.bonusNumber = Integer.parseInt(bonusNumber);
+		this.bonusNumber = bonusNumber;
+		validateBonusNumber();
 	}
 
-	private List<Integer> stringToLotte(String winningNumber) {
-		List<Integer> lotto = new ArrayList<>();
-		for (String number : winningNumber.split(",")) {
-			lotto.add(Integer.parseInt(number));
+	private void validateBonusNumber() {
+		if (hasBonusNumber(this.winningNumber, this.bonusNumber)) {
+			throw new IllegalArgumentException(ERROR_BONUS_NUMBER);
 		}
-		return lotto;
 	}
 
+	private boolean hasBonusNumber(List<Integer> winningNumber, int bonusNumber) {
+		return winningNumber.stream().anyMatch(number -> number.equals(bonusNumber));
+	}
 	public List<Integer> getWinningNumber() {
 		return winningNumber;
 	}
