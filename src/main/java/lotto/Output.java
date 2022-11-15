@@ -26,7 +26,7 @@ public class Output {
         System.out.println(WIN_NUMBER_EVENT_MESSAGE);
     }
 
-    public void bonusNumberEventMessage() {
+    public static void bonusNumberEventMessage() {
         System.out.println(BONUS_NUMBER_EVENT_MESSAGE);
     }
 
