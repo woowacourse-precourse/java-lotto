@@ -9,25 +9,40 @@ public class Application {
         LottoTicket lottoTicket = new LottoTicket();
         InputOutput inputOutput = new InputOutput();
 
-        lottoFactory.setMoney(inputOutput.getMoneyInput());
-        lottoFactory.setLottoCount();
+        moneyInput(lottoFactory, inputOutput);
 
-        List<Lotto> buyerLottos = lottoTicket.createManyLotto(lottoFactory.getLottoCount());
-        inputOutput.printLottoCount(lottoFactory.getLottoCount());
-        inputOutput.printLotto(buyerLottos);
-        lottoFactory.setLottos(buyerLottos);
+        buyLottos(lottoFactory, lottoTicket, inputOutput);
 
-        List<Integer> winnigLotto = inputOutput.getWinnigLotto();
-        int bonus = inputOutput.getBonusNumber(winnigLotto);
+        setWinningLottoNums(lottoTicket, inputOutput);
 
-        lottoTicket.setWinnigLotto(winnigLotto);
-        lottoTicket.setBonus(bonus);
+        compareLottos(lottoFactory, lottoTicket, inputOutput);
+    }
 
+    private static void compareLottos(LottoFactory lottoFactory, LottoTicket lottoTicket, InputOutput inputOutput) {
         Map<LottoRanking, Integer> lottoRanking = lottoTicket.compareLotto(lottoFactory.getLottos());
         inputOutput.printWinningList(lottoRanking);
 
         lottoFactory.setWinmoney(lottoRanking);
         inputOutput.printWinningRate(lottoFactory.getWinMoney(), lottoFactory.getMoney());
+    }
+
+    private static void setWinningLottoNums(LottoTicket lottoTicket, InputOutput inputOutput) {
+        List<Integer> winnigLotto = inputOutput.getWinnigLotto();
+        int bonus = inputOutput.getBonusNumber(winnigLotto);
+        lottoTicket.setWinnigLotto(winnigLotto);
+        lottoTicket.setBonus(bonus);
+    }
+
+    private static void moneyInput(LottoFactory lottoFactory, InputOutput inputOutput) {
+        lottoFactory.setMoney(inputOutput.getMoneyInput());
+        lottoFactory.setLottoCount();
+    }
+
+    private static void buyLottos(LottoFactory lottoFactory, LottoTicket lottoTicket, InputOutput inputOutput) {
+        List<Lotto> buyerLottos = lottoTicket.createManyLotto(lottoFactory.getLottoCount());
+        inputOutput.printLottoCount(lottoFactory.getLottoCount());
+        inputOutput.printLotto(buyerLottos);
+        lottoFactory.setLottos(buyerLottos);
 
     }
 }
