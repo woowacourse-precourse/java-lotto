@@ -6,6 +6,13 @@ import org.junit.jupiter.api.Test;
 
 class LottoPrizeRulesTest {
 
+    @DisplayName("로또 우승 등급은 5개이다.")
+    @Test
+    void sizeOfLottoPrize() {
+        int result = LottoPrizeRules.values().length;
+        Assertions.assertThat(result).isEqualTo(5);
+    }
+
     @DisplayName("1등은 6개의 숫자가 일치한다")
     @Test
     void getFirstPrizeMatchCount() {
