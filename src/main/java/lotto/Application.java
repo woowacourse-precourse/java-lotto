@@ -7,7 +7,7 @@ public class Application {
             LottoGame lottoGame = new LottoGame();
             lottoGame.start();
         }catch(IllegalArgumentException illegalArgumentException){
-            throw illegalArgumentException;
+            System.out.println(illegalArgumentException.getMessage());
         }
 
     }

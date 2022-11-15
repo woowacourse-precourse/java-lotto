@@ -4,7 +4,6 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -41,7 +40,7 @@ public class LottoGame {
         String payment = readLine();
 
         if(!isValidPayment(payment)){
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR] 구입 금액이 올바르지 않습니다.");
         }
 
         return Integer.parseInt(payment);
@@ -115,7 +114,7 @@ public class LottoGame {
         String winningNumbersWithComma = readLine();
         List<String> numbers = List.of(winningNumbersWithComma.split(","));
         if(!isValidWinningNumbers(numbers))
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR] 당첨 번호가 올바르게 입력되지 않았습니다.");
 
         for(String number : numbers){
             winningNumbers.add(Integer.parseInt(number));
@@ -147,7 +146,7 @@ public class LottoGame {
         
         String bonusNumber = readLine();
         if(!isValidBonusNumber(bonusNumber))
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR] 보너스 볼 번호가 올바르게 입력되지 않았습니다.");
 
         return Integer.parseInt(bonusNumber);
     }
