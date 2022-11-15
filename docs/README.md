@@ -24,9 +24,21 @@
 
 ```mermaid
 flowchart
- LottoGame --> GenerateRandomLottoSystem -- LottoBundle --> LottoGame
+ LottoGame --> GenerateRandomLottoSystem -- get LottoBundle and PurcaseMoney --> LottoGame
  LottoGame --> GenerateAnswerLottoSystem -- AnswerLotto --> LottoGame
- LottoGame --> SettlementSystem -- Result --> LottoGame
+ LottoGame -- PurchaseMoney, LottoBundle, AnswerLotto --> SettlementSystem
+ 
+ GenerateRandomLottoSystem -- input Money --> Money --> 
+ GenerateRandomLottoSystem-- Money --> LottoBundle --> GenerateRandomLottoSystem
+ 
+ GenerateAnswerLottoSystem -- input lotto number --> Lotto --> AnswerLotto
+ GenerateAnswerLottoSystem -- input bonus number --> bonusNumber --> AnswerLotto
+ 
+ AnswerLotto --> GenerateAnswerLottoSystem
+ 
+ SettlementSystem -- lottoBundle, answerLotto --> LottoGroup
+ 
+ 
  
 ```
 
