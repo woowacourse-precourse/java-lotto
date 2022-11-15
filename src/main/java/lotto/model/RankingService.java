@@ -4,13 +4,12 @@ import lotto.util.Utils;
 
 import java.util.List;
 
-public class WinningMoneyService {
+public class RankingService {
     private final WinningNumbers winningNumbers;
     private final List<Lotto> lottoList;
-
     private Ranking ranking = new Ranking();
 
-    public WinningMoneyService(WinningNumbers winningNumbers, List<Lotto> lottoList) {
+    public RankingService(WinningNumbers winningNumbers, List<Lotto> lottoList) {
         this.winningNumbers = winningNumbers;
         this.lottoList = lottoList;
     }
