@@ -10,7 +10,7 @@ public class NumberGenerator {
     public void checkValidateNumber(String money){
         for(int i = 0; i < money.length(); i++){
             if((int)money.charAt(i) < 48 || (int)money.charAt(i) > 57){
-                throw new IllegalArgumentException();
+                throw new IllegalArgumentException("[ERROR] 숫자를 입력하세요");
             }
         }
     }
