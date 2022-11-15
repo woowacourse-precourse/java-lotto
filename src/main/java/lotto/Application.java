@@ -19,6 +19,8 @@ public class Application {
             Integer bonus = Integer.parseInt(Console.readLine());
 
             getWinningStatusMessage();
+            LottoWinning winningList = new LottoWinning(lotto.getLottoNumber(),bonus,lottoList.getLottoList(),money.getMoney());
+
         } catch (IllegalArgumentException e) {
             System.out.println("[ERROR] "+e.getMessage());
         }
