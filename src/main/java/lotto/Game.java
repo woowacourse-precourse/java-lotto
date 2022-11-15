@@ -31,6 +31,9 @@ public class Game {
 
         // 수익률 계산
         int prizeMoney = countPrizeMoney();
+
+        // 당첨 내역 출력
+        printResult();
     }
 
     private String inputString(String message){
@@ -98,5 +101,18 @@ public class Game {
             result.increaseCount();
         }
         return prizeMoney;
+    }
+
+    private void printResult() {
+        System.out.println("당첨 통계");
+        System.out.println("---");
+
+        for(Result result : Result.values()){
+            if(result == Result.SECOND){
+                System.out.println(String.format("%d개 일치, 보너스 볼 일치 (%,d원) - %d개", result.getCorrectNumbers(), result.getPrizeMoney(), result.getCount()));
+                continue;
+            }
+            System.out.println(String.format("%d개 일치 (%,d원) - %d개", result.getCorrectNumbers(), result.getPrizeMoney(), result.getCount()));
+        }
     }
 }
