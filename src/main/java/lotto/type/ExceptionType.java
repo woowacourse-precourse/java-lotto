@@ -18,6 +18,7 @@ public enum ExceptionType {
     FINISHED_ROUND("해당 회차는 이미 종료되었습니다."),
     NULL_PURCHASE("해당 유저의 구매 이력이 존재하지 않습니다."),
     NULL_ROUND("해당 회차가 존재하지 않습니다."),
+    NULL_WIN_NUMBER("해당 회차의 당첨 번호가 아직 결정되지 않았습니다."),
     ;
 
     private static final String ERROR_BASE = "[ERROR] ";
