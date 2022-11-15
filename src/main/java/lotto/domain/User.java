@@ -45,10 +45,7 @@ public class User {
 
     private int inputLottoBonusNum() {
         displayMessage(INPUT_BONUS_NUMBER);
-        int ret = InputControl.readInt();
-        displayLineSeparator();
-
-        return ret;
+        return InputControl.readInt();
     }
 
     private List<Integer> inputLottoNums() {
