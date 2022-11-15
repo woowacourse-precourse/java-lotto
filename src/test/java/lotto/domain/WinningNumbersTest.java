@@ -19,4 +19,11 @@ class WinningNumbersTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+    @DisplayName("보너스 번호가 당첨 번호에 포함되어있는 수면 예외가 일어난다.")
+    @ParameterizedTest
+    @CsvSource({"1", "2", "3", "4", "5", "6"})
+    void 보너스_번호_당첨번호에_있는_수로_생성(int bonusNumber) {
+        assertThatThrownBy(() -> new WinningNumbers(winningNumber, bonusNumber))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
