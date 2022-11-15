@@ -5,9 +5,16 @@ import java.util.Objects;
 import lotto.business.model.LottoEnum;
 
 public class ValidInput {
+    static Integer ZERO_NUMBER = 0;
     public static void validCashAmount(Integer cash, Integer lottoDividePrice) {
-        if (cash % lottoDividePrice != 0) {
+        if (cash % lottoDividePrice != ZERO_NUMBER) {
             throw new IllegalArgumentException("[ERROR] 입력한 값은 1,000으로 나누어지지 않습니다!");
+        }
+    }
+
+    public static void validCashValue(Integer cash) {
+        if (cash < ZERO_NUMBER) {
+            throw new IllegalArgumentException("[ERROR] 음수가 입력되었습니다!");
         }
     }
     public static void validInputLength(List<Integer> numbers) {

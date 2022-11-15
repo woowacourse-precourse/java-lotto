@@ -9,6 +9,10 @@ public class Lotto {
     public Lotto(List<Integer> numbers) {
         validate(numbers);
         ValidInput.validInputHasDuplicatedNumber(numbers);
+        for (Integer number : numbers) {
+            ValidInput.validIsInputInRange(number);
+        }
+
         this.numbers = numbers;
     }
 

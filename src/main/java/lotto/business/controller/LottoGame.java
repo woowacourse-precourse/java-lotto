@@ -10,6 +10,7 @@ import lotto.business.model.Lotto;
 import lotto.business.model.LottoAnswer;
 import lotto.business.model.ResultEnum;
 import lotto.business.view.Message;
+import lotto.service.ValidInput;
 
 public class LottoGame {
     private final Message message = new Message();
@@ -36,7 +37,8 @@ public class LottoGame {
         return processVariable.convertToInteger(price);
     }
 
-    private List<Lotto> purchaseLotto(Integer price) {
+    public List<Lotto> purchaseLotto(Integer price) {
+        ValidInput.validCashValue(price);
         Integer lottoAmount = processVariable.calculateLottoAmount(price);
         List<Lotto> lottos = managementLotto.purchase(lottoAmount);
         message.printPurchaseLotto(lottos);
