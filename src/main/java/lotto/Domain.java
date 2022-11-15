@@ -130,4 +130,14 @@ public class Domain {
                     Collections.frequency(prizeList, rank) + "개");
         }
     }
+
+    // TODO: 총 수익률을 출력한다.
+    public void printYield(){
+        float totalPrizeMoney = 0;
+        for (Rank rank : Rank.values())
+            totalPrizeMoney += rank.getPrizeMoney() * Collections.frequency(prizeList, rank);
+
+        float yield = (totalPrizeMoney / lottoAmount) * 100;
+        System.out.println("총 수익률은 " + String.format("%.1f", yield) + "%입니다.");
+    }
 }
