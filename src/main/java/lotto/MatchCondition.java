@@ -9,6 +9,18 @@ public class MatchCondition {
 
 
 
+    public int matchWithWinningNumbers(List<Integer> userLottos, List<Integer> winning){
+        int matchPlace = 0;
+        for(Integer number : userLottos){
+            if(winning.contains(number)){
+                matchPlace++;
+            }
+        }
+        return matchPlace;
+    }
+
+
+
     public int resultPlace(int count, boolean bonus){
         if(count == 6){
             return 0;
