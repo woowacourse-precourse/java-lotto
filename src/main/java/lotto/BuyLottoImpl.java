@@ -32,6 +32,7 @@ public class BuyLottoImpl implements BuyLotto{
     @Override
     public ArrayList<Lotto> getLottos() {
         int lottoCount = getLottoCount();
+        System.out.println(lottoCount+"개를 구매했습니다.");
         ArrayList<Lotto> lottos = new ArrayList<>();
         addLottos(lottoCount, lottos);
         return lottos;
@@ -40,6 +41,7 @@ public class BuyLottoImpl implements BuyLotto{
     private void addLottos(int lottoCount, ArrayList<Lotto> lottos) {
         for(int i = 0; i< lottoCount; i++){
             Lotto lotto = new Lotto(getLottoNumber());
+            lotto.printNumbers();
             lottos.add(lotto);
         }
     }
@@ -47,8 +49,9 @@ public class BuyLottoImpl implements BuyLotto{
     @Override
     public List<Integer> getLottoNumber() {
         List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1,45,6);
-        Collections.sort(numbers);
-        return numbers;
+        ArrayList<Integer> result = new ArrayList<>();
+        result.addAll(numbers);
+        Collections.sort(result);
+        return result;
     }
-
 }
