@@ -1,5 +1,6 @@
 package lotto.view;
 
+import static lotto.constant.LottoConstant.AMOUNT_LIMIT;
 import static lotto.domain.LottoValidator.validateLottoNumbers;
 import static lotto.rule.LottoRange.isOutOfRange;
 
@@ -65,13 +66,13 @@ public class InputView {
     }
 
     private void isValidAmount(int amount) {
-        if (amount % 1000 != 0) {
+        if (amount % AMOUNT_LIMIT != 0) {
             throw new InvalidAmountValueException();
         }
     }
 
     private void isEnoughAmount(int amount) {
-        if (amount < 1000) {
+        if (amount < AMOUNT_LIMIT) {
             throw new SmallAmountException();
         }
     }
