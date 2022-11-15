@@ -91,5 +91,10 @@ public class LottoStoreTest {
         assertThat(lottoGradeResult.get(LottoGrade.ONE)).isEqualTo(testCase.get(LottoGrade.ONE));
     }
 
-
+    @Test
+    @DisplayName("로또의 등수가 일치해야 한다.")
+    void lottoNumberCompareToWinningNumberSuccess() {
+        assertThat(lottoStore.allLottosCompare(List.of(new Lotto(List.of(1,2,3,4,5,6))), new Lotto(List.of(1,2,3,4,5,8)), 6).get(0))
+                .isEqualTo(LottoGrade.TWO);
+    }
 }
