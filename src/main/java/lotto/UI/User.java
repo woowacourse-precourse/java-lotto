@@ -1,9 +1,12 @@
 package lotto.UI;
 
 import camp.nextstep.edu.missionutils.Console;
+import lotto.domain.Lotto;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Stream;
 
 public class User {
@@ -26,11 +29,9 @@ public class User {
         List<Integer> winningNumber = new ArrayList<Integer>();
         for (String number : splitInput) {
             int lottoNumber = Integer.parseInt(number);
-            if (lottoNumber < 1 || lottoNumber > 45){
-                throw new IllegalArgumentException("로또 번호는 1부터 45 사이의 숫자여야 합니다.");
-            }
             winningNumber.add(lottoNumber);
         }
+        Lotto.validate(winningNumber);
         return winningNumber;
     }
 
