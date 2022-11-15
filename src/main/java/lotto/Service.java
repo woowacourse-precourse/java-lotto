@@ -110,16 +110,27 @@ public class Service {
         for (List<Integer> lottoNumber : lottoNumberList) {
             if (countCorrectNumber(lottoNumber, winningNumberInput) == 3) {
                 result.put(winner5st, result.getOrDefault(winner5st, 1) + 1);
-            }
-            if (countCorrectNumber(lottoNumber, winningNumberInput) == 4) {
+            } else if (countCorrectNumber(lottoNumber, winningNumberInput) == 4) {
                 result.put(winner4st, result.getOrDefault(winner4st, 1) + 1);
+            } else if (countCorrectNumber(lottoNumber, winningNumberInput) == 5 && !correctLuckyNumber(luckyNumberInput, lottoNumber)) {
+                result.put(winner3st, result.getOrDefault(winner3st, 1) + 1);
             }
         }
         List<Integer> resultList = new ArrayList<>();
-        for(Integer value : result.values()){
+        for (Integer value : result.values()) {
             resultList.add(value);
         }
         return resultList;
+    }
+
+    private boolean correctLuckyNumber(String luckyNumberInput, List<Integer> lottoNumber) {
+        int luckyNumber = Integer.parseInt(luckyNumberInput);
+        for (int number : lottoNumber) {
+            if (number == luckyNumber) {
+                return true;
+            }
+        }
+        return false;
     }
 
     private int countCorrectNumber(List<Integer> lottoNumber, String winningNumberInput) {
