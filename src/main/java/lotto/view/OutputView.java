@@ -20,12 +20,12 @@ public class OutputView {
         System.out.println(printFormat);
 
         for (Lotto lotto : lotties) {
-            List<Integer> collect = lotto.getNumbers()
+            List<Integer> sortedLotties = lotto.getNumbers()
                     .stream()
                     .sorted()
                     .collect(Collectors.toList());
 
-            System.out.println(collect);
+            System.out.println(sortedLotties);
         }
     }
 
@@ -40,7 +40,7 @@ public class OutputView {
                 .filter(rank -> !rank.equals(LottoRank.FAIL))
                 .sorted(Comparator.comparingInt(LottoRank::matchCount))
                 .sorted((o1, o2) -> Boolean.compare(o1.isBonusNumber(), o2.isBonusNumber()))
-                .forEach(rank -> printResultAccordingToBonus(rank, winLottoInfo.get(rank).intValue()));
+                .forEach(rank -> printWinResultAccordingToBonus(rank, winLottoInfo.get(rank).intValue()));
     }
 
     private static void fillUnRankedToMap(Map<LottoRank, Long> winLottoInfo) {
@@ -49,7 +49,7 @@ public class OutputView {
                 .forEach(rank -> winLottoInfo.put(rank, DEFAULT_VALUE));
     }
 
-    private static void printResultAccordingToBonus(LottoRank rank, int totalCount) {
+    private static void printWinResultAccordingToBonus(LottoRank rank, int totalCount) {
         String winMoney = decFormat.format(rank.winMoney());
         String printFormat = String.format(selectMessage(rank), rank.matchCount(), winMoney, totalCount);
         System.out.println(printFormat);
