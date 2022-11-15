@@ -31,7 +31,7 @@ public class WinningsCalculationService {
             winningPrice += calculateWinningNumber(lotto, winningsNumber, bonusNumber);
         }
 
-        int revenue = winningPrice / user.getPaymentAmount() * 100;
+        double revenue = ((double) winningPrice / user.getPaymentAmount()) * 100;
         SystemGuidePrinter.winningHistoryMessage(winningResult, revenue);
     }
 

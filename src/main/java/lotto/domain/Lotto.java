@@ -33,11 +33,10 @@ public class Lotto {
     private void duplicateValidate(List<Integer> numbers) throws IllegalArgumentException {
         Set<Integer> duplicateCheck = new HashSet<>();
         for (int number: numbers) {
-            duplicateCheck.add(number);
             if (duplicateCheck.contains(number)) {
                 throw new IllegalArgumentException(LOTTO_NUMBER_DUPLICATE.getMessage());
             }
-
+            duplicateCheck.add(number);
         }
     }
 
