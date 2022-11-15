@@ -20,9 +20,7 @@ public class Counter {
 
     private void moneyCheck(String inputMoney) {
         numberCheck(inputMoney);
-
         unitCheck(money);
-
         moneyCount(money);
     }
 
