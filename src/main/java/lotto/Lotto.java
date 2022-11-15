@@ -18,7 +18,6 @@ public class Lotto {
     public Lotto(List<Integer> numbers) {
         validate(numbers);
         outOfRangeExceptioin(numbers);
-        Collections.sort(numbers);
         this.numbers = numbers;
     }
 

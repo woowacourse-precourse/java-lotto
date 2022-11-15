@@ -2,6 +2,7 @@ package lotto;
 
 import Info.InputException;
 import Info.PrintGameInfo;
+import Info.WinningStatus;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -9,8 +10,6 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import java.math.BigInteger;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomUniqueNumbersInRangeTest;
@@ -20,12 +19,6 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class ApplicationTest extends NsTest {
     private static final String ERROR_MESSAGE = "[ERROR]";
-
-    static LottoList lottos;
-    @BeforeAll
-    static void createLottoList() {
-        lottos = new LottoList(new BigInteger("8000"));
-    }
 
     @Test
     void 기능_테스트() {
@@ -50,7 +43,7 @@ class ApplicationTest extends NsTest {
                             "총 수익률은 62.5%입니다."
                     );
                 },
-                List.of(8, 21, 23, 41, 42, 43),
+                List.of(21, 8, 23, 41, 42, 43),
                 List.of(3, 5, 11, 16, 32, 38),
                 List.of(7, 11, 16, 35, 36, 44),
                 List.of(1, 8, 11, 31, 41, 42),
@@ -58,6 +51,40 @@ class ApplicationTest extends NsTest {
                 List.of(7, 11, 30, 40, 42, 43),
                 List.of(2, 13, 22, 32, 38, 45),
                 List.of(1, 3, 5, 14, 22, 45)
+        );
+    }
+
+    @Test
+    void 전체동작_테스트() {
+        assertRandomUniqueNumbersInRangeTest(
+                () -> {
+                    run("8000", "1,2,3,4,5,6", "7");
+                    assertThat(output()).contains(
+                            "8개를 구매했습니다.",
+                            "[1, 2, 3, 4, 5, 6]",
+                            "[1, 2, 3, 4, 5, 7]",
+                            "[1, 2, 3, 4, 7, 8]",
+                            "[1, 2, 3, 4, 5, 9]",
+                            "[1, 2, 3, 4, 5, 6]",
+                            "[1, 2, 3, 4, 7, 9]",
+                            "[1, 2, 3, 4, 5, 7]",
+                            "[1, 2, 3, 10, 11, 12]",
+                            "3개 일치 (5,000원) - 1개",
+                            "4개 일치 (50,000원) - 2개",
+                            "5개 일치 (1,500,000원) - 1개",
+                            "5개 일치, 보너스 볼 일치 (30,000,000원) - 2개",
+                            "6개 일치 (2,000,000,000원) - 2개",
+                            "총 수익률은 50770062.5%입니다."
+                    );
+                },
+                List.of(1, 2, 3, 4, 5, 6), // 1
+                List.of(1, 2, 3, 4, 5, 7), // 2
+                List.of(1, 2, 3, 4, 7, 8), // 4
+                List.of(1, 2, 3, 4, 5, 9), // 3
+                List.of(6, 5, 4, 3, 2, 1), // 1
+                List.of(1, 2, 4, 3, 9, 7), // 4
+                List.of(1, 2, 3, 4, 5, 7), // 2
+                List.of(1, 2, 3, 10, 11, 12)  // 5
         );
     }
 
@@ -93,18 +120,7 @@ class ApplicationTest extends NsTest {
         }).isInstanceOf(IllegalArgumentException.class);
     }
 
-    @Test
-    void 로또랜덤갯수생성_테스트() {
-        assertThat(lottos.getLottoCount()).isEqualTo(BigInteger.valueOf(8L));
-    }
 
-    @Test
-    void 로또리스트출력_테스트() {
-        PrintGameInfo.lottoInfoList(lottos);
-        assertThat(output()).contains(
-                "[", "]"
-        );
-    }
 
     @ParameterizedTest
     @ValueSource(strings = {"1,2,3,4,5", "1,,3,6", ""})

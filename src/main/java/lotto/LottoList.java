@@ -7,10 +7,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import org.assertj.core.util.Sets;
 
 import java.math.BigInteger;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class LottoList {
     public static final int AMOUNT_UNIT = 1000;
@@ -23,7 +20,7 @@ public class LottoList {
     private long totalMoney;
     private long[] winningCount = new long[WIN_COUNT];
 
-    LottoList(BigInteger amount) {
+    public LottoList(BigInteger amount) {
         LottoList.notDivThousand(amount);
 
         this.lottoAmount = amount;
@@ -73,6 +70,10 @@ public class LottoList {
         return winningCount[index];
     }
 
+    public void setTotalMoney(long test) {
+        totalMoney = test;
+    }
+
     public void setWinningLotto(Lotto lotto) {
         checkNoDuplicateWinnningLotto(lotto);
         winningLotto = lotto;
@@ -91,8 +92,25 @@ public class LottoList {
     public void setAllLottoList() {
         for(BigInteger lottoIndex = lottoCount; lottoIndex.compareTo(BigInteger.ZERO) > 0 ; lottoIndex = lottoIndex.subtract(BigInteger.ONE)) {
             List<Integer> numbers = getLottoNumbers();
-            lottos.add(new Lotto(numbers));
+
+            List<Integer> numbersCopy = deepCopy(numbers);
+            lottos.add(new Lotto(numbersCopy));
         }
+    }
+
+    /**
+     * Random Test환경에서 실행시 UnsupportedOperationError가 났다
+     * 따라서 Test값을 따로 넘겨줘서 정렬하고 사용
+     * @param numbers
+     * @return
+     */
+    public List<Integer> deepCopy(List<Integer> numbers) {
+        List<Integer> numbersCopy = new ArrayList<>();
+        for (Integer number : numbers) {
+            numbersCopy.add(number);
+        }
+        numbersCopy.sort(Comparator.naturalOrder());
+        return numbersCopy;
     }
 
     /**
@@ -100,14 +118,7 @@ public class LottoList {
      * @return
      */
     public List<Integer> getLottoNumbers() {
-        List<Integer> lottoNumbers = new ArrayList<>();
-        while (lottoNumbers.size() < Lotto.LOTTO_NUMBER_COUNT) {
-            int randomNumber = Randoms.pickNumberInRange(Lotto.LOTTO_MIN_NUMBER,Lotto.LOTTO_MAX_NUMBER);
-            if (!isContainNumber(lottoNumbers, randomNumber)) {
-                lottoNumbers.add(randomNumber);
-            }
-        }
-        return lottoNumbers;
+        return Randoms.pickUniqueNumbersInRange(Lotto.LOTTO_MIN_NUMBER,Lotto.LOTTO_MAX_NUMBER, Lotto.LOTTO_NUMBER_COUNT);
     }
 
     /**
@@ -184,13 +195,17 @@ public class LottoList {
 
     private boolean isFiveBonnus(int point) {
         int fivePoint = WinningStatus.FIVE.getCorrectPoint();
-        if ((point % fivePoint) == fivePoint) {
+        if ((point % LottoPoint.BONNUS_POINT.getPoint()) == fivePoint) {
             return true;
         }
 
         return false;
     }
 
+    public double getProfit() {
+        long amount = lottoAmount.longValue();
+        return totalMoney / Double.valueOf(amount) * 100;
+    }
 
 }
 

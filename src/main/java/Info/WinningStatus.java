@@ -5,7 +5,7 @@ public enum WinningStatus {
     FOUR(1,4, 50_000L, "4개 일치 (50,000원)"),
     FIVE(2,5, 1_500_000L, "5개 일치 (1,500,000원)"),
     FIVEPLUS(3,15, 30_000_000L, "5개 일치, 보너스 볼 일치 (30,000,000원)"),
-    SIZ(4,6, 2_000_000_000L, "6개 일치 (2,000,000,000원)");
+    SIX(4,6, 2_000_000_000L, "6개 일치 (2,000,000,000원)");
 
     private final int pointIndex;
     private final int correctPoint;

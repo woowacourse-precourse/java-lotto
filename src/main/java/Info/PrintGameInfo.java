@@ -4,6 +4,7 @@ import lotto.Lotto;
 import lotto.LottoList;
 
 import java.math.BigInteger;
+import java.util.Comparator;
 import java.util.List;
 
 public class PrintGameInfo {
@@ -25,6 +26,8 @@ public class PrintGameInfo {
     public static final String DUPLICATE = "사용자의 입력 중 중복되는 값이 존재합니다.";
     public static final String BONNUS_NUMBER_EXIST = "보너스 번호의 값이 이미 당첨 번호에 선택되었습니다.";
     public static final String POINT_ERROR = "Status구하는 함수에 잘못된 상수 값이 들어왔습니다. 내부 로직 에러";
+
+    public static final String PROFIT_FORMAT = "총 수익률은 ";
 
     public static void purchaseAmountInfo() {
         System.out.println("구입금액을 입력해 주세요.");
@@ -63,6 +66,10 @@ public class PrintGameInfo {
         }
     }
 
+    public static void lottoProfitInfo(double profit) {
+        System.out.println(getProfitFormat(profit));
+    }
+
     private static String getResultInfo(String statusInfo, String countInfo) {
         return statusInfo + HYPHEN + countInfo + COUNT_UNIT;
     }
@@ -98,4 +105,10 @@ public class PrintGameInfo {
     public static String getPointError() {
         return ERROR + POINT_ERROR;
     }
+
+    public static String getProfitFormat(double profit) {
+        return PROFIT_FORMAT + String.format("%.1f%%입니다.", profit);
+    }
+
+
 }
