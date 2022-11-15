@@ -1,7 +1,13 @@
 package lotto;
 
 public class Application {
+    public static LottoApplication lottoApplication = new LottoApplication();
+
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        try {
+            lottoApplication.lottoGame();
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+        }
     }
 }

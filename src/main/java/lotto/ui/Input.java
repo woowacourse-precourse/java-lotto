@@ -1,0 +1,46 @@
+package lotto.ui;
+
+import camp.nextstep.edu.missionutils.Console;
+import lotto.standard.Bug;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+import java.util.stream.Collectors;
+
+public class Input {
+    public int inputAmount = 0;
+    public List<Integer> winningNumbers = new ArrayList<>();
+    public int bonusNumber;
+
+    public int getAmount() {
+        try {
+            this.inputAmount = Integer.parseInt(Console.readLine());
+            return this.inputAmount;
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException(Bug.ERROR + Bug.AMOUNT_MUST_NUMBER);
+        }
+    }
+
+    public List<Integer> getWinningNumbers() {
+        List<String> beforeConversion = Arrays.asList(Console.readLine().split(","));
+        try {
+            this.winningNumbers = beforeConversion.stream()
+                    .map(s -> Integer.parseInt(s))
+                    .collect(Collectors.toList());
+            return this.winningNumbers;
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException(Bug.ERROR + Bug.LOTTO_NO_OTHER_INPUT);
+        }
+    }
+
+    public int getBonusNumber() {
+        try {
+            this.bonusNumber = Integer.parseInt(Console.readLine());
+            return this.bonusNumber;
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException(Bug.ERROR + Bug.BONUS_NO_OTHER_INPUT);
+        }
+    }
+}
