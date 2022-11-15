@@ -10,16 +10,33 @@ public class Lotto {
         this.numbers = numbers;
     }
 
-    // TODO: validate
-    /*
-        1. size 6개인지 확인
-        2. 중복되는 값이 없는지 확인
-        3. 1~45 사이의 숫자인지 확인
-     */
-    private void validate(List<Integer> numbers) {
-        if (numbers.size() != 6) {
-            throw new IllegalArgumentException();
+    private void validateSize(List<Integer> numbers){
+        if(numbers.size()!=6){
+            throw new IllegalArgumentException(String.valueOf(ErrorResponse.INVALID_LOTTO_SIZE));
         }
+    }
+
+    private void validateRange(List<Integer> numbers) {
+        for (Integer number : numbers) {
+            if (number < 1 || number > 45) {
+                throw new IllegalArgumentException(String.valueOf(ErrorResponse.INVALID_RANGE));
+            }
+        }
+    }
+
+    private void validateDuplication(List<Integer> numbers){
+        int[] count = new int[45];
+        for(Integer number: numbers) {
+            count[number]++;
+            if(count[number]>1){
+                throw new IllegalArgumentException(String.valueOf(ErrorResponse.INVALID_UNIQUE_NUMBER));
+            }
+        }
+    }
+    private void validate(List<Integer> numbers) {
+        validateSize(numbers);
+        validateRange(numbers);
+        validateDuplication(numbers);
     }
 
     // TODO: 추가 기능 구현
