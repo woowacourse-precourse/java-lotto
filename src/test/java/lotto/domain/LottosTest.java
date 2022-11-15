@@ -6,7 +6,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.*;
 
-class LottoNumberGeneratorTest {
+class LottosTest {
     @ParameterizedTest
     @ValueSource(strings = {"1000", "2000", "3000"})
     void 로또는_구입_금액에_해당하는_만큼_발행된다(String inputMoney) {
