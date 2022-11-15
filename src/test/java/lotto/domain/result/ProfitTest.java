@@ -18,7 +18,7 @@ class ProfitTest {
 
     @BeforeEach
     void setUp() {
-        fixedNumberGenerator = new FixedNumberGenerator(); // [1, 2, 3, 4, 5, 6]
+        fixedNumberGenerator = new FixedNumberGenerator();
     }
 
     @Test
@@ -28,7 +28,7 @@ class ProfitTest {
         WinningLotto winningLotto = new WinningLotto("1,2,3,5,10,12");
         BonusNumber bonusNumber = new BonusNumber("8", winningLotto);
         LottoGroup lottoGroup = new LottoGroup(cost.getPurchaseCount(), fixedNumberGenerator);
-        HitResult result = new HitResult(lottoGroup, winningLotto, bonusNumber); // [0, 5, 0, 0, 0]
+        HitResult result = new HitResult(lottoGroup, winningLotto, bonusNumber);
 
         Profit profit = new Profit(cost.getCost(), result);
 
@@ -43,7 +43,7 @@ class ProfitTest {
         WinningLotto winningLotto = new WinningLotto("1,2,3,4,5,6");
         BonusNumber bonusNumber = new BonusNumber("8", winningLotto);
         LottoGroup lottoGroup = new LottoGroup(cost.getPurchaseCount(), fixedNumberGenerator);
-        HitResult result = new HitResult(lottoGroup, winningLotto, bonusNumber); // [0, 0, 0, 0, 200]
+        HitResult result = new HitResult(lottoGroup, winningLotto, bonusNumber);
 
         Profit profit = new Profit(cost.getCost(), result);
 
@@ -58,7 +58,7 @@ class ProfitTest {
         WinningLotto winningLotto = new WinningLotto("1,2,3,5,10,12");
         BonusNumber bonusNumber = new BonusNumber("8", winningLotto);
         LottoGroup lottoGroup = new LottoGroup(cost.getPurchaseCount(), fixedNumberGenerator);
-        HitResult result = new HitResult(lottoGroup, winningLotto, bonusNumber); // [0, 5, 0, 0, 0]
+        HitResult result = new HitResult(lottoGroup, winningLotto, bonusNumber);
 
         Profit profit = new Profit(cost.getCost(), result);
 

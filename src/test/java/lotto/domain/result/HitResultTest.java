@@ -20,7 +20,7 @@ class HitResultTest {
     @BeforeEach
     void setUp() {
         NumberGenerator fixedNumberGenerator = new FixedNumberGenerator();
-        lottoGroup = new LottoGroup(3, fixedNumberGenerator); // [1, 2, 3, 4, 5, 6]
+        lottoGroup = new LottoGroup(3, fixedNumberGenerator);
     }
 
     @ParameterizedTest
