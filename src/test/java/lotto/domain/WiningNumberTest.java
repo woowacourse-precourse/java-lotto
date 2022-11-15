@@ -45,6 +45,14 @@ public class WiningNumberTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+    @DisplayName("보너스 번호가 공백을 포함하고 있다면 예외가 발생한다.")
+    @Test
+    void createBonusNumberByContainBlank() {
+        WiningNumber winingNumber = new WiningNumber(List.of(1, 2, 3, 4, 5, 6));
+        assertThatThrownBy(() -> winingNumber.setBonusNumber(" 7"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
     @DisplayName("당첨 번호로 설정한 값이 잘 저장되는지 확인한다.")
     @Test
     void setWiningNumber() {
