@@ -89,4 +89,18 @@ public class Application {
         return Total_Cost / 1000;
     }
 
+    public static String yield(int Totalcost){
+        int Total = 2_000_000_000 * Rank.first.count + 
+                    30_000_000 * Rank.second.count + 
+                    1_500_000 * Rank.third.count + 
+                    50_000 * Rank.fourth.count + 
+                    5_000 * Rank.fifth.count;
+        int Yield = Total * 10 / Totalcost;
+
+        if(Yield % 10 >= 5)
+            return (Yield / 10 + 1) / 10 + "." + (Yield / 10) % 10;
+        else
+            return Yield / 100 + "." + (Yield / 10) % 10;
+    }
+
 }
