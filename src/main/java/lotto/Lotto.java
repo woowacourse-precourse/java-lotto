@@ -17,7 +17,6 @@ public class Lotto {
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
-        this.numbers = numbers;
         ArrayList<Integer> sortedNumbers = new ArrayList<>(numbers);
         Collections.sort(sortedNumbers);
         this.numbers = sortedNumbers;
@@ -34,8 +33,6 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
-        if (numbers.size() != 6) {
-            throw new IllegalArgumentException();
             checkLottoSize(numbers);
             for (Integer number : numbers) {
                 checkDuplicateNumber(numbers, number);
