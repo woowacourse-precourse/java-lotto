@@ -3,6 +3,7 @@ package lotto.domain;
 import lotto.Lotto;
 
 import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class LottoComparator {
     private List<Lotto> lottos;
@@ -41,5 +42,12 @@ public class LottoComparator {
             }
         }
         return result;
+    }
+
+    public double calculateMargin(AtomicInteger totalWinningAmount) {
+        int purchaseAmount = lottos.size() * 1000;
+        double margin = (double) totalWinningAmount.intValue() / (double) purchaseAmount * 100;
+        double roundedMargin = Math.round(margin * 10) / 10.0;
+        return roundedMargin;
     }
 }
