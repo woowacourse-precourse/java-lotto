@@ -8,6 +8,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static lotto.constant.ExceptionConstants.DUPLICATED_EXCEPTION;
 import static lotto.constant.GameConstants.*;
 
 public class Computer {
@@ -43,6 +44,13 @@ public class Computer {
         Validator.validateNaturalNumber(bonusNumber);
         Validator.validateLeadingZero(bonusNumber);
         Validator.validateRange(Integer.parseInt(bonusNumber));
+        validateDuplication(Integer.parseInt(bonusNumber));
+    }
+
+    private void validateDuplication(int bonusNumber) {
+        if (winningNumbers.contains(bonusNumber)) {
+            throw new IllegalArgumentException(DUPLICATED_EXCEPTION.toString());
+        }
     }
 
     public static Lotto issueLotto() {
