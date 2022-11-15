@@ -8,15 +8,16 @@ import java.util.List;
 
 import static lotto.config.Constants.LottoNumber.*;
 import static lotto.config.Constants.LottoPrice.LOTTO_PRICE;
+import static lotto.exception.LottoException.MONEY_ERROR;
 
 public class LottoPublishService {
 
-    public List<Lotto> publish(int money) {
+    public List<Lotto> publish(Long money) {
         validate(money);
         return buyLotto(money);
     }
 
-    private List<Lotto> buyLotto(int money) {
+    private List<Lotto> buyLotto(Long money) {
         List<Lotto> Lottery = new ArrayList<>();
         for (int i = 0; i < calculateAffordableLotto(money); i++) {
             Lottery.add(getLottoNumber());
@@ -24,13 +25,13 @@ public class LottoPublishService {
         return Lottery;
     }
 
-    private void validate(int money) {
+    private void validate(Long money) {
         if (money % LOTTO_PRICE != 0) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(MONEY_ERROR.getErrorMessage());
         }
     }
 
-    private int calculateAffordableLotto(int money) {
+    private Long calculateAffordableLotto(Long money) {
         return money / LOTTO_PRICE;
     }
 
