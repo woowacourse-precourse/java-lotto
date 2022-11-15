@@ -24,11 +24,27 @@ class JudgmentTest {
 
     @DisplayName("로또가 몇개의 당첨번호와 일치하는지 확인")
     @MethodSource("setLottoNumbers")
-    @ParameterizedTest(name = "{index}. 당첨번호 : {0}. 결과 : {1} 개 일치")
+    @ParameterizedTest(name = "[{index}] 당첨번호 : {0}. 결과 : {1} 개 일치")
     void getCorrectCount(List<Integer> winningLotto, int result) {
         Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
 
         assertThat(Judgment.getCorrectLottoNumberCount(lotto, winningLotto))
+                .isEqualTo(result);
+    }
+
+    static Stream<Arguments> setLottoNumbers2() {
+        return Stream.of(
+                Arguments.arguments(new ArrayList<Integer>(List.of(1, 2, 3, 7, 8, 9)), 3, true),
+                Arguments.arguments(new ArrayList<Integer>(List.of(1, 2, 3, 4, 5, 11)), 13, false),
+                Arguments.arguments(new ArrayList<Integer>(List.of(6, 5, 4, 3, 2, 1)), 6, true)
+        );
+    }
+    @DisplayName("보너스 번호가 로또 번호에 포함되어 있는지 확인")
+    @MethodSource("setLottoNumbers2")
+    @ParameterizedTest(name = "[{index}] 로또 번호 : {0}, 보너스 번호 : {1}, 포함여부 : {2}")
+    void checkBonusNumberCorrect(List<Integer> lotto, int bonusNumber, boolean result) {
+
+        assertThat(Judgment.checkBonusCorrect(bonusNumber, lotto))
                 .isEqualTo(result);
     }
 }
