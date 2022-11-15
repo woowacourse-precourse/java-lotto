@@ -5,6 +5,12 @@ import lotto.constants.Error;
 import lotto.constants.Number;
 
 public class BonusNumber {
+    public static void exceptionBonusNumber(String bonusNumber, List<Integer> winNumber) {
+        exceptionNoNumber(bonusNumber);
+        exceptionRange(bonusNumber);
+        exceptionDuplication(bonusNumber, winNumber);
+    }
+
     public static void exceptionRange(String bonusNumber) {
         int rangeStart = Number.RANGE_START.getNumber();
         int rangeEnd = Number.RANGE_END.getNumber();
