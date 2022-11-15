@@ -24,7 +24,7 @@ public class Lotto {
         int sameNumberCount = 0;
 
         for (int i=0; i<6; i++) {
-            if (numbers.indexOf(i) == winningNumber.indexOf(i)) {
+            if (numbers.get(i) == winningNumber.get(i)) {
                 sameNumberCount++;
             }
         }
