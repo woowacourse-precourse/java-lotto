@@ -9,11 +9,11 @@ import java.util.List;
 public class Service {
     public int getLottoCount(String input) {
         if (!input.matches("[0-9]+")) {
-                throw new IllegalArgumentException("[ERROR] 입력 금액은 숫자로만 이루어져야 합니다.");
+                throw new IllegalArgumentException(Error.NOT_NUMBER.lable());
             }
             int money = Integer.parseInt(input);
             if (money % 1000 != 0) {
-                throw new IllegalArgumentException("[ERROR] 입력 금액은 1000원 단위로 입력해야 합니다.");
+                throw new IllegalArgumentException(Error.NOT_RIGHT_FORMAT.lable());
             }
             return money / 1000;
     }
@@ -63,12 +63,12 @@ public class Service {
 
     public int getLottoNumber(String input) {
         if (!input.matches("[0-9]+")) {
-            throw new IllegalArgumentException("[ERROR] 입력 금액은 숫자로만 이루어져야 합니다.");
+            throw new IllegalArgumentException(Error.NOT_NUMBER.lable());
         }
         int lotto = Integer.parseInt(input);
 
         if (lotto < 1 || lotto > 45) {
-            throw new IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
+            throw new IllegalArgumentException(Error.NOT_IN_RANGE.lable());
         }
 
         return lotto;
@@ -79,7 +79,7 @@ public class Service {
         String[] inputs = input.split(",");
 
         if (inputs.length != 6) {
-            throw new IllegalArgumentException("[ERROR] 당첨 번호는 6개이어야 합니다.");
+            throw new IllegalArgumentException(Error.NOT_RIGHT_COUNT.lable());
         }
 
         for (int i = 0; i < 6; i++) {
