@@ -17,12 +17,4 @@ public class Answer {
   public Integer getBonusNumber() {
     return bonusNumber;
   }
-
-  public void setWinningLotto(Lotto winningLotto) {
-    this.winningLotto = winningLotto;
-  }
-
-  public void setBonusNumber(Integer bonusNumber) {
-    this.bonusNumber = bonusNumber;
-  }
 }
