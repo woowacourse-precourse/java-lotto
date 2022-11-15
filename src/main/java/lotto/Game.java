@@ -35,11 +35,13 @@ public class Game {
         PrintGeneratedLotto(nLotto, GeneratedLotto);
         JackpotNumbers = inputJackpotNum();
         Bonus.askBonusNumber();
-        int[] countBonus = BonusCount(GeneratedLotto);
-
-        List<Integer> winCounts = WinningCount(GeneratedLotto, JackpotNumbers);
-        //System.out.println(counts);
-        int[] WinTypeCounter = Prize(winCounts, countBonus);
+        //int[] countBonus = BonusCount(GeneratedLotto);
+        //List<Integer> winCounts = WinningCount(GeneratedLotto, JackpotNumbers);
+        WinningCount(GeneratedLotto, JackpotNumbers);
+        //int[] WinTypeCounter = Prize(winCounts, countBonus);
+        for (int data : WinTypeCounter){
+            System.out.println(data);
+        }
         PrintWinning(WinTypeCounter);
     }
 }

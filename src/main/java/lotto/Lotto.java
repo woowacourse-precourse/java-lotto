@@ -37,7 +37,7 @@ public class Lotto {
         }
     }
 
-    public List<Integer> getNumbers() {
-        return this.numbers;
+    public List<Integer> getLottoNumber() {
+        return numbers;
     }
 }
