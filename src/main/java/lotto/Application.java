@@ -8,6 +8,10 @@ public class Application {
         LottoPublisher lottoPublisher = new LottoPublisher();
         Customer customer = new Customer();
         customer.setAsset();
-        lottoPublisher.createLotto(customer.payMoney());
+        List<Lotto> lotto = lottoPublisher.createLotto(customer.payMoney());
+        customer.purchaseLotto(lotto);
+        LottoManager lottoManager = new LottoManager();
+        lottoManager.askWinningNumber();
+        lottoManager.askBonusNumber();
     }
 }

@@ -9,6 +9,8 @@ import java.util.Random;
 public class LottoPublisher {
     public static final int lottoNum = 6;
     public static final int lottoPrice = 1000;
+    public static final int startNum = 1;
+    public static final int lastNum = 45;
     private int money;
 
     public LottoPublisher(){
@@ -20,7 +22,7 @@ public class LottoPublisher {
         insertMoney(money);
         List<Lotto> ret = new ArrayList<>();
         for(int i=0; i<cnt; i++){
-            List<Integer> lottoNums = Randoms.pickUniqueNumbersInRange(1, 45, lottoNum);
+            List<Integer> lottoNums = Randoms.pickUniqueNumbersInRange(startNum, lastNum, lottoNum);
             Lotto lotto = new Lotto(lottoNums);
             System.out.println(lotto.getNumbers());
             ret.add(lotto);
@@ -39,4 +41,6 @@ public class LottoPublisher {
         }
         return money / lottoPrice;
     }
+
+
 }
