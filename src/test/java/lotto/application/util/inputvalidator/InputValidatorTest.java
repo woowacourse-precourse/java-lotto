@@ -53,6 +53,15 @@ class InputValidatorTest {
                 }).withMessageContaining(PURCHASE_MONEY_IS_INTEGER.getErrorMessage());
     }
 
+    @DisplayName("로또 구매 금액을 공백으로 입력했을 때")
+    @Test
+    void 로또구매금액_실패_3() {
+        assertThatExceptionOfType(IllegalArgumentException.class)
+                .isThrownBy(() -> {
+                    inputValidator.validateLottoPurchaseMoney("");
+                }).withMessageContaining(PURCHASE_MONEY_IS_INTEGER.getErrorMessage());
+    }
+
     @DisplayName("로또 당첨번호 예외 1 ~ 45 사이의 수가 아닌 경우")
     @Test
     void 로또당첨번호입력받기_실패1() {
