@@ -25,4 +25,12 @@ public class UserInputLottoInfoException {
             throw new IllegalArgumentException();
         }
     }
+    public void verifyExistBlank(String number, String message) {
+        for (int i = 0; i < number.length(); i++) {
+            if (number.length() != number.replace(" ", "").length()) {
+                System.out.println(ERROR_MESSAGE + message);
+                throw new IllegalArgumentException();
+            }
+        }
+    }
 }
