@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import lotto.domain.Lotto;
+import lotto.domain.WinningLotto;
 
 public class LottoGame {
     private static final int TICKET_PRICE = 1000;
@@ -19,6 +20,9 @@ public class LottoGame {
         
         List<Lotto> lottos;
         lottos = createLottos(lottoAmount);
+
+        WinningLotto winningLotto = createWinningLotto();
+
     }
 
     private int getLottoAmount(){
@@ -80,5 +84,44 @@ public class LottoGame {
         Collections.sort(lottoNumbers);
 
         return new Lotto(lottoNumbers);
+    }
+
+    private WinningLotto createWinningLotto() {
+        Lotto lotto = new Lotto(getWinningNumbers());
+        int bonusNumber = getBonusNumber();
+        WinningLotto winningLotto = new WinningLotto(lotto, bonusNumber);
+
+        return winningLotto;
+    }
+
+    private List<Integer> getWinningNumbers() {
+        System.out.println("당첨 번호를 입력해 주세요");
+
+        List<Integer> winningNumbers = new ArrayList<>();
+        String winningNumbersWithComma = readLine();
+        List<String> numbers = List.of(winningNumbersWithComma.split(","));
+        if(!isValidWinningNumbers(numbers))
+            throw new IllegalArgumentException();
+
+        for(String number : numbers){
+            winningNumbers.add(Integer.parseInt(number));
+        }
+
+        return winningNumbers;
+    }
+
+    private boolean isValidWinningNumbers(List<String> numbers) {
+        if(!isValidWinningNumbersSize(numbers))
+            return false;
+        return true;
+    }
+
+    private boolean isValidWinningNumbersSize(List<String> numbers) {
+        return numbers.size() == 6;
+    }
+
+    private int getBonusNumber() {
+        // TODO : 보너스 넘버 입력 구현
+        return 0;
     }
 }
