@@ -18,23 +18,22 @@ public class BuyLotto {
         return lottos;
     }
 
-    public void createLottos(int n){
-        for(int i=0;i<n;i++){
+    public void createLottos(int n) {
+        for (int i = 0; i < n; i++) {
             makeLotto();
         }
     }
 
-    private void makeLotto(){
-        List<Integer> numbers = Randoms
-                .pickUniqueNumbersInRange(Range.MIN_RANGE.get(), Range.MAX_RANGE.get(), Range.DIGIT.get());
+    private void makeLotto() {
+        List<Integer> numbers = new ArrayList<>(Randoms
+                .pickUniqueNumbersInRange(Range.MIN_RANGE.get(), Range.MAX_RANGE.get(), Range.DIGIT.get()));
         sortLotto(numbers);
         lottos.add(new Lotto(numbers));
     }
 
-    private void sortLotto(List<Integer> numbers){
+    private void sortLotto(List<Integer> numbers) {
         Collections.sort(numbers);
     }
-
 
 
 }
