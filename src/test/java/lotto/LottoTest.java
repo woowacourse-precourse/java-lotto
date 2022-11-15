@@ -34,7 +34,8 @@ class LottoTest {
     void autoLottoGenerateTest() {
         assertRandomUniqueNumbersInRangeTest(
                 () -> {
-                    Lotto lotto = LottoGenerator.autoGenerate();
+                    LottoGenerator lottoGenerator = new LottoGenerator();
+                    Lotto lotto = lottoGenerator.autoGenerate();
                     assertThat(lotto.getNumbers()).isEqualTo(List.of(13, 14, 16, 38, 42, 45));
                 },
                 List.of(38, 16, 42, 13, 14, 45)
@@ -46,7 +47,8 @@ class LottoTest {
     void checkSecondLottoTest() {
         assertRandomUniqueNumbersInRangeTest(
                 () -> {
-                    Lotto lotto = LottoGenerator.autoGenerate();
+                    LottoGenerator lottoGenerator = new LottoGenerator();
+                    Lotto lotto = lottoGenerator.autoGenerate();
                     WinningNumbers winningNumbers = new WinningNumbers(List.of(1, 13, 14, 16, 38, 42), 45);
                     assertThat(winningNumbers.checkLotto(lotto)).isEqualTo(LottoResult.SECOND);
                 },
@@ -59,7 +61,8 @@ class LottoTest {
     void checkThirdLottoTest() {
         assertRandomUniqueNumbersInRangeTest(
                 () -> {
-                    Lotto lotto = LottoGenerator.autoGenerate();
+                    LottoGenerator lottoGenerator = new LottoGenerator();
+                    Lotto lotto = lottoGenerator.autoGenerate();
                     WinningNumbers winningNumbers = new WinningNumbers(List.of(1, 13, 14, 16, 38, 42), 3);
                     assertThat(winningNumbers.checkLotto(lotto)).isEqualTo(LottoResult.THIRD);
                 },
@@ -72,7 +75,8 @@ class LottoTest {
     void checkFourthLottoTest() {
         assertRandomUniqueNumbersInRangeTest(
                 () -> {
-                    Lotto lotto = LottoGenerator.autoGenerate();
+                    LottoGenerator lottoGenerator = new LottoGenerator();
+                    Lotto lotto = lottoGenerator.autoGenerate();
                     WinningNumbers winningNumbers = new WinningNumbers(List.of(1, 38, 13, 16, 42, 43), 45);
 
                     assertThat(winningNumbers.checkLotto(lotto)).isEqualTo(LottoResult.FOURTH);

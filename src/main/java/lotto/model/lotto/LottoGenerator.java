@@ -7,7 +7,7 @@ import java.util.Comparator;
 import java.util.List;
 
 public class LottoGenerator {
-    public static Lotto autoGenerate() {
+    public Lotto autoGenerate() {
         List<Integer> numbers = new ArrayList<>(Randoms.pickUniqueNumbersInRange(Lotto.MINIMUM_NUMBER, Lotto.MAXIMUM_NUMBER, Lotto.LOTTO_NUMBER_LENGTH));
 
         numbers.sort(Comparator.naturalOrder());
