@@ -11,8 +11,19 @@ public class LottoWinningNumber {
     private final int bonusNumber;
 
     public LottoWinningNumber(List<Integer> numbers, int bonusNumber) {
+        validate(numbers, bonusNumber);
         this.numbers = numbers;
         this.bonusNumber = bonusNumber;
+    }
+
+    private void validate(List<Integer> numbers, int bonusNumber) {
+        if (validateNumbersSize(numbers)) {
+            throw new IllegalArgumentException(String.format(OVER_LOTTO_FIX_SIZE_EXCEPTION.getMessage(), FIX_SIZE));
+        }
+
+        if (validateDuplicateBonusNumber(numbers, bonusNumber)) {
+            throw new IllegalArgumentException(DUPLICATE_BONUS_NUMBER_EXCEPTION.getMessage());
+        }
     }
 
     private boolean validateNumbersSize(List<Integer> numbers) {
