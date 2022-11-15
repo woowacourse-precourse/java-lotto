@@ -1,7 +1,5 @@
 package lotto.controller;
 
-import static lotto.ui.LottoConsole.printErrorMessage;
-
 import lotto.service.LottoService;
 
 public class LottoController {
@@ -13,22 +11,15 @@ public class LottoController {
     }
 
     public void executeGame() {
-        try{
-            lottoService.inputLottoPrice();
+        lottoService.inputLottoPrice();
 
-            lottoService.publishLottos();
-            lottoService.showLottoResult();
+        lottoService.publishLottos();
+        lottoService.showLottoResult();
 
-            lottoService.inputWinningLottoNumbers();
-            lottoService.inputBonusNumber();
+        lottoService.inputWinningLottoNumbers();
+        lottoService.inputBonusNumber();
 
-            lottoService.calculateUserLottos();
-            lottoService.showTotalLottoResult();
-        }
-        catch (IllegalArgumentException e){
-            e.printStackTrace();
-            printErrorMessage(e.getMessage());
-        }
-
+        lottoService.calculateUserLottos();
+        lottoService.showTotalLottoResult();
     }
 }
