@@ -13,10 +13,16 @@ public class Application {
     private static void getUserInput(){
         lottoCount = countLotto(Console.readLine());
         winningLotto = getWinningLotto(Console.readLine());
+        bonusBall = getBonusBall(Console.readLine());
     }
     private static void checkIllegalNum(Integer num){
         if(num > 45 || num < 1)
             throw new IllegalArgumentException(ErrorEnum.BAD_REQUEST_NOT_VALID_NUM_EXCEPTION.getMessage());
+    }
+    public static Integer getBonusBall(String input){
+        Integer num = Integer.parseInt(input);
+        checkIllegalNum(num);
+        return num;
     }
 
     public static Lotto getWinningLotto(String input){
