@@ -12,10 +12,10 @@ public class LotteryResultTest {
     @Test
     void addSeveralResult() {
         LotteryResult result = new LotteryResult();
-        result.add(LotteryRank.SECOND);
-        result.add(LotteryRank.FIFTH);
-        result.add(LotteryRank.LOSE_BY_ONE);
-        result.add(LotteryRank.FIFTH);
+        result.add("ticket1", LotteryRank.SECOND);
+        result.add("ticket2", LotteryRank.FIFTH);
+        result.add("ticket3", LotteryRank.LOSE_BY_ONE);
+        result.add("ticket4", LotteryRank.FIFTH);
 
         SoftAssertions softAssertions = new SoftAssertions();
 
@@ -23,6 +23,7 @@ public class LotteryResultTest {
         softAssertions.assertThat(result.findByRank(LotteryRank.FIFTH)).isEqualTo(2);
         softAssertions.assertThat(result.findByRank(LotteryRank.LOSE_BY_ONE)).isEqualTo(1);
         softAssertions.assertThat(result.getTotalReward()).isEqualTo(30_010_000L);
+        softAssertions.assertThat(result.hasTicket("ticket1")).isTrue();
         softAssertions.assertThat(result.getSize()).isEqualTo(4);
         softAssertions.assertAll();
     }
@@ -31,9 +32,9 @@ public class LotteryResultTest {
     @Test
     void addResultWithRewardOverIntegerMaxValue() {
         LotteryResult result = new LotteryResult();
-        result.add(LotteryRank.FIRST);
-        result.add(LotteryRank.FIRST);
-        result.add(LotteryRank.SECOND);
+        result.add("ticket1", LotteryRank.FIRST);
+        result.add("ticket2", LotteryRank.FIRST);
+        result.add("ticket3", LotteryRank.SECOND);
 
         assertThat(result.getTotalReward()).isEqualTo(4_030_000_000L);
     }
