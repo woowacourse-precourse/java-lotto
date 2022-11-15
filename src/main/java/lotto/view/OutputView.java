@@ -19,7 +19,9 @@ public class OutputView {
         System.out.println(lottoResult.getResultString());
         System.out.println(MESSAGE_TO_PRINT_YIELD_A + lottoResult.getYield() + MESSAGE_TO_PRINT_YIELD_B);
     }
-
+    public void printErrorMessage(String errorMessage) {
+        System.out.println(errorMessage);
+    }
 
 
 
