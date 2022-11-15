@@ -6,11 +6,14 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import lotto.common.Constant;
+import lotto.ui.Error;
+import lotto.ui.Input;
 import lotto.ui.Print;
 
 public class Game {
 
-    private final int purchasedLottoPrice;
+    private int purchasedLottoPrice;
+    private int purchasedLottoCount;
     private final List<Lotto> purchasedLottoNumbers = new ArrayList<>();
     private final List<Integer> winningLottoNumbers = new ArrayList<>();
     private int bonusNumber;
@@ -18,17 +21,39 @@ public class Game {
     private long winningAmount;
 
 
-    public Game(int purchasedLottoPrice) {
-        this.purchasedLottoPrice = purchasedLottoPrice;
-        int purchasedLottoCount = purchasedLottoPrice / Constant.LOTTO_PRICE_UNIT;
-        Print.buyLotto(purchasedLottoCount);
-        for (int i = 0; i < purchasedLottoCount; i++) {
+    public Game() {
+        try {
+            purchaseLotto();
+            setNewLottos();
+            setRankCounts();
+            setInitialWinningAmount();
+            setWinningLottoNumbers();
+            setBonusNumber();
+            getGameResult();
+        } catch (IllegalArgumentException exception) {
+            Print.message(exception.getMessage());
+        }
+    }
+
+    private void purchaseLotto() {
+        Print.inputPrice();
+        this.purchasedLottoPrice = Input.price();
+        Print.newLine();
+        this.purchasedLottoCount = purchasedLottoPrice / Constant.LOTTO_PRICE_UNIT;
+        Print.buyLotto(this.purchasedLottoCount);
+    }
+
+    private void setNewLottos() {
+        for (int i = 0; i < this.purchasedLottoCount; i++) {
             List<Integer> numbers = Randoms.pickUniqueNumbersInRange(
                     Constant.LOTTO_NUMBER_MIN, Constant.LOTTO_NUMBER_MAX, Constant.LOTTO_NUMBERS_INPUT_SIZE);
             Print.lottoNumbers(numbers);
-            purchasedLottoNumbers.add(new Lotto(numbers));
+            this.purchasedLottoNumbers.add(new Lotto(numbers));
         }
-        setRankCounts();
+        Print.newLine();
+    }
+
+    private void setInitialWinningAmount() {
         this.winningAmount = Constant.INITIAL_AMOUNT;
     }
 
@@ -40,23 +65,27 @@ public class Game {
         rankCounts.put(LottoResult.FIFTH.name(), Constant.INITIAL_COUNT);
     }
 
-    public void setWinningLottoNumbers(List<Integer> winningLottoNumbers) {
+    private void setWinningLottoNumbers() {
+        Print.inputLottoNumbers();
+        List<Integer> winningLottoNumbers = Input.lottoNumbers();
         this.winningLottoNumbers.addAll(winningLottoNumbers);
+        Print.newLine();
     }
 
-    public void setBonusNumber(int bonusNumber) {
+    private void setBonusNumber() {
+        Print.inputBonusNumber();
+        int bonusNumber = Input.bonusNumber();
         validateBonusNumber(bonusNumber);
         this.bonusNumber = bonusNumber;
+        Print.newLine();
     }
 
     private void validateBonusNumber(int bonusNumber) {
         if (bonusNumber < Constant.LOTTO_NUMBER_MIN || bonusNumber > Constant.LOTTO_NUMBER_MAX) {
-            Print.lottoNumberException();
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(Error.lottoNumberException());
         }
         if (winningLottoNumbers.contains(bonusNumber)) {
-            Print.nonDuplicatedBonusNumberException();
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(Error.nonDuplicatedBonusNumberException());
         }
     }
 
@@ -64,7 +93,7 @@ public class Game {
         return (double) winningAmount / (double) purchasedLottoPrice * Constant.PERCENTAGE;
     }
 
-    public void getGameResult() {
+    private void getGameResult() {
         for (Lotto purchasedLottoNumber : purchasedLottoNumbers) {
             setGameResult(purchasedLottoNumber.getLottoResult(this.winningLottoNumbers, this.bonusNumber));
         }

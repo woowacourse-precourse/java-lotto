@@ -14,16 +14,9 @@ import static lotto.ui.Message.LOTTERY_RESULT_THIRD;
 import static lotto.ui.Message.LOTTERY_RESULT_TITLE;
 import static lotto.ui.Message.LOTTO_NUMBER_DELIMITER;
 import static lotto.ui.Message.LOTTO_NUMBER_END;
-import static lotto.ui.Message.LOTTO_NUMBER_EXCEPTION;
-import static lotto.ui.Message.LOTTO_NUMBER_SIZE_EXCEPTION;
 import static lotto.ui.Message.LOTTO_NUMBER_START;
-import static lotto.ui.Message.NON_DUPLICATED_BONUS_NUMBER_EXCEPTION;
-import static lotto.ui.Message.NON_DUPLICATED_LOTTO_NUMBERS_EXCEPTION;
-import static lotto.ui.Message.NUMBER_EXCEPTION;
-import static lotto.ui.Message.PRICE_EXCEPTION;
 import static lotto.ui.Message.PROFIT_RATE_END;
 import static lotto.ui.Message.PROFIT_RATE_START;
-import static lotto.ui.Message.SPLIT_BY_COMMA_INPUT_SIZE_EXCEPTION;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -74,31 +67,7 @@ public class Print {
         System.out.printf("%s%.1f%s\n", PROFIT_RATE_START.getValue(), rate, PROFIT_RATE_END.getValue());
     }
 
-    public static void numberException() {
-        System.out.println(NUMBER_EXCEPTION.getValue());
-    }
-
-    public static void lottoNumberException() {
-        System.out.println(LOTTO_NUMBER_EXCEPTION.getValue());
-    }
-
-    public static void priceException() {
-        System.out.println(PRICE_EXCEPTION.getValue());
-    }
-
-    public static void splitByCommaInputSizeException() {
-        System.out.println(SPLIT_BY_COMMA_INPUT_SIZE_EXCEPTION.getValue());
-    }
-
-    public static void nonDuplicatedLottoNumbersException() {
-        System.out.println(NON_DUPLICATED_LOTTO_NUMBERS_EXCEPTION.getValue());
-    }
-
-    public static void lottoNumberSizeException() {
-        System.out.println(LOTTO_NUMBER_SIZE_EXCEPTION.getValue());
-    }
-
-    public static void nonDuplicatedBonusNumberException() {
-        System.out.println(NON_DUPLICATED_BONUS_NUMBER_EXCEPTION.getValue());
+    public static void message(String message) {
+        System.out.println(message);
     }
 }

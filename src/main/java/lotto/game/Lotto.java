@@ -3,7 +3,7 @@ package lotto.game;
 import java.util.HashSet;
 import java.util.List;
 import lotto.common.Constant;
-import lotto.ui.Print;
+import lotto.ui.Error;
 
 public class Lotto {
 
@@ -19,12 +19,10 @@ public class Lotto {
 
     private void validate(List<Integer> numbers) {
         if (numbers.size() != Constant.LOTTO_NUMBERS_INPUT_SIZE) {
-            Print.lottoNumberSizeException();
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(Error.lottoNumberSizeException());
         }
         if (new HashSet<>(numbers).size() != Constant.LOTTO_NUMBERS_INPUT_SIZE) {
-            Print.nonDuplicatedLottoNumbersException();
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(Error.nonDuplicatedLottoNumbersException());
         }
     }
 

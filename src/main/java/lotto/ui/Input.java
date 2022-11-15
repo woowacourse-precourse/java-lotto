@@ -16,8 +16,7 @@ public class Input {
         try {
             Integer.parseInt(input);
         } catch (NumberFormatException exception) {
-            Print.numberException();
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(Error.numberException());
         }
     }
 
@@ -26,15 +25,13 @@ public class Input {
         validateNumber(input);
         lottoNumber = Integer.parseInt(input);
         if (lottoNumber < Constant.LOTTO_NUMBER_MIN || lottoNumber > Constant.LOTTO_NUMBER_MAX) {
-            Print.lottoNumberException();
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(Error.lottoNumberException());
         }
     }
 
     public static void validatePrice(int price) {
         if (price % Constant.LOTTO_PRICE_UNIT != REMAINDER) {
-            Print.priceException();
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(Error.priceException());
         }
     }
 
@@ -62,15 +59,13 @@ public class Input {
 
     public static void validateSplitByCommaInputSize(String[] splitByCommaInput) {
         if (splitByCommaInput.length != Constant.LOTTO_NUMBERS_INPUT_SIZE) {
-            Print.splitByCommaInputSizeException();
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(Error.splitByCommaInputSizeException());
         }
     }
 
     public static void validateNonDuplicatedLottoNumbers(Set<Integer> lottoNumbers) {
         if (lottoNumbers.size() != Constant.LOTTO_NUMBERS_INPUT_SIZE) {
-            Print.nonDuplicatedLottoNumbersException();
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(Error.nonDuplicatedLottoNumbersException());
         }
     }
 
