@@ -5,6 +5,7 @@ import java.text.DecimalFormat;
 public class Output {
 
     private static final int MIN_MATCH_LOTTO_NUMBER_COUNT = 0;
+    private static final int DECIMAL_POINT = 0;
 
     public static void printLottoCount(UserAmount userAmount) {
         System.out.println(userAmount.calculateLottoCount() + "개를 구매했습니다.");
@@ -39,7 +40,7 @@ public class Output {
 
     public static void printProfitsRate(int totalAmount, UserAmount userAmount) {
         System.out.println("총 수익률은 " + String.format("%.1f",
-                (((double) totalAmount / (double) userAmount.getAmount())) * 100) + "%입니다.");
+                (((double) totalAmount / (double) userAmount.getAmount())) * DECIMAL_POINT) + "%입니다.");
     }
 
 }
