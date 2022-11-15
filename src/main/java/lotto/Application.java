@@ -15,10 +15,8 @@ public class Application {
     static String ERROR_MESSAGE = "[ERROR] 구입금액은 숫자만 입력 가능합니다.";
 
     public static int enterPurchaseAmount() {
-
         System.out.println("구입금액을 입력해 주세요.");
         String strAmount = Console.readLine();
-
         for (int i = 0; i < strAmount.length(); ++i) {
             if (!Character.isDigit(strAmount.charAt(i))) {
                 System.out.println(ERROR_MESSAGE);
@@ -26,7 +24,6 @@ public class Application {
                 throw new NoSuchElementException(ERROR_MESSAGE);
             }
         }
-
         int amount = Integer.parseInt(strAmount);
         if (amount % 1000 != 0) {
             throw new IllegalArgumentException("[ERROR] 1000의 배수만 입력 가능합니다.");
@@ -34,31 +31,41 @@ public class Application {
         return amount;
     }
 
+
     public static int printNumberOfTickets(int amount) {
 
         int cnt = amount / 1000;
         System.out.println(cnt + "개를 구매했습니다.");
         return cnt;
-
+        
     }
 
+
+    public static boolean isValidateNum(String s) {
+
+        for (char c : s.toCharArray()) {
+            if (!Character.isDigit(c)) {
+                throw new IllegalArgumentException();
+            }
+        }
+        return true;
+    }
 
     public static int[] enterWinningNumber() {
         System.out.println("당첨 번호를 입력해 주세요.");
         String strWinningNums = Console.readLine();
         String[] tmpArr = strWinningNums.split(",");
         int[] winningNums = new int[tmpArr.length];
+
         for (int i = 0; i < tmpArr.length; ++i) {
-            for (char c : tmpArr[i].toCharArray()) {
-                if (!Character.isDigit(c)) {
-                    throw new IllegalArgumentException("[ERROR] 당첨 번호는 숫자만 입력 가능합니다.");
-                }
-            }
+            isValidateNum(tmpArr[i]);
             winningNums[i] = Integer.parseInt(tmpArr[i]);
         }
+
         validateLotto(winningNums);
         return winningNums;
     }
+
 
     public static boolean validateLotto(int[] winningNums) {
 
@@ -70,6 +77,7 @@ public class Application {
         return true;
 
     }
+
 
     public static int enterBonusNum() {
         System.out.println("보너스 번호를 입력해 주세요.");
@@ -88,6 +96,7 @@ public class Application {
         return bonusNum;
     }
 
+
     public static int validateBonusNum(int[] winningNums) {
 
         List<Integer> winningNumsList = new ArrayList<>();
@@ -100,6 +109,7 @@ public class Application {
         return bonusNum;
     }
 
+
     public static Lotto generateLotto() {
 
         List<Integer> lottoList = new ArrayList<>();
@@ -109,6 +119,7 @@ public class Application {
         return lotto;
 
     }
+
 
     public static List<Lotto> generateAllLotto(int numberOfTickets) {
 
@@ -123,6 +134,7 @@ public class Application {
 
         return allLottoList;
     }
+
 
     public static void getIncomeOfLotto(Lotto lotto, int bonusNum, int cnt) {
         if (cnt == 6) {
@@ -143,20 +155,26 @@ public class Application {
     }
 
 
+    public static int contLottoNum(Lotto lotto, int[] winningNums) {
+        int cnt = 0;
+        for (int winningNum : winningNums) {
+            if (Lotto.contains(lotto, winningNum)) {
+                ++cnt;
+            }
+        }
+        return cnt;
+    }
+
+
     public static double getTotalIncome(List<Lotto> allLotto, int[] winningNums, int bonusNum) {
 
         for (Lotto lotto : allLotto) {
-            int cnt = 0;
-            for (int winningNum : winningNums) {
-                if (Lotto.contains(lotto, winningNum)) {
-                    ++cnt;
-                }
-            }
+            int cnt = contLottoNum(lotto, winningNums);
             getIncomeOfLotto(lotto, bonusNum, cnt);
-
         }
         return income;
     }
+
 
     public static void printResult(double rateOfReturn) {
 
@@ -175,16 +193,15 @@ public class Application {
 
     }
 
+
     public static void main(String[] args) {
         // TODO: 프로그램 구현
 
-        int amount = enterPurchaseAmount();      // 구매 금액 입력
-        int numberOfTickets = printNumberOfTickets(amount);     // 로또 개수 출력
-        List<Lotto> allLotto = generateAllLotto(numberOfTickets);       // 모든 로또를 개수 만큼 생성한다.
-        int[] winningNums = enterWinningNumber();   // 당첨 번호 입력
-        int bonusNum = validateBonusNum(winningNums);   // 보너스 번호 입력
-
-        // 이렇게 말고 각 로또에 대해 하나씩 income구하는 방식으로 쪼갤 수 있음
+        int amount = enterPurchaseAmount();
+        int numberOfTickets = printNumberOfTickets(amount);
+        List<Lotto> allLotto = generateAllLotto(numberOfTickets);
+        int[] winningNums = enterWinningNumber();
+        int bonusNum = validateBonusNum(winningNums);
         double income = getTotalIncome(allLotto, winningNums, bonusNum);
         printResult((double) (income / amount * 100));
 
