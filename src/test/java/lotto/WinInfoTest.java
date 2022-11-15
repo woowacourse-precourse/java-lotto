@@ -54,4 +54,14 @@ class WinInfoTest {
         );
     }
 
+    @DisplayName("getByOrder이 알맞은 WinInfo를 반환하는지 테스트")
+    @Test
+    void getByOrderTest() {
+        assertEquals(WinInfo.getByOrder(0),WinInfo.NO_WIN);
+        assertEquals(WinInfo.getByOrder(1),WinInfo.WIN1);
+        assertEquals(WinInfo.getByOrder(2),WinInfo.WIN2);
+        assertEquals(WinInfo.getByOrder(3),WinInfo.WIN3);
+        assertEquals(WinInfo.getByOrder(4),WinInfo.WIN4);
+        assertEquals(WinInfo.getByOrder(5),WinInfo.WIN5);
+    }
 }
