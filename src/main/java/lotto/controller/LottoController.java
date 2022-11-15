@@ -6,6 +6,7 @@ import lotto.util.ValidUtil;
 import lotto.view.Input;
 import lotto.view.Output;
 
+import java.util.EnumMap;
 import java.util.List;
 
 public class LottoController {
@@ -36,10 +37,11 @@ public class LottoController {
 
         winningNumber = input.inputBonusNumber(input.inputWinningNumber());
 
-        List<Rank> ranks = lottoService.compareAllLottoAndWinningNumber(lottos,
+        WinStatistics ranks = lottoService.compareAllLottoAndWinningNumber(amounts, lottos,
                 winningNumber);
 
-        output.printWinningHistory(amounts, ranks);
+
+        output.printWinningHistory(ranks);
 
     }
 }

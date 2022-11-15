@@ -17,13 +17,13 @@ public class LottoService {
         return lottoIssuer.generateAllLotto(amount);
     }
 
-    public List<Rank> compareAllLottoAndWinningNumber(List<Lotto> lottos, WinningNumber winningNumber) {
+    public WinStatistics compareAllLottoAndWinningNumber(Amounts amounts, List<Lotto> lottos, WinningNumber winningNumber) {
         List<Rank> ranks = new LinkedList<>();
         for (Lotto lotto : lottos) {
             ranks.add(compareLottoAndWinningNumber(lotto, winningNumber));
         }
 
-        return ranks;
+        return WinStatistics.calculateWinningAmount(amounts,ranks);
     }
 
     public Rank compareLottoAndWinningNumber(Lotto lotto, WinningNumber winningNumber) {

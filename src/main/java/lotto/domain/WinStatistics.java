@@ -8,7 +8,7 @@ import java.util.stream.Collectors;
 import static java.util.stream.Collectors.counting;
 
 public class WinStatistics {
-    private final Map<Rank, Long> ranks;
+    private Map<Rank, Long> ranks;
     private final EarningRate earnRate;
 
     public WinStatistics(Map<Rank, Long> ranks, EarningRate earnRate) {
@@ -19,15 +19,17 @@ public class WinStatistics {
     public static WinStatistics calculateWinningAmount(Amounts amount, List<Rank> ranks) {
         Map<Rank, Long> totalRank = ranks.stream().
                 collect(Collectors.groupingBy(rank -> rank, counting()));
-
         int totalWinAmount = ranks.stream().
-                map(Rank::getReward).reduce(0, Integer::sum);
+                map(Rank::getReward).reduce(0,Integer::sum);
 
         return new WinStatistics(totalRank,
                 EarningRate.calculateRateOfProfit(totalWinAmount, amount));
     }
 
     public long countPerRank(Rank rank) {
+        if (ranks.get(rank) == null) {
+            return 0L;
+        }
         return ranks.get(rank);
     }
 

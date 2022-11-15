@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.function.BiPredicate;
 
 public enum Rank {
+
     FIRST(2000000000, 6, (count, bonus) -> count == 6),
     SECOND_BONUS(30000000, 5, (count, bonus) -> count == 5 && bonus),
     SECOND(1500000, 5, (count, bonus) -> count == 5),
