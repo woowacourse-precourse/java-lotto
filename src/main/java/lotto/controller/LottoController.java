@@ -28,7 +28,7 @@ public class LottoController {
         printLottoPurchaseCompleteMessage(lottoTickets);
         calculrateLotto(lottoTickets,winningNumbers);
         int lottoEarningMoney = calculrateLottoEarningMoney();
-        double lottoEarningRate = calculrateLottoEarningRate(lottoEarningMoney, lottoPurchaseMoney);
+        double lottoEarningRate = calculrateLottoEarningRate(lottoEarningMoney, inputLottoMoney);
         printLottoEarningRate(lottoEarningRate);
     }
 
