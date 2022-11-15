@@ -1,7 +1,7 @@
 package lotto.controller;
 
 import static lotto.domain.Bonus.validateDuplicates;
-import static lotto.domain.Purchase.LOTTO_PRICE;
+import static lotto.util.Constants.LOTTO_PRICE;
 import static lotto.util.Formatter.formatWinningNumbersInput;
 
 import java.util.ArrayList;

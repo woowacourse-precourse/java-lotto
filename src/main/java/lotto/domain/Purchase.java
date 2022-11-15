@@ -1,10 +1,11 @@
 package lotto.domain;
 
+import static lotto.util.Constants.LOTTO_PRICE;
+
 import java.util.regex.Pattern;
 import lotto.util.Formatter;
 
 public class Purchase {
-    public static final int LOTTO_PRICE = 1000;
     private static final Pattern MONEY_REGEX = Pattern.compile("^[0-9]*$");
     private int ticketNumber;
 
