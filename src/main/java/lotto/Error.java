@@ -1,6 +1,6 @@
 package lotto;
 
-public enum ERROR {
+public enum Error {
     IS_NOT_CORRECT_NUMBER("로또는 6개의 숫자를 가지고 있어야 합니다."),
     IS_NOT_THOUSAND_UNIT("구매 금액은 1,000원 단위여야 합니다."),
     HAS_DUPLICATE_NUMBER("로또 하나의 번호 6개는 서로 중복되지 않은 숫자여야 합니다."),
@@ -9,7 +9,7 @@ public enum ERROR {
 
     private final String message;
 
-    ERROR(String message) {
+    Error(String message) {
         this.message = message;
     }
 

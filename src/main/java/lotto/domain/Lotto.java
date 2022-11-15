@@ -5,7 +5,7 @@ import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
 import java.util.regex.Pattern;
-import lotto.ERROR;
+import lotto.Error;
 
 public class Lotto {
 
@@ -23,15 +23,15 @@ public class Lotto {
 
     private void validate(List<Integer> numbers) {
         if (!isCorrectNumber(numbers)) {
-            throw new IllegalArgumentException(ERROR.IS_NOT_CORRECT_NUMBER.getMessage());
+            throw new IllegalArgumentException(Error.IS_NOT_CORRECT_NUMBER.getMessage());
         }
 
         if (hasDuplicateNumber(numbers)) {
-            throw new IllegalArgumentException(ERROR.HAS_DUPLICATE_NUMBER.getMessage());
+            throw new IllegalArgumentException(Error.HAS_DUPLICATE_NUMBER.getMessage());
         }
 
         if (hasInvalidInput(numbers)) {
-            throw new IllegalArgumentException(ERROR.IS_INVALID_INPUT.getMessage());
+            throw new IllegalArgumentException(Error.IS_INVALID_INPUT.getMessage());
         }
     }
 
