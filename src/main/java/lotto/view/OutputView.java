@@ -1,5 +1,7 @@
 package lotto.view;
 
+import lotto.message.Printer;
+
 import java.util.List;
 
 public class OutputView {
@@ -11,7 +13,7 @@ public class OutputView {
         }
     }
     public static void OutputWinLotto() {
-        System.out.println("당첨 통계\n---");
+        System.out.println(Printer.RESULT.getMessage());
     }
     public static void FifthLotto(int count) {
         System.out.println("3개 일치 (5,000원) - "+count+"개");
