@@ -18,6 +18,9 @@ public class Player {
         String purchaseAmount = InputView.readPurchaseAmount();
         validate(purchaseAmount);
         this.purchaseAmount = Integer.parseInt(purchaseAmount);
+
+        buyLotto();
+        printLotto();
     }
 
     private void validate(String purchaseAmount) {
