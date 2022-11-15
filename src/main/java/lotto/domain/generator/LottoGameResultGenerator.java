@@ -39,7 +39,7 @@ public class LottoGameResultGenerator {
         return new LottoGameResult(winningDetails, earningRate);
     }
 
-    private void calculateWinningDetails(List<Lotto> lottos, WinningNumbers winningNumbers) {
+    public void calculateWinningDetails(List<Lotto> lottos, WinningNumbers winningNumbers) {
         for (Lotto lotto : lottos) {
             int winningCount = calculateWinningCount(lotto, winningNumbers);
             updateWinningDetails(lotto, winningNumbers, winningCount);

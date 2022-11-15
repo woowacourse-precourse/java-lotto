@@ -6,6 +6,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
+
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -16,11 +18,11 @@ import static lotto.domain.Rank.FOURTH;
 import static lotto.domain.Rank.FIFTH;
 
 public class LottoGameResultGeneratorTest {
-    LottoGameResultGenerator lottoGameResultGenerator = new LottoGameResultGenerator();
+    private LottoGameResultGenerator lottoGameResultGenerator = new LottoGameResultGenerator();
 
     @Nested
     class WinningCountCalculatingTest {
-        Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+        private Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
 
         @DisplayName("당첨번호가 하나도 안 겹치는 경우")
         @Test
@@ -94,7 +96,7 @@ public class LottoGameResultGeneratorTest {
 
     @Nested
     class PrizeMoneyGettingTest {
-        WinningNumbers winningNumbers;
+       private WinningNumbers winningNumbers;
 
         @BeforeEach
         void initWinningNumbers() {
@@ -160,6 +162,104 @@ public class LottoGameResultGeneratorTest {
                     getPrizeMoneyByWinningCount(lotto, winningNumbers, winningCount);
 
             assertThat(prizeMoney).isEqualTo(FIFTH.prizeMoney());
+        }
+    }
+
+    @Nested
+    class ProfitsCalculatingTest {
+        private List<Lotto> lottos = new ArrayList<>();
+
+        @BeforeEach
+        void initialize() {
+            lottoGameResultGenerator = new LottoGameResultGenerator();
+            lottos.add(new Lotto(List.of(1, 2, 3, 4, 5, 6)));
+            lottos.add(new Lotto(List.of(5, 6, 7, 8, 9, 10)));
+            lottos.add(new Lotto(List.of(7, 8, 9, 10, 11, 12)));
+            lottos.add(new Lotto(List.of(20, 21, 22, 23, 24, 25)));
+        }
+
+        @DisplayName("5등 2번한 경우")
+        @Test
+        void case1() {
+            WinningNumbers winningNumbers = new WinningNumbers(List.of(1, 2, 3, 10, 11, 12));
+            winningNumbers.registerBonusNumber(7);
+
+            lottoGameResultGenerator.calculateWinningDetails(lottos, winningNumbers);
+            int profits = lottoGameResultGenerator.calculateProfits();
+
+            assertThat(profits).isEqualTo(2 * FIFTH.prizeMoney());
+        }
+
+        @DisplayName("5등 1번, 4등 1번한 경우")
+        @Test
+        void case2() {
+            WinningNumbers winningNumbers = new WinningNumbers(List.of(4, 5, 6, 7, 8, 29));
+            winningNumbers.registerBonusNumber(1);
+
+            lottoGameResultGenerator.calculateWinningDetails(lottos, winningNumbers);
+            int profits = lottoGameResultGenerator.calculateProfits();
+
+            assertThat(profits).isEqualTo(FIFTH.prizeMoney() + FOURTH.prizeMoney());
+        }
+
+        @DisplayName("5등 2번, 2등 1번한 경우")
+        @Test
+        void case3() {
+            WinningNumbers winningNumbers = new WinningNumbers(List.of(4, 5, 6, 7, 8, 9));
+            winningNumbers.registerBonusNumber(10);
+
+            lottoGameResultGenerator.calculateWinningDetails(lottos, winningNumbers);
+            int profits = lottoGameResultGenerator.calculateProfits();
+
+            assertThat(profits).isEqualTo(2 * FIFTH.prizeMoney() + SECOND.prizeMoney());
+        }
+
+        @DisplayName("4등 1번, 3등 1번한 경우")
+        @Test
+        void case4() {
+            WinningNumbers winningNumbers = new WinningNumbers(List.of(6, 7, 8, 9, 10, 15));
+            winningNumbers.registerBonusNumber(1);
+
+            lottoGameResultGenerator.calculateWinningDetails(lottos, winningNumbers);
+            int profits = lottoGameResultGenerator.calculateProfits();
+
+            assertThat(profits).isEqualTo(FOURTH.prizeMoney() + THIRD.prizeMoney());
+        }
+
+        @DisplayName("3등 1번, 2등 1번한 경우")
+        @Test
+        void case5() {
+            WinningNumbers winningNumbers = new WinningNumbers(List.of(6, 7, 8, 9, 10, 11));
+            winningNumbers.registerBonusNumber(12);
+
+            lottoGameResultGenerator.calculateWinningDetails(lottos, winningNumbers);
+            int profits = lottoGameResultGenerator.calculateProfits();
+
+            assertThat(profits).isEqualTo(THIRD.prizeMoney() + SECOND.prizeMoney());
+        }
+
+        @DisplayName("4등 1번, 1등 1번한 경우")
+        @Test
+        void case6() {
+            WinningNumbers winningNumbers = new WinningNumbers(List.of(7, 8, 9, 10, 11, 12));
+            winningNumbers.registerBonusNumber(40);
+
+            lottoGameResultGenerator.calculateWinningDetails(lottos, winningNumbers);
+            int profits = lottoGameResultGenerator.calculateProfits();
+
+            assertThat(profits).isEqualTo(FOURTH.prizeMoney() + FIRST.prizeMoney());
+        }
+
+        @DisplayName("1등 1번한 경우")
+        @Test
+        void case7() {
+            WinningNumbers winningNumbers = new WinningNumbers(List.of(20, 21, 22, 23, 24, 25));
+            winningNumbers.registerBonusNumber(12);
+
+            lottoGameResultGenerator.calculateWinningDetails(lottos, winningNumbers);
+            int profits = lottoGameResultGenerator.calculateProfits();
+
+            assertThat(profits).isEqualTo(FIRST.prizeMoney());
         }
     }
 }
