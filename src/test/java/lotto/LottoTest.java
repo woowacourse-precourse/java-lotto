@@ -29,13 +29,13 @@ class LottoTest {
     @DisplayName("로또 번호에 중복된 숫자가 있으면 예외가 발생한다.")
     @Test
     void createLottoByDuplicatedNumber() {
-        assertThatThrownBy(() -> new Lotto("1, 2, 3, 4, 5, 5"))
+        assertThatThrownBy(() -> new Lotto("1,2,3,4,5,5"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
     @DisplayName("로또 번호의 숫자가 1~45 이내가 아니면 예외가 발생한다.")
     @Test
-    void createLottoByChar() {
+    void createLottoByOverRange() {
         assertThatThrownBy(() -> new Lotto("1,2,3,4,5,46"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
