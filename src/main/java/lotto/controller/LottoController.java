@@ -43,6 +43,22 @@ public class LottoController {
         outputView.printRateOfReturn(rateOfReturn);
     }
 
+    public List<Lotto> getLottos() {
+        return lottos;
+    }
+
+    public void setLottos(List<Lotto> lottos) {
+        this.lottos = lottos;
+    }
+
+    public int[] getWinningLog() {
+        return winningLog;
+    }
+
+    public void setWinningLog(int[] winningLog) {
+        this.winningLog = winningLog;
+    }
+
     public int computeAmountOfLotto(int purchasePrice) {
         return purchasePrice / PRICE_OF_LOTTO;
     }
@@ -54,14 +70,6 @@ public class LottoController {
             Lotto lotto = lottoMachine.generateLotto();
             lottos.add(lotto);
         }
-    }
-
-    public List<Lotto> getLottos() {
-        return lottos;
-    }
-
-    public void setLottos(List<Lotto> lottos) {
-        this.lottos = lottos;
     }
 
     public List<List<Integer>> computeMatchCounts(List<Integer> predictionNumbers, int bonusNumber) {
@@ -114,14 +122,6 @@ public class LottoController {
             if (bonusMatchCnt == SECOND.getBonusMatchCnt()) winningLog[SECOND.getWinningLogIdx()]++;
 
         if (predictionMatchCnt == FIRST.getPredictionMatchCnt()) winningLog[FIRST.getWinningLogIdx()]++;
-    }
-
-    public int[] getWinningLog() {
-        return winningLog;
-    }
-
-    public void setWinningLog(int[] winningLog) {
-        this.winningLog = winningLog;
     }
 
     public double computeRateOfReturn(int purchasePrice) {
