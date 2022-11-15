@@ -1,10 +1,10 @@
 # 로또
 
 ## 📄 기능 목록
-- [ ] 로또 프로그램 - LottoProgram
+- [x] 로또 프로그램 - LottoProgram
   - [x] 로또를 구매한다. - buyLotto()
   - [x] 당첨 로또를 입력받는다. - getWinLotto()
-  - [ ] 당첨 통계를 보여준다. - winStats()
+  - [x] 당첨 통계를 보여준다. - winStats()
 - [x] 로또 구입 금액을 입력 받는다. - InputOutput#getLottoBuyAmount()
 - [x] 로또 구입 갯수를 출력한다 - InputOutput#printLottoBuyAmount()
 - [x] 1부터 45까지의 서로 다른 수 6개를 생성한다. - NumberGenerator#createRandomNumbers()
