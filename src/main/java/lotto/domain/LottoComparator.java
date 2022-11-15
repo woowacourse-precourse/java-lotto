@@ -1,17 +1,31 @@
 package lotto.domain;
 
+import lotto.Lotto;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public class LottoComparator {
+    final int CHECK_BONUS = 5;
     public Map<String, Integer> lottoStatus = new HashMap<>();
     List<Integer> winningNumber;
     int bonusNumber;
-    
+
     public LottoComparator(List<Integer> numbers, int number) {
         this.winningNumber = numbers;
         this.bonusNumber = number;
+    }
+
+    public void runComparator(List<Lotto> myLotto) {
+        setLottoStatus();
+        for (Lotto one : myLotto) {
+            int sameNumber = compareWithWinningNumber(one.getNumbers());
+            if (sameNumber < 3) {
+                continue;
+            }
+            countLotto(one.getNumbers(), sameNumber);
+        }
     }
 
     public void setLottoStatus() {
@@ -31,13 +45,15 @@ public class LottoComparator {
     }
 
     public void countLotto(List<Integer> myLotto, int count) {
-        String rank;
-        if (count == 5) {
-            rank = hasBonusNumber(myLotto);
-        } else {
-            rank = Rank.of(count);
-        }
+        String rank = setLottoRank(myLotto, count);
         lottoStatus.put(rank, lottoStatus.get(rank) + 1);
+    }
+
+    public String setLottoRank(List<Integer> myLotto, int count) {
+        if (count == CHECK_BONUS) {
+            return hasBonusNumber(myLotto);
+        }
+        return Rank.of(count);
     }
 
     public String hasBonusNumber(List<Integer> myLotto) {

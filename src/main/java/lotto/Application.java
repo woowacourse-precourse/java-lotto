@@ -26,15 +26,7 @@ public class Application {
         raffleNumber.inputBonusNumber();
 
         LottoComparator lottoComparator = new LottoComparator(raffleNumber.winningNumber, raffleNumber.bonusNumber);
-        lottoComparator.setLottoStatus();
-        for (Lotto one : myLotto) {
-            int sameNumber = lottoComparator.compareWithWinningNumber(one.getNumbers());
-            if (sameNumber < 3) {
-                continue;
-            }
-            lottoComparator.countLotto(one.getNumbers(), sameNumber);
-        }
-
+        lottoComparator.runComparator(myLotto);
         printer.printWinning(lottoComparator.lottoStatus);
 
         Revenue revenue = new Revenue(lottoComparator.lottoStatus);
