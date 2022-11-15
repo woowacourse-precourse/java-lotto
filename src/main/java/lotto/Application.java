@@ -1,16 +1,28 @@
 package lotto;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import camp.nextstep.edu.missionutils.Randoms;
+import lotto.calculate.calculateProfitability;
+import lotto.calculate.calculateResult;
+import lotto.input.bonusNumberInput;
+import lotto.input.budgetInput;
+import lotto.input.winningNumberInput;
+import lotto.lotto.randomNumberGenerate;
+import lotto.output.profitabilityOutput;
+import lotto.output.quantityAndNumberOutput;
+import lotto.output.winningResultOutput;
+import lotto.util.sorter;
 
 public class Application {
-	public static void main(String[] args) {
-		int numberOfGame = Input.budgetInput();
-		ArrayList<List<Integer>> userNumber = Lotto.randomNumberGenerate(numberOfGame);
-		ArrayList<Integer> winningNumber = Input.winningNumberInput();
-		int bonusNumber = Input.bonusNumberInput(winningNumber);
-		Output.output(numberOfGame, userNumber, winningNumber, bonusNumber);
-	}
+    public static void main(String[] args) {
+        // TODO: 프로그램 구현
+        budgetInput numberOfGame = new budgetInput();
+        randomNumberGenerate randomNumberGenerate = new randomNumberGenerate(numberOfGame.numberOfGame);
+        sorter sortAnswer = new sorter(randomNumberGenerate.numbers);
+        new quantityAndNumberOutput(numberOfGame.numberOfGame,randomNumberGenerate.numbers);
+        winningNumberInput winningNumberInput = new winningNumberInput();
+        bonusNumberInput bonusNumber = new bonusNumberInput(winningNumberInput.winningNumber);
+        calculateResult map = new calculateResult(sortAnswer.answer,winningNumberInput.winningNumber, bonusNumber.bonusNumber);
+        new winningResultOutput(map.calculateResult);
+        calculateProfitability calculateProfitability = new calculateProfitability(map.calculateResult,sortAnswer.answer);
+        new profitabilityOutput(calculateProfitability.calculateProfitability);
+    }
 }
