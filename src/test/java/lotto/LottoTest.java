@@ -16,8 +16,6 @@ class LottoTest {
     private static final Lotto WINNINGLOTTO = new Lotto(List.of(1,23,11,19,36,13));
 
 
-
-
     @DisplayName("로또 번호의 개수가 6개가 넘어가면 예외가 발생한다.")
     @Test
     void createLottoByOverSize() {
@@ -53,13 +51,13 @@ class LottoTest {
     //당첨 번호 개수가 5개 일때, 보너스 점수 일치 여부 테스트
     @DisplayName("당첨 번호 개수가 5개 일때, 보너스 점수가 일치하면 true를 반환한다.")
     @ParameterizedTest
-    @CsvSource({"13,true","33,false"})
+    @CsvSource({"41,true","33,false"})
     void checkReturnValueOfBonusMatched(int bonusNum, boolean expected) {
-
+        //1,23,11,19,36,13
         Lotto lotto = new Lotto(List.of(1,23,11,19,36,41));
         int matchNumCnt = lotto.countMatchedNumbers(WINNINGLOTTO.getNumbers());
 
-        boolean result = WINNINGLOTTO.checkBonusMatched(bonusNum,matchNumCnt);
+        boolean result = lotto.checkBonusMatched(bonusNum,matchNumCnt);
         assertThat(result).isEqualTo(expected);
     }
 
@@ -67,12 +65,12 @@ class LottoTest {
     //등수 구하는 메서드 테스트
     @DisplayName("당첨 번호 개수에 따른 등수를 구한다.")
     @ParameterizedTest
-    @CsvSource({"1,23,11,19,36,41,13,SECOND","1,25,11,19,32,17,13,FIFTH","1,23,11,19,36,41,39,THIRD"})
+    @CsvSource({"1,23,11,19,36,41,41,SECOND","1,25,11,19,32,17,13,FIFTH","1,23,11,19,36,41,39,THIRD"})
     void checkRankByWinningCnt(int num1,int num2,int num3,int num4,int num5,int num6,int bonusNum,Rank expected){
 //        1,23,11,19,36,13
         Lotto lotto = new Lotto(List.of(num1,num2,num3,num4,num5,num6));
         int matchedNumCnt = lotto.countMatchedNumbers(WINNINGLOTTO.getNumbers());
-        boolean isbonusMatched = WINNINGLOTTO.checkBonusMatched(bonusNum,matchedNumCnt);
+        boolean isbonusMatched = lotto.checkBonusMatched(bonusNum,matchedNumCnt);
 
         Rank result = lotto.getRank(matchedNumCnt, isbonusMatched);
         assertThat(result).isEqualTo(expected);

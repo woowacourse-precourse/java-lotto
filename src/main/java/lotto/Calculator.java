@@ -10,14 +10,11 @@ public class Calculator {
 
     public static int countLotto(int price){
 
-
         return price/LOTTO_PRICE;
 
     }
 
     public static double CalculateRate(List<Lotto> lottos, Lotto winningLotto,int bonus){
-
-
 
         int totalPrize = getTotalPrize(lottos, winningLotto, bonus);
         double rate = 0;
@@ -35,12 +32,9 @@ public class Calculator {
 
         for(Lotto lotto : lottos){
             int cnt = lotto.countMatchedNumbers(WinningNumbers);
-            boolean isBonusmatched = winningLotto.checkBonusMatched(bonus,cnt);
+            boolean isBonusmatched = lotto.checkBonusMatched(bonus,cnt);
             Rank rank = lotto.getRank(cnt,isBonusmatched);
             rank.setCount(rank.getCount()+1);
-//            System.out.println("cnt = " + cnt);
-//            System.out.println("isBonusmatched = " + isBonusmatched);
-//            System.out.println("rank = " + rank);
 
             totalPrize += rank.getPrize();
         }
