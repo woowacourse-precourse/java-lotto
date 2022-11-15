@@ -47,6 +47,11 @@ public class LottoNumber {
         return number == that.number;
     }
 
+    @Override
+    public String toString() {
+        return Integer.toString(number);
+    }
+    
     public int getNumber() {
         return number;
     }

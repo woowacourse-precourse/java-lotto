@@ -2,6 +2,7 @@ package lotto;
 
 import static lotto.constant.Rules.NUMBER_LENGTH;
 
+import java.util.Arrays;
 import java.util.List;
 import lotto.exception.NotDistinctException;
 import lotto.exception.WrongLengthException;
@@ -27,5 +28,10 @@ public class Lotto {
     private boolean verifyDistinct(List<LottoNumber> numbers) {
         return numbers.stream().map(LottoNumber::getNumber).distinct().count()
                 == numbers.size();
+    }
+
+    @Override
+    public String toString() {
+        return Arrays.toString(numbers.toArray());
     }
 }
