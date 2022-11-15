@@ -19,16 +19,13 @@ public class WinningLotto extends Lotto{
         }
     }
 
-    @Override
-    public int countSameNumber(Lotto userLotto) {
-        int numberCount = super.countSameNumber(userLotto);
-        if(numberCount < 5) {
-            return numberCount;
-        }
-        boolean hasBonusNumber = userLotto.hasNumber(bonusNumber);
-        if(hasBonusNumber) {
-            numberCount++;
-        }
-        return numberCount;
+    public Rank calculateRank(Lotto userLotto) {
+        int sameNumberCount = super.countSameNumber(userLotto);
+        boolean isBonus = hasBonusNumber(userLotto);
+        return Rank.getRank(sameNumberCount, isBonus);
+    }
+
+    public boolean hasBonusNumber(Lotto userLotto) {
+        return userLotto.hasNumber(bonusNumber);
     }
 }
