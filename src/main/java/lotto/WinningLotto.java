@@ -33,4 +33,8 @@ public class WinningLotto extends Lotto {
             throw new IllegalArgumentException("45보다 큰 숫자는 당첨번호가 될 수 없습니다.");
         }
     }
+
+    public Integer getBonusNumber() {
+        return bonusNumber;
+    }
 }

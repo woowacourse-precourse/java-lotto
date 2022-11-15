@@ -15,8 +15,9 @@ public class LottoMatcher {
             }
         }
 
+        Integer bonusNum = winningLotto.getBonusNumber();
         Boolean bonusMatch = false;
-        if (countMatch == 5) {
+        if (countMatch == 5 && lottoNumbers.contains(bonusNum)) {
             bonusMatch = true;
         }
 

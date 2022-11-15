@@ -8,12 +8,4 @@ public class MatchResult {
         this.countMatch = countMatch;
         this.bonusMatch = bonusMatch;
     }
-
-    @Override
-    public String toString() {
-        return "WinningResult{" +
-                "countMatch=" + countMatch +
-                ", bonusMatch=" + bonusMatch +
-                '}';
-    }
 }
