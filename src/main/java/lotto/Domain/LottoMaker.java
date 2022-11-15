@@ -3,6 +3,7 @@ package lotto.Domain;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 public class LottoMaker {
     // 금액에 따른 로또 개수
@@ -34,6 +35,7 @@ public class LottoMaker {
     public void issueLottoTickets(){
         for(int i=0;i<lottoAmount;i++){
             Lotto lotto = new Lotto(publishLottoTicket());
+            lotto = sortList(lotto);
             this.lottoTickets.add(lotto);
         }
         this.printLottoTickets();
@@ -45,4 +47,11 @@ public class LottoMaker {
                 pickUniqueNumbersInRange(Constants.firstNumber,
                         Constants.lastNumber, Constants.lottoLength);
     }
+
+    public Lotto sortList(Lotto lotto){
+        List<Integer> sortedLotto = lotto.getNumbers();
+        Collections.sort(sortedLotto);
+        return new Lotto(sortedLotto);
+    }
+
 }

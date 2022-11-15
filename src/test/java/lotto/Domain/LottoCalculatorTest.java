@@ -53,15 +53,20 @@ public class LottoCalculatorTest {
 
         Lotto a = new Lotto(List.of(3, 5, 11, 16, 32, 38)); // 0 NONE
         Lotto b = new Lotto(List.of(21, 11, 5, 40, 42, 43)); // 3 FIFTH
-        Lotto c = new Lotto(List.of(21, 8, 11, 23, 41, 42)); // 5+보너스 SECOND
+        Lotto c = new Lotto(List.of(8, 21, 23, 41,1,2));// 4 FIRTH
+        Lotto d = new Lotto(List.of(8, 21, 23, 41, 42,5));// 5 THIRD
+//        Lotto e = new Lotto(List.of(8, 21, 23, 41, 42, 7)); // 5+보너스 SECOND
+        Lotto f = new Lotto(List.of(8, 21, 23, 41, 42, 43)); // 6 FIRST
 
         LottoMaker maker = new LottoMaker();
-        maker.setLottoTickets(a);maker.setLottoTickets(b);maker.setLottoTickets(c);
+        maker.setLottoTickets(a);maker.setLottoTickets(b);maker.setLottoTickets(c);maker.setLottoTickets(d);maker.setLottoTickets(f);
 
         List<Rank> rank = new ArrayList<>();
-        rank.add(Rank.NONE);rank.add(Rank.FIFTH);rank.add(Rank.SECOND);
+        rank.add(Rank.NONE);rank.add(Rank.FIFTH);rank.add(Rank.FIRTH);rank.add(Rank.SECOND);
+//        rank.add(Rank.SECOND);
+        rank.add(Rank.FIRST);
 
-        Bonus bonus = new Bonus(11);
+        Bonus bonus = new Bonus(3);
 
         assertThat(calculator.lottoComparator(maker, answer, bonus)).isEqualTo(rank);
     }
