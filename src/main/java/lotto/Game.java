@@ -10,12 +10,12 @@ public class Game {
         printPurchasedLottos(purchasedLottos);
         WinningNumber winningNumber = new WinningNumber();
         winningNumber.generator();
+        Earning earning = new Earning();
 
         Calculator calculator = new Calculator();
         for (Lotto purchasedLotto : purchasedLottos) {
             calculator.calculate(purchasedLotto.getLottoNumber(), winningNumber.getWinningLotto(), winningNumber.getBonusNumber());
-            System.out.println(calculator.getSameCmt());
-            System.out.println(calculator.getBonusCorrect());
+            System.out.println(earning.calculate(calculator.getSameCmt(), calculator.getBonusCorrect()));
         }
     }
 
@@ -24,4 +24,5 @@ public class Game {
             System.out.println(purchasedLotto.getLottoNumber());
         }
     }
+
 }

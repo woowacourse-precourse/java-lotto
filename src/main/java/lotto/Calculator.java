@@ -23,7 +23,6 @@ public class Calculator {
     }
 
     private int comparePurchasedWithWinningLotto(List<Integer> purchasedLotto, List<Integer> winningLotto) {
-
         for (Integer purchasedLottoNumber : purchasedLotto) {
             if (winningLotto.contains(purchasedLottoNumber)) {
                 sameCmt++;
