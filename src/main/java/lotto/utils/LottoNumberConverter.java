@@ -23,4 +23,10 @@ public class LottoNumberConverter {
             throw new IllegalArgumentException(NUMERIC_ERROR_MSG);
         }
     }
+
+    public static List<List<Integer>> convertTo2DimensionalList(List<Lotto> lotteries) {
+        return lotteries.stream()
+                .map(Lotto::getNumbers)
+                .collect(Collectors.toList());
+    }
 }
