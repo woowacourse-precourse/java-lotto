@@ -18,7 +18,7 @@ public class Output {
         System.out.println(PURCHASE_EVENT_MESSAGE);
     }
 
-    public static void afterPurchaseEventMessage(int number) {
+    public static void numberOfPurchaseEventMessage(int number) {
         System.out.println(number + AFTER_PURCHASE_EVENT_MESSAGE);
     }
 

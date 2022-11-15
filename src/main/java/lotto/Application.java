@@ -8,7 +8,7 @@ public class Application {
             Output.blankLine();
 
             NumberOfLotto numberOfLotto = new NumberOfLotto(money);
-            Output.afterPurchaseEventMessage(numberOfLotto.getNumberOfLotto());
+            Output.numberOfPurchaseEventMessage(numberOfLotto.getNumberOfLotto());
             Lottos lottos = new Lottos(numberOfLotto);
             Output.blankLine();
 
