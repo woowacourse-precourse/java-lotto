@@ -16,5 +16,9 @@ public class LottoGame {
         Ranking ranking = new Ranking(generateLotto.getLotto(), winningNumbers);
 
         Prize prize = new Prize(ranking.getRanking());
+
+        Profit profit = new Profit(money.getInputMoney(), prize.getPrize());
+
+        OutputView.printResult(ranking.getRanking(), profit.getProfit());
     }
 }

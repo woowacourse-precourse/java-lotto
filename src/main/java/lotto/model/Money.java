@@ -4,7 +4,7 @@ import lotto.view.InputView;
 import lotto.enums.Error;
 
 public class Money {
-    private static int inputMoney;
+    private static int inputMoney = 0;
     public Money(String input) {
         setInputMoney(input);
     }
@@ -23,6 +23,9 @@ public class Money {
         if(money < 1000) throw new IllegalArgumentException(Error.PURCHASE_MIN.getError());
         if(money % 1000 != 0) throw new IllegalArgumentException(Error.PURCHASE_UNIT.getError());
         return true;
+    }
+    public int getInputMoney(){
+        return inputMoney;
     }
     public int getLottoTickets() {
         return inputMoney/1000;

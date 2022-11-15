@@ -33,7 +33,6 @@ public class Ranking {
         List<Integer> winNum = winningNumbers.getWinningNumbers();
 
         List<Integer> userNum = lotto.getLotto();
-
         int cnt = 0;
         for(int num: userNum) {
             if(winNum.contains(num)) cnt++;
