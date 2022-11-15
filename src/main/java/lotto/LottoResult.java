@@ -4,6 +4,8 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class LottoResult {
+    private final static int RANK_INITIAL_VALUE = 0;
+    private final static int RANK_INCREMENT_VALUE = 1;
 
     private Map<Rank, Integer> rankResult = new HashMap<>();
     private Double rateOfReturn;
@@ -35,20 +37,28 @@ public class LottoResult {
 
     private void calculateRateOfReturn(Customer customer) {
         int moneySum = cntMoneySum();
-        rateOfReturn = moneySum / (double) (customer.getCntOfLottos() * 1000) * 100;
-        rateOfReturn = Math.round(rateOfReturn * 100) / 100.0;
+        rateOfReturn = getRateOfReturn(customer, moneySum);
+        rateOfReturn = roundToSecond(rateOfReturn);
+    }
+
+    private double getRateOfReturn(Customer customer, int moneySum) {
+        return moneySum / (double) (customer.getCntOfLottos() * 1000) * 100;
+    }
+
+    private double roundToSecond(Double rateOfReturn) {
+        return Math.round(rateOfReturn * 100) / 100.0;
     }
 
     private void initRankResult() {
         for (Rank rank : Rank.values()) {
-            rankResult.put(rank, 0);
+            rankResult.put(rank, RANK_INITIAL_VALUE);
         }
     }
 
     private void plusRankResultIfWinner(int bonusNumber, List<Integer> customerLottoNumbers, Set<Integer> intersection) {
         for (Rank rank : Rank.values()) {
             if (isWinner(bonusNumber, customerLottoNumbers, intersection, rank)) {
-                rankResult.put(rank, rankResult.getOrDefault(rank, 0) + 1);
+                rankResult.put(rank, rankResult.getOrDefault(rank, RANK_INITIAL_VALUE) + RANK_INCREMENT_VALUE);
                 break;
             }
         }

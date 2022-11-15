@@ -10,6 +10,8 @@ import static lotto.Rank.*;
 
 public class View {
 
+    private final static int LOTTO_PRICE = 1000;
+
     public int enterMoneyFromCustomer() {
         System.out.println("구입금액을 입력해 주세요.");
 
@@ -21,9 +23,9 @@ public class View {
     }
 
     private void validateMoney(int money) {
-        if (money % 1000 != 0)
+        if (money % LOTTO_PRICE != 0)
             throw new IllegalArgumentException("[ERROR] 잘못된 금액을 입력하였습니다.");
-        if (money < 1000)
+        if (money < LOTTO_PRICE)
             throw new IllegalArgumentException("[ERROR] 잘못된 금액을 입력하였습니다.");
     }
 

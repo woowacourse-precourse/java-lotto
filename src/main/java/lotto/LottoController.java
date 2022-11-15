@@ -1,9 +1,5 @@
 package lotto;
-
-import camp.nextstep.edu.missionutils.Console;
-
 import java.util.List;
-import java.util.Map;
 
 public class LottoController {
 
