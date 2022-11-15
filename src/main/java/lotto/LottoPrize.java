@@ -22,10 +22,19 @@ public enum LottoPrize {
 
     public static LottoPrize match(int numberMatch, int bonusNumberMatch) {
         return Arrays.stream(LottoPrize.values())
-                .filter(prize -> prize.numberMatch == numberMatch
-                        && prize.bonusNumberMatch == bonusNumberMatch)
+                .filter(prize -> checkMatch(prize, numberMatch, bonusNumberMatch))
                 .findFirst()
                 .orElse(MISS);
+    }
+
+    private static boolean checkMatch(LottoPrize prize, int numberMatch, int bonusNumberMatch) {
+        if (prize.equals(LottoPrize.SECOUND)) {
+            return numberMatch == prize.numberMatch && bonusNumberMatch == prize.bonusNumberMatch;
+        }
+        if (prize.equals(LottoPrize.THIRD)) {
+            return numberMatch == prize.numberMatch && bonusNumberMatch == prize.bonusNumberMatch;
+        }
+        return prize.numberMatch == numberMatch;
     }
 
     public int getLottoNumberMatches() {
