@@ -1,15 +1,14 @@
 package lotto.domain;
 
-import java.util.List;
-
 public class LottoResult {
-    public LottoProperties lotteryCheck(Lotto currentLotto,Lotto awardLotto, int bonusNumber){
+    private LottoProperties lottoProperties;
+    public LottoResult(Lotto currentLotto,Lotto awardLotto, int bonusNumber){
         int correct = numberCheck(currentLotto,awardLotto);
         LottoProperties lottoProperties = LottoProperties.findType(correct);
-        if (lottoProperties == LottoProperties.LOTTO_THIRDWINNER && isBonusCorrect(currentLotto.getNumbers(),bonusNumber)){
+        if (lottoProperties == LottoProperties.LOTTO_THIRDWINNER && isBonusCorrect(currentLotto,bonusNumber)){
             lottoProperties = LottoProperties.LOTTO_SECONDWINNER;
         }
-        return lottoProperties;
+        this.lottoProperties = lottoProperties;
     }
     public int numberCheck(Lotto currentLotto,Lotto awardLotto){
         int correct = 0;
@@ -33,12 +32,15 @@ public class LottoResult {
         }
         return correct;
     }
-    public Boolean isBonusCorrect(List<Integer> numbers, int bonusNumber){
-        for(int i =0;i<numbers.size();i++){
-            if (bonusNumber==numbers.get(i)){
+    public Boolean isBonusCorrect(Lotto currentLotto,int bonusNumber){
+        for(int i =0;i<currentLotto.getNumbers().size();i++){
+            if (bonusNumber==currentLotto.getNumbers().get(i)){
                 return true;
             }
         }
         return false;
+    }
+    public LottoProperties getLottoProperties(){
+        return lottoProperties;
     }
 }

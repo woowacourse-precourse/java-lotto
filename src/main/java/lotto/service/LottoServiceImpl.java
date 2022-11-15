@@ -1,28 +1,24 @@
 package lotto.service;
 
-import lotto.domain.Game;
-import lotto.domain.Lotto;
-import lotto.domain.LottoProperties;
-import lotto.domain.LottoResult;
+import lotto.domain.*;
 import lotto.view.OutputLotto;
 import java.io.IOException;
-import java.util.List;
 
 
 
 public class LottoServiceImpl implements LottoService {
-    final LottoResult lottoResult = new LottoResult();
-    final Game game = new Game();
+    LottoResult lottoResult;
+    Game game = new Game();
     @Override
     public void play() throws IOException {
         game.inputLottoCount();
         game.generateLotto();
         game.generateAwardLotto();
-        game.generateBonusNumber();
-        List<Lotto> generatedLotto = game.getGeneratedLotto();
-        for(int i =0;i<generatedLotto.size();i++){
-            Lotto currentLotto = generatedLotto.get(i);
-            LottoProperties lottoProperties = lottoResult.lotteryCheck(currentLotto,game.getAwardLotto(), game.getBonusNumber());
+        game.generateLottoBonusNumber();
+        UserLotto generatedLotto = game.getGeneratedLotto();
+        for(int i =0;i<generatedLotto.getUserLotto().size();i++){
+            lottoResult = new LottoResult(generatedLotto.getUserLotto().get(i),game.getAwardLotto(),game.getLottoBonusNumber().getBonusNumber());
+            LottoProperties lottoProperties = lottoResult.getLottoProperties();
             game.updateGame(lottoProperties);
         }
         OutputLotto.printResult(game);

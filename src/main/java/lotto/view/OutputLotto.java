@@ -26,7 +26,7 @@ public class OutputLotto{
             if (name==LottoProperties.LOTTO_LOOSE){
                 break;
             }
-            bw.append(String.format(name.getStrResultFormat(),name.getCorrect(),name.getSprice(), game.getGameCount()[i++]));
+            bw.append(String.format(name.getStrResultFormat(),name.getCorrect(),name.getSprice(), game.getGameCount().getGameCount()[i++]));
         }
     }
     private static void printAllResult(Game game) throws IOException{
