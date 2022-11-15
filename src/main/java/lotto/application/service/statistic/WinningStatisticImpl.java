@@ -20,14 +20,14 @@ public class WinningStatisticImpl implements WinningStatistic {
         List<Integer> matchResultNotConsiderBonus = matchResult.get(0);
         List<Integer> bonusMatchingCount = matchResult.get(1);
 
-        for (Integer integer : matchResultNotConsiderBonus) {
-            if (integer == 3) {
+        for (Integer matchResultCount : matchResultNotConsiderBonus) {
+            if (matchResultCount == 3) {
                 winInformation.put("three", (winInformation.get("three") + 1));
-            } else if (integer == 4) {
+            } else if (matchResultCount == 4) {
                 winInformation.put("four", (winInformation.get("four") + 1));
-            } else if (integer == 5) {
+            } else if (matchResultCount == 5) {
                 winInformation.put("five", (winInformation.get("five") + 1));
-            } else if (integer == 6) {
+            } else if (matchResultCount == 6) {
                 winInformation.put("six", (winInformation.get("six") + 1));
             }
         }
@@ -37,8 +37,8 @@ public class WinningStatisticImpl implements WinningStatistic {
 
     @Override
     public Map<String, Integer> considerBonusNumber(List<Integer> bonusMatchingCount) {
-        for (Integer integer : bonusMatchingCount) {
-            if (integer == 1) {
+        for (Integer bonusMatchingCountResult : bonusMatchingCount) {
+            if (bonusMatchingCountResult == 1) {
                 winInformation.put("fiveContainingBonusNumber", (winInformation.get("fiveContainingBonusNumber") + 1));
             }
         }
