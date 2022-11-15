@@ -8,8 +8,7 @@ import java.util.List;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomUniqueNumbersInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.assertj.core.api.Assertions.*;
 
 class ApplicationTest extends NsTest {
     private static final String ERROR_MESSAGE = "[ERROR]";
@@ -37,6 +36,36 @@ class ApplicationTest extends NsTest {
     void test3() {
         Service service = new Service();
         assertSimpleTest(() -> assertThatThrownBy(() -> service.checkWinningNumber0("123456")).isInstanceOf(IllegalArgumentException.class));
+    }
+
+    @Test
+    @DisplayName("3. 예외2 : 6개 숫자가 아닌 경우")
+    void test4() {
+        Service service = new Service();
+        assertSimpleTest(() -> assertThatThrownBy(() -> service.checkWinningNumber0("1,2,3,4,5")).isInstanceOf(IllegalArgumentException.class));
+    }
+
+    @Test
+    @DisplayName("3. 예외3 : 중복된 숫자가 있는 경우")
+    void test5() {
+        Service service = new Service();
+        assertSimpleTest(() -> assertThatThrownBy(() -> service.checkWinningNumber0("1,2,3,4,5,5")).isInstanceOf(IllegalArgumentException.class));
+    }
+
+    @Test
+    @DisplayName("3. 예외4 : 숫자를 입력하지 않은 경우")
+    void test6() {
+        Service service = new Service();
+        String[] input = {"1", "2", "3", "4", "5", "문자"};
+        assertSimpleTest(() -> assertThatThrownBy(() -> service.checkWinningNumber1(input)).isInstanceOf(IllegalArgumentException.class));
+    }
+
+    @Test
+    @DisplayName("3. 예외5 : 1 ~ 45 범위를 벗어나는 경우")
+    void test7() {
+        Service service = new Service();
+        String[] input = {"1", "2", "3", "4", "5", "46"};
+        assertSimpleTest(() -> assertThatThrownBy(() -> service.checkWinningNumber1(input)).isInstanceOf(IllegalArgumentException.class));
     }
 
     @Test
