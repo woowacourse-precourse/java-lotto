@@ -5,6 +5,7 @@ import lotto.condition.Condition;
 public class IsAllNumberCond implements Condition {
 
     private static final Condition instance = new IsAllNumberCond();
+    private static final String NUMBER_REGEX = "[1-9][0-9]*";
     private static final String ERROR_MESSAGE = "숫자만 입력 가능 합니다.";
 
     private IsAllNumberCond() {
@@ -16,7 +17,7 @@ public class IsAllNumberCond implements Condition {
 
     @Override
     public Boolean isSatisfied(String input) {
-        return input.matches("[1-9][0-9]*");
+        return input.matches(NUMBER_REGEX);
     }
 
     @Override
