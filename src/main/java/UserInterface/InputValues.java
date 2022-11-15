@@ -23,7 +23,8 @@ public class InputValues {
         return Integer.parseInt(bonus);
     }
 
-    public List<Integer> inputLottoNumber(String input) {
+    public List<Integer> inputLottoNumber() {
+        String input = Console.readLine();
         StringTokenizer st = new StringTokenizer(input, ",");
         List<Integer> winningLottoNumber = new ArrayList<>();
         for (int i = 0; i < 6; i++) {
