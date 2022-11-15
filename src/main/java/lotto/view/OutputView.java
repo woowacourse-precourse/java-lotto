@@ -77,4 +77,8 @@ public class OutputView {
     public static void outputLottoProfit(double profit) {
       System.out.printf(LOTTO_RESULT_PROFIT_MESSAGE, profit);
     }
+    
+    public static void printErrorMessage(String errorMessage) {
+        System.out.printf(errorMessage);
+    }
 }
