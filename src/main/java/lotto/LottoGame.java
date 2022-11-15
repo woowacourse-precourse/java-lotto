@@ -53,7 +53,7 @@ public class LottoGame {
     // 당첨 번호가 6개인지 확인하는 함수
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ErrorMessage.NUMBER_COUNT_OVER_SIX.getMessage());
         }
     }
 
@@ -62,14 +62,14 @@ public class LottoGame {
         Set<Integer> checkSet = new HashSet<>(winningNumber);
 
         if(winningNumber.size() != checkSet.size())
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ErrorMessage.NUMBER_DUPLICATED.getMessage());
     }
 
     // 보너스 번호가 당첨 번호와 중복되는지 확인하는 함수
     private void checkBonus(int bonusNumber) {
         for(int n : winningNumber) {
             if(n == bonusNumber)
-                throw new IllegalArgumentException();
+                throw new IllegalArgumentException(ErrorMessage.BONUS_NUMBER_DUPLICATED.getMessage());
         }
     }
 
@@ -86,7 +86,7 @@ public class LottoGame {
         for(int i=0; i<moneyInput.length(); i++) {
             char digit = moneyInput.charAt(i);
             if(!(digit >= '0' && digit <= '9')) {
-                throw new IllegalArgumentException("[ERROR]");
+                throw new IllegalArgumentException(ErrorMessage.INPUT_IS_NOT_INTEGER.getMessage());
             }
         }
 

@@ -15,14 +15,14 @@ public class Lotto {
     private void validate(List<Integer> numbers) {
         // 번호가 6개인지 확인
         if (numbers.size() != 6) {
-            throw new IllegalArgumentException("[ERROR]");
+            throw new IllegalArgumentException(ErrorMessage.NUMBER_COUNT_OVER_SIX.getMessage());
         }
 
         // 중복 번호가 있는지 확인
         Set<Integer> checkSet = new HashSet<>(numbers);
 
         if(numbers.size() != checkSet.size())
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ErrorMessage.NUMBER_DUPLICATED.getMessage());
     }
 
     public List<Integer> getNumbers() {

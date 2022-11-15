@@ -24,7 +24,7 @@ public class LottoVendingMachine {
     // 1000으로 나눠지는지 확인
     private int canDivideBy1000(int moneyInput) {
         if (moneyInput % PRICE_OF_LOTTO != 0)
-            throw new IllegalArgumentException("[ERROR] 1000원으로 나누어 떨어지는 돈을 넣어주세요");
+            throw new IllegalArgumentException(ErrorMessage.MONEY_CANNOT_DIVIDE_BY_THOUSAND.getMessage());
 
         return moneyInput / PRICE_OF_LOTTO;
     }
