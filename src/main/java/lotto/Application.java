@@ -7,5 +7,7 @@ public class Application {
         Machine lottoMachine = new Machine();
         int ticketCount = lottoMachine.getMoney();
         List<Lotto> ticketList = lottoMachine.sellTicket(ticketCount);
+
+        lottoMachine.createAnswer();
     }
 }

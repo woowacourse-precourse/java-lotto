@@ -1,6 +1,8 @@
 package lotto;
 
+import static lotto.Cli.inputBonusNumber;
 import static lotto.Cli.inputPurchaseAmount;
+import static lotto.Cli.inputWinningNumbers;
 import static lotto.Cli.print;
 
 import camp.nextstep.edu.missionutils.Randoms;
@@ -10,6 +12,8 @@ import java.util.stream.Collectors;
 
 /** Machine class to manipulate lotto ticket. */
 public class Machine {
+
+  private Answer answer;
 
   /**
    * Get money to return ticket count.
@@ -38,5 +42,16 @@ public class Machine {
     }
     print(ticketList);
     return ticketList;
+  }
+
+  /**
+   * Generate the answer from the user's input.
+   */
+  public void createAnswer() {
+
+    List<Integer> winningNumbers = inputWinningNumbers();
+    Lotto winningLotto = new Lotto(winningNumbers);
+    int bonusNumber = inputBonusNumber();
+    this.answer = new Answer(winningLotto, bonusNumber);
   }
 }
