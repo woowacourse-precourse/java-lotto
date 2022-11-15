@@ -1,5 +1,3 @@
-package lotto;
-
 import controller.LottoController;
 import domain.Buyer;
 

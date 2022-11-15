@@ -1,4 +1,4 @@
-package lotto;
+package domain;
 
 import java.util.List;
 
@@ -32,5 +32,9 @@ public class Lotto {
         if (number < MIN_NUM || number > MAX_NUM) {
             throw new IllegalArgumentException(NUMBER_RANGE_ERR);
         }
+    }
+
+    public void printLotto() {
+        System.out.println(numbers);
     }
 }

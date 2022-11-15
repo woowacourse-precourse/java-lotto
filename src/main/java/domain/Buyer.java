@@ -33,4 +33,8 @@ public class Buyer {
     private int convertToInt(String inputNum) {
         return Integer.parseInt(inputNum);
     }
+
+    public int getTicketCount() {
+        return inputPrice / 1000;
+    }
 }
