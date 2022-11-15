@@ -1,6 +1,12 @@
 package lotto;
 
 public enum ErrorType {
+    EMPTY_STR{
+        @Override
+        public String getErrorMsg () {
+            return EMPTY_STR_ERROR_MSG;
+        }
+    },
 
     INVALID_FORMAT {
         @Override
@@ -37,6 +43,7 @@ public enum ErrorType {
         }
     };
 
+    private static final String EMPTY_STR_ERROR_MSG = "[ERROR] 입력이 비어있습니다.";
     private static final String INVALID_FORMAT_ERROR_MSG ="[ERROR] 입력이 숫자가 아닙니다.";
     private static final String INVALID_COST_ERROR_MSG ="[ERROR] 입력이 1000의 배수가 아닙니다.";
     private static final String INVALID_LENGTH_ERROR_MSG = "[ERROR] 입력의 길이가 맞지 않습니다.";

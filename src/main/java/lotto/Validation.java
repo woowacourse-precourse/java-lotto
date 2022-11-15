@@ -8,12 +8,15 @@ import java.util.stream.Collectors;
 
 public class Validation {
     public static void checkPurchaseInput(String str) {
+        checkEmptyInput(str);
         checkNumberFormat(str);
         checkValidPurchaseCost(str);
     }
+
     public static void checkWinningNumberInput(String numbers) {
         List<String> winningNumbers = new ArrayList<>(List.of(numbers.split(",")));
 
+        checkEmptyInput(numbers);
         checkValidLength(winningNumbers);
         checkDuplicatedNumber(winningNumbers);
 
@@ -24,6 +27,7 @@ public class Validation {
     }
 
     public static void checkBonusNumberInput(String str) {
+        checkEmptyInput(str);
         checkNumberFormat(str);
         checkValidNumberRange(str);
     }
@@ -44,6 +48,12 @@ public class Validation {
             if (!isNumber(str.charAt(i))) {
                 throw new IllegalArgumentException(ErrorType.INVALID_FORMAT.getErrorMsg());
             }
+        }
+    }
+
+    private static void checkEmptyInput(String str) {
+        if (str.equals("")) {
+            throw new IllegalArgumentException(ErrorType.EMPTY_STR.getErrorMsg());
         }
     }
 
