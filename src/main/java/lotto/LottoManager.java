@@ -2,6 +2,7 @@ package lotto;
 
 import lotto.constant.LottoInfo;
 import lotto.constant.RankInfo;
+import lotto.view.OutputView;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
@@ -36,7 +37,9 @@ public class LottoManager {
 
         int userMoney = this.getMoney();
 
-        lotto = this.publishLottoForPrice(userMoney);
+        printPublishedLottos(userMoney);
+
+        lotto = this.publishLottoForPrice();
 
         winningNumber = this.GenerateLottoNumbers();
 
@@ -70,7 +73,7 @@ public class LottoManager {
     }
 
     public int getMoney() throws IllegalArgumentException {
-        LottoInfo.INPUT_BUY_MESSAGE.printMessage();
+        OutputView.requestInputMoney();
         String inputMoney = Console.readLine();
 
         for (int i = 0; i < inputMoney.length(); i++) {
@@ -98,12 +101,20 @@ public class LottoManager {
         Collections.sort(lotto);
     }
 
-    public List<Lotto> publishLottoForPrice(int money) {
-        List<Lotto> result = new ArrayList<>();
-        int numberOfLotto = money / LOTTO_PRICE;
-        System.out.println(numberOfLotto + "개를 구매했습니다.");
 
-        for (int i = 0; i < numberOfLotto; i++) {
+    public int getNumberLottos(int money) {
+        return (money / LOTTO_PRICE);
+    }
+
+    public void printPublishedLottos(int money) {
+        int numberLottos = getNumberLottos(money);
+        OutputView.informNumberPurchases(numberLottos);
+    }
+
+    public List<Lotto> publishLottoForPrice() {
+        List<Lotto> result = new ArrayList<>();
+
+        for (int i = 0; i < numberLottos; i++) {
             List<Integer> newLotto = GenerateRandomNumbers();
             sortLottoNumbers(newLotto);
             System.out.println(newLotto);
