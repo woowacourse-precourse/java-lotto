@@ -36,7 +36,7 @@ public class InputCorrectLottoValidator {
         return (number >= MIN_NUMBER.getNumber()) && (number <= MAX_NUMBER.getNumber());
     }
 
-    private static void validateNoDuplicateNumbers(List<Integer> inputNumbers) {
+    public static void validateNoDuplicateNumbers(List<Integer> inputNumbers) {
         HashSet<Integer> inputNoDuplicatedNumbers = new HashSet<>(inputNumbers);
         if (inputNoDuplicatedNumbers.size() != inputNumbers.size()) {
             throw new CantDuplicatedNumberInputException();

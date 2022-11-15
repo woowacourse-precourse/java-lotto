@@ -3,6 +3,7 @@ package lotto.domain;
 import java.util.List;
 
 import static lotto.utils.ScoreUtil.findRankByCorrectLottoCount;
+import static lotto.view.vlidation.InputCorrectLottoValidator.validateNoDuplicateNumbers;
 
 public class Lotto {
     private final List<Integer> numbers;
@@ -16,6 +17,7 @@ public class Lotto {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException();
         }
+        validateNoDuplicateNumbers(numbers);
     }
 
     public ScoreInfo getScoreInfoByWinnerLottoCountInfo(Lotto winnerLotto, Integer winnerBonusNumber) {
