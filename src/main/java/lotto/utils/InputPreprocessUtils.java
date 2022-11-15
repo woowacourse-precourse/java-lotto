@@ -19,7 +19,7 @@ public class InputPreprocessUtils {
 
     private static void isInterger(String[] inputs){
         for(String input: inputs){
-            if(ValidateUtils.isNumber(input)){
+            if(!ValidateUtils.isNumber(input)){
                 ValidateUtils.throwIllegalArgumentException(Constants.INVALID_PURCHASE_INPUT_MESSAGE);
             }
         }
