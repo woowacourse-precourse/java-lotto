@@ -3,6 +3,7 @@ package lotto;
 import static lotto.ExceptionCode.INVALID_LOTTO_SIZE;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -34,15 +35,21 @@ public class Lotto {
     }
 
     private Set<LottoNumber> getValidLottoNumbers(List<Integer> inputNumbers) {
-        Set<LottoNumber> uniqueLottoNumbers = new HashSet<>();
-        for (Integer inputNumber : inputNumbers) {
-            uniqueLottoNumbers.add(new LottoNumber(inputNumber));
-        }
+        validate(inputNumbers);
+        Set<LottoNumber> uniqueLottoNumbers = getUniqueLottoNumbers(inputNumbers);
         validate(uniqueLottoNumbers);
         return uniqueLottoNumbers;
     }
 
-    private void validate(Set<LottoNumber> numbers) {
+    private Set<LottoNumber> getUniqueLottoNumbers(List<Integer> inputNumbers) {
+        Set<LottoNumber> uniqueLottoNumbers = new HashSet<>();
+        for (Integer inputNumber : inputNumbers) {
+            uniqueLottoNumbers.add(new LottoNumber(inputNumber));
+        }
+        return uniqueLottoNumbers;
+    }
+
+    private void validate(Collection<?> numbers) {
         if (numbers.size() != LOTTO_SIZE) {
             throw new IllegalArgumentException(INVALID_LOTTO_SIZE);
         }

@@ -1,5 +1,7 @@
 package lotto;
 
+import static lotto.Money.MONEY_PER_LOTTO;
+
 public class ExceptionCode {
 
     public static final String INVALID_LOTTO_SIZE = "[ERROR] 로또는 "
@@ -10,4 +12,8 @@ public class ExceptionCode {
             + "부터 "
             + LottoNumber.UPPER_BOUND
             + "까지여야 합니다.";
+
+    public static final String INVALID_MONEY_PER_LOTTO = "[Error] 로또 구입금액은 "
+            + MONEY_PER_LOTTO
+            + "원 이상이어야 합니다";
 }
