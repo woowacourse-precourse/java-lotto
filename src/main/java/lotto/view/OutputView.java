@@ -1,17 +1,16 @@
 package lotto.view;
 
+import static lotto.constants.OutputConstant.OUTPUT_AMOUNT_OF_LOTTO;
+import static lotto.constants.OutputConstant.OUTPUT_RATE_OF_PROFIT;
+
 import lotto.domain.Lotto;
 import lotto.domain.LottoRank;
 import lotto.domain.LottoResult;
-
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
 public class OutputView {
-
-    private static final String OUTPUT_AMOUNT_OF_LOTTO = "개를 구매했습니다.";
-    private static final String OUTPUT_RATE_OF_PROFIT = "총 수익률은 %.1f%%입니다.";
 
     public void printErrorMessage(String errorMessage) {
         System.out.println(errorMessage);
