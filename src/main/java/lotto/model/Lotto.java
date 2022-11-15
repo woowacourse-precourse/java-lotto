@@ -2,6 +2,8 @@ package lotto.model;
 
 import java.util.List;
 
+import lotto.utils.CheckInput;
+
 public class Lotto {
     private final List<Integer> numbers;
 
@@ -14,6 +16,8 @@ public class Lotto {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException("[ERROR] 로또 번호는 6개의 숫자이어야합니다.");
         }
+        CheckInput.checkInputLottoDuplicate(numbers);
+
     }
 
     // TODO: 추가 기능 구현
