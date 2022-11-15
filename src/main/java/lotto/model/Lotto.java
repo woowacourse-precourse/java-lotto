@@ -12,13 +12,17 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
-        if (numbers.size() != 6) {
+        if (numbers.stream().distinct().count() != 6) {
             throw new IllegalArgumentException();
         }
     }
 
     public void iterate(Consumer<Integer> consumer) {
         numbers.forEach(consumer);
+    }
+
+    public List<Integer> getNumbers() {
+        return numbers;
     }
 
     @Override
