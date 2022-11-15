@@ -30,7 +30,7 @@ public class Money {
     // 입력된 돈이 1000으로 딱 나누어지는지 확인
     public void validateMoney(int money) {
         if (money % 1000 != 0){
-            System.out.println(PrintError.MONEY_NUMBER);
+            PrintError.MONEY_NUMBER.print();
             throw new IllegalArgumentException();
         }
     }
@@ -39,7 +39,7 @@ public class Money {
     public void validateMoneyRange (int money){
 
         if (money < 1000) {
-            System.out.println(PrintError.MONEY_RANGE);
+            PrintError.MONEY_RANGE.print();
             throw new IllegalArgumentException();
         }
     }
@@ -48,7 +48,7 @@ public class Money {
     private void isRealNumber (String inputStatement) {
         for (char element: inputStatement.toCharArray()) {
             if (element < 48 || element > 57) {
-                System.out.println(PrintError.NUMBER_SIZE);
+                PrintError.NUMBER_SIZE.print();
                 throw new IllegalArgumentException();
             }
         }
