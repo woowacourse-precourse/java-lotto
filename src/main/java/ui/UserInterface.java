@@ -23,7 +23,7 @@ public class UserInterface {
         String price = Console.readLine();
         System.out.println();
 
-        return Integer.parseInt(price) / PRICE_UNIT;
+        return Integer.parseInt(price);
     }
 
     public static void printPurchaseResult(int lottoCount, List<Lotto> lottos) {

@@ -13,9 +13,8 @@ class LottoGeneratorTest {
     @Test
     void 로또_발행_테스트() {
         int lottoCount = 2;
-
-        LottoGenerator lottoGenerator = new LottoGenerator();
-        List<Lotto> lottos = lottoGenerator.createLottos(lottoCount);
+        LottoGenerator lottoGenerator = new LottoGenerator(lottoCount);
+        List<Lotto> lottos = lottoGenerator.createLottos();
 
         assertThat(lottos.size()).isEqualTo(lottoCount);
     }

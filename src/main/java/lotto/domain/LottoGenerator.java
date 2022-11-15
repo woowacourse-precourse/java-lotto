@@ -8,8 +8,13 @@ import java.util.Collections;
 import java.util.List;
 
 public class LottoGenerator {
+    private final int lottoCount;
 
-    public List<Lotto> createLottos(int lottoCount) {
+    public LottoGenerator(int price) {
+        this.lottoCount = price / UserInterface.PRICE_UNIT;
+    }
+
+    public List<Lotto> createLottos() {
         List<Lotto> lottos = new ArrayList<>();
         for (int i = 0; i < lottoCount; i++) {
             lottos.add(createOneLotto());
