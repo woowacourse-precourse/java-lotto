@@ -1,5 +1,7 @@
 package lotto.domain.lotto.correctLotto;
 
+import java.util.Arrays;
+
 public enum RankingValue {
     OUT(0, false),
     FIRST(6, false),
@@ -25,4 +27,7 @@ public enum RankingValue {
         return bonus;
     }
 
+    public static boolean findRankingValue(RankingValue value, int count, boolean bonus) {
+        return (value.getCount() == count) && (value.isBonus() == bonus);
+    }
 }
