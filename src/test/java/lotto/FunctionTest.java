@@ -62,4 +62,22 @@ class FunctionTest {
         Application.randomPickLotteries(lotteries, numberOfLotteries);
         assertThat(lotteries.size()).isEqualTo(numberOfLotteries);
     }
+
+    @Test
+    void validateWinLottoInput_숫자가_입력되지_않은_경우() {
+        String input = "ㄱ,ㄴ,ㄷ,ㄹ,ㅁ,ㅂ";
+        assertThatThrownBy(() -> Application.validateWinLottoInput(input)).isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void validateWinLottoInput_숫자가_로또_범위가_아닌_경우() {
+        String input = "1,2,3,4,-1,5";
+        assertThatThrownBy(() -> Application.validateWinLottoInput(input)).isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void validateWinLottoInput_당첨번호를_6개_입력하지_않은_경우() {
+        String input = "1,2,3,4,5";
+        assertThatThrownBy(() -> Application.validateWinLottoInput(input)).isInstanceOf(IllegalArgumentException.class);
+    }
 }
