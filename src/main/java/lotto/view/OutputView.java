@@ -1,5 +1,7 @@
 package lotto.view;
 
+import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 import lotto.model.Lotto;
@@ -8,6 +10,10 @@ import lotto.model.Result;
 
 public class OutputView {
     private static final OutputView instance = new OutputView();
+    private static final List<Rank> printOrder = Arrays.stream(Rank.values())
+            .filter(rank -> rank != Rank.EMPTY)
+            .sorted(Comparator.comparingInt(Rank::prise))
+            .collect(Collectors.toList());
 
     private OutputView() {
     }
@@ -26,12 +32,11 @@ public class OutputView {
     }
 
     private void printRank(Result result) {
-        for (Rank rank : Rank.values()) {
+        for (Rank rank : printOrder) {
             String format = OutputMessage.RESULT.message();
             if (rank.bonus()) {
                 format = OutputMessage.RESULT_BONUS.message();
             }
-
             System.out.printf(format, rank.common(), rank.prise(), result.getRankResult(rank));
         }
     }
