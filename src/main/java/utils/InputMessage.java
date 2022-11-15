@@ -1,4 +1,4 @@
-package message;
+package utils;
 
 public class InputMessage {
     public static final String USER_PAY = "구입금액을 입력해 주세요.";

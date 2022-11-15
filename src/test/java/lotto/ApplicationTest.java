@@ -98,6 +98,14 @@ class ApplicationTest extends NsTest {
         });
     }
 
+    @Test
+    void payment_indivisible_with_thousand() {
+        assertSimpleTest(() -> {
+            runException("13450");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});

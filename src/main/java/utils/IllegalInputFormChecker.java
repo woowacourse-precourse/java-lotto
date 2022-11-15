@@ -1,7 +1,5 @@
 package utils;
 
-import message.ExceptionMessage;
-
 public class IllegalInputFormChecker {
     ExceptionMessage exceptionMessage;
 

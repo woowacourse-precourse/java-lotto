@@ -1,5 +1,7 @@
 package lotto;
 
+import service.LottoGameServiceImpl;
+
 public class Application {
 
     public static void main(String[] args) {

@@ -1,7 +1,7 @@
 package view;
 
 import domain.Rank;
-import message.PrintMessage;
+import utils.PrintMessage;
 
 import java.util.List;
 import java.util.Map;

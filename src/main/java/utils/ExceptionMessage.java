@@ -1,4 +1,4 @@
-package message;
+package utils;
 
 public class ExceptionMessage {
     public static final String WRONG_PAYMENT = "[ERROR] 구입 금액은 1,000원 단위여야 합니다.";

@@ -1,4 +1,4 @@
-package message;
+package utils;
 
 public class PrintMessage {
     public static final String PURCHASE_INFO = "개를 구매했습니다.";

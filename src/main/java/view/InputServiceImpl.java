@@ -2,7 +2,7 @@ package view;
 
 import camp.nextstep.edu.missionutils.Console;
 import utils.IllegalInputFormChecker;
-import message.InputMessage;
+import utils.InputMessage;
 
 public class InputServiceImpl implements InputService{
     IllegalInputFormChecker illegalInputFormChecker = new IllegalInputFormChecker();
