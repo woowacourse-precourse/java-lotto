@@ -1,23 +1,24 @@
 package lotto;
 
 import lotto.model.LottoAmount;
-import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
+
 class LottoAmountTest {
+
+    @DisplayName("돈이 로또 한 장의 가격보다 부족한 경우 예외를 발생한다.")
     @Test
-    void 돈이_부족한_경우() {
-        int money = 10;
-        Assertions.assertThrows(IllegalArgumentException.class, () -> {
-            new LottoAmount(money);
-        });
+    void createShortMoney() {
+        assertThatThrownBy(() -> new LottoAmount(10))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 
+    @DisplayName("로또를 구매하고 거스름 돈이 남는 경우 예외를 발생한다.")
     @Test
-    void 거스름돈이_남는_경우() {
-        int money = 1111;
-        Assertions.assertThrows(IllegalArgumentException.class, () -> {
-            new LottoAmount(money);
-        });
+    void createRemainMoney() {
+        assertThatThrownBy(() -> new LottoAmount(11111))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 }
