@@ -11,13 +11,25 @@ public class WinningNumber {
     private static final String INPUT_WINNING_NUMBER = "당첨 번호를 입력해 주세요";
     private static final String INPUT_BONUS_NUMBER = "보너스 번호를 입력해 주세요";
 
+    private static Lotto lotto;
+    private static Exception exception;
+
     public List<Integer> initWinningNumber(){
         List<Integer> winningNumber = getWinningNumber();
+        lotto = new Lotto(winningNumber);
         return winningNumber;
     }
 
     public Integer initBonusNumber(){
-        return getBonusNumber();
+        String number = getBonusNumber();
+        try {
+            exception.checkBonusNumber(number);
+            exception.checkBonusNumberRange(number);
+        }catch(IllegalArgumentException e){
+            throw e;
+        }
+
+        return Integer.parseInt(number);
     }
 
     private static List<Integer> getWinningNumber(){
@@ -37,9 +49,9 @@ public class WinningNumber {
         return result;
     }
 
-    private static Integer getBonusNumber(){
+    private static String getBonusNumber(){
         System.out.println(INPUT_BONUS_NUMBER);
-        return Integer.parseInt(Console.readLine());
+        return Console.readLine();
     }
 
 }

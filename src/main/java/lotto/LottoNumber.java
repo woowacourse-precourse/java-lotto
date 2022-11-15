@@ -6,8 +6,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import static camp.nextstep.edu.missionutils.Randoms.pickUniqueNumbersInRange;
-
 public class LottoNumber {
 
     private static final int START_FROM = 1;
@@ -35,10 +33,10 @@ public class LottoNumber {
         System.out.println(sb);
     }
     private List<Integer> getLottoNumbers(){
-        List<Integer> lottoNumbers =
-                sortLottoNumbers(Randoms.pickUniqueNumbersInRange(START_FROM, END_TO, NUMBER_OF));
-
-        return lottoNumbers;
+        List<Integer> lottoNumber = Randoms.pickUniqueNumbersInRange(START_FROM, END_TO, NUMBER_OF);
+        ArrayList<Integer> lottoNumbers = new ArrayList<>();
+        lottoNumbers.addAll(lottoNumber);
+        return sortLottoNumbers(lottoNumbers);
     }
 
     private List<Integer> sortLottoNumbers(List<Integer> lottoNumbers){

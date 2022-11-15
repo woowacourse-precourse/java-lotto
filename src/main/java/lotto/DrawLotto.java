@@ -2,6 +2,7 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class DrawLotto {
@@ -23,12 +24,16 @@ public class DrawLotto {
     private static final WinningNumber winningNumber = new WinningNumber();
     private static final LottoStatus lottoStatus = new LottoStatus();
 
+    private static Exception exception;
+
     public void init(){
         int userMoney = getUserMoney();
-        List<List<Integer>> lottoNumberLists = lottoNumber.getLottoNumberList(getUserLottoCount(userMoney));
+        List<List<Integer>> lottoNumberLists;
+        lottoNumberLists = lottoNumber.getLottoNumberList(getUserLottoCount(userMoney));
         lottoNumber.outputLottoNumberList(getUserLottoCount(userMoney), lottoNumberLists);
 
-        List<Integer> winningNumbers = winningNumber.initWinningNumber();
+        List<Integer> winningNumbers;
+        winningNumbers = winningNumber.initWinningNumber();
         Integer bonusNumber = winningNumber.initBonusNumber();
 
         int[] result = lottoStatus.countTheNumberOfWinning(getUserLottoCount(userMoney), lottoNumberLists, winningNumbers, bonusNumber);
@@ -39,8 +44,15 @@ public class DrawLotto {
 
     private static int getUserMoney(){
         System.out.println(INPUT_MONEY);
-        int money = Integer.parseInt(Console.readLine());
-        return money;
+        String money = Console.readLine();
+        try {
+            exception.checkMoneyIncludeString(money);
+            exception.checkMoney(money);
+        }catch(IllegalArgumentException e){
+            throw new IllegalArgumentException();
+        }
+
+        return Integer.parseInt(money);
     }
 
     private static int getUserLottoCount(int money){
