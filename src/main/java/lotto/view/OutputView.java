@@ -6,8 +6,7 @@ import lotto.domain.UserLotto;
 
 import java.util.List;
 
-import static lotto.constant.MessageConstant.MESSAGE_OUTPUT_COUNT;
-import static lotto.constant.MessageConstant.MESSAGE_OUTPUT_WIN_STATISTICS;
+import static lotto.constant.MessageConstant.*;
 
 public class OutputView {
     public static void printBlankLine() {
@@ -31,5 +30,9 @@ public class OutputView {
     public static void printLottoResult(LottoResult lottoResult) {
         System.out.println(MESSAGE_OUTPUT_WIN_STATISTICS);
         System.out.println(lottoResult.getLottoResultString());
+    }
+
+    public static void printLottoProfit(LottoResult lottoResult) {
+        System.out.printf(MESSAGE_OUTPUT_TOTAL_PROFIT,lottoResult.getTotalProfitRate());
     }
 }
