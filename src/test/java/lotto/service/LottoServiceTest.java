@@ -99,5 +99,17 @@ class LottoServiceTest {
             // then
             assertThrows(IllegalStateException.class, () -> LottoService.getWinningNumber(input));
         }
+
+        @Test
+        @DisplayName("[실패] - 당첨번호가 1~45 사이가 아닌 경우")
+        void numberIsNotInRange() {
+            // given
+            final String input = "1,2,3,46,6,7";
+
+            // when
+
+            // then
+            assertThrows(IllegalStateException.class, () -> LottoService.getWinningNumber(input));
+        }
     }
 }
