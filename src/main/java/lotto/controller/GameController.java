@@ -21,6 +21,7 @@ public class GameController {
     private int bonusNumber;
 
     public void startLottoGame() {
+        
         int money = InputView.inputLottoAmount();
         int count = getLottoCount(money);
         OutputView.printCheckAmount(count);
