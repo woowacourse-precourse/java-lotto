@@ -22,8 +22,8 @@ public class Controller {
             Long purchaserId = lottoService.generatePurchaser(inputView.inputMoney());
             lottoService.buyLotto(purchaserId);
             printLottos(lottoService.findPurchaserLottos(purchaserId));
-            List<Integer> winningLottoNumbers = inputView.inputWinningLottoNumbers();
-            int bonusNumber = inputView.inputBonusNumber();
+            List<Integer> winningLottoNumbers = lottoService.generateWinningLottoNumbers(inputView.inputWinningLottoNumbers());
+            int bonusNumber = lottoService.generateBonusNumber(inputView.inputBonusNumber());
             lottoService.matchLottos(purchaserId, winningLottoNumbers, bonusNumber);
             String rateReturn = lottoService.computeRateReturn(purchaserId);
             printWinningStatistics(purchaserId, rateReturn);

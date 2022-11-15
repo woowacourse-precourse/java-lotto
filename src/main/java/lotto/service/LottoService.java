@@ -1,8 +1,6 @@
 package lotto.service;
 
-import lotto.domain.PrizeMoney;
-import lotto.domain.Purchaser;
-import lotto.domain.Statistics;
+import lotto.domain.*;
 import lotto.repository.PurchaserRepository;
 import lotto.repository.StatisticsRepository;
 
@@ -19,7 +17,7 @@ public class LottoService {
         statisticsRepository = new StatisticsRepository();
     }
 
-    public Long generatePurchaser(int money) {
+    public Long generatePurchaser(String money) {
         Purchaser purchaser = new Purchaser(money);
         return purchaserRepository.insert(purchaser);
     }
@@ -58,6 +56,17 @@ public class LottoService {
         return String.valueOf(rateReturn);
     }
 
+    public List<Integer> generateWinningLottoNumbers(String numbers) {
+        Lotto winningLotto = new Lotto(numbers);
+
+        return winningLotto.getNumbers();
+    }
+
+    public int generateBonusNumber(String number) {
+        Bonus bonus = new Bonus(number);
+        return bonus.getNumber();
+    }
+
     private Long computeProfit(Map<PrizeMoney, Integer> winningHistory) {
         Long profit = 0L;
 
@@ -70,4 +79,5 @@ public class LottoService {
 
         return profit;
     }
+
 }
