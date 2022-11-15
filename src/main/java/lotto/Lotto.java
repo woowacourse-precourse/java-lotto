@@ -3,6 +3,8 @@ package lotto;
 import java.util.*;
 import java.util.stream.Collectors;
 
+import static lotto.Validator.*;
+
 public class Lotto {
     private final List<Integer> numbers;
 
@@ -12,12 +14,13 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
-        if (Validator.hasDuplicatedNumber(numbers)) {
-            throw new IllegalArgumentException(ErrorMessage.DUPLICATED_NUMBER_ERROR.getMessage());
+        for (Integer number: numbers) {
+            checkNotValidNumber(number);
         }
-        if (numbers.size() != 6) {
-            throw new IllegalArgumentException(ErrorMessage.LOTTO_NUMBER_COUNT_ERROR.getMessage());
-        }
+
+        checkIncludingDuplicatedNumber(numbers);
+
+        checkNumbersCount(numbers.size());
     }
 
     // TODO: 추가 기능 구현

@@ -16,14 +16,16 @@ public class Validator {
         }
     }
 
-    public static void checkWinningNumberCount(int winningNumberCount) {
-        if (winningNumberCount != 6) {
+    public static void checkNumbersCount(int numbersCount) {
+        if (numbersCount != 6) {
             throw new IllegalArgumentException();
         }
     }
 
-    public static boolean hasDuplicatedNumber(List<Integer> numbers) {
-        return numbers.stream().distinct().collect(Collectors.toList()).size() < numbers.size();
+    public static void checkIncludingDuplicatedNumber(List<Integer> numbers) {
+        if (numbers.stream().distinct().collect(Collectors.toList()).size() < numbers.size()) {
+            throw new IllegalArgumentException(ErrorMessage.DUPLICATED_NUMBER_ERROR.getMessage());
+        }
     }
 
     public static void checkConvertibleStringToNumber(String string) {

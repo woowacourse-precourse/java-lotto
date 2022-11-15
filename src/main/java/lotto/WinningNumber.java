@@ -36,8 +36,7 @@ public class WinningNumber {
             winningNumber.add(validateNumber(winningNumber, n));
         }
 
-        checkWinningNumberCount(winningNumber.size());
-
+        checkNumbersCount(winningNumber.size());
         return winningNumber;
     }
 
