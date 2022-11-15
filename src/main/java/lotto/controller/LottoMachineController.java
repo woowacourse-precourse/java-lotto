@@ -52,6 +52,44 @@ public class LottoMachineController {
         }
         return false;
     }
+    public static int getRankIndex(int prizeNumber, boolean isBonus){
+        if(prizeNumber == Rank.FIRST.getWin()){
+            return Rank.FIRST.getIndex();
+        }
+        if(prizeNumber == Rank.SECOND.getWin()&&isBonus){
+            return Rank.SECOND.getIndex();
+        }
+        if(prizeNumber == Rank.THIRD.getWin()&&!isBonus){
+            return Rank.THIRD.getIndex();
+        }
+        if(prizeNumber == Rank.FOURTH.getWin()){
+            return Rank.FOURTH.getIndex();
+        }
+        if(prizeNumber == Rank.FIFTH.getWin()){
+            return Rank.FIFTH.getIndex();
+        }
+        return Rank.REST.getIndex();
+    }
+
+    public static int getRankPrice(int index){
+        if(index == Rank.FIRST.getIndex()){
+            return Rank.FIRST.getPrice();
+        }
+        if(index == Rank.SECOND.getIndex()){
+            return Rank.SECOND.getPrice();
+        }
+        if(index == Rank.THIRD.getIndex()){
+            return Rank.THIRD.getPrice();
+        }
+        if(index == Rank.FOURTH.getIndex()){
+            return Rank.FOURTH.getPrice();
+        }
+        if(index == Rank.FIFTH.getIndex()){
+            return Rank.FIFTH.getPrice();
+        }
+        return Rank.REST.getPrice();
+    }
+
     public static int[] toListLotto(Lotto lotto){
         int[] lottoArr = new int[lotto.getSize()];
         for(int i=0;i< lotto.getSize();i++){
