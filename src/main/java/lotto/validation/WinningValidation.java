@@ -11,7 +11,7 @@ import lotto.validation.enums.RegEx;
 public class WinningValidation extends IllegalArgumentException {
     private ErrorMessage message;
     private RegEx regEx;
-    private List<String> winning;
+    private List<String> winningNumbers;
 
     public WinningValidation() {
     }
@@ -28,11 +28,11 @@ public class WinningValidation extends IllegalArgumentException {
         isDuplicate(input);
     }
 
-    public void isValidBonus(String input, List<Integer> winnings) {
+    public void isValidBonus(String input, List<Integer> winningNumbers) {
         isBlank(input);
         isNumber(input);
         isCorrectRange(input);
-        isContainWinning(input, winnings);
+        isContainWinning(input, winningNumbers);
     }
 
     public void isBlank(String input) {
@@ -51,8 +51,8 @@ public class WinningValidation extends IllegalArgumentException {
     }
 
     public void isCorrectRange(String input) {
-        winning = Arrays.asList(input.split(","));
-        for (String number : winning) {
+        winningNumbers = Arrays.asList(input.split(","));
+        for (String number : winningNumbers) {
             if (Integer.parseInt(number) < NumbersType.START_INCLUSIVE.getValue()
                     || Integer.parseInt(number) > NumbersType.END_INCLUSIVE.getValue()) {
                 message = ErrorMessage.valueOf("CORRECT_RANGE_WINNING_EXCEPTION");
@@ -62,16 +62,16 @@ public class WinningValidation extends IllegalArgumentException {
     }
 
     public void isCorrectWinningSize(String input) {
-        winning = Arrays.asList(input.split(","));
-        if (winning.size() != NumbersType.NUMBERS_SIZE.getValue()) {
+        winningNumbers = Arrays.asList(input.split(","));
+        if (winningNumbers.size() != NumbersType.NUMBERS_SIZE.getValue()) {
             message = ErrorMessage.valueOf("CORRECT_SIZE_WINNING_EXCEPTION");
             throwError(message.getMessage());
         }
     }
 
     public void isDuplicate(String input) {
-        winning = Arrays.asList(input.split(","));
-        if (new HashSet<>(winning).size() != NumbersType.NUMBERS_SIZE.getValue()) {
+        winningNumbers = Arrays.asList(input.split(","));
+        if (new HashSet<>(winningNumbers).size() != NumbersType.NUMBERS_SIZE.getValue()) {
             message = ErrorMessage.valueOf("DUPLICATE_WINNING_EXCEPTION");
             throwError(message.getMessage());
         }
@@ -85,8 +85,8 @@ public class WinningValidation extends IllegalArgumentException {
         }
     }
 
-    public void isContainWinning(String input, List<Integer> winnings) {
-        if (winnings.contains(Integer.parseInt(input))) {
+    public void isContainWinning(String input, List<Integer> winningNumbers) {
+        if (winningNumbers.contains(Integer.parseInt(input))) {
             message = ErrorMessage.valueOf("CONTAIN_BONUS_EXCEPTION");
             throwError(message.getMessage());
         }

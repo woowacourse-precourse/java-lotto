@@ -21,17 +21,17 @@ class LottoCheckTest {
     @Test
     void checkWinningTest() {
         // given
-        List<Integer> winnings = List.of(1, 2, 3, 4, 5, 6);
+        List<Integer> winningNumbers = List.of(1, 2, 3, 4, 5, 6);
         List<Integer> sixMatch = List.of(1, 2, 3, 4, 5, 6);
         List<Integer> fiveMatch = List.of(1, 2, 3, 4, 5, 30);
         List<Integer> fourMatch = List.of(1, 2, 3, 4, 30, 31);
         List<Integer> threeMatch = List.of(1, 2, 3, 40, 41, 42);
 
         // when, then
-        assertThat(check.checkWinning(winnings, sixMatch)).isEqualTo(6);
-        assertThat(check.checkWinning(winnings, fiveMatch)).isEqualTo(5);
-        assertThat(check.checkWinning(winnings, fourMatch)).isEqualTo(4);
-        assertThat(check.checkWinning(winnings, threeMatch)).isEqualTo(3);
+        assertThat(check.checkWinning(winningNumbers, sixMatch)).isEqualTo(6);
+        assertThat(check.checkWinning(winningNumbers, fiveMatch)).isEqualTo(5);
+        assertThat(check.checkWinning(winningNumbers, fourMatch)).isEqualTo(4);
+        assertThat(check.checkWinning(winningNumbers, threeMatch)).isEqualTo(3);
     }
 
     @DisplayName("로또 번호에 보너스 번호 존재여부 테스트")
@@ -51,7 +51,7 @@ class LottoCheckTest {
     @Test
     void checkRankingTest() {
         // given
-        List<Integer> winnings = List.of(1, 2, 3, 4, 5, 6);
+        List<Integer> winningNumbers = List.of(1, 2, 3, 4, 5, 6);
         List<Integer> first = List.of(1, 2, 3, 4, 5, 6);
         List<Integer> second = List.of(1, 2, 3, 4, 5, 7);
         List<Integer> third = List.of(1, 2, 3, 4, 5, 30);
@@ -60,10 +60,10 @@ class LottoCheckTest {
         int bonus = 7;
 
         // when, then
-        assertThat(check.checkRanking(winnings, first, bonus)).isEqualTo("FIRST");
-        assertThat(check.checkRanking(winnings, second, bonus)).isEqualTo("SECOND");
-        assertThat(check.checkRanking(winnings, third, bonus)).isEqualTo("THIRD");
-        assertThat(check.checkRanking(winnings, fourth, bonus)).isEqualTo("FOURTH");
-        assertThat(check.checkRanking(winnings, fifth, bonus)).isEqualTo("FIFTH");
+        assertThat(check.checkRanking(winningNumbers, first, bonus)).isEqualTo("FIRST");
+        assertThat(check.checkRanking(winningNumbers, second, bonus)).isEqualTo("SECOND");
+        assertThat(check.checkRanking(winningNumbers, third, bonus)).isEqualTo("THIRD");
+        assertThat(check.checkRanking(winningNumbers, fourth, bonus)).isEqualTo("FOURTH");
+        assertThat(check.checkRanking(winningNumbers, fifth, bonus)).isEqualTo("FIFTH");
     }
 }

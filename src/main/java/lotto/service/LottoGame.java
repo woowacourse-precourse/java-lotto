@@ -32,11 +32,11 @@ public class LottoGame {
                 .collect(Collectors.toList());
     }
 
-    public List<String> compare(List<Integer> winnings, List<Lotto> tickets, int bonus) {
+    public List<String> compare(List<Integer> winningNumbers, List<Lotto> tickets, int bonus) {
         LottoCheck check = new LottoCheck();
         List<String> checkResult = new ArrayList<>();
         for (Lotto ticket : tickets) {
-            checkResult.add(check.checkRanking(winnings, ticket.getNumbers(), bonus));
+            checkResult.add(check.checkRanking(winningNumbers, ticket.getNumbers(), bonus));
         }
         return checkResult;
     }

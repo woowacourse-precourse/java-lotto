@@ -20,20 +20,20 @@ public class LottoCheck {
         return numbers.contains(bonus);
     }
 
-    public String checkRanking(List<Integer> winnings, List<Integer> numbers, int bonus) {
-        if (checkWinning(winnings, numbers) == NumbersType.NUMBERS_SIZE.getValue()) {
+    public String checkRanking(List<Integer> winningNumbers, List<Integer> numbers, int bonus) {
+        if (checkWinning(winningNumbers, numbers) == NumbersType.NUMBERS_SIZE.getValue()) {
             return "FIRST";
         }
-        if (checkWinning(winnings, numbers) == NumbersType.NUMBERS_SIZE.getValue() - 1 && checkBonus(bonus, numbers)) {
+        if (checkWinning(winningNumbers, numbers) == NumbersType.NUMBERS_SIZE.getValue() - 1 && checkBonus(bonus, numbers)) {
             return "SECOND";
         }
-        if (checkWinning(winnings, numbers) == NumbersType.NUMBERS_SIZE.getValue() - 1 && !checkBonus(bonus, numbers)) {
+        if (checkWinning(winningNumbers, numbers) == NumbersType.NUMBERS_SIZE.getValue() - 1 && !checkBonus(bonus, numbers)) {
             return "THIRD";
         }
-        if (checkWinning(winnings, numbers) == NumbersType.NUMBERS_SIZE.getValue() - 2) {
+        if (checkWinning(winningNumbers, numbers) == NumbersType.NUMBERS_SIZE.getValue() - 2) {
             return "FOURTH";
         }
-        if (checkWinning(winnings, numbers) == NumbersType.NUMBERS_SIZE.getValue() - 3) {
+        if (checkWinning(winningNumbers, numbers) == NumbersType.NUMBERS_SIZE.getValue() - 3) {
             return "FIFTH";
         }
         return null;

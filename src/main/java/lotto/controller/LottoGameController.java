@@ -23,9 +23,9 @@ public class LottoGameController {
             String amount = getAmount();
             List<Lotto> tickets = game.createLottoTickets(amount);
             printTickets(amount, tickets);
-            List<Integer> winnings = getWinnings();
-            int bonus = Integer.parseInt(getBonus(winnings));
-            List<String> checkResult = game.compare(winnings, tickets, bonus);
+            List<Integer> winningNumbers = getWinnings();
+            int bonus = Integer.parseInt(getBonus(winningNumbers));
+            List<String> checkResult = game.compare(winningNumbers, tickets, bonus);
             LottoHistory history = game.createHistory(checkResult, amount);
             printStatistics(history, amount);
         } catch (IllegalArgumentException exception) {

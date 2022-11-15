@@ -98,10 +98,10 @@ class WinningValidationTest {
     void isContainWinningTest() {
         // given
         input = "6";
-        List<Integer> winnings = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5, 6));
+        List<Integer> winningNumbers = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5, 6));
 
         // when, then
-        assertThatThrownBy(() -> validation.isContainWinning(input, winnings))
+        assertThatThrownBy(() -> validation.isContainWinning(input, winningNumbers))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(ERROR_MESSAGE);
     }
@@ -119,10 +119,10 @@ class WinningValidationTest {
     @ValueSource(strings = {"", "   ", "십", "ten", "1,2", "!", "46", "0", "33"})
     void isValidBonusTest(String input) {
         // given
-        List<Integer> winnings = new ArrayList<>(Arrays.asList(1, 2, 33, 4, 5, 6));
+        List<Integer> winningNumbers = new ArrayList<>(Arrays.asList(1, 2, 33, 4, 5, 6));
 
         // when, then
-        assertThatThrownBy(() -> validation.isValidBonus(input, winnings))
+        assertThatThrownBy(() -> validation.isValidBonus(input, winningNumbers))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(ERROR_MESSAGE);
     }
