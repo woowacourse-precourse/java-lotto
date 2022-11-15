@@ -39,7 +39,14 @@ public class LottoResult {
             addAmount(winningAmount.get(i),number);
             addOutput(resultView.get(i),number);
         }
+        String profitPercent = calculateProfit();
+    }
 
+    private String calculateProfit() {
+        String profit = "";
+        double profitNumber = ((winningMoney * 1.0) / money) * 100;
+        profit = String.format("%.1f", profitNumber);
+        return profit;
     }
 
     private void addAmount(int amount, int count) {
