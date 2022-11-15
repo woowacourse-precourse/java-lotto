@@ -103,4 +103,8 @@ public class Judgment {
         
         return result;
     }
+    
+    public boolean hasBonus(int bonus, List<Integer> buyerNumbers) {
+        return buyerNumbers.contains(bonus);
+    }
 }
