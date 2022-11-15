@@ -28,4 +28,8 @@ public class OutputView {
             System.out.println(Rank.valueOf(rank).getMatchMessage() + ranks.get(rank)+"개");
         }
     }
+
+    public static void printPercentage(double percent) {
+        System.out.printf("총 수익률은 %.1f%%입니다.%n", percent);
+    }
 }

@@ -5,22 +5,23 @@ import lotto.view.OutputView;
 
 import java.util.List;
 
-public class CountMatchNum {
+public class CountRank {
     ScoreAndRank scoreAndRank;
     ScoreBoard scoreBoard;
+    Calculator calculator;
 
-    public CountMatchNum() {
+    public CountRank() {
         scoreAndRank = new ScoreAndRank();
         scoreBoard = new ScoreBoard();
+        calculator = new Calculator();
     }
 
     public void doMatchNumber(UserLottoNum userLottoNum, Lotto targetLottoNum, int bonusNum) {
-        int count;
         List<Integer> targetNumber = targetLottoNum.getLotto();
         List<Lotto> userLottoNumbers = userLottoNum.getUserLottoNumbers();
 
         for (Lotto userLottoNumber : userLottoNumbers) {
-            count = countMatchNumber(userLottoNumber, targetNumber);
+            int count = countMatchNumber(userLottoNumber, targetNumber);
             if(count == 5 && targetNumber.contains(bonusNum)) {
                 scoreBoard.plusScore(scoreAndRank.getScoreRank().get(7));
                 continue;
@@ -42,4 +43,6 @@ public class CountMatchNum {
         }
         return count;
     }
+
+
 }

@@ -2,6 +2,7 @@ package lotto.controller;
 
 import lotto.model.Rank;
 import lotto.model.ScoreBoard;
+import lotto.view.OutputView;
 
 import java.util.Map;
 
@@ -19,8 +20,11 @@ public class Calculator {
         return priceSum;
     }
 
-    public float calculatePercent(ScoreBoard scoreBoard, int userMoney) {
-        return calculatePrice(scoreBoard)/userMoney * 100;
+    public void calculatePercent(ScoreBoard scoreBoard, int userMoney) {
+        double percent;
+        percent = calculatePrice(scoreBoard)/(double)userMoney*100;
+
+        OutputView.printPercentage(percent);
     }
 
 

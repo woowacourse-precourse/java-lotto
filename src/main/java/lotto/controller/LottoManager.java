@@ -12,26 +12,29 @@ public class LottoManager {
     public UserLottoNum userLottoNum;
     public Lotto targetLottoNum;
     public int bonusNumber;
-
-    public CountMatchNum countMatchNum;
+    public CountRank countRank;
+    public Calculator calculator;
+    String userMoney;
 
 
     public LottoManager() {
-        countMatchNum = new CountMatchNum();
+        countRank = new CountRank();
+        calculator = new Calculator();
     }
 
     public void startLotto() {
         userWantLotto();
         setWinningLottoNum();
         setBonusNumber();
-        countMatchNum.doMatchNumber(userLottoNum, targetLottoNum, bonusNumber);
+        countRank.doMatchNumber(userLottoNum, targetLottoNum, bonusNumber);
+        calculator.calculatePercent(countRank.scoreBoard, Integer.parseInt(userMoney));
 
     }
 
     public void userWantLotto() {
 
         List<Lotto> lottoNumbers;
-        String userMoney = InputView.priceInput();
+        userMoney = InputView.priceInput();
 
         if (ValidationException.checkValidPrice(userMoney)) {
             lottoNumbers = LottoGenerator.startLottoGenerate(userMoney);
@@ -53,12 +56,4 @@ public class LottoManager {
         String bonusInput = InputView.bonusInput();
         this.bonusNumber = Integer.parseInt(bonusInput);
     }
-
-
-    public static void main(String[] args) {
-        LottoManager lottoManager = new LottoManager();
-        lottoManager.startLotto();
-    }
-
-
 }
