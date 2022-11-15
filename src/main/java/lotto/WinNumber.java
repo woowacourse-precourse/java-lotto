@@ -18,7 +18,7 @@ public class WinNumber {
         validateWinNumberRange(winNumbers);
         validateDuplicateNumber(winNumbers);
         validateBonusNumberRange(bonusNumber);
-        validateDuplicateNumber(winNumbers, bonusNumber);
+        validateDuplicateBonusNumber(winNumbers, bonusNumber);
 
         this.winNumbers = winNumbers;
         this.bonusNumber = bonusNumber;
@@ -51,10 +51,8 @@ public class WinNumber {
         }
     }
 
-    private void validateDuplicateNumber(List<Integer> numbers, int bonusNumber) throws IllegalArgumentException {
-        numbers.add(bonusNumber);
-        Set<Integer> duplicateFindNumber = new HashSet<>(numbers);
-        if(numbers.size() != duplicateFindNumber.size()) {
+    private void validateDuplicateBonusNumber(List<Integer> numbers, int bonusNumber) throws IllegalArgumentException {
+        if(numbers.contains(bonusNumber)) {
             throw new IllegalArgumentException("[ERROR] 숫자 개수가 다릅니다.");
         }
     }
