@@ -42,4 +42,27 @@ public class Input {
             throw new IllegalArgumentException(Messages.ERROR_NULL);
         }
     }
+
+    private static void isVaildRange(List<Integer> nums) {
+        for (int num : nums) {
+            if (num>45 || num<1) {
+                throw new IllegalArgumentException(Messages.ERROR_NOT_VAILDRANGE);
+            }
+        }
+    }
+
+    private static void isSize6(List<Integer> nums) {
+        if (nums.size()!=6) {
+            throw new IllegalArgumentException(Messages.ERROR_NOT_SIZE6);
+        }
+    }
+
+    private static void isDiffrent(List<Integer> nums) {
+        for (int i=0; i<nums.size()-1; i++) {
+            List<Integer> compareNums = nums.subList(i+1,nums.size());
+            if (compareNums.contains(nums.get(i))) {
+                throw new IllegalArgumentException(Messages.ERROR_NOT_DIFFRENT);
+            }
+        }
+    }
 }
