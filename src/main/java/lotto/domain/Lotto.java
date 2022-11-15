@@ -7,6 +7,7 @@ public class Lotto {
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
+        //Collections.sort(numbers); // 왜 안될까?
         this.numbers = numbers;
     }
 

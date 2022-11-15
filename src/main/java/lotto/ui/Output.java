@@ -1,6 +1,5 @@
 package lotto.ui;
 
-import lotto.domain.Answer;
 import lotto.domain.Lotto;
 import lotto.domain.Pick;
 import lotto.domain.Purchase;
@@ -12,16 +11,17 @@ public class Output {
     private final static String DRAW_LIST = "당첨 통계\n---";
 
 
-    public void printPurchase(Purchase purchase) {
+    public static void printPurchase(Purchase purchase) {
         List<Lotto> lottoes = purchase.getLottoes();
 
         System.out.println(lottoes.size() + BUY_MESSAGE);
         for (Lotto lotto : lottoes) {
-            System.out.println(lotto.getNumbers());
+            List<Integer> numbers = lotto.getNumbers();
+            System.out.println(numbers);
         }
     }
 
-    public void printPick(Pick pick) {
+    public static void printPick(Pick pick) {
         List<Integer> scores = pick.getScores();
         int rank = 5;
         int score;
@@ -34,7 +34,7 @@ public class Output {
         }
     }
 
-    public void printRateOfReturn(double rateOfReturn) {
+    public static void printRateOfReturn(double rateOfReturn) {
         System.out.println("총 수익률은 " + rateOfReturn + "%입니다.");
     }
 }

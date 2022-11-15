@@ -4,43 +4,46 @@ import camp.nextstep.edu.missionutils.Console;
 import lotto.domain.Answer;
 import lotto.domain.Money;
 
-import java.util.List;
 
 public class Input {
-    private InputMessages inputMessages;
+    private static InputMessages inputMessages;
 
-    public Money buy() {
+    public static boolean buy(Money money) {
         inputMessages = InputMessages.MONEY;
-        Money money;
         String input;
 
         System.out.println(inputMessages.getAction());
         input = Console.readLine();
-        money = new Money(input);
-
-        return money;
+        if (!money.validate(input)) {
+            return false;
+        }
+        money.createMoney(input);
+        return true;
     }
 
-    public Answer answer() {
+    public static boolean answer(Answer answer) {
         inputMessages = InputMessages.LOTTO;
-        Answer answer;
         String input;
 
         System.out.println(inputMessages.getAction());
         input = Console.readLine();
-        answer = new Answer(input);
-
-        return answer;
+        if (!answer.validate(input)) {
+            return false;
+        }
+        answer.createAnswer(input);
+        return true;
     }
 
-    public Answer bonus(Answer answer) {
+    public static boolean bonus(Answer answer) {
         inputMessages = InputMessages.BONUS;
         String input;
 
         System.out.println(inputMessages.getAction());
         input = Console.readLine();
+        if (!answer.validateBonus(input)) {
+            return false;
+        }
         answer.createBonus(input);
-
-        return answer;
+        return true;
     }
 }
