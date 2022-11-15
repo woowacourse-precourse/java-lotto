@@ -14,7 +14,7 @@ class LottoTest {
     void createLottoByOverSize() {
         assertThatThrownBy(() -> new Lotto(List.of(1, 2, 3, 4, 5, 6, 7)))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("[ERROR] 로또 번호의 총 개수가 6개 초과입니다.");
+                .hasMessage("[ERROR] 로또 번호의 총 개수가 6이 아닙니다.");
     }
 
     @DisplayName("로또 번호의 개수가 6개보다 적으면 예외가 발생한다.")
@@ -22,7 +22,7 @@ class LottoTest {
     void createLottoByLessSize() {
         assertThatThrownBy(() -> new Lotto(List.of(1, 2, 3, 4, 5)))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("[ERROR] 로또 번호의 총 개수가 6개 미만입니다.");
+                .hasMessage("[ERROR] 로또 번호의 총 개수가 6이 아닙니다.");
     }
 
     @DisplayName("로또 번호들 중 중복된 숫자가 있으면 예외가 발생한다.")
