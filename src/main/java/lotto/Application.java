@@ -25,4 +25,20 @@ public class Application {
     System.out.println("구입금액을 입력해 주세요.");
       userLotto = new UserLotto(readLine());
   }
+
+  public static void createLotto() {
+    try {
+      System.out.println("당첨 번호를 입력해 주세요.");
+      lotto = new Lotto(Arrays.stream(readLine().split(","))
+          .mapToInt(Integer::parseInt)
+          .boxed()
+          .collect(Collectors.toList()));
+
+      System.out.println("보너스 번호를 입력해 주세요");
+      lottoBonus = new LottoBonus(Integer.parseInt(readLine()), lotto.getNumbers());
+    } catch (IllegalArgumentException e) {
+      System.out.println("[ERROR] 숫자만 입력해주세요");
+      throw new IllegalArgumentException();
+    }
+  }
 }
