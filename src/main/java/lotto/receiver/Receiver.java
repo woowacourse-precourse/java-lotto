@@ -22,10 +22,11 @@ public class Receiver {
     public static List<Integer> receiveWinNumber() {
         Printer.requestWinningNumber();
         String numberTemp = Console.readLine();
+        ValidateNumber.validatePurchaseMoney(numberTemp);
         String[] winningNumberTemp = numberTemp.split(",");
         List<Integer> winningNumber = new ArrayList<>();
 
-        for(String number : winningNumberTemp) {
+        for (String number : winningNumberTemp) {
             winningNumber.add(Integer.parseInt(number));
         }
         return winningNumber;
