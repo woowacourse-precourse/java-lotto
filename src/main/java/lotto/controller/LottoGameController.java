@@ -21,10 +21,12 @@ public class LottoGameController {
     private final String STATISTICS_LABEL = "당첨 통계";
     private final String DIVIDER = "---";
 
+    private final IoManager ioManager;
     private final ConsoleInputView inputView;
     private final ConsoleOutputView outputView;
 
     public LottoGameController() {
+        ioManager = new IoManager();
         inputView = new ConsoleInputView();
         outputView = new ConsoleOutputView();
     }
@@ -76,7 +78,7 @@ public class LottoGameController {
 
         outputView.println(STATISTICS_LABEL);
         outputView.println(DIVIDER);
-        outputView.println(lottoStatistics.getHistoryDescription());
-        outputView.println(lottoStatistics.getReturnRateDescription());
+        outputView.println(ioManager.makeLottoHistoryDescription(lottoStatistics));
+        outputView.println(ioManager.makeReturnRateDescription(payment, lottoStatistics));
     }
 }

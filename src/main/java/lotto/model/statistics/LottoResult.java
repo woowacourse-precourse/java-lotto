@@ -1,6 +1,5 @@
 package lotto.model.statistics;
 
-import java.text.DecimalFormat;
 import java.util.Arrays;
 
 public enum LottoResult {
@@ -12,7 +11,6 @@ public enum LottoResult {
     FIRST(6, false, 2000000000),
     ;
 
-    private static final DecimalFormat decimalFormatter = new DecimalFormat("###,###");
     private final int matchCount;
     private final boolean doesMatchBonusBall;
     private final int prize;
@@ -41,23 +39,16 @@ public enum LottoResult {
         return output;
     }
 
-    public int getPrize() {
-        return prize;
+    public int getMatchCount() {
+        return matchCount;
     }
 
-    public String getDescription() {
-        if(this.equals(MISS)) {
-            return "꽝";
-        }
+    public boolean doesMatchBonusBall() {
+        return doesMatchBonusBall;
+    }
 
-        StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append(matchCount).append("개 일치");
-        if(doesMatchBonusBall) {
-            stringBuilder.append(", 보너스 볼 일치");
-        }
-        stringBuilder.append(" (").append(decimalFormatter.format(prize)).append("원)");
-
-        return stringBuilder.toString();
+    public int getPrize() {
+        return prize;
     }
 
     public int compare(int matchCount, boolean doesMatchBonusBall) {
