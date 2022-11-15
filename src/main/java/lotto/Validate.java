@@ -72,6 +72,7 @@ public class Validate {
 
 	public static void checkBonusNumber(String bonusNumber, List<Integer> numbers) {
 		if (isNotNumeric(bonusNumber)) errorThrow(Message.NOT_NUMERIC.getMessage());
+		if (isInvalidSize(bonusNumber)) errorThrow(Message.INVALID_BONUS_AMOUNT.getMessage());
 		if (isOutOfRange(bonusNumber)) errorThrow(Message.OUT_OF_RANGE.getMessage());
 		if (isDuplicated(bonusNumber, numbers)) errorThrow(Message.DUPLICATED_NUMBER.getMessage());
 	}
@@ -83,5 +84,10 @@ public class Validate {
 
 	public static boolean isDuplicated(String bonusNumber, List<Integer> numbers) {
 		return numbers.contains(Integer.parseInt(bonusNumber));
+	}
+
+	public static boolean isInvalidSize(String bonusNumber){
+		String[] numbers = bonusNumber.split(",");
+		return numbers.length != Constant.NUMBER_OF_BONUS_NUMBER.getNumber();
 	}
 }
