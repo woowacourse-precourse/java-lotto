@@ -1,5 +1,7 @@
 package lotto;
 
+import java.text.DecimalFormat;
+
 public class Yield {
     private final String yield;
 
@@ -15,7 +17,7 @@ public class Yield {
         if (yieldNum < 0) {
             yieldNum = yieldNum + 100;
         }
-        result = String.format("%.1f", yieldNum);
+        result = String.format("%,.1f", yieldNum);
         System.out.println("총 수익률은 " + result + "%입니다.");
         return result;
     }
