@@ -6,14 +6,14 @@ import java.util.List;
 import camp.nextstep.edu.missionutils.Console;
 
 public class LottoGame {
-    private static String result;
+    private static String amount;
     private static String[] str;
     private static List<Integer> winNumber;
     private static int bonusBall;
     private static List<List<Integer>> randomLottoNumbers;
 
     public LottoGame() {
-        result = "";
+        amount = "";
         str = new String[6];
         winNumber = new ArrayList<>();
         bonusBall = 0;
@@ -33,7 +33,7 @@ public class LottoGame {
     // 로또를 얼마나 살 건지?
     private void buyLotto() {
         payMoney();
-        createLotto(result);
+        createLotto(amount);
         for (List<Integer> randomLottoNumber : randomLottoNumbers) {
             System.out.println(randomLottoNumber); // 함수화 시키자
         }
@@ -42,17 +42,18 @@ public class LottoGame {
     // 몇 천원어치 살 꺼야?
     private void payMoney() {
         Message.printMoneyMessage();
-        result = Console.readLine();
-        if (result.length() != 4) {
-            throw new IllegalArgumentException("[ERROR]");
-        } // 클래스 만들어서 리팩토링 해야 됨
-        int lottoCount = Integer.parseInt(result) / 1000;
+        amount = Console.readLine();
+        PurchaseException.validatePurchaseAmount(amount);
+//        if (amount.length() != 4) {
+//            throw new IllegalArgumentException("[ERROR]");
+//        } // 클래스 만들어서 리팩토링 해야 됨
+        int lottoCount = Integer.parseInt(amount) / 1000;
         Message.printPurchaseMessage(lottoCount);
     }
     
     // 내가 입력한 금액에 맞게 로또 생성
-    private void createLotto(String result) {
-        LottoRandomNumbers lottoRandomNumbers = new LottoRandomNumbers(result); // 구입 금액을 기반으로 ~장 생성
+    private void createLotto(String amount) {
+        LottoRandomNumbers lottoRandomNumbers = new LottoRandomNumbers(amount); // 구입 금액을 기반으로 ~장 생성
         randomLottoNumbers = lottoRandomNumbers.getNumbers(); // 생선된 랜덤 로또값들을 List<List<Integer>>에 get을 이용해 저장
     }
     ////////////////////////////////////////////////////////////////////////
