@@ -15,7 +15,8 @@ public class CreateUserLottoNumbers {
 
     public List<Lotto> createUserLottoNumber(int amount) {
         for(int i = 0; i<amount; i++){
-            List<Integer> sample = new ArrayList<>(Randoms.pickUniqueNumbersInRange(1, 45, 6));
+            List<Integer> sample;
+            sample = new ArrayList<>(Randoms.pickUniqueNumbersInRange(1, 45, 6));
             userBuyLottosGroup.add(new Lotto(sample));
         }
         return userBuyLottosGroup;
