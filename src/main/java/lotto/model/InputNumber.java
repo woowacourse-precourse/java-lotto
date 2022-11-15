@@ -7,7 +7,6 @@ import java.util.Arrays;
 import java.util.List;
 
 public class InputNumber {
-
     public static List<Integer> winNumbers;
     public static int bonusNumber;
 
@@ -25,7 +24,6 @@ public class InputNumber {
         duplicateBonusNumber(bonusNumber);
         return bonusNumber;
     }
-
 
     private static void toMakeWinNumbers(String playerInput) {
         List<String> beforeCheck = Arrays.asList((playerInput.replace(" ", "")).split(","));

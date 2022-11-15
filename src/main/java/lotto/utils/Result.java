@@ -1,4 +1,4 @@
-package lotto.domain;
+package lotto.model;
 
 import java.util.Arrays;
 import java.util.NoSuchElementException;
@@ -13,14 +13,6 @@ public enum Result {
 
     private int reward;
     private int winCount;
-
-    public int getReward() {
-        return reward;
-    }
-
-    public int getWinCount() {
-        return winCount;
-    }
 
     Result(final int winCount, final int reward){
         this.reward = reward;

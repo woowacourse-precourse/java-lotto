@@ -18,7 +18,6 @@ public class BonusNumber {
         for (int i = 0; i < numberOfLottos; i++) {
             hasOrNot = contain(i);
             hasBonusNumber.put(i,hasOrNot);
-            System.out.println(i+"번째 보너스 번호 일치?" + (hasOrNot==true?"o":"x"));
         }
     }
 

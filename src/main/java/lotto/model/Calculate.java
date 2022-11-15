@@ -1,7 +1,7 @@
 package lotto;
 
-import lotto.domain.BonusNumber;
-import lotto.domain.Result;
+import lotto.model.BonusNumber;
+import lotto.model.Result;
 import lotto.view.FinalResult;
 
 import java.util.HashMap;
@@ -30,9 +30,6 @@ public class Calculate {
             if(re.equals("FIFTH")){
                 FinalResult.fifth++;
             }
-
         }
-
-
     }
 }

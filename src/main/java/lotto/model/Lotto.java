@@ -1,8 +1,7 @@
 package lotto;
 
-import camp.nextstep.edu.missionutils.Randoms;
-import lotto.domain.Money;
-import lotto.domain.RandomNumber;
+import lotto.model.Money;
+import lotto.model.RandomNumber;
 import lotto.view.Print;
 
 import java.util.List;
@@ -14,14 +13,11 @@ public class Lotto {
         validate(numbers);
         this.numbers = numbers;
     }
-
-
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException();
         }
     }
-
     // TODO: 추가 기능 구현
     public static void getAllLottos(){
         int lottoCount = Money.numberOfLottos;
@@ -31,7 +27,5 @@ public class Lotto {
             Compare.randomLottos.put(i, lotto.numbers);
             Print.getLottos(lotto.numbers);
         }
-
     }
-
 }
