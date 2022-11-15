@@ -13,16 +13,18 @@ public class OutputView {
     private static final int FIVE_MATCH_INDEX = 2;
     private static final int SIX_MATCH_INDEX = 3;
     private static final int FIVE_AND_BONUS_MATCH_INDEX = 4;
-    private static void printEnterPurchaseAmount() {
+    public static void printEnterPurchaseAmount() {
         System.out.println("구매금액을 입력해 주세요.");
     }
 
-    private static void printLottoTickets(int lottoTICKETS) {
+    public static void printLottoTickets(int lottoTICKETS) {
         System.out.println(lottoTICKETS + "개를 구매했습니다.");
     }
 
-    private static void printLottoNumbers(List<Integer> numbers) {
-        System.out.println(numbers);
+    public static void printLottoNumbers(List<List<Integer>> TicketIntegration) {
+        for(List<Integer> ticket : TicketIntegration){
+            System.out.println(ticket);
+        }
     }
 
     private static void printEnterWinningNumbers() {
