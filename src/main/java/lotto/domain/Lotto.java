@@ -4,7 +4,6 @@ import java.util.HashSet;
 import java.util.List;
 
 public class Lotto {
-
     private static final String LOTTO_INVALID_SIZE_ERROR = "[ERROR] 로또 번호가 6자리가 아닙니다.";
     private static final String LOTTO_DUPLICATED_SIZE_ERROR = "[ERROR] 로또 번호가 중복되었습니다.";
     private static final String LOTTO_INVALID_RANGE_ERROR = "[ERROR] 로또 번호의 범위를 잘못 입력하였습니다.";

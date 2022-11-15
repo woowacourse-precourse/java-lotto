@@ -17,14 +17,9 @@ public class LottoController {
     private static final int LOTTO_MIN_NUMBER = 1;
     private static final int LOTTO_MAX_NUMBER = 45;
     private static final int LOTTO_SIZE = 6;
-
     private static int DEFAULT_EARNING_MONEY = 0;
 
     private Map<LottoRank, Integer> lottoResult = new HashMap<>();
-
-    public static double calculateLottoEarningRate(int earningMoney, int purchaseMoney) {
-        return (double) earningMoney / purchaseMoney * PERCENTAGE_CONVERTER;
-    }
 
     private int generateTickets(int inputMoney) {
         return inputMoney / LOTTO_ONE_GAME_PRICE;
@@ -43,7 +38,6 @@ public class LottoController {
         double lottoEarningRate = calculateLottoEarningRate(lottoEarningMoney, inputLottoMoney);
         OutputView.printLottoEarningRate(lottoEarningRate);
     }
-
 
     private void initializeLottoResultMap() {
         for (LottoRank lottoRank : LottoRank.values()) {
@@ -75,6 +69,10 @@ public class LottoController {
         }
         OutputView.printLottoResult(lottoResult);
         return earningMoney;
+    }
+
+    public static double calculateLottoEarningRate(int earningMoney, int purchaseMoney) {
+        return (double) earningMoney / purchaseMoney * PERCENTAGE_CONVERTER;
     }
 
 }

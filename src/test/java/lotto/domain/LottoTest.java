@@ -1,6 +1,5 @@
 package lotto.domain;
 
-import lotto.domain.Lotto;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -30,14 +29,14 @@ class LottoTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
-    @DisplayName("toString 사용 시 List 형태로 반환")
+    @DisplayName("toString 사용 시 List 형태로 반환한다.")
     @Test
     void toStringTest() {
         assertThat(new Lotto(List.of(12,13,22,34,35,45)).toString())
                 .isEqualTo("[12, 13, 22, 34, 35, 45]");
     }
 
-    @DisplayName("로또 번호 정상일 시, 에러를 던지지 않음")
+    @DisplayName("로또 번호에 이상이 없을 시, 에러를 던지지 않는다.")
     @Test
     void createValidLottoNumber() {
         assertThatCode(() -> new Lotto(List.of(2,3,4,43,44,45)))
