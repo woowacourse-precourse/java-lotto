@@ -3,7 +3,7 @@ package lotto.model;
 import static lotto.controller.LottoSystem.LOTTO_PRICE;
 
 public class MoneyParser {
-    public int parse(String input) {
+    public int parse(String input) throws IllegalArgumentException {
         if (input.charAt(0) == '0') {
             throw new IllegalArgumentException("[ERROR] 금액은 0으로 시작할 수 없습니다.");
         }

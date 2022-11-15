@@ -15,7 +15,7 @@ public class Lotto {
         this.numbers = numbers;
     }
 
-    private void validate(List<Integer> numbers) {
+    private void validate(List<Integer> numbers) throws IllegalArgumentException {
         if (numbers.size() != LOTTO_NUM_COUNT) {
             throw new IllegalArgumentException(String.format("[ERROR] 번호 개수가 %d개가 아닙니다.", LOTTO_NUM_COUNT));
         }

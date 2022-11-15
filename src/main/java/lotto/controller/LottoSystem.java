@@ -24,12 +24,16 @@ public class LottoSystem {
     int money;
 
     public void run() {
-        buy();
-        draw();
-        result();
+        try {
+            buy();
+            draw();
+            result();
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+        }
     }
 
-    private void buy() {
+    private void buy() throws IllegalArgumentException {
         MoneyParser moneyParser = new MoneyParser();
         money = moneyParser.parse(view.requestMoney());
         int lottoCount = money / LOTTO_PRICE;
@@ -43,7 +47,7 @@ public class LottoSystem {
         view.printLotto(boughtLottoes);
     }
 
-    private void draw() {
+    private void draw() throws IllegalArgumentException {
         WinningNumberParser winningNumberParser = new WinningNumberParser();
         winningNumbers = winningNumberParser.parse(view.requestWinningNumbers());
         SingleLottoNumValidator singleLottoNumValidator = new SingleLottoNumValidator();
@@ -55,7 +59,7 @@ public class LottoSystem {
         }
     }
 
-    private void result() {
+    private void result() throws IllegalArgumentException {
         for(Lotto lotto : boughtLottoes) {
             MatchedResult matchedResult = lotto.checkPrizes(winningNumbers, bonusNumber);
             if(matchedResult.getMatchedNum() == Rank.FIRST.getMatchCount()) {

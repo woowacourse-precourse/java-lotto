@@ -7,7 +7,7 @@ import java.util.stream.Collectors;
 import static lotto.controller.LottoSystem.LOTTO_NUM_COUNT;
 
 public class WinningNumberParser {
-    public List<Integer> parse(String input) {
+    public List<Integer> parse(String input) throws IllegalArgumentException {
         if (input.endsWith(",")) {
             throw new IllegalArgumentException("[ERROR] 당첨 번호 입력이 쉼표로 끝났습니다.");
         }
