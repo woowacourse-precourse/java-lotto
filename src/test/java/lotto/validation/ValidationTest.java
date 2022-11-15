@@ -52,6 +52,15 @@ class ValidationTest {
             .hasMessageContaining(ERROR_MESSAGE);
     }
 
+    @DisplayName(",로 분리된 당첨 번호가 숫자 이외의 값이 있으면 에러가 발생합니다.")
+    @ParameterizedTest
+    @ValueSource(strings = {"1,,,2,3", "1,ㄱ,2,ㄴ", "!,@,#,$", "a,b,c", "~,1,2,3", "1ㄱ,2ㄴ,3"})
+    void createWinningNumber(String winningNumber) {
+        assertThatThrownBy(() -> Validation.validateWinningNumberSplitCommaConsistOfNum(winningNumber))
+            .isInstanceOf(IllegalArgumentException.class)
+            .hasMessageContaining(ERROR_MESSAGE);
+    }
+
     @DisplayName("당첨 번호 입력에 ,가 처음과 끝에 들어가면 에러가 발생한다.")
     @ParameterizedTest
     @ValueSource(strings = {",1,2,3,4,5,6", "1,2,3,4,5,6,"})
