@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.*;
 
 class BonusNumberTest {
@@ -40,5 +41,12 @@ class BonusNumberTest {
         Assertions.assertThrows(IllegalArgumentException.class, () -> {
             bonusNumber.duplicateInputBonusNumber(winnerLottoNumber); //when
         });
+    }
+
+    @Test
+    @DisplayName("보너스 번호가 숫자가 아니면 예외가 발생한다.")
+    void validInputBonusNumber() {
+        assertThatThrownBy(() -> new BonusNumber("1ks"))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 }
