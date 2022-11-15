@@ -17,7 +17,8 @@ public class MoneyTest {
     @DisplayName("구입 금액이 0원인 경우")
     @Test
     void inputZeroMoney() {
-        assertThat(new Money("0").getMoney()).isEqualTo(0);
+        assertThatThrownBy(() -> new Money("0"))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 
     @DisplayName("구입 금액이 정수가 아닌 경우")
