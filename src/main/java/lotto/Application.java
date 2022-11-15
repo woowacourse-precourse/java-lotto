@@ -26,4 +26,10 @@ public class Application {
         Lotto lotto = new lotto.Lotto(input_integer_list);
         return lotto;
     }
+
+    public static int getBonusNum(){
+        System.out.println("보너스 번호를 입력해 주세요.");
+        String input = Console.readLine();
+        return Integer.parseInt(input);
+    }
 }
