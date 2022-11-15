@@ -2,6 +2,8 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 public class Lotto {
@@ -25,8 +27,20 @@ public class Lotto {
         }
     }
 
-    public static List<Integer> issueLotto() {
-        List<Integer> lotto = Randoms.pickUniqueNumbersInRange(1, 45, 6);
-        return lotto;
+    public static List<Lotto> issueLotto(int numberOfLottos) {
+        numberOfLottosValidation(numberOfLottos);
+        List<Lotto> lottos = new ArrayList<>();
+        for (int i = 0; i < numberOfLottos; i++) {
+            List<Integer> lotto = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+            lotto.sort(Comparator.naturalOrder());
+            lottos.add(new Lotto(lotto));
+        }
+        return lottos;
+    }
+
+    private static void numberOfLottosValidation(int numberOfLottos) {
+        if (numberOfLottos < 1) {
+            throw new IllegalArgumentException("[ERROR] 1개 이상의 로또 개수를 입력하세요.");
+        }
     }
 }
