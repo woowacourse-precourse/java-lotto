@@ -30,7 +30,8 @@ public enum Prize {
         if (matchAmount < FIFTH.matchAmount) {
             return MISS;
         }
-        return Arrays.stream(values()).filter(rating -> rating.matchAmount == matchAmount).reduce((first, second) -> second)
+        return Arrays.stream(values()).filter(rating -> rating.matchAmount == matchAmount)
+                .reduce((first, second) -> second)
                 .orElseThrow(IllegalArgumentException::new);
     }
 
