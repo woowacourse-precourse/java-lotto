@@ -18,6 +18,7 @@ public class LottoService {
     private static final int MIN_LOTTO_RANGE = ValidNumbers.MIN_LOTTO_RANGE.getValue();
     private static final int MAX_LOTTO_RANGE = ValidNumbers.MAX_LOTTO_RANGE.getValue();
     private static final int MAX_LOTTO_SIZE = ValidNumbers.MAX_LOTTO_SIZE.getValue();
+    private static final int PERCENTAGE = 100;
 
     public Lotto createRandomLotto() {
         List<Integer> numbers;
@@ -86,7 +87,7 @@ public class LottoService {
         }
 
         rate = money / totalProfit;
-        rate = (1 / rate) * 100;
+        rate = (1 / rate) * PERCENTAGE;
 
         return rate;
     }

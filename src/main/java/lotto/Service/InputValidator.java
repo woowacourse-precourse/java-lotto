@@ -7,7 +7,7 @@ import java.util.stream.Stream;
 
 public class InputValidator {
 
-    private static final int MIN_COST = ValidNumbers.valueOf("MIN_COST").getValue();
+    private static final int MIN_COST = ValidNumbers.MIN_COST.getValue();
 
     private static final String ERROR_HEADER = "[ERROR]";
     private static final String NUMBER_FORMAT_MESSAGE = ERROR_HEADER + " 숫자만 입력 가능합니다.";
