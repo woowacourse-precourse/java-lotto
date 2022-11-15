@@ -3,7 +3,7 @@
 ## 기능 목록
 - [x] 구입 금액에 해당하는 로또만큼 발행하는 기능 - makeRandomNumber()
 
-InputOutPUTUI 클래스 내에서
+InputOutput 클래스 내에서
 - 입력 받은 번호의 유효성 검사 기능
     - [x] 길이 검사 기능 - validateLength()
     - [x] 중복 검사 기능 - validateRange() 
@@ -12,8 +12,8 @@ InputOutPUTUI 클래스 내에서
 - [x] 보너스 번호를 입력 받는 기능 - setUserBonusNumber()
 Calculate 클래스 내에서
 - [x] 발행된 로또 번호와 당첨 번호 + 보너스 번호를 조합해 비교하는 기능 - compareNumber()
-- [ ] 당첨내역을 출력하는 기능
-- [ ] 수익률을 계산하는 기능
+- [x] 당첨내역을 출력하는 기능 - InputOutput.printResult()
+- [x] 수익률을 계산하는 기능 -rateOfReturn()
 
 ## 기능 요구 사항
 로또 게임 기능을 구현해야 한다. 로또 게임은 아래와 같은 규칙으로 적용된다.
