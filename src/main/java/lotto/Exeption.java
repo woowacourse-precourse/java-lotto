@@ -6,6 +6,7 @@ import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
 
 public class Exeption {
+
     //보너스 숫자가 중복됐을 때
     public static void isNotoverlapped(Lotto lotto, int bonus) {
         if (lotto.getNumbers().contains(bonus)) {
@@ -23,6 +24,7 @@ public class Exeption {
             throw new IllegalArgumentException("[ERROR] 숫자 중복되었습니다.");
         }
     }
+
     // String to List<Integer>
     public static List<Integer> stringToList(String input) {
         List<String> splitInput = Arrays.asList(input.split(","));
@@ -82,6 +84,7 @@ public class Exeption {
             }
         });
     }
+
     public static void inputMoneyExeption(String money) {
         if (!money.matches("[+-]?\\d*(\\.\\d+)?")) {
             System.out.println("[ERROR]");
@@ -97,4 +100,5 @@ public class Exeption {
             throw new IllegalArgumentException("[ERROR] 0을 입력하시면 안됩니다.");
         }
     }
+
 }
