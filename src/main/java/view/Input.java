@@ -26,4 +26,9 @@ public class Input {
         return inputLotteryNumber();
     }
 
+    private static List<Integer> inputLotteryNumber() {
+        String lotteryWinningNumber = Console.readLine();
+        return Util.separateNumberWithComma();
+    }
+
 }
