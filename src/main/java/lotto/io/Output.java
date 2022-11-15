@@ -2,7 +2,6 @@ package lotto.io;
 
 import java.util.List;
 import lotto.model.Lotto;
-import lotto.model.WinningStatus;
 
 public interface Output {
     void printPurchasePrompt();
@@ -13,7 +12,7 @@ public interface Output {
 
     void printLottos(int count, List<Lotto> lottos);
 
-    void printResult(WinningStatus winningStatus);
+    void printResult(List<Integer> winningCounts, double yield);
 
     void printError(Exception e);
 }

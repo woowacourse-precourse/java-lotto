@@ -2,7 +2,6 @@ package lotto.io;
 
 import java.util.List;
 import lotto.model.Lotto;
-import lotto.model.WinningStatus;
 
 public class ConsoleOutput implements Output {
     private static final String PURCHASE_PROMPT = "구입금액을 입력해 주세요.";
@@ -11,6 +10,13 @@ public class ConsoleOutput implements Output {
     private static final String PURCHASE_TEXT = "개를 구매했습니다.";
     private static final String RESULT_TEXT = "\n당첨통계\n---";
     private static final String ERROR_PREFIX = "[ERROR] ";
+
+    private static final String RESULT_FORMAT = "3개 일치 (5,000원) - %d개\n"
+            + "4개 일치 (50,000원) - %d개\n"
+            + "5개 일치 (1,500,000원) - %d개\n"
+            + "5개 일치, 보너스 볼 일치 (30,000,000원) - %d개\n"
+            + "6개 일치 (2,000,000,000원) - %d개\n";
+    private static final String YIELD_FORMAT = "총 수익률은 %.1f%%입니다.";
 
     @Override
     public void printPurchasePrompt() {
@@ -35,9 +41,10 @@ public class ConsoleOutput implements Output {
     }
 
     @Override
-    public void printResult(WinningStatus winningStatus) {
-        System.out.println(RESULT_TEXT);
-        System.out.println(winningStatus);
+    public void printResult(List<Integer> winningCounts, double yield) {
+        String winningResult = String.format(RESULT_FORMAT, winningCounts.toArray());
+        String yieldResult = String.format(YIELD_FORMAT, yield);
+        System.out.println(RESULT_TEXT + winningResult + yieldResult);
     }
 
     @Override
