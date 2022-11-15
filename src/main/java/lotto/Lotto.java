@@ -1,20 +1,22 @@
 package lotto;
 
+import ExceptionCollections.LottoException;
+
 import java.util.List;
 
 public class Lotto {
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
-        validate(numbers);
+        LottoException.validate(numbers);
         this.numbers = numbers;
     }
 
-    private void validate(List<Integer> numbers) {
-        if (numbers.size() != 6) {
-            throw new IllegalArgumentException();
-        }
+    public boolean contains(int number) {
+        return numbers.contains(number);
     }
 
-    // TODO: 추가 기능 구현
+    public void printLottoNumbers() {
+        System.out.println(this.numbers.toString());
+    }
 }
