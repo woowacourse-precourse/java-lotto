@@ -41,7 +41,7 @@ public class Lotto {
         return matchCount;
     }
 
-    public boolean checkDuplicate(List<Integer> numbers) {
+    private boolean checkDuplicate(List<Integer> numbers) {
         for (int i = 0; i < 5; i++) {
             int selectedNum = numbers.get(i);
 
