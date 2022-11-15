@@ -33,14 +33,18 @@ public class LottoDrawingMachine {
     }
 
     private static List<String> drawLottoNumbers() {
-        String winning_number_line = Console.readLine();
-        String bonus_number_line = Console.readLine();
+        String winning_number_line =
+                Console.readLine()
+                        .replace(SPACE.getValue(), EMPTY.getValue());
+        String bonus_number_line =
+                Console.readLine()
+                        .replace(SPACE.getValue(), EMPTY.getValue());
         return List.of(winning_number_line, bonus_number_line);
     }
 
     private static void validateDrawnNumbersPattern(List<String> drawn_lines) {
-        String winning_number_line = drawn_lines.get(ZERO.getIntValue()).trim();
-        String bonus_number_line = drawn_lines.get(ONE.getIntValue()).trim();
+        String winning_number_line = drawn_lines.get(ZERO_INDEX.getIntValue());
+        String bonus_number_line = drawn_lines.get(ONE_INDEX.getIntValue());
 
         if (!winning_number_line.matches(REGEX_WINNING_NUMBER_FORMAT.getValue())) {
             throw new IllegalArgumentException(DRAW_LOTTO_FORMAT_ERROR.getMessage());
@@ -56,7 +60,7 @@ public class LottoDrawingMachine {
         if (all_drawn_numbers.stream()
                 .filter(LottoDrawingMachine::validateDrawnNumberRange)
                 .distinct()
-                .count() != SEVEN.getIntValue()) {
+                .count() != ALL_DRAWN_NUMBERS_LENGTH.getIntValue()) {
             throw new IllegalArgumentException(DRAW_LOTTO_RANGE_ERROR.getMessage());
         }
     }
@@ -65,29 +69,57 @@ public class LottoDrawingMachine {
         List<Integer> winning_line = makeWinning_numbers(drawn_lines);
         int bonus_line = makeBonus_number(drawn_lines);
 
-        return Stream.concat(
-                winning_line.stream(), Stream.of(bonus_line)
-                ).collect(Collectors.toList());
+        return Stream.concat(winning_line.stream(), Stream.of(bonus_line))
+                .collect(Collectors.toList());
     }
 
     private static List<Integer> makeWinning_numbers(List<String> drawn_lines) {
-        return Arrays.stream(drawn_lines.get(ZERO.getIntValue()).split(","))
+        return Arrays.stream(drawn_lines.get(ZERO_INDEX.getIntValue()).split(","))
                 .map(Integer::parseInt)
                 .sorted()
                 .collect(Collectors.toList());
     }
 
     private static int makeBonus_number(List<String> drawn_lines) {
-        return Integer.parseInt(drawn_lines.get(ONE.getIntValue()));
+        return Integer.parseInt(drawn_lines.get(ONE_INDEX.getIntValue()));
     }
 
     private static boolean validateDrawnNumberRange(int num) {
-        return num > ZERO.getIntValue() && num <= FOURTY_FIVE.getIntValue();
+        return num >= LOTTO_NUMBER_MIN.getIntValue() && num <= LOTTO_NUMBER_MAX.getIntValue();
     }
 
-//    public static int calculatePrize(Lotto lotto) {
-//        lotto.getNumbers()
-//                .stream().
-//
-//    }
+    public static int calculatePrize(Lotto lotto) {
+        List<Integer> lotto_numbers = lotto.getNumbers();
+
+        List<Integer> concat_numbers =
+                Stream.concat(lotto_numbers.stream(), winning_numbers.stream())
+                        .collect(Collectors.toList());
+
+        int matched_count = countLottoNumberDistinct(concat_numbers);
+
+        if (matched_count == THIRD_GRADE_NUMBER.getIntValue()) {
+            return checkBonusNumber(lotto_numbers);
+        }
+        return matched_count;
+    }
+
+    private static int checkBonusNumber(List<Integer> lotto_numbers) {
+        int bonus_matched =
+                (int) lotto_numbers.stream()
+                        .filter(num -> num == bonus_number)
+                        .count();
+
+        if (bonus_matched == BONUS_NUMBER_MATCHED.getIntValue()) {
+            return SECOND_GRADE_NUMBER.getIntValue();
+        }
+        return THIRD_GRADE_NUMBER.getIntValue();
+    }
+
+
+    private static int countLottoNumberDistinct(List<Integer> concat_numbers) {
+        return concat_numbers.size() -
+                (int) concat_numbers.stream()
+                        .distinct()
+                        .count();
+    }
 }
