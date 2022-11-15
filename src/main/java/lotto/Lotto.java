@@ -42,7 +42,7 @@ public class Lotto {
     }
 
     private int compareNumber(Lotto target) {
-        List<Integer> integers = this.numbers;
+        ArrayList<Integer> integers = new ArrayList<>(this.numbers);
         integers.retainAll(target.numbers);
         return integers.size();
     }
