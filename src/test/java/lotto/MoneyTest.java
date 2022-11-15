@@ -1,10 +1,13 @@
 package lotto;
 
 import static lotto.constant.Rules.LOTTO_PRICE;
+import static lotto.money.Money.calculateEarning;
 import static lotto.money.Money.createPurchaseMoney;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
+import java.util.ArrayList;
+import java.util.List;
 import lotto.exception.money.PurchaseMoneyNotDividedByPriceException;
 import lotto.exception.money.PurchaseMoneyNotPositiveIntegerException;
 import lotto.exception.money.PurchaseMoneyRangeException;
@@ -64,5 +67,14 @@ public class MoneyTest {
                 .isInstanceOf(PurchaseMoneyNotPositiveIntegerException.class);
         assertThatThrownBy(() -> createPurchaseMoney("abc"))
                 .isInstanceOf(PurchaseMoneyNotPositiveIntegerException.class);
+    }
+
+    @DisplayName("총 수익은 당첨금의 총합과 같다.")
+    @Test
+    void earningIsEqualToSumOfWinningMoney() {
+        List<Money> winningMoney = new ArrayList<>();
+        winningMoney.add(new Money(1000));
+        winningMoney.add(new Money(400));
+        assertThat(calculateEarning(winningMoney).getMoney()).isEqualTo(1400);
     }
 }
