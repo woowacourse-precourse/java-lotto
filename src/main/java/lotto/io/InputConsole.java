@@ -5,6 +5,6 @@ public class InputConsole implements Input{
 
     @Override
     public String scan() {
-        return readLine();
+        return readLine().trim();
     }
 }
