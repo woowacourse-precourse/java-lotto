@@ -6,8 +6,6 @@ import lotto.domain.LottoGenerator;
 import lotto.domain.LottoReference;
 import lotto.domain.WinningNumber;
 
-import java.util.NoSuchElementException;
-
 public class Application {
     public static void main(String[] args) {
         LottoGenerator lottoGenerator;
@@ -18,15 +16,15 @@ public class Application {
         System.out.println("구입금액을 입력해주세요.");
         String purchaseAmount = Console.readLine();
         for (int i = 0; i < purchaseAmount.length(); i++) {
-            int check = purchaseAmount.charAt(i);
-
-            if (check < 48 || check > 58) {
-                System.out.println("[ERROR]");
-                // 우선 이렇게하고 커밋
-                throw new NoSuchElementException("[ERROR]");
+            char check = purchaseAmount.charAt(i);
+            try {
+                checkNotIntDetect(check);
+            } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
+                return;
             }
         }
-        lottoGenerator = new LottoGenerator(purchaseAmount);
+        lottoGenerator = new LottoGenerator(Integer.parseInt(purchaseAmount));
         int generateCount = lottoGenerator.getGenerateCount();
         Lotto[] lottoGroup = new Lotto[generateCount];
         for (int i = 0; i < generateCount; i++) {
@@ -42,7 +40,6 @@ public class Application {
         String winInputNumber = Console.readLine();
         System.out.println("보너스 번호를 입력해 주세요.");
         String bonusInputNumber = Console.readLine();
-        
         winningNumber = new WinningNumber(winInputNumber, Integer.parseInt(bonusInputNumber));
 
         for (int i = 0; i < generateCount; i++) {
@@ -58,5 +55,11 @@ public class Application {
             }
         }
         System.out.println("총 수익률은 " + Math.round((double) totalProfit / Integer.parseInt(purchaseAmount)* 1000) / 10.0 + "%입니다.");
+    }
+
+    public static void checkNotIntDetect(char charUnit) throws IllegalArgumentException{
+        if ((int) charUnit < 48 || (int) charUnit > 58) {
+            throw new IllegalArgumentException("[ERROR]");
+        }
     }
 }
