@@ -13,18 +13,18 @@ public class LottoPurchaseMoney {
         this.lottoPurchaseMoney = lottoPurchaseMoney;
     }
 
-    public void validateLottoPurchaseMoney(int lottoPurchaseMoney) {
+    private void validateLottoPurchaseMoney(int lottoPurchaseMoney) {
         validateMoneyMoreThanLottoPrice(lottoPurchaseMoney);
         validateMoneyIsMultipleLottoPrice(lottoPurchaseMoney);
     }
 
-    public void validateMoneyMoreThanLottoPrice(int lottoPurchaseMoney) {
+    private void validateMoneyMoreThanLottoPrice(int lottoPurchaseMoney) {
         if (lottoPurchaseMoney < A_LOTTO_PRICE) {
             throw new IllegalArgumentException(ERR_MONEY_MORE_THAN_A_LOTTO_PRICE);
         }
     }
 
-    public void validateMoneyIsMultipleLottoPrice(int lottoPurchaseMoney) {
+    private void validateMoneyIsMultipleLottoPrice(int lottoPurchaseMoney) {
         if (lottoPurchaseMoney % A_LOTTO_PRICE != 0) {
             throw new IllegalArgumentException(ERR_MONEY_UNFIT_A_LOTTO_PRICE);
         }
