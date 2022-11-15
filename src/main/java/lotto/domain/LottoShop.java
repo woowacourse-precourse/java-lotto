@@ -1,9 +1,9 @@
 package lotto.domain;
 
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
 import lotto.ERROR;
+import lotto.ui.LottoShopView;
 
 public class LottoShop {
 
@@ -13,7 +13,11 @@ public class LottoShop {
         validate(money);
 
         int purchaseQuantity = getPurchaseQuantity(money);
-        return createLottos(purchaseQuantity);
+        List<Lotto> lottos = createLottos(purchaseQuantity);
+
+        printLotto(lottos);
+
+        return lottos;
     }
 
     private void validate(int money) {
@@ -33,5 +37,10 @@ public class LottoShop {
             lottos.add(new Lotto(lottoNumbers));
         }
         return lottos;
+    }
+
+    private void printLotto(List<Lotto> lottos) {
+        LottoShopView.printLottos(lottos);
+        LottoShopView.printLottos(lottos);
     }
 }
