@@ -1,8 +1,7 @@
 package lotto;
 
-import lotto.domain.Calculator;
+import lotto.domain.InputNumber;
 import lotto.domain.PurchaseLotto;
-import lotto.view.LottoView;
 
 public class Application {
     public static void main(String[] args) {
@@ -11,8 +10,8 @@ public class Application {
         purchaseLotto.inputAmount();
 
         // 로또 번호와 보너스 번호 입력받기
-        Calculator calculator = new Calculator();
-        calculator.getInputNumbers();
+        InputNumber inputNumber = new InputNumber();
+        inputNumber.getInputNumbers();
 
     }
 }

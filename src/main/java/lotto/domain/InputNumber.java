@@ -6,7 +6,7 @@ import lotto.view.LottoView;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Calculator {
+public class InputNumber {
     // 입력받은 번호 가져오기
     public static void getInputNumbers() {
         List<Integer> winningNumbers = inputWinningNumber();
@@ -36,9 +36,5 @@ public class Calculator {
 
         return Validator.validateBonus(inputNumber);
     }
-
-    // 당첨 번호와 발행 로또 번호 비교
-
-    // 보너스 번호와 발행 로또 번호 비교
 
 }
