@@ -1,11 +1,14 @@
-package lotto.domain;
+package lotto.ui;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
+import lotto.domain.*;
+import lotto.resource.ErrorResource;
+import lotto.resource.Resource;
 
 import java.util.*;
 
-import static lotto.domain.ErrorResource.charIsNotNumber;
+import static lotto.resource.ErrorResource.charIsNotNumber;
 
 public class Game {
 

@@ -1,6 +1,7 @@
 package lotto.domain;
 
-import javax.swing.*;
+import lotto.resource.Resource;
+
 import java.util.*;
 
 public class JudgeMent {

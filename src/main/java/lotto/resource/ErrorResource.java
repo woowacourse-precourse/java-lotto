@@ -1,4 +1,4 @@
-package lotto.domain;
+package lotto.resource;
 
 public class ErrorResource {
     public static final String errorStart = "[ERROR]";

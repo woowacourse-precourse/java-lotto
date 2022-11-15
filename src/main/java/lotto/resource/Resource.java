@@ -1,4 +1,4 @@
-package lotto.domain;
+package lotto.resource;
 
 public class Resource {
     public static final String greetings ="구입금액을 입력해주세요.";

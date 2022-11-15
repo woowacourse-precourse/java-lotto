@@ -1,5 +1,8 @@
 package lotto.domain;
 
+import lotto.resource.ErrorResource;
+import lotto.resource.Resource;
+
 import java.util.ArrayList;
 import java.util.List;
 
