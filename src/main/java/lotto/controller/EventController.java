@@ -7,6 +7,8 @@ import lotto.model.User;
 import lotto.view.InputView;
 import lotto.view.OutputView;
 
+import java.util.List;
+
 public class EventController {
 
     private User user;
@@ -30,5 +32,12 @@ public class EventController {
         user.setTickets();
 
         OutputView.printNumberOfEachLotto(user.getTickets());
+    }
+
+    public void createLotto() {
+        List<Integer> lottoNumbers = InputView.inputLottoNumber();
+        lotto = new Lotto(lottoNumbers);
+        Integer bonusLottoNumber = InputView.inputBonusNumber(lottoNumbers);
+        bonusLotto = new BonusLotto(bonusLottoNumber);
     }
 }
