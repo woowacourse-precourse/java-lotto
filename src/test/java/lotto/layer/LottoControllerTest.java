@@ -38,4 +38,18 @@ class LottoControllerTest {
         // expect
         assertThatThrownBy(lottoController::getStatistics).isInstanceOf(IllegalArgumentException.class);
     }
+
+    @DisplayName("잘못된 숫자로 보너스 번호를 입력한 경우 예외를 발생한다")
+    @ParameterizedTest
+    @CsvSource({
+            "as", "1a", "a1", "0-"
+    })
+    void getStatisticsByIllegalNumberFormatBonusNumberValue(String input) {
+        // given
+        Mockito.when(inputView.requestLotto()).thenReturn("1000");
+        Mockito.when(inputView.requestBonusNumber()).thenReturn(input);
+
+        // expect
+        assertThatThrownBy(lottoController::getStatistics).isInstanceOf(IllegalArgumentException.class);
+    }
 }
