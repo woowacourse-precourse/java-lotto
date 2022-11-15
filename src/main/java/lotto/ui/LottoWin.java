@@ -25,6 +25,10 @@ public enum LottoWin {
         System.out.println(winningDetail);
     }
 
+    public int getWinningAmount(int count) {
+        return this.money * count;
+    }
+
     public static LottoWin getWinPlace(long count, boolean hasBonusNumber) {
         if (count == 6) {
             return LottoWin.FIRST_PLACE;

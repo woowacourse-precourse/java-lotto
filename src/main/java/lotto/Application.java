@@ -51,4 +51,18 @@ public class Application {
         Guide.WINNING_STATISTICS.print();
         result.forEach((LottoWin::print));
     }
+
+    private static double getYield(LinkedHashMap<LottoWin, Integer> result, int purchaseAmount) {
+        double totalWinningAmount = 0;
+        for (Entry<LottoWin, Integer> entry : result.entrySet()) {
+            LottoWin lottoWin = entry.getKey();
+            Integer count = entry.getValue();
+            totalWinningAmount += lottoWin.getWinningAmount(count);
+        }
+        return (totalWinningAmount - purchaseAmount) / purchaseAmount;
+    }
+
+    private static void printYield(double yield) {
+        System.out.printf("총 수익률은 %.1f%%입니다.%n", yield);
+    }
 }
