@@ -40,7 +40,6 @@ public class User {
         ValidationPurchasePrice validationPurchasePrice = ValidationPurchasePrice.validate(money);
         if (validationPurchasePrice.getIsThrow()) {
             String errorMessage = validationPurchasePrice.getErrorMessage();
-            System.out.println(errorMessage);
             throw new IllegalArgumentException(errorMessage);
         }
     }

@@ -16,7 +16,6 @@ public class Lotto {
         ValidationLottoNumbers validationLottoNumbers = ValidationLottoNumbers.validate(numbers);
         if (validationLottoNumbers.getIsThrow()) {
             String errorMessage = validationLottoNumbers.getErrorMessage();
-            System.out.println(errorMessage);
             throw new IllegalArgumentException(errorMessage);
         }
     }
