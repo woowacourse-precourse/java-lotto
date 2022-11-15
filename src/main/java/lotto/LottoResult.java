@@ -31,7 +31,7 @@ public class LottoResult {
             if (lottoOperator == LottoOperator.NO_LUCK) {
                 continue;
             }
-            prizeMoney += lottoOperator.getWinningAmount() * result.get(lottoOperator);
+            prizeMoney += lottoOperator.calculateWinningAmount(result.get(lottoOperator));
         }
         return (prizeMoney / lottoAmount) * 100;
     }

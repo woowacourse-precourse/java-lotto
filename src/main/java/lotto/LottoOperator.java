@@ -30,6 +30,10 @@ public enum LottoOperator {
                 .orElse(NO_LUCK);
     }
 
+    public double calculateWinningAmount(int count) {
+        return (double) this.winningAmount * count;
+    }
+
     private static boolean checkBonus(int count, boolean bonus) {
         return count == 5 && bonus;
     }
