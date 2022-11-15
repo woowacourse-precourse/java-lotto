@@ -9,9 +9,11 @@ import java.util.List;
 
 public class LottoMachine {
     private final int LOTTO_PRICE = 1000;
+    private final int [] PRIZE = {0, 2000000000, 30000000, 1500000, 50000, 5000};
     private int paid;
     private ArrayList<Lotto> lottos = new ArrayList<>();
     private int[] result;
+    private int revenue;
 
     public LottoMachine() {
     }
@@ -62,5 +64,21 @@ public class LottoMachine {
             }
             result[rank] += 1;
         }
+        calculateRevenue();
+    }
+    public void calculateRevenue() {
+        for(int i = 1; i < result.length; i++)  {
+            revenue += PRIZE[i] * result[i];
+        }
+    }
+    public void printResult() {
+        System.out.println("당첨 통계");
+        System.out.println("---");
+        System.out.println("3개 일치 (5,000원) - " + result[5] + "개");
+        System.out.println("4개 일치 (50,000원) - " + result[4] + "개");
+        System.out.println("5개 일치 (1,500,000원) - " + result[3] + "개");
+        System.out.println("5개 일치, 보너스 볼 일치(30,000,000원) - " + result[2] + "개");
+        System.out.println("6개 일치(2,000,000,000원) - " + result[1] + "개");
+        System.out.println("총 수익률은 " + revenue + "%입니다.");
     }
 }
