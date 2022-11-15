@@ -28,8 +28,7 @@ public class Application {
 
             getWinningLottoNumber();
 
-            printNotifyMessage(BONUS_NUMBER_INPUT_MESSAGE);
-            String bonusNumberInput = Console.readLine();
+            Integer bonusNumber = getBonusNumber();
 
             printNotifyMessage(WINNING_STAT_MESSAGE);
 
@@ -38,6 +37,14 @@ public class Application {
         }
     }
 
+    private static Integer getBonusNumber() {
+        printNotifyMessage(BONUS_NUMBER_INPUT_MESSAGE);
+        String bonusNumberInput = Console.readLine();
+
+        Integer bonusNum = convertibleInputToInt(bonusNumberInput);
+        validateNumRange(bonusNum);
+        return bonusNum;
+    }
 
     private static Integer getAmountInput(String message) throws IllegalArgumentException {
         printNotifyMessage(message);
@@ -73,14 +80,14 @@ public class Application {
     }
 
     private static void validateSplitNumber(String[] splitNumbers) {
-        if(splitNumbers.length != 6) {
+        if (splitNumbers.length != 6) {
             throw new IllegalArgumentException("[ERROR] 당첨 번호 6개를 정확히 입력해주세요.");
         }
     }
 
     private static Lotto convertToLotto(String[] splitNumbers) {
         List<Integer> numbers = new ArrayList();
-        for(String eachNum : splitNumbers) {
+        for (String eachNum : splitNumbers) {
             Integer number = convertibleInputToInt(eachNum);
             validateNumRange(number);
 
@@ -91,11 +98,11 @@ public class Application {
     }
 
     private static void validateNumRange(Integer num) {
-        if(num <= 0) {
+        if (num <= 0) {
             throw new IllegalArgumentException("[ERROR] 0이하의 숫자는 당첨번호가 될 수 없습니다.");
         }
 
-        if(num > 45) {
+        if (num > 45) {
             throw new IllegalArgumentException("[ERROR] 45보다 큰 숫자는 당첨번호가 될 수 없습니다.");
         }
     }
@@ -108,16 +115,16 @@ public class Application {
 
         } catch (NumberFormatException e) {
 
-            throw new IllegalArgumentException("[ERROR]");
+            throw new IllegalArgumentException("[ERROR] 숫자를 입력하세요.");
         }
     }
 
     private static void validateWinningNumberInput(String winningNumberInput) {
-        if(winningNumberInput.isBlank()) {
+        if (winningNumberInput.isBlank()) {
             throw new IllegalArgumentException("[ERROR] 올바른 당첨 번호를 입력해주세요.");
         }
 
-        if(winningNumberInput.length() > 17) {
+        if (winningNumberInput.length() > 17) {
             throw new IllegalArgumentException("[ERROR] 당첨 번호 입력길이를 초과했습니다.");
         }
     }
