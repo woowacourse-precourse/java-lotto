@@ -24,6 +24,7 @@ public class Domain {
 
     private static final List<Lotto> lottoList = new ArrayList<>();
     private static List<String> winningNumbers = new ArrayList<>();
+    private static int bonusNumber;
 
     // TODO: 티켓 구매 루틴을 실행한다.
     public void buyTicket(){
@@ -54,6 +55,12 @@ public class Domain {
     private static void initializationWinningNumbers() {
         System.out.println(ENTER + INPUT_WINNING_NUMBERS);
         winningNumbers = Exception.validateWinningNumbers(Console.readLine());
+    }
+
+    // TODO: bonusNumber 변수를 초기화 한다.
+    private static void initializationBonusNumber() {
+        System.out.println(ENTER + INPUT_BONUS_NUMBER);
+        bonusNumber = Integer.parseInt(Exception.validateBonusNumber(Console.readLine()));
     }
 
     // TODO: lottoList를 초기화 한다.
