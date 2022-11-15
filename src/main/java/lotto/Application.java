@@ -11,6 +11,5 @@ public class Application {
         for (Lotto lotto : lottos) {
             OutputView.printLotto(lotto.getNumbers().toString());
         }
-        new WinningLotto(InputView.inputWinningLotto(), InputView.inputBonusNumber());
     }
 }
