@@ -6,7 +6,7 @@ import lotto.system.RandomLottoSystem;
 import lotto.system.SettlementSystem;
 
 public class LottoGame {
-
+    private static final String ERROR_UN_SOLVING = "[ERROR] + %s";
     private final IoSystem io;
 
     public LottoGame(IoSystem ioSystem) {
@@ -14,14 +14,17 @@ public class LottoGame {
     }
 
     public void execute() {
-        try{
+        try {
             this.executeProcess();
-        }catch (IllegalArgumentException exception){
+        } catch (IllegalArgumentException exception) {
             io.println(exception.getMessage());
+        } catch (Exception | OutOfMemoryError exception) {
+            io.println(String.format(ERROR_UN_SOLVING, exception.getMessage()));
         }
 
     }
-    private void executeProcess(){
+
+    private void executeProcess() {
         var randomLottoSystem = new RandomLottoSystem(io);
         var answerLottoSystem = new AnswerLottoSystem(io);
         var settlementSystem = new SettlementSystem(io);
