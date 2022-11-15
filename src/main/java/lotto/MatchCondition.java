@@ -8,6 +8,24 @@ import java.util.List;
 public class MatchCondition {
 
 
+
+    public int resultPlace(int count, boolean bonus){
+        if(count == 6){
+            return 0;
+        }
+        if(count == 5 && bonus){
+            return 1;
+        }
+        if(count == 5){
+            return 2;
+        }
+        if(count == 4){
+            return 3;
+        }
+        return 4;
+    }
+
+
     public boolean matchBonusNumber(int bonusNumber, List<Lotto> userLottosNumber){
         int count = 0;
         for(int i = 0; i<userLottosNumber.size(); i++){
