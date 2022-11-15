@@ -5,6 +5,7 @@ import lotto.domain.Lotto;
 import lotto.constant.Rank;
 
 import java.math.BigDecimal;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
@@ -37,16 +38,8 @@ public class Emcee {
     public void showStatistics(Map<Rank, Integer> tallyOfRanks) {
         System.out.println("\n당첨 통계입니다.");
         System.out.println("=========================");
-        System.out.println("3개 일치 (5,000원) - "
-                + tallyOfRanks.getOrDefault(Rank.FIFTH_THREE_MATCHED, 0) + "개");
-        System.out.println("4개 일치 (50,000원) - "
-                + tallyOfRanks.getOrDefault(Rank.FOURTH_FOUR_MATCHED, 0) + "개");
-        System.out.println("5개 일치 (1,500,000원) - "
-                + tallyOfRanks.getOrDefault(Rank.THIRD_FIVE_MATCHED, 0) + "개");
-        System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - "
-                + tallyOfRanks.getOrDefault(Rank.SECOND_FIVE_WITH_BONUS, 0) + "개");
-        System.out.println("6개 일치 (2,000,000,000원) - "
-                + tallyOfRanks.getOrDefault(Rank.FIRST_SIX_MATCHED, 0) + "개");
+        Arrays.stream(Rank.values()).forEach(value ->
+                System.out.println(value + " - " + tallyOfRanks.getOrDefault(value, 0) + "개"));
         System.out.println("=========================");
     }
 
