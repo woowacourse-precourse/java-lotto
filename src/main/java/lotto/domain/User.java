@@ -39,7 +39,7 @@ public class User {
     public int validate(String inputMoney) {
         try {
             return Integer.parseInt(inputMoney);
-        } catch (NumberFormatException e) {
+        } catch (IllegalArgumentException e) {
             System.out.println(INPUT_NOTNUMBER_ERROR);
             return GAMEOVER;
         }
