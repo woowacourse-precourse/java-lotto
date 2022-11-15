@@ -38,6 +38,12 @@ public class Service {
         if(!input.contains(",")){
             throw new IllegalArgumentException("[ERROR] 올바른 형식이 아닙니다.");
         }
+
+        String[] winningNumbers = input.split(",");
+
+        if(winningNumbers.length != 6){
+            throw new IllegalArgumentException("[ERROR] 6개의 숫자를 입력해주세요.");
+        }
         return input;
     }
 }
