@@ -30,6 +30,8 @@ public class LottoController {
         lottoList = makeLottoList(ticketCount);
         winningResult = validateBonus();
 
+        lottoResult(lottoList,winningResult,ticketCount);
+
     }
 
     public int inputPlayerAmount(){
@@ -67,6 +69,33 @@ public class LottoController {
         return new Lotto(lotto);
     }
 
+    private void lottoResult(List<Lotto> lottoList, WinningResult winningLotto, int amount) {
+        Map<Ranking, Integer> result = setResult();
+        Ranking rank;
+
+        OutputView.printSuccessResult();
+        for (int i = 0; i < lottoList.size(); i++) {
+            rank = winningLotto.match(lottoList.get(i));
+            result.put(rank, result.get(rank) + 1);
+        }
+        printResult(result);
+    }
+
+    private void printResult(Map<Ranking, Integer> result) {
+        for (int i = Ranking.values().length - 1; i >= 0; i--) {
+            Ranking.values()[i].printMessage(result.get(Ranking.values()[i]));
+        }
+    }
+
+
+    private Map<Ranking, Integer> setResult() {
+        Map<Ranking, Integer> result = new LinkedHashMap<>();
+
+        for (Ranking rank : Ranking.values()) {
+            result.put(rank, 0);
+        }
+        return result;
+    }
 
 }
 
