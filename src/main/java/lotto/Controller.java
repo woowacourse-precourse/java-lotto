@@ -1,6 +1,7 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
+import lotto.UI.Text;
 import lotto.UI.View;
 import lotto.domain.Game;
 import lotto.domain.Lotto;
@@ -16,6 +17,24 @@ public class Controller {
         this.game = game;
         this.user = user;
         this.view = view;
+    }
+
+
+    public void setBudget(){
+        view.printMessage(Text.BUDGET_INPUT);
+        String budgetInput = Console.readLine();
+        validateBudget(budgetInput);
+        user.setBudget(Integer.parseInt(budgetInput));
+
+    }
+
+    private void validateBudget(String budgetInput){
+        try {
+            Integer.parseInt(budgetInput);
+        }
+        catch (Exception exception){
+            throw new IllegalArgumentException();
+        }
     }
 
 
