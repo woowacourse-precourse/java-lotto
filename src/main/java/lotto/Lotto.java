@@ -4,6 +4,7 @@ import java.util.List;
 
 public class Lotto {
     private final List<Integer> numbers;
+    private final Integer LottoSize = 6;
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
@@ -16,5 +17,16 @@ public class Lotto {
         }
     }
 
-    // TODO: 추가 기능 구현
+    public int get_CorrectNumbers(Lotto WinningNumber, int bonus){
+        int count = 0;
+        for(int i = 0; i < LottoSize; i++){
+            if(numbers.contains(WinningNumber.numbers.get(i))) 
+            count++;
+        }
+
+        //have 6 numbers include bonus number
+        if(count == 5 && numbers.contains(bonus))
+            count = 7;
+        return count;
+    }
 }
