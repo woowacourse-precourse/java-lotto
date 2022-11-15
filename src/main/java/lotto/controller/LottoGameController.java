@@ -26,7 +26,13 @@ public class LottoGameController {
         lottoGameView.noticeLotteries(lottoGenerator.toString());
     }
     public void checkLotteryWin(){
+        lottoGameView.askRaffleNumbers();
+        lottoGameView.askBonusNumber();
 
+        raffleNumber.create(lottoGameView.getRaffleNumbers(), lottoGameView.getBonusNumber());
+
+        discriminator.initialize(raffleNumber);
+        discriminator.discriminate(lottoGenerator.getLottoOfBuyer());
     }
     public void figureOutWinStatics(){
 
