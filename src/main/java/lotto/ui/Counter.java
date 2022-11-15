@@ -1,6 +1,7 @@
 package lotto.ui;
 
 import camp.nextstep.edu.missionutils.Console;
+import lotto.domain.Lotto;
 
 public class Counter {
     private static final String inputAmountMessage = "구입 금액을 입력해 주세요.";
@@ -22,7 +23,7 @@ public class Counter {
     }
 
     private int validation(int price) {
-        if (price % 1000 != 0)
+        if (price % Lotto.lottoPrice != 0)
             throw new IllegalArgumentException("[ERROR] 구입 금액은 1,000원 단위로 입력해야 합니다.");
         return price;
     }

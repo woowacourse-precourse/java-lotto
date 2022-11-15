@@ -7,9 +7,10 @@ import java.util.Set;
 import java.util.HashSet;
 
 public class Lotto {
-    private static final int lottoMinNumber = 1;
-    private static final int lottoMaxNumber = 45;
-    private static final int lottoLength = 6;
+    public static final int lottoMinNumber = 1;
+    public static final int lottoMaxNumber = 45;
+    public static final int lottoLength = 6;
+    public static final int lottoPrice = 1000;
 
     private final List<Integer> numbers;
 
