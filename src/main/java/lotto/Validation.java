@@ -42,7 +42,6 @@ public class Validation {
     private static void checkNumberFormat(String str) {
         for (int i = 0; i < str.length(); i++) {
             if (!isNumber(str.charAt(i))) {
-                System.out.println(ErrorType.INVALID_FORMAT.getErrorMsg());
                 throw new IllegalArgumentException(ErrorType.INVALID_FORMAT.getErrorMsg());
             }
         }
@@ -55,14 +54,12 @@ public class Validation {
     private static void checkValidPurchaseCost(String str) {
         int cost = Integer.parseInt(str);
         if ((cost % Lotto.LOTTO_PRICE) != 0) {
-            System.out.println(ErrorType.INVALID_PURCHASE_COST.getErrorMsg());
             throw new IllegalArgumentException(ErrorType.INVALID_PURCHASE_COST.getErrorMsg());
         }
     }
 
     private static void checkValidLength(List<String> str) {
         if (str.size() != Lotto.LOTTO_NUMBER_SIZE) {
-            System.out.println(ErrorType.INVALID_LENGTH.getErrorMsg());
             throw new IllegalArgumentException(ErrorType.INVALID_LENGTH.getErrorMsg());
         }
     }
@@ -72,7 +69,6 @@ public class Validation {
 
         for (String winningNumber : numbers) {
             if (storedNumbers.contains(winningNumber)) {
-                System.out.println(ErrorType.DUPLICATED_NUMBER.getErrorMsg());
                 throw new IllegalArgumentException(ErrorType.DUPLICATED_NUMBER.getErrorMsg());
             }
             storedNumbers.add(winningNumber);
@@ -83,7 +79,6 @@ public class Validation {
         int number = Integer.parseInt(str);
 
         if (!isValidRange(number)) {
-            System.out.println(ErrorType.INVALID_RANGE.getErrorMsg());
             throw new IllegalArgumentException(ErrorType.INVALID_RANGE.getErrorMsg());
         }
     }

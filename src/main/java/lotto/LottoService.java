@@ -10,21 +10,21 @@ public class LottoService {
     private final ArrayList<Lotto> purchasedLotto = new ArrayList<>();
 
     public void startLotto() {
-        purchaseLotto();
-        selectWinningNumbers();
-        selectBonusNumber();
+        try {
+            purchaseLotto();
+            selectWinningNumbers();
+            selectBonusNumber();
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+            return;
+        }
+
         notifyResult();
     }
 
     private void purchaseLotto() {
         ConsoleMessage.START.printMsg();
-        int lottoCount = 0;
-        try {
-            lottoCount = player.getLottoCountPurchased();
-        } catch (IllegalArgumentException e) {
-            purchaseLotto();
-            return;
-        }
+        int lottoCount = player.getLottoCountPurchased();
 
         createAllLotto(lottoCount);
         ConsoleMessage.PURCHASE.printLottoMsg(purchasedLotto);
@@ -39,22 +39,12 @@ public class LottoService {
 
     private void selectWinningNumbers() {
         ConsoleMessage.WINNING_NUMBER.printMsg();
-        try {
-            player.selectWinningNumbers();
-        } catch (IllegalArgumentException e) {
-            selectWinningNumbers();
-            return;
-        }
+        player.selectWinningNumbers();
     }
 
     private void selectBonusNumber() {
         ConsoleMessage.BONUS_NUMBER.printMsg();
-        try {
-            player.selectBonusNumber();
-        } catch (IllegalArgumentException e) {
-            selectBonusNumber();
-            return;
-        }
+        player.selectBonusNumber();
     }
 
     private void notifyResult() {
