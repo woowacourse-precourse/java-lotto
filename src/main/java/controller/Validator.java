@@ -8,18 +8,18 @@ public class Validator {
     public static final int LOTTO_SIZE = 6;
     public static final int BONUS_SIZE = 1;
 
-    public static int isNumber(String purchasingMoney) {
+    public static int isNumber(String purchasingMoney,Error error) {
         for(int i=0; i < purchasingMoney.length(); i++) {
             if (!Character.isDigit(purchasingMoney.charAt(i))) {
-                throw new IllegalArgumentException();
+                throw new IllegalArgumentException(error.getMsg());
             }
         }
         return Integer.parseInt(purchasingMoney);
     }
 
-    public static void isDivideBy1000(int money) {
+    public static void isDivideBy1000(int money,Error error) {
         if(money % ONE_THOUSAND != 0) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(error.getMsg());
         }
     }
 

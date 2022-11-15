@@ -12,49 +12,30 @@ public class InputController {
     public WinningNumber winningNumber = new WinningNumber(List.of());
 
     public int inputMoney() {
-        while (true) {
-            try {
-                InputView.pushPurchasingMoney();
-                String purchasingMoney = Console.readLine();
-                int money = Validator.isNumber(purchasingMoney);
-                Validator.isDivideBy1000(money);
-                return money;
-            } catch(IllegalArgumentException e) {
-                InputView.showMoneyError();
-            }
-        }
+        InputView.pushPurchasingMoney();
+        String purchasingMoney = Console.readLine();
+        Validator.isNumber(purchasingMoney,Error.NUMBER);
+        int money = Integer.parseInt(purchasingMoney);
+        Validator.isDivideBy1000(money,Error.THOUSAND);
+        return money;
     }
 
     public List<Integer> inputWinningNumber() {
-        while (true) {
-            try {
-                InputView.pushWinningNumber();
-                String numbers = Console.readLine();
-                String[] pureNumbers = numbers.split(",");
-                Validator.validateWinningNumber(pureNumbers);
-                List<Integer> winningNumbers = splitOneByOne(pureNumbers);
-                winningNumber = new WinningNumber(winningNumbers);
-                return winningNumber.getWinningNumbers();
-            }  catch (IllegalArgumentException e) {
-                System.out.println(e);
-                throw new IllegalArgumentException();
-            }
-        }
+        InputView.pushWinningNumber();
+        String numbers = Console.readLine();
+        String[] pureNumbers = numbers.split(",");
+        Validator.validateWinningNumber(pureNumbers);
+        List<Integer> winningNumbers = splitOneByOne(pureNumbers);
+        winningNumber = new WinningNumber(winningNumbers);
+        return winningNumber.getWinningNumbers();
     }
 
     public int inputBonusNumber() {
-        while (true) {
-            try {
-                InputView.pushBonusNumber();
-                String number = Console.readLine();
-                int bonusNumber = Validator.validateBonusNumber(number);
-                winningNumber.hasBeenBonusNumber(bonusNumber, Error.ONLY_ONE);
-                return bonusNumber;
-            } catch (IllegalArgumentException e) {
-                System.out.println(e);
-                throw new IllegalArgumentException();
-            }
-        }
+        InputView.pushBonusNumber();
+        String number = Console.readLine();
+        int bonusNumber = Validator.validateBonusNumber(number);
+        winningNumber.hasBeenBonusNumber(bonusNumber, Error.ONLY_ONE);
+        return bonusNumber;
     }
 
     public List<Integer> splitOneByOne(String[] pureNumbers) {
