@@ -18,4 +18,8 @@ public class OutputView {
     public void printBonusNumberMessage() {
         System.out.println("보너스 번호를 입력해 주세요.");
     }
+
+    public void printAmountOfLottoMessage(int amountOfLotto) {
+        System.out.println(amountOfLotto + "개를 구매했습니다.");
+    }
 }
