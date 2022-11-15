@@ -45,6 +45,9 @@ public class LottoService {
         if (money % lottoPrice != 0) {
             throw new IllegalArgumentException(String.format("[ERROR] %d원 단위의 금액을 입력해주세요.", lottoPrice));
         }
+        if (money <= 0) {
+            throw new IllegalArgumentException("[ERROR] 금액은 양수만 입력해주세요.");
+        }
     }
 
 }
