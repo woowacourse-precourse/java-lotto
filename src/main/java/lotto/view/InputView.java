@@ -11,9 +11,9 @@ import java.util.stream.Collectors;
 public class InputView {
     static final String EMPTY_VALUE_ERROR_MESSAGE = ErrorMessage.EMPTY_VALUE.getErrorMessage();
     static final String NOT_NUMBER_ERROR_MESSAGE = ErrorMessage.NOT_NUMBER.getErrorMessage();
+    static final String MISSING_VALUE_ERROR_MESSAGE = ErrorMessage.MISSING_VALUE.getErrorMessage();
     static final String WINNING_NUMBER_REQUEST = InputGuidePhrase.WINNING_NUMBER_REQUEST.getPhrase();
     static final String BONUS_NUMBER_REQUEST = InputGuidePhrase.BONUS_NUMBER_REQUEST.getPhrase();
-    static final String EMPTY_VALUE_IN_WINNING_NUMBER = ErrorMessage.MISSING_VALUE.getErrorMessage();
     static final String WINNING_NUMBER_DELIMITER = ",";
 
     public static int takeMoneyInput() throws IllegalArgumentException {
@@ -54,7 +54,7 @@ public class InputView {
 
         List<String> numbers = divideByDelimiter(input);
         if (ViewValidator.hasEmptyValue(numbers)) {
-            throw new IllegalArgumentException(EMPTY_VALUE_IN_WINNING_NUMBER);
+            throw new IllegalArgumentException(MISSING_VALUE_ERROR_MESSAGE);
         }
 
         if (ViewValidator.hasNonNumericValue(numbers)) {
