@@ -3,7 +3,6 @@ package lotto.model;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import lotto.constant.Constant;
 import lotto.util.Convertor;
 
 /*
@@ -15,15 +14,15 @@ public class Service {
 
     private final int lottoAmount;
     private final List<List<Integer>> lottoNumbers;
-    private final List<Integer> playerLottoNumbers;
-    private final int playerBonusNumber;
+    private final List<Integer> winningLottoNumbers;
+    private final int winningBonusNumber;
 
-    public Service(int lottoAmount, List<List<Integer>> lottoNumbers, List<Integer> playerLottoNumbers,
+    public Service(int lottoAmount, List<List<Integer>> lottoNumbers, List<Integer> winningLottoNumbers,
                    int playerBonusNumber) {
         this.lottoAmount = lottoAmount;
         this.lottoNumbers = lottoNumbers;
-        this.playerLottoNumbers = playerLottoNumbers;
-        this.playerBonusNumber = playerBonusNumber;
+        this.winningLottoNumbers = winningLottoNumbers;
+        this.winningBonusNumber = playerBonusNumber;
     }
 
     public int[] getLottoResult() {
@@ -32,9 +31,9 @@ public class Service {
 
         for (int i = 0; i < lottoAmount; i++) {
             List<Integer> lotto = Convertor.ExtractList(lottoNumbers, i);
-            int ordinal = checkRank(lotto, playerLottoNumbers, playerBonusNumber);
+            int ordinal = checkRank(lotto, winningLottoNumbers, winningBonusNumber);
 
-            if (ordinal == -1) { // 승리 조건과 일치하는 것이 없을 때
+            if (ordinal == WinnerInfo.hasNoRank()) {
                 continue;
             }
             result[ordinal]++;
@@ -45,26 +44,19 @@ public class Service {
     private int checkRank(List<Integer> lottoNumbers, List<Integer> playerLottoNumbers, int playerBonusNumber) {
         int matchedCount = getMatchedCount(lottoNumbers, playerLottoNumbers);
 
-        for (int i = 0; i < WinnerInfo.values().length; i++) {
-            if (matchedCount == Constant.CHECK_BONUS_COUNT) {
-                return checkBonusNumber(lottoNumbers, playerLottoNumbers, playerBonusNumber);
-            }
-
-            if (matchedCount == WinnerInfo.values()[i].getWinningCondition()) {
-                return WinnerInfo.values()[i].ordinal();
-            }
+        if (matchedCount == WinnerInfo.RANK2.getWinningCondition()) {
+            boolean winBonusNumber = winBonusNumber(lottoNumbers, playerLottoNumbers, playerBonusNumber);
+            return WinnerInfo.checkRank2(winBonusNumber);
         }
-        return -1; // Rank 승리 조건과 일치하는 것이 없으면 -1 반환
+        return WinnerInfo.getRank(matchedCount);
     }
 
-    private int checkBonusNumber(List<Integer> lottoNumbers, List<Integer> playerLottoNumbers, int playerBonusNumber) {
+    private boolean winBonusNumber(List<Integer> lottoNumbers, List<Integer> playerLottoNumbers,
+                                   int playerBonusNumber) {
         List<Integer> checkBonusNumber = new ArrayList<>(lottoNumbers);
         checkBonusNumber.removeAll(playerLottoNumbers);
 
-        if (checkBonusNumber.get(0) == playerBonusNumber) {
-            return WinnerInfo.RANK2.ordinal();
-        }
-        return WinnerInfo.RANK3.ordinal();
+        return checkBonusNumber.get(0) == playerBonusNumber;
     }
 
     private int getMatchedCount(List<Integer> lottoNumbers, List<Integer> playerLottoNumbers) {
