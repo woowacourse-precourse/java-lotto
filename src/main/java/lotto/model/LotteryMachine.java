@@ -23,8 +23,8 @@ public class LotteryMachine {
 
 	private void publishLotteryTickets() {
 		for (int i = 0; i < ticketQuantity; i++) {
-			List<Integer> numbers = Randoms.pickUniqueNumbersInRange(START_NUMBER.getCode(), END_NUMBER.getCode(),
-				TOTAL_NUMBER.getCode());
+			List<Integer> numbers = new ArrayList<>(
+				Randoms.pickUniqueNumbersInRange(START_NUMBER.getCode(), END_NUMBER.getCode(), TOTAL_NUMBER.getCode()));
 			Collections.sort(numbers);
 			lotteryTickets.add(numbers);
 		}
