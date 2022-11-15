@@ -1,5 +1,6 @@
 package lotto;
 
+import lotto.domain.Lotto;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -20,6 +21,13 @@ class LottoTest {
     void createLottoByDuplicatedNumber() {
         // TODO: 이 테스트가 통과할 수 있게 구현 코드 작성
         assertThatThrownBy(() -> new Lotto(List.of(1, 2, 3, 4, 5, 5)))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("로또 번호의 숫자 범위에 맞지 않으면 예외가 발생한다.")
+    @Test
+    void createLottoByIncorrectRange() {
+        assertThatThrownBy(() -> new Lotto(List.of(1, 2, 113, 4, 5, 45)))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
