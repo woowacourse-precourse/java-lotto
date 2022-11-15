@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import lotto.Lotto;
+import lotto.Rank;
+import lotto.WinningResult;
 
 public class OutputView {
 
@@ -21,6 +23,28 @@ public class OutputView {
                     .collect(Collectors.joining(delimiter));
             System.out.println(start + lottoStr + end);
         }
+    }
+
+    public static void printWinningDetails(WinningResult winningResult) {
+        System.out.println("당첨 통계");
+        System.out.println("---");
+        for (Rank rank : Rank.values()) {
+            if (rank.equals(Rank.MISS)) {
+                continue;
+            }
+            String result = String.format("%d개 일치 (%,d원) - %d개", rank.getCountOfMatch(), rank.getWinningMoney(),
+                    winningResult.getRankCount().get(rank));
+            if (rank.equals(Rank.SECOND)) {
+                result = String.format("%d개 일치, 보너스 볼 일치 (%,d원) - %d개", rank.getCountOfMatch(), rank.getWinningMoney(),
+                        winningResult.getRankCount().get(rank));
+            }
+
+            System.out.println(result);
+        }
+    }
+
+    public static void printProfit(double profit) {
+        System.out.println(String.format("총 수익률은 %.1f%%입니다.", profit));
     }
 
 }

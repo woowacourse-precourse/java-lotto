@@ -19,8 +19,8 @@ public class LottoController {
         List<Lotto> lottos = buyLottos();
         WinningLotto winningLotto = makeWinningNumbers();
         WinningResult winningResult = lottoService.makeWinningResult(winningLotto, lottos);
-        // OutputView.printWinningDetails();
-        // OutputView.printRateOfReturn();
+        OutputView.printWinningDetails(winningResult);
+        OutputView.printProfit(winningResult.getProfit());
     }
 
     private List<Lotto> buyLottos() {

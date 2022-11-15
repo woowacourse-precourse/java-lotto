@@ -29,7 +29,7 @@ public class WinningResult {
     }
 
     public double getProfit() {
-        return this.winningMoney / this.spendMoney * 100;
+        return (double) this.winningMoney / this.spendMoney * 100;
     }
 
     public int getSpendMoney() {
