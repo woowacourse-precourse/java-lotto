@@ -1,11 +1,10 @@
 package lotto;
 
+import static lotto.constant.StandardConstant.MONEY_UNIT_STANDARD;
 import static lotto.util.Validator.validatePositiveNumber;
 import static lotto.util.Validator.validateUnitStandard;
 
 public class Quantity {
-
-    private static final int UNIT_STANDARD = 1_000;
 
     private final int number;
 
@@ -16,7 +15,7 @@ public class Quantity {
     }
 
     public int calculateQuantity(int purchaseAmount) {
-        return purchaseAmount / UNIT_STANDARD;
+        return purchaseAmount / MONEY_UNIT_STANDARD.getValue();
     }
 
     public int getNumber() {
