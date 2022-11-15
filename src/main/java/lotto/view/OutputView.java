@@ -1,9 +1,14 @@
 package lotto.view;
 
+import static lotto.domain.model.enums.Reward.FIFTH;
+import static lotto.domain.model.enums.Reward.FIRST;
+import static lotto.domain.model.enums.Reward.FOURTH;
+import static lotto.domain.model.enums.Reward.SECOND;
+import static lotto.domain.model.enums.Reward.THIRD;
+
 import java.text.DecimalFormat;
 import lotto.domain.model.Lottos;
 import lotto.domain.model.WinningStatistics;
-import lotto.domain.model.enums.Reward;
 import lotto.view.utils.OutputUtils;
 
 public class OutputView {
@@ -30,21 +35,16 @@ public class OutputView {
     public static void printStatistics(WinningStatistics winningStatistics) {
         OutputUtils.outputLine("당첨 통계");
         OutputUtils.outputLine("---------");
-        OutputUtils.outputLine(
-                Reward.FIFTH.getCorrectCount() + "개 일치 (" + toNumFormat(Reward.FIFTH.getPrice()) + "원) - "
-                        + winningStatistics.getCountOfReward(Reward.FIFTH) + "개");
-        OutputUtils.outputLine(
-                Reward.FOURTH.getCorrectCount() + "개 일치 (" + toNumFormat(Reward.FOURTH.getPrice()) + "원) - "
-                        + winningStatistics.getCountOfReward(Reward.FOURTH) + "개");
-        OutputUtils.outputLine(
-                Reward.THIRD.getCorrectCount() + "개 일치 (" + toNumFormat(Reward.THIRD.getPrice()) + "원) - "
-                        + winningStatistics.getCountOfReward(Reward.THIRD) + "개");
-        OutputUtils.outputLine(
-                Reward.SECOND.getCorrectCount() + "개 일치, 보너스 볼 일치 (" + toNumFormat(Reward.SECOND.getPrice()) + "원) - "
-                        + winningStatistics.getCountOfReward(Reward.SECOND) + "개");
-        OutputUtils.outputLine(
-                Reward.FIRST.getCorrectCount() + "개 일치 (" + toNumFormat(Reward.FIRST.getPrice()) + "원) - "
-                        + winningStatistics.getCountOfReward(Reward.FIRST) + "개");
+        OutputUtils.outputLine(FIFTH.getCorrectCount() + "개 일치 (" + toNumFormat(FIFTH.getPrice()) + "원) - "
+                + winningStatistics.getCountOfReward(FIFTH) + "개");
+        OutputUtils.outputLine(FOURTH.getCorrectCount() + "개 일치 (" + toNumFormat(FOURTH.getPrice()) + "원) - "
+                + winningStatistics.getCountOfReward(FOURTH) + "개");
+        OutputUtils.outputLine(THIRD.getCorrectCount() + "개 일치 (" + toNumFormat(THIRD.getPrice()) + "원) - "
+                + winningStatistics.getCountOfReward(THIRD) + "개");
+        OutputUtils.outputLine(SECOND.getCorrectCount() + "개 일치, 보너스 볼 일치 (" + toNumFormat(SECOND.getPrice()) + "원) - "
+                + winningStatistics.getCountOfReward(SECOND) + "개");
+        OutputUtils.outputLine(FIRST.getCorrectCount() + "개 일치 (" + toNumFormat(FIRST.getPrice()) + "원) - "
+                + winningStatistics.getCountOfReward(FIRST) + "개");
     }
 
     private static String toNumFormat(Long num) {
