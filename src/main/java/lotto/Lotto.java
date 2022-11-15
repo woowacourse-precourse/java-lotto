@@ -58,4 +58,33 @@ public class Lotto {
         for (List allNumber : allNumbers)
             System.out.println(allNumber);
     }
+
+    public void getResult(List<Integer>[] customerNumbers, List<Integer> LuckyNumbers, int bonusNumber) {
+        for (List<Integer> num : customerNumbers) {
+            int matchCount = 0, bonus = 0;
+            for (int n : num) {
+                if (LuckyNumbers.contains(n))
+                    matchCount++;
+                if (bonusNumber == n)
+                    bonus = 1;
+            }
+            Rank rank = Rank.getRank(matchCount, bonus);
+            rank.updateCount();
+        }
+    }
+
+    public void printResult(int t) {
+        int[] result = new int[6];
+        int prize = 0;
+        for (Rank i : Rank.values()) {
+            result[i.ordinal()] = i.getCount();
+            prize += i.getPrize() * i.getCount();
+        }
+        double rate =  (double)prize /(double) (t * 1000) *100;
+        System.out.println("당첨 통계\n" + "---");
+        System.out.printf("3개 일치 (5,000원) - %d개\n" + "4개 일치 (50,000원) - %d개\n" +
+                "5개 일치 (1,500,000원) - %d개\n" + "5개 일치, 보너스 볼 일치 (30,000,000원) - %d개\n" +
+                "6개 일치 (2,000,000,000원) - %d개\n" +
+                "총 수익률은 %02.1f%%입니다.", result[4], result[3], result[2], result[1], result[0], rate);
+    }
 }
