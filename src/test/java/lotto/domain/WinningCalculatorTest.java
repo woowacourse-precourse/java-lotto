@@ -181,6 +181,5 @@ class WinningCalculatorTest {
             // then
             assertThat(winningResult).isEqualTo(WinningResult.RANK_1);
         }
-
     }
 }

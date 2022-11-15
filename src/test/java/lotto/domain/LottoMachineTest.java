@@ -9,6 +9,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 class LottoMachineTest {
+
     @DisplayName("생성한 객체가 로또가 맞는지 확인한다.")
     @Test
     void should_HaveLotto_When_Publish() {

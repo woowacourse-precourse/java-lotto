@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 class InputValidatorTest {
+
     @DisplayName("입력 금액의 유효성을 검사한다.")
     @Nested
     class InputMoney {

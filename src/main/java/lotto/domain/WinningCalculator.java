@@ -64,7 +64,7 @@ public class WinningCalculator {
     private int calculateCountContainWinningNumbers(Lotto lotto) {
         List<Integer> numbersOfLotto = lotto.getNumbers();
         int count = 0;
-        for (int number: numbersOfLotto) {
+        for (int number : numbersOfLotto) {
             if (this.winningNumbers.contains(number)) {
                 count += 1;
             }
@@ -90,8 +90,7 @@ public class WinningCalculator {
         try {
             List<Integer> numbers = convertStringToIntegerList(numbersRaw);
             validateNumbers(numbers);
-        }
-        catch (NumberFormatException e) {
+        } catch (NumberFormatException e) {
             throw new IllegalArgumentException(ErrorMessage.WINNING_NUMBERS_TOO_BIG);
         }
     }
@@ -110,7 +109,7 @@ public class WinningCalculator {
     }
 
     private void validateRangeOfNumbers(List<Integer> numbers) {
-        for (int number: numbers) {
+        for (int number : numbers) {
             if (START_NUMBER <= number && number <= END_NUMBER) {
                 continue;
             }

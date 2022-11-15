@@ -49,7 +49,7 @@ public class Account {
 
     private void calculateWinningAmountByResultTable() {
         this.winningAmount = 0;
-        for (WinningResult winningResult: winningResultTable.keySet()) {
+        for (WinningResult winningResult : winningResultTable.keySet()) {
             int winningCount = winningResultTable.get(winningResult);
             long winningReward = winningResult.getReward();
             this.winningAmount += winningCount * winningReward;
@@ -58,7 +58,7 @@ public class Account {
 
     private int getCountOfLottos() {
         int countOfLottos = 0;
-        for (WinningResult winningResult: winningResultTable.keySet()) {
+        for (WinningResult winningResult : winningResultTable.keySet()) {
             int winningCount = winningResultTable.get(winningResult);
             countOfLottos += winningCount;
         }

@@ -56,5 +56,4 @@ public class Cashier {
         String bonusNumberRaw = UserInterface.inputBonusNumber();
         this.winningCalculator.setBonusNumber(bonusNumberRaw);
     }
-
 }

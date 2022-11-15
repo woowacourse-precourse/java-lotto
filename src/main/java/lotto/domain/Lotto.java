@@ -37,7 +37,7 @@ public class Lotto {
     }
 
     private void validateRangeOfNumbers(List<Integer> numbers) {
-        for (int number: numbers) {
+        for (int number : numbers) {
             if (START_NUMBER <= number && number <= END_NUMBER) {
                 continue;
             }
@@ -52,5 +52,4 @@ public class Lotto {
         }
         throw new IllegalArgumentException(ErrorMessage.LOTTO_DUPLICATED_NUMBER);
     }
-
 }
