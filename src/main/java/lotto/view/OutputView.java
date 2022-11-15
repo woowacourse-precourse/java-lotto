@@ -2,7 +2,7 @@ package lotto.view;
 
 import java.text.DecimalFormat;
 import java.util.List;
-import java.util.Map;
+import java.util.Map.Entry;
 
 import lotto.domain.Lotto;
 import lotto.domain.Rank;
@@ -39,18 +39,24 @@ public class OutputView {
 		System.out.println(PRINT_WINNING_STATS_MESSAGE);
 	}
 
-	public static void printRankCount(Map.Entry<Rank, Integer> stat) {
+	public static void printRankCount(Entry<Rank, Integer> stat) {
 		DecimalFormat formatter = new DecimalFormat(FORMAT_THOUSAND_UNIT);
-		System.out.printf(PRINT_WINNING_RANK, stat.getKey().getSameWinningNumberCount(),
-			formatter.format(stat.getKey().getReward()),
-			stat.getValue());
+		int sameCount = stat.getKey()
+			.getSameWinningNumberCount();
+		int reward = stat.getKey()
+			.getReward();
+		int rankCount = stat.getValue();
+		System.out.printf(PRINT_WINNING_RANK, sameCount, formatter.format(reward), rankCount);
 	}
 
-	public static void printSecondRankCount(Map.Entry<Rank, Integer> stat) {
+	public static void printSecondRankCount(Entry<Rank, Integer> stat) {
 		DecimalFormat formatter = new DecimalFormat(FORMAT_THOUSAND_UNIT);
-		System.out.printf(PRINT_WINNING_2ND_RANK, stat.getKey().getSameWinningNumberCount(),
-			formatter.format(stat.getKey().getReward()),
-			stat.getValue());
+		int sameCount = stat.getKey()
+			.getSameWinningNumberCount();
+		int reward = stat.getKey()
+			.getReward();
+		int rankCount = stat.getValue();
+		System.out.printf(PRINT_WINNING_2ND_RANK, sameCount, formatter.format(reward), rankCount);
 	}
 
 	public static void printYieldMessage(double yield) {

@@ -32,7 +32,8 @@ public class Stats {
 
 	public void print() {
 		OutputView.printStats();
-		stats.entrySet().stream()
+		stats.entrySet()
+			.stream()
 			.filter(rankIntegerEntry -> rankIntegerEntry.getKey() != Rank.NO_RANK)
 			.forEach(rankIntegerEntry -> {
 				if (rankIntegerEntry.getKey() == Rank.RANK_2ND) {
@@ -51,7 +52,8 @@ public class Stats {
 	}
 
 	public double totalAmount() {
-		return stats.values().stream()
+		return stats.values()
+			.stream()
 			.mapToDouble(stat -> stat)
 			.sum() * ConstValue.LOTTO_PRICE;
 	}

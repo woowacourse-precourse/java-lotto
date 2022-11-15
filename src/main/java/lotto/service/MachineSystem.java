@@ -34,6 +34,7 @@ public class MachineSystem {
 
 	private int checkWinningNumber(List<Integer> lottoNumber) {
 		return (int)lottoNumber.stream()
-			.filter(winningLotto.getNumbers()::contains).count();
+			.filter(winningLotto.getNumbers()::contains)
+			.count();
 	}
 }
