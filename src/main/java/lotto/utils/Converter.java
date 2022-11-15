@@ -21,4 +21,12 @@ public class Converter {
         DecimalFormat commaFormatter = new DecimalFormat("###,###");
         return commaFormatter.format(money);
     }
+
+    public static String convertToStringWithCommaAndDot(double rate) {
+        int integralPart = (int) rate;
+        double decimalPart = rate - integralPart;
+        long roundDecimalPart = Math.round(decimalPart * 10);
+
+        return convertToStringWithComma(integralPart) + '.' + roundDecimalPart;
+    }
 }
