@@ -34,10 +34,14 @@ public enum OutputView {
         lottos.forEach(System.out::println);
     }
 
-    public static void printResultInformation(List<LottoRank> lottoRanks) {
+    public static void printResultInformation(List<LottoRank> lottoRanks, Double profit) {
         printResultStartMessage();
         printLottoResultMessage(lottoRanks);
-//        printProfitResultMessage();
+        printProfitResultMessage(profit);
+    }
+
+    private static void printProfitResultMessage(Double profit) {
+        System.out.print(format(LOTTO_PROFIT_MESSAGE.toString(), profit));
     }
 
     private static void printLottoResultMessage(List<LottoRank> lottoRanks) {

@@ -25,9 +25,8 @@ public class LottoController {
         WinningLotto winningLotto = createWinningLotto();
 
         lottoService.calculateLottoRanks(user, winningLotto);
-
-        OutputView.printResultInformation(user.getLottoRanks());
-
+        double profit = lottoService.calculateProfit(user);
+        OutputView.printResultInformation(user.getLottoRanks(), profit);
     }
 
     private Integer getPurchaseAmount() {
