@@ -36,6 +36,15 @@ class ValidatorTest {
                 .hasMessageContaining("숫자를 입력해주세요.");
     }
 
+    @DisplayName("구입금액을 입력하지 않을 경우 예외가 발생한다.")
+    @Test
+    void createEmptyMoney() {
+        String money = "";
+        assertThatThrownBy(() -> Validator.validateInputMoney(money))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("숫자를 입력해주세요.");
+    }
+
     @DisplayName("보너스 번호를 숫자가 아닌 다른 문자로 입력할 경우 예외가 발생한다.")
     @Test
     void createIncorrectBonusNumberPattern() {
