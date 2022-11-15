@@ -1,20 +1,25 @@
 package lotto.model;
 
 import java.util.List;
+import lotto.exception.LottoNumber;
 
 public class Lotto {
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
-        validate(numbers);
+        LottoNumber.exceptionLottoNumber(numbers);
         this.numbers = numbers;
     }
 
-    private void validate(List<Integer> numbers) {
-        if (numbers.size() != 6) {
-            throw new IllegalArgumentException();
-        }
+    public List<Integer> getNumbers() {
+        return numbers;
     }
 
-    // TODO: 추가 기능 구현
+    public int getNumber(int i){
+        return numbers.get(i);
+    }
+
+    public int getSize(){
+        return numbers.size();
+    }
 }
