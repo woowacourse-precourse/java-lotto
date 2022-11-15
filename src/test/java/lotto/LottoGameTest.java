@@ -6,6 +6,7 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import lotto.domain.Lotto;
+import lotto.domain.LottoAccounting;
 import lotto.domain.LottoGame;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
@@ -72,8 +73,9 @@ public class LottoGameTest {
     @Test
     void calcRateOfReturnFunctionalTest() {
         int[] matches = {0, 0, 0, 0, 1};
+        int money = 8000;
 
-        BigDecimal result = LottoGame.getROR(matches, 8000);
+        BigDecimal result = LottoAccounting.getROR(matches, money);
         BigDecimal expected = new BigDecimal("62.5");
 
         Assertions.assertThat(result).isEqualTo(expected);

@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.text.DecimalFormat;
 import java.util.List;
 import lotto.domain.Lotto;
+import lotto.domain.LottoAccounting;
 import lotto.domain.LottoGame;
 
 public class LottoOutStream {
@@ -16,8 +17,8 @@ public class LottoOutStream {
         System.out.print("6개 일치 (2,000,000,000원) - " + matches[LottoGame._1st_index] + "개\n");
     }
 
-    public static void showROR(BigDecimal ror) {
-        System.out.print("총 수익률은 " + getFormROR(ror) + "%입니다.");
+    public static void showROR(int[] matches, int money) {
+        System.out.print("총 수익률은 " + getFormROR(LottoAccounting.getROR(matches, money)) + "%입니다.");
     }
 
     private static String getFormROR(BigDecimal ror) {

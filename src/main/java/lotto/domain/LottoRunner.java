@@ -17,7 +17,7 @@ public class LottoRunner {
             int[] matchTable = LottoGame.getResult(lotto, winningLotto, bonusNumber);
 
             LottoOutStream.showResult(matchTable);
-            LottoOutStream.showROR(LottoGame.getROR(matchTable, money));
+            LottoOutStream.showROR(matchTable, money);
         } catch (IllegalArgumentException ex) {
             System.out.print(ex.getMessage());
         }
