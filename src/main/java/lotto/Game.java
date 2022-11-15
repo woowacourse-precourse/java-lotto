@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static lotto.Validation.lottoValidate;
 import static lotto.Validation.moneyValidate;
 
 public class Game {
@@ -22,6 +23,9 @@ public class Game {
         // 금액만큼 랜덤으로 번호 생성 및 출력
         randomLottos = makeLottosList(money);
         printRandomLottos(randomLottos);
+
+        // 당첨 번호 입력
+        winningLotto = inputWinningLotto();
     }
 
     private String inputString(String message){
@@ -59,5 +63,12 @@ public class Game {
         for(Lotto lotto : randomLottos){
             lotto.printNumbers();
         }
+    }
+
+    private Lotto inputWinningLotto(){
+        String inputLotto = inputString("당첨 번호를 입력해주세요.");
+        Lotto WinningLotto = lottoValidate(inputLotto);
+
+        return WinningLotto;
     }
 }
