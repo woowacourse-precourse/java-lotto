@@ -34,7 +34,7 @@ class LottoGameTest extends NsTest {
     void getLottoWinningNumberInput1(){
         assertThatThrownBy(()->{
             runException("1,2,3,4,5,46");
-            lottoGame.getLottoWinningNumberInput();
+            lottoGame.getLottoWinningNumbersInput();
         })
                 .isInstanceOf(IllegalArgumentException.class);
     }
@@ -43,7 +43,7 @@ class LottoGameTest extends NsTest {
     void getLottoWinningNumberInput2(){
         assertThatThrownBy(()->{
             runException("1,2,3,4,5,6,7");
-            lottoGame.getLottoWinningNumberInput();
+            lottoGame.getLottoWinningNumbersInput();
         })
                 .isInstanceOf(IllegalArgumentException.class);
     }
@@ -52,7 +52,16 @@ class LottoGameTest extends NsTest {
     void getLottoWinningNumberInput3(){
         assertThatThrownBy(()->{
             runException("1,2,3,4,5,5");
-            lottoGame.getLottoWinningNumberInput();
+            lottoGame.getLottoWinningNumbersInput();
+        })
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+    @DisplayName("로또 번호를 입력할 때 공백을 넣은 경우 예외처리 확인")
+    @Test
+    void getLottoNumberInput(){
+        assertThatThrownBy(()->{
+            runException("1 ,2 ,3 ,4,5,6");
+            lottoGame.getLottoNumberInput();
         })
                 .isInstanceOf(IllegalArgumentException.class);
     }
