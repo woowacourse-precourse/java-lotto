@@ -1,10 +1,8 @@
 package lotto.domain.money;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import java.util.List;
-import lotto.domain.lotto.Lotto;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -21,7 +19,7 @@ class MoneyTest {
 	@DisplayName("로또 구매 가능 개수 구하기")
 	@Test
 	void 로또_구매가능_개수() {
-		assertEquals(1,money.getLottoPurchaseCount());
+		assertEquals(1, money.getLottoPurchaseCount());
 	}
 
 	@DisplayName("구매금액 0원일때 예외 발생 시키기")
@@ -37,6 +35,7 @@ class MoneyTest {
 		assertThatThrownBy(() -> new Money("1200"))
 				.isInstanceOf(IllegalArgumentException.class);
 	}
+
 	@DisplayName("구매금액이 숫자가 아닐때 예외 테스트")
 	@Test
 	void isNumber() {
