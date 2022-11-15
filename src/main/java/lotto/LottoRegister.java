@@ -30,8 +30,8 @@ public class LottoRegister {
 
         return totalIncome;
     }
-    
-    private int calculateByCase(int matchCount, int bonusCount){
+
+    private int calculateByCase(int matchCount, int bonusCount) {
         lotteryWon = selectLotteryWonType(matchCount, bonusCount);
         history = updateHistory(history, lotteryWon);
 
@@ -59,7 +59,8 @@ public class LottoRegister {
         return count;
     }
 
-    public HashMap<Application.LotteryWon, Integer> updateHistory(HashMap<Application.LotteryWon, Integer> history, Application.LotteryWon income) {
+    public HashMap<Application.LotteryWon, Integer> updateHistory(HashMap<Application.LotteryWon,
+            Integer> history, Application.LotteryWon income) {
         history.replace(income, history.get(income) + 1);
         return history;
     }
