@@ -7,6 +7,9 @@ import lotto.domain.Stats;
 
 public class OutputView {
 
+    private OutputView() {
+    }
+
     public static void printLottos(Lottos lottos) {
         System.out.printf("%d개를 구매했습니다.\n", lottos.getCount());
         System.out.println(lottos);
