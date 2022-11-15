@@ -10,6 +10,16 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class LottoGeneratorTest {
 
+    @DisplayName("로또를 주어진 개수만큼 발행한다.")
+    @Test
+    void createLotties() {
+        int issueCount = 4;
+
+        List<Lotto> randomLottoNumbers = LottoGenerator.createRandomLottoNumberList(issueCount);
+
+        assertThat(randomLottoNumbers.size()).isEqualTo(4);
+    }
+
     @DisplayName("발행하는 로또의 숫자는 6개여야 한다.")
     @Test
     void getLottoCount() {

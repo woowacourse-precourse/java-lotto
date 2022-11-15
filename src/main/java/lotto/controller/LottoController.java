@@ -1,6 +1,8 @@
 package lotto.controller;
 
 import lotto.domain.lotto.Lotties;
+import lotto.domain.lotto.Lotto;
+import lotto.domain.lotto.LottoGenerator;
 import lotto.domain.rank.LottoRank;
 import lotto.domain.rank.LottoRanks;
 import lotto.domain.user.Purchase;
@@ -30,7 +32,7 @@ public class LottoController {
     }
 
     protected void issueLotto() {
-        String amount =  InputView.inputLottoPurchaseAmount();
+        String amount = InputView.inputLottoPurchaseAmount();
         purchase = Purchase.create(amount);
         lotties = createLottiesByPurchaseAmount(purchase.getLottoPublishCount());
     }
@@ -47,8 +49,9 @@ public class LottoController {
         printWinInfoAndYieldAmount(lottoYield);
     }
 
-    protected Lotties createLottiesByPurchaseAmount(int purchase) {
-        Lotties lotties = Lotties.create(purchase);
+    protected Lotties createLottiesByPurchaseAmount(int issueCount) {
+        List<Lotto> randomLottoNumbers = LottoGenerator.createRandomLottoNumberList(issueCount);
+        Lotties lotties = new Lotties(randomLottoNumbers);
         OutputView.printLottoList(lotties.getLotties());
         return lotties;
     }

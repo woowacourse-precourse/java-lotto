@@ -8,25 +8,13 @@ import java.util.List;
 import java.util.Map;
 import java.util.function.Function;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 public final class Lotties {
 
     private final List<Lotto> lotties;
 
-    private Lotties(int issueCount) {
-        lotties = new ArrayList<>();
-        addLottoToList(issueCount);
-    }
-
-    public static Lotties create(int issueCount) {
-        return new Lotties(issueCount);
-    }
-
-    private void addLottoToList(int issueCount) {
-        IntStream.range(0, issueCount)
-                .forEach(x -> lotties.add(
-                        new Lotto(LottoGenerator.createRandomLottoNumber())));
+    public Lotties(List<Lotto> lotties) {
+        this.lotties = new ArrayList<>(lotties);
     }
 
     public Map<LottoRank, Long> generateLottoRankMap(List<Integer> userLotto, int bonusNum) {
