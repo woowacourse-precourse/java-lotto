@@ -8,8 +8,6 @@ import org.junit.jupiter.api.Test;
 import java.util.List;
 
 import lotto.domain.Lotto;
-import lotto.domain.LottoPurchase;
-import lotto.domain.LottoRank;
 import lotto.domain.LottoStatistic;
 import lotto.domain.LottoWinNumbers;
 import lotto.domain.LottoYield;
@@ -27,9 +25,7 @@ public class LottoYieldTest {
         Lottos lottos = new Lottos();
         lottos.addLotto(new Lotto(List.of(1,2,3,41,35,26)));
 
-        LottoStatistic result = new LottoStatistic(lottos, lottoWinNumbers);
-        result.checkLottosWin();
-
+        LottoStatistic.computeLottoRank(lottos, lottoWinNumbers);
 
         assertThat(LottoYield.computeYield(8000)).isEqualTo(62.5);
     }
