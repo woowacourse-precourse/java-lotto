@@ -12,4 +12,8 @@ public class Judgment {
         }
         return winCount;
     }
+
+    public boolean compareToBonus(List<Integer> myNumber, int bonusNumber) {
+        return myNumber.contains(bonusNumber);
+    }
 }
