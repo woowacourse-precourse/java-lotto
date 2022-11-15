@@ -84,7 +84,7 @@ public class Message {
     }
 
     public static void printWinningStatistics(int[] winningResult) {
-        for (int i=0; i<winningResult.length; i++){
+        for (int i= winningResult.length-1; i>=0; i--){
             String winningMessage = WinningInfo.values()[i].getMessage();
             int winningCount = winningResult[i];
 
