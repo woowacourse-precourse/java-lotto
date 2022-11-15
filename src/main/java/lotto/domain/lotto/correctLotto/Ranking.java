@@ -1,33 +1,33 @@
 package lotto.domain.lotto.correctLotto;
 
+import org.mockito.internal.matchers.Null;
+
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
 public enum Ranking {
-    OUTOFRANKNG(0, 0, 0),
-
-    FIRSTRANKING(6, 1, 2000000000),
-    SECONDRANKING(6, 2, 30000000),
-    THIRDRANKING(5, 3, 1500000),
-    FOURTHRANKING(4, 4, 50000),
-    FIFTHRANKING(3, 5, 5000),
+    OUTOFRANKNG(RankingValue.OUT, 0),
+    FIRSTRANKING(RankingValue.FIRST, 2000000000),
+    SECONDRANKING(RankingValue.SECOND, 30000000),
+    THIRDRANKING(RankingValue.THIRD, 1500000),
+    FOURTHRANKING(RankingValue.FOURTH, 50000),
+    FIFTHRANKING(RankingValue.FIFTH, 5000),
     ;
 
     private static final Integer SECOND_RANKING_COUNT = 6;
     private static final Integer POINT = 1;
     private static final Integer INITIAL_VALUE = 0;
-    private int count;
-    private int rankingValue;
-    private long reward;
 
-    Ranking(int count, int rankingValue, long reward) {
-        this.count = count;
+    private final RankingValue rankingValue;
+    private final long reward;
+
+    Ranking(RankingValue rankingValue, long reward) {
         this.rankingValue = rankingValue;
         this.reward = reward;
     }
 
-    public int getRankingValue() {
+    public RankingValue getRankingValue() {
         return rankingValue;
     }
 
@@ -38,7 +38,7 @@ public enum Ranking {
     public static Ranking makeRanking(int count, boolean bonus) {
         if (count < SECOND_RANKING_COUNT) {
             return Arrays.stream(Ranking.values())
-                    .filter(ranking -> ranking.count == count)
+                    .filter(ranking -> ranking.rankingValue.getCount() == count)
                     .findFirst()
                     .orElse(OUTOFRANKNG);
         }
