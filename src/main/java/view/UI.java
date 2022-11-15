@@ -81,17 +81,18 @@ public class UI {
             lottoNums.add(Integer.parseInt(s));
         }
         lottoNums.sort(Integer::compareTo);
-        Lotto lotto = new Lotto(lottoNums);
-        return lotto;
+        return new Lotto(lottoNums);
     }
 
     public int getBonusNumber() {
-        int bonusNumber = Integer.parseInt(Console.readLine());
+        int bonusNumber = 0;
+        try {
+            bonusNumber = Integer.parseInt(Console.readLine());
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException(Arrays.toString(e.getStackTrace()));
+        }
         return bonusNumber;
     }
-
-
-
 
     public void printWinningStats(int money) {
         System.out.println("당첨 통계\n---");
@@ -106,7 +107,6 @@ public class UI {
         System.out.println(SecondPlace.getDESCRIPTION() + " " + SecondPlace.getSRING_PRICE() + " - " + SecondPlace.getCount() + "개");
         System.out.println(FirstPlace.getDESCRIPTION() + " " + FirstPlace.getSRING_PRICE() + " - " + FirstPlace.getCount() + "개");
     }
-
 
     public void printYield(int money) {
         int earnings = getPrizeMoney();
