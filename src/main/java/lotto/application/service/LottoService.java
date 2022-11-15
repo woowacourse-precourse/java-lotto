@@ -1,16 +1,24 @@
 package lotto.application.service;
 
 import camp.nextstep.edu.missionutils.Randoms;
-import lotto.application.port.in.LottoServiceUseCase;
-import lotto.application.port.in.RequestBuyLottoDto;
-import lotto.application.port.in.ResponseBuyLottoDto;
+import lotto.application.port.in.*;
+import lotto.application.port.in.dto.RequestBuyLottoDto;
+import lotto.application.port.in.dto.RequestMatchDto;
+import lotto.application.port.in.dto.ResponseBuyLottoDto;
+import lotto.application.port.in.dto.ResponseMatchDto;
 import lotto.domain.Lotto;
 import lotto.domain.Money;
+import lotto.domain.ResultTable;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class LottoService implements LottoServiceUseCase {
+
+    @Override
+    public ResponseMatchDto matchWinningNumber(RequestMatchDto requestMatchDto) {
+        //비교하여 Result 객체로 리턴.
+    }
 
     @Override
     public ResponseBuyLottoDto buyLotto(RequestBuyLottoDto requestBuyLottoDto) {
@@ -21,6 +29,10 @@ public class LottoService implements LottoServiceUseCase {
             lottos.add(createLotto());
         }
         return new ResponseBuyLottoDto(lottos);
+    }
+
+    private ResultTable compareLottoNumbers() {
+
     }
 
     private Lotto createLotto() {

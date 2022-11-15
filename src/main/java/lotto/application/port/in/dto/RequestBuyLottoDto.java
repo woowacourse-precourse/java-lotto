@@ -1,4 +1,4 @@
-package lotto.application.port.in;
+package lotto.application.port.in.dto;
 
 import exception.MoneyIllegalArgumentException;
 

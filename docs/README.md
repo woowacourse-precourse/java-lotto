@@ -1,22 +1,26 @@
 ## 기능목록
 
-### 예외처리 - LottoIllegalArgumentException
-- 모든 예외 메시지의 "[ERROR]" 를 앞에 붙여 출력.
+### 예외처리 - IllegalArgumentException
+- [X] 모든 예외 메시지의 "[ERROR]" 를 앞에 붙여 출력. - ExceptionUtil.class
 
 ### LottoServiceUseCase - Lotto 관련 기능 정의 인터페이스.
-- [X] 받은 금액을 통해 로또 티켓 생성. - buyLotto 
+- [X] 받은 금액을 통해 로또 티켓 생성. - LottoService.class
+- [ ] 당첨로또번호와 몇개 일치 하는지 확인 -  
 
 ### 어플리케이션 (비즈니스 로직)
-- [X] buyLotto 구현 - LottoService
+- [X] buyLotto 구현 - LottoService.class
+- []
 
 ### 도메인 
 #### Money
 - 유효성 검사.(1000원 으로 나누어 떨어지는지.)
 
 #### Bonus
-- 
+- 유효성 검사
 
 #### Lotto
+#### ResultTable
+- 유효성 검사
 
 ### View - 화면에 보여지는 것을 담당하는 클래스.
 - [X] 로또 거래 View - BuyLottoView
