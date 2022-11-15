@@ -22,7 +22,18 @@ public class Application {
         randomPickLotteries(lotteries, numberOfLotteries);
 
         printInputWinLotto();
-        WinLotto input = getWinLottoInputFromUser();
+        WinLotto winLotto = getWinLottoInputFromUser();
+        String bonusInput = getBonusInputFromUser();
+        winLotto.validateBonusInput(bonusInput);
+        winLotto.setBonus(Integer.parseInt(bonusInput));
+    }
+
+
+
+    private static String getBonusInputFromUser() {
+        System.out.println(Message.INPUT_BONUS.message);
+        Scanner scanner = new Scanner(System.in);
+        return scanner.nextLine();
     }
 
     private static WinLotto getWinLottoInputFromUser() {
@@ -30,9 +41,7 @@ public class Application {
         String input = scanner.nextLine();
         WinLotto winLotto = validateWinLottoInput(input);
 
-
-        //TODO:보너스 번호 입력 및 검증
-        return null;
+        return winLotto;
     }
 
     public static WinLotto validateWinLottoInput(String input) {
@@ -117,7 +126,7 @@ public class Application {
         return false;
     }
 
-    private static boolean isInteger(String input) {
+    public static boolean isInteger(String input) {
         try {
             Integer.parseInt(input);
             return true;
