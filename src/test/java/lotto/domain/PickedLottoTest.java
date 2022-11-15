@@ -30,7 +30,7 @@ class PickedLottoTest {
     void decide_winning_with_winning_numbers_and_bonus_number() {
         PickedLotto pickedLotto = new PickedLotto(new Lotto(1, 2, 3, 4, 5, 6), new LottoNumber(7));
 
-        assertThat(pickedLotto.pick(userLottos))
+        assertThat(pickedLotto.match(userLottos))
                 .containsExactly(Rank.FIRST, Rank.SECOND, Rank.THIRD, Rank.NONE, Rank.FOURTH);
     }
 

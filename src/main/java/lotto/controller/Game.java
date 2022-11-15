@@ -20,7 +20,7 @@ public class Game {
             Money capital = new Money(InputView.promptAmount());
             List<Lotto> lottos = issueLottosWith(capital);
 
-            List<Rank> ranks = getPicker().pick(lottos);
+            List<Rank> ranks = getPicker().match(lottos);
 
             StatisticsView.printStatistics(new Statistics(ranks), capital);
         } catch (IllegalArgumentException exception) {

@@ -21,15 +21,15 @@ public class PickedLotto {
         }
     }
 
-    public List<Rank> pick(List<Lotto> lottos) {
+    public List<Rank> match(List<Lotto> lottos) {
         List<Rank> ranks = new ArrayList<>();
         for (Lotto lotto : lottos) {
-            ranks.add(pick(lotto));
+            ranks.add(match(lotto));
         }
         return ranks;
     }
 
-    private Rank pick(Lotto lotto) {
+    private Rank match(Lotto lotto) {
         int matchCount = lotto.countMatchesWith(winningLotto);
         boolean hasBonusNumber = lotto.contains(bonusNumber);
         return Rank.from(matchCount, hasBonusNumber);
