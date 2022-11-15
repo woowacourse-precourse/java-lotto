@@ -32,8 +32,8 @@ public class Utils {
         return Console.readLine();
     }
 
-    public static List<Integer> getIntegerList(int start, int end, int count) {
-        return Randoms.pickUniqueNumbersInRange(start, end, count);
+    public static ArrayList<Integer> getIntegerList(int start, int end, int count) {
+        return new ArrayList<>(Randoms.pickUniqueNumbersInRange(start, end, count));
     }
 
     public static boolean isContain(Integer checkNumber, List<Integer> numbers, int point) {
