@@ -8,10 +8,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import lotto.Constants.NUMBER;
-import lotto.Ranking;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import lotto.Constants.NUMBER;
+import lotto.Ranking;
 
 public class GeneratorTest {
     @DisplayName("로또 인스턴스를 인자로 받아 일치하는 당첨번호 및 보너스번호 개수를 HashMap에 담아 반환해준다")

@@ -9,7 +9,6 @@ import static lotto.domain.Validator.winningNumberFormat;
 import java.util.Arrays;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import lotto.domain.Lotto;
 
 public class ValidatorTest {
 
