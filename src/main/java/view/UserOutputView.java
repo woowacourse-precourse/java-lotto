@@ -3,28 +3,38 @@ package view;
 import domain.Lotto;
 import domain.LottoResult;
 import domain.PurchaseMoney;
+import domain.WinningPrize;
+
+import java.text.DecimalFormat;
 
 public class UserOutputView {
+    static final String WINNING_STATICS = "당첨 통계";
+    static final String DOT = "---";
+    static final String FIFTH_PRIZE_RESULT = "3개 일치 (%s원) - %d개\n\n";
+    static final String FOURTH_PRIZE_RESULT = "4개 일치 (%s원) - %d개\n";
+    static final String THIRD_PRIZE_RESULT = "5개 일치 (%s원) - %d개\n";
+    static final String SECOND_PRIZE_RESULT = "5개 일치, 보너스 볼 일치 (%s원) - %d개\n";
+    static final String FIRST_PRIZE_RESULT = "6개 일치 (%s원) - %d개\n";
+    static final String CALCULATE_YIELD_RATE = "총 수익률은 %s%%입니다.\n";
+    static final String CALCULATE_PURCHASE_LOTTO = "\n%d개를 구매했습니다.\n";
 
     public static void printPurchaseLottoNumber(Lotto lotto) {
         System.out.println(lotto);
     }
 
-    public static void printLottoResult(LottoResult lottoResult){
-        System.out.println("당첨 통계");
-        System.out.println("---");
-        System.out.println("3개 일치 (5,000원) - " + lottoResult.getThreeCount() + "개");
-        System.out.println("4개 일치 (50,000원) - " + lottoResult.getFourCount() + "개");
-        System.out.println("5개 일치 (1,500,000원) - " + lottoResult.getFiveCount() + "개");
-        System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - " + lottoResult.getFiveAndBonusCount() + "개");
-        System.out.println("6개 일치 (2,000,000,000원) - " + lottoResult.getSixCount() + "개");
-        System.out.println();
-        System.out.println("총 수익률은 " + lottoResult.getYield() + "%입니다.");
+    public static void printLottoResult(LottoResult lottoResult) {
+        System.out.println(WINNING_STATICS);
+        System.out.println(DOT);
+        System.out.printf(FIFTH_PRIZE_RESULT, WinningPrize.FIFTH_PRIZE.getStringPrize(), lottoResult.getThreeCount());
+        System.out.printf(FOURTH_PRIZE_RESULT, WinningPrize.FOURTH_PRIZE.getStringPrize(), lottoResult.getFourCount());
+        System.out.printf(THIRD_PRIZE_RESULT, WinningPrize.THIRD_PRIZE.getStringPrize(), lottoResult.getFiveCount());
+        System.out.printf(SECOND_PRIZE_RESULT, WinningPrize.SECOND_PRIZE.getStringPrize(), lottoResult.getFiveAndBonusCount());
+        System.out.printf(FIRST_PRIZE_RESULT, WinningPrize.FIRST_PRIZE.getStringPrize(), lottoResult.getSixCount());
+        System.out.printf(CALCULATE_YIELD_RATE, lottoResult.getYield());
     }
 
-    public static void printPurchaseNumber(PurchaseMoney purchaseMoney){
-        System.out.println();
-        System.out.println(purchaseMoney.getNumberLotteryPurchasesAvailable() + "개를 구매했습니다.");
+    public static void printPurchaseNumber(PurchaseMoney purchaseMoney) {
+        System.out.printf(CALCULATE_PURCHASE_LOTTO,purchaseMoney.getNumberLotteryPurchasesAvailable());
     }
 
 }

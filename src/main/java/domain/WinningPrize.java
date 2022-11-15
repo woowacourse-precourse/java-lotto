@@ -1,5 +1,7 @@
 package domain;
 
+import java.text.DecimalFormat;
+
 public enum WinningPrize {
     FIRST_PRIZE (2000000000),
     SECOND_PRIZE(30000000),
@@ -15,5 +17,10 @@ public enum WinningPrize {
 
     public int getPrize() {
         return prize;
+    }
+
+    public String getStringPrize(){
+        DecimalFormat decimalFormat = new DecimalFormat("#,###");
+        return decimalFormat.format(this.prize);
     }
 }
