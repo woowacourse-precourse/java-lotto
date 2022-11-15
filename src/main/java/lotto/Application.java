@@ -18,7 +18,7 @@ public class Application {
     private static String validateInputAmountString(String inputString) {
 
         if (!Pattern.matches("^\\s?[1-9]+\\d*0{3}\\s?$", inputString))
-            throw new IllegalArgumentException("[ERROR] The amount must be Interger that can be divisible by 1000.");
+            throw new IllegalArgumentException(" [ERROR] The amount must be Integer that can be divisible by 1000.");
 
         return inputString;
     }
@@ -106,13 +106,16 @@ public class Application {
 
     public static void main(String[] args) {
         LotteryHostAgency lha = new LotteryHostAgency();
-        lottories = purchaseLotteries();
+        try{
+            lottories = purchaseLotteries();
+            List<Integer> winningNumbers = getInputWinningNumbers();
+            int bonusNumber = getInputBonusNumber();
 
-        List<Integer> winningNumbers = getInputWinningNumbers();
-        int bonusNumber = getInputBonusNumber();
-
-        lha.setDrawalNumbers(winningNumbers, bonusNumber);
-        results = lottories.parallelStream().map(lha::getResult).collect(Collectors.toList());
-        printWiningStats(results);
+            lha.setDrawalNumbers(winningNumbers, bonusNumber);
+            results = lottories.parallelStream().map(lha::getResult).collect(Collectors.toList());
+            printWiningStats(results);
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+        }
     }
 }
