@@ -1,5 +1,7 @@
 package lotto;
 
+import java.util.List;
+
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class Ui {
@@ -20,8 +22,7 @@ public class Ui {
 
         String bonusNumber= inputBonusNumber();
 
-        lottoService.compareLottoNumber(winNumber,bonusNumber);
-
+        List<Integer> numbersOfWin = lottoService.findNumbersOfWin(winNumber, bonusNumber);
 
 
     }
