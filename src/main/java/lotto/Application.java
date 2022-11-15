@@ -22,6 +22,8 @@ public class Application {
     public static Integer getBonusBall(String input){
         Integer num = Integer.parseInt(input);
         checkIllegalNum(num);
+        if(winningLotto.getNumbers().contains(num))
+            throw new IllegalArgumentException(ErrorEnum.BAD_REQUEST_NOT_VALID_NUM_EXCEPTION.getMessage());
         return num;
     }
 
