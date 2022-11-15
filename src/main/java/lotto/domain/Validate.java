@@ -36,4 +36,14 @@ public class Validate {
             throw new IllegalArgumentException("[ERROR] 당첨 번호와 보너스 번호가 중복되지 않아야 합니다.");
         }
     }
+    public void validateInputMoney(String input, int LOTTO_PRICE){
+        if(!input.matches("[0-9]+")){
+            throw new IllegalArgumentException("[ERROR] 숫자만 입력해 주세요");
+
+        }
+        int money = Integer.parseInt(input);
+        if(money == 0  || money % LOTTO_PRICE != 0){
+            throw new IllegalArgumentException("[ERROR] 1000원 단위로 입력해 주세요");
+        }
+    }
 }
