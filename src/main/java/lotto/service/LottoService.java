@@ -26,7 +26,7 @@ public class LottoService {
         return history;
     }
 
-    public static int matchN(List<Integer> userNumber, List<Integer> luckyNumber){
+    static int matchN(List<Integer> userNumber, List<Integer> luckyNumber){
         int count= 0;
         for (Integer number : userNumber){
             if (luckyNumber.contains(number))
@@ -35,10 +35,33 @@ public class LottoService {
         return count;
     }
 
-    public static int matchBonusN(List<Integer> userNumber, int bonusNumber){
+    static int matchBonusN(List<Integer> userNumber, int bonusNumber){
         if(userNumber.contains(bonusNumber))
             return 1;
         return 0;
+    }
+
+    public static String yieldCalculation(HashMap<Prize, Integer> history, int purchaseAmount){
+        float total = totalCalculation(history);
+
+        return String.format("%.1f", (total/purchaseAmount)*100);
+    }
+
+    static float totalCalculation(HashMap<Prize, Integer> history){
+        float total = 0.0F;
+
+        if (history.containsKey(Prize.FIFTH_PLACE))
+            total += Prize.FIFTH_PLACE.getAmount() * history.get(Prize.FIFTH_PLACE);
+        if (history.containsKey(Prize.FOURTH_PLACE))
+            total += Prize.FOURTH_PLACE.getAmount() * history.get(Prize.FOURTH_PLACE);
+        if (history.containsKey(Prize.THIRD_PLACE))
+            total += Prize.THIRD_PLACE.getAmount() * history.get(Prize.THIRD_PLACE);
+        if (history.containsKey(Prize.SECOND_PLACE))
+            total += Prize.SECOND_PLACE.getAmount() * history.get(Prize.SECOND_PLACE);
+        if (history.containsKey(Prize.FIRST_PLACE))
+            total += Prize.FIRST_PLACE.getAmount() * history.get(Prize.FIRST_PLACE);
+
+        return total;
     }
 
     private static HashMap<Prize, Integer> historyInit(){
