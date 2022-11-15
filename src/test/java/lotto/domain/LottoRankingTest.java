@@ -31,6 +31,39 @@ public class LottoRankingTest {
         lottoResultMap = new LinkedHashMap<>();
     }
 
+    @DisplayName("순위를 알맞게 return 하는지 테스트(LOSING)")
+    @Test
+    void findRanking6Test() {
+        LottoResult answer = LOSING;
+        List<Integer> testCount = new ArrayList<>(List.of(0,0));
+        Lotto testLotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+        testLotto.setLottoResult(LOSING);
+        lottoStatistics.findRanking(testCount,testLotto);
+        assertThat(lottoStatistics.findRanking(testCount,testLotto)).isEqualTo(answer);
+    }
+
+    @DisplayName("순위를 알맞게 return 하는지 테스트(LOSING)")
+    @Test
+    void findRanking6_1Test() {
+        LottoResult answer = LOSING;
+        List<Integer> testCount = new ArrayList<>(List.of(1,0));
+        Lotto testLotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+        testLotto.setLottoResult(LOSING);
+        lottoStatistics.findRanking(testCount,testLotto);
+        assertThat(lottoStatistics.findRanking(testCount,testLotto)).isEqualTo(answer);
+    }
+
+    @DisplayName("순위를 알맞게 return 하는지 테스트(LOSING)")
+    @Test
+    void findRanking6_2Test() {
+        LottoResult answer = LOSING;
+        List<Integer> testCount = new ArrayList<>(List.of(2,0));
+        Lotto testLotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+        testLotto.setLottoResult(LOSING);
+        lottoStatistics.findRanking(testCount,testLotto);
+        assertThat(lottoStatistics.findRanking(testCount,testLotto)).isEqualTo(answer);
+    }
+
     @DisplayName("순위를 알맞게 return 하는지 테스트(THREE)")
     @Test
     void findRanking5Test() {
