@@ -13,7 +13,7 @@ public class UserService {
         int count = amount / 1000;
         List<Lotto> lottos = getlottos(count);
 
-        OutputView.printTotalAmount(amount);
+        OutputView.printTotalCount(count);
         OutputView.printLottoNumbers(lottos);
 
         return new User(amount, lottos);
