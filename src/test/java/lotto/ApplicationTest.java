@@ -56,47 +56,6 @@ class ApplicationTest extends NsTest {
             assertThat(output()).contains(ERROR_MESSAGE);
         });
     }
-
-    @Test
-    void 사용자_금액_입력_정상_테스트() {
-        InputStream in = generateUserInput("8000");
-        System.setIn(in);
-        int money = IOUtil.moneyInput();
-        assertThat(money).isPositive();
-        assertThat(money % 1000).isEqualTo(0);
-    }
-
-    @Test
-    void 사용자_금액_입력_예외_테스트() {
-        InputStream in = generateUserInput("1234");
-        System.setIn(in);
-        assertThatThrownBy(IOUtil::moneyInput).isInstanceOf(IllegalArgumentException.class).hasMessageContaining(ERROR_MESSAGE);
-    }
-
-    @Test
-    void 당첨번호_입력_정상_테스트() {
-        InputStream in = generateUserInput("1,2,3,4,5,6");
-        System.setIn(in);
-        assertThat(IOUtil.answerNumberInput()).isInstanceOf(Lotto.class);
-    }
-
-    @Test
-    void 당첨번호_입력_예외_테스트() {
-        InputStream in = generateUserInput("132,432$#@");
-        System.setIn(in);
-        assertThatThrownBy(IOUtil::answerNumberInput).isInstanceOf(IllegalArgumentException.class).hasMessageContaining(ERROR_MESSAGE);
-    }
-
-    @Test
-    void 보너스_입력_예외_테스트() {
-        InputStream in = generateUserInput("$");
-        System.setIn(in);
-        assertThatThrownBy(IOUtil::bonusNumberInput).isInstanceOf(IllegalArgumentException.class).hasMessageContaining(ERROR_MESSAGE);
-    }
-
-    public static InputStream generateUserInput(String input) {
-        return new ByteArrayInputStream(input.getBytes());
-    }
     @Override
     public void runMain() {
         Application.main(new String[]{});
