@@ -19,5 +19,6 @@ public class GameController {
 
     public void startGame() {
         final int money = Input.inputPurchaseLottoValue();
+        final int numberOfLotto = gameService.getNumberOfLotto(money);
     }
 }
