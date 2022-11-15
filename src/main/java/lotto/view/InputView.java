@@ -14,12 +14,15 @@ public class InputView {
     public static int readInputMoney() {
         System.out.println(READ_INPUT_MESSAGE);
 
+        int inputMoney;
         try {
-            return convertStrToInt(Console.readLine());
+            inputMoney = convertStrToInt(Console.readLine());
+            validateInputMoney(inputMoney);
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
             throw new NoSuchElementException();
         }
+        return inputMoney;
     }
 
     public static List<Integer> readWinningNumbers() {
@@ -66,4 +69,18 @@ public class InputView {
         return integers;
     }
 
+    public static void validateInputMoney(int money) {
+        checkOverThousand(money);
+        checkModuloThousand(money);
+    }
+
+    public static void checkOverThousand(int money) {
+        if (money < LOTTO_PRICE)
+            throw new IllegalArgumentException(ERROR_FORMAT_MESSAGE);
+    }
+
+    public static void checkModuloThousand(int money) {
+        if (money % LOTTO_PRICE != 0)
+            throw new IllegalArgumentException(ERROR_FORMAT_MESSAGE);
+    }
 }
