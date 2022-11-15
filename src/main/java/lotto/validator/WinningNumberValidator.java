@@ -12,6 +12,7 @@ public class WinningNumberValidator {
 
 	public List<Integer> runWinningNumberValidator(String inputData) {
 		List<Integer> winningBalls;
+		System.out.println(inputData.getClass().getName());
 		if (isInvalidInputFormat(inputData)) {
 			throw new IllegalArgumentException(COMMA_CLASSIFICATION.getErrorMessage());
 		}
