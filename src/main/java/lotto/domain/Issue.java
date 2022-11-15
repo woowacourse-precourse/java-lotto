@@ -9,16 +9,20 @@ import java.util.List;
 public class Issue {
     private List<Lotto> history;
     private int amount;
-    public Issue(int money){
+    public Issue(String money){
         history = new ArrayList<>();
         amount = amount(money);
     }
 
-    private int amount(int money){
-        if(money%1000 != 0){
+    private int amount(String money){
+        if(money.replaceAll("[^0-9]", "").length() != money.length()) {
             throw new IllegalArgumentException(ExceptionMsg.MONEY_UNIT);
         }
-        return money/1000;
+        int moneyNum = Integer.parseInt(money);
+        if(moneyNum%1000 != 0){
+            throw new IllegalArgumentException(ExceptionMsg.MONEY_UNIT);
+        }
+        return moneyNum/1000;
     }
 
 
