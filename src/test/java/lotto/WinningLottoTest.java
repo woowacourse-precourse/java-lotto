@@ -35,6 +35,6 @@ class WinningLottoTest {
 
         Lotto user = new Lotto(List.of(7, 8, 9, 10, 11, 12));
 
-        assertThat(user.count(bonusLotto)).isEqualTo(0);
+        assertThat(user.count(bonusLotto)).isZero();
     }
 }

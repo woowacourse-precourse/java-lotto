@@ -39,7 +39,7 @@ class LottoResultTest {
 
         Map<LottoOperator, Integer> actual = result.matchWinningRank();
 
-        assertThat(actual.get(operator)).isEqualTo(count);
+        assertThat(actual).containsEntry(operator, count);
     }
 
     @ParameterizedTest
