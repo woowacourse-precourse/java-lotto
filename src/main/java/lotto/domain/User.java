@@ -1,11 +1,8 @@
 package lotto.domain;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
-
-import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class User {
 
