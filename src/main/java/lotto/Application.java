@@ -19,4 +19,10 @@ public class Application {
     createLotto();
     compare();
   }
+
+  //구입금액 입력 및 금액만큼 로또번호 생성
+  public static void userBuyLotto() {
+    System.out.println("구입금액을 입력해 주세요.");
+      userLotto = new UserLotto(readLine());
+  }
 }
