@@ -12,13 +12,12 @@ class MoneyDivisionCondTest {
     @Test
     void 천원으로_나누어_떨어지지_않는_금액() {
         // given
-        String money = "1001";
+        String[] moneies = {"1001", "999"};
 
-        // when
-        Boolean result = condition.isSatisfied(money);
-
-        // then
-        assertThat(result).isFalse();
+        // when, then
+        for (String money : moneies) {
+            assertThat(condition.isSatisfied(money)).isFalse();
+        }
     }
 
     @Test
