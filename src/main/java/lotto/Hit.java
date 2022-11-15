@@ -38,4 +38,8 @@ public enum Hit {
 
         return null;
     }
+
+    public static Integer parsePrizeToInt(Hit hit) {
+        return Integer.parseInt(String.join("", hit.prize.split(",")));
+    }
 }
