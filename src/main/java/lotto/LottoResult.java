@@ -22,8 +22,8 @@ public class LottoResult {
         return result;
     }
 
-    public double getProfit(int lottoTickets) {
-        int lottoAmount = lottoTickets * MINIMUM_LOTTO_AMOUNT;
+    public double getProfit(int numberOfLottoTickets) {
+        int lottoAmount = numberOfLottoTickets * MINIMUM_LOTTO_AMOUNT;
         double sumOfPrize = 0;
         for (Ranking rank : result.keySet()) {
             if (rank == Ranking.NOTHING) {

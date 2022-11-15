@@ -10,10 +10,10 @@ public class SystemMessage {
         System.out.println(MONEY_INPUT_MESSAGE);
     }
 
-    public static void purchaseLotto(int lottoTickets, Lottos lottos) {
+    public static void purchaseLotto(int lottoTickets, LottoTickets lottos) {
         System.out.println();
         System.out.println(lottoTickets + "개를 구매했습니다.");
-        for (Lotto lotto : lottos.getLottos()) {
+        for (Lotto lotto : lottos.getLottoTickets()) {
             System.out.println(lotto);
         }
     }

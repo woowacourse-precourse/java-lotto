@@ -9,13 +9,13 @@ public class LottoGenerator {
     private static final int MAX_NUMBER = 45;
     private static final int LOTTO_SIZE = 6;
 
-    public Lottos generateLottoTickets(int numberOfLottoTickets) {
+    public LottoTickets generateLottoTickets(int numberOfLottoTickets) {
         List<Lotto> lottoTickets = new ArrayList<>();
         for (int i = 0; i < numberOfLottoTickets; i++) {
             List<Integer> random = Randoms.pickUniqueNumbersInRange(MIN_NUMBER, MAX_NUMBER, LOTTO_SIZE);
             lottoTickets.add(new Lotto(random));
         }
-        return new Lottos(lottoTickets);
+        return new LottoTickets(lottoTickets);
     }
 
     public WinningLotto generateWinningTicket(List<Integer> winningNumber, int bonus) {
