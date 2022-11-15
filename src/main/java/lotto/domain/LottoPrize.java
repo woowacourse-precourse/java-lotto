@@ -20,8 +20,8 @@ public enum LottoPrize {
         this.prize = prize;
     }
 
-    public int ofPrize() {
-        return prize;
+    public int calculate(int number) {
+        return number * this.prize;
     }
 
     public String ofDescription() {

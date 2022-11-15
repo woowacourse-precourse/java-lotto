@@ -24,7 +24,7 @@ public class LottoReferee {
     public int sumPrizes() {
         int prizes = 0;
         for (LottoPrize prize : List.of(FIFTH_PRIZE, FOURTH_PRIZE, THIRD_PRIZE, SECOND_PRIZE, FIRST_PRIZE)) {
-            prizes += result.get(prize) * prize.ofPrize();
+            prizes += prize.calculate(result.get(prize));
         }
         return prizes;
     }
