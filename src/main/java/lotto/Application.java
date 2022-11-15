@@ -47,6 +47,7 @@ public class Application {
 
     static ArrayList<Lotto> buyLotto(int countPurchase){
 
+        System.out.println(countPurchase+"개를 구매했습니다.");
         ArrayList<Lotto> lottoList = new ArrayList<Lotto>();
         for(int i=0; i<countPurchase; i++){
             List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
@@ -170,6 +171,6 @@ public class Application {
             prizeSum += winList.get(i)* rewardList.get(rewardList.size()-1-i);
         }
         LotteryYield = prizeSum*100 / (float) buyMoney;
-        System.out.println("총 수익률은 "+ String.format("%.1f", LotteryYield)+"입니다.");
+        System.out.println("총 수익률은 "+ String.format("%.1f", LotteryYield)+"%입니다.");
     }
 }
