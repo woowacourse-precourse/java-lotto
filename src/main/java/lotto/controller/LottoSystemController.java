@@ -2,9 +2,12 @@ package lotto.controller;
 
 import lotto.domain.Lotto;
 import lotto.domain.LottoVendingMachine;
+import lotto.domain.LottoVendingMachineImple;
 import lotto.domain.Rank;
 import lotto.domain.WinningNumbers;
+import lotto.domain.WinningNumbersImple;
 import lotto.domain.WinningResultCalculator;
+import lotto.domain.WinningResultCalculatorImple;
 import lotto.view.inputView.InputView;
 import lotto.view.inputView.InputViewImple;
 import lotto.view.outputView.OutputView;
@@ -15,16 +18,28 @@ import java.util.Map;
 
 
 public class LottoSystemController {
-    private LottoVendingMachine lottoVendingMachine = new LottoVendingMachine();
-    private WinningNumbers winningNumbers = new WinningNumbers();
-    private WinningResultCalculator winningResultCalculator = new WinningResultCalculator();
-    private OutputView outputView = new OutputViewImple();
-    private InputView inputView = new InputViewImple();
+    private LottoVendingMachine lottoVendingMachine;
+    private WinningNumbers winningNumbers;
+    private WinningResultCalculator winningResultCalculator;
+    private OutputView outputView;
+    private InputView inputView;
     private Integer expenses;
     private List<Lotto> purchasedLottos;
-    private WinningNumbers createdWinningNumbers;
+    private WinningNumbersImple createdWinningNumbers;
     private Map<Rank, Integer> winningStatusResult;
     private double returnRatioResult;
+
+    public LottoSystemController(LottoVendingMachine lottoVendingMachine
+            , WinningNumbers winningNumbers
+            , WinningResultCalculator winningResultCalculator
+            , OutputView outputView
+            , InputView inputView) {
+        this.lottoVendingMachine = lottoVendingMachine;
+        this.winningNumbers = winningNumbers;
+        this.winningResultCalculator = winningResultCalculator;
+        this.outputView = outputView;
+        this.inputView = inputView;
+    }
 
     public void run(){
         try {
