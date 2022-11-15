@@ -5,6 +5,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import java.util.List;
+import java.util.Map;
 import lotto.domain.Customer;
 import lotto.domain.Lotto;
 import lotto.domain.LottoMachine;
@@ -67,11 +68,12 @@ class LottoServiceTest {
     }
 
     @Test
-    void check_메서드는_Customer가_로또를_구입하지_않은경우_IllegalStateException을_던진다() {
+    void check_메서드는_Customer가_로또를_구입하지_않은경우_빈_LottoResultDto를_반환한다() {
         Customer customer = new Customer(Money.wons(2000));
         LottoMachine lottoMachine = new LottoMachine(new Lotto(List.of(1, 2, 3, 4, 5, 6)), LottoNumber.valueOf(7));
-        assertThatThrownBy(() -> lottoService.check(customer, lottoMachine))
-                .isInstanceOf(IllegalStateException.class);
+        LottoResultDto result = lottoService.check(customer, lottoMachine);
+        assertThat(result.getPrizeCount()).isEqualTo(Map.of());
+        assertThat(result.getProfitRatio()).isEqualTo(0.0);
     }
 
     @Test

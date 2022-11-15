@@ -7,7 +7,12 @@ public class Customer {
     private LottoTicket lottoTicket;
 
     public Customer(Money amount) {
+        this(amount, new LottoTicket());
+    }
+
+    public Customer(Money amount, LottoTicket lottoTicket) {
         this.amount = amount;
+        this.lottoTicket = lottoTicket;
     }
 
     public void buyLottoTicketTo(LottoSeller lottoSeller) {
@@ -20,16 +25,10 @@ public class Customer {
     }
 
     public LottoResult check(LottoMachine lottoMachine) {
-        if (lottoTicket == null) {
-            throw new IllegalStateException(INVALID_TICKET_MESSAGE);
-        }
         return lottoMachine.check(lottoTicket);
     }
 
     public LottoTicket getLottoTicket() {
-        if (lottoTicket == null) {
-            throw new IllegalStateException(INVALID_TICKET_MESSAGE);
-        }
         return lottoTicket;
     }
 }
