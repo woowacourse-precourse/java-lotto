@@ -8,4 +8,5 @@ public class ErrorMessage {
     public static final String NOT_DIVIDED_BY_LOTTO_PRICE_ERROR = "구입 금액은 1000원으로 나누어 떨어져야 합니다.";
     public static final String NEGATIVE_MONEY_ERROR = "구입 금액은 음수일 수 없습니다.";
     public static final String PARSE_ERROR = "올바른 입력이 아닙니다.";
+    public static final String UNEXPECTED_EXCEPTION = "예상치 못한 예외가 발생했습니다";
 }

@@ -13,6 +13,8 @@ import lotto.view.OutputView;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static lotto.support.ErrorMessage.UNEXPECTED_EXCEPTION;
+
 public class LottoApplication {
 
     public void run() {
@@ -26,6 +28,8 @@ public class LottoApplication {
             summaryLotto(money, ranks);
         } catch (IllegalArgumentException e) {
             OutputView.printErrorMessage(e.getMessage());
+        } catch (Exception | Error e) {
+            OutputView.printErrorMessage(UNEXPECTED_EXCEPTION);
         }
     }
 
