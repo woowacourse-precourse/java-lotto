@@ -12,8 +12,7 @@ public class ConsoleOut {
     }
 
     public static void printLottos(List<Lotto> lottos) {
-        String purchaseCountMessage = ResultMessageGenerator.getPurchaseConfirmMessage(lottos.size());
-        System.out.println(purchaseCountMessage);
+        System.out.println(ResultMessageGenerator.getPurchaseConfirmMessage(lottos.size()));
 
         for (Lotto lotto : lottos) {
             System.out.println(lotto);
