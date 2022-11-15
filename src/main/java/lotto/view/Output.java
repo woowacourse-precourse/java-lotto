@@ -23,11 +23,23 @@ public class Output {
 
     public void printResult(Map<Rank, Integer> result){
         System.out.println(PAPER_COUNT_MASSAGE);
-        for
+        for (Rank rank : Rank.values()) {
+            if (rank == Rank.NONE) {
+                continue;
+            }
+            System.out.printf(isSecondMessage(rank), rank.getCorrectCount(), rank.getPrizeIncludeComma(), result.get(rank));
+        }
     }
 
     public void printProfit(double profit) {
+        System.out.printf(FINAL_PROFIT_MESSAGE, profit);
+    }
 
+    private static String isSecondMessage(Rank rank) {
+        if (rank == Rank.SECOND_PLACE) {
+            return WINNIG_AND_BONUS_BALL_MATCHING_MASSAGE;
+        }
+        return WINNIG_BALL_MATCHING_MASSAGE;
     }
 
 }
