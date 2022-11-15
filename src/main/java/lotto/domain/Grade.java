@@ -1,5 +1,7 @@
 package lotto.domain;
 
+import java.text.DecimalFormat;
+
 public enum Grade {
     FIRST("6개 일치", 6, 2000000000),
     SECOND("5개 일치, 보너스 볼 일치", 5, 30000000),
@@ -32,9 +34,11 @@ public enum Grade {
 
     @Override
     public String toString() {
-        return "WinningClass{" +
-                "condition='" + condition + '\'' +
-                ", prize=" + prize +
-                '}';
+        return condition + " (" + getCommaNumber(prize) + Unit.MONEY + ")";
+    }
+
+    private String getCommaNumber(int number) {
+        DecimalFormat decFormat = new DecimalFormat("###,###");
+        return decFormat.format(number);
     }
 }

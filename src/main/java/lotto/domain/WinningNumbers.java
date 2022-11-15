@@ -1,30 +1,21 @@
 package lotto.domain;
 
-import camp.nextstep.edu.missionutils.Console;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class WinningNumbers {
     private final List<Integer> numbers;
     private final int bonus;
 
-    public WinningNumbers() {
-        numbers = initializeNumbers();
-        bonus = initializeBonus();
+    public WinningNumbers(String numbers, String bonus) {
+        this.numbers = validateNumbers(numbers);
+        this.bonus = validateBonus(bonus);
     }
 
-    private List<Integer> initializeNumbers() {
-        System.out.println(Message.WINNING_NUMBERS_REQUEST);
-
-        String numbersInput = Console.readLine();
-
-        return validateNumbers(numbersInput);
-    }
-
-    private List<Integer> validateNumbers(String numbersInput) {
-        List<Integer> numbers = validateNumbersIsCorrectInputForm(numbersInput);
+    private List<Integer> validateNumbers(String stringNumbers) {
+        List<Integer> numbers = validateIsNumber(validateNumbersSize(stringNumbers));
 
         validateNumbersIsInRange(numbers);
 
@@ -33,54 +24,56 @@ public class WinningNumbers {
         return numbers;
     }
 
-    private List<Integer> validateNumbersIsCorrectInputForm(String numbersInput) {
-        List<Integer> numbers = new ArrayList<>();
+    private String[] validateNumbersSize(String stringNumbers) {
+        String[] numbers = stringNumbers.split(",");
+        if (numbers.length != LottoSettings.LOTTO_SIZE) {
+            throw new IllegalArgumentException(String.format(ErrorMessage.WINNING_NUMBERS_SIZE_ERROR_MESSAGE, LottoSettings.LOTTO_SIZE));
+        }
+        return numbers;
+    }
 
+    private List<Integer> validateIsNumber(String[] arrayNumbers) {
         try {
-            Arrays.stream(numbersInput.split(",")).forEach(v -> numbers.add(Integer.parseInt(v)));
-
+            List<Integer> numbers = new ArrayList<>();
+            numbers.addAll(Arrays.stream(arrayNumbers)
+                    .map(v -> Integer.parseInt(v))
+                    .collect(Collectors.toList()));
             return numbers;
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("[ERROR] 당첨 번호는 숫자 6개를 쉼표(,)로 구분해야 합니다.");
+            throw new IllegalArgumentException(ErrorMessage.WINNING_NUMBER_IS_NOT_INT_ERROR_MESSAGE);
         }
     }
 
     private void validateNumbersIsInRange(List<Integer> numbers) {
-        if (!numbers.stream().allMatch(v -> v >= LottoGenerator.LOTTO_NUMBER_RANGE_START && v <= LottoGenerator.LOTTO_NUMBER_RANGE_END)) {
-            throw new IllegalArgumentException("[ERROR] 당첨 번호는 1~45 사이의 숫자여야 합니다.");
+        if (numbers.stream()
+                .allMatch(v -> v < LottoSettings.LOTTO_NUMBER_RANGE_START || v > LottoSettings.LOTTO_NUMBER_RANGE_END)) {
+            throw new IllegalArgumentException(ErrorMessage.WINNING_NUMBER_IS_NOT_IN_RANGE_ERROR_MESSAGE);
         }
     }
 
     private void validateNumbersIsNotDuplicated(List<Integer> numbers) {
-        if (numbers.stream().distinct().count() != numbers.size()) {
-            throw new IllegalArgumentException("[ERROR] 당첨 번호는 중복이 없어야 합니다.");
+        if (numbers.stream()
+                .distinct()
+                .count() != numbers.size()) {
+            throw new IllegalArgumentException(ErrorMessage.WINNING_NUMBER_IS_DUPLICATED_ERROR_MESSAGE);
         }
     }
-
-    private int initializeBonus() {
-        System.out.println(Message.BONUS_NUMBER_REQUEST);
-
-        String bonusInput = Console.readLine();
-
-        return validateBonus(bonusInput);
-    }
-
 
     private int validateBonus(String bonusInput) {
         try {
             int bonus = Integer.parseInt(bonusInput);
 
-            if (bonus < LottoGenerator.LOTTO_NUMBER_RANGE_START || bonus > LottoGenerator.LOTTO_NUMBER_RANGE_END) {
-                throw new IllegalArgumentException("[ERROR] 보너스 번호는 1~45 사이의 숫자여야 합니다.");
+            if (bonus < LottoSettings.LOTTO_NUMBER_RANGE_START || bonus > LottoSettings.LOTTO_NUMBER_RANGE_END) {
+                throw new IllegalArgumentException(ErrorMessage.BONUS_IS_NOT_IN_RANGE_ERROR_MESSAGE);
             }
 
             if (numbers.contains(bonus)) {
-                throw new IllegalArgumentException("[ERROR] 보너스 번호는 당첨 번호와 중복되면 안됩니다.");
+                throw new IllegalArgumentException(ErrorMessage.BONUS_IS_DUPLICATED_ERROR_MESSAGE);
             }
 
             return bonus;
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("[ERROR] 보너스 번호는 숫자여야 합니다.");
+            throw new IllegalArgumentException(ErrorMessage.BONUS_IS_NOT_INT_ERROR_MESSAGE);
         }
     }
 
