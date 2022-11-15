@@ -26,7 +26,7 @@ public class Lotto {
     public List<Integer> getWinningNumber(){
         return numbers;
     }
-    public int[] lotteResults(List<List<Integer>> lottoBundle,int bonusNumber){
+    public int[] lottoResults(List<List<Integer>> lottoBundle,int bonusNumber){
         int[] resultStatistics={0,0,0,0,0};
         int count;
         List<Integer> currentLotto;
@@ -34,10 +34,8 @@ public class Lotto {
             currentLotto=new ArrayList<>(lotto);
             currentLotto.retainAll(numbers);
             count=currentLotto.size();
-            if(count==6 || (count==5 && numbers.contains(bonusNumber))) count=count+1;
-            count=count-3;
-            if(count>=0)
-                resultStatistics[count]=resultStatistics[count]+1;
+            if(count>=3&&count<=5&&!lotto.contains(bonusNumber))  resultStatistics[count-3]+=1;
+            else if((count==5&&lotto.contains(bonusNumber)) || count==6)  resultStatistics[count-2]+=1;
         }
         return resultStatistics;
     }

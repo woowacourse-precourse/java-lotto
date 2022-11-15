@@ -1,6 +1,7 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -49,7 +50,7 @@ class ApplicationTest extends NsTest {
     void 통계출력_테스트(){
         assertRandomUniqueNumbersInRangeTest(
                 () -> {
-                    run("4000", "1,2,3,4,5,6", "7");
+                    run("5000", "1,2,3,4,5,6", "7");
                     assertThat(output()).contains(
                             "3개 일치 (5,000원) - 1개",
                             "4개 일치 (50,000원) - 1개",
@@ -60,6 +61,7 @@ class ApplicationTest extends NsTest {
                 },
                 List.of(1, 2, 3, 11, 22, 33),
                 List.of(1, 2, 3, 4, 32, 38),
+                List.of(1, 2, 3, 4, 5, 37),
                 List.of(1, 2, 3, 4, 5, 7),
                 List.of(1, 2, 3, 4, 5, 6)
         );
@@ -68,23 +70,65 @@ class ApplicationTest extends NsTest {
     void 수익률_테스트(){
         assertRandomUniqueNumbersInRangeTest(
                 () -> {
-                    run("4000", "1,2,3,4,5,6", "7");
+                    run("5000", "1,2,3,4,5,6", "7");
                     assertThat(output()).contains(
                             "3개 일치 (5,000원) - 1개",
                             "4개 일치 (50,000원) - 1개",
-                            "5개 일치 (1,500,000원) - 1개",
+                            "5개 일치 (1,500,000원) - 1",
                             "5개 일치, 보너스 볼 일치 (30,000,000원) - 1개",
-                            "6개 일치 (2,000,000,000원) - 1개"
+                            "6개 일치 (2,000,000,000원) - 1개",
+                            "총 수익률은 40631100%입니다."
                     );
                 },
                 List.of(1, 2, 3, 11, 22, 33),
                 List.of(1, 2, 3, 4, 32, 38),
+                List.of(1, 2, 3, 4, 5, 37),
                 List.of(1, 2, 3, 4, 5, 7),
                 List.of(1, 2, 3, 4, 5, 6)
         );
     }
-
-
+    @Test
+    void 수익률_테스트2(){
+        assertRandomUniqueNumbersInRangeTest(
+                () -> {
+                    run("5000", "1,2,3,4,5,6", "7");
+                    assertThat(output()).contains(
+                            "3개 일치 (5,000원) - 0개",
+                            "4개 일치 (50,000원) - 0개",
+                            "5개 일치 (1,500,000원) - 0",
+                            "5개 일치, 보너스 볼 일치 (30,000,000원) - 0개",
+                            "6개 일치 (2,000,000,000원) - 1개",
+                            "총 수익률은 40000000%입니다."
+                    );
+                },
+                List.of(18, 19, 9, 12, 22, 33),
+                List.of(11, 21, 13, 41, 32, 38),
+                List.of(11, 12, 13, 14, 15, 37),
+                List.of(12, 42, 33, 24, 15, 27),
+                List.of(1, 2, 3, 4, 5, 6)
+        );
+    }
+    @Test
+    void 동일한로또생성_테스트(){
+        assertRandomUniqueNumbersInRangeTest(
+                () -> {
+                    run("5000", "1,2,3,4,5,6", "7");
+                    assertThat(output()).contains(
+                            "3개 일치 (5,000원) - 2개",
+                            "4개 일치 (50,000원) - 0개",
+                            "5개 일치 (1,500,000원) - 0",
+                            "5개 일치, 보너스 볼 일치 (30,000,000원) - 0개",
+                            "6개 일치 (2,000,000,000원) - 0개",
+                            "총 수익률은 200%입니다."
+                    );
+                },
+                List.of(11, 19, 9, 12, 22, 33),
+                List.of(1, 2, 3, 41, 32, 38),
+                List.of(1, 2, 3, 41, 32, 38),
+                List.of(12, 42, 33, 24, 15, 27),
+                List.of(11, 12, 13, 14, 15, 16)
+        );
+    }
     @Test
     void 예외_테스트() {
         assertSimpleTest(() -> {

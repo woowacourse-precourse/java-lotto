@@ -1,5 +1,6 @@
 package lotto;
 
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -20,7 +21,7 @@ public class Service {
         Lotto lotto=new Lotto(input.getWinningNumbers());
         System.out.println("보너스 번호를 입력해 주세요.");
         bonusNumber=input.getBonusNumber(lotto.getWinningNumber());
-        lotteResults=lotto.lotteResults(lottoBundle,bonusNumber);
+        lotteResults=lotto.lottoResults(lottoBundle,bonusNumber);
         winning_stats(lotteResults);
         total_money(lotteResults,cash);
     }
@@ -60,7 +61,9 @@ public class Service {
         }
         double moneyRate=money/cash*100;
         moneyRate = Math.round(moneyRate * 100) / 100.0;
-        System.out.println("총 수익률은 "+moneyRate+"%입니다.");
+        NumberFormat numberFormat =NumberFormat.getInstance();
+        numberFormat.setGroupingUsed(false);
+        System.out.println("총 수익률은 "+numberFormat.format(moneyRate)+"%입니다.");
     }
     public enum Result{
         FIFTH("3개 일치 (5,000원) - ",5000),
