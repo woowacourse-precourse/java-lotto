@@ -11,9 +11,23 @@ import java.util.stream.Stream;
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class User {
+    private int money;
+    private List<Integer> lotto;
+    private int bonus;
+
+    public User(int money, List<Integer> lotto, int bonus) {
+        validateMoney(money);
+        validateLottoLength(lotto);
+        validateRange(lotto);
+        validateRange(bonus);
+        validateDuplicate(lotto, bonus);
+
+        this.money = money;
+        this.lotto = lotto;
+        this.bonus = bonus;
+    }
     public int getMoneyInput() {
         String money = readLine();
-        validateMoney(Integer.parseInt(money));
         return Integer.parseInt(money);
     }
 
@@ -31,8 +45,6 @@ public class User {
         for (String s : lotto) {
             lottoNumber.add(Integer.parseInt(s));
         }
-        validateLottoLength(lottoNumber);
-        validateRange(lottoNumber);
         return lottoNumber;
     }
 
@@ -52,13 +64,20 @@ public class User {
 
     public int getBonusInput() {
         String bonusInput = readLine();
-        validateRange(Integer.parseInt(bonusInput));
         return Integer.parseInt(bonusInput);
     }
 
     private void validateRange(int bonus) {
         if (bonus > 45 || bonus < 1) {
             throw new IllegalArgumentException("[ERROR] 1~45 사이 숫자를 입력해주세요.");
+        }
+    }
+
+    private void validateDuplicate(List<Integer> lotto, int bonus) {
+        for (Integer integer : lotto) {
+            if (integer.equals(bonus)) {
+                throw new IllegalArgumentException("[ERROR] 사용자 로또 번호와 겹치지 않는 숫자를 입력해주세요.");
+            }
         }
     }
 }

@@ -11,107 +11,51 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class UserTest {
     private User user;
 
-    void setUp(String input) {
-        user = new User();
-        OutputStream out = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(out));
-        InputStream in = new ByteArrayInputStream(input.getBytes());
-        System.setIn(in);
+    @DisplayName("정상적으로 입력된다.")
+    @Test
+    void createUser() {
+        assertThatNoException().isThrownBy(() -> new User(7000, List.of(1, 2, 3, 4, 5, 6), 7));
     }
 
-    @DisplayName("유저의 돈이 정상적으로 입력된다.")
+    @DisplayName("사용자의 돈이 1000 단위가 아닐 경우 예외를 발생한다.")
     @Test
-    void createMoney() {
-        String input = "18000";
-        setUp(input);
-
-        assertThat(user.getMoneyInput()).isEqualTo(Integer.parseInt(input));
+    void createUserByWrongUnitOfMoney() {
+        assertThatThrownBy(() -> new User(70, List.of(1, 2, 3, 4, 5, 6), 7))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 
-    @DisplayName("유저의 돈 입력이 1000원 단위가 아니라면 예외가 발생한다.")
+    @DisplayName("사용자의 로또 번호가 6개가 되지 않을 경우 예외를 발생한다.")
     @Test
-    void createMoneyByWrongUnit() {
-        String input = "1800";
-        setUp(input);
-
-        Throwable exception = assertThrows(IllegalArgumentException.class, user::getMoneyInput);
-        assertEquals("[ERROR] 입력된 돈이 1000원 단위가 아닙니다.", exception.getMessage());
+    void createUserByOverSizedLotto() {
+        assertThatThrownBy(() -> new User(7000, List.of(1, 2, 3, 4, 5, 5, 6), 7))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 
-    @DisplayName("유저의 돈이 숫자가 아니라면 예외가 발생한다.")
+    @DisplayName("사용자의 로또 번호 범위가 1~45가 아닐 경우 예외를 발생한다.")
     @Test
-    void createMoneyByWrongType() {
-        String input = "abcd";
-        setUp(input);
-
-        assertThatThrownBy(() -> user.getMoneyInput())
-                .isInstanceOf(NumberFormatException.class);
+    void createUserByWrongRangeOfLotto() {
+        assertThatThrownBy(() -> new User(7000, List.of(1, -2, 3, 4, 500, 6), 7))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 
-    @DisplayName("유저의 로또 번호가 정상적으로 입력된다.")
+    @DisplayName("사용자의 보너스 번호 범위가 1~45가 아닐 경우 예외를 발생한다.")
     @Test
-    void createLotto() {
-        String input = "1,2,3,4,5,6";
-        setUp(input);
-
-        List<Integer> lotto = Arrays.stream(Arrays.stream(input.split(",")).mapToInt(Integer::parseInt).toArray()).boxed().collect(Collectors.toList());
-        assertThat(user.getLottoInput()).isEqualTo(lotto);
+    void createUserByWrongRangeOfBonus() {
+        assertThatThrownBy(() -> new User(7000, List.of(1, 2, 3, 4, 5, 6), 700))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 
-    @DisplayName("유저의 로또 번호가 숫자가 아니라면 예외가 발생한다.")
+    @DisplayName("사용자의 로또와 보너스 번호가 중복일 경우 예외를 발생한다.")
     @Test
-    void createLottoByWrongType() {
-        String input = "1,ㅊ,3,b,5,6";
-        setUp(input);
-
-        assertThatThrownBy(() -> user.getLottoInput())
-                .isInstanceOf(NumberFormatException.class);
-    }
-
-    @DisplayName("유저의 로또 번호가 6개가 아니라면 예외가 발생한다.")
-    @Test
-    void createLottoByWrongSize() {
-        String input = "1,2,3";
-        setUp(input);
-
-        Throwable exception = assertThrows(IllegalArgumentException.class, user::getLottoInput);
-        assertEquals("[ERROR] 숫자 6개를 입력해주세요.", exception.getMessage());
-    }
-
-    @DisplayName("유저의 로또 번호가 1~45 사이가 아니라면 예외가 발생한다.")
-    @Test
-    void createLottoByWrongRange() {
-        String input = "1,2,3,49,100,-2";
-        setUp(input);
-
-        Throwable exception = assertThrows(IllegalArgumentException.class, user::getLottoInput);
-        assertEquals("[ERROR] 1~45 사이 숫자를 입력해주세요.", exception.getMessage());
-    }
-
-    @DisplayName("유저의 보너스 번호가 정상적으로 입력된다.")
-    @Test
-    void createBonus() {
-        String input = "8";
-        setUp(input);
-
-        assertThat(user.getBonusInput()).isEqualTo(Integer.parseInt(input));
-    }
-
-    @DisplayName("유저의 보너스 번호가 1~45 사이가 아니라면 예외가 발생한다.")
-    @Test
-    void createBonusByWrongRange() {
-        String input = "800";
-        setUp(input);
-
-        Throwable exception = assertThrows(IllegalArgumentException.class, user::getBonusInput);
-        assertEquals("[ERROR] 1~45 사이 숫자를 입력해주세요.", exception.getMessage());
+    void createUserByDuplicatedBonus() {
+        assertThatThrownBy(() -> new User(7000, List.of(1, 2, 3, 4, 5, 6), 6))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 }
