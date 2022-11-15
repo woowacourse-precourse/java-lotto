@@ -49,4 +49,17 @@ class UserInputTest {
         assertEquals("[ERROR] 형식에 맞게 입력해주세요. 번호는 쉼표(,)를 기준으로 구분합니다.", exception.getMessage());
     }
 
+    @Test
+    void 입력되는_보너스번호가_1부터_45까지_수인지_유효성검사_테스트(){
+        String input = "47";
+
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+
+        Throwable exception = assertThrows(IllegalArgumentException.class, () -> {
+            UserInput.inputBonusNumber();
+        });
+        assertEquals("[ERROR] 1부터 45까지의 숫자만 입력해주세요.", exception.getMessage());
+    }
+
 }
