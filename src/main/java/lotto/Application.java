@@ -177,9 +177,7 @@ public class Application {
             bonusCheck = false;
             Lotto lotto = new Lotto(allLottoNumbers.get(i));
             count = lotto.compareNumber(winningNumber);
-            if(count==5){
-                bonusCheck = lotto.checkBonus(bonus);
-            }
+            bonusCheck = lotto.checkBonus(count,bonus);
             rankName = rank.getRank(count,bonusCheck);
             rankMap.put(rankName, rankMap.getOrDefault(rankName,0)+1);
         }

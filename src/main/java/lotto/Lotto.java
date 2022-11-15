@@ -41,12 +41,13 @@ public class Lotto {
         return count;
     }
 
-    public boolean checkBonus(int bonus){
-        for(int i=0;i<6;i++){
-            if(numbers.contains(bonus))
-                return true;
+    public boolean checkBonus(int count, int bonus){
+        if(count==5) {
+            for (int i = 0; i < 6; i++) {
+                if (numbers.contains(bonus))
+                    return true;
+            }
         }
         return false;
     }
-
 }
