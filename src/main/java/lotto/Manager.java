@@ -100,7 +100,7 @@ public class Manager {
         return total;
     }
 
-    public void calculateReturnRate(int purchase, int money){
+    public void PrintReturnRate(int purchase, int money){
         double rate = (double)money / (double)purchase;
         rate *= 100;
         System.out.print(INIT_WINNING_RATE);

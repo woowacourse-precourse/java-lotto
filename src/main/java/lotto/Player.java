@@ -99,7 +99,7 @@ public class Player {
             InputBonusNumber();
             manager.PrintGameResult(this.lottos, this.winning, this.Bonus);
             Profit = manager.calculateTotalMoney(this.lottos, winning, Bonus);
-            manager.calculateReturnRate(this.PurchaseMoney, this.Profit);
+            manager.PrintReturnRate(this.PurchaseMoney, this.Profit);
         }catch(IllegalArgumentException e){
             System.out.println(this.Error_message);
         }
