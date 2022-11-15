@@ -20,6 +20,14 @@ public class Exception {
         return amount;
     }
 
+    // TODO: 담청 번호 6자리를 입력받아 검증 후 리스트로 변환하여 반환한다.
+    public static List<String> isCorrectWinningNumbers(String winningNumber){
+        List<String> winningNumbers = isSixInputValues(splitBasedComma(winningNumber));
+        isAllDifferentValues(winningNumbers);
+        isRangeFromOneToFortyFive(winningNumbers);
+        return winningNumbers;
+    }
+
     // TODO : 입력 값이 1,000으로 나누어 떨어지지 않는 경우 예외 처리 한다.
     static void isDividedByTicketPrice(int purchaseAmount) throws IllegalArgumentException{
         if (purchaseAmount % TICKET_PRICE != ZERO)
