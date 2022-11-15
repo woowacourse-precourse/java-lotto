@@ -22,13 +22,15 @@ public class Application {
     private static final String FIFTH_WINNER = "3개 일치 (5,000원) - ";
 
 
+    private static final String NOT_THOUSAND = "[ERROR] 로또 구입이 가능한 최소 단위는 1000원 입니다.";
+
     public String getPrice() {
         return price;
     }
 
     public List<Integer> randomLotto(){
         List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1,45,6);
-        Collections.sort(numbers);
+//        Collections.sort(numbers);
         return numbers;
     }
 
@@ -39,6 +41,7 @@ public class Application {
 
     public void wrongPrice(String price){
         if(Integer.parseInt(price) % 1000 != 0) {
+            System.out.println(NOT_THOUSAND);
             throw new IllegalArgumentException();
         }
     }
