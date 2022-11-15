@@ -1,9 +1,22 @@
 package lotto;
 
+import lotto.engine.LottoGenerator;
+import lotto.engine.NextstepNumberGenerator;
+import lotto.engine.NumberGenerator;
+import lotto.io.ConsoleInput;
+import lotto.io.ConsoleOutput;
+import lotto.io.Input;
+import lotto.io.Output;
+
 public class Application {
     public static final String ERROR_PREFIX = "[ERROR] ";
 
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        Input input = new ConsoleInput();
+        Output output = new ConsoleOutput();
+        NumberGenerator numberGenerator = new NextstepNumberGenerator();
+        LottoGenerator lottoGenerator = new LottoGenerator(numberGenerator);
+
+        new LottoMachine(input, output, lottoGenerator).run();
     }
 }
