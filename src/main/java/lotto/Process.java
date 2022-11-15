@@ -1,5 +1,9 @@
 package lotto;
 
+import camp.nextstep.edu.missionutils.Randoms;
+
+import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 public class Process {
@@ -38,5 +42,21 @@ public class Process {
         System.out.println(BONUS_NuMBER_MESSAGE);
         bonus = UserInput.userBonus();
         System.out.println();
+    }
+
+    static List<List<Integer>> outputLotto() {
+        List<List<Integer>> lotto = new ArrayList<>();
+        while (lottoPaper-- > 0) {
+            List<Integer> oneLineLotto = Lotto.getLotto(Randoms.pickUniqueNumbersInRange(1, 45, 6));
+            oneLineLotto.sort(Comparator.naturalOrder());
+            lotto.add(oneLineLotto);
+        }
+        return lotto;
+    }
+
+    static void printBuyLotto(List<List<Integer>> lotto){
+        for (List<Integer> oneLotto : lotto){
+            System.out.println(oneLotto);
+        }
     }
 }
