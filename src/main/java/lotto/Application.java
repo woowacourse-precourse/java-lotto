@@ -14,7 +14,7 @@ public class Application {
 
         validMoney(money);
 
-        int numberLotto = buyLotto(money);
+        int numberLotto = money/1000;
 
         if (numberLotto > 0) {
 
@@ -37,11 +37,11 @@ public class Application {
         int bonusNum = inputNum();
 
 
-        HashMap<Integer, Integer> resultLotto = containLotto(inputNum, listLotto, bonusNum);
+        HashMap<Integer, Integer> resultLotto = Result.resultLotto(inputNum, listLotto, bonusNum);
 
         Message.lotto(resultLotto);
 
-        double percentage = resultPercentage(resultLotto, money);
+        double percentage = Result.resultPercentage(resultLotto, money);
 
         Message.percentage(percentage);
 
@@ -61,10 +61,6 @@ public class Application {
         }
 
         return num;
-    }
-
-    public static int buyLotto(int money) {
-        return money / 1000;
     }
 
     public static void validMoney(int money) {
@@ -107,61 +103,4 @@ public class Application {
     }
 
 
-    private static HashMap<Integer, Integer> containLotto(List<Integer> lotto, HashSet<List> listLotto, int bonusNum) {
-
-        HashMap<Integer, Integer> result = new HashMap<>();
-        List<Integer> numLotto = null;
-
-        result.put(5000, 0);
-        result.put(50000, 0);
-        result.put(1500000, 0);
-        result.put(30000000, 0);
-        result.put(2000000000, 0);
-
-        for (List i : listLotto) {
-            numLotto = i;
-
-            i.removeAll(lotto);
-
-            if (i.size() == 3) {
-                result.put(5000, result.get(5000) + 1);
-
-            }
-            if ((i.size() == 2)) {
-                result.put(50000, result.get(50000) + 1);
-            }
-
-
-            if (i.size() == 1 && !(numLotto.contains(bonusNum))) {
-                result.put(1500000, result.get(1500000) + 1);
-
-            }
-            if ((i.size() == 1) && (numLotto.contains(bonusNum))) {
-                result.put(30000000, result.get(30000000) + 1);
-            }
-            if (i.size() == 0) {
-                result.put(2000000000, result.get(2000000000) + 1);
-            }
-
-        }
-        return result;
-    }
-
-
-    private static double resultPercentage(HashMap<Integer, Integer> result, int money) {
-        double sumReward = 0;
-
-        for (Map.Entry<Integer, Integer> reward : result.entrySet()) {
-            sumReward += reward.getKey() * reward.getValue();
-        }
-
-        return (sumReward / money) * 100;
-
-    }
-
-
 }
-
-
-
-
