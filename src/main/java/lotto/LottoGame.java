@@ -121,7 +121,11 @@ public class LottoGame {
     }
 
     private int getBonusNumber() {
-        // TODO : 보너스 넘버 입력 구현
-        return 0;
+        System.out.println("보너스 볼을 입력해 주세요.");
+        
+        String bonusNumber = readLine();
+
+        return Integer.parseInt(bonusNumber);
     }
+
 }
