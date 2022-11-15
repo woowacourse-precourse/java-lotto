@@ -29,8 +29,9 @@ public class Lotto {
         return lottoNumbers;
     }
 
-    public void compareLotto(List<Integer> numbers, List<Integer>[] lottoNumbers) {
+    public void compareLotto(List<Integer> numbers, List<Integer>[] lottoNumbers, int bonusNumber) {
         int count;
+        boolean bonus;
         for (int i = 0; i < lottoNumbers.length; i++) {
             for (int j = 0; j < numbers.size(); j++) {
                 count = compareNumbers(numbers.get(j), lottoNumbers[i]);
@@ -45,5 +46,13 @@ public class Lotto {
             }
         }
         return count;
+    }
+    public boolean compareBonusNumber(List<Integer> lottoNumbers, int bonus) {
+        for (int i = 0; i < lottoNumbers.size(); i++) {
+            if (bonus == lottoNumbers.get(i)) {
+                return true;
+            }
+        }
+        return false;
     }
 }
