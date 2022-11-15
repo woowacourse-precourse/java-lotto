@@ -1,6 +1,7 @@
 package util.input.lotto;
 
 import static java.util.stream.Collectors.toList;
+import static lotto.Message.INPUT_WINNING_NUMBERS;
 import static util.input.global.InputUtil.getInputs;
 
 import java.util.List;
@@ -17,7 +18,7 @@ public class WinningNumbersInputUtil {
     }
 
     private static void printMessage() {
-        System.out.println("당첨 번호를 입력해 주세요.");
+        System.out.println(INPUT_WINNING_NUMBERS.getMessage());
     }
 
     private static List<Integer> getNumbers() {

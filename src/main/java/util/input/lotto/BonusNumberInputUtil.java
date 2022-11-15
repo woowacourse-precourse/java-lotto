@@ -1,5 +1,6 @@
 package util.input.lotto;
 
+import static lotto.Message.INPUT_BONUS_NUMBER;
 import static util.input.global.InputUtil.getInput;
 
 import lotto.Lotto;
@@ -17,7 +18,7 @@ public class BonusNumberInputUtil {
     }
 
     private static void printMessage() {
-        System.out.println("보너스 번호를 입력해 주세요.");
+        System.out.println(INPUT_BONUS_NUMBER.getMessage());
     }
 
     private static void validate(String bonusNumber, Lotto winningNumbers) {

@@ -1,8 +1,8 @@
 package util.input.lotto;
 
+import static lotto.Message.INPUT_PURCHASE_PRICE;
 import static util.input.global.InputUtil.getInput;
 
-import camp.nextstep.edu.missionutils.Console;
 import validation.Validator;
 
 public class PurchasePriceInputUtil {
@@ -17,7 +17,7 @@ public class PurchasePriceInputUtil {
     }
 
     private static void printMessage() {
-        System.out.println("구입 금액을 입력해 주세요.");
+        System.out.println(INPUT_PURCHASE_PRICE.getMessage());
     }
 
     private static void validate(String purchasePrice) {
