@@ -15,7 +15,7 @@ public class ComputerTest extends NsTest {
 
     @DisplayName("당첨 번호가 자연수가 아니면 예외가 발생한다.")
     @Test
-    void createComputerWithNotNaturalNumber() {
+    void ThrowExceptionIfWinningNumbersAreNotNaturalNumber() {
         String input = "1,2,3,4,5,a";
         System.setIn(new ByteArrayInputStream(input.getBytes()));
         assertThatThrownBy(Computer::new)
@@ -24,7 +24,7 @@ public class ComputerTest extends NsTest {
 
     @DisplayName("당첨 번호가 0으로 시작하면 예외가 발생한다.")
     @Test
-    void createComputerWithLeadingZero() {
+    void ThrowExceptionIfWinningNumbersWithLeadingZero() {
         String input = "1,2,3,4,5,06";
         System.setIn(new ByteArrayInputStream(input.getBytes()));
         assertThatThrownBy(Computer::new)
@@ -33,7 +33,7 @@ public class ComputerTest extends NsTest {
 
     @DisplayName("당첨 번호가 5개이면 예외가 발생한다.")
     @Test
-    void createComputerWithFiveNumbers() {
+    void ThrowExceptionIfFiveWinningNumbers() {
         String input = "1,2,3,4,5";
         System.setIn(new ByteArrayInputStream(input.getBytes()));
         assertThatThrownBy(Computer::new)
@@ -42,7 +42,7 @@ public class ComputerTest extends NsTest {
 
     @DisplayName("당첨 번호가 7개이면 예외가 발생한다.")
     @Test
-    void createComputerWithSevenNumbers() {
+    void ThrowExceptionIfSevenWinningNumbers() {
         String input = "1,2,3,4,5,6,7";
         System.setIn(new ByteArrayInputStream(input.getBytes()));
         assertThatThrownBy(Computer::new)
@@ -51,7 +51,7 @@ public class ComputerTest extends NsTest {
 
     @DisplayName("당첨 번호가 1보다 작으면 예외가 발생한다.")
     @Test
-    void createComputerWithSmallNumber() {
+    void ThrowExceptionIfWinningNumbersAreUnderMin() {
         String input = "0,1,2,3,4,5";
         System.setIn(new ByteArrayInputStream(input.getBytes()));
         assertThatThrownBy(Computer::new)
@@ -60,7 +60,7 @@ public class ComputerTest extends NsTest {
 
     @DisplayName("당첨 번호가 45보다 크면 예외가 발생한다.")
     @Test
-    void createComputerWithLargeNumber() {
+    void ThrowExceptionIfWinningNumbersAreOverMax() {
         String input = "41,42,43,44,45,46";
         System.setIn(new ByteArrayInputStream(input.getBytes()));
         assertThatThrownBy(Computer::new)
@@ -69,7 +69,7 @@ public class ComputerTest extends NsTest {
 
     @DisplayName("당첨 번호가 중복되면 예외가 발생한다.")
     @Test
-    void createComputerWithDuplication() {
+    void ThrowExceptionIfWinningNumbersAreDuplicated() {
         String input = "1,2,3,4,5,5";
         System.setIn(new ByteArrayInputStream(input.getBytes()));
         assertThatThrownBy(Computer::new)
@@ -78,7 +78,7 @@ public class ComputerTest extends NsTest {
 
     @DisplayName("보너스 번호가 자연수가 아니면 예외가 발생한다.")
     @Test
-    void inputNotNaturalBonusNumber() {
+    void ThrowExceptionIfBonusNumberIsNotNaturalNumber() {
         assertSimpleTest(() -> {
             runException("1000", "1,2,3,4,5,6", "a");
             assertThat(output()).contains(NOT_NATURAL_NUMBER_EXCEPTION.toString());
