@@ -10,6 +10,7 @@ public class Lotto {
     public Lotto(List<Integer> numbers) {
         checkSize(numbers);
         checkDuplicated(numbers);
+        checkEachNum(numbers);
         this.numbers = numbers;
     }
 
@@ -23,6 +24,14 @@ public class Lotto {
         Set<Integer> set = new HashSet<>(numbers);
         if (set.size() != numbers.size()) {
             throw new IllegalArgumentException();
+        }
+    }
+
+    private void checkEachNum(List<Integer> numbers) {
+        for (Integer i : numbers) {
+            if (i < 1 || i > 45) {
+                throw new IllegalArgumentException();
+            }
         }
     }
 }
