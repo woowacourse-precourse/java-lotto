@@ -20,9 +20,9 @@ public class LottoRankAggregation {
         put(Rank.FIFTH, 0);
     }};
 
-    public RankAggregationDto getRankAggregation(List<Lotto> lottos, WinningLottoNumberDto winningLottoNumberFor) {
+    public RankAggregationDto getRankAggregation(List<Lotto> lottos, WinningLottoNumberDto winningLottoNumberDto) {
         for (Lotto lotto : lottos) {
-            WinningNumberCountDto winningNumberCount = lotto.winningLottoNumberCount(winningLottoNumberFor);
+            WinningNumberCountDto winningNumberCount = lotto.winningLottoNumberCount(winningLottoNumberDto);
             Rank winningRank = Rank.valueOf(winningNumberCount.getWinningCount(), winningNumberCount.isMatchBonusNumber());
 
             if (winningRank.equals(Rank.LOSE)) {
