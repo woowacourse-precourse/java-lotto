@@ -1,5 +1,7 @@
 package lotto.io;
 
+import static lotto.message.ErrorMessage.INVALID_LOTTO_NUMBER;
+
 import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
 
@@ -9,7 +11,7 @@ public class InputControl {
         try {
             return Integer.parseInt(readLine());
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("[ERROR] 입력한 수가 정수 형식이 아닙니다.");
+            throw new IllegalArgumentException(INVALID_LOTTO_NUMBER.getMessage());
         }
     }
 

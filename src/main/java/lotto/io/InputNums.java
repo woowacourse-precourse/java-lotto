@@ -1,5 +1,7 @@
 package lotto.io;
 
+import static lotto.message.ErrorMessage.INVALID_LOTTO_NUMBER;
+
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -18,7 +20,7 @@ public class InputNums {
         try {
             return integers();
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("[ERROR] 입력한 수가 정수 형식이 아닙니다.");
+            throw new IllegalArgumentException(INVALID_LOTTO_NUMBER.getMessage());
         }
     }
 
