@@ -34,13 +34,13 @@ public class Ui {
         for (int i = 0; i< moneys.size(); i++) {
             if(moneys.get(i)==Money.FIVE_THOUSAND.getAmount()){
                 System.out.println("3개 일치 (5,000원) - "+ numbersOfWin.get(i)+"개");
-            }if(moneys.get(i)==Money.FIVE_THOUSAND.getAmount()){
+            }if(moneys.get(i)==Money.FIFTY_THOUSAND.getAmount()){
                 System.out.println("4개 일치 (50,000원) - "+ numbersOfWin.get(i)+"개");
-            }if(moneys.get(i)==Money.FIVE_THOUSAND.getAmount()){
+            }if(moneys.get(i)==Money.ONE_MILLION_HALF.getAmount()){
                 System.out.println("5개 일치 (1,500,000원) - "+ numbersOfWin.get(i)+"개");
-            }if(moneys.get(i)==Money.FIVE_THOUSAND.getAmount()){
+            }if(moneys.get(i)==Money.THIRTY_MILLION.getAmount()){
                 System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - "+ numbersOfWin.get(i)+"개");
-            }if(moneys.get(i)==Money.FIVE_THOUSAND.getAmount()){
+            }if(moneys.get(i)==Money.TWO_BILLION.getAmount()){
                 System.out.println("6개 일치 (2,000,000,000원) - "+ numbersOfWin.get(i)+"개");
             }
         }
