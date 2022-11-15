@@ -82,6 +82,23 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @Test
+    void 구입_금액_단위_예외_테스트() {
+        assertSimpleTest(() -> {
+            runException("1200");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
+    @Test
+    void 구입_금액_문자_포함_예외_테스트() {
+        assertSimpleTest(() -> {
+            runException("1000k");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
