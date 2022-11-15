@@ -56,5 +56,18 @@ public class Validate {
 		return Integer.parseInt(money) % Constant.LOTTO_PRICE.getNumber() > 0;
 	}
 
+	public static void initialInputCheck(String winningNumbers) {
+		if (isNotConsistNumeric(winningNumbers)) errorThrow(Message.NOT_NUMERIC.getMessage());
+	}
+
+	public static boolean isNotConsistNumeric(String winningNumbers) {
+		String[] numbers = winningNumbers.split(",");
+		for (String number: numbers){
+			if (!number.chars().allMatch(Character::isDigit)){
+				return true;
+			}
+		}
+		return false;
+	}
 
 }
