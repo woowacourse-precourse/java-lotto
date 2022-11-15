@@ -1,12 +1,11 @@
 package lotto.controller;
 
-import lotto.domain.Bonus;
-import lotto.domain.Lotto;
-import lotto.domain.LottoCreator;
+import lotto.domain.*;
 import lotto.view.Input;
 import lotto.view.Output;
 
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
 
 public class LottoController {
@@ -57,6 +56,17 @@ public class LottoController {
     }
 
     public static void getResult() {
-        Output.printWinningStatics();
+
+        // 로또 컨테이너 안에 있는 로또 번호들과 당첨 번호를 비교해서 몇 개 일치하는지 리스트 형태로 저장
+        List<Integer> countMatchNumber = LottoProcess.putMatchNumber(winningLotto, lottoContainer);
+        //보너스 로또 리스트 있는지 조사
+        List<Boolean> bonusInLotto = LottoProcess.putAvailableBonus(bonusNumber, lottoContainer);
+        //수익률 계산하기
+        double rateOfProfit = LottoProcess.calculateRateOfProfit(countMatchNumber,bonusInLotto, price);
+        //결과 계산하기
+        LinkedHashMap<MapMatchPrize, Integer> winningResult = LottoResult.getWinningResult(countMatchNumber, bonusInLotto);
+
+        Output.printWinningStatics(winningResult);
+        Output.printRateOfProfit(rateOfProfit);
     }
 }

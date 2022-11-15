@@ -48,4 +48,8 @@ public class Bonus {
             }
         }
     }
+
+    public List<Integer> getBonusNumber() {
+        return this.bonusNumber;
+    }
 }
