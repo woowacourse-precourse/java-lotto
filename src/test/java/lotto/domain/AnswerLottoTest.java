@@ -14,7 +14,18 @@ public class AnswerLottoTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+    @DisplayName("보너스 번호가 1 ~ 45 사이의 값이 아닐 경우 예외가 발생한다.")
     @Test
-    void
+    void createBonusNumberByOverLimitNumber(){
+        assertThatThrownBy(() -> new AnswerLotto(List.of(1, 2, 3, 4, 5, 6), 88))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("보너스 번호가 당첨 번호와 중복 값일 때 예외가 발생한다.")
+    @Test
+    void createAnswerLottoByDuplicateWithBonusNumber(){
+        assertThatThrownBy(() -> new AnswerLotto(List.of(1, 2, 3, 4, 5, 6), 1))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 
 }
