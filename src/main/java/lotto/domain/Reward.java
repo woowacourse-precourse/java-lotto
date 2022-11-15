@@ -15,7 +15,7 @@ public enum Reward {
         this.number = number;
         this.bill = bill;
     }
-
-
-
+    public int getNumber(){
+        return this.number;
+    }
 }
