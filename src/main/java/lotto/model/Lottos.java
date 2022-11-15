@@ -18,11 +18,22 @@ public class Lottos {
         }
     }
 
-    public LottoResult getResult(Lotto winningNumbers, LottoNumber lottoNumber) {
-        List<Rank> rewards = lottos.stream()
-                .map(lotto -> Rank.findRank(lotto.countMatchNumber(winningNumbers), lotto.isMatch(lottoNumber)))
-                .collect(Collectors.toList());
+    public LottoResult getResult(Lotto winningNumbers, LottoNumber bonusNumber) {
+        validateBonusNumber(winningNumbers, bonusNumber);
+        List<Rank> rewards = findRanks(winningNumbers, bonusNumber);
         return new LottoResult(rewards);
+    }
+
+    private List<Rank> findRanks(Lotto winningNumbers, LottoNumber bonusNumber) {
+        return lottos.stream()
+                .map(lotto -> Rank.findRank(lotto.countMatchNumber(winningNumbers), lotto.isMatch(bonusNumber)))
+                .collect(Collectors.toList());
+    }
+
+    private void validateBonusNumber(Lotto winningNumbers, LottoNumber bonusNumber) {
+        if (winningNumbers.isMatch(bonusNumber)) {
+            throw new IllegalArgumentException("보너스 번호는 당첨 번호와 중복될 수 없습니다.");
+        }
     }
 
     public List<Lotto> getLottos() {
