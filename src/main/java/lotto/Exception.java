@@ -28,6 +28,13 @@ public class Exception {
         return winningNumbers;
     }
 
+    // TODO: 보너스 번호 1자리를 입력받아 검증 후 반환한다.
+    public static String isCorrectBonusNumber(String bonusNumber){
+        isMatchFromOneToFortyFive(bonusNumber);
+        isDuplicateNumberInWinningNumber(bonusNumber);
+        return bonusNumber;
+    }
+
     // TODO : 입력 값이 1,000으로 나누어 떨어지지 않는 경우 예외 처리 한다.
     static void isDividedByTicketPrice(int purchaseAmount) throws IllegalArgumentException{
         if (purchaseAmount % TICKET_PRICE != ZERO)
