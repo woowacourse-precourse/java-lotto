@@ -3,13 +3,14 @@
 ## 기능 목록
 - [ ] 구입 금액에 해당하는 로또만큼 발행하는 기능 - makeRandomNumber()
 
-- InputOutPUTUI 클래스 내에서
-- [ ] 로또 구입 금액 을 입력받고 유효성 검사 기능 - setMoney()
+InputOutPUTUI 클래스 내에서
+- 입력 받은 번호의 유효성 검사 기능
+    - [ ] 길이 검사 기능 - validateLength()
+    - [ ] 중복 검사 기능 - validateRange() 
+- [ ] 로또 구입 금액 을 입력받는 기능 - setMoney()
 - [ ] 당첨 번호를 입력 받는 기능 - setUserInputNumber()
 - [ ] 보너스 번호를 입력 받는 기능 - setUserBonusNumber()
-  - 입력 받은 번호의 유효성 검사 기능
-    - [ ] 길이 검사 기능 - validateLength()
-    - [ ] 중복 검사 기능 - validateRange()
+  
 - [ ] 발행된 로또 번호와 당첨 번호 + 보너스 번호를 조합해 비교하는 기능
 - [ ] 당첨내역을 출력하는 기능
 - [ ] 수익률을 계산하는 기능
