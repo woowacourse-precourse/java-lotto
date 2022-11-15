@@ -1,7 +1,6 @@
 package lotto.service;
 
 import java.text.DecimalFormat;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -35,7 +34,10 @@ public class LottoCalculateService {
     }
 
     public String getYieldOfLotto(User user, int totalPrice) {
-        DecimalFormat decimalFormat = new DecimalFormat("###,###.0");
+        if (user.getBuyingPrice() == 0) {
+            return "0.0";
+        }
+        DecimalFormat decimalFormat = new DecimalFormat("###,##0.0");
         return decimalFormat.format((double) totalPrice / user.getBuyingPrice() * 100);
     }
 
