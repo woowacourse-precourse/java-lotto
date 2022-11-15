@@ -4,7 +4,7 @@ import java.text.DecimalFormat;
 import java.util.List;
 import lotto.domain.Lotto;
 import lotto.domain.LottoResult;
-import lotto.domain.Rank;
+import lotto.constant.Rank;
 
 public class OutputView {
     static StringBuilder sb;

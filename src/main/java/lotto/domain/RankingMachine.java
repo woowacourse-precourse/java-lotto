@@ -1,6 +1,7 @@
 package lotto.domain;
 
 import java.util.List;
+import lotto.constant.Rank;
 
 public class RankingMachine {
     private final List<Rank> ranks;

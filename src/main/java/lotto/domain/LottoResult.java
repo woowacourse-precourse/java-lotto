@@ -3,6 +3,7 @@ package lotto.domain;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import lotto.constant.Rank;
 
 public class LottoResult {
     private final List<Integer> rankCounts; // 각 등수별 개수

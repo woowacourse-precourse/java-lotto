@@ -1,4 +1,4 @@
-package lotto.domain;
+package lotto.constant;
 
 import java.text.NumberFormat;
 
@@ -54,6 +54,5 @@ public enum Rank {
         }
         return winning;
     }
-
 
 }

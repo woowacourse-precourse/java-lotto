@@ -1,11 +1,11 @@
-package lotto.controller;
+package lotto.view;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.List;
 import lotto.domain.LottoAnswer;
 
-public class InputController {
+public class InputView {
     private int price;
     private List<Integer> lottoAnswer = new ArrayList<>();
     private int bonusNumber;
