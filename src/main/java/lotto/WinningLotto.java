@@ -25,8 +25,8 @@ public class WinningLotto{
         }
     }
     private void validateRange(int bonusNumber){
-        if(bonusNumber < 0 || bonusNumber > 45){
-            throw new IllegalArgumentException("[ERROR] 보너스 번호는 중복될 수 없습니다.");
+        if(bonusNumber < 1 || bonusNumber > 45){
+            throw new IllegalArgumentException("[ERROR] 보너스 번호는 1에서 45까지의 수입니다.");
         }
     }
 }
