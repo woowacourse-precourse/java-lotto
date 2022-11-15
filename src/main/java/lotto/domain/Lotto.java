@@ -15,8 +15,7 @@ public class Lotto {
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
-        Arrays.sort(numbers.toArray());
-        this.numbers = numbers;
+        this.numbers = sort(numbers);
     }
 
     public Lotto(String numbers) {
@@ -27,6 +26,12 @@ public class Lotto {
 
     public List<Integer> getNumbers() {
         return numbers;
+    }
+
+    public List<Integer> sort(List<Integer> numbers) {
+        return numbers.stream()
+                .sorted()
+                .collect(Collectors.toList());
     }
 
     public static List<Integer> toSortedList(String numbers) {
