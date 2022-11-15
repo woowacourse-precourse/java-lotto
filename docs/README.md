@@ -23,7 +23,7 @@
         당첨 기준 1등~5등 enum으로 선언
     - [x]  당첨 내역 저장 기능 → registerWinningResult
     - [x]  당첨금 저장 기능 → registerTotalPrize
-    - [ ]  수익률 저장 기능 → registerLottoYield
+    - [x]  수익률 저장 기능 → registerLottoYield
 
         소수점 둘째 자리에서 반올림
 3. Seller

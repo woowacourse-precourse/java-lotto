@@ -2,6 +2,7 @@ package lotto.model;
 
 import static lotto.enums.Constant.*;
 import lotto.enums.Ranking;
+import lotto.ConvertUtil;
 
 import java.util.List;
 
@@ -12,6 +13,9 @@ public class Player {
     private List<Integer> winningNumber;
     private int bonusNumber;
     private int totalPrize;
+    private String lottoYield;
+
+    ConvertUtil convertUtil = new ConvertUtil();
 
     public void setPurchaseAmount(int purchaseAmount) {
         this.purchaseAmount = purchaseAmount;
@@ -49,6 +53,10 @@ public class Player {
         this.bonusNumber = bonusNumber;
     }
 
+    public String getLottoYield() {
+        return this.lottoYield;
+    }
+
     public void registerWinningResult() {
         for (Lotto lottonumber : lottoNumbers) {
             int matchingNumbers = compareLottoAndWinningNumber(lottonumber);
@@ -77,5 +85,11 @@ public class Player {
         for (Ranking rank : Ranking.values()) {
             totalPrize += rank.getPrize() * rank.getWinningResult();
         }
+    }
+
+    public void registerLottoYield() {
+        float calYield = (float) Math.round((float) this.totalPrize / this.purchaseAmount * 1000) / 10;
+        String tempYield = String.valueOf(calYield);
+        this.lottoYield = convertUtil.plainNumberIntoCommaNumber(tempYield);
     }
 }
