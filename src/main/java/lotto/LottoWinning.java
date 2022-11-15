@@ -34,7 +34,7 @@ public class LottoWinning {
         return (double) (benefit * 100) / inputMoney;
     }
 
-    public static int[] compareEqaulsLotto(List<List<Integer>> lottosList) {
+    public int[] compareEqaulsLotto(List<List<Integer>> lottosList) {
         int[] count = new int[5];
         for (int i = 0; i < lottosList.size(); i++) {
             int[] tmp = getEqulasCount(lottosList.get(i));
@@ -47,7 +47,7 @@ public class LottoWinning {
         return count;
     }
 
-    public static int[] getEqulasCount(List<Integer> lottoList) {
+    public int[] getEqulasCount(List<Integer> lottoList) {
         int[] count = new int[2];
         for (int i = 0; i < 6; i++) {
             if (this.numbers.contains(lottoList.get(i)))
