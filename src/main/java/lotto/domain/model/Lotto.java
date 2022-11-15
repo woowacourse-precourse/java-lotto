@@ -15,8 +15,9 @@ public class Lotto {
 	private void validateOverlap(List<Integer> numbers) {
 		HashSet<Integer> numberSet = new HashSet<>(numbers);
 
-		if (numberSet.size() != numbers.size())
+		if (numberSet.size() != numbers.size()) {
 			throw new IllegalArgumentException("중복된 수가 있음");
+		}
 	}
 
 	private void validateSize(List<Integer> numbers) {
@@ -25,7 +26,7 @@ public class Lotto {
 		}
 	}
 
-	List<Integer> getLotto() {
+	public List<Integer> getLotto() {
 		return this.numbers;
 	}
 }

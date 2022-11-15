@@ -5,12 +5,10 @@ import java.util.Arrays;
 import java.util.List;
 
 public class CompareNumber {
-	final private List<Integer> winningNumbers;
-	final private int bonusBall;
-	final private List<List<Integer>> ticket;
-
+	private	final List<Integer> winningNumbers;
+	private	final int bonusBall;
+	private final List<List<Integer>> ticket;
 	public List<List<Integer>> result = new ArrayList<>();
-
 
 	public CompareNumber(WinningNumber winningNumber, BonusBall bonusBall, LottoTicket lottoTicket) {
 		this.winningNumbers = winningNumber.getWinningNumbers();

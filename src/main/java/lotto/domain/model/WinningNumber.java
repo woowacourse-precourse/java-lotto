@@ -23,8 +23,7 @@ public class WinningNumber {
 				System.out.println(ErrorMessage.ERROR_WRONG_INPUT.getError_message());
 				throw new IllegalArgumentException("마지막 문자 쉼표");
 			}
-		}
-		catch (StringIndexOutOfBoundsException exception){
+		} catch (StringIndexOutOfBoundsException exception) {
 			System.out.println(ErrorMessage.ERROR_WRONG_INPUT.getError_message());
 			throw new IllegalArgumentException("값 이상");
 		}
@@ -42,7 +41,6 @@ public class WinningNumber {
 
 	private List<Integer> initWinningNumbers(String input) {
 		String[] numbers = input.split(",");
-		System.out.println(numbers.length);
 		List<Integer> winningNumber = new ArrayList<>();
 		for (String number : numbers) {
 			winningNumber.add(validateInt(number));
@@ -59,7 +57,6 @@ public class WinningNumber {
 			System.out.println(ErrorMessage.ERROR_NOT_INTEGER.getError_message());
 			throw new IllegalArgumentException("정수 값을 입력하세요");
 		}
-
 		return number;
 	}
 

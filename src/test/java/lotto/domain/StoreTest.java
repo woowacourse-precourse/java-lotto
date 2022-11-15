@@ -12,7 +12,7 @@ class StoreTest {
 	void 금액만큼_로또발행(){
 		int pay = 5000;
 		Store store = new Store(pay);
-		int count = store.count;
+		long count = store.count;
 		assertEquals(count, pay/1000);
 	}
 

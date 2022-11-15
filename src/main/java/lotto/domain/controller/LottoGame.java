@@ -13,6 +13,8 @@ public class LottoGame {
 	private Pay pay;
 	private Store store;
 	private CompareNumber compareNumber;
+	public LottoTicket lottoTicket;
+
 
 	public void start() {
 		buyTicket();
@@ -26,23 +28,22 @@ public class LottoGame {
 		print.message(Message.START);
 		pay = new Pay(readLine());
 		store = new Store(pay.getPay());
-		print.LottoTicket(store.count, store.lottoTicket.getLottoTicket());
+		lottoTicket = new LottoTicket(store.issueLottoTicket());
+		print.LottoTicket(store.count, lottoTicket.getLottoTicket());
 	}
 
 	private void getWinningNumber() {
-		print.newLine();
 		print.message(Message.WINNING_NUMBER);
 		winningNumber = new WinningNumber(readLine());
 	}
 
 	private void getBonusNumber() {
-		print.newLine();
 		print.message(Message.BONUS_NUMBER);
 		bonusBall = new BonusBall(readLine(), winningNumber.getWinningNumbers());
 	}
 
 	private void getScore() {
-		compareNumber = new CompareNumber(winningNumber, bonusBall, store.lottoTicket);
+		compareNumber = new CompareNumber(winningNumber, bonusBall, lottoTicket);
 		print.result(compareNumber.result);
 	}
 
@@ -50,6 +51,4 @@ public class LottoGame {
 		RateOfReturn rateOfReturn = new RateOfReturn(pay.getPay(), compareNumber.result);
 		System.out.printf(Message.RESULT_RATE.getMessage(), rateOfReturn.rateOfReturn);
 	}
-
-
 }

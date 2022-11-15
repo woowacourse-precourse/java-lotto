@@ -26,7 +26,6 @@ class LottoTest {
 				.isInstanceOf(IllegalArgumentException.class);
 	}
 
-	// 아래에 추가 테스트 작성 가능
 	@Test
 	void 제대로_동작() {
 		Lotto lotto = new Lotto(Arrays.asList(1, 2, 3, 4, 5, 6));

@@ -8,17 +8,8 @@ public class Print {
 		System.out.print(message.getMessage());
 	}
 
-	public void print(String string) {
-		System.out.println(string);
-	}
-
-	public void newLine() {
-		System.out.println();
-	}    // todo 이거 메세지에 개행에 문자 넣기
-
-	public void LottoTicket(int count, List<List<Integer>> lottoTicket) {
-		newLine();
-		System.out.println("" + count + Message.BUY.getMessage());
+	public void LottoTicket(long count, List<List<Integer>> lottoTicket) {
+		System.out.println("\n" + count + Message.BUY.getMessage());
 		for (List<Integer> ticket : lottoTicket)
 			System.out.println(ticket);
 	}

@@ -10,7 +10,6 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 class CompareNumberTest {
-
 	@Test
 	void 채점_1점_3점() {
 		WinningNumber winningNumber = new WinningNumber("1,2,3,4,5,6");
