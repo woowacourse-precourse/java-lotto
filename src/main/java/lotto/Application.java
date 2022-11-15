@@ -60,27 +60,28 @@ public class Application {
     static int lottoNumber;
     static int inputMoney;
     static int[] stats = {0, 0, 0, 0, 0, 0};
-    static List<List<Integer>> randomNumbers=new ArrayList<>();
+    static List<List<Integer>> randomNumbers = new ArrayList<>();
 
-    public static void getMoney(){
+    public static void getMoney() {
         System.out.print(inputMoneyStr);
 
-        String pattern="^[0-9]*$";
-        String inputStr=Console.readLine();
-        if(!Pattern.matches(pattern,inputStr)){
-            throw new IllegalArgumentException(exceptionHeader+notInteger);
+        String pattern = "^[0-9]*$";
+        String inputStr = Console.readLine();
+        if (!Pattern.matches(pattern, inputStr)) {
+            throw new IllegalArgumentException(exceptionHeader + notInteger);
         }
 
         inputMoney = Integer.parseInt(inputStr);
-        if(inputMoney%1000!=0){
-            throw new IllegalArgumentException(exceptionHeader+wrongUnit);
+        if (inputMoney % 1000 != 0) {
+            throw new IllegalArgumentException(exceptionHeader + wrongUnit);
         }
 
-        lottoNumber=inputMoney/1000;
-        System.out.println(lineBreak+lottoNumber+inputMoneyPrint);
+        lottoNumber = inputMoney / 1000;
+        System.out.println(lineBreak + lottoNumber + inputMoneyPrint);
     }
+
     public static void makeRandomNumbers() {
-        for (int lotto=0;lotto<lottoNumber;lotto++) {
+        for (int lotto = 0; lotto < lottoNumber; lotto++) {
             List<Integer> pickNumbers = Randoms.pickUniqueNumbersInRange(1, 45, 7);
             Collections.sort(pickNumbers);
             randomNumbers.add(pickNumbers);
@@ -88,10 +89,10 @@ public class Application {
         }
     }
 
-    public static void getWinningNumbers(){
-        System.out.println(lineBreak+winningNumbersStr);
-        Lotto lotto=new Lotto(stringToListInteger(Console.readLine()));
-        System.out.println(lineBreak+bonusNumbersStr);
+    public static void getWinningNumbers() {
+        System.out.println(lineBreak + winningNumbersStr);
+        Lotto lotto = new Lotto(stringToListInteger(Console.readLine()));
+        System.out.println(lineBreak + bonusNumbersStr);
         lotto.addBonusNumber(Integer.parseInt(Console.readLine()));
 
         statsCalculate(lotto);
@@ -103,8 +104,18 @@ public class Application {
         }
     }
 
+    public static void printOutResult() {
+        long profit = 0;
+        System.out.println(lineBreak + winningStats);
+        for (Rate r : Rate.values()) {
+            System.out.print(r.getStr() + String.format(" - %d개\n", stats[r.getRate()]));
+            profit += r.calculate(stats[r.getRate()]);
+        }
+        System.out.println(String.format("총 수익률은 %.1f입니다.", profit / inputMoney));
+    }
+
     public static void printOut(int num) {
-        List<Integer> numbers=randomNumbers.get(num);
+        List<Integer> numbers = randomNumbers.get(num);
 
         System.out.print("[");
         for (int i = 0; i < numbers.size() - 1; i++) {
@@ -113,16 +124,16 @@ public class Application {
         System.out.print(numbers.get(6));
         System.out.println("]");
     }
+
     public static List<Integer> stringToListInteger(String str) {
         String[] strArray = str.split(",");
-        List<Integer> list=new ArrayList<>();
+        List<Integer> list = new ArrayList<>();
 
-        for(int i=0;i<strArray.length;i++){
+        for (int i = 0; i < strArray.length; i++) {
             list.add(Integer.parseInt(strArray[i]));
         }
         return list;
     }
-
 
     public static void main(String[] args) {
 
