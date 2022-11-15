@@ -9,6 +9,9 @@ import java.util.List;
 public class WinningNumberLotto extends Lotto {
 
     private int bonusNumber;
+    private static final int START_NUMBER = 1;
+    private static final int END_NUMBER = 45;
+
 
     public WinningNumberLotto() {
         super(InputNumber.createNumber());
@@ -54,5 +57,10 @@ public class WinningNumberLotto extends Lotto {
             return false;
         }
         return true;
+    }
+
+    private boolean checkSize(String input) {
+        int number = Integer.parseInt(input);
+        return START_NUMBER <= number && number <= END_NUMBER;
     }
 }
