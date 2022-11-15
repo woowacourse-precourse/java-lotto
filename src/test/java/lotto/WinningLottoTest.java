@@ -49,4 +49,29 @@ public class WinningLottoTest {
 		assertThatThrownBy(() -> WinningLotto.createWinningLotto("1,2,3,4,5,a"))
 			.isInstanceOf(IllegalArgumentException.class);
 	}
+
+	@DisplayName("보너스 번호가 숫자가 아니면 예외가 발생한다.")
+	@Test
+	void 보너스_숫자_테스트() {
+		assertThatThrownBy(() -> WinningLotto.createBonusNumber("a"))
+			.isInstanceOf(IllegalArgumentException.class);
+	}
+
+	@DisplayName("보너스 번호가 로또 번호와 중복되면 예외가 발생한다.")
+	@Test
+	void 보너스_중복_테스트() {
+		WinningLotto.createWinningLotto("1,2,3,4,5,6");
+
+		assertThatThrownBy(() -> WinningLotto.createBonusNumber("1"))
+			.isInstanceOf(IllegalArgumentException.class);
+	}
+
+	@DisplayName("보너스 번호 범위에 벗어나면 예외가 발생한다.")
+	@Test
+	void 보너스_범위_테스트() {
+		WinningLotto.createWinningLotto("1,2,3,4,5,6");
+
+		assertThatThrownBy(() -> WinningLotto.createBonusNumber("66"))
+			.isInstanceOf(IllegalArgumentException.class);
+	}
 }
