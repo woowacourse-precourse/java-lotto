@@ -11,8 +11,7 @@ public class LottoTicketsStorageTest {
     @DisplayName("로또 티켓 발행 저장 여부 확인")
     @Test
     void lottoTicketsStorageTest() {
-        LottoStorage lottoTicketsStorage = new LottoStorage();
-        lottoTicketsStorage.setLottoTickets(TicketMachine.issueTickets(5));
-        assertThat(lottoTicketsStorage.getLottoTickets().size()).isEqualTo(5);
+        LottoStorage.setLottoTickets(TicketMachine.issueTickets(5));
+        assertThat(LottoStorage.getLottoTickets().size()).isEqualTo(5);
     }
 }
