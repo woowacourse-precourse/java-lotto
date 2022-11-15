@@ -1,9 +1,6 @@
 package lotto;
 
-import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
-import lotto.domain.validator.LottoNumberValidator;
 import lotto.util.ErrorMessages;
 
 public class Lotto {
@@ -39,7 +36,15 @@ public class Lotto {
         return builder.toString();
     }
 
-
+    public int getCompareResult(List<Integer> winningNumbers){
+        int equalCount = 0 ;
+        for(int number : winningNumbers){
+            if(this.numbers.contains(number)){
+                equalCount++ ;
+            }
+        }
+        return equalCount;
+    }
 
 
 }
