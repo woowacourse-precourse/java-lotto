@@ -39,7 +39,23 @@ public class LottoCalculator {
 
     private void markUp(int correct) {
         if (correct == 3) {
-
+            winningLotto.put(3, winningLotto.get(3) + 1);
+            return;
+        }
+        if (correct == 4) {
+            winningLotto.put(3, winningLotto.get(4) + 1);
+            return;
+        }
+        if (correct == 5) {
+            winningLotto.put(3, winningLotto.get(5) + 1);
+            return;
+        }
+        if (correct == 6) {
+            winningLotto.put(3, winningLotto.get(6) + 1);
+            return;
+        }
+        if (correct == 7) {
+            winningLotto.put(3, winningLotto.get(7) + 1);
         }
     }
 
