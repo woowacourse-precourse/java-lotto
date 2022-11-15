@@ -1,7 +1,6 @@
 package lotto.domain;
 
 import lotto.view.InputView;
-import lotto.view.OutputView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,16 +9,16 @@ public class Consumer {
     private final static int LOTTO_PRICE_UNIT = 1000;
     private List<Lotto> lotteries;
 
-    public void purchase() {
+    public List<Lotto> purchase() {
         int purchasePrice = new InputView().readPurchasePrice();
         validatePrice(purchasePrice);
         purchaseLotteries(purchasePrice);
 
-        getLotteriesResult();
+        return lotteries;
     }
 
-    private void getLotteriesResult() {
-        new LottoEstimator(WinningLotto.create()).estimate(lotteries);
+    public LottoStatics getLotteriesResult() {
+        return new LottoEstimator(WinningLotto.create()).estimate(lotteries);
     }
 
     private void validatePrice(int price) {
@@ -37,6 +36,5 @@ public class Consumer {
             lotteries.add(lotto);
             purchasePrice -= LOTTO_PRICE_UNIT;
         }
-        new OutputView().printLotteries(lotteries);
     }
 }
