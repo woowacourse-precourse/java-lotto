@@ -10,13 +10,14 @@ public class User {
     protected List<Integer> userNumbers;
     protected int bonusNumber;
 
-    public User() {
+    public void getBudget() {
         System.out.println("구입금액을 입력해 주세요.");
         int budget = Integer.parseInt(Console.readLine());
         if (budget % 1000 != 0) {
             throw new IllegalArgumentException("구입금액은 1000원 단위입니다!");
         }
         this.publicans = budget / 1000;
+
     }
 
     public void getNumbers() {
@@ -45,7 +46,10 @@ public class User {
         lengthValidate(num);
         for (int i = 0; i < num.length; i++) {
             isDigitValidate(num[i]);
+        }
+        for (int i = 0; i < num.length; i++) {
             rangeValidate(Integer.parseInt(num[i]));
+            isDuplicated(num, Integer.parseInt(num[i]),i);
         }
     }
 
@@ -55,19 +59,27 @@ public class User {
         }
     }
 
-    public void isDigitValidate(String num) {
+    public void isDuplicated(String[] num, int number,int index) {
+        for (int i = 0; i < num.length; i++) {
+            if(i==index){
+                continue;
+            }
+            if (Integer.parseInt(num[i]) == number) {
+                throw new IllegalArgumentException("[ERROR] 서로 다른 숫자를 입력해주세요!");
+            }
+        }
+    }
 
+    public void isDigitValidate(String num) {
         if (!num.matches("[-+]?\\d*\\.?\\d+")) {
             throw new IllegalArgumentException("[ERROR] 숫자를 입력해주세요!");
         }
-
     }
 
     public void rangeValidate(int num) {
         if (num > 45 || num < 1) {
             throw new IllegalArgumentException("[ERROR] 1~45사이의 숫자를 입력해주세요!");
         }
-
     }
 
     public int getPublicans() {
