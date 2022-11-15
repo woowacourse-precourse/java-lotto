@@ -14,6 +14,8 @@ public class InputManager {
 
     private final InputValidate inputValidate = new InputValidate();
 
+    private List<Integer> winningNums;
+
     public InputManager() {
     }
 
@@ -34,7 +36,9 @@ public class InputManager {
         String inputFormat = Console.readLine();
         inputValidate.validateInputWinningNumber(inputFormat);
 
-        List<Integer> winningNums = convertToIntegerList(inputFormat);
+        winningNums = convertToIntegerList(inputFormat);
+
+        System.out.println();
 
         return winningNums;
     }
@@ -44,6 +48,9 @@ public class InputManager {
 
         String inputNumber = Console.readLine();
         inputValidate.validateInputBonusNumber(inputNumber);
+        inputValidate.validateBonusNumberNotDuplicate(winningNums, inputNumber);
+
+        System.out.println();
 
         return convertToInt(inputNumber);
     }

@@ -2,6 +2,7 @@ package lotto.util;
 
 import java.util.Collections;
 import java.util.HashSet;
+import java.util.List;
 
 public class InputValidate {
     private static final String ERROR_MESSAGE_NOT_INT = "[ERROR] 숫자만 입력 가능합니다.";
@@ -10,6 +11,8 @@ public class InputValidate {
     private static final String ERROR_MESSAGE_NOT_INT_BETWEEN_COMMA = "[ERROR] 각 쉼표 사이에 숫자만 입력 가능합니다.";
     private static final String ERROR_MESSAGE_NUMBER_DUPLICATE = "[ERROR] 각 숫자는 중복될 수 없습니다.";
     private static final String ERROR_MESSAGE_NOT_PROPER_NUMBER_RANGE = "[ERROR] 1~45 사이의 수를 입력해야 합니다.";
+    private static final String ERROR_MESSAGE_DUPLICATE_WITH_WINNING = "[ERROR] 당첨 번호와 보너스 번호는 중복될 수 없습니다.";
+
 
     public InputValidate() {
     }
@@ -31,9 +34,18 @@ public class InputValidate {
         validateNumberRange(inputNumber);
     }
 
+    public void validateBonusNumberNotDuplicate(List<Integer> winningNums, String bonusNumber) {
+        int num = Integer.valueOf(bonusNumber);
+        if (winningNums.contains(bonusNumber)) {
+            System.out.println(ERROR_MESSAGE_DUPLICATE_WITH_WINNING);
+            throw new IllegalArgumentException(ERROR_MESSAGE_DUPLICATE_WITH_WINNING);
+        }
+    }
+
     private void validateElementCount(String input) {
         String[] inputNums = input.split(",");
         if (inputNums.length != 6) {
+            System.out.println(ERROR_MESSAGE_NOT_PROPER_WINNING_NUMBER_COUNT);
             throw new IllegalArgumentException(ERROR_MESSAGE_NOT_PROPER_WINNING_NUMBER_COUNT);
         }
     }
@@ -43,6 +55,7 @@ public class InputValidate {
 
         for (String num : inputNums) {
             if (!isNumber(num)) {
+                System.out.println(ERROR_MESSAGE_NOT_INT_BETWEEN_COMMA);
                 throw new IllegalArgumentException(ERROR_MESSAGE_NOT_INT_BETWEEN_COMMA);
             }
         }
@@ -55,6 +68,7 @@ public class InputValidate {
         Collections.addAll(set, inputNums);
 
         if (set.size() != 6) {
+            System.out.println(ERROR_MESSAGE_NUMBER_DUPLICATE);
             throw new IllegalArgumentException(ERROR_MESSAGE_NUMBER_DUPLICATE);
         }
     }
@@ -70,12 +84,14 @@ public class InputValidate {
     private void validateNumberRange(String input) {
         int number = Integer.parseInt(input);
         if (!(number >= 1 && number <= 45)) {
+            System.out.println(ERROR_MESSAGE_NOT_PROPER_NUMBER_RANGE);
             throw new IllegalArgumentException(ERROR_MESSAGE_NOT_PROPER_NUMBER_RANGE);
         }
     }
 
     private void validateIsNumber(String input) {
         if (!isNumber(input)) {
+            System.out.println(ERROR_MESSAGE_NOT_INT);
             throw new IllegalArgumentException(ERROR_MESSAGE_NOT_INT);
         }
     }
@@ -83,9 +99,11 @@ public class InputValidate {
     private void validateIsProperAmount(String input) {
         int amount = Integer.parseInt(input);
         if (amount < 1000) {
+            System.out.println(ERROR_MESSAGE_NOT_PROPER_AMOUNT);
             throw new IllegalArgumentException(ERROR_MESSAGE_NOT_PROPER_AMOUNT);
         }
         if (amount % 1000 != 0) {
+            System.out.println(ERROR_MESSAGE_NOT_PROPER_AMOUNT);
             throw new IllegalArgumentException(ERROR_MESSAGE_NOT_PROPER_AMOUNT);
         }
     }
@@ -98,4 +116,5 @@ public class InputValidate {
         }
         return false;
     }
+
 }

@@ -3,11 +3,11 @@ package lotto.domain;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Lottos {
+public class LottoPile {
     private final List<Lotto> lottos;
     private final LottoNumbersGenerator lottoNumbersGenerator;
 
-    public Lottos() {
+    public LottoPile() {
         this.lottos = new ArrayList<>();
         this.lottoNumbersGenerator = new LottoNumbersGenerator();
     }
