@@ -31,7 +31,7 @@ public class Input {
         try {
             winNums = getWinNums(input);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException(Messages.ERROR_NOT_NUMBER);
+            throw new IllegalArgumentException(ErrorMessage.ERROR_NOT_NUMBER);
         }
 
         // 예외사항 체크
@@ -69,40 +69,40 @@ public class Input {
         try {
             num = Integer.parseInt(input);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException(Messages.ERROR_NOT_NUMBER);
+            throw new IllegalArgumentException(ErrorMessage.ERROR_NOT_NUMBER);
         }
         return num;
     }
 
     private static void vaildMoney(int Money) {
         if (Money % 1000 != 0) {
-            throw new IllegalArgumentException(Messages.ERROR_NOT_DIVDE1000);
+            throw new IllegalArgumentException(ErrorMessage.ERROR_NOT_DIVDE1000);
         }
     }
 
     private static void isZero(int Money) {
         if (Money == 0) {
-            throw new IllegalArgumentException(Messages.ERROR_NULL);
+            throw new IllegalArgumentException(ErrorMessage.ERROR_NULL);
         }
     }
 
     private static void isVaildRange(List<Integer> nums) {
         for (int num : nums) {
             if (num>45 || num<1) {
-                throw new IllegalArgumentException(Messages.ERROR_NOT_VAILDRANGE);
+                throw new IllegalArgumentException(ErrorMessage.ERROR_NOT_VAILDRANGE);
             }
         }
     }
 
     private static void isVaildRange(int num) {
         if (num>45 || num<1) {
-            throw new IllegalArgumentException(Messages.ERROR_NOT_VAILDRANGE);
+            throw new IllegalArgumentException(ErrorMessage.ERROR_NOT_VAILDRANGE);
         }
     }
 
     private static void isSize6(List<Integer> nums) {
         if (nums.size()!=6) {
-            throw new IllegalArgumentException(Messages.ERROR_NOT_SIZE6);
+            throw new IllegalArgumentException(ErrorMessage.ERROR_NOT_SIZE6);
         }
     }
 
@@ -110,14 +110,14 @@ public class Input {
         for (int i=0; i<nums.size()-1; i++) {
             List<Integer> compareNums = nums.subList(i+1,nums.size());
             if (compareNums.contains(nums.get(i))) {
-                throw new IllegalArgumentException(Messages.ERROR_NOT_DIFFRENT);
+                throw new IllegalArgumentException(ErrorMessage.ERROR_NOT_DIFFRENT);
             }
         }
     }
 
     private static void isDiffrent(int number, Lotto lotto) {
         if(lotto.getNumbers().contains(number)) {
-            throw new IllegalArgumentException(Messages.ERROR_NOT_DIFFRENT_BONUS_NUMBER);
+            throw new IllegalArgumentException(ErrorMessage.ERROR_NOT_DIFFRENT_BONUS_NUMBER);
         }
     }
 }

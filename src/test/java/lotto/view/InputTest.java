@@ -28,7 +28,7 @@ class InputTest {
         assertThatThrownBy(() -> {
             Input.inputMoney(input);
         }).isInstanceOf(IllegalArgumentException.class)
-                .hasMessage(Messages.ERROR_NULL);
+                .hasMessage(ErrorMessage.ERROR_NULL);
     }
 
     @Test
@@ -38,7 +38,7 @@ class InputTest {
         assertThatThrownBy(() -> {
             Input.inputMoney(input);
         }).isInstanceOf(IllegalArgumentException.class)
-                .hasMessage(Messages.ERROR_NOT_DIVDE1000);
+                .hasMessage(ErrorMessage.ERROR_NOT_DIVDE1000);
     }
 
     @ParameterizedTest
@@ -49,7 +49,7 @@ class InputTest {
         System.setIn(in);
         assertThatThrownBy(() -> Input.askWinLotto())
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage(Messages.ERROR_NOT_VAILDRANGE);
+                .hasMessage(ErrorMessage.ERROR_NOT_VAILDRANGE);
     }
 
     @DisplayName("입력받은 당첨 번호가 6개 숫자배열이 맞는가?")
@@ -60,7 +60,7 @@ class InputTest {
         System.setIn(in);
         assertThatThrownBy(() -> Input.askWinLotto())
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage(Messages.ERROR_NOT_SIZE6);
+                .hasMessage(ErrorMessage.ERROR_NOT_SIZE6);
     }
 
     @DisplayName("입력받은 당첨 번호가 중복되지는 않았는가?")
@@ -71,7 +71,7 @@ class InputTest {
         System.setIn(in);
         assertThatThrownBy(() -> Input.askWinLotto())
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage(Messages.ERROR_NOT_DIFFRENT);
+                .hasMessage(ErrorMessage.ERROR_NOT_DIFFRENT);
     }
 
     @DisplayName("입력받은 당첨 번호가 모두 숫자인가?")
@@ -82,7 +82,7 @@ class InputTest {
         System.setIn(in);
         assertThatThrownBy(() -> Input.askWinLotto())
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage(Messages.ERROR_NOT_NUMBER);
+                .hasMessage(ErrorMessage.ERROR_NOT_NUMBER);
     }
 
     public static InputStream generateUserInput(String input) {
