@@ -3,12 +3,13 @@ package lotto.view;
 import java.util.EnumMap;
 import java.util.List;
 
+import lotto.constant.ErrorLog;
 import lotto.constant.OutputMessage;
 import lotto.constant.WinningRating;
 
 public class OutputView {
-	public void printErrorMessage() {
-		System.out.println(OutputMessage.ERROR.message());
+	public void printErrorLog(ErrorLog errorLog) {
+		System.out.println(errorLog.log());
 	}
 
 	public void printRateOfProfit(float rateOfProfit) {

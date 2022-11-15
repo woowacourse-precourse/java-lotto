@@ -1,5 +1,6 @@
 package lotto.controller;
 
+import lotto.constant.ErrorLog;
 import lotto.domain.BonusNumber;
 import lotto.domain.Lotteries;
 import lotto.domain.ProfitCalculator;
@@ -23,12 +24,19 @@ public class LottoController {
 			WinningStatistics winningStatistics = collectWinningStatistics(lotteries, winningNumbers, bonusNumber);
 			calculateRateOfProfit(purchasingAmount, winningStatistics);
 		} catch (IllegalArgumentException e) {
-			outputView.printErrorMessage();
+			outputView.printErrorLog(ErrorLog.ERROR);
 		}
 	}
 
 	private PurchasingAmount receivePurchasingAmount() {
-		return new PurchasingAmount(Integer.parseInt(inputView.getPurchasingAmount()));
+		PurchasingAmount purchasingAmount = null;
+		try {
+			purchasingAmount = new PurchasingAmount(Integer.parseInt(inputView.getPurchasingAmount()));
+		} catch (IllegalArgumentException e) {
+			outputView.printErrorLog(ErrorLog.PURCHASING_AMOUNT_ERROR);
+			throw new IllegalArgumentException();
+		}
+		return purchasingAmount;
 	}
 
 	private int calculateNumberOfTickets(PurchasingAmount purchasingAmount) {
@@ -38,17 +46,37 @@ public class LottoController {
 	}
 
 	private Lotteries issueLotteries(int numberOfTickets) {
-		Lotteries lotteries = new Lotteries(numberOfTickets);
-		outputView.printTotalLottoNumbers(lotteries.getTotalLottoNumbers());
+		Lotteries lotteries = null;
+		try {
+			lotteries = new Lotteries(numberOfTickets);
+			outputView.printTotalLottoNumbers(lotteries.getTotalLottoNumbers());
+		} catch (IllegalArgumentException e) {
+			outputView.printErrorLog(ErrorLog.LOTTO_NUMBER_ERROR);
+			throw new IllegalArgumentException();
+		}
 		return lotteries;
 	}
 
 	private WinningNumbers receiveWinningNumbers() {
-		return new WinningNumbers(inputView.getWinningNumbers());
+		WinningNumbers winningNumbers = null;
+		try {
+			winningNumbers = new WinningNumbers(inputView.getWinningNumbers());
+		} catch (IllegalArgumentException e) {
+			outputView.printErrorLog(ErrorLog.WINNING_NUMBERS_ERROR);
+			throw new IllegalArgumentException();
+		}
+		return winningNumbers;
 	}
 
 	private BonusNumber receiveBonusNumbers(WinningNumbers winningNumbers) {
-		return new BonusNumber(Integer.parseInt(inputView.getBonusNumber()), winningNumbers);
+		BonusNumber bonusNumber = null;
+		try {
+			bonusNumber = new BonusNumber(Integer.parseInt(inputView.getBonusNumber()), winningNumbers);
+		} catch (IllegalArgumentException e) {
+			outputView.printErrorLog(ErrorLog.BONUS_NUMBER_ERROR);
+			throw new IllegalArgumentException();
+		}
+		return bonusNumber;
 	}
 
 	private WinningStatistics collectWinningStatistics(Lotteries lotteries, WinningNumbers winningNumbers,
