@@ -59,4 +59,9 @@ public class Lotto {
                 .count();
         return winningNumberCount;
     }
+
+    public boolean isContainBonusNumber(int bonusNumber) {
+        boolean isContain = this.numbers.contains(bonusNumber);
+        return isContain;
+    }
 }
