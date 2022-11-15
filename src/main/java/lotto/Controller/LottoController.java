@@ -16,19 +16,19 @@ public class LottoController {
     private final Result result = new Result();
     private LuckyLotto luckyLotto;
 
-    private void getLotto(){
+    public void getLotto(){
         System.out.println("구입금액을 입력해 주세요.");
         int budget = Input.intInput();
         buyer.buyLotto(budget);
         Output.printPurchasedLottoAmount(buyer.getPurchasedAmount());
     }
 
-    private void pickLottoNumbers(){
+    public void pickLottoNumbers(){
         buyer.pickLottoNumbers();
         Output.printLottoNumbers(buyer.getLottos());
     }
 
-    private void createLuckyLotto(){
+    public void createLuckyLotto(){
         System.out.println("당첨 번호를 입력해 주세요.");
         List<Integer> luckyNumbers = Input.integerListInput();
         Lotto lotto = new Lotto(luckyNumbers);
@@ -37,12 +37,12 @@ public class LottoController {
         luckyLotto = new LuckyLotto(luckyNumbers, bonusNumber);
     }
 
-    private void getLottoResult(){
+    public void getLottoResult(){
         result.computeLottoResult(buyer.getLottos(), luckyLotto);
         Output.printLottoResult(result.getResult());
     }
 
-    private void profitStatistic(){
+    public void profitStatistic(){
         result.computeProfitRate(buyer.getBudget());
         Output.printProfitRate(result.getProfitRate());
     }
