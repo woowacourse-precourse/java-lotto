@@ -16,7 +16,7 @@ public class Application {
             BonusIOHandler bonusIOHandler = new BonusIOHandler();
             Bonus bonus = new Bonus(bonusIOHandler.getUserBonus(lottoAnswer));
             LottoCalculator calculator = new LottoCalculator();
-            lottoIOHandler.printResult(calculator.lottoComparator(lottoMaker, lottoAnswer, bonus), cashier.getPurchaseAmount());
+            lottoIOHandler.printResult(calculator.lottoComparator(lottoMaker,lottoAnswer,bonus), cashier.getPurchaseAmount());
         }catch (Exception e){
             System.out.println(e.getMessage());
         }
