@@ -10,4 +10,12 @@ public class LottoBuyer {
     public LottoBuyer() {
         purchasePrice = PurchasePriceInputUtil.getPurchasePrice();
     }
+
+    public void printAllLottos() {
+        for (Lotto lotto : lottos) {
+            System.out.println(lotto);
+        }
+
+        System.out.println();
+    }
 }
