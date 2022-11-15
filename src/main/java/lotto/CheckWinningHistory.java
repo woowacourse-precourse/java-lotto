@@ -18,6 +18,13 @@ public class CheckWinningHistory {
         this.fourthPlace = 0;
         this.fifthPlace = 0;
     }
+    /** 클래스 내의 각 기능을 연결하는 메소드 추가 */
+    void checkNumberMatching(ArrayList<Lotto> lottoList, List<Integer> winningNumbers, int bonusNumber){
+        int sum = getTotalPrizeMoney(lottoList, winningNumbers, bonusNumber, 0);
+        float earningsRate = getEarningsRate((float) lottoList.size() * 1000, (float) sum);
+        printWinningHistory();
+        printEarningsRate(earningsRate);
+    }
     /** 총 당첨금을 계산하는 기능 */
     private int getTotalPrizeMoney(ArrayList<Lotto> lottoList, List<Integer> winningNumbers, int bonusNumber, int sum) {
         for (int i =0;i<lottoList.size();i++){
