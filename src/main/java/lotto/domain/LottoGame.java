@@ -13,6 +13,7 @@ public class LottoGame {
     public int bonusNumber;
     public List<Lotto> issuedLotto;
     public List<Integer> gameResult;
+    public int totalProfit;
     public Input input;
     public Output output;
 
@@ -49,7 +50,7 @@ public class LottoGame {
         for (int i=0; i<6; i++) {
             gameResult.add(0);
         }
-        for (int order=0; order< issuedLotto.size(); order++) {
+        for (int order=0; order < issuedLotto.size(); order++) {
             Lotto lotto = issuedLotto.get(order);
             Rank rank = lotto.calculateRank(winningNumber, bonusNumber);
 
@@ -58,5 +59,17 @@ public class LottoGame {
                 gameResult.set(place, gameResult.get(place)+1);
             }
         }
+    }
+
+    public int getTotalProfit() {
+        this.totalProfit = 0;
+        Rank rank = Rank.NO_PLACE; // 등수별 당첨금 확인에 사용할 Rank 객체 선언 및 초기화
+
+        for (int place = 1; place < gameResult.size(); place++) { // gameResult에 저장된 1~5등 결과에 대해
+            if (gameResult.get(place) > 0) { // 해당 등수에 대한 결과가 있을 경우
+               this.totalProfit += rank.getProfit(place); // 해당 등수의 당첨금을 전체 수익금에 합산
+            }
+        }
+        return totalProfit;
     }
 }
