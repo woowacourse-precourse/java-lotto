@@ -26,4 +26,23 @@ public class AnswerNumberList {
         }
     }
 
+    private LottoResult getResult(int count, boolean isBonus){
+        if(count == 3)return LottoResult.FIFTH;
+        if(count == 4)return LottoResult.FOURTH;
+        if(count == 5 && isBonus)return LottoResult.SECOND;
+        if(count == 5)return LottoResult.THIRD;
+        if(count == 6)return LottoResult.FIRST;
+        return LottoResult.NOTHING;
+    }
+    public LottoResult checkLottoWinning(Lotto lotto){
+        List<Integer> numbers = lotto.getNumbers();
+        int count = 0;
+        boolean isBonus = false;
+        for(var number: numbers){
+            if(winningNumbers.contains(Long.valueOf(number))) count++;
+            if(bonusNumber.intValue() == number)isBonus = true;
+        }
+        return getResult(count, isBonus);
+    }
+
 }
