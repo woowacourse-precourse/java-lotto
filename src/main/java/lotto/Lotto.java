@@ -60,4 +60,13 @@ public class Lotto {
             System.out.println(userLottoNumber);
         }
     }
+
+    private List<Integer> LottoWinNumbers() {
+        System.out.println("당첨번호를 입력해 주세요.");
+        lottoWinNumbersInput = Console.readLine();
+        List<Integer> lottoWinNumbers = Arrays.stream(lottoWinNumbersInput.split(","))
+                .map(Integer::parseInt)
+                .collect(Collectors.toList());
+        return lottoWinNumbers;
+    }
 }
