@@ -1,8 +1,9 @@
 package lotto.domain.lottomachine.ranking;
 
 import java.math.BigDecimal;
+import java.util.Objects;
 
-import static lotto.domain.lottomachine.messages.DomainErrorMessage.NEGATIVE_FREQUENCY;
+import static lotto.domain.lottomachine.error.DomainErrorMessage.NEGATIVE_FREQUENCY;
 
 public class Frequency {
     private final int frequency;
@@ -29,5 +30,22 @@ public class Frequency {
     @Override
     public String toString() {
         return String.valueOf(frequency);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Frequency frequency1 = (Frequency) o;
+        return frequency == frequency1.frequency;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(frequency);
     }
 }
