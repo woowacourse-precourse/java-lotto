@@ -77,56 +77,6 @@ public class Application {
         return bonusNum;
     }
 
-    public static HashMap<LotteryWon, Integer> updateHistory(HashMap<LotteryWon, Integer> history, LotteryWon income) {
-        history.replace(income, history.get(income) + 1);
-        return history;
-    }
-
-    public static HashMap<LotteryWon, Integer> initializeHistory() {
-        HashMap<LotteryWon, Integer> history = new HashMap<LotteryWon, Integer>();
-        history.put(LotteryWon.FirstPlace, 0);
-        history.put(LotteryWon.SecondPlace, 0);
-        history.put(LotteryWon.ThirdPlace, 0);
-        history.put(LotteryWon.FourthPlace, 0);
-        history.put(LotteryWon.FifthPlace, 0);
-        history.put(LotteryWon.Nothing, 0);
-
-        return history;
-    }
-
-    public static int countMatchedNumber(Lotto lotto, List<Integer> pickedNumbers) {
-        int count = 0;
-
-        for (int i = 0; i < pickedNumbers.size(); i++) {
-            int number = pickedNumbers.get(i);
-            count += lotto.matchNumber(number);
-        }
-
-        return count;
-    }
-
-    public static LotteryWon selectLotteryWonType(int matchCount, int bonusCount) {
-        LotteryWon result;
-        if (matchCount == 6) {
-            result = LotteryWon.FirstPlace;
-            return result;
-        } else if (matchCount == 5 && bonusCount == 1) {
-            result = LotteryWon.SecondPlace;
-            return result;
-        } else if (matchCount == 5) {
-            result = LotteryWon.ThirdPlace;
-            return result;
-        } else if (matchCount == 4) {
-            result = LotteryWon.FourthPlace;
-            return result;
-        } else if (matchCount == 3) {
-            result = LotteryWon.FifthPlace;
-            return result;
-        }
-
-        return LotteryWon.Nothing;
-    }
-
     public static List<Integer> validatePickedNumbers(String input) {
         String[] numbers = input.split(",");
         List<Integer> pickedNumbers = new ArrayList<Integer>();
