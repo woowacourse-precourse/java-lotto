@@ -2,6 +2,7 @@ package lotto.controller;
 
 import static lotto.domain.result.Statistics.makeStatistics;
 import static lotto.view.OutputView.*;
+import static lotto.view.OutputView.printProfit;
 
 import lotto.domain.lotto.Lotto;
 import lotto.domain.lotto.TotalLottos;
@@ -24,6 +25,7 @@ public class LottoController {
         Map<LottoRank, Integer> lottoResult = takeWinningResult(totalLottos, winningNumbers, bonusNumber);
 
         printStatistics(lottoResult);
+        printProfit(lottoResult, purchaseAmount);
     }
 
     public static long takeLottoPurchaseCount(long purchaseAmount) {

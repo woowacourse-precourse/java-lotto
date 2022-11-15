@@ -3,6 +3,7 @@ package lotto.view;
 import lotto.domain.lotto.Lotto;
 import lotto.domain.lotto.TotalLottos;
 import lotto.domain.result.LottoRank;
+import lotto.domain.result.Profit;
 
 import java.util.List;
 import java.util.Map;
@@ -13,6 +14,7 @@ public class OutputView {
     static final String WINNING_STATISTICS_MESSAGE = "당첨 통계";
     static final String MATCHING_RECORD_MESSAGE = "%d개 일치 (%,d원) - %d개";
     static final String MATCHING_RECORD_WITH_BONUS_BALL_MESSAGE = "%d개 일치, 보너스 볼 일치 (%,d원) - %d개";
+    static final String PROFIT_MESSAGE = "총 수익률은 %.1f%%입니다.";
 
     static final String LINE_BREAK = "\n";
     static final String COMMA_DELIMITER = ", ";
@@ -65,5 +67,13 @@ public class OutputView {
         }
 
         System.out.println(printingStatistics);
+    }
+
+    public static void printProfit(Map<LottoRank, Integer> lottoResult, long purchaseAmount) {
+        double profit = Profit.calculateProfit(lottoResult, purchaseAmount);
+
+        String printingProfit = String.format(PROFIT_MESSAGE, profit);
+
+        System.out.println(printingProfit);
     }
 }
