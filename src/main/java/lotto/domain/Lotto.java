@@ -18,13 +18,13 @@ public class Lotto {
     }
 
     public MatchCount getMatchResult(LottoNumber lottoNumber) {
-        int match = (int) lottoNumber.winningNumbers.stream()
+        int winningCount = (int) lottoNumber.winningNumbers.stream()
                 .filter(num -> numbers.contains(num))
                 .count();
-        int bonusMatch = 0;
+        int bonusCount = 0;
         if (numbers.contains(lottoNumber.bonusNumber)) {
-            bonusMatch++;
+            bonusCount++;
         }
-        return new MatchCount(match, bonusMatch);
+        return new MatchCount(winningCount, bonusCount);
     }
 }
