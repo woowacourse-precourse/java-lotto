@@ -12,7 +12,7 @@ public class Lotto {
         this.numbers = numbers;
     }
 
-    private void validate(List<Integer> numbers) {
+    public void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException(ErrorMessage.SIZE_ERROR.getMessage());
         }
@@ -24,7 +24,7 @@ public class Lotto {
         }
     }
 
-    private static boolean checkUniqueNumber(List<Integer> numbers) {
+    private boolean checkUniqueNumber(List<Integer> numbers) {
         Set<Integer> checkNumbers = new HashSet<>(numbers);
         return numbers.size() == checkNumbers.size();
     }

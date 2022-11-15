@@ -32,7 +32,7 @@ public class User {
         printResult(price);
     }
 
-    private void validate(String input) {
+    public void validate(String input) {
         if (!isNumeric(input)) {
             throw new IllegalArgumentException(ErrorMessage.NUMERIC_ERROR.getMessage());
         }
