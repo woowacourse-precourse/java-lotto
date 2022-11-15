@@ -3,11 +3,17 @@ package lotto.domain;
 import java.util.ArrayList;
 import java.util.List;
 import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 class WinningNumbersTest {
-    @DisplayName("당첨번호와 일치하는 보너스 넘버")
+    @BeforeEach
+    void clearRankCount(){
+        Rank.clearCount();
+    }
+
+    @DisplayName("당첨번호에 포함된 번호를 보너스 넘버로 입력")
     @Test
     void generateWinningNumbersByDuplicateBonusNumber() {
         //given
@@ -31,9 +37,9 @@ class WinningNumbersTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
-    @DisplayName("로또를 입력받고, 당첨번호와 일치하는 Rank 에 plusCount")
+    @DisplayName("로또를 입력받고, 당첨번호와 일치하는 Rank 에 plusCount1")
     @Test
-    void compareLotto() {
+    void compareLotto1() {
         //given
         ArrayList<Integer> winning = new ArrayList<>(List.of(1, 2, 3, 4, 5, 6));
         WinningNumbers winningNumbers = new WinningNumbers(winning, 7);
@@ -51,5 +57,14 @@ class WinningNumbersTest {
                 .isEqualTo(1);
         Assertions.assertThat(Rank.SECOND_PLACE.getCount())
                 .isEqualTo(1);
+    }
+
+    @DisplayName("로또를 입력받고, 당첨번호와 일치하는 Rank 에 plusCount2")
+    @Test
+    public void compareLotto2() {
+        WinningNumbers winningNumbers = new WinningNumbers(List.of(1,2,3,4,5,6), 7);
+        Lotto lotto = new Lotto(List.of(1,2,3,4,5,6));
+        winningNumbers.checkLottoWinning(lotto);
+        Assertions.assertThat(Rank.FIRST_PLACE.getCount()).isEqualTo(1);
     }
 }
