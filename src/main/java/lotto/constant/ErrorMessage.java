@@ -10,4 +10,6 @@ public class ErrorMessage {
     public static final String WINNING_NUMBER_TYPE_ERROR = "[ERROR] 당첨 번호는 숫자와 콤마(,)로 이루어져야 합니다.";
     public static final String WINNING_NUMBER_RANGE_ERROR = "[ERROR] 당첨 번호는 1 ~ 45 사이의 양수입니다.";
     public static final String WINNING_NUMBER_SIZE_ERROR = "[ERROR] 당첨 번호는 6개를 입력해야 합니다.";
+    public static final String BONUS_NUMBER_TYPE_ERROR = "[ERROR] 보너스 번호는 숫자만 입력 가능합니다.";
+    public static final String BONUS_NUMBER_SIZE_ERROR = "[ERROR] 보너스 번호는 1 ~ 45 사이의 양수입니다.";
 }
