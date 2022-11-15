@@ -10,13 +10,13 @@ import java.util.List;
 import lotto.domain.Player;
 import lotto.domain.PrizeCount;
 import lotto.domain.Profit;
-import lotto.domain.Publish;
+import lotto.domain.Publisher;
 import lotto.domain.Purchase;
 
 public class GameRunner {
 
     private Purchase purchase;
-    private Publish publish;
+    private Publisher publisher;
     private PrizeCount prizeCount;
     private Player player;
     private Profit profit;
@@ -46,10 +46,10 @@ public class GameRunner {
     }
 
     private void publish() {
-        publish = new Publish();
-        publish.createLottos(purchase.getCount());
-        publish.printLottos();
-        publish.createBonusNumber();
+        publisher = new Publisher();
+        publisher.createLottos(purchase.getCount());
+        publisher.printLottos();
+        publisher.createBonusNumber();
     }
 
     private void inputNumbers() {
@@ -66,7 +66,7 @@ public class GameRunner {
         prizeCount = new PrizeCount();
 
         player = new Player(numbers, bonusNumber);
-        player.compare(prizeCount, publish.getLottos(), publish.getBonusNumber());
+        player.compare(prizeCount, publisher.getLottos(), publisher.getBonusNumber());
 
         profit = new Profit(prizeCount, purchase.getAmount());
         profit.calculate();

@@ -3,7 +3,7 @@ package lotto.domain;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Publish {
+public class Publisher {
 
     private List<Lotto> lottos;
     private int bonusNumber;
