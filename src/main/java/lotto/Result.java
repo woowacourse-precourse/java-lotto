@@ -9,8 +9,13 @@ public class Result {
         this.result = result;
     }
 
-    public double profitRate(){
+    public double profitRate(UserMoney money){
+        long totalReward = result.entrySet()
+                .stream()
+                .mapToLong(this::reward)
+                .sum();
 
+        return (double) (totalReward*100) / (double) money.getUserMoney();
     }
 
     private long reward(Map.Entry<Ranking,Integer> ranking){
