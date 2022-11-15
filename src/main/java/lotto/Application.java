@@ -8,5 +8,8 @@ public class Application {
         DrawMachine drawMachine = new DrawMachine();
         drawMachine.drawNumbers();
         drawMachine.drawBonusNumber();
+
+        Calculator calculator = new Calculator();
+        calculator.calculate(lotterySeller.soldLotto, drawMachine.winningNumbers, drawMachine.bonusNumber);
     }
 }

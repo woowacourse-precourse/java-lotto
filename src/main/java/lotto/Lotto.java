@@ -21,4 +21,8 @@ public class Lotto {
     public void printNumber() {
         System.out.println(numbers);
     }
+
+    public boolean hasNumber(int number) {
+        return numbers.contains(number);
+    }
 }
