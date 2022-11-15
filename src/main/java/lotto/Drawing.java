@@ -13,6 +13,7 @@ public class Drawing {
             int count = countNumber(lottoNumbers, winningNumber.getNumbers());
             boolean bonus = isBonus(lottoNumbers, winningNumber.getBonusNumber());
             result.add(calculateRank(count, bonus));
+            result.setInvestedMoney(buyer.getMoney());
         }
     }
 

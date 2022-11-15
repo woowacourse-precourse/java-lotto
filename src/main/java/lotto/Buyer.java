@@ -53,4 +53,8 @@ public class Buyer {
             throw new RuntimeException(e);
         }
     }
+
+    public int getMoney() {
+        return money;
+    }
 }

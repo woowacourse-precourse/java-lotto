@@ -5,6 +5,7 @@ import java.util.*;
 
 public class Result {
     private Map<Rank, Integer> history = new HashMap<>();
+    private long investedMoney;
     private float totalEarningsRate;
 
     public Result() {
@@ -47,8 +48,8 @@ public class Result {
     }
 
     private void setTotalEarningsRate() {
-        float investedMoney = history.size() * 1_000;
-        totalEarningsRate = (int) (getTotalWinningMoney() / investedMoney * 10) / 10f;
+        float totalWinningMoney = getTotalWinningMoney();
+        totalEarningsRate = (int) (totalWinningMoney / investedMoney * 1000) / 10f;
     }
 
     private long getTotalWinningMoney() {
@@ -59,5 +60,7 @@ public class Result {
         return totalWinningMoney;
     }
 
-
+    public void setInvestedMoney(long investedMoney) {
+        this.investedMoney = investedMoney;
+    }
 }
