@@ -8,6 +8,7 @@ public class User {
 
     private int publicans;
     protected List<Integer> userNumbers;
+    protected int bonusNumber;
 
     public User() {
         System.out.println("구입금액을 입력해 주세요.");
@@ -19,17 +20,31 @@ public class User {
     }
 
     public void getNumbers() {
-        System.out.println("당첨 번호를 입력해 주세요.");
+        System.out.println("\n당첨 번호를 입력해 주세요.");
         String numbers = Console.readLine();
         String[] num = numbers.split(",");
         validate(num);
-        System.out.println(num.length);
+
+        for(int i= 0;i<num.length;i++){
+            userNumbers.add(Integer.parseInt(num[i]));
+        }
+
+    }
+
+    public void getBonusNumber(){
+        System.out.println("\n보너스 번호를 입력해 주세요");
+        String number = Console.readLine();
+        isDigitValidate(number);
+        rangeValidate(Integer.parseInt(number));
+
+        bonusNumber=Integer.parseInt(number);
+
     }
 
     public void validate(String[] num) {
         lengthValidate(num);
         for (int i = 0; i < num.length; i++) {
-            isDigitValidate(Integer.parseInt(num[i]));
+            isDigitValidate(num[i]);
             rangeValidate(Integer.parseInt(num[i]));
         }
     }
@@ -40,9 +55,9 @@ public class User {
         }
     }
 
-    public void isDigitValidate(int num) {
+    public void isDigitValidate(String num) {
 
-        if (!String.valueOf(num).matches("[-+]?\\d*\\.?\\d+")) {
+        if (!num.matches("[-+]?\\d*\\.?\\d+")) {
             throw new IllegalArgumentException("[ERROR] 숫자를 입력해주세요!");
         }
 
