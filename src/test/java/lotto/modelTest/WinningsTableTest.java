@@ -18,4 +18,11 @@ public class WinningsTableTest {
         WinningsTable winningsTable = WinningsTable.findByMatches("FIRST");
         assertThat(winningsTable.name()).isEqualTo("FIRST");
     }
+    @Test
+    @DisplayName("주어진 등수이름과 당첨 테이블과 비교하여 등수에 맞는 추첨 번호 맞춘 수를 찾는지 확인한다.")
+    public void checkRaffleMatchesByMatches(){
+        int raffleMatches = WinningsTable.getRaffleMatchesByMatchState("FIRST");
+        assertThat(raffleMatches).isEqualTo(6);
+    }
+
 }
