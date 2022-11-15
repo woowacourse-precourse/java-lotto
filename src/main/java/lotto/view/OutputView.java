@@ -6,23 +6,22 @@ import static lotto.domain.WinnerStatistics.FIRST_PLACE;
 import static lotto.domain.WinnerStatistics.FOURTH_PLACE;
 import static lotto.domain.WinnerStatistics.SECOND_PLACE;
 import static lotto.domain.WinnerStatistics.THIRD_PLACE;
+import static lotto.utils.Constant.COUNT_MESSAGE;
+import static lotto.utils.Constant.FIFTH_PLACE_MESSAGE;
+import static lotto.utils.Constant.FIRST_PLACE_MESSAGE;
+import static lotto.utils.Constant.FOURTH_PLACE_MESSAGE;
+import static lotto.utils.Constant.PROFIT_RATE_MESSAGE;
+import static lotto.utils.Constant.PURCHASE_MESSAGE;
+import static lotto.utils.Constant.SECOND_PLACE_MESSAGE;
+import static lotto.utils.Constant.STATISTICS_LINE;
+import static lotto.utils.Constant.STATISTICS_MESSAGE;
+import static lotto.utils.Constant.THIRD_PLACE_MESSAGE;
 
 import java.util.List;
 import java.util.Map;
 import lotto.domain.Lotto;
 
 public class OutputView {
-
-    public static final String PURCHASE_MESSAGE = "개를 구매했습니다.";
-    public static final String STATISTICS_MESSAGE = "당첨 통계";
-    public static final String STATISTICS_LINE = "---";
-    public static final String FIFTH_PLACE_MESSAGE = "3개 일치 (5,000원) - ";
-    public static final String FOURTH_PLACE_MESSAGE = "4개 일치 (50,000원) - ";
-    public static final String THIRD_PLACE_MESSAGE = "5개 일치 (1,500,000원) - ";
-    public static final String SECOND_PLACE_MESSAGE = "5개 일치, 보너스 볼 일치 (30,000,000원) - ";
-    public static final String FIRST_PLACE_MESSAGE = "6개 일치 (2,000,000,000원) - ";
-    public static final String COUNT_MESSAGE = "개";
-
 
     public static void printLottoPurchaseNumber(int purchaseNumbers) {
         System.out.println(purchaseNumbers + PURCHASE_MESSAGE);
@@ -50,6 +49,6 @@ public class OutputView {
     }
 
     public static void printProfitRate(double profitRate) {
-        System.out.println("총 수익률은 " + profitRate + "%입니다.");
+        System.out.printf(PROFIT_RATE_MESSAGE, profitRate);
     }
 }

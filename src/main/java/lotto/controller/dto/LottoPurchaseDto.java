@@ -2,6 +2,7 @@ package lotto.controller.dto;
 
 import static camp.nextstep.edu.missionutils.Randoms.pickUniqueNumbersInRange;
 import static lotto.exception.ErrorMessage.*;
+import static lotto.utils.Constant.LOTTO_BASIC_AMOUNT;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,8 +11,6 @@ import lotto.exception.ErrorMessage;
 import lotto.exception.MyException;
 
 public class LottoPurchaseDto {
-
-    private static final int LOTTO_BASIC_AMOUNT = 1000;
     private final List<Lotto> lottos;
 
     public LottoPurchaseDto(int paymentAmount) {

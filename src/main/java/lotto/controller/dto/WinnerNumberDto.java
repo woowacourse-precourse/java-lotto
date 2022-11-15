@@ -1,6 +1,7 @@
 package lotto.controller.dto;
 
 import static lotto.exception.ErrorMessage.*;
+import static lotto.utils.Constant.SUBSTRING_STANDARD;
 
 import java.time.temporal.ValueRange;
 import java.util.Arrays;
@@ -11,7 +12,6 @@ import lotto.exception.MyException;
 
 public class WinnerNumberDto {
 
-    public static final String STANDARD = ",";
     private final List<Integer> winnerNumbers;
     private final int bonusNumber;
 
@@ -21,7 +21,7 @@ public class WinnerNumberDto {
     }
 
     private List<Integer> checkWinnerNumber(String winnerNumber) {
-        List<String> winnerNumbers = convertStringToList(winnerNumber, STANDARD);
+        List<String> winnerNumbers = convertStringToList(winnerNumber, SUBSTRING_STANDARD);
         for (String number : winnerNumbers) {
             validInteger(number);
         }

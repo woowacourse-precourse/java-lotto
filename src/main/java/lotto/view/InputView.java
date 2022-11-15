@@ -1,14 +1,15 @@
 package lotto.view;
 
+import static lotto.utils.Constant.BONUS_NUMBER;
+import static lotto.utils.Constant.PAYMENT_AMOUNT;
+import static lotto.utils.Constant.WINNER_NUMBER;
+
 import camp.nextstep.edu.missionutils.Console;
 import lotto.controller.dto.PaymentAmountDto;
 import lotto.controller.dto.WinnerNumberDto;
 
 public class InputView {
 
-    private static final String PAYMENT_AMOUNT = "구입금액을 입력해 주세요.";
-    public static final String WINNER_NUMBER = "당첨 번호를 입력해 주세요.";
-    public static final String BONUS_NUMBER = "보너스 번호를 입력해 주세요.";
 
     public static PaymentAmountDto inputPaymentAmount() {
         System.out.println(PAYMENT_AMOUNT);
