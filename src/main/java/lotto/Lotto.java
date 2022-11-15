@@ -6,8 +6,8 @@ import java.util.stream.Collectors;
 public class Lotto {
 
     private final List<Integer> numbers;
-    private static final int MIN_NUMBER = 1;
-    private static final int MAX_NUMBER = 45;
+    private static final int LOTTO_NUMBER_MIN = 1;
+    private static final int LOTTO_NUMBER_MAX = 45;
     private static final String LOTTO_LENGTH_ERR_MESSAGE = "[ERROR] 로또의 개수가 올바르지 않습니다.";
     private static final String LOTTO_RANGE_ERR_MESSAGE = "[ERROR] 로또의 범위가 올바르지 않습니다.";
     private static final String LOTTO_DUPLICATION_ERR_MESSAGE = "[ERROR] 로또에 중복이 존재합니다.";
@@ -30,7 +30,7 @@ public class Lotto {
     }
 
     private void validateRange(List<Integer> numbers) {
-        boolean validRange = numbers.stream().allMatch(num -> num >= MIN_NUMBER && num <= MAX_NUMBER);
+        boolean validRange = numbers.stream().allMatch(num -> num >= LOTTO_NUMBER_MIN && num <= LOTTO_NUMBER_MAX);
 
         if (!validRange) {
             throw new IllegalArgumentException(LOTTO_RANGE_ERR_MESSAGE);
@@ -43,5 +43,9 @@ public class Lotto {
         if (uniqueNumbers.size() != 6) {
             throw new IllegalArgumentException(LOTTO_DUPLICATION_ERR_MESSAGE);
         }
+    }
+
+    public List<Integer> getNumbers() {
+        return numbers;
     }
 }
