@@ -11,12 +11,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class LottoTest {
-    private Lotto lotto;
-
-    @BeforeEach
-    void setUp() {
-        lotto = new Lotto(List.of(1,2,3,4,5,6));
-    }
+    private static final Lotto lotto = new Lotto(List.of(1,2,3,4,5,6));
 
     @DisplayName("로또 번호의 개수가 6개가 넘어가면 예외가 발생한다.")
     @Test
