@@ -12,4 +12,18 @@ public class OutputPrinter {
     public static void printLottoNumbers(Lotto lotto){
         System.out.println("["+lotto.toString()+"]");
     }
+
+    public static void printWinningStatisticsHeader() {
+        System.out.println("당첨 통계");
+        System.out.println("---");
+    }
+
+    public static void printWinningPrize(int matchedCount, int prizeMoney, int countOfPrize) {
+        NumberFormat numberFormat = NumberFormat.getInstance();
+        System.out.printf("%d개 일치 (%s원) - %d개%n", matchedCount, numberFormat.format(prizeMoney), countOfPrize);
+    }
+
+    public static void printWinningProfitRate(String profitRate) {
+        System.out.printf("총 수익률은 %s입니다.%n", profitRate);
+    }
 }
