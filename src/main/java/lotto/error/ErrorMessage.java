@@ -18,6 +18,7 @@ public enum ErrorMessage {
     BONUS_NUMBER_OVERSIZE("[ERROR] 보너스 번호는 하나의 숫자만 입력해야 합니다."),
     BONUS_NUMBER_OUF_OF_RANGE("[ERROR] 보너스 번호는 1부터 45까지의 숫자 중 선택해야 합니다."),
     BONUS_NUMBER_NOT_NUMBER("[ERROR] 당첨버호는 숫자로만 이루어져야 합니다."),
+    BONUS_NUMBER_IN_WINNINGS_NUMBER("[ERROR] 보너스 번호가 이미 당첨 번호에 속해있습니다."),
     ;
 
     private final String message;

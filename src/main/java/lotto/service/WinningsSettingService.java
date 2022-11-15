@@ -59,9 +59,16 @@ public class WinningsSettingService {
     }
 
     private void bonusNumberValidate(String bonusNumber) throws IllegalArgumentException {
+        bonusInWinningsNumber(bonusNumber);
         bonusNumberOverSize(bonusNumber);
         bonusNumberIsDigit(bonusNumber);
         bonusNumberRangeCheck(bonusNumber);
+    }
+
+    private void bonusInWinningsNumber(String bonusNumber) throws IllegalArgumentException {
+        if (winningsNumber.contains(bonusNumber)) {
+            throw new IllegalArgumentException(BONUS_NUMBER_IN_WINNINGS_NUMBER.getMessage());
+        }
     }
 
     private void bonusNumberOverSize(String bonusNumber) throws IllegalArgumentException {
