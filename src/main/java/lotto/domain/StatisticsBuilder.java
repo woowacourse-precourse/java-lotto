@@ -10,13 +10,11 @@ public class StatisticsBuilder {
 
     public StatisticsBuilder() {
         winningInfo = new LinkedHashMap<>();
-        Policy.WinningAmount[] winnings = Policy.WinningAmount.values();
-        for (Policy.WinningAmount winning : winnings) {
-            winningInfo.put(winning.name(), 0);
-        }
+        setWinningInfoStorage();
     }
 
     public void build(List<Integer> winningNumber, int bonusNumber, List<Lotto> lottos) {
+        setWinningInfoStorage();
         for (Lotto lotto : lottos) {
             String grade = WinningChecker.check(winningNumber, bonusNumber, lotto.getNumbers());
             if (!grade.equals("null")) {
@@ -31,5 +29,12 @@ public class StatisticsBuilder {
 
     public void printWinningInfo() {
         IOProcessor.printWinningStatistics(winningInfo);
+    }
+
+    public void setWinningInfoStorage() {
+        Policy.WinningAmount[] winnings = Policy.WinningAmount.values();
+        for (Policy.WinningAmount winning : winnings) {
+            winningInfo.put(winning.name(), 0);
+        }
     }
 }
