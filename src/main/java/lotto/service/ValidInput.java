@@ -25,11 +25,19 @@ public class ValidInput {
 
     public void validInputHasDuplicatedNumber(List<Integer> numbers) {
         for (int count1 = 0; count1 < numbers.size(); count1++) {
-            for (int count2 = count1 + 1; count2 < numbers.size(); count2++) {
-                if (Objects.equals(numbers.get(count1), numbers.get(count2))) {
-                    throw new IllegalArgumentException("[ERROR] 로또 번호에 중복된 숫자가 존재합니다!");
-                }
-            }
+            divideDuplicatedValidLogic(numbers, count1);
+        }
+    }
+
+    private void divideDuplicatedValidLogic(List<Integer> numbers, int count1) {
+        for (int count2 = count1 + 1; count2 < numbers.size(); count2++) {
+            checkDuplicated(numbers, count1, count2);
+        }
+    }
+
+    private void checkDuplicated(List<Integer> numbers, int count1, int count2) {
+        if (Objects.equals(numbers.get(count1), numbers.get(count2))) {
+            throw new IllegalArgumentException("[ERROR] 로또 번호에 중복된 숫자가 존재합니다!");
         }
     }
 }

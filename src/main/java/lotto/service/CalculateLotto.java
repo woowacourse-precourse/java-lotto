@@ -31,7 +31,8 @@ public class CalculateLotto {
         }
     }
 
-    private void calcLotto(EnumMap<ResultEnum, Integer> result, List<Integer> answerNumber, Integer bonusNumber, Lotto lotto) {
+    private void calcLotto(EnumMap<ResultEnum, Integer> result,
+                           List<Integer> answerNumber, Integer bonusNumber, Lotto lotto) {
         List<Integer> numbers = new ArrayList<>(lotto.getLottoNumber());
         Integer hitAmount = calcHitAmount(numbers, answerNumber);
         Boolean bonusHit = isBonusHit(hitAmount, numbers, bonusNumber);
@@ -55,9 +56,14 @@ public class CalculateLotto {
         for (ResultEnum resultEnum : result.keySet()) {
             boolean amountFlag = Objects.equals(resultEnum.getHitAmount(), hitAmount);
             boolean bonusFlag = Objects.equals(resultEnum.getIsBonusHit(), bonusHit);
-            if (amountFlag && bonusFlag) {
-                result.put(resultEnum, result.get(resultEnum) + ADD_AMOUNT);
-            }
+            putToMap(result, resultEnum, amountFlag, bonusFlag);
+        }
+    }
+
+    private void putToMap(EnumMap<ResultEnum, Integer> result, ResultEnum resultEnum, boolean amountFlag,
+                          boolean bonusFlag) {
+        if (amountFlag && bonusFlag) {
+            result.put(resultEnum, result.get(resultEnum) + ADD_AMOUNT);
         }
     }
 
@@ -67,7 +73,7 @@ public class CalculateLotto {
             sumOfReward += resultEnum.getRewardAmount() * result.get(resultEnum);
         }
 
-        return (double) ((sumOfReward / purchasePrice) * 100);
+        return (((double) sumOfReward / (double) purchasePrice) * 100);
     }
 
 

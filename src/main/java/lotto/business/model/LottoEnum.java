@@ -7,7 +7,7 @@ public enum LottoEnum {
 
     private final int value;
 
-    LottoEnum(Integer value) {
+    LottoEnum(int value) {
         this.value = value;
     }
 
