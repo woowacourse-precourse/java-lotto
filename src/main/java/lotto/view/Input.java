@@ -31,12 +31,55 @@ public class Input {
         }
     }
 
+    public Lotto getWinningNumbers(){
+        try {
+            System.out.println(WINNING_NUMBERS_MESSAGE);
+            return new Lotto(validateWinningNumbers(Console.readLine().split(SEPARATOR)));
+        }catch (IllegalArgumentException e){
+            System.out.println(ERROR_MESSAGE + e.getMessage());
+            return getWinningNumbers();
+        }
+    }
+
+    public int getBonusNumber(List<Integer> winningNumbers){
+        try {
+            System.out.println(BONUS_NUMBER_MESSAGE);
+            return validateBonusNumber(Console.readLine(), winningNumbers);
+        } catch (IllegalArgumentException e){
+            System.out.println(ERROR_MESSAGE + e.getMessage());
+            return getBonusNumber(winningNumbers);
+        }
+    }
+
     private int validateMoney(String unverifiedMoney) {
         if(!isItANumberOrNot(unverifiedMoney)) errorThrow(IS_NUMBER_MESSAGE);
         int money = Integer.parseInt(unverifiedMoney);
         if(money < 1000) errorThrow(SMALL_AMOUNT_ERROR_MESSAGE);
         if(money % 1000 != 0) errorThrow(DIVIDE_ERROR_MESSAGE);
         return money;
+    }
+
+    private List<Integer> validateWinningNumbers(String[] numbers) {
+        List<Integer> winningNumbers = null;
+        try {
+            winningNumbers = Stream.of(numbers)
+                    .map(String::trim).map(Integer::parseInt)
+                    .filter(num -> num >= 1 && num <= 45)
+                    .distinct()
+                    .collect(Collectors.toList());
+            if(winningNumbers.size() != 6) errorThrow(SCOPE_DUPLICATE_ERROR_MESSAGE);
+        }catch (NumberFormatException e){
+            errorThrow(IS_NUMBER_MESSAGE);
+        }
+        return winningNumbers;
+    }
+
+    private int validateBonusNumber(String bonus, List<Integer> winningNumbers) {
+        if(!isItANumberOrNot(bonus)) errorThrow(IS_NUMBER_MESSAGE);
+        int bonusNumber = Integer.parseInt(bonus);
+        if(!(bonusNumber >=1 && bonusNumber <=45)) errorThrow(SCOPE_ERROR_MESSAGE);
+        if(winningNumbers.contains(bonusNumber)) errorThrow(DUPLICATE_ERROR_MESSAGE);
+        return bonusNumber;
     }
 
     private boolean isItANumberOrNot(String unverifiedNumber){
@@ -50,48 +93,5 @@ public class Input {
 
     private void errorThrow (String error){
         throw new IllegalArgumentException(error);
-    }
-
-    public Lotto getWinningNumbers(){
-        try {
-            System.out.println(WINNING_NUMBERS_MESSAGE);
-            return new Lotto(validateWinningNumbers(Console.readLine().split(SEPARATOR)));
-        }catch (IllegalArgumentException e){
-            System.out.println(ERROR_MESSAGE + e.getMessage());
-            return getWinningNumbers();
-        }
-    }
-
-    private List<Integer> validateWinningNumbers(String[] numbers) {
-        List<Integer> winningNumbers = null;
-        try {
-            winningNumbers = Stream.of(numbers)
-                                .map(String::trim).map(Integer::parseInt)
-                                .filter(num -> num >= 1 && num <= 45)
-                                .distinct()
-                                .collect(Collectors.toList());
-            if(winningNumbers.size() != 6) errorThrow(SCOPE_DUPLICATE_ERROR_MESSAGE);
-        }catch (NumberFormatException e){
-            errorThrow(IS_NUMBER_MESSAGE);
-        }
-        return winningNumbers;
-    }
-
-    public int getBonusNumber(List<Integer> winningNumbers){
-        try {
-            System.out.println(BONUS_NUMBER_MESSAGE);
-            return validateBonusNumber(Console.readLine(), winningNumbers);
-        } catch (IllegalArgumentException e){
-            System.out.println(ERROR_MESSAGE + e.getMessage());
-            return getBonusNumber(winningNumbers);
-        }
-    }
-
-    private int validateBonusNumber(String bonus, List<Integer> winningNumbers) {
-        if(!isItANumberOrNot(bonus)) errorThrow(IS_NUMBER_MESSAGE);
-        int bonusNumber = Integer.parseInt(bonus);
-        if(!(bonusNumber >=1 && bonusNumber <=45)) errorThrow(SCOPE_ERROR_MESSAGE);
-        if(winningNumbers.contains(bonusNumber)) errorThrow(DUPLICATE_ERROR_MESSAGE);
-        return bonusNumber;
     }
 }
