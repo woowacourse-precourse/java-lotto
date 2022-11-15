@@ -5,11 +5,8 @@ import camp.nextstep.edu.missionutils.Console;
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import lotto.constant.Rank;
 import lotto.domain.Buyer;
