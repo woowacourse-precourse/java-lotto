@@ -32,12 +32,6 @@ public class InputNumber {
     }
 
     public void MoneyInputWrongMoney(String money) {
-/*        try {
-            Double.parseDouble(money);
-        } catch (NumberFormatException e) {
-            System.out.println("[ERROR]: 올바른 숫자가 아닙니다.");
-            throw new NumberFormatException("[ERROR]: 올바른 숫자가 아닙니다.");
-        }*/
         boolean isNumeric = money.chars().allMatch(Character::isDigit);
         if (!isNumeric) {
             System.out.println("[ERROR]: 올바른 숫자가 아닙니다.");
