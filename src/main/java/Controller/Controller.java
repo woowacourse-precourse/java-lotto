@@ -40,7 +40,7 @@ public class Controller {
 
     public void calculateLottoResult(LottoList lottoList, WinningNumbers winningNumbers, BonusNumber bonusNumber){
         int myReward = 0;
-        int[] ranking = new int[6];  //상수
+        int[] ranking = new int[Constant.RANKING_NUMBER + 1];
         for(Lotto eachLotto : lottoList.getLottoList()){
             int compareLotto = compareMyLottoAndWinningNumber(eachLotto.getLottoNumbers(), winningNumbers.getNumbers());
             boolean compareBonus = compareMyLottoAndBonusNumber(eachLotto.getLottoNumbers(), bonusNumber.getBonusNumber());

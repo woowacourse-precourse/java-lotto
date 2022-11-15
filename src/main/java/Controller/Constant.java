@@ -5,6 +5,7 @@ public class Constant {
     public static final int LOTTO_LENGTH = 6;
     public static final int LOTTO_NUMBER_RANGE_START = 1;
     public static final int LOTTO_NUMBER_RANGE_END = 45;
+    public static final int RANKING_NUMBER = 5;
     static final String REGEX_NUMERIC = "^[0-9]*$";
     public static final String SEPARATOR = ",";
     static final String ERROR_MESSAGE = "[ERROR]";
