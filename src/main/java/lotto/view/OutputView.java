@@ -2,33 +2,37 @@ package lotto.view;
 
 import camp.nextstep.edu.missionutils.Console;
 import lotto.domain.Lotto;
+import lotto.status.BoundaryStatus;
+import lotto.status.NumberStatus;
+import lotto.status.PointStatus;
 import lotto.status.WinningStatus;
 
 import java.text.DecimalFormat;
 import java.util.List;
 
 public class OutputView {
-    private final DecimalFormat decFormat = new DecimalFormat("###,###");
+    private final static DecimalFormat decFormat = new DecimalFormat("###,###");
 
-    public void printUserLotto(List<Lotto> userLotto) {
+    public static void printUserLotto(List<Lotto> userLotto) {
         System.out.println(userLotto.size() + "개를 구매했습니다.");
         for (Lotto lottoPiece : userLotto) {
             System.out.println(lottoPiece.getNumbers());
         }
     }
 
-    public void printWinningResult(List<Integer> result) {
-        for (int i = 3; i < 8; i++) {
+    public static void printWinningResult(List<Integer> result) {
+        for (int i = BoundaryStatus.MIN_WINNING_COUNT.getNumber(); i < BoundaryStatus.WINNING_RESULT_LENGTH.getNumber(); i++) {
             printEachResult(result, i);
         }
         System.out.println();
     }
 
-    private void printEachResult(List<Integer> result, Integer i) {
-        if (i == 6) {
+    private static void printEachResult(List<Integer> result, Integer i) {
+        if (i == PointStatus.POINT_OF_SECOND.getNumber()) {
             System.out.printf("%d개 일치, 보너스 볼 일치 (%s원) - %d개", WinningStatus.find(i).getNumberMatchCount(),
                     decFormat.format(WinningStatus.find(i).getReward()), result.get(i));
             System.out.println();
+            return;
         }
         System.out.printf("%d개 일치 (%s원) - %d개", WinningStatus.find(i).getNumberMatchCount(),
                 decFormat.format(WinningStatus.find(i).getReward()), result.get(i));

@@ -1,8 +1,9 @@
-package lotto.service;
+package lotto;
 
 import lotto.domain.Lotto;
 import lotto.domain.Money;
 import lotto.repository.LottoRepository;
+import lotto.service.LottoService;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -13,8 +14,8 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class LottoServiceTest {
-    private LottoService lottoService = new LottoService();
-    private LottoRepository lottoRepository = new LottoRepository();
+    private LottoService lottoService = LottoService.getInstance();
+    private LottoRepository lottoRepository = LottoRepository.getInstance();
 
     @DisplayName("입력받은 금액만큼의 로또 생성 수를 생성한다.")
     @ParameterizedTest

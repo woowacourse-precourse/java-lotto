@@ -9,12 +9,11 @@ import lotto.view.OutputView;
 import java.util.List;
 
 public class LottoController {
-    private LottoService lottoService =  new LottoService();
-    private InputView inputView = new InputView();
-    private OutputView outputView = new OutputView();
+
+    LottoService lottoService = LottoService.getInstance();
 
     public void startGame() {
-        String userInputMoney = inputView.printUserInputMoney();
+        String userInputMoney = InputView.printUserInputMoney();
         getTheNumberOfLotto(userInputMoney);
     }
 
@@ -29,18 +28,18 @@ public class LottoController {
     }
 
     private void showUserLotto(List<Lotto> userLotto) {
-        outputView.printUserLotto(userLotto);
+        OutputView.printUserLotto(userLotto);
         createWinningNumber();
     }
 
     private void createWinningNumber() {
-        String winningNumber = inputView.printUserInputWinningNumber();
+        String winningNumber = InputView.printUserInputWinningNumber();
         lottoService.createWinningLotto(winningNumber);
         getBonusNumber();
     }
 
     private void getBonusNumber() {
-        String bonusNumber = inputView.printUserInputBonusNumber();
+        String bonusNumber = InputView.printUserInputBonusNumber();
         lottoService.createBonusNumber(bonusNumber);
         compareLotto();
     }
@@ -51,7 +50,7 @@ public class LottoController {
     }
 
     private void showWinningResult(List<Integer> result) {
-        outputView.printWinningResult(result);
+        OutputView.printWinningResult(result);
         getProfit();
     }
 

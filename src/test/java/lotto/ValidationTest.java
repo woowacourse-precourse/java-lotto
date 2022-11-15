@@ -16,7 +16,7 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class ValidationTest {
-    private LottoService lottoService = new LottoService();
+    private LottoService lottoService = LottoService.getInstance();
 
     @DisplayName("입력받은 금액이 유효하지 않으면 예외를 발생시킨다.")
     @ParameterizedTest

@@ -3,10 +3,19 @@ package lotto.repository;
 import lotto.domain.BonusNumber;
 import lotto.domain.Lotto;
 import lotto.domain.Money;
+import lotto.service.LottoService;
 
 import java.util.List;
 
 public class LottoRepository {
+    private static final LottoRepository lottoRepository = new LottoRepository();
+
+    private LottoRepository() {
+    }
+
+    public static LottoRepository getInstance() {
+        return lottoRepository;
+    }
 
     private List<Integer> compareResult;
     private Money userMoney;

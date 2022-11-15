@@ -4,10 +4,12 @@ import lotto.domain.*;
 import lotto.comparator.LottoComparator;
 import lotto.repository.LottoRepository;
 import lotto.status.BoundaryStatus;
+import lotto.status.NumberStatus;
 import lotto.status.WinningStatus;
 import lotto.validator.InputValidator;
 import lotto.utils.RandomUtils;
 
+import javax.xml.validation.Validator;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -15,9 +17,16 @@ import java.util.stream.Collectors;
 
 
 public class LottoService {
+    private static final LottoService lottoService = new LottoService();
 
-    private LottoRepository lottoRepository = new LottoRepository();
-    private LottoComparator lottoComparator = new LottoComparator();
+    private LottoService() {
+    }
+
+    public static LottoService getInstance() {
+        return lottoService;
+    }
+
+    public LottoRepository lottoRepository = LottoRepository.getInstance();
 
     public Money getTheNumberOfLotto(String purchaseMoney) {
         Money userMoney = InputValidator.checkUserInputMoney(purchaseMoney);
@@ -31,7 +40,7 @@ public class LottoService {
 
     public List<Lotto> createUserLotto(Integer numberOfLotto) {
         List<Lotto> userLottoGroup = new ArrayList<>();
-        for (int i = BoundaryStatus.ZERO.getNumber(); i < numberOfLotto; i++) {
+        for (int i = NumberStatus.ZERO.getNumber(); i < numberOfLotto; i++) {
             Lotto userLottoPiece = RandomUtils.createRandomUserLotto();
             userLottoGroup.add(userLottoPiece);
         }
@@ -75,7 +84,7 @@ public class LottoService {
         Lotto winningLotto = lottoRepository.getWinningLotto();
         BonusNumber bonusNumber = lottoRepository.getBonusNumber();
 
-        List<Integer> compareResult = lottoComparator.compareUserLottoAndWinningLotto(
+        List<Integer> compareResult = LottoComparator.compareUserLottoAndWinningLotto(
                 userLottoGroup, bonusNumber, winningLotto);
 
         saveWinningResult(compareResult);
@@ -94,10 +103,10 @@ public class LottoService {
     }
 
     public String calculateProfit(List<Integer> winningResult, Double purchaseMoney) {
-        Long totalPrice = 0L;
+        long totalPrice = NumberStatus.ZERO.getNumber();
         for (int i = BoundaryStatus.MIN_WINNING_COUNT.getNumber(); i < winningResult.size(); i++) {
             totalPrice += winningResult.get(i) * WinningStatus.find(i).getReward();
         }
-        return String.format("%.1f", totalPrice / purchaseMoney * 100);
+        return String.format("%.1f", totalPrice / purchaseMoney * NumberStatus.PERCENT.getNumber());
     }
 }

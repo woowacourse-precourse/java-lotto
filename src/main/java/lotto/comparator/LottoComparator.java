@@ -10,11 +10,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class LottoComparator {
-    private List<Integer> compareResult = new ArrayList<>();
-    private Integer luckyCount;
-    private boolean hasBonusNumber;
+    private static List<Integer> compareResult = new ArrayList<>();
+    private static Integer luckyCount;
+    private static boolean hasBonusNumber;
 
-    public List<Integer> compareUserLottoAndWinningLotto(List<Lotto> userLottoGroup, BonusNumber bonusNumber, Lotto winningLotto) {
+    public static List<Integer> compareUserLottoAndWinningLotto(List<Lotto> userLottoGroup, BonusNumber bonusNumber, Lotto winningLotto) {
         initWinningResult();
         for (Lotto userLotto : userLottoGroup) {
             Integer luckyCount = compareEachNumber(userLotto, winningLotto, bonusNumber);
@@ -23,13 +23,13 @@ public class LottoComparator {
         return compareResult;
     }
 
-    private void initWinningResult() {
-        for (int i = 0; i < 8; i++) {
-            compareResult.add(BoundaryStatus.ZERO.getNumber());
+    private static void initWinningResult() {
+        for (int i = BoundaryStatus.START_NUMBER.getNumber(); i < BoundaryStatus.WINNING_RESULT_LENGTH.getNumber(); i++) {
+            compareResult.add(NumberStatus.ZERO.getNumber());
         }
     }
 
-    public Integer compareEachNumber(Lotto userLotto, Lotto winningLotto, BonusNumber BonusNumber) {
+    public static Integer compareEachNumber(Lotto userLotto, Lotto winningLotto, BonusNumber BonusNumber) {
         initCount();
         for (Integer userLottoNumber : userLotto.getNumbers()) {
             if (winningLotto.getNumbers().contains(userLottoNumber)) {
@@ -43,18 +43,18 @@ public class LottoComparator {
         return calculateLuckyCount(luckyCount, hasBonusNumber);
     }
 
-    private void initCount() {
-        luckyCount = BoundaryStatus.ZERO.getNumber();
+    private static void initCount() {
+        luckyCount = NumberStatus.ZERO.getNumber();
         hasBonusNumber = false;
     }
 
-    public void createResult(Integer luckyCount, List<Integer> winningResult) {
-        if (luckyCount >= 3) {
-            winningResult.set(luckyCount, winningResult.get(luckyCount) + 1);
+    public static void createResult(Integer luckyCount, List<Integer> winningResult) {
+        if (luckyCount >= NumberStatus.MIN_LUCKY_POINT.getNumber()) {
+            winningResult.set(luckyCount, winningResult.get(luckyCount) + NumberStatus.ONE_POINT.getNumber());
         }
     }
 
-    public Integer calculateLuckyCount(Integer luckyCount, boolean hasBonusNumber) {
+    public static Integer calculateLuckyCount(Integer luckyCount, boolean hasBonusNumber) {
         if (hasBonusNumber == true && luckyCount == NumberStatus.SECOND_OR_THIRD_MATCH_COUNT.getNumber()) {
             return PointStatus.POINT_OF_SECOND.getNumber();
         }

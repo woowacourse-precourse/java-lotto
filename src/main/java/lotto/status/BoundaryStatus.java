@@ -1,7 +1,8 @@
 package lotto.status;
 
 public enum BoundaryStatus {
-    ZERO(0),
+    START_NUMBER(0),
+    WINNING_RESULT_LENGTH(8),
     MIN_WINNING_COUNT(3),
     ZERO_ASCII(48),
     NINE_ASCII(57);
