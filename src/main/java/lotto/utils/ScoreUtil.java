@@ -22,7 +22,7 @@ public class ScoreUtil {
         return ELSE;
     }
 
-    private static ScoreInfo isSecondOrElse(Integer bonusCount, ScoreInfo scoreInfo) {
+    public static ScoreInfo isSecondOrElse(Integer bonusCount, ScoreInfo scoreInfo) {
         if (bonusCount.equals(1) && scoreInfo.getCorrectCount().equals(5)) {
             return FIVE;
         }

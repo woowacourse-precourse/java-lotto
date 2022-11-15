@@ -8,9 +8,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 import java.util.List;
 
 import static lotto.view.vlidation.InputCorrectLottoValidator.validate;
-import static org.assertj.core.api.Assertions.assertThatNoException;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
 
 class InputCorrectLottoValidatorTest {
 
@@ -19,8 +17,7 @@ class InputCorrectLottoValidatorTest {
     @ValueSource(strings = {"1,2,3,4,5,6", "1,2,22,33,10,25", "42,32,13,23,40,11"})
     void normalInput(String input) {
         List<Integer> integers = ConvertUtil.convertInputToIntegerList(input);
-        assertThatNoException()
-                .isThrownBy(() -> validate(integers));
+        assertDoesNotThrow( () -> validate(integers));
     }
 
     @DisplayName("7개 이상 숫자 입력")
