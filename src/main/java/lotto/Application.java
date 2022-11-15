@@ -5,6 +5,8 @@ import lotto.domain.PurchaseMoney;
 import lotto.view.InputView;
 import lotto.view.OutputView;
 
+import java.util.Set;
+
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
@@ -16,5 +18,8 @@ public class Application {
 
         Lottery lottery = new Lottery(lottoCount);
         OutputView.printLottoNumbers(lottery);
+
+        OutputView.printWinningNumbersEnteringGuideMessage();
+        Set<Integer> winningLottoNumber = InputView.inputWinningNumbers();
     }
 }

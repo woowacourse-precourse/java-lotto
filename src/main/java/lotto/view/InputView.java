@@ -22,22 +22,22 @@ public class InputView {
         return new PurchaseMoney(money);
     }
 
-    public static Set<LottoNumber> inputWinningNumbers() {
+    public static Set<Integer> inputWinningNumbers() {
         String input = Console.readLine();
         return convertInputWinningNumbers(input);
     }
 
-    private static Set<LottoNumber> convertInputWinningNumbers(String input) {
-        Set<LottoNumber> lottoNumbers = new HashSet<>();
+    private static Set<Integer> convertInputWinningNumbers(String input) {
+        Set<Integer> winningLottoNumbers = new HashSet<>();
         String[] numbers = input.split(WINNING_NUMBERS_SPLIT_DELIMITER);
 
         Arrays.stream(numbers)
-                    .forEach(s -> {
-                        int number = Integer.parseInt(s);
-                        lottoNumbers.add(new LottoNumber(number));
-                    });
+                .forEach(s -> {
+                    int number = Integer.parseInt(s);
+                    winningLottoNumbers.add(number);
+                });
 
-        return lottoNumbers;
+        return winningLottoNumbers;
     }
 
     public static LottoNumber inputBonusNumber() {
