@@ -17,7 +17,7 @@ public class PurchasingLotto {
         return numberOfLotto;
     }
 
-    private void devisionValid(int purchase) {
+    public void devisionValid(int purchase) {
         if (purchase % 1000 != 0) {
             throw new IllegalArgumentException(ERROR_DEVISION_EXCEPTION);
         }
