@@ -37,7 +37,7 @@ public class LottoController {
     }
 
     public static void printResult(WinningLotto winningLotto, Lottos lottos, int inputMoney) {
-        System.out.println("당첨 통계\n" + "---");
+        System.out.println(PRINT_RESULT_MAIN_MESSAGE);
 
         Map<WinningType, Integer> winningResults = new EnumMap<>(WinningType.class);
 
@@ -58,12 +58,12 @@ public class LottoController {
             } else winningResults.put(type, 1);
         }
 
-        printResultElements(winningResults);
+        printWinningResult(winningResults);
 
         calculateEarning(winningResults, inputMoney);
     }
 
-    public static void printResultElements(Map<WinningType, Integer> winningResults) {
+    public static void printWinningResult(Map<WinningType, Integer> winningResults) {
 
         Iterator<WinningType> winningTypeIterator = getWinningTypeIterator();
         while (winningTypeIterator.hasNext()) {
