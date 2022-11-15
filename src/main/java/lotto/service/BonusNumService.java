@@ -1,13 +1,15 @@
 package lotto.service;
 
 import camp.nextstep.edu.missionutils.Console;
+import lotto.domain.Constants;
+import lotto.domain.ExceptionMessage;
 
 import java.util.List;
 
 public class BonusNumService {
 
     public int make(List<Integer> winningNum) {
-        System.out.println("보너스 번호를 입력해 주세요.");
+        System.out.println(Constants.INPUT_REQUEST_BONUS_NUM);
 
         String inputString = Console.readLine();
 
@@ -27,21 +29,21 @@ public class BonusNumService {
         try {
             return Integer.parseInt(inputString);
         } catch (Exception e) {
-            System.out.println("숫자만 입력 가능합니다");
+            System.out.println(ExceptionMessage.NUMERIC.getMessage());
             throw new IllegalArgumentException();
         }
     }
 
     private void rangeCheck(int input) throws IllegalArgumentException {
-        if (input <= 0 || input > 45) {
-            System.out.println("[ERROR] 보너스 번호는 1부터 45사이의 숫자여야 합니다.");
+        if (input <= Constants.NUMBER_RANGE_START || input > Constants.NUMBER_RANGE_END) {
+            System.out.println(ExceptionMessage.LOTTO_NUMBER_RANGE.getMessage());
             throw new IllegalArgumentException();
         }
     }
 
     private static void duplicateWithWinningNum(int input, List<Integer> winningNum) {
         if (winningNum.contains(input)) {
-            System.out.println("[ERROR] 보너스 번호는 당첨 번호에 없는 숫자여야 합니다.");
+            System.out.println(ExceptionMessage.DUPLICATE_NUM_BONUS.getMessage());
             throw new IllegalArgumentException();
         }
     }

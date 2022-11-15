@@ -2,6 +2,8 @@ package lotto.service;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
+import lotto.domain.Constants;
+import lotto.domain.ExceptionMessage;
 import lotto.domain.Lotto;
 
 import java.util.ArrayList;
@@ -30,36 +32,48 @@ public class LottoWalletService {
 
     private int getNumberOfLottoToMake() {
 
-        try {
-            getInputOfMoney();
-        } catch (IllegalArgumentException ignored) {
-        }
+        getInputOfMoney();
 
-        int howManyLotto = payment / Lotto.PRICE;
+        int howManyLotto = payment / Constants.PRICE;
 
-        System.out.println(howManyLotto + "개를 구매했습니다.");
+        System.out.println(howManyLotto + Constants.PURCHASE_QUANTITY_NOTICE);
 
         return howManyLotto;
     }
 
     private static void getInputOfMoney() throws IllegalArgumentException {
 
-        System.out.println("구입금액을 입력해 주세요.");
+        System.out.println(Constants.INPUT_REQUEST_PAY);
 
         String moneyAsString = Console.readLine();
 
         try {
-            payment = Integer.parseInt(moneyAsString);
-        } catch (Exception e) {
-            System.out.println("[ERROR] 구입금액은 숫자만 입력 가능합니다.");
-            throw new IllegalArgumentException();
+            isNumeric(moneyAsString);
+        } catch (IllegalArgumentException ignored) {
         }
+        rangeCheck();
         validateUnit();
     }
 
+    private static void rangeCheck() {
+        if (payment < Constants.PRICE){
+            System.out.println(ExceptionMessage.PURCHASE_RANGE.getMessage());
+            throw new IllegalArgumentException();
+        }
+    }
+
+    private static void isNumeric(String moneyAsString) {
+        try {
+            payment = Integer.parseInt(moneyAsString);
+        } catch (Exception e) {
+            System.out.println(ExceptionMessage.NUMERIC.getMessage());
+            throw new IllegalArgumentException();
+        }
+    }
+
     private static void validateUnit() throws IllegalArgumentException {
-        if (payment % Lotto.PRICE != 0) {
-            System.out.println("[ERROR] 구입금액은 1000원으로 나누어 떨어져야 합니다.");
+        if (payment % Constants.PRICE != 0) {
+            System.out.println(ExceptionMessage.DIVIDE.getMessage());
             throw new IllegalArgumentException();
         }
     }

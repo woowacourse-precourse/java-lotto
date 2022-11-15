@@ -1,5 +1,6 @@
 package lotto.view;
 
+import lotto.domain.Constants;
 import lotto.service.EarningRateService;
 
 import java.text.DecimalFormat;
@@ -13,6 +14,6 @@ public class EarningRateView {
 
         double earningRate = service.calculate();
 
-        System.out.println("총 수익률은 " + formatter.format(earningRate) + "%입니다.");
+        System.out.println(Constants.TOTAL_EARNING_IS + formatter.format(earningRate) + Constants.PERCENT_NOTICE);
     }
 }

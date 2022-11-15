@@ -1,6 +1,8 @@
 package lotto.service;
 
 import camp.nextstep.edu.missionutils.Console;
+import lotto.domain.Constants;
+import lotto.domain.ExceptionMessage;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,7 +19,7 @@ public class WinningNumService {
     }
 
     private void getInputAndValidate(List<Integer> tmp) throws IllegalArgumentException{
-        System.out.println("당첨 번호를 입력해 주세요.");
+        System.out.println(Constants.INPUT_REQUEST_WINNING_NUM);
 
         String numbersAsString = Console.readLine();
 
@@ -34,8 +36,9 @@ public class WinningNumService {
     }
 
     private void sizeCheck(List<Integer> winningNumber) throws IllegalArgumentException {
-        if (winningNumber.size() != 6) {
-            throw new IllegalArgumentException("[ERROR] 로또 번호는 6개의 숫자여야 합니다.");
+        if (winningNumber.size() != Constants.LOTTO_LENGTH) {
+            System.out.println(ExceptionMessage.LENGTH.getMessage());
+            throw new IllegalArgumentException();
         }
     }
 
@@ -43,13 +46,16 @@ public class WinningNumService {
         try {
             return Integer.parseInt(inputAsString);
         } catch (Exception e) {
-            throw new IllegalArgumentException("[ERROR] 로또 번호는 정수값만 가능합니다.");
+            System.out.println(ExceptionMessage.NUMERIC.getMessage());
+            throw new IllegalArgumentException(
+            );
         }
     }
 
     private void rangeCheck(int input) throws IllegalArgumentException {
-        if (input <= 0 || input > 45) {
-            throw new IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
+        if (input < Constants.NUMBER_RANGE_START  || input > Constants.NUMBER_RANGE_END) {
+            System.out.println(ExceptionMessage.LOTTO_NUMBER_RANGE);
+            throw new IllegalArgumentException();
         }
     }
 }
