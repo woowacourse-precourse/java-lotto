@@ -43,11 +43,11 @@ public class Application {
 //      보너스 넘버 입력
         int bonusNum = Integer.valueOf(Console.readLine());
 
-        for (int buyerEnter : buyer) {
-            if (bonusNum.contains(buyerEnter)) {
-                System.out.printf("%d 는 당첨번호에 이미 포함되어 있습니다.\n", bonusNum);
-            }
-        }
+//        for (int buyerEnter : buyer) {
+//            if (bonusNum.contains(buyerEnter)) {
+//                System.out.printf("%d 는 당첨번호에 이미 포함되어 있습니다.\n", bonusNum);
+//            }
+//        }
 
 
 
