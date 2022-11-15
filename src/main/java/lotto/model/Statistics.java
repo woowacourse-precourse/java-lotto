@@ -17,7 +17,7 @@ public class Statistics {
             int bonusCount = matchNumberCount.get("bonusCount");
             updatePrizeQuantity(matchCount, bonusCount);
         }
-        return createPrizeMap();
+        return createPrizeBundle();
     }
 
     public float myStat(int receivedMoney) {
@@ -59,7 +59,7 @@ public class Statistics {
             PRIZE5++;
     }
 
-    public Map<String, Integer> createPrizeMap() {
+    public Map<String, Integer> createPrizeBundle() {
         return Map.of(
             "PRIZE1", PRIZE1,
             "PRIZE2", PRIZE2,
