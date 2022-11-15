@@ -1,11 +1,9 @@
 package lotto;
 
-import java.text.DecimalFormat;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.List;
-import lotto.LottoEnum.LottoReward;
 
 public class Controller {
     /**
@@ -114,21 +112,7 @@ public class Controller {
         // 당첨 통계 출력
         View.Output("당첨 통계");
         View.Output("---");
-        DecimalFormat formatter = new DecimalFormat("###,###");
-        for (int i = 5; 0 < i; i--) {
-            Integer correctNumber = LottoReward.GetCorrectNumberByRank(i);
-            Integer result = lottoResult.get(i);
-            Integer reward = LottoReward.GetRewardByRank(i);
-            String rewardPrint = formatter.format(reward);
-
-            if (i == 2) {
-                View.Output(correctNumber + "개 일치, 보너스 볼 일치 (" + rewardPrint + "원) - " + result + "개");
-            }
-
-            if (i != 2) {
-                View.Output(correctNumber + "개 일치 (" + rewardPrint + "원) - " + result + "개");
-            }
-        }
+        View.PrintResult(lottoResult);
 
         // 총 수익률 출력
         Integer incomeSum = Model.CalculateEarningSum(lottoResult);
