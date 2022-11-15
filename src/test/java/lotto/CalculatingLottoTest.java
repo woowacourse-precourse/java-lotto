@@ -11,18 +11,18 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class CalculatingLottoTest {
     CalculatingLotto calculatingLotto = new CalculatingLotto();
-    List<Integer> winningLotto=List.of(1, 2, 3, 4, 5, 6);
-    List<List<Integer>> allLotto=new ArrayList<>();
+    Lotto winningLotto=new Lotto(List.of(1, 2, 3, 4, 5, 6));
+    List<Lotto> allLotto=new ArrayList<>();
 
     @BeforeEach
     void setUp() {
-        allLotto.add(List.of(1, 2, 3, 4, 5, 6));
-        allLotto.add(List.of(1, 2, 3, 4, 5, 7));
-        allLotto.add(List.of(1, 2, 3, 4, 5, 8));
-        allLotto.add(List.of(1, 2, 3, 4, 8, 9));
-        allLotto.add(List.of(1, 2, 3, 8, 9, 10));
-        allLotto.add(List.of(1, 2, 8, 9, 10, 11));
-        allLotto.add(List.of(8, 9, 10, 11, 12, 13));
+        allLotto.add(new Lotto(List.of(1, 2, 3, 4, 5, 6)));
+        allLotto.add(new Lotto(List.of(1, 2, 3, 4, 5, 7)));
+        allLotto.add(new Lotto(List.of(1, 2, 3, 4, 5, 8)));
+        allLotto.add(new Lotto(List.of(1, 2, 3, 4, 8, 9)));
+        allLotto.add(new Lotto(List.of(1, 2, 3, 8, 9, 10)));
+        allLotto.add(new Lotto(List.of(1, 2, 8, 9, 10, 11)));
+        allLotto.add(new Lotto(List.of(8, 9, 10, 11, 12, 13)));
     }
 
     @Test
@@ -34,9 +34,9 @@ class CalculatingLottoTest {
 
     @Test
     void checkBonusTest() {
-        assertThat(calculatingLotto.checkBonus(6, List.of(1, 2, 3, 4, 5, 6))).isEqualTo(true);
+        assertThat(calculatingLotto.checkBonus(6, new Lotto(List.of(1, 2, 3, 4, 5, 6)))).isEqualTo(true);
 
-        assertThat(calculatingLotto.checkBonus(6, List.of(1, 2, 3, 4, 5, 8))).isEqualTo(false);
+        assertThat(calculatingLotto.checkBonus(6, new Lotto(List.of(1, 2, 3, 4, 5, 8)))).isEqualTo(false);
     }
 
     @Test
