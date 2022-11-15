@@ -42,6 +42,12 @@ public class Exception {
         }
     }
 
+    public void checkBonusNumberStartZero(String bonusNumber){
+        if(bonusNumber.charAt(0)=='0'){
+            throw new IllegalArgumentException(Message.ERROR_START_ZERO.getMessage());
+        }
+    }
+
 
 
 
