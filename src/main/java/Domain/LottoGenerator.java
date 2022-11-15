@@ -15,6 +15,17 @@ public class LottoGenerator {
         this.price = price;
     }
 
+    public List<List<Integer>> issueLotto() {
+        List<List<Integer>> totalLottoNumbers = new ArrayList<>();
+        int totalAmount = Integer.parseInt(price) / 1000;
+
+        for (int count = 0; count < totalAmount; count++) {
+            totalLottoNumbers.add(createLottoNumbers());
+        }
+
+        return totalLottoNumbers;
+    }
+
     public List<Integer> createLottoNumbers() {
         List<Integer> lottoNumbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
         List<Integer> sortLottoNumbers = new ArrayList<>(lottoNumbers);
