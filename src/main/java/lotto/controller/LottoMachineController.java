@@ -122,6 +122,12 @@ public class LottoMachineController {
         return winningAmount;
     }
 
+    public static double getRateOfReturn(int[] winningStats, int principal){
+        double profit = getWinningAmount(winningStats);
+        double rateOfReturn = profit/principal*100;
+        return rateOfReturn;
+    }
+
     public static int[] toListLotto(Lotto lotto){
         int[] lottoArr = new int[lotto.getSize()];
         for(int i=0;i< lotto.getSize();i++){
