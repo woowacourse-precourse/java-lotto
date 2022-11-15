@@ -6,15 +6,17 @@ public class Utils {
 
     private static final int LOTTO_SIZE = 6;
 
-    public static int convertStringToInt(String input) {
-        int number;
-
-        try {
-            number = Integer.parseInt(input);
-        } catch (Exception e) {
+    public static void validateInput(char c) {
+        if (!Character.isDigit(c)) {
             throw new IllegalArgumentException(String.valueOf(ErrorCode.INPUT_NOT_NUMBER));
         }
-        return number;
+    }
+
+    public static int convertStringToInt(String input) {
+        for (int i = 0; i < input.length(); i++) {
+            validateInput(input.charAt(i));
+        }
+        return Integer.parseInt(input);
     }
 
 
