@@ -3,6 +3,7 @@ package lotto;
 import lotto.exception.ErrorCode;
 import lotto.exception.MyIllegalArgumentException;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -52,5 +53,11 @@ public class Lotto {
 
     public List<Integer> getNumbers() {
         return numbers;
+    }
+
+    public List<Integer> getCommonNumbers(Lotto other) {
+        ArrayList<Integer> common = new ArrayList<>(numbers);
+        common.retainAll(other.getNumbers());
+        return common;
     }
 }
