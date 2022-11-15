@@ -21,15 +21,16 @@ public enum CoincideNumber {
         this.count = count;
         this.money = money;
     }
-    private int rank(){
-        return rank;
-    }
     public String phrase(){
         return phrase;
     }
     public int count(){
         return count;
     }
+    private int rank(){
+        return rank;
+    }
+
     private void plusCount(){
         this.count++;
     }
