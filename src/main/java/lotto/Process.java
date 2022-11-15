@@ -59,4 +59,23 @@ public class Process {
             System.out.println(oneLotto);
         }
     }
+
+    static void initialRanking() {
+        Rank.settingRankMap();
+    }
+
+    static void settingRank(List<List<Integer>> lotto) {
+        for (List<Integer> com : lotto) {
+            int countAnswer = MatchPrize.matchNumber(com, UserInput.lottoNumber(answerNumber));
+            Rank r = Rank.countCondition(countAnswer, MatchPrize.matchBonus(com, UserInput.lottoBonusNumber(bonus)));
+            Rank.addRankCount(r);
+        }
+    }
+
+    static void resultMessage() {
+        System.out.println(WINNING_REPORT_MESSAGE);
+        System.out.println(SECTION_MESSAGE);
+        RewardMessage.prizeMessage(Rank.getRankCount());
+        RewardMessage.yieldMessage(savelottoPaper * 1000, RewardMessage.lottoReward(Rank.getRankCount()));
+    }
 }
