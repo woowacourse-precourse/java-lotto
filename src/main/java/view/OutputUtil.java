@@ -17,6 +17,7 @@ public class OutputUtil {
     public static final int MAX_HIT = 6;
     private static final String START_STATISTICS = "\n당첨통계\n---";
     private static final String PURCHASE_INPUT = "구입금액을 입력해 주세요.";
+    public static final String PATTERN = "###,###";
     private static String PURCHASE_RESULT = "개를 구매했습니다.";
     private static final String WINNING_NUMBER_NOTICE = "\n당첨 번호를 입력해 주세요.";
     private static final String BONUS_NOTICE = "\n보너스 번호를 입력해 주세요.";
@@ -51,18 +52,15 @@ public class OutputUtil {
         Map<LottoRank, Integer> statistics = result.sendDto().statistics;
         for (Map.Entry<LottoRank, Integer> pair : statistics.entrySet()) {
             LottoRank rank = pair.getKey();
-            Integer number = pair.getValue();
-            Integer money = rank.money;
-            DecimalFormat df = new DecimalFormat("###,###");
-            String formattedMoney = df.format(money);
+            String money = new DecimalFormat(PATTERN).format(rank.money);
             if (rank == LottoRank.MISS) continue;
             if (rank == LottoRank.SECOND) {
-                System.out.printf("%d개 일치, 보너스 볼 일치 (%s원) - %d개\n", rank.hitNumber,formattedMoney, number);
+                System.out.printf("%d개 일치, 보너스 볼 일치 (%s원) - %d개\n", rank.hitNumber,money,  pair.getValue());
                 continue;
             }
-            System.out.printf("%d개 일치 (%s원) - %d개\n", rank.hitNumber, formattedMoney, number);
+            System.out.printf("%d개 일치 (%s원) - %d개\n", rank.hitNumber, money,  pair.getValue());
         }
-        System.out.printf("총 수익률은 %.1f%%입니다.\n", result.calcEarningRate()*100);
+        System.out.printf("총 수익률은 %.1f%%입니다.\n", result.calcEarningRate());
     }
 
     public static void printError(String errorMessage){

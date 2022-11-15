@@ -38,6 +38,6 @@ public class Result {
         }
         totalLottos *= LOTTO_PRICE;
 
-        return sum/totalLottos;
+        return (sum/totalLottos)*100;
     }
 }
