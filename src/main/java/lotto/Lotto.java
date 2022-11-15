@@ -62,6 +62,19 @@ public class Lotto {
         validateUniqueness(numbersIncludingBonus, LOTTERY_NUMBER_COUNT + 1);
     }
 
+    public int parseBonusNumber(String bonusNumber) {
+        int bonus;
+
+        try {
+            bonus = Integer.parseInt(bonusNumber);
+            validateBonusNumber(bonus);
+            return (bonus);
+        } catch (NumberFormatException ex) {
+            throw (new IllegalArgumentException(ExceptionMessage.WINNING_NUMBER_EXCEPTION
+                    .toString()));
+        }
+    }
+
     public int checkIfCorrectNumber(int number) {
         if (numbers.contains(number))
             return (1);
