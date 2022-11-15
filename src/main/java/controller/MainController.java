@@ -7,13 +7,14 @@ import view.OutputView;
 import java.util.List;
 
 public class MainController {
-    private int inputMoney;
+    private int money;
     private int lottoCount;
     private int bonusNumber;
     private String winningNumber;
     private List<List<Integer>> totalLotteries;
     private List<Integer> winningNumbers;
     int[] winningNumberMatchCount;
+    private final String MONEY_INPUT_ERROR = "[ERROR]: 숫자 외 다른 문자를 입력하셨습니다.";
 
     public void run() {
         moneyController();
@@ -21,13 +22,12 @@ public class MainController {
 
     public void moneyController() {
         try {
-            inputMoney = InputView.inputMoney();
+            money = InputView.inputMoney();
         } catch (IllegalArgumentException e) {
-            e.getMessage();
-            System.out.println("[ERROR]: 숫자 외 다른 문자를 입력하셨습니다.");
-            new LottoException().inputMoneyException(inputMoney);
+            System.out.println(MONEY_INPUT_ERROR);
+            new LottoException().inputMoneyException(money);
         }
-        lottoCount = new LottoStore().calculateLottoCount(inputMoney);
+        lottoCount = new LottoStore().calculatePurchasedLottoCount(money);
         OutputView.printLottoCount(lottoCount);
         makeLottoController();
     }
@@ -56,7 +56,7 @@ public class MainController {
     }
 
     public void profitRateController() {
-        double profitRate = new LottoBank().calculateTotalMoney(winningNumberMatchCount, inputMoney);
+        double profitRate = new LottoBank().calculateTotalMoney(winningNumberMatchCount, money);
         OutputView.printProfitRate(profitRate);
     }
 }

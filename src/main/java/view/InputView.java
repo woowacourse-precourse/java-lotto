@@ -8,8 +8,8 @@ public class InputView {
     private static final String INPUT_BONUS_NUMBER = "보너스 번호를 입력해 주세요.";
     public static int inputMoney() {
         System.out.println(INPUT_MONEY);
-        String stringMoney = Console.readLine();
-        int money = Integer.parseInt(stringMoney);
+        String moneyTypeString = Console.readLine();
+        int money = Integer.parseInt(moneyTypeString);
         return money;
     }
 
