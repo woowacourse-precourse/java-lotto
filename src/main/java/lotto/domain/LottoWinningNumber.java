@@ -28,7 +28,6 @@ public class LottoWinningNumber {
 
         validConsistOneNumber(inputBonusNumber);
         bonusNumber = Integer.parseInt(inputBonusNumber);
-        validOneNumberRange(bonusNumber);
 
         return bonusNumber;
     }
@@ -48,6 +47,10 @@ public class LottoWinningNumber {
     public void validAllWinningNumber(List<Integer> winningNumbers){
         validSixNumber(winningNumbers);
         validAllNumberRange(winningNumbers);
+    }
+
+    public void validAllBonusNumber(int bonusNumber) {
+        validOneNumberRange(bonusNumber);
     }
     public void validDuplicateNumber(List<Integer> winningNumbers, int bonusNumber) {
         Set<Integer> set = new HashSet<>();

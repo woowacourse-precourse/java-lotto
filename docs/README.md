@@ -16,7 +16,7 @@
     - [x] 하나의 숫자가 1 ~ 45 사이의 값이 아니면 예외처리를 한다. - LottoWinningNumber#validOneNumberRange()
     - [x] 당첨 번호와 보너스 번호들중 중복된 값이 존재하면 예외 처리한다. - LottoWinningNumber#validDuplicateNumber()
 - [x] 당첨 번호의 모든 유효성 검사를 진행한다. - LottoWinningNumber#validAllWinningNumber()
-- [ ] 보너스 번호의 모든 유효성 검사를 진행한다. - LottoWinningNumber#validAllBonusNumber()
+- [x] 보너스 번호의 모든 유효성 검사를 진행한다. - LottoWinningNumber#validAllBonusNumber()
 - [x]  1 ~ 45 사이의 임의의 서로 다른 숫자 6개로 구성된 로또를 생성한다. - Lotto#creatLottoNumbers()  
 - [x] 당첨 번호와 로또번호를 비교 한다. - Judgment#compareToNumber() 
 - [x] 보너스 번호와 로또 번호를 비교한다. - Judgment#compareToBonus()
