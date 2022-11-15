@@ -17,7 +17,7 @@ public class LottoMachine {
         int money = convertStringToInt(moneyRaw);
         validate(money);
         int countOfLottos = getCountOfLottos(money);
-        UserInterface.announceCountOfLottosPublished(countOfLottos);
+        UserInterface.announceCountOfLottosPurchased(countOfLottos);
         List<Lotto> lottos = publishLottosByCount(countOfLottos);
         return lottos;
     }

@@ -24,7 +24,7 @@ public class Cashier {
     }
 
     public void publishLottos() {
-        String moneyRaw = UserInterface.getInputMoney();
+        String moneyRaw = UserInterface.inputMoney();
         this.lottos = LottoMachine.publish(moneyRaw);
     }
 
@@ -38,8 +38,8 @@ public class Cashier {
     }
 
     public void getResultFromAccount() {
-        Map<WinningResult, Integer> results = this.account.getWinningResultTable();
-        UserInterface.printResult(results);
+        Map<WinningResult, Integer> winningResultTable = this.account.getWinningResultTable();
+        UserInterface.printResult(winningResultTable);
     }
 
     public void getYieldFromAccount() {
@@ -48,12 +48,12 @@ public class Cashier {
     }
 
     private void setWinningNumbers() {
-        String numbersRaw = UserInterface.getWinningNumbers();
+        String numbersRaw = UserInterface.inputWinningNumbers();
         this.winningCalculator.setWinningNumbers(numbersRaw);
     }
 
     private void setBonusNumber() {
-        String bonusNumberRaw = UserInterface.getBonusNumber();
+        String bonusNumberRaw = UserInterface.inputBonusNumber();
         this.winningCalculator.setBonusNumber(bonusNumberRaw);
     }
 

@@ -15,14 +15,14 @@ public class UserInterface {
     private static final String WINNING_STATISTICS_ANNOUNCEMENT = lineSeparator() + "당첨 통계\n---";
     private static final String YIELD_FORMAT_ANNOUNCEMENT = "총 수익률은 %s%%입니다.";
 
-    public static String getInputMoney() {
+    public static String inputMoney() {
         System.out.println(INPUT_MONEY_ANNOUNCEMENT);
         String moneyRaw = Console.readLine();
         InputValidator.validateInputMoney(moneyRaw);
         return moneyRaw;
     }
 
-    public static void announceCountOfLottosPublished(int countOfLottosPurchased) {
+    public static void announceCountOfLottosPurchased(int countOfLottosPurchased) {
         System.out.println(String.format(PUBLISH_LOTTOS_ANNOUNCEMENT, countOfLottosPurchased));
     }
 
@@ -30,28 +30,28 @@ public class UserInterface {
         System.out.println(numbers);
     }
 
-    public static String getWinningNumbers() {
+    public static String inputWinningNumbers() {
         System.out.println(INPUT_WINNING_NUMBERS_ANNOUNCEMENT);
         String numbersRaw = Console.readLine();
         InputValidator.validateInputWinningNumbers(numbersRaw);
         return numbersRaw;
     }
 
-    public static String getBonusNumber() {
+    public static String inputBonusNumber() {
         System.out.println(INPUT_BONUS_NUMBER_ANNOUNCEMENT);
         String bonusNumberRaw = Console.readLine();
         InputValidator.validateInputBonusNumber(bonusNumberRaw);
         return bonusNumberRaw;
     }
 
-    public static void printResult(Map<WinningResult, Integer> results) {
+    public static void printResult(Map<WinningResult, Integer> winningResultTable) {
         System.out.println(WINNING_STATISTICS_ANNOUNCEMENT);
-        for (WinningResult result : results.keySet()) {
-            if (result == WinningResult.RANK_NONE) {
+        for (WinningResult winningResult : winningResultTable.keySet()) {
+            if (winningResult == WinningResult.RANK_NONE) {
                 continue;
             }
-            System.out.println(result.getAnnouncement() + " - " + results.get(result) + "개");
-        }
+            System.out.println(winningResult.getAnnouncement() + " - " + winningResultTable.get(winningResult) + "개");
+
     }
 
     public static void printYield(String yield) {
