@@ -1,9 +1,8 @@
 package lotto.domain;
 
+import static lotto.domain.messages.ErrorMessages.RANGE_ERROR_MESSAGE;
 
 public class LottoNumber {
-
-    private static final String RANGE_ERROR_MESSAGE = "로또 번호는 1~45사이의 수로 구성되어야 합니다";
     private Integer number;
 
     private LottoNumber(int number) {

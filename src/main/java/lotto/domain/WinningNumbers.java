@@ -6,9 +6,9 @@ import java.util.List;
 import java.util.PrimitiveIterator;
 import java.util.stream.Collectors;
 
-public class WinningNumbers {
+import static lotto.domain.messages.ErrorMessages.DUPLICATE_BONUS_ERROR_MESSAGE;
 
-    private static final String DUPLICATE_BONUS_ERROR_MESSAGE = "보너스 번호는 당첨 번호와 중복될 수 없습니다";
+public class WinningNumbers {
     private Lotto winningLottoNumbers;
     private LottoNumber bonus;
 
