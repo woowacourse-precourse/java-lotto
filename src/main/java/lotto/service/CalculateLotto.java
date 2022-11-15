@@ -75,6 +75,4 @@ public class CalculateLotto {
 
         return (((double) sumOfReward / (double) purchasePrice) * 100);
     }
-
-
 }

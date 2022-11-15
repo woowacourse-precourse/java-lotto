@@ -129,3 +129,5 @@
   - 계산과 출력은 별개의 메소드에서 이뤄져야 하기에 출력을 담당하는 메소드로 데이터를 보내줘야 한다.
   - 따라서 키를 ResultEnum 객체로 가지고 값을 당첨 개수로 가지는 Map을 보내주는게 가장 효율적이라고 판단하여 `calculateResult` 반환값을 
   EnumMap<ResultEnum, Integer>로 설정했다.
+  - 수익률은 `calculateROI`에서 계산한다.
+  - 계산한 EnumMap<ResultEnum, Integer>과 Double형 변수를 `Message` 클래스의 `printResult` 메소드를 이용해 출력한다.
