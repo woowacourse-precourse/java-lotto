@@ -13,6 +13,10 @@ public class UserAmount {
         this.amount = validate(amount);
     }
 
+    public Long calculateLottoCount() {
+        return amount / LOTTO_PURCHASE_AMOUNT_CRITERIA;
+    }
+
     private Long validate(String amount) {
         validateEmpty(amount);
         validateBlank(amount);
@@ -40,6 +44,9 @@ public class UserAmount {
     }
 
     private Long validateAmount(Long amount) {
+        if (amount < LOTTO_PURCHASE_AMOUNT_CRITERIA) {
+            throw new IllegalArgumentException("[ERROR] 구입금액이 부족합니다.");
+        }
         if (amount % LOTTO_PURCHASE_AMOUNT_CRITERIA != REMAINING_AMOUNT) {
             throw new IllegalArgumentException("[ERROR] 구입금액이 1,000원으로 나누어 떨어지지 않습니다.");
         }
@@ -47,7 +54,7 @@ public class UserAmount {
     }
 
     public Long getAmount() {
-        return this.amount;
+        return amount;
     }
 
 }
