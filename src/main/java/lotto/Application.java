@@ -26,6 +26,7 @@ public class Application {
             double yieldRate = machine.calculateYieldRate(rankings);
             console.printResult(rankings, yieldRate);
         } catch (Exception e) {
+            System.out.println(e.getMessage());
         }
     }
 

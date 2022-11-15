@@ -3,7 +3,6 @@ package lotto.domain.lotto;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import java.util.StringJoiner;
 
 /**
  * - `Lotto`에 매개 변수가 없는 생성자를 추가할 수 없다.
@@ -22,14 +21,12 @@ public class Lotto {
 
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
-            System.out.println("[ERROR]: 정확한 숫자를 입력하세요.");
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR]: 정확한 숫자를 입력하세요.");
         }
 
         Set<Integer> set = new HashSet<>(numbers);
         if (set.size() != 6) {
-            System.out.println("[ERROR]: 정확한 숫자를 입력하세요.");
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR]: 정확한 숫자를 입력하세요.");
         }
     }
 

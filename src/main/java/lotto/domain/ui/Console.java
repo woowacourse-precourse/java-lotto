@@ -1,7 +1,6 @@
 package lotto.domain.ui;
 
 import lotto.domain.lotto.Lotto;
-import lotto.domain.lotto.Machine;
 import lotto.domain.lotto.Rank;
 import lotto.domain.lotto.WinningNumber;
 
@@ -17,17 +16,10 @@ public class Console {
     }
 
     private int calculateCount(int amount) {
-        int count;
-        try {
-            if (amount % Lotto.PRICE != 0) {
-                throw new IllegalArgumentException();
-            }
-            count = amount / Lotto.PRICE;
-        } catch (Exception e) {
-            System.out.println("[ERROR] 1장에 " + Lotto.PRICE + "원 입니다. 딱 맞게 입력해 주세요.");
-            throw new IllegalArgumentException();
+        if (amount % Lotto.PRICE != 0 || amount == 0) {
+            throw new IllegalArgumentException("[ERROR] 1장에 " + Lotto.PRICE + "원 입니다. 딱 맞게 입력해 주세요.");
         }
-        return count;
+        return amount / Lotto.PRICE;
     }
 
     private int inputCellAmount() {
@@ -37,9 +29,8 @@ public class Console {
         int amount;
         try {
             amount = Integer.parseInt(line);
-        } catch (Exception e) {
-            System.out.println("[ERROR] : 숫자를 입력해 주세요.");
-            throw new IllegalArgumentException();
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("[ERROR] : 숫자를 입력해 주세요.");
         }
         return amount;
     }
@@ -61,9 +52,7 @@ public class Console {
         try {
             bonusNumber = Integer.parseInt(line);
         } catch (Exception e) {
-            System.out.println("[ERROR]: 정확한 숫자를 입력하세요.");
-            throw new IllegalArgumentException();
-
+            throw new IllegalArgumentException("[ERROR]: 정확한 숫자를 입력하세요.");
         }
 
         return bonusNumber;
@@ -78,10 +67,8 @@ public class Console {
             numbers = Arrays.stream(data).mapToInt(Integer::parseInt)
                     .boxed()
                     .collect(Collectors.toList());
-
-        } catch (Exception e) {
-            System.out.println("[ERROR]: 정확한 숫자를 입력하세요.");
-            throw new IllegalArgumentException();
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("[ERROR]: 정확한 숫자를 입력하세요.");
         }
 
         return new Lotto(numbers);
