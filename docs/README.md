@@ -9,7 +9,7 @@
 5. 구매한 로또의 당첨내역과 총 수익률를 계산한다.
 
 ## 기능 목록
-- InputValidation class
+- ### InputValidation class
 
   > - 입력에 대한 검증 
     ````
@@ -17,7 +17,7 @@
     2. 당첨 번호에서 콤마로 구분되지 않은 경우 에외 -> winningNumberValidation ; [ERROR] 당첨 번호는 ','로 구분해주세요.
     3. 보너스 번호가 당첨 번호 중 하나일 경우 예외 -> bonusNumberValidation ; [ERROR] 보너스 번호는 당첨 번호와 다른 숫자여야합니다."
     ````
-- LottoValidation class
+- ### LottoValidation class
 
   > - 로또에 대한 검증
     ````
@@ -26,7 +26,7 @@
     3.로또 번호는 중복될 수 없다 numberDuplicateValidation [ERROR] 로또 번호는 중복될 수 없습니다.
     4.로또를 구매한 금액은 1000원 단위여야한다. costValidation [ERROR] 구입 금액은 1000원 단위입니다.
     ````
-- Lotto class
+- ### Lotto class
 
   > - 로또 객체
     ````
@@ -40,15 +40,15 @@
     1등 60점 , 2등 51점 3등 50점 4등 40점 5등 30점
 
 
-- StatsConst class
+- ### StatsConst class
   > - 로또 스코어와 당첨금 상수 정의 
 
 
-- StatsType enum
+- ### StatsType enum
   > -  1등 , 2등 ,3등 ,4등 ,5등 enum 타입으로 정의
 
   
-- Convert class
+- ### Convert class
     > - 유효성 검증이 끝난 입력을 요구에 맞게 변환
     ````
     1. 구매 금액을 Integer 변환
@@ -56,20 +56,20 @@
     3. 보너스 번호를 Integer 변환
     ````
  
-- Purchase class
+- ### Purchase class
     > - 구매 금액에 맞게 로또를 구매 (구매 번호 생성)
     ````
     1. 구매 금액에 맞게 로또를 구매
     2. 구매 금액 정보를 가지고 있음
     3. 구매한 로또 내역을 가지고 있음
     ````
-- LottoStats class
+- ### LottoStats class
     > - 구매한 로또와 당첨 로또 및 보너스 번호에 대한 통계 기능
      ````
      1. 구매한 로또와 당첨 로또를 비교해 당첨 통계를 계산 및 저장
      2. 수익률을 게산
      ````
-- Render class
+- ### Render class
     > - 결과를 출력하는 기능
      ````
     1. 구매 내역 출력
