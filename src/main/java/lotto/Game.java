@@ -10,5 +10,6 @@ public class Game {
         int numberOfLottos = Input.inputPurchaseMoney();
         Print.outputNumberOfLotto(numberOfLottos);
         List<Lotto> lottos = Lotto.issueLotto(numberOfLottos);
+        Print.printLottos(lottos);
     }
 }

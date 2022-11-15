@@ -1,5 +1,7 @@
 package lotto;
 
+import java.util.List;
+
 public class Print {
     public static void inputMoney() {
         System.out.println("구입금액을 입력해 주세요.");
@@ -12,5 +14,11 @@ public class Print {
 
     public static void printEmptyLine() {
         System.out.println();
+    }
+
+    public static void printLottos(List<Lotto> lottos) {
+        for (Lotto lotto : lottos) {
+            System.out.println(lotto);
+        }
     }
 }

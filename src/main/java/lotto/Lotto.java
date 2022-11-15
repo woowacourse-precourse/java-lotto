@@ -43,4 +43,10 @@ public class Lotto {
             throw new IllegalArgumentException("[ERROR] 1개 이상의 로또 개수를 입력하세요.");
         }
     }
+
+
+    @Override
+    public String toString() {
+        return numbers.toString();
+    }
 }
