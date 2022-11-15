@@ -1,62 +1,62 @@
 package lotto;
 
-import java.util.List;
-import org.assertj.core.api.Assertions;
+import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
+import static org.assertj.core.api.Assertions.assertThat;
+import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-class BonusTest {
+class BonusTest extends NsTest {
     @DisplayName("입력된 보너스 번호가 숫자가 맞는지 확인.")
     @Test
     void checkBonusException1() {
-        Assertions.assertThatThrownBy(() -> {
-            Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
-            String inputBonus = "  a  ";
-            Bonus.inputValidity(inputBonus, lotto);
-        }).isInstanceOf(IllegalArgumentException.class);
 
-        Assertions.assertThatThrownBy(() -> {
-            Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
-            String inputBonus = "";
-            Bonus.inputValidity(inputBonus, lotto);
-        }).isInstanceOf(IllegalArgumentException.class);
+        assertSimpleTest(()-> {
+            runException("1000", "1,2,3,4,5,6", "   a    ");
+            assertThat(output()).contains("[ERROR]");
+        });
 
-        Assertions.assertThatThrownBy(() -> {
-            Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
-            String inputBonus = " ";
-            Bonus.inputValidity(inputBonus, lotto);
-        }).isInstanceOf(IllegalArgumentException.class);
+        assertSimpleTest(()-> {
+            runException("1000", "1,2,3,4,5,6", " ");
+            assertThat(output()).contains("[ERROR]");
+        });
+
+        assertSimpleTest(()-> {
+            runException("1000", "1,2,3,4,5,6", "$");
+            assertThat(output()).contains("[ERROR]");
+        });
     }
 
     @DisplayName("입력된 보너스 번호가 정답에 없는지 확인.")
     @Test
     void checkBonusException2() {
-        Assertions.assertThatThrownBy(() -> {
-            Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
-            String inputBonus = "1";
-            Bonus.inputValidity(inputBonus, lotto);
-        }).isInstanceOf(IllegalArgumentException.class);
+        assertSimpleTest(()-> {
+            runException("1000", "1,2,3,4,5,6", "3");
+            assertThat(output()).contains("[ERROR]");
+        });
 
-        Assertions.assertThatThrownBy(() -> {
-            Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
-            String inputBonus = "3";
-            Bonus.inputValidity(inputBonus, lotto);
-        }).isInstanceOf(IllegalArgumentException.class);
+        assertSimpleTest(()-> {
+            runException("1000", "1,2,3,4,5,6", "5");
+            assertThat(output()).contains("[ERROR]");
+        });
     }
 
     @DisplayName("입력된 보너스 번호가 범위에 있는지 확인.")
     @Test
     void checkBonusException3() {
-        Assertions.assertThatThrownBy(() -> {
-            Lotto lotto = new Lotto(List.of(1, 47, 4, 5, 6, 7));
-            String inputBonus = "48";
-            Bonus.inputValidity(inputBonus, lotto);
-        }).isInstanceOf(IllegalArgumentException.class);
+        assertSimpleTest(()-> {
+            runException("1000", "1,2,3,4,5,6", "0");
+            assertThat(output()).contains("[ERROR]");
+        });
 
-        Assertions.assertThatThrownBy(() -> {
-            Lotto lotto = new Lotto(List.of(1, 2, 4, 5, 6, 7));
-            String inputBonus = "0";
-            Bonus.inputValidity(inputBonus, lotto);
-        }).isInstanceOf(IllegalArgumentException.class);
+        assertSimpleTest(()-> {
+            runException("1000", "1,2,3,4,5,6", "46");
+            assertThat(output()).contains("[ERROR]");
+        });
+    }
+
+    @Override
+    public void runMain() {
+        Application.main(new String[]{});
     }
 }
