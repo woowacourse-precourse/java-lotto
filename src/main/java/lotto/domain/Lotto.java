@@ -1,11 +1,11 @@
-package lotto;
+package lotto.domain;
 
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import static lotto.ErrorMessage.INVALID_LOTTO_NUMBER_ERROR;
-import static lotto.ErrorMessage.INVALID_LOTTO_SIZE_ERROR;
+import static lotto.domain.ErrorMessage.INVALID_LOTTO_NUMBER_ERROR;
+import static lotto.domain.ErrorMessage.INVALID_LOTTO_SIZE_ERROR;
 
 public class Lotto {
     private final List<Integer> numbers;
@@ -73,7 +73,7 @@ public class Lotto {
     }
 
     private boolean matchBonusNumber(int bonusNumber) {
-        if (numbers.contains(bonusNumber)){
+        if (numbers.contains(bonusNumber)) {
             return true;
         }
         return false;

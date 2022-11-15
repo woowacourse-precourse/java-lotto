@@ -1,4 +1,4 @@
-package lotto;
+package lotto.view;
 
 import camp.nextstep.edu.missionutils.Console;
 
@@ -9,8 +9,8 @@ import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import static lotto.ErrorMessage.*;
-import static lotto.LottoMachine.LOTTO_PRICE;
+import static lotto.domain.ErrorMessage.*;
+import static lotto.domain.LottoMachine.LOTTO_PRICE;
 
 public class InputConsole {
 
@@ -47,7 +47,7 @@ public class InputConsole {
     }
 
     private static boolean isDigit(String money) {
-        boolean isNumeric =  money.matches("[+-]?\\d*(\\.\\d+)?");
+        boolean isNumeric = money.matches("[+-]?\\d*(\\.\\d+)?");
         return isNumeric;
     }
 
@@ -88,7 +88,7 @@ public class InputConsole {
     }
 
     private static void checkNumberRange(String numbers) {
-        List<Integer> splitNumbers  = splitNumber(numbers);
+        List<Integer> splitNumbers = splitNumber(numbers);
         for (int i = 0; i < splitNumbers.size(); i++) {
             if (splitNumbers.get(i) < 1 || splitNumbers.get(i) > 45) {
                 throw new IllegalArgumentException(INVALID_LOTTO_RANGE_ERROR.getMessage());

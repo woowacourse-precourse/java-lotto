@@ -1,4 +1,4 @@
-package lotto;
+package lotto.domain;
 
 public enum ErrorMessage {
     INVALID_MONEY_ERROR("[ERROR] 1,000원 단위의 금액을 입력하여 주십시오"),

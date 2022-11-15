@@ -1,4 +1,11 @@
-package lotto;
+package lotto.controller;
+
+import lotto.domain.Lotto;
+import lotto.domain.LottoMachine;
+import lotto.domain.ProfitRateCalculator;
+import lotto.domain.Rank;
+import lotto.view.InputConsole;
+import lotto.view.OutputConsole;
 
 import java.util.List;
 import java.util.Map;
