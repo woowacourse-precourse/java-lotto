@@ -39,29 +39,36 @@
 - [x] 수익률을 출력한다. ResultView#displayPercentageProfit()
 - [x] 당첨 조건별 일치 갯수와 보너스 볼 일치별 갯수를 출력한다. ResultView#displayWinners()
 
-## 클래스별 각 역할과 책임
-- Application: 프로그램 제어 및 기록
-- LottoController: 전체 프로그램 흐름(입력, 출력 등)
-- Lotto: 로또 검증
-- LottoMachine: 로또 발행
-- WinLotto: 당첨 관련
-- Profit: 수익 관련
-- Money: 돈
-- MoneyInput: 돈 입력
-- NumberInput: 숫자 입력
-- RequestView: 요청 관련 UI
-- ResultView: 결과 관련 UI
-- Constant: 보편적 상수
-- LottoRule: 로또 관련 상수
-  - [x] 로또 번호의 하한: 1
-  - [x] 로또 번호의 상한: 45
-  - [x] 발행 로또 번호의 갯수: 6 => NUMBER_OF_SIZE
-  - [x] 로또 구매 금액 단위: 1,000 => PURCHASE_UNIT
-- LottoRank: 로또 순위 정보 관련
-  - 1등: 6개 일치 / 2,000,000,000원
-  - 2등: 5개가 일치하고, 보너스 번호가 일치 / 30,000,000원
-  - 3등: 5개 번호 일치 / 1,500,000원
-  - 4등: 4개 번호 일치 / 50,000원
-  - 5등: 3개 번호 일치 / 5,000원
-- ExceptionMessage: 예외 메시지
-- LottoMessage: 게임 메시지
+## 패키지 구조와, 클래스별 각 역할과 책임
+
+- controller
+  - LottoController: 전체 프로그램 흐름(입력, 출력 등)
+- domain
+  - Lotto: 로또 검증
+  - LottoMachine: 로또 발행
+  - Money: 돈
+  - Profit: 수익 관련
+  - WinLotto: 당첨 관련
+- input
+  - MoneyInput: 돈 입력
+  - NumberInput: 숫자 입력
+- lotto
+  - Application: 프로그램 제어 및 기록
+- util
+  - Constant: 보편적 상수
+  - ExceptionMessage: 예외 메시지
+  - LottoMessage: 게임 메시지
+  - LottoRank: 로또 순위 정보 관련
+    - 1등: 6개 일치 / 2,000,000,000원
+    - 2등: 5개가 일치하고, 보너스 번호가 일치 / 30,000,000원
+    - 3등: 5개 번호 일치 / 1,500,000원
+    - 4등: 4개 번호 일치 / 50,000원
+    - 5등: 3개 번호 일치 / 5,000원
+  - LottoRule: 로또 관련 상수
+    - [x] 로또 번호의 하한: 1
+    - [x] 로또 번호의 상한: 45
+    - [x] 발행 로또 번호의 갯수: 6 => NUMBER_OF_SIZE
+    - [x] 로또 구매 금액 단위: 1,000 => PURCHASE_UNIT
+- view
+  - RequestView: 요청 관련 UI
+  - ResultView: 결과 관련 UI
