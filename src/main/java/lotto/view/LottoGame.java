@@ -20,12 +20,20 @@ public class LottoGame {
     public void start() {
         System.out.println(INPUT_PURCHASE_AMOUNT);
         int purchaseAmount = lottoController.inputPurchaseAmount();     // 구입 금액 입력 받기
-        // TODO: g구매한 로또 출력
+        printLottos(createLottos(purchaseAmount));                      // 구매한 로또 출력
         System.out.println(purchaseAmount + NUMBER_OF_BOUGHT_LOTTO);    // 구매한 로또 개수 출력
         System.out.println(INPUT_PRIZE_NUMBER);
         Lotto winningLotto = lottoController.inputWinningNumbers();     // 당첨 번호 입력 받기
         System.out.println(INPUT_BONUS_NUMBER);
         int bonusNumber = lottoController.inputBonusNumber();           // 보너스 번호 입력 받기
         // TODO: 당첨 통계 출력
+    }
+
+    private List<Lotto> createLottos(int purchaseAmount) {
+        return LottoRandom.createLottos(purchaseAmount);
+    }
+
+    private void printLottos(List<Lotto> lottos) {
+        lottos.forEach(System.out::println);
     }
 }
