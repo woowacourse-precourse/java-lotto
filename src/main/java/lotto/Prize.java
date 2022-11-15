@@ -17,6 +17,9 @@ public class Prize {
         return lotto.hasWinningNumber(bounus);
     }
 
+    private static boolean checkSecondPrize(int sameNumbers, boolean bounus){
+        return sameNumbers == 5 && bounus;
+    }
     public static void resultPrize(ArrayList<Integer> winningNumbers, Lotto lotto, int bounus){
         int sameWinningNumbers = checkForWinningNumber(winningNumbers, lotto);
         boolean sameBounusNumber = checkForSameBounusNumber(lotto, bounus);
