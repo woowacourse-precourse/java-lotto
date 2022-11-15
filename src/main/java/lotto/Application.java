@@ -18,6 +18,11 @@ public class Application {
         if(numberOfPurchases == -1)
             return;
 
+        // 발행한 로또 수량 및 번호를 출력
+        List<List> lottoNumberList = LottoQuantityAndNumberOutput(numberOfPurchases);
+
+
+
     }
 
     public static int GetUserInputOfPurchaseAmount(String purchaseAmount) {
@@ -34,6 +39,16 @@ public class Application {
             System.out.println(ERROR_MESSAGE + "숫자가 아닙니다.");
             return -1;
         }
+    }
+
+    public static List<List> LottoQuantityAndNumberOutput(int numberOfPurchases){
+        List<List> lottoNumberList = new ArrayList<>();
+        for (int i = 0; i < numberOfPurchases; i++) {
+            List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+            lottoNumberList.add(numbers);
+            System.out.println(numbers);
+        }
+        return lottoNumberList;
     }
 
 }
