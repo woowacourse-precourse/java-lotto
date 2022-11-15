@@ -14,9 +14,22 @@ public class Lotto {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException();
         }
+        if(!validateDuplicate(numbers)){
+            throw new IllegalArgumentException();
+        }
     }
 
-    // TODO: 추가 기능 구현
+    private boolean validateDuplicate(List<Integer> numbers){
+        long noDuplicateCount = numbers.stream()
+                .distinct()
+                .count();
+
+        if (noDuplicateCount != 6) {
+            return false;
+        }
+        return true;
+    }
+
     public int countMatchedNumber(Lotto winningLotto){
         int count = (int) numbers.stream().filter(winningLotto::containNumber).count();
         return count;
