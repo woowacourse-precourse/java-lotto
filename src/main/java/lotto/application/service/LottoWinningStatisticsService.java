@@ -10,9 +10,9 @@ public class LottoWinningStatisticsService implements LottoWinningStatisticsUseC
     @Override
     public ResponseAnalyzeRevenueDto analyzeRevenue(RequestAnalyzeRevenueDto requestAnalyzeResponseDto, int count) {
         double revenueAverage = calculateRevenueAverage(requestAnalyzeResponseDto.getRewardTable(), count);
-        double roundAverage = roundAtTwoDigit(revenueAverage);
+        double averageUnitPercent = convertPercentUnit(revenueAverage);
 
-        return new ResponseAnalyzeRevenueDto(convertPercentUnit(roundAverage));
+        return new ResponseAnalyzeRevenueDto(roundAtTwoDigit(averageUnitPercent));
     }
 
     private double calculateRevenueAverage(RewardTable rewardTable, int count) {
