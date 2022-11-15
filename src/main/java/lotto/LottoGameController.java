@@ -33,4 +33,5 @@ public class LottoGameController {
     public void printStatistic(){
         lottoGame.printStatistic();
     };
+
 }

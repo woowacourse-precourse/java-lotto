@@ -11,8 +11,7 @@ public class Validator {
             isValidateInteger(string);
             checkThousandsDivided(string);
         } catch (IllegalArgumentException e) {
-            System.out.println(e);
-            return false;
+            throw new IllegalArgumentException(e);
         }
         return true;
     }
@@ -37,8 +36,7 @@ public class Validator {
             isValidateInteger(Input);
             isValidateNumberRange(Input);
         } catch (IllegalArgumentException e) {
-            System.out.println(e);
-            return false;
+            throw new IllegalArgumentException(e);
         }
         return true;
     }
@@ -49,12 +47,15 @@ public class Validator {
             throw new IllegalArgumentException("[ERROR] 로또 구입 금액이 1000으로 나누어 떨어지지 않습니다");
         }
     }
-
+    public static void isEmpty(String Input) throws IllegalArgumentException {
+        if (Input.isEmpty())
+            throw new IllegalArgumentException("[ERROR] 입력한 값이 공백입니다.");
+    }
     public static void isValidateInteger(String Input) throws IllegalArgumentException {
         try {
             Integer.parseInt(Input);
         } catch (Exception e) {
-            throw new IllegalArgumentException("[ERROR] 로또 구입 금액이 올바른 숫자가 아닙니다.");
+            throw new IllegalArgumentException("[ERROR] 입력한 값이 올바른 숫자가 아닙니다.");
         }
     }
 
@@ -66,8 +67,11 @@ public class Validator {
     }
 
     public static void isValidateNumberLength(String[] Input) throws IllegalArgumentException {
-        if (Input.length != NUMBER_COUNT.getNumber()) {
-            throw new IllegalArgumentException("[ERROR] 숫자 개수가 많습니다");
+        if (Input.length < NUMBER_COUNT.getNumber()) {
+            throw new IllegalArgumentException("[ERROR] 숫자 개수가 적습니다.");
+        }
+        if (Input.length > NUMBER_COUNT.getNumber()) {
+            throw new IllegalArgumentException("[ERROR] 숫자 개수가 많습니다.");
         }
     }
 

@@ -53,15 +53,25 @@ public class Statistic {
             addMatchedCount(FIVE_MATCH_WITH_BONUS.getMatchNumber());
             return;
         }
-        if (winningSum >= THREE_MATCH.getMatchNumber())
+        if (winningSum >= THREE_MATCH.getMatchNumber() && winningSum <= SIX_MATCH.getMatchNumber())
             addMatchedCount(winningSum);
     }
+
     public static void printMatchedCount(){
         printWinningStatistic();
-        System.out.println(THREE_MATCH.getMatchMessage() + MatchedCount.getOrDefault(THREE_MATCH.getMatchNumber(),0));
-        System.out.println(FOUR_MATCH.getMatchMessage() + MatchedCount.getOrDefault(FOUR_MATCH.getMatchNumber(),0));
-        System.out.println(FIVE_MATCH.getMatchMessage() + MatchedCount.getOrDefault(FIVE_MATCH.getMatchNumber(),0));
-        System.out.println(FIVE_MATCH_WITH_BONUS.getMatchMessage() + MatchedCount.getOrDefault(FIVE_MATCH_WITH_BONUS.getMatchNumber(),0));
-        System.out.println(SIX_MATCH.getMatchMessage() + MatchedCount.getOrDefault(SIX_MATCH.getMatchNumber(),0));
+        for (matchedCountMessage message : matchedCountMessage.values()) {
+            message.printMatchMessage(MatchedCount);
+        }
     }
+
+
+    public static double getProfit(int purchasedMoney) {
+        double profit= 0;
+        for (matchedCountMessage message : matchedCountMessage.values()) {
+            profit += message.getMatchNumberPrice() * MatchedCount.getOrDefault(message.getMatchNumber(),0);
+        }
+        profit = ( profit / purchasedMoney)  * 100;
+        return profit;
+    }
+
 }

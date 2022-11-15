@@ -11,24 +11,27 @@ import java.util.ArrayList;
 public class LottoGame {
 
     private final ArrayList<Lotto> lottos;
-    private ArrayList<Integer> WinningNumber;
+    private final ArrayList<Integer>  WinningNumber;
     private int bonusNumber;
     private Statistic statistic;
+    private int purchasedMoney;
 
     LottoGame(){
         lottos = new ArrayList<>();
         WinningNumber = new ArrayList<>();
     }
-
+    public void setPurchasedMoney(String PurchaseMoney) {
+        this.purchasedMoney = Integer.parseInt(PurchaseMoney);
+    }
     public void createLotteGame(String PurchaseMoney) {
-        int number = Integer.parseInt(PurchaseMoney)/1000;
-        for (int i = 0; i < number; i++) {
+        setPurchasedMoney(PurchaseMoney);
+        for (int i = 0; i < this.purchasedMoney/1000; i++) {
             Lotto lotto = new Lotto(
                 Randoms.pickUniqueNumbersInRange(NUMBER_START.getNumber(), NUMBER_END.getNumber(),
                     NUMBER_COUNT.getNumber()));
             lottos.add(lotto);
         }
-        printPurchaseCount(number);
+        printPurchaseCount(this.purchasedMoney/1000);
     }
 
     public void printLottos() {
@@ -38,8 +41,8 @@ public class LottoGame {
      }
 
      public void setWinningNumber(String WinningNum) {
-         String WinningNumbers[] = WinningNum.split(",");
-         for (String winningNum : WinningNumbers) {
+         String winningNumbers[] = WinningNum.split(",");
+         for (String winningNum : winningNumbers) {
              this.WinningNumber.add(Integer.parseInt(winningNum));
          }
      }
@@ -54,6 +57,6 @@ public class LottoGame {
      }
      public void printStatistic() {
         Statistic.printMatchedCount();
+        printProfit(Statistic.getProfit(purchasedMoney));
      }
-
 }
