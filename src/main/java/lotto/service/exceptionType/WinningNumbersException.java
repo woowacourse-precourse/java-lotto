@@ -36,7 +36,7 @@ public class WinningNumbersException {
     public static void checkIfTheScopeIsCorrect(String winningNumbers) {
         String[] numbers = winningNumbers.split(",");
         for (String number : numbers) {
-            if (Integer.parseInt(number) < 0 && Integer.parseInt(number) > 46) {
+            if (Integer.parseInt(number) < 1 || Integer.parseInt(number) > 45) {
                 System.out.println(ERROR_MESSAGE + SCOPE_IS_NOT_CORRECT_MESSAGE);
                 throw new IllegalArgumentException();
             }
