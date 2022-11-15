@@ -165,7 +165,24 @@
     INPUT_BONUS_NUMBER_ERROR("Input bonus number is wrong");
 -----------------
 
-- [ ] 당첨 번호와 로또 비교
+- [X] 당첨 번호와 로또 비교
+    #### 당첨 번호와 구매한 로또들을 비교하여, 등수를 저장 -> List<Integer> winningCount
+![로또 비교](https://user-images.githubusercontent.com/54941130/201799021-8b7cdbaa-fad7-44d4-8773-d23812cf7352.png)
+-----------------
+    메소드 목록
+    <LottoGame>
+    1. setWinningCount()
+        List<Integer> winningCount에 구매한 로또들의 등수를 저장.
+    2. rankLotto()
+        구매한 로또를 받아 등수를 매김.
+    2-1. compareWinningNumberAndLotto()
+        당첨번호와 로또를 비교
+    2-2. compareBonusNumberAndLotto()
+        보너스번호와 로또를 비교
+    2-3. makeRank()
+        일치하는 개수와 보너스 일치 여부를 받아, 당첨 순위를 리턴.
+-----------------
+
 - [ ] 획득 금액 계산
 - [ ] 결과 출력
 - ---------------
