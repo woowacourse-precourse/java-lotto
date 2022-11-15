@@ -8,6 +8,8 @@ import java.util.List;
 
 public class Lotto {
     private final List<Integer> numbers;
+    
+    private static int bonus;
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
@@ -49,18 +51,25 @@ public class Lotto {
     public List<Integer> validateWin(List<String> input) throws IllegalArgumentException{
         String[] temp = input.get(0).split(",");
         List<Integer> result = new ArrayList<>();
+        for(int n = 0; n < 6; n++){
+            int tempNum = val(input, n);
+            result.add(tempNum);
+        }
+        bonus = val(input, 7);
+        return result;
+    }
+    
+    public int val(List<String> in, int num) throws IllegalArgumentException{
         try{
-            for(String i : temp){
-                int tempNum = Integer.valueOf(i);
-                result.add(tempNum);
+            int temp = Integer.valueOf(in.get(num));
+            if (temp < 45 && temp > 0){
+                return temp;
             }
-            int tempN = Integer.valueOf(input.get(1));
-            result.add(tempN);
-            return result;
         }
         catch(Exception e){
             throw e;
         }
+        return 0;
     }
     
     public List<Integer> gen(){
@@ -76,5 +85,15 @@ public class Lotto {
         return result;
     }
     
-    
+    public void compare(List<Integer> win, List<List> purchased){
+        int count = 0;
+        
+        for(List l : purchased){
+            for(Object o : l){
+                if(win.contains(o)){
+                    count++;
+                }
+            }
+        }
+    }
 }
