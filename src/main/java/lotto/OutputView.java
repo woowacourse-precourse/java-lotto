@@ -8,7 +8,7 @@ public class OutputView {
     public static final String HYPHEN = "------";
     public static final String NUMBER_OF = "개";
     public static final String GROSS_RETRUN = "총 수익률은 ";
-    public static final String IS = "%입니다";
+    public static final String IS = "%입니다.";
 
     public void printUserBuyLottoNumbers(List<Lotto> userLottoNumbers){
         int amount = userLottoNumbers.size();
@@ -20,8 +20,8 @@ public class OutputView {
     }
     public void printUserLottoMatchResult(List<Integer> result){
         System.out.println(WINNING_STATETISTICS+"\n"+ HYPHEN);
-        for(MatchLotto matchLotto : MatchLotto.values()){
-            System.out.println(matchLotto.getResult() + result.get(matchLotto.getMatchNumber())+ NUMBER_OF);
+        for(ComparisonContents comparisonContents : ComparisonContents.values()){
+            System.out.println(comparisonContents.getResult() + result.get(comparisonContents.getMatchNumber())+ NUMBER_OF);
         }
     }
     public void printRateOfReturn(double rate){

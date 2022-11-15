@@ -1,13 +1,9 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
-
-import java.util.Arrays;
 import java.util.List;
 
-public class Input {
-
-
+public class InputView {
 
     public int inputMoney(){
         System.out.println("금액을 입력해주세요");

@@ -35,7 +35,7 @@ public class Application {
 
     public void buyLotto(){
         amount = inputView.inputMoney();
-        
+
         userBuyLottoGroup = createUserLottoNumbers.createUserLottoNumber(amount);
 
         outputView.printUserBuyLottoNumbers(userBuyLottoGroup);
