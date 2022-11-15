@@ -4,7 +4,6 @@ import lotto.condition.lottonumber.IsAllNumberInRangeCond;
 import lotto.condition.lottonumber.NoDuplicateNumberCond;
 import lotto.condition.lottonumber.RightFormatCond;
 import lotto.condition.money.IsAllNumberCond;
-import lotto.condition.money.MinimumMoneyCond;
 import lotto.condition.money.MoneyDivisionCond;
 
 import java.util.List;
@@ -14,7 +13,6 @@ public class ConditionGenerator {
     public static List<Condition> getMoneyCondition() {
         return List.of(
                 IsAllNumberCond.getInstance(),
-                MinimumMoneyCond.getInstance(),
                 MoneyDivisionCond.getInstance()
         );
     }
