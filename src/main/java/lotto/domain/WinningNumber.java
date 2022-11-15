@@ -1,9 +1,9 @@
 package lotto.domain;
 
-import java.util.List;
-
 import static lotto.viewer.ErrorMessage.ENTER_RANGE_NUMBER;
 import static lotto.viewer.ErrorMessage.ENTER_UNIQUE_NUMBER;
+
+import java.util.List;
 
 public class WinningNumber extends Lotto{
     private int bonusNumber;

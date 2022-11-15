@@ -4,7 +4,6 @@ import camp.nextstep.edu.missionutils.Console;
 import lotto.domain.Buyer;
 import lotto.domain.WinningNumber;
 import lotto.viewer.InputView;
-
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;

@@ -1,8 +1,8 @@
 package lotto.controller;
 
-import java.util.function.Predicate;
-
 import static lotto.viewer.ErrorMessage.*;
+
+import java.util.function.Predicate;
 
 public class Money {
     private final int money;

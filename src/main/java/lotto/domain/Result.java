@@ -1,10 +1,8 @@
 package lotto.domain;
 
-import lotto.controller.Money;
+import static lotto.viewer.ViewFormat.*;
 
 import java.util.Arrays;
-
-import static lotto.viewer.ViewFormat.*;
 
 public enum Result {
     NONE(0,0),

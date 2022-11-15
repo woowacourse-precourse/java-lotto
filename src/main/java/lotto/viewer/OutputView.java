@@ -2,7 +2,6 @@ package lotto.viewer;
 
 import lotto.domain.History;
 import lotto.domain.Result;
-
 import java.util.EnumSet;
 
 public class OutputView {
