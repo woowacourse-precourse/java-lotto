@@ -6,12 +6,18 @@ import java.util.function.BiPredicate;
 import java.util.stream.Collectors;
 
 public enum Prize {
-    FIRST(2_000_000_000, 6, (matchLottoNumber, containBonusNumber) -> matchLottoNumber == 6 && !containBonusNumber),
-    SECOND(30_000_000, 5, (matchLottoNumber, containBonusNumber) -> matchLottoNumber == 5 && containBonusNumber),
-    THIRD(1_500_000, 5, (matchLottoNumber, containBonusNumber) -> matchLottoNumber == 5 && !containBonusNumber),
-    FOURTH(50_000, 4, (matchLottoNumber, containBonusNumber) -> matchLottoNumber == 4 && !containBonusNumber),
-    FIFTH(5_000, 4, (matchLottoNumber, containBonusNumber) -> matchLottoNumber == 3 && !containBonusNumber),
-    EMPTY(0, 0, (matchLottoNumber, containBonusNumber) -> matchLottoNumber == 6 && !containBonusNumber);
+    FIRST(2_000_000_000, 6, (matchLottoNumber, containBonusNumber)
+            -> matchLottoNumber == 6 && !containBonusNumber),
+    SECOND(30_000_000, 5, (matchLottoNumber, containBonusNumber)
+            -> matchLottoNumber == 5 && containBonusNumber),
+    THIRD(1_500_000, 5, (matchLottoNumber, containBonusNumber)
+            -> matchLottoNumber == 5 && !containBonusNumber),
+    FOURTH(50_000, 4, (matchLottoNumber, containBonusNumber)
+            -> matchLottoNumber == 4 && !containBonusNumber),
+    FIFTH(5_000, 4, (matchLottoNumber, containBonusNumber)
+            -> matchLottoNumber == 3 && !containBonusNumber),
+    EMPTY(0, 0, (matchLottoNumber, containBonusNumber)
+            -> matchLottoNumber == 6 && !containBonusNumber);
 
     private final int money;
     private final int matchLottoNumber;
