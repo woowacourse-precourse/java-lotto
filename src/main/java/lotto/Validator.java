@@ -17,7 +17,7 @@ public class Validator {
         }
     }
 
-    public static int checkNumber(String input){
+    public static int checkNumber(String input) {
         int number;
         try {
             number = Integer.parseInt(input);
@@ -34,7 +34,7 @@ public class Validator {
         return false;
     }
 
-    public static void validateWinningNumber(List<Integer> winningNumbers){
+    public static void validateWinningNumber(List<Integer> winningNumbers) {
         Validator.checkLottoSize(winningNumbers);
         Validator.checkDuplicate(winningNumbers);
         Validator.checkOutOfRange(winningNumbers);
@@ -75,12 +75,18 @@ public class Validator {
         return false;
     }
 
-    public static void validateBonusNumber(String bonusNumber){
+    public static void validateBonusNumber(String bonusNumber, List<Integer> winningNumbers) {
+        int bonus = Integer.parseInt(bonusNumber);
         if (bonusNumber.length() != 1) {
             throw new IllegalArgumentException(ERROR + "보너스 번호는 1개입니다");
         }
-        if (isOutOfRange(Integer.parseInt(bonusNumber))) {
+        if (isOutOfRange(bonus)) {
             throw new IllegalArgumentException(ERROR + "보너스 번호가 범위를 벗어났습니다");
+        }
+        for (int number : winningNumbers) {
+            if (number == bonus) {
+                throw new IllegalArgumentException(ERROR + "당첨 번호와 보너스 번호가 같을 수 없습니다");
+            }
         }
     }
 }

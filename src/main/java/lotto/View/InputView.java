@@ -1,8 +1,9 @@
-package lotto;
+package lotto.View;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.List;
+import lotto.Validator;
 
 import static lotto.Constants.*;
 
@@ -20,7 +21,7 @@ public class InputView {
         String input = Console.readLine();
         String[] inputSplit = input.split(",");
         List<Integer> winningNumbers = new ArrayList<>();
-        for (int cnt = 0; cnt < COUNT_NUM; cnt++){
+        for (int cnt = 0; cnt < COUNT_NUM; cnt++) {
             int winningNumber = Integer.parseInt(inputSplit[cnt]);
             winningNumbers.add(winningNumber);
         }
@@ -28,10 +29,10 @@ public class InputView {
         return winningNumbers;
     }
 
-    public static String getBonusNumber() {
+    public static String getBonusNumber(List<Integer> winningNumbers) {
         System.out.println(INPUT_BONUS_NUMBER_MSG);
         String bonusNumber = Console.readLine();
-        Validator.validateBonusNumber(bonusNumber);
+        Validator.validateBonusNumber(bonusNumber, winningNumbers);
         return bonusNumber;
     }
 }

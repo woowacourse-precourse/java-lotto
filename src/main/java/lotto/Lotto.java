@@ -1,10 +1,6 @@
 package lotto;
 
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
-
-import static lotto.Constants.*;
 
 public class Lotto {
 
@@ -21,7 +17,7 @@ public class Lotto {
         Validator.checkOutOfRange(numbers);
     }
 
-    public List<Integer> getNumbers(){
+    public List<Integer> getNumbers() {
         return numbers;
     }
 }

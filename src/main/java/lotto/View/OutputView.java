@@ -1,8 +1,10 @@
-package lotto;
+package lotto.View;
 
 import java.text.DecimalFormat;
 import java.util.List;
 import java.util.Map;
+import lotto.Lotto;
+import lotto.Rank;
 
 import static lotto.Constants.*;
 

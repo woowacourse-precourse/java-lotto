@@ -5,11 +5,12 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
+import lotto.View.InputView;
+import lotto.View.OutputView;
 
 import static lotto.Constants.*;
 
@@ -23,7 +24,7 @@ public class Application {
         OutputView.showLottoSheets(lottoTickets);
 
         List<Integer> winningNumbers = InputView.getWinningNumber();
-        String bonusNumber = InputView.getBonusNumber();
+        String bonusNumber = InputView.getBonusNumber(winningNumbers);
         Map<Rank, Integer> winningHistory
                 = calculateWinning(lottoTickets, winningNumbers, bonusNumber);
         OutputView.showWinningHistory(winningHistory);
@@ -42,7 +43,7 @@ public class Application {
     private static Lotto createLotto() {
         List<Integer> numbers = Randoms.pickUniqueNumbersInRange(START_NUM, END_NUM, COUNT_NUM);
         List<Integer> sortedNumbers = new ArrayList<>();
-        for (Integer number: numbers){
+        for (Integer number : numbers) {
             sortedNumbers.add(number);
         }
         Collections.sort(sortedNumbers);
