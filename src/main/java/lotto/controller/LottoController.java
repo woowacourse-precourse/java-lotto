@@ -16,21 +16,25 @@ public class LottoController {
         return LottoService.getWinningPoint(lottoNumber, winningNumber, bonusNumber);
     }
 
+    public static double getTotalRate(Map<Result, Integer> resultPoints, long amount) {
+        return LottoService.getTotalRate(resultPoints, amount);
+    }
+
     public static long gameStartAndGetInput() {
         LottoView.printStartMessage();
         String input = LottoView.readLine();
         return LottoService.amountInputToInteger(input);
     }
 
-    public static void printLottoPurchaseAmount(int amount, List<Lotto> lottoNumbers) {
+    public static void printLottoPurchaseAmount(long amount, List<Lotto> lottoNumbers) {
         LottoView.printLottoPurchaseResult(amount, lottoNumbers);
     }
 
-    public static long getLottoPurchaseCount(int amount) {
+    public static long getLottoPurchaseCount(long amount) {
         return LottoService.getLottoPurchaseCount(amount);
     }
 
-    public static List<Lotto> getLottoNumbers(int purchaseAmount) {
+    public static List<Lotto> getLottoNumbers(long purchaseAmount) {
         return LottoService.getLottoNumbers(purchaseAmount);
     }
 
@@ -39,7 +43,7 @@ public class LottoController {
         return LottoService.getWinningNumber(LottoView.readLine());
     }
 
-    public static long getBonusNumber() {
+    public static int getBonusNumber() {
         LottoView.printInputBonusNumberMessage();
         return LottoService.getBonusNumber(LottoView.readLine());
     }
