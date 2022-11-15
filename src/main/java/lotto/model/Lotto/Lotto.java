@@ -1,7 +1,7 @@
 package lotto.model.Lotto;
 
 import lotto.util.InputLottoValidator;
-import lotto.util.NumberFormatValidator;
+import lotto.util.LottoNumberFormatValidator;
 import java.util.List;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
@@ -17,7 +17,7 @@ public class Lotto {
     private void validate(List<Integer> numbers) {
         InputLottoValidator.validateLottoCount(numbers);
         for (Integer number: numbers) {
-            NumberFormatValidator.validateLottoNumberFormat(number);
+            LottoNumberFormatValidator.validateLottoNumberFormat(number);
             InputLottoValidator.validateDuplicateLottoNumber(numbers, number);
         }
     }
