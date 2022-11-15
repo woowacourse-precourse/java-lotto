@@ -69,6 +69,13 @@ public class ApplicationController {
                 .collect(Collectors.toList());
         outputView.printWinningResult(winningResult);
 
-        //TODO: 수익률 계산 과정 제어 기능 호출
+        control_LottoYield();
+    }
+
+    public void control_LottoYield() {
+        //TODO
+        //  - [ ] 총 당첨금 계산
+        //  - [ ] 수익률 계산
+        //  - [ ] 수익률 출력
     }
 }
