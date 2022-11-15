@@ -6,6 +6,7 @@ public class Strings {
     public final static String winningLottoMessage = "당첨 번호를 입력해 주세요.";
     public final static String winnigBonusMessage = "보너스 번호를 입력해 주세요.";
     public final static String statisticsMessage = "당첨 통계";
+    public final static String statisticsMessageLine = "---";
 
 
 }
