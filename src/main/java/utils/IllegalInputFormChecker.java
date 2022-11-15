@@ -25,6 +25,8 @@ public class IllegalInputFormChecker {
 
     public void checkUserBonusIllegal(String userBonus) {
         if (!userBonus.matches(patternForBonus)) {
+            throw new IllegalArgumentException(exceptionMessage.WRONG_BONUS_FORM);
+        } if ( Integer.parseInt(userBonus) <= 0 || Integer.parseInt(userBonus) > 45) {
             throw new IllegalArgumentException(exceptionMessage.WRONG_BONUS);
         }
     }

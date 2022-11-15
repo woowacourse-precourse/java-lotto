@@ -113,4 +113,15 @@ public class UserServiceTest {
 
         assertThat(testOfUserBonus).isEqualTo(resultOfUserBonus);
     }
+
+    @DisplayName("보너스 번호의 형태가 숫자가 아니면 예외 처리한다.")
+    @Test
+    void getUserBonusTest_invalid_form() {
+        String userInput = "k";
+
+        assertThatThrownBy(() -> userService
+                .getUserBonus(userInput))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
 }
