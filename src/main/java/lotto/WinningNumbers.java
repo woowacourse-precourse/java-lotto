@@ -1,7 +1,5 @@
 package lotto;
 
-import camp.nextstep.edu.missionutils.Console;
-
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
@@ -12,28 +10,12 @@ import java.util.stream.Collectors;
 public class WinningNumbers {
     private final List<Integer> winningNumbers;
     private final int bonusNumber;
-    private enum GuideMessageType {
-        BONUS_NUMBER("보너스 번호를 입력해 주세요.");
 
-        private final String message;
+    public WinningNumbers(String winningNumbers, String bonusNumber) {
+        this.winningNumbers = convertNumbers(winningNumbers);
 
-        GuideMessageType(String message) {
-            this.message = message;
-        }
-    }
-
-    public WinningNumbers() {
-        this.winningNumbers = convertNumbers();
-
-        System.out.println();
-        printGuideMessage(GuideMessageType.BONUS_NUMBER.message);
-        String bonusNumber = setNumber();
         validateBonusNumber(bonusNumber);
         this.bonusNumber = Integer.parseInt(bonusNumber);
-    }
-
-    private String setNumber() {
-        return Console.readLine();
     }
 
     private void validateWinningNumbers(List<String> numbers) {
@@ -70,10 +52,6 @@ public class WinningNumbers {
         }
     }
 
-    private void printGuideMessage(String message) {
-        System.out.println(message);
-    }
-
     private String[] splitNumbers(String numbers) {
         return numbers.split(",");
     }
@@ -86,8 +64,8 @@ public class WinningNumbers {
         return numbers.stream().map(Integer::parseInt).collect(Collectors.toList());
     }
 
-    private List<Integer> convertNumbers() {
-        List<String> convertedNumbers = arrayToList(splitNumbers(setNumber()));
+    private List<Integer> convertNumbers(String numbers) {
+        List<String> convertedNumbers = arrayToList(splitNumbers(numbers));
         validateWinningNumbers(convertedNumbers);
 
         return stringToInt(convertedNumbers);

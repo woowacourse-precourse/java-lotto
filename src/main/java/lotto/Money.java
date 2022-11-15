@@ -1,20 +1,13 @@
 package lotto;
 
-import camp.nextstep.edu.missionutils.Console;
-
 import java.util.regex.Pattern;
 
 public class Money {
     private final int money;
 
-    public Money() {
-        String money = setMoney();
+    public Money(String money) {
         validate(money);
         this.money = stringToInt(money);
-    }
-
-    private String setMoney() {
-        return Console.readLine();
     }
 
     private void validate(String money) {
