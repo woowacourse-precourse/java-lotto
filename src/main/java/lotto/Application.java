@@ -12,8 +12,7 @@ public class Application {
     }
     public static int BuyLotto(int money){
         CheckSmallMoney(money);
-        int paper = money / 1000;
-        return paper;
+        return money / 1000;
     }
     public static ArrayList<Integer> GetWinningNumbers(){
         ArrayList<Integer> winningNumbers = new ArrayList<>();
