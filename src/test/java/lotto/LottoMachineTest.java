@@ -4,6 +4,9 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import java.util.List;
+import lotto.domain.Lotto;
+import lotto.controller.LottoMachine;
+import lotto.enums.LottoInfo;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -96,9 +99,6 @@ class LottoMachineTest {
     void 로또_구매_테스트() {
         int count = 8;
         lottoMachine.buyLottos(count);
-        for (Lotto lotto : lottoMachine.getLottos()) {
-            System.out.println(lotto.toStringLotto());
-        }
     }
 
     @DisplayName("당첨 통계 내기")
