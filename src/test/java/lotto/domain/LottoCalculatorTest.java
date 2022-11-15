@@ -13,7 +13,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 class LottoCalculatorTest {
     private static final LottoCalculator lottoCalculator = new LottoCalculator();
 
-
     @DisplayName("로또 번호 생성 테스트")
     @Test
     void lottoNumberDuplicated() {
