@@ -16,7 +16,7 @@ public class OutputView {
     private static final String BONUS_HISTORY = "%d개 일치, 보너스 볼 일치 (%s원) - %d개\n";
     private static final String PROFIT = "총 수익률은 %.1f%%입니다.";
 
-    private static DecimalFormat df = new DecimalFormat("###,###");
+    private static final DecimalFormat df = new DecimalFormat("###,###");
 
     public static void showLottos(List <Lotto> lottos) {
         System.out.println(lottos.size() + HOW_MANY_LOTTO);

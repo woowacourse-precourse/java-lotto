@@ -13,7 +13,7 @@ public class StringUtil {
         return data.replace(BLANK, NO_BLANK);
     }
 
-    public static List <Integer> parseToList(String data) {
+    public static List <Integer> parseToIntegerList(String data) {
         return Arrays.stream(data.split(DELIMITER)).map(Integer::parseInt).collect(Collectors.toList());
     }
 

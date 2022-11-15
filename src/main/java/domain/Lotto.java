@@ -5,7 +5,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import static util.StringUtil.parseToList;
+import static util.StringUtil.parseToIntegerList;
 
 public class Lotto {
     private final List <Integer> numbers;
@@ -13,11 +13,11 @@ public class Lotto {
     public Lotto(List <Integer> numbers) {
         validate(numbers);
         this.numbers = numbers;
-        Collections.sort(this.numbers);
+        Collections.sort(numbers);
     }
 
     public Lotto(String inputNumbers) {
-        this.numbers = parseToList(inputNumbers);
+        this.numbers = parseToIntegerList(inputNumbers);
         validate(this.numbers);
         Collections.sort(this.numbers);
     }
@@ -30,7 +30,7 @@ public class Lotto {
     // TODO: 추가 기능 구현
     private void checkLength(List <Integer> numbers) {
         if (numbers.size() != 6) {
-            throw new IllegalArgumentException("[ERROR] 잘못된 복권 번호입니다.");
+            throw new IllegalArgumentException("[ERROR] 복권은 6개의 숫자로 구성되어야 합니다.");
         }
     }
 
@@ -38,7 +38,7 @@ public class Lotto {
         Set <Integer> checkDup = new HashSet <>(numbers);
 
         if (checkDup.size() != 6) {
-            throw new IllegalArgumentException("[ERROR] 잘못된 복권 번호입니다.");
+            throw new IllegalArgumentException("[ERROR] 복권 내 중복된 숫자가 존재합니다.");
         }
     }
 
