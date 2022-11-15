@@ -11,7 +11,8 @@ class WinningLottoTest {
 
     @Test
     void USER_INPUT_VALIDATION() {
-        LottoNumberRequest lottoNumberRequest = new LottoNumberRequest(1);
+        LottoNumberRequest lottoNumberRequest
+                = new LottoNumberRequest(1);
         LottoRequest lottoRequest = new LottoRequest(List.of(1, 2, 3, 4, 5, 6));
 
         assertThatThrownBy(() -> new WinningLotto(lottoRequest, lottoNumberRequest))
