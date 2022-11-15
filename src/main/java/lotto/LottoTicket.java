@@ -9,12 +9,10 @@ public class LottoTicket {
     public static int getLotteryTicketPrice() {
         System.out.println("구입금액을 입력해 주세요.\n");
         String cash = Console.readLine();
-        for (int digitIndex = 0; digitIndex < cash.length(); digitIndex++) {
-            if (cash.charAt(digitIndex) < 48 || cash.charAt(digitIndex) > 57) {
-                String errorMessage = "[ERROR] 숫자만 입력해 주세요.";
-                System.out.printf("%s", errorMessage);
-                throw new IllegalArgumentException();
-            }
+        if (!cash.matches("[0-9]+")){
+            String message = "[ERROR] 숫자만 입력해 주세요.\n";
+            System.out.printf("%s", message);
+            throw new IllegalArgumentException(message);
         }
         int price = Integer.parseInt(cash);
         return price;
