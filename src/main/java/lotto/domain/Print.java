@@ -9,6 +9,7 @@ public class Print {
     }
 
     public void lottoNumber(List<List> userlottos){
+        System.out.println();
         for (int i = 0; i < userlottos.size(); i++){
             System.out.println(userlottos.get(i));
         }
