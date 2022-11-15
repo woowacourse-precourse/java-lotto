@@ -11,8 +11,7 @@ public final class Input {
     private static final String RANGE_ERROR_MESSAGE = ERROR + "로또 번호에 1 ~ 45 범위를 벗어난 숫자가 있습니다.";
 
     public static int inputPurchaseAmount() {
-        String input = validateDigit(readLine());
-        return convertToInt(input);
+        return validateDigit(readLine());
     }
 
     public static String inputWinningNumbers() {
@@ -26,18 +25,16 @@ public final class Input {
     }
 
     public static int inputBonusNumber() {
-        String input = validateDigit(readLine());
-        return validateNumberRange(convertToInt(input));
+        int input = validateDigit(readLine());
+        return validateNumberRange(input);
     }
 
-    private static String validateDigit(String input) {
-        String replacedResult = input.replaceAll("[0-9,]", "");
-
-        if (replacedResult.length() != 0) {
+    private static int validateDigit(String input) {
+        try {
+            return convertToInt(input);
+        } catch (Exception e) {
             throw new IllegalArgumentException(DIGIT_ERROR_MESSAGE);
         }
-
-        return input;
     }
 
     private static String validateDigitAndComma(String input) {
