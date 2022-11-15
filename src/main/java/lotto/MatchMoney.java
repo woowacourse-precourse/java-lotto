@@ -26,4 +26,11 @@ public enum MatchMoney {
                 .findFirst()
                 .orElseThrow(() -> new IllegalArgumentException());
     }
+    public lotto.MatchMoney countFive(boolean bonus) {
+        lotto.MatchMoney matchMoney;
+        if (bonus) {
+            return matchMoney = TWO;
+        }
+        return matchMoney = THREE;
+    }
 }
