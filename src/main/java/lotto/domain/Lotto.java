@@ -1,5 +1,6 @@
 package lotto.domain;
 
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
@@ -22,10 +23,7 @@ public class Lotto {
     public List<Integer> getNumbers() {
         return this.numbers;
     }
-    public List<Integer> getSortedNumbers(){
-        this.numbers.sort(naturalOrder());
-        return this.numbers;
-    }
+
     public int getMatchCount(Lotto otherLotto) {
         return (int) this.numbers.stream()
                 .filter(otherLotto.numbers::contains)
