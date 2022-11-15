@@ -24,7 +24,7 @@
           - 클래스 LottoSystem에서 검증, LottoSystem 설명 참고
 
 
-- [ ] 로또의 당첨번호,보너스번호를 가지고 당첨여부를 알려주는 클래스 => LottoSystem
+- [x] 로또의 당첨번호,보너스번호를 가지고 당첨여부를 알려주는 클래스 => LottoSystem
     - [x] validation 추가
       - [x] 당첨 번호 설정 시에 개수,범위,중복 확인
         - IllegalArgumentException
@@ -33,7 +33,7 @@
         - IllegalArgumentException, message="[ERROR] 보너스 번호는 1부터 45 사이의 숫자여야 합니다."
     - [x] 당첨번호, 보너스번호 설정
     - [x] 입력받은 로또와 비교 후 WinInfo 반환
-    - [ ] 당첨번호 일치 개수 판단:
+    - [x] 당첨번호 일치 개수 판단:
     - [x] 보너스 번호 일치 개수 판단
 
 - [x] 당첨조건, 당첨금액의 정보를 가진 Enum => WinInfo 
