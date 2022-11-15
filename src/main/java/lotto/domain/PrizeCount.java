@@ -21,15 +21,16 @@ public class PrizeCount {
         return prize.getMoney() * items.get(prize);
     }
 
-    @Override
-    public String toString() {
+    public void printWinningStatistics() {
         StringBuilder message = new StringBuilder();
 
+        message.append("당첨 통계\n").append("--\n");
         for (Prize prize : Prize.values()) {
             message.append(prize).append(" - ").append(items.get(prize)).append("개").append("\n");
         }
         message.deleteCharAt(message.lastIndexOf("\n"));
 
-        return message.toString();
+        System.out.println(message);
     }
+
 }

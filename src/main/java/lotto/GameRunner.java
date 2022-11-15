@@ -70,8 +70,7 @@ public class GameRunner {
     }
 
     private void printResult() {
-        printWinningStatisticsMessage();
-        System.out.println(prizeCount);
+        prizeCount.printWinningStatistics();
         profit.printRate();
     }
 }
