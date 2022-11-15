@@ -2,6 +2,8 @@ package confirm;
 
 import java.util.List;
 
+import calculate.Calculate;
+
 public class Confirm {
 	public static void start(List<List<Integer>> playerPick) {
 		try {
@@ -11,9 +13,8 @@ public class Confirm {
 			winNums = BonusNum.run(winNums);
 			WinNumErrorCheck.run(winNums);
 			
-			
 			List<Integer> correctNums = WinList.run(playerPick, winNums);
-			//계산 패키지로 이행
+			Calculate.run(correctNums);
 		} catch(IllegalArgumentException e) {
 			e.printStackTrace();
 		}
