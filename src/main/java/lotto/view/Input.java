@@ -37,6 +37,8 @@ public class Input {
         return convertStringToIntegerList(Console.readLine());
     }
 
+
+
     private static List<Integer> convertStringToIntegerList(String winningNumber) throws IllegalArgumentException {
         try {
             return Arrays.stream(winningNumber.split(", "))
@@ -46,4 +48,6 @@ public class Input {
             throw new IllegalArgumentException(ErrorMessage.GET_ERROR_FOR_INPUT_WINNING_NUMBER.getMessage());
         }
     }
+
+
 }

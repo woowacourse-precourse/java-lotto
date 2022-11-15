@@ -13,6 +13,7 @@ public class LottoController {
     private static int price;
     private static int lottoQuantity;
     private static List<Lotto> lottoContainer;
+    private static Lotto winningLotto;
 
     //로또 프로그램 실행 메서드
     public static void execute() {
@@ -24,8 +25,9 @@ public class LottoController {
         Output.printQuantity(lottoQuantity);
         //입력한 로또에 대한 목록 출력하기
         getSavedLotto(lottoQuantity);
-        //당첨 번호 입력 문구
-        Input.inputWinningNumber();
+        //당첨 번호 입력하기
+        getWinningLotto();
+        //보너스 번호 입력하기
     }
 
     public static void getPrice() {
@@ -39,5 +41,9 @@ public class LottoController {
     public static void getSavedLotto(int lottoQuantity) {
         lottoContainer = LottoCreator.saveLotto(lottoQuantity);
         Output.printAllLottoNumber(lottoContainer);
+    }
+
+    public static void getWinningLotto() {
+        Lotto lotto = new Lotto(Input.inputWinningNumber());
     }
 }
