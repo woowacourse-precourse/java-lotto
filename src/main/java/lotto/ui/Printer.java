@@ -3,6 +3,7 @@ package lotto.ui;
 import lotto.Lotto;
 import lotto.domain.Rank;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
@@ -12,8 +13,9 @@ public class Printer {
     public void printLotto(int amount, List<Lotto> myLotto) {
         System.out.println(amount + Message.BUY_LOTTO);
         for (Lotto one : myLotto) {
-            Collections.sort(one.getNumbers());
-            System.out.println(one.getNumbers());
+            List<Integer> sorting = new ArrayList<>(one.getNumbers());
+            Collections.sort(sorting);
+            System.out.println(sorting);
         }
     }
 
