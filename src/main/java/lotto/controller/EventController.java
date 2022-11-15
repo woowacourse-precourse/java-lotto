@@ -18,6 +18,19 @@ public class EventController {
     private Lotto lotto;
     private BonusLotto bonusLotto;
 
+    public void init() {
+        try {
+            int inputMoney = inputMoneyForBuyTickets();
+            int ticketCount = calculateTicketCount(inputMoney);
+            raffleTickets(ticketCount);
+            createLotto();
+            judgePrize();
+            judgeProfit(inputMoney);
+        } catch (IllegalArgumentException error) {
+            OutputView.printErrorMessage(error.getMessage());
+        }
+    }
+
     private int inputMoneyForBuyTickets() {
         int money = InputView.inputMoney();
         return money;
