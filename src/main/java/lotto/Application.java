@@ -11,12 +11,14 @@ public class Application {
         int moneyChance;
         int bonus;
         List<Integer> lotto;
+        List<List<Integer>> lottoPack;
 
         try {
             moneyChance = change.moneyChance(change.money(bring.InputNumber(bring.start)));
             System.out.println(moneyChance);
             bring.confirm(moneyChance);
-            System.out.println(core.lottoPack(moneyChance));
+            lottoPack = core.lottoPack(moneyChance);
+            System.out.println(lottoPack);
             lotto = change.pickedNumbers(bring.InputNumber(bring.input));
             new Lotto(lotto);
             bonus = change.money(bring.InputNumber(bring.inputBonus));
@@ -24,7 +26,7 @@ public class Application {
             System.out.println("[ERROR]");
             return;
         }
-        new ResultLotto(moneyChance, lotto, bonus);
+        new ResultLotto(moneyChance, lotto, lottoPack, bonus);
 
     }
 
