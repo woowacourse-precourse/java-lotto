@@ -9,7 +9,7 @@ public class Application {
 
     private static final LottoStore lottoStore = new LottoStore();
     private static List<Lotto> lottos = new ArrayList();
-    private static Lotto winningLotto;
+    private static WinningLotto winningLotto;
 
     private static final String PURCHASE_AMOUNT_INPUT_MESSAGE = "구입금액을 입력해주세요.";
     private static final String NUMBER_OF_LOTTOS_MESSAGE = "%d개를 구매했습니다.\n";
@@ -26,14 +26,12 @@ public class Application {
 
             purchaseLottos(numOfLotto);
 
-            getWinningLottoNumber();
-
-            Integer bonusNumber = getBonusNumber();
+            createWinningLotto();
 
             printNotifyMessage(WINNING_STAT_MESSAGE);
 
         } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
+            System.out.println("[ERROR] " + e.getMessage());
         }
     }
 
@@ -67,25 +65,34 @@ public class Application {
         printLottos(lottos);
     }
 
-    private static void getWinningLottoNumber() {
+    private static WinningLotto createWinningLotto() {
+
+        String winningNumberInput = getWinningNumberInput();
+
+        String[] splitNumbers = splitNumberInput(winningNumberInput);
+
+        List<Integer> lottoNumbers = convertToLottoNumbers(splitNumbers);
+        Integer bonusNumber = getBonusNumber();
+
+        return new WinningLotto(lottoNumbers, bonusNumber);
+    }
+
+    private static String getWinningNumberInput() {
         printNotifyMessage(WINNING_NUMBER_INPUT_MESSAGE);
         String winningNumberInput = Console.readLine();
 
         validateWinningNumberInput(winningNumberInput);
 
+        return winningNumberInput;
+    }
+
+    private static String[] splitNumberInput(String winningNumberInput) {
         String[] splitNumbers = winningNumberInput.split(",");
         validateSplitNumber(splitNumbers);
-
-        winningLotto = convertToLotto(splitNumbers);
+        return splitNumbers;
     }
 
-    private static void validateSplitNumber(String[] splitNumbers) {
-        if (splitNumbers.length != 6) {
-            throw new IllegalArgumentException("[ERROR] 당첨 번호 6개를 정확히 입력해주세요.");
-        }
-    }
-
-    private static Lotto convertToLotto(String[] splitNumbers) {
+    private static List<Integer> convertToLottoNumbers(String[] splitNumbers) {
         List<Integer> numbers = new ArrayList();
         for (String eachNum : splitNumbers) {
             Integer number = convertibleInputToInt(eachNum);
@@ -94,16 +101,24 @@ public class Application {
             numbers.add(number);
         }
 
-        return new Lotto(numbers);
+        return numbers;
     }
+
+
+    private static void validateSplitNumber(String[] splitNumbers) {
+        if (splitNumbers.length != 6) {
+            throw new IllegalArgumentException("당첨 번호 6개를 정확히 입력해주세요.");
+        }
+    }
+
 
     private static void validateNumRange(Integer num) {
         if (num <= 0) {
-            throw new IllegalArgumentException("[ERROR] 0이하의 숫자는 당첨번호가 될 수 없습니다.");
+            throw new IllegalArgumentException("0이하의 숫자는 당첨번호가 될 수 없습니다.");
         }
 
         if (num > 45) {
-            throw new IllegalArgumentException("[ERROR] 45보다 큰 숫자는 당첨번호가 될 수 없습니다.");
+            throw new IllegalArgumentException("45보다 큰 숫자는 당첨번호가 될 수 없습니다.");
         }
     }
 
@@ -115,17 +130,17 @@ public class Application {
 
         } catch (NumberFormatException e) {
 
-            throw new IllegalArgumentException("[ERROR] 숫자를 입력하세요.");
+            throw new IllegalArgumentException("숫자를 입력하세요.");
         }
     }
 
     private static void validateWinningNumberInput(String winningNumberInput) {
         if (winningNumberInput.isBlank()) {
-            throw new IllegalArgumentException("[ERROR] 올바른 당첨 번호를 입력해주세요.");
+            throw new IllegalArgumentException("올바른 당첨 번호를 입력해주세요.");
         }
 
         if (winningNumberInput.length() > 17) {
-            throw new IllegalArgumentException("[ERROR] 당첨 번호 입력길이를 초과했습니다.");
+            throw new IllegalArgumentException("당첨 번호 입력길이를 초과했습니다.");
         }
     }
 
