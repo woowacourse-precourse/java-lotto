@@ -46,5 +46,15 @@ public class ValidUtil {
         return Integer.parseInt(number);
     }
 
+    public static String[] validAllWinningNumber(String winningNumber) {
+        String[] numbers = winningNumber.split(",");
+        if (numbers.length != 6) {
+            throw new IllegalArgumentException(INVALID_NUMBER_OF_DIGITS);
+        }
+        for (String number : numbers) {
+            validateNumberRange(number);
+        }
+        return numbers;
+    }
 
 }
