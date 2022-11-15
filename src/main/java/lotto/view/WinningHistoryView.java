@@ -29,11 +29,30 @@ public class WinningHistoryView {
                 .entrySet()
                 .stream()
                 .sorted(Comparator.comparing(entry -> entry.getKey().getWinningMoney()))
-                .forEach(WinningHistoryView::print);
+                .forEach(entry -> {
+                    if (isRankSecond(entry)) {
+                        specialPrint(entry);
+                    }
+
+                    if (!isRankSecond(entry)) {
+                        defaultPrint(entry);
+                    }
+                });
     }
 
-    private static void print(Map.Entry<Rank, Integer> entry) {
+    private static boolean isRankSecond(Map.Entry<Rank, Integer> entry) {
+        return entry.getKey().equals(Rank.SECOND);
+    }
+
+    private static void defaultPrint(Map.Entry<Rank, Integer> entry) {
         System.out.printf("%d개 일치 (%s원) - %d개\n",
+                entry.getKey().getMatchCount(),
+                decimalFormat.format(entry.getKey().getWinningMoney()),
+                entry.getValue());
+    }
+
+    private static void specialPrint(Map.Entry<Rank, Integer> entry) {
+        System.out.printf("%d개 일치, 보너스 볼 일치 (%s원) - %d개\n",
                 entry.getKey().getMatchCount(),
                 decimalFormat.format(entry.getKey().getWinningMoney()),
                 entry.getValue());
