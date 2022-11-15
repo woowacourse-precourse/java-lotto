@@ -2,10 +2,11 @@ package lotto;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class LottoService {
 
-    private static final int PRICE = 1000;
+    private final int lottoPrice = 1000;
 
     public List<Lotto> buyLottos(int money) {
         validateMoney(money);
@@ -20,7 +21,7 @@ public class LottoService {
     }
 
     private int calculateAmount(int money) {
-        return money / PRICE;
+        return money / lottoPrice;
     }
 
     private Lotto makeLotto() {
@@ -29,8 +30,9 @@ public class LottoService {
     }
 
     private void validateMoney(int money) {
-        if (money % PRICE != 0) {
-            throw new IllegalArgumentException(String.format("[ERROR] %d원 단위의 금액을 입력해주세요.", PRICE));
+        if (money % lottoPrice != 0) {
+            throw new IllegalArgumentException(String.format("[ERROR] %d원 단위의 금액을 입력해주세요.", lottoPrice));
         }
     }
+
 }
