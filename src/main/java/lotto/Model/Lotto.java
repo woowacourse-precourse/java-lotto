@@ -1,4 +1,4 @@
-package lotto.DB;
+package lotto.Model;
 
 import java.util.HashSet;
 import java.util.List;
@@ -26,4 +26,6 @@ public class Lotto {
     public List<Integer> getLottoNumber(){
         return numbers;
     }
+
+
 }

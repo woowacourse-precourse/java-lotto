@@ -2,6 +2,7 @@ package lotto.Controller;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import lotto.DB.*;
+import lotto.Model.*;
 import lotto.View.*;
 
 import java.util.ArrayList;
@@ -9,15 +10,17 @@ import java.util.HashMap;
 import java.util.List;
 
 public class LottoController {
-    LottoData lottoData = new LottoData();
+    UserLotto userLotto = new UserLotto();
     OutputView output = new OutputView();
     InputView input = new InputView();
 
     public void start(){
         try {
-            setLottoCount();
-            makeLottoNumber();
-            printLottoNumber();
+            int purchasePrice = input.purchasePrice();
+            userLotto.setLottoCount(purchasePrice);
+            userLotto.makeLottoNumber();
+            output.showPurchasedLotto(userLotto.countOfLotto(), userLotto.listOfLotto());
+
             inputWinnerNumber();
             inputBonusNumber();
             countLottoPrize();
@@ -26,28 +29,6 @@ public class LottoController {
         }catch(IllegalArgumentException e){
             System.out.println("[ERROR]잘못된 입력");
         }
-    }
-    private void setLottoCount(){
-        lottoData.setCountOfLotto(input.purchasePrice());
-    }
-
-    private void makeLottoNumber(){
-        List<Lotto> lottoList = new ArrayList<Lotto>();
-        for(int i = 0; i < lottoData.getCountOfLotto(); i++){
-            List<Integer> lottoNumber = Randoms.pickUniqueNumbersInRange(1, 45, 6);
-            Lotto lotto = new Lotto(lottoNumber);
-            lottoList.add(lotto);
-        }
-        lottoData.setLottoList(lottoList);
-    }
-
-    private void printLottoNumber(){
-        List<Lotto> lottoList = lottoData.getLottoList();
-        List<List<Integer>> lottoNumber = new ArrayList<List<Integer>>();
-        for(Lotto lotto : lottoList){
-            lottoNumber.add(lotto.getLottoNumber());
-        }
-        output.showPurchasedLotto(lottoData.getCountOfLotto(), lottoNumber);
     }
 
     private void inputWinnerNumber(){
