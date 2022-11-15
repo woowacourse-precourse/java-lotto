@@ -5,6 +5,7 @@ import java.util.List;
 
 public class Lotteries {
 	private final List<Lotto> lotteries = new ArrayList<>();
+	private final List<List<Integer>> totalLottoNumbers = new ArrayList<>();
 
 	public Lotteries(int numberOfTickets) {
 		LottoGenerator lottoGenerator = new LottoGenerator();
@@ -18,7 +19,6 @@ public class Lotteries {
 	}
 
 	public List<List<Integer>> getTotalLottoNumbers() {
-		List<List<Integer>> totalLottoNumbers = new ArrayList<>();
 		lotteries.forEach(lotto -> totalLottoNumbers.add(lotto.getNumbers()));
 		return totalLottoNumbers;
 	}
