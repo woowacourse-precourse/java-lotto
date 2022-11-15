@@ -30,7 +30,7 @@ public class InputMoneyValidator {
 
     private static void validateOnlyNumber(String userAmount) {
         if (!userAmount.matches(NUMBER_REGEXP)) {
-            throw new IllegalArgumentException();
+            throw new OnlyNumberConsistBetweenOneToNineInputException();
         }
     }
 

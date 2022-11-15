@@ -8,6 +8,7 @@ import java.util.List;
 import static lotto.view.controller.BonusNumberView.inputBonusNumber;
 import static lotto.view.controller.LottoNumberView.inputLottoNumbers;
 import static lotto.view.controller.LottoNumberView.printScoreBoard;
+import static lotto.view.controller.MoneyView.printRateOfReturn;
 
 public class LottoManager {
 
@@ -16,9 +17,6 @@ public class LottoManager {
     private Lotto winnerLottoNumbers;
     private Integer winnerBonusNumber;
 
-    /**
-     * score board 저장 순서: Empty/ THREE/ FOUR/ FIVE/ FIVE_ALPHA/ SIX/ ELSE
-     */
     private List<Integer> scoreBoard;
 
     public LottoManager() {
@@ -34,6 +32,7 @@ public class LottoManager {
         registerWinnerBonus();
         updateScoreBoard(usersLottoNumbers);
         printScoreBoard(scoreBoard);
+        printRateOfReturn(scoreBoard);
     }
 
     private void updateScoreBoard(List<Lotto> usersLottoNumbers) {
