@@ -18,7 +18,6 @@ public class Lotto {
         }
     }
 
-    // TODO: 추가 기능 구현
     private void checkRangeOfNumbers(List<Integer> numbers) {
         for (int number : numbers) {
             if (number < 1 || number > 45) {
