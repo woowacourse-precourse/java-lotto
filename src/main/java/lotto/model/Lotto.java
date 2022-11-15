@@ -2,13 +2,14 @@ package lotto.model;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 public class Lotto {
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
-        Collections.sort(numbers);
+        //Collections.sort(numbers);
         this.numbers = numbers;
     }
 
@@ -30,6 +31,18 @@ public class Lotto {
                 throw new IllegalArgumentException("[ERROR] 서로 다른 숫자를 입력해주세요!");
             }
         }
+    }
+    public int userInputConcludeNumber(List<Integer>userInput){
+        int concludeUserInput = 0;
+        for(int i=0;i<userInput.size();i++){
+            if(numbers.contains(userInput.get(i))){
+                concludeUserInput++;
+            }
+        }
+        return concludeUserInput;
+    }
+    public boolean isConcludeBonusNumber(int number){
+        return this.numbers.contains(number);
     }
 
     public void printLotto(){

@@ -1,22 +1,30 @@
 package lotto.model;
 
 import camp.nextstep.edu.missionutils.Console;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 public class User {
     public static final int LOTTO_LENGTH = 6;
 
     private int publicans;
-    private List<Integer> userNumbers;
+    private List<Integer> userNumbers=new ArrayList<>();
     private int bonusNumber;
 
     public void getBudget() {
-        System.out.println("구입금액을 입력해 주세요.");
-        int budget = Integer.parseInt(Console.readLine());
-        if (budget % 1000 != 0) {
-            throw new IllegalArgumentException("[ERROR] 구입금액은 1000원 단위입니다!");
+        try{
+            System.out.println("구입금액을 입력해 주세요.");
+            int budget = Integer.parseInt(Console.readLine());
+            if (budget % 1000 != 0) {
+                throw new IllegalArgumentException("[ERROR] 구입금액은 1000원 단위입니다!");
+            }
+            this.publicans = budget / 1000;
+        }catch (Exception e){
+            System.out.println("[ERROR] 구입금액은 1000원 단위입니다!");
+            throw new NoSuchElementException("[ERROR] 구입금액은 1000원 단위입니다!");
         }
-        this.publicans = budget / 1000;
+
 
     }
 
@@ -87,6 +95,10 @@ public class User {
     }
     public int getBonus() {
         return bonusNumber;
+    }
+
+    public List<Integer> getUserNumbers() {
+        return userNumbers;
     }
 
 }
