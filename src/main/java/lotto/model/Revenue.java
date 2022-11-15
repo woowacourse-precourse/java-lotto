@@ -80,5 +80,17 @@ public class Revenue {
         }
         return reportFormat;
     }
-    
+
+    public String getRevenueStaticsReport() {
+        List<String> rankNames = Rank.getRankNames();
+        Collections.reverse(rankNames);
+        String winResult;
+        int raffleMatchCount;
+        for (String rankName : rankNames) {
+            raffleMatchCount = WinningsTable.getRaffleMatchesByMatchState(rankName);
+            winResult = makeReportFormat(raffleMatchCount, rankName);
+            revenueStaticsReport.add(winResult + NEW_LINE);
+        }
+        return String.join(DELIMITER, revenueStaticsReport);
+    }
 }
