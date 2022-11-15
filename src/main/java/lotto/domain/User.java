@@ -5,9 +5,9 @@ import lotto.exception.InvalidUserInputException;
 
 public class User {
 
-    private int amount = 0;
+    private int amount = 0; // 구입 금액
 
-    public void pickLottoNumbers() {
+    public void enterLottoBuyAmount() {
         amount = Integer.valueOf(Console.readLine());
 
         if(amount % 1000 != 0) {

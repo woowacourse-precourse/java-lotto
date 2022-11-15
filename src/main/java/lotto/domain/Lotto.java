@@ -1,6 +1,6 @@
 package lotto.domain;
 
-import lotto.exception.DuplicateNumberException;
+import lotto.exception.DuplicateLottoNumberException;
 
 import java.util.HashMap;
 import java.util.List;
@@ -26,7 +26,7 @@ public class Lotto {
                 .map(n -> duplicateCheckMap.putIfAbsent(n,1))
                 .anyMatch(o -> o != null)) {
 
-            throw new DuplicateNumberException("중복된 숫자를 입력하셨습니다");
+            throw new DuplicateLottoNumberException("중복된 숫자를 입력하셨습니다");
         }
     }
 
