@@ -33,4 +33,8 @@ public class Lotto {
     public boolean hasWinningNumber(Integer winningNumber){
         return numbers.contains(winningNumber);
     }
+
+    public void print() {
+        System.out.println(numbers);
+    }
 }

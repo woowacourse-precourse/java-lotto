@@ -37,7 +37,9 @@ public class Application {
         System.out.println(numberOfLottos+"개를 구매했습니다.");
 
         List<Lotto> lottos = LottoMachine.makeLotto(numberOfLottos);
-        System.out.println(lottos);
+        for(Lotto lotto: lottos){
+            lotto.print();
+        }
 
         System.out.println("당첨 번호를 입력해 주세요.");
         ArrayList<Integer> winningNumbers = GetWinningNumbers();
