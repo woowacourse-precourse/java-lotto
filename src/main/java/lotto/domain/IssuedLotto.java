@@ -1,7 +1,5 @@
 package lotto.domain;
 
-import lotto.Lotto;
-
 public class IssuedLotto {
     LottoList lottoList = new LottoList();
 
@@ -10,6 +8,9 @@ public class IssuedLotto {
             Lotto lotto = new Lotto(LottoNumbers.generateNumber());
             lottoList.addLottoList(lotto);
         }
-        lottoList.printLottoList(amount);
+    }
+
+    public LottoList getLottoList() {
+        return lottoList;
     }
 }
