@@ -23,5 +23,8 @@ public class Application {
         Lotto startGame = new Lotto(game.winSixNumber(winSixNumber));
         startGame.winSevenNumber(bonusNumber);
         startGame.totalRank(LottoPaper);
+
+        Display.displayRank();
+        Display.displayRate(inputMoney);
     }
 }
