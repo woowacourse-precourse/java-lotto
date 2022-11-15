@@ -45,4 +45,16 @@ public class Print {
     public void profitRate(double profit){
         System.out.println(String.format("총 수익률은 %.1f", profit) + "%입니다.");
     }
+
+    public static String lottoNumberError(){
+        return "[Error] 1~45까지 중복되지 않는 숫자를 , 로 구분하여 입력해주세요.";
+    }
+
+    public static String priceError(){
+        return "[Error] 0이 아닌 1000으로 나누어 떨어지는 숫자를 입력해주세요.";
+    }
+
+    public static String bonusNumberError(){
+        return "[Error] 당첨 번호와 다른 1~45까지의 숫자 하나를 입력해주세요.";
+    }
 }
