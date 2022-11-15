@@ -13,7 +13,6 @@ public class Store {
         System.out.println(quantity + QUANTITY_MESSAGE);
         for (int i = 0; i < quantity; i++) {
             List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
-            //Collections.sort(numbers);
             tickets.add(new ArrayList<>(numbers));
         }
         System.out.println();  // 출력형식에 맞도록 줄바꿈 삽입

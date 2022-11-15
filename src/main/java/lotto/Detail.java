@@ -32,7 +32,6 @@ public class Detail {
     }
 
     public void showLottoTickets(List<List<Integer>> tickets) {
-
         for (int i = 0; i < tickets.size(); i++) {
             Collections.sort(tickets.get(i));
             System.out.println(tickets.get(i).toString());
@@ -40,8 +39,6 @@ public class Detail {
     }
 
     public void compareLottoNumbers(List<Integer> winnerNumber, int bonusNumber, List<List<Integer>> tickets) {
-
-
         for (int i = 0; i < tickets.size(); i++) {
             compareNumber(winnerNumber, bonusNumber, tickets.get(i));
         }

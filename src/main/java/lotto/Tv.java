@@ -11,7 +11,7 @@ public class Tv {
     private static final String INPUT_WINNER_NUMBER_MESSAGE = "당첨 번호를 입력해 주세요.";
     private static final String INPUT_BONUS_NUMBER_MESSAGE = "보너스 번호를 입력해 주세요.";
 
-    public List<Integer> inputWinnerNumber(List<Integer> winnerNumber) {
+    public List<Integer> inputWinnerNumber() {
         System.out.println(INPUT_WINNER_NUMBER_MESSAGE);
         String input = Console.readLine();
         System.out.println();  // 출력형식에 맞도록 줄바꿈 삽입
@@ -21,12 +21,9 @@ public class Tv {
             number.add(s);
         }
 
-//        for(int i=0;i<number.size();i++){
-//            winnerNumber.add(Integer.parseInt(number.get(i)));
-//        }
-
+        List<Integer> winnerNumber;
         winnerNumber = number.stream().map(Integer::parseInt).collect(Collectors.toList());
-        //유효성검사 필요
+        Lotto lotto = new Lotto(winnerNumber);
         return winnerNumber;
     }
 

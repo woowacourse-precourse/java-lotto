@@ -4,14 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Controller {
-    User user;
-    Store store;
-    Tv tv;
-    public Detail detail;
-    public List<List<Integer>> tickets;
-    public List<Integer> winnerNumber;
-    public int quantity;
-    public int bonusNumber;
+    private User user;
+    private Store store;
+    private Tv tv;
+    private Detail detail;
+    private List<List<Integer>> tickets;
+    private List<Integer> winnerNumber;
+    private int quantity;
+    private int bonusNumber;
 
     public void startApplication() {
         user = new User();
@@ -22,9 +22,12 @@ public class Controller {
         winnerNumber = new ArrayList<>();
 
         quantity = inputMoney();
+        if (quantity == 0) {
+            return;
+        }
         store.makeLottoTickets(quantity, tickets);
         detail.showLottoTickets(tickets);
-        winnerNumber = tv.inputWinnerNumber(winnerNumber);
+        winnerNumber = tv.inputWinnerNumber();
         bonusNumber = tv.inputBonusNumber();
         detail.compareLottoNumbers(winnerNumber, bonusNumber, tickets);
 
