@@ -8,6 +8,7 @@ public class WinningStatistics {
     private final List<List<Integer>> randomNumbersContainer;
     private final List<Integer> winningNumber;
     private final int bonus;
+    public static final int LOTTO_SIZE = 6;
     private static final Map<Integer, Integer> comparisonTarget;
     static {
         comparisonTarget = new HashMap<>();
@@ -46,4 +47,13 @@ public class WinningStatistics {
         return winningScore * 1000 + bonusScore * 100;
     }
 
+    private int getWinningScore(List<Integer> lotto,List<Integer> winningNumber) {
+        int number = 0;
+        for(int i=0; i < LOTTO_SIZE; i++) {
+            if (lotto.contains(winningNumber.get(i))) {
+                number ++;
+            }
+        }
+        return  number;
+    }
 }
