@@ -16,8 +16,8 @@ public class Cashier {
     }
 
     private int checkInputPrice(int userValue) {
-        if (!isBiggerThanZero(userValue)) {
-            System.out.println("[ERROR] 음수 값이 입력되었습니다.");
+        if (!isPositiveValue(userValue)) {
+            System.out.println("[ERROR] 1원 보다 작은 값이 입력되었습니다.");
             throw new IllegalArgumentException();
         }
         if (!isDividedByThousand(userValue)) {
@@ -41,8 +41,8 @@ public class Cashier {
         }
     }
 
-    private boolean isBiggerThanZero(int userValue) {
-        return userValue >= 0;
+    private boolean isPositiveValue(int userValue) {
+        return userValue > 0;
     }
 
     private boolean isDividedByThousand(int userValue) {

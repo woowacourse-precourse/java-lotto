@@ -25,6 +25,11 @@ class CashierTest {
     }
 
     @Test
+    void 금액_0원_입력() {
+        assertThatThrownBy(() -> cashier.sellLotto(0, lottos)).isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
     void 금액_입력이_로또_가격으로_나누어_떨어지지않음() {
         assertThatThrownBy(() -> cashier.sellLotto(1001, lottos)).isInstanceOf(IllegalArgumentException.class);
     }
