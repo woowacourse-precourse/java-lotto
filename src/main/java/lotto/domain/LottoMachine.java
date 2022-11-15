@@ -27,7 +27,7 @@ public class LottoMachine {
     }
     private final int LOTTO_PRICE = 1000;
     private int paid;
-    public ArrayList<Lotto> lottos = new ArrayList<>();
+    public ArrayList<Lotto> lottos;
     private int[] countRanking;
     private long revenue;
     Validate validate = new Validate();
@@ -43,6 +43,7 @@ public class LottoMachine {
 
     public List<Lotto> createLottoNumber(){
         int cnt = paid / LOTTO_PRICE;
+        lottos = new ArrayList<>();
         for(int i=0; i<cnt; i++){
             List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
             Lotto lotto = new Lotto(numbers);
