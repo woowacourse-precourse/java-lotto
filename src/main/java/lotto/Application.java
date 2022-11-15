@@ -3,6 +3,7 @@ import lotto.Constant.Ranking;
 import lotto.Constant.ErrorMessage;
 import lotto.Validate.HandleException;
 import lotto.Input.Input;
+import lotto.Output.Print;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -45,11 +46,6 @@ public class Application {
         return num;
     }
 
-//    static int singleNumberInput(){
-//        int inputNum = castInt(Console.readLine());
-//        return inputNum;
-//    }
-
     static List<Integer> createLotto(){
         List<Integer> numbers = Randoms.pickUniqueNumbersInRange(lottoMin, lottoMax, lottoLength);
         List<Integer> sorted = new ArrayList<>(numbers);
@@ -65,29 +61,6 @@ public class Application {
         }
         return lottoList;
     }
-    static void printLottoList(List<Lotto> lottoList){
-        for (Lotto lotto : lottoList)
-            lotto.print();
-    }
-
-//    static List<String> parsingStringInput(int maxArgc){
-//        String hitString = Console.readLine();
-//        List<String> hitStringParsed = Arrays.asList(hitString.split(","));
-//
-//        HandleException.InputArgsNum(hitStringParsed, maxArgc);
-//        return hitStringParsed;
-//    }
-//
-//    static List<Integer> multiNumberInput(int maxArgc){
-//        List<String> stringParsed = parsingStringInput(maxArgc);
-//        List<Integer> multiNumberList = new ArrayList<>(lottoNum);
-//        for (int i = 0; i < lottoLength; i++) {
-//            multiNumberList.add(castInt(stringParsed.get(i)));
-//        }
-//
-//        HandleException.DuplicatedNum(multiNumberList);
-//        return multiNumberList;
-//    }
 
     static HashMap<Ranking, Integer> initRankInfo(){
         HashMap<Ranking, Integer> lottoRankInfo = new HashMap<>(Ranking.values().length);
@@ -106,16 +79,6 @@ public class Application {
         return lottoRankInfo;
     }
 
-    static void printResult(HashMap<Ranking, Integer> lottoRankInfo){
-        System.out.println("당첨 통계");
-        System.out.println("---");
-
-        System.out.println("3개 일치 (5,000원) - " + lottoRankInfo.get(Ranking.FIFTH) + "개");
-        System.out.println("4개 일치 (50,000원) - " + lottoRankInfo.get(Ranking.FOURTH) + "개");
-        System.out.println("5개 일치 (1,500,000원) - " + lottoRankInfo.get(Ranking.THIRD) + "개");
-        System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - " + lottoRankInfo.get(Ranking.SECOND) + "개");
-        System.out.println("6개 일치 (2,000,000,000원) - " + lottoRankInfo.get(Ranking.FIRST) + "개");
-    }
 
     static int howMuchPrize(HashMap<Ranking, Integer> lottoRankInfo){
         int cashprize = 0;
@@ -125,9 +88,6 @@ public class Application {
         return cashprize;
     }
 
-    static void printEarningRate(int cashprize, int inputmoney){
-        System.out.printf("총 수익률은 %.1f%%입니다.\n", (double)cashprize / inputmoney*100);
-    }
 
     public static int getlottoNum(){
         return lottoNum;
@@ -136,28 +96,23 @@ public class Application {
     public static void main(String[] args) {
         System.out.println("구매금액을 입력해주세요");
         inputmoney = Input.singleNumber();
-        //        inputmoney = 8000;
-//        handleNotDividedBy1000(inputmoney);
         HandleException.NotDividedBy1000(inputmoney);
-
 
         lottoNum = inputmoney / 1000;
         System.out.println(lottoNum + "개를 구매했습니다.");
 
         lottoList = createLottoList(lottoNum);
-        printLottoList(lottoList);
+        Print.LottoList(lottoList);
 
         System.out.println("당첨 번호를 입력해주세요.");
         hitNumbers = Input.multiNumber(hitNum);
-        //        hitNumber = Arrays.asList(1,2,3,4,5,6);
 
         System.out.println("보너스 번호를 입력해주세요.");
         bonus = Input.singleNumber();
-        //        bonus = 7;
 
         lottoRankInfo = initRankInfo();
         lottoRankInfo = getResult(lottoRankInfo, lottoList, hitNumbers, bonus);
-        printResult(lottoRankInfo);
-        printEarningRate(howMuchPrize(lottoRankInfo), inputmoney);
+        Print.Result(lottoRankInfo);
+        Print.EarningRate(howMuchPrize(lottoRankInfo), inputmoney);
     }
 }
