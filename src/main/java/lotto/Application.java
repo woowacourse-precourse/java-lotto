@@ -8,6 +8,7 @@ import static camp.nextstep.edu.missionutils.Randoms.pickUniqueNumbersInRange;
 
 public class Application {
 
+    public static Application.LottoRank LottoRank;
     private static List<Lotto> lottos = new ArrayList<>();
     private static List<Integer> userNums = new ArrayList<>();
     private static int buyLot;
@@ -55,9 +56,10 @@ public class Application {
         return bonusNum;
     }
 
+    // 합치기
     private static void addNum() {
         for (Lotto lotto : lottos) {
-            lotto.match(userNums, bonusNumber());
+            lotto.match(userNums, (Integer) bonusNumber());
         }
     }
 
@@ -100,18 +102,22 @@ public class Application {
         }
 
     }
+
+    public LottoRank matchLotto() {
+        return this.matchLotto();
+    }
     // 수익률
+    public static void rateLotto() {
+        Double rate = 0.0;
+        LottoRank[] lottoRanks = LottoRank.values();
+        for(LottoRank lottoRank : lottoRanks) {
+            if(lottoRank == lottoRank.SIXTH_PLACE)
+                continue;
+            int result = 0;
 
-
-//    public static void rateLotto() {
-//        Double rate = 0.0;
-//        LottoRank[] lottoRanks = LottoRank.values();
-//        for(LottoRank lottoRank : lottoRanks) {
-//            if(lottoRank == lottoRank.SIXTH_PLACE)
-//                continue;
-//            int result = 0;
-//        }
-//    }
+        }
+        System.out.println("총 수익률 + "+  "%이다.");
+    }
 
 
 
