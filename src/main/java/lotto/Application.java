@@ -1,5 +1,9 @@
 package lotto;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 public class Application {
     public static void main(String[] args) {
         // 로또 구입 금액 입력 받기 // 예외 처리 (int가 아닌 경우, 1000원 단위가 아닐 경우)
@@ -11,6 +15,10 @@ public class Application {
         System.out.println(count);
 
         // 당첨 번호 입력 받기 // 예외 처리 (1~45 자리 수, int가 아닌 경우, 6자리 수, 중복 문자 제거)
+        System.out.println("당첨 번호를 입력해 주세요.");
+        List<Integer> winningNumber;
+        winningNumber = Input.inputWinningNumber();
+        System.out.println(winningNumber);
 
         // 보너스 번호 입력 받기 // 예외 처리 (1~45 자리 수, int가 아닌 경우 )
 
