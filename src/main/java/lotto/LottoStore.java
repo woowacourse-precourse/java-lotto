@@ -2,9 +2,7 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 import static lotto.NumberValidate.*;
@@ -24,7 +22,10 @@ public class LottoStore {
         digitValidate(bonusNumber);
         inRangeValidate(Integer.parseInt(bonusNumber));
 
-
+        Map<LottoGrade, Integer> lottosResult = conversionLottosResult(lottos, winningNumbers, bonusNumber);
+        LottoPrinter.lottoResultPrint(lottosResult);
+        double calculationResult = revenueCalculator(money.getMoney(), lottosResult);
+        LottoPrinter.revenueResultPrint(calculationResult);
     }
 
     private static List<Lotto> addLotto(int lottoCount) {
@@ -42,5 +43,56 @@ public class LottoStore {
                 .collect(Collectors.toList());
 
         return new Lotto(winningNumbers);
+    }
+
+    private static Map<LottoGrade, Integer> conversionLottosResult(List<Lotto> lottos, Lotto winningNumbers, String bonusNumber) {
+        Map<LottoGrade, Integer> totalResult = new EnumMap<>(LottoGrade.class);
+        totalResult.put(LottoGrade.ONE, 0);
+        totalResult.put(LottoGrade.TWO, 0);
+        totalResult.put(LottoGrade.THREE, 0);
+        totalResult.put(LottoGrade.FOUR, 0);
+        totalResult.put(LottoGrade.FIVE, 0);
+
+        List<LottoGrade> lottosResult = allLottosCompare(lottos, winningNumbers, bonusNumber);
+        for (LottoGrade lottoGrade : lottosResult) {
+            if (lottoGrade != LottoGrade.MISS) {
+                totalResult.put(lottoGrade, totalResult.get(lottoGrade) + 1);
+            }
+        }
+
+        return totalResult;
+    }
+
+    private static List<LottoGrade> allLottosCompare(List<Lotto> lottos, Lotto winningNumbers, String bonusNumber) {
+        List<LottoGrade> lottosResult = new ArrayList<>();
+
+        for (Lotto lotto : lottos) {
+            lottosResult.add(lottoNumbersCompareToWinningNumbers(lotto, winningNumbers, bonusNumber));
+        }
+        return lottosResult;
+    }
+
+    private static LottoGrade lottoNumbersCompareToWinningNumbers(Lotto lottoNumbers, Lotto winningNumbers, String bonusNumber) {
+        int count = 0;
+        boolean bonusBall = false;
+        for (Integer number : lottoNumbers.getNumbers()) {
+            if (winningNumbers.getNumbers().contains(number)) {
+                count++;
+            }
+        }
+        if (count == 5) {
+            bonusBall = lottoNumbers.getNumbers().contains(Integer.parseInt(bonusNumber));
+        }
+        return LottoGrade.getRank(count, bonusBall);
+    }
+
+    private static double revenueCalculator(Long money, Map<LottoGrade, Integer> lottosResult) {
+        int sum = 0;
+        for (LottoGrade key : lottosResult.keySet()) {
+            if (lottosResult.get(key) != 0) {
+                sum += lottosResult.get(key) * key.getPrice();
+            }
+        }
+        return sum / Double.parseDouble(money.toString()) * 100.0;
     }
 }
