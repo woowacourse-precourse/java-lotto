@@ -73,8 +73,8 @@ public class LottoGameController {
             lottoResults.add(lottoResult);
         }
 
-        LottoStatisticsGenerator lottoStatisticsGenerator = new LottoStatisticsGenerator(payment.getAmount());
-        LottoStatistics lottoStatistics = lottoStatisticsGenerator.generate(lottoResults);
+        LottoStatisticsGenerator statisticsGenerator = new LottoStatisticsGenerator();
+        LottoStatistics lottoStatistics = statisticsGenerator.generate(lottoResults);
 
         outputView.println(STATISTICS_LABEL);
         outputView.println(DIVIDER);

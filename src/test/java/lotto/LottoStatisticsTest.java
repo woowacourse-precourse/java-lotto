@@ -62,7 +62,7 @@ public class LottoStatisticsTest {
     @Test
     void getHistoryDescriptionTest() {
         assertSimpleTest(() -> {
-            LottoStatisticsGenerator generator = new LottoStatisticsGenerator(8000);
+            LottoStatisticsGenerator generator = new LottoStatisticsGenerator();
             List<LottoResult> lottoResults = List.of(
                     LottoResult.MISS,
                     LottoResult.FOURTH,
@@ -85,7 +85,7 @@ public class LottoStatisticsTest {
     @Test
     void getReturnRateDescriptionTest() {
         assertSimpleTest(() -> {
-            LottoStatisticsGenerator generator = new LottoStatisticsGenerator(8000);
+            LottoStatisticsGenerator generator = new LottoStatisticsGenerator();
             List<LottoResult> lottoResults = List.of(
                     LottoResult.MISS,
                     LottoResult.FOURTH,

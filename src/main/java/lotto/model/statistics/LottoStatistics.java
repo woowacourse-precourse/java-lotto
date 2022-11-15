@@ -4,11 +4,9 @@ import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class LottoStatistics {
-    private final int totalPayment;
     private final Map<LottoResult, Integer> resultMap;
 
-    LottoStatistics(int totalPayment, Map<LottoResult, Integer> resultMap) {
-        this.totalPayment = totalPayment;
+    LottoStatistics(Map<LottoResult, Integer> resultMap) {
         this.resultMap = resultMap;
     }
 
@@ -21,9 +19,5 @@ public class LottoStatistics {
         resultMap.forEach((lottoResult, count) -> totalPrize.addAndGet(lottoResult.getPrize() * count));
 
         return totalPrize.get();
-    }
-
-    public int getTotalPayment(int totalPayment) {
-        return totalPayment;
     }
 }
