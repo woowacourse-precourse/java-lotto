@@ -1,5 +1,6 @@
 package lotto;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -9,8 +10,7 @@ public class Lotto {
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
-        Collections.sort(numbers);
-        this.numbers = numbers;
+        this.numbers = getSortedNumbers(numbers);
     }
 
     private void validate(List<Integer> numbers) {
@@ -40,6 +40,12 @@ public class Lotto {
         if (anyNumUnderOne || anyNumOverFortyFive) {
             throw new IllegalArgumentException("[ERROR] 로또 번호가 1이상 45이하여야 합니다.");
         }
+    }
+
+    private List<Integer> getSortedNumbers(List<Integer> numbers) {
+        List<Integer> copiedNumbers = new ArrayList<>(numbers);
+        Collections.sort(copiedNumbers);
+        return copiedNumbers;
     }
 
     public List<Integer> getLotto() {
