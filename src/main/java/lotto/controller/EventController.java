@@ -24,4 +24,11 @@ public class EventController {
         OutputView.printCountOfTicket(count);
         return count;
     }
+
+    public void raffleTickets(int count) {
+        user = new User(count);
+        user.setTickets();
+
+        OutputView.printNumberOfEachLotto(user.getTickets());
+    }
 }
