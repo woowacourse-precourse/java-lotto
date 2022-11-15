@@ -14,10 +14,6 @@ public class Lotto {
         this.numbers = numbers;
     }
 
-    public List<Integer> getLotto() {
-        return this.numbers;
-    }
-
     public static void validateLottoIsNumeric(List<String> numbers) throws IllegalArgumentException {
         String pattern = "^[0-9]*$";
         for (String number : numbers) {
@@ -25,6 +21,10 @@ public class Lotto {
                 throw new IllegalArgumentException("[ERROR] 복권 번호는 양의 정수 형태이어야 합니다.");
             }
         }
+    }
+
+    public List<Integer> getLotto() {
+        return this.numbers;
     }
 
     private void validateLottoSize(List<Integer> numbers) throws IllegalArgumentException {

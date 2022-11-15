@@ -1,19 +1,19 @@
 package lotto;
 
-import static camp.nextstep.edu.missionutils.Console.readLine;
-import static lotto.domain.Preprocessor.splitNumber;
-import static lotto.domain.Preprocessor.convertStringToInt;
-import static lotto.domain.Preprocessor.convertStringListToIntegerList;
-import static lotto.domain.Guide.*;
-import static lotto.domain.NumberGenerator.createLottoList;
-import static lotto.domain.UserLotto.createLottoResult;
-import static lotto.domain.Bonus.bonusIsNumeric;
-import static lotto.domain.Lotto.validateLottoIsNumeric;
-
+import lotto.domain.Bonus;
 import lotto.domain.Lotto;
 import lotto.domain.UserLotto;
-import lotto.domain.Bonus;
+
 import java.util.List;
+
+import static camp.nextstep.edu.missionutils.Console.readLine;
+
+import static lotto.domain.Bonus.bonusIsNumeric;
+import static lotto.domain.Guide.*;
+import static lotto.domain.Lotto.validateLottoIsNumeric;
+import static lotto.domain.NumberGenerator.createLottoList;
+import static lotto.domain.Preprocessor.*;
+import static lotto.domain.UserLotto.createLottoResult;
 
 public class Application {
     static final int ROUND_NUMBER = 1;

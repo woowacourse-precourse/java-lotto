@@ -2,13 +2,13 @@ package lotto.domain;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+
 import java.util.ArrayList;
 import java.util.List;
 
 import static lotto.domain.Guide.printRateOfReturn;
 
 class GuideTest {
-
 
     @DisplayName("로또 통계 메시지 출력")
     @Test

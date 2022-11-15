@@ -6,10 +6,6 @@ import java.util.regex.Pattern;
 public class Bonus {
     private final int bonusNumber;
 
-    public int getBonusNumber() {
-        return this.bonusNumber;
-    }
-
     public Bonus(int bonusNumber, Lotto winningLotto) throws IllegalArgumentException {
         validateBonusDuplication(winningLotto, bonusNumber);
         validateBonusRange(bonusNumber);
@@ -21,6 +17,10 @@ public class Bonus {
         if (!Pattern.matches(pattern, bonusNumber)) {
             throw new IllegalArgumentException("[ERROR] 보너스 번호는 양의 정수 형태이어야 합니다.");
         }
+    }
+
+    public int getBonusNumber() {
+        return this.bonusNumber;
     }
 
     private void validateBonusDuplication(Lotto winningLotto,

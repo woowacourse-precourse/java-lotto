@@ -1,9 +1,9 @@
 package lotto.domain;
 
-import static camp.nextstep.edu.missionutils.Randoms.pickUniqueNumbersInRange;
-
 import java.util.ArrayList;
 import java.util.List;
+
+import static camp.nextstep.edu.missionutils.Randoms.pickUniqueNumbersInRange;
 
 public class NumberGenerator {
     public static List<Lotto> createLottoList(int lottoCount) {
