@@ -24,6 +24,9 @@ public class Application {
         // 사용자에게 당첨 번호 입력받기
         String winningNumber = UserInputString.ENTERWINNINGNUMBER.getString();
 
+        // 사용자에게 보너스 번호 입력받기
+        int bonusNumber = Integer.parseInt(UserInputString.ENTERBONNUSNUMBER.getString());
+
     }
 
     public static int GetUserInputOfPurchaseAmount(String purchaseAmount) {
