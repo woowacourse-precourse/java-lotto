@@ -6,8 +6,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static lotto.util.InputLottoValidator.LOTTO_TOTAL_COUNT;
+import static lotto.util.LottoNumberFormatValidator.LOTTO_NUMBER_MAX;
+import static lotto.util.LottoNumberFormatValidator.LOTTO_NUMBER_MIN;
+
 public class User {
-    private static final int LOTTO_NUMBER_LENGTH = 6;
 
     private List<List<Integer>> tickets;
     private final int ticketCount;
@@ -19,7 +22,7 @@ public class User {
     public List<List<Integer>> setTickets() {
         List<List<Integer>> tickets = new ArrayList<>();
         for (int i = 0; i < ticketCount; i++) {
-            List<Integer> newTicket = Randoms.pickUniqueNumbersInRange(1,45, LOTTO_NUMBER_LENGTH)
+            List<Integer> newTicket = Randoms.pickUniqueNumbersInRange(LOTTO_NUMBER_MIN,LOTTO_NUMBER_MAX, LOTTO_TOTAL_COUNT)
                     .stream().sorted().collect(Collectors.toList());
             tickets.add(newTicket);
         }

@@ -5,7 +5,7 @@ import java.util.List;
 
 public class InputLottoValidator {
 
-    private static int LOTTO_TOTAL_COUNT = 6;
+    public static int LOTTO_TOTAL_COUNT = 6;
     private static int VALID_NUMBER_COUNT = 1;
 
     public static void validateInputLotto(String inputLotto) {
