@@ -1,6 +1,7 @@
 package lotto;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
@@ -39,7 +40,8 @@ public class Ouput {
 
     public void printLotto(Lotto lotto) {
         List<Integer> numbers = lotto.getNumbers();
-        numbers.sort(Comparator.naturalOrder());
+        Collections.sort(numbers);
+        //numbers.sort(Comparator.naturalOrder());
         System.out.println(numbers);
     }
 }
