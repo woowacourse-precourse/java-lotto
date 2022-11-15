@@ -11,12 +11,12 @@ public class Money {
     private final int money;
 
     public Money(int money) {
-        validateMoney(money);
+        validateMoneyUnit(money);
         validateNegative(money);
         this.money = money;
     }
 
-    private void validateMoney(int money) {
+    private void validateMoneyUnit(int money) {
         if (money % UNIT != 0 || money == 0) {
             throw new IllegalArgumentException(ERROR_UNIT);
         }
