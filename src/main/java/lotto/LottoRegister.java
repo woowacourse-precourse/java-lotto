@@ -24,13 +24,18 @@ public class LottoRegister {
             int matchCount = countMatchedNumber(boughtLottos.get(i), pickedNumbers);
             int bonusCount = countMatchedNumber(boughtLottos.get(i), bonusNum);
 
-            lotteryWon = selectLotteryWonType(matchCount, bonusCount);
-            history = updateHistory(history, lotteryWon);
-            totalIncome += lotteryWon.calculateIncome(1);
+            totalIncome += calculateByCase(matchCount, bonusCount);
         }
         printHistory(history);
 
         return totalIncome;
+    }
+    
+    private int calculateByCase(int matchCount, int bonusCount){
+        lotteryWon = selectLotteryWonType(matchCount, bonusCount);
+        history = updateHistory(history, lotteryWon);
+
+        return lotteryWon.calculateIncome(1);
     }
 
     public void printHistory(HashMap<Application.LotteryWon, Integer> history) {
