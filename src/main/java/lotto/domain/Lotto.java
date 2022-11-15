@@ -36,12 +36,8 @@ public class Lotto {
     }
 
     private static void validateDuplicate(List<Integer> numbers) {
-        for (int i = 0; i < numbers.size(); i++) {
-            for (int j = i + 1; j < numbers.size(); j++) {
-                if (numbers.get(i).equals(numbers.get(j))) {
-                    throw new IllegalArgumentException(VALID_DUPLICATE);
-                }
-            }
+        if (numbers.stream().distinct().count() != numbers.size()) {
+            throw new IllegalArgumentException(VALID_DUPLICATE);
         }
     }
 
