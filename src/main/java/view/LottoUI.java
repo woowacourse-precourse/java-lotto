@@ -4,7 +4,7 @@ import java.util.List;
 
 public class LottoUI {
     private final static String template = "[, , , , , ]";
-    public void printLottey(List<Integer> numbers){
+    public static void printLottey(List<Integer> numbers){
         String message = template;
         for(int index=0; index<6; index++){
             int position = index*3 +1;
