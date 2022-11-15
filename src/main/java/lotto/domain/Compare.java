@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 import static lotto.domain.Rank.*;
+import static lotto.domain.Rank.getWinningsDesc;
 
 public class Compare {
     private static final Rank[] RANKS = {FIFTH, FOURTH, THIRD, SECOND, FIRST};
@@ -14,6 +15,7 @@ public class Compare {
     private static int third;
     private static int fourth;
     private static int fifth;
+    private static List<Integer> rankcnt = new ArrayList<>();
     public int compareNumbers(List<Integer> lottoGroups, List<Integer> lottoNum) {
         int cnt = 0;
         for (int i = 0; i < lottoNum.size(); i++) {
@@ -50,24 +52,30 @@ public class Compare {
         }
         return NOTHING;
     }
-    public static List<Integer> rankList() {
-        List<Integer> rankcnt = new ArrayList<>();
+    public static void rankList() {
         rankcnt.add(fifth);
         rankcnt.add(fourth);
         rankcnt.add(third);
         rankcnt.add(second);
         rankcnt.add(first);
-        return rankcnt;
     }
+
 
 
     public static void printRank() {
         rankList();
         for (int i=0; i<RANKS.length; i++) {
             Rank rank = Rank.getLottoRanksDesc().get(i);
-            rank.printRank(rankList().get(i));
+            rank.printRank(rankcnt.get(i));
         }
     }
-
-
+    public static void totalGetMoney() {
+        List<Integer> totalMoneyList = new ArrayList<>();
+        int totalWiningMoney = 0;
+        for (int i=0; i< getWinningsDesc().size(); i++) {
+            Integer rate = getWinningsDesc().get(i) * rankcnt.get(i);
+            totalMoneyList.add(i, rate);
+            totalWiningMoney = totalWiningMoney + totalMoneyList.get(i);
+        }
+    }
 }
