@@ -20,26 +20,37 @@ public class Lotto {
         this.isDuplicateNumberExist(numbers);
     }
 
-    private void isDuplicateNumberExist(List<Integer> input){
+    private void isDuplicateNumberExist(List<Integer> input) {
         Set<Integer> set = new HashSet<>(input);
-        if(input.size() != set.size())
+        if (input.size() != set.size())
             throw new IllegalArgumentException();
     }
 
     public Map<MatchInfo, Integer> calculateLottoStatistics(List<List<Integer>> userLottoList, int bonusNumber) {
-        Map<MatchInfo, Integer> calculateResult = new TreeMap<>();
+        Map<MatchInfo, Integer> calculateResult = this.initializeCalculateLottoStaticsResultMap();
 
         for (List<Integer> current : userLottoList) {
             MatchInfo currentResult = this.calculateSingleLottoResult(current, bonusNumber);
             if (currentResult != null) {
-                if (calculateResult.containsKey(currentResult)) {
-                    int count = calculateResult.get(currentResult);
-                    calculateResult.replace(currentResult, count + 1);
-                } else {
-                    calculateResult.put(currentResult, 1);
-                }
+
+                int count = calculateResult.get(currentResult);
+                calculateResult.replace(currentResult, count + 1);
+
             }
         }
+        return calculateResult;
+    }
+
+    private Map<MatchInfo, Integer> initializeCalculateLottoStaticsResultMap() {
+        Map<MatchInfo, Integer> calculateResult = new TreeMap<>();
+
+        calculateResult.put(MatchInfo.MATCH_THREE, 0);
+        calculateResult.put(MatchInfo.MATCH_FOUR, 0);
+        calculateResult.put(MatchInfo.MATCH_FIVE, 0);
+        calculateResult.put(MatchInfo.MATCH_SIX, 0);
+        calculateResult.put(MatchInfo.MATCH_FIVE_WITH_BONUS, 0);
+        calculateResult.put(MatchInfo.MATCH_FIVE_WITH_BONUS, 0);
+
         return calculateResult;
     }
 
@@ -94,18 +105,18 @@ public class Lotto {
         return result;
     }
 
-    public BigDecimal calculateProfitRatio(BigInteger income, int expense){
+    public BigDecimal calculateProfitRatio(BigInteger income, int expense) {
         BigDecimal profit = BigDecimal.valueOf(expense).multiply(BigDecimal.valueOf(100)).
-                divide(new BigDecimal(income),1, RoundingMode.HALF_UP);
+                divide(new BigDecimal(income), 1, RoundingMode.HALF_UP);
         return profit;
     }
 
     public enum MatchInfo {
-        MATCH_THREE(3,"5000"),
-        MATCH_FOUR(4,"50000"),
-        MATCH_FIVE(5,"1500000"),
-        MATCH_FIVE_WITH_BONUS(5,"30000000"),
-        MATCH_SIX(6,"2000000000");
+        MATCH_THREE(3, "5000"),
+        MATCH_FOUR(4, "50000"),
+        MATCH_FIVE(5, "1500000"),
+        MATCH_FIVE_WITH_BONUS(5, "30000000"),
+        MATCH_SIX(6, "2000000000");
 
         private final int matchNumber;
         private final BigInteger winningAmount;

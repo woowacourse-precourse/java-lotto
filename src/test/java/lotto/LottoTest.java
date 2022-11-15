@@ -41,7 +41,8 @@ class LottoTest {
         Lotto lotto = new Lotto(userInput);
         assertAll(
                 () -> assertThat(lotto.calculateLottoStatistics(generatedRandomLotto1, bonus)).
-                        isEqualTo(Map.of(MATCH_THREE, 1)),
+                        isEqualTo(Map.of(MATCH_THREE, 1, MATCH_FOUR, 0, MATCH_FIVE, 0,
+                                MATCH_FIVE_WITH_BONUS, 0, MATCH_SIX, 0)),
                 () -> assertThat(lotto.calculateLottoStatistics(generatedRandomLotto2, bonus)).
                         isEqualTo(Map.of(MATCH_THREE, 1, MATCH_FOUR, 1, MATCH_FIVE, 1,
                                 MATCH_FIVE_WITH_BONUS, 1, MATCH_SIX, 1))
