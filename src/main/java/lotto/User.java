@@ -87,15 +87,14 @@ public class User {
     private Set<Integer> getUserInputNumbers() {
         String inputWinningNumber = Console.readLine();
         String[] numberSplit = inputWinningNumber.split(",");
+        List<String> strings = new ArrayList<>(List.of(inputWinningNumber.split(",")));
         Set<Integer> winningNumber = new HashSet<>();
-        List<Integer> stringNumber = new ArrayList<Integer>();
-        for(int i=0;i<numberSplit.length;i++){
-            exception.validateInteger(numberSplit[i]);
-            exception.validateDuplicateInputNumber(winningNumber, Integer.parseInt(numberSplit[i]));
+        for (String string : strings) {
+            exception.validateInteger(string);
+            exception.validateDuplicateInputNumber(winningNumber, Integer.parseInt(string));
 
-            stringNumber.add(Integer.parseInt(numberSplit[i]));
+            winningNumber.add(Integer.parseInt(string));
         }
-
         return winningNumber;
     }
 
