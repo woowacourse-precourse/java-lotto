@@ -16,36 +16,12 @@ public class LottoUI {
         this.manager = manager;
     }
 
-    public void getLottoResult() {
-        System.out.println("당첨 통계");
-        System.out.println("---");
-
-        int[] matchCount = manager.findMatchCount(lotto, publishPurchaseLottos);
-
-        System.out.printf("%d개 일치 (5,000원) - %d개\n", 3, matchCount[0]);
-        System.out.printf("%d개 일치 (50,000원) - %d개\n", 4, matchCount[1]);
-        System.out.printf("%d개 일치 (1,500,000원) - %d개\n", 5, matchCount[2]);
-        System.out.printf("%d개 일치, 보너스 볼 일치 (30,000,000원) - %d개\n", 5, matchCount[3]);
-        System.out.printf("%d개 일치 (2,000,000,000원) - %d개\n", 6, matchCount[4]);
-
-        double rate = manager.calculateYield(matchCount);
-        System.out.printf("총 수익률은 %.1f%%입니다.", rate);
-    }
-
     public void setPurchasePrice() {
         System.out.println("구입금액을 입력해 주세요.");
         String input = Console.readLine().trim();
         Validation.validateIsNumber(input);
 
         manager.setPurchasePrice(Integer.parseInt(input));
-    }
-
-    public void setBonusNumber() {
-        System.out.println("보너스 번호를 입력해 주세요.");
-        String input = Console.readLine().trim();
-        Validation.validateIsNumber(input);
-        bonusNumber = Integer.parseInt(input);
-        Validation.validateRange(bonusNumber);
     }
 
     public void publishLottos() {
@@ -62,8 +38,30 @@ public class LottoUI {
                 .boxed()
                 .collect(Collectors.toList());
 
-        lotto =  new Lotto(lottoNumbers);
+        lotto = new Lotto(lottoNumbers);
     }
 
+    public void setBonusNumber() {
+        System.out.println("보너스 번호를 입력해 주세요.");
+        String input = Console.readLine().trim();
+        Validation.validateIsNumber(input);
+        bonusNumber = Integer.parseInt(input);
+        Validation.validateRange(bonusNumber);
+    }
 
+    public void getLottoResult() {
+        System.out.println("당첨 통계");
+        System.out.println("---");
+
+        int[] matchCount = manager.findMatchCount(lotto, publishPurchaseLottos);
+
+        System.out.printf("%d개 일치 (5,000원) - %d개\n", 3, matchCount[0]);
+        System.out.printf("%d개 일치 (50,000원) - %d개\n", 4, matchCount[1]);
+        System.out.printf("%d개 일치 (1,500,000원) - %d개\n", 5, matchCount[2]);
+        System.out.printf("%d개 일치, 보너스 볼 일치 (30,000,000원) - %d개\n", 5, matchCount[3]);
+        System.out.printf("%d개 일치 (2,000,000,000원) - %d개\n", 6, matchCount[4]);
+
+        double rate = manager.calculateYield(matchCount);
+        System.out.printf("총 수익률은 %.1f%%입니다.", rate);
+    }
 }
