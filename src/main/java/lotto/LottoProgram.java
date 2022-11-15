@@ -4,8 +4,7 @@ import view.InputView;
 import view.OutputView;
 
 import static view.InputView.*;
-import static view.OutputView.printLottoCollection;
-import static view.OutputView.printWinningResult;
+import static view.OutputView.*;
 
 public class LottoProgram {
     public void run() {
@@ -25,6 +24,8 @@ public class LottoProgram {
         LottoRank lottoRank = makeRank(lottoCollection, winningNumber);
         // 출력하기
         printWinningResult(lottoRank);
+        //수익률 계산
+        printRewardRatio(lottoMoney,lottoRank);
     }
     private LottoMoney ReceiveMoney() {
         return new LottoMoney(inputMoneyView());

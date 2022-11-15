@@ -40,4 +40,8 @@ public class LottoMoney {
             throw new IllegalArgumentException(VALID_NOT_MULTIPLIES_PRICE);
         }
     }
+
+    public int getMoney() {
+        return money;
+    }
 }

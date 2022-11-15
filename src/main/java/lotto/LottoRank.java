@@ -34,6 +34,14 @@ public class LottoRank {
         return lottoRank.keySet().stream().filter(rank -> !rank.equals(Rank.NOT_WINNING)).sorted(Comparator.comparingInt(Rank::getReward)).collect(Collectors.toList());
     }
 
+    public int calculateRewardWithRank(){
+        int reward = 0;
+        for (Rank rank : lottoRank.keySet()) {
+            reward += rank.getReward() * lottoRank.get(rank);
+        }
+        return reward;
+    }
+
     public EnumMap<Rank, Integer> getLottoRank() {
         return lottoRank;
     }
