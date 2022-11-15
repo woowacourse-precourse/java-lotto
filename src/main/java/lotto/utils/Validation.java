@@ -25,4 +25,10 @@ public class Validation {
             }
         }
     }
+
+    public static void checkSplitLength(int length) {
+        if (length != Constant.LOTTO_NUMBER_COUNT) {
+            throw new IllegalArgumentException(ErrorMessage.WINING_NUMBER_SPLIT_LENGTH_ERROR);
+        }
+    }
 }
