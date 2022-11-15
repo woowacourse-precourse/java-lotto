@@ -27,4 +27,8 @@ public class Printer {
             System.out.println();
         }
     }
+
+    public void printRevenue(float percent) {
+        System.out.printf("총 수익률은 %.1f%%입니다.", percent);
+    }
 }

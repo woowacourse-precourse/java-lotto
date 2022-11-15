@@ -3,6 +3,7 @@ package lotto;
 import lotto.domain.Generator;
 import lotto.domain.Purchase;
 import lotto.domain.RaffleNumber;
+import lotto.domain.Revenue;
 import lotto.domain.Roulette;
 import lotto.ui.Printer;
 
@@ -35,5 +36,9 @@ public class Application {
         }
 
         printer.printWinning(roulette.lottoStatus);
+
+        Revenue revenue = new Revenue(roulette.lottoStatus);
+        float percent = revenue.calculateRevenue(purchase.money);
+        printer.printRevenue(percent);
     }
 }
