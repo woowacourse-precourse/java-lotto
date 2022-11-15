@@ -70,3 +70,5 @@
 * WinningInfo Enum
   * Winning Enum Class의 정보를 가지고있는 Class
 
+### 리팩토링
+1. LottoNumber와 Lotto로 객체를 나누어도 좋을거 같다란 생각을 하였음 LottoNumber는 들어올 값에 대한 범위 유효성검사 Lotto는 가질수있는 길이와 서로다른값들인지에 대해 책임을 나누는것
