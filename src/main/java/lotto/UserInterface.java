@@ -10,10 +10,12 @@ public class UserInterface {
         return (readLine());
     }
 
-    public static void writeLotteryTickets(List<List<Integer>> tickets) {
+    public static void writeLotteryTickets(BoughtTicketsDTO boughtTickets) {
+        List<Lotto> tickets = boughtTickets.getTickets();
+
         System.out.println(tickets.size() + InformMessage.WINNING_NUMBER
                 .toString());
-        for (List<Integer> ticket : tickets) {
+        for (Lotto ticket : tickets) {
             System.out.println(ticket.toString());
         }
     }
