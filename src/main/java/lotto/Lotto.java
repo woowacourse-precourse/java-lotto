@@ -64,7 +64,7 @@ public class Lotto {
         List<Integer> lottoNumbers = new ArrayList<>();
         String[] numbers = input.split(",");
 
-        for (int i = 0; i < ReferenceValue.Lotto.SIZE.getValue(); i++) {
+        for (int i = 0; i < numbers.length; i++) {
             Game.checkNumberError(numbers[i]);
             int number = Integer.valueOf(numbers[i]);
             lottoNumbers.add(number);

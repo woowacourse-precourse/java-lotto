@@ -20,7 +20,7 @@ public class Record {
     }
 
     public static void printSizeError() {
-        System.out.println(ErrorMessage.IS_ERROR.getMessage() + ErrorMessage.EXCEED_SIZE.getMessage());
+        System.out.println(ErrorMessage.IS_ERROR.getMessage() + ErrorMessage.DIFFERENT_SIZE.getMessage());
     }
 
     public static void printRangeError() {
@@ -109,10 +109,10 @@ public class Record {
 
     public enum ErrorMessage {
         IS_ERROR("[ERROR]"),
-        EXCEED_SIZE(" 입력 크기가 초과했습니다."),
+        DIFFERENT_SIZE(" 번호를 6개 입력해주세요."),
         DUPLICATE_NUMBER(" 중복된 숫자가 있습니다."),
-        IS_NUMBER(" 입력값이 숫자로 바뀔 수 없습니다."),
-        OUT_OF_RANGE(" 범위를 벗어난 숫자가 있습니다."),
+        IS_NUMBER(" 해당 입력값은 숫자로 전환할 수 없습니다."),
+        OUT_OF_RANGE(" 로또 번호는 1부터 45 사이의 숫자여야 합니다."),
         MINIMUM_PRICE(" 입력값이 1,000 이상 되야합니다."),
         DIVIDED_PRICE(" 입력값이 1,000 으로 나눠떨어져야 합니다."),
         DUPLICATE_BONUS(" 이미 당첨 번호에 해당 숫자가 있습니다.");

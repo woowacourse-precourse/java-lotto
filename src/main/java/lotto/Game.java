@@ -4,6 +4,8 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class Game {
@@ -56,9 +58,11 @@ public class Game {
             List<Integer> lottoNumbers = Randoms.pickUniqueNumbersInRange(ReferenceValue.Lotto.START_RANGE.getValue(),
                     ReferenceValue.Lotto.END_RANGE.getValue(), ReferenceValue.Lotto.SIZE.getValue());
 
-            System.out.println(lottoNumbers);
+            List<Integer> sortedNumbers = new ArrayList<>(lottoNumbers);
+            Collections.sort(sortedNumbers);
 
-            Lotto lotto = new Lotto(lottoNumbers);
+            System.out.println(sortedNumbers);
+            Lotto lotto = new Lotto(sortedNumbers);
             allLottery.add(lotto);
         }
 
@@ -71,6 +75,10 @@ public class Game {
 
         System.out.println(Record.getWinningNumbers());
         System.out.println(winningInput + ReferenceValue.LINE_BREAK);
+
+        if (checkWinningNumbersError(winningInput)) {
+            throw new IllegalArgumentException();
+        }
 
         List<Integer> numbers = Lotto.getLottoNumbers(winningInput);
         winningNumbers = new Lotto(numbers);
@@ -88,7 +96,18 @@ public class Game {
 
         bonus = Integer.valueOf(bonusInput);
     }
+    private static boolean checkWinningNumbersError(String winningInput) {
 
+        String[] splitWinningInput = winningInput.split(",");
+
+        for (String winningOne : splitWinningInput) {
+            if (checkNumberError(winningOne)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
     private static boolean checkBonusRangeError(String bonusInput) {
 
         int bonus = Integer.valueOf(bonusInput);

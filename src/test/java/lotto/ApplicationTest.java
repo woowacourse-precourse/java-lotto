@@ -1,6 +1,7 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -41,7 +42,7 @@ class ApplicationTest extends NsTest {
                 List.of(1, 8, 11, 31, 41, 42),
                 List.of(13, 14, 16, 38, 42, 45),
                 List.of(7, 11, 30, 40, 42, 43),
-                List.of(2, 13, 22, 32, 38, 45),
+                List.of(2, 13, 32, 22, 38, 45),
                 List.of(1, 3, 5, 14, 22, 45)
         );
     }
@@ -53,7 +54,7 @@ class ApplicationTest extends NsTest {
                     run("1000");
                     assertThat(output()).contains(ERROR_MESSAGE);
                 },
-                List.of(8, 21, 23, 41, 42, -1)
+                List.of(8, 21, 23, 41, 42,-1)
         );
     }
 
@@ -91,6 +92,67 @@ class ApplicationTest extends NsTest {
         });
     }
 
+    @DisplayName("당첨 번호가 6개가 아닌경우 예외가 발생한다.")
+    @Test
+    void createWinningByIsNumber() {
+        // TODO: 이 테스트가 통과할 수 있게 구현 코드 작성
+        assertRandomUniqueNumbersInRangeTest(
+                () -> {
+                    runException("1000","1");
+                    assertThat(output()).contains(ERROR_MESSAGE);
+                },
+                List.of(8, 21, 23, 41, 42, 44)
+        );
+    }
+
+    @DisplayName("당첨 번호에 숫자로 변환할 수 없는 입력값이 있으면 예외가 발생한다.")
+    @Test
+    void createWinningByIsNumbers() {
+        // TODO: 이 테스트가 통과할 수 있게 구현 코드 작성
+        assertRandomUniqueNumbersInRangeTest(
+                () -> {
+                    runException("1000","1 2 3 a s d");
+                    assertThat(output()).contains(ERROR_MESSAGE);
+                },
+                List.of(8, 21, 23, 41, 42, 44)
+        );
+    }
+    @DisplayName("보너스 번호가 숫자로 변환할 수 없는 입력값이면 예외가 발생한다.")
+    @Test
+    void createBonusByIsNumbers() {
+        // TODO: 이 테스트가 통과할 수 있게 구현 코드 작성
+        assertRandomUniqueNumbersInRangeTest(
+                () -> {
+                    runException("1000","1,2,3,4,5,6","a");
+                    assertThat(output()).contains(ERROR_MESSAGE);
+                },
+                List.of(8, 21, 23, 41, 42, 44)
+        );
+    }
+    @DisplayName("보너스 번호가 범위에 벗어난 입력값이면 예외가 발생한다.")
+    @Test
+    void createBonusByOutOfRange() {
+        // TODO: 이 테스트가 통과할 수 있게 구현 코드 작성
+        assertRandomUniqueNumbersInRangeTest(
+                () -> {
+                    runException("1000","1,2,3,4,5,6","46");
+                    assertThat(output()).contains(ERROR_MESSAGE);
+                },
+                List.of(8, 21, 23, 41, 42, 44)
+        );
+    }
+    @DisplayName("보너스 번호가 당첨번호에 중복된 입력값이면 예외가 발생한다.")
+    @Test
+    void createBonusByDuplicateNumber() {
+        // TODO: 이 테스트가 통과할 수 있게 구현 코드 작성
+        assertRandomUniqueNumbersInRangeTest(
+                () -> {
+                    runException("1000","1,2,3,4,5,6","6");
+                    assertThat(output()).contains(ERROR_MESSAGE);
+                },
+                List.of(8, 21, 23, 41, 42, 44)
+        );
+    }
     @Override
     public void runMain() {
         Application.main(new String[]{});
