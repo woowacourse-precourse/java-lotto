@@ -2,7 +2,6 @@ package lotto.validation;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-import lotto.validation.Validation;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
