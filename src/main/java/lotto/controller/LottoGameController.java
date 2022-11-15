@@ -12,7 +12,8 @@ public class LottoGameController {
     Revenue revenue = new Revenue();
 
     public void calculateTickets(){
-
+        lottoGameView.askPurchaseAmount();
+        buyer.buyTickets(lottoGameView.getPurchaseAmount());
     }
 
     public void noticeNumberOfTickets(){
