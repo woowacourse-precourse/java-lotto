@@ -3,30 +3,39 @@ package lotto;
 import java.util.ArrayList;
 import java.util.List;
 
+import static constantValue.ErrorMessage.*;
 import static error.ErrorLottoNumbers.isDuplicateInput;
-import static constantValue.ErrorMessage.IS_DUPLICATE;
 import static constantValue.RequestMessage.INPUT_BONUS_NUMBER;
 import static constantValue.RequestMessage.INPUT_WINNING_NUMBERS;
 import static camp.nextstep.edu.missionutils.Console.readLine;
+import static error.ErrorLottoNumbers.isOutBoundNumbers;
 
 public class LottoAnswer {
   private final List<Integer> lotto_answer = new ArrayList<>();
   private int bonus_number;
 
   public LottoAnswer() {
-    setLottoAnswer();
   }
 
-  private void setLottoAnswer() {
-    inputWinNumber();
+  public boolean setLottoAnswer() {
+    if (!inputWinNumber())
+      return false;
+    if (isOutBoundNumbers(lotto_answer)) {
+      throw new IllegalArgumentException(IS_NOT_IN_RANGE);
+    }
     inputBonusNumber();
     System.out.println();
+    return true;
   }
 
-  private void inputWinNumber() {
+  private boolean inputWinNumber() {
     String answer;
     System.out.println(INPUT_WINNING_NUMBERS);
     answer = readLine();
+    if (isInvalidWinNumbers(answer)) {
+      System.out.println(INVALID_INPUT);
+      return false;
+    }
     System.out.println();
     String[] answer_arr = answer.split(",");
     for (int i = 0; i < 6; i++) {
@@ -35,6 +44,22 @@ public class LottoAnswer {
       }
       lotto_answer.add(Integer.valueOf(answer_arr[i])); // try catch 문 작성하는 것 권장
     }
+    return true;
+  }
+
+  private boolean isInvalidWinNumbers(String answer) {
+    int num = 0;
+    for (int i = 0; i < answer.length(); i++) {
+      if (',' == answer.charAt(i)) {
+        num++;
+      }
+//      if (',' != answer.charAt(i) || !(answer.charAt(i) >= '0' && answer.charAt(i) <= '9')) {
+//        return true;
+//      }
+    }
+    if (num != 5)
+      return true;
+    return false;
   }
 
   private void inputBonusNumber() {

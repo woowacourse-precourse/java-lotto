@@ -6,6 +6,8 @@ public class Application {
     if (!user.setUser())
       return ;
     LottoAnswer lottoAnswer = new LottoAnswer();
+    if (!lottoAnswer.setLottoAnswer())
+      return ;
     user.printResult(lottoAnswer);
   }
 }
