@@ -13,26 +13,25 @@ public enum PrizeRank {
   private final int correctCount;
   private final boolean isBonusNumberMatch;
   private final int prizeMoney;
+  private int prizeCount;
 
   PrizeRank(int correctCount, boolean isBonusNumberMatch, int prizeMoney) {
     this.correctCount = correctCount;
     this.isBonusNumberMatch = isBonusNumberMatch;
     this.prizeMoney = prizeMoney;
+    this.prizeCount = 0;
   }
 
-  public static PrizeRank getPrizeRank(int correctCount, boolean isCheckBonusNumber) {
-    for (PrizeRank prizeRank : PrizeRank.values()) {
-      if (checkSamePrizeRank(correctCount, isCheckBonusNumber, prizeRank)) {
-        return prizeRank;
-      }
-    }
-    return null;
+  public int getPrizeCount() {
+    return this.prizeCount;
   }
 
-  private static boolean checkSamePrizeRank(
-      int correctCount, boolean isBonusNumberMatch, PrizeRank prizeRank) {
-    return prizeRank.correctCount == correctCount
-        && prizeRank.isBonusNumberMatch == isBonusNumberMatch;
+  public void increasePrizeCount() {
+    this.prizeCount++;
+  }
+
+  private boolean checkSamePrizeRank(int correctCount, boolean isBonusNumberMatch) {
+    return this.correctCount == correctCount && this.isBonusNumberMatch == isBonusNumberMatch;
   }
 
   public String getMessage(int prizeCount) {
