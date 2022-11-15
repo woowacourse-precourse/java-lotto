@@ -1,6 +1,11 @@
 package lotto.view;
 
+import lotto.model.Prize;
+
+import java.util.Collections;
 import java.util.List;
+import java.util.Map;
+
 public class OutputView {
 
     enum Message {
@@ -30,5 +35,27 @@ public class OutputView {
         for (List<Integer> ticket : tickets) {
             System.out.println(ticket);
         }
+    }
+
+    public static void printPrizeResult(Map<Prize, Integer> prizeCountResult) {
+        System.out.println();
+        System.out.println(Message.TOTAL.getMessage());
+        System.out.println("---");
+        printEachCountOfPrize(prizeCountResult);
+    }
+
+    private static void printEachCountOfPrize(Map<Prize, Integer> prizeCountResult) {
+        List<Double> prizeCandidates = Prize.getPrizeCandidates();
+        Collections.sort(prizeCandidates);
+        for(Double key : prizeCandidates ){
+            Prize prize = Prize.getPrizeByScore(key);
+            printLottoResult(prize, prizeCountResult.get(prize));
+        }
+    }
+
+    private static void printLottoResult(Prize prize, Integer count) {
+        System.out.printf(prize.getMessage());
+        System.out.printf(" - %d개", count);
+        System.out.println();
     }
 }
