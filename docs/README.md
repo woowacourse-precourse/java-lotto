@@ -14,7 +14,7 @@
 - [ ] 숫자가 아닌 값 입력할 경우 예외 처리(IllegalArgumentException)
 - [ ] 로또 구입 금액을 입력 받는 기능
     - [ ] 숫자가 아닌 값 입력할 경우 예외 처리(IllegalArgumentException)
-    - [ ] 입력받은 숫자가 0 이하인 경우 예외 처리(IllegalArgumentException)
+    - [ ] 입력받은 숫자가 1000 미만인 경우 예외 처리(IllegalArgumentException)
     - [ ] 입력받은 숫자가 1000으로 나누어 떨어지지 않는 경우 예외 처리(IllegalArgumentException)
 - [ ] 당첨 번호를 쉼표(,) 기준으로 입력 받는 기능
     - [ ] 로또 번호의 숫자 범위는 1~45까지가 아닐 경우 예외 처리(IllegalArgumentException)
