@@ -123,6 +123,9 @@ public class WinningNumberView {
 
     public void bonusNumberIntegerCheck(String bonusNumber) {
 
+        if (bonusNumber == "") {
+            throw new IllegalArgumentException("[ERROR] 보너스 번호는 1~45 사이의 숫자 하나만 입력해야합니다.");
+        }
         for (int index = 0; index < bonusNumber.length(); index++) {
             if (bonusNumber.charAt(index) < '0' && bonusNumber.charAt(index) > '9') {
                 throw new IllegalArgumentException("[ERROR] 보너스 번호는 1~45 사이의 숫자 하나만 입력해야합니다.");

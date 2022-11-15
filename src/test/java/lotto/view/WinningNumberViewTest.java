@@ -25,6 +25,16 @@ class WinningNumberViewTest {
         winningNumberView = new WinningNumberView();
     }
 
+    @Test
+    void bonusNumberIntegerCheckTest() {
+
+        String bonusNumber = "";
+
+        assertThatThrownBy(() -> winningNumberView.bonusNumberIntegerCheck(bonusNumber))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("[ERROR] 보너스 번호는 1~45 사이의 숫자 하나만 입력해야합니다.");
+    }
+
     @ParameterizedTest
     @DisplayName("입력된 보너스 번호 유효 테스트")
     @ValueSource(strings = {"0", "123123", "46", "45123"})
