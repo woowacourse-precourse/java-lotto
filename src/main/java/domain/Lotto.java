@@ -8,8 +8,6 @@ import java.util.Set;
 import static util.StringUtil.parseToIntegerList;
 
 public class Lotto {
-    private final int MAX = 45;
-    private final int MIN = 1;
     private final List <Integer> numbers;
 
     public Lotto(List <Integer> numbers) {
@@ -32,7 +30,7 @@ public class Lotto {
 
     private void checkNumberRange(List<Integer> numbers){
         for(int number : numbers){
-            if(number < MIN || number > MAX){
+            if(number < 1|| number > 45){
                 throw new IllegalArgumentException("숫자는 1~45 내로 입력해 주세요.");
             }
         }
