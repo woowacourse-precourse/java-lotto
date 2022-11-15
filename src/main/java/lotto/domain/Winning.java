@@ -9,8 +9,15 @@ public class Winning {
     private final Map<LottoRank, Integer> lottoResult = new HashMap<>();
 
     public Winning(LottoTicket lottoTicket, WinningNumber winningNumber) {
+        initResult();
         this.lottoTicket = lottoTicket;
         this.winningNumber = winningNumber;
+    }
+
+    public void initResult() {
+        for (LottoRank lottoRank : LottoRank.values()) {
+            lottoResult.put(lottoRank, 0);
+        }
     }
 
     public void checkWinningResult() {
