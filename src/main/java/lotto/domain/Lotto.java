@@ -25,7 +25,7 @@ public class Lotto {
 
     private void validate(List<Integer> numbers) {
         checkCountOfNumbers(numbers);
-        checkRangeOfNumberInNumbers(numbers);
+        checkRangeOfNumbers(numbers);
         checkDuplicationOfNumbers(numbers);
     }
 
@@ -36,7 +36,7 @@ public class Lotto {
         throw new IllegalArgumentException(ErrorMessage.LOTTO_INCORRECT_COUNT);
     }
 
-    private void checkRangeOfNumberInNumbers(List<Integer> numbers) {
+    private void checkRangeOfNumbers(List<Integer> numbers) {
         for (int number: numbers) {
             if (START_NUMBER <= number && number <= END_NUMBER) {
                 continue;
