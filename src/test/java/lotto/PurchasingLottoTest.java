@@ -38,4 +38,18 @@ public class PurchasingLottoTest {
                 .hasMessageContaining("[ERROR]");
 
     }
+
+    @DisplayName("구입 금액을 가져온다.")
+    @Test
+    void getPurchaseTest() {
+        // given
+        int purchasing = 5000;
+        PurchasingLotto purchasingLotto = new PurchasingLotto(purchasing);
+
+        // when
+        int getPurchase = purchasingLotto.getPurchase();
+
+        // then
+        assertThat(getPurchase).isEqualTo(purchasing);
+    }
 }
