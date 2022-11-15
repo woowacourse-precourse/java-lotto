@@ -51,11 +51,15 @@ public class WinningStats {
     public WinningStats(List<Lotto> purchase, Lotto winning, int bonus){
         Winning.initialize();
 
-        for(Lotto selected : purchase){
-            int sameCount = getSameNumber(selected, winning);
-            Boolean existBonus = checkBonus(selected, bonus, sameCount);
-            Winning.accumulateWinning(sameCount, existBonus);
+        for(Lotto lotto : purchase){
+            confirmWinning(lotto, winning, bonus);
         }
+    }
+
+    private void confirmWinning(Lotto lotto, Lotto winning, int bonus){
+        int sameCount = getSameNumber(lotto, winning);
+        Boolean existBonus = checkBonus(lotto, bonus, sameCount);
+        Winning.accumulateWinning(sameCount, existBonus);
     }
 
     private Boolean checkBonus(Lotto lotto, int bonus, int sameCount){
