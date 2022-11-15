@@ -21,18 +21,19 @@
 - 사용자가 잘못된 값을 입력할 경우 `IllegalArgumentException`를 발생시키고, "[ERROR]"로 시작하는 에러 메시지를 출력 후 종료한다.
 
 ## 🚀 기능 목록
-- [X] 구입 금액을 입력받을 수 있다.
-  - [X] 1,000으로 나누어 떨어지지 않는 경우 예외 처리한다.
-- [X] 구입 금액에 해당하는 만큼 1부터 45까지의 서로 다른 임의의 수 6개를 생성한다.
+- [X] 구입 금액을 입력받을 수 있다. 정수가 아니면 예외처리한다. - InputView#getInt()
+  - [X] 1,000으로 나누어 떨어지지 않는 경우 예외 처리한다. - Purchase#validate()
+- [X] 구입 금액에 해당하는 만큼 로또 번호를 생성한다. - Purchase#createLottos()
   - [X] 발행할 로또 수를 알 수 있다. - Purchase#getCount()
-- [X] 발행한 로또 번호를 출력한다. 로또 번호는 오름차순으로 정렬하여 보여준다. - OutputView#printLottos()
-  - [X] 로또 번호를 오름차순 정렬할 수 있다. - Lotto#getSortedNumbers()
+  - [X] 1부터 45까지의 서로 다른 임의의 수 6개를 생성한다. - NumberGenerator#createDifferentRandomNumbers()
+  - [X] 로또 번호는 오름차순 정렬된다. - NumberGenerator#sortNumbers()
 - [X] 발행한 로또 수량을 출력할 수 있다. - Purchase#printCount()
+- [X] 발행한 로또 번호를 출력한다. - Purchase#printLottos()
 - [X] 당첨 번호를 입력받는다. 번호는 쉼표(,)를 기준으로 구분한다.
   - [X] 쉼표(,)를 기준으로 구분했을 때 각 데이터가 '1~45범위의 숫자'가 아니면 예외 처리한다.
   - [X] 쉼표(,)를 기준으로 구분했을 때 중복된 데이터가 있으면 예외 처리한다.
-- [X] 보너스 번호를 입력 받는다.
-  - [X] '1~45범위의 숫자'가 아니면 예외 처리한다.
+- [X] 보너스 번호를 입력 받는다. 정수가 아니면 예외처리한다. - InputView#getInt()
+  - [X] 숫자 범위가 1~45가 아니면 예외 처리한다.
 - [X] 컴퓨터의 수를 생성한다. 
   - [X] 1부터 45까지의 서로 다른 임의의 수 6개를 생성한다. - NumberGenerator#createDifferentRandomNumbers()
   - [X] 1부터 45까지의 임의의 수 1개를 생성한다. - NumberGenerator#createRandomNumber()
