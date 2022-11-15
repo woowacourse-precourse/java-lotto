@@ -1,7 +1,9 @@
 package lotto.domain;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class User {
     private int money;
@@ -9,7 +11,8 @@ public class User {
     private int rewardMoney;
 
     private List<Lotto> lottos = new ArrayList<>();
-    //TODO: 당첨 결과 리스트 추가, 로또금액 1000원 상수화
+    private Map<Reward, Integer> result = new HashMap<>();
+
     private User(int money) {
         this.money = money;
         this.lottoCount = money / Lotto.PRICE;
@@ -76,5 +79,9 @@ public class User {
 
     public List<Lotto> getLotties() {
         return lottos;
+    }
+
+    public void addResult(Reward reward, int count) {
+        result.put(reward, count);
     }
 }
