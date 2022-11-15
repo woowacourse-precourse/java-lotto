@@ -11,6 +11,8 @@
   - [x] [당첨 번호를 입력받는다.](docs/viewREADME.md)
   - [x] [입력받은 번호를 검증한다.](docs/validateREADME.md)
 ### 구매한 로또 번호와 당첨 번호 비교
+- [x] 각 로또 번호와 당첨 번호를 비교한다.
+- [x] [발행한 모든 로또와 비교 후에 당첨 내역을 출력한다.](docs/viewREADME.md)
 
 
 

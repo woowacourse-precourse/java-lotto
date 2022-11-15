@@ -1,8 +1,22 @@
 package lotto.domain;
 
-public class LottoCompare {
-    public static void compare(LottoContainer lottoContainer,
-                               WinningNumbers winningNumbers) {
+import java.util.List;
 
+public class LottoCompare {
+    private final WinningNumbers winningNumbers;
+    private final List<Lotto> container;
+
+    public LottoCompare(List<Lotto> container,
+                        WinningNumbers winningNumbers) {
+        this.container = container;
+        this.winningNumbers = winningNumbers;
+    }
+
+    public void compare() {
+        CompareEachLotto.mapInit();
+        for (Lotto lotto : container) {
+            CompareEachLotto.compare(lotto, winningNumbers);
+        }
+        CompareEachLotto.printWinningHistory();
     }
 }
