@@ -10,7 +10,13 @@ import java.util.List;
 public class LottoTicket {
     public static int getLotteryTicketPrice() {
         System.out.println("구입금액을 입력해 주세요.\n");
-        int price = Integer.parseInt(Console.readLine());
+        String cash = Console.readLine();
+        for(int digitIndex=0; digitIndex<cash.length(); digitIndex++){
+            if(cash.charAt(digitIndex)<48 || cash.charAt(digitIndex)>57){
+                throw new IllegalArgumentException("[ERROR] 숫자만 입력해 주세요.");
+            }
+        }
+        int price = Integer.parseInt(cash);
         return price;
     }
 
