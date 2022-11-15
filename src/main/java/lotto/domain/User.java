@@ -32,4 +32,5 @@ public class User {
     public List<List<Integer>> getUserLottoNumber(){
         return this.userLottoNumber;
     }
+
 }
