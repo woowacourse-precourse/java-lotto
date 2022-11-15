@@ -26,7 +26,7 @@ public class LottoTicket {
 
     private Lotto createLotto() {
         Lotto lotto;
-        List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+        List<Integer> numbers = new ArrayList<>(Randoms.pickUniqueNumbersInRange(1, 45, 6));
         Collections.sort(numbers);
         lotto = new Lotto(numbers);
         return lotto;
@@ -43,25 +43,24 @@ public class LottoTicket {
     public Map<LottoRanking, Integer> compareLotto(List<Lotto> lottos) {
 
         Map<LottoRanking, Integer> winningList = new EnumMap<>(LottoRanking.class);
-
+        initWinningMap(winningList);
         for (Lotto lotto : lottos) {
             LottoRanking lottoRanking = lotto.compare(winnigLotto, bonusNum);
-
-            putInMapIfEmpty(winningList, lottoRanking);
-
             increasePrizeCount(winningList, lottoRanking);
         }
         return winningList;
     }
 
+    private void initWinningMap(Map<LottoRanking, Integer> winningList) {
+        LottoRanking[] valuse = LottoRanking.values();
+        for (LottoRanking lottoRanking : valuse) {
+            winningList.put(lottoRanking, 0);
+        }
+    }
+
     private void increasePrizeCount(Map<LottoRanking, Integer> winningList, LottoRanking lottoRanking) {
         int prizeCount = winningList.get(lottoRanking);
         winningList.put(lottoRanking, prizeCount + 1);
-    }
-
-    private void putInMapIfEmpty(Map<LottoRanking, Integer> winningList, LottoRanking lottoRanking) {
-        if (winningList.get(lottoRanking) == null)
-            winningList.put(lottoRanking, 0);
     }
 
 }
