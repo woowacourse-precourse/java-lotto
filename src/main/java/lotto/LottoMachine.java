@@ -39,12 +39,18 @@ public class LottoMachine extends AbstractLottoMachine {
 
     @Override
     protected StringBuilder askPrimaryNumbersWithUser() {
-        return null;
+        System.out.println("\n당첨 번호를 입력해 주세요.");
+        StringBuilder sb = new StringBuilder();
+        sb.append(Console.readLine());
+        return sb;
     }
 
     @Override
     protected String askBonusNumberWithUser(StringBuilder sb) {
-        return null;
+        System.out.println("\n보너스 번호를 입력해 주세요.");
+        sb.append(",");
+        sb.append(Console.readLine());
+        return sb.toString();
     }
 
     @Override
