@@ -54,4 +54,21 @@ public class InstitutionTest {
 
         Assertions.assertEquals(expectedWinner.getCount(), expected);
     }
+
+    @DisplayName("총 상금의 금액을 계산한다")
+    @Test
+    void calculateSumOfPrizeMoney() {
+        Prize prize = new Prize(List.of(1,2,3,4,5,6), 7);
+        Lotto lotto = new Lotto(List.of(1,2,3,4,5,7));
+
+        List<PrizeWinner> prizeWinners = Arrays.asList(PrizeWinner.values());
+        prizeWinners.get(prizeWinners.indexOf(PrizeWinner.FIRSTPLACE)).addCount();
+        prizeWinners.get(prizeWinners.indexOf(PrizeWinner.SECONDPLACE)).addCount();
+        prizeWinners.get(prizeWinners.indexOf(PrizeWinner.SECONDPLACE)).addCount();
+
+        Integer prizeMoneySum = Institution.getInstance().calculateSumOfPrizeMoney(prizeWinners);
+        Integer expectedPrizeMoneySum = 2000000000 + 30000000*2;
+        
+        Assertions.assertEquals(prizeMoneySum, expectedPrizeMoneySum);
+    }
 }
