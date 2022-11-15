@@ -6,8 +6,14 @@ public class Application {
     public static void main(String[] args) {
 
         LottoGame game = new LottoGame();
-        boolean go = game.start();
-        if (go == true) game.play();
-        if (go == true) game.result();
+
+        try {
+            game.start();
+            game.play();
+            game.result();
+
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+        }
     }
 }
