@@ -26,7 +26,11 @@ class WinLottoTest {
 
     @Test
     void createWinLottoByWrongNumber() {
-        assertThatThrownBy(() -> new WinLotto(List.of(1, -1, 3, 4, 5, 5)))
+        assertThatThrownBy(() -> {
+            WinLotto winLotto = new WinLotto(List.of(1, 2, 3, 4, 5, 6));
+
+            winLotto.validateBonusNumberUniqueness(1);
+        })
                 .isInstanceOf(IllegalArgumentException.class);
     }
 }
