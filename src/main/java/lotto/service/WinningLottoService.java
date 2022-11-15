@@ -3,9 +3,13 @@ package lotto.service;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.List;
+import lotto.domain.WinningLotto;
 import lotto.view.OutputView;
 
 public class WinningLottoService {
+    public static WinningLotto getWinningLotto() {
+        return new WinningLotto(getWinningNumbers(), getBonusNumber());
+    }
     private static List<Integer> getWinningNumbers() {
         List<Integer> winningNumbers = new ArrayList<>();
 
