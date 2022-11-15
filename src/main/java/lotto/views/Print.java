@@ -1,6 +1,7 @@
 package lotto.views;
 
 import lotto.model.Lotto;
+import lotto.model.Rank;
 import lotto.model.RankCounter;
 import lotto.utils.Rules;
 
@@ -14,6 +15,7 @@ public class Print {
     private static String MESSAGE_BONUS_NUMBER = "보너스 번호를 입력해주세요.";
     private static String MESSAGE_RANK_COUNTER_START = "당첨 통계\n---";
     private static String MESSAGE_TOTAL_YIELD = "총 수익률은 %s입니다.";
+    private static String FORM_RANK_COUNTER = "%s - %d개\n";
 
     public static void printInsertMoney() {
         System.out.println(MESSAGE_INSERT_MONEY);
@@ -51,7 +53,17 @@ public class Print {
     public static void printRankCounter(RankCounter rankCounter) {
         System.out.println();
         System.out.println(MESSAGE_RANK_COUNTER_START);
-        System.out.print(rankCounter);
+
+        StringBuilder stringBuilder = new StringBuilder();
+        List<Rank> sortedRank = Rank.getSortRanks();
+        String form;
+        Rank rank;
+        for (int rankIndex = 1; rankIndex < sortedRank.size(); rankIndex++) {
+            rank = sortedRank.get(rankIndex);
+            form = String.format(FORM_RANK_COUNTER, rank.getWinningContent(), rankCounter.countRank(rank));
+            stringBuilder.append(form);
+        }
+        System.out.print(stringBuilder.toString());
     }
 
     public static void printYield(double yield) {
