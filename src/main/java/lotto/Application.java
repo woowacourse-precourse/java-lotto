@@ -10,6 +10,7 @@ public class Application {
         Lotto lotto;
         int lottoCount;
         int bonusNum;
+        int totalPrice;
         List<Grade> gradeList;
 
         System.out.println("구입금액을 입력해 주세요.");
@@ -28,5 +29,7 @@ public class Application {
         lotto.addBonus(bonusNum);
 
         gradeList = lotto.saveResult(user.getBoughtLotto());
+        lotto.printResult(gradeList);
+        totalPrice = lotto.totalPrice(gradeList);
     }
 }
