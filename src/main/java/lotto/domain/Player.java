@@ -80,10 +80,36 @@ public class Player {
         playerLottos.stream().map(Lotto::getNumbers).forEach(System.out::println);
     }
 
-    public void printRank() {
+    public void printRankYield(HashMap<LottoResult, Integer> lottoResults, int buyMoney) {
+        System.out.println("당첨 통계\n" + "---");
+        long yield = 0;
+        float yieldF = 0f;
+
+        setLottoResultsRank(lottoResults);
+
+        for (Rank rank : Rank.values()) {
+            System.out.println(rank.getMessage());
+            yield += rank.getMoney() * rank.getAmount();
+        }
+        yieldF = yield / buyMoney * 100;
+        System.out.println("총 수익률은 "+ String.format("%.1f", yieldF) + "%" + "입니다.");
     }
 
-    public void printYield() {
+    private void setLottoResultsRank(HashMap<LottoResult, Integer> lottoResults) {
+        for (LottoResult lottoResult : lottoResults.keySet()) {
+            int sameCount = lottoResult.getSameCount();
+            boolean samePlusLotto = lottoResult.isSamePlusLotto();
+            setRankAmount(sameCount, samePlusLotto, lottoResults.get(lottoResult));
+        }
+    }
+
+    private void setRankAmount(int sameCount, boolean samePlusLotto, int amount) {
+        for (Rank rank : Rank.values()) {
+            if (sameCount == rank.getMatchCnt() && samePlusLotto == rank.isHavePlusLotto()) {
+                rank.setAmount(amount);
+                break;
+            }
+        }
     }
 
 }

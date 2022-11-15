@@ -33,5 +33,7 @@ public class Application {
 
         HashMap<LottoResult, Integer> lottoResults =
                 player.compareLottos(playerLottos, pickLotto.getNumbers(), pickPlusLotto.getPlusNumber());
+
+        player.printRankYield(lottoResults, money);
     }
 }
