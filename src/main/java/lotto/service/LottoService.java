@@ -9,8 +9,8 @@ import java.util.Map;
 
 public class LottoService {
 
-    private final static int PROFIT_CALCULATE_NUMBER = 10000;
-    private final static double ROUND_NUMBER = 100.00;
+    private final static int PROFIT_CALCULATE_NUMBER = 100;
+    private final static double ROUND_NUMBER = 10;
 
     private User user = new User();
     private LottoMachine lottoMachine;
@@ -80,8 +80,8 @@ public class LottoService {
     public double getProfitRate() {
         int totalReward = user.getRewardMoney();
         int totalMoney = user.getMoney();
-        return Math.round((double) totalReward / totalMoney * PROFIT_CALCULATE_NUMBER)
-                / ROUND_NUMBER;
+        return Math.round((double) totalReward / totalMoney
+                * PROFIT_CALCULATE_NUMBER * ROUND_NUMBER) / ROUND_NUMBER;
     }
 
     // 테스트를 위한 메서드
