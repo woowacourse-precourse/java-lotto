@@ -13,26 +13,17 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class PlayLottoTest {
 
-    @Test
-    void play() {
-    }
+    private Lotto lotto;
+    private User user;
+    private PlayLotto game;
 
     @Test
     void buy_lottery() {
     }
 
-    @Test
-    void print_lottery_nums() {
-    }
 
-    @Test
-    void create_lotto() {
-    }
 
-    @Test
-    void create_bonus() {
-    }
-
+    @DisplayName("로또 리스트 중에 로또 숫자들을 6자리 한번 맞췄을 때")
     @Test
     void compare_lottery() {
     }
@@ -71,12 +62,8 @@ class PlayLottoTest {
     void check_result() {
     }
 
-    @Test
-    void print_result() {
 
     }
-
-    @Test
     void print_yeild() {
     }
 
