@@ -37,4 +37,8 @@ public enum Rank {
     public int getReward() {
         return reward.getMoney();
     }
+
+    public int getMatchCount() {
+        return matchCount;
+    }
 }
