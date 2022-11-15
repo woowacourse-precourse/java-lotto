@@ -71,25 +71,31 @@ public class LottoManager {
     private void printResultMap() {
         System.out.println("당첨 통계");
         System.out.println("---");
-        for(var kind: kindOfResult){
-            System.out.println(kind.getMessage()+ " - "+lottoResultMap.get(kind)+"개");
+        for (var kind : kindOfResult) {
+            System.out.println(kind.getMessage() + " - " + lottoResultMap.get(kind) + "개");
         }
     }
 
-    private Long getResultCompensation(){
+    private Long getResultCompensation() {
         long sum = 0L;
-        for(var kind: kindOfResult){
-            sum += kind.getCompensation()*lottoResultMap.get(kind);
+        for (var kind : kindOfResult) {
+            sum += kind.getCompensation() * lottoResultMap.get(kind);
         }
         return sum;
     }
 
-    private Double getBenefitRatio(){
+    private Double getBenefitRatio() {
         return input.getRatio(benefit);
     }
+
+    private void printBenefitRatio() {
+        System.out.println("총 수익률은 " + Math.round(getBenefitRatio()) + "%입니다.");
+    }
+
     public void printStatistics() {
         checkWinningsInLottoList();
         printResultMap();
         benefit = new Money(getResultCompensation());
+        printBenefitRatio();
     }
 }

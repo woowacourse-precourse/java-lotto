@@ -5,6 +5,8 @@ public class Application {
         LottoManager lottoManager = new LottoManager();
         try {
             lottoManager.buyLotto();
+            lottoManager.generateAnswerNumbers();
+            lottoManager.printStatistics();
         }catch (IllegalArgumentException e){
             System.out.println(e.getMessage());
         }
