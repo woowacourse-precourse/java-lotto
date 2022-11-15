@@ -3,6 +3,7 @@ package lotto.controller;
 import camp.nextstep.edu.missionutils.Randoms;
 import lotto.model.Lotto;
 import lotto.model.MoneyParser;
+import lotto.model.WinningNumberParser;
 import lotto.view.Terminal;
 import lotto.view.View;
 
@@ -29,5 +30,8 @@ public class LottoSystem {
             boughtLottoes.add(new Lotto(numbers));
         }
         view.printLotto(boughtLottoes);
+
+        WinningNumberParser winningNumberParser = new WinningNumberParser();
+        List<Integer> winningNumbers = winningNumberParser.parse(view.requestWinningNumbers());
     }
 }
