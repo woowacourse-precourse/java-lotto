@@ -33,7 +33,7 @@ public class WiningNumberTest {
     @Test
     void createBonusNumberByDuplicatedNumber() {
         WiningNumber winingNumber = new WiningNumber(List.of(1, 2, 3, 4, 5, 6));
-        assertThatThrownBy(() -> winingNumber.setBonusNumber(6))
+        assertThatThrownBy(() -> winingNumber.setBonusNumber("6"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -41,7 +41,7 @@ public class WiningNumberTest {
     @Test
     void createBonusNumberByOverLength() {
         WiningNumber winingNumber = new WiningNumber(List.of(1, 2, 3, 4, 5, 6));
-        assertThatThrownBy(() -> winingNumber.setBonusNumber(50))
+        assertThatThrownBy(() -> winingNumber.setBonusNumber("50"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -68,7 +68,7 @@ public class WiningNumberTest {
         int bonusNumber = 7;
 
         //when
-        winingNumber.setBonusNumber(bonusNumber);
+        winingNumber.setBonusNumber(String.valueOf(bonusNumber));
 
         //then
         assertThat(winingNumber.getBonusNumber()).isEqualTo(bonusNumber);
