@@ -4,10 +4,13 @@ import lotto.Lotto;
 import lotto.LottoList;
 
 import java.math.BigInteger;
+import java.util.List;
 
 public class PrintGameInfo {
     public static final char ZERO = '0';
     public static final String ERROR = "[ERROR] ";
+    public static final String OPEN_SQUARE_BRACKETS = "[";
+    public static final String CLOSE_SQUARE_BRACKETS = "]";
     public static final String IS_NOT_DIGIT_STRING = "숫자 이외의 값이 존재합니다.";
     public static final String IS_EMPTY_STRING = "아무 값도 입력하지 않았습니다.";
     public static final String NOT_DIVDE_THOUSAND = "최소단위"+Integer.toString(LottoList.AMOUNT_UNIT)+"로 나눠지지 않습니다.";
@@ -23,6 +26,13 @@ public class PrintGameInfo {
 
     public static void purchaseCount(BigInteger count) {
         System.out.println(count+PURCHASE_COUNT);
+    }
+
+    public static void lottoInfoList(LottoList lottos) {
+        for (Lotto lotto : lottos.getLottos()) {
+            String lottoNumbers = lotto.numbersToString();
+            System.out.println(OPEN_SQUARE_BRACKETS+lottoNumbers+CLOSE_SQUARE_BRACKETS);
+        }
     }
 
     public static String getIsNotDigitString() {

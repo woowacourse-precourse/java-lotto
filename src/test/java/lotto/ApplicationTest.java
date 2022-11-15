@@ -1,5 +1,6 @@
 package lotto;
 
+import Info.PrintGameInfo;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -91,7 +92,15 @@ class ApplicationTest extends NsTest {
 
     @Test
     void 로또랜덤갯수생성_테스트() {
-        assertThat(lottos.getLottoAmount()).isEqualTo(BigInteger.valueOf(8L));
+        assertThat(lottos.getLottoCount()).isEqualTo(BigInteger.valueOf(8L));
+    }
+
+    @Test
+    void 로또리스트출력_테스트() {
+        PrintGameInfo.lottoInfoList(lottos);
+        assertThat(output()).contains(
+                "[", "]"
+        );
     }
 
     @Override

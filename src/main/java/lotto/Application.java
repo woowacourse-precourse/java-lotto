@@ -20,6 +20,7 @@ public class Application {
 
 
             PrintGameInfo.purchaseCount(userLotto.getLottoCount());
+            PrintGameInfo.lottoInfoList(userLotto);
 
         } catch (IllegalArgumentException exception) {
             exception.printStackTrace();

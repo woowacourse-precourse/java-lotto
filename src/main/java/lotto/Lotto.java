@@ -3,6 +3,7 @@ package lotto;
 import Info.PrintGameInfo;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Lotto {
     public static final int LOTTO_MAX_NUMBER = 45; // 로또 최대 숫자
@@ -24,6 +25,11 @@ public class Lotto {
     }
 
     // TODO: 추가 기능 구현
+
+    public List<Integer> getNumbers() {
+        return numbers;
+    }
+
     private void outOfRangeExceptioin(List<Integer> numbers) {
         for(Integer number : numbers) {
             if(isOutOfRange(number)) {
@@ -32,8 +38,16 @@ public class Lotto {
         }
     }
 
-    private boolean isOutOfRange(Integer number) {
+    private static boolean isOutOfRange(Integer number) {
         return number > LOTTO_MAX_NUMBER || number < LOTTO_MIN_NUMBER;
     }
 
+    public String numbersToString() {
+        List<String> numberList = getStringNumbers();
+        return String.join(", ", numberList);
+    }
+
+    private List<String> getStringNumbers() {
+        return numbers.stream().map(String::valueOf).collect(Collectors.toList());
+    }
 }
