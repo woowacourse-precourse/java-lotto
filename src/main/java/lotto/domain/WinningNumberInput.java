@@ -14,7 +14,7 @@ public class WinningNumberInput {
 
     private static final String BONUS_NUMBER_INPUT_MESSAGE = "보너스 번호를 입력해 주세요.";
 
-    public Lotto winningNumbers;
+
 
 
     public static Lotto winningNumberInput(){
@@ -34,25 +34,13 @@ public class WinningNumberInput {
         }
     }
 
-    public int BonusNumberInput() {
+    public static int BonusNumberInput() {
         System.out.println(BONUS_NUMBER_INPUT_MESSAGE);
         int bonusNumber = convertNumbers(Console.readLine()).get(0);
-        checkBonusNumber(bonusNumber);
 
         return bonusNumber;
     }
 
-    private void checkBonusNumber(int bonusNumber) {
-        if (bonusNumber < 1 || bonusNumber > 45) {
-            throw new IllegalArgumentException(NUMBER_RANGE_ERROR_MESSAGE.getMessage());
-        }
-
-        for (int number : winningNumbers.getNumbers()) {
-            if (number == bonusNumber) {
-                throw new IllegalArgumentException(BONUS_NUMBER_DUPLICATION_ERROR_MESSAGE.getMessage());
-            }
-        }
-    }
 }
 
 
