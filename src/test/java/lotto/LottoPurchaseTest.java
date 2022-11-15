@@ -9,9 +9,9 @@ import java.io.PrintStream;
 
 import java.util.List;
 
-import lotto.domain.Lotto;
-import lotto.domain.Lottos;
-import lotto.domain.LottoPurchase;
+import lotto.domain.lotto.Lotto;
+import lotto.domain.lotto.Lottos;
+import lotto.domain.lottoPublication.LottoPurchase;
 
 import lotto.views.LottoPurchaseView;
 

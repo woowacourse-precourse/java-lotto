@@ -9,13 +9,13 @@ import static lotto.views.LottoWinningView.lottoWinningNumberRequestMessage;
 
 import java.util.List;
 
-import lotto.domain.LottoPublication;
-import lotto.domain.LottoPurchase;
-import lotto.domain.LottoRank;
-import lotto.domain.LottoStatistic;
-import lotto.domain.LottoWinNumbers;
-import lotto.domain.LottoYield;
-import lotto.domain.Lottos;
+import lotto.domain.lottoPublication.LottoPublication;
+import lotto.domain.lottoPublication.LottoPurchase;
+import lotto.domain.lottoResult.LottoRank;
+import lotto.domain.lottoResult.LottoStatistic;
+import lotto.domain.lotto.LottoWinNumbers;
+import lotto.domain.lottoResult.LottoYield;
+import lotto.domain.lotto.Lottos;
 
 import lotto.utils.Constants;
 import lotto.utils.InputPreprocessUtils;

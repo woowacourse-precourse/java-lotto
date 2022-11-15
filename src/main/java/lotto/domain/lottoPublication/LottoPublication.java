@@ -1,9 +1,11 @@
-package lotto.domain;
+package lotto.domain.lottoPublication;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.List;
 
+import lotto.domain.lotto.Lottos;
+import lotto.domain.lotto.Lotto;
 import lotto.utils.Constants;
 
 public class LottoPublication {

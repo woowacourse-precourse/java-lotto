@@ -1,11 +1,11 @@
-package lotto.domain;
+package lotto.domain.lotto;
 
 import java.util.List;
 
 import lotto.utils.Constants;
 import lotto.utils.ValidateUtils;
 
-public class LottoWinNumbers extends Lotto{
+public class LottoWinNumbers extends Lotto {
     private int bonus;
 
     public LottoWinNumbers(List<Integer> numbers){

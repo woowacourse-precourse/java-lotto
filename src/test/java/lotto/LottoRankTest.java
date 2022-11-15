@@ -4,12 +4,12 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.List;
 
-import lotto.domain.Lotto;
-import lotto.domain.LottoRank;
-import lotto.domain.LottoStatistic;
-import lotto.domain.LottoWinNumbers;
+import lotto.domain.lotto.Lotto;
+import lotto.domain.lottoResult.LottoRank;
+import lotto.domain.lottoResult.LottoStatistic;
+import lotto.domain.lotto.LottoWinNumbers;
 
-import lotto.domain.Lottos;
+import lotto.domain.lotto.Lottos;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

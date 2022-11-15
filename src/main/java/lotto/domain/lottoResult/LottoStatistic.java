@@ -1,6 +1,9 @@
-package lotto.domain;
+package lotto.domain.lottoResult;
 
 import java.util.Arrays;
+import lotto.domain.lotto.LottoWinNumbers;
+import lotto.domain.lotto.Lotto;
+import lotto.domain.lotto.Lottos;
 
 public class LottoStatistic {
 

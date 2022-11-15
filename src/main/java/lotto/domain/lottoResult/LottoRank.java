@@ -1,4 +1,4 @@
-package lotto.domain;
+package lotto.domain.lottoResult;
 
 import lotto.utils.Constants;
 

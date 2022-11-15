@@ -4,9 +4,9 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.List;
 
-import lotto.domain.Lotto;
-import lotto.domain.LottoPublication;
-import lotto.domain.Lottos;
+import lotto.domain.lotto.Lotto;
+import lotto.domain.lottoPublication.LottoPublication;
+import lotto.domain.lotto.Lottos;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

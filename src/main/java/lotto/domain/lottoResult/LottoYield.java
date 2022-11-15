@@ -1,4 +1,5 @@
-package lotto.domain;
+package lotto.domain.lottoResult;
+
 
 public class LottoYield {
     private static final int MULTIPLICATION_RATIO = 100;

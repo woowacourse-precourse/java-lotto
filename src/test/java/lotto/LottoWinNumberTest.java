@@ -5,7 +5,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import java.util.List;
 
-import lotto.domain.LottoWinNumbers;
+import lotto.domain.lotto.LottoWinNumbers;
 import lotto.utils.InputPreprocessUtils;
 
 import org.junit.jupiter.api.DisplayName;

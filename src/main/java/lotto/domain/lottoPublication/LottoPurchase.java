@@ -1,4 +1,4 @@
-package lotto.domain;
+package lotto.domain.lottoPublication;
 
 import lotto.utils.Constants;
 import lotto.utils.ValidateUtils;

@@ -2,7 +2,7 @@ package lotto.views;
 
 import camp.nextstep.edu.missionutils.Console;
 
-import lotto.domain.Lottos;
+import lotto.domain.lotto.Lottos;
 import lotto.utils.Constants;
 
 public class LottoPurchaseView {

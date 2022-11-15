@@ -1,6 +1,6 @@
 package lotto.views;
 
-import lotto.domain.LottoRank;
+import lotto.domain.lottoResult.LottoRank;
 
 public class LottoStatisticsView {
     public static void printLottoWinResult(){
