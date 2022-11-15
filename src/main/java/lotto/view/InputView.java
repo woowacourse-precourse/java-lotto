@@ -19,9 +19,13 @@ public class InputView {
 
 	public static int inputUserMoney() {
 		System.out.println(INPUT_USER_MONEY_MESSAGE);
+		return validInputMoney();
+	}
+
+	private static int validInputMoney() {
 		int money = Constant.ZERO_NUMBER;
 		try {
-			money = Integer.parseInt(Console.readLine());
+			money = Integer.parseInt(getInput());
 		} catch (IllegalArgumentException e) {
 			System.out.println(InputMoneyError.INPUT_MONEY_NUMBER_ERROR_MESSAGE);
 		}
@@ -29,10 +33,15 @@ public class InputView {
 	}
 
 	public static List<Integer> inputWinningNumber() {
-		List<Integer> winNumbers = new ArrayList<>();
 		System.out.println(INPUT_WINNING_NUMBER_MESSAGE);
+		return validInputWinningNumber();
+	}
+
+	private static List<Integer> validInputWinningNumber() {
+		List<Integer> winNumbers = new ArrayList<>();
 		try {
-			winNumbers = Arrays.stream(Console.readLine().split(INPUT_WIN_NUMBER_DIVIDE_STRING))
+			String input = getInput();
+			winNumbers = Arrays.stream(input.split(INPUT_WIN_NUMBER_DIVIDE_STRING))
 				.map(Integer::parseInt).collect(Collectors.toList());
 		} catch (IllegalArgumentException e) {
 			System.out.println(WinningNumberError.INPUT_WIN_NUMBER_ERROR_MESSAGE);
@@ -41,13 +50,21 @@ public class InputView {
 	}
 
 	public static int inputBonusNumber() {
-		int bonusNumber = Constant.ZERO_NUMBER;
 		System.out.println(INPUT_BONUS_NUMBER_MESSAGE);
+		return validInputBonusNumber();
+	}
+
+	private static int validInputBonusNumber() {
+		int bonusNumber = Constant.ZERO_NUMBER;
 		try {
-			bonusNumber = Integer.parseInt(Console.readLine());
+			bonusNumber = Integer.parseInt(getInput());
 		} catch (IllegalArgumentException e) {
 			System.out.println(BonusNumberError.INPUT_BONUS_NUMBER_ERROR_MESSAGE);
 		}
 		return bonusNumber;
+	}
+
+	private static String getInput() {
+		return Console.readLine();
 	}
 }
