@@ -37,7 +37,8 @@ public class RankCalculator {
                 .filter(userNumber.getWinNumbers().getNumbers()::contains)
                 .count();
 
-        return convertRank(sameCount, compareBonusNumber(lottoTicket, userNumber.getBonusNumber()));
+        return convertRank(sameCount,
+                compareBonusNumber(lottoTicket, userNumber.getBonusNumber()));
     }
 
     private Rank convertRank(int count, boolean isSecond) {

@@ -1,7 +1,7 @@
 package lotto.domain;
 
 public class LottoMachine {
-    private static final int UNIT_PRICE = 1000;
+    private static final int PRICE_UNIT = 1000;
 
     private final int purchasePrice;
 
@@ -19,19 +19,19 @@ public class LottoMachine {
     }
 
     private void validateRange(int inputPrice) {
-        if (inputPrice < UNIT_PRICE) {
+        if (inputPrice < PRICE_UNIT) {
             throw new IllegalArgumentException(ErrorMessage.PURCHASE_PRICE_RANGE.getMessage());
         }
     }
 
     private void validateUnit(int inputPrice) {
-        if (inputPrice % UNIT_PRICE != 0) {
+        if (inputPrice % PRICE_UNIT != 0) {
             throw new IllegalArgumentException(ErrorMessage.PURCHASE_PRICE_UNIT.getMessage());
         }
     }
 
     public int getRound() {
-        return purchasePrice / UNIT_PRICE;
+        return purchasePrice / PRICE_UNIT;
     }
 
     public int getPurchasePrice() {
