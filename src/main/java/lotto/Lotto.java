@@ -17,7 +17,7 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) throws IllegalArgumentException{
-        if (numbers.size() != 6 || isDuplicate(numbers)) {
+        if (numbers.size() != 6 || isDuplicate(numbers) || isOverRange(numbers)) {
             throw new IllegalArgumentException("[ERROR] 잘못된 로또 번호 추출");
         }
     }
@@ -25,6 +25,15 @@ public class Lotto {
     private boolean isDuplicate(List<Integer> numbers){
         for (int i = 0; i < numbers.size(); i++){
             if (haveNumberInRange(numbers, numbers.get(i), i + 1, numbers.size())){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private boolean isOverRange(List<Integer> numbers){
+        for (int number : numbers){
+            if (number < 1 || number > 45){
                 return true;
             }
         }

@@ -25,8 +25,8 @@ public class LottoManager {
             throw new IllegalArgumentException("[ERROR] 1000원 단위 금액으로 입력해주십시오.");
         }
         this.inputMoney = money;
-        //lottos.add(new Lotto(new ArrayList<>(List.of(1, 3, 5, 14, 22, 45))));
         try{
+            //lottos.add(new Lotto(new ArrayList<>(List.of(1, 3, 5, 14, 22, 46))));
             makeLottos(money / 1000);
         }
         catch (IllegalArgumentException e){
