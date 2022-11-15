@@ -13,8 +13,11 @@ public class Manager {
 	}
 
 	public void setLottos(int count) {
+		lottos.clear();
 		for (int i = 0; i < count; i++) {
 			lottos.add(makeLotto());
 		}
 	}
+	
+	
 }
