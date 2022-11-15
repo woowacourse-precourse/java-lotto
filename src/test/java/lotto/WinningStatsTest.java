@@ -23,7 +23,7 @@ class WinningStatsTest {
 
     @DisplayName("알맞은 당첨이 추가되는지 확인")
     @ParameterizedTest
-    @MethodSource("WinningData")
+    @MethodSource("winningData")
     public void rightWinningStat(List<Integer> winningNumber, int bonus, int first, int second, int third, int forth, int fifth) {
         Lotto winning = new Lotto(winningNumber);
 
@@ -36,7 +36,7 @@ class WinningStatsTest {
             put(5,fifth);
         }};
 
-        WinningStats winningStats = new WinningStats(purchase, winning, bonus);
+        new WinningStats(purchase, winning, bonus);
 
         for(WinningStats.Winning w : WinningStats.Winning.values()){
             assertThat(w.count).isEqualTo(map.get(w.rank));
@@ -56,7 +56,7 @@ class WinningStatsTest {
 
     @DisplayName("수익률 계산이 알맞게 작동하는지 확인")
     @ParameterizedTest
-    @MethodSource("EarningRateData")
+    @MethodSource("earningRateData")
     void rightEarningRate(List<Integer> winningNumber, int bonus, double earningRate) {
         Lotto winning = new Lotto(winningNumber);
         WinningStats winningStats = new WinningStats(purchase, winning, bonus);
