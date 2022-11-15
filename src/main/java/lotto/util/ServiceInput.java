@@ -50,22 +50,6 @@ public class ServiceInput {
         }
     }
 
-    public static int getBonusNumber(){
-        String inputBonusNumber = getInputBonusNumber();
-
-        int bonusNumber = Converter.StringToInteger(inputBonusNumber);
-        validateBonusNumber(bonusNumber);
-
-        return bonusNumber;
-    }
-
-    private static void validateBonusNumber(int bonusNumber) {
-        if (Validator.isRangeOut(bonusNumber)){
-            Message.printInputErrorRangeOut();
-            throw new IllegalArgumentException();
-        }
-    }
-
     private static String getInputWinningNumbers() {
         String inputWinningNumbers = Console.readLine();
         validateInputWinningNumbers(inputWinningNumbers);
@@ -101,7 +85,7 @@ public class ServiceInput {
         }
     }
 
-    private static String getInputBonusNumber(){
+    public static String getInputBonusNumber(){
         String inputBonusNumber = Console.readLine();
         validateInputBonusNumber(inputBonusNumber);
 

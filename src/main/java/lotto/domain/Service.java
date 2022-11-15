@@ -1,6 +1,7 @@
 package lotto.domain;
 
 import lotto.constant.Message;
+import lotto.util.Converter;
 import lotto.util.ServiceInput;
 import lotto.util.Validator;
 
@@ -11,7 +12,7 @@ public class Service {
 
     private List<Lotto> lottoTickets;
     private List<Integer> winningNumbers;
-    private int bonusNumber;
+    private BonusNumber bonusNumber;
 
     public Service(int nLottoTickets){
         setLottoTickets(nLottoTickets);
@@ -42,10 +43,11 @@ public class Service {
     }
 
     private void setBonusNumber(){
-        int bonusNumber = ServiceInput.getBonusNumber();
-        validateBonusNumberInWinningNumbers(bonusNumber);
+        String inputBonusNumber = ServiceInput.getInputBonusNumber();
+        int bonusNumber = Converter.StringToInteger(inputBonusNumber);
 
-        this.bonusNumber = bonusNumber;
+        validateBonusNumberInWinningNumbers(bonusNumber);
+        this.bonusNumber = new BonusNumber(bonusNumber);
     }
 
     private void validateBonusNumberInWinningNumbers(int bonusNumber){
@@ -70,6 +72,6 @@ public class Service {
     }
 
     public int getBonusNumber() {
-        return bonusNumber;
+        return bonusNumber.getNumber();
     }
 }
