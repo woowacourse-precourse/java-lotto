@@ -54,13 +54,13 @@ public class LottoController {
 
     public void getUserLottoNumbers() {
         userLottoNumbers = InputView.requestLottoNumbers();
+        Validation.validateNumberDuplicate(userLottoNumbers);
     }
 
     public void getUserBonusNumber() {
         int bonusNumber=InputView.requestBonusNumber();
         Validation.validateBonus(bonusNumber, userLottoNumbers);
         userLottoNumbers.add(bonusNumber);
-        Validation.validateNumberDuplicate(userLottoNumbers);
     }
 
     public void compareLottos() {
