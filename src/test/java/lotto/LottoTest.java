@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
+import static lotto.Lotto.*;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class LottoTest {
@@ -23,5 +24,11 @@ class LottoTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
-    // 아래에 추가 테스트 작성 가능
+    @DisplayName("1~45")
+    @Test
+    void validateNumberVariationTest() {
+        Lotto testLotto = new Lotto(List.of(1, 2, 3, 4, 5, 1000));
+        assertThatThrownBy(() -> validateNumberVariation(testLotto))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
