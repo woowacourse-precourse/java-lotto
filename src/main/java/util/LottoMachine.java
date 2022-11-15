@@ -4,6 +4,8 @@ import camp.nextstep.edu.missionutils.Randoms;
 import domain.Lotto;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class LottoMachine {
@@ -16,7 +18,9 @@ public class LottoMachine {
     }
 
     private static List<Integer> getRandomLotto() {
-        List<Integer> prelist = Randoms.pickUniqueNumbersInRange(1, 45, 6);
-        return prelist.subList(0, 6);
+        List<Integer> prelist = new ArrayList<>();
+        prelist.addAll(Randoms.pickUniqueNumbersInRange(1, 45, 6).subList(0, 6));
+        prelist.sort(Comparator.naturalOrder());
+        return prelist;
     }
 }
