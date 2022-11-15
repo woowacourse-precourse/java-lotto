@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
@@ -13,13 +14,14 @@ public class Prize {
     static List<Lotto> myLottos = new ArrayList<>();
 
     static final String ENTER_MONEY = "구매금액을 입력해 주세요.";
-    static final String PURCHASE_LOTTO = "%d개를 구매했습니다.";
+    static final String PURCHASE_LOTTO = "%d개를 구매했습니다.\n";
     static final int LOTTO_COUNT = 1000;
 
     public Prize() {
         int lottoCount = purchaseLotto();
         System.out.printf(PURCHASE_LOTTO, lottoCount);
-        System.out.println(makeMyLotto(lottoCount));
+        List<Lotto> myLotto = makeMyLotto(lottoCount);
+        showMyLotto(myLotto);
     }
 
     public int purchaseLotto() {
@@ -33,10 +35,17 @@ public class Prize {
     public List<Lotto> makeMyLotto(Integer lottoCount) {
         for (int i = 1; i <= lottoCount; i++){
             List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+            Collections.sort(numbers);
             Lotto lotto = new Lotto(numbers);
             myLottos.add(lotto);
         }
         return myLottos;
+    }
+
+    public void showMyLotto(List<Lotto> myLottos){
+        for(Lotto lotto : myLottos) {
+            System.out.println(lotto.getLotto());
+        }
     }
 
     private void validateMoney(String moneyValue) {
