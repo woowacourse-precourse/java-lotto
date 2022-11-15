@@ -1,6 +1,7 @@
 package lotto.service;
 
 import static java.lang.String.format;
+import static lotto.constant.LottoConstant.AMOUNT_LIMIT;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,7 +20,7 @@ public class LottoService {
     }
 
     public void generateByAmount(int amount) {
-        int count = amount / 1000;
+        int count = amount / AMOUNT_LIMIT;
         List<Lotto> lottos = new ArrayList<>();
 
         for (int i = 0; i < count; i++) {
@@ -40,19 +41,17 @@ public class LottoService {
         return sb.toString();
     }
 
-    public String 당첨계산(List<Integer> winningNumbers, int bonusNumber) {
+    public String checkWinning(List<Integer> winningNumbers, int bonusNumber) {
         customer.checkJackpot(winningNumbers, bonusNumber);
         int[] winnings = customer.getWinningList();
-        return "당첨 통계\n"
-                + "---\n"
-                + "3개 일치 (5,000원) - " + winnings[4] + "개\n"
+        return "3개 일치 (5,000원) - " + winnings[4] + "개\n"
                 + "4개 일치 (50,000원) - " + winnings[3] + "개\n"
                 + "5개 일치 (1,500,000원) - " + winnings[2] + "개\n"
                 + "5개 일치, 보너스 볼 일치 (30,000,000원) - " + winnings[1] + "개\n"
                 + "6개 일치 (2,000,000,000원) - " + winnings[0] + "개\n";
     }
 
-    public String calculateRate(int amount){
+    public String calculateRate(int amount) {
         double rate = customer.calculateRate(amount);
         String rateString = format("%.1f", rate);
         return "총 수익률은 " + rateString + "%입니다.\n";
