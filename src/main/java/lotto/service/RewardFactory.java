@@ -5,7 +5,7 @@ import lotto.domain.Reward;
 public class RewardFactory {
     public static Reward createRewardByLottoCount(int lottoCount) {
         if (lottoCount == 6) {
-            return Reward.FIFTH_REWARD;
+            return Reward.FIRST_REWARD;
         }
         if (lottoCount == 5) {
             return Reward.THIRD_REWARD;
