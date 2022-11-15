@@ -78,4 +78,11 @@ class CheckTest {
         boolean checkRange = check.checkRange(rangeNumber);
         assertThat(checkRange).isEqualTo(false);
     }
+
+    @DisplayName("true case: 1000으로 나누었을때 나머지 존재 테스트")
+    @Test
+    void haveRest() {
+        boolean haveRest = check.haveRest(1001);
+        assertThat(haveRest).isEqualTo(true);
+    }
 }
