@@ -1,5 +1,6 @@
 package lotto;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class CalculatingLotto {
@@ -47,17 +48,20 @@ public class CalculatingLotto {
         if(sameNumCount==5){
             if(!bonusCount){
                 return Rank.THIRD.ordinal();
-            }
-            return Rank.SECOND.ordinal();
+            }return Rank.SECOND.ordinal();
         }
         if(sameNumCount==6){
             return Rank.FIRST.ordinal();
-        }
-        return Rank.FAILED.ordinal();
+        }return Rank.FAILED.ordinal();
     }
 
     public List<Integer> calculateAllLotto(List<Integer> winningLotto, int bonus, List<List<Integer>> allLotto){
-        return null;
+        List<Integer> allRank=new ArrayList<>();
+        for(int index=0;index<allLotto.size();index++){
+            int rank=calculateLottoRank(winningLotto,bonus,allLotto.get(index));
+            allRank.add(rank);
+        }
+        return allRank;
     }
 
 }
