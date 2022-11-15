@@ -11,9 +11,7 @@ public class LottoStore {
 
     public static void start() {
         Money money = new Money(LottoPrinter.inputer("구입금액을 입력해 주세요."));
-
-        int lottoCount = (int)(money.getMoney() / 1000);
-        List<Lotto> lottos = addLotto(lottoCount);
+        List<Lotto> lottos = addLotto(money);
         LottoPrinter.lottosPrint(lottos);
 
         Lotto winningNumbers = getWinningNumbers(LottoPrinter.inputer("당첨 번호를 입력해 주세요."));
@@ -27,7 +25,9 @@ public class LottoStore {
         LottoPrinter.revenueResultPrint(calculationResult);
     }
 
-    private static List<Lotto> addLotto(int lottoCount) {
+    private static List<Lotto> addLotto(Money money) {
+        int lottoCount = (int)(money.getMoney() / 1000);
+
         ArrayList<Lotto> lottos = new ArrayList<>();
         for (int i=0; i<lottoCount; i++) {
             List<Integer> randomNumbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
