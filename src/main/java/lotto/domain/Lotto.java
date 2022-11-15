@@ -37,4 +37,9 @@ public class Lotto {
     public String toString() {
         return numbers.toString();
     }
+
+    public int getSumOfNumbers() {
+        return numbers.stream()
+            .reduce(0, Integer::sum);
+    }
 }
