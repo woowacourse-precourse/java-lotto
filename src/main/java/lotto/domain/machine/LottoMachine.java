@@ -8,7 +8,7 @@ public class LottoMachine {
 	private String bonusNumber;
 
 	public LottoMachine(String winLottoNumber, String bonusNumber) {
-		this.lotto = new Lotto(winLottoNumber,bonusNumber);
+		this.lotto = new Lotto(winLottoNumber, bonusNumber);
 		this.bonusNumber = bonusNumber;
 	}
 

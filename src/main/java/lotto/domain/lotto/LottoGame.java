@@ -19,8 +19,8 @@ public class LottoGame {
 		String winLottoNumber = askWinLottoNumber();
 		String bonusNumber = askBonusNumber();
 		System.out.println();
-		lottoMachine = new LottoMachine(winLottoNumber,bonusNumber);
-		WinningStats winningStats = new WinningStats(person,lottoMachine);
+		lottoMachine = new LottoMachine(winLottoNumber, bonusNumber);
+		WinningStats winningStats = new WinningStats(person, lottoMachine);
 		winningStats.printWinningStats();
 
 	}
@@ -30,7 +30,8 @@ public class LottoGame {
 		System.out.println("구입금액을 입력해 주세요.");
 		return Console.readLine();
 	}
-	public void printPurchaseLotto(String money){
+
+	public void printPurchaseLotto(String money) {
 		person = new Person(money);
 		lottos = person.buyLotto();
 		int lottoCount = lottos.size();

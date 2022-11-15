@@ -28,11 +28,11 @@ public class Lotto {
 		this.numbers = numbers;
 	}
 
-	public Lotto(String winLottoNumber,String bonusNumber) {
+	public Lotto(String winLottoNumber, String bonusNumber) {
 		isNumber(winLottoNumber);
 		isNumber(bonusNumber);
 		List<Integer> winLottoNumbers = convertStringToList(winLottoNumber);
-		isAlreadyIncludeNumber(winLottoNumbers,bonusNumber);
+		isAlreadyIncludeNumber(winLottoNumbers, bonusNumber);
 		validate(winLottoNumbers);
 		this.numbers = winLottoNumbers;
 	}
@@ -67,10 +67,10 @@ public class Lotto {
 	}
 
 	public void isAnotherNumber(List<Integer> numbers) {
-		int removeDisticntSize  = (int) numbers.stream()
+		int removeDisticntSize = (int) numbers.stream()
 				.distinct()
-                .count();
-        int size = numbers.size();
+				.count();
+		int size = numbers.size();
 		if (removeDisticntSize != size) {
 			throw new IllegalArgumentException(NOT_THE_ANOTHER_NUMBER);
 		}
@@ -83,11 +83,11 @@ public class Lotto {
 				.collect(Collectors.toList());
 	}
 
-	public void isAlreadyIncludeNumber(List<Integer> numbers,String number) {
+	public void isAlreadyIncludeNumber(List<Integer> numbers, String number) {
 		Integer num = Integer.parseInt(number);
-		if (numbers.contains(num)){
-            throw new IllegalArgumentException(NOT_THE_ANOTHER_NUMBER);
-        }
+		if (numbers.contains(num)) {
+			throw new IllegalArgumentException(NOT_THE_ANOTHER_NUMBER);
+		}
 	}
 
 

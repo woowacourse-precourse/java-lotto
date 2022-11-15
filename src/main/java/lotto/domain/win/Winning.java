@@ -21,7 +21,8 @@ public enum Winning {
 		this.matchCount = matchCount;
 		this.money = money;
 	}
-	public static Winning getWinning(int matchCount,boolean containsBonusNumber){
+
+	public static Winning getWinning(int matchCount, boolean containsBonusNumber) {
 		if (matchCount == THIRD.matchCount && containsBonusNumber) {
 			return SECOND;
 		}

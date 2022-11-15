@@ -20,12 +20,13 @@ public class LottoComparator {
 		}
 		return false;
 	}
+
 	public int getMatchCount(Lotto lotto) {
 		int matchCount = 0;
 		List<Integer> numbers = lotto.getNumbers();
 		List<Integer> winningNumbers = lottoMachine.getLotto().getNumbers();
-		for(Integer number : numbers){
-			if(winningNumbers.contains(number)){
+		for (Integer number : numbers) {
+			if (winningNumbers.contains(number)) {
 				matchCount++;
 			}
 		}
