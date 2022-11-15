@@ -3,32 +3,40 @@ package lotto;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+import static java.lang.Integer.parseInt;
+
 public class Prize {
+    static List<Lotto> myLottos = new ArrayList<>();
 
     static final String ENTER_MONEY = "구매금액을 입력해 주세요.";
     static final String PURCHASE_LOTTO = "%d개를 구매했습니다.";
     static final int LOTTO_COUNT = 1000;
 
     public Prize() {
-        Integer lottoCount = purchaseLotto();
+        int lottoCount = purchaseLotto();
         System.out.printf(PURCHASE_LOTTO, lottoCount);
-        makeMyLotto();
+        System.out.println(makeMyLotto(lottoCount));
     }
 
-    public Integer purchaseLotto(){
+    public int purchaseLotto() {
         System.out.println(ENTER_MONEY);
         String inputMoney = Console.readLine();
         validateMoney(inputMoney);
-        int money = Integer.parseInt(inputMoney);
+        int money = parseInt(inputMoney);
         return money / LOTTO_COUNT;
     }
 
-    public void makeMyLotto(){
-        List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
-        System.out.println(numbers);
+    public List<Lotto> makeMyLotto(Integer lottoCount) {
+        for (int i = 1; i <= lottoCount; i++){
+            List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+            Lotto lotto = new Lotto(numbers);
+            myLottos.add(lotto);
+        }
+        return myLottos;
     }
 
     private void validateMoney(String moneyValue) {
@@ -37,12 +45,12 @@ public class Prize {
         }
 
         try {
-            Integer.parseInt(moneyValue);
+            parseInt(moneyValue);
         } catch (Exception e) {
             throw new IllegalArgumentException("[ERROR] 숫자만 입력해주세요.");
         }
 
-        int money = Integer.parseInt(moneyValue);
+        int money = parseInt(moneyValue);
         if ((money % 1000) != 0) {
             throw new IllegalArgumentException("[ERROR] 입력 가능한 최소 단위는 1,000원 입니다.");
         }
