@@ -32,10 +32,7 @@ public class LottoMachine {
     }
 
     private static int countPerRank(Lotto winningNums, Lotto lotto) {
-        return (int) lotto.getNumbers()
-            .stream()
-            .filter(number -> winningNums.getNumbers().contains(number))
-            .count();
+        return Lotto.countCommonNumber(winningNums, lotto);
     }
 
     private static int addPrizeCount(Map<Prize, Integer> prizeBoard, Prize prize) {
