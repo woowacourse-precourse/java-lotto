@@ -11,12 +11,13 @@ import static lotto.domain.exception.ErrorType.ERROR_UNDER_LOTTO_PRICE;
 import static lotto.domain.Lotto.*;
 
 public class Buyer {
+    private static final int COUNT_START_VALUE = 0;
     private final List<Lotto> lottos;
 
     public Buyer(int won) {
         int numberOfLottos = calculateNumberOfLottos(won);
         List<Lotto> lottos = new ArrayList<>();
-        for (int count = 0; count < numberOfLottos; count++) {
+        for (int count = COUNT_START_VALUE; count < numberOfLottos; count++) {
             List<Integer> lottoNumbers = new ArrayList<>(pickUniqueNumbersInRange(LOTTO_START_NUMBER, LOTTO_END_NUMBER, LOTTO_SIZE));
             ascendingSort(lottoNumbers);
             Lotto lotto = new Lotto(lottoNumbers);
