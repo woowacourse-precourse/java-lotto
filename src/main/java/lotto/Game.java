@@ -54,6 +54,16 @@ public class Game {
         return 0;
     }
 
+    public void getStatistics(List<Integer> grades, String profitRate) {
+        System.out.println(STATISTICS.getMessage());
+        System.out.println(FIFTH.getMessage() + grades.get(5) + COUNT.getMessage());
+        System.out.println(FOURTH.getMessage() + grades.get(4) + COUNT.getMessage());
+        System.out.println(THIRD.getMessage() + grades.get(3) + COUNT.getMessage());
+        System.out.println(SECOND.getMessage() + grades.get(2) + COUNT.getMessage());
+        System.out.println(FIRST.getMessage() + grades.get(1) + COUNT.getMessage());
+        System.out.println(RATE.getMessage() + profitRate + STR.getMessage());
+    }
+
     public void buyLotto() {
         System.out.println(INPUT_MONEY.getMessage());
         int money = user.inputMoney();
@@ -69,5 +79,6 @@ public class Game {
         int bonusNumber = user.getBonusNumber(Integer.parseInt(Console.readLine()));
         List<Integer> grades = correctLottoCount(winLottos, usersLotto, bonusNumber);
         String profitRate = getRate(grades, money);
+        getStatistics(grades, profitRate);
     }
 }
