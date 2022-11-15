@@ -10,22 +10,25 @@ public class Calculation {
     }
 
     public enum InformationOfRank{
-        FIRST(6, false, 2000000000),
-        SECOND(5, true, 30000000),
-        THIRD(5, false, 1500000),
-        FOURTH(4, true, 50000),
-        FIFTH(3, false, 5000),
-        LOSE(0,false,0);
+        FIRST(6, false, 2000000000,1),
+        SECOND(5, true, 30000000,2),
+        THIRD(5, false, 1500000,3),
+        FOURTH(4, true, 50000,4),
+        FIFTH(3, false, 5000,5),
+        LOSE(0,false,0,0);
 
 
         private final int matchNumber;
         private final boolean bonusMatch;
         private final int prizeMoney;
 
-        InformationOfRank(int matchNumber, boolean bonusMatch, int prizeMoney){
+        private final int rank;
+
+        InformationOfRank(int matchNumber, boolean bonusMatch, int prizeMoney, int rank){
             this.matchNumber = matchNumber;
             this.bonusMatch = bonusMatch;
             this.prizeMoney = prizeMoney;
+            this.rank = rank;
         }
 
     }
@@ -57,6 +60,24 @@ public class Calculation {
         return rank;
     }
 
-    
+    public static void calculateWinningStatistics(List<Lotto> lottoBundle, List<Integer> prizeNumber,int bonusNumber,
+                                                  int purchaseMoney){
+        List<Integer> eachNumberOfRank = List.of(0,0,0,0,0);
+        int totalPrizeMoney = 0;
+        float yeild = 0;
+        for (int number = 0; number < lottoBundle.size(); number++ ){
+            List<Integer> lotto = lottoBundle.get(number).getOneLotto();
+            InformationOfRank rank = calculateRank(lotto,prizeNumber,bonusNumber);
+            int rankCount = eachNumberOfRank.get(rank.rank-1);
+            eachNumberOfRank.set(rank.rank-1,rankCount+1);
+            totalPrizeMoney += rank.prizeMoney;
+        }
+        yeild = calculateYield(totalPrizeMoney,)
+    }
+
+    public static float calculateYield(int totalPrizeMoney,int purchasedMoney){
+        float yield = (totalPrizeMoney / purchasedMoney) * 100;
+        return yield;
+    }
 
 }
