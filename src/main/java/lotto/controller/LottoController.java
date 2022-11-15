@@ -65,18 +65,18 @@ public class LottoController {
     }
 
     private void validatePrizeNumber(List<Integer> prizeNumbers) {
-        for(Integer number : prizeNumbers){
-            if(!(number >= 1 && number <= 45)){
+        for (Integer number : prizeNumbers) {
+            if (!(number >= 1 && number <= 45)) {
                 throw new IllegalArgumentException(INPUT_PRIZE_NUMBER_RANGE_ERROR);
             }
         }
         Set<Integer> checkDuplication = new HashSet<>();
-        for(Integer number : prizeNumbers){
-            if(!checkDuplication.add(number)){
+        for (Integer number : prizeNumbers) {
+            if (!checkDuplication.add(number)) {
                 throw new IllegalArgumentException(INPUT_PRIZE_NUMBER_DUPLICATION_ERROR);
             }
         }
-        if(prizeNumbers.size() < 6){
+        if (prizeNumbers.size() < 6) {
             throw new IllegalArgumentException(INPUT_PRIZE_NUMBER_COUNT_ERROR);
         }
     }
@@ -88,10 +88,10 @@ public class LottoController {
     }
 
     private void validateBonus(List<Integer> prizeNumbers, int bonusNumber) {
-        if(prizeNumbers.contains(bonusNumber)){
+        if (prizeNumbers.contains(bonusNumber)) {
             throw new IllegalArgumentException(INPUT_BONUS_NUMBER_DUPLICATION_ERROR);
         }
-        if(!(bonusNumber >= 1 && bonusNumber <= 45)){
+        if (!(bonusNumber >= 1 && bonusNumber <= 45)) {
             throw new IllegalArgumentException(INPUT_PRIZE_NUMBER_RANGE_ERROR);
         }
     }

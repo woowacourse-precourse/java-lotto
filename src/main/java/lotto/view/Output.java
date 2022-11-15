@@ -51,7 +51,7 @@ public class Output {
         System.out.printf(FIRST_STATISTICS_MESSAGE, winStatistics.get(FIRST));
     }
 
-    public static void printYield(double yield){
+    public static void printYield(double yield) {
         System.out.printf(YIELD_MESSAGE, yield);
     }
 }

@@ -22,10 +22,10 @@ public class Lotto {
         }
     }
 
-    private void validateHaveLottoDuplication(List<Integer> numbers){
+    private void validateHaveLottoDuplication(List<Integer> numbers) {
         Set<Integer> checkDuplication = new HashSet<>();
-        for(Integer number : numbers){
-            if(!checkDuplication.add(number)){
+        for (Integer number : numbers) {
+            if (!checkDuplication.add(number)) {
                 throw new IllegalArgumentException(LOTTO_DUPLICATION_ERROR);
             }
         }

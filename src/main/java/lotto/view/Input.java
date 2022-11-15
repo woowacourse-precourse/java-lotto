@@ -2,7 +2,6 @@ package lotto.view;
 
 import camp.nextstep.edu.missionutils.Console;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -19,10 +18,10 @@ public class Input {
         return Integer.parseInt(money);
     }
 
-    private static void validateInputMoneyThousand(String money){
+    private static void validateInputMoneyThousand(String money) {
         Pattern pattern = Pattern.compile("^[0-9]*[0]{3}$");
         Matcher matcher = pattern.matcher(money);
-        if(!matcher.find()){
+        if (!matcher.find()) {
             throw new IllegalArgumentException(INPUT_MONEY_THOUSAND_ERROR);
         }
     }
@@ -35,7 +34,7 @@ public class Input {
             priceNum = Stream.of(numbers.split(","))
                     .map(Integer::parseInt)
                     .collect(Collectors.toList());
-        }catch (Exception e){
+        } catch (Exception e) {
             throw new IllegalArgumentException(INPUT_PRICE_LOTTO_ERROR);
         }
 
