@@ -12,6 +12,7 @@ public class Application {
         int lottoCount = inputMoney();
         User user = new User(lottoCount);
         Lotto winningNumber = new Lotto(inputWinningNumber());
+        int bonus = inputBonusNumber(winningNumber);
     }
     // 돈을 입력받아서 로또 개수를 반환
     public static int inputMoney() {
@@ -48,6 +49,15 @@ public class Application {
         // 로또 번호 반환
         return winningNumbers;
 
+    }
+    //보너스 숫자 입력
+    public static int inputBonusNumber(Lotto lotto) {
+        // 보너스 입력
+        System.out.println("보너스 번호를 입력해 주세요.");
+        String bonus = Console.readLine();
+        Exeption.inputWinningNumberExeption(bonus, false);
+        Exeption.isNotoverlapped(lotto, Integer.parseInt(bonus));
+        return Integer.parseInt(bonus);
     }
 
 
