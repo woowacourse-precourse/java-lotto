@@ -75,7 +75,7 @@ public class Consumer {
         for (Prize p : Prize.getList()) {
             moneyEarned = moneyEarned + p.getReward() * stat.get(p.getIndex());
         }
-        stat.set(PROFIT_IND, Math.round(moneyEarned / moneySpent * 1000) / 10);
+        stat.set(PROFIT_IND, Math.round(moneyEarned / moneySpent * 1000));
         return stat;
     }
 
