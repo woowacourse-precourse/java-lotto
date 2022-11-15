@@ -1,16 +1,11 @@
 package lotto.controller;
 
-import lotto.controller.validator.BonusNumberValidator;
-import lotto.controller.validator.MoneyValidator;
-import lotto.controller.validator.WinningNumberValidator;
+import lotto.controller.dto.MoneyDto;
+import lotto.controller.dto.WinningNumbersDto;
 import lotto.domain.Lotto;
 import lotto.service.LottoGameService;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
-
-public class LottoController implements Controller {
+public class LottoController {
 
     private final LottoGameService service;
 
@@ -18,9 +13,8 @@ public class LottoController implements Controller {
         this.service = service;
     }
 
-    public void inputMoney(String input) {
-        validateInput(input, MoneyValidator.values());
-        int money = Integer.parseInt(input);
+    public void inputMoney(MoneyDto dto) {
+        int money = dto.getMoney();
         service.buyLottos(money);
     }
 
@@ -32,28 +26,9 @@ public class LottoController implements Controller {
         return service.getLottosToString();
     }
 
-    public void inputWinningNumber(String input) {
-        validateInput(input, WinningNumberValidator.values());
-        List<Integer> winningNumber = separateStringWithComma(input);
-        Lotto winningLotto = new Lotto(winningNumber);
-        service.setWinningLotto(winningLotto);
-    }
+    public void inputWinningNumbers(WinningNumbersDto dto) {
+        Lotto winningLotto = new Lotto(dto.getWinningNumber());
+        int bonusNumber = dto.getBonusNumber();
 
-    public List<Integer> separateStringWithComma(String input) {
-        return Arrays.stream(input.split(","))
-                .map(String::trim)
-                .map(Integer::parseInt)
-                .collect(Collectors.toList());
-    }
-
-    public void inputBonusNumber(String input) {
-        validateInput(input, BonusNumberValidator.values());
-        int number = Integer.parseInt(input);
-        service.setBonusNumber(number);
-    }
-
-    public String outputStatics() {
-        service.getStatics();
-        return null;
     }
 }

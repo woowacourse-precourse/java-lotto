@@ -2,8 +2,9 @@ package lotto.view;
 
 import camp.nextstep.edu.missionutils.Console;
 import lotto.controller.LottoController;
+import lotto.controller.dto.MoneyDto;
+import lotto.controller.dto.WinningNumbersDto;
 
-import java.util.function.Consumer;
 import java.util.function.Supplier;
 
 public class DefaultView implements View {
@@ -15,30 +16,33 @@ public class DefaultView implements View {
     }
 
     public void render() {
-
-        System.out.println(Views.REQUEST_MONEY.render());
-        request(controller::inputMoney);
-
-        renderLottos();
-
-        System.out.println(Views.REQUEST_WINNING_NUMBER.render());
-        request(controller::inputWinningNumber);
-
-        System.out.println(Views.REQUEST_BONUS_NUMBER.render());
-        request(controller::inputBonusNumber);
-
-        renderStatics();
+        try {
+            sendMoney();
+            renderLottos();
+            sendWinningNumbers();
+            renderStatics();
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+        }
     }
 
-    private void request(Consumer<String> consumer) {
-
+    private void sendMoney() {
+        System.out.println(Views.REQUEST_MONEY.render());
         String input = Console.readLine();
-        try {
-            consumer.accept(input);
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-            throw new IllegalArgumentException();
-        }
+
+        MoneyDto moneyDto = new MoneyDto(input);
+        controller.inputMoney(moneyDto);
+    }
+
+    private void sendWinningNumbers() {
+        System.out.println(Views.REQUEST_WINNING_NUMBER.render());
+        String winningNumber = Console.readLine();
+
+        System.out.println(Views.REQUEST_BONUS_NUMBER.render());
+        String bonusNumber = Console.readLine();
+
+        WinningNumbersDto dto = new WinningNumbersDto(winningNumber, bonusNumber);
+        controller.inputWinningNumbers(dto);
     }
 
     private String request(Supplier<String> supplier) {
@@ -56,7 +60,6 @@ public class DefaultView implements View {
     private void renderStatics() {
         System.out.println(Views.STATICS.render());
         System.out.println(Views.DIVIDER.render());
-        request(controller::outputStatics);
     }
 
 }

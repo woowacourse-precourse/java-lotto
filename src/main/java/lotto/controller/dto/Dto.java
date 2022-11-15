@@ -1,8 +1,8 @@
-package lotto.controller;
+package lotto.controller.dto;
 
 import lotto.controller.validator.Validator;
 
-public interface Controller {
+public interface Dto {
 
     default void validateInput(String input, Validator... validators) {
         for (Validator validator : validators) {
@@ -11,5 +11,4 @@ public interface Controller {
             }
         }
     }
-
 }
