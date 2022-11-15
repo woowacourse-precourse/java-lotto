@@ -1,5 +1,7 @@
 package lotto.domain;
 
+import lotto.utils.Formatter;
+
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -52,5 +54,18 @@ public enum LottoRank {
 
     public int getAmount() {
         return amount;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(count).append("개 일치");
+
+        if (isSameBonus()) {
+            sb.append(", 보너스 볼 일치");
+        }
+
+        sb.append(" (").append(Formatter.format(amount)).append(")");
+        return sb.toString();
     }
 }
