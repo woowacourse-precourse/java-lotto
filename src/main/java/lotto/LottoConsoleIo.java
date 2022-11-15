@@ -3,13 +3,13 @@ package lotto;
 import java.util.List;
 
 public class LottoConsoleIo {
-    void printRequestPurchase() {
+    static void printRequestPurchase() {
         System.out.println("구입금액을 입력해주세요.");
     }
 
     static void printNoOfLotto(List<Lotto> lottos) {
         System.out.println(lottos.size() + "개를 구매했습니다.");
-        for (Lotto lotto:lottos){
+        for (Lotto lotto : lottos) {
             System.out.println(lotto.getNumbers());
         }
     }
@@ -24,12 +24,12 @@ public class LottoConsoleIo {
 
     static void printResultStatistics(List result) {
         System.out.println("당첨 통계\n---");
-        System.out.println("3개 일치 (5,000원) - "+result.get(0)+"개\n" +
-                            "4개 일치 (50,000원) - "+result.get(1)+"개\n" +
-                            "5개 일치 (1,500,000원) - "+result.get(2)+"개\n" +
-                            "5개 일치, 보너스 볼 일치 (30,000,000원) - "+result.get(3)+"개\n" +
-                            "6개 일치 (2,000,000,000원) - "+result.get(4)+"개\n" +
-                            "총 수익률은 "+result.get(5)+"%입니다.");
+        System.out.println("3개 일치 (5,000원) - " + result.get(0) + "개\n" +
+                "4개 일치 (50,000원) - " + result.get(1) + "개\n" +
+                "5개 일치 (1,500,000원) - " + result.get(2) + "개\n" +
+                "5개 일치, 보너스 볼 일치 (30,000,000원) - " + result.get(3) + "개\n" +
+                "6개 일치 (2,000,000,000원) - " + result.get(4) + "개\n" +
+                "총 수익률은 " + result.get(5) + "%입니다.");
     }
 
 }
