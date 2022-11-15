@@ -48,6 +48,15 @@ public class ExceptionCase {
         return true;
     }
 
+    static public void checkInputMoney(String input) {
+        if (!checkInputAllNumber(input)) {
+            throw new IllegalArgumentException();
+        }
+        if (!checkDivideThousand(input)) {
+            throw new IllegalArgumentException();
+        }
+    }
+
     static public void checkInputLottoNumber(List<Integer> input) {
         if (!checkInputSameNumber(input)) {
             throw new IllegalArgumentException();
@@ -56,4 +65,6 @@ public class ExceptionCase {
             throw new IllegalArgumentException();
         }
     }
+
+
 }
