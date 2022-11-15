@@ -29,7 +29,7 @@ public class LottoGame {
         printNewLine();
         StringBuilder sb1 = new StringBuilder();
         sb1.append(lottoCount).append("개를 구매했습니다.");
-        System.out.println(sb1);
+        System.out.println(sb1.toString());
         setPurchaseAmountLotto(lottoCount);
 
         user.getPurchaseLottoNumbers();
@@ -55,7 +55,7 @@ public class LottoGame {
         String rateOfReturn = String.format("%,.1f",rateOfReturn2);
         StringBuilder sb5 = new StringBuilder();
         sb5.append("총 수익률은 ").append(rateOfReturn).append("%입니다.");
-        System.out.println(sb5);
+        System.out.println(sb5.toString());
         //System.out.println("총 수익률은 "+rateOfReturn+"%입니다.");
     }
 
@@ -75,23 +75,23 @@ public class LottoGame {
             StringBuilder sb3 = new StringBuilder();
             if(i==3){
                 sb3.append(i).append("개 일치 (").append(WinningRank.THREE.getAmount()).append(") - ").append(countAccord.get(i)).append("개");
-                System.out.println(sb3);
+                System.out.println(sb3.toString());
                 //System.out.println(i+"개 일치 ("+ WinningRank.THREE.getAmount() +") - "+countAccord.get(i)+"개");
             }else if(i==4){
                 sb3.append(i).append("개 일치 (").append(WinningRank.FOUR.getAmount()).append(") - ").append(countAccord.get(i)).append("개");
-                System.out.println(sb3);
+                System.out.println(sb3.toString());
                 //System.out.println(i+"개 일치 ("+ WinningRank.FOUR.getAmount() +") - "+countAccord.get(i)+"개");
             }else if(i==5){
                 sb3.append(i).append("개 일치 (").append(WinningRank.FIVE.getAmount()).append(") - ").append(countAccord.get(i)).append("개");
-                System.out.println(sb3);
+                System.out.println(sb3.toString());
                 //System.out.println(i+"개 일치 ("+ WinningRank.FIVE.getAmount() +") - "+countAccord.get(i)+"개");
                 StringBuilder sb4 = new StringBuilder();
                 sb4.append(i).append("개 일치, 보너스 볼 일치 (").append(WinningRank.BONUS.getAmount()).append(") - ").append(bonusAccord).append("개");
-                System.out.println(sb4);
+                System.out.println(sb4.toString());
                 //System.out.println(5+"개 일치, 보너스 볼 일치 ("+ WinningRank.BONUS.getAmount() +") - "+bonusAccord+"개");
             }else if(i==6){
                 sb3.append(i).append("개 일치 (").append(WinningRank.SIX.getAmount()).append(") - ").append(countAccord.get(i)).append("개");
-                System.out.println(sb3);
+                System.out.println(sb3.toString());
                 //System.out.println(i+"개 일치 ("+ WinningRank.SIX.getAmount() +") - "+countAccord.get(i)+"개");
             }
         }

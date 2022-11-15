@@ -49,7 +49,7 @@ public class UserLotto {
         sb2.append("]");
         //System.out.println("]");
 
-        System.out.println(sb2);
+        System.out.println(sb2.toString());
     }
 
     public void validateLetter(String input){
