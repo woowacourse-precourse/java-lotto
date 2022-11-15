@@ -30,7 +30,7 @@ public class UserOutput {
     }
 
     private static void outputWinStatistics(Result result) {
-        final Map<WinRank, Integer> prizeResult = result.getPrizeResult();
+        final Map<WinRank, Integer> prizeResult = result.get();
 
         for (WinRank winRank : WinRank.getWinnerRanksExceptFail()) {
             System.out.println(getEachWinStatistics(winRank, prizeResult));
@@ -39,7 +39,7 @@ public class UserOutput {
     }
 
     private static void outputEarningRate(Result result, Integer inputMoney) {
-        System.out.println(OUTPUT_EARNING_RATE + result.calculateEarningRate(inputMoney) + OUTPUT_PERCENT);
+        System.out.println(OUTPUT_EARNING_RATE + result.getEarningRate(inputMoney) + OUTPUT_PERCENT);
     }
 
     private static String getEachWinStatistics(WinRank winRank, Map<WinRank, Integer> prizeResult) {

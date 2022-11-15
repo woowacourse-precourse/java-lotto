@@ -10,7 +10,7 @@ public class WinRankTest {
     @DisplayName("로또 당첨 등수가 정확하게 나온다.")
     @Test
     void Rank_Test1() {
-        assertThat(WinRank.calculateRankOfLotto(
+        assertThat(WinRank.calculateOfLotto(
                 new Lotto(List.of(1, 2, 3, 4, 5, 6))
                 , new Lotto(List.of(3, 4, 5, 6, 7, 8))
                 , new BonusNumber(1, new Lotto(List.of(3, 4, 5, 6, 7, 8)))))
@@ -19,7 +19,7 @@ public class WinRankTest {
 
     @Test
     void Rank_Test2() {
-        assertThat(WinRank.calculateRankOfLotto(
+        assertThat(WinRank.calculateOfLotto(
                 new Lotto(List.of(1, 2, 3, 4, 5, 6))
                 , new Lotto(List.of(7, 8, 9, 10, 11, 12))
                 , new BonusNumber(1, new Lotto(List.of(7, 8, 9, 10, 11, 12)))))
@@ -29,7 +29,7 @@ public class WinRankTest {
     @DisplayName("보너스 번호가 등수에 알맞게 집계된다.")
     @Test
     void Rank_Test3() {
-        assertThat(WinRank.calculateRankOfLotto(
+        assertThat(WinRank.calculateOfLotto(
                 new Lotto(List.of(1, 7, 3, 4, 5, 6))
                 , new Lotto(List.of(3, 4, 5, 6, 7, 8))
                 , new BonusNumber(10, new Lotto(List.of(3, 4, 5, 6, 7, 8)))))
@@ -38,7 +38,7 @@ public class WinRankTest {
 
     @Test
     void Rank_Test4() {
-        assertThat(WinRank.calculateRankOfLotto(
+        assertThat(WinRank.calculateOfLotto(
                 new Lotto(List.of(1, 7, 3, 4, 5, 6))
                 , new Lotto(List.of(3, 4, 5, 6, 7, 8))
                 , new BonusNumber(1, new Lotto(List.of(3, 4, 5, 6, 7, 8)))))

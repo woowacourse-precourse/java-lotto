@@ -9,17 +9,17 @@ public class Result {
 
     public Result(Lottos lottos, Lotto winLotto, BonusNumber bonusNumber) {
         this.result = new HashMap<>();
-        initFinalResult();
-        calculateResult(lottos, winLotto, bonusNumber);
+        initialize();
+        calculate(lottos, winLotto, bonusNumber);
     }
 
-    public Map<WinRank, Integer> getPrizeResult() {
+    public Map<WinRank, Integer> get() {
         return Collections.unmodifiableMap(result);
     }
 
-    private void calculateResult(Lottos lottos, Lotto winLotto, BonusNumber bonusNumber) {
+    private void calculate(Lottos lottos, Lotto winLotto, BonusNumber bonusNumber) {
         for (Lotto lotto : lottos.getLottos()) {
-            final WinRank winRank = WinRank.calculateRankOfLotto(lotto, winLotto, bonusNumber);
+            final WinRank winRank = WinRank.calculateOfLotto(lotto, winLotto, bonusNumber);
             updateResult(winRank);
         }
     }
@@ -28,7 +28,7 @@ public class Result {
         result.put(winRank, result.get(winRank) + 1);
     }
 
-    private void initFinalResult() {
+    private void initialize() {
         WinRank.getWinnerRanks()
                 .forEach(winnerRank -> result.put(winnerRank, 0));
     }
@@ -41,7 +41,7 @@ public class Result {
         return totalPrize;
     }
 
-    public Float calculateEarningRate(Integer inputMoney) {
+    public Float getEarningRate(Integer inputMoney) {
         final float earningRate = (float) getTotalPrize() / inputMoney;
         return (float) (Math.round(earningRate * 1000) / 10.0);
     }

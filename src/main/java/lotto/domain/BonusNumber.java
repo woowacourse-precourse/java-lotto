@@ -7,11 +7,11 @@ public class BonusNumber {
     private final Integer bonusNumber;
 
     public BonusNumber(Integer bonusNumber, Lotto lotto) {
-        validateBonusNumber(bonusNumber, lotto);
+        validate(bonusNumber, lotto);
         this.bonusNumber = bonusNumber;
     }
 
-    private void validateBonusNumber(Integer bonusNumber, Lotto lotto) {
+    private void validate(Integer bonusNumber, Lotto lotto) {
         if (bonusNumber < 1 || bonusNumber > 45) {
             throw new IllegalArgumentException(ERROR_NUMBER_RANGE);
         }
