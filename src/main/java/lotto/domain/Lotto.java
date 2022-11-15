@@ -3,29 +3,32 @@ package lotto.domain;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
-import java.util.Set;
 
 public class Lotto {
 
-    private static final int LOTTO_LENGTH = 6;
+    private static final int LOTTO_NUMBER_COUNT = 6;
 
-    private final Set<Integer> numbers;
+    private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
-        this.numbers = new HashSet<>(numbers);
+        this.numbers = numbers;
     }
 
     private void validate(List<Integer> numbers) {
-        if (new HashSet<>(numbers).size() != LOTTO_LENGTH) {
+        if (new HashSet<>(numbers).size() != LOTTO_NUMBER_COUNT) {
             throw new IllegalArgumentException();
         }
     }
 
     // TODO: 추가 기능 구현
 
-    public Set<Integer> getLotto() {
+    public List<Integer> getLotto() {
         return numbers;
+    }
+
+    public String getLottoNumbers() {
+        return numbers.toString();
     }
 
     @Override

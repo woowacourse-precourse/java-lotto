@@ -1,5 +1,6 @@
 package lotto;
 
+import lotto.domain.Lottery;
 import lotto.domain.PurchaseMoney;
 import lotto.view.InputView;
 import lotto.view.OutputView;
@@ -10,6 +11,10 @@ public class Application {
         OutputView.printPurchaseGuideMessage();
         PurchaseMoney purchaseMoney = InputView.inputPurchaseMoney();
 
-        OutputView.printPurchaseResultMessage(purchaseMoney.getLottoCount());
+        int lottoCount = purchaseMoney.getLottoCount();
+        OutputView.printPurchaseResultMessage(lottoCount);
+
+        Lottery lottery = new Lottery(lottoCount);
+        OutputView.printLottoNumbers(lottery);
     }
 }

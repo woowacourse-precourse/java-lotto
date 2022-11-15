@@ -1,5 +1,7 @@
 package lotto.view;
 
+import lotto.domain.Lottery;
+
 import java.util.List;
 
 public class OutputView {
@@ -18,8 +20,12 @@ public class OutputView {
         System.out.printf(PURCHASE_RESULT_MESSAGE, numberOfPurchasedLottery);
     }
 
-    public static void printLottoNumbers(List<Integer> lottoNumbers) {
-        System.out.println(lottoNumbers.toString());
+    public static void printLottoNumbers(Lottery lottery) {
+        lottery.getLottery()
+                .stream()
+                .forEach(lotto -> {
+                    System.out.println(lotto.getLottoNumbers());
+                });
     }
 
     public static void printWinningNumbersEnteringGuideMessage() {
