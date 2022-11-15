@@ -9,6 +9,10 @@ public class ValidationUtil {
     final static int START_NUM = 1;
     final static int END_NUM = 45;
 
+    public static boolean validateEmpty(String input) {
+        return input.isEmpty();
+    }
+
     public static boolean validateIsDigit(String input) {
         for (int i=0; i<input.length(); i++) {
             char inputChar = input.charAt(i);

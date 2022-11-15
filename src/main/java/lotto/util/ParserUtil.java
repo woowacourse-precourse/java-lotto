@@ -11,6 +11,9 @@ public class ParserUtil {
     final static int SIZE_OF_LOTTO_NUMBER = 6;
 
     public static void parsePurchaseAmountInput(String input) throws IllegalArgumentException {
+        if (ValidationUtil.validateEmpty(input)) {
+            throw new IllegalArgumentException("[ERROR] 올바르지 않은 입력입니다.");
+        }
         if (!ValidationUtil.validateIsDigit(input)) {
             throw new IllegalArgumentException("[ERROR] 숫자를 입력해주세요.");
         }
@@ -25,12 +28,18 @@ public class ParserUtil {
     }
 
     public static void parseWinningNumbersInput(String winningNumInput) throws IllegalArgumentException {
+        if (ValidationUtil.validateEmpty(winningNumInput)) {
+            throw new IllegalArgumentException("[ERROR] 올바르지 않은 입력입니다.");
+        }
         if (!ValidationUtil.validateIsDigitAndComma(winningNumInput)) {
             throw new IllegalArgumentException("[ERROR] 숫자와 콤마 이외에 문자를 입력할 수 없습니다.");
         }
     }
 
     public static void parseBonusNumberInput(String bonusNumInput) throws IllegalArgumentException {
+        if (ValidationUtil.validateEmpty(bonusNumInput)) {
+            throw new IllegalArgumentException("[ERROR] 올바르지 않은 입력입니다.");
+        }
         if (!ValidationUtil.validateIsDigit(bonusNumInput)) {
             throw new IllegalArgumentException("[ERROR] 숫자 이외에 문자를 입력할 수 없습습니다.");
         }

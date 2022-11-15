@@ -35,29 +35,8 @@ public class RandomUtil {
 
     private static RandomLottoNumber createLottoNumbers() {
         List<Integer> lottoNumbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
-        while (!validateLottoNumbers(lottoNumbers)) {
-            lottoNumbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
-        }
+        // Collections.sort(lottoNumbers);
         RandomLottoNumber randomLottoNumber = new RandomLottoNumber(lottoNumbers);
         return randomLottoNumber;
-    }
-
-    private static boolean validateLottoNumbers(List<Integer> lottoNumbers) {
-        // Collections.sort(lottoNumbers);
-        for (int i=0; i<LENGTH_OF_LOTTO_NUMBERS; i++) {
-            if (isDuplicate(lottoNumbers, i)) {
-                return false;
-            }
-        }
-        return true;
-    }
-
-    private static boolean isDuplicate(List<Integer> lottoNumbers, int index) {
-        Integer eachNumber = lottoNumbers.get(index);
-        List<Integer> restOfListValues = lottoNumbers.subList(index, LENGTH_OF_LOTTO_NUMBERS);
-        if (restOfListValues.contains(eachNumber)) {
-            return false;
-        }
-        return true;
     }
 }
