@@ -51,10 +51,13 @@ public class DoLotto {
     }
 
     public void play() throws IllegalArgumentException {
-        purchaseLotto();
-        makeLottoBundle();
-        makeWinningNumber();
-        getPrizeMoney();
+        try {
+            purchaseLotto();
+            makeLottoBundle();
+            makeWinningNumber();
+            getPrizeMoney();
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+        }
     }
-
 }

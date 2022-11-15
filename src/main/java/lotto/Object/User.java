@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import camp.nextstep.edu.missionutils.Console;
+import lotto.Exception.Exception;
 
 public class User {
     private int money;
@@ -13,6 +14,7 @@ public class User {
     private List<Integer> winningNumber = new ArrayList<>();
     private List<Integer> winningNumberCounting= new ArrayList<>(8);
     LotteryTicketingMachine lotteryTicketingMachine = new LotteryTicketingMachine();
+    Exception exception = new Exception();
 
     public User() {
         for (int i=0; i<8; i++) {
@@ -27,7 +29,7 @@ public class User {
             money = Integer.parseInt(Console.readLine());
             this.money=money;
         } catch (NumberFormatException e) {
-            System.out.println("[ERROR] 잘못된 입력 형식입니다.");
+            exception.throwInvalidInputException();
         }
 
     }
@@ -68,7 +70,7 @@ public class User {
         try {
             winningNumber = splitStringToIntegerArray(Console.readLine());
         } catch(NumberFormatException e) {
-            System.out.println("[ERROR] 잘못된 입력입니다.");
+            exception.throwInvalidInputException();
             throw new IllegalArgumentException();
         }
 
@@ -92,14 +94,13 @@ public class User {
             bonusNumber = inputtedBonusNumber;
             checkBonusNumberRange(inputtedBonusNumber);
         } catch (NumberFormatException e) {
-            System.out.println("[ERROR] 숫자를 입력해야 합니다.");
-            throw new IllegalArgumentException();
+            exception.throwInvalidInputException();
         }
     }
 
     public void checkBonusNumberRange(int bonusNumber) throws IllegalArgumentException {
         if (bonusNumber<1||bonusNumber>45) {
-            System.out.println("[ERROR] 숫자의 범위는 1 이상 45 이하여야 합니다.");
+            exception.throwInvalidNumberRangeException();
             throw new IllegalArgumentException();
         }
     }

@@ -11,7 +11,11 @@ public enum Message {
     WINNING_RESULT_MESSAGE_4CORRECT("4개 일치 (50,000원) - "),
     WINNING_RESULT_MESSAGE_5CORRECT("5개 일치 (1,500,000원) - "),
     WINNING_RESULT_MESSAGE_5BONUS_CORRECT("5개 일치, 보너스 볼 일치 (30,000,000원) - "),
-    WINNING_RESULT_MESSAGE_6CORRECT("6개 일치 (2,000,000,000원) - ");
+    WINNING_RESULT_MESSAGE_6CORRECT("6개 일치 (2,000,000,000원) - "),
+
+    INVALID_INPUT_ERROR("[ERROR] 잘못된 입력 형식입니다."),
+    INVALID_NUMBER_RANGE_ERROR("[ERROR] 잘못된 숫자 범위입니다.");
+
 
     private final String printingMessage;
 

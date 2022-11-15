@@ -4,15 +4,17 @@ import static camp.nextstep.edu.missionutils.Randoms.pickUniqueNumbersInRange;
 
 import java.util.ArrayList;
 import java.util.List;
+import lotto.Exception.Exception;
 
 public class LotteryTicketingMachine {
+
+    Exception exception = new Exception();
 
     public int ticketHowManyLotto (int money) throws IllegalArgumentException {
         int howManyLotto;
 
-        if (money%1000!=0) {
-            System.out.println("[ERROR] 입력 값은 1000으로 나누어 떨어져야 합니다.");
-            throw new IllegalArgumentException();
+        if (money%1000!=0||money<0) {
+           exception.throwInvalidNumberRangeException();
         }
 
         howManyLotto = money/1000;

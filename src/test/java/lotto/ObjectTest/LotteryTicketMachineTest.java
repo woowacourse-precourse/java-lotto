@@ -1,4 +1,4 @@
-package ObjectTest;
+package lotto.ObjectTest;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
