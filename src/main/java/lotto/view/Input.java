@@ -21,11 +21,21 @@ public class Input {
     public static List<Integer> getAnswerNumbers() {
         System.out.println("당첨 번호를 입력해 주세요.");
         // 예외처리 필요 1~45숫자의 사이가 맞는지, 6개가 맞는지.
-        String value = Console.readLine();
+        String inputValue = Console.readLine();
 
-        return Stream.of(value.split(","))
+        List<String> inputValues = Stream.of(inputValue.split(","))
+            .collect(Collectors.toList());
+
+        for (String value : inputValues) {
+            CheckInput.checkInputLotto(value);
+        }
+
+        List<Integer> numbers = inputValues.stream()
             .map(Integer::parseInt)
             .collect(Collectors.toList());
+        CheckInput.checkInputLottoLength(numbers);
+        CheckInput.checkInputLottoDuplicate(numbers);
+        return numbers;
     }
 
     public static int getBonusNumber() {
