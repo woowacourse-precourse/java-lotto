@@ -5,9 +5,9 @@ import view.ErrorMessage;
 import java.util.HashSet;
 import java.util.List;
 
-public class Util {
+public class Validate {
 
-    public static void validateInteger(String inputValue) {
+    public static void validateNumber(String inputValue) {
         String pattern = "[0-9]+";
         if (!inputValue.matches(pattern))
             throw new IllegalArgumentException(ErrorMessage.NOT_INTEGER.getErrorMessage());
@@ -43,4 +43,9 @@ public class Util {
         if (inputMoney % 1000 != 0) throw new IllegalArgumentException(ErrorMessage.NOT_UNIT.getErrorMessage());
     }
 
+    public static void validateWinningNumber(String[] inputWinning){
+        for(int i = 0; i < inputWinning.length; i++){
+            validateNumber(inputWinning[i]);
+        }
+    }
 }

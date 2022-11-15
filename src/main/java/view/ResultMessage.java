@@ -25,7 +25,7 @@ public enum ResultMessage {
         return this.winningYield;
     }
 
-    public String getWinningNumber() {
+    public String getIncludeCount() {
         return this.includeCount;
     }
 }

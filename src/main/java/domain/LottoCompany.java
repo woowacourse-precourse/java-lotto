@@ -2,7 +2,7 @@ package domain;
 
 import java.util.List;
 
-import static controller.Util.*;
+import static controller.Validate.*;
 
 public class LottoCompany {
 

@@ -3,8 +3,8 @@ package domain;
 
 import java.util.List;
 
-import static controller.Util.validateDuplicate;
-import static controller.Util.validateSize;
+import static controller.Validate.validateDuplicate;
+import static controller.Validate.validateSize;
 
 
 public class Lotto {

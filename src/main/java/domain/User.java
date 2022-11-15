@@ -1,11 +1,9 @@
 package domain;
 
 
-import view.ErrorMessage;
-
 import java.util.List;
 
-import static controller.Util.validateInputMoney;
+import static controller.Validate.validateInputMoney;
 
 public class User {
 

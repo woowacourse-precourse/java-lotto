@@ -11,8 +11,8 @@ public class ResultView {
         double totalYield = 0;
         prefixResult();
         for (ResultMessage rank : ResultMessage.values()) {
-            System.out.println(rank.getCondition() + " (" + rank.getWinningYield() + "원)" + " - " + winningLotto.get(rank.getWinningNumber()) + "개");
-            if (winningLotto.get(rank.getWinningNumber()) != 0) {
+            System.out.println(rank.getCondition() + " (" + rank.getWinningYield() + "원)" + " - " + winningLotto.get(rank.getIncludeCount()) + "개");
+            if (winningLotto.get(rank.getIncludeCount()) != 0) {
                 totalYield += convertToMoney(rank.getWinningYield());
             }
         }

@@ -18,7 +18,8 @@ class UserTest {
     @DisplayName("금액 입력 천원 단위가 아니면 예외가 발생한다.")
     @Test
     void checkInputMoneyUnit(){
-        assertThatThrownBy(() -> new User(1500,1500/1000,controller.createTotalNumbers(7))).isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() ->
+                new User(1500,1500/1000,controller.createTotalNumbers(7))).isInstanceOf(IllegalArgumentException.class);
     }
 
     @DisplayName("유저의 로또가 금액에 맞는 개수인지 확인한다.")

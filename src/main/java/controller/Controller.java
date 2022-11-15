@@ -12,14 +12,14 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static controller.Util.*;
+import static controller.Validate.*;
 
 public class Controller {
 
     public int inputMoney() {
         System.out.println(InputMessage.MONEY_MESSAGE);
         String inputValue = Console.readLine();
-        validateInteger(inputValue);
+        validateNumber(inputValue);
         return Integer.parseInt(inputValue);
     }
 
@@ -28,6 +28,7 @@ public class Controller {
         String inputValue = Console.readLine();
         validateComma(inputValue);
         String[] inputWinning = (inputValue.split(","));
+        validateWinningNumber(inputWinning);
         List<Integer> inputWinningNumbers = Arrays.stream(inputWinning).map(Integer::parseInt).collect(Collectors.toList());
         return inputWinningNumbers;
     }
@@ -35,7 +36,7 @@ public class Controller {
     public int inputBonusNumber() {
         System.out.println(InputMessage.WINNING_BONUS_MESSAGE);
         String inputBonus = Console.readLine();
-        validateInteger(inputBonus);
+        validateNumber(inputBonus);
         return Integer.parseInt(inputBonus);
     }
 
@@ -67,7 +68,7 @@ public class Controller {
     private HashMap<String, Integer> createWinning() {
         HashMap<String, Integer> totalResult = new HashMap<>();
         for (ResultMessage rank : ResultMessage.values()) {
-            totalResult.put(rank.getWinningNumber(), 0);
+            totalResult.put(rank.getIncludeCount(), 0);
         }
         return totalResult;
     }
