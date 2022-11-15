@@ -29,11 +29,4 @@ class ValidUtilTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
-
-    @Test
-    @DisplayName("보너스 번호의 숫자가 한 자리의 숫자가 아닌 경우 오류가 발생한다.")
-    void validateOneDigit() {
-        assertThatThrownBy(() -> ValidUtil.validateOneDigit("43"))
-                .isInstanceOf(IllegalArgumentException.class);
-    }
 }
