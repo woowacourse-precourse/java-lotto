@@ -12,7 +12,8 @@ public class Application {
         int money= input.setMoney();
 
         MakingLotto makingLotto=new MakingLotto();
-        List<Lotto> allLotto=makingLotto.getAllLotto(money);
+        int count=makingLotto.getLottoCount(money);
+        List<Lotto> allLotto=makingLotto.getAllLotto(count);
 
         Output output=new Output();
         output.printLotto(allLotto);
