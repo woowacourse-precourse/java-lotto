@@ -7,7 +7,7 @@ import java.util.List;
 public class LottoMachine {
 
 	public final int LOTTO_COST = 1000;
-	public final static String ERROR_PAY = "[ERROR] 지불 금액이 1000원 이하입니다.";
+	public final static String ERROR_PAY = "[ERROR] 지불 금액은 1000으로 나누어 떨어져야 합니다.";
 
 	private final List<Lotto> lottoBundle = new ArrayList<>();
 	private final int purchaseAmount;
@@ -19,10 +19,15 @@ public class LottoMachine {
 	}
 
 	private int countPurchasesLotto(int payMoney) {
-		if (payMoney < LOTTO_COST) {
+		validatePurchasesMoney(payMoney);
+
+		return payMoney / LOTTO_COST;
+	}
+
+	private void validatePurchasesMoney(int payMoney) {
+		if (payMoney % LOTTO_COST != 0) {
 			throw new IllegalArgumentException(ERROR_PAY);
 		}
-		return payMoney / LOTTO_COST;
 	}
 
 	private void createLottoBundle(int PurchasesNumber) {
