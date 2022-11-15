@@ -6,6 +6,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
@@ -22,6 +23,19 @@ class WinningNumberViewTest {
     @BeforeEach
     void beforeEach() {
         winningNumberView = new WinningNumberView();
+    }
+
+    @ParameterizedTest
+    @DisplayName("입력된 보너스 번호 유효 테스트")
+    @ValueSource(strings = {"0", "123123", "46", "45123"})
+    void inputBonusNumberTest(String inputBonusNumber) {
+
+        InputStream inputStream = new ByteArrayInputStream(inputBonusNumber.getBytes());
+        System.setIn(inputStream);
+
+        assertThatThrownBy(() -> winningNumberView.inputBonusNumber())
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("[ERROR] 보너스 번호는 1~45 사이의 숫자 하나만 입력해야합니다.");
     }
 
     @ParameterizedTest
