@@ -57,20 +57,24 @@
 - [ ] 단위 테스트
 
   - [x] 각 기능별로 테스트할 수 있어야 한다. - `runTest`
-
   - [x] 예외 발생 시, "[ERROR]" 문구를 포함해야 한다.
 
-    
+  
+
+  - [ ] UserInput
+    - [x] 구입 금액 입력
+      - [x] 구입 금액이 1000의 배수면 성공한다. - `purchaseMoney`
+      - [x] 구입 금액이 자연수가 아니라면 예외가 발생한다. - `purchaseMoneyWithNotNaturalNumber`
+      - [x] 구입 금액이 100의 배수가 아니라면 예외가 발생한다. - `purchaseMoneyWithNotDividableBy1000`
+    - [ ] 당첨 번호 입력
+      - [ ] 당첨 번호가 숫자가 아니라면 예외가 발생한다. - `getInvalidWinningNumbers`
 
   - [x] Lotto
-
     - [x] 로또 번호가 6개보다 적다면 예외가 발생한다. - `createLottoByUnderSize`
     - [x] 로또 번호가 6개가 넘어가면 예외가 발생한다. -  `createLottoByOverSize`
     - [x] 로또 번호에 중복된 숫자가 있으면 예외가 발생한다. -  `createLottoByDuplicateNumber`
     - [x] 로또 번호에 범위를 벗어나는 숫자가 있으면 예외가 발생한다. -  `createLottoByOutOfRangeNumber`
-
   - [x] WinningNumbers
-
     - [x] 로또 번호의 예외를 모두 포함한다.
     - [x] 보너스 번호에 중복된 숫자가 있으면 예외가 발생한다. - `createWinningNumbersByDuplicateNumber`
     - [x] 보너스 번호에 범위를 벗어나는 숫자가 있으면 예외가 발생한다. - `createWinningNumbersByOutOfRangeNumber`
