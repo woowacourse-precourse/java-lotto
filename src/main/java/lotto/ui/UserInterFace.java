@@ -34,7 +34,6 @@ public class UserInterFace {
             int result = Integer.valueOf(input);
             return result;
         } catch (NumberFormatException error) {
-            print("[ERROR] 정수를 입력해야 합니다.");
             throw new IllegalArgumentException(NOT_A_INTEGER_ERROR_MESSAGE);
         }
     }
