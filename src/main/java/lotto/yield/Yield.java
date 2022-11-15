@@ -100,8 +100,4 @@ public class Yield {
     public List<Integer> getCountOfRewards() {
         return this.countOfRewards;
     }
-
-    public float getYield() {
-        return yield;
-    }
 }
