@@ -5,7 +5,7 @@
 
 ## 🌟 기능 목록
 - [ ] 로또구입 LottoMarket
-    - [ ] 구입금액 입력 LottoMarket#inputPrice
+    - [x] 구입금액 입력 LottoMarket#inputPrice
     - [ ] 구입 금액에 해당하는 만큼 로또 발행 LottoMarket#publishLotto
         - [ ] 1개의 로또 발행 (중복되지 않는 6개의 숫자) - Lotto
         - [ ] 로또 번호 오름차순 정렬 - Lotto#sort
