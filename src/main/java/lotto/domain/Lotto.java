@@ -6,7 +6,7 @@ import java.util.stream.Collectors;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
-import lotto.ErrorMessage;
+import lotto.util.ErrorMessage;
 
 /**
  * 제공된 Lotto 클래스를 활용해 구현해야 한다.

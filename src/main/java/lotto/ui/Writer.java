@@ -1,6 +1,6 @@
 package lotto.ui;
 
-import static lotto.Constants.*;
+import static lotto.util.Constants.*;
 
 import java.util.Comparator;
 import java.util.List;

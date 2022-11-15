@@ -2,7 +2,7 @@ package lotto.domain;
 
 import java.util.List;
 
-import lotto.ErrorMessage;
+import lotto.util.ErrorMessage;
 
 public class Seller {
 

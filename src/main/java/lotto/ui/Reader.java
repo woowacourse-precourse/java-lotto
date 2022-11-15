@@ -1,6 +1,6 @@
 package lotto.ui;
 
-import static lotto.Constants.*;
+import static lotto.util.Constants.*;
 
 import java.util.Arrays;
 import java.util.List;
@@ -8,7 +8,7 @@ import java.util.stream.Collectors;
 
 import camp.nextstep.edu.missionutils.Console;
 
-import lotto.ErrorMessage;
+import lotto.util.ErrorMessage;
 
 public class Reader {
 
