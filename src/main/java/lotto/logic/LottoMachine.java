@@ -4,12 +4,11 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
+import lotto.domain.LottoInfo;
 import lotto.validator.PaymentValidator;
 import lotto.domain.Lotto;
 
 public class LottoMachine {
-
-    private static final int PRICE = 1_000;
 
     private static class LottoMachineHolder {
         private static final LottoMachine INSTANCE = new LottoMachine();
@@ -24,10 +23,10 @@ public class LottoMachine {
     }
 
     public List<Lotto> generateLottos(long payment) throws IllegalArgumentException {
-        PaymentValidator.validatePayment(payment, PRICE);
+        PaymentValidator.validatePayment(payment, LottoInfo.PRICE.value());
         List<Lotto> lottos = new ArrayList<>();
 
-        for (long i = payment / PRICE; i > 0; i--) {
+        for (long i = payment / LottoInfo.PRICE.value(); i > 0; i--) {
             lottos.add(generateLotto());
         }
 
