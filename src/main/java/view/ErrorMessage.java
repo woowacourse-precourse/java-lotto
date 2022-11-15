@@ -1,4 +1,4 @@
-package outputView;
+package view;
 
 public enum ErrorMessage {
 

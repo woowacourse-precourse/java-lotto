@@ -4,7 +4,7 @@ import exception.UserInputException;
 
 import java.util.List;
 
-import static outputView.ErrorMessage.*;
+import static view.ErrorMessage.*;
 
 public class Invalidator {
 

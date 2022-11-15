@@ -1,4 +1,4 @@
-package outputView;
+package view;
 
 import lotto.Lotto;
 import utills.Earning;
@@ -6,7 +6,7 @@ import winning.WinningHistory;
 
 import java.util.List;
 
-import static outputView.PrintMessage.*;
+import static view.PrintMessage.*;
 
 
 public class Output {
@@ -44,5 +44,10 @@ public class Output {
         System.out.println("5개 일치 (1,500,000원) - " + history.getThirdWinningCount() + "개");
         System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - " + history.getSecondWinningCount() + "개");
         System.out.println("6개 일치 (2,000,000,000원) - " + history.getFirstWinningCount() + "개");
+    }
+
+    public static void printResult(int purchasedAmount, Earning earning) {
+        Output.printHistory(earning.getWinningHistory());
+        Output.earningRateMsg(earning.rateCalculate(purchasedAmount));
     }
 }

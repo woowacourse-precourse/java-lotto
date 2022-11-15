@@ -1,5 +1,6 @@
 package utills;
 
+import lotto.Lotto;
 import winning.WinningHistory;
 
 import java.util.List;
@@ -13,52 +14,45 @@ public class Earning {
     private static final double fifthPrize = 5000;
 
     private WinningHistory winningHistory = new WinningHistory();
-    private int sameCmt;
-    private int bonusCorrect;
+    private double earningAmount = 0;
 
     public void scoreCalculate(List<Integer> purchasedLotto, List<Integer> winningLotto, int bonusNumber) {
-        initializedValues();
-        sameCmt = comparePurchasedWithWinningLotto(purchasedLotto, winningLotto);
-        if (sameCmt == 5 && purchasedLotto.contains(bonusNumber)) {
-            bonusCorrect++;
-        }
+        int sameCount = calculateSameCount(purchasedLotto, winningLotto);
+        boolean bonusCorrect = sameCount == 5 && purchasedLotto.contains(bonusNumber);
 
-        rankCalculate();
+        earningAmount += priceCalculate(sameCount, bonusCorrect);
+        rankCalculate(sameCount, bonusCorrect);
     }
 
-    private void initializedValues() {
-        sameCmt = 0;
-        bonusCorrect = 0;
-    }
-
-    private int comparePurchasedWithWinningLotto(List<Integer> purchasedLotto, List<Integer> winningLotto) {
+    private int calculateSameCount(List<Integer> purchasedLotto, List<Integer> winningLotto) {
+        int sameCount = 0;
         for (Integer purchasedLottoNumber : purchasedLotto) {
             if (winningLotto.contains(purchasedLottoNumber)) {
-                sameCmt++;
+                sameCount++;
             }
         }
-        return sameCmt;
+        return sameCount;
     }
 
-    public double priceCalculate() {
-        if (sameCmt == 6) return firstPrize;
-        if (sameCmt == 5 && bonusCorrect == 1) return secondPrize;
-        if (sameCmt == 5) return thirdPrize;
-        if (sameCmt == 4) return forthPrize;
-        if (sameCmt == 3) return fifthPrize;
+    public double priceCalculate(int sameCount, boolean bonusCorrect) {
+        if (sameCount == 6) return firstPrize;
+        if (sameCount == 5 && bonusCorrect) return secondPrize;
+        if (sameCount == 5) return thirdPrize;
+        if (sameCount == 4) return forthPrize;
+        if (sameCount == 3) return fifthPrize;
         return 0;
     }
 
-    public void rankCalculate() {
-        if (sameCmt == 6) winningHistory.addFirstWinningCount();
-        if (sameCmt == 5 && bonusCorrect == 1) winningHistory.addSecondWinningCount();
-        if (sameCmt == 5) winningHistory.addThirdWinningCount();
-        if (sameCmt == 4) winningHistory.addForthWinningCount();
-        if (sameCmt == 3) winningHistory.addFifthWinningCount();
+    public void rankCalculate(int sameCount, boolean bonusCorrect) {
+        if (sameCount == 6) winningHistory.addFirstWinningCount();
+        if (sameCount == 5 && bonusCorrect) winningHistory.addSecondWinningCount();
+        if (sameCount == 5) winningHistory.addThirdWinningCount();
+        if (sameCount == 4) winningHistory.addForthWinningCount();
+        if (sameCount == 3) winningHistory.addFifthWinningCount();
     }
 
-    public double rateCalculate(double purchasedAmount, double earning) {
-        double earningRatio = ((earning - purchasedAmount) / purchasedAmount + 1) * 100;
+    public double rateCalculate(double purchasedAmount) {
+        double earningRatio = ((earningAmount - purchasedAmount) / purchasedAmount + 1) * 100;
         return Math.round(earningRatio * 10) / 10.0;
     }
 

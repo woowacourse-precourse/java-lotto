@@ -3,7 +3,7 @@ package game;
 import camp.nextstep.edu.missionutils.Console;
 import utills.Invalidator;
 import exception.UserInputException;
-import outputView.Output;
+import view.Output;
 
 public class Application {
 

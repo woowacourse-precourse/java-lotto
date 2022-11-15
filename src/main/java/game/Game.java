@@ -1,6 +1,8 @@
 package game;
 
-import outputView.Output;
+import view.Input;
+import view.Output;
+import utills.Earning;
 import winning.WinningNumber;
 import lotto.Lotto;
 
@@ -17,11 +19,19 @@ public class Game {
     public void play() {
         int lottoCount = purchaseAmount/1000;
         Output.numberOfLottoPurchasedMsg(lottoCount);
+
         List<Lotto> purchasedLottos = Lotto.generateLottoSet(lottoCount);
         Output.purchasedLottosMsg(purchasedLottos);
-        WinningNumber winningNumber = new WinningNumber();
-        winningNumber.generator();
-        GameOver gameOver = new GameOver();
-        gameOver.finish(purchaseAmount, purchasedLottos, winningNumber);
+
+        WinningNumber winningNumber = Input.inputWinningNumber();
+        finish(purchaseAmount, purchasedLottos, winningNumber);
+    }
+
+    public void finish(int purchasedAmount, List<Lotto> purchasedLottos, WinningNumber winningNumber) {
+        Earning earning = new Earning();
+        for (Lotto purchasedLotto : purchasedLottos) {
+            earning.scoreCalculate(purchasedLotto.getLottoNumber(), winningNumber.getWinningNumbers(), winningNumber.getBonusNumber());
+        }
+        Output.printResult(purchasedAmount, earning);
     }
 }
