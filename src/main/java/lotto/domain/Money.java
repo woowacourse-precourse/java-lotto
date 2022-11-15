@@ -21,9 +21,18 @@ public class Money {
 
         for (int i = 0; i < input.length(); i++) {
             c = input.charAt(i);
+            validateIsDigit(c);
+        }
+    }
+
+    private void validateIsDigit(char c) {
+        try {
             if (!Character.isDigit(c)) {
                 throw (new IllegalArgumentException("[ERROR]오류"));
             }
+        } catch (IllegalArgumentException e) {
+            System.out.println("[ERROR] 로또 번호는 숫자여야 합니다.");
+            return;
         }
     }
 
