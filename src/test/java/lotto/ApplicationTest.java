@@ -2,6 +2,7 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
 import lotto.domain.Buyer;
+import lotto.domain.Lotto;
 import lotto.domain.WinningNumbers;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
@@ -11,9 +12,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomUniqueNumbersInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
@@ -140,5 +139,80 @@ class ApplicationTest extends NsTest {
         void getEnumTest(int matches, boolean bonus, String answer) {
             assertThat(WinningNumbers.getEnum(matches, bonus).toString()).isEqualTo(answer);
         }
+    }
+
+    @Nested
+    @DisplayName("주요 로직")
+    class LottoTest {
+        Lotto lotto = new Lotto(new ArrayList<>(Arrays.asList(1,2,3,4,5,6)));
+
+        List<List<Integer>> correctWinningNumberTest = new ArrayList<>(Arrays.asList(
+                new ArrayList<Integer>(Arrays.asList(1,2,3,4,5,6))
+                , new ArrayList<Integer>(Arrays.asList(2,45,1,13,17,5))
+                , new ArrayList<Integer>(Arrays.asList(34,41,32,4,35,16))
+        ));
+
+        List<List<Integer>> wrongWinningNumberTest = new ArrayList<>(Arrays.asList(
+                new ArrayList<Integer>(Arrays.asList(1,23,12,42,25,16,31,19))
+                , new ArrayList<Integer>(Arrays.asList(115,2,3,4,5,6))
+                , new ArrayList<Integer>(Arrays.asList(1,2,3,-43,5,6))
+                , new ArrayList<Integer>(Arrays.asList(1,2,2,2,5,6))
+        ));
+
+        @ParameterizedTest
+        @CsvSource({"0", "1", "2"})
+        void correctValidateTest(int testIndex) {
+            List<Integer> tmp = correctWinningNumberTest.get(testIndex);
+            try {
+                lotto.validate(tmp);
+            } catch (Exception anyException) {
+                assertEquals(true,false);
+            }
+        }
+
+        @ParameterizedTest
+        @CsvSource({"0,[ERROR] 숫자의 갯수는 6개만 가능합니다.", "1,[ERROR] 숫자의 범위는 1~45까지만 가능합니다."
+                , "2,[ERROR] 숫자의 범위는 1~45까지만 가능합니다.", "3,[ERROR] 중복된 숫자 입력은 불가능 합니다."})
+        void wrongValidateTest(int testIndex, String exceptionMessage) {
+            List<Integer> tmp = wrongWinningNumberTest.get(testIndex);
+            try {
+                lotto.validate(tmp);
+                assertEquals(true,false);
+            } catch (IllegalArgumentException illegalArgumentException) {
+                assertEquals(exceptionMessage,illegalArgumentException.getMessage());
+
+                Assertions.assertThrows(IllegalArgumentException.class, () -> {
+                    lotto.validate(tmp);
+                });
+            }
+        }
+
+        @ParameterizedTest
+        @CsvSource({"8", "41", "13"})
+        void correctValidateBonusTest(int bonusNumber) {
+            try {
+                lotto.validateBonus(bonusNumber);
+            } catch (Exception anyException) {
+                assertEquals(true,false);
+            }
+        }
+
+        @ParameterizedTest
+        @CsvSource({"47,[ERROR] 숫자의 범위는 1~45까지만 가능합니다.", "-46132,[ERROR] 숫자의 범위는 1~45까지만 가능합니다."
+                , "0,[ERROR] 숫자의 범위는 1~45까지만 가능합니다.", "4,[ERROR] 이미 있던 숫자와 중복 할 수 없습니다."
+                , "6,[ERROR] 이미 있던 숫자와 중복 할 수 없습니다."})
+        void wrongValidateBonusTest(int bonusNumberTest, String exceptionMessage){
+            try {
+                lotto.validateBonus(bonusNumberTest);
+                assertEquals(true,false);
+            } catch (IllegalArgumentException illegalArgumentException) {
+                assertEquals(exceptionMessage,illegalArgumentException.getMessage());
+
+                Assertions.assertThrows(IllegalArgumentException.class, () -> {
+                    lotto.validateBonus(bonusNumberTest);
+                });
+            }
+        }
+
     }
 }
