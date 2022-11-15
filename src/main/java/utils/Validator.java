@@ -14,6 +14,7 @@ public class Validator {
             throw exit_Program;
         }
     }
+
     public static void tryAndCatchHasNoDuplication(List<Integer> sixWinningNumbers){
         try{
             hasNoDuplication(sixWinningNumbers);
@@ -22,6 +23,7 @@ public class Validator {
             throw exit_Program;
         }
     }
+
     public static void isValidFormatWithComma(String input) {
         int count = 0;
         count = countCommaInString(input);
@@ -48,6 +50,7 @@ public class Validator {
         }
         return count;
     }
+
     public static void isInValidRange(int number) {
         if (number < 1 || number > 45) {
             throw exit_Program;
@@ -62,6 +65,7 @@ public class Validator {
             throw exit_Program;
         }
     }
+
     public static void isValidInput(String input) {
         char[] inputCharacters = input.toCharArray();
         char[] inputCharactersWithoutComma = new char[inputCharacters.length];
@@ -69,7 +73,7 @@ public class Validator {
             if(inputCharacters[i]!=','){
                 inputCharactersWithoutComma[i]= inputCharacters[i];
             }
-            if (inputCharactersWithoutComma==null &&((int) inputCharactersWithoutComma[i] < 48
+            if (inputCharactersWithoutComma!=null &&((int) inputCharactersWithoutComma[i] < 48
                     || (int) inputCharactersWithoutComma[i] > 57)) {
                 throw exit_Program;
             }
@@ -150,6 +154,7 @@ public class Validator {
             throw exit_Program;
         }
     }
+
     public static void hasNoMoney(String money){
         if(Integer.parseInt(money)==0){
             throw exit_Program;

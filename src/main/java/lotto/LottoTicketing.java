@@ -1,8 +1,6 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.Randoms;
-import utils.ConsoleUserInput;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
@@ -22,7 +20,6 @@ public class LottoTicketing {
         Set<Integer>lottoNumbersWithoutDuplication=checkDuplicatedNumbers(lottoNumbers);
         lottoNumbers = new ArrayList<>(lottoNumbersWithoutDuplication);
         return lottoNumbers;
-
     }
 
     public static Set<Integer> checkDuplicatedNumbers(List<Integer> lottoNumbers){
