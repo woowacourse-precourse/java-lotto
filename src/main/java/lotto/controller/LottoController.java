@@ -31,5 +31,14 @@ public class LottoController {
         }
     }
 
+    public void setLuckyNumber(){
+        InputView.inputLuckyNumber();
+        luckyNumber.inputLuckyNumber(Console.readLine());
+
+
+        InputView.inputBonusNumber();
+        luckyNumber.inputBonusNumber(Console.readLine());
+    }
+
 
 }
