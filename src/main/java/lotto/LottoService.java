@@ -116,6 +116,16 @@ public class LottoService {
         }
         return ranks;
     }
+    public static int calculatePrizeMoney(HashMap<Integer, Integer> ranks){
+        int totalPrizeMoney = 0;
+
+        for (int i = 1; i < 6; i++) {
+            totalPrizeMoney += prizeMoney(matchRank(i)) * ranks.get(i);
+        }
+
+        return totalPrizeMoney;
+    }
+
 
 
 }
