@@ -5,6 +5,7 @@ import static lotto.LottoConstant.BONUS_NUMBER_INPUT_IS_NOT_NUMBER_ERROR_MESSAGE
 import static lotto.LottoConstant.PURCHASE_AMOUNT_INPUT_IS_NOT_FALL_APART_ERROR_MESSAGE;
 import static lotto.LottoConstant.PURCHASE_AMOUNT_INPUT_IS_NOT_NUMBER_ERROR_MESSAGE;
 import static lotto.LottoConstant.PURCHASE_AMOUNT_INPUT_IS_TOO_LOW_TO_BUY_LOTTO_ERROR_MESSAGE;
+import static lotto.LottoConstant.WINNING_LOTTO_NUMBER_INPUT_HAS_SAME_NUMBER_ERROR_MESSAGE;
 import static lotto.LottoConstant.WINNING_LOTTO_NUMBER_INPUT_IS_NOT_IN_LOTTO_RANGE_ERROR_MESSAGE;
 import static lotto.LottoConstant.WINNING_LOTTO_NUMBER_INPUT_IS_NOT_MATCH_REGEX_ERROR_MESSAGE;
 
@@ -12,6 +13,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 import lotto.domain.Lotto;
 
@@ -64,14 +66,17 @@ public class LottoService {
         if (!input.matches(WINNING_NUMBER_INPUT_VALIDATE_REGEX)) {
             throw new IllegalStateException(WINNING_LOTTO_NUMBER_INPUT_IS_NOT_MATCH_REGEX_ERROR_MESSAGE);
         }
-        List<Integer> numbers = Arrays.stream(input.split(","))
+        Set<Integer> numbers = Arrays.stream(input.split(","))
                 .map(Integer::parseInt)
-                .collect(Collectors.toList());
+                .collect(Collectors.toSet());
+        if (numbers.size() < 6) {
+            throw new IllegalStateException(WINNING_LOTTO_NUMBER_INPUT_HAS_SAME_NUMBER_ERROR_MESSAGE);
+        }
         if (!numbers.stream().allMatch(number -> (number >= 1 && number <= 45))) {
             throw new IllegalStateException(WINNING_LOTTO_NUMBER_INPUT_IS_NOT_IN_LOTTO_RANGE_ERROR_MESSAGE);
         }
 
-        return new Lotto(numbers);
+        return new Lotto(List.copyOf(numbers));
     }
 
     public static int getBonusNumber(String input) {
@@ -80,6 +85,7 @@ public class LottoService {
         }
 
         int bonusNumber = Integer.parseInt(input);
+
         if (bonusNumber < 1 || bonusNumber > 45) {
             throw new IllegalStateException(BONUS_NUMBER_INPUT_IS_NOT_IN_RANGE_ERROR_MESSAGE);
         }
