@@ -3,6 +3,7 @@ package lotto.model;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class User {
@@ -18,7 +19,9 @@ public class User {
     public List<List<Integer>> setTickets() {
         List<List<Integer>> tickets = new ArrayList<>();
         for (int i = 0; i < ticketCount; i++) {
-            tickets.add(Randoms.pickUniqueNumbersInRange(1,45, LOTTO_NUMBER_LENGTH));
+            List<Integer> newTicket = Randoms.pickUniqueNumbersInRange(1,45, LOTTO_NUMBER_LENGTH);
+            Collections.sort(newTicket);
+            tickets.add(newTicket);
         }
         this.tickets = tickets;
         return tickets;
