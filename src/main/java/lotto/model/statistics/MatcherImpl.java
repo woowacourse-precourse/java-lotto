@@ -7,32 +7,33 @@ import java.math.BigDecimal;
 import java.util.List;
 import java.util.function.Predicate;
 
-public class MatcherImpl implements Matcher{
+public class MatcherImpl implements Matcher {
 
     private final List<Lotto> IssuedLotto;
     private final WinningNumbers winningNumbers;
     private final BigDecimal money;
     private final Statistics statistics;
 
-    public MatcherImpl(List<Lotto> issuedLotto, WinningNumbers winningNumbers, BigDecimal money){
+    public MatcherImpl(List<Lotto> issuedLotto, WinningNumbers winningNumbers, BigDecimal money) {
         this.IssuedLotto = issuedLotto;
         this.winningNumbers = winningNumbers;
         this.money = money;
         this.statistics = new Statistics();
         match();
     }
+
     @Override
     public Statistics getStatistics() {
         return this.statistics;
     }
 
     @Override
-    public void match(){
+    public void match() {
         for (Lotto lotto : IssuedLotto) {
             Integer sameCount = getCorrectMatch(winningNumbers, lotto);
             Boolean bonusMatch = getBonusMatch(winningNumbers, lotto);
             Rank rank = Rank.of(sameCount, bonusMatch);
-            if(!rank.equals(Rank.FAIL)) {
+            if (!rank.equals(Rank.FAIL)) {
                 statistics.update(rank);
             }
         }

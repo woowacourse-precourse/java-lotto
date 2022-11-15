@@ -12,7 +12,7 @@ public class Lotto {
         this.numbers = numbers;
     }
 
-    public List<Integer> getNumbers(){
+    public List<Integer> getNumbers() {
         return this.numbers;
     }
 
@@ -21,14 +21,14 @@ public class Lotto {
         validateDuplicated(numbers);
     }
 
-    private void validateSize(List<Integer> numbers){
+    private void validateSize(List<Integer> numbers) {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException(ErrorMessage.FAILED_CREATE_LOTTO.message);
         }
     }
 
-    private void validateDuplicated(List<Integer> numbers){
-        if (numbers.stream().distinct().count() != 6){
+    private void validateDuplicated(List<Integer> numbers) {
+        if (numbers.stream().distinct().count() != 6) {
             throw new IllegalArgumentException(ErrorMessage.FAILED_CREATE_LOTTO.message);
         }
     }

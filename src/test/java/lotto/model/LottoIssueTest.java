@@ -12,7 +12,7 @@ public class LottoIssueTest {
 
     @Test
     @DisplayName("로또 발행 권수 확인")
-    void case1(){
+    void case1() {
         //given
         LottoIssue lottoIssue = new LottoIssueImpl("10000");
 
@@ -25,7 +25,7 @@ public class LottoIssueTest {
 
     @Test
     @DisplayName("발행 로또 유효 범위 테스트")
-    void case2(){
+    void case2() {
         //given
         LottoIssue lottoIssue = new LottoIssueImpl("10000");
 
@@ -34,13 +34,13 @@ public class LottoIssueTest {
 
         //then
         for (Lotto lotto : result) {
-            Assertions.assertThat(lotto.getNumbers()).allMatch(number -> 1<=number&&number<=45);
+            Assertions.assertThat(lotto.getNumbers()).allMatch(number -> 1 <= number && number <= 45);
         }
     }
 
     @Test
     @DisplayName("발행 중복 테스트")
-    void case3(){
+    void case3() {
         //given
         LottoIssue lottoIssue = new LottoIssueImpl("10000");
 

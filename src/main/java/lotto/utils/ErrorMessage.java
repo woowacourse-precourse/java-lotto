@@ -15,7 +15,6 @@ public enum ErrorMessage {
     WINNINGNUMBER_CONTAINS_BONUSNUMBER("[ERROR] 보너스 번호와 당첨 번호에 중복이 있습니다.");
 
 
-
     public final String message;
 
     ErrorMessage(String message) {

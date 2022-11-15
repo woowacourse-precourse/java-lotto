@@ -10,8 +10,12 @@ import java.util.List;
 public interface Output {
 
     void printErrorMessage(IllegalArgumentException exception);
+
     void printEventMessage(EventMessage eventMessage);
+
     void printIssuedLotto(List<Lotto> issuedLotto);
+
     void printStatistics(Statistics statistics);
+
     void printPurchaseMessage(BigDecimal count);
 }

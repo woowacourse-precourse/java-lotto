@@ -15,7 +15,7 @@ class InputTest {
 
     @Test
     @DisplayName("투입금액 테스트 성공")
-    void case1(){
+    void case1() {
         //given
         Input input = new InputImpl();
 
@@ -31,7 +31,7 @@ class InputTest {
 
     @Test
     @DisplayName("투입금액 테스트 실패 : 숫자가 아닐 경우")
-    void case2(){
+    void case2() {
         //given
         Input input = new InputImpl();
 
@@ -47,7 +47,7 @@ class InputTest {
 
     @Test
     @DisplayName("투입금액 테스트 실패 : 투입 금액의 단위가 1,000 단위가 아닐 경우")
-    void case3(){
+    void case3() {
         //given
         Input input = new InputImpl();
 
@@ -63,7 +63,7 @@ class InputTest {
 
     @Test
     @DisplayName("당첨 번호 입력 성공")
-    void case4(){
+    void case4() {
         //given
         Input input = new InputImpl();
 
@@ -79,7 +79,7 @@ class InputTest {
 
     @Test
     @DisplayName("당첨 번호 입력 실패: ',' 로 구분되지 않는 당첨 번호 입력")
-    void case5(){
+    void case5() {
         //given
         Input input = new InputImpl();
 
@@ -93,7 +93,7 @@ class InputTest {
 
     @Test
     @DisplayName("당첨 번호 입력 실패: 쉼표로 구분된 6개의 숫자가 아닌경우")
-    void case6(){
+    void case6() {
         //given
         Input input = new InputImpl();
 
@@ -108,7 +108,7 @@ class InputTest {
 
     @Test
     @DisplayName("당첨 번호 입력 실패: 숫자가 1~45 사이의 숫자가 아닌 경우가 있는 경우")
-    void case7(){
+    void case7() {
         //given
         Input input = new InputImpl();
 
@@ -123,7 +123,7 @@ class InputTest {
 
     @Test
     @DisplayName("보너스 번호 입력 성공")
-    void case8(){
+    void case8() {
         //given
         Input input = new InputImpl();
 
@@ -138,7 +138,7 @@ class InputTest {
 
     @Test
     @DisplayName("보너스 번호 입력 실패 : 숫자가 아닌 입력을 할 경우")
-    void case9(){
+    void case9() {
         //given
         Input input = new InputImpl();
 
@@ -154,7 +154,7 @@ class InputTest {
 
     @Test
     @DisplayName("보너스 번호 입력 실패 : 1~45 사이의 숫자를 입력하지 않은 경우")
-    void case10(){
+    void case10() {
         //given
         Input input = new InputImpl();
 

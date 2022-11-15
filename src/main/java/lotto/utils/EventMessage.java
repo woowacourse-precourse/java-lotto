@@ -13,7 +13,8 @@ public enum EventMessage {
     NEW_LINE("");
 
     public final String message;
-    EventMessage(String message){
+
+    EventMessage(String message) {
         this.message = message;
     }
 

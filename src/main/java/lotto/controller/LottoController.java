@@ -22,28 +22,28 @@ public class LottoController {
     private final Input input;
     private final Output output;
 
-    public LottoController(){
+    public LottoController() {
         this.input = new InputImpl();
         this.output = new OutputImpl();
     }
 
-    public void run(){
+    public void run() {
         try {
             String money = purchaseStep();
             List<Lotto> issuedLotto = issueStep(money);
             WinningNumbers winningNumber = setWinningNumbers();
             statisticsStep(issuedLotto, winningNumber, money);
-        }catch (IllegalArgumentException exception){
+        } catch (IllegalArgumentException exception) {
             output.printErrorMessage(exception);
         }
     }
 
-    private String purchaseStep(){
+    private String purchaseStep() {
         output.printEventMessage(EventMessage.PURCHASE_AMOUNT);
         return input.moneyInput();
     }
 
-    private List<Lotto> issueStep(String money){
+    private List<Lotto> issueStep(String money) {
         LottoIssue lottoIssue = new LottoIssueImpl(money);
         List<Lotto> issuedLotto = lottoIssue.getLotto();
         output.printPurchaseMessage(lottoIssue.getCount());
@@ -51,17 +51,18 @@ public class LottoController {
         return issuedLotto;
     }
 
-    private WinningNumbers setWinningNumbers(){
+    private WinningNumbers setWinningNumbers() {
         output.printEventMessage(EventMessage.WINNING_NUMBERS);
         String winningNumbers = input.winningNumbersInput();
         output.printEventMessage(EventMessage.BONUS_NUMBERS);
         String bonusNumber = input.BonusNumberInput();
 
-        WinningNumbersIssue winningNumbersIssue = new WinningNumbersIssueImpl(winningNumbers,bonusNumber);
+        WinningNumbersIssue winningNumbersIssue = new WinningNumbersIssueImpl(winningNumbers, bonusNumber);
         return winningNumbersIssue.getWinningNumbers();
     }
-    private void statisticsStep(List<Lotto> issuedLotto,WinningNumbers winningNumber,String money){
-        Matcher matcher = new MatcherImpl(issuedLotto,winningNumber, new BigDecimal(money));
+
+    private void statisticsStep(List<Lotto> issuedLotto, WinningNumbers winningNumber, String money) {
+        Matcher matcher = new MatcherImpl(issuedLotto, winningNumber, new BigDecimal(money));
         output.printStatistics(matcher.getStatistics());
     }
 }

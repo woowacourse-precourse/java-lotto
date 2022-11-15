@@ -7,5 +7,6 @@ import java.util.List;
 
 public interface LottoIssue {
     List<Lotto> getLotto();
+
     BigDecimal getCount();
 }
