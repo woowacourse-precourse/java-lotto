@@ -48,11 +48,13 @@ public class LottoController {
 
 	private void drawWinningNumbers() {
 		OutputView.printProgress(WINNING_NUMBER);
-		List<Integer> inputWinningNumbers = inputView.inputWinningNumbers();
+		String inputWinningNumbers = inputView.inputNumbers();
+		Lotto lotto = new Lotto(inputWinningNumbers);
 
 		OutputView.printProgress(BONUS_NUMBER);
-		Integer bonusNumber = inputView.inputBonusNumber();
-		Lotto lotto = new Lotto(inputWinningNumbers, bonusNumber);
+		String inputBonusNumber = inputView.inputNumbers();
+		lotto.drawBonusNumber(inputBonusNumber);
+
 		winningNumbers = lotto.getWinningNumbers();
 	}
 
@@ -70,10 +72,6 @@ public class LottoController {
 		WinStatisticsStatus[] winStatisticsStatus = WinStatisticsStatus.values();
 
 		OutputView.printWinStatisticsStatus(winStatisticsStatus, result);
-		// for (WinStatisticsStatus rank : winStatisticsStatus) {
-		// 	int matchNumber = result.get(rank.getRank());
-		// 	rank.showResult(matchNumber);
-		// }
 	}
 
 	private void getYield(Map<Integer, Integer> result, int money) {

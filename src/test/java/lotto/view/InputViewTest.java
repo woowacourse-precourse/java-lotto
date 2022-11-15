@@ -13,19 +13,15 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import lotto.validator.BonusNumberValidator;
 import lotto.validator.MoneyInputValidator;
-import lotto.validator.WinningNumberValidator;
 
 public class InputViewTest {
-	private static WinningNumberValidator winningNumberValidator;
-	private static BonusNumberValidator bonusNumberValidator;
 	private static InputView inputView;
 
 	@BeforeAll
 	static void beforeAll() {
 		MoneyInputValidator moneyInputValidator = new MoneyInputValidator();
-		inputView = new InputView(moneyInputValidator, winningNumberValidator, bonusNumberValidator);
+		inputView = new InputView(moneyInputValidator);
 	}
 
 	@DisplayName("유효성거친 돈입력 올바른 반환여부확인")

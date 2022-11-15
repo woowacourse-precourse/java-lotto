@@ -4,25 +4,23 @@ import static lotto.model.LotteryInformation.*;
 
 import java.util.List;
 
-public class Lotto {
-	private final List<Integer> numbers;
-	/*
-	 * 팩토리메소드 패턴으로 작성 (한번 생성한거 계속 사용함으로)
-	 * 유효성검사 생성자에서 해주기
-	 * */
+import lotto.validator.LottoValidator;
 
-	public Lotto(List<Integer> numbers, Integer bonusNumber) {
-		this.numbers = numbers;
-		drawBonusNumber(bonusNumber);
+public class Lotto {
+	private static LottoValidator lottoValidator;
+	private final List<Integer> numbers;
+
+	public Lotto(String numbers) {
+		lottoValidator = new LottoValidator();
+		this.numbers = lottoValidator.validateWinningNumbers(numbers);
 	}
 
-	private void drawBonusNumber(Integer bonusNumber) {
+	public void drawBonusNumber(String inputBonusNumber) {
+		Integer bonusNumber = lottoValidator.validateBonusNumber(inputBonusNumber);
 		numbers.add(BONUS_NUMBER_DIGIT.getCode(), bonusNumber);
 	}
 
 	public List<Integer> getWinningNumbers() {
 		return numbers;
 	}
-
-	// TODO: 추가 기능 구현
 }

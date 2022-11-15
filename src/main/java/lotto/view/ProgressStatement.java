@@ -8,7 +8,7 @@ public enum ProgressStatement {
 	BONUS_NUMBER("보너스 번호를 입력해 주세요."),
 	WINNING_STATISTICS("당첨 통계" + System.lineSeparator() + "---"),
 	START_GROSS_PROFIT("총 수익률은 "),
-	END_GROSS_PROFIT("입니다.");
+	END_GROSS_PROFIT("%입니다.");
 
 	private final String progress;
 
