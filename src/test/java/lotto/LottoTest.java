@@ -24,4 +24,24 @@ class LottoTest {
     }
 
     // 아래에 추가 테스트 작성 가능
+    @DisplayName("로또 번호의 개수가 6이 아니면 예외가 발생한다.")
+    @Test
+    void createLottoBylessSize() {
+        assertThatThrownBy(() -> new Lotto(List.of(1, 2, 3, 4, 5)))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("로또 번호가 1에서 45사이가 아닐 경우 예외가 발생한다.")
+    @Test
+    void createLottoOutofRange() {
+        assertThatThrownBy(() -> new Lotto(List.of(-1, 2, 3, 4, 5, 6)))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("로또 번호가 1에서 45사이가 아닐 경우 예외가 발생한다.")
+    @Test
+    void bonusNumberDuplicateCheck() {
+        assertThatThrownBy(() -> new Lotto(List.of(-1, 2, 3, 4, 5, 6)).bonus_duplicateCheck(1))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
