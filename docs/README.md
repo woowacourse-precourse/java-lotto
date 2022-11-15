@@ -38,3 +38,28 @@ JDK 11
   - [x] 로또 번호에 숫자가 아닌 문자가 들어왔을 경우
   - [x] 보너스 번호에 숫자가 아닌 문자가 들어왔을 경우
   - [x] 로또 구입 금액이 숫자가 아닌 문자가 들어왔을 경우
+
+## 고려사항
+- [x] 함수(또는 메서드)의 길이가 15라인을 넘어가지 않도록 구현
+- [x] else 예약어를 쓰지 않는다.
+- [x] Java Enum을 적용한다.
+- [x] 도메인 로직에 단위 테스트를 구현해야 한다. 
+  - [x] UI(System.out, System.in, Scanner) 로직은 제외한다.
+- [x] Random 값 추출은 `camp.nextstep.edu.missionutils.Randoms`의 `pickUniqueNumbersInRange()`를 활용한다.
+- [x] 사용자가 입력하는 값은 `camp.nextstep.edu.missionutils.Console`의 `readLine()`을 활용한다.
+- [x] 제공된 `Lotto` 클래스를 활용해 구현해야 한다.
+  - [x] `Lotto`에 매개 변수가 없는 생성자를 추가할 수 없다.
+  - [x] `numbers`의 접근 제어자인 private을 변경할 수 없다.
+  - [x] `Lotto`에 필드(인스턴스 변수)를 추가할 수 없다.
+  - [x] `Lotto`의 패키지 변경은 가능하다.
+- [x] JDK 11 버전에서 실행 가능해야 한다.
+- [x] 프로그램 실행의 시작점은 `Application`의 `main()`이다.
+- [x] `build.gradle` 파일을 변경할 수 없고, 외부 라이브러리를 사용하지 않는다.
+- [] [Java 코드 컨벤션](https://github.com/woowacourse/woowacourse-docs/tree/master/styleguide/java) 가이드를 준수하며 프로그래밍한다.
+- [x] 프로그램 종료 시 `System.exit()`를 호출하지 않는다.
+- [x] 프로그램 구현이 완료되면 `ApplicationTest`의 모든 테스트가 성공해야 한다.
+- [x] 프로그래밍 요구 사항에서 달리 명시하지 않는 한 파일, 패키지 이름을 수정하거나 이동하지 않는다.
+- [x] indent(인덴트, 들여쓰기) depth를 3이 넘지 않도록 구현한다. 2까지만 허용한다.
+- [x] 3항 연산자를 쓰지 않는다.
+- [x] 함수(또는 메서드)가 한 가지 일만 하도록 최대한 작게 만들어라.
+- [x] JUnit 5와 AssertJ를 이용하여 본인이 정리한 기능 목록이 정상 동작함을 테스트 코드로 확인한다.
