@@ -18,13 +18,13 @@ public class View {
     public static final String MESSAGE_SIX_FORMAT = "6개 일치 (2,000,000,000원) - ";
     public static final String MESSAGE_STACTISTICS_FORMAT = "당첨 통계" + "\n";
     public static final boolean NOT_DIVISON_AMOUNT = Game.paymentAmount % Game.LottoPrice != 0;
-    public static final boolean NOT_EXACT_FORMAT=Game.winningNumbers_Input.length()!=11;
+    public static final int EXACT_FORMAT=11;
 
     public static void read_WinningNumbers() {
         System.out.print(MESSAGE_WINNINGNUMBERS_INPUT_FORMAT);
         Game.winningNumbers_Input = Console.readLine();
 
-        if(NOT_EXACT_FORMAT) throw new IllegalArgumentException();
+        if(Game.winningNumbers_Input.length()==EXACT_FORMAT) throw new IllegalArgumentException();
     }
 
     public static boolean read_buyingLottoAmount() {
