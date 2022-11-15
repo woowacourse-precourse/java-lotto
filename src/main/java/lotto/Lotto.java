@@ -1,10 +1,12 @@
 package lotto;
 
+import exception.LottoException;
+
 import java.util.List;
 
 public class Lotto {
     private final List<Integer> numbers;
-
+    private LottoException lottoException;
     public Lotto(List<Integer> numbers) {
         validate(numbers);
         this.numbers = numbers;
@@ -14,10 +16,6 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
-        if (numbers.size() != 6) {
-            throw new IllegalArgumentException("[ERROR] 숫자의 개수를 6개 입력해주세요.");
-        }
+        lottoException.validateNumbers(numbers);
     }
-
-    // TODO: 추가 기능 구현
 }

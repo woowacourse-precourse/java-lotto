@@ -9,28 +9,15 @@ public class LottoException extends IllegalStateException {
         super(message);
     }
 
-    public void IllegalNumberRangeException(List<Integer> numbers){
+    public void validateNumbers(List<Integer> numbers){
+        if( numbers.size() != 6 ) throw new LottoException("[ERROR] 숫자의 개수를 6개민 유효합니다.");
         for(Integer number : numbers){
             if(number < 1 || number > 45) throw new LottoException("[ERROR] 로또 숫자의 범위는 1에서 45사이만 유효합니다.");
-        }
-    }
-
-    public void IllegalNumberBlankException(List<Integer> numbers){
-        for(Integer number : numbers){
             if(number == null) throw new LottoException("[ERROR] 로또 숫자는 널이 될 수 없습니다.");
-        }
-    }
-
-    public void IllegalNumberDuplicationException(List<Integer> numbers){
-        for(Integer number : numbers){
             if(numbers.indexOf(number) != numbers.lastIndexOf(number)){
                 throw new LottoException("[ERROR] 로또 숫자는 중복될 수 없습니다.");
             }
         }
-    }
-
-    public void IllegalNumberSizeException(List<Integer> numbers){
-        if( numbers.size() != 6 ) throw new LottoException("[ERROR] 숫자의 개수를 6개민 유효합니다.");
     }
 
     public void IllegalMoneyException(int money){
