@@ -54,7 +54,7 @@ public class BuyerTest {
         assertEquals(8, lotteryTickets.size());
     }
 
-    @DisplayName("구입 금액에 따라 올바른 수의 복권을 발행한다.")
+    @DisplayName("발행한 로또 티켓의 숫자들을 오름차순으로 정렬한다.")
     @Test
     void sortLotteryNumbersTest() {
         List<List<Integer>> lotteryTicket = new ArrayList<>();
