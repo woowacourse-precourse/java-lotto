@@ -121,9 +121,22 @@ public class LottoService {
     public List<Integer> generateLottoNumbers() {
 
         List<Integer> lottoNumbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
-        List<Integer> sortedLottoNumbers = sortedLottoNumbers(lottoNumbers);
+        List<Integer> copyLottoNumbers = cloneList(lottoNumbers);
+
+        List<Integer> sortedLottoNumbers = sortedLottoNumbers(copyLottoNumbers);
 
         return sortedLottoNumbers;
+
+    }
+
+    public List<Integer> cloneList(List<Integer> lottoNumbers) {
+
+        List<Integer> clone = new LinkedList<>();
+        for (int lottoNumber : lottoNumbers) {
+            clone.add(lottoNumber);
+        }
+
+        return clone;
     }
 
     public List<Integer> sortedLottoNumbers(List<Integer> lottoNumbers) {
