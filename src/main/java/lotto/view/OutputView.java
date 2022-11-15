@@ -18,7 +18,7 @@ public class OutputView {
     private static final String MESSAGE_FIRST_GRADE = "6개 일치 (2,000,000,000원) - ";
 
     public static void printLotteryCount(Integer count) {
-        System.out.println(count.toString() + UNIT + MESSAGE_BUY_SUFFIX);
+        printString(count.toString() + UNIT + MESSAGE_BUY_SUFFIX);
     }
 
     public static void printCreatedNumbers(List<Integer> numbers) {
@@ -27,16 +27,16 @@ public class OutputView {
     }
 
     public static void printWinningInfo(Calculator rankCountMap) {
-        System.out.println(MESSAGE_OUTPUT_INIT);
-        System.out.println(MESSAGE_FIFTH_GRADE + rankCountMap.getCount(Rank.FIFTH) + UNIT);
-        System.out.println(MESSAGE_FOURTH_GRADE + rankCountMap.getCount(Rank.FOURTH) + UNIT);
-        System.out.println(MESSAGE_THIRD_GRADE + rankCountMap.getCount(Rank.THIRD) + UNIT);
-        System.out.println(MESSAGE_SECOND_GRADE + rankCountMap.getCount(Rank.SECOND) + UNIT);
-        System.out.println(MESSAGE_FIRST_GRADE + rankCountMap.getCount(Rank.FIRST) + UNIT);
+        printString(MESSAGE_OUTPUT_INIT);
+        printString(MESSAGE_FIFTH_GRADE + rankCountMap.getCount(Rank.FIFTH) + UNIT);
+        printString(MESSAGE_FOURTH_GRADE + rankCountMap.getCount(Rank.FOURTH) + UNIT);
+        printString(MESSAGE_THIRD_GRADE + rankCountMap.getCount(Rank.THIRD) + UNIT);
+        printString(MESSAGE_SECOND_GRADE + rankCountMap.getCount(Rank.SECOND) + UNIT);
+        printString(MESSAGE_FIRST_GRADE + rankCountMap.getCount(Rank.FIRST) + UNIT);
     }
 
     public static void printProfit(double profit) {
-        System.out.println(MESSAGE_PROFIT_PREFIX + String.format("%.1f", profit) + MESSAGE_PROFIT_SUFFIX);
+        printString(MESSAGE_PROFIT_PREFIX + String.format("%.1f", profit) + MESSAGE_PROFIT_SUFFIX);
     }
 
     public static void printString(String input) {
