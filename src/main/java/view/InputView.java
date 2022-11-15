@@ -16,6 +16,7 @@ public class InputView {
     private static final String WINNING_NUMBER = NEW_LINE + "당첨 번호를 입력해 주세요.";
     private static final String BONUS_NUMBER = NEW_LINE + "보너스 번호를 입력해 주세요.";
     private static final String TYPE_ERROR = "숫자를 입력해야 합니다.";
+    public static final String DELIMITER = "\\s*,\\s*";
 
     private InputView() {
 
@@ -48,7 +49,7 @@ public class InputView {
 
     private static List<Integer> toIntegerList(String winningNumbers) {
         try {
-            return Arrays.stream(winningNumbers.split("\\s*,\\s*"))
+            return Arrays.stream(winningNumbers.split(DELIMITER))
                     .map(Integer::parseInt)
                     .collect(Collectors.toList());
         } catch (NumberFormatException e) {
