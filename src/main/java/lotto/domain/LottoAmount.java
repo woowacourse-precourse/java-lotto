@@ -6,25 +6,26 @@ import java.util.List;
 
 public class LottoAmount {
 
-    private final int MIN_MONEY = 1_000;
-    private final int MAX_MONEY = 100_000;
-    private final int LOTTO_TICKET_PRICE = 1000;
-    private int purchaseAmount;
-    private int lottoTickets;
+    private static final int MIN_MONEY = 1_000;
+    private static final int MAX_MONEY = 100_000;
+    private static final int LOTTO_TICKET_PRICE = 1000;
+    private static final int ZERO = 0;
+    private final int PURCHASE_AMOUNT;
+    private final int LOTTO_TICKETS;
 
     public LottoAmount(int number) {
         validate(number);
-        this.purchaseAmount = number;
-        this.lottoTickets = exchangeTicket(number);
+        this.PURCHASE_AMOUNT = number;
+        this.LOTTO_TICKETS = exchangeTicket(number);
     }
 
     public List<List<Integer>> buyLotto() {
         NumberGenerator numberGenerator = new NumberGenerator();
-        return numberGenerator.createRandomNumbers(lottoTickets);
+        return numberGenerator.createRandomNumbers(LOTTO_TICKETS);
     }
 
     public int getPurchaseAmount() {
-        return purchaseAmount;
+        return PURCHASE_AMOUNT;
     }
 
     private void validate(int number) {
@@ -44,7 +45,7 @@ public class LottoAmount {
     }
 
     private boolean validUnit(int number) {
-        return number % LOTTO_TICKET_PRICE == 0;
+        return number % LOTTO_TICKET_PRICE == ZERO;
     }
 
     private boolean validMaxRange(int number) {
