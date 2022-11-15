@@ -44,6 +44,9 @@ public class Lotto {
         if (bonusNum < 0 || bonusNum > 45) {
             System.out.println("[ERROR] 보너스 번호는 1부터 45 사이의 숫자여야 합니다.");
         }
+        if (numbers.contains(bonusNum)) {
+            throw new IllegalArgumentException("[ERROR] 보너스 번호는 당첨 번호와 중복될 수 없습니다.");
+        }
         return bonusNum;
     }
 }
