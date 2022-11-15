@@ -11,17 +11,23 @@ public class LottoGame {
 	WinningNumber winningNumber;
 	BonusBall bonusBall;
 	Store store;
+
 	public void start() {
 		buyTicket();
 		getWinningNumber();
 		getBonusNumber();
-		CompareNumber compareNumber = new CompareNumber(winningNumber,bonusBall,store.lottoTicket);
+		getScore();
+	}
+
+	private void getScore() {
+		CompareNumber compareNumber = new CompareNumber(winningNumber, bonusBall, store.lottoTicket);
+		print.result(compareNumber.result);
 	}
 
 	private void buyTicket() {
 		print.message(Message.START);
 		Pay pay = new Pay(readLine());
-		 store = new Store(pay.getPay());
+		store = new Store(pay.getPay());
 		print.LottoTicket(store.count, store.lottoTicket.getLottoTicket());
 	}
 
@@ -34,7 +40,7 @@ public class LottoGame {
 	private void getBonusNumber() {
 		print.newLine();
 		print.message(Message.BONUS_NUMBER);
-		 bonusBall = new BonusBall(readLine());
+		bonusBall = new BonusBall(readLine());
 	}
 
 }
