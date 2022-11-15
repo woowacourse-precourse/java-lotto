@@ -11,11 +11,14 @@ public class LottoProgram {
     private final int LOTTO_PRICE = 1000;
 
     private int numberOfLotto = 0;
-    private List<Lotto> lottos;
+    private List<Lotto> lottos = new ArrayList<>();
+    private Lotto winningLotto;
+    private int bonusNumber;
 
     public void progress() {
         buyLotto();
         makeLotto();
+        getWinningLottoNumbers();
     }
 
     public void buyLotto() {
@@ -33,13 +36,32 @@ public class LottoProgram {
     }
 
     public void makeLotto() {
-        this.lottos = new ArrayList<>();
-
         for (int i = 0; i < this.numberOfLotto; i++) {
             List<Integer> numbers = LottoGenerator.generateLotto();
             Lotto lotto = new Lotto(numbers);
             lotto.printLottoNumbers();
             this.lottos.add(lotto);
         }
+    }
+
+    public void getWinningLottoNumbers() {
+        OutputView.printInputWinningNumbersMessage();
+        makeWinningLotto(InputView.getLottoNumbers());
+
+        OutputView.printInputBonusNumbersMessage();
+        makeBonusNumber(InputView.getBonusNumber());
+    }
+
+    private void makeWinningLotto(String numbers) {
+        String[] lottoNumbers = numbers.split(",");
+        List<Integer> winningNumbers = new ArrayList<>();
+        for (String s: lottoNumbers) {
+            winningNumbers.add(Integer.parseInt(s));
+        }
+        this.winningLotto = new Lotto(winningNumbers);
+    }
+
+    private void makeBonusNumber(String bonusNumber) {
+        this.bonusNumber = Integer.parseInt(bonusNumber);
     }
 }
