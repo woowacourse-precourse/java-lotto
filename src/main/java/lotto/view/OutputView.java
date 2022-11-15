@@ -40,7 +40,7 @@ public class OutputView {
             }
             System.out.printf("%s%d개%n", entry.getKey().getText(), entry.getValue());
         }
-        String formatReward =  String.format("%.1f", (reward / (double) money * 100));
+        String formatReward = String.format("%.1f", (reward / (double) money * 100));
         System.out.println("총 수익률은 " + formatReward + "%입니다.");
     }
 }

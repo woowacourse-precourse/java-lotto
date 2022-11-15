@@ -18,6 +18,7 @@ public class LottoController {
             int money = InputView.money();
             List<Lotto> ticket = LottoGenerator.automatic(LottoGenerator.maximum(money));
             OutputView.ticket(ticket);
+
             List<Integer> winningNumber = InputView.winningNumber();
             List<Rank> result = result(ticket, winningNumber, InputView.bonusNumber(winningNumber));
             OutputView.result(result, money);
