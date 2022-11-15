@@ -42,9 +42,9 @@ public class Application {
 
 		for (int count = 0; count < purchaseQuantity; count++) {
 
-			List<Integer> lotto = Lotto.newLotto().getNumbers();
-			System.out.println(lotto);
-			myLottos.add(lotto);
+			Lotto lotto = new Lotto(Lotto.createRandomNumbers());
+			System.out.println(lotto.getNumbers());
+			myLottos.add(lotto.getNumbers());
 		}
 		return myLottos;
 	}
