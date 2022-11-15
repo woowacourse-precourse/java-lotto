@@ -17,6 +17,10 @@ public class UserNumber {
         } catch(Exception e){
             throw new IllegalArgumentException(Print.priceError());
         }
+        return price;
+    }
+
+    public int lottoCount(int price){
         return price / countingNumber;
     }
 
@@ -37,6 +41,18 @@ public class UserNumber {
             userlottos.add(lotto);
         }
         return userlottos;
+    }
+
+    public void inputPriceZero(int price){
+        if (price == 0) {
+            throw new IllegalArgumentException(Print.priceError());
+        }
+    }
+
+    public void inputPriceThousand(int price){
+        if (!(price % countingNumber == 0)) {
+            throw new IllegalArgumentException(Print.priceError());
+        }
     }
 
 }
