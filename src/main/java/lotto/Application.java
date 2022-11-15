@@ -40,11 +40,6 @@ public class Application {
 
     private static void printTotalResult(JackpotBonus jackpotBonus, List<Lotto> lotteries) {
         TotalResult totalResult = new TotalResult(jackpotBonus, lotteries);
-
-        Map<Rank, Integer> rankCounts = totalResult.getRankCounts();
-        List<String> rankInfoWithCounts = totalResult.getRankInfoWithCounts(rankCounts);
-        String yield = totalResult.getYield(rankCounts);
-
-        OutputView.printTotalResult(rankInfoWithCounts, yield);
+        OutputView.printTotalResult(totalResult);
     }
 }
