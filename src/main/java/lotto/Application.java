@@ -1,7 +1,18 @@
 package lotto;
 
+import config.LottoContainer;
+import lotto.presentation.LottoGameController;
+
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        LottoContainer lottoContainer = LottoContainer.getInstance();
+        LottoGameController lottoGameController = lottoContainer.lottoController();
+
+        try {
+            lottoGameController.start();
+        } catch (IllegalArgumentException e) {
+            return;
+        }
+
     }
 }
