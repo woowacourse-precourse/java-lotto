@@ -42,6 +42,37 @@ public class ExceptionTest extends NsTest {
         }
     }
 
+    @DisplayName("보너스번호 입력 예외 테스트")
+    @Nested
+    class BonusNumberInputTest {
+        @DisplayName("문자를 입력한 경우")
+        @Test
+        void case1() {
+            assertSimpleTest(() -> {
+                runException("1000", "1,2,3,4,5,6", "a");
+                assertThat(output()).contains(ERROR_MESSAGE);
+            });
+        }
+
+        @DisplayName("실수를 입력한 경우")
+        @Test
+        void case2() {
+            assertSimpleTest(() -> {
+                runException("1000", "1,2,3,4,5,6", "11.2");
+                assertThat(output()).contains(ERROR_MESSAGE);
+            });
+        }
+
+        @DisplayName("쉼표로 여러 숫자를 입력한 경우")
+        @Test
+        void case3() {
+            assertSimpleTest(() -> {
+                runException("1000", "1,2,3,4,5,6", "1, 2, 3");
+                assertThat(output()).contains(ERROR_MESSAGE);
+            });
+        }
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
