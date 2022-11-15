@@ -7,7 +7,7 @@ public enum LottoRank {
     SECOND(5,true, Constants.SECOND_PRIZE_MONEY, 0, Constants.SECOND_PRIZE_MESSAGE),
     THIRD(5,false, Constants.THIRD_PRIZE_MONEY, 0, Constants.THIRD_PRIZE_MESSAGE),
     FOURTH(4,false, Constants.FOURTH_PRIZE_MONEY, 0, Constants.FOURTH_PRIZE_MESSAGE),
-    FIFTH(3,false, Constants.FIFTH_PRIZE_MONEY, 0, Constants.THIRD_PRIZE_MESSAGE),
+    FIFTH(3,false, Constants.FIFTH_PRIZE_MONEY, 0, Constants.FIFTH_PRIZE_MESSAGE),
     NO_PRIZE(0,false,0, 0, "");
 
     private final int match;
