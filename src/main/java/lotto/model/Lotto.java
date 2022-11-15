@@ -17,6 +17,7 @@ public class Lotto {
 
     private void validateCount(List<Integer> numbers) {
         if (numbers.size() != 6) {
+            System.out.println(INVALID_NUMBER_COUNT.getMessage());
             throw new IllegalArgumentException(INVALID_NUMBER_COUNT.getMessage());
         }
     }
@@ -24,6 +25,7 @@ public class Lotto {
     private void validateRange(List<Integer> numbers) {
         for (int number : numbers) {
             if (number > 45 || number < 1) {
+                System.out.println(INVALID_NUMBER_RANGE.getMessage());
                 throw new IllegalArgumentException(INVALID_NUMBER_RANGE.getMessage());
             }
         }
@@ -33,6 +35,7 @@ public class Lotto {
         List<Integer> check = new ArrayList<>();
         for (int number : numbers) {
             if (check.contains(number)) {
+                System.out.println(DUPLICATED_NUMBER.getMessage());
                 throw new IllegalArgumentException(DUPLICATED_NUMBER.getMessage());
             }
             check.add(number);

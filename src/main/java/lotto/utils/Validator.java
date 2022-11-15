@@ -2,7 +2,10 @@ package lotto.utils;
 
 import java.util.ArrayList;
 import java.util.List;
-import static lotto.utils.ErrorCode.*;
+import java.util.NoSuchElementException;
+
+import static lotto.utils.ErrorCode.INVALID_TYPE_LOTTO_NUMBER;
+import static lotto.utils.ErrorCode.NOT_INT_TYPE;
 
 public class Validator {
 
@@ -13,7 +16,8 @@ public class Validator {
         try {
             result = Integer.parseInt(s);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException(NOT_INT_TYPE.getMessage());
+            System.out.println(NOT_INT_TYPE.getMessage());
+            throw new NoSuchElementException(NOT_INT_TYPE.getMessage());
         }
         return result;
     }
@@ -26,7 +30,8 @@ public class Validator {
             try {
                 number = Integer.parseInt(str);
             } catch (NumberFormatException e) {
-                throw new IllegalArgumentException(INVALID_TYPE_LOTTO_NUMBER.getMessage());
+                System.out.println(INVALID_TYPE_LOTTO_NUMBER.getMessage());
+                throw new NoSuchElementException(INVALID_TYPE_LOTTO_NUMBER.getMessage());
             }
             result.add(number);
         }
