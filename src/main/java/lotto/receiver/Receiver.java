@@ -10,8 +10,11 @@ public class Receiver {
 
     public static int receiveHowMuch() {
         Printer.requestPurchase();
-        String money = Console.readLine();
-        return ValidateNumber.validatePurchaseMoney(money) / 1000;
+        String inputMoney = Console.readLine();
+        int numberOfTicket = ValidateNumber.validatePurchaseMoney(inputMoney) / 1000;
+        Printer.printNumberOfTickets(numberOfTicket);
+        return numberOfTicket;
     }
+
 
 }
