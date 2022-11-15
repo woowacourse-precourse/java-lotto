@@ -20,7 +20,8 @@ public class LottoGenerator {
     }
 
     private Lotto createOneLotto() {
-        List<Integer> randomNumbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+        List<Integer> randomNumbers =
+                new ArrayList<>(Randoms.pickUniqueNumbersInRange(1, 45, 6));
         Collections.sort(randomNumbers);
         return new Lotto(randomNumbers);
     }
