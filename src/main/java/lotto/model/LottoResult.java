@@ -24,7 +24,7 @@ public class LottoResult {
     }
 
     private void validatePattern(String winningNumber){
-        String pattern = "(\\d*,){5}\\d";
+        String pattern = "(\\d*,){5}\\d*";
 
         if (!winningNumber.matches(pattern)){
             throw new IllegalArgumentException("[ERROR] 당첨번호는 6개의 숫자를 쉼표로 구분지어 입력해야 합니다.");
