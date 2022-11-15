@@ -17,6 +17,10 @@ public class Output {
     private static final String PROFIT_FORMAT = "%.1f";
     private static final String PROFIT_START_SENTENCE = "총 수익률은 ";
     private static final String PROFIT_END_SENTENCE = "%입니다.";
+    private static final String UNIT = "개";
+    private static final String OPEN_BRACKET = "[";
+    private static final String CLOSE_BRACKET = "]";
+    private static final String SEPARATOR = ", ";
 
     private Output() {
     }
@@ -36,20 +40,20 @@ public class Output {
         for (Integer eachNumber : lottoTicket) {
             ticket.add(String.valueOf(eachNumber));
         }
-        String openBracket = "[";
-        String closeBracket = "]";
-        String printFormat = String.join(",", ticket);
+        String openBracket = OPEN_BRACKET;
+        String closeBracket = CLOSE_BRACKET;
+        String printFormat = String.join(SEPARATOR, ticket);
         return openBracket + printFormat + closeBracket;
     }
 
     public static void printTotalRank(Map<Integer, Integer> totalRank) {
         System.out.println(WINNING_STATISTICS);
         System.out.println(PERFORATION);
-        System.out.println(THREE_CORRECT + totalRank.get(5) + "개");
-        System.out.println(FOUR_CORRECT + totalRank.get(4) + "개");
-        System.out.println(FIVE_CORRECT + totalRank.get(3) + "개");
-        System.out.println(FIVE_AND_BONUS_CORRECT + totalRank.get(2) + "개");
-        System.out.println(SIX_CORRECT + totalRank.get(1) + "개");
+        System.out.println(THREE_CORRECT + totalRank.get(5) + UNIT);
+        System.out.println(FOUR_CORRECT + totalRank.get(4) + UNIT);
+        System.out.println(FIVE_CORRECT + totalRank.get(3) + UNIT);
+        System.out.println(FIVE_AND_BONUS_CORRECT + totalRank.get(2) + UNIT);
+        System.out.println(SIX_CORRECT + totalRank.get(1) + UNIT);
     }
 
     public static void printRateOfReturn(double rateOfReturn) {
