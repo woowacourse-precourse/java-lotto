@@ -26,21 +26,28 @@ class LottoTest {
     @DisplayName("로또 구매 금액이 1,000으로 나누어 떨어지지 않으면 예외가 발생한다.")
     @Test
     void enterPurchaseAmountNot1000Units(){
-        assertThatThrownBy(() -> new Exception().isDividedByTicketPrice(1234))
+        assertThatThrownBy(() -> Exception.isDividedByTicketPrice(1234))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
     @DisplayName("로또 구매 금액 입력 값에 문자가 포함되어 있는 경우 예외가 발생한다.")
     @Test
     void enterCharacterContainingValue(){
-        assertThatThrownBy(() -> new Exception().isContainCharacter("300d0"))
+        assertThatThrownBy(() -> Exception.isContainCharacter("300d0"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
     @DisplayName("로또 구매 금액이 정상적이지 않을 시 예외가 발생한다.")
     @Test
     void enterAbnormalPurchaseAmount(){
-        assertThatThrownBy(() -> new Exception().isCorrectAmount("100d0"))
+        assertThatThrownBy(() -> Exception.isCorrectAmount("100d0"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("입력 값에 중복된 값이 존재하는 경우 예외가 발생한다.")
+    @Test
+    void CreateWinningNumberByDuplicatedNumber(){
+        assertThatThrownBy(() -> Exception.isAllDifferentValues(List.of("1", "2", "3", "4", "5", "5")))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 }
