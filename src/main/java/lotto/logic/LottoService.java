@@ -24,19 +24,19 @@ public class LottoService {
     }
 
     public Map<Rank, Integer> getResult(List<Lotto> lottos, Winning target) {
-        Map<Rank, Integer> countOfWinning = new EnumMap<>(Rank.class);
+        Map<Rank, Integer> countOfPlace = new EnumMap<>(Rank.class);
 
         lottos.forEach(lotto -> {
             Optional<Rank> optionalWinning = getWinning(target, lotto);
 
             if (optionalWinning.isPresent()) {
                 Rank rank = optionalWinning.get();
-                int winngingCount = countOfWinning.getOrDefault(rank, 0) + 1;
-                countOfWinning.put(rank, winngingCount);
+                int newCount = countOfPlace.getOrDefault(rank, 0) + 1;
+                countOfPlace.put(rank, newCount);
             }
         });
 
-        return countOfWinning;
+        return countOfPlace;
     }
 
     private Optional<Rank> getWinning(Winning target, Lotto lotto) {
