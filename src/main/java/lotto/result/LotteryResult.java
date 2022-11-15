@@ -31,5 +31,14 @@ public class LotteryResult {
         return new LotteryResult(lottos, winNumbers);
     }
 
+    public long getPrize() {
+        long prize = 0;
+        for (Rank rank : result.keySet()) {
+            prize += (long) rank.getPrize() * result.get(rank);
+        }
+        return prize;
+    }
+
+
 
 }
