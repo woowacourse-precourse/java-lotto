@@ -19,13 +19,16 @@ class CompareNumberTest {
 		tickets.add(Arrays.asList(1, 2, 3, 7, 8, 9)); // 3점
 		LottoTicket lottoTicket = new LottoTicket(tickets);
 
-		HashMap<Integer, Integer> map = new HashMap<>();
-		map.put(3, 1);
-		for (int i = 4; i < 8; i++)
-			map.put(i, 0);
+		List<List<Integer>> answer = new ArrayList<>();
+		answer.add(Arrays.asList(3, 5000, 1));
+		answer.add(Arrays.asList(4, 50000, 0));
+		answer.add(Arrays.asList(5, 1500000, 0));
+		answer.add(Arrays.asList(5, 30000000, 0));
+		answer.add(Arrays.asList(6, 2000000000, 0));
+
 		CompareNumber compareNumber = new CompareNumber(winningNumber, bonusBall, lottoTicket);
 
-		assertEquals(map, compareNumber.result);
+		assertEquals(answer, compareNumber.result);
 	}
 
 	@Test
@@ -35,17 +38,19 @@ class CompareNumberTest {
 		List<List<Integer>> tickets = new ArrayList<>();
 		tickets.add(Arrays.asList(45, 2, 3, 4, 5, 6)); // 5점
 		tickets.add(Arrays.asList(1, 2, 3, 4, 5, 7)); // 7점
-		tickets.add(Arrays.asList(1, 2, 3, 4, 5, 6)); // 7점
+		tickets.add(Arrays.asList(1, 2, 3, 4, 5, 6)); // 6점
 		LottoTicket lottoTicket = new LottoTicket(tickets);
 
-		HashMap<Integer, Integer> map = new HashMap<>();
-		for (int i = 5; i < 8; i++)
-			map.put(i, 1);
-		for (int i = 3; i < 5; i++)
-			map.put(i, 0);
+		List<List<Integer>> answer = new ArrayList<>();
+		answer.add(Arrays.asList(3, 5000, 0));
+		answer.add(Arrays.asList(4, 50000, 0));
+		answer.add(Arrays.asList(5, 1500000, 1));
+		answer.add(Arrays.asList(5, 30000000, 1));
+		answer.add(Arrays.asList(6, 2000000000, 1));
+
 		CompareNumber compareNumber = new CompareNumber(winningNumber, bonusBall, lottoTicket);
 
-		assertEquals(map, compareNumber.result);
+		assertEquals(answer, compareNumber.result);
 	}
 
 	@Test
@@ -56,17 +61,18 @@ class CompareNumberTest {
 		tickets.add(Arrays.asList(45, 2, 3, 4, 5, 6)); // 5점
 		tickets.add(Arrays.asList(1, 2, 33, 4, 5, 6)); // 5점
 		tickets.add(Arrays.asList(1, 2, 3, 4, 5, 7)); // 7점
-		tickets.add(Arrays.asList(1, 2, 3, 4, 5, 6)); // 7점
+		tickets.add(Arrays.asList(1, 2, 3, 4, 5, 6)); // 6점
 		LottoTicket lottoTicket = new LottoTicket(tickets);
 
-		HashMap<Integer, Integer> map = new HashMap<>();
-		map.put(5, 2);
-		map.put(6, 1);
-		map.put(7, 1);
-		for (int i = 3; i < 5; i++)
-			map.put(i, 0);
+		List<List<Integer>> answer = new ArrayList<>();
+		answer.add(Arrays.asList(3, 5000, 0));
+		answer.add(Arrays.asList(4, 50000, 0));
+		answer.add(Arrays.asList(5, 1500000, 2));
+		answer.add(Arrays.asList(5, 30000000, 1));
+		answer.add(Arrays.asList(6, 2000000000, 1));
+
 		CompareNumber compareNumber = new CompareNumber(winningNumber, bonusBall, lottoTicket);
 
-		assertEquals(map, compareNumber.result);
+		assertEquals(answer, compareNumber.result);
 	}
 }
