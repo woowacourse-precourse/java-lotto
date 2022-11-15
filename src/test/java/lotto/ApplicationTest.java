@@ -1,7 +1,14 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import lotto.domain.Buyer;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.List;
 
@@ -57,5 +64,35 @@ class ApplicationTest extends NsTest {
     @Override
     public void runMain() {
         Application.main(new String[]{});
+    }
+
+    @Nested
+    @DisplayName("구매 메서드")
+    class BuyerTest {
+        Buyer buyer = new Buyer();
+
+        @ParameterizedTest
+        @DisplayName("로또 구매 갯수 확인 성공 케이스")
+        @CsvSource({"1000,1", "2000,2", "3000,3", "1000000,1000", "1000000000000000,1000000000000"})
+        void countLottosSuccessTest(long money, long lottoNumber) {
+            assertThat(buyer.countLottos(money)).isEqualTo(lottoNumber);
+        }
+
+        private final String unitFailMessage = "[ERROR] 구매 금액은 1000원 단위만 가능합니다";
+        @ParameterizedTest
+        @DisplayName("로또 구매 갯수 실패 케이스")
+        @CsvSource({"1500,"+unitFailMessage, "2345,"+unitFailMessage, "500,"+unitFailMessage})
+        void countLottosFailTest(long money, String exceptionMessage) {
+            try {
+                buyer.countLottos(money);
+                assertThat(true).isFalse();
+            } catch (Exception exception) {
+                assertEquals(exceptionMessage,exception.getMessage());
+
+                Assertions.assertThrows(IllegalArgumentException.class, () -> {
+                    buyer.countLottos(money);
+                });
+            }
+        }
     }
 }
