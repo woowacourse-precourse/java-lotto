@@ -82,8 +82,9 @@ public class Console {
             }
             System.out.println(rank.getCount()+"개 일치 ("+strMoney+"원) - "+cnt+"개");
         }
-//        DecimalFormat yieldFormat = new DecimalFormat("###,###.#");
-//        System.out.println("총 수익률은 "+yieldFormat.format(yield)+"%입니다.");
-        System.out.println(String.format("총 수익률은 %.1f%%입니다.", yield));
+        DecimalFormat yieldFormat = new DecimalFormat("###,###.0");
+        System.out.println("총 수익률은 "+yieldFormat.format(yield)+"%입니다.");
+//        System.out.println(yield);
+//        System.out.println(String.format("총 수익률은 %.1f%%입니다.", yield));
     }
 }
