@@ -9,7 +9,7 @@ public class LottoGameController {
         LottoAmount amount = inputMoney();
         Lottos lottos = purchaseLotto(amount.makeLottoTickets());
         WinningLotto winningLotto = makeWinningLotto();
-
+        LottoResult lottoResult = getResult(lottos, winningLotto);
     }
 
     private LottoAmount inputMoney() {
@@ -29,5 +29,9 @@ public class LottoGameController {
         SystemMessage.bonusNumber();
         int bonus = Input.getNumber();
         return lottoGenerator.makeLotto(winningNumber, bonus);
+    }
+
+    private LottoResult getResult(Lottos lottos, WinningLotto winningLotto) {
+        return new LottoResult(lottos.result(winningLotto));
     }
 }
