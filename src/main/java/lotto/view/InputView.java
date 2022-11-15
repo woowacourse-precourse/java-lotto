@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class InputView {
 
@@ -32,7 +33,9 @@ public class InputView {
     }
 
     private List<Integer> changeTypeForSystem(String winningNumbers) {
-        return Arrays.asList(Integer.parseInt(winningNumbers));
+        return Arrays.asList(winningNumbers.split(""))
+                .stream().map(s -> Integer.parseInt(s))
+                .collect(Collectors.toList());
     }
 }
 
