@@ -19,12 +19,12 @@ public enum ValidationGroup {
         return validationTypes;
     }
 
-    public static Boolean validate(List<Integer> numbers) {
+    public static void validate(List<Integer> numbers) {
         for (ValidationType validationType: LOTTO_NUMBERS.getValidationTypes()) {
             if (!validationType.validateNumbers(numbers)) {
-                return false;
+                String errorMessage = validationType.getErrorMessage();
+                throw new IllegalArgumentException(errorMessage);
             }
         }
-        return true;
     }
 }
