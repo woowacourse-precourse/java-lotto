@@ -46,13 +46,25 @@ public class ExceptionHandler {
 
     public static void validateInputtedMoney(String money) {
         if (!money.matches(MONEY_REGEX)) {
-            throw new IllegalArgumentException(MONEY_VALUE_ERROR_MESSAGE);
+            throw new IllegalArgumentException(MONEY_TYPE_ERROR_MESSAGE);
         }
     }
 
     public static void validateMoney(int money) {
+        validateMoneyNotZero(money);
+        validateMoneyCanDivide1000(money);
+
+    }
+
+    private static void validateMoneyNotZero(int money) {
+        if(money == 0){
+            throw new IllegalArgumentException(MONEY_VALUE_ZERO_ERROR_MESSAGE);
+        }
+    }
+
+    private static void validateMoneyCanDivide1000(int money) {
         if (money % LOTTO_PRICE != 0) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(MONEY_VALUE_ERROR_MESSAGE);
         }
     }
 }

@@ -37,6 +37,7 @@
 돈
 - 입력받은 돈이 숫자가 아니라면 IllegalArgumentException ✅
 - 돈이 1000으로 나누어 떨어지지 않으면 IllegalArgumentException ✅
+- 입력받은 돈이 0이면 IllegalArgumentException ✅
 ```
 <br>
 
