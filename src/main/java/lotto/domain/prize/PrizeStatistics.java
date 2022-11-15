@@ -24,8 +24,8 @@ public class PrizeStatistics {
         return prizeStatistics.get(prizeType);
     }
 
-    public void calculateStatistics(LottoGenerator lottos, Prize prize) {
-        for (List<Integer> lotto : lottos.getLottos()) {
+    public void calculateStatistics(List<List<Integer>> lottos, Prize prize) {
+        for (List<Integer> lotto : lottos) {
             boolean containBonusNumber = false;
             List<Integer> duplicateNumbers = new ArrayList<>(lotto);
 
@@ -38,7 +38,7 @@ public class PrizeStatistics {
         }
     }
 
-    public void increment(PrizeType prizeType) {
+    private void increment(PrizeType prizeType) {
         prizeStatistics.put(prizeType, prizeStatistics.get(prizeType) + 1);
     }
 }

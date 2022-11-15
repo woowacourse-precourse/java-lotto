@@ -13,10 +13,6 @@ public class Lotto {
 
     private final List<Integer> numbers;
 
-    public List<Integer> getNumbers() {
-        return numbers;
-    }
-
     public Lotto(List<Integer> numbers) {
         validateSixDigits(numbers);
         validateDuplicatedNumber(numbers);
@@ -26,6 +22,10 @@ public class Lotto {
         Collections.sort(tempNumbers);
 
         this.numbers = tempNumbers;
+    }
+
+    public List<Integer> getNumbers() {
+        return numbers;
     }
 
     private void validateSixDigits(List<Integer> numbers) {

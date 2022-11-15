@@ -48,7 +48,7 @@ public class LottoMachine {
 
     private PrizeStatistics prizeStatisticsService(OutputView outputView, LottoGenerator lottos, Prize prize) {
         PrizeStatistics prizeStatistics = new PrizeStatistics();
-        prizeStatistics.calculateStatistics(lottos, prize);
+        prizeStatistics.calculateStatistics(lottos.getLottos(), prize);
         outputView.prizeStatisticsOutPut(prizeStatistics);
 
         return prizeStatistics;
