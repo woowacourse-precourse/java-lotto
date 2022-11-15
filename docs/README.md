@@ -51,6 +51,7 @@
 ## Statistics Output
 - [x] 당첨내역 출력
 - [x] 수익률 출력
+- [ ] 수익률 Formatter 필요(백자리마다 콤마, 소숫점 한자리 표현)
 
 ## Lotto Service
 - [x] 구입 금액을 입력받음
