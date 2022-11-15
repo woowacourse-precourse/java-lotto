@@ -13,8 +13,9 @@ public class NumberGeneratorImpl implements NumberGenerator {
 
     @Override
     public List<Integer> createRandomNumbers() {
-        List<Integer> numbers = Randoms.pickUniqueNumbersInRange(NUMBER_MIN_RANGE, NUMBER_MAX_RANGE, LOTTO_NUMBERS_COUNT);
-        Collections.sort(new ArrayList<>(numbers));
+        List<Integer> randomNumbers = Randoms.pickUniqueNumbersInRange(NUMBER_MIN_RANGE, NUMBER_MAX_RANGE, LOTTO_NUMBERS_COUNT);
+        List<Integer> numbers = new ArrayList<>(randomNumbers);
+        Collections.sort(numbers);
         return numbers;
     }
 }
