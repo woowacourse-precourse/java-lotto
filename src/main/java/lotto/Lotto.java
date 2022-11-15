@@ -1,5 +1,7 @@
 package lotto;
 
+import lotto.enums.EtcNumber;
+
 import java.util.List;
 
 public class Lotto {
@@ -11,10 +13,12 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
-        if (numbers.size() != 6) {
+        if (numbers.size() != EtcNumber.LOTTO_SIZE.getNumber()) {
             throw new IllegalArgumentException();
         }
     }
 
-    // TODO: 추가 기능 구현
+    public List<Integer> getLottoNumbers() {
+        return numbers;
+    }
 }
