@@ -1,11 +1,14 @@
 package lotto.ui;
 
+import camp.nextstep.edu.missionutils.Console;
+
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
+import java.util.Arrays;
 import java.util.List;
 
-import camp.nextstep.edu.missionutils.Console;
+import lotto.domain.Judgment;
 
 public class UserInterFace {
     public int inputInteger() {
@@ -39,5 +42,17 @@ public class UserInterFace {
             error.printStackTrace();
         }
 
+    }
+    
+    public List<Integer> inputWinningNumbers() {
+        print("당첨 번호를 입력해 주세요.\n");
+        String input = Console.readLine();
+        Judgment judgment = new Judgment();
+        judgment.check5Commas(input);
+        List<String> dividedInput = Arrays.asList(input.split(","));
+        List<Integer> numbers = judgment.changeToInteger(dividedInput);
+        judgment.checkSize(numbers, 6);
+        judgment.checkNumbersRange(numbers, 1, 45);
+        return numbers;
     }
 }

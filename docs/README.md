@@ -30,7 +30,7 @@
 - [x] 구매한 로또 번호를 오름차순으로 정렬할 수 있다. - Buyer#sortLotto()
 - [x] 구매한 로또를 출력할 수 있다. - UserInterFace#printLottos()
 - [x] 출력할 수 있다. - UserInterFace#print()
-- [ ] 유효한 당첨 번호를 입력 받을 수 있다. - UserInterFace#inputWinningNumbers()
+- [x] 유효한 당첨 번호를 입력 받을 수 있다. - UserInterFace#inputWinningNumbers()
    - [x] 당첨 번호가 ,를 5개 포함하지않으면 에러 메시지를 출력 후 종료할 수 있다. - Judgment#check5Commas()
    - [x] 당첨 번호가 ,를 기준으로 잘랐을 때 정수로 변경할 수 없으면 에러 메시지를 출력 후 종료할 수 있다. - Judgment#changeToInteger()
    - [x] (당첨 번호를 ,로 구분했을 때) 숫자 6개가 아니면 에러 메시지를 출력 후 종료할 수 있다. - Judgment#checkSize()
