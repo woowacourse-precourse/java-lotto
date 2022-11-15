@@ -32,6 +32,9 @@ public class Application {
         System.out.println(strWinNumbers);
         List<Integer> winNumbers = inputController.getWinNumbers(strWinNumbers);
 
+        System.out.println("보너스 번호를 입력해 주세요.");
+        Integer bonusNumber = inputController.getBonusNumber(Console.readLine(), winNumbers);
+        System.out.println(bonusNumber);
 
 
 

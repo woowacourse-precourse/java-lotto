@@ -7,7 +7,6 @@ import java.util.List;
 
 public class InputController {
 
-
     public Integer getBuyAmount(String strNumber) {
         if (!validateInteger(strNumber)) {
             throw new IllegalStateException("[ERROR] 숫자가 입력되지 않았습니다.");
@@ -30,6 +29,23 @@ public class InputController {
             winNumbers.add(Integer.parseInt(strWinNumbers[i]));
         }
         return winNumbers;
+    }
+
+    public Integer getBonusNumber(String strNumber, List<Integer> winNumbers) {
+        if (!validateInteger(strNumber)) {
+            throw new IllegalStateException("숫자가 입력되지 않았습니다.");
+        }
+        Integer number = Integer.parseInt(strNumber);
+        validateDupliWithWinNum(number, winNumbers);
+        return number;
+    }
+
+
+    private void validateDupliWithWinNum(Integer number, List<Integer> winNumbers) {
+        if (winNumbers.contains(number)) {
+            throw new IllegalStateException("[ERROR] 당첨 번호와 중복된 숫자가 입력되었습니다.");
+        }
+
     }
 
     private boolean validateInteger(String strNumber) {
