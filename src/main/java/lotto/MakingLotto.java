@@ -14,8 +14,12 @@ public class MakingLotto {
 
     public Lotto makeLotto(){
         List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
-        Collections.sort(numbers);
-        Lotto lotto=new Lotto(numbers);
+        List<Integer> number= new ArrayList<>();
+        for(int index=0;index<numbers.size();index++){
+            number.add(numbers.get(index));
+        }
+        Collections.sort(number);
+        Lotto lotto=new Lotto(number);
         return lotto;
     }
 
