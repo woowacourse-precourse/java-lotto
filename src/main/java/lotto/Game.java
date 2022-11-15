@@ -16,24 +16,35 @@ public class Game {
         Print.bonusNumber();
         int bonusNumber = Input.inputBonusNumber();
         Bonus bonus = new Bonus(winning, bonusNumber);
-        List<Integer> result = countWinNumber(lottos, bonus);
-        Map<Numbers, Integer> ranking = rank(result);
+        Map<Numbers, Integer> ranking = rank(lottos, bonus);
     }
 
-    public List<Integer> countWinNumber(List<Lotto> lottos, Bonus bonusLotto) {
-        List<Integer> result = new ArrayList<>();
+    public List<Numbers> countWinNumber(List<Lotto> lottos, Bonus bonusLotto) {
+        List<Numbers> result = new ArrayList<>();
 
         for (Lotto lotto : lottos) {
-            result.add(bonusLotto.count(lotto));
+            int count = bonusLotto.count(lotto);
+            boolean bonus = checkBonus(count, bonusLotto, lotto);
+            result.add(Numbers.findRank(count, bonus));
         }
 
         return result;
     }
 
-    public Map<Numbers, Integer> rank(List<Integer> result) {
+    public boolean checkBonus(int count, Bonus bonus, Lotto lotto) {
+        boolean isBonus = false;
+
+        if (count == 5) {
+            isBonus = bonus.checkBonus(lotto);
+        }
+
+        return isBonus;
+    }
+
+    public Map<Numbers, Integer> rank(List<Lotto> lottos, Bonus bonus) {
+        List<Numbers> winningRanks = countWinNumber(lottos, bonus);
         Map<Numbers, Integer> rankList = new HashMap<>();
-        for (Integer count : result) {
-            Numbers rank = Numbers.findRank(count);
+        for (Numbers rank : winningRanks) {
             rankList.put(rank, rankList.getOrDefault(rank, 0) + 1);
         }
 

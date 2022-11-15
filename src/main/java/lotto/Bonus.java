@@ -32,4 +32,8 @@ public class Bonus {
     public int count(Lotto lotto) {
         return lotto.count(this.lotto);
     }
+
+    public boolean checkBonus(Lotto lotto) {
+        return lotto.checkBonusInWinning(bonus);
+    }
 }
