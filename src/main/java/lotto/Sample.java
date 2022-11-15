@@ -39,14 +39,6 @@ public class Sample {
         return lottos;
     }
 
-    public String printLottos(List<Lotto> lottos){ // Lotto-print-001
-        String printString = lottos.size() + HOW_MANY_BUY_STRING;
-        for (Lotto lotto : lottos){
-            printString += lotto.getNumbers() + System.lineSeparator();
-        }
-        return printString;
-    }
-
     public Lotto getWinningNumber(String line){ // WinningStatistics-valid-001
         try {
             List<Integer> winningNumbers = Arrays.stream(line.split(",")).map(Integer::parseInt).collect(Collectors.toList());
@@ -67,17 +59,7 @@ public class Sample {
         return bonusNumber;
     }
 
-    public List<LottoWinning> getWinningStatistics(List<Lotto> lottos, List<Integer> winningNumbers, int bonusNumber){ // WinningStatistics-compare-001
-        List<LottoWinning> winningStatistics = new ArrayList<>();
-        for (Lotto lotto : lottos){
-            int lottoCorrectNumber = lotto.getCorrectNumber(winningNumbers);
-            boolean bonus = lottoCorrectNumber == 5 && lotto.hitBonus(bonusNumber);
 
-            LottoWinning lottoWinning = new LottoWinning(lottoCorrectNumber, bonus);
-            winningStatistics.add(lottoWinning);
-        }
-        return winningStatistics;
-    }
 
 
     public String printWinningStatistics(List<LottoWinning> winningStatistics){ //WinningStatistics-print-001

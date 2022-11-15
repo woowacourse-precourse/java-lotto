@@ -13,12 +13,12 @@ public class Lotto { // Lotto-create-001
 
     private void validate(List<Integer> numbers) { // WinningStatistics-valid-001
         if (numbers.size() != 6) {
-            System.out.println(ErrorMessage.ILLEGAL_ARGUMENT_ERROR_MESSAGE.getMessage());
+            System.out.println(Message.ILLEGAL_ARGUMENT_ERROR_MESSAGE.getMessage());
             throw new IllegalArgumentException();
         }
         for (Integer winningNumber : numbers){
             if (winningNumber < 1 || winningNumber > 45) {
-                System.out.println(ErrorMessage.ILLEGAL_ARGUMENT_ERROR_MESSAGE.getMessage());
+                System.out.println(Message.ILLEGAL_ARGUMENT_ERROR_MESSAGE.getMessage());
                 throw new IllegalArgumentException();
             }
         }
@@ -34,9 +34,9 @@ public class Lotto { // Lotto-create-001
         return this.numbers;
     }
 
-    public int getCorrectNumber(List<Integer> winningNumbers){ // WinningStatistics-compare-001
+    public int getCorrectNumber(Lotto winningNumbers){ // WinningStatistics-compare-001
         int correctNumber = 0;
-        for (Integer winningNumber : winningNumbers){
+        for (Integer winningNumber : winningNumbers.getNumbers()){
             if (this.numbers.contains(winningNumber)){
                 correctNumber += 1;
             }

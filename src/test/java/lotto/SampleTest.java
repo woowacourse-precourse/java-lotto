@@ -67,7 +67,9 @@ class SampleTest {
         lottos.add(new Lotto(new ArrayList<>(List.of(7, 11, 30, 40, 42, 43))));
         lottos.add(new Lotto(new ArrayList<>(List.of(2, 13, 22, 32, 38, 45))));
         lottos.add(new Lotto(new ArrayList<>(List.of(1, 3, 5, 14, 22, 45))));
-        assertThat(sample.printLottos(lottos))
+
+        WinningStatistics winningStatistics = new WinningStatistics(lottos, new Lotto(new ArrayList<>(List.of(7, 11, 16, 35, 36, 44))));
+        assertThat(winningStatistics.printLottos())
                 .contains(
                         "8개를 구매했습니다.",
                 "[8, 21, 23, 41, 42, 43]",
@@ -122,7 +124,9 @@ class SampleTest {
         lottos.add(new Lotto(new ArrayList<>(List.of(2, 13, 22, 32, 38, 45))));
         lottos.add(new Lotto(new ArrayList<>(List.of(1, 3, 5, 14, 22, 45))));
 
-        assertThat(sample.getWinningStatistics(lottos, new ArrayList<>(List.of(7, 11, 16, 35, 36, 44)), 5))
+        WinningStatistics winningStatistics = new WinningStatistics(lottos, new Lotto(new ArrayList<>(List.of(7, 11, 16, 35, 36, 44))));
+
+        assertThat(winningStatistics.getWinningStatistics(5))
                 .contains(
                         new LottoWinning(6, false)
                 );
