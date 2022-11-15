@@ -12,7 +12,7 @@ public class LottoGenerator {
 
     private final LottoConverter converter;
 
-    public LottoGenerator(){
+    public LottoGenerator() {
         this.converter = new LottoConverter();
     }
 
@@ -20,29 +20,20 @@ public class LottoGenerator {
         List<Lotto> playerLotto = new ArrayList<>();
         List<Integer> randomNumbers;
         Lotto lotto;
-        for(int i = 0; i < playerLottoQuantity; i++){
-            randomNumbers = generateLottoNumbers(START_NUMBER, END_NUMBER);
+        for (int i = 0; i < playerLottoQuantity; i++) {
+            randomNumbers = generateLottoNumbers();
             lotto = converter.convertRandomNumbersToLotto(randomNumbers);
             playerLotto.add(lotto);
         }
-        return playerLotto ;
+        return playerLotto;
     }
 
-    public List<Integer> generateLottoNumbers(final int startValue, final int endValue) {
-        return getRandomNumbers(startValue, endValue);
+    private List<Integer> generateLottoNumbers() {
+        return getRandomNumbers();
     }
 
-    public List<Integer> getRandomNumbers(final int startValue, final int endValue) {
-        List<Integer> randomNumbers = new ArrayList<>();
-        int randomNumber;
-
-        while (randomNumbers.size() < MAX_LEN) {
-            randomNumber = Randoms.pickNumberInRange(startValue, endValue);
-            if(!randomNumbers.contains(randomNumber)){
-                randomNumbers.add(randomNumber);
-            }
-        }
-        return randomNumbers ;
+    private List<Integer> getRandomNumbers() {
+        return Randoms.pickUniqueNumbersInRange(START_NUMBER, END_NUMBER, MAX_LEN);
     }
 
 

@@ -13,7 +13,7 @@ public class Output {
     }
 
     public void printPlayerLotto(long lottoQuantity, List<Lotto> playerLotto) {
-        System.out.printf("%d개를 구매했습니다.\n", lottoQuantity);
+        System.out.println(lottoQuantity+"개를 구매했습니다.");
         for (Lotto lotto : playerLotto) {
             System.out.println(lotto.toString());
         }
