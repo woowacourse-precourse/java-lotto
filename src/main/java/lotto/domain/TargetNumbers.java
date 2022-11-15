@@ -1,19 +1,32 @@
 package lotto.domain;
 
-import java.util.StringTokenizer;
+
+import lotto.View.ErrorMessage;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.Predicate;
 
 public class TargetNumbers {
-    private TargetNumbers(String input) {
-        isInputFormValid(input);
+    private TargetNumbers(List<String> input) {
+        List<Integer> numbers=new ArrayList<>();
+        isInputFormValid(input,numbers);
 
     }
 
     public static TargetNumbers getInstance(String input) {
-        return new TargetNumbers(input);
+        List<String> output=List.of(input.split(","));
+        return new TargetNumbers(output);
     }
 
-    private void isInputFormValid(String input) throws IllegalArgumentException {
-        StringTokenizer st=new StringTokenizer(input,",");
+    private void isInputFormValid(List<String> input,List<Integer> output) throws IllegalArgumentException {
+        for(String s:input){
+            Boolean notDigit=s.chars().anyMatch(Character::isDigit);
+            if(notDigit){
+                throw new IllegalArgumentException(ErrorMessage.INPUT_NUMBER.getValue());
+            }
+            output.add(Integer.parseInt(s));
+        }
 
     }
 }

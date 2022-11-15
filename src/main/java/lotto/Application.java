@@ -4,6 +4,7 @@ import lotto.View.InputMessage;
 import lotto.domain.Budget;
 import lotto.domain.Purchase;
 import camp.nextstep.edu.missionutils.Console;
+import lotto.domain.TargetNumbers;
 
 public class Application {
     public static int numberOfGame;
@@ -13,7 +14,7 @@ public class Application {
             int numberOfGame = Budget.getInstance(getPurchase()).getLottoNumberByBudget();
             Purchase.getInstance(numberOfGame);
             System.out.println("\n"+numberOfGame+InputMessage.PURCHASE_NUMBER_OF_GAME.getValue());
-            getWinNumber();
+            TargetNumbers.getInstance(getWinNumber());
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
