@@ -10,20 +10,22 @@ import lotto.util.constants.GameConstants;
 
 public class LottoOutputView {
 
+    private static final String NEWLINE = "\n";
+
     public void printInputPurchaseAmount() {
         print(GameConstants.INPUT_PURCHASE_AMOUNT);
     }
 
     public void printInputWinningNumber() {
-        print("\n" + GameConstants.INPUT_WINNING_NUMBER);
+        print(NEWLINE + GameConstants.INPUT_WINNING_NUMBER);
     }
 
     public void printInputBonusNumber() {
-        print("\n" + GameConstants.INPUT_BONUS_NUMBER);
+        print(NEWLINE + GameConstants.INPUT_BONUS_NUMBER);
     }
 
     public void printLottoTicketCount(int lottoTicketCount) {
-        print("\n" + lottoTicketCount + GameConstants.OUTPUT_PURCHASE_LOTTO_COUNT);
+        print(NEWLINE + lottoTicketCount + GameConstants.OUTPUT_PURCHASE_LOTTO_COUNT);
     }
 
     public void printLottoTickets(List<Lotto> lottoTickets) {
@@ -38,7 +40,7 @@ public class LottoOutputView {
     }
 
     public void printStatistics(StatisticsResult statistics) {
-        print("\n" + GameConstants.OUTPUT_WINNING_STATS);
+        print(NEWLINE + GameConstants.OUTPUT_WINNING_STATS);
         for (WinningScore winningScore : WinningScore.values()) {
             printWinningScore(winningScore, statistics.getWinningScoreResult());
         }
