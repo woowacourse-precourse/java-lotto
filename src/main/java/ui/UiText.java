@@ -2,7 +2,7 @@ package ui;
 
 public enum UiText {
     ENTER_PURCHASE_AMOUNT("구입 금액을 입력해주세요."),
-    BOUGHT_NUM(" 개를 구매했습니다."),
+    BOUGHT_NUMBER(" 개를 구매했습니다."),
     ENTER_WINNING_NUMBER("당첨 번호를 입력해주세요."),
     ENTER_BONUS_NUMBER("보너스 번호를 입력해 주세요."),
     WINNING_STATISTICS("당첨 통계\\N ---"),
