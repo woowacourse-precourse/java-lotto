@@ -48,9 +48,9 @@ public class Controller {
         prizeSerivce.valideBonusNumber(readLine);
         userLottoService.updateLottoPrizeDetails(prizeSerivce.findPrizeLotto());
         List<PrizeDetails> prizeDetails = toPrizeDetailsList(userLottoService.getPrizeLottoCountList(readLine));
-        Double statistics= userLottoService.getStatistics(prizeDetails);
+        Double statistics = userLottoService.getStatistics(prizeDetails);
         List<Long> prizeCounts = getPrizeDetailsCount(prizeDetails);
-        return new PrizeStatisticsView(prizeCounts,statistics);
+        return new PrizeStatisticsView(prizeCounts, statistics);
     }
 
     private static List<PrizeDetails> toPrizeDetailsList(List<Lotto> prizeLottos) {
@@ -58,7 +58,7 @@ public class Controller {
     }
 
     private static List<Long> getPrizeDetailsCount(List<PrizeDetails> prizeDetails) {
-        List<Long> prizeCounts=new ArrayList<>();
+        List<Long> prizeCounts = new ArrayList<>();
         prizeCounts.add(Calculator.prizeDetailCount(prizeDetails, PrizeDetails.THREE_PRIZE));
         prizeCounts.add(Calculator.prizeDetailCount(prizeDetails, PrizeDetails.FOUR_PRIZE));
         prizeCounts.add(Calculator.prizeDetailCount(prizeDetails, PrizeDetails.FIVE_PRIZE));

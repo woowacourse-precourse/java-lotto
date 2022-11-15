@@ -11,10 +11,10 @@ public class StringToIntegerMapper {
         return Integer.parseInt(split);
     }
 
-    public static List<Integer> toIntList(String userInput,String regex){
+    public static List<Integer> toIntList(String userInput, String regex) {
         try {
-            return Arrays.stream(splitString(userInput, regex)).map(s->toInt(s)).collect(Collectors.toList());
-        }catch (PatternSyntaxException e){
+            return Arrays.stream(splitString(userInput, regex)).map(s -> toInt(s)).collect(Collectors.toList());
+        } catch (PatternSyntaxException e) {
             throw new IllegalArgumentException(",를 사용해서 띄어서입력해주세요");
         }
     }

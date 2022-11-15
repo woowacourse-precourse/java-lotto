@@ -13,7 +13,7 @@ public class PrizeSerivce {
     final Repository prizeRepository;
 
     public PrizeSerivce(Repository prizeRepository) {
-        this.prizeRepository=prizeRepository;
+        this.prizeRepository = prizeRepository;
     }
 
     public void savePrizeLotto(String userInput) {
@@ -32,7 +32,7 @@ public class PrizeSerivce {
     }
 
     public void valideBonusNumber(String bonusInput) {
-        if(PriceChecker.hasBonusNumber(findPrizeLotto().getNumbers(),StringToIntegerMapper.toInt(bonusInput))){
+        if (PriceChecker.hasBonusNumber(findPrizeLotto().getNumbers(), StringToIntegerMapper.toInt(bonusInput))) {
             throw new IllegalArgumentException("당첨 번호와 중복된 보너스번호를 입력하지 말아주세요.");
         }
     }

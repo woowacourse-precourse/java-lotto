@@ -21,20 +21,20 @@ public class UserLottoService {
 
     public void updateLottoPrizeDetails(Lotto prizeLotto) {
         List<Lotto> lottos = lottoRepository.findAll();
-        for(int i=0;i<lottos.size();i++){
+        for (int i = 0; i < lottos.size(); i++) {
             Lotto lotto = lottos.get(i);
             lotto.setPriceDetails(PriceChecker.getPrizeCount(lotto.getNumbers(), prizeLotto.getNumbers()));
         }
     }
 
     public List<Lotto> getPrizeLottoCountList(String inputBonus) {
-        int bonus=StringToIntegerMapper.toInt(inputBonus);
+        int bonus = StringToIntegerMapper.toInt(inputBonus);
         List<Lotto> lottos = lottoRepository.findAll();
-        for(int i=0;i<lottos.size();i++){
+        for (int i = 0; i < lottos.size(); i++) {
             Lotto lotto = lottos.get(i);
-            lotto.setPriceDetails(PriceChecker.updateLottoPrizeDetailsWhenHasBonusNumber(lotto,bonus));
+            lotto.setPriceDetails(PriceChecker.updateLottoPrizeDetailsWhenHasBonusNumber(lotto, bonus));
         }
-        return lottos.stream().filter(l->l.getPriceDetails().ordinal()>2).collect(Collectors.toList());
+        return lottos.stream().filter(l -> l.getPriceDetails().ordinal() > 2).collect(Collectors.toList());
     }
 
     public Double getStatistics(List<PrizeDetails> prizeDetails) {

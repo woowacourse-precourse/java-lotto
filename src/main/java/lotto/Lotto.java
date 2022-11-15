@@ -16,7 +16,7 @@ public class Lotto {
         validateDuplicatedNumber(numbers);
         validateOverRangeNumber(numbers);
         this.numbers = numbers;
-        this.priceDetails= PrizeDetails.NOT_THING;
+        this.priceDetails = PrizeDetails.NOT_THING;
     }
 
     private void validateNumberSize(List<Integer> numbers) {
@@ -33,7 +33,7 @@ public class Lotto {
 
     private void validateOverRangeNumber(List<Integer> numbers) {
         if (isListSizeIsSix(numbers) || hasDuplicatedNumber(numbers) || hasOverRangeNumber(numbers)) {
-            throw new IllegalArgumentException(String.format("수의 범위는 %d~%d까지 입니다.",LOTTO_MIN_NUMBER,LOTTO_MAX_NUMBER));
+            throw new IllegalArgumentException(String.format("수의 범위는 %d~%d까지 입니다.", LOTTO_MIN_NUMBER, LOTTO_MAX_NUMBER));
         }
     }
 
@@ -41,8 +41,9 @@ public class Lotto {
     // TODO: 추가 기능 구현
 
     private boolean hasOverRangeNumber(List<Integer> numbers) {
-        return numbers.stream().filter(i -> i < LOTTO_MIN_NUMBER || LOTTO_MAX_NUMBER<i).count() != 0;
+        return numbers.stream().filter(i -> i < LOTTO_MIN_NUMBER || LOTTO_MAX_NUMBER < i).count() != 0;
     }
+
     private boolean hasDuplicatedNumber(List<Integer> numbers) {
 
         for (Integer number : numbers) {

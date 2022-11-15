@@ -21,7 +21,7 @@ public abstract class Repository {
         list.addAll(lottos);
     }
 
-    public void removeAll(){
+    public void removeAll() {
         list.clear();
     }
 

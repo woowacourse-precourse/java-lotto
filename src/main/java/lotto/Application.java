@@ -13,8 +13,8 @@ import lotto.view.View;
 public class Application {
 
     private static final Controller controller = new Controller(new UserLottoService(LottoRepository.createRepository())
-            ,new PrizeSerivce(PrizeRepository.createRepository()));
-    private static final ErrorController errorController=new ErrorController();
+            , new PrizeSerivce(PrizeRepository.createRepository()));
+    private static final ErrorController errorController = new ErrorController();
 
     public static void main(String[] args) {
         try {
@@ -24,7 +24,7 @@ public class Application {
             controller.savePrizeLottoNumber(Console.readLine());
             printView(controller.createBonusNumberInputView());
             printView(controller.createPrizeStatisticsView(Console.readLine()));
-        }catch (IllegalArgumentException e){
+        } catch (IllegalArgumentException e) {
             printView(errorController.createErrorView(e.getMessage()));
         }
     }

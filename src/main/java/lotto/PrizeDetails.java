@@ -21,17 +21,17 @@ public enum PrizeDetails {
         this.price = price;
     }
 
-    public Integer getPrice(){
+    public Integer getPrice() {
         return this.price;
     }
 
-    public boolean hasNext(){
-        return this.ordinal()<6;
+    public boolean hasNext() {
+        return this.ordinal() < 6;
     }
 
-    public PrizeDetails next(){
-        if(hasNext()){
-            return values[this.ordinal()+1];
+    public PrizeDetails next() {
+        if (hasNext()) {
+            return values[this.ordinal() + 1];
         }
         return this;
     }
