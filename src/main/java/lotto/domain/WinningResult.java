@@ -39,7 +39,7 @@ public class WinningResult {
         for (WinningTable winningTable : WinningTable.values()) {
             int count = (int) winningInfo
                     .stream()
-                    .filter(a -> a == winningTable)
+                    .filter(element -> element == winningTable)
                     .count();
             map.put(winningTable, count);
         }
