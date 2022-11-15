@@ -67,4 +67,12 @@ public class Lotto {
         Collections.shuffle(lottoTicket);
         return lottoTicket.stream().sorted().collect(Collectors.toList());
     }
+
+    public int compareWinningNumbers(Lotto winningNumbers) {
+        return (int) this.numbers.stream().filter(winningNumbers.getLottoNumber()::contains).count();
+    }
+
+    public boolean compareBonusNumber(LottoNumber bonusNumber) {
+        return this.numbers.contains(bonusNumber.getLottoNumber());
+    }
 }
