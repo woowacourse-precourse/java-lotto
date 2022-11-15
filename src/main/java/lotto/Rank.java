@@ -82,4 +82,11 @@ public class Rank {
         }
         return count;
     }
+
+    private int countMatchedWithBonusNumber (List<Integer> userNumbers) {
+        if (userNumbers.contains(bonusNumber)) {
+            return 1;
+        }
+        return 0;
+    }
 }
