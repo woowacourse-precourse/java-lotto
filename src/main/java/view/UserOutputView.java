@@ -1,9 +1,9 @@
 package view;
 
-import domain.Lotto;
-import domain.LottoResult;
-import domain.PurchaseMoney;
-import domain.WinningPrize;
+import lotto.Lotto;
+import lotto.LottoResult;
+import lotto.PurchaseMoney;
+import lotto.WinningPrize;
 
 public class UserOutputView {
     static final String WINNING_STATICS = "당첨 통계";

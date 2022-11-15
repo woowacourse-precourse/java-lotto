@@ -1,4 +1,4 @@
-package domain;
+package lotto;
 
 import controller.LottoGameController;
 

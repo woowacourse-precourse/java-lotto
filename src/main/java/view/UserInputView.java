@@ -1,9 +1,9 @@
 package view;
 
 import camp.nextstep.edu.missionutils.Console;
-import domain.BonusNumber;
-import domain.Lotto;
-import domain.PurchaseMoney;
+import lotto.BonusNumber;
+import lotto.Lotto;
+import lotto.PurchaseMoney;
 
 public class UserInputView {
     static final String INPUT_MONEY = "구입금액을 입력해 주세요.";

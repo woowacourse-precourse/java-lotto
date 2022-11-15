@@ -1,7 +1,7 @@
 package controller;
 
 import generator.LottoNumberGenerator;
-import domain.*;
+import lotto.*;
 import view.UserInputView;
 import view.UserOutputView;
 
