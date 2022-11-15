@@ -27,19 +27,13 @@ public class Lotto {
         return numbers.toString();
     }
 
-    public List<Integer> calcResult(List<Integer> winningNumbers, int bonusNumber) {
-        List<Integer> result = new ArrayList<>();
-        int hit = 0, bonusHit = 0;
-        for(int num : numbers) {
-            if(winningNumbers.contains(num)) {
-                hit++;
-            }
-            if(num == bonusNumber) {
-                bonusHit++;
-            }
-        }
-        result.add(hit);
-        result.add(bonusHit);
-        return result;
+    public int countWinningHit(Lotto winningNumbers) {
+        return (int) this.numbers.stream()
+                .filter(winningNumbers::isHitted)
+                .count();
+    }
+
+    public boolean isHitted(int num) {
+        return numbers.contains(num);
     }
 }

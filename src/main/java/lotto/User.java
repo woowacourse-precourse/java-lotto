@@ -6,8 +6,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class User {
-    LotteryResult lotteryResult;
-
     public int inputPrice() {
         Message.requestPurchase();
         String amount = Console.readLine();
@@ -17,19 +15,32 @@ public class User {
         return Integer.parseInt(amount) / 1000;
     }
 
-    public void inputWinningNumbers() {
+    public Lotto inputWinningNumbers() {
         Message.requestLottoNumbers();
         String numbers = Console.readLine();
-        //todo 중복 불가, 범위 확인 validation 추가
-        List<String> winningNumbers = Arrays.asList(numbers.split(","));
-        lotteryResult.winningNumbers = winningNumbers.stream()
-                .map(Integer::parseInt)
-                .collect(Collectors.toList());
+        //todo 중복 불가 validation 추가
+        try {
+            List<String> winningNumbers = Arrays.asList(numbers.split(","));
+            for(String input : winningNumbers) {
+                validate(Integer.parseInt(input));
+            }
+            return new Lotto(winningNumbers.stream()
+                    .map(Integer::parseInt)
+                    .collect(Collectors.toList()));
+        } catch (IllegalArgumentException e) {
+            throw new IllegalArgumentException("[ERROR] 입력은 ',' 로 구분되며 1부터 45 사이의 숫자여야 합니다.");
+        }
     }
 
-    public void inputBonusNumbers() {
+    public int inputBonusNumbers() {
         Message.requestBonusNumber();
         //todo validation 추가
-        lotteryResult.bonusNumber = Integer.parseInt(Console.readLine());
+        return Integer.parseInt(Console.readLine());
+    }
+
+    public void validate(int num) {
+        if(num < 1 || num > 45) {
+            throw new IllegalArgumentException("[ERROR] 숫자의 범위를 확인해주세요.(1 ~ 45)");
+        }
     }
 }
