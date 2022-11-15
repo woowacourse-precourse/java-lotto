@@ -28,10 +28,6 @@ public class Model {
         return calculateRateOfIncome(MONEY);
     }
 
-    public List<List<Integer>> getUsersLottos () {
-        return this.USERS_LOTTOS;
-    }
-
     // 생성된 로또 마다 입력한 로또 번호랑 비교하는 메서드
     public void checkLottoNumber (List<Integer> lottoNumbers) {
         List<Integer> duplicatedNumbers = new ArrayList<>();
