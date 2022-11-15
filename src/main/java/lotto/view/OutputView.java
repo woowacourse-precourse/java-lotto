@@ -36,11 +36,11 @@ public class OutputView {
                 continue;
             }
             if (entry.getValue() > 0) {
-                reward += entry.getKey().getPrize();
+                reward += entry.getKey().getPrize() * entry.getValue();
             }
             System.out.printf("%s%d개%n", entry.getKey().getText(), entry.getValue());
         }
-        String formatReward = String.format("%.1f", (reward / (double) money * 100));
+        String formatReward = String.format("%,.1f", (reward / (double) money * 100));
         System.out.println("총 수익률은 " + formatReward + "%입니다.");
     }
 }
