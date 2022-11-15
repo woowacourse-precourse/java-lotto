@@ -17,11 +17,17 @@ public class Application {
     private static Integer bonusNumber;
 
     public static void main(String[] args) {
-        byeLotto();
-        createWinningNumbers();
-        createBonusNumber();
 
-        winningStatistics();
+        try{
+            byeLotto();
+            createWinningNumbers();
+            createBonusNumber();
+
+            winningStatistics();
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+
     }
 
     public static void byeLotto(){
@@ -31,7 +37,8 @@ public class Application {
         try{
             buyAmount = Integer.parseInt(readLine());
             purchaseNumbers = buyAmount/1000;
-        }catch (Exception e) {
+
+        }catch (NumberFormatException e) {
             throw new IllegalArgumentException(BYEMONEYFORMERROR.getPrintStatement());
         }
 
