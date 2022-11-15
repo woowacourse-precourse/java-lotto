@@ -2,6 +2,7 @@ package lotto.domain;
 
 import static lotto.constant.ErrorMessage.PURCHASE_AMOUNT_RANGE_ERROR;
 import static lotto.constant.ErrorMessage.PURCHASE_AMOUNT_TYPE_ERROR;
+import static lotto.constant.ErrorMessage.PURCHASE_AMOUNT_UNIT_ERROR;
 import static lotto.constant.InputPattern.PURCHASE_AMOUNT_PATTERN;
 
 import camp.nextstep.edu.missionutils.Console;
@@ -20,6 +21,12 @@ public class CheckInput {
     public void checkPurchaseAmountRange(int purchaseAmount) {
         if (purchaseAmount < 1000) {
             throw new IllegalArgumentException(PURCHASE_AMOUNT_RANGE_ERROR);
+        }
+    }
+
+    public void checkPurchaseAmountUnit(int purchaseAmount) {
+        if (purchaseAmount % 1000 != 0) {
+            throw new IllegalArgumentException(PURCHASE_AMOUNT_UNIT_ERROR);
         }
     }
 
