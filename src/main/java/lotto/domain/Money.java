@@ -9,7 +9,7 @@ public class Money {
         validate(money);
         this.money = money;
     }
-    public static void validate(int money) {
+    private static void validate(int money) {
         if((money % MONEY_DIVIDED) != 0) {
             throw new IllegalArgumentException(MONEY_NOT_DIVIDED_1000_ERROR);
         }
