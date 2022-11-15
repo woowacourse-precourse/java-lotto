@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class User {
+
     public static final int ONEGAMECOST = 1000;
     public static final int GAMEOVER = -1;
     public static final int ZERO = 0;
@@ -39,7 +40,7 @@ public class User {
     public int validate(String inputMoney) {
         try {
             return Integer.parseInt(inputMoney);
-        } catch (IllegalArgumentException e) {
+        } catch (NumberFormatException e) {
             System.out.println(INPUT_NOTNUMBER_ERROR);
             return GAMEOVER;
         }
@@ -48,8 +49,6 @@ public class User {
     public List<List<Integer>> buyLotto() {
         List<List<Integer>> totalBuyLotto = new ArrayList<>();
         int lottoAmount = inputMoney() / ONEGAMECOST;
-
-
 
         for (int i = 0; i < lottoAmount; i++) {
             totalBuyLotto.add(Lotto.create());
