@@ -7,13 +7,13 @@ public enum LottoException {
     INVALID_NUMBER_COUNT("로또 번호의 개수는 6개여야 합니다."),
     DUPLICATED("중복된 숫자가 없어야 합니다.");
 
-    private String errorMessage;
+    private final String errorMessage;
 
     LottoException(String errorMessage) {
         this.errorMessage = "[ERROR]" + errorMessage;
     }
 
-    public String getErrorMessage(){
+    public String getErrorMessage() {
         return errorMessage;
     }
 }

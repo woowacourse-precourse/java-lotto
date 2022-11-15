@@ -8,29 +8,29 @@ public class User {
     private int purchaseAmount;
     private List<Lotto> lotteryNumbers;
 
-    public void inputPurchaseAmount(String input){
+    public void inputPurchaseAmount(String input) {
         validate(input);
         this.purchaseAmount = Integer.parseInt(input);
     }
 
-    public int getPurchaseAmount(){
+    public int getPurchaseAmount() {
         return purchaseAmount;
     }
 
-    public List<Lotto> getLotteryNumbers(){
+    public List<Lotto> getLotteryNumbers() {
         return lotteryNumbers;
     }
 
-    private void validate(String input) throws RuntimeException{
-        for(int i=0; i<input.length(); i++){
+    private void validate(String input) throws RuntimeException {
+        for (int i = 0; i < input.length(); i++) {
             char c = input.charAt(i);
-            if(!Character.isDigit(c))
+            if (!Character.isDigit(c))
                 throw new IllegalArgumentException(LottoException.NOT_DISIT.getErrorMessage());
         }
 
         int intInput = Integer.parseInt(input);
 
-        if(intInput%1000 !=0)
+        if (intInput % 1000 != 0)
             throw new IllegalArgumentException(LottoException.NOT_EFFECTIVE_UNIT.getErrorMessage());
     }
 }

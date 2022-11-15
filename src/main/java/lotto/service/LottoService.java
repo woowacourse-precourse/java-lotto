@@ -9,45 +9,43 @@ import java.util.List;
 
 
 public class LottoService {
-    public static HashMap<Prize, Integer> lottoNumberComparison(List<Lotto> lotteryNumbers, LuckyNumber luckyNumber){
+    public static HashMap<Prize, Integer> lottoNumberComparison(List<Lotto> lotteryNumbers, LuckyNumber luckyNumber) {
         HashMap<Prize, Integer> history = historyInit();
 
-        for(Lotto userNumber : lotteryNumbers){
+        for (Lotto userNumber : lotteryNumbers) {
             List<Integer> userNum = userNumber.getNumbers();
             List<Integer> luckyNum = luckyNumber.getLuckyNumber().getNumbers();
 
-            int matchN = matchN(userNum,luckyNum);
+            int matchN = matchN(userNum, luckyNum);
             int matchBonusN = matchBonusN(userNum, luckyNumber.getBonusNumber());
 
-            Prize prize = Prize.winHistory(matchN,matchBonusN);
-            history.replace(prize,history.get(prize)+1);
+            Prize prize = Prize.winHistory(matchN, matchBonusN);
+            history.replace(prize, history.get(prize) + 1);
         }
 
         return history;
     }
 
-    static int matchN(List<Integer> userNumber, List<Integer> luckyNumber){
-        int count= 0;
-        for (Integer number : userNumber){
-            if (luckyNumber.contains(number))
-                count++;
+    static int matchN(List<Integer> userNumber, List<Integer> luckyNumber) {
+        int count = 0;
+        for (Integer number : userNumber) {
+            if (luckyNumber.contains(number)) count++;
         }
         return count;
     }
 
-    static int matchBonusN(List<Integer> userNumber, int bonusNumber){
-        if(userNumber.contains(bonusNumber))
-            return 1;
+    static int matchBonusN(List<Integer> userNumber, int bonusNumber) {
+        if (userNumber.contains(bonusNumber)) return 1;
         return 0;
     }
 
-    public static String yieldCalculation(HashMap<Prize, Integer> history, int purchaseAmount){
+    public static String yieldCalculation(HashMap<Prize, Integer> history, int purchaseAmount) {
         float total = totalCalculation(history);
 
-        return String.format("%.1f", (total/purchaseAmount)*100);
+        return String.format("%.1f", (total / purchaseAmount) * 100);
     }
 
-    static float totalCalculation(HashMap<Prize, Integer> history){
+    static float totalCalculation(HashMap<Prize, Integer> history) {
         float total = 0.0F;
 
         if (history.containsKey(Prize.FIFTH_PLACE))
@@ -64,14 +62,14 @@ public class LottoService {
         return total;
     }
 
-    private static HashMap<Prize, Integer> historyInit(){
+    private static HashMap<Prize, Integer> historyInit() {
         HashMap<Prize, Integer> history = new HashMap<>();
-        history.put(Prize.FIFTH_PLACE,0);
-        history.put(Prize.FOURTH_PLACE,0);
-        history.put(Prize.THIRD_PLACE,0);
-        history.put(Prize.SECOND_PLACE,0);
-        history.put(Prize.FIRST_PLACE,0);
-        history.put(Prize.LOSING_TICKET,0);
+        history.put(Prize.FIFTH_PLACE, 0);
+        history.put(Prize.FOURTH_PLACE, 0);
+        history.put(Prize.THIRD_PLACE, 0);
+        history.put(Prize.SECOND_PLACE, 0);
+        history.put(Prize.FIRST_PLACE, 0);
+        history.put(Prize.LOSING_TICKET, 0);
         return history;
     }
 

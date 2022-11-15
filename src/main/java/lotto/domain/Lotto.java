@@ -12,7 +12,7 @@ public class Lotto {
         this.numbers = numbers;
     }
 
-    public List<Integer> getNumbers(){
+    public List<Integer> getNumbers() {
         return numbers;
     }
 
@@ -20,12 +20,12 @@ public class Lotto {
         if (numbers.size() != 6)
             throw new IllegalArgumentException(LottoException.INVALID_NUMBER_COUNT.getErrorMessage());
 
-        for (int number : numbers){
-            if(number>45 || number<1)
+        for (int number : numbers) {
+            if (number > 45 || number < 1)
                 throw new IllegalArgumentException(LottoException.INVALID_NUMBER_RANGE.getErrorMessage());
         }
 
-        if(numbers.size() != numbers.stream().distinct().count())
+        if (numbers.size() != numbers.stream().distinct().count())
             throw new IllegalArgumentException(LottoException.DUPLICATED.getErrorMessage());
     }
 
