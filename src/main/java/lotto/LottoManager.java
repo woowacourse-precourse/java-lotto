@@ -1,5 +1,7 @@
 package lotto;
 
+import lotto.constant.LottoInfo;
+
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
@@ -26,22 +28,22 @@ public class LottoManager {
         }
     }
 
-    public enum Information {
-        INPUT_WINNING_NUM_MESSAGE("당첨 번호를 입력해 주세요."),
-        INPUT_BONUS_NUM_MESSAGE("보너스 번호를 입력해 주세요."),
-        INPUT_BUY_MESSAGE("구매금액을 입력해 주세요."),
-        STATISTIC_MESSAGE("\n당첨 통계\n---");
-
-        private final String message;
-
-        Information(String message) {
-            this.message = message;
-        }
-
-        public void printMessage() {
-            System.out.println(this.message);
-        }
-    }
+//    public enum Information {
+//        INPUT_WINNING_NUM_MESSAGE("당첨 번호를 입력해 주세요."),
+//        INPUT_BONUS_NUM_MESSAGE("보너스 번호를 입력해 주세요."),
+//        INPUT_BUY_MESSAGE("구매금액을 입력해 주세요."),
+//        STATISTIC_MESSAGE("\n당첨 통계\n---");
+//
+//        private final String message;
+//
+//        Information(String message) {
+//            this.message = message;
+//        }
+//
+//        public void printMessage() {
+//            System.out.println(this.message);
+//        }
+//    }
 
     public enum PrizeMoney {
         WIN_5(5000), WIN_4(50000), WIN_3(1500000), WIN_2(30000000), WIN_1(2000000000);
@@ -92,7 +94,7 @@ public class LottoManager {
     }
 
     public List<Integer> GenerateLottoNumbers() {
-        Information.INPUT_WINNING_NUM_MESSAGE.printMessage();
+        LottoInfo.INPUT_WINNING_NUM_MESSAGE.printMessage();
         String inputLottoNumbers = Console.readLine();
         List<Integer> lottoNumbers = new ArrayList<>();
         for (String number : inputLottoNumbers.split(",")) {
@@ -102,7 +104,7 @@ public class LottoManager {
     }
 
     public int GenerateBonusNumber() {
-        Information.INPUT_BONUS_NUM_MESSAGE.printMessage();
+        LottoInfo.INPUT_BONUS_NUM_MESSAGE.printMessage();
         String inputBonusNumbers = Console.readLine();
         return Integer.parseInt(inputBonusNumbers);
     }
@@ -112,7 +114,7 @@ public class LottoManager {
     }
 
     public int getMoney() throws IllegalArgumentException {
-        Information.INPUT_BUY_MESSAGE.printMessage();
+        LottoInfo.INPUT_BUY_MESSAGE.printMessage();
         String inputMoney = Console.readLine();
 
         for (int i = 0; i < inputMoney.length(); i++) {
@@ -158,7 +160,7 @@ public class LottoManager {
 
     public void printWinningMessage(Map<Integer, Integer> result) {
         //{0=3, 1=4, 2=1, 3=0, 4=0, 5=0, 6=0, 7=0} = {-,-,-,5등, 4등, 3등, 2등, 1등}
-        Information.STATISTIC_MESSAGE.printMessage();
+        LottoInfo.STATISTIC_MESSAGE.printMessage();
 
         int index = 3;
         for (StatisticMessage win : StatisticMessage.values()) {
