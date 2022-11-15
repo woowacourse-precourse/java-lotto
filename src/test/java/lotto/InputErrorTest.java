@@ -40,6 +40,14 @@ public class InputErrorTest extends NsTest {
         });
     }
 
+    @Test
+    void 보너스번호_범위_테스트() {
+        assertSimpleTest(() -> {
+            runException("2000", "21,42,6,15,27,9", "56");
+            assertThat(output()).contains(InputErrorMessage.BONUS_NUMBER_OUT_OF_RANGE.getErrorMessage());
+        });
+    }
+
     @Override
     protected void runMain() {
         Application.main(new String[]{});
