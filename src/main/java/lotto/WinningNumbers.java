@@ -1,10 +1,10 @@
 package lotto;
 
-import java.util.List;
-
 public class WinningNumbers {
     private final Lotto WinningNumber;
     private final int BonusNumber;
+    private static final String ERROR_RANGE = "[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.";
+    private static final String ERROR_DISTINCT_BONUS = "[ERROR] 보너스 번호는 당첨 번호와 겹치지 않아햐 합니다.";
 
     public WinningNumbers(Lotto winningNumber, int bonusNumber) {
         validate(winningNumber, bonusNumber);
@@ -13,10 +13,10 @@ public class WinningNumbers {
     }
     private void validate(Lotto winningNumber, int bonusNumber){
         if (bonusNumber < 1 || bonusNumber > 45){
-            throw new IllegalArgumentException("[ERROR] 보너스 번호는 1부터 45 사이의 숫자여야 합니다.");
+            throw new IllegalArgumentException(ERROR_RANGE);
         }
         if (winningNumber.getNumbers().stream().anyMatch(number -> number.equals(bonusNumber))){
-            throw new IllegalArgumentException("[ERROR] 보너스 번호는 당첨 번호와 겹치지 않아햐 합니다.");
+            throw new IllegalArgumentException(ERROR_DISTINCT_BONUS);
         }
     }
 
@@ -26,9 +26,6 @@ public class WinningNumbers {
         boolean isBonus = lotto.getNumbers().stream().anyMatch(i -> i==bonusNumber);
 
         return Rank.value(count, isBonus);
-    }
-    List<Integer> getWinningNumber(){
-        return this.WinningNumber.getNumbers();
     }
     int getBonusNumber(){
         return this.BonusNumber;
