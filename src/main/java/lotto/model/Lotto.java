@@ -18,7 +18,7 @@ public class Lotto {
 
     private void validate(List<Integer> numbers) {
         Validate.length(numbers, 6);
-        Validate.range(numbers, 1, 45);
+        Validate.rangeNumbers(numbers, 1, 45);
         Validate.duplication(numbers);
     }
 

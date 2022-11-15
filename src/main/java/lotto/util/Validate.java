@@ -19,7 +19,7 @@ public class Validate {
     }
 
     public static void isNumber(String number) {
-        if (!number.matches("[-+]?\\d*\\.?\\d+")) {
+        if (number == null || !number.matches("[-+]?\\d*?\\d+")) {
             throw new IllegalArgumentException(ERROR_INVALID_NUMBER);
         }
     }
@@ -41,14 +41,16 @@ public class Validate {
         }
     }
 
-    public static void range(List<Integer> numbers, int startInclusive, int endInclusive) {
+    public static void rangeNumbers(List<Integer> numbers, int startInclusive, int endInclusive) {
         numbers.stream()
                 .map(e -> Integer.parseInt(e.toString()))
-                .forEach(e -> {
-                    if (e < startInclusive && e > endInclusive) {
-                        throw new IllegalArgumentException(ERROR_OUT_OF_RANGE);
-                    }
-                });
+                .forEach(e -> rangeNumber(e, startInclusive, endInclusive));
+    }
+
+    public static void rangeNumber(int numbers, int startInclusive, int endInclusive) {
+        if (numbers < startInclusive || numbers > endInclusive) {
+            throw new IllegalArgumentException(ERROR_OUT_OF_RANGE);
+        }
     }
 
     public static void bonusInWinningNumbers(List<Integer> numbers, int bonus) {

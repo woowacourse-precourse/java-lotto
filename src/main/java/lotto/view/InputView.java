@@ -29,26 +29,29 @@ public class InputView {
 
     public static List<Integer> winningNumber() {
         System.out.println(NUMBER_INPUT_MESSAGE);
-        return numbers();
+        List<String> input = Arrays.asList(readLine().split(","));
+
+        Validate.isNumbers(input);
+        List<Integer> winningNumber = stringToInteger(input);
+
+        Validate.rangeNumbers(winningNumber, 1, 45);
+        Validate.length(winningNumber, 6);
+        Validate.duplication(winningNumber);
+
+        return winningNumber;
     }
 
     public static int bonusNumber(List<Integer> winningNumber) {
         System.out.println(BONUS_INPUT_MESSAGE);
         String input = readLine();
-        int bonusNumber = Integer.parseInt(input);
 
         Validate.isNumber(input);
+        int bonusNumber = Integer.parseInt(input);
+
+        Validate.rangeNumber(bonusNumber, 1, 45);
         Validate.bonusInWinningNumbers(winningNumber, bonusNumber);
 
         return bonusNumber;
-    }
-
-    public static List<Integer> numbers() {
-        List<String> input = Arrays.asList(readLine().split(","));
-
-        Validate.isNumbers(input);
-
-        return stringToInteger(input);
     }
 
     public static List<Integer> stringToInteger(List<String> numbers) {
