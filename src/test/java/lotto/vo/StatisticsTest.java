@@ -18,9 +18,9 @@ class StatisticsTest {
         List<Rank> ranks = List.of(Rank.FIRST, Rank.FIRST, Rank.SECOND);
         Statistics statistics = new Statistics(ranks);
 
-        assertThat(statistics.getCountOf(Rank.FIRST)).isEqualTo(2);
-        assertThat(statistics.getCountOf(Rank.SECOND)).isEqualTo(1);
-        assertThat(statistics.getCountOf(Rank.THIRD)).isEqualTo(0);
+        assertThat(statistics.getFrequencyOf(Rank.FIRST)).isEqualTo(2);
+        assertThat(statistics.getFrequencyOf(Rank.SECOND)).isEqualTo(1);
+        assertThat(statistics.getFrequencyOf(Rank.THIRD)).isEqualTo(0);
     }
 
     @DisplayName("수익을 모두 더한다")

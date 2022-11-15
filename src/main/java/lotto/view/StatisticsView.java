@@ -21,7 +21,7 @@ public class StatisticsView {
     public static void printStatistics(Statistics statistics, Money capital) {
         System.out.println(STATISTICS_BEGIN_MESSSAGE);
         for (Rank rank : getRanksToPrint()) {
-            printStatistic(rank, statistics.getCountOf(rank));
+            printStatistic(rank, statistics.getFrequencyOf(rank));
         }
         printProfitRate(capital, statistics.getTotalProfit());
     }
@@ -33,14 +33,14 @@ public class StatisticsView {
                 .collect(Collectors.toList());
     }
 
-    private static void printStatistic(Rank rank, int lottoCount) {
+    private static void printStatistic(Rank rank, int frequency) {
         int matchCount = rank.getMatchCount();
         Money prize = rank.getPrize();
         if (!rank.hasBonusNumber()) {
-            System.out.printf(STATISTIC_FORMAT, matchCount, formatWithComma(prize), lottoCount);
+            System.out.printf(STATISTIC_FORMAT, matchCount, formatWithComma(prize), frequency);
         }
         if (rank.hasBonusNumber()) {
-            System.out.printf(STATISTIC_FORMAT_WITH_BONUS_NUMBER, matchCount, formatWithComma(prize), lottoCount);
+            System.out.printf(STATISTIC_FORMAT_WITH_BONUS_NUMBER, matchCount, formatWithComma(prize), frequency);
         }
         System.out.println();
     }

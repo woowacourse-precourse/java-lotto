@@ -1,5 +1,6 @@
 package lotto.vo;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
@@ -20,16 +21,14 @@ public class Statistics {
     private Map<Rank, Integer> createStatistics(List<Rank> ranks) {
         Map<Rank, Integer> newStatistics = new TreeMap<>();
         for (Rank rank : Rank.values()) {
-            int count = countRank(ranks, rank);
-            newStatistics.put(rank, count);
+            int frequency = countRankFrequency(ranks, rank);
+            newStatistics.put(rank, frequency);
         }
         return newStatistics;
     }
 
-    private int countRank(List<Rank> ranks, Rank targetRank) {
-        return Math.toIntExact(ranks.stream()
-                .filter(rank -> rank == targetRank)
-                .count());
+    private int countRankFrequency(List<Rank> ranks, Rank objectiveRank) {
+        return Collections.frequency(ranks, objectiveRank);
     }
 
     private Money sumProfitsOf(List<Rank> ranks) {
@@ -39,7 +38,7 @@ public class Statistics {
                 .orElse(new Money(0));
     }
 
-    public int getCountOf(Rank rank) {
+    public int getFrequencyOf(Rank rank) {
         return statistics.get(rank);
     }
 
