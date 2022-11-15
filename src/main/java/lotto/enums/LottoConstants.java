@@ -5,12 +5,7 @@ public enum LottoConstants {
     MIN_LOTTO_NUMBER_RANGE(1),
     MAX_LOTTO_NUMBER_RANGE(45),
     LOTTO_RANKING_RANGE(5),
-    LOTTO_PRICE(1000),
-    FIRST_RANK(1),
-    SECOND_RANK(2),
-    THIRD_RANK(3),
-    FOURTH_RANK(4),
-    FIFTH_RANK(5);
+    LOTTO_PRICE(1000);
 
 
 

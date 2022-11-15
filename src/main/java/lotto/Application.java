@@ -1,6 +1,7 @@
 package lotto;
 
 import lotto.controller.LottoController;
+import lotto.enums.OutputConstants;
 
 public class Application {
     public static void main(String[] args) {
@@ -9,7 +10,7 @@ public class Application {
             LottoController lottoController = new LottoController();
             lottoController.start();
         } catch (IllegalArgumentException e) {
-            System.out.println("[ERROR] = " + e.getMessage());
+            System.out.println(OutputConstants.ERROR_MESSAGE.getValue() + e.getMessage());
         }
     }
 }
