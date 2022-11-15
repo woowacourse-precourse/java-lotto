@@ -32,7 +32,7 @@ public enum OutputView {
         System.out.printf(STATISTICS_SIX_MATCH, lottoStatistics.get(4));
     }
 
-    public void printEarning(float earning){
+    public void printEarning(double earning){
         System.out.printf(OUTPUT_EARNING,earning);
     }
 

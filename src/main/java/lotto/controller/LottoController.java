@@ -56,7 +56,7 @@ public class LottoController {
         outputView.printStatistics(lottoStatistics);
     }
 
-    private void printEarning(float earning){
+    private void printEarning(double earning){
         outputView.printEarning(earning);
     }
 
