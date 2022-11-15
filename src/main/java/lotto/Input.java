@@ -29,10 +29,11 @@ public class Input {
         }
     }
 
-    public static List<Integer> inputWinningNumber() {
+    public static Lotto inputWinningNumber() {
         String winning = Console.readLine();
-        return Stream.of(winning.split(","))
+        List<Integer> winningLotto = Stream.of(winning.split(","))
                 .map(s -> Integer.parseInt(s))
                 .collect(Collectors.toList());
+        return Lotto.createWinningLotto(winningLotto);
     }
 }
