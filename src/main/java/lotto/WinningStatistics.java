@@ -9,12 +9,14 @@ public class WinningStatistics {
     private List<Integer> winning_lottery_number;
     private int bonus_number;
     private int purchase_amount;
+    private int Purchase_count;
 
     public WinningStatistics(List<Integer>[] user_lotterys, List<Integer> winning_lottery_number, int bonus_number,int purchase_amount) {
         this.user_lotterys = user_lotterys;
         this.winning_lottery_number = winning_lottery_number;
         this.bonus_number = bonus_number;
         this.purchase_amount=purchase_amount;
+        this.Purchase_count=purchase_amount/1000;
         setSameCount();
         statisticsLottery();
         PrintWinningStatistics();
@@ -29,14 +31,14 @@ public class WinningStatistics {
 
     private void statisticsLottery() {
         boolean is_bonus;
-        for (int i = 0; i < user_lotterys.length; i++) {
+        for (int i = 0; i < Purchase_count; i++) {
             is_bonus = compareLotteryBonus(user_lotterys[i]);
             winningCount(compareLottery(winning_lottery_number, user_lotterys[i]), is_bonus);
         }
     }
 
     private boolean compareLotteryBonus(List<Integer> user_lottery_number) {
-        for (int i = 0; i < user_lottery_number.size(); i++) {
+        for (int i = 0; i < LottoRange.LOTTERY_MAX.getValue(); i++) {
             if (bonus_number == user_lottery_number.get(i)) {
                 return true;
             }
@@ -47,7 +49,6 @@ public class WinningStatistics {
     private int compareLottery(List<Integer> winning, List<Integer> user) {
         List<Integer> winning_clone = new ArrayList<>(winning);
         winning_clone.removeAll(user);
-//        System.out.println(winning_clone.toString());
         return winning_clone.size();
     }
 
@@ -67,11 +68,11 @@ public class WinningStatistics {
 
     private void PrintWinningStatistics() {
         System.out.println("\n당첨 통계\n---");
-        System.out.println("3개 일치 (5,000)원 - "+same_count.get(WinningRank.FIFTH_RANK.getValue())+"개");
-        System.out.println("4개 일치 (50,000)원 - "+same_count.get(WinningRank.FOURTH_RANK.getValue())+"개");
-        System.out.println("5개 일치 (1,500,000)원 - "+same_count.get(WinningRank.THIRD_RANK.getValue())+"개");
-        System.out.println("5개 일치, 보너스 볼 일치 (30,000,000)원 - "+same_count.get(WinningRank.SECOND_RANK.getValue())+"개");
-        System.out.println("6개 일치 (2,000,000,000)원 - "+same_count.get(WinningRank.FIRST_RANK.getValue())+"개");
+        System.out.println("3개 일치 (5,000원) - "+same_count.get(WinningRank.FIFTH_RANK.getValue())+"개");
+        System.out.println("4개 일치 (50,000원) - "+same_count.get(WinningRank.FOURTH_RANK.getValue())+"개");
+        System.out.println("5개 일치 (1,500,000원) - "+same_count.get(WinningRank.THIRD_RANK.getValue())+"개");
+        System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - "+same_count.get(WinningRank.SECOND_RANK.getValue())+"개");
+        System.out.println("6개 일치 (2,000,000,000원) - "+same_count.get(WinningRank.FIRST_RANK.getValue())+"개");
         System.out.println("총 수익률은 "+String.format("%.1f",getYield())+"%입니다.");
     }
 
@@ -82,6 +83,6 @@ public class WinningStatistics {
         total_reward+=same_count.get(WinningRank.THIRD_RANK.getValue())*WinningRank.THIRD_RANK_REWARD.getValue();
         total_reward+=same_count.get(WinningRank.FOURTH_RANK.getValue())*WinningRank.FOURTH_RANK_REWARD.getValue();
         total_reward+=same_count.get(WinningRank.FIFTH_RANK.getValue())*WinningRank.FIFTH_RANK_REWARD.getValue();
-        return total_reward*100/purchase_amount;
+        return (double)total_reward/purchase_amount*100.0;
     }
 }

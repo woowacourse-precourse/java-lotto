@@ -54,6 +54,8 @@ public class InputDomain {
 
     private static void purchaseAmount_exceptionHandling(String user_input) {
         if (!isNumber(user_input) || !isDevidedThousand(user_input)) {
+//            System.out.println("[ERROR]");
+//            throw new IllegalArgumentException();
             throw new IllegalArgumentException("[ERROR] 구매 금액은 1000의 배수여야 합니다.");
         }
     }
