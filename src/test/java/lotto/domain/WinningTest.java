@@ -57,6 +57,6 @@ public class WinningTest {
         String input = "1,2,3,4,5,6";
         List<Integer> result = new Winning(input).getWinningNumbers();
 
-        assertThat(result).isEqualTo(List.of(1,2,3,4,5,6));
+        assertThat(result).isEqualTo(List.of(1, 2, 3, 4, 5, 6));
     }
 }
