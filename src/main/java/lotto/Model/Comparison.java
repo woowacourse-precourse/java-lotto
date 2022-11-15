@@ -1,7 +1,5 @@
 package lotto.Model;
 
-import static java.util.stream.IntStream.*;
-
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
