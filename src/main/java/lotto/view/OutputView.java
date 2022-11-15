@@ -30,7 +30,7 @@ public class OutputView {
         Map<LottoWin, Integer> lottoWinResults = lottoResults.getLottoResults();
         lottoWinResults.remove(LOSER);
         lottoWinResults.forEach((lottoWin, winCount) -> System.out.print(parseLottoStatics(lottoWin, winCount)));
-        System.out.printf(NOTICE_TOTAL_RATE.getMessage(), formatter.format(lottoResults.totalRate()), PERCENT.getUnit());
+        System.out.printf(NOTICE_TOTAL_RATE.getMessage(), lottoResults.totalRate(), PERCENT.getUnit());
     }
     public void printPurchaseTicketCounts(int size) {
         System.out.printf(NOTICE_PURCHASE_LOTTO_COUNT.getMessage(), size);
