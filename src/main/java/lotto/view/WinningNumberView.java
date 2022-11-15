@@ -121,7 +121,7 @@ public class WinningNumberView {
         }
     }
 
-    private void bonusNumberIntegerCheck(String bonusNumber) {
+    public void bonusNumberIntegerCheck(String bonusNumber) {
 
         for (int index = 0; index < bonusNumber.length(); index++) {
             if (bonusNumber.charAt(index) < '0' && bonusNumber.charAt(index) > '9') {
