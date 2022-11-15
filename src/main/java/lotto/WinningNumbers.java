@@ -1,6 +1,7 @@
 package lotto;
 
 import java.util.List;
+import java.util.StringTokenizer;
 
 import static lotto.Application.printErrorMessage;
 
@@ -13,22 +14,20 @@ public class WinningNumbers {
     }
 
     private void winningNumbersSplit(String s){
-        String[] winningNumSplit =s.split(",");
-
-        for(String num:winningNumSplit){
-            winningNumbers.add(integerCheck(num));
+        StringTokenizer tokenizer= new StringTokenizer(s,",");
+        while(tokenizer.hasMoreTokens()){
+            integerCheck(tokenizer.nextToken());
         }
     }
 
-    private Integer integerCheck(String num) {
-        Integer winNum = 0;
+    private void integerCheck(String num) {
         try{
-             winNum = Integer.parseInt(num);
+             int winNum = Integer.parseInt(num);
         }
         catch(NumberFormatException e){
             printErrorMessage("[ERROR] 숫자 형식으로만 입력해주세요.");
         }
-        return winNum;
+
     }
 
 
