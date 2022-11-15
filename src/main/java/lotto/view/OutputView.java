@@ -58,4 +58,10 @@ public class OutputView {
         System.out.printf(" - %d개", count);
         System.out.println();
     }
+
+    public static void printProfit(double profit) {
+        System.out.print(Message.PROFIT_PRE.getMessage());
+        System.out.printf("%.1f", profit);
+        System.out.println(Message.PROFIT_LAST.getMessage());
+    }
 }
