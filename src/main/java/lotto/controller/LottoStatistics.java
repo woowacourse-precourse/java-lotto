@@ -16,7 +16,10 @@ public class LottoStatistics {
         Statistics statistics = new Statistics();
         statistics.setPrizeTable(lottoResult.getResults());
         Map<Prize, Integer> prizeTable = statistics.getPrizeTable();
+        lottostatisticsUI.showOverallMatches(prizeTable);
+
         statistics.setEarnedMoney();
         double rate = statistics.calculateRate(user.getUserPurchaseAmount());
+        lottostatisticsUI.showRate(rate);
     }
 }
