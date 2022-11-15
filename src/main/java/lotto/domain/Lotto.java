@@ -25,6 +25,10 @@ public class Lotto {
             .count();
     }
 
+    public static boolean isBonus(Lotto lotto, int bonus) {
+        return lotto.numbers.contains(bonus);
+    }
+
     private void validateSize(List<Integer> numbers) {
         if (isDifferentSize(numbers)) {
             throw new IllegalArgumentException(ErrorMessage.LOTTOSIZE_ERROR);
