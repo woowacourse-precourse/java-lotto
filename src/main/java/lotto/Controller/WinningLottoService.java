@@ -17,11 +17,11 @@ public class WinningLottoService {
     }
 
     public void winningNumberService() throws IllegalArgumentException {
-        getWinningNumber();
-        getBonusNumber();
+        getPlayerWinningNumber();
+        getPlayerBonusNumber();
     }
 
-    public void getWinningNumber() throws IllegalArgumentException {
+    public void getPlayerWinningNumber() throws IllegalArgumentException {
         String winnerNumber = InputView.requestWinnerNumber();
         isValidWinningNumber(winnerNumber);
         List<String> winnerNumbers = InputUtils.splitPlayerInput(winnerNumber);
@@ -30,7 +30,7 @@ public class WinningLottoService {
         player.setWinningNumber(lotto);
     }
 
-    public void getBonusNumber() {
+    public void getPlayerBonusNumber() {
         String bonusBall = InputView.requestBonusNumber();
         isValidBonusNumber(bonusBall, player.getWinningNumber());
         player.setBonusNumber(Integer.parseInt(bonusBall));
