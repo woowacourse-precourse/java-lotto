@@ -12,7 +12,9 @@ public enum OutputMessage {
     WINNING_THIRD("5개 일치 (1,500,000원) - "),
     WINNING_FOURTH("4개 일치 (50,000원) - "),
     WINNING_FIFTH("3개 일치 (5,000원) - "),
-    WINNING_ALL_COUNT("개");
+    WINNING_ALL_COUNT("개"),
+    ALL_RATE_OF_RETURN("총 수익률은 "),
+    END_RATE_OF_RETURN("%입니다.");
 
     private final String message;
 

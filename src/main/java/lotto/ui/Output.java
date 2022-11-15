@@ -30,7 +30,7 @@ public class Output {
         System.out.println(OutputMessage.WINNING_STATISTICS_MESSAGE);
     }
 
-    public static void  winningStatistics(List<Integer> counts) {
+    public static void winningStatistics(List<Integer> counts) {
         for (int i = counts.size(); i >= 0; i--) {
             System.out.println(OutputMessage.WINNING_FIFTH.getMessage() + counts.get(i) + OutputMessage.WINNING_ALL_COUNT.getMessage());
             System.out.println(OutputMessage.WINNING_FOURTH.getMessage() + counts.get(i) + OutputMessage.WINNING_ALL_COUNT.getMessage());
@@ -38,5 +38,9 @@ public class Output {
             System.out.println(OutputMessage.WINNING_SECOND.getMessage() + counts.get(i) + OutputMessage.WINNING_ALL_COUNT.getMessage());
             System.out.println(OutputMessage.WINNING_FIRST.getMessage() + counts.get(i) + OutputMessage.WINNING_ALL_COUNT.getMessage());
         }
+    }
+
+    public static void rateOfReturn(Double rates) {
+        System.out.println(OutputMessage.ALL_RATE_OF_RETURN + String.valueOf(rates) + OutputMessage.END_RATE_OF_RETURN);
     }
 }
