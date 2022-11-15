@@ -11,19 +11,23 @@ public class Shop {
 
     public List<Lotto> buyLottos(int money) {
         isMultipleOfPrice(money);
+
         int amount = money / PRICE;
         System.out.printf("%n%d개를 구매했습니다.%n", amount);
+
         List<Lotto> lottos = new ArrayList<>();
         while (lottos.size() < amount) {
             Lotto lotto = createLotto();
             lotto.printNumbers();
             lottos.add(lotto);
         }
+
         return lottos;
     }
 
     private Lotto createLotto() {
         List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+
         return new Lotto(numbers);
     }
 

@@ -25,16 +25,17 @@ public class Result {
 
     public List<Integer> getStatus() {
         List<Integer> status = new ArrayList<>();
+
         status.add(three);
         status.add(four);
         status.add(five);
         status.add(fiveBonus);
         status.add(six);
+
         return status;
     }
 
-    @Override
-    public String toString() {
+    public void print() {
         String result = "";
         result += "\n당첨 통계\n---\n";
         result += "3개 일치 (5,000원) - " + three + "개\n";
@@ -42,7 +43,8 @@ public class Result {
         result += "5개 일치 (1,500,000원) - " + five + "개\n";
         result += "5개 일치, 보너스 볼 일치 (30,000,000원) - " + fiveBonus + "개\n";
         result += "6개 일치 (2,000,000,000원) - " + six + "개";
-        return result;
+
+        System.out.println(result);
     }
 
     public double getRevenue() {
@@ -52,6 +54,7 @@ public class Result {
         revenue += five * FIVE_PRIZE;
         revenue += fiveBonus * FIVE_BONUS_PRIZE;
         revenue += six * SIX_PRIZE;
+
         return revenue;
     }
 
@@ -60,14 +63,17 @@ public class Result {
             three++;
             return;
         }
+
         if (count == 4) {
             four++;
             return;
         }
+
         if (count == 5) {
             five++;
             return;
         }
+
         if (count == 6) {
             six++;
         }

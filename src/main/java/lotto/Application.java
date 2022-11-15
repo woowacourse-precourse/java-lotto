@@ -18,26 +18,25 @@ public class Application {
             return;
         }
         List<Lotto> lottos = shop.buyLottos(money);
+
         List<Integer> winningNumbers = Player.getWinningNumbers();
         if (winningNumbers == null) {
             return;
         }
         int bonusNumber = Player.getBonusNumber();
-        Result result = calculateResult(lottos, winningNumbers, bonusNumber);
-        System.out.println(result.toString());
-        printReturnRate(money);
-    }
 
-    private void printReturnRate(int money) {
-        System.out.printf("총 수익률은 %.1f", calculator.returnRate(money));
-        System.out.println("%입니다.");
+        Result result = calculateResult(lottos, winningNumbers, bonusNumber);
+        result.print();
+        calculator.printReturnRate(money);
     }
 
     private Result calculateResult(List<Lotto> lottos, List<Integer> winningNumbers, int bonusNumber) {
         calculator = new Calculator(winningNumbers, bonusNumber);
+
         for (Lotto lotto : lottos) {
             calculator.compare(lotto);
         }
+
         return calculator.getResult();
     }
 

@@ -3,8 +3,6 @@ package lotto.domain;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvSource;
 
 import java.util.List;
 
@@ -21,7 +19,7 @@ class CalculatorTest {
     @DisplayName("6개 일치")
     @Test
     void six() {
-        Lotto lotto = new Lotto(List.of(1,2,3,4,5,6));
+        Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
         calculator.compare(lotto);
         Result result = calculator.getResult();
         List<Integer> actual = result.getStatus();
@@ -32,7 +30,7 @@ class CalculatorTest {
     @DisplayName("5개 보너스 일치")
     @Test
     void fiveBonus() {
-        Lotto lotto = new Lotto(List.of(1,2,3,4,5,7));
+        Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 7));
         calculator.compare(lotto);
         Result result = calculator.getResult();
         List<Integer> actual = result.getStatus();
@@ -42,8 +40,8 @@ class CalculatorTest {
 
     @DisplayName("5개 일치")
     @Test
-    void four() {
-        Lotto lotto = new Lotto(List.of(1,2,3,4,5,8));
+    void five() {
+        Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 8));
         calculator.compare(lotto);
         Result result = calculator.getResult();
         List<Integer> actual = result.getStatus();
