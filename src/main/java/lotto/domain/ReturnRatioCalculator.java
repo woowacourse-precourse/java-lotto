@@ -13,11 +13,15 @@ public class ReturnRatioCalculator {
     private int calculateTotalPrizeMoney(Map<Rank, Integer> winningStatus) {
 
         for (Rank rank : winningStatus.keySet()) {
-            for (int count = 0; count < winningStatus.get(rank); count++) {
+
+            Integer numberOfTimesWonInThisRank = winningStatus.get(rank);
+
+            for (int count = 0; count < numberOfTimesWonInThisRank; count++) {
                 totalPrizeMoney += Rank.getRankPrize(rank);
             }
         }
 
         return totalPrizeMoney;
     }
+
 }
