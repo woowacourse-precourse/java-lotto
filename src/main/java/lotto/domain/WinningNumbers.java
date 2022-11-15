@@ -13,12 +13,12 @@ public class WinningNumbers {
         this.bonusNumber = bonusNumber;
     }
 
-    public void validationBonus(Lotto winningNumber, int bonusNumber) {
+    public void validationBonus(Lotto winningNumber, int bonusNumber) throws IllegalArgumentException{
         winningNumber.validateNumberInRange(bonusNumber);
-        validateWinningContainsBonus(winningNumber);
+        validateWinningContainsBonus(winningNumber, bonusNumber);
     }
 
-    private void validateWinningContainsBonus(Lotto winningNumber) {
+    private void validateWinningContainsBonus(Lotto winningNumber, int bonusNumber) {
         if (winningNumber.contains(bonusNumber)) {
             throw new IllegalArgumentException(ERR_WINNING_CONTAIN_BONUS);
         }
