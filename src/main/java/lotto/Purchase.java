@@ -22,4 +22,7 @@ public class Purchase {
             throw new IllegalArgumentException(ExceptionHandler.WRONG_PURCHASE_MONEY);
         return money;
     }
+    public int getPurchaseMoney() {
+        return purchaseMoney;
+    }
 }
