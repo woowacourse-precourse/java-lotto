@@ -9,8 +9,8 @@ import java.util.List;
 
 public class Game {
 
-    private User user;
-    private Service service;
+    private final User user;
+    private final Service service;
     private int[] winningResult;
     private int winningPrize;
     private double profitRate;
