@@ -21,6 +21,12 @@ public final class Validator {
         }
     }
 
+    public static void isZero(String input) {
+        if (Integer.parseInt(input) == ZERO) {
+            throw new IllegalArgumentException(PREFIX + NEGATIVE);
+        }
+    }
+
     public static void isNegative(String input) {
         if (Integer.parseInt(input) < ZERO) {
             throw new IllegalArgumentException(PREFIX + NEGATIVE);
@@ -35,6 +41,7 @@ public final class Validator {
 
     public static void isValidPurchasePrice(String input) {
         isInteger(input);
+        isZero(input);
         isNegative(input);
         isDividableWithThousand(input);
     }
