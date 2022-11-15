@@ -79,6 +79,12 @@ public class Store {
         if(bonusNumber == null) {
             throw new NullPointerException();
         }
+        if (winningLotto != null) {  // 1등 당첨번호와 보너스번호가 중복되면 예외 발생
+            List<Integer> winningNumbers = winningLotto.getNumbers();
+            if (winningNumbers.contains(bonusNumber)) {
+                throw new IllegalArgumentException();
+            }
+        }
     }
 
     // 보너스 넘버가 있는 경우 true를 반환
@@ -97,10 +103,16 @@ public class Store {
         return count;
     }
 
+    public void setGameNumbers(Lotto winningLotto, int bonusNumber) {
+        setWinningLotto(winningLotto);
+        setBonusNumber(bonusNumber);
+    }
     public void setWinningLotto(Lotto winningLotto) {
         this.winningLotto = winningLotto;
+        validateWinningLotto();
     }
     public void setBonusNumber(int bonusNumber) {
         this.bonusNumber = bonusNumber;
+        validateBonusNumber();
     }
 }
