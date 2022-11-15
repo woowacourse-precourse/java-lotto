@@ -81,26 +81,93 @@ public class Application {
         int arrLotto[][] = new int[lotto][6];
         for (int i = 0; i < lotto; i++) {
             for (int j = 0; j < 6; j++) {
-                int num = (int) (Math.random() * 45) + 1;    // 1~46까지의 임의의 수를 받는다.
+                int num = (int) (Math.random() * 45) + 1;
                 arrLotto[i][j] = num;
-                for (int k = 0; k < j; k++) {    // 중복된 번호가 있으면 이전 포문으로 돌아가 다시 시행한다.
+                for (int k = 0; k < j; k++) {
                     if (arrLotto[i][j] == arrLotto[i][k]) {
                         j--;
                         break;
                     }
                 }
             }
-            Arrays.sort(arrLotto[lotto]);
+
+            Arrays.sort(arrLotto[i]);
         }
+
         for (int a = 0; a < lotto; a++) {
-            System.out.printf("[");
+            System.out.print("[");
             for (int b = 0; b < 6; b++) {
-                System.out.print(arrLotto[lotto][b]);
+                System.out.print(arrLotto[a][b]);
                 if (b != 5)
-                    System.out.printf(", ");
+                    System.out.print(", ");
             }
             System.out.println("]");
         }
+        System.out.println("당첨 번호를 입력해 주세요.");
+        String Numbers = scanner.next();
+
+        String Number[] = Numbers.split(",");
+        int Numbertmp[] = new int[6];
+        for (int i = 0; i < 6; i++) {
+            Numbertmp[i] = Integer.parseInt(Number[i]);
+        }
+
+        System.out.println("\n보너스 번호를 입력해 주세요.");
+        int bonus = scanner.nextInt();
+
+        System.out.println("\n당첨 통계\n---");
+
+        int result = 0;
+        int rank5 = 0;
+        int rank4 = 0;
+        int rank3 = 0;
+        int rank2 = 0;
+        int rank1 = 0;
+        for (int i = 0; i < lotto; i++) {
+            int count = 0;
+            boolean bean = false;
+            for (int j = 0; j < 6; j++) {
+                for (int k = 0; k < 6; k++) {
+                    if (arrLotto[i][j] == Numbertmp[k]) {
+                        count++;
+                    }
+                }
+            }
+            if (count == 5) {
+                for (int j = 0; j < 6; j++) {
+                    if (arrLotto[i][j] == bonus)
+                        bean = true;
+                }
+            }
+            if (count == 3) {
+                result += 5000;
+                rank3++;
+            }
+            else if (count == 4) {
+                result += 50000;
+                rank4++;
+            }
+            else if (count == 5) {
+                if (bean = true) {
+                    result += 30000000;
+                    rank2++;
+                }
+                else {
+                    result += 1500000;
+                    rank3++;
+                }
+            }
+            else if (count == 6) {
+                result += 2000000000;
+                rank1++;
+            }
+        }
+        System.out.println("3개 일치 (5,000원) - " + rank5 +"개");
+        System.out.println("4개 일치 (50,000원) - " + rank4 +"개");
+        System.out.println("5개 일치 (1,500,000원) - " + rank3 +"개");
+        System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - " + rank2 +"개");
+        System.out.println("6개 일치 (2,000,000,000원) - " + rank1 +"개");
+        System.out.println("총 수익률은 " + String.format("%.2f", (double)result / (double) Money) + "%입니다.\n");
 
     }
 }
