@@ -9,11 +9,11 @@ import static lotto.Winning.FirstPlace;
 
 public class Util {
     // 로또 당첨 확인 로직
-    public void ConfirmationOfTheWinner(List<Buyer> userLottos, List<Integer> lottoNums, int bonusNumber) {
+    public void ConfirmationOfTheWinner(List<Buyer> userLottos, Lotto lottoNums, int bonusNumber) {
         // 몇 개나 일치하는지 확인
         for (Buyer user : userLottos) {
             List<Integer> matchNumber = user.userNumber.stream()
-                    .filter(number -> lottoNums.stream()
+                    .filter(number -> lottoNums.getNumbers().stream()
                             .anyMatch(Predicate.isEqual(number)))
                     .collect(Collectors.toList());
             int match = matchNumber.size();
