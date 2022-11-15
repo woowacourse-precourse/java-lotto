@@ -38,9 +38,9 @@ class LottoPrizeTest {
     void 보너스_번호_체크_테스트() throws Exception {
         //given
         LottoWinningNumber lottoWinningNumber = new LottoWinningNumber();
-        Field winningNums = lottoWinningNumber.getClass().getDeclaredField("bonusNum");
-        winningNums.setAccessible(true);
-        winningNums.set(lottoWinningNumber, 7);
+        Field bonusNum = lottoWinningNumber.getClass().getDeclaredField("bonusNum");
+        bonusNum.setAccessible(true);
+        bonusNum.set(lottoWinningNumber, 7);
 
         LottoPrize lottoPrize = new LottoPrize(lottoWinningNumber);
         Method method = lottoPrize.getClass().getDeclaredMethod("checkBonusNumber", List.class, int.class);
