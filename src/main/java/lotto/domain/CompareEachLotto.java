@@ -67,19 +67,19 @@ public class CompareEachLotto {
         System.out.println(DIVIDING_LINE);
 
         Rank.THREE_NUMBERS_MATCHING.printRank();
-        System.out.println(winningCountMapByRank.get(Rank.THREE_NUMBERS_MATCHING) + "개");
+        System.out.println(winningCountMapByRank.get(Rank.THREE_NUMBERS_MATCHING) + Lotto.LOTTO_UNIT);
 
         Rank.FOUR_NUMBERS_MATCHING.printRank();
-        System.out.println(winningCountMapByRank.get(Rank.FOUR_NUMBERS_MATCHING) + "개");
+        System.out.println(winningCountMapByRank.get(Rank.FOUR_NUMBERS_MATCHING) + Lotto.LOTTO_UNIT);
 
         Rank.ONLY_FIVE_NUMBERS_MATCHING.printRank();
-        System.out.println(winningCountMapByRank.get(Rank.ONLY_FIVE_NUMBERS_MATCHING) + "개");
+        System.out.println(winningCountMapByRank.get(Rank.ONLY_FIVE_NUMBERS_MATCHING) + Lotto.LOTTO_UNIT);
 
         Rank.FIVE_NUMBERS_AND_BONUS_NUMBER_MATCHING.printRank();
-        System.out.println(winningCountMapByRank.get(Rank.FIVE_NUMBERS_AND_BONUS_NUMBER_MATCHING) + "개");
+        System.out.println(winningCountMapByRank.get(Rank.FIVE_NUMBERS_AND_BONUS_NUMBER_MATCHING) + Lotto.LOTTO_UNIT);
 
         Rank.SIX_NUMBERS_MATCHING.printRank();
-        System.out.println(winningCountMapByRank.get(Rank.SIX_NUMBERS_MATCHING) + "개");
+        System.out.println(winningCountMapByRank.get(Rank.SIX_NUMBERS_MATCHING) + Lotto.LOTTO_UNIT);
 
         System.out.println("총 수익률은 " +
                 String.format("%.1f", (sumWinningMoney / ((double) lottoCount * 1000)) * 100) + "%입니다.");
