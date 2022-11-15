@@ -40,6 +40,76 @@ public class LottoUserTest {
         assertEquals(lottos.size(),cnt);
     }
 
+    @DisplayName("주어진 로또에 알맞은 WinInfo를 가지고 있는지")
+    @ParameterizedTest
+    @MethodSource("checkWinTestProvider")
+    void checkWinTest(LottoSystem lottoSystem, List<Lotto> lottos, List<WinInfo> winInformations) {
+        LottoUser user = new LottoUser(0,lottoSystem);
+        List<Lotto> userLottos = user.getLottos();
+        userLottos.clear();
+        userLottos.addAll(lottos);
+        List<WinInfo> userWinInformations = user.checkWin();
 
+        assertEquals(userWinInformations,winInformations);
+    }
+    private static List<Arguments> checkWinTestProvider() {
+        LottoSystem lottoSystem = new LottoSystem();
+        lottoSystem.setWinNumbers(List.of(1,2,3,4,5,6));
+        lottoSystem.setBonusNumbers(7);
+
+        List<Lotto> lottos = List.of(
+                //matched 6 bonus 0
+                new Lotto(List.of(1,2,3,4,5,6)),
+                //matched 5 bonus 1
+                new Lotto(List.of(1,7,3,4,5,6)),
+                //matched 5 bonus 1
+                new Lotto(List.of(1,2,3,7,5,6)),
+                //matched 5 bonus 0
+                new Lotto(List.of(1,2,8,4,5,6)),
+                //matched 5 bonus 0
+                new Lotto(List.of(1,2,3,4,11,6)),
+                //matched 4 bonus 0
+                new Lotto(List.of(1,2,9,4,11,6)),
+                //matched 4 bonus 1
+                new Lotto(List.of(1,2,3,4,11,7)),
+                //matched 3 matched 0
+                new Lotto(List.of(1,2,3,17,11,13)),
+                //matched 3 bonus 1
+                new Lotto(List.of(1,2,3,17,11,7)),
+                //matched 2 bonus 0
+                new Lotto(List.of(1,2,21,17,11,9)),
+                //matched 2 bonus 1
+                new Lotto(List.of(1,2,21,17,11,7)),
+                //matched 1 bonus 0
+                new Lotto(List.of(1,25,21,17,11,9)),
+                //matched 1 bonus 1
+                new Lotto(List.of(1,25,21,17,11,7)),
+                //matched 0 bonus 0
+                new Lotto(List.of(44,25,21,17,11,9))
+        );
+        List<WinInfo> winInformations = List.of(
+                WinInfo.WIN1,
+                WinInfo.WIN2,
+                WinInfo.WIN2,
+                WinInfo.WIN3,
+                WinInfo.WIN3,
+                WinInfo.WIN4,
+                WinInfo.WIN4,
+                WinInfo.WIN5,
+                WinInfo.WIN5,
+                WinInfo.NO_WIN,
+                WinInfo.NO_WIN,
+                WinInfo.NO_WIN,
+                WinInfo.NO_WIN,
+                WinInfo.NO_WIN
+        );
+        return List.of(
+                Arguments.of(
+                        lottoSystem,
+                        lottos,
+                        winInformations
+                )
+        );
+    }
 }
 
