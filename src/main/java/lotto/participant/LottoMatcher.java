@@ -41,6 +41,7 @@ public class LottoMatcher {
 
     private void saveResult(int numberOfMatchedLottoNumber, boolean bonus) {
         Rank rank = null;
+
         if (numberOfMatchedLottoNumber == 6) {
             rank = Rank.FIRST_SIX_MATCHED;
         } else if (numberOfMatchedLottoNumber == 5 && bonus) {
@@ -52,6 +53,9 @@ public class LottoMatcher {
         } else if (numberOfMatchedLottoNumber == 3) {
             rank = Rank.FIFTH_THREE_MATCHED;
         }
-        rankCounts.put(rank, rankCounts.getOrDefault(rank, 0) + 1);
+
+        if (rank != null) {
+            rankCounts.put(rank, rankCounts.getOrDefault(rank, 0) + 1);
+        }
     }
 }
