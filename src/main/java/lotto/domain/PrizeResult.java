@@ -5,7 +5,7 @@ import java.util.EnumMap;
 import java.util.Map;
 
 public class PrizeResult {
-    private Map<Prize, Integer> prizeResult;
+    private final Map<Prize, Integer> prizeResult;
 
     public PrizeResult() {
         prizeResult = new EnumMap<Prize, Integer>(Prize.class);

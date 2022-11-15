@@ -13,9 +13,7 @@ public class outputStatistics {
     private static final String OUTPUT_SECOND_RESULT_MESSAGE = "%d개 일치, 보너스 볼 일치 (%d원) - %d개";
     private static final String OUTPUT_RATE_OF_RETURN = "총 수익률은 %.1f입니다.";
 
-    static PrizeResult prizeResult;
-
-    private static void printStatistics(double rate) {
+    private static void printStatistics(PrizeResult prizeResult, double rate) {
         System.out.println(OUTPUT_TOP_MESSAGE);
         Arrays.stream(Prize.values())
                 .filter(prize -> !prize.equals(Prize.EMPTY))
