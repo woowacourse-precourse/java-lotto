@@ -17,9 +17,9 @@ public class Lotto {
         this.numbers = numbers;
     }
 
-    private void validate(List<Integer> numbers) {
+    private void validate(List<Integer> numbers) throws IllegalArgumentException {
         if (numbers.size() != 6) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR] 잘못된 값 개수 입력");
         }
     }
 
