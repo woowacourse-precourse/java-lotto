@@ -13,14 +13,14 @@ public class Winning {
 
     private static void validateWinning(List<Integer> numbers) {
         if (numbers.size() != 6) {
-            throw new IllegalArgumentException("당첨 번호의 개수는 6개를 입력해야 합니다.");
+            throw new IllegalArgumentException("로또 번호에는 숫자 6개를 입력해야 합니다.");
         }
     }
 
     private static void checkInt(String input) {
         for (int i = 0; i < input.length(); i++) {
             if (!Character.isDigit(input.charAt(i))) {
-                throw new IllegalArgumentException("숫자만 입력해야 합니다.");
+                throw new IllegalArgumentException("로또 번호는 숫자만 입력해야 합니다.");
             }
         }
     }
@@ -57,6 +57,6 @@ public class Winning {
             numbers.add(inputNumber);
             return;
         }
-        throw new IllegalArgumentException("당첨 번호와 보너스 번호는 중복될 수 없습니다.");
+        throw new IllegalArgumentException("로또 번호와 보너스 번호는 중복될 수 없습니다.");
     }
 }
