@@ -4,6 +4,8 @@ import java.util.List;
 
 public class Utils {
 
+    private static final int LOTTO_SIZE = 6;
+
     public static int convertStringToInt(String input) {
         int number;
 
@@ -28,8 +30,22 @@ public class Utils {
         }
     }
 
-    public static void validateNumbersRange(List<Integer> numbers) {
+    public static void validateNumberRange(int number) {
+        if (number < 1 || number > 45) {
+            throw new IllegalArgumentException(String.valueOf(ErrorCode.OUT_OF_RANGE));
+        }
+    }
 
+    public static void validateNumbersRange(List<Integer> numbers) {
+        for (int num : numbers) {
+            validateNumberRange(num);
+        }
+    }
+
+    public static void validateNumbersSize(List<Integer> numbers) {
+        if (numbers.size() != LOTTO_SIZE) {
+            throw new IllegalArgumentException(String.valueOf(ErrorCode.INVALID_SIZE));
+        }
     }
 
 }
