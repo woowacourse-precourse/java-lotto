@@ -53,7 +53,7 @@ public class Cli {
   }
 
   public static void print(List<Lotto> lottoList) {
-    System.out.printf("%d개를 구입했습니다.\n", lottoList.size());
+    System.out.printf("%d개를 구매했습니다.\n", lottoList.size());
 
     for(Lotto lotto: lottoList) {
       System.out.println(lotto);
