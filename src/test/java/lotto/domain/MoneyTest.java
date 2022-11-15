@@ -1,6 +1,8 @@
 package lotto.domain;
 
-import org.assertj.core.api.Assertions;
+import lotto.exception.money.MoneyLessException;
+import lotto.exception.money.MoneyUnitWrongException;
+import lotto.exception.utils.NotNumberException;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.*;
@@ -18,7 +20,7 @@ class MoneyTest {
     void 입력받은_문자열이_숫자인지2() {
         assertThatThrownBy(() -> new Money("A2000"))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("[ERROR] 구입 금액에는 숫자만 입력해야 합니다.");
+                .hasMessage("[ERROR] 숫자만 입력해야 합니다.");
     }
 
     @Test
@@ -30,14 +32,14 @@ class MoneyTest {
     @Test
     void 금액이_단위가_맞는지2() {
         assertThatThrownBy(() -> new Money("2500"))
-                .isInstanceOf(IllegalArgumentException.class)
+                .isInstanceOf(MoneyUnitWrongException.class)
                 .hasMessage("[ERROR] 구입 금액은 1000원 단위만 입력해야 합니다.");
     }
 
     @Test
     void 금액이_단위가_맞는지3() {
         assertThatThrownBy(() -> new Money("500"))
-                .isInstanceOf(IllegalArgumentException.class)
+                .isInstanceOf(MoneyLessException.class)
                 .hasMessage("[ERROR] 구입 금액은 1000원보다 커야합니다.");
     }
 

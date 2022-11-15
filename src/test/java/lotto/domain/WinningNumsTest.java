@@ -27,14 +27,14 @@ class WinningNumsTest {
     }
 
     @ParameterizedTest
-    @ValueSource(strings = {"1, 2, 3, 4, 5, 6", "15, 13, 17, 14, 25, 6", "41, 42, 43, 44, 45, 46"})
+    @ValueSource(strings = {"1,2,3,4,5,6", "15,13,17,14,25,6", "41,42,43,44,45,40"})
     void 입력받은_당첨_번호가_중복되지_않는지1(String winNums) {
         WinningNums winningNums = new WinningNums(winNums, "7");
         assertThat(Validator.isNotDuplicate(winningNums.getWinningNums())).isEqualTo(true);
     }
 
     @ParameterizedTest
-    @ValueSource(strings = {"2, 2, 3, 4, 5, 6", "13, 13, 17, 14, 25, 6", "42, 42, 43, 44, 45, 46"})
+    @ValueSource(strings = {"2,2,3,4,5,6", "13,13,17,14,25,6", "42,42,43,44,45,46"})
     void 입력받은_당첨_번호가_중복되지_않는지2(String winNums) {
         assertThatThrownBy(() -> new WinningNums(winNums, "7"))
                 .isInstanceOf(IllegalArgumentException.class)
@@ -42,14 +42,14 @@ class WinningNumsTest {
     }
 
     @ParameterizedTest
-    @ValueSource(strings = {"1, 2, 3, 4, 5, 6", "1, 13, 17, 14, 25, 6", "1, 42, 43, 44, 45, 46"})
+    @ValueSource(strings = {"1,2,3,4,5,6", "1,13,17,14,25,6", "1,42,43,44,45,40"})
     void 당첨_번호와_보너스_번호가_중복되지_않는지1(String winNums) {
         WinningNums winningNums = new WinningNums(winNums, "7");
         assertThat(Validator.isNotContains(winningNums.getWinningNums(), winningNums.getBonusNum())).isEqualTo(true);
     }
 
     @ParameterizedTest
-    @ValueSource(strings = {"1, 2, 3, 4, 5, 6", "1, 13, 17, 14, 25, 6", "1, 42, 43, 44, 45, 46"})
+    @ValueSource(strings = {"1,2,3,4,5,6", "1,13,17,14,25,6", "1,42,43,44,45,40"})
     void 당첨_번호와_보너스_번호가_중복되지_않는지2(String winNums) {
         assertThatThrownBy(() -> new WinningNums(winNums, "1"))
                 .isInstanceOf(IllegalArgumentException.class)
@@ -58,12 +58,12 @@ class WinningNumsTest {
 
     @Test
     void 당첨_번호가_범위에_있는지1() {
-        WinningNums winningNums = new WinningNums("1, 2, 3, 4, 5, 6", "7");
+        WinningNums winningNums = new WinningNums("1,2,3,4,5,6", "7");
         assertThat(Validator.isInRangeAll(winningNums.getWinningNums())).isEqualTo(true);
     }
 
     @ParameterizedTest
-    @ValueSource(strings = {"0, 1, 2, 3, 4, 5", "51, 13, 17, 88, 251, 6", "100, 32, 413, 0, 45, 46"})
+    @ValueSource(strings = {"0,1,2,3,4,5", "51,13,17,88,251,6", "100,32,413,0,45,46"})
     void 당첨_번호가_범위에_있는지2(String winNums) {
         assertThatThrownBy(() -> new WinningNums(winNums, "7"))
                 .isInstanceOf(IllegalArgumentException.class)
@@ -72,14 +72,14 @@ class WinningNumsTest {
 
     @Test
     void 보너스_번호가_범위에_있는지1() {
-        WinningNums winningNums = new WinningNums("1, 2, 3, 4, 5, 6", "7");
+        WinningNums winningNums = new WinningNums("1,2,3,4,5,6", "7");
         assertThat(Validator.isInRange(winningNums.getBonusNum())).isEqualTo(true);
     }
 
     @ParameterizedTest
     @ValueSource(strings = {"0", "46", "100", "413"})
     void 보너스_번호가_범위에_있는지2(String bonusNum) {
-        assertThatThrownBy(() -> new WinningNums("1, 2, 3, 4, 5, 6", bonusNum))
+        assertThatThrownBy(() -> new WinningNums("1,2,3,4,5,6", bonusNum))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("[ERROR] 1-45까지의 숫자만 입력해야 합니다.");
     }
