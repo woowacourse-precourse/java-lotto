@@ -35,7 +35,7 @@ class LottoResultCalculatorTest {
 
     static Stream<Arguments> parameterProvider() {
         List<Lotto> lottos = List.of(new Lotto(List.of(1, 2, 3, 4, 5, 6)), new Lotto(List.of(1, 2, 3, 4, 7, 8)));
-        EnumMap<Rank, Integer> expected = expectedConstructor(List.of(1, 0, 1, 0, 0, 0));
+        EnumMap<Rank, Integer> expected = expectedConstructor(List.of(1, 0, 0, 1, 0, 0));
 
         List<Lotto> lottos1 = List.of(new Lotto(List.of(8, 9, 10, 11, 12, 13)),
                 new Lotto(List.of(1, 2, 3, 21, 22, 23)));

@@ -48,12 +48,11 @@ public class LottoResultCalculator {
             return Rank.SECOND_PRIZE;
         }
 
-        int matchedNumCnt = matchedWinningNumCnt + matchedBonusNumCnt;
-        if (matchedNumCnt < 3) {
+        if (matchedWinningNumCnt < 3) {
             return Rank.NOTHING;
         }
 
-        return Rank.values()[rankOffset - matchedNumCnt];
+        return Rank.values()[rankOffset - matchedWinningNumCnt];
     }
 
 
