@@ -14,6 +14,15 @@ public class Lotto {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException();
         }
+
+        checkDuplicate(numbers);
+    }
+
+    private void checkDuplicate(List<Integer> numbers) {
+        long numbersCount = numbers.stream().distinct().count();
+        if (numbersCount != 6) {
+            throw new IllegalArgumentException();
+        }
     }
 
     public String toString() {
