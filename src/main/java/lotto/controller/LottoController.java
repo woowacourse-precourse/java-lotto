@@ -6,6 +6,7 @@ import lotto.service.LottoService;
 import lotto.utils.InputConverter;
 import lotto.utils.Validator;
 import lotto.view.InputView;
+import lotto.view.OutputView;
 
 public class LottoController {
 
@@ -18,6 +19,7 @@ public class LottoController {
     public void run() {
         int purchaseAmount = getPurchaseAmount();
         User user = new User(purchaseAmount);
+        OutputView.printLottoInformation(user.getLottos());
     }
 
     private Integer getPurchaseAmount() {
