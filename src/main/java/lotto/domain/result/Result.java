@@ -21,23 +21,23 @@ public class Result {
     }
 
     private void judgeWin(int sameNumberCnt, boolean isBonusSame) {
-        if (sameNumberCnt == 6) {
+        if (sameNumberCnt == Win.FIRST.sameNumberCnt()) {
             totalWin[0]++;
             return;
         }
-        if ((sameNumberCnt == 5) && (isBonusSame)) {
+        if ((sameNumberCnt == Win.SECOND.sameNumberCnt()) && (isBonusSame)) {
             totalWin[1]++;
             return;
         }
-        if ((sameNumberCnt == 5) && (!isBonusSame)) {
+        if ((sameNumberCnt == Win.THIRD.sameNumberCnt()) && (!isBonusSame)) {
             totalWin[2]++;
             return;
         }
-        if (sameNumberCnt == 4) {
+        if (sameNumberCnt == Win.FOURTH.sameNumberCnt()) {
             totalWin[3]++;
             return;
         }
-        if (sameNumberCnt == 3) {
+        if (sameNumberCnt == Win.FIFTH.sameNumberCnt()) {
             totalWin[4]++;
             return;
         }

@@ -2,8 +2,9 @@ package lotto.domain.result.domain;
 
 import java.util.List;
 
+import static lotto.constant.Integer.LOTTO_NUMBER_CNT;
+
 public class Compare {
-    static final int LOTTO_NUMBER_CNT = 6;
     public final int sameNumberCnt;
     public final boolean isBonusSame;
 

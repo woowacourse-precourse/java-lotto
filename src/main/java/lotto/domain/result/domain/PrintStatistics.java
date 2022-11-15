@@ -1,31 +1,25 @@
 package lotto.domain.result.domain;
 
-import java.text.DecimalFormat;
+import static lotto.constant.PrintMessage.*;
 
 public class PrintStatistics {
 
     public PrintStatistics(int myLottoCnt, int[] totalWin, int totalPrize) {
-        System.out.println("당첨 통계");
-        System.out.println("---");
+        System.out.println(STATISTICS_IS);
         printResult(totalWin);
         Yield yield = new Yield(myLottoCnt, totalPrize);
         printYield(yield.yield);
     }
 
     private void printResult(int[] totalWin) {
-        for (int i = totalWin.length - 1; i >= 0; i--) {
-            DecimalFormat df = new DecimalFormat("###,###");
-            Win tmp = Win.values()[i];
-            System.out.print(tmp.sameNumberCnt() + "개 일치");
-            if (i == 1) {
-                System.out.print(", 보너스 볼 일치");
-            }
-            System.out.print(" (" + df.format(tmp.prize()) + "원) ");
-            System.out.println("- " + totalWin[i] + "개");
-        }
+        System.out.println(Win.FIFTH.winning() + totalWin[4] + COUNTTING_UNIT);
+        System.out.println(Win.FOURTH.winning() + totalWin[3] + COUNTTING_UNIT);
+        System.out.println(Win.THIRD.winning() + totalWin[2] + COUNTTING_UNIT);
+        System.out.println(Win.SECOND.winning() + totalWin[1] + COUNTTING_UNIT);
+        System.out.println(Win.FIRST.winning() + totalWin[0] + COUNTTING_UNIT);
     }
 
     private void printYield(double yield) {
-        System.out.println("총 수익률은 " + yield + "%입니다.");
+        System.out.println(YIELD_IS + yield + PERCENT);
     }
 }

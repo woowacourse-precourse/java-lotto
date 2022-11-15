@@ -1,9 +1,10 @@
 package lotto.domain.getwin.domain;
 
+import static lotto.constant.ErrorMessage.ERROR_BONUS_OUT_OF_RANGE;
+import static lotto.constant.Integer.BONUS_NUMBER_MAX;
+import static lotto.constant.Integer.BONUS_NUMBER_MIN;
+
 public class Bonus {
-    static final int BONUS_NUMBER_START = 1;
-    static final int BONUS_NUMBER_END = 45;
-    static final String ERROR_BONUS_OUT_OF_RANGE = "[ERROR] 보너스 번호는 1부터 45 사이의 숫자여야 합니다.";
     public final int bonus;
 
     public Bonus(int bonus) {
@@ -18,6 +19,6 @@ public class Bonus {
     }
 
     private boolean numbersInRange(int bonus) {
-        return ((bonus >= BONUS_NUMBER_START) && (bonus <= BONUS_NUMBER_END));
+        return ((bonus >= BONUS_NUMBER_MIN) && (bonus <= BONUS_NUMBER_MAX));
     }
 }

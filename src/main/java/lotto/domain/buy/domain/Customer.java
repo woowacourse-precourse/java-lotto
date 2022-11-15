@@ -2,11 +2,12 @@ package lotto.domain.buy.domain;
 
 import camp.nextstep.edu.missionutils.Console;
 
+import static lotto.constant.ErrorMessage.ERROR_ONLY_NUMBER;
+import static lotto.constant.ErrorMessage.ERROR_ONLY_THOUSANDS;
+import static lotto.constant.Integer.LOTTO_PRICE;
+
 public class Customer {
 
-    static final String ERROR_ONLY_NUMBER = "[ERROR] 숫자만 입력 가능합니다.";
-    static final String ERROR_ONLY_THOUSANDS = "[ERROR] 로또 구입은 1,000원 단위로만 가능합니다.";
-    static final int LOTTO_PRICE = 1000;
     public final int count;
     final int price;
 

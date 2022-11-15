@@ -1,7 +1,8 @@
 package lotto.domain.result.domain;
 
+import static lotto.constant.Integer.LOTTO_PRICE;
+
 public class Yield {
-    static final int LOTTO_PRICE = 1000;
     public double yield;
 
     public Yield(int myLottoCnt, int totalPrize) {
