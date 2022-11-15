@@ -57,7 +57,7 @@ public enum Prize {
                 continue;
             }
             int count = totalMatchResult.getOrDefault(prize, 0);
-            resultMessages.add(String.format(MAKE_RESULT_MASSAGE,prize.getMessage(),count));
+            resultMessages.add(String.format(MAKE_RESULT_MASSAGE, prize.getMessage(), count));
         }
         return resultMessages;
     }

@@ -55,6 +55,7 @@ class LottoNumberTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(NOT_LOTTO_LENGTH);
     }
+
     @Test
     void 당첨번호_비교_테스트() {
         LottoNumber lottoNumber = new LottoNumber("1,2,3,4,5,6", "7");

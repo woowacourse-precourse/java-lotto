@@ -16,7 +16,7 @@ public class Play {
 
     public void start() {
         int price = UserInput.inputPrice();
-        int numOfLotto = price/MONEY_UNIT;
+        int numOfLotto = price / MONEY_UNIT;
         List<Lotto> lottoTickets = createLottoTickets(numOfLotto);
         Output.showLottoTickets(lottoTickets);
 
