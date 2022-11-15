@@ -11,6 +11,9 @@ public class LottoCalculator {
     private static final int MAP_SIZE = 1024;
     private static final int LIST_SIZE = 1024;
     private static final int LOTTO_NUMBER_COUNT = 6;
+    private static final int START_NUMBER = 1;
+    private static final int END_NUMBER = 45;
+    private static final int ZERO = 0;
     private static final int ONE = 1;
     private static final int WIN_FIRST_COUNT = 6;
     private static final int WIN_THIRD_COUNT = 5;
@@ -22,7 +25,7 @@ public class LottoCalculator {
     }
 
     public List<Integer> createLotto() {
-        return Randoms.pickUniqueNumbersInRange(1, 45, 6);
+        return Randoms.pickUniqueNumbersInRange(START_NUMBER, END_NUMBER, LOTTO_NUMBER_COUNT);
     }
 
     public ArrayList<ArrayList<Integer>> getDisplayLottoNumbers(List<Lotto> lottos) {
@@ -50,16 +53,16 @@ public class LottoCalculator {
 
 
     private void lottoRankingTypesInitialize(Map<LottoRankingType, Integer> lottoRankingTypes) {
-        lottoRankingTypes.put(LottoRankingType.FIRST_PLACE, 0);
-        lottoRankingTypes.put(LottoRankingType.SECOND_PLACE, 0);
-        lottoRankingTypes.put(LottoRankingType.THIRD_PLACE, 0);
-        lottoRankingTypes.put(LottoRankingType.FOURTH_PLACE, 0);
-        lottoRankingTypes.put(LottoRankingType.FIFTH_PLACE, 0);
-        lottoRankingTypes.put(LottoRankingType.BANG, 0);
+        lottoRankingTypes.put(LottoRankingType.FIRST_PLACE, ZERO);
+        lottoRankingTypes.put(LottoRankingType.SECOND_PLACE, ZERO);
+        lottoRankingTypes.put(LottoRankingType.THIRD_PLACE, ZERO);
+        lottoRankingTypes.put(LottoRankingType.FOURTH_PLACE, ZERO);
+        lottoRankingTypes.put(LottoRankingType.FIFTH_PLACE, ZERO);
+        lottoRankingTypes.put(LottoRankingType.BANG, ZERO);
     }
 
     private int getWinNumberCount(List<Integer> winningNumbers, Lotto lotto) {
-        int winNumber = 0;
+        int winNumber = ZERO;
         for (Integer number : winningNumbers) {
             if (lotto.getNumbers().contains(number)) {
                 ++winNumber;
@@ -92,8 +95,8 @@ public class LottoCalculator {
     }
 
     private void bubbleSort(List<Integer> numbers) {
-        for (int i = 1; i < numbers.size(); i++) {
-            for (int j = 0; j < numbers.size() - i; j++) {
+        for (int i = ONE; i < numbers.size(); i++) {
+            for (int j = ZERO; j < numbers.size() - i; j++) {
                 swapNumber(numbers, j, j + ONE);
             }
         }
