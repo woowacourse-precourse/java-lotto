@@ -6,8 +6,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static lotto.util.Output.printLottos;
-
 public class Lotto {
     private static final int START_NUMBER = 1;
     private static final int END_NUMBER = 45;
@@ -32,7 +30,7 @@ public class Lotto {
         }
     }
 
-    public static List<Lotto> createLottos(int count) {
+    public static List<Lotto> create(int count) {
         List<Lotto> lottos = new ArrayList<>();
 
         while (count-- > 0) {

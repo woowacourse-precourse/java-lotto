@@ -6,6 +6,7 @@ import java.util.List;
 
 import static lotto.domain.Amount.*;
 import static lotto.domain.Lotto.*;
+import static lotto.domain.WinningNumber.*;
 import static lotto.util.Output.*;
 import static lotto.util.Input.*;
 
@@ -19,11 +20,11 @@ public class Purchase {
         printAmountInputText();
         amount = pay(inputAmount());
 
-        lottos = createLottos(amount.getCount());
+        lottos = create(amount.getCount());
         printLottos(lottos);
 
         printInputWinningNumber();
-        inputWinningNumbers();
+        winningNumber = draw(inputWinningNumbers());
 
         printInputBonusNumber();
         inputBonusNumber();
@@ -31,12 +32,6 @@ public class Purchase {
         //Result.of(lottos, winningNumber).printStatistics(amount);
     }
 
-    /**
-     * 당첨 번호를 입력받는 메서드
-     */
-    private static void inputWinningNumbers() {
-        winningNumber = new WinningNumber(Input.inputWinningNumbers());
-    }
 
     /**
      * 보너스 번호를 입력받는 메서드

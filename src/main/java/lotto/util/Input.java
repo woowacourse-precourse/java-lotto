@@ -18,7 +18,7 @@ public class Input {
             String amount = Console.readLine();
             return Integer.parseInt(amount);
         } catch (IllegalArgumentException e) {
-            throw new IllegalArgumentException("[ERROR] 구입 금액이 너무 크거나 입력이 잘못되었습니다.");
+            throw new IllegalArgumentException("[ERROR] 구입 금액이 너무 크거나 입력이 올바르지 않습니다.");
         }
     }
 
@@ -47,7 +47,7 @@ public class Input {
      */
     private static void validateWinningNumbers(String numbers) {
         if (!isSeparatedByCommaAndNumerics(numbers)) {
-            throw new IllegalArgumentException("[ERROR] 당첨 번호의 입력 형식이 올바르지 않습니다.");
+            throw new IllegalArgumentException("[ERROR] 당첨 번호의 입력이 올바르지 않습니다.");
         }
     }
 
@@ -66,14 +66,6 @@ public class Input {
         }
 
         return Integer.parseInt(number);
-    }
-
-    /**
-     * 분리한 숫자들의 범위가 1~45 인지 확인하는 메소드
-     */
-    private static boolean isValidRanges(String numbers) {
-        return Arrays.stream(numbers.split(","))
-                .allMatch(Input::isValidRange);
     }
 
     private static boolean isValidBonusNumber(String number, List<Integer> winningNumbers) {
