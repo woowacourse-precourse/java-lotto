@@ -14,6 +14,11 @@ public class Lotto {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException();
         }
+        for (int number : numbers) {
+            if (numbers.indexOf(number) != numbers.lastIndexOf(number)) {
+                throw new IllegalArgumentException();
+            }
+        }
     }
 
     public int draw(List<Integer> answer, int bonus) {
