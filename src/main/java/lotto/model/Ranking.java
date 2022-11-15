@@ -31,7 +31,6 @@ public class Ranking {
     }
 
     private Map<Rank, Integer> initRanking() {
-        Map<Rank, Integer> ranks = new HashMap<>();
         for (Rank rank : Rank.values()) {
             ranks.put(rank, 0);
         }
