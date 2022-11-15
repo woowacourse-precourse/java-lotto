@@ -133,15 +133,13 @@ public class Application {
     }
 
     public static double calculateProfit(int price, HashMap result) {
-        double profit = 0.0;
-        profit = (((int) result.get(MatchCount.THREE.getKey())) * MatchCount.THREE.getProfit() +
+        double profit = (((int) result.get(MatchCount.THREE.getKey())) * MatchCount.THREE.getProfit() +
                 ((int) result.get(MatchCount.FOUR.getKey())) * MatchCount.FOUR.getProfit() +
                 ((int) result.get(MatchCount.FIVE.getKey())) * MatchCount.FIVE.getProfit() +
                 ((int) result.get(MatchCount.LUCKY_FIVE.getKey())) * MatchCount.LUCKY_FIVE.getProfit() +
                 ((int) result.get(MatchCount.SIX.getKey())) * MatchCount.SIX.getProfit());
         profit = Math.round(profit * 10000 / price);
         profit /= 100;
-        System.out.println("profit = " + profit);
         return profit;
     }
 
@@ -194,7 +192,6 @@ public class Application {
         System.out.println(INPUT_MESSAGE);
         String getPrice = Console.readLine();
         int price =isNumber(getPrice);
-//        int price = Integer.valueOf(getPrice);
         validatePrice(price);
         return price;
     }

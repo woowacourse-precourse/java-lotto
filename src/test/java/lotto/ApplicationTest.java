@@ -82,7 +82,11 @@ class ApplicationTest extends NsTest {
         HashMap compare = setMap();
         Assertions.assertThat(test).isEqualTo(compare);
     }
-
+    @Test
+    public void count_설정_테스트() {
+        Assertions.assertThat(checkIsSeven(5,1)).isEqualTo(7);
+        Assertions.assertThat(checkIsSeven(3,1)).isEqualTo(3);
+    }
 
 
     @Override
