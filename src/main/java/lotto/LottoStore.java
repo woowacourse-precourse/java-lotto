@@ -7,7 +7,7 @@ import java.util.stream.Collectors;
 
 public class LottoStore {
 
-    public List<Lotto> addLotto(Money money) {
+    public List<Lotto> buyLottos(Money money) {
         int lottoCount = (int)(money.getMoney() / 1000);
 
         ArrayList<Lotto> lottos = new ArrayList<>();

@@ -19,7 +19,7 @@ public class LottoController {
 
     public void start() {
         Money money = new Money(LottoPrinter.inputer("구입금액을 입력해 주세요."));
-        List<Lotto> lottos = lottoStore.addLotto(money);
+        List<Lotto> lottos = lottoStore.buyLottos(money);
         LottoPrinter.lottosPrint(lottos);
 
         Lotto winningNumbers = lottoStore.getWinningNumbers(LottoPrinter.inputer("당첨 번호를 입력해 주세요."));
