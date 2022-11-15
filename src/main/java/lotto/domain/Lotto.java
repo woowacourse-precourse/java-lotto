@@ -8,9 +8,8 @@ import java.util.List;
 import java.util.Map;
 
 public class Lotto {
-	private final List<Integer> numbers;
-
 	public final static Map<Integer, Integer> numberCache = new HashMap<>();
+	private final List<Integer> numbers;
 
 	static {
 		for (int i = MIN_LOTTO_NUMBER; i <= MAX_LOTTO_NUMBER; i++) {
