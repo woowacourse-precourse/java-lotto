@@ -5,6 +5,7 @@ import model.Server;
 import view.Client;
 import view.PrintResult;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Set;
@@ -15,7 +16,13 @@ public class Controller {
     private HashMap<Integer, Integer> matchNumberCount = new HashMap<>();
 
     public void checkLotto() {
-        int money = client.getLottoMoney();
+        int money = 0;
+        try {
+            money = client.getLottoMoney();
+        } catch (IllegalArgumentException e){
+            System.out.println("[ERROR] 올바른 값을 입력하세요.");
+            return;
+        }
         List<Integer> winLottoNumber = client.getWinLottoNumber();
         new Lotto(winLottoNumber);
         int bonusNumber = 0;
@@ -26,7 +33,7 @@ public class Controller {
         int lottoPaper = server.decideToBuyLotto(money);
         PrintResult.printBuyLotto(lottoPaper);
         for (int lotto = 0; lotto < lottoPaper; lotto++) {
-            List<Integer> lottoNumber = server.publishLotto();
+            List<Integer> lottoNumber = new ArrayList<>(server.publishLotto());
             new Lotto(lottoNumber);
             PrintResult.printLottoNumber(lottoNumber);
             Set common = server.compareLottoNumber(lottoNumber, winLottoNumber);
