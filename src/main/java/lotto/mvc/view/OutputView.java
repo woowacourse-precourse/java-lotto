@@ -9,15 +9,15 @@ public final class OutputView {
     private OutputView() {
     }
 
-    public static void renderPlayerLotto(OutputPlayerInfoDto outputPlayerInfoDto) {
+    public static void renderPlayerLotto(final OutputPlayerInfoDto outputPlayerInfoDto) {
         printWithMessage(outputPlayerInfoDto.getPlayerInfo());
     }
 
-    public static void renderLottoStatistics(OutputLottoStatisticsDto outputLottoStatisticsDto) {
+    public static void renderLottoStatistics(final OutputLottoStatisticsDto outputLottoStatisticsDto) {
         printWithMessage(outputLottoStatisticsDto.getLottoStatistics());
     }
 
-    public static void renderExceptionMessage(OutputExceptionMessageDto outputExceptionMessageDto) {
+    public static void renderExceptionMessage(final OutputExceptionMessageDto outputExceptionMessageDto) {
         printWithMessage(outputExceptionMessageDto.getExceptionMessage());
     }
 

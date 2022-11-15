@@ -23,19 +23,19 @@ public class LottoGameController {
 
     private LottoStore lottoStore;
 
-    public LottoGameStatus process(LottoGameStatus lottoGameStatus) {
+    public LottoGameStatus process(final LottoGameStatus lottoGameStatus) {
         try {
             return playLottoGame(lottoGameStatus);
         } catch (IllegalArgumentException | NotFoundViewMessageException | WrongGameStatusException e) {
             OutputView.renderExceptionMessage(
                     new OutputExceptionMessageDto(CommonMessageConst.LINE_FEED + e.getMessage()));
         } catch (Exception e) {
-            OutputView.renderExceptionMessage(new OutputExceptionMessageDto(processApplicationExceptionMessage()));
+            OutputView.renderExceptionMessage(new OutputExceptionMessageDto(createApplicationExceptionMessage()));
         }
         return LottoGameStatus.APPLICATION_EXCEPTION;
     }
 
-    private LottoGameStatus playLottoGame(LottoGameStatus lottoGameStatus) {
+    private LottoGameStatus playLottoGame(final LottoGameStatus lottoGameStatus) {
         if (lottoGameStatus == LottoGameStatus.PURCHASE_AMOUNT) {
             return processLottoPurchaseAmount(lottoGameStatus);
         }
@@ -48,7 +48,7 @@ public class LottoGameController {
         throw new WrongGameStatusException();
     }
 
-    private LottoGameStatus processLottoPurchaseAmount(LottoGameStatus lottoGameStatus) {
+    private LottoGameStatus processLottoPurchaseAmount(final LottoGameStatus lottoGameStatus) {
         InputPurchaseAmountDto inputPurchaseAmountDto = InputView.renderPurchaseAmount(lottoGameStatus);
 
         lottoStore = new LottoStore(new LottoPurchaseAmount(inputPurchaseAmountDto.getInputPurchaseAmount()));
@@ -57,14 +57,14 @@ public class LottoGameController {
         return lottoGameStatus.findNextGameStatus();
     }
 
-    private LottoGameStatus processWinningLotto(LottoGameStatus lottoGameStatus) {
+    private LottoGameStatus processWinningLotto(final LottoGameStatus lottoGameStatus) {
         InputWinningLottoDto inputWinningLottoDto = InputView.renderWinningLotto(lottoGameStatus);
 
         lottoStore.createWinningLotto(inputWinningLottoDto.getInputWinningLotto());
         return lottoGameStatus.findNextGameStatus();
     }
 
-    private LottoGameStatus processBonusNumber(LottoGameStatus lottoGameStatus) {
+    private LottoGameStatus processBonusNumber(final LottoGameStatus lottoGameStatus) {
         InputBonusNumberDto inputBonusNumberDto = InputView.renderBonusNumber(lottoGameStatus);
 
         LottoResult lottoResult = lottoStore.calculateLottoResult(
@@ -74,7 +74,7 @@ public class LottoGameController {
         return lottoGameStatus.findNextGameStatus();
     }
 
-    private String processApplicationExceptionMessage() {
+    private String createApplicationExceptionMessage() {
         return CommonMessageConst.LINE_FEED + CommonMessageConst.EXCEPTION_MESSAGE_PREFIX + DEFAULT_EXCEPTION_MESSAGE;
     }
 }

@@ -23,7 +23,7 @@ public class LottoResult {
     private final Map<LottoRanking, Integer> lottoRankingResult = new EnumMap<>(LottoRanking.class);
     private final BigDecimal revenuePercent;
 
-    public LottoResult(Player player, Lotto winningLotto, LottoNumber bonusNumber) {
+    public LottoResult(final Player player, final Lotto winningLotto, final LottoNumber bonusNumber) {
         List<LottoRanking> lottoRankings = player.calculateLottoRanking(winningLotto, bonusNumber);
 
         addRankingCount(lottoRankings);
@@ -31,7 +31,7 @@ public class LottoResult {
         revenuePercent = player.calculateRevenuePercent(totalReward);
     }
 
-    private void addRankingCount(List<LottoRanking> lottoRankings) {
+    private void addRankingCount(final List<LottoRanking> lottoRankings) {
         lottoRankings.forEach(
                 ranking ->
                         lottoRankingResult.put(ranking,
@@ -46,7 +46,7 @@ public class LottoResult {
                 .reduce(BigDecimal.ZERO, BigDecimal::add);
     }
 
-    private BigDecimal calculateTargetLottoRankingTotalReward(LottoRanking target) {
+    private BigDecimal calculateTargetLottoRankingTotalReward(final LottoRanking target) {
         return target.calculateTotalTargetLottoRankingReward(lottoRankingResult.get(target));
     }
 
@@ -73,7 +73,7 @@ public class LottoResult {
                 .collect(Collectors.joining(CommonMessageConst.LINE_FEED));
     }
 
-    private String processLottoRankingResultMessage(LottoRanking lottoRanking) {
+    private String processLottoRankingResultMessage(final LottoRanking lottoRanking) {
         return LottoRankingMessageUtils
                 .findLottoRankingMessage(lottoRanking, lottoRankingResult.getOrDefault(lottoRanking, 0));
     }

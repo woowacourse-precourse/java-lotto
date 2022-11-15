@@ -78,7 +78,7 @@ public class Lotto {
         }
     }
 
-    public LottoRanking calculateLottoGrade(Lotto playerLotto, LottoNumber bonusNumber) {
+    public LottoRanking calculateLottoGrade(final Lotto playerLotto, final LottoNumber bonusNumber) {
         long numberOfWins = this.numbers
                 .stream()
                 .filter(playerLotto.numbers::contains)

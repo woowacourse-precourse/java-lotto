@@ -11,7 +11,7 @@ public class LottoStore {
     private final Player player;
     private Lotto winningLotto;
 
-    public LottoStore(LottoPurchaseAmount lottoPurchaseAmount) {
+    public LottoStore(final LottoPurchaseAmount lottoPurchaseAmount) {
         this.player = new Player(lottoPurchaseAmount);
     }
 
@@ -19,7 +19,7 @@ public class LottoStore {
         winningLotto = new Lotto(winningNumbers);
     }
 
-    public LottoResult calculateLottoResult(LottoNumber bonusNumber) {
+    public LottoResult calculateLottoResult(final LottoNumber bonusNumber) {
         return new LottoResult(player, winningLotto, bonusNumber);
     }
 

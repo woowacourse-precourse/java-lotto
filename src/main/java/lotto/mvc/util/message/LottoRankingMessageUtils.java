@@ -14,12 +14,12 @@ public enum LottoRankingMessageUtils {
     private final String message;
     private final LottoRanking lottoRanking;
 
-    LottoRankingMessageUtils(String message, LottoRanking lottoRanking) {
+    LottoRankingMessageUtils(String message, final LottoRanking lottoRanking) {
         this.message = message;
         this.lottoRanking = lottoRanking;
     }
 
-    public static String findLottoRankingMessage(LottoRanking lottoRanking, int numberOfWins) {
+    public static String findLottoRankingMessage(final LottoRanking lottoRanking, int numberOfWins) {
         return Arrays.stream(LottoRankingMessageUtils.values())
                 .filter(utils -> utils.lottoRanking == lottoRanking)
                 .map(utils -> String.format(utils.message, lottoRanking.findRewardMessage(), numberOfWins))

@@ -13,12 +13,12 @@ public enum InputViewMessageUtils {
     private final String message;
     private final LottoGameStatus lottoGameStatus;
 
-    InputViewMessageUtils(String message, LottoGameStatus lottoGameStatus) {
+    InputViewMessageUtils(String message, final LottoGameStatus lottoGameStatus) {
         this.message = message;
         this.lottoGameStatus = lottoGameStatus;
     }
 
-    public static String findMessage(LottoGameStatus lottoGameStatus) {
+    public static String findMessage(final LottoGameStatus lottoGameStatus) {
         return Arrays.stream(InputViewMessageUtils.values())
                 .filter(utils -> utils.lottoGameStatus == lottoGameStatus)
                 .map(utils -> utils.message)

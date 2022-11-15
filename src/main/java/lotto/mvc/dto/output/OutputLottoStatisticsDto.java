@@ -6,7 +6,7 @@ public final class OutputLottoStatisticsDto {
 
     private final String lottoStatistics;
 
-    public OutputLottoStatisticsDto(LottoResult lottoResult) {
+    public OutputLottoStatisticsDto(final LottoResult lottoResult) {
         this.lottoStatistics = lottoResult.toString();
     }
 

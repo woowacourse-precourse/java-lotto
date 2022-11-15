@@ -43,7 +43,7 @@ public class Player {
         return lottoAmount.compareTo(BigInteger.ZERO) > 0;
     }
 
-    public List<LottoRanking> calculateLottoRanking(Lotto winningLotto, LottoNumber bonusNumber) {
+    public List<LottoRanking> calculateLottoRanking(final Lotto winningLotto, final LottoNumber bonusNumber) {
         final List<LottoRanking> rankings = new ArrayList<>();
 
         myLottos.forEach(lotto -> rankings.add(winningLotto.calculateLottoGrade(lotto, bonusNumber)));

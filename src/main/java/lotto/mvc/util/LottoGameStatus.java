@@ -18,7 +18,7 @@ public enum LottoGameStatus {
     private LottoGameStatus nextGameStatus;
     private final ProcessType processType;
 
-    LottoGameStatus(ProcessType processType) {
+    LottoGameStatus(final ProcessType processType) {
         this.processType = processType;
     }
 
