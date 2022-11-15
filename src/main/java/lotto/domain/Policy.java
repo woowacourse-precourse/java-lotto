@@ -28,8 +28,8 @@ public class Policy {
 
         public static WinningCriteria find(int[] grade) {
             WinningCriteria[] winnings = WinningCriteria.values();
-            for(WinningCriteria winning : winnings) {
-                if(grade[0] == winning.matchingCount && grade[1] == winning.bonusNumberCount) {
+            for (WinningCriteria winning : winnings) {
+                if (grade[0] == winning.matchingCount && grade[1] == winning.bonusNumberCount) {
                     return winning;
                 }
             }
