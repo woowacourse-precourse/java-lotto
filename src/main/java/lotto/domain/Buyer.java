@@ -4,7 +4,6 @@ import camp.nextstep.edu.missionutils.Console;
 import lotto.domain.enums.BuyerPrint;
 import lotto.domain.enums.PurchaseAmountUnit;
 
-
 public class Buyer {
     int lottoAmount;
 
