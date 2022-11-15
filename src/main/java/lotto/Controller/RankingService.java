@@ -17,13 +17,13 @@ public class RankingService {
         this.player = player;
     }
 
-    public void rankService() {
-        getRanking();
-        getEarningRate();
-        printResult();
+    public void lottoRankingService() {
+        setPlayerLottosRanking();
+        setPlayerEarningRate();
+        printRankingResult();
     }
 
-    public void getRanking() {
+    public void setPlayerLottosRanking() {
         List<Lotto> lottos = player.getLottos();
         for (Lotto lotto : lottos) {
             List<Integer> lottoNumber = lotto.getLottoNumbers();
@@ -34,11 +34,11 @@ public class RankingService {
         }
     }
 
-    public void getEarningRate() {
+    public void setPlayerEarningRate() {
         this.rank.setEarningRate(player.getMoney());
     }
 
-    public void printResult() {
+    public void printRankingResult() {
         OutputView.printWinningStatistics();
         OutputView.printRanking(rank.getRank());
         OutputView.printEarningRate(rank.getEarningRate());

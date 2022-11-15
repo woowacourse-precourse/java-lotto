@@ -21,7 +21,7 @@ public class Controller {
         try{
             this.lottoService.purchaseLottoService();
             this.winningLottoService.winningNumberService();
-            this.rankingService.rankService();
+            this.rankingService.lottoRankingService();
         } catch(IllegalArgumentException exception) {
             System.out.println(exception.getMessage());
         }
