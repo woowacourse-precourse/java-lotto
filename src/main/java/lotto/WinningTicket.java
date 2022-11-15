@@ -47,4 +47,14 @@ public class WinningTicket {
             }
         }
     }
+
+    List<Integer> intoNumbers(String[] splitInput) {
+        List<Integer> lottoNumbers = new ArrayList<>();
+
+        for (String number : splitInput) {
+            lottoNumbers.add(Integer.parseInt(number));
+        }
+
+        return lottoNumbers;
+    }
 }
