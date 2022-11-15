@@ -18,6 +18,7 @@ class ApplicationTest extends NsTest {
     public void setUpEach() {
         LottoProgram.buyer = new Buyer();
     }
+
     @Test
     void 기능_테스트() {
         assertRandomUniqueNumbersInRangeTest(
@@ -51,6 +52,7 @@ class ApplicationTest extends NsTest {
                 List.of(1, 3, 5, 14, 22, 45)
         );
     }
+
     @Test
     void 기능_테스트_2() {
         assertRandomUniqueNumbersInRangeTest(
@@ -131,6 +133,7 @@ class ApplicationTest extends NsTest {
                 List.of(1, 2, 3, 4, 5, 7)
         );
     }
+
     @Test
     void 기능_테스트_5() {
         assertRandomUniqueNumbersInRangeTest(
@@ -176,6 +179,7 @@ class ApplicationTest extends NsTest {
                 List.of(1, 2, 3, 4, 5, 7)
         );
     }
+
     @Test
     void 예외_테스트() {
         assertSimpleTest(() -> {

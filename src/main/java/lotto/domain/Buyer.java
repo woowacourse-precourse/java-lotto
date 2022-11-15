@@ -41,6 +41,7 @@ public class Buyer {
     public int getPayment() {
         return this.payment;
     }
+
     public void setPayment(int payment) {
         this.payment = payment;
     }
