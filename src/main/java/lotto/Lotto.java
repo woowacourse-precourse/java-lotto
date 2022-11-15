@@ -69,6 +69,7 @@ public class Lotto {
         return totalPrice;
     }
 
+    // 당첨 금액 출력
     public void printResult(List<Grade> gradeList){
         System.out.println("3개 일치 (5,000원) - " + Collections.frequency(gradeList, Grade.FIFTH) +"개");
         System.out.println("4개 일치 (50,000원) -" + Collections.frequency(gradeList, Grade.FOURTH) +"개");
