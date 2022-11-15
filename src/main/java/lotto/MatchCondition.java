@@ -8,6 +8,21 @@ import java.util.List;
 public class MatchCondition {
 
 
+    public List<Integer> getMatchResult(List<Lotto> userLottoGroup, List<Integer> winningNumber, int bounsNumber){
+        List<Integer> matchResult = new ArrayList<>(Arrays.asList(0,0,0,0,0));
+
+        for(int i = 0; i<userLottoGroup.size(); i++){
+            int placeCount = matchWithWinningNumbers(userLottoGroup.get(i).getNumbers(), winningNumber);
+            boolean bonus = matchBonusNumber(bounsNumber,userLottoGroup);
+            if(placeCount >= 3 ){
+                int index = resultPlace(placeCount,bonus);
+                matchResult.add(index, matchResult.get(index)+1 );
+            }
+        }
+        return matchResult;
+    }
+
+
 
     public int matchWithWinningNumbers(List<Integer> userLottos, List<Integer> winning){
         int matchPlace = 0;
