@@ -1,6 +1,7 @@
 package lotto;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import lotto.util.LottoParser;
 import lotto.view.InputView;
@@ -15,33 +16,38 @@ public class LottoController {
     }
 
     public void run() {
-        buyLottos();
-        setWinningNumbers();
-        result();
+        List<Lotto> lottos = buyLottos();
+        WinningLotto winningLotto = makeWinningNumbers();
+        WinningResult winningResult = calcWinningResult(winningLotto, lottos);
+        // OutputView.printWinningDetails();
+        // OutputView.printRateOfReturn();
     }
 
-    private void buyLottos() {
+    private List<Lotto> buyLottos() {
         String inputMoney = InputView.inputMoney();
         int money = LottoParser.parseToMoney(inputMoney);
 
         List<Lotto> lottos = lottoService.buyLottos(money);
+
         OutputView.printBuyHistory(lottos);
+        return lottos;
     }
 
-    private void setWinningNumbers() {
-
+    private WinningLotto makeWinningNumbers() {
         String inputWinningNumbers = InputView.inputWinningNumbers();
         List<Integer> winningNumbers = LottoParser.parseToIntegers(inputWinningNumbers);
 
         String inputBonusNumber = InputView.inputBonusNumber();
         int bonusNumber = LottoParser.parseToBonumNumber(inputBonusNumber);
 
-        WinningLotto winningLotto = new WinningLotto(winningNumbers, bonusNumber);
-
+        return new WinningLotto(winningNumbers, bonusNumber);
     }
 
-    private void result() {
-
+    private WinningResult calcWinningResult(WinningLotto winningLotto, List<Lotto> lottos) {
+        List<Rank> ranks = lottos.stream().map(
+                (lotto) -> Rank.valueOf(winningLotto.match(lotto), winningLotto.checkBonus(lotto)))
+                .collect(Collectors.toList());
+        return null;
     }
 
 }
