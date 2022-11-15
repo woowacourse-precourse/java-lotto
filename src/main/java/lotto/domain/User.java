@@ -12,12 +12,14 @@ import java.util.stream.Collectors;
 
 public class User {
     private int money;
+    private int numberOfTickets;
     private List<LotteryTicket> lotteryTickets;
     private LotteryResult lotteryResult;
 
     public User (int money) throws IllegalArgumentException {
         validate(money);
         this.money = money;
+        numberOfTickets = Status.EMPTY.getStatus();
         lotteryTickets = new ArrayList<>();
         lotteryResult = new LotteryResult();
     }
@@ -35,6 +37,7 @@ public class User {
     public void buyLotteryTicket(LotteryTicket lotteryTicket) {
         money -= LottoProperty.PRICE.getProperty();
         lotteryTickets.add(lotteryTicket);
+        numberOfTickets++;
     }
 
     public List<List<Integer>> findAllLotteryNumbers() {
@@ -57,6 +60,14 @@ public class User {
 
     public int getMoney() {
         return money;
+    }
+
+    public int getNumberOfTickets() {
+        return numberOfTickets;
+    }
+
+    public long getTotalReward() {
+        return lotteryResult.getTotalReward();
     }
 
     public List<LotteryTicket> getLotteryTickets() {
