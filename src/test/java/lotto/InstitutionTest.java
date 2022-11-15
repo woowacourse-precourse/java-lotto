@@ -57,11 +57,11 @@ public class InstitutionTest {
 
         Institution.getInstance().updatePrizeWinnerCount(prizeWinners, count, bonusNumberIncluded);
 
-        Integer expected = 1;
+        Integer expectedCount = 1;
         PrizeWinner expectedRanking = PrizeWinner.FIFTHPLACE;
         PrizeWinner expectedWinner = prizeWinners.get(prizeWinners.indexOf(expectedRanking));
 
-        Assertions.assertEquals(expectedWinner.getCount(), expected);
+        Assertions.assertEquals(expectedWinner.getCount(), expectedCount);
     }
 
     @DisplayName("총 상금의 금액을 계산한다")
