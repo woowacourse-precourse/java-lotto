@@ -10,7 +10,8 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 public class NumberGenerator {
     private static List<Integer> numbers;
-    private static final String regex = "^\\d,\\d,\\d,\\d,\\d,\\d$";
+    private static int bonusNumber;
+    private static final String regexWinningNumber = "^\\d,\\d,\\d,\\d,\\d,\\d$";
 
     public NumberGenerator() {
     }
@@ -25,7 +26,7 @@ public class NumberGenerator {
     
     public void setWinningNumber() {
         String input = inputWinningNumber();
-        validate(input);
+        validateWinningNumber(input);
         String[] inputNumber = splitStr(input);
         numbers = new ArrayList<>();
         for(int i = 0; i < inputNumber.length; i++) {
@@ -37,8 +38,8 @@ public class NumberGenerator {
         return Console.readLine();
     }
     
-    private void validate(String str) {
-        if(!str.matches(regex)) {
+    private void validateWinningNumber(String str) {
+        if(!str.matches(regexWinningNumber)) {
             throw new IllegalArgumentException();
         }
         String[] inputNumber = splitStr(str);
@@ -59,5 +60,14 @@ public class NumberGenerator {
     private String[] splitStr(String str) {
         String[] inputNumber = str.split(",");
         return inputNumber;
+    }
+    
+    private void setBonusNumber() {
+        String str = Console.readLine();
+        bonusNumber = Integer.parseInt(str);
+    }
+
+    public int getBonusNumber() {
+        return bonusNumber;
     }
 }
