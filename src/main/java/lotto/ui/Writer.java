@@ -1,4 +1,4 @@
-package lotto.domain;
+package lotto.ui;
 
 import static lotto.Constants.*;
 
@@ -6,7 +6,11 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import lotto.domain.Calculator;
 import lotto.domain.Calculator.Result;
+import lotto.domain.Lottery;
+import lotto.domain.LotteryMachine;
+import lotto.domain.Lotto;
 
 public class Writer {
 

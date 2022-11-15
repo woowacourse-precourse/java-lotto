@@ -4,9 +4,9 @@ import java.util.List;
 
 import lotto.domain.LotteryMachine;
 import lotto.domain.Lotto;
-import lotto.domain.Reader;
+import lotto.ui.Reader;
 import lotto.domain.Seller;
-import lotto.domain.Writer;
+import lotto.ui.Writer;
 
 public class Application {
 
