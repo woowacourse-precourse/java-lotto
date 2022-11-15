@@ -1,10 +1,11 @@
 package lotto.domain.lotto;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import lotto.Util;
+import lotto.condition.Condition;
+import lotto.condition.ConditionGenerator;
+import lotto.validator.Validator;
 
-import static lotto.domain.lottomachine.LottoMachine.LOTTO_NUMBER_SIZE;
+import java.util.List;
 
 public class Lotto {
 
@@ -24,28 +25,15 @@ public class Lotto {
     }
 
     public static Lotto numberOf(List<Integer> numbers) {
-        validate(numbers);
+        List<Condition> conditions = ConditionGenerator.getLottoCreationCond();
+        String number = Util.getConcatenatedString(numbers);
+
+        Condition notPassCondition = Validator.getNotPassCondition(conditions, number);
+
+        if (notPassCondition != null) {
+            throw new IllegalArgumentException(notPassCondition.getErrorMessage());
+        }
 
         return new Lotto(numbers);
-    }
-
-    private static void validate(List<Integer> numbers) {
-        if (numbers.size() != LOTTO_NUMBER_SIZE) {
-            throw new IllegalArgumentException();
-        }
-
-        if (isDuplicated(numbers)) {
-            throw new IllegalArgumentException();
-        }
-    }
-
-    private static boolean isDuplicated(List<Integer> numbers) {
-        Set<Integer> uniqueNumbers = new HashSet<>();
-
-        for (Integer number : numbers) {
-            uniqueNumbers.add(number);
-        }
-
-        return uniqueNumbers.size() != numbers.size();
     }
 }
