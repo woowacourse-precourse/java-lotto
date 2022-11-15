@@ -47,4 +47,10 @@ class LottoTest {
         Lotto lotto = new Lotto(List.of(1,2,3,4,5,6));
         assertThat(lotto.containBonus(3)).isEqualTo(true);
     }
+    @DisplayName("보너스 번호가 올바른 번호가 아니면 예외를 발생시킨다.")
+    @Test
+    void checkBonus(){
+        assertThatThrownBy(() -> Check.checkBonusNum("숫자"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
