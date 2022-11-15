@@ -29,5 +29,4 @@ public class Lotto {
             throw new IllegalArgumentException(LottoException.DUPLICATED.getErrorMessage());
     }
 
-
 }

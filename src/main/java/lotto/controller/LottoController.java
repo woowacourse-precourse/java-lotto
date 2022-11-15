@@ -20,9 +20,9 @@ public class LottoController {
         user.inputPurchaseAmount(Console.readLine());
     }
 
-    public void purchaseConfirmation(){
+    public void confirmPurchase(){
         user.setLotteryCount();
-        OutView.numberOfPurchases(user.getLotteryCount());
+        OutView.printNumberOfPurchases(user.getLotteryCount());
 
         user.lotteryNumberGenerator();
         List<Lotto> lotteryNumbers = user.getLotteryNumbers();
@@ -39,12 +39,12 @@ public class LottoController {
         InputView.inputBonusNumber();
         luckyNumber.inputBonusNumber(Console.readLine());
     }
-
-    public void winStatisticsCheck(){
+    public void checkWinningStatistics(){
         LinkedHashMap<Prize, Integer> history =
                 LottoService.lottoNumberComparison(user.getLotteryNumbers(), luckyNumber);
-        String yield = LottoService.yieldCalculation(history, user.getPurchaseAmount());
-        OutView.winningStatistics(history,yield);
+        String yield = LottoService.calculateYield(history, user.getPurchaseAmount());
+        OutView.printWinningStatistics(history,yield);
 
     }
+
 }

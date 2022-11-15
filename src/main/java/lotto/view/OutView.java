@@ -5,11 +5,11 @@ import lotto.domain.Prize;
 import java.util.LinkedHashMap;
 
 public class OutView {
-    public static void numberOfPurchases(int n) {
+    public static void printNumberOfPurchases(int n) {
         System.out.println(n + "개를 구매했습니다.");
     }
 
-    public static void winningStatistics(LinkedHashMap<Prize, Integer> history, String yield) {
+    public static void printWinningStatistics(LinkedHashMap<Prize, Integer> history, String yield) {
         System.out.println("당첨 통계\n---");
 
         for( Prize key : history.keySet() ){

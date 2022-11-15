@@ -20,7 +20,7 @@ public class LottoService {
             int matchN = matchN(userNum, luckyNum);
             int matchBonusN = matchBonusN(userNum, luckyNumber.getBonusNumber());
 
-            Prize prize = Prize.winHistory(matchN, matchBonusN);
+            Prize prize = Prize.winLotto(matchN, matchBonusN);
             history.replace(prize, history.get(prize) + 1);
         }
 
@@ -40,13 +40,13 @@ public class LottoService {
         return 0;
     }
 
-    public static String yieldCalculation(HashMap<Prize, Integer> history, int purchaseAmount) {
-        float total = totalCalculation(history);
+    public static String calculateYield(HashMap<Prize, Integer> history, int purchaseAmount) {
+        float total = calculateTotal(history);
 
         return String.format("%.1f", (total / purchaseAmount) * 100);
     }
 
-    static float totalCalculation(HashMap<Prize, Integer> history) {
+    static float calculateTotal(HashMap<Prize, Integer> history) {
         float total = 0.0F;
 
         if (history.containsKey(Prize.FIFTH_PLACE))

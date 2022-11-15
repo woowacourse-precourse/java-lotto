@@ -61,7 +61,7 @@ class LottoServiceTest {
         luckyNumber.inputLuckyNumber("4,6,1,15,19,39");
         LinkedHashMap<Prize, Integer> history = LottoService.lottoNumberComparison(userNumber, luckyNumber);
 
-        assertThat(5000.0f).isEqualTo(LottoService.totalCalculation(history));
+        assertThat(5000.0f).isEqualTo(LottoService.calculateTotal(history));
     }
 
     @Test
@@ -76,7 +76,7 @@ class LottoServiceTest {
         HashMap<Prize, Integer> history = LottoService.lottoNumberComparison(userNumber, luckyNumber);
 
 
-        assertThat("62.5").isEqualTo(LottoService.yieldCalculation(history, 8000));
+        assertThat("62.5").isEqualTo(LottoService.calculateYield(history, 8000));
 
     }
 }
