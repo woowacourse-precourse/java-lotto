@@ -21,6 +21,14 @@ public class LottoGame {
         result = new Result();
     }
 
+    // 게임 오류 발생시 오류를 처리하는 기능
+    public void run() {
+        try {
+            playgame();
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+        }
+    }
 
     // 게임을 실행하는 기능
     private void playgame(){
