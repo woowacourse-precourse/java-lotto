@@ -44,10 +44,9 @@ public class ExceptionHandler {
             throw new IllegalArgumentException(error04);
         }
         for (int i = 0; i < stringList.size(); i++) {
-            int num = Integer.parseInt(stringList.get(i));
             if (isInteger(stringList.get(i))) {
                 throw new IllegalArgumentException(error06);
-            } else if ((num < 1) || (num > 45)) {
+            } else if ((Integer.parseInt(stringList.get(i)) < 1) || (Integer.parseInt(stringList.get(i)) > 45)) {
                 throw new IllegalArgumentException(error05);
             } else if (stringList.subList(i + 1, stringList.size()).contains(stringList.get(i))) {
                 throw new IllegalArgumentException(error07);
