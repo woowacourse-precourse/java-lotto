@@ -25,7 +25,6 @@ public class Lotto {
     public void validateDuplicate(List<Integer> numbers){
         for(int i=0;i<numbers.size();i++){
             checkDuplicate(numbers, i);
-
         }
     }
 

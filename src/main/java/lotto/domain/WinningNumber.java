@@ -13,7 +13,6 @@ public class WinningNumber {
     private static final int mulNum = 10;
     private static final String NumberNotInRange =" 숫자가 "+minNum+"~"+maxNum+"사이가 아닙니다";
     private static final String NumberStartWithZero =" 숫자가 "+ initNumber+"으로 시작합니다";
-    private static final String charIsNotNumber = "잘못된 문자 입력입니다.";
     private static final String NumberIsMulti =" 중복된 숫자입니다";
     private static final String bonusNumberAlreadyIn =" 당첨번호에 보너스 넘버가 이미 있습니다";
 
@@ -85,7 +84,7 @@ public class WinningNumber {
 
     private void checkIfCharIsNumber(char c){
         if(c<zero || c>nine){
-            throw new IllegalArgumentException(ErrorResource.errorStart+ charIsNotNumber);
+            throw new IllegalArgumentException(ErrorResource.errorStart+ ErrorResource.charIsNotNumber);
         }
     }
 

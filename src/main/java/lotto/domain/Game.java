@@ -5,10 +5,14 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.*;
 
+import static lotto.domain.ErrorResource.charIsNotNumber;
+
 public class Game {
 
     private static final String notThousand = " 구입금액은 천원 단위여야합니다.";
     private static final String notNumber = " 구입금액은 숫자여야합니다.";
+    private static final char zero = '0';
+    private static final char nine = '9';
     private static final int unit = 1000;
     public void gameStart() {
         System.out.println(Resource.greetings);
