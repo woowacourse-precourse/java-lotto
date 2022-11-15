@@ -4,9 +4,9 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
-public class LottoService {
+public class LottoPurchaseService {
 
-  public List<Lotto> buy(int money) {
+  public List<Lotto> purchase(int money) {
     int lottoCount = payPrice(money);
     return generateLotto(lottoCount);
   }
