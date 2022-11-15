@@ -24,7 +24,6 @@ public class ManagerService {
             Lotto lotto = lottoMachine.generateLotto();
             lottos.add(lotto);
         }
-
         user.setLottos(lottos);
     }
 
