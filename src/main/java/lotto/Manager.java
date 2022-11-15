@@ -22,7 +22,9 @@ public class Manager {
         int publishCount = purchasePrice / LottoConst.PURCHASE_UNIT;
 
         for (int i = 0; i < publishCount; i++) {
-            purchaseLottos.add(Randoms.pickUniqueNumbersInRange(LottoConst.START_RANGE, LottoConst.END_RANGE, LottoConst.LOTTO_LENGTH));
+            List<Integer> publishLotto = Randoms.pickUniqueNumbersInRange(LottoConst.START_RANGE, LottoConst.END_RANGE, LottoConst.LOTTO_LENGTH);
+            System.out.println(publishLotto);
+            purchaseLottos.add(publishLotto);
         }
 
         return purchaseLottos;
