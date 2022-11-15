@@ -9,7 +9,7 @@ import java.util.EnumMap;
 import java.util.List;
 
 public class Kiosk {
-    static public void start(Buyer buyer) {
+    public static void start(Buyer buyer) {
         try {
             int payment = getPayment();
             List<Lotto> lottos = Generator.generate(payment);
@@ -23,26 +23,26 @@ public class Kiosk {
         }
     }
 
-    static private void printLottoInformation(List<Lotto> lottos) {
+    private static void printLottoInformation(List<Lotto> lottos) {
         ResultMessage.printLottoInformation(lottos);
     }
 
-    static private List<Integer> getWinningNumbers() {
+    private static List<Integer> getWinningNumbers() {
         GuideMessage.printWinningNumbersInput();
         return Input.getWinningNumbers();
     }
 
-    static private int getBonusNumber(List<Integer> winningNumbers) {
+    private static int getBonusNumber(List<Integer> winningNumbers) {
         GuideMessage.printBonusNumberInput();
         return Input.getBonusNumber(winningNumbers);
     }
 
-    static private void printResult(EnumMap<RankNumber, Integer> resultStatistics, int payment) {
+    private static void printResult(EnumMap<RankNumber, Integer> resultStatistics, int payment) {
         ResultMessage.printStatistics(resultStatistics);
         ResultMessage.printYield(Calculator.getYield(payment, resultStatistics));
     }
 
-    static private int getPayment() {
+    private static int getPayment() {
         GuideMessage.printPaymentInput();
         return Input.getPayment();
     }

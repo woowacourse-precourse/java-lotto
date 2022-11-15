@@ -13,7 +13,7 @@ public enum Winnings {
         this.amount = amount;
     }
 
-    static public int getAmount(String rank) {
+    public static int getAmount(String rank) {
         return Winnings.valueOf(rank).amount;
     }
 }
