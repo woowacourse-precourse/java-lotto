@@ -4,12 +4,13 @@ import camp.nextstep.edu.missionutils.Randoms;
 import lotto.Lotto;
 import java.util.List;
 import java.util.ArrayList;
+import data.InputGuideData;
 
 public class LottoMaker {
-    private final int money;
-
+    private static final int price = 1000;
+    private int money;
     private void validate(int money){
-        if(money % 1000 != 0){
+        if(money % price != 0){
             throw new IllegalArgumentException();
         }
     }
@@ -17,6 +18,8 @@ public class LottoMaker {
     public LottoMaker(String money) {
         this.money = Integer.parseInt(money);
         validate(this.money);
+        System.out.print(this.money / price);
+        InputGuideData.printData("BUY_LOTTO");
     }
 
 
@@ -25,7 +28,7 @@ public class LottoMaker {
      * @return 발행된 메서드 리턴
      */
     public List<Lotto> publishLotto(){
-        int amount = money / 1000;
+        int amount = money / price;
         List<Lotto> lottos = new ArrayList<>();
 
         for(int lotto = 0; lotto < amount; lotto ++ ){

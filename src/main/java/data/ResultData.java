@@ -1,6 +1,10 @@
 package data;
 
+import java.util.List;
+
 public enum ResultData {
+    RESULT("당첨 통계"),
+    LINE("---"),
     FIFTH("3개 일치 ("),
     FOURTH("4개 일치 ("),
     THIRD("5개 일치 ("),
@@ -13,5 +17,9 @@ public enum ResultData {
     String resultData;
     ResultData(String resultData){
         this.resultData = resultData;
+    }
+
+    public void printWinningResult(int[] winningRanking){
+
     }
 }
