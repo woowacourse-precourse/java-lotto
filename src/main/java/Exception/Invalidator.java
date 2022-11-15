@@ -30,6 +30,7 @@ public class Invalidator {
         }
         return bonusNumber;
     }
+
     private static boolean isNumeric(String inputValue) {
         try {
             Integer.parseInt(inputValue);

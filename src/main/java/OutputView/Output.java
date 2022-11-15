@@ -7,7 +7,7 @@ import java.util.List;
 import static OutputView.PrintMessage.*;
 
 
-public class Print {
+public class Output {
 
     public static void purchasedMsg() {
         System.out.println(PURCHASED_MESSAGE.getMsg());
