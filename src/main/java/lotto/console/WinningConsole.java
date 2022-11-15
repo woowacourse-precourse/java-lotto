@@ -18,10 +18,10 @@ public class WinningConsole {
         return toIntegerList(input);
     }
 
-    private List<Integer> toIntegerList(String input) throws IllegalArgumentException{
-        String []arr = input.split(",");
+    private List<Integer> toIntegerList(String input) throws IllegalArgumentException {
+        String[] arr = input.split(",");
         List<Integer> list = new ArrayList<>();
-        for(String s : arr) {
+        for (String s : arr) {
             try {
                 list.add(Integer.parseInt(s));
             } catch (Exception e) {
@@ -32,7 +32,7 @@ public class WinningConsole {
         return list;
     }
 
-    public int inputBonus() throws IllegalArgumentException{
+    public int inputBonus() throws IllegalArgumentException {
         System.out.println(INPUT_BONUS);
         String input = Console.readLine();
 

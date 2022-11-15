@@ -33,7 +33,7 @@ class WinningResultTest {
 
         WinningResult wr = new WinningResult(lottos, winningLotto);
         Map<WinningTable, Integer> map = wr.getMap();
-        for(WinningTable wt : map.keySet()) {
+        for (WinningTable wt : map.keySet()) {
             System.out.println(wt + ": " + map.get(wt));
         }
     }

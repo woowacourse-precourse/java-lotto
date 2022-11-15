@@ -21,7 +21,7 @@ public class Profit {
         return Math.round(d * pow) / pow;
     }
 
-    private int calPurchaseAmount (int size) {
+    private int calPurchaseAmount(int size) {
         return BuyLotto.LOTTO_PRICE * size;
     }
 

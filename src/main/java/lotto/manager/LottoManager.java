@@ -18,7 +18,7 @@ public class LottoManager {
             runBuy();
             runInputWinningNumbers();
             runPrintStatistics();
-        } catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             System.out.println(e.getMessage());
         }
@@ -30,16 +30,18 @@ public class LottoManager {
         StatisticsConsole statisticsConsole = new StatisticsConsole();
         statisticsConsole.print(winningMap, profitRate);// UI 당첨통계 출력
     }
+
     private void runInputWinningNumbers() {
         WinningConsole winningConsole = new WinningConsole();
         List<Integer> winningNumber = winningConsole.inputNumbers(); // inputUI실행
         int bonus = winningConsole.inputBonus();
         setWinningLotto(winningNumber, bonus);
     }
+
     private void runBuy() {
         BuyConsole buy = new BuyConsole();
         buy.printInputMessage();
-        int input =  buy.inputPrice();
+        int input = buy.inputPrice();
         buyLotto(input);
         buy.printLottos(lottos);
     }

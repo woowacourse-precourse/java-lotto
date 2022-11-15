@@ -26,7 +26,7 @@ public class WinningResult {
 
     private List<Integer> calWinningPrices(List<WinningTable> winningInfo) {
         List<Integer> list = new ArrayList<>();
-        for(WinningTable wt : winningInfo) {
+        for (WinningTable wt : winningInfo) {
             list.add(wt.getPrice());
         }
 

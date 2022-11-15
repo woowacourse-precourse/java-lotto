@@ -14,7 +14,7 @@ public class BuyConsole {
         System.out.println(INPUT_PRICE);
     }
 
-    public int inputPrice() throws IllegalArgumentException{
+    public int inputPrice() throws IllegalArgumentException {
         String input = Console.readLine();
         try {
             return Integer.parseInt(input);
@@ -25,7 +25,7 @@ public class BuyConsole {
 
     public void printLottos(List<Lotto> lottos) {
         System.out.println(lottos.size() + PURCHASE);
-        for(Lotto l : lottos) {
+        for (Lotto l : lottos) {
             System.out.println(l.getNumbers());
         }
         System.out.println();

@@ -3,8 +3,6 @@ package lotto.domain;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.util.List;
-
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
@@ -12,7 +10,7 @@ class BuyLottoTest {
 
     @DisplayName("금액에 맞는 개수의 로또를 구입했는지 체크")
     @Test
-     void case1() {
+    void case1() {
         BuyLotto buyLotto = new BuyLotto(8000);
         assertThat(buyLotto.getCount()).isEqualTo(8);
     }
