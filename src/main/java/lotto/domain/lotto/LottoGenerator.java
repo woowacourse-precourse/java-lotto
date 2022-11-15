@@ -5,6 +5,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
+import lotto.ui.UI;
 
 public class LottoGenerator {
 
@@ -31,7 +32,7 @@ public class LottoGenerator {
     }
 
     public static int enterToBuyLottoForMoney() {
-        System.out.println("구입금액을 입력해 주세요.");
+        UI.printLottoPriceGuide();
         String money = Console.readLine();
         validateMoney(money);
         return Integer.parseInt(money);
@@ -44,7 +45,7 @@ public class LottoGenerator {
     }
 
     public static WinningLotto createWinningLottoWithEnterNumbers() {
-        System.out.println("\n" + "당첨 번호를 입력해 주세요.");
+        UI.printWinningLottoGuide();
         String enterNumbers = Console.readLine();
         List<Integer> numbers = Arrays.stream(enterNumbers.split(","))
             .mapToInt(Integer::parseInt)
@@ -52,7 +53,7 @@ public class LottoGenerator {
             .sorted()
             .collect(Collectors.toList());
 
-        System.out.println("\n" + "보너스 번호를 입력해 주세요.");
+        UI.printBonusNumberGuide();
         int bonusNumber = Integer.parseInt(Console.readLine());
         return new WinningLotto(new Lotto(numbers), bonusNumber);
     }

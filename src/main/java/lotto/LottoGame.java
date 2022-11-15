@@ -10,6 +10,7 @@ import lotto.domain.lotto.LottoRanking;
 import lotto.domain.seller.Seller;
 import lotto.dto.LottoCount;
 import lotto.dto.LottoGameResult;
+import lotto.ui.UI;
 
 public class LottoGame {
 
@@ -28,18 +29,8 @@ public class LottoGame {
         double profitRatio = buyer.calculateProfitRatio(totalWinningAmount);
         LottoGameResult lottoGameResult = new LottoGameResult(lottoRankings, lottoRankingCount,
             profitRatio);
-        printLottoGameResult(lottoGameResult);
-    }
 
-    private void printLottoGameResult(LottoGameResult lottoGameResult) {
-        System.out.println("당첨 통계");
-        System.out.println("---");
-        for (LottoRanking lottoRanking : LottoRanking.values()) {
-            Integer count = lottoGameResult.getLottoRankingCount()
-                .getOrDefault(lottoRanking, 0);
-            lottoRanking.printMessage(count);
-        }
-        System.out.printf("총 수익률은 %.1f%s입니다.", lottoGameResult.getProfitRatio(), "%");
+        UI.printLottoGameResult(lottoGameResult);
     }
 
     private List<LottoRanking> findLottoRankings() {
