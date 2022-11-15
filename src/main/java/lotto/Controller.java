@@ -95,10 +95,8 @@ public class Controller {
     public void showStatistics(){
         view.print(Text.STATISTICS_TITLE);
 
-        for (Rank rank : user.getWinningCount().keySet()){
-            if (rank != Rank.NONE) {
-                view.printStatisticsDetail(selectFormatByRank(rank), rank.getMatchedCount(), format(rank.getAmount()), user.getWinningCount().get(rank));
-            }
+        for (Rank rank : Rank.asSortedList()){
+            view.printStatisticsDetail(selectFormatByRank(rank), rank.getMatchedCount(), format(rank.getAmount()), user.getWinningCount().get(rank));
         }
 
         view.printProfitRate(user.getProfitRate());
