@@ -39,7 +39,7 @@ public class Application {
         //상금 리스트
         ArrayList<Float> rewardList = inputReward();
         //당첨통계
-        printWinningDetails(winList);
+        printWinningDetails(winList, rewardList);
         //수익률 출력
         calcLotteryYield(winList, buyMoney);
     }
@@ -130,22 +130,26 @@ public class Application {
         }
         winList.add(firstPlace);
         winList.add(secondPlace);
-        winList.add(thirdPlace;
+        winList.add(thirdPlace);
         winList.add(fourthPlace);
         winList.add(fifthPlace);
 
         return winList;
     }
 
-    static void printWinningDetails(ArrayList<Integer> winList){
+    static void printWinningDetails(ArrayList<Integer> winList, ArrayList<Float> rewardList){
         DecimalFormat decFormat = new DecimalFormat("###,###");
+        int count = 3;
         System.out.println("당첨 통계");
         System.out.println("---");
-        System.out.println("3개 일치 (" +fifth+"원) - "+winList.get(4)+"개"+decFormat.format(fifth));
-        System.out.println("3개 일치 (" +fourth+"원) - "+winList.get(3)+"개"+decFormat.format(fourth));
-        System.out.println("3개 일치 (" +third+"원) - "+winList.get(2)+"개"+decFormat.format(third));
-        System.out.println("3개 일치 (" +second+"원) - "+winList.get(1)+"개"+decFormat.format(second));
-        System.out.println("3개 일치 (" +first+"원) - "+winList.get(0)+"개"+decFormat.format(first));
+
+        for(int i=0; i<winList.size(); i++){
+            if(i==3){
+                count -= 1;
+            }
+            System.out.println(count+"개 일치 (" +rewardList.get(i)+"원) - "+winList.get(winList.size()-1-i)+"개"+decFormat.format(rewardList.get(i)));
+            count+=1;
+        }
     }
     static ArrayList<Float> inputReward(){
         ArrayList<Float> rewardList = new ArrayList<Float>();
