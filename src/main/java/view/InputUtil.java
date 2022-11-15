@@ -2,6 +2,7 @@ package view;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
+import java.util.List;
 
 public class InputUtil {
 
@@ -15,9 +16,9 @@ public class InputUtil {
         outcome = Integer.parseInt(number);
         return outcome;
     }
-    public static ArrayList<Integer> inputWinningNumbers() {
+    public static List<Integer> inputWinningNumbers() {
         String numbers = Console.readLine();
-        ArrayList<Integer> checkedNumbers = checkNumbersValidity(numbers);
+        List<Integer> checkedNumbers = checkNumbersValidity(numbers);
         return checkedNumbers;
     }
     private static void checkValidity(String target) throws IllegalArgumentException{
