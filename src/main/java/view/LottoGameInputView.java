@@ -21,13 +21,15 @@ public class LottoGameInputView implements InputView {
 
     @Override
     public List<Integer> getWinningNumbersFromUser() {
-        System.out.println("\n당첨 번호를 입력해 주세요.");
+        System.out.println();
+        System.out.println("당첨 번호를 입력해 주세요.");
         return getNumbersFromUser(",");
     }
 
     @Override
     public int getBonusNumberFromUser() {
-        System.out.println("\n보너스 번호를 입력해 주세요.");
+        System.out.println();
+        System.out.println("보너스 번호를 입력해 주세요.");
         return getNumberFromUser();
     }
 

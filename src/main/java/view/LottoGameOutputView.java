@@ -27,18 +27,21 @@ public class LottoGameOutputView implements OutputView {
 
     @Override
     public void printException(Exception e) {
-        System.out.println("\n[ERROR] " + e.getMessage());
+        System.out.println();
+        System.out.println("[ERROR] " + e.getMessage());
     }
 
     @Override
     public void printLottoPublishInfo(List<Lotto> lottos) {
-        System.out.println("\n" + lottos.size() + "개를 구매했습니다.");
+        System.out.println();
+        System.out.println(lottos.size() + "개를 구매했습니다.");
         lottos.forEach((lotto) -> printLotto(lotto));
     }
 
     @Override
     public void printScratchResult(ScratchResult scratchResult) {
-        System.out.println("\n당첨 통계");
+        System.out.println();
+        System.out.println("당첨 통계");
         System.out.println("---");
 
         LottoGrade.getLottoGradesWithoutFail().forEach(

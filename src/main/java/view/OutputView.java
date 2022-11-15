@@ -6,9 +6,10 @@ import java.util.List;
 
 public interface OutputView {
 
-    public void printException(Exception e);
+    void printException(Exception e);
 
-    public void printLottoPublishInfo(List<Lotto> lottos);
+    void printLottoPublishInfo(List<Lotto> lottos);
 
-    public void printScratchResult(ScratchResult scratchResult);
+    void printScratchResult(ScratchResult scratchResult);
+
 }
