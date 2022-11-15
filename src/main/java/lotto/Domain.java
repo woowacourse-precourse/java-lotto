@@ -8,6 +8,8 @@ import java.util.List;
 
 public class Domain {
     private static final String INPUT_LOTTO_AMOUNT = "로또금액을 입력해 주세요.";
+    private static final String INPUT_WINNING_NUMBERS = "당첨 번호를 입력해 주세요.";
+    private static final String INPUT_BONUS_NUMBER = "보너스 번호를 입력해 주세요.";
     private static final String ENTER = "\n";
 
     private static final String OUTPUT_LOTTO_PURCHASE_COUNT = "개를 구매했습니다.";
@@ -21,6 +23,7 @@ public class Domain {
     private static int ticketNumbers;
 
     private static final List<Lotto> lottoList = new ArrayList<>();
+    private static List<String> winningNumbers = new ArrayList<>();
 
     // TODO: 티켓 구매 루틴을 실행한다.
     public void buyTicket(){
@@ -45,6 +48,12 @@ public class Domain {
     // TODO: TICKET_NUMBERS 변수를 초기화 한다.
     private static void initializationTicketNumbers(){
         ticketNumbers = lottoAmount / TICKET_PRICE;
+    }
+
+    // TODO: winningNumbers 리스트를 초기화 한다.
+    private static void initializationWinningNumbers() {
+        System.out.println(ENTER + INPUT_WINNING_NUMBERS);
+        winningNumbers = Exception.isCorrectWinningNumbers(Console.readLine());
     }
 
     // TODO: lottoList를 초기화 한다.

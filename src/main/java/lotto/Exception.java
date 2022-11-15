@@ -50,7 +50,6 @@ public class Exception {
         return winningNumbers;
     }
 
-    //===============================test=============================//
     // TODO: 입력 값에 중복된 값이 존재하는 경우 예외 처리한다.
     static void isAllDifferentValues(List<String> winningNumbers) throws IllegalArgumentException{
         Set<String> WinningSet = new HashSet<>(winningNumbers);
@@ -85,4 +84,5 @@ public class Exception {
     }
 
     // TODO: 입력 값(보너스 번호)이 리스트(winningNumber)에 포함되어 있는 숫자일 경우 예외처리한다.
+
 }

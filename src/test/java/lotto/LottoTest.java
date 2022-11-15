@@ -50,4 +50,11 @@ class LottoTest {
         assertThatThrownBy(() -> Exception.isAllDifferentValues(List.of("1", "2", "3", "4", "5", "5")))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @DisplayName("문자가 1~45 범위에 해당하지 않는 경우 예외가 발생한다.")
+    @Test
+    void OutOfRangeFromOneToFortyFive(){
+        assertThatThrownBy(() -> Exception.isMatchFromOneToFortyFive("D"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
