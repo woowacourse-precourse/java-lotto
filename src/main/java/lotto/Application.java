@@ -19,10 +19,7 @@ public class Application {
         
         
         //구입금액
-        System.out.println("구입금액을 입력해주세요.");
-        
-        ////todo: 1000원으로 나누어떨어지지않으면 오류발생시키기 추가예정
-        int buyMoney = Integer.parseInt(Console.readLine());
+        int buyMoney = inputBuyMoney();
 
         //로또 구매및 출력
         ArrayList<Lotto> lottoList = buyLotto(countPurchaseLotto(buyMoney));
@@ -176,4 +173,18 @@ public class Application {
         LotteryYield = prizeSum*100 / (float) buyMoney;
         System.out.println("총 수익률은 "+ String.format("%.1f", LotteryYield)+"%입니다.");
     }
+
+    static int inputBuyMoney(){
+        System.out.println("구입금액을 입력해주세요.");
+        int buyMoney=0;
+        ////todo: 1000원으로 나누어떨어지지않으면 오류발생시키기 추가예정
+        try {
+            buyMoney = Integer.parseInt(Console.readLine());
+        }
+        catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+
+    }
+
 }
