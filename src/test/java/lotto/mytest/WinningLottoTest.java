@@ -2,7 +2,7 @@ package lotto.mytest;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import java.util.HashMap;
+import java.util.EnumMap;
 import java.util.List;
 
 import org.junit.jupiter.api.DisplayName;
@@ -10,30 +10,29 @@ import org.junit.jupiter.api.Test;
 
 import lotto.domain.WinningLotto;
 import lotto.service.Lotto;
+import lotto.util.Rank;
 
 public class WinningLottoTest {
-	HashMap<Integer, Integer> lottoResult = new HashMap<>();
-	HashMap<String, Integer> expected = new HashMap<>();
+	EnumMap<Rank, Integer> lottoResult = new EnumMap<>(Rank.class);
+	EnumMap<Rank, Integer> expected = new EnumMap<>(Rank.class);
 	WinningLotto winningLotto = new WinningLotto(List.of(1, 2, 3, 4, 5, 6), 7);
+	List<Lotto> LotteryTickets = List.of(
+		new Lotto(List.of(1, 2, 3, 4, 5, 6)),
+		new Lotto(List.of(1, 2, 3, 4, 5, 7)),
+		new Lotto(List.of(1, 2, 3, 4, 5, 45)),
+		new Lotto(List.of(1, 2, 3, 4, 44, 45)),
+		new Lotto(List.of(1, 2, 3, 43, 44, 45)));
 
 	@DisplayName("당첨된 로또 개수 확인")
 	@Test
 	void countWinningLotto() {
-		List<Lotto> LotteryTickets = List.of(
-			(Lotto)List.of(1, 2, 3, 4, 5, 6),
-			(Lotto)List.of(1, 2, 3, 4, 5, 7),
-			(Lotto)List.of(1, 2, 3, 4, 5, 45),
-			(Lotto)List.of(1, 2, 3, 4, 44, 45),
-			(Lotto)List.of(1, 2, 3, 43, 44, 45),
-			(Lotto)List.of(1, 2, 42, 43, 44, 45));
-
-		lottoResult = WinningLotto.produceResult(LotteryTickets);
-
-		expected.put("First", 1);
-		expected.put("Second", 1);
-		expected.put("Third", 1);
-		expected.put("Fourth", 1);
-		expected.put("Fifth", 1);
+		lottoResult = winningLotto.produceResult(LotteryTickets);
+		expected.put(Rank.FIRST, 1);
+		expected.put(Rank.SECOND, 1);
+		expected.put(Rank.THIRD, 1);
+		expected.put(Rank.FOURTH, 1);
+		expected.put(Rank.FIFTH, 1);
+		expected.put(Rank.NOTHING, 0);
 		assertEquals(expected, lottoResult);
 	}
 }

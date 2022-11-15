@@ -1,16 +1,29 @@
 package lotto.domain;
 
-import java.util.HashMap;
+import java.util.EnumMap;
 
 import lotto.util.Rank;
 
 public class Prize {
-	public static Long getTotalPrizeMoney(HashMap<Integer, Integer> result) {
-		long totalPrizeMoney = 0;
+	EnumMap<Rank, Integer> prizeResult;
+	Long totalPrize = 0L;
+
+	public Prize(EnumMap<Rank, Integer> prizeResult) {
+		this.prizeResult = prizeResult;
+	}
+
+	public static Long getTotalPrizeMoney(EnumMap<Rank, Integer> prizeResult) {
+		Prize prize = new Prize(prizeResult);
+		return prize.addPrizeMoney();
+	}
+
+	public Long addPrizeMoney() {
 		for (Rank rank : Rank.values()) {
-			int key = rank.getMatchCount();
-			totalPrizeMoney += (long)rank.getMoney() * result.getOrDefault(key, 0);
+			if (rank == Rank.NOTHING) {
+				continue;
+			}
+			totalPrize += (long)rank.getMoney() * prizeResult.get(rank);
 		}
-		return totalPrizeMoney;
+		return totalPrize;
 	}
 }

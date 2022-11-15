@@ -1,8 +1,7 @@
 package lotto.view;
 
 import java.text.DecimalFormat;
-import java.util.Arrays;
-import java.util.HashMap;
+import java.util.EnumMap;
 import java.util.List;
 
 import lotto.service.EarningRate;
@@ -22,7 +21,7 @@ public class Output {
 		}
 	}
 
-	public static void printResult(HashMap<Integer, Integer> result) {
+	public static void printResult(EnumMap<Rank, Integer> result) {
 		System.out.println("당첨 통계");
 		System.out.println("---");
 		for (Rank rank : Rank.values()) {
@@ -30,12 +29,13 @@ public class Output {
 				continue;
 			}
 			if (rank == Rank.SECOND) {
-				System.out.println(rank.getMatchCount() + "개 일치, 보너스 볼 일치 (" + formatter.format(rank.getMoney()) + "원) - "
-					+ result.get(rank.getMatchCount()) + "개");
+				System.out.println(
+					rank.getMatchCount() + "개 일치, 보너스 볼 일치 (" + formatter.format(rank.getMoney()) + "원) - "
+						+ result.get(rank) + "개");
 				continue;
 			}
 			System.out.println(
-				rank.getMatchCount() + "개 일치 (" + formatter.format(rank.getMoney()) + "원) - " + result.get(rank.getMatchCount()) + "개");
+				rank.getMatchCount() + "개 일치 (" + formatter.format(rank.getMoney()) + "원) - " + result.get(rank) + "개");
 		}
 	}
 

@@ -1,13 +1,13 @@
 package lotto.domain;
 
-import java.util.HashMap;
+import java.util.EnumMap;
 import java.util.List;
 
 import lotto.service.Lotto;
 import lotto.util.Rank;
 
 public class WinningLotto {
-	static HashMap<Integer, Integer> result = new HashMap<>();
+	static EnumMap<Rank, Integer> prizeResult = new EnumMap<>(Rank.class);
 	static int matchCount = 0;
 	static boolean isMatchBonusNumber = false;
 	private static List<Integer> winningLotto;
@@ -20,22 +20,20 @@ public class WinningLotto {
 	}
 
 	private static void initResult() {
-		result.put(3, 0);
-		result.put(4, 0);
-		result.put(5, 0);
-		result.put(6, 0);
+		for (Rank rank : Rank.values()) {
+			prizeResult.put(rank, 0);
+		}
 	}
 
-	public static HashMap<Integer, Integer> produceResult(List<Lotto> lotteryTickets) {
+	public static EnumMap<Rank, Integer> produceResult(List<Lotto> lotteryTickets) {
 		for (Lotto lotteryTicket : lotteryTickets) {
 			Comparison comparison = new Comparison(WinningLotto.winningLotto, WinningLotto.bonusNumber);
 			matchCount = comparison.matchLottoCount(lotteryTicket);
 			isMatchBonusNumber = comparison.isMatchBonusNumber(lotteryTicket);
 
 			Rank rank = Rank.setRank(matchCount, isMatchBonusNumber);
-			int key = rank.getMatchCount();
-			result.put(key, result.getOrDefault(key, 0) + 1);
+			prizeResult.put(rank, prizeResult.get(rank) + 1);
 		}
-		return result;
+		return prizeResult;
 	}
 }

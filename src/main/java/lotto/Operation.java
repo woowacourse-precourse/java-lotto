@@ -1,6 +1,6 @@
 package lotto;
 
-import java.util.HashMap;
+import java.util.EnumMap;
 import java.util.List;
 
 import org.assertj.core.util.Lists;
@@ -9,6 +9,7 @@ import lotto.domain.LotterySeller;
 import lotto.domain.Prize;
 import lotto.domain.WinningLotto;
 import lotto.service.Lotto;
+import lotto.util.Rank;
 import lotto.view.Input;
 import lotto.view.Output;
 
@@ -34,7 +35,7 @@ public class Operation {
 			int bonusNumber = Input.enterBonusNumber();
 
 			WinningLotto winningLottoResult = new WinningLotto(winningLotto, bonusNumber);
-			HashMap<Integer, Integer> result = winningLottoResult.produceResult(lotteryTickets);
+			EnumMap<Rank, Integer> result = winningLottoResult.produceResult(lotteryTickets);
 			Output.printResult(result);
 
 			Long earningMoney = Prize.getTotalPrizeMoney(result);
