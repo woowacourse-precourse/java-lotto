@@ -33,7 +33,7 @@ public class LottoMachine {
     }
 
     private LottoGenerator lottoGeneratorService(OutputView outputView, Purchase purchase) {
-        LottoGenerator lottos = new LottoGenerator(purchase.numOfLotto(purchase.getAmount()));
+        LottoGenerator lottos = new LottoGenerator(purchase.numOfLotto());
         outputView.lottosOutput(lottos.getLottos());
 
         return lottos;

@@ -19,7 +19,7 @@ public class Purchase {
         return purchaseAmount;
     }
 
-    public int numOfLotto(int purchaseAmount) {
+    public int numOfLotto() {
         return purchaseAmount / 1000;
     }
 
