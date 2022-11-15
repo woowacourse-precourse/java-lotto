@@ -2,7 +2,6 @@ package lotto.domain;
 
 import lotto.domain.enums.ExceptionMessage;
 import lotto.domain.enums.PurchaseAmountUnit;
-import lotto.domain.enums.WinningAmount;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,10 +14,18 @@ public class Buyer {
     private int totalMoney;
     private double totalRate;
 
-    Buyer(int lottoAmount) {
+    public Buyer(int lottoAmount) {
         purchaseAmountUnit.validDivisionByThousand(lottoAmount);
         this.lottoAmount = lottoAmount;
 
+    }
+
+    public double getTotalRate() {
+        return totalRate;
+    }
+
+    public List<Lotto> getPurchaseLotto() {
+        return purchaseLotto;
     }
 
     public void printLotto() {
@@ -27,12 +34,6 @@ public class Buyer {
         }
     }
 
-    public void printResult() {
-        WinningAmount[] values = WinningAmount.values();
-        for (int i = 0; i < values.length; i++) {
-            System.out.println(values[i].getPrizeMessage()+" - "+myWins[i]+"개");
-        }
-    }
 
     public void setMyWins(int[] myWins) {
         this.myWins = myWins;
@@ -43,14 +44,9 @@ public class Buyer {
     }
 
     public void calculateTotalRate() {
-        totalRate = Math.round((double) totalMoney / lottoAmount);
+        totalRate = Math.round((double) totalMoney / lottoAmount * 1000) / 10.0;
     }
 
-    public void sortAllLottoNumber() {
-        for (int i = 0; i < purchaseLotto.size(); i++) {
-            purchaseLotto.get(i).sortByNumber();
-        }
-    }
 
     static void validConsistByNumber(String purchaseAmount) {
         try {
@@ -61,7 +57,7 @@ public class Buyer {
         }
     }
 
-    static int LottoAmountConversion(String inputValue) {
+    public static int lottoAmountConversion(String inputValue) {
         int purchaseAmount;
 
         validConsistByNumber(inputValue);
@@ -71,11 +67,15 @@ public class Buyer {
     }
 
     public void buyLotto() {
-        PurchaseAmountUnit purchaseAmountUnit = PurchaseAmountUnit.LOTTO_PURCHASE_UNIT;
-        int lottoCount = purchaseAmountUnit.purchaseAmount(lottoAmount);
+        int lottoCount = calculateLottoCount();
 
         while (purchaseLotto.size() < lottoCount) {
             purchaseLotto.add(Lotto.creatLottoNumbers(lottoCount));
         }
+    }
+
+    public int calculateLottoCount() {
+        PurchaseAmountUnit purchaseAmountUnit = PurchaseAmountUnit.LOTTO_PURCHASE_UNIT;
+        return purchaseAmountUnit.purchaseAmount(lottoAmount);
     }
 }

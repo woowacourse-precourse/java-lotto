@@ -29,16 +29,15 @@ public class Lotto {
         }
     }
 
-    // TODO: 추가 기능 구현
     static Lotto creatLottoNumbers(int lottoCount) {
         List<Integer> lotto = Randoms.pickUniqueNumbersInRange(numberMinRage, numberMaxRage, numberCount);
 
         return new Lotto(lotto);
     }
-    public void sortByNumber(){
-        Collections.sort(numbers);
-    }
     public void printLottoNumber(){
-        System.out.println(numbers.toString());
+        ArrayList<Integer> copy =new ArrayList<>(numbers);
+        Collections.sort(copy);
+
+        System.out.println(copy.toString());
     }
 }

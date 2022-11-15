@@ -34,7 +34,7 @@
 - [x] 로또 번호를 출력 한다. - Lotto.printLottoNumber()
 - [x] 구매자가 발행한 로또 번호 를 오름 차순으로 정렬한다. - Buyer#sortAllLottoNumber()
 - [x] 로또 번호 를 오름 차순으로 정렬한다. - Lotto#sortByNumber()
-- [x] 당첨 내역을 출력한다. - Buyer#printResult()
+- [x] 당첨 내역을 출력한다. - Application#printResult()
 - [x] 예외 발생시 에러 문구를 출력해야한다.
 - [] 수익률을 출력한다.
 ---

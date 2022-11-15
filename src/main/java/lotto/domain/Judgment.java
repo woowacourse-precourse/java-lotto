@@ -25,7 +25,9 @@ public class Judgment {
         for (int i = 0; i < myLottos.size(); i++) {
             List<Integer> lottoNumber = myLottos.get(i).getNumbers();
             int winRank = calculateRank(lottoNumber, winningNumber, bonus);
-            wins[winRank]++;
+            if (winRank >= 0) {
+                wins[winRank]++;
+            }
         }
         return wins;
     }

@@ -12,7 +12,7 @@ public class LottoWinningNumber {
     private final List<Integer> winningNumbers;
     private final int bonusNumber;
 
-    LottoWinningNumber(List<Integer> winningNumbers, int bonusNumber) {
+    public LottoWinningNumber(List<Integer> winningNumbers, int bonusNumber) {
         this.winningNumbers = winningNumbers;
         this.bonusNumber = bonusNumber;
         validAllWinningNumber(winningNumbers);
@@ -28,7 +28,7 @@ public class LottoWinningNumber {
         return winningNumbers;
     }
 
-    public int bonusNumberConversion(String inputBonusNumber) {
+    public static int bonusNumberConversion(String inputBonusNumber) {
         int bonusNumber;
 
         validConsistOneNumber(inputBonusNumber);
@@ -37,7 +37,7 @@ public class LottoWinningNumber {
         return bonusNumber;
     }
 
-    public List<Integer> winningNumberConversion(String inputWinningNumber) {
+    public static List<Integer> winningNumberConversion(String inputWinningNumber) {
         List<Integer> winningNumber = new ArrayList<>();
         String[] separate = separateByComma(inputWinningNumber);
 
@@ -49,7 +49,7 @@ public class LottoWinningNumber {
 
         return winningNumber;
     }
-    public String[] separateByComma(String inputNumbers) {
+    public static String[] separateByComma(String inputNumbers) {
         return inputNumbers.split(",");
     }
 
@@ -79,7 +79,7 @@ public class LottoWinningNumber {
         }
     }
 
-    public void validConsistNumbers(String[] inputNumbers) {
+    public static void validConsistNumbers(String[] inputNumbers) {
         try {
             for (int i = 0; i < inputNumbers.length; i++) {
                 Integer.parseInt(inputNumbers[i]);
@@ -100,7 +100,7 @@ public class LottoWinningNumber {
         validOneNumberRange(bonusNumber);
     }
 
-    public void validConsistOneNumber(String inputNumber) {
+    public static void  validConsistOneNumber(String inputNumber) {
         try {
             Integer.parseInt(inputNumber);
         } catch (Exception e) {
