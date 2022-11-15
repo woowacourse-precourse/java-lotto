@@ -12,5 +12,7 @@ public class LottoConstant {
 	public static final char MINIMUM_DIGIT = '0';
 	public static final char MAXIMUM_DIGIT = '9';
 
+	public static final String TYPE_OF_CURRENCY = "원";
+
 	public static final String FORM_OF_WINNING_NUMBERS = "^\\d{0,2},\\d{0,2},\\d{0,2},\\d{0,2},\\d{0,2},\\d{0,2}$";
 }

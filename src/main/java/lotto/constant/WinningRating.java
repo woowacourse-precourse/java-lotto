@@ -1,18 +1,18 @@
 package lotto.constant;
 
 public enum WinningRating {
-	MISS(0, "0원", false),
-	FIFTH(3, "5,000원", false),
-	FOURTH(4, "50,000원", false),
-	THIRD(5, "1,500,000원", false),
-	SECOND(5, "30,000,000원", true),
-	FIRST(6, "2,000,000,000원", false);
+	MISS(0, 0, false),
+	FIFTH(3, 5000, false),
+	FOURTH(4, 50000, false),
+	THIRD(5, 1500000L, false),
+	SECOND(5, 30000000L, true),
+	FIRST(6, 2000000000L, false);
 
 	private final int countOfMatchedNumber;
-	private final String prizeMoney;
+	private final long prizeMoney;
 	private final boolean isUsingBonusNumber;
 
-	WinningRating(int countOfMatchedNumber, String prizeMoney, boolean isUsingBonusNumber) {
+	WinningRating(int countOfMatchedNumber, long prizeMoney, boolean isUsingBonusNumber) {
 		this.countOfMatchedNumber = countOfMatchedNumber;
 		this.prizeMoney = prizeMoney;
 		this.isUsingBonusNumber = isUsingBonusNumber;
@@ -22,7 +22,7 @@ public enum WinningRating {
 		return countOfMatchedNumber;
 	}
 
-	public String getPrizeMoney() {
+	public long getPrizeMoney() {
 		return prizeMoney;
 	}
 

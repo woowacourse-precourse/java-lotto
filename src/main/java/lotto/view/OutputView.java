@@ -6,6 +6,7 @@ import java.util.List;
 import lotto.constant.ErrorLog;
 import lotto.constant.OutputMessage;
 import lotto.constant.WinningRating;
+import lotto.util.Converter;
 
 public class OutputView {
 	public void printErrorLog(ErrorLog errorLog) {
@@ -35,7 +36,8 @@ public class OutputView {
 	}
 
 	private void printCountingPrizeMessage(String message, WinningRating rating, int countOfWins) {
-		System.out.printf(message, rating.getCountOfMatchedNumber(), rating.getPrizeMoney(), countOfWins);
+		System.out.printf(message, rating.getCountOfMatchedNumber(),
+			Converter.formatToMoneyForm(rating.getPrizeMoney()), countOfWins);
 		System.out.println();
 	}
 
