@@ -68,8 +68,7 @@ public class LottoController {
     }
 
     public static double calculrateLottoEarningRate(int earningMoney, int purchaseMoney) {
-        double earningRate = (double) earningMoney / purchaseMoney * PERCENTAGE_CONVERTER;
-        return earningRate;
+        return (double) earningMoney / purchaseMoney * PERCENTAGE_CONVERTER;
     }
 
 }

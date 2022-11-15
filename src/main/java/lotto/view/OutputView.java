@@ -33,6 +33,8 @@ public class OutputView {
     }
 
     public static void printLottoEarningRate(double earningRate) {
-        System.out.println("총 수익률은 "+ earningRate +"%입니다.");
+        String rateResult = String.format("%.1f", earningRate);
+        System.out.println("총 수익률은 "+ rateResult +"%입니다.");
+
     }
 }

@@ -4,7 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
 import java.util.List;
-현
+
 import static lotto.view.OutputView.printPriceInputMessage;
 
 public class InputView {
