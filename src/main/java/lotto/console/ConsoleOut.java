@@ -1,4 +1,4 @@
-package lotto.userinterface;
+package lotto.console;
 
 import lotto.Calculator;
 import lotto.Lotto;

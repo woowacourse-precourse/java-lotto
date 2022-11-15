@@ -1,4 +1,4 @@
-package lotto.userinterface.validator;
+package lotto.console.validator;
 
 import lotto.condition.Condition;
 import lotto.validator.Validator;

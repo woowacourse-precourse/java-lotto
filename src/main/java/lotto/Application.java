@@ -1,7 +1,7 @@
 package lotto;
 
-import lotto.userinterface.ConsoleIn;
-import lotto.userinterface.ConsoleOut;
+import lotto.console.ConsoleIn;
+import lotto.console.ConsoleOut;
 
 import java.util.HashMap;
 import java.util.List;
