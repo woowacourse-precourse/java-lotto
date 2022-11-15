@@ -1,7 +1,6 @@
 package lotto.view;
 
 import camp.nextstep.edu.missionutils.Console;
-import lotto.domain.LottoNumber;
 import lotto.domain.PurchaseMoney;
 
 import java.util.Arrays;
@@ -40,13 +39,12 @@ public class InputView {
         return winningLottoNumbers;
     }
 
-    public static LottoNumber inputBonusNumber() {
+    public static int inputBonusNumber() {
         String input = Console.readLine();
         return convertInputBonusNumber(input);
     }
 
-    public static LottoNumber convertInputBonusNumber(String input) {
-        int number = Integer.parseInt(input);
-        return new LottoNumber(number);
+    public static int convertInputBonusNumber(String input) {
+        return Integer.parseInt(input);
     }
 }

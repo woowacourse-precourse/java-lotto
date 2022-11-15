@@ -15,7 +15,6 @@ public class LottoGenerator {
         List<Integer> lottoNumbers = Randoms.pickUniqueNumbersInRange(MIN_LOTTO_NUMBER, MAX_LOTTO_NUMBER, LOTTO_NUMBER_COUNT);
         Collections.sort(lottoNumbers);
 
-        Lotto lotto = new Lotto(lottoNumbers);
-        return lotto;
+        return new Lotto(lottoNumbers);
     }
 }

@@ -21,5 +21,8 @@ public class Application {
 
         OutputView.printWinningNumbersEnteringGuideMessage();
         Set<Integer> winningLottoNumber = InputView.inputWinningNumbers();
+
+        OutputView.printBonusNumbersEnteringGuideMessage();
+        int bonusNumber = InputView.inputBonusNumber();
     }
 }

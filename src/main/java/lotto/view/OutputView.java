@@ -2,8 +2,6 @@ package lotto.view;
 
 import lotto.domain.Lottery;
 
-import java.util.List;
-
 public class OutputView {
 
     private static final String PURCHASE_GUIDE_MESSAGE = "구입금액을 입력해 주세요.";
@@ -22,10 +20,7 @@ public class OutputView {
 
     public static void printLottoNumbers(Lottery lottery) {
         lottery.getLottery()
-                .stream()
-                .forEach(lotto -> {
-                    System.out.println(lotto.getLottoNumbers());
-                });
+                .forEach(lotto -> System.out.println(lotto.getLottoNumbers()));
     }
 
     public static void printWinningNumbersEnteringGuideMessage() {
