@@ -16,18 +16,18 @@ public class LottoRandomNumbers {
     private List<List<Integer>> numbers;
 
     public LottoRandomNumbers(String want) {
-        int piece = Integer.parseInt(want);
-        piece = piece / 1000;
-        this.numbers = createRandomNumbers(piece);
+        int count = Integer.parseInt(want);
+        count = count / 1000;
+        this.numbers = createRandomNumbers(count);
     }
 
     public List<List<Integer>> getNumbers() {
         return numbers;
     }
 
-    private List<List<Integer>> createRandomNumbers(int want) {
+    private List<List<Integer>> createRandomNumbers(int count) {
         numbers = new ArrayList<>();
-        for (int i = 0; i < want; i++) {
+        for (int i = 0; i < count; i++) {
             basket = new ArrayList<>(Randoms.pickUniqueNumbersInRange(MIN_NUMBER, MAX_NUMBER, LOTTO_NUMBER_COUNT));
             Collections.sort(basket);
             numbers.add(basket);

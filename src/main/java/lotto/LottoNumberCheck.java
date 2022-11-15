@@ -19,9 +19,9 @@ public class LottoNumberCheck {
         winningLotto = new LinkedHashMap<>();
         myPrizeMoney = new ArrayList<>();
     }
-    private void initPrize(Map<String, Integer> mapTest) {
+    private void initPrize(Map<String, Integer> winningLotto) {
         for (Prize value : Prize.values()) {
-            mapTest.put(value.getPrize(), 0);
+            winningLotto.put(value.getPrize(), 0);
         }
     }
 
@@ -53,17 +53,17 @@ public class LottoNumberCheck {
     }
 
     private void compareMyLottoNumberWithBonusNumber(Map<List<Integer>, Integer> checkLotto, Map<String, Integer> correctNumber, int bonusBall) {
-        for (List<Integer> integers : checkLotto.keySet()) {
-            if (checkLotto.get(integers) == 5 && integers.contains(bonusBall)) {
-                correctNumber.put(integers.toString(), 7);
+        for (List<Integer> lotto : checkLotto.keySet()) {
+            if (checkLotto.get(lotto) == 5 && lotto.contains(bonusBall)) {
+                correctNumber.put(lotto.toString(), 7);
             }
         }
     }
 
     private void countWinningLotto(Map<String, Integer> correctNumber) {
-        for (String s : correctNumber.keySet()) {
-            if (correctNumber.get(s) >= 3) {
-                countPrizeNumber.add(correctNumber.get(s));
+        for (String lotto : correctNumber.keySet()) {
+            if (correctNumber.get(lotto) >= 3) {
+                countPrizeNumber.add(correctNumber.get(lotto));
             }
         }
     }
@@ -73,41 +73,35 @@ public class LottoNumberCheck {
     }
 
     private void getPrizeMoney(List<Integer> countPrizeNumber) {
-        for (Integer integer : countPrizeNumber) {
+        for (Integer prizeNumber : countPrizeNumber) {
             for (Prize value : Prize.values()) {
-                countPrizeMoneyOfMyLotto(integer, value);
+                countPrizeMoneyOfMyLotto(prizeNumber, value);
             }
         }
         combinePrizeMoney(winningLotto);
 
         Message.printLottoResult();
         Message.printLine();
-        for (String s : winningLotto.keySet()) {
-            System.out.print(s);
-            System.out.print(" - " + winningLotto.get(s) + "개");
+        for (String lotto : winningLotto.keySet()) {
+            System.out.print(lotto);
+            System.out.print(" - " + winningLotto.get(lotto) + "개");
             System.out.println();
         }
     }
 
-    private void combinePrizeMoney(Map<String, Integer> mapTest) {
-        for (String s : mapTest.keySet()) {
-            myPrizeMoney.add(mapTest.get(s));
+    private void combinePrizeMoney(Map<String, Integer> winningLotto) {
+        for (String lotto : winningLotto.keySet()) {
+            myPrizeMoney.add(winningLotto.get(lotto));
         }
     }
 
-    private void countPrizeMoneyOfMyLotto(int integer, Prize value) {
-        if (integer == 7 && value.getPrize().substring(1, 6).equals("개 일치,")) {
+    private void countPrizeMoneyOfMyLotto(int totalWinNumber, Prize value) {
+        if (totalWinNumber == 7 && value.getPrize().substring(1, 6).equals("개 일치,")) {
             winningLotto.put(value.getPrize(), winningLotto.getOrDefault(value.getPrize(), 0) + 1);
-        } else if (integer != 7 && value.getPrize().substring(0, 5).equals(integer + "개 일치")){
+        } else if (totalWinNumber != 7 && value.getPrize().substring(0, 5).equals(totalWinNumber + "개 일치")){
             winningLotto.put(value.getPrize(), winningLotto.getOrDefault(value.getPrize(), 0) + 1);
         }
     }
-
-
-
-
-
-
     private void calculateYield(int myMoney, List<Integer> myPrizeMoney) {
         myMoney = myMoney * PAYMENT;
 
