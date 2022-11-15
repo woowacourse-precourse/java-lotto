@@ -14,7 +14,13 @@ public class Ranker {
     }
 
     public Map<WinningResult, Integer> rankTotal(List<Lotto> lottos) {
-        return null;
+        Map<WinningResult, Integer> rankResults = new HashMap<>();
+        for (Lotto lotto : lottos) {
+            WinningResult result = rank(lotto);
+            int count = rankResults.getOrDefault(result, 0) + 1;
+            rankResults.put(result, count);
+        }
+        return rankResults;
     }
 
     public WinningResult rank(Lotto lotto) {

@@ -40,11 +40,15 @@ public class RankerTest {
     @Test
     void matchLottoMap() {
         Ranker ranker = new Ranker(List.of(1, 2, 3, 4, 5, 6), 7);
-        List<Lotto> lottos = List.of(new Lotto(List.of(1, 2, 3, 4, 10, 15)),
+        List<Lotto> lottos = List.of(new Lotto(List.of(1, 2, 3, 4, 5, 15)),
                 new Lotto(List.of(1, 2, 3, 4, 11, 12)),
                 new Lotto(List.of(3, 4, 5, 6, 20, 21)));
         Map<WinningResult, Integer> results = ranker.rankTotal(lottos);
-        assertThat(results.get(WinningResult.THIRD)).isEqualTo(1);
-        assertThat(results.get(WinningResult.FOURTH)).isEqualTo(2);
+        assertThat(results.getOrDefault(WinningResult.FIRST, 0)).isEqualTo(0);
+        assertThat(results.getOrDefault(WinningResult.SECOND, 0)).isEqualTo(0);
+        assertThat(results.getOrDefault(WinningResult.THIRD, 0)).isEqualTo(1);
+        assertThat(results.getOrDefault(WinningResult.FOURTH, 0)).isEqualTo(2);
+        assertThat(results.getOrDefault(WinningResult.FIFTH, 0)).isEqualTo(0);
+        assertThat(results.getOrDefault(WinningResult.NONE, 0)).isEqualTo(0);
     }
 }
