@@ -3,8 +3,9 @@ package lotto.domain;
 import java.util.NoSuchElementException;
 
 public class Money {
+    public static final String ERROR_INPUT_MONEY = "[ERROR]숫자만 입력해주세요.";
+
     private static final int LOTTO_PRICE = 1000;
-    private static final String ERROR_INPUT_MONEY = "[ERROR]숫자만 입력해주세요.";
     private static final String NOT_VALID_MONEY = "[ERROR]1000원 단위로 입력해주세요.";
     private int money;
 
