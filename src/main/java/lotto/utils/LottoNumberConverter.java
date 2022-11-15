@@ -14,9 +14,9 @@ public class LottoNumberConverter {
                 .collect(Collectors.joining(", "));
     }
 
-    public static List<Integer> convertWinningNumberToList(String bonusNumber) {
+    public static List<Integer> convertWinningNumberToList(String winningNumber) {
         try {
-            return Arrays.stream(bonusNumber.split(","))
+            return Arrays.stream(winningNumber.split(","))
                     .map(Integer::parseInt)
                     .collect(Collectors.toList());
         } catch (NumberFormatException e) {

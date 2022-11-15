@@ -27,8 +27,8 @@ public class Input {
         System.out.println();
         System.out.println("당첨 번호를 입력해 주세요");
         try {
-            String bonusNumber = Console.readLine();
-            return LottoNumberConverter.convertWinningNumberToList(bonusNumber);
+            String winningNumber = Console.readLine();
+            return LottoNumberConverter.convertWinningNumberToList(winningNumber);
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException(NUMERIC_ERROR_MSG);
         }
