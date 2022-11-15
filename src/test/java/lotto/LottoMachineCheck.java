@@ -22,6 +22,18 @@ public class LottoMachineCheck {
         assertThat(removedDuplicationNumber).isEqualTo(List.of(1, 2, 3, 4, 5));
     }
 
+    @DisplayName("스트림으로 리스트 정렬하는 것에 대한 테스트")
+    @Test
+    void checkUseSteamToSortList() {
+        List<Integer> winningNumber = List.of(6, 5, 4, 3, 2, 1);
+
+        Arrays.stream(winningNumber.toArray())
+                .sorted()
+                .collect(Collectors.toList());
+
+        assertThat(winningNumber).isEqualTo(List.of(1, 2, 3, 4, 5,6));
+    }
+
     static List<Integer> mergeList(List<Integer> list1, List<Integer> list2){
         List<Integer> mergeList = new ArrayList<>();
         Collections.addAll(mergeList, list1.toArray(new Integer[0]));
