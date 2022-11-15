@@ -8,6 +8,7 @@ import lotto.resource.Rank;
 
 public class YieldCalculator {
     private static final int HUNDRED = 100;
+    private static final int DECIMAL_PLACE = 1;
 
     private final Map<String, Integer> winningCountRepository;
     private final Integer purchasePrice;
@@ -19,7 +20,7 @@ public class YieldCalculator {
 
     public BigDecimal calculate() {
         BigDecimal bigDecimal = BigDecimal.valueOf(getTotalPrizeMoney() / purchasePrice * HUNDRED);
-        return bigDecimal.setScale(1, RoundingMode.HALF_UP);
+        return bigDecimal.setScale(DECIMAL_PLACE, RoundingMode.HALF_UP);
     }
 
     private double getTotalPrizeMoney() {

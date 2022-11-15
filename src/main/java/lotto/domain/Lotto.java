@@ -2,6 +2,7 @@ package lotto.domain;
 
 import java.util.List;
 import java.util.Set;
+import lotto.resource.Constant;
 import lotto.resource.message.ExceptionMessage;
 
 public class Lotto {
@@ -13,7 +14,7 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
-        if (numbers.size() != 6) {
+        if (numbers.size() != Constant.REQUIRED_NUMBER_COUNT.getValue()) {
             System.out.println(ExceptionMessage.INVALID_NUMBER_COUNT.getMessage());
             throw new IllegalArgumentException();
         }
