@@ -5,7 +5,7 @@ import lotto.Lotto;
 import lotto.constants.ExceptionMessage;
 
 public class BonusInputException {
-    private static final String REGULAR_PATTERN = "^[1-9]*$";
+    private static final String REGULAR_PATTERN = "^\\d+$";
     private static final int LAST_BETWEEN_NUMBER = 45;
     private static final int START_BETWEEN_NUMBER = 1;
 
@@ -21,7 +21,7 @@ public class BonusInputException {
         validateDuplicate(lottoNumber, bonusInput);
     }
 
-    private void validateBetween(int bonusInput) {
+    public void validateBetween(int bonusInput) {
         if (!(bonusInput >= START_BETWEEN_NUMBER && bonusInput <= LAST_BETWEEN_NUMBER)) {
             throw new IllegalArgumentException(ExceptionMessage.BONUS_NUMBERS_BETWEEN);
         }
@@ -35,7 +35,7 @@ public class BonusInputException {
         }
     }
 
-    private void validateDuplicate(List<Integer> lottoNumber, int bonusInput) {
+    public void validateDuplicate(List<Integer> lottoNumber, int bonusInput) {
         for (int lotto : lottoNumber) {
             if (lotto == bonusInput) {
                 throw new IllegalArgumentException(ExceptionMessage.WINNING_DUPLICATION_INPUT);

@@ -42,6 +42,6 @@ public class SystemConsole {
     }
 
     public void grossYields(double revenue) {
-        System.out.println(String.format("총 수익률은 %.1f%%입니다.", revenue));
+        System.out.println(String.format("총 수익률은 %,.1f%%입니다.", revenue));
     }
 }

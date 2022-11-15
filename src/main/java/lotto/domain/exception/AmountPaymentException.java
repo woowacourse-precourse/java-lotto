@@ -4,7 +4,7 @@ import lotto.constants.ExceptionMessage;
 
 public class AmountPaymentException {
     private static final int PRICE = 1000;
-    private static final String REGULAR_PATTERN = "^[0-9]*$";
+    private static final String REGULAR_PATTERN = "^\\d+$";
 
     public void inputVerification(int lottoPayment) {
         validateSizeLottos(lottoPayment);

@@ -25,9 +25,7 @@ public class LottoGameMachine {
 
     public void run() {
         int lottos = getLottos();
-
         List<List<Integer>> randomLotto = getRandomLotto(lottos);
-
         Lotto lottoAnswer = getCorrectLottoNumber();
 
         List<Integer> sameNumberCount = getSameNumberCount(randomLotto, lottoAnswer);

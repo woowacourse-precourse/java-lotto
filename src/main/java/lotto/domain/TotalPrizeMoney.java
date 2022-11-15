@@ -8,15 +8,15 @@ public class TotalPrizeMoney {
     private static final int THIRD_WINNING_INDEX = 3;
     private static final int CHECK_VALUE = 1;
 
-    public int totalCalculation(List<Integer> sameNumberCount, List<Integer> winningRanking) {
-        int result = 0;
+    public long totalCalculation(List<Integer> sameNumberCount, List<Integer> winningRanking) {
+        long result = 0;
         for (int correctNumber : sameNumberCount) {
             result = getResult(winningRanking, result, correctNumber);
         }
         return result;
     }
 
-    private int getResult(List<Integer> winningRanking, int result, int correctNumber) {
+    private long getResult(List<Integer> winningRanking, long result, int correctNumber) {
         if (correctNumber == Rank.FIFTH.getMatch()) {
             result += Rank.FIFTH.getMoney();
         }
@@ -32,7 +32,7 @@ public class TotalPrizeMoney {
         return result;
     }
 
-    private int getCorrectFivePrize(List<Integer> winningRanking, int result, int correctNumber) {
+    private long getCorrectFivePrize(List<Integer> winningRanking, long result, int correctNumber) {
         if (correctNumber == Rank.THIRD.getMatch()
                 && winningRanking.get(SECOND_WINNING_INDEX) == CHECK_VALUE) {
 

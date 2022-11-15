@@ -26,7 +26,7 @@ public class RankingWinner {
 
         SystemConsole systemConsole = getSystemConsole(winningRanking);
 
-        int calculation = totalPrizeMoney.totalCalculation(sameNumberCount, winningRanking);
+        long calculation = totalPrizeMoney.totalCalculation(sameNumberCount, winningRanking);
         double revenue = yieldCalculation.revenue(calculation);
         systemConsole.grossYields(revenue);
     }
