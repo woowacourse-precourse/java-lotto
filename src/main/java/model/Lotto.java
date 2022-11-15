@@ -9,6 +9,7 @@ public class Lotto {
     public Lotto(List<Integer> numbers) {
         validate(numbers);
         validateDuplicateInputLottoNumbers(numbers);
+        validateInputLottoNumbersRange(numbers);
         this.numbers = numbers;
     }
 
@@ -26,6 +27,14 @@ public class Lotto {
 
         if (lottoNumbersCount != 6) {
             throw new IllegalArgumentException("[ERROR] 숫자가 중복되지 않게 입력해주세요.");
+        }
+    }
+
+    private void validateInputLottoNumbersRange(List<Integer> numbers) {
+        for (Integer number : numbers) {
+            if (number < 1 || number > 45) {
+                throw new IllegalArgumentException("[ERROR] 1부터 45까지의 숫자만 입력해주세요.");
+            }
         }
     }
 
