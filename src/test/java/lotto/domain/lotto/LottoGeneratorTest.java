@@ -1,5 +1,6 @@
 package lotto.domain.lotto;
 
+import lotto.common.Constant;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -24,11 +25,7 @@ public class LottoGeneratorTest {
     void getDuplicateLottoCount() {
         List<Integer> lotto = LottoGenerator.createRandomLottoNumber();
 
-        long notDuplicateCount = lotto.stream()
-                .distinct()
-                .count();
-
-        assertThat(notDuplicateCount).isEqualTo(6);
+        assertThat(lotto).doesNotHaveDuplicates();
     }
 
     @DisplayName("발행하는 로또의 각 수는 1 - 45 범위를 벗어나지 않는다.")
@@ -36,11 +33,8 @@ public class LottoGeneratorTest {
     void getLottoRange() {
         List<Integer> lotto = LottoGenerator.createRandomLottoNumber();
 
-        long zeroCount = lotto.stream()
-                .filter(n -> n <= 0 || n > 45)
-                .count();
-
-        assertThat(zeroCount).isEqualTo(0);
+        lotto.forEach(num ->
+                assertThat(num).isBetween(Constant.MIN_LOTTO_RANGE, Constant.MAX_LOTTO_RANGE));
     }
 }
 
