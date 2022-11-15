@@ -10,7 +10,7 @@ import java.util.List;
 public class ValidatorTest {
 
     @Nested
-    class isNumberForString {
+    class isNumber {
         @DisplayName("주어진 문자열이 숫자가 아닌 경우 예외가 발생한다.")
         @Test
         void isNumberTest_숫자가아닌경우() {
