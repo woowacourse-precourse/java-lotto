@@ -1,8 +1,10 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import static config.Error.*;
@@ -60,16 +62,27 @@ public class Application {
 
         int money = stringToInt(input);
         if(money % 1000 == 0 ){
-            return money % 1000;
+            return money / 1000;
         }
 
         System.out.println(ERROR_MESSAGE+ERROR_INPUT_MONEY);
         throw new IllegalArgumentException(ERROR_MESSAGE+ERROR_INPUT_MONEY);
     }
 
+    static List<Integer> RandomPicked(){
+        List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+        Collections.sort(numbers);
+        return numbers;
+    }
+
     public static void main(String[] args) {
         String inputMoney = InputMoney();
         int chance = InputMoneyException(inputMoney);
+        for(int i=0; i<chance; i++){
+            Lotto lotto = new Lotto(RandomPicked());
+            System.out.println(lotto.getString());
+        }
+
         String inputWinningNum = InputWinningNum();
         List<Integer> winningNum = SeparateInput(inputWinningNum);
         InputWinningNumException(winningNum);

@@ -21,15 +21,15 @@
 
 - 번호가 중복되거나, 범위를 넘어서는 경우 
 
-[ ] InputBonusNum : 보너스 번호 입력
+[v] InputBonusNum : 보너스 번호 입력
 
-[ ] InputBonusNumException : 보너스 번호 예외 처리
+[v] InputBonusNumException : 보너스 번호 예외 처리
 
 - 번호가 중복되거나, 범위를 넘어서는 경우
 
 #### < 출력 >
 
-[ ] LottoRandom : 로또 랜덤 출력 
+[v] RandomPicked : 로또 랜덤 출력 
 
 [ ] CompareLotto : 당첨 내역
 
