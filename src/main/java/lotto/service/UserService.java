@@ -12,14 +12,10 @@ public class UserService {
     private float revenue;
 
 
-    public void setPayMent() {
-        int payMent;
+    public void setPayMent(){
+        String payMent;
 
-        try {
-            payMent = Integer.parseInt(Console.readLine());
-        } catch (NumberFormatException ex) {
-            throw new IllegalArgumentException("[ERROR] 숫자를 입력하셔야 됩니다.");
-        }
+        payMent = Console.readLine();
 
         user = new User(payMent);
     }

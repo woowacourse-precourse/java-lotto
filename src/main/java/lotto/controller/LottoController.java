@@ -3,7 +3,6 @@ package lotto.controller;
 import lotto.service.LottoSystemService;
 import lotto.service.UserService;
 
-import javax.swing.plaf.synth.SynthOptionPaneUI;
 import java.util.List;
 
 public class LottoController {

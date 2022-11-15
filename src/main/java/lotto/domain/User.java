@@ -7,10 +7,21 @@ public class User {
     private List<List<Integer>> userLottoNumber;
 
 
-    public User(int payAmount){
-        this.payAmount = payAmount;
+    public User(String payMent){
+        int pay = validate(payMent);
+        this.payAmount = pay;
     }
 
+    private Integer validate(String payAmount){
+        boolean isNumeric = payAmount.matches("[+-]?\\d*(\\.\\d+)?");
+        if (!isNumeric){
+            throw new IllegalArgumentException("[ERROR] 숫자를 입력해주세요.");
+        }
+
+        int returnPay = Integer.parseInt(payAmount);
+        return returnPay;
+
+    }
     public void setUserLottoNumber(List<List<Integer>> userLottoNumber){
         this.userLottoNumber = userLottoNumber;
     }
