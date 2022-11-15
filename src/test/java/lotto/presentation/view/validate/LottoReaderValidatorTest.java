@@ -1,5 +1,6 @@
 package lotto.presentation.view.validate;
 
+import constants.ExceptionMessage;
 import org.assertj.core.api.Assertions;
 
 import org.junit.jupiter.api.DisplayName;
@@ -20,13 +21,14 @@ class LottoReaderValidatorTest {
     void createAnotherCharacterLottoAmount() {
         String lottoAmount = "1000a";
         Assertions.assertThatThrownBy(() -> LottoReaderValidator.validateNumber(lottoAmount))
-                .isInstanceOf(IllegalArgumentException.class);
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining(ExceptionMessage.MUST_NUMBER);
     }
 
 
     @DisplayName("','를 구분자로 하고, 모두 숫자로 이루어지면 성공")
     @Test
-    void validateGoodWinNumber () {
+    void validateGoodWinNumber() {
         String winNumber = "1,2,3,4,5,6";
         Assertions.assertThatCode(() -> LottoReaderValidator.validateCommaSeparatorArray(winNumber))
                 .doesNotThrowAnyException();
@@ -35,13 +37,11 @@ class LottoReaderValidatorTest {
 
     @DisplayName("','를 구분자로 하고, 모두 숫자로 이루어지지 않으면 예외 발생")
     @Test
-    void validateBadWinNumber () {
+    void validateBadWinNumber() {
         String winNumber = "1/2/3/4/5/a";
         Assertions.assertThatThrownBy(() -> LottoReaderValidator.validateCommaSeparatorArray(winNumber))
-                .isInstanceOf(IllegalArgumentException.class);
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining(ExceptionMessage.MUST_COMMA_ARRAY);
     }
-
-
-
 
 }
