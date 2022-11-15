@@ -28,7 +28,6 @@ public class PurchaseLottos {
         return quantity() * KRW.getPrice();
     }
 
-    //로또들이 있어, 이 객체 역할: placeHistory 생성 . 출력 역할으 ㄴ또 누군감 ㅏㅌ아야 함.
     public PlaceHistory placeHistoryFor(WinningLotto winningLotto) {
         PlaceHistory placeHistory = new PlaceHistory();
 
