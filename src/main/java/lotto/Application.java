@@ -25,6 +25,7 @@ public class Application {
 
         for(Lotto lotto : lottos){
             int count = CompareNumber(lotto,win_numbers);
+            boolean bonus = CompareBonus(lotto, bonus_number);
         }
     }
 
@@ -83,8 +84,13 @@ public class Application {
         return count;
     }
 
-    public static int CompareBonus(){
-
+    public static boolean CompareBonus(Lotto lotto, int bonus_number){
+        for(int number : lotto.GetNumbers()){
+            if(number == bonus_number) {
+                return true;
+            }
+        }
+        return false;
     }
 
     public static List<Integer> CountWin(){
