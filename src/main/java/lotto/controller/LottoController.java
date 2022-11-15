@@ -13,8 +13,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class LottoController {
-    private static final InputView inputView = InputView.INSTANCE;
-    private static final OutputView outputView = OutputView.INSTANCE;
+    private static final InputView inputView = new InputView();
+    private static final OutputView outputView = new OutputView();
     private List<Lotto> lottoTicketList = new ArrayList<>();
     private LottoStatistics lottoStatistics = new LottoStatistics();
     private LottoPrize lottoPrize = new LottoPrize();
