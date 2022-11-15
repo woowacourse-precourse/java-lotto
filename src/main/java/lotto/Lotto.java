@@ -69,7 +69,7 @@ public class Lotto {
     }
 
     private boolean checkBonusNumberRange(int bonusNumber) {
-        if (1 <= bonusNumber && bonusNumber <= 45) {
+        if (!(1 <= bonusNumber && bonusNumber <= 45)) {
             return true;
         }
         return false;
