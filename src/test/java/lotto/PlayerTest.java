@@ -21,4 +21,12 @@ class PlayerTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("[ERROR] 구입 금액은 1,000원 단위만 가능합니다.");
     }
+
+    @DisplayName("구입 금액이 0원이면 예외가 발생한다.")
+    @Test
+    void createPlayerByZeroMoney() {
+        assertThatThrownBy(() -> new Player(0))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("[ERROR] 구입 금액은 1,000원 단위만 가능합니다.");
+    }
 }
