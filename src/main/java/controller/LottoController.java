@@ -7,8 +7,8 @@ import view.UserInput;
 public class LottoController {
     private final UserInput userInput = new UserInput();
     private final UserOutput userOutput = new UserOutput();
-    LottoResultBoard lottoResultBoard = new LottoResultBoard();
-    LottoManager lottoManager = new LottoManager();
+    private final LottoResultBoard lottoResultBoard = new LottoResultBoard();
+    private final LottoManager lottoManager = new LottoManager();
     private Lotto lotto;
     private LottoBonus lottoBonus;
     private WinningLotto winningLotto;
