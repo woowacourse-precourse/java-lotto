@@ -5,6 +5,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -31,4 +32,26 @@ class CheckInputTest {
     void checkPurchaseAmountValid_테스트() {
         assertThat(new CheckInput().checkPurchaseAmountValid("5000")).isEqualTo(5000);
     }
+
+    @DisplayName("콤마(,)와 숫자 이 외의 문자가 있으면 예외가 발생한다.")
+    @Test
+    void checkWinningNumberValid_예외_테스트1() {
+        assertThatThrownBy(() -> new CheckInput().checkWinningNumberValid("1,2,3,j"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("입력값을 콤마(,)로 split한 배열의 사이즈가 6이 아니면 예외가 발생한다.")
+    @Test
+    void checkWinningNumberValid_예외_테스트2() {
+        assertThatThrownBy(() -> new CheckInput().checkWinningNumberValid("1,2,3,4,5"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("1 ~ 45 사이의 수가 아니면 예외가 발생한다.")
+    @Test
+    void checkWinningNumberValid_예외_테스트3() {
+        assertThatThrownBy(() -> new CheckInput().checkWinningNumberValid("1,2,3,4,5,46"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
 }
