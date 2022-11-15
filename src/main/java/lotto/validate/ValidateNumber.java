@@ -19,12 +19,17 @@ public class ValidateNumber {
     private static final Integer RANGE_END = 45;
 
     public static Integer validatePurchaseMoney(String purchaseMoney) {
-        Integer money = Integer.valueOf(purchaseMoney);
-        isOverStandardMoney(money);
-        isUnitStandardMoney(money);
-        isNumeric(purchaseMoney);
-
-        return money;
+        try {
+            Double.parseDouble(purchaseMoney);
+            Integer money = Integer.valueOf(purchaseMoney);
+            isOverStandardMoney(money);
+            isUnitStandardMoney(money);
+            return money;
+        } catch (NumberFormatException e) {
+            System.out.println(NOT_NUMERIC_MESSAGE);
+        } finally {
+            return 0;
+        }
     }
 
     private static void isOverStandardMoney(Integer purchaseMoney) {
@@ -43,8 +48,8 @@ public class ValidateNumber {
     private static void isNumeric(String purchaseMoney) {
         try {
             Double.parseDouble(purchaseMoney);
-            return;
         } catch (NumberFormatException e) {
+            System.out.println(NOT_NUMERIC_MESSAGE);
             throw new IllegalArgumentException(NOT_NUMERIC_MESSAGE);
         }
     }
