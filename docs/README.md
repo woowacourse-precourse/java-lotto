@@ -40,4 +40,9 @@
 - [x] WinInfo 테스트
   - [x] match함수 테스트
   - [x] get함수 테스트
-  
+
+- [ ] LottoUser 테스트
+  - [ ] validation 테스트
+  - [ ] buyLotto 테스트
+  - [ ] checkWin 테스트
+  - [ ] getReturnRate 테스트
