@@ -32,7 +32,16 @@ public class Game {
 
     }
 
-
+    private void showBoughtNumbers() {
+        String purchase = Console.readLine();
+        int lottoUnit = checkIfDivideWithThousand(purchase);
+        System.out.println(lottoUnit+Resource.countOfBuying);
+        List<Lotto> lottos = new ArrayList<>() ;
+        for(int i=0;i<lottoUnit;i++){
+            Lotto lotto = getLotto(lottos);
+            System.out.println(lotto);
+        }
+    }
     private Lotto getLotto(List<Lotto> lottos) {
         List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1,45,6);
         Lotto lotto = new Lotto(numbers);
