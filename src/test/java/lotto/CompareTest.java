@@ -45,21 +45,18 @@ public class CompareTest {
 
     @Test
     void 입력받은_당첨번호의_길이가_6이_넘을_떄_test() {
-        Compare compare = new Compare();
         assertThatThrownBy(() -> compare.validateLength(List.of(1, 2, 3, 4, 5, 6, 7)))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
     void 입력받은_당첨번호에_범위가_아닌_숫자가_있을_떄_test() {
-        Compare compare = new Compare();
         assertThatThrownBy(() -> compare.validateRange(List.of(1, 2, 3, 4, 5, 100), 7))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
     void 보너스번호와_당첨번호에_중복된_수가_있을_떄_test() {
-        Compare compare = new Compare();
         assertThatThrownBy(() -> compare.validateDuplicationInBonus(List.of(1, 2, 3, 4, 5, 7), 7))
                 .isInstanceOf(IllegalArgumentException.class);
     }

@@ -21,7 +21,7 @@ public class Computer {
         return computerRandomNumbers;
     }
 
-    private void validate(int inputMoney) {
+    public void validate(int inputMoney) {
 
         if (inputMoney % 1000 != 0) {
             throw new IllegalArgumentException(Exception.INVALID_PURCHASE.getExceptionMessage());
