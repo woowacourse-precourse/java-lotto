@@ -4,20 +4,21 @@ import java.util.Iterator;
 import java.util.Map;
 
 public class RateCalculator {
-    private ComparingMachine comparingMachine = new ComparingMachine();
     public int calculateWinningMoney(Map<Integer,Integer> winningMoney){
         int sum = 0;
-        Iterator<Integer> keys = winningMoney.keySet().iterator();
-        while (keys.hasNext()){
-            int key = keys.next();
-            sum += key;
+        for(Map.Entry<Integer,Integer> pair : winningMoney.entrySet()){
+            if(pair.getValue() > 0){
+                sum += pair.getKey();
+            }
         }
         return sum;
     }
 
-    public double calculateReturnOfRate(int purchaseMoney, int winningMoney){
-        double rateMoney = ((double)winningMoney / (double) purchaseMoney) * 100;
-        rateMoney = Math.round(rateMoney*100)/100.0;
+    public double calculateReturnOfRate(int purchaseMoney, int winningMoney) {
+        double rateMoney = ((double) winningMoney / (double) purchaseMoney) * 100;
+        if(rateMoney < 100){
+            rateMoney = Math.round(rateMoney * 100) / 100.0;
+        }
         return rateMoney;
     }
 }
