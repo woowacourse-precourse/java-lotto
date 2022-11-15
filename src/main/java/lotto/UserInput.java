@@ -16,12 +16,17 @@ public class UserInput {
     public static int inputAmount() {
         System.out.println(AMOUNT_INPUT_MSG);
         String str = Console.readLine();
-
+        int amount;
         try {
-            return Integer.parseInt(str);
+            amount = Integer.parseInt(str);
         } catch (Exception e) {
             throw new IllegalArgumentException(AMOUNT_ERROR_MSG);
         }
+
+        if(amount % 1000 == 0) {
+            return amount;
+        }
+        throw new IllegalArgumentException(AMOUNT_ERROR_MSG);
     }
 
     public static List<Integer> inputTargetNumbers() {
