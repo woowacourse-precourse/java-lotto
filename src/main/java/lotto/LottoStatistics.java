@@ -1,8 +1,5 @@
 package lotto;
 
-import lotto.Lotto;
-import lotto.LottoBuyer;
-
 import java.util.List;
 import java.math.BigInteger;
 import java.util.Iterator;
@@ -57,10 +54,10 @@ enum Rank {
 }
 
 public class LottoStatistics {
-    private  Lotto lotto;
-    private  List<Lotto> lottos;
-    private  BigInteger money;
-    private  Integer bonusNumber;
+    private Lotto lotto;
+    private List<Lotto> lottos;
+    private BigInteger money;
+    private Integer bonusNumber;
     private LottoBuyer lottoBuyer;
 
     public LottoStatistics() {
@@ -85,11 +82,11 @@ public class LottoStatistics {
         printResult();
     }
 
-    public void setBonusNumber(Integer bonusNumber){
+    public void setBonusNumber(Integer bonusNumber) {
         this.bonusNumber = bonusNumber;
     }
 
-    public void setMoney(BigInteger money){
+    public void setMoney(BigInteger money) {
         this.money = money;
     }
 
@@ -98,8 +95,8 @@ public class LottoStatistics {
 
         while (lottoIter.hasNext()) {
             Lotto tmpLotto = lottoIter.next();
-            List<Integer> tmpNumbers = new ArrayList<>(tmpLotto.getLottoInfo());
-            tmpNumbers.removeAll(lotto.getLottoInfo());
+            List<Integer> tmpNumbers = new ArrayList<>(tmpLotto.getLottoNumbers());
+            tmpNumbers.removeAll(lotto.getLottoNumbers());
             rankCount(tmpNumbers);
         }
     }

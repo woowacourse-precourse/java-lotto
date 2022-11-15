@@ -28,7 +28,7 @@ class LottoTest {
     @DisplayName("로또의 마킹역할 하는 리스트를 제대로 봔한하는지 확인")
     @Test
     void 로또_마킹_반환_테스트() {
-        assertThat(new Lotto(List.of(1, 2, 3, 4, 5, 6)).getLottoInfo())
+        assertThat(new Lotto(List.of(1, 2, 3, 4, 5, 6)).getLottoNumbers())
                 .isEqualTo(List.of(1, 2, 3, 4, 5, 6));
     }
 

@@ -1,9 +1,5 @@
 package lotto;
 
-import lotto.CheckInputException;
-import lotto.Util;
-import lotto.Lotto;
-
 import java.util.List;
 import java.math.BigInteger;
 import java.util.ArrayList;
@@ -25,7 +21,7 @@ public class LottoBuyer {
         try {
             System.out.println("구입금액을 입력해 주세요.");
             setMoney();
-            lottos = new ArrayList<Lotto>();
+            lottos = new ArrayList<>();
             int buyCount = LottoMachine.buyLotto(lottos, money);
             System.out.println(buyCount + "개를 구매했습니다.");
             LottoMachine.printLottoLog(lottos);
@@ -72,7 +68,7 @@ public class LottoBuyer {
             CheckInputException.checkBuyerInputIsNotNumberRange(input);
             CheckInputException.checkBuyerInputIsNotNumber(input);
             bonusNumber = Integer.valueOf(input);
-            List<Integer> tmpNumbers = new ArrayList<Integer>(lotto.getLottoInfo());
+            List<Integer> tmpNumbers = new ArrayList<>(lotto.getLottoNumbers());
             tmpNumbers.add(bonusNumber);
             CheckInputException.checkDuplicateNumbers(tmpNumbers);
         } catch (IllegalArgumentException iae) {

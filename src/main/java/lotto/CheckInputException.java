@@ -2,7 +2,6 @@ package lotto;
 
 import java.math.BigInteger;
 import java.util.List;
-import java.util.ArrayList;
 
 class CheckInputException {
 
@@ -19,13 +18,13 @@ class CheckInputException {
     }
 
     public static void checkBuyerInputIsNotNumber(final String input) throws IllegalArgumentException {
-        if (Util.isNumberic(input) == false || input.contains(" ") == true) {
+        if (!Util.isNumberic(input) || input.contains(" ")) {
             throw new IllegalArgumentException(ERROR_MESSAGE + " 입력하신 문자열은 숫자열이 아닙니다.");
         }
     }
 
     public static void checkBuyerInputIsNotDivided(final String input) throws IllegalArgumentException {
-        if (Util.isDividedBuyThousand(input) == false) {
+        if (!Util.isDividedBuyThousand(input)) {
             throw new IllegalArgumentException(ERROR_MESSAGE + " 1000으로 나누어 떨어지지 않습니다.");
         }
     }
@@ -64,7 +63,7 @@ class CheckInputException {
     }
 
     public static void checkDuplicateNumbers(List<Integer> numbers) throws IllegalArgumentException {
-        if (Util.isDuplicate(numbers) == true) {
+        if (Util.isDuplicate(numbers)) {
             throw new IllegalArgumentException(ERROR_MESSAGE + " 중복된 값이 입력되었습니다.");
         }
     }
