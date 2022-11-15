@@ -7,7 +7,7 @@ public class Purchase {
         validate(money);
         this.count = money / 1000;
     }
-    public static int convertInputToNumber(String input) {
+    private int convertInputToNumber(String input) {
         int number = 0;
         try {
             number = Integer.parseInt(input);
@@ -16,7 +16,7 @@ public class Purchase {
         }
         return number;
     }
-    public static void validate(int money) {
+    private void validate(int money) {
         Error error = new Error();
 
         if (money == 0) {
