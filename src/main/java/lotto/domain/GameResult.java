@@ -43,14 +43,14 @@ public class GameResult {
         int place = 0;
 
         for (WinningConstants nthPlace : WinningConstants.values()) {
-            if (check(matchingNumber, hasBonusNumber, nthPlace)) {
+            if (matchesWinningCondition(matchingNumber, hasBonusNumber, nthPlace)) {
                 place = nthPlace.getPlace();
             }
         }
         return place;
     }
 
-    private boolean check(int matchingNumber, boolean hasBonusNumber, WinningConstants nthPlace) {
+    private boolean matchesWinningCondition(int matchingNumber, boolean hasBonusNumber, WinningConstants nthPlace) {
         int requiredWinningNumber = nthPlace.getRequiredWinningNumber();
         boolean needsBonusNumber = nthPlace.getNeedsBonusNumber();
 
