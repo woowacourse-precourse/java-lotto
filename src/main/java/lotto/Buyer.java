@@ -14,7 +14,7 @@ public class Buyer {
 
     public void setListOfLotto(String buyAmount) {
         if(isBlank(buyAmount)) {
-            throw new IllegalArgumentException("[ERROR] 공백 입력");
+            throw new IllegalArgumentException("[ERROR] 공백이 입력됐습니다.");
         }
         int amount = stringToInt(buyAmount);
         int count = countCalculation(amount);
@@ -46,7 +46,7 @@ public class Buyer {
 
     public int countCalculation(int amount) {
         if(!isCollectedAmount(amount)){
-            throw new IllegalArgumentException("[ERROR] 1000 단위가 아님");
+            throw new IllegalArgumentException("[ERROR] 1000 단위가 아닙니다.");
         }
         return amount/1000;
     }
