@@ -1,6 +1,7 @@
 package lotto.domain;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import lotto.ui.ExceptionMsg;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,7 +16,7 @@ public class Issue {
 
     private int amount(int money){
         if(money%1000 != 0){
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ExceptionMsg.MONEY_UNIT);
         }
         return money/1000;
     }

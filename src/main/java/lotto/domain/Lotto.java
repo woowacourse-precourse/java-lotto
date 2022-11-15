@@ -1,5 +1,7 @@
 package lotto.domain;
 
+import lotto.ui.ExceptionMsg;
+
 import java.util.Comparator;
 import java.util.List;
 
@@ -17,7 +19,7 @@ public class Lotto {
 
     private void validateSize(List<Integer> numbers) {
         if (numbers.size() != 6) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ExceptionMsg.LOTTO_SIZE);
         }
     }
 
@@ -25,7 +27,7 @@ public class Lotto {
         boolean isException = numbers.stream()
                 .anyMatch(number -> number < 1 || 45 < number);
         if (isException) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ExceptionMsg.LOTTO_SCOPE);
         }
     }
 
@@ -33,7 +35,7 @@ public class Lotto {
         int nonDuplNum = (int) numbers.stream()
                 .distinct().count();
         if (nonDuplNum != numbers.size()) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ExceptionMsg.LOTTO_DUPLICATE);
         }
     }
     private int getBonusNumbers() {
@@ -42,7 +44,7 @@ public class Lotto {
 
     public void addBonusNum(int bonusNum) {
         if(this.numbers.contains(bonusNum)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ExceptionMsg.LOTTO_BONUS);
         }
         this.bonusNum = bonusNum;
     }
