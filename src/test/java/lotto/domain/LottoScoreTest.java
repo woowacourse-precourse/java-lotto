@@ -15,8 +15,7 @@ class LottoScoreTest {
 
     @AfterEach
     void clear() {
-        Map<Score, Integer> scoreStore = LottoScore.setInitialSetting();
-        scoreStore.clear();
+        LottoScore.clear();
     }
 
     @DisplayName("로또 번호 맞은 개수가 3개일 때 정상적으로 작동되는지 테스트")
