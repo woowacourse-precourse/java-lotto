@@ -22,7 +22,7 @@ public class BonusNumberInputValidation {
         }
     }
 
-    public void validateNumbersRange(String userInputBonusNumber) {
+    public void validateNumberRange(String userInputBonusNumber) {
         int bonusNumber = Integer.parseInt(userInputBonusNumber);
 
         if (bonusNumber < MIN_LOTTO_NUM || bonusNumber > MAX_LOTTO_NUM) {
