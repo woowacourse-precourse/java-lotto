@@ -6,10 +6,9 @@ import utils.PrintMessage;
 import java.util.List;
 import java.util.Map;
 
-public class PrintServiceImpl implements PrintService{
+public class PrintView{
     PrintMessage printMessage;
 
-    @Override
     public void printLotto(List<List<Integer>> lottoList) {
         System.out.println(lottoList.size() + printMessage.PURCHASE_INFO);
         for (List<Integer> lotto : lottoList) {
@@ -17,7 +16,6 @@ public class PrintServiceImpl implements PrintService{
         }
     }
 
-    @Override
     public void printWinningResult(Map<Rank, Integer> result, double yield) {
         System.out.println(printMessage.STATISTIC_INFO);
         System.out.println("---");

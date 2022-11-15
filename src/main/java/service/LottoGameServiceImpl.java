@@ -2,18 +2,18 @@ package service;
 
 import domain.Rank;
 import utils.LottoGenerator;
-import view.InputServiceImpl;
-import view.PrintServiceImpl;
+import view.InputView;
+import view.PrintView;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public class LottoGameServiceImpl implements LottoGameService {
-    InputServiceImpl inputService = new InputServiceImpl();
+    InputView inputService = new InputView();
     UserService userService = new UserServiceImpl();
     ResultServiceImpl resultService = new ResultServiceImpl();
-    PrintServiceImpl printService = new PrintServiceImpl();
+    PrintView printService = new PrintView();
     LottoGenerator lottoGenerator = new LottoGenerator();
     public static int userPayment = 0;
     public static int cntOfLotto = 0;

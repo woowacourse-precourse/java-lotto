@@ -4,14 +4,14 @@ import camp.nextstep.edu.missionutils.Console;
 import utils.IllegalInputFormChecker;
 import utils.InputMessage;
 
-public class InputServiceImpl implements InputService{
+public class InputView{
     IllegalInputFormChecker illegalInputFormChecker = new IllegalInputFormChecker();
     static String userPayment;
     static int newUserPayment;
     static String userInput;
     static String userBonus;
 
-    @Override
+
     public int getUserPayMessage() {
         System.out.println(InputMessage.USER_PAY);
         userPayment = Console.readLine();
@@ -20,7 +20,6 @@ public class InputServiceImpl implements InputService{
         return newUserPayment;
     }
 
-    @Override
     public String getUserNumsMessage() {
         System.out.println(InputMessage.USER_NUMS);
         userInput = Console.readLine();
@@ -28,7 +27,6 @@ public class InputServiceImpl implements InputService{
         return userInput;
     }
 
-    @Override
     public String getUserBonusNumMessage() {
         System.out.println(InputMessage.USER_BONUS_NUM);
         userBonus = Console.readLine();
