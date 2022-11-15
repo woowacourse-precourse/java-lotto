@@ -7,7 +7,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TargetNumbers {
-    private static final int SIZE=6;
+    private static final int SIZE = 6;
+
     private TargetNumbers(List<String> input) {
         List<Integer> numbers = new ArrayList<>();
         isInputFormValid(input, numbers);
@@ -29,11 +30,13 @@ public class TargetNumbers {
         }
 
     }
+
     private void validate(List<Integer> numbers) {
         if (numbers.size() != SIZE) {
             throw new IllegalArgumentException(ErrorMessage.INPUT_SIX_NUMBER.getValue());
         }
     }
+
     public void isInstanceOf(Class<IllegalArgumentException> illegalArgumentExceptionClass) {
 
     }

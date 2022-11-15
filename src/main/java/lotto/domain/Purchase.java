@@ -12,7 +12,7 @@ public class Purchase {
 
     private Purchase(int numberOfGame) {
         for (int i = 0; i < numberOfGame; i++) {
-            List<Integer> game=Lotto.generateRandomLotto();
+            List<Integer> game = Lotto.generateRandomLotto();
             Collections.sort(game);
             purchasedNumbers.add(game);
         }
@@ -23,11 +23,13 @@ public class Purchase {
     public static Purchase getInstance(int numberOfGame) {
         return new Purchase(numberOfGame);
     }
-    public static List<List<Integer>> getPurchasedNumbers(){
+
+    public static List<List<Integer>> getPurchasedNumbers() {
         return purchasedNumbers;
     }
-    public void printPurchasedNumbers(){
-        for(List obj:purchasedNumbers){
+
+    public void printPurchasedNumbers() {
+        for (List obj : purchasedNumbers) {
             System.out.println(obj);
         }
     }

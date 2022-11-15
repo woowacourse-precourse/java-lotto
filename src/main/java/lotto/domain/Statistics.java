@@ -3,7 +3,7 @@ package lotto.domain;
 import java.util.List;
 
 public class Statistics {
-    private Statistics(List<List<Integer>> purchasedNumber, int bonus){
+    private Statistics(List<List<Integer>> purchasedNumber, int bonus) {
 
     }
 

@@ -14,8 +14,8 @@ public class Application {
             int numberOfGame = Budget.getInstance(getMoney()).getLottoNumberByBudget();
             Purchase.getInstance(numberOfGame);
             TargetNumbers.getInstance(getWinNumber());
-            int bonusNumber=getBonusNumber();
-            Statistics.getInstance(Purchase.getPurchasedNumbers(),bonusNumber);
+            int bonusNumber = getBonusNumber();
+            Statistics.getInstance(Purchase.getPurchasedNumbers(), bonusNumber);
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
