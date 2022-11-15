@@ -14,10 +14,6 @@ public class InputManager {
         for (String temp_ : temp) {
             isInputOnlyNumber(temp_);
             isNumberInRange(temp_);
-            if (lotto.contains(temp_)) {
-                System.out.println("Duplicated number!");
-                throw new IllegalArgumentException("[ERROR] Duplicated number!");
-            }
             lotto.add(Integer.parseInt(temp_));
         }
         return lotto;

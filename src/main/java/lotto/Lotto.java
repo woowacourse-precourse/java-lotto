@@ -36,16 +36,13 @@ public class Lotto {
         return (int) numbers.stream().filter(winnersLotto::isContaining).count();
     }
 
-    private void checkDuplicatedNumber(List<Integer> list)
-    {
-        for(Integer list_ : list)
-        {
+    private void checkDuplicatedNumber(List<Integer> list) {
+        for (Integer list_ : list) {
             int frequency = Collections.frequency(list, list_);
-            if(frequency > 1)
-            {
-                throw new IllegalArgumentException();
+            if (frequency > 1) {
+                throw new IllegalArgumentException("[ERROR] number duplicated");
             }
         }
-       
+
     }
 }
