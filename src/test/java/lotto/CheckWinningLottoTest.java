@@ -8,7 +8,6 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class CheckWinningLottoTest{
-
     @DisplayName("구매한 로또 중 3개 이상 당첨된 로또의 개수를 리스트 형태 (3개, 4개, 5개, 6개, 5개+보너스)로 보여준다")
     @Test
     void testWinningCount() {
