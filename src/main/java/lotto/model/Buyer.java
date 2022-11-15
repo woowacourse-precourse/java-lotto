@@ -1,4 +1,4 @@
-package lotto.domain;
+package lotto.model;
 
 import static lotto.view.SystemMessage.ERROR_MESSAGE;
 import static lotto.view.SystemMessage.LESS_THAN_THOUSAND_ERROR_MESSAGE;

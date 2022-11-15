@@ -1,8 +1,6 @@
-package lotto.domain;
+package lotto.model;
 
 import java.util.Arrays;
-import java.util.EnumMap;
-import java.util.Map;
 
 public enum WinningRank {
     NO_MATCH(0, false, 0),

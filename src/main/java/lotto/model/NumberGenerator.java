@@ -1,13 +1,9 @@
-package lotto.domain;
-
-import static lotto.view.outputView.*;
+package lotto.model;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
-import lotto.domain.Lotto;
 
 public class NumberGenerator {
 

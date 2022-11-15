@@ -6,12 +6,12 @@ import static lotto.view.outputView.printLottoGroup;
 import static lotto.view.outputView.printWinningMessage;
 
 import java.util.Map;
-import lotto.domain.AnswerLotto;
-import lotto.domain.Buyer;
-import lotto.domain.LottoGroup;
-import lotto.domain.NumberGenerator;
-import lotto.domain.WinningRank;
-import lotto.domain.WinningStatistics;
+import lotto.model.AnswerLotto;
+import lotto.model.Buyer;
+import lotto.model.LottoGroup;
+import lotto.model.NumberGenerator;
+import lotto.model.WinningRank;
+import lotto.model.WinningStatistics;
 import lotto.view.outputView;
 
 public class Controller {

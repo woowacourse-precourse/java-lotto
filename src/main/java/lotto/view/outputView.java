@@ -4,8 +4,8 @@ import static lotto.view.SystemMessage.WINNING_STATISTICS_MESSAGE;
 
 import java.text.DecimalFormat;
 import java.util.Map;
-import lotto.domain.LottoGroup;
-import lotto.domain.WinningRank;
+import lotto.model.LottoGroup;
+import lotto.model.WinningRank;
 
 
 public class outputView {

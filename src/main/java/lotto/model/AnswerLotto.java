@@ -1,4 +1,4 @@
-package lotto.domain;
+package lotto.model;
 
 import static lotto.view.SystemMessage.DUPLICATE_BONUS_ERROR_MESSAGE;
 import static lotto.view.SystemMessage.ERROR_MESSAGE;
