@@ -5,7 +5,6 @@ import lotto.domain.Result;
 import lotto.domain.WinningStatistics;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 import static lotto.view.ConsoleMessage.*;
 
@@ -26,7 +25,7 @@ public class OutputConsole {
     }
 
     private static void printLotto(Lotto lotto) {
-        List<Integer> numbers = lotto.getNumbers().stream().sorted().collect(Collectors.toList());
+        List<Integer> numbers = lotto.getSortedNumbers();
         System.out.println(numbers.toString());
     }
 
