@@ -3,6 +3,7 @@ package lotto.domain;
 import java.util.List;
 
 public class LottoResult {
+
     private final List<lotto.domain.Rank> ranks;
 
     private final int investMoney;
@@ -23,5 +24,5 @@ public class LottoResult {
     public List<lotto.domain.Rank> getRanks() {
         return ranks;
     }
-    
+
 }
