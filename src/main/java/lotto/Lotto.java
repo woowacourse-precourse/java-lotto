@@ -1,20 +1,33 @@
 package lotto;
 
+import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
+import static lotto.LottoValidator.*;
+
 public class Lotto {
-    private final List<Integer> numbers;
+  public static final int NUMBER_COUNT = 6;
+  public static final int MIN_NUMBER = 1;
+  public static final int MAX_NUMBER = 45;
+  public static final int PRICE = 1000;
+  private final List<Integer> numbers;
 
-    public Lotto(List<Integer> numbers) {
-        validate(numbers);
-        this.numbers = numbers;
-    }
+  public Lotto(List<Integer> numbers) {
+    validate(numbers);
+    this.numbers = new ArrayList<>(numbers);
+    this.numbers.sort(Comparator.naturalOrder());
+  }
 
-    private void validate(List<Integer> numbers) {
-        if (numbers.size() != 6) {
-            throw new IllegalArgumentException();
-        }
-    }
+  public String getLottoString() {
+    return numbers.toString();
+  }
 
-    // TODO: 추가 기능 구현
+  public List<Integer> getLottoNumbers() {
+    return this.numbers;
+  }
+
+  public boolean isNumberContained(int number) {
+    return numbers.contains(number);
+  }
 }
