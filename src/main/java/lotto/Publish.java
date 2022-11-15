@@ -14,7 +14,8 @@ public class Publish {
         List<Lotto> lottos = new ArrayList<>();
 
         for (int i = 0; i<lotto_cnt; i++){
-            List<Integer> nums = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+            List<Integer> nums = new ArrayList<>();
+            nums.addAll(Randoms.pickUniqueNumbersInRange(1, 45, 6));
             nums = OrderASC(nums);
             Print.printNumbers(nums);
             Lotto lotto = new Lotto(nums);
@@ -36,7 +37,11 @@ public class Publish {
         int bonus = InputNum.askBonusNum();
 
         winningNums.add(bonus);
-        Validate.validateDuplication(winningNums);
+        try {
+            Validate.validateDuplication(winningNums);
+        }catch (IllegalArgumentException e){
+            System.out.println("[ERROR]입력된 로또번호와 중복되는 숫자 입니다.");
+        }
 
         return bonus;
     }

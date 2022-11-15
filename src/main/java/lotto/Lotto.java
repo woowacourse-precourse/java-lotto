@@ -7,7 +7,9 @@ public class Lotto {
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
+
         validate(numbers);
+
         this.numbers = numbers;
     }
 
@@ -15,11 +17,6 @@ public class Lotto {
 
         Validate.validateSize(numbers);
         Validate.validateDuplication(numbers);
-
-        for (int num : numbers){
-            Validate.validateRange(num);
-        }
-
 
     }
 
