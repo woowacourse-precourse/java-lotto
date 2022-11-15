@@ -3,16 +3,13 @@ package lotto.game;
 import lotto.domain.Lotto;
 import lotto.domain.Purchase;
 import lotto.util.Constant;
-import lotto.util.ErrorHandler;
-import lotto.util.ErrorMessage;
-import lotto.util.Validator;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static lotto.util.Constant.*;
+import static lotto.util.Constant.DEFAULT_SCORE;
 
 public class Service {
     private int quantity;
