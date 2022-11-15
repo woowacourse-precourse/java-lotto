@@ -47,6 +47,11 @@ public class LottoMachine {
     }
 
     private void compareLottos() {
+        putKeyValue();
+        Printer.requestMatchResults(lottoComparisonResults);
+    }
+
+    private void putKeyValue() {
         lottoComparisonResults.put("fifthPlace", lottoComparator.getNumberMatchesLottoNumber(3));
         lottoComparisonResults.put("fourthPlace", lottoComparator.getNumberMatchesLottoNumber(4));
         lottoComparisonResults.put("thirdPlace", lottoComparator.getNumberMatchesLottoNumber(5));
@@ -54,14 +59,7 @@ public class LottoMachine {
         //2등과 3등의 중복당첨을 피하기 위한 조치
         lottoComparisonResults.put("secondPlace", secondPlaceCount);
         lottoComparisonResults.put("thirdPlace", lottoComparisonResults.get("thirdPlace") - secondPlaceCount);
-
         lottoComparisonResults.put("firstPlace", lottoComparator.getNumberMatchesLottoNumber(6));
-        System.out.println("당첨 통계\n---");
-        System.out.printf("3개 일치 (5,000원) - %d개%n", lottoComparisonResults.get("fifthPlace"));
-        System.out.printf("4개 일치 (50,000원) - %d개%n", lottoComparisonResults.get("fourthPlace"));
-        System.out.printf("5개 일치 (1,500,000원) - %d개%n", lottoComparisonResults.get("thirdPlace"));
-        System.out.printf("5개 일치, 보너스 볼 일치 (30,000,000원) - %d개%n", lottoComparisonResults.get("secondPlace"));
-        System.out.printf("6개 일치 (2,000,000,000원) - %d개%n", lottoComparisonResults.get("firstPlace"));
     }
 
     private void calculateTotalWinningAmount() {
