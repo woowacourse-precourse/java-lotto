@@ -27,7 +27,9 @@
 ### 기능 1.
 
 - [X] 1.1 : 로또 구입 금액이 1,000원으로 나누어 떨어지지 않는 경우 (IllegalArgumentException)
-- [X] 1.2 : 입력받은 당첨 번호에 쉼표와 1~45까지의 숫자를 제외한 다른 문자가 있을 경우 (IllegalArgumentException)
+- [X] 1.1 : 로또 구입 금액이 숫자가 아닌 경우 (IllegalArgumentException)
+- [X] 1.2 : 입력받은 당첨 번호에 쉼표와 숫자를 제외한 다른 문자가 있을 경우 (IllegalArgumentException)
+- [X] 1.2 : 입력받은 당첨 번호 숫자가 1~45 사이의 값이 아닐 경우 (IllegalArgumentException)
 - [X] 1.2 : 입력받은 당첨 번호에 중복된 값이 있을 경우 (IllegalArgumentException)
 - [X] 1.3 : 당첨 번호가 6개가 아닐 경우 (IllegalArgumentException)
 - [X] 1.4 : 보너스 번호가 1~45까지의 숫자가 아닐 경우 (IllegalArgumentException)
