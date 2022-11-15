@@ -29,4 +29,12 @@ public class InputException extends IllegalArgumentException {
             checkNumbers[number] = true;
         }
     }
+
+    public void numbersRangeException(List<Integer> numbers) {
+        for (Integer number : numbers) {
+            if (1 > number || number > 45) {
+                throw new IllegalArgumentException(NOT_RANGE.getMessage());
+            }
+        }
+    }
 }

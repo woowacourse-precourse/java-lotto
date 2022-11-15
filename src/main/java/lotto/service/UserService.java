@@ -49,9 +49,7 @@ public class UserService {
     }
 
     public void setBonusNumber(String inputBonusNumber) {
-        inputException.notDigitException(inputBonusNumber);
-        // 1 ~ 45 확인후 아니면 예외처리
-        // 중복 숫자가 있으면 예외처리
+        bonusNumberValidate(inputBonusNumber);
         user.setBonusNumber(Integer.parseInt(inputBonusNumber));
     }
 
@@ -62,5 +60,11 @@ public class UserService {
 
     public User getUser() {
         return user;
+    }
+
+    public void bonusNumberValidate(String bonusNumber) {
+        inputException.notDigitException(bonusNumber);
+        inputException.numbersRangeException(List.of(Integer.parseInt(bonusNumber)));
+        inputException.duplicateNumberException(List.of(Integer.parseInt(bonusNumber)));
     }
 }
