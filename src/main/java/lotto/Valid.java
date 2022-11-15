@@ -40,6 +40,14 @@ public class Valid {
 		return false;
 	}
 
+	public static int isDigit(String lottoNumber) {
+		if (isNumeric(lottoNumber)) {
+			return Integer.parseInt(lottoNumber);
+		}
+		System.out.println(Message.INPUT_IS_NOT_NUMBER_ERROR);
+		throw new IllegalArgumentException(Message.INPUT_IS_NOT_NUMBER_ERROR);
+	}
+
 	public static void hasDuplicateNumber(List<Integer> numbers) {
 		List<Integer> eraseDuplicate = numbers.stream()
 										.distinct()
@@ -70,7 +78,7 @@ public class Valid {
 	}
 
 	public static int isDuplicateWithWinningNumber(List<Integer> winningNumber, String bonusNumber) {
-		int validNumber = Integer.parseInt(bonusNumber);
+		int validNumber = Valid.isDigit(bonusNumber);
 		if (winningNumber.contains(validNumber)) {
 			System.out.println(Message.DUPLICATE_WITH_WINNING_NUMBER);
 			throw new IllegalArgumentException(Message.DUPLICATE_WITH_WINNING_NUMBER);

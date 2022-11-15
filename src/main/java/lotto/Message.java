@@ -13,4 +13,5 @@ public class Message {
 	public static final String WRONG_RANGE_NUMBER_ERROR = "[ERROR]로또 번호는 1부터 45사이의 숫자이어야 합니다.";
 	public static final String DUPLICATE_WITH_WINNING_NUMBER = "[ERROR]보너스 번호는 당첨 번호와 중복되지 않아야 합니다.";
 	public static final String RESULT_OF_LOTTO = "당첨 통계\n---";
+	public static final String INPUT_IS_NOT_NUMBER = "[ERROR]입력하신 로또 번호가 숫자가 아닙니다.";
 }

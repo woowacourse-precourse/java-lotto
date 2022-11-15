@@ -43,7 +43,7 @@ public class LottoMachine {
 		StringTokenizer number = new StringTokenizer(inputNumber, ",");
 		List<Integer> numbers = new ArrayList<>();
 		while (number.hasMoreTokens()) {
-			int lottoNumber = Integer.parseInt(number.nextToken());
+			int lottoNumber = Valid.isDigit(number.nextToken());
 			numbers.add(lottoNumber);
 		}
 		return numbers;
