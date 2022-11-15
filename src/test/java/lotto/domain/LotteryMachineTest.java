@@ -1,6 +1,7 @@
 package lotto.domain;
 
 import lotto.inputValidators.NumberValidator;
+import lotto.messages.ErrorMessage;
 import org.junit.jupiter.api.*;
 
 import java.io.ByteArrayInputStream;
@@ -91,14 +92,23 @@ public class LotteryMachineTest {
     }
 
     private void winningNumbersCountTest(String[] winningNumbersInput) {
-        NumberValidator.validateWinningNumbers(winningNumbersInput);
+        if (!NumberValidator.isValidWinningNumbers(winningNumbersInput)) {
+            System.out.println(ErrorMessage.DRAW_NUMBER_INPUT_ERROR_MESSAGE.getMessage());
+            throw new IllegalArgumentException();
+        }
     }
 
     private void winningNumbersInvalidTest(String[] winningNumbersInput) {
-        NumberValidator.validateWinningNumbers(winningNumbersInput);
+        if (!NumberValidator.isValidWinningNumbers(winningNumbersInput)) {
+            System.out.println(ErrorMessage.DRAW_NUMBER_INPUT_ERROR_MESSAGE.getMessage());
+            throw new IllegalArgumentException();
+        }
     }
 
     private void bonusNumberTest(String bonusNumberInput, List<Integer> winningNumbers) {
-        NumberValidator.validateBonusNumber(bonusNumberInput, winningNumbers);
+        if (!NumberValidator.isValidBonusNumber(bonusNumberInput, winningNumbers)) {
+            System.out.println(ErrorMessage.BONUS_NUMBER_INPUT_ERROR_MESSAGE);
+            throw new IllegalArgumentException();
+        }
     }
 }

@@ -24,7 +24,7 @@ public class LotteryMachine {
         System.out.println(InputMessage.USER_MONEY_INPUT_MESSAGE.getMessage());
         String userInput = readLine();
         System.out.println();
-        if (MoneyValidator.isValidMoneyInput(userInput)) {
+        if (!MoneyValidator.isValidMoneyInput(userInput)) {
             System.out.println(ErrorMessage.MONEY_INPUT_ERROR_MESSAGE.getMessage());
             throw new IllegalArgumentException();
         }

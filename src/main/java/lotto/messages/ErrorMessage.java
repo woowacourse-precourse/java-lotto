@@ -2,11 +2,11 @@ package lotto.messages;
 
 public enum ErrorMessage {
     PREFIX_ERROR_MESSAGE("[ERROR]"),
-    MONEY_INPUT_ERROR_MESSAGE(PREFIX_ERROR_MESSAGE
+    MONEY_INPUT_ERROR_MESSAGE(PREFIX_ERROR_MESSAGE.getMessage()
             + "구입 금액은 천원 단위의 숫자여야 합니다."),
-    DRAW_NUMBER_INPUT_ERROR_MESSAGE(PREFIX_ERROR_MESSAGE
+    DRAW_NUMBER_INPUT_ERROR_MESSAGE(PREFIX_ERROR_MESSAGE.getMessage()
             + "당첨 번호는 1부터 45사이의 6개로 구성된 숫자여야 합니다."),
-    BONUS_NUMBER_INPUT_ERROR_MESSAGE(PREFIX_ERROR_MESSAGE
+    BONUS_NUMBER_INPUT_ERROR_MESSAGE(PREFIX_ERROR_MESSAGE.getMessage()
             + "보너스 번호는 1부터 45사이의 숫자 중 6개의 당첨 번호를 제외한 숫자여야 합니다.");
 
     private final String message;
