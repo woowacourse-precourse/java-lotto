@@ -27,4 +27,9 @@ public class Lotto {
             throw new IllegalArgumentException(LOTTO_NUMBER_OUT_OF_RANGE_ERROR.toString());
         }
     }
+
+    @Override
+    public String toString() {
+        return this.numbers.toString();
+    }
 }
