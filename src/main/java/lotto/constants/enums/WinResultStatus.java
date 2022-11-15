@@ -1,14 +1,15 @@
 package lotto.constants.enums;
 
 import java.util.List;
+import lotto.constants.utils.WinResultUtil;
 
 public enum WinResultStatus {
-    FIRST(6, 2_000_000_000),
-    SECOND(7, 30_000_000),
-    THIRD(5, 1_500_000),
-    FOURTH(4, 50_000),
-    FIFTH(3, 5_000),
-    NOTHING(0, 0);
+    FIRST(WinResultUtil.FIRST_PLACE_COUNT, WinResultUtil.FIRST_PRIZE),
+    SECOND(WinResultUtil.SECOND_PLACE_COUNT, WinResultUtil.SECOND_PRIZE),
+    THIRD(WinResultUtil.THIRD_PLACE_COUNT, WinResultUtil.THIRD_PRIZE),
+    FOURTH(WinResultUtil.FOURTH_PLACE_COUNT, WinResultUtil.FOURTH_PRIZE),
+    FIFTH(WinResultUtil.FIFTH_PLACE_COUNT, WinResultUtil.FIFTH_PRIZE),
+    NOTHING(WinResultUtil.NOTHING_PLACE_COUNT, WinResultUtil.NOTHING_PRIZE);
 
     final int winCount;
     final long prizeMoney;
