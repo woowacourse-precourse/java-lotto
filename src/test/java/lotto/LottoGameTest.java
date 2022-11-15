@@ -50,4 +50,11 @@ public class LottoGameTest {
 
         assertThat(statistic).isEqualTo(expectStatistic);
     }
+    @DisplayName("수익률을 구한다")
+    @Test
+    void getEarnPriceRate(){
+        LottoGame lottoGame = new LottoGame(this.price, this.lottoList, this.winningNumbers, this.bonusNumber);
+        double rate = lottoGame.getEarnPriceRate();
+        assertThat(rate).isEqualTo(100);
+    }
 }

@@ -47,4 +47,15 @@ public class LottoGame {
         }
         return new ArrayList<>(statistics);
     }
+    public Double getEarnPriceRate() {
+        List<Rank> statistics = getStatistics();
+        double sumReward = 0.0;
+        for (Rank rank : statistics) {
+            if (rank != null) {
+                sumReward += rank.getReward();
+            }
+        }
+        double rate = ((sumReward / this.price) * 100) / 100.0;
+        return rate * 100;
+    }
 }
