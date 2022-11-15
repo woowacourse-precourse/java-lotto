@@ -38,4 +38,13 @@ public class Manager {
         return Arrays.copyOfRange(matchCounts, LottoConst.MIN_MATCH, LottoConst.MAX_MATCH);
     }
 
+    public double calculator(int[] matchCounts) {
+        double totalWinnings = 0;
+        totalWinnings += matchCounts[0] * LottoConst.WINNING_MATCH_3;
+        totalWinnings += matchCounts[1] * LottoConst.WINNING_MATCH_4;
+        totalWinnings += matchCounts[2] * LottoConst.WINNING_MATCH_5;
+        totalWinnings += matchCounts[3] * LottoConst.WINNING_MATCH_5_AND_BONUS;
+        totalWinnings += matchCounts[4] * LottoConst.WINNING_MATCH_6;
+        return Math.round(totalWinnings * 10 / (double) purchasePrice) / (double) 10;
+    }
 }
