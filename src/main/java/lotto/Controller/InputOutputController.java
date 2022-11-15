@@ -8,6 +8,7 @@ import lotto.View.InputView;
 import lotto.View.OutputView;
 
 import java.util.List;
+import java.util.Map;
 
 public class InputOutputController {
 
@@ -19,6 +20,7 @@ public class InputOutputController {
     private List<Lotto> lottos;
     private Lotto winningNumbers;
     private int bonusNumber;
+    private Map<String,Integer> lottoResult;
 
     public void inputMoney(){
         Money money = inputView.printLotoBuyMoney();
@@ -40,6 +42,7 @@ public class InputOutputController {
     }
 
     public void checkLottoNumbers(){
-        logicService.checkLottoNumber(lottos,winningNumbers,bonusNumber);
+        lottoResult = logicService.checkLottoNumber(lottos,winningNumbers,bonusNumber);
+        outputView.printWinnigResult(lottoResult);
     }
 }
