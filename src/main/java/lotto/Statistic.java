@@ -14,6 +14,9 @@ public class Statistic {
     Statistic (){
         MatchedCount = new LinkedHashMap<>();
     }
+    public  Map<Integer,Integer> getMatchedCount() {
+        return MatchedCount;
+    }
 
     public void addMatchedCount(int number){
        MatchedCount.put(number, MatchedCount.getOrDefault(number,0)+1);
