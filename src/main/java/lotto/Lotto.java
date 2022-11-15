@@ -46,5 +46,7 @@ public class Lotto {
         return equalCount;
     }
 
-
+    public boolean isBonusContained(int bonusNumber){
+        return this.numbers.contains(bonusNumber);
+    }
 }
