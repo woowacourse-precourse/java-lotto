@@ -32,4 +32,9 @@ public class Lotto {
             containsBonus(bonus)
         );
     }
+
+    @Override
+    public String toString() {
+        return numbers.toString();
+    }
 }
