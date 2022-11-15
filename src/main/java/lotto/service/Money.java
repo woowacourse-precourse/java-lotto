@@ -2,6 +2,8 @@ package lotto.service;
 
 import static lotto.util.Constants.*;
 
+import lotto.util.Validator;
+
 public class Money {
 	private static int ticketCount;
 
@@ -9,24 +11,8 @@ public class Money {
 	}
 
 	public static void checkMoneyInput(String input) {
-		validateNumber(input);
-		validateUnitOfMoney(input);
-	}
-
-	private static void validateNumber (String input) {
-		if (!input.matches(ONLY_INTEGER_SERIES)) {
-			throw new IllegalArgumentException(ERROR_NUMERIC);
-		}
-	}
-
-	private static void validateUnitOfMoney (String input) {
-		if (!isUnitOfThousand(input)) {
-			throw new IllegalArgumentException(ERROR_UNIT_OF_THOUSAND);
-		}
-	}
-
-	private static boolean isUnitOfThousand(String input) {
-		return Integer.parseInt(input) % LOTTO_PRICE == 0;
+		Validator.validateNumber(input);
+		Validator.validateUnitOfMoney(input);
 	}
 
 	public static int calculateMaximumLottoCount(String input) {

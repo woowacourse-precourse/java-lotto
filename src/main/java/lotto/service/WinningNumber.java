@@ -6,55 +6,25 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.StringTokenizer;
 
+import lotto.util.Validator;
+
 public class WinningNumber {
 	public static void checkWinningNumber(String winningNumber) {
 		StringTokenizer splitter = splitWinningNumber(winningNumber);
 
 		while (splitter.hasMoreTokens()) {
 			String token = splitter.nextToken();
-			validateNumber(token);
-			validateNoZero(token);
-			validateMaxNumber(token);
+			Validator.validateNumber(token);
+			Validator.validateNoZero(token);
+			Validator.validateMaxNumber(token);
 		}
-		validateDuplicate(winningNumber);
-	}
-
-
-	private static void validateNumber (String token) {
-		if (!token.matches(ONLY_INTEGER_SERIES)) {
-			throw new IllegalArgumentException(ERROR_NUMERIC);
-		}
-	}
-
-	private static void validateNoZero (String token) {
-		if (Integer.parseInt(token) == ZERO) {
-			throw new IllegalArgumentException(ERROR_ZERO);
-		}
-	}
-
-	private static void validateMaxNumber (String token) {
-		if (Integer.parseInt(token) > MAX_NUMBER) {
-			throw new IllegalArgumentException(ERROR_MAX_NUMBER);
-		}
-	}
-
-
-	private static void validateDuplicate (String winningNumber) {
-		if (hasDuplicatedNum(convertToSet(winningNumber))) {
-			throw new IllegalArgumentException(ERROR_DUPLICATE);
-		}
+		Validator.validateDuplicate(winningNumber);
 	}
 
 	private static StringTokenizer splitWinningNumber(String winningNumber) {
 		StringTokenizer splitter = new StringTokenizer(winningNumber, DELIMITER);
-		validateInputWinningNumber(splitter);
+		Validator.validateInputWinningNumber(splitter);
 		return splitter;
-	}
-
-	private static void validateInputWinningNumber (StringTokenizer splitter) {
-		if (splitter.countTokens() != LOTTO_NUMBER_SIZE) {
-			throw new IllegalArgumentException(ERROR_NOT_COMMA);
-		}
 	}
 
 	public static Set<Integer> convertToSet(String winningNumber) {
@@ -65,9 +35,5 @@ public class WinningNumber {
 			numbers.add(Integer.parseInt(token));
 		}
 		return numbers;
-	}
-
-	private static boolean hasDuplicatedNum(Set<Integer> numbers) {
-		return numbers.size() != LOTTO_NUMBER_SIZE;
 	}
 }

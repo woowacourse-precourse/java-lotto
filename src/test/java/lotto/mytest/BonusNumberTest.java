@@ -10,6 +10,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import lotto.service.BonusNumber;
+import lotto.util.Validator;
 
 public class BonusNumberTest {
 	@DisplayName("숫자가 아닌 경우 예외가 발생")
@@ -51,7 +52,7 @@ public class BonusNumberTest {
 	void duplicatedWithWinningNumber() {
 		List<Integer> winningNumber = List.of(1, 2, 3, 4, 5, 6);
 		assertThatThrownBy(() -> {
-			BonusNumber.checkDuplicateBonusNumber("6", winningNumber);
+			Validator.validateDuplicateBonusNumber("6", winningNumber);
 		}).isInstanceOf(IllegalArgumentException.class);
 	}
 }
