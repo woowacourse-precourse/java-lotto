@@ -111,7 +111,7 @@ public class LottoGame {
     }
 
     private boolean isValidWinningNumbers(List<String> numbers) {
-        if(!isValidWinningNumbersSize(numbers))
+        if(!isValidWinningNumbersSize(numbers) || !isValidWinningNumbersScope(numbers))
             return false;
         return true;
     }
@@ -120,12 +120,27 @@ public class LottoGame {
         return numbers.size() == 6;
     }
 
+    private boolean isValidWinningNumbersScope(List<String> numbers) {
+        for(String number : numbers){
+            if(!(Integer.parseInt(number) >= LOTTO_MIN_NUMBER && Integer.parseInt(number) <= LOTTO_MAX_NUMBER))
+                return false;
+        }
+        return true;
+    }
+
     private int getBonusNumber() {
         System.out.println("보너스 볼을 입력해 주세요.");
         
         String bonusNumber = readLine();
+        if(!isValidBonusNumber(bonusNumber))
+            throw new IllegalArgumentException();
 
         return Integer.parseInt(bonusNumber);
     }
 
+    private boolean isValidBonusNumber(String bonusNumber) {
+        if(!(Integer.parseInt(bonusNumber) >= LOTTO_MIN_NUMBER && Integer.parseInt(bonusNumber) <= LOTTO_MAX_NUMBER))
+            return false;
+        return true;
+    }
 }
