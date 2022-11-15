@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class LottoTest {
@@ -24,4 +25,11 @@ class LottoTest {
     }
 
     // 아래에 추가 테스트 작성 가능
+    @DisplayName("(countCoincidence) 로또 번호가 몇개 맞는지 확인 하는 함수")
+    @Test
+    void countCoincidenceTest() {
+        Lotto testLotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+        List<Integer> result = testLotto.countCoincidence(List.of(4,5,6,10,12,14), 1);
+        assertThat(result).isEqualTo(List.of(3, 1));
+    }
 }
