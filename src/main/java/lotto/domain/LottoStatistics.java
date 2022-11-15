@@ -59,7 +59,7 @@ public class LottoStatistics {
 
     public List<Integer> countContain(int number, List<Integer> winningSixNumbers, int winningBonusNumber, List<Integer> count){
         if (winningSixNumbers.contains(number)) count.set(lottoSixNumber,count.get(lottoSixNumber)+1);
-        else if (number == winningBonusNumber) count.set(lottoBonusNumber,1);
+        if (number == winningBonusNumber) count.set(lottoBonusNumber,1);
         return count;
     }
 
