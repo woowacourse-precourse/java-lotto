@@ -8,7 +8,19 @@ import static lotto.Application.printErrorMessage;
 
 public class WinningNumbers {
     private List<Integer> winningNumbers;
+
+
     private int bonusNumber;
+
+    public List<Integer> getWinningNumbers() {
+        return winningNumbers;
+    }
+
+    public int getBonusNumber() {
+        return bonusNumber;
+    }
+
+
 
     public WinningNumbers(String input) {
         validate(input);
