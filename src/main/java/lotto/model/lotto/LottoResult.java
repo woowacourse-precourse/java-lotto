@@ -1,4 +1,8 @@
-package lotto;
+package lotto.model.lotto;
+
+import lotto.model.customer.Customer;
+import lotto.model.lotto.Lotto;
+import lotto.model.lotto.Rank;
 
 import java.util.*;
 import java.util.stream.Collectors;

@@ -1,6 +1,8 @@
-package lotto;
+package lotto.model.lotto;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import lotto.model.lotto.Lotto;
+import lotto.model.lotto.LottoWinNumber;
 
 import java.util.List;
 

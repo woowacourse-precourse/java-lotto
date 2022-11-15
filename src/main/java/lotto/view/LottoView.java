@@ -1,12 +1,15 @@
-package lotto;
+package lotto.view;
 
 import camp.nextstep.edu.missionutils.Console;
+import lotto.model.customer.Customer;
+import lotto.model.lotto.Lotto;
+import lotto.model.lotto.LottoResult;
 
 import java.util.*;
 
-import static lotto.Rank.*;
+import static lotto.model.lotto.Rank.*;
 
-public class View {
+public class LottoView {
     private final static int LOTTO_PRICE = 1000;
     private final static int LOTTO_NUMBER_AMOUNT = 6;
 

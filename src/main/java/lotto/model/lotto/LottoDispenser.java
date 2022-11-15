@@ -1,4 +1,6 @@
-package lotto;
+package lotto.model.lotto;
+
+import lotto.model.customer.Customer;
 
 import java.util.ArrayList;
 import java.util.List;
