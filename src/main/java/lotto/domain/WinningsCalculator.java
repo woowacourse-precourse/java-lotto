@@ -6,13 +6,35 @@ public class WinningsCalculator {
     private final List<Integer> winningNumbers;
     private final int bonusNumber;
 
-    public WinningsCalculator(List<Integer> numbers, int number) {
-        this.winningNumbers = new Lotto(numbers).getNumbers();
-        this.bonusNumber = number;
+    public WinningsCalculator(List<Integer> winningNumbers, int bonusNumber) {
+        validateDuplicateNumber(winningNumbers, bonusNumber);
+        this.winningNumbers = new Lotto(winningNumbers).getNumbers();
+        this.bonusNumber = bonusNumber;
+    }
+
+    private void validateDuplicateNumber(List<Integer> winningNumbers, int bonusNumber) {
+        String DUPLICATION_ERROR_MESSAGE = "[ERROR] 로또 번호와 보너스 번호가 중복됩니다.";
+        if (
+                winningNumbers.stream()
+                        .anyMatch(number -> number.equals(bonusNumber))
+        ) {
+            throw new IllegalArgumentException(DUPLICATION_ERROR_MESSAGE);
+        }
     }
 
     public Map<String, Integer> countLottoRankings(List<List<Integer>> lottoPapers) {
-        Map<String, Integer> rankingCounts = new HashMap<>() {
+        Map<String, Integer> rankingCounts = initializeMap();
+
+        for (List<Integer> lotto : lottoPapers) {
+            int winningCount = countMatchingWinningNumbers(lotto);
+            int bonusCount = countMatchingBonusNumbers(lotto);
+            addRankingCounts(rankingCounts, winningCount, bonusCount);
+        }
+        return rankingCounts;
+    }
+
+    private Map<String, Integer> initializeMap() {
+        return new HashMap<>() {
             {
                 put("FIRST_PLACE", 0);
                 put("SECOND_PLACE", 0);
@@ -21,12 +43,6 @@ public class WinningsCalculator {
                 put("FIFTH_PLACE", 0);
             }
         };
-        for (List<Integer> lotto : lottoPapers) {
-            int winningCount = countMatchingWinningNumbers(lotto);
-            int bonusCount = countMatchingBonusNumbers(lotto);
-            addRankingCounts(rankingCounts, winningCount, bonusCount);
-        }
-        return rankingCounts;
     }
 
     public void addRankingCounts(Map<String, Integer> rankingCounts, int winningCount, int bonusCount) {
