@@ -18,5 +18,8 @@ public class ExceptionHandler extends IllegalArgumentException{
         if (options.equals("RandomlottoCondition")) {
             throw new IllegalArgumentException("[ERROR] 동일한 번호의 로또가 있습니다.");
         }
+        if (options.equals("Nospace")) {
+            throw new IllegalArgumentException("[ERROR] 띄어쓰기는 불가합니다.");
+        }
     }
 }
