@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
+import java.util.function.Predicate;
+import java.util.stream.Stream;
 
 public class Lotto {
 
@@ -39,5 +41,14 @@ public class Lotto {
         if (new HashSet<>(numbers).size() != 6) {
             throw new IllegalArgumentException("[ERROR] 로또 번호는 모두 달라야 합니다.");
         }
+    }
+
+    public MatchPair calculateMatchNumber(WinningLotto winningLotto){
+        Stream<Integer> lottoStream = this.numbers.stream();
+        Stream<Integer> winningStream = winningLotto.getNumbers().stream();
+        int matchNumbers = (int)lottoStream.filter(lotto->winningStream.anyMatch(Predicate.isEqual(lotto)))
+                .count();
+        boolean matchBonusNumber = this.numbers.contains(winningLotto.getBonusNumber());
+        return new MatchPair(matchNumbers,matchBonusNumber);
     }
 }

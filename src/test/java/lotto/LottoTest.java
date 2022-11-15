@@ -1,5 +1,6 @@
 package lotto;
 
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -29,6 +30,12 @@ class LottoTest {
                 .isInstanceOf(IllegalArgumentException.class);
 
 
+    }
+    @Test
+    void calculateRankingTest(){
+        Lotto lotto = new Lotto(List.of(1,2,3,4,5,6));
+        WinningLotto winningLotto = new WinningLotto(List.of(1,2,3,10,11,12),45);
+        Assertions.assertThat(lotto.calculateMatchNumber(winningLotto)).isEqualTo(3);
     }
 
 }
