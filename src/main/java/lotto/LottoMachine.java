@@ -24,7 +24,7 @@ public class LottoMachine {
 	}
 
 	public void inputWinningNumber() {
-		System.out.println(Message.INPUT_WINNING_NUMBER);
+		View.printInputWinningLottoNumber();
 		String inputNumber = readLine();
 		List<Integer> numbers = splitInputNumber(inputNumber);
 		winningLotto = new Lotto(numbers);
@@ -33,7 +33,7 @@ public class LottoMachine {
 	}
 
 	private void inputBonusNumber() {
-		System.out.println(Message.INPUT_BONUS_NUMBER);
+		View.printInputBonusNumber();
 		String inputBonusNumber = readLine();
 		bonusNumber = Valid.isDuplicateWithWinningNumber(winningLotto.getNumbers(), inputBonusNumber);
 		Valid.hasCorrectRangeNumber(bonusNumber);

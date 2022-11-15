@@ -13,12 +13,12 @@ public class User {
 	LottoMachine lottoMachine = new LottoMachine();
 
 	public void inputPurchaseAmount() {
-		System.out.println(Message.INPUT_PURCHASE_AMOUNT_MESSAGE);
+		View.printInputPurchaseAmount();
 		purchaseAmount = Valid.validatePurchaseAmount(readLine());
 	}
 
 	public void purchaseLotto() {
-		System.out.println(lottoAmount + Message.LOTTO_PURCHASE_MESSAGE);
+		View.printLottoAmount(lottoAmount);
 		do {
 			List<Integer> lotto = lottoMachine.generateLotto();
 			System.out.println(lotto);
@@ -31,7 +31,7 @@ public class User {
 	}
 
 	public void prizeResult() {
-		System.out.println(Message.RESULT_OF_LOTTO);
+		View.printPrizeResult();
 		HashMap<Prize, Integer> result= setResult();
 		for (Lotto lotto : lottos) {
 			int hitNumber = lottoMachine.countHitNumber(lotto);
