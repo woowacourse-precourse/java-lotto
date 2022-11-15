@@ -10,7 +10,8 @@ class LottoMachineTest {
 
     @Test
     public void 로또_발행_오름차순_테스트(){
-        Lotto lotto = LottoMachine.createLotto();
+        LottoMachine lottoMachine = new LottoMachine();
+        Lotto lotto = lottoMachine.createLotto();
         List<Integer> numbers = lotto.getNumbers();
 
         Assertions.assertThat(numbers.get(0))

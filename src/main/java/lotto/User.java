@@ -7,7 +7,9 @@ import java.util.List;
 public class User {
     private int money;
     private List<Lotto> lottos;
+    private LottoMachine lottoMachine;
     public User() {
+        lottoMachine = new LottoMachine();
     }
 
     public void inputMoney(){
@@ -29,7 +31,7 @@ public class User {
     }
 
     private void buyLotto(){
-        this.lottos = LottoMachine.buyLotto(money);
+        this.lottos = lottoMachine.buyLotto(money);
     }
 
 
