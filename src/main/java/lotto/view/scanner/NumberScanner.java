@@ -1,6 +1,7 @@
 package lotto.view.scanner;
 
 import lotto.domain.ErrorType;
+import lotto.domain.IllegalArgumentException;
 
 import java.util.ArrayList;
 import java.util.List;
