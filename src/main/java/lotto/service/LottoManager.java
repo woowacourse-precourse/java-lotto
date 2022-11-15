@@ -2,10 +2,13 @@ package lotto.service;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 import java.util.stream.LongStream;
 import lotto.utils.constants.Comment;
 import lotto.utils.constants.IntegerCommon;
+import lotto.utils.constants.ErrorMessage;
 import lotto.utils.constants.LottoConstant;
 import lotto.domain.Lotto;
 import lotto.utils.iosupport.LottoPrinter;
@@ -13,9 +16,14 @@ import lotto.utils.validator.UserMoneyValidator;
 
 public class LottoManager {
 
+    private static final String regex = ",";
+
     public void run() {
         long purchaseAmount = processPurchase();
         List<Lotto> lottoNumbers = processLottoNumbers(purchaseAmount);
+        Lotto winningNumbers = getWinningNumbers();
+        int bonusNumber = getBonusNumber();
+        isValidBonusNumber(winningNumbers, bonusNumber);
     }
 
     private List<Lotto> processLottoNumbers(long purchaseAmount) {
@@ -47,5 +55,35 @@ public class LottoManager {
                 });
 
         return lottoNumbers;
+    }
+
+    private Lotto getWinningNumbers() {
+        System.out.println();
+        System.out.println(Comment.INPUT_WINNING_NUMBER.getComment());
+        String winningNumbers = Console.readLine();
+        try {
+            List<Integer> numbers = Arrays.stream(winningNumbers.split(regex))
+                    .map(Integer::parseInt)
+                    .collect(Collectors.toList());
+            return new Lotto(numbers);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException(ErrorMessage.INVALID_LOTTO_TYPE.getMessage());
+        }
+    }
+
+    private int getBonusNumber() {
+        System.out.println(Comment.INPUT_BONUS_NUMBER.getComment());
+        String input = Console.readLine();
+        try {
+            return Integer.parseInt(input);
+        } catch (IllegalArgumentException e) {
+            throw new IllegalArgumentException(ErrorMessage.INVALID_LOTTO_TYPE.getMessage());
+        }
+    }
+
+    private void isValidBonusNumber(Lotto lottoNumbers, int bonusNumber) {
+        if (lottoNumbers.getNumbers().contains(bonusNumber)) {
+            throw new IllegalArgumentException(ErrorMessage.INVALID_BONUS_NUMBER.getMessage());
+        }
     }
 }
