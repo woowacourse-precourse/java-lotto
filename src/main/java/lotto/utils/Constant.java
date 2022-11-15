@@ -1,7 +1,5 @@
 package lotto.utils;
 
-import java.security.PublicKey;
-
 public class Constant {
     public static final int LOTTO_MINIMUM = 1;
     public static final int LOTTO_MAXIMUM = 45;
