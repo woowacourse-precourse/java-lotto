@@ -5,14 +5,26 @@ import lotto.exception.LottoError;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class User {
     private final List<Lotto> lottos = new ArrayList<>();
+    private final Map<Prize, Integer> prizes = new HashMap<>();
     private int purchaseAmount;
+
+    public User() {
+        Arrays.stream(Prize.values())
+                .forEach(o -> prizes.put(o, 0));
+    }
 
     public List<Lotto> getLottos() {
         return lottos;
+    }
+
+    public Map<Prize, Integer> getPrizes() {
+        return prizes;
     }
 
     public int getPurchaseAmount() {
@@ -33,6 +45,24 @@ public class User {
         }
 
         return lottos;
+    }
+
+    public void addPrize(Prize prize) {
+        prizes.put(prize, prizes.get(prize) + 1);
+    }
+
+    public String getYield() {
+        double yieldPercent = (double) sumPrizes() / purchaseAmount * 100;
+
+        return String.format("%.1f", yieldPercent);
+    }
+
+    private long sumPrizes() {
+        return prizes.entrySet()
+                .stream()
+                .mapToLong(o -> (long) o.getKey()
+                        .getPrize() * o.getValue())
+                .sum();
     }
 
     private void validate(String input) throws RuntimeException {

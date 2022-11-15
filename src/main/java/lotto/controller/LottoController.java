@@ -3,6 +3,7 @@ package lotto.controller;
 import camp.nextstep.edu.missionutils.Console;
 import lotto.domain.Answer;
 import lotto.domain.Lotto;
+import lotto.domain.Prize;
 import lotto.domain.User;
 import lotto.view.LottoView;
 
@@ -33,6 +34,18 @@ public class LottoController {
 
         lottoView.inputBonus();
         answer.inputBonusNumber(Console.readLine());
+    }
+
+    public void getResult() {
+        for (Lotto lotto : user.getLottos()) {
+            int countAnswer = countAnswer(lotto);
+            int countBonus = countBonus(lotto);
+
+            user.addPrize(Prize.getResult(countAnswer, countBonus));
+        }
+
+        lottoView.result(user.getPrizes());
+        lottoView.yield(user.getYield());
     }
 
     private int countAnswer(Lotto lotto) {
