@@ -1,5 +1,6 @@
 package lotto;
 
+import lotto.constant.LottoResult;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -53,5 +54,23 @@ class LottoPrizeTest {
         int matchCount = (int) method.invoke(lottoPrize, userNums, 5);
         assertThat(matchCount).isEqualTo(50);
     }
+
+   @Test
+   @DisplayName("당첨 개수에 따라 올바른 당첨 금액을 리턴해야 한다.")
+   void 당첨_금액_테스트() throws Exception {
+       //given
+       LottoWinningNumber lottoWinningNumber = new LottoWinningNumber();
+       LottoPrize lottoPrize = new LottoPrize(lottoWinningNumber);
+       Method method = lottoPrize.getClass().getDeclaredMethod("getTotalWinningAmount");
+       method.setAccessible(true);
+
+       //when
+       LottoResult.THREE_COUNT.addMatchCount();
+       LottoResult.FOUR_COUNT.addMatchCount();
+
+       //then
+       long totalWinningAmount = (long) method.invoke(lottoPrize);
+       assertThat(totalWinningAmount).isEqualTo(55000);
+   }
 
 }
