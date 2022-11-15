@@ -1,12 +1,12 @@
 package lotto;
 
-import java.util.List;
+
+import game.PlayGame;
 
 public class Application {
     public static void main(String[] args) {
+        PlayGame playGame = new PlayGame();
         // TODO: 프로그램 구현
-        Lotto lo = new Lotto(MakeLotto.publishedLotto());
-        List<Integer> lotto = lo.getNumbers();
-        System.out.println(lotto);
+        playGame.run();
     }
 }
