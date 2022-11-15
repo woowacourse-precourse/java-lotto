@@ -73,6 +73,20 @@ class ApplicationTest extends NsTest {
         assertThatThrownBy(IOUtil::moneyInput).isInstanceOf(IllegalArgumentException.class).hasMessageContaining(ERROR_MESSAGE);
     }
 
+    @Test
+    void 당첨번호_입력_정상_테스트() {
+        InputStream in = generateUserInput("1,2,3,4,5,6");
+        System.setIn(in);
+        assertThat(IOUtil.answerNumberInput()).isInstanceOf(Lotto.class);
+    }
+
+    @Test
+    void 당첨번호_입력_예외_테스트() {
+        InputStream in = generateUserInput("132,432$#@");
+        System.setIn(in);
+        assertThatThrownBy(IOUtil::moneyInput).isInstanceOf(IllegalArgumentException.class).hasMessageContaining(ERROR_MESSAGE);
+    }
+
     public static InputStream generateUserInput(String input) {
         return new ByteArrayInputStream(input.getBytes());
     }
