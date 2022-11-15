@@ -56,14 +56,14 @@ class LottoServiceTest {
     void buyLotto() {
         //given
         RequestBuyLottoDto requestBuyLottoDto = new RequestBuyLottoDto("5000");
-        RequestBuyLottoDto errorRequestDto = new RequestBuyLottoDto("500영");
+
         //when
         ResponseBuyLottoDto response = lottoService.buyLotto(requestBuyLottoDto);
 
         //then
         assertThat(response.getLottos().size()).isEqualTo(5);
 
-        assertThatThrownBy(() -> lottoService.buyLotto(errorRequestDto))
+        assertThatThrownBy(() -> new RequestBuyLottoDto("500영"))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("[ERROR]");
 

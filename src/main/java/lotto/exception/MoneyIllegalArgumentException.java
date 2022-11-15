@@ -5,5 +5,6 @@ public class MoneyIllegalArgumentException extends IllegalArgumentException {
 
     public MoneyIllegalArgumentException(String message) {
         super(ExceptionUtil.ERROR_PREFIX + message);
+        System.out.println(ExceptionUtil.ERROR_PREFIX + message);
     }
 }

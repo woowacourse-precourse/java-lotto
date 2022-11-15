@@ -6,15 +6,21 @@ public class RequestBuyLottoDto {
     private String money;
 
     public RequestBuyLottoDto(String money) {
+        validate(money);
         this.money = money;
     }
 
     public int convertToInteger() {
-        try {
-            int result = Integer.parseInt(this.money);
-            return result;
-        } catch (RuntimeException exception) {
-            throw new MoneyIllegalArgumentException("잘못된 입력값 - 돈은 숫자로만 이루어져있어야합니다.");
+        int result = Integer.parseInt(this.money);
+        return result;
+    }
+
+    private void validate(String money) {
+        System.out.println(money);
+        for (int i = 0; i < money.length(); i++) {
+            if (!Character.isDigit(money.charAt(i))) {
+                throw new MoneyIllegalArgumentException("숫자여야합니다.");
+            }
         }
     }
 }

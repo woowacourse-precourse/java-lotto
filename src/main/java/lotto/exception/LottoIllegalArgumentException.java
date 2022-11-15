@@ -5,5 +5,6 @@ public class LottoIllegalArgumentException extends IllegalArgumentException {
 
     public LottoIllegalArgumentException(String message) {
         super(ExceptionUtil.ERROR_PREFIX + message);
+        System.out.println(ExceptionUtil.ERROR_PREFIX + message);
     }
 }

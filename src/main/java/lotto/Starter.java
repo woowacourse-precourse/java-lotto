@@ -46,11 +46,17 @@ public class Starter {
     }
 
     public void play() {
-        ResponseBuyLottoDto buyLottoDto = buyLotto();
-        ResponseMatchDto matchDto = playLotto(buyLottoDto);
-        ResponseAnalyzeRevenueDto analyzeRevenueDto = calculateRevenue(matchDto);
+        try {
+            ResponseBuyLottoDto buyLottoDto = buyLotto();
+            ResponseMatchDto matchDto = playLotto(buyLottoDto);
+            ResponseAnalyzeRevenueDto analyzeRevenueDto = calculateRevenue(matchDto);
 
-        ResultView resultView = new ResultView(matchDto.getRewardTable(), analyzeRevenueDto.getRevenueAverage());
-        resultView.print();
+            ResultView resultView = new ResultView(matchDto.getRewardTable(), analyzeRevenueDto.getRevenueAverage());
+            resultView.print();
+        } catch (IllegalArgumentException exception) {
+            System.out.println("[ERROR] " + exception.getMessage());
+        } catch (Exception exception) {
+            exception.printStackTrace();
+        }
     }
 }
