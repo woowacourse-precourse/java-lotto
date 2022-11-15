@@ -6,7 +6,7 @@ import java.util.Map;
 public class WinningStatistical {
     private final Map<WinningResult, Integer> winningResultCount = new HashMap<>();
     private Integer boughtPrice = 0;
-    private Integer winningPrice = 0;
+    private Long winningPrice = 0L;
 
     public void addWinningResult(WinningResult winningResult) {
         Integer prevWinningResultCount = winningResultCount.getOrDefault(winningResult, 0);
