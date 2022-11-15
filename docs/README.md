@@ -65,4 +65,6 @@
     - `generateWinningCount` 메소드를 호출하여 해당 인덱스가 몇번인지 반환한다.
   - generateWinningCount 메소드
     - 번호를 맞춘 개수와 보너스 여부에 따라 인덱스를 반환한다.
+  - printYield 메소드
+    - 최종적으로 수익률을 출력한다.
 ---
