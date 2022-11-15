@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static camp.nextstep.edu.missionutils.Console.*;
+import static lotto.Constants.*;
 
 public class UI {
     private int cost;
@@ -27,13 +28,13 @@ public class UI {
     }
 
     public void inputCost() {
-        System.out.println("구입 금액을 입력해 주세요.");
+        System.out.println(INPUT_COST.getValue());
         this.cost = Integer.parseInt(readLine());
         System.out.println();
     }
 
     public void inputWinning() {
-        System.out.println("당첨 번호를 입력해 주세요");
+        System.out.println(INPUT_WINNING_NUMBERS.getValue());
         String[] winning = readLine().split(",");
         for (int i = 0; i < winning.length; i++) {
             winningNumbers.add(Integer.parseInt(winning[i]));
@@ -42,13 +43,14 @@ public class UI {
     }
 
     public void inputBonus() {
-        System.out.println("보너스 번호를 입력해 주세요");
+        System.out.println(INPUT_BONUS_NUMBERS.getValue());
         this.bonus = Integer.parseInt(readLine());
         System.out.println();
     }
 
     public void showCostCount() {
-        System.out.println(this.cost/1000+"개를 구매했습니다.");
+        System.out.print(this.cost / 1000);
+        System.out.println(SHOW_COST_COUNT.getValue());
     }
 
     public void showLottoNumbers(List<List<Integer>> lottoNumbers) {
@@ -59,16 +61,16 @@ public class UI {
     }
 
     public void showWinning(int first, int second, int third, int fourth, int fifth) {
-        System.out.println("당첨 통계");
-        System.out.println("---");
-        System.out.println("3개 일치 (5,000원) - "+fifth+"개");
-        System.out.println("4개 일치 (50,000원) - "+fourth+"개");
-        System.out.println("5개 일치 (1,500,000원) - "+third+"개");
-        System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - "+second+"개");
-        System.out.println("6개 일치 (2,000,000,000원) - "+first+"개");
+        System.out.println(SHOW_WINNING.getValue());
+        System.out.println(SHOW_WINNING_LINE.getValue());
+        System.out.println(SHOW_WINNING_FIFTH.getValue()+fifth+SHOW_WINNING_UNIT.getValue());
+        System.out.println(SHOW_WINNING_FOURTH.getValue()+fourth+SHOW_WINNING_UNIT.getValue());
+        System.out.println(SHOW_WINNING_THIRD.getValue()+third+SHOW_WINNING_UNIT.getValue());
+        System.out.println(SHOW_WINNING_SECOND.getValue()+second+SHOW_WINNING_UNIT.getValue());
+        System.out.println(SHOW_WINNING_FIRST.getValue()+first+SHOW_WINNING_UNIT.getValue());
     }
 
     public void showYield(float yield) {
-        System.out.println("총 수익률은 "+yield+"%입니다.");
+        System.out.println(SHOW_YIELD.getValue()+yield+SHOW_YIELD_PERCENT.getValue());
     }
 }
