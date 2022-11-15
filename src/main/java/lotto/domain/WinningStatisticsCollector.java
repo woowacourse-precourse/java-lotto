@@ -10,11 +10,11 @@ import lotto.util.Converter;
 public class WinningStatisticsCollector {
 	private static final int INITIAL_VALUE = 0;
 	private static final int ADDED_COUNT = 1;
-	EnumMap<WinningRating, Integer> countsOfWins;
-	List<Lotto> lotteries;
-	int profit;
-	WinningNumbers winningNumbers;
-	BonusNumber bonusNumber;
+	private EnumMap<WinningRating, Integer> countsOfWins;
+	private final List<Lotto> lotteries;
+	private int profit;
+	private final WinningNumbers winningNumbers;
+	private final BonusNumber bonusNumber;
 	public WinningStatisticsCollector(List<Lotto> lotteries, WinningNumbers winningNumbers, BonusNumber bonusNumber) {
 		this.lotteries = lotteries;
 		this.winningNumbers = winningNumbers;

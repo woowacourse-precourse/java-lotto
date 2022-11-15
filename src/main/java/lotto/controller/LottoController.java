@@ -10,8 +10,8 @@ import lotto.view.InputView;
 import lotto.view.OutputView;
 
 public class LottoController {
-	InputView inputView = new InputView();
-	OutputView outputView = new OutputView();
+	private final InputView inputView = new InputView();
+	private final OutputView outputView = new OutputView();
 
 	public void control() {
 		try {
