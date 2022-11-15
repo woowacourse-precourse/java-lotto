@@ -6,7 +6,7 @@ import static lotto.Error.BONUS_NUMBER_DUPLICATED_ERROR;
 import static lotto.Error.BONUS_NUMBER_RANGE_ERROR;
 
 public class BonusNumber {
-    private final int bonusNumber;
+    public int bonusNumber;
 
     public BonusNumber(int bonusNumber, List<Integer> winNumbers) {
         checkRange(bonusNumber);
