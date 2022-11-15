@@ -24,6 +24,13 @@ public class LottoController {
         LottoWinNumberInfo lottoWinNumberInfo = getInputWinNumbers();
         List<Lotto> lottoNumbers = createLottoNumbers(lottoPurchaseInfo.getLottoGameCount());
         List<String> lottoScore = getLottoRank(lottoNumbers, lottoWinNumberInfo);
+        printResult(lottoScore, lottoPurchaseInfo.getLottoPrice());
+    }
+
+    private void printResult(List<String> lottoScore, int lottoPrice) {
+        /*
+           로또 통계 구현
+         */
     }
 
     private LottoWinNumberInfo getInputWinNumbers() {
