@@ -7,14 +7,14 @@ import lotto.model.Lotto;
 import lotto.view.LottoUI;
 
 public class LottoController {
-    private static Lotto model;
+    private Lotto model;
     private static LottoUI view;
 
-    public static void makeLottery(){
+    public void makeLottery(){
         List<Integer> numbers = new ArrayList<>(Randoms.pickUniqueNumbersInRange(1, 45,6));
         model = new Lotto(numbers);
     }
-    public static Lotto getLottery(){
+    public Lotto getLottery(){
         return model;
     }
 
