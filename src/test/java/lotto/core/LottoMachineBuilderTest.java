@@ -15,6 +15,7 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -49,7 +50,7 @@ class LottoMachineBuilderTest {
 		winningLottoBonusNumber : 당첨로또 보너스 번호 입력
 		 */
 		final LottoFactory lottoFactory = mock(LottoFactory.class);
-		when(lottoFactory.issueLottoNumbersByPurchaseAmount(4000)).thenReturn(List.of(
+		when(lottoFactory.issueLottoNumbersByPurchaseAmount(anyInt())).thenReturn(List.of(
 				new Lotto(List.of(11, 12, 3, 4, 5, 6)),
 				new Lotto(List.of(4, 12, 33, 45, 25, 36)),
 				new Lotto(List.of(5, 31, 27, 1, 9, 11)),
