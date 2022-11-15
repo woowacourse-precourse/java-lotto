@@ -20,7 +20,7 @@ class UserInputTest {
         Throwable exception = assertThrows(IllegalArgumentException.class, () -> {
             UserInput.inputMoney();
         });
-        assertEquals("[ERROR] 숫자만 입력해주세요.", exception.getMessage());
+        assertEquals("[ERROR] 숫자 혹은 형식에 맞게 입력해주세요.", exception.getMessage());
     }
 
     @Test
