@@ -46,4 +46,6 @@ public class Winning {
         List<Integer> numbers = lotto.getNumbers();
         return (numbers.contains(bonusNumber));
     }
+
+
 }

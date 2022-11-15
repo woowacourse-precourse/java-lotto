@@ -20,4 +20,8 @@ public class Print {
             System.out.println(String.format("%s%d개", rank.getResultText(), totalRank.get(rank)));
         }
     }
+
+    public void profit(double profit){
+        System.out.println(String.format("총 수익률은 %.1f%입니다.", profit));
+    }
 }

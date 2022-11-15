@@ -30,4 +30,8 @@ public enum Rank {
     public boolean getBonusCount(){
         return this.bonus;
     }
+
+    public int getReward(){
+        return this.reward;
+    }
 }
