@@ -9,6 +9,14 @@ public class InputView {
         System.out.println(InputMessage.MONEY.message());
     }
 
+    public void printInputLotto(){
+        System.out.println(InputMessage.LOTTO.message());
+    }
+
+    public void printInputBonus(){
+        System.out.println(InputMessage.BONUS.message());
+    }
+
     public static InputView getInstance(){
         return instance;
     }
