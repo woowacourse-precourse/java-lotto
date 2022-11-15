@@ -11,7 +11,8 @@ public enum ErrorMessage {
             + LottoProperty.MAX_NUMBER.getProperty() +"까지의 숫자만 허용됩니다."),
     DUPLICATE_NUMBERS("중복된 숫자가 없도록 입력해주세요."),
     INVALID_MONEY_AMOUNT(LottoProperty.PRICE.getProperty() + "원 단위로 입력해주세요."),
-    DUPLICATE_BONUS_NUMBER("보너스 숫자는 당첨 번호와 중복되지 않아야 합니다.");
+    DUPLICATE_BONUS_NUMBER("보너스 숫자는 당첨 번호와 중복되지 않아야 합니다."),
+    INVALID_TICKET("해당 티켓은 판매된 티켓이 아닙니다.");
 
     private final String ERROR_PREFIX = "[ERROR] ";
     private final String errorMessage;
