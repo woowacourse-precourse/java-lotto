@@ -34,6 +34,24 @@ public class Validate {
         }
     }
 
+
+    public static int  isInteger(String input) {
+        if (input.matches("^\\d*$")) {
+            return Integer.parseInt(input);
+        }
+        throw new IllegalArgumentException("[ERROR] 숫자만 입력해 주세요.");
+    }
+
+    public static void canBuyLotto(int money) {
+        if (money < 1000) {
+            throw new IllegalArgumentException("[ERROR] 1,000원 이상을 입력해 주세요.");
+        }
+
+        if (money % 1000 != 0) {
+            throw new IllegalArgumentException("[ERROR] 1,000원으로 나누어 떨어지는 금액만 입력해 주세요.");
+        }
+    }
+
     public static void inRangeLottoNumber(Integer lottoNumber) {
         if (lottoNumber >= 1 && lottoNumber <= 45) {
             return;

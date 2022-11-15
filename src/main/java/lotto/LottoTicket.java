@@ -5,12 +5,14 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
+import static lotto.Validate.canBuyLotto;
+import static lotto.Validate.isInteger;
+
 public class LottoTicket {
 
     public List<Lotto> buy(String input) {
         List<Lotto> lottos = new ArrayList<>();
-        validateInteger(input);
-        int money = Integer.parseInt(input);
+        int money = isInteger(input);
         canBuyLotto(money);
 
         for (int ticket = 0; ticket < money / 1000; ticket++) {
@@ -19,22 +21,5 @@ public class LottoTicket {
         }
 
         return lottos;
-    }
-
-    private void validateInteger(String input) {
-        if (input.matches("^\\d*$")) {
-            return;
-        }
-        throw new IllegalArgumentException("[ERROR] 숫자만 입력해 주세요.");
-    }
-
-    private void canBuyLotto(int money) {
-        if (money < 1000) {
-            throw new IllegalArgumentException("[ERROR] 1,000원 이상을 입력해 주세요.");
-        }
-
-        if (money % 1000 != 0) {
-            throw new IllegalArgumentException("[ERROR] 1,000원으로 나누어 떨어지는 금액만 입력해 주세요.");
-        }
     }
 }
