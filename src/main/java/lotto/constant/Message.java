@@ -1,7 +1,8 @@
 package lotto.constant;
 
+import lotto.domain.Service;
 import lotto.domain.model.Lotto;
-import lotto.util.WinningInfo;
+import lotto.domain.model.WinningInfo;
 
 import java.text.DecimalFormat;
 import java.util.List;

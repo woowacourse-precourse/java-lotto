@@ -3,7 +3,7 @@ package lotto.domain;
 import lotto.constant.Constant;
 import lotto.constant.Message;
 import lotto.domain.model.Lotto;
-import lotto.util.WinningInfo;
+import lotto.domain.model.WinningInfo;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -67,7 +67,7 @@ public class Game {
     }
 
     private int getRank(int sameCount, List<Integer> lottoNumbers) {
-        for (int i=0; i< WinningInfo.values().length; i++){
+        for (int i = 0; i< WinningInfo.values().length; i++){
 
             if (sameCount == Constant.CHECK_BONUS_COUNT){
                 return checkBonusNumberRank(lottoNumbers);
@@ -98,7 +98,7 @@ public class Game {
     }
 
     private void setWinningPrize() {
-        for (int i=0; i< WinningInfo.values().length; i++){
+        for (int i = 0; i< WinningInfo.values().length; i++){
             this.winningPrize += WinningInfo.values()[i].getPrize() * this.winningResult[i];
         }
     }
