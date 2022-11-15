@@ -9,12 +9,13 @@ import utils.Validator.IntegerValidator;
 
 public class WinNumber {
 
-    private Long roundId;
+    private final Long roundId;
     private final Set<Integer> winNumbers;
     private final Integer bonusNumber;
 
-    WinNumber(Set<Integer> winNumbers, Integer bonusNumber) {
+    WinNumber(Long roundId, Set<Integer> winNumbers, Integer bonusNumber) {
         validate(winNumbers, bonusNumber);
+        this.roundId = roundId;
         this.winNumbers = Collections.unmodifiableSet(winNumbers);
         this.bonusNumber = bonusNumber;
     }
@@ -62,20 +63,16 @@ public class WinNumber {
         return numbers.contains(number);
     }
 
+    public Long getRoundId() {
+        return roundId;
+    }
+
     public Set<Integer> getWinNumbers() {
         return winNumbers;
     }
 
     public int getBonusNumber() {
         return bonusNumber;
-    }
-
-    public Long getRoundId() {
-        return roundId;
-    }
-
-    public void setRoundId(Long roundId) {
-        this.roundId = roundId;
     }
 
     /**
@@ -88,10 +85,16 @@ public class WinNumber {
 
     public static class WinNumberBuilder {
 
+        private Long roundId;
         private Set<Integer> winNumbers;
         private Integer bonusNumber;
 
         private WinNumberBuilder() {
+        }
+
+        public WinNumberBuilder roundId(Long roundId) {
+            this.roundId = roundId;
+            return this;
         }
 
         public WinNumberBuilder winNumbers(Set<Integer> winNumbers) {
@@ -105,7 +108,7 @@ public class WinNumber {
         }
 
         public WinNumber build() {
-            return new WinNumber(winNumbers, bonusNumber);
+            return new WinNumber(roundId, winNumbers, bonusNumber);
         }
     }
 }
