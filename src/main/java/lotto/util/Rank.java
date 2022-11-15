@@ -12,12 +12,24 @@ public enum Rank {
 
     private final int matchCount;
     private final boolean matchBonus;
-    private final int price;
+    private final long price;
 
     Rank(int matchCount, boolean matchBonus, int price) {
         this.matchCount = matchCount;
         this.matchBonus = matchBonus;
         this.price = price;
+    }
+
+    public int getMatchCount() {
+        return matchCount;
+    }
+
+    public boolean isMatchBonus() {
+        return matchBonus;
+    }
+
+    public long getPrice() {
+        return price;
     }
 
     public static Rank fromCount(long count, boolean matchBonus) {
