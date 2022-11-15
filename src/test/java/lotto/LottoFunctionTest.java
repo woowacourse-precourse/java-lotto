@@ -20,7 +20,7 @@ public class LottoFunctionTest {
     void beforeEach(){
         lotto = new Lotto(List.of(1,2,3,4,5,8));
         awardLotto = new Lotto(List.of(1,2,3,4,7,8));
-        lottoResult = new LottoResult();
+        lottoResult = new LottoResult(lotto,awardLotto,9);
     }
     @DisplayName("Lotto 기능 테스트 isUnique")
     @Test
@@ -31,7 +31,7 @@ public class LottoFunctionTest {
     @DisplayName("LottoResult 기능 테스트 lotteryCheck")
     @Test
     void lotteryCheckTest(){
-        assertEquals(LottoProperties.LOTTO_SECONDWINNER,lottoResult.lotteryCheck(lotto,awardLotto,8));
+        assertEquals(LottoProperties.LOTTO_SECONDWINNER,lottoResult.getLottoProperties());
     }
 
 }

@@ -29,7 +29,7 @@ class GameTest{
         setInputValues("1,2,3,4,5,6");
         game.generateAwardLotto();
         setInputValues("7");
-        game.generateBonusNumber();
+        game.generateLottoBonusNumber();
     }
     @Test
     @DisplayName("로또 게임 예외 테스트 - 보너스 번호")
@@ -40,8 +40,7 @@ class GameTest{
         setInputValues("1,2,3,4,5,6");
         game.generateAwardLotto();
         setInputValues("7,8");
-        game.generateBonusNumber();
-        assertThatThrownBy(() -> game.generateBonusNumber())
+        assertThatThrownBy(() -> game.generateLottoBonusNumber())
                 .isInstanceOf(IllegalArgumentException.class);
     }
     @Test
@@ -53,8 +52,7 @@ class GameTest{
         setInputValues("1,2,3,4,5,6");
         game.generateAwardLotto();
         setInputValues("46");
-        game.generateBonusNumber();
-        assertThatThrownBy(() -> game.generateBonusNumber())
+        assertThatThrownBy(() -> game.generateLottoBonusNumber())
                 .isInstanceOf(IllegalArgumentException.class);
     }
     @Test
@@ -67,7 +65,7 @@ class GameTest{
         game.generateAwardLotto();
         setInputValues("5");
 
-        assertThatThrownBy(() -> game.generateBonusNumber())
+        assertThatThrownBy(() -> game.generateLottoBonusNumber())
                 .isInstanceOf(IllegalArgumentException.class);
     }
     @Test
