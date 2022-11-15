@@ -34,12 +34,33 @@ public class Lotto {
     }
 
     // n개 일치 저장하기
+    private int[] saveWinningResult(int matchCount, int[] matches) {
+        if (matchCount == 3) {
+            matches[0]++;
+        }
+
+        if (matchCount == 4) {
+            matches[1]++;
+        }
+
+        if (matchCount == 5) {
+            matches[2]++;
+        }
+
+        if (matchCount == 6) {
+            matches[3]++;
+        }
+
+        return matches;
+    }
 
     // 당첨 내역 출력
     public void printWinningResult(List<List<Integer>> randomNumber, int count) {
+        int[] matches = {0, 0, 0, 0};
+
         for (int i = 0; i < count; i++) {
             int matchCount = checkWinningNumbers(randomNumber.get(i));
-            System.out.println(matchCount);
+            matches = saveWinningResult(matchCount, matches);
         }
     }
 }
