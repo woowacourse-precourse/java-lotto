@@ -26,16 +26,7 @@ public class Controller {
         int lottoPaper = server.decideToBuyLotto(money);
         setMatchNumberCount();
         PrintResult.printBuyLotto(lottoPaper);
-        for (int lotto = 0; lotto < lottoPaper; lotto++) {
-            List<Integer> lottoNumber = setLottoNumber();
-            Set common = server.compareLottoNumber(lottoNumber, winLottoNumber);
-            int matchNumber = server.countMatchNumber(common);
-            if(isMatchNumberUnderThree(matchNumber)){
-                continue;
-            }
-            matchNumber = matchNumberNeedBonusNumber(matchNumber, lottoNumber, bonusNumber);
-            putMatchNumberCount(matchNumber);
-        }
+        lottoCompareAndSave(lottoPaper, winLottoNumber, bonusNumber);
         PrintResult.printMatchDetail(matchNumberCount);
         int totalMoney = server.moneyToLotto(matchNumberCount);
         PrintResult.printRevenue(totalMoney, money);
@@ -86,5 +77,18 @@ public class Controller {
         new Lotto(lottoNumber);
         PrintResult.printLottoNumber(lottoNumber);
         return lottoNumber;
+    }
+
+    private void lottoCompareAndSave(int lottoPaper, List<Integer> winLottoNumber, int bonusNumber){
+        for (int lotto = 0; lotto < lottoPaper; lotto++) {
+            List<Integer> lottoNumber = setLottoNumber();
+            Set common = server.compareLottoNumber(lottoNumber, winLottoNumber);
+            int matchNumber = server.countMatchNumber(common);
+            if(isMatchNumberUnderThree(matchNumber)){
+                continue;
+            }
+            matchNumber = matchNumberNeedBonusNumber(matchNumber, lottoNumber, bonusNumber);
+            putMatchNumberCount(matchNumber);
+        }
     }
 }
