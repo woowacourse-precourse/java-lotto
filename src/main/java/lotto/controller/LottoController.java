@@ -39,10 +39,17 @@ public class LottoController {
     }
 
     public void generateWinningLotto() {
+        generateWinningNumber();
+        generateBonusNumber();
+    }
+
+    private void generateWinningNumber() {
         InputView.requestWinningLottoNumber();
         List<Integer> winningNumber = user.inputOfWinningNumber();
         winningLotto = new Lotto(winningNumber);
+    }
 
+    private void generateBonusNumber() {
         InputView.requestBonusNumber();
         bonusNumber = user.inputOfBonusNumber(winningLotto);
     }
