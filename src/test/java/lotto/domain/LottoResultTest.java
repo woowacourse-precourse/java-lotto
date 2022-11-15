@@ -62,8 +62,8 @@ public class LottoResultTest {
         @Test
         void success3() {
             List<Integer> lottoNumbers = Arrays.asList(1, 2, 3, 4, 5, 6);
-            List<Integer> winningNumbers = Arrays.asList(1, 2, 3, 4, 8, 9);
-            Integer bonusNumber = 6;
+            List<Integer> winningNumbers = Arrays.asList(1, 2, 3, 4, 5, 9);
+            Integer bonusNumber = 7;
             assertThat(getLottoPlace(lottoNumbers, winningNumbers, bonusNumber)).isEqualTo(3);
         }
 
@@ -71,7 +71,7 @@ public class LottoResultTest {
         @Test
         void success4() {
             List<Integer> lottoNumbers = Arrays.asList(1, 2, 3, 4, 5, 6);
-            List<Integer> winningNumbers = Arrays.asList(1, 2, 8, 9, 10, 4);
+            List<Integer> winningNumbers = Arrays.asList(1, 2, 3, 9, 10, 4);
             Integer bonusNumber = 6;
             assertThat(getLottoPlace(lottoNumbers, winningNumbers, bonusNumber)).isEqualTo(4);
         }
@@ -89,7 +89,7 @@ public class LottoResultTest {
         @Test
         void success6() {
             List<Integer> lottoNumbers = Arrays.asList(1, 2, 3, 4, 5, 6);
-            List<Integer> winningNumbers = Arrays.asList(1, 2, 11, 12, 13, 14);
+            List<Integer> winningNumbers = Arrays.asList(1, 2, 5, 12, 13, 14);
             Integer bonusNumber = 6;
             assertThat(getLottoPlace(lottoNumbers, winningNumbers, bonusNumber)).isEqualTo(5);
         }
@@ -126,6 +126,15 @@ public class LottoResultTest {
         void success10() {
             List<Integer> lottoNumbers = Arrays.asList(1, 2, 3, 4, 5, 6);
             List<Integer> winningNumbers = Arrays.asList(9, 7, 13, 14, 15, 16);
+            Integer bonusNumber = 2;
+            assertThat(getLottoPlace(lottoNumbers, winningNumbers, bonusNumber)).isEqualTo(6);
+        }
+
+        @DisplayName("정상 실행 테스트: 낙첨")
+        @Test
+        void success11() {
+            List<Integer> lottoNumbers = Arrays.asList(1, 2, 3, 4, 5, 6);
+            List<Integer> winningNumbers = Arrays.asList(5, 7, 6, 14, 15, 16);
             Integer bonusNumber = 2;
             assertThat(getLottoPlace(lottoNumbers, winningNumbers, bonusNumber)).isEqualTo(6);
         }

@@ -29,8 +29,8 @@ public class LottoResult {
             return takePlace;
         }
 
-        if (lottoNumbers.contains(bonusNumber)) {
-            return Math.min(takePlace, 6);
+        if (takePlace == 2 && lottoNumbers.contains(bonusNumber)) {
+            return takePlace;
         }
 
         return Math.min(takePlace + 1, 6);
