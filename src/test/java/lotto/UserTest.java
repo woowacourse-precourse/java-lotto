@@ -40,4 +40,18 @@ class UserTest {
                 .getMessage()
                 .equals(LottoError.NOT_NUMERIC.getErrorMessage());
     }
+
+    @Test
+    public void 로또_발행() throws Exception {
+        //given
+        User user = new User();
+        user.inputPurchaseAmount("50000");
+
+        //when
+        user.createLottos();
+
+        //then
+        assertThat(user.getLottos().size()).isEqualTo(50);
+        assertThat(user.getLottos().get(0).sorted()).isSorted();
+    }
 }
