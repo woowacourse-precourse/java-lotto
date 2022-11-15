@@ -19,4 +19,10 @@ class LottoControllerTest {
         assertThatThrownBy(() -> new LottoController().validate("1999"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @Test
+    void 양식(){
+        assertThatThrownBy(() -> new LottoController().inputValueVerificate("1234567"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
