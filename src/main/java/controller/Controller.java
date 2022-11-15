@@ -23,8 +23,8 @@ public class Controller {
         List<Integer> winLottoNumber = client.getWinLottoNumber();
         new Lotto(winLottoNumber);
         int bonusNumber = setBonusNumber(winLottoNumber);
-        setMatchNumberCount();
         int lottoPaper = server.decideToBuyLotto(money);
+        setMatchNumberCount();
         PrintResult.printBuyLotto(lottoPaper);
         for (int lotto = 0; lotto < lottoPaper; lotto++) {
             List<Integer> lottoNumber = setLottoNumber();
