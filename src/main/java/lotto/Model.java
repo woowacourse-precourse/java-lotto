@@ -1,7 +1,6 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.Randoms;
-import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
@@ -105,8 +104,6 @@ public class Model {
     }
 
     public static String CalculateEarningRate(Integer spending, Integer income) {
-        DecimalFormat formatter = new DecimalFormat("###,###");
-
         Double incomeDouble= (double)income;
         Double spendingDouble= (double)spending;
         Double mathResult = incomeDouble / spendingDouble * 100;
@@ -116,7 +113,6 @@ public class Model {
     }
 
     public static Integer CalculateEarningSum(LinkedHashMap<Integer, Integer> analyzedResult) {
-
         Integer sum = 0;
 
         for (int i = 1; i < 6; i++) {
