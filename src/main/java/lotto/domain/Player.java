@@ -7,6 +7,7 @@ import lotto.exception.CustomException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Player {
 
@@ -63,7 +64,9 @@ public class Player {
         List<Lotto> playerLottos = new ArrayList<>();
 
         while (buyMoney >= 1000) {
-            List<Integer> uniqueNumbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+            List<Integer> uniqueNumbers = Randoms.pickUniqueNumbersInRange(1, 45, 6)
+                            .stream().sorted().collect(Collectors.toList());
+
             Lotto lotto = new Lotto(uniqueNumbers);
             playerLottos.add(lotto);
             buyMoney -= 1000;
@@ -76,7 +79,6 @@ public class Player {
         int size = playerLottos.size();
         System.out.println(size+ "개를 구매했습니다.");
 
-        playerLottos.forEach(Lotto::ascendingSort);
         playerLottos.stream().map(Lotto::getNumbers).forEach(System.out::println);
     }
 

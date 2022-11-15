@@ -39,7 +39,6 @@ public class Application {
             player.printRankYield(lottoResults, money);
         } catch (Exception e) {
             e.printStackTrace();
-        } finally {
             System.out.println(CustomException.INVALID.getMessage());
         }
     }
