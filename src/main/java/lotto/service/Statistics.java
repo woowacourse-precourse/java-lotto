@@ -15,18 +15,18 @@ public class Statistics {
     private static final int DEFAULT_VALUE = 0;
 
     public Map<Prize, Integer> produce(WinLotto winLotto, List<Lotto> lottos) {
-        Map<Prize, Integer> output = getDefaultOutput();
+        Map<Prize, Integer> lottoStatics = getDefaultStatics();
         Set<Integer> winNumbers = new HashSet<>(winLotto.getLotto().getNumbers());
         int bonusNumber = winLotto.getBonusNumber();
 
         for (Lotto lotto : lottos) {
-            pileUpOutput(output, winNumbers, bonusNumber, lotto);
+            pileUpStatistics(lottoStatics, winNumbers, bonusNumber, lotto);
         }
 
-        return output;
+        return lottoStatics;
     }
 
-    private EnumMap<Prize, Integer> getDefaultOutput() {
+    private EnumMap<Prize, Integer> getDefaultStatics() {
         return new EnumMap<>(Prize.class) {{
             for (Prize prize : Prize.values()) {
                 put(prize, DEFAULT_VALUE);
@@ -35,12 +35,14 @@ public class Statistics {
         }};
     }
 
-    private void pileUpOutput(Map<Prize, Integer> output, Set<Integer> winNumbers, int bonusNumber, Lotto lotto) {
+    private void pileUpStatistics(Map<Prize, Integer> lottoStatics,
+            Set<Integer> winNumbers, int bonusNumber, Lotto lotto) {
+
         Set<Integer> numbers = new HashSet<>(lotto.getNumbers());
         int match = getMatch(winNumbers, numbers);
         boolean bonus = isBonus(bonusNumber, numbers, match);
         Prize prize = Prize.search(match, bonus);
-        pileUp(output, prize);
+        pileUp(lottoStatics, prize);
     }
 
     private int getMatch(Set<Integer> winNumbers, Set<Integer> numbers) {
@@ -60,7 +62,7 @@ public class Statistics {
             return;
         }
 
-        Integer count = result.getOrDefault(prize, DEFAULT_VALUE);
+        int count = result.getOrDefault(prize, DEFAULT_VALUE);
         result.put(prize, count + 1);
     }
 }
