@@ -22,6 +22,6 @@ public enum Message {
     }
 
     public String getMessage() {
-        return name();
+        return this.message;
     }
 }

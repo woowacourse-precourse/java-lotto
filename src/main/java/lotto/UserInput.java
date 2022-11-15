@@ -15,7 +15,7 @@ public class UserInput {
         return userMoney;
     }
 
-    private void userInputToUserMoney() {
+    private void userInputToUserMoney() throws IllegalArgumentException {
         try {
             userMoney = Integer.parseInt(userInput);
         } catch (NumberFormatException e) {
@@ -32,6 +32,6 @@ public class UserInput {
 
     private void inputError() {
         Message.ERROR_INPUT.print();
-        throw new IllegalArgumentException();
+        throw new IllegalArgumentException(Message.ERROR_INPUT.getMessage());
     }
 }

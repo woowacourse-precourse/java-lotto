@@ -7,7 +7,12 @@ public class Application {
     public static void main(String[] args) {
         LottoController lottoController = new LottoController();
 
-        Integer lottoCount = lottoController.getUserLottoCount();
+        Integer lottoCount = 0;
+        try {
+            lottoCount = lottoController.getUserLottoCount();
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+        }
         List<Lotto> issuedLotto = lottoController.issueLotto(lottoCount);
         lottoController.showIssueResult(issuedLotto);
 

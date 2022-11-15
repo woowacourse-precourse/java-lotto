@@ -3,7 +3,6 @@ package lotto;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomUniqueNumbersInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
 import java.util.List;
@@ -17,17 +16,10 @@ class ApplicationTest extends NsTest {
     @DisplayName("구입 금액이 1,000으로 나누어 떨어지지 않으면 예외가 발생한다.")
     @Test
     void moneyNotDividedBy1000() {
-        assertThatThrownBy(() -> run("10500"))
-                .isInstanceOf(IllegalArgumentException.class);
-        assertThat(output()).contains(ERROR_MESSAGE);
-    }
-
-    @DisplayName("구입 금액이 유효한 숫자가 아닌 경우 예외가 발생한다.")
-    @Test
-    void moneyNotANumber() {
-        assertThatThrownBy(() -> run("1000j"))
-                .isInstanceOf(IllegalArgumentException.class);
-        assertThat(output()).contains(ERROR_MESSAGE);
+        assertSimpleTest(() -> {
+            runException("10005");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
     }
 
     @Test

@@ -23,6 +23,6 @@ public class LottoParser {
 
     public void lottoError(Message message) {
         message.print();
-        throw new IllegalArgumentException();
+        throw new IllegalArgumentException(message.getMessage());
     }
 }

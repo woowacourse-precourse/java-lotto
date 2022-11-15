@@ -2,6 +2,7 @@ package lotto;
 
 import static lotto.global.Constant.MAX_LOTTO_SIZE;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import lotto.global.Message;
@@ -13,7 +14,7 @@ public class Lotto {
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
-        this.numbers = numbers;
+        this.numbers = new ArrayList<>(numbers);
     }
 
     private void validate(List<Integer> numbers) {
