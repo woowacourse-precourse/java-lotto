@@ -1,5 +1,8 @@
 package lotto.view;
 
+import static lotto.constant.InputConstant.ASK_BONUS_NUMBER_MESSAGE;
+import static lotto.constant.InputConstant.ASK_NUMBERS_MESSAGE;
+import static lotto.constant.InputConstant.PURCHASE_AMOUNT_MESSAGE;
 import static lotto.util.TypeConversion.stringToIntList;
 import static lotto.util.TypeConversion.stringToInt;
 import static lotto.util.Validator.*;
@@ -10,12 +13,8 @@ import java.util.List;
 
 public class InputView {
 
-    private static final String PURCHASE_AMOUNT_MESSAGE = "구입금액을 입력해 주세요.";
-    private static final String ASK_NUMBERS_MESSAGE = "\n당첨 번호를 입력해 주세요.";
-    private static final String ASK_BONUS_NUMBER_MESSAGE = "\n보너스 번호를 입력해 주세요.";
-
     public static int askPurchaseAmount() {
-        System.out.println(PURCHASE_AMOUNT_MESSAGE);
+        System.out.println(PURCHASE_AMOUNT_MESSAGE.getMessage());
         String input = Console.readLine();
 
         int purchaseAmount = stringToInt(input);
@@ -26,7 +25,7 @@ public class InputView {
     }
 
     public static List<Integer> askNumbers() {
-        System.out.println(ASK_NUMBERS_MESSAGE);
+        System.out.println(ASK_NUMBERS_MESSAGE.getMessage());
         String input = Console.readLine();
 
         List<Integer> playerNumbers = stringToIntList(input);
@@ -38,7 +37,7 @@ public class InputView {
     }
 
     public static int askBonusNumber(List<Integer> playerNumbers) {
-        System.out.println(ASK_BONUS_NUMBER_MESSAGE);
+        System.out.println(ASK_BONUS_NUMBER_MESSAGE.getMessage());
         String input = Console.readLine();
 
         int bonusNumber = stringToInt(input);
