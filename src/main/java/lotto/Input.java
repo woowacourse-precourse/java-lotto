@@ -44,11 +44,11 @@ public class Input {
 
     public void checkLotto(String inputWinningLotto){
         if(!inputWinningLotto.matches("[+-]?\\d*(\\.\\d+)?")) {
-            throw new IllegalArgumentException("[ERROR] 로또 구입 금액에 숫자만 입력하세요.");
+            throw new IllegalArgumentException("[ERROR] 당첨 번호에 숫자만 입력하세요.");
         }
         int winningLotto=Integer.parseInt(inputWinningLotto);
         if(winningLotto<1||winningLotto>45){
-            throw new IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
+            throw new IllegalArgumentException("[ERROR] 당첨 번호는 1부터 45 사이의 숫자여야 합니다.");
         }
     }
 
