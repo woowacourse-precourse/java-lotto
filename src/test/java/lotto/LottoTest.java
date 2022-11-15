@@ -1,5 +1,7 @@
 package lotto;
 
+import static lotto.LottoGenerator.generateLottos;
+import static lotto.Money.createPurchaseMoney;
 import static lotto.constant.Rules.LOTTO_PRICE;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -56,21 +58,21 @@ class LottoTest {
     @DisplayName("구입 금액이 로또 가격으로 나누어 떨어지지 않으면 예외가 발생한다.")
     @Test
     void moneyNotDividedByPrice() {
-        assertThatThrownBy(() -> new Money(1400))
+        assertThatThrownBy(() -> createPurchaseMoney("1400"))
                 .isInstanceOf(MoneyNotDividedByPriceException.class);
     }
 
     @DisplayName("구입 금액이 로또 1장 가격보다 작으면 예외가 발생한다.")
     @Test
     void moneyUnderLottoPrice() {
-        assertThatThrownBy(() -> new Money(900))
+        assertThatThrownBy(() -> createPurchaseMoney("900"))
                 .isInstanceOf(MoneyRangeException.class);
     }
 
     @DisplayName("로또 장수는 구입 금액에서 로또 1장 가격을 나눈 값이다.")
     @Test
     void calculateLottoCount() {
-        Money money = new Money(3 * LOTTO_PRICE);
+        Money money = createPurchaseMoney(Integer.toString(3 * LOTTO_PRICE));
         assertThat(money.calculateLottoCount()).isEqualTo(3);
     }
 
@@ -87,21 +89,22 @@ class LottoTest {
     @DisplayName("로또 생성 테스트")
     @RepeatedTest(10)
     void generateLotto() {
-        assertThat(LottoGenerator.generate()).isInstanceOf(Lotto.class);
+        generateLottos(10)
+                .forEach(lotto -> assertThat(lotto).isInstanceOf(Lotto.class));
     }
 
     @DisplayName("구입 금액이 양의 정수가 아닐 경우 예외가 발생한다.")
     @Test
     void createMoneyNotPositiveInteger() {
-        assertThatThrownBy(() -> new Money("-1"))
+        assertThatThrownBy(() -> createPurchaseMoney("-1"))
                 .isInstanceOf(MoneyNotPositiveIntegerException.class);
-        assertThatThrownBy(() -> new Money("a100"))
+        assertThatThrownBy(() -> createPurchaseMoney("a100"))
                 .isInstanceOf(MoneyNotPositiveIntegerException.class);
-        assertThatThrownBy(() -> new Money("100a"))
+        assertThatThrownBy(() -> createPurchaseMoney("100a"))
                 .isInstanceOf(MoneyNotPositiveIntegerException.class);
-        assertThatThrownBy(() -> new Money("0"))
+        assertThatThrownBy(() -> createPurchaseMoney("0"))
                 .isInstanceOf(MoneyNotPositiveIntegerException.class);
-        assertThatThrownBy(() -> new Money("abc"))
+        assertThatThrownBy(() -> createPurchaseMoney("abc"))
                 .isInstanceOf(MoneyNotPositiveIntegerException.class);
     }
 
