@@ -2,7 +2,6 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.text.NumberFormat;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -111,22 +110,25 @@ public class Sample {
 
     public String printWinningStatistics(List<LottoWinning> winningStatistics){ //WinningStatistics-print-001
         String message = WINNING_STATISTICS_START_MESSAGE;
-        NumberFormat numberFormat = NumberFormat.getInstance();
-        for (LottoWinningEnum lottoWinningEnum : LottoWinningEnum.values()){
-            String nowMessage = WINNING_STATISTICS_PRINT_FORM;
-            int correctNumber = lottoWinningEnum.getCorrectNumber();
-            boolean hitBonus = lottoWinningEnum.isHitBonus();
-            LottoWinning lottoWinning = new LottoWinning(correctNumber, hitBonus);
-
-            if (hitBonus){
-                nowMessage = WINNING_STATISTICS_PRINT_BONUS_FORM;
-            }
-            nowMessage = nowMessage.replace("%correctNumber", String.valueOf(lottoWinningEnum.getCorrectNumber()));
-            nowMessage = nowMessage.replace("%money", numberFormat.format(lottoWinningEnum.getMoney()));
-            nowMessage = nowMessage.replace("%count", String.valueOf(Collections.frequency(winningStatistics, lottoWinning)));
-            message += nowMessage;
+        List<Integer> countWinning = getCountWinning(winningStatistics);
+        List<LottoWinningEnum> lottoWinningEnum = List.of(LottoWinningEnum.values());
+        for (int index = 0; index < countWinning.size(); index++){
+            int count = countWinning.get(index);
+            message += lottoWinningEnum.get(index).getPrintString(count);
         }
         return message;
+    }
+
+    public List<Integer> getCountWinning(List<LottoWinning> winningStatistics){ // WinningStatistics-print-001, -yield-001
+        List<Integer> countWinning = new ArrayList<>();
+        for (LottoWinningEnum lottoWinningEnum : LottoWinningEnum.values()){
+            int correctNumber = lottoWinningEnum.getCorrectNumber();
+            boolean hitBonus = lottoWinningEnum.isHitBonus();
+
+            int count = Collections.frequency(winningStatistics, new LottoWinning(correctNumber, hitBonus));
+            countWinning.add(count);
+        }
+        return countWinning;
     }
 
     public String printYield(List<LottoWinning> winningStatistics, int buyPrice){ // WinningStatistics-yield-001
@@ -136,10 +138,12 @@ public class Sample {
     }
     public double getYield(List<LottoWinning> winningStatistics, int buyPrice){ //WinningStatistics-yield-001
         double getPrice = 0;
-        for (LottoWinningEnum lottoWinningEnum : LottoWinningEnum.values()){
-            int correctNumber = lottoWinningEnum.getCorrectNumber();
-            boolean hitBonus = lottoWinningEnum.isHitBonus();
-            getPrice += Collections.frequency(winningStatistics, new LottoWinning(correctNumber, hitBonus)) * lottoWinningEnum.getMoney();
+        List<Integer> countWinning = getCountWinning(winningStatistics);
+        List<LottoWinningEnum> lottoWinningEnum = List.of(LottoWinningEnum.values());
+        for (int index = 0; index < countWinning.size(); index++){
+            int count = countWinning.get(index);
+            int money = lottoWinningEnum.get(index).getMoney();
+            getPrice += count * money;
         }
         double yield = getPrice / buyPrice * 100;
         return Math.round(yield * 10) / 10.0;
