@@ -21,11 +21,25 @@ public class Application {
         System.out.println("\n" + lottoCount + PRINT_LOTTO_COUNT);
         List<List<Integer>> candidateLotto = printSeveralLotto(lottoCount);
 
+        System.out.println("\n" + GET_WINNING_LOTTO);
+        List<Integer> winningLotto = getSixInput();
+
     }
 
     public static int getSingleInput() {
-        String userAnswer = Console.readLine();
-        return Integer.parseInt(userAnswer);
+        String singleInput = Console.readLine();
+        return Integer.parseInt(singleInput);
+    }
+    public static List<Integer> getSixInput() {
+        List<Integer> winningLotto = new ArrayList<>();
+
+        String sixInput = Console.readLine();
+        String[] sixInputList = sixInput.split(",");
+
+        for (String tmpInt : sixInputList){
+            winningLotto.add(Integer.valueOf(tmpInt));
+        }
+        return winningLotto;
     }
     public static void checkMoneyCanDivideBy1000(int money){
         if (money/1000 != 0)
