@@ -10,18 +10,17 @@ import java.util.Set;
 import static java.util.Arrays.asList;
 
 public class LottoGame {
-    private final static int WIN = 0;
-    private final static int SECOND = 0;
-    private final static int THIRD = 0;
-    private final static int FOURTH = 0;
-    private final static int FIFTH = 0;
-
-    private List<Lotto> lotteries;
-    private List<Integer> matchCounts;
+    private final List<Lotto> lotteries;
+    private final List<Integer> matchCounts;
 
     public LottoGame() {
         lotteries = new ArrayList<>();
         matchCounts = new ArrayList<>(asList(0, 0, 0, 0, 0, 0, 0, 0)); // 0,1,2,3,4,5,6,bonus
+    }
+
+    public LottoGame(List<Lotto> lotteries, List<Integer> matchCounts) {
+        this.lotteries = lotteries;
+        this.matchCounts = matchCounts;
     }
 
     public void createLotto(int buyCount) {
