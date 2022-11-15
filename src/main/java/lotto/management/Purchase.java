@@ -1,13 +1,13 @@
 package lotto.management;
 
-public class LottoPurchase {
+public class Purchase {
 
     private static final int LOTTO_PRICE = 1000;
     private static final String NUMBER_REGEX  = "^[0-9]*$";
 
     final int LOTTO_TICKETS;
 
-    public LottoPurchase(String purchaseMoney) {
+    public Purchase(String purchaseMoney) {
         isNumber(purchaseMoney);
         validDivide(purchaseMoney);
         this.LOTTO_TICKETS = changeMoneyToLottoTickets(purchaseMoney);

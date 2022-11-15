@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
-public class LottoNumberConfirm {
+public class NumberMatchSystem {
     private final int INDEX_ADJUSTMENT_VALUE = 3;
     private final int INIT_VALUE = 0;
     private final int MINIMUM_QUALIFICATION = 3;
@@ -21,7 +21,7 @@ public class LottoNumberConfirm {
 
     private List<Integer> ticketResult;
 
-    LottoNumberConfirm(List<List<Integer>> numberIntegration, List<Integer> winningNumbers, int bonusNumber) {
+    NumberMatchSystem(List<List<Integer>> numberIntegration, List<Integer> winningNumbers, int bonusNumber) {
         ticketResult = new ArrayList<>();
         init();
         this.numberIntegration = numberIntegration;

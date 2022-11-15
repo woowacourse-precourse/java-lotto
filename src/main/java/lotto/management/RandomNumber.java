@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class LottoRandomNumber {
+public class RandomNumber {
     private final int LottoTicketsNumber;
     private final int LOTTO_START_NUMBER = 1;
     private final int LOTTO_END_NUMBER = 45;
@@ -17,7 +17,7 @@ public class LottoRandomNumber {
     private List<Integer> randomNumbers = new ArrayList<>();
     private Lotto lotto;
 
-    LottoRandomNumber(int lottoTicketsNumber) {
+    RandomNumber(int lottoTicketsNumber) {
         this.LottoTicketsNumber = lottoTicketsNumber;
         this.lottoTicketIntegration = new LottoTicketIntegration();
     }

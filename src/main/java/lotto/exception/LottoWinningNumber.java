@@ -2,13 +2,13 @@ package lotto.exception;
 
 import java.util.List;
 
-public class WinningNumber extends Lotto {
+public class LottoWinningNumber extends Lotto {
     private final List<Integer> winningNumbers;
     private final int bonusNumber;
     private final int LOTTO_START_NUMBER = 1;
     private final int LOTTO_END_NUMBER = 45;
 
-    public WinningNumber(List<Integer> winningNumbers, int bonusNumber) {
+    public LottoWinningNumber(List<Integer> winningNumbers, int bonusNumber) {
         super(winningNumbers);
         this.winningNumbers = winningNumbers;
         validateBonusNumber(bonusNumber);
