@@ -1,9 +1,7 @@
-package lotto;
+package lotto.gameSetting;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-
-import lotto.gameSetting.Lotto;
 
 import java.util.List;
 

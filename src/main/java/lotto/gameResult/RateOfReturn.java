@@ -10,7 +10,7 @@ public class RateOfReturn {
 
     public static double totallReturn() {
         double totallMoney = 
-            FIFTH_MONEY*WinningLotto.firstClassNumber +
+            FIRST_MONEY*WinningLotto.firstClassNumber +
             SECOND_MONEY*WinningLotto.secondClassNumber +
             THIRD_MONEY*WinningLotto.thirdClassNumber +
             FOURTH_MONEY*WinningLotto.fourthClassNumber +
