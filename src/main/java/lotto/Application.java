@@ -117,15 +117,22 @@ public class Application {
 
     /**
      * 로또 당첨 총 수익률을 반환한다.
+     * 파라미터로 사용자가 사용한 금액을 입력받는다.
      */
-    static double getYield(){
-        
+    static double getYield(int money){
+        int sum = 0;    // 총 벌어들인 금액
+        sum += countCompareType[compareType.Three.ordinal()] * moneyCompareType[compareType.Three.ordinal()];
+        sum += countCompareType[compareType.Four.ordinal()] * moneyCompareType[compareType.Four.ordinal()];
+        sum += countCompareType[compareType.FiveOnly.ordinal()] * moneyCompareType[compareType.FiveOnly.ordinal()];
+        sum += countCompareType[compareType.FiveAndBonus.ordinal()] * moneyCompareType[compareType.FiveAndBonus.ordinal()];
+        sum += countCompareType[compareType.Six.ordinal()] * moneyCompareType[compareType.Six.ordinal()];
+        return Math.round((sum / money) * 10000) / 100;
     }
 
     /**
      * 로또 당첨 통계 결과를 출력한다.
      */
-    static void printResult(){
+    static void printResult(int money){
         System.out.println(
                 "당첨 통계\n" +
                 "---\n" +
@@ -134,8 +141,17 @@ public class Application {
                 "5개 일치 (1,500,000원) - " + countCompareType[compareType.FiveOnly.ordinal()] + "개\n" +
                 "5개 일치, 보너스 볼 일치 (30,000,000원) - " + countCompareType[compareType.FiveAndBonus.ordinal()] + "개\n" +
                 "6개 일치 (2,000,000,000원) - " + countCompareType[compareType.Six.ordinal()] + "개\n" +
-                "총 수익률은 " + 62.5+ "%입니다."
+                "총 수익률은 " + getYield(money)+ "%입니다."
         );
+    }
+
+    public static int makeStringToInt(String sentence){
+        try{
+            return Integer.parseInt(sentence);
+        }catch(NumberFormatException numberFormatException){
+            System.out.println("[ERROR] 숫자를 입력하셔야 합니다.");
+            return 0;
+        }
     }
     public static void main(String[] args) {
         // TODO: 프로그램 구현
@@ -143,7 +159,7 @@ public class Application {
         // 로또 구입 금액 입력
         System.out.println("구입 금액을 입력해주세요");
         String userInput = Console.readLine();
-        money = Integer.parseInt(userInput);
+        money = makeStringToInt(userInput);
         System.out.println();
 
         // 1000원으로 나누어 떨어지지 않는 경우 예외 처리
@@ -168,9 +184,13 @@ public class Application {
         // 보너스 번호 입력
         System.out.println("보너스 번호를 입력해주세요");
         userInput = Console.readLine();
-        bonusNum = Integer.parseInt(userInput);
+        bonusNum = makeStringToInt(userInput);
         System.out.println();
 
+        // 각 로또의 당첨 통계 설정
+        setResultOfLottoList();
+
         // 당첨 통계 결과 출력
+        printResult(money);
     }
 }
