@@ -2,6 +2,7 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
 import lotto.domain.LottoCalculator;
+import lotto.error.InputError;
 import lotto.input.Input;
 import lotto.output.Output;
 
@@ -32,7 +33,14 @@ public class Application {
 
     private static int inputPurchaseAmount() {
         System.out.println("구입금액을 입력해 주세요.");
-        return parseInt(Console.readLine());
+        int purchaseAmount = 0;
+        try {
+            purchaseAmount = parseInt(Console.readLine());
+        } catch (Exception e) {
+            System.out.println("[ERROR] 구입 금액은 숫자로 입력해 주세요.");
+            //throw new IllegalArgumentException();
+        }
+        return purchaseAmount;
     }
 
     private static List<Integer> inputWinningNumber() {

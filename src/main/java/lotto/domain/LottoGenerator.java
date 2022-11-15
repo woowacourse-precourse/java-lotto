@@ -8,7 +8,7 @@ import java.util.Collections;
 import java.util.List;
 
 public class LottoGenerator {
-    private List<Lotto> lottos = new ArrayList<>();
+    private final List<Lotto> lottos = new ArrayList<>();
 
     public LottoGenerator(int count) {
         createLotto(count);
@@ -16,10 +16,10 @@ public class LottoGenerator {
 
     private void createLotto(int count) {
         for (int index = 0; index < count; index++) {
-            List<Integer> lottoNumbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
-            List<Integer> list = new ArrayList<>(lottoNumbers);
-            Collections.sort(list);
-            Lotto lotto = new Lotto(list);
+            List<Integer> Numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+            List<Integer> lottoNumbers = new ArrayList<>(Numbers);
+            Collections.sort(lottoNumbers);
+            Lotto lotto = new Lotto(lottoNumbers);
             lottos.add(lotto);
         }
         printLotto();
