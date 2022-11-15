@@ -17,9 +17,10 @@ public class AppController {
         AppView.outputLine("구입금액을 입력해 주세요.");
         money = LottoView.inputMoney();
         AppView.outputLine("");
-        myLottoList = LottoController.generateMyLottoListInstance(money);
-        AppView.outputLine(myLottoList.getCount() + "개를 구매했습니다.");
+        myLottoList = LottoController.generateMyLottoListInstance();
+        LottoController.setMyLottoListMoney(myLottoList, money);
         LottoController.setMyLottoListLotto(myLottoList);
+        AppView.outputLine(myLottoList.getCount() + "개를 구매했습니다.");
         LottoView.outputLottoList(myLottoList);
         AppView.outputLine("");
     }

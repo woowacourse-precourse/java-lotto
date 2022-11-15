@@ -6,7 +6,7 @@ import lotto.MyLottoList;
 import lotto.MyPrize;
 import lotto.PrizeLotto;
 import lotto.constant.LottoInfo;
-import lotto.constant.Rank;
+import lotto.constant.RankInfo;
 import lotto.view.LottoView;
 
 import java.util.ArrayList;
@@ -14,9 +14,27 @@ import java.util.Collections;
 import java.util.List;
 
 public class LottoController {
-    public static MyLottoList generateMyLottoListInstance(int money) {
-        return new MyLottoList(money);
+    public static MyLottoList generateMyLottoListInstance() {
+        return new MyLottoList();
     }
+
+    public static PrizeLotto generatePrizeLottoInstance() {
+        Lotto prizeLotto = new Lotto(LottoView.inputPrizeLotto());
+        return new PrizeLotto(prizeLotto);
+    }
+
+    public static MyPrize generateMyPrizeInstance(MyLottoList myLottoList, PrizeLotto prizeLotto) {
+        int [] rankArr = new int[LottoInfo.REWARD_RANK_COUNT+1];
+        for(Lotto lotto : myLottoList.getLotto()) {
+            int rank = calculateRankOneLotto(lotto, prizeLotto);
+            if(rank <= LottoInfo.REWARD_RANK_COUNT) {
+                rankArr[rank] = rankArr[rank] + 1;
+            }
+        }
+        return new MyPrize(rankArr);
+    }
+
+    //━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
     public static void setMyLottoListLotto(MyLottoList myLottoList) {
         List<Lotto> temp = new ArrayList<>();
@@ -24,6 +42,10 @@ public class LottoController {
             temp.add(generateOneLotto());
         }
         myLottoList.setLotto(temp);
+    }
+
+    public static void setMyLottoListMoney(MyLottoList myLottoList, int money) {
+        myLottoList.setCount(money);
     }
 
     public static Lotto generateOneLotto() {
@@ -38,24 +60,8 @@ public class LottoController {
         numbers = temp;
     }
 
-    public static PrizeLotto generatePrizeLottoInstance() {
-        Lotto prizeLotto = new Lotto(LottoView.inputPrizeLotto());
-        return new PrizeLotto(prizeLotto);
-    }
-
     public static void setBonusNum(PrizeLotto prizeLotto, int bonusNum) {
         prizeLotto.setBonusNumber(bonusNum);
-    }
-
-    public static MyPrize generateMyPrizeInstance(MyLottoList myLottoList, PrizeLotto prizeLotto) {
-        int [] rankArr = new int[LottoInfo.REWARD_RANK_COUNT+1];
-        for(Lotto lotto : myLottoList.getLotto()) {
-            int rank = calculateRankOneLotto(lotto, prizeLotto);
-            if(rank <= LottoInfo.REWARD_RANK_COUNT) {
-                rankArr[rank] = rankArr[rank] + 1;
-            }
-        }
-        return new MyPrize(rankArr);
     }
 
     public static int calculateRankOneLotto(Lotto lotto, PrizeLotto prizeLotto) {
@@ -76,9 +82,9 @@ public class LottoController {
             isContainBonus = true;
         }
 
-        for(Rank eachRank : Rank.values()) {
-            if(correctNum == eachRank.getCorrect() && isContainBonus == eachRank.isBonus()) {
-                return eachRank.getRanking();
+        for(RankInfo eachRankInfo : RankInfo.values()) {
+            if(correctNum == eachRankInfo.getCorrect() && isContainBonus == eachRankInfo.isBonus()) {
+                return eachRankInfo.getRank();
             }
         }
 

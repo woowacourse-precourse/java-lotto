@@ -3,7 +3,7 @@ package lotto.view;
 import lotto.Lotto;
 import lotto.MyLottoList;
 import lotto.MyPrize;
-import lotto.constant.Rank;
+import lotto.constant.RankInfo;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,11 +43,11 @@ public class LottoView {
     }
 
     public static void outputSynthesisEachRank(MyPrize myPrize) {
-        AppView.outputLine(Rank.FIFTH.getStatement() + myPrize.getRankArr()[5] + "개");
-        AppView.outputLine(Rank.FOURTH.getStatement() + myPrize.getRankArr()[4] + "개");
-        AppView.outputLine(Rank.THIRD.getStatement() + myPrize.getRankArr()[3] + "개");
-        AppView.outputLine(Rank.SECOND.getStatement() + myPrize.getRankArr()[2] + "개");
-        AppView.outputLine(Rank.FIRST.getStatement() + myPrize.getRankArr()[1] + "개");
+        AppView.outputLine(RankInfo.FIFTH.getStatement() + myPrize.getRankArr()[5] + "개");
+        AppView.outputLine(RankInfo.FOURTH.getStatement() + myPrize.getRankArr()[4] + "개");
+        AppView.outputLine(RankInfo.THIRD.getStatement() + myPrize.getRankArr()[3] + "개");
+        AppView.outputLine(RankInfo.SECOND.getStatement() + myPrize.getRankArr()[2] + "개");
+        AppView.outputLine(RankInfo.FIRST.getStatement() + myPrize.getRankArr()[1] + "개");
     }
 
 

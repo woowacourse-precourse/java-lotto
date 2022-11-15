@@ -1,6 +1,6 @@
 package lotto.constant;
 
-public enum Rank {
+public enum RankInfo {
     FIRST(1, 6, false, 2000000000, "6개 일치 (2,000,000,000원) - "),
     SECOND(2, 5, true, 30000000, "5개 일치, 보너스 볼 일치 (30,000,000원) - "),
     THIRD(3, 5, false, 1500000, "5개 일치 (1,500,000원) - "),
@@ -8,22 +8,22 @@ public enum Rank {
     FIFTH(5, 3, false, 5000, "3개 일치 (5,000원) - "),
     ZERO(0,0,false,0, "");
 
-    private final int ranking;
+    private final int rank;
     private final int correct;
     private final boolean bonus;
     private final long reward;
     private final String statement;
 
-    Rank(int rank, int correct, boolean bonus, long reward, String statement) {
-        this.ranking = rank;
+    RankInfo(int rank, int correct, boolean bonus, long reward, String statement) {
+        this.rank = rank;
         this.correct = correct;
         this.bonus = bonus;
         this.reward = reward;
         this.statement = statement;
     }
 
-    public int getRanking() {
-        return ranking;
+    public int getRank() {
+        return rank;
     }
 
     public int getCorrect() {

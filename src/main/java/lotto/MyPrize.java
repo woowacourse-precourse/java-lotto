@@ -1,7 +1,7 @@
 package lotto;
 
 import lotto.constant.LottoInfo;
-import lotto.constant.Rank;
+import lotto.constant.RankInfo;
 
 public class MyPrize {
     // 총 5등까지 있으므로 크기 6짜리 배열
@@ -11,11 +11,11 @@ public class MyPrize {
 
     private long [] fixedPrizeMoneyByRanking = {
             0,
-            Rank.FIRST.getReward(),
-            Rank.SECOND.getReward(),
-            Rank.THIRD.getReward(),
-            Rank.FOURTH.getReward(),
-            Rank.FIFTH.getReward()
+            RankInfo.FIRST.getReward(),
+            RankInfo.SECOND.getReward(),
+            RankInfo.THIRD.getReward(),
+            RankInfo.FOURTH.getReward(),
+            RankInfo.FIFTH.getReward()
     };
 
     public MyPrize(int[] rankArr) {

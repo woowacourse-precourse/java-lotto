@@ -8,8 +8,7 @@ public class MyLottoList {
     private int count;
     private List<Lotto> lotto;
 
-    public MyLottoList(int money) {
-        this.count = money / LottoInfo.ONE_PRICE;
+    public MyLottoList() {
     }
 
     public int getCount() {
@@ -22,5 +21,9 @@ public class MyLottoList {
 
     public void setLotto(List<Lotto> lotto) {
         this.lotto = lotto;
+    }
+
+    public void setCount(int money) {
+        this.count = money / LottoInfo.ONE_PRICE;
     }
 }

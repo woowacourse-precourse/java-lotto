@@ -9,12 +9,13 @@ public class ValidateView {
         try {
             num = Integer.parseInt(number);
         } catch(NumberFormatException e) {
-            throw new IllegalArgumentException("[ERROR] 로또 금액은 1,000원으로 나누어 떨어져야한다.");
+            throw new IllegalArgumentException("[ERROR] 숫자가 아닙니다.");
         }
 
         if(number.contains(".")) {
-            throw new IllegalArgumentException("[ERROR] 로또 금액은 1,000원으로 나누어 떨어져야한다.");
+            throw new IllegalArgumentException("[ERROR] 정수가 아닙니다.");
         }
+
         return num;
     }
 
