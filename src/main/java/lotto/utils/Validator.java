@@ -30,5 +30,9 @@ public class Validator {
         if (numbers.contains(bonusNumber)) {
             throw new IllegalArgumentException("[ERROR] 보너스 번호는 로또 발행번호와 일치하지 않아야 합니다.");
         }
+
+        if(bonusNumber < 1 || bonusNumber > 45) {
+            throw new IllegalArgumentException("[ERROR] 로또 번호는 반드시 1과 45 사이의 숫자여야합니다.");
+        }
     }
 }
