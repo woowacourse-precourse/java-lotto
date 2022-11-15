@@ -121,7 +121,7 @@ public class Controller {
 
         // 총 수익률 출력
         Integer incomeSum = Model.CalculateEarningSum(lottoResult);
-        Double earningRate = Model.CalculateEarningRate(lottoAmount, incomeSum);
+        String earningRate = Model.CalculateEarningRate(lottoAmount, incomeSum);
         View.OutputString("총 수익률은 "+earningRate+"%입니다.");
     }
 }
