@@ -1,7 +1,7 @@
 package lotto;
 
 import lotto.UI.Input;
-import lotto.UI.Print;
+import lotto.UI.Output;
 import lotto.domain.Match;
 import lotto.domain.Operation;
 
@@ -15,16 +15,16 @@ public class Application {
     static Match match;
 
     static void buy() {
-        Print.getPurchaseAmount();
+        Output.getPurchaseAmount();
         purchaseAmount = Input.getPurchaseAmount();
         lottos = Operation.buyLotto(purchaseAmount);
-        Print.userLottos(lottos, purchaseAmount);
+        Output.userLottos(lottos, purchaseAmount);
     }
 
     static void calculateResult(){
-        Print.getWinningNumbers();
+        Output.getWinningNumbers();
         winning = Input.getWinningNumbers();
-        Print.getBonusNumber();
+        Output.getBonusNumber();
         bonus = Input.getBonusNumber(winning);
     }
 
@@ -32,7 +32,7 @@ public class Application {
         match = new Match(lottos, winning, bonus);
         int earning = Operation.calculateEarning(match);
         double earningRate = Operation.calculateEarningRate(purchaseAmount, earning);
-        Print.result(earningRate, match);
+        Output.result(earningRate, match);
     }
 
     static void playGame() {

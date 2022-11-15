@@ -10,7 +10,7 @@ import java.util.List;
 import static lotto.instance.Setting.*;
 import static lotto.message.GuideMessage.*;
 
-public class Print {
+public class Output {
     public static void getPurchaseAmount() {
         System.out.println(GET_PURCHASE);
     }
