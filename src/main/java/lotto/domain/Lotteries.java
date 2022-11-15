@@ -11,6 +11,7 @@ public class Lotteries {
 	public Lotteries(int numberOfTickets) {
 		init(numberOfTickets);
 	}
+
 	private void init(int numberOfTickets) {
 		while (lotteries.size() != numberOfTickets) {
 			lotteries.add(new Lotto(lottoNumbersGenerator.getLottoNumbers()));

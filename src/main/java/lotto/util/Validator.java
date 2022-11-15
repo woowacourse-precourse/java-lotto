@@ -38,7 +38,8 @@ public class Validator {
 	}
 
 	public static void validateIntegerOrNot(String input) {
-		if (input.chars().anyMatch(letter -> letter < LottoConstant.MINIMUM_DIGIT || letter > LottoConstant.MAXIMUM_DIGIT)) {
+		if (input.chars()
+			.anyMatch(letter -> letter < LottoConstant.MINIMUM_DIGIT || letter > LottoConstant.MAXIMUM_DIGIT)) {
 			throw new IllegalArgumentException();
 		}
 	}

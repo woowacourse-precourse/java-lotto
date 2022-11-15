@@ -16,6 +16,7 @@ public class PurchasingAmount {
 	public int getPurchasingAmount() {
 		return purchasingAmount;
 	}
+
 	public int getNumberOfTickets() {
 		return numberOfTickets;
 	}

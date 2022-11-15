@@ -29,7 +29,7 @@ public class LottoController {
 	}
 
 	private PurchasingAmount receivePurchasingAmount() {
-		PurchasingAmount purchasingAmount = null;
+		PurchasingAmount purchasingAmount;
 		try {
 			purchasingAmount = new PurchasingAmount(Integer.parseInt(inputView.getPurchasingAmount()));
 		} catch (IllegalArgumentException e) {
@@ -46,7 +46,7 @@ public class LottoController {
 	}
 
 	private Lotteries issueLotteries(int numberOfTickets) {
-		Lotteries lotteries = null;
+		Lotteries lotteries;
 		try {
 			lotteries = new Lotteries(numberOfTickets);
 			outputView.printTotalLottoNumbers(lotteries.getTotalLottoNumbers());
@@ -58,7 +58,7 @@ public class LottoController {
 	}
 
 	private WinningNumbers receiveWinningNumbers() {
-		WinningNumbers winningNumbers = null;
+		WinningNumbers winningNumbers;
 		try {
 			winningNumbers = new WinningNumbers(inputView.getWinningNumbers());
 		} catch (IllegalArgumentException e) {
@@ -69,7 +69,7 @@ public class LottoController {
 	}
 
 	private BonusNumber receiveBonusNumbers(WinningNumbers winningNumbers) {
-		BonusNumber bonusNumber = null;
+		BonusNumber bonusNumber;
 		try {
 			bonusNumber = new BonusNumber(Integer.parseInt(inputView.getBonusNumber()), winningNumbers);
 		} catch (IllegalArgumentException e) {
@@ -92,5 +92,4 @@ public class LottoController {
 		float rateOfProfit = profitCalculator.calculate(purchasingAmount, winningStatistics.getCountsOfWins());
 		outputView.printRateOfProfit(rateOfProfit);
 	}
-
 }
