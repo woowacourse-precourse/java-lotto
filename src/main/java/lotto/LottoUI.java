@@ -8,6 +8,7 @@ import java.util.stream.Collectors;
 
 public class LottoUI {
     private final Manager manager;
+    private int bonusNumber;
 
     public LottoUI(Manager manager) {
         this.manager = manager;
@@ -22,7 +23,15 @@ public class LottoUI {
         manager.setPurchasePrice(Integer.parseInt(input));
     }
 
-    public void publishLottos(){
+    public void setBonusNumber() {
+        System.out.println("보너스 번호를 입력해 주세요.");
+        String input = Console.readLine().trim();
+        validateIsNumber(input);
+        bonusNumber = Integer.parseInt(input);
+        validateRange(bonusNumber);
+    }
+
+    public void publishLottos() {
         manager.publishPurchaseLottos();
     }
 
@@ -44,6 +53,12 @@ public class LottoUI {
             Integer.parseInt(each);
         } catch (IllegalArgumentException e) {
             throw new IllegalArgumentException("[ERROR] 입력이 숫자가 아닙니다.");
+        }
+    }
+
+    private void validateRange(int number) {
+        if (number < LottoConst.START_RANGE || LottoConst.END_RANGE < number) {
+            throw new IllegalArgumentException("[ERROR] 범위를 벗어난 숫자입니다.");
         }
     }
 }
