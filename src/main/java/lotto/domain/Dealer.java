@@ -40,4 +40,8 @@ public class Dealer {
     public List<Integer> getNumbers() {
         return lotto.getNumbers();
     }
+
+    public int getBonusNumber() {
+        return bonusNumber;
+    }
 }
