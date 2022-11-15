@@ -36,4 +36,13 @@ class LottoTest {
         assertThatThrownBy(() -> new Exception().isContainCharacter("300d0"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @DisplayName("로또 구매 금액이 정상적이지 않을 시 예외가 발생한다.")
+    @Test
+    void enterAbnormalPurchaseAmount(){
+        assertThatThrownBy(() -> new Exception().isCorrectAmount("100d0"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+
 }
