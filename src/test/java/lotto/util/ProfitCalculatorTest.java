@@ -34,7 +34,7 @@ class ProfitCalculatorTest {
 
     @ParameterizedTest(name = "수익률 계산 테스트 [{index}] : {2}%")
     @CsvSource(value = {"15_000,70_000,21.4", "87_000,7_000,1242.9"})
-    void profitRateTest(int profit, int purchaseAmount, double expectedProfitRate) {
+    void profitRateTest(long profit, int purchaseAmount, double expectedProfitRate) {
         double actualProfitRate = ProfitCalculator.calculateProfitRate(profit, purchaseAmount);
         assertThat(actualProfitRate).isEqualTo(expectedProfitRate);
     }

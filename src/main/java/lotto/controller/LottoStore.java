@@ -59,7 +59,7 @@ public class LottoStore {
         Map<WinningRank, Integer> winLottoCount = lottoController.countWinLotto(winningLotto, lottos);
         OutputUi.printWinLottoStatistic(winLottoCount);
 
-        int totalProfit = ProfitCalculator.calculateTotalProfit(winLottoCount);
+        long totalProfit = ProfitCalculator.calculateTotalProfit(winLottoCount);
         double profitRate = ProfitCalculator.calculateProfitRate(totalProfit, purchasedAmount);
 
         OutputUi.printProfitRateMessage(profitRate);
