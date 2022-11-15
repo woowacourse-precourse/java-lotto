@@ -12,22 +12,32 @@ public class User {
   private final List<Lotto> lottos = new ArrayList<>();
 
   public User() {
-    setTicket();
   }
 
-  private void setTicket() {
+  public boolean setUser() {
+    if (!setMoney())
+      return false;
+    setTicket();
+    setLottos();
+    return true;
+  }
+
+  private boolean setMoney() {
     System.out.println("구입금액을 입력해 주세요.");
     String money = readLine();
     if (!isDigit(money)) {
       System.out.println("[ERROR] 잘못된 입력입니다.");
-//      throw new IllegalArgumentException("[ERROR] 잘못된 입력입니다.");
-      return;
+      return false;
     }
     this.money = Integer.parseInt(money);
+    return true;
+  }
+
+  private void setTicket() {
     ticket = MathUtils.numberOfLotto(this.money);
   }
 
-  public void setLottos() {
+  private void setLottos() {
 
     System.out.println(ticket + "개를 구매했습니다.");
       RandomLottoNumber randomLottoNumber;
