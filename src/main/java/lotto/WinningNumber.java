@@ -5,12 +5,24 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.*;
 
 public class WinningNumber {
+    private static final String REQUEST_WINNING_NUMBER_MESSAGE = "당첨 번호를 입력해 주세요.";
+    private static final String REQUEST_BONUS_NUMBER_MESSAGE = "보너스 번호를 입력해 주세요.";
     private final List<Integer> winningNumber;
     private final int bonusNumber;
 
     public WinningNumber() {
+        printRequestWinningNumberMessage();
         winningNumber = validateWinningNumber(Console.readLine());
+        printRequestBonusNumberMessage();
         bonusNumber = validateNumber(Console.readLine());
+    }
+
+    private void printRequestWinningNumberMessage() {
+        System.out.println(REQUEST_WINNING_NUMBER_MESSAGE);
+    }
+
+    private void printRequestBonusNumberMessage() {
+        System.out.println(REQUEST_BONUS_NUMBER_MESSAGE);
     }
 
     private List<Integer> validateWinningNumber(String inputNumbers) {
