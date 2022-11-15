@@ -29,4 +29,8 @@ public class LottoPurchaseMoney {
             throw new IllegalArgumentException(ERR_MONEY_UNFIT_A_LOTTO_PRICE);
         }
     }
+
+    public int get() {
+        return lottoPurchaseMoney;
+    }
 }
