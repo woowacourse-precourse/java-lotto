@@ -14,13 +14,13 @@ public class Application {
         PurchaseLotto purchaseLotto = new PurchaseLotto();
         LottoResult lottoResult = new LottoResult();
         ConsumerResult consumerResult = new ConsumerResult();
-        int count = purchaseLotto.inputMoney();
-        List<List<Integer>> totalLotto = purchaseLotto.myLotto(count);
-        purchaseLotto.printMyLotto(totalLotto);
-        List<Integer> lottoNumber = lottoResult.inputLottoNumber();
-        int bonusNumber = lottoResult.inputBonusNumber(lottoNumber);
-        List<Integer> result= purchaseLotto.myLottoResult(lottoNumber, bonusNumber, totalLotto);
-        consumerResult.printResult(consumerResult.winLotto(result));
-        consumerResult.printProfit(count*1000,consumerResult.winLotto(result));
+        int count = purchaseLotto.inputMoney();//금액입력
+        List<List<Integer>> totalLotto = purchaseLotto.myLotto(count);//나의로또번호저장
+        purchaseLotto.printMyLotto(totalLotto);//나의로또출력
+        List<Integer> lottoNumber = lottoResult.inputLottoNumber();//당첨로또번호입력
+        int bonusNumber = lottoResult.inputBonusNumber(lottoNumber);//보너스 입력
+        List<Integer> totalResult = consumerResult.winLotto(totalLotto,lottoNumber,bonusNumber);
+        consumerResult.printResult(totalResult);
+        consumerResult.printProfit(count*1000,totalResult);
     }
 }

@@ -1,12 +1,19 @@
 package lotto.domain;
 
+import static lotto.domain.Ranking.DEFAULT;
+import static lotto.domain.Ranking.FIFTH;
+import static lotto.domain.Ranking.FIRST;
+import static lotto.domain.Ranking.FOURTH;
+import static lotto.domain.Ranking.SECOND;
+import static lotto.domain.Ranking.THIRD;
+
 import java.util.ArrayList;
 import java.util.List;
 import org.assertj.core.util.Arrays;
 
 public class ConsumerResult {
 
-    public int compareLotto(List<Integer> myLotto, List<Integer> lottoNumber){
+    public static int compareLotto(List<Integer> myLotto, List<Integer> lottoNumber){
         int count=0;
         for (int index=0; index< lottoNumber.size();index++){
             if (lottoNumber.contains(myLotto.get(index))){
@@ -16,7 +23,7 @@ public class ConsumerResult {
         return count;
     }
 
-    public int compareBonus(List<Integer> myLotto, int bonusNumber){
+    public static int compareBonus(List<Integer> myLotto, int bonusNumber){
         if(myLotto.contains(bonusNumber)){
             return 1;
         }
@@ -25,11 +32,7 @@ public class ConsumerResult {
 
     //6
     public void printProfit(int money,List<Integer> totalResult){
-        int income = 0;
-        List<Integer> winmoney=List.of(5000,50000,1500000,30000000,2000000000);
-        for(int index=0;index<5;index++){
-            income+= totalResult.get(index)*winmoney.get(index);
-        }
+        int income = totalResult.get(0)*FIRST.prize+totalResult.get(1)*SECOND.prize+totalResult.get(2)*THIRD.prize+totalResult.get(3)*FOURTH.prize+totalResult.get(4)*FIFTH.prize;
         System.out.printf("총 수익률은 %3.1f",profit(money,income));
         System.out.println("%입니다.");
     }
@@ -37,41 +40,50 @@ public class ConsumerResult {
     public float profit(int money, int income){
         return (income*100.0f)/money;
     }
-
-    private List<Integer> myIncome(int lottoCount, int bonusCount,List<Integer> income){
-        if(lottoCount==3){
-            income.set(0,income.get(0)+1);
-        }if(lottoCount==4){
-            income.set(1,income.get(1)+1);
-        }if(lottoCount==5){
-            income.set(2,income.get(2)+1);
-        }if(lottoCount==5 && bonusCount==1){
-            income.set(3,income.get(3)+1);
-        }if(lottoCount==6) {
-            income.set(4, income.get(4) + 1);
-        }return income;
-    }
-    public List<Integer> winLotto(List<Integer> jionCount){
-        int lottoCount=jionCount.size()/2;
-        List<Integer> totalResult = new ArrayList<>();
-        List<Integer> income = new ArrayList<Integer>();
-        for(int i=0;i<5;i++){
-            income.add(0);
-        }
-        for(int count=0;count<lottoCount;count++){
-            income=myIncome(jionCount.get(count), jionCount.get(count + lottoCount),income);
-
-        }
-        return income;
-    }
     //5
     public void printResult(List<Integer> totalResult){
         System.out.println("당첨통계");
         System.out.println("---");
-        System.out.printf("3개 일치 (5,000원) - %d개\n",totalResult.get(0));
-        System.out.printf("4개 일치 (50,000원) - %d개\n",totalResult.get(1));
+        System.out.printf("3개 일치 (5,000원) - %d개\n",totalResult.get(4));
+        System.out.printf("4개 일치 (50,000원) - %d개\n",totalResult.get(3));
         System.out.printf("5개 일치 (1,500,000원) - %d개\n",totalResult.get(2));
-        System.out.printf("5개 일치, 보너스 볼 일치 (30,000,000원) - %d개\n",totalResult.get(3));
-        System.out.printf("6개 일치 (2,000,000,000원) - %d개\n",totalResult.get(4));
+        System.out.printf("5개 일치, 보너스 볼 일치 (30,000,000원) - %d개\n",totalResult.get(1));
+        System.out.printf("6개 일치 (2,000,000,000원) - %d개\n",totalResult.get(0));
     }
+    public static Ranking matchLotto(List<Integer> myLotto ,List<Integer> lottoNumber, int bonus) {
+        int matches = compareLotto(myLotto, lottoNumber);
+        int matchBonus = compareBonus(myLotto,bonus);
+
+        for(Ranking r : Ranking.values()) {
+            if(r.lottoCount == matches && r.bonusCount == matchBonus) {
+                return r;
+            }
+        }
+        return DEFAULT;
+    }
+    private List<Integer> generateWinCount(){
+        List<Integer> winCount= new ArrayList<>();
+        for (int i=0;i<5;i++){
+            winCount.add(0);
+        }
+        return winCount;
+    }
+    public List<Integer> winLotto(List<List<Integer>> totalLotto,List<Integer> lottoNumber, int bonus){
+        List<Integer> winCount=generateWinCount();
+        for(int index=0;index<totalLotto.size();index++){
+            if (matchLotto(totalLotto.get(index),lottoNumber,bonus)==FIRST){
+                winCount.set(0, winCount.get(0)+1);
+            }if (matchLotto(totalLotto.get(index),lottoNumber,bonus)==SECOND){
+                winCount.set(1, winCount.get(1)+1);
+            }if (matchLotto(totalLotto.get(index),lottoNumber,bonus)==THIRD){
+                winCount.set(2, winCount.get(2)+1);
+            }if (matchLotto(totalLotto.get(index),lottoNumber,bonus)==FOURTH){
+                winCount.set(3, winCount.get(3)+1);
+            }if (matchLotto(totalLotto.get(index),lottoNumber,bonus)==FIFTH){
+                winCount.set(4, winCount.get(4)+1);
+            }
+        }
+        return winCount;
+    }
+
 }

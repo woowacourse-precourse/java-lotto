@@ -54,17 +54,5 @@ public class PurchaseLotto {
             System.out.println(totalLotto.get(index));
         }
     }
-    public List<Integer> myLottoResult(List<Integer> lottoNumber, int bonusNumber, List<List<Integer>> totalLotto) {
-        ConsumerResult consumerResult =new ConsumerResult();
-        List<Integer> totalCount=new ArrayList<>();
-        List<Integer> bonusCount=new ArrayList<>();
-        List<Integer> jionCount=new ArrayList<>();
-        for (int count=0; count < totalLotto.size(); count++){
-            totalCount.add(consumerResult.compareLotto(totalLotto.get(count),lottoNumber));
-            bonusCount.add(consumerResult.compareBonus(totalLotto.get(count), bonusNumber));
-        }
-        jionCount.addAll(totalCount);
-        jionCount.addAll(bonusCount);
-        return jionCount;
-    }
+
 }
