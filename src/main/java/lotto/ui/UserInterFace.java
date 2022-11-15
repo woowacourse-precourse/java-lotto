@@ -126,8 +126,8 @@ public class UserInterFace {
             resultMoney += prizes.get(index);
         }
         
-        double profit = Math.round((resultMoney / originalMoney) * 10) * 10 * 100;
-        print("총 수익률은 " + profit + "%입니다.");
+        double profit = (resultMoney / originalMoney) * 100;
+        double formattedProfit = ((Math.round(profit * 10) % 10) * 0.1) + (Math.round(profit * 10) / 10);
+        System.out.println("총 수익률은 " + String.format("%.1f", formattedProfit) + "%입니다.");
     }
-    
 }
