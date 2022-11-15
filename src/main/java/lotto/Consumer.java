@@ -40,4 +40,14 @@ public class Consumer {
         return stat;
     }
 
+    public static List<Integer> calcProfit(List<Integer> stat){
+        float moneySpent = lottos.size()*1_000;
+        float moneyEarned = 0;
+        for (Prize p:Prize.getList()) {
+            moneyEarned = moneyEarned + p.getReward()*stat.get(p.getIndex());
+        }
+        stat.set(5, Math.round(moneyEarned/moneySpent*100)/100);
+        return stat;
+    }
+
 }
