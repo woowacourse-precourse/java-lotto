@@ -40,9 +40,14 @@ class PlayLottoTest {
         assertThat(win).isEqualTo(1);
     }
 
+    @DisplayName("우승번호와 사용자 번호가 일치할 때")
     @Test
     void equal_count() {
-
+        List<Integer> winNumbers = List.of(1,2,3,4,5,6);
+        List<Integer> userNumbers = List.of(1,2,3,4,5,6);
+        game.equal_count(winNumbers, userNumbers);
+        int win = game.getWin_count().get(4); // 6자리 모두 맞은 횟수를 가져옴
+        assertThat(win).isEqualTo(1);
     }
 
     @DisplayName("로또 번호들과 일치하는 값이 존재할 때 True 반환")
