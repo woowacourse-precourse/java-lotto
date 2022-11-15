@@ -3,6 +3,7 @@ package lotto.Controller;
 import lotto.Constant.Message;
 import lotto.Model.Buyer;
 import lotto.Model.Comparison;
+import lotto.Model.Money;
 import lotto.Model.WinningTicket;
 import lotto.View.InputView;
 import lotto.View.OutputView;
@@ -14,6 +15,7 @@ public class Controll {
     private Buyer buyer;
     private WinningTicket winningTicket;
     private Comparison comparison = new Comparison();
+    private Money money = new Money();
 
     public void run() {
         try {
@@ -22,6 +24,7 @@ public class Controll {
             winnginTicket();
             comparison.compareLotto(buyer.getLottoNumber(), winningTicket);
             outputView.printResult(comparison.getSavedResult());
+            money.calculrateReturnRate(comparison.getSavedResult());
         } catch (IllegalArgumentException e) {
             outputView.printMessage(e.getMessage());
         }
