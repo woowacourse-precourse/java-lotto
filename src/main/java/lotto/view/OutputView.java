@@ -13,10 +13,10 @@ import lotto.domain.LottoRanking;
 
 public class OutputView {
 
+	public static final int EMPTY_COUNT = 0;
 	private static final String OUTPUT_LOTTO_COUNT_MESSAGE = "%d개를 구매했습니다.\n";
 	private static final String OUTPUT_WINNING_STATISTICS = "당첨 통계\n---";
 	private static final String OUTPUT_YIELD_MESSAGE = "총 수익률은 %.1f%%입니다.\n";
-
 	private static final Map<LottoRanking, String> LOTTO_RANKING_STRING_MAP = Map.of(
 		FIRST, "6개 일치 (2,000,000,000원) - %d개\n",
 		SECOND, "5개 일치, 보너스 볼 일치 (30,000,000원) - %d개\n",
@@ -24,7 +24,6 @@ public class OutputView {
 		FOURTH, "4개 일치 (50,000원) - %d개\n",
 		FIFTH, "3개 일치 (5,000원) - %d개\n"
 	);
-	public static final int EMPTY_COUNT = 0;
 
 	public void printLottoCount(int lottoCount) {
 		System.out.printf(OUTPUT_LOTTO_COUNT_MESSAGE, lottoCount);
