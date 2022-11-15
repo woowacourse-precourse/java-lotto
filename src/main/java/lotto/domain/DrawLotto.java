@@ -8,7 +8,7 @@ import java.util.HashMap;
 public class DrawLotto {
     List<Lotto> lottoList;
     List<Integer> winner;
-    Ranking rank;
+
     int bonus;
     public DrawLotto(List<Lotto> lottoList, List<Integer> winner, int bonus) {
         this.lottoList = lottoList;
@@ -25,10 +25,7 @@ public class DrawLotto {
         return matchCounts;
     }
     public boolean checkBonus(Lotto lotto) {
-        if (checkLotto(lotto)==5 && lotto.contains(bonus)) {
-            return true;
-        }
-        return false;
+        return checkLotto(lotto)==5 && lotto.contains(bonus);
     }
     private Ranking getRank(Lotto lotto) {
         int match = checkLotto(lotto);
@@ -37,19 +34,25 @@ public class DrawLotto {
                 .filter(l -> l.getMatch()==(match))
                 .filter(l -> l.getBonusMatch()==(bonusMatch))
                 .findFirst()
-                .get();
+                .orElse(null);
     }
     public Map<Ranking, Integer> checkListOfLottos() {
         Map<Ranking, Integer> comparison = setupComparison();
         Ranking rank;
         for (Lotto lotto : lottoList) {
             rank = getRank(lotto);
+            comparison = increaseValIfExists(comparison, rank);
+        }
+        return comparison;
+    }
+    private Map<Ranking, Integer> increaseValIfExists(Map<Ranking, Integer> comparison, Ranking rank) {
+        if (comparison.containsKey(rank)) {
             comparison.put(rank, comparison.get(rank) + 1);
         }
         return comparison;
     }
     private Map<Ranking, Integer> setupComparison() {
-        Map<Ranking, Integer> comparison = new HashMap<Ranking, Integer>();
+        Map<Ranking, Integer> comparison = new HashMap<>();
         for (Ranking rank : Ranking.values()) {
             comparison.put(rank, 0);
         }

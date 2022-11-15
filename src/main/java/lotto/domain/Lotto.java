@@ -16,7 +16,7 @@ public class Lotto {
 
     private void validateLotto(List<Integer> numbers) {
         View view = new View();
-        view.validateUniqueNumbersInput(numbers);
+        view.validateUniqueNumbers(numbers);
         view.validateNumberOfNumbers(numbers);
         view.validateNumbersInRange(numbers);
     }
@@ -30,11 +30,11 @@ public class Lotto {
         return sorted;
     }
     public void printLotto() {
-        Iterator<Integer> itr = numbers.listIterator();
-        System.out.print("[");
+        Iterator<Integer> itr = numbers.listIterator(1);
+        System.out.print("["+numbers.get(0));
         while (itr.hasNext()) {
-            System.out.print(itr.next()+", ");
+            System.out.print(", "+itr.next());
         }
-        System.out.println(numbers.get(numbers.size()-1)+"]");
+        System.out.println("]");
     }
 }
