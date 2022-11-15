@@ -1,4 +1,8 @@
-package lotto;
+package lotto.service;
+
+import lotto.console.ConsoleMessage;
+import lotto.domain.Lotto;
+import lotto.domain.LottoBot;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,7 +10,7 @@ import java.util.List;
 public class LottoService {
 
     private final LottoBot lottoBot = new LottoBot();
-    private final Player player = new Player(lottoBot);
+    private final PlayerService playerService = new PlayerService(lottoBot);
     private final ArrayList<Lotto> purchasedLotto = new ArrayList<>();
 
     public void startLotto() {
@@ -24,7 +28,7 @@ public class LottoService {
 
     private void purchaseLotto() {
         ConsoleMessage.START.printMsg();
-        int lottoCount = player.getLottoCountPurchased();
+        int lottoCount = playerService.getLottoCountPurchased();
 
         createAllLotto(lottoCount);
         ConsoleMessage.PURCHASE.printLottoMsg(purchasedLotto);
@@ -39,12 +43,12 @@ public class LottoService {
 
     private void selectWinningNumbers() {
         ConsoleMessage.WINNING_NUMBER.printMsg();
-        player.selectWinningNumbers();
+        playerService.selectWinningNumbers();
     }
 
     private void selectBonusNumber() {
         ConsoleMessage.BONUS_NUMBER.printMsg();
-        player.selectBonusNumber();
+        playerService.selectBonusNumber();
     }
 
     private void notifyResult() {

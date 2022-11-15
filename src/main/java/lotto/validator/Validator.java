@@ -1,4 +1,7 @@
-package lotto;
+package lotto.validator;
+
+import lotto.error.ErrorType;
+import lotto.domain.Lotto;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -6,7 +9,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-public class Validation {
+public class Validator {
     public static void checkPurchaseInput(String str) {
         checkEmptyInput(str);
         checkNumberFormat(str);

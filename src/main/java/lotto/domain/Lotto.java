@@ -1,4 +1,6 @@
-package lotto;
+package lotto.domain;
+
+import lotto.validator.Validator;
 
 import java.util.List;
 
@@ -15,7 +17,7 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
-        Validation.checkLottoNumbers(numbers);
+        Validator.checkLottoNumbers(numbers);
     }
 
     public int getRank(List<String> winningNumbers, String bonusNumber) {
