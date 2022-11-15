@@ -31,8 +31,6 @@ public class PrintGameInfo {
 
     public static final String PROFIT_FORMAT = "총 수익률은 ";
 
-    private static final DecimalFormat DECIMAL_FORMAT = new DecimalFormat("###,###.#");
-
     public static void purchaseAmountInfo() {
         System.out.println("구입금액을 입력해 주세요.");
     }
