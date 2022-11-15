@@ -1,4 +1,4 @@
-package Exception;
+package view;
 
 public enum Error {
     ERROR_NOT_NUMBER("[ERROR] 숫자만 입력해주세요."),
