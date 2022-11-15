@@ -13,6 +13,7 @@ public class LottoInStream {
 
     public static int readAmount() {
         System.out.print(_input_purchase_amount_msg);
+
         String line = readline();
         
         return convStrToInt(line);
@@ -20,6 +21,7 @@ public class LottoInStream {
 
     public static List<Integer> readLottoNumbers() {
         System.out.print(_input_winning_lotto_msg);
+
         String line = readline();
         
         return convStrArrayToIntList(line.split(","));
@@ -27,16 +29,21 @@ public class LottoInStream {
 
     public static int readBonusNumber(Lotto lotto) {
         System.out.print(_input_bonus_number_msg);
+
         String line = readline();
-        
         int number = convStrToInt(line);
+
+        validateReadBonusNumber(lotto, number);
+        return (number);
+    }
+
+    private static void validateReadBonusNumber(Lotto lotto, int number) {
         if (lotto.hasNumber(number)) {
             throw new IllegalArgumentException("[ERROR] 보너스 번호는 당첨 번호와 중복되는 번호를 가질 수 없습니다.");
         }
         if (!Lotto.checkRange(number)) {
             throw new IllegalArgumentException("[ERROR] 범위를 벗어난 보너스 번호는 허용하지 않습니다.");
         }
-        return (number);
     }
 
     private static String readline() {
