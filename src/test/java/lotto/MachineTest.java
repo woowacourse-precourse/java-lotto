@@ -9,7 +9,9 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class MachineTest {
 
@@ -45,7 +47,7 @@ public class MachineTest {
         WinningNumber winningNumber = new WinningNumber(winLotto, bonusNumber);
 
         Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
-        Rank ranking = machine.Ranking(winningNumber, lotto);
+        Rank ranking = machine.checkRanking(winningNumber, lotto);
         Assertions.assertThat(ranking).isEqualTo(Rank.FIRST);
     }
 
@@ -57,7 +59,7 @@ public class MachineTest {
         WinningNumber winningNumber = new WinningNumber(winLotto, bonusNumber);
 
         Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 7));
-        Rank ranking = machine.Ranking(winningNumber, lotto);
+        Rank ranking = machine.checkRanking(winningNumber, lotto);
         Assertions.assertThat(ranking).isEqualTo(Rank.SECOND);
     }
 
@@ -70,7 +72,7 @@ public class MachineTest {
         WinningNumber winningNumber = new WinningNumber(winLotto, bonusNumber);
 
         Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 8));
-        Rank ranking = machine.Ranking(winningNumber, lotto);
+        Rank ranking = machine.checkRanking(winningNumber, lotto);
         Assertions.assertThat(ranking).isEqualTo(Rank.THIRD);
     }
 
@@ -83,9 +85,36 @@ public class MachineTest {
         WinningNumber winningNumber = new WinningNumber(winLotto, bonusNumber);
 
         Lotto lotto = new Lotto(List.of(1, 2, 8, 9, 10, 11));
-        Rank ranking = machine.Ranking(winningNumber, lotto);
+        Rank ranking = machine.checkRanking(winningNumber, lotto);
         Assertions.assertThat(ranking).isEqualTo(Rank.LOSE);
     }
 
+    @DisplayName("여러개의 로또 맞추기")
+    @Test
+    void rankingChecks() {
+        List<Lotto> lottos = new ArrayList<>();
+
+        Lotto winLotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+        int bonusNumber = 7;
+        WinningNumber winningNumber = new WinningNumber(winLotto, bonusNumber);
+
+        Lotto lotto1 = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+        lottos.add(lotto1);
+        Lotto lotto2 = new Lotto(List.of(1, 2, 3, 4, 5, 7));
+        lottos.add(lotto2);
+        Lotto lotto3 = new Lotto(List.of(1, 2, 3, 4, 5, 11));
+        lottos.add(lotto3);
+        Lotto lotto4 = new Lotto(List.of(7, 8, 9, 10, 11, 12));
+        lottos.add(lotto4);
+
+
+        Map<Rank, Integer> ranking = machine.checkRanking(winningNumber, lottos.toArray(new Lotto[0]));
+        Assertions.assertThat(ranking.size()).isEqualTo(4);
+
+        Assertions.assertThat(ranking.get(Rank.FIRST)).isEqualTo(1);
+        Assertions.assertThat(ranking.get(Rank.SECOND)).isEqualTo(1);
+        Assertions.assertThat(ranking.get(Rank.THIRD)).isEqualTo(1);
+        Assertions.assertThat(ranking.get(Rank.LOSE)).isEqualTo(1);
+    }
 }
 

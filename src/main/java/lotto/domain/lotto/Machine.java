@@ -3,7 +3,9 @@ package lotto.domain.lotto;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Machine {
     public Lotto draw() {
@@ -31,7 +33,16 @@ public class Machine {
         return count;
     }
 
-    public Rank Ranking(WinningNumber winningNumber, Lotto lotto) {
+    public Map<Rank, Integer> checkRanking(WinningNumber winningNumber, Lotto... lottos) {
+        Map<Rank, Integer> rankings = new HashMap<>();
+        for (Lotto lotto : lottos) {
+            Rank rank = checkRanking(winningNumber, lotto);
+            rankings.put(rank, rankings.getOrDefault(rank, 0) + 1);
+        }
+        return rankings;
+    }
+
+    public Rank checkRanking(WinningNumber winningNumber, Lotto lotto) {
         int count = compare(winningNumber.lotto, lotto);
         if (count == 6) {
             return Rank.FIRST;
