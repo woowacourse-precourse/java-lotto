@@ -5,12 +5,15 @@ import java.util.List;
 
 public class LottoGame {
 
+    private static final int LOTTO_PRICE = 1000;
+
     public int getUserAmount() {
         String userInput = Console.readLine();
         return UserInputCheck.purchaseAmountCheck(userInput);
     }
 
-    public List<List<Integer>> getLottos(int count) {
+    public List<List<Integer>> getLottos(int amonut) {
+        int count = amonut / LOTTO_PRICE;
         return LottoGenerator.lottoGenerate(count);
     }
 

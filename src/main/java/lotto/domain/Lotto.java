@@ -5,6 +5,7 @@ import java.util.stream.Collectors;
 import lotto.util.Validation;
 
 public class Lotto {
+    private final int LOTTO_PRICE = 1000;
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {

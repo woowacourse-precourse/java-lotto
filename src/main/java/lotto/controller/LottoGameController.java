@@ -17,7 +17,7 @@ public class LottoGameController {
         LottoGame lottoGame = new LottoGame();
         inputMessage.gameStart();
         int amount = inputMessage.purchaseAmountMessage(lottoGame.getUserAmount());
-        List<List<Integer>> lottos = inputMessage.purchasedLottoNumberMessage(lottoGame.getLottos(amount / 1000));
+        List<List<Integer>> lottos = inputMessage.purchasedLottoNumberMessage(lottoGame.getLottos(amount));
         List<Integer> winningNumber = inputMessage.winningNumberMessage(lottoGame.getWinningNumber());
         int bonusNumber = inputMessage.bonusNumberMessage(lottoGame.getBonusNumber());
         //결과 산정
