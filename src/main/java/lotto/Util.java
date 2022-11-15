@@ -6,11 +6,15 @@ import camp.nextstep.edu.missionutils.Randoms;
 public class Util {
 
 	public static int strToInt(String word) {
+		int result = -1;
+
 		try {
-			return Integer.parseInt(word);
+			result = Integer.parseInt(word);
 		} catch (NumberFormatException e) {
-			throw new IllegalArgumentException(Constants.ERROR_NOT_NUMBER_FORMAT);
+			Verify.illegalArgumentException(Constants.ERROR_NOT_NUMBER_FORMAT);
 		}
+
+		return result;
 	}
 
 	public static List<Integer> pickUniqueNumbersInRange(int start, int end, int num) {

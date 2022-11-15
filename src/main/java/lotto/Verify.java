@@ -16,13 +16,21 @@ public class Verify {
 
 	public static void verifyGoal(List<Integer> goal) {
 		verifyLottoLength(goal);
-//		verifyNumberBoundary(goal);
+		verifyNumberBoundary(goal);
 //		verifyDupNumber(goal);
 	}
 
 	private static void verifyLottoLength(List<Integer> goal) {
 		if (goal.size() != Constants.LOTTO_LENGTH) {
 			illegalArgumentException(Constants.ERROR_NOT_LOTTO_LENGTH);
+		}
+	}
+
+	private static void verifyNumberBoundary(List<Integer> goal) {
+		for (Integer number : goal) {
+			if (number < Constants.LOTTO_UNDER_BOUNDARY || number > Constants.LOTTO_UPPER_BOUNDARY) {
+				illegalArgumentException(Constants.ERROR_NOT_IN_BOUNDARY);
+			}
 		}
 	}
 }
