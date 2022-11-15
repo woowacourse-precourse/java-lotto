@@ -7,7 +7,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class StatisticsTest {
 
-    @DisplayName("동일한 key(Prize)에 해당하는 값이 입력되었을 경우 value(개수)가 업데이트가 잘 되는지 테스트")
+    @DisplayName("동일한 key(Prize)에 해당하는 값이 입력되었을 경우 value(개수)가 업데이트가 잘 되는지 테스트한다.")
     @Test
     void updateStatistics() {
         //given
@@ -24,7 +24,7 @@ class StatisticsTest {
                   .isEqualTo(2);
     }
 
-    @DisplayName("총 당첨 수령 금액과 사용자가 구매에 지불한 금액을 계산해 수익률이 잘 반환 되는지 테스트")
+    @DisplayName("총 당첨 수령 금액과 사용자가 구매에 지불한 금액을 계산해 수익률이 잘 반환 되는지 테스트한다.")
     @Test
     void calculateYield() {
         //given

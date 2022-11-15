@@ -14,7 +14,7 @@ class PrizeTest {
         result = new Result();
     }
 
-    @DisplayName("로또 1등 결과를 담고 있는 Result의 값에 일치하는 Prize가 잘 반환되는지 테스트")
+    @DisplayName("로또 1등 결과를 담고 있는 Result의 값에 일치하는 Prize가 잘 반환되는지 테스트한다.")
     @Test
     void generateFirstPrize() {
         //given
@@ -28,7 +28,7 @@ class PrizeTest {
                   .isEqualTo(Prize.FIRST);
     }
 
-    @DisplayName("로또 2등 결과를 담고 있는 Result의 값에 일치하는 Prize가 잘 반환되는지 테스트")
+    @DisplayName("로또 2등 결과를 담고 있는 Result의 값에 일치하는 Prize가 잘 반환되는지 테스트한다.")
     @Test
     void generateSecondPrize() {
         //given
@@ -43,7 +43,7 @@ class PrizeTest {
                   .isEqualTo(Prize.SECOND);
     }
 
-    @DisplayName("로또 3등 결과를 담고 있는 Result의 값에 일치하는 Prize가 잘 반환되는지 테스트")
+    @DisplayName("로또 3등 결과를 담고 있는 Result의 값에 일치하는 Prize가 잘 반환되는지 테스트한다.")
     @Test
     void generateThirdPrize() {
         //given
@@ -57,7 +57,7 @@ class PrizeTest {
                   .isEqualTo(Prize.THIRD);
     }
 
-    @DisplayName("로또 4등 결과를 담고 있는 Result의 값에 일치하는 Prize가 잘 반환되는지 테스트")
+    @DisplayName("로또 4등 결과를 담고 있는 Result의 값에 일치하는 Prize가 잘 반환되는지 테스트한다.")
     @Test
     void generateFourthPrize() {
         //given
@@ -71,7 +71,7 @@ class PrizeTest {
                   .isEqualTo(Prize.FOURTH);
     }
 
-    @DisplayName("로또 5등 결과를 담고 있는 Result의 값에 일치하는 Prize가 잘 반환되는지 테스트")
+    @DisplayName("로또 5등 결과를 담고 있는 Result의 값에 일치하는 Prize가 잘 반환되는지 테스트한다.")
     @Test
     void generateFifthPrize() {
         //given
@@ -85,7 +85,7 @@ class PrizeTest {
                   .isEqualTo(Prize.FIFTH);
     }
 
-    @DisplayName("로또 5등 이하의 결과를 담고 있는 Result의 값에 일치하는 Prize가 잘 반환되는지 테스트")
+    @DisplayName("로또 5등 이하의 결과를 담고 있는 Result의 값에 일치하는 Prize가 잘 반환되는지 테스트한다.")
     @Test
     void generateNothingPrize() {
         //given

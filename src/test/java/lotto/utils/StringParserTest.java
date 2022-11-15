@@ -36,7 +36,7 @@ class StringParserTest {
                   .isInstanceOf(IllegalArgumentException.class);
     }
 
-    @DisplayName("사용자가 구매한 로또를 [ , ] 를 포함한 문자열로 잘 반환하는지 테스트")
+    @DisplayName("사용자가 구매한 로또를 [ , ] 를 포함한 문자열로 잘 반환하는지 테스트한다.")
     @Test
     void parseLottoToString() {
         //given
