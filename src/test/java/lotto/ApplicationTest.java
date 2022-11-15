@@ -214,5 +214,20 @@ class ApplicationTest extends NsTest {
             }
         }
 
+        @Test
+        void countMatchesTest() {
+            List<Integer> matchTest = new ArrayList<>(Arrays.asList(6,3,1));
+
+            assertEquals(lotto.countMatches(correctWinningNumberTest), matchTest);
+        }
+
+        @ParameterizedTest
+        @CsvSource({"13,false,true,false", "35,false,false,true", "7,false,false,false", "44,false,false,false"})
+        void matchBonusTest(int bonusNumberTest, boolean correctOne, boolean correctTwo, boolean correctThree) {
+            List<Boolean> answerBooleansTest = new ArrayList<>(Arrays.asList(correctOne, correctTwo, correctThree));
+
+            assertEquals(lotto.matchBonus(bonusNumberTest, correctWinningNumberTest), answerBooleansTest);
+        }
+
     }
 }
