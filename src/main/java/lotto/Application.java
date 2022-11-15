@@ -9,5 +9,6 @@ public class Application {
         List<Lotto> ticketList = lottoMachine.sellTicket(ticketCount);
 
         lottoMachine.createAnswer();
+        lottoMachine.printResult(ticketList);
     }
 }

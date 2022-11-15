@@ -14,6 +14,13 @@ import java.util.stream.Collectors;
 public class Machine {
 
   private Answer answer;
+  private String[] resultMessage = {
+    "3개 일치 (5,000원)",
+    "4개 일치 (50,000원)",
+    "5개 일치 (1,500,000원)",
+    "5개 일치, 보너스 볼 일치 (30,000,000원)",
+    "6개 일치 (2,000,000,000원)",
+  };
 
   /**
    * Get money to return ticket count.
@@ -53,5 +60,49 @@ public class Machine {
     Lotto winningLotto = new Lotto(winningNumbers);
     int bonusNumber = inputBonusNumber();
     this.answer = new Answer(winningLotto, bonusNumber);
+  }
+
+  /**
+   * Calculate rank of ticket.
+   * @param ticketList The list of ticket.
+   */
+  public void printResult(List<Lotto> ticketList) {
+    System.out.println("당첨 통계\n" + "---");
+
+    int[] rank = calculateRank(ticketList);
+
+    for(int i=0; i<5; i++) {
+      System.out.println(resultMessage[i] + " - " + rank[i] + "개");
+    }
+  }
+
+  private int[] calculateRank(List<Lotto> ticketList) {
+
+    int[] rank = new int[5];
+    Lotto winningLotto = answer.getWinningLotto();
+    int bonusNumber = answer.getBonusNumber();
+
+    for(Lotto ticket: ticketList) {
+      int winningCount = ticket.compare(winningLotto);
+      boolean isBonus = ticket.compare(bonusNumber);
+
+      if (winningCount==3) {
+        rank[0] += 1;
+      }
+      if (winningCount==4) {
+        rank[1] += 1;
+      }
+      if (winningCount==5 && !isBonus) {
+        rank[2] += 1;
+      }
+      if (winningCount==5 && isBonus) {
+        rank[3] += 1;
+      }
+      if (winningCount==6) {
+        rank[4] += 1;
+      }
+    }
+
+    return rank;
   }
 }
