@@ -80,7 +80,16 @@ public class InputTest extends NsTest {
         assertThatThrownBy(() -> validator.isNumericWinningNumber(winningNumber,Error.NUMBER))
                 .isInstanceOf(IllegalArgumentException.class);
     }
-    
+
+    @DisplayName("보너스 번호 입력값이 1개가 아닐 경우 예외가 발생한다.")
+    @Test
+    void createBonusNumberSize() {
+        Validator validator = new Validator();
+        String bonusNumber = "1,2";
+        assertThatThrownBy(() -> validator.inputOnlyOne(bonusNumber,Error.ONE_SIZE))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
