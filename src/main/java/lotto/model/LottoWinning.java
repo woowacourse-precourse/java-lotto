@@ -2,6 +2,8 @@ package lotto.model;
 
 import static lotto.config.Constants.LottoNumber.LOTTO_NUMBER_END_INCLUSIVE;
 import static lotto.config.Constants.LottoNumber.LOTTO_NUMBER_START_INCLUSIVE;
+import static lotto.exception.LottoException.NUMBER_DUPLICATED;
+import static lotto.exception.LottoException.NUMBER_OUT_OF_RANGE;
 
 public class LottoWinning {
     private Lotto winLotto;
@@ -38,13 +40,13 @@ public class LottoWinning {
 
     private void validateDuplicated(int bonus) {
         if (winLotto.getNumbers().contains(bonus)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(NUMBER_DUPLICATED.getErrorMessage());
         }
     }
 
     private void validateNumberRange(int bonus) {
         if (bonus < LOTTO_NUMBER_START_INCLUSIVE || bonus > LOTTO_NUMBER_END_INCLUSIVE) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(NUMBER_OUT_OF_RANGE.getErrorMessage());
         }
     }
 
