@@ -131,4 +131,16 @@ public class Application {
         System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - " + user_match_count.get("5개+보너스") + "개");
         System.out.println("6개 일치 (2,000,000,000원) - " + user_match_count.get("6개") + "개");
     }
+
+    static long HowMuchMoney(Map<String, Integer> user_match_count) {
+        long result_money = 0L;
+
+        result_money += user_match_count.get("3개") * 5000L;
+        result_money += user_match_count.get("4개") * 50000L;
+        result_money += user_match_count.get("5개") * 1500000L;
+        result_money += user_match_count.get("5개+보너스") * 30000000L;
+        result_money += user_match_count.get("6개") * 200000000L;
+
+        return result_money;
+    }
 }
