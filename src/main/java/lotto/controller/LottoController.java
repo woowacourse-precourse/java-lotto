@@ -18,7 +18,7 @@ public class LottoController {
         Money money = getLottoMoney();
         printBuyLotto(money);
 
-        List<Lotto> lottos = getLottos(money);
+        Lottos lottos = getLottos(money);
         printLottoList(lottos);
 
         WinningLotto winningLotto = getWinningLotto();
@@ -35,9 +35,9 @@ public class LottoController {
         return new Money(money);
     }
 
-    private List<Lotto> getLottos(Money money) {
+    private Lottos getLottos(Money money) {
         LottoGenerator lottoGenerator = new LottoGenerator();
-        return lottoGenerator.generateLottoGroup(money.getTicket());
+        return new Lottos(lottoGenerator.generateLottoGroup(money.getTicket()));
     }
 
     private WinningLotto getWinningLotto() {
@@ -50,7 +50,7 @@ public class LottoController {
         return new WinningLotto(winningNumbers, bonusNumber);
     }
 
-    private void calcLottoResult(PrizeResult prizeResult, WinningLotto winningLotto, List<Lotto> lottos) {
+    private void calcLottoResult(PrizeResult prizeResult, WinningLotto winningLotto, Lottos lottos) {
         prizeResult.calcPrizeResult(winningLotto, lottos);
     }
 

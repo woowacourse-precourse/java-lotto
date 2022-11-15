@@ -14,8 +14,8 @@ public class PrizeResult {
                 .forEach(prize -> prizeResult.put(prize, 0));
     }
 
-    public void calcPrizeResult(WinningLotto winningLotto, List<Lotto> lottos) {
-        for (Lotto lotto : lottos) {
+    public void calcPrizeResult(WinningLotto winningLotto, Lottos lottos) {
+        for (Lotto lotto : lottos.getLottos()) {
             Prize prize = Prize.getPrize(lotto.getMatchLottoNumber(winningLotto),
                     lotto.isContain(winningLotto.getBonusNumber()));
             updatePrizeCount(prize);
