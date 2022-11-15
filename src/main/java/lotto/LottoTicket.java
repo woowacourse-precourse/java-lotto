@@ -43,10 +43,7 @@ public class LottoTicket {
             List<Integer> sortedLotteryNumbers = new ArrayList<>(lotteryNumbers);
             Collections.sort(sortedLotteryNumbers);
             allOfLotteryNumbers.add(sortedLotteryNumbers);
-        }
-
-        for (int ticketNumber = 0; ticketNumber < numberOfPaidLottery; ticketNumber++) {
-            System.out.println(allOfLotteryNumbers.get(ticketNumber));
+            System.out.println(allOfLotteryNumbers.get(ticketIndex));
         }
 
         return allOfLotteryNumbers;
