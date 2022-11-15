@@ -1,5 +1,8 @@
 package lotto.domain;
 
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
+
 public class Amount {
     private static final int LOTTO_PRICE = 1000;
     private final int amount;
@@ -20,7 +23,8 @@ public class Amount {
      * 총 당첨금의 합을 받아 수익률(소수점 둘째 자리에서 반올림)을 계산하여 반환하는 메소드
      */
     public String getYield(long sumOfMoney) {
-        return String.format("%.1f", sumOfMoney / (double) amount * 100);
+        DecimalFormat formatter = new DecimalFormat("###,###.0");
+        return formatter.format(sumOfMoney / (double) amount * 100);
     }
 
     /**
