@@ -4,6 +4,8 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Input {
     public static int inputPurchaseMoney() {
@@ -25,5 +27,12 @@ public class Input {
         if (input % 1000 != 0) {
             throw new IllegalArgumentException("[ERROR] 구입금액은 1000원 단위로 입력하세요.");
         }
+    }
+
+    public static List<Integer> inputWinningNumber() {
+        String winning = Console.readLine();
+        return Stream.of(winning.split(","))
+                .map(s -> Integer.parseInt(s))
+                .collect(Collectors.toList());
     }
 }

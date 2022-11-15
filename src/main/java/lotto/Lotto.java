@@ -44,6 +44,9 @@ public class Lotto {
         }
     }
 
+    public static Lotto createWinningLotto(List<Integer> numbers) {
+        return new Lotto(numbers);
+    }
 
     @Override
     public String toString() {

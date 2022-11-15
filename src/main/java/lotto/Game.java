@@ -12,5 +12,6 @@ public class Game {
         List<Lotto> lottos = Lotto.issueLotto(numberOfLottos);
         Print.printLottos(lottos);
         Print.winningNumber();
+        Lotto winning = Input.inputWinningNumber();
     }
 }
