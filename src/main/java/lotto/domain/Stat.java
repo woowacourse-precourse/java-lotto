@@ -4,17 +4,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import lotto.utils.LottoType;
-
 public class Stat {
 	private Map<LottoType, Integer> stat = new HashMap<>();
 
-	public Stat(Lotto lotto, LottoBonus lottoBonus, LottoTickets lottoTickets) {
+	public Stat(List<LottoType> grade) {
 		initStat();
-		for (LottoTicket lottoTicket : lottoTickets.getLottoTickets()) {
-			int lottoNumber = countLottoNumber(lotto.getNumbers(), lottoTicket.getNumbers());
-			int bonusNumber = countBonusNumber(lottoBonus.getBonusNumber(), lottoTicket.getNumbers());
-			setStat(LottoType.getType(lottoNumber, bonusNumber));
+		for (LottoType lottoType : grade) {
+			putStat(lottoType);
 		}
 	}
 
@@ -24,28 +20,8 @@ public class Stat {
 		}
 	}
 
-	private void setStat(LottoType lottoType) {
-		if (stat.containsKey(lottoType)) {
-			stat.put(lottoType, stat.get(lottoType) + 1);
-		}
-	}
-
-	private int countBonusNumber(int lottoBonus, List<Integer> lottoTicket) {
-		int bonusNumber = 0;
-		if (lottoTicket.contains(lottoBonus)) {
-			bonusNumber = 1;
-		}
-		return bonusNumber;
-	}
-
-	private int countLottoNumber(List<Integer> lotto, List<Integer> lottoTicket) {
-		int lottoNumber = 0;
-		for (int number : lottoTicket) {
-			if (lotto.contains(number)) {
-				lottoNumber++;
-			}
-		}
-		return lottoNumber;
+	private void putStat(LottoType lottoType) {
+		stat.put(lottoType, stat.get(lottoType) + 1);
 	}
 
 	public Map<LottoType, Integer> getStat() {

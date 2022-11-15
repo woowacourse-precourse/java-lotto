@@ -7,16 +7,13 @@ import java.util.List;
 import java.util.Map;
 
 import lotto.domain.LottoTicket;
-import lotto.domain.LottoTickets;
-import lotto.utils.LottoType;
+import lotto.domain.LottoType;
 
 public class OutputView {
-	public static void printLottoTickets(LottoTickets lottoTickets) {
-		System.out.println(lottoTickets.getLottoTickets().size() + "개를 구매했습니다.");
-		List<LottoTicket> lottoTickets1 = lottoTickets.getLottoTickets();
-		for (LottoTicket lottoTicket : lottoTickets1) {
-			List<Integer> lottoNumbers = lottoTicket.getNumbers();
-			System.out.println(lottoNumbers);
+	public static void printLottoTickets(List<LottoTicket> lottoTickets) {
+		System.out.println(lottoTickets.size() + "개를 구매했습니다.");
+		for (LottoTicket lottoTicket : lottoTickets) {
+			System.out.println(lottoTicket.getNumbers());
 		}
 	}
 
@@ -31,7 +28,7 @@ public class OutputView {
 	}
 
 	public static void printEarningsRate(BigDecimal earningsRate) {
-		DecimalFormat df = new DecimalFormat("#,###.0%");
+		DecimalFormat df = new DecimalFormat("#,##0.0%");
 		System.out.println("총 수익률은 " + df.format(earningsRate.setScale(4, RoundingMode.HALF_UP)) + "입니다.");
 	}
 }

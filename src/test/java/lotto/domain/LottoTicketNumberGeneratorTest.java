@@ -7,13 +7,14 @@ import java.util.Set;
 
 import org.junit.jupiter.api.Test;
 
+import lotto.controller.LottoTicketNumberGenerator;
+
 class LottoTicketNumberGeneratorTest {
 
 	@Test
 	void 중복된_숫자_테스트() {
 		Set<Integer> lottoNums = new HashSet<>(LottoTicketNumberGenerator.generate());
 		assertThat(lottoNums).hasSize(6);
-
 	}
 
 	@Test

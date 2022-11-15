@@ -1,18 +1,18 @@
-package lotto.domain;
+package lotto.controller;
 
-import static lotto.domain.LottoTicketsValidator.*;
+import static lotto.utils.ErrorMessage.*;
 
-import lotto.utils.StringInteger;
+import lotto.utils.TypeConversion;
 
 public class LottoBonusGenerator {
 	public static int generate(String bonusNumber) {
 		validate(bonusNumber);
-		return StringInteger.toInt(bonusNumber);
+		return TypeConversion.toInt(bonusNumber);
 	}
 
 	private static void validate(String bonusNumber) {
 		if (!isValidCharacter(bonusNumber)) {
-			throw new IllegalArgumentException(ERROR + "올바른 숫자를 입력해 주세요.");
+			throw new IllegalArgumentException(INPUT_ONLY_NUMBER.getMessage());
 		}
 	}
 
