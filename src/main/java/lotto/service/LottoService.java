@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import lotto.constants.enums.WinResultStatus;
+import lotto.constants.utils.NumberUtil;
 import lotto.domain.WinningNumber;
 import lotto.repository.LottoRepository;
 
@@ -12,8 +13,6 @@ public class LottoService {
     public static final int LOTTO_PRICE = 1000;
     public static final int PERCENT = 100;
     public static final double SECOND_DECIMAL_PLACE = 10.0;
-    public static final int ONE = 1;
-    public static final int ZERO = 0;
     private final LottoRepository lottoRepository = LottoRepository.getInstance();
 
     public List<Object> buyLottos(int inputPrice) {
@@ -54,7 +53,7 @@ public class LottoService {
     private Map<WinResultStatus, Integer> createStatistics(List<WinResultStatus> winResults) {
         Map<WinResultStatus, Integer> statisticsCounts = new HashMap<>();
         for (WinResultStatus winResult : winResults) {
-            statisticsCounts.put(winResult, statisticsCounts.getOrDefault(winResult, ZERO) + ONE);
+            statisticsCounts.put(winResult, statisticsCounts.getOrDefault(winResult, NumberUtil.ZERO) + NumberUtil.ONE);
         }
         return statisticsCounts;
     }

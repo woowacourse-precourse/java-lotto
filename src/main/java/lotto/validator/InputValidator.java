@@ -1,12 +1,11 @@
 package lotto.validator;
 
 import lotto.constants.messages.ExceptionMessage;
+import lotto.constants.utils.NumberUtil;
 import lotto.constants.utils.RegularExpressionUtil;
 
 public class InputValidator {
-    public static final int NOTHING = 0;
     public static final int LOTTO_PRICE = 1000;
-    public static final int ZERO = 0;
     public static final int FIRST_INDEX = 0;
 
     public boolean validateInputPrice(String inputPrice) {
@@ -23,14 +22,14 @@ public class InputValidator {
     }
 
     private boolean isStartWithZero(char firstNumber) {
-        return Integer.parseInt(String.valueOf(firstNumber)) == ZERO;
+        return Integer.parseInt(String.valueOf(firstNumber)) == NumberUtil.ZERO;
     }
 
     private boolean isZero(int inputPrice) {
-        return inputPrice == ZERO;
+        return inputPrice == NumberUtil.ZERO;
     }
 
     private boolean isNotValidPrice(int inputPrice) {
-        return inputPrice % LOTTO_PRICE != NOTHING;
+        return inputPrice % LOTTO_PRICE != NumberUtil.ZERO;
     }
 }

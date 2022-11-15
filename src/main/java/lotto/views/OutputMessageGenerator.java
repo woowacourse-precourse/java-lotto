@@ -7,12 +7,12 @@ import java.util.Map;
 import lotto.constants.enums.WinResultStatus;
 import lotto.constants.messages.OutputMessage;
 import lotto.constants.utils.MessageFormatUtil;
+import lotto.constants.utils.NumberUtil;
 import lotto.domain.Lotto;
 
 public class OutputMessageGenerator {
     public static final int WIN_RESULT_COUNT = 5;
     public static final int ZERO_WIN = 0;
-    private static final int ONE = 1;
 
     public String createBuyingLottoResultMessage(List<Lotto> buyingLottos) {
         StringBuilder allLottoNumber = new StringBuilder();
@@ -20,7 +20,7 @@ public class OutputMessageGenerator {
                 .map(Lotto::createMessage)
                 .forEach(lotto -> allLottoNumber.append(lotto)
                         .append(MessageFormatUtil.NEXT_LINE));
-        return allLottoNumber.deleteCharAt(allLottoNumber.length() - ONE)
+        return allLottoNumber.deleteCharAt(allLottoNumber.length() - NumberUtil.ONE)
                 .toString();
     }
 

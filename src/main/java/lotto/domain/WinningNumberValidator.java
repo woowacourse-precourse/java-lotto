@@ -3,10 +3,10 @@ package lotto.domain;
 import java.util.List;
 import lotto.constants.messages.ExceptionMessage;
 import lotto.constants.utils.MessageFormatUtil;
+import lotto.constants.utils.NumberUtil;
 import lotto.constants.utils.RegularExpressionUtil;
 
 public class WinningNumberValidator {
-    public static final int MAX_NUMBER = 6;
     public static final int MAXIMUM_NUMBER = 45;
     public static final int MINIMUM_NUMBER = 1;
 
@@ -44,7 +44,7 @@ public class WinningNumberValidator {
     private boolean isDuplicatedNumber(List<String> splitInputWinningNumber) {
         return splitInputWinningNumber.stream()
                 .distinct()
-                .count() != MAX_NUMBER;
+                .count() != NumberUtil.LOTTO_NUMBER_COUNT;
     }
 
     public void validateBonusNumber(String bonusNumber, List<Integer> numbers) {

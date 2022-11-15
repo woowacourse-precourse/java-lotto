@@ -7,10 +7,9 @@ import java.util.stream.Collectors;
 import lotto.constants.enums.WinResultStatus;
 import lotto.constants.messages.ExceptionMessage;
 import lotto.constants.utils.MessageFormatUtil;
+import lotto.constants.utils.NumberUtil;
 
 public class Lotto {
-    public static final int LOTTO_COUNT = 6;
-    public static final int ONE = 1;
     public static final int HIT_THREE = 3;
     public static final int HIT_FIVE = 5;
     public static final int SECOND_PLACE_COUNT = 7;
@@ -22,7 +21,7 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
-        if (numbers.size() != LOTTO_COUNT) {
+        if (numbers.size() != NumberUtil.LOTTO_NUMBER_COUNT) {
             throw new IllegalArgumentException(ExceptionMessage.ERROR + ExceptionMessage.NUMERIC_LENGTH);
         }
         if (isDuplicated(numbers)) {
@@ -34,7 +33,7 @@ public class Lotto {
         List<Integer> distinctNumbers = numbers.stream()
                 .distinct()
                 .collect(Collectors.toList());
-        return distinctNumbers.size() != LOTTO_COUNT;
+        return distinctNumbers.size() != NumberUtil.LOTTO_NUMBER_COUNT;
     }
 
     public List<Integer> getNumbers() {
@@ -51,7 +50,7 @@ public class Lotto {
                         .append(MessageFormatUtil.COMMA)
                         .append(MessageFormatUtil.SPACE));
         return lottoResult.delete(lottoResult.lastIndexOf(MessageFormatUtil.COMMA),
-                        lottoResult.lastIndexOf(MessageFormatUtil.SPACE) + ONE)
+                        lottoResult.lastIndexOf(MessageFormatUtil.SPACE) + NumberUtil.ONE)
                 .append(MessageFormatUtil.END_BRACKET)
                 .toString();
     }
