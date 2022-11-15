@@ -63,4 +63,13 @@ class ExceptionServiceTest {
         assertThatThrownBy(() -> exceptionService.exceptionHandlingOfWinningNumbers(winningNumbers))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @Test
+    @DisplayName("당첨번호가 1~45사이의 숫자가 아니면 예외가 발생한다.")
+    void checkIfTheScopeIsCorrectTest() {
+        ExceptionService exceptionService = new ExceptionService();
+        String winningNumbers = "1,2,3,4,45,46";
+        assertThatThrownBy(() -> exceptionService.exceptionHandlingOfWinningNumbers(winningNumbers))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
