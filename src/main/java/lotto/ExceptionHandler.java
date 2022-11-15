@@ -22,9 +22,19 @@ public class ExceptionHandler {
         }
     }
 
-    public void validPurchaseForm(int amount){
+    public void validPurchaseForm(String readline){
+        int amount = parseInt(readline);
         if(amount%1000 != 0){
             throw new IllegalArgumentException("1000원 단위로만 구입이 가능합니다.");
+        }
+    }
+
+    public static Integer parseInt(String input) {
+        try {
+            return Integer.parseInt(input);
+        }
+        catch (NumberFormatException e) {
+            throw new IllegalArgumentException("정수 이외의 값은 입력할 수 없습니다.");
         }
     }
 }
