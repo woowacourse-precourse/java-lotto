@@ -110,7 +110,7 @@ public class LottoService {
         return resultPoints;
     }
 
-    public static double getStatistics(Map<Result, Integer> resultPoints, long amount) {
+    public static double getTotalRate(Map<Result, Integer> resultPoints, long amount) {
         double rate = 0;
         for (Result result : Result.values()) {
             rate += result.calculate(resultPoints.get(result));
