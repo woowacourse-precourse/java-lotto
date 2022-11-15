@@ -23,6 +23,8 @@ public class UserInputNumbersService {
         return lottoPrice;
     }
 
-
+    public int getUserBuyingLottoPrice(User user) {
+        return user.getPrice();
+    }
 
 }
