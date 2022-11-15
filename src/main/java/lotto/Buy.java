@@ -30,6 +30,7 @@ public class Buy {
     public static Lotto issueLotto() {
         List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
         Lotto lotto = new Lotto(numbers);
+        System.out.println(numbers);
         return lotto;
     }
 }

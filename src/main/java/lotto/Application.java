@@ -10,6 +10,7 @@ public class Application {
         int money = askMoney();
         int count = Buy.buyLotto(money);
 
+        System.out.println(count+"개를 구매했습니다.");
         List<Lotto> purchases = new ArrayList<>();
         for (int i = 0; i < count; i++) {
             purchases.add(Buy.issueLotto());
@@ -87,11 +88,11 @@ public class Application {
         System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - " + results.get(4) + "개");
         System.out.println("6개 일치 (2,000,000,000원) - " + results.get(3) + "개");
 
-        int gain = ((results.get(0) * Prize.THREE.getPrize() +
+        double gain = ((results.get(0) * Prize.THREE.getPrize() +
                 results.get(1) * Prize.FORU.getPrize() +
                 results.get(2) * Prize.FIVE.getPrize() +
                 results.get(3) * Prize.SEVEN.getPrize() +
-                results.get(4) * Prize.SIX.getPrize()) / money) * 100;
+                results.get(4) * Prize.SIX.getPrize()) / (double)money) * 100;
         System.out.println("총 수익률은 " + gain + "%입니다.");
     }
 
