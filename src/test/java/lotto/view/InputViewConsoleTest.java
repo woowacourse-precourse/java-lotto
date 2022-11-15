@@ -29,7 +29,7 @@ class InputViewConsoleTest {
     @DisplayName("구매금액 비정상 입력")
     void getIllegalPurchaseAmount() {
         //given
-        String inputMessage = "3200";
+        String inputMessage = "320d0";
         InputStream is = new ByteArrayInputStream(inputMessage.getBytes());
         System.setIn(is);
 

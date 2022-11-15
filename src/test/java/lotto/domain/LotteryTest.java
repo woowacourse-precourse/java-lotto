@@ -10,16 +10,22 @@ import lotto.view.InputView;
 import lotto.view.InputViewConsole;
 import lotto.view.OutputView;
 import lotto.view.OutputViewConsole;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 class LotteryTest extends NsTest {
+    @BeforeEach
+    void clearRank(){
+        Rank.clearCount();
+    }
+
     @DisplayName("멤버로 갖는 로또들의 당첨결과를 계산하는 메소드 출력")
     @Test
     void calculateRankWithWinningNumbers() {
         //given
         OutputView ov = new OutputViewConsole();
-        Lottery lottery = Lottery.buy(100000);
+        Lottery lottery = Lottery.buy(new PurchaseAmount(10000));
         WinningNumbers winningNumbers = new WinningNumbers(new ArrayList<>(List.of(1, 2, 3, 4, 5, 6)), 7);
 
         //when
@@ -60,7 +66,8 @@ class LotteryTest extends NsTest {
     protected void runMain() {
         InputView iv = new InputViewConsole();
         OutputView ov = new OutputViewConsole();
-        Lottery lottery = Lottery.buy(iv.askPurchaseAmount());
+        PurchaseAmount purchaseAmount = new PurchaseAmount(iv.askPurchaseAmount());
+        Lottery lottery = Lottery.buy(purchaseAmount);
         WinningNumbers winningNumbers = new WinningNumbers(iv.askWinningNumbers(), iv.askBonusNumber());
 
         lottery.calculateRankWithWinningNumbers(winningNumbers);
