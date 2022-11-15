@@ -1,10 +1,10 @@
 package lotto;
 
-import lotto.layer.InputView;
-import lotto.layer.LottoController;
-import lotto.layer.LottoService;
-import lotto.layer.OutputView;
-import lotto.layer.Table;
+import lotto.layer.view.InputView;
+import lotto.layer.controller.LottoController;
+import lotto.layer.service.LottoService;
+import lotto.layer.view.OutputView;
+import lotto.layer.db.Table;
 
 public class Application {
 
