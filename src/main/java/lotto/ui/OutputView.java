@@ -39,6 +39,6 @@ public enum OutputView {
     }
 
     private static void printYieldMessage(String yield) {
-        System.out.printf(OutputMessageGenerator.getYieldMessage(yield));
+        System.out.println(OutputMessageGenerator.getYieldMessage(yield));
     }
 }
