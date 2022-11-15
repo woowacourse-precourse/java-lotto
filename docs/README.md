@@ -38,3 +38,4 @@
 - 구입 금액인 **amount** 를 **Amount class** 로 분리
     - 구매 금액에 대한 역할을 담당
     - Purchase class 와의 의존도를 낮추는 효과
+- 복권 생성을 **Purchase class** 가 아닌 **Lotto class**에서 List로 생성해서 반환하도록 변경

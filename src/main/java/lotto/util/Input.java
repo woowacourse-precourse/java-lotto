@@ -6,8 +6,6 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static lotto.util.Print.*;
-
 public class Input {
     private static final int COMMA_COUNT = 5;
     private static final int LOTTO_COUNT = 6;
@@ -19,7 +17,6 @@ public class Input {
      */
     public static int inputAmount() {
         try {
-            printAmountInputText();
             String amount = Console.readLine();
             return Integer.parseInt(amount);
         } catch (IllegalArgumentException e) {

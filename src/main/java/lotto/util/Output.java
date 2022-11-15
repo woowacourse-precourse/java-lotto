@@ -4,7 +4,7 @@ import lotto.domain.Lotto;
 
 import java.util.List;
 
-public class Print {
+public class Output {
 
     /**
      * 로또 구입 금액 입력 문구 출력하는 함수
