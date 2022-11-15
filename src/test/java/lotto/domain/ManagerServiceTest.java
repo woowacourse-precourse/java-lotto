@@ -1,6 +1,6 @@
 package lotto.domain;
 
-import lotto.domain.constant.Number;
+import lotto.domain.constant.ConstantValue;
 import lotto.service.ManagerService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -60,14 +60,14 @@ class ManagerServiceTest {
     @Test
     void judgeRankTest() {
         assertAll(
-            () -> assertThat(managerService.judgeRank(0, true)).isEqualTo(Number.ZERO),
-            () -> assertThat(managerService.judgeRank(1, true)).isEqualTo(Number.ZERO),
-            () -> assertThat(managerService.judgeRank(2, true)).isEqualTo(Number.ZERO),
-            () -> assertThat(managerService.judgeRank(3, true)).isEqualTo(Number.FIVE),
-            () -> assertThat(managerService.judgeRank(4, true)).isEqualTo(Number.FOUR),
-            () -> assertThat(managerService.judgeRank(5, false)).isEqualTo(Number.THREE),
-            () -> assertThat(managerService.judgeRank(5, true)).isEqualTo(Number.TWO),
-            () -> assertThat(managerService.judgeRank(6, true)).isEqualTo(Number.ONE)
+            () -> assertThat(managerService.judgeRank(0, true)).isEqualTo(ConstantValue.ZERO),
+            () -> assertThat(managerService.judgeRank(1, true)).isEqualTo(ConstantValue.ZERO),
+            () -> assertThat(managerService.judgeRank(2, true)).isEqualTo(ConstantValue.ZERO),
+            () -> assertThat(managerService.judgeRank(3, true)).isEqualTo(ConstantValue.FIVE),
+            () -> assertThat(managerService.judgeRank(4, true)).isEqualTo(ConstantValue.FOUR),
+            () -> assertThat(managerService.judgeRank(5, false)).isEqualTo(ConstantValue.THREE),
+            () -> assertThat(managerService.judgeRank(5, true)).isEqualTo(ConstantValue.TWO),
+            () -> assertThat(managerService.judgeRank(6, true)).isEqualTo(ConstantValue.ONE)
         );
     }
 }

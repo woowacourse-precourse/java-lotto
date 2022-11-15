@@ -4,7 +4,7 @@ import lotto.domain.Lotto;
 import lotto.domain.LottoMachine;
 import lotto.domain.Manager;
 import lotto.domain.User;
-import lotto.domain.constant.Number;
+import lotto.domain.constant.ConstantValue;
 import lotto.util.ExceptionHandler;
 import lotto.util.InputUtil;
 import lotto.util.OutputUtil;
@@ -18,7 +18,7 @@ public class ManagerService {
 
     public void changeToLottos(User user) {
         List<Lotto> lottos = new ArrayList<>();
-        int totalCount = (int)user.getMoney() / Number.THOUSAND;
+        int totalCount = (int)user.getMoney() / ConstantValue.THOUSAND;
 
         for (int repeat = 1; repeat <= totalCount; repeat++) {
             Lotto lotto = lottoMachine.generateLotto();
@@ -62,19 +62,22 @@ public class ManagerService {
     }
 
     public int judgeRank(int correctCount, boolean isCorrectBonus) {
-        if (correctCount == Number.THREE) {
-            return Number.FIVE;
-        } else if (correctCount == Number.FOUR) {
-            return Number.FOUR;
-        } else if (correctCount == Number.FIVE) {
-            if (isCorrectBonus) {
-                return Number.TWO;
-            }
-            return Number.THREE;
-        } else if (correctCount == Number.SIX) {
-            return Number.ONE;
+        if (correctCount == ConstantValue.THREE) {
+            return ConstantValue.FIVE;
         }
-        return Number.ZERO;
+        if (correctCount == ConstantValue.FOUR) {
+            return ConstantValue.FOUR;
+        }
+        if (correctCount == ConstantValue.FIVE) {
+            if (isCorrectBonus) {
+                return ConstantValue.TWO;
+            }
+            return ConstantValue.THREE;
+        }
+        if (correctCount == ConstantValue.SIX) {
+            return ConstantValue.ONE;
+        }
+        return ConstantValue.ZERO;
     }
 
 }

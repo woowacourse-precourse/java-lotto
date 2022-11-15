@@ -1,7 +1,7 @@
 package lotto.util;
 
 import lotto.domain.constant.Message;
-import lotto.domain.constant.Number;
+import lotto.domain.constant.ConstantValue;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -19,7 +19,7 @@ public class ExceptionHandler {
     }
 
     private static void checkThousandUnit(int input) throws IllegalArgumentException {
-        if ((input % Number.THOUSAND) != Number.ZERO) {
+        if ((input % ConstantValue.THOUSAND) != ConstantValue.ZERO) {
             throw new IllegalArgumentException();
         }
     }
@@ -45,7 +45,7 @@ public class ExceptionHandler {
     }
 
     private static void isSixNumbers(String[] tokens) throws IllegalArgumentException {
-        if (tokens.length != Number.SIX) {
+        if (tokens.length != ConstantValue.SIX) {
             throw new IllegalArgumentException();
         }
     }
@@ -81,7 +81,7 @@ public class ExceptionHandler {
     }
 
     private static boolean isValidate(int number) {
-        return Number.ONE <= number && number <= Number.FORTY_FIVE;
+        return ConstantValue.ONE <= number && number <= ConstantValue.FORTY_FIVE;
     }
 
     public static void checkValidationBonusNumber(String input, List<Integer> winningNumbers) throws IllegalArgumentException {
@@ -93,7 +93,7 @@ public class ExceptionHandler {
     }
 
     private static void isValidationRange(int bonusNumber) throws IllegalArgumentException {
-        if (Number.ONE <= bonusNumber && bonusNumber <= Number.FORTY_FIVE) {
+        if (ConstantValue.ONE <= bonusNumber && bonusNumber <= ConstantValue.FORTY_FIVE) {
             return;
         }
         throw new IllegalArgumentException();

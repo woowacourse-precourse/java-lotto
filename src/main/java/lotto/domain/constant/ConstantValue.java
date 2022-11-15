@@ -1,6 +1,6 @@
 package lotto.domain.constant;
 
-public class Number {
+public class ConstantValue {
     public static final int ZERO = 0;
     public static final int ONE = 1;
     public static final int TWO = 2;

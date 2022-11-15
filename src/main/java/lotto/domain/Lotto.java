@@ -1,6 +1,6 @@
 package lotto.domain;
 
-import lotto.domain.constant.Number;
+import lotto.domain.constant.ConstantValue;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -23,7 +23,7 @@ public class Lotto {
     }
 
     private void isSixNumbers(List<Integer> numbers) throws IllegalArgumentException{
-        if (numbers.size() != Number.SIX) {
+        if (numbers.size() != ConstantValue.SIX) {
             throw new IllegalArgumentException();
         }
     }

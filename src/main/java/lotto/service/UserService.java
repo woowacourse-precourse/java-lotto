@@ -1,7 +1,7 @@
 package lotto.service;
 
 import lotto.domain.User;
-import lotto.domain.constant.Number;
+import lotto.domain.constant.ConstantValue;
 import lotto.util.ExceptionHandler;
 import lotto.util.InputUtil;
 import lotto.util.OutputUtil;
@@ -10,26 +10,26 @@ public class UserService {
 
     public void calculateYield(User user) {
         double yield = user.getTotalPrize() / user.getMoney();
-        yield *= Number.THOUSAND;
+        yield *= ConstantValue.THOUSAND;
         yield = Math.round(yield);
-        yield /= Number.TEN;
+        yield /= ConstantValue.TEN;
         user.setYield(yield);
     }
 
     public void updateRankAndTotalPrize(User user, int rank) {
-        if (rank == Number.FIVE) {
+        if (rank == ConstantValue.FIVE) {
             user.setRankFifth();
         }
-        if (rank == Number.FOUR) {
+        if (rank == ConstantValue.FOUR) {
             user.setRankFourth();
         }
-        if (rank == Number.THREE) {
+        if (rank == ConstantValue.THREE) {
             user.setRankThird();
         }
-        if (rank == Number.TWO) {
+        if (rank == ConstantValue.TWO) {
             user.setRankSecond();
         }
-        if (rank == Number.ONE) {
+        if (rank == ConstantValue.ONE) {
             user.setRankFirst();
         }
     }

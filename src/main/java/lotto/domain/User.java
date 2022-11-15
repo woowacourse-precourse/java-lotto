@@ -1,6 +1,6 @@
 package lotto.domain;
 
-import lotto.domain.constant.Number;
+import lotto.domain.constant.ConstantValue;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -22,11 +22,11 @@ public class User {
     }
 
     private void initRank() {
-        ranks.put(Number.FIVE, 0);
-        ranks.put(Number.FOUR, 0);
-        ranks.put(Number.THREE, 0);
-        ranks.put(Number.TWO, 0);
-        ranks.put(Number.ONE, 0);
+        ranks.put(ConstantValue.FIVE, 0);
+        ranks.put(ConstantValue.FOUR, 0);
+        ranks.put(ConstantValue.THREE, 0);
+        ranks.put(ConstantValue.TWO, 0);
+        ranks.put(ConstantValue.ONE, 0);
     }
 
     public List<Lotto> getLottos() {
@@ -74,27 +74,27 @@ public class User {
     }
 
     public void setRankFifth() {
-        ranks.put(Number.FIVE, ranks.get(Number.FIVE) + Number.ONE);
-        addWinningAmount(Number.FIFTH_WINNING_AMOUNT);
+        ranks.put(ConstantValue.FIVE, ranks.get(ConstantValue.FIVE) + ConstantValue.ONE);
+        addWinningAmount(ConstantValue.FIFTH_WINNING_AMOUNT);
     }
 
     public void setRankFourth() {
-        ranks.put(Number.FOUR, ranks.get(Number.FOUR) + Number.ONE);
-        addWinningAmount(Number.FOURTH_WINNING_AMOUNT);
+        ranks.put(ConstantValue.FOUR, ranks.get(ConstantValue.FOUR) + ConstantValue.ONE);
+        addWinningAmount(ConstantValue.FOURTH_WINNING_AMOUNT);
     }
 
     public void setRankThird() {
-        ranks.put(Number.THREE, ranks.get(Number.THREE) + Number.ONE);
-        addWinningAmount(Number.THIRD_WINNING_AMOUNT);
+        ranks.put(ConstantValue.THREE, ranks.get(ConstantValue.THREE) + ConstantValue.ONE);
+        addWinningAmount(ConstantValue.THIRD_WINNING_AMOUNT);
     }
 
     public void setRankSecond() {
-        ranks.put(Number.TWO, ranks.get(Number.TWO) + Number.ONE);
-        addWinningAmount(Number.SECOND_WINNING_AMOUNT);
+        ranks.put(ConstantValue.TWO, ranks.get(ConstantValue.TWO) + ConstantValue.ONE);
+        addWinningAmount(ConstantValue.SECOND_WINNING_AMOUNT);
     }
 
     public void setRankFirst() {
-        ranks.put(Number.ONE, ranks.get(Number.ONE) + Number.ONE);
-        addWinningAmount(Number.FIRST_WINNING_AMOUNT);
+        ranks.put(ConstantValue.ONE, ranks.get(ConstantValue.ONE) + ConstantValue.ONE);
+        addWinningAmount(ConstantValue.FIRST_WINNING_AMOUNT);
     }
 }
