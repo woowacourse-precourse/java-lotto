@@ -77,4 +77,3 @@ public class Lotto {
 - if-else문 및 switch문 사용하지 않는다.
   - 하나의 함수에서 return으로 끝내도록
 - Java Enum 사용
-- 
