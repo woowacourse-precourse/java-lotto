@@ -44,7 +44,7 @@ public enum Prize {
         if (numsOfMatchedNumber == 5 && containBonus) {
             Prize.SECOND.plusNumsOfWinner();
         }
-        if (numsOfMatchedNumber == 5) {
+        if (numsOfMatchedNumber == 5 && !containBonus) {
             Prize.THIRD.plusNumsOfWinner();
         }
         if (numsOfMatchedNumber == 4) {
@@ -65,6 +65,6 @@ public enum Prize {
 
     public static float getComputeIncomeRate(int seedMoney) {
         int totalIncome = getComputedIncome();
-        return totalIncome / (float) seedMoney;
+        return (totalIncome / (float) seedMoney) * 100f;
     }
 }
