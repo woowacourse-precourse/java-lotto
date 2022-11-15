@@ -4,6 +4,7 @@ import lotto.constant.enumtype.UserInterfaceMessage;
 import lotto.service.LottoBonusService;
 import lotto.service.LottoInputDrawNumberService;
 import lotto.service.LottoInputService;
+import lotto.service.LottoNumberCompareService;
 import lotto.service.LottoPublishService;
 
 public class LottoController {
@@ -11,6 +12,7 @@ public class LottoController {
     private LottoPublishService lottoPublishService = LottoPublishService.getInstance();
     private LottoInputDrawNumberService lottoInputDrawNumberService = LottoInputDrawNumberService.getInstance();
     private LottoBonusService lottoBonusService = LottoBonusService.getInstance();
+    private LottoNumberCompareService lottoNumberCompareService = LottoNumberCompareService.getInstance();
 
     public void inputLottoInfo() {
         try {
@@ -18,6 +20,14 @@ public class LottoController {
             printPublishedLotto(lottoPrice);
             lottoInputDrawNumberService.inputDrawNumber();
             lottoBonusService.inputLottoBonusNumber(lottoInputDrawNumberService.getLottoDrawNumber());
+            lottoNumberCompareService.inputNumber(lottoPublishService.getPublishedLottoNumbers(),
+                    lottoInputDrawNumberService.getLottoDrawNumber(),lottoBonusService.getLottoBonusNumber(),
+                    Integer.parseInt(lottoPrice));
+
+            lottoNumberCompareService.initMatchResult();
+            lottoNumberCompareService.calcResult();
+            lottoNumberCompareService.printResult();
+//            lottoNumberCompareService.initCompareResult();
         } catch (IllegalArgumentException exception) {
             System.out.println(exception.getMessage());
         }
