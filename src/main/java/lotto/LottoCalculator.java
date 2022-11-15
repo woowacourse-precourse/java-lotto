@@ -27,14 +27,20 @@ public class LottoCalculator
         if(count < 3)
             return resultArr;
 
-        if(count != 0 && count < 6)
+        if(count != 0 && count < 6){
             resultArr[count-3] += 1;
+            return resultArr;
+        }
 
-        if(count == 6)
+        if(count == 6) {
             resultArr[4] += 1;
+            return resultArr;
+        }
 
-        if(count == 7)
+        if(count == 7) {
             resultArr[3] += 1;
+            return resultArr;
+        }
 
         return resultArr;
     }
