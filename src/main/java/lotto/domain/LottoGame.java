@@ -14,6 +14,7 @@ public class LottoGame {
     public List<Lotto> issuedLotto;
     public List<Integer> gameResult;
     public int totalProfit;
+    public float profitRate;
     public Input input;
     public Output output;
 
@@ -71,5 +72,11 @@ public class LottoGame {
             }
         }
         return totalProfit;
+    }
+
+    public float getProfitRate() {
+        this.profitRate = totalProfit / (purchaseAmount*1000);
+        profitRate = Math.round((profitRate*10)/10.0); // 소수점 둘째자리에서 반올림
+        return this.profitRate;
     }
 }
