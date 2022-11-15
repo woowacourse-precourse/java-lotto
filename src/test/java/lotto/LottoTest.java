@@ -1,10 +1,15 @@
 package lotto;
 
+import lotto.domain.lotto.Lotto;
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.List;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class LottoTest {
@@ -18,10 +23,30 @@ class LottoTest {
     @DisplayName("로또 번호에 중복된 숫자가 있으면 예외가 발생한다.")
     @Test
     void createLottoByDuplicatedNumber() {
-        // TODO: 이 테스트가 통과할 수 있게 구현 코드 작성
         assertThatThrownBy(() -> new Lotto(List.of(1, 2, 3, 4, 5, 5)))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
-    // 아래에 추가 테스트 작성 가능
+    @ParameterizedTest(
+            name = "로또 번호에 1 ~ 45 범위를 벗어난 숫자 " +
+                    "EX({argumentsWithNames})가 있으면 예외가 발생한다."
+    )
+    @ValueSource(ints = {-12, 0, 46, 102})
+    void createLottoByOutOfRange(final int number) {
+        assertThatThrownBy(() -> new Lotto(List.of(1, 45, number, 4, 5, 6)))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("toString의 형식은 [1, 2, 3, 4, 5, 6] 이다.")
+    @Test
+    void toStringTest() {
+        // given
+        Lotto lotto = new Lotto(List.of(1, 24, 21, 12, 5, 6));
+
+        // when
+        String string = lotto.toString();
+
+        // then
+        assertThat(string).isEqualTo("[1, 24, 21, 12, 5, 6]");
+    }
 }
