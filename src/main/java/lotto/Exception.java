@@ -50,8 +50,9 @@ public class Exception {
         return winningNumbers;
     }
 
+    //===============================test=============================//
     // TODO: 입력 값에 중복된 값이 존재하는 경우 예외 처리한다.
-    private static void isAllDifferentValues(List<String> winningNumbers) throws IllegalArgumentException{
+    static void isAllDifferentValues(List<String> winningNumbers) throws IllegalArgumentException{
         Set<String> WinningSet = new HashSet<>(winningNumbers);
         if (WinningSet.size() != WINNING_NUMBER_SIZE)
             throw new IllegalArgumentException("[ERROR] Duplicate number exists in input value.");
@@ -64,7 +65,7 @@ public class Exception {
     }
 
     // TODO: 문자열을 1~45와 비교하여 일치하지 않는 경우 예외 처리한다.
-    private static void isMatchFromOneToFortyFive(String number) throws IllegalArgumentException{
+    static void isMatchFromOneToFortyFive(String number) throws IllegalArgumentException{
         if ( !(MIN_VALUE_OF_WINNING_NUMBER <= isContainCharacter(number)
                 && isContainCharacter(number) <= MAX_VALUE_OF_WINNING_NUMBER))
             throw new IllegalArgumentException("[ERROR] An out-of-range number or character exists in the input value.");

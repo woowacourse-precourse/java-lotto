@@ -43,6 +43,4 @@ class LottoTest {
         assertThatThrownBy(() -> new Exception().isCorrectAmount("100d0"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
-
-
 }
