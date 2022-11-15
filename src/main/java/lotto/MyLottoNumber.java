@@ -31,5 +31,4 @@ public class MyLottoNumber {
     public ArrayList<ArrayList<Integer>> getNumbers(){
         return this.numbers;
     }
-    
 }
