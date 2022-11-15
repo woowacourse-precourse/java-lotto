@@ -12,7 +12,11 @@ public enum Message {
     WINNING_NUMBER("당첨 번호를 입력해 주세요. "),
     BONUS_NUMBER("보너스 번호를 입력해 주세요. "),
     STATISTICS("당첨 통계 "),
-    YIELD("총 수익률은 ");
+    YIELD("총 수익률은 "),
+
+    ERRROR_NUMBER_RANGE("[ERROR] 숫자 범위만 입력해야 합니다."),
+    ERROR_NUMBER_OVERLAP("[ERROR] 숫자가 중복됩니다."),
+    ERROR_NOT_ZERO_REMAINDER("[ERROR] 1000으로 나누어 지지 않습니다");
 
 
     private final String message;
