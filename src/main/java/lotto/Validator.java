@@ -63,16 +63,16 @@ public class Validator {
     public static void checkOutOfRange(List<Integer> numbers) {
         for (int cnt = 0; cnt < COUNT_NUM; cnt++) {
             if (isOutOfRange(numbers.get(cnt))) {
-                throw new IllegalArgumentException(ERROR + "당첨 번호가 범위를 벗어났습니다");
+                throw new IllegalArgumentException(ERROR + "로또 번호가 범위를 벗어났습니다");
             }
         }
     }
 
     public static boolean isOutOfRange(int number) {
         if (number < 1 || number > 45) {
-            return false;
+            return true;
         }
-        return true;
+        return false;
     }
 
     public static void validateBonusNumber(String bonusNumber){
