@@ -25,5 +25,12 @@ class BonusTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+    @DisplayName("보너스 번호가 당첨 번호와 중복될 때 오류가 발생한다.")
+    @Test
+    void createBonusByDuplicateWithWinNumber() {
+        assertThatThrownBy(() ->
+                BonusNumber.exceptionBonusNumber("3",List.of(1, 2, 3, 4, 5, 6)))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 
 }
