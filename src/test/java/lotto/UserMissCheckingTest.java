@@ -9,12 +9,10 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class UserMissCheckingTest {
 
-    private final List<Integer> dummyLotto = new ArrayList<>(List.of(1,3,4,6,12,15));
-    private final Lotto lotto = new Lotto(dummyLotto);
+
 
     @Test
-    public void 보너스숫자_선택한로또_중복여부(){
-        assertThatThrownBy(() -> lotto.addBonus(4))
-                .isInstanceOf(IllegalArgumentException.class);
+    public void 숫자대신_문자입력_에러(){
+//        assertThatThrownBy(() -> U)
     }
 }
