@@ -6,9 +6,13 @@ public class InputException {
             throw new IllegalArgumentException("[ERROR] 구입 금액은 숫자만 입력 가능합니다.");
         }
 
+        if (input.length() > 9) {
+            throw new IllegalArgumentException("[ERROR] 1,000,000,000 미만의 숫자만 입력 가능합니다.");
+        }
+
         int money = Integer.parseInt(input);
         if (money % 1000 != 0 || money <= 0) {
-            throw new IllegalArgumentException("[ERROR] 구입 금액은 1,000원 단위로 입력받을 수 있습니다.");
+            throw new IllegalArgumentException("[ERROR] 구입 금액은 0원 이상인 1,000원 단위로 입력받을 수 있습니다.");
         }
         return money;
     }

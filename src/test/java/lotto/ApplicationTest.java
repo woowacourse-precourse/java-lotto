@@ -70,6 +70,14 @@ class ApplicationTest extends NsTest {
         });
     }
 
+    @Test
+    void 예외_테스트_구입_금액에_매우_큰_수가_입력되는_경우() {
+        assertSimpleTest(() -> {
+            runException("100000000000");
+            assertThat(output()).contains("[ERROR] 1,000,000,000 미만의 숫자만 입력 가능합니다.");
+        });
+    }
+
     // 보너스 번호 예외테스트
     @Test
     void 예외_테스트_보너스_번호에_문자가_입력되는_경우() {
