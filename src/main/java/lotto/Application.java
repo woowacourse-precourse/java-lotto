@@ -2,39 +2,41 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
+
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Application {
-    private static final String ERROR_MESSAGE = "[ERROR]";
-    private static final String ERROR_CHECKNUM = " 숫자가 아닌 수가 존재합니다.";
-    private static final String ERROR_CHECKPRICE = " 1000원 단위로 입력해 주세요.";
-    private static final String ERROR_CHECKLOTTONUM =  " 1부터 45사이의 수가 아니다.";
-    private static final String ERROR_UNIQUENUM = " 당첨번호에 중복이 발생합니다.";
-    private static final String START_MESSAGE = "구입금액을 입력해 주세요.";
-    private static final String LOTTOSIZE_MESSAGE = "개를 구매했습니다.";
-    private static final String WINNINGNUM_MESSAGE = "당첨 번호를 입력해 주세요.";
-    private static final String BONUSNUM_MESSAGE = "보너스 번호를 입력해 주세요.";
 
     public static void main(String[] args) {
         Application main = new Application();
+        Rank rank = new Rank();
 
-        System.out.println(START_MESSAGE);
+        System.out.println(Message.START_MESSAGE);
         int price = main.checkNum(main.userInputNumber());
         int lottoNum = main.checkPrice(price);
 
-        System.out.println(lottoNum + LOTTOSIZE_MESSAGE);
+        System.out.println(lottoNum + Message.LOTTOSIZE_MESSAGE);
         List<List<Integer>> myLottoArr = main.lottoArr(lottoNum);
 
-        System.out.println(WINNINGNUM_MESSAGE);
+        System.out.println(Message.WINNINGNUM_MESSAGE);
         List numbers = main.winningNums(main.userInputNumber());
         Lotto lotto = new Lotto(numbers);
-        System.out.println(numbers);
 
-        System.out.println(BONUSNUM_MESSAGE);
+        System.out.println(Message.BONUSNUM_MESSAGE);
         int bonusNum = main.checkLottoNum(main.checkNum(main.userInputNumber()));
-        System.out.println(bonusNum);
+
+        for (List<Integer> buyLotto : myLottoArr) {
+            rank.compareNum(buyLotto, lotto, bonusNum);
+        }
+
+        int[] ranks = rank.getRanks();
+
+        System.out.printf(Message.OUTPUT_MESSAGE, ranks[4], ranks[3], ranks[2], ranks[1], ranks[0]);
+        System.out.printf(Message.PERCENT_MESSAGE, main.ratePercent(ranks, price));
     }
     public String userInputNumber() {
         return Console.readLine();
@@ -44,13 +46,13 @@ public class Application {
         try {
             return Integer.parseInt(userInputNumber);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException(ERROR_MESSAGE + ERROR_CHECKNUM);
+            throw new IllegalArgumentException(Message.ERROR_MESSAGE + Message.ERROR_CHECKNUM);
         }
     }
 
     public int checkPrice(int price){
         if (0 < price % 1000 && price % 1000 < 1000){
-            throw new IllegalArgumentException(ERROR_MESSAGE + ERROR_CHECKPRICE);
+            throw new IllegalArgumentException(Message.ERROR_MESSAGE + Message.ERROR_CHECKPRICE);
         }
         return price / 1000;
     }
@@ -60,7 +62,7 @@ public class Application {
         List<List<Integer>> myLottoArr = new ArrayList<>();
         for (int i = 0; i < lottoNum; i++) {
             myLotto = Randoms.pickUniqueNumbersInRange(1, 45, 6);
-            myLotto.sort(Comparator.naturalOrder());
+            Collections.sort(myLotto);
             myLottoArr.add(myLotto);
             System.out.println(myLottoArr.get(i));
         }
@@ -71,22 +73,31 @@ public class Application {
         for (String splitInput : userInputNumber.split(",")) {
             int stringToInt = checkLottoNum(checkNum(splitInput));
             winningLottoNums.add(stringToInt);
-            winningLottoNums.sort(Comparator.naturalOrder());
         }
+        winningLottoNums.sort(Comparator.naturalOrder());
         checkUniqueWinningNums(winningLottoNums);
         return winningLottoNums;
     }
 
     public void checkUniqueWinningNums(List winningLottoNums){
         if(winningLottoNums.size() != winningLottoNums.stream().distinct().count()){
-            throw new IllegalArgumentException(ERROR_MESSAGE + ERROR_UNIQUENUM);
+            throw new IllegalArgumentException(Message.ERROR_MESSAGE + Message.ERROR_UNIQUENUM);
         }
     }
-    
+
     public int checkLottoNum(int lottoNum) {
         if (0 >= lottoNum || lottoNum > 45) {
-            throw new IllegalArgumentException(ERROR_MESSAGE + ERROR_CHECKLOTTONUM);
+            throw new IllegalArgumentException(Message.ERROR_MESSAGE + Message.ERROR_CHECKLOTTONUM);
         }
         return lottoNum;
+    }
+
+    public double ratePercent(int[] ranks, int price){
+        long[] benefit = {2000000000, 30000000, 1500000, 50000, 5000};
+        long totalBenefit = 0;
+        for (int i = 0; i < benefit.length; i++) {
+            totalBenefit += ranks[i]*benefit[i];
+        }
+        return (double) totalBenefit / price *100;
     }
 }

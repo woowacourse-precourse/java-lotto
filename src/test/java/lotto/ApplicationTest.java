@@ -54,9 +54,6 @@ class ApplicationTest extends NsTest {
         });
     }
 
-    @Test
-    void
-
     @Override
     public void runMain() {
         Application.main(new String[]{});
