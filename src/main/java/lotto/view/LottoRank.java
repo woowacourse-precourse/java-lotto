@@ -1,4 +1,4 @@
-package lotto.domain;
+package lotto.view;
 
 public enum LottoRank {
     NONE_MATCH(0, "", 0),
