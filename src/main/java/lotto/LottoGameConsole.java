@@ -10,8 +10,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-import static lotto.domain.Rank.*;
-
 public class LottoGameConsole {
 
     private final Emcee emcee = new Emcee();
@@ -69,11 +67,9 @@ public class LottoGameConsole {
     }
 
     private double calculateRateOfReturn(Map<Rank, Integer> tallyOfRanks, int payment) {
-        double totalProfit = tallyOfRanks.getOrDefault(FIRST_SIX_MATCHED, 0) * FIRST_SIX_MATCHED.getPrize()
-                + tallyOfRanks.getOrDefault(SECOND_FIVE_WITH_BONUS, 0) * SECOND_FIVE_WITH_BONUS.getPrize()
-                + tallyOfRanks.getOrDefault(THIRD_FIVE_MATCHED, 0) * THIRD_FIVE_MATCHED.getPrize()
-                + tallyOfRanks.getOrDefault(FOURTH_FOUR_MATCHED, 0) * FOURTH_FOUR_MATCHED.getPrize()
-                + tallyOfRanks.getOrDefault(FIFTH_THREE_MATCHED, 0) * FIFTH_THREE_MATCHED.getPrize();
+        double totalProfit = Arrays.stream(Rank.values())
+                .mapToInt(value -> value.getPrize() * tallyOfRanks.getOrDefault(value, 0))
+                .sum();
         double rateOfReturn = totalProfit / payment * 100;
         return Math.round(rateOfReturn * 10) / 10.0;
     }
