@@ -9,6 +9,8 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class LottoMachine {
+    public static final String COMMA_REGEX = "\\s*,\\s*";
+
     public static List<Lotto> publishLotto(int count) {
         List<Lotto> lotto = new ArrayList<>();
 
@@ -61,7 +63,7 @@ public class LottoMachine {
     }
 
     public static Lotto calculateWinningNumber(String input) {
-        Lotto lotto = new Lotto(Stream.of(input.split("\\s*,\\s*"))
+        Lotto lotto = new Lotto(Stream.of(input.split(COMMA_REGEX))
                 .map(s -> Integer.parseInt(s))
                 .collect(Collectors.toList()));
 

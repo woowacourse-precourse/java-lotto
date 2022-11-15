@@ -7,12 +7,13 @@ import lotto.domain.Lotto;
 import lotto.domain.Reward;
 
 public class OutputView {
-    private static String INFORM_AMOUNT = "%d개를 구매했습니다.\n";
-    private static String LOTTO_SECOND = "%d개 일치, 보너스 볼 일치 (%s원) - %d개\n";
-    private static String LOTTO_RESULT = "%d개 일치 (%s원) - %d개\n";
-    private static String INFORM_YIELD = "총 수익률은 %s%%입니다.";
-    private static String STATISTICS = "당첨 통계";
-    private static String THREE_HYPHEN = "---";
+    public static final String INFORM_AMOUNT = "%d개를 구매했습니다.\n";
+    public static final String LOTTO_SECOND = "%d개 일치, 보너스 볼 일치 (%s원) - %d개\n";
+    public static final String LOTTO_RESULT = "%d개 일치 (%s원) - %d개\n";
+    public static final String INFORM_YIELD = "총 수익률은 %s%%입니다.";
+    public static final String STATISTICS = "당첨 통계";
+    public static final String THREE_HYPHEN = "---";
+    public static final String THOUSANDS_COMMA = "###,###";
 
     public static void printUserLotto(List<Lotto> userLotto) {
         System.out.printf(INFORM_AMOUNT, userLotto.size());
@@ -30,7 +31,7 @@ public class OutputView {
     }
 
     public static void printResult(Map<Reward, Integer> result) {
-        DecimalFormat decimalFormat = new DecimalFormat("###,###");
+        DecimalFormat decimalFormat = new DecimalFormat(THOUSANDS_COMMA);
         for (Reward r : result.keySet()) {
 
             if (r == Reward.SECOND) {

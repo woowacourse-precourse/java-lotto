@@ -7,6 +7,9 @@ import lotto.validator.LottoValidator;
 import org.assertj.core.util.Sets;
 
 public class Lotto {
+    public static final String BE_SIX_IN_TOTAL = "[ERROR] 로또 번호는 6개여야 합니다.";
+    public static final String ALL_BE_DIFFERENT = "[ERROR} 로또 번호는 모두 달라야 합니다.";
+
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
@@ -16,11 +19,11 @@ public class Lotto {
 
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
-            throw new IllegalArgumentException("[ERROR] 로또 번호는 6개여야 합니다.");
+            throw new IllegalArgumentException(BE_SIX_IN_TOTAL);
         }
 
         if (Sets.newHashSet(numbers).size() != numbers.size()) {
-            throw new IllegalArgumentException("[ERROR} 로또 번호는 모두 달라야 합니다.");
+            throw new IllegalArgumentException(ALL_BE_DIFFERENT);
         }
 
         numbers.stream().forEach(s -> LottoValidator.checkLottoRange(s));
