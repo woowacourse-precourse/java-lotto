@@ -39,12 +39,13 @@ public class LottoUser {
         }
     }
 
-    //소유한 모든 로또의 결과 확인
-    public void checkWin(){
+    //소유한 모든 로또의 결과 확인 후 반환
+    public List<WinInfo> checkWin(){
         this.winInfomations.clear();
         for(Lotto lotto : this.lottos){
             this.winInfomations.add(lottoSystem.judgeWin(lotto));
         }
+        return this.winInfomations;
     }
 
     public List<Lotto> getLottos(){
