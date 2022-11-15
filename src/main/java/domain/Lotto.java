@@ -1,5 +1,7 @@
 package domain;
 
+import service.Rule;
+
 import java.util.List;
 
 public class Lotto {
@@ -7,6 +9,7 @@ public class Lotto {
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
+        checkSameNumberInLotto(numbers);
         this.numbers = numbers;
     }
 
@@ -19,5 +22,15 @@ public class Lotto {
     // TODO: 추가 기능 구현
     public List<Integer> getNumbers() {
         return this.numbers;
+    }
+
+    private void checkSameNumberInLotto(List<Integer> numbers) {
+        int uniqueNumberCount = (int) numbers.stream()
+                .distinct()
+                .count();
+
+        if (uniqueNumberCount != Rule.PER_LOTTO.getCount()) {
+            throw new IllegalArgumentException();
+        }
     }
 }

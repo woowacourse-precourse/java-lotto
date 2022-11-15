@@ -13,7 +13,7 @@ import java.util.EnumMap;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class LottoServiceTest {
     LottoService lottoService = new LottoService(new LottoRepository());
@@ -34,24 +34,24 @@ public class LottoServiceTest {
     @ParameterizedTest
     @ValueSource(strings = {"1,2,3,4,5,6,7", "0,1,2,3,4,5", "1,45,32,", "1.2.3.7.4.9", "1,2,3,4,5,46", "1, 2, 3, 4, 5, 6"})
     public void 당첨_번호_입력_형식_예외(String numbers) {
-        IllegalArgumentException e = assertThrows(IllegalArgumentException.class, () -> lottoService.saveWinningNumbers(numbers));
-        assertThat(e.getMessage()).isEqualTo(Error.WINNING_NUMBERS_FORMAT.getText());
+        assertThatThrownBy(()-> lottoService.saveWinningNumbers(numbers))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 
     @DisplayName("당첨 번호 입력 중복 검사")
     @ParameterizedTest
     @ValueSource(strings = {"1,1,2,3,4,5", "13,12,17,23,45,12"})
     public void 당첨_번호_입력_중복_예외(String numbers) {
-        IllegalArgumentException e = assertThrows(IllegalArgumentException.class, () -> lottoService.saveWinningNumbers(numbers));
-        assertThat(e.getMessage()).isEqualTo(Error.WINNING_NUMBERS_INCLUDE_SAME_NUMBER.getText());
+        assertThatThrownBy(() -> lottoService.saveWinningNumbers(numbers))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 
     @DisplayName("보너스 번호 입력 형식 검사")
     @ParameterizedTest
     @ValueSource(strings = {"", "0", "46", "50", "1-5"})
     public void 보너스_번호_입력_형식_예외(String number) {
-        IllegalArgumentException e = assertThrows(IllegalArgumentException.class, () -> lottoService.saveBonusNumber(number));
-        assertThat(e.getMessage()).isEqualTo(Error.BONUS_NUMBER_FORMAT.getText());
+        assertThatThrownBy(()-> lottoService.saveBonusNumber(number))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 
     @DisplayName("보너스 번호 입력 중복 검사")
@@ -61,8 +61,8 @@ public class LottoServiceTest {
         String winningNumbers = "1,2,10,6,9,14";
         lottoService.saveWinningNumbers(winningNumbers);
 
-        IllegalArgumentException e = assertThrows(IllegalArgumentException.class, () -> lottoService.saveBonusNumber(number));
-        assertThat(e.getMessage()).isEqualTo(Error.BONUS_NUMBER_IN_WINNING_NUMBER.getText());
+        assertThatThrownBy(()-> lottoService.saveBonusNumber(number))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 
     @DisplayName("1등 당첨 검사")
