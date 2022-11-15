@@ -33,7 +33,7 @@ public class Result {
 
     }
 
-    private int compareLotto(Lotto lotto, List<Integer> winning) {
+    public int compareLotto(Lotto lotto, List<Integer> winning) {
         int check = 0;
         for(int i = 0; i< lotto.getLotto().size(); i++){
             if(winning.contains(lotto.getLotto().get(i))){
@@ -43,7 +43,7 @@ public class Result {
         return check;
     }
 
-    private boolean compareBonus(Lotto lotto, String bonus){
+    public boolean compareBonus(Lotto lotto, String bonus){
         if(lotto.getLotto().contains(Integer.parseInt(bonus))){
             return true;
         }

@@ -26,6 +26,7 @@ public class Play {
     private Map<ResultType,Integer> totalResult;
 
     public void startPlay(){
+        result.calculateProfit(12000,5000);
         inputAmount();
         generateLotto();
         winLotto = inputWinningNumber();
