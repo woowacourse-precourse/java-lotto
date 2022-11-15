@@ -12,6 +12,10 @@ public class YieldRate {
         this.amountSum = amountSum;
     }
 
+    public YieldRate calcYieldRate(int calculateAmount, long amountSum) {
+        return new YieldRate(calculateAmount, amountSum);
+    }
+
     public double rate() {
         return (double) amountSum / calculateAmount * PERCENT.getPercentage();
     }
