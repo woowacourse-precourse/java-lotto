@@ -16,9 +16,7 @@ public class Application {
             int bonusNum = getBonusNum();
             Winning winning = new Winning(winningLotto, bonusNum);
 
-            buyer.calResult(winning);
-
-
+            buyer.simulate(winning);
         }catch(IllegalArgumentException e){
             System.out.println(e.getMessage());
         }

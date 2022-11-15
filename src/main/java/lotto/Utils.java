@@ -59,7 +59,7 @@ public class Utils {
         System.out.println(String.format("6개 일치 (2,000,000,000원) - %d개", results.get(1)));
     }
 
-    private int calYield() {
+    private int printYield() {
         return 100;
     }
 

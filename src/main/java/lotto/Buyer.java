@@ -47,7 +47,7 @@ public class Buyer {
     }
 
 
-    public void calResult(Winning winning){
+    public void simulate(Winning winning){
         for(Lotto lotto:purchasedLottos){
             int grade = compare(winning, lotto);
             results.set(grade, results.get(grade)+1);
@@ -96,5 +96,9 @@ public class Buyer {
         reward += Reward.FORTH.getReward() * results.get(4);
         reward += Reward.FIFTH.getReward() * results.get(5);
     }
+
+    private void calYield(){
+
+    };
 
 }
