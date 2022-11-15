@@ -21,7 +21,6 @@ public class Application {
 
             Lotto winningNumbers = winningNumbersInput();
             printNewLine();
-
             int bonusNumber = bonusNumberInput();
             WinningNumbersIncludingBonus winnings = new WinningNumbersIncludingBonus(winningNumbers, bonusNumber);
             printWinningStatistics(lotteries, winnings);
