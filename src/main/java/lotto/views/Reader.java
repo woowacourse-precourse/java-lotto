@@ -1,7 +1,6 @@
 package lotto.views;
 
 import camp.nextstep.edu.missionutils.Console;
-import lotto.models.Bonus;
 import lotto.models.Lotto;
 import lotto.validation.SystemValidator;
 
@@ -12,35 +11,36 @@ import java.util.stream.Collectors;
 import static lotto.constants.Constant.*;
 
 public class Reader {
-	public static int readUserLottoPurchaseAmount() {
-		String lottoPurchaseAmount = Console.readLine();
 
-		SystemValidator.validateUserPurchaseAmount(lottoPurchaseAmount);
+    public static int readUserLottoPurchaseAmount() {
+        String lottoPurchaseAmount = Console.readLine();
 
-		return Integer.parseInt(lottoPurchaseAmount);
-	}
+        SystemValidator.validateUserPurchaseAmount(lottoPurchaseAmount);
 
-	public static Lotto readUserLottoWinningNumber() {
-		String userWinningLottoInput = Console.readLine();
-		SystemValidator.validateAllLottoNumberInputElementsIsNumber(userWinningLottoInput);
+        return Integer.parseInt(lottoPurchaseAmount);
+    }
 
-		List<Integer> winningLotto = parsingLottoNumber(userWinningLottoInput);
+    public static Lotto readUserLottoWinningNumber() {
+        String userWinningLottoInput = Console.readLine();
+        SystemValidator.validateAllLottoNumberInputElementsIsNumber(userWinningLottoInput);
 
-		return new Lotto(winningLotto);
-	}
+        List<Integer> winningLotto = parsingLottoNumber(userWinningLottoInput);
 
-	public static int readWinningLottoBonusNumberFromUser() {
-		String winningLottoBonusNumber = Console.readLine();
-		SystemValidator.validateLottoBonusNumber(winningLottoBonusNumber);
+        return new Lotto(winningLotto);
+    }
 
-		return Integer.parseInt(winningLottoBonusNumber);
-	}
+    public static int readWinningLottoBonusNumberFromUser() {
+        String winningLottoBonusNumber = Console.readLine();
+        SystemValidator.validateLottoBonusNumber(winningLottoBonusNumber);
 
-	private static List<Integer> parsingLottoNumber(String lottoWinningNumber) {
-		String[] splitLottoWinningNumber = lottoWinningNumber.split(SPLIT_LOTTO_DELIMITER);
+        return Integer.parseInt(winningLottoBonusNumber);
+    }
 
-		return Arrays.stream(splitLottoWinningNumber)
-				.map(Integer::parseInt)
-				.collect(Collectors.toList());
-	}
+    private static List<Integer> parsingLottoNumber(String lottoWinningNumber) {
+        String[] splitLottoWinningNumber = lottoWinningNumber.split(SPLIT_LOTTO_DELIMITER);
+
+        return Arrays.stream(splitLottoWinningNumber)
+                .map(Integer::parseInt)
+                .collect(Collectors.toList());
+    }
 }

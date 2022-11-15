@@ -12,23 +12,23 @@ import java.util.stream.Collectors;
 
 public class LottoManager {
 
-	private final WinningLotto winningLotto;
-	private final List<Lotto> userLotteries;
+    private final WinningLotto winningLotto;
+    private final List<Lotto> userLotteries;
 
-	public LottoManager(WinningLotto winningLotto, List<Lotto> userLotteries) {
-		this.winningLotto = winningLotto;
-		this.userLotteries = userLotteries;
-	}
+    public LottoManager(WinningLotto winningLotto, List<Lotto> userLotteries) {
+        this.winningLotto = winningLotto;
+        this.userLotteries = userLotteries;
+    }
 
-	public LottoResult getUserLotteriesResult() {
-		Map<Rank, Long> result = countResultRankFromUserLotteries();
-		return new LottoResult(result);
-	}
+    public LottoResult getUserLotteriesResult() {
+        Map<Rank, Long> result = countResultRankFromUserLotteries();
+        return new LottoResult(result);
+    }
 
-	protected Map<Rank, Long> countResultRankFromUserLotteries() {
-		return userLotteries.stream()
-				.map(winningLotto::compareTo)
-				.filter(rank -> !rank.isOutOfRank())
-				.collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
-	}
+    protected Map<Rank, Long> countResultRankFromUserLotteries() {
+        return userLotteries.stream()
+                .map(winningLotto::compareTo)
+                .filter(rank -> !rank.isOutOfRank())
+                .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
+    }
 }

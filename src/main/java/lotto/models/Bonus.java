@@ -7,34 +7,34 @@ import static lotto.constants.Constant.*;
 
 public class Bonus {
 
-	private int number;
+    private int number;
 
-	public Bonus(int number, Lotto lotto) {
-		validateBonus(number, lotto);
-		this.number = number;
-	}
+    public Bonus(int number, Lotto lotto) {
+        validateBonus(number, lotto);
+        this.number = number;
+    }
 
-	public boolean isContained(List<Integer> lottoNumber) {
-		return lottoNumber.contains(this.number);
-	}
+    public boolean isContained(List<Integer> lottoNumber) {
+        return lottoNumber.contains(this.number);
+    }
 
-	protected void validateBonus(int number, Lotto winningLotto) {
-		List<Integer> lottoNumber = winningLotto.getLottoNumber();
+    protected void validateBonus(int number, Lotto winningLotto) {
+        List<Integer> lottoNumber = winningLotto.getLottoNumber();
 
-		if (lottoNumber.contains(number)) {
-			throw new IllegalArgumentException(ERROR_EXISTED_LOTTO_BONUS_NUMBER);
-		}
+        if (lottoNumber.contains(number)) {
+            throw new IllegalArgumentException(ERROR_EXISTED_LOTTO_BONUS_NUMBER);
+        }
 
-		if (hasInvalidValueRange(number)) {
-			throw new IllegalArgumentException(ERROR_HAS_INVALID_LOTTO_NUMBER_VALUE);
-		}
-	}
+        if (hasInvalidValueRange(number)) {
+            throw new IllegalArgumentException(ERROR_HAS_INVALID_LOTTO_NUMBER_VALUE);
+        }
+    }
 
-	private boolean hasInvalidValueRange(int number) {
-		return LOTTO_END_NUMBER < number || number < LOTTO_START_NUMBER;
-	}
+    private boolean hasInvalidValueRange(int number) {
+        return LOTTO_END_NUMBER < number || number < LOTTO_START_NUMBER;
+    }
 
-	public int getNumberValue() {
-		return number;
-	}
+    public int getNumberValue() {
+        return number;
+    }
 }

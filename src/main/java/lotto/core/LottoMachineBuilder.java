@@ -10,45 +10,45 @@ import java.util.List;
 
 public class LottoMachineBuilder {
 
-	private LottoFactory lottoFactory;
-	private WinningLotto winningLotto;
-	private List<Lotto> userLotteries;
-	private int lottoPurchaseAmount;
+    private LottoFactory lottoFactory;
+    private WinningLotto winningLotto;
+    private List<Lotto> userLotteries;
+    private int lottoPurchaseAmount;
 
-	LottoMachineBuilder init(LottoFactory lottoFactory) {
-		this.lottoFactory = lottoFactory;
-		return this;
-	}
+    LottoMachineBuilder init(LottoFactory lottoFactory) {
+        this.lottoFactory = lottoFactory;
+        return this;
+    }
 
-	LottoMachineBuilder purchaseLotteries() {
-		Printer.showAskEnterThePurchaseAmountMessage();
-		this.lottoPurchaseAmount = Reader.readUserLottoPurchaseAmount();
+    LottoMachineBuilder purchaseLotteries() {
+        Printer.showAskEnterThePurchaseAmountMessage();
+        this.lottoPurchaseAmount = Reader.readUserLottoPurchaseAmount();
 
-		Printer.showUserPurchasedLottoCount(lottoPurchaseAmount);
-		this.userLotteries = lottoFactory.issueLottoNumbersByPurchaseAmount(lottoPurchaseAmount);
-		Printer.showUserLottoNumbers(userLotteries);
+        Printer.showUserPurchasedLottoCount(lottoPurchaseAmount);
+        this.userLotteries = lottoFactory.issueLottoNumbersByPurchaseAmount(lottoPurchaseAmount);
+        Printer.showUserLottoNumbers(userLotteries);
 
-		return this;
-	}
+        return this;
+    }
 
-	LottoMachineBuilder setWinningLotto() {
-		Printer.showAskEnterTheWinningLottoNumberMessage();
-		Lotto winningLotto = Reader.readUserLottoWinningNumber();
+    LottoMachineBuilder setWinningLotto() {
+        Printer.showAskEnterTheWinningLottoNumberMessage();
+        Lotto winningLotto = Reader.readUserLottoWinningNumber();
 
-		Printer.showAskEnterTheWinningLottoBonusNumberMessage();
-		int bonusNumber = Reader.readWinningLottoBonusNumberFromUser();
+        Printer.showAskEnterTheWinningLottoBonusNumberMessage();
+        int bonusNumber = Reader.readWinningLottoBonusNumberFromUser();
 
-		this.winningLotto = new WinningLotto(winningLotto, bonusNumber);
+        this.winningLotto = new WinningLotto(winningLotto, bonusNumber);
 
-		return this;
-	}
+        return this;
+    }
 
-	void showResult() {
-		LottoManager lottoManager = new LottoManager(winningLotto, userLotteries);
-		LottoResult userLotteriesResult = lottoManager.getUserLotteriesResult();
-		double earningRate = userLotteriesResult.getEarningRate(lottoPurchaseAmount);
+    void showResult() {
+        LottoManager lottoManager = new LottoManager(winningLotto, userLotteries);
+        LottoResult userLotteriesResult = lottoManager.getUserLotteriesResult();
+        double earningRate = userLotteriesResult.getEarningRate(lottoPurchaseAmount);
 
-		Printer.showLotteriesResult(userLotteriesResult);
-		Printer.showEarningRate(earningRate);
-	}
+        Printer.showLotteriesResult(userLotteriesResult);
+        Printer.showEarningRate(earningRate);
+    }
 }

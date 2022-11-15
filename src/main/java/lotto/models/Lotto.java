@@ -8,6 +8,7 @@ import static lotto.constants.Constant.*;
 import static lotto.constants.Message.*;
 
 public class Lotto {
+
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
