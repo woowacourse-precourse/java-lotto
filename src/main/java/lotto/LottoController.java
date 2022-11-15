@@ -7,22 +7,21 @@ import java.util.Map;
 
 public class LottoController {
 
+    private final View view;
+
+    public LottoController(){
+        view = new View();
+    }
+
     public void run(){
-        View view = new View();
-
         int money = view.enterMoneyFromCustomer();
-
-        LottoDispenser lottoDispenser = new LottoDispenser();
-
         Customer customer = new Customer(money);
-        customer = lottoDispenser.purchase(customer, money);
-
+        customer = LottoDispenser.purchase(customer, money);
         view.printPurchasedLottos(customer);
 
         List<Integer> winNumbers = view.enterWinNumbersFromAdmin();
         int bonusNumber = view.enterBonusNumberFromAdmin(winNumbers);
 
-        //당첨시키기
         LottoResult lottoResult = new LottoResult();
         lottoResult.create(winNumbers, bonusNumber, customer);
 

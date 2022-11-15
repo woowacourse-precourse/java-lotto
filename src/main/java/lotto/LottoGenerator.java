@@ -19,7 +19,7 @@ public class LottoGenerator {
         );
     }
 
-    public static LottoWinNumber generateWinNumber() {
+    public static LottoWinNumber autoGenerateWinNumber() {
         List<Integer> integers = Randoms.pickUniqueNumbersInRange(LOTTO_NUMBER_START, LOTTO_NUMBER_END, LOTTO_AMOUNT_OF_NUMBER_WIN);
         Lotto winNumbers = new Lotto(integers.subList(0, LOTTO_AMOUNT_OF_NUMBER_ENTRY));
         Integer bonusNumber = integers.get(LOTTO_AMOUNT_OF_NUMBER_ENTRY);

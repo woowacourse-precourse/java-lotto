@@ -1,7 +1,5 @@
 package lotto;
 
-import java.util.List;
-
 public class LottoWinNumber {
 
     private final Lotto winNumbers;

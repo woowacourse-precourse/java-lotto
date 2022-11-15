@@ -21,15 +21,15 @@ public class Customer {
         this.money = money;
     }
 
-    public void changeLottos(List<Lotto> lottos){
+    public void changeLottos(List<Lotto> lottos) {
         this.lottos = new ArrayList<>(lottos);
     }
 
-    public int getCntOfLottos(){
+    public int getCntOfLottos() {
         return lottos.size();
     }
 
-    public List<Lotto> getLottos(){
+    public List<Lotto> getLottos() {
         return new ArrayList<>(lottos);
     }
 }

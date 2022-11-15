@@ -17,10 +17,6 @@ public enum Rank {
         this.cntOfSameNumber = cntOfSameNumber;
     }
 
-//    public static Rank of(int count, boolean isBonus) {
-//
-//    }
-
     public int getPrizeMoney() {
         return this.prizeMoney;
     }
