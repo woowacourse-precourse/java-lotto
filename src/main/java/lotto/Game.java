@@ -25,7 +25,9 @@ public class Game {
         Validator.validateCash(cash);
         Lotto.myLotto(cash);
         cashAmount = Integer.parseInt(cash);
+        Print.viewInputLuckyNumber();
         luckyNumber = Lotto.getLuckyNumber();
+        Print.viewInputBonusNubmer();
         int bonus = Lotto.getBonusNumber();
 
         compareLucky(luckyNumber,bonus);

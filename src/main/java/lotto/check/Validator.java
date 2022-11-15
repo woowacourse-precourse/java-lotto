@@ -3,7 +3,12 @@ package lotto.check;
 import lotto.Game;
 import lotto.exception.Exception;
 
+import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Validator {
     public static final int UNIT = 1000;
@@ -39,10 +44,12 @@ public class Validator {
     }
     public static void isDuplicateLuckyNumber(String luckyNumber){
         String[] splitNumber = luckyNumber.split(COMMA);
-        for(int i=0;i<splitNumber.length;i++){
-            if(luckyNumber.contains(splitNumber[i])){
-                throw new IllegalArgumentException(Exception.DUPLICATE_NUMBER.getExceptionMessage());
-            }
+        Stream<String> lucky = Arrays.stream(splitNumber);
+        Set<String> luckyDuplicate = new HashSet<>();
+        lucky.filter( n -> !luckyDuplicate.add(n))
+                .collect(Collectors.toSet());
+        if(luckyDuplicate.size() != LENGTH){
+            throw new IllegalArgumentException(Exception.DUPLICATE_NUMBER.getExceptionMessage());
         }
     }
     public static void isRangeNumber(String luckyNumber){

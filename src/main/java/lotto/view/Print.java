@@ -5,6 +5,8 @@ import java.util.List;
 public class Print {
     private static final String USER_LOTTO_COUNT_MSG = "개를 구매했습니다.";
     private static final String GAME_START_MSG = "구입금액을 입력해 주세요.";
+    private static final String INPUT_LUCKY_NUMBER_MSG = "당첨 번호를 입력해 주세요.";
+    private static final String INPUT_BONUS_NUMBER_MSG = "보너스 번호를 입력해 주세요.";
     private static final String COUNT = "개";
     private static final String THREE_LUCKY_MSG = "3개 일치 (5,000원) - ";
     private static final String FOUR_LUCKY_MSG = "4개 일치 (50,000원) - ";
@@ -33,5 +35,11 @@ public class Print {
         System.out.println(FIVE_LUCKY_MSG+fiveCount+COUNT);
         System.out.println(FIVE_BONUS_LUCKY_MSG+bonusCount+COUNT);
         System.out.println(SIX_LUCKY_MSG+sixCount+COUNT);
+    }
+    public static void viewInputLuckyNumber(){
+        System.out.println(INPUT_LUCKY_NUMBER_MSG);
+    }
+    public static void viewInputBonusNubmer(){
+        System.out.println(INPUT_BONUS_NUMBER_MSG);
     }
 }
