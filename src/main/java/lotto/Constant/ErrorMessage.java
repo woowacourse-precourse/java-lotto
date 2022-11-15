@@ -1,4 +1,4 @@
-package lotto.Enum;
+package lotto.Constant;
 
 public enum ErrorMessage {
     INVALID_NOTANUMBER("Input is not a number"),

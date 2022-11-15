@@ -1,25 +1,23 @@
 package lotto;
-import lotto.Enum.Ranking;
-import lotto.Enum.ErrorMessage;
+import lotto.Constant.Ranking;
+import lotto.Constant.ErrorMessage;
+import lotto.Validate.HandleException;
+import lotto.Input.Input;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Collections;
 import java.util.Map;
 import java.util.HashMap;
 import java.util.Comparator;
-import java.text.NumberFormat;
-import java.lang.IllegalArgumentException;
-import java.lang.Exception;
+
 import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
-import net.bytebuddy.pool.TypePool;
 
 public class Application {
     static int inputmoney;
     static int lottoNum;
-    static final int lottoLength = 6; //로또 길이 상수
+    public static final int lottoLength = 6; //로또 길이 상수
     static final int lottoMin = 1; //로또 번호 최소값
     static final int lottoMax = 45; //로또 번호 최대값
     static List<Lotto> lottoList;
@@ -47,10 +45,10 @@ public class Application {
         return num;
     }
 
-    static int singleNumberInput(){
-        int inputNum = castInt(Console.readLine());
-        return inputNum;
-    }
+//    static int singleNumberInput(){
+//        int inputNum = castInt(Console.readLine());
+//        return inputNum;
+//    }
 
     static List<Integer> createLotto(){
         List<Integer> numbers = Randoms.pickUniqueNumbersInRange(lottoMin, lottoMax, lottoLength);
@@ -72,29 +70,24 @@ public class Application {
             lotto.print();
     }
 
-    static List<String> parsingStringInput(int maxArgc){
-        String hitString = Console.readLine();
-        List<String> hitStringParsed = Arrays.asList(hitString.split(","));
-        if (hitStringParsed.size() != maxArgc)
-            throw new IllegalArgumentException(ErrorMessage.INVALID_INPUTARGSNUM.print());
-        return hitStringParsed;
-    }
-
-    static List<Integer> multiNumberInput(int maxArgc){
-        List<String> stringParsed = parsingStringInput(maxArgc);
-        List<Integer> multiNumberList = new ArrayList<>(lottoNum);
-        for (int i = 0; i < lottoLength; i++) {
-            multiNumberList.add(castInt(stringParsed.get(i)));
-        }
-
-        int len = multiNumberList.size();
-        for (int i = len - 1; i >= 0; i--) {
-            if (multiNumberList.indexOf(multiNumberList.get(i)) != i)
-                throw new IllegalArgumentException(ErrorMessage.INVALID_DUPLICATED.print());
-        }
-
-        return multiNumberList;
-    }
+//    static List<String> parsingStringInput(int maxArgc){
+//        String hitString = Console.readLine();
+//        List<String> hitStringParsed = Arrays.asList(hitString.split(","));
+//
+//        HandleException.InputArgsNum(hitStringParsed, maxArgc);
+//        return hitStringParsed;
+//    }
+//
+//    static List<Integer> multiNumberInput(int maxArgc){
+//        List<String> stringParsed = parsingStringInput(maxArgc);
+//        List<Integer> multiNumberList = new ArrayList<>(lottoNum);
+//        for (int i = 0; i < lottoLength; i++) {
+//            multiNumberList.add(castInt(stringParsed.get(i)));
+//        }
+//
+//        HandleException.DuplicatedNum(multiNumberList);
+//        return multiNumberList;
+//    }
 
     static HashMap<Ranking, Integer> initRankInfo(){
         HashMap<Ranking, Integer> lottoRankInfo = new HashMap<>(Ranking.values().length);
@@ -136,15 +129,17 @@ public class Application {
         System.out.printf("총 수익률은 %.1f%%입니다.\n", (double)cashprize / inputmoney*100);
     }
 
-    static void handleNotDividedBy1000(int inputmoney){
-        if (inputmoney % 1000 != 0)
-            throw new IllegalArgumentException(ErrorMessage.INVALID_1000X.print());
+    public static int getlottoNum(){
+        return lottoNum;
     }
+
     public static void main(String[] args) {
         System.out.println("구매금액을 입력해주세요");
-        inputmoney = singleNumberInput();
+        inputmoney = Input.singleNumber();
         //        inputmoney = 8000;
-        handleNotDividedBy1000(inputmoney);
+//        handleNotDividedBy1000(inputmoney);
+        HandleException.NotDividedBy1000(inputmoney);
+
 
         lottoNum = inputmoney / 1000;
         System.out.println(lottoNum + "개를 구매했습니다.");
@@ -153,11 +148,11 @@ public class Application {
         printLottoList(lottoList);
 
         System.out.println("당첨 번호를 입력해주세요.");
-        hitNumbers = multiNumberInput(hitNum);
+        hitNumbers = Input.multiNumber(hitNum);
         //        hitNumber = Arrays.asList(1,2,3,4,5,6);
 
         System.out.println("보너스 번호를 입력해주세요.");
-        bonus = singleNumberInput();
+        bonus = Input.singleNumber();
         //        bonus = 7;
 
         lottoRankInfo = initRankInfo();

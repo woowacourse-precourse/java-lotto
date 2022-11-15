@@ -1,8 +1,8 @@
 package lotto;
 
 import java.util.List;
-import lotto.Enum.Ranking;
-import lotto.Enum.ErrorMessage;
+import lotto.Constant.Ranking;
+import lotto.Validate.HandleException;
 
 public class Lotto {
     private final List<Integer> numbers;
@@ -13,15 +13,8 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
-        if (numbers.size() != 6) {
-            throw new IllegalArgumentException(ErrorMessage.INVALID_INPUTARGSNUM.print());
-        }
-
-        int len = numbers.size();
-        for (int i = len - 1; i >= 0; i--) { //중복 원소 검출
-            if (numbers.indexOf(numbers.get(i)) != i)
-                throw new IllegalArgumentException(ErrorMessage.INVALID_DUPLICATED.print());
-        }
+        HandleException.InputArgsNum(numbers, Application.lottoLength);
+        HandleException.DuplicatedNum(numbers);
     }
 
     public Ranking countHit(List<Integer> hitNumber, int bonus){
