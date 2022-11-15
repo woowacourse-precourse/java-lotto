@@ -1,8 +1,11 @@
 package lotto.input_processing;
 
 import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
+import lotto.Lotto;
 import lotto.exception.UserInputException;
 
+import java.util.*;
 
 public class InputPrice {
     static UserInputException userInputException = new UserInputException();
@@ -27,5 +30,18 @@ public class InputPrice {
         System.out.println(purchasingAmount / 1000 + "개를 구매했습니다.");
         return purchasingAmount / 1000;
     }
-
+    /** 구매한 로또 개수에 따라 각 6개의 서로 다른 로또 번호 랜덤 생성 기능 */
+    public static ArrayList<Lotto> createLottoNumbers(){
+        int countOfLotto = buyingLotto();
+        ArrayList<Lotto> lottoList = new ArrayList<Lotto>();
+        for (int i=0;i<countOfLotto;i++){
+            List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+            Integer[] arr = numbers.toArray(new Integer[numbers.size()]);
+            Arrays.sort(arr); // ApplicationTest 에서 List.of를 사용해 직접 List 를 정렬하면 오류가 발생한다.
+            List<Integer> sortedList = Arrays.asList(arr); // List<Integer> 형태로 반환하기 위해 다시 형변환
+            System.out.println(sortedList); // 로또 번호를 출력한다.
+            lottoList.add(new Lotto(sortedList));
+        }
+        return lottoList;
+    }
 }
