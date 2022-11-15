@@ -26,7 +26,7 @@ public class Lottos {
         StringBuilder result = new StringBuilder();
 
         for(Lotto lotto: lottos){
-            result.append(lotto.toString()+"\n");
+            result.append(lotto.toString()).append("\n");
         }
 
         return result.toString();
