@@ -1,5 +1,7 @@
 package lotto;
 
+import utils.UserInput;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,15 +22,11 @@ public class GameController {
     }
 
     public void drawLotto() {
-        LottoDrawing numberDrawing = new LottoDrawing();
+        UserInput input = new UserInput();
+        LottoDrawing winningNumbers = input.getWinningNumber();
 
-        numberDrawing.getWinningNumber();
-        numberDrawing.getBonusNumber();
-
-        Lotto winningNumbers = new Lotto(numberDrawing.winningNumbers);
-
-        this.winningNumbers = winningNumbers.getNumbers();
-        bonusNumber = numberDrawing.bonusNumber;
+        this.winningNumbers = winningNumbers.winningNumbers;
+        this.bonusNumber = winningNumbers.bonusNumber;
     }
 
     public void getResult() {

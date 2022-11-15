@@ -20,5 +20,4 @@ public class UserInput {
         return new LottoDrawing(inputWinningNumber, inputBonusNumber);
     }
 
-
 }
