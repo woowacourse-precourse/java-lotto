@@ -16,12 +16,21 @@ public class Lotto {
 
 
     public boolean matchBonus(int bonusNum) {
-        if ( numbers.contains(bonusNum)) {
-            return true;
-        }
+        if ( numbers.contains(bonusNum)) return true;
         return false;
     }
 
+    public void getRank(List<Integer> matchNum, int matchBonus) {
+        if (countMatch(matchNum) == 4) LottoRank.MATCH_FOUR.countRank();
+        if (countMatch(matchNum) == 5) {
+            if (matchBonus(matchBonus)) {
+                LottoRank.MATCH_FIVE_AND_BONUS.countRank();
+            }
+            LottoRank.MATCH_FIVE.countRank();
+        }
+        if (countMatch(matchNum) == 6) LottoRank.MATCH_SIX.countRank();
+        if (countMatch(matchNum) == 3) LottoRank.MATCH_THREE.countRank();
+    }
 
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
