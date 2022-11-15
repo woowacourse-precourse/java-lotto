@@ -1,4 +1,4 @@
-package exceptionTemp;
+package exception;
 
 public class UserInputException extends IllegalArgumentException {
 

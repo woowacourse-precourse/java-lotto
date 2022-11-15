@@ -1,6 +1,6 @@
 package winning;
 
-import exceptionTemp.Invalidator;
+import utills.Invalidator;
 import outputView.Output;
 import camp.nextstep.edu.missionutils.Console;
 import lotto.Lotto;

@@ -7,7 +7,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import static exceptionTemp.ErrorMessage.*;
+import static outputView.ErrorMessage.*;
 
 
 public class Lotto {
