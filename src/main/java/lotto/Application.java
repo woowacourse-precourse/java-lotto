@@ -28,9 +28,8 @@ public class Application {
             int amount = requestAmount();
             List<Lotto> userLottos = createLottos(amount);
             printLottos(userLottos);
-            Lotto prizeLotto = requestPrizeNumbers();
-            int bonusNumber = requestBonusNumber();
-            Map<Rank, Integer> results = getLottoResults(userLottos, prizeLotto, bonusNumber);
+            PrizeNumber prizeNumber = requestPrizeNumber();
+            Map<Rank, Integer> results = getLottoResults(userLottos, prizeNumber);
             printResults(results);
             double rate = getRate(results, amount);
             printRate(rate);
@@ -39,12 +38,18 @@ public class Application {
         }
     }
 
+    private static PrizeNumber requestPrizeNumber() {
+        List<Integer> prizeNumbers = requestPrizeNumbers();
+        int bonusNumber = requestBonusNumber();
+        return new PrizeNumber(prizeNumbers, bonusNumber);
+    }
+
     private static List<Lotto> createLottos(int amount) {
         return issue.createLottos(amount);
     }
 
-    private static Map<Rank, Integer> getLottoResults(List<Lotto> userLottos, Lotto prizeLotto, int bonusNumber) {
-        return lottoService.compare(userLottos, prizeLotto, bonusNumber);
+    private static Map<Rank, Integer> getLottoResults(List<Lotto> userLottos, PrizeNumber prizeNumber) {
+        return lottoService.compare(userLottos, prizeNumber);
     }
 
     private static double getRate(Map<Rank, Integer> results, int amount) {
@@ -66,7 +71,7 @@ public class Application {
         }
     }
 
-    private static Lotto requestPrizeNumbers() {
+    private static List<Integer> requestPrizeNumbers() {
         System.out.println(REQUEST_PRIZE_NUMBERS);
         String input = Console.readLine();
 
@@ -74,7 +79,7 @@ public class Application {
         for (String number : input.split(COMMA)) {
             prizeNumbers.add(Integer.valueOf(number));
         }
-        return new Lotto(prizeNumbers);
+        return prizeNumbers;
     }
 
     private static int requestBonusNumber() {

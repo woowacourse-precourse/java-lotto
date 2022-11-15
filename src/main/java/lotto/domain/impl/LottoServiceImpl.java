@@ -1,6 +1,7 @@
 package lotto.domain.impl;
 
 import lotto.Lotto;
+import lotto.PrizeNumber;
 import lotto.Rank;
 import lotto.domain.Judgment;
 import lotto.domain.LottoService;
@@ -18,9 +19,10 @@ public class LottoServiceImpl implements LottoService {
     private final Judgment judgment = new JudgmentImpl();
 
     @Override
-    public Map<Rank, Integer> compare(List<Lotto> userLottos, Lotto prizeLotto, int bonusNumber) {
+    public Map<Rank, Integer> compare(List<Lotto> userLottos, PrizeNumber prizeNumber) {
         Map<Rank, Integer> results = new HashMap<>();
-        List<Integer> prizeNumbers = prizeLotto.getNumbers();
+        List<Integer> prizeNumbers = prizeNumber.getNumbers();
+        int bonusNumber = prizeNumber.getBonusNumber();
 
         for (Lotto userLotto : userLottos) {
             List<Integer> userNumbers = userLotto.getNumbers();
