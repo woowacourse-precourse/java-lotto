@@ -9,12 +9,8 @@ import lotto.exception.Error;
 
 public class InputView {
 
-    public static int getInt() {
-        try {
-            return Integer.parseInt(readLine());
-        } catch (NumberFormatException e) {
-            throw new IllegalArgumentException(Error.NOT_INT.getMessage());
-        }
+    public static String input() {
+        return readLine();
     }
 
     public static String getString() {

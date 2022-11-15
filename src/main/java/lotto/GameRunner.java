@@ -1,5 +1,6 @@
 package lotto;
 
+import static lotto.util.NumberValidator.checkNotInt;
 import static lotto.view.InputView.*;
 import static lotto.view.OutputView.*;
 
@@ -38,7 +39,7 @@ public class GameRunner {
     private void inputPurchaseAmount() {
         askPurchaseAmount();
 
-        purchase = new Purchase(getInt());
+        purchase = new Purchase(checkNotInt(input()));
         purchase.printCount();
     }
 
