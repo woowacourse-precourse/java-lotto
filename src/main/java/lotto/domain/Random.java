@@ -3,6 +3,8 @@ package lotto.domain;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.List;
 
+import static lotto.utils.Exceptions.checkDuplicated;
+
 public class Random {
     private final List<Integer> randomNumbers;
 
@@ -11,6 +13,8 @@ public class Random {
     }
 
     public List<Integer> getRandomNumbers(){
+        System.out.println(randomNumbers);
+        checkDuplicated(randomNumbers);
         return randomNumbers;
     }
 }

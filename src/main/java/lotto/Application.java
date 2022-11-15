@@ -2,7 +2,11 @@ package lotto;
 
 public class Application {
     public static void main(String[] args) {
-        Controller controller = new Controller();
-        controller.playGame();
+        try {
+            Controller controller = new Controller();
+            controller.playGame();
+        } catch (IllegalArgumentException e){
+            System.out.println(e.getMessage());
+        }
     }
 }

@@ -5,11 +5,12 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.List;
 
+import static lotto.utils.Exceptions.*;
 import static lotto.view.GameOutput.getLottoNum;
-
 public class Lottos{
     public static int money ;
-    private final List<Lotto> Lottos = new ArrayList<Lotto>();
+
+    private final List<Lotto> Lottos = new ArrayList<>();
 
     public Lottos(int num){
         makeLottos(num/1000);
@@ -32,7 +33,10 @@ public class Lottos{
     }
 
     public static int getMoney() {
-        money = Integer.parseInt(Console.readLine());
+        String str = Console.readLine();
+        isNumber(str);
+        money = Integer.parseInt(str);
+        checkPay(money);
         getLottoNum(money/1000);
         return money;
     }
