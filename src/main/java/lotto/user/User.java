@@ -5,6 +5,7 @@ import lotto.lotto.BoughtLotto;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Pattern;
 
 public class User {
     List<BoughtLotto> lottos;
@@ -62,12 +63,7 @@ public class User {
     }
 
     private boolean checkInputInteger(String money) {
-        try {
-            Integer.parseInt(money);
-        } catch (Exception exception) {
-            return false;
-        }
-        return true;
+        return Pattern.matches("^[0-9]*$", money);
     }
 
     private boolean checkInputNumber(String money) {
