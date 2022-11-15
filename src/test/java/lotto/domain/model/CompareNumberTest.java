@@ -14,7 +14,7 @@ class CompareNumberTest {
 	@Test
 	void 채점_1점_3점() {
 		WinningNumber winningNumber = new WinningNumber("1,2,3,4,5,6");
-		BonusBall bonusBall = new BonusBall("7");
+		BonusBall bonusBall = new BonusBall("7", winningNumber.getWinningNumbers());
 		List<List<Integer>> tickets = new ArrayList<>();
 		tickets.add(Arrays.asList(1, 12, 132, 13, 13, 13)); // 1개
 		tickets.add(Arrays.asList(1, 2, 3, 7, 8, 9)); // 3점
@@ -32,7 +32,7 @@ class CompareNumberTest {
 	@Test
 	void 채점_5점_6점_7점() {
 		WinningNumber winningNumber = new WinningNumber("1,2,3,4,5,6");
-		BonusBall bonusBall = new BonusBall("7");
+		BonusBall bonusBall = new BonusBall("7", winningNumber.getWinningNumbers());
 		List<List<Integer>> tickets = new ArrayList<>();
 		tickets.add(Arrays.asList(45, 2, 3, 4, 5, 6)); // 5점
 		tickets.add(Arrays.asList(1, 2, 3, 4, 5, 7)); // 7점
@@ -52,7 +52,7 @@ class CompareNumberTest {
 	@Test
 	void 채점_5점2개_6점_7점() {
 		WinningNumber winningNumber = new WinningNumber("1,2,3,4,5,6");
-		BonusBall bonusBall = new BonusBall("7");
+		BonusBall bonusBall = new BonusBall("7", winningNumber.getWinningNumbers());
 		List<List<Integer>> tickets = new ArrayList<>();
 		tickets.add(Arrays.asList(45, 2, 3, 4, 5, 6)); // 5점
 		tickets.add(Arrays.asList(1, 2, 33, 4, 5, 6)); // 5점
