@@ -45,7 +45,7 @@ public class LottoSystem {
         String input = view_input.getJackpot();
         this.jackpot = new Lotto(logic.setJackpot(input));
         input = view_input.getBonus();
-        this.bonus = logic.getBonus(input);
+        this.bonus = logic.setBonus(input, getJackpots());
     }
 
     public List<Integer> getJackpots() {

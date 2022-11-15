@@ -55,5 +55,22 @@ public class LogicTest {
         assertThat(logic.setJackpot("1,2,3,4,5,6")).containsExactly(1, 2, 3, 4, 5, 6);
     }
 
+    @Test
+    void 보너스_당첨_에러_테스트() {
+        assertThatThrownBy(() -> logic.setBonus("7", List.of(1, 2, 3, 4, 5, 7)))
+                .isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> logic.setBonus("-1", List.of(1, 2, 3, 4, 5, 7)))
+                .isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> logic.setBonus("?", List.of(1, 2, 3, 4, 5, 7)))
+                .isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> logic.setBonus("66", List.of(1, 2, 3, 4, 5, 7)))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void 보너스_당첨_정상_테스트() {
+        assertThat(logic.setBonus("7", List.of(1, 2, 3, 4, 5, 6))).isEqualTo(7);
+    }
+
 
 }

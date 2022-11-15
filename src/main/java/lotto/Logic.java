@@ -72,7 +72,7 @@ public class Logic {
         return answer;
     }
 
-    public int getBonus(String input) {
+    public int setBonus(String input, List<Integer> jackpot) {
         // implement
         return 0;
     }
