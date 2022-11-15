@@ -23,4 +23,17 @@ public class Validation {
     return numbers.stream().anyMatch(num -> num>=1 && num<=45);
   }
 
+  /**
+   * Verify string is numeric.
+   * @param string the string to be checked.
+   * @return true if string is numeric.
+   */
+  public static boolean isNumeric(String string) {
+    try {
+      Double.parseDouble(string);
+      return true;
+    } catch(NumberFormatException e){
+      return false;
+    }
+  }
 }
