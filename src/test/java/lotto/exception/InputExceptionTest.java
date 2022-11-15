@@ -56,7 +56,7 @@ public class InputExceptionTest {
 
     @DisplayName("당첨 로또 번호를 입력할 때 콤마로 구분하지 않으면 예외가 발생한다.")
     @Test
-    void createLottoAmountBySplitComma() {
+    void createWinLottoNumbersBySplitComma() {
         String winLottoNumbers = "123456";
         assertThatThrownBy(() -> InputException.validatesWinLottoNumber(winLottoNumbers))
                 .isInstanceOf(IllegalArgumentException.class);
@@ -64,7 +64,7 @@ public class InputExceptionTest {
 
     @DisplayName("당첨 로또 번호들이 중복되면 예외가 발생한다.")
     @Test
-    void createLottoAmountByDuplicate() {
+    void createWinLottoNumbersByDuplicate() {
         String winLottoNumbers = "1,2,3,4,5,5";
         assertThatThrownBy(() -> InputException.validatesWinLottoNumber(winLottoNumbers))
                 .isInstanceOf(IllegalArgumentException.class);
@@ -72,7 +72,7 @@ public class InputExceptionTest {
 
     @DisplayName("당첨 로또 번호들이 45 초과라면 예외가 발생한다.")
     @Test
-    void createLottoAmountByBelow() {
+    void createWinLottoNumbersByBelow() {
         String winLottoNumbers = "1,2,3,46,7,8";
         assertThatThrownBy(() -> InputException.validatesWinLottoNumber(winLottoNumbers))
                 .isInstanceOf(IllegalArgumentException.class);
