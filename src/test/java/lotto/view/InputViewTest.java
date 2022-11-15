@@ -19,7 +19,7 @@ class InputViewTest {
 
     @Test
     @DisplayName("입력 형식이 적절하지 않으면 예러를 발생한다.")
-    void inputLottoMoneyUnderMinimumMoney() {
+    void inputLottoMoneyImproperly() {
         String inputMoney = "만사천원";
         InputStream in = generateUserInput(inputMoney);
         System.setIn(in);
