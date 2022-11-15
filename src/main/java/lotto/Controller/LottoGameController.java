@@ -35,6 +35,13 @@ public class LottoGameController {
         return Math.floorDiv(Integer.parseInt(input), 1000);
     }
 
+    public int CountEnter(InputMessages inputMessages, OutputMessages outputMessages) {
+        inputCash = getInputNumber(inputMessages, outputMessages);
+        outputMessages.countEnterMsg(calculateCount(inputCash));
+
+        return calculateCount(inputCash);
+    }
+
 
 }
 
