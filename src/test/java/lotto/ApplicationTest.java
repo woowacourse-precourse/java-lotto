@@ -47,9 +47,77 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    void 기능_테스트1() {
+        assertRandomUniqueNumbersInRangeTest(
+                () -> {
+                    run("5000", "5,13,23,37,41,45", "7");
+                    assertThat(output()).contains(
+                            "5개를 구매했습니다.",
+                            "[5, 17, 20, 21, 38, 40]",
+                            "[5, 13, 23, 24, 25, 26]",
+                            "[4, 13, 23, 37, 41, 45]",
+                            "[5, 13, 23, 37, 41, 45]",
+                            "[5, 7, 13, 23, 37, 41]",
+                            "3개 일치 (5,000원) - 1개",
+                            "4개 일치 (50,000원) - 0개",
+                            "5개 일치 (1,500,000원) - 1개",
+                            "5개 일치, 보너스 볼 일치 (30,000,000원) - 1개",
+                            "6개 일치 (2,000,000,000원) - 1개",
+                            "총 수익률은 4.06301E7%입니다."
+                    );
+                },
+                List.of(5, 17, 20, 21, 38, 40),
+                List.of(5, 13, 23, 24, 25, 26),
+                List.of(4, 13, 23, 37, 41, 45),
+                List.of(5, 13, 23, 37, 41, 45),
+                List.of(5, 7, 13, 23, 37, 41)
+        );
+    }
+
+    @Test
     void 예외_테스트() {
         assertSimpleTest(() -> {
             runException("1000j");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
+    @Test
+    void 예외_테스트1() {
+        assertSimpleTest(() -> {
+            runException("1100");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
+    @Test
+    void 예외_테스트2() {
+        assertSimpleTest(() -> {
+            runException("1000", "1,2,3,3,5,6");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
+    @Test
+    void 예외_테스트3() {
+        assertSimpleTest(() -> {
+            runException("1000", "1,2,3,4,5");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
+    @Test
+    void 예외_테스트4() {
+        assertSimpleTest(() -> {
+            runException("1000", "1,2,3,4,5,a");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
+    @Test
+    void 예외_테스트5() {
+        assertSimpleTest(() -> {
+            runException("1000", "1,2,3,4,5,6", "6");
             assertThat(output()).contains(ERROR_MESSAGE);
         });
     }
