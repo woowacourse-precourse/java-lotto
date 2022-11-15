@@ -32,7 +32,7 @@ public class Controller {
             PrintResult.printLottoNumber(lottoNumber);
             Set common = server.compareLottoNumber(lottoNumber, winLottoNumber);
             int matchNumber = server.countMatchNumber(common);
-            if(matchNumber < 3){
+            if(isMatchNumberUnderThree(matchNumber)){
                 continue;
             }
             if(matchNumber == 5 && server.compareBonusNumber(lottoNumber, bonusNumber)){
@@ -73,5 +73,9 @@ public class Controller {
             bonusNumber = client.getWinBonusNumber();
         } while (server.isInclude(winLottoNumber, bonusNumber));
         return bonusNumber;
+    }
+
+    private Boolean isMatchNumberUnderThree(int matchNumber){
+        return matchNumber < 3;
     }
 }
