@@ -5,10 +5,10 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.LinkedList;
 import java.util.List;
 
-public class Lotto {
+import static lotto.domain.messages.ErrorMessages.DUPLICATE_ERROR_MESSAGE;
+import static lotto.domain.messages.ErrorMessages.SIZE_ERROR_MESSAGE;
 
-    private static final String SIZE_ERROR_MESSAGE = "로또 번호는 6개 입니다";
-    private static final String DUPLICATE_ERROR_MESSAGE = "로또 번호는 서로 중복될 수 없습니다";
+public class Lotto {
     private final List<LottoNumber> lottoNumbers;
 
     private Lotto(List<Integer> numbers) {
