@@ -11,7 +11,7 @@ public class Result {
     private final Map<Rank, Long> lottoResult;
 
     public Result(final User userLotto, final Winning winningLotto) {
-        this.lottoResult = createLottoResult(userLotto.compareLottoNumber(winningLotto));
+        this.lottoResult = createLottoResult(userLotto.compareLottoNbr(winningLotto));
     }
 
 
