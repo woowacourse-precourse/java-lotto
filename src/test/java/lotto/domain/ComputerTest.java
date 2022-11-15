@@ -53,4 +53,13 @@ public class ComputerTest {
         assertThatThrownBy(Computer::new)
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @DisplayName("당첨 번호가 45보다 크면 예외가 발생한다.")
+    @Test
+    void createComputerWithLargeNumber() {
+        String input = "41,42,43,44,45,46";
+        System.setIn(new ByteArrayInputStream(input.getBytes()));
+        assertThatThrownBy(Computer::new)
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
