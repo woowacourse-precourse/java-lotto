@@ -31,15 +31,19 @@ public class Winning {
         }
     }
 
+    private static void overlapCheck(int inputNumber){
+        if (numbers.contains(inputNumber)) {
+            throw new IllegalArgumentException("로또 번호에는 중복된 숫자를 입력할 수 없습니다.");
+        }
+    }
+
     public static void addWinning(String input) {
         List<String> inputNumbers = Arrays.asList(input.split(","));
         for (int i = 0; i < inputNumbers.size(); i++) {
             checkInt(inputNumbers.get(i));
             int inputNumber = Integer.valueOf(inputNumbers.get(i));
             checkRange(inputNumber);
-            if (numbers.contains(inputNumber)) {
-                throw new IllegalArgumentException("중복된 숫자가 있습니다.");
-            }
+            overlapCheck(inputNumber);
             numbers.add(inputNumber);
         }
         validateWinning(numbers);
