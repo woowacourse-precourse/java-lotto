@@ -14,12 +14,13 @@ public class Lotto {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException();
         }
-        if(!validateDuplicate(numbers)){
+
+        if (!validateDuplicate(numbers)) {
             throw new IllegalArgumentException();
         }
     }
 
-    private boolean validateDuplicate(List<Integer> numbers){
+    private boolean validateDuplicate(List<Integer> numbers) {
         long noDuplicateCount = numbers.stream()
                 .distinct()
                 .count();
@@ -27,10 +28,11 @@ public class Lotto {
         if (noDuplicateCount != 6) {
             return false;
         }
+
         return true;
     }
 
-    public int countMatchedNumber(Lotto winningLotto){
+    public int countMatchedNumber(Lotto winningLotto) {
         int count = (int) numbers.stream().filter(winningLotto::containNumber).count();
         return count;
     }

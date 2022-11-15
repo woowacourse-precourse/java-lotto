@@ -9,24 +9,23 @@ public enum Rank {
     MISS(0, 0, "");
 
     private static final int GUESS_MIN_COUNT = 3;
-
     private int matchedNumberCount;
     private int winningMoney;
     private String message;
 
-    private Rank(int matchedNumberCount, int winningMoney, String message){
+    private Rank(int matchedNumberCount, int winningMoney, String message) {
         this.matchedNumberCount = matchedNumberCount;
         this.winningMoney = winningMoney;
         this.message = message;
     }
 
-    public static Rank valueOf(int matchedNumberCount, boolean isBonusNumberMatched){
-        if(SECOND.isValidCount(matchedNumberCount) && isBonusNumberMatched){
+    public static Rank valueOf(int matchedNumberCount, boolean isBonusNumberMatched) {
+        if (SECOND.isValidCount(matchedNumberCount) && isBonusNumberMatched) {
             return SECOND;
         }
-        
-        for(Rank rank : values()){
-            if(rank.isValidCount(matchedNumberCount) && rank != SECOND){
+
+        for (Rank rank : values()) {
+            if (rank.isValidCount(matchedNumberCount) && rank != SECOND) {
                 return rank;
             }
         }
@@ -34,12 +33,12 @@ public enum Rank {
         return MISS;
     }
 
-    private boolean isValidCount(int matchedNumberCount){
+    private boolean isValidCount(int matchedNumberCount) {
         return this.matchedNumberCount == matchedNumberCount;
     }
 
-    public void printMessage(int count){
-        if(this != MISS){
+    public void printMessage(int count) {
+        if (this != MISS) {
             System.out.println(message + count + "개");
         }
     }
