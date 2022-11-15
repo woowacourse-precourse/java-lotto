@@ -23,12 +23,13 @@ public class Input {
         System.out.println("당첨 번호를 입력해 주세요.");
         String winningNumberInput = Console.readLine();
         Validator.checkWinningNumber(winningNumberInput);
+
         String[] splittedInput = winningNumberInput.split(",");
         List<Integer> winningNumber = new ArrayList<Integer>();
-
         for(int order=0; order<splittedInput.length; order++) {
             winningNumber.add(Integer.valueOf(splittedInput[order]));
         }
+        Validator.checkWinningNumberCount(winningNumber);
 
         return winningNumber;
     }
