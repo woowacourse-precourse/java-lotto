@@ -7,8 +7,8 @@ public class LottoCard {
 
     private long lottoCardNum;
     private long money;
-    private List<Integer> lottoNums;
-    private RandomNumberGenerator randomNumberGenerator = new RandomNumberGenerator();
+    private List<Integer> lottoNums = new ArrayList<>();
+    RandomNumberGenerator randomNumberGenerator = new RandomNumberGenerator();
     List<List<Integer>> lottocard = new ArrayList<>();
 
     public LottoCard(long money) {

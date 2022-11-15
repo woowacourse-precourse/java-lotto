@@ -33,15 +33,15 @@ public class WinningStatistics {
     private void printResult() {
         System.out.println("\n당첨 통계\n---");
         checkCountOfLottoCard();
-        System.out.println("3개 일치 (5,000원) - " + winResult.get("3"));
-        System.out.println("4개 일치 (50,000원) - " + winResult.get("4"));
-        System.out.println("5개 일치 (1,500,000원) - " + winResult.get("5"));
-        System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - " + winResult.get("5+"));
-        System.out.println("6개 일치 (2,000,000,000원) - " + winResult.get("6"));
+        System.out.println("3개 일치 (5,000원) - " + winResult.get("3") + "개");
+        System.out.println("4개 일치 (50,000원) - " + winResult.get("4") + "개");
+        System.out.println("5개 일치 (1,500,000원) - " + winResult.get("5") + "개");
+        System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - " + winResult.get("5+") + "개");
+        System.out.println("6개 일치 (2,000,000,000원) - " + winResult.get("6") + "개");
 
         int price = (5000 * winResult.get("3") + 50000 * winResult.get("4") + 1500000 * winResult
             .get("5") + 30000000 * winResult.get("5+") + 2000000000 * winResult.get("6"));
-        double rate = (price / money) * 100;
+        double rate = ((double) price / money) * 100;
         System.out.println(String.format("총 수익률은 %.1f%%입니다.", rate));
     }
 
@@ -72,7 +72,7 @@ public class WinningStatistics {
         if (cnt >= 3) {
             String count = Integer.toString(cnt);
             int winCnt = winResult.get(count);
-            winResult.put(count, winCnt);
+            winResult.put(count, winCnt + 1);
         }
 
 
