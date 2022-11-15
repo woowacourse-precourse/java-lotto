@@ -15,6 +15,7 @@ public class OutputView {
 	}
 
 	public static void displayIncomeRatio(final double totalIncomeRatio) {
-		System.out.println("총 수익률은 " + totalIncomeRatio + "%입니다.");
+		System.out.print("총 수익률은 " +
+			String.format("%,.1f", totalIncomeRatio) + "%입니다.");
 	}
 }
