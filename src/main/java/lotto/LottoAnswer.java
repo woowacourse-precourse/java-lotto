@@ -7,7 +7,7 @@ import static Error.ErrorLottoNumbers.isDuplicateInput;
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class LottoAnswer {
-  private List<Integer> lotto_answer = new ArrayList<>();
+  private final List<Integer> lotto_answer = new ArrayList<>();
   private int bonus_number;
 
   public LottoAnswer() {
@@ -15,23 +15,31 @@ public class LottoAnswer {
   }
 
   private void setLottoAnswer() {
-    String answer;
-      System.out.println("당첨 번호를 입력해 주세요.");
-      answer = readLine();
+    inputWinNumber();
+    inputBonusNumber();
     System.out.println();
-    String answer_arr[] = answer.split(",");
+  }
+
+  private void inputWinNumber() {
+    String answer;
+    System.out.println("당첨 번호를 입력해 주세요.");
+    answer = readLine();
+    System.out.println();
+    String[] answer_arr = answer.split(",");
     for (int i = 0; i < 6; i++) {
       if (isDuplicateInput(lotto_answer, Integer.valueOf(answer_arr[i]))) {
         throw new IllegalArgumentException();
       }
       lotto_answer.add(Integer.valueOf(answer_arr[i])); // try catch 문 작성하는 것 권장
     }
+  }
+
+  private void inputBonusNumber() {
     System.out.println("보너스 번호를 입력해 주세요.");
     bonus_number = Integer.parseInt(readLine());
     if (isDuplicateInput(lotto_answer, bonus_number)) {
       throw new IllegalArgumentException();
     }
-    System.out.println();
   }
 
   public boolean haveNumber(Integer number) {
