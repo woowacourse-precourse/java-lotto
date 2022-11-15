@@ -22,6 +22,12 @@ public class LottoController {
     private LottoGenerator lottoGenerator = new LottoGenerator();
     private LottoCalculator lottoCalculator = new LottoCalculator();
 
+    public void run() {
+        buyLotto();
+        generateWinningLotto();
+        calculateLottoResult();
+    }
+
     public void buyLotto() {
         InputView.requestAmount();
         moneyAmount = user.inputOfMoneyAmount();
