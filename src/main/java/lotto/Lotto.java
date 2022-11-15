@@ -16,23 +16,29 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
-        if (numbers.size() != 6)
-            Error.error(Error.errMsg_WrongLottoSize);
-
+        checkNumberSize(numbers);
         for(int number : numbers){
-            if(number < 1 || number > 45)
-                Error.error(Error.errMsg_WrongLottoNumber);
-
-            if(Collections.frequency(numbers,number) >= 2)
-                Error.error(Error.errMsg_ExistSameNumber);
+            checkNumberInterval(number);
+            checkDuplicate(numbers, number);
         }
     }
-    public boolean checkContainNumber(int num){
-        if(numbers.contains(num))
-            return true;
 
-        return false;
+    private void checkNumberSize(List<Integer> numbers){
+        if (numbers.size() != lottoCount)
+            Error.error(Error.errMsg_WrongLottoSize);
     }
+
+    private void checkNumberInterval(int number){
+        if(number < lottoStart || number > lottoEnd)
+            Error.error(Error.errMsg_WrongLottoNumber);
+    }
+
+    private void checkDuplicate(List<Integer> numbers, int number){
+        if(Collections.frequency(numbers,number) >= 2)
+            Error.error(Error.errMsg_ExistSameNumber);
+    }
+
+
     public static List<Lotto> purchaseLotto(int count){
         List<Lotto> lottos = getRandomLotto(count);
         printLotto(lottos);
@@ -67,6 +73,13 @@ public class Lotto {
 
     public static boolean checkBonus(Lotto target, int bonus){
         if(target.numbers.contains(bonus))
+            return true;
+
+        return false;
+    }
+
+    public boolean checkContainNumber(int num){
+        if(numbers.contains(num))
             return true;
 
         return false;
