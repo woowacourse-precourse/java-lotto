@@ -10,11 +10,11 @@ public class LottoWinNumber {
     private final Integer bonusNumber;
 
     public LottoWinNumber(Set<Integer> winNumbers, Integer bonusNumber) {
+        validateWinNumberSize(winNumbers);
+        validateNumberRange(winNumbers, bonusNumber);
+        validateBonusNumberDuplicated(winNumbers, bonusNumber);
         this.winNumbers = winNumbers;
         this.bonusNumber = bonusNumber;
-        validateWinNumberSize();
-        validateNumberRange();
-        validateBonusNumberDuplicated();
     }
 
     public LottoWin compareWith(Lotto lotto) {
@@ -41,13 +41,13 @@ public class LottoWinNumber {
         return 0;
     }
 
-    private void validateWinNumberSize() {
+    private void validateWinNumberSize(Set<Integer> winNumbers) {
         if (winNumbers.size() != LOTTO_NUMBER_COUNT.getSetting()) {
             throw new IllegalArgumentException(LOTTO_NUMBER_WRONG_SIZE.getMessage());
         }
     }
 
-    private void validateNumberRange() {
+    private void validateNumberRange(Set<Integer> winNumbers, Integer bonusNumber) {
         boolean validateWinNumberResult = winNumbers.stream()
                 .anyMatch(number ->
                         LOTTO_MIN_NUMBER.getSetting() > number || number > LOTTO_MAX_NUMBER.getSetting());
@@ -60,7 +60,7 @@ public class LottoWinNumber {
         }
     }
 
-    private void validateBonusNumberDuplicated() {
+    private void validateBonusNumberDuplicated(Set<Integer> winNumbers, Integer bonusNumber) {
         if (winNumbers.contains(bonusNumber)) {
             throw new IllegalArgumentException(LOTTO_NUMBER_DUPLICATED.getMessage());
         }
