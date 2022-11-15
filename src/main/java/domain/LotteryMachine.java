@@ -20,7 +20,7 @@ public class LotteryMachine {
         return new Lotto(newLotto);
     }
 
-    public List <Lotto> getLottos(){
+    public List <Lotto> getLottos() {
         return Collections.unmodifiableList(lottos);
     }
 }

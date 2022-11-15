@@ -6,7 +6,7 @@ import view.OutputView;
 
 public class LottoController {
 
-    public void run(){
+    public void run() {
         PurchaseMoney purchaseMoney = new PurchaseMoney(InputView.inputMoney());
         LotteryMachine lotteryMachine = new LotteryMachine(purchaseMoney.getLottoCount());
         OutputView.showLottos(lotteryMachine.getLottos());
@@ -16,14 +16,14 @@ public class LottoController {
         OutputView.showProfitPercent(purchaseMoney.getPurchaseMoney(), lottoResult);
     }
 
-    private WinningNumber createWinningNumber(){
+    private WinningNumber createWinningNumber() {
         Lotto winningNumbers = new Lotto(InputView.inputWinningNumber());
         int bonusNumber = InputView.inputBonusNumber();
 
         return getWinningNumbers(winningNumbers, bonusNumber);
     }
 
-    private WinningNumber getWinningNumbers(Lotto winningNumbers, int bonusNumber){
+    private WinningNumber getWinningNumbers(Lotto winningNumbers, int bonusNumber) {
         return new WinningNumber(winningNumbers, bonusNumber);
     }
 

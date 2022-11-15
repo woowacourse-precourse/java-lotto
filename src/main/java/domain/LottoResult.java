@@ -1,23 +1,19 @@
 package domain;
 
-import view.OutputView;
-
-import java.util.EnumMap;
 import java.util.Map;
-import java.util.stream.Stream;
 
 public class LottoResult {
     private final Map <LottoRank,Integer> result = LottoRank.initializeMap();
 
-    public LottoResult(LotteryMachine lotteryMachine, WinningNumber winningNumber){
-        for(Lotto lotto : lotteryMachine.getLottos()){
+    public LottoResult(LotteryMachine lotteryMachine, WinningNumber winningNumber) {
+        for (Lotto lotto : lotteryMachine.getLottos()) {
             LottoRank lottoRank = LottoRank.findRank(lotto.sameNumberCount(winningNumber),
                     lotto.containBonusNumber(winningNumber));
-            result.put(lottoRank, result.getOrDefault(lottoRank, 0) +1);
+            result.put(lottoRank, result.getOrDefault(lottoRank, 0) + 1);
         }
     }
 
-    public double profitPercent(int purchaseMoney){
+    public double profitPercent(int purchaseMoney) {
         return (double) allWinning() / purchaseMoney;
     }
 
@@ -26,7 +22,7 @@ public class LottoResult {
         ).map(e -> e.getKey().getPrize() * e.getValue()).mapToLong(e -> e).sum();
     }
 
-    public Map<LottoRank, Integer> getResult(){
+    public Map <LottoRank,Integer> getResult() {
         return this.result;
     }
 }

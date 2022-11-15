@@ -29,8 +29,8 @@ public enum LottoRank {
                 .orElse(ZERO);
     }
 
-    public static Map <LottoRank, Integer> initializeMap() {
-        Map<LottoRank, Integer> result = new EnumMap <>(LottoRank.class);
+    public static Map <LottoRank,Integer> initializeMap() {
+        Map <LottoRank,Integer> result = new EnumMap <>(LottoRank.class);
         result.put(LottoRank.ZERO, 0);
         result.put(LottoRank.THREE, 0);
         result.put(LottoRank.FOUR, 0);

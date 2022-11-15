@@ -38,16 +38,17 @@ public class PurchaseMoney {
         }
     }
 
-    private void checkRange(int money){
-        if(money > MAX_RANGE || money < MIN_RANGE){
-            throw new IllegalArgumentException("[ERROR] 최소 " + MIN_RANGE +"원 이상 " + MAX_RANGE + "이하로 구입이 가능합니다.");
+    private void checkRange(int money) {
+        if (money > MAX_RANGE || money < MIN_RANGE) {
+            throw new IllegalArgumentException("[ERROR] 최소 " + MIN_RANGE + "원 이상 " + MAX_RANGE + "이하로 구입이 가능합니다.");
 
         }
     }
 
-    public int getPurchaseMoney(){
+    public int getPurchaseMoney() {
         return purchaseMoney;
     }
+
     public int getLottoCount() {
         return purchaseMoney / LOTTO_PRICE;
     }
