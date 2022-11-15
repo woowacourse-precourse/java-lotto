@@ -1,4 +1,4 @@
-package lotto;
+package lotto.domain;
 
 import static lotto.exception.ExceptionCode.INVALID_LOTTO_NUMBER_RANGE;
 
@@ -10,7 +10,7 @@ public class LottoNumber implements Comparable<LottoNumber> {
     public static final int UPPER_BOUND = 45;
     private final int number;
 
-    LottoNumber(int number) {
+    public LottoNumber(int number) {
         validate(number);
         this.number = number;
     }

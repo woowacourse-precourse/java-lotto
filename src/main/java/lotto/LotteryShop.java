@@ -1,7 +1,6 @@
 package lotto;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
-import static lotto.exception.ExceptionCode.ALREADY_PICKED_BONUS_NUMBER;
 import static lotto.exception.ExceptionCode.INVALID_BONUS_NUMBER_INPUT;
 import static lotto.exception.ExceptionCode.INVALID_MONEY_INPUT;
 import static lotto.exception.ExceptionCode.INVALID_WINNING_NUMBER_INPUT;
@@ -10,6 +9,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
+import lotto.domain.Lotto;
+import lotto.domain.LottoNumber;
+import lotto.domain.Money;
+import lotto.domain.WinningLotto;
 
 public class LotteryShop {
 

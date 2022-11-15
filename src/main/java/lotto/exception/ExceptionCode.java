@@ -1,9 +1,9 @@
 package lotto.exception;
 
-import static lotto.Money.MONEY_PER_LOTTO;
+import static lotto.domain.Money.MONEY_PER_LOTTO;
 
-import lotto.Lotto;
-import lotto.LottoNumber;
+import lotto.domain.Lotto;
+import lotto.domain.LottoNumber;
 
 public class ExceptionCode {
 

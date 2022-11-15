@@ -1,6 +1,8 @@
-package lotto;
+package lotto.domain;
 
 import static lotto.exception.ExceptionCode.ALREADY_PICKED_BONUS_NUMBER;
+
+import lotto.Rank;
 
 public class WinningLotto {
 

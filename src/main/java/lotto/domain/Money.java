@@ -1,4 +1,4 @@
-package lotto;
+package lotto.domain;
 
 import static lotto.exception.ExceptionCode.INVALID_MONEY_PER_LOTTO;
 
