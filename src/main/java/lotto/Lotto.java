@@ -35,4 +35,19 @@ public class Lotto {
         return "[" + String.join(",", strNumbers) + "]";
     }
     // TODO: 추가 기능 구현
+
+    private int compareNum(int num) {
+        if (numbers.contains(num)) {
+            return 1;
+        }
+        return 0;
+    }
+
+    public int compareNumbers(Lotto lotto) {
+        int result = 0;
+        for (int num : lotto.numbers) {
+            result += compareNum(num);
+        }
+        return result;
+    }
 }

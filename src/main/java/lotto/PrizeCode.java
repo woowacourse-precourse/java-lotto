@@ -1,25 +1,26 @@
 package lotto;
 
 public enum PrizeCode {
-    FIRST(0, 2000000000),
-    SECOND(1, 30000000),
-    THIRD(2, 1500000),
-    FOURTH(3, 50000),
-    FIFTH(4, 5000);
+    FIRST(1, 2000000000),
+    SECOND(2, 30000000),
+    THIRD(3, 1500000),
+    FOURTH(4, 50000),
+    FIFTH(5, 5000),
+    NONE(-1, 0);
 
-    private final int code;
-    private final int prizeMoney;
+    private final int rank;
+    private final int reward;
 
-    PrizeCode(int code, int prizeMoney) {
-        this.code = code;
-        this.prizeMoney = prizeMoney;
+    PrizeCode(int rank, int reward) {
+        this.rank = rank;
+        this.reward = reward;
     }
 
-    public int getCode() {
-        return code;
+    public int getRank() {
+        return rank;
     }
 
-    public int getPrizeMoney() {
-        return prizeMoney;
+    public int getReward() {
+        return reward;
     }
 }

@@ -7,23 +7,19 @@ public class Utils {
 
     private static final int LOTTO_SIZE = 6;
 
-    public static void validateInput(char c) {
-        if (!Character.isDigit(c)) {
-            throw new IllegalArgumentException(String.valueOf(ErrorCode.INPUT_NOT_NUMBER));
-        }
-    }
-
     public static int convertStringToInt(String input) {
-        for (int i = 0; i < input.length(); i++) {
-            validateInput(input.charAt(i));
+        try {
+            int result = Integer.parseInt(input);
+            return result;
+        } catch (Exception e) {
+            throw new IllegalArgumentException(ErrorCode.INPUT_NOT_NUMBER.getMessage());
         }
-        return Integer.parseInt(input);
     }
 
 
     public static void validateDuplicatedNum(List<Integer> numbers, int numIdx) {
         if (numbers.indexOf(numbers.get(numIdx)) != numIdx) {
-            throw new IllegalArgumentException(String.valueOf(ErrorCode.NOT_UNIQUE_NUMBERS));
+            throw new IllegalArgumentException(ErrorCode.NOT_UNIQUE_NUMBERS.getMessage());
         }
     }
 
@@ -35,7 +31,7 @@ public class Utils {
 
     public static void validateNumberRange(int number) {
         if (number < 1 || number > 45) {
-            throw new IllegalArgumentException(String.valueOf(ErrorCode.OUT_OF_RANGE));
+            throw new IllegalArgumentException(ErrorCode.OUT_OF_RANGE.getMessage());
         }
     }
 
@@ -47,7 +43,7 @@ public class Utils {
 
     public static void validateNumbersSize(List<Integer> numbers) {
         if (numbers.size() != LOTTO_SIZE) {
-            throw new IllegalArgumentException(String.valueOf(ErrorCode.INVALID_SIZE));
+            throw new IllegalArgumentException(ErrorCode.INVALID_SIZE.getMessage());
         }
     }
 

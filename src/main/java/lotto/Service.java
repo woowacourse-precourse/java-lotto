@@ -19,11 +19,13 @@ public class Service {
             bonusNumber = UserInterface.readBonusNumber();
             lottoInfo = new LottoInfo(win, Utils.convertStringToInt(bonusNumber));
         } catch (Exception e) {
-            System.out.print("[ERROR]" + e.toString());
+            System.out.print(e.getMessage());
         }
     }
 
     public static void start() {
         readInput();
+        System.out.println(lottoInfo.compare(customer.getLottoNumbers().get(0)).getRank() + "등");
+
     }
 }
