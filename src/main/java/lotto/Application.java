@@ -10,6 +10,7 @@ public class Application {
     static void priceMessage() {
         System.out.println("구입금액을 입력해 주세요.");
     }
+
     static void checkPriceDigit(String numbers) {
         for (int i = 0; i < numbers.length(); i++) {
             if (!Character.isDigit(numbers.charAt(i))) {
@@ -17,6 +18,7 @@ public class Application {
             }
         }
     }
+
     static void checkPrice(int n) {
         if (n % 1000 != 0) {
             throw new IllegalArgumentException("[ERROR] 구입금액이 형식이 맞지 않습니다.");
@@ -67,7 +69,7 @@ public class Application {
         }
     }
 
-    static void inputNumbers() {
+    static List<Integer> inputNumbers() {
         numberMessage();
         String numbers = Console.readLine();
         System.out.println();
@@ -80,13 +82,51 @@ public class Application {
         checkNumberCount(result);
         checkNumberRange(result);
         checkNumberDuplication(result);
+        return result;
     }
 
+    static void bonusMessage() {
+        System.out.println("보너스 번호를 입력해 주세요.");
+    }
+
+    static void checkDigitBonus(String numbers) {
+        String allNumber = numbers.replaceAll(",", "");
+        for (int i = 0; i < allNumber.length(); i++) {
+            if (!Character.isDigit(allNumber.charAt(i))) {
+                throw new IllegalArgumentException("[ERROR] 보너스 번호는 숫자여야 합니다.");
+            }
+        }
+    }
+
+    static void checkBonusRange(int number) {
+        if (number < 1 || 45 < number) {
+            throw new IllegalArgumentException("[ERROR] 보너스 번호는 1~45 범위의 숫자이여야 합니다.");
+        }
+    }
+
+    static void checkBonusDuplication(int number, List<Integer> numbers) {
+        for (int i = 0; i < numbers.size(); i++) {
+            if (numbers.get(i) == number) {
+                throw new IllegalArgumentException("[ERROR] 보너스 번호는 당첨 번호와 중복이 없는 숫자이여야 합니다.");
+            }
+        }
+    }
+
+    static void inputBonusNumbers(List<Integer> numbers) {
+        bonusMessage();
+        String number = Console.readLine();
+        System.out.println();
+        checkDigitBonus(number);
+        checkBonusRange(Integer.parseInt(number));
+        checkBonusDuplication(Integer.parseInt(number), numbers);
+    }
+    
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         try {
             inputPrice();
-            inputNumbers();
+            List<Integer> result = inputNumbers();
+            inputBonusNumbers(result);
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
