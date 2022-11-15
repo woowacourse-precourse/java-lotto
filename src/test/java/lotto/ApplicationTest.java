@@ -62,6 +62,7 @@ class ApplicationTest extends NsTest {
         }, "10000");
     }
 
+
     @Test
     void 유저_로또_구매_실패(){
         runTest(() -> {
