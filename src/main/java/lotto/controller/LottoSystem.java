@@ -53,8 +53,8 @@ public class LottoSystem {
         int[] ranks = calculator.countLottoRanks(userLottos);
         outputView.outputLottoResult(ranks);
 
-        float earningRate = calculator.calculateEarningRate();
-        System.out.println(earningRate);
+        double earningRate = calculator.calculateEarningRate();
+        outputView.outputEarningRate(earningRate);
     }
 
     private List<Lotto> createLotto(int money) {

@@ -13,6 +13,8 @@ public class OutputView {
     private static final String OUTPUT_RESULT_4TH_PRIZE = "4개 일치 (50,000원) - ";
     private static final String OUTPUT_RESULT_5TH_PRIZE = "3개 일치 (5,000원) - ";
     private static final String OUTPUT_RESULT_LAST_LETTER = "개";
+    private static final String OUTPUT_EARNING_RATE_FORMER = "총 수익률은 ";
+    private static final String OUTPUT_EARNING_RATE_LATTER = "%입니다.";
 
     public void outputUserLottos(List<Lotto> userLottos) {
         System.out.println();
@@ -30,5 +32,9 @@ public class OutputView {
         System.out.println(OUTPUT_RESULT_3RD_PRIZE + ranks[3] + OUTPUT_RESULT_LAST_LETTER);
         System.out.println(OUTPUT_RESULT_2ND_PRIZE + ranks[2] + OUTPUT_RESULT_LAST_LETTER);
         System.out.println(OUTPUT_RESULT_1ST_PRIZE + ranks[1] + OUTPUT_RESULT_LAST_LETTER);
+    }
+
+    public void outputEarningRate(double earningRate) {
+        System.out.println(OUTPUT_EARNING_RATE_FORMER + earningRate + OUTPUT_EARNING_RATE_LATTER);
     }
 }

@@ -32,13 +32,13 @@ public class Calculator {
         return userRanks;
     }
 
-    public float calculateEarningRate() {
-        int earned = userRanks[1] * EARNING_OF_1ST_PRIZE
+    public double calculateEarningRate() {
+        double earned = userRanks[1] * EARNING_OF_1ST_PRIZE
                 + userRanks[2] * EARNING_OF_2ND_PRIZE
                 + userRanks[3] * EARNING_OF_3RD_PRIZE
                 + userRanks[4] * EARNING_OF_4TH_PRIZE
                 + userRanks[5] * EARNING_OF_5TH_PRIZE;
-        float earningRate = earned / userInvestment * 100;
+        double earningRate = earned / userInvestment * 100;
         return earningRate;
     }
 }
