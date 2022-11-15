@@ -49,7 +49,17 @@ class LottoTest {
     }
 
     //당첨 번호 개수가 5개 일때, 보너스 점수 일치 여부 테스트
+    @DisplayName("당첨 번호 개수가 5개 일때, 보너스 점수가 일치하면 true를 반환한다.")
+    @Test
+    void checkReturnValueOfBonusMatched() {
 
+        Lotto lotto = new Lotto(List.of(1,23,11,19,36,41));
+        int matchNumCnt = lotto.countMatchedNumbers(WINNINGNUMS);
+
+        int bonusNum = 41;
+        boolean result = lotto.checkBonusMatched(bonusNum,matchNumCnt);
+        assertThat(result).isEqualTo(true);
+    }
 
 
     //등수 구하는 메서드 테스트
