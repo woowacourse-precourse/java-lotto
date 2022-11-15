@@ -26,7 +26,9 @@ public class LottoGame {
         output.printIssuedLotto(issuedLotto);
         this.winningNumber = input.getWinningNumber();
         this.bonusNumber = input.getBonusNumber();
-        // TODO: 당첨 통계 계산과 출력
+        getGameResult();
+        output.printGameResult(gameResult);
+        // TODO: 수익률 계산 및 출력
     }
 
     public List<Integer> generateLottoNumbers() {
