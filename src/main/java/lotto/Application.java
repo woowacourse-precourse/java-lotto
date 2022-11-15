@@ -6,10 +6,10 @@ import lotto.domain.LottoService;
 import lotto.domain.impl.IssueImpl;
 import lotto.domain.impl.LottoServiceImpl;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import static java.lang.Character.*;
 import static lotto.Constants.COMMA;
@@ -27,7 +27,7 @@ public class Application {
         try {
             int amount = requestAmount();
             List<Lotto> userLottos = createLottos(amount);
-            printLottos(userLottos);
+            printUserLottos(userLottos);
             PrizeNumber prizeNumber = requestPrizeNumber();
             Map<Rank, Integer> results = getLottoResults(userLottos, prizeNumber);
             printResults(results);
@@ -39,9 +39,9 @@ public class Application {
     }
 
     private static PrizeNumber requestPrizeNumber() {
-        List<Integer> prizeNumbers = requestPrizeNumbers();
+        List<Integer> numbers = requestNumbers();
         int bonusNumber = requestBonusNumber();
-        return new PrizeNumber(prizeNumbers, bonusNumber);
+        return new PrizeNumber(numbers, bonusNumber);
     }
 
     private static List<Lotto> createLottos(int amount) {
@@ -59,11 +59,11 @@ public class Application {
     private static int requestAmount() {
         System.out.println(REQUEST_AMOUNT);
         String input = Console.readLine();
-        validate(input);
+        typeValidate(input);
         return Integer.parseInt(input);
     }
 
-    private static void validate(String target) {
+    private static void typeValidate(String target) {
         for (char ch : target.toCharArray()) {
             if (!isDigit(ch)) {
                 throw new IllegalArgumentException(TYPE_EXCEPTION);
@@ -71,25 +71,23 @@ public class Application {
         }
     }
 
-    private static List<Integer> requestPrizeNumbers() {
+    private static List<Integer> requestNumbers() {
         System.out.println(REQUEST_PRIZE_NUMBERS);
         String input = Console.readLine();
 
-        List<Integer> prizeNumbers = new ArrayList<>();
-        for (String number : input.split(COMMA)) {
-            prizeNumbers.add(Integer.valueOf(number));
-        }
-        return prizeNumbers;
+        return Arrays.stream(input.split(COMMA))
+                .map(Integer::valueOf)
+                .collect(Collectors.toList());
     }
 
     private static int requestBonusNumber() {
         System.out.println(REQUEST_BONUS_NUMBER);
         String input = Console.readLine();
-        validate(input);
+        typeValidate(input);
         return Integer.parseInt(input);
     }
 
-    private static void printLottos(List<Lotto> lottos) {
+    private static void printUserLottos(List<Lotto> lottos) {
         String message = String.format(RESPONSE_LOTTO_SIZE, lottos.size());
         System.out.println(message);
         for (Lotto lotto : lottos) {
