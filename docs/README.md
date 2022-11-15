@@ -29,6 +29,8 @@
 3. Seller
     - [x]  발행할 로또 개수 계산 기능 → countIssueingLotto
     - [x]  로또 개수만큼 발행 기능 → issueLotto
+
+        로또 번호는 오름차순으로 정렬
 4. InputValidator
     - [x]  로또 구입 금액이 1,000원으로 나누어 떨어지는지 검증 기능 → validatePurchaseAmount
     - [x]  당첨 번호 검증 기능 → validateWinningNumber
