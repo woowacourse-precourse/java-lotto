@@ -56,6 +56,6 @@ public class OutputUi {
      * 사용자 로또 수익률 출력 로직
      */
     public void printLottoProfitRate(double lottoProfitRate) {
-        System.out.printf("%.1f", lottoProfitRate);
+        System.out.printf("%.1f%%", lottoProfitRate);
     }
 }
