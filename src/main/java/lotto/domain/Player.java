@@ -5,6 +5,7 @@ import lotto.exception.Check;
 import lotto.exception.CustomException;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class Player {
@@ -12,8 +13,36 @@ public class Player {
     private List<Lotto> playerLottos;
     private int buyMoney;
 
-    public List<Integer> compareLotto(Lotto lotto) {
-        return null;
+    public HashMap<LottoResult, Integer> compareLottos(List<Lotto> playerLottos, List<Integer> pickLotto, int pickPlusLotto) {
+        HashMap<LottoResult, Integer> lottoResults = new HashMap<>();
+
+        for (Lotto playerLotto : playerLottos) {
+            List<Integer> playerLottoNumbers = playerLotto.getNumbers();
+            LottoResult confirmLottoResult = confirmLotto(pickLotto, pickPlusLotto, playerLottoNumbers);
+            putLottoResults(lottoResults, confirmLottoResult);
+        }
+
+        return lottoResults;
+    }
+
+    private LottoResult confirmLotto(List<Integer> pickLotto, int pickPlusLotto, List<Integer> playerLottoNumbers) {
+        int sameCount = 0;
+        boolean samePlusLotto = false;
+
+        for (Integer playerLottoNumber : playerLottoNumbers) {
+            if (pickLotto.contains(playerLottoNumber)) sameCount++;
+            if (pickPlusLotto == playerLottoNumber) samePlusLotto = true;
+        }
+
+        LottoResult lottoResult = new LottoResult(sameCount, samePlusLotto);
+        return lottoResult;
+    }
+
+    private void putLottoResults(HashMap<LottoResult, Integer> lottoResults, LottoResult confirmLottoResult) {
+        int sameCount = confirmLottoResult.getSameCount();
+        if (sameCount < 3) return;
+        if (sameCount != 5) confirmLottoResult.setSamePlusLotto(false);
+        lottoResults.put(confirmLottoResult, lottoResults.getOrDefault(confirmLottoResult, 0) + 1);
     }
 
     public List<Lotto> buyLotto(int buyMoney) {

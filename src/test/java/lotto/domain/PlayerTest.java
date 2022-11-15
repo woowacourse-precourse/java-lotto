@@ -5,6 +5,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -13,6 +15,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @DisplayName("Player 테스트")
 class PlayerTest {
+    private static final List<Integer> pickLotto = List.of(1, 2, 3, 4, 5, 6);
+    private static final int pickPlusLotto = 7;
     private Player player;
 
     @BeforeEach
@@ -20,8 +24,22 @@ class PlayerTest {
         player = new Player();
     }
 
+    @DisplayName("통합 로또 비교 테스트")
     @Test
     void compareLotto() {
+
+        List<Lotto> lottos = new ArrayList<>();
+        List<Integer> playerLottos = List.of(1, 2, 3, 4, 5, 7);
+        Lotto playerLotto = new Lotto(playerLottos);
+        lottos.add(playerLotto);
+
+        HashMap<LottoResult, Integer> lottoResults = player.compareLottos(lottos, pickLotto, pickPlusLotto);
+
+        for (LottoResult lottoResult : lottoResults.keySet()) {
+            assertThat(lottoResult.getSameCount()).isEqualTo(5);
+            assertThat(lottoResult.isSamePlusLotto()).isEqualTo(true);
+        }
+
     }
 
     @DisplayName("true case : 로또 구매 테스트")
