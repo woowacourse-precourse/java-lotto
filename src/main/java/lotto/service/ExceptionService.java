@@ -17,6 +17,7 @@ public class ExceptionService {
         winningNumbersException.checkIfTheWinningNumbersHasSixCharactersBasedOnTheConma(winningNumbers);
         winningNumbersException.checkForSpacesInWinningNumbers(winningNumbers);
         winningNumbersException.checkForDupliCateWinningNumbers(winningNumbers);
+        winningNumbersException.checkIfTheScopeIsCorrect(winningNumbers);
     }
 
 
