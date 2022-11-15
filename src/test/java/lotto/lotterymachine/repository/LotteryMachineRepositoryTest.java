@@ -2,7 +2,6 @@ package lotto.lotterymachine.repository;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import lotto.lotterymachine.domain.LotteryMachine;
 import org.junit.jupiter.api.Test;
 
 class LotteryMachineRepositoryTest {
@@ -28,7 +27,4 @@ class LotteryMachineRepositoryTest {
 
         assertThat(target).isEqualTo(false);
     }
-
-    // add case of input bonus number is duplicate
-    // add case of input numbers is duplicate
 }

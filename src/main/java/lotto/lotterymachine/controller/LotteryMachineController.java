@@ -21,7 +21,6 @@ public class LotteryMachineController {
     private final OutPutView outPutView;
     public Map<Score, Integer> ScoreBoard;
 
-
     public LotteryMachineController() {
         this.lotteryMachine = new LotteryMachine();
         this.lotteryMachineRepository = new LotteryMachineRepository();

@@ -1,6 +1,8 @@
 package lotto.user.repository;
 
 import camp.nextstep.edu.missionutils.Console;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import lotto.lottery.domain.Lotto;
 import lotto.lottery.repository.LottoRepository;
@@ -16,8 +18,14 @@ public class UserRepository {
         for (int i = Constant.INIT_ZERO; i < lottoTicketAmount; i++) {
             Lotto lotto = new Lotto(LOTTO_NUMBER);
             lotto.setNumbers(LottoRepository.generateLotto());
-            user.setLottos(lotto.getNumbers());
+            user.setLottos(sortNumber(lotto.getNumbers()));
         }
+    }
+
+    private static List<Integer> sortNumber(List<Integer> numbers) {
+        List<Integer> list = new ArrayList<>(numbers);
+        Collections.sort(list);
+        return  list;
     }
 
     public static void buyLotteryTickets(User user) {
