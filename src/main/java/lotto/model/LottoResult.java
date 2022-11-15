@@ -1,14 +1,10 @@
 package lotto.model;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class LottoResult {
-
-    private int[] lottoCount = new int[5];
-    private float yield;
-    private int[] winningMoney = {5000, 50000, 1500000, 30000000, 2000000000};
+    private Map<Prize, Integer> lottoCount = new HashMap<>();
+    private double yield;
 
     private List<Integer> numbers;
     private int bonusNumber;
@@ -25,12 +21,14 @@ public class LottoResult {
         this.yield = calculateLottoYield(money);
     }
 
-    private float calculateLottoYield(int money) {
+    private double calculateLottoYield(int money) {
         int earnMoney = 0;
-        for(int i = 0; i < this.lottoCount.length; i ++){
-            earnMoney += lottoCount[i] * winningMoney[i];
+
+        for (Map.Entry<Prize, Integer> entry : lottoCount.entrySet()) {
+            earnMoney += entry.getValue() * entry.getKey().getWinningMoney();
         }
-        return (float) Math.round((float)earnMoney*1000/ money)/10;
+
+        return (double) Math.round((double)earnMoney*1000/ money)/10;
     }
 
     public void calculateLottoCount(List<Integer> lotto){
@@ -39,24 +37,15 @@ public class LottoResult {
 
         int count = 12 - lottoSet.size();
 
-        if(count == 3){ 
-            this.lottoCount[0]++; 
-        } else if (count == 4) {
-            this.lottoCount[1]++;
-        } else if (count == 5 && lotto.contains(this.bonusNumber)) {
-            this.lottoCount[3]++;
-        } else if (count == 5) {
-            this.lottoCount[2]++;
-        } else if (count == 6) {
-            this.lottoCount[4]++;
-        }
+        Prize prize = Prize.get(count, lotto.contains(this.bonusNumber));
+        lottoCount.put(prize, lottoCount.getOrDefault(prize, 0) + 1);
     }
 
-    public int[] getLottoCount() {
+    public Map<Prize, Integer> getLottoCount() {
         return lottoCount;
     }
 
-    public float getYield() {
+    public double getYield() {
         return yield;
     }
 }

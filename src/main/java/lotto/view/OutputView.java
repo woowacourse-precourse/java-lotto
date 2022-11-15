@@ -1,24 +1,25 @@
 package lotto.view;
 
+import lotto.model.Prize;
+
+import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 
 public class OutputView {
-
-    String[] winning = {"3개 일치 (5,000원) - ", "4개 일치 (50,000원) - ", "5개 일치 (1,500,000원) - ",
-            "5개 일치, 보너스 볼 일치 (30,000,000원) - ", "6개 일치 (2,000,000,000원) - "};
-    public void moneyOutput(int lottoAmount){
-        System.out.println(lottoAmount+"개를 구매했습니다.");
+    public void moneyOutput(int lottoAmount) {
+        System.out.println(lottoAmount + "개를 구매했습니다.");
     }
 
-    public void lottoFactoryOutput(int lottoAmout, List<List<Integer>> lottos){
-        for(int i = 0; i < lottoAmout; i++){
+    public void lottoFactoryOutput(int lottoAmout, List<List<Integer>> lottos) {
+        for (int i = 0; i < lottoAmout; i++) {
             lottoOutput(lottos.get(i));
         }
     }
 
-    public void lottoOutput(List<Integer> lotto){
+    public void lottoOutput(List<Integer> lotto) {
         String output = "[" + Integer.valueOf(lotto.get(0));
-        for(int i = 1; i < lotto.size(); i++){
+        for (int i = 1; i < lotto.size(); i++) {
             output += ", " + Integer.valueOf(lotto.get(i));
         }
         output += "]";
@@ -26,11 +27,19 @@ public class OutputView {
         System.out.println(output);
     }
 
-    public void lottoResult(int[] lottoCount, float yield){
+    public void lottoResult(Map<Prize, Integer> lottoCount, double yield) {
         System.out.println("당첨 통계\n" + "---");
-        for(int i = 0; i < lottoCount.length; i++){
-            System.out.println(this.winning[i] + lottoCount[i]+"개");
+        Arrays.stream(Prize.values())
+                .filter(prize -> prize != Prize.NONE)
+                .forEach(prize -> printPrize(prize, lottoCount.getOrDefault(prize, 0)));
+        System.out.printf("총 수익률은 %.1f%%입니다.\n", yield);
+    }
+
+    public void printPrize(Prize prize, int lottoCount) {
+        if (prize.isBonus()) {
+            System.out.printf("%d개 일치, 보너스 볼 일치 (%s원) - %d개\n", prize.getLottoCount(), prize.getWinningMoneyString(), lottoCount);
+            return;
         }
-        System.out.println("총 수익률은 "+yield+"%입니다.");
+        System.out.printf("%d개 일치 (%s원) - %d개\n", prize.getLottoCount(), prize.getWinningMoneyString(), lottoCount);
     }
 }

@@ -22,6 +22,7 @@ public class Application {
 
             LottoResult lottoResult = new LottoResult(money.getMoney(), lottoFactory.getLottos(), lotto.getNumbers(), bonusLotto.getBonusNumber());
             outputView.lottoResult(lottoResult.getLottoCount(), lottoResult.getYield());
+
         } catch (IllegalArgumentException e){
             System.out.println(e.getMessage());
         }
