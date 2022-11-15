@@ -39,4 +39,16 @@ public class LottoResult {
         DecimalFormat formatter = new DecimalFormat("###,###.0");
         return formatter.format((double) totalPrizeMoney * 100 / totalPrice);
     }
+
+    @Override
+    public String toString() {
+        StringBuilder result = new StringBuilder();
+        for (LottoRank lottoRank : totalRank.keySet()) {
+            result.append(String.format("%s - %d개\n",
+                    lottoRank.PRIZE_DESCRIPTION, totalRank.get(lottoRank)));
+        }
+        result.append(String.format("총 수익률은 %s%%입니다.\n", getPriceEarningsRatio()));
+
+        return result.toString();
+    }
 }
