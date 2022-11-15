@@ -19,7 +19,7 @@
   - [x] 숫자 validate - validateWholeNumber()
 - [x] LottoBundle과 당첨 숫자들 비교하기 - compareNumbers()
 ### - WinningPayer 인스턴스 기능
-- [ ] 숫자들의 비교결과를 당첨 내역으로 변환하기
-- [ ] 당첨 결과 알려주기
+- [x] 숫자들의 비교결과를 당첨 내역으로 변환하기
+- [x] 당첨 결과 알려주기
    
 
