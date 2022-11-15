@@ -52,7 +52,7 @@ class ValidatorTest {
         List<Integer> playerNumbers = List.of(1, 2, 3, 4, 5);
 
         // expected
-        assertThatThrownBy(() -> Validator.validatePlayNumbersCount(playerNumbers))
+        assertThatThrownBy(() -> Validator.validateLottoNumbersCount(playerNumbers))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -63,7 +63,7 @@ class ValidatorTest {
         List<Integer> playerNumbers = List.of(1, 2, 3, 4, 5, 6);
 
         // expected
-        Validator.validatePlayNumbersCount(playerNumbers);
+        Validator.validateLottoNumbersCount(playerNumbers);
     }
 
     @DisplayName("로또 번호가 범위 안의 값인지 확인")
@@ -74,8 +74,8 @@ class ValidatorTest {
         int playerNumberNotInRange = 0;
 
         // expected
-        Validator.validatePlayerNumberRange(playerNumber);
-        assertThatThrownBy(() -> Validator.validatePlayerNumberRange(playerNumberNotInRange))
+        Validator.validateLottoNumberRange(playerNumber);
+        assertThatThrownBy(() -> Validator.validateLottoNumberRange(playerNumberNotInRange))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -86,7 +86,7 @@ class ValidatorTest {
         List<Integer> playerNumbers = List.of(1, 2, 3, 4, 5, 46);
 
         // expected
-        assertThatThrownBy(() -> Validator.validatePlayNumbersRange(playerNumbers))
+        assertThatThrownBy(() -> Validator.validateLottoNumbersRange(playerNumbers))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -97,7 +97,7 @@ class ValidatorTest {
         List<Integer> playerNumbers = List.of(1, 2, 3, 4, 5, 45);
 
         // expected
-        Validator.validatePlayNumbersRange(playerNumbers);
+        Validator.validateLottoNumbersRange(playerNumbers);
     }
 
     @DisplayName("당첨 번호에 중복된 값이 있는지 확인 - 따르지 않음")
@@ -107,7 +107,7 @@ class ValidatorTest {
         List<Integer> playerNumbers = List.of(1, 2, 3, 4, 5, 5);
 
         // expected
-        assertThatThrownBy(() -> Validator.validatePlayNumbersDuplication(playerNumbers))
+        assertThatThrownBy(() -> Validator.validateLottoNumbersDuplication(playerNumbers))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -118,7 +118,7 @@ class ValidatorTest {
         List<Integer> playerNumbers = List.of(1, 2, 3, 4, 5, 45);
 
         // expected
-        Validator.validatePlayNumbersDuplication(playerNumbers);
+        Validator.validateLottoNumbersDuplication(playerNumbers);
     }
 
     @DisplayName("보너스 번호가 당첨 번호와 중복되는지 확인 - 중복됨")
