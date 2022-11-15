@@ -6,6 +6,8 @@ import static lotto.InputView.inputBonusNumber;
 import static lotto.InputView.inputPurchase;
 import static lotto.InputView.inputWinLotto;
 import static lotto.Lottos.createRandomLottos;
+import static lotto.utils.Messages.ERROR_DIGIT_MESSAGE;
+import static lotto.utils.Messages.ERROR_DUPLICATION_MESSAGE;
 
 public class LottoController {
 
@@ -17,6 +19,7 @@ public class LottoController {
 
         List<Integer> WinLotto = getWinLotto();
         int bonus = getBonusNumber();
+        isDuplicate(WinLotto,bonus);
 
         printResult(WinLotto, randomLottos, bonus, purchase);
     }
@@ -55,4 +58,9 @@ public class LottoController {
         ResultView.printProfit(rankResult, purchase);
     }
 
+    private void isDuplicate(List<Integer> WinLotto,int bonus) {
+        if(WinLotto.contains(bonus))
+            System.out.println(ERROR_DUPLICATION_MESSAGE);
+            throw new IllegalArgumentException();
+    }
 }
