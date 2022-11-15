@@ -34,6 +34,9 @@ public class LotterySeller {
         if (!Pattern.matches("^[0-9]+$", money)) {
             throw new IllegalArgumentException("[ERROR] 숫자가 아닌 문자가 포함되었습니다.");
         }
+        if (Integer.parseInt(money) < 1000) {
+            throw new IllegalArgumentException("[ERROR] 숫자가 1000보다 낮습니다.");
+        }
     }
 
     public void issueLotto() {
