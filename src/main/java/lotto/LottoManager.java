@@ -10,4 +10,23 @@ public class LottoManager {
         Lotto lotto = new Lotto(numbers);
         return lotto;
     }
+
+    public boolean hasBonusNumber(Lotto lotto, int bonusNumber) {
+        for (int myNum : lotto.getNumbers()) {
+            if (myNum == bonusNumber) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public int getMatchCount(Lotto lotto, List<Integer> winningNumbers) {
+        int matchCount = 0;
+        for (int myNum : lotto.getNumbers()) {
+            if (winningNumbers.contains(myNum)) {
+                matchCount++;
+            }
+        }
+        return matchCount;
+    }
 }
