@@ -1,24 +1,33 @@
 package lotto.domain.vo;
 
+import lotto.enums.ErrorMessage;
+
 public class BuyLotto {
-    private static final String OUTPUT_ERROR = "[ERROR] ";
-    private static final String OUTPUT_ERROR_NOT_UNIT = "1000원 단위로 입력해주세요.";
     private static final int LOTTO_PRICE = 1000;
     private static final int ZERO = 0;
     private final int money;
 
-    public BuyLotto(int money) {
-        moneyValidate(money);
-        this.money = money;
+    public BuyLotto(String money) {
+        this. money = moneyValidate(money);
     }
 
     public int getMoney() {
         return money;
     }
 
-    private void moneyValidate(int money) {
+    private int moneyUnitValidate(int money) {
         if (money % LOTTO_PRICE != ZERO) {
-            throw new IllegalArgumentException(OUTPUT_ERROR + OUTPUT_ERROR_NOT_UNIT);
+            throw new IllegalArgumentException(ErrorMessage.ERROR_NOT_UNIT_MONEY.getErrorMessage());
+        }
+        return money;
+    }
+
+    private int moneyValidate(String money) {
+        try {
+            return moneyUnitValidate(Integer.parseInt(money));
+        }
+        catch(NumberFormatException e) {
+            throw new IllegalArgumentException(ErrorMessage.ERROR_NOT_NUMBER.getErrorMessage());
         }
     }
 

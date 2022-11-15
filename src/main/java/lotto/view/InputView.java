@@ -13,6 +13,10 @@ public class InputView {
         return Console.readLine();
     }
 
+    public static String inputMoney() {
+        return Console.readLine();
+    }
+
     public static int convertToNumber() {
         try {
             return Integer.parseInt(inputToQuestion());

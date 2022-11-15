@@ -7,11 +7,13 @@ import lotto.domain.Lotto;
 import java.util.List;
 import java.util.Map;
 
+import static lotto.view.InputView.inputMoney;
+
 public class OutputView {
 
-    public int outputEnterMoney() {
+    public String outputEnterMoney() {
         System.out.println(OutputMessage.OUTPUT_ENTER_MONEY.getOutput());
-        return InputView.convertToNumber();
+        return inputMoney();
     }
 
     public List<Integer> outputEnterLottoAnswer() {
