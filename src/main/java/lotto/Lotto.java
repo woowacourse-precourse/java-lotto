@@ -218,16 +218,20 @@ class UserInput {
 
     static public int requestBonusNumber() {
         String userInput = Console.readLine();
-        isNumeric(userInput);
+        try {
+            isNumeric(userInput);
+        }
+        catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+        }
 
         return Integer.parseInt(userInput);
     }
 
-    private static void isNumeric(String input) {
+    private static void isNumeric(String input) throws IllegalArgumentException {
         String REGEX = "[0-9]+";
         if(!input.matches(REGEX)) {
             throw new IllegalArgumentException("[ERROR] 입력된 내용이 숫자가 아닙니다.");
-
         }
     }
 }
