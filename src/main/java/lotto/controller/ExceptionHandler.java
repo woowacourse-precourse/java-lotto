@@ -4,7 +4,6 @@ import java.util.Arrays;
 import java.util.regex.Pattern;
 import lotto.constant.ValidationConstant;
 import lotto.constant.ValidationMessage;
-import lotto.model.Lotto;
 
 public class ExceptionHandler {
 
