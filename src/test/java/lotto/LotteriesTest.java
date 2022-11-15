@@ -38,8 +38,8 @@ public class LotteriesTest {
         assertThat(lottoResult.getLottoMatchCountByKey(Match.SIX)).isEqualTo(2);
     }
 
-    @Test
     @DisplayName("결과값 출력 성공")
+    @Test
     void testGetLottoNumbers() {
         //given
         Lotto lotto = new Lotto(List.of(1, 2, 3, 45, 12, 14));

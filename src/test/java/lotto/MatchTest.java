@@ -7,8 +7,8 @@ import org.junit.jupiter.params.provider.CsvSource;
 
 public class MatchTest {
 
-    @ParameterizedTest
     @DisplayName("Match 결과 계산 후 반환 성공")
+    @ParameterizedTest
     @CsvSource({
             "5, false, FIVE",
             "3, true, THREE",

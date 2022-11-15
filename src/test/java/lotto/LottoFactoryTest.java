@@ -9,8 +9,8 @@ import static org.assertj.core.api.Assertions.*;
 
 public class LottoFactoryTest {
 
-    @Test
     @DisplayName("생성자 생성 성공")
+    @Test
     void testNewLottoList() {
         List<Lotto> lottoList = LottoFactory.newLottoList(6);
 

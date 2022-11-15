@@ -28,8 +28,8 @@ class LottoTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
-    @ParameterizedTest
     @DisplayName("당첨 숫자와 비교 성공")
+    @ParameterizedTest
     @CsvSource({
             "1-2-3-4-5-6, 6",
             "2-3-4-5-6-8, 5",
@@ -54,8 +54,8 @@ class LottoTest {
         assertThat(countOfWinningNumbers).isEqualTo(expectedAnswer);
     }
 
-    @ParameterizedTest
     @DisplayName("보너스 숫자 비교 성공")
+    @ParameterizedTest
     @CsvSource({
             "10, true",
             "11, false"

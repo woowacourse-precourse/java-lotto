@@ -6,8 +6,9 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
 public class YieldTest {
-    @ParameterizedTest
+
     @DisplayName("수익률 계산")
+    @ParameterizedTest
     @CsvSource({
             "THREE, 8000, 62.5",
             "THREE, 9000, 55.6"
