@@ -21,8 +21,9 @@ public class Input {
         String winningNumbers=Console.readLine();
         return winningNumberFilter(winningNumbers);
     }
-    public int getBonusNumber(){
+    public int getBonusNumber(List<Integer> winningNumber){
         String bonusNumber=Console.readLine();
+        duplicateCheck(winningNumber,bonusNumber);
         NumberRegex(bonusNumber);
         return NumberRange(bonusNumber);
     }
@@ -33,6 +34,10 @@ public class Input {
             Numbers.add(NumberRange(number));
         }
         return new ArrayList<>(Numbers);
+    }
+    private void duplicateCheck(List<Integer> winningNumber,String bonusNumber){
+        int number =Integer.parseInt(bonusNumber);
+        if(winningNumber.contains(number)) throw new IllegalArgumentException("[ERROR] 입력 값이 당첨 번호와 중복됩니다.");
     }
     private int NumberRange(String number){
         int checkNumber=Integer.parseInt(number);

@@ -3,6 +3,8 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayInputStream;
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class InputTest {
@@ -53,7 +55,7 @@ public class InputTest {
         assertThatThrownBy(() -> {
             command("k");
             Application.main(new String[]{
-                    String.valueOf(new Input().getBonusNumber())
+                    String.valueOf(new Input().getBonusNumber(List.of(1, 2, 3, 4, 5,6)))
             });
         }).hasMessageContaining("[ERROR]");
     }
@@ -63,10 +65,21 @@ public class InputTest {
         assertThatThrownBy(() -> {
             command("0");
             Application.main(new String[]{
-                    String.valueOf(new Input().getBonusNumber())
+                    String.valueOf(new Input().getBonusNumber(List.of(1, 2, 3, 4, 5,6)))
             });
         }).hasMessageContaining("[ERROR]");
     }
+    @Test
+    @DisplayName("보너스 입력 시 당첨 번호와 숫자가 중복될 경우 에러가 발생한다.")
+    void 보너스입력_숫자중복_테스트(){
+        assertThatThrownBy(() -> {
+            command("1");
+            Application.main(new String[]{
+                    String.valueOf(new Input().getBonusNumber(List.of(1, 2, 3, 4, 5,6)))
+            });
+        }).hasMessageContaining("[ERROR]");
+    }
+
     private void command(final String... args) {
         final byte[] buf = String.join("\n", args).getBytes();
         System.setIn(new ByteArrayInputStream(buf));

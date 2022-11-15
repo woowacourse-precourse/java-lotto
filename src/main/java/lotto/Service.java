@@ -17,8 +17,9 @@ public class Service {
         System.out.println("당첨 번호를 입력해 주세요.");
         Lotto lotto=new Lotto(input.getWinningNumbers());
         System.out.println("보너스 번호를 입력해 주세요.");
-        bonusNumber=input.getBonusNumber();
-        //당첨 통계
+        bonusNumber=input.getBonusNumber(lotto.getWinningNumber()); //당첨 번호 중복되는지 확인할 필요있음
+        winning_stats();
+        yield();
     }
     private int cash(){//이름 변경
         System.out.println("구입금액을 입력해 주세요.");
@@ -35,5 +36,11 @@ public class Service {
             Collections.sort(lotto);
             System.out.println(lotto);
         }
+    }
+    private void winning_stats(){
+
+    }
+    private void yield(){
+
     }
 }
