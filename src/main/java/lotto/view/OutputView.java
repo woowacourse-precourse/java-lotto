@@ -13,6 +13,7 @@ public class OutputView {
 
     public static final String WINNING_ANALYSIS = "당첨 통계";
     public static final String LINE = "---";
+    public static final String EARNING_RATES_MESSAGE = "총 수익률은 %.1f%%입니다.";
 
     public static void printLottosHistory(Lottos lottos) {
         printNewLine();
@@ -53,6 +54,7 @@ public class OutputView {
     }
 
     public static void printEarningRates(Double earningRates) {
-        System.out.println(String.format("총 수익률은 %.1f%%입니다.", earningRates));
+        String earningRatesMessage = String.format(EARNING_RATES_MESSAGE, earningRates);
+        System.out.println(earningRatesMessage);
     }
 }
