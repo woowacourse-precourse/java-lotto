@@ -35,9 +35,9 @@ public class LottoMatcherImpl implements LottoMatcher {
             List<Integer> matchedWinningLotto, List<List<Integer>> generatedLottoNumbers, int bonusWinningNumber) {
         List<Integer> result = new ArrayList<>();
 
-        for (int i = 0; i < matchedWinningLotto.size(); i++) {
-            if (matchedWinningLotto.get(i) == 5 &&
-                    generatedLottoNumbers.get(i).contains(bonusWinningNumber)) {
+        for (int index = 0; index < matchedWinningLotto.size(); index++) {
+            if (matchedWinningLotto.get(index) == 5 &&
+                    generatedLottoNumbers.get(index).contains(bonusWinningNumber)) {
                 result.add(1);
             }
         }
