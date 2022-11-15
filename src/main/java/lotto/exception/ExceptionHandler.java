@@ -1,5 +1,6 @@
 package lotto.exception;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -60,5 +61,17 @@ public class ExceptionHandler {
         overlapException(numbers);
     }
 
+    public void getLottoWinnerNumberException(String input) throws IllegalArgumentException {
+        splitResultNoNumberException(input);
+        List<Integer> numbers = new ArrayList<>();
+        for (String number : input.split(",")) {
+            numbers.add(Integer.valueOf(number));
+        }
+        lottoNumberException(numbers);
+        for (int number : numbers) {
+            numberRangeException(number);
+        }
+        overlapException(numbers);
+    }
 
 }
