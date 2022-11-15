@@ -63,6 +63,7 @@
 
 ### LottoRank
 - [x] 당첨 번호와 상금을 정의한 Enum
+- [x] 당첨 번호와 로또 번호의 비교 결과를 통해 Rank를 얻는다.
 
 ### WinningLotto
 - [x] 당첨 번호와 보너스 번호로 생성되는 WinningLotto 클래스
