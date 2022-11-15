@@ -1,6 +1,7 @@
 package lotto.domain.lotto;
 
 import java.util.List;
+import lotto.exception.lotto.LottosEmptyException;
 
 public class Lottos {
 
@@ -17,7 +18,7 @@ public class Lottos {
 
     private void validate(List<Lotto> lottos) {
         if (lottos.isEmpty()) {
-            throw new IllegalArgumentException("[ERROR] 1개 이상의 로또가 포함되어 있어야합니다.");
+            throw new LottosEmptyException();
         }
     }
 

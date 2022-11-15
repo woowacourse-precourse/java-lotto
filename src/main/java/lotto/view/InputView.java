@@ -3,9 +3,10 @@ package lotto.view;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.Arrays;
 import java.util.List;
-import java.util.NoSuchElementException;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
+import lotto.exception.lotto.InvalidFormatException;
+import lotto.exception.lotto.InvalidMoneyFormatException;
 
 public class InputView {
 
@@ -15,8 +16,6 @@ public class InputView {
     private static final String WIN_LOTTO_REGEX = "^\\d+,\\d+,\\d+,\\d+,\\d+,\\d+$";
     private static final String SPLIT_REGEX = ",";
     private static final String GET_BONUS_MESSAGE = "\n보너스 번호를 입력해 주세요.";
-    private static final String INVALID_MONEY_FORMAT_MESSAGE = "[ERROR] 숫자만 입력해주세요. : %s";
-    private static final String INVALID_FORMAT_MESSAGE = "[ERROR] 입력 형식이 올바르지 않습니다. : %s";
 
     public static int getMoneyInput() {
         System.out.println(GET_MONEY_MESSAGE);
@@ -27,7 +26,7 @@ public class InputView {
 
     private static void validate(String input) {
         if (!Pattern.matches(NUMBER_REGEX, input)) {
-            throw new IllegalArgumentException(String.format(INVALID_MONEY_FORMAT_MESSAGE, input));
+            throw new InvalidMoneyFormatException(input);
         }
     }
 
@@ -45,7 +44,7 @@ public class InputView {
 
     private static void validateWinLotto(String input) {
         if (!Pattern.matches(WIN_LOTTO_REGEX, input)) {
-            throw new IllegalArgumentException(String.format(INVALID_FORMAT_MESSAGE, input));
+            throw new InvalidFormatException(input);
         }
     }
 

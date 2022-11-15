@@ -2,7 +2,7 @@ package lotto.domain.lotto;
 
 import java.util.ArrayList;
 import java.util.List;
-import lotto.domain.generator.LottoNumberGenerator;
+import lotto.domain.lotto.generator.LottoNumberGenerator;
 
 public class LottoFactory {
 

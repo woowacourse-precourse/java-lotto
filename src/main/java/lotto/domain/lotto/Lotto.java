@@ -5,6 +5,9 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
+import lotto.exception.lotto.LottoNumberCountException;
+import lotto.exception.lotto.LottoNumberDuplicatedException;
+import lotto.exception.lotto.LottoNumberRangeException;
 
 public class Lotto {
 
@@ -30,17 +33,14 @@ public class Lotto {
 
     private void validate(List<Integer> numbers) {
         if (numbers.size() != SIZE) {
-            throw new IllegalArgumentException(
-                String.format("[ERROR] 로또 번호의 갯수는 6개로 이루어져야만 합니다. : %d", numbers.size()));
+            throw new LottoNumberCountException(numbers.size());
         }
         if (new HashSet<>(numbers).size() != numbers.size()) {
-            throw new IllegalArgumentException(
-                String.format("[ERROR] 로또의 번호는 중첩될수 없습니다. %s", numbers));
+            throw new LottoNumberDuplicatedException(numbers);
         }
         for (Integer number : numbers) {
             if (number > MAX || number < MIN) {
-                throw new IllegalArgumentException(
-                    String.format("[ERROR] 로또 번호는 45보다 크거나 1보다 작을수 없습니다. : %d", number));
+                throw new LottoNumberRangeException(number);
             }
         }
     }
