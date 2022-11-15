@@ -2,6 +2,7 @@ package lotto.view;
 
 import camp.nextstep.edu.missionutils.Console;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -10,7 +11,7 @@ import java.util.stream.Stream;
 
 public class Input {
     public static final String INPUT_MONEY_THOUSAND_ERROR = "[ERROR] 금액이 천원 단위가 아닙니다.";
-    public static final String INPUT_LOTTO_COMMA_ERROR = "[ERROR] , 구분자를 정확히 입력하세요.";
+    public static final String INPUT_PRICE_LOTTO_ERROR = "[ERROR] 당첨 번호를 정확히 입력하세요.";
 
     public static int inputMoney() {
         String money = Console.readLine();
@@ -27,19 +28,18 @@ public class Input {
     }
 
     public static List<Integer> inputPrizeNumbers() {
+        List<Integer> priceNum;
         String numbers = Console.readLine();
-        validateInputLottoComma(numbers);
-        return Stream.of(numbers.split(","))
-                .map(Integer::parseInt)
-                .collect(Collectors.toList());
-    }
 
-    private static void validateInputLottoComma(String numbers){
-        for(int i = 1; i < numbers.length(); i +=2){
-            if(!(numbers.charAt(i) == ',')){
-                throw new IllegalArgumentException(INPUT_LOTTO_COMMA_ERROR);
-            }
+        try {
+            priceNum = Stream.of(numbers.split(","))
+                    .map(Integer::parseInt)
+                    .collect(Collectors.toList());
+        }catch (Exception e){
+            throw new IllegalArgumentException(INPUT_PRICE_LOTTO_ERROR);
         }
+
+        return priceNum;
     }
 
     public static int inputBonusNumber() {
