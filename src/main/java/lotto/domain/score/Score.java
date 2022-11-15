@@ -36,15 +36,19 @@ public class Score {
 
     public String resultMatchCount() {
 
-        if (normal< MIN_COUNT) {
+        if (normal < MIN_COUNT) {
             return MESSAGE_NOTHING;
         }
 
-        if (normal.equals(CHECK_NORMAL_COUNT) && bonus.equals(BONUS_COUNT)) {
+        if (isSecondScore()) {
             return String.format(MESSAGE_N_AMOUNT_CORRECT + MESSAGE_BONUS_CORRECT, normal);
         }
 
         return String.format(MESSAGE_N_AMOUNT_CORRECT, normal);
+    }
+
+    private boolean isSecondScore() {
+        return normal.equals(CHECK_NORMAL_COUNT) && bonus.equals(BONUS_COUNT);
     }
 
     @Override
