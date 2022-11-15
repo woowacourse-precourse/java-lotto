@@ -1,7 +1,7 @@
 package lotto.Controller;
 import lotto.Model.DataProcessing;
 import lotto.View.ErrorUtil;
-import lotto.Model.Lotto;
+import lotto.Lotto;
 import lotto.View.OutputView;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,7 +14,7 @@ public class LottoRaffle {
     private int countdto;
     private int bonusdto;
     private int[] resultwindto;
-    LottoRaffle() {
+    public LottoRaffle() {
         try {
             readyMoney();
             readyLottoNumber();

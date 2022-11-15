@@ -1,7 +1,6 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
-import lotto.Controller.Application;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
