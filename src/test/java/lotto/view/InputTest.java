@@ -29,4 +29,15 @@ class InputTest {
         assertThatThrownBy(Input::inputWinningNumbers)
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @DisplayName("입력 된 당첨 번호가 숫자가 아닐 경우 예외가 발생한다.")
+    @Test
+    void validate() {
+        String input = "a,b,c,d,e,f";
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+
+        assertThatThrownBy(Input::inputWinningNumbers)
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
