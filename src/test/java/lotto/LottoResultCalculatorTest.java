@@ -78,6 +78,7 @@ class LottoResultCalculatorTest {
         long winningAmount = 100_000_000;
         int money = 133_000;
 
-        assertThat(lottoResultCalculator.calRateOfReturn(winningAmount, money)).isEqualTo((double) winningAmount / money);
+        assertThat(lottoResultCalculator.calRateOfReturn(winningAmount, money)).isEqualTo(
+                ((double) winningAmount / money) * 100);
     }
 }

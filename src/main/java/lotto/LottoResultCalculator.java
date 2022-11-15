@@ -30,7 +30,7 @@ public class LottoResultCalculator {
     }
 
     public double calRateOfReturn(long winningAmount, int money) {
-        return (double) winningAmount / money;
+        return ((double) winningAmount / money) * 100;
     }
 
     public long calWinningAmount(EnumMap<Rank, Integer> ranks) {
