@@ -5,7 +5,9 @@ import java.util.List;
 
 public class Lotto {
     private static int LOTTO_NUMBER_LIMIT = 6;
-    private static int NO_MATCH_COUNT = 0;
+
+    private static String VALID_SIZE_RANGE = "[ERROR] 6개의 숫자만 허용됩니다.";
+    private static String VALID_DUPLICATE_NUMBER = "[ERROR] 중복된 숫자가 존재합니다.";
 
     private final List<Integer> numbers;
 
@@ -13,7 +15,8 @@ public class Lotto {
         validate(numbers);
         this.numbers = numbers;
     }
-    public int compareWinNum(WinningNumber winningNumber){
+
+    public int compareWinNum(WinningNumber winningNumber) {
         List<Integer> match = new ArrayList<>(numbers);
         match.retainAll(winningNumber.copyWinningNumber());
         return match.size(); //size가 당첨된 갯수
@@ -26,13 +29,14 @@ public class Lotto {
         return false;
     }
 
-    public boolean contains(int number){
-        if(numbers.contains(number)){
+    public boolean contains(int number) {
+        if (numbers.contains(number)) {
             return true;
         }
         return false;
     }
-    public List<Integer> copyNumbers(){
+
+    public List<Integer> copyNumbers() {
         return List.copyOf(numbers);
     }
 
@@ -40,14 +44,16 @@ public class Lotto {
         validLottoFalseRange(numbers);
         validCreateLottoByDuplicatedNumber(numbers);
     }
-    private void validLottoFalseRange(List<Integer> numbers){
+
+    private void validLottoFalseRange(List<Integer> numbers) {
         if (numbers.size() != LOTTO_NUMBER_LIMIT) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(VALID_SIZE_RANGE);
         }
     }
+
     private void validCreateLottoByDuplicatedNumber(List<Integer> numbers) {
         if (numbers.size() != numbers.stream().distinct().count()) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(VALID_DUPLICATE_NUMBER);
         }
     }
 

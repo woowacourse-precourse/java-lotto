@@ -1,5 +1,9 @@
 package lotto;
 
+import camp.nextstep.edu.missionutils.Console;
+
+import java.util.NoSuchElementException;
+
 import static java.lang.Integer.parseInt;
 
 public class LottoMoney {
@@ -23,10 +27,9 @@ public class LottoMoney {
         validNotMultipliesPrice(inputMoney);
     }
     private void validInputNotNumber(String inputMoney) {
-        try {
-            parseInt(inputMoney);
-        } catch (Exception ex) {
-            throw new IllegalArgumentException(VALID_INPUT_NOT_NUMBER);
+        if(!inputMoney.chars().allMatch(Character::isDigit)){
+            System.out.println(Message.VALID_INPUT_PRICE.getMessage());
+            throw new IllegalArgumentException(Message.VALID_INPUT_PRICE.getMessage());
         }
     }
 
@@ -36,7 +39,7 @@ public class LottoMoney {
         }
     }
     private void validNotMultipliesPrice(String inputMoney){
-        if(parseInt(inputMoney) % LottoMoney.LOTTO_PRICE != 0){
+        if (parseInt(inputMoney) % LottoMoney.LOTTO_PRICE != 0) {
             throw new IllegalArgumentException(VALID_NOT_MULTIPLIES_PRICE);
         }
     }

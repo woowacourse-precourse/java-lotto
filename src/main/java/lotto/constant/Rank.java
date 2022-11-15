@@ -15,12 +15,13 @@ public enum Rank {
         this.matchCount = matchCount;
         this.reward = reward;
     }
-    public static Rank judgeRank(int matchCount, boolean containBonus){
-        if(matchCount == THIRD_PLACE.matchCount && !containBonus) {
+
+    public static Rank judgeRank(int matchCount, boolean containBonus) {
+        if (matchCount == THIRD_PLACE.matchCount && !containBonus) {
             return THIRD_PLACE;
         }
-        for(Rank value: Rank.values()){
-            if(value.matchCount == matchCount){
+        for (Rank value : Rank.values()) {
+            if (value.matchCount == matchCount) {
                 return value;
             }
         }

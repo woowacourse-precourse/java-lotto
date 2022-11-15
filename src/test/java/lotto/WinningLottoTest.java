@@ -13,7 +13,7 @@ public class WinningLottoTest {
     @Test
     @DisplayName("보너스 번호가 당첨 번호에 이미 있을 경우 예외 발생")
     void 보너스_번호_중복_예외_테스트(){
-        List<Integer> lottoNums = Arrays.asList(1,2,3,4,5,6);
+        List<Integer> lottoNums = Arrays.asList(1, 2, 3, 4, 5, 6);
         Assertions.assertThatThrownBy(()->new WinningNumber(new Lotto(lottoNums),6)).isInstanceOf(IllegalArgumentException.class);
     }
 

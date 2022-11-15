@@ -36,7 +36,7 @@ public class WinningNumber {
     }
 
     private void validBonusNumberRange(int bonusNumber) {
-        if (bonusNumber < LOTTO_NUMBER_START || bonusNumber > LOTTO_NUMBER_END){
+        if (bonusNumber < LOTTO_NUMBER_START || bonusNumber > LOTTO_NUMBER_END) {
             throw new IllegalArgumentException(BONUS_NUMBER_OUT_OF_NUMBER_RANGE);
         }
     }
