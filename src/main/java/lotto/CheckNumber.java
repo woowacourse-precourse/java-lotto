@@ -44,4 +44,19 @@ public class CheckNumber {
         }
         return price;
     }
+    static void viewResult(Lotto lotto, List<List<Integer>> lottoNums, int bonus,int money){
+        List<Integer> CountWinLottos = new ArrayList<Integer>(Arrays.asList(0,0,0,0,0));
+        float result;
+        int price = 0;
+        List<Integer> temp;
+
+        for (int i = 0;i < lottoNums.size();i++){
+            temp = lottoNums.get(i);
+            result = winCheckNum(lotto,temp,bonus);
+            CountWinLottos = setWinLottos(CountWinLottos,result);
+            price = sum_price(price,result);
+        }
+        output.outputResult(CountWinLottos);
+        output.ownPrice(price,money);
+    }
 }
