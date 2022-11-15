@@ -10,14 +10,23 @@ import lotto.view.View;
 public class Money {
 
     private final int money;
+    private static final int ZERO = 0;
 
     public Money(int money) {
+        validatePurchase(money);
         validatePrice(money);
         this.money = money;
     }
 
     public int getMoney() {
         return this.money;
+    }
+
+    private void validatePurchase(int money) {
+        if (money == ZERO) {
+            View.printNotPurchase();
+            throw new IllegalArgumentException();
+        }
     }
 
     private void validatePrice(int money) {
