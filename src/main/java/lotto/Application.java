@@ -15,6 +15,12 @@ public class Application {
     final static int min_number = 1;
     final static int max_number = 45;
     final static int lotto_size = 6;
+    static String hit3 = "3개 일치 (5,000원) - ";
+    static String hit4 = "4개 일치 (50,000원) - ";
+    static String hit5 = "5개 일치 (1,500,000원) - ";
+    static String hit5_bonus = "5개 일치, 보너스 볼 일치 (30,000,000원) - ";
+    static String hit6 = "6개 일치 (2,000,000,000원) - ";
+    static List<String> keys = List.of(hit3,hit4,hit5,hit5_bonus,hit6);
     public static void main(String[] args) {
         String inputmoney = InputMoney();
         int lotto_count = CheckUnit(inputmoney);
@@ -22,10 +28,14 @@ public class Application {
         PrintLotto(lottos);
         List<Integer> win_numbers = InputNumber();
         int bonus_number = BonusNumber();
-
+        MakeMap(keys);
         for(Lotto lotto : lottos){
             int count = CompareNumber(lotto,win_numbers);
             boolean bonus = CompareBonus(lotto, bonus_number);
+            String win = CountWin(count,bonus);
+            if(win != null){
+                win_list.put(win,win_list.get(win) + 1);
+            }
         }
     }
 
@@ -92,9 +102,28 @@ public class Application {
         }
         return false;
     }
-
-    public static List<Integer> CountWin(){
-
+    public static void MakeMap(List<String> keys){
+        for(String key : keys){
+            win_list.put(key,0);
+        }
+    }
+    public static String CountWin(int count, boolean bonus){
+        if (count == 3){
+            return hit3;
+        }
+        if (count == 4){
+            return hit4;
+        }
+        if (count == 5){
+            if (bonus == true){
+                return hit5_bonus;
+            }
+            return hit5;
+        }
+        if (count == 6){
+            return hit6;
+        }
+        return null;
     }
 
     public static void PrintWin(){
