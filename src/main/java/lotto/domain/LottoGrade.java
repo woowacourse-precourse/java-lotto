@@ -1,7 +1,6 @@
 package lotto.domain;
 
 public enum LottoGrade {
-
     fifth(5_000, 3),
     fourth(50_000, 4),
     third(1_500_000, 5),
@@ -17,7 +16,6 @@ public enum LottoGrade {
     }
 
     public static LottoGrade getGrade(int correctCount, boolean correctBonus) {
-
         for (LottoGrade lottoGrade : values()) {
             if (correctCount == 5 && correctBonus) {
                 return LottoGrade.second;

@@ -10,7 +10,7 @@ public class Lotto {
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
-        validate(numbers);
+        validateNumberSize(numbers);
         checkUniqueNumbers(numbers);
         for (Integer number : numbers) {
             checkNumberInRange(number);
@@ -18,15 +18,11 @@ public class Lotto {
         this.numbers = numbers;
     }
 
-    private void validate(List<Integer> numbers) {
+    private void validateNumberSize(List<Integer> numbers) {
         if (numbers.size() != 6) {
             ExceptionMessage.inputNumberSizeError();
             throw new IllegalArgumentException();
         }
-    }
-
-    public List<Integer> getNumbers() {
-        return numbers;
     }
 
     public void checkUniqueNumbers(List<Integer> numbers) {
@@ -52,14 +48,18 @@ public class Lotto {
     }
 
     public int compareToWinningLotto(WinningLotto winningLotto) {
-        int result = (int) winningLotto.getNumbers().stream()
+        return (int) winningLotto.getNumbers().stream()
                 .filter(number -> numbers.stream()
                         .anyMatch(Predicate.isEqual(number)))
                 .count();
-        return result;
+
     }
 
     public boolean compareToBonusNumber(WinningLotto winningLotto) {
         return numbers.contains(winningLotto.getBonusNumber());
+    }
+
+    public List<Integer> getNumbers() {
+        return numbers;
     }
 }
