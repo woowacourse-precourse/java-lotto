@@ -30,7 +30,7 @@ public class RandomLotto {
     }
 
     //6개의 1부터 45까지 서로 다른 수로 이루어진 랜덤 숫자를 생성하는 메소드
-    public List<Integer> setRandomLotto() {
+    private List<Integer> setRandomLotto() {
         return Randoms.pickUniqueNumbersInRange(1, 45, 6);
     }
 }
