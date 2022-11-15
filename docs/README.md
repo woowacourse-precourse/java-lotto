@@ -7,7 +7,7 @@
       - [x] 금액이 숫자로 구성되어있지 않으면 예외 처리한다. - Buyer#validConsistByNumber()  
     - [x] 금액에 따라 로또를 생성(구매)한다. Buyer#buyLotto()
 - [x] 문자열로 된 당첨 번호 를 유효성 검사후 알맞은 값으로 변환해서 반환한다.- LottoWinningNumber#winningNumberConversion()  
-- [ ] 문자열로 된 보너스 번호를 유효성 검사후 알맞은 값으로 변환해서 반환한다.- LottoWinningNumber#bonusNumberConversion()  
+- [x] 문자열로 된 보너스 번호를 유효성 검사후 알맞은 값으로 변환해서 반환한다.- LottoWinningNumber#bonusNumberConversion()  
     - [x] 문자들이 숫자로되어있지 않으면 예외 처리한다. - LottoWinningNumber#validConsistNumbers()    
     - [x] 문자가 숫자로 되어있지 않으면 예외 처리한다. - LottoWinningNumber#validConsistOneNumber()
     - [x] 당첨 번호가 6개로 되어있지 않으면 예외 처리한다. - LottoWinningNumber#validSixNumber()    

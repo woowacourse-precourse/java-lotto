@@ -5,6 +5,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class LottoWinningNumber {
+    public int bonusNumberConversion(String inputBonusNumber) {
+        int bonusNumber;
+
+        validConsistOneNumber(inputBonusNumber);
+        bonusNumber = Integer.parseInt(inputBonusNumber);
+        validOneNumberRange(bonusNumber);
+
+        return bonusNumber;
+    }
+
     public List<Integer> winningNumberConversion(String inputWinningNumber) {
         List<Integer> winningNumber = new ArrayList<>();
         String[] separate = separateByComma(inputWinningNumber);
