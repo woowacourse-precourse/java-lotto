@@ -22,7 +22,7 @@ public class Customer {
 	public int getAmount() {
 		return amount;
 	}
-
+	
 	private boolean validateAmount(String amount) {
 		if (!Util.isInteger(amount) || Integer.parseInt(amount) % UNIT != 0)
 			throw (new IllegalArgumentException());
@@ -32,5 +32,10 @@ public class Customer {
 	public int getLottoCount() {
 		return amount / UNIT;
 	}
+	
+	public void printLottoCount() {
+		System.out.println(getLottoCount()+CustomerMessage.PRINT_LOTTO_COUNT.getMessage());
+	}
+
 
 }
