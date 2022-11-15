@@ -47,6 +47,72 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    void 정렬_테스트() {
+        assertRandomUniqueNumbersInRangeTest(
+                () -> {
+                    run("8000", "1,2,3,4,5,6", "7");
+                    assertThat(output()).contains(
+                            "8개를 구매했습니다.",
+                            "[1, 2, 3, 41, 42, 43]",
+                            "[1, 2, 3, 4, 32, 38]",
+                            "[1, 3, 5, 6, 21, 44]",
+                            "[1, 2, 3, 4, 5, 7]",
+                            "[1, 2, 3, 4, 5, 6]",
+                            "[7, 11, 30, 40, 42, 43]",
+                            "[2, 13, 22, 32, 38, 45]",
+                            "[1, 3, 5, 14, 22, 45]",
+                            "3개 일치 (5,000원) - 2개",
+                            "4개 일치 (50,000원) - 2개",
+                            "5개 일치 (1,500,000원) - 0개",
+                            "5개 일치, 보너스 볼 일치 (30,000,000원) - 1개",
+                            "6개 일치 (2,000,000,000원) - 1개",
+                            "총 수익률은 25,376,375.0%입니다."
+                    );
+                },
+                List.of(1, 2, 3, 41, 42, 43),
+                List.of(1, 2, 3, 4, 32, 38),
+                List.of(1, 3, 5, 21, 6, 44),
+                List.of(1, 7, 3, 4, 5, 2),
+                List.of(1, 3, 2, 4, 5, 6),
+                List.of(7, 11, 30, 40, 42, 43),
+                List.of(2, 13, 22, 32, 38, 45),
+                List.of(1, 3, 5, 14, 22, 45)
+        );
+    }
+
+    @Test
+    void 금액_예외_테스트() {
+        assertSimpleTest(() -> {
+            runException("8100");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
+    @Test
+    void 금액_예외_테스트_2() {
+        assertSimpleTest(() -> {
+            runException("0");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
+    @Test
+    void 금액_예외_테스트_3() {
+        assertSimpleTest(() -> {
+            runException("100");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
+    @Test
+    void 보너스_번호_예외_테스트() {
+        assertSimpleTest(() -> {
+            runException("8000", "1,2,3,4,5,6", "6");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
+    @Test
     void 예외_테스트() {
         assertSimpleTest(() -> {
             runException("1000j");
