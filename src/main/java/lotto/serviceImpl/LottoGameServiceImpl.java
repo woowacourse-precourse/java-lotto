@@ -1,4 +1,4 @@
-package lotto;
+package lotto.serviceImpl;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
@@ -6,40 +6,38 @@ import lotto.domain.Lotto;
 import lotto.domain.LottoValues;
 import lotto.domain.User;
 import lotto.domain.Winning;
+import lotto.service.GameService;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class LottoGame {
+public class LottoGameServiceImpl implements GameService {
     private static final int percentCalculation = 100;
 
+    @Override
     public void startGame() {
 
         User user = new User();
 
-        try {
-            System.out.println("구입금액을 입력해 주세요.");
-            user.lottoPurchaseAmount(userInput());
+        System.out.println("구입금액을 입력해 주세요.");
+        user.lottoPurchaseAmount(userInput());
 
-            int lottoAmount = user.getPurchaseAmount();
-            System.out.println(lottoAmount * LottoValues.LOTTO_AMOUNT.getValue() + "\n");
-            System.out.println(lottoAmount + "개를 구매했습니다.");
-            List<Lotto> winningNumbers = makeLottoWinningNumbers(lottoAmount);
-            printWinningLottoNumber(winningNumbers);
+        int lottoAmount = user.getPurchaseAmount();
+        System.out.println(lottoAmount * LottoValues.LOTTO_AMOUNT.getValue() + "\n");
+        System.out.println(lottoAmount + "개를 구매했습니다.");
+        List<Lotto> winningNumbers = makeLottoWinningNumbers(lottoAmount);
+        printWinningLottoNumber(winningNumbers);
 
-            System.out.println("\n당첨 번호를 입력해 주세요.");
-            Lotto userNumber = new Lotto(userInput());
-            user.setUserNumbers(userNumber);
+        System.out.println("\n당첨 번호를 입력해 주세요.");
+        Lotto userNumber = new Lotto(userInput());
+        user.setUserNumbers(userNumber);
 
-            System.out.println("\n보너스 번호를 입력해 주세요.");
-            int bonusNumber = user.isValidBonusNumber(userInput());
+        System.out.println("\n보너스 번호를 입력해 주세요.");
+        int bonusNumber = user.isValidBonusNumber(userInput());
 
-            System.out.println("\n당첨 통계\n" + "---");
-            confirmWinningCount(winningNumbers, userNumber, bonusNumber);
-            printEarnRate(lottoAmount);
-        } catch (IllegalArgumentException e){
-            System.out.println(e.getMessage());
-        }
+        System.out.println("\n당첨 통계\n" + "---");
+        confirmWinningCount(winningNumbers, userNumber, bonusNumber);
+        printEarnRate(lottoAmount);
     }
 
     private String userInput() {

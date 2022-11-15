@@ -1,6 +1,7 @@
 package lotto;
 
 import lotto.domain.Lotto;
+import lotto.serviceImpl.LottoGameServiceImpl;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -29,7 +30,7 @@ class LottoTest {
         // given
         int input = 6;
         int expectSize = 6;
-        List<Lotto> result = new LottoGame().makeLottoWinningNumbers(input);
+        List<Lotto> result = new LottoGameServiceImpl().makeLottoWinningNumbers(input);
 
         // when, then
         assertThat(result.size()).isEqualTo(expectSize);

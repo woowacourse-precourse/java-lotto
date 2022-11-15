@@ -2,6 +2,7 @@ package lotto;
 
 import lotto.domain.Lotto;
 import lotto.domain.Winning;
+import lotto.serviceImpl.LottoGameServiceImpl;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -23,7 +24,7 @@ public class RankTest {
         int expect = 1;
 
         // when
-        new LottoGame().confirmWinningCount(winningNumbers, userNumber, bonusNumber);
+        new LottoGameServiceImpl().confirmWinningCount(winningNumbers, userNumber, bonusNumber);
 
         // then
         assertThat(Winning.THREE.getCount()).isEqualTo(expect);
@@ -41,7 +42,7 @@ public class RankTest {
         int expect = 1;
 
         // when
-        new LottoGame().confirmWinningCount(winningNumbers, userNumber, bonusNumber);
+        new LottoGameServiceImpl().confirmWinningCount(winningNumbers, userNumber, bonusNumber);
 
         // then
         assertThat(Winning.FOUR.getCount()).isEqualTo(expect);
@@ -59,7 +60,7 @@ public class RankTest {
         int expect = 1;
 
         // when
-        new LottoGame().confirmWinningCount(winningNumbers, userNumber, bonusNumber);
+        new LottoGameServiceImpl().confirmWinningCount(winningNumbers, userNumber, bonusNumber);
 
         // then
         assertThat(Winning.FIVE.getCount()).isEqualTo(expect);
@@ -77,7 +78,7 @@ public class RankTest {
         int expect = 1;
 
         // when
-        new LottoGame().confirmWinningCount(winningNumbers, userNumber, bonusNumber);
+        new LottoGameServiceImpl().confirmWinningCount(winningNumbers, userNumber, bonusNumber);
 
         // then
         assertThat(Winning.FIVE_AND_BONUS.getCount()).isEqualTo(expect);
@@ -95,7 +96,7 @@ public class RankTest {
         int expect = 1;
 
         // when
-        new LottoGame().confirmWinningCount(winningNumbers, userNumber, bonusNumber);
+        new LottoGameServiceImpl().confirmWinningCount(winningNumbers, userNumber, bonusNumber);
 
         // then
         assertThat(Winning.SIX.getCount()).isEqualTo(expect);
