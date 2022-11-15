@@ -1,7 +1,5 @@
 package lotto;
 
-import java.util.List;
-
 public enum LottoResult {
     FIRST("6개 일치", 2000000000),
     SECOND("5개 일치, 보너스 볼 일치", 30000000),
@@ -26,24 +24,7 @@ public enum LottoResult {
         return prize;
     }
 
-    public static LottoResult getRanking(Lotto lotto, int[] winningNumbers, int bonusNumber) {
-        final List<Integer> numbers = lotto.getNumbers();
-        int correct = 0;
-        for (int winningNumber : winningNumbers) {
-            if (numbers.contains(winningNumber)) {
-                correct++;
-            }
-        }
-        boolean bonus = false;
-        if (correct == 5) {
-            if (numbers.contains(bonusNumber)) {
-                bonus = true;
-            }
-        }
-        return LottoResult.checkRanking(correct, bonus);
-    }
-
-    private static LottoResult checkRanking(int correct, boolean bonus) {
+    public static LottoResult checkRanking(int correct, boolean bonus) {
         if (correct == 6) {
             return LottoResult.FIRST;
         }
