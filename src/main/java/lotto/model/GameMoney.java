@@ -1,6 +1,6 @@
 package lotto.model;
 
-import lotto.views.Errors;
+import lotto.utils.Errors;
 import lotto.utils.Rules;
 
 public class GameMoney {

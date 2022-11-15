@@ -1,4 +1,4 @@
-package lotto.views;
+package lotto.utils;
 
 public enum Errors {
     ERROR_GAME_MONEY_AVAILABLE("[ERROR] 로또 1매 가격은 1000원입니다. 1000원 단위를 맞춰주세요."),

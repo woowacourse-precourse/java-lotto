@@ -1,6 +1,7 @@
 package lotto;
 
-import lotto.views.Print;
+import lotto.controller.LottoHandler;
+import lotto.view.Print;
 
 public class Application {
     public static void main(String[] args) {

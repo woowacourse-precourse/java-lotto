@@ -1,4 +1,4 @@
-package lotto.views;
+package lotto.view;
 
 import lotto.model.Lotto;
 import lotto.model.Rank;

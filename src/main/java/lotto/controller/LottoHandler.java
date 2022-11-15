@@ -1,11 +1,11 @@
-package lotto;
+package lotto.controller;
 
 import lotto.model.Judgment;
 import lotto.model.RankCounter;
 import lotto.model.User;
 import lotto.model.WinningNumbers;
-import lotto.views.Input;
-import lotto.views.Print;
+import lotto.utils.Input;
+import lotto.view.Print;
 
 import java.util.List;
 
