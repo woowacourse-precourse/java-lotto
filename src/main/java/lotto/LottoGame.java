@@ -194,8 +194,11 @@ public class LottoGame {
         double yieldRate = 0;
 
         for(Rank rank : result.keySet()){
-            yieldRate += (double)((rank.getWinningMoney()) / (lottoAmount * TICKET_PRICE)) * result.get(rank) * PERCENTAGE;
+            yieldRate += (double)(rank.getWinningMoney()) * result.get(rank);
         }
+        yieldRate = (yieldRate / (lottoAmount * TICKET_PRICE)) * PERCENTAGE;
+
+
         System.out.println("총 수익률은 " + String.format("%.1f", yieldRate) + "%입니다.");
     }
 }
