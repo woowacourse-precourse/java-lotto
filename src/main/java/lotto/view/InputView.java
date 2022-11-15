@@ -6,7 +6,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static lotto.support.ErrorMessage.PARSE_ERROR_MESSAGE;
+import static lotto.support.ErrorMessage.PARSE_ERROR;
 
 public class InputView {
 
@@ -26,7 +26,7 @@ public class InputView {
         try {
             return Integer.parseInt(input);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException(PARSE_ERROR_MESSAGE);
+            throw new IllegalArgumentException(PARSE_ERROR);
         }
     }
 
@@ -49,7 +49,7 @@ public class InputView {
 
     private static void validateWinningNumbersInput(String input) {
         if (input.endsWith(DELIMITER)) {
-            throw new IllegalArgumentException(PARSE_ERROR_MESSAGE);
+            throw new IllegalArgumentException(PARSE_ERROR);
         }
     }
 

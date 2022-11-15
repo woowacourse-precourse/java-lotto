@@ -11,7 +11,7 @@ import static lotto.support.ErrorMessage.INVALID_NUMBER_COUNT_ERROR;
 import static lotto.support.ErrorMessage.NEGATIVE_MONEY_ERROR;
 import static lotto.support.ErrorMessage.NOT_DIVIDED_BY_LOTTO_PRICE_ERROR;
 import static lotto.support.ErrorMessage.OUT_OF_RANGE_NUMBER_ERROR;
-import static lotto.support.ErrorMessage.PARSE_ERROR_MESSAGE;
+import static lotto.support.ErrorMessage.PARSE_ERROR;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
@@ -22,7 +22,7 @@ class ApplicationExceptionTest extends NsTest {
     void 로또_번호가_숫자가_아니면_예외가_발생한다() {
         assertSimpleTest(() -> {
             run("1000", "1,2,3,asdf,5,6,7");
-            assertThat(output()).contains(ERROR_MESSAGE + " " + PARSE_ERROR_MESSAGE
+            assertThat(output()).contains(ERROR_MESSAGE + " " + PARSE_ERROR
             );
         });
     }
@@ -31,7 +31,7 @@ class ApplicationExceptionTest extends NsTest {
     void 구입_금액이_숫자가_아니면_예외가_발생한다() {
         assertSimpleTest(() -> {
             run("asdf");
-            assertThat(output()).contains(ERROR_MESSAGE + " " + PARSE_ERROR_MESSAGE
+            assertThat(output()).contains(ERROR_MESSAGE + " " + PARSE_ERROR
             );
         });
     }
@@ -40,7 +40,7 @@ class ApplicationExceptionTest extends NsTest {
     void 보너스_번호가_숫자가_아니면_예외가_발생한다() {
         assertSimpleTest(() -> {
             run("1000", "1,2,3,4,5,6", "asdf");
-            assertThat(output()).contains(ERROR_MESSAGE + " " + PARSE_ERROR_MESSAGE
+            assertThat(output()).contains(ERROR_MESSAGE + " " + PARSE_ERROR
             );
         });
     }
