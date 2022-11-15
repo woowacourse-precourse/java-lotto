@@ -23,5 +23,7 @@ public enum Rank {
     public void printRank(int count) {
         System.out.println(matchCount + winnings + " - " + count + "개");
     }
-
+    public static List<Rank> getLottoRanksDesc() {
+        return List.of(FIFTH, FOURTH, THIRD, SECOND, FIRST);
+    }
 }
