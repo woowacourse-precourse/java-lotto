@@ -1,9 +1,6 @@
 package lotto.controller;
 
-import lotto.domain.Lotto;
-import lotto.domain.UserLotto;
-import lotto.domain.WinningLotto;
-import lotto.domain.WinningResult;
+import lotto.domain.*;
 import lotto.util.InputChecker;
 import lotto.view.InputView;
 import lotto.view.OutputView;
@@ -28,7 +25,7 @@ public class LottoGame {
     }
     public void startGame() throws IllegalArgumentException{
         getMoneyInput();
-        getLottoWinningNumberInput();
+        getLottoNumberInput();
         winningResult.calcCorrectCountLottos(userLotto, winningLotto);
         outputView.printLottoResultAll(winningResult);
         outputView.printRateOfReturn(winningResult, userLotto.getMoney());
@@ -41,8 +38,19 @@ public class LottoGame {
             outputView.printLottoNumbersAll(userLotto.getLottos());
         }
     }
-    public void getLottoWinningNumberInput() throws IllegalArgumentException {
+    public void getLottoNumberInput() throws IllegalArgumentException {
+        Lotto winningLottoNumbers=getLottoWinningNumbersInput();
+
+        int bonus=getBonusNumberInput(winningLottoNumbers);
+        if(bonus!=-1){
+            winningLotto=new WinningLotto(winningLottoNumbers, bonus);
+        }
+    }
+    public Lotto getLottoWinningNumbersInput() throws IllegalArgumentException{
         String input=inputView.inputWinningNumber();
+        if(input.contains(" ")){
+            throw new IllegalArgumentException(ErrorMessage.INPUT_LOTTO_NUMBERS_CONTAIN_BLANK.print());
+        }
         List<String> inputWinningLottoNumbers = Arrays.asList(input.split(","));
         List<Integer> changeStringToIntegerLottoNumbers=new ArrayList<>();
         if(inputChecker.checkInputWinningLottoNumbersIsNumeric(inputWinningLottoNumbers)){
@@ -50,11 +58,7 @@ public class LottoGame {
                 changeStringToIntegerLottoNumbers.add(Integer.parseInt(number));
             }
         }
-        Lotto winningLottoNumbers=new Lotto(changeStringToIntegerLottoNumbers);
-        int bonus=getBonusNumberInput(winningLottoNumbers);
-        if(bonus!=-1){
-            winningLotto=new WinningLotto(winningLottoNumbers, bonus);
-        }
+        return new Lotto(changeStringToIntegerLottoNumbers);
     }
     public Integer getBonusNumberInput(Lotto winningLotto) throws IllegalArgumentException{
         String input=inputView.inputBonusNumber();
