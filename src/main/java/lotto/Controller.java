@@ -79,7 +79,7 @@ public class Controller {
         view.printBuyLotto(howMany);
     }
 
-    private void showLottos(){
+    public void showLottos(){
         for (Lotto lotto : user.getLottos()) {
             List<Integer> numbers = lotto.getNumbers();
             numbers.sort(Comparator.naturalOrder());
