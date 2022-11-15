@@ -12,10 +12,14 @@ import static lotto.LottoConstant.WINNING_LOTTO_NUMBER_INPUT_IS_NOT_MATCH_REGEX_
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 import lotto.domain.Lotto;
+import lotto.domain.Result;
 
 public class LottoService {
 
@@ -83,5 +87,26 @@ public class LottoService {
             throw new IllegalStateException(BONUS_NUMBER_INPUT_IS_NOT_IN_RANGE_ERROR_MESSAGE);
         }
         return Integer.parseInt(input);
+    }
+
+    public static Map<Result, Integer> getWinningPoint(List<Lotto> lottoNumbers, Lotto winningLottoNumber,
+                                                       int bonusNumber) {
+        Map<Result, Integer> resultPoints = new HashMap<>();
+        Arrays.stream(Result.values()).forEach(result -> resultPoints.put(result, 0));
+        for (Lotto lottoNumber : lottoNumbers) {
+            int winPoint = (int) lottoNumber.getNumbers().stream()
+                    .filter(number -> winningLottoNumber.getNumbers().contains(number))
+                    .count();
+            boolean bonusPoint = lottoNumber.getNumbers().contains(bonusNumber);
+
+            Optional<Result> optionalResult = Arrays.stream(Result.values())
+                    .filter(winningPoint -> winningPoint.isWin(winPoint, bonusPoint)).findAny();
+            if (optionalResult.isEmpty()) {
+                continue;
+            }
+            Result result = optionalResult.get();
+            resultPoints.put(result, resultPoints.get(result) + 1);
+        }
+        return resultPoints;
     }
 }
