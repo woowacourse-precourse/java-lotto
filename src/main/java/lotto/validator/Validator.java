@@ -12,12 +12,18 @@ public class Validator {
         }
     }
 
-    public static void checkWinningNumber(String winningNumberInput) {
+    public static void checkWinningNumberInputForm(String winningNumberInput) {
         if (winningNumberInput.contains(",") == false) {
             throw new IllegalArgumentException("[ERROR] 당첨 번호를 쉼표로 구분해주세요.");
         } else if (winningNumberInput.contains(" ") == true) {
             throw new IllegalArgumentException("[ERROR] 공백을 포함할 수 없습니다.");
         }
+    }
+
+    public static void checkWinningNumber(List<Integer> numbers) {
+        checkWinningNumberCount(numbers);
+        checkUniqueNumber(numbers);
+        checkNumberRange(numbers);
     }
 
     public static void checkWinningNumberCount(List<Integer> winningNumber) {

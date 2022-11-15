@@ -21,16 +21,14 @@ public class Input {
     public List getWinningNumber() {
         System.out.println("당첨 번호를 입력해 주세요.");
         String winningNumberInput = Console.readLine();
-        Validator.checkWinningNumber(winningNumberInput);
+        Validator.checkWinningNumberInputForm(winningNumberInput);
 
-        String[] splittedInput = winningNumberInput.split(",");
+        String[] splittedInput = winningNumberInput.split(","); // 입력 받은 문자열을 ','을 기준으로 split
         List<Integer> winningNumber = new ArrayList<Integer>();
         for(int order=0; order<splittedInput.length; order++) {
             winningNumber.add(Integer.valueOf(splittedInput[order]));
         }
-        Validator.checkWinningNumberCount(winningNumber);
-        Validator.checkUniqueNumber(winningNumber);
-        Validator.checkNumberRange(winningNumber);
+        Validator.checkWinningNumber(winningNumber); // 입력 값 검증
 
         return winningNumber;
     }
