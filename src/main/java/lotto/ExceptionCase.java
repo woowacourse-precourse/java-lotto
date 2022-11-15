@@ -84,5 +84,16 @@ public class ExceptionCase {
         }
     }
 
+    static public void checkInputBonusNumber(List<Integer> winSixNumber, String input) {
+        if (!checkInputAllNumber(input)) {
+            throw new IllegalArgumentException();
+        }
+        if (!checkInputSameNumber(winSixNumber, input)) {
+            throw new IllegalArgumentException();
+        }
+        if (!checkBoundLottoNumber(input)) {
+            throw new IllegalArgumentException();
+        }
+    }
 
 }
