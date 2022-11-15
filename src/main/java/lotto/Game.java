@@ -27,18 +27,25 @@ public class Game extends View {
     }
     private static void inputMoney(){
         input = inputMoneyView();
-        catchNotNumericalInputException(input);
-        catchInputException(input);
+        catchInputException();
         countMoney();
         makeLottos();
         countView();
         lottoView();
         makeWinning(inputWinningView());
     }
+    private static void catchInputException(){
+        catchNotNumericalInputException(input);
+        catchNotBuyLottoException(input);
+        catchZeroStartInputException(input);
+        catchBaseMoneyException(input);
+
+    }
     private static void inputWinning(){
         String bonusString =inputBonusView();
         catchNotNumericalInputException(bonusString);
         bonusNumber = Integer.parseInt(bonusString);
+        catchBonusInWinningException(bonusNumber);
         catchOutOfRangeException(bonusNumber);
     }
     private static void result(){
@@ -66,6 +73,7 @@ public class Game extends View {
         catchNotNumericalInputException(numbers);
         List<Integer> newList = new ArrayList<>();
         Arrays.asList(numbers.split(",")).stream().forEach(number->{
+            catchZeroStartInputException(number);
             int num = Integer.parseInt(number);
             catchOutOfRangeException(num);
             newList.add(num);

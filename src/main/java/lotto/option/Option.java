@@ -14,7 +14,8 @@ public enum Option {
     FOURTH_MATCH(4),
     THIRD_MATCH(5),
     SECOND_MATCH(5),
-    FIRST_MATCH(6);
+    FIRST_MATCH(6),
+    BASE_MONEY(1000);
 
     public Integer option;
     Option(Integer option){
