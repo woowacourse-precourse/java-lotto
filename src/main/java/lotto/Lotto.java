@@ -26,4 +26,8 @@ public class Lotto {
         return false;
     }
 
+    public String numbersToString() {
+        return numbers.toString();
+    }
+
 }
