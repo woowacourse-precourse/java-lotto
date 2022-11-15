@@ -3,6 +3,7 @@ package lotto;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.List;
+import java.util.Map;
 
 public class LottoController {
 
@@ -19,10 +20,12 @@ public class LottoController {
         view.printPurchasedLottos(customer);
 
         List<Integer> winNumbers = view.enterWinNumbersFromAdmin();
-        int bonousNumber = view.enterBonusNumberFromAdmin(winNumbers);
+        int bonusNumber = view.enterBonusNumberFromAdmin(winNumbers);
 
         //당첨시키기
+        LottoResult lottoResult = new LottoResult();
+        lottoResult.create(winNumbers, bonusNumber, customer);
 
-        view.printStat();
+        view.printStat(lottoResult);
     }
 }

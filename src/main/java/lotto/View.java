@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import static lotto.Rank.*;
+
 public class View {
 
     public int enterMoneyFromCustomer() {
@@ -68,9 +70,14 @@ public class View {
             throw new IllegalArgumentException("[ERROR] 보너스 번호가 이미 당첨 번호에 포함된 번호입니다.");
     }
 
-    public void printStat() {
+    public void printStat(LottoResult lottoResult) {
         System.out.println("당첨 통계");
         System.out.println("---");
-
+        System.out.printf("%d개 일치 (%,d원) - %d개\n", FIFTH.getCntOfSameNumber(), FIFTH.getPrizeMoney(), lottoResult.getRankResult().get(FIFTH));
+        System.out.printf("%d개 일치 (%,d원) - %d개\n", FORTH.getCntOfSameNumber(), FORTH.getPrizeMoney(), lottoResult.getRankResult().get(FORTH));
+        System.out.printf("%d개 일치 (%,d원) - %d개\n", THIRD.getCntOfSameNumber(), THIRD.getPrizeMoney(), lottoResult.getRankResult().get(THIRD));
+        System.out.printf("%d개 일치 (%,d원) - %d개\n", SECOND.getCntOfSameNumber(), SECOND.getPrizeMoney(), lottoResult.getRankResult().get(SECOND));
+        System.out.printf("%d개 일치 (%,d원) - %d개\n", FIRST.getCntOfSameNumber(), FIRST.getPrizeMoney(), lottoResult.getRankResult().get(FIRST));
+        System.out.printf("총 수익률은 %.2f%%입니다.", lottoResult.getRateOfReturn());
     }
 }
