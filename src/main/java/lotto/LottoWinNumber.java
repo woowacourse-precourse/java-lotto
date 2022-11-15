@@ -9,12 +9,17 @@ public class LottoWinNumber {
     public static final int price = 1000;
 
     public LottoWinNumber(List<Integer> numbers, int bonusNum) {
-        validate(numbers, bonusNum);
         this.numbers = numbers;
         this.bonusNum = bonusNum;
+        validate();
     }
 
-    private void validate(List<Integer> numbers, int bonusNum) {
+    private void validate() {
+        validateNumbers();
+        validateBonusName();
+    }
+
+    private void validateNumbers(){
         if (numbers.size() != 6) {
             throw new IllegalArgumentException("[ERROR] 로또 당첨 번호는 총 6개 존재해야 합니다.");
         }
@@ -24,6 +29,8 @@ public class LottoWinNumber {
                     ("[ERROR] 로또 당첨 번호는 1~45 범위 안 정수값이어야 합니다.");
             }
         }
+    }
+    private void validateBonusName(){
         if (bonusNum < 1 || bonusNum > 45) {
             throw new IllegalArgumentException("[ERROR] 보너스 번호는 1~45 범위 안 정수값이어야 합니다.");
         }

@@ -4,6 +4,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+// 로또 티켓 정보를 담고 있는 클래스
 public class Lotto {
 
     private final List<Integer> numbers;

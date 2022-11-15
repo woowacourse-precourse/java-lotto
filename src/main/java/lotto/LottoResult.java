@@ -79,14 +79,6 @@ public enum LottoResult {
     }
 
 
-    public int getNumOfCorrectLottoNum() {
-        return numOfCorrectLottoNum;
-    }
-
-    public int getRanking() {
-        return ranking;
-    }
-
     public int getCashPrize() {
         return cashPrize;
     }
