@@ -5,8 +5,8 @@ import java.util.Map;
 public class ProfitRateCalculator {
 	private final double profitRate;
 
-	public ProfitRateCalculator(Map<Rank, Integer> getRanks, int purchaseAmount) {
-		int prizeMoney = calculatePrizeMoney(getRanks);
+	public ProfitRateCalculator(Map<Rank, Integer> scoreBoard, int purchaseAmount) {
+		int prizeMoney = calculatePrizeMoney(scoreBoard);
 		this.profitRate = calculateProfitRate(prizeMoney, purchaseAmount);
 	}
 
@@ -14,11 +14,11 @@ public class ProfitRateCalculator {
 		return profitRate;
 	}
 
-	private int calculatePrizeMoney(Map<Rank, Integer> getRanks) {
+	private int calculatePrizeMoney(Map<Rank, Integer> scoreBoard) {
 		int prizeMoney = 0;
 
-		for (Rank rank : getRanks.keySet()) {
-			prizeMoney += rank.getPrizeMoney() * getRanks.get(rank);
+		for (Rank rank : scoreBoard.keySet()) {
+			prizeMoney += rank.getPrizeMoney() * scoreBoard.get(rank);
 		}
 
 		return prizeMoney;
