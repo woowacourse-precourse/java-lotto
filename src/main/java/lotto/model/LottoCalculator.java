@@ -11,8 +11,6 @@ public class LottoCalculator {
     private static final int MAP_SIZE = 1024;
     private static final int LIST_SIZE = 1024;
     private static final int LOTTO_NUMBER_COUNT = 6;
-    private static final int START_NUMBER = 1;
-    private static final int END_NUMBER = 45;
     private static final int ONE = 1;
     private static final int WIN_FIRST_COUNT = 6;
     private static final int WIN_THIRD_COUNT = 5;
@@ -24,7 +22,7 @@ public class LottoCalculator {
     }
 
     public List<Integer> createLotto() {
-        return Randoms.pickUniqueNumbersInRange(START_NUMBER, END_NUMBER, LOTTO_NUMBER_COUNT);
+        return Randoms.pickUniqueNumbersInRange(1, 45, 6);
     }
 
     public ArrayList<ArrayList<Integer>> getDisplayLottoNumbers(List<Lotto> lottos) {
