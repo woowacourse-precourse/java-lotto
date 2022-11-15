@@ -34,6 +34,7 @@ public class LottoMachine {
 		System.out.println(Message.INPUT_BONUS_NUMBER);
 		String inputBonusNumber = readLine();
 		bonusNumber = Valid.isDuplicateWithWinningNumber(winningLotto.getNumbers(), inputBonusNumber);
+		Valid.hasCorrectRangeNumber(bonusNumber);
 	}
 
 	private List<Integer> splitInputNumber(String inputNumber) {

@@ -78,6 +78,14 @@ public class Valid {
 		return validNumber;
 	}
 
+	public static void hasCorrectRangeNumber(int bonusNumber) {
+		if (bonusNumber < Constant.FIRST_NUMBER_IN_LOTTO
+			|| bonusNumber > Constant.LAST_NUMBER_IN_LOTTO) {
+			System.out.println(Message.WRONG_RANGE_NUMBER_ERROR);
+			throw new IllegalArgumentException(Message.WRONG_RANGE_NUMBER_ERROR);
+		}
+	}
+
 	private static boolean isNumeric(String str) {
 		return str.chars().allMatch(Character::isDigit);
 	}
