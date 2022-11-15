@@ -14,9 +14,6 @@ public class Game {
     static List<Lotto> lottos;
     static int bonusNumber;
     static Map<String, Integer> winningStatus;
-    static final int LOTTO_PRICE = 1000;
-    static final int NONE = 0;
-    static final int WIN = 1;
 
     static void run() throws IllegalArgumentException {
         UI ui = new UI();
@@ -39,7 +36,7 @@ public class Game {
     }
 
     static int getLottoCount() {
-        return (purchase / LOTTO_PRICE);
+        return (purchase / Constant.LOTTO_PRICE);
     }
 
     static void generateLottos() {
@@ -71,15 +68,15 @@ public class Game {
     static void initializeWinningStatus() {
         winningStatus = new HashMap<>();
         for (Rank rank : Rank.values()) {
-            winningStatus.put(rank.getMessage(), NONE);
+            winningStatus.put(rank.getMessage(), Constant.NONE);
         }
     }
 
     static int getWins(Lotto lotto) {
-        int wins = NONE;
+        int wins = Constant.NONE;
         for (int number : lotto.getNumbers()) {
             if (winningNumber.hasNumber(number)) {
-                wins += WIN;
+                wins += Constant.WIN;
             }
         }
         if (wins == Rank.THIRD.getWins() && lotto.hasNumber(bonusNumber)) {
@@ -102,12 +99,12 @@ public class Game {
         initializeWinningStatus();
         for (Lotto lotto : lottos) {
             String rank = getRank(lotto);
-            winningStatus.put(rank, winningStatus.get(rank) + WIN);
+            winningStatus.put(rank, winningStatus.get(rank) + Constant.WIN);
         }
     }
 
     static float getTotalPrice() {
-        long totalPrice = NONE;
+        long totalPrice = Constant.NONE;
         for (Rank rank : Rank.values()) {
             totalPrice += (rank.getPrice() * winningStatus.get(rank.getMessage()));
         }
@@ -115,7 +112,7 @@ public class Game {
     }
 
     static float getRateOfReturn() {
-        float rateOfReturn = (getTotalPrice() / purchase) * 100;
+        float rateOfReturn = (getTotalPrice() / purchase) * Constant.PERCENTAGE;
         return rateOfReturn;
     }
 

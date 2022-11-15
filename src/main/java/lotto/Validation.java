@@ -7,19 +7,19 @@ import java.util.stream.Collectors;
 public class Validation {
 
     public void checkNumeric(String input) throws IllegalArgumentException {
-        if (!input.matches("^[0-9]*$")) {
+        if (!input.matches(Constant.NUMERIC_REGEX)) {
             throw new IllegalArgumentException(Error.NOT_NUMERIC.message());
         }
     }
 
     public void checkNumberInRange(int number) throws IllegalArgumentException {
-        if (number < 1 || number > 45) {
+        if (number < Constant.MIN_LOTTO_NUMBER || number > Constant.MAX_LOTTO_NUMBER) {
             throw new IllegalArgumentException(Error.NOT_IN_RANGE.message());
         }
     }
 
     public void checkDividable(int number) throws IllegalArgumentException {
-        if (number % 1000 != 0) {
+        if (number % Constant.LOTTO_PRICE != 0) {
             throw new IllegalArgumentException(Error.NOT_DIVIDABLE.message());
         }
     }
@@ -49,7 +49,7 @@ public class Validation {
             for (int i = 0; i < inputSplit.length; i++) {
                 lottoFormat.add(Integer.parseInt(inputSplit[i]));
             }
-            if (lottoFormat.size() != 6) {
+            if (lottoFormat.size() != Constant.VALID_LOTTO_LENGTH) {
                 throw new IllegalArgumentException(Error.OUT_OF_WINNING_FORMAT.message());
             }
         } catch (Exception e) {
