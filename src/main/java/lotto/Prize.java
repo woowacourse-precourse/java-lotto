@@ -13,10 +13,13 @@ public class Prize {
         return same;
     }
 
+    private static boolean checkForSameBounusNumber(Lotto lotto, int bounus){
+        return lotto.hasWinningNumber(bounus);
+    }
 
-    public static void resultPrize(ArrayList<Integer> winningNumbers, Lotto lotto, int bounus, int customerBounus){
+    public static void resultPrize(ArrayList<Integer> winningNumbers, Lotto lotto, int bounus){
         int sameWinningNumbers = checkForWinningNumber(winningNumbers, lotto);
-
+        boolean sameBounusNumber = checkForSameBounusNumber(lotto, bounus);
 
     }
 }
