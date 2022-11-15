@@ -1,5 +1,6 @@
 package lotto;
 
+import lotto.domain.Bonus;
 import lotto.domain.Lotto;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -8,6 +9,7 @@ import java.util.List;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class LottoTest {
@@ -32,10 +34,18 @@ class LottoTest {
     @Test
     void exectionOverRange() {
         assertThatThrownBy(
-            () -> new Lotto(List.of(0,1,2,3,4,5))
+            () -> new Lotto(List.of(0, 1, 2, 3, 4, 5))
         ).isInstanceOf(IllegalArgumentException.class);
 
     }
 
+    @DisplayName("보너스 번호가 구매 로또에 존재하는지 판단")
+    @Test
+    void is_bonusNum_in_myLotto() {
+        Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+        Lotto winningLotto = new Lotto(List.of(7, 8, 9, 10, 11, 12));
+        boolean isBonusNum = Lotto.isBonus(lotto, new Bonus(6, winningLotto));
+        assertThat(isBonusNum).isTrue();
+    }
 
 }
