@@ -13,12 +13,12 @@ class WinningNumsTest {
 
     @Test
     void 입력받은_당첨_번호의_패턴이_맞는지1() {
-        WinningNums winningNums = new WinningNums("1, 2, 3, 4, 5, 6", "7");
+        WinningNums winningNums = new WinningNums("1,2,3,4,5,6", "7");
         assertThat(winningNums.getWinningNums()).isEqualTo(List.of(1,2,3,4,5,6));
     }
 
     @ParameterizedTest
-    @ValueSource(strings = {"1, 2,,3, 4, 5, 6 ", "1,2,3,4,5,6", "1 2, 3, 4, 5, 6"})
+    @ValueSource(strings = {"1, 2,,3, 4, 5, 6 ", "1,2,3,4,5,6,7", "1 2, 3, 4, 5, 6"})
     void 입력받은_당첨_번호의_패턴이_맞는지2(String winNums) {
         assertThatThrownBy(() -> new WinningNums(winNums, "7"))
                 .isInstanceOf(IllegalArgumentException.class)
@@ -82,5 +82,4 @@ class WinningNumsTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("[ERROR] 1-45까지의 숫자만 입력해야 합니다.");
     }
-
 }
