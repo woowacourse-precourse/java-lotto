@@ -28,16 +28,45 @@ public class LottoApplication {
         System.out.println("\n" + lottoAmount + "개를 구매했습니다.");
         lc.createRandomLotto(lottoAmount);
 
-        this.lottoPool = lc.createRandomLotto(lottoAmount);
-        this.printLottoPool();
+        lottoPool = lc.createRandomLotto(lottoAmount);
+        printLottoPool();
 
+        System.out.println("\n당첨 번호를 입력해 주세요.");
+        winNumber = Console.readLine();
+        System.out.println("\n보너스 번호를 입력해 주세요.");
+        bonusNumber = Console.readLine();
 
+        System.out.println("\n당첨 통계\n---");
 
-        for(Lotto lotto : lottoPool){
-            //lotto.compareWithAnswer()
-        }
+        printTotalPrize(new WinNumber(winNumber,bonusNumber),lottoAmount*1000);
     }
 
+
+    private void printTotalPrize(WinNumber wn,int paidMoney){
+        int[] prize = {0,2000000000,30000000,1500000,50000,5000};
+        int[] result = new int[6];
+        int totalEarn=0;
+        double earnRatio = 0;
+
+        for(Lotto lotto : lottoPool){
+            int winRank = lotto.compareWithAnswer(wn);
+            totalEarn+=prize[winRank];
+            result[winRank]++;
+        }
+
+        System.out.println("3개 일치 (5,000원) - "+result[5]+"개");
+        System.out.println("4개 일치 (50,000원) - "+result[4]+"개");
+        System.out.println("5개 일치 (1,500,000원) - "+result[3]+"개");
+        System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - "+result[2]+"개");
+        System.out.println("6개 일치 (2,000,000,000원) - "+result[1]+"개");
+
+        if(totalEarn!=0){
+            earnRatio=paidMoney/totalEarn;
+        }
+
+        System.out.printf("총 수익률은 "+"%.1f"+"%%입니다.",earnRatio);
+
+    }
 
     private void printLottoPool() {
         for (Lotto lotto : lottoPool) {
