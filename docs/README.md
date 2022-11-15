@@ -26,11 +26,18 @@
 
 - [x] 입력받은 금액만큼 만들 수량을 정한다. -> getAvailableQuantity
     - [x] 구입 금액이 옳바른지 확인하는 기능. -> moneyValidation
+      ![Generic badge](https://img.shields.io/badge/test-passed-blue.svg)
 
 - [x] 로또 수량만큼 랜덤 번호 6개를 생성한다. -> createLotto
+  ![Generic badge](https://img.shields.io/badge/test-passed-blue.svg)
+
 - [x] 사용자의 입력, 우승 로또번호와 보너스 번호가 옳바른지 확인 -> validate
+  ![Generic badge](https://img.shields.io/badge/test-passed-blue.svg)
+
 - [x] 당첨내역을 계산한다. -> getRank
+  ![Generic badge](https://img.shields.io/badge/test-passed-blue.svg)
 - [x] 수익률을 계산한다. -> getRateOfReturn
+  ![Generic badge](https://img.shields.io/badge/test-passed-blue.svg)
 
 ---
 
