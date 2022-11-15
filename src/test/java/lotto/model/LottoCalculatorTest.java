@@ -56,16 +56,16 @@ class LottoCalculatorTest {
     void lottoRankingsCorrect() {
         final int lottoCount = 10;
         final int rankingTypeCount = 6;
-        Lotto winningLotto = new Lotto(List.of(1,2,3,4,5,6));
+        Lotto winningLotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
         List<Integer> winningNumbers = winningLotto.getNumbers();
         int bonusNumber = 7;
 
         List<Lotto> lottos = new ArrayList<>(lottoCount);
-        lottos.add(new Lotto(List.of(1,2,3,4,5,6)));
-        lottos.add(new Lotto(List.of(1,2,3,4,5,7)));
-        lottos.add(new Lotto(List.of(1,2,3,4,5,8)));
-        lottos.add(new Lotto(List.of(1,2,3,4,7,8)));
-        lottos.add(new Lotto(List.of(1,2,3,7,8,9)));
+        lottos.add(new Lotto(List.of(1, 2, 3, 4, 5, 6)));
+        lottos.add(new Lotto(List.of(1, 2, 3, 4, 5, 7)));
+        lottos.add(new Lotto(List.of(1, 2, 3, 4, 5, 8)));
+        lottos.add(new Lotto(List.of(1, 2, 3, 4, 7, 8)));
+        lottos.add(new Lotto(List.of(1, 2, 3, 7, 8, 9)));
 
         Map<LottoRankingType, Integer> actual
                 = this.lottoCalculator.getRankings(winningNumbers, bonusNumber, lottos);
