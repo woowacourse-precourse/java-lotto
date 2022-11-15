@@ -60,4 +60,12 @@ public class LottoService {
         }
         totalProfit += Rank.findRankByMatch(match).getPrize();
     }
+
+    public String getProfitRate() {
+        return profitRate;
+    }
+
+    public List<Lotto> getLotteries() {
+        return lotteries;
+    }
 }
