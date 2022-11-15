@@ -28,16 +28,5 @@ class LottoTest {
     }
 
 
-    @DisplayName("총 수익률 계산 테스트")
-    @Test
-    void rateOfReturnIsCorrect() {
-        int[] lottoResult = {1, 0, 0, 0, 0};
-        int buyMoney = 8000;
-        LotteryCompare LotteryCompare = new LotteryCompare();
-
-        Assertions.assertThat(LotteryCompare.calculateRateOfReturn(lottoResult,buyMoney))
-                .isEqualTo(62.5);
-
-    }
     // 아래에 추가 테스트 작성 가능
 }
