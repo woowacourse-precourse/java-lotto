@@ -22,6 +22,16 @@ public enum LottoRank {
         this.amount = amount;
     }
 
+    public static LottoRank calculate(int count, boolean isSameBonus) {
+        for (LottoRank rank : LottoRank.values()) {
+            if (rank.count == count && rank.isSameBonus == isSameBonus) {
+                return rank;
+            }
+        }
+
+        return MISS;
+    }
+
     public static List<LottoRank> getLottoRank() {
         return Arrays.stream(LottoRank.values())
                 .filter(LottoRank::isNotMiss)
