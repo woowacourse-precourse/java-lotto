@@ -19,6 +19,6 @@ public class Controller {
         int bonusNumber = user.bonusNumber();
         Map<Rank, Integer> totalRank = winning.getTotalRank(lottos, winningNumber, bonusNumber);
         print.infoRank(totalRank);
-        print.profit(profit.getProfit(totalRank, money));
+        print.infoProfit(profit.getProfit(totalRank, money));
     }
 }

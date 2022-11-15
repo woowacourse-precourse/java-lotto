@@ -20,11 +20,11 @@
 <hr>
 
 ### 출력 
-[] 발행한 로또 수량 및 번호 출력 - Print#lottoInfo <br>
-[] 당첨 내역 출력 - Print#lottoWinningHistory<br>
+[✅] 발행한 로또 수량 및 번호 출력 - Print#lottoInfo <br>
+[✅] 당첨 내역 출력 - Print#lottoWinningHistory<br>
 >n개 일치, 보너스 볼 일치 (금액) - 0개<br>
 >
-[] 수익률 출력. 소수점 둘째자리 반올림 - Print#yield<br>
+[✅] 수익률 출력. 소수점 둘째자리 반올림 - Print#yield<br>
 > 총 수익률은 #%입니다.<br>
 > 
 [] 예외 발생 시 예외 문구 출력 <br>
@@ -34,11 +34,11 @@
 <hr>
 
 ### 당첨 계산
-[] 3개 번호만 일치하는 로또 수 count - Winning#three <br>
-[] 4개 번호만 일치하는 로또 수 count - Winning#four <br>
-[] 5개 번호만 일치하고 보너스 볼 일치안하는 로또 수 count - Winning#fiveNotBonus <br>
-[] 5개 번호만 일치하고 보너스 볼 일치하는 로또 수 count - Winning#fiveWithBonus <br>
-[] 6개 번호 일치하는 로또 수 count - Winning#six <br>
+[✅] 3개 번호만 일치하는 로또 수 count - Winning#three <br>
+[✅] 4개 번호만 일치하는 로또 수 count - Winning#four <br>
+[✅] 5개 번호만 일치하고 보너스 볼 일치안하는 로또 수 count - Winning#fiveNotBonus <br>
+[✅] 5개 번호만 일치하고 보너스 볼 일치하는 로또 수 count - Winning#fiveWithBonus <br>
+[✅] 6개 번호 일치하는 로또 수 count - Winning#six <br>
 
 <hr>
 
