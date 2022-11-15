@@ -10,7 +10,7 @@ public class CalculatingLotto {
     private static final int NO=0;
     private enum Rank {FAILED, FIRST, SECOND, THIRD, FOURTH, FIFTH}
 
-    public int calculateLottoRank(List<Integer> winningLotto, int bonus, List<Integer> oneLotto){
+    public int calculateLottoRank(Lotto winningLotto, int bonus, Lotto oneLotto){
         int sameNumCount=0;
         for(int index1=0;index1<LOTTONUMCOUNT;index1++){
             for(int index2=0;index2<LOTTONUMCOUNT;index2++){
@@ -30,7 +30,7 @@ public class CalculatingLotto {
         return NO;
     }
 
-    public boolean checkBonus(int bonus, List<Integer> oneLotto){
+    public boolean checkBonus(int bonus, Lotto oneLotto){
         for(int index=0;index<LOTTONUMCOUNT;index++){
             if(bonus==oneLotto.get(index)){
                 return true;
@@ -56,7 +56,7 @@ public class CalculatingLotto {
         }return Rank.FAILED.ordinal();
     }
 
-    public List<Integer> calculateAllLotto(List<Integer> winningLotto, int bonus, List<List<Integer>> allLotto){
+    public List<Integer> calculateAllLotto(Lotto winningLotto, int bonus, List<Lotto> allLotto){
         List<Integer> allRank=new ArrayList<>();
         int index=0;
         for(index=0;index<allLotto.size();index++){
