@@ -6,13 +6,13 @@ public class Resource {
     public static final String inputOfWinningNumber = "당첨 번호를 입력해 주세요";
     public static final String inputOfBonusNumber = "보너스 번호를 입력해 주세요.";
     public static final String resultOfWinning = "당첨 통계\n---\n";
-    public static final String countOfCorrectNumberFront = "개 일치 ";
-    public static final String CountOfCorrectNumberFrontNotBonus ="(";
-    public static final String countOfCorrectNumberMiddle = ") - ";
+    public static final String countOfCorrectNumberFront = "개 일치";
+    public static final String afterBonus =" (";
+    public static final String countOfCorrectNumberMiddle = "원) - ";
     public static final String countOfCorrectNumberBack ="개";
-    public static final String bonusCorrect =",보너스 볼 일치 (";
+    public static final String bonusCorrect =", 보너스 볼 일치";
     public static final String revenuePercentFront = "총 수익률은 ";
-    public static final String revenuePercentBack = "입니다.";
+    public static final String revenuePercentBack = "%입니다.";
 
     public static final String threeCorrect = "5,000원";
     public static final String fourCorrect = "50,000원";
