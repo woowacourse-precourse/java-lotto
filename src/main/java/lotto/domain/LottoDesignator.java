@@ -10,6 +10,7 @@ import static lotto.constant.Constant.*;
 
 public class LottoDesignator {
     public static final LottoDesignator getInstance = new LottoDesignator();
+
     public List<Integer> inputLotto(String lottoInput) {
 
         checkOnlyNumber(lottoInput);
@@ -57,7 +58,7 @@ public class LottoDesignator {
 
     private void checkRange(String input) {
         List<Integer> lotto = changeList(input);
-        for(int lottoIndex = 0; lottoIndex < lotto.size(); lottoIndex++) {
+        for (int lottoIndex = 0; lottoIndex < lotto.size(); lottoIndex++) {
             int lottoNum = lotto.get(lottoIndex);
             if (lottoNum < RANGE_MIN || lottoNum > RANGE_MAX) {
                 throw new IllegalArgumentException("[ERROR] 로또 번호는 1 ~ 45 범위만 입력 가능합니다.");

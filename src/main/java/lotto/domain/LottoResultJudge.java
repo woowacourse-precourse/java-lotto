@@ -1,6 +1,7 @@
 package lotto.domain;
 
 import java.util.List;
+
 import static lotto.domain.LottoResult.*;
 
 public class LottoResultJudge {
@@ -29,7 +30,7 @@ public class LottoResultJudge {
 
     private int correspondNumber(List<Integer> userLotto, List<Integer> lotto) {
         int correctNumber = 0;
-        for(int userNum: userLotto) {
+        for (int userNum : userLotto) {
             if (lotto.contains(userNum)) {
                 correctNumber++;
             }

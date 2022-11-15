@@ -40,7 +40,7 @@ public class LottoStore {
     }
 
     public void judgeLottoNumber() {
-        for(Lotto userLotto: userLotto) {
+        for (Lotto userLotto : userLotto) {
             LottoResultJudge.getInstance.judgeLotto(userLotto.getLotto(), winningNumber, bonus);
         }
     }

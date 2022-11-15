@@ -31,12 +31,13 @@ public enum LottoResult {
     public void updateCount() {
         this.count++;
     }
+
     public int getCount() {
         return count;
     }
 
     public int getProfit() {
-        profit = prize*count;
+        profit = prize * count;
         return profit;
     }
 }
