@@ -35,8 +35,7 @@ public class Validator {
             throw new IllegalArgumentException(ERROR.WINNING_NUMBER_DUPLICATION);
         }
     }
-
-
+    
     public static void bonusNumber(String bonusNumber) {
         if (!Pattern.matches(REGEX.BONUS_NUMBER, bonusNumber)) {
             throw new IllegalArgumentException(ERROR.BONUS_NUMBER_RANGE);

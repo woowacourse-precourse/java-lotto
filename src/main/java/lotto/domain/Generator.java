@@ -47,7 +47,6 @@ public class Generator {
             Ranking rank = Ranking.getRank(correct.get(WINNINGCOUNT), correct.get(BONUSCOUNT));
             Buyer.setWinningSummary(buyer, rank.getLabel());
         }
-
     }
 
     public static double calculateProfit(int purchased, long totalPrize) {

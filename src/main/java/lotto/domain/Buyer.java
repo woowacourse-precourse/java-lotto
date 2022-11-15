@@ -13,7 +13,6 @@ public class Buyer {
     private List<Lotto> purchasedLotto;
     private HashMap<String, Integer> winningSummary;
 
-
     public Buyer() {
         this.payment = 0;
         this.purchasedLotto = new ArrayList<Lotto>();
@@ -70,5 +69,4 @@ public class Buyer {
     public int getLottoPurchasedCount() {
         return this.lottoPurchasedCount;
     }
-
 }

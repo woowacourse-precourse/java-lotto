@@ -38,7 +38,6 @@ public class LottoProgram {
         int numbersOfLotto = payment / LOTTO.PRICE;
         buyer.setLottoPurchasedCount(numbersOfLotto);
         Display.paidAmout(numbersOfLotto);
-
     }
 
     private static void setWinningNumbers() {

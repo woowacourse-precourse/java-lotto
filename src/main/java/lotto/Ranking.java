@@ -61,6 +61,5 @@ public enum Ranking {
     public int getWinningCount() {
         return this.winningCount;
     }
-    
 }
 
