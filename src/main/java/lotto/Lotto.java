@@ -1,5 +1,6 @@
 package lotto;
 
+import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
 
@@ -57,5 +58,9 @@ public class Lotto {
 
     public int getBonus() {
         return this.bonus;
+    }
+
+    public void sortListInAscending(List<Integer> numbers){
+        numbers.sort(Comparator.naturalOrder());
     }
 }
