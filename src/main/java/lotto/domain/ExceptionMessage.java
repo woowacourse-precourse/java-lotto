@@ -11,7 +11,7 @@ public enum ExceptionMessage {
     BONUS_IS_SEPARATE_CHAR("1 ~ 45 사이의 값을 하나만 입력해 주셔야 합니다."),
     BONUS_DUPLICATE_VALUE("당첨 번호에 없는 번호를 입력해 주셔야 합니다.");
 
-    private static final String ERROR_TAG = "[ERROR] " ;
+    private static final String ERROR_TAG = "[ERROR] ";
     private final String message;
 
     ExceptionMessage(String message) {

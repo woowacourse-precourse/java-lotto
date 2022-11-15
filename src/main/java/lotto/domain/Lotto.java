@@ -60,7 +60,7 @@ public class Lotto {
     }
 
     private List<Integer> convertStringListToIntegerList(List<String> numbers) {
-        return  numbers.stream().map(Integer::parseInt).collect(Collectors.toList());
+        return numbers.stream().map(Integer::parseInt).collect(Collectors.toList());
     }
 
     private boolean isSixNumbers(List<Integer> numbers) {
@@ -69,7 +69,7 @@ public class Lotto {
 
     private boolean isBetweenLottoRange(List<Integer> numbers) {
         return numbers.stream().allMatch(number ->
-                number >= LOTTO_GAME_START_NUMBER&& number <= LOTTO_GAME_END_NUMBER);
+                number >= LOTTO_GAME_START_NUMBER && number <= LOTTO_GAME_END_NUMBER);
     }
 
     private boolean isDuplicateNumber(List<Integer> numbers) {
