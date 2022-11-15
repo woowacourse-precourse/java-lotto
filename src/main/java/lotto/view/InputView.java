@@ -47,7 +47,7 @@ public class InputView {
         System.out.print(INPUT_ANSWER_STR);
         String userInputAnswer = Console.readLine();
         String[] inputAnswer = userInputAnswer.split(",");
-        validateAnswer(inputAnswer);
+        validateAnswerType(inputAnswer);
         for (String numberChar : inputAnswer) {
             Integer parseInt = Integer.parseInt(numberChar);
             lottoAnswerNumbers.add(parseInt);
@@ -56,17 +56,26 @@ public class InputView {
 
         System.out.print(INPUT_BONUS_STR);
         String userInputBonus = Console.readLine();
+        validateBonusType(userInputBonus);
         bonusNumber = Integer.parseInt(userInputBonus);
         return new LottoAnswer(lottoAnswer, bonusNumber);
     }
 
-    private void validateAnswer(String[] inputAnswer) throws Exception {
+    private void validateAnswerType(String[] inputAnswer) throws Exception {
         try {
             for (String numberChar : inputAnswer) {
                 Integer.parseInt(numberChar);
             }
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException(ExceptionMessage.INVALID_LOTTO_TYPE.getString());
+        }
+    }
+
+    private void validateBonusType(String inputBonus) throws Exception {
+        try {
+            Integer.parseInt(inputBonus);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException(ExceptionMessage.INVALID_BONUS_TYPE.getString());
         }
     }
 }
