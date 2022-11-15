@@ -7,9 +7,9 @@ import java.util.List;
 
 public class Controller {
     /**
-     * 사용자가 입력한 로또 숫자의 유효성을 검증한다.
+     * 사용자가 입력한 로또 번호의 유효성을 검증한다.
      * 1에서 45까지 서로 다른 임의의 수 6개인지 검증
-     * @param playerNumbers 사용자가 입력한 로또 숫자
+     * @param playerNumbers 사용자가 입력한 로또 번호
      */
     public static void ValidatePlayerNumber(HashSet<Integer> playerNumbers) {
         // 집합의 크기가 6이 아니거나 1에서 45까지의 숫자가 아닌 숫자를 포함하면 예외를 발생한다.
@@ -39,14 +39,14 @@ public class Controller {
      * 사용자가 구매한 로또 번호와 당첨 번호를 비교하여 당첨 내역을 분석한다.
      * @param numbers 사용자가 입력한 로또 번호
      * @param publishedLottoArray 발행된 로또 번호
-     * @return 분석 결과
+     * @return 로또 분석 결과
      */
     public static LinkedHashMap<Integer, Integer> AnalyzePlayerNumbers
             (List<Integer> numbers, List<List<Integer>> publishedLottoArray) {
-        // 분석 결과를 담는 LinkedHashMap을 만든다.
+        // 로또 분석 결과를 담는 LinkedHashMap을 만든다.
         LinkedHashMap<Integer, Integer> result = Model.CreateAnalyzedResultLinkedHashMap();
 
-        // 로또 보너스 숫자와 로또 숫자 집합을를 준비한다.
+        // 로또 보너스 번호와 로또 번호 집합을를 준비한다.
         Integer lottoBonusNumber = numbers.get(6);
 
         List<Integer> lottoNumbers = numbers;

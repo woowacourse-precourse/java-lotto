@@ -103,6 +103,13 @@ public class Model {
         return lottoList;
     }
 
+    /**
+     * 총 수익률을 계산한다.
+     * 소수점 둘째 자리에서 반올림
+     * @param spending 지출
+     * @param income 수입
+     * @return 총 수익률
+     */
     public static String CalculateEarningRate(Integer spending, Integer income) {
         Double incomeDouble= (double)income;
         Double spendingDouble= (double)spending;
@@ -112,6 +119,11 @@ public class Model {
         return printResult;
     }
 
+    /**
+     * 수익 총합을 계산한다.
+     * @param analyzedResult 로또 분석 결과
+     * @return 총 수익
+     */
     public static Integer CalculateEarningSum(LinkedHashMap<Integer, Integer> analyzedResult) {
         Integer sum = 0;
 
@@ -132,6 +144,12 @@ public class Model {
         return result;
     }
 
+    /**
+     * 로또 당첨 번호와 일치하는 수의 개수를 계산한다.
+     * @param lottoNumbersSet 로또 당첨 번호 집합
+     * @param targetLottoNumbers 발행된 로또 번호
+     * @return 로또 당첨 번호와 일치하는 수의 개수
+     */
     public static int CountIntersectionSize
             (HashSet<Integer> lottoNumbersSet,
              HashSet<Integer> targetLottoNumbers) {
@@ -143,6 +161,13 @@ public class Model {
         return intersectionLottoNumbers.size();
     }
 
+    /**
+     * 로또 당첨 번호와 일치하는 수의 개수에 따라 등수를 찾는다.
+     * @param size 로또 당첨 번호와 일치하는 수
+     * @param publishedLotto 발행된 로또 번호
+     * @param lottoBonusNumber 로또 보너스 번호
+     * @return 로또 등수
+     */
     public static Integer AnalyzeRank(int size, List<Integer> publishedLotto, Integer lottoBonusNumber) {
         if (size == 3) {
             return 5;
