@@ -32,19 +32,25 @@
   - StaffListener#listenMainWinningNumbers()
 - [ ] 보너스 번호 한 자리를 입력 받는다.
   - StaffListener#listenWinningBonusNumber()
-- [ ] 입력 받은 문자를 Integer리스트로 변환할 수 있다.
-  - 예외) Integer타입으로 변환할 수 없으면 예외 발생
-  - WinningNumbersGenerator#convertToIntegerList()
-- [ ] 입력 받은 문자를 Integer로 변환할 수 있다.
-  - 예외) Integer타입으로 변환할 수 없으면 예외 발생
-  - WinningNumbersGenerator#convertToInteger()
-- [ ] WinningNumbers를 생성할 수 있다
+- [x] 입력 받은 값으로부터 WinningNumbers를 생성할 수 있다
   - WinningNumbersGenerator#generateWinningNumbers()
+  - [ ] 입력 받은 문자를 Integer리스트로 변환할 수 있다.
+    - 예외) Integer타입으로 변환할 수 없으면 예외 발생
+    - WinningNumbersGenerator#convertToIntegerList()
+  - [ ] 입력 받은 문자를 Integer로 변환할 수 있다.
+    - 예외) Integer타입으로 변환할 수 없으면 예외 발생
+    - WinningNumbersGenerator#convertToInteger()
+- [x] 정상적인 WinningNumbers를 생성할 수 있다.
+  - 생성자로부터 validation 진행 
   - 예외) 생성할 숫자들의 유효성을 검증
-  - [ ] 옳은 자릿수인지 검증
-     - Lotto#validateSize()
-  - [ ] 옳은 범위의 자연수인지 검증
-    - Lotto#validateRange()
+  - [x] 옳은 자릿수인지 검증
+     - Lotto#validateSize() //로또번호와 당첨번호에서 재사용 가능
+  - [x] 옳은 범위의 자연수인지 검증
+    - Lotto#validateRange() //로또번호와 당첨번호에서 재사용 가능
+  - [x] 메인 숫자에 중복이 있는지 검증()
+    - Lotto#validateDuplicate() //로또번호와 당첨번호에서 재사용 가능
+  - [x] 보너스 숫자가 중복이 있는지 검증()
+    - WinningNumbersImpl#validateBonusNumberDuplicate()
 
 - [ ] 입력받는 로또의 개수 만큼, 각 로또가 몇 자리씩 맞췄는지 파악할 수 있다.
   - LottoChecker#checkLottos()
