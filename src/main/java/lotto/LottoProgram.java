@@ -138,7 +138,6 @@ public class LottoProgram {
                 totalReward += Integer.parseInt(rank.getReward().replace(",", ""));
             }
         }
-        System.out.println(totalReward);
 
         this.rateOfReturn = (double) totalReward / (this.numberOfLotto * 1000) * 100;
     }
