@@ -44,6 +44,17 @@ public class Application {
         }
     }
 
+    // 4.보너스 번호 입력
+    static int createBonusNum() {
+
+        int bonusNum = 0;
+
+        System.out.println("보너스 번호를 입력해 주세요.");
+        bonusNum = Integer.parseInt(Console.readLine());
+
+        return bonusNum;
+    }
+
     public static void main(String[] args) {
 
         List<List<Integer>> lottos = new ArrayList<>();
@@ -57,6 +68,9 @@ public class Application {
 
         // 당첨 번호
         createWinningNums(winningNums);
+
+        // 보너스 번호
+        int bonusNum = createBonusNum();
     }
 }
 
