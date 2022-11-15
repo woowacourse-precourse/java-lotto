@@ -13,8 +13,8 @@ public class Lotto {
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers){
-        validateDuplicate(numbers);
         validateSize(numbers);
+        validateDuplicate(numbers);
         List<Integer> sortedLotto = new ArrayList<>(numbers);
         Collections.sort(sortedLotto);
         this.numbers = sortedLotto;
