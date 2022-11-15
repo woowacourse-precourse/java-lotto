@@ -58,6 +58,13 @@ public class Exception {
             throw new IllegalArgumentException("[ERROR] Duplicate number exists in input value.");
     }
 
+    // TODO: 입력 값에 중복된 값이 존재하는 경우 예외 처리한다.
+    static void isAllDifferentValuesNumber(List<Integer> lottoNumbers) throws IllegalArgumentException{
+        Set<Integer> lottoSet = new HashSet<>(lottoNumbers);
+        if (lottoSet.size() != WINNING_NUMBER_SIZE)
+            throw new IllegalArgumentException("[ERROR] Duplicate number exists in input value.");
+    }
+
     // TODO: 리스트의 모든 입력 값이 1~45 범위에 해당하는 경우 True 를 반환한다.
     private static void isRangeFromOneToFortyFive(List<String> winningNumbers) throws IllegalArgumentException{
         for(String number : winningNumbers)
