@@ -40,9 +40,9 @@ class LottoConvertorTest {
                     .containsAll(result);
         }
 
-        @DisplayName("List로 변환 중 정수가 아닌 값이 있으면 -1을 배열에 저장하고 에러 매세지를 발생시킨다.")
+        @DisplayName("List로 변환 중 정수가 아닌 값이 있으면 -1을 배열에 저장하고 예외 매세지를 발생시킨다.")
         @Test
-        void convertNumbersTest_error() {
+        void convertNumbersTest_exception() {
             // given
             String[] numbers = {"1", "2", "3", "4", "5", "LOL"};
             int result = -1;

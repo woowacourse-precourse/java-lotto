@@ -63,9 +63,9 @@ class LottoTest {
                     .containsAll(result);
         }
 
-        @DisplayName("중복이 있거나 당첨번호를 6자리로 하지 않았을 경우 에러 발생")
+        @DisplayName("중복이 있거나 당첨번호를 6자리로 하지 않았을 경우 예외 발생")
         @Test
-        void duplicationNumbersTest_error() {
+        void duplicationNumbersTest_exception() {
             // given
             List<Integer> numbers = List.of(1, 2, 3, 4, 5, 5);
 
@@ -91,9 +91,9 @@ class LottoTest {
         }
 
 
-        @DisplayName("입력한 보너스 번호가 이미 당첨번호에 존재하면 에러 발생")
+        @DisplayName("입력한 보너스 번호가 이미 당첨번호에 존재하면 예외 발생")
         @Test
-        void duplicationBonusNumberTest_error() {
+        void duplicationBonusNumberTest_exception() {
             // given
             Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
             int bonusNumber = 6;
@@ -118,9 +118,9 @@ class LottoTest {
             lotto = null;
         }
 
-        @DisplayName("입력한 로또 번호가 1~45의 값이 아니면 에러 발생1")
+        @DisplayName("입력한 로또 번호가 1~45의 값이 아니면 예외 발생1")
         @Test
-        void validationNumberInRange_error_1() {
+        void validationNumberInRange_exception_1() {
             // given
             int checkNumber = 46;
 
@@ -129,9 +129,9 @@ class LottoTest {
                     .isInstanceOf(IllegalArgumentException.class);
         }
 
-        @DisplayName("입력한 로또 번호가 1~45의 값이 아니면 에러 발생2")
+        @DisplayName("입력한 로또 번호가 1~45의 값이 아니면 예외 발생2")
         @Test
-        void validationNumberInRange_error_2() {
+        void validationNumberInRange_exception_2() {
             // given
             int checkNumber = -1;
 
@@ -139,9 +139,9 @@ class LottoTest {
             assertThatThrownBy(() -> lotto.validationNumberInRange(checkNumber))
                     .isInstanceOf(IllegalArgumentException.class);
         }
-        @DisplayName("입력한 로또 번호가 1~45의 값이 아니면 에러 발생3")
+        @DisplayName("입력한 로또 번호가 1~45의 값이 아니면 예외 발생3")
         @Test
-        void validationNumberInRange_error_3() {
+        void validationNumberInRange_exception_3() {
             // given
             int checkNumber = 0;
 
