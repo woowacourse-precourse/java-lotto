@@ -1,6 +1,6 @@
 package lotto.validate;
 
-public class validateNumber {
+public class ValidateNumber {
     private static final String NOT_NUMERIC_MESSAGE = "[ERROR] 구매 금액은 숫자여야 합니다.";
     private static final String UNDER_1000_MESSAGE = "[ERROR] 구매 금액은 1000원 이상이어야 합니다.";
     private static final String NOT_1000_UNIT_MESSAGE = "[ERROR] 구매 금액은 1000원 단위여야 합니다.";
@@ -11,5 +11,11 @@ public class validateNumber {
             throw new IllegalArgumentException(UNDER_1000_MESSAGE);
         }
         return;
+    }
+
+    private void isNotUnitStandardMoney(Integer purchaseMoney){
+        if (purchaseMoney % STANDARD_MONEY != 0) {
+            throw new IllegalArgumentException(NOT_1000_UNIT_MESSAGE);
+        }
     }
 }
