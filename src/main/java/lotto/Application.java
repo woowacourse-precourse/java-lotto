@@ -31,7 +31,7 @@ public class Application {
         System.out.println();
         checkPriceDigit(price);
         checkPrice(Integer.parseInt(price));
-        return Integer.parseInt(price)/1000;
+        return Integer.parseInt(price) / 1000;
     }
 
     static void numberMessage() {
@@ -126,10 +126,12 @@ public class Application {
         // TODO: 프로그램 구현
         try {
             int count = inputPrice();
+            System.out.println(count + "개를 구매했습니다.");
+            List<Lotto> lottos = Lotto.createLottos(count);
+
             List<Integer> result = inputNumbers();
             inputBonusNumbers(result);
-            List<Lotto> lottos = Lotto.createLottos(count);
-            System.out.println(lottos);
+
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
