@@ -14,6 +14,12 @@ public class Check {
     public static int sixLuckyCount = 0;
     public static double plusPercent = 0.0;
     public static int amount = 0;
+    private static final int THREE_PRIZE = 5_000;
+    private static final int FOUR_PRIZE = 50_000;
+    private static final int FIVE_PRIZE = 1_500_000;
+    private static final int BONUS_PRIZE = 30_000_000;
+    private static final int SIX_PRIZE = 2_000_000_000;
+    private static final double PERCENT = 100.0;
 
     public static void checkBonus(int bonus){
         if(Game.luckyNumber.contains(bonus)){
@@ -58,7 +64,7 @@ public class Check {
         Print.viewPlusPercent(plusPercent);
     }
     public static void amountPlus(int threeLuckyCount,int fourLuckyCount,int fiveLuckyCount,int bonusLuckyCount,int sixLuckyCount){
-        amount = threeLuckyCount * 5000 + fourLuckyCount * 50000 + fiveLuckyCount * 1500000 + bonusLuckyCount * 30000000 + sixLuckyCount * 2000000000;
-        plusPercent = (double) amount/(double)Game.cashAmount * 100.0;
+        amount = threeLuckyCount * THREE_PRIZE + fourLuckyCount * FOUR_PRIZE + fiveLuckyCount * FIVE_PRIZE + bonusLuckyCount * BONUS_PRIZE + sixLuckyCount * SIX_PRIZE;
+        plusPercent = (double) amount/(double)Game.cashAmount * PERCENT;
     }
 }
