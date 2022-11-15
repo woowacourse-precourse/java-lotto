@@ -48,11 +48,11 @@ public class WinningLotto {
 
     public static void checkOutOfRange(int number) {
         if (number < LOTTO_MIN_VALUE || number > LOTTO_MAX_VALUE)
-            throw new IllegalArgumentException("[ERROR] input error");
+            throw new IllegalArgumentException(ERROR_FORMAT_MESSAGE);
     }
 
     public static void checkDuplicated(List<Integer> numbers, int number) {
         if (numbers.contains(number))
-            throw new IllegalArgumentException("[ERROR] input error");
+            throw new IllegalArgumentException(ERROR_FORMAT_MESSAGE);
     }
 }
