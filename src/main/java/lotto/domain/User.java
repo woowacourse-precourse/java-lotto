@@ -36,7 +36,7 @@ public class User {
 
     public static int getCountLottoGrade(LottoGrade lottoGrade) {
         return (int) lottoGrades.stream()
-                .filter(userGrade -> lottoGrade.equals(userGrade))
+                .filter(lottoGrade::equals)
                 .count();
     }
 
