@@ -2,6 +2,7 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
 import domain.Buyer;
+import domain.InputValidator;
 import domain.WinningNumber;
 import domain.Winnings;
 
@@ -11,17 +12,23 @@ import java.util.*;
 public class Application {
     public static void main(String[] args) {
         System.out.println("구입금액을 입력해 주세요.");
-        int purchaseAmount = Integer.valueOf(Console.readLine());
+        String purchaseAmountInput = Console.readLine();
+        if (!InputValidator.containOnlyNumber(purchaseAmountInput)) return;
+        int purchaseAmount = Integer.valueOf(purchaseAmountInput);
         Buyer buyer = new Buyer(purchaseAmount);
-
         System.out.println("당첨 번호를 입력해 주세요.");
         String winningNumberInput = Console.readLine();
         System.out.println("보너스 번호를 입력해 주세요.");
-        int bonusNumber = Integer.valueOf(Console.readLine());
+        String bonusNumberInput = Console.readLine();
+        if (!InputValidator.containOnlyNumber(bonusNumberInput)) return;
+        int bonusNumber = Integer.valueOf(bonusNumberInput);
         WinningNumber winningNumber = new WinningNumber(winningNumberInput, bonusNumber);
-
         Map<Winnings, Integer> winningStatistics = buyer.putWinningStatistics(winningNumber);
         List<Winnings> winnings = getKeyList(winningStatistics);
+        printStatistics(buyer, winningStatistics, winnings);
+    }
+
+    private static void printStatistics(Buyer buyer, Map<Winnings, Integer> winningStatistics, List<Winnings> winnings) {
         Collections.sort(winnings, Collections.reverseOrder());
         System.out.println("당첨 통계\n---");
         for (Winnings winning : winnings) {

@@ -34,21 +34,11 @@ public class Lotto {
     public Winnings compare(WinningNumber winningNumber) {
         int cnt = count(winningNumber);
         boolean matchBonusNumber = compareBonusNumber(winningNumber);
-        if (cnt == 6) {
-            return Winnings.FIRST;
-        }
-        if (cnt == 5 && matchBonusNumber) {
-            return Winnings.SECOND;
-        }
-        if (cnt == 5) {
-            return Winnings.THIRD;
-        }
-        if (cnt == 4) {
-            return Winnings.FOURTH;
-        }
-        if (cnt == 3) {
-            return Winnings.FIFTH;
-        }
+        if (cnt == 6) return Winnings.FIRST;
+        if (cnt == 5 && matchBonusNumber) return Winnings.SECOND;
+        if (cnt == 5) return Winnings.THIRD;
+        if (cnt == 4) return Winnings.FOURTH;
+        if (cnt == 3) return Winnings.FIFTH;
         return Winnings.NONE;
     }
 

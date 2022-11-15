@@ -39,7 +39,7 @@ public class BuyerTest {
         String s = buyer.calculateReturnRate();
         List<Lotto> buyerLotto = buyer.getBuyerLotto();
         Winnings winnings = buyerLotto.get(0).compare(winningNumber);
-        Assertions.assertThat(String.format("%.1f", (double)winnings.getPrice() / buyer.getPurchaseAmount())).isEqualTo(s);
+        Assertions.assertThat(String.format("%.1f", (double)winnings.getPrice()*100 / buyer.getPurchaseAmount())).isEqualTo(s);
     }
 
 }
