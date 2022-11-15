@@ -7,6 +7,7 @@ import static lotto.view.SystemMessage.LIMIT_NUMBER_ERROR_MESSAGE;
 import java.util.List;
 
 public class AnswerLotto {
+
     private final List<Integer> answerLotto;
     private final int bonusNumber;
 
@@ -26,7 +27,7 @@ public class AnswerLotto {
         return bonusNumber;
     }
 
-    private static void validateCheckNumberLimit(Integer num){
+    private static void validateCheckNumberLimit(Integer num) {
         if (num < 1 || num > 45) {
             throw new IllegalArgumentException(ERROR_MESSAGE + LIMIT_NUMBER_ERROR_MESSAGE);
         }
@@ -37,12 +38,15 @@ public class AnswerLotto {
             validateCheckNumberLimit(num);
         }
     }
+
     private static void validateAllLottoNumber(List<Integer> numbers) {
         validateCheckLimit(numbers);
     }
 
-    private static void validateDuplicateBonusNumber( List<Integer> answerLotto, Integer bonusNumber) {
-        if(answerLotto.contains(bonusNumber))
+    private static void validateDuplicateBonusNumber(List<Integer> answerLotto,
+            Integer bonusNumber) {
+        if (answerLotto.contains(bonusNumber)) {
             throw new IllegalArgumentException(ERROR_MESSAGE + DUPLICATE_BONUS_ERROR_MESSAGE);
+        }
     }
 }

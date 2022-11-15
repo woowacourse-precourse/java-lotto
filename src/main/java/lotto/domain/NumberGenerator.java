@@ -12,12 +12,13 @@ import lotto.domain.Lotto;
 public class NumberGenerator {
 
     private final List<Lotto> lottoGroup = new ArrayList<>();
+
     public enum LottoNumber {
         START(1), END(45), SIZE(6);
         private final Integer value;
 
         LottoNumber(Integer value) {
-            this.value =value;
+            this.value = value;
         }
 
         public Integer getValue() {
@@ -27,16 +28,17 @@ public class NumberGenerator {
     }
 
     public List<Lotto> generateLotto(int count) {
-        for (int i = 0; i <count; i++){
+        for (int i = 0; i < count; i++) {
             Lotto lotto = generateByRandom();
             lottoGroup.add(lotto);
         }
         return lottoGroup;
     }
 
-    private Lotto  generateByRandom() {
+    private Lotto generateByRandom() {
         List<Integer> randomNumbers = new ArrayList<>();
-        randomNumbers = Randoms.pickUniqueNumbersInRange(LottoNumber.START.getValue(), LottoNumber.END.getValue(), LottoNumber.SIZE.getValue());
+        randomNumbers = Randoms.pickUniqueNumbersInRange(LottoNumber.START.getValue(),
+                LottoNumber.END.getValue(), LottoNumber.SIZE.getValue());
         randomNumbers = randomNumbers.stream().sorted().collect(Collectors.toList());
         return new Lotto(randomNumbers);
     }

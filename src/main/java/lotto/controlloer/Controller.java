@@ -16,7 +16,7 @@ import lotto.view.outputView;
 
 public class Controller {
 
-    public boolean run(){
+    public boolean run() {
         try {
             Buyer buy = new Buyer(inputMoney());
             LottoGroup lottoGroup = buyLotto(buy);
@@ -26,14 +26,14 @@ public class Controller {
             printWinningMessage();
             printWinningInformation(winningDetails);
             calculateStatistic(winningDetails, buy.getMoney());
-        }catch(IllegalArgumentException e){
+        } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
             return false;
         }
         return true;
     }
 
-    private LottoGroup buyLotto(Buyer buy){
+    private LottoGroup buyLotto(Buyer buy) {
         NumberGenerator lottogenerator = new NumberGenerator();
         LottoGroup lottoGroup = new LottoGroup(lottogenerator.generateLotto(buy.getNumOfLotto()));
         printLottoGroup(lottoGroup, buy.getNumOfLotto());
@@ -43,12 +43,12 @@ public class Controller {
 
     private void printWinningInformation(Map<WinningRank, Integer> winningDetails) {
         outputView.printWinningDetails(winningDetails);
-     }
+    }
 
-     private void calculateStatistic(Map<WinningRank, Integer> winningDetails, Integer money){
-         long winningAmount = WinningStatistics.getWinningAmount(winningDetails);
-         printYield(WinningStatistics.getLottoYield(winningAmount, money));
-     }
+    private void calculateStatistic(Map<WinningRank, Integer> winningDetails, Integer money) {
+        long winningAmount = WinningStatistics.getWinningAmount(winningDetails);
+        printYield(WinningStatistics.getLottoYield(winningAmount, money));
+    }
 
     public static void printYield(double lottoYield) {
         System.out.printf(YIELD_MESSAGE, lottoYield);

@@ -9,6 +9,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 public class BuyerTest {
+
     @DisplayName("구입 금액이 1000원 미만일대 예외가 발생한다.")
     @Test
     void createBuyerMoneyLessThanTousand() {

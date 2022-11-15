@@ -24,7 +24,6 @@ public enum WinningRank {
     }
 
 
-
     public static WinningRank findWinningRank(int matchingCount, boolean containsBonusNumber) {
         return Arrays.stream(values())
                 .filter(winningRank -> winningRank.matchingCount == matchingCount)

@@ -21,9 +21,11 @@ public class WinningStatisticsTest {
         Lotto lotto7 = new Lotto(List.of(2, 13, 22, 32, 38, 45));
         Lotto lotto8 = new Lotto(List.of(1, 3, 5, 14, 22, 45));
 
-        LottoGroup lottoGroup = new LottoGroup(List.of(lotto1, lotto2, lotto3, lotto4, lotto5, lotto6, lotto7, lotto8));
+        LottoGroup lottoGroup = new LottoGroup(
+                List.of(lotto1, lotto2, lotto3, lotto4, lotto5, lotto6, lotto7, lotto8));
         AnswerLotto answerLotto = new AnswerLotto(List.of(1, 2, 3, 4, 5, 6), 7);
-        Map<WinningRank, Integer> winningDetails = WinningStatistics.getWinningDetails(lottoGroup, answerLotto);
+        Map<WinningRank, Integer> winningDetails = WinningStatistics.getWinningDetails(lottoGroup,
+                answerLotto);
 
         assertThat(winningDetails.get(WinningRank.NO_MATCH)).isEqualTo(7);
         assertThat(winningDetails.get(WinningRank.THREE_MATCH)).isEqualTo(1);
@@ -33,6 +35,7 @@ public class WinningStatisticsTest {
         assertThat(winningDetails.get(WinningRank.SIX_MATCH)).isEqualTo(0);
 
     }
+
     @DisplayName("당첨 금액을 구한다.")
     @Test
     void getWinningAmountTest() {

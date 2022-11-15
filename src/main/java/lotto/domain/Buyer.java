@@ -5,6 +5,7 @@ import static lotto.view.SystemMessage.LESS_THAN_THOUSAND_ERROR_MESSAGE;
 import static lotto.view.SystemMessage.MULTIPLE_THOUSAND_ERROR_MESSAGE;
 
 public class Buyer {
+
     private final Integer money;
     private final Integer NumOfLotto;
 
@@ -13,10 +14,12 @@ public class Buyer {
         this.money = money;
         this.NumOfLotto = getNumberOfLotto(money);
     }
-    public Integer getMoney(){
+
+    public Integer getMoney() {
         return money;
     }
-    public Integer getNumOfLotto(){
+
+    public Integer getNumOfLotto() {
         return NumOfLotto;
     }
 
@@ -25,16 +28,20 @@ public class Buyer {
         validateMultipleThousand(money);
 
     }
+
     private static void validateLessThanThousand(Integer money) {
-        if(money < 1000)
+        if (money < 1000) {
             throw new IllegalArgumentException(ERROR_MESSAGE + LESS_THAN_THOUSAND_ERROR_MESSAGE);
-    }
-    private static void validateMultipleThousand(Integer money) {
-        if(money % 1000 != 0)
-            throw new IllegalArgumentException(ERROR_MESSAGE + MULTIPLE_THOUSAND_ERROR_MESSAGE);
+        }
     }
 
-    private int getNumberOfLotto(int money){
+    private static void validateMultipleThousand(Integer money) {
+        if (money % 1000 != 0) {
+            throw new IllegalArgumentException(ERROR_MESSAGE + MULTIPLE_THOUSAND_ERROR_MESSAGE);
+        }
+    }
+
+    private int getNumberOfLotto(int money) {
         return money / 1000;
     }
 
