@@ -5,8 +5,11 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import view.Client;
+import view.PrintResult;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import static org.assertj.core.api.Assertions.*;
@@ -50,6 +53,4 @@ class LottoTest {
         Set matchNumber = server.compareLottoNumber(winLottoNumber, lottoNumber);
         assertThat(server.countMatchNumber(matchNumber)).isEqualTo(2);
     }
-
-
 }
