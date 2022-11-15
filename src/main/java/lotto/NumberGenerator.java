@@ -21,7 +21,7 @@ public class NumberGenerator {
 
     public int createBonusNumbers(List<Integer> numbers, int inputNumber) {
         checkScope(inputNumber);
-        checkOverlap(numbers, inputNumber);
+        bonusNumberOverlap(numbers, inputNumber);
         return inputNumber;
     }
 
@@ -37,7 +37,7 @@ public class NumberGenerator {
         }
     }
 
-    public void checkOverlap(List<Integer> numbers, int inputNumber) {
+    public void bonusNumberOverlap(List<Integer> numbers, int inputNumber) {
         if (numbers.contains(inputNumber)) {
             throw new IllegalArgumentException("당첨번호와 중복됩니다.");
         }
