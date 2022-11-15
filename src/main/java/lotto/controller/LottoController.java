@@ -16,16 +16,15 @@ public class LottoController {
     public void run() {
         try {
             Cost cost = createCost();
-
             LottoGroup lottoGroup = createLottoGroup(cost.getPurchaseCount());
+            printLottoGroup(cost, lottoGroup);
+
             WinningLotto winningLotto = createWinningLotto();
             BonusNumber bonusNumber = createBonusNumber(winningLotto);
 
             HitResult result = createResult(lottoGroup, winningLotto, bonusNumber);
             Profit profit = createProfit(cost.getCost(), result);
-
-            print(cost, lottoGroup, result, profit);
-
+            printResult(result, profit);
         } catch (IllegalArgumentException ex) {
             Output.printError(ex.getMessage());
         }
@@ -56,9 +55,12 @@ public class LottoController {
         return new BonusNumber(Input.inputBonusNumbers(), winningLotto);
     }
 
-    private void print(Cost cost, LottoGroup lottoGroup, HitResult result, Profit profit) {
+    private void printLottoGroup(Cost cost, LottoGroup lottoGroup) {
         Output.purchaseCountNotification(cost.getPurchaseCount());
         Output.printLottoGroup(lottoGroup);
+    }
+
+    private void printResult(HitResult result, Profit profit) {
         Output.printWinningStatistics(result);
         Output.earningsRateNotification(profit.getEarningsRate());
     }
