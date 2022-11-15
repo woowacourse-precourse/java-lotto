@@ -1,5 +1,6 @@
 package lotto;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -15,8 +16,9 @@ class IsDuplicatedWithWinningNumbersMethodTest {
     private static final String ERROR_MESSAGE = "[ERROR] 당첨 번호가 아닌 다른 번호를 입력하십시오.";
     ArrayList<Integer> winningNumbers = new ArrayList<>(List.of(1, 2, 3, 4, 5, 6));
 
+    @DisplayName("당첨 번호와 보너스 번호가 중복되면 예외가 발생한다.")
     @Test
-    void IsDuplicatedWithWinningNumbersMethodTest_메소드_예외_테스트1() {
+    void IsDuplicatedWithWinningNumbersMethodExceptionTest1() {
         initializeNumberType();
         for (int winningNumber : winningNumbers)
             numberType[winningNumber] = NumberType.WINNING;
@@ -26,8 +28,9 @@ class IsDuplicatedWithWinningNumbersMethodTest {
                 .hasMessageContaining(ERROR_MESSAGE);
     }
 
+    @DisplayName("당첨 번호와 보너스 번호가 다르면 예외가 발생하지 않는다.")
     @Test
-    void IsDuplicatedWithWinningNumbersMethodTest_메소드_정상_입력_테스트1() {
+    void IsDuplicatedWithWinningNumbersMethodExceptionTest2() {
         initializeNumberType();
         for (int winningNumber : winningNumbers)
             numberType[winningNumber] = NumberType.WINNING;
