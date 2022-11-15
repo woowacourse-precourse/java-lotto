@@ -26,6 +26,6 @@ class ReaderConverterTest {
 
         List<Integer> convertedNumbers = ReaderConverter.convertIntegerList(numbers);
 
-        assertThat(convertedNumbers).isEqualTo(Arrays.asList(1,2,3,4,5,6));
+        assertThat(convertedNumbers).isEqualTo(Arrays.asList(1, 2, 3, 4, 5, 6));
     }
 }

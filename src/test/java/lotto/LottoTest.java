@@ -1,7 +1,12 @@
-package lotto.domain;
+package lotto;
 
 import constants.ExceptionMessage;
 import java.util.Arrays;
+import lotto.domain.Balls;
+import lotto.domain.BonusBall;
+import lotto.domain.Lotto;
+import lotto.domain.Match;
+import lotto.domain.WinningBalls;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
