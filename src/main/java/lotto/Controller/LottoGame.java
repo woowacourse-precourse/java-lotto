@@ -33,7 +33,7 @@ public class LottoGame {
         OutputView.askMoney();
         String input = InputView.getInput();
         MoneyValidator.validateMoney(input);
-        int count = InputView.calculateAmount(input);
+        int count = LottoMachine.calculateAmount(input);
         OutputView.printAmount(count);
         this.amount = count;
     }
@@ -48,7 +48,7 @@ public class LottoGame {
 
     public void getWinningNumber() {
         String input = InputView.getInput();
-        Lotto lotto = InputView.calculateWinningNumber(input);
+        Lotto lotto = LottoMachine.calculateWinningNumber(input);
         LottoValidator.validateWinningNumber(lotto);
         winningNumber = lotto;
     }

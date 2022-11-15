@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.EnumMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class LottoMachine {
     public static List<Lotto> publishLotto(int count) {
@@ -51,5 +53,19 @@ public class LottoMachine {
                 .sum();
 
         return bingo;
+    }
+
+    public static int calculateAmount(String input) {
+        int money = Integer.parseInt(input);
+
+        return money / 1000;
+    }
+
+    public static Lotto calculateWinningNumber(String input) {
+        Lotto lotto = new Lotto(Stream.of(input.split("\\s*,\\s*"))
+                .map(s -> Integer.parseInt(s))
+                .collect(Collectors.toList()));
+
+        return lotto;
     }
 }
