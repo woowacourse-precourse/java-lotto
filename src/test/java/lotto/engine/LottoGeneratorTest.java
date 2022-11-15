@@ -1,7 +1,5 @@
 package lotto.engine;
 
-import static lotto.Application.ERROR_PREFIX;
-
 import java.util.List;
 import lotto.model.Lotto;
 import org.assertj.core.api.Assertions;
@@ -14,10 +12,10 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 class LottoGeneratorTest {
     private static final int AMOUNT_UNIT = 1_000;
-    private static final String EMPTY_INPUT_ERROR_MESSAGE = ERROR_PREFIX + "금액을 입력하세요";
-    private static final String NOT_DIGIT_ERROR_MESSAGE = ERROR_PREFIX + "금액은 숫자로 입력하세요.";
-    private static final String DIVIDE_UNIT_ERROR_MESSAGE = ERROR_PREFIX + "금액은 1,000원 단위로 입력하세요.";
-    private static final String AMOUNT_RANGE_ERROR_MESSAGE = ERROR_PREFIX + "금액은 100,000원 이하 1000원 이상으로 입력하세요.";
+    private static final String EMPTY_INPUT_ERROR_MESSAGE = "금액을 입력하세요";
+    private static final String NOT_DIGIT_ERROR_MESSAGE = "금액은 숫자로 입력하세요.";
+    private static final String DIVIDE_UNIT_ERROR_MESSAGE = "금액은 1,000원 단위로 입력하세요.";
+    private static final String AMOUNT_RANGE_ERROR_MESSAGE = "금액은 100,000원 이하 1000원 이상으로 입력하세요.";
 
     private LottoGenerator lottoGenerator;
 

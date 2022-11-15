@@ -1,7 +1,5 @@
 package lotto.model;
 
-import static lotto.Application.ERROR_PREFIX;
-
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Stream;
@@ -18,12 +16,9 @@ import org.junit.jupiter.params.provider.ArgumentsSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 class WinningNumberTest {
-    private static final String EMPTY_INPUT_ERROR_MESSAGE =
-            ERROR_PREFIX + "번호를 입력하세요.";
-    private static final String INPUT_FORMAT_ERROR_MESSAGE =
-            ERROR_PREFIX + "당첨 숫자는 1~45 숫자를 '0,0,0,0,0,0' 형식으로 입력해주세요.";
-    private static final String BONUS_FORMAT_ERROR_MESSAGE =
-            ERROR_PREFIX + "보너스 숫자는 1~45 숫자를 당첨 숫자와 중복되지 않게 입력해주세요";
+    private static final String EMPTY_INPUT_ERROR_MESSAGE = "번호를 입력하세요.";
+    private static final String INPUT_FORMAT_ERROR_MESSAGE = "당첨 숫자는 1~45 숫자를 '0,0,0,0,0,0' 형식으로 입력해주세요.";
+    private static final String BONUS_FORMAT_ERROR_MESSAGE = "보너스 숫자는 1~45 숫자를 당첨 숫자와 중복되지 않게 입력해주세요";
 
     WinningNumber winningNumber;
 

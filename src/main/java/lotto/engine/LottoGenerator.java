@@ -1,7 +1,5 @@
 package lotto.engine;
 
-import static lotto.Application.ERROR_PREFIX;
-
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -11,10 +9,10 @@ public class LottoGenerator {
     private static final int MINIMUM_LOTTO_COUNT = 1;
     private static final int AMOUNT_UNIT = 1_000;
     private static final int AMOUNT_LIMIT = 100_000;
-    private static final String EMPTY_INPUT_ERROR_MESSAGE = ERROR_PREFIX + "금액을 입력하세요";
-    private static final String NOT_DIGIT_ERROR_MESSAGE = ERROR_PREFIX + "금액은 숫자로 입력하세요.";
-    private static final String DIVIDE_UNIT_ERROR_MESSAGE = ERROR_PREFIX + "금액은 1,000원 단위로 입력하세요.";
-    private static final String AMOUNT_RANGE_ERROR_MESSAGE = ERROR_PREFIX + "금액은 100,000원 이하 1000원 이상으로 입력하세요.";
+    private static final String EMPTY_INPUT_ERROR_MESSAGE = "금액을 입력하세요";
+    private static final String NOT_DIGIT_ERROR_MESSAGE = "금액은 숫자로 입력하세요.";
+    private static final String DIVIDE_UNIT_ERROR_MESSAGE = "금액은 1,000원 단위로 입력하세요.";
+    private static final String AMOUNT_RANGE_ERROR_MESSAGE = "금액은 100,000원 이하 1000원 이상으로 입력하세요.";
 
     private final NumberGenerator numberGenerator;
 
