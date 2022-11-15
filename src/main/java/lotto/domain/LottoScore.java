@@ -34,6 +34,10 @@ public class LottoScore {
         isSix(score);
     }
 
+    public static void clear() {
+        scoreStore.clear();
+    }
+
     private static void isSix(int score) {
         if (score == SIX_SCORE) {
             Integer count = scoreStore.get(SIX);
