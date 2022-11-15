@@ -97,7 +97,7 @@
 
 #### LottoController
 - [X] 로또 구매 정보 출력 - LottoController#printPurchaseList(Buyer buyer)
-- [ ] 구매한 로또 당첨 여부 확인 및 기록 - LottoController#checkAndRecord(Lotto lotto, WinningLotto winningLotto)
+- [X] 구매한 로또 당첨 여부 확인 및 기록 - LottoController#checkAndRecord(Buyer Buyer, WinningLotto winningLotto)
 - [ ] 로또 당첨 정보 출력 - LottoController#printWinningRecord(Statistics statistics)
 ---
 
