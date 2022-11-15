@@ -6,6 +6,7 @@ import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import static org.assertj.core.api.Assertions.as;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import lotto.domain.Calculator;
@@ -24,5 +25,13 @@ public class CalculatorTest {
         int bonus = 7;
         Calculator.calRank(result, lottos, numbers, bonus);
         assertThat(result).isEqualTo(List.of(1, 1, 1, 0, 0));
+    }
+
+    @DisplayName("수익률 계산 테스트")
+    @Test
+    void catRevenueTest() {
+        List<Integer> result = Arrays.asList(0, 0, 1, 1, 1);
+        double revenue = Calculator.calRevenue(result, 10000000);
+        assertThat(revenue).isEqualTo(15.6);
     }
 }
