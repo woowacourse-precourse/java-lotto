@@ -20,17 +20,27 @@ public class Prize {
     static final String BONUS_NUMBER = "보너스 번호를 입력해 주세요.";
     static final String WINNING_STATISTICS = "당첨 통계\n" + "---\n" + "3개 일치 (5,000원) - %d개\n"
             + "4개 일치 (50,000원) - %d개\n" + "5개 일치 (1,500,000원) - %d개\n"
-            + "5개 일치, 보너스 볼 일치 (30,000,000원) - %d개\n" + "6개 일치 (2,000,000,000원) - %d개";
+            + "5개 일치, 보너스 볼 일치 (30,000,000원) - %d개\n" + "6개 일치 (2,000,000,000원) - %d개\n";
+
+    static final String YIELD = "총 수익률은 %.1f%%입니다.";
 
     static final int LOTTO_COUNT = 1000;
+    static final int FIRST_MONEY = 2000000000;
+    static final int SECOND_MONEY = 30000000;
+    static final int THIRD_MONEY = 1500000;
+    static final int FOURTH_MONEY = 50000;
+    static final int FIFTH_MONEY = 5000;
 
     public Prize() {
-        int lottoCount = purchaseLotto();
+        int money = purchaseLotto();
+        int lottoCount =  (money/ LOTTO_COUNT);
         System.out.printf(PURCHASE_LOTTO, lottoCount);
         makeMyLotto(lottoCount);
         inputWinningLotto();
         compareLotto(winningLotto, myLottoNumbers);
-        lottoWinningHistory();
+        int earn = lottoWinningHistory();
+        getYield(money, earn);
+
     }
 
     public int purchaseLotto() {
@@ -38,7 +48,7 @@ public class Prize {
         String inputMoney = Console.readLine();
         validateMoney(inputMoney);
         int money = parseInt(inputMoney);
-        return money / LOTTO_COUNT;
+        return money;
     }
 
     public void makeMyLotto(Integer lottoCount) {
@@ -91,13 +101,25 @@ public class Prize {
         }
     }
 
-    public void lottoWinningHistory() {
+    public int lottoWinningHistory() {
         Integer firstPrize = countWinningTicket.get(0);
         Integer secondPrize = countWinningTicket.get(1);
         Integer thirdPrize = countWinningTicket.get(2);
         Integer fourthPrize = countWinningTicket.get(3);
         Integer fifthPrize = countWinningTicket.get(4);
+
         System.out.printf(WINNING_STATISTICS, fifthPrize, fourthPrize, thirdPrize, secondPrize, firstPrize);
+        int earn = (FIRST_MONEY * firstPrize) + (SECOND_MONEY * secondPrize) + (THIRD_MONEY * thirdPrize)
+                + (FOURTH_MONEY * fourthPrize) + (FIFTH_MONEY * fifthPrize);
+
+        return earn;
+    }
+
+    public void getYield(int money, int earn){
+        Double buyMoney = Double.valueOf(money);
+        Double earnMoney = Double.valueOf(earn);
+        Double yield = (earnMoney/buyMoney) * 100;
+        System.out.printf(YIELD, yield);
     }
 
     private void validateMoney(String moneyValue) {
