@@ -3,6 +3,7 @@ package lotto;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class User {
@@ -20,6 +21,7 @@ public class User {
     public void generatingLotto(int lottoCount) {
         for (int i = 0; i < lottoCount; i++) {
             this.boughtLotto.add(Randoms.pickUniqueNumbersInRange(1, 45, 6));
+            Collections.sort(this.boughtLotto.get(i));
         }
     }
 
@@ -44,5 +46,9 @@ public class User {
         for (List<Integer> integers : this.boughtLotto) {
             System.out.println(integers);
         }
+    }
+
+    public List<List<Integer>> getBoughtLotto(){
+        return this.boughtLotto;
     }
 }
