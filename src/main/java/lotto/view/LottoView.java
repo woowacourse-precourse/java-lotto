@@ -40,6 +40,11 @@ public class LottoView {
         System.out.println(Message.INPUT_BONUS_NUMBER);
     }
 
+    // 당첨 통계 제목 출력 기능
+    public void displayWinStatsHead() {
+        System.out.println(Message.WIN_STATS_HEAD);
+    }
+
 //    당첨 통계 보여주는 기능
 //    public void displayYield() {}
 
