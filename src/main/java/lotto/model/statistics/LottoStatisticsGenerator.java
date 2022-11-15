@@ -1,16 +1,14 @@
 package lotto.model.statistics;
 
-import lotto.model.payment.Payment;
-
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public class LottoStatisticsGenerator {
-    private final Payment payment;
+    private final int totalPayment;
 
-    public LottoStatisticsGenerator(Payment payment) {
-        this.payment = new Payment(payment);
+    public LottoStatisticsGenerator(int totalPayment) {
+        this.totalPayment = totalPayment;
     }
 
     public LottoStatistics generate(List<LottoResult> results) {
@@ -23,6 +21,6 @@ public class LottoStatisticsGenerator {
             int resultCount = resultMap.getOrDefault(result, 0) + 1;
             resultMap.put(result, resultCount);
         }
-        return new LottoStatistics(payment, resultMap);
+        return new LottoStatistics(totalPayment, resultMap);
     }
 }

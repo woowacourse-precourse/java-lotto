@@ -1,18 +1,16 @@
 package lotto.model.statistics;
 
-import lotto.model.payment.Payment;
-
 import java.text.DecimalFormat;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class LottoStatistics {
     private static final DecimalFormat decimalFormatter = new DecimalFormat("###,###.#");
-    private final Payment payment;
+    private final int totalPayment;
     private final Map<LottoResult, Integer> resultMap;
 
-    LottoStatistics(Payment payment, Map<LottoResult, Integer> resultMap) {
-        this.payment = payment;
+    LottoStatistics(int totalPayment, Map<LottoResult, Integer> resultMap) {
+        this.totalPayment = totalPayment;
         this.resultMap = resultMap;
     }
 
@@ -39,7 +37,7 @@ public class LottoStatistics {
     public String getReturnRateDescription() {
         AtomicInteger totalPrize = new AtomicInteger();
         resultMap.forEach((lottoResult, count) -> totalPrize.addAndGet(lottoResult.getPrize() * count));
-        float returnRate = 100 * (totalPrize.floatValue() / (float) payment.getAmount());
+        float returnRate = 100 * (totalPrize.floatValue() / (float) totalPayment);
 
         return "총 수익률은 " + decimalFormatter.format(returnRate) + "%입니다.";
     }

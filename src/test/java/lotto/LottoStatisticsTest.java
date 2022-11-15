@@ -1,7 +1,5 @@
 package lotto;
 
-import lotto.model.payment.Payment;
-
 import lotto.model.statistics.LottoResult;
 import lotto.model.statistics.LottoStatistics;
 import lotto.model.statistics.LottoStatisticsGenerator;
@@ -82,7 +80,7 @@ public class LottoStatisticsTest {
     @Test
     void getHistoryDescriptionTest() {
         assertSimpleTest(() -> {
-            LottoStatisticsGenerator generator = new LottoStatisticsGenerator(new Payment(8000));
+            LottoStatisticsGenerator generator = new LottoStatisticsGenerator(8000);
             List<LottoResult> lottoResults = List.of(
                     LottoResult.MISS,
                     LottoResult.FOURTH,
@@ -109,7 +107,7 @@ public class LottoStatisticsTest {
     @Test
     void getReturnRateDescriptionTest() {
         assertSimpleTest(() -> {
-            LottoStatisticsGenerator generator = new LottoStatisticsGenerator(new Payment(8000));
+            LottoStatisticsGenerator generator = new LottoStatisticsGenerator(8000);
             List<LottoResult> lottoResults = List.of(
                     LottoResult.MISS,
                     LottoResult.FOURTH,
