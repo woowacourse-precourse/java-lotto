@@ -60,4 +60,14 @@ public class UserInterface {
             throw new IllegalArgumentException("[ERROR] 보너스 번호는 당첨 번호와 중복되면 안됩니다.");
         }
     }
+
+    public static int inputBonusNumber(List<Integer> lottoNumbers){
+        int bonusNumber = 0;
+
+        System.out.println("\n보너스 번호를 입력해 주세요.");
+        bonusNumber = Integer.parseInt(Console.readLine());
+        checkWinNumbersContainBonusNumber(lottoNumbers,bonusNumber);
+
+        return bonusNumber;
+    }
 }
