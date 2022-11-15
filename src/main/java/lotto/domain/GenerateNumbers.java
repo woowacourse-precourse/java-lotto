@@ -22,17 +22,17 @@ public class GenerateNumbers {
 		return lottoNumbers;
 	}
 	
-	public String winningNubmer() {
+	public String randomNubmer() {
 		System.out.println("구입 금액을 입력해 주세요.");
 		String inputAmount = Console.readLine();
 		int purchaseAmount = Integer.parseInt(inputAmount);
 		int lotteryCount = purchaseAmount / LOTTO_PRICE;
 		
-		String winningNumbers = "";
+		String randomNumbers = "";
 		for (int repeat = 0; repeat < lotteryCount; repeat++) {
-			winningNumbers += lotto() + "\n";
+			randomNumbers += lotto() + "\n";
 		}
-		winningNumbers = lotteryCount + "개를 구매했습니다.\n" + winningNumbers;
-		return winningNumbers;
+		randomNumbers = lotteryCount + "개를 구매했습니다.\n" + randomNumbers;
+		return randomNumbers;
 	}
 }
