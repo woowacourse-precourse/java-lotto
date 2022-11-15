@@ -15,13 +15,14 @@ public class Application {
             Set<Lotto> playerLotto = player.buyLotto();
 
             List<Integer> winningNumbers = player.pickNumbers();
-            int bonusNumber = player.pickBonus();
+            int bonusNumber = player.pickBonus(winningNumbers);
 
-
+            Judgement judgement = new Judgement();
+            judgement.compare(playerLotto, winningNumbers, bonusNumber);
+            judgement.winningResult(playerLotto);
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
-
     }
 
 }

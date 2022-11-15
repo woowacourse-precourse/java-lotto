@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -15,6 +16,7 @@ public class Player {
         System.out.println("구입금액을 입력해 주세요.");
         String money = Console.readLine();
         int numberOfLotto = calculate(money);
+        playerLotto = new HashSet<>();
         for(int i=0; i< numberOfLotto; i++) {
             List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
             playerLotto.add(new Lotto(numbers));
@@ -24,15 +26,15 @@ public class Player {
     }
 
     public int calculate(String money) throws IllegalArgumentException {
-        int numberOfLotto = 0;
-        numberOfLotto = changeToNumber(money);
-        if (numberOfLotto % 1000 != 0) {
+        int cost = changeToNumber(money);
+        int numberOfLotto = cost/1000;
+        if (cost % 1000 != 0) {
             throw new IllegalArgumentException("[ERROR] 구입 금액은 1,000원 단위여야 합니다.");
         }
         return numberOfLotto;
     }
 
-    public int changeToNumber(String input) throws IllegalArgumentException {
+    public static int changeToNumber(String input) throws IllegalArgumentException {
         int number;
         try {
             number = Integer.parseInt(input);
@@ -45,7 +47,8 @@ public class Player {
     public void buyResult(int numberOfLotto) {
         System.out.println(numberOfLotto + "개를 구매했습니다.");
         for(Lotto lotto : playerLotto) {
-            System.out.println(lotto);
+            List<Integer> numbers = lotto.getNumbers();
+            System.out.println(numbers);
         }
     }
 
@@ -64,12 +67,17 @@ public class Player {
         return winningNumbers;
     }
 
-    public int pickBonus() {
+    public int pickBonus(List<Integer> winningNumbers) {
         System.out.println("보너스 번호를 입력해 주세요.");
         String input = Console.readLine();
         int bonusNumber = changeToNumber(input);
         if (bonusNumber < 1 || bonusNumber > 45) {
             throw new IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
+        }
+        for (int number : winningNumbers) {
+            if (number == bonusNumber) {
+                throw new IllegalArgumentException("[ERROR] 당첨 번호와 다른 숫자를 입력해야 합니다.");
+            }
         }
         return bonusNumber;
     }
