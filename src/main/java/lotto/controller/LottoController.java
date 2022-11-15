@@ -31,6 +31,7 @@ public class LottoController {
         WinningLotto winningLotto = new WinningLotto(winning, bonus);
         checkAndRecord(buyer, winningLotto);
 
+        printWinningRecord(statistics);
     }
 
     private void printPurchaseList(Buyer buyer) {
@@ -43,5 +44,10 @@ public class LottoController {
             Rank rank = judgement.getLottoRank(lotto, winningLotto);
             statistics.record(rank);
         }
+    }
+
+    private void printWinningRecord(Statistics statistics) {
+        messagePrinter.printDynamicWinningRecord(statistics);
+        messagePrinter.printDynamicEarningsRate(statistics);
     }
 }
