@@ -23,5 +23,18 @@ class LottoTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+    @Test
+    void createLottoBySmallSize() {
+        assertThatThrownBy(() -> new Lotto(List.of(1, 2, 3, 4, 5)))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+
+    @Test
+    void createLottoByInvalidNumber() {
+        assertThatThrownBy(() -> new Lotto(List.of(1, 2, 3, 4, 0, 5)))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
     // 아래에 추가 테스트 작성 가능
 }

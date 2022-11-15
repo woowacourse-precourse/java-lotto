@@ -1,15 +1,17 @@
 package lotto;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
-import lotto.Lotto.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import static lotto.Exceptions.*;
+import static lotto.Lotto.*;
 import static lotto.Output.*;
 
 public class Application {
+
+    public static boolean error_Status = false;
 
     public static List<Integer> issue_Number(){
         return Randoms.pickUniqueNumbersInRange(1, 45, 6);
@@ -72,20 +74,6 @@ public class Application {
         return list;
     }
 
-    public static List<List<Integer>> result_of_each(List<List<Integer>> issue_numbers, List<Integer> winner_number, int bonus_number){
-        List<Integer> issue_number;
-        List<Integer> temp = new ArrayList<>();
-        List<List<Integer>> result = new ArrayList<>();
-        for(int i=0; i<issue_numbers.size(); i++){
-            issue_number = issue_numbers.get(i);
-            temp.add(compare(issue_number,winner_number));
-            temp.add(compare_bonus(issue_number, bonus_number));
-            result.add(temp);
-            temp = new ArrayList<>();
-        }
-        return result;
-    }
-
     public static List<Integer> count_prize(List<List<Integer>> results){
         int i=0;
         List<Integer> prize = new ArrayList<>();
@@ -129,18 +117,6 @@ public class Application {
         return prize;
     }
 
-    public static int compare(List<Integer> issue_number, List<Integer> winner_number){
-        int count = 0;
-        for(int i=0; i<winner_number.size(); i++){
-            if(issue_number.contains(winner_number.get(i))) count++;
-        }
-        return count;
-    }
-
-    public static int compare_bonus(List<Integer> issue_number, int bonus_number){
-        if(issue_number.contains(bonus_number)) return 1;
-        return 0;
-    }
 
     public static void statistic_Output(List<Integer> prizeCount){
         int init=4;
@@ -184,11 +160,11 @@ public class Application {
         }
     }
 
-    public static void start(){
+    public static void start() {
         purchase();
     }
 
-    public static void purchase(){
+    public static void purchase() {
         String purchase_Input;
         List<List<Integer>> issue_Numbers;
         int purchaseAmount;
@@ -197,7 +173,9 @@ public class Application {
         purchase_Output();
         purchase_Input = Input();
         Number_exception(purchase_Input);
+        if(error_Status) return;
         Unit_exception(purchase_Input);
+        if(error_Status) return;
         purchaseAmount = StringtoInteger(purchase_Input);
         purchase_amount = purchase_Amount(purchaseAmount);
         purchase_Amount_Output(purchase_amount);
@@ -206,7 +184,7 @@ public class Application {
         lotto(issue_Numbers, purchaseAmount);
     }
 
-    public static void lotto(List<List<Integer>> issue_Numbers, int purchaseAmount){
+    public static void lotto(List<List<Integer>> issue_Numbers, int purchaseAmount) {
         String[] Lotto_Num;
         List<Integer> winner_number;
 
@@ -214,29 +192,34 @@ public class Application {
         String Lotto_Input = Input();
         Lotto_Num = replace_blank(split(Lotto_Input));
         Lotto_Number_exception(Lotto_Num);
+        if(error_Status) return;
         winner_number = StringtoInt(Lotto_Num);
-        bonus(issue_Numbers, winner_number, purchaseAmount);
+        Lotto lotto = new Lotto(winner_number);
+        bonus(issue_Numbers, lotto, purchaseAmount);
 
     }
 
-    public static void bonus(List<List<Integer>> issue_Numbers, List<Integer> winner_number, int purchasAmount){
+    public static void bonus(List<List<Integer>> issue_Numbers, Lotto lotto, int purchasAmount) {
         String bonus_number;
         int bonus_Number;
 
         bonus_Output();
-        bonus_number =  Input();
+        bonus_number = Input();
         Range_exception(bonus_number);
+        if(error_Status) return;
         Number_exception(bonus_number);
+        if(error_Status) return;
         bonus_Number = StringtoInteger(bonus_number);
-        Duplicate_exception_bonus(bonus_Number, winner_number);
-        result(issue_Numbers, winner_number,bonus_Number ,purchasAmount);
+        Duplicate_exception_bonus(bonus_Number, lotto);
+        if(error_Status) return;
+        result(issue_Numbers, lotto, bonus_Number, purchasAmount);
     }
 
-    public static void result(List<List<Integer>> issue_Numbers, List<Integer> winner_number, int bonus_Number, int purchaseAmount){
+    public static void result(List<List<Integer>> issue_Numbers, Lotto lotto, int bonus_Number, int purchaseAmount) {
         List<Integer> prizeCount;
 
         result_Output();
-        prizeCount = count_prize(result_of_each(issue_Numbers, winner_number, bonus_Number));
+        prizeCount = count_prize(result_of_each(issue_Numbers, lotto, bonus_Number));
         statistic_Output(prizeCount);
         total_Return_Output(total_Rate_Of_Return(prizeCount, purchaseAmount));
 
@@ -244,12 +227,8 @@ public class Application {
 
     public static void main(String[] args) {
 
+        error_Status = false;
         start();
-//        Lotto lotto_number = new Lotto(StringtoInt(Lotto_Num));
-//        System.out.println(lotto_number);
-
-
-//        Lotto winning_number = new Lotto(number);
 
     }
 }
