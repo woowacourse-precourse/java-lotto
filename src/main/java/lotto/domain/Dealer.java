@@ -36,4 +36,8 @@ public class Dealer {
         DealerValidator.validLottoContainsNumber(lotto.getNumbers(), bonusNumber);
         DealerValidator.validBetween1And45(bonusNumber);
     }
+
+    public List<Integer> getNumbers() {
+        return lotto.getNumbers();
+    }
 }

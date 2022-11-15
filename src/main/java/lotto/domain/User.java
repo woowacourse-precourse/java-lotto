@@ -1,7 +1,7 @@
 package lotto.domain;
 
 import camp.nextstep.edu.missionutils.Console;
-import lotto.LottoGenerator;
+import lotto.util.LottoGenerator;
 import lotto.util.Message;
 import lotto.validate.UserValidator;
 import lotto.validate.Validator;
@@ -33,5 +33,9 @@ public class User {
     private void printLottos() {
         System.out.printf(Message.BUY_LOTTO, lottos.size());
         lottos.forEach(System.out::println);
+    }
+
+    public List<Lotto> getLottos() {
+        return lottos;
     }
 }
