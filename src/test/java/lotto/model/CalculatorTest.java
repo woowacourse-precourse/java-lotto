@@ -35,7 +35,7 @@ class CalculatorTest {
     @Test
     @DisplayName("로또 순위 개수 계산 테스트")
     void countLottoRanksTest() {
-        Assertions.assertThat(calculator.countLottoRanks(userLottos)).isEqualTo(List.of(7, 0, 0, 0, 0, 1));
+        Assertions.assertThat(calculator.countLottoRanks(userLottos)).isEqualTo(new int[] {7, 0, 0, 0, 0, 1});
     }
 
     @Test
