@@ -15,9 +15,12 @@
 
 - 당첨 번호 입력 받기 ->Target_Lotto.get_target & Target_Lotto.String_to_Lotto
 - 보너스 번호 입력 받기 -> Target_Lotto.bonus_num
-- 
+- 당첨 번호와 사용자 번호 하나 비교 -> Stats.compare
+- 당첨 번호와 모든 사용자 번호 비교 -> Stats.get_rank
+- 수익률 확인 및 출력 -> Stats.get_yield, Stats.total_cost, Stats.print_result
 
 ---
+
 
 
 ## 🚀 기능 요구 사항
@@ -61,11 +64,10 @@
 ### 추가된 요구 사항
 
 - 함수(또는 메서드)의 길이가 15라인을 넘어가지 않도록 구현한다.
-    - 함수(또는 메서드)가 한 가지 일만 잘 하도록 구현한다.
-- else 예약어를 쓰지 않는다.
-    - 힌트: if 조건절에서 값을 return하는 방식으로 구현하면 else를 사용하지 않아도 된다.
-    - else를 쓰지 말라고 하니 switch/case로 구현하는 경우가 있는데 switch/case도 허용하지 않는다.
-- Java Enum을 적용한다.
+   
+- else 예약어를 쓰지 않는다. ->ctrl+shift+f 로 확인
+    
+- Java Enum을 적용한다. -> Rank, Error Enum으로 작성
+
 - 도메인 로직에 단위 테스트를 구현해야 한다. 단, UI(System.out, System.in, Scanner) 로직은 제외한다.
-    - 핵심 로직을 구현하는 코드와 UI를 담당하는 로직을 분리해 구현한다.
-    - 단위 테스트 작성이 익숙하지 않다면 `test/java/lotto/LottoTest`를 참고하여 학습한 후 테스트를 구현한다.
+  

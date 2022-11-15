@@ -27,10 +27,10 @@ public class Target_Lotto {
     public static int bonus_num(Lotto lotto, int bonus) {
 
         if (bonus < 1 || bonus > 45) {
-            throw new IllegalArgumentException("[ERROR] 보너스 숫자는 1-45사이 하나의 숫자입니다");
+            throw new IllegalArgumentException(Error.BonusRangeError.print());
         }
         if (lotto.numbers.contains(bonus)) {
-            throw new IllegalArgumentException("[ERROR] 로또 숫자는 중복되면 안됩니다(보너스 점수 중복).");
+            throw new IllegalArgumentException(Error.BonusMultiError.print());
         }
         return bonus;
     }
