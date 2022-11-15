@@ -1,9 +1,9 @@
 package lotto.dto.lotterystore;
 
-public class MoneyForPurchase {
+public class MoneyDto {
 	private final String money;
 
-	public MoneyForPurchase(String money) {
+	public MoneyDto(String money) {
 		this.money = money;
 	}
 
