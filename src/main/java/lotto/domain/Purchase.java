@@ -2,6 +2,9 @@ package lotto.domain;
 
 import lotto.message.ErrorMessage;
 
+import java.util.HashMap;
+import java.util.List;
+
 public class Purchase {
     private final int money;
 
@@ -27,7 +30,8 @@ public class Purchase {
         }
     }
 
-    public int price() {
-        return money;
+    public HashMap<Integer, List<Integer>> lottoPurchase() {
+        LottoGenerator lottoGenerator = new LottoGenerator(money);
+        return lottoGenerator.userLottoNumbers();
     }
 }
