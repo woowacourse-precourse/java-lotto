@@ -11,5 +11,14 @@ public class Game {
         LottoCashier lottoCashier = new LottoCashier();
         int count = lottoCashier.getLottoCount(money);
         List<Lotto> lottos = lottoCashier.createLottoList(count);
+
+        winningNumbers = setWinningNumbers();
+
+    }
+
+    private Lotto setWinningNumbers() {
+        List<Integer> inputNumbers = InputView.inputWinningNumbers();
+        Lotto winningNumber = new Lotto(inputNumbers);
+        return winningNumber;
     }
 }
