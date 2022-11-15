@@ -11,9 +11,9 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 public class RankingTable {
-    private final Map<Ranking, Integer> frequenciesByRank;
+    private final Map<Ranking, Frequency> frequenciesByRank;
 
-    public RankingTable(Map<Ranking, Integer> frequenciesByRank) {
+    public RankingTable(Map<Ranking, Frequency> frequenciesByRank) {
         this.frequenciesByRank = frequenciesByRank;
     }
 
@@ -30,19 +30,18 @@ public class RankingTable {
                 .reduce(BigDecimal.ZERO, BigDecimal::add);
     }
 
-    private BigDecimal multiplyCashAndFrequency(Map.Entry<Ranking, Integer> entry) {
-        BigDecimal cash = BigDecimal.valueOf(getCashOfRanking(entry));
-        BigDecimal frequency = BigDecimal.valueOf(getFrequency(entry));
+    private BigDecimal multiplyCashAndFrequency(Map.Entry<Ranking, Frequency> entry) {
+        BigDecimal cash = getCashOfRanking(entry.getKey());
+        BigDecimal frequency = getFrequency(entry.getValue());
         return cash.multiply(frequency);
     }
 
-    private int getCashOfRanking(Map.Entry<Ranking, Integer> entry) {
-        Ranking value = entry.getKey();
-        return value.getCash();
+    private BigDecimal getCashOfRanking(Ranking value) {
+        return value.getCashToBigDecimal();
     }
 
-    private int getFrequency(Map.Entry<Ranking, Integer> entry) {
-        return entry.getValue();
+    private BigDecimal getFrequency(Frequency frequency) {
+        return frequency.toBigDecimal();
     }
 
     private String changeToRateOfReturnFormat(BigDecimal rateOfReturn) {
@@ -54,7 +53,7 @@ public class RankingTable {
         return frequenciesByRank.entrySet()
                 .stream()
                 .sorted(Comparator.comparing(entry -> entry.getKey().getCash()))
-                .map(entry -> List.of(entry.getKey().getNumberOfMatching(), entry.getKey().getCashInDecimalFormat(), String.valueOf(entry.getValue())))
+                .map(entry -> List.of(entry.getKey().getNumberOfMatching(), entry.getKey().getCashInDecimalFormat(), entry.getValue().toString()))
                 .collect(Collectors.toList());
     }
 }

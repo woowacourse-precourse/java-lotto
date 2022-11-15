@@ -1,5 +1,6 @@
 package lotto.domain.lottomachine.ranking;
 
+import java.math.BigDecimal;
 import java.text.DecimalFormat;
 import java.util.Arrays;
 
@@ -42,5 +43,9 @@ public enum Ranking {
     public String getCashInDecimalFormat() {
         DecimalFormat formatter = new DecimalFormat("###,###");
         return formatter.format(cash);
+    }
+
+    public BigDecimal getCashToBigDecimal() {
+        return BigDecimal.valueOf(cash);
     }
 }
