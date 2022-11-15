@@ -5,7 +5,7 @@ import java.util.List;
 
 public enum Rank {
     FIRST(6, 2_000_000_000L, "6개 일치 (2,000,000,000원)"),
-    SECOND(-1, 30_000_000, "5개 일치, 보너스 볼 일치 (30,000,000원)"),
+    SECOND(2, 30_000_000, "5개 일치, 보너스 볼 일치 (30,000,000원)"),
     THIRD(5, 1_500_000, "5개 일치 (1,500,000원)"),
     FOURTH(4, 50_000, "4개 일치 (50,000원)"),
     FIFTH(3, 5_000, "3개 일치 (5,000원)"),
@@ -29,6 +29,16 @@ public enum Rank {
     }
     public String getMessage(){
         return message;
+    }
+
+    public static int[] calculateRank(LottoTickets lottoTickets, Lotto winningLotto, int bonusNumber){
+        List<Lotto> lottos = lottoTickets.getLottoTickets();
+        int[] result = new int[7];
+        for(int i = 0; i < lottos.size(); i++){
+            Rank rank = Rank.getRank(lottos.get(i), winningLotto, bonusNumber);
+            result[rank.count]++;
+        }
+        return result;
     }
 
     public static Rank getRank(Lotto lotto, Lotto winningNumber, int bonusNumber){
