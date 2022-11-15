@@ -28,7 +28,7 @@ public class Collector {
 
         for (Lotto lotto : lottoList) {
             Rank rank = lotto.compare(winningNumbers, bonusNumber);
-            if(rank != null) {
+            if (rank != null) {
                 rankResults[rank.ordinal()]++;
             }
         }
@@ -38,7 +38,6 @@ public class Collector {
 
     private void printRankResults(List<Integer> results) {
         Rank[] values = Rank.values();
-        DecimalFormat formatter = new DecimalFormat("###,###");
 
         System.out.println("당첨 통계");
         System.out.println("---");
@@ -48,7 +47,7 @@ public class Collector {
             if (i == 3) { // 보너스 볼
                 System.out.print(", 보너스 볼 일치");
             }
-            System.out.println(" (" + formatter.format(value.getPrize()) + "원) - " + results.get(i) + "개\n");
+            System.out.printf(" (%,d원) - %,d개\n", value.getPrize(), results.get(i));
         }
     }
 }
