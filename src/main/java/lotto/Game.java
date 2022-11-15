@@ -22,6 +22,24 @@ public class Game {
         }
         return checkedAmount;
     }
+
+    public List<Integer> inputNumbers(){
+        System.out.println("\n"+String.format(PURCHASE_RESULT.message(), user.getLotteryCount(), user.getLotteryList()));
+
+        System.out.println(WINNING_NUMBERS.message());
+        String numbers = camp.nextstep.edu.missionutils.Console.readLine();
+
+        return checker.checkNumbersInput(numbers);
+    }
+
+    public int inputBonusNumber(){
+        System.out.println("\n"+BONUS_NUMBERS.message());
+        String bonusNumber = camp.nextstep.edu.missionutils.Console.readLine();
+
+        return checker.checkNumber(bonusNumber);
+
+    }
+
     public static final Checker checker = new Checker();
     private User user;
     private WinningLotto winningLotto;
@@ -31,10 +49,6 @@ public class Game {
     }
 
     public void play() {
-        String numbers;
-        String bonusNumber;
-        List<Integer> checkedNumbers;
-        int checkedBonusNumber;
         List<Lotto> lotteries;
         List<Result> results;
         int winnings;
@@ -47,21 +61,7 @@ public class Game {
 
         user = new User(inputAmount());
 
-        System.out.println();
-        System.out.println(String.format(PURCHASE_RESULT.message(), user.getLotteryCount(), user.getLotteryList()));
-
-        System.out.println(WINNING_NUMBERS.message());
-        numbers = camp.nextstep.edu.missionutils.Console.readLine();
-
-        checkedNumbers = checker.checkNumbersInput(numbers);
-
-        System.out.println();
-        System.out.println(BONUS_NUMBERS.message());
-        bonusNumber = camp.nextstep.edu.missionutils.Console.readLine();
-
-        checkedBonusNumber = checker.checkNumber(bonusNumber);
-
-        winningLotto = new WinningLotto(checkedNumbers, checkedBonusNumber);
+        winningLotto = new WinningLotto(inputNumbers(), inputBonusNumber());
 
         System.out.println("!--Test: " + winningLotto);
 
