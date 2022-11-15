@@ -41,12 +41,16 @@ public class Application {
     }
 
     public static void main(String[] args) {
-        Application app = new Application();
-        app.inputCost();
-        app.makeLottoNumbers();
-        app.makeWinningNumbers();
-        app.makeBonusNumber();
-        app.showResult();
-        app.showYield();
+        try {
+            Application app = new Application();
+            app.inputCost();
+            app.makeLottoNumbers();
+            app.makeWinningNumbers();
+            app.makeBonusNumber();
+            app.showResult();
+            app.showYield();
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+        }
     }
 }

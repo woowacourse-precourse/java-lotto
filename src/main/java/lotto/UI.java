@@ -55,9 +55,6 @@ public class UI {
     }
 
     public void showLottoNumbers(List<List<Integer>> lottoNumbers) {
-//        for (int i = 0; i < lottoNumbers.size(); i++) {
-//            Collections.sort(lottoNumbers.get(i));
-//        }
         for (List<Integer> list : lottoNumbers) {
             System.out.println(list.toString());
         }
