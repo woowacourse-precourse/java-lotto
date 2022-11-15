@@ -55,5 +55,12 @@ class LottoTest {
         assertThat(service.getLottoCount("2000")).isEqualTo(2);
     }
 
+    @DisplayName("로또 개수에 맞는 로또 배열을 반환한다.")
+    @Test
+    void buyLotto() {
+        assertThat(service.buyLotto(3).size()).isEqualTo(3);
+        assertThat(service.buyLotto(5).size()).isEqualTo(5);
+    }
+
 
 }
