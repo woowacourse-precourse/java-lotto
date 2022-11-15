@@ -20,7 +20,7 @@ public class Lotto {
         }
         Set<Integer> checkDuplicated = new HashSet<>(numbers);
         if (checkDuplicated.size() < 6) {
-            throw new IllegalStateException(WINNING_LOTTO_NUMBER_INPUT_HAS_SAME_NUMBER_ERROR_MESSAGE);
+            throw new IllegalArgumentException(WINNING_LOTTO_NUMBER_INPUT_HAS_SAME_NUMBER_ERROR_MESSAGE);
         }
     }
 

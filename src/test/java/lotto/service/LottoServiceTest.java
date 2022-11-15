@@ -23,7 +23,7 @@ class LottoServiceTest {
             // when
 
             // then
-            assertThrows(IllegalStateException.class, () -> LottoService.amountInputToInteger(input));
+            assertThrows(IllegalArgumentException.class, () -> LottoService.amountInputToInteger(input));
         }
 
         @Test
@@ -35,7 +35,7 @@ class LottoServiceTest {
             // when
 
             // then
-            assertThrows(IllegalStateException.class, () -> LottoService.amountInputToInteger(input));
+            assertThrows(IllegalArgumentException.class, () -> LottoService.amountInputToInteger(input));
         }
 
         @Test
@@ -47,7 +47,7 @@ class LottoServiceTest {
             // when
 
             // then
-            assertThrows(IllegalStateException.class, () -> LottoService.amountInputToInteger(input));
+            assertThrows(IllegalArgumentException.class, () -> LottoService.amountInputToInteger(input));
         }
 
         @Test
@@ -76,7 +76,7 @@ class LottoServiceTest {
             // when
 
             // then
-            assertThrows(IllegalStateException.class, () -> LottoService.getWinningNumber(input));
+            assertThrows(IllegalArgumentException.class, () -> LottoService.getWinningNumber(input));
         }
 
         @Test
@@ -88,7 +88,7 @@ class LottoServiceTest {
             // when
 
             // then
-            assertThrows(IllegalStateException.class, () -> LottoService.getWinningNumber(input));
+            assertThrows(IllegalArgumentException.class, () -> LottoService.getWinningNumber(input));
         }
 
         @Test
@@ -100,7 +100,7 @@ class LottoServiceTest {
             // when
 
             // then
-            assertThrows(IllegalStateException.class, () -> LottoService.getWinningNumber(input));
+            assertThrows(IllegalArgumentException.class, () -> LottoService.getWinningNumber(input));
         }
 
         @Test
@@ -112,7 +112,7 @@ class LottoServiceTest {
             // when
 
             // then
-            assertThrows(IllegalStateException.class, () -> LottoService.getWinningNumber(input));
+            assertThrows(IllegalArgumentException.class, () -> LottoService.getWinningNumber(input));
         }
 
         @Test
@@ -124,7 +124,7 @@ class LottoServiceTest {
             // when
 
             // then
-            assertThrows(IllegalStateException.class, () -> LottoService.getWinningNumber(input));
+            assertThrows(IllegalArgumentException.class, () -> LottoService.getWinningNumber(input));
         }
 
         @Test
@@ -155,7 +155,7 @@ class LottoServiceTest {
             // when
 
             // then
-            assertThrows(IllegalStateException.class, () -> LottoService.getBonusNumber(input));
+            assertThrows(IllegalArgumentException.class, () -> LottoService.getBonusNumber(input));
         }
 
         @Test
@@ -167,7 +167,7 @@ class LottoServiceTest {
             // when
 
             // then
-            assertThrows(IllegalStateException.class, () -> LottoService.getBonusNumber(input));
+            assertThrows(IllegalArgumentException.class, () -> LottoService.getBonusNumber(input));
         }
 
         @Test

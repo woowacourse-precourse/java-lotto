@@ -26,16 +26,16 @@ public class LottoService {
     private LottoService() {
     }
 
-    public static long amountInputToInteger(String input) throws IllegalStateException {
+    public static long amountInputToInteger(String input) throws IllegalArgumentException {
         if (!input.chars().allMatch((Character::isDigit))) {
-            throw new IllegalStateException(PURCHASE_AMOUNT_INPUT_IS_NOT_NUMBER_ERROR_MESSAGE);
+            throw new IllegalArgumentException(PURCHASE_AMOUNT_INPUT_IS_NOT_NUMBER_ERROR_MESSAGE);
         }
         long amount = Long.parseLong(input);
         if (amount < 1000) {
-            throw new IllegalStateException(PURCHASE_AMOUNT_INPUT_IS_TOO_LOW_TO_BUY_LOTTO_ERROR_MESSAGE);
+            throw new IllegalArgumentException(PURCHASE_AMOUNT_INPUT_IS_TOO_LOW_TO_BUY_LOTTO_ERROR_MESSAGE);
         }
         if (amount % 1000 != 0) {
-            throw new IllegalStateException(PURCHASE_AMOUNT_INPUT_IS_NOT_FALL_APART_ERROR_MESSAGE);
+            throw new IllegalArgumentException(PURCHASE_AMOUNT_INPUT_IS_NOT_FALL_APART_ERROR_MESSAGE);
         }
 
         return amount;
@@ -57,29 +57,29 @@ public class LottoService {
         return new Lotto(Randoms.pickUniqueNumbersInRange(1, 45, 6));
     }
 
-    public static Lotto getWinningNumber(String input) throws IllegalStateException {
+    public static Lotto getWinningNumber(String input) throws IllegalArgumentException {
         if (!input.matches(WINNING_NUMBER_INPUT_VALIDATE_REGEX)) {
-            throw new IllegalStateException(WINNING_LOTTO_NUMBER_INPUT_IS_NOT_MATCH_REGEX_ERROR_MESSAGE);
+            throw new IllegalArgumentException(WINNING_LOTTO_NUMBER_INPUT_IS_NOT_MATCH_REGEX_ERROR_MESSAGE);
         }
         List<Integer> numbers = Arrays.stream(input.split(","))
                 .map(Integer::parseInt)
                 .collect(Collectors.toList());
         if (!numbers.stream().allMatch(number -> (number >= 1 && number <= 45))) {
-            throw new IllegalStateException(WINNING_LOTTO_NUMBER_INPUT_IS_NOT_IN_LOTTO_RANGE_ERROR_MESSAGE);
+            throw new IllegalArgumentException(WINNING_LOTTO_NUMBER_INPUT_IS_NOT_IN_LOTTO_RANGE_ERROR_MESSAGE);
         }
 
         return new Lotto(List.copyOf(numbers));
     }
 
-    public static int getBonusNumber(String input) throws IllegalStateException {
+    public static int getBonusNumber(String input) throws IllegalArgumentException {
         if (!input.chars().allMatch(Character::isDigit)) {
-            throw new IllegalStateException(BONUS_NUMBER_INPUT_IS_NOT_NUMBER_ERROR_MESSAGE);
+            throw new IllegalArgumentException(BONUS_NUMBER_INPUT_IS_NOT_NUMBER_ERROR_MESSAGE);
         }
 
         int bonusNumber = Integer.parseInt(input);
 
         if (bonusNumber < 1 || bonusNumber > 45) {
-            throw new IllegalStateException(BONUS_NUMBER_INPUT_IS_NOT_IN_RANGE_ERROR_MESSAGE);
+            throw new IllegalArgumentException(BONUS_NUMBER_INPUT_IS_NOT_IN_RANGE_ERROR_MESSAGE);
         }
         return Integer.parseInt(input);
     }
