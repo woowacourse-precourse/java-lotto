@@ -13,5 +13,13 @@ public class BonusNumber {
         }
     }
 
+    public static void exceptionNoNumber(String bonusNumber) {
+        char check[] = bonusNumber.toCharArray();
+        for (int i = 0; i < check.length; i++) {
+            if (!Character.isDigit(check[i])) {
+                throw new IllegalArgumentException(Error.WRONG_BONUS_NUM.getMsg());
+            }
+        }
+    }
 
 }
