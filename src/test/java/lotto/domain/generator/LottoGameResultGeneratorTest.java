@@ -1,6 +1,7 @@
 package lotto.domain.generator;
 
 import lotto.domain.Lotto;
+import lotto.domain.LottoGameResult;
 import lotto.domain.WinningNumbers;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -9,6 +10,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static lotto.domain.Rank.FIRST;
@@ -20,6 +22,7 @@ import static lotto.domain.Rank.FIFTH;
 public class LottoGameResultGeneratorTest {
     private LottoGameResultGenerator lottoGameResultGenerator = new LottoGameResultGenerator();
 
+    @DisplayName("로또와 당첨번호에서 겹치는 수의 개수를 잘 세는지 테스트")
     @Nested
     class WinningCountCalculatingTest {
         private Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
@@ -94,6 +97,7 @@ public class LottoGameResultGeneratorTest {
         }
     }
 
+    @DisplayName("겹치는 수의 개수로 얻는 상금을 잘 구하는지 테스트")
     @Nested
     class PrizeMoneyGettingTest {
        private WinningNumbers winningNumbers;
@@ -165,6 +169,118 @@ public class LottoGameResultGeneratorTest {
         }
     }
 
+    @DisplayName("겹치는 수로 얻는 상금에 대한 당첨내역 갱신이 잘 되는지 테스트")
+    @Nested
+    class WinningDetailsUpdatingTest {
+        private List<Lotto> lottos = new ArrayList<>();
+
+        @BeforeEach
+        void initialize() {
+            lottoGameResultGenerator = new LottoGameResultGenerator();
+            lottos.add(new Lotto(List.of(1, 2, 3, 4, 5, 6)));
+            lottos.add(new Lotto(List.of(5, 6, 7, 8, 9, 10)));
+            lottos.add(new Lotto(List.of(7, 8, 9, 10, 11, 12)));
+            lottos.add(new Lotto(List.of(20, 21, 22, 23, 24, 25)));
+        }
+
+        @DisplayName("5등 2번한 경우")
+        @Test
+        void case1() {
+            WinningNumbers winningNumbers = new WinningNumbers(List.of(1, 2, 3, 10, 11, 12));
+            winningNumbers.registerBonusNumber(7);
+
+            LottoGameResult lottoGameResult = lottoGameResultGenerator.
+                    generateLottoGameResult(lottos, winningNumbers, 4000);
+            Map<Integer, Integer> winningDetails = lottoGameResult.getWinningDetails();
+
+            assertThat(winningDetails.get(FIFTH.prizeMoney())).isEqualTo(2);
+        }
+
+        @DisplayName("5등 1번, 4등 1번한 경우")
+        @Test
+        void case2() {
+            WinningNumbers winningNumbers = new WinningNumbers(List.of(4, 5, 6, 7, 8, 29));
+            winningNumbers.registerBonusNumber(1);
+
+            LottoGameResult lottoGameResult = lottoGameResultGenerator.
+                    generateLottoGameResult(lottos, winningNumbers, 4000);
+            Map<Integer, Integer> winningDetails = lottoGameResult.getWinningDetails();
+
+            assertThat(winningDetails.get(FIFTH.prizeMoney())).isEqualTo(1);
+            assertThat(winningDetails.get(FOURTH.prizeMoney())).isEqualTo(1);
+        }
+
+        @DisplayName("5등 2번, 2등 1번한 경우")
+        @Test
+        void case3() {
+            WinningNumbers winningNumbers = new WinningNumbers(List.of(4, 5, 6, 7, 8, 9));
+            winningNumbers.registerBonusNumber(10);
+
+            LottoGameResult lottoGameResult = lottoGameResultGenerator.
+                    generateLottoGameResult(lottos, winningNumbers, 4000);
+            Map<Integer, Integer> winningDetails = lottoGameResult.getWinningDetails();
+
+            assertThat(winningDetails.get(FIFTH.prizeMoney())).isEqualTo(2);
+            assertThat(winningDetails.get(SECOND.prizeMoney())).isEqualTo(1);
+        }
+
+        @DisplayName("4등 1번, 3등 1번한 경우")
+        @Test
+        void case4() {
+            WinningNumbers winningNumbers = new WinningNumbers(List.of(6, 7, 8, 9, 10, 15));
+            winningNumbers.registerBonusNumber(1);
+
+            LottoGameResult lottoGameResult = lottoGameResultGenerator.
+                    generateLottoGameResult(lottos, winningNumbers, 4000);
+            Map<Integer, Integer> winningDetails = lottoGameResult.getWinningDetails();
+
+            assertThat(winningDetails.get(FOURTH.prizeMoney())).isEqualTo(1);
+            assertThat(winningDetails.get(THIRD.prizeMoney())).isEqualTo(1);
+        }
+
+        @DisplayName("3등 1번, 2등 1번한 경우")
+        @Test
+        void case5() {
+            WinningNumbers winningNumbers = new WinningNumbers(List.of(6, 7, 8, 9, 10, 11));
+            winningNumbers.registerBonusNumber(12);
+
+            LottoGameResult lottoGameResult = lottoGameResultGenerator.
+                    generateLottoGameResult(lottos, winningNumbers, 4000);
+            Map<Integer, Integer> winningDetails = lottoGameResult.getWinningDetails();
+
+            assertThat(winningDetails.get(THIRD.prizeMoney())).isEqualTo(1);
+            assertThat(winningDetails.get(SECOND.prizeMoney())).isEqualTo(1);
+        }
+
+        @DisplayName("4등 1번, 1등 1번한 경우")
+        @Test
+        void case6() {
+            WinningNumbers winningNumbers = new WinningNumbers(List.of(7, 8, 9, 10, 11, 12));
+            winningNumbers.registerBonusNumber(40);
+
+            LottoGameResult lottoGameResult = lottoGameResultGenerator.
+                    generateLottoGameResult(lottos, winningNumbers, 4000);
+            Map<Integer, Integer> winningDetails = lottoGameResult.getWinningDetails();
+
+            assertThat(winningDetails.get(FOURTH.prizeMoney())).isEqualTo(1);
+            assertThat(winningDetails.get(FIRST.prizeMoney())).isEqualTo(1);
+        }
+
+        @DisplayName("1등 1번한 경우")
+        @Test
+        void case7() {
+            WinningNumbers winningNumbers = new WinningNumbers(List.of(20, 21, 22, 23, 24, 25));
+            winningNumbers.registerBonusNumber(12);
+
+            LottoGameResult lottoGameResult = lottoGameResultGenerator.
+                    generateLottoGameResult(lottos, winningNumbers, 4000);
+            Map<Integer, Integer> winningDetails = lottoGameResult.getWinningDetails();
+
+            assertThat(winningDetails.get(FIRST.prizeMoney())).isEqualTo(1);
+        }
+    }
+
+    @DisplayName("총 수익금 잘 계산하는지 테스트")
     @Nested
     class ProfitsCalculatingTest {
         private List<Lotto> lottos = new ArrayList<>();
