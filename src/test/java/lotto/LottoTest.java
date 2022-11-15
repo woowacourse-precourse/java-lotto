@@ -1,5 +1,7 @@
 package lotto;
 
+import lotto.domain.Lotto;
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -23,5 +25,14 @@ class LottoTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
-    // 아래에 추가 테스트 작성 가능
+    @DisplayName("로또 번호를 저장할 때 오름차순으로 정렬되어 저장된다.")
+    @Test
+    void createLottoBySort() {
+        // given
+        Lotto lotto = new Lotto(List.of(6,5,4,3,2,1));
+        // when
+        List<Integer> lottoNumbers = lotto.getLottoNumbers();
+        // then
+        Assertions.assertThat(lottoNumbers.get(0)).isEqualTo(1);
+    }
 }
