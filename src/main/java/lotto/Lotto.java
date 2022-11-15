@@ -63,8 +63,50 @@ public class Lotto {
         List<Lotto> lottos = new ArrayList<>();
         for (int i = 0; i < count; i++) {
             List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+            //numbers.sort(Integer::compareTo);
             lottos.add(new Lotto(numbers));
         }
+        printLottos(lottos);
         return lottos;
+    }
+
+    // 당첨 등수 확인
+    private int win(Lotto winningNumbers, int bonusNumber) {
+        int count = 0;
+        for (int number : numbers) {
+            if (winningNumbers.numbers.contains(number)) {
+                count++;
+            }
+        }
+        if (count == 6) {
+            return 1;
+        } else if (count == 5 && winningNumbers.numbers.contains(bonusNumber)) {
+            return 2;
+        }
+        return 8 - count;
+    }
+
+    // 당첨 통계 출력
+    public static void printStatistics(List<Lotto> lottos, Lotto winningNumbers, int bonusNumber) {
+        int[] statistics = new int[8];
+        for (Lotto lotto : lottos) {
+            statistics[lotto.win(winningNumbers, bonusNumber)-1]++;
+        }
+        System.out.println("3개 일치 (5,000원) - " + statistics[4] + "개");
+        System.out.println("4개 일치 (50,000원) - " + statistics[3] + "개");
+        System.out.println("5개 일치 (1,500,000원) - " + statistics[2] + "개");
+        System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - " + statistics[1] + "개");
+        System.out.println("6개 일치 (2,000,000,000원) - " + statistics[0] + "개");
+        System.out.println("총 수익률은 " + Statistics.calulateYield(
+                statistics[0] * 2000000000 + statistics[1] * 30000000 + statistics[2] * 1500000 + statistics[3] * 50000 + statistics[4] * 5000,
+                lottos.size() * 1000) + "%입니다.");
+    }
+
+    // 로또 출력
+    private static void printLottos(List<Lotto> lottos) {
+        System.out.println("8개를 구매했습니다.");
+        for (Lotto lotto : lottos) {
+            System.out.println(lotto.numbers);
+        }
     }
 }
