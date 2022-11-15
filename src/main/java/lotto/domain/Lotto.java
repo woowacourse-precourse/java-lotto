@@ -3,7 +3,10 @@ package lotto.domain;
 import lotto.dto.LottoDto;
 import lotto.dto.WinningNumberDto;
 
-import java.util.*;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 public class Lotto {
     public static final String ERROR_NUMBER_OUT_OF_BOUND = "[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.";
@@ -18,7 +21,7 @@ public class Lotto {
         this.numbers = numbers;
     }
 
-    private void validate(List<Integer> numbers) throws IllegalArgumentException{
+    private void validate(List<Integer> numbers) throws IllegalArgumentException {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException(ERROR_INVALID_SIZE);
         }
@@ -28,7 +31,7 @@ public class Lotto {
             }
         }
         Set<Integer> uniqueNumbers = new HashSet<>(numbers);
-        if(uniqueNumbers.size()!=numbers.size()) {
+        if (uniqueNumbers.size() != numbers.size()) {
             throw new IllegalArgumentException(ERROR_DUPLICATE_NUMBERS);
         }
     }

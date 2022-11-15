@@ -16,13 +16,13 @@ public class Lottos {
         return new LottosDto(lottos);
     }
 
-    public Integer getSize(){
+    public Integer getSize() {
         return lottos.size();
     }
 
-    public Result totalResult(WinningNumberDto winningNumberDto){
+    public Result totalResult(WinningNumberDto winningNumberDto) {
         Result result = new Result();
-        for(Lotto lotto : lottos){
+        for (Lotto lotto : lottos) {
             LottoRank rank = lotto.countHit(winningNumberDto);
             result.increment(rank);
         }

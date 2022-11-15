@@ -19,6 +19,7 @@ public class Result {
     public ResultDto sendDto() {
         return new ResultDto(statistics);
     }
+
     public void increment(LottoRank rank) {
         Integer value = statistics.get(rank);
         statistics.put(rank, ++value);
@@ -36,6 +37,6 @@ public class Result {
         }
         totalLottos *= LOTTO_PRICE;
 
-        return (sum/totalLottos)*100;
+        return (sum / totalLottos) * 100;
     }
 }

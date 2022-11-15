@@ -31,12 +31,12 @@ public class Application {
     }
 
     public static void main(String[] args) {
-        try{
+        try {
             Lottos lottos = buyLottos();
             WinningNumberDto winningNumberDto = inputWinningNumbers().sendDTO();
             Result result = lottos.totalResult(winningNumberDto);
             OutputUtil.showResult(result);
-        } catch(IllegalArgumentException e){
+        } catch (IllegalArgumentException e) {
             OutputUtil.printError(e.getMessage());
         }
 
