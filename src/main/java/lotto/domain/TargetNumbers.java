@@ -5,13 +5,12 @@ import lotto.View.ErrorMessage;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.function.Predicate;
 
 public class TargetNumbers {
     private TargetNumbers(List<String> input) {
         List<Integer> numbers=new ArrayList<>();
         isInputFormValid(input,numbers);
-
+        Lotto game=new Lotto(numbers);
     }
 
     public static TargetNumbers getInstance(String input) {
@@ -27,6 +26,10 @@ public class TargetNumbers {
             }
             output.add(Integer.parseInt(s));
         }
+
+    }
+
+    public void isInstanceOf(Class<IllegalArgumentException> illegalArgumentExceptionClass) {
 
     }
 }
