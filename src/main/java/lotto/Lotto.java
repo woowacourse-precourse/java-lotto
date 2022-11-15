@@ -12,9 +12,23 @@ public class Lotto {
 
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
+            System.out.println("[ERROR]");
             throw new IllegalArgumentException();
         }
+
+    }
+    // TODO: 추가 기능 구현
+    public void printLotto() {
+        System.out.println(this.numbers);
     }
 
-    // TODO: 추가 기능 구현
+    public int compareLotto(List<Integer> numbers) {
+        return (int) this.numbers.stream()
+                .filter(numbers::contains)
+                .count();
+    }
+
+    public boolean containsNumber(int number) {
+        return this.numbers.contains(number);
+    }
 }
