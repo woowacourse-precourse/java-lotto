@@ -57,7 +57,12 @@ public class ExceptionTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
-
+    @DisplayName("당첨 번호가 숫자가 아니라면 예외가 발생한다")
+    @Test
+    void createExceptionTest8() {
+        assertThatThrownBy(() -> new Exception().checkBonusNumberOverLap("7","a,2,3,4,5,7"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 
 
 }
