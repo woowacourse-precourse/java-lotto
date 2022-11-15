@@ -52,9 +52,9 @@ public class LottoGame {
     }
 
     public void getBonusNumber() {
-        int input = Integer.parseInt(InputView.getNumber());
+        String input = InputView.getNumber();
         LottoValidator.validateBonusNumber(winningNumber, input);
-        bonusNumber = input;
+        bonusNumber = Integer.parseInt(input);
     }
 
     public void showStatistics() {

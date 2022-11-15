@@ -13,19 +13,28 @@ public class LottoValidator {
         return true;
     }
 
-    public static void validateBonusNumber(Lotto winningNumber, int bonusNumber) {
+    public static void validateBonusNumber(Lotto winningNumber, String bonusNumber) {
+        isNumber(bonusNumber);
         checkBonusContain(winningNumber, bonusNumber);
         checkBonusRange(bonusNumber);
     }
 
-    public static void checkBonusContain(Lotto winningNumber, int bonusNumber) {
-        if (winningNumber.isContain(bonusNumber)) {
+    public static void checkBonusContain(Lotto winningNumber, String bonusNumber) {
+        if (winningNumber.isContain(Integer.parseInt(bonusNumber))) {
             throw new IllegalArgumentException("[ERROR} 보너스 번호는 당첨 번호에 포함되어 있지 않아야 합니다.");
         }
     }
 
-    public static void checkBonusRange(int bonusNumber) {
-        if (bonusNumber < 1 || 45 < bonusNumber) {
+    public static void checkBonusRange(String bonusNumber) {
+        if (Integer.parseInt(bonusNumber) < 1 || 45 < Integer.parseInt(bonusNumber)) {
+            throw new IllegalArgumentException("[ERROR} 보너스 번호는 1~45사이의 숫자여야 합니다.");
+        }
+    }
+
+    public static void isNumber(String input) {
+        try {
+            Integer.parseInt(input);
+        } catch (NumberFormatException e) {
             throw new IllegalArgumentException("[ERROR} 보너스 번호는 1~45사이의 숫자여야 합니다.");
         }
     }
@@ -36,7 +45,7 @@ public class LottoValidator {
     }
 
     public static void checkInputForm(String input) {
-        for(String s : input.split("\\s*,\\s*")){
+        for (String s : input.split("\\s*,\\s*")) {
             try {
                 Integer.parseInt(s);
             } catch (NumberFormatException e) {
