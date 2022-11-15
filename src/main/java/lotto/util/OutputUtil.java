@@ -2,8 +2,10 @@ package lotto.util;
 
 import lotto.domain.Lotto;
 import lotto.domain.User;
-import lotto.domain.constant.Message;
+import lotto.domain.enums.Message;
 import lotto.domain.constant.ConstantValue;
+import lotto.domain.enums.Rank;
+
 import java.util.Map;
 
 public class OutputUtil {
@@ -40,13 +42,13 @@ public class OutputUtil {
     }
 
     public static void printResult(User user) {
-        Map<Integer, Integer> ranks = user.getRanks();
+        Map<Rank, Integer> ranks = user.getRanks();
         System.out.println(Message.TOTAL_RESULT_MESSAGE);
-        System.out.println(Message.RESULT_FIFTH.getMessage() + ranks.get(ConstantValue.FIVE) + "개");
-        System.out.println(Message.RESULT_FOURTH.getMessage() + ranks.get(ConstantValue.FOUR) + "개");
-        System.out.println(Message.RESULT_THIRD.getMessage() + ranks.get(ConstantValue.THREE) + "개");
-        System.out.println(Message.RESULT_SECOND.getMessage() + ranks.get(ConstantValue.TWO) + "개");
-        System.out.println(Message.RESULT_FIRST.getMessage() + ranks.get(ConstantValue.ONE) + "개");
+        System.out.println(Message.RESULT_FIFTH.getMessage() + ranks.get(Rank.FIFTH) + "개");
+        System.out.println(Message.RESULT_FOURTH.getMessage() + ranks.get(Rank.FOURTH) + "개");
+        System.out.println(Message.RESULT_THIRD.getMessage() + ranks.get(Rank.THIRD) + "개");
+        System.out.println(Message.RESULT_SECOND.getMessage() + ranks.get(Rank.SECOND) + "개");
+        System.out.println(Message.RESULT_FIRST.getMessage() + ranks.get(Rank.FIRST) + "개");
         System.out.printf("총 수익률은 %.1f%%입니다.", user.getYield());
     }
 

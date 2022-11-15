@@ -1,6 +1,6 @@
 package lotto.util;
 
-import lotto.domain.constant.Message;
+import lotto.domain.enums.Message;
 import lotto.domain.constant.ConstantValue;
 import java.util.ArrayList;
 import java.util.List;

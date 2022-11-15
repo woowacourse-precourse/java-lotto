@@ -1,6 +1,7 @@
 package lotto.domain;
 
 import lotto.domain.constant.ConstantValue;
+import lotto.domain.enums.Rank;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -11,7 +12,7 @@ public class User {
     private List<Lotto> lottos;
     private double money;
     private double totalPrize;
-    private Map<Integer, Integer> ranks = new HashMap<>();
+    private Map<Rank, Integer> ranks = new HashMap<>();
     private double yield;
 
     public User() {
@@ -22,11 +23,11 @@ public class User {
     }
 
     private void initRank() {
-        ranks.put(ConstantValue.FIVE, 0);
-        ranks.put(ConstantValue.FOUR, 0);
-        ranks.put(ConstantValue.THREE, 0);
-        ranks.put(ConstantValue.TWO, 0);
-        ranks.put(ConstantValue.ONE, 0);
+        ranks.put(Rank.FIFTH, 0);
+        ranks.put(Rank.FOURTH, 0);
+        ranks.put(Rank.THIRD, 0);
+        ranks.put(Rank.SECOND, 0);
+        ranks.put(Rank.FIRST, 0);
     }
 
     public List<Lotto> getLottos() {
@@ -53,7 +54,7 @@ public class User {
         this.totalPrize = totalPrize;
     }
 
-    public Map<Integer, Integer> getRanks() {
+    public Map<Rank, Integer> getRanks() {
         return ranks;
     }
 
@@ -74,27 +75,27 @@ public class User {
     }
 
     public void setRankFifth() {
-        ranks.put(ConstantValue.FIVE, ranks.get(ConstantValue.FIVE) + ConstantValue.ONE);
+        ranks.put(Rank.FIFTH, ranks.get(Rank.FIFTH) + ConstantValue.ONE);
         addWinningAmount(ConstantValue.FIFTH_WINNING_AMOUNT);
     }
 
     public void setRankFourth() {
-        ranks.put(ConstantValue.FOUR, ranks.get(ConstantValue.FOUR) + ConstantValue.ONE);
+        ranks.put(Rank.FOURTH, ranks.get(Rank.FOURTH) + ConstantValue.ONE);
         addWinningAmount(ConstantValue.FOURTH_WINNING_AMOUNT);
     }
 
     public void setRankThird() {
-        ranks.put(ConstantValue.THREE, ranks.get(ConstantValue.THREE) + ConstantValue.ONE);
+        ranks.put(Rank.THIRD, ranks.get(Rank.THIRD) + ConstantValue.ONE);
         addWinningAmount(ConstantValue.THIRD_WINNING_AMOUNT);
     }
 
     public void setRankSecond() {
-        ranks.put(ConstantValue.TWO, ranks.get(ConstantValue.TWO) + ConstantValue.ONE);
+        ranks.put(Rank.SECOND, ranks.get(Rank.SECOND) + ConstantValue.ONE);
         addWinningAmount(ConstantValue.SECOND_WINNING_AMOUNT);
     }
 
     public void setRankFirst() {
-        ranks.put(ConstantValue.ONE, ranks.get(ConstantValue.ONE) + ConstantValue.ONE);
+        ranks.put(Rank.FIRST, ranks.get(Rank.FIRST) + ConstantValue.ONE);
         addWinningAmount(ConstantValue.FIRST_WINNING_AMOUNT);
     }
 }

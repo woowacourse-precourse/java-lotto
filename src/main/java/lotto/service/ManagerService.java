@@ -5,6 +5,7 @@ import lotto.domain.LottoMachine;
 import lotto.domain.Manager;
 import lotto.domain.User;
 import lotto.domain.constant.ConstantValue;
+import lotto.domain.enums.Rank;
 import lotto.util.ExceptionHandler;
 import lotto.util.InputUtil;
 import lotto.util.OutputUtil;
@@ -56,28 +57,28 @@ public class ManagerService {
         for (Lotto userLotto : userLottos) {
             int correctCount = manager.countCorrect(userLotto);
             boolean isCorrectBonus = manager.isCorrectBonus(userLotto);
-            int rank = judgeRank(correctCount, isCorrectBonus);
+            Rank rank = judgeRank(correctCount, isCorrectBonus);
             userService.updateRankAndTotalPrize(user, rank);
         }
     }
 
-    public int judgeRank(int correctCount, boolean isCorrectBonus) {
+    public Rank judgeRank(int correctCount, boolean isCorrectBonus) {
         if (correctCount == ConstantValue.THREE) {
-            return ConstantValue.FIVE;
+            return Rank.FIFTH;
         }
         if (correctCount == ConstantValue.FOUR) {
-            return ConstantValue.FOUR;
+            return Rank.FOURTH;
         }
         if (correctCount == ConstantValue.FIVE) {
             if (isCorrectBonus) {
-                return ConstantValue.TWO;
+                return Rank.SECOND;
             }
-            return ConstantValue.THREE;
+            return Rank.THIRD;
         }
         if (correctCount == ConstantValue.SIX) {
-            return ConstantValue.ONE;
+            return Rank.FIRST;
         }
-        return ConstantValue.ZERO;
+        return Rank.ZERO;
     }
 
 }

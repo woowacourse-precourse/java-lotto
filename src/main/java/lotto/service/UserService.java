@@ -1,5 +1,6 @@
 package lotto.service;
 
+import lotto.domain.enums.Rank;
 import lotto.domain.User;
 import lotto.domain.constant.ConstantValue;
 import lotto.util.ExceptionHandler;
@@ -16,20 +17,20 @@ public class UserService {
         user.setYield(yield);
     }
 
-    public void updateRankAndTotalPrize(User user, int rank) {
-        if (rank == ConstantValue.FIVE) {
+    public void updateRankAndTotalPrize(User user, Rank rank) {
+        if (rank == Rank.FIFTH) {
             user.setRankFifth();
         }
-        if (rank == ConstantValue.FOUR) {
+        if (rank == Rank.FOURTH) {
             user.setRankFourth();
         }
-        if (rank == ConstantValue.THREE) {
+        if (rank == Rank.THIRD) {
             user.setRankThird();
         }
-        if (rank == ConstantValue.TWO) {
+        if (rank == Rank.SECOND) {
             user.setRankSecond();
         }
-        if (rank == ConstantValue.ONE) {
+        if (rank == Rank.FIRST) {
             user.setRankFirst();
         }
     }
