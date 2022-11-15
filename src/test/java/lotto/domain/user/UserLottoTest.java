@@ -50,6 +50,17 @@ public class UserLottoTest {
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessageContaining(InputException.BONUS_LOTTO_INVALID_FORM.message());
         }
+
+        @DisplayName("보너스 번호가 당첨 번호에 이미 있다면 예외를 터트린다.")
+        @Test
+        void bonusNumberDuplicateWithWinNumber() {
+            List<Integer> winNumbers = List.of(1,2,3,4,10,8);
+            int bonusNumber = 4;
+
+            assertThatThrownBy(() -> new UserLotto(winNumbers, bonusNumber))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessageContaining(InputException.BONUS_DUPLICATE.message());
+        }
     }
 
     public static InputStream generateUserInput(String input) {
