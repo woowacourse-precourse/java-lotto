@@ -12,7 +12,7 @@ public class LottoException {
     }
 
     public void inputMoneyUnitException(int inputMoney, int lottoPrice) {
-        if (inputMoney%lottoPrice != 0) {
+        if (inputMoney % lottoPrice != 0) {
             System.out.println("[ERROR]: 금액은 1000원 단위로 입력해야 합니다.");
             throw new IllegalArgumentException();
         }
@@ -59,4 +59,10 @@ public class LottoException {
         return true;
     }
 
+    public void bonusNumberException(int bonusNumber) {
+        if (bonusNumber < 1 || bonusNumber > 45) {
+            System.out.println("[ERROR]: 보너스 번호의 입력 범위는 1~45까지 입니다.");
+            throw new IllegalArgumentException();
+        }
+    }
 }

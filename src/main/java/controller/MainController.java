@@ -47,6 +47,7 @@ public class MainController {
 
     public void compareLottoController() {
         bonusNumber = InputView.inputBonusNumber();
+        new LottoException().bonusNumberException(bonusNumber);
         winningNumberCount = new LottoBank().compareBonusNumber(lottoCount, bonusNumber,
                 lotteries, winningLottery);
         OutputView.printWinningResult(winningNumberCount);
