@@ -16,7 +16,7 @@ public class Application {
         ThirdPlace(value -> value * 1_500_000),
         FourthPlace(value -> value * 50_000),
         FifthPlace(value -> value * 5000),
-        Nothing(value->0);
+        Nothing(value -> 0);
 
         private Function<Integer, Integer> expression;
 
@@ -36,7 +36,7 @@ public class Application {
 
         List<Lotto> boughtLottos = new ArrayList<Lotto>();
         boughtLottos = buyLotto(boughtLottos, MONEY);
-        printLottos(boughtLottos);
+        printLottoList(boughtLottos);
 
         System.out.println("당첨 번호를 입력해 주세요.");
         input = readInput();
@@ -46,41 +46,43 @@ public class Application {
         input = readInput();
 
         int bonusNum = validateBonusNum(input, pickedNumbers);
-        int totalIncome = calculateTotalGain(boughtLottos, pickedNumbers, bonusNum);
+        int totalIncome = calculateTotalGain(boughtLottos, pickedNumbers, List.of(bonusNum));
         float rateOfReturn = getRateOfReturn(totalIncome, MONEY);
 
-        System.out.printf("총 수익률은 %.1f",rateOfReturn);
+        System.out.printf("총 수익률은 %.1f", rateOfReturn);
         System.out.println("%입니다.");
 
         return;
     }
 
     public static float getRateOfReturn(int totalIncome, final int MONEY) {
-        float rateOfReturn = (float) totalIncome/MONEY * 100;
+        float rateOfReturn = (float) totalIncome / MONEY * 100;
         return rateOfReturn;
     }
 
-    public static int validateBonusNum(String input, List pickedNumbers){
+    public static int validateBonusNum(String input, List pickedNumbers) {
         int bonusNum = parseInt(input);
 
         if (pickedNumbers.contains(bonusNum)) {
             throw new IllegalArgumentException("[ERROR]");
         }
-        if (bonusNum < 1 || bonusNum > 45){
+        if (bonusNum < 1 || bonusNum > 45) {
             throw new IllegalArgumentException("[ERROR]");
         }
 
         return bonusNum;
     }
 
-    public static int calculateTotalGain(List<Lotto> boughtLottos, List<Integer> pickedNumbers, int bonusNum) {
+    public static int calculateTotalGain(List<Lotto> boughtLottos, List<Integer> pickedNumbers, List<Integer> bonusNum) {
         LotteryWon income;
         HashMap<LotteryWon, Integer> history = initializeHistory();
         int totalIncome = 0;
 
         for (int i = 0; i < boughtLottos.size(); i++) {
             int matchCount = countMatchedNumber(boughtLottos.get(i), pickedNumbers);
-            income = selectLotteryWonType(matchCount);
+            int bonusCount = countMatchedNumber(boughtLottos.get(i), bonusNum);
+
+            income = selectLotteryWonType(matchCount, bonusCount);
             history = updateHistory(history, income);
             totalIncome += income.calculateIncome(1);
         }
@@ -92,11 +94,11 @@ public class Application {
     public static void printHistory(HashMap<LotteryWon, Integer> history) {
         System.out.println("당첨 통계");
         System.out.println("---");
-        System.out.println("3개 일치 (5,000원) - "+history.get(LotteryWon.FifthPlace)+"개");
-        System.out.println("4개 일치 (50,000원) - "+history.get(LotteryWon.FourthPlace)+"개");
-        System.out.println("5개 일치 (1,500,000원) - "+history.get(LotteryWon.ThirdPlace)+"개");
-        System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - "+history.get(LotteryWon.SecondPlace)+"개");
-        System.out.println("6개 일치 (2,000,000,000원) - "+history.get(LotteryWon.FirstPlace)+"개");
+        System.out.println("3개 일치 (5,000원) - " + history.get(LotteryWon.FifthPlace) + "개");
+        System.out.println("4개 일치 (50,000원) - " + history.get(LotteryWon.FourthPlace) + "개");
+        System.out.println("5개 일치 (1,500,000원) - " + history.get(LotteryWon.ThirdPlace) + "개");
+        System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - " + history.get(LotteryWon.SecondPlace) + "개");
+        System.out.println("6개 일치 (2,000,000,000원) - " + history.get(LotteryWon.FirstPlace) + "개");
     }
 
     public static HashMap<LotteryWon, Integer> updateHistory(HashMap<LotteryWon, Integer> history, LotteryWon income) {
@@ -106,12 +108,12 @@ public class Application {
 
     public static HashMap<LotteryWon, Integer> initializeHistory() {
         HashMap<LotteryWon, Integer> history = new HashMap<LotteryWon, Integer>();
-        history.put(LotteryWon.FirstPlace,0);
-        history.put(LotteryWon.SecondPlace,0);
-        history.put(LotteryWon.ThirdPlace,0);
-        history.put(LotteryWon.FourthPlace,0);
-        history.put(LotteryWon.FifthPlace,0);
-        history.put(LotteryWon.Nothing,0);
+        history.put(LotteryWon.FirstPlace, 0);
+        history.put(LotteryWon.SecondPlace, 0);
+        history.put(LotteryWon.ThirdPlace, 0);
+        history.put(LotteryWon.FourthPlace, 0);
+        history.put(LotteryWon.FifthPlace, 0);
+        history.put(LotteryWon.Nothing, 0);
 
         return history;
     }
@@ -123,16 +125,16 @@ public class Application {
             int number = pickedNumbers.get(i);
             count += lotto.matchNumber(number);
         }
-        System.out.println(count);
+
         return count;
     }
 
-    public static LotteryWon selectLotteryWonType(int matchCount) {
+    public static LotteryWon selectLotteryWonType(int matchCount, int bonusCount) {
         LotteryWon result;
         if (matchCount == 6) {
             result = LotteryWon.FirstPlace;
             return result;
-        } else if (matchCount == 5) {
+        } else if (matchCount == 5 && bonusCount == 1) {
             result = LotteryWon.SecondPlace;
             return result;
         } else if (matchCount == 5) {
@@ -172,22 +174,29 @@ public class Application {
         return pickedNumbers;
     }
 
-    public static void printLottos(List lottos) {
-        StringBuilder lottoNumbers = new StringBuilder();
+    public static void printLottoList(List lottos) {
+
         for (int i = 0; i < lottos.size(); i++) {
-            lottoNumbers.append("[");
+
             Lotto lottoItem = (Lotto) lottos.get(i);
-
-            for (int j = 0; j < lottoItem.getNumbers().size(); j++) {
-                int number = lottoItem.getNumbers().get(j);
-                lottoNumbers.append(String.valueOf(number));
-                if (j!=lottoItem.getNumbers().size()-1) {
-                    lottoNumbers.append(", ");
-                }
-            }
-            lottoNumbers.append("]\n");
+            printLotto(lottoItem);
         }
+        System.out.println();
+    }
 
+    public static void printLotto(Lotto lottoItem) {
+        StringBuilder lottoNumbers = new StringBuilder();
+        lottoNumbers.append("[");
+
+        for (int j = 0; j < lottoItem.getNumbers().size(); j++) {
+            int number = lottoItem.getNumbers().get(j);
+            lottoNumbers.append(number);
+
+            if (j != lottoItem.getNumbers().size() - 1) {
+                lottoNumbers.append(", ");
+            }
+        }
+        lottoNumbers.append("]\n");
         System.out.print(lottoNumbers);
     }
 
@@ -196,23 +205,23 @@ public class Application {
 
         for (int i = 0; i < numberOfLottos; i++) {
 
-            List<Integer> randomNumbers = Randoms.pickUniqueNumbersInRange(1,45,6);
+            List<Integer> randomNumbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
             randomNumbers = generateLottoNumbers(randomNumbers);
             Lotto lottoItem = new Lotto(randomNumbers);
             lottos.add(lottoItem);
         }
-        System.out.println("\n"+ numberOfLottos+"개를 구매했습니다.");
+        System.out.println(numberOfLottos + "개를 구매했습니다.");
 
         return lottos;
     }
 
-    public static List<Integer> generateLottoNumbers(List<Integer> Randoms){
+    public static List<Integer> generateLottoNumbers(List<Integer> Randoms) {
         List<Integer> randomNumbers = new ArrayList<Integer>(Randoms);
 
         randomNumbers.sort(new Comparator<Integer>() {
             @Override
             public int compare(Integer o1, Integer o2) {
-                return o1-o2;
+                return o1 - o2;
             }
         });
 
@@ -235,15 +244,15 @@ public class Application {
             int money = Integer.parseInt(input);
             return money;
         } catch (NumberFormatException e) {
-            System.out.println("[ERROR] wrong input");
+            System.out.println(new IllegalArgumentException("[ERROR]"));
             return 0;
         }
     }
 
     public static String readInput() {
         String input = Console.readLine();
+        System.out.println();
         return input;
     }
-
 
 }

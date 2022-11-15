@@ -50,7 +50,6 @@ public class Lotto {
                 return true;
             }
         }
-
         return false;
     }
 }
