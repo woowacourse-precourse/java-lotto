@@ -2,6 +2,9 @@ package lotto.util;
 
 import camp.nextstep.edu.missionutils.Console;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class InputController {
 
 
@@ -15,6 +18,20 @@ public class InputController {
         }
         return number;
     }
+
+    public List<Integer> getWinNumbers(String Numbers) {
+
+        String[] strWinNumbers = Numbers.split(",");
+        List<Integer> winNumbers = new ArrayList<>();
+        for (int i = 0; i < strWinNumbers.length; i++) {
+            if (!validateInteger(strWinNumbers[i])) {
+                throw new IllegalStateException("[ERROR] 숫자가 입력되지 않았습니다.");
+            }
+            winNumbers.add(Integer.parseInt(strWinNumbers[i]));
+        }
+        return winNumbers;
+    }
+
     private boolean validateInteger(String strNumber) {
         if (strNumber.matches("-?\\d+")) {
             return true;
