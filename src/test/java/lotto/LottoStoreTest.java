@@ -1,13 +1,13 @@
 package lotto;
 
+import lotto.model.Lotto;
 import lotto.model.LottoStore;
+import org.assertj.core.api.Assert;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.io.ByteArrayOutputStream;
-import java.io.OutputStream;
-import java.io.PrintStream;
+import java.util.List;
 
 class LottoStoreTest {
 
@@ -25,5 +25,13 @@ class LottoStoreTest {
     void buyLottoByNoMoney() {
         Assertions.assertThatThrownBy(() -> lottoStore.buyLottoNumber(0))
                 .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("올바른 금액을 입력하면, 정상적으로 동작한다.")
+    @Test
+    void buyLottoByValidMoney() {
+        List<Lotto> lottoTickets = lottoStore.buyLottoNumber(3000);
+        Assertions.assertThat(lottoTickets.size())
+                .isEqualTo(3);
     }
 }
