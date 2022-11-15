@@ -26,7 +26,7 @@ public class MainController {
         } catch (IllegalArgumentException e) {
             e.getMessage();
             System.out.println("[ERROR]: 숫자 외 다른 문자를 입력하셨습니다.");
-            new LottoException().inputException();
+            new LottoException().inputException(inputMoney);
         }
         lottoCount = new LottoStore().calculateLottoCount(inputMoney);
         OutputView.printLottoCount(lottoCount);

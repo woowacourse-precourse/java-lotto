@@ -1,7 +1,6 @@
 package view;
 
 import camp.nextstep.edu.missionutils.Console;
-import lotto.LottoException;
 
 public class InputView {
     private static final String INPUT_MONEY = "구입금액을 입력해 주세요.";

@@ -5,8 +5,17 @@ import java.util.List;
 
 public class LottoException {
 
-    public void inputException() throws IllegalArgumentException {
-        throw new IllegalArgumentException();
+    public void inputException(int inputMoney) throws IllegalArgumentException {
+        if (!isNumber(inputMoney)) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    private boolean isNumber(int inputMoney) {
+        if (inputMoney < 0) {
+            return false;
+        }
+        return true;
     }
 
     public void WinningException(String winningNumber) throws IllegalArgumentException {
