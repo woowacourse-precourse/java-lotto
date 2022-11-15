@@ -8,21 +8,19 @@ import lotto.ui.Ouput;
 
 public class LottoChecker {
 
-//    private static final int BONUS_NUMBER
-//    enum Place {
-//        FIFTH(3),
-//        FOURTH(4),
-//        THIRD(5),
-//        SECOND(15),
-//        FIRST(6);
-//
-//        private final int value;
-//
-//        Place(int value) {
-//            this.value = value;
-//        }
-//    }
+    enum Grade {
+        FIFTH(3),
+        FOURTH(4),
+        THIRD(5),
+        SECOND(5 + 10),
+        FIRST(6);
 
+        private final int count;
+
+        Grade(int count) {
+            this.count = count;
+        }
+    }
 
     public int compare(Lotto purchasedLotto, Lotto winningLotto) {
         int count = 0;
@@ -40,8 +38,8 @@ public class LottoChecker {
         for (int row = 0; row < lottoTable.size(); row++) {
             int count = 0;
             count = compare(lottoTable.get(row), winningLotto);
-            if (count == 5 && hasBonusNumber(lottoTable.get(row), bonusNumber)) {
-                count += 10;
+            if (count == Grade.THIRD.count && hasBonusNumber(lottoTable.get(row), bonusNumber)) {
+                count = Grade.SECOND.count;
             }
             countGroup.add(count);
         }
@@ -50,10 +48,10 @@ public class LottoChecker {
 
     public List<Integer> toResult(List<Integer> countGroup) {
         List<Integer> result = new ArrayList<>();
-        for (int matchingNumber = 3; matchingNumber <= 6; matchingNumber++) {
-            result.add(Collections.frequency(countGroup, matchingNumber));
-            if (matchingNumber == 5) {
-                result.add(Collections.frequency(countGroup, 15));
+        for (int count = Grade.FIFTH.count; count <= Grade.FIRST.count; count++) {
+            result.add(Collections.frequency(countGroup, count));
+            if (count == Grade.THIRD.count) {
+                result.add(Collections.frequency(countGroup, Grade.SECOND.count));
             }
         }
         result.add(countGroup.size());

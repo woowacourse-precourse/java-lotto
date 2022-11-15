@@ -10,8 +10,8 @@ public class Ouput {
     static final String ENTER_AMOUNT_OF_MONEY_NOTICE = "구입금액을 입력해 주세요.";
     static final String ENTER_WINNNG_LOTTO_NUMBERS_NOTICE = "당첨 번호를 입력해 주세요.";
     static final String ENTER_BOUNUS_NUMBER_NOTICE = "보너스 번호를 입력해 주세요.";
-    static final String RATE_OF_RETURN_IS_N_NOTICE = "총 수익률은 %.1f%%입니다." + NEW_LINE;
-    static final String WIN_STATISTICS_NOTICE = "당첨 통계";
+    static final String RATE_OF_PROFIT_IS_N_NOTICE = "총 수익률은 %.1f%%입니다." + NEW_LINE;
+    static final String GRADE_STATISTICS_NOTICE = "당첨 통계";
     static final String LINE_NOTICE = "---";
 
     public static final String ERROR = "[ERROR] ";
@@ -22,7 +22,7 @@ public class Ouput {
     public static final String ENTER_IN_UNITS_OF_1000_WON_ERROR = ERROR + "1000원 단위로 입력해주세요";
 
 
-    enum PlaceNotice {
+    enum GradeNotice {
         FIFTH("3개 일치 (5,000원) - %d개" + NEW_LINE),
         FOURTH("4개 일치 (50,000원) - %d개" + NEW_LINE),
         THIRD("5개 일치 (1,500,000원) - 0개" + NEW_LINE),
@@ -30,7 +30,7 @@ public class Ouput {
         FIRST("6개 일치 (2,000,000,000원) - 0개" + NEW_LINE);
         private final String notice;
 
-        PlaceNotice(String string) {
+        GradeNotice(String string) {
             notice = string;
         }
     }
@@ -55,19 +55,19 @@ public class Ouput {
     }
 
     public void notifyRateOfReturn(float rateOfReturn) {
-        System.out.printf(RATE_OF_RETURN_IS_N_NOTICE, rateOfReturn);
+        System.out.printf(RATE_OF_PROFIT_IS_N_NOTICE, rateOfReturn);
     }
 
     public void notifySumOfResult(List<Integer> sumOfResult) {
-        System.out.println(WIN_STATISTICS_NOTICE);
+        System.out.println(GRADE_STATISTICS_NOTICE);
         System.out.println(LINE_NOTICE);
-        PlaceNotice[] place = PlaceNotice.values();
+        GradeNotice[] grade = GradeNotice.values();
         for (int order = 0; order < 5; order++) {
-            System.out.printf(place[order].notice, sumOfResult.get(order));
+            System.out.printf(grade[order].notice, sumOfResult.get(order));
         }
     }
 
-    public void beginNewLine(){
+    public void beginNewLine() {
         System.out.print(NEW_LINE);
     }
 }
