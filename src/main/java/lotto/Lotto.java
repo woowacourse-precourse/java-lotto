@@ -1,4 +1,5 @@
 package lotto;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -25,17 +26,20 @@ public class Lotto {
     public List<Integer> getWinningNumber(){
         return numbers;
     }
-    public int tt(List<List<Integer>> lottoBundle,int bonusNumber){
+    public int[] lotteResults(List<List<Integer>> lottoBundle,int bonusNumber){
         int[] resultStatistics={0,0,0,0,0};
         int count;
+        List<Integer> currentLotto;
         for (List<Integer> lotto:lottoBundle) {
-            lotto.retainAll(numbers);
-            count=lotto.size();
-
-            resultStatistics[count]=resultStatistics[count]+1;
+            currentLotto=new ArrayList<>(lotto);
+            currentLotto.retainAll(numbers);
+            count=currentLotto.size();
+            if(count==5&&numbers.contains(bonusNumber)) count=count+1;
+            count=count-3;
+            if(count>=0)
+                resultStatistics[count]=resultStatistics[count]+1;
         }
-
-        return 1;
+        return resultStatistics;
     }
     /*
     //당첨 번호 중복되는지 확인할 필요있음
