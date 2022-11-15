@@ -13,4 +13,8 @@ public class Judgement {
         }
         return count;
     }
+
+    public boolean containBonusNumber(List<Integer> myLotto, int bounusNumber) {
+        return myLotto.contains(bounusNumber);
+    }
 }
