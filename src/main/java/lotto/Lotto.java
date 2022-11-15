@@ -3,7 +3,9 @@ package lotto;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Lotto {
     private final List<Integer> numbers;
@@ -17,12 +19,15 @@ public class Lotto {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException();
         }
+        Set<Integer> set = new HashSet<>(numbers);
+        if(set.size() != numbers.size()){
+            throw new IllegalArgumentException();
+        }
     }
 
     public List<Integer> randomLotto(){
 
         List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
-        Collections.sort(numbers);//오름차순
         return numbers;
     }
 

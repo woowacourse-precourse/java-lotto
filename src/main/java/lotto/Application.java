@@ -44,7 +44,6 @@ public class Application extends Lotto {
         List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
         Application application = new Application(numbers);
 
-//        myLotto = application.randomLotto();
         System.out.println(howManyTimes + "개를 구매했습니다.");
 
         for(int i = 0 ; i < howManyTimes; i ++ ){
