@@ -1,17 +1,17 @@
 package lotto.domain;
 
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
+
+import java.util.List;
+import java.util.stream.Stream;
+
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.MethodSource;
-
-import java.util.List;
-import java.util.stream.Stream;
-
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class LottoCheckerTest {
     @DisplayName("로또 번호 비교하기")
@@ -79,7 +79,7 @@ public class LottoCheckerTest {
 
     @DisplayName("로또 결과 종합하기")
     @Test
-    void sumUpResult() {
+    void toResult() {
         LottoChecker lottoChecker = new LottoChecker();
         List<Integer> result = lottoChecker.toResult(List.of(0, 2, 3, 3, 5, 15, 6, 2, 0, 1));
 
