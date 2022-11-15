@@ -22,7 +22,14 @@ public class Lotto {
             .count();
     }
 
-    public boolean containsBonus(final int bonus) {
+    boolean containsBonus(final int bonus) {
         return numbers.contains(bonus);
+    }
+
+    public CompareResult compareTo(final List<Integer> winningNumbers, final int bonus) {
+        return new CompareResult(
+            getMatchingNumbers(winningNumbers),
+            containsBonus(bonus)
+        );
     }
 }

@@ -37,5 +37,19 @@ public class LottoTest {
 		assertThat(lotto.containsBonus(1)).isTrue();
 	}
 
+	@DisplayName("로또번호와 당첨번호 및 보너스 번호와 비교하여 당첨 내역을 알 수 있다.")
+	@Test
+	void compareTo_당첨번호_와_보너스번호와_비교하여_당첨내역을_구할수있다() {
+		WinningRule rule = WinningRule.of(
+			lotto.compareTo(List.of(1, 2, 3, 4, 5, 6), 7)
+		);
+		assertThat(rule.getStatus()).isEqualTo("6개 일치");
+		assertThat(rule.getPrice()).isEqualTo(2_000_000_000);
 
+		rule = WinningRule.of(
+			lotto.compareTo(List.of(1, 3, 5, 14, 22, 45), 7)
+		);
+		assertThat(rule.getStatus()).isEqualTo("3개 일치");
+		assertThat(rule.getPrice()).isEqualTo(5_000);
+	}
 }
