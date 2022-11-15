@@ -4,6 +4,8 @@ import domain.*;
 import view.InputView;
 import view.OutputView;
 
+import static util.StringUtil.parseToInt;
+
 public class LottoController {
     public void run() {
         PurchaseMoney purchaseMoney = new PurchaseMoney(InputView.inputMoney());
@@ -17,7 +19,7 @@ public class LottoController {
 
     private WinningNumber createWinningNumber() {
         Lotto winningNumbers = new Lotto(InputView.inputWinningNumber());
-        int bonusNumber = InputView.inputBonusNumber();
+        int bonusNumber = parseToInt(InputView.inputBonusNumber());
 
         return getWinningNumbers(winningNumbers, bonusNumber);
     }

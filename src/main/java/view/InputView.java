@@ -9,6 +9,7 @@ public class InputView {
     public static final String INPUT_BONUS_NUMBER = "보너스 번호를 입력해 주세요.";
     public static String inputMoney() {
         System.out.println(INPUT_BUY_AMOUNT);
+
         return readLine();
     }
 
@@ -17,9 +18,9 @@ public class InputView {
         return readLine();
     }
 
-    public static int inputBonusNumber() {
+    public static String inputBonusNumber() {
         System.out.println(INPUT_BONUS_NUMBER);
-        return parseToInt(readLine());
+        return readLine();
     }
 
 }
