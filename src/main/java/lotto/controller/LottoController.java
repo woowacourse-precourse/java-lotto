@@ -1,9 +1,8 @@
 package lotto.controller;
 
 import java.util.List;
-import java.util.Map;
 import lotto.model.Lotto;
-import lotto.model.WinningScore;
+import lotto.model.StatisticsResult;
 import lotto.service.LottoService;
 import lotto.view.LottoInputView;
 import lotto.view.LottoOutputView;
@@ -28,17 +27,13 @@ public class LottoController {
     private void publishUserLotto() {
         int purchaseAmount = inputPurchaseAmount();
         List<Lotto> lottoTickets = lottoService.publishLottoTickets(purchaseAmount);
-        printUserLottoTicketDetail(lottoTickets);
+        lottoOutputView.printLottoTicketCount(lottoService.getLottoTicketCount());
+        lottoOutputView.printLottoTickets(lottoTickets);
     }
 
     private int inputPurchaseAmount() {
         lottoOutputView.printInputPurchaseAmount();
         return lottoInputView.inputPurchaseAmount();
-    }
-
-    private void printUserLottoTicketDetail(List<Lotto> lottoTickets) {
-        lottoOutputView.printLottoTicketCount(lottoService.getLottoTicketCount());
-        lottoOutputView.printLottoTickets(lottoTickets);
     }
 
     private void assignWinningLotto() {
@@ -58,7 +53,7 @@ public class LottoController {
     }
 
     private void calculateWinningStatistics() {
-        Map<WinningScore, Integer> statistics = lottoService.computeWinningResult();
+        StatisticsResult statistics = lottoService.computeWinningResult();
         lottoOutputView.printStatistics(statistics);
         double rateOfReturn = lottoService.computeRateOfReturn();
         lottoOutputView.printRateOfReturn(rateOfReturn);

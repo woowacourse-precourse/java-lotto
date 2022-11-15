@@ -1,17 +1,16 @@
 package lotto.service;
 
 import java.util.List;
-import java.util.Map;
 import lotto.model.Lotto;
+import lotto.model.LottoCalculation;
 import lotto.model.LottoMachine;
-import lotto.model.LottoResult;
+import lotto.model.StatisticsResult;
 import lotto.model.WinningLotto;
-import lotto.model.WinningScore;
 
 public class LottoService {
     private LottoMachine lottoMachine;
     private WinningLotto winningLotto;
-    private LottoResult lottoResult;
+    private LottoCalculation lottoCalculation;
 
     public List<Lotto> publishLottoTickets(int purchaseAmount) {
         lottoMachine = new LottoMachine(purchaseAmount);
@@ -27,15 +26,15 @@ public class LottoService {
         winningLotto = new WinningLotto(lotto, bonusNumber);
     }
 
-    public Map<WinningScore, Integer> computeWinningResult() {
-        lottoResult = new LottoResult(winningLotto.getBonusNumber());
+    public StatisticsResult computeWinningResult() {
+        lottoCalculation = new LottoCalculation(winningLotto);
         for (Lotto userLotto : lottoMachine.getLottoTickets()) {
-            lottoResult.computeWinningScore(userLotto, winningLotto.getWinningLotto());
+            lottoCalculation.computeWinningScore(userLotto);
         }
-        return lottoResult.getWinningScoreResult();
+        return lottoCalculation.getStatisticsResult();
     }
 
     public double computeRateOfReturn() {
-        return lottoResult.computeRateOfReturn(lottoMachine.getPurchaseAmount());
+        return lottoCalculation.computeRateOfReturn(lottoMachine.getPurchaseAmount());
     }
 }

@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import lotto.model.Lotto;
+import lotto.model.StatisticsResult;
 import lotto.model.WinningScore;
 import lotto.util.constants.GameConstants;
 
@@ -36,10 +37,10 @@ public class LottoOutputView {
         print(Arrays.toString(lottoArray));
     }
 
-    public void printStatistics(Map<WinningScore, Integer> statistics) {
+    public void printStatistics(StatisticsResult statistics) {
         print("\n" + GameConstants.OUTPUT_WINNING_STATS);
         for (WinningScore winningScore : WinningScore.values()) {
-            printWinningScore(winningScore, statistics);
+            printWinningScore(winningScore, statistics.getWinningScoreResult());
         }
     }
 

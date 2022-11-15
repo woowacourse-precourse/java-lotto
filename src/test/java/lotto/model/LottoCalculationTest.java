@@ -10,26 +10,24 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-class LottoResultTest {
-    private Lotto winningLotto;
+class LottoCalculationTest {
+    private final Lotto winningLotto = new Lotto(new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5, 6)));
     private final static int bonusNumber = 10;
 
     private WinningLotto winning;
-    private LottoResult lottoResult;
+    private LottoCalculation lottoCalculation;
 
     @BeforeEach
     void setUp() {
-        winningLotto = new Lotto(new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5, 6)));
         winning = new WinningLotto(winningLotto, bonusNumber);
-        lottoResult = new LottoResult(bonusNumber);
+        lottoCalculation = new LottoCalculation(winning);
     }
 
     @DisplayName("당첨 로또와 발행된 각 로또의 일치하는 개수를 계산한다.")
     @Test
     void 일치하는_숫자_갯수_계산_테스트() {
         Lotto userLotto = new Lotto(List.of(1, 3, 5, 14, 22, 45));
-        WinningScore winningScore = lottoResult.compareNumber(userLotto.getNumbers(),
-                winningLotto.getNumbers());
+        WinningScore winningScore = lottoCalculation.compareNumber(userLotto.getNumbers());
         assertThat(winningScore.name()).isEqualTo(WinningScore.THREE.name());
     }
 
@@ -37,8 +35,8 @@ class LottoResultTest {
     @Test
     void 당첨_결과_계산_테스트_1() {
         Lotto userLotto = new Lotto(List.of(1, 2, 3, 4, 5, 10));
-        lottoResult.computeWinningScore(userLotto, winningLotto);
-        Map<WinningScore, Integer> result = lottoResult.getWinningScoreResult();
+        lottoCalculation.computeWinningScore(userLotto);
+        Map<WinningScore, Integer> result = lottoCalculation.getStatisticsResult().getWinningScoreResult();
         List<Integer> scoreCount = new ArrayList<>(Arrays.asList(0, 0, 0, 1, 0));
         int i = 0;
         for (WinningScore score : WinningScore.values()) {
@@ -53,10 +51,10 @@ class LottoResultTest {
     @DisplayName("발행된 로또의 당첨 결과를 구한다.")
     @Test
     void 당첨_결과_계산_테스트_2() {
-        lottoResult.computeWinningScore(new Lotto(List.of(1, 2, 3, 4, 5, 10)), winningLotto);
-        lottoResult.computeWinningScore(new Lotto(List.of(1, 2, 3, 4, 11, 13)), winningLotto);
+        lottoCalculation.computeWinningScore(new Lotto(List.of(1, 2, 3, 4, 5, 10)));
+        lottoCalculation.computeWinningScore(new Lotto(List.of(1, 2, 3, 4, 11, 13)));
 
-        Map<WinningScore, Integer> result = lottoResult.getWinningScoreResult();
+        Map<WinningScore, Integer> result = lottoCalculation.getStatisticsResult().getWinningScoreResult();
         List<Integer> scoreCount = new ArrayList<>(Arrays.asList(0, 1, 0, 1, 0));
         int i = 0;
         for (WinningScore score : WinningScore.values()) {
@@ -72,15 +70,15 @@ class LottoResultTest {
     @Test
     void 수익률_계산_테스트() {
         int purchaseAmount = 8000;
-        lottoResult.computeWinningScore(new Lotto(List.of(1, 3, 5, 14, 22, 45)), winningLotto);
-        assertThat(lottoResult.computeRateOfReturn(purchaseAmount)).isEqualTo(62.5);
+        lottoCalculation.computeWinningScore(new Lotto(List.of(1, 3, 5, 14, 22, 45)));
+        assertThat(lottoCalculation.computeRateOfReturn(purchaseAmount)).isEqualTo(62.5);
     }
 
     @DisplayName("수익률을 계산한다.")
     @Test
     void 수익률_계산_테스트_2() {
         int purchaseAmount = 5000;
-        lottoResult.computeWinningScore(new Lotto(List.of(1, 3, 5, 14, 22, 45)), winningLotto);
-        assertThat(lottoResult.computeRateOfReturn(purchaseAmount)).isEqualTo(100.0);
+        lottoCalculation.computeWinningScore(new Lotto(List.of(1, 3, 5, 14, 22, 45)));
+        assertThat(lottoCalculation.computeRateOfReturn(purchaseAmount)).isEqualTo(100.0);
     }
 }
