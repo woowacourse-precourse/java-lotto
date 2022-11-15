@@ -1,5 +1,6 @@
 package lotto;
 
+import lotto.domain.Lotto;
 import lotto.domain.NumberBox;
 import lotto.domain.User;
 import lotto.util.Calculator;
@@ -15,7 +16,10 @@ public class Application {
             int money = Input.readMoney();
 
             User user = new User(money);
-            user.printLottos();
+
+            List<Lotto> lottos = user.getLottos();
+            Output.printBuyMessage(lottos.size());
+            Output.printLottos(lottos);
 
             Output.printInputWinnings();
             List<Integer> winningNumbers = Input.readWinningNumbers();

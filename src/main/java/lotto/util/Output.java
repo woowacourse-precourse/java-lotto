@@ -1,12 +1,12 @@
 package lotto.util;
 
+import lotto.domain.Lotto;
 import lotto.domain.Result;
 
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 public class Output {
     private static final String INPUT_MONEY = "구입금액을 입력해 주세요.";
@@ -26,12 +26,10 @@ public class Output {
         System.out.println("\n" + number + BUY_MESSAGE);
     }
 
-    public static void printLotto(List<Integer> numbers) {
-        System.out.println(
-                numbers.stream()
-                        .map(String::valueOf)
-                        .collect(Collectors.joining(", ", "[", "]"))
-        );
+    public static void printLottos(List<Lotto> lottos) {
+        for (Lotto lotto : lottos) {
+            System.out.println(lotto.makeString());
+        }
     }
 
     public static void printInputWinnings() {

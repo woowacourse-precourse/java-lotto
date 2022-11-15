@@ -2,7 +2,6 @@ package lotto.domain;
 
 import lotto.error.ErrorMessage;
 import lotto.util.LottoGenerator;
-import lotto.util.Output;
 import lotto.util.Validator;
 
 import java.util.ArrayList;
@@ -37,10 +36,5 @@ public class User {
         }
 
         return boughtLottos;
-    }
-
-    public void printLottos() {
-        Output.printBuyMessage(lottos.size());
-        lottos.forEach(Lotto::print);
     }
 }

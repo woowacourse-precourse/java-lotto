@@ -1,10 +1,10 @@
 package lotto.domain;
 
-import lotto.util.Output;
 import lotto.util.Validator;
 
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public class Lotto {
     private final List<Integer> numbers;
@@ -32,7 +32,9 @@ public class Lotto {
         return Result.computeScore(score);
     }
 
-    public void print() {
-        Output.printLotto(numbers);
+    public String makeString() {
+        return numbers.stream()
+                .map(String::valueOf)
+                .collect(Collectors.joining(", ", "[", "]"));
     }
 }

@@ -64,20 +64,20 @@
 - `util/Input` 클래스 : 입력 담당, 입력값에 대한 자료형 변환을 위한 유효성 검사 수행
   - `readMoney()`, `readWinningNumbers()`, `readBonusNumber()`
 - `util/Output` 클래스 : 출력 담당
-  - `printInputMessage()`, `printBuyMessage()`, `printLotto()`, `printInputWinnings()`, `printInputBonus()`, `printStatistics()`, `printYield()`, `printException()`
+  - `printInputMessage()`, `printBuyMessage()`, `printLottos()`, `printInputWinnings()`, `printInputBonus()`, `printStatistics()`, `printYield()`, `printException()`
 - `util/Calculator` 클래스 : 당첨 결과, 수익률 계산 수행
   - `Map<Result, Integer> resultCount`, `int earn`
   - `calculateResult()`, `calculateEarn()`, `initializeMap()`, `stringToInt()`, `calculateYield()`
 
 - `domain/Lotto` 클래스 : 사용자의 로또 1개를 저장, 관련 로직 수행
   - `List<Integer> numbers`
-  - `computeResult()`, `print()`
+  - `computeResult()`, `makeString()`
 - `domain/NumberBox` 클래스 : 당첨 번호, 보너스 번호를 저장, 관련 로직 수행
   - `Set<Integer> winningNumbers`, `int bonusNumber`
   - `validate()`, `validate()`
 - `domain/User` 클래스 : 구입 금액, 사용자 구매 로또 리스트 생성 및 저장
   - `int money`, `List<Lotto> lottos`
-  - `validate()`, `buyLottos()`, `printLottos()`
+  - `validate()`, `buyLottos()`
 - `domain/Result` enum : 로또 결과 관련 로직 수행
   - `THREE("3개 일치", "5,000", 30)`
   - `FOUR("4개 일치", “50,000", 40)`
