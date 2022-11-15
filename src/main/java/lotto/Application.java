@@ -1,8 +1,10 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 public class Application {
@@ -10,10 +12,34 @@ public class Application {
         // TODO: 프로그램 구현
         int money = inputMoney();
 
+        List<List<Integer>> boughtLottos = buyLottos(money);
+        printLottos(boughtLottos);
+
         List<Integer> targetNumbers = inputTargetNumbers();
         Lotto targetLotto = new Lotto(targetNumbers); // 당첨번호 자동 검증
         int bonusNumber = inputBonusNumber(targetNumbers);
 
+
+    }
+
+    private static void printLottos(List<List<Integer>> boughtLottos) {
+        for (List<Integer> lotto : boughtLottos) {
+            System.out.println(lotto);
+        }
+    }
+
+    private static List<List<Integer>> buyLottos(int money) {
+        int count = money / 1000;
+        System.out.printf("\n%d개를 구매했습니다.\n", count);
+
+        List<List<Integer>> lottos = new ArrayList<>();
+        for (int i = 0; i < count; i++) {
+            List<Integer> lotto = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+            lotto.sort(Comparator.naturalOrder());
+            lottos.add(lotto);
+        }
+
+        return lottos;
     }
 
     private static int inputBonusNumber(List<Integer> targetNumbers) {
