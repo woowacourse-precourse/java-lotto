@@ -23,6 +23,7 @@ public class InputValues {
 
     public int inputBonusNumber() {
         String bonus = Console.readLine();
+        validator.checkIfTheInputIsInteger(bonus);
         return Integer.parseInt(bonus);
     }
 
