@@ -11,7 +11,7 @@ public class Validation {
 
     public static void validateNumber(String str) {
         String regex = "[0-9]+";
-        if (str.matches(regex)) {
+        if (!str.matches(regex)) {
             throw new IllegalArgumentException(ErrorMessage.INPUT_NUMBER.printError());
         }
     }
