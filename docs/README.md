@@ -49,13 +49,14 @@
 | 1   |  getPurchaseMoney   | 로또 구매액을 입력받음 |  4   |
 | 2   | printWinningHistory |    당첨 내역 출력    |    -    |
 | 3   |  printEarningsRate  |     수익률 출력     |    -    |
-| 4   | printLotteryResult  | 당첨 내역 + 수익률 출력 |    -    |
+| 4   | printWinningResult  | 당첨 내역 + 수익률 출력 |    -    |
+| 5   |   printLotteries    | 보유한 로또 출력 | - |
 
 >#### 🏦 HostUI
 | No. |         함수명         |       기능       |  예외처리   |
 |-----|:-------------------:|:--------------:|:-------:|
 | 1   |  getWinningNumber   | 당첨 번호 6자리를 입력받음  | 1, 2, 3 |
-| 2   |   getBonusNumber    | 하나의 보너스 번호를 입력받음 |  1, 2   | 
+| 2   |   getBonusNumber    | 하나의 보너스 번호를 입력받음 |  1, 2   |
 
 
 >#### 💣 ExceptionHandlerUI
@@ -80,6 +81,7 @@
 | 3   | calPurchaseAmount |    구매금 계산    |
 | 4   |  calWinningPrize  |    당첨금 계산    |
 | 5   |  calEarningsRate  |    수익률 계산    |
+|6 | getWinningTimes | 당첨 내역 리턴 |
 
 
 >#### 🏦 HostController
