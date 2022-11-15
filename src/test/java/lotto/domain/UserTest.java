@@ -1,17 +1,10 @@
 package lotto.domain;
 
-//import static org.junit.jupiter.api.Assertions.*;
-
+import static lotto.utils.message.ErrorMessagesUtil.NOT_DIVIDE;
+import static lotto.utils.message.ErrorMessagesUtil.ONLY_NUMBERS;
 import static org.assertj.core.api.Assertions.*;
 
 import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.PrintStream;
-import java.util.List;
-import lotto.utils.MessageConstant;
-import org.assertj.core.api.Assertions;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -19,7 +12,7 @@ class UserTest {
     
     @Test
     @DisplayName("로또를 구매할 수 있다.")
-    void test1() {
+    void 로또를_구매할_수_있다() {
         // given
         setInput("1000");
         User user = new User();
@@ -28,69 +21,42 @@ class UserTest {
         user.buyLotto();
 
         // then
-        assertThat(user.getBuyAmount()).isNotEqualTo(0);
+        assertThat(user.getBuyAmount()).isEqualTo(1);
+    }
+
+    @Test
+    @DisplayName("구매 비용이 로또 가격으로 나눠지지 않으면 예외가 발생한다.")
+    void 구매_비용이_로또_가격으로_나눠지지_않으면_예외가_발생한다() {
+        setInput("1500");
+
+        assertThatThrownBy(() -> new User().buyLotto())
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(NOT_DIVIDE.getMessage());
+    }
+
+    @Test
+    @DisplayName("구매 비용에 문자가 입력되면 예외가 발생한다.")
+    void 구매_비용에_문자가_입력되면_예외가_발생한다() {
+        setInput("1000abc");
+
+        assertThatThrownBy(() -> new User().buyLotto())
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(ONLY_NUMBERS.getMessage());
     }
 
     @Test
     @DisplayName("발행한 로또 수량을 알 수 있다.")
-    void test2() {
+    void 발행한_로또_수량을_알_수_있다() {
         // given
-        String money = "3000";
-        setInput(money);
-        int expected = Integer.parseInt(money) / 1000;
+        setInput("8000");
         User user = new User();
-
-        // when
         user.buyLotto();
-        int actual = user.getBuyAmount();
-
-        // then
-        assertThat(actual).isEqualTo(expected);
-    }
-
-    @Test
-    @DisplayName("보너스 번호를 제외하고 몇 개의 번호가 일치한지 알 수 있다.")
-    void test3() {
-        // given
-        List<Integer> userLottoNumbers = List.of(1, 2, 3, 4, 5, 6);
-        List<Integer> winningLottoNumbers = List.of(1, 2, 3, 10, 11, 12, 13);
-        Lotto lotto = new Lotto(userLottoNumbers);
 
         // when
-        int count = lotto.correctCount(winningLottoNumbers);
+        int result = user.getBuyAmount();
 
         // then
-        assertThat(count).isEqualTo(3);
-    }
-
-    @Test
-    @DisplayName("보너스 번호가 일치하면 true를 리턴한다.")
-    void test4() {
-        // given
-        List<Integer> userLottoNumbers = List.of(1, 2, 3, 4, 5, 6);
-        List<Integer> winningLottoNumbers = List.of(1, 2, 3, 10, 11, 12, 6);
-        Lotto lotto = new Lotto(userLottoNumbers);
-
-        // when
-        boolean actual = lotto.isMatchBonusNumber(winningLottoNumbers);
-
-        // then
-        assertThat(actual).isTrue();
-    }
-
-    @Test
-    @DisplayName("보너스 번호가 일치하지 않으면 false를 리턴한다.")
-    void test5() {
-        // given
-        List<Integer> userLottoNumbers = List.of(1, 2, 3, 4, 5, 6);
-        List<Integer> winningLottoNumbers = List.of(1, 2, 3, 10, 11, 12, 13);
-        Lotto lotto = new Lotto(userLottoNumbers);
-
-        // when
-        boolean actual = lotto.isMatchBonusNumber(winningLottoNumbers);
-
-        // then
-        assertThat(actual).isFalse();
+        assertThat(result).isEqualTo(8);
     }
 
     private void setInput(String... inputs) {
