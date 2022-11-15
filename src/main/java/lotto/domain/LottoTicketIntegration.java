@@ -15,7 +15,7 @@ public class LottoTicketIntegration {
         lottoTicketIntegration.add(randomNumbers);
     }
 
-    public List<List<Integer>> getNumbersIntegration() {
+    public List<List<Integer>> getLottoTicketIntegration() {
         return lottoTicketIntegration;
     }
 }
