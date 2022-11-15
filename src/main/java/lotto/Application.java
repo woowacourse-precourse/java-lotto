@@ -12,6 +12,7 @@ public class Application {
         PrintUserLotto(user_lotto);
         List<Integer> answer = MakeAnswer();
         int bonus_num = MakeBonus(answer);
+        Map<String, Integer> user_match_count = UserMatchingCount(user_lotto, answer, bonus_num);
     }
 
     static int HowManyLotto() {
@@ -90,5 +91,34 @@ public class Application {
         if (answer.contains(bonus_num)) {
             throw new IllegalArgumentException("[ERROR] 당첨 번호 외의 번호를 입력해 주세요.");
         } return bonus_num;
+    }
+
+    static Map<String, Integer> UserMatchingCount(Lotto[] user_lotto, List<Integer> answer, int bonus_num) {
+        Map<String, Integer> user_match_count = new HashMap<>();
+        List<String> winning_count = List.of("0개", "1개", "2개", "3개", "4개", "5개", "5개+보너스", "6개");
+
+        for (String count : winning_count) user_match_count.put(count, 0);
+
+        for (Lotto lotto : user_lotto) {
+            String match_count = MatchingCount(lotto.GetNumbers(), answer, bonus_num);
+            user_match_count.put(match_count, user_match_count.get(match_count) + 1);
+        }
+
+        return user_match_count;
+    }
+
+    static String MatchingCount(List<Integer> lotto, List<Integer> answer, int bonus_num) {
+        int count = 0;
+
+        for (int num : lotto) {
+            if (answer.contains(num)) count++;
+        }
+
+        String output = count + "개";
+
+        if (count == 5) {
+            if (lotto.contains(bonus_num)) output += "+보너스";
+        }
+        return output;
     }
 }
