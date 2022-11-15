@@ -28,7 +28,7 @@ public class Input {
         for(int order=0; order<splittedInput.length; order++) {
             winningNumber.add(Integer.valueOf(splittedInput[order]));
         }
-        Validator.checkWinningNumber(winningNumber); // 입력 값 검증
+        Validator.checkLottoNumbers(winningNumber); // 입력 값 검증
 
         return winningNumber;
     }

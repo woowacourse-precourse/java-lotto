@@ -20,13 +20,13 @@ public class Validator {
         }
     }
 
-    public static void checkWinningNumber(List<Integer> numbers) {
-        checkWinningNumberCount(numbers);
+    public static void checkLottoNumbers(List<Integer> numbers) {
+        checkNumberCount(numbers);
         checkUniqueNumber(numbers);
         checkNumberRange(numbers);
     }
 
-    public static void checkWinningNumberCount(List<Integer> winningNumber) {
+    public static void checkNumberCount(List<Integer> winningNumber) {
         if (winningNumber.size() != 6) {
             throw new IllegalArgumentException("[ERROR] 6개의 수를 입력하세요.");
         }
