@@ -39,8 +39,8 @@ class WinningRankTest {
         assertThat(actualRank).isEqualTo(expectedRank);
     }
 
-    @ParameterizedTest(name = "잘못된 당첨 조건 입력시 예외 발생 테스트 [{index}] : {0}개 일치 입력")
-    @CsvSource(value = {"7,false", "-1,true"})
+    @ParameterizedTest(name = "잘못된 당첨 조건 입력시 예외 발생 테스트 [{index}] : {0}개 일치, 보너스번호 일치 여부 - {1} 입력")
+    @CsvSource(value = {"7,false", "-1,true", "6,true"})
     void wrongWinningConditionTest(int duplicatedNumberCount, boolean isContainBonusNumber) {
         assertThatThrownBy(() -> WinningRank.findByWinningCondition(duplicatedNumberCount, isContainBonusNumber))
                 .isInstanceOf(IllegalArgumentException.class)
