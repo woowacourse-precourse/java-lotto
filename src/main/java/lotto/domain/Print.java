@@ -14,6 +14,22 @@ public class Print {
         }
     }
 
+    public void inputLotto(){
+        System.out.println();
+        System.out.println("당첨 번호를 입력해 주세요.");
+    }
+
+    public void inputBonus(){
+        System.out.println();
+        System.out.println("보너스 번호를 입력해 주세요.");
+    }
+
+    public void statistics(){
+        System.out.println();
+        System.out.println("당첨 통계");
+        System.out.println("---");
+    }
+
     public void winningMoney(List<Integer> matchFrequency){
         List<String> winningsPrint = PrizeCategory.getWinningsPrint();
         List<Integer> matchCount = PrizeCategory.getMatchCount();
