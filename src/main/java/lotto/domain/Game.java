@@ -34,21 +34,28 @@ public class Game {
     private void validateWinningNumberByRange(List<Integer> winningNumbers){
         for (Integer number : winningNumbers){
             if (number > Constants.MAXIMUM_LOTTO_NUMBER.getValue() || number < Constants.MINIMUM_LOTTO_NUMBER.getValue()) {
-                throw new IllegalArgumentException();
+                throw new IllegalArgumentException(
+                        "[ERROR] 당첨 번호는 " + Constants.MINIMUM_LOTTO_NUMBER.getValue() + "와 "
+                                + Constants.MAXIMUM_LOTTO_NUMBER.getValue() + "사이의 정수들이어야 합니다."
+                );
             }
         }
     }
 
     private void validateWinningNumberBySize(List<Integer> winningNumbers){
         if (winningNumbers.size() != Constants.NUMBER_TO_DRAW.getValue()){
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(
+                    "[ERROR] 당첨 번호는 정확히 " + Constants.NUMBER_TO_DRAW.getValue() + "개의 정수여야 합니다."
+            );
         }
     }
 
     private void validateWinningNumberByDistinction(List<Integer> winningNumbers){
         Set<Integer> distinctNumbers = new HashSet<>(winningNumbers);
         if (distinctNumbers.size() != winningNumbers.size()) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(
+                    "[ERROR] 당첨 번호에는 중복되는 수가 없어야 합니다."
+            );
         }
     }
 
@@ -64,13 +71,17 @@ public class Game {
 
     private void validateBonusByRange(Integer bonus){
         if (bonus > Constants.MAXIMUM_LOTTO_NUMBER.getValue() || bonus < Constants.MINIMUM_LOTTO_NUMBER.getValue()) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR] 보너스 번호는 " + Constants.MINIMUM_LOTTO_NUMBER.getValue() + "와 "
+                            + Constants.MAXIMUM_LOTTO_NUMBER.getValue() + "사이의 정수여야 합니다."
+            );
         }
     }
 
     private void validateBonusByDistinction(Integer bonus){
         if (winningNumbers.contains(bonus)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(
+                    "[ERROR] 보너스 번호는 당첨 번호들과 중복이 되지 않는 수여야 합니다."
+            );
         }
     }
 

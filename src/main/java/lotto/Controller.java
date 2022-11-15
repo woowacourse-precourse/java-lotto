@@ -25,17 +25,17 @@ public class Controller {
     public void setBudget(){
         view.print(Text.BUDGET_INPUT);
         String budgetInput = Console.readLine();
-        user.setBudget(toInteger(budgetInput));
+        Integer integer = toInteger(budgetInput);
+        user.setBudget(integer);
+
     }
 
     private Integer toInteger(String budgetInput){
         try {
-            Integer budget = Integer.parseInt(budgetInput);
-            return budget;
+            return Integer.parseInt(budgetInput);
         }
         catch (Exception exception){
-            System.out.print("[ERROR]");
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR] 이 입력은 정수여야 합니다.");
         }
     }
 
@@ -50,8 +50,9 @@ public class Controller {
             return string.split(",");
         }
         catch (Exception exception){
-            System.out.println("[ERROR] 이 입력은 ','로 구분되는 정수들의 나열이어야 합니다.");
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(
+                    "[ERROR] 이 입력은 ','로 구분되는 정수들의 나열이어야 합니다."
+            );
         }
     }
 
@@ -65,8 +66,9 @@ public class Controller {
             return winningNumbers;
         }
         catch (Exception exception){
-            System.out.println("[ERROR] 이 입력은 ','로 구분되는 정수들의 나열이어야 합니다.");
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(
+                    "[ERROR] 이 입력은 ','로 구분되는 정수들의 나열이어야 합니다."
+            );
         }
     }
 
@@ -106,7 +108,7 @@ public class Controller {
 
     private String format(Integer amount){
         DecimalFormat decimalFormat = new DecimalFormat("###,###");
-        return decimalFormat.format(amount);
+        return  decimalFormat.format(amount);
     }
 
     private Text selectFormatByRank(Rank rank){
