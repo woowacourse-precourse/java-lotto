@@ -7,14 +7,12 @@ import java.util.List;
 import lotto.utils.Constants;
 
 public class LottoPublication {
-
     public static Lottos publicationLottos(int count){
         Lottos lottos = new Lottos();
 
         for(int i = 0; i<count; i++){
             lottos.addLotto(new Lotto(generateLottoNumber()));
         }
-
         return lottos;
     }
 

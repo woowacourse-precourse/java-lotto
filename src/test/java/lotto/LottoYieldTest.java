@@ -15,7 +15,6 @@ import lotto.domain.Lottos;
 
 
 public class LottoYieldTest {
-
     @DisplayName("8000원 구매 후 3등 한개 당첨시 수익율 62.5%")
     @Test
     void caseFirstPrize(){

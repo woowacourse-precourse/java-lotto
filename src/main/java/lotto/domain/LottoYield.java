@@ -11,7 +11,6 @@ public class LottoYield {
         for (LottoRank rank : LottoRank.values()) {
             totalRevenue += rank.getPrizeMoney();
         }
-
         return totalRevenue;
     }
 }

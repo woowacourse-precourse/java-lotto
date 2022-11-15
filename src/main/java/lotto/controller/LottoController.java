@@ -8,6 +8,7 @@ import static lotto.views.LottoWinningView.lottoBonusRequestMessage;
 import static lotto.views.LottoWinningView.lottoWinningNumberRequestMessage;
 
 import java.util.List;
+
 import lotto.domain.LottoPublication;
 import lotto.domain.LottoPurchase;
 import lotto.domain.LottoRank;
@@ -20,7 +21,6 @@ import lotto.utils.Constants;
 import lotto.utils.InputPreprocessUtils;
 
 public class LottoController {
-
     public static void run(){
         try{
             Lottos publishedLottos = publicationLottos();
@@ -33,7 +33,7 @@ public class LottoController {
     }
 
     private static void computeLottoYield(Lottos publishedLottos){
-        printLottoYield(LottoYield.computeYield(publishedLottos.getLottoCount()* Constants.LOTTO_PRICE));
+        printLottoYield(LottoYield.computeYield(publishedLottos.getLottoCount()*Constants.LOTTO_PRICE));
         initWinCount();
     }
 

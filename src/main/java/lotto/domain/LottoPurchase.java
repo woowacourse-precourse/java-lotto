@@ -5,7 +5,6 @@ import lotto.utils.ValidateUtils;
 
 public class LottoPurchase {
     private int money;
-
     private int LottoPublicationCount;
 
     public LottoPurchase(String input){

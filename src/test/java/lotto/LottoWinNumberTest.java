@@ -12,7 +12,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 public class LottoWinNumberTest {
-
     @DisplayName("1,2,3,4,5,6 문자열을 받아 [1,2,3,4,5,6] 리스트를 반환한다.")
     @Test
     void correctInputPreprocessUtilsTest(){

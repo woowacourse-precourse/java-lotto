@@ -12,7 +12,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 public class LottoPublicationTest {
-
     @DisplayName("주어진 숫자만큼 로또 발행")
     @Test
     void publicationLottoByCount(){

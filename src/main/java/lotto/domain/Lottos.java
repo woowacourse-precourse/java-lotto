@@ -28,7 +28,6 @@ public class Lottos {
         for(Lotto lotto: lottos){
             result.append(lotto.toString()).append("\n");
         }
-
         return result.toString();
     }
 }
