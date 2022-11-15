@@ -63,4 +63,9 @@ class CalculatingLottoTest {
         assertThat(calculatingLotto.calculateLottoRank(winningLotto, 7, allLotto.get(5))).isEqualTo(0);
         assertThat(calculatingLotto.calculateLottoRank(winningLotto, 7, allLotto.get(6))).isEqualTo(0);
     }
+
+    @Test
+    void calculateAllLottoTest() {
+        assertThat(calculatingLotto.calculateAllLotto(winningLotto, 7, allLotto)).isEqualTo(List.of(1,2,3,4,5,0,0));
+    }
 }
