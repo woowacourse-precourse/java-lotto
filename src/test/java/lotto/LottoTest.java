@@ -7,12 +7,29 @@ import org.junit.jupiter.api.Test;
 import java.util.List;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomUniqueNumbersInRangeTest;
+import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class LottoTest extends NsTest {
 
     private static final String ERROR_MESSAGE = "[ERROR]";
+
+    @Test
+    void 이미_존재하는_로또_테스트() {
+        assertRandomUniqueNumbersInRangeTest(
+                () -> {
+                    run("5000");
+                    assertThat(output()).contains(ERROR_MESSAGE);
+                },
+                List.of(14, 3, 16, 33, 42, 45),
+                List.of(14, 3, 16, 33, 42, 45),
+                List.of(4, 5, 6, 1, 2, 33),
+                List.of(1, 2, 5, 7, 33, 4),
+                List.of(1, 2, 5, 14, 22, 45)
+        );
+    }
+
     @DisplayName("로또 번호의 개수가 6개가 넘어가면 예외가 발생한다.")
     @Test
     void createLottoByOverSize() {

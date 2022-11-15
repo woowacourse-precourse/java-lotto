@@ -1,6 +1,7 @@
 package lotto;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Lotto {
@@ -58,6 +59,14 @@ public class Lotto {
             return true;
         }
         return false;
+    }
+
+    public static List<Integer> sortLottoNumbers(List<Integer> numbers) {
+        List<Integer> sortedNumbers = new ArrayList<>(numbers);
+        Collections.sort(sortedNumbers);
+        System.out.println(sortedNumbers);
+
+        return sortedNumbers;
     }
 
     public static List<Integer> getLottoNumbers(String input) {

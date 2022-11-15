@@ -58,18 +58,13 @@ public class Game {
             List<Integer> lottoNumbers = Randoms.pickUniqueNumbersInRange(ReferenceValue.Lotto.START_RANGE.getValue(),
                     ReferenceValue.Lotto.END_RANGE.getValue(), ReferenceValue.Lotto.SIZE.getValue());
 
-            List<Integer> sortedNumbers = new ArrayList<>(lottoNumbers);
-            Collections.sort(sortedNumbers);
-
-            System.out.println(sortedNumbers);
-
+            List<Integer> sortedNumbers = Lotto.sortLottoNumbers(lottoNumbers);
             Lotto lotto = new Lotto(sortedNumbers);
             checkLottoTickets(allLottery, lotto);
             allLottery.add(lotto);
         }
-
-        lottoTickets = new LottoTickets(allLottery);
         System.out.println();
+        lottoTickets = new LottoTickets(allLottery);
     }
 
     public static void checkLottoTickets(List<Lotto> allLottery, Lotto uncheckedLotto) {

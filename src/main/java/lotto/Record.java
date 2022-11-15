@@ -34,8 +34,13 @@ public class Record {
     public static void printDuplicateError() {
         System.out.println(ErrorMessage.IS_ERROR.getMessage() + ErrorMessage.DUPLICATE_NUMBER.getMessage());
     }
+
     public static void printDuplicateLottoError() {
         System.out.println(ErrorMessage.IS_ERROR.getMessage() + ErrorMessage.DUPLICATE_LOTTO.getMessage());
+    }
+
+    public static void printLottoCountsError() {
+        System.out.println(ErrorMessage.IS_ERROR.getMessage() + ErrorMessage.DIFFERENT_LOTTO_COUNTS.getMessage());
     }
 
     public static String getBonusNumber() {
@@ -113,6 +118,7 @@ public class Record {
     public enum ErrorMessage {
         IS_ERROR("[ERROR]"),
         DIFFERENT_SIZE(" 번호를 6개 입력해주세요."),
+        DIFFERENT_LOTTO_COUNTS(" 구입금액과 로또 개수가 다릅니다."),
         DUPLICATE_NUMBER(" 중복된 숫자가 있습니다."),
         DUPLICATE_LOTTO(" 이미 존재하는 로또입니다."),
         IS_NUMBER(" 해당 입력값은 숫자로 전환할 수 없습니다."),
