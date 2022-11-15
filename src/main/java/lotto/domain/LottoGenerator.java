@@ -16,7 +16,7 @@ public class LottoGenerator {
 
     private void checkMoneyUnit(int money) {
         if ((money % 1000) != 0 || money <= 0) {
-            throw new IllegalArgumentException("[ERROR]");
+            throw new IllegalArgumentException("[ERROR]: OUT OF UNIT!");
         }
     }
 

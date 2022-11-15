@@ -15,20 +15,30 @@ public class Lotto {
 
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR]: OUT OF SIZE");
         }
-
         if (checkDuplicateNumber(numbers)) {
-            System.err.println("중복된 요소가 있습니다!");
-            throw new IllegalArgumentException("[ERROR]");
+            throw new IllegalArgumentException("[ERROR]: DUPLICATION!");
+        }
+        if (checkNotCorrectRange(numbers)) {
+            throw new IllegalArgumentException("[ERROR]: HAVE A NUMBER OUT OF RANGE!");
         }
     }
 
     private Boolean checkDuplicateNumber(List<Integer> numbers) throws IllegalArgumentException{
         List<Integer> tempLottoNumber = new ArrayList<>(numbers);
         Set<Integer> numSet = new HashSet<>(tempLottoNumber);
-
         return numSet.size() != tempLottoNumber.size();
+    }
+
+    private Boolean checkNotCorrectRange(List<Integer> numbers) throws IllegalArgumentException{
+        List<Integer> tempLottoNumber = new ArrayList<>(numbers);
+        for (Integer eachUnit: tempLottoNumber) {
+            if (!(eachUnit > 0 && eachUnit <= 45)) {
+                return false;
+            }
+        }
+        return true;
     }
 
     public int lottoChecker(List<Integer> winNumbers, int bonusNumber) {
