@@ -1,6 +1,7 @@
 package lotto.domain.menu;
 
 import java.util.List;
+import lotto.constants.Rank;
 import lotto.constants.SystemConsole;
 import lotto.domain.TotalPrizeMoney;
 import lotto.domain.WinningStatistics;
@@ -23,12 +24,7 @@ public class RankingWinner {
         List<Integer> winningRanking = winningStatistics.countCheck(sameNumberCount,
                 bonusNumbers);
 
-        SystemConsole systemConsole = new SystemConsole();
-        systemConsole.WINNING_STATISTICS();
-
-        for (int i = 0; i < winningRanking.size(); i++) {
-            SystemConsole(winningRanking, systemConsole, i);
-        }
+        SystemConsole systemConsole = getSystemConsole(winningRanking);
 
         int calculation = totalPrizeMoney.totalCalculation(sameNumberCount, winningRanking);
         double revenue = yieldCalculation.revenue(calculation);

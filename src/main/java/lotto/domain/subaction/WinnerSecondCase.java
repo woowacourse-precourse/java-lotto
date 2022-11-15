@@ -3,6 +3,7 @@ package lotto.domain.subaction;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import lotto.constants.Rank;
 
 public class WinnerSecondCase {
     private static final int SECOND_PRIZE_CONDITION = 5;
@@ -18,7 +19,7 @@ public class WinnerSecondCase {
                 secondCaseCount = getSecondCaseCount(bonusCase, secondCaseCount);
             }
         }
-        result.set(SECOND_INDEX, secondCaseCount);
+        result.set(Rank.SECOND.ordinal(), secondCaseCount);
         return result;
     }
 

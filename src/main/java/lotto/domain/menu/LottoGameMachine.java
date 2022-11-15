@@ -25,7 +25,9 @@ public class LottoGameMachine {
 
     public void run() {
         int lottos = getLottos();
+
         List<List<Integer>> randomLotto = getRandomLotto(lottos);
+
         Lotto lottoAnswer = getCorrectLottoNumber();
 
         List<Integer> sameNumberCount = getSameNumberCount(randomLotto, lottoAnswer);
@@ -45,7 +47,7 @@ public class LottoGameMachine {
         return randomLottoGenerator.createTicket(lottos);
     }
 
-    private int getLottos() {
+    public int getLottos() {
         systemConsole.gameStartMessage();
         LottoTickets lottoTickets = new LottoTickets();
         return lottoTickets.getPaid();

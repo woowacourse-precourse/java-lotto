@@ -1,14 +1,14 @@
 package lotto.constants;
 
-import java.util.List;
+import java.text.NumberFormat;
 
 public class SystemConsole {
 
-    public void GAME_START_MESSAGE() {
+    public void gameStartMessage() {
         System.out.println(SystemMessage.PURCHASE_AMOUNT_MESSAGE);
     }
 
-    public void COMPLETED_PURCHASE(int lottos) {
+    public void completedPurchase(int lottos) {
         System.out.println();
         System.out.println(lottos + SystemMessage.BUY_LOTTO_MESSAGE);
     }
@@ -29,19 +29,19 @@ public class SystemConsole {
         System.out.println(SystemMessage.LINE_MESSAGE);
     }
 
-    public void winningRanking(int c, int m, int p) {
+    public void winningRanking(int rankCount, int rankEqualNumber, int rankMoney) {
         System.out.println(
-                m + "개 일치 (" + NumberFormat.getNumberInstance().format(p) + "원) - " + c + "개");
+                rankEqualNumber + "개 일치 (" + NumberFormat.getNumberInstance().format(rankMoney)
+                        + "원) - " + rankCount + "개");
     }
 
-    public void winningRankingSecond(int c, int m, int p) {
+    public void winningRankingSecond(int rankCount, int rankEqualNumber, int rankMoney) {
         System.out.println(
-                m + "개 일치, 보너스 볼 일치 (" + NumberFormat.getNumberInstance().format(p) + "원) - " + c
-                        + "개");
+                rankEqualNumber + "개 일치, 보너스 볼 일치 (" + NumberFormat.getNumberInstance()
+                        .format(rankMoney) + "원) - " + rankCount + "개");
     }
 
     public void grossYields(double revenue) {
         System.out.println(String.format("총 수익률은 %.1f%%입니다.", revenue));
     }
-
 }
