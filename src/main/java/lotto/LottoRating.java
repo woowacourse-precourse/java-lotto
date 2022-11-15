@@ -1,7 +1,5 @@
 package lotto;
 
-import org.mockito.internal.configuration.injection.PropertyAndSetterInjection;
-
 import java.util.Arrays;
 
 public enum LottoRating {
@@ -22,16 +20,8 @@ public enum LottoRating {
         this.bonusMatch = bonusMatch;
     }
 
-    public int getPrizeOfMatch() {
-        return prizeOfMatch;
-    }
-
     public int getWinningMoney() {
         return winningMoney;
-    }
-
-    public boolean isBonusMatch() {
-        return bonusMatch;
     }
 
     public static LottoRating find(int winningCount, boolean bonusNumber) {
