@@ -10,7 +10,6 @@ import static lotto.Constants.PURCHASE_AMOUNT_IS_NOT_NUMBER_ERROR_MESSAGE;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.List;
-import lotto.ErrorHandler;
 import lotto.domain.Lotto;
 import lotto.repository.UserLottoRepository;
 
@@ -29,21 +28,21 @@ public class UserLottoService {
         return instance;
     }
 
-    public void validate(String purchaseAmount) {
+    public void validate(String purchaseAmount) throws IllegalArgumentException {
         boolean isNumber = purchaseAmount.chars().allMatch(Character::isDigit);
         if (!isNumber) {
-            ErrorHandler.handle(PURCHASE_AMOUNT_IS_NOT_NUMBER_ERROR_MESSAGE);
+            throw new IllegalArgumentException(PURCHASE_AMOUNT_IS_NOT_NUMBER_ERROR_MESSAGE);
         }
         long amount = Long.parseLong(purchaseAmount);
         if (amount < MINIMUM_PURCHASE_AMOUNT) {
-            ErrorHandler.handle(PURCHASE_AMOUNT_IS_NOT_IN_RANGE_ERROR_MESSAGE);
+            throw new IllegalArgumentException(PURCHASE_AMOUNT_IS_NOT_IN_RANGE_ERROR_MESSAGE);
         }
         if (amount % MINIMUM_PURCHASE_AMOUNT != 0) {
-            ErrorHandler.handle(PURCHASE_AMOUNT_IS_NOT_DIVIDED_ERROR_MESSAGE);
+            throw new IllegalArgumentException(PURCHASE_AMOUNT_IS_NOT_DIVIDED_ERROR_MESSAGE);
         }
     }
 
-    public void issueLotto(long purchaseAmount) {
+    public void issueLotto(long purchaseAmount) throws IllegalArgumentException {
         long lottoCnt = purchaseAmount / MINIMUM_PURCHASE_AMOUNT;
         for (int i = 0; i < lottoCnt; i++) {
             Lotto lotto = new Lotto(Randoms.pickUniqueNumbersInRange(MINIMUM_LOTTO_NUMBER, MAXIMUM_LOTTO_NUMBER,

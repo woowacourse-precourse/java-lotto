@@ -28,7 +28,7 @@ public class UserLottoController {
         return instance;
     }
 
-    public void enterPurchaseAmount() {
+    public void enterPurchaseAmount() throws IllegalArgumentException {
         OutputView.printAskPurchaseAmount();
         String purchaseAmount = InputView.input();
         userLottoService.validate(purchaseAmount);

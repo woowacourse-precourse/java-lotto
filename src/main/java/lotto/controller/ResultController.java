@@ -25,7 +25,7 @@ public class ResultController {
         return instance;
     }
 
-    public void enterWinningNumbers() {
+    public void enterWinningNumbers() throws IllegalArgumentException {
         OutputView.printAskWinningNumbers();
         String input = InputView.input();
         List<String> winningNumbers = resultService.splitWinningNumbers(input);
@@ -33,7 +33,7 @@ public class ResultController {
         resultService.saveWinningNumbers(winningNumbers);
     }
 
-    public void enterBonusNumber() {
+    public void enterBonusNumber() throws IllegalArgumentException {
         OutputView.printAskBonusNumber();
         String bonusNumber = InputView.input();
         resultService.validateBonusNumber(bonusNumber);

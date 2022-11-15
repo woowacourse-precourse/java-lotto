@@ -9,12 +9,16 @@ public class Application {
 
     public static void main(String[] args) {
         init();
-        userLottoController.enterPurchaseAmount();
-        userLottoController.printIssuedLotteries();
-        resultController.enterWinningNumbers();
-        resultController.enterBonusNumber();
-        resultController.printLottoResult(userLottoController.getIssuedLotteries());
-        userLottoController.calculateEarningRate();
+        try {
+            userLottoController.enterPurchaseAmount();
+            userLottoController.printIssuedLotteries();
+            resultController.enterWinningNumbers();
+            resultController.enterBonusNumber();
+            resultController.printLottoResult(userLottoController.getIssuedLotteries());
+            userLottoController.calculateEarningRate();
+        } catch (IllegalArgumentException exception) {
+            System.out.println(exception.getMessage());
+        }
     }
 
     private static void init() {
