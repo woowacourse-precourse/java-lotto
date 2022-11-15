@@ -17,6 +17,9 @@ public class Application {
         int pay = askPay();
         generator.createLottoByPay(pay); //로또n개 생성
         output.outputLotteries(pay, generator.lotteries); //로또 목록 출력
+
+        input.winningNumber(); // 당첨 로또 입력받기
+        Lotto lotto = new Lotto(input.numbers); //로또 검사
     }
     public static int askPay() {
         Input input = new Input();
