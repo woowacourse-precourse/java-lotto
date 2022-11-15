@@ -30,4 +30,8 @@ public class DataOutput {
         System.out.println(Reward_Message.EQUALBONUS + "" + matching_number[4] + Reward_Message.EQUALLAST);
         System.out.println(Reward_Message.EQUALSIX + "" + matching_number[3] + Reward_Message.EQUALLAST);
     }
+
+    public static void income(float[] income){
+        System.out.println("총 수익률은 " + String.format("%.2f" ,income) + "%입니다.");
+    }
 }
