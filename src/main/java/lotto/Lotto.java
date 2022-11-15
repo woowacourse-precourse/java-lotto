@@ -38,4 +38,23 @@ public class Lotto {
         }
         this.bonusNum = bonus;
     }
+
+    public void lottoNumberCompare(List<Integer> lotto){
+        int frequencyNumber=0;
+        boolean bonusNumFrequency = false;
+        for(int i = 0; i<lotto.size();i++){
+            if(Collections.frequency(numbers, lotto.get(i)) == 1){
+                frequencyNumber++;
+            }
+        }
+        if(Collections.frequency(lotto, this.bonusNum) == 1){
+            bonusNumFrequency = true;
+        }
+        lottoMoney(frequencyNumber, bonusNumFrequency);
+    }
+
+    private void lottoMoney(int frequencyNumber, boolean bonusFrequency){
+
+    }
+
 }
