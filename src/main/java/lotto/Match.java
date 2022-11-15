@@ -1,6 +1,5 @@
 package lotto;
 
-import java.util.HashMap;
 import java.util.List;
 
 import static lotto.matchType.*;
@@ -49,16 +48,5 @@ public class Match {
             matchType type = lotto.getType();
             countEach(type);
         }
-    }
-
-    //지우기
-    public HashMap<String, Integer> bundle() {
-        HashMap<String, Integer> result = new HashMap<>();
-        result.put("match3", MATCH_THREE);
-        result.put("match4", MATCH_FOUR);
-        result.put("match5", MATCH_FIVE);
-        result.put("match6", MATCH_SIX);
-        result.put("match5Bonus", MATCH_FIVE_BONUS);
-        return result;
     }
 }
