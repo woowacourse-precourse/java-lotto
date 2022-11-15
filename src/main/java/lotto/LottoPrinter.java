@@ -32,6 +32,6 @@ public class LottoPrinter {
     }
 
     public static void revenueResultPrint(double revenue) {
-        System.out.printf("총 수익률은 %.1f%s입니다.", revenue, "%");
+        System.out.printf("총 수익률은 %,.1f%s입니다.", revenue, "%");
     }
 }
