@@ -23,7 +23,14 @@ public class InputErrorTest extends NsTest {
             assertThat(output()).contains(InputErrorMessage.INVALID_LOTTO_NUMBERS.getErrorMessage());
         });
     }
-    
+
+    @Test
+    void 당첨번호_숫자가_아닌_문자열_테스트() {
+        assertSimpleTest(() -> {
+            runException("2000", "21,42,6,15,27f");
+            assertThat(output()).contains(InputErrorMessage.INVALID_LOTTO_NUMBERS.getErrorMessage());
+        });
+    }
 
     @Override
     protected void runMain() {
