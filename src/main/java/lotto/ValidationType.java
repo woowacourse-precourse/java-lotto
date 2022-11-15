@@ -11,13 +11,13 @@ public enum ValidationType {
             .filter(number -> number <= 45)
             .count() == 6);
 
-    private Function<List<Integer>, boolean> expression;
+    private Function<List<Integer>, Boolean> expression;
 
-    ValidationType(Function<List<Integer>, boolean> expression) {
+    ValidationType(Function<List<Integer>, Boolean> expression) {
         this.expression = expression;
     }
 
-    public boolean validate(List<Integer> numbers) {
+    public Boolean validateNumbers(List<Integer> numbers) {
         return expression.apply(numbers);
     }
 }
