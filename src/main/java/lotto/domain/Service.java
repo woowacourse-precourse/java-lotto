@@ -56,8 +56,8 @@ public class Service {
     }
 
     public static String getYield (double payMoney) {
-        double yield = (FIRSTPLACE * 200000000 + SECONDPLACE * 30000000 + THIRDPLACE * 1500000 + FOURTHPLACE * 50000
-                + FIFTHPLACE * 50000) /payMoney;
+        double yield = ((FIRSTPLACE * 200000000 + SECONDPLACE * 30000000 + THIRDPLACE * 1500000 + FOURTHPLACE * 50000
+                + FIFTHPLACE * 50000) /payMoney)*10;
         return (String.format("%.1f", yield));
     }
 }

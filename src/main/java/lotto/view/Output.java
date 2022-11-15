@@ -43,11 +43,11 @@ public class Output {
     }
 
     public static void resultAnnouncement(String yield) {
-        System.out.println( 3 + RESULT1 + "(5,000원) -" +FIFTHPLACE+"개");
-        System.out.println( 4 + RESULT1 + "(50,000원) -" +FOURTHPLACE+"개");
-        System.out.println( 5 + RESULT1 + "(1,500,000원) -" +THIRDPLACE+"개");
-        System.out.println( 5 + RESULT1 + "(30,000,000원) -" +SECONDPLACE+"개");
-        System.out.println( 6 + RESULT1 + "(2,000,000,000원) -" +FIRSTPLACE+"개");
-        System.out.printf("총 수익률은 %s%" + "%입니다", yield);
+        System.out.println( 3 + RESULT1 + " (5,000원) - " +FIFTHPLACE+"개");
+        System.out.println( 4 + RESULT1 + " (50,000원) - " +FOURTHPLACE+"개");
+        System.out.println( 5 + RESULT1 + " (1,500,000원) - " +THIRDPLACE+"개");
+        System.out.println( 5 + RESULT1 + ", 보너스 볼 일치 (30,000,000원) - " +SECONDPLACE+"개");
+        System.out.println( 6 + RESULT1 + " (2,000,000,000원) - " +FIRSTPLACE+"개");
+        System.out.printf("총 수익률은 %s%" + "%입니다.", yield);
     }
 }
