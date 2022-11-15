@@ -18,13 +18,6 @@ public class TicketMachine {
         sortNumbers();
     }
 
-/*    public List<Integer> generateNumbers() {
-        List<Integer> numbers = new ArrayList<Integer>();
-        numbers = Randoms.pickUniqueNumbersInRange(MIN_LOTTO_NUMBER, MAX_LOTTO_NUMBER, LOTTO_SIZE);
-        Collections.sort(numbers);
-        return numbers;
-    }*/
-
     public List<List<Integer>> generateTickets() {
         for (int i = 0; i < this.numberOfLotto; i++) {
             List<Integer> tempNumbers = Randoms.pickUniqueNumbersInRange(MIN_LOTTO_NUMBER, MAX_LOTTO_NUMBER, LOTTO_SIZE);
