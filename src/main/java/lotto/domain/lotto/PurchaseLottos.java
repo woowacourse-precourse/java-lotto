@@ -35,10 +35,6 @@ public class PurchaseLottos {
         return placeHistory;
     }
 
-    private void fillPlaceHistory(WinningLotto winningLotto, PlaceHistory placeHistory) {
-        lottos.forEach(lotto -> placeHistory.updateFor(winningLotto.makeMatchResult(lotto)));
-    }
-
     @Override
     public String toString() {
         StringBuffer stringBuffer = new StringBuffer();
@@ -47,6 +43,10 @@ public class PurchaseLottos {
         appendLottos(stringBuffer);
 
         return stringBuffer.toString();
+    }
+
+    private void fillPlaceHistory(WinningLotto winningLotto, PlaceHistory placeHistory) {
+        lottos.forEach(lotto -> placeHistory.updateFor(winningLotto.makeMatchResult(lotto)));
     }
 
     private void appendPurchaseQuantity(StringBuffer stringBuffer) {
