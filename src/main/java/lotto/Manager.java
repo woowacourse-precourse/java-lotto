@@ -59,4 +59,8 @@ public class Manager {
 		}
 		return result;
 	}
+
+	public List<Integer> getWin(){
+		return win;
+	}
 }
