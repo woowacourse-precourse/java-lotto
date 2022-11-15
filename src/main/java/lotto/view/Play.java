@@ -27,7 +27,6 @@ public class Play {
 
     public void startPlay(){
         try {
-            result.calculateProfit(12000, 5000);
             inputAmount();
             generateLotto();
             winLotto = inputWinningNumber();
@@ -49,14 +48,13 @@ public class Play {
 
     private Map<ResultType, Integer> makeResult(List<Integer> winLotto, String bonus) {
         totalResult = result.calculateLotto(lotto, winLotto, bonus);
-
         prize = result.makePrize(totalResult);
         return totalResult;
     }
 
     private String inputBonusNumber() {
         System.out.println("\n"+INPUT_BONUS_MESSAGE);
-        String bonus = Console.readLine();
+        bonus = Console.readLine();
         winningNumber.checkBonus(bonus);
         return bonus;
     }
@@ -75,13 +73,7 @@ public class Play {
 
     private void inputAmount() {
         System.out.println(START_MESSAGE);
-
         String amount = Console.readLine();
-//        try{
-//            total = purchase.checkAmount(amount);
-//        } catch (Exception e){
-//            System.out.println(e.getMessage());
-//        }
         total = purchase.checkAmount(amount);
         System.out.println("\n"+(total/1000)+CHECK_MESSAGE);
     }
