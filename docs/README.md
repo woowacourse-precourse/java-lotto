@@ -4,7 +4,7 @@
 - [ ] 사용자의 로또 번호와, 이번 회차의 로또 번호를 비교할 수 있다. - Player.compareLotto()
   - [x] 사용자는 로또를 구입할 수 있다. - Player.buyLotto()
     - [x] 구입 금액을 설정한다. - Player.setBuyMoney()
-      - [ ] 나누어 떨어지지 않으면 예외가 발생한다. - Player.haveRest() 
+      - [x] 나누어 떨어지지 않으면 예외가 발생한다. - Check.haveRest() 
     - [x] 1 ~ 45의 로또 번호를 발행할 수 있다. - Player.publishRandomNumbers()
   - [x] 로또 번호의 개수 예외를 검사한다. - Lotto.Validate()
   - [x] 로또 번호의 중복 예외를 검사한다. - Lotto.duplicate()
