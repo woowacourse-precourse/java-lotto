@@ -12,7 +12,7 @@ public class Application {
             view.addLuckyLotto();
             view.addBonusNumber();
             view.printStatsOfWin();
-        } catch (Exception excepted) {
+        } catch (IllegalArgumentException excepted) {
             // view에서 에러메세지에 대한 출력 처리를 수행한다.
         }
     }

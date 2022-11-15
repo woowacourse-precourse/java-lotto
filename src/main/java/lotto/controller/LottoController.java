@@ -2,7 +2,7 @@ package lotto.controller;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
-import java.util.Comparator;
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 import lotto.model.Lotto;
@@ -27,10 +27,11 @@ public class LottoController {
     }
 
     private List<Integer> createLottoNumbers() {
-        List<Integer> numbers = Randoms.pickUniqueNumbersInRange(
+        List<Integer> randomNumbers = Randoms.pickUniqueNumbersInRange(
             LottoEnum.MIN_LOTTO_NUMBER.getValue(), LottoEnum.MAX_LOTTO_NUMBER.getValue(),
             LottoEnum.TOTAL_LOTTO_NUMBER.getValue());
-        numbers.sort(Comparator.comparingInt(number -> number));
+        List<Integer> numbers = new ArrayList<>(randomNumbers);
+        Collections.sort(numbers);
         return numbers;
     }
 

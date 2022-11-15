@@ -33,6 +33,7 @@ public class LottoView {
     }
 
     public void printLotteries() {
+        System.out.printf("%d개를 구매했습니다.\n", lotteries.size());
         for (final Lotto lotto : lotteries) {
             printLotto(lotto);
         }
