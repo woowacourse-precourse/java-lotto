@@ -10,7 +10,6 @@ public class InputUserMoney {
 
         if(!JudgmentInputNumberGenerator.JudgmentInputNumber(InputUserMoney)) {
             System.out.println("[ERROR] 구매금액은 숫자여야 합니다.");
-//            throw new IllegalArgumentException("[ERROR] 구매금액은 숫자여야 합니다.");
         }
         return Integer.parseInt(InputUserMoney);
     }

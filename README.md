@@ -6,25 +6,30 @@
 
 <br>
 
-- 사용자 입력 기능
+- 구입 금액 숫자 입력 기능
   - [O] 사용자에게 구입금액을 입력받는다. - InputUserMoney#InputMoney()
-  - [O] 구입 금액 만큼 1-45숫자중 중복되지 않는 6개의 숫자를 생성한다. - UserNumberGenerator#createRandomNumbers()
+  
 
 <br>
 
-- 당첨 번호 입력 기능
+- 구입한 개수 만큼 로또 발행 및 번호 출력 기능
+  - [O] 구입 금액 만큼 1-45숫자중 중복되지 않는 6개의 숫자를 생성한다. - UserNumberGenerator#createRandomNumbers()
+  - [O] 구입 금액 만큼 1-45숫자중 중복되지 않는 6개의 숫자를 출력한다. - UserNumberGenerator#createRandomNumbers()
+  - [O] 구입 개수를 출력한다. - PrintInputMoneyGenerator#printInputMoney()
+
+<br>
+
+- 로또 정답 숫자, 보너스 숫자 입력 기능
   - [O] 1-45 범위의 숫자 중 중복되지 않는 6개의 당첨번호를 입력받는다. - InputCorrectNumberGenerator#createInputCorrectNumber()
   - [O] 1-45 범위의 숫자 중 당첨번호와 중복되지 않는 보너스 번호를 입력받는다. - BonusNumberGenerator#createBonusNumber()
 
-<br>
-
-- 생성숫자와 당첨숫자 비교 기능
+- 모든 로또 발행 숫자와 정답 숫자, 보너스 숫자를 비교 기능
   - [O] 구입한 내역의 숫자와 당첨숫자 비교 결과를 반환합니다.(보너스숫자제외) - CompareNumber#jugementNumber()
   - [O] 보너스숫자를 포함한 결과를 리스트에 담아 반환합니다. - CompareNumberWithBonus#jugementNumberWithBonus()
 
 <br>
 
-- 당첨 내용 계산 및 출력 기능
+- 로또 비교 결과 저장 및 출력 기능
   - [O] 구매한 개수를 출력합니다. - PrintInputMoneyGenerator#printInputMoney()
   - [O] 구입 한 번호를 리스트 형식으로 모두 출력합니다. - UserNumberGenerator#createRandomNumbers()
   - [O] 당첨 통계 내역을 출력합니다. - PrintWinnerStatisticsGenerator#printWinner()
