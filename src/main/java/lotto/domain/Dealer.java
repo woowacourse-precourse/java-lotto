@@ -40,7 +40,7 @@ public class Dealer {
         for (Lotto lotto : lotteries) {
             long matchingCount = lotto.countMatchingNumber(winNumbers);
 
-            if (rankingIsSecond(matchingCount)) {
+            if (rankingIsSecond(lotto, matchingCount)) {
                 increaseRankingCount(Ranking.second);
                 continue;
             }
@@ -50,8 +50,8 @@ public class Dealer {
         }
     }
 
-    private boolean rankingIsSecond(long matchingCount) {
-        return Ranking.second.matchingCount() == matchingCount && winNumbers.contains(bonusNumber);
+    private boolean rankingIsSecond(Lotto lotto, long matchingCount) {
+        return Ranking.second.matchingCount() == matchingCount && lotto.contains(bonusNumber);
     }
 
     private void increaseRankingCount(Ranking ranking) {
