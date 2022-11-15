@@ -16,6 +16,7 @@ public class Lotto {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException();
         }
+        Exception.isAllDifferentValuesNumber(numbers);
     }
 
     // TODO : 객체의 로또 번호를 호출한다.
