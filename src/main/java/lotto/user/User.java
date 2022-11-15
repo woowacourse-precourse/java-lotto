@@ -2,30 +2,30 @@ package lotto.user;
 
 import camp.nextstep.edu.missionutils.Console;
 import lotto.lotto.BoughtLotto;
-import lotto.lotto.validation.ValidationLottoNumbers;
 import lotto.user.validation.ValidationPurchasePrice;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.regex.Pattern;
 
 public class User {
-    List<BoughtLotto> lottos;
+
     private static final Integer LOTTO_PRICE = 1000;
+
+    List<BoughtLotto> lottos;
 
     public User() {
         this.lottos = new ArrayList<>();
     }
 
     public void buyLottos() {
-        int money = inputMoney();
+        int money = inputPurchasePrice();
         int countOfBuyLotto = money / LOTTO_PRICE;
         for (int i = 0; i < countOfBuyLotto; i++) {
             lottos.add(new BoughtLotto());
         }
     }
 
-    private void validateMoney(String money) {
+    private void validatePurchasePrice(String money) {
         ValidationPurchasePrice validationPurchasePrice = ValidationPurchasePrice.validate(money);
         if (validationPurchasePrice.getIsThrow()) {
             String errorMessage = validationPurchasePrice.getErrorMessage();
@@ -50,10 +50,10 @@ public class User {
         return lottos;
     }
 
-    private int inputMoney() {
+    private int inputPurchasePrice() {
         printInputMessage();
         String input = Console.readLine();
-        validateMoney(input);
+        validatePurchasePrice(input);
         return Integer.parseInt(input);
     }
 
