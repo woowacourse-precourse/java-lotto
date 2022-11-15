@@ -25,6 +25,8 @@ public abstract class Utility {
 
     public static List <String> winEnumNames = Arrays.asList("WIN60", "WIN51", "WIN50", "WIN40", "WIN30");
 
+    public static final int lottoNumberSize = 6;
+
     public static void printMessage(String message){
         System.out.println(message);
     }
