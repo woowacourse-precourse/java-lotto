@@ -25,15 +25,24 @@ public class LottoService {
 
         setLottos();
 
-        System.out.println("8개를 구매했습니다.");
+        System.out.println("\n" + my_money/1000 + "개를 구매했습니다.");
 
-        System.out.println("당첨 번호를 입력해 주세요.");
+        for(int i = 0; i < lottos.size(); i++) {
+            lottos.get(i).print();
+        }
+
+        System.out.println("\n당첨 번호를 입력해 주세요.");
 
         setWinningNumbers();
 
-        System.out.println("보너스 번호를 입력해 주세요");
+        System.out.println("\n보너스 번호를 입력해 주세요");
 
         winningNumbers.add(Integer.parseInt(Console.readLine()));
+    }
+
+    public void result() {
+        System.out.println("\n당첨 통계");
+        System.out.println("---");
     }
 
     public int inputMoney() {
@@ -85,11 +94,13 @@ public class LottoService {
     }
 
     public void printAll() {
-        System.out.print("당첨 번호");
+        System.out.print("당첨 번호: ");
 
         for(int i = 0; i < winningNumbers.size(); i++) {
            System.out.print(winningNumbers.get(i) + " ");
         }
+
+        System.out.println();
 
         for(int i = 0; i < lottos.size(); i++) {
             lottos.get(i).print();
