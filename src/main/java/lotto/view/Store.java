@@ -5,9 +5,9 @@ import lotto.domain.user.User;
 
 import java.util.stream.Collectors;
 
-public class Store {
-    public String sellingLotto(){
-        return Message.SELLING_MSG.toString();
+public class Store extends View {
+    public Store(User user){
+        initPage(buyingLotto(user));
     }
 
     public String buyingLotto(User user){

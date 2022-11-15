@@ -5,12 +5,10 @@ import lotto.domain.rank.RankInfo;
 
 import java.text.DecimalFormat;
 
-public class RankingView {
-    public String getWinningNumber(){
-        return Message.CHOOSE_WINNING_NUMBERS.toString();
-    }
-    public String getBonusNumber(){
-        return Message.CHOOSE_BONUS_NUMBER.toString();
+public class RankingView extends View{
+
+    public RankingView(Rank rank, double profit) {
+        initPage(statistics(rank, profit));
     }
 
     public String statistics(Rank rank, double profit) {

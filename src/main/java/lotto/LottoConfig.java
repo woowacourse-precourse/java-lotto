@@ -9,14 +9,6 @@ import lotto.view.RankingView;
 import lotto.view.Store;
 
 public class LottoConfig {
-    public Store store(){
-        return new Store();
-    }
-
-    public RankingView rankingView(){
-        return new RankingView();
-    }
-
     public StoreService storeService() {
         return new StoreService();
     }
@@ -28,9 +20,9 @@ public class LottoConfig {
         return new RankService();
     }
     public UserController userController() {
-        return new UserController(userService(), store());
+        return new UserController(userService());
     }
     public RankController rankController(){
-        return new RankController(rankService(), rankingView());
+        return new RankController(rankService());
     }
 }
