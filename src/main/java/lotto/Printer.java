@@ -2,24 +2,59 @@ package lotto;
 
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
 public class Printer {
 
-    private static final String BUY_MESSAGE = "개를 구매했습니다.";
-    private static final String THREE = "3개 일치 (5,000원) - ";
-    private static final String FOUR = "4개 일치 (50,000원) - ";
-    private static final String FIVE = "5개 일치 (1,500,000원) - ";
-    private static final String FIVEBOUNS = "5개 일치, 보너스 볼 일치 (30,000,000원) - ";
-    private static final String SIX = "6개 일치 (2,000,000,000원) - ";
-    private static final List<String> list = new ArrayList<>(Arrays.asList(THREE, FOUR, FIVE, FIVEBOUNS, SIX));
-    private static final String unit = "개";
-    private static final String MESSAGE_STATICS = "당첨 통계\n---";
+    public enum LottoMatchMoney {
+        THREE("3개 일치 (5,000원) - "),
+        FOUR("4개 일치 (50,000원) - "),
+        FIVE("5개 일치 (1,500,000원) - "),
+        FIVEBONUS("5개 일치, 보너스 볼 일치 (30,000,000원) - "),
+        SIX("6개 일치 (2,000,000,000원) - ");
+        private String numberMessage;
+        LottoMatchMoney(String numberMessage) {
+            this.numberMessage = numberMessage;
+        }
 
-    private static final String MESSAGE_FINAL = "총 수익률은 ";
-    private static final String MESSAGE_FINAL2 = "%입니다.";
+        public String getNumberMessage() {
+            return numberMessage;
+        }
+    }
+
+    public enum Message{
+        BUY("개를 구매했습니다."),
+        STATICS ( "당첨 통계\n---"),
+        REVENUE ( "총 수익률은 "),
+        REVENUE2 ( "%입니다."),
+        UNIT ( "개");
+
+        private String message;
+
+
+        Message(String message) {
+            this.message = message;
+        }
+
+        public String getOutputMessage(){
+            return message;
+        }
+    }
+    Message buyMessage = Message.BUY;
+    String buy = buyMessage.getOutputMessage();
+
+    Message staticsMessage = Message.STATICS;
+    String statics = staticsMessage.getOutputMessage();
+
+    Message revenueMessage = Message.REVENUE;
+    String revenue = revenueMessage.getOutputMessage();
+
+    Message revenueTwoMessage = Message.REVENUE2;
+    String revenue2 = revenueTwoMessage.getOutputMessage();
+
+    Message unitMessage = Message.UNIT;
+    String unit = unitMessage.getOutputMessage();
 
 
     public void printToDo(String toDo) {
@@ -30,7 +65,7 @@ public class Printer {
 
         int amountLotto = lottoInput.size();
 
-        System.out.println(amountLotto + BUY_MESSAGE);
+        System.out.println(amountLotto + this.buy);
 
         for (int i = 0; i < amountLotto; i++) {
             System.out.println(lottoInput.get(i));
@@ -39,16 +74,17 @@ public class Printer {
     }
 
     public void printWinList(List<Integer> correctNumberList) {
-
         List<Integer> amountEachWin = knowAmountEachWin(correctNumberList);
 
-        System.out.println(MESSAGE_STATICS);
+        System.out.println(this.statics);
 
-        for (int i = 0; i < 5; i++) {
-            System.out.println(list.get(i) + amountEachWin.get(i) + unit);
+        for (LottoMatchMoney matchNumber : LottoMatchMoney.values()) {
+            int index = matchNumber.ordinal();
+
+            String numberMessage = matchNumber.getNumberMessage();
+
+            System.out.println(numberMessage + amountEachWin.get(index) + this.unit);
         }
-
-
     }
 
     public List<Integer> knowAmountEachWin(List<Integer> correctNumberList) {
@@ -70,7 +106,7 @@ public class Printer {
 
         double revenuePercent = doubleRevenue / doubleInputMoney * 100;
 
-        System.out.println(MESSAGE_FINAL + String.format("%.1f", revenuePercent) + MESSAGE_FINAL2);
+        System.out.println(this.revenue + String.format("%.1f", revenuePercent) + this.revenue2);
 
     }
 
