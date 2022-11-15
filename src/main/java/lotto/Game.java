@@ -31,9 +31,11 @@ public class Game {
 
     public void run(){
         List<Lotto> user;
+        ValidLotto Win;
 
         int Amount = PurchaseAmount();
         user = makeLotto(Amount);
+        Win = new ValidLotto(WinNumber(), BonusNumber());
 
     }
 
