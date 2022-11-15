@@ -11,6 +11,7 @@ public class LottoMachine {
     private static final int MAX_NUMBER = 45;
 
     private List<Integer> winningNumber = new ArrayList<>();
+    private int bonusNumber;
 
     public List<Lotto> buyLotto(int money) {
         List<Lotto> lottos = new ArrayList<>();
@@ -76,5 +77,22 @@ public class LottoMachine {
         }
     }
 
+    public void setBonusNumber() {
+        String bonusNumberInput = Console.readLine();
+        this.bonusNumber = checkBonusNumber(bonusNumberInput);
+    }
 
+    public int checkBonusNumber(String bonusNumberInput) {
+        int bonusNumber = convertStringToInt(bonusNumberInput);
+        isNumberCorrectRange(bonusNumber);
+        isBonusNumberDuplicatedWithWinningNumber(bonusNumber);
+
+        return bonusNumber;
+    }
+
+    private void isBonusNumberDuplicatedWithWinningNumber(int bonusNumber) {
+        if (this.winningNumber.contains(bonusNumber)) {
+            throw new IllegalArgumentException("[ERROR] 보너스 넘버가 당첨 번호와 중복이 있으면 안됩니다.");
+        }
+    }
 }
