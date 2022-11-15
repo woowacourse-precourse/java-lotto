@@ -7,19 +7,18 @@ import java.util.Collections;
 import java.util.List;
 
 public class CreateUserLottoNumbers {
+    List<Lotto> userLottosNumber;
 
-    public List<List<Integer>> userLottosGroup;
-
-    public CreateUserLottoNumbers(){
-        userLottosGroup = new ArrayList<>();
+    public CreateUserLottoNumbers() {
+        userLottosNumber = new ArrayList<>();
     }
 
-    public List<List<Integer>> randomLottoNumbers(int amount){
-        List<List<Integer>> numberSave = new ArrayList<>();
-        for(int i = 0; i< amount; i++){
-            numberSave.add(Randoms.pickUniqueNumbersInRange(1,45,6));
-        }
-        userLottosGroup = numberSave;
-        return userLottosGroup;
+    public List<Lotto> createUserLottoNumber() {
+        List<Integer> sample = new ArrayList<>(Randoms.pickUniqueNumbersInRange(1, 45, 6));
+        Collections.sort(sample);
+        userLottosNumber.add(new Lotto(sample));
+        return userLottosNumber;
     }
+
 }
+
