@@ -8,6 +8,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import static lotto.data.Constant.PRICE;
+
 public class LottoGame {
 
     private LottoPurchase purchase;
@@ -36,7 +38,7 @@ public class LottoGame {
 
     protected List<Lotto> getpurchaseLotto(int lottocnt) {
         List<Lotto> lottonum = new ArrayList<>();
-        for (int i = 0; i < lottocnt / 1000; i++) {
+        for (int i = 0; i < lottocnt / PRICE.getConstant(); i++) {
             Lotto lotto = new Lotto(generator.lottoGenerate());
             lottonum.add(lotto);
             System.out.println(lotto.getNumbers());

@@ -31,7 +31,7 @@ public class ExceptionValidation {
     }
 
     private static boolean inputsizeException(List<Integer> input) {
-        if (Constant.NUMBER_SIZE.getConstant() != Constant.NUMBER_SIZE.getConstant()) {
+        if (input.size() != Constant.NUMBER_SIZE.getConstant()) {
             throw new IllegalArgumentException(Error.DUPLICATE_NUMBER.getMessage());
         }
         return false;
@@ -40,7 +40,7 @@ public class ExceptionValidation {
     private static boolean inputduplicateException(List<Integer> input) {
         for (int i = 0; i < Constant.NUMBER_SIZE.getConstant(); i++) {
             int frequency = Collections.frequency(input, input.get(i));
-            if (input.size() == 6 && frequency >= 2) {
+            if (input.size() == Constant.NUMBER_SIZE.getConstant() && frequency >= 2) {
                 throw new IllegalArgumentException(Error.DUPLICATE_NUMBER.getMessage());
             }
         }
@@ -71,7 +71,7 @@ public class ExceptionValidation {
     }
 
     private static boolean checkBonusSize(int bonus) {
-        if (bonus < Constant.START_NUMBER.getConstant()|| Constant.END_NUMBER.getConstant() > 45) {
+        if (bonus < Constant.START_NUMBER.getConstant() || bonus > Constant.END_NUMBER.getConstant()) {
             throw new IllegalArgumentException(Error.BONUS_RANGE.getMessage());
         }
         return false;
