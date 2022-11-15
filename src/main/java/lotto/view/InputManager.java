@@ -23,10 +23,9 @@ public class InputManager {
         String inputAmount = Console.readLine();
         inputValidate.validateInputAmount(inputAmount);
 
-        int intAmount = convertIntoIntAmount(inputAmount);
-
         System.out.println();
-        return intAmount;
+
+        return convertToInt(inputAmount);
     }
 
     public List<Integer> readWinningNumber() {
@@ -40,6 +39,15 @@ public class InputManager {
         return winningNums;
     }
 
+    public int readBonusNumber() {
+        printInputMessageBonusNumber();
+
+        String inputNumber = Console.readLine();
+        inputValidate.validateInputBonusNumber(inputNumber);
+
+        return convertToInt(inputNumber);
+    }
+
     private List<Integer> convertToIntegerList(String inputFormat) {
         String[] inputNums = inputFormat.split(",");
 
@@ -50,7 +58,7 @@ public class InputManager {
         return winningNums;
     }
 
-    private int convertIntoIntAmount(String inputAmount) {
+    private int convertToInt(String inputAmount) {
         return Integer.parseInt(inputAmount);
     }
 

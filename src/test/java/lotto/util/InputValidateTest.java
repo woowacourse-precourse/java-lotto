@@ -46,7 +46,7 @@ class InputValidateTest {
                 .hasMessageContaining(ERROR_MESSAGE_NOT_PROPER_AMOUNT);
     }
 
-    @DisplayName("당첨 번호 입력에 6개의 숫자가 포함되지 않으면 예외가 발생한다.")
+    @DisplayName("당첨 번호에 6개의 숫자가 포함되지 않으면 예외가 발생한다.")
     @Test
     void validateInputWinningNumber_메서드_5개의_숫자_포함() {
         assertThatThrownBy(() -> inputValidate.validateInputWinningNumber("1,4,1,5,2"))
@@ -54,7 +54,7 @@ class InputValidateTest {
                 .hasMessageContaining(ERROR_MESSAGE_NOT_PROPER_WINNING_NUMBER_COUNT);
     }
 
-    @DisplayName("당첨 번호 입력 6자리에 숫자 외의 값이 오면 예외가 발생한다.")
+    @DisplayName("당첨 번호에 6자리에 숫자 외의 값이 오면 예외가 발생한다.")
     @Test
     void validateInputWinningNumber_메서드_숫자_외의_값_포함() {
         assertThatThrownBy(() -> inputValidate.validateInputWinningNumber("1,4,1,안녕,2,3"))
@@ -62,7 +62,7 @@ class InputValidateTest {
                 .hasMessageContaining(ERROR_MESSAGE_NOT_INT_BETWEEN_COMMA);
     }
 
-    @DisplayName("당첨 번호 입력 각 숫자는 하나라도 중복되면 예외가 발생한다.")
+    @DisplayName("당첨 번호 각 숫자는 하나라도 중복되면 예외가 발생한다.")
     @Test
     void validateInputWinningNumber_메서드_숫자_중복() {
         assertThatThrownBy(() -> inputValidate.validateInputWinningNumber("1,4,1,1,2,3"))
@@ -70,10 +70,33 @@ class InputValidateTest {
                 .hasMessageContaining(ERROR_MESSAGE_NUMBER_DUPLICATE);
     }
 
-    @DisplayName("당첨 번호 입력 각 숫자가 1~45 사이의 수가 아니면 예외가 발생한다.")
+    @DisplayName("당첨 번호에 범위를 벗어난 숫자가 들어올 시 예외가 발생한다")
     @Test
-    void validateInputWinningNumber_메서드_숫자_1_부터_45_외의_값_포함() {
+    void validateInputWinningNumber_메서드_올바르지_않은_숫자_범위() {
         assertThatThrownBy(() -> inputValidate.validateInputWinningNumber("1,4,0,23,2,3"))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining(ERROR_MESSAGE_NOT_PROPER_NUMBER_RANGE);
+    }
+
+    @DisplayName("올바른 보너스 번호가 들어올 시 예외가 발생하지 않는다.")
+    @Test
+    void validateInputBousNumber_메서드_올바른_값() {
+        assertThatCode(() -> inputValidate.validateInputBonusNumber("14"))
+                .doesNotThrowAnyException();
+    }
+
+    @DisplayName("보너스 번호에 숫자가 아닌 값이 들어올 시 예외가 발생한다.")
+    @Test
+    void validateInputBousNumber_메서드_숫자가_아닌_값() {
+        assertThatThrownBy(() -> inputValidate.validateInputBonusNumber("이십"))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining(ERROR_MESSAGE_NOT_INT);
+    }
+
+    @DisplayName("보너스 번호에 범위를 벗어난 숫자가 들어올 시 예외가 발생한다.")
+    @Test
+    void validateInputBousNumber_메서드_올바르지_않은_숫자_범위() {
+        assertThatThrownBy(() -> inputValidate.validateInputBonusNumber("46"))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(ERROR_MESSAGE_NOT_PROPER_NUMBER_RANGE);
     }

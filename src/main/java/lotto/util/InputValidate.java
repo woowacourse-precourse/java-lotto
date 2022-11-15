@@ -23,7 +23,12 @@ public class InputValidate {
         validateElementCount(input);
         validateOnlyNumbers(input);
         validateNotDuplicate(input);
-        validateNumberRange(input);
+        validateSixNumberRange(input);
+    }
+
+    public void validateInputBonusNumber(String inputNumber) {
+        validateIsNumber(inputNumber);
+        validateNumberRange(inputNumber);
     }
 
     private void validateElementCount(String input) {
@@ -54,14 +59,18 @@ public class InputValidate {
         }
     }
 
-    private void validateNumberRange(String input) {
+    private void validateSixNumberRange(String input) {
         String[] inputNums = input.split(",");
 
         for (String num : inputNums) {
-            int winningNum = Integer.parseInt(num);
-            if (!(winningNum >= 1 && winningNum <= 45)) {
-                throw new IllegalArgumentException(ERROR_MESSAGE_NOT_PROPER_NUMBER_RANGE);
-            }
+            validateNumberRange(num);
+        }
+    }
+
+    private void validateNumberRange(String input) {
+        int number = Integer.parseInt(input);
+        if (!(number >= 1 && number <= 45)) {
+            throw new IllegalArgumentException(ERROR_MESSAGE_NOT_PROPER_NUMBER_RANGE);
         }
     }
 
