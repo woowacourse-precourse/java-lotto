@@ -5,6 +5,8 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
+import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class LottoTest {
@@ -23,5 +25,10 @@ class LottoTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
-    // 아래에 추가 테스트 작성 가능
+    @DisplayName("로또 번호가 1부터 45 사이에 없을 시 예외가 발생한다.")
+    @Test
+    void numInCorrectRange(){
+        assertThatThrownBy(() -> new Lotto(List.of(1, 2, 3, 4, 5, 60)))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
