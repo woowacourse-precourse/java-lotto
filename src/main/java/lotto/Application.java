@@ -7,7 +7,7 @@ public class Application {
 
         // TODO: 프로그램 구현
 
-        System.out.println("구매 금액을 입력해주세요");
+        System.out.println("구입금액을 입력해 주세요.");
         int purchaseAmount = Integer.parseInt(Console.readLine());
         Game game = new Game();
         game.play(isValidPurchaseAmount(purchaseAmount) / 1000);

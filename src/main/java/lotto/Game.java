@@ -20,11 +20,10 @@ public class Game {
             calculator.calculate(purchasedLotto.getLottoNumber(), winningNumber.getWinningLotto(), winningNumber.getBonusNumber());
             earningAmount += earning.calculate(calculator.getSameCmt(), calculator.getBonusCorrect());
             earning.RankCalculate(calculator.getSameCmt(), calculator.getBonusCorrect(), winningHistory);
-            System.out.println(earningAmount);
         }
 
         winningHistory.print();
-        System.out.println(earning.rateCalculate(lottoCount*1000, earningAmount));
+        System.out.println("총 수익률은 " + earning.rateCalculate(lottoCount*1000, earningAmount) + "%입니다.");
     }
 
     public void printPurchasedLottos(List<Lotto> purchasedLottos) {

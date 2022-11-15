@@ -24,9 +24,10 @@ public class Earning {
         if(sameCmt == 4) winningHistory.addForthWinningCmt();
         if(sameCmt == 3) winningHistory.addFifthWinningCmt();
     }
-    public String rateCalculate(double purchasedAmount, double earning) {
+
+    public double rateCalculate(double purchasedAmount, double earning) {
         double earningRatio = ((earning - purchasedAmount)/purchasedAmount + 1) * 100;
-        return String.format("%.2f", earningRatio);
+        return Math.round(earningRatio*10)/10.0;
     }
 
 }

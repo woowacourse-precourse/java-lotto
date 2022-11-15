@@ -24,7 +24,7 @@ public class WinningNumber {
     }
 
     private Lotto setWinningLotto() {
-        System.out.println("\n당첨 번호를 입력해주세요.");
+        System.out.println("\n당첨 번호를 입력해 주세요.");
         String inputValue = Console.readLine().trim();
         List<Integer> winningLottoNumbers = new ArrayList<>();
         for (String numberValue : inputValue.split(",")) {
