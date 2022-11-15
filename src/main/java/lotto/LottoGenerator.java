@@ -16,4 +16,7 @@ public class LottoGenerator {
         }
         return numbers;
     }
+    public int getLottoCount(double money) {
+        return (int)money / 1000;
+    }
 }

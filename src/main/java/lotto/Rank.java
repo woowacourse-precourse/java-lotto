@@ -17,6 +17,9 @@ public enum Rank {
         this.bonus = bonus;
     }
     public static Rank findByCorrectCountAndBonus(int correctCount, boolean bonus) {
+        if (correctCount != 5) {
+            bonus = false;
+        }
         if (correctCount == 5) {
             if (bonus) {
                 return SECOND;
