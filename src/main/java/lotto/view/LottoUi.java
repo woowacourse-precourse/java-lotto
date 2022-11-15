@@ -10,6 +10,11 @@ import static lotto.util.LottoUtils.printEnter;
 import static lotto.values.Constants.Console.*;
 
 public class LottoUi {
+    private static final LottoUi lottoUi = new LottoUi();
+    public static LottoUi getLottoUi(){
+        return lottoUi;
+    }
+    private final LottoService lottoService = LottoService.getLottoService();
 
     public static void printInputWinningNumberMessage(){
         System.out.println(INPUT_WINNING_NUMBERS_MESSAGE);
@@ -31,8 +36,7 @@ public class LottoUi {
         System.out.printf(TOTAL_PROFIT_PERCENT_MESSAGE, percent);
     }
 
-    public static int inputBonusNumber() {
-        LottoService lottoService = LottoService.getLottoService();
+    public int inputBonusNumber() {
         int bonusNumber;
 
         printInputBonusNumberMessage();
@@ -42,8 +46,7 @@ public class LottoUi {
         return bonusNumber;
     }
 
-    public static List<Lotto> purchaseLotto(Money money) { // 구매 관련 이름으로 리팩터링
-        LottoService lottoService = LottoService.getLottoService();
+    public List<Lotto> purchaseLotto(Money money) { // 구매 관련 이름으로 리팩터링
         int lottoCnt = lottoService.getLottoCntByMoney(money);
         List<Lotto> lottos = lottoService.generateLottos(lottoCnt);
 
@@ -54,8 +57,7 @@ public class LottoUi {
         return lottos;
     }
 
-    public static Lotto inputWinningLotto() {
-        LottoService lottoService = LottoService.getLottoService();
+    public Lotto inputWinningLotto() {
         Lotto winningLotto;
 
         printInputWinningNumberMessage();
