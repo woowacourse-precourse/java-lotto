@@ -2,16 +2,18 @@ package lotto.model;
 
 import lotto.enums.Rank;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
 import java.util.Map;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class RankingTest {
+    @DisplayName("생성된 로또와 당첨 번호 비교해서 랭킹 계산")
     @Test
-    void setLotto() {
+    void setRankingTest() {
         Money money = new Money("6000");
 
         List<Lotto> lottoList = List.of(

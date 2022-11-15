@@ -13,7 +13,7 @@ public class Ranking {
         initRanking();
         setRanking(userLotto, winningNumbers);
     }
-    public void setRanking(List<Lotto> userLotto, WinningNumbers winningNumbers) {
+    private void setRanking(List<Lotto> userLotto, WinningNumbers winningNumbers) {
         Rank rank;
         int ball = 0;
         boolean bonus = false;
