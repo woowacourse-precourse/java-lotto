@@ -3,7 +3,7 @@ package lotto.model;
 import static lotto.util.Constants.NUMBER_COUNTS;
 import static lotto.util.ErrorMessage.ERROR_LOTTO_DUPLICATES;
 import static lotto.util.ErrorMessage.ERROR_LOTTO_SIZE;
-import static lotto.util.Formatter.verifyRangeOfLottoNumber;
+import static lotto.util.Util.verifyRangeOfLottoNumber;
 
 import java.util.List;
 

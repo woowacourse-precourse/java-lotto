@@ -1,8 +1,8 @@
 package lotto.model;
 
 import static lotto.util.ErrorMessage.ERROR_BONUS_DUPLICATES;
-import static lotto.util.Formatter.removeSpace;
-import static lotto.util.Formatter.verifyRangeOfLottoNumber;
+import static lotto.util.Util.removeSpace;
+import static lotto.util.Util.verifyRangeOfLottoNumber;
 
 import java.util.List;
 

@@ -6,7 +6,7 @@ import static lotto.util.ErrorMessage.ERROR_PURCHASE_TYPE;
 import static lotto.util.ErrorMessage.ERROR_PURCHASE_UNIT_OF_BUDGET;
 
 import java.util.regex.Pattern;
-import lotto.util.Formatter;
+import lotto.util.Util;
 
 public class Purchase {
     private static final Pattern MONEY_REGEX = Pattern.compile("^[0-9]*$");
@@ -14,7 +14,7 @@ public class Purchase {
     private int ticketNumber;
 
     public Purchase(String input) {
-        setTicketNumber(Formatter.removeSpace(input));
+        setTicketNumber(Util.removeSpace(input));
         this.ticketNumber = getTicketNumber();
     }
 

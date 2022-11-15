@@ -1,6 +1,6 @@
 package lotto.model;
 
-import static lotto.util.Formatter.formatYield;
+import static lotto.util.Util.formatYield;
 
 public class Yield {
 

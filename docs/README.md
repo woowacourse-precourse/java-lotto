@@ -16,13 +16,13 @@
 **당첨 번호 생성**
 
 - [x] 6개의 당첨 번호를 입력받는다. `InputView#getInput()`
-    - [x] 당첨번호 입력값에서 공백을 모두 제거한다. `Formatter#removeSpace()`
+    - [x] 당첨번호 입력값에서 공백을 모두 제거한다. `Util#removeSpace()`
     - [x] 쉼표를 기준으로 구분한다. `Lotto#separateStringByComma()`
     - [x] 구분된 당첨번호의 개수가 6개가 아니면 예외 처리한다. `Lotto#validate()`
-    - [x] 구분된 당첨번호가 1~45 사이의 숫자가 아니면 예외 처리한다. `Formatter#verifyRangeOfLottoNumber()`
+    - [x] 구분된 당첨번호가 1~45 사이의 숫자가 아니면 예외 처리한다. `Util#verifyRangeOfLottoNumber()`
     - [x] 중복되는 숫자가 있으면 예외 처리한다. `Lotto#validate()`
 - [x] 보너스 번호 1개를 입력받는다. `Bonus`
-    - [x] 보너스 번호가 1~45 사이의 숫자가 아니면 예외 처리한다. `Formatter#verifyRangeOfLottoNumber()`
+    - [x] 보너스 번호가 1~45 사이의 숫자가 아니면 예외 처리한다. `Util#verifyRangeOfLottoNumber()`
 - [x] 보너스 번호가 당첨번호와 중복되면 예외 처리한다. `Bonus#validateDuplicates()`
 
 **로또 결과 계산**
@@ -43,7 +43,7 @@
 **수익률 계산**
 
 - [x] 상금 총액을 로또 총액으로 나누어 수익률을 구한다. `Yield#calculateYield()`
-- [x] 수익률을 소수 둘째 자리에서 반올림해 출력한다. `Formatter#formatYield()`
+- [x] 수익률을 소수 둘째 자리에서 반올림해 출력한다. `Util#formatYield()`
 
 
 - [x] 입출력 시에 함께 요구사항의 문구를 함께 출력한다. `Outputview`

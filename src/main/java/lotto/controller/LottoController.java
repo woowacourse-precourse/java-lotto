@@ -2,7 +2,7 @@ package lotto.controller;
 
 import static lotto.model.Bonus.validateDuplicates;
 import static lotto.util.Constants.LOTTO_PRICE;
-import static lotto.util.Formatter.formatWinningNumbersInput;
+import static lotto.util.Util.formatWinningNumbersInput;
 
 import java.util.ArrayList;
 import java.util.List;

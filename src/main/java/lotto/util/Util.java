@@ -9,7 +9,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class Formatter {
+public class Util {
     public static final String PERCENT_FORMAT = "%.1f";
     public static final String SPACE_REGEX = "\\s";
     public static final String NO_SPACE = "";

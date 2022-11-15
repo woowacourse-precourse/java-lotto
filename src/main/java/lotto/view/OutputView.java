@@ -1,7 +1,7 @@
 package lotto.view;
 
 import static lotto.util.ErrorMessage.ERROR_MESSAGE;
-import static lotto.util.Formatter.formatCashPrize;
+import static lotto.util.Util.formatCashPrize;
 
 import java.util.List;
 import lotto.model.Rank;
