@@ -1,14 +1,28 @@
 package lotto.domain;
 
+import camp.nextstep.edu.missionutils.Randoms;
 import lotto.Lotto;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class LottoGenerator {
-    private List<Lotto> lottos;
+    private List<Lotto> lottos = new ArrayList<>();
 
-    public LottoGenerator() {
+    public LottoGenerator(int count) {
+        createLotto(count);
     }
 
-    
+    private void createLotto(int count) {
+        List<Integer> lottoNumbers;
+        for (int index = 0; index < count; index++) {
+            lottoNumbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+            Lotto lotto = new Lotto(lottoNumbers);
+            lottos.add(lotto);
+        }
+    }
+
+    public List<Lotto> getLottos() {
+        return lottos;
+    }
 }
