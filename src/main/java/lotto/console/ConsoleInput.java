@@ -31,11 +31,11 @@ public class ConsoleInput {
     List<Integer> distinctNumbers = integers.stream().distinct().collect(Collectors.toList());
 
     if (distinctNumbers.size() != 6) {
-      throw new IllegalArgumentException();
+      throw new IllegalArgumentException("숫자가 중복됐습니다.");
     }
 
     if (distinctNumbers.contains(bonusNumber)) {
-      throw new IllegalArgumentException();
+      throw new IllegalArgumentException("숫자가 중복됐습니다.");
     }
   }
 
@@ -59,20 +59,17 @@ public class ConsoleInput {
     }
 
     if (numbers.size() != 6) {
-      System.out.println("[ERROR] 6자리 숫자를 입력해야 합니다.");
-      throw new IllegalArgumentException();
+      throw new IllegalArgumentException("6자리 숫자를 입력해야 합니다.");
     }
     return numbers;
   }
 
   private void validateLottoNumber(String numberString) {
     if (!numberString.matches("[1-9]*")) {
-      System.out.println("[ERROR] 숫자여야 합니다.");
       throw new IllegalArgumentException("숫자여야 합니다.");
     }
     int toInt = Integer.parseInt(numberString);
     if (toInt <= 0 || toInt > 45) {
-      System.out.println("[ERROR] 로또 범위를 벗어났습니다.");
       throw new IllegalArgumentException("로또 범위를 벗어났습니다.");
     }
   }
@@ -80,8 +77,7 @@ public class ConsoleInput {
   private void validateIsNumeric(String str) {
     boolean check = str != null && str.matches("[0-9]*");
     if (!check) {
-      System.out.println("[ERROR] 숫자여야 합니다.");
-      throw new IllegalArgumentException();
+      throw new IllegalArgumentException("숫자여야 합니다.");
     }
   }
 

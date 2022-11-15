@@ -26,12 +26,16 @@ public class Runner {
 
 
   public void run() {
-    int money = consoleInput.inputMoney();
-    List<Lotto> purchasedLotto = lottoPurchaseService.purchase(money);
-    consoleOutput.printLotto(purchasedLotto);
-    WinningNumber winningNumber = consoleInput.inputWinningNumber();
-    List<LottoPrize> result = winningNumber.draw(purchasedLotto);
-    double profileRate = profitRateCalculator.calculate(result);
-    consoleOutput.printResult(result, profileRate);
+    try {
+      int money = consoleInput.inputMoney();
+      List<Lotto> purchasedLotto = lottoPurchaseService.purchase(money);
+      consoleOutput.printLotto(purchasedLotto);
+      WinningNumber winningNumber = consoleInput.inputWinningNumber();
+      List<LottoPrize> result = winningNumber.draw(purchasedLotto);
+      double profileRate = profitRateCalculator.calculate(result);
+      consoleOutput.printResult(result, profileRate);
+    } catch (IllegalArgumentException e) {
+      System.out.println("[ERROR] " + e.getMessage());
+    }
   }
 }

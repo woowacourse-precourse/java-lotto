@@ -46,16 +46,6 @@ class ConsoleInputTest {
     assertThat(result).isEqualTo(Integer.parseInt(givenInputMoney));
   }
 
-  @Test
-  void 에러발생시_ERROR문구가출력된다() {
-    String givenInputMoney = "125z!z ";
-    InputStream inputStream = new ByteArrayInputStream(givenInputMoney.getBytes());
-    System.setIn(inputStream);
-
-    assertThatThrownBy(() -> consoleInput.inputMoney())
-        .isInstanceOf(IllegalArgumentException.class);
-    assertThat(outputStreamCaptor.toString()).contains("[ERROR]");
-  }
 
   @AfterEach
   public void tearDown() {
@@ -74,7 +64,6 @@ class ConsoleInputTest {
 
       assertThatThrownBy(() -> consoleInput.inputWinningNumber())
           .isInstanceOf(IllegalArgumentException.class);
-      assertThat(outputStreamCaptor.toString()).contains("[ERROR]");
     }
 
     @Test
@@ -85,7 +74,6 @@ class ConsoleInputTest {
 
       assertThatThrownBy(() -> consoleInput.inputWinningNumber())
           .isInstanceOf(IllegalArgumentException.class);
-      assertThat(outputStreamCaptor.toString()).contains("[ERROR]");
     }
 
     @Test
@@ -99,7 +87,6 @@ class ConsoleInputTest {
 
       assertThatThrownBy(() -> consoleInput.inputWinningNumber())
           .isInstanceOf(IllegalArgumentException.class);
-      assertThat(outputStreamCaptor.toString()).contains("[ERROR]");
     }
   }
 }

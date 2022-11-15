@@ -13,15 +13,14 @@ public class LottoPurchaseService {
 
   private int payPrice(int money) {
     if (money % 1000 != 0) {
-      System.out.println("[ERROR] 돈 단위가 맞지 않습니다.");
-      throw new IllegalArgumentException();
+      throw new IllegalArgumentException("돈 단위가 맞지 않습니다.");
     }
     return money / 1000;
   }
 
-  private List<Lotto> generateLotto(int count){
+  private List<Lotto> generateLotto(int count) {
     List<Lotto> lottos = new ArrayList<>();
-    for(int i = 0; i < count; i++){
+    for (int i = 0; i < count; i++) {
       List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
       lottos.add(new Lotto(numbers));
     }
