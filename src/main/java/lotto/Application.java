@@ -35,6 +35,10 @@ public class Application {
 
         // 사용자의 로또 번호와 당첨 번호를 비교
         List<Integer> winningStatus = CompareUserLottoNumberWithWinningNumber(lottoNumberList,bonusNumber,lotto);
+
+        // 당첨 내역 출력
+        int lottoProfit = PrintWinHistory(winningStatus);
+
     }
 
     public static int GetUserInputOfPurchaseAmount(String purchaseAmount) {
@@ -79,6 +83,29 @@ public class Application {
             winningStatus.add(lotto.CountAfterComparison(lottoNumber,bonusNumber));
         }
         return winningStatus;
+    }
+
+    public static int PrintWinHistory(List<Integer> winningStatus){
+        int lottoProfit = 0;
+        lottoProfit = lottoProfit + LottoProfitCalculation(3,5000,winningStatus);
+        lottoProfit = lottoProfit + LottoProfitCalculation(4,50000,winningStatus);
+        lottoProfit = lottoProfit + LottoProfitCalculation(5,1500000,winningStatus);
+        lottoProfit = lottoProfit + LottoProfitCalculation(7,30000000,winningStatus);
+        lottoProfit = lottoProfit + LottoProfitCalculation(6,2000000000,winningStatus);
+        return lottoProfit;
+    }
+    public static int LottoProfitCalculation(int num, int money, List<Integer> winningStatus){
+        DecimalFormat decFormat = new DecimalFormat("###,###");
+        String money_str = decFormat.format(money);
+        int count = Collections.frequency(winningStatus, num);
+
+        if(num == 7) {
+            num = 5;
+            System.out.println(num + "개 일치, 보너스 볼 일치 (" + money_str + "원) - " + count + "개");
+            return (money * count);
+        }
+        System.out.println(num + "개 일치 (" + money_str + "원) - " + count + "개");
+        return (money * count);
     }
 
 
