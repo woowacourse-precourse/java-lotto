@@ -23,9 +23,17 @@ class ValidUtilTest {
     }
 
     @Test
-    @DisplayName("당첨 번호의 한 숫자가 1~45까지의 숫자가 아닌 경우 오류가 발생한다")
+    @DisplayName("당첨 번호의 한 숫자가 1~45까지의 숫자가 아닌 경우 오류가 발생한다.")
     void validateNumberRange() {
         assertThatThrownBy(() -> ValidUtil.validateNumberRange("47"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+
+    @Test
+    @DisplayName("보너스 번호의 숫자가 한 자리의 숫자가 아닌 경우 오류가 발생한다.")
+    void validateOneDigit() {
+        assertThatThrownBy(() -> ValidUtil.validateOneDigit("43"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 }
