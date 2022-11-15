@@ -1,5 +1,6 @@
 package lotto.controller;
 
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
@@ -25,6 +26,24 @@ public class Customer {
         calculateResult();
     }
 
+    public void printResult() {
+
+        System.out.println("당첨 통계");
+        System.out.println("---");
+        Arrays.stream(Rank.values()).filter(rank -> rank != Rank.OTHER).forEach(this::printRank);
+        System.out.printf("총 수익률은 %.1f%%입니다.\n", getEarningRate());
+
+    }
+
+    private void printRank(Rank rank) {
+        System.out.println(rank.toString() + result.getOrDefault(rank, 0) + "개");
+    }
+
+    private double getEarningRate() {
+        double earnSum=result.entrySet().stream()
+            .mapToLong(entry -> (long)entry.getValue() * entry.getKey().getPrize()).sum();
+        return earnSum / (lotteries.size() * 10);
+    }
 
     private void printLotteries(List<Lotto> lotteries) {
         System.out.println(lotteries.size() + "개를 구매했습니다.");
