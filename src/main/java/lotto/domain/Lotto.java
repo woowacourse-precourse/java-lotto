@@ -1,13 +1,13 @@
-package lotto;
+package lotto.domain;
 
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
 public class Lotto {
-    static final int MIN_NUMBER = 1;
-    static final int MAX_NUMBER = 45;
-    static final int WIN_NUMBER_SIZE = 6;
+    public static final int MIN_NUMBER = 1;
+    public static final int MAX_NUMBER = 45;
+    public static final int WIN_NUMBER_SIZE = 6;
 
     private final List<Integer> numbers;
     private Prize grade = Prize.UNCHECKED;

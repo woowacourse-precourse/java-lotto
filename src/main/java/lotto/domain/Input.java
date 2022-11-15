@@ -1,8 +1,4 @@
-package lotto;
-
-import camp.nextstep.edu.missionutils.Console;
-
-import static lotto.InputValidator.*;
+package lotto.domain;
 
 public class Input {
 

@@ -1,15 +1,15 @@
-package lotto;
+package lotto.domain;
 
+import lotto.domain.ExceptionHandler;
+import lotto.domain.Lotto;
+import lotto.domain.WinNumber;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
 import java.util.stream.Stream;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class WinNumberTest {
 

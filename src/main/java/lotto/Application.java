@@ -1,6 +1,6 @@
 package lotto;
 
-import java.util.Arrays;
+import lotto.domain.LottoGame;
 
 public class Application {
     public static void main(String[] args) {
