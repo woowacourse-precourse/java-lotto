@@ -16,6 +16,11 @@ public class LottoValidator {
         return false;
     }
 
+    public static boolean isPositiveInteger(int number) {
+        if (number > 0) return true;
+        return false;
+    }
+
     public static boolean isValidRange(int number) {
         if (number < LottoConstant.STARTFROM.getValue()
                 || number > LottoConstant.ENDTO.getValue()) return false;
@@ -39,4 +44,5 @@ public class LottoValidator {
         }
         return true;
     }
+
 }
