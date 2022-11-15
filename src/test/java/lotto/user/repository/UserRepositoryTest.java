@@ -1,38 +1,11 @@
 package lotto.user.repository;
 
 import static org.assertj.core.api.Assertions.assertThat;
-
-import java.util.List;
-import lotto.lottery.repository.LottoRepository;
-import lotto.user.domain.User;
 import org.junit.jupiter.api.Test;
-
+import lotto.user.domain.User;
 class UserRepositoryTest {
 
     User user = new User();
-    @Test
-    void user_lotto_create() {
-        // when
-        UserRepository.setUserTicketsToLottery(user,8);
-        System.out.println(user.getLottos());
-    }
-    @Test
-    void study_list() {
-        System.out.println(user.getLottos());
-        user.setLottos(LottoRepository.generateLotto());
-        user.getLottos();
-        List<Integer> LOTTO_NUMBER = List.of(1, 2, 3, 4, 5, 6);
-
-    }
-
-    @Test
-    void check_divide_for_drop_under_point() {
-        int UNIT = 100 ;
-        int target = 36;
-
-        int result = 3601/UNIT;
-        assertThat(target).isEqualTo(result);
-    }
     @Test
     void check_user_buy_lotto_case() {
 
@@ -44,5 +17,12 @@ class UserRepositoryTest {
         assertThat(user.getTicketAmount()).isEqualTo(target);
         target = 36000;
         assertThat(user.getPurchaseAmount()).isEqualTo(target);
+    }
+    @Test
+    void check_user_purchase_amount_of_tickets(){
+        int ticketsAmount = 7;
+        UserRepository.setUserTicketsToLottery(user,ticketsAmount);
+
+        assertThat(user.getLottos().size()).isEqualTo(ticketsAmount);
     }
 }

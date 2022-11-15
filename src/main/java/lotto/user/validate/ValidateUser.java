@@ -1,7 +1,6 @@
 package lotto.user.validate;
 
 import java.util.regex.Pattern;
-import lotto.user.domain.User;
 import lotto.util.Constant;
 
 public class ValidateUser {
