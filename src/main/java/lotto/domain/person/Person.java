@@ -23,8 +23,8 @@ public class Person {
 		return lottos;
 	}
 
-	public Money getMoney() {
-		return money;
+	public int getMoney() {
+		return money.getMoney();
 	}
 
 	public List<Lotto> getLottos() {
