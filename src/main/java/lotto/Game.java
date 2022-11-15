@@ -1,5 +1,7 @@
 package lotto;
 
+import java.util.ArrayList;
+import java.util.List;
 import lotto.view.Input;
 
 public class Game {
@@ -20,11 +22,22 @@ public class Game {
         bonusNumber = Input.inputWinLottoBonusNumber();
     }
 
-
-
-    public int getLottoPrize(String rank){
+    public int getLottoPrize(String rank) {
         int lottoPrize = LottoPrize.valueOf(rank).getLottoPrize();
         return lottoPrize;
+    }
+
+    public void saveScoreResult(Person person) {// 각 등수별 당첨 수 저장
+        List<Lotto> userLottos = person.getLottos();
+        List<Integer> result = person.getLottoScoreResult().winScoreList;
+        int rank;
+        int count;
+        for (Lotto userLotto : userLottos) {
+            rank = calculateRank(userLotto);
+            count = result.get(rank);
+            count++;
+            result.add(rank, count);
+        }
     }
 
     public int calculateRank(Lotto lotto) {

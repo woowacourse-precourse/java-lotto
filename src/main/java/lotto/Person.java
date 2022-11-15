@@ -10,6 +10,7 @@ import java.util.List;
 public class Person {
     private List<Lotto> lottos = new ArrayList<>();
     private int purchaseAmount = 0;
+    private LottoScoreResult lottoScoreResult;
 
     public void buyLottos() {
         purchaseAmount = Input.inputPurchaseAmount();
@@ -22,5 +23,13 @@ public class Person {
         List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
         numbers.sort(Comparator.naturalOrder());
         return numbers;
+    }
+
+    public List<Lotto> getLottos() {
+        return lottos;
+    }
+
+    public LottoScoreResult getLottoScoreResult() {
+        return lottoScoreResult;
     }
 }
