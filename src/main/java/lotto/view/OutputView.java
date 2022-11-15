@@ -4,9 +4,9 @@ import lotto.model.Lottos;
 import lotto.model.LottosResult;
 
 public class OutputView {
-
-    public static final String NUMBER_OF_PURCHASED_LOTTOS_MESSAGE_FORMAT = "\n%d개를 구매했습니다.\n";
-    public static final String PROFIT_RATE_MESSAGE_FORMAT = "총 수익률은 %.1f%%입니다.\n";
+    private static final String NUMBER_OF_PURCHASED_LOTTOS_MESSAGE_FORMAT = "\n%d개를 구매했습니다.\n";
+    private static final String PROFIT_RATE_MESSAGE_FORMAT = "총 수익률은 %.1f%%입니다.\n";
+    private static final int ONE_DECIMAL_POINT_CONVERTER = 10;
     private static OutputView instance;
 
     private OutputView() {
@@ -33,6 +33,10 @@ public class OutputView {
     }
 
     public void printProfitRate(double profitRate) {
-        System.out.printf(PROFIT_RATE_MESSAGE_FORMAT, (double) Math.round(profitRate * 10) / 10);
+        System.out.printf(PROFIT_RATE_MESSAGE_FORMAT, roundToOneDecimalPlace(profitRate));
+    }
+
+    private double roundToOneDecimalPlace(double profitRate) {
+        return (double) Math.round(profitRate * ONE_DECIMAL_POINT_CONVERTER) / ONE_DECIMAL_POINT_CONVERTER;
     }
 }
