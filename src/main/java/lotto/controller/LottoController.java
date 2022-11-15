@@ -18,8 +18,8 @@ public class LottoController {
             int money = InputView.money();
             List<Lotto> ticket = LottoGenerator.automatic(LottoGenerator.maximum(money));
             OutputView.ticket(ticket);
-
-            List<Rank> result = result(ticket, InputView.winningNumber(), InputView.bonusNumber());
+            List<Integer> winningNumber = InputView.winningNumber();
+            List<Rank> result = result(ticket, winningNumber, InputView.bonusNumber(winningNumber));
             OutputView.result(result, money);
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());

@@ -32,13 +32,15 @@ public class InputView {
         return numbers();
     }
 
-    public static int bonusNumber() {
+    public static int bonusNumber(List<Integer> winningNumber) {
         System.out.println(BONUS_INPUT_MESSAGE);
         String input = readLine();
+        int bonusNumber = Integer.parseInt(input);
 
         Validate.isNumber(input);
+        Validate.bonusInWinningNumbers(winningNumber, bonusNumber);
 
-        return Integer.parseInt(input);
+        return bonusNumber;
     }
 
     public static List<Integer> numbers() {

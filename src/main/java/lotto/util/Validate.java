@@ -10,6 +10,7 @@ public class Validate {
     public static final String ERROR_DUPLICATE_VALUE = "[ERROR] 중복 값이 포함되어 있습니다.";
     public static final String ERROR_DIFFERENT_LENGTHS = "[ERROR] 허용 길이를 벗어났습니다.";
     public static final String ERROR_OUT_OF_RANGE = "[ERROR] 허용 범위를 벗어났습니다.";
+    public static final String ERROR_DUPLICATE_BONUS = "[ERROR] 보너스 값이 중복 되어 있습니다.";
 
     public static void isNull(Object number) {
         if (number == null) {
@@ -48,5 +49,11 @@ public class Validate {
                         throw new IllegalArgumentException(ERROR_OUT_OF_RANGE);
                     }
                 });
+    }
+
+    public static void bonusInWinningNumbers(List<Integer> numbers, int bonus) {
+        if (numbers.contains(bonus)) {
+            throw new IllegalArgumentException(ERROR_DUPLICATE_BONUS);
+        }
     }
 }
