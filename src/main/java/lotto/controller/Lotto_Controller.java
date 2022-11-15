@@ -41,6 +41,18 @@ public class Lotto_Controller {
     public void Generate_And_Print_Random_Lotto_Numbers() {
         RandomLottoNumbers = make_numbers.make_RandomLotto(lottoCnt);
         Output_View.print_RandomLottoNumbers(RandomLottoNumbers);
-//        Enter_Lottery_Winning_Conditions();
+        Enter_Lottery_Winning_Conditions();
+    }
+
+    public void Enter_Lottery_Winning_Conditions() {
+        winNumbers = input_numbers.input_WinNumbers();
+        bonusNumber = input_numbers.input_BonusNumber(winNumbers);
+        Show_Winning_Stats();
+    }
+
+    public void Show_Winning_Stats() {
+        winStats = main_service.organize_Details(RandomLottoNumbers, winNumbers, bonusNumber);
+        Output_View.print_winningStats(winStats);
+//        Show_Yield();
     }
 }
