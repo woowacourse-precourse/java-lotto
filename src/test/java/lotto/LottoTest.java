@@ -9,7 +9,7 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-class LottoTest{
+class LottoTest {
     @DisplayName("로또 번호의 개수가 6개가 넘어가면 예외가 발생한다.")
     @Test
     void createLottoByOverSize() {
@@ -32,9 +32,6 @@ class LottoTest{
         assertThatThrownBy(() -> new Lotto(List.of(1, 2, 46, 5, 7, 9)))
                 .isInstanceOf(IllegalArgumentException.class);
     }
-
-
-
 
 
 }

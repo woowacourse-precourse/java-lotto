@@ -1,7 +1,7 @@
 package lotto.service;
 
-import lotto.domain.Validator;
-import lotto.domain.Buyer;
+import lotto.util.Validator;
+import lotto.util.Buyer;
 import lotto.domain.Lotto;
 import lotto.domain.BuyLotto;
 import lotto.domain.Statistic;

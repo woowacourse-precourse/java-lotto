@@ -70,7 +70,7 @@ public class Statistic {
 
     public double calculateRevenue(int price) {
         double percent = (double) revenue / (double) price;
-        percent = Math.round(percent*1000.0)/10.0;
+        percent = Math.round(percent * 1000.0) / 10.0;
         return percent;
     }
 
