@@ -1,6 +1,7 @@
 package lotto.view;
 
 import camp.nextstep.edu.missionutils.Console;
+import java.util.LinkedList;
 import java.util.List;
 import lotto.controller.LottoController;
 import lotto.model.Lotto;
@@ -10,6 +11,7 @@ public class LottoView {
 
     private final LottoController controller = new LottoController();
     private List<Lotto> lotteries;
+    private Lotto luckyLotto;
 
     public void addLotteries() {
         System.out.println("구매금액을 입력해주세요.");
@@ -47,4 +49,35 @@ public class LottoView {
         System.out.println(builder);
     }
 
+    public void addLuckyLotto() {
+        try {
+            System.out.println("당첨 번호를 입력해주세요.");
+            List<Integer> numbers = new LinkedList<>();
+            for (final String value : Console.readLine().split(",")) {
+                numbers.add(Integer.parseInt(value));
+            }
+            luckyLotto = new Lotto(numbers);
+        } catch (NumberFormatException e) {
+            System.out.println("[ERROR] 숫자를 입력해주세요");
+            throw new IllegalArgumentException();
+        } catch (IllegalArgumentException e) {
+            System.out.println("[ERROR] 로또 번호 형식이 맞지 않습니다.");
+            throw new IllegalArgumentException();
+        }
+    }
+
+    public void addBonusNumber() {
+        try {
+            System.out.println("보너스 번호를 입력하세요");
+            String line = Console.readLine();
+            int luckyNumber = Integer.parseInt(line);
+            if (luckyLotto.getNumbers().contains(luckyNumber)) {
+                System.out.println("[ERROR] 보너스 번호가 당첨 번호에 포함되어 있습니다.");
+                throw new IllegalArgumentException();
+            }
+        } catch (NumberFormatException e) {
+            System.out.println("[ERROR] 숫자를 입력해주세요");
+            throw new IllegalArgumentException();
+        }
+    }
 }
