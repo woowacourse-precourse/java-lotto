@@ -32,7 +32,7 @@ public class Lotto {
         }
     }
 
-    public void getBonus(int bonus){
+    public void setBonus(int bonus){
         if(Collections.frequency(numbers, bonus) != 0){
             System.out.println("[ERROR] 보너스번호를 중복되지 않게 입력해주세요.");
             throw new IllegalArgumentException();
@@ -72,7 +72,7 @@ public class Lotto {
         return 0;
     }
 
-    public float returnRate(int userInputMoney){
+    public float getReturnRate(int userInputMoney){
         float all=0;
         int money[] = {5000, 50000, 1500000, 30000000, 2000000000};
         for(int i = 0; i < 6; i++){
@@ -81,7 +81,7 @@ public class Lotto {
         return all/userInputMoney;
     }
 
-    public List<Integer>returnWinNums(){
+    public List<Integer>getWinNums(){
         return winNumbers;
     }
 }
