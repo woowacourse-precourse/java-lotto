@@ -9,18 +9,16 @@ import java.util.List;
 public class Winning {
     private List<Integer> numbers;
 
-    public Winning(){
-        numbers = getWinningNumbers();
+    public Winning(String readWinningNumbers){
+        Validation.validateWinningNumberInput(readWinningNumbers);
+        this.numbers = getWinningNumbers(readWinningNumbers);
     }
 
-    public List<Integer> getWinningNumbers(){
-        InputView.printInputWinningNumberMessage();
-        String readWinningNumber = InputView.readInputLine();
-        Validation.validateWinningNumberInput(readWinningNumber);
-        String[] a = readWinningNumber.split(","); //상수
+    public List<Integer> getWinningNumbers(String readWinningNumbers){
+        String[] splitWinningNumber = readWinningNumbers.split(","); //상수
         List<Integer> winningNumbers = new ArrayList<>();
         for(int i=0; i<6; i++){ //상수
-            winningNumbers.add(Integer.parseInt(a[i]));
+            winningNumbers.add(Integer.parseInt(splitWinningNumber[i]));
         }
         return winningNumbers;
     }

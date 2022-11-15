@@ -17,8 +17,9 @@ public class Controller {
         LottoList lottoList = new LottoList(readMoneyValue);
         OutputView.printNumberOfLotto(lottoList.getLottoPlayNumber(), lottoList.getLottoList());
 
-
-        Winning winning = new Winning();
+        InputView.printInputWinningNumberMessage();
+        String readWinningNumber = InputView.readInputLine();
+        Winning winning = new Winning(readWinningNumber);
 
 
         Bonus bonus = new Bonus(winning);
