@@ -19,4 +19,11 @@ public class InputUser {
             return inputUserPrice();
         }
     }
+    public static void validateValue(String str) {
+        try {
+            Integer.parseInt(str);
+        } catch (Exception e) {
+            throw new IllegalArgumentException(ERRMSG.getErrMsg());
+        }
+    }
 }
