@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Collections;
+
 public class Application {
     static List<Lotto> lottos = new ArrayList<>();
     static HashMap<String,Integer> win_list = new HashMap<>();
@@ -21,6 +22,10 @@ public class Application {
         PrintLotto(lottos);
         List<Integer> win_numbers = InputNumber();
         int bonus_number = BonusNumber();
+
+        for(Lotto lotto : lottos){
+            int count = CompareNumber(lotto,win_numbers);
+        }
     }
 
     public static String InputMoney() {
@@ -68,24 +73,30 @@ public class Application {
         String bonus = Console.readLine();
         return Integer.valueOf(bonus);
     }
-//    public static List<Integer> CompareNumber(List<Integer> lotto, List<Integer> win_number){
-//
-//    }
-//
-//    public static int CompareBonus(){
-//
-//    }
-//
-//    public static List<Integer> CountWin(){
-//
-//    }
-//
-//    public static void PrintWin(){
-//
-//    }
-//
-//    public static int CalculateMoney(){
-//
-//    }
+    public static int CompareNumber(Lotto lotto, List<Integer> win_number){
+        int count = 0;
+        for(int number : lotto.GetNumbers()){
+            if(win_number.contains(number)){
+                count++;
+            }
+        }
+        return count;
+    }
+
+    public static int CompareBonus(){
+
+    }
+
+    public static List<Integer> CountWin(){
+
+    }
+
+    public static void PrintWin(){
+
+    }
+
+    public static int CalculateMoney(){
+
+    }
 }
 
