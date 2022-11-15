@@ -1,6 +1,7 @@
 package lotto.domain.winning;
 
 
+import lotto.domain.lotto.Lotto;
 import lotto.domain.lotto.LottoNumber;
 
 import java.util.HashSet;
@@ -51,5 +52,22 @@ public class WinningNumbers {
         if (numberSet.size() != TOTAL_NUMBER_SIZE) {
             throw new IllegalArgumentException("[ERROR] 당첨 번호에 중복된 숫자가 존재합니다.");
         }
+    }
+
+    public WinningRank check(Lotto lotto) {
+        int count = countMatches(lotto);
+        boolean hasBonus = checkMatchBonus(lotto);
+
+        return WinningRank.of(count, hasBonus);
+    }
+
+    private int countMatches(Lotto lotto) {
+        return (int) winningNumbers.stream()
+                .filter(lotto::isSame)
+                .count();
+    }
+
+    private boolean checkMatchBonus(Lotto lotto) {
+        return lotto.isSame(bonusWinningNumber);
     }
 }

@@ -2,6 +2,7 @@ package lotto.domain;
 
 import lotto.domain.winning.WinningRank;
 
+import java.util.Collections;
 import java.util.Map;
 
 public class LottoResult {
@@ -25,5 +26,9 @@ public class LottoResult {
                 .stream()
                 .mapToInt(WinningRank::getPrize)
                 .sum();
+    }
+
+    public Map<WinningRank, Integer> getResult() {
+        return Collections.unmodifiableMap(result);
     }
 }

@@ -15,6 +15,6 @@ public class LottoNumberGenerator {
         List<Integer> numbers = Randoms.pickUniqueNumbersInRange(START_INCLUSIVE, END_INCLUSIVE, COUNT_OF_NUMBER);
         Collections.sort(numbers);
 
-        return new ArrayList<>(numbers);
+        return numbers;
     }
 }

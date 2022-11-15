@@ -25,18 +25,19 @@ public class LottoController {
     }
 
     public void run() {
-        LottoTickets lottoTickets = buyLottoTickets();
+        Wallet wallet = createWallet();
+        LottoTickets lottoTickets = buyLottoTickets(wallet);
 
         WinningNumbers winningNumbers = createWinningNumbers();
         LottoResult lottoResult = createLottoResult(lottoTickets, winningNumbers);
-        displayResult(lottoResult);
+        displayResult(lottoResult, wallet);
     }
 
-    private LottoTickets buyLottoTickets() {
+    private LottoTickets buyLottoTickets(Wallet wallet) {
         LottoMarket lottoMarket = new LottoMarket();
 
         print(INPUT_MESSAGE_FOR_MONEY);
-        LottoTickets lottoTickets = lottoMarket.buy(createWallet());
+        LottoTickets lottoTickets = lottoMarket.buy(wallet);
 
         displayCount(lottoTickets);
         displayLottoTickets(lottoTickets.getLottoTickets());
@@ -59,6 +60,11 @@ public class LottoController {
     }
 
     private LottoResult createLottoResult(LottoTickets lottoTickets, WinningNumbers winningNumbers) {
+        outputView.printLottoResultMessage();
+
+        LottoResult lottoResult = lottoTickets.makeResult(winningNumbers);
+
+        return lottoResult;
     }
 
     private void displayCount(LottoTickets lottoTickets) {
@@ -71,7 +77,9 @@ public class LottoController {
         outputView.printAllLottoTickets(lottoTickets);
     }
 
-    private void displayResult(LottoResult lottoResult) {
+    private void displayResult(LottoResult lottoResult, Wallet wallet) {
+        outputView.printLottoResultMessage();
+        outputView.printResult(lottoResult.getResult(), lottoResult.calculateYield(wallet));
     }
 
 }

@@ -41,4 +41,8 @@ public class Lotto {
     public List<LottoNumber> getLotto() {
         return Collections.unmodifiableList(lotto);
     }
+
+    public boolean isSame(LottoNumber lottoNumber) {
+        return lotto.contains(lottoNumber);
+    }
 }
