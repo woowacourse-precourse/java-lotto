@@ -1,5 +1,6 @@
 package lotto.domain;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -66,6 +67,8 @@ public class Lucky {
     }
 
     public String profitResult(HashMap<Integer, Integer> compareResult, int price) {
+        DecimalFormat decimalFormat = new DecimalFormat("###,###.0");
+        String profitResult;
         double result = 0;
         double sum = 0;
         sum += compareResult.get(5)*5000;
@@ -73,10 +76,9 @@ public class Lucky {
         sum += compareResult.get(3)*1500000;
         sum += compareResult.get(7)*30000000;
         sum += compareResult.get(1)*2000000000;
-
         result = sum/price*100;
-        String profitResult = String.format("%.1f", result);
-
+        result = Math.round(result*10)/10;
+        profitResult = decimalFormat.format(result);
         return profitResult;
     }
 
