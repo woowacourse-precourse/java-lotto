@@ -1,15 +1,17 @@
 package lotto;
 
-import camp.nextstep.edu.missionutils.test.NsTest;
-import org.junit.jupiter.api.Test;
-
-import java.util.List;
-
+import static camp.nextstep.edu.missionutils.Randoms.pickUniqueNumbersInRange;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomUniqueNumbersInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 
+import camp.nextstep.edu.missionutils.test.NsTest;
+import java.util.List;
+import java.util.stream.Collectors;
+import org.junit.jupiter.api.Test;
+
 class ApplicationTest extends NsTest {
+
     private static final String ERROR_MESSAGE = "[ERROR]";
 
     @Test
@@ -57,5 +59,102 @@ class ApplicationTest extends NsTest {
     @Override
     public void runMain() {
         Application.main(new String[]{});
+    }
+
+    @Test
+    void 로또_1억원어치_자동이요() {
+        List<Integer> randomNumbers = pickUniqueNumbersInRange(1, 45, 7);
+        String lottoNumbers = randomNumbers.subList(0, 6)
+                .stream()
+                .map(String::valueOf)
+                .collect(Collectors.joining(","));
+        String bonusNumber = Integer.toString(randomNumbers.get(6));
+
+        assertSimpleTest(() -> {
+            run("100000000",
+                    lottoNumbers,
+                    bonusNumber
+            );
+        });
+    }
+
+    @Test
+    void 예외_테스트_정수_범위_벗어남() {
+        assertSimpleTest(() -> {
+            runException("10000000000000000000000000000000000000");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
+    @Test
+    void 예외_테스트_음수() {
+        assertSimpleTest(() -> {
+            runException("-1000");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
+    @Test
+    void 예외_테스트_로또번호_범위_벗어남() {
+        assertSimpleTest(() -> {
+            runException("1000", "1,2,3,4,5,46");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
+    @Test
+    void 예외_테스트_로또번호_6개_넘김() {
+        assertSimpleTest(() -> {
+            runException("1000", "1,2,3,4,5,6,7");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
+    @Test
+    void 예외_테스트_로또번호_중복() {
+        assertSimpleTest(() -> {
+            runException("1000", "1,2,3,4,5,5");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
+    @Test
+    void 예외_테스트_로또번호_음수() {
+        assertSimpleTest(() -> {
+            runException("1000", "1,2,3,4,5,-6");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
+    @Test
+    void 예외_테스트_보너스번호_범위_벗어남() {
+        assertSimpleTest(() -> {
+            runException("1000", "1,2,3,4,5,6", "46");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
+    @Test
+    void 예외_테스트_보너스번호_1개_넘김() {
+        assertSimpleTest(() -> {
+            runException("1000", "1,2,3,4,5,6", "7,8");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
+    @Test
+    void 예외_테스트_보너스번호_중복() {
+        assertSimpleTest(() -> {
+            runException("1000", "1,2,3,4,5,6", "6");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
+    @Test
+    void 예외_테스트_보너스번호_음수() {
+        assertSimpleTest(() -> {
+            runException("1000", "1,2,3,4,5,6", "-7");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
     }
 }
