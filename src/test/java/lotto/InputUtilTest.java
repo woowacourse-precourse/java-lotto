@@ -48,4 +48,13 @@ public class InputUtilTest {
 
         assertThat(origin).isEqualTo(true);
     }
+
+    @DisplayName("areValidNumbersTest")
+    @Test
+    void areValidNumbersTest() {
+        boolean origin = ValidationUtil
+                .areValidNumbers(List.of("1", "2", "3", "4", "5", "6"));
+
+        assertThat(origin).isEqualTo(true);
+    }
 }
