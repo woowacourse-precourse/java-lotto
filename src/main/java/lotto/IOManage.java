@@ -33,14 +33,14 @@ public class IOManage {
         GenerateLotto generation = new GenerateLotto(quantity);
         generatedLotto = generation.getLottoNumbers();
 
-        System.out.println(quantity + Message.OUTPUT_BUYING.get());
+        System.out.println("\n" + quantity + Message.OUTPUT_BUYING.get());
         for (List<Integer> lottoNumber : generatedLotto) {
             System.out.println(lottoNumber);
         }
     }
 
     public boolean inputWinningNumbers() {
-        System.out.println(Message.INPUT_WINNING_NUMBER.get());
+        System.out.println("\n" + Message.INPUT_WINNING_NUMBER.get());
 
         String inputString = Console.readLine();
         List<Integer> numbers = control.inputToWinningNumbers(inputString);
@@ -56,7 +56,7 @@ public class IOManage {
     }
 
     public boolean inputBonusNumber() {
-        System.out.println(Message.INPUT_BONUS_NUMBER.get());
+        System.out.println("\n" + Message.INPUT_BONUS_NUMBER.get());
 
         String inputString = Console.readLine();
         bonusNumber = control.inputToBonusNumber(inputString, winningNumbers);
@@ -70,7 +70,7 @@ public class IOManage {
     public void outputStatistic() {
         CheckWinningLotto check = new CheckWinningLotto();
         List<Integer> winningCount = check.totalWinningCount(generatedLotto, winningNumbers, bonusNumber);
-        System.out.println(Message.OUTPUT_STATISTICS.get());
+        System.out.println("\n" + Message.OUTPUT_STATISTICS.get());
 
         System.out.println(Message.THREE_CORRECT.get() + winningCount.get(0) + Message.COUNT.get());
         System.out.println(Message.FOUR_CORRECT.get() + winningCount.get(1) + Message.COUNT.get());
