@@ -4,30 +4,22 @@ import java.util.Arrays;
 
 public enum MatchLotto {
 
-    NOTHING(0, false, 0),
-    THREE(3,false,5000),
-    FOUR(4,false,50000),
-    FIVE(5,false,1500000),
-    FIVE_BONUS(5,true,30000000),
-    SIX(6,false,2000000000);
+    FIFTH(3,false,"3개 일치 (5,000원) - ",5000),
+    FOURTH(4,false,"4개 일치 (50,000원) - ",50000),
+    THIRD(5,false,"5개 일치 (1500,000원) - ",1500000),
+    SECOND(5,true,"5개 일치, 보너스 볼 일치 (30,000,000원) - ",30000000),
+    FIRST(6,false,"6개 일치 (2,000,000,000원) - ",2000000000);
 
     int matchNumber;
     boolean matchBonums;
     int prize;
-    MatchLotto(int matchNumber, boolean matchBonus,int prize){
+    String result;
+    MatchLotto(int matchNumber, boolean matchBonus,String result, int prize){
         this.matchNumber = matchNumber;
         this. matchBonums = matchBonus;
         this.prize = prize;
+        this.result = result;
     }
-
-    public static MatchLotto result(int matchNumber, boolean matchBonums){
-        return Arrays.stream(values())
-                .filter(matchLotto -> matchLotto.matchNumber == matchNumber)
-                .filter(matchLotto -> matchLotto.matchBonums == matchBonums)
-                .findFirst()
-                .orElseThrow(()-> new IllegalStateException("[ERROR]"));
-    }
-
 
     public int getMatchNumber() {
         return matchNumber;
@@ -39,5 +31,9 @@ public enum MatchLotto {
 
     public boolean isMatchBonums() {
         return matchBonums;
+    }
+
+    public String getResult(){
+        return result;
     }
 }
