@@ -2,23 +2,51 @@ package lotto;
 
 
 public class Application {
+    private UI ui;
+    private User user;
+    private Lotto lotto;
+
+    public Application() {
+        this.ui = new UI();
+    }
+
+    private void inputCost() {
+        this.ui.inputCost();
+        this.user = new User(this.ui.getCost());
+        this.ui.showCostCount();
+    }
+
+    private void makeLottoNumbers() {
+        this.user.makeLottoNumbers();
+        this.ui.showLottoNumbers(this.user.getLottoNumbers());
+    }
+
+    private void makeWinningNumbers() {
+        this.ui.inputWinning();
+        this.lotto = new Lotto(this.ui.getWinningNumbers());
+    }
+
+    private void makeBonusNumber() {
+        this.ui.inputBonus();
+        this.lotto.validateBonus(this.ui.getBonus());
+    }
+
+    private void showResult() {
+        this.user.checkWinning(this.lotto.getNumbers(), this.ui.getBonus());
+        this.ui.showWinning(this.user.getFirst(), this.user.getSecond(), this.user.getThird(), this.user.getFourth(), this.user.getFifth());
+    }
+
+    private void showYield() {
+        this.ui.showYield(this.user.calculateYield());
+    }
+
     public static void main(String[] args) {
-        UI ui = new UI();
-        ui.inputCost();
-
-        User user = new User(ui.getCost());
-        ui.showCostCount();
-        user.makeLottoNumbers();
-        ui.showLottoNumbers(user.getLottoNumbers());
-
-        ui.inputWinning();
-        Lotto lotto = new Lotto(ui.getWinningNumbers());
-
-        ui.inputBonus();
-        lotto.validateBonus(ui.getBonus());
-
-        user.checkWinning(lotto.getNumbers(), ui.getBonus());
-        ui.showWinning(user.getFirst(), user.getSecond(), user.getThird(), user.getFourth(), user.getFifth());
-        ui.showYield(user.calculateYield());
+        Application app = new Application();
+        app.inputCost();
+        app.makeLottoNumbers();
+        app.makeWinningNumbers();
+        app.makeBonusNumber();
+        app.showResult();
+        app.showYield();
     }
 }
