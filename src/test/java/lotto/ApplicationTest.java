@@ -24,7 +24,7 @@ class ApplicationTest extends NsTest {
     void 기능_테스트() {
         assertRandomUniqueNumbersInRangeTest(
                 () -> {
-                    run("8000", "1,2,3,4,5,6", "7");
+                    run("100000", "1,2,3,4,5,6", "7");
                     assertThat(output()).contains(
                             "8개를 구매했습니다.",
                             "[8, 21, 23, 41, 42, 43]",
@@ -58,7 +58,7 @@ class ApplicationTest extends NsTest {
     void 전체동작_테스트() {
         assertRandomUniqueNumbersInRangeTest(
                 () -> {
-                    run("1000", "1,2,3,4,5,6", "7");
+                    run("10000000", "1,2,3,4,5,6", "7");
                     assertThat(output()).contains(
                             "1개를 구매했습니다.",
                             "[1, 2, 3, 4, 5, 7]",
@@ -70,7 +70,7 @@ class ApplicationTest extends NsTest {
                             "총 수익률은 0.0%입니다."
                     );
                 },
-                List.of(11, 2, 3, 4, 5, 6)// 1
+                List.of(1, 2, 3, 4, 5, 6)// 1
         );
     }
 

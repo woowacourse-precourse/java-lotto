@@ -30,7 +30,7 @@ public class InputException {
     }
 
     /**
-     * 미사용 : 0원에 대해서 예외처리 할지 추후 결정
+     * 0원에 대해서 예외처리
      * @param amount
      */
     public static void userInputZeroException(String amount) {

@@ -3,6 +3,7 @@ package Info;
 import lotto.Lotto;
 import lotto.LottoList;
 
+import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.text.DecimalFormat;
 import java.util.Comparator;
@@ -68,7 +69,7 @@ public class PrintGameInfo {
         }
     }
 
-    public static void lottoProfitInfo(double profit) {
+    public static void lottoProfitInfo(BigDecimal profit) {
         System.out.println(getProfitFormat(profit));
     }
 
@@ -108,8 +109,9 @@ public class PrintGameInfo {
         return ERROR + POINT_ERROR;
     }
 
-    public static String getProfitFormat(double profit) {
-        String roundProfit = String.format("%.1f", profit);
+    public static String getProfitFormat(BigDecimal profit) {
+        profit.setScale(1);
+        String roundProfit = profit.toString();
         return PROFIT_FORMAT + roundProfit.replaceAll("\\B(?=(\\d{3})+(?!\\d))", ",") + IS;
     }
 
