@@ -2,8 +2,9 @@ package lotto.domain;
 
 import lotto.utils.LottoNumberGenerator;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class LottoTickets {
 
@@ -14,15 +15,9 @@ public class LottoTickets {
     }
 
     private List<Lotto> generateLottoTickets(int lottoCount, LottoNumberGenerator lottoNumberGenerator) {
-        List<Lotto> lottoTickets = new ArrayList<>();
-
-        for (int i = 0; i < lottoCount; i++) {
-            Lotto lotto = new Lotto(lottoNumberGenerator.generate());
-
-            lottoTickets.add(lotto);
-        }
-
-        return lottoTickets;
+        return IntStream.range(0, lottoCount)
+                .mapToObj(count -> new Lotto(lottoNumberGenerator.generate()))
+                .collect(Collectors.toList());
     }
 
     public int getCount() {
