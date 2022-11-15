@@ -69,6 +69,6 @@ public class CompareLotto {
 
         double totalYield = (receiveMoney / originalMoney) * 100;
 
-        return "총 수익률은 " + totalYield + "%입니다.";
+        return "총 수익률은 " + (long)totalYield + "%입니다.";
     }
 }
