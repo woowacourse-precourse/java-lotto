@@ -11,9 +11,9 @@ public class MainController {
     private int lottoCount;
     private List<List<Integer>> lotteries;
     private int bonusNumber;
-    private String winningNumber;
-    private List<Integer> winningNumbers;
-    int[] winningNumberMatchCount;
+    private String winningNumbers;
+    private List<Integer> winningLottery;
+    int[] winningNumberCount;
     private final String MONEY_INPUT_ERROR = "[ERROR]: 숫자 외 다른 문자를 입력하셨습니다.";
 
     public void run() {
@@ -39,24 +39,23 @@ public class MainController {
     }
 
     public void makeWinningLottoController() {
-        winningNumber = InputView.inputWinningNumbers();
-        new LottoException().winningException(winningNumber);
-        winningNumbers = new WinningLotto().creteWinningNumbers(winningNumber);
-        compareController();
+        winningNumbers = InputView.inputWinningNumbers();
+        new LottoException().winningException(winningNumbers);
+        winningLottery = new WinningLotto().creteWinningNumbers(winningNumbers);
+        compareLottoController();
     }
 
-    public void compareController() {
-        new LottoBank().calculateWinningMatchNumber(lottoCount, lotteries, winningNumbers);
+    public void compareLottoController() {
         bonusNumber = InputView.inputBonusNumber();
-        winningNumberMatchCount = new LottoBank().compareBonusNumber(lottoCount, bonusNumber,
-                lotteries, winningNumbers);
-        OutputView.printResult(winningNumberMatchCount);
+        winningNumberCount = new LottoBank().compareBonusNumber(lottoCount, bonusNumber,
+                lotteries, winningLottery);
+        OutputView.printResult(winningNumberCount);
         OutputView.printWinningMessage();
         profitRateController();
     }
 
     public void profitRateController() {
-        double profitRate = new LottoBank().calculateTotalMoney(winningNumberMatchCount, money);
+        double profitRate = new LottoBank().calculateTotalMoney(winningNumberCount, money);
         OutputView.printProfitRate(profitRate);
     }
 }

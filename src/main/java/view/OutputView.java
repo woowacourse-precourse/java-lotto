@@ -25,19 +25,19 @@ public class OutputView {
     public static void printResult(int[] winningNumberMatchCount) {
         List<Integer> winningNumberMatchCounts = Arrays.stream(winningNumberMatchCount)
                 .boxed().collect(Collectors.toList());
-        int matchCount = 3;
+        int winningCount = 3;
         for (LottoRank lottoRank : LottoRank.values()) {
-            int rankMatchCount = Collections.frequency(winningNumberMatchCounts, matchCount);
+            int rankMatchCount = Collections.frequency(winningNumberMatchCounts, winningCount);
             System.out.println(lottoRank.getValue() + " - " + rankMatchCount + "개");
-            if (matchCount == 5) {
-                matchCount = 7;
+            if (winningCount == 5) {
+                winningCount = 7;
                 continue;
             }
-            if (matchCount == 7) {
-                matchCount = 6;
+            if (winningCount == 7) {
+                winningCount = 6;
                 continue;
             }
-            matchCount++;
+            winningCount++;
         }
     }
 

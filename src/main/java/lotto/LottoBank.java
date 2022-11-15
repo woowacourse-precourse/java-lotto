@@ -5,43 +5,43 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class LottoBank {
-    private int[] winningNumberMatchCount;
-    private int winningMatchCount;
+    private int[] winningNumberCount;
+    private int winningCount;
     private int totalProfit;
 
-    public int[] calculateWinningMatchNumber(int lottoCount, List<List<Integer>> totalLotteries,
-                                             List<Integer> winningNumbers) {
-        winningNumberMatchCount = new int[lottoCount];
+    public int[] calculateWinningCount(int lottoCount, List<List<Integer>> totalLotteries,
+                                       List<Integer> winningNumbers) {
+        winningNumberCount = new int[lottoCount];
         for (List<Integer> lottery : totalLotteries) {
-            winningMatchCount = compareWinningNumber(winningNumbers, lottery);
+            winningCount = compareWinningNumber(winningNumbers, lottery);
             int index = totalLotteries.indexOf(lottery);
-            for (int i = 0; i < winningMatchCount; i++) {
-                winningNumberMatchCount[index]++;
+            for (int i = 0; i < winningCount; i++) {
+                winningNumberCount[index]++;
             }
         }
-        return winningNumberMatchCount;
+        return winningNumberCount;
     }
 
     public int compareWinningNumber(List<Integer> winningNumbers, List<Integer> lottery) {
-        winningMatchCount = 0;
+        winningCount = 0;
         for (int lottoNumber : lottery) {
             if (winningNumbers.contains(lottoNumber)) {
-                winningMatchCount++;
+                winningCount++;
             }
         }
-        return winningMatchCount;
+        return winningCount;
     }
 
     public int[] compareBonusNumber(int lottoCount, int bonusNumber, List<List<Integer>> totalLotteries,
                                     List<Integer> winningNumbers) {
-        winningNumberMatchCount = calculateWinningMatchNumber(lottoCount, totalLotteries, winningNumbers);
-        for (int i = 0; i < winningNumberMatchCount.length; i++) {
+        winningNumberCount = calculateWinningCount(lottoCount, totalLotteries, winningNumbers);
+        for (int i = 0; i < winningNumberCount.length; i++) {
             List<Integer> lottery = totalLotteries.get(i);
-            if (winningNumberMatchCount[i] == 5 && lottery.contains(bonusNumber)) {
-                winningNumberMatchCount[i] += 2;
+            if (winningNumberCount[i] == 5 && lottery.contains(bonusNumber)) {
+                winningNumberCount[i] += 2;
             }
         }
-        return winningNumberMatchCount;
+        return winningNumberCount;
     }
 
     public double calculateTotalMoney(int[] winningNumberMatchCount, int inputMoney) {
