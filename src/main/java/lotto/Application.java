@@ -7,6 +7,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 import static camp.nextstep.edu.missionutils.Console.*;
 
@@ -22,10 +23,10 @@ public class Application {
         System.out.printf("%d개를 구매했습니다.\n", lottoAmount.getAmount());
 
 
-        ArrayList<Lotto> lottos = IntStream.range(0, lottoAmount.getAmount()).map(i -> new Lotto(new LottoCreate())).collect(Collectors.toList());
+        List<Lotto> lottos = IntStream.range(0, purchaseAmount).boxed()
+                .map((i) -> new Lotto(new LottoCreate())).collect(Collectors.toList());
 
         lottos.forEach(print());
-
 
 
         // 당첨 번호 입력 받기 ( include validation )
@@ -38,9 +39,9 @@ public class Application {
         System.out.println("당첨 통계");
         System.out.println("---");
         List<Integer> results = lottos.stream().map(lotto -> lottoManager.evaluate(lotto)).collect(Collectors.toList());
-        double earningRate = (double)results.stream().reduce(0, Integer::sum)/purchaseAmount;
+        double earningRate = (double) results.stream().reduce(0, Integer::sum) / purchaseAmount;
 
-        System.out.println("총 수익률은 "+earningRate+"%입니다.");
+        System.out.println("총 수익률은 " + earningRate + "%입니다.");
 
 
     }

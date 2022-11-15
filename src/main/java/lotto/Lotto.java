@@ -16,5 +16,11 @@ public class Lotto {
         }
     }
 
+    public Lotto (LottoCreate lottoCreate){
+        this.numbers = lottoCreate.getLottoNumbers();
+    }
+
+
+
     // TODO: 추가 기능 구현
 }
