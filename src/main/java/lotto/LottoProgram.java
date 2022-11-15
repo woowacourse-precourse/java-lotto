@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Map;
 
 public class LottoProgram {
-    private final int LOTTO_PRICE = 1000;
+    private static final int LOTTO_PRICE = 1000;
 
     private int numberOfLotto = 0;
     private List<Lotto> lottos = new ArrayList<>();
@@ -141,6 +141,6 @@ public class LottoProgram {
             }
         }
 
-        this.rateOfReturn = (double) totalReward / (this.numberOfLotto * 1000) * 100;
+        this.rateOfReturn = (double) totalReward / (this.numberOfLotto * LOTTO_PRICE) * 100;
     }
 }

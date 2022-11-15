@@ -6,6 +6,10 @@ import java.util.List;
 import java.util.Set;
 
 public class Validation {
+    private static final int START_NUMBER = 1;
+    private static final int END_NUMBER = 45;
+    private static final int LOTTO_SIZE = 6;
+    private static final int MONEY_UNIT = 1000;
     private static final String INPUT_NAN_ERROR_MSG = "[ERROR] 문자가 아닌 숫자를 입력해주세요.";
     private static final String INPUT_UNIT_ERROR_MSG = "[ERROR] 금액을 1000원 단위로 입력해주세요.";
     private static final String INPUT_LOTTO_NUMBER_RANGE_ERROR_MSG = "[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.";
@@ -58,13 +62,13 @@ public class Validation {
     }
 
     private static void checkUnit(int money) {
-        if (money % 1000 != 0) {
+        if (money % MONEY_UNIT != 0) {
             throw new IllegalArgumentException(INPUT_UNIT_ERROR_MSG);
         }
     }
 
     private static void checkSize(String[] numbers) {
-        if (numbers.length != 6) {
+        if (numbers.length != LOTTO_SIZE) {
             throw new IllegalArgumentException(INPUT_LOTTO_NUMBER_SIZE_ERROR_MSG);
         }
     }
@@ -79,7 +83,7 @@ public class Validation {
     }
 
     private static void checkInRange(int number) {
-        if (number < 1 || number > 45) {
+        if (number < START_NUMBER || number > END_NUMBER) {
             throw new IllegalArgumentException(INPUT_LOTTO_NUMBER_RANGE_ERROR_MSG);
         }
     }
