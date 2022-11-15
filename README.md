@@ -225,3 +225,31 @@ public class Lotto {
 - **Git의 커밋 단위는 앞 단계에서 `docs/README.md`에 정리한 기능 목록 단위**로 추가한다.
     - [커밋 메시지 컨벤션](https://gist.github.com/stephenparish/9941e89d80e2bc58a153) 가이드를 참고해 커밋 메시지를 작성한다.
 - 과제 진행 및 제출 방법은 [프리코스 과제 제출](https://github.com/woowacourse/woowacourse-docs/tree/master/precourse) 문서를 참고한다.
+
+### 구현 기능 목록
+
+- [ ] user 가 입력하기.
+* 입력사항
+
+  - [ ] 로또 구입 금액
+
+  - [ ] 당첨 번호 : 1에서 45까지 서로 다른 임의의 수 6개
+
+  - [ ] 보너스 번호 : 1개
+
+
+<br />
+
+- [ ] 난수 생성
+
+  - [ ] 컴퓨터가 제출하는 문제로
+  - [ ] 로또 하나 당 1에서 45까지 서로 다른 임의의 수 6개
+  - [ ] 금액에 맞게 로또 수량 조절하여 발행
+
+<br />
+
+- [ ] 예외처리
+
+  - [ ] 사용자가 잘못된 값을 입력할 경우 애플리케이션 종료
+- [ ] 구현 방법
+   - [ ] IllegalArgumentException을 발생시킴
