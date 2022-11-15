@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Validator {
+    private static List<Integer> winningNumbers;
+
     public static int validateMoney(String amount) {
         checkOnlyNumber(amount);
         checkMoneyUnit(amount);
@@ -18,7 +20,17 @@ public class Validator {
         for (int number : numbers) {
             checkRangeOfNumber(number);
         }
+        winningNumbers = numbers;
         return numbers;
+    }
+
+    public static int validateBonus(String number) {
+        int bonusNumber = Integer.valueOf(number);
+        checkOnlyNumber(number);
+        checkOneNumber(number);
+        checkRangeOfNumber(bonusNumber);
+        checkDuplicatedBonusNumber(winningNumbers ,bonusNumber);
+        return bonusNumber;
     }
 
     // 숫자로만 이루어졌는지 확인
@@ -65,5 +77,18 @@ public class Validator {
         }
     }
 
+    // 1개의 숫자로 이루어졌는지 확인
+    public static void checkOneNumber(String number) {
+        if (number.contains(",")) {
+            throw new IllegalArgumentException(ErrorMessage.NO_ONE_NUMBER.printMessage());
+        }
+    }
+
+    // 중복되지 않은 수로 이루어졌는지 확인
+    public static void checkDuplicatedBonusNumber(List<Integer> WinningNumbers, int bonus) {
+        if (WinningNumbers.contains(bonus)) {
+            throw new IllegalArgumentException(ErrorMessage.DUPLICATED_NUMBER.printMessage());
+        }
+    }
 
 }

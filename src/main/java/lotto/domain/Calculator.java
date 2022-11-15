@@ -31,7 +31,10 @@ public class Calculator {
     }
 
     public static int inputBonusNumber() {
-        return 0;
+        LottoView.inputBonusNumber();
+        String inputNumber = Console.readLine();
+
+        return Validator.validateBonus(inputNumber);
     }
 
     // 당첨 번호와 발행 로또 번호 비교

@@ -35,4 +35,10 @@ public class LottoView {
         System.out.println();
         System.out.println(OutputMessage.INPUT_LOTTO_NUMBER.printMessage());
     }
+
+    // 보너스 번호 입력 요청
+    public static void inputBonusNumber() {
+        System.out.println();
+        System.out.println(OutputMessage.INPUT_BONUS_NUMBER.printMessage());
+    }
 }
