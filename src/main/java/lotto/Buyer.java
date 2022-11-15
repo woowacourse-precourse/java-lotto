@@ -12,10 +12,14 @@ public class Buyer {
 
     public void buyLottoTickets() {
         printRequestDesiredAmountMessage();
-        money = Integer.parseInt(Console.readLine());
+        money = validateMoney(Console.readLine());
         validate(money);
         setLottoTickets();
         printLottoInfos(lottoTickets);
+    }
+
+    private int validateMoney(String money) {
+        return Formatter.convertStringToNumber(money);
     }
 
     private void printRequestDesiredAmountMessage() {

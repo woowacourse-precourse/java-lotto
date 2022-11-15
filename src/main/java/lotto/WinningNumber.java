@@ -26,19 +26,6 @@ public class WinningNumber {
         System.out.println(REQUEST_BONUS_NUMBER_MESSAGE);
     }
 
-    private static int convertStringToNumber(String number) {
-        try {
-            int n = Integer.parseInt(number);
-            return n;
-        } catch (Exception e) {
-            throw new IllegalArgumentException(ErrorMessage.PARSING_NUMBER_ERROR.getMessage());
-        }
-    }
-
-    private static boolean isNotValidNumber(int n) {
-        return n < 1 || n > 45;
-    }
-
     private List<Integer> validateWinningNumber(String inputNumbers) {
         List<Integer> winningNumber = new ArrayList<>();
         String[] numbers = inputNumbers.split(",");
@@ -53,19 +40,14 @@ public class WinningNumber {
         return winningNumber;
     }
 
-    private int validateNumber(List<Integer> numbers, String number) {
-        int n = convertStringToNumber(number);
-        if (isNotValidNumber(n)) {
+    private int validateNumber(List<Integer> numbers, int number) {
+        if (Validator.isNotValidNumber(number)) {
             throw new IllegalArgumentException(ErrorMessage.NUMERIC_RANGE_ERROR.getMessage());
         }
-        if (isDuplicatedNumber(numbers, n)) {
+        if (Validator.isDuplicatedNumber(numbers, number)) {
             throw new IllegalArgumentException(ErrorMessage.DUPLICATED_NUMBER_ERROR.getMessage());
         }
-        return n;
-    }
-
-    private boolean isDuplicatedNumber(List<Integer> numbers, int n) {
-        return numbers.contains(n);
+        return number;
     }
 
     public List<Integer> getNumbers() {
