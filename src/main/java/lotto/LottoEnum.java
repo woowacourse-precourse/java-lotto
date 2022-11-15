@@ -2,6 +2,7 @@ package lotto;
 
 public class LottoEnum {
     enum LottoReward {
+        Miss(0, 0, 0),
         FIFTH(5, 3, 5_000),
         FOURTH(4, 4, 50_000),
         THIRD(3, 5, 1_500_000),

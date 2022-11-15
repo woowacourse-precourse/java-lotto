@@ -131,4 +131,37 @@ public class Model {
 
         return result;
     }
+
+    public static int CountIntersectionSize
+            (HashSet<Integer> lottoNumbersSet,
+             HashSet<Integer> targetLottoNumbers) {
+        HashSet<Integer> intersectionLottoNumbers = targetLottoNumbers;
+
+        // 교집합의 개수를 구한다.
+        intersectionLottoNumbers.retainAll(lottoNumbersSet);
+
+        return intersectionLottoNumbers.size();
+    }
+
+    public static Integer AnalyzeRank(int size, HashSet<Integer> targetLottoNumbers, Integer lottoBonusNumber) {
+        if (size == 3) {
+            return 5;
+        }
+        if (size == 4) {
+            return 4;
+        }
+        if (size == 5) {
+            if (targetLottoNumbers.contains(lottoBonusNumber)) {
+                return 2;
+            }
+            if (!targetLottoNumbers.contains(lottoBonusNumber)) {
+                return 3;
+            }
+        }
+        if (size == 6) {
+            return 1;
+        }
+
+        return 0;
+    }
 }

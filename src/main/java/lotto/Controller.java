@@ -39,6 +39,7 @@ public class Controller {
 
     public static LinkedHashMap<Integer, Integer> AnalyzePlayerNumbers
             (List<Integer> numbers, List<List<Integer>> publishedLottoArray) {
+        // 분석 결과를 담는 LinkedHashMap을 만든다.
         LinkedHashMap<Integer, Integer> result = Model.CreateAnalyzedResultLinkedHashMap();
 
         Integer lottoBonusNumber = numbers.get(6);
@@ -47,29 +48,18 @@ public class Controller {
 
         HashSet<Integer> lottoNumbersSet = Model.MakeListToSet(lottoNumbers);
 
+        // 발행된 로또들을 분석한다.
         for (List<Integer> list : publishedLottoArray) {
             HashSet<Integer> targetLottoNumbers = Model.MakeListToSet(list);
-            HashSet<Integer> intersectionLottoNumbers = targetLottoNumbers;
-            intersectionLottoNumbers.retainAll(lottoNumbersSet);
-            int size = intersectionLottoNumbers.size();
 
-            if (size == 3) {
-                result.put(5, result.get(5)+1);
-            }
-            if (size == 4) {
-                result.put(4, result.get(4)+1);
-            }
-            if (size == 5) {
-                if (targetLottoNumbers.contains(lottoBonusNumber)) {
-                    result.put(2, result.get(2)+1);
-                }
-                if (!targetLottoNumbers.contains(lottoBonusNumber)) {
-                    result.put(3, result.get(3)+1);
-                }
-            }
-            if (size == 6) {
-                result.put(1, result.get(1)+1);
-            }
+            // 로또 번호와 일치하는 개수를 구한다.
+            int size = Model.CountIntersectionSize(lottoNumbersSet, targetLottoNumbers);
+
+            // 로또 번호와 일치하는 개수에 따라 등수를 계산한다.
+            Integer rank = Model.AnalyzeRank(size, targetLottoNumbers, lottoBonusNumber);
+
+            // 등수에 따라 결과에 추가한다.
+            result.put(rank, result.get(rank) + 1);
         }
 
         return result;
