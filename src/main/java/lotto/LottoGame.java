@@ -11,9 +11,14 @@ public class LottoGame {
     public int bonusNumber;
     public List<Lotto> issuedLotto;
     public List<Integer> gameResult;
+    public Input input;
+
+    public void LottoGame() {
+        this.input = new Input();
+        this.gameResult = new ArrayList<Integer>(6); // Rank : 1~5
+    }
 
     public void play() {
-        Input input = new Input();
         this.purchaseAmount = input.getPurchaseAmount();
         issueLotto();
         // TODO: 발행된 로또 출력
