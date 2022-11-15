@@ -56,6 +56,10 @@ public class MoneyService {
                 .mapToInt(rank -> rank.getKey().getPrize() * rank.getValue())
                 .sum();
 
-        return sumOfReturn / purchaseAmount;
+        return (sumOfReturn / purchaseAmount) * 100;
+    }
+
+    public double getRateOfReturn() {
+        return moneyRepository.getRateOfReturn();
     }
 }

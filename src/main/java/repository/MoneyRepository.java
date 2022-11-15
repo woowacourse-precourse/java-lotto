@@ -15,4 +15,8 @@ public class MoneyRepository {
     public void saveRateOfReturn(double rateOfReturn) {
         this.rateOfReturn = rateOfReturn;
     }
+
+    public double getRateOfReturn() {
+        return this.rateOfReturn;
+    }
 }
