@@ -78,9 +78,17 @@ public class Controller {
     public void buyLotto(){
         Integer howMany = user.getBudget()/ Game.price;
         view.printBuyLotto(howMany);
-
-
+        viewLottos();
     }
+
+    private void viewLottos(){
+        for (Lotto lotto : user.getLottos()) {
+            List<Integer> numbers = lotto.getNumbers();
+            numbers.sort(Comparator.naturalOrder());
+            view.print(numbers);
+        }
+    }
+
 
 
 }
