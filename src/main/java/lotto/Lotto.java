@@ -20,6 +20,11 @@ public class Lotto {
         this.numbers = lottoCreate.getLottoNumbers();
     }
 
+    public void print(){
+        System.out.println(numbers);
+
+    }
+
 
 
     // TODO: 추가 기능 구현

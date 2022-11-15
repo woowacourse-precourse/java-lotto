@@ -26,7 +26,7 @@ public class Application {
         List<Lotto> lottos = IntStream.range(0, purchaseAmount).boxed()
                 .map((i) -> new Lotto(new LottoCreate())).collect(Collectors.toList());
 
-        lottos.forEach(print());
+        lottos.forEach(Lotto::print);
 
 
         // 당첨 번호 입력 받기 ( include validation )
