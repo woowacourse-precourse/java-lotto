@@ -6,27 +6,29 @@ import java.util.Set;
 
 public class LottoResult {
     private final double money;
-    private final Map<Rank, Integer> resultMap = new HashMap<>(); //생성자로 만들어버리기
-    private double yield;
+    private final double yield;
+    private final Map<Rank, Integer> resultMap;
 
     public LottoResult(UserLottos userLottos, WinningLotto winningLotto) {
         money = userLottos.getUserLottosMoney();
-        setResultMap(userLottos, winningLotto);
-        calculateYield(money);
+        resultMap = setResultMap(userLottos, winningLotto);
+        yield = calculateYield(money);
     }
 
     //당첨 로또 맵만들기 {등수(enum):개수}
-    public void setResultMap(UserLottos userLottos, WinningLotto winningLotto) {
+    public Map<Rank, Integer> setResultMap(UserLottos userLottos, WinningLotto winningLotto) {
+        Map<Rank, Integer> resultMap = new HashMap<>();
         Set<Lotto> lottoSet = userLottos.getUserLottos();
 
         for (Lotto eachLotto : lottoSet) {
             Rank rank = winningLotto.getRankof(eachLotto);
-            addToResultMap(rank);
+            addToResultMap(rank, resultMap);
         }
+        return resultMap;
     }
 
     //당첨 기준별 로또 개수 세기 기능
-    public void addToResultMap(Rank rank) {
+    public void addToResultMap(Rank rank, Map<Rank, Integer> resultMap) {
         if (rank == null) {
             return;
         }
@@ -36,7 +38,7 @@ public class LottoResult {
     }
 
     //수익률 계산하기
-    public void calculateYield(double money) {
+    public double calculateYield(double money) {
         long totalPrize = 0;
         for (Rank rank : Rank.values()) {
             int count = resultMap.getOrDefault(rank, 0);
@@ -44,9 +46,10 @@ public class LottoResult {
             totalPrize += count * prize;
         }
 
-        yield = Math.round((totalPrize / money) * 1000) / 10.0;
+        return Math.round((totalPrize / money) * 1000) / 10.0;
     }
 
+    //getter 모음
     public Map<Rank, Integer> getResultMap() {
         return this.resultMap;
     }
