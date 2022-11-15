@@ -20,7 +20,7 @@ public class Lotto {
             throw new IllegalArgumentException("로또 번호가 6자리가 아닙니다.");
         }
         this.isDuplicateNumberExist(numbers);
-        this.isInRange(numbers, LottoUtil.LottoNumberPromise.MIN_LOTTO_NUM.getValue(),
+        this.isListInRange(numbers, LottoUtil.LottoNumberPromise.MIN_LOTTO_NUM.getValue(),
                 LottoUtil.LottoNumberPromise.MAX_LOTTO_NUM.getValue());
     }
 
@@ -30,7 +30,7 @@ public class Lotto {
             throw new IllegalArgumentException("중복된 숫자가 존재합니다");
     }
 
-    private void isInRange(List<Integer> numbers, int min, int max) {
+    private void isListInRange(List<Integer> numbers, int min, int max) {
         for (int number : numbers) {
             if (!isBetween(min, max, number)) {
                 throw new IllegalArgumentException(String.format("로또 번호는 %d부터 %d 사이의 숫자여야 합니다.", min, max));
