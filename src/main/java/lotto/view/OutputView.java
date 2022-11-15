@@ -2,6 +2,8 @@ package lotto.view;
 
 import lotto.enums.Announcement;
 
+import java.math.BigInteger;
+
 public class OutputView {
     public void printErrorMessage(String message) {
         System.out.println(message);
@@ -14,6 +16,10 @@ public class OutputView {
     }
     public void announceInputBonusNumber() {
         Announcement.INPUT_BONUS_NUMBERS.announce();
+    }
+
+    public void announceNumberOfPurchases(BigInteger numberOfLottos) {
+        Announcement.NUMBER_OF_PURCHASES.announce(numberOfLottos);
     }
 
 }
