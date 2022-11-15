@@ -1,4 +1,4 @@
-package lotto.layer;
+package lotto.layer.view;
 
 import java.text.DecimalFormat;
 import java.util.List;

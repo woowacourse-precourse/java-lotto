@@ -1,4 +1,4 @@
-package lotto.layer;
+package lotto.layer.view;
 
 import camp.nextstep.edu.missionutils.Console;
 
