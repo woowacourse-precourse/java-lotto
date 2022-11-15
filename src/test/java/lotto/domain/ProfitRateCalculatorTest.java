@@ -14,8 +14,7 @@ class ProfitRateCalculatorTest {
 
     @AfterEach
     void clear() {
-        Map<Score, Integer> scoreStore = LottoScore.setInitialSetting();
-        scoreStore.clear();
+        LottoScore.clear();
     }
 
     @DisplayName("수익률 계산 테스트")
