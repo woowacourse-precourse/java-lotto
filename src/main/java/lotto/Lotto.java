@@ -32,9 +32,13 @@ public class Lotto {
     public void compareLotto(List<Integer> numbers, List<Integer>[] lottoNumbers, int bonusNumber) {
         int count;
         boolean bonus;
+        List<Integer> countWinning = List.of(0, 0, 0, 0, 0);
+
         for (int i = 0; i < lottoNumbers.length; i++) {
             for (int j = 0; j < numbers.size(); j++) {
                 count = compareNumbers(numbers.get(j), lottoNumbers[i]);
+                bonus = compareBonusNumber(lottoNumbers[i], bonusNumber);
+                getRanking(countWinning, count, bonus);
             }
         }
     }
@@ -54,5 +58,35 @@ public class Lotto {
             }
         }
         return false;
+    }
+
+    public void getRanking(List<Integer> countWinning, int count, boolean bonus) {
+        int rankingCount;
+        if (count == 6) {
+            rankingCount = countWinning.get(4) + 1;
+            countWinning.set(4, rankingCount);
+            return;
+        }
+        if (count == 5) {
+            if (bonus) {
+                rankingCount = countWinning.get(3) + 1;
+                countWinning.set(3, rankingCount);
+                return;
+            }
+            rankingCount = countWinning.get(2) + 1;
+            countWinning.set(2, rankingCount);
+            return;
+        }
+        if (count == 4) {
+            rankingCount = countWinning.get(1) + 1;
+            countWinning.set(1, rankingCount);
+            return;
+        }
+        if (count == 3) {
+            rankingCount = countWinning.get(0) + 1;
+            countWinning.set(0, rankingCount);
+            return;
+        }
+        return;
     }
 }
