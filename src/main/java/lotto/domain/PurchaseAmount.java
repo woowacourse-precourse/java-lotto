@@ -9,11 +9,19 @@ public class PurchaseAmount {
     }
 
     private void validate(int money) {
-        if (money == 0) {
-            throw new IllegalArgumentException(Error.PURCHASE_AMOUNT_IS_ZERO.getMessage());
-        }
+        isMoneyZero(money);
+        isMoneyDivisibleByLottoPrice(money);
+    }
+
+    private void isMoneyDivisibleByLottoPrice(int money) {
         if (money % Lottery.LOTTO_PRICE != 0) {
             throw new IllegalArgumentException(Error.PURCHASE_AMOUNT_IS_NOT_DIVIDE_LOTTERY_PRICE.getMessage());
+        }
+    }
+
+    private void isMoneyZero(int money) {
+        if (money == 0) {
+            throw new IllegalArgumentException(Error.PURCHASE_AMOUNT_IS_ZERO.getMessage());
         }
     }
 
