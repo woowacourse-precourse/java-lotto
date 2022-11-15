@@ -1,7 +1,7 @@
 package lotto;
 
 import lotto.ui.ErrorMessage;
-import lotto.ui.Ready;
+import lotto.ui.CustomerMessage;
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class Customer {
@@ -9,7 +9,7 @@ public class Customer {
 	private int amount;
 
 	public void inputAmount() {
-		System.out.println(Ready.INSERT_AMOUNT.getValue());
+		System.out.println(CustomerMessage.INSERT_AMOUNT.getMessage());
 		String amount = readLine();
 		try {
 			validateAmount(amount);
