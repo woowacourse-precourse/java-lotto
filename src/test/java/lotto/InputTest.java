@@ -18,6 +18,19 @@ public class InputTest extends NsTest {
         });
     }
 
+    @DisplayName("정수 외에 구입 금액은 예외가 발생한다.")
+    @Test
+    void isDigitPrice() {
+        assertSimpleTest(() -> {
+            runException("10k00e");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+        assertSimpleTest(() -> {
+            runException("9999.9");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
