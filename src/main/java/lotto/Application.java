@@ -90,7 +90,7 @@ public class Application {
             int num =setNum(count,result);
             result.put(count, num);
         }
-        
+
         printResult(result);
         return result;
     }
