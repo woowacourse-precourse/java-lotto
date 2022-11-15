@@ -64,20 +64,13 @@ public class Lottery {
     }
 
     public void addGrade(int winningCount, boolean isBonus) {
-        if (winningCount == 6) {
-            gradeCount.put("FIRST", 1);
-        }
-        if (winningCount == 5 && isBonus) {
-            gradeCount.put("SECOND", 1);
+        for (Grade grade : Grade.values()) {
+            if (grade.getMatchNumber() == winningCount) {
+                gradeCount.put(grade.toString(), 1);
+            }
         }
         if (winningCount == 5 && !isBonus) {
             gradeCount.put("THIRD", 1);
-        }
-        if (winningCount == 4) {
-            gradeCount.put("FOURTH", 1);
-        }
-        if (winningCount == 3) {
-            gradeCount.put("FIFTH", 1);
         }
     }
 
