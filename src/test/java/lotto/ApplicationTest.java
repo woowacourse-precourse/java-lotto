@@ -121,13 +121,14 @@ class ApplicationTest extends NsTest {
         Assertions.assertThat(Application.askBonusNumber()).isEqualTo(10);
     }
 
-    @Test
+    @ParameterizedTest
+    @CsvSource(value = {"2000,4000000000,200000000.0", "8000,5000,62.5"})
     @DisplayName("보너스 번호를 올바르게 입력했을 때 숫자를 반환하는지 확인한다.")
-    void printProfit() {
+    void printProfit(long money, long totalMoney, double profit) {
         ByteArrayOutputStream output = new ByteArrayOutputStream();
         System.setOut(new PrintStream(output));
-        Application.printProfit(2000L, 4000000000L);
-        Assertions.assertThat(output.toString()).isEqualTo("총 수익률은 2000000.0%입니다.\n");
+        Application.printProfit(money, totalMoney);
+        Assertions.assertThat(output.toString()).isEqualTo("총 수익률은 " + profit + "%입니다.\n");
     }
 
 
