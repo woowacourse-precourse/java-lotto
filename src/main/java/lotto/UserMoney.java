@@ -3,6 +3,8 @@ package lotto;
 import static lotto.Application.printErrorMessage;
 
 public class UserMoney {
+
+
     private int userMoney;
     private final int lottoPrice = 1000;
 
@@ -11,7 +13,11 @@ public class UserMoney {
         this.userMoney = changeToInteger(input);
     }
 
-    private int changeToInteger(String input) {
+    public int getUserMoney() {
+        return userMoney;
+    }
+
+    public int changeToInteger(String input) {
         return Integer.parseInt(input);
     }
 
@@ -43,6 +49,9 @@ public class UserMoney {
         }
     }
 
+    public int lottoTicketQuantity(){
+        return userMoney/lottoPrice;
+    }
 
 
 
