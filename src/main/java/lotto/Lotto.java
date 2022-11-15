@@ -1,5 +1,6 @@
 package lotto;
 
+import java.util.HashMap;
 import java.util.List;
 
 public class Lotto {
@@ -16,5 +17,25 @@ public class Lotto {
         }
     }
 
-    // TODO: 추가 기능 구현
+    public Integer checkWin(List<Integer> winNumbers) {
+        HashMap<Integer, Integer> lottoMap = new HashMap<>();
+        Integer count = 0;
+        for (Integer number : numbers) {
+            lottoMap.put(number, 0);
+        }
+        for (Integer winNumber : winNumbers) {
+            if (lottoMap.containsKey(winNumber)) {
+                count += 1;
+            }
+        }
+
+        return count;
+    }
+
+    public boolean checkBonusNumber(Integer bonusNumber) {
+        if (numbers.contains(bonusNumber)) {
+            return true;
+        }
+        return false;
+    }
 }
