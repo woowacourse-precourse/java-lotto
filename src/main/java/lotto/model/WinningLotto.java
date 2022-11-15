@@ -33,14 +33,10 @@ public class WinningLotto {
     }
 
     private void validateBonusNumber(int bonusNumber) {
-        if (winningLotto.hasNumber(bonusNumber)) {
+        if (winningLotto.hasNumber(bonusNumber))
             Error.printException(ErrorType.DUPLICATE);
-            throw new IllegalArgumentException();
-        }
 
-        if (bonusNumber < MIN_LOTTO_NUM || bonusNumber > MAX_LOTTO_NUM) {
+        if (bonusNumber < MIN_LOTTO_NUM || bonusNumber > MAX_LOTTO_NUM)
             Error.printException(ErrorType.RANGE);
-            throw new IllegalArgumentException();
-        }
     }
 }

@@ -7,5 +7,6 @@ public class Error {
 
     public static void printException(ErrorType type) {
         System.out.println(String.format(ERROR, type.getMessage()));
+        throw new IllegalArgumentException();
     }
 }

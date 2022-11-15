@@ -26,14 +26,10 @@ public class LottoStore {
     }
 
     private void validatePrice(int price) {
-        if (price < LOTTO_PRICE) {
+        if (price < LOTTO_PRICE)
             Error.printException(ErrorType.PRICE);
-            throw new IllegalArgumentException();
-        }
 
-        if (price % LOTTO_PRICE != 0) {
+        if (price % LOTTO_PRICE != 0)
             Error.printException(ErrorType.PRICE);
-            throw new IllegalArgumentException();
-        }
     }
 }

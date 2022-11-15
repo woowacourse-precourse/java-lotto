@@ -67,10 +67,8 @@ public class LottoSeller {
     }
 
     private static void validateNumber(String input) {
-        if (!input.matches("^[0-9]*$")) {
+        if (!input.matches("^[0-9]*$"))
             Error.printException(ErrorType.NOT_NUMBER);
-            throw new IllegalArgumentException();
-        }
     }
 
     private static int receiveNumber() {

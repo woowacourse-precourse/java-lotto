@@ -36,20 +36,14 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
-        if (numbers.size() != LOTTO_SIZE) {
+        if (numbers.size() != LOTTO_SIZE)
             Error.printException(ErrorType.SIZE);
-            throw new IllegalArgumentException();
-        }
 
-        if (hasDuplicateNumber(numbers)) {
+        if (hasDuplicateNumber(numbers))
             Error.printException(ErrorType.DUPLICATE);
-            throw new IllegalArgumentException();
-        }
 
-        if (hasOutOfRangeNumber(numbers)) {
+        if (hasOutOfRangeNumber(numbers))
             Error.printException(ErrorType.RANGE);
-            throw new IllegalArgumentException();
-        }
     }
 
     private boolean hasDuplicateNumber(List<Integer> numbers) {
