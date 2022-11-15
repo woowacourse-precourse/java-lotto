@@ -18,7 +18,11 @@ public class Validation {
     }
 
     public void isValidWinningNumbers(List<Integer> numbers) {
-
+        isValidSize(numbers);
+        for(int number: numbers) {
+            isValidNumber(number);
+        }
+        hasDuplicateNumber(numbers);
     }
 
     public void isValidSize(List<Integer> numbers) {
