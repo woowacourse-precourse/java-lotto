@@ -2,6 +2,7 @@ package lotto;
 
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+
 import static org.assertj.core.api.Assertions.*;
 
 class UserTest {
@@ -9,7 +10,7 @@ class UserTest {
     @CsvSource({"abc", "1000a", "2b000", "c3000", "1000O"})
     void validate_notNum(String wrongInput) {
         User user = new User();
-        assertThatThrownBy(() -> user.validate(wrongInput))
+        assertThatThrownBy(() -> user.validateAmount(wrongInput))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("[ERROR] 숫자만 입력하세요");
     }
@@ -18,7 +19,7 @@ class UserTest {
     @CsvSource({"999", "1234", "7750", "10500", "100001"})
     void validate_notThousand(String wrongInput) {
         User user = new User();
-        assertThatThrownBy(() -> user.validate(wrongInput))
+        assertThatThrownBy(() -> user.validateAmount(wrongInput))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("[ERROR] 구매 금액이 1000으로 나누어 떨어지지 않습니다");
     }

@@ -31,11 +31,11 @@ public class User {
 
         System.out.println("구입금액을 입력해 주세요.");
         userInput = Console.readLine();
-        validate(userInput);
+        validateAmount(userInput);
         this.purchasingAmount = Integer.parseInt(userInput);
     }
 
-    void validate(String userInput) throws IllegalArgumentException {
+    void validateAmount(String userInput) throws IllegalArgumentException {
         if (!isNum(userInput)) {
             throw new IllegalArgumentException("[ERROR] 숫자만 입력하세요");
         } else if (Integer.parseInt(userInput) % LOTTO_PRICE != 0) {
@@ -43,7 +43,7 @@ public class User {
         }
     }
 
-    Boolean isNum(String userInput) {
+    static Boolean isNum(String userInput) {
         boolean isNumeric = true;
 
         for (int letterIdx = 0; letterIdx < userInput.length(); letterIdx++) {

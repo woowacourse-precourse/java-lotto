@@ -3,17 +3,16 @@ package lotto;
 import java.util.*;
 
 public class Lotto {
-    static final int LOTTO_NUMBER_LENGTH = 6;
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
-        validate(numbers);
+        validateLottoNumbers(numbers);
         Collections.sort(numbers);
         this.numbers = numbers;
     }
 
-    private void validate(List<Integer> numbers) throws IllegalArgumentException {
-        if (numbers.size() != LOTTO_NUMBER_LENGTH) {
+    static void validateLottoNumbers(List<Integer> numbers) throws IllegalArgumentException {
+        if (numbers.size() != 6) {
             throw new IllegalArgumentException("[ERROR] 6개의 숫자를 입력하세요");
         } else if (hasDuplication(numbers)) {
             throw new IllegalArgumentException("[ERROR] 중복되는 숫자가 있습니다");
@@ -22,17 +21,17 @@ public class Lotto {
         }
     }
 
-    private boolean hasDuplication(List<Integer> numbers) {
+    private static boolean hasDuplication(List<Integer> numbers) {
         Set<Integer> DuplicationCheck = new HashSet<>(numbers);
 
         return numbers.size() != DuplicationCheck.size();
     }
 
-    private boolean outOfNumberRange(List<Integer> numbers) {
+    private static boolean outOfNumberRange(List<Integer> numbers) {
         boolean outOfRange = false;
 
-        for (int index = 0; index < LOTTO_NUMBER_LENGTH; index++) {
-            if (numbers.get(index) < 1 || numbers.get(index) > 45) {
+        for (Integer number : numbers) {
+            if (number < 1 || number > 45) {
                 outOfRange = true;
                 break;
             }
