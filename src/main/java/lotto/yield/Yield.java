@@ -10,6 +10,7 @@ import java.util.List;
 public class Yield {
 
     private static final Integer LOTTO_COST = 1000;
+    private static final Integer PERCENT_INTEGER_VALUE = 37;
 
     private WinningNumberLotto winningNumberLotto;
     private List<Integer> countOfRewards;
@@ -80,8 +81,8 @@ public class Yield {
             Integer index = reward.getIndex();
             printOneYield(prize, matchingNumber, index);
         }
-        String yieldMessage = String.format("총 수익률은 %.1f%c입니다.", yield, 37);
-        System.out.println(yieldMessage);
+        String yieldMessage = String.format("총 수익률은 %.1f%c입니다.", yield, PERCENT_INTEGER_VALUE);
+        System.out.println(yieldMessage + '\n');
     }
 
     private void printOneYield(Integer prize, List<Integer> matchingNumber, Integer index){

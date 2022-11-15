@@ -41,13 +41,16 @@ public class WinningNumberLotto extends Lotto {
 
     private void validateBonusNumber(String input) {
         if (!checkInteger(input)) {
-            throw new IllegalArgumentException("[ERROR] 보너스 번호는 자연수 값을 입력해주세요.");
+            String errorMessage = "[ERROR] 보너스 번호는 자연수 값을 입력해주세요.";
+            throw new IllegalArgumentException(errorMessage);
         }
         if (!checkRange(input)) {
-            throw new IllegalArgumentException("[ERROR] 보너스 번호는 1부터 45의 값을 입력해주세요.");
+            String errorMessage = "[ERROR] 보너스 번호는" + START_NUMBER + "부터 " + END_NUMBER + "의 값을 입력해주세요.";
+            throw new IllegalArgumentException(errorMessage);
         }
         if (!checkDuplicated(input)) {
-            throw new IllegalArgumentException("[ERROR] 보너스 번호는 당첨 번호와 중복되지 않은 값으로 입력해주세요.");
+            String errorMessage = "[ERROR] 보너스 번호는 당첨 번호와 중복되지 않은 값으로 입력해주세요.";
+            throw new IllegalArgumentException(errorMessage);
         }
     }
 

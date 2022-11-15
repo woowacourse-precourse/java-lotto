@@ -8,6 +8,7 @@ import java.util.List;
 
 public class User {
     List<BoughtLotto> lottos;
+    private static final Integer LOTTO_PRICE = 1000;
 
     public User() {
         this.lottos = new ArrayList<>();
@@ -15,7 +16,7 @@ public class User {
 
     public void buyLottos() {
         int money = inputMoney();
-        int countOfBuyLotto = money / 1000;
+        int countOfBuyLotto = money / LOTTO_PRICE;
         for (int i = 0; i < countOfBuyLotto; i++) {
             lottos.add(new BoughtLotto());
         }
@@ -26,13 +27,13 @@ public class User {
             throw new IllegalArgumentException("[ERROR] 금액은 자연수여야 합니다.");
         }
         if (!checkInputNumber(money)) {
-            throw new IllegalArgumentException("[ERROR] 금액은 1000원 단위여야 합니다.");
+            throw new IllegalArgumentException("[ERROR] 금액은 " + LOTTO_PRICE + "원 단위여야 합니다.");
         }
     }
 
     public void printLottos() {
         int countOfLotto = lottos.size();
-        System.out.println(String.valueOf(countOfLotto) + "개를 구매했습니다.");
+        System.out.println(countOfLotto + "개를 구매했습니다.");
         for (BoughtLotto lotto : lottos) {
             printOneLotto(lotto);
         }
@@ -68,6 +69,6 @@ public class User {
     }
 
     private boolean checkInputNumber(String money) {
-        return Integer.parseInt(money) % 1000 == 0;
+        return Integer.parseInt(money) % LOTTO_PRICE == 0;
     }
 }
