@@ -8,7 +8,7 @@ public enum Constant {
 
     final private int value;
 
-    private Constant(int value) {
+    Constant(int value) {
         this.value = value;
     }
 

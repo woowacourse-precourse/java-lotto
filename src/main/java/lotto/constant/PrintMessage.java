@@ -14,7 +14,7 @@ public enum PrintMessage {
 
     private final String message;
 
-    private PrintMessage(String message) {
+    PrintMessage(String message) {
         this.message = message;
     }
 
