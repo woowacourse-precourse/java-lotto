@@ -1,5 +1,7 @@
 package lotto;
 
+
+import java.util.HashSet;
 import java.util.List;
 
 public class Lotto {
@@ -14,7 +16,16 @@ public class Lotto {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException();
         }
+
+        HashSet<Integer> duplicate = new HashSet<>();
+
+        numbers.forEach(number->{
+            if(duplicate.contains(number)){
+                throw new IllegalArgumentException();
+            }
+            duplicate.add(number);
+        });
+
     }
 
-    // TODO: 추가 기능 구현
 }
