@@ -1,6 +1,7 @@
 package lotto.domain;
 
 import lotto.Lotto;
+import lotto.constant.GameConstants;
 import lotto.constant.WinningConstants;
 import lotto.view.OutputView;
 
@@ -8,8 +9,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
-
-import static lotto.constant.GameConstants.LOTTO_PRICE;
 
 public class GameResult {
     private final List<Integer> result;
@@ -62,7 +61,7 @@ public class GameResult {
     }
 
     public void calculateProfitRate(int numberLotto) {
-        int expenditure = LOTTO_PRICE * numberLotto;
+        int expenditure = GameConstants.LOTTO_PRICE * numberLotto;
         int income = Arrays.stream(WinningConstants.values())
                 .map(this::calculatePrize)
                 .mapToInt(i -> i)
