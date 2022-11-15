@@ -1,5 +1,6 @@
 package lotto;
 
+import lotto.util.ErrorUtil;
 import lotto.util.InputUtil;
 
 import java.util.ArrayList;
@@ -23,19 +24,19 @@ public class Player {
 
     public void checkDivideBy1000(int totalPayment) {
         if(totalPayment % 1000 !=0){
-            throw new IllegalArgumentException(ERROR_MESSAGE+ERROR_BY1000);
+            ErrorUtil.throwError(ERROR_MESSAGE+ERROR_BY1000);
         }
     }
 
     private void isInDuplicateInWinning(int number) {
         if (this.winningNumber.getNumbers().contains(number)) {
-            throw new IllegalArgumentException(ERROR_MESSAGE+ERROR_BONUS);
+            ErrorUtil.throwError(ERROR_MESSAGE+ERROR_BONUS);
         }
     }
 
     private void isInRange(int number){
         if(number<1 || number>45){
-            throw new IllegalArgumentException(ERROR_MESSAGE+ERROR_BOUNDARY);
+            ErrorUtil.throwError(ERROR_MESSAGE+ERROR_BOUNDARY);
         }
     }
 

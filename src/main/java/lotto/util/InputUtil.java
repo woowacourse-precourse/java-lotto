@@ -8,8 +8,8 @@ public class InputUtil {
         try {
             return Integer.parseInt(input);
         } catch (IllegalArgumentException e) {
-            System.out.println(ERROR_MESSAGE + ERROR_INTEGER);
+            ErrorUtil.throwError(ERROR_MESSAGE + ERROR_INTEGER);
+            return -1;
         }
-        return -1;
     }
 }
