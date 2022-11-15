@@ -17,10 +17,10 @@ public class LottoGameController {
     }
 
     public void noticeNumberOfTickets(){
-
+        lottoGameView.noticeNumberOfTickets(buyer.getTickets());
     }
     public void createLotteries(){
-
+        lottoGenerator.generateLottoOfBuyer(buyer.getTickets());
     }
     public void noticeLotteries(){
 
