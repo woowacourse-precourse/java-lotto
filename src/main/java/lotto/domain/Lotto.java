@@ -7,9 +7,7 @@ import java.util.Set;
 
 import static lotto.domain.LottoSetting.LOTTO_MAX_NUMBER;
 import static lotto.domain.LottoSetting.LOTTO_MIN_NUMBER;
-import static lotto.exception.LottoExceptionMessage.LOTTO_DUPLICATED_NUMBER;
-import static lotto.exception.LottoExceptionMessage.LOTTO_WRONG_NUMBER_SIZE;
-import static lotto.exception.LottoWinNumberExceptionMessage.LOTTO_NUMBER_OVER_RANGE;
+import static lotto.exception.LottoExceptionMessage.*;
 
 public class Lotto {
     private final List<Integer> numbers;
