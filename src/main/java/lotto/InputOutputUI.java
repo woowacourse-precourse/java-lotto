@@ -1,22 +1,22 @@
 package lotto;
 
 import java.util.*;
+import camp.nextstep.edu.missionutils.*;
 
 class InputOutputUI {
-
     private int money = 0;
 
 
     public void setMoney() {
-        Scanner sc = new Scanner(System.in);
         System.out.print("로또 구입 금액을 입력하세요 : ");
-        money = sc.nextInt();
-        validate(money);
+        int number=Integer.valueOf(Console.readLine());
+        validate(number);
+        money = number;
     }
 
     public int getMoney() {
-        System.out.println(money);
-        return money;
+        System.out.println(money/Constants.DIV_MONEY);
+        return money/Constants.DIV_MONEY;
     }
 
     void validate(int number) {
