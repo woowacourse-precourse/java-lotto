@@ -1,5 +1,7 @@
 package lotto.view.input;
 
+import static lotto.domain.lotto.lotto.LottoInfo.*;
+
 import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.List;
@@ -7,9 +9,6 @@ import lotto.utils.message.ErrorMessage;
 
 public class InputImpl implements Input {
 
-    private static final int MIN_PAYMENT_AMOUNT = 1000;
-    private static final int MIN_LOTTO_NUMBER = 1;
-    private static final int MAX_LOTTO_NUMBER = 45;
     private static final String PAYMENT_AMOUNT_REGEX = "^[0-9]*$";
 
     @Override
@@ -47,13 +46,13 @@ public class InputImpl implements Input {
     }
 
     private void validateIsOverMinimumPaymentAmount(int paymentAmount) throws IllegalArgumentException {
-        if (paymentAmount < MIN_PAYMENT_AMOUNT) {
+        if (paymentAmount < LOTTO_PRICE) {
             throw new IllegalArgumentException(ErrorMessage.NOT_OVER_MINIMUM_PAYMENT_AMOUNT);
         }
     }
 
     private void validateIsAllowedPaymentAmount(int paymentAmount) throws IllegalArgumentException{
-        if (paymentAmount % MIN_PAYMENT_AMOUNT != 0) {
+        if (paymentAmount % LOTTO_PRICE != 0) {
             throw new IllegalArgumentException(ErrorMessage.UNSATISFIED_PAYMENT_AMOUNT);
         }
     }
