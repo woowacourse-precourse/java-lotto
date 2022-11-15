@@ -14,6 +14,12 @@ public class User {
     private int quantity;
     private int earnTotalMoney;
 
+    public User(int price) {
+        this.price = price;
+        this.quantity = price / 1000;
+        this.earnTotalMoney = 0;
+    }
+
 
 
 
