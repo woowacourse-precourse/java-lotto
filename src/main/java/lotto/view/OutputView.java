@@ -19,7 +19,7 @@ public class OutputView {
 
     public static void printGeneratedLottoTickets(LottoTickets lottoTickets) {
         for (Lotto lotto : lottoTickets.getLottoTickets()) {
-            System.out.println(lotto.getNumbers());
+            System.out.println(lotto);
         }
     }
 
