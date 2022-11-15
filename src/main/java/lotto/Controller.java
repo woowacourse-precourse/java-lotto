@@ -5,5 +5,6 @@ public class Controller {
         Domain domain = new Domain();
         domain.buyTicket();
         domain.receiveWinningNumber();
+        domain.printPrize();
     }
 }
