@@ -52,6 +52,21 @@ public class InputView {
         return inputNumbers.contains(Constant.DELIMITER_FORMAT);
     }
 
+    public static int getBonusNumber() {
+        System.out.println(Constant.NEW_LINE);
+        System.out.println(MESSAGE_FOR_BONUS_NUMBER);
+        return scanBonusNumber();
+    }
+
+    private static int scanBonusNumber() {
+        String inputBonusNumber = removeWhiteSpaces(Console.readLine());
+        try {
+            return Integer.parseInt(inputBonusNumber);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException(ERROR_INVALID_NUMBER_FORMAT);
+        }
+    }
+
     public static String removeWhiteSpaces(String inputString) {
         return inputString.replaceAll(REMOVE_WHITESPACES_REGEX, "");
     }
