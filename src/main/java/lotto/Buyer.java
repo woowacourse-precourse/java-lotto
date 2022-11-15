@@ -9,6 +9,7 @@ import java.util.Collections;
 import java.util.List;
 
 import static lotto.Utils.printResult;
+import static lotto.Utils.printYield;
 
 public class Buyer {
 
@@ -54,6 +55,8 @@ public class Buyer {
         }
         printResult(results);
         calReward();
+        double yield = calYield();
+        printYield(yield);
     }
 
     private int compare(Winning winning, Lotto lotto){
@@ -97,8 +100,8 @@ public class Buyer {
         reward += Reward.FIFTH.getReward() * results.get(5);
     }
 
-    private void calYield(){
-
+    private double calYield(){
+        return (double) reward/purchase*100;
     };
 
 }

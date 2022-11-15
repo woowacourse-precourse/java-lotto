@@ -59,9 +59,8 @@ public class Utils {
         System.out.println(String.format("6개 일치 (2,000,000,000원) - %d개", results.get(1)));
     }
 
-    private int printYield() {
-        return 100;
+    public static void printYield(double yield) {
+        System.out.println(String.format("총 수익률은 %.1f%%입니다.", yield));
     }
-
 
 }
