@@ -1,9 +1,9 @@
 package lotto.object;
 
-import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public class Lotto {
     private final List<Integer> numbers;
@@ -11,8 +11,15 @@ public class Lotto {
     public Lotto(List<Integer> numbers) {
         validate(numbers);
 
-        Collections.sort(numbers);
-        this.numbers = numbers;
+        this.numbers = numbers.stream().sorted().collect(Collectors.toList());
+    }
+
+    public Integer getNumber(Integer index) {
+        return numbers.get(index);
+    }
+
+    public List<Integer> getNumbers() {
+        return numbers;
     }
 
     private void validate(List<Integer> numbers) {
