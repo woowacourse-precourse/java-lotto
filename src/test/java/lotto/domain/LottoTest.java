@@ -16,15 +16,15 @@ class LottoTest {
     @MethodSource("invalidLottoNumber")
     @ParameterizedTest(name = "{0} : {1}")
     void createLottoByOverSize(String situation, List<Integer> randomLottoNumber) {
-        List<Number> numbers = convertToNumbers(randomLottoNumber);
+        List<LottoNumber> numbers = convertToNumbers(randomLottoNumber);
 
         assertThatThrownBy(() -> new Lotto(numbers))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
-    private List<Number> convertToNumbers(List<Integer> randomLottoNumber) {
+    private List<LottoNumber> convertToNumbers(List<Integer> randomLottoNumber) {
         return randomLottoNumber.stream()
-                .map(Number::new)
+                .map(LottoNumber::new)
                 .collect(Collectors.toList());
     }
 

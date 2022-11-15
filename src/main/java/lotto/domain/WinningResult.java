@@ -5,10 +5,10 @@ import java.util.Map;
 
 public class WinningResult {
     private final Lotto winningLotto;
-    private final Number bonusNumber;
+    private final LottoNumber bonusNumber;
     private final Map<Rank, Integer> results = new EnumMap<Rank, Integer>(Rank.class);
 
-    public WinningResult(Lotto winningLotto, Number bonusNumber) {
+    public WinningResult(Lotto winningLotto, LottoNumber bonusNumber) {
         validateBonusDuplicate(winningLotto, bonusNumber);
         initRanks();
         this.winningLotto = winningLotto;
@@ -21,7 +21,7 @@ public class WinningResult {
         }
     }
 
-    private void validateBonusDuplicate(Lotto winningLotto, Number bonusNumber) {
+    private void validateBonusDuplicate(Lotto winningLotto, LottoNumber bonusNumber) {
         if (winningLotto.getNumbers().contains(bonusNumber)) {
             throw new IllegalArgumentException("당첨 번호와 보너스 번호는 중복될 수 없습니다.");
         }

@@ -1,7 +1,7 @@
 package lotto;
 
 import lotto.domain.*;
-import lotto.domain.Number;
+import lotto.domain.LottoNumber;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -30,7 +30,7 @@ public class LottoService {
 
     public void setWinningNumber(String inputWinningNumber, String inputBonusNumber) {
         Lotto winningNumber = new Lotto(convertToNumbers(inputWinningNumber));
-        Number bonusNumber = convertToNumber(inputBonusNumber);
+        LottoNumber bonusNumber = convertToNumber(inputBonusNumber);
 
         winningResult = new WinningResult(winningNumber, bonusNumber);
     }
@@ -58,7 +58,7 @@ public class LottoService {
         return totalWinningAmount / lottoMoney.getMoney();
     }
 
-    private List<Number> convertToNumbers(String input) {
+    private List<LottoNumber> convertToNumbers(String input) {
         return splitByComma(input)
                 .map(LottoService::convertToNumber)
                 .collect(Collectors.toList());
@@ -72,9 +72,9 @@ public class LottoService {
         return Arrays.stream(splitNumbers);
     }
 
-    private static Number convertToNumber(String inputBonusNumber) {
+    private static LottoNumber convertToNumber(String inputBonusNumber) {
         try {
-            return new Number(Integer.parseInt(inputBonusNumber));
+            return new LottoNumber(Integer.parseInt(inputBonusNumber));
         } catch (NumberFormatException ex) {
             throw new IllegalArgumentException("올바른 숫자 형식으로 입력해 주세요.");
         }
