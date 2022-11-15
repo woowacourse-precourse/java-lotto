@@ -20,6 +20,21 @@ public enum Rank {
         this.matchMoney = matchMoney;
     }
 
+    public static Rank valueOf(Lotto lotto, int bonusNumber, int matchCount) {
+        if (matchCount < MIN_MATCH_NUMBER) {
+            return NONE;
+        }
+        if (SECOND.matchCount == matchCount && isMatchedBonusNumber(lotto, bonusNumber)) {
+            return SECOND;
+        }
+        for (Rank value : values()) {
+            if (!value.equals(SECOND) && value.matchCount == matchCount) {
+                return value;
+            }
+        }
+        return NONE;
+    }
+
     public static boolean isMatchedBonusNumber(Lotto lotto, int bonusNumber) {
         List<Integer> lottoNumbers = lotto.getLottoNumbers();
         return lottoNumbers.contains(bonusNumber);
