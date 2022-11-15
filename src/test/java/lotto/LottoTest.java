@@ -106,8 +106,7 @@ class LottoTest {
     @Test
     void inputLottoNumber() {
         Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
-        Validator validator = new Validator();
-        InputValues inputValues = new InputValues(validator);
+        InputValues inputValues = new InputValues();
         assertThat(inputValues.inputLottoNumber("1,2,3,4,5,6")).isEqualTo(List.of(1, 2, 3, 4, 5, 6));
         assertThatThrownBy(() -> inputValues.inputLottoNumber("1,2,3,4,5,k")).isInstanceOf(IllegalArgumentException.class);
     }

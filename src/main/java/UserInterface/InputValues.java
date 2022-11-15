@@ -9,11 +9,7 @@ import java.util.StringTokenizer;
 
 public class InputValues {
 
-    private final Validator validator;
-
-    public InputValues(Validator validator) {
-        this.validator = validator;
-    }
+    private final Validator validator = new Validator();
 
     public int inputTotalPayment() {
         String payment = Console.readLine();
