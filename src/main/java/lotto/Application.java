@@ -25,6 +25,9 @@ public class Application {
         List<Integer> lottoNums = getLottoNums();
         Lotto lottoNumber = new Lotto(lottoNums);
         // 보너스 번호 입력
+        System.out.println("보너스 번호를 입력해 주세요");
+        int bonusNumber = Integer.parseInt(Console.readLine());
+
         // 당첨 확인
         // 당첨 통계 출력
 
