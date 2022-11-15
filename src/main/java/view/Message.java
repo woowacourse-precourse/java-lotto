@@ -7,10 +7,10 @@ public enum Message {
     FIVE("5개 일치 (1,500,000원) - "),
     FIVE_BONUS("5개 일치, 보너스 볼 일치 (30,000,000원) - "),
     SIX("6개 일치 (2,000,000,000원) - "),
-    START("구입금액을 입력해 주세요."),
+    PURCHASE_AMOUNT("구입금액을 입력해 주세요."),
     BUY("개를 구매했습니다."),
-    INPUT("당첨 번호를 입력해 주세요. "),
-    BONUS("보너스 번호를 입력해 주세요. "),
+    WINNING_NUMBER("당첨 번호를 입력해 주세요. "),
+    BONUS_NUMBER("보너스 번호를 입력해 주세요. "),
     STATISTICS("당첨 통계 "),
     YIELD("총 수익률은 ");
 
@@ -24,7 +24,6 @@ public enum Message {
     public String getMessage() {
         return message;
     }
-
 
 
 }
