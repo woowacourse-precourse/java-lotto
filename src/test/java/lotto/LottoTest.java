@@ -6,6 +6,8 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 class LottoTest {
     @DisplayName("로또 번호의 개수가 6개가 넘어가면 예외가 발생한다.")
@@ -43,5 +45,18 @@ class LottoTest {
     void duplicatedBonusNumber() {
         Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
         assertThatThrownBy(() -> lotto.isDuplicateBonusNumber(6)).isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("등수 확인")
+    @ParameterizedTest(name = "{displayName} : {6}")
+    @CsvSource({"1, 2, 3, 4, 5, 6, 1", "1, 2, 3, 4, 5, 7, 2", "1, 2, 3, 4, 5, 8, 3", "1, 2, 3, 4, 8, 9, 4",
+            "1, 2, 3, 8, 9, 10, 5", "1, 2, 11, 12, 13, 14, 0", "1, 11, 12, 13, 14, 15, 0", "11, 12, 13, 14, 15, 16, 0"})
+    void checkRanking(int n1, int n2, int n3, int n4, int n5, int n6, int expected) {
+        List<Integer> luckyNumbers = List.of(1, 2, 3, 4, 5, 6);
+        List<Integer> integers = List.of(n1, n2, n3, n4, n5, n6);
+        Lotto lucky = new Lotto(luckyNumbers);
+        Lotto target = new Lotto(integers);
+        int actual = lucky.getRanking(target, 7);
+        assertThat(actual).isEqualTo(expected);
     }
 }
