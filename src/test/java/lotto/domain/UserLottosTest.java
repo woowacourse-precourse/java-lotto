@@ -1,6 +1,6 @@
 package lotto.domain;
 
-import lotto.validator.Validator;
+import lotto.Validator;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
