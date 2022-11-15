@@ -1,7 +1,5 @@
 package lotto.enums;
 
-import java.util.List;
-
 public enum Message {
 
     ERROR_NOT_NUMBER("[ERROR] 숫자로 입력받아야 합니다."),

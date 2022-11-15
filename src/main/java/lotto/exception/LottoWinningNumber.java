@@ -6,8 +6,6 @@ import java.util.List;
 public class LottoWinningNumber extends Lotto {
     private final List<Integer> winningNumbers;
     private final int bonusNumber;
-    private final int LOTTO_START_NUMBER = 1;
-    private final int LOTTO_END_NUMBER = 45;
 
     public LottoWinningNumber(List<Integer> winningNumbers, int bonusNumber) {
         super(winningNumbers);
@@ -30,7 +28,7 @@ public class LottoWinningNumber extends Lotto {
     }
 
     private void validateBonusNumbersRange(int bonusNumber) {
-        if (LOTTO_START_NUMBER > bonusNumber || bonusNumber > LOTTO_END_NUMBER) {
+        if (ConstantValue.LOTTO_START_NUMBER > bonusNumber || bonusNumber > ConstantValue.LOTTO_END_NUMBER) {
             throw new IllegalArgumentException(Message.ERROR_NUMBER_RANGE.getMessage());
         }
     }

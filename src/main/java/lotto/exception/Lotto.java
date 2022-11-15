@@ -7,8 +7,6 @@ import java.util.stream.Collectors;
 
 public class Lotto {
     private final List<Integer> numbers;
-    private final int LOTTO_START_NUMBER = 1;
-    private final int LOTTO_END_NUMBER = 45;
 
     public Lotto(List<Integer> numbers) {
         validateNumber(numbers);
@@ -41,7 +39,7 @@ public class Lotto {
 
     private void validateNumbersRange(List<Integer> numbers) {
         for (int number : numbers) {
-            if (LOTTO_START_NUMBER > number || number > LOTTO_END_NUMBER) {
+            if (ConstantValue.LOTTO_START_NUMBER > number || number > ConstantValue.LOTTO_END_NUMBER) {
                 throw new IllegalArgumentException(Message.ERROR_NUMBER_RANGE.getMessage());
             }
         }
