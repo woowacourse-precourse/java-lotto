@@ -10,7 +10,6 @@ public class Application {
     public static ConsoleUserInput in = new ConsoleUserInput();
     public static ConsoleUserOutput out = new ConsoleUserOutput();
     public static void main(String[] args) {
-        //완료
         int moneyForLottos;
         int theNumberOfTickets;
         int bonusNumber;
