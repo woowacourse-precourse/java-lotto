@@ -12,7 +12,9 @@ public class InputView {
 
     public int inputMoney() {
         String input = Console.readLine();
-        validation.validateMoneyInput(input);
+        while (!validation.isValidMoney(input)) {
+            input = Console.readLine();
+        }
         return Integer.parseInt(input);
     }
 
