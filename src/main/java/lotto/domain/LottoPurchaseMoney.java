@@ -1,11 +1,10 @@
 package lotto.domain;
 
+import static lotto.constants.ErrorConstant.ERR_MONEY_MORE_THAN_A_LOTTO_PRICE;
+import static lotto.constants.ErrorConstant.ERR_MONEY_UNFIT_A_LOTTO_PRICE;
 import static lotto.constants.LottoConstant.A_LOTTO_PRICE;
 
 public class LottoPurchaseMoney {
-
-    private static final String ERR_MONEY_MORE_THAN_A_LOTTO_PRICE = "[ERROR] 로또 구매 금액은 최소 1000원 이상이어야 합니다. ";
-    private static final String ERR_MONEY_UNFIT_A_LOTTO_PRICE = "[ERROR] 로또 구매 금액은 1000원 단위여야 합니다. ";
 
     private int lottoPurchaseMoney;
 
