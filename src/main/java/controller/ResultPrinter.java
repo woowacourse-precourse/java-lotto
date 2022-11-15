@@ -1,6 +1,8 @@
 package controller;
 
 import data.PrizeData;
+import data.OutputData;
+import data.NumericData;
 import java.util.List;
 
 public class ResultPrinter {
@@ -10,17 +12,18 @@ public class ResultPrinter {
         matchResult = data;
     }
     public void printResult(int lottoAmount){
-        int prizeMoney = 0;
         countPrize();
-        System.out.println("당첨 통계");
-        System.out.println("---");
-        printFifthPrize();
-        printFourthPrize();
-        printThirdPrize();
-        printSecondPrize();
-        printFirstPrize();
+        System.out.println(OutputData.WINNING_RESULT.getOutputData());
+        System.out.println(OutputData.LINE.getOutputData());
+        playPrizeArray();
+        printProfitRate(lottoAmount);
     }
 
+    public void playPrizeArray(){
+        for(int outputCount = 0; outputCount < prizeCount.length; outputCount++){
+            printPrize(outputCount, prizeCount[outputCount]);
+        }
+    }
     public void countPrize(){
         for(MatchResult result : matchResult){
             int winningCount = result.getWinningNumberCount();
@@ -32,6 +35,37 @@ public class ResultPrinter {
     }
 
     public void printPrize(int index, int amount){
+        System.out.print(PrizeData.getWinningCount(index));
+        System.out.print(OutputData.NUMBER_COUNT.getOutputData());
 
+        if(index == PrizeData.SECOND.getIndex()){
+            System.out.print(OutputData.SECOND_PRIZE.getOutputData());
+        }
+        System.out.print(" ");
+        System.out.print(OutputData.OPEN_BRACKET.getOutputData());
+        System.out.print(PrizeData.getPrizeOutput(index));
+        System.out.print(OutputData.CLOSE_BRACKET.getOutputData());
+        System.out.print(amount);
+        System.out.print(OutputData.COUNT.getOutputData());
+
+        System.out.println();
+    }
+
+    public void printProfitRate(int lottoAmount){
+        int money = 0;
+        int originalMoney = lottoAmount * NumericData.LOTTO_PRICE.getNumericValue();
+        double profitRate;
+        System.out.print(OutputData.OPEN_PROFIT_RATE.getOutputData());
+        for(int index = 0; index < prizeCount.length; index++ ){
+            System.out.println("index: " + prizeCount[index]);
+            System.out.println("prizeData : " + PrizeData.getPrizeMoney(index));
+            money = money + (prizeCount[index] * PrizeData.getPrizeMoney(index));
+        }
+        profitRate = (double)money / originalMoney * 100;
+        System.out.println("money: " + money);
+        System.out.println("Original Money: " + originalMoney);
+        System.out.print(OutputData.OPEN_PROFIT_RATE.getOutputData());
+        System.out.print(profitRate);
+        System.out.println(OutputData.CLOSE_PROFIT_RATE.getOutputData());
     }
 }

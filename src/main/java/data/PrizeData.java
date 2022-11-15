@@ -1,30 +1,28 @@
 package data;
 
 public enum PrizeData {
-    FIFTH(5000, 3, 0),
-    FOURTH(50000, 4, 1),
-    THIRD(1500000, 5, 2),
-    SECOND(30000000, 5, 3),
-    FIRST(2000000000, 6, 4);
+    FIFTH(5000, 3, 0, "5,000원"),
+    FOURTH(50000, 4, 1, "50,000원"),
+    THIRD(1500000, 5, 2, "1,500,000원"),
+    SECOND(30000000, 5, 3, "30,000,000원"),
+    FIRST(2000000000, 6, 4, "2,000,000,000원");
 
     private final int prizeMoney;
     private final int winningCount;
     private final int index;
+    private final String prizeOutput;
 
-    PrizeData(int prizeMoney, int winningCount, int index){
+    PrizeData(int prizeMoney, int winningCount, int index, String prizeOutput){
         this.prizeMoney = prizeMoney;
         this.winningCount = winningCount;
         this.index = index;
+        this.prizeOutput = prizeOutput;
     }
 
-    /**
-     * 열거형에 등록된 상금 리턴
-     * @return 상금
-     */
-    public int getPrizeMoney(){
-        return prizeMoney;
-    }
 
+    public int getIndex(){
+        return index;
+    }
     /**
      * 당첨숫자랑 겹치는 갯수가 상금 조건과 일치하는지 확인
      * @param numberCount 당첨숫자와 겹치는 갯수
@@ -59,5 +57,23 @@ public enum PrizeData {
             }
         }
         return 0;
+    }
+
+    public static int getWinningCount(int index){
+        for(PrizeData data : PrizeData.values()){
+            if(index == data.index){
+                return data.winningCount;
+            }
+        }
+        return -1;
+    }
+
+    public static String getPrizeOutput(int index){
+        for(PrizeData data : PrizeData.values()){
+            if(index == data.index){
+                return data.prizeOutput;
+            }
+        }
+        return "";
     }
 }

@@ -19,10 +19,15 @@ public class LottoMaker {
     }
 
     public LottoMaker(String money) {
-        this.money = Integer.parseInt(money);
-        validate(this.money);
-        System.out.print(this.money / LOTTO_PRICE);
-        InputGuideData.BUY_LOTTO.printData();
+        try{
+            this.money = Integer.parseInt(money);
+            validate(this.money);
+            System.out.print(this.money / LOTTO_PRICE);
+            InputGuideData.BUY_LOTTO.printData();
+        }
+        catch (Exception e){
+            throw new IllegalArgumentException();
+        }
     }
 
     /**
