@@ -3,7 +3,6 @@ package lotto.model;
 import java.util.HashMap;
 
 public class Result {
-
     private static final int DEFAULT_PRIZE_COUNT = 0;
     private static final int SECOND_OR_THIRD_MATCHING_COUNT = 5;
 

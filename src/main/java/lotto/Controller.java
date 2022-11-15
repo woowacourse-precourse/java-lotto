@@ -11,7 +11,6 @@ import lotto.view.output.BuyListView;
 import lotto.view.output.SummaryView;
 
 public class Controller {
-
     public static LottoTickets createLottoTickets() {
         int inputAmount = InputView.getPurchaseAmount();
         Purchase purchase = new Purchase(inputAmount);

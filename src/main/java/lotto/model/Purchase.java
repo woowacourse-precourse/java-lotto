@@ -1,7 +1,6 @@
 package lotto.model;
 
 public class Purchase {
-
     private static final int PRICE_PER_AMOUNT = 1_000;
 
     private final int amount;

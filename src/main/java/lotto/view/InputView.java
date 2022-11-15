@@ -6,7 +6,6 @@ import java.util.List;
 import lotto.utils.Validator;
 
 public class InputView {
-
     public static int getPurchaseAmount() {
         String input = askPurchaseAmount();
         validatePurchaseAmount(input);

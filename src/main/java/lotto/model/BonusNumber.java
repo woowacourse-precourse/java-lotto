@@ -3,7 +3,6 @@ package lotto.model;
 import java.util.List;
 
 public class BonusNumber {
-
     private static final int MIN_NUMBER_RANGE = 1;
     private static final int MAX_NUMBER_RANGE = 45;
     private final int bonusNumber;

@@ -5,7 +5,6 @@ import lotto.model.Prize;
 import lotto.model.Result;
 
 public class SummaryView {
-
     // TODO 매개변수 너무 많음. 효율화 고민.
     public static void showResult(Result result) {
         System.out.printf("%n당첨 통계%n");
