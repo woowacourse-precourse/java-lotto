@@ -29,9 +29,9 @@ public class InputView {
         String input = Console.readLine();
 
         List<Integer> playerNumbers = stringToIntList(input);
-        validatePlayNumbersCount(playerNumbers);
-        validatePlayNumbersRange(playerNumbers);
-        validatePlayNumbersDuplication(playerNumbers);
+        validateLottoNumbersCount(playerNumbers);
+        validateLottoNumbersRange(playerNumbers);
+        validateLottoNumbersDuplication(playerNumbers);
 
         return playerNumbers;
     }
@@ -41,7 +41,7 @@ public class InputView {
         String input = Console.readLine();
 
         int bonusNumber = stringToInt(input);
-        validatePlayerNumberRange(bonusNumber);
+        validateLottoNumberRange(bonusNumber);
         validateBonusNumberDuplicationInPlayerNumbers(bonusNumber, playerNumbers);
 
         return bonusNumber;

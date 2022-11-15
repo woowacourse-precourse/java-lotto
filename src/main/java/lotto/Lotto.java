@@ -1,8 +1,8 @@
 package lotto;
 
-import static lotto.util.Validator.validatePlayNumbersCount;
-import static lotto.util.Validator.validatePlayNumbersDuplication;
-import static lotto.util.Validator.validatePlayNumbersRange;
+import static lotto.util.Validator.validateLottoNumbersCount;
+import static lotto.util.Validator.validateLottoNumbersDuplication;
+import static lotto.util.Validator.validateLottoNumbersRange;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -20,16 +20,16 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
-        validatePlayNumbersCount(numbers);
+        validateLottoNumbersCount(numbers);
     }
 
     // TODO: 추가 기능 구현
     private void validateRange(List<Integer> numbers) {
-        validatePlayNumbersRange(numbers);
+        validateLottoNumbersRange(numbers);
     }
 
     private void validateDuplication(List<Integer> numbers) {
-        validatePlayNumbersDuplication(numbers);
+        validateLottoNumbersDuplication(numbers);
     }
 
     private List<Integer> ascendingOrder(List<Integer> numbers) {
