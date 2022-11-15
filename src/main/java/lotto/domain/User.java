@@ -92,7 +92,7 @@ public class User {
         return Console.readLine();
     }
 
-    private int setCount(int price) {
+    public int setCount(int price) {
         return price / 1000;
     }
 

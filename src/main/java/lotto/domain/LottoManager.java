@@ -78,7 +78,7 @@ public class LottoManager {
         }
     }
 
-    private void checkDuplication(List<Integer> luckyNumbers, int bonusNumber) {
+    public void checkDuplication(List<Integer> luckyNumbers, int bonusNumber) {
         checkRange(bonusNumber);
         if (luckyNumbers.contains(bonusNumber)) {
             throw new IllegalArgumentException(ErrorMessage.DUPLICATE_ERROR.getMessage());
