@@ -20,7 +20,11 @@ public class Application {
         int lottoNum = main.checkPrice(price);
 
         System.out.println(lottoNum + Message.LOTTOSIZE_MESSAGE);
-        List<List<Integer>> myLottoArr = main.lottoArr(lottoNum);
+        List<List<Integer>> myLottoArr = new ArrayList<>();
+        for (int i = 0; i < lottoNum; i++) {
+            myLottoArr.add(main.lottoArr());
+            System.out.println(myLottoArr.get(i));
+        }
 
         System.out.println(Message.WINNINGNUM_MESSAGE);
         List numbers = main.winningNums(main.userInputNumber());
@@ -57,16 +61,26 @@ public class Application {
         return price / 1000;
     }
 
-    public List<List<Integer>> lottoArr(int lottoNum) {
-        List<Integer> myLotto;
-        List<List<Integer>> myLottoArr = new ArrayList<>();
-        for (int i = 0; i < lottoNum; i++) {
-            myLotto = Randoms.pickUniqueNumbersInRange(1, 45, 6);
-            Collections.sort(myLotto);
-            myLottoArr.add(myLotto);
-            System.out.println(myLottoArr.get(i));
-        }
-        return myLottoArr;
+//    public List<List<Integer>> lottoArr(int lottoNum) {
+//        List<Integer> myLotto;
+//        List<List<Integer>> myLottoArr = new ArrayList<>();
+//        for (int i = 0; i < lottoNum; i++) {
+//            myLotto = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+////            Collections.sort(myLotto);
+//            myLottoArr.add(myLotto);
+//        }
+//        for (int i = 0; i < myLottoArr.size(); i++) {
+//            Collections.sort(myLottoArr.get(i));
+//            System.out.println(myLottoArr.get(i));
+//        }
+//        return myLottoArr;
+//    }
+
+    public List<Integer> lottoArr(){
+        List<Integer> myLotto = new ArrayList<>();
+        myLotto  = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+//        Collections.sort(myLotto);
+        return myLotto;
     }
     public List<Integer> winningNums(String userInputNumber){
         List<Integer> winningLottoNums = new ArrayList<>();
