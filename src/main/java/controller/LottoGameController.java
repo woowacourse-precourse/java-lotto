@@ -25,5 +25,6 @@ public class LottoGameController {
         WinningStatistics winningStatistics = new WinningStatistics(randomNumbersContainer,winningNumber,bonusNumber);
         LottoResult lottoResult = new LottoResult(winningStatistics.getWinningStatistics(randomNumbersContainer,winningNumber,bonusNumber),
                 purchasingMoney);
+        String winningResult = lottoResult.getWinningResult();
     }
 }
