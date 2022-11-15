@@ -14,12 +14,18 @@ public class Winning {
     public int checkWinning(List<Integer> userNumbers) {
         if(lottoNumbers.containsAll(userNumbers)) {
             return rank = 1; // 6개 일치
-        } else if(lottoNumbers.contains(userNumbers)) {
-            rank = compareNumbers(userNumbers);
+        }
 
-            if(rank > 2) {
-                return rank;
-            }
+        rank = compareNumbers(userNumbers);
+
+        if(rank == 2) {
+            return 2;
+        } else if(rank == 5) {
+            return 3;
+        } else if(rank == 4) {
+            return 4;
+        } else if (rank == 3) {
+            return 5;
         }
 
         return 0;
