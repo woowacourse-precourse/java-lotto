@@ -1,11 +1,16 @@
 package lotto;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Manager {
 
 	public static LottoMachine lottoMachine;
+	public static Lotto lotto;
 
 	public void init(){
 		showGeneratedLottos(buyLottos(userInput()));
+		inputWinningNumbers(userInput());
 	}
 
 	public static int buyLottos(String userInputMoney){
@@ -29,5 +34,24 @@ public class Manager {
 		lottoMachine = LottoMachine.generateLottos(totalBought);
 		lottoMachine.printLottos();
 	}
+
+	public static void inputWinningNumbers(String winningNumbers){
+		printWinningNumbersInput();
+		Validate.initialInputCheck(winningNumbers);
+		lotto = new Lotto(formatting(winningNumbers));
+	}
+
+	public static void printWinningNumbersInput(){
+		System.out.println(Message.INPUT_WINNING_NUMBER.getMessage());
+	}
+
+	public static List<Integer> formatting(String winningNumbers){
+		List<Integer> numbers = new ArrayList<>();
+		for (String number: winningNumbers.split(",")){
+			numbers.add(Integer.parseInt(number));
+		}
+		return numbers;
+	}
+
 
 }
