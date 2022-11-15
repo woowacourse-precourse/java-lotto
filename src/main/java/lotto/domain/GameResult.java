@@ -26,6 +26,22 @@ public class GameResult {
         }
     }
 
+    public long getRankMoney() {
+        List<Ranking> lottoRankings = Ranking.generateRankings();
+        long rankMoney = 0;
+
+        for (Ranking ranking : lottoRankings) {
+            if (gameResult.containsKey(ranking)) {
+                int money = ranking.getMoney();
+                int count = gameResult.get(ranking);
+
+                rankMoney += (long) money * count;
+            }
+        }
+
+        return rankMoney;
+    }
+
     public Map<Ranking, Integer> getGameResult() {
         return gameResult;
     }
