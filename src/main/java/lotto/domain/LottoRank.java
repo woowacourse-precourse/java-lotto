@@ -6,7 +6,7 @@ public enum LottoRank {
     FIVE_MATCH_AND_BONUS_MATCH(7, 30_000_000),
     FIVE_MATCH(5, 1_500_000),
     SIX_MATCH(6, 2_000_000_000),
-    MISS_MATCH(0,0);
+    MISS_MATCH(0, 0);
     private int money;
     private int count;
 

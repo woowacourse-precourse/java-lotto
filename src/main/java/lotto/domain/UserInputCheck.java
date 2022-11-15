@@ -3,9 +3,8 @@ package lotto.domain;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
-import lotto.domain.util.Validation;
+import lotto.util.Validation;
 
 public class UserInputCheck {
     static Integer purchaseAmountCheck(String userInput) {
@@ -26,7 +25,7 @@ public class UserInputCheck {
             Validation.isNumber(numbers);
             Validation.isValidLength(numbers);
             Validation.isItRange(numbers);
-        }catch (IllegalArgumentException err){
+        } catch (IllegalArgumentException err) {
             System.out.println(err);
             return Collections.emptyList();
         }
@@ -36,12 +35,12 @@ public class UserInputCheck {
                 .collect(Collectors.toList());
     }
 
-    static int bonusNumberCheck(String userInput){
+    static int bonusNumberCheck(String userInput) {
         try {
             Validation.isNumber(userInput);
             Validation.isValidLength(userInput);
             Validation.isItRange(userInput);
-        }catch (IllegalArgumentException err){
+        } catch (IllegalArgumentException err) {
             System.out.println(err);
             return 0;
         }

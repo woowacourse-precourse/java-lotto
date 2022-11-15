@@ -21,6 +21,7 @@ public class LottoGameController {
         int bonusNumber = inputMessage.bonusNumberMessage(lottoGame.getBonusNumber());
         WinningResult winningResult = new WinningResult(lottos);
         LinkedHashMap<LottoRank, Integer> result = winningResult.getStatistics(winningNumber, bonusNumber);
+        resultMessage.winningStatisticsPrint();
         resultMessage.winningResultMessage(result);
         resultMessage.yieldMessage(winningResult.revenueCalculation(amount));
     }

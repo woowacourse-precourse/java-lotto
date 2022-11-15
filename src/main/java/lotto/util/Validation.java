@@ -1,4 +1,4 @@
-package lotto.domain.util;
+package lotto.util;
 
 import java.util.Arrays;
 import java.util.HashSet;

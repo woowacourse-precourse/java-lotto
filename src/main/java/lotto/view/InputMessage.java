@@ -30,7 +30,7 @@ public class InputMessage {
         return lotts;
     }
 
-    public List<Integer> winningNumberMessage(List<Integer> winningNumber){
+    public List<Integer> winningNumberMessage(List<Integer> winningNumber) {
         String number = winningNumber.stream()
                 .map(String::valueOf)
                 .collect(Collectors.joining(","));

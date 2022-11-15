@@ -10,13 +10,12 @@ public class ResultMessage {
     private static final String WINNING_STATISTICS_MESSAGE = "당첨 통계";
     private static final String HYPHEN = "---";
     private static final String YIELD_MESSAGE = "총 수익률은 %.1f%%입니다.";
+    private static final NumberFormat numberformat = NumberFormat.getInstance();
 
     public void winningResultMessage(LinkedHashMap<LottoRank, Integer> result) {
-        winningStatisticsPrint();
         for (LottoRank lottoRank : result.keySet()) {
             String format;
-            NumberFormat numberformat = NumberFormat.getInstance();
-            if (lottoRank.getCount() == 7) {
+            if (lottoRank.getCount() == LottoRank.FIVE_MATCH_AND_BONUS_MATCH.getCount()) {
                 format = String.format(BONUS_NUMER_MATCH, numberformat.format(lottoRank.getMoney()),
                         result.get(lottoRank));
                 System.out.println(format);
