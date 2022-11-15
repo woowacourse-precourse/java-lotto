@@ -1,11 +1,11 @@
-package lotto.service;
+package lotto;
 
 import lotto.PrizeDetails;
 
 import java.util.List;
 
 public class Calculator {
-    static Double calcStatistics(Integer lottoCount, List<Integer> priceList) {
+    public static Double calcStatistics(Integer lottoCount, List<Integer> priceList) {
         int purchasePrice = (lottoCount) * 1000;
         int income = priceList.stream().mapToInt(i -> i).sum();
         return ((double) income / (double) purchasePrice) * 100;

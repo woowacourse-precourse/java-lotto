@@ -32,7 +32,7 @@ public class UserLottoService {
         List<Lotto> lottos = lottoRepository.findAll();
         for(int i=0;i<lottos.size();i++){
             Lotto lotto = lottos.get(i);
-            lotto.setPriceDetails(PriceChecker.updateLottoPrizeDetailsWhenHasBonusNUmber(lotto,bonus));
+            lotto.setPriceDetails(PriceChecker.updateLottoPrizeDetailsWhenHasBonusNumber(lotto,bonus));
         }
         return lottos.stream().filter(l->l.getPriceDetails().ordinal()>2).collect(Collectors.toList());
     }

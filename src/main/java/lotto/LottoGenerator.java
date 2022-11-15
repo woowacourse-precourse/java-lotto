@@ -9,7 +9,7 @@ import java.util.List;
 public class LottoGenerator {
     public static List<Lotto> generatLottos(String userInput) {
         validate(userInput);
-        return createLottos(toInt(userInput));
+        return createLottos(StringToIntegerMapper.toInt(userInput));
     }
 
     private static List<Lotto> createLottos(int amount) {
@@ -24,15 +24,11 @@ public class LottoGenerator {
 
     private static void validate(String userInput) {
         try {
-            int amount = toInt(userInput);
+            int amount = StringToIntegerMapper.toInt(userInput);
             if (amount % 1000 != 0) throw new IllegalArgumentException("1000원 단위 숫자를 입력해주세요");
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("숫자를 입력해주세요");
         }
-    }
-
-    private static int toInt(String amount) {
-        return Integer.parseInt(amount);
     }
 
     private static int getCount(Integer amount) {

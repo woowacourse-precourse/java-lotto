@@ -2,7 +2,7 @@ package lotto.controller;
 
 import lotto.Lotto;
 import lotto.PrizeDetails;
-import lotto.service.Calculator;
+import lotto.Calculator;
 import lotto.service.PrizeSerivce;
 import lotto.service.UserLottoService;
 import lotto.view.*;
