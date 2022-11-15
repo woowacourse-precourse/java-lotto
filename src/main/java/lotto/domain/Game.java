@@ -9,6 +9,7 @@ public class Game {
     public static final Integer price = 1000;
     public static final Integer maximumLottoNumber = 45;
     public static final Integer numberToDraw = 6;
+    public static final Integer minimumLottoNumber = 1;
 
     private List<Integer> winningNumbers = new ArrayList<>();
     private Integer bonus = 0;
@@ -35,7 +36,7 @@ public class Game {
 
     private void validateWinningNumberByRange(List<Integer> winningNumbers){
         for (Integer number : winningNumbers){
-            if (number > 45 || number < 1) throw new IllegalArgumentException();
+            if (number > maximumLottoNumber || number < minimumLottoNumber) throw new IllegalArgumentException();
         }
     }
 
