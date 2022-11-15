@@ -8,15 +8,14 @@ import java.util.List;
 import java.util.Map;
 
 public class IOProcessor {
-
     private static final String ERROR_MESSAGE_PREFIX = "[ERROR]"; // 에러메시지 앞에 붙이는 접두사
 
     private enum WinningMessageFormat {
-        WINNING_FIVE("3개 일치 (%,d원) - %d개\n"),
-        WINNING_FOUR("4개 일치 (%,d원) - %d개\n"),
-        WINNING_THREE("5개 일치 (%,d원) - %d개\n"),
-        WINNING_TWO("5개 일치, 보너스 볼 일치 (%,d원) - %d개\n"),
-        WINNING_ONE("6개 일치 (%,d원) - %d개\n");
+        WINNING_FIVE("%d개 일치 (%,d원) - %d개\n"),
+        WINNING_FOUR("%d개 일치 (%,d원) - %d개\n"),
+        WINNING_THREE("%d개 일치 (%,d원) - %d개\n"),
+        WINNING_TWO("%d개 일치, 보너스 볼 일치 (%,d원) - %d개\n"),
+        WINNING_ONE("%d개 일치 (%,d원) - %d개\n");
 
         private final String format;
 
@@ -50,9 +49,10 @@ public class IOProcessor {
         Iterator<String> keys = winningInfo.keySet().iterator();
         System.out.println("당첨 통계\n---");
 
-        while(keys.hasNext()) {
+        while (keys.hasNext()) {
             String key = keys.next();
             System.out.printf(WinningMessageFormat.valueOf(key).getFormat(),
+                    Policy.WinningCriteria.valueOf(key).getMatchingCount(),
                     Policy.WinningAmount.valueOf(key).getAmount(),
                     winningInfo.get(key));
         }
