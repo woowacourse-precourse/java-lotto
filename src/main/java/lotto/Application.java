@@ -41,4 +41,16 @@ public class Application {
       throw new IllegalArgumentException();
     }
   }
+
+  public static void compare() {
+    lottoResult = new LottoResult();
+    for(List<Integer> number : userLotto.getRandomNumber()) {
+      LottoType lottoType = LottoType.calc(lotto.getNumbers(), lottoBonus.getBonusNumber(), number);
+      if (Objects.nonNull(lottoType)){
+        lottoResult.updateResult(lottoType.getIndex(), lottoType.getMoney());
+      }
+    }
+
+    lottoResult.printResult(userLotto.getMoney());
+  }
 }
