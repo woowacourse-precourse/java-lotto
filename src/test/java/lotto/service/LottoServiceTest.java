@@ -53,4 +53,34 @@ class LottoServiceTest {
         assertThat(2).isEqualTo(expect.get(Prize.LOSING_TICKET));
         assertThat(1).isEqualTo(expect.get(Prize.FIFTH_PLACE));
     }
+
+    @Test
+    void 토탈수익_계산(){
+        List<Lotto> userNumber = new ArrayList<>();
+        for(int i=0; i<3; i++){
+            userNumber.add(new Lotto(Arrays.asList(i+1,i+2,i+3,i+4,i+5,i+6)));
+        }
+        LuckyNumber luckyNumber = new LuckyNumber();
+        luckyNumber.inputBonusNumber("7");
+        luckyNumber.inputLuckyNumber("4,6,1,15,19,39");
+        HashMap<Prize, Integer> history = LottoService.lottoNumberComparison(userNumber,luckyNumber);
+
+        assertThat(5000.0f).isEqualTo(LottoService.totalCalculation(history));
+    }
+
+    @Test
+    void 수익률_계산(){
+        List<Lotto> userNumber = new ArrayList<>();
+        for(int i=0; i<3; i++){
+            userNumber.add(new Lotto(Arrays.asList(i+1,i+2,i+3,i+4,i+5,i+6)));
+        }
+        LuckyNumber luckyNumber = new LuckyNumber();
+        luckyNumber.inputBonusNumber("7");
+        luckyNumber.inputLuckyNumber("4,6,1,15,19,39");
+        HashMap<Prize, Integer> history = LottoService.lottoNumberComparison(userNumber,luckyNumber);
+
+
+        assertThat("62.5").isEqualTo(LottoService.yieldCalculation(history,8000));
+
+    }
 }
