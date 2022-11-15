@@ -13,6 +13,7 @@ public class LottoGame {
         try {
             LottoMoney money = Input.inputMoney();
             buyLotto(money);
+            createStatistics(money);
         } catch (IllegalArgumentException e) {
             Output.printExceptionMessage(e.getMessage());
         }
@@ -21,5 +22,12 @@ public class LottoGame {
     private void buyLotto(LottoMoney money) {
         lottos = LottoStore.byLottos(money);
         output.printPurchaseInfo(lottos);
+    }
+
+    private void createStatistics(LottoMoney money) {
+        LottoResult lottoResult = new LottoResult(Input.inputWinningLotto(), Input.inputBonusNumber());
+        WinningLotto winningLotto = lottoResult.lottoResult(lottos);
+        output.printLottoResult(winningLotto.getGradesResult());
+        output.printProfit(winningLotto.calculateYield(money));
     }
 }
