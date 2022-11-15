@@ -20,7 +20,7 @@ public enum Message {
     OUTPUT_SIX_MATCHES("6개 일치 ("
             + String.format("%,d", Constant.SIX_MATCHES_PRIZE) + "원) - "),
     OUTPUT_EARNINGS_RATE_PREFIX("총 수익률은 "),
-    OUTPUT_EARNINGS_RATE_POSTFIX("입니다");
+    OUTPUT_EARNINGS_RATE_POSTFIX("입니다.");
 
 
     private final String text;
