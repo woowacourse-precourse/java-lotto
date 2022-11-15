@@ -2,6 +2,8 @@ package lotto;
 
 import view.Message;
 
+import java.util.List;
+
 public class Exception {
 
     public void checkPurchaseAmount(String purchaseAmount) {
@@ -27,11 +29,10 @@ public class Exception {
         }
     }
 
-    public void checkBonusNumber(String bonusNumber,String winningNumber) {
+    public void checkBonusNumber(String bonusNumber) {
         checkBonusNumberSize(bonusNumber);
         checkBonusNumberRange(bonusNumber);
         checkBonusNumberStartZero(bonusNumber);
-        checkBonusNumberOverLap(bonusNumber,winningNumber);
     }
 
     public void checkBonusNumberSize(String bonusNumber) {
@@ -53,9 +54,11 @@ public class Exception {
         }
     }
 
-    public void checkBonusNumberOverLap(String bounsNumber,String winningNumber){
-            if(winningNumber.contains(bounsNumber)){
-               throw new IllegalArgumentException(Message.ERROR_NUMBER_OVERLAP.getMessage());
+    public void checkBonusNumberOverLap(String bounsNumber, List<Integer> winningLottoNumber){
+            for(int i=0;i<winningLottoNumber.size();i++){
+                if(winningLottoNumber.get(i)==Integer.parseInt(bounsNumber)){
+                    throw new IllegalArgumentException(Message.ERROR_NUMBER_OVERLAP.getMessage());
+                }
             }
     }
 
@@ -66,6 +69,7 @@ public class Exception {
             }
         }
     }
+
 
 
 }
