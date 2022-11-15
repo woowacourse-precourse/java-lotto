@@ -43,12 +43,4 @@ public enum Prize {
         return bonusCatchPoint;
     }
 
-    @Override
-    public String toString() {
-        return "Prize{" +
-            "catchPoint=" + catchPoint +
-            ", bonusCatchPoint=" + bonusCatchPoint +
-            ", money=" + money +
-            '}';
-    }
 }
