@@ -19,8 +19,8 @@ public class Cashier {
         publishLottos();
         setWinningRule();
         saveResultInAccount();
-        getResultInAccount();
-        getYieldInAccount();
+        getResultFromAccount();
+        getYieldFromAccount();
     }
 
     public void publishLottos() {
@@ -28,21 +28,21 @@ public class Cashier {
         this.lottos = LottoMachine.publish(inputMoneyRaw);
     }
 
-    public void saveResultInAccount() {
-        this.account.saveResult(lottos);
-    }
-
     public void setWinningRule() {
         setWinningNumbers();
         setBonusNumber();
     }
 
-    public void getResultInAccount() {
+    public void saveResultInAccount() {
+        this.account.saveResult(lottos);
+    }
+
+    public void getResultFromAccount() {
         Map<WinningResult, Integer> results = this.account.getWinningResultTable();
         UserInterface.printResult(results);
     }
 
-    public void getYieldInAccount() {
+    public void getYieldFromAccount() {
         String yield = this.account.getYield();
         UserInterface.printYield(yield);
     }
