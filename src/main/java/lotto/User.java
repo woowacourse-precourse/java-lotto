@@ -1,9 +1,13 @@
 package lotto;
 
+import lottoUtils.MathUtils;
+
 import java.util.ArrayList;
 import java.util.List;
 
-import static Error.ErrorInput.isDigit;
+import static error.ErrorInput.isDigit;
+import static constantValue.ErrorMessage.NOT_NUMBER;
+import static constantValue.RequestMessage.INPUT_PURCHASE_AMOUNT;
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class User {
@@ -23,10 +27,10 @@ public class User {
   }
 
   private boolean setMoney() {
-    System.out.println("구입금액을 입력해 주세요.");
+    System.out.println(INPUT_PURCHASE_AMOUNT);
     String money = readLine();
     if (!isDigit(money)) {
-      System.out.println("[ERROR] 잘못된 입력입니다.");
+      System.out.println(NOT_NUMBER);
       return false;
     }
     this.money = Integer.parseInt(money);

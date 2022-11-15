@@ -1,9 +1,10 @@
 package lotto;
 
-import java.util.Iterator;
 import java.util.List;
 
-import static Error.ErrorLottoNumbers.isDuplicateLottos;
+import static error.ErrorLottoNumbers.isDuplicateLottos;
+import static constantValue.ErrorMessage.IS_DUPLICATE;
+import static constantValue.ErrorMessage.IS_NOT_SIX;
 
 public class Lotto {
   private final List<Integer> numbers;
@@ -15,10 +16,10 @@ public class Lotto {
 
   private void validate(List<Integer> numbers) {
     if (numbers.size() != 6) {
-      throw new IllegalArgumentException();
+      throw new IllegalArgumentException(IS_NOT_SIX);
     }
     if (isDuplicateLottos(numbers)) {
-      throw new IllegalArgumentException();
+      throw new IllegalArgumentException(IS_DUPLICATE);
     }
   }
 
