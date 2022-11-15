@@ -5,7 +5,7 @@ public class View {
         System.out.println(text.getMessage());
     }
 
-    public void printButLotto(Integer lottoCount){
+    public void printBuyLotto(Integer lottoCount){
         System.out.printf(Text.BUY_LOTTO.getMessage(), lottoCount);
     }
 
