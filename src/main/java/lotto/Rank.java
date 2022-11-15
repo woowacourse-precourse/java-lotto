@@ -65,14 +65,18 @@ public class Rank {
         public int count() { return count; }
     }
 
-    public void run (User user) {
+    public void run(User user) {
+        int countLotto = 0;
+        int countBonus = 0;
         for (Lotto lotto : user.userLotto) {
             List<Integer> userNumbers = lotto.getNumbers();
+            countLotto = countMatchedNumbers(userNumbers);
+            countBonus = countMatchedWithBonusNumber(userNumbers);
 
         }
     }
 
-    private int countMatchedNumbers (List<Integer> userNumbers) {
+    private int countMatchedNumbers(List<Integer> userNumbers) {
         int count = 0;
         List<Integer> targetNumbers = lottoNumbers.getNumbers();
         for (Integer number : userNumbers) {
@@ -83,10 +87,23 @@ public class Rank {
         return count;
     }
 
-    private int countMatchedWithBonusNumber (List<Integer> userNumbers) {
+    private int countMatchedWithBonusNumber(List<Integer> userNumbers) {
         if (userNumbers.contains(bonusNumber)) {
             return 1;
         }
         return 0;
+    }
+
+    private void updateResult(int countLotto, int countBonus) {
+        if ((countLotto != 5) || (countLotto == 5 && countBonus == 0)) {
+            Result result = Result.fromLabel(countLotto);
+            Result.setCount(result);
+            return;
+        }
+
+        if (countLotto == 5 && countBonus == 1) {
+            Result result = Result.fromLabel(countLotto + 2);
+            Result.setCount(result);
+        }
     }
 }
