@@ -10,10 +10,10 @@ public class Issue {
     int amount;
     public Issue(int money){
         history = new ArrayList<>();
-        amount = getAmount(money);
+        amount = amount(money);
     }
 
-    private int getAmount(int money){
+    private int amount(int money){
         if(money%1000 != 0){
             throw new IllegalArgumentException();
         }
@@ -23,11 +23,9 @@ public class Issue {
 
     private Lotto lottoNum(){
         List<Integer> numbers = new ArrayList<>();
-        while (numbers.size() < 6) {
-            int randomNumber = Randoms.pickNumberInRange(1, 45);
-            if (!numbers.contains(randomNumber)) {
-                numbers.add(randomNumber);
-            }
+        List<Integer> randNumbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+        for(Integer number : randNumbers) {
+            numbers.add(number);
         }
         return new Lotto(numbers);
     }
@@ -38,7 +36,7 @@ public class Issue {
         }
         return history;
     }
-    public double calculate(int winRevenue){
-        return winRevenue/(amount*1000);
+    public double calculate(double winRevenue){
+        return (winRevenue/(amount*1000))*100;
     }
 }
