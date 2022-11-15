@@ -28,6 +28,24 @@ public class Consumer {
         LottoConsoleIo.printNoOfLotto(lottos);
     }
 
+    public static Lotto putWinLotto() {
+        LottoConsoleIo.printRequestWin();
+        String inputValue = LottoConsoleIo.scanInputValue();
+        ValidCheck.formatCheckLotto(inputValue);
+        List<Integer> numbers = new ArrayList<>();
+        List.of(inputValue.split(",")).forEach((n) -> {
+            numbers.add(Integer.parseInt(n));
+        });
+        return new Lotto(numbers);
+    }
+
+    public static int putBonusNumber() {
+        LottoConsoleIo.printRequestBonus();
+        String inputValue = LottoConsoleIo.scanInputValue();
+        ValidCheck.formatCheckBonus(inputValue);
+        return Integer.parseInt(inputValue);
+    }
+
     public static List<Integer> calcStat(Lotto winNumber, int bonus) {
         List<Integer> stat = new ArrayList<>(STATISTICS_INIT);
         HashSet winNumbers = new HashSet(winNumber.getNumbers());
