@@ -5,8 +5,11 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 import lotto.domain.Lotto;
+import lotto.domain.Rank;
 import lotto.domain.WinningLotto;
 
 public class LottoGame {
@@ -23,6 +26,7 @@ public class LottoGame {
 
         WinningLotto winningLotto = createWinningLotto();
 
+        lottoResultStatistics(lottos, winningLotto);
     }
 
     private int getLottoAmount(){
@@ -143,4 +147,34 @@ public class LottoGame {
             return false;
         return true;
     }
+
+    private void lottoResultStatistics(List<Lotto> lottos, WinningLotto winningLotto) {
+        Map<Rank, Integer> result = setResult();
+        Rank rank;
+
+        System.out.println("당첨 통계");
+        System.out.println("===");
+        for(int idx = 0; idx < lottos.size(); idx++){
+            rank = winningLotto.match(lottos.get(idx));
+            result.put(rank, result.get(rank) + 1);
+        }
+
+        printResult(result);
+    }
+
+    private Map<Rank, Integer> setResult(){
+        Map<Rank, Integer> result = new LinkedHashMap<>();
+
+        for(Rank rank : Rank.values()){
+            result.put(rank, 0);
+        }
+        return result;
+    }
+
+    private void printResult(Map<Rank, Integer> result) {
+        for(int i = Rank.values().length - 1; i >= 0; i--){
+            Rank.values()[i].printMessage(result.get(Rank.values()[i]));
+        }
+    }
+
 }
