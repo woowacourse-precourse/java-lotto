@@ -35,13 +35,14 @@
 
 ### 클래스 설계
 
-- [ ] Lotto class : 로또 번호 기능 클래스
-- [ ] Generator : 번호를 생성 하는 클래스
-- [ ] Input class : 사용자의 입력을 받는 클래스
-- [ ] Output class : 결과를 출력하는 클래스
-- [ ] Compare class : 로또 번호를 비교하는 클래스
-- [ ] Calculator class : 계산 기능 클래스
-- [ ] InputException class : 예외 처리 클래스
+- [x] Lotto class : 로또 번호 기능 클래스
+- [x] Generator : 번호를 생성 하는 클래스
+- [x] Input class : 사용자의 입력을 받는 클래스
+- [x] Output class : 결과를 출력하는 클래스
+  - [x] Enum class : 결과 출력을 위한 Enum 클래스 
+- [x] Comparison class : 로또 번호를 비교하는 클래스
+- [x] Calculator class : 계산 기능 클래스
+- [x] InputException class : 예외 처리 클래스
 
 ### 추가 요구 사항
 
