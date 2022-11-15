@@ -2,15 +2,16 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class LottoList {
     private final List<Lotto> lottos = new ArrayList<>();
     private int amount;
+
+    public List<Lotto> getLottoList() {
+        return lottos;
+    }
 
     public LottoList() {
         this.amount = 0;
