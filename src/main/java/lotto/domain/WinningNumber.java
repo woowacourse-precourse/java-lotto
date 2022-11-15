@@ -58,7 +58,7 @@ public class WinningNumber {
     private int getTemporaryNumber(int temporaryNumber, char temporaryLetter) {
         checkIfCharIsNumber(temporaryLetter);
         checkIfNumberStartsWithZero(temporaryNumber, temporaryLetter);
-        temporaryNumber = temporaryLetter *mulNum + (temporaryLetter -zero);
+        temporaryNumber = temporaryNumber *mulNum + (temporaryLetter -zero);
         return temporaryNumber;
     }
 
@@ -69,8 +69,8 @@ public class WinningNumber {
     }
 
     private void checkIfNumberInRange(int i){
-        if(i<minNum ||i>maxNum){
-            throw new IllegalArgumentException(ErrorResource.errorStart+NumberNotInRange);
+        if(i<minNum || i>maxNum){
+            throw new IllegalArgumentException(ErrorResource.errorStart+NumberNotInRange +i);
         }
     }
     private void checkIfNumberStartsWithZero(int temporaryNumber, char newNumber ){
