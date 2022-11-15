@@ -36,9 +36,12 @@ public class LottoController {
     }
 
 
-    private void generateLottos(int repeat) {
+    private void generateLottos(int repeat) throws Exception {
         for (int i = 0; i < repeat; i++) {
-            List<Integer> numbers = new ArrayList<>(Randoms.pickUniqueNumbersInRange(1, 45, 6));
+            List<Integer> numbers = new ArrayList<>(Randoms.pickUniqueNumbersInRange(
+                    Constant.LOTTO_MIN_VALUE.getValue(),
+                    Constant.LOTTO_MAX_VALUE.getValue(),
+                    Constant.LOTTO_LENGTH.getValue()));
             Collections.sort(numbers);
             Lotto lotto = new Lotto(numbers);
             lottos.add(lotto);

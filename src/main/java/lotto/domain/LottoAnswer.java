@@ -3,16 +3,16 @@ package lotto.domain;
 import java.util.List;
 
 public class LottoAnswer {
-    private final List<Integer> lottoAnswer;
+    private final Lotto lottoAnswer;
     private final int bonusNumber;
 
-    public LottoAnswer(List<Integer> lottoAnswer, int bonusNumber) {
+    public LottoAnswer(Lotto lottoAnswer, int bonusNumber) {
         this.lottoAnswer = lottoAnswer;
         this.bonusNumber = bonusNumber;
     }
 
     public boolean isNumberInAnswer(int number) {
-        if (lottoAnswer.contains(number)) {
+        if (lottoAnswer.getLotto().contains(number)) {
             return true;
         }
         return false;

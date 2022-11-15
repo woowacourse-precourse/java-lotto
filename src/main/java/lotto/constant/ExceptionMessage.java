@@ -19,6 +19,13 @@ public enum ExceptionMessage {
     INVALID_BONUS_DUPLICATE("[ERROR] 보너스 번호는 로또 당첨 번호와 중복될 수 없습니다.");
 
 
-    ExceptionMessage(String s) {
+    private final String message;
+
+    private ExceptionMessage(String message) {
+        this.message = message;
+    }
+
+    public String getString() {
+        return message;
     }
 }
