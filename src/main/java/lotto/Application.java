@@ -24,7 +24,7 @@ public class Application {
         System.out.println("구입금액을 입력해 주세요.");
         Integer number = inputController.getBuyAmount(Console.readLine());
 
-
+        System.out.println(number/1000+"개를 구매했습니다.");
         List<List<Integer>> lottoNumbers = new ArrayList<>();
         while (lottoNumbers.size() < number / 1000) {
             List<Integer> lottoNumber = computer.getLottoNumber();
