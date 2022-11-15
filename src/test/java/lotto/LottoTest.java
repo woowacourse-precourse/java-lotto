@@ -30,20 +30,4 @@ class LottoTest {
     void printLotto() {
         assertThat(new Lotto(List.of(1, 2, 3, 4, 5, 6)).toString()).isEqualTo("[1, 2, 3, 4, 5, 6]");
     }
-
-    @DisplayName("당첨 번호와 로또 번호를 비교해 등수를 반환함")
-    @Test
-    void compareLottoWithWinnumber() {
-        //given
-        String winNumber = "1,2,3,4,5,6";
-        String bonusNumber = "7";
-        Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 7));
-        WinNumber wn = new WinNumber(winNumber,bonusNumber);
-
-        //when
-        int prize = lotto.compareWithAnswer(wn);
-
-        //then
-        assertThat(prize).isEqualTo(2);
-    }
 }

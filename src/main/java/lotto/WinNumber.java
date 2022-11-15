@@ -1,7 +1,5 @@
 package lotto;
 
-import camp.nextstep.edu.missionutils.Console;
-
 import java.util.List;
 
 public class WinNumber {
@@ -18,11 +16,11 @@ public class WinNumber {
         validateWinNumber(this.winNumber);
     }
 
-    public List<Integer> getWinNumber(){
+    public List<Integer> getWinNumber() {
         return winNumber;
     }
 
-    public int getBonusNumber(){
+    public int getBonusNumber() {
         return bonusNumber;
     }
 
@@ -33,7 +31,7 @@ public class WinNumber {
     }
 
     private void validateWinNumber(List<Integer> winNumbers) {
-        if (winNumber.size()!=6){
+        if (winNumber.size() != 6) {
             throw new IllegalArgumentException("[ERROR] 로또 번호는 여섯자리여야 합니다");
         }
         for (int winNumber : winNumbers) {

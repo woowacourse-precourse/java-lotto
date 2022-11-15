@@ -14,24 +14,14 @@ public class LottoController {
         return Integer.parseInt(userMoney);
     }
 
-    public LinkedList<Lotto> createRandomLotto(int count) {
-        LinkedList<Lotto> lottoPool = new LinkedList<>();
+    public Lotto createRandomLotto() {
+        List<Integer> randomNumbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+        List<Integer> modifiable = new ArrayList<>(randomNumbers);
 
-        for (int i = 0; i < count; i++) {
-            List<Integer> randomNumbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
-            List<Integer> modi = new ArrayList<>(randomNumbers);
+        Collections.sort(modifiable);
+        Lotto newLotto = new Lotto(modifiable);
 
-            Collections.sort(modi);
-            Lotto newLotto = new Lotto(modi);
-            lottoPool.add(newLotto);
-            /*
-            Collections.sort(randomNumbers);
-            Lotto newLotto = new Lotto(randomNumbers);
-            lottoPool.add(newLotto);
-             */
-        }
-
-        return lottoPool;
+        return newLotto;
     }
 
 
