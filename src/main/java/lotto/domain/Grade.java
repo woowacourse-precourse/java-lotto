@@ -3,7 +3,6 @@ package lotto.domain;
 import java.util.Arrays;
 
 public enum Grade {
-
     FIFTH("3",3, 5_000),
     FOURTH("4",4, 50_000),
     THIRD("5",5, 1_500_000),
@@ -13,7 +12,7 @@ public enum Grade {
     private final int matchCount;
     private final String key;
     private final int prizeMoney;
-
+    private static final String VALIDATE_KEY_MASSAGE = "[ERROR] 유효하지 않은 Key 입니다.";
 
     Grade(String key, int matchCount, int prizeMoney) {
         this.key = key;
@@ -34,15 +33,17 @@ public enum Grade {
 
     public static Grade findGradeByKey(String key) {
         return Arrays.stream(values()).filter(grade -> grade.key == key)
-                .findAny().orElseThrow(() -> new IllegalArgumentException("[ERROR] 유효하지 않은 Key 입니다."));
+                .findAny().orElseThrow(() -> new IllegalArgumentException(VALIDATE_KEY_MASSAGE));
     }
 
     public String getKey() {
         return key;
     }
+
     public int getPrizeMoney() {
         return prizeMoney;
     }
+
     public int getMatchCount() {
         return matchCount;
     }
