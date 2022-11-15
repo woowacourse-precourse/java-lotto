@@ -7,8 +7,8 @@ public class User {
     public static final int LOTTO_LENGTH = 6;
 
     private int publicans;
-    protected List<Integer> userNumbers;
-    protected int bonusNumber;
+    private List<Integer> userNumbers;
+    private int bonusNumber;
 
     public void getBudget() {
         System.out.println("구입금액을 입력해 주세요.");
