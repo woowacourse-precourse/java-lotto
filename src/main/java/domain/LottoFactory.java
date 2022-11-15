@@ -15,7 +15,7 @@ public class LottoFactory {
 
         List<Lotto> lottos = new ArrayList<>();
         for (int time = 0; time < price / LOTTO_PRICE; time++) {
-            List<Integer> rawNumbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+            List<Integer> rawNumbers = new ArrayList<>(Randoms.pickUniqueNumbersInRange(1, 45, 6));
             lottos.add(new Lotto(rawNumbers));
         }
 
@@ -24,8 +24,7 @@ public class LottoFactory {
 
     private static void checkVaildity(Integer price) {
         if (price % LOTTO_PRICE != 0 || price == 0) {
-            System.out.println(ERROR_INVALID_ARGUMENT);
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ERROR_INVALID_ARGUMENT);
         }
     }
 }

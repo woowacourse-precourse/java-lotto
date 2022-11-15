@@ -12,7 +12,11 @@ public class InputUtil {
         Integer outcome;
 
         String number = Console.readLine();
-        checkValidity(number);
+        try{
+            checkValidity(number);
+        } catch (NumberFormatException e){
+            throw new IllegalArgumentException(ERROR_INVALID_INPUT);
+        }
         outcome = Integer.parseInt(number);
         return outcome;
     }
@@ -25,8 +29,7 @@ public class InputUtil {
         char[] words = target.toCharArray();
         for(char word : words){
             if(!Character.isDigit(word)){
-                System.out.println(ERROR_INVALID_INPUT);
-                throw new IllegalArgumentException();
+                throw new IllegalArgumentException(ERROR_INVALID_INPUT);
             }
         }
     }

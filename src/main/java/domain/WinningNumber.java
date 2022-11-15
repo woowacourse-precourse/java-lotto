@@ -13,7 +13,11 @@ public class WinningNumber {
     private Integer bonusNumber;
 
     public WinningNumber(List<Integer> announcedNumbers, Integer bonus) {
-        checkValidity(announcedNumbers,bonus);
+        try{
+            checkValidity(announcedNumbers,bonus);
+        } catch(IllegalArgumentException e){
+            e.printStackTrace();
+        }
         mainNumbers = announcedNumbers;
         bonusNumber = bonus;
     }

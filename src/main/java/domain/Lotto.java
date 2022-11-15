@@ -20,19 +20,16 @@ public class Lotto {
 
     private void validate(List<Integer> numbers) throws IllegalArgumentException{
         if (numbers.size() != 6) {
-            System.out.println(ERROR_INVALID_SIZE);
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ERROR_INVALID_SIZE);
         }
         for (Integer number : numbers) {
             if (number < 1 || number > 45) {
-                System.out.println(ERROR_NUMBER_OUT_OF_BOUND);
-                throw new IllegalArgumentException();
+                throw new IllegalArgumentException(ERROR_NUMBER_OUT_OF_BOUND);
             }
         }
         Set<Integer> uniqueNumbers = new HashSet<>(numbers);
         if(uniqueNumbers.size()!=numbers.size()) {
-            System.out.println(ERROR_DUPLICATE_NUMBERS);
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ERROR_DUPLICATE_NUMBERS);
         }
     }
 

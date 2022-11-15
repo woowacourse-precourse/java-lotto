@@ -8,6 +8,7 @@ import dto.LottoDto;
 import dto.LottosDto;
 import dto.ResultDto;
 
+import java.text.DecimalFormat;
 import java.util.List;
 import java.util.Map;
 
@@ -51,13 +52,20 @@ public class OutputUtil {
         for (Map.Entry<LottoRank, Integer> pair : statistics.entrySet()) {
             LottoRank rank = pair.getKey();
             Integer number = pair.getValue();
+            Integer money = rank.money;
+            DecimalFormat df = new DecimalFormat("###,###");
+            String formattedMoney = df.format(money);
             if (rank == LottoRank.MISS) continue;
             if (rank == LottoRank.SECOND) {
-                System.out.printf("%d개 일치, 보너스 볼 일치 (%d원) - %d개\n", rank.hitNumber, rank.money, number);
+                System.out.printf("%d개 일치, 보너스 볼 일치 (%s원) - %d개\n", rank.hitNumber,formattedMoney, number);
                 continue;
             }
-            System.out.printf("%d개 일치 (%d원) - %d개\n", rank.hitNumber, rank.money, number);
+            System.out.printf("%d개 일치 (%s원) - %d개\n", rank.hitNumber, formattedMoney, number);
         }
-        System.out.printf("총 수익률은 %.1f%%입니다.\n", result.calcEarningRate());
+        System.out.printf("총 수익률은 %.1f%%입니다.\n", result.calcEarningRate()*100);
+    }
+
+    public static void printError(String errorMessage){
+        System.out.println(errorMessage);
     }
 }
