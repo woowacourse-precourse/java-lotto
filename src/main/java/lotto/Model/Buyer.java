@@ -9,16 +9,18 @@ import java.util.List;
 
 public class Buyer {
     private static final int AMOUNT_PER_LOTTO = 1000;
-    private int purchased;
+    private int purchasedAmount;
     private List<Lotto> lottos;
 
+    public int getPurchasedAmount() { return purchasedAmount; }
+    public List<Lotto> getLottos() { return lottos; }
 
     /**
      * 입력한 금액을 바탕으로 구매한 로또의 개수를 설정(로또 1장 당 1000원)
      */
     public void buyLotto(int budget){
         validateBudget(budget);
-        purchased = budget / AMOUNT_PER_LOTTO;
+        purchasedAmount = budget / AMOUNT_PER_LOTTO;
     }
 
     /**
@@ -35,7 +37,7 @@ public class Buyer {
      * 1~45 사이의 랜덤한 로또 번호 6자리를 선택
      */
     public void pickLottoNumbers(){
-        while (lottos.size() < purchased){
+        while (lottos.size() < purchasedAmount){
             List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
             if (validateLottoNumber(numbers, lottos)){
                 lottos.add(new Lotto(numbers));
