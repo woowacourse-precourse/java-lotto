@@ -13,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 public class PurchaseMoneyTest {
 
     @ParameterizedTest(name = "{displayName} {index}")
-    @ValueSource(ints = {-1001, -1000, -999, -1, 0, 1, 999, 1001})
+    @ValueSource(ints = {-1001, -1000, -999, -1, 0, 1, 999, 1001, 100001})
     @DisplayName("예외 발생 테스트")
     public void exceptionTest() {
         int purchaseMoney = 0;
@@ -50,7 +50,7 @@ public class PurchaseMoneyTest {
     }
 
     @ParameterizedTest(name = "{displayName} {index}")
-    @ValueSource(ints = {10000, 15000, 20000, 25000, 30000})
+    @ValueSource(ints = {10000, 15000, 20000, 25000, 30000, 100000})
     @DisplayName("정상 실행 테스트")
     public void normalTest(int input) {
         assertDoesNotThrow(() -> new PurchaseMoney(input));
