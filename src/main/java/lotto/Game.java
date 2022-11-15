@@ -1,9 +1,11 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class Game {
     public static final int UNIT = 1000;
@@ -11,7 +13,7 @@ public class Game {
     public static final int MAX_NUMBER = 45;
     public static final int BALL_COUNT = 6;
     List<Integer> lottoNumbers = new ArrayList<>();
-    List<List<Integer>> buyNumbers = new ArrayList<>();
+    List<List<Integer>> buyingNumbers = new ArrayList<>();
     private int bonus;
 
     public void setWinningNumbers() {
@@ -40,6 +42,7 @@ public class Game {
         if (!isNumeric(number)) {
             throw new IllegalArgumentException("[ERROR] 정수 1개만 입력해주세요.");
         }
+        bonus = Integer.parseInt(number);
     }
 
     public List<Integer> getWinningNumbers() {
@@ -59,11 +62,18 @@ public class Game {
         return money / UNIT;
     }
 
+    public List<List<Integer>> generateNumbers(int count) {
+        for (int index=0; index < count; index++) {
+            List<Integer> numbers = Randoms.pickUniqueNumbersInRange(MIN_NUMBER, MAX_NUMBER, BALL_COUNT);
+            buyingNumbers.add(numbers);
+        }
+        return buyingNumbers;
+    }
+
     public int compareNumbers(List<Integer> numbers, List<Integer> predictedNumbers) {
+
         return 0;
     }
 
-    public List<Integer> generateNumbers(int count) {
-        return lottoNumbers;
-    }
+
 }
