@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static lotto.Code.ErrorCode.*;
+import static lotto.Application.*;
 
 public class Lotto {
     private final List<Integer> numbers;
@@ -25,9 +26,6 @@ public class Lotto {
         List<Integer> appearedNumList = new ArrayList<>();
         for (int index = 0; index < 6; index++){
             int tmpNum = numbers.get(index);
-//            if (tmpInputStr < 49 || tmpInputStr > 58)
-//                // 1: 49, 9: 57
-//                throw new IllegalArgumentException("1~9 사이의 숫자만 가능합니다.");
             if (appearedNumList.contains(tmpNum))
                 throw new IllegalArgumentException(String.valueOf(LENGTH_CANNOT_DUPLICATE));
             appearedNumList.add(tmpNum);
@@ -35,13 +33,8 @@ public class Lotto {
     }
     public static void validateNumberVariation(Lotto lotto) {
         List<Integer> numbers = lotto.numbers;
-        for (int index = 0; index < 6; index++){
-            int tmpNum = numbers.get(index);
-            if (tmpNum >= 1 || tmpNum <= 45)
-                throw new IllegalArgumentException(String.valueOf(NUMBER_VARIATION));
-        }
+        validateOneTo45(numbers);
     }
-
 
     public static List<Integer> createLotto(){
         return Randoms.pickUniqueNumbersInRange(1, 45, 6);
