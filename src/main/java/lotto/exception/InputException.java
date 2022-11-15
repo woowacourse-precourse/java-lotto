@@ -32,7 +32,6 @@ public class InputException {
 
     public static int validatesBonusNumber(String number) {
         validateOnlyNumber(number);
-        validateNumberOneLength(number);
         validateBelow(number);
         return Integer.parseInt(number);
     }
@@ -66,12 +65,6 @@ public class InputException {
         List<Integer> numbers = toList(number);
         if (numbers.size() != NUMBER_LENGTH) {
             exception(NOT_SIX_LENGTH);
-        }
-    }
-
-    private static void validateNumberOneLength(String number) {
-        if (number.length() != 1) {
-            exception(NOT_ONE_LENGTH);
         }
     }
 
