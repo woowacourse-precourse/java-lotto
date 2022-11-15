@@ -35,13 +35,6 @@ public class Lotto {
         return generatedLottoNumber;
     }
 
-    public int checkNumberMatch(int target, int inputNumber) {
-        if (target == inputNumber) {
-            return 1;
-        }
-        return 0;
-    }
-
     public int getIndividualLottoScore(List<Integer> lotto, int bonus) {
         int matchCount = 0;
 
@@ -49,7 +42,6 @@ public class Lotto {
             if (numbers.contains(lotto.get(i))) {
                 matchCount += 1;
             }
-//            matchCount += checkNumberMatch(numbers.get(i), lotto.get(i));
         }
 
         if (matchCount < 3) {
