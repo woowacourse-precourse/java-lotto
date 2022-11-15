@@ -34,6 +34,30 @@ public class Game {
         this.winningResults = new LottoWinningResult();
     }
 
+    public void startGame() {
+        System.out.println(INPUT_MONEY);
+        this.userMoney = user.inputMoney();
+        this.lottoCount = userMoney / 1000;
+
+        pickAndPrintLottoNumbersCount();
+
+        System.out.println(INPUT_WINNING_NUMBERS);
+        this.winningNumbers = user.inputWinningNumbers();
+
+        System.out.println(INPUT_BONUS_NUMBER);
+        this.bonusNumber = user.inputBonusNumber();
+
+        computeWinningResult();
+        this.rateOfReturn = computeRateOfReturn();
+
+        System.out.println(WINNING_RESULT);
+        System.out.println(DIVISION_LINE);
+
+        printWinningResult();
+        printRateOfReturn();
+
+    }
+
     public void pickAndPrintLottoNumbersCount() {
         System.out.println(String.format(LOTTO_BUY_COUNT, lottoCount));
 
