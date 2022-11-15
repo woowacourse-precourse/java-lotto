@@ -94,8 +94,8 @@
 |-----|:-----------------------:|:------------------------:|
 | 1   |    validNumberRange     | 입력한 숫자 검증 (1 <= n <= 45) |
 | 2   | validNumberDupplication |       입력한 숫자 중복 검증       |
-| 3   |    validLotteryForm     |       로또 입력 형식 검증        |
-| 4   |     validSalesForm      |      입력한 구매액 형식 검증       |
+| 3   |    validWinningForm     |       로또 입력 형식 검증        |
+| 4   |    validPurchaseForm    |      입력한 구매액 형식 검증       |
 
 
 
