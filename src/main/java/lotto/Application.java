@@ -15,7 +15,7 @@ public class Application {
     private static void startLotto() {
 
         System.out.println("구입금액을 입력해 주세요.");
-        String amount = Console.readLine();
+        int amount = Integer.parseInt(Console.readLine());
         System.out.println(amount);
         System.out.println();
 
@@ -49,6 +49,6 @@ public class Application {
         System.out.println("---");
         WinningLotto winningLotto = new WinningLotto(userNum, randomNumbers);
         int totalYield = winningLotto.getTotalYield();
-        new Yield(totalYield, Integer.parseInt(amount));
+        new Yield(totalYield, amount);
     }
 }
