@@ -42,6 +42,7 @@ public class OutputView {
                 .collect(Collectors.toList());
     }
     public static void printWinningStatistic(WinningResult winningResult) {
+        System.out.println();
         System.out.println(RESULT_SENTENCE);
         StringBuilder stringBuilder = new StringBuilder();
         for (Map.Entry<Ranking, Integer> entry : getWinningResultEntryList(winningResult)) {

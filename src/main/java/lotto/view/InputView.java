@@ -42,11 +42,13 @@ public class InputView {
     }
 
     public static Lotto inputWinningNumber() {
+        System.out.println();
         System.out.println(INPUT_WINNING_LOTTO_AMOUNT);
         return new Lotto(convertToIntegerList(Console.readLine()));
     }
 
     public static int inputBonusNumber() {
+        System.out.println();
         System.out.println(INPUT_BONUS_BALL);
         return convertToInt(Console.readLine());
     }
