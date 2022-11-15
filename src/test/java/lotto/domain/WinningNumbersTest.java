@@ -40,4 +40,16 @@ class WinningNumbersTest {
         //then
         assertThat(countMatchNumber).isEqualTo(3);
     }
+
+    @DisplayName("보너스 번호가 로또 번호에 있는지 알 수 있다. ")
+    @Test
+    void 보너스_번호가_일치할_경우() {
+        //given
+        WinningNumbers winningNumbers = new WinningNumbers(winningNumber, 34);
+        Lotto lotto = new Lotto(List.of(1, 2, 3, 34, 35, 36));
+        //when
+        boolean matchBonusNumber = winningNumbers.isMatchBonusNumber(lotto);
+        //then
+        assertThat(matchBonusNumber).isTrue();
+    }
 }
