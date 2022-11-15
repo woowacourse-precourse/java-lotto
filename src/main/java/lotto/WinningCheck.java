@@ -19,7 +19,7 @@ public class WinningCheck {
     public void winningCheck() {
         for(Lotto lotto : lottoList) {
             List<Integer> lottoNumbers = lotto.getNumbers();
-            int matchCount = getMathCount(lottoNumbers);
+            int matchCount = getMacthCount(lottoNumbers);
             if(matchCount < Rank.FIFTH.getMatchNumber())
                 continue;
              if(isRankTwo(matchCount, lottoNumbers))
