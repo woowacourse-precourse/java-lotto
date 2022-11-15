@@ -2,15 +2,15 @@ package lotto.controller;
 
 import lotto.model.LottoResult;
 import lotto.model.User;
-import lotto.view.WinningNumberCompareUI;
+import lotto.view.LottoCompareUI;
 
 public class LottoCompare {
-    private final WinningNumberCompareUI winningNumberCompareUI = new WinningNumberCompareUI();
+    private final LottoCompareUI lottoCompareUI = new LottoCompareUI();
 
     public void winningNumberCompareControl(User user){
-        String winningNumber = winningNumberCompareUI.takeWinningNumber();
+        String winningNumber = lottoCompareUI.takeWinningNumber();
         LottoResult lottoResult = new LottoResult(winningNumber);
-        String bonusNumber = winningNumberCompareUI.takeBonusNumber();
+        String bonusNumber = lottoCompareUI.takeBonusNumber();
         lottoResult.setBonusNumber(bonusNumber);
     }
 }
