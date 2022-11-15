@@ -22,8 +22,10 @@ public class ValidLotto {
     }
 
     public Prize lottoPlace(Lotto user) {
-        matchingCount = countByMatcher(user);
+
         boolean isContainBonus = checkByBonus(user);
+        int matchingCount = countByMatcher(user);
+
 
         if (matchingCount == Prize.FIRST.getMatchCount()) {
             return Prize.FIRST;
@@ -45,16 +47,13 @@ public class ValidLotto {
     }
 
     private int countByMatcher(Lotto userLotto) {
-        Set<LottoNum> notDuplicatedLottoNumbers = new HashSet<LottoNum>();
 
         List<LottoNum> matcherNumbers = matching.getNumbers();
         List<LottoNum> userNumbers = userLotto.getNumbers();
 
-        notDuplicatedLottoNumbers.addAll(matcherNumbers);
-        notDuplicatedLottoNumbers.addAll(userNumbers);
+        userNumbers.retainAll(matcherNumbers);
 
-        return matcherNumbers.size() + userNumbers.size()
-                - notDuplicatedLottoNumbers.size();
+        return userNumbers.size();
     }
 
     private boolean checkByBonus(Lotto userLotto) {

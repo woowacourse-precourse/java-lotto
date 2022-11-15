@@ -31,10 +31,15 @@ public class Game {
         List<Lotto> users;
         ValidLotto win;
 
+        try{
         int Amount = PurchaseAmount()/1000;
         users= makeLotto(Amount);
         showuser(users);
         win = new ValidLotto(WinNumber(), BonusNumber());
+        }catch (IllegalArgumentException e){
+            System.out.println("[ERROR]"+e);
+            return;
+        }
 
         Map<Prize, Integer> records = new HashMap<>();
         initRecords(records);
@@ -50,6 +55,11 @@ public class Game {
     public int PurchaseAmount() {
         System.out.println("구매금액을 입력해주세요");
         String input = input();
+        try {
+            int money = Integer.parseInt(input);
+        } catch (Exception e) {
+            throw new IllegalArgumentException("[ERROR] 정수값을 입력하세요");
+        }
         int money = Integer.parseInt(input);
         validateNum(money);
         return (money);
@@ -65,7 +75,7 @@ public class Game {
     public List<Integer> WinNumber(){
         System.out.println("당첨 번호를 입력해 주세요.");
         String input = input();
-        List<String> splits = List.of(input.split(","));
+
         return Arrays.stream(input.split(",")).map(Integer::parseInt).collect(Collectors.toList());
     }
 
@@ -93,7 +103,8 @@ public class Game {
             if (place.equals(Prize.NONE)) {continue;}
             System.out.println(MessageFormat.format("{0} ({1}원) - {2}개", place.getInfo(), place.getPrizeMoney(), records.get(place)));
         }
-        System.out.println("총 수익률은"+Margin+"% 입니다");
+        System.out.println("총 수익률은 "+ String.format("%.2f", Margin) +"%입니다." );
+
     }
 
     public double Margin(Map<Prize, Integer> winningRecords) {
@@ -104,7 +115,7 @@ public class Game {
                 .filter(entry -> !entry.getKey().equals(Prize.NONE))
                 .mapToInt(entry -> entry.getValue() * entry.getKey().getPrizeMoney())
                 .sum();
-        System.out.println(countWinning + " : " + countPurchased);
+
         return 100.0 * (double) countWinning / (double) countPurchased;
     }
 
@@ -134,6 +145,7 @@ public class Game {
 
     private void initRecords(Map<Prize, Integer> records) {
         for (Prize place : Prize.values()) {
+
             records.put(place, 0);
         }
     }

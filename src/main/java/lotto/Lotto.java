@@ -20,7 +20,7 @@ public class Lotto {
     }
 
     public List<LottoNum> getNumbers() {
-        return Collections.unmodifiableList(numbers);
+        return (numbers);
     }
 
 

@@ -24,6 +24,14 @@ public class LottoNum {
     public int getNumber() {
         return number;
     }
+    public int hashCode(){
+        return Objects.hash(number);
+    }
+
+    public boolean equals(Object object){
+        LottoNum lottoNumber = (LottoNum) object;
+        return this.number == lottoNumber.number;
+    }
 
 
 
