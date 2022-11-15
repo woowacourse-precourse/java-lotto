@@ -13,13 +13,24 @@ public class Util {
         int userMoney = 0;
 
         try {
-            userMoney = Integer.parseInt(br.readLine());
+            String userInput = br.readLine();
+
+            if(isNumber(userInput)) userMoney = Integer.parseInt(userInput);
+
         } catch (IOException e) {
-            throw new IllegalArgumentException();
-        } catch(NumberFormatException e){
             throw new IllegalArgumentException();
         }
 
         return userMoney;
+    }
+
+    public static boolean isNumber(String str){
+
+        try{
+            Integer.parseInt(str);
+            return true;
+        }catch(NumberFormatException e){
+            throw new IllegalArgumentException();
+        }
     }
 }
