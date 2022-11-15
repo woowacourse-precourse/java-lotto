@@ -9,21 +9,15 @@ public class LottoDriver {
     private static final int LOTTERY_NUMBER_LIMIT = 6;
     private static int BUYING_AMOUNT = 0;
     public static void startLottoGame(){
-        try {
-            int[][] lotteryBundle = readyProcess();
-            gameProcess(lotteryBundle);
-        }
-        catch (Exception e){
-            throw e;
-        }
+
+        int[][] lotteryBundle = readyProcess();
+        gameProcess(lotteryBundle);
+
     }
     private static int[][] readyProcess() {
-        try{
+
             BUYING_AMOUNT = inputBuyingAmount();
-        }
-        catch (Exception e){
-            throw e;
-        }
+
         int countOfLottery =  BUYING_AMOUNT / AMOUNT_UNIT;
         new PrintDriver().printCountOfLotteryMessage(countOfLottery);
         int[][] lotteryBundle = createLotteryBundle(countOfLottery);
@@ -34,13 +28,11 @@ public class LottoDriver {
         InputDriver InputDriver = new InputDriver();
         int bonusNumber;
         int[] inputNumbersArray;
-        try {
+
             inputNumbersArray = createLottoNumbers();
             bonusNumber = InputDriver.inputBonusNumber(Arrays.stream(inputNumbersArray).boxed().collect(Collectors.toList()));
             new Lotto(Arrays.stream(inputNumbersArray).boxed().collect(Collectors.toList()));
-        } catch (Exception e) {
-            throw e;
-        }
+
         Profit profit = new Profit(inputNumbersArray, bonusNumber);
         int[] countCaseCount = profit.checkWinnings(lotteryBundle,bonusNumber);
         double totalProfitRate = profit.calculateProfitRate(countCaseCount,BUYING_AMOUNT);
@@ -49,15 +41,12 @@ public class LottoDriver {
 
     private static int[] createLottoNumbers(){
         InputDriver InputDriver = new InputDriver();
-        try{
+
             int[] inputNumbersArray = InputDriver.inputNumbers();
             List<Integer> numbers = Arrays.stream(inputNumbersArray).boxed().collect(Collectors.toList());
             new Lotto(numbers);
             return inputNumbersArray;
-        }
-        catch (Exception e){
-            throw e;
-        }
+
     }
 
     private static int[][] createLotteryBundle(int countOfLottery) {
@@ -83,12 +72,9 @@ public class LottoDriver {
 
     private static int inputBuyingAmount() {
         InputDriver InputDriver = new InputDriver();
-        try{
+
             new PrintDriver().printInputBuyingAmountMessage();
             return InputDriver.inputBuyingAmount();
-        }
-        catch (Exception e){
-            throw e;
-        }
+
     }
 }

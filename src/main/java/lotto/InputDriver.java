@@ -8,13 +8,11 @@ public class InputDriver {
     public int inputBuyingAmount() {
         String buyingAmountString = Console.readLine();
         ExceptionCase exceptionCase = new ExceptionCase();
-        try{
-            exceptionCase.checkIfAmountInputIsInteger(buyingAmountString);
-            exceptionCase.checkIf1000Unit(buyingAmountString);
-        }
-        catch(Exception e){
-            throw e;
-        }
+
+        exceptionCase.checkIfAmountInputIsInteger(buyingAmountString);
+        exceptionCase.checkIf1000Unit(buyingAmountString);
+
+
         int buyingAmount = Integer.parseInt(buyingAmountString);
         return buyingAmount;
     }
@@ -25,12 +23,9 @@ public class InputDriver {
         int[] inputNumbersArray = new int[inputNumbersString.split(",").length];
         int index = 0;
         for (String inputNumbers : inputNumbersString.split(",")){
-            try {
-                inputNumbersArray[index++] = exceptionCase.checkIfNumberInRightFormat(inputNumbers);
-            }
-            catch (Exception e){
-                throw e;
-            }
+
+            inputNumbersArray[index++] = exceptionCase.checkIfNumberInRightFormat(inputNumbers);
+
         }
         return inputNumbersArray;
     }
@@ -39,15 +34,12 @@ public class InputDriver {
         new PrintDriver().printInputBonusNumberMessage();
         String inputBonusNumberString = Console.readLine();
         int bonusNumber;
-        try{
-            exceptionCase.validationOfInput(inputBonusNumberString);
-            bonusNumber = Integer.parseInt(inputBonusNumberString);
-            exceptionCase.validationForNumber(numbers, bonusNumber);
-            exceptionCase.validationForRange(bonusNumber);
-        }
-        catch (Exception e){
-            throw e;
-        }
+
+        exceptionCase.validationOfInput(inputBonusNumberString);
+        bonusNumber = Integer.parseInt(inputBonusNumberString);
+        exceptionCase.validationForNumber(numbers, bonusNumber);
+        exceptionCase.validationForRange(bonusNumber);
+
         return Integer.parseInt(inputBonusNumberString);
     }
 

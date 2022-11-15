@@ -9,14 +9,9 @@ public class Lotto {
     }
     private void validate(List<Integer> numbers){
         ExceptionCase exceptionCase = new ExceptionCase();
-        try{
-            exceptionCase.checkNumbersSize(numbers);
-            exceptionCase.checkNumbersOverLap(numbers);
-            exceptionCase.checkNumbersRange(numbers);
-        }
-        catch (Exception e){
-            throw e;
-        }
+        exceptionCase.checkNumbersSize(numbers);
+        exceptionCase.checkNumbersOverLap(numbers);
+        exceptionCase.checkNumbersRange(numbers);
     }
 
 }
