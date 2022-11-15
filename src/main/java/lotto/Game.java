@@ -94,4 +94,17 @@ public class Game {
         }
     }
 
+    static float getTotalPrice() {
+        long totalPrice = NONE;
+        for (Rank rank : Rank.values()) {
+            totalPrice += (rank.getPrice() * winningStatus.get(rank.getMessage()));
+        }
+        return totalPrice;
+    }
+
+    static float getRateOfReturn() {
+        float rateOfReturn = (getTotalPrice() / purchase) * 100;
+        return rateOfReturn;
+    }
+
 }
