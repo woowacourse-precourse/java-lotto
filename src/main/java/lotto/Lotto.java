@@ -48,4 +48,10 @@ public class Lotto {
             throw new IllegalArgumentException("[ERROR] 보너스 번호는 로또 번호와 중복되지 않은 숫자여야 합니다.");
         }
     }
+
+    public void setBonus(int number){
+        validateRangeOfNumber(number);
+        validateDuplicationWithNumbers(number);
+        this.bonus = number;
+    }
 }
