@@ -9,7 +9,7 @@ public class LottoPurchaser {
         purchaseAmount = purchase();
     }
 
-    private int purchase(){
+    private int purchase() {
         System.out.println(Message.PURCHASE_AMOUNT_REQUEST);
 
         String purchaseAmountInput = Console.readLine();
@@ -17,16 +17,16 @@ public class LottoPurchaser {
         return validate(purchaseAmountInput);
     }
 
-    private int validate(String purchaseAmountInput){
-        try{
+    private int validate(String purchaseAmountInput) {
+        try {
             int purchaseAmount = Integer.parseInt(purchaseAmountInput);
 
-            if(purchaseAmount % LottoGenerator.LOTTO_PRICE != 0){
+            if (purchaseAmount % LottoGenerator.LOTTO_PRICE != 0) {
                 throw new IllegalArgumentException(String.format("[ERROR] 구입금액은 %d원 단위여야 합니다.", LottoGenerator.LOTTO_PRICE));
             }
 
             return purchaseAmount;
-        }catch (NumberFormatException e){
+        } catch (NumberFormatException e) {
             throw new IllegalArgumentException("[ERROR] 구입금액은 숫자여야 합니다.");
         }
     }

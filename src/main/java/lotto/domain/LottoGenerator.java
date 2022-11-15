@@ -4,7 +4,6 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 
 public class LottoGenerator {
@@ -22,10 +21,10 @@ public class LottoGenerator {
         printLottosInfo();
     }
 
-    private List<Lotto> generate(int numberOfLotto){
+    private List<Lotto> generate(int numberOfLotto) {
         List<Lotto> lottos = new ArrayList<>();
 
-        for(int i = 0;i<numberOfLotto;i++){
+        for (int i = 0; i < numberOfLotto; i++) {
             List<Integer> numbers = new ArrayList<>(Randoms.pickUniqueNumbersInRange(LOTTO_NUMBER_RANGE_START, LOTTO_NUMBER_RANGE_END, LOTTO_SIZE));
             Collections.sort(numbers);
             lottos.add(new Lotto(numbers));
@@ -34,9 +33,9 @@ public class LottoGenerator {
         return lottos;
     }
 
-    private void printLottosInfo(){
+    private void printLottosInfo() {
         System.out.println(numberOfLotto + Message.LOTTO_GENERATE_SUCCESS);
-        for(Lotto lotto : lottos){
+        for (Lotto lotto : lottos) {
             System.out.println(lotto);
         }
     }

@@ -10,14 +10,14 @@ public class Application {
         run();
     }
 
-    public static void run(){
-        try{
+    public static void run() {
+        try {
             LottoPurchaser lottoPurchaser = new LottoPurchaser();
             LottoGenerator lottoGenerator = new LottoGenerator(lottoPurchaser.getPurchaseAmount());
             WinningNumbers winningNumbers = new WinningNumbers();
             Statistics statistics = new Statistics(winningNumbers, lottoGenerator);
             System.out.println(statistics);
-        }catch (IllegalArgumentException e){
+        } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
 
