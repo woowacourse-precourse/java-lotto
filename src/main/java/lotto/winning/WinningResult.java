@@ -23,9 +23,13 @@ public enum WinningResult {
     }
 
     public static WinningResult generate(Integer matchedCount, Boolean bonusMatched) {
-        Optional<WinningResult> optWinningResult = Arrays.stream(WinningResult.values()).filter(winningResult ->
-                winningResult.getMatchedCount().equals(matchedCount) && (winningResult.getBonusMatched()
-                        && !bonusMatched)).findAny();
+        Optional<WinningResult> optWinningResult = Arrays.stream(WinningResult.values()).filter(winningResult -> {
+            if (matchedCount == 5) {
+                return winningResult.getMatchedCount().equals(matchedCount) && (winningResult.getBonusMatched()
+                        .equals(bonusMatched));
+            }
+            return winningResult.getMatchedCount().equals(matchedCount) && !(winningResult.getBonusMatched() && !bonusMatched);
+        }).findAny();
         return optWinningResult.orElse(NOTHING);
     }
 
