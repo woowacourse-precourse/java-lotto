@@ -1,8 +1,11 @@
 package lotto.constant;
 
+import static lotto.constant.Message.MATCH;
+import static lotto.constant.Message.MATCH_NO_BONUS;
+
 import java.util.Arrays;
 import java.util.Optional;
-import lotto.WinningMoney;
+import lotto.Money;
 
 public enum Rank {
 
@@ -10,8 +13,8 @@ public enum Rank {
     SECOND(5, true, 30_000_000),
     THIRD(5, false, 1_500_000) {
         public String getMessage(int count) {
-            return String.format("%d개 일치 (%s), 보너스 볼 일치 - %d개", THIRD.winningBallMatchCount,
-                    THIRD.winningMoney.toString(),
+            return String.format(MATCH_NO_BONUS, THIRD.winningBallMatchCount,
+                    THIRD.money.toString(),
                     count);
         }
     },
@@ -21,21 +24,21 @@ public enum Rank {
 
     private int winningBallMatchCount;
     private boolean isBonusBallMustMatch;
-    private WinningMoney winningMoney;
+    private Money money;
 
-    Rank(int winningBallMatchCount, boolean isBonusBallMustMatch, int winningMoney) {
+    Rank(int winningBallMatchCount, boolean isBonusBallMustMatch, int money) {
         this.winningBallMatchCount = winningBallMatchCount;
         this.isBonusBallMustMatch = isBonusBallMustMatch;
-        this.winningMoney = new WinningMoney(winningMoney);
+        this.money = new Money(money);
     }
 
-    public WinningMoney getWinningMoney() {
-        return winningMoney;
+    public Money getMoney() {
+        return money;
     }
 
     public String getMessage(int count) {
-        return String.format("%d개 일치 (%s) - %d개", this.winningBallMatchCount,
-                winningMoney.toString(),
+        return String.format(MATCH, this.winningBallMatchCount,
+                money.toString(),
                 count);
     }
 
