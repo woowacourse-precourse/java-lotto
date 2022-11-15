@@ -18,6 +18,10 @@ public class Lotto {
         }
     }
 
+    public void printNumbers() {
+        System.out.println(numbers);
+    }
+
     public int compareWithWinningNumber(List<Integer> winningNumber) {
         this.numbers.sort(Comparator.naturalOrder());
         winningNumber.sort(Comparator.naturalOrder());

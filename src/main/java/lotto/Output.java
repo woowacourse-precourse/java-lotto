@@ -6,7 +6,7 @@ public class Output {
     public void printIssuedLotto(List<Lotto> issuedLotto) {
         System.out.println(issuedLotto.size() + "개를 구매했습니다.");
         for (Lotto lotto : issuedLotto) {
-            System.out.println(lotto);
+            lotto.printNumbers();
         }
     }
 
