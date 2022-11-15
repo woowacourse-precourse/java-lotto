@@ -2,6 +2,7 @@ package lotto.domain.lotto;
 
 import lotto.domain.jackpot.JackpotResult;
 import lotto.domain.prize.PrizeResult;
+import lotto.util.ResultOutput;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -49,6 +50,7 @@ public class Lotto {
             Lotto lotto = new Lotto(one_of_lotto);
             compare_list_to_list(lotto, jackpot_number, bonus_number,jr);
         }
+        ResultOutput.all_result_output();
     }
 
     public static void compare_list_to_list(Lotto lotto, String jackpot_number
