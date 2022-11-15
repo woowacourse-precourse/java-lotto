@@ -3,7 +3,6 @@ package lotto;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.nio.channels.Pipe;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -96,5 +95,9 @@ class LottoTest {
             System.out.println(p.getPrize()+"-"+p.getNumsOfWinner());
         }
         System.out.println(Prize.getComputeIncomeRate(money)+"% 입니다");
+    }
+
+    public static void main(String[] args) {
+
     }
 }

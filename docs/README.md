@@ -3,7 +3,7 @@
 ---
 
 
-# UI
+# ui
 
 ## Input Class
 - [ ] 사용자 입력을 List, Integer 등으로 변환하여 return
