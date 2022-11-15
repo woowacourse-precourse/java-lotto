@@ -5,7 +5,6 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.NoSuchElementException;
 import lotto.LottoEnum.LottoReward;
 
 public class Controller {
