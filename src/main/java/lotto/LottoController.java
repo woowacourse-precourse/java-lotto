@@ -14,15 +14,16 @@ public class LottoController {
         this.inputView = new InputView();
         this.outputView = new OutputView();
     }
-
     void run(){
         buyLotto();
-        issueLottoes();
-        printLottoes();
-        drawWinningNumber();
-        drawBonusNumber();
-        checkDraw();
-        printStatistic();
+        if(purchase.getLottoCount() != 0){
+            issueLottoes();
+            printLottoes();
+            drawWinningNumber();
+            drawBonusNumber();
+            checkDraw();
+            printStatistic();
+        }
     }
 
     void buyLotto(){

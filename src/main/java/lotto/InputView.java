@@ -17,11 +17,13 @@ public class InputView {
         this.validation = new Validation();
     }
 
-    public int inputMoney() {
+    public int inputMoney(){
         System.out.println(INPUT_MONEY_MESSAGE);
         String input = Console.readLine();
-        validation.validatePurchase(input);
-        return Integer.parseInt(input);
+        if(validation.validatePurchase(input)){
+            return Integer.parseInt(input);
+        }
+        return 0;
     }
 
     public List<Integer> inputDraw() {
