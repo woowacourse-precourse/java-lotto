@@ -17,7 +17,7 @@ class ValidatorTest {
     void beforeEach() {
         validator = new Validator();
     }
-//
+
 //    @Test
 //    public void 입력한_보너스_번호가_기존_로또_번호에_이미_있는_경우() {
 //        //given
@@ -38,35 +38,6 @@ class ValidatorTest {
 //        Exception exception = assertThrows(IllegalArgumentException.class, () -> validator.isValidBonusNumber(lottoNumbers, input));
 //        //then
 //        assertThat(exception.getMessage()).isEqualTo(ErrorMessage.LOTTO_NUMBER_IS_NOT_VALID_RANGE.toString());
-//    }
-//    @Test
-//    public void 입력한_번호가_로또번호_범위를_벗어난_경우() {
-//        //given
-//        List<Integer> input = Arrays.asList(1, 2, 3, 4, 5, 50);
-//        //when
-//        Exception exception = assertThrows(IllegalArgumentException.class, () -> validator.isValidLottoNumbers(input));
-//        //then
-//        assertThat(exception.getMessage()).isEqualTo(ErrorMessage.LOTTO_NUMBER_IS_NOT_VALID_RANGE.toString());
-//    }
-//
-//    @Test
-//    public void 입력한_번호가_6개가_아닌_경우() {
-//        //given
-//        List<Integer> input = Arrays.asList(1, 2, 3, 4, 5);
-//        //when
-//        Exception exception = assertThrows(IllegalArgumentException.class, () -> validator.isValidLottoNumbers(input));
-//        //then
-//        assertThat(exception.getMessage()).isEqualTo(ErrorMessage.LOTTO_NUMBER_IS_NOT_SIX_NUMBERS.toString());
-//    }
-//
-//    @Test
-//    public void 입력한_숫자에_중복된_숫자가_존재하는_경우() {
-//        //given
-//        List<Integer> input = Arrays.asList(1, 2, 3, 4, 5, 5);
-//        //when
-//        Exception exception = assertThrows(IllegalArgumentException.class, () -> validator.isValidLottoNumbers(input));
-//        //then
-//        assertThat(exception.getMessage()).isEqualTo(ErrorMessage.LOTTO_NUMBER_IS_DUPLICATED.toString());
 //    }
 
     @Test
