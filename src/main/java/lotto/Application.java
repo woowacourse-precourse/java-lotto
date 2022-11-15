@@ -38,6 +38,7 @@ public class Application {
             }
         }
         PrintWin();
+        CalculateMoney(inputmoney);
     }
 
     public static String InputMoney() {
@@ -82,6 +83,7 @@ public class Application {
     }
 
     public static int BonusNumber(){
+        System.out.println("보너스 번호를 입력해 주세요.");
         String bonus = Console.readLine();
         return Integer.valueOf(bonus);
     }
@@ -133,8 +135,16 @@ public class Application {
         }
     }
 
-    public static int CalculateMoney(){
-
+    public static void CalculateMoney(String inputmoney){
+        double sum = 0;
+        sum += 5000. * win_list.get(hit3);
+        sum += 50000. * win_list.get(hit4);
+        sum += 1500000. * win_list.get(hit5);
+        sum += 30000000. * win_list.get(hit5_bonus);
+        sum += 20000000000. * win_list.get(hit6);
+        double money = Double.valueOf(inputmoney);
+        double earning_rate = sum / money * 100;
+        double rate = Math.round(earning_rate*10)/10;
+        System.out.println("총 수익률은 " + rate + "%입니다.");
     }
 }
-
