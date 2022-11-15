@@ -12,6 +12,15 @@ public class Lottos {
         this.lottos = lottos;
     }
 
+    public List<Ranking> result(WinningLotto bonusLotto) {
+        List<Ranking> winningRanks = new ArrayList<>();
+        for (Lotto lotto : lottos) {
+            int count = lotto.count(bonusLotto);
+            boolean bonus = checkBonus(bonusLotto, lotto, count);
+            winningRanks.add(Ranking.find(count, bonus));
+        }
+        return winningRanks;
+    }
 
     private boolean checkBonus(WinningLotto bonusLotto, Lotto lotto, int count) {
         boolean bonus = false;
