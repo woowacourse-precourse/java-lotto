@@ -55,7 +55,7 @@ public class LottoService {
         return new Lotto(numbers);
     }
 
-    private static Lotto getWinningNumber(String input) {
+    public static Lotto getWinningNumber(String input) {
         if (input.matches(WINNING_NUMBER_INPUT_VALIDATE_REGEX)) {
             throw new IllegalStateException(WINNING_LOTTO_NUMBER_INPUT_IS_NOT_MATCH_REGEX_ERROR_MESSAGE);
         }
