@@ -1,7 +1,10 @@
 package lotto;
 
+import camp.nextstep.edu.missionutils.Randoms;
+
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Application {
@@ -15,7 +18,7 @@ public class Application {
         int buyMoney = sc.nextInt();
 
         //로또 구매및 출력
-        ArrayList<Lotto> lottoList;
+        ArrayList<Lotto> lottoList = buyLotto();
         
         //당첨번호 입력받기
         //보너스 번호 입력받기
@@ -23,6 +26,14 @@ public class Application {
         //당첨통계
         //수익률 출력
 
+    }
+
+    static ArrayList<Lotto> buyLotto(){
+
+        ArrayList<Lotto> lottoList = new ArrayList<Lotto>();
+        //List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+
+        return lottoList;
     }
 
 
