@@ -2,7 +2,9 @@ package lotto.domain;
 
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.HashSet;
 import java.util.List;
+import lotto.ERROR;
 
 public class Lotto {
 
@@ -19,9 +21,13 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
-        if (numbers.size() != 6) {
-            throw new IllegalArgumentException();
+        if (!isCorrectNumber(numbers)) {
+            throw new IllegalArgumentException(ERROR.IS_NOT_CORRECT_NUMBER.getMessage());
         }
+    }
+
+    private boolean isCorrectNumber(List<Integer> numbers) {
+        return numbers.size() == 6;
     }
 
     private void sortAsc(List<Integer> numbers) {
