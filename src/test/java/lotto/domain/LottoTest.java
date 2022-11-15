@@ -1,10 +1,11 @@
-package lotto;
+package lotto.domain;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
+import static org.assertj.core.api.Assertions.*;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class LottoTest {
@@ -23,5 +24,21 @@ class LottoTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
-    // 아래에 추가 테스트 작성 가능
+    @DisplayName("맞춘 로또 번호가 4개인 경우")
+    @Test
+    void win_lotto() {
+        Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+        Lotto randomLotto = new Lotto(List.of(1, 2, 3, 4, 10, 11));
+
+        assertThat(lotto.checkMatchCounts(randomLotto)).isEqualTo(4);
+    }
+
+    @DisplayName("맞춘 로또 번호가 하나도 없는 경우")
+    @Test
+    void lose_lotto() {
+        Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+        Lotto randomLotto = new Lotto(List.of(11, 12, 13, 14, 15, 16));
+
+        assertThat(lotto.checkMatchCounts(randomLotto)).isEqualTo(0);
+    }
 }
