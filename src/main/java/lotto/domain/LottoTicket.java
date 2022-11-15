@@ -3,7 +3,7 @@ package lotto.domain;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-
+import camp.nextstep.edu.missionutils.Randoms;
 import static lotto.domain.Lotto.MAX_NUM;
 import static lotto.domain.Lotto.MIN_NUM;
 
@@ -21,12 +21,7 @@ public class LottoTicket {
     }
 
     private List<Integer> generateLottoNumbers() {
-        List<Integer> lottoNumbers = new ArrayList<>();
-        for (int i = MIN_NUM; i <= MAX_NUM; i++) {
-            lottoNumbers.add(i);
-        }
-        Collections.shuffle(lottoNumbers);
-        return lottoNumbers.subList(0, 6);
+        return Randoms.pickUniqueNumbersInRange(MIN_NUM, MAX_NUM, 6);
     }
 
     public List<Lotto> getLottoTickets() {

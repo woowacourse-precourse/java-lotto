@@ -8,6 +8,9 @@ public class WinningResult {
     private final Map<Ranking, Integer> winningResult = new EnumMap<>(Ranking.class);
 
     public WinningResult(List<Ranking> rankings) {
+        for (Ranking ranking : Ranking.values()) {
+            winningResult.put(ranking, 0);
+        }
         for (Ranking ranking : rankings) {
             winningResult.put(ranking, winningResult.getOrDefault(ranking, 0) + 1);
         }

@@ -67,7 +67,7 @@ public class OutputView {
         if (ranking.getHasBonusBall()) {
             stringBuilder.append(", 보너스 볼 일치");
         }
-        String str = String.format("(%d원)- %d개%s", ranking.getPrize(), count, LINE_SEPARATOR);
+        String str = String.format(" (%s원) - %d개%s", ranking.getPrizeMoneyFormat(), count, LINE_SEPARATOR);
         stringBuilder.append(str);
     }
 
