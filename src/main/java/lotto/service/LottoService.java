@@ -3,7 +3,9 @@ package lotto.service;
 import static lotto.LottoConstant.*;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import lotto.domain.Lotto;
@@ -54,9 +56,14 @@ public class LottoService {
     }
 
     private static Lotto getWinningNumber(String input) {
-        List<Integer> numbers = new ArrayList<>();
         if (input.matches(WINNING_NUMBER_INPUT_VALIDATE_REGEX)) {
             throw new IllegalStateException(WINNING_LOTTO_NUMBER_INPUT_IS_NOT_MATCH_REGEX_ERROR_MESSAGE);
+        }
+        List<Integer> numbers = Arrays.stream(input.split(","))
+            .map(Integer::parseInt)
+            .collect(Collectors.toList());
+        if (!numbers.stream().allMatch(number -> (number >= 1 && number <= 45))) {
+            throw new IllegalStateException(WINNING_LOTTO_NUMBER_INPUT_IS_NOT_IN_LOTTO_RANGE_ERROR_MESSAGE);
         }
 
         return new Lotto(numbers);
