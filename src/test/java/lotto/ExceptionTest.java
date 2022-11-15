@@ -36,6 +36,13 @@ public class ExceptionTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+    @DisplayName("보너스 번호가 1~45 사이의 범위를 초과하면 예외가 발생한다")
+    @Test
+    void createExceptionTest5() {
+        assertThatThrownBy(() -> new Exception().checkBonusNumber("46"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
 
 
 
