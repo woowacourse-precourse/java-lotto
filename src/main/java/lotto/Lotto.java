@@ -34,6 +34,10 @@ public class Lotto {
     public int inputBonusNumber() {
         System.out.println("보너스 번호를 입력해 주세요.");
         String str = Console.readLine();
+        return checkBonusNum(str);
+    }
+
+    public int checkBonusNum(String str) {
         int bonusNum;
         try {
             bonusNum = Integer.parseInt(str);

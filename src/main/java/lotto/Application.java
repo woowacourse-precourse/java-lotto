@@ -31,12 +31,15 @@ public class Application {
     }
 
     public static int checkPay(String str) {
+//        if (!str.matches("^[0-9]*$")) {
+//            throw new IllegalArgumentException("[ERROR] 안된대용");
+//        }
         int pay = 0;
         try {
             pay = Integer.parseInt(str);
         } catch (NumberFormatException e) {
             System.out.println("[ERROR] 구입 금액은 숫자만 입력하실 수 있습니다.");
-            //throw new IllegalArgumentException("[ERROR] 구입 금액은 숫자만 입력하실 수 있습니다.");
+            throw new NoSuchElementException("[ERROR] 구입 금액은 숫자만 입력하실 수 있습니다.");
         }
         if (pay % 1_000 != 0) {
             System.out.println("[ERROR] 구입 금액은 1,000원 단위로 이루어져야 합니다.");
