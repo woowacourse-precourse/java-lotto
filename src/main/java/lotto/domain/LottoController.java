@@ -4,7 +4,6 @@ import lotto.Lotto;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.NoSuchElementException;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
@@ -15,6 +14,9 @@ public class LottoController {
 
         //구매 가능 개수 계산
         int count = cost2count(cost);
+
+        //구매 메세지
+        buyLottoMessage(count);
 
         //주어진 개수의 로또 뭉치 생성
         LottoBundle lottoBundle = new LottoBundle(count);
@@ -45,7 +47,6 @@ public class LottoController {
             throw new IllegalArgumentException(Message.Exception_Not1000unit.getMessage());
         if (count < 0)
             throw new IllegalArgumentException(Message.Exception_NegativeNum.getMessage());
-        System.out.println("\n" + count + "개를 구매했습니다.");
         return count;
     }
 
@@ -82,8 +83,10 @@ public class LottoController {
             return Integer.parseInt(str);
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException(Message.Exception_NotInteger.getMessage());
-        } /*catch (NoSuchElementException e) {
-            throw new IllegalArgumentException(Message.Exception_NoInput.getMessage());
-        }*/
+        }
+    }
+
+    private void buyLottoMessage(int count) {
+        System.out.println("\n" + count + Message.Buy_Lotto.getMessage());
     }
 }

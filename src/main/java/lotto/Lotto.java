@@ -24,26 +24,31 @@ public class Lotto {
             rangeCheck(num);
         }
     }
-    private void sizeCheck(List<Integer> numbers){
+
+    private void sizeCheck(List<Integer> numbers) {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException(Message.Exception_NotCorrectSize.getMessage());
         }
     }
-    private void duplicateCheck(List<Integer> numbers){
+
+    private void duplicateCheck(List<Integer> numbers) {
         Set<Integer> numSet = new HashSet<>(numbers);
         if (numSet.size() != numbers.size()) {
             throw new IllegalArgumentException(Message.Exception_DuplicateNum.getMessage());
         }
     }
-    public static void rangeCheck(int num){
+
+    public static void rangeCheck(int num) {
         if (num < 1 || num > 45)
             throw new IllegalArgumentException(Message.Exception_NotInRange.getMessage());
     }
-    public void bonus_duplicateCheck(int num){
-        if(numbers.contains(num)){
+
+    public void bonus_duplicateCheck(int num) {
+        if (numbers.contains(num)) {
             throw new IllegalArgumentException(Message.Exception_DuplicateNum.getMessage());
         }
     }
+
     public List<Integer> getNumbers() {
         return numbers;
     }

@@ -27,8 +27,7 @@ public class LottoStatistic {
     @Override
     public String toString() {
 
-        String print = "\n당첨 통계\n";
-        print += "---\n";
+        String print = Message.Print_Statistic.getMessage();
         for (Rank rank : Rank.values()) {
             print += summarizeRank(rank);
         }
@@ -37,15 +36,8 @@ public class LottoStatistic {
     }
 
     public String summarizeRank(Rank rank) {
-        DecimalFormat df = new DecimalFormat("###,###");
-        int count = rank.getCounts();
-        String price = df.format(rank.getPrice());
+        String str = rank.getExplain();
         int quantity = rankMap.getOrDefault(rank, 0);
-
-        String str = count + "개 일치";
-        if (rank == Rank.Second_Place)
-            str += ", 보너스 볼 일치";
-        str += " (" + price + "원) - ";
         str += quantity + "개\n";
 
         return str;
