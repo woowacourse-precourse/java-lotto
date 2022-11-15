@@ -22,9 +22,9 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class LottoMachineTest {
 
+    @DisplayName("구입 금액을 잘못 입력하면 오류 발생")
     @ParameterizedTest
     @ValueSource(strings = {"1100", "100", "3500", "12001", "50", "abcd", "12cd", " ", "9900", "0"})
-    @DisplayName("구입 금액을 잘못 입력하면 오류 발생")
     void validateInputMoney(String input) throws Exception {
         System.setIn(new ByteArrayInputStream(input.getBytes()));
         LottoMachine lottoMachine = new LottoMachine();
@@ -35,6 +35,7 @@ class LottoMachineTest {
     }
 
 
+    @DisplayName("구입 금액에 따른 로또 생성 갯수")
     @ParameterizedTest
     @CsvSource({"1000,1", "2000,2", "3000,3", "5000,5"})
     void createLottoNumber(String input, String size) {
