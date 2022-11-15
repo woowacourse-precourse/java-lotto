@@ -180,6 +180,57 @@ public class Application {
         }
     }
 
+    public static List<Integer> getWinningStats(List<Lotto> lottery, List<Integer> winningNumbers, int bonusNumber) {
+        List<Integer> winningStats = new ArrayList<>(List.of(0, 0, 0, 0, 0));
+
+        for (Lotto lotto : lottery) {
+            int winningNumberCount = (int) lotto.getWinningNumberCount(winningNumbers);
+            boolean isContainBonusNumber = lotto.isContainBonusNumber(bonusNumber);
+            winningStats = calculateFifthPlace(winningNumberCount, winningStats);
+            winningStats = calculateFourthPlace(winningNumberCount, winningStats);
+            winningStats = calculateThirdPlace(winningNumberCount, winningStats, isContainBonusNumber);
+            winningStats = calculateSecondPlace(winningNumberCount, winningStats, isContainBonusNumber);
+            winningStats = calculateFirstPlace(winningNumberCount, winningStats);
+        }
+
+        return winningStats;
+    }
+
+    public static List<Integer> calculateFifthPlace(int winningNumberCount, List<Integer> winningStats) {
+        if (winningNumberCount == 3) {
+            winningStats.set(0, winningStats.get(0) + 1);
+        }
+        return winningStats;
+    }
+
+    public static List<Integer> calculateFourthPlace(int winningNumberCount, List<Integer> winningStats) {
+        if (winningNumberCount == 4) {
+            winningStats.set(1, winningStats.get(1) + 1);
+        }
+        return winningStats;
+    }
+
+    public static List<Integer> calculateThirdPlace(int winningNumberCount, List<Integer> winningStats, boolean isContainBonusNumber) {
+        if (winningNumberCount == 5 && !isContainBonusNumber) {
+            winningStats.set(2, winningStats.get(2) + 1);
+        }
+        return winningStats;
+    }
+
+    public static List<Integer> calculateSecondPlace(int winningNumberCount, List<Integer> winningStats, boolean isContainBonusNumber) {
+        if (winningNumberCount == 5 && isContainBonusNumber) {
+            winningStats.set(3, winningStats.get(3) + 1);
+        }
+        return winningStats;
+    }
+
+    public static List<Integer> calculateFirstPlace(int winningNumberCount, List<Integer> winningStats) {
+        if (winningNumberCount == 6) {
+            winningStats.set(4, winningStats.get(4) + 1);
+        }
+        return winningStats;
+    }
+
     public static void main(String[] args) {
         int lottoPurchaseMoney = getLottoPurchaseMoney();
         if (lottoPurchaseMoney == INVALID_PURCHASE_MONEY) {
@@ -195,5 +246,6 @@ public class Application {
         if (bonusNumber == INVALID_BONUS_NUMBER) {
             return;
         }
+        List<Integer> winningStats = getWinningStats(lottery, winningNumbers, bonusNumber);
     }
 }
