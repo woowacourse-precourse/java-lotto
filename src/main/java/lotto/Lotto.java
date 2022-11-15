@@ -23,11 +23,6 @@ public class Lotto {
     }
 
     // TODO: 추가 기능 구현
-    public void printNumbers() {
-        printFormat(this.numbers);
-        return;
-    }
-
     private boolean isInvalidRange(List<Integer> numbers) {
         for (Integer number : numbers) {
             String num = number.toString();
@@ -46,6 +41,11 @@ public class Lotto {
             return true;
         }
         return false;
+    }
+
+    public void printNumbers() {
+        printFormat(this.numbers);
+        return;
     }
 
     private void printFormat(List<Integer> numbers) {
