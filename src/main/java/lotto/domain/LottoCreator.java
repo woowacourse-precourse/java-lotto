@@ -22,6 +22,7 @@ public class LottoCreator {
 
     private static Lotto createLotto() {
         List<Integer> lottoNumbers = Randoms.pickUniqueNumbersInRange(START_LOTTO_NUMBER, END_LOTTO_NUMBER, LOTTO_SIZE);
+        Collections.sort(lottoNumbers);
         return new Lotto(lottoNumbers);
     }
 }
