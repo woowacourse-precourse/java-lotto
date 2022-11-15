@@ -1,5 +1,6 @@
 package lotto.domain.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Lotto {
@@ -47,8 +48,14 @@ public class Lotto {
     public String toString() {
         return this.numbers.toString();
     }
-    
+
     public boolean contains(int number) {
         return this.numbers.contains(number);
+    }
+
+    public int getCorrectCount(Lotto lotto) {
+        List<Integer> copiedList = new ArrayList<>(this.numbers);
+        copiedList.retainAll(lotto.numbers);
+        return copiedList.size();
     }
 }
