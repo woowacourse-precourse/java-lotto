@@ -17,6 +17,8 @@ public class Calculator {
 
     public List<Integer> getResult() {
         for (List<Integer> lottoNumber : lottoSet) {
+
+            // 로또 별로 맞은 개수 초기화
             cnt = 0;
             for (Integer winningNumber : winningLotto) {
                 countCalculator(lottoNumber, winningNumber);
