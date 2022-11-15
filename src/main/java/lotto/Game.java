@@ -8,7 +8,7 @@ import java.util.stream.Collectors;
 import lotto.validator.PaymentValidator;
 import lotto.domain.Lotto;
 import lotto.domain.Rank;
-import lotto.domain.WinningInfo;
+import lotto.domain.Winning;
 import lotto.logic.Exchanger;
 import lotto.logic.LottoMachine;
 import lotto.logic.LottoService;
@@ -31,7 +31,7 @@ public class Game {
     public void play() throws IllegalArgumentException {
         long payment = inputPayment();
         List<Lotto> lottos = createLottos(payment);
-        WinningInfo target = inputTargetNumbers();
+        Winning target = inputTargetNumbers();
         outputResult(payment, lottos, target);
     }
 
@@ -48,7 +48,7 @@ public class Game {
         return lottos;
     }
 
-    private WinningInfo inputTargetNumbers() throws IllegalArgumentException {
+    private Winning inputTargetNumbers() throws IllegalArgumentException {
         view.printWinningNumbersInputRequest();
         String[] inputNumbers = Console.readLine()
                                        .replace(" ", "")
@@ -62,10 +62,10 @@ public class Game {
         view.printBonusNumberInputRequest();
         int bonusNumber = Integer.parseInt(Console.readLine());
 
-        return new WinningInfo(numbers, bonusNumber);
+        return new Winning(numbers, bonusNumber);
     }
 
-    private void outputResult(long payment, List<Lotto> lottos, WinningInfo target) {
+    private void outputResult(long payment, List<Lotto> lottos, Winning target) {
         Map<Rank, Integer> countOfWinning = lottoService.getResult(lottos, target);
         double profitRate = exchanger.calculateProfitRate(countOfWinning, payment);
         view.printWinningResult(countOfWinning, profitRate);

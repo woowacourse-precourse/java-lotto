@@ -6,7 +6,7 @@ import java.util.Map;
 import java.util.Optional;
 import lotto.domain.Lotto;
 import lotto.domain.Rank;
-import lotto.domain.WinningInfo;
+import lotto.domain.Winning;
 
 public class LottoService {
 
@@ -22,7 +22,7 @@ public class LottoService {
         return LottoServiceHolder.INSTANCE;
     }
 
-    public Map<Rank, Integer> getResult(List<Lotto> lottos, WinningInfo target) {
+    public Map<Rank, Integer> getResult(List<Lotto> lottos, Winning target) {
         Map<Rank, Integer> countOfWinning = new EnumMap<>(Rank.class);
 
         lottos.forEach(lotto -> {
@@ -38,13 +38,13 @@ public class LottoService {
         return countOfWinning;
     }
 
-    private Optional<Rank> getWinning(WinningInfo target, Lotto lotto) {
+    private Optional<Rank> getWinning(Winning target, Lotto lotto) {
         int sameCount = compareForSame(target, lotto);
         int bonusCount = compareForBonus(target, lotto);
         return Rank.getWinning(sameCount, bonusCount);
     }
 
-    private int compareForSame(WinningInfo target, Lotto lotto) {
+    private int compareForSame(Winning target, Lotto lotto) {
         int sameCount = 0;
 
         for (int size = lotto.size(), i = 0; i < size; i++) {
@@ -58,7 +58,7 @@ public class LottoService {
         return sameCount;
     }
 
-    private int compareForBonus(WinningInfo target, Lotto lotto) {
+    private int compareForBonus(Winning target, Lotto lotto) {
         int bonusCount = 0;
 
         int bonusNumber = target.getBonusNumber();
