@@ -4,18 +4,34 @@ import java.util.Objects;
 
 public class Money {
 
+    private static final String NUMBER_PATTERN = "\\d+";
     public static final int LOTTO_PRICE = 1_000;
 
-    private int money;
+    private final int money;
 
     public Money(int money) {
         validate(money);
         this.money = money;
     }
 
+    public Money(String money) {
+        this(parseInt(money));
+    }
+
+    private static int parseInt(String money) {
+        validateNumber(money);
+        return Integer.parseInt(money);
+    }
+
     private void validate(int money) {
         if (!isValidUnit(money)) {
             throw new IllegalArgumentException("1,000원 단위로 입력해주세요.");
+        }
+    }
+
+    private static void validateNumber(String money) {
+        if (!money.matches(NUMBER_PATTERN)) {
+            throw new IllegalArgumentException("숫자만 입력해주세요.");
         }
     }
 
