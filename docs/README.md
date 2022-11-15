@@ -21,17 +21,19 @@
 
 ### 기능 목록 구현 객체
 * Buyer
-  * 구매 금액 산정
+  * 구매 금액 산정 
+  * 로또 번호 생성 
 * Lotto
-  * 로또 번호 생성
-* Picker
-  * 로또 당첨 번호 생성
+  * 로또 번호 validation [o]
+* WinnerSelector
+  * 로또 당첨 번호 생성 
+  * 로또 당첨번호 비교
 * RevenueCounter
-  * 당첨 비교
   * 수익률 계산
+  * 몇번 맞췄는지 계산
 * Viewer
   * 출력
-* ExceptionChecker
-  * 예외 체크
+* Controller 
+  * 객체들 조합하여 로또 시물레이션
 
 
