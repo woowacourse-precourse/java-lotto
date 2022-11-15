@@ -12,8 +12,8 @@
     - [x] 로또 번호가 1~45 사이인지 확인한다.
     - [x] 로또 번호가 총 6자리인지 확인한다.
     - [x] 로또 번호가 중복되지 않는지 확인한다.
-- [ ] 로또 번호를 발행한다 - LottoTicket
-    - [ ] 1~45 사이의 숫자를 6개 생성한다. - LottoTicket#generateLotto()
+- [x] 로또 번호를 발행한다 - LottoTicket
+    - [x] 1~45 사이의 숫자를 6개 생성한다. - LottoTicket#generateLotto()
     - [ ] 생성될 때마다 오름차순으로 출력한다.
 - [ ] 로또와 사용자의 당첨 번호를 비교한다. - Judgement
     - [ ] 사용자의 구입 금액만큼 비교한다. - Judgement#compare()
