@@ -16,10 +16,18 @@ public class Lotto {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException();
         }
+
+        if (!isDifferentNumbers(numbers)) {
+            throw new IllegalArgumentException();
+        }
     }
 
-    public List<Integer> get() {
-        return numbers;
+    private boolean isDifferentNumbers(List<Integer> numbers) {
+        Set<Integer> numSet = new HashSet<>(numbers);
+        if (numbers.size() != numSet.size()) {
+            return false;
+        }
+        return true;
     }
 
     public void sortByAsc() {
