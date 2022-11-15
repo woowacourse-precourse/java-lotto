@@ -1,7 +1,6 @@
 package lotto;
 
 import lotto.domain.Lotto;
-import lotto.domain.Player;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -48,6 +47,4 @@ class LottoTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("[ERROR] 로또 번호는 1이상 45이하의 숫자만 가능합니다.");
     }
-
-    //오름차순 출력되는지 확인 테스트
 }
