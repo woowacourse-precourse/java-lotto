@@ -9,8 +9,6 @@ import lotto.domain.LottoMachine;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static org.assertj.core.api.Assertions.assertThat;
-
 public class LottoMachineTest {
     @DisplayName("입력한 금액만큼 로또가 발행되는지 테스트")
     @Test

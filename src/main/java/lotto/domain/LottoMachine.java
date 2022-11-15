@@ -1,6 +1,7 @@
 package lotto.domain;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import camp.nextstep.edu.missionutils.Randoms;
@@ -18,7 +19,7 @@ public class LottoMachine {
     }
 
     public List<Integer> getResult(List<Lotto> lottos, List<Integer> numbers, int bonus) {
-        List<Integer> result = List.of(0, 0, 0, 0, 0);
+        List<Integer> result = Arrays.asList(0, 0, 0, 0, 0);
         Calculator.calRank(result, lottos, numbers, bonus);
         return result;
     }
