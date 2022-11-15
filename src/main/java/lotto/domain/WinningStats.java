@@ -23,7 +23,7 @@ public class WinningStats {
         this.winningStats = winningStats;
     }
 
-    public static void addStats(int count, LinkedHashMap<String, Integer> winningStats) {
+    private void addStats(int count, LinkedHashMap<String, Integer> winningStats) {
         String key = "";
         if (count == 3) {
             key = "FIFTH";
@@ -43,7 +43,7 @@ public class WinningStats {
         winningStats.put(key, winningStats.get(key) + 1);
     }
 
-    public static int matchNumbers(List<Integer> winningNumbers, int bonusNumber, List<Integer> lotto) {
+    private int matchNumbers(List<Integer> winningNumbers, int bonusNumber, List<Integer> lotto) {
             int count = 0;
 
             for (Integer number : lotto) {
