@@ -72,24 +72,4 @@ public class CheckerTest {
         expected.put(RankNumber.FIFTH, fifth);
         return expected;
     }
-
-//    @DisplayName("총 당첨 금액 계산")
-//    @Test
-//    void getTotalWinningsTest() {
-//        Kiosk.resultStatistics = new EnumMap<RankNumber, Integer>(RankNumber);
-//        assertThat(Calculator.getTotalWinnings(Kiosk.resultStatistics)).isEqualTo(105000);
-//    }
-//
-//    @DisplayName("수익률 계산")
-//    @Test
-//    void getYieldTest() {
-//        Kiosk.resultStatistics = new int[]{0, 0, 0, 2, 1};
-//        assertThat(Calculator.getYield(8000, Kiosk.resultStatistics)).isEqualTo(1300.0f);
-//    }
-//
-//    @DisplayName("수익률 반올림 검사")
-//    @Test
-//    void getRoundedYieldTest() {
-//        assertThat(Calculator.getRoundedYield(1300.145f)).isEqualTo(1300.15f);
-//    }
 }
