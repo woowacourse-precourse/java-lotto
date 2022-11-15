@@ -10,4 +10,9 @@ public class InputView {
         System.out.printf(Message.INPUT_MONEY.get());
         return Console.readLine();
     }
+
+    public static String inputWinLottoNumber() {
+        System.out.printf(Message.INPUT_WIN_LOTTONUMBER.get());
+        return Console.readLine();
+    }
 }
