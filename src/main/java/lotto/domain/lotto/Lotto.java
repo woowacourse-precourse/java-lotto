@@ -3,6 +3,7 @@ package lotto.domain.lotto;
 import lotto.exception.LottoIllegalArgumentException;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * 제공된 Lotto 클래스를 활용해 구현해야 한다.
@@ -16,6 +17,7 @@ public class Lotto {
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
+        validateDuplication(numbers);
         this.numbers = numbers;
     }
 
@@ -29,5 +31,12 @@ public class Lotto {
 
     public List<Integer> getNumbers() {
         return numbers;
+    }
+
+    private void validateDuplication(List<Integer> numbers) {
+        int size = numbers.stream().collect(Collectors.toSet()).size();
+        if (size != 6) {
+            throw new LottoIllegalArgumentException("로또숫자는 중복되지 않아야합니다.");
+        }
     }
 }
