@@ -3,8 +3,6 @@ package lotto;
 import lotto.domain.LottoMachine;
 import lotto.domain.User;
 
-import java.util.List;
-
 public class Application {
 
     public static void main(String[] args) {
