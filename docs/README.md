@@ -12,7 +12,10 @@
     - 이 과정에서 중복된 값이 발견되면 `IllegalArgumentException`를 발생시킨다.
   - checkBonusExists 메소드
     - 보너스 숫자가 members 변수에 이미 존재하면 `IllegalArgumentException`를 발생시킨다.
-
+  - printLotto() 메소드
+    - 로또 번호를 출력한다.
+  - getNumbers() 메소드
+    - 로또 번호를 반환한다.
 ---
 ## Features
 
