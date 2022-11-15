@@ -67,10 +67,14 @@ public enum WinningHistory {
     }
 
     public String getStaticsMessage(int count) {
-        if (matchNumbers == SECOND_PRIZE.getMatchNumbers() && prizeMoney == SECOND_PRIZE.getPrizeMoney()) {
+        if (isSecondPrize(matchNumbers, prizeMoney)) {
             return String.format("%d개 일치, 보너스 볼 일치 (%,d원) - %d개", matchNumbers, prizeMoney, count);
         }
 
         return String.format("%d개 일치 (%,d원) - %,d개", matchNumbers, prizeMoney, count);
+    }
+
+    private boolean isSecondPrize(int matchNumbers, int prizeMoney) {
+        return matchNumbers == SECOND_PRIZE.getMatchNumbers() && prizeMoney == SECOND_PRIZE.getPrizeMoney();
     }
 }
