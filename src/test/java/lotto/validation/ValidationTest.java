@@ -25,7 +25,7 @@ class ValidationTest {
     }
 
 
-    @ParameterizedTest
+    /*@ParameterizedTest
     //given
     @ValueSource(strings = {"a", "abc", "한글_되나요?", "이것도안되야함", "1234", "121200000000002"})
     void validation_user_input_money_유저의_금액_입력값이_유효하지_않을경우_예외발생(String source) {
@@ -34,7 +34,7 @@ class ValidationTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 //then
                 .hasMessageContaining("[ERROR] 1000원단위의 숫자를 입력해야합니다");
-    }
+    }*/
 
     @ParameterizedTest
     //given
