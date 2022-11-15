@@ -27,6 +27,10 @@ public class Application {
         // 사용자에게 보너스 번호 입력받기
         int bonusNumber = Integer.parseInt(UserInputString.ENTERBONNUSNUMBER.getString());
 
+        // 입력받은 당첨번호를 int형 리스트화 시키기
+        List<Integer> winningNumberList = IntListOfTheReceivedWinningNumbers(winningNumber);
+
+
     }
 
     public static int GetUserInputOfPurchaseAmount(String purchaseAmount) {
@@ -55,4 +59,12 @@ public class Application {
         return lottoNumberList;
     }
 
+    public static List<Integer> IntListOfTheReceivedWinningNumbers(String winningNumber){
+        List<Integer> winningNumberList = new ArrayList<>();
+        String[] winningNumberStringList = winningNumber.split(",");
+        for (int i = 0; i < winningNumberStringList.length; i++) {
+            winningNumberList.add(Integer.parseInt(winningNumberStringList[i]));
+        }
+        return winningNumberList;
+    }
 }
