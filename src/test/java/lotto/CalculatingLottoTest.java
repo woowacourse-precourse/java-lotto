@@ -25,4 +25,20 @@ class CalculatingLottoTest {
 
         assertThat(calculatingLotto.checkBonus(6, List.of(1, 2, 3, 4, 5, 8))).isEqualTo(false);
     }
+
+    @Test
+    void getLottoRankTest() {
+        assertThat(calculatingLotto.getLottoRank(6, false)).isEqualTo(1);
+        assertThat(calculatingLotto.getLottoRank(6, true)).isEqualTo(1);
+        assertThat(calculatingLotto.getLottoRank(5, true)).isEqualTo(2);
+        assertThat(calculatingLotto.getLottoRank(5, false)).isEqualTo(3);
+        assertThat(calculatingLotto.getLottoRank(4, true)).isEqualTo(4);
+        assertThat(calculatingLotto.getLottoRank(4, false)).isEqualTo(4);
+        assertThat(calculatingLotto.getLottoRank(3, true)).isEqualTo(5);
+        assertThat(calculatingLotto.getLottoRank(3, false)).isEqualTo(5);
+        assertThat(calculatingLotto.getLottoRank(2, true)).isEqualTo(0);
+        assertThat(calculatingLotto.getLottoRank(1, false)).isEqualTo(0);
+
+
+    }
 }
