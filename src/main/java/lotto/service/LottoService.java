@@ -28,6 +28,15 @@ public class LottoService {
 
     }
 
+    public LottoService(List<Lotto> lotteries, List<Integer> winnings, int bonus, double buyMoney) {
+        this.lotteries = lotteries;
+        this.winnings = winnings;
+        this.bonus = bonus;
+        this.buyMoney = buyMoney;
+        createMatches();
+        this.profitRate = getLottoRate();
+    }
+
     private void createMatches() {
         for (Lotto lotto : lotteries) {
             int win = checkWinningNumber(lotto.getNumbers());
