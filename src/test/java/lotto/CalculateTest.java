@@ -4,6 +4,8 @@ import controller.Calculate;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -28,5 +30,22 @@ public class CalculateTest {
         assertThat(Calculate.calculateYield(10000,5000)).isEqualTo("50.0%");
         assertThat(Calculate.calculateYield(1000,0)).isEqualTo("0.0%");
         assertThat(Calculate.calculateYield(7000,5000)).isEqualTo("71.4%");
+    }
+
+    @DisplayName("맞춘 당첨번호에 따라 등수를 출력한다.")
+    @Test
+    void 당첨등수_테스트(){
+        assertThat(Calculate.calculateWinning(List.of(6,0))).isEqualTo("FIRST");
+        assertThat(Calculate.calculateWinning(List.of(5,1))).isEqualTo("SECOND");
+        assertThat(Calculate.calculateWinning(List.of(5,0))).isEqualTo("THIRD");
+        assertThat(Calculate.calculateWinning(List.of(4,1))).isEqualTo("THIRD");
+        assertThat(Calculate.calculateWinning(List.of(4,0))).isEqualTo("FOURTH");
+        assertThat(Calculate.calculateWinning(List.of(3,1))).isEqualTo("FOURTH");
+        assertThat(Calculate.calculateWinning(List.of(3,0))).isEqualTo("FIFTH");
+        assertThat(Calculate.calculateWinning(List.of(2,1))).isEqualTo("FIFTH");
+        assertThat(Calculate.calculateWinning(List.of(1,0))).isEqualTo("NOTHING");
+        assertThat(Calculate.calculateWinning(List.of(0,1))).isEqualTo("NOTHING");
+        assertThat(Calculate.calculateWinning(List.of(0,0))).isEqualTo("NOTHING");
+
     }
 }
