@@ -51,5 +51,6 @@ public enum WinningStatus {
                 return winningIndex;
             }
         }
+        throw new IllegalArgumentException(PrintGameInfo.getPointError());
     }
 }

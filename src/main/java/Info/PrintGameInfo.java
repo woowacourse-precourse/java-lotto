@@ -24,7 +24,7 @@ public class PrintGameInfo {
     public static final String OUT_OF_RANGE = "로또 숫자의 범위 밖의 숫자를 선택하였습니다.";
     public static final String DUPLICATE = "사용자의 입력 중 중복되는 값이 존재합니다.";
     public static final String BONNUS_NUMBER_EXIST = "보너스 번호의 값이 이미 당첨 번호에 선택되었습니다.";
-    public static final String POINT_ERROR = "잘못된 포인트 값이 들어왔습니다. 내부 로직 에러";
+    public static final String POINT_ERROR = "Status구하는 함수에 잘못된 상수 값이 들어왔습니다. 내부 로직 에러";
 
     public static void purchaseAmountInfo() {
         System.out.println("구입금액을 입력해 주세요.");
@@ -59,7 +59,7 @@ public class PrintGameInfo {
         for (int winIndex=0; winIndex < LottoList.WIN_COUNT; winIndex++) {
             WinningStatus status = WinningStatus.getWinningStatusWithIndex(winIndex);
             long winningCount =  userLotto.getWinningCountValue(winIndex);
-            System.out.println(getResultInfo(status.getPrintInfo(), Long.toString(winningCount));
+            System.out.println(getResultInfo(status.getPrintInfo(), Long.toString(winningCount)));
         }
     }
 
