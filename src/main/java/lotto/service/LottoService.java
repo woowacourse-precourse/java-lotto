@@ -15,8 +15,9 @@ public class LottoService {
     private WinningResult winningResult;
     private LottoMoney lottoMoney;
 
-    public void purchase(LottoMoney lottoMoney) {
-        this.lottoMoney = lottoMoney;
+    public void purchase(String inputLottoMoney) {
+        validateInt(inputLottoMoney);
+        this.lottoMoney = new LottoMoney(Integer.parseInt(inputLottoMoney));
         int buyQuantity = lottoMoney.getMoney() / 1000;
 
         for (int i = 0; i < buyQuantity; i++) {
@@ -60,7 +61,7 @@ public class LottoService {
 
     private List<LottoNumber> convertToNumbers(String input) {
         return splitByComma(input)
-                .map(LottoService::convertToNumber)
+                .map(this::convertToNumber)
                 .collect(Collectors.toList());
     }
 
@@ -69,14 +70,19 @@ public class LottoService {
         if (splitNumbers.length != 6) {
             throw new IllegalArgumentException("콤마를 올바르게 입력해 주세요.");
         }
+
         return Arrays.stream(splitNumbers);
     }
 
-    private static LottoNumber convertToNumber(String inputBonusNumber) {
-        try {
-            return new LottoNumber(Integer.parseInt(inputBonusNumber));
-        } catch (NumberFormatException ex) {
-            throw new IllegalArgumentException("올바른 숫자 형식으로 입력해 주세요.");
+    private LottoNumber convertToNumber(String inputBonusNumber) {
+        validateInt(inputBonusNumber);
+
+        return new LottoNumber(Integer.parseInt(inputBonusNumber));
+    }
+
+    private void validateInt(String input) {
+        if (!input.chars().allMatch(Character::isDigit)) {
+            throw new IllegalArgumentException("숫자를 입력해 주세요.");
         }
     }
 }

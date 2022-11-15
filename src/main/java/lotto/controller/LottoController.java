@@ -28,8 +28,7 @@ public class LottoController {
 
     private void purchase() {
         lottoMessage.printPurchaseMessage();
-        LottoMoney lottoMoney = new LottoMoney(Console.readLine());
-        lottoService.purchase(lottoMoney);
+        lottoService.purchase(Console.readLine());
     }
 
     private void showPurchaseLotteries() {

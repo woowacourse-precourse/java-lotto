@@ -18,7 +18,7 @@ class LottoServiceTest {
     @DisplayName("로또 구매시 1000원당 1장만큼 생성이 된다.")
     @Test
     void purchaseLottoTest() {
-        lottoService.purchase(new LottoMoney(5000));
+        lottoService.purchase("5000");
 
         assertThat(lottoService.getPurchaseLotteries().size()).isEqualTo(5);
     }
