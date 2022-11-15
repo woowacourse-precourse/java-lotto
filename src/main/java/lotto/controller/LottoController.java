@@ -1,4 +1,9 @@
-package lotto;
+package lotto.controller;
+
+import lotto.utils.LottoUtil;
+import lotto.view.LottoView;
+import lotto.model.Lotto;
+import lotto.model.LottoRandom;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;

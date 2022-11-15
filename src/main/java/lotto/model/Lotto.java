@@ -1,4 +1,6 @@
-package lotto;
+package lotto.model;
+
+import lotto.utils.LottoUtil;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;

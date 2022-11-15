@@ -1,5 +1,6 @@
-package lotto;
+package lotto.model;
 
+import lotto.model.Lotto;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -8,7 +9,7 @@ import java.math.BigInteger;
 import java.util.List;
 import java.util.Map;
 
-import static lotto.Lotto.MatchInfo.*;
+import static lotto.model.Lotto.MatchInfo.*;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.assertAll;
