@@ -1,4 +1,4 @@
-package lotto.ui.message;
+package lotto.ui.generator;
 
 import lotto.model.Lotto;
 import org.junit.jupiter.api.DisplayName;

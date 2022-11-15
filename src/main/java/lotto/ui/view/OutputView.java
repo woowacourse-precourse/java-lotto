@@ -1,6 +1,6 @@
 package lotto.ui.view;
 
-import lotto.ui.message.*;
+import lotto.ui.generator.*;
 import lotto.model.Lotto;
 import lotto.model.Rank;
 import lotto.controller.TotalResult;
