@@ -8,12 +8,12 @@ import java.util.stream.Collectors;
 public class LottoNumberChecker {
     private final Lotto winningLotto;
     private final LottoNumber bonusNumber;
-    private final List<Lotto> lottos;
+    private final List<Lotto> lotteries;
 
-    public LottoNumberChecker(Lotto winningLotto, LottoNumber bonusNumber, List<Lotto> lottos) {
+    public LottoNumberChecker(Lotto winningLotto, LottoNumber bonusNumber, List<Lotto> lotteries) {
         this.winningLotto = winningLotto;
         this.bonusNumber = bonusNumber;
-        this.lottos = lottos;
+        this.lotteries = lotteries;
     }
 
     public MatchResult resultOfLotteries() {
@@ -21,7 +21,7 @@ public class LottoNumberChecker {
     }
 
     private EnumMap<MatchType, Integer> saveNumberOfWinner() {
-        return lottos.stream()
+        return lotteries.stream()
                 .map(this::countMatchedLottoNumber)
                 .filter(numberMatched -> numberMatched >= MatchType.THREE.getNumberMatched())
                 .collect(Collectors.toMap(

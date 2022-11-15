@@ -29,7 +29,7 @@ public class Application {
 
         Customer customer = new Customer(purchasePrice);
         lottoSeller.sellLotteriesTo(customer);
-        OutputView.printLottos(customer.getLottos());
+        OutputView.printLotteries(customer.getLotteries());
 
         MatchResult matchResult = customer.checkMyLottoNumbers(generateLottoCompany());
         OutputView.printResult(matchResult, customer.calculateProfit(matchResult));

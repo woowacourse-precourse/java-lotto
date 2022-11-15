@@ -21,6 +21,6 @@ class LottoSellerTest {
         LottoSeller lottoSeller = new LottoSeller(new LottoNumberGenerator());
         Customer customer = new Customer(new PurchasePrice("5000"));
         lottoSeller.sellLotteriesTo(customer);
-        assertThat(customer.getLottos().size()).isEqualTo(5);
+        assertThat(customer.getLotteries().size()).isEqualTo(5);
     }
 }

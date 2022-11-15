@@ -19,8 +19,8 @@ public class LottoCompany {
         }
     }
 
-    public MatchResult showResultOfCustomerLotteries(List<Lotto> lottos) {
-        LottoNumberChecker lottoNumberChecker = new LottoNumberChecker(winningLotto, bonusNumber, lottos);
+    public MatchResult showResultOfCustomerLotteries(List<Lotto> lotteries) {
+        LottoNumberChecker lottoNumberChecker = new LottoNumberChecker(winningLotto, bonusNumber, lotteries);
         return lottoNumberChecker.resultOfLotteries();
     }
 }

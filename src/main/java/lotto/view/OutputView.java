@@ -11,8 +11,8 @@ public class OutputView {
         System.out.printf(LottoMessage.QUANTITY.getMessage(), quantity);
     }
 
-    public static void printLottos(List<Lotto> lottos) {
-        lottos.forEach(System.out::println);
+    public static void printLotteries(List<Lotto> lotteries) {
+        lotteries.forEach(System.out::println);
     }
 
     public static void printResult(MatchResult matchResult, Double profit) {

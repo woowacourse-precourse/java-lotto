@@ -21,11 +21,11 @@ class LottoNumberCheckerTest {
     void createMatchResult() {
         Lotto winningLotto = new Lotto(makeLotto(1, 2, 3, 4, 5, 6));
         LottoNumber bonusNumber = new LottoNumber(7);
-        List<Lotto> lottos = List.of(
+        List<Lotto> lotteries = List.of(
                 new Lotto(makeLotto(1, 2, 3, 8, 9, 10)),
                 new Lotto(makeLotto(1, 2, 3, 4, 5, 7))
         );
-        LottoNumberChecker lottoNumberChecker = new LottoNumberChecker(winningLotto, bonusNumber, lottos);
+        LottoNumberChecker lottoNumberChecker = new LottoNumberChecker(winningLotto, bonusNumber, lotteries);
 
         MatchResult matchingLottoResult = lottoNumberChecker.resultOfLotteries();
         assertThat(matchingLottoResult.getTotalPrizeMoney())
