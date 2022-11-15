@@ -9,11 +9,11 @@ import java.util.List;
 
 public class LottoService {
     private int my_money;
-    private final Lotto lotto;
+    private List<Lotto> lottos;
     private static List<Integer> winningNumbers;
 
     public LottoService() {
-        lotto = new Lotto(Randoms.pickUniqueNumbersInRange(1, 45, 6));
+        lottos = new ArrayList<>();
 
         winningNumbers = new ArrayList<>();
     }
@@ -22,6 +22,8 @@ public class LottoService {
         System.out.println("구입금액을 입력해 주세요.");
 
         my_money = inputMoney();
+
+        setLottos();
 
         System.out.println("8개를 구매했습니다.");
 
@@ -65,11 +67,34 @@ public class LottoService {
         }
     }
 
-    public void printWinningNumbers() {
-        for(int i = 0; i < winningNumbers.size(); i++) {
-            System.out.print(winningNumbers.get(i));
+    public List<Integer> getNumbers(String line) {
+        String[] strings = line.split(",");
+        List<Integer> numbers = new ArrayList<>();
+
+        for(int i = 0; i < strings.length; i++) {
+            numbers.add(Integer.parseInt(strings[i]));
         }
 
-        System.out.println("보너스 번호: " + winningNumbers.get(6));
+        return numbers;
+    }
+
+    public void setLottos() {
+        for(int i = 0; i < my_money / 1000; i++) {
+            lottos.add(new Lotto(getNumbers(Console.readLine())));
+        }
+    }
+
+    public void printAll() {
+        System.out.print("당첨 번호");
+
+        for(int i = 0; i < winningNumbers.size(); i++) {
+           System.out.print(winningNumbers.get(i) + " ");
+        }
+
+        for(int i = 0; i < lottos.size(); i++) {
+            lottos.get(i).print();
+        }
+
+        System.out.println("\n보너스 번호: " + winningNumbers.get(6));
     }
 }

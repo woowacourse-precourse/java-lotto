@@ -11,5 +11,7 @@ public class LottoController {
 
     public void buy() {
         lottoService.init();
+
+        lottoService.printAll();
     }
 }
