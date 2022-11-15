@@ -39,4 +39,23 @@ class LottoTest {
         assertThatThrownBy(() -> new Account("4500"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @DisplayName("구입 금액 출력 테스트")
+    @Test
+    void printSetAccount() {
+        assertThat(new Account("5000").account()).isEqualTo(5000);
+    }
+
+    @DisplayName("로또 생성 테스트")
+    @Test
+    void buyLotto() {
+        assertThat(Lotto.buyLotto(new Account("5000").account(), 1000)).toString();
+    }
+
+    @DisplayName("로또 출력 테스트")
+    @Test
+    void responseBoughtLottos() {
+
+    }
+    
 }

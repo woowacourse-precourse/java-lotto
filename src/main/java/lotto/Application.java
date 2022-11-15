@@ -20,12 +20,15 @@ public class Application {
         // 구입 금액을 입력해주세요
         IOUtils.requestSetAccount();
         // 구입 금액 입력 받기
-        Account account = new Account(IOUtils.input());
+//        Account account = new Account(IOUtils.input());
+        int account = setAccount();
+        System.out.println(account);
+
         // 구입 금액 출력
-        IOUtils.responseSetAccount(account.account());
+        IOUtils.responseSetAccount(account);
 
         // 로또 생성
-        List<List<Integer>> lottos = Lotto.buyLotto(account.account(), LOTTO_PRICE);
+        List<List<Integer>> lottos = Lotto.buyLotto(account, LOTTO_PRICE);
 
         // 로또 출력
         IOUtils.responseBoughtLottos(lottos.size());
@@ -49,7 +52,7 @@ public class Application {
         IOUtils.responseResult(sumResult);
 
         // 수익율 계산
-        float yield = Lotto.calYield(sumResult, account.account());
+        float yield = Lotto.calYield(sumResult, account);
         IOUtils.responseTotalYield(yield);
 
     }

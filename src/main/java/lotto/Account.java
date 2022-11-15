@@ -7,12 +7,10 @@ public class Account {
     private int account;
 
     public Account (final String input) {
-        if(validAccount(input)){
-            this.account = 0;
-            IOUtils.errorMessage();
-            throw new IllegalArgumentException();
+
+        if(!validAccount(input)){
+            this.account = Integer.parseInt(input);
         }
-        this.account = Integer.parseInt(input);
     }
 
     private static boolean validAccount(String input) {
@@ -32,4 +30,6 @@ public class Account {
     public int account() {
         return account;
     }
+
+
 }
