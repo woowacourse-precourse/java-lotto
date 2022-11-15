@@ -9,11 +9,11 @@ import java.util.List;
 public class MainController {
     private int money;
     private int lottoCount;
-    private List<List<Integer>> lotteries;
     private int bonusNumber;
     private String winningNumbers;
+    private int[] winningNumberCount;
+    private List<List<Integer>> lotteries;
     private List<Integer> winningLottery;
-    int[] winningNumberCount;
     private final String MONEY_INPUT_ERROR = "[ERROR]: 숫자 외 다른 문자를 입력하셨습니다.";
 
     public void run() {

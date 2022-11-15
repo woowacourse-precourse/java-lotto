@@ -17,5 +17,8 @@ public class Lotto {
         if (!new LottoException().isDuplicate(numbers)) {
             throw new IllegalArgumentException();
         }
+        if (!new LottoException().isOverNumberRange(numbers)) {
+            throw new IllegalArgumentException();
+        }
     }
 }

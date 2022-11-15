@@ -37,4 +37,13 @@ public class LottoException {
         }
         return true;
     }
+
+    public boolean isOverNumberRange(List<Integer> numbers) {
+        for (int number : numbers) {
+            if (number < 0 || number > 45) {
+                return false;
+            }
+        }
+        return true;
+    }
 }

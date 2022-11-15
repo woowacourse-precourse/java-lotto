@@ -22,5 +22,10 @@ class LottoTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
-    // 아래에 추가 테스트 작성 가능
+    @DisplayName("로또 번호가 정해진 숫자 범위를 벗어나면 예외가 발생한다.")
+    @Test
+    void createLottoByOverNumberRange() {
+        assertThatThrownBy(() -> new Lotto(List.of(5, 15, 25, 35, 45, 55)))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
