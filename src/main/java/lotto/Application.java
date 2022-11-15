@@ -18,7 +18,7 @@ public class Application {
         int lottoCount = ui.lottoCount(money);
         ui.printLottoInfo(lottoCount, userLottos);
         ui.printMessage(PRINT_INSERT_WINNING_NUMBER);
-        List<Integer> lottoNums = ui.getWinningNumbers();
+        Lotto lottoNums = ui.getWinningNumbers();
         ui.printMessage(PRINT_ENTER_BONUS_NUMBER);
         int bonusNumber = ui.getBonusNumber();
         util.ConfirmationOfTheWinner(userLottos, lottoNums, bonusNumber);
