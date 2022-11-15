@@ -6,32 +6,30 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class User {
-    int lottoCount;
-
+    LotteryResult lotteryResult;
 
     public int inputPrice() {
+        Message.requestPurchase();
         String amount = Console.readLine();
         if(!Validator.isNumeric(amount) || !Validator.isThousands(amount)) {
            return -1;
         }
-        lottoCount = Integer.parseInt(amount) / 1000;
-        return lottoCount;
+        return Integer.parseInt(amount) / 1000;
     }
 
-    public List<Integer> inputLottoNumbers() {
+    public void inputWinningNumbers() {
         Message.requestLottoNumbers();
         String numbers = Console.readLine();
         //todo 중복 불가, 범위 확인 validation 추가
         List<String> winningNumbers = Arrays.asList(numbers.split(","));
-        return winningNumbers.stream()
+        lotteryResult.winningNumbers = winningNumbers.stream()
                 .map(Integer::parseInt)
                 .collect(Collectors.toList());
     }
 
-    public int inputBonusNumbers() {
+    public void inputBonusNumbers() {
         Message.requestBonusNumber();
         //todo validation 추가
-        return Integer.parseInt(Console.readLine());
-
+        lotteryResult.bonusNumber = Integer.parseInt(Console.readLine());
     }
 }
