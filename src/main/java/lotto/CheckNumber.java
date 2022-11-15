@@ -21,4 +21,19 @@ public class CheckNumber {
         return result;
     }
 
+
+    static List<Integer> setWinLottos (List<Integer> CountWinLottos, float result){
+        int index;
+        int count;
+
+        for(RankSystem.RankType r: RankSystem.RankType.values()){
+            if(r.getNum()==result){
+                index = r.getIndex();
+                count = CountWinLottos.get(index);
+                CountWinLottos.set(index, count + 1);
+            }
+        }
+        return CountWinLottos;
+    }
+
 }
