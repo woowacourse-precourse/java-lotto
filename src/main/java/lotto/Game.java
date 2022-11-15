@@ -7,8 +7,9 @@ import java.util.List;
 
 public class Game {
 
-    private List<Integer> answerNumberList;
-    private List<Lotto> myLotto;
+    private Lotto answerLotto;
+    private final List<Lotto> myLotto = new ArrayList<>();
+    private int bonusNumber;
 
     private final LottoManager lottoManager = new LottoManager();
 
@@ -27,7 +28,11 @@ public class Game {
             myLotto.add(new Lotto(lottoManager.makeRandomLottoNumbers()));
         }
 
-        answerNumberList = getAnswerNumberList();
+        System.out.println("당첨 번호를 입력해 주세요.");
+        answerLotto = new Lotto(getAnswerNumberList());
+
+        System.out.println("보너스 번호를 입력해 주세요.");
+        bonusNumber = Integer.parseInt(Console.readLine());
     }
 
     private List<Integer> getAnswerNumberList(){
@@ -45,5 +50,11 @@ public class Game {
     private int getCountOfLottoByCost(int cost){
         return cost / 1000;
     }
-    
+
+    private void printMyLotto(){
+        for(Lotto lotto : myLotto){
+            System.out.println(lotto);
+        }
+    }
+
 }
