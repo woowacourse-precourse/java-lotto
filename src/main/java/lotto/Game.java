@@ -1,7 +1,5 @@
 package lotto;
 
-import camp.nextstep.edu.missionutils.Console;
-
 import java.util.List;
 
 public class Game {
@@ -24,6 +22,10 @@ public class Game {
         match5BonusCount = 0;
         match4Count = 0;
         match3Count = 0;
+    }
+
+    public int getReward() {
+        return reward;
     }
 
     public void start() {
