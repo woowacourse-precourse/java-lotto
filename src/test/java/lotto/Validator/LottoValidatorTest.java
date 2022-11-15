@@ -40,4 +40,20 @@ class LottoValidatorTest {
         }).isInstanceOf(IllegalArgumentException.class);
     }
 
+    @DisplayName("당첨 번호가 6개가 아니면 예외가 발생한다.")
+    @Test
+    void createNotNaturalNumber4() {
+        assertThatThrownBy(() -> {
+            lottoValidator.checkNumberCount("1,2,3,4,5,6,7");
+        }).isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("당첨 번호에 숫자가 아닌 입력이 들어오면 예외가 발생한다.")
+    @Test
+    void createNotNaturalNumber5() {
+        assertThatThrownBy(() -> {
+            lottoValidator.checkInputForm("a,b,c,d,e,f");
+        }).isInstanceOf(IllegalArgumentException.class);
+    }
+
 }
