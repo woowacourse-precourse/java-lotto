@@ -2,15 +2,14 @@ package lotto.domain;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 public class Lotto {
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
+        overlapCheck(numbers);
         List<Integer> sortNumbers = new ArrayList<>();
         for(int i = 0; i < numbers.size(); i++){
             sortNumbers.add(numbers.get(i));
@@ -34,7 +33,14 @@ public class Lotto {
 
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("로또 번호의 개수는 6개여야 합니다.");
+        }
+    }
+
+    private void overlapCheck(List<Integer> numbers){
+        Set<Integer> setNumber = new HashSet<>(numbers);
+        if(numbers.size() != setNumber.size()){
+            throw new IllegalArgumentException("로또 번호에 중복된 숫자가 있습니다.");
         }
     }
 
