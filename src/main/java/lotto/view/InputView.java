@@ -9,11 +9,7 @@ import java.util.stream.Collectors;
 
 public class InputView {
     private static final String SPLIT_COMMA = ",";
-    private static String inputToQuestion() {
-        return Console.readLine();
-    }
-
-    public static String inputMoney() {
+    public static String inputToQuestion() {
         return Console.readLine();
     }
 
@@ -22,6 +18,7 @@ public class InputView {
             return Integer.parseInt(inputToQuestion());
         }
         catch(NumberFormatException e) {
+
             throw new IllegalArgumentException(ErrorMessage.ERROR_NOT_NUMBER.getErrorMessage());
         }
     }
