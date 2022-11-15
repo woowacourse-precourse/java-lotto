@@ -3,6 +3,8 @@ package lotto.view;
 import lotto.domain.rank.Rank;
 import lotto.domain.rank.RankInfo;
 
+import java.text.DecimalFormat;
+
 public class RankingView {
     public String getWinningNumber(){
         return Message.CHOOSE_WINNING_NUMBERS.toString();
@@ -22,9 +24,14 @@ public class RankingView {
             msg.append(" - "+rank.getRank().get(rankInfo)+"개\n");
         }
         msg.append("총 수익률은 ");
-        msg.append(String.format("%.1f", profit));
+        msg.append(showProfit(profit));
         msg.append("%입니다.");
 
         return msg.toString();
+    }
+
+    public String showProfit(double profit){
+        DecimalFormat formatter = new DecimalFormat("###,###.0");
+        return formatter.format(profit);
     }
 }
