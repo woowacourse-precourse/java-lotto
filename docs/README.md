@@ -1,0 +1,74 @@
+
+## 기능 구현 목록
+- [x] 예외를 기록한다. Application#recordException()
+- [x] 6자리인지 검증한다. Lotto#validateSize()
+- [x] 입력받은 당첨 번호가 중복되지 않는지 검증한다. Lotto#validateDuplicateNumber()
+- [x] 1부터 ~ 45사이의 숫자인지 확인한다. Lotto#validateNumbersInRange
+- [x] 로또 번호를 오름차순으로 정렬한다. Lotto#sortAscend()
+- [x] 당첨 번호를 몇 개 가지고 있는지 확인한다. Lotto#numberOfSameNumbers()
+- [x] 보너스 번호를 가지고 있는지 확인한다. Lotto#isContainBonusNumber()
+- [x] 로또 구입 금액만큼 로또를 발행한다. LottoMachine#LottoForAmount()
+- [x] 로또 구입 금액을 입력 받는다. MoneyInput#getPurchaseAmount()
+- [x] 숫자만으로 이루어져 있는지 판별한다. MoneyInput#validateConvertingMoney()
+- [x] 1,000원으로 나누어 떨어지는지 검증한다. Money#validatePurchaseAmount()
+- [x] 로또 구입 금액을 가져온다. Money#getMoney()
+- [x] 로또를 발행한다. LottoMachine#issue()
+- [x] 구분자로 나눈 값을 반환한다. NumberInput#splitInputSeparator()
+- [x] 당첨 번호를 입력 받는다. NumberInput#getWinningNumbers()
+- [x] 보너스 번호가 숫자인지 확인한다. NumberInput#validateNumber()
+- [x] 보너스 번호가 로또 상한과 하한의 사이인지 확인한다 NumberInput#validateNumberInRange()
+- [x] 보너스 번호를 입력 받는다. NumberInput#getBonusNumber()
+- [x] 로또를 집계한다. WinLotto#setResult()
+- [x] 로또 결과를 가져온다. WinLotto#getResult()
+- [x] 로또 당첨으로 인한 수익을 가져온다. WinLotto#getProfit()
+- [x] 로또 당첨으로 인한 수익을 추가한다. WinLotto#addProfitByWinLotto()
+- [x] 로또 당첨으로 인한 수익을 가져온다. WinLotto#getProfit()
+- [x] 당첨 순위에 해당하는 일치개수를 가져온다. LottoRank#getSameCount()
+- [x] 당첨 순위에 해당하는 당첨금을 가져온다. LottoRank#getPrizeMoney()
+- [x] 로또 순위를 가져온다. LottoRank#getRank()
+- [x] 3등인지 확인한다. LottoRank#isThird()
+- [x] 오름차순으로 정렬된 목록을 가져온다. LottoRank#getAscendRank()
+- [x] 수익률을 가져온다. Profit#getPercentageProfit()
+  - [x] 수익률을 계산한다. Profit#calculatePercentageProfit()
+- [x] "구입금액을 입력해 주세요." 출력한다. RequestView#displayEnterPurchaseAmount()
+- [x] "당첨 번호를 입력해 주세요." 출력한다. RequestView#displayEnterWinnerNumber()
+- [x] "보너스 번호를 입력해 주세요." 출력한다. RequestView#displayEnterBonusNumber()
+- [x] 발행한 로또 수량 및 번호를 출력한다. ResultView#displayAllLotteries()
+- [x] "당첨 통계"를 출력한다. ResultView#displayWinStatistics()
+- [x] "---"를 출력한다. ResultView#displaySeparator()
+- [x] 수익률을 출력한다. ResultView#displayPercentageProfit()
+- [x] 당첨 조건별 일치 갯수와 보너스 볼 일치별 갯수를 출력한다. ResultView#displayWinners()
+
+## 패키지 구조와, 클래스별 각 역할과 책임
+
+- controller
+  - LottoController: 전체 프로그램 흐름(입력, 출력 등)
+- domain
+  - Lotto: 로또 검증
+  - LottoMachine: 로또 발행
+  - Money: 돈
+  - Profit: 수익 관련
+  - WinLotto: 당첨 관련
+- input
+  - MoneyInput: 돈 입력
+  - NumberInput: 숫자 입력
+- lotto
+  - Application: 프로그램 제어 및 기록
+- util
+  - Constant: 보편적 상수
+  - ExceptionMessage: 예외 메시지
+  - LottoMessage: 게임 메시지
+  - LottoRank: 로또 순위 정보 관련
+    - 1등: 6개 일치 / 2,000,000,000원
+    - 2등: 5개가 일치하고, 보너스 번호가 일치 / 30,000,000원
+    - 3등: 5개 번호 일치 / 1,500,000원
+    - 4등: 4개 번호 일치 / 50,000원
+    - 5등: 3개 번호 일치 / 5,000원
+  - LottoRule: 로또 관련 상수
+    - [x] 로또 번호의 하한: 1
+    - [x] 로또 번호의 상한: 45
+    - [x] 발행 로또 번호의 갯수: 6 => NUMBER_OF_SIZE
+    - [x] 로또 구매 금액 단위: 1,000 => PURCHASE_UNIT
+- view
+  - RequestView: 요청 관련 UI
+  - ResultView: 결과 관련 UI
