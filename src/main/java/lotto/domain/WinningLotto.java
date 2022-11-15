@@ -14,16 +14,12 @@ public class WinningLotto {
         this.numbersWithBonus = createWinningLotto(numbers, bonusNumber);
     }
 
-    public List<Integer> getAllLottoNumbers() {
+    public List<Integer> getLottoNumber() {
         return numbersWithBonus.subList(0, LOTTO_LENGTH);
     }
 
     public Integer getBonusNumber() {
         return numbersWithBonus.get(LOTTO_LENGTH);
-    }
-
-    public Integer getLottoNumber(int index) {
-        return numbersWithBonus.get(index);
     }
 
     public static List<Integer> createWinningLotto(List<Integer> numbers, int bonusNumber) {
