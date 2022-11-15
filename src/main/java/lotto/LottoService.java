@@ -27,4 +27,15 @@ public class LottoService {
     public void printLottos() {
         lottos.forEach(Lotto::printLotto);
     }
+
+    public List<Integer> getWinningNumbers() {
+        List<Integer> winningNumbers = userInterface.getWinningNumbers();
+        int bonusNumber = userInterface.getBonusNumber();
+        if(winningNumbers.contains(bonusNumber)) {
+            System.out.println("[ERROR] 중복된 보너스 번호 입니다.");
+            throw new IllegalArgumentException();
+        }
+        winningNumbers.add(bonusNumber);
+        return winningNumbers;
+    }
 }
