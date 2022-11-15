@@ -32,7 +32,7 @@ public class RankInfoService {
             updateMatchPointWithCondition(matchPoint, rankInfo, userLottoNumbers, bonus);
     }
 
-    public int  calcMatchPoint(Lotto lotto, List<Integer> userLottoNumbers) {
+    public int calcMatchPoint(Lotto lotto, List<Integer> userLottoNumbers) {
         int matchPoint = 0;
 
         for (int index = 0; index < lotto.getLottoSize(); index++) {
