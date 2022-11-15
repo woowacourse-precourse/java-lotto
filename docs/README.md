@@ -30,6 +30,8 @@
 #### Casher
 - 1000원 단위로 떨어지는 티켓수 발행
 - 남은 금액은 예외처리 후 반환
+#### TicketMachine
+- 구입한 금액만큼의 티켓을 랜덤넘버로 발행
 #### WinResultManager
 - 일치하는 번호의 개수, 금액을 반환
 #### EarningRateCalculator
