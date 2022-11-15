@@ -6,7 +6,7 @@ import java.util.List;
 
 public class Lotto {
     private static final String ERROR_INPUT_NUMBER = "[ERROR]로또 개수는 6개 입니다.";
-    private static final String ERROR_OVERLAP_NUMBER = "[ERROR]또 숫자가 중복되었습니다.";
+    private static final String ERROR_OVERLAP_NUMBER = "[ERROR]로또 숫자가 중복되었습니다.";
 
     private static final int COUNT_NUMBER = 1;
     private static final int LOTTO_SIZE = 6;
