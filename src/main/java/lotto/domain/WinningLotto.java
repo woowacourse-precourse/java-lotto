@@ -27,14 +27,17 @@ public class WinningLotto {
 
 	public static EnumMap<Rank, Integer> produceResult(List<Lotto> lotteryTickets) {
 		for (Lotto lotteryTicket : lotteryTickets) {
-			Comparison comparison = new Comparison(WinningLotto.winningLotto, WinningLotto.bonusNumber);
-			matchCount = comparison.matchLottoCount(lotteryTicket);
-			isMatchBonusNumber = comparison.isMatchBonusNumber(lotteryTicket);
-
-			Rank rank = Rank.setRank(matchCount, isMatchBonusNumber);
-			result.put(rank, result.get(rank) + 1);
+			new Comparison(WinningLotto.winningLotto, WinningLotto.bonusNumber);
+			matchCount = Comparison.matchLottoCount(lotteryTicket);
+			isMatchBonusNumber = Comparison.isMatchBonusNumber(lotteryTicket);
+			putResult();
 		}
 		return result;
+	}
+
+	private static void putResult() {
+		Rank rank = Rank.setRank(matchCount, isMatchBonusNumber);
+		result.put(rank, result.get(rank) + 1);
 	}
 
 	public static EnumMap<Rank, Integer> getPrizeResult() {
