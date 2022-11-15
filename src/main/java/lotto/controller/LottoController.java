@@ -18,10 +18,12 @@ public class LottoController {
     private static final int[] REWARD_LEVEL = {5000, 50000, 1500000, 30000000, 2000000000};
 
     public void init() {
+
         int inputMoney = purchaseLotto();
         List<List<Integer>> computerRandomNumbers = generateRandomNumbers(inputMoney);
         int[] result = compareLottoNumbers(inputMoney, computerRandomNumbers);
         createStatistic(inputMoney, result);
+
     }
 
     private int purchaseLotto() {
