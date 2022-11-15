@@ -24,6 +24,7 @@ public class LottoController {
     private static int ticketNumber;
     private static List<Integer> winningNumbers;
     private static int bonusNumber;
+    private static Statistics statistics;
 
     public static void run() {
         try {
@@ -74,12 +75,12 @@ public class LottoController {
         LottoResult result = new LottoResult(winningNumbers, bonusNumber, allPlayerNumbers);
         PlayerRanking playerRanking = new PlayerRanking(result.getMatches(), result.getBonusMatches());
         Rank.initializeRankCount();
-        Statistics statistics = new Statistics(playerRanking.getPlayerRankings());
+        statistics = new Statistics(playerRanking.getPlayerRankings());
         OutputView.printStatistics(statistics.getStatistics());
     }
 
     private static void calculateYield() {
-        Yield yield = new Yield(ticketNumber * LOTTO_PRICE);
+        Yield yield = new Yield(ticketNumber * LOTTO_PRICE, statistics.getStatistics());
         OutputView.printYield(yield.getYield());
     }
 

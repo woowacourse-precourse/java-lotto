@@ -4,12 +4,12 @@ import java.util.List;
 
 public class Statistics {
 
-    public Statistics(List<Rank> rankings) {
-        aggregateRankingStatistics(rankings);
+    public Statistics(List<Rank> playerRankings) {
+        aggregateRankingStatistics(playerRankings);
     }
 
-    private static void aggregateRankingStatistics(List<Rank> rankings) {
-        rankings.stream().forEach(ranking -> ranking.addCount(ranking));
+    private static void aggregateRankingStatistics(List<Rank> playerRankings) {
+        playerRankings.stream().forEach(playerRanking -> playerRanking.addCount(playerRanking));
     }
 
     public List<Rank> getStatistics() {
