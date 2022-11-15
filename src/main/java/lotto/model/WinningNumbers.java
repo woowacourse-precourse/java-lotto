@@ -32,7 +32,7 @@ public class WinningNumbers {
         }
     }
 
-    private void checkOverlap(List<Integer> numbers) {
+    public void checkOverlap(List<Integer> numbers) {
         List<Integer> distinctNumbers = numbers.stream()
                 .distinct()
                 .collect(Collectors.toList());
