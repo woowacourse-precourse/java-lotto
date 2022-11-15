@@ -1,7 +1,5 @@
 package lotto;
 
-import java.util.Arrays;
-
 public class User {
     private int count;
     private Lotto[] lottos;
@@ -13,7 +11,7 @@ public class User {
         lottos = new Lotto[count];
 
         // 로또 번호 생성
-        for(int i=0; i< count; i ++) {
+        for (int i = 0; i < count; i++) {
             lottos[i] = new Lotto(application.createLottoNumber());
         }
     }
