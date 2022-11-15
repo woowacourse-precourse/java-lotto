@@ -59,7 +59,7 @@ public class Lotto {
     }
 
     private void validateInputNumberIsBetween(int number){
-        if(number < Setting.LOTTO_MIN_NUMBER && number > Setting.LOTTO_MAX_NUMBER){
+        if(number < Setting.LOTTO_MIN_NUMBER || number > Setting.LOTTO_MAX_NUMBER){
             throw new LottoException("번호는 "+Setting.LOTTO_MIN_NUMBER+"부터 "+ Setting.LOTTO_MAX_NUMBER +" 사이의 숫자여야 합니다.");
         }
     }
