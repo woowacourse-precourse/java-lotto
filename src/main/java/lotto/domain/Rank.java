@@ -25,7 +25,19 @@ public enum Rank {
 
     public int getPlace() { return place; }
 
-    public int getProfit() { return profit; }
+    public int getProfit(int place) {
+        if (place == 1) {
+            return FIRST_PLACE.profit;
+        } else if (place == 2) {
+            return SECOND_PLACE.profit;
+        } else if (place == 3) {
+            return THIRD_PLACE.profit;
+        } else if (place == 4) {
+            return FOURTH_PLACE.profit;
+        } else if (place == 5) {
+            return FIFTH_PLACE.profit;
+        } return 0;
+    }
 
     public String getdetail() { return detail; }
 }
