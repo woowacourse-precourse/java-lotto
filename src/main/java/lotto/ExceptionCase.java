@@ -13,6 +13,14 @@ public class ExceptionCase {
         return true;
     }
 
+    private static boolean checkInputSameNumber(List<Integer> winSixNumber, String input) {
+        if (winSixNumber.contains(Integer.parseInt(input))) {
+            return false;
+        }
+
+        return true;
+    }
+
     private static boolean checkInputAllNumber(String input) {
 
         char separate = ' ';
