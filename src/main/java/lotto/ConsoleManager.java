@@ -27,6 +27,35 @@ public class ConsoleManager {
         }
     }
 
+    public static void printWriteWinningNumber(){
+        System.out.println("당첨 번호를 입력해 주세요.");
+    }
+
+    public static List<Integer> getWinningNumbers(){
+        printWriteWinningNumber();
+        String string = Console.readLine();
+        if (!isValidFormat(string)){
+            throw new IllegalArgumentException("올바른 당첨 번호 입력 형식이 아닙니다.");
+        }
+        List<Integer> winningNumbers = Arrays.asList(string.split(",")).stream()
+                .map(s -> Integer.parseInt(s))
+                .collect(Collectors.toList());
+        return winningNumbers;
+    }
+
+    public static void printWriteBonusNumber(){
+        System.out.println("보너스 번호를 입력해 주세요.");
+    }
+
+    public static int getBonusNumber(){
+        printWriteBonusNumber();
+        String string = Console.readLine();
+        if (!Validator.isAllNumber(string)){
+            throw new IllegalArgumentException("보너스 번호는 숫자만 입력 가능합니다.");
+        }
+        return Integer.parseInt(string);
+    }
+
 
 
 }
