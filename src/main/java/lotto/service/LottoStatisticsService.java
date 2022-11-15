@@ -1,13 +1,12 @@
 package lotto.service;
 
-import lotto.domain.Lotto;
-import lotto.domain.LottoMachine;
-import lotto.domain.LottoRank;
-import lotto.domain.LottoWinningNumber;
+import lotto.domain.*;
 
 import java.util.List;
 import java.util.SortedMap;
 import java.util.TreeMap;
+
+import static lotto.enumtype.LottoInterfaceMsg.WINNING_STATS_STRING;
 
 public class LottoStatisticsService {
     private final LottoMachine lottoMachine;
@@ -17,6 +16,19 @@ public class LottoStatisticsService {
         this.lottoMachine = lottoMachine;
         this.lottoWinningNumber = lottoWinningNumber;
     }
+
+    public void getResult(Money money) {
+        System.out.println(WINNING_STATS_STRING.getMessage());
+        SortedMap<LottoRank, Integer> countOfRank = setLottoRankIntegerSortedMap(lottoWinningNumber.getNumbers(), lottoWinningNumber.getBonusNumber());
+        printStatistics(countOfRank);
+    }
+
+    private void printStatistics(SortedMap<LottoRank, Integer> countOfRank) {
+        StringBuilder sb = new StringBuilder();
+        countOfRank.forEach((key, value) -> sb.append(key).append(" - ").append(value).append("媛�").append('\n'));
+        System.out.print(sb);
+    }
+
 
     private SortedMap<LottoRank, Integer> setLottoRankIntegerSortedMap(List<Integer> winningNumbers, int bonusNumber) {
         SortedMap<LottoRank, Integer> countOfRank = setCountOfRankMap();
