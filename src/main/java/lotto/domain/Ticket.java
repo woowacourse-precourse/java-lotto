@@ -5,7 +5,7 @@ import lotto.constants.LottoConstants;
 public class Ticket {
     private int count;
 
-    Ticket(String userInput) {
+    public Ticket(String userInput) {
         validate(userInput);
         count = Integer.parseInt(userInput) / LottoConstants.TICKET_PRICE.getValue();
     }
