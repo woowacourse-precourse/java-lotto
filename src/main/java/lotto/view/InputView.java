@@ -26,6 +26,7 @@ public class InputView {
         String winningNumber = Console.readLine();
         Validation.validateWinningNumberContainCommaAndNum(winningNumber);
         Validation.validateWinningNumberStartOrEndWithComma(winningNumber);
+        Validation.validateWinningNumberSplitCommaConsistOfNum(winningNumber);
         return stringListToIntegerList(splitString(winningNumber));
     }
 

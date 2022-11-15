@@ -2,6 +2,8 @@ package lotto.validation;
 
 import static lotto.util.Constant.*;
 
+import java.util.Arrays;
+
 public class Validation {
 
     // 구입 금액이 1000의 배수인지 검증하는 기능
@@ -32,6 +34,15 @@ public class Validation {
         }
         if (!winningNumber.contains(",")){
             throw new IllegalArgumentException(ERROR_MSG_WINNING_LOTTO_CONTAIN_COMMA);
+        }
+    }
+
+    // 당첨 번호를 ,로 분리할 시 숫자만 포함되어있는지 검증
+    public static void validateWinningNumberSplitCommaConsistOfNum(String winningNumber){
+        boolean numberOnly = Arrays.stream(winningNumber.split(COMMA))
+            .allMatch(s -> s.matches(NUMBER_REGEX));
+        if(!numberOnly || winningNumber.contains(",,")){
+            throw new IllegalArgumentException(ERROR_MSG_WINNING_LOTTO_CONTAIN_NUM);
         }
     }
 
