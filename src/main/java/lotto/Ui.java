@@ -11,9 +11,20 @@ public class Ui {
         String purchaseAmount = inputPurchaseAmount();
 
         int lottoCount = lottoService.getLottoCount(purchaseAmount);
+
         lottoService.drawLottos(lottoCount);
 
+        printLottoCountAndNumbers(lottoCount);
 
+
+
+    }
+
+    private void printLottoCountAndNumbers(int lottoCount) {
+        System.out.println(lottoCount +"개를 구매했습니다.");
+        for (Lotto lotto : lottoService.getLottos()) {
+            System.out.println(lotto.getNumbers());
+        }
     }
 
     private String inputPurchaseAmount() {
