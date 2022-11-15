@@ -18,7 +18,7 @@ public class MessagePrinter {
     private static final String NOTIFY_PARAGRAPH_DIVISION = "---";
     private static final String NOTIFY_LOTTO_AMOUNT = "%d개를 구매했습니다.";
     private static final String NOTIFY_WINNING_RECORD = "%s - %d개";
-    private static final String NOTIFY_EARNINGS_RATE = "총 수익률은 %f입니다.";
+    private static final String NOTIFY_EARNINGS_RATE = "총 수익률은 %s입니다.";
 
     public void printStaticPaymentNotification() {
         System.out.println(NOTIFY_INPUT_PAYMENT);
