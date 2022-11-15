@@ -6,6 +6,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import static lotto.message.ErrorMessage.*;
+
 public class Lotto {
     private final List<Integer> numbers;
 
@@ -18,14 +20,14 @@ public class Lotto {
 
     private void validateNumbersSize(List<Integer> numbers) {
         if (numbers.size() != 6) {
-            throw new IllegalArgumentException(ErrorMessage.Lotto_Numbers_Size.getMessage());
+            throw new IllegalArgumentException(Lotto_Numbers_Size.getMessage());
         }
     }
 
     private void validateNumbersRange(List<Integer> numbers) {
         for(int i = 0; i < 6; i++) {
             if(numbers.get(i) < 1 || numbers.get(i) > 45) {
-                throw new IllegalArgumentException(ErrorMessage.Lotto_Numbers_Range.getMessage());
+                throw new IllegalArgumentException(Lotto_Numbers_Range.getMessage());
             }
         }
     }
@@ -34,7 +36,7 @@ public class Lotto {
         Set<Integer> numbersSet = new HashSet<>(numbers);
 
         if(numbers.size() != numbersSet.size()) {
-            throw new IllegalArgumentException(ErrorMessage.Lotto_Numbers_Duplicate.getMessage());
+            throw new IllegalArgumentException(Lotto_Numbers_Duplicate.getMessage());
         }
     }
 

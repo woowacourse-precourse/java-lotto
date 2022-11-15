@@ -25,11 +25,11 @@ public class Game {
     public void play() {
         start();
         Purchase purchase = new Purchase(readLine());
-        userLottoNumbers = purchase.lottoPurchase(); // 구매, 발행까지 완
+        userLottoNumbers = purchase.lottoPurchase();
 
         inputLotto();
         Lotto lotto = new Lotto(lottoNumbers);
-        lottoNumbers = lotto.lottoNumbers(); // 로또 번호 완
+        lottoNumbers = lotto.lottoNumbers();
 
         inputBonus();
         Bonus bonus = new Bonus(readLine(), lottoNumbers);
