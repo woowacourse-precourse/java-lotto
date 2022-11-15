@@ -34,13 +34,25 @@ public class PurchasedLotto {
     }
 
     //로또 발행
-    public List<Lotto> publishLottos(Integer cost){
+    public List<Lotto> publishLottos(Integer cost) {
         List<Lotto> lottos = new LinkedList<>();
-        for (int i=0; i<cost/1000; i++){
+        for (int i = 0; i < cost / 1000; i++) {
             List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
             Lotto lotto = new Lotto(numbers);
             lottos.add(lotto);
         }
         return lottos;
+    }
+
+    //수익률 계산
+    public Double calculateReturn(List<Integer> winNumbers, Integer bonusNumber) {
+        Double winnings = 0.0;
+        for (Lotto lotto : purchasedLottoNumbers) {
+            winnings += Double.valueOf(lotto.checkWin(winNumbers, bonusNumber).getValue());
+        }
+
+        Double returnRate = winnings / this.cost * 100.0;
+        returnRate = Math.round(returnRate * 10.0) / 10.0;
+        return returnRate;
     }
 }

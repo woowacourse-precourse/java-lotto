@@ -4,6 +4,9 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.junit.MockitoJUnit;
 
+import java.util.Arrays;
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 import static org.assertj.core.api.Assertions.*;
 
@@ -36,5 +39,34 @@ class PurchasedLottoTest {
         PurchasedLotto purchasedLotto = new PurchasedLotto(cost);
 
         assertThat(purchasedLotto.getPurchasedLottoNumbers().size()).isEqualTo(cost / 1000);
+    }
+
+    @DisplayName("로또를 한 개 구입하고 6개를 맞출 경우 수익률은 200000000%")
+    @Test
+    void 로또_1개구입_6개번호_당첨(){
+        PurchasedLotto purchasedLotto = new PurchasedLotto(1000);
+        List<Lotto> numbers = purchasedLotto.getPurchasedLottoNumbers();
+        Double rate = purchasedLotto.calculateReturn(numbers.get(0).getNumbers(), 3);
+        assertThat(rate).isEqualTo(200000000.0);
+    }
+
+    @DisplayName("로또를 한 개 구입하고 3개를 맞출 경우 수익률은 500%")
+    @Test
+    void 로또_1개구입_3개번호_당첨(){
+        PurchasedLotto purchasedLotto = new PurchasedLotto(1000);
+        List<Integer> numbers = purchasedLotto.getPurchasedLottoNumbers().get(0).getNumbers();
+        List<Integer> mock = Arrays.asList(numbers.get(0), numbers.get(1), numbers.get(2), -1, -1, -1);
+        Double rate = purchasedLotto.calculateReturn(mock, 3);
+        assertThat(rate).isEqualTo(500.0);
+    }
+
+    @DisplayName("로또를 한 개 구입하고 당첨이 안 될 경우 수익률은 0%")
+    @Test
+    void 로또_1개구입_낙첨(){
+        PurchasedLotto purchasedLotto = new PurchasedLotto(1000);
+        List<Integer> numbers = purchasedLotto.getPurchasedLottoNumbers().get(0).getNumbers();
+        List<Integer> mock = Arrays.asList(numbers.get(0), numbers.get(1), -1, -1, -1, -1);
+        Double rate = purchasedLotto.calculateReturn(mock, 3);
+        assertThat(rate).isEqualTo(0);
     }
 }
