@@ -13,6 +13,7 @@ public class Lotto {
     }
 
     public Lotto(List<Integer> numbers) {
+        validateRange(numbers);
         validateSize(numbers);
         validateDuplicate(numbers);
         this.numbers = numbers;
@@ -23,6 +24,15 @@ public class Lotto {
         if (set.size() != numbers.size()) {
             System.out.println(ExceptionMessage.DUPLICATE_NUM_LOTTO.getMessage());
             throw new IllegalArgumentException();
+        }
+    }
+
+    private void validateRange(List<Integer> numbers) {
+        for (Integer number : numbers) {
+            if (number < Constants.NUMBER_RANGE_START || number > Constants.NUMBER_RANGE_END) {
+                System.out.println(ExceptionMessage.LOTTO_NUMBER_RANGE);
+                throw new IllegalArgumentException();
+            }
         }
     }
 
