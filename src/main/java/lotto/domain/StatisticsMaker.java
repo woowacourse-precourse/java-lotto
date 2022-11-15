@@ -7,9 +7,6 @@ import lotto.Constants;
 
 public class StatisticsMaker {
 
-    public StatisticsMaker() {
-    }
-
     public double makeYield(List<Lotto> lottos, Map<Integer, Integer> ranking) {
         double lottoQuantity = lottos.size();
         double totalIncome = 0;
@@ -39,6 +36,9 @@ public class StatisticsMaker {
         return ranking;
     }
 
+    public Statistics makeStatistics(Map<Integer, Integer> ranking, double yield) {
+        return new Statistics(ranking, yield);
+    }
 
     private boolean calculateBonusNumber(int winningBonusNumber, Lotto lotto) {
         return lotto.getNumbers().contains(winningBonusNumber);

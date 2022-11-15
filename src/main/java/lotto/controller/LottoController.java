@@ -1,6 +1,5 @@
 package lotto.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import lotto.domain.Clerk;
@@ -27,8 +26,8 @@ public class LottoController {
 
         Map<Integer, Integer> ranking = statisticsMaker.makeRankings(winningLotto, lottos);
         double yield = statisticsMaker.makeYield(lottos, ranking);
+        Statistics statistics = statisticsMaker.makeStatistics(ranking, yield);
 
-        Statistics statistics = new Statistics(ranking, yield);
         OutputView.printWinningStatistics(statistics);
     }
 
