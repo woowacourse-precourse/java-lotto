@@ -54,6 +54,78 @@ class ApplicationTest extends NsTest {
         });
     }
 
+    @Test
+    void 범위_밖의_값_입력() {
+        assertSimpleTest(() -> {
+            runException("1000", "1,2,3,4,5,46");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
+    @Test
+    void 구분자가_쉼표가_아닐_때() {
+        assertSimpleTest(() -> {
+            runException("1000", "1 2 3 4 5 6");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
+    @Test
+    void 천원_단위가_아닐_때() {
+        assertSimpleTest(() -> {
+            runException("1200");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
+    @Test
+    void 중복되는_값이_있을_때() {
+        assertSimpleTest(() -> {
+            runException("12000", "1,10,12,15,16,10");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
+    @Test
+    void 보너스_값이_중복될_때() {
+        assertSimpleTest(() -> {
+            runException("12000", "1,10,12,15,16,20", "15");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
+    @Test
+    void 로또_번호가_문자가_섞여있을_때() {
+        assertSimpleTest(() -> {
+            runException("12000", "1,10,12,15,16,r");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
+    @Test
+    void 보너스_번호가_숫자가_아닌_경우() {
+        assertSimpleTest(() -> {
+            runException("36000", "1,10,12,15,16,2", "이");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
+    @Test
+    void 당첨_번호_개수가_모자란_경우() {
+        assertSimpleTest(() -> {
+            runException("36000", "1,10,12,5,16");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
+    @Test
+    void 당첨_번호_개수가_많은_경우() {
+        assertSimpleTest(() -> {
+            runException("28000", "1,10,12,5,16,3,4");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
