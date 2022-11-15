@@ -54,7 +54,6 @@ public class InputView {
 
         InputValidation.isValidInput(inputBonus);
         LottoValidation.isValidRangeOfBonusNumber(inputBonus);
-        OutputView.printBlankLine();
 
         return Integer.parseInt(inputBonus);
     }
