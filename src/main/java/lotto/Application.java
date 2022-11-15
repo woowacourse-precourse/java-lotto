@@ -21,8 +21,9 @@ public class Application {
 
         //로또 구매및 출력
         ArrayList<Lotto> lottoList = buyLotto(countPurchaseLotto(buyMoney));
-        
+
         //당첨번호 입력받기
+        ArrayList<Integer> luckyList = inputLuckyNumber();
         //보너스 번호 입력받기
         //당첨 확인
         //당첨통계
@@ -45,6 +46,16 @@ public class Application {
 
         }
         return lottoList;
+    }
+
+    static ArrayList<Integer> inputLuckyNumber(){
+        ArrayList<Integer> luckyList = new ArrayList<Integer>();
+        Scanner sc = new Scanner(System.in);
+        System.out.println("당첨 번호를 입력해 주세요.");
+
+        String inputLuckyNumber[] = sc.next().split(",");
+
+        return luckyList;
     }
 
 
