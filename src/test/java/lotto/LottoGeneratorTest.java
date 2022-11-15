@@ -10,10 +10,10 @@ import org.junit.jupiter.api.Test;
 
 class LottoGeneratorTest {
 
-    @DisplayName("로또가 잘 발행된다.")
+    @DisplayName("랜덤한 숫자를 가진 로또가 잘 발행된다.")
     @Test
-    public void createLotto() {
-        assertDoesNotThrow(LottoGenerator::generate);
+    public void createLottoByRandomNumbers() {
+        assertDoesNotThrow(LottoGenerator::generateRandomly);
     }
 
     @DisplayName("리스트가 주어졌을 때 로또가 그대로 발행된다.")

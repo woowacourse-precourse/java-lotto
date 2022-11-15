@@ -9,7 +9,7 @@ public class WinningNumber {
 
     public WinningNumber(List<Integer> numbers, int bonusNumber) {
         validate(numbers, bonusNumber);
-        mainNumbers = new Lotto(numbers);
+        mainNumbers = LottoGenerator.generateByNumberList(numbers);
         this.bonusNumber = bonusNumber;
     }
 

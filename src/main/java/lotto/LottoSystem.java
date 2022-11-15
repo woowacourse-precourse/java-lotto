@@ -24,7 +24,7 @@ public class LottoSystem {
         int purchasedLottoCount = purchaseAmount / LOTTO_PRICE;
 
         for (int i = 0; i < purchasedLottoCount; i++) {
-            generatedLottos.add(LottoGenerator.generate());
+            generatedLottos.add(LottoGenerator.generateRandomly());
         }
     }
 

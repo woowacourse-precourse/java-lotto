@@ -50,7 +50,7 @@ class LottoPrinterTest {
         @Override
         protected void runMain() {
             for (int i = 0; i < 8; i++) {
-                mockLotto.add(LottoGenerator.generate());
+                mockLotto.add(LottoGenerator.generateRandomly());
             }
             LottoPrinter.printLotto(mockLotto);
         }
