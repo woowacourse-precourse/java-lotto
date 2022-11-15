@@ -9,7 +9,7 @@ import java.util.List;
 
 public class Input {
     private static int stringToInt(String input) {
-        Validation.validNumber(input);
+        Validation.isNumber(input);
         return Integer.parseInt(input);
     }
 
@@ -28,26 +28,25 @@ public class Input {
 
     public static int getPurchaseAmount() {
         int input = getInput();
-        Validation.validPurchase(input);
+        Validation.multipleBasicAmount(input);
         return input;
     }
 
     public static List<Integer> getWinningNumbers() {
         String input = Console.readLine();
         String[] split = input.split(",");
-        Validation.validWinning6Numbers(split);
-        Validation.validWinningRepetition(split);
+        Validation.canSplit(split);
+        Validation.noDuplication(split);
         List<Integer> numbers = toIntegerList(split);
-        Validation.validRange(numbers);
+        Validation.inRange(numbers);
+        Validation.validNumbersSize(numbers);
         return numbers;
     }
 
     public static int getBonusNumber(List<Integer> winning) {
         int input = getInput();
-        Validation.validBonusRepetition(input, winning);
-        Validation.validRange(input);
+        Validation.noDuplication(input, winning);
+        Validation.inRange(input);
         return input;
     }
-
-
 }

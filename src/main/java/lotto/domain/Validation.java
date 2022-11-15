@@ -8,7 +8,7 @@ import static lotto.instance.Setting.*;
 
 public class Validation {
 
-    public static void validNumber(String input) throws IllegalArgumentException {
+    public static void isNumber(String input) throws IllegalArgumentException {
         try {
             Integer.parseInt(input);
         } catch (NumberFormatException e) {
@@ -18,38 +18,25 @@ public class Validation {
         }
     }
 
-    public static void validPurchase(int input) throws IllegalArgumentException {
+    public static void multipleBasicAmount(int input) throws IllegalArgumentException {
         if (input % BASIC_AMOUNT != 0) {
             throw new IllegalArgumentException(CANNOT_DIVIDE_BY_BASIC_AMOUNT);
         }
     }
 
-    public static void validWinning6Numbers(String[] split) throws IllegalArgumentException {
+    public static void canSplit(String[] split) throws IllegalArgumentException {
         if (split.length != NUMBER_OF_NUMBERS) {
             throw new IllegalArgumentException(CANNOT_SEPARATE);
         }
     }
 
-    public static void validWinningRepetition(String[] split) throws IllegalArgumentException {
-        HashSet<String> removeDuplication = new HashSet<>(List.of(split));
-        if (removeDuplication.size() != NUMBER_OF_NUMBERS) {
-            throw new IllegalArgumentException(REPETITION_WINNING);
-        }
-    }
-
-    public static void validBonusRepetition(int bonus, List<Integer> winning) throws IllegalArgumentException {
-        if (winning.contains(bonus)) {
-            throw new IllegalArgumentException(REPETITION_BONUS);
-        }
-    }
-
-    public static void validRange(int number) throws IllegalArgumentException {
+    public static void inRange(int number) throws IllegalArgumentException {
         if ((number < START_RANGE) || (number > END_RANGE)) {
             throw new IllegalArgumentException(OUT_OF_RANGE);
         }
     }
-//이름 바꾸기
-    public static void validRange(List<Integer> numbers) throws IllegalArgumentException {
+
+    public static void inRange(List<Integer> numbers) throws IllegalArgumentException {
         for (int number : numbers) {
             if ((number < START_RANGE) || (number > END_RANGE)) {
                 throw new IllegalArgumentException(OUT_OF_RANGE);
@@ -57,16 +44,29 @@ public class Validation {
         }
     }
 
-    public static void noDuplication(List<Integer> numbers) {
-        HashSet<Integer> removeDuplication = new HashSet<>(numbers);
-        if (removeDuplication.size() != numbers.size()) {
-            throw new IllegalArgumentException(REPETITION_LOTTO_NUMBERS);
+    public static void noDuplication(String[] split) throws IllegalArgumentException {
+        HashSet<String> removeDuplication = new HashSet<>(List.of(split));
+        if (removeDuplication.size() != split.length) {
+            throw new IllegalArgumentException(REPETITION_NUMBERS);
         }
     }
 
-    public static void inRange(List<Integer> numbers){
+    public static void noDuplication(int number, List<Integer> numbers) throws IllegalArgumentException {
+        if (numbers.contains(number)) {
+            throw new IllegalArgumentException(REPETITION_NUMBER);
+        }
+    }
+
+    public static void noDuplication(List<Integer> numbers) throws IllegalArgumentException {
+        HashSet<Integer> removeDuplication = new HashSet<>(numbers);
+        if (removeDuplication.size() != numbers.size()) {
+            throw new IllegalArgumentException(REPETITION_NUMBERS);
+        }
+    }
+
+    public static void validNumbersSize(List<Integer> numbers) throws IllegalArgumentException {
         if (numbers.size() != NUMBER_OF_NUMBERS) {
-            throw new IllegalArgumentException(TOO_MUCH_NUMBERS);
+            throw new IllegalArgumentException(MORE_OR_LESS_NUMBERS);
         }
     }
 }
