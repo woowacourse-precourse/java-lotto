@@ -15,7 +15,7 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
-        if (numbers.size() != 6 || !Validator.isInRange(numbers) || Validator.isDuplicate(numbers)) {
+        if (numbers.size() != Validator.LOTTO_SIZE || !Validator.isInRange(numbers) || Validator.isDuplicate(numbers)) {
             throw new IllegalArgumentException();
         }
     }

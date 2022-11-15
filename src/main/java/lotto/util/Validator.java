@@ -4,9 +4,10 @@ import java.util.List;
 
 public class Validator {
     private static final String MONEY_NOT_NUMBER = "[ERROR] 구매 금액은 숫자여야 합니다.";
-    private static final int START_NUMBER = 1;
-    private static final int END_NUMBER = 45;
-    private static final int UNIT = 1000;
+    public static final int START_NUMBER = 1;
+    public static final int END_NUMBER = 45;
+    public static final int LOTTO_SIZE = 6;
+    public static final int UNIT = 1000;
 
     public static boolean isNumber(String input) {
         try {
