@@ -5,6 +5,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayInputStream;
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.*;
@@ -38,6 +39,26 @@ class InputTest {
         System.setIn(new ByteArrayInputStream(buf));
 
         assertThatThrownBy(() -> Input.inputWinningNumber())
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void inputBonusNumber() {
+        String winningNumber = "1,2,3,4,5,6";       // 당첨 번호를 생성.
+        byte[] buf = String.join("\n", winningNumber).getBytes();
+        System.setIn(new ByteArrayInputStream(buf));
+        List<Integer> numbers = Input.inputWinningNumber();
+
+        buf = String.join("\n", "6").getBytes();    // 당첨 번호와 중복
+        System.setIn(new ByteArrayInputStream(buf));
+
+        assertThatThrownBy(() -> Input.inputBonusNumber(numbers))
+                .isInstanceOf(IllegalArgumentException.class);
+
+        buf = String.join("\n", "47").getBytes();    // 잘못된 보너스 번호 입력
+        System.setIn(new ByteArrayInputStream(buf));
+
+        assertThatThrownBy(() -> Input.inputBonusNumber(numbers))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 }
