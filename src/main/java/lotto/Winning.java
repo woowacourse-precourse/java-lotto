@@ -6,7 +6,6 @@ import lotto.view.OutputView;
 
 public class Winning {
     private static final String ERROR_MESSAGE = "[ERROR]";
-    private static final String LOTTO_OUT_OF_RANGE_ERROR = " 로또 번호는 6개여야 합니다.";
     private static final String WINNING_NOT_NUMBER_ERROR = " 입력 값이 숫자가 아닙니다.";
     private static final String WINNING_NOT_IN_RANGE_ERROR = " 당첨번호는 1 ~ 45 사이의 수 이어야 합니다.";
     private static final String WINNING_DUPLICATED_ERROR = " 당첨번호에 중복이 있습니다.";
@@ -133,8 +132,7 @@ public class Winning {
 
     private static void isValidateWinningNumberSize(List<Integer> winningNumbers) {
         if (winningNumbers.size() != 6) {
-            System.out.println(ERROR_MESSAGE + WINNING_DUPLICATED_ERROR);
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ERROR_MESSAGE + WINNING_DUPLICATED_ERROR);
         }
     }
 
@@ -156,8 +154,7 @@ public class Winning {
 
     private static void isDuplicatedWinningNumber(List<Integer> numbers) {
         if (numbers.stream().distinct().count() != 6) {
-            System.out.println(ERROR_MESSAGE + WINNING_DUPLICATED_ERROR);
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ERROR_MESSAGE + WINNING_DUPLICATED_ERROR);
         }
     }
 
