@@ -9,13 +9,16 @@ public class Lotto {
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
-        sortNumbers(numbers);
         this.numbers = numbers;
     }
-    // 숫자 개수 확인
+
+    // 숫자 개수 확인 및 중복 확인
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
-            throw new IllegalArgumentException("[ERROR] 발행된 로또의 숫자가 6개가 아닙니다.");
+            throw new IllegalArgumentException(Error.ERROR_WRONG_SIZE.getMessage());
+        }
+        if (numbers.size() != numbers.stream().distinct().count()) {
+            throw new IllegalArgumentException(Error.ERROR_OVERLAP_NUMBER.getMessage());
         }
     }
 
@@ -25,8 +28,6 @@ public class Lotto {
         return numbers;
     }
 
-    private void sortNumbers(List<Integer> number){
-        Collections.sort(number);
-    }
+
 
 }
