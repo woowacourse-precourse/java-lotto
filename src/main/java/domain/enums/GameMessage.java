@@ -3,7 +3,9 @@ package domain.enums;
 public enum GameMessage {
     PROMPT_MESSAGE("구입금액을 입력해 주세요."),
     BUY_MESSAGE("개를 구매하셨습니다."),
-    PICK_MESSAGE("당첨번호를 입력해 주세요.");
+    PICK_MESSAGE("당첨번호를 입력해 주세요."),
+    PICK_BONUS_MESSAGE("보너스 번호를 입력해 주세요.");
+
 
     private String gameMessage;
 

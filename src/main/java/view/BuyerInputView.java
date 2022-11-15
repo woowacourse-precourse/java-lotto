@@ -14,5 +14,10 @@ public class BuyerInputView {
         return Console.readLine();
     }
 
+    public static String getBonusNum() {
+        System.out.println(GameMessage.PICK_BONUS_MESSAGE.getGameMessage());
+        return Console.readLine();
+    }
+
 
 }

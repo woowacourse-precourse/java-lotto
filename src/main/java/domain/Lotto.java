@@ -35,4 +35,8 @@ public class Lotto {
     public void printLotto() {
         System.out.println(numbers);
     }
+
+    public boolean checkBounsInclude(int bonusNum){
+        return numbers.contains(bonusNum);
+    }
 }
