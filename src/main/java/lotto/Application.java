@@ -1,5 +1,6 @@
 package lotto;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 import camp.nextstep.edu.missionutils.Console;
@@ -80,6 +81,7 @@ public class Application {
             totalmoney += (info.getRealMoney()*result[index]);
         }
         double earn_rate = (double)(totalmoney/10)/(double)buylotto;
-        System.out.println("총 수익률은 "+String.format("%.1f",earn_rate)+"%입니다.");
+        DecimalFormat format = new DecimalFormat("###,###.#");
+        System.out.println("총 수익률은 "+format.format(earn_rate)+"%입니다.");
     }
 }
