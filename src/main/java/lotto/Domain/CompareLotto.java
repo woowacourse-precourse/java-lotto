@@ -6,6 +6,11 @@ public class CompareLotto {
     private int theNumberOfWins = 0;
     private int winningBonus = 0;
 
+    public CompareLotto(List<Integer> lotto, List<Integer> userInputLotto, int winningBonus) {
+        addTheNumberOfWins(lotto, userInputLotto);
+        addWinningBonus(lotto, winningBonus);
+    }
+
     public void addTheNumberOfWins(List<Integer> lotto, List<Integer> userInputLotto) {
         for (int index : userInputLotto) {
             if (lotto.contains(index)) {
