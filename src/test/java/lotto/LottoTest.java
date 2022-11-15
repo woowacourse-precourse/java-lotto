@@ -28,7 +28,14 @@ class LottoTest {
   @DisplayName("로또 번호가 1 ~ 45를 벗어나면 예외가 발생한다.")
   @Test
   void isInRange() {
-    assertThatThrownBy(() -> new Lotto(List.of(14, 2, 9, 99, 0)))
+    assertThatThrownBy(() -> new Lotto(List.of(1, 2, 3, 4, 99, 102)))
+            .isInstanceOf(IllegalArgumentException.class);
+  }
+
+  @DisplayName("로또 번호가 오름차순이 아닐 때 예외가 발생한다.")
+  @Test
+  void isNotDigit() {
+    assertThatThrownBy(() -> new Lotto(List.of(1, 2, 3, 5, 4, 6)))
             .isInstanceOf(IllegalArgumentException.class);
   }
 }
