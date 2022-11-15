@@ -3,6 +3,7 @@ package lotto.domain;
 import java.util.List;
 
 public class WinningChecker {
+    private static final String nullMessage = "null";
 
     public static String check(List<Integer> winningNumber, int bonusNumber, List<Integer> expectedNumber) {
         return checkGrade(checkNumbers(winningNumber, bonusNumber, expectedNumber));
@@ -26,7 +27,7 @@ public class WinningChecker {
     private static String checkGrade(int[] grade) {
         Policy.WinningCriteria winning = Policy.WinningCriteria.find(grade);
         if (winning == null) {
-            return "null";
+            return nullMessage;
         }
         return winning.name();
     }
