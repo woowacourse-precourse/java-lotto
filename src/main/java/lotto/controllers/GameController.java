@@ -27,9 +27,14 @@ public class GameController {
         opening(numberOfLotto);
 
         final List<Lotto> userBoughtLotteries = gameService.createLotteries(numberOfLotto);
+        buyLotto(userBoughtLotteries);
     }
 
     private void opening(int numberOfLotto) {
         Output.printNumberOfPurChase(numberOfLotto);
+    }
+
+    private void buyLotto(List<Lotto> lotteries) {
+        Output.printUserLottoNumbers(lotteries);
     }
 }
