@@ -36,31 +36,11 @@ public class LottoController {
 
         printResultMainMessage();
 
-        WinningResult result = getWinningResults(winningLotto, lottos);
+        WinningResult result = new WinningResult(winningLotto, lottos);
         result.print();
 
         double earning = result.calculateEarning(inputMoney);
         printEarning(earning);
-    }
-
-    public static WinningResult getWinningResults(WinningLotto winningLotto, Lottos purchasedLottos) {
-
-        WinningResult result = new WinningResult();
-
-        for (Lotto lotto : purchasedLottos.getLottos()) {
-
-            boolean withBonus = false;
-            int equalNumber = winningLotto.countEqualNumber(lotto);
-
-            if (equalNumber == SECOND_WINNING) {
-                WinningType type = getWinningType(FIVE_EQUALS, true);
-                continue;
-            }
-            WinningType type = getWinningType(equalNumber, false);
-            result.increaseOneByKey(type);
-        }
-
-        return result;
     }
 
     public static Iterator<WinningType> getWinningTypeIterator() {
