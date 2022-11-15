@@ -65,4 +65,12 @@ public class WinNumber {
         }
         return false;
     }
+
+    public List<Integer> getWinNumbers() {
+        return winNumbers;
+    }
+
+    public Integer getBonusNumber() {
+        return bonusNumber;
+    }
 }
