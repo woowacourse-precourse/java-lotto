@@ -81,6 +81,20 @@ public class Lotto {
         return Rank.NONE;
     }
 
+    private Rank getRank(int count) {
+        if (count == Rank.FIRST.getCount())
+            return Rank.FIRST;
+        else if (count == Rank.SECOND.getCount())
+            return Rank.SECOND;
+        else if (count == Rank.THIRD.getCount())
+            return Rank.THIRD;
+        else if (count == Rank.FOURTH.getCount())
+            return Rank.FOURTH;
+        else if (count == Rank.FIFTH.getCount())
+            return Rank.FIFTH;
+        return Rank.NONE;
+    }
+
     private boolean hasSameNumber(List<Integer> numbers) {
         for (int i = 0; i < numbers.size(); i++) {
             if (numbers.indexOf(numbers.get(i)) != i)
