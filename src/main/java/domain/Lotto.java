@@ -20,6 +20,7 @@ public class Lotto {
             throw new IllegalArgumentException();
         }
     }
+
     private void validateDuplicate(List<Integer> numbers) {
         LottoException.lottoDuplicate(numbers);
     }
@@ -29,7 +30,8 @@ public class Lotto {
     }
 
     public String toString() {
-        Collections.sort(numbers);
-        return numbers.toString();
+        List<Integer> temp = new ArrayList<>(numbers);
+        Collections.sort(temp);
+        return temp.toString();
     }
 }
