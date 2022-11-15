@@ -19,7 +19,7 @@ public class InputView {
     public static List<Integer> InputWinNumber() {
         System.out.println(Printer.WIN_NUMBER.getMessage());
         List<String> input = List.of(readLine().split(","));
-        for (int i=0; i<input.size(); i++) {
+        for (int i = 0; i < input.size(); i++) {
             IsNumber(input.get(i));
         }
         List<Integer> inputs = input.stream()
@@ -38,15 +38,16 @@ public class InputView {
 
     private static void OnlyOne(String input) {
         if (input.contains(",") || input.contains(" ")) {
-            throw new IllegalArgumentException("[ERROR] 보너스 번호가 1개 이상입니다.");
+            throw new IllegalArgumentException("보너스 번호가 1개 이상입니다.");
         }
     }
 
     private static void IsNumber(String input) {
         for (char charinput : input.toCharArray()) {
             if (Character.isDigit(charinput) == false) {
-                throw new IllegalArgumentException("[ERROR] 입력에 숫자가 아닌 값이 있습니다.");
+                throw new IllegalArgumentException("입력에 숫자가 아닌 값이 있습니다.");
             }
         }
     }
 }
+

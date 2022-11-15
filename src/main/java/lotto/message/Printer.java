@@ -6,6 +6,7 @@ public enum Printer {
     BONUS_NUMBER("보너스 번호를 입력해 주세요."),
     RESULT("당첨 통계\n" + "---\n");
 
+
     private String message;
 
     Printer(String message) {

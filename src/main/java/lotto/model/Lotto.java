@@ -29,10 +29,10 @@ public class Lotto {
 
     private void InRange(List<Integer> numbers) {
         if (Collections.max(numbers) > 45) {
-            throw new IllegalArgumentException("[ERROR] 로또 번호가 45를 넘어 범위를 벗어났습니다.");
+            throw new IllegalArgumentException("로또 번호가 45를 넘어 범위를 벗어났습니다.");
         }
         if (Collections.min(numbers) < 1) {
-            throw new IllegalArgumentException("[ERROR] 로또 번호가 1보다 작아 범위를 벗어났습니다.");
+            throw new IllegalArgumentException("로또 번호가 1보다 작아 범위를 벗어났습니다.");
         }
     }
 
@@ -40,7 +40,7 @@ public class Lotto {
         List<Integer> checknumbers = new ArrayList<>();
         for (int number : numbers) {
             if (checknumbers.contains(number)) {
-                throw new IllegalArgumentException("[ERROR] 로또 번호 내 중복이 존재합니다.");
+                throw new IllegalArgumentException("로또 번호 내 중복이 존재합니다.");
             }
             checknumbers.add(number);
         }

@@ -15,7 +15,7 @@ public class Issue {
     public Issue() {
         userPrice = InputView.InputPrice();
         if (!Check1000(userPrice)) {
-            throw new IllegalArgumentException("[ERROR] 구매 가격이 1,000원 단위가 아닙니다.");
+            throw new IllegalArgumentException("구매 가격이 1,000원 단위가 아닙니다.");
         }
         this.count = CountLotto(userPrice);
         this.userLotto = IssueLotto(count);
