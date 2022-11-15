@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class LottoTest {
@@ -18,10 +19,37 @@ class LottoTest {
     @DisplayName("로또 번호에 중복된 숫자가 있으면 예외가 발생한다.")
     @Test
     void createLottoByDuplicatedNumber() {
-        // TODO: 이 테스트가 통과할 수 있게 구현 코드 작성
         assertThatThrownBy(() -> new Lotto(List.of(1, 2, 3, 4, 5, 5)))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
-    // 아래에 추가 테스트 작성 가능
+    @DisplayName("로또 번호를 잘 가져오는지 확인한다.")
+    @Test
+    void getLottoNumbers() {
+        List<Integer> numbers = List.of(4, 5, 6, 7, 8, 9);
+        Lotto lotto = new Lotto(numbers);
+        assertThat(lotto.getNumbers()).isEqualTo(numbers);
+    }
+
+    @DisplayName("로또에 번호가 잘 할당되었는지 확인한다.")
+    @Test
+    void createLotto(){
+        List<Integer> numbers = List.of(3, 4, 5, 6, 7, 8);
+        Lotto lotto = new Lotto(numbers);
+        assertThat(lotto).hasFieldOrPropertyWithValue("numbers", numbers);
+    }
+
+    @DisplayName("당첨 번호와 보너스 번호가 주어지면 몇 개가 매치되는지 확인한다.")
+    @Test
+    void match() {
+        List<Integer> numbers = List.of(3, 4, 5, 6, 7, 8);
+        Lotto lotto = new Lotto(numbers);
+        List<Integer> winning = List.of(1, 2, 3, 4, 5, 6);
+        int bonus = 7;
+        int matchWinning = 4;
+        boolean matchBonus = true;
+        assertThat(lotto.matchWinning(winning)).isEqualTo(matchWinning);
+        assertThat(lotto.matchBonus(bonus)).isEqualTo(matchBonus);
+    }
+
 }
