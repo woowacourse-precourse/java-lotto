@@ -73,8 +73,6 @@ public class InputHandler {
         try {
             return Integer.parseInt(number);
         } catch (NumberFormatException E) {
-            System.out.println("[ERROR]");
-            System.out.println(E.getMessage());
             throw new IllegalArgumentException(DEFAULT_ERROR_MESSAGE + ERROR_MESSAGE.NUMBER_TYPE_EXCEPTION.getMessage());
         }
     }
