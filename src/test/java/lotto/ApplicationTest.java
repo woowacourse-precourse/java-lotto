@@ -53,6 +53,20 @@ class ApplicationTest extends NsTest {
             assertThat(output()).contains(ERROR_MESSAGE);
         });
     }
+//    @Test
+//    void 로또번호_문자열_테스트(){
+//        assertSimpleTest(() -> {
+//            run("1000", "1,2,3,4,5,a");
+//            assertThat(output()).contains(ERROR_MESSAGE);
+//        });
+//    }
+//    @Test
+//    void 보너스번호_문자열_테스트(){
+//        assertSimpleTest(() -> {
+//            run("1000", "1,2,3,4,5,6", "a");
+//            assertThat(output().contains(ERROR_MESSAGE));
+//        });
+//    }
 
     @Override
     public void runMain() {
