@@ -32,4 +32,9 @@ public class LottoController {
         LottoView.printInputLottoWinningMessage();
         return LottoService.getWinningNumber(LottoView.readLine());
     }
+
+    public static int getBonusNumber() {
+        LottoView.printInputBonusNumberMessage();
+        return LottoService.getBonusNumber(LottoView.readLine());
+    }
 }
