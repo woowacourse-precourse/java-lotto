@@ -47,7 +47,7 @@ public class GameController {
     }
 
     private void closing(final int money, final List<Lotto> lotteries, final Lotto winningLotto) {
-        Map<Place, Integer> prizeMap = gameService.getProfitResult(lotteries, winningLotto);
-
+        Map<Place, Integer> prizeMap = gameService.getRewardMap(lotteries, winningLotto);
+        double result = gameService.getProfitResult(money, prizeMap);
     }
 }
