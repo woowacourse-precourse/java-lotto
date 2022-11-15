@@ -19,20 +19,36 @@ public class LottoSystem {
 
     private final View view = new Terminal();
 
+    private List<Lotto> boughtLottoes;
+    private List<Integer> winningNumbers;
+    int bonusNumber;
+
     public void run() {
+        buy();
+        draw();
+        result();
+    }
+
+    private void buy() {
         MoneyParser moneyParser = new MoneyParser();
         int lottoCount = moneyParser.parse(view.requestMoney()) / LOTTO_PRICE;
         view.printLottoCount(lottoCount);
-        List<Lotto> boughtLottoes = new ArrayList<>();
+        boughtLottoes = new ArrayList<>();
         for(int i = 0; i < lottoCount; i++) {
             List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
             Collections.sort(numbers);
             boughtLottoes.add(new Lotto(numbers));
         }
         view.printLotto(boughtLottoes);
+    }
 
+    private void draw() {
         WinningNumberParser winningNumberParser = new WinningNumberParser();
-        List<Integer> winningNumbers = winningNumberParser.parse(view.requestWinningNumbers());
+        winningNumbers = winningNumberParser.parse(view.requestWinningNumbers());
         view.requestBonusNumber();
+    }
+
+    private void result() {
+
     }
 }
