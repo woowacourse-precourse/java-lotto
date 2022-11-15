@@ -35,4 +35,13 @@ public class ComputerTest {
         assertThatThrownBy(Computer::new)
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @DisplayName("당첨 번호가 7개이면 예외가 발생한다.")
+    @Test
+    void createComputerWithSevenNumbers() {
+        String input = "1,2,3,4,5,6,7";
+        System.setIn(new ByteArrayInputStream(input.getBytes()));
+        assertThatThrownBy(Computer::new)
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
