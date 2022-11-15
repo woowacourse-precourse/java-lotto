@@ -1,13 +1,14 @@
 package lotto;
 
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class AscendingSorter {
-    public List<List<Integer>> sortAscendingOrder(List<List<Integer>> purchaserNumbers) {
+    public static List<List<Integer>> sortAscendingOrder(List<List<Integer>> purchaserNumbers) {
+        List<List<Integer>> sortedPurchaserNumbers = new ArrayList<>();
         for (int i = 0; i < purchaserNumbers.size(); i++) {
-            Collections.sort(purchaserNumbers.get(i));
+            sortedPurchaserNumbers.add(purchaserNumbers.get(i).stream().sorted().collect(Collectors.toList()));
         }
-        return purchaserNumbers;
+        return sortedPurchaserNumbers;
     }
 }
