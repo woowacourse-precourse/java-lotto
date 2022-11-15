@@ -11,6 +11,7 @@ import java.util.stream.Collectors;
 public class OutputView {
 
     private static final String OUTPUT_AMOUNT_OF_LOTTO = "개를 구매했습니다.";
+    private static final String OUTPUT_RATE_OF_PROFIT = "총 수익률은 %.1f%%입니다.";
 
     public void printErrorMessage(String errorMessage) {
         System.out.println(errorMessage);
@@ -34,7 +35,7 @@ public class OutputView {
     }
 
     public void printRateOfProfit(double rateOfProfit) {
-        System.out.println(String.format("총 수익률은 %.1f%%입니다.", rateOfProfit));
+        System.out.println(String.format(OUTPUT_RATE_OF_PROFIT, rateOfProfit));
     }
 
 }
