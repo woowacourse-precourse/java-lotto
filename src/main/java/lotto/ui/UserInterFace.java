@@ -62,7 +62,6 @@ public class UserInterFace {
     }
     
     public List<Integer> inputWinningNumbers() {
-        print("당첨 번호를 입력해 주세요.\n");
         String input = Console.readLine();
         Judgment judgment = new Judgment();
         judgment.check5Commas(input);
