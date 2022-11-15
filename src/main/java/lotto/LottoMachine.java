@@ -34,4 +34,15 @@ public class LottoMachine {
         return LottoPaper;
     }
 
+    public List<Integer> winSixNumber(String winSixNumber) {
+        List<Integer> winSixNumberSeparate = new ArrayList<>();
+
+
+        for (String i : winSixNumber.split(",")) {
+            winSixNumberSeparate.add(Integer.parseInt(i));
+        }
+
+        return  winSixNumberSeparate;
+    }
+
 }
