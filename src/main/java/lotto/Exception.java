@@ -1,6 +1,7 @@
 package lotto;
 
 import java.util.Arrays;
+import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
 
 public class Exception {
@@ -45,7 +46,7 @@ public class Exception {
     private static void numericException(String input) {
         if (!input.matches("[+-]?\\d*(\\.\\d+)?")) {
             System.out.println("[ERROR] 숫자 형식이여야 합니다.");
-            throw new IllegalArgumentException();
+            throw new NoSuchElementException();
         }
     }
 }
