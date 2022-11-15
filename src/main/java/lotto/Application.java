@@ -6,6 +6,7 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 
 public class Application {
@@ -15,16 +16,18 @@ public class Application {
 
     public static int enterPurchaseAmount() {
 
-        String str = "구입금액을 입력해 주세요.";
-        System.out.println(str);
+        System.out.println("구입금액을 입력해 주세요.");
         String strAmount = Console.readLine();
+
         for (int i = 0; i < strAmount.length(); ++i) {
             if (!Character.isDigit(strAmount.charAt(i))) {
-                throw new IllegalArgumentException(ERROR_MESSAGE);
+                System.out.println(ERROR_MESSAGE);
+//                throw new IllegalArgumentException(ERROR_MESSAGE);
+                throw new NoSuchElementException(ERROR_MESSAGE);
             }
         }
-        int amount = Integer.parseInt(strAmount);
 
+        int amount = Integer.parseInt(strAmount);
         if (amount % 1000 != 0) {
             throw new IllegalArgumentException("[ERROR] 1000의 배수만 입력 가능합니다.");
         }
