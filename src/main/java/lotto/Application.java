@@ -27,6 +27,7 @@ public class Application {
     	printLottoNumbers(count,lottoNumbers);
     	
     	int earning = printWinningResult(WinningNumber,bonusNumber,lottoNumbers);
+    	
     	double winningRate = (double)earning/(count*10);
     	System.out.println("총 수익률은 "+Math.round(winningRate*100)/100.0+"%입니다.");
     	
@@ -49,7 +50,7 @@ public class Application {
     public static List<Integer> getWinningNumber() {
     	int eachNumber;
     	List<Integer> result = new ArrayList<>();
-    	//HashSet<Integer> hash = new HashSet<>();
+    	Lotto test;
     	
     	System.out.println("당첨 번호를 입력해 주세요.");
     	String input = Console.readLine();
@@ -57,10 +58,10 @@ public class Application {
     	String[] inputSplited = input.split(",");
     	for(String s:inputSplited) {
     		eachNumber = Integer.parseInt(s);
-    		if(eachNumber<1 || eachNumber>46)
-    			throw new IllegalArgumentException("[ERROR] 잘못된 입력 값입니다.");
     		result.add(eachNumber);
     	}
+    	
+    	test = new Lotto(result);
     	
     	return result;
     }

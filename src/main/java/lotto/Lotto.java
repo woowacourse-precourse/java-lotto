@@ -20,8 +20,11 @@ public class Lotto {
         
         HashSet<Integer> hash = new HashSet<>();
         
-        for(Integer number:numbers)
+        for(Integer number:numbers) {
     		hash.add(number);
+    		if(number<1 || number>46)
+    			throw new IllegalArgumentException("[ERROR] 1~45 사이의 값이 아닙니다.");
+        }
     	
     	if(hash.size()!=6)
     		throw new IllegalArgumentException("[ERROR] 중복된 숫자가 있습니다.");
