@@ -5,7 +5,7 @@ import enumCollections.Exceptions;
 import java.util.List;
 
 public class BonusNumberException extends CommonException {
-    public static void validateNumber(List<Integer> winningNumbers, String bonusNumber) {
+    public static void validate(List<Integer> winningNumbers, String bonusNumber) {
         hasCharacters(bonusNumber);
         validateNumberRange(stringToInteger(bonusNumber));
         hasSameNumber(winningNumbers, stringToInteger(bonusNumber));

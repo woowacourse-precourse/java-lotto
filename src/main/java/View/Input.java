@@ -28,7 +28,7 @@ public class Input {
 
     public static int getBonusNumber(List<Integer> winningNumbers) {
         String bonusNumber = Console.readLine().trim();
-        BonusNumberException.validateNumber(winningNumbers, bonusNumber);
+        BonusNumberException.validate(winningNumbers, bonusNumber);
         return Integer.valueOf(bonusNumber);
     }
 }
