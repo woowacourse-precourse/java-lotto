@@ -1,8 +1,11 @@
 package lotto.validation;
 
+import camp.nextstep.edu.missionutils.test.NsTest;
+import lotto.app.Application;
 import lotto.domain.lotto.BuyLotto;
 import lotto.domain.jackpot.Jackpot;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
@@ -10,9 +13,11 @@ import org.junit.jupiter.params.provider.ValueSource;
 import java.util.Arrays;
 import java.util.List;
 
+import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-class ValidationTest {
+class ValidationTest extends NsTest {
 
 
     public static Jackpot jp;
@@ -22,6 +27,21 @@ class ValidationTest {
         jp = new Jackpot();
     }
 
+    @Test
+    void 유저_입력_금액_예외_테스트_1() {
+        assertSimpleTest(() -> {
+            runException("가나다라마바사");
+            assertThat(output()).contains("[ERROR]");
+        });
+    }
+
+    @Test
+    void 유저_입력_금액_예외_테스트_2() {
+        assertSimpleTest(() -> {
+            runException("123456");
+            assertThat(output()).contains("[ERROR]");
+        });
+    }
 
     @ParameterizedTest
     //given
@@ -58,5 +78,10 @@ class ValidationTest {
                 //then
                 .hasMessageContaining("[ERROR] 보너스 번호는 1부터 45사이의 숫자여야하며 당첨번호와는 겹쳐선 안됩니다.");
 
+    }
+
+    @Override
+    public void runMain() {
+        Application.main(new String[]{});
     }
 }
