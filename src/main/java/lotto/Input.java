@@ -1,6 +1,9 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
+
+import java.util.List;
 
 public class Input {
     public static int inputPurchaseMoney() {
@@ -22,5 +25,9 @@ public class Input {
         if (input % 1000 != 0) {
             throw new IllegalArgumentException("구입금액은 1000원 단위로 입력하세요.");
         }
+    }
+
+    public static List<Integer> issueLotto() {
+        return Randoms.pickUniqueNumbersInRange(1, 45, 6);
     }
 }

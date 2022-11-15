@@ -11,8 +11,9 @@ public class Game {
         Print.outputNumberOfLotto(numberOfLottos);
         List<Lotto> lottos = new ArrayList<>();
         for (int i = 0; i < numberOfLottos; i++) {
-            List<Integer> lotto = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+            List<Integer> lotto = Input.issueLotto();
             lottos.add(new Lotto(lotto));
         }
+
     }
 }
