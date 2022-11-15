@@ -4,6 +4,10 @@ import java.util.List;
 
 public class Print {
 
+    public void intputPrice(){
+        System.out.println("구매금액을 입력해 주세요.");
+    }
+
     public void lottoCount(int lottocount){
         System.out.println(String.format("%d개를 구매했습니다.", lottocount));
     }

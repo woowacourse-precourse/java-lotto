@@ -29,6 +29,7 @@
 - [x] 보너스 번호 입력 메시지를 출력한다.  -Print#inputBonus()
 - [x] 당첨 통계 메시지를 출력한다.  -Print#statistics()
 - [x] 예외 상황에 따른 에러를 출력한다.  -Print#Error()
+- [x] 구매 금액 입력하는 메시지를 출력한다.  -Print#inputPrice()
 
 ## 6. 예외 처리
 - [] 입력 금액이 0인지 판단한다.
