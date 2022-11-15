@@ -1,13 +1,16 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomUniqueNumbersInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class ApplicationTest extends NsTest {
     private static final String ERROR_MESSAGE = "[ERROR]";
@@ -52,6 +55,43 @@ class ApplicationTest extends NsTest {
             runException("1000j");
             assertThat(output()).contains(ERROR_MESSAGE);
         });
+    }
+
+    @Test
+    @DisplayName("구입금액이 1000으로 나누어 떨어지지 않으면 예외가 발생한다.")
+    void inputNotDevidedBy1000() {
+        int money = 1100;
+        assertThatThrownBy(() -> Application.validate(money))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    @DisplayName("구입금액만큼 로또를 구입한다.")
+    void perchaseLottoByNumberOfLotto() {
+        int numberOfLotto = 10;
+        assertThat(Application.perchaseLotto(numberOfLotto).size())
+                .isEqualTo(numberOfLotto);
+    }
+
+    @Test
+    @DisplayName("입력받은 로또 번호로 리스트 생성")
+    void createList() {
+        String inputNumbers = "1, 2, 3, 4, 5, 6";
+        assertThat(Application.stringToList(inputNumbers))
+                .isEqualTo(List.of(1, 2, 3, 4, 5,6));
+    }
+
+    @Test
+    @DisplayName("각 등수의 로또 개수 측정")
+    void countRank() {
+        Lotto winningLotto = new Lotto(List.of(5, 9, 14, 15, 35, 44));
+        List<Lotto> lottos = new ArrayList<>(List.of(new Lotto(List.of(2, 10, 20, 26, 40, 43)),
+                new Lotto(List.of(3, 13, 18, 32, 33, 39)),
+                new Lotto(List.of(7, 9, 12, 15, 24, 44)),
+                new Lotto(List.of(10, 11, 12, 24, 25, 39))));
+        int bonusNumber = 11;
+
+        assertThat(Application.rank(lottos, winningLotto, bonusNumber)).isEqualTo(List.of(0, 0, 0, 0, 1));
     }
 
     @Override
