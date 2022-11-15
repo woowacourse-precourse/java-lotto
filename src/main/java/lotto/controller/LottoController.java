@@ -14,15 +14,12 @@ public class LottoController {
 		LottoAmount lottoAmount = createLottoAmount();
 
 		LottoTicket lottoTickets = buyLotto(lottoAmount);
-
 		OutputView.printLottoTickets(lottoTickets);
 
 		WinningNumber winningNumber = createWinningNumber();
-
 		BonusNumber bonusNumber = createBonusNumber(winningNumber);
 
 		LottoResult lottoResult = createLottoResult(lottoTickets, winningNumber, bonusNumber);
-
 		printResult(lottoResult, lottoAmount);
 	}
 
