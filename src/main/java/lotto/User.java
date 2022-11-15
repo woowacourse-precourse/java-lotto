@@ -72,5 +72,12 @@ public class User {
 		System.out.println("총 수익률은 "+String.format("%.1f", totalReturn)+"%입니다.");
 	}
 
+	public void start() {
+		inputPurchaseAmount();
+		computeLottoAmount();
+		purchaseLotto();
+		lottoMachine.inputWinningNumber();
+		prizeResult();
+	}
 
 }
