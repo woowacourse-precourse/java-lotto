@@ -13,10 +13,12 @@ public class CreateUserLottoNumbers {
         userLottosNumber = new ArrayList<>();
     }
 
-    public List<Lotto> createUserLottoNumber() {
-        List<Integer> sample = new ArrayList<>(Randoms.pickUniqueNumbersInRange(1, 45, 6));
-        Collections.sort(sample);
-        userLottosNumber.add(new Lotto(sample));
+    public List<Lotto> createUserLottoNumber(int amount) {
+        for(int i = 0; i<amount; i++){
+            List<Integer> sample = new ArrayList<>(Randoms.pickUniqueNumbersInRange(1, 45, 6));
+            Collections.sort(sample);
+            userLottosNumber.add(new Lotto(sample));
+        }
         return userLottosNumber;
     }
 
