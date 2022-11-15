@@ -5,7 +5,8 @@ import lotto.Lotto;
 import lotto.MyLottoList;
 import lotto.MyPrize;
 import lotto.PrizeLotto;
-import lotto.constant.LottoConstant;
+import lotto.constant.LottoInfo;
+import lotto.constant.Rank;
 import lotto.view.LottoView;
 
 import java.util.ArrayList;
@@ -26,7 +27,7 @@ public class LottoController {
     }
 
     public static Lotto generateOneLotto() {
-        List<Integer> numbers = Randoms.pickUniqueNumbersInRange(LottoConstant.START_NUMBER, LottoConstant.END_NUMBER, LottoConstant.TOTAL_COUNT);
+        List<Integer> numbers = Randoms.pickUniqueNumbersInRange(LottoInfo.START_NUMBER, LottoInfo.END_NUMBER, LottoInfo.TOTAL_COUNT);
         sortAscendingOrder(numbers);
         return new Lotto(numbers);
     }
@@ -47,10 +48,10 @@ public class LottoController {
     }
 
     public static MyPrize generateMyPrizeInstance(MyLottoList myLottoList, PrizeLotto prizeLotto) {
-        int [] rankArr = new int[6];
+        int [] rankArr = new int[LottoInfo.REWARD_RANK_COUNT+1];
         for(Lotto lotto : myLottoList.getLotto()) {
             int rank = calculateRankOneLotto(lotto, prizeLotto);
-            if(rank <= 5) {
+            if(rank <= LottoInfo.REWARD_RANK_COUNT) {
                 rankArr[rank] = rankArr[rank] + 1;
             }
         }
@@ -60,8 +61,8 @@ public class LottoController {
     public static int calculateRankOneLotto(Lotto lotto, PrizeLotto prizeLotto) {
         int correctNum = 0;
         int rank = 0;
-        for(int num : lotto.getCounts()) {
-            if(prizeLotto.getPrizeLotto().getCounts().contains(num)) {
+        for(int num : lotto.getNumbers()) {
+            if(prizeLotto.getPrizeLotto().getNumbers().contains(num)) {
                 correctNum += 1;
             }
         }
@@ -70,21 +71,17 @@ public class LottoController {
     }
 
     public static int calculateRankByBonusNum(Lotto lotto, int correctNum, int BonusNum) {
-        if(correctNum <= 4) {
-            return 8 - correctNum;
+        boolean isContainBonus = false;
+        if(lotto.getNumbers().contains(BonusNum)) {
+            isContainBonus = true;
         }
 
-        if(correctNum == 6) {
-            return 1;
-        }
-
-        if(correctNum == 5) {
-            if(lotto.getCounts().contains(BonusNum)) {
-                return 2;
+        for(Rank eachRank : Rank.values()) {
+            if(correctNum == eachRank.getCorrect() && isContainBonus == eachRank.isBonus()) {
+                return eachRank.getRanking();
             }
-
-            return 3;
         }
-        return 10;
+
+        return Integer.MAX_VALUE;
     }
 }

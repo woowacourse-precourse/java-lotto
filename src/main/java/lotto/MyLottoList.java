@@ -1,6 +1,6 @@
 package lotto;
 
-import lotto.constant.LottoConstant;
+import lotto.constant.LottoInfo;
 
 import java.util.List;
 
@@ -9,7 +9,7 @@ public class MyLottoList {
     private List<Lotto> lotto;
 
     public MyLottoList(int money) {
-        this.count = money / LottoConstant.ONE_PRICE;
+        this.count = money / LottoInfo.ONE_PRICE;
     }
 
     public int getCount() {

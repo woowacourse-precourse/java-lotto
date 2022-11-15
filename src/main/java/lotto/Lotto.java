@@ -1,6 +1,6 @@
 package lotto;
 
-import lotto.constant.LottoConstant;
+import lotto.constant.LottoInfo;
 
 import java.util.HashSet;
 import java.util.List;
@@ -15,13 +15,13 @@ public class Lotto {
         this.numbers = numbers;
     }
 
-    public List<Integer> getCounts() {
+    public List<Integer> getNumbers() {
         return numbers;
     }
 
     // test: test/java/lotto/LottoTest/createLottoByOverSize()
     private void validateAmount(List<Integer> numbers) {
-        if (numbers.size() != LottoConstant.TOTAL_COUNT) {
+        if (numbers.size() != LottoInfo.TOTAL_COUNT) {
             throw new IllegalArgumentException("[ERROR] 로또 번호는 6개이어야 합니다.");
         }
     }
