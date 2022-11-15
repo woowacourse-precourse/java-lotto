@@ -15,4 +15,10 @@ public class WinningLottoValidator {
             throw new IllegalArgumentException(ErrorMessage.WINNING_NUMBER_WRONG_TYPE);
         }
     }
+
+    public static void validateBonusNumberRange(int userInputNumber) {
+        if (userInputNumber < Constant.MIN_LOTTO_NUMBER || userInputNumber > Constant.MAX_LOTTO_NUMBER) {
+            throw new IllegalArgumentException(ErrorMessage.BONUS_NUMBER_WRONG_RANGE);
+        }
+    }
 }
