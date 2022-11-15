@@ -1,6 +1,5 @@
 package lotto.domain;
 
-import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
@@ -27,24 +26,9 @@ public class LottoMachine {
         return Math.floorDiv(money, LottoConstant.PRICE.getValue());
     }
 
-    private int readPurchaseAmount() {
-        try {
-            System.out.println("구입금액을 입력해 주세요.");
-            int money = Integer.valueOf(Console.readLine());
-            if (money < 0) {
-                System.out.println(ErrorMessage.NON_POSITIVE_AMOUNT.getMessage());
-                throw new IllegalArgumentException();
-            }
-            return money;
-        } catch (NumberFormatException e) {
-            System.out.println(ErrorMessage.NON_NUMERIC_VALUE.getMessage());
-            throw new IllegalArgumentException();
-        }
-    }
-
     public List<Lotto> sellLottos() {
         List<Lotto> lottos = new ArrayList<>();
-        int money = readPurchaseAmount();
+        int money = LottoInputFilter.readPurchaseAmount();
         int quantity = countPurchaseQuantity(money);
         System.out.println(String.format("%d개를 구매했습니다.", quantity));
 
@@ -55,7 +39,7 @@ public class LottoMachine {
                             LottoConstant.ENDTO.getValue(),
                             LottoConstant.SIZE.getValue()
                     )));
-            System.out.println(lottos.get(lottos.size()-1).getLottoNumbers());
+            System.out.println(lottos.get(i).getLottoNumbers());
         }
         return lottos;
     }
