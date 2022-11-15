@@ -53,5 +53,16 @@ class LottoTest {
         assertThat(same)
                 .isEqualTo(5);
     }
-
+    @DisplayName("rank값이 제대로 계산되는 지 확인")
+    @Test
+    void lottoRank() {
+        final Application application = new Application();
+        List<Integer> nums = Arrays.asList(1,2,3,4,5,6);
+        List<Integer> winningNums = Arrays.asList(1,2,3,4,5,7);
+        Lotto winningLotto = new Lotto(winningNums);
+        Lotto lotto = new Lotto(nums);
+        int rank = application.lottoRank(lotto, winningLotto, 6);
+        assertThat(rank)
+                .isEqualTo(2);
+    }
 }
