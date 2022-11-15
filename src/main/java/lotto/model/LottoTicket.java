@@ -5,8 +5,7 @@ import lotto.view.OutputView;
 
 import java.util.*;
 
-import static java.util.stream.Collectors.collectingAndThen;
-import static java.util.stream.Collectors.toList;
+import static java.util.stream.Collectors.*;
 
 public class LottoTicket {
     private final List<Lotto> lottoTickets = new ArrayList<>();
@@ -17,7 +16,7 @@ public class LottoTicket {
 
     private void generateTickets(long count){
         for(int i=0;i<count;i++){
-            List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+            List<Integer> numbers = new ArrayList<>(Randoms.pickUniqueNumbersInRange(1, 45, 6));
             Collections.sort(numbers);
             lottoTickets.add(new Lotto(numbers));
 

@@ -32,7 +32,7 @@ public class OutputView {
     }
     public static void printLottoResult(Result result) {
         for (LottoRank lottoRank : LottoRank.getWithoutDefault()) {
-            System.out.printf("%s개 일치%s(%s원)- %s개" + System.lineSeparator(),
+            System.out.printf("%s개 일치%s(%s원) - %s개" + System.lineSeparator(),
                     df.format(lottoRank.getCorrectNumber()), printIfSecond(lottoRank),
                     df.format(lottoRank.getPrizeAmount()), df.format(result.getRankCount(lottoRank)));
         }
@@ -40,7 +40,7 @@ public class OutputView {
     }
     private static String printIfSecond(LottoRank lottoRank) {
         if (lottoRank.equals(LottoRank.SECOND)) {
-            return ", 보너스 볼 일치";
+            return ", 보너스 볼 일치 ";
         }
         return " ";
     }
