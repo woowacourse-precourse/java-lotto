@@ -12,7 +12,7 @@ public class RateOfReturn {
 	}
 
 	private void getRateOfReturn(long pay) {
-		rateOfReturn = ((double) prize - pay) / pay * 100;
+		rateOfReturn = (double) prize / pay * 100;
 	}
 
 	private void getPrize(List<List<Integer>> score) {

@@ -18,42 +18,42 @@ class PayTest {
 	@Test
 	void 예외처리_문자() {
 		assertThatThrownBy(() -> new Pay("a"))
-				.isInstanceOf(IllegalArgumentException.class);
+				.isInstanceOf(ExceptionHandler.class);
 	}
 
 	@Test
 	void 예외처리_문자2() {
 		assertThatThrownBy(() -> new Pay("1000a"))
-				.isInstanceOf(IllegalArgumentException.class);
+				.isInstanceOf(ExceptionHandler.class);
 	}
 
 	@Test
 	void 예외처리_문자3() {
 		assertThatThrownBy(() -> new Pay("12a1000"))
-				.isInstanceOf(IllegalArgumentException.class);
+				.isInstanceOf(ExceptionHandler.class);
 	}
 
 	@Test
 	void 예외처리_공백() {
 		assertThatThrownBy(() -> new Pay(""))
-				.isInstanceOf(IllegalArgumentException.class);
+				.isInstanceOf(ExceptionHandler.class);
 	}
 
 	@Test
 	void 예외처리_가격() {
 		assertThatThrownBy(() -> new Pay("1200"))
-				.isInstanceOf(IllegalArgumentException.class);
+				.isInstanceOf(ExceptionHandler.class);
 	}
 
 	@Test
 	void 예외처리_가격2() {
 		assertThatThrownBy(() -> new Pay("1500"))
-				.isInstanceOf(IllegalArgumentException.class);
+				.isInstanceOf(ExceptionHandler.class);
 	}
 
 	@Test
 	void 예외처리_가격_음수() {
 		assertThatThrownBy(() -> new Pay("-1000"))
-				.isInstanceOf(IllegalArgumentException.class);
+				.isInstanceOf(ExceptionHandler.class);
 	}
 }

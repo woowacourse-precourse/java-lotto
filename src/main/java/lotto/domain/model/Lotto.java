@@ -1,5 +1,7 @@
 package lotto.domain.model;
 
+import lotto.domain.ErrorMessage;
+
 import java.util.HashSet;
 import java.util.List;
 
@@ -16,13 +18,13 @@ public class Lotto {
 		HashSet<Integer> numberSet = new HashSet<>(numbers);
 
 		if (numberSet.size() != numbers.size()) {
-			throw new IllegalArgumentException("중복된 수가 있음");
+			new ExceptionHandler(ErrorMessage.ERROR_OVERLAP).tryCatch(ErrorMessage.ERROR_OVERLAP);
 		}
 	}
 
 	private void validateSize(List<Integer> numbers) {
 		if (numbers.size() != 6) {
-			throw new IllegalArgumentException("크기가 6이 아님");
+			new ExceptionHandler(ErrorMessage.ERROR_WRONG_SIZE).tryCatch(ErrorMessage.ERROR_WRONG_SIZE);
 		}
 	}
 

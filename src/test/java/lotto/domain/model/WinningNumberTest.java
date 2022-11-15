@@ -21,42 +21,42 @@ class WinningNumberTest {
 	@Test
 	void 예외처리_1미만() {
 		assertThatThrownBy(() -> new WinningNumber("1,0,3,4,5,6"))
-				.isInstanceOf(IllegalArgumentException.class);
+				.isInstanceOf(ExceptionHandler.class);
 	}
 
 	@Test
 	void 예외처리_45초과() {
 		assertThatThrownBy(() -> new WinningNumber("1,46,3,4,5,6"))
-				.isInstanceOf(IllegalArgumentException.class);
+				.isInstanceOf(ExceptionHandler.class);
 	}
 
 	@Test
 	void 예외처리_잘못된_문자() {
 		assertThatThrownBy(() -> new WinningNumber("1,a,3,4,5,6"))
-				.isInstanceOf(IllegalArgumentException.class);
+				.isInstanceOf(ExceptionHandler.class);
 	}
 
 	@Test
 	void 예외처리_갯수() {
 		assertThatThrownBy(() -> new WinningNumber("1,3,4,5,6"))
-				.isInstanceOf(IllegalArgumentException.class);
+				.isInstanceOf(ExceptionHandler.class);
 	}
 
 	@Test
 	void 예외처리_쉼표() {
 		assertThatThrownBy(() -> new WinningNumber("1,46,,4,5,6,7"))
-				.isInstanceOf(IllegalArgumentException.class);
+				.isInstanceOf(ExceptionHandler.class);
 	}
 
 	@Test
 	void 예외처리_공백() {
 		assertThatThrownBy(() -> new WinningNumber(""))
-				.isInstanceOf(IllegalArgumentException.class);
+				.isInstanceOf(ExceptionHandler.class);
 	}
 
 	@Test
 	void 예외처리_스페이스() {
 		assertThatThrownBy(() -> new WinningNumber("1 3 43,4,5,6"))
-				.isInstanceOf(IllegalArgumentException.class);
+				.isInstanceOf(ExceptionHandler.class);
 	}
 }

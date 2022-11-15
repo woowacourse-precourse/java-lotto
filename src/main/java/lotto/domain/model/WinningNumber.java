@@ -20,12 +20,10 @@ public class WinningNumber {
 	private void validateLastCharacter(String winningNumbers) {
 		try {
 			if (winningNumbers.charAt(winningNumbers.length() - 1) == ',') {
-				System.out.println(ErrorMessage.ERROR_WRONG_INPUT.getError_message());
-				throw new IllegalArgumentException("마지막 문자 쉼표");
+				new ExceptionHandler(ErrorMessage.ERROR_WRONG_INPUT).tryCatch(ErrorMessage.ERROR_WRONG_INPUT);
 			}
 		} catch (StringIndexOutOfBoundsException exception) {
-			System.out.println(ErrorMessage.ERROR_WRONG_INPUT.getError_message());
-			throw new IllegalArgumentException("값 이상");
+			new ExceptionHandler(ErrorMessage.ERROR_WRONG_INPUT).tryCatch(ErrorMessage.ERROR_WRONG_INPUT);
 		}
 
 	}
@@ -34,8 +32,7 @@ public class WinningNumber {
 		HashSet<Integer> numberSet = new HashSet<>(winningNumbers);
 
 		if (numberSet.size() != winningNumbers.size()) {
-			System.out.println(ErrorMessage.ERROR_OVERLAP.getError_message());
-			throw new IllegalArgumentException("중복 값");
+			new ExceptionHandler(ErrorMessage.ERROR_OVERLAP).tryCatch(ErrorMessage.ERROR_OVERLAP);
 		}
 	}
 
@@ -49,29 +46,26 @@ public class WinningNumber {
 	}
 
 	private int validateInt(String input) {
-		int number;
+		int number = 0;
 
 		try {
 			number = Integer.parseInt(input);
-		} catch (IllegalArgumentException exception) {
-			System.out.println(ErrorMessage.ERROR_NOT_INTEGER.getError_message());
-			throw new IllegalArgumentException("정수 값을 입력하세요");
+		} catch (NumberFormatException exception) {
+			new ExceptionHandler(ErrorMessage.ERROR_NOT_INTEGER).tryCatch(ErrorMessage.ERROR_NOT_INTEGER);
 		}
 		return number;
 	}
 
 	private void validateCount(List<Integer> winning_numbers) {
 		if (winning_numbers.size() != 6) {
-			System.out.println(ErrorMessage.ERROR_WRONG_SIZE.getError_message());
-			throw new IllegalArgumentException("6개 아님");
+			new ExceptionHandler(ErrorMessage.ERROR_WRONG_SIZE).tryCatch(ErrorMessage.ERROR_WRONG_SIZE);
 		}
 	}
 
 	private void validateRange(List<Integer> winning_numbers) {
 		for (int number : winning_numbers) {
 			if (number < 1 || 45 < number) {
-				System.out.println(ErrorMessage.ERROR_WRONG_RANGE.getError_message());
-				throw new IllegalArgumentException("잘못된 범위");
+				new ExceptionHandler(ErrorMessage.ERROR_WRONG_RANGE).tryCatch(ErrorMessage.ERROR_WRONG_RANGE);
 			}
 		}
 	}

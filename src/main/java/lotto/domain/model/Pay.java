@@ -11,21 +11,19 @@ public class Pay {
 	}
 
 	private long validateLong(String input) {
-		long money;
+		long money = 0;
 
 		try {
 			money = Long.parseLong(input);
-		} catch (IllegalArgumentException exception) {
-			System.out.println(ErrorMessage.ERROR_NOT_INTEGER.getError_message());
-			throw new IllegalArgumentException("정수 값을 입력하세요");
+		} catch (NumberFormatException exception) {
+			new ExceptionHandler(ErrorMessage.ERROR_NOT_INTEGER).tryCatch(ErrorMessage.ERROR_NOT_INTEGER);
 		}
 		return money;
 	}
 
 	private void validate(long pay) {
 		if (pay % 1000 != 0 || pay < 1000) {
-			System.out.println(ErrorMessage.ERROR_WRONG_PRICE.getError_message());
-			throw new IllegalArgumentException();
+			new ExceptionHandler(ErrorMessage.ERROR_WRONG_PRICE).tryCatch(ErrorMessage.ERROR_WRONG_PRICE);
 		}
 	}
 

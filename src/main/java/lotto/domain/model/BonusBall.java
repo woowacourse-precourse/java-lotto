@@ -14,23 +14,20 @@ public class BonusBall {
 
 	private void validateRange(List<Integer> winningNumbers) {
 		if (bonusBall < 1 || 45 < bonusBall) {
-			System.out.println(ErrorMessage.ERROR_WRONG_RANGE.getError_message());
-			throw new IllegalArgumentException();
+			new ExceptionHandler(ErrorMessage.ERROR_WRONG_RANGE).tryCatch(ErrorMessage.ERROR_WRONG_RANGE);
 		}
 		if (winningNumbers.contains(bonusBall)){
-			System.out.println(ErrorMessage.ERROR_OVERLAP.getError_message());
-			throw new IllegalArgumentException();
+			new ExceptionHandler(ErrorMessage.ERROR_OVERLAP).tryCatch(ErrorMessage.ERROR_OVERLAP);
 		}
 	}
 
 	private int validateInt(String input) {
-		int number;
+		int number = 0;
 
 		try {
 			number = Integer.parseInt(input);
 		} catch (IllegalArgumentException exception) {
-			System.out.println(ErrorMessage.ERROR_NOT_INTEGER.getError_message());
-			throw new IllegalArgumentException("정수 값을 입력하세요");
+			new ExceptionHandler(ErrorMessage.ERROR_NOT_INTEGER).tryCatch(ErrorMessage.ERROR_NOT_INTEGER);
 		}
 		return number;
 	}

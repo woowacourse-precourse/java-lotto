@@ -13,7 +13,7 @@ class RateOfReturnTest {
 	@Test
 	void 정상작동() {
 		int pay = 1000;
-		double answer = (double) (5000 - pay) / pay * 100;
+		double answer = (double) 5000 / pay * 100;
 
 		List<List<Integer>> score = new ArrayList<>();
 
@@ -30,7 +30,7 @@ class RateOfReturnTest {
 	@Test
 	void 정상작동2() {
 		int pay = 1000;
-		double answer = (double) (1500000 + 30000000 - pay) / pay * 100;
+		double answer = (double) (1500000 + 30000000) / pay * 100;
 
 		List<List<Integer>> score = new ArrayList<>();
 

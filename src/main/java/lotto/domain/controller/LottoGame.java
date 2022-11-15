@@ -17,11 +17,15 @@ public class LottoGame {
 
 
 	public void start() {
-		buyTicket();
-		getWinningNumber();
-		getBonusNumber();
-		getScore();
-		getRateOfReturn();
+		try {
+			buyTicket();
+			getWinningNumber();
+			getBonusNumber();
+			getScore();
+			getRateOfReturn();
+		}catch (ExceptionHandler exceptionHandler){
+			System.out.println(exceptionHandler.getMessage());
+		}
 	}
 
 	private void buyTicket() {

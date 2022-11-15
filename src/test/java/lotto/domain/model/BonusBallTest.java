@@ -21,7 +21,7 @@ class BonusBallTest {
 		List<Integer> winningNumbers = Arrays.asList(1, 2, 3, 4, 5, 6);
 
 		assertThatThrownBy(() -> new BonusBall("0", winningNumbers))
-				.isInstanceOf(IllegalArgumentException.class);
+				.isInstanceOf(ExceptionHandler.class);
 	}
 
 	@Test
@@ -29,7 +29,7 @@ class BonusBallTest {
 		List<Integer> winningNumbers = Arrays.asList(1, 2, 3, 4, 5, 6);
 
 		assertThatThrownBy(() -> new BonusBall("46", winningNumbers))
-				.isInstanceOf(IllegalArgumentException.class);
+				.isInstanceOf(ExceptionHandler.class);
 	}
 
 	@Test
@@ -37,7 +37,7 @@ class BonusBallTest {
 		List<Integer> winningNumbers = Arrays.asList(1, 2, 3, 4, 5, 6);
 
 		assertThatThrownBy(() -> new BonusBall("4a6", winningNumbers))
-				.isInstanceOf(IllegalArgumentException.class);
+				.isInstanceOf(ExceptionHandler.class);
 	}
 
 	@Test
@@ -45,6 +45,6 @@ class BonusBallTest {
 		List<Integer> winningNumbers = Arrays.asList(1, 2, 3, 4, 5, 6);
 
 		assertThatThrownBy(() -> new BonusBall("1", winningNumbers))
-				.isInstanceOf(IllegalArgumentException.class);
+				.isInstanceOf(ExceptionHandler.class);
 	}
 }
