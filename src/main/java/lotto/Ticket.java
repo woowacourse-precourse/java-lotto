@@ -5,11 +5,17 @@ import java.util.List;
 import java.util.Map;
 
 public class Ticket {
+
     private final List<Lotto> ticket;
 
     public Ticket(List<Lotto> ticket){
         this.ticket=ticket;
     }
+
+    public List<Lotto> getTicket() {
+        return ticket;
+    }
+
 
     public Map<Ranking,Integer> checkRankingCount(WinningNumbers winningNumbers){
         HashMap<Ranking, Integer> results = initializeRanking();
