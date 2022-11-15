@@ -29,7 +29,7 @@ public class Lotto {
 
     // TODO: 추가 기능 구현
     public void vaildate(String numbers){
-        String regularExpression = "^\\d{1,2},\\s\\d{1,2},\\s\\d{1,2},\\s\\d{1,2},\\s\\d{1,2},\\s\\d{1,2}";
+        String regularExpression = "^\\d{1,2},\\d{1,2},\\d{1,2},\\d{1,2},\\d{1,2},\\d{1,2}";
         if(!numbers.matches(regularExpression)){
             throw new IllegalArgumentException("[ERROR] 형식에 맞추어 입력하세요.");
         }
