@@ -31,21 +31,13 @@ public class Printer {
     //구매한 로또 출력
     public static void printPurchasedLottos(List<Lotto> lottos) {
         for (Lotto lotto : lottos) {
-            StringBuilder stringBuilder = new StringBuilder("[");
             List<Integer> lottoNumbers = lotto.getNumbers();
-            for (int i = 0; i < lottoNumbers.size(); i++) {
-                stringBuilder.append(String.valueOf(lottoNumbers.get(i)));
-                if (i != lottoNumbers.size() - 1) {
-                    stringBuilder.append(", ");
-                }
-            }
-            stringBuilder.append("]");
-            System.out.println(stringBuilder);
+            System.out.println(lottoNumbers);
         }
     }
 
     public static void requestMatchResults(Map<String, Integer> lottoComparisonResults) {
-        System.out.println("당첨 통계\n---");
+        System.out.println("\n당첨 통계\n---");
         System.out.printf("3개 일치 (5,000원) - %d개%n", lottoComparisonResults.get("fifthPlace"));
         System.out.printf("4개 일치 (50,000원) - %d개%n", lottoComparisonResults.get("fourthPlace"));
         System.out.printf("5개 일치 (1,500,000원) - %d개%n", lottoComparisonResults.get("thirdPlace"));
