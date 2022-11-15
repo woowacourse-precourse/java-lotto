@@ -1,6 +1,9 @@
 package lotto.view;
 
 import camp.nextstep.edu.missionutils.Console;
+import lotto.model.Lotto;
+
+import java.util.List;
 
 public class Terminal implements View {
     @Override
@@ -15,8 +18,10 @@ public class Terminal implements View {
     }
 
     @Override
-    public void printLotto() {
-
+    public void printLotto(List<Lotto> boughtLottoes) {
+        for(Lotto lotto : boughtLottoes) {
+            System.out.println(lotto.getNumbers());
+        }
     }
 
     @Override

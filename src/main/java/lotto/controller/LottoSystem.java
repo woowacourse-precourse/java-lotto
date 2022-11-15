@@ -22,11 +22,12 @@ public class LottoSystem {
         MoneyParser moneyParser = new MoneyParser();
         int lottoCount = moneyParser.parse(view.requestMoney()) / LOTTO_PRICE;
         view.printLottoCount(lottoCount);
-        List<Lotto> boughtLottos = new ArrayList<>();
+        List<Lotto> boughtLottoes = new ArrayList<>();
         for(int i = 0; i < lottoCount; i++) {
             List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
             Collections.sort(numbers);
-            boughtLottos.add(new Lotto(numbers));
+            boughtLottoes.add(new Lotto(numbers));
         }
+        view.printLotto(boughtLottoes);
     }
 }
