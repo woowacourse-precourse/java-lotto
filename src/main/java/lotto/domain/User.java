@@ -19,7 +19,8 @@ public class User {
                 throw new InvalidUserInputException("[ERROR] 1000원 단위로 입력하셔야 합니다.");
             }
         } catch (NumberFormatException e) {
-            throw new InvalidUserInputException("[ERROR] 숫자로 입력해 주세요");
+            System.out.println("[ERROR] 숫자로 입력해 주세요");
+            //throw new InvalidUserInputException("[ERROR] 숫자로 입력해 주세요");
         }
     }
 
