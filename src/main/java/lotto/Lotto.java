@@ -1,6 +1,11 @@
 package lotto;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+
+import static lotto.ErrorMessage.INVALID_LOTTO_NUMBER_ERROR;
+import static lotto.ErrorMessage.INVALID_LOTTO_SIZE_ERROR;
 
 public class Lotto {
     private final List<Integer> numbers;
@@ -11,8 +16,20 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
+        validateSize(numbers);
+        validateDuplicate(numbers);
+    }
+
+    private void validateSize(List<Integer> numbers) {
         if (numbers.size() != 6) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(INVALID_LOTTO_SIZE_ERROR.getMessage());
+        }
+    }
+
+    private void validateDuplicate(List<Integer> numbers) {
+        Set<Integer> lottoNumbers = new HashSet<>(numbers);
+        if (lottoNumbers.size() != 6) {
+            throw new IllegalArgumentException(INVALID_LOTTO_NUMBER_ERROR.getMessage());
         }
     }
 

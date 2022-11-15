@@ -106,7 +106,7 @@ public class InputConsole {
         System.out.println(BONUS_NUMBER_INPUT_MESSAGE);
         String input = Console.readLine();
         validateBonusNumber(input, winningNumber);
-        int bonusNumber = Integer.parseInt(Console.readLine());
+        int bonusNumber = Integer.parseInt(input);
         return bonusNumber;
     }
 
