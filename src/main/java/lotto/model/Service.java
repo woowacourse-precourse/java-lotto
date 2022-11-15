@@ -28,7 +28,7 @@ public class Service {
     }
 
     public int[] getLottoResult() {
-        int[] result = new int[Constant.WINNER_NUMBER];
+        int[] result = new int[WinnerInfo.values().length];
         Arrays.fill(result, 0);
 
         for (int i = 0; i < lottoAmount; i++) {
