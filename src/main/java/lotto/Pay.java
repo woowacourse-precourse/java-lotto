@@ -1,23 +1,23 @@
 package lotto;
 
-import java.util.List;
+import lotto.view.ErrorMessage;
 
 public class Pay {
-
-    private final String pay;
+    private final int payNum;
 
     public Pay(String pay) {
         validate(pay);
-        this.pay = pay;
+        int payment = Integer.parseInt(pay);
+        this.payNum = payment/1000;
     }
 
-    private void validate(String pay) {
-        for (int i=0; i<pay.length(); i++){
-            int value = pay.charAt(i);
-            if(!(value >= 48 && value <= 57)) {
-                System.out.println("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
-                throw new IllegalArgumentException();
+    private void validate(String pay){
+        for (int index = 0; index < pay.length(); index++) {
+            int eachChar = pay.charAt(index);
+            if (!Character.isDigit(eachChar)) {
+                throw new IllegalArgumentException(ErrorMessage.numberType.getValue());
             }
         }
     }
 }
+
