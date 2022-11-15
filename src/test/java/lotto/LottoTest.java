@@ -15,6 +15,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class LottoTest {
+    public static final int PURCHASE_PRICE = 8000;
 
     LottoGenerator lottoGenerator = new LottoGenerator();
 
@@ -57,5 +58,14 @@ class LottoTest {
                 .collect(Collectors.toList());
 
         assertThat(lottos).isEqualTo(sortedLottos);
+    }
+
+    @DisplayName("로또가 구입금액만큼 만들어지는지 테스트")
+    @Test
+    void lottoGenerateByPurchasePrice() {
+        LottoSeller lottoSeller = new LottoSeller();
+        List<Lotto> lottos = lottoSeller.sellLottos(PURCHASE_PRICE);
+
+        assertThat(lottos.size()).isEqualTo(PURCHASE_PRICE / Lotto.PRICE);
     }
 }
