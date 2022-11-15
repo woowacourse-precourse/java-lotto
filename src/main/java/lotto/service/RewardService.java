@@ -11,7 +11,7 @@ public class RewardService {
         long totalReward = 0;
 
         for (int ranking = FIRST_PLACE; ranking <= LAST_PLACE; ranking++) {
-            int reward = Ranking.values()[ranking - 1].getReward();
+            int reward = Ranking.values()[ranking].getReward();
             totalReward += (long) reward * rankingCount[ranking];
         }
 
