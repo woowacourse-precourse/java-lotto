@@ -51,4 +51,21 @@ public class WinningLotto {
         if (numbers.contains(number))
             throw new IllegalArgumentException(ERROR_FORMAT_MESSAGE);
     }
+
+    public int countEqualNumber(Lotto userLotto) {
+
+        int count = 0;
+        for (int number : this.getLottoNumber())
+            if (userLotto.contains(number))
+                count += 1;
+
+        if (count != FIVE_EQUALS)
+            return count;
+
+        int bonusNumber = this.getBonusNumber();
+        if (userLotto.contains(bonusNumber))
+            count = SECOND_WINNING;
+
+        return count;
+    }
 }

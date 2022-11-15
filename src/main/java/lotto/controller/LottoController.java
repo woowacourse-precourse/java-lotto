@@ -50,7 +50,7 @@ public class LottoController {
         for (Lotto lotto : purchasedLottos.getLottos()) {
 
             boolean withBonus = false;
-            int equalNumber = countEqualNumber(winningLotto, lotto);
+            int equalNumber = winningLotto.countEqualNumber(lotto);
 
             if (equalNumber == SECOND_WINNING) {
                 WinningType type = getWinningType(FIVE_EQUALS, true);
@@ -61,23 +61,6 @@ public class LottoController {
         }
 
         return result;
-    }
-
-    public static int countEqualNumber(WinningLotto winningLotto, Lotto userLotto) {
-
-        int count = 0;
-        for (int number : winningLotto.getLottoNumber())
-            if (userLotto.contains(number))
-                count += 1;
-
-        if (count != FIVE_EQUALS)
-            return count;
-
-        int bonusNumber = winningLotto.getBonusNumber();
-        if (userLotto.contains(bonusNumber))
-            count = SECOND_WINNING;
-
-        return count;
     }
 
     public static Iterator<WinningType> getWinningTypeIterator() {
