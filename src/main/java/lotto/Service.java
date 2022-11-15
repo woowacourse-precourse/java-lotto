@@ -22,6 +22,15 @@ public class Service {
         }
     }
 
+    // 구입 금액에 해당하는 만큼 로또를 구매한다.
+    public List<List<Integer>> LottoList(int purchaseNum) {
+        List<List<Integer>> lottoNumbers = new ArrayList<>();
+
+        for (int i = 0; i < purchaseNum; i++) {
+            List<Integer> lotto = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+            lottoNumbers.add(lotto);
+        }
+    }
 
     public enum ExceptionCode {
         INPUT_ERROR("[ERROR] 숫자를 입력해주세요."),

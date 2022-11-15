@@ -14,6 +14,9 @@ public class Application {
         System.out.println(Situation.INPUT_MONEY.message);
         int purchaseAmount = service.getPurchaseAmount();
 
+        List<List<Integer>> lottoNumbers = service.LottoList(purchaseAmount);
+
+        System.out.println(lottoNumbers);
     }
 
     public enum Situation{
