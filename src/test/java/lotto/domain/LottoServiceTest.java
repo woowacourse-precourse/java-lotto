@@ -1,5 +1,6 @@
 package lotto.domain;
 
+import lotto.model.Lotto;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -21,6 +22,15 @@ class LottoServiceTest {
     @BeforeEach
     void beforeEach() {
         lottoService = new LottoService();
+    }
+
+    @Test
+    @DisplayName("lotto 클래스로 생성이 되는지 단위 테스트")
+    void generateLottoTest() {
+
+        Lotto result = lottoService.generateLotto();
+
+        assertThat(result).isInstanceOf(Lotto.class);
     }
 
     @Test
