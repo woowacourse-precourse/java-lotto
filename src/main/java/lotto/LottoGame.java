@@ -6,7 +6,7 @@ import java.util.List;
 public class LottoGame {
 
     private final Message message = new Message();
-    private final ProcessInputAndVariable processInputAndVariable = new ProcessInputAndVariable();
+    private final ProcessVariable processInputAndVariable = new ProcessVariable();
     private final ManagementLotto managementLotto = new ManagementLotto();
 
     public void start() {
