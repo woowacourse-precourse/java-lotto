@@ -12,7 +12,7 @@ public enum GuideMessage {
     WINNING_NUMBERS_GUIDE("당첨 번호를 입력해 주세요.\n" +
             "당첨 번호는 1과 45 사이의 서로 다른 6개의 숫자입니다.\n" +
             "각 번호를 쉼표로 구분해서 입력해주세요."),
-    BONUS_NUMBER_GUIDE("\n보너스 번호를 입력해 주세요." +
+    BONUS_NUMBER_GUIDE("\n보너스 번호를 입력해 주세요.\n" +
             "보너스 번호는 당첨 번호와 중복되지 않는 1부터 45 사이의 숫자입니다.\n" +
             "하나의 보너스 번호만 입력해 주세요.");
 
