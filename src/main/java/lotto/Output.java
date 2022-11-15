@@ -14,7 +14,7 @@ public class Output {
         for (int i=0;i<placeResult.size() - 1;i++){
             totalPrize = totalPrize + PrizeMoney.values()[i].amount * placeResult.get(i);
         }
-        return (double) (totalPrize * 100) / person.CurrentMoney;
+        return (double) (totalPrize * 100) / person.Money;
     }
 
     public static void printStatistic(List<Integer> placeResult, double earningRate){
