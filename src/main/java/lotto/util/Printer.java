@@ -1,5 +1,6 @@
 package lotto.util;
 
+import java.math.RoundingMode;
 import java.text.DecimalFormat;
 import java.util.Collections;
 import java.util.List;
@@ -11,6 +12,11 @@ public class Printer {
     private static final DecimalFormat INTEGER_FORMAT = new DecimalFormat("###,###");
     private static final DecimalFormat FLOAT_FORMAT = new DecimalFormat("###,###.#");
     private static final String ERROR_PREFIX = "[ERROR] ";
+
+    static {
+        INTEGER_FORMAT.setRoundingMode(RoundingMode.HALF_UP);
+        FLOAT_FORMAT.setRoundingMode(RoundingMode.HALF_UP);
+    }
 
     public static void printMessage(String message) {
         System.out.println(message);
