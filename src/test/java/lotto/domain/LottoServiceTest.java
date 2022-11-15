@@ -1,5 +1,6 @@
 package lotto.domain;
 
+import lotto.model.BuyingLottoList;
 import lotto.model.Lotto;
 import lotto.model.LottoResult;
 import lotto.model.WinningLotto;
@@ -27,6 +28,29 @@ class LottoServiceTest {
     @BeforeEach
     void beforeEach() {
         lottoService = new LottoService();
+    }
+
+    @Test
+    @DisplayName("로또 당첨 결과와 수익률을 모두 받아오는 로또 당첨 결과 통합 메서드 테스트")
+    void checkLottoResultTest() {
+
+        Lotto buyingLotto1 = new Lotto(List.of(1,2,3,22,23,24));
+        Lotto buyingLotto2 = new Lotto(List.of(1,2,3,22,23,25));
+        List<Lotto> lottoList = new LinkedList<>();
+        lottoList.add(buyingLotto1);
+        lottoList.add(buyingLotto2);
+        BuyingLottoList buyingLottoList = new BuyingLottoList(lottoList);
+        Lotto winningLottoNumber = new Lotto(List.of(1,2,3,4,5,6));
+        WinningLotto winningLotto = new WinningLotto(winningLottoNumber, 7);
+
+        LottoResult expected = new LottoResult();
+        expected.refreshResult(WinningRank.FIFTH);
+        expected.refreshResult(WinningRank.FIFTH);
+        expected.setProfit(500);
+
+        LottoResult result = lottoService.checkLottoResult(buyingLottoList, winningLotto);
+
+        assertThat(result.getProfit()).isEqualTo(expected.getProfit());
     }
 
     @Test
