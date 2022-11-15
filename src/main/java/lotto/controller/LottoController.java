@@ -23,14 +23,17 @@ public class LottoController {
         try {
             int inputAmount = inputView.getInputAmount();
             RandomLotto randomLotto = lottoService.makeRandomLottoNumbers(new Money(inputAmount));
+
             resultView.showNumberOfLottoPurchase(randomLotto);
             resultView.showAllRandomLottoNumbers(randomLotto);
 
             Lotto lotto = new Lotto(inputView.getWinningNums(), inputView.getBonusNum());
             HashMap<Winning, Integer> winningResultMap = lottoService.confirmWinningResult(randomLotto, lotto);
             WinningResult winningResult = new WinningResult(winningResultMap);
+
             resultView.showWinningResult(winningResult);
             resultView.showLottoYield(winningResult, inputAmount);
+
         } catch (IllegalArgumentException exception) {
             resultView.createErrorMessage(exception);
         }
