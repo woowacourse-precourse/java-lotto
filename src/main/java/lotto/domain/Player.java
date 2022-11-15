@@ -1,6 +1,8 @@
 package lotto.domain;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import lotto.exception.Check;
+import lotto.exception.CustomException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,6 +23,10 @@ public class Player {
     }
 
     private void setBuyMoney(int buyMoney) {
+        Check check = new Check();
+        if (check.haveRest(buyMoney)) {
+            throw new IllegalArgumentException(CustomException.HAVEREST.getMessage());
+        }
         this.buyMoney = buyMoney;
     }
 
