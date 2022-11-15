@@ -56,6 +56,14 @@ public class LottoGameController {
         }
     }
 
+    public void setEnterLotto(InputMessages inputMessages, OutputMessages outputMessages) {
+        List<Integer> winNumList = getWinNumList(inputMessages, outputMessages);
+        for (Integer number: winNumList) {
+            lottoGameService.isValidNumber(number);
+        }
+        lotto = new Lotto(winNumList);
+    }
+
     public List<Integer> getWinNumList(InputMessages inputMessages, OutputMessages outputMessages) {
         outputMessages.winNumInputMsg();
         String[] inputList = inputMessages.readLineAsArray();
