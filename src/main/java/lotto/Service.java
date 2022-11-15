@@ -65,4 +65,9 @@ public class Service {
             }
         }
     }
+
+    public int getLuckyNumberInput() {
+        int input = Integer.parseInt(Console.readLine());
+        return input;
+    }
 }

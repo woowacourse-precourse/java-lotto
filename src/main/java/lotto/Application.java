@@ -7,7 +7,7 @@ public class Application {
         View view = new View();
         Service service = new Service();
 
-        try{
+        try {
             view.lottoStartMsg();
             int moneyInput = service.getMoneyInput();
 
@@ -16,10 +16,12 @@ public class Application {
 
             view.registerWinningNumberMsg();
             String winningNumberInput = service.getWinningNumberInput();
+
+            view.registerLuckyNumberMsg();
+            int luckyNumberInput = service.getLuckyNumberInput();
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
-
 
 
     }

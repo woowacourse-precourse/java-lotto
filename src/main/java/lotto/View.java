@@ -15,4 +15,9 @@ public class View {
         String msg = "당첨 번호를 입력해 주세요.";
         System.out.println(msg);
     }
+
+    public void registerLuckyNumberMsg() {
+        String msg = "보너스 번호를 입력해 주세요.";
+        System.out.println(msg);
+    }
 }
