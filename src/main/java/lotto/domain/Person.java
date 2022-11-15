@@ -1,12 +1,13 @@
 package lotto.domain;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
 public class Person {
     private List<Lotto> lottos;
-    private List<LottoPrize> lottoResults;
+    private HashMap<LottoPrize, Integer> lottoResults;
 
     public void buyLottos(LottoMachine lottoMachine) {
         this.lottos = lottoMachine.sellLottos();
@@ -28,32 +29,42 @@ public class Person {
         return 0;
     }
 
-    private LottoPrize getLottoResult(Lotto lotto) {
+    private LottoPrize checkLottoResult(Lotto lotto) {
         return LottoPrize.getLottoPrize(
                 countCorrectLottoNumber(lotto),
                 countCorrectBonusNumber(lotto)
         );
     }
 
-    private void setLottoResult() {
+    public void setLottoResult() {
+        resetLottoResult();
         for (Lotto lotto : lottos) {
-            lottoResults.add(getLottoResult(lotto));
+            LottoPrize result = checkLottoResult(lotto);
+            if (lottoResults.containsKey(result)) lottoResults.put(result, lottoResults.get(result)+1);
+            else lottoResults.put(result, 1);
+        }
+    }
+
+    private void resetLottoResult() {
+        lottoResults = new HashMap<>();
+        for (LottoPrize prize : LottoPrize.values()) {
+            lottoResults.put(prize, 0);
         }
     }
 
     private int sumPrize() {
         int totalPrize = 0;
-        for (LottoPrize result : lottoResults) {
-            totalPrize += result.getPrize();
+        for (LottoPrize result : lottoResults.keySet()) {
+            totalPrize += result.getPrize()*lottoResults.get(result);
         }
         return totalPrize;
     }
 
-    private float getReturnRate() {
-        return Math.round((sumPrize()/lottoResults.size())*10/10.0);
+    public float getReturnRate() {
+        return sumPrize()/(lottos.size()*LottoConstant.PRICE.getValue())*100;
     }
 
-    public List<LottoPrize> getLottoResult() {
+    public HashMap<LottoPrize, Integer> getLottoResult() {
         return lottoResults;
     }
 }
