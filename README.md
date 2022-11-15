@@ -237,11 +237,11 @@ public class Lotto {
     -[x] 입력을 받을 때 범위를 벗어나거나 중복된 숫자가 들어오면 발생하는 예외 - `IllegalArgumentException`
 -[x] 각 일치하는 갯수에 대한 결과를 찾는 메서드 `findMatchCount`
     -[x] 구입한 로또 번호에 대해서 당첨 번호와 비교해서 몇개가 맞는지 확인하는 메서드 - `getMatchCountWithLotto`
--[x] 수익율 계산 메서드 - `getRateOfReturn`
+-[x] 수익율 계산 메서드 - `calcWinningPrice`
 
--[ ] 당첨금을 `Enum`으로 처리
+-[x] 당첨금을 `Enum`으로 처리
 
--[ ] 중복에 대한 예외처리
+-[x] 중복에 대한 예외처리
 
 ## 고민하는 것들
 
