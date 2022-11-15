@@ -83,4 +83,39 @@ public class LottoService {
 
         return result;
     }
+
+    public int calculateMatched(Lotto lotto, List<Integer> matchNumbers) {
+        int count = 0;
+        for (int match : matchNumbers) {
+            if (lotto.getNumbers().contains(match)) {
+                count++;
+            }
+        }
+        return count;
+    }
+
+    public int calculateReward(int matched, boolean isBonusNumberContained) {
+        if (matched == 6) {
+            return 4;
+        }
+        if (matched == 5) {
+            if (isBonusNumberContained) {
+                return 3;
+            }
+            return 2;
+        }
+        return matched - 3;
+    }
+
+    public int[] calculateRewards(List<Lotto> lottos, List<Integer> matchNumbers, int bonusNumber) {
+        int[] rewards = {0, 0, 0, 0, 0};
+        for (Lotto lotto : lottos) {
+            int matched = calculateMatched(lotto, matchNumbers);
+            int rewardIdx = calculateReward(matched, matchNumbers.contains(bonusNumber));
+            if (rewardIdx >= 0) {
+                rewards[rewardIdx]++;
+            }
+        }
+        return rewards;
+    }
 }

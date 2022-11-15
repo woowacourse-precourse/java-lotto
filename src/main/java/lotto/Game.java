@@ -25,5 +25,7 @@ public class Game {
         List<Integer> matchNumbers = service.getMatchNumbers(inputMatchNumbers);
         String inputBonusNumber = ui.inputBonusNumber();
         int bonusNumber = service.getBonusNumber(inputBonusNumber, matchNumbers);
+
+        int[] rewards = service.calculateRewards(lottos, matchNumbers, bonusNumber);
     }
 }
