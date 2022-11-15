@@ -3,19 +3,24 @@ package lotto.result;
 import lotto.buy.Payment;
 
 public enum LottoPrizes {
-    FIRST(1, 6, 2000000000),
-    SECOND(2, 5, 30000000),
-    THIRD(3, 5, 1500000),
-    FOURTH(4, 4, 50000),
-    FIFTH(5, 3, 5000),
-    NOTHING(0, -1, 0);
-    private final int indexNumber;
+    FIRST(6, 2000000000),
+    SECOND(5, 30000000),
+    THIRD(5, 1500000),
+    FOURTH(4, 50000),
+    FIFTH(3, 5000),
+    NOTHING(-1, 0);
+    private int indexNumber;
     private final int condition;
     private final int prizeMoney;
-    LottoPrizes(int indexNumber, int condition, int prizeMoney) {
-        this.indexNumber = indexNumber;
+    private static int index = 0;
+    LottoPrizes(int condition, int prizeMoney) {
+        setIndex(this);
         this.condition = condition;
         this.prizeMoney = prizeMoney;
+    }
+    private void setIndex(LottoPrizes lottoPrizes) {
+        lottoPrizes.indexNumber = index;
+        index++;
     }
     public static LottoPrizes prizes(int condition, boolean hasBonus) {
         if (condition == 5 && hasBonus) {
