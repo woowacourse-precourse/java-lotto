@@ -28,7 +28,7 @@ public class LottoUI {
         System.out.printf("%d개 일치 (30,000,000원) - %d개", 5, matchCount[3]);
         System.out.printf("%d개 일치 (2,000,000,000원) - %d개", 6, matchCount[4]);
 
-        double rate = manager.calculator(matchCount);
+        double rate = manager.calculateYield(matchCount);
         System.out.printf("총 수익률은 %f%입니다.", rate);
     }
 
