@@ -18,7 +18,7 @@ public class Controller {
         RankingService rankingService = makeRankingService();
         Rank[] rankings = rankingService.calculateRankings(lottoTickets);
         outputView.printRankingHistory(rankings);
-       
+        outputView.printRateOfReturn(rankingService.getProfitRateFrom(lottoMoney, rankings));
 
     }
 
