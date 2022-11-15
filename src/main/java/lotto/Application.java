@@ -5,21 +5,21 @@ import view.UI;
 import java.util.ArrayList;
 import java.util.List;
 
+import static view.Comment.*;
+
 public class Application {
     UI ui = new UI();
     Util util = new Util();
 
     public void run() {
         List<Buyer> userLottos = new ArrayList<>();
-        System.out.println("구매금액을 입력해 주세요.");
+        ui.printMessage(PRINT_INSERT_COIN);
         int money = ui.inputCoin();
         int lottoCount = ui.lottoCount(money);
         ui.printLottoInfo(lottoCount, userLottos);
-
-        System.out.println("당첨 번호를 입력해 주세요.");
+        ui.printMessage(PRINT_INSERT_WINNING_NUMBER);
         List<Integer> lottoNums = ui.getWinningNumbers();
-
-        System.out.println("보너스 번호를 입력해 주세요");
+        ui.printMessage(PRINT_ENTER_BONUS_NUMBER);
         int bonusNumber = ui.getBonusNumber();
         util.ConfirmationOfTheWinner(userLottos, lottoNums, bonusNumber);
         ui.printWinningStats(money);
