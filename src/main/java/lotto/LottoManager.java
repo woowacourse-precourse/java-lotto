@@ -6,8 +6,9 @@ import java.util.stream.Collectors;
 import static camp.nextstep.edu.missionutils.Console.readLine;
 import static camp.nextstep.edu.missionutils.Randoms.pickUniqueNumbersInRange;
 
+
 public class LottoManager {
-    final static int winningMoney[] = {5_000, 50_000, 1_500_000, 30_000_000, 2_000_000_000};
+    final static int winningMoney[] = WinningStatus.getMoneyList();
     // 로또 구입 금액
     int money;
     // 로또 갯수
@@ -30,11 +31,17 @@ public class LottoManager {
 
     // 전체 동작을 구현하는 메소드
     public void run() {
+        // 금액 투입 UI
         insertMoneyUI();
+        // 로또 생성 UI
         createLottoUI();
+        // 당첨번호 입력 UI
         insertWinningNumberUI();
+        // 보너스 번호 입력 UI
         insertBonusNumberUI();
+        // 당첨 체크 UI
         winningCheckUI();
+        // 수익률 체크 UI
         rateOfReturnUI();
     }
 
@@ -45,7 +52,7 @@ public class LottoManager {
     public void validateInsertMoney(String stringMoney) {
         try {
             money = Integer.parseInt(stringMoney);
-        } catch (NoSuchElementException e) {
+        } catch (NumberFormatException e) {
             System.out.println("[ERROR] 숫자가 아닌 값을 입력했습니다.");
             throw new NoSuchElementException("[ERROR] 숫자가 아닌 값을 입력했습니다.");
         }
@@ -72,6 +79,7 @@ public class LottoManager {
     public void insertMoneyUI() {
         System.out.println("구입 금액을 입력해 주세요.");
         String stringMoney = readLine();
+        System.out.println();
         insertMoney(stringMoney);
     }
 
@@ -115,12 +123,12 @@ public class LottoManager {
         for (Lotto lotto : lottoList) {
             System.out.println(lotto);
         }
+        System.out.println();
     }
 
     // 당첨 번호 입력값 검증을 하는 메소드
     // 1. ,로 구분하였을 때 6자리가 아닌 경우
     // 2. - 각 구분된 값들이 1~45의 자연수가 아닌 경우
-    // TODO: 들여쓰기 2까지만으로 바꾸기
     public void validateWinningNumber(String stringWinningNumber) {
         String splitList[] = stringWinningNumber.split(",");
 
@@ -144,12 +152,13 @@ public class LottoManager {
                 System.out.println("[ERROR] 각 당첨 번호는 1~45 자연수여야 합니다.");
                 throw new NoSuchElementException("[ERROR] 각 당첨 번호는 1~45 자연수여야 합니다.");
             }
-        } catch (NoSuchElementException e) {
+        } catch (NumberFormatException e) {
             System.out.println("[ERROR] 각 당첨 번호는 1~45 자연수여야 합니다.");
             throw new NoSuchElementException("[ERROR] 각 당첨 번호는 1~45 자연수여야 합니다.");
         }
     }
 
+    // 중복된 값이 있는지 체크
     public void duplicateWinningNumberCheck(String stringWinningNumber) {
         List<String> splitList = Arrays.asList(stringWinningNumber.split(","));
 
@@ -183,6 +192,7 @@ public class LottoManager {
     public void insertWinningNumberUI() {
         System.out.println("당첨 번호를 입력해 주세요.");
         String stringWinningNumber = readLine();
+        System.out.println();
         insertWinningNumber(stringWinningNumber);
     }
 
@@ -201,7 +211,7 @@ public class LottoManager {
                 System.out.println("[ERROR] 보너스 번호는 당첨 번호와 중복될 수 없습니다.");
                 throw new NoSuchElementException("[ERROR] 보너스 번호는 당첨 번호와 중복될 수 없습니다.");
             }
-        } catch (NoSuchElementException e) {
+        } catch (NumberFormatException e) {
             System.out.println("[ERROR] 보너스 번호는 정수를 입력해야 합니다.");
             throw new NoSuchElementException("[ERROR] 보너스 번호는 정수를 입력해야 합니다.");
         }
@@ -219,33 +229,34 @@ public class LottoManager {
     public void insertBonusNumberUI() {
         System.out.println("보너스 번호를 입력해 주세요.");
         String stringBonusNumber = readLine();
+        System.out.println();
         insertBonusNumber(stringBonusNumber);
     }
 
     // 당첨 통계 처리 메소드
     public void statisticalProcessing(int winningCount, boolean isBonus) {
         if (winningCount == 3) {
-            winningStatistic.put(5_000, winningStatistic.get(5_000) + 1);
+            winningStatistic.put(WinningStatus.FIFTH.getWinningIntegerValue(), winningStatistic.get(WinningStatus.FIFTH.getWinningIntegerValue()) + 1);
             return;
         }
 
         if (winningCount == 4) {
-            winningStatistic.put(50_000, winningStatistic.get(50_000) + 1);
+            winningStatistic.put(WinningStatus.FOURTH.getWinningIntegerValue(), winningStatistic.get(WinningStatus.FOURTH.getWinningIntegerValue()) + 1);
             return;
         }
 
         if (winningCount == 5 && isBonus) {
-            winningStatistic.put(30_000_000, winningStatistic.get(30_000_000) + 1);
+            winningStatistic.put(WinningStatus.THIRD.getWinningIntegerValue(), winningStatistic.get(WinningStatus.THIRD.getWinningIntegerValue()) + 1);
             return;
         }
 
         if (winningCount == 5) {
-            winningStatistic.put(1_500_000, winningStatistic.get(1_500_000) + 1);
+            winningStatistic.put(WinningStatus.SECOND.getWinningIntegerValue(), winningStatistic.get(WinningStatus.SECOND.getWinningIntegerValue()) + 1);
             return;
         }
 
         if (winningCount == 6) {
-            winningStatistic.put(2_000_000_000, winningStatistic.get(2_000_000_000) + 1);
+            winningStatistic.put(WinningStatus.FIRST.getWinningIntegerValue(), winningStatistic.get(WinningStatus.FIRST.getWinningIntegerValue()) + 1);
         }
     }
 
@@ -255,17 +266,11 @@ public class LottoManager {
         for (int i = 0; i < winningMoney.length; i++) {
             winningStatistic.put(winningMoney[i], 0);
         }
-
         for (Lotto lotto : lottoList) {
             // 당첨 번호 갯수 체크
             int winningCount = lotto.winningCheck(winningNumber);
             // 보너스 번호 체크
             boolean isBonus = lotto.bonusCheck(bonusNumber);
-
-            if (isBonus) {
-                winningCount++;
-            }
-
             // 통계 처리
             statisticalProcessing(winningCount, isBonus);
         }
@@ -277,11 +282,11 @@ public class LottoManager {
 
         System.out.println("당첨 통계");
         System.out.println("---");
-        System.out.printf("3개 일치 (5,000원) - %d개\n", winningStatistic.get(5_000));
-        System.out.printf("4개 일치 (50,000원) - %d개\n", winningStatistic.get(50_000));
-        System.out.printf("5개 일치 (1,500,000원) - %d개\n", winningStatistic.get(1_500_000));
-        System.out.printf("5개 일치, 보너스 볼 일치 (30,000,000원) - %d개\n", winningStatistic.get(30_000_000));
-        System.out.printf("6개 일치 (2,000,000,000원) - %d개\n", winningStatistic.get(2_000_000_000));
+        System.out.printf("3개 일치 (%s) - %d개\n", WinningStatus.FIFTH.getWinningStringValue(), winningStatistic.get(WinningStatus.FIFTH.getWinningIntegerValue()));
+        System.out.printf("4개 일치 (%s) - %d개\n", WinningStatus.FOURTH.getWinningStringValue(), winningStatistic.get(WinningStatus.FOURTH.getWinningIntegerValue()));
+        System.out.printf("5개 일치 (%s) - %d개\n", WinningStatus.THIRD.getWinningStringValue(), winningStatistic.get(WinningStatus.THIRD.getWinningIntegerValue()));
+        System.out.printf("5개 일치, 보너스 볼 일치 (%s) - %d개\n", WinningStatus.SECOND.getWinningStringValue(), winningStatistic.get(WinningStatus.SECOND.getWinningIntegerValue()));
+        System.out.printf("6개 일치 (%s) - %d개\n", WinningStatus.FIRST.getWinningStringValue(), winningStatistic.get(WinningStatus.FIRST.getWinningIntegerValue()));
     }
 
     // 수익률 계산 메소드
