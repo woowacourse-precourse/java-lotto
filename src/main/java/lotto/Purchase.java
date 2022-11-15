@@ -31,4 +31,8 @@ public class Purchase {
     public int getPurchaseMoney() {
         return purchaseMoney;
     }
+
+    public void setPurchaseMoney(int purchaseMoney) {
+        this.purchaseMoney = purchaseMoney;
+    }
 }
