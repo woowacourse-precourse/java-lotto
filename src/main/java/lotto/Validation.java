@@ -6,7 +6,7 @@ public class Validation {
 
     }
 
-    public boolean cashValidate(int cash, int divide) {
+    public boolean cashDivideValidate(int cash, int divide) {
         if (cash % divide == 0) return true;
         return false;
     }
