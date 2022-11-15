@@ -5,7 +5,7 @@ import camp.nextstep.edu.missionutils.Console;
 public class LottoGame {
 
     private final Message message = new Message();
-    private final ProcessInput processInput = new ProcessInput();
+    private final ProcessInputAndVariable processInput = new ProcessInputAndVariable();
 
     public void start() {
         try {
