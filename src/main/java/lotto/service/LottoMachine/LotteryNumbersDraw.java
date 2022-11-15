@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class LotteryNumbersDraw {
-    private String inputDrawNumbers;
+    private final String inputDrawNumbers;
     private List<Integer> drawNumbers;
     private static final String SEPARATOR = ",";
 
