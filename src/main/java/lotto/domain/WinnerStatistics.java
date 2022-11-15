@@ -1,5 +1,7 @@
 package lotto.domain;
 
+import static lotto.domain.LottoInfo.*;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -8,12 +10,6 @@ import lotto.controller.dto.WinnerNumberDto;
 
 public class WinnerStatistics {
 
-    public static final int BLANK = 0;
-    public static final int FIRST_PLACE = 1;
-    public static final int SECOND_PLACE = 2;
-    public static final int THIRD_PLACE = 3;
-    public static final int FOURTH_PLACE = 4;
-    public static final int FIFTH_PLACE = 5;
     private final Map<Integer, Integer> statisticsStore;
 
     public WinnerStatistics(WinnerNumberDto dto, LottoPurchaseDto lottoDto) {
@@ -41,22 +37,22 @@ public class WinnerStatistics {
     }
 
     private int getRank(int count, boolean containBonusNumber) {
-        if (count == 3) {
-            return FIFTH_PLACE;
+        if (count == FIFTH_PLACE.getMatchCount()) {
+            return FIFTH_PLACE.getWinning();
         }
-        if (count == 4) {
-            return FOURTH_PLACE;
+        if (count == FOURTH_PLACE.getMatchCount()) {
+            return FOURTH_PLACE.getWinning();
         }
-        if (count == 5 && !containBonusNumber) {
-            return THIRD_PLACE;
+        if (count == THIRD_PLACE.getMatchCount() && !containBonusNumber) {
+            return THIRD_PLACE.getWinning();
         }
-        if (count == 5 && containBonusNumber) {
-            return SECOND_PLACE;
+        if (count == SECOND_PLACE.getMatchCount() && containBonusNumber) {
+            return SECOND_PLACE.getWinning();
         }
-        if (count == 6) {
-            return FIRST_PLACE;
+        if (count == FIRST_PLACE.getMatchCount()) {
+            return FIRST_PLACE.getWinning();
         }
-        return BLANK;
+        return BLANK.getWinning();
     }
 
     public Map<Integer, Integer> getStatisticsStore() {

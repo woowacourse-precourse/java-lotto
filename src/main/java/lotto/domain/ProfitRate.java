@@ -1,5 +1,7 @@
 package lotto.domain;
 
+import static lotto.domain.LottoInfo.*;
+
 import java.util.Map;
 
 public class ProfitRate {
@@ -11,17 +13,29 @@ public class ProfitRate {
     }
 
     private double calculateProfitRate(Map<Integer, Integer> statisticsStore) {
-        double paymentAmount = statisticsStore.values().stream()
+        double paymentAmount = calculatePaymentAmount(statisticsStore);
+        int profit = calculateProfit(statisticsStore);
+        double profitRate = calculateProfitRate(paymentAmount, profit);
+        return Math.round((profitRate * 10)) / 10.0;
+    }
+
+    private static double calculateProfitRate(double paymentAmount, int profit) {
+        return profit / paymentAmount * 100;
+    }
+
+    private static int calculateProfit(Map<Integer, Integer> statisticsStore) {
+        int profit = 0;
+        for (int winning = 1; winning < 6; winning++) {
+            profit += statisticsStore.getOrDefault(winning, BLANK.getWinningPrize())
+                    * price.get(winning).getWinningPrize();
+        }
+        return profit;
+    }
+
+    private static double calculatePaymentAmount(Map<Integer, Integer> statisticsStore) {
+        return statisticsStore.values().stream()
                 .mapToInt(i -> i)
                 .sum() * 1000.0;
-        int profit = 0;
-        profit += statisticsStore.getOrDefault(5, 0) * 5000;
-        profit += statisticsStore.getOrDefault(4, 0) * 50000;
-        profit += statisticsStore.getOrDefault(3, 0) * 1500000;
-        profit += statisticsStore.getOrDefault(2, 0) * 30000000;
-        profit += statisticsStore.getOrDefault(1, 0) * 2000000000;
-        double profitRate = profit / paymentAmount * 100;
-        return Math.round((profitRate * 10)) / 10.0;
     }
 
     public double getProfitRate() {
