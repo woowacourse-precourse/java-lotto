@@ -15,7 +15,7 @@ public class Application {
             lotteryMachine.drawLottery();
             user.checkResult(lotteryMachine);
         } catch (IllegalArgumentException illegalArgumentException) {
-
+            System.out.println(illegalArgumentException.getMessage());
         }
     }
 }
