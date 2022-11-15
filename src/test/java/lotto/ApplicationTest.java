@@ -8,6 +8,7 @@ import java.util.List;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomUniqueNumbersInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class ApplicationTest extends NsTest {
     private static final String ERROR_MESSAGE = "[ERROR]";
@@ -53,6 +54,78 @@ class ApplicationTest extends NsTest {
             assertThat(output()).contains(ERROR_MESSAGE);
         });
     }
+    @Test
+    void 예외_테스트2() {
+        assertSimpleTest(() -> {
+            runException("10050");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+    @Test
+    void 예외_테스트_당첨로또_범위_오류() {
+        assertSimpleTest(() -> {
+            runException("1000","0,1,34,5,6,7");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+    @Test
+    void 예외_테스트_당첨로또_범위_오류2() {
+        assertSimpleTest(() -> {
+            runException("1000", "1,2,3,4,46,5");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+    @Test
+    void 예외_테스트_당첨로또_중복_오류() {
+        assertSimpleTest(() -> {
+            runException("10000", "1,2,3,4,4,5");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+    @Test
+    void 예외_테스트_당첨로또_입력개수_오류() {
+        assertSimpleTest(() -> {
+            runException("10000", "1,2,3,4,4");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+    @Test
+    void 예외_테스트_당첨로또_입력값_오류() {
+        assertSimpleTest(() -> {
+            runException("10000", "1/2,3,4,7,43");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+    @Test
+    void 예외_테스트_당첨로또_입력값_오류2() {
+        assertSimpleTest(() -> {
+            runException("10000", "c,3,4,9,19,33");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
+    @Test
+    void 예외_테스트_보너스번호_오류() {
+        assertSimpleTest(() -> {
+            runException("10000", "1,2,3,4,8,5","6,7");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+    @Test
+    void 예외_테스트_보너스번호_중복_오류() {
+        assertSimpleTest(() -> {
+            runException("1000", "1,2,3,4,6,5","6");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+    @Test
+    void 예외_테스트_보너스번호_범위_오류() {
+        assertSimpleTest(() -> {
+            runException("10000", "1,2,3,4,8,5","0");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
 
     @Override
     public void runMain() {

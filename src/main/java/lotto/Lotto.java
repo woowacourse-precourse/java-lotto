@@ -1,5 +1,7 @@
 package lotto;
 
+import static lotto.message.errorMessages.*;
+
 import java.util.List;
 
 public class Lotto {
@@ -12,7 +14,11 @@ public class Lotto {
 
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(INPUT_RANGE_ERROR);
+        }
+
+        if(numbers.size() != numbers.stream().distinct().count()){
+            throw new IllegalArgumentException(ALREADY_EXISTED_NUMBER);
         }
     }
 
