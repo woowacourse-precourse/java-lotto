@@ -29,7 +29,7 @@ public class Lotto {
     }
 
     private boolean isSizeEq(List<Integer> numbers) {
-        return numbers.size() != LOTTO_NUMBERS_COUNT;
+        return numbers.size() == LOTTO_NUMBERS_COUNT;
     }
 
     private void duplicateValidate(List<Integer> numbers) {
