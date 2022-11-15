@@ -20,7 +20,7 @@ public enum Rank {
     }
 
     public static Rank findByMatchNumber(int number, int checkBonus) {
-        if (number < FIFTH.matchNumber) {
+        if (number + checkBonus < FIFTH.matchNumber) {
             return NONE;
         } else if (number + checkBonus == FIFTH.matchNumber) {
             return FIFTH;
@@ -30,12 +30,10 @@ public enum Rank {
             return THIRD;
         } else if (number == SECOND.matchNumber && checkBonus == RIGHT_BONUS) {
             return SECOND;
+        } else if (number == FIRST.matchNumber) {
+            return FIRST;
         }
         return null;
-    }
-
-    public int getMatchNumber() {
-        return matchNumber;
     }
 
     public int getPriceMoney() {
