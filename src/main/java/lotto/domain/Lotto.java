@@ -14,13 +14,13 @@ public class Lotto {
         this.numbers = numbers;
     }
 
-    public List<Integer> getNumbers() {
-        return numbers;
-    }
-
     @Override
     public String toString() {
         return numbers.toString();
+    }
+
+    long countMatchingNumber(Lotto winNumbers) {
+        return this.numbers.stream().filter(i -> winNumbers.numbers.contains(i)).count();
     }
 
     private void validate(List<Integer> numbers) {
