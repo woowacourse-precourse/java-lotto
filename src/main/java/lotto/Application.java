@@ -5,15 +5,22 @@ import user.User;
 
 public class Application {
     public static void main(String[] args) {
-        User user = new User();
-        LottoSeller lottoSeller = new LottoSeller();
+        try {
+            User user = new User();
+            LottoSeller lottoSeller = new LottoSeller();
 
-        lottoSeller.giveLottos(user);
-        user.printPurchaseResult();
+            lottoSeller.giveLottos(user);
 
-        lottoSeller.lottoDraw();
-        lottoSeller.givePrize(user);
+            View.printPurchaseMount(user);
+            View.printLottoList(user);
 
-        user.printRatio();
+            lottoSeller.lottoDraw();
+            lottoSeller.givePrize(user);
+
+            View.printTotalPrize(user);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+
     }
 }
