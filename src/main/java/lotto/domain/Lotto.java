@@ -11,18 +11,15 @@ public class Lotto {
         this.numbers = numbers;
     }
 
-    private void validate(List<Integer> numbers) {
-        LottoNumbersValidation.validate(numbers);
-    }
 
-    public int getRank(Lotto userNumbers, Integer bonusNumber) {
-        int numberCount = getCorrectNumberCountInNumbers(userNumbers.numbers);
+    public int getRank(Lotto userLotto, Integer bonusNumber) {
+        int numberCount = getCorrectNumberCountInNumbers(userLotto);
         int bonusCount = getCorrectBonusCount(bonusNumber);
         return LottoUtil.checkRank(numberCount, bonusCount);
     }
 
-    public int getCorrectNumberCountInNumbers(List<Integer> userNumbers) {
-        return userNumbers.stream().filter(numbers::contains).toArray().length;
+    public int getCorrectNumberCountInNumbers(Lotto userLotto) {
+        return userLotto.numbers.stream().filter(numbers::contains).toArray().length;
     }
 
     public int getCorrectBonusCount(Integer bonusNumber) {
@@ -31,5 +28,9 @@ public class Lotto {
 
     public boolean containBonusNumber(Integer bonus) {
         return numbers.contains(bonus);
+    }
+
+    private void validate(List<Integer> numbers) {
+        LottoNumbersValidation.validate(numbers);
     }
 }

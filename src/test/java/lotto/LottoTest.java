@@ -33,12 +33,12 @@ class LottoTest {
         // given
         Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
         Integer bonus = 6;
-        List<Integer> userNumbers = List.of(1, 2, 3, 8, 9, 7);
+        Lotto userLotto = new Lotto(List.of(1, 2, 3, 8, 9, 7));
         int answerNumbersCount = 3;
         int answerBonusCount = 1;
 
         // when
-        int NumbersCount = lotto.getCorrectNumberCountInNumbers(userNumbers);
+        int NumbersCount = lotto.getCorrectNumberCountInNumbers(userLotto);
         int bonusCount = lotto.getCorrectBonusCount(bonus);
 
         // then
