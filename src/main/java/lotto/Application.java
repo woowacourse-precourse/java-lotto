@@ -3,6 +3,7 @@ package lotto;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.io.InputStream;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -35,6 +36,7 @@ public class Application {
         //당첨 확인
         ArrayList<Integer> winList = winCount(lottoList, luckyList, bonusNumber);
         //당첨통계
+        printWinningDetails(winList);
         //수익률 출력
 
     }
@@ -132,8 +134,14 @@ public class Application {
         return winList;
     }
 
-    void printWinningDetails(){
-
+    void printWinningDetails(ArrayList<Integer> winList){
+        DecimalFormat decFormat = new DecimalFormat("###,###");
+        System.out.println("당첨 통계");
+        System.out.println("---");
+        System.out.println("3개 일치 (" +fifth+"원) - "+winList.get(4)+"개"+decFormat.format(fifth));
+        System.out.println("3개 일치 (" +fourth+"원) - "+winList.get(3)+"개"+decFormat.format(fourth));
+        System.out.println("3개 일치 (" +third+"원) - "+winList.get(2)+"개"+decFormat.format(third));
+        System.out.println("3개 일치 (" +second+"원) - "+winList.get(1)+"개"+decFormat.format(second));
+        System.out.println("3개 일치 (" +first+"원) - "+winList.get(0)+"개"+decFormat.format(first));
     }
-
 }
