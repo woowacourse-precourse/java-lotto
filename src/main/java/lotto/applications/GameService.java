@@ -48,7 +48,7 @@ public class GameService {
         return lottoNumbers;
     }
 
-    public Map<Place, Integer> getProfitResult(
+    public Map<Place, Integer> getRewardMap(
             final List<Lotto> userBoughtLotteries,
             final Lotto winningLotto
     ) {
