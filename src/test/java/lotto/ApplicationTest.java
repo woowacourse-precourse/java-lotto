@@ -9,13 +9,14 @@ import java.util.List;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomUniqueNumbersInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class ApplicationTest extends NsTest {
     private static final String ERROR_MESSAGE = "[ERROR]";
 
     @Test
     @DisplayName("1. 예외1 : 숫자를 입력하지 않은 경우")
-    void test1(){
+    void test1() {
         assertSimpleTest(() -> {
             runException("문자");
             assertThat(output()).contains(ERROR_MESSAGE);
@@ -24,11 +25,18 @@ class ApplicationTest extends NsTest {
 
     @Test
     @DisplayName("1. 예외2 : 숫자이지만 1000원 단위가 아닌 경우")
-    void test2(){
+    void test2() {
         assertSimpleTest(() -> {
             runException("1005");
             assertThat(output()).contains(ERROR_MESSAGE);
         });
+    }
+
+    @Test
+    @DisplayName("3. 예외1 : 올바른 형식이 아닌 경우")
+    void test3() {
+        Service service = new Service();
+        assertSimpleTest(() -> assertThatThrownBy(() -> service.checkWinningNumber0("123456")).isInstanceOf(IllegalArgumentException.class));
     }
 
     @Test
