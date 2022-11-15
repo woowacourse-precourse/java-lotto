@@ -40,7 +40,7 @@
   - [x] 당첨번호와 몇개나 일치하는지 확인한다. - countMatchingNumbers
 - [x] 외부에서 전달받은 1등번호와 보너스번호를 저장하는 기능 - setWinningLotto, setBonusNumber
   - [x] 전달받은 번호들이 있는지 확인
-  - [ ] 전달받은 1등번호와 보너스번호가 중복되지않는지 확인
+  - [x] 전달받은 1등번호와 보너스번호가 중복되지않는지 확인
 ### 상품 정보 - Prize
 - [x] 등수별 상품 정보를 담아둔다. 
   - 당첨은 1등부터 5등까지 있다. 당첨 기준과 금액은 아래와 같다.
@@ -56,18 +56,19 @@
 - [x] 전체 당첨 금액을 반환한다.
 - [x] 특정 등수에 몇개 당첨되었는지 반환한다.
 ### 관리자 - Admin
-- [ ] 당첨 번호와 보너스 번호를 입력받는다. - inputGameNumbers
+- [x] 당첨 번호와 보너스 번호를 입력받는다. - inputGameNumbers
+  - [x] 입력 받은 번호를 store에 설정한다.
   - [x] 당첨 번호를 입력받는다. - inputWinningNumbers
     - [x] 번호는 쉼표(,)를 기준으로 구분한다. - splitSeparator
     - [x] 입력받은 String을 Int로 변환한다.
     - [x] 당첨 번호 입력시 "당첨 번호를 입력해주세요." 메세지가 표시된다. - printInputWinningNumbers
   - [x] 보너스 번호를 입력 받는다. - inputBonusNumber
       - [x] 보너스 번호 입력시 "보너스 번호를 입력해주세요." 메세지가 표시된다. - printInputBonusNumber
-  - [ ] 당첨 번호를 검증한다. - validateGameNumbers
+  - [x] 당첨 번호를 검증한다. - validateGameNumbers
     - [x] 당첨 번호 추첨 시 중복되지 않는 숫자 6개와 - validateWinningNumbersInput, 숫자들에 대해서는 Lotto에서 검증
       - 입력은 숫자와 쉼표 형태로 이루어져 있다.
     - [x] 숫자형태의, 중복되지 않는 보너스 번호 1개를 뽑는다. - validateBonusNumber
-    - [ ] 입력된 번호들이 전부 중복되면 안된다.
+    - [x] 입력된 번호들이 전부 중복되면 안된다.
 
 <br/>
 
