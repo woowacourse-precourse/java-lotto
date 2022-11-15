@@ -12,8 +12,8 @@ import static lotto.model.Constant.THIRD_PRIZE;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 import lotto.model.Constant;
 import lotto.model.Lotto;
 import lotto.model.WinningLotto;
@@ -58,12 +58,13 @@ public class LottoGame {
                 (Constant.NUMBER_RANGE_START,
                         Constant.NUMBER_RANGE_END,
                         Constant.LOTTO_NUMBER_COUNT);
-        sortLottoNumbers(randomNumbers);
-        return randomNumbers;
+        return sortLottoNumbers(randomNumbers);
     }
 
-    private void sortLottoNumbers(List<Integer> lottoNumbers) {
-        Collections.sort(lottoNumbers);
+    private List<Integer> sortLottoNumbers(List<Integer> lottoNumbers) {
+        return lottoNumbers.stream()
+                .sorted()
+                .collect(Collectors.toList());
     }
 
     public void makeWinningNumber() {
