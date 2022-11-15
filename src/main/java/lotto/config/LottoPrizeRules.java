@@ -1,38 +1,32 @@
 package lotto.config;
 
-import java.util.Arrays;
-
 public enum LottoPrizeRules {
 
-    LOST(0, false, 0),
-    FIFTH_PLACE(3, false, 5_000),
-    FOURTH_PLACE(4, false, 50_000),
-    THIRD_PLACE(5, false, 1_500_000),
-    SECOND_PLACE(5, true, 30_000_000),
-    FIRST_PLACE(6, false, 2_000_000_000);
+    FIFTH_PLACE(3, false, 5_000L),
+    FOURTH_PLACE(4, false, 50_000L),
+    THIRD_PLACE(5, false, 1_500_000L),
+    SECOND_PLACE(5, true, 30_000_000L),
+    FIRST_PLACE(6, false, 2_000_000_000L);
 
-    private final int lottoNumber;
-    private final boolean bonusNumber;
-    private final int winnings;
+    private final int matchCount;
+    private final boolean bonus;
+    private final Long winningMoney;
 
-    LottoPrizeRules(int lottoNumber, boolean bonusNumber, int winnings) {
-        this.lottoNumber = lottoNumber;
-        this.bonusNumber = bonusNumber;
-        this.winnings = winnings;
+    LottoPrizeRules(int matchCount, boolean bonus, Long winningMoney) {
+        this.matchCount = matchCount;
+        this.bonus = bonus;
+        this.winningMoney = winningMoney;
     }
 
-    public static LottoPrizeRules findByMatchAndBonus(int match, boolean bonus) {
-        return Arrays.stream(LottoPrizeRules.values())
-                .filter(winning -> winning.findByLottoNumber(match, bonus))
-                .findAny()
-                .orElse(LOST);
+    public int getMatchCount() {
+        return matchCount;
     }
 
-    private boolean findByLottoNumber(int match, boolean bonus) {
-        return lottoNumber == match && bonusNumber == bonus;
+    public Long getWinningMoney() {
+        return winningMoney;
     }
 
-    public static int getWinningsByPrize(String name){
-        return LottoPrizeRules.valueOf(name).winnings;
+    public boolean getBonus() {
+        return bonus;
     }
 }
