@@ -3,13 +3,13 @@ package lotto.view;
 import camp.nextstep.edu.missionutils.Console;
 
 public class InputView {
-    public String inputWith(Messages Message) {
+    public String scanWith(Messages Message) {
         System.out.println(Message.getMessage());
 
-        return inputString();
+        return scanString();
     }
 
-    public String inputString() {
+    public String scanString() {
         return Console.readLine();
     }
 }
