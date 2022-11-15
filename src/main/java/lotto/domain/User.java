@@ -36,6 +36,7 @@ public class User {
 		bonusNumber();
 		List<Integer> userLotteryNumbers = new ArrayList(Arrays.asList(userNumbers));
 		userLotteryNumbers.add(userBonus);
+		System.out.println(userLotteryNumbers);
 		return userLotteryNumbers;
 	}
 }
