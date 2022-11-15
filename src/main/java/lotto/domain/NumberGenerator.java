@@ -12,6 +12,7 @@ public class NumberGenerator {
     private static List<Integer> numbers;
     private static int bonusNumber;
     private static final String regexWinningNumber = "^\\d,\\d,\\d,\\d,\\d,\\d$";
+    private static final String regexBonusNumber = "^\\d$";
 
     public NumberGenerator() {
     }
@@ -64,9 +65,20 @@ public class NumberGenerator {
     
     private void setBonusNumber() {
         String str = Console.readLine();
+        validateBonusNumber(str);
         bonusNumber = Integer.parseInt(str);
     }
-
+    
+    private void validateBonusNumber(String str) {
+        if(!str.matches(regexBonusNumber)) {
+            throw new IllegalArgumentException();
+        }
+        int bonusNum = Integer.parseInt(str);
+        if(bonusNum < 1 || bonusNum > 45) {
+            throw new IllegalArgumentException();
+        }
+    }
+    
     public int getBonusNumber() {
         return bonusNumber;
     }
