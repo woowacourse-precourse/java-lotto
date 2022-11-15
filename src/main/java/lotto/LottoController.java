@@ -49,6 +49,11 @@ public class LottoController {
         return ticket;
     }
 
+    private WinningNumbers pickWinningNumbers() {
+        WinningNumbers winningNumbers= new WinningNumbers(inputView.requestWinningNumbers());
+        winningNumbers.pickBonusNumber(inputView.requestBonusNumber());
+        return winningNumbers;
+    }
 
 
 }
