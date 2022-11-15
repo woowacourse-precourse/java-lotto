@@ -11,7 +11,10 @@ public enum Message {
     CORRECT_FIVE("5개 일치 (1,500,000원) - "),
     CORRECT_FIVE_BONUS("5개 일치, 보너스 볼 일치 (30,000,000원) - "),
     CORRECT_SIX("6개 일치 (2,000,000,000원) - "),
-    PROFIT("총 수익률은 ");
+    PROFIT("총 수익률은 "),
+    STATISTICS("당첨 통계"),
+    BOUNDARY_LINE("---"),
+    BLANK_LINE("");
 
 
     final String msg;
