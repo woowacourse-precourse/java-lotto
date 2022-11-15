@@ -26,4 +26,16 @@ class LottoControllerTest {
         assertThatThrownBy(lottoController::generateLotto).isInstanceOf(IllegalArgumentException.class);
     }
 
+    @DisplayName("잘못된 당첨 로또를 입력한 경우 예외를 발생한다")
+    @ParameterizedTest
+    @CsvSource({
+            "1,2,3,4,5,6a", "1a, 2ba, 3c", "apple"
+    })
+    void getStatisticsByIllegalNumberFormatLottoValue(String input) {
+        // given
+        Mockito.when(inputView.requestLotto()).thenReturn(input);
+
+        // expect
+        assertThatThrownBy(lottoController::getStatistics).isInstanceOf(IllegalArgumentException.class);
+    }
 }
