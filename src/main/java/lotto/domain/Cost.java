@@ -5,6 +5,7 @@ public class Cost {
 
     private static final String PURCHASE_COST_TYPE_ERROR = "구매 금액에 문자가 포함될 수 없습니다";
     private static final String PURCHASE_COST_UNIT_ERROR = "구매 금액은 %d원 단위여야 합니다";
+    private static final String PURCHASE_COST_RANGE_ERROR = "구매 금액은 0원 보다 커야 합니다";
     private static final int PRICE_PER_LOTTO = 1000;
     private final int cost;
 
@@ -15,6 +16,7 @@ public class Cost {
 
     private void validate(String cost) {
         checkTypeValid(cost);
+        checkRangeValid(cost);
         checkUnitValid(cost);
     }
 
@@ -33,11 +35,17 @@ public class Cost {
         }
     }
 
+    public static void checkRangeValid(String purchaseCost) {
+        boolean isRange = Integer.parseInt(purchaseCost) > 0;
+        if (!isRange) {
+            throw new IllegalArgumentException(PURCHASE_COST_RANGE_ERROR);
+        }
+    }
+
     public static void checkUnitValid(String purchaseCost) {
         boolean isUnit = Integer.parseInt(purchaseCost) % 1000 == 0;
         if (!isUnit) {
             throw new IllegalArgumentException(String.format(PURCHASE_COST_UNIT_ERROR, PRICE_PER_LOTTO));
         }
     }
-
 }
