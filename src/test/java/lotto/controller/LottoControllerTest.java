@@ -1,8 +1,12 @@
 package lotto.controller;
 
+import lotto.domain.Lotto;
 import lotto.validation.BonusNumberInputValidation;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -29,6 +33,22 @@ public class LottoControllerTest {
 
         assertSimpleTest(() -> {
             assertThat(lottoController.getLottos().size()).isEqualTo(amountOfLotto);
+        });
+    }
+
+    @Test
+    public void computeMatchCountsTest() {
+        List<Lotto> lottos = new ArrayList<>();
+        lottos.add(new Lotto(List.of(8, 21, 23, 41, 42, 43)));
+        lottos.add(new Lotto(List.of(3, 5, 11, 16, 32, 38)));
+        lottoController.setLottos(lottos);
+
+        List<Integer> predictionNumbers = List.of(8, 21, 23, 3, 5, 11);
+        int bonusNumber = 4;
+
+        assertSimpleTest(() -> {
+            assertThat(lottoController.computeMatchCounts(predictionNumbers, bonusNumber))
+                    .isEqualTo(List.of(List.of(3, 0), List.of(3, 0)));
         });
     }
 }
