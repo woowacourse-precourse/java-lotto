@@ -15,4 +15,14 @@ public class UserInputLottoInfoException {
             }
         }
     }
+    public void isDividedByThousand(String price, String message) {
+        if (price.length() < FOUR_DIGIT_NUMBER) {
+            System.out.println(ERROR_MESSAGE + message);
+            throw new IllegalArgumentException();
+        }
+        if (!price.substring(price.length() - NUMBER_OF_ZERO_IN_THOUSAND).equals("000")) {
+            System.out.println(ERROR_MESSAGE + message);
+            throw new IllegalArgumentException();
+        }
+    }
 }
