@@ -2,18 +2,33 @@ package lotto.controller;
 
 import lotto.model.*;
 import lotto.view.Input;
+import lotto.view.Output;
 
 import java.util.*;
 
 public class LottoController {
-    public void start() {
+    public static void start() {
+        purchase();
+    }
+
+    public static void purchase() {
         int purchaseAmount = Input.inputPurchaseAmount();
-        LottoAmount Amount = new LottoAmount(purchaseAmount);
-        int quantity = Amount.quantityOfLotto(purchaseAmount);
+        LottoAmount amount = new LottoAmount(purchaseAmount);
+        int quantity = amount.quantityOfLotto(purchaseAmount);
         LottoTickets tickets = new LottoTickets(collectUniqueLottoTickets(quantity));
+
+        Output.printQuantityOfLotto(quantity);
+        Output.printLottoTickets(tickets.getTickets());
+
+        drawLots(tickets);
+    }
+
+    public static void drawLots(LottoTickets tickets) {
         Lotto lottoNumbers = Input.inputLottoNumbers();
         int bonusNumber = Input.inputBonusNumber();
         LottoRank rank = checkTotalRank(tickets, lottoNumbers, bonusNumber);
+
+        Output.printTotalRank(rank.getRank());
     }
 
     static Set<List<Integer>> collectUniqueLottoTickets(int numberOfTickets) {
@@ -41,7 +56,7 @@ public class LottoController {
 
     static int checkWinningLottoTicket(List<Integer> lottoTicket, List<Integer> lottoNumbers) {
         int winningNumberCount = 0;
-        for (int eachNumber : lottoNumbers) {
+        for (int eachNumber : lottoTicket) {
             if (lottoNumbers.contains(eachNumber))
                 winningNumberCount++;
         }

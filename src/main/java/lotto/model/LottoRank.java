@@ -12,6 +12,10 @@ public class LottoRank {
         this.totalRank = totalRank;
     }
 
+    public Map<Integer, Integer> getRank() {
+        return totalRank;
+    }
+
     public LottoRank addRank(LottoRank rank, int winRank) {
         if (winRank == 0)
             return rank;
