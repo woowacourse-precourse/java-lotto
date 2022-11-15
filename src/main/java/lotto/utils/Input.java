@@ -8,7 +8,8 @@ import java.util.List;
 
 public class Input {
     public static String readString() {
-        return Console.readLine();
+        return Console.readLine()
+                .trim();
     }
 
     public static int readInteger() {

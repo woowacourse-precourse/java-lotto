@@ -16,5 +16,5 @@ public abstract class Rules {
 
     public static int PRICE_PER_LOTTO = 1000;
 
-    public static String SEPARATOR_WINNING_NUMBERS = ",";
+    public static String SEPARATOR_WINNING_NUMBERS = "\\s*,\\s*";
 }
