@@ -16,11 +16,13 @@ public class WinningLotto {
         this.bonusNumber = bonusNumber;
     }
 
-    public int countWinningNumber(Lotto userLotto) {
+    public int countNumberOfMatching(Lotto userLotto) {
         int count = winningLotto.countNumberOfMatching(userLotto);
 
-        if (count == WinningType.FIVE_AND_BONUS.getNumberOfMatching()
-                && !hasNumberInBonus(userLotto))
+        if (count == WinningType.FIVE_AND_BONUS.getNumberOfMatching())
+            count++;
+
+        if (hasNumberInBonus(userLotto))
             count++;
 
         return count;

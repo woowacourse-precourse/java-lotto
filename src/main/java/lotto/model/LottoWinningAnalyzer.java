@@ -25,7 +25,7 @@ public class LottoWinningAnalyzer {
     public EnumMap<WinningType, Integer> calculateWinningResult(List<Lotto> lottoTickets) {
         for (int i = 0; i < lottoTickets.size(); i++) {
             Lotto lottoTicket = lottoTickets.get(i);
-            int count = winningLotto.countWinningNumber(lottoTicket);
+            int count = winningLotto.countNumberOfMatching(lottoTicket);
 
             if (count >= WinningType.THREE.getNumberOfMatching())
                 updateWinningResult(count);
