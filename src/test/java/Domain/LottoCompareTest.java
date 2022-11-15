@@ -31,7 +31,18 @@ class LottoCompareTest {
     }
 
     @Test
+    @DisplayName("사용자 로또번호 중 당첨번호와 일치하지 않는 번호만 반환한다.")
     void unMatchUserBall() {
+        //given
+        List<Integer> expectResultLotto = new ArrayList<>(Arrays.asList(18, 19));
+        List<Integer> winnerLotto = new ArrayList<>(Arrays.asList(1, 7, 3, 17, 20, 21));
+        List<Integer> userLottoSheet = new ArrayList<>(Arrays.asList(1, 7, 3, 17, 18, 19));
+
+        //when
+        List<Integer> unMatchResultLotto = lottoCompare.unMatchUserBall(userLottoSheet, winnerLotto);
+
+        //Then
+        assertEquals(expectResultLotto, unMatchResultLotto);
     }
 }
 
