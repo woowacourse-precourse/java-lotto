@@ -5,8 +5,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class StringUtil {
-    public static final String BLANK = " ";
-    public static final String NO_BLANK = "";
     public static final String DELIMITER = ",";
 
     public static List <Integer> parseToIntegerList(String data) {
