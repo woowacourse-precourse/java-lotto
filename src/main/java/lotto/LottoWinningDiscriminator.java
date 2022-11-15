@@ -1,8 +1,8 @@
 package lotto;
 
-import java.util.ArrayList;
 import java.util.List;
 
+import static java.util.stream.Collectors.*;
 import static lotto.LottoRank.*;
 
 public class LottoWinningDiscriminator {
@@ -15,13 +15,9 @@ public class LottoWinningDiscriminator {
     }
 
     public List<LottoRank> discriminate(List<Lotto> purchasedLotto) {
-        List<LottoRank> result = new ArrayList<>();
-        for (Lotto lotto : purchasedLotto) {
-            int correctWinningNumber = countCorrectWinningNumber(lotto);
-            boolean correctBonusNumber = isCorrectBonusNumber(lotto);
-            result.add(winningResult(correctWinningNumber, correctBonusNumber));
-        }
-        return result;
+        return purchasedLotto.stream()
+                .map(lotto -> winningResult(countCorrectWinningNumber(lotto), isCorrectBonusNumber(lotto)))
+                .collect(toUnmodifiableList());
     }
 
     private int countCorrectWinningNumber(Lotto lotto) {

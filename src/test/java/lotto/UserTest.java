@@ -12,7 +12,7 @@ import static lotto.ErrorMessage.*;
 import static org.assertj.core.api.Assertions.*;
 
 public class UserTest {
-    @ParameterizedTest(name = "{0}를 구매 금액으로 입력시 예외가 발생한다.")
+    @ParameterizedTest(name = "숫자가 아닌 {0}를 구매 금액으로 입력시 예외가 발생한다.")
     @ValueSource(strings = {"abcd", "-1000", "1000!@", "(1000)"})
     void validateInputPurchaseAmountNotNumber(String purchaseAmountInput) {
         User user = new User(new MockInputReader(purchaseAmountInput));
@@ -21,7 +21,7 @@ public class UserTest {
                 .hasMessage(PURCHASE_AMOUNT_NOT_NUMBER_INPUT_ERROR);
     }
 
-    @ParameterizedTest(name = "{0}를 구매 금액으로 입력시 예외가 발생한다.")
+    @ParameterizedTest(name = "1000으로 나누어 떨어지지 않는 {0}를 구매 금액으로 입력시 예외가 발생한다.")
     @ValueSource(strings = {"1", "1001", "100", "999"})
     void validateInputPurchaseAmountNotDividedBy1000(String purchaseAmountInput) {
         User user = new User(new MockInputReader(purchaseAmountInput));

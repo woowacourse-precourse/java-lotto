@@ -15,10 +15,8 @@ class WinningNumberConverterTest {
     void convertToImmutableStringListTest() {
         List<String> converted =
                 WinningNumberConverter.convertToImmutableStringList("1,2,3");
-        assertThat(converted.size()).isEqualTo(3);
-        assertThat(converted.get(0)).isEqualTo("1");
-        assertThat(converted.get(1)).isEqualTo("2");
-        assertThat(converted.get(2)).isEqualTo("3");
+
+        assertThat(converted).containsExactly("1", "2", "3");
         assertThatThrownBy(() -> converted.add("4"))
                 .isInstanceOf(UnsupportedOperationException.class);
     }
@@ -28,10 +26,8 @@ class WinningNumberConverterTest {
     void convertToImmutableIntegerListTest() {
         List<Integer> converted =
                 WinningNumberConverter.convertToImmutableIntegerList("1,2,3");
-        assertThat(converted.size()).isEqualTo(3);
-        assertThat(converted.get(0)).isEqualTo(1);
-        assertThat(converted.get(1)).isEqualTo(2);
-        assertThat(converted.get(2)).isEqualTo(3);
+
+        assertThat(converted).containsExactly(1, 2, 3);
         assertThatThrownBy(() -> converted.add(4))
                 .isInstanceOf(UnsupportedOperationException.class);
     }
@@ -41,10 +37,8 @@ class WinningNumberConverterTest {
     void convertStringListToImmutableIntegerListTest() {
         List<Integer> converted =
                 WinningNumberConverter.convertToImmutableIntegerList(List.of("1", "2", "3"));
-        assertThat(converted.size()).isEqualTo(3);
-        assertThat(converted.get(0)).isEqualTo(1);
-        assertThat(converted.get(1)).isEqualTo(2);
-        assertThat(converted.get(2)).isEqualTo(3);
+
+        assertThat(converted).containsExactly(1, 2, 3);
         assertThatThrownBy(() -> converted.add(4))
                 .isInstanceOf(UnsupportedOperationException.class);
     }
