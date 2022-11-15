@@ -7,6 +7,8 @@ public class Lotto {
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
+        checkRangeOfNumbers(numbers);
+        checkDuplicatedNumber(numbers);
         this.numbers = numbers;
     }
 
@@ -16,5 +18,30 @@ public class Lotto {
         }
     }
 
-    // TODO: 추가 기능 구현
+    private void checkRangeOfNumbers(List<Integer> numbers) {
+        for (int number : numbers) {
+            if (number < 1 || number > 45) {
+                throw new IllegalArgumentException();
+            }
+        }
+    }
+
+    private void checkDuplicatedNumber(List<Integer> numbers) {
+        for (int num : numbers) {
+            List<Integer> numSublist = numbers.subList(numbers.indexOf(num)+1, 6);
+            if (numSublist.contains(num)) {
+                throw new IllegalArgumentException();
+            }
+        }
+    }
+
+
+
+    public void printLotto() {
+        System.out.println(this.numbers);
+    }
+
+    public List<Integer> getNumbers() {
+        return this.numbers;
+    }
 }
