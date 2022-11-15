@@ -2,7 +2,11 @@ package lotto;
 
 public class Application {
     public static void main(String[] args) {
-        LottoService lottoService = new LottoService();
-        lottoService.play();
+        try {
+            LottoService lottoService = new LottoService();
+            lottoService.play();
+        }catch (IllegalArgumentException e){
+            System.out.println(e.getMessage());
+        }
     }
 }
