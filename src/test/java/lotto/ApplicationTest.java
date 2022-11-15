@@ -64,7 +64,7 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 당첨_개수_계산_테스트() {
+    void 로또_번호_일치_개수_계산_테스트() {
         LottoBank lottoBank = new LottoBank();
         int lottoCount = 5;
         List<List<Integer>> totalLotteries = new ArrayList<>();
