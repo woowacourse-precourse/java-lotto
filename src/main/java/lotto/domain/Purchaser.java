@@ -14,7 +14,7 @@ public class Purchaser {
 
     public Purchaser(String money) {
         this.money = convertInteger(money);
-        isValidationForMoney(this.money);
+        validateMoney(this.money);
         this.numberOfLotto = computeNumberOfLotto(this.money);
         lottos = new ArrayList<>();
     }
@@ -47,7 +47,7 @@ public class Purchaser {
         }
     }
 
-    private void isValidationForMoney(int money) {
+    private void validateMoney(int money) {
         if (isLessThan1000(money)) {
             throw new IllegalArgumentException(ErrorMessage.SMALL_NUMBER.getMessage());
         }
