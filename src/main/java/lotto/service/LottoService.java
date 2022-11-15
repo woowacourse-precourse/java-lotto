@@ -13,7 +13,7 @@ import lotto.domain.WinningRule;
 
 public class LottoService {
 
-	private static final String WINNING_STATISTICS_FORMAT = "%s (%,d원) - %d개";
+	private final String WINNING_STATISTICS_FORMAT = "%s (%,d원) - %d개";
 
 	private final Map<WinningRule, Integer> winningRuleStatus;
 
@@ -30,15 +30,21 @@ public class LottoService {
 			.collect(Collectors.toList());
 	}
 
-	public List<String> getWinningStatistics(List<Integer> winningNumbers, int bonus) {
+	public List<String> getWinningStatistics(final List<Integer> winningNumbers,
+		int bonus) {
+
+		initWinningStatus(winningNumbers, bonus);
+		return Arrays.stream(WinningRule.values())
+			.filter(WinningRule::isNotNoneMatch)
+			.map(this::formatWinningStatistics)
+			.collect(Collectors.toList());
+	}
+
+	void initWinningStatus(final List<Integer> winningNumbers, int bonus) {
 		for (Lotto lotto : lottos) {
 			CompareResult result = lotto.compareTo(winningNumbers, bonus);
 			winningRuleStatus.merge(WinningRule.of(result), 1, Integer::sum);
 		}
-		return Arrays.stream(WinningRule.values())
-			.filter(rule -> rule != WinningRule.NONE_MATCH)
-			.map(this::formatWinningStatistics)
-			.collect(Collectors.toList());
 	}
 
 	private String formatWinningStatistics(WinningRule rule) {
@@ -47,11 +53,11 @@ public class LottoService {
 			winningRuleStatus.getOrDefault(rule, 0));
 	}
 
-	public double getTotalIncomeRatio(final int money) {
-		long totalIncome = winningRuleStatus.keySet()
+	public double getRateOfReturn(final int totalInvestment) {
+		double winningAmount = winningRuleStatus.keySet()
 			.stream()
 			.map(WinningRule::getPrice)
 			.reduce(0L, Long::sum);
-		return 100 * (1.0 * totalIncome / money);
+		return (winningAmount / totalInvestment) * 100;
 	}
 }

@@ -43,4 +43,8 @@ public enum WinningRule {
 	public String getStatus() {
 		return status;
 	}
+
+	public boolean isNotNoneMatch() {
+		return this != NONE_MATCH;
+	}
 }

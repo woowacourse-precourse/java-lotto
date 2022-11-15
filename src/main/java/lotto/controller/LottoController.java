@@ -27,7 +27,7 @@ public class LottoController {
 				InputView.getBonusNumber()));
 
 		OutputView.displayIncomeRatio(
-			lottoService.getTotalIncomeRatio(money)
+			lottoService.getRateOfReturn(money)
 		);
 	}
 }
