@@ -13,6 +13,10 @@ public class OutputConsole {
 
     }
 
+    public static void printErrorMessage(String message) {
+        System.out.println(message);
+    }
+
     public static void printOrderHistory(List<Lotto> lottos) {
         System.out.printf(ORDER_HISTORY_HEADER, lottos.size());
         for (Lotto lotto : lottos) {

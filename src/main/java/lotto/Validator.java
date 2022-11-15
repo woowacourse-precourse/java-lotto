@@ -1,8 +1,9 @@
 package lotto;
 
+import lotto.view.OutputConsole;
+
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import static lotto.ErrorMessage.*;
 import static lotto.domain.LottoConst.*;
@@ -18,18 +19,21 @@ public final class Validator {
         try {
             Integer.parseInt(input);
         } catch (NumberFormatException e) {
+            OutputConsole.printErrorMessage(PREFIX + NOT_INTEGER);
             throw new IllegalArgumentException(PREFIX + NOT_INTEGER);
         }
     }
 
     public static void isNegative(String input) {
         if (Integer.parseInt(input) < ZERO) {
+            OutputConsole.printErrorMessage(PREFIX + NEGATIVE);
             throw new IllegalArgumentException(PREFIX + NEGATIVE);
         }
     }
 
     public static void isDividableWithThousand(String input) {
         if (Integer.parseInt(input) % LOTTO_PRICE != ZERO) {
+            OutputConsole.printErrorMessage(PREFIX + NOT_DIVIDABLE_WITH_THOUSAND);
             throw new IllegalArgumentException(PREFIX + NOT_DIVIDABLE_WITH_THOUSAND);
         }
     }
@@ -42,12 +46,14 @@ public final class Validator {
 
     public static void isValidLottoSize(List<Integer> numbers) {
         if (numbers.size() != LOTTO_SIZE) {
+            OutputConsole.printErrorMessage(PREFIX + INVALID_LOTTO_SIZE);
             throw new IllegalArgumentException(PREFIX + INVALID_LOTTO_SIZE);
         }
     }
 
     public static void anyDuplicatedNumber(List<Integer> numbers) {
         if (numbers.size() != numbers.stream().distinct().count()) {
+            OutputConsole.printErrorMessage(PREFIX + DUPLICATED_NUMBER);
             throw new IllegalArgumentException(PREFIX + DUPLICATED_NUMBER);
         }
     }
@@ -55,6 +61,7 @@ public final class Validator {
     public static void isValidNumberRange(List<Integer> numbers) {
         for (Integer number: numbers) {
             if (number < MIN_LOTTO_NUMBER || number > MAX_LOTTO_NUMBER) {
+                OutputConsole.printErrorMessage(PREFIX + INVALID_LOTTO_NUMBER);
                 throw new IllegalArgumentException(PREFIX + INVALID_LOTTO_NUMBER);
             }
         }
@@ -68,6 +75,7 @@ public final class Validator {
 
     public static void isPrizeNumberFormat(String input) {
         if (!input.matches("^(\\d{1,2},){5}(\\d{1,2})$")) {
+            OutputConsole.printErrorMessage(PREFIX + INVALID_PRIZE_NUMBER_FORMAT);
             throw new IllegalArgumentException(PREFIX + INVALID_PRIZE_NUMBER_FORMAT);
         }
     }
@@ -90,6 +98,7 @@ public final class Validator {
 
     public static void containsBonusNumber(List<Integer> numbers, int bonusNumber) {
         if (numbers.contains(bonusNumber)) {
+            OutputConsole.printErrorMessage(PREFIX + DUPLICATED_BONUS_NUMBER);
             throw new IllegalArgumentException(PREFIX + DUPLICATED_BONUS_NUMBER);
         }
     }
