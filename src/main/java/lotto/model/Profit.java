@@ -6,16 +6,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Profit {
-    public List<Integer> prizeMoney = new ArrayList<>();
+    public List<Integer> prizeMoney = new ArrayList<>(List.of(Prize.PRIZE_3.getPrize(), Prize.PRIZE_4.getPrize(), Prize.PRIZE_5.getPrize(), Prize.PRIZE_5BONUS.getPrize(), Prize.PRIZE_6.getPrize()));
     public double profitRate;
 
     public Profit(int price, List<Integer> winningResult) {
-        setPrize();
         calculateProfit(price, winningResult);
-    }
-
-    private void setPrize() {
-        prizeMoney.addAll(List.of(Prize.PRIZE_3.getPrize(), Prize.PRIZE_4.getPrize(), Prize.PRIZE_5.getPrize(), Prize.PRIZE_5BONUS.getPrize(), Prize.PRIZE_6.getPrize()));
     }
 
     private void calculateProfit(int price, List<Integer> winningResult) {
