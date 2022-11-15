@@ -1,5 +1,7 @@
 package lotto;
 
+import java.text.NumberFormat;
+
 public class SystemMessage {
     private static final String MONEY_INPUT_MESSAGE = "구입금액을 입력해 주세요.";
 
@@ -24,4 +26,9 @@ public class SystemMessage {
         System.out.println();
         System.out.println("보너스 번호를 입력해 주세요.");
     }
+
+    private static String putComma(int number) {
+        return NumberFormat.getInstance().format(number);
+    }
+
 }
