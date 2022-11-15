@@ -31,7 +31,7 @@ public class LottoService {
 
     private void create(){
         output.moneyInform();
-        issue = new Issue(input.money());
+        issue = new Issue(input.number());
         history = issue.lotto();
     }
 
@@ -43,7 +43,7 @@ public class LottoService {
 
     private void createWinNum(){
         output.winningNum();
-        Integer[] numbers = Stream.of(input.winningNum().split(","))
+        Integer[] numbers = Stream.of(input.number().split(","))
                 .mapToInt(Integer::parseInt)
                 .boxed()
                 .toArray(Integer[]::new);
@@ -52,7 +52,7 @@ public class LottoService {
 
     private void createBonusNum(){
         output.bonusNum();
-        win.addBonusNum(input.bonusNum());
+        win.addBonusNum(input.number());
     }
 
     private void winStatistics(){
