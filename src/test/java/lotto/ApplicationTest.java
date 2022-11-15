@@ -85,5 +85,48 @@ class ApplicationTest extends NsTest {
     }
 
 
+    @Test
+    void 예외_보너스번호_숫자아닌입력1() {
+        assertSimpleTest(() -> {
+            runException("10000", "1,2,3,4,5,6", "a");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+    @Test
+    void 예외_보너스번호_숫자아닌입력2() {
+        assertSimpleTest(() -> {
+            runException("10000", "1,2,3,4,5,6", "ad");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+    @Test
+    void 예외_보너스번호_숫자범위벗어난입력1() {
+        assertSimpleTest(() -> {
+            runException("10000", "1,2,3,4,5,6", "46");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+    @Test
+    void 예외_보너스번호_숫자범위벗어난입력2() {
+        assertSimpleTest(() -> {
+            runException("10000", "1,2,3,4,5,6", "0");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+    @Test
+    void 예외_보너스번호_숫자범위벗어난입력3() {
+        assertSimpleTest(() -> {
+            runException("10000", "1,2,3,4,5,6", "-1");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+    @Test
+    void 예외_보너스번호_당첨번호와중복된숫자입력() {
+        assertSimpleTest(() -> {
+            runException("10000", "1,2,3,4,5,6", "5");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
 
 }
