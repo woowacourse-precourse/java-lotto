@@ -30,7 +30,6 @@ public class Application {
         System.out.println("forPrint : " + forPrint);
         printResults(forPrint, money);
 
-
     }
 
     public static Lotto askWinLotto() {

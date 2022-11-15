@@ -5,7 +5,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.List;
 
 public class Buy {
-    private static final String ERROR_MESSAGE = "[ERROR]";
+    private static final String ERROR_MESSAGE1 = "[ERROR] 숫자만 입력하세요";
     private static final String ERROR_MESSAGE2 = "[ERROR] 천원 단위로 입력하세요";
 
     public static int isRightNumber(String money) {
@@ -13,7 +13,7 @@ public class Buy {
         try {
             returnMoney = Integer.parseInt(money);
         } catch (IllegalArgumentException e) {
-            System.out.println(ERROR_MESSAGE);
+            System.out.println(ERROR_MESSAGE1);
             e.getMessage();
         }
 
