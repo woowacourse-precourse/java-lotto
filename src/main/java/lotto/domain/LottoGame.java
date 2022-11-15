@@ -28,7 +28,8 @@ public class LottoGame {
         this.bonusNumber = input.getBonusNumber();
         getGameResult();
         output.printGameResult(this.gameResult);
-        // TODO: 수익률 계산 및 출력
+        this.profitRate = getProfitRate();
+        output.printProfitRate(this.profitRate);
     }
 
     public List<Integer> generateLottoNumbers() {
@@ -75,6 +76,7 @@ public class LottoGame {
     }
 
     public float getProfitRate() {
+        getTotalProfit();
         this.profitRate = totalProfit / (purchaseAmount*1000);
         profitRate = Math.round((profitRate*10)/10.0); // 소수점 둘째자리에서 반올림
         return this.profitRate;

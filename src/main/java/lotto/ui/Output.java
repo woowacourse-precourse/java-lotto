@@ -21,4 +21,8 @@ public class Output {
         System.out.println(Rank.SECOND_PLACE.getdetail() + gameResult.get(2) + "개");
         System.out.println(Rank.FIRST_PLACE.getdetail() + gameResult.get(1) + "개");
     }
+
+    public void printProfitRate(float profitRate) {
+        System.out.println("총 수익률은 "+profitRate+"%입니다.");
+    }
 }
