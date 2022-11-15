@@ -1,8 +1,5 @@
 package lotto;
 
-import camp.nextstep.edu.missionutils.Console;
-
-import java.util.ArrayList;
 import java.util.List;
 
 public class Game {
@@ -20,10 +17,13 @@ public class Game {
         if (setCalculator()) {
             return;
         }
-        setLotto();
-        if (lotto == null) {
+        if (setLotto()) {
             return;
         }
+        if (setBonus()) {
+            return;
+        }
+
     }
 
     private boolean setCalculator() {
@@ -41,6 +41,18 @@ public class Game {
             return true;
         }
         lotto = new Lotto(numbers);
+        return false;
+    }
+
+    private boolean setBonus() {
+        int bonus = Input.inputBonus();
+        try {
+            lotto.isBonusDuplicate(bonus);
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+            return true;
+        }
+        bonusNum = bonus;
         return false;
     }
 }
