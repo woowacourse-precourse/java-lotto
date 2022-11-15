@@ -3,6 +3,7 @@ package lotto;
 import java.text.MessageFormat;
 import java.text.NumberFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
@@ -119,9 +120,18 @@ public class Application {
      */
     public static List<Integer> lottoRandomNum() {
         List<Integer> lottoRandomNum = Randoms.pickUniqueNumbersInRange(1, 45, 6);
-//        Collections.sort(lottoRandomNum);
 
-        return lottoRandomNum;
+        return sort(lottoRandomNum);
+    }
+
+    private static List<Integer> sort(List<Integer> lottoRandomNumbers) {
+        List<Integer> list = new ArrayList<Integer>();
+        Object[] array = lottoRandomNumbers.toArray();
+        Arrays.sort(array, 0, 6);
+        for (Object obj : Arrays.asList(array)) {
+            list.add(Integer.valueOf(String.valueOf(obj)));
+        }
+        return list;
     }
 
     /**
