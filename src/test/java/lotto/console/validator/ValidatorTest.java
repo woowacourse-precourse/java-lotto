@@ -10,8 +10,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class ValidatorTest {
 
-    private static final Validator validator = Validator.getInstance();
-
     @Test
     void 모든_조건이_참() {
         // given
@@ -20,7 +18,7 @@ class ValidatorTest {
                 getTrueCondition()
         );
         // when
-        Condition notPassCondition = validator.getNotPassCondition(conditions, "");
+        Condition notPassCondition = Validator.getNotPassCondition(conditions, "");
 
         // then
         assertThat(notPassCondition).isNull();
@@ -34,7 +32,7 @@ class ValidatorTest {
                 getFalseCondition()
         );
         // when
-        Condition notPassCondition = validator.getNotPassCondition(conditions, "");
+        Condition notPassCondition = Validator.getNotPassCondition(conditions, "");
 
         // then
         assertThat(notPassCondition).isNotNull();

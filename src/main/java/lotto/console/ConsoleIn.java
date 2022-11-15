@@ -12,8 +12,6 @@ import java.util.stream.Collectors;
 
 public class ConsoleIn {
 
-    private static final Validator validator = Validator.getInstance();
-
     private ConsoleIn() {
     }
 
@@ -21,7 +19,7 @@ public class ConsoleIn {
         String input = getInput();
         List<Condition> conditions = ConditionGenerator.getLottoNumberCondition();
 
-        Condition notPassCondition = validator.getNotPassCondition(conditions, input);
+        Condition notPassCondition = Validator.getNotPassCondition(conditions, input);
 
         if (notPassCondition != null) {
             throw new IllegalArgumentException(ErrorMessageGenerator.getErrorMessage(notPassCondition));
@@ -35,7 +33,7 @@ public class ConsoleIn {
         String input = getInput();
         List<Condition> conditions = ConditionGenerator.getMoneyCondition();
 
-        Condition notPassCondition = validator.getNotPassCondition(conditions, input);
+        Condition notPassCondition = Validator.getNotPassCondition(conditions, input);
 
         if (notPassCondition != null) {
             throw new IllegalArgumentException(ErrorMessageGenerator.getErrorMessage(notPassCondition));
@@ -51,7 +49,7 @@ public class ConsoleIn {
 
         String numbers = getConcatenatedString(answerNumbers, input);
 
-        Condition notPassCondition = validator.getNotPassCondition(conditions, numbers);
+        Condition notPassCondition = Validator.getNotPassCondition(conditions, numbers);
 
         if (notPassCondition != null) {
             throw new IllegalArgumentException(ErrorMessageGenerator.getErrorMessage(notPassCondition));
