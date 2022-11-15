@@ -1,15 +1,14 @@
 package lotto.prizestandards;
-
 import java.util.Arrays;
 
 public enum PrizeStandards {
 
-    THREEMATCH(6, 5000),
-    FOURMATCH(8, 50000),
-    FIVEMATCH(10, 1500000),
-    FIVEBONUS(11, 3000000),
-    SIXMATCH(12, 2000000000),
-    UNDERPRIZE(0,0);
+    THREE_MATCH(6, 5000),
+    FOUR_MATCH(8, 50000),
+    FIVE_MATCH(10, 1500000),
+    FIVE_BONUS(11, 3000000),
+    SIX_MATCH(12, 2000000000),
+    UNDER_PRIZE(0, 0);
 
     private final int score;
     private final int money;
@@ -17,10 +16,6 @@ public enum PrizeStandards {
     PrizeStandards(int i, int j) {
         this.score = i;
         this.money = j;
-    }
-
-    public int getScore() {
-        return score;
     }
 
     public int getMoney() {
@@ -31,6 +26,6 @@ public enum PrizeStandards {
         return Arrays.stream(PrizeStandards.values())
                 .filter(prizeStandards -> prizeStandards.score == givenScore)
                 .findFirst()
-                .orElse(UNDERPRIZE);
+                .orElse(UNDER_PRIZE);
     }
 }

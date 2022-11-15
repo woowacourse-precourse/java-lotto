@@ -5,8 +5,6 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import java.io.ByteArrayInputStream;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -25,9 +23,9 @@ class PrizeListGeneratorTest {
         Lotto lotto2 = new Lotto(lottoNumbers2);
         Lotto lotto3 = new Lotto(lottoNumbers3);
 
-        List<Lotto> lottoList = new ArrayList<Lotto>(List.of(lotto, lotto2, lotto3));
+        List<Lotto> lottos = new ArrayList<Lotto>(List.of(lotto, lotto2, lotto3));
 
-        return lottoList;
+        return lottos;
     }
 
 
@@ -47,17 +45,17 @@ class PrizeListGeneratorTest {
 
     @Test
     void iterateLotteriesForStatistic() {
-        List<Lotto> lottoList = lottoMaker();
+        List<Lotto> lottos = lottoMaker();
 
-        prizeListGenerator.iterateLotteriesForStatistic(lottoList);
+        prizeListGenerator.iterateLotteriesForStatistic(lottos);
 
         org.junit.jupiter.api.Assertions.assertAll(
-                () -> Assertions.assertThat(prizeListGenerator.returnWinnerResult().get(THREEMATCH)).isEqualTo(1),
-                () -> Assertions.assertThat(prizeListGenerator.returnWinnerResult().get(FOURMATCH)).isEqualTo(0),
-                () ->Assertions.assertThat(prizeListGenerator.returnWinnerResult().get(FIVEMATCH)).isEqualTo(1),
-                () -> Assertions.assertThat(prizeListGenerator.returnWinnerResult().get(FIVEBONUS)).isEqualTo(0),
-                () -> Assertions.assertThat(prizeListGenerator.returnWinnerResult().get(SIXMATCH)).isEqualTo(0),
-                () -> Assertions.assertThat(prizeListGenerator.returnWinnerResult().get(UNDERPRIZE)).isEqualTo(1)
+                () -> Assertions.assertThat(prizeListGenerator.returnWinnerResult().get(THREE_MATCH)).isEqualTo(1),
+                () -> Assertions.assertThat(prizeListGenerator.returnWinnerResult().get(FOUR_MATCH)).isEqualTo(0),
+                () ->Assertions.assertThat(prizeListGenerator.returnWinnerResult().get(FIVE_MATCH)).isEqualTo(1),
+                () -> Assertions.assertThat(prizeListGenerator.returnWinnerResult().get(FIVE_BONUS)).isEqualTo(0),
+                () -> Assertions.assertThat(prizeListGenerator.returnWinnerResult().get(SIX_MATCH)).isEqualTo(0),
+                () -> Assertions.assertThat(prizeListGenerator.returnWinnerResult().get(UNDER_PRIZE)).isEqualTo(1)
         );
     }
 }

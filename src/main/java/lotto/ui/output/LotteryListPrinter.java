@@ -1,9 +1,6 @@
 package lotto.ui.output;
 
 import lotto.Lotto;
-import lotto.domain.IssuingMachine;
-
-import java.util.Arrays;
 import java.util.List;
 
 public class LotteryListPrinter {

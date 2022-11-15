@@ -28,12 +28,12 @@ class YieldCalculatorTest {
     void computeYield() {
         int buyingMoney = 8000;
         Map<Enum, Integer> winnerResult = Map.of(
-                THREEMATCH, 1,
-                FOURMATCH, 0,
-                FIVEMATCH, 0,
-                FIVEBONUS, 0,
-                SIXMATCH, 0,
-                UNDERPRIZE, 7
+                THREE_MATCH, 1,
+                FOUR_MATCH, 0,
+                FIVE_MATCH, 0,
+                FIVE_BONUS, 0,
+                SIX_MATCH, 0,
+                UNDER_PRIZE, 7
         );
 
         double prizeMoney = yieldCalculator.computeYield(buyingMoney, winnerResult);

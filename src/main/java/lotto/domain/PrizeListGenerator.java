@@ -1,34 +1,31 @@
 package lotto.domain;
 
+import lotto.ConstValue;
 import lotto.Lotto;
 import lotto.prizestandards.PrizeStandards;
 import lotto.ui.input.WinnerNumberGetter;
-
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public class PrizeListGenerator {
-    private static final String BONUS_DUPLICATED_WITH_WINNING_NUMBER = "[ERROR] 보너스 번호와 당첨 번호는 중복되서는 안됩니다.";
-
     private Map<Enum, Integer> winnerResult = new HashMap<>();
     private Map<Integer, Integer> winningNumbers;
     private int bonus;
-
     private int score;
 
-    public PrizeListGenerator() throws IllegalArgumentException{  /* 생성자로 이 기능 옮긴 것 커밋에 반영해야함 */
-            winningNumbers = WinnerNumberGetter.getLotteryWinningNumbersInput();
-            bonus = WinnerNumberGetter.getBonusInput();
+    public PrizeListGenerator() throws IllegalArgumentException{
+        winningNumbers = WinnerNumberGetter.getLotteryWinningNumbersInput();
+        bonus = WinnerNumberGetter.getBonusInput();
 
-            if (winningNumbers.containsKey(bonus)) {
-                throw new IllegalArgumentException(BONUS_DUPLICATED_WITH_WINNING_NUMBER);
-            }
+        if (winningNumbers.containsKey(bonus)) {
+            throw new IllegalArgumentException(ConstValue.ErrorMessages.BONUS_DUPLICATED_WITH_WINNING_NUMBER);
+        }
     }
 
     public void iterateLotteriesForStatistic(List<Lotto> lotteries) {
         score = 0;
-        for (Lotto lottery : lotteries) { // 당첨 계산하는 제일 핵심로직  시간복잡도 개선방법 생각해보기
+        for (Lotto lottery : lotteries) {
             List<Integer> numbers = lottery.getNumbers();
             checkIfLotteryContainsWinningnumber(numbers);
 
@@ -63,7 +60,7 @@ public class PrizeListGenerator {
         }
     }
 
-    private Enum<PrizeStandards> getCorrespondingPrizeStandard(int score) { // private으로 변경 커밋필요
+    private Enum<PrizeStandards> getCorrespondingPrizeStandard(int score) {
         return PrizeStandards.getProperStandard(score);
     }
 

@@ -1,7 +1,6 @@
 package lotto.ui.output;
 
 import java.util.Map;
-
 import static lotto.prizestandards.PrizeStandards.*;
 
 public class PrizeListPrinter {
@@ -15,11 +14,11 @@ public class PrizeListPrinter {
 
         System.out.println("당첨 통계");
         System.out.println("---");
-        System.out.printf(THREE_MATCH_STRING, winnerResult.get(THREEMATCH));
-        System.out.printf(FOUR_MATCH_STRING, winnerResult.get(FOURMATCH));
-        System.out.printf(FIVE_MATCH_STRING, winnerResult.get(FIVEMATCH));
-        System.out.printf(FIVE_BONUS_MATCH_STRING, winnerResult.get(FIVEBONUS));
-        System.out.printf(SIX_MATCH_STRING, winnerResult.get(SIXMATCH));
+        System.out.printf(THREE_MATCH_STRING, winnerResult.get(THREE_MATCH));
+        System.out.printf(FOUR_MATCH_STRING, winnerResult.get(FOUR_MATCH));
+        System.out.printf(FIVE_MATCH_STRING, winnerResult.get(FIVE_MATCH));
+        System.out.printf(FIVE_BONUS_MATCH_STRING, winnerResult.get(FIVE_BONUS));
+        System.out.printf(SIX_MATCH_STRING, winnerResult.get(SIX_MATCH));
         System.out.printf("총 수익률은 %.1f%%입니다.\n", yield);
     }
 }
