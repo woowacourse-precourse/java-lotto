@@ -9,6 +9,8 @@ import java.util.List;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomUniqueNumbersInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class ApplicationTest extends NsTest {
     private static final String ERROR_MESSAGE = "[ERROR]";
@@ -56,10 +58,13 @@ class ApplicationTest extends NsTest {
         });
     }
 
-    @DisplayName("당첨 번호 입력값에 공백이 존재하면 예외를 발생합니다.")
+    @DisplayName("투자 금액 입력값에 공백이 존재하는 경우 에러 메세지를 출력합니다.")
     @Test
-    void 당첨번호_공백_예외_테스트(){
-
+    void 투자금액_공백_예외_테스트() {
+        assertSimpleTest(() -> {
+            runException("80 0");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
     }
 
     @DisplayName("투자 금액 입력값이 1000원 단위가 아니면 예외를 발생합니다.")
