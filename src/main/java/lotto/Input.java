@@ -9,8 +9,10 @@ import java.util.List;
 public class Input {
     public int getPurchaseAmount() {
         System.out.println("구입금액을 입력해 주세요.");
-        String purchaseAmountInput = Console.readLine();
-        int purchaseAmount = Integer.valueOf(purchaseAmountInput);
+        String purchaseMoneyInput = Console.readLine();
+        int purchaseMoney = Integer.valueOf(purchaseMoneyInput);
+        int purchaseAmount = purchaseMoney / 1000;
+        // TODO: 1000으로 나누어 떨어지지 않을 때의 예외 처리
         return purchaseAmount;
     }
 
