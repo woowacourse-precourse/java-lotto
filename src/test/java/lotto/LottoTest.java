@@ -1,10 +1,12 @@
 package lotto;
 
+import lotto.domain.Lotto;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class LottoTest {
@@ -24,4 +26,12 @@ class LottoTest {
     }
 
     // 아래에 추가 테스트 작성 가능
+    @DisplayName("로또번호가  정렬되는지 확인")
+    @Test
+    void sortLottoNumbers() {
+        Lotto lotto = new Lotto(List.of(45,13,12,23,29,1));
+
+        assertThat(lotto.getNumbers())
+                .isSorted();
+    }
 }
