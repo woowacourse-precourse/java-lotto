@@ -4,8 +4,10 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.List;
+import java.util.Map;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -216,6 +218,33 @@ public class LottoUserTest {
         );
 
         return INPUTS;
+    }
+
+    @DisplayName("자신의 로또 통계를 잘 반환하는지")
+    @Test
+    void getStatisticsTest() {
+        //given
+        final List<WinInfo> INPUT = List.of(
+                WinInfo.NO_WIN,
+                WinInfo.WIN2,
+                WinInfo.WIN3,
+                WinInfo.WIN3,
+                WinInfo.WIN3,
+                WinInfo.WIN2,
+                WinInfo.WIN1,
+                WinInfo.WIN2,
+                WinInfo.NO_WIN
+        );
+        LottoUser lottoUser = new LottoUser(0,new LottoSystem());
+        lottoUser.getWinInfomations().clear();
+        lottoUser.getWinInfomations().addAll(INPUT);
+        //when
+        Map<WinInfo,Integer> statistics = lottoUser.getStatistics();
+        //then
+        assertEquals(statistics.get(WinInfo.NO_WIN),2);
+        assertEquals(statistics.get(WinInfo.WIN2),3);
+        assertEquals(statistics.get(WinInfo.WIN3),3);
+        assertEquals(statistics.get(WinInfo.WIN1),1);
     }
 }
 
