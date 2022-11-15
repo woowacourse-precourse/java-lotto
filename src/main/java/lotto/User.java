@@ -15,26 +15,26 @@ public class User {
     int money;
     List<Lotto> myLotto = new ArrayList<>();
 
-    public void inputPurchaseMoney() {
+    public void inputPurchaseMoney() throws IllegalArgumentException {
         System.out.println(INPUT_PURCHASE_MONEY);
         String money_str = Console.readLine();
         checkThatPurchaseMoneyIsRightInput(money_str);
     }
 
-    public void checkThatPurchaseMoneyIsRightInput(String purchaseMoney){
+    public void checkThatPurchaseMoneyIsRightInput(String purchaseMoney) {
         money = Exception.isInteger(purchaseMoney);
 
         checkThatPurchaseMoneyIsNotPositive();
         checkThatPurchaseMoneyIsNotMultipleOfThousand();
     }
 
-    private void checkThatPurchaseMoneyIsNotPositive() throws IllegalArgumentException{
+    private void checkThatPurchaseMoneyIsNotPositive() {
         if (Exception.isNotPositive(money)) {
             throw new IllegalArgumentException(PURCHASE_MONEY_MORE_THAN_ZERO);
         }
     }
 
-    private void checkThatPurchaseMoneyIsNotMultipleOfThousand() throws IllegalArgumentException{
+    private void checkThatPurchaseMoneyIsNotMultipleOfThousand() {
         if (Exception.isNotMultipleOfThousand(money)) {
             throw new IllegalArgumentException(PURCHASE_MONEY_MULTIPLE_THOUSAND);
         }

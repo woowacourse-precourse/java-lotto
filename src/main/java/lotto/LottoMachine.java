@@ -15,7 +15,7 @@ public class LottoMachine {
     Lotto winningNumber;
     int bonusNumber;
 
-    public void inputWinningNumber() {
+    public void inputWinningNumber() throws IllegalArgumentException {
         System.out.println(INPUT_WINNING_NUMBER);
         String inputNumber = Console.readLine();
 
@@ -39,7 +39,7 @@ public class LottoMachine {
 
     }
 
-    public void checkThatBonusNumberIsRightInput() throws IllegalArgumentException {
+    public void checkThatBonusNumberIsRightInput() {
         isBonusNumberInteger();
         isBonusNumberOverlap();
         isBonusNumberOutOfRange();

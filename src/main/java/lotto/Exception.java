@@ -8,7 +8,7 @@ public class Exception {
     public static final String PURCHASE_MONEY_INTEGER = "[ERROR] 구입 금액은 정수를 입력해야 합니다.";
     public static final String WINING_NUMBER_INTEGER = "[ERROR] 당첨 번호는 정수를 입력해야 합니다.";
 
-    public static int isInteger(String str) throws IllegalArgumentException{
+    public static int isInteger(String str) {
         int integer = 0;
 
         try {
@@ -28,7 +28,7 @@ public class Exception {
         return money <= 0;
     }
 
-    public static List<Integer> changeListStringToInteger(List<String> stringList) throws IllegalArgumentException {
+    public static List<Integer> changeListStringToInteger(List<String> stringList) {
         List<Integer> integerList;
 
         try {

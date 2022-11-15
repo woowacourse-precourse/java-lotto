@@ -25,7 +25,7 @@ enum Winning {
 }
 
 public class Result {
-    public static void compareLottoNumber(List<Lotto> myLotto, Lotto winningNumber, int bonusNumber, int purchaseMoney) {
+    public static void compareLottoNumber(List<Lotto> myLotto, Lotto winningNumber, int bonusNumber, int purchaseMoney) throws IllegalArgumentException {
         for (Lotto lotto : myLotto) {
             int winning = countWinningNumber(lotto, winningNumber);
             boolean bonus = containBonusNumber(lotto, bonusNumber);
