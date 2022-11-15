@@ -71,6 +71,22 @@ public class Application {
         return winLotto.getNumbers();
     }
 
+
+    public static Integer inputBonusNum(Integer bonusNum){
+        System.out.println(); System.out.println();
+        System.out.println("보너스 번호를 입력해 주세요.");
+        try{
+            bonusNum = Integer.parseInt(Console.readLine());
+            if(bonusNum <1 || bonusNum>45){
+                throw new IllegalArgumentException();
+            }
+        }catch (IllegalArgumentException e){
+            System.out.println("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
+        }
+        System.out.println(bonusNum);
+        return bonusNum;
+    }
+
     public static void main(String[] args) {
         //TODO: 프로그램 구현
         //1.입력: 로또 구입금액
@@ -111,6 +127,14 @@ public class Application {
         try{
             lottoNum = inputWinLotto(lottoNum);
         }catch(IllegalArgumentException e){
+            return;
+        }
+
+        //4.입력: 보너스 번호
+        Integer bonusNum=0;
+        try{
+            bonusNum = inputBonusNum(bonusNum);
+        }catch (IllegalArgumentException e){
             return;
         }
     }
