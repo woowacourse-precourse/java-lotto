@@ -8,9 +8,11 @@ import lotto.domain.Reward;
 
 public class OutputView {
     private static String INFORM_AMOUNT = "%d개를 구매했습니다.\n";
-    private static String INFORM_HIT_SECOND = "%d개 일치, 보너스 볼 일치 (%s원) - %d개\n";
-    private static String INFORM_HIT_REST = "%d개 일치 (%s원) - %d개\n";
+    private static String LOTTO_SECOND = "%d개 일치, 보너스 볼 일치 (%s원) - %d개\n";
+    private static String LOTTO_RESULT = "%d개 일치 (%s원) - %d개\n";
     private static String INFORM_YIELD = "총 수익률은 %s%%입니다.";
+    private static String STATISTICS = "당첨 통계";
+    private static String THREE_HYPHEN = "---";
 
     public static void printUserLotto(List<Lotto> userLotto) {
         System.out.printf(INFORM_AMOUNT, userLotto.size());
@@ -21,8 +23,8 @@ public class OutputView {
 
     public static void printStatistics(int amount, Map<Reward, Integer> result) {
         System.out.println();
-        System.out.println("당첨 통계");
-        System.out.println("---");
+        System.out.println(STATISTICS);
+        System.out.println(THREE_HYPHEN);
         printResult(result);
         printYield(amount, result);
     }
@@ -33,13 +35,13 @@ public class OutputView {
 
             if (r == Reward.SECOND) {
                 System.out.printf(
-                        INFORM_HIT_SECOND, r.getCount(), decimalFormat.format(r.getReward()),
+                        LOTTO_SECOND, r.getCount(), decimalFormat.format(r.getReward()),
                         result.get(r)
                 );
                 continue;
             }
             System.out.printf(
-                    INFORM_HIT_REST, r.getCount(), decimalFormat.format(r.getReward()), result.get(r));
+                    LOTTO_RESULT, r.getCount(), decimalFormat.format(r.getReward()), result.get(r));
         }
     }
 

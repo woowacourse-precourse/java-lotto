@@ -22,18 +22,18 @@ public class LottoMachine {
         Map<Reward, Integer> result = makeBlankResult();
 
         for (int i = 0; i < userLotto.size(); i++) {
-            int bingo = calculateBingo(userLotto.get(i), winningNumber);
-            boolean bonus = userLotto.get(i).isContain(bonusNumber);
+            int score = calculateScore(userLotto.get(i), winningNumber);
+            boolean bonusScore = userLotto.get(i).isContain(bonusNumber);
 
-            if (3 <= bingo && bingo <= 6) {
-                result.put((Reward.getRanKing(bingo, bonus)), result.get(Reward.getRanKing(bingo, bonus)) + 1);
+            if (3 <= score && score <= 6) {
+                result.put((Reward.getRanKing(score, bonusScore)), result.get(Reward.getRanKing(score, bonusScore)) + 1);
             }
         }
         return result;
     }
 
     public static Map<Reward, Integer> makeBlankResult() {
-        Map<Reward, Integer> result = new EnumMap<>(Reward.class) {{
+        Map<Reward, Integer> blankResult = new EnumMap<>(Reward.class) {{
             put(Reward.FIFTH, 0);
             put(Reward.FOURTH, 0);
             put(Reward.THIRD, 0);
@@ -41,17 +41,17 @@ public class LottoMachine {
             put(Reward.FIRST, 0);
         }};
 
-        return result;
+        return blankResult;
     }
 
-    public static int calculateBingo(Lotto userLotto, Lotto winningNumber) {
-        int bingo = userLotto.getNumbers()
+    public static int calculateScore(Lotto userLotto, Lotto winningNumber) {
+        int score = userLotto.getNumbers()
                 .stream()
                 .filter(s -> winningNumber.isContain(s))
                 .mapToInt(n -> 1)
                 .sum();
 
-        return bingo;
+        return score;
     }
 
     public static int calculateAmount(String input) {

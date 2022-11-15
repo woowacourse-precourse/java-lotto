@@ -29,16 +29,16 @@ class LottoMachineTest {
     @DisplayName("구입한 로또와 당첨 번호를 비교해서 맞은 개수를 반환해준다.")
     @Test
     void compareLotto() {
-        int bingo = lottoMachine.calculateBingo(new Lotto(List.of(1, 2, 3, 4, 5, 6)),
+        int score = lottoMachine.calculateScore(new Lotto(List.of(1, 2, 3, 4, 5, 6)),
                 new Lotto(List.of(1, 2, 3, 11, 12, 13)));
-        assertThat(bingo).isEqualTo(3);
+        assertThat(score).isEqualTo(3);
     }
 
     @DisplayName("발행 개수 만큼 로또를 발행해서 반환해준다.")
     @Test
     void issuedByTheNumber() {
-        List<Lotto> lottos = lottoMachine.publishLotto(7);
-        assertThat(lottos.size()).isEqualTo(7);
+        List<Lotto> multipleLotto = lottoMachine.publishLotto(7);
+        assertThat(multipleLotto.size()).isEqualTo(7);
     }
 
     @DisplayName("당첨 번호를 쉼표를 기준으로 구분해서 로또를 만들어준다.")
