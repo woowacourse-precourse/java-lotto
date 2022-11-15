@@ -30,7 +30,7 @@ public class Lotto {
         return sorted;
     }
     public void printLotto() {
-        List<Integer> sorted = sortLotto();
+        List<Integer> sorted = numbers;
         Iterator<Integer> itr = sorted.listIterator(1);
         System.out.print("["+sorted.get(0));
         while (itr.hasNext()) {

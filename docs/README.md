@@ -47,6 +47,10 @@
    - 소수점 둘째 자리에서 반올림한 수익률 계산하는 메소드 (calculateProfitRate)
    - 수익 계산하는 메소드 (calculateProfit)
 9. LottoTest
-   - Non-integer를 Input했을 때 IllegalArgumentException을 발생시키는지 확인
+   - 5개의 숫자를 넣을 때
+   - 겹치는 숫자를 넣을 때
+   - 1~45 범위 밖의 숫자를 넣을 때
 10. ApplicationTest
+   - 보너스 볼과 일치해야 하는 경우 
+   - 구입 금액이 1000으로 나눠떨어지지 않는 경우
 11. GameTest

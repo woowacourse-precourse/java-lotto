@@ -11,7 +11,7 @@ public class Program {
     LottoGenerator lottoGenerator = new LottoGenerator();
     DrawLotto drawLotto;
     int numOfLottos, bonus, money;
-    String moneyString, winnerString;
+    String moneyString;
     List<Lotto> lottoList;
     List<Integer> winner;
     Map<Ranking, Integer> result;
