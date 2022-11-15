@@ -6,14 +6,13 @@ import java.util.List;
 
 public class statistic {
 
-  private int count;
   private int[] result = new int[5];
   public statistic(String normal_number, String bonus_number, List<List<Integer>> pick_member, String input_price) {
     System.out.println("\n당첨 통계\n---");
     String[] normal_number_table = normal_number.split(",");
-    int[] new_normal_number_table = Arrays.asList(normal_number_table).stream().mapToInt(Integer::parseInt).toArray();
+    int[] new_normal_number_table = Arrays.stream(normal_number_table).mapToInt(Integer::parseInt).toArray();
     int new_bonus_number = Integer.parseInt(bonus_number);
-    victory_count(new_normal_number_table,new_bonus_number,pick_member);
+    victory_count(new_normal_number_table,new_bonus_number,pick_member); 
     medal_result(result, input_price);
   }
   //각 줄의 숫자별 포함 개수

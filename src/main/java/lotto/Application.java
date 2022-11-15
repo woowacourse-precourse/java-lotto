@@ -13,11 +13,7 @@ public class Application {
             //로또 당첨번호 및 보너스번호 받기
             victory victory_number = new victory();
             // 당첨 통계
-            statistic statistic_result = new statistic(
-                    victory_number.victory_normal_number,
-                    victory_number.victory_bonus_number,
-                    pick_number.pick_member,
-                    check_price.input_price);
+            new statistic(victory_number.victory_normal_number, victory_number.victory_bonus_number, pick_number.pick_member, check_price.input_price);
             //끝
         }
     }

@@ -13,7 +13,7 @@ public class price {
   }
   private void check_price(String ch_price){
     if (!ch_price.matches("-?\\d+(\\.\\d+)?")) {
-      System.out.println("[ERROR]");
+      System.out.println("[ERROR] 숫자를 입력해주세요.");
       program_out = 1;
     }
   }
