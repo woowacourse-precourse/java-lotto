@@ -1,6 +1,9 @@
-package lotto;
+package lotto.service;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import lotto.domain.Lotto;
+import lotto.domain.LottoGrade;
+import lotto.domain.Money;
 
 import java.util.*;
 import java.util.stream.Collectors;

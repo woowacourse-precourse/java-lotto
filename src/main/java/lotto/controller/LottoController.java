@@ -1,4 +1,10 @@
-package lotto;
+package lotto.controller;
+
+import lotto.domain.Lotto;
+import lotto.domain.LottoGrade;
+import lotto.domain.Money;
+import lotto.service.LottoStore;
+import lotto.view.LottoPrinter;
 
 import java.util.List;
 import java.util.Map;

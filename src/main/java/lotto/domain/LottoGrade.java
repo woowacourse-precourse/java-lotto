@@ -1,4 +1,4 @@
-package lotto;
+package lotto.domain;
 
 public enum LottoGrade {
     FIVE( 5_000L),

@@ -1,4 +1,6 @@
-package lotto;
+package lotto.domain;
+
+import lotto.NumberValidate;
 
 public class Money {
     private Long money;
