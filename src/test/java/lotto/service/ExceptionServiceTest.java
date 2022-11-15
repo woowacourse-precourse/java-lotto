@@ -96,4 +96,14 @@ class ExceptionServiceTest {
         assertThatThrownBy(() -> exceptionService.exceptionHandlingOfBonusNumber(winningNumbers, bonusNumber))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @Test
+    @DisplayName("보너스 번호와 당첨 번호가 중복되면 예외가 발생한다.")
+    void checkForDuplicateBonusNumberTest() {
+        ExceptionService exceptionService = new ExceptionService();
+        String bonusNumber = "6";
+        List<Integer> winningNumbers = new ArrayList<>(Arrays.asList(1,2,3,4,5,6));
+        assertThatThrownBy(() -> exceptionService.exceptionHandlingOfBonusNumber(winningNumbers, bonusNumber))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
