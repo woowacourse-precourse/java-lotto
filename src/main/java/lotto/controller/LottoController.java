@@ -5,7 +5,7 @@ import java.util.List;
 import lotto.domain.User;
 import lotto.domain.WinningLotto;
 import lotto.service.LottoService;
-import lotto.utils.InputConverter;
+import lotto.utils.Converter;
 import lotto.utils.Validator;
 import lotto.view.InputView;
 import lotto.view.OutputView;
@@ -31,14 +31,14 @@ public class LottoController {
 
     private Integer getPurchaseAmount() {
         InputView.printInputMoneyMessage();
-        Integer purchaseAmount = InputConverter.toInteger(Console.readLine());
+        Integer purchaseAmount = Converter.toInteger(Console.readLine());
         Validator.validatePurchaseAmount(purchaseAmount);
         return purchaseAmount;
     }
 
     private List<Integer> getWinningNumbers() {
         InputView.printInputWinningNumbers();
-        List<Integer> winningNumbers = InputConverter.toIntegerList(Console.readLine());
+        List<Integer> winningNumbers = Converter.toIntegerList(Console.readLine());
         Validator.validateLottoNumber(winningNumbers);
         return winningNumbers;
     }
@@ -47,7 +47,7 @@ public class LottoController {
         List<Integer> winningNumbers = getWinningNumbers();
 
         InputView.printInputBonusNumber();
-        Integer bonusNumber = InputConverter.toInteger(Console.readLine());
+        Integer bonusNumber = Converter.toInteger(Console.readLine());
         Validator.validateLottoNumber(winningNumbers, bonusNumber);
         return new WinningLotto(winningNumbers, bonusNumber);
     }

@@ -5,11 +5,11 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import lotto.exception.ErrorMessage;
 
-public class InputConverter {
+public class Converter {
 
     private static final String WINNING_NUMBERS_DELIMITER = ",";
 
-    private InputConverter() {
+    private Converter() {
     }
 
     public static Integer toInteger(String input) {
@@ -23,7 +23,7 @@ public class InputConverter {
     public static List<Integer> toIntegerList(String input) {
         try {
             return Stream.of(input.split(WINNING_NUMBERS_DELIMITER))
-                    .map(InputConverter::toInteger)
+                    .map(Converter::toInteger)
                     .collect(Collectors.toList());
         } catch (IllegalArgumentException exception) {
             throw new IllegalArgumentException(ErrorMessage.INVALID_INPUT_MESSAGE.toString());
