@@ -22,11 +22,11 @@ public enum Rank {
         return correctCount;
     }
 
-    public boolean isIncludeBonusNumber() {
-        return isIncludeBonusNumber;
-    }
-
     public int getPrize() {
         return prize;
+    }
+
+    public String getStringPrize() {
+        return String.format("%,d", prize);
     }
 }
