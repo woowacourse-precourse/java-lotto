@@ -37,5 +37,8 @@ public class Lotto {
         return notDuplicated.size() == 6;
     }
 
+//    public boolean getNumbers() {
+//    }
+
     // TODO: 추가 기능 구현
 }
