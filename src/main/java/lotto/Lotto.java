@@ -35,7 +35,6 @@ public class Lotto {
         builder.append('[');
         int i = 0;
         int iMax = numbers.size() - 1;
-
         while (true) {
             builder.append(numbers.get(i));
             if (i == iMax) {
