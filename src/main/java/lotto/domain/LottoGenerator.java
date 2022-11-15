@@ -1,7 +1,6 @@
 package lotto.domain;
 
 import camp.nextstep.edu.missionutils.Randoms;
-import lotto.Lotto;
 import lotto.constant.Constant;
 import java.util.List;
 import java.util.stream.Collectors;
