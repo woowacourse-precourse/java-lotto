@@ -3,6 +3,7 @@ package lotto;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.*;
@@ -56,9 +57,10 @@ class ManagerTest {
         //Given
         Manager manager = new Manager();
         manager.setPurchasePrice(6000);
+        Lotto lotto = new Lotto(new ArrayList<>(List.of(1, 2, 3, 4, 5, 6)));
+        lotto.setLottoBonusNumber(7);
 
         //When
-        List<Integer> lotto = List.of(1, 2, 3, 4, 5, 6, 7);
         List<List<Integer>> purchased = List.of(
                 List.of(1, 2, 3, 4, 5, 6),
                 List.of(1, 2, 3, 4, 5, 8),
@@ -81,9 +83,10 @@ class ManagerTest {
         //Given
         Manager manager = new Manager();
         manager.setPurchasePrice(6000);
+        Lotto lotto = new Lotto(new ArrayList<>(List.of(1, 2, 3, 4, 5, 6)));
+        lotto.setLottoBonusNumber(7);
 
         //When
-        List<Integer> lotto = List.of(1, 2, 3, 4, 5, 6, 7);
         List<List<Integer>> purchased = List.of(
                 List.of(1, 2, 3, 8, 9, 10),
                 List.of(1, 2, 8, 9, 10, 6),
