@@ -21,7 +21,7 @@ public class InputConsole {
     public static int askPurchasePrice() {
         System.out.println(TYPE_PURCHASE_PRICE);
         String input = readLine();
-        Validator.isValidPurchasePrice(input);
+        Validator.isInteger(input);
         return Integer.parseInt(input);
     }
 
@@ -35,7 +35,7 @@ public class InputConsole {
     public static int askBonusNumber() {
         System.out.println(TYPE_BONUS_NUMBER);
         String input = readLine();
-        Validator.isValidBonusNumber(input);
+        Validator.isInteger(input);
         return Integer.parseInt(input);
     }
 }

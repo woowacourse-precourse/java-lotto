@@ -21,26 +21,25 @@ public final class Validator {
         }
     }
 
-    public static void isZero(String input) {
-        if (Integer.parseInt(input) == ZERO) {
+    public static void isZero(int input) {
+        if (input == ZERO) {
             throw new IllegalArgumentException(PREFIX + NEGATIVE);
         }
     }
 
-    public static void isNegative(String input) {
-        if (Integer.parseInt(input) < ZERO) {
+    public static void isNegative(int input) {
+        if (input < ZERO) {
             throw new IllegalArgumentException(PREFIX + NEGATIVE);
         }
     }
 
-    public static void isDividableWithThousand(String input) {
-        if (Integer.parseInt(input) % LOTTO_PRICE != ZERO) {
+    public static void isDividableWithThousand(int input) {
+        if (input % LOTTO_PRICE != ZERO) {
             throw new IllegalArgumentException(PREFIX + NOT_DIVIDABLE_WITH_THOUSAND);
         }
     }
 
-    public static void isValidPurchasePrice(String input) {
-        isInteger(input);
+    public static void isValidPurchasePrice(int input) {
         isZero(input);
         isNegative(input);
         isDividableWithThousand(input);
@@ -88,10 +87,9 @@ public final class Validator {
         hasIntegers(input);
     }
 
-    public static void isValidBonusNumber(String input) {
-        isInteger(input);
+    public static void isValidBonusNumber(int input) {
         isNegative(input);
-        isValidNumberRange(List.of(Integer.parseInt(input)));
+        isValidNumberRange(List.of(input));
     }
 
     public static void containsBonusNumber(List<Integer> numbers, int bonusNumber) {

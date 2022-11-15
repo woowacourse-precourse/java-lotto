@@ -1,6 +1,7 @@
 package lotto.domain;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import lotto.Validator;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -17,6 +18,7 @@ public class LottoIssuer {
      * 사용자가 입력한 구매 금액만큼의 로또를 담은 Lottos를 return
      */
     public Lottos purchaseLottos(int purchasePrice) {
+        Validator.isValidPurchasePrice(purchasePrice);
         int numberOfLottos = getNumberOfLottos(purchasePrice);
         return new Lottos(createLottos(numberOfLottos));
     }

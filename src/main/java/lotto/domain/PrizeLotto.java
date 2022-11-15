@@ -9,9 +9,15 @@ public class PrizeLotto {
     private int bonusNumber;
 
     public PrizeLotto(List<Integer> numbers, int bonusNumber) {
-        Validator.containsBonusNumber(numbers, bonusNumber);
+        validate(numbers, bonusNumber);
         this.lotto = new Lotto(numbers);
         this.bonusNumber = bonusNumber;
+    }
+
+    private void validate(List<Integer> numbers, int bonusNumber) {
+        Validator.isValidLotto(numbers);
+        Validator.isValidBonusNumber(bonusNumber);
+        Validator.containsBonusNumber(numbers, bonusNumber);
     }
 
     public Lotto getLotto() {
