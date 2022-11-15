@@ -9,6 +9,7 @@ import java.util.stream.Collectors;
 
 public class OutputView {
     private static int winningCount;
+
     public static void printLottoCount(int lottoCount) {
         System.out.println();
         System.out.printf("%d개를 구매했습니다.\n", lottoCount);

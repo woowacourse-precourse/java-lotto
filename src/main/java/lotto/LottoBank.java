@@ -45,7 +45,7 @@ public class LottoBank {
     }
 
     public double calculateProfit(int[] winningNumberCount, int inputMoney) {
-        List<Integer> winningNumberCountList= Arrays.stream(winningNumberCount)
+        List<Integer> winningNumberCountList = Arrays.stream(winningNumberCount)
                 .boxed().collect(Collectors.toList());
         totalProfit = calculateTotalProfit(winningNumberCountList);
         double profitRate = calculateProfitRate(inputMoney, totalProfit);
@@ -67,11 +67,21 @@ public class LottoBank {
     }
 
     public int calculateWinningMoney(int winningCountByRank) {
-        if (winningCountByRank == 3) {totalProfit += 5000;}
-        if (winningCountByRank == 4) {totalProfit += 50000;}
-        if (winningCountByRank == 5) {totalProfit += 1500000;}
-        if (winningCountByRank == 6) {totalProfit += 2000000000;}
-        if (winningCountByRank == 7) {totalProfit += 30000000;}
+        if (winningCountByRank == 3) {
+            totalProfit += 5000;
+        }
+        if (winningCountByRank == 4) {
+            totalProfit += 50000;
+        }
+        if (winningCountByRank == 5) {
+            totalProfit += 1500000;
+        }
+        if (winningCountByRank == 6) {
+            totalProfit += 2000000000;
+        }
+        if (winningCountByRank == 7) {
+            totalProfit += 30000000;
+        }
         return totalProfit;
     }
 }
