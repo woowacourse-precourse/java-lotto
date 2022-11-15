@@ -6,11 +6,10 @@ import lotto.enums.Range;
 import java.util.List;
 
 public class Statistic {
-    private final int[] correct;
+    private int[] correct;
     private int revenue;
 
     public double getRevenue(int price) {
-        addRevenue();
         return calculateRevenue(price);
     }
 
@@ -19,57 +18,62 @@ public class Statistic {
     }
 
     public Statistic() {
-        this.correct = new int[]{0,0,0,0,0};
+        this.correct = new int[]{0, 0, 0, 0, 0};
         this.revenue = 0;
     }
 
-    public void countCorrect(List<Integer> winNumbers, List<Lotto> lottos, int bonus){
-        for (Lotto lotto: lottos){
+    public void countCorrect(List<Integer> winNumbers, List<Lotto> lottos, int bonus) {
+        for (Lotto lotto : lottos) {
             int countEach = compare(lotto, winNumbers);
             lottoResult(countEach, correctBonus(bonus, lotto));
         }
         addRevenue();
-
     }
 
-    private int compare(Lotto lotto, List<Integer> winNumbers){
+    private int compare(Lotto lotto, List<Integer> winNumbers) {
         int cnt = 0;
-        for (int n: winNumbers){
-            if(lotto.getNumbers().contains(n)){
+        for (int n : winNumbers) {
+            if (lotto.getNumbers().contains(n)) {
                 cnt++;
             }
         }
         return cnt;
     }
 
-    private boolean correctBonus(int b, Lotto lotto){
+    private boolean correctBonus(int b, Lotto lotto) {
         return lotto.getNumbers().contains(b);
     }
 
-    private void lottoResult(int n, boolean bonus){
-        if (n==3){
-            correct[0] +=1;
-        }if (n==4){
+    private void lottoResult(int n, boolean bonus) {
+        if (n == 3) {
+            correct[0] += 1;
+        }
+        if (n == 4) {
             correct[1] += 1;
-        }if (n==5){
-            correct[2] +=1;
-            if (bonus){
+        }
+        if (n == 5) {
+            correct[2] += 1;
+            if (bonus) {
                 correct[3] += 1;
             }
-        }if(n==6){
-            correct[4] +=1;
+        }
+        if (n == 6) {
+            correct[4] += 1;
         }
     }
 
-    private void addRevenue(){
-        for (int i=0;i<correct.length;i++){
-            revenue += LottoReward.withIndex(i).getReward() * correct[i];
+    private void addRevenue() {
+        for (int i = 0; i < correct.length; i++) {
+            revenue += (LottoReward.withIndex(i).getReward() * correct[i]);
         }
     }
 
-
-    public double calculateRevenue(int price){
-        return (double)revenue/price;
+    public double calculateRevenue(int price) {
+        double percent = (double) revenue / (double) price;
+        System.out.println("수익률: "+percent);
+        System.out.println("수입: "+revenue);
+        percent = Math.round(percent*1000.0)/10.0;
+        return percent;
     }
 
 }

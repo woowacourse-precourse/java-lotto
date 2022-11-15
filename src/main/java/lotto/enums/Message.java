@@ -21,7 +21,7 @@ public enum Message {
     }
 
 
-    public String getMessage(){
+    public String getMessage() {
         return message;
     }
 }

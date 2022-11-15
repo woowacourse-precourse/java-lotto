@@ -9,11 +9,11 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
-
+import camp.nextstep.edu.missionutils.test.NsTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-class LottoTest {
+class LottoTest extends NsTest {
     @DisplayName("로또 번호의 개수가 6개가 넘어가면 예외가 발생한다.")
     @Test
     void createLottoByOverSize() {
@@ -39,6 +39,7 @@ class LottoTest {
 
     @Test
     void createLottoByNotNum(){
+        System.out.println(output());
         assertThatThrownBy(()-> new Validator().validateNumber("1,2,3,4,5,a"))
                 .isInstanceOf(IllegalArgumentException.class);
 
@@ -55,6 +56,8 @@ class LottoTest {
     }
 
 
-
-
+    @Override
+    protected void runMain() {
+        new Validator().validateNumber("1,2,3,4,5,a");
+    }
 }
