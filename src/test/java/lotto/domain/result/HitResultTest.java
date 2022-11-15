@@ -32,7 +32,8 @@ class HitResultTest {
             "'1,2,3,10,11,12', '7', 3, 0, 0, 0, 0",
             "'1,2,10,11,12,13', '7', 0, 0, 0, 0, 0"
     })
-    public void calculateMatchResults(String winningNumbers, String bonus, int hit3, int hit4, int hit5, int hit5WithBonus, int hit6) {
+    public void calculateMatchResults(String winningNumbers, String bonus, int hit3, int hit4, int hit5,
+            int hit5WithBonus, int hit6) {
         System.out.println("winningNumbers = " + winningNumbers);
         WinningLotto winningLotto = new WinningLotto(winningNumbers);
         BonusNumber bonusNumber = new BonusNumber(bonus, winningLotto);

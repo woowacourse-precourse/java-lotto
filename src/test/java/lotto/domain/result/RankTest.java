@@ -6,6 +6,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 class RankTest {
+
     @Test
     @DisplayName("알맞은 Rank 를 가져옵니다 - 3개 매칭")
     void getRank_3hits() {

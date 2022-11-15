@@ -6,6 +6,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 class BonusNumberTest {
+
     @DisplayName("보너스 번호에 문자가 포함되면 예외가 발생합니다.")
     @Test
     void createBonusNumberWithCharacters() {

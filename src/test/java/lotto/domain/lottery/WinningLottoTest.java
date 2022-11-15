@@ -6,6 +6,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 class WinningLottoTest {
+
     @DisplayName("당첨 번호가 1,2,3,4,5,6 형식이 아니라면 예외가 발생합니다. - 공백 포함")
     @Test
     void createWinningLottoInvalidFormat_with_space() {

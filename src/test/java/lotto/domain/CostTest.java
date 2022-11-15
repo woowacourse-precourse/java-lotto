@@ -6,6 +6,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 class CostTest {
+
     @DisplayName("구매 금액에 문자가 포함되면 예외가 발생합니다.")
     @Test
     void createCostWithCharacters() {
