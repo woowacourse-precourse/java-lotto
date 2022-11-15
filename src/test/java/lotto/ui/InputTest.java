@@ -46,4 +46,19 @@ class InputTest {
                         .isInstanceOf(IllegalArgumentException.class)
                         .hasMessageContaining(ErrorMessage.LOTTO_NUMBER_DUPLICATED_ERROR));
     }
+
+    @DisplayName("보너스 번호의 유효성을 검증하여 예외처리 한다.")
+    @Test
+    void validateBonusNumber() {
+        String severalNumber = "1 2";
+        String outOfRangeNumber = "50";
+
+        assertAll(
+                () -> assertThatThrownBy(() -> Input.validateBonusNumber(severalNumber))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessageContaining(ErrorMessage.BONUS_NUMBER_LENGTH_ERROR),
+                () -> assertThatThrownBy(() -> Input.validateBonusNumber(outOfRangeNumber))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessageContaining(ErrorMessage.LOTTO_NUMBER_RANGE_ERROR));
+    }
 }
