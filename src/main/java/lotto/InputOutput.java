@@ -59,9 +59,7 @@ public class InputOutput {
         String[] nums = getSplittedStr();
 
         try {
-            winningNums = Arrays.stream(nums)
-                    .map(Integer::valueOf)
-                    .collect(Collectors.toList());
+            winningNums = Arrays.stream(nums).map(Integer::valueOf).collect(Collectors.toList());
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("[ERROR] 당첨 번호는 숫자이어야 합니다.");
         }
@@ -120,8 +118,7 @@ public class InputOutput {
     public void printResult(EnumMap<Rank, Integer> ranks, double rateOfReturn) {
         System.out.println("당첨 통계\n---");
 
-        List<Rank> sortedKeys = Arrays.stream(Rank.values())
-                .sorted(Comparator.reverseOrder())
+        List<Rank> sortedKeys = Arrays.stream(Rank.values()).sorted(Comparator.reverseOrder())
                 .collect(Collectors.toList());
 
         sortedKeys.forEach(rank -> {

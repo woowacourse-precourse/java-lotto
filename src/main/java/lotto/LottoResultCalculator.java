@@ -61,15 +61,20 @@ public class LottoResultCalculator {
     private Optional<Rank> calRank(Lotto lotto) {
         int matchedWinningNumCnt = compareWithWinningNums(lotto);
         int matchedBonusNumCnt = compareWithBonusNum(lotto);
-        int rankOffset = 6;
+
         if (matchedBonusNumCnt == 1 && matchedWinningNumCnt == 5) {
             return Optional.of(Rank.SECOND_PRIZE);
+        }
+
+        if (matchedWinningNumCnt == 6) {
+            return Optional.of(Rank.FIRST_PRIZE);
         }
 
         if (matchedWinningNumCnt < 3) {
             return Optional.empty();
         }
 
+        int rankOffset = 7;
         return Optional.of(Rank.values()[rankOffset - matchedWinningNumCnt]);
     }
 
