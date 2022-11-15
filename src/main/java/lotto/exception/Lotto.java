@@ -1,6 +1,7 @@
 package lotto.exception;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Lotto {
@@ -14,7 +15,7 @@ public class Lotto {
     }
 
     public List<Integer> getNumbers() {
-        return numbers;
+        return sortNumbers(numbers);
     }
 
     private void validateNumber(List<Integer> numbers) {
@@ -41,5 +42,10 @@ public class Lotto {
                 throw new IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
             }
         }
+    }
+
+    private List<Integer> sortNumbers(List<Integer> numbers){
+        Collections.sort(numbers);
+        return numbers;
     }
 }
