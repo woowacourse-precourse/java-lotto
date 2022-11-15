@@ -1,10 +1,8 @@
 package lotto;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -77,7 +75,17 @@ class PlayerTest {
                 .hasMessage("[ERROR] 1~45 사이에 숫자만 입력 가능합니다");
     }
 
-    @DisplayName("숫자가 아닌 값을 입력한 경우")
+    @DisplayName("1~45 사이 숫자에 중복이 있는 경우")
+    @Test
+    public void stringToListError4Test() {
+        String input = "11,24,12,45,45,2";
+
+        assertThatThrownBy(() -> player.stringToList(input))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("[ERROR] 로또 번호에 중복된 숫자가 있습니다.");
+    }
+
+    @DisplayName("보너스 숫자가 아닌 값을 입력한 경우")
     @Test
     public void bonusErrorTest() {
         String input = "abc";
@@ -87,7 +95,7 @@ class PlayerTest {
                 .hasMessage("[ERROR] 숫자만 입력 가능합니다");
     }
 
-    @DisplayName("1~45 사이에 숫자가 아닌 경우")
+    @DisplayName("보너스 숫자가 1~45 사이에 숫자가 아닌 경우")
     @Test
     public void bonusError2Test() {
         String input = "63";
