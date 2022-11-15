@@ -49,6 +49,7 @@ public class LottoMessage {
     }
 
     public void printProfitPercentage(double profitPercentage) {
-        System.out.println("총 수익률은 " + profitPercentage + "입니다.");
+        System.out.format("총 수익률은 %.1f%%입니다.", profitPercentage);
+        System.out.println();
     }
 }

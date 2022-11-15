@@ -27,7 +27,7 @@ public enum Rank {
     public static Rank decide(long coincideCount, boolean coincideBonus) {
         return Arrays.stream(Rank.values())
                 .filter(rank -> rank.coincideCount == coincideCount)
-                .filter(rank -> rank.coincideBonus && coincideBonus)
+                .filter(rank -> !rank.equals(SECOND) || coincideBonus)
                 .findAny()
                 .orElse(NONE);
     }

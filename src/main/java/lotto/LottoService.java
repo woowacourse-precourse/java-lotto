@@ -45,8 +45,17 @@ public class LottoService {
 
     public double calculateProfitPercentage() {
         double totalWinningAmount = winningResult.calculateTotalWinningAmount();
+        double dividedProfit = divideByPurchaseMoney(totalWinningAmount);
 
-        return totalWinningAmount / purchaseMoney.getWon() * 100.0;
+        return applyPercentage(dividedProfit);
+    }
+
+    private double applyPercentage(double dividedProfit) {
+        return dividedProfit * 100.0;
+    }
+
+    private double divideByPurchaseMoney(double totalWinningAmount) {
+        return totalWinningAmount / purchaseMoney.getWon();
     }
 
     private List<Number> convertToNumbers(String input) {
