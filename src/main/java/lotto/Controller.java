@@ -3,10 +3,7 @@ package lotto;
 import camp.nextstep.edu.missionutils.Console;
 import lotto.UI.Text;
 import lotto.UI.View;
-import lotto.domain.Game;
-import lotto.domain.Lotto;
-import lotto.domain.Rank;
-import lotto.domain.User;
+import lotto.domain.*;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -78,7 +75,7 @@ public class Controller {
     }
 
     public void buyLotto(){
-        Integer howMany = user.getBudget()/ Game.price;
+        Integer howMany = user.getBudget()/ Constants.PRICE.getValue();
         view.printBuyLotto(howMany);
     }
 

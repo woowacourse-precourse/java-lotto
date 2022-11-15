@@ -6,10 +6,7 @@ import java.util.List;
 import java.util.Set;
 
 public class Game {
-    public static final Integer price = 1000;
-    public static final Integer maximumLottoNumber = 45;
-    public static final Integer numberToDraw = 6;
-    public static final Integer minimumLottoNumber = 1;
+
 
     private List<Integer> winningNumbers = new ArrayList<>();
     private Integer bonus = 0;
@@ -36,12 +33,14 @@ public class Game {
 
     private void validateWinningNumberByRange(List<Integer> winningNumbers){
         for (Integer number : winningNumbers){
-            if (number > maximumLottoNumber || number < minimumLottoNumber) throw new IllegalArgumentException();
+            if (number > Constants.MAXIMUM_LOTTO_NUMBER.getValue() || number < Constants.MINIMUM_LOTTO_NUMBER.getValue()) {
+                throw new IllegalArgumentException();
+            }
         }
     }
 
     private void validateWinningNumberBySize(List<Integer> winningNumbers){
-        if (winningNumbers.size() != numberToDraw){
+        if (winningNumbers.size() != Constants.NUMBER_TO_DRAW.getValue()){
             throw new IllegalArgumentException();
         }
     }
@@ -62,7 +61,9 @@ public class Game {
     }
 
     private void validateBonusByRange(Integer bonus){
-        if (bonus > maximumLottoNumber || bonus < 1) throw new IllegalArgumentException();
+        if (bonus > Constants.MAXIMUM_LOTTO_NUMBER.getValue() || bonus < Constants.MINIMUM_LOTTO_NUMBER.getValue()) {
+            throw new IllegalArgumentException();
+        }
     }
 
     private void validateBonusByDistinction(Integer bonus){

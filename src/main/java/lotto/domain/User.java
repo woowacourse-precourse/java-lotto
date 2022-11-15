@@ -38,11 +38,13 @@ public class User {
     }
 
     private void validateBudget(Integer budget){
-        if (budget % Game.price != 0) throw new IllegalArgumentException();
+        if (budget % Constants.PRICE.getValue() != 0) throw new IllegalArgumentException();
     }
 
     private List<Integer> generateLottoNumbers(){
-        return Randoms.pickUniqueNumbersInRange(1, Game.maximumLottoNumber, Game.numberToDraw);
+        return Randoms.pickUniqueNumbersInRange(Constants.MINIMUM_LOTTO_NUMBER.getValue(),
+                                                Constants.MAXIMUM_LOTTO_NUMBER.getValue(),
+                                                Constants.NUMBER_TO_DRAW.getValue());
     }
 
     public Map<Rank, Integer> getWinningCount(){
