@@ -7,9 +7,9 @@ import java.util.List;
 
 public class LottoInputFilter {
 
-    private static String inputLottoNumberStringFormat = "\n로또 번호를 입력해 주세요.";
-    private static String inputAmountStringFormat = "\n구입금액을 입력해 주세요.";
-    private static String inputBounsNumberStringFormat = "\n보너스 번호를 입력해 주세요.";
+    private static final String inputLottoNumberStringFormat = "\n로또 번호를 입력해 주세요.";
+    private static final String inputAmountStringFormat = "\n구입금액을 입력해 주세요.";
+    private static final String inputBounsNumberStringFormat = "\n보너스 번호를 입력해 주세요.";
     private static LottoValidator validator = LottoValidator.getInstance();
 
     public static List<Integer> readLottoNumber() {
