@@ -76,8 +76,6 @@ public class Lotto {
         }
     }
 
-
-
     public String toNumberForm() {
         String message = "[%d, %d, %d, %d, %d, %d]";
         return String.format(message, numbers.get(0), numbers.get(1),

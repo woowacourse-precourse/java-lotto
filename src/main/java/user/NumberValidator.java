@@ -86,7 +86,7 @@ public class NumberValidator {
     }
 
     public static void validateLottoNumberStartWithZero(String input) {
-        if (input.charAt(0) == '0') {
+        if (input.charAt(0) == '0' && input.length() > 1) {
             throw new IllegalArgumentException(ErrorConstant.LOTTO_NUMBER_FIRST_NOT_ZERO);
         }
     }

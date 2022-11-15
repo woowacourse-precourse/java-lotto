@@ -1,7 +1,7 @@
 package lotto;
 
-import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
+import ui.ErrorConstant;
 import ui.View;
 import user.NumberValidator;
 import user.User;
@@ -47,7 +47,7 @@ public class LottoSeller {
 
     private void validateBonusNotInLotto(int bonus) {
         if (winningLotto.hasLottoNumber(bonus)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ErrorConstant.LOTTO_HAVE_BONUS);
         }
     }
 
@@ -62,7 +62,7 @@ public class LottoSeller {
     }
 
     private List<Integer> winningCount(User user) {
-        List<Integer> winningCount = new ArrayList<Integer>(List.of(0, 0, 0, 0, 0));
+        List<Integer> winningCount = new ArrayList<>(List.of(0, 0, 0, 0, 0));
         int index = 0;
         for (Lotto lotto : user.getLottos()) {
             index = winnigCheck(lotto) - 3;
