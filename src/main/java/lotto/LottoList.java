@@ -6,7 +6,9 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 import java.math.BigInteger;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class LottoList {
     public static final int AMOUNT_UNIT = 1000;
@@ -15,6 +17,8 @@ public class LottoList {
     private BigInteger lottoAmount;
     private BigInteger lottoCount;
     private List<Lotto> lottos = new ArrayList<>();
+    private Lotto winningLotto;
+    private int bonnusNumber;
 
     LottoList(BigInteger amount) {
         LottoList.notDivThousand(amount);
@@ -52,6 +56,16 @@ public class LottoList {
     public List<Lotto> getLottos() {
         return lottos;
     }
+
+    public void setWinningLotto(Lotto lotto) {
+        checkNoDuplicateWinnningLotto(lotto);
+        winningLotto = lotto;
+    }
+
+    public void setBonnusNumber(int bonnusNumber) {
+        this.bonnusNumber = bonnusNumber;
+    }
+
     /**
      * 전체 로또 발행 함수
      */
@@ -75,6 +89,19 @@ public class LottoList {
             }
         }
         return lottoNumbers;
+    }
+
+    /**
+     * 로또 당첨 번호 자체 중복 여부 확인
+     * @param lotto
+     */
+    private void checkNoDuplicateWinnningLotto(Lotto lotto) {
+        Set<Integer> checkList = new HashSet<>(lotto.getNumbers());
+        for (Integer number : lotto.getNumbers()) {
+            if (!checkList.contains(number)) {
+                throw new IllegalArgumentException(PrintGameInfo.getDuplicate());
+            }
+        }
     }
 }
 

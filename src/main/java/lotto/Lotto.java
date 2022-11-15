@@ -1,5 +1,6 @@
 package lotto;
 
+import Info.InputException;
 import Info.PrintGameInfo;
 
 import java.util.List;
@@ -25,6 +26,22 @@ public class Lotto {
     }
 
     // TODO: 추가 기능 구현
+    public static boolean isOutOfRange(Integer number) {
+        return number > LOTTO_MAX_NUMBER || number < LOTTO_MIN_NUMBER;
+    }
+
+    private static List<Integer> getIntNumbers(List<String> userInput) {
+        return userInput.stream().map(Integer::valueOf).collect(Collectors.toList());
+    }
+
+    /**
+     * 사용자 입력에 대해 로또 클래스로 반환해주는 함수
+     * @param userInput
+     * @return
+     */
+    public static Lotto stringListToLotto(List<String> userInput) {
+        return new Lotto(getIntNumbers(userInput));
+    }
 
     public List<Integer> getNumbers() {
         return numbers;
@@ -38,10 +55,6 @@ public class Lotto {
         }
     }
 
-    public static boolean isOutOfRange(Integer number) {
-        return number > LOTTO_MAX_NUMBER || number < LOTTO_MIN_NUMBER;
-    }
-
     public String numbersToString() {
         List<String> numberList = getStringNumbers();
         return String.join(", ", numberList);
@@ -50,4 +63,6 @@ public class Lotto {
     private List<String> getStringNumbers() {
         return numbers.stream().map(String::valueOf).collect(Collectors.toList());
     }
+
+
 }

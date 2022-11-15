@@ -19,6 +19,7 @@ public class PrintGameInfo {
 
     public static final String OVER_LOTTO_COUNT = "선택가능한 로또 숫자 갯수를 넘겼습니다.";
     public static final String OUT_OF_RANGE = "로또 숫자의 범위 밖의 숫자를 선택하였습니다.";
+    public static final String DUPLICATE = "사용자의 입력 중 중복되는 값이 존재합니다.";
 
     public static void purchaseAmountInfo() {
         System.out.println("구입금액을 입력해 주세요.");
@@ -58,5 +59,9 @@ public class PrintGameInfo {
 
     public static String getOutOfRange() {
         return ERROR + OUT_OF_RANGE;
+    }
+
+    public static String getDuplicate() {
+        return ERROR + DUPLICATE;
     }
 }

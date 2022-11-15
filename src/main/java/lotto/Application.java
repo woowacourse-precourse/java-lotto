@@ -9,6 +9,8 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Application {
+    public static final String COMMA = ",";
+
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         PrintGameInfo.purchaseAmountInfo();
@@ -21,8 +23,10 @@ public class Application {
             PrintGameInfo.lottoInfoList(userLotto);
 
             PrintGameInfo.winningNumberInfo();
-            String winningNumber = Console.readLine();
+            userLotto.setWinningLotto(inputLottoWinningNumbers());
+
             PrintGameInfo.bonnusNumberInfo();
+            userLotto.setBonnusNumber(inputBonnusNumber());
 
         } catch (IllegalArgumentException exception) {
             exception.printStackTrace();
@@ -36,13 +40,21 @@ public class Application {
         return amount;
     }
 
-    public static String inputWinningNumbers() {
-        String winningNumber = Console.readLine();
-        InputException.wrongWinningNumberFormat(winningNumber);
+    public static Lotto inputLottoWinningNumbers() {
+        String userInput = Console.readLine();
+        InputException.wrongWinningNumberFormat(userInput);
 
-        return winningNumber;
+        List<String> winningNumber = Arrays.asList(userInput.split(COMMA));
+        return Lotto.stringListToLotto(winningNumber);
     }
 
-    
+    public static int inputBonnusNumber() {
+        String userInput = Console.readLine();
+        InputException.emptyException(userInput);
+        InputException.outOfDigitException(userInput);
 
+        int bonnusNumber = Integer.valueOf(userInput);
+        Lotto.isOutOfRange(bonnusNumber);
+        return bonnusNumber;
+    }
 }

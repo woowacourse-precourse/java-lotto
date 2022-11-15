@@ -2,6 +2,7 @@ package Info;
 
 import lotto.Lotto;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -20,25 +21,12 @@ public class InputException {
         }
     }
 
-    /**
-     * 로또 숫자 범위 이외의 값 입력을 위한 예외처리
-     * @param numbers
-     */
-    public static void outOfRange(List<String> numbers) {
-        numbers.stream().forEach(number -> {
-            if (Lotto.isOutOfRange(Integer.valueOf(number))) {
-                throw new IllegalArgumentException(PrintGameInfo.getOutOfRange());
-            };
-        });
-    }
-
     public static void wrongWinningNumberFormat(String winningNumber) {
         List<String> numbers = Arrays.asList(winningNumber.split(","));
         for(String number: numbers) {
             emptyException(number);
             outOfDigitException(number);
         }
-        outOfRange(numbers);
     }
 
     /**
