@@ -96,4 +96,10 @@ public class Lotto {
         }
         return 0;
     }
+    public double printBenefit(int three, int four, int five, int fiveWithBonus, int six, int price) {
+        double result = (double)(three*5000+four*50000+five*1500000+fiveWithBonus*30000000+six*2000000000) / (double)price;
+        result*=100;
+        System.out.printf("총 수익률은 %.1f%s입니다.", result,"%");
+        return result;
+    }
 }
