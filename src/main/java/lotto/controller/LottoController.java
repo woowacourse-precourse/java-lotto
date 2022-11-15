@@ -27,4 +27,8 @@ public class LottoController {
     public static List<Lotto> getLottoNumbers(int purchaseAmount) {
         return LottoService.getLottoNumbers(purchaseAmount);
     }
+
+    public static Lotto getWinningNumber() {
+        return LottoService.getWinningNumber(LottoView.getWinningNumber());
+    }
 }
