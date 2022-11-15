@@ -8,20 +8,20 @@ public class WinningLotto {
     private final List<Integer> winningNumbers;
     private final BonusNumber bonusNumber;
 
-    public List<Integer> getWinningNumbers() {
-        return winningNumbers;
-    }
-
-    public int getBonusNumber() {
-        return bonusNumber.getBonusNumber();
-    }
-
     public WinningLotto(List<Integer> winningNumbers, BonusNumber bonusNumber) {
         validateDuplication(winningNumbers);
         validateRange(winningNumbers);
         validateBonusNumber(bonusNumber, winningNumbers);
         this.winningNumbers = winningNumbers;
         this.bonusNumber = bonusNumber;
+    }
+
+    public List<Integer> getWinningNumbers() {
+        return winningNumbers;
+    }
+
+    public int getBonusNumber() {
+        return bonusNumber.getBonusNumber();
     }
 
     private void validateBonusNumber(BonusNumber bonusNumber, List<Integer> winningNumbers) {

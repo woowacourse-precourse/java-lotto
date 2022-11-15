@@ -23,7 +23,7 @@ class LottoResultTest {
                 new Lotto(List.of(1, 2, 3, 4, 5, 7)),
                 new Lotto(List.of(1, 2, 3, 4, 7, 8)),
                 new Lotto(List.of(1, 2, 3, 7, 8, 9)));
-        Ticket ticket = new Ticket(lotteries, 10000);
+        Ticket ticket = new Ticket(lotteries, 6000);
         WinningLotto winningLotto = new WinningLotto(List.of(1, 2, 3, 4, 5, 6), new BonusNumber(45));
         this.statistics = LottoResultService.getStatistics(ticket, winningLotto);
     }
