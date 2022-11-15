@@ -10,7 +10,6 @@ public class LottoController {
     public LottoService lottoService = new LottoService();
 
     public void startLotto() {
-
         try {
             int purchaseAmount = lottoService.getPurchaseAmount();
             LotteryTickets lotteryTickets = lottoService.buyLottery(purchaseAmount);
@@ -21,7 +20,6 @@ public class LottoController {
             LottoResult lottoResult = lottoService.getLottoResult(lotteryTickets, winningNumbers);
             lottoService.showLottoResult(lottoResult);
             lottoService.showEarningRatio(lottoResult, purchaseAmount);
-
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
