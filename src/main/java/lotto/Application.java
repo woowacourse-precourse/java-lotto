@@ -22,7 +22,7 @@ public class Application {
             company.processLotto(lotto);
         }
 
-        WinningStats stats = new WinningStats(store.getPurchase(), lottos);
+        LottoStats stats = new LottoStats(store.getPurchase(), lottos);
         stats.print();
     }
 }

@@ -4,12 +4,12 @@ import lotto.Lotto;
 
 import java.util.*;
 
-public class WinningStats {
+public class LottoStats {
     private final LinkedHashMap<WinInfo, Integer> stats = new LinkedHashMap<>();
     private int purchase;
     private int total;
 
-    public WinningStats(int purchase, List<Lotto> lottos) {
+    public LottoStats(int purchase, List<Lotto> lottos) {
         this.purchase = purchase;
 
         for (WinInfo info : WinInfo.values()) {
