@@ -1,19 +1,37 @@
 package lotto;
 
+import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomUniqueNumbersInRangeTest;
+import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class ConsumerTest {
     @Test
     void testBuyLotto() {
+        Consumer consumer = new Consumer();
+        String input = "8000";
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+        OutputStream out = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(out));
+        consumer.buyLotto();
+        System.out.println(out.toString());
+        assertThat(out.toString()).contains("8개를 구매했습니다.");
     }
 
     @Test
     void putWinLotto() {
+        Consumer consumer = new Consumer();
+        String input = "11,12,13,14,15,16";
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+        assertThat(consumer.putWinLotto().getNumbers()).isEqualTo(List.of(11,12,13,14,15,16));
     }
 
     @Test
