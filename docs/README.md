@@ -60,7 +60,6 @@
 │   │   ├── Lottos                // 구매한 로또 모음
 │   │   ├── PayingMoney           // 로또에 지불한 돈
 │   │   ├── Rank                  // 당첨 등수(enum)
-│   │   ├── RankCreator           // 당첨 등수
 │   │   ├── WinningLotto          // 당첨 로또
 │   │   └── Winningstatistics     // 당첨 통계
 │   ├── dto                     

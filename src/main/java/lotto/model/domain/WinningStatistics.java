@@ -36,7 +36,7 @@ public class WinningStatistics {
         if (isSecondScore(numOfMatch, isBonusNumberMatch)) {
             numOfMatch = SECOND_SCORE;
         }
-        return RankCreator.create(numOfMatch);
+        return Rank.create(numOfMatch);
     }
 
     private boolean isSecondScore(double numOfMatch, boolean isBonusNumberMatch) {
