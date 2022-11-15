@@ -163,9 +163,14 @@ public class Application {
     static void calcLotteryYield(ArrayList<Integer> winList, int buyMoney, ArrayList<Float> rewardList){
         DecimalFormat decFormat = new DecimalFormat("###,###.#");
 
-        float sum =0;
+        float prizeSum =0;
+        float LotteryYield;
         for(int i=0; i<winList.size(); i++){
-            sum += winList.get(i)*
+            prizeSum += winList.get(i)* rewardList.get(rewardList.size()-i);
         }
+        LotteryYield = prizeSum*100 / (float) buyMoney;
+
+        System.out.println(String.format("%.1", LotteryYield));
+
     }
 }
