@@ -47,6 +47,28 @@ class PlayerTest extends NsTest {
         }
     }
 
+    @Nested
+    @DisplayName("당첨 번호 입력 유효성 검사 테스트")
+    class WinningNumberInputTest {
+        @DisplayName("당첨 번호가 쉼표로 구분되어있지 않을 때 예외가 발생한다.")
+        @Test
+        void inputWinningNumberWithNoComma() {
+            assertSimpleTest(() -> {
+                runException("3000", "1,2,3,4,5#6");
+                assertThat(output()).contains(ERROR + WRONG_DELIMITER_MESSAGE);
+            });
+        }
+
+        @DisplayName("당첨 번호 중 숫자가 아닌 값이 있으면 예외가 발생한다.")
+        @Test
+        void inputWinningNumberWithNonNumeric() {
+            assertSimpleTest(() -> {
+                runException("3000", "1,2,e,3,45,kk");
+                assertThat(output()).contains(ERROR + WRONG_FORMAT_MESSAGE);
+            });
+        }
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
