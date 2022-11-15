@@ -11,7 +11,9 @@ public class LottoController {
 
     public void buy() {
         lottoService.init();
+    }
 
+    public void caculateResult() {
         lottoService.result();
     }
 }

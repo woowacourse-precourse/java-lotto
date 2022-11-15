@@ -8,5 +8,7 @@ public class Application {
         LottoController lottoController = new LottoController();
 
         lottoController.buy();
+
+        lottoController.caculateResult();
     }
 }
