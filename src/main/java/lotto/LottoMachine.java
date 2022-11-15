@@ -6,10 +6,11 @@ import java.util.stream.Collectors;
 import lotto.engine.LottoGenerator;
 import lotto.io.Input;
 import lotto.io.Output;
+import lotto.model.Lotto;
 import lotto.model.LottoWallet;
 import lotto.model.Winning;
-import lotto.model.WinningNumber;
 import lotto.model.WinningInformation;
+import lotto.model.WinningNumber;
 
 public class LottoMachine implements Runnable {
     private final Input input;
@@ -40,7 +41,9 @@ public class LottoMachine implements Runnable {
     }
 
     private WinningInformation getWinningStatus(LottoWallet wallet, WinningNumber winningNumber) {
-        List<Winning> winnings = wallet.getLottos().stream()
+        List<Lotto> lottos = wallet.getLottos();
+
+        List<Winning> winnings = lottos.stream()
                 .map(winningNumber::compareToWinningNumber)
                 .filter(Optional::isPresent)
                 .map(Optional::get)
