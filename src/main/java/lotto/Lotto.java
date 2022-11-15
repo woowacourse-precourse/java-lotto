@@ -25,10 +25,5 @@ public class Lotto {
         }
     }
 
-    public List<Integer> randomLotto(){
-
-        List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
-        return numbers;
-    }
 
 }
