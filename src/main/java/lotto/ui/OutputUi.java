@@ -36,6 +36,13 @@ public class OutputUi {
     }
 
     /**
+     * 로또 보너스 번호 입력해 달라는 문구 출력
+     */
+    public void printInputLottoBonusNumber() {
+        System.out.println("보너스 번호를 입력해 주세요.");
+    }
+
+    /**
      * 사용자 로또 당첨된 개수와 정보 출력
      */
     public void printWinLottoAmountsInformation(Map<LottoRank, Integer> lottoWinAmounts) {
