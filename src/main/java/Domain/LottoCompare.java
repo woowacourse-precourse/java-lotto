@@ -21,6 +21,13 @@ public class LottoCompare {
         return userResult;
     }
 
+    public void resultLottoCount(List<List<Integer>> compareResultLotto) {
+        for (List<Integer> oneSheetResult : compareResultLotto) {
+            LottoWinningCriteria rank = LottoWinningCriteria.getRank(oneSheetResult.get(0), oneSheetResult.get(1));
+            if (rank != null) rank.upCount();
+        }
+    }
+
     public List<Integer> unMatchUserBall(List<Integer> userLottoSheet, List<Integer> winnerLotto) {
         List<Integer> LottoSheet = new ArrayList<>(userLottoSheet);
         LottoSheet.removeAll(winnerLotto); // 위너와 중복되는 공 제거

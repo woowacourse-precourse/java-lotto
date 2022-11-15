@@ -25,6 +25,10 @@ public enum LottoWinningCriteria {
         return winnerMoney;
     }
 
+    public void upCount() {
+        count++;
+    }
+
     public static LottoWinningCriteria getRank(int match, int bonus) {
         if (match < 3){
             return null;
