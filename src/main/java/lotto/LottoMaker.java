@@ -1,8 +1,6 @@
 package lotto;
 
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
 import java.util.List;
 import camp.nextstep.edu.missionutils.Randoms;
 
@@ -13,7 +11,6 @@ public class LottoMaker {
         while (lottoNumbers.size() < purchaseNumber) {
             List<Integer> lottoNumber = Randoms.pickUniqueNumbersInRange(1, 45, 6);
             if (!lottoNumbers.contains(lottoNumbers)) {
-                Collections.sort(lottoNumber);
                 lottoNumbers.add(lottoNumber);
             }
         }
