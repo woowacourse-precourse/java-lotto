@@ -16,7 +16,7 @@ public class Validation {
 
     // 구입 금액이 숫자로 구성되었는지 검증 기능
     public static void validatePurchaseMoneyConsistOfNum(String money) {
-        if (!money.matches(NUMBER_REGEX)) {
+        if (!money.matches(LOTTO_PURCHASE_REGEX)) {
             throw new IllegalArgumentException(ERROR_MSG_PURCHASE_MONEY_CONSIST_OF_NUM);
         }
     }
