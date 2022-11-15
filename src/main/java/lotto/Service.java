@@ -66,21 +66,30 @@ public class Service {
         }
     }
 
-    public int getLuckyNumberInput(String winningNumberInput) {
+    public String getLuckyNumberInput(String winningNumberInput) {
+        String input = Console.readLine();
+        checkLuckyNumber(input, winningNumberInput);
+        return input;
+    }
+
+    private void checkLuckyNumber(String input, String winningNumberInput) {
         try {
-            int input = Integer.parseInt(Console.readLine());
-            if (!(input > 0) || !(input < 46)) {
+            int luckyNumber = Integer.parseInt(input);
+            if (!(luckyNumber > 0) || !(luckyNumber < 46)) {
                 throw new IllegalArgumentException("[ERROR] 범위를 벗어나는 숫자입니다.");
             }
-            String[] winningNumbers = winningNumberInput.split(",");
-            for (String winningNumber : winningNumbers) {
-                if (input == Integer.parseInt(winningNumber)) {
-                    throw new IllegalArgumentException("[ERROR] 중복된 숫자는 입력할 수 없습니다.");
-                }
-            }
-            return input;
+            checkLuckyNumber1(luckyNumber, winningNumberInput);
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("[ERROR] 숫자를 입력해주세요.");
+        }
+    }
+
+    private void checkLuckyNumber1(int luckyNumber, String winningNumberInput) {
+        String[] winningNumbers = winningNumberInput.split(",");
+        for (String winningNumber : winningNumbers) {
+            if (luckyNumber == Integer.parseInt(winningNumber)) {
+                throw new IllegalArgumentException("[ERROR] 중복된 숫자는 입력할 수 없습니다.");
+            }
         }
     }
 }
