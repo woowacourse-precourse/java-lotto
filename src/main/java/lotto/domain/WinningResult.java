@@ -1,21 +1,33 @@
 package lotto.domain;
 
 public enum WinningResult {
-    FIRST(2_000_000_000),
-    SECOND(30_000_000),
-    THIRD(1_500_000),
-    FOURTH(50_000),
-    FIFTH(5_000),
-    NONE(0);
+    FIRST(2_000_000_000, 6, 0),
+    SECOND(30_000_000, 5, 1),
+    THIRD(1_500_000, 5, 0),
+    FOURTH(50_000, 4, 0),
+    FIFTH(5_000, 3, 0),
+    NONE(0, 0, 0);
 
     private final int prize;
+    private final int winning;
+    private final int bonus;
 
-    WinningResult(int prize) {
+    WinningResult(int prize, int winning, int bonus) {
         this.prize = prize;
+        this.winning = winning;
+        this.bonus = bonus;
     }
 
     public int getPrize() {
         return prize;
+    }
+
+    public int getWinning() {
+        return winning;
+    }
+
+    public int getBonus() {
+        return bonus;
     }
 
     public static WinningResult match(int count, boolean bonus) {
