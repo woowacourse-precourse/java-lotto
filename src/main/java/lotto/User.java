@@ -11,16 +11,15 @@ public class User {
     private final static String PRICE_PATTERN = "^[0-9]*$";
     private final static int WINNING_NUMBER_SIZE = 6;
     private final static int BONUS_NUMBER_SIZE = 1;
-    private final static String PURCHASE_PRICE_NUMERIC_ERROR = "[ERROR] 로또 구입 금액은 숫자여야 합니다." ;
-    private final static String PURCHASE_PRICE_THOUSAND_ERROR = "[ERROR] 로또 구입 금액은 1,000원 단위여야 합니다." ;
-    private final static String WINNING_NUMBER_SIZE_ERROR = "[ERROR] 당첨 번호는 6개여야 합니다." ;
-    private final static String WINNING_NUMBER_NUMERIC_ERROR = "[ERROR] 당첨 번호는 숫자여야 합니다." ;
-    private final static String BONUS_NUMBER_NUMERIC_ERROR = "[ERROR] 보너스 번호는 숫자여야 합니다." ;
+    private final static String PURCHASE_PRICE_NUMERIC_ERROR = "[ERROR] 로또 구입 금액은 숫자여야 합니다.";
+    private final static String PURCHASE_PRICE_THOUSAND_ERROR = "[ERROR] 로또 구입 금액은 1,000원 단위여야 합니다.";
+    private final static String WINNING_NUMBER_SIZE_ERROR = "[ERROR] 당첨 번호는 6개여야 합니다.";
+    private final static String WINNING_NUMBER_NUMERIC_ERROR = "[ERROR] 당첨 번호는 숫자여야 합니다.";
+    private final static String BONUS_NUMBER_NUMERIC_ERROR = "[ERROR] 보너스 번호는 숫자여야 합니다.";
 
     public int purchasePrice;
     public List<Integer> winningNumbers = new ArrayList<>();
     public int bonusNumber;
-    public float profitRatio;
 
     public User() {
     }
@@ -28,11 +27,9 @@ public class User {
     public void setPurchasePrice() {
         String purchasePrice = Console.readLine();
         if (!isValidPurchasePriceNumeric(purchasePrice)) {
-            System.out.println(PURCHASE_PRICE_NUMERIC_ERROR);
             return;
         }
         if (!isValidPurchasePriceThousand(purchasePrice)) {
-            System.out.println(PURCHASE_PRICE_THOUSAND_ERROR);
             return;
         }
         this.purchasePrice = Integer.parseInt(purchasePrice);
@@ -40,6 +37,9 @@ public class User {
 
     private boolean isValidPurchasePriceNumeric(String purchasePrice) {
         boolean isNumeric = Pattern.matches(PRICE_PATTERN, purchasePrice);
+        if (!isNumeric) {
+            System.out.println(PURCHASE_PRICE_NUMERIC_ERROR);
+        }
         Error error = new Error(!isNumeric);
 
         return isNumeric;
@@ -47,15 +47,17 @@ public class User {
 
     private boolean isValidPurchasePriceThousand(String purchasePrice) {
         boolean isThousand = (Integer.parseInt(purchasePrice) % 1000 == 0);
+        if (!isThousand) {
+            System.out.println(PURCHASE_PRICE_THOUSAND_ERROR);
+        }
         Error error = new Error(!isThousand);
 
         return isThousand;
     }
 
     public void setWinningNumbers() {
-        List<String> list =  Arrays.asList(Console.readLine().split(","));
+        List<String> list = Arrays.asList(Console.readLine().split(","));
         if (!isWinningNumberSize(list)) {
-            System.out.println(WINNING_NUMBER_SIZE_ERROR);
             return;
         }
         for (String winningNumber : list) {
@@ -63,7 +65,6 @@ public class User {
                 this.winningNumbers.add(Integer.parseInt(winningNumber));
             }
             if (!isWinningNumberNumeric(winningNumber)) {
-                System.out.println(WINNING_NUMBER_NUMERIC_ERROR);
                 return;
             }
         }
@@ -71,6 +72,9 @@ public class User {
 
     private boolean isWinningNumberNumeric(String winningNumbers) {
         boolean isNumeric = Pattern.matches(PRICE_PATTERN, winningNumbers);
+        if (!isNumeric) {
+            System.out.println(WINNING_NUMBER_NUMERIC_ERROR);
+        }
         Error error = new Error(!isNumeric);
 
         return isNumeric;
@@ -78,6 +82,9 @@ public class User {
 
     private boolean isWinningNumberSize(List<String> winningNumbers) {
         boolean isSize = winningNumbers.size() == WINNING_NUMBER_SIZE;
+        if (!isSize) {
+            System.out.println(WINNING_NUMBER_SIZE_ERROR);
+        }
         Error error = new Error(!isSize);
 
         return isSize;
@@ -86,7 +93,6 @@ public class User {
     public void setBonusNumber() {
         String bonusNumber = Console.readLine();
         if (!isValidBonusNumber(bonusNumber)) {
-            System.out.println(BONUS_NUMBER_NUMERIC_ERROR);
             return;
         }
         this.bonusNumber = Integer.parseInt(bonusNumber);
@@ -94,6 +100,9 @@ public class User {
 
     private boolean isValidBonusNumber(String bonusNumber) {
         boolean isNumeric = Pattern.matches(PRICE_PATTERN, bonusNumber);
+        if (!isNumeric) {
+            System.out.println(BONUS_NUMBER_NUMERIC_ERROR);
+        }
         Error error = new Error(!isNumeric);
 
         return isNumeric;
@@ -103,11 +112,11 @@ public class User {
         if (winningPrice == 0) {
             return 0f;
         }
-        return (float)winningPrice/purchasePrice*100;
+        return (float) winningPrice / purchasePrice * 100;
     }
 
     public int getPurchaseNumber() {
-        return purchasePrice/1000;
+        return purchasePrice / 1000;
     }
 
     public List<Integer> getWinningNumbers() {
