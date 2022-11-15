@@ -68,7 +68,7 @@ class SampleTest {
         lottos.add(new Lotto(new ArrayList<>(List.of(2, 13, 22, 32, 38, 45))));
         lottos.add(new Lotto(new ArrayList<>(List.of(1, 3, 5, 14, 22, 45))));
 
-        WinningStatistics winningStatistics = new WinningStatistics(lottos, new Lotto(new ArrayList<>(List.of(7, 11, 16, 35, 36, 44))));
+        WinningStatistics winningStatistics = new WinningStatistics(lottos, new Lotto(new ArrayList<>(List.of(7, 11, 16, 35, 36, 44))),5);
         assertThat(winningStatistics.printLottos())
                 .contains(
                         "8개를 구매했습니다.",
@@ -113,35 +113,11 @@ class SampleTest {
     }
 
     @Test
-    void getWinningStatisticsTest1(){
-        List<Lotto> lottos = new ArrayList<>();
-        lottos.add(new Lotto(new ArrayList<>(List.of(8, 21, 23, 41, 42, 43))));
-        lottos.add(new Lotto(new ArrayList<>(List.of(3, 5, 11, 16, 32, 38))));
-        lottos.add(new Lotto(new ArrayList<>(List.of(7, 11, 16, 35, 36, 44))));
-        lottos.add(new Lotto(new ArrayList<>(List.of(1, 8, 11, 31, 41, 42))));
-        lottos.add(new Lotto(new ArrayList<>(List.of(13, 14, 16, 38, 42, 45))));
-        lottos.add(new Lotto(new ArrayList<>(List.of(7, 11, 30, 40, 42, 43))));
-        lottos.add(new Lotto(new ArrayList<>(List.of(2, 13, 22, 32, 38, 45))));
-        lottos.add(new Lotto(new ArrayList<>(List.of(1, 3, 5, 14, 22, 45))));
-
-        WinningStatistics winningStatistics = new WinningStatistics(lottos, new Lotto(new ArrayList<>(List.of(7, 11, 16, 35, 36, 44))));
-
-        assertThat(winningStatistics.getWinningStatistics(5))
-                .contains(
-                        new LottoWinning(6, false)
-                );
-    }
-
-    @Test
     void printWinningStatisticsTest1(){
-        List<LottoWinning> lottoWinnings = new ArrayList<>();
-        lottoWinnings.add(new LottoWinning(3,false));
-        lottoWinnings.add(new LottoWinning(4,false));
-        lottoWinnings.add(new LottoWinning(3,false));
-        lottoWinnings.add(new LottoWinning(5,false));
-        lottoWinnings.add(new LottoWinning(5,true));
+        List<Integer> countWinning = List.of( 2,1,1,1,0);
 
-        assertThat(sample.printWinningStatistics(lottoWinnings))
+        WinningStatisticsResult winningStatisticsResult = new WinningStatisticsResult(countWinning, List.of(LottoWinningEnum.values()), 8000);
+        assertThat(winningStatisticsResult.printWinningStatistics())
                 .contains(
                         "3개 일치 (5,000원) - 2개",
                         "4개 일치 (50,000원) - 1개",
@@ -153,10 +129,10 @@ class SampleTest {
 
     @Test
     void printYieldTest1(){
-        List<LottoWinning> lottoWinnings = new ArrayList<>();
-        lottoWinnings.add(new LottoWinning(3,false));
+        List<Integer> countWinning = List.of( 1,0,0,0,0);
 
-        assertThat(sample.printYield(lottoWinnings, 8000))
+        WinningStatisticsResult winningStatisticsResult = new WinningStatisticsResult(countWinning, List.of(LottoWinningEnum.values()), 8000);
+        assertThat(winningStatisticsResult.printYield())
                 .contains(
                         "총 수익률은 62.5%입니다."
                 );
