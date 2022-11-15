@@ -7,6 +7,7 @@ import lotto.lotto.Lotto;
 
 public class WinningNumber extends Lotto {
     private final Integer bonusNumber;
+
     public WinningNumber(List<Integer> numbers, Integer bonusNumber) {
         super(numbers);
         validate(bonusNumber);

@@ -11,8 +11,8 @@ public class WinningResultCalculator {
             }
             return prev;
         });
-        boolean bonusMatched = winningNumber.getNumbers().stream().anyMatch(wNumber -> lotto.getNumbers()
-                .contains(wNumber));
+        boolean bonusMatched = winningNumber.getNumbers().stream()
+                .anyMatch(wNumber -> lotto.getNumbers().contains(wNumber));
         return WinningResult.generate(matchedCount, bonusMatched);
     }
 }

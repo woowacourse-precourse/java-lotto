@@ -22,7 +22,8 @@ public class Lotto {
         if (numbers.size() != LOTTO_MAX_SIZE) {
             throw new IllegalLottoLengthException();
         }
-        boolean outOfRange = numbers.stream().anyMatch(number -> number > LOTTO_NUMBER_UPPER_BOUND || number < LOTTO_NUMBER_LOWER_BOUND);
+        boolean outOfRange = numbers.stream()
+                .anyMatch(number -> number > LOTTO_NUMBER_UPPER_BOUND || number < LOTTO_NUMBER_LOWER_BOUND);
         if (outOfRange) {
             throw new IllegalLottoNumberRangeException();
         }

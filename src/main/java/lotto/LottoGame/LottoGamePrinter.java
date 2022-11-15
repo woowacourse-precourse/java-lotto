@@ -6,8 +6,12 @@ import lotto.winning.WinningStatistical;
 
 public interface LottoGamePrinter {
     void printRequestBuyingPrice();
+
     void printBoughtLottos(List<Lotto> lottos);
+
     void printRequestWinningNumber();
+
     void printRequestBonusNumber();
+
     void printWinningStatistical(WinningStatistical winningStatistical);
 }
