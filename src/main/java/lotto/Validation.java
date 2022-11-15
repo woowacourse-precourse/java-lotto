@@ -30,6 +30,10 @@ public class Validation {
     }
 
     public void hasDuplicateNumber(List<Integer> numbers) {
-
+        Set<Integer> set = new HashSet<>(numbers);
+        if(set.size() != numbers.size()) {
+            System.out.println("[ERROR] 중복된 숫자가 존재합니다.");
+            throw new IllegalArgumentException("[ERROR] 중복된 숫자가 존재합니다.");
+        }
     }
 }
