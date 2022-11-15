@@ -19,6 +19,10 @@ public class ValidLotto {
         if (matching.contains(bonus)) {
             throw new IllegalArgumentException("[ERROR] 보너스숫자랑 본 당첨숫자랑 겹칩니다.");
         }
+        if (matching.size() !=6){
+            throw new IllegalArgumentException("[ERROR] 개수가 안맞습니다");
+        }
+
     }
 
     public Prize lottoPlace(Lotto user) {

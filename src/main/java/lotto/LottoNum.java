@@ -19,6 +19,7 @@ public class LottoNum {
         if (number < Lotto_MIN || Lotto_MAX < number) {
             throw new IllegalArgumentException("[ERROR]1~45범위의 숫자가 아닙니다." );
         }
+
     }
 
     public int getNumber() {

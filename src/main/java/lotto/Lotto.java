@@ -17,6 +17,10 @@ public class Lotto {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException("[ERROR] 숫자개수가 잘못됨");
         }
+        for(Integer data : numbers){
+            if(numbers.contains(data))
+                throw new IllegalArgumentException("[ERROR] 중복된숫자");
+        }
     }
 
     public List<LottoNum> getNumbers() {
