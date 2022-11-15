@@ -9,7 +9,13 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class LottoTest {
-    private final List<Integer> dummyLotto = new ArrayList<>(List.of(1,3,4,6,12,15));
+    private final List<Integer> dummyLotto = new ArrayList<>(List.of(1, 3, 4, 6, 12, 15));
+    final List<List<Integer>> bouguhtLotto = new ArrayList<>();
+    final List<Integer> dummyLotto1 = new ArrayList<>(List.of(3, 4, 6, 12, 15, 34));
+    final List<Integer> dummyLotto2 = new ArrayList<>(List.of(1, 6, 15, 24, 45));
+    final List<Integer> dummyLotto3 = new ArrayList<>(List.of(15, 22, 26, 33, 37, 42));
+
+
     private final Lotto lotto = new Lotto(dummyLotto);
 
 
@@ -30,7 +36,12 @@ class LottoTest {
 
 
     @Test
-    public void 보너스숫자_선택한로또_중복여부(){
+    public void 보너스숫자_선택한로또_중복여부() {
         assertThatThrownBy(() -> lotto.addBonus(4))
                 .isInstanceOf(IllegalArgumentException.class);
-    }}
+        assertThatThrownBy(() -> lotto.addBonus(3))
+                .isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> lotto.addBonus(15))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+}

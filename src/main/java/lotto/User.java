@@ -52,6 +52,7 @@ public class User {
         return this.boughtLotto;
     }
 
+    // 수익률 반환 메소드
     public void marginRate(int LottoCount, int totalPrice){
         double plusRate = (float)totalPrice / ((float)LottoCount *10.0);
         String results = String.format("%.1f", plusRate);
