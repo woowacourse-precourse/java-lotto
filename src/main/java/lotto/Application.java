@@ -36,6 +36,19 @@ public class Application {
         System.out.println(numbers);
         return numbers;
     }
+    public static List<Integer> inputWinningNumber() {
+        List<Integer> winningNumbers;
+
+        //로또 번호 입력
+        System.out.println("당첨 번호를 입력해 주세요.");
+        String input = Console.readLine();
+        // 예외처리
+        Exeption.inputWinningNumberExeption(input, true);
+        winningNumbers = Exeption.stringToList(input);
+        // 로또 번호 반환
+        return winningNumbers;
+
+    }
 
 
 
