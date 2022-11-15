@@ -10,9 +10,21 @@ public class Lotto {
         this.numbers = numbers;
     }
 
-    // 4. 로또 번호 출력
+    // 5.로또 번호 출력
     public void getLottoNumbers() {
         System.out.println(this.numbers);
+    }
+
+    // 6.당첨 결과 (보너스 미포함)
+    public int getLottoResult(List<Integer>winningNums, int countResult) {
+
+        for (int idx = 0; idx < this.numbers.size(); idx++) {
+            if (winningNums.contains(this.numbers.get(idx))) {
+                countResult += 1;
+            }
+        }
+
+        return countResult;
     }
 
     private void validate(List<Integer> numbers) {
