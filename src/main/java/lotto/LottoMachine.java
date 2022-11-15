@@ -18,6 +18,7 @@ public class LottoMachine {
         Collections.sort(lotto);
 
         checkCorrectLotto(lotto);
+        return lotto;
     }
 
     private void checkCorrectLotto(List<Integer> lotto) {
