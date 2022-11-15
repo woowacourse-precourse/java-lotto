@@ -5,30 +5,32 @@ import lotto.domain.Lotto;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
 
+import static lotto.domain.Preset.ERROR_FORMAT_MESSAGE;
+import static lotto.domain.Preset.INPUT_REGEX;
 import static lotto.view.OutputView.*;
 
 public class InputView {
 
     public static int readInputMoney() {
 
-        System.out.println(getReadInputMessage());
+        System.out.println(READ_INPUT_MESSAGE);
         return convertStrToInt(Console.readLine());
+
     }
 
-    public static Lotto readWinningNumbers() {
+    public static List<Integer> readWinningNumbers() {
 
-        System.out.println(getReadWinningNumbersMessage());
+        System.out.println(READ_WINNING_NUMBERS_MESSAGE);
         String winningNumberInput = Console.readLine();
 
-        List<Integer> winningNumbers = convertStrToIntList(winningNumberInput);
-
-        return new Lotto(winningNumbers);
+        return convertStrToIntList(winningNumberInput);
     }
 
     public static int readBonusNumber() {
 
-        System.out.println(getReadBonusNumberMessage());
+        System.out.println(READ_BONUS_NUMBER_MESSAGE);
         return convertStrToInt(Console.readLine());
     }
 
@@ -36,7 +38,7 @@ public class InputView {
         try {
             return Integer.parseInt(input);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("[ERROR] 입력은 숫자여야 합니다");
+            throw new IllegalArgumentException(ERROR_FORMAT_MESSAGE);
         }
     }
 
@@ -45,12 +47,13 @@ public class InputView {
         List<Integer> integers = new ArrayList<>();
 
         try {
-            String[] splitInput = input.split(",");
-            for(String i : splitInput)
+            String[] splitInput = input.split(INPUT_REGEX);
+            for (String i : splitInput)
                 integers.add(convertStrToInt(i));
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("[ERROR] Winning number error");
+            throw new IllegalArgumentException(ERROR_FORMAT_MESSAGE);
         }
+
         return integers;
     }
 
