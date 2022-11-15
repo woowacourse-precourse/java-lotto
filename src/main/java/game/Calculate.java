@@ -37,6 +37,7 @@ public class Calculate {
 
     public String earningRate (List<Integer> grades, int money) {
         long profit = 0;
+        money = money * 1000;
 
         profit += (long) 2_000_000_000 * grades.get(1);
         profit += (long) 30_000_000 * grades.get(2);

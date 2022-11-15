@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import static message.ErrorMessage.*;
+import static message.Message.INPUT_BONUS_NUMBER;
 
 public class UserInput {
     public int inputMoney() {
