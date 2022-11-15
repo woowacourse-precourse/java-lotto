@@ -21,10 +21,8 @@ public enum Rank {
 
     public List<Integer> getRank() {
         List<Integer> rank = new ArrayList<>();
-        rank.add(this.ball);
-        rank.add(this.prize);
+        rank.add(this.hitNumberCount);
+        rank.add(this.prizeMoney);
         return rank;
     }
-
-
 }
