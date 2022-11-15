@@ -10,7 +10,9 @@ public enum Message {
     LOTTO_NUMMBER_ERROR("[ERROR] 정수가 아닌 수가 입력되었습니다."),
     BONUS_NUMBER_ISNOT_NUM_ERROR("[ERROR] 보너스 번호가 정수가 아닙니다."),
     BONUS_NUM_RANGE_ERROR("[ERROR] 보너스 번호 범위가 1과 45사이가 아닙니다."),
-    BONUS_NUM_DUPLICATE_ERROR("[ERROR] 보너스 번호와 당첨번호가 중복됩니다.");
+    LOTTO_NUM_RANGE_ERROR("[ERROR] 로또 번호가 1과 45사이가 아닙니다."),
+    BONUS_NUM_DUPLICATE_ERROR("[ERROR] 보너스 번호와 당첨번호가 중복됩니다."),
+    LOTTO_NUM_DUPLICATE_ERROR("[ERROR] 로또 번호에 중복된 숫자가 있습니다.");
 
     private String message;
 

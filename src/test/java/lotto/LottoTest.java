@@ -2,6 +2,7 @@ package lotto;
 
 import lotto.domain.Lotto;
 import lotto.domain.Money;
+import lotto.domain.WinningLottoNumber;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -38,6 +39,12 @@ class LottoTest {
     @Test
     void inputBuyPriceNotDivideBy1000() {
         assertThatThrownBy(() -> new Money("1400"))
+            .isInstanceOf(IllegalArgumentException.class);
+    }
+    @DisplayName("로또 번호에 중복된 숫자가 있으면 예외가 발생한다.")
+    @Test
+    void createWinLottoByDuplicatedNumber() {
+        assertThatThrownBy(() -> new WinningLottoNumber("1,2,3,4,5,5"))
             .isInstanceOf(IllegalArgumentException.class);
     }
 }
