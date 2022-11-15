@@ -50,16 +50,23 @@ public class Application {
         return winningNumbers;
     }
 
+    public static int readBonusNumber() {
+        String input = Console.readLine();
+        return Integer.parseInt(input);
+    }
+
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         int price;
         List<Lotto> lottoList;
         List<Integer> winningNumbers;
+        int bonusNumber;
 
         try {
             price = readLottoPrice();
             lottoList = buyLottoList(price);
             winningNumbers = readWinningNumbers();
+            bonusNumber = readBonusNumber();
 
         } catch (Exception e) {
             System.out.println("[ERROR] 입력이 올바르지 않습니다.");
