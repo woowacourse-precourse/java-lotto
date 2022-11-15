@@ -1,5 +1,9 @@
 package lotto;
 
+import camp.nextstep.edu.missionutils.Console;
+
+import java.util.ArrayList;
+
 public class Application {
     private static void CheckSmallMoney(int money){
         if(money % 1000 != 0){
@@ -13,6 +17,8 @@ public class Application {
         return paper;
     }
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        int customerMoney = Integer.parseInt(Console.readLine());
+        int numberOfLottos = BuyLotto(customerMoney);
+
     }
 }
