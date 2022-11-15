@@ -45,6 +45,10 @@ public class LuckyLottoNumberException {
         }
     }
 
-
+    public void checkLottoBonusNumberBetweenOneAndFortyFive(int bonusLottoNumber) {
+        if (bonusLottoNumber > Constant.MAX_LOTTO_NUMBER || bonusLottoNumber < Constant.MIN_LOTTO_NUMBER) {
+            throw new IllegalArgumentException(Constant.ERROR_MESSAGE + "로또의 범위 밖에 벗어났습니다.");
+        }
+    }
 
 }
