@@ -8,6 +8,7 @@ import javax.swing.text.StyledEditorKit.BoldAction;
 
 public class Lottery {
     static ArrayList<Lotto> lottery = new ArrayList<>();
+    private final static int WINNING_NUMBER_SIZE = 6;
     static HashMap<String, Integer> gradeCount = new HashMap<>() {{
         put("FIFTH", 0);
         put("FOURTH", 0);
@@ -31,7 +32,7 @@ public class Lottery {
         List<Integer> winningNumbers = user.getWinningNumbers();
         int matchWinningCount = 0;
 
-        for (int winningNumberIndex = 0; winningNumberIndex < 6; winningNumberIndex++) {
+        for (int winningNumberIndex = 0; winningNumberIndex < WINNING_NUMBER_SIZE; winningNumberIndex++) {
             if (lotto.getNumbers().contains(winningNumbers.get(winningNumberIndex))) {
                 matchWinningCount++;
             }
