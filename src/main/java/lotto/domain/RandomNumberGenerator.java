@@ -1,13 +1,20 @@
 package lotto.domain;
 
+import camp.nextstep.edu.missionutils.Randoms;
+import java.util.ArrayList;
+import java.util.List;
+
 public class RandomNumberGenerator {
 
-    public static final int lottoNum = 6;
+    public static final int lottoCnt = 6;
+    private Lotto lotto;
 
-    private void generateRandomNumber() {
-        for (int i = 0; i < lottoNum; i++) {
-
+    List<Integer> generateRandomNumber() {
+        for (int i = 0; i < lottoCnt; i++) {
+            List<Integer> lottoNums = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+            lotto = new Lotto(lottoNums);
         }
+        return lotto.getNumbers();
     }
 
 }
