@@ -17,6 +17,12 @@ public class NumberValidator {
         }
     }
 
+    public static void checkWrongLottoAmount(int amount, int lottoPrice) {
+        if (amount % lottoPrice != 0) {
+            throw new IllegalArgumentException(Error.WRONG_LOTTO_AMOUNT.getMessage());
+        }
+    }
+
     public static void checkSize(List<Integer> numbers) {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException(Error.OVER_SIZE.getMessage());

@@ -1,6 +1,6 @@
 package lotto.domain;
 
-import lotto.exception.Error;
+import static lotto.util.NumberValidator.checkWrongLottoAmount;
 
 public class Purchase {
 
@@ -16,9 +16,7 @@ public class Purchase {
     }
 
     private void validate(int amount) {
-        if (amount % LOTTO_PRICE != 0) {
-            throw new IllegalArgumentException(Error.WRONG_AMOUNT.getMessage());
-        }
+        checkWrongLottoAmount(amount, LOTTO_PRICE);
     }
 
     public void printCount() {
