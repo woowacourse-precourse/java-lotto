@@ -8,11 +8,11 @@ public enum Rank {
     FIFTH_THREE_MATCHED(5_000, "3개 일치 (5,000원)");
 
     private final int prize;
-    private final String message;
+    private final String description;
 
-    Rank(int prize, String message) {
+    Rank(int prize, String description) {
         this.prize = prize;
-        this.message = message;
+        this.description = description;
     }
 
     public int getPrize() {
@@ -21,6 +21,6 @@ public enum Rank {
 
     @Override
     public String toString() {
-        return message;
+        return description;
     }
 }
