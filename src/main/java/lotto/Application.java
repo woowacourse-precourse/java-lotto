@@ -62,7 +62,7 @@ public class Application {
     public static void LottoNumber(int lotto_count){
         System.out.println(lotto_count + "개를 구매했습니다.");
         for(int i =1 ; i <= lotto_count; i++){
-            List<Integer> numbers = Randoms.pickUniqueNumbersInRange(min_number, max_number, lotto_size);
+            List<Integer> numbers = new ArrayList<>(Randoms.pickUniqueNumbersInRange(min_number, max_number, lotto_size));
             Collections.sort(numbers);
             Lotto lotto = new Lotto(numbers);
             lottos.add(lotto);
@@ -145,7 +145,8 @@ public class Application {
         sum += 20000000000. * win_list.get(hit6);
         double money = Double.valueOf(inputmoney);
         double earning_rate = sum / money * 100;
-        double rate = Math.round(earning_rate*10)/10;
+        double rate = Math.round(earning_rate*10);
+        rate = rate/10;
         System.out.println("총 수익률은 " + rate + "%입니다.");
     }
 }
