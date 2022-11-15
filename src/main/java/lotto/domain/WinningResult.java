@@ -19,29 +19,32 @@ public class WinningResult {
     //통계
     private LinkedHashMap<LottoRank, Integer> statistics(List<Integer> winningNumber, int bonusNumber) {
         List<Integer> winningMatchNumber = getWinningMatchNumbers(winningNumber, bonusNumber);
-        return getLottoRanks(winningMatchNumber);
+        return getMatchLottoRanks(winningMatchNumber);
     }
 
     //초기 세팅한 로또 맵에 로또 개수 반환
-    private LinkedHashMap<LottoRank, Integer> getLottoRanks(List<Integer> winningMatchNumber) {
+    private LinkedHashMap<LottoRank, Integer> getMatchLottoRanks(List<Integer> winningMatchNumber) {
         LinkedHashMap<LottoRank, Integer> ranks = createLottoRanks();
         for (LottoRank lottoRank : ranks.keySet()) {
-            Integer count = winningMatchNumber.stream().
-                    filter(number -> lottoRank.getCount() == number)
-                    .findAny()
-                    .orElse(LottoRank.MISS_MATCH.getCount());
-            if (count >= 3) {
+            if (getMatchRank(winningMatchNumber, lottoRank) >= 3) {
                 ranks.put(lottoRank, ranks.get(lottoRank) + 1);
             }
         }
         return ranks;
     }
 
+    private Integer getMatchRank(List<Integer> winningMatchNumber, LottoRank lottoRank) {
+        return winningMatchNumber.stream().
+                filter(number -> lottoRank.getCount() == number)
+                .findAny()
+                .orElse(LottoRank.MISS_MATCH.getCount());
+    }
+
     //로또 랭크 맵 초기 세팅
     private LinkedHashMap<LottoRank, Integer> createLottoRanks() {
         LinkedHashMap<LottoRank, Integer> ranks = new LinkedHashMap<>();
         for (LottoRank rank : LottoRank.values()) {
-            if (rank.getMoney() == 0) {
+            if (rank == LottoRank.MISS_MATCH) {
                 continue;
             }
             ranks.put(rank, 0);
@@ -51,27 +54,30 @@ public class WinningResult {
 
     //일치하는 당첨번호 반환
     private List<Integer> getWinningMatchNumbers(List<Integer> winningNumber, int bonusNumber) {
-        List<Integer> winningMatchNumber = new ArrayList<>();
+        List<Integer> winningMatchNumbers = new ArrayList<>();
         for (List<Integer> lotto : lottos) {
-            int count = (int) winningNumber.stream().
-                    filter(lotto::contains)
-                    .count();
-            if (count >= 5 && lotto.contains(bonusNumber)) {
-                winningMatchNumber.add(LottoRank.FIVE_MATCH_AND_BONUS_MATCH.getCount());
+            int winningMatchCount = getWinningMatchCount(winningNumber,lotto);
+            if (winningMatchCount >= LottoRank.FIVE_MATCH.getCount() && lotto.contains(bonusNumber)) {
+                winningMatchNumbers.add(LottoRank.FIVE_MATCH_AND_BONUS_MATCH.getCount());
                 continue;
             }
-            if (count >= 3) {
-                winningMatchNumber.add(count);
+            if (winningMatchCount >= LottoRank.THREE_MATCH.getCount()) {
+                winningMatchNumbers.add(winningMatchCount);
             }
         }
-        return winningMatchNumber;
+        return winningMatchNumbers;
+    }
+
+    private int getWinningMatchCount(List<Integer> winningNumber, List<Integer> lotto) {
+        return (int) winningNumber.stream()
+                .filter(lotto::contains)
+                .count();
     }
 
     //계산하는 로직
     public float revenueCalculation(int amount) {
         int revenue = getRevenue();
-        float yiled = ((float) revenue / (float) amount) * 100;
-        return yiled;
+        return ((float) revenue / (float) amount) * 100;
     }
 
     private int getRevenue() {
