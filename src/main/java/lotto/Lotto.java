@@ -20,7 +20,7 @@ public class Lotto {
         validation.checkLottoNumbers(numbers);
     }
 
-    public int getRank(String[] winningNumbers, String bonusNumber) {
+    public int getRank(List<String> winningNumbers, String bonusNumber) {
         if (isFirst(winningNumbers)) {
             return 0;
         } else if (isSecond(winningNumbers, bonusNumber)) {
@@ -35,38 +35,38 @@ public class Lotto {
         return -1;
     }
 
-    private boolean isFirst(String[] winningNumbers) {
+    private boolean isFirst(List<String> winningNumbers) {
         int sameCount = getSameCount(winningNumbers);
 
         return sameCount == 6;
     }
 
-    private boolean isSecond(String[] winningNumbers, String bonusNumber) {
+    private boolean isSecond(List<String> winningNumbers, String bonusNumber) {
         int sameCount = getSameCount(winningNumbers);
         int bonusCount = getBonusCount(bonusNumber);
 
         return sameCount == 5 && bonusCount == 1;
     }
 
-    private boolean isThird(String[] winningNumbers) {
+    private boolean isThird(List<String> winningNumbers) {
         int sameCount = getSameCount(winningNumbers);
 
         return sameCount == 5;
     }
 
-    private boolean isFourth(String[] winningNumbers) {
+    private boolean isFourth(List<String> winningNumbers) {
         int sameCount = getSameCount(winningNumbers);
 
         return sameCount == 4;
     }
 
-    private boolean isFifth(String[] winningNumbers) {
+    private boolean isFifth(List<String> winningNumbers) {
         int sameCount = getSameCount(winningNumbers);
 
         return sameCount == 3;
     }
 
-    private int getSameCount(String[] winningNumbers) {
+    private int getSameCount(List<String> winningNumbers) {
         int sameCount = 0;
 
         for (String number : winningNumbers) {

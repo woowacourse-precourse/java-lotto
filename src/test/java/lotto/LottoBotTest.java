@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -58,7 +59,7 @@ class LottoBotTest {
     @DisplayName("수익률 계산 테스트")
     void calculateYieldTest() {
         lottoBot.saveInitialMoney(1000);
-        int[] ranks = new int[]{0, 0, 0, 0, 1};
+        List<Integer> ranks = new ArrayList<>(List.of(0, 0, 0, 0, 1));
         Assertions.assertThat(lottoBot.calculateYield(ranks)).isEqualTo(500f);
     }
 }

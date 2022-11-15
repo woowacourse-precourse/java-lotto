@@ -1,6 +1,7 @@
 package lotto;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class LottoService {
 
@@ -26,7 +27,7 @@ public class LottoService {
         }
 
         createAllLotto(lottoCount);
-        ConsoleMessage.PURCHASE.printMsg(purchasedLotto);
+        ConsoleMessage.PURCHASE.printLottoMsg(purchasedLotto);
     }
 
     private void createAllLotto(int lottoCount) {
@@ -57,8 +58,8 @@ public class LottoService {
     }
 
     private void notifyResult() {
-        int[] ranks = lottoBot.calculateRanks(purchasedLotto);
-        ConsoleMessage.RESULT.printMsg(ranks);
+        List<Integer> ranks = lottoBot.calculateRanks(purchasedLotto);
+        ConsoleMessage.RESULT.printResultMsg(ranks);
 
         double yield = lottoBot.calculateYield(ranks);
         ConsoleMessage.YIELD.printMsg(yield);

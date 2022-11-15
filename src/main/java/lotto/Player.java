@@ -2,6 +2,10 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 public class Player {
     private final Validation validation = new Validation();
     private final LottoBot lottoBot;
@@ -28,7 +32,7 @@ public class Player {
         numbers = eraseAllBlank(numbers);
         validation.checkWinningNumberInput(numbers);
 
-        String[] winningNumbers = numbers.split(",");
+        List<String> winningNumbers = new ArrayList<>(Arrays.asList(numbers.split(",")));
         lottoBot.saveWinningNumbers(winningNumbers);
     }
 

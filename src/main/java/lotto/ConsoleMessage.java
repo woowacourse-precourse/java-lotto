@@ -11,7 +11,7 @@ public enum ConsoleMessage {
     },
     PURCHASE {
         @Override
-        public void printMsg(List<Lotto> purchasedLotto) {
+        public void printLottoMsg(List<Lotto> purchasedLotto) {
             String message = String.format(PURCHASE_MSG, purchasedLotto.size());
             System.out.println(message);
             for (Lotto lotto : purchasedLotto) {
@@ -33,9 +33,9 @@ public enum ConsoleMessage {
     },
     RESULT {
         @Override
-        public void printMsg(int[] result) {
+        public void printResultMsg(List<Integer> result) {
             //result에서는 1등부터 순서대로 저장되어 있지만 반대 순위부터 출력해야 해서 끝부터 출력한다.
-            String message = String.format(RESULT_MSG, result[4], result[3], result[2], result[1], result[0]);
+            String message = String.format(RESULT_MSG, result.get(4), result.get(3), result.get(2), result.get(1), result.get(0));
             System.out.println(message);
         }
     },
@@ -64,7 +64,7 @@ public enum ConsoleMessage {
     private static final String YIELD_MSG = "총 수익률은 %.1f%%입니다.";
 
     public void printMsg() {}
-    public void printMsg(int[] result) {}
+    public void printResultMsg(List<Integer> result) {}
     public void printMsg(double yield) {}
-    public void printMsg(List<Lotto> purchasedLotto) {}
+    public void printLottoMsg(List<Lotto> purchasedLotto) {}
 }
