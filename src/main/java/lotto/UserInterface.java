@@ -10,16 +10,18 @@ import java.util.stream.Collectors;
 
 public class UserInterface {
     int getPurchasePrice() throws IllegalArgumentException{
-        int puchasePrice = 0;
+        int purchasePrice = 0;
         System.out.println("구입금액을 입력해 주세요.");
 
-        String userInput = Console.readLine();
+        String userInput = userInput();
+
         if(Error.checkTextError(userInput)){
-            puchasePrice = Integer.parseInt(userInput);
+            purchasePrice = Integer.parseInt(userInput);
         }else{
             throw new IllegalArgumentException();
         }
-        return puchasePrice;
+
+        return purchasePrice;
     }
 
     void printLottos(List<Lotto> lottos) {
@@ -31,7 +33,8 @@ public class UserInterface {
 
     List<Integer> getWinningNumber(){
         System.out.println("당첨번호를 입력해 주세요.");
-        String userInput = Console.readLine();
+        String userInput = userInput();
+
         List<Integer> winningNumbers = Arrays.stream(userInput.split(","))
                 .map(Integer::parseInt)
                 .collect(Collectors.toList());
@@ -40,7 +43,7 @@ public class UserInterface {
 
     int getBonusNumber(){
         System.out.println("보너스 볼을 입력해 주세요.");
-        int bonus = Integer.parseInt(Console.readLine());
+        int bonus = Integer.parseInt(userInput());
 
         return bonus;
     }
@@ -57,5 +60,11 @@ public class UserInterface {
 
     void printRateReturn(double rateOfReturn){
         System.out.println("총 수익률은 "+rateOfReturn+"%입니다.");
+    }
+
+    String userInput(){
+        String input = Console.readLine();
+
+        return input;
     }
 }
