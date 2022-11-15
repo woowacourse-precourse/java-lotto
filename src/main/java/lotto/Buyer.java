@@ -13,6 +13,8 @@ public class Buyer {
     private static final int LOTTERY_NUMBER_COUNT = 6;
 
     private List<Lotto> boughtTickets;
+    private int[] winningCounts = {0, 0, 0, 0, 0};
+
     public Buyer(String purchaseAmount) {
         validateBeingDigits(purchaseAmount);
         validateFormat(purchaseAmount);
@@ -62,5 +64,30 @@ public class Buyer {
             ));
         }
         sortLotteryNumbers(boughtTickets);
+    }
+
+    private void checkIfWon(int correctCount, int bonusCount) {
+        if (correctCount == 3 || correctCount == 4) {
+            winningCounts[correctCount - 3] += 1;
+            return ;
+        }
+        if (correctCount == 5) {
+            winningCounts[correctCount - 3 + bonusCount] += 1;
+            return ;
+        }
+        if (correctCount == 6) {
+            winningCounts[correctCount - 4] += 1;
+        }
+    }
+
+    public void checkBoughtTickets(Lotto winningNumbers, int bonus) {
+        int correctCount = 0;
+        int bonusCount = 0;
+
+        for (Lotto ticket : boughtTickets) {
+            correctCount = winningNumbers.countCorrectNumbers(ticket);
+            bonusCount = ticket.checkIfCorrectNumber(bonus);
+        }
+        checkIfWon(correctCount, bonusCount);
     }
 }

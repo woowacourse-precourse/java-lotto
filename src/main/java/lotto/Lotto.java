@@ -46,11 +46,27 @@ public class Lotto {
     public void sortNumbers() {
         Collections.sort(numbers);
     }
+
     public void validateBonusNumber(int bonusNumber) {
         List<Integer> numbersIncludingBonus = new ArrayList<>(numbers);
 
         numbersIncludingBonus.add(bonusNumber);
         validateNumberRange(numbersIncludingBonus);
         validateUniqueness(numbersIncludingBonus, LOTTERY_NUMBER_COUNT + 1);
+    }
+
+    public int checkIfCorrectNumber(int number) {
+        if (numbers.contains(number))
+            return (1);
+        return (0);
+    }
+
+    public int countCorrectNumbers(Lotto target) {
+        int count = 0;
+
+        for (int number : target.numbers) {
+            count += checkIfCorrectNumber(number);
+        }
+        return (count);
     }
 }
