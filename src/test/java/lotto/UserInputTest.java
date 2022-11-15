@@ -53,6 +53,38 @@ class UserInputTest extends NsTest {
         }, "678900");
     }
 
+    @DisplayName("당첨 번호가 유효하다면 성공한다.")
+    @Test
+    void getValidWinningNumbers() {
+        runTest(UserInput::getWinningNumbers, "1,2,3,4,5,6", "9");
+    }
+
+    @DisplayName("당첨 번호가 숫자가 아니라면 예외가 발생한다.")
+    @Test
+    void getInvalidWinningNumbers() {
+        runTest(() -> {
+            assertThatThrownBy(UserInput::getWinningNumbers)
+                    .isInstanceOf(IllegalArgumentException.class);
+            assertThat(output()).contains(ERROR_MESSAGE);
+        }, "1a,2b,3c,4,5,6", "8");
+
+        runTest(() -> {
+            assertThatThrownBy(UserInput::getWinningNumbers)
+                    .isInstanceOf(IllegalArgumentException.class);
+            assertThat(output()).contains(ERROR_MESSAGE);
+        }, "1   3,2a5,3,4,5,6", "8");
+    }
+
+    @DisplayName("보너스 번호가 숫자가 아니라면 예외가 발생한다.")
+    @Test
+    void getInvalidWinningNumbersBonus() {
+        runTest(() -> {
+            assertThatThrownBy(UserInput::getWinningNumbers)
+                    .isInstanceOf(IllegalArgumentException.class);
+            assertThat(output()).contains(ERROR_MESSAGE);
+        }, "1,2,3,4,5,6", "8abc");
+    }
+
     private void runTest(final Executable executable, final String... args) {
         command(args);
         assertSimpleTest(executable);

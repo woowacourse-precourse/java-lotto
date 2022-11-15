@@ -61,13 +61,20 @@
 
   
 
-  - [ ] UserInput
+  - [x] UserInput
+
     - [x] 구입 금액 입력
+
       - [x] 구입 금액이 1000의 배수면 성공한다. - `purchaseMoney`
       - [x] 구입 금액이 자연수가 아니라면 예외가 발생한다. - `purchaseMoneyWithNotNaturalNumber`
       - [x] 구입 금액이 100의 배수가 아니라면 예외가 발생한다. - `purchaseMoneyWithNotDividableBy1000`
-    - [ ] 당첨 번호 입력
-      - [ ] 당첨 번호가 숫자가 아니라면 예외가 발생한다. - `getInvalidWinningNumbers`
+
+    - [x] 당첨 번호 입력
+
+      - [x] 당첨 번호가 유효하다면 성공한다. -  `getValidWinningNumbers`
+
+      - [x] 당첨 번호가 숫자가 아니라면 예외가 발생한다. - `getInvalidWinningNumbers`
+      - [x] 보너스 번호가 숫자가 아니라면 예외가 발생한다 - `getInvalidWinningNumbersBonus`
 
   - [x] Lotto
     - [x] 로또 번호가 6개보다 적다면 예외가 발생한다. - `createLottoByUnderSize`
