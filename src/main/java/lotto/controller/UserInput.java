@@ -29,8 +29,8 @@ public class UserInput {
 
         isValidInput(userInput);
 
-        List<Integer> winningNumber = stringToNumbers(userInput);
-        for (int lottoNumber : winningNumber) {
+        List<Integer> winningNumber = parseNumbers(userInput);
+        for (int lottoNumber: winningNumber) {
             validNumber(lottoNumber);
         }
 
@@ -46,17 +46,16 @@ public class UserInput {
 
         int bonusNumber = Integer.valueOf(userInput);
         validNumber(bonusNumber);
-        hasSameNumber(bonusNumber, winningNumber);
+        isSameBonusNumber(bonusNumber, winningNumber);
 
         return bonusNumber;
     }
 
-    private static List<Integer> stringToNumbers(String input) {
+    private static List<Integer> parseNumbers(String input) {
         String[] stringNumbers = input.split(",");
         List<Integer> numbers = new ArrayList<>();
-        for (String number : stringNumbers) {
+        for (String number: stringNumbers) {
             int lottoNumber = Integer.valueOf(number);
-            hasSameNumber(lottoNumber, numbers);
             numbers.add(lottoNumber);
         }
 
