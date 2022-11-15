@@ -130,7 +130,7 @@ DivideInputMoneyGenerator 를 실행시켜 예외가 발생될 경우 try catch�
 
 <br>
 
----
+
 
 <br>
 
@@ -166,7 +166,7 @@ String 을 int 형식으로 변환합니다.
 
 <br>
 
----
+
 
 <br>
 
@@ -204,7 +204,7 @@ BonusNumberCalculatorGenerator 를 실행시켜 생성된 returnNumber를 List<I
 
 <br>
 
----
+
 
 <br>
 
@@ -237,6 +237,8 @@ int 형의 totalEarningMoney 를 반환합니다.
 tatalEarningMoney를 에 대해 구입금액과 당첨금액을 계산하여 수익률을 출력합니다.
 
 입력된 totalEarningMoney 계산시 int 형으로는 당첨금이 20억이 넘어갈 경우 에러가 발생되어 Long 타입으로 변환하여 계산하도록 하였습니다.
+
+<br>
 
 <br>
 
