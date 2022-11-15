@@ -20,7 +20,7 @@ public class Validation {
    * @return false if number is not in between 1 and 45.
    */
   public static boolean outOfRange(List<Integer> numbers) {
-    return numbers.stream().anyMatch(num -> num>=1 && num<=45);
+    return numbers.stream().anyMatch(num -> num<1 || num>45);
   }
 
   /**
