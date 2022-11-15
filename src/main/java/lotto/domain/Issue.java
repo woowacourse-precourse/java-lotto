@@ -23,9 +23,11 @@ public class Issue {
 
     private Lotto lottoNum(){
         List<Integer> numbers = new ArrayList<>();
-        List<Integer> randNumbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
-        for(Integer number : randNumbers) {
-            numbers.add(number);
+        List<Integer> randomNumbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+        for(Integer number : randomNumbers) {
+            if(!numbers.contains(number)) {
+                numbers.add(number);
+            }
         }
         return new Lotto(numbers);
     }
