@@ -87,6 +87,17 @@ public class Lotto {
         return result;
     }
 
+    public void checkDuplicateLotto(Lotto lotto) {
+
+        String registeredLotto = this.getLotto();
+        String uncheckedLotto = lotto.getLotto();
+
+        if (registeredLotto.equals(uncheckedLotto)) {
+            Record.printDuplicateLottoError();
+            throw new IllegalArgumentException();
+        }
+    }
+
     private List<Integer> addBonus(List<Integer> result, int number) {
         if (numbers.contains(number)) {
             result.add(ReferenceValue.Lotto.IS_BONUS.getValue());

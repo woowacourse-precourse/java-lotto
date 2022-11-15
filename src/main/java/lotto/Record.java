@@ -34,6 +34,9 @@ public class Record {
     public static void printDuplicateError() {
         System.out.println(ErrorMessage.IS_ERROR.getMessage() + ErrorMessage.DUPLICATE_NUMBER.getMessage());
     }
+    public static void printDuplicateLottoError() {
+        System.out.println(ErrorMessage.IS_ERROR.getMessage() + ErrorMessage.DUPLICATE_LOTTO.getMessage());
+    }
 
     public static String getBonusNumber() {
         return EnterMessage.BONUS_NUMBER.getMessage();
@@ -111,6 +114,7 @@ public class Record {
         IS_ERROR("[ERROR]"),
         DIFFERENT_SIZE(" 번호를 6개 입력해주세요."),
         DUPLICATE_NUMBER(" 중복된 숫자가 있습니다."),
+        DUPLICATE_LOTTO(" 이미 존재하는 로또입니다."),
         IS_NUMBER(" 해당 입력값은 숫자로 전환할 수 없습니다."),
         OUT_OF_RANGE(" 로또 번호는 1부터 45 사이의 숫자여야 합니다."),
         MINIMUM_PRICE(" 입력값이 1,000 이상 되야합니다."),

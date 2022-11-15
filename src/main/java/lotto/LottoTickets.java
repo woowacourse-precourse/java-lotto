@@ -139,7 +139,6 @@ public class LottoTickets {
         }
         return index;
     }
-
     public static boolean checkCountFive(int index) {
         return ReferenceValue.WinningStats
                 .FIVE_MATCHES

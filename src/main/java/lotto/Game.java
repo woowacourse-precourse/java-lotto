@@ -62,7 +62,9 @@ public class Game {
             Collections.sort(sortedNumbers);
 
             System.out.println(sortedNumbers);
+
             Lotto lotto = new Lotto(sortedNumbers);
+            checkLottoTickets(allLottery, lotto);
             allLottery.add(lotto);
         }
 
@@ -70,6 +72,12 @@ public class Game {
         System.out.println();
     }
 
+    public static void checkLottoTickets(List<Lotto> allLottery, Lotto uncheckedLotto) {
+
+        for (Lotto lotto : allLottery) {
+            lotto.checkDuplicateLotto(uncheckedLotto);
+        }
+    }
     private static void enterWinningNumbers() {
         String winningInput = Console.readLine();
 
