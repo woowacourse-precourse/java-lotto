@@ -3,12 +3,11 @@ package lotto.service;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
-
-import lotto.domain.Rank;
-import lotto.domain.WinningResult;
 import lotto.domain.lotto.Lotto;
 import lotto.domain.lotto.LottoNumbersGenerator;
 import lotto.domain.lotto.WinningLotto;
+import lotto.domain.Rank;
+import lotto.domain.WinningResult;
 
 public class LottoService {
 
