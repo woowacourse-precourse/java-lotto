@@ -85,17 +85,38 @@ public class LottoResultTest {
 
     }
 
-    @DisplayName("수익률 계산 테스트")
+    @DisplayName("수익률 계산 테스트2")
     @Test
     void getEarnedRatio2() {
 
         List<Lotto> lottos = new ArrayList<>();
         lottos.add(new Lotto(List.of(1, 2, 3, 4, 5, 6)));
+        lottos.add(new Lotto(List.of(1, 2, 3, 4, 5, 7)));
+        lottos.add(new Lotto(List.of(1, 2, 3, 4, 5, 11)));
+        lottos.add(new Lotto(List.of(13, 14, 15, 16, 17, 18)));
+
+        LotteryTickets lotteryTickets = new LotteryTickets(0);
+        lotteryTickets.setLottoTickets(lottos);
+
+        WinningNumber winningNumber = new WinningNumber(List.of(1, 2, 3, 4, 5, 6));
+        winningNumber.setBonusNum(7);
+
+        LottoResult lottoResult = new LottoResult();
+
+        lottoResult.calculateLottoRanks(lotteryTickets, winningNumber);
+
+        assertThat(String.format("%.1f", lottoResult.calcEarnedRatio(4000) * 100)).isEqualTo("50787500.0");
+
+    }
+
+    @DisplayName("수익률 계산 테스트3")
+    @Test
+    void getEarnedRatio3() {
+
+        List<Lotto> lottos = new ArrayList<>();
+        lottos.add(new Lotto(List.of(1, 2, 3, 4, 5, 6)));
         lottos.add(new Lotto(List.of(7, 8, 9, 10, 11, 12)));
         lottos.add(new Lotto(List.of(13, 14, 15, 16, 17, 18)));
-        lottos.add(new Lotto(List.of(19, 20, 21, 22, 23, 24)));
-        lottos.add(new Lotto(List.of(25, 26, 27, 28, 29, 30)));
-        lottos.add(new Lotto(List.of(31, 32, 33, 34, 35, 36)));
 
         LotteryTickets lotteryTickets = new LotteryTickets(0);
         lotteryTickets.setLottoTickets(lottos);
@@ -110,4 +131,5 @@ public class LottoResultTest {
         assertThat(String.format("%.1f", lottoResult.calcEarnedRatio(6000) * 100)).isEqualTo("166.7");
 
     }
+
 }
