@@ -21,7 +21,8 @@ public class Game {
         System.out.println(Resource.revenuePercentBack);
     }
 
-    private void getResult(List<Lotto> lottoNumbers, WinningNumber winningNumber) {
+    private int getResult(List<Lotto> lottoNumbers, WinningNumber winningNumber) {
+        int totalBill =0;
         JudgeMent judgeMent = new JudgeMent();
         judgeMent.setCorrectResult(lottoNumbers, winningNumber);
         System.out.println(Resource.resultOfWinning);
