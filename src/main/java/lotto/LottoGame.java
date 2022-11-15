@@ -2,16 +2,15 @@ package lotto;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
 
-public class LottoResult {
-    private List<Integer> results = new ArrayList<>(Arrays.asList(0, 0, 0, 0, 0, 0));
-    private double revenue = 0;
+public class LottoGame {
     private LottoMarket lottoMarket;
     private LottoHeadOffice lottoHeadOffice;
+    private List<Integer> results = new ArrayList<>(Arrays.asList(0, 0, 0, 0, 0, 0));
+    private double revenue = 0;
 
-    LottoResult() {
+    LottoGame() {
         this.lottoMarket = new LottoMarket();
         this.lottoHeadOffice = new LottoHeadOffice();
         tourLottos();

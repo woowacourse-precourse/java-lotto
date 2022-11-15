@@ -17,16 +17,16 @@
     - [x] 당첨 번호 입력 받기 (6개) - LottoHeadOffice#inputWinningNum
     - [x] 보너스 번호 입력 받기 (1개) - LottoHeadOffice#inputBonusNum
 
-- [ ] 당첨 금액 확인 - LottoResult
-    - [x] 로또를 순회 - LottoResult#tourLottos
-        - [x] 사용자 번호와 당첨 번호 비교 - LottoResult#compareNum
+- [x] 로또게임 (핵심로직) - LottoGame
+    - [x] 로또를 순회 - LottoGame#tourLottos
+        - [x] 사용자 번호와 당첨 번호 비교 - LottoGame#compareNum
           - [x] 1등: 6개 번호 일치 / 2,000,000,000원
           - [x] 2등: 5개 번호 + 보너스 번호 일치 / 30,000,000원
           - [x] 3등: 5개 번호 일치 / 1,500,000원
           - [x] 4등: 4개 번호 일치 / 50,000원
           - [x] 5등: 3개 번호 일치 / 5,000원
-    - [x] 당첨 내역 출력 - LottoResult#printResult
-    - [x] 수익률 계산 (소수점 둘째 자리에서 반올림) - LottoResult#calculateRateOfReturn
+    - [x] 당첨 내역 출력 - LottoGame#printResult
+    - [x] 수익률 계산 (소수점 둘째 자리에서 반올림) - LottoGame#calculateRateOfReturn
 
 - [ ] 예외 처리 : 잘못된 값 입력 (IllegalArgumentException발생 + "[ERROR]"로 시작하는 에러 메시지를 출력)
     - 입력이 숫자가 아닐때 (쉼표 제외)
