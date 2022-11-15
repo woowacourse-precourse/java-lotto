@@ -244,7 +244,7 @@ Printer
 
 
 Receiver
-- [ ] 사용자 입력
+- [x] 사용자 입력
 
 
 Lotto
