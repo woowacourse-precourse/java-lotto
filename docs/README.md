@@ -66,7 +66,7 @@
   - StaffTeller#tellLottoResult()
 - [x] 수익률을 계산할 수 있다.
   - LottoChecker#calculateROI()
-- [ ] 당첨 통계 메시지를 출력할 수 있다.
+- [x] 당첨 통계 메시지를 출력할 수 있다.
   - StaffTeller#tellROI()
   
 ## 🚀 기능 요구 사항

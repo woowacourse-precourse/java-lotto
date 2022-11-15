@@ -67,4 +67,9 @@ public class StaffTellerImpl implements  StaffTeller{
         }
         return sb.reverse().toString();
     }
+
+    @Override
+    public void tellROI(double roi) {
+        System.out.printf("총 수익률은 %.1f입니다.%n", roi);
+    }
 }
