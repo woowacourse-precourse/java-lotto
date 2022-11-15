@@ -56,6 +56,15 @@ class MoneyTest {
         assertThat(money1.divide(money2)).isEqualTo(result);
     }
 
+    @ParameterizedTest(name = "{0} / {1} = {2}")
+    @CsvSource({"1500, 500, 3", "1000, 1500, 0", "8000, 5000, 1"})
+    void floorDivide_메서드는_Money를_입력받아_버림나눗셈하여_반환한다(long amount1, long amount2, long result) {
+        Money money1 = Money.wons(amount1);
+        Money money2 = Money.wons(amount2);
+
+        assertThat(money1.floorDivide(money2)).isEqualTo(result);
+    }
+
     @ParameterizedTest(name = "{0} % {1} = {2}")
     @CsvSource({"1500, 500, 0", "8000, 1000, 0", "8001, 1000, 1"})
     void calculateRemainder_메서드는_입력받은_수로_나눴을_때의_나머지를_반환한다(

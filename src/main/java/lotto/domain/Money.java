@@ -27,6 +27,10 @@ public class Money {
         return this.amount / (double) other.amount;
     }
 
+    public long floorDivide(Money other) {
+        return Math.floorDiv(this.amount, other.amount);
+    }
+
     public Money calculateRemainder(Money other) {
         return new Money(this.amount % other.amount);
     }
@@ -49,7 +53,7 @@ public class Money {
         }
 
         Money object = (Money) o;
-        return Objects.equals(amount.doubleValue(), object.amount.doubleValue());
+        return Objects.equals(amount, object.amount);
     }
 
     public int hashCode() {
