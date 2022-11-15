@@ -1,11 +1,11 @@
 package lotto.domain;
 
 
+import lotto.AppConfig;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
@@ -16,8 +16,9 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class WinningResultCalculatorTest {
 
-    WinningResultCalculator winningResultCalculator = new WinningResultCalculator();
-    WinningNumbers winningNumbers = new WinningNumbers();
+    AppConfig appConfig = new AppConfig();
+    WinningResultCalculator winningResultCalculator = appConfig.createWinningResultCalculator();
+    WinningNumbers winningNumbers = appConfig.createWinningNumbers();
     Map<Rank, Integer> winningStatus;
     Map<Rank, Integer> result;
 
