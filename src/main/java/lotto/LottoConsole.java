@@ -48,4 +48,26 @@ public class LottoConsole {
     public String winningNumbersAskMessage() {
         return "당첨 번호를 입력해 주세요.";
     }
+
+    public String messageOfNumbersWhetherItWonOrNot(
+        int numberOfCorrectDigits,
+        boolean bonusMatched,
+        int prize,
+        int numberOfWinning
+    ) {
+        if (numberOfCorrectDigits == 5 && bonusMatched) {
+            return String.format(
+                "%d개 일치, 보너스 볼 일치 (%,d원) - %d개",
+                numberOfCorrectDigits,
+                prize,
+                numberOfWinning
+            );
+        }
+
+        return String.format("%d개 일치 (%,d원) - %d개", numberOfCorrectDigits, prize, numberOfWinning);
+    }
+
+    public String winningStatisticsHeaderMessage() {
+        return "당첨 통계\n---";
+    }
 }
