@@ -21,7 +21,6 @@ public class LottoServiceImpl implements LottoService {
     @Override
     public LottoPurchaseInfo getLottoPurchase() {
         LottoPurchaseInfo lottoPurchaseInfo = new LottoPurchaseInfo(inputView.getPrice());
-        // outputView.inputValue(String.valueOf(lottoPurchaseInfo.getLottoPrice()));
         outputView.printPurchaseMessage(lottoPurchaseInfo.getLottoGameCount());
         return lottoPurchaseInfo;
     }
