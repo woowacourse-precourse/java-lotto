@@ -11,7 +11,6 @@ public enum Rank {
     NOTHING("3개 미만 일치 ", "(0원)");
 
 
-
     private String matchCount;
     private String winnings;
 
@@ -23,9 +22,11 @@ public enum Rank {
     public void printRank(int count) {
         System.out.println(matchCount + winnings + " - " + count + "개");
     }
+
     public static List<Rank> getLottoRanksDesc() {
         return List.of(FIFTH, FOURTH, THIRD, SECOND, FIRST);
     }
+
     public static List<Integer> getWinningsDesc() {
         return List.of(5000, 50000, 1500000, 30000000, 2000000000);
     }

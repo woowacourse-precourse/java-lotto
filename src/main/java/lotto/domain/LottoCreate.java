@@ -13,6 +13,7 @@ import java.util.stream.Collectors;
 public class LottoCreate {
     private List<Integer> lottoNumbers = new ArrayList<>();
     public static Map<Integer, List> lottoGroups = new HashMap<>();
+
     public List<Integer> createLottoNum() {
         lottoNumbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
         return sortLottoNumbers(lottoNumbers);

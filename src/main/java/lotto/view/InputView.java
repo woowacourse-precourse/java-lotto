@@ -38,9 +38,11 @@ public class InputView {
         String input = Console.readLine();
         return input;
     }
+
     private static boolean buyMoneyCheck(String input) {
         return input != null && input.matches("^[0-9,]*$");
     }
+
     public void buyLottoMoney() {
         String input = getUserInput();
         if (!buyMoneyCheck(input)) {
@@ -52,7 +54,6 @@ public class InputView {
     public void cntLotto() {
         setLotteryAmount(getInputMoney() / lotteryPrice);
     }
-
 
 
     public int purchasedLotto() {

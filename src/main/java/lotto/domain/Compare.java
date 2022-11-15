@@ -16,6 +16,7 @@ public class Compare {
     private static int fourth;
     private static int fifth;
     private static List<Integer> rankcnt = new ArrayList<>();
+
     public int compareNumbers(List<Integer> lottoGroups, List<Integer> lottoNum) {
         int cnt = 0;
         for (int i = 0; i < lottoNum.size(); i++) {
@@ -25,6 +26,7 @@ public class Compare {
         }
         return cnt;
     }
+
     public Rank compare_Numbers_Group(Map<Integer, List> lottoGroups, List<Integer> lottoNum, int bonusNum) {
 
         for (int i = 0; i < lottoGroups.size(); i++) {
@@ -52,6 +54,7 @@ public class Compare {
         }
         return NOTHING;
     }
+
     public static void rankList() {
         rankcnt.add(fifth);
         rankcnt.add(fourth);
@@ -61,26 +64,27 @@ public class Compare {
     }
 
 
-
     public static void printRank() {
         rankList();
-        for (int i=0; i<RANKS.length; i++) {
+        for (int i = 0; i < RANKS.length; i++) {
             Rank rank = Rank.getLottoRanksDesc().get(i);
             rank.printRank(rankcnt.get(i));
         }
     }
+
     public static int totalGetMoney() {
         List<Integer> totalMoneyList = new ArrayList<>();
         int totalWiningMoney = 0;
-        for (int i=0; i< getWinningsDesc().size(); i++) {
+        for (int i = 0; i < getWinningsDesc().size(); i++) {
             int rate = getWinningsDesc().get(i) * rankcnt.get(i);
             totalMoneyList.add(i, rate);
             totalWiningMoney = totalWiningMoney + totalMoneyList.get(i);
         }
         return totalWiningMoney;
     }
+
     public static void printTotalRate(int inputMoney) {
-        float totalrateMoney = totalGetMoney() * 100 / (float)inputMoney;
+        float totalrateMoney = totalGetMoney() * 100 / (float) inputMoney;
         System.out.println(totalrateMoney);
         System.out.println(
                 "총 수익률은 " + String.format("%.1f", totalrateMoney) + "%입니다.");
