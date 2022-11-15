@@ -15,6 +15,7 @@ public class LottoController {
         try {
             lottoService.buyLotto();
             lottoService.inputWinningNumber();
+            lottoService.inputBonusNumber();
             lottoService.showLottoYield();
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
