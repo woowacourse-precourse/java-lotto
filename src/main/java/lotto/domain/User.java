@@ -10,8 +10,8 @@ public class User {
     private int lottoCount;
     private int rewardMoney;
 
-    private List<Lotto> lottos = new ArrayList<>();
-    private Map<Reward, Integer> result = new HashMap<>();
+    private List<Lotto> lotties = new ArrayList<>();
+    private Map<Reward, Integer> lottiesResult = new HashMap<>();
 
     private User(int money) {
         this.money = money;
@@ -32,7 +32,7 @@ public class User {
     }
 
     public void addUserLotto() {
-        lottos.add(Lotto.generateLottoNumber());
+        lotties.add(Lotto.generateLottoNumber());
     }
 
     //validate check
@@ -78,14 +78,23 @@ public class User {
     }
 
     public List<Lotto> getLotties() {
-        return lottos;
+        return lotties;
     }
 
     public void saveResult(Reward reward) {
-        if (result.containsKey(reward)) {
-            result.put(reward, result.get(reward) + 1);
+        if (lottiesResult.containsKey(reward)) {
+            lottiesResult.put(reward, lottiesResult.get(reward) + 1);
         } else {
-            result.put(reward, 1);
+            lottiesResult.put(reward, 1);
         }
+    }
+
+    public Map<Reward, Integer> getLottiesResult() {
+        return lottiesResult;
+    }
+
+    // 테스트를 위한 메서드
+    public void addLottoForTest(List<Integer> numbers) {
+        lotties.add(new Lotto(numbers));
     }
 }
