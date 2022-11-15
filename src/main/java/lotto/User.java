@@ -64,8 +64,4 @@ public class User {
 
         return bonusNumber;
     }
-
-    public static void getEarning() {
-
-    }
 }

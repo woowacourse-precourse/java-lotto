@@ -19,6 +19,7 @@ public class Lotto {
     }
 
     public Lotto(List<Integer> winNumbers, Integer bonusNumber) {
+        Validator.lottoNumber(winNumbers);
         Lotto.winNumbers =  winNumbers;
 
         Validator.bonusNumber(bonusNumber);

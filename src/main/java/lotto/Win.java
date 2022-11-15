@@ -6,7 +6,7 @@ public enum Win {
     THIRD_PLACE(4, 3, Constant.THIRD_PLACE_EARNING),
     FORTH_PLACE(4, 4, Constant.FORTH_PLACE_EARNING),
     FIFTH_PLACE(3, 5, Constant.FIFTH_PLACE_EARNING),
-    LOSE(null, null, 0);
+    LOSE(0, 0, 0);
 
     public final Integer match;
     public final Integer grade;
