@@ -21,7 +21,7 @@ public class Application {
             throw new IllegalArgumentException();
         }
         quantity = amount/1000;
-        System.out.println(quantity+"개를 구매했습니다.\n");
+        System.out.println(quantity+"개를 구매했습니다.");
 
         while(LottoList.size() < quantity){
             Lotto temp = new Lotto(RandomLotto());
@@ -31,6 +31,7 @@ public class Application {
         for(Lotto data: LottoList){
             data.printNumber();
         }
+        System.out.println("총 수익률은"+"입니다.");
 
     }
 
