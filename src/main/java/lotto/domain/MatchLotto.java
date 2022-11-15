@@ -24,7 +24,7 @@ public class MatchLotto {
         }
 
         double yield = revenue / (double) inputAmount * 100;
-//        printResult(yield);
+        printResult(yield);
     }
 
     public int getRank(Lotto lotto, List<Integer> winningNumber, int bonusNumber) {
@@ -88,4 +88,12 @@ public class MatchLotto {
         }
     }
 
+    public void printResult(double yield) {
+        System.out.println("3개 일치 (5,000원) - " + rank5 + "개");
+        System.out.println("4개 일치 (50,000원) - " + rank4 + "개");
+        System.out.println("5개 일치 (1,500,000원) - " + rank3 + "개");
+        System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - " + rank2 + "개");
+        System.out.println("6개 일치 (2,000,000,000원) - " + rank1 + "개");
+        System.out.println("총 수익률은 " + String.format("%.1f", yield) + "%입니다.");
+    }
 }
