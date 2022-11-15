@@ -1,9 +1,9 @@
-package lotto.validation;
+package lotto.function.validation;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
 import lotto.app.Application;
-import lotto.domain.lotto.BuyLotto;
 import lotto.domain.jackpot.Jackpot;
+import lotto.validation.Validation;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
