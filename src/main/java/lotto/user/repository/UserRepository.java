@@ -40,7 +40,7 @@ public class UserRepository {
 
     private static boolean checkMoneyOnlyNUmber(String userInput) {
         try {
-            ValidateUser.validateOnlyNumber(userInput);
+            ValidateUser.validateMoneyOnlyNumber(userInput);
             return true;
         } catch (IllegalArgumentException e) {
             ValidateError.printError(e);

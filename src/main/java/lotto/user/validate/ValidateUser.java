@@ -2,12 +2,13 @@ package lotto.user.validate;
 
 import java.util.regex.Pattern;
 import lotto.util.Constant;
+import lotto.util.Validate;
 
 public class ValidateUser {
     public static final Pattern NUMBER_PATTERN = Pattern.compile("^[1-9]+[0-9]*$");
-    public static void validateOnlyNumber(String userInput) {
+    public static void validateMoneyOnlyNumber(String userInput) {
         if (!NUMBER_PATTERN.matcher(userInput).matches()) {
-            throw new IllegalArgumentException(Constant.INPUT_ERROR_MESSAGE);
+            throw new IllegalArgumentException(Constant.INPUT_MONEY_ERROR_MESSAGE);
         }
     }
 
