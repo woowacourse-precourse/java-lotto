@@ -5,23 +5,24 @@ import lotto.domain.enums.LottoResult;
 import java.util.ArrayList;
 import java.util.List;
 
-public class LottoCalculator {
-    private final List<Lotto> lottos;
+public class LottoComparator {
+    private final Lottos lottos;
     private final WinningLotto winningLotto;
     private final BonusNumber bonusNumber;
 
-    public LottoCalculator(
-            LottosGenerator lottos,
+    public LottoComparator(
+            Lottos lottos,
             WinningLotto winningLotto,
             BonusNumber bonusNumber
     ) {
-        this.lottos = lottos.getLottos();
+        this.lottos = lottos;
         this.winningLotto = winningLotto;
         this.bonusNumber = bonusNumber;
     }
 
-    public LottoResults calculate() {
+    public LottoResults compareLottoNumbers() {
         List<LottoResult> lottoResults = new ArrayList<>();
+        List<Lotto> lottos = this.lottos.getLottos();
         for (Lotto lotto : lottos) {
             List<Integer> lottoNumbers = lotto.getNumbers();
             int matchCount = getMatchCount(lottoNumbers);
