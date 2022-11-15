@@ -1,6 +1,11 @@
 package model;
 
-import java.util.*;
+import camp.nextstep.edu.missionutils.Randoms;
+
+import java.util.Collections;
+import java.util.List;
+import java.util.HashMap;
+import java.util.ArrayList;
 
 public class Data {
 
@@ -15,12 +20,13 @@ public class Data {
     public String BonusNumber;
     public HashMap<Integer, Integer> Win = new HashMap<>();
     public List<Integer> winningLottoNumber = new ArrayList<>();
+    public List<Integer>[] userLotto;
 
     public double yield;
 
     public int numberOfLotto;
 
-    public int revenue[] = {ZERO,ZERO,ZERO,THREE,FOUR,FIVE,FIVE_BONUS,SIX};
+    public int revenue[] = {ZERO, ZERO, ZERO, THREE, FOUR, FIVE, FIVE_BONUS, SIX};
 
     public int checkLottoNumber(List<Integer> userLotto) {
         int count = 0;
@@ -63,6 +69,13 @@ public class Data {
             }
         }
         yield = ((double) sum / (double) Integer.parseInt(purchaseAmount)) * 100;
+    }
+
+    public void initializeUserLotto(){
+        userLotto = new ArrayList[numberOfLotto];
+        for (int i = 0; i < numberOfLotto; i++) {
+            userLotto[i] = new ArrayList<Integer>();
+        }
     }
 
 }
