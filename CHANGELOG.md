@@ -1,3 +1,14 @@
+style: 테스트 클래스의 static import 추가
+style: 표출명이 지정되지 않은 테스트의 표출명 추가
+refactor(LottoMachineTest): 투입한 금액에 알맞는 갯수의 로또가 발행되는지 확인하는 테스트 코드 추가
+refactor(LottoTest): 테스트 코드의 패키지 변경
+style: 필요없는 공백 라인 제거
+style: 생성자가 없는 클래스의 생성자 추가
+refactor(LottoRule): 인스턴스화가 필요 없어서 private 생성자 추가
+refactor(LottoMessage): 인스턴스화가 필요 없어서 private 생성자 추가
+refactor(ExceptionMessage): 인스턴스화가 필요 없어서 private 생성자 추가
+refactor(Constant): 인스턴스화가 필요 없어서 private 생성자 추가
+docs(CHANGELOG.md): 모든 커밋 목록을 포함하여 생성
 docs(README.md): 클래스별 각 역할과 책임을 패키지 구조와 함께 나타내도록 수정
 refactor(Profit): 원시값 정적 변수로 포장
 refactor(LottoRank): 3등인지 확인하는 기능 메서드명 변경
@@ -80,3 +91,4 @@ feat(Lotto): 6자리인지 검증하는 기능
 refactor(Lotto): 6자리인지 검증하는 기능
 docs(README.md): 클래스별 각 역할과 책임 작성
 docs(README.md): 기능 구현 목록 작성
+feat: setup precourse lotto project
