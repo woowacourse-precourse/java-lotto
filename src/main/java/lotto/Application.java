@@ -5,6 +5,7 @@ import lotto.domain.Report;
 import lotto.domain.View;
 import lotto.domain.Winning;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Application {
@@ -16,8 +17,8 @@ public class Application {
             String inputMoney = view.inputPrint();
             Lotto.checkIsInt(inputMoney);
             int lottoCount = Lotto.calculate(inputMoney);
-            List<Lotto> allLotto = Lotto.createLotto(lottoCount);
             view.countPrint(lottoCount);
+            List<Lotto> allLotto = Lotto.createLotto(lottoCount);
 
             String inputNumbers = view.numbersPrint();
             Winning.addWinning(inputNumbers);
@@ -29,6 +30,8 @@ public class Application {
             double returnRate = Report.returnRate(lottoCount * 1000, totalPrize);
             view.reportPrint(Report.winningCount, returnRate);
         } catch (IllegalArgumentException e) {
+            Winning.numbers = new ArrayList<>();
+            Report.winningCount = new Integer[]{0, 0, 0, 0, 0, 0};
             System.out.println(ERROR_MESSAGE + e.getMessage());
         }
     }
