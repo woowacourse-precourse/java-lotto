@@ -61,4 +61,17 @@ public class Logic {
         }
         return answer;
     }
+
+    public List<Integer> setJackpot(String input) {
+        List<Integer> answer = new ArrayList<>();
+
+
+        return answer;
+    }
+
+    public int getBonus(String input) {
+        // implement
+
+        return 0;
+    }
 }

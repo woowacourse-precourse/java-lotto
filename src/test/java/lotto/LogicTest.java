@@ -34,4 +34,20 @@ public class LogicTest {
         assertThat(logic.checkPieces("12000")).isEqualTo(12);
     }
 
+    @Test
+    void 로또_당첨_에러_테스트() {
+        assertThatThrownBy(() -> logic.setJackpot("1, ,2,3,4,5"))
+                .isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> logic.setJackpot("1j2,3,4,5,6"))
+                .isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> logic.setJackpot("-1,2,3,4,5,6"))
+                .isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> logic.setJackpot("1,2,3,4,5,66"))
+                .isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> logic.setJackpot("1,2,3,4,5,,6"))
+                .isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> logic.setJackpot("1,2,3,4,07,6"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
 }
