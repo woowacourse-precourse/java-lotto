@@ -13,8 +13,8 @@ public class Input {
         return Console.readLine();
     }
 
-    public String printNext(String price){
-        if(!price.matches("^[0-9]*$")){
+    public String printNext(String price) {
+        if (!price.matches("^[0-9]*$")) {
             return "[ERROR] Only enter numbers.";
         }
         return price;

@@ -12,7 +12,7 @@ public class BuyLotto {
         return price / LOTTO_PRICE;
     }
 
-    private static void validateNumber(final String numbers){
+    private static void validateNumber(final String numbers) {
         if (!Pattern.matches("^[0-9]*$", numbers)) {
             throw new IllegalArgumentException("[ERROR] Only enter numbers.");
         }

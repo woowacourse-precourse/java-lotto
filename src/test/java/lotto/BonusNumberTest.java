@@ -10,12 +10,12 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class BonusNumberTest {
-    Lotto winningNumber = new Lotto(List.of(1,2,3,4,5,7));
+    Lotto winningNumber = new Lotto(List.of(1, 2, 3, 4, 5, 7));
 
     @DisplayName("보너스 번호가 2개 이상인 경우 예외 발생")
     @Test
     void case1() {
-        List<Integer> bonus = List.of(19,2);
+        List<Integer> bonus = List.of(19, 2);
         assertThatThrownBy(() -> new BonusNumber(bonus, winningNumber))
                 .isInstanceOf(IllegalArgumentException.class);
     }
