@@ -34,6 +34,14 @@ public class LottoWinningAnalyzer {
         return winningResult;
     }
 
+    public double calculateProfit(int userMoney) {
+        double winningMoney = getSumAllWinningMoney();
+        double profit = winningMoney / userMoney * 100;
+        double roundDecimalPoint = Math.pow(10, DECIMAL_POINT);
+
+        return Math.round(profit * roundDecimalPoint) / roundDecimalPoint;
+    }
+
     private void updateWinningResult(int count) {
         WinningType type = winningResult.keySet().stream().
                 filter(winningType -> winningType.getNumberOfMatching() == count)
@@ -42,14 +50,6 @@ public class LottoWinningAnalyzer {
         int currentCount = winningResult.get(type);
 
         winningResult.put(type, currentCount + 1);
-    }
-
-    public double calculateProfit(int userMoney) {
-        double winningMoney = getSumAllWinningMoney();
-        double profit = winningMoney / userMoney * 100;
-        double roundDecimalPoint = Math.pow(10, DECIMAL_POINT);
-
-        return Math.round(profit * roundDecimalPoint) / roundDecimalPoint;
     }
 
     private long getSumAllWinningMoney() {

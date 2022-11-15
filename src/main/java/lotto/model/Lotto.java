@@ -17,10 +17,6 @@ public class Lotto {
         this.numbers = numbers;
     }
 
-    public boolean hasNumber(int number) {
-        return numbers.contains(number);
-    }
-
     public int countNumberOfMatching(Lotto userLotto) {
         int count = 0;
         for (int i = 0; i < LOTTO_SIZE; i++) {
@@ -32,6 +28,10 @@ public class Lotto {
         }
 
         return count;
+    }
+
+    public boolean hasNumber(int number) {
+        return numbers.contains(number);
     }
 
     private void validate(List<Integer> numbers) {
