@@ -36,8 +36,22 @@ public class View implements Input {
                 throw new ExceptionHandle("[ERROR] 숫자와 콤마만 입력 가능합니다. - IoTopClass");
             }
         }
-        lottoWinner.add(Integer.parseInt(String.valueOf(lottoNumBuilder)));
+        lottoWinner.add(parsingCheck(String.valueOf(lottoNumBuilder)));
         return lottoWinner;
+    }
+
+    private Integer parsingCheck(String lottoNum) {
+        int num;
+        try {
+            num = Integer.parseInt(lottoNum);
+        } catch (NumberFormatException e) {
+            try {
+                throw new IllegalArgumentException();
+            } catch (IllegalArgumentException exception) {
+                throw new ExceptionHandle("[ERROR] 알맞은 입력을 하세요.");
+            }
+        }
+        return num;
     }
 
     private void appendLottoBuilder(char lottoNum, StringBuilder lottoNumBuilder) {
