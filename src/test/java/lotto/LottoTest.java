@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class LottoTest {
@@ -25,8 +26,17 @@ class LottoTest {
 
     // 아래에 추가 테스트 작성 가능
 
+    @DisplayName("구입 금액 중 문자가 있으면 예외가 발생한다.")
+    @Test
+    void setAccountString() {
+        assertThatThrownBy(() -> new Account("50001"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 
-
-
-
+    @DisplayName("구입 금액이 1000원으로 나누어떨어지지 않으면 예외가 발생한다.")
+    @Test
+    void setAccountNotDivisible() {
+        assertThatThrownBy(() -> new Account("4500"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
