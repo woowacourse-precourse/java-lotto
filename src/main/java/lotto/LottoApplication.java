@@ -2,7 +2,7 @@ package lotto;
 
 import lotto.domain.Lotto;
 import lotto.domain.LottoGenerator;
-import lotto.domain.LottoSummary;
+import lotto.domain.LottoResultSummary;
 import lotto.domain.LottoTickets;
 import lotto.domain.Money;
 import lotto.domain.Rank;
@@ -49,7 +49,7 @@ public class LottoApplication {
     }
 
     private void summaryLotto(Money money, List<Rank> ranks) {
-        LottoSummary summary = new LottoSummary(ranks, money);
+        LottoResultSummary summary = new LottoResultSummary(ranks, money);
         OutputView.printSummary(summary);
     }
 }

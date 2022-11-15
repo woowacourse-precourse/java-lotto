@@ -17,7 +17,7 @@ import static lotto.domain.Rank.SECOND;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
-class LottoSummaryTest {
+class LottoResultSummaryTest {
 
     @Test
     @DisplayName("5등 - 4번")
@@ -33,7 +33,7 @@ class LottoSummaryTest {
                 "총 수익률은 500.0%입니다.";
 
         //when
-        String summary = new LottoSummary(ranks, money).summaryLottoResult();
+        String summary = new LottoResultSummary(ranks, money).summaryLottoResult();
 
         //then
         assertThat(summary).isEqualTo(expect);
@@ -53,7 +53,7 @@ class LottoSummaryTest {
                 "총 수익률은 51,500,125.0%입니다.";
 
         //when
-        String summary = new LottoSummary(ranks, money).summaryLottoResult();
+        String summary = new LottoResultSummary(ranks, money).summaryLottoResult();
 
         //then
         assertThat(summary).isEqualTo(expect);
@@ -73,7 +73,7 @@ class LottoSummaryTest {
                 "총 수익률은 2,625.0%입니다.";
 
         //when
-        String summary = new LottoSummary(ranks, money).summaryLottoResult();
+        String summary = new LottoResultSummary(ranks, money).summaryLottoResult();
 
         //then
         assertThat(summary).isEqualTo(expect);
@@ -93,7 +93,7 @@ class LottoSummaryTest {
                 "총 수익률은 62.5%입니다.";
 
         //when
-        String summary = new LottoSummary(ranks, money).summaryLottoResult();
+        String summary = new LottoResultSummary(ranks, money).summaryLottoResult();
 
         //then
         assertThat(summary).isEqualTo(expect);
@@ -113,7 +113,7 @@ class LottoSummaryTest {
                 "총 수익률은 0.0%입니다.";
 
         //when
-        String summary = new LottoSummary(ranks, money).summaryLottoResult();
+        String summary = new LottoResultSummary(ranks, money).summaryLottoResult();
 
         //then
         assertThat(summary).isEqualTo(expect);
@@ -135,7 +135,7 @@ class LottoSummaryTest {
                 "총 수익률은 200,000,000.0%입니다.";
 
         //when
-        String summary = new LottoSummary(ranks, money).summaryLottoResult();
+        String summary = new LottoResultSummary(ranks, money).summaryLottoResult();
 
         //then
         assertThat(summary).isEqualTo(expect);
@@ -154,7 +154,7 @@ class LottoSummaryTest {
                 "총 수익률은 0.0%입니다.";
 
         //when
-        String summary = new LottoSummary(ranks, money).summaryLottoResult();
+        String summary = new LottoResultSummary(ranks, money).summaryLottoResult();
 
         //then
         assertThat(summary).isEqualTo(expect);

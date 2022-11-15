@@ -8,7 +8,7 @@ import java.util.concurrent.atomic.AtomicLong;
 
 import static lotto.domain.Rank.SECOND;
 
-public class LottoSummary {
+public class LottoResultSummary {
 
     private static final String MATCH_NUMBER = "%d개 일치";
     private static final String BONUS_MATCH = ", 보너스 볼 일치";
@@ -22,7 +22,7 @@ public class LottoSummary {
     private final double yield;
     private final String summary;
 
-    public LottoSummary(List<Rank> ranks, Money money) {
+    public LottoResultSummary(List<Rank> ranks, Money money) {
         yield = calculateYield(ranks, money);
         summary = summaryResult(ranks);
     }

@@ -1,7 +1,7 @@
 package lotto.view;
 
 import lotto.domain.Lotto;
-import lotto.domain.LottoSummary;
+import lotto.domain.LottoResultSummary;
 import lotto.domain.LottoTickets;
 
 import java.util.List;
@@ -20,7 +20,7 @@ public class OutputView {
         System.out.println();
     }
 
-    public static void printSummary(LottoSummary summary) {
+    public static void printSummary(LottoResultSummary summary) {
         System.out.println(summary.summaryLottoResult());
     }
 
