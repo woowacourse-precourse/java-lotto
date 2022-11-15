@@ -12,10 +12,9 @@ public enum ErrorStatements {
     SHOUT_NO_PAY_NO_GAME("[ERROR] 로또를 살 수 없는 금액입니다. 로또의 한 장의 가격은 1000원 입니다."),
     EXIT_PROGRAM("프로그램을 종료합니다.");
     private final String warning;
-    private ErrorStatements(String warning){
+    ErrorStatements(String warning){
         this.warning=warning;
     }
-
     public String alarmed(){
         return warning;
     }

@@ -15,13 +15,10 @@ public enum NormalStatements {
     COUNTING_UNIT("개"),
     SHOW_WINNING_RATE1("총 수익률은 "),
     SHOW_WINNING_RATE2("%입니다.");
-
     private final String saying;
-
     NormalStatements(String saying){
         this.saying = saying;
     }
-
     public String done(){
         return saying;
     }
