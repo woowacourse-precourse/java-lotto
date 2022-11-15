@@ -8,12 +8,13 @@ import java.util.Map;
 
 public class User {
     private final List<Lotto> lotteries;
+    private static final Integer price = 1000;
     private final Integer purchase;
     private Map<Double, Integer> winningHistory;
 
     public List<Lotto> lotteries(){ return lotteries; }
 
-
+    public Integer price(){ return price; }
     public void setWinningHistory(Prize prize, Integer times){
         winningHistory.put(prize.HIT(), times);
     }
