@@ -57,4 +57,19 @@ public class Winning {
     public Map<LottoRank, Integer> getLottoResult() {
         return lottoResult;
     }
+
+    public double getTotalRate() {
+        double totalRewardMoney = getTotalRewardMoney();
+
+        return Math.round((totalRewardMoney / lottoTicket.getPurchaseMoney() * 100) * 10) / 10.0;
+    }
+
+    public double getTotalRewardMoney() {
+        double totalRewardMoney = 0.0;
+
+        for (LottoRank lottoRank : lottoResult.keySet()) {
+            totalRewardMoney += (lottoRank.getRewardMoney() * lottoResult.get(lottoRank));
+        }
+        return totalRewardMoney;
+    }
 }

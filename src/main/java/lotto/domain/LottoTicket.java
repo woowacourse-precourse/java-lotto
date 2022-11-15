@@ -8,10 +8,12 @@ import lotto.validator.UserInputValidator;
 
 public class LottoTicket {
     private final int ticketCount;
+    private int purchaseMoney;
     private final List<Lotto> ticket;
 
     public LottoTicket(String inputMoney) {
         this.ticketCount = purchaseLottoCount(inputMoney);
+        setPurchaseMoney(inputMoney);
         this.ticket = lottoTicketGenerate(this.ticketCount);
     }
 
@@ -47,5 +49,13 @@ public class LottoTicket {
 
     public List<Lotto> getTicket() {
         return ticket;
+    }
+
+    public void setPurchaseMoney(String inputMoney) {
+        purchaseMoney = Integer.parseInt(inputMoney);
+    }
+
+    public int getPurchaseMoney() {
+        return purchaseMoney;
     }
 }
