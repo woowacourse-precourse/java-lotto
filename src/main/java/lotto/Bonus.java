@@ -11,7 +11,7 @@ public class Bonus {
     public Bonus(List<Integer> numbers, int bonusNumber) {
         range(bonusNumber);
         type(bonusNumber);
-        //repeat(numbers, bonusNumber);
+        repeat(numbers, bonusNumber);
         this.bonusNumber = bonusNumber;
     }
     private void range(int bonus){
@@ -23,6 +23,11 @@ public class Bonus {
         int eachChar = String.valueOf(bonus).charAt(0);
         if (!Character.isDigit(eachChar)) {
             throw new IllegalArgumentException(ErrorMessage.bonusType.getValue());
+        }
+    }
+    private void repeat(List<Integer> numbers, int bonus) {
+        if (numbers.contains(bonus)){
+            throw new IllegalArgumentException(ErrorMessage.bonusRepetition.getValue());
         }
     }
 }
