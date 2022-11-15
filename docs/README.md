@@ -7,7 +7,8 @@
 - LottoGame(로또게임): 로또 게임 프로세스 관리
 - Customer(로또 구매자): 여러 개의 로또를 구입하는 사람
 - Lotto(로또): 로또 번호
-- WinningNumber(당첨 번호) : 당첨 번호
+- WinningNumber(당첨 번호): 당첨 번호
+- LottoGameView(로또게임뷰): 로또 게임 인터페이스
 
 ## 2. 기능 목록
 
