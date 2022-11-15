@@ -17,7 +17,7 @@ public class WinningNumber {
             checkDuplicateNumber(winNumber);
             checkNumbersRange(winNumber);
         } catch (IllegalAccessException e) {
-            throw new RuntimeException(e);
+            System.out.println(e.getMessage());
         }
     }
 
@@ -26,7 +26,6 @@ public class WinningNumber {
             String[] ArrayStr = winInput.split(",");
 
             for (String s : ArrayStr) {
-                //System.out.println(s);
                 winNumber.add(Integer.parseInt(s));
             }
         }
@@ -46,28 +45,28 @@ public class WinningNumber {
         Set<Integer> numSet = new HashSet<>(tempWinNumber);
 
         if (numSet.size() != tempWinNumber.size()) {
-            System.err.println("중복된 요소가 있습니다!");
-            throw new IllegalAccessException("[ERROR]: Duplicate!");
+            System.err.println("[ERROR] 중복된 요소가 있습니다!");
+            throw new IllegalArgumentException("[ERROR]: Duplicate!");
         }
     }
 
     private void checkWinNumberSize(List<Integer> winNumbers) throws IllegalAccessException {
         if (winNumbers.size() != 6) {
-            System.err.println("로또번호의 숫자는 6개입니다!");
-            throw new IllegalAccessException("[ERROR]: NOT CORRECT SIZE!");
+            System.err.println("[ERROR] 로또번호의 숫자는 6개입니다!");
+            throw new IllegalArgumentException("[ERROR]: NOT CORRECT SIZE!");
         }
     }
 
     private void checkNumbersRange(List<Integer> winNumbers) throws IllegalAccessException {
         for (Integer number: winNumbers) {
             if (!checkCorrectNumber(number)){
-                System.err.println("당첨번호가 유효한 숫자가 아닙니다");
-                throw new IllegalAccessException("[ERROR]: NOT CORRECT WINNING NUMBER!");
+                System.err.println("[ERROR] 당첨번호가 유효한 숫자가 아닙니다");
+                throw new IllegalArgumentException("[ERROR]: NOT CORRECT WINNING NUMBER!");
             }
         }
         if (!checkCorrectNumber(bonusNumber)) {
-            System.err.println("보너스 번호가 유효한 숫자가 아닙니다");
-            throw new IllegalAccessException("[ERROR]: NOT CORRECT BONUS NUMBER!");
+            System.err.println("[ERROR] 보너스 번호가 유효한 숫자가 아닙니다");
+            throw new IllegalArgumentException("[ERROR]: NOT CORRECT BONUS NUMBER!");
         }
     }
 
