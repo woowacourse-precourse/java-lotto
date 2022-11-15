@@ -19,14 +19,25 @@ public class Lotto {
 
     // TODO: 추가 기능 구현
     // 당첨 번호와 사용자 추첨 번호 일치 결과 저장
-    public int[] countWinningResult(List<List<Integer>> userRandomNumber, int count, int[] matches) {
+    public int[] countWinningResult(List<List<Integer>> userRandomNumbers, int count, int[] matches, int bonusNumber) {
         for (int i = 0; i < count; i++) {
-            int matchCount = checkWinningNumbers(userRandomNumber.get(i));
-            matches = returnWinningResult(matchCount, matches);
+            int matchCount = checkWinningNumbers(userRandomNumbers.get(i));
+            matches = countMatching(userRandomNumbers.get(i), bonusNumber, matchCount, matches);
         }
 
         return matches;
     }
+
+    // 보너스 번호랑 일치하는지 체크
+    public int[] countMatching(List<Integer> userRandomNumbers, int bonusNumber, int matchCount, int[] matches) {
+        if (matchCount >= 5 && checkMatchWithBonusNumber(userRandomNumbers, bonusNumber)) {
+            matches[3]++;
+            return matches;
+        }
+        matches = returnWinningResult(matchCount, matches);
+        return matches;
+    }
+
 
     // 당첨 번호와 사용자 추첨 번호 일치 여부 확인
     public int checkWinningNumbers(List<Integer> userNumbers) {
@@ -59,9 +70,28 @@ public class Lotto {
         }
 
         if (matchCount == 6) {
-            matches[3]++;
+            matches[4]++;
         }
 
         return matches;
+    }
+
+    // 보너스 번호 일치 여부 확인
+    public boolean checkMatchWithBonusNumber(List<Integer> userRandomNumbers, int bonusNumber) {
+        boolean isMatch = false;
+
+        for (int i = 0; i < 6; i++) {
+            isMatch = isMatchWithBonusNumber(userRandomNumbers.get(i), bonusNumber);
+        }
+        return isMatch;
+    }
+
+    // 해당 숫자가 보너스 번호와 일치하나요?
+    public boolean isMatchWithBonusNumber(int userRandomNumber, int bonusNumber) {
+        if (userRandomNumber == bonusNumber) {
+            return true;
+        }
+
+        return false;
     }
 }

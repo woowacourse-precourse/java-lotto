@@ -29,16 +29,24 @@ public class OutputUI {
     }
 
     // 당첨 내역 출력
-    public void printWinningResult(List<List<Integer>> userRandomNumber, int count, Lotto lotto) {
-        int[] matches = {0, 0, 0, 0};
-        String[] moneys = {"5,000", "50,000", "1,500,000", "2,000,000,000"};
+    public void printWinningResult(List<List<Integer>> userRandomNumber, int count, Lotto lotto, int bonusNumber) {
+        int[] matches = {0, 0, 0, 0, 0};
+        String bonusMoney = "30,000,000";
+        String[] moneys = {"5,000", "50,000", "1,500,000", bonusMoney, "2,000,000,000"};
 
-        matches = lotto.countWinningResult(userRandomNumber, count, matches);
+
+        matches = lotto.countWinningResult(userRandomNumber, count, matches, bonusNumber);
 
         System.out.println("당첨 통계");
         System.out.println("---");
         for (int i = 0; i < matches.length; i++) {
-            System.out.println((i + 3) + "개 일치 (" + moneys[i] + "원) - " + matches[i] + "개");
+            if (i == 3) {
+                System.out.println("5개 일치, 보너스 볼 일치 (" + bonusMoney + "원) - " + matches[i] + "개");
+            } else if (i == 4) {
+                System.out.println((i + 2) + "개 일치 (" + moneys[i] + "원) - " + matches[i] + "개");
+            } else {
+                System.out.println((i + 3) + "개 일치 (" + moneys[i] + "원) - " + matches[i] + "개");
+            }
         }
     }
 }

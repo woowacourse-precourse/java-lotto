@@ -46,6 +46,6 @@ public class GameController {
 
     // 게임 종료 부분
     public void endGame() {
-        outputUI.printWinningResult(userRandomNumbers, count, lotto);
+        outputUI.printWinningResult(userRandomNumbers, count, lotto, bonusNumber);
     }
 }
