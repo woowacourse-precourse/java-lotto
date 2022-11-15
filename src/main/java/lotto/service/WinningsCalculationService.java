@@ -63,18 +63,23 @@ public class WinningsCalculationService {
 
         if (winningCount == 3) {
             winningPrice += 5000;
+            winningResult[0]++;
         }
         if (winningCount == 4) {
             winningPrice += 50000;
+            winningResult[1]++;
         }
         if (winningCount == 5) {
             winningPrice += 1500000;
+            winningResult[2]++;
         }
         if (winningCount == 5 && isSecond) {
-            winningPrice += 3000000;
+            winningPrice += 30000000;
+            winningResult[3]++;
         }
         if (winningCount == 6) {
             winningPrice += 2000000000;
+            winningResult[4]++;
         }
 
         return winningPrice;
