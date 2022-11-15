@@ -20,11 +20,11 @@ public class LottoController {
         int purchase = getPurchase();
 
         List<List<Integer>> randomLottos = getRandomLottos(purchase);
-        ResultView.printRandomLottos(randomLottos,purchase / 1000);
+        ResultView.printRandomLottos(randomLottos, purchase / 1000);
 
         List<Integer> WinLotto = getWinLotto();
         int bonus = getBonusNumber();
-        isDuplicate(WinLotto,bonus);
+        isDuplicate(WinLotto, bonus);
 
         printResult(WinLotto, randomLottos, bonus, purchase);
     }
@@ -63,9 +63,9 @@ public class LottoController {
         ResultView.printProfit(rankResult, purchase);
     }
 
-    private void isDuplicate(List<Integer> WinLotto,int bonus) {
-        if(WinLotto.contains(bonus))
+    private void isDuplicate(List<Integer> WinLotto, int bonus) {
+        if (WinLotto.contains(bonus))
             System.out.println(ERROR_DUPLICATION_MESSAGE);
-            throw new IllegalArgumentException();
+        throw new IllegalArgumentException();
     }
 }

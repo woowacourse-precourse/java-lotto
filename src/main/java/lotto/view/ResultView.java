@@ -16,7 +16,7 @@ import static lotto.utils.Messages.PRINT_RESULT_START_MESSAGE;
 public class ResultView {
 
     public static void printRandomLottos(List<List<Integer>> lottos, int purchase) {
-        System.out.printf(PRINT_PURCHASE_COUNT_MESSAGE,purchase);
+        System.out.printf(PRINT_PURCHASE_COUNT_MESSAGE, purchase);
         for (List<Integer> lotto : lottos) {
             System.out.println(lotto);
         }

@@ -21,14 +21,14 @@ public class Purchase {
     }
 
     private void validateRange(int purchase) {
-        if(purchase<0){
+        if (purchase < 0) {
             System.out.println(ERROR_PLUS_NUMBER_MESSAGE);
             throw new IllegalArgumentException();
         }
     }
 
     private void validateUnit(int purchase) {
-        if(purchase % 1000 !=0){
+        if (purchase % 1000 != 0) {
             System.out.println(ERROR_UNIT_MESSAGE);
             throw new IllegalArgumentException();
         }

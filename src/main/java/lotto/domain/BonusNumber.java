@@ -20,7 +20,7 @@ public class BonusNumber {
     }
 
     private void validateRange(int bonusNumber) {
-        if(bonusNumber<1 || bonusNumber >45){
+        if (bonusNumber < 1 || bonusNumber > 45) {
             System.out.println(ERROR_RANGE_MESSAGE);
             throw new IllegalArgumentException();
         }
