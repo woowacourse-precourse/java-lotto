@@ -45,7 +45,6 @@ public class Buyer {
         sort(lottoNumbers);
     }
 
-
     public List<Lotto> getLottos() {
         return lottos;
     }
