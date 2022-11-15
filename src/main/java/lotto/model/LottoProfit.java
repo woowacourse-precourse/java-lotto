@@ -15,7 +15,7 @@ public class LottoProfit {
     }
 
     public double calculateRateOfReturn(Map<Integer, Integer> totalRank, int purchaseAmount) {
-        double rateOfReturn = (double) calculateSumOfPrize(totalRank) / (double) purchaseAmount;
+        double rateOfReturn = (double) calculateSumOfPrize(totalRank) / (double) purchaseAmount * (double) 100;
         return rateOfReturn;
     }
 

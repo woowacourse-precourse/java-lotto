@@ -1,9 +1,6 @@
 package lotto.view;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 public class Output {
     private static final String QUANTITY_OF_LOTTO = "개를 구매했습니다.";
@@ -31,8 +28,17 @@ public class Output {
 
     public static void printLottoTickets(Set<List<Integer>> lottoTickets) {
         for (List<Integer> lottoTicket : lottoTickets) {
-            System.out.println(formLottoTicket(lottoTicket));
+            System.out.println(sortRandomLottoTicket(lottoTicket));
         }
+    }
+
+    private static String sortRandomLottoTicket(List<Integer> lottoTicket) {
+        List<Integer> sortedTicket = new ArrayList<>();
+        for (Integer eachNumber : lottoTicket) {
+            sortedTicket.add(eachNumber);
+        }
+        Collections.sort(sortedTicket);
+        return formLottoTicket(sortedTicket);
     }
 
     private static String formLottoTicket(List<Integer> lottoTicket) {
