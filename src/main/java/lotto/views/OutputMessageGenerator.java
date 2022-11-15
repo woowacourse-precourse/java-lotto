@@ -7,7 +7,6 @@ import java.util.Map;
 import lotto.constants.enums.WinResultStatus;
 import lotto.constants.messages.OutputMessage;
 import lotto.constants.utils.MessageFormatUtil;
-import lotto.constants.utils.NumberUtil;
 import lotto.domain.Lotto;
 
 public class OutputMessageGenerator {
@@ -20,8 +19,7 @@ public class OutputMessageGenerator {
                 .map(Lotto::createMessage)
                 .forEach(lotto -> allLottoNumber.append(lotto)
                         .append(MessageFormatUtil.NEXT_LINE));
-        return allLottoNumber.deleteCharAt(allLottoNumber.length() - NumberUtil.ONE)
-                .toString();
+        return deleteLastSeparator(allLottoNumber);
     }
 
     public String createBuyingLottoCountMessage(int buyingLottoCount) {
@@ -29,7 +27,6 @@ public class OutputMessageGenerator {
     }
 
     public String createStatisticsMessage(Map<WinResultStatus, Integer> statisticsCounts) {
-        // TODO 리팩토링
         StringBuilder statisticsMessage = new StringBuilder();
         List<WinResultStatus> winResultStatuses = WinResultStatus.getWinResultStatuses();
         for (int winResultIndex = 0; winResultIndex < WIN_RESULT_COUNT; winResultIndex++) {
@@ -37,8 +34,7 @@ public class OutputMessageGenerator {
                             fillMessageFormat(winResultIndex, winResultStatuses.get(winResultIndex), statisticsCounts))
                     .append(MessageFormatUtil.NEXT_LINE);
         }
-        return statisticsMessage.deleteCharAt(statisticsMessage.lastIndexOf(MessageFormatUtil.NEXT_LINE))
-                .toString();
+        return deleteLastSeparator(statisticsMessage);
     }
 
     private String fillMessageFormat(int winResultIndex,
@@ -59,5 +55,10 @@ public class OutputMessageGenerator {
         NumberFormat decimalFormat = new DecimalFormat(MessageFormatUtil.PRICE_FORMAT);
         String format = decimalFormat.format(earningsRate);
         return String.format(OutputMessage.EARNINGS_RATIO_FORMAT, format);
+    }
+
+    private String deleteLastSeparator(StringBuilder allLottoNumber) {
+        return allLottoNumber.deleteCharAt(allLottoNumber.lastIndexOf(MessageFormatUtil.NEXT_LINE))
+                .toString();
     }
 }
