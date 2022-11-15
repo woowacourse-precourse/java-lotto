@@ -25,6 +25,6 @@ public enum PlaceCondition {
     }
 
     private boolean isEqual(int matchCount, boolean isBonusMatch) {
-        return matchCount == this.count && (this.isBonusMatch == false || isBonusMatch == this.isBonusMatch);
+        return matchCount == this.count && (!this.isBonusMatch || isBonusMatch);
     }
 }
