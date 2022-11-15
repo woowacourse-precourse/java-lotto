@@ -28,13 +28,13 @@ public class Controller {
         }
     }
 
-    public void createLotto(int lottoTicket) {
+    private void createLotto(int lottoTicket) {
         NumberGenerator numberGenerator = new NumberGenerator();
         lottoNumbers = numberGenerator.createRandomNumbers(lottoTicket);
         systemMessage.printLottoNumbers(lottoNumbers);
     }
 
-    public void setNumbers() {
+    private void setNumbers() {
         try {
             setWinningNumbers();
             setBonusNumber();
@@ -44,16 +44,16 @@ public class Controller {
         }
     }
 
-    public void setWinningNumbers() {
+    private void setWinningNumbers() {
         winningNumbers = utils.inputWinningNumbers();
         new Lotto(winningNumbers);
     }
 
-    public void setBonusNumber() {
+    private void setBonusNumber() {
         bonusNumber = utils.inputBonusNumber();
     }
 
-    public void winningResult() {
+    private void winningResult() {
         Judgment judgment = new Judgment(lottoNumbers, winningNumbers, bonusNumber);
         List<Integer> winningResult = judgment.result();
         systemMessage.printResult(winningResult);
