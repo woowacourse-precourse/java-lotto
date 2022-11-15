@@ -16,7 +16,8 @@ public class BuyLotto {
     }
     private void validate(String money) throws IllegalArgumentException{
         if(!money.equals(money.replaceAll("[^0-9]", ""))) {throw new IllegalArgumentException("문자가 포함되어 있습니다.");}
-        if(Integer.valueOf(money) % 1000 != 0) {throw new IllegalArgumentException("1000원 이상의 금액을 입력해주세요");}
+        if(Integer.valueOf(money) % 1000 != 0) {throw new IllegalArgumentException("1000원 단위로 금액을 입력해주세요");}
+        if(Integer.valueOf(money) / 1000 < 0) {throw new IllegalArgumentException("1000원 이상의 금액을 입력해주세요");}
     }
 
 }
