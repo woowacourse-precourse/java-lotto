@@ -1,6 +1,8 @@
 package controller;
 
 import domain.Lotto;
+import repository.LottoRepository;
+import repository.MoneyRepository;
 import service.LottoService;
 import service.MoneyService;
 import view.InputView;
@@ -13,8 +15,8 @@ public class LottoController {
     private final LottoService lottoService;
 
     public LottoController() {
-        this.moneyService = new MoneyService();
-        this.lottoService = new LottoService();
+        this.moneyService = new MoneyService(new MoneyRepository());
+        this.lottoService = new LottoService(new LottoRepository());
     }
 
     private void getPurchaseAmount() {
@@ -40,5 +42,9 @@ public class LottoController {
     private void getBonusNumber() {
         String number = InputView.receiveBonusNumber();
         lottoService.saveBonusNumber(number);
+    }
+
+    private void getWinners() {
+        lottoService.saveWinners();
     }
 }

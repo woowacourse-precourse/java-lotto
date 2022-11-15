@@ -7,8 +7,8 @@ import java.util.regex.Pattern;
 public class MoneyService {
     private final MoneyRepository moneyRepository;
 
-    public MoneyService() {
-        this.moneyRepository = new MoneyRepository();
+    public MoneyService(MoneyRepository moneyRepository) {
+        this.moneyRepository = moneyRepository;
     }
 
     public void savePurchaseAmount(String amount) {

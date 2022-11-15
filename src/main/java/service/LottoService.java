@@ -6,6 +6,7 @@ import repository.LottoRepository;
 
 import java.util.Arrays;
 import java.util.Comparator;
+import java.util.EnumMap;
 import java.util.List;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
@@ -13,8 +14,8 @@ import java.util.stream.Collectors;
 public class LottoService {
     private final LottoRepository lottoRepository;
 
-    public LottoService() {
-        this.lottoRepository = new LottoRepository();
+    public LottoService(LottoRepository lottoRepository) {
+        this.lottoRepository = lottoRepository;
     }
 
     public void publishLotto(int purchaseAmount) {
@@ -97,4 +98,34 @@ public class LottoService {
             throw new IllegalArgumentException(Error.BONUS_NUMBER_IN_WINNING_NUMBER.getText());
         }
     }
+
+    public void saveWinners() {
+        List<Lotto> publishedLotto = lottoRepository.getPublishedLotto();
+        List<Integer> winningNumbers = lottoRepository.getWinningNumbers();
+        int bonus = lottoRepository.getBonusNumber();
+
+        EnumMap<Winner, Integer> winners = checkWin(publishedLotto, winningNumbers, bonus);
+        lottoRepository.saveWinners(winners);
+    }
+
+    private EnumMap<Winner, Integer> checkWin(List<Lotto> publishedLotto, List<Integer> winningNumbers, int bonus) {
+        EnumMap<Winner, Integer> winners = new EnumMap<>(Winner.class);
+
+        publishedLotto.stream().map(Lotto::getNumbers)
+                .forEach(numbers -> {
+                    int match = (int) numbers.stream().filter(winningNumbers::contains).count();
+                    if (match == Winner.SECOND_PLACE.getMatch() && numbers.contains(bonus)) {
+                        winners.put(Winner.SECOND_PLACE, winners.getOrDefault(Winner.SECOND_PLACE, 0) + 1);
+                        return;
+                    }
+                    winners.put(Winner.getByMatch(match), winners.getOrDefault(Winner.getByMatch(match), 0) + 1);
+                });
+
+        return winners;
+    }
+
+    public EnumMap<Winner, Integer> getWinners() {
+        return lottoRepository.getWinners();
+    }
+
 }
