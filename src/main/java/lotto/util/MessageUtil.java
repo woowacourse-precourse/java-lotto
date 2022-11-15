@@ -5,7 +5,7 @@ import java.util.Comparator;
 import java.util.List;
 
 import static lotto.constant.InputMessage.*;
-import static lotto.constant.LottoResult.FIVE_COUNT_WITH_BONUS;
+import static lotto.constant.LottoPrice.FIVE_COUNT_WITH_BONUS;
 import static lotto.constant.OutputMessage.*;
 
 

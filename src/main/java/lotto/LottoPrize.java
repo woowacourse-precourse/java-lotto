@@ -5,11 +5,13 @@ import lotto.util.MessageUtil;
 import java.util.List;
 import java.util.function.Predicate;
 
-import static lotto.constant.LottoResult.*;
+import static lotto.constant.LottoPrice.*;
 
 public class LottoPrize {
 
     private final MessageUtil messageUtil = new MessageUtil();
+
+    private final LottoResult lottoResult = new LottoResult();
 
     private final LottoWinningNumber winningNumInfo;
 
@@ -30,11 +32,11 @@ public class LottoPrize {
     }
 
     private void printResultStats(int purchaseAmount) {
-        messageUtil.printWinningStatsResult(THREE_COUNT.getNumber(), THREE_COUNT.getPrice(), THREE_COUNT.getMatchCount());
-        messageUtil.printWinningStatsResult(FOUR_COUNT.getNumber(), FOUR_COUNT.getPrice(), FOUR_COUNT.getMatchCount());
-        messageUtil.printWinningStatsResult(FIVE_COUNT.getNumber(), FIVE_COUNT.getPrice(), FIVE_COUNT.getMatchCount());
-        messageUtil.printWinningStatsResult(FIVE_COUNT_WITH_BONUS.getNumber(), FIVE_COUNT_WITH_BONUS.getPrice(), FIVE_COUNT_WITH_BONUS.getMatchCount());
-        messageUtil.printWinningStatsResult(SIX_COUNT.getNumber(), SIX_COUNT.getPrice(), SIX_COUNT.getMatchCount());
+        messageUtil.printWinningStatsResult(THREE_COUNT.getNumber(), THREE_COUNT.getPrice(), lottoResult.getThreeCount());
+        messageUtil.printWinningStatsResult(FOUR_COUNT.getNumber(), FOUR_COUNT.getPrice(), lottoResult.getFourCount());
+        messageUtil.printWinningStatsResult(FIVE_COUNT.getNumber(), FIVE_COUNT.getPrice(), lottoResult.getFiveCount());
+        messageUtil.printWinningStatsResult(FIVE_COUNT_WITH_BONUS.getNumber(), FIVE_COUNT_WITH_BONUS.getPrice(), lottoResult.getFiveWithBonusCount());
+        messageUtil.printWinningStatsResult(SIX_COUNT.getNumber(), SIX_COUNT.getPrice(), lottoResult.getSixCount());
 
         long totalWinningAmount = getTotalWinningAmount();
         double earningRate = Double.parseDouble(computeEarningRate(purchaseAmount, totalWinningAmount));
@@ -43,28 +45,28 @@ public class LottoPrize {
     }
 
     private long getTotalWinningAmount() {
-        return (long) THREE_COUNT.getMatchCount() * THREE_COUNT.getPrice()
-                + (long) FOUR_COUNT.getMatchCount() * FOUR_COUNT.getPrice()
-                + (long) FIVE_COUNT.getMatchCount() * FIVE_COUNT.getPrice()
-                + (long) FIVE_COUNT_WITH_BONUS.getMatchCount() * FIVE_COUNT_WITH_BONUS.getPrice()
-                + (long) SIX_COUNT.getMatchCount() * SIX_COUNT.getPrice();
+        return (long) lottoResult.getThreeCount() * THREE_COUNT.getPrice()
+                + (long)lottoResult.getFourCount() * FOUR_COUNT.getPrice()
+                + (long) lottoResult.getFiveCount() * FIVE_COUNT.getPrice()
+                + (long) lottoResult.getFiveWithBonusCount() * FIVE_COUNT_WITH_BONUS.getPrice()
+                + (long) lottoResult.getSixCount() * SIX_COUNT.getPrice();
     }
 
     private void addMatchCount(int matchCount) {
         if (matchCount == THREE_COUNT.getNumber()) {
-            THREE_COUNT.addMatchCount();
+            lottoResult.addThreeCount();
         }
         if (matchCount == FOUR_COUNT.getNumber()) {
-            FOUR_COUNT.addMatchCount();
+            lottoResult.addFourCount();
         }
         if (matchCount == FIVE_COUNT.getNumber()) {
-            FIVE_COUNT.addMatchCount();
+            lottoResult.addFiveCount();
         }
         if (matchCount == FIVE_COUNT_WITH_BONUS.getNumber()) {
-            FIVE_COUNT_WITH_BONUS.addMatchCount();
+            lottoResult.addFiveWithBonusCount();
         }
         if (matchCount == SIX_COUNT.getNumber()) {
-            SIX_COUNT.addMatchCount();
+            lottoResult.addSixCount();
         }
     }
 
