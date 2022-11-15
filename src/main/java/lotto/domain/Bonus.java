@@ -18,19 +18,19 @@ public class Bonus {
         try {
             Integer.parseInt(bonus);
         } catch (Exception e) {
-            throw new IllegalArgumentException(String.valueOf(ErrorMessage.Bonus_Not));
+            throw new IllegalArgumentException(ErrorMessage.Bonus_Not.getMessage());
         }
     }
 
     private void bonusRange(int bonus) {
         if(bonus < 1 || bonus > 45) {
-            throw new IllegalArgumentException(String.valueOf(ErrorMessage.Bonus_Range));
+            throw new IllegalArgumentException(ErrorMessage.Bonus_Range.getMessage());
         }
     }
 
     private void bonusDuplicate(int bonus, List<Integer> numbers) {
         if(numbers.contains(bonus)) {
-            throw new IllegalArgumentException(String.valueOf(ErrorMessage.Bonus_Duplicate));
+            throw new IllegalArgumentException(ErrorMessage.Bonus_Duplicate.getMessage());
         }
     }
 

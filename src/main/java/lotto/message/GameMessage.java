@@ -14,6 +14,12 @@ public enum GameMessage {
     Return_Rate_Prefix("총 수익률은 "),
     Return_Rate_Postfix("%입니다.");
 
+    private final String message;
     GameMessage(String message) {
+        this.message = message;
+    }
+
+    public String getMessage() {
+        return message;
     }
 }

@@ -44,6 +44,10 @@ public class Winning {
             return 2;
         }
 
+        if(count < 3) {
+            return 0;
+        }
+
         return count;
     }
 }

@@ -11,6 +11,12 @@ public enum ErrorMessage {
     Bonus_Duplicate("[ERROR] 보너스 번호는 로또 번호와 중복되지 않는 숫자여야 합니다."),
     Not_Digit("[ERROR] 숫자가 아닌 다른 값은 입력할 수 없습니다.");
 
+    private final String message;
     ErrorMessage(String message) {
+        this.message = message;
+    }
+
+    public String getMessage() {
+        return message;
     }
 }

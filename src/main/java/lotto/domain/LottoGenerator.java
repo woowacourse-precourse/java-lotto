@@ -5,8 +5,7 @@ import lotto.message.GameMessage;
 
 import java.util.HashMap;
 import java.util.List;
-
-import static java.util.Collections.sort;
+import java.util.stream.Collectors;
 
 public class LottoGenerator {
     List<Integer> userNumbers;
@@ -19,11 +18,11 @@ public class LottoGenerator {
 
     public HashMap<Integer, List<Integer>> userLottoNumbers() {
         System.out.print(count);
-        System.out.println(GameMessage.Purchase_Count);
+        System.out.println(GameMessage.Purchase_Count.getMessage());
 
         for(int i = 0; i < count; i++) {
-            userNumbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
-            sort(userNumbers);
+            userNumbers = Randoms.pickUniqueNumbersInRange(1, 45, 6)
+                    .stream().sorted().collect(Collectors.toList());
 
             System.out.println(userNumbers);
 

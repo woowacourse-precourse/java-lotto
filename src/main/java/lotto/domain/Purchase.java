@@ -18,15 +18,15 @@ public class Purchase {
         try {
             Integer.parseInt(money);
         } catch (Exception e) {
-            throw new IllegalArgumentException(String.valueOf(ErrorMessage.Not_Digit));
+            throw new IllegalArgumentException(ErrorMessage.Not_Digit.getMessage());
         }
     }
 
     private void priceRange(int money) {
         if(money % 1000 != 0) {
-            throw new IllegalArgumentException(String.valueOf(ErrorMessage.Purchase_Price));
+            throw new IllegalArgumentException(ErrorMessage.Purchase_Price.getMessage());
         } else if(money <= 0) {
-            throw new IllegalArgumentException(String.valueOf(ErrorMessage.Purchase_Price));
+            throw new IllegalArgumentException(ErrorMessage.Purchase_Price.getMessage());
         }
     }
 
