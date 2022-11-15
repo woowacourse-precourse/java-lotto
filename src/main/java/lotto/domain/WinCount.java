@@ -9,7 +9,7 @@ public class WinCount {
 
     static List<Integer> rankCount = new ArrayList<>(Arrays.asList(0,0,0,0,0));
 
-    public static List<Integer> winCount(List<WinDetail> result) {
+    public static List<Integer> totalCount(List<WinDetail> result) {
         for(WinDetail winDetail : result) {
             count(winDetail);
         }

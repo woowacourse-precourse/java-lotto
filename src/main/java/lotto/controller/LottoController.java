@@ -20,7 +20,6 @@ public class LottoController {
         rewardRate(rank, money);
     }
 
-
     private String buyLotto(){
         String money = InputView.buyLotto();
         User.checkError(money);
@@ -35,7 +34,6 @@ public class LottoController {
 
     private List<List<Integer>> getLotto(int count){
         List<List<Integer>> myLotto = LottoNumber.userLotto(count);
-
         LottoNumber.printUserLotto(myLotto);
         return myLotto;
     }
@@ -43,9 +41,6 @@ public class LottoController {
     private List<Integer> getWinNumber(){
         String win = InputView.winningLotto();
         List<Integer> numbers = WinNumber.winNum(win);
-
-        Lotto lotto = new Lotto(numbers);
-        //numbers = lotto.change(win);
         return numbers;
     }
 
@@ -62,7 +57,7 @@ public class LottoController {
     }
 
     private void winCount(List<WinDetail> result){
-        List<Integer> cc = WinCount.winCount(result);
+        List<Integer> cc = WinCount.totalCount(result);
         WinCount.printCount(cc);
     }
 
