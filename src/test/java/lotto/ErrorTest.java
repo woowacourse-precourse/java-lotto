@@ -9,6 +9,7 @@ import java.util.stream.Collectors;
 
 import static lotto.LottoConst.LOTTO_NUMBER_COUNT;
 import static lotto.LottoConst.LOTTO_PRICE;
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class ErrorTest {
