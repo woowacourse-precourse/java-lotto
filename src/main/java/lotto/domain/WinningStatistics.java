@@ -10,6 +10,7 @@ public class WinningStatistics {
     List<List<Integer>> lottocard = new ArrayList<>();
     List<Integer> winLotto = new ArrayList<>();
     int bonusNum;
+    int money;
     Map<String, Integer> winResult = new HashMap<>() {
         {
             put("3", 0);
@@ -24,6 +25,7 @@ public class WinningStatistics {
     public WinningStatistics(LottoCard lottoCard, WinningLottoNumber winningLotto, int bonusNum) {
         lottocard = lottoCard.getlottocard();
         winLotto = winningLotto.getLotto().getNumbers();
+        money = (int) lottoCard.getMoney();
         this.bonusNum = bonusNum;
         printResult();
     }
@@ -36,6 +38,11 @@ public class WinningStatistics {
         System.out.println("5개 일치 (1,500,000원) - " + winResult.get("5"));
         System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - " + winResult.get("5+"));
         System.out.println("6개 일치 (2,000,000,000원) - " + winResult.get("6"));
+
+        int price = (5000 * winResult.get("3") + 50000 * winResult.get("4") + 1500000 * winResult
+            .get("5") + 30000000 * winResult.get("5+") + 2000000000 * winResult.get("6"));
+        double rate = (price / money) * 100;
+        System.out.println(String.format("총 수익률은 %.1f%%입니다.", rate));
     }
 
     private void checkCountOfLottoCard() {

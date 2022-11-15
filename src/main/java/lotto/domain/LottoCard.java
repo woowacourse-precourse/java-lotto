@@ -6,11 +6,13 @@ import java.util.List;
 public class LottoCard {
 
     private long lottoCardNum;
+    private long money;
     private List<Integer> lottoNums;
     private RandomNumberGenerator randomNumberGenerator = new RandomNumberGenerator();
     List<List<Integer>> lottocard = new ArrayList<>();
 
     public LottoCard(long money) {
+        this.money = money;
         lottoCardNum = money / 1000;
         System.out.println("\n" + lottoCardNum + "개를 구매했습니다.");
         generateRandomLottoNum();
@@ -26,6 +28,10 @@ public class LottoCard {
 
     public List<List<Integer>> getlottocard() {
         return lottocard;
+    }
+
+    public long getMoney() {
+        return money;
     }
 
 }
