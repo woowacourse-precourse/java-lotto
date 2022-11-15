@@ -4,6 +4,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
@@ -22,7 +23,7 @@ class ExceptionHandlingTest {
     void isNumeric() {
         ExceptionHandling exceptionHandling = new ExceptionHandling();
         assertThatThrownBy(() -> exceptionHandling.isNumeric("123$"))
-                .isInstanceOf(IllegalArgumentException.class);
+                .isInstanceOf(NoSuchElementException.class);
     }
 
     @DisplayName("1 ~ 45사이의 숫자인지 검사")
