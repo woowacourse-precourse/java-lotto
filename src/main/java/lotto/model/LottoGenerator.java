@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import lotto.utils.CheckInput;
 
 public class LottoGenerator {
     // 한장의 로또를 만들어주는 메서드
@@ -13,6 +14,7 @@ public class LottoGenerator {
 
     // 금액만큼 로또번호를 만들어주는 메서드
     public static List<List<Integer>> createLottos(int receivedMoney) {
+        CheckInput.checkInputMoney(Integer.toString(receivedMoney));
         int ticketCount = receivedMoney / 1000;
         List<List<Integer>> lottoTicket = new ArrayList<>();
 
@@ -22,5 +24,9 @@ public class LottoGenerator {
             ticketCount--;
         }
         return lottoTicket;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(LottoGenerator.createLottos(-1000));
     }
 }
