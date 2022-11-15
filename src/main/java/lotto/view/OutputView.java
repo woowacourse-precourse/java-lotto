@@ -13,19 +13,21 @@ import lotto.domain.LottoRanking;
 
 public class OutputView {
 
-	private static final String OUTPUT_LOTTO_COUNT_MESSAGE = "개를 구매했습니다.";
+	private static final String OUTPUT_LOTTO_COUNT_MESSAGE = "%d개를 구매했습니다.\n";
 	private static final String OUTPUT_WINNING_STATISTICS = "당첨 통계\n---";
+	private static final String OUTPUT_YIELD_MESSAGE = "총 수익률은 %.1f%%입니다.\n";
 
 	private static final Map<LottoRanking, String> LOTTO_RANKING_STRING_MAP = Map.of(
-		FIRST, "6개 일치 (2,000,000,000원) - ",
-		SECOND, "5개 일치, 보너스 볼 일치 (30,000,000원) - ",
-		THIRD, "5개 일치 (1,500,000원) - ",
-		FOURTH, "4개 일치 (50,000원) - ",
-		FIFTH, "3개 일치 (5,000원) - "
+		FIRST, "6개 일치 (2,000,000,000원) - %d개\n",
+		SECOND, "5개 일치, 보너스 볼 일치 (30,000,000원) - %d개\n",
+		THIRD, "5개 일치 (1,500,000원) - %d개\n",
+		FOURTH, "4개 일치 (50,000원) - %d개\n",
+		FIFTH, "3개 일치 (5,000원) - %d개\n"
 	);
+	public static final int EMPTY_COUNT = 0;
 
 	public void printLottoCount(int lottoCount) {
-		System.out.println(lottoCount + OUTPUT_LOTTO_COUNT_MESSAGE);
+		System.out.printf(OUTPUT_LOTTO_COUNT_MESSAGE, lottoCount);
 	}
 
 	public void printLottoNumbers(List<Lotto> lottos) {
@@ -47,13 +49,12 @@ public class OutputView {
 	}
 
 	private void printMatches(Map<LottoRanking, Integer> winningResult, LottoRanking ranking) {
-		System.out.println(
-			LOTTO_RANKING_STRING_MAP.get(ranking) + winningResult.getOrDefault(ranking, 0) + "개");
+		System.out.printf(LOTTO_RANKING_STRING_MAP.get(ranking), winningResult.getOrDefault(ranking,
+			EMPTY_COUNT));
 	}
 
 	private void printYield(Double yield) {
-		String roundYield = String.format("%.1f", yield);
-		System.out.println("총 수익률은 " + roundYield + "%입니다.");
+		System.out.printf(OUTPUT_YIELD_MESSAGE, yield);
 	}
 
 	public void printNewLine() {
