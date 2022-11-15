@@ -26,21 +26,21 @@ public enum ResultsPrinter {
     FIVE_MATCHES(3) {
         @Override
         public void print(Number number) {
-            System.out.println("5개 일치 (1,500,000원) - " + number);
+            System.out.println("5개 일치 (1,500,000원) - " + number + "개");
         }
     },
 
     FIVE_MATCHES_AND_BONUS_BALL(2) {
         @Override
         public void print(Number number) {
-            System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - " + number);
+            System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - " + number + "개");
         }
     },
 
     SIX_MATCHES(1) {
         @Override
         public void print(Number number) {
-            System.out.println("6개 일치 (2,000,000,000원) - " + number);
+            System.out.println("6개 일치 (2,000,000,000원) - " + number + "개");
         }
     },
 
