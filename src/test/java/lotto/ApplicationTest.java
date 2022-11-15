@@ -68,4 +68,13 @@ class ApplicationTest extends NsTest {
             assertThat(output()).contains(ERROR_MESSAGE);
         });
     }
+
+    @DisplayName("구매금액이 1000원단위가 아닌 경우 예외를 발생시킨다.")
+    @Test
+    void 예외_테스트3() {
+        assertSimpleTest(() -> {
+            runException("10001");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
 }
