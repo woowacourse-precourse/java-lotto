@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.NoSuchElementException;
-import java.util.Scanner;
 import java.util.stream.Collectors;
 
 public class UserLotto {
@@ -85,10 +84,6 @@ public class UserLotto {
 
         double profit = (double) totalPrize / money;
         System.out.println("총 수익률은 " + String.format("%.1f", profit * 100) + "%" + "입니다.");
-    }
-
-    public List<Lotto> getLottos() {
-        return lottos;
     }
 
 
