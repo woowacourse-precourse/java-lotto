@@ -1,6 +1,10 @@
 package lotto.controller.dto;
 
 import static java.lang.Integer.parseInt;
+import static lotto.exception.ErrorMessage.*;
+
+import lotto.exception.ErrorMessage;
+import lotto.exception.MyException;
 
 public class PaymentAmountDto {
 
@@ -19,7 +23,7 @@ public class PaymentAmountDto {
 
     private int validDivision(int paymentAmount) {
         if (paymentAmount % LOTTO_BASIC_AMOUNT != 0) {
-            throw new IllegalArgumentException("[ERROR] 지불금액이 1000으로 나누어 떨어지지 않습니다.");
+            throw new MyException(NOT_DIVISION_PRICE);
         }
         return paymentAmount;
     }
@@ -28,7 +32,7 @@ public class PaymentAmountDto {
         boolean isInteger = paymentAmount.chars()
                 .allMatch(Character::isDigit);
         if (!isInteger) {
-            throw new IllegalArgumentException("[ERROR] 지불금액에 정수값이 아닌 값이 포함되어 있습니다.");
+            throw new MyException(NOT_INTEGER_PRICE);
         }
     }
 

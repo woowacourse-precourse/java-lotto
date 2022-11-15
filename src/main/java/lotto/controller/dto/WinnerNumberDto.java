@@ -1,9 +1,13 @@
 package lotto.controller.dto;
 
+import static lotto.exception.ErrorMessage.*;
+
 import java.time.temporal.ValueRange;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
+import lotto.exception.ErrorMessage;
+import lotto.exception.MyException;
 
 public class WinnerNumberDto {
 
@@ -41,13 +45,13 @@ public class WinnerNumberDto {
                 .distinct()
                 .count() != numbers.size();
         if (hasDuplicationNumber) {
-            throw new IllegalArgumentException("[ERROR] 당첨번호 안에서 중복 숫자가 있습니다.");
+            throw new MyException(LOTTO_DUPLICATION);
         }
     }
 
     private void validWinnerNumberRange(int winnerNumber) {
         if (!ValueRange.of(1, 45).isValidValue(winnerNumber)) {
-            throw new IllegalArgumentException("[ERROR] 로또 번호가 1 ~ 45 범위안에 포함되지 않습니다.");
+            throw new MyException(LOTTO_NOT_IN_RAGE);
         }
     }
 
@@ -66,13 +70,13 @@ public class WinnerNumberDto {
 
     private void validBonusNumberRange(int bonusNumber) {
         if (!ValueRange.of(1, 45).isValidValue(bonusNumber)) {
-            throw new IllegalArgumentException("[ERROR] 보너스 번호가 1 ~ 45 범위안에 포함되지 않습니다.");
+            throw new MyException(LOTTO_BONUS_NOT_IN_RAGE);
         }
     }
 
     private void validDuplicationWinnerNumber(int number) {
         if (this.winnerNumbers.contains(number)) {
-            throw new IllegalArgumentException("[ERROR] 보너스 번호가 당첨번호와 중복되면 안됩니다.");
+            throw new MyException(LOTTO_BONUS_DUPLICATION);
         }
     }
 
@@ -80,7 +84,7 @@ public class WinnerNumberDto {
         boolean isInteger = numbers.chars()
                 .allMatch(Character::isDigit);
         if (!isInteger) {
-            throw new IllegalArgumentException("[ERROR] 로또 번호에 정수값이 아닌 값이 포함되어 있습니다.");
+            throw new MyException(LOTTO_NOT_INTEGER);
         }
     }
 

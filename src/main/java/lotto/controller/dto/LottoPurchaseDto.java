@@ -1,10 +1,13 @@
 package lotto.controller.dto;
 
 import static camp.nextstep.edu.missionutils.Randoms.pickUniqueNumbersInRange;
+import static lotto.exception.ErrorMessage.*;
 
 import java.util.ArrayList;
 import java.util.List;
 import lotto.domain.Lotto;
+import lotto.exception.ErrorMessage;
+import lotto.exception.MyException;
 
 public class LottoPurchaseDto {
 
@@ -29,7 +32,7 @@ public class LottoPurchaseDto {
 
     private int validDivision(int paymentAmount) {
         if (paymentAmount % LOTTO_BASIC_AMOUNT != 0) {
-            throw new IllegalArgumentException("[ERROR] 지불금액이 1000으로 나누어 떨어지지 않습니다.");
+            throw new MyException(NOT_DIVISION_PRICE);
         }
         return paymentAmount / LOTTO_BASIC_AMOUNT;
     }
