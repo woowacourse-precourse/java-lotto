@@ -9,9 +9,9 @@ import java.util.List;
 import java.util.Map;
 
 public class LottoManager {
-    List<Lotto> lottos;
-    WinningLotto winningLotto;
-    List<Integer> winningPrices;
+    private List<Lotto> lottos;
+    private WinningLotto winningLotto;
+    private List<Integer> winningPrices;
 
     public void run() {
         runBuy();
@@ -19,19 +19,19 @@ public class LottoManager {
         runPrintStatistics();
     }
 
-    public void runPrintStatistics() {
+    private void runPrintStatistics() {
         Map<WinningTable, Integer> winningMap = getResult(lottos, winningLotto);
         double profitRate = getProfitRate();
         StatisticsConsole statisticsConsole = new StatisticsConsole();
         statisticsConsole.print(winningMap, profitRate);// UI 당첨통계 출력
     }
-    public void runInputWinningNumbers() {
+    private void runInputWinningNumbers() {
         WinningConsole winningConsole = new WinningConsole();
         List<Integer> winningNumber = winningConsole.inputNumbers(); // inputUI실행
         int bonus = winningConsole.inputBonus();
         setWinningLotto(winningNumber, bonus);
     }
-    public void runBuy() {
+    private void runBuy() {
         BuyConsole buy = new BuyConsole();
         buy.printInputMessage();
         int input =  buy.inputPrice();
@@ -39,22 +39,22 @@ public class LottoManager {
         buy.printLottos(lottos);
     }
 
-    public void buyLotto(int price) {
+    private void buyLotto(int price) {
         BuyLotto buyLotto = new BuyLotto(price);
         lottos = buyLotto.getLottos();
     }
 
-    public void setWinningLotto(List<Integer> winningNumbers, int bonus) {
+    private void setWinningLotto(List<Integer> winningNumbers, int bonus) {
         winningLotto = new WinningLotto(winningNumbers, bonus);
     }
 
-    public Map<WinningTable, Integer> getResult(List<Lotto> lottos, WinningLotto winningLotto) {
+    private Map<WinningTable, Integer> getResult(List<Lotto> lottos, WinningLotto winningLotto) {
         WinningResult winningResult = new WinningResult(lottos, winningLotto);
         winningPrices = winningResult.getWinningPrices();
         return winningResult.getMap();
     }
 
-    public double getProfitRate() {
+    private double getProfitRate() {
         Profit profit = new Profit();
         return profit.calProfitRate(winningPrices, 2);
     }
