@@ -60,4 +60,15 @@ public class Lotto {
         System.out.println("6개 일치 (2,000,000,000원) - " + six + "개");
         printBenefit(three, four, five, fiveWithBonus, six, price);
     }
+    public int matchItemCount(List<Map<Integer, List<Integer>>> result, int bonus, int count) {
+        int matchItem = 0;
+        if (bonus > 0) {
+            matchItem += bonusMatch(result, bonus, count);
+            return matchItem;
+        }
+        for (Map<Integer, List<Integer>> item : result) {
+            matchItem += itemContainsKey(item, count);
+        }
+        return matchItem;
+    }
 }
