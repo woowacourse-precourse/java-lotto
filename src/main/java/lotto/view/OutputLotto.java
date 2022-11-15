@@ -1,6 +1,6 @@
 package lotto.view;
 
-import lotto.domain.GameSet;
+import lotto.domain.Game;
 import lotto.domain.LottoProperties;
 import java.io.BufferedWriter;
 import java.io.IOException;
@@ -9,10 +9,10 @@ import java.util.List;
 
 public class OutputLotto{
     public static final BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
-    public static void printResult(GameSet gameSet) throws IOException {
+    public static void printResult(Game game) throws IOException {
         printPrefix();
-        printGameCount(gameSet);
-        printAllResult(gameSet);
+        printGameCount(game);
+        printAllResult(game);
         bw.flush();
     }
     private static void printPrefix() throws IOException{
@@ -20,17 +20,17 @@ public class OutputLotto{
         bw.append("---\n");
         bw.flush();
     }
-    private static void printGameCount(GameSet gameSet) throws IOException{
+    private static void printGameCount(Game game) throws IOException{
         int i =0;
         for(LottoProperties name:LottoProperties.values()){
             if (name==LottoProperties.LOTTO_LOOSE){
                 break;
             }
-            bw.append(String.format(name.getStrResultFormat(),name.getCorrect(),name.getSprice(),gameSet.getGameCount()[i++]));
+            bw.append(String.format(name.getStrResultFormat(),name.getCorrect(),name.getSprice(), game.getGameCount()[i++]));
         }
     }
-    private static void printAllResult(GameSet gameSet) throws IOException{
-        bw.append("총 수익률은 "+ gameSet.getResult()+"%입니다.\n");
+    private static void printAllResult(Game game) throws IOException{
+        bw.append("총 수익률은 "+ game.getResult()+"%입니다.\n");
     }
     public static void numberPrint(List<Integer> numbers){
         try {

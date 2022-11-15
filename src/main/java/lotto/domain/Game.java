@@ -7,7 +7,7 @@ import lotto.view.OutputLotto;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GameSet {
+public class Game {
     public final static int PRICE_SIZE = 6;
     private final int lottoCount;
     private Lotto awardLotto;
@@ -15,7 +15,7 @@ public class GameSet {
     private int totalPrize;
     private int bonusNumber;
     private List<Lotto> generatedLotto = new ArrayList<>();
-    public GameSet(){
+    public Game(){
         gameCount = new int[PRICE_SIZE];
         totalPrize = 0;
         lottoCount = InputLotto.moneyInput();
@@ -32,7 +32,7 @@ public class GameSet {
         InputPrintView.inputView_Second();
         bonusNumber = InputLotto.getInput().get(0);
     }
-    public void updateGameSet(LottoProperties lottoProperties){
+    public void updateGame(LottoProperties lottoProperties){
         gameCount[lottoProperties.getIndex()]++;
         totalPrize+=lottoProperties.getPrice();
     }
