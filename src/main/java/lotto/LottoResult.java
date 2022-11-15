@@ -9,10 +9,10 @@ public class LottoResult {
     private int equalCount;
     private boolean isBonus;
 
-    private Map<Result, Integer> lottoResult;
+    private Map<Result, Integer> resultMap;
 
     public void getResult(List<Lotto> lottos, WinNumber winNumber, BonusNumber bonusNumber) {
-        initLottoResult();
+        initResultMap();
 
         for (Lotto lotto : lottos) {
             initValue();
@@ -23,16 +23,16 @@ public class LottoResult {
             }
 
             Result result = getMatchResult(equalCount, isBonus);
-            if (lottoResult.containsKey(result)) {
-                lottoResult.put(result, lottoResult.get(result) + 1);
+            if (resultMap.containsKey(result)) {
+                resultMap.put(result, resultMap.get(result) + 1);
             }
         }
     }
 
     public double getEarning(int price) {
         int totalReward = 0;
-        for (Result result : lottoResult.keySet()) {
-            totalReward += lottoResult.get(result) * result.getReward();
+        for (Result result : resultMap.keySet()) {
+            totalReward += resultMap.get(result) * result.getReward();
         }
         return (double) totalReward / price * 100;
     }
@@ -42,12 +42,12 @@ public class LottoResult {
         isBonus = false;
     }
 
-    private void initLottoResult() {
-        lottoResult.put(FIRST, 0);
-        lottoResult.put(SECOND, 0);
-        lottoResult.put(THIRD, 0);
-        lottoResult.put(FOURTH, 0);
-        lottoResult.put(FIFTH, 0);
+    private void initResultMap() {
+        resultMap.put(FIRST, 0);
+        resultMap.put(SECOND, 0);
+        resultMap.put(THIRD, 0);
+        resultMap.put(FOURTH, 0);
+        resultMap.put(FIFTH, 0);
     }
 
     private void getEqualCount(Lotto lotto, List<Integer> winNumbers) {
@@ -67,7 +67,7 @@ public class LottoResult {
         }
     }
 
-    public Map<Result, Integer> getLottoResult() {
-        return lottoResult;
+    public Map<Result, Integer> getResultMap() {
+        return resultMap;
     }
 }
