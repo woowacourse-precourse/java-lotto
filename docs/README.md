@@ -30,7 +30,7 @@
         
 - [x] 당첨 번호 입력 받을 수 있다.
   - StaffListener#listenMainWinningNumbers()
-- [ ] 보너스 번호 한 자리를 입력 받는다.
+- [x] 보너스 번호 한 자리를 입력 받는다.
   - StaffListener#listenWinningBonusNumber()
 - [x] 입력 받은 값으로부터 WinningNumbers를 생성할 수 있다
   - WinningNumbersGenerator#generateWinningNumbers()
