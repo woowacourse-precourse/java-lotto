@@ -9,7 +9,7 @@ import java.util.List;
 public class LottoNumber {
     private static final int LENGTH = 6;
 
-    public List<Integer> generateWinNumber() {
+    public List<Integer> generateLottoNumber() {
         List<Integer> winNumber = new ArrayList<Integer>();
         while (winNumber.size() < LENGTH) {
             Integer randomNumber = Randoms.pickNumberInRange(1, 45);
