@@ -9,12 +9,21 @@ public class User {
 
     public List<Lotto> lotteries(){ return lotteries; }
 
-    public Integer getHistoryOf(Prize prize){
-        return winningHistory.get(prize);
-    }
 
     public void setWinningHistory(Prize prize, Integer times){
         winningHistory.put(prize, times);
+    }
+
+    public EnumMap<Prize, Integer> getWinningHistory() {
+        return winningHistory;
+    }
+
+    public List<Lotto> getLotteries(){
+        return lotteries;
+    }
+
+    public Integer getTimesOf(Prize prize){
+        return winningHistory.get(prize);
     }
 
 
