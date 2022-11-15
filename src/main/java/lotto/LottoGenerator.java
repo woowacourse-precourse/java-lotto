@@ -3,6 +3,7 @@ package lotto;
 import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,8 +32,25 @@ public class LottoGenerator {
         return totalCount;
     }
 
-    public void inputNumber(){
+    public ArrayList<Integer> inputNumber(){
+        ArrayList<Integer> winningNumber = new ArrayList<>();
         System.out.println("당첨 번호를 입력해주세요.");
-        return Console.readLine();
+        String[] arr = Console.readLine().split(", ");
+        for (String num : arr){
+            winningNumber.add(Integer.parseInt(num));
+        }
+        return winningNumber;
     }
+
+    public Integer bonusNumber(){
+        int bonusNumber = 0;
+        System.out.println("보너스 번호를 입력해 주세요.");
+        bonusNumber = Integer.parseInt(Console.readLine());
+        return bonusNumber;
+    }
+
+
+
+
+
 }
