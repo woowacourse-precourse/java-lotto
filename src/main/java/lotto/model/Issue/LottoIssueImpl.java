@@ -6,6 +6,7 @@ import lotto.utils.ErrorMessage;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -30,6 +31,7 @@ public class LottoIssueImpl implements LottoIssue{
         for(int i =0; i< count.intValue(); i++){
             List<Integer> randomNumber = Randoms.pickUniqueNumbersInRange(1, 45, 6);
             validateRandomNumber(randomNumber);
+            randomNumber.sort(Comparator.naturalOrder());
             randomNumbers.add(randomNumber);
         }
         return randomNumbers;
