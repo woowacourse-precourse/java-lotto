@@ -10,6 +10,9 @@ public enum Rank {
     FIFTH(3, 5_000),
     LOSE(0, 0);
 
+    private static final int WINNING_MIN_COUNT = 3;
+    private static final String ARE_NOT_VALID_VALUE = "는 유효하지 않은 값입니다.";
+
     private final int countOfMatchingNumbers;
     private final int winningMoney;
 
@@ -36,11 +39,11 @@ public enum Rank {
             return rank;
         }
 
-        throw new IllegalArgumentException(ERROR_MESSAGE + countOfMatchingNumbers + "는 유효하지 않은 값입니다.");
+        throw new IllegalArgumentException(ERROR_MESSAGE + countOfMatchingNumbers + ARE_NOT_VALID_VALUE);
     }
 
     private static boolean isLessThanThreeMatches(int countOfMatchingNumbers) {
-        return countOfMatchingNumbers < 3;
+        return countOfMatchingNumbers < WINNING_MIN_COUNT;
     }
 
     private static boolean isSecondRank(int countOfMatchingNumbers, boolean includesBonusNumber) {
