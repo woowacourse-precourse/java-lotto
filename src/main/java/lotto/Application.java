@@ -10,6 +10,49 @@ public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
 
+        int money = getMoney();
+        if (money == -1)
+            return;
+
+        validate(money);
+
+        int numberOfLotto = money / 1000;
+        List<Lotto> lottos = perchaseLotto(numberOfLotto);
+        printLottos(lottos);
+
+        List<Integer> winningNumbers = getWinningNumbers();
+        Lotto winningLotto = new Lotto(winningNumbers);
+
+        int bonusNumber = getBonusNumber();
+        if (bonusNumber == -1)
+            return;
+
+        List<Integer> ranking = rank(lottos, winningLotto, bonusNumber);
+        printRanking(ranking);
+        printEarningRate(money, ranking);
+    }
+
+    private static Integer getBonusNumber() {
+        System.out.println("보너스 번호를 입력해 주세요.");
+        String inputBonusNumber = Console.readLine();
+
+        int bonusNumber = -1;
+        try {
+            bonusNumber = Integer.parseInt(inputBonusNumber);
+        } catch (NumberFormatException e) {
+            System.out.println("[ERROR] 숫자 이외의 값을 입력하였습니다.");
+        }
+        return bonusNumber;
+    }
+
+    private static List<Integer> getWinningNumbers() {
+        System.out.println("당첨 번호를 입력해 주세요.");
+        String inputNumbers = Console.readLine();
+        List<Integer> winningNumbers = stringToList(inputNumbers);
+        return winningNumbers;
+    }
+
+    private static int getMoney() {
         System.out.println("구입금액을 입력해 주세요.");
         String input = Console.readLine();
         int money = -1;
@@ -17,35 +60,8 @@ public class Application {
             money = Integer.parseInt(input);
         } catch (NumberFormatException e) {
             System.out.println("[ERROR] 숫자 이외의 값을 입력하였습니다.");
-            return ;
         }
-
-        validate(money);
-
-        int numberOfLotto = money / 1000;
-
-        List<Lotto> lottos = perchaseLotto(numberOfLotto);
-        printLottos(lottos);
-
-        System.out.println("당첨 번호를 입력해 주세요.");
-        String inputNumbers = Console.readLine();
-        List<Integer> winningNumbers = stringToList(inputNumbers);
-        Lotto winningLotto = new Lotto(winningNumbers);
-
-        System.out.println("보너스 번호를 입력해 주세요.");
-        String inputBonusNumber = Console.readLine();
-
-        // 예외처리 필요
-        int bonusNumber = -1;
-        try {
-            bonusNumber = Integer.parseInt(inputBonusNumber);
-        } catch (NumberFormatException e) {
-            System.out.println("[ERROR] 숫자 이외의 값을 입력하였습니다.");
-            return ;
-        }
-        List<Integer> ranking = rank(lottos, winningLotto, bonusNumber);
-        printRanking(ranking);
-        printEarningRate(money, ranking);
+        return money;
     }
 
     public static void validate(int money) {
