@@ -1,5 +1,6 @@
 package lotto.domain;
 
+import static lotto.constant.ErrorMessage.PURCHASE_AMOUNT_RANGE_ERROR;
 import static lotto.constant.ErrorMessage.PURCHASE_AMOUNT_TYPE_ERROR;
 import static lotto.constant.InputPattern.PURCHASE_AMOUNT_PATTERN;
 
@@ -9,11 +10,19 @@ import lotto.constant.ErrorMessage;
 
 public class CheckInput {
 
-    public void checkInputAmountPattern(String input) {
+    public void checkPurchaseAmountPattern(String input) {
         Pattern pattern = Pattern.compile(PURCHASE_AMOUNT_PATTERN);
         if (!pattern.matcher(input).matches()) {
             throw new IllegalArgumentException(PURCHASE_AMOUNT_TYPE_ERROR);
         }
     }
+
+    public void checkPurchaseAmountRange(int purchaseAmount) {
+        if (purchaseAmount < 1000) {
+            throw new IllegalArgumentException(PURCHASE_AMOUNT_RANGE_ERROR);
+        }
+    }
+
+
 
 }
