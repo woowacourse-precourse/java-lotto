@@ -3,10 +3,10 @@ package lotto.domain;
 public class Customer {
     private static final String INVALID_TICKET_MESSAGE = "로또를 아직 구매하지 않았습니다.";
 
-    private Integer amount;
+    private Money amount;
     private LottoTicket lottoTicket;
 
-    public Customer(Integer amount) {
+    public Customer(Money amount) {
         this.amount = amount;
     }
 
@@ -16,7 +16,7 @@ public class Customer {
     }
 
     private void spendAll() {
-        amount = 0;
+        amount = Money.ZERO;
     }
 
     public LottoResult check(LottoMachine lottoMachine) {

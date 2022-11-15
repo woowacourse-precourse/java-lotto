@@ -17,7 +17,7 @@ class CustomerTest {
 
     @Test
     void buyLottoTicketTo_메서드는_가지고_있는_금액을_모두_소비하여_로또를_구매한다() {
-        Customer customer = new Customer(2000);
+        Customer customer = new Customer(Money.wons(2000));
 
         customer.buyLottoTicketTo(new LottoSeller());
 
@@ -26,7 +26,7 @@ class CustomerTest {
 
     @Test
     void check_메서드는_LottoMachine을_입력받아_LottoMachine의_check_메서드를_호출한다() {
-        Customer customer = new Customer(2000);
+        Customer customer = new Customer(Money.wons(2000));
         customer.buyLottoTicketTo(new LottoSeller());
 
         LottoMachine lottoMachine = mock(LottoMachine.class);
@@ -37,7 +37,7 @@ class CustomerTest {
 
     @Test
     void check_메서드는_티켓이_없는경우_IllegalStateException을_던진다() {
-        Customer customer = new Customer(2000);
+        Customer customer = new Customer(Money.wons(2000));
 
         LottoMachine lottoMachine = mock(LottoMachine.class);
         assertThatThrownBy(() -> customer.check(lottoMachine))
@@ -46,7 +46,7 @@ class CustomerTest {
 
     @Test
     void getLottoTicket_메서드는_구매한_티켓을_반환한다() {
-        Customer customer = new Customer(2000);
+        Customer customer = new Customer(Money.wons(2000));
         customer.buyLottoTicketTo(new LottoSeller());
 
         assertThat(customer.getLottoTicket()).isNotNull();
@@ -54,7 +54,7 @@ class CustomerTest {
 
     @Test
     void getLottoTicket_메서드는_티켓이_없는경우_IllegalStateException을_던진다() {
-        Customer customer = new Customer(2000);
+        Customer customer = new Customer(Money.wons(2000));
 
         assertThatThrownBy(customer::getLottoTicket)
                 .isInstanceOf(IllegalStateException.class);

@@ -2,6 +2,7 @@ package lotto.controller;
 
 import lotto.domain.Customer;
 import lotto.domain.LottoMachine;
+import lotto.domain.Money;
 import lotto.dto.BuyAmountDto;
 import lotto.dto.LottoDto;
 import lotto.dto.LottoInformationDto;
@@ -36,7 +37,7 @@ public class LottoController {
 
     private Customer buyLotto() {
         BuyAmountDto BuyAmountDto = inputView.inputBuyAmount();
-        Customer customer = new Customer(BuyAmountDto.getAmount());
+        Customer customer = new Customer(Money.wons(BuyAmountDto.getAmount()));
         LottoInformationDto lottoInformationDto = lottoService.buy(customer);
         outputView.printLottoInformation(lottoInformationDto);
         return customer;

@@ -16,16 +16,18 @@ public class LottoSellerTest {
     private LottoSeller lottoSeller = new LottoSeller();
 
     @ParameterizedTest
-    @ValueSource(ints = {1000, 2000, 3000, 4000, 15000, 60000})
-    void sell_메서드는_금액을_받고_로또_티켓을_반환한다(int amount) {
-        LottoTicket lottoTicket = lottoSeller.sell(amount);
+    @ValueSource(longs = {1000L, 2000L, 3000L, 4000L, 15000L, 60000L})
+    void sell_메서드는_금액을_받고_로또_티켓을_반환한다(long amount) {
+        Money buyAmount = Money.wons(amount);
+        LottoTicket lottoTicket = lottoSeller.sell(buyAmount);
         assertThat(lottoTicket.value().size()).isEqualTo(amount / 1000);
     }
 
     @ParameterizedTest
-    @ValueSource(ints = {999, 1001, 2345, 142918})
-    void sell_메서드는_입력받은_금액이_부족하거나_구매하고_남은_금액이_존재하는_경우_IllegalArgumentException을_던진다(int amount) {
-        Assertions.assertThatThrownBy(() -> lottoSeller.sell(amount))
+    @ValueSource(longs = {999L, 1001L, 2345L, 142918L})
+    void sell_메서드는_입력받은_금액이_부족하거나_구매하고_남은_금액이_존재하는_경우_IllegalArgumentException을_던진다(long amount) {
+        Money buyAmount = Money.wons(amount);
+        Assertions.assertThatThrownBy(() -> lottoSeller.sell(buyAmount))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 }

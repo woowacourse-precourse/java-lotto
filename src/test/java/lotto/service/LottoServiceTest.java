@@ -10,6 +10,7 @@ import lotto.domain.Lotto;
 import lotto.domain.LottoMachine;
 import lotto.domain.LottoNumber;
 import lotto.domain.LottoSeller;
+import lotto.domain.Money;
 import lotto.dto.LottoDto;
 import lotto.dto.LottoInformationDto;
 import lotto.dto.LottoResultDto;
@@ -33,7 +34,7 @@ class LottoServiceTest {
 
     @Test
     void buy_메서드는_사용자를_입력받아_로또를_구매하라고_메시지를_보낸_다음_구매한_로또의_정보를_반환한다() {
-        int givenAmount = 2000;
+        Money givenAmount = Money.wons(2000);
         Customer customer = new Customer(givenAmount);
 
         LottoInformationDto lottoInformation = lottoService.buy(customer);
@@ -44,7 +45,7 @@ class LottoServiceTest {
 
     @Test
     void buy_메서드는_로또_구매에_실패하는_경우_IllegalArgumentException을_던진다() {
-        int givenAmount = 2001;
+        Money givenAmount = Money.wons(2001);
         Customer customer = new Customer(givenAmount);
 
         assertThatThrownBy(() -> lottoService.buy(customer))
@@ -67,7 +68,7 @@ class LottoServiceTest {
 
     @Test
     void check_메서드는_Customer가_로또를_구입하지_않은경우_IllegalStateException을_던진다() {
-        Customer customer = new Customer(2000);
+        Customer customer = new Customer(Money.wons(2000));
         LottoMachine lottoMachine = new LottoMachine(new Lotto(List.of(1, 2, 3, 4, 5, 6)), LottoNumber.valueOf(7));
         assertThatThrownBy(() -> lottoService.check(customer, lottoMachine))
                 .isInstanceOf(IllegalStateException.class);
@@ -75,7 +76,7 @@ class LottoServiceTest {
 
     @Test
     void check_메서드는_Customer와_LottoMachine을_입력받아_LottoResultDto를_반환한다() {
-        Customer customer = new Customer(2000);
+        Customer customer = new Customer(Money.wons(2000));
         customer.buyLottoTicketTo(new LottoSeller());
         LottoMachine lottoMachine = new LottoMachine(new Lotto(List.of(1, 2, 3, 4, 5, 6)), LottoNumber.valueOf(7));
         assertThat(lottoService.check(customer, lottoMachine)).isInstanceOf(LottoResultDto.class);

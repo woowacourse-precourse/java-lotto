@@ -15,19 +15,19 @@ public class LottoResult {
     }
 
     public double calculateProfitRatio() {
-        return (calculateTotalPrize() / (double) calculatePayAmount()) * DEFAULT_RATIO;
+        return calculateTotalPrize().divide(calculatePayAmount()) * DEFAULT_RATIO;
     }
 
-    private Long calculateTotalPrize() {
+    private Money calculateTotalPrize() {
         return Arrays.stream(LottoPrize.values())
                 .map(prize -> prize.calculatePrize(this.getCount(prize)))
-                .reduce(ZERO, Long::sum);
+                .reduce(Money.ZERO, Money::plus);
     }
 
-    private Long calculatePayAmount() {
-        return LottoSeller.LOTTO_PRICE * Arrays.stream(LottoPrize.values())
+    private Money calculatePayAmount() {
+        return LottoSeller.LOTTO_PRICE.times(Arrays.stream(LottoPrize.values())
                 .map(this::getCount)
-                .reduce(ZERO, Long::sum);
+                .reduce(ZERO, Long::sum));
     }
 
     public Long getCount(LottoPrize lottoPrize) {

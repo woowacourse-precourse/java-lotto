@@ -47,7 +47,7 @@ public class LottoPrizeTest {
     @Test
     void calculatePrize_메서드는_맞춘개수를_입력받아_당첨금의_합을_반환한다() {
         LottoPrize lottoPrize = _1ST_PRIZE;
-        assertThat(lottoPrize.calculatePrize(2L)).isEqualTo(lottoPrize.getPrize() * 2L);
+        assertThat(lottoPrize.calculatePrize(2L)).isEqualTo(Money.wons(lottoPrize.getPrize() * 2L));
     }
 
     @ParameterizedTest

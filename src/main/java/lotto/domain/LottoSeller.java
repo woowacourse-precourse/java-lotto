@@ -11,21 +11,25 @@ import java.util.List;
 import java.util.stream.Stream;
 
 public class LottoSeller {
-    public static final int LOTTO_PRICE = 1000;
+    public static final Money LOTTO_PRICE = Money.wons(1000L);
     private static final String INVALID_AMOUNT_MESSAGE = "로또를 구매할 수 없습니다.";
 
-    public LottoTicket sell(Integer amount) {
+    public LottoTicket sell(Money amount) {
         validate(amount);
-        return generateLottoTicket(amount / LOTTO_PRICE);
+        return generateLottoTicket(amount.floorDivide(LOTTO_PRICE));
     }
 
-    private void validate(Integer amount) {
-        if (amount < LOTTO_PRICE || amount % LOTTO_PRICE != 0) {
+    private void validate(Money amount) {
+        if (!amount.isGreaterThanOrEqual(LOTTO_PRICE) || !isRemainderZeroAfterBuyLotto(amount)) {
             throw new IllegalArgumentException(INVALID_AMOUNT_MESSAGE);
         }
     }
 
-    private LottoTicket generateLottoTicket(Integer pickCount) {
+    private boolean isRemainderZeroAfterBuyLotto(Money amount) {
+        return amount.calculateRemainder(LOTTO_PRICE).equals(Money.ZERO);
+    }
+
+    private LottoTicket generateLottoTicket(Long pickCount) {
         return Stream.generate(this::quickPick)
                 .limit(pickCount)
                 .collect(collectingAndThen(toList(), this::toLottoTicket));
