@@ -40,5 +40,20 @@ public class Lotto {
         return rankNumber;
     }
 
+    public void RankLineUnderHundred (int rankPoint) {
+        if (rankPoint == 3) {
+            GameData.FIFTH.addCount();
+        }
+        if (rankPoint == 4) {
+            GameData.FOURTH.addCount();
+        }
+        if (rankPoint == 5) {
+            GameData.THIRD.addCount();
+        }
+        if (rankPoint == 6) {
+            GameData.FIRST.addCount();
+        }
+    }
+
 
 }
