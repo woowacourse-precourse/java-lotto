@@ -28,15 +28,19 @@ public class Lotto {
         }
     }
 
-    private static boolean isInValidSize(List<Integer> numbers) {
+    private boolean isInValidSize(List<Integer> numbers) {
         return numbers.size() != SIZE;
     }
 
-    private static boolean hasOutOfBoundNumber(List<Integer> numbers) {
+    private boolean hasOutOfBoundNumber(List<Integer> numbers) {
         return numbers.stream().anyMatch(x -> x < START_NUMBER || x > END_NUMBER);
     }
 
-    private static boolean hasDuplicateNumber(List<Integer> numbers) {
+    private boolean hasDuplicateNumber(List<Integer> numbers) {
         return numbers.stream().distinct().count() != numbers.size();
+    }
+
+    public void printNumbers() {
+        System.out.println(this.numbers);
     }
 }

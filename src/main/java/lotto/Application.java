@@ -14,10 +14,16 @@ public class Application {
             input = askMoney();
             receipt = new Receipt(input);
             lottos = receipt.buy();
+            print(receipt, lottos);
         } catch (MyIllegalArgumentException e) {
             e.printErrorMessage();
             return;
         }
+    }
+
+    private static void print(Receipt receipt, List<Lotto> lottos) {
+        receipt.printReceipt();
+        lottos.forEach(Lotto::printNumbers);
     }
 
     /**

@@ -11,8 +11,8 @@ import static lotto.LottoConfiguration.*;
 import static lotto.LottoConfiguration.PRICE;
 
 public class Receipt {
-    private int money;
-    private int amount;
+    private final int money;
+    private final int amount;
 
     public Receipt(String input) {
         validate(input);
@@ -40,5 +40,9 @@ public class Receipt {
             lottos.add(new Lotto(numbers));
         }
         return lottos;
+    }
+
+    public void printReceipt() {
+        System.out.println(amount + "개를 구매했습니다.");
     }
 }
