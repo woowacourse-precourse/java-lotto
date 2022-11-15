@@ -10,21 +10,16 @@ public class InputView {
 
     public String inputPurchasing() {
         System.out.println(INPUT_PURCHASING_AMOUNT);
-        String purchasingAmountUserInput = Console.readLine();
-        return purchasingAmountUserInput;
+        return Console.readLine();
     }
 
     public String inputWinningNumber() {
         System.out.println(INPUT_WINNING_NUMBER);
-        String winningNumberUserInput = Console.readLine();
-
-        return winningNumberUserInput;
+        return Console.readLine();
     }
 
     public String inputBonusNumber() {
         System.out.println(INPUT_BONUS_NUMBER);
-        String bonusNumberUserInput = Console.readLine();
-
-        return bonusNumberUserInput;
+        return Console.readLine();
     }
 }
