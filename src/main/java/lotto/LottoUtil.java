@@ -14,15 +14,17 @@ public class LottoUtil {
 
     public static List<Lotto> getLottos(int userLottoCnt) {
 
+        PrintUtil.getLottos(userLottoCnt);
+
         List<Lotto> userLottos = new ArrayList<>();
 
         for(int i = 0 ; i < userLottoCnt ; i++){
             List<Integer> lottoNumbers = Randoms.pickUniqueNumbersInRange(1,45,6);
-
             Collections.sort(lottoNumbers);
-
             userLottos.add(new Lotto(lottoNumbers));
         }
+
+        PrintUtil.userLottosPrint(userLottos);
 
         return userLottos;
     }

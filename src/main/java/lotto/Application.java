@@ -13,11 +13,15 @@ public class Application {
 
         List<Lotto> userLottos = LottoUtil.getLottos(userLottoCnt);
 
-        for(Lotto l : userLottos){
-            for(Integer i : l.getNumbers()){
-                System.out.print(i + " ");
-            }
-            System.out.println();
+        List<Integer> winNumber = Util.inputWinNumber();
+
+        int bonusNumber = Util.inputBonusNumber();
+
+        for(int i : winNumber){
+            System.out.print(i + " ");
         }
+
+        System.out.println("bonusNumber = " + bonusNumber);
+
     }
 }
