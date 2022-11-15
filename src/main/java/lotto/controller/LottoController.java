@@ -16,10 +16,13 @@ public class LottoController {
     private static LottoService lottoService = new LottoService();
 
     public static void run() {
-        String inputMoney = printInputMesssageAndInputAmount();
+        String inputMoney = printInputMessageAndInputAmount();
+
         Lottos lottos = purchaseLottosAndPrintHistory(inputMoney);
         Result result = inputWinningNumber();
+
         Map<Prize, Long> winningResults = compareResultAndPrintResult(lottos, result);
+
         calculateEarningRatesAndPrint(inputMoney, winningResults);
     }
 
@@ -31,25 +34,29 @@ public class LottoController {
     private static Map<Prize, Long> compareResultAndPrintResult(Lottos lottos, Result result) {
         Map<Prize, Long> winningResult = lottoService.compareResult(lottos, result);
         OutputView.printResultMessage(winningResult);
+
         return winningResult;
     }
 
     private static Lottos purchaseLottosAndPrintHistory(String inputMoney) {
         Lottos lottos = lottoService.purchaseLottos(inputMoney);
         OutputView.printLottosHistory(lottos);
+
         return lottos;
     }
 
-    private static String printInputMesssageAndInputAmount() {
+    private static String printInputMessageAndInputAmount() {
         InputView.printInputMoneyMessage();
         String money = Console.readLine();
         ValidationUtils.validateNumber(money);
+
         return money;
     }
 
     private static Result inputWinningNumber() {
         String winningNumbers = inputWinningNumbers();
         String bonusNumber = inputBonusNumber();
+
         return lottoService.saveResult(winningNumbers, bonusNumber);
     }
 
@@ -57,6 +64,7 @@ public class LottoController {
         InputView.printInputWinningNumbers();
         String winningNumbers = Console.readLine();
         ValidationUtils.validateWinningNumber(winningNumbers);
+
         return winningNumbers;
     }
 
@@ -64,6 +72,7 @@ public class LottoController {
         InputView.printInputBonusNumber();
         String bonusNumber = Console.readLine();
         ValidationUtils.validateBonusNumber(bonusNumber);
+
         return bonusNumber;
     }
 }
