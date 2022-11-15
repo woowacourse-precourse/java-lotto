@@ -3,6 +3,7 @@ package lotto;
 import java.util.ArrayList;
 import java.util.List;
 import camp.nextstep.edu.missionutils.Randoms;
+import java.util.Map;
 
 public class LottoUser {
     private long money;
@@ -64,5 +65,10 @@ public class LottoUser {
             sum += winInfo.getWinMoney();
         }
         return (double)sum / this.initMoney;
+    }
+
+    //소유한 로또의 당첨 통계 반환
+    public Map<WinInfo,Integer> getStatistics() {
+        return WinInfo.getStatistics(this.winInfomations);
     }
 }
