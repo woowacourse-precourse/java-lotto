@@ -1,5 +1,6 @@
 package lotto.model;
 
+import static lotto.enums.Constant.*;
 import lotto.enums.Ranking;
 
 import java.util.List;
@@ -65,7 +66,7 @@ public class Player {
             }
         }
         if (lotto.getNumbers().contains(this.bonusNumber)) {
-            matchingNumbers += 10;
+            matchingNumbers += MATCHING_BONUS_NUMBER.getValue();
         }
 
         return matchingNumbers;
