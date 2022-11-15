@@ -8,8 +8,8 @@ import java.util.List;
 
 public class BuyLotto {
     public static final int LOTTO_PRICE = 1000;
-    int price;
-    int count;
+    private int price;
+    private int count;
     List<Lotto> lottos;
 
     public BuyLotto(int price) {
@@ -24,8 +24,7 @@ public class BuyLotto {
     }
 
     private List<Integer> drawLotto() {
-        List<Integer> lottoNumbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
-        return lottoNumbers;
+        return Randoms.pickUniqueNumbersInRange(1, 45, 6);
     }
 
     private List<Lotto> drawLottos(int count) {
@@ -45,10 +44,6 @@ public class BuyLotto {
 
     public List<Lotto> getLottos() {
         return lottos;
-    }
-
-    public int getPrice() {
-        return price;
     }
 
     public int getCount() {
