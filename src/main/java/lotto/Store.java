@@ -16,7 +16,6 @@ public class Store {
         List<Lotto> lottos = new ArrayList<Lotto>();
         for (int i = 0; i < count; i++) {
             Lotto lotto = issueLotto();
-            sortLotto(lotto);
             lottos.add(lotto);
         }
 
@@ -35,10 +34,6 @@ public class Store {
     private Lotto issueLotto() {
         List<Integer> numbers = Lotto.generateRandomNumbers();
         return new Lotto(numbers);
-    }
-
-    private void sortLotto(Lotto lotto) {
-        lotto.sortAscNumbers();
     }
 
     private void printLottoInform(List<Lotto> lottos) {
