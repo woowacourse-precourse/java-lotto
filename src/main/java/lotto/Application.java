@@ -31,7 +31,7 @@ public class Application {
     }
 
     private static void printLottoProfitRateResult() {
-        System.out.println("총 수익률은" +Math.round(prizeMoney * 1000 /(lottoCount * 1000) )/ 10.0 +"%입니다.");
+        System.out.println("총 수익률은 " +Math.round(prizeMoney * 1000 /(lottoCount * 1000) )/ 10.0 +"%입니다.");
     }
 
     private static void checkLottoResult() {
