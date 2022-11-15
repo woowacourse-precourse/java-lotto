@@ -62,4 +62,42 @@ class LottoTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(LottoErrorCode.DUPLICATE_LOTTO_NUMBER.toString());
     }
+
+    @Test
+    @DisplayName("일치하는 번호 개수 3개일 때 테스트")
+    void countCommonNumber_MatchThree_Return3() {
+        Lotto base = new Lotto(Arrays.asList(10, 20, 30, 1, 3, 5));
+        Lotto target = new Lotto(Arrays.asList(1, 10, 3, 4, 22, 33));
+        assertThat(base.countCommonNumber(target)).isEqualTo(3);
+    }
+
+    @Test
+    @DisplayName("일치하는 번호 개수 6개일 때 테스트")
+    void countCommonNumber_MatchSix_Return6() {
+        Lotto base = new Lotto(Arrays.asList(10, 20, 30, 1, 3, 5));
+        Lotto target = new Lotto(Arrays.asList(3, 10, 20, 1, 5, 30));
+        assertThat(base.countCommonNumber(target)).isEqualTo(6);
+    }
+
+    @Test
+    @DisplayName("일치하는 번호 개수 0개일 때 테스트")
+    void countCommonNumber_MatchZero_Return0() {
+        Lotto base = new Lotto(Arrays.asList(10, 20, 30, 1, 3, 5));
+        Lotto target = new Lotto(Arrays.asList(11, 22, 33, 2, 4, 6));
+        assertThat(base.countCommonNumber(target)).isEqualTo(0);
+    }
+
+    @Test
+    @DisplayName("특정 번호가 있을 때 테스트")
+    void isContainNumber_MatchOne_ReturnTrue() {
+        Lotto base = new Lotto(Arrays.asList(10, 20, 30, 1, 3, 5));
+        assertThat(base.isContainNumber(20)).isEqualTo(true);
+    }
+
+    @Test
+    @DisplayName("특정 번호가 없을 때 테스트")
+    void isContainNumber_MatchZero_ReturnFalse() {
+        Lotto base = new Lotto(Arrays.asList(10, 20, 30, 1, 3, 5));
+        assertThat(base.isContainNumber(45)).isEqualTo(false);
+    }
 }
