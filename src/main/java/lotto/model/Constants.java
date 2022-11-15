@@ -1,4 +1,4 @@
-package lotto.domain;
+package lotto.model;
 
 public class Constants {
     public static final int MONEY_UNIT = 1000;

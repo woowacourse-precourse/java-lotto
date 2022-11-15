@@ -1,4 +1,4 @@
-package lotto.domain;
+package lotto.model;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
 class LottoReaderTest {
     @Test
     void readTest() {
-        Lotto drawnLotto = new Lotto(List.of(1,2,3,4,5,6));
+        Lotto drawnLotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
         int bonusNumber = 7;
         List<Lotto> lottos = new ArrayList<>();
         lottos.add(new Lotto(List.of(1, 2, 3, 4, 5, 6)));   // 1등

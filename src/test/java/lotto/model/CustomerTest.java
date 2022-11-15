@@ -1,40 +1,39 @@
-package lotto.domain;
+package lotto.model;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 class CustomerTest {
     @Nested
-    class PayTest extends NsTest {
+    class setMoneyTest{
         @DisplayName("구매 금액에 한글이 들어있는 경우 예외가 발생한다.")
         @Test
         void koreanInFee() {
-            assertThatThrownBy(() -> run("2000원"))
-                    .isInstanceOf(IllegalArgumentException.class);
+            assertThatThrownBy(() -> {
+                Customer customer = new Customer();
+                customer.setMoney("2000원");
+            }).isInstanceOf(IllegalArgumentException.class);
         }
 
         @DisplayName("구매 금액에 영어가 들어있는 경우 예외가 발생한다.")
         @Test
         void englishInFee() {
-            assertThatThrownBy(() -> run("2000Won"))
-                    .isInstanceOf(IllegalArgumentException.class);
+            assertThatThrownBy(() -> {
+                Customer customer = new Customer();
+                customer.setMoney("2000Won");
+            }).isInstanceOf(IllegalArgumentException.class);
         }
 
         @DisplayName("구매 금액이 1000원 단위가 아닌 경우 예외가 발생한다.")
         @Test
         void notDividedBy1000() {
-            assertThatThrownBy(() -> run("1234"))
-                    .isInstanceOf(IllegalArgumentException.class);
-        }
-
-        @Override
-        protected void runMain() {
-            Customer customer = new Customer(new Bag());
-            customer.pay();
+            assertThatThrownBy(() -> {
+                Customer customer = new Customer();
+                customer.setMoney("1234");
+            }).isInstanceOf(IllegalArgumentException.class);
         }
     }
 }

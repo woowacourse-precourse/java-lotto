@@ -1,4 +1,4 @@
-package lotto.domain;
+package lotto.model;
 
 public enum LottoRank {
     NOTHING("2개 이하 일치", 0),
