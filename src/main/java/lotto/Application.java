@@ -8,9 +8,13 @@ import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
 public class Application {
     public static void main(String[] args) {
+        int lotto_cnt = getMoney();
+        for(int i =0 ; i<lotto_cnt;i++){
+            Lotto lotto = getLotto();
 
+        }
     }
-    public static Lotto getLottoNum(){
+    public static Lotto getLotto(){
         List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
         Lotto lotto = new lotto.Lotto(numbers);
         return lotto;
