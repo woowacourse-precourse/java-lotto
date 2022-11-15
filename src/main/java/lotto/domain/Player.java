@@ -17,10 +17,6 @@ public class Player {
         createAllPlayerNumbers(ticketNumber);
     }
 
-    public List<List<Integer>> getAllPlayerNumbers() {
-        return allPlayerNumbers;
-    }
-
     private void createAllPlayerNumbers(int ticketNumber) {
         do {
             allPlayerNumbers.add(createPlayerNumbers());
@@ -39,4 +35,9 @@ public class Player {
         Collections.sort(playerNumbers);
         return playerNumbers;
     }
+
+    public List<List<Integer>> getAllPlayerNumbers() {
+        return allPlayerNumbers;
+    }
+
 }

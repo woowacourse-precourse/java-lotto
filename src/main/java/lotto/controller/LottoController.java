@@ -71,7 +71,7 @@ public class LottoController {
     }
 
     private static void aggregateStatisticResults() {
-        LottoResult result = new LottoResult(winningNumbers, allPlayerNumbers, bonusNumber);
+        LottoResult result = new LottoResult(winningNumbers, bonusNumber, allPlayerNumbers);
         Ranking ranking = new Ranking(result.getMatches(), result.getBonusMatches());
         Statistics statistics = new Statistics(ranking.getRankings());
         OutputView.printStatistics(statistics.getRankWithStatistics());

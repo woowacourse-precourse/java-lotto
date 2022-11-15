@@ -8,7 +8,7 @@ public class LottoResult {
     private List<Integer> matches = new ArrayList<>();
     private List<Boolean> bonusMatches = new ArrayList<>();
 
-    public LottoResult(List<Integer> winningNumbers, List<List<Integer>> allPlayerNumbers, int bonusNumber) {
+    public LottoResult(List<Integer> winningNumbers, int bonusNumber, List<List<Integer>> allPlayerNumbers) {
         for (List<Integer> playerNumbers : allPlayerNumbers) {
             matches.add(calculateMatch(winningNumbers, playerNumbers));
             bonusMatches.add(hasBonusNumber(playerNumbers, bonusNumber));

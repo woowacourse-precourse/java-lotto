@@ -2,7 +2,6 @@ package lotto.domain;
 
 import java.util.Arrays;
 import java.util.List;
-import lotto.view.OutputView;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
