@@ -86,6 +86,5 @@ public class DrawLottoServiceTest {
 
         //then
         assertThat(expectedRevenue).isEqualTo(actualRevenue);
-
     }
 }
