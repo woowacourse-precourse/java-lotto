@@ -14,7 +14,7 @@ class NumberAutoMachineTest {
 
     @DisplayName("중복되지 않는 6개의 숫자 오름차순으로 받기")
     @Test
-    void pickNumbersTest(){
+    void pickNumbersTest() {
         int size = 6;
         List<Integer> numbers = numberAutoMachine.pickNumbers();
         assertThat(numbers.size()).isEqualTo(size);

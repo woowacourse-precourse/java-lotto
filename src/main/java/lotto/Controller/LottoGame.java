@@ -11,7 +11,7 @@ public class LottoGame {
     LottoMachine lottoMachine = new LottoMachine();
     WinningNumber winningNumber = new WinningNumber();
 
-    public void run(){
+    public void run() {
         try {
             int money = lottoMachine.insertMoney();
             List<Lotto> lottoBought = lottoMachine.createLotto(money);
@@ -21,14 +21,10 @@ public class LottoGame {
             int bonusNumber = winningNumber.createBonusNumber(luckyNumbers);
             lottoMachine.compareLotto(lottoBought, luckyNumbers, bonusNumber);
             lottoMachine.printResult(money);
-        } catch (IllegalArgumentException e){
+        } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
     }
-
-
-
-
 
 
 }

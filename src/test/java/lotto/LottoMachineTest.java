@@ -10,7 +10,7 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-class LottoMachineTest  {
+class LottoMachineTest {
 
     LottoMachine lottoMachine = new LottoMachine();
 
@@ -26,7 +26,7 @@ class LottoMachineTest  {
 
     @DisplayName("로또 발행 과정 테스트")
     @Test
-    void createLottoTest(){
+    void createLottoTest() {
         List<Lotto> lottoBought = lottoMachine.createLotto(5000);
         assertThat(5).isEqualTo(lottoBought.size());
     }

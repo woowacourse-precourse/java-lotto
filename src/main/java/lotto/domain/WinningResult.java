@@ -3,7 +3,7 @@ package lotto.domain;
 import java.util.Arrays;
 
 public enum WinningResult {
-    // 맞춘 개수와 당첨 금액
+
     THREE(3, 5000, false),
     FOUR(4, 50000, false),
     FIVE(5, 1500000, false),

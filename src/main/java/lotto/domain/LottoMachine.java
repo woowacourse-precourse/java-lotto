@@ -15,6 +15,7 @@ public class LottoMachine {
         return validateMoney(money);
     }
 
+    // 구입 금액 입력 방식 확인
     private int validateMoney(String money) {
         int confirmedMoney = 0;
         try {
@@ -37,7 +38,7 @@ public class LottoMachine {
         return lottoBought;
     }
 
-    // 로또 발행 개수 확인 및 예외 처리
+    // 로또 발행 개수 확인
     private int checkLottoCount(int money) {
         if (money % 1000 > 0) {
             throw new IllegalArgumentException(Error.ERROR_WRONG_MONEY.getMessage());
