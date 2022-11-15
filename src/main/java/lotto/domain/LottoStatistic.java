@@ -30,7 +30,7 @@ final class LottoStatistic {
 
     private List<LottoResult> calculateScore() {
         return lottos.toStream()
-                .map(winningLotto::calculateBonusAndSameCount)
+                .map(winningLotto::calculateLottoResult)
                 .collect(Collectors.toList());
     }
 
