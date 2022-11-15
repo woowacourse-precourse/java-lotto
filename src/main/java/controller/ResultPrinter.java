@@ -55,15 +55,10 @@ public class ResultPrinter {
         int money = 0;
         int originalMoney = lottoAmount * NumericData.LOTTO_PRICE.getNumericValue();
         double profitRate;
-        System.out.print(OutputData.OPEN_PROFIT_RATE.getOutputData());
         for(int index = 0; index < prizeCount.length; index++ ){
-            System.out.println("index: " + prizeCount[index]);
-            System.out.println("prizeData : " + PrizeData.getPrizeMoney(index));
             money = money + (prizeCount[index] * PrizeData.getPrizeMoney(index));
         }
         profitRate = (double)money / originalMoney * 100;
-        System.out.println("money: " + money);
-        System.out.println("Original Money: " + originalMoney);
         System.out.print(OutputData.OPEN_PROFIT_RATE.getOutputData());
         System.out.print(profitRate);
         System.out.println(OutputData.CLOSE_PROFIT_RATE.getOutputData());

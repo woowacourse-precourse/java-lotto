@@ -33,12 +33,11 @@ public class NumberParser {
             for (String number : splittedNumbers) {
                 winningNumbers.add(Integer.parseInt(number));
             }
-            validate(winningNumbers);
-            return winningNumbers;
-        }catch(Exception e){
+        } catch (Exception e) {
             ExceptionData.NOT_INTEGER.callErrorMessage();
-            throw new IllegalArgumentException();
         }
+        validate(winningNumbers);
+        return winningNumbers;
     }
 
     public int setBonusNumber(String rawNumber){

@@ -15,12 +15,13 @@ public class LottoMaker {
     private int money;
     private void validate(int money){
         if(money % LOTTO_PRICE != ZERO){
+            ExceptionData.NOT_DIVIDED.callErrorMessage();
             throw new IllegalArgumentException();
         }
     }
 
-    public LottoMaker(String money) {
-        try{
+    public LottoMaker(String money) throws IllegalArgumentException {
+        try {
             this.money = Integer.parseInt(money);
             validate(this.money);
             System.out.print(this.money / LOTTO_PRICE);
