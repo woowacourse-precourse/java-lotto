@@ -43,6 +43,7 @@ public class InitSetting {
     }
     public List<List<Integer>> getLottoNumbers(){return lottoNumbers;}
     public int getMoney(){return money;}
+    public void setMoney(int money){this.money=money;}
     public int getCount(){return count;}
     public boolean getBonusCheck(){return bonusCheck;}
 }
