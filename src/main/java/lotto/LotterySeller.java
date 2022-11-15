@@ -35,6 +35,10 @@ public class LotterySeller {
     }
 
     public void printLotto() {
-
+        System.out.println(numberOfLottoIssued + "개를 구매했습니다.");
+        for (int i = 0; i < numberOfLottoIssued; i++) {
+            soldLotto.get(i).printNumber();
+        }
+        System.out.println();
     }
 }
