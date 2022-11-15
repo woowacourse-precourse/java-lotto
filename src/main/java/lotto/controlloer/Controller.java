@@ -1,15 +1,10 @@
 package lotto.controlloer;
 
-import static lotto.domain.SystemMessage.DUPLICATE_BONUS_ERROR_MESSAGE;
-import static lotto.domain.SystemMessage.DUPLICATE_ERROR_MESSAGE;
-import static lotto.domain.SystemMessage.END_PROGRAM_MESSAGE;
-import static lotto.domain.SystemMessage.ERROR_MESSAGE;
-import static lotto.domain.SystemMessage.YIELD_MESSAGE;
+import static lotto.view.SystemMessage.YIELD_MESSAGE;
 import static lotto.view.InputView.*;
 import static lotto.view.outputView.printLottoGroup;
 import static lotto.view.outputView.printWinningMessage;
 
-import java.util.List;
 import java.util.Map;
 import lotto.domain.AnswerLotto;
 import lotto.domain.Buyer;

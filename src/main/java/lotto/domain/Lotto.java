@@ -1,8 +1,8 @@
 package lotto.domain;
 
-import static lotto.domain.SystemMessage.DUPLICATE_ERROR_MESSAGE;
-import static lotto.domain.SystemMessage.ERROR_MESSAGE;
-import static lotto.domain.SystemMessage.SIZE_ERROR_MESSAGE;
+import static lotto.view.SystemMessage.DUPLICATE_ERROR_MESSAGE;
+import static lotto.view.SystemMessage.ERROR_MESSAGE;
+import static lotto.view.SystemMessage.SIZE_ERROR_MESSAGE;
 
 import java.util.HashSet;
 import java.util.List;

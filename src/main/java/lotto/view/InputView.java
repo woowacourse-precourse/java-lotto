@@ -1,21 +1,15 @@
 package lotto.view;
 
 
-import static lotto.domain.SystemMessage.DUPLICATE_ERROR_MESSAGE;
-import static lotto.domain.SystemMessage.ERROR_MESSAGE;
-import static lotto.domain.SystemMessage.IS_MONEY_ERROR_MESSAGE;
-import static lotto.domain.SystemMessage.IS_ONLY_NUMBER_ERROR_MESSAGE;
-import static lotto.domain.SystemMessage.LESS_THAN_THOUSAND_ERROR_MESSAGE;
-import static lotto.domain.SystemMessage.LIMIT_NUMBER_ERROR_MESSAGE;
-import static lotto.domain.SystemMessage.LOTTO_ONLY_NUMBER_ERROR_MESSAGE;
-import static lotto.domain.SystemMessage.MULTIPLE_THOUSAND_ERROR_MESSAGE;
-import static lotto.domain.SystemMessage.PATTERN_ERROR_MESSAGE;
+import static lotto.view.SystemMessage.ERROR_MESSAGE;
+import static lotto.view.SystemMessage.IS_MONEY_ERROR_MESSAGE;
+import static lotto.view.SystemMessage.IS_ONLY_NUMBER_ERROR_MESSAGE;
+import static lotto.view.SystemMessage.LOTTO_ONLY_NUMBER_ERROR_MESSAGE;
+import static lotto.view.SystemMessage.PATTERN_ERROR_MESSAGE;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.util.Arrays;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 

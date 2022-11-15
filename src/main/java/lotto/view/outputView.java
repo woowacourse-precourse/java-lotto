@@ -1,11 +1,9 @@
 package lotto.view;
 
-import static lotto.domain.SystemMessage.WINNING_STATISTICS_MESSAGE;
+import static lotto.view.SystemMessage.WINNING_STATISTICS_MESSAGE;
 
 import java.text.DecimalFormat;
-import java.util.List;
 import java.util.Map;
-import lotto.domain.Lotto;
 import lotto.domain.LottoGroup;
 import lotto.domain.WinningRank;
 

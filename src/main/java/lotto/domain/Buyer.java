@@ -1,10 +1,8 @@
 package lotto.domain;
 
-import static lotto.domain.SystemMessage.ERROR_MESSAGE;
-import static lotto.domain.SystemMessage.LESS_THAN_THOUSAND_ERROR_MESSAGE;
-import static lotto.domain.SystemMessage.MULTIPLE_THOUSAND_ERROR_MESSAGE;
-
-import java.util.List;
+import static lotto.view.SystemMessage.ERROR_MESSAGE;
+import static lotto.view.SystemMessage.LESS_THAN_THOUSAND_ERROR_MESSAGE;
+import static lotto.view.SystemMessage.MULTIPLE_THOUSAND_ERROR_MESSAGE;
 
 public class Buyer {
     private final Integer money;

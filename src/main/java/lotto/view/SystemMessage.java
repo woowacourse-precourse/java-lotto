@@ -1,4 +1,4 @@
-package lotto.domain;
+package lotto.view;
 
 public class SystemMessage {
     public static final String ERROR_MESSAGE = "[ERROR]";
