@@ -14,6 +14,12 @@ public class Lotto {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException();
         }
+
+        int len = numbers.size();
+        for (int i = len - 1; i >= 0; i--) { //중복 원소 검출
+            if (numbers.indexOf(numbers.get(i)) != i)
+                throw new IllegalArgumentException();
+        }
     }
 
     public ranking countHit(List<Integer> hitNumber, int bonus){
