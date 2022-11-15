@@ -28,5 +28,4 @@ public class Lotto {
             throw new IllegalArgumentException(ErrorEnum.BAD_REQUEST_NOT_VALID_NUM_EXCEPTION.getMessage());
     }
 
-    // TODO: 추가 기능 구현
 }
