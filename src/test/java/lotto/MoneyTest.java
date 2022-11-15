@@ -78,4 +78,11 @@ public class MoneyTest {
         Map<Rank, Integer> rankMap = Map.of(NONE, 0, THIRD, 3, SECOND, 1);
         assertThat(Earning.getEarning(rankMap).getMoney()).isEqualTo(1_500_000 * 3 + 30_000_000);
     }
+
+    @DisplayName("구입 금액이 1,000,000,000원 이상일시 예외를 발생한다.")
+    @Test
+    void purchaseMoneyMoreThanMax() {
+        assertThatThrownBy(() -> createPurchaseMoney("1000000000")).isInstanceOf(
+                PurchaseMoneyNotPositiveIntegerException.class);
+    }
 }
