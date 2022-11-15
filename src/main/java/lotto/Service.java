@@ -56,6 +56,9 @@ public class Service {
             } catch (NumberFormatException e) {
                 throw new IllegalArgumentException("[ERROR] 숫자를 입력해주세요.");
             }
+            if (!(Integer.parseInt(winningNumber) > 0) || !(Integer.parseInt(winningNumber) < 46)) {
+                throw new IllegalArgumentException("[ERROR] 범위를 벗어나는 숫자입니다.");
+            }
         }
     }
 }
