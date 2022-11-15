@@ -3,14 +3,16 @@ package lotto;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
-import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import static lotto.Rank.*;
 
 public class View {
 
     private final static int LOTTO_PRICE = 1000;
+    private final static int LOTTO_NUMBER_AMOUNT = 6;
 
     public int enterMoneyFromCustomer() {
         System.out.println("구입금액을 입력해 주세요.");
@@ -65,6 +67,14 @@ public class View {
             validateLottoNumber(number);
             winNumbers.add(number);
         }
+        validateDuplicatedWinNumbers(winNumbers);
+    }
+
+    private void validateDuplicatedWinNumbers(List<Integer> winNumbers) {
+        Set<Integer> numberSet = new HashSet<>(winNumbers);
+        if (numberSet.size() != LOTTO_NUMBER_AMOUNT) {
+            throw new IllegalArgumentException("[ERROR] 중복된 당첨번호를 입력하였습니다.");
+        }
     }
 
     private void validateLottoNumber(Integer number) {
@@ -78,13 +88,13 @@ public class View {
         Integer bonusNumber = Integer.valueOf(Console.readLine());
 
         validateLottoNumber(bonusNumber);
-        validateDuplicateLottoNumber(winNumbers, bonusNumber);
+        validateDuplicateBonusLottoNumber(winNumbers, bonusNumber);
 
         System.out.println();
         return bonusNumber;
     }
 
-    private void validateDuplicateLottoNumber(List<Integer> winNumbers, Integer bonusNumber) {
+    private void validateDuplicateBonusLottoNumber(List<Integer> winNumbers, Integer bonusNumber) {
         if (winNumbers.contains(bonusNumber))
             throw new IllegalArgumentException("[ERROR] 보너스 번호가 이미 당첨 번호에 포함된 번호입니다.");
     }
