@@ -40,10 +40,10 @@ public class LottoResult {
     public Integer getSixCount() {
         return sixCount;
     }
-    public double getYield(){
+
+    public double getYield() {
         return (double) Math.round(yield * 100) / 100;
     }
-
 
 
     public LottoResult(List<Lotto> lottoList, WinningLottoNumber winningLottoNumber) {
@@ -54,30 +54,34 @@ public class LottoResult {
 
     private void setWinningResult() {
         for (Lotto lotto : lottoList) {
-            Integer correctCountCalculation = winningLottoNumber.correctCountCalculation(lotto);
-            Integer bonusCountCalculation = winningLottoNumber.bonusCountCalculation(lotto);
-            if (Objects.equals(correctCountCalculation, 6)) {
-                sixCount++;
-                continue;
-            }
-            if (Objects.equals(correctCountCalculation, 5) && (Objects.equals(bonusCountCalculation, 1))) {
-                fiveAndBonusCount++;
-                continue;
-            }
-            if (Objects.equals(correctCountCalculation, 5) && (Objects.equals(bonusCountCalculation, 0))) {
-                fiveCount++;
-                continue;
-            }
-            if (Objects.equals(correctCountCalculation, 4)) {
-                fourCount++;
-                continue;
-            }
-            if (Objects.equals(correctCountCalculation, 3)) {
-                threeCount++;
-            }
+            getWinningCount(lotto);
         }
         setTotalPrize();
         yieldCalculation();
+    }
+
+    private void getWinningCount(Lotto lotto) {
+        Integer correctCountCalculation = winningLottoNumber.correctCountCalculation(lotto);
+        Integer bonusCountCalculation = winningLottoNumber.bonusCountCalculation(lotto);
+        if (Objects.equals(correctCountCalculation, 6)) {
+            sixCount++;
+            return;
+        }
+        if (Objects.equals(correctCountCalculation, 5) && (Objects.equals(bonusCountCalculation, 1))) {
+            fiveAndBonusCount++;
+            return;
+        }
+        if (Objects.equals(correctCountCalculation, 5) && (Objects.equals(bonusCountCalculation, 0))) {
+            fiveCount++;
+            return;
+        }
+        if (Objects.equals(correctCountCalculation, 4)) {
+            fourCount++;
+            return;
+        }
+        if (Objects.equals(correctCountCalculation, 3)) {
+            threeCount++;
+        }
     }
 
     private void setTotalPrize() {
