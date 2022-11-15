@@ -17,6 +17,9 @@ public class Application {
 
         System.out.println(Message.START_MESSAGE);
         int price = main.checkNum(main.userInputNumber());
+        if (price == 0){
+            return;
+        }
         int lottoNum = main.checkPrice(price);
 
         System.out.println(lottoNum + Message.LOTTOSIZE_MESSAGE);
@@ -50,7 +53,8 @@ public class Application {
         try {
             return Integer.parseInt(userInputNumber);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException(Message.ERROR_MESSAGE + Message.ERROR_CHECKNUM);
+            System.out.println(Message.ERROR_MESSAGE + Message.ERROR_CHECKNUM);
+            return 0;
         }
     }
 
