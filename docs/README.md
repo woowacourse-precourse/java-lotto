@@ -41,3 +41,6 @@
     - Purchase class 와의 의존도를 낮추는 효과
 - 복권 생성을 **Purchase class** 가 아닌 **Lotto class**에서 List로 생성해서 반환하도록 변경
 - 예외 처리 부분을 Input class 가 아닌 각 class 의 생성자 부분으로 분리
+- Result에서 다른 class에 해당되는 로직들을 각 class들로 분리
+  - 로또의 결과 등수를 반환하는 로직 -> Lotto class
+  - 수익률을 계산하여 반환하는 로직 -> Amount class
