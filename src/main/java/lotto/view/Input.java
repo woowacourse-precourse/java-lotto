@@ -21,6 +21,16 @@ public class Input {
         return lotto;
     }
 
+    private static List<Integer> getWinNums (String input) {
+        List<Integer> winNums = new ArrayList<>();
+        String[] strings = input.split(",");
+
+        for (int i=0; i<strings.length; i++) {
+            winNums.add(Integer.parseInt(strings[i].trim()));
+        }
+        return winNums;
+    }
+
     private static void vaildMoney(int Money) {
         if (Money % 1000 != 0) {
             throw new IllegalArgumentException(Messages.ERROR_NOT_DIVDE1000);
