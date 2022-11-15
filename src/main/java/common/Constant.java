@@ -11,7 +11,7 @@ public final class Constant {
 
     public static final String EXIST_DUPLICATE_NUMBER_EXCEPTION = "[ERROR] 로또 번호는 중복이 되어서는 안됩니다.";
     public static final String NOT_MATCH_PICK_NUMBER_EXCEPTION = "[ERROR] 당첨번호는 6개여야 합니다.";
-    public static final String NOT_NUMBER_EXCEPTION = "[ERROR] 당첨번호는 숫자여야 합니다.";
+    public static final String NOT_NUMBER_EXCEPTION = "[ERROR] 입력값이 숫자여야 합니다.";
 
 
     public static final String PURCHASE_PRICE_MESSAGE = "구입금액을 입력해 주세요.";
