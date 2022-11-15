@@ -112,6 +112,7 @@
 - [x]  List<Lotto>의 일급 컬렉션인 LottoTicket 클래스 추가
     - [x] 로또 번호 리스트들을 반환하는 value 메서드 추가
     - [x] 로또 결과 확인하는 check 메서드 추가
+- [x]  long의 래퍼 클래스 Money 추가
 
 ### dto
 
