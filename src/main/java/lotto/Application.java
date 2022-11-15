@@ -20,18 +20,22 @@ public class Application {
     List<Lotto> lottery = new ArrayList<>();
 
     public static void main(String[] args) {
-        Application application = new Application();
-        application.printInsertPrice();
-        application.insertPriceAndSaveNumber();
-        application.makeLottery();
-        application.printLottery();
-        application.printInsertWinningNumber();
-        application.insertWinningNumber();
-        application.printInsertBonusNumber();
-        application.insertBonusNumberSaveNumber();
-        int[] profitBoard = application.calcMatches();
-        double profitRate = application.makeProfitRate(profitBoard);
-        application.printStatics(profitBoard, profitRate);
+        try {
+            Application application = new Application();
+            application.printInsertPrice();
+            application.insertPriceAndSaveNumber();
+            application.makeLottery();
+            application.printLottery();
+            application.printInsertWinningNumber();
+            application.insertWinningNumber();
+            application.printInsertBonusNumber();
+            application.insertBonusNumberSaveNumber();
+            int[] profitBoard = application.calcMatches();
+            double profitRate = application.makeProfitRate(profitBoard);
+            application.printStatics(profitBoard, profitRate);
+        }catch (IllegalArgumentException e){
+            System.out.println(e.getMessage());
+        }
     }
 
     public void printStatics(int[] profitBoard, double profitRate) {
