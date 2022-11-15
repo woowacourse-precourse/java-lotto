@@ -18,7 +18,7 @@ public class LottoCalculator {
 
     public int compare(List<Integer> lotto, List<Integer> winningNumbers, int bonusNumber) {
         int count = judgement.correctCount(lotto, winningNumbers);
-        if (count < 5 || !judgement.hasBonusNumbers(bonusNumber, lotto)) {
+        if (count < 5 || (count == 5 && !judgement.hasBonusNumbers(bonusNumber, lotto))) {
             count--;
         }
         return count - 2;
