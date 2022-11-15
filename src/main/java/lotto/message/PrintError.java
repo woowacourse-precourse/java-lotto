@@ -2,7 +2,7 @@ package lotto.message;
 
 public enum PrintError {
     LOTTO_SIZE("[ERROR]: 로또 당첨 숫자에는 6개를 입력해주세요"),
-    LOTTO_RANGE("[ERROR]: 로또 당첨 숫자에는 1이상 45이하의 숫자를 입력해주세요."),
+    LOTTO_RANGE("[ERROR]: 로또 당첨 숫자에는 1이상 45이하의 숫자만 입력해주세요."),
     LOTTO_OVERLAP("[ERROR]: 로또 당첨 숫자에는 중복된 숫자를 입력하면 안됩니다."),
     LOTTO_NUMBER("[ERROR]: 로또 번호는 숫자만 입력할 수 있습니다."),
     MONEY_NUMBER("[ERROR]: 로또를 구매할 돈의 최소 단위는 반드시 1000원이어야 합니다."),
