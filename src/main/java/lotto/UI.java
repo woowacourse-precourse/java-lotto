@@ -15,18 +15,6 @@ public class UI {
         return money;
     }
 
-    private void Money_Validate(String Input) {
-        try {
-            Integer money = Integer.valueOf(Input);
-            Integer remainder = money % 1000;
-            if (remainder != 0) {
-                throw new IllegalArgumentException();
-            }
-        } catch (Exception e) {
-            throw new IllegalArgumentException("[ERROR] 로또 구입 금액은 1000원 단위의 숫자여야 합니다.");
-        }
-    }
-
     public List<Integer> Answer_Number() {
         List<Integer> Answer_numbers = new ArrayList();
         System.out.println("당첨 번호를 입력해 주세요.");
