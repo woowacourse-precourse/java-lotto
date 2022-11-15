@@ -1,16 +1,23 @@
 package lotto;
 
-import camp.nextstep.edu.missionutils.test.NsTest;
-import org.junit.jupiter.api.Test;
-
-import java.util.List;
-
+import static org.assertj.core.api.Assertions.assertThat;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomUniqueNumbersInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
-import static org.assertj.core.api.Assertions.assertThat;
+
+import java.util.List;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import camp.nextstep.edu.missionutils.test.NsTest;
+import lotto.domain.Buyer;
+import lotto.domain.LottoProgram;
 
 class ApplicationTest extends NsTest {
     private static final String ERROR_MESSAGE = "[ERROR]";
+
+    @BeforeEach
+    public void setUpEach() {
+        LottoProgram.buyer = new Buyer();
+    }
 
     @Test
     void 기능_테스트() {
@@ -43,6 +50,133 @@ class ApplicationTest extends NsTest {
                 List.of(7, 11, 30, 40, 42, 43),
                 List.of(2, 13, 22, 32, 38, 45),
                 List.of(1, 3, 5, 14, 22, 45)
+        );
+    }
+
+    @Test
+    void 기능_테스트_2() {
+        assertRandomUniqueNumbersInRangeTest(
+                () -> {
+                    run("3000", "1,2,3,4,5,6", "7");
+                    assertThat(output()).contains(
+                            "3개를 구매했습니다.",
+                            "[1, 2, 3, 4, 5, 6]",
+                            "[1, 2, 3, 4, 5, 6]",
+                            "[1, 2, 3, 4, 5, 6]",
+                            "3개 일치 (5,000원) - 0개",
+                            "4개 일치 (50,000원) - 0개",
+                            "5개 일치 (1,500,000원) - 0개",
+                            "5개 일치, 보너스 볼 일치 (30,000,000원) - 0개",
+                            "6개 일치 (2,000,000,000원) - 3개",
+                            "총 수익률은 200000000.0%입니다."
+                    );
+                },
+                List.of(1, 2, 3, 4, 5, 6),
+                List.of(1, 2, 3, 4, 5, 6),
+                List.of(1, 2, 3, 4, 5, 6)
+        );
+    }
+
+
+    @Test
+    void 기능_테스트_3() {
+        assertRandomUniqueNumbersInRangeTest(
+                () -> {
+                    run("3000", "1,2,3,4,5,6", "7");
+                    assertThat(output()).contains(
+                            "3개를 구매했습니다.",
+                            "[1, 2, 3, 4, 5, 6]",
+                            "[1, 2, 3, 4, 5, 6]",
+                            "[1, 2, 3, 4, 5, 7]",
+                            "3개 일치 (5,000원) - 0개",
+                            "4개 일치 (50,000원) - 0개",
+                            "5개 일치 (1,500,000원) - 0개",
+                            "5개 일치, 보너스 볼 일치 (30,000,000원) - 1개",
+                            "6개 일치 (2,000,000,000원) - 2개",
+                            "총 수익률은 134333333.3%입니다."
+                    );
+                },
+                List.of(1, 2, 3, 4, 5, 6),
+                List.of(1, 2, 3, 4, 5, 6),
+                List.of(1, 2, 3, 4, 5, 7)
+        );
+    }
+
+    @Test
+    void 기능_테스트_4() {
+        assertRandomUniqueNumbersInRangeTest(
+                () -> {
+                    run("7000", "1,2,3,4,5,6", "7");
+                    assertThat(output()).contains(
+                            "7개를 구매했습니다.",
+                            "[1, 2, 3, 4, 5, 6]",
+                            "[1, 2, 3, 4, 5, 6]",
+                            "[1, 2, 3, 4, 5, 6]",
+                            "[1, 2, 3, 4, 5, 6]",
+                            "[1, 2, 3, 4, 5, 7]",
+                            "[1, 2, 3, 4, 5, 7]",
+                            "[1, 2, 3, 4, 5, 7]",
+                            "3개 일치 (5,000원) - 0개",
+                            "4개 일치 (50,000원) - 0개",
+                            "5개 일치 (1,500,000원) - 0개",
+                            "5개 일치, 보너스 볼 일치 (30,000,000원) - 3개",
+                            "6개 일치 (2,000,000,000원) - 4개",
+                            "총 수익률은 115571428.6%입니다."
+                    );
+                },
+                List.of(1, 2, 3, 4, 5, 6),
+                List.of(1, 2, 3, 4, 5, 6),
+                List.of(1, 2, 3, 4, 5, 6),
+                List.of(1, 2, 3, 4, 5, 6),
+                List.of(1, 2, 3, 4, 5, 7),
+                List.of(1, 2, 3, 4, 5, 7),
+                List.of(1, 2, 3, 4, 5, 7)
+        );
+    }
+
+    @Test
+    void 기능_테스트_5() {
+        assertRandomUniqueNumbersInRangeTest(
+                () -> {
+                    run("14000", "1,2,3,4,5,6", "7");
+                    assertThat(output()).contains(
+                            "14개를 구매했습니다.",
+                            "[1, 2, 3, 4, 5, 6]",
+                            "[1, 2, 3, 4, 5, 6]",
+                            "[1, 2, 3, 4, 5, 6]",
+                            "[1, 2, 3, 4, 5, 6]",
+                            "[1, 2, 3, 4, 5, 6]",
+                            "[1, 2, 3, 4, 5, 6]",
+                            "[1, 2, 3, 4, 5, 6]",
+                            "[1, 2, 3, 4, 5, 6]",
+                            "[1, 2, 3, 4, 5, 6]",
+                            "[1, 2, 3, 4, 5, 7]",
+                            "[1, 2, 3, 4, 5, 7]",
+                            "[1, 2, 3, 4, 5, 7]",
+                            "[1, 2, 3, 4, 5, 7]",
+                            "[1, 2, 3, 4, 5, 7]",
+                            "3개 일치 (5,000원) - 0개",
+                            "4개 일치 (50,000원) - 0개",
+                            "5개 일치 (1,500,000원) - 0개",
+                            "5개 일치, 보너스 볼 일치 (30,000,000원) - 5개",
+                            "6개 일치 (2,000,000,000원) - 9개",
+                            "총 수익률은 129642857.1%입니다."
+                    );
+                },
+                List.of(1, 2, 3, 4, 5, 6),
+                List.of(1, 2, 3, 4, 5, 6),
+                List.of(1, 2, 3, 4, 5, 6),
+                List.of(1, 2, 3, 4, 5, 6),
+                List.of(1, 2, 3, 4, 5, 6),
+                List.of(1, 2, 3, 4, 5, 6),
+                List.of(1, 2, 3, 4, 5, 6),
+                List.of(1, 2, 3, 4, 5, 6),
+                List.of(1, 2, 3, 4, 5, 6),
+                List.of(1, 2, 3, 4, 5, 7),
+                List.of(1, 2, 3, 4, 5, 7),
+                List.of(1, 2, 3, 4, 5, 7),
+                List.of(1, 2, 3, 4, 5, 7),
+                List.of(1, 2, 3, 4, 5, 7)
         );
     }
 
