@@ -1,4 +1,4 @@
-package lotto;
+package lotto.core;
 
 import static java.util.Comparator.comparingLong;
 

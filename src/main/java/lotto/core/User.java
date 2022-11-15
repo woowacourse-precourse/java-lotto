@@ -1,7 +1,7 @@
-package lotto;
+package lotto.core;
 
-import static lotto.ErrorMessage.BONUS_NUMBER_NOT_NUMBER_INPUT_ERROR;
-import static lotto.ErrorMessage.PURCHASE_AMOUNT_NOT_NUMBER_INPUT_ERROR;
+import static lotto.validator.ErrorMessage.BONUS_NUMBER_NOT_NUMBER_INPUT_ERROR;
+import static lotto.validator.ErrorMessage.PURCHASE_AMOUNT_NOT_NUMBER_INPUT_ERROR;
 import static lotto.util.WinningNumberConverter.convertToImmutableIntegerList;
 import static lotto.util.WinningNumberConverter.convertToImmutableStringList;
 import static lotto.validator.LottoValidator.validateNumber;

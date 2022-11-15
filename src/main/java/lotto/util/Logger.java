@@ -1,4 +1,4 @@
-package lotto;
+package lotto.util;
 
 public class Logger {
     private static final String ERROR_LOG_PREFIX = "[ERROR] ";

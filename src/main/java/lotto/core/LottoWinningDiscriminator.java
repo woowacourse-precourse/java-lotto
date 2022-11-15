@@ -1,7 +1,7 @@
-package lotto;
+package lotto.core;
 
 import static java.util.stream.Collectors.toUnmodifiableList;
-import static lotto.LottoRank.winningResult;
+import static lotto.core.LottoRank.winningResult;
 
 import java.util.List;
 

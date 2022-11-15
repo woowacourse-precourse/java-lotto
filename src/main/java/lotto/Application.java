@@ -1,5 +1,7 @@
 package lotto;
 
+import lotto.core.LotteryPublisher;
+import lotto.core.User;
 import lotto.input.NextStepInputReader;
 import lotto.random.NextStepLottoNumberGenerator;
 import lotto.view.InputView;

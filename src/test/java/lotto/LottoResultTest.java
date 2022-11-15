@@ -1,13 +1,15 @@
 package lotto;
 
-import static lotto.LottoRank._1st;
-import static lotto.LottoRank._2nd;
-import static lotto.LottoRank._3rd;
-import static lotto.LottoRank._4th;
-import static lotto.LottoRank._5th;
-import static lotto.LottoRank.DRAW;
+import static lotto.core.LottoRank._1st;
+import static lotto.core.LottoRank._2nd;
+import static lotto.core.LottoRank._3rd;
+import static lotto.core.LottoRank._4th;
+import static lotto.core.LottoRank._5th;
+import static lotto.core.LottoRank.DRAW;
 import static org.assertj.core.api.Assertions.assertThat;
 
+import lotto.core.LottoRank;
+import lotto.core.LottoResult;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import java.util.List;

@@ -2,6 +2,8 @@ package lotto;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import lotto.core.LotteryPublisher;
+import lotto.core.Lotto;
 import lotto.random.NextStepLottoNumberGenerator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

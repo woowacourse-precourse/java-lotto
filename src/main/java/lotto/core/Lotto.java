@@ -1,4 +1,4 @@
-package lotto;
+package lotto.core;
 
 import static lotto.validator.LottoValidator.validateLottoNumberSize;
 import static lotto.validator.LottoValidator.validateDuplicateNumber;

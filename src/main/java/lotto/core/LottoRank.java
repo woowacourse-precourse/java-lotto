@@ -1,6 +1,6 @@
-package lotto;
+package lotto.core;
 
-import static lotto.ErrorMessage.INVALID_CORRECT_WINNING_NUMBER_ERROR;
+import static lotto.validator.ErrorMessage.INVALID_CORRECT_WINNING_NUMBER_ERROR;
 
 import java.util.Arrays;
 

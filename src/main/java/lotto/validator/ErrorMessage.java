@@ -1,4 +1,4 @@
-package lotto;
+package lotto.validator;
 
 public final class ErrorMessage {
     public static final String INVALID_LOTTO_NUMBER_SIZE_ERROR = "로또 번호는 6개의 숫자여야 합니다.";
