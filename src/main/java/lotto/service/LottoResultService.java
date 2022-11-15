@@ -9,9 +9,9 @@ import lotto.domain.LottoResult;
 public class LottoResultService {
     private LottoAnswer lottoAnswer;
     private List<Lotto> lottos;
-    private GradeService gradeService;
-    private RankService rankService = new RankService();
-    private LottoResult lottoResult = new LottoResult();
+    private final GradeService gradeService;
+    private final RankService rankService = new RankService();
+    private final LottoResult lottoResult = new LottoResult();
     private List<LottoGrade> lottoGrades;
     private double yield;
 

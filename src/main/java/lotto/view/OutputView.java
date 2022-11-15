@@ -13,7 +13,7 @@ public class OutputView {
     static DecimalFormat df;
 
     public static void printResult(LottoResult lottoResult, double yield) {
-        System.out.println((PrintMessage.LOTTO_RESULT_STATISTIC));
+        System.out.println((PrintMessage.LOTTO_RESULT_STATISTIC.getString()));
         Rank[] ranks = Rank.values();
         for (int rankIndex = ranks.length - 2; rankIndex >= 0; rankIndex--) {
             Rank value = ranks[rankIndex];
