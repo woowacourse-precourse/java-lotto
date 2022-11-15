@@ -18,12 +18,28 @@ public class Lotto {
             throw new IllegalArgumentException("로또 번호가 6자리가 아닙니다.");
         }
         this.isDuplicateNumberExist(numbers);
+        this.isInRange(numbers, 1, 45);
     }
 
     private void isDuplicateNumberExist(List<Integer> input) {
         Set<Integer> set = new HashSet<>(input);
         if (input.size() != set.size())
             throw new IllegalArgumentException("중복된 숫자가 존재합니다");
+    }
+
+    private void isInRange(List<Integer> numbers, int min, int max) {
+        for (int number : numbers) {
+            if (!isBetween(min, max, number)) {
+                throw new IllegalArgumentException(String.format("로또 번호는 %d부터 %d 사이의 숫자여야 합니다.", min, max));
+            }
+        }
+    }
+
+    private boolean isBetween(int min, int max, int target) {
+        if (min <= target && target <= max)
+            return true;
+        else
+            return false;
     }
 
     public Map<MatchInfo, Integer> calculateLottoStatistics(List<List<Integer>> userLottoList, int bonusNumber) {
