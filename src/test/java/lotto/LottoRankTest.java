@@ -28,6 +28,7 @@ public class LottoRankTest {
         LottoStatistic.computeLottoRank(lottos, lottoWinNumbers);
 
         assertThat(LottoRank.FIRST.getWinCount()).isEqualTo(1);
+        LottoRank.FIRST.initWinCount();
     }
 
     @DisplayName("1등과 2등이 당첨되었을 경우 LottoRank FIRST 와 SECOND winCount 카운트가 1로 올라감")
@@ -44,6 +45,8 @@ public class LottoRankTest {
 
         assertThat(LottoRank.FIRST.getWinCount()).isEqualTo(1);
         assertThat(LottoRank.SECOND.getWinCount()).isEqualTo(1);
+        LottoRank.FIRST.initWinCount();
+        LottoRank.SECOND.initWinCount();
     }
 
 }
