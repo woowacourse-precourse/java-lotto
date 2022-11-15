@@ -14,25 +14,22 @@ public class GameManager {
     }
 
     public void run() {
-        View.printPriceMessage();
-        Long price = inputPrice();
+        Long price = askPrice();
+
         List<Lotto> publishedLottos = publishLottos(getCountFromPrice(price));
         View.printPublishedLottos(publishedLottos);
 
-        View.printWinningLottoMessage();
-        Lotto winningLotto = new Lotto(inputWinningLotto());
-
-        View.printBonusNumberMessage();
-        Integer bonusNumber = inputBonusNumber();
+        Lotto winningLotto = askWinningLotto();
+        Integer bonusNumber = askBonusNumber();
 
         LottoGame game = new LottoGame(bonusNumber, winningLotto, publishedLottos);
         LottoResult result = game.generateResult();
         View.printLottoResult(result, price);
     }
 
-    private Integer getCountFromPrice(Long Price) {
-        Integer lottoCount = (int)(Price / PRICE_UNIT.getNumber());
-        return lottoCount;
+    private Long askPrice() {
+        View.printPriceMessage();
+        return inputPrice();
     }
 
     private List<Lotto> publishLottos(Integer lottoCount) {
@@ -51,5 +48,19 @@ public class GameManager {
         lotto = new Lotto(lottoNumbers);
 
         return lotto;
+    }
+
+    private Lotto askWinningLotto() {
+        View.printWinningLottoMessage();
+        return new Lotto(inputWinningLotto());
+    }
+
+    private Integer askBonusNumber() {
+        View.printBonusNumberMessage();
+        return inputBonusNumber();
+    }
+
+    private Integer getCountFromPrice(Long Price) {
+        return (int)(Price / PRICE_UNIT.getNumber());
     }
 }
