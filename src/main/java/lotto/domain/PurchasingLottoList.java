@@ -7,7 +7,8 @@ public class PurchasingLottoList {
     private List<List<Integer>> lottoList;
     private int numberOfTicket;
 
-    public PurchasingLottoList(){
+    public PurchasingLottoList(int money){
+        moneyToTicket(money);
         this.lottoList = numberGenerator.createRandomNumbers(numberOfTicket);
     }
     public List<List<Integer>> getLottoList() {
