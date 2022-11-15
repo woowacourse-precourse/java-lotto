@@ -53,8 +53,4 @@ public class User {
     public Map<Rank, Integer> getRanks() {
         return ranks;
     }
-
-    public void setRanks(Map<Rank, Integer> ranks) {
-        this.ranks = ranks;
-    }
 }

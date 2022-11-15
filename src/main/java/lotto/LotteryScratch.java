@@ -40,11 +40,10 @@ public class LotteryScratch {
     }
 
     public Rank judgeRank(Lotto lotto, int size) {
-        List<Integer> lottoNumbers = lotto.getNumbers();
         if (size == 6) {
             return Rank.RANK1;
         } else if (size == 5) {
-            if (lottoNumbers.contains(winningNumber.getBonusNumber())) {
+            if (lotto.contains(winningNumber.getBonusNumber())) {
                 return Rank.RANK2;
             }
             return Rank.RANK3;
