@@ -15,6 +15,21 @@ public class Lotto {
             throw new IllegalArgumentException();
         }
     }
+    public List<Integer> NumberReturn(){
+        return numbers;
+    }
 
-    // TODO: 추가 기능 구현
+    public int Matching(List<Integer> WinningNumber,int Bonus){
+        int sum = 0;
+        for(int i :WinningNumber){
+            for(int j : numbers){
+                if(i==j)sum++;
+            }
+        }
+        for(int j : numbers){
+            if(sum==5&&j == Bonus)sum+=2;
+        }
+        return sum;
+    }
+
 }
