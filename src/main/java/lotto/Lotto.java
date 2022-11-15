@@ -19,7 +19,9 @@ public class Lotto {
     }
 
     private void DuplicateNumber(List<Integer> numbers){
-
+        Set<Integer> number = new HashSet<>(numbers);
+        if(number.size() != numbers.size()){
+            throw new IllegalArgumentException("[ERROR] 중복된 숫자가 존재합니다.");
         }
     }
 
