@@ -33,4 +33,8 @@ public class Server {
     public Boolean isInclude(List<Integer> winLottoNumber, int bonusNumber){
         return winLottoNumber.contains(bonusNumber);
     }
+
+    public Boolean compareBonusNumber(List<Integer> lottoNumber, int bonusNumber) {
+        return lottoNumber.contains(bonusNumber);
+    }
 }
