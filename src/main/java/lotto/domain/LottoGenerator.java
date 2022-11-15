@@ -14,8 +14,11 @@ public class LottoGenerator {
     private final List<Integer> numbers = new ArrayList<>();
 
     public LottoGenerator() {
-        List<Integer> numbers = Randoms.pickUniqueNumbersInRange(LOTTO_START, LOTTO_END, LOTTO_SIZE);
-        OutputView.printGeneratedLottoNumbers(numbers);
+        List<Integer> generatedNumbers = Randoms.pickUniqueNumbersInRange(LOTTO_START, LOTTO_END, LOTTO_SIZE);
+        OutputView.printGeneratedLottoNumbers(generatedNumbers);
+        for (int number : generatedNumbers) {
+            numbers.add(number);
+        }
     }
 
     public List<Integer> getLotto() {
