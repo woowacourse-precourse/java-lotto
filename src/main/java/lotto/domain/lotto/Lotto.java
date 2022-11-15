@@ -34,4 +34,7 @@ public class Lotto {
         return LottoNumber.LOTTO_NUMBER.getCount();
     }
 
+    public List<Integer> getNumberList() {
+        return numbers;
+    }
 }
