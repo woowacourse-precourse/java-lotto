@@ -12,7 +12,7 @@ public class LottoTickets {
         this.lottoTickets = lottoTickets;
     }
 
-    public List<Ranking> result(WinningLotto bonusLotto) {
+    public List<Ranking> result(WinningTicket bonusLotto) {
         List<Ranking> winningRanks = new ArrayList<>();
         for (Lotto lotto : lottoTickets) {
             int count = lotto.countMatchingNumbers(bonusLotto);
@@ -22,7 +22,7 @@ public class LottoTickets {
         return winningRanks;
     }
 
-    private boolean checkBonus(WinningLotto bonusLotto, Lotto lotto, int count) {
+    private boolean checkBonus(WinningTicket bonusLotto, Lotto lotto, int count) {
         boolean bonus = false;
         if (count == BONUS_CHECK_CONDITION) {
             bonus = bonusLotto.checkBonus(lotto);

@@ -8,8 +8,8 @@ public class LottoGameController {
     public void run() {
         LottoAmount amount = inputMoney();
         LottoTickets lottoTickets = purchaseLotto(amount.makeLottoTickets());
-        WinningLotto winningLotto = makeWinningLotto();
-        LottoResult lottoResult = getResult(lottoTickets, winningLotto);
+        WinningTicket winningTicket = makeWinningLotto();
+        LottoResult lottoResult = getResult(lottoTickets, winningTicket);
         SystemMessage.winningResult(lottoResult.matchWinningRank());
         SystemMessage.profit(lottoResult.getProfit(amount.makeLottoTickets()));
     }
@@ -25,7 +25,7 @@ public class LottoGameController {
         return lottoTickets;
     }
 
-    private WinningLotto makeWinningLotto() {
+    private WinningTicket makeWinningLotto() {
         SystemMessage.winningNumber();
         List<Integer> winningNumber = Input.winningTicket();
         SystemMessage.bonusNumber();
@@ -33,7 +33,7 @@ public class LottoGameController {
         return lottoGenerator.generateWinningTicket(winningNumber, bonus);
     }
 
-    private LottoResult getResult(LottoTickets lottoTickets, WinningLotto winningLotto) {
-        return new LottoResult(lottoTickets.result(winningLotto));
+    private LottoResult getResult(LottoTickets lottoTickets, WinningTicket winningTicket) {
+        return new LottoResult(lottoTickets.result(winningTicket));
     }
 }

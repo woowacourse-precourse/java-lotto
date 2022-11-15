@@ -18,7 +18,7 @@ public class LottoGenerator {
         return new LottoTickets(lottoTickets);
     }
 
-    public WinningLotto generateWinningTicket(List<Integer> winningNumber, int bonus) {
-        return new WinningLotto(winningNumber, bonus);
+    public WinningTicket generateWinningTicket(List<Integer> winningNumber, int bonus) {
+        return new WinningTicket(winningNumber, bonus);
     }
 }
