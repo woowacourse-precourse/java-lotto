@@ -1,5 +1,6 @@
 package lotto;
 
+import java.text.NumberFormat;
 import java.util.List;
 import java.util.Map;
 
@@ -32,22 +33,47 @@ public class Print {
         System.out.println("보너스 번호를 입력해 주세요.");
     }
 
-    public static void printResult(Map<Numbers, Integer> ranking) {
+    public static void printResult(int numberOfLottos, Map<Numbers, Integer> ranking) {
         printEmptyLine();
+        double prize = 0;
         System.out.println("당첨 통계\n" + "---");
         for (Numbers num : ranking.keySet()) {
-            if (num == Numbers.FIVE_WITH_BONUS) {
-                System.out.println(
-                        num.getCount() + "개 일치, 보너스 볼 일치 (" +
-                                num.getAmount() + "원) - " +
-                                ranking.get(num) + "개");
+            if (num == Numbers.NOTHING) {
                 continue;
             }
-            System.out.println(
-                    num.getCount() + "개 일치 (" +
-                            num.getAmount() + "원) - " +
-                            ranking.get(num) + "개"
-            );
+            if (num == Numbers.FIVE_WITH_BONUS) {
+                printBonusResult(ranking, num);
+                prize += num.getAmount() * ranking.get(num);
+                continue;
+            }
+            printCommonResult(ranking, num);
+            prize += num.getAmount() * ranking.get(num);
         }
+        printYield(numberOfLottos, prize);
+    }
+
+    private static void printYield(int numberOfLottos, double prizeMoney) {
+        int lottoAmount = numberOfLottos * 1000;
+        String yield = String.format("%,.1f", (prizeMoney / lottoAmount) * 100);
+        System.out.println("총 수익률은 " + yield + "%입니다.");
+    }
+
+    private static String numberComma(double number) {
+        return NumberFormat.getInstance().format(number);
+    }
+
+    private static void printCommonResult(Map<Numbers, Integer> winningResult, Numbers num) {
+        System.out.println(
+                num.getCount() + "개 일치 (" +
+                        numberComma(num.getAmount()) + "원) - " +
+                        winningResult.get(num) + "개"
+        );
+    }
+
+    private static void printBonusResult(Map<Numbers, Integer> winningResult, Numbers num) {
+        System.out.println(
+                num.getCount() + "개 일치, 보너스 볼 일치 (" +
+                        numberComma(num.getAmount()) + "원) - " +
+                        winningResult.get(num) + "개");
     }
 }

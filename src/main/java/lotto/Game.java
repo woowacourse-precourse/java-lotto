@@ -17,7 +17,7 @@ public class Game {
         int bonusNumber = Input.inputBonusNumber();
         Bonus bonus = new Bonus(winning, bonusNumber);
         Map<Numbers, Integer> ranking = rank(lottos, bonus);
-        Print.printResult(ranking);
+        Print.printResult(numberOfLottos, ranking);
     }
 
     public static List<Numbers> countWinNumber(Bonus bonusLotto, LottoList lottos) {
