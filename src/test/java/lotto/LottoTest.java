@@ -41,4 +41,10 @@ class LottoTest {
         Lotto userLotto = new Lotto(List.of(1,2,3,4,5,6));
         assertThat(lotto.compare(userLotto)).isEqualTo(6);
     }
+    @DisplayName("로또가 보너스 숫자를 포함하고 있는지 체크한다.")
+    @Test
+    void checkBonusNum(){
+        Lotto lotto = new Lotto(List.of(1,2,3,4,5,6));
+        assertThat(lotto.containBonus(3)).isEqualTo(true);
+    }
 }
