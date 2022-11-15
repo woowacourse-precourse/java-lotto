@@ -1,6 +1,7 @@
 package lotto.service;
 
 import java.text.DecimalFormat;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -16,6 +17,7 @@ public class LottoCalculateService {
     private static final int FIVE_NUMBER_MATCHES = 5;
     private static final int SIX_NUMBER_MATCHES = 6;
     private static final int BONUS_ENUM_LABEL = 7;
+    private static final int BEFORE_BONUS_NUMBER_INDEX = 6;
     private final OutputView outputView = new OutputView();
     private Map<Winning, Integer> countOfWinning = new HashMap<>();
 
@@ -38,28 +40,29 @@ public class LottoCalculateService {
     }
 
     public void countLottoWinning(User user, List<Integer> numbers, Lotto lotto) {
-        int countContainsOfLotto = countUserNumbersContainLotto(numbers, lotto.getNumbers());
-        if (isNumberMatchedNormal(countContainsOfLotto)) {
-            inputCountOfWinning(Winning.FIND.valueOf(countContainsOfLotto));
-            user.addWinningPrice(Winning.FIND.valueOf(countContainsOfLotto).getPrice());
+        int countContainsOfLottoWithoutBonus = countUserNumbersContainLotto(numbers, lotto.getNumbers());
+
+        if (isNumberMatchedNormal(countContainsOfLottoWithoutBonus)) {
+            inputCountOfWinning(Winning.FIND.valueOf(countContainsOfLottoWithoutBonus));
+            user.addWinningPrice(Winning.FIND.valueOf(countContainsOfLottoWithoutBonus).getPrice());
             return;
         }
-        if (isNumberMatchedFiveWithBonus(countContainsOfLotto, numbers, lotto)) {
+        if (isNumberMatchedFiveWithBonus(countContainsOfLottoWithoutBonus, numbers, lotto)) {
             inputCountOfWinning(Winning.FIND.valueOf(BONUS_ENUM_LABEL));
             user.addWinningPrice(Winning.FIND.valueOf(BONUS_ENUM_LABEL).getPrice());
             return;
         }
-        if (isNumberMatchedFive(countContainsOfLotto, numbers, lotto)) {
-            inputCountOfWinning(Winning.FIND.valueOf(countContainsOfLotto));
-            user.addWinningPrice(Winning.FIND.valueOf(countContainsOfLotto).getPrice());
+        if (isNumberMatchedFive(countContainsOfLottoWithoutBonus, numbers, lotto)) {
+            inputCountOfWinning(Winning.FIND.valueOf(countContainsOfLottoWithoutBonus));
+            user.addWinningPrice(Winning.FIND.valueOf(countContainsOfLottoWithoutBonus).getPrice());
             return;
         }
     }
 
     public int countUserNumbersContainLotto(List<Integer> userNumbers, List<Integer> lottoNumbers) {
         int count = 0;
-        for (int number : userNumbers) {
-            if (lottoNumbers.contains(number)) {
+        for (int i = 0; i < BEFORE_BONUS_NUMBER_INDEX; i++) {
+            if (userNumbers.contains(lottoNumbers.get(i))) {
                 count++;
             }
         }
@@ -90,5 +93,4 @@ public class LottoCalculateService {
         }
         return false;
     }
-
 }

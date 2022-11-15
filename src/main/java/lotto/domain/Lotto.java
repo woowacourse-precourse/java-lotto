@@ -5,13 +5,12 @@ import lotto.exception.LottoException;
 
 public class Lotto {
     private final LottoException lottoException = new LottoException();
+    private final static int BONUS_INDEX = 6;
     private List<Integer> numbers;
-    private int bonusNumber;
 
     public Lotto(List<Integer> numbers) {
         validateNumbers(numbers);
         this.numbers = numbers;
-        this.bonusNumber = 0;
     }
 
     public void validateNumbers(List<Integer> numbers) {
@@ -20,7 +19,7 @@ public class Lotto {
 
     public void setBonusNumber(int inputBonusNumber) {
         lottoException.validateBonusNumbers(numbers, inputBonusNumber);
-        this.bonusNumber = inputBonusNumber;
+        numbers.add(inputBonusNumber);
     }
 
     public List<Integer> getNumbers() {
@@ -28,6 +27,6 @@ public class Lotto {
     }
 
     public int getBonusNumber() {
-        return bonusNumber;
+        return numbers.get(BONUS_INDEX);
     }
 }
