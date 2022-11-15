@@ -1,16 +1,13 @@
 package lotto.domain;
 
 import javax.swing.*;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 public class JudgeMent {
     private static final int initNumber = 0;
     private static final int correctNumberStandardWhenBonus = 5;
     private static final int minCorrectNumber =3;
-    private Map<Reward,Integer> correctResult= new HashMap<>();
+    private Map<Reward,Integer> correctResult= new LinkedHashMap<>();
 
     public int compareNumbers(List<Integer> winningNumbers, List<Integer> lottoNumbers) {
         int countCorrect = initNumber;
