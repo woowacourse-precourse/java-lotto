@@ -45,11 +45,13 @@ public class LotteryHostAgency {
 
 
     public enum WinningCriteria {
-        FIRST(2000000000), SECOND(30000000), THIRD(1500000), FORTH(50000), FIFTH(5000), NOTHING(0);
+        FIRST(2000000000,6), SECOND(30000000,5), THIRD(1500000,5 ), FORTH(50000,4), FIFTH(5000,3 ), NOTHING(0,0);
         int amount;
+        int matches;
 
-        WinningCriteria(int amount) {
+        WinningCriteria(int amount, int matches) {
             this.amount = amount;
+            this.matches = matches;
         }
     }
 
