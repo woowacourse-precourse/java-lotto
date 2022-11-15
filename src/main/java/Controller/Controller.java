@@ -22,13 +22,13 @@ public class Controller {
         InputView.printBuyingLottoMessage();
         String readMoneyValue = InputView.readInputLine();
         this.lottoList = new LottoList(readMoneyValue);
-        OutputView.printNumberOfLotto(lottoList.getLottoPlayNumber(), lottoList.getLottoList());
+        OutputView.printNumberOfLotto(lottoList);
     }
 
     public void setWinning(){
         InputView.printInputWinningNumberMessage();
-        String readWinningNumber = InputView.readInputLine();
-        this.winningNumbers = new WinningNumbers(readWinningNumber);
+        String readWinningNumbers = InputView.readInputLine();
+        this.winningNumbers = new WinningNumbers(readWinningNumbers);
     }
 
     public void setBonus(){
@@ -39,15 +39,15 @@ public class Controller {
 
 
     public void calculateLottoResult(LottoList lottoList, WinningNumbers winningNumbers, BonusNumber bonusNumber){
-        int income = 0;
+        int myReward = 0;
         int[] ranking = new int[6];  //상수
         for(Lotto eachLotto : lottoList.getLottoList()){
             int compareLotto = compareMyLottoAndWinningNumber(eachLotto.getLottoNumbers(), winningNumbers.getNumbers());
             boolean compareBonus = compareMyLottoAndBonusNumber(eachLotto.getLottoNumbers(), bonusNumber.getBonusNumber());
-            int getPrizeMoney = Prize.convertCountToPrizeMoney(compareLotto, ranking, compareBonus);
-            income += getPrizeMoney;
+            int prizeMoney = Prize.getPrizeMoney(compareLotto, ranking, compareBonus);
+            myReward += prizeMoney;
         }
-        OutputView.printLottoResult(ranking, lottoList, income);
+        OutputView.printLottoResult(ranking, lottoList, myReward);
     }
 
     public int compareMyLottoAndWinningNumber(List<Integer> myLottoNumber, List<Integer> winningNumber){

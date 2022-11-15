@@ -3,28 +3,30 @@ package View;
 import Domain.Lotto;
 import Domain.LottoList;
 
-import java.util.List;
-
 public class OutputView {
-    public static void printNumberOfLotto(int numberOfLotto, List<Lotto> lottoList){
-        System.out.printf("%d개를 구매했습니다.\n", numberOfLotto);
-        printEachLottoNum(lottoList);
+    private static final String PRINT_NUMBER_OF_LOTTO_MESSAGE = "%d개를 구매했습니다.\n";
+    private static final String PRINT_EACH_LOTTO_NUMBER_START = "[";
+    private static final String PRINT_EACH_LOTTO_NUMBER_END = "]";
+    private static final String PRINT_EACH_LOTTO_NUMBER_SEPARATOR = ", ";
+    public static void printNumberOfLotto(LottoList lottoList){
+        System.out.printf(PRINT_NUMBER_OF_LOTTO_MESSAGE, lottoList.getAvailableLottoPlayNumber());
+        printEachLottoNumber(lottoList);
     }
 
-    public static void printEachLottoNum(List<Lotto> lottoList){
-        for(Lotto lotto : lottoList){
-            System.out.print("["); //상수
-            int len = lotto.getLottoNumbers().size();
-            for(int i=0; i<len-1; i++){
-                System.out.print(lotto.getLottoNumbers().get(i) + ", "); //상수
+    public static void printEachLottoNumber(LottoList lottoList){
+        for(Lotto lotto : lottoList.getLottoList()){
+            System.out.print(PRINT_EACH_LOTTO_NUMBER_START); //상수
+            int lottoLength = lotto.getLottoNumbers().size();
+            for(int i=0; i<lottoLength-1; i++){
+                System.out.print(lotto.getLottoNumbers().get(i) + PRINT_EACH_LOTTO_NUMBER_SEPARATOR); //상수
             }
-            System.out.print(lotto.getLottoNumbers().get(len-1));
-            System.out.println("]"); //상수
+            System.out.print(lotto.getLottoNumbers().get(lottoLength-1));
+            System.out.println(PRINT_EACH_LOTTO_NUMBER_END); //상수
         }
         System.out.println();
     }
 
-    public static void printLottoResult(int[] countList, LottoList lottoList, int income){ //상수
+    public static void printLottoResult(int[] countList, LottoList lottoList, int myReward){ //상수
         System.out.println("당첨 통계");
         System.out.println("---");
         System.out.println("3개 일치 (5,000원) - " + countList[5] + "개");
@@ -32,11 +34,11 @@ public class OutputView {
         System.out.println("5개 일치 (1,500,000원) - " + countList[3] + "개");
         System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - " + countList[2] + "개");
         System.out.println("6개 일치 (2,000,000,000원) - " + countList[1] + "개");
-        printIncomeRate(lottoList.getLottoPlayNumber(), income);
+        printIncomeRate(lottoList.getAvailableLottoPlayNumber(), myReward);
     }
 
-    public static void printIncomeRate(int numberOfLotto, int income){
-        System.out.printf("총 수익률은 %.1f%%입니다.\n", (income * 100.0) / (numberOfLotto * 1000)); //상수
+    public static void printIncomeRate(int numberOfLotto, int myReward){
+        System.out.printf("총 수익률은 %.1f%%입니다.\n", (myReward * 100.0) / (numberOfLotto * 1000)); //상수
     }
 
 }

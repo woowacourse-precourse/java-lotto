@@ -1,5 +1,6 @@
 package Domain;
 
+import Controller.Constant;
 import Controller.Validation;
 
 import java.util.ArrayList;
@@ -14,10 +15,10 @@ public class WinningNumbers {
     }
 
     public List<Integer> getWinningNumbers(String readWinningNumbers){
-        String[] splitWinningNumber = readWinningNumbers.split(","); //상수
+        String[] splitWinningNumber = readWinningNumbers.split(Constant.SEPARATOR);
         List<Integer> winningNumbers = new ArrayList<>();
-        for(int i=0; i<6; i++){ //상수
-            winningNumbers.add(Integer.parseInt(splitWinningNumber[i]));
+        for(int index=0; index<Constant.LOTTO_LENGTH; index++){ //상수
+            winningNumbers.add(Integer.parseInt(splitWinningNumber[index]));
         }
         return winningNumbers;
     }

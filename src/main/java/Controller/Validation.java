@@ -48,21 +48,21 @@ public class Validation {
     }
 
     public static void validateWinningNumbersHaveComma(String readWinningNumber){
-        int commaCount = readWinningNumber.length() - readWinningNumber.replace(Constant.DELIMITER, "").length();
+        int commaCount = readWinningNumber.length() - readWinningNumber.replace(Constant.SEPARATOR, "").length();
         if(commaCount != Constant.LOTTO_LENGTH - 1){
             throw new IllegalArgumentException(Constant.ERROR_MESSAGE_DELIMITER_NUMBER_IS_INCORRECT);
         }
     }
 
     public static void validateWinningNumbersHaveBlank(String readWinningNumber){
-        for(String s : readWinningNumber.split(Constant.DELIMITER)){
+        for(String s : readWinningNumber.split(Constant.SEPARATOR)){
             if(s.isEmpty()){
                 throw new IllegalArgumentException(Constant.ERROR_MESSAGE_BETWEEN_NUMBER_NOT_DELIMITER);
             }
         }
     }
     public static void validateWinningNumbersHaveNumbers(String readWinningNumber){
-        for(String s : readWinningNumber.split(Constant.DELIMITER)){
+        for(String s : readWinningNumber.split(Constant.SEPARATOR)){
             if(!Pattern.matches(Constant.REGEX_NUMERIC, s)){
                 throw new IllegalArgumentException(Constant.ERROR_MESSAGE_BETWEEN_DELIMITER_NOT_NUMBER);
             }
@@ -70,7 +70,7 @@ public class Validation {
     }
 
     public static void validateWinningNumbersAreInRange(String readWinningNumber, int RANGE_START, int RANGE_END) {
-        for (String s : readWinningNumber.split(Constant.DELIMITER)) {
+        for (String s : readWinningNumber.split(Constant.SEPARATOR)) {
             int number = Integer.parseInt(s);
             if (number < RANGE_START || number > RANGE_END) {
                 throw new IllegalArgumentException(Constant.ERROR_MESSAGE_NUM_IS_OUT_OF_RANGE);
@@ -80,7 +80,7 @@ public class Validation {
 
     public static void validateWinningNumbersIsOverlapped(String readWinningNumber){
         HashSet<Integer> hashSet = new HashSet<>();
-        for(String s : readWinningNumber.split(Constant.DELIMITER)){
+        for(String s : readWinningNumber.split(Constant.SEPARATOR)){
             hashSet.add(Integer.parseInt(s));
         }
         if(hashSet.size() != Constant.LOTTO_LENGTH){

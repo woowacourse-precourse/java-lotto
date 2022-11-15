@@ -23,7 +23,7 @@ public enum Prize {
         this.prizeMoney = prizeMoney;
     }
 
-    public static int convertCountToPrizeMoney(int count, int[] ranking, boolean compareBonus){
+    public static int getPrizeMoney(int count, int[] ranking, boolean compareBonus){
 
         List<Prize> prizes = Arrays.stream(Prize.values())
                 .filter(p -> p.getCount() == count)
