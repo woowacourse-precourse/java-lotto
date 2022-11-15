@@ -13,6 +13,8 @@ import java.util.List;
 import lotto.Lotto;
 
 public class Validator {
+    public static final String ERROR_MESSAGE = "[ERROR] ";
+
     public void validateGeneratedNumbers(List<Integer> numbers) {
         if (checkSize(numbers)) {
             throw new IllegalArgumentException();
