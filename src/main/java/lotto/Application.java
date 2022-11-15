@@ -29,10 +29,62 @@ public class Application {
         }
     }
 
+    static void numberMessage() {
+        System.out.println("당첨 번호를 입력해 주세요.");
+    }
+
+    static void checkDigitNumber(String numbers) {
+        String allNumber = numbers.replaceAll(",", "");
+        for (int i = 0; i < allNumber.length(); i++) {
+            if (!Character.isDigit(allNumber.charAt(i))) {
+                throw new IllegalArgumentException("[ERROR] 당첨 번호는 숫자여야 합니다.");
+            }
+        }
+    }
+
+    static void checkNumberCount(List<Integer> numbers) {
+        if (numbers.size() != 6) {
+            throw new IllegalArgumentException("[ERROR] 당첨 번호는 총 6개 숫자이어야 합니다.");
+        }
+    }
+
+    static void checkNumberRange(List<Integer> numbers) {
+        for (int i = 0; i < numbers.size(); i++) {
+            if (numbers.get(i) < 1 || 45 < numbers.get(i)) {
+                throw new IllegalArgumentException("[ERROR] 당첨 번호는 1~45 범위의 숫자이여야 합니다.");
+            }
+        }
+    }
+
+    static void checkNumberDuplication(List<Integer> numbers) {
+        Collections.sort(numbers);
+        for (int i = 0; i < numbers.size() - 1; i++) {
+            if (numbers.get(i) == numbers.get(i + 1)) {
+                throw new IllegalArgumentException("[ERROR] 당첨 번호는 중복이 없는 숫자이여야 합니다.");
+            }
+        }
+    }
+
+    static void inputNumbers() {
+        numberMessage();
+        String numbers = Console.readLine();
+        System.out.println();
+        checkDigitNumber(numbers);
+
+        List<Integer> result = new ArrayList<>();
+        for (String number : numbers.split(",")) {
+            result.add(Integer.parseInt(number));
+        }
+        checkNumberCount(result);
+        checkNumberRange(result);
+        checkNumberDuplication(result);
+    }
+
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         try {
             inputPrice();
+            inputNumbers();
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
