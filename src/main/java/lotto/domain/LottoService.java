@@ -14,17 +14,33 @@ public class LottoService {
 
     public LottoResult checkLottoResult(BuyingLottoList buyingLottoList, WinningLotto winningLotto) {
 
-        List<Lotto> buyingLottos = buyingLottoList.getLottoList();
+        List<Lotto> buyingLottoNumbers = buyingLottoList.getLottoList();
         WinningRank winningRank;
         LottoResult lottoResult = new LottoResult();
-        for (Lotto buyingLotto : buyingLottos) {
+        for (Lotto buyingLotto : buyingLottoNumbers) {
             winningRank = checkLottoNumbers(buyingLotto, winningLotto);
             lottoResult.refreshResult(winningRank);
         }
-        float profit = calulatingProfit();
+        double profit = calculateProfit(lottoResult, buyingLottoList.getNumberOfLotto());
         lottoResult.setProfit(profit);
 
         return lottoResult;
+    }
+
+    public double calculateProfit(LottoResult lottoResult, int numberOfLotto) {
+
+        double gain = 0;
+        int buyMoney = numberOfLotto * 1000;
+
+        gain += lottoResult.getFifthCount() * WinningRank.FIFTH.getPrice();
+        gain += lottoResult.getFourthCount() * WinningRank.FOURTH.getPrice();
+        gain += lottoResult.getThirdCount() * WinningRank.THIRD.getPrice();
+        gain += lottoResult.getSecondCount() * WinningRank.SECOND.getPrice();
+        gain += lottoResult.getFirstCount() * WinningRank.FIRST.getPrice();
+
+        double profitPercentage = gain / buyMoney * 100;
+
+        return Math.round(profitPercentage * 10) / 10;
     }
 
     public WinningRank checkLottoNumbers(Lotto buyingLotto, WinningLotto winningLotto) {
@@ -46,7 +62,19 @@ public class LottoService {
 
     public WinningRank checkWinningRank(int matchCount, boolean isBonusMatch) {
 
+        if (matchCount == 6) {
+            return WinningRank.FIRST;
+        } else if (matchCount == 5 && isBonusMatch) {
+            return WinningRank.SECOND;
+        } else if (matchCount == 5) {
+            return WinningRank.THIRD;
+        } else if (matchCount == 4) {
+            return WinningRank.FOURTH;
+        } else if (matchCount == 3) {
+            return WinningRank.FIFTH;
+        }
 
+        return WinningRank.NOTHING;
     }
 
     public boolean checkBonusNumber(Lotto buyingLotto, int bonusNumber) {

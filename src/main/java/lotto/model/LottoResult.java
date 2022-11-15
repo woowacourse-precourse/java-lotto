@@ -9,7 +9,7 @@ public class LottoResult {
     private int thirdCount;
     private int fourthCount;
     private int fifthCount;
-    private float profit;
+    private double profit;
 
     public void refreshResult(WinningRank winningRank) {
 
@@ -26,11 +26,11 @@ public class LottoResult {
         }
     }
 
-    public float getProfit() {
+    public double getProfit() {
         return profit;
     }
 
-    public void setProfit(float profit) {
+    public void setProfit(double profit) {
         this.profit = profit;
     }
 
