@@ -1,24 +1,33 @@
 package lotto.domain.lotto;
 
+import lotto.domain.statistics.Rank;
 import lotto.global.message.ErrorMessage;
 
 public class WinningLotto {
 
-    private final Lotto lotto;
+    private final Lotto winningLotto;
     private final BonusBall bonusBall;
 
-    public WinningLotto(Lotto lotto, BonusBall bonusBall) {
-        validate(lotto, bonusBall);
-        this.lotto = lotto;
+    public WinningLotto(Lotto winningLotto, BonusBall bonusBall) {
+        validate(winningLotto, bonusBall);
+        this.winningLotto = winningLotto;
         this.bonusBall = bonusBall;
     }
 
-    public static WinningLotto create(Lotto lotto, BonusBall bonusBall) {
-        return new WinningLotto(lotto, bonusBall);
+    public static WinningLotto create(Lotto winningLotto, BonusBall bonusBall) {
+        return new WinningLotto(winningLotto, bonusBall);
     }
 
-    public Lotto getLotto() {
-        return lotto;
+    public Rank calculateRank(Lotto lotto) {
+        final int match = (int) lotto.getNumbers().stream()
+                .filter(winningLotto::contains)
+                .count();
+        final boolean hasBonus = lotto.contains(bonusBall.getNumber());
+        return Rank.from(match, hasBonus);
+    }
+
+    public Lotto getWinningLotto() {
+        return winningLotto;
     }
 
     public BonusBall getBonusBall() {

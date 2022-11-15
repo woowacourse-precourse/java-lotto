@@ -88,7 +88,7 @@ public class LottoFacadeTest {
             //when
             final WinningLotto winningLotto = lottoFacade.createWinningLotto();
             //then
-            assertThat(winningLotto.getLotto().getNumbers().size()).isEqualTo(6);
+            assertThat(winningLotto.getWinningLotto().getNumbers().size()).isEqualTo(6);
             assertThat(winningLotto.getBonusBall().getNumber()).isEqualTo(7);
         }
 

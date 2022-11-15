@@ -7,7 +7,7 @@ public class Lottos {
     private static final String LEFT_BRACKET = "[";
     private static final String RIGHT_BRACKET = "]";
 
-    private List<Lotto> lottos;
+    private final List<Lotto> lottos;
 
     public Lottos(List<Lotto> lottos) {
         this.lottos = lottos;

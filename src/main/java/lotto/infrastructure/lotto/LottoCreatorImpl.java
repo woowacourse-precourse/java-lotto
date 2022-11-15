@@ -5,7 +5,7 @@ import lotto.domain.lotto.Lottos;
 import lotto.domain.lotto.service.LottoCreator;
 import lotto.domain.money.Money;
 import lotto.global.message.Number;
-import lotto.global.utils.random.Randoms;
+import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,11 +18,10 @@ public class LottoCreatorImpl implements LottoCreator {
         List<Lotto> lottoList = new ArrayList<>();
 
         for (int i = 0; i < count; i++) {
-            final List<Integer> numbers = Randoms.pickUniqueNumbersInRange(Number.MIN_NUMBER_RANGE, Number.MAX_NUMBER_RANGE, Number.LOTTO_SIZE);
-            final Lotto lotto = Lotto.create(numbers);
+            final Lotto lotto = Lotto.create(new ArrayList<>(Randoms.pickUniqueNumbersInRange(Number.MIN_NUMBER_RANGE, Number.MAX_NUMBER_RANGE, Number.LOTTO_SIZE)));
             lottoList.add(lotto);
         }
 
-        return Lottos.of(lottoList);
+        return new Lottos(lottoList);
     }
 }

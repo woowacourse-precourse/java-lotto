@@ -7,6 +7,8 @@ import lotto.domain.lotto.WinningLotto;
 import lotto.domain.lotto.service.LottoService;
 import lotto.domain.money.Money;
 import lotto.domain.money.service.MoneyService;
+import lotto.domain.profit.Profit;
+import lotto.domain.statistics.Statistics;
 
 public class LottoFacade {
 
@@ -33,5 +35,18 @@ public class LottoFacade {
         final Lotto lotto = lottoService.requestWinningNumbers();
         final BonusBall bonusBall = lottoService.requestBonusNumber();
         return WinningLotto.create(lotto, bonusBall);
+    }
+
+    public Statistics getStatistics(WinningLotto winningLotto, Lottos lottos) {
+        return Statistics.create(winningLotto, lottos);
+    }
+
+    public Profit getProfit(Money budget, Money reward) {
+        return Profit.create(budget, reward);
+    }
+
+    public void sendWinningStats(Statistics statistics, Profit profit) {
+        lottoService.sendStatistics(statistics);
+        lottoService.sendProfit(profit);
     }
 }
