@@ -1,5 +1,7 @@
 package lotto.logic;
 
+import lotto.message.Constant;
+
 import java.util.List;
 
 public class Lotto {
@@ -11,7 +13,7 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
-        if (numbers.size() != 6) {
+        if (numbers.size() != Constant.NUMBER_SIZE.getConstant()) {
             throw new IllegalArgumentException();
         }
     }
