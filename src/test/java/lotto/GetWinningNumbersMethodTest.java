@@ -92,11 +92,6 @@ class GetWinningNumbersMethodTest extends NsTest {
                 .hasMessageContaining("[ERROR] 당첨 번호엔 중복된 숫자가 없어야 합니다.");
     }
 
-    @Test
-    void getWinningNumbers_메소드_정상_입력_테스트1() {
-        assertSimpleTest(() -> run("45,37,43,21,5,17"));
-    }
-
     @Override
     public void runMain() {
         Application.getWinningNumbers();
