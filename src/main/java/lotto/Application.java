@@ -1,3 +1,8 @@
+/**
+ * 기능 목록 :
+ *
+ */
+
 package lotto;
 
 public class Application {
