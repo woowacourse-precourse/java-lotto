@@ -26,8 +26,8 @@ public class Application {
             salesLotto();
             getWinning();
             getBonusNumber();
-            checkWinning();
-            checkEarningRate();
+            getWinningStats();
+            getEarningRate();
         }
         catch (Exception ex){
             System.out.println(ex.getMessage());
@@ -40,8 +40,8 @@ public class Application {
     public static void salesLotto(){
         System.out.println(PrintMessage.purchasingAmount);
         String userInput = getUserInputData();
-        salesValidate(userInput);
 
+        salesValidate(userInput);
         getPurchaseAmount(userInput);
         purchaseLotto();
     }
@@ -49,22 +49,26 @@ public class Application {
     private static void getWinning() {
         System.out.println(PrintMessage.winning);
         String userInput = getUserInputData();
-        castWinningNumberToLotto(userInput);
+
+        winningValidate(userInput);
+        castWinningToLotto(userInput);
     }
+
 
     private static void getBonusNumber() {
         System.out.println(PrintMessage.bonus);
         String userInput = getUserInputData();
+
         bonusValidate(userInput);
         bonusNumber = Integer.parseInt(userInput);
     }
 
-    private static void checkWinning() {
+    private static void getWinningStats() {
         winningStats = new WinningStats(lottos, winning, bonusNumber);
         winningStats.printWinningStats();
     }
 
-    private static void checkEarningRate() {
+    private static void getEarningRate() {
         winningStats.calculateEarningRate(lottoNumber * lottoPrice);
         winningStats.printEarningRate();
     }
@@ -93,13 +97,18 @@ public class Application {
             Error.error(Error.errMsg_WrongLottoNumber);
     }
 
+    private static void winningValidate(String userInput) {
+        List<String> commaSplits = splitString(userInput);
+        for(String commaSplit : commaSplits){
+            checkOnlyNumber(commaSplit);
+        }
+    }
 
-    private static void castWinningNumberToLotto(String str){
+    private static void castWinningToLotto(String str){
         List<String> commaSplits = splitString(str);
         List<Integer> winningNumber = new ArrayList<>();
 
         for(String commaSplit : commaSplits){
-            checkOnlyNumber(commaSplit);
             winningNumber.add(Integer.valueOf(commaSplit));
         }
 
