@@ -3,9 +3,7 @@ package lotto.service;
 import lotto.domain.User;
 import lotto.exception.InputException;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -25,17 +23,18 @@ public class UserService {
     }
 
     public void setNumbersToUser(String inputNumbers) {
-        user.setNumbers(inputNumbersToList(inputNumbers)
+        user.setNumbers(setNumbers(inputNumbers)
                 .stream()
                 .sorted()
                 .collect(Collectors.toList()));
     }
 
-    public List<Integer> inputNumbersToList(String inputNumbers) {
-        List<Integer> numbers = new ArrayList<>(Collections.emptyList());
-        // 쉼표 사이에 공백이 있으면 예외처리
-        // 숫자나 쉼표가 아니면 예외처라
+    public List<Integer> setNumbers(String inputNumbers) {
+        List<Integer> numbers;
+        inputException.invalidNumbers(inputNumbers);
         numbers = toList(inputNumbers);
+        inputException.numbersRangeException(numbers);
+        inputException.duplicateNumberException(numbers);
         return numbers;
     }
 
@@ -45,12 +44,7 @@ public class UserService {
         numbers = Arrays.stream(stringNumbers)
                 .map(Integer::parseInt)
                 .collect(Collectors.toList());
-        System.out.println("numbers = " + numbers);
         return numbers;
-    }
-
-    public void numbersValidate(String numbers) {
-
     }
 
     public void setBonusNumber(String inputBonusNumber) {

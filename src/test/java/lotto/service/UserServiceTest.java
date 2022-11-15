@@ -59,7 +59,7 @@ public class UserServiceTest {
     @Nested
     @DisplayName("당첨 번호, 정상 실행")
     @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-    class notNumbersExceptionTest {
+    class NumberTest {
         @ParameterizedTest
         @MethodSource("data")
         void case1(String inputNumbers, List<Integer> checkNumbers) {
@@ -74,6 +74,34 @@ public class UserServiceTest {
                     Arguments.of("1,2,3,4,5,6", List.of(1, 2, 3, 4, 5, 6)),
                     Arguments.of("1, 2, 3, 4, 5, 6", List.of(1, 2, 3, 4, 5, 6)),
                     Arguments.of("1, 3, 2, 5, 4, 6", List.of(1, 2, 3, 4, 5, 6))
+            );
+        }
+    }
+
+    @Nested
+    @DisplayName("당첨 번호, 예외 실행")
+    @TestInstance(TestInstance.Lifecycle.PER_CLASS)
+    class NumbersExceptionTest {
+        @ParameterizedTest
+        @MethodSource("data")
+        void case1(String inputNumbers) {
+            userService.setMoneyToUser("1000");
+            Assertions.assertThatThrownBy(() -> userService.setNumbersToUser(inputNumbers))
+                    .isInstanceOf(IllegalArgumentException.class);
+        }
+
+        Stream<Arguments> data() {
+            return Stream.of(
+                    Arguments.of("1,2,3,4,5.6"),
+                    Arguments.of("1, 2, 3!, 4, 5, 6"),
+                    Arguments.of("1, 3, 2, 5, 4, 63"),
+                    Arguments.of("1,1,2,3,4,5"),
+                    Arguments.of("1,1,2,3,4ab3,5"),
+                    Arguments.of("1,2,3,4,,6"),
+                    Arguments.of("1,2,3,4,!,6"),
+                    Arguments.of("1,2,3,4,-1,6"),
+                    Arguments.of("1,2,3,4,,6"),
+                    Arguments.of("1 2,3,4,5,6")
             );
         }
     }
