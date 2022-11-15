@@ -7,9 +7,9 @@ public class UserInput {
     public static int inputMoney() throws IllegalArgumentException {
         System.out.println("구입금액을 입력해 주세요.");
         String money = Console.readLine();
-        for(int i=0; i<money.length(); i++) {
+        for (int i = 0; i < money.length(); i++) {
             int n = money.charAt(i);
-            if(money.charAt(i)<48 || money.charAt(i)>57) {
+            if (money.charAt(i) < 48 || money.charAt(i) > 57) {
                 throw new IllegalArgumentException("[ERROR] 구입금액을 다시 입력하세요.");
             }
         }

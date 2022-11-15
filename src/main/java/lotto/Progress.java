@@ -19,7 +19,7 @@ public class Progress {
         LottoNumbers lottoNumbers = new LottoNumbers(buyLotto);
 
         WinningNumberToList winningNumberToList = new WinningNumberToList();
-        winningNumberToList.setWinNumbers(UserInput.inputWinNumber()); // 당첨 번호 입력 후 리스트 저장
+        winningNumberToList.setWinNumbers(UserInput.inputWinNumber());
         new Lotto(winningNumberToList.winNumbers);
 
         int bonusNum = UserInput.inputBonusNumber();
@@ -35,7 +35,7 @@ public class Progress {
     }
 
     private static void bonusErrorCheck(int bonus, List<Integer> winNumbers) {
-        if(bonus<1 || bonus>45)
+        if (bonus < 1 || bonus > 45)
             throw new IllegalArgumentException("[ERROR] 로또 번호는 1 부터 45 사이입니다.");
         if (winNumbers.contains(bonus))
             throw new IllegalArgumentException("[ERROR] 이미 당첨번호에 존재합니다.");
