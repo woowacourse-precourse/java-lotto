@@ -1,8 +1,5 @@
 package model;
 
-import camp.nextstep.edu.missionutils.Randoms;
-
-import java.util.Collections;
 import java.util.List;
 import java.util.HashMap;
 import java.util.ArrayList;
@@ -18,7 +15,7 @@ public class Data {
     public String purchaseAmount;
     public String winningNumber;
     public String BonusNumber;
-    public HashMap<Integer, Integer> Win = new HashMap<>();
+    public HashMap<Integer, Integer> winningStatistics = new HashMap<>();
     public List<Integer> winningLottoNumber = new ArrayList<>();
     public List<Integer>[] userLotto;
 
@@ -38,34 +35,41 @@ public class Data {
         return count;
     }
 
-    public void getNumberOfLotto() {
+    public void makeNumberOfLotto() {
         numberOfLotto = Integer.parseInt(purchaseAmount);
         numberOfLotto = numberOfLotto / 1000;
     }
 
-    public void initializeMap() {
-        for (int i = 3; i <= 7; i++) {
-            Win.put(i, 0);
+    public void makeWinningLottoNumber(){
+        String[] winningNumberSplit = winningNumber.split(",");
+        for (int i = 0; i < winningNumberSplit.length; i++) {
+            winningLottoNumber.add(Integer.valueOf(winningNumberSplit[i]));
         }
     }
 
-    public void map(List<Integer> userLotto, int count) {
-        if (count < 3) {
+    public void initializeWinningStatistics() {
+        for (int i = 3; i <= 7; i++) {
+            winningStatistics.put(i, 0);
+        }
+    }
+
+    public void makeWinningStatistics(List<Integer> userLotto, int winningLottoCount) {
+        if (winningLottoCount < 3) {
             return;
         }
-        if (count == 5) {
+        if (winningLottoCount == 5) {
             if (userLotto.contains(BonusNumber)) {
-                count = 7;
+                winningLottoCount = 7;
             }
         }
-        Win.put(count, Win.get(count) + 1);
+        winningStatistics.put(winningLottoCount, winningStatistics.get(winningLottoCount) + 1);
     }
 
-    public void getYield() {
+    public void makeYield() {
         int sum = 0;
         for (int i = 3; i <= 7; i++) {
-            if (Win.get(i) > 0) {
-                sum += Win.get(i) * revenue[i];
+            if (winningStatistics.get(i) > 0) {
+                sum += winningStatistics.get(i) * revenue[i];
             }
         }
         yield = ((double) sum / (double) Integer.parseInt(purchaseAmount)) * 100;
