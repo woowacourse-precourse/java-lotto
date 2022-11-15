@@ -38,6 +38,15 @@ public enum WinInfo {
         return WinInfo.NO_WIN;
     }
 
+    public static WinInfo getByOrder(int order) {
+        for (WinInfo winInfo : WinInfo.values()) {
+            if (winInfo.getOrder() == order) {
+                return winInfo;
+            }
+        }
+        throw new RuntimeException(String.format("WinInfo에 order=%d인 상수가 존재하지 않음",order));
+    }
+
     public long getWinMoney(){
         return this.winMoney;
     }
