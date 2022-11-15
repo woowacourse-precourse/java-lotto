@@ -21,6 +21,7 @@ public class Machine {
     "5개 일치, 보너스 볼 일치 (30,000,000원)",
     "6개 일치 (2,000,000,000원)",
   };
+  private int[] prizeMoney = { 5000, 50000, 1500000, 30000000, 2000000000 };
 
   /**
    * Get money to return ticket count.
@@ -74,6 +75,9 @@ public class Machine {
     for(int i=0; i<5; i++) {
       System.out.println(resultMessage[i] + " - " + rank[i] + "개");
     }
+
+    float profitRate = calculateProfitRate(rank, ticketList.size());
+    System.out.println("총 수익률은 " + profitRate + "%입니다.");
   }
 
   private int[] calculateRank(List<Lotto> ticketList) {
@@ -104,5 +108,16 @@ public class Machine {
     }
 
     return rank;
+  }
+
+  private float calculateProfitRate(int[] rank, int count) {
+    float principal = count * 1000;
+    float profit = 0;
+
+    for(int i=0; i<5; i++) {
+      profit+=rank[i]*prizeMoney[i];
+    }
+
+    return profit/principal*100;
   }
 }
