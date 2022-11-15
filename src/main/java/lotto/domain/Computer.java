@@ -4,13 +4,12 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 
 public class Computer {
     // 2주차 피드백 반영
     static final String BUY_STR = "개를 구매했습니다.";
-    static final int STRAT_RANGE = 1;
+    static final int START_RANGE = 1;
     static final int END_RANGE = 45;
     static final int LOTTO_NUMBER_LENGTH = 6;
     static final int LOTTO_CHARGE = 1000;
@@ -18,7 +17,7 @@ public class Computer {
     static final int PASS_TURN = -1;
 
     public List<Integer> createLottoNumbers(){
-        List<Integer> numbers = Randoms.pickUniqueNumbersInRange(STRAT_RANGE, END_RANGE, LOTTO_NUMBER_LENGTH);
+        List<Integer> numbers = Randoms.pickUniqueNumbersInRange(START_RANGE, END_RANGE, LOTTO_NUMBER_LENGTH);
         List<Integer> sortedNumbers = new ArrayList<>(numbers);
         Collections.sort(sortedNumbers);
         return sortedNumbers;
