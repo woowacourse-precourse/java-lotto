@@ -4,6 +4,7 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public class Lotto {
     private final List<Integer> numbers;
@@ -41,6 +42,15 @@ public class Lotto {
         }
     }
 
+    public int checkSameCount(Lotto userLotto) {
+        int count = 0;
+        for (int number : userLotto.getNumbers()) {
+            count += contain(number) ? 1 : 0;
+        }
+        return count;
+    }
+
+
     public List<Integer> getNumbers() {
         return numbers;
     }
@@ -48,5 +58,15 @@ public class Lotto {
     public boolean contain(int number) {
         return numbers.contains(number);
     }
+
+    @Override
+    public String toString() {
+        StringBuilder str = new StringBuilder();
+        str.append('[');
+        str.append(numbers.stream().map(Object::toString).collect(Collectors.joining(", ")));
+        str.append("]\n");
+        return str.toString();
+    }
+
 // TODO: 추가 기능 구현
 }
