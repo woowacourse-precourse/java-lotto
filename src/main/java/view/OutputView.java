@@ -38,5 +38,6 @@ public class OutputView {
         result.append(Text.FIRST_PLACE.getText()).append(winners.get(Winner.FIRST_PLACE)).append(Text.COUNT.getText());
         result.append(Text.NOTICE_RATE_OF_RETURN).append(String.format(Text.ROUND.getText(), rateOfReturn)).append(Text.NOTICE_PERCENT);
 
+        System.out.print(result);
     }
 }

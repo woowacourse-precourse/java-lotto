@@ -108,18 +108,26 @@ public class LottoService {
         lottoRepository.saveWinners(winners);
     }
 
-    private EnumMap<Winner, Integer> checkWin(List<Lotto> publishedLotto, List<Integer> winningNumbers, int bonus) {
+    private EnumMap<Winner, Integer> generateWinners() {
         EnumMap<Winner, Integer> winners = new EnumMap<>(Winner.class);
+        Arrays.stream(Winner.values())
+                .forEach(rank -> winners.put(rank, 0));
+
+        return winners;
+    }
+
+    private EnumMap<Winner, Integer> checkWin(List<Lotto> publishedLotto, List<Integer> winningNumbers, int bonus) {
+        EnumMap<Winner, Integer> winners = generateWinners();
 
         publishedLotto.stream().map(Lotto::getNumbers)
                 .forEach(numbers -> {
                     int match = (int) numbers.stream().filter(winningNumbers::contains).count();
 
                     if (match == Winner.THIRD_PLACE.getMatch() && numbers.contains(bonus)) {
-                        winners.put(Winner.SECOND_PLACE, winners.getOrDefault(Winner.SECOND_PLACE, 0) + 1);
+                        winners.put(Winner.SECOND_PLACE, winners.get(Winner.SECOND_PLACE) + 1);
                         return;
                     }
-                    winners.put(Winner.getByMatch(match), winners.getOrDefault(Winner.getByMatch(match), 0) + 1);
+                    winners.put(Winner.getByMatch(match), winners.get(Winner.getByMatch(match)) + 1);
                 });
         return winners;
     }
