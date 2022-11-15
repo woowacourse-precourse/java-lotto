@@ -6,7 +6,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Admin {
+    Store store;
+    Admin(Store store) {
+        this.store = store;
+    }
+
     public void inputGameNumbers() {
+        // 추첨용 번호들 입력받기
+        Lotto winningLotto = inputWinningNumbers();
+        int bonusNumber = inputBonusNumber();
+        validateGameNumbers(winningLotto, bonusNumber);
+
+        // 입력받은 번호들을 기준으로 설정하기
+        store.setGameNumbers(winningLotto, bonusNumber);
     }
 
     // 당첨 번호를 입력 받는다.
@@ -59,7 +71,11 @@ public class Admin {
         System.out.println("보너스 번호를 입력해주세요.");
     }
 
-    private void validateGameNumbers() {
+    private void validateGameNumbers(Lotto winningNumbers, int bonusNumber) {
+        List<Integer> numbers = winningNumbers.getNumbers();
+        if (numbers.contains(bonusNumber)) {
+            throw new IllegalArgumentException();
+        }
     }
 
     private void validateBonusNumber(String input) {
