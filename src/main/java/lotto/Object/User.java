@@ -92,7 +92,7 @@ public class User {
     public void countWinningNumber (int howManyWinningNumber, boolean isBonusNumberCorrect) {
         if (howManyWinningNumber>=5) {
             howManyWinningNumber++;
-            if (!isBonusNumberCorrect) {
+            if (howManyWinningNumber==5&&!isBonusNumberCorrect) {
                 howManyWinningNumber--;
             }
         } else if (howManyWinningNumber<3) {
