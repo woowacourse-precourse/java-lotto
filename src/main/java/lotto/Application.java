@@ -37,7 +37,7 @@ public class Application {
             Result result = lottos.totalResult(winningNumberDto);
             OutputUtil.showResult(result);
         } catch(IllegalArgumentException e){
-            System.out.println(e.getMessage());
+            OutputUtil.printError(e.getMessage());
         }
 
     }

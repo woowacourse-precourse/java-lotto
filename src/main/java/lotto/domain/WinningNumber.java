@@ -13,33 +13,25 @@ public class WinningNumber {
     private Integer bonusNumber;
 
     public WinningNumber(List<Integer> announcedNumbers, Integer bonus) {
-        try{
-            checkValidity(announcedNumbers,bonus);
-        } catch(IllegalArgumentException e){
-            e.printStackTrace();
-        }
+        checkValidity(announcedNumbers,bonus);
         mainNumbers = announcedNumbers;
         bonusNumber = bonus;
     }
     private void checkValidity(List<Integer> announcedNumbers, Integer bonus){
         if (bonus<1 || bonus > 45){
-            System.out.println(ERROR_INVALID_INPUT);
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ERROR_INVALID_INPUT);
         }
         for(Integer number : announcedNumbers){
             if(number<1 || number >45){
-                System.out.println(ERROR_INVALID_INPUT);
-                throw new IllegalArgumentException();
+                throw new IllegalArgumentException(ERROR_INVALID_INPUT);
             }
         }
         if(announcedNumbers.size()>6){
-            System.out.println(ERROR_INVALID_INPUT);
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ERROR_INVALID_INPUT);
         }
         Set<Integer> uniqueNumber = new HashSet<>(announcedNumbers);
         if(uniqueNumber.size()!=announcedNumbers.size()){
-            System.out.println(ERROR_INVALID_INPUT);
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ERROR_INVALID_INPUT);
         }
     }
     public WinningNumberDto sendDTO(){
