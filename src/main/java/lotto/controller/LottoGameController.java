@@ -13,12 +13,14 @@ public class LottoGameController {
     private final ResultMessage resultMessage = new ResultMessage();
 
     public void lottoGameStart() {
+        //로또 게임 진행
         LottoGame lottoGame = new LottoGame();
         inputMessage.gameStart();
         int amount = inputMessage.purchaseAmountMessage(lottoGame.getUserAmount());
         List<List<Integer>> lottos = inputMessage.purchasedLottoNumberMessage(lottoGame.getLottos(amount / 1000));
         List<Integer> winningNumber = inputMessage.winningNumberMessage(lottoGame.getWinningNumber());
         int bonusNumber = inputMessage.bonusNumberMessage(lottoGame.getBonusNumber());
+        //결과 산정
         WinningResult winningResult = new WinningResult(lottos);
         LinkedHashMap<LottoRank, Integer> result = winningResult.getStatistics(winningNumber, bonusNumber);
         resultMessage.winningStatisticsPrint();

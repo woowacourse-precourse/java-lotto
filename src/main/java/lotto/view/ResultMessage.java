@@ -14,18 +14,25 @@ public class ResultMessage {
 
     public void winningResultMessage(LinkedHashMap<LottoRank, Integer> result) {
         for (LottoRank lottoRank : result.keySet()) {
-            String format;
             if (lottoRank.getCount() == LottoRank.FIVE_MATCH_AND_BONUS_MATCH.getCount()) {
-                format = String.format(BONUS_NUMER_MATCH, numberformat.format(lottoRank.getMoney()),
-                        result.get(lottoRank));
-                System.out.println(format);
+                bonusMessage(lottoRank, result);
                 continue;
             }
-            format = String.format(MESSAGE_WINNING_HISTORY, lottoRank.getCount(),
-                    numberformat.format(lottoRank.getMoney()),
-                    result.get(lottoRank));
-            System.out.println(format);
+            resultMessage(lottoRank, result);
         }
+    }
+
+    private void bonusMessage(LottoRank lottoRank, LinkedHashMap<LottoRank, Integer> result) {
+        String format = String.format(BONUS_NUMER_MATCH, numberformat.format(lottoRank.getMoney()),
+                result.get(lottoRank));
+        System.out.println(format);
+    }
+
+    private void resultMessage(LottoRank lottoRank, LinkedHashMap<LottoRank, Integer> result) {
+        String format = String.format(MESSAGE_WINNING_HISTORY, lottoRank.getCount(),
+                numberformat.format(lottoRank.getMoney()),
+                result.get(lottoRank));
+        System.out.println(format);
     }
 
     public void winningStatisticsPrint() {

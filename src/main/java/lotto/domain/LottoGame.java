@@ -4,7 +4,6 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
 
 public class LottoGame {
-    private List<List<Integer>> lottos;
 
     public int getUserAmount() {
         String userInput = Console.readLine();
@@ -12,8 +11,7 @@ public class LottoGame {
     }
 
     public List<List<Integer>> getLottos(int count) {
-        List<List<Integer>> lottos = LottosGenerator.lottoGenerate(count);
-        return lottos;
+        return LottoGenerator.lottoGenerate(count);
     }
 
     public List<Integer> getWinningNumber() {

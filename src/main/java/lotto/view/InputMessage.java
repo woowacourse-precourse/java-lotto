@@ -1,6 +1,5 @@
 package lotto.view;
 
-import static org.mockito.internal.util.StringUtil.join;
 
 import java.util.List;
 import java.util.stream.Collectors;
