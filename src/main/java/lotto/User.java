@@ -5,7 +5,6 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 import java.util.stream.Collectors;
 
 public class User {
@@ -22,14 +21,11 @@ public class User {
     }
 
     public void printLottoEA(){
+        System.out.println();
         lottoEA = this.lottoPrice/1000;
         if((lottoPrice%1000) != 0)
             throw new IllegalArgumentException("[ERROR]1000단위로 구매해야 합니다.");
         System.out.println(lottoEA + "개를 구매했습니다.");
-    }
-
-    public int getLottoPrice(){
-        return this.lottoPrice;
     }
 
     public void createLotto(){
@@ -38,6 +34,7 @@ public class User {
             lotteryOfUser.add(randomNumbers());
             System.out.println(lotteryOfUser.get(ea));
         }
+        System.out.println();
     }
 
     private List<Integer> randomNumbers(){
@@ -54,6 +51,7 @@ public class User {
         System.out.println("당첨 번호를 입력해 주세요");
         this.numberString = Console.readLine();
         enter(numberString);
+        System.out.println();
     }
 
     public void enterBonusNumber(){
@@ -78,7 +76,4 @@ public class User {
         return this.userNumbers;
     }
 
-    public int getBonusNumber(){
-        return this.bonusNumber;
-    }
 }

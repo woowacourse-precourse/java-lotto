@@ -52,14 +52,6 @@ public class LotteryMachine {
         }
     }
 
-    public List<Integer> getWinningCase(){
-        return this.winningCase;
-    }
-
-    public List<Integer> getWinningPriceByCase(){
-        return this.winningPriceByCase;
-    }
-
     private double searchWinningPrice(int num){
         for(WinningStatus status : WinningStatus.values()){
             if(num == status.getMatchNumber())
@@ -95,6 +87,7 @@ public class LotteryMachine {
     }
 
     public void showStatistics(){
+        System.out.println();
         settingFormat();
         statisticsSetting();
         for(WinningStatus status: WinningStatus.values()){
