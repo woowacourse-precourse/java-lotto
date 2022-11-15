@@ -28,10 +28,8 @@ public class PurchasedLottosTest {
     void checkPurchasedLottoisSorted() {
         Lotto lotto = new Lotto(List.of(6, 5, 4, 3, 2, 1));
         PurchasedLottos purchasedLottos = new PurchasedLottos(List.of(lotto));
-
         List<Integer> purchasedNumbers = purchasedLottos.getPurchasedLottos().get(0).getNumbers();
-        List<Integer> sortedNumbers = lotto.getNumbers().stream().sorted().collect(Collectors.toList());
 
-        assertThat(purchasedNumbers).isEqualTo(sortedNumbers);
+        assertThat(purchasedNumbers).isSorted();
     }
 }

@@ -48,6 +48,6 @@ public class RandomNumbersTest {
     @Test
     void createRandomNumbersToCheckCorrectCount() {
         RandomNumbers randomNumbers = new RandomNumbers(minNumber, maxNumber, count);
-        assertThat(randomNumbers.getRandomNumbers().size()).isEqualTo(count);
+        assertThat(randomNumbers.getRandomNumbers()).hasSize(count);
     }
 }
