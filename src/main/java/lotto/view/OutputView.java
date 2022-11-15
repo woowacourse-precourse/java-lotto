@@ -16,48 +16,48 @@ public class OutputView {
         System.out.println(count + "개를 구매했습니다.");
     }
 
-    public String equalMsg() {
+    public static String equalMsg() {
         return "[ERROR] 중복된 값이 있습니다.";
     }
 
-    public String rangeMsg(){
+    public static String rangeMsg(){
         return "[ERROR] 1~45범위의 숫자만 입력해주세요.";
     }
 
-    public String validateMsg(){
+    public static String validateMsg(){
         return "[ERROR] 6개의 숫자를 입력해주세요.";
     }
 
-    public String equalBonusMsg() {
+    public static String equalBonusMsg() {
         return "[ERROR] 당첨 번호와 중복된 값이 있습니다.";
     }
 
-    public void userLottoMsg(int index, List<List<Integer>> lotto) {
+    public static void userLottoMsg(int index, List<List<Integer>> lotto) {
         System.out.println(lotto.get(index));
     }
 
-    public void rankMsg(){
+    public static void rankMsg(){
         System.out.println("당첨 통계");
         System.out.println("---");
     }
 
-    public void fifthMsg(int count) {
+    public static void fifthMsg(int count) {
         System.out.println("3개 일치 (5,000원) - " + count + "개");
     }
 
-    public void fourthMsg(int count){
+    public static void fourthMsg(int count){
         System.out.println("4개 일치 (50,000원) - " + count + "개");
     }
 
-    public void thirdMsg(int count){
+    public static void thirdMsg(int count){
         System.out.println("5개 일치 (1,500,000원) - " + count + "개");
     }
 
-    public void secondMsg(int count){
+    public static void secondMsg(int count){
         System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - " + count + "개");
     }
 
-    public void firstMsg(int count) {
+    public static void firstMsg(int count) {
         System.out.println("6개 일치 (2,000,000,000원) - " + count + "개");
     }
 

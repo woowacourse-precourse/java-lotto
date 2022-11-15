@@ -8,8 +8,6 @@ import java.util.List;
 public class WinCount {
 
     static List<Integer> rankCount = new ArrayList<>(Arrays.asList(0,0,0,0,0));
-    static OutputView outputView = new OutputView();
-
 
     public static List<Integer> winCount(List<WinDetail> result) {
         for(WinDetail winDetail : result) {
@@ -57,12 +55,12 @@ public class WinCount {
     }
 
     public static void printCount(List<Integer> rankCount){
-        outputView.rankMsg();
-        outputView.fifthMsg(rankCount.get(4));
-        outputView.fourthMsg(rankCount.get(3));
-        outputView.thirdMsg(rankCount.get(2));
-        outputView.secondMsg(rankCount.get(1));
-        outputView.firstMsg(rankCount.get(0));
+        OutputView.rankMsg();
+        OutputView.fifthMsg(rankCount.get(4));
+        OutputView.fourthMsg(rankCount.get(3));
+        OutputView.thirdMsg(rankCount.get(2));
+        OutputView.secondMsg(rankCount.get(1));
+        OutputView.firstMsg(rankCount.get(0));
 
     }
 }

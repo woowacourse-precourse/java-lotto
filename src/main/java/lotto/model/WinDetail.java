@@ -10,9 +10,9 @@ public enum WinDetail {
     Fifth(3,BonusType.No_Matter,5_000),
     NONE(-1,BonusType.No_Matter,0);
 
-    private int matchCount;
-    private BonusType bonusType;
-    private long reward;
+    private final int matchCount;
+    private final BonusType bonusType;
+    private final long reward;
 
     WinDetail(int matchCount, BonusType bonusType, long reward) {
         this.matchCount = matchCount;

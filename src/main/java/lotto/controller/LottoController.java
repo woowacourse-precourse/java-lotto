@@ -45,7 +45,7 @@ public class LottoController {
         String win = InputView.winningLotto();
         List<Integer> numbers = new ArrayList<>();
 
-        Lotto lotto = new Lotto(win, numbers);
+        Lotto lotto = new Lotto(win);
         numbers = lotto.change(win);
         return numbers;
     }

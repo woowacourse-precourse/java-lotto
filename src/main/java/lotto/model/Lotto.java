@@ -7,33 +7,27 @@ import java.util.List;
 
 public class Lotto {
 
-    OutputView outputView = new OutputView();
-
-    private final List<Integer> numbers;
-
     public Lotto(List<Integer> numbers) {
         validate(numbers);
-        this.numbers = numbers;
     }
 
-    public Lotto(String str, List<Integer> numbers) {
-         numbers = change(str);
+    public Lotto(String str) {
+        List<Integer> numbers = change(str);
          checkInput(numbers);
-         this.numbers = numbers;
 
     }
 
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
-            inputError(outputView.validateMsg());
+            User.inputError(OutputView.validateMsg());
         }
     }
 
     public List<Integer> change(String str) {
         List<Integer> num = new ArrayList<>();
         String[] splitStr = str.split(",");
-        for (int i = 0; i < splitStr.length; i++) {
-            num.add(Integer.valueOf(splitStr[i]));
+        for (String s : splitStr) {
+            num.add(Integer.valueOf(s));
         }
         return num;
     }
@@ -48,16 +42,15 @@ public class Lotto {
     public void isEqual(int i,List<Integer> num) {
         for(int j=0;j<i;j++) {
             if(num.get(i) == num.get(j)) {
-                inputError(outputView.equalMsg());
+                User.inputError(OutputView.equalMsg());
             }
         }
     }
 
     public boolean isRangeNumber(List<Integer> num) {
-        for(int i=0;i<num.size();i++) {
-            int number = num.get(i);
-            if(!(number >= 1 && number <=45)) {
-                inputError(outputView.rangeMsg());
+        for (int number : num) {
+            if (!(number >= 1 && number <= 45)) {
+                User.inputError(OutputView.rangeMsg());
             }
         }
         return true;
@@ -68,9 +61,4 @@ public class Lotto {
         isRangeNumber(num);
         validate(num);
     }
-
-    private void inputError(String error) {
-        throw new IllegalArgumentException(error);
-    }
-
 }

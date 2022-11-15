@@ -30,8 +30,8 @@ public class WinCalculation {
     }
 
     public WinCalculation() {
-        this.count = 0;
-        this.bonusCheck = true;
+        count = 0;
+        bonusCheck = true;
     }
 
     public static boolean bonusNumber(int bonus, List<Integer> number) {
