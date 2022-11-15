@@ -165,4 +165,35 @@ class CalculateTest{
 
         Assertions.assertThat(calculate.correctLottoCount(list, userInput, bonus)).isEqualTo(result);
     }
+
+
+    @DisplayName("수익률을 구한다")
+    @Test
+    void getProfit1() {
+        long profit = (long) 2000000000*2 + 30000000;
+        List<Integer> result = List.of(0,2,1,0,0,0);
+        Assertions.assertThat(calculate.earningRate(result, 3000)).isEqualTo("134333233.3");
+    }
+
+    @DisplayName("수익률을 구한다")
+    @Test
+    void getProfit2() {
+        List<Integer> result = List.of(0,0,0,0,2,1);
+        Assertions.assertThat(calculate.earningRate(result, 3000)).isEqualTo("3400.0");
+    }
+
+    @DisplayName("수익률을 구한다")
+    @Test
+    void getProfit3() {
+        List<Integer> result = List.of(0,1,1,1,1,1);
+        Assertions.assertThat(calculate.earningRate(result, 5000)).isEqualTo("40631000.0");
+    }
+
+    @DisplayName("수익률을 구한다")
+    @Test
+    void getProfit4() {
+        List<Integer> result = List.of(0,0,0,0,0,1);
+        Assertions.assertThat(calculate.earningRate(result, 6000)).isEqualTo("-16.7");
+
+    }
 }
