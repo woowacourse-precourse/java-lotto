@@ -12,8 +12,8 @@ public class LottoTicket {
         for (int digitIndex = 0; digitIndex < cash.length(); digitIndex++) {
             if (cash.charAt(digitIndex) < 48 || cash.charAt(digitIndex) > 57) {
                 String errorMessage = "[ERROR] 숫자만 입력해 주세요.";
-                System.out.printf("%s\n", errorMessage);
-                throw new IllegalArgumentException(errorMessage);
+                System.out.printf("%s", errorMessage);
+                throw new IllegalArgumentException();
             }
         }
         int price = Integer.parseInt(cash);

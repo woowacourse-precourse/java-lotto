@@ -42,7 +42,8 @@ public class LottoResult {
     }
     public static double earningRatioCalculator(int totalMoney, int totalPrize) {
         double earnedRatio = (double)totalPrize / (double)totalMoney * 100;
-        return earnedRatio;
+
+        return Math.round(earnedRatio*10)/10.0;
     }
 
 

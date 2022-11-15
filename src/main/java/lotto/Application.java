@@ -5,7 +5,6 @@ import java.util.List;
 
 import static lotto.LottoTicket.*;
 import static lotto.LottoNumbers.*;
-import static lotto.Lotto.*;
 import static lotto.LottoResult.*;
 
 
