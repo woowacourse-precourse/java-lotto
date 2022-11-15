@@ -11,8 +11,9 @@ public class Output {
     public static void printLotto(int quantity, List<List<Integer>> lottery) {
         System.out.println(quantity + Initialize.PURCHASE.message());
         for (List<Integer> numbers : lottery) {
-            Collections.sort(numbers);
-            System.out.println(numbers);
+            List<Integer> converting = new ArrayList<>(numbers);
+            Collections.sort(converting);
+            System.out.println(converting);
         }
     }
 
@@ -44,11 +45,11 @@ public class Output {
     public static void printResult(List<Integer> history) {
         System.out.println("당첨 통계");
         System.out.println("---");
-        System.out.println("3개 일치 (5,000원) - " + history.get(0));
-        System.out.println("4개 일치 (50,000원) - " + history.get(1));
-        System.out.println("5개 일치 (1,500,000원) - " + history.get(2));
-        System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - " + history.get(3));
-        System.out.println("6개 일치 (2,000,000,000원) - " + history.get(4));
+        System.out.println("3개 일치 (5,000원) - " + history.get(0) + "개");
+        System.out.println("4개 일치 (50,000원) - " + history.get(1) + "개");
+        System.out.println("5개 일치 (1,500,000원) - " + history.get(2) + "개");
+        System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - " + history.get(3) + "개");
+        System.out.println("6개 일치 (2,000,000,000원) - " + history.get(4) + "개");
     }
 
     public static void getRatio(int quantity, List<Integer> history) {
@@ -57,8 +58,9 @@ public class Output {
                 + 1500000 * history.get(2)
                 + 30000000 * history.get(3)
                 + 2000000000 * history.get(4))
-                / (double) (1000 * quantity);
-        System.out.println("총 수익률은 " + String.format("%.f", ratio) + "%입니다.");
+                / (double) (1000 * quantity) * 100;
+        System.out.println(ratio);
+        System.out.println("총 수익률은 " + String.format("%.1f", ratio) + "%입니다.");
     }
 
     public static Integer getCount(List<Integer> winningNumbers, List<Integer> numbers) {
