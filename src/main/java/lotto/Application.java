@@ -35,7 +35,7 @@ public class Application {
 
     private static long getPurchaseAmount() {
         try {
-            return Input.getAnswerInInteger(Request.purchaseAmount.value());
+            return Input.getAnswerInLong(Request.purchaseAmount.value());
         } catch (Exception e) {
             throw new IllegalArgumentException("[ERROR] 구입 금액은 1,000원 단위의 숫자여야 합니다.");
         }
