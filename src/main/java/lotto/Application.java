@@ -35,4 +35,9 @@ public class Application {
             WinningNumberSet.add(Integer.parseInt(number));
         return new Lotto(WinningNumberSet);
     }
+
+    public static int MakeBonus() {
+        return Integer.parseInt(Console.readLine());
+    }
+    
 }
