@@ -61,9 +61,9 @@ public class DrawLottoServiceTest {
         int bonusNumber = 45;
         Map<Integer, Integer> winingCount = new HashMap<>();
         winingCount.put(rankCount, 1);
+        drawLottoService.compareLottoToWiningLotto(winLotto, myLotto, bonusNumber);
 
         //when
-        drawLottoService.compareLottoToWiningLotto(winLotto, myLotto, bonusNumber);
         drawLottoService.setWiningCount();
 
         //then
