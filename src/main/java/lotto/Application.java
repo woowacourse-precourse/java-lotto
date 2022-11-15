@@ -1,7 +1,10 @@
 package lotto;
 
+import lotto.Controller.LotteryShop;
+
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        LotteryShop shop = new LotteryShop();
+        shop.open();
     }
 }
