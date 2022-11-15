@@ -67,5 +67,5 @@
   - [ ] getReturnRate 테스트
     - 주어진 WinInfo에 대해 수익률을 잘 계산하는지
 
-- [ ] Lotto 테스트
-  - [ ] validation 테스트   
+- [x] Lotto 테스트
+  - [x] validation 테스트   
