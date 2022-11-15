@@ -99,6 +99,15 @@ public class InputTest extends NsTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+    @DisplayName("보너스 번호 입력값이 1~45 사이의 수가 아닌 숫자가 있는 경우 예외 발생한다.")
+    @Test
+    void createBonusNumberRange() {
+        Validator validator = new Validator();
+        String bonusNumber = "9999";
+        assertThatThrownBy(() -> validator.isCorrectRange(bonusNumber,Error.ONE_SIZE))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
