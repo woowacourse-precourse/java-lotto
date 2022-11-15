@@ -24,14 +24,13 @@ public class Judgement {
         }
         return second;
     }
-    public List<Integer> makeWinningTable(List<List<Integer>> lotterys, List<Integer> winningNumber, int bonus){
-        for (List<Integer> lottery : lotterys){
+    public List<Integer> makeWinningTable(List<List<Integer>> lotteries, List<Integer> winningNumber, int bonus){
+        for (List<Integer> lottery : lotteries){
             int result = rankLotto(lottery, winningNumber);
             if( secondPrize(lottery, bonus, result)){
                 winningTable.add(7);
-            } else {
-                winningTable.add(result);
             }
+            winningTable.add(result);
         }
         return winningTable;
     }
