@@ -15,12 +15,12 @@ public class Application {
     public static void main(String[] args) {
         try {
             LottosGenerator generator = new LottosGenerator(new RandomNumbersGenerationStrategy());
-            Money money = new Money(money());
-            WinningNumber winningNumber = new WinningNumber(winningNumber(), bonusNumber());
 
+            Money money = new Money(money());
             Lottos lottos = generator.lottos(money.count());
             printLottos(lottos);
 
+            WinningNumber winningNumber = new WinningNumber(winningNumber(), bonusNumber());
             Result result = new Result(lottos.compare(winningNumber), money);
             printResult(result);
         } catch (IllegalArgumentException e) {
