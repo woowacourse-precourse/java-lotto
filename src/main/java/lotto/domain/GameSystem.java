@@ -34,6 +34,10 @@ public class GameSystem {
             System.out.println("당첨 번호를 입력해 주세요.");
             game.enterWinningNumber();
 
+            //6. 보너스 번호 입력
+            System.out.println("보너스 번호를 입력해 주세요.");
+            game.enterBonusNumber();
+
         } catch (IllegalArgumentException e) {
             throw e;
         }

@@ -56,6 +56,40 @@ class UserNumberInputTest {
         game.enterWinningNumber();
     }
 
+    @DisplayName("보너스 번호 입력 시, 1~45 범위의 숫자 데이터를 입력하지 않으면 오류가 발생한다")
+    @Test
+    void userBonusNumberValidRangeInputTest() {
+        Game game = createGame();
+        String input = "46";
+
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+
+        assertThatThrownBy(() -> game.enterBonusNumber())
+                .isInstanceOf(InvalidUserInputException.class)
+                .hasMessageContaining("1 ~ 45 사이의 숫자를 입력해 주세요.");
+    }
+
+    @DisplayName("보너스 번호 입력 시, 당첨 번호와 중복되는 숫자를 입력하면 오류가 발생한다")
+    @Test
+    void userBonusNumberDuplicateWinningNumbersInputTest() {
+        Game game = createGame();
+        String input = "1,2,3,4,5,6";
+
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+
+        game.enterWinningNumber();
+
+        input = "5";
+        in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+
+        assertThatThrownBy(() -> game.enterBonusNumber())
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("당첨 번호와 다른 보너스 번호를 입력해 주세요.");
+    }
+
     public Game createGame() {
         User user = new User();
         Computer computer = new Computer();

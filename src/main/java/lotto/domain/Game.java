@@ -47,5 +47,16 @@ public class Game {
         }
     }
 
+    public void enterBonusNumber() {
+        int tempBonusNumber = Integer.parseInt(Console.readLine());
+
+        if (tempBonusNumber < 1 || 45 < tempBonusNumber) {
+            throw new InvalidUserInputException("1 ~ 45 사이의 숫자를 입력해 주세요.");
+        } else if (winningLotto.getNumbers().contains(tempBonusNumber)) {
+            throw new InvalidUserInputException("당첨 번호와 다른 보너스 번호를 입력해 주세요.");
+        }
+
+        this.bonusNumber = tempBonusNumber;
+    }
 
 }
