@@ -20,14 +20,20 @@ public class User {
         Printer.inputWinningNumber();
         String input = Console.readLine();
         List<String> numbers = List.of(input.split(","));
-        //validateLottoNum && validateBonusNum
+
+        validateLottoNum(numbers);
         for(String str: numbers) {
             winningNumber.add(Integer.parseInt(str));
         }
-        Printer.inputBonusNumber();
-        bonusNumber = Integer.parseInt(Console.readLine());
     }
-
+    public List<Integer> getWinningNumber() {
+        return winningNumber;
+    }
+    public void inputBonusNumber() {
+        String bonusInput = Console.readLine();
+        validateBonusNum(bonusInput);
+        bonusNumber = Integer.parseInt(bonusInput);
+    }
     private void validateLottoNum(List<String> numbers) {
         if(numbers.size() != 6) {
             throw new IllegalArgumentException("[ERROR] 당첨 번호는 6개 입력해야 합니다.");
