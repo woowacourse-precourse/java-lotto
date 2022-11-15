@@ -27,6 +27,10 @@ public class LottoService {
         lottoMachine.addBonusNumber(Integer.parseInt(bonusNumber));
     }
 
+    public void initResultLotto() {
+        user.initLottiesResult();
+    }
+
     public void saveResultLotto() {
         for (Lotto lotto : user.getLotties()) {
             int winningCount = matchLottoCount(lotto.getNumbers(), lottoMachine.getNumbers());
