@@ -7,7 +7,7 @@ import java.util.*;
 
 public class Lotto {
     private final List<Integer> numbers;
-
+    public  HashMap<Integer,Integer> result = new HashMap<>();
     public Lotto(List<Integer> numbers) {
         validate(numbers);
         this.numbers = numbers;
@@ -39,7 +39,7 @@ public class Lotto {
     }
 
     public void comapreNumbers(List<Integer> randomNumbers,List<Integer> winningNumbers){
-        HashMap<Integer,Integer> result = new HashMap<>();
+
         int count = 0;
         for(int i =1;i<=(randomNumbers.size() / 6)+2;i++){
             result.put(i,0);
@@ -55,7 +55,7 @@ public class Lotto {
             }
             if(count != 0)
             result.put(count,result.get(count)+1);
-            System.out.println(result);
+//            System.out.println(result);
         }
         printResult(result);
     }
@@ -95,21 +95,33 @@ public class Lotto {
     }
 
     public void printResult(HashMap<Integer,Integer> result){
+        double rate = incomeRate();
         System.out.println("\n당첨 통계\n---");
         System.out.println(3+"개 일치 (5,000원) -" + result.get(3)+"개");
         System.out.println(4+"개 일치 (50,000원) -" + result.get(4)+"개");
         System.out.println(5+"개 일치 (1,500,000원) -" + result.get(5)+"개");
         System.out.println(5+"개 일치, 보너스 볼 일치 (30,000,000원) -" + result.get(7)+"개");
-        System.out.println(6+"개 일치 (2,000,000,000원) -" + result.get(6)+"개");
+        System.out.println(6+"개 일치, 보너스 볼 일치 (2,000,000,000원) -" + result.get(6)+"개");
+        System.out.println("총 수익률은 "+rate+"%입니다.");
     }
-    public void  incomeRate(){
-    //수익률 = (당첨금액 합/ 처음 투입금액) * 100
-        int inputPriec = Buy.price;
 
+    public double  incomeRate(){
+    //수익률 = (당첨금액 합/ 처음 투입금액) * 100
+        int sumWinnerPrice = sumWinner(result);
+        int inputPriec = Buy.price;
+        double incomeRate = (sumWinnerPrice/inputPriec) * 100;
+        return incomeRate;
     }
-    /*public void sumWinner(@NotNull HashMap<Integer,Integer> result){
-        result.get(2)
-    }*/
+
+    public int sumWinner(HashMap<Integer,Integer> result){
+        int sumWinnerPrice = 0;
+        if(result.get(3) != 0) sumWinnerPrice += 5000 * result.get(3);
+        if(result.get(4) != 0) sumWinnerPrice += 50000 * result.get(4);
+        if(result.get(5) != 0) sumWinnerPrice += 1500000 * result.get(5);
+        if(result.get(6) != 0) sumWinnerPrice += 30000000 * result.get(6);
+        if(result.get(7) != 0) sumWinnerPrice += 2000000000 * result.get(7);
+        return sumWinnerPrice;
+    }
 }
     // TODO: 추가 기능 구현
 
