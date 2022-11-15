@@ -13,8 +13,9 @@ public class Revenue {
     private static final int PERCENTAGE = 100;
 
     private static final String NEW_LINE = "\n";
+    private static final String DELIMITER = "";
     private static final HashMap<String, Integer> revenueStatics = new HashMap<>();
-    private static final List<String> revenueStaticsReport= new ArrayList<>();
+    private static final List<String> revenueStaticsReport = new ArrayList<>();
     private int revenue;
     private float rateOfRevenue;
 
@@ -22,6 +23,7 @@ public class Revenue {
         revenue = ZERO_REVENUE;
         rateOfRevenue = ZERO_RATE;
     }
+
     public int getRevenue() {
         return revenue;
     }
@@ -61,7 +63,7 @@ public class Revenue {
     public void calculateRateOfRevenue(int purchaseAmount) {
         rateOfRevenue = (float) revenue / (float) purchaseAmount * PERCENTAGE;
     }
-    
+
     public float getRateOfRevenue() {
         return rateOfRevenue;
     }
@@ -70,5 +72,13 @@ public class Revenue {
         return rankName.equals(BONUS_CONDITION);
     }
 
-
+    public String makeReportFormat(int raffleMatchCount, String rankName) {
+        String reportFormat;
+        reportFormat = String.format("%d개 일치 (%s원) - %d개", raffleMatchCount, WinningsTable.getWinningsByMatchState(rankName), revenueStatics.get(rankName));
+        if (isSecond(rankName)) {
+            reportFormat = String.format("%d개 일치, 보너스 볼 일치 (%s원) - %d개", raffleMatchCount, WinningsTable.getWinningsByMatchState(rankName), revenueStatics.get(rankName));
+        }
+        return reportFormat;
+    }
+    
 }
