@@ -32,6 +32,14 @@ public class PurchaseTest {
         assertThat(lottoPublishCount).isEqualTo(2);
     }
 
+    @DisplayName("당첨 금액에 대한 총 수익률을 구한다.")
+    @Test
+    void getLottoYield() {
+        int winAmount = 30010000;
+        double lottoYield = purchase.findLottoYield(winAmount);
+        assertThat(lottoYield).isEqualTo(3001000.0);
+    }
+
     @DisplayName("구입 금액 숫자 예외 처리 테스트")
     @Nested
     class NumberException {

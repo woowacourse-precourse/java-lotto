@@ -4,7 +4,7 @@ import lotto.common.Constant;
 import lotto.exception.InputException;
 
 public class Purchase {
-
+    private static final int PERCENTAGE = 100;
     private final int amount;
 
     private Purchase(int amount) {
@@ -24,5 +24,10 @@ public class Purchase {
 
     public int getLottoPublishCount() {
         return amount / Constant.LOTTO_PRICE;
+    }
+
+    public double findLottoYield(int winAmount) {
+        double quotient = (double) winAmount / (double) amount;
+        return quotient * PERCENTAGE;
     }
 }
