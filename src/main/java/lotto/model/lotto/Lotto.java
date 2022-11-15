@@ -18,6 +18,10 @@ public class Lotto {
         this.numbers = new ArrayList<>(numbers);
     }
 
+    public Lotto(Lotto oth) {
+        this.numbers = new ArrayList<>(oth.numbers);
+    }
+
     public List<Integer> getNumbers() {
         return new ArrayList<>(numbers);
     }

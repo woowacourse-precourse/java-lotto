@@ -6,7 +6,7 @@ import lotto.model.payment.Payment;
 import lotto.model.statistics.LottoResult;
 import lotto.model.statistics.LottoStatistics;
 import lotto.model.statistics.LottoStatisticsGenerator;
-import lotto.model.winningnumbers.WinningNumbers;
+import lotto.model.lotto.WinningNumbers;
 import lotto.view.ConsoleInputView;
 import lotto.view.ConsoleOutputView;
 
@@ -54,11 +54,12 @@ public class LottoGameController {
 
         outputView.println(PUT_WINNING_NUMBERS_INPUT_ALERT);
         List<Integer> numbers = inputView.readIntegers();
+        Lotto winningLotto = lottoGenerator.generate(numbers);
 
         outputView.println(PUT_BONUS_NUMBER_INPUT_ALERT);
         int bonusNumber = inputView.readInteger();
 
-        WinningNumbers winningNumbers = new WinningNumbers(numbers, bonusNumber);
+        WinningNumbers winningNumbers = new WinningNumbers(winningLotto, bonusNumber);
 
         List<LottoResult> lottoResults = new ArrayList<>();
         for(Lotto lotto : lottos) {

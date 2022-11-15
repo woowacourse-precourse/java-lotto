@@ -3,7 +3,7 @@ package lotto;
 import lotto.model.lotto.Lotto;
 import lotto.model.lotto.LottoGenerator;
 import lotto.model.statistics.LottoResult;
-import lotto.model.winningnumbers.WinningNumbers;
+import lotto.model.lotto.WinningNumbers;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -49,7 +49,9 @@ class LottoTest {
                 () -> {
                     LottoGenerator lottoGenerator = new LottoGenerator();
                     Lotto lotto = lottoGenerator.autoGenerate();
-                    WinningNumbers winningNumbers = new WinningNumbers(List.of(1, 13, 14, 16, 38, 42), 45);
+
+                    Lotto winningLotto = lottoGenerator.generate(List.of(1, 13, 14, 16, 38, 42));
+                    WinningNumbers winningNumbers = new WinningNumbers(winningLotto, 45);
                     assertThat(winningNumbers.checkLotto(lotto)).isEqualTo(LottoResult.SECOND);
                 },
                 List.of(38, 16, 42, 13, 14, 45)
@@ -63,7 +65,10 @@ class LottoTest {
                 () -> {
                     LottoGenerator lottoGenerator = new LottoGenerator();
                     Lotto lotto = lottoGenerator.autoGenerate();
-                    WinningNumbers winningNumbers = new WinningNumbers(List.of(1, 13, 14, 16, 38, 42), 3);
+
+                    Lotto winningLotto = lottoGenerator.generate(List.of(1, 13, 14, 16, 38, 42));
+                    WinningNumbers winningNumbers = new WinningNumbers(winningLotto, 3);
+
                     assertThat(winningNumbers.checkLotto(lotto)).isEqualTo(LottoResult.THIRD);
                 },
                 List.of(38, 16, 42, 13, 14, 45)
@@ -77,7 +82,9 @@ class LottoTest {
                 () -> {
                     LottoGenerator lottoGenerator = new LottoGenerator();
                     Lotto lotto = lottoGenerator.autoGenerate();
-                    WinningNumbers winningNumbers = new WinningNumbers(List.of(1, 38, 13, 16, 42, 43), 45);
+
+                    Lotto winningLotto = lottoGenerator.generate(List.of(1, 38, 13, 16, 42, 43));
+                    WinningNumbers winningNumbers = new WinningNumbers(winningLotto, 45);
 
                     assertThat(winningNumbers.checkLotto(lotto)).isEqualTo(LottoResult.FOURTH);
                 },
