@@ -6,32 +6,17 @@ import lotto.Lotto.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import static lotto.Exceptions.*;
+import static lotto.Output.*;
+
 public class Application {
 
     public static List<Integer> issue_Number(){
         return Randoms.pickUniqueNumbersInRange(1, 45, 6);
     }
 
-    public static void purchase_Output(){
-        System.out.println("구입 금액을 입력해주세요.");
-    }
-
     public static String Input(){
         return Console.readLine();
-    }
-
-    public static void Number_exception(String purchase_Input){
-        for(int i=0; i<purchase_Input.length(); i++){
-            if((int)(purchase_Input.charAt(i))>57 || (int)(purchase_Input.charAt(i))<48){
-                throw new IllegalArgumentException("[Error] 자연수 값을 입력해주세요.");
-            }
-        }
-    }
-
-    public static void Unit_exception(String purchase_Input){
-        if((Integer.parseInt(purchase_Input)%1000)!=0){
-            throw new IllegalArgumentException("[Error] 1000원 단위로 입력해주세요.");
-        }
     }
 
     public static int StringtoInteger(String str){
@@ -40,10 +25,6 @@ public class Application {
 
     public static int purchase_Amount(int input){
         return (input / 1000);
-    }
-
-    public static void purchase_Amount_Output(int input){
-        System.out.println("\n"+input+"개를 구매했습니다.");
     }
 
     public static List<List<Integer>> issue_Numbers(int purchase_Amount){
@@ -55,16 +36,6 @@ public class Application {
             initNum++;
         }
         return numbers;
-    }
-
-    public static void issue_Numbers_Output( List<List<Integer>> issue_Numbers){
-        for(int i=0; i<issue_Numbers.size(); i++){
-            System.out.println(issue_Numbers.get(i));
-        }
-    }
-
-    public static void Lotto_Output(){
-        System.out.println("\n당첨 번호를 입력해주세요.");
     }
 
     public static String [] split(String str){
@@ -80,13 +51,6 @@ public class Application {
         return array;
     }
 
-    public static void Lotto_Number_exception(String [] strings){
-        for(int i=0; i<strings.length; i++){
-            Number_exception(strings[i]);
-            Range_exception(strings[i]);
-        }
-    }
-
     public static String [] replace_blank(String [] str){
         String [] string = str;
         for(int i=0; i<str.length; i++) {
@@ -95,23 +59,6 @@ public class Application {
             }
         }
         return string;
-    }
-
-    public static void Range_exception(String str){
-        if(Integer.parseInt(str)<1 || Integer.parseInt(str)>45){
-            throw new IllegalArgumentException("[Error] 1~45사이의 정수를 입력해주세요.");
-        }
-    }
-
-    public static void Duplicate_exception(List<Integer> list){
-        int key = list.size()-1;
-        int temp = list.get(key);
-
-        list.remove(key);
-        if(list.contains(temp)){
-            throw new IllegalArgumentException("[Error] 중복되지 않는 값을 입력해주세요.");
-        }
-        list.add(temp);
     }
 
     public static List<Integer> StringtoInt(String [] str){
@@ -123,18 +70,6 @@ public class Application {
         }
 
         return list;
-    }
-
-    public static void bonus_Output(){
-        System.out.println("\n보너스 번호를 입력해주세요.");
-    }
-
-    public static void Duplicate_exception_bonus(int bonus, List<Integer> winner_number){
-        if(winner_number.contains(bonus)) throw new IllegalArgumentException("[Error] 당첨 번호와 중복되지 않는 값을 입력해주세요.");
-    }
-
-    public static void result_Output(){
-        System.out.printf("\n당첨통계\n---\n");
     }
 
     public static List<List<Integer>> result_of_each(List<List<Integer>> issue_numbers, List<Integer> winner_number, int bonus_number){
@@ -194,11 +129,6 @@ public class Application {
         return prize;
     }
 
-//    public static int Number_of_iterations(List<List<Integer>> issue_numbers){
-//
-//    }
-//  (List<List<Integer>> issue_numbers, List<Integer> winner_number, int bonus_number)
-
     public static int compare(List<Integer> issue_number, List<Integer> winner_number){
         int count = 0;
         for(int i=0; i<winner_number.size(); i++){
@@ -252,60 +182,69 @@ public class Application {
             this.bonus = bonus;
             this.message = message;
         }
-
-        public int getPrize() {
-            return prize;
-        }
-
-        public int getNumber() {
-            return number;
-        }
-
-        public int getBonus() {
-            return bonus;
-        }
-
-        public String getMessage() {
-            return message;
-        }
     }
 
+    public static void start(){
+        purchase();
+    }
 
-    public static void main(String[] args) {
+    public static void purchase(){
         String purchase_Input;
-        int purchaseAmount;
         List<List<Integer>> issue_Numbers;
-        String[] Lotto_Num;
-        List<Integer> winner_number;
-        String bonus_number;
-        List<Integer> prizeCount;
+        int purchaseAmount;
+        int purchase_amount;
 
         purchase_Output();
         purchase_Input = Input();
         Number_exception(purchase_Input);
         Unit_exception(purchase_Input);
-        purchase_Amount_Output(purchase_Amount(StringtoInteger(purchase_Input)));
-        issue_Numbers = issue_Numbers((purchase_Amount(StringtoInteger(purchase_Input))));
+        purchaseAmount = StringtoInteger(purchase_Input);
+        purchase_amount = purchase_Amount(purchaseAmount);
+        purchase_Amount_Output(purchase_amount);
+        issue_Numbers = issue_Numbers(purchase_amount);
         issue_Numbers_Output(issue_Numbers);
+        lotto(issue_Numbers, purchaseAmount);
+    }
+
+    public static void lotto(List<List<Integer>> issue_Numbers, int purchaseAmount){
+        String[] Lotto_Num;
+        List<Integer> winner_number;
+
         Lotto_Output();
         String Lotto_Input = Input();
         Lotto_Num = replace_blank(split(Lotto_Input));
         Lotto_Number_exception(Lotto_Num);
         winner_number = StringtoInt(Lotto_Num);
-//        System.out.println(winner_number);
+        bonus(issue_Numbers, winner_number, purchaseAmount);
+
+    }
+
+    public static void bonus(List<List<Integer>> issue_Numbers, List<Integer> winner_number, int purchasAmount){
+        String bonus_number;
+        int bonus_Number;
+
         bonus_Output();
         bonus_number =  Input();
         Range_exception(bonus_number);
         Number_exception(bonus_number);
-        Duplicate_exception_bonus(StringtoInteger(bonus_number), winner_number);
+        bonus_Number = StringtoInteger(bonus_number);
+        Duplicate_exception_bonus(bonus_Number, winner_number);
+        result(issue_Numbers, winner_number,bonus_Number ,purchasAmount);
+    }
+
+    public static void result(List<List<Integer>> issue_Numbers, List<Integer> winner_number, int bonus_Number, int purchaseAmount){
+        List<Integer> prizeCount;
+
         result_Output();
-//        System.out.println(count_prize(result_of_each(issue_Numbers, winner_number, StringtoInteger(bonus_number))));
-        prizeCount = count_prize(result_of_each(issue_Numbers, winner_number, StringtoInteger(bonus_number)));
-        purchaseAmount = StringtoInteger(purchase_Input);
+        prizeCount = count_prize(result_of_each(issue_Numbers, winner_number, bonus_Number));
         statistic_Output(prizeCount);
         total_Return_Output(total_Rate_Of_Return(prizeCount, purchaseAmount));
 
-//
+    }
+
+    public static void main(String[] args) {
+
+        start();
 //        Lotto lotto_number = new Lotto(StringtoInt(Lotto_Num));
 //        System.out.println(lotto_number);
 
