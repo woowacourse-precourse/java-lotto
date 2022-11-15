@@ -9,7 +9,7 @@
 - [ ] 당첨 번호 와 보너스 번호를 입력 받는다. - LottoWinningNumber#input()  
     - [x] 당첨 번호 와 보너스 번호가 숫자로되어있지 않으면 예외 처리한다. - LottoWinningNumber#validConsistNumber()    
     - [x] 당첨 번호가 6개로 되어있지 않으면 예외 처리한다. - LottoWinningNumber#validSixNumber()    
-    - [ ] 당첨 번호가 쉼표(,)로 구분되어 있지 않으면 예외 처리한다. - LottoWinningNumber#validSeparatorComma()    
+    - [ ] 입력 된 당첨 번호를 쉼표(,)를 기준으로 분리 시켜야 한다. - LottoWinningNumber#separateByComma()    
     - [ ] 당첨 번호와 보너스 번호가 1~45 사이의 값이 아니면 예외 처리한다. - LottoWinningNumber#validBonusNumber()  
 - [x]  1 ~ 45 사이의 임의의 서로 다른 숫자 6개로 구성된 로또를 생성한다. - Lotto#creatLottoNumbers()  
 - [ ] 당첨 번호와 로또번호를 비교 한다. - Judgment#compareLotto()  
