@@ -16,4 +16,8 @@ public class User {
     public List<Lotto> getLottos() {
         return lottos;
     }
+
+    public int getAmount() {
+        return amount;
+    }
 }

@@ -1,5 +1,6 @@
 package lotto.service;
 
+import java.text.DecimalFormat;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -42,5 +43,23 @@ public class ResultService {
             }
         }
         return count;
+    }
+
+    public static double getProfitRate(User user, Result result) {
+        int amount = user.getAmount();
+        int totalProfit = getTotalProfit(result);
+        return totalProfit / (double) amount * 100;
+    }
+
+    private static int getTotalProfit(Result result) {
+        int totalProfit = 0;
+        Map<Rank, Integer> results = result.getResults();
+        for (Rank rank : result.getResults().keySet()) {
+            if (rank == Rank.NONE) {
+                continue;
+            }
+            totalProfit += rank.getMoney() * result.getResults().get(rank);
+        }
+        return totalProfit;
     }
 }
