@@ -2,7 +2,6 @@ package lotto;
 
 import lotto.ui.ErrorMessage;
 import lotto.ui.Ready;
-
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class Customer {
@@ -28,6 +27,10 @@ public class Customer {
 		if (!Util.isInteger(amount) || Integer.parseInt(amount) % UNIT != 0)
 			throw (new IllegalArgumentException());
 		return true;
+	}
+
+	public int getLottoCount() {
+		return amount / UNIT;
 	}
 
 }
