@@ -17,8 +17,21 @@ public class CustomerTest extends NsTest {
 		assertThat(customer.getAmount()).isEqualTo(1000);
 	}
 
-        input("1000");
-        customer.inputAmount();
+	@DisplayName("예외: 로또 구매 시 금액이 int가 아닌 경우")
+	@Test
+	void isIntegerAmount() {
+		run("1000ㅇ");
+		customer.inputAmount();
+		assertThat(output()).contains(ERROR_MESSAGE);
+	}
+	
+	@DisplayName("예외: 로또 구매 시 금액이 정해진 단위로 나누어 떨어지지 않는 경우")
+	@Test
+	void isUnitAmount() {
+		run("1300");
+		customer.inputAmount();
+		assertThat(output()).contains(ERROR_MESSAGE);
+	}
 
 	@Override
 	public void runMain() {
