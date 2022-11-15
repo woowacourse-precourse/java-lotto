@@ -1,6 +1,7 @@
 package lotto.util;
 
 public enum ErrorMessage {
+
     ERROR_MONEY_UNIT("구매 금액은 1000원 단위의 숫자만 입력 가능합니다."),
     ERROR_DUPLICATE_NUMBER("중복된 숫자입니다."),
     ERROR_INPUT_TYPE("로또 번호는 1부터 45 사이의 숫자여야 합니다."),

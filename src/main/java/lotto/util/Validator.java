@@ -61,7 +61,7 @@ public class Validator {
             return winningNumbers;
 
         } catch (IllegalArgumentException e) {
-            throw new NoSuchElementException(ErrorMessage.ERROR_NEED_COMMA.getErrorMessage());
+            throw new IllegalArgumentException(ErrorMessage.ERROR_NEED_COMMA.getErrorMessage());
         }
     }
 
