@@ -1,5 +1,6 @@
 package lotto;
 
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import camp.nextstep.edu.missionutils.Randoms;
@@ -32,6 +33,7 @@ public class Lotto {
     // 로또 한 개 발행
     public static Lotto publishLotto() {
         List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+        Collections.sort(numbers);
         return new Lotto(numbers);
     }
 
