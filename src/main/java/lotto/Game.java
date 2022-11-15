@@ -23,9 +23,7 @@ public class Game {
         try {
             inputLine = Console.readLine();
         } catch (Exception e) {
-            throw new IllegalArgumentException(
-                    "[ERROR] 값을 입력하세요"
-            );
+            throw new IllegalArgumentException("[ERROR] 값을 입력하세요");
         }
         return inputLine;
     }
@@ -36,6 +34,7 @@ public class Game {
 
         int Amount = PurchaseAmount();
         users= makeLotto(Amount);
+        showuser(users);
         Win = new ValidLotto(WinNumber(), BonusNumber());
 
         Map<Prize, Integer> records = new HashMap<>();
@@ -57,6 +56,13 @@ public class Game {
         return (money);
     }
 
+    public void showuser(List<Lotto> user) {
+        System.out.println(user.size() + "개를 구매했습니다.");
+        for (Lotto lotto : user) {
+            showPurchasedLotto(lotto);
+        }
+    }
+
     public List<Integer> WinNumber(){
         System.out.println("당첨 번호를 입력해 주세요.");
         String input = input();
@@ -71,12 +77,12 @@ public class Game {
     }
 
     public List<Lotto> makeLotto(int Amount) {
-        List<Lotto> lottos = new ArrayList<>();
+        List<Lotto> ran_lotto = new ArrayList<>();
         for (int index = 0; index < Amount; ++index) {
             List<Integer> lottoCandidate = Randoms.pickUniqueNumbersInRange(MIN, MAX, 6);
-            lottos.add(new Lotto(lottoCandidate));
+            ran_lotto.add(new Lotto(lottoCandidate));
         }
-        return lottos;
+        return ran_lotto;
     }
 
     public void showresults(Map<Prize, Integer> records, double marginRate) {
