@@ -9,6 +9,8 @@ public class Application {
 
             controller.inputUserMoney();
             controller.purchaseLotto();
+            controller.inputWinningNumber();
+            controller.inputBonusNumber();
 
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
