@@ -69,8 +69,10 @@ public class Application {
         }
     }
     public static void validateMoneyCanDivideBy1000(int money){
-        if (money/1000 != 0)
-            throw new IllegalArgumentException(NO_DIVIDE_BY_1000.getMessage());
+        if (money%1000 != 0){
+            System.out.println(NO_DIVIDE_BY_1000.getMessage());
+            throw new IllegalArgumentException();
+        }
     }
     public static void validateOneTo45(List<Integer> numbers){
         for (int index = 0; index < 6; index++){
