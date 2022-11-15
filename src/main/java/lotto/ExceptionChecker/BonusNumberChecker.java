@@ -2,6 +2,7 @@ package lotto.ExceptionChecker;
 
 import java.util.List;
 import java.util.NoSuchElementException;
+import lotto.EnumCreate.RangeNumber;
 
 public class BonusNumberChecker {
 
@@ -35,8 +36,10 @@ public class BonusNumberChecker {
     }
 
     public void validateRange(int bonusNumber) {
+
         try {
-            if (bonusNumber > 45 || bonusNumber == 0) {
+            if (bonusNumber > RangeNumber.RANGE_END.getRangeNumber()
+                    || bonusNumber < RangeNumber.RANGE_START.getRangeNumber()) {
                 throw new IllegalArgumentException();
             }
 

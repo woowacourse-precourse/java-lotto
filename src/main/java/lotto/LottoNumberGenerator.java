@@ -17,7 +17,7 @@ public class LottoNumberGenerator {
 
     private static final int MONEY_UNIT = 1000; // 1000원
     private static final int LOTTO_NUMBER_AMOUNT = 6;
-
+    private static final int ZERO = 0;
     private List<List<Integer>> returnList = new ArrayList<>();
 
 
@@ -25,7 +25,7 @@ public class LottoNumberGenerator {
 
         int lottoAmount = inputMoney / MONEY_UNIT;
 
-        for (int i = 0; i < lottoAmount; i++) {
+        for (int i = ZERO; i < lottoAmount; i++) {
             List<Integer> randomLottoNumber = new ArrayList<>();
             List<Integer> lottoGeneration = pickUniqueNumbersInRange(startNumber, endNumber, LOTTO_NUMBER_AMOUNT);
             randomLottoNumber.addAll(lottoGeneration);

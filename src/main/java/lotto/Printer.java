@@ -16,7 +16,7 @@ public class Printer {
 
 
     private static final int PERCENT = 100;
-
+    private static final int ZERO = 0;
 
     MatchNumberAmount matchThree = MatchNumberAmount.THREE;
     MatchNumberAmount matchSix = MatchNumberAmount.SIX;
@@ -32,7 +32,7 @@ public class Printer {
 
         System.out.println(amountLotto + BUY);
 
-        for (int i = 0; i < amountLotto; i++) {
+        for (int i = ZERO; i < amountLotto; i++) {
             System.out.println(userLottoNumberList.get(i));
         }
     }
@@ -55,7 +55,7 @@ public class Printer {
 
         List<Integer> frequencyList = new ArrayList<>();
 
-        for (int i = matchThree.getNumber(); i < matchSix.getNumber() + 1; i++) {
+        for (int i = matchThree.getNumber(); i <= matchSix.getNumber(); i++) {
             int frequency = Collections.frequency(correctNumberList, i);
             frequencyList.add(frequency);
         }

@@ -5,6 +5,8 @@ import java.util.NoSuchElementException;
 public class MoneyInputChecker {
 
     private final int money;
+
+    private static final int ZERO = 0;
     private static final int THOUSAND = 1000;
 
 
@@ -21,7 +23,7 @@ public class MoneyInputChecker {
 
     public void validateUnit(int moneyInput) {
         try {
-            if (moneyInput % THOUSAND != 0) {
+            if (moneyInput % THOUSAND != ZERO) {
                 throw new IllegalArgumentException();
             }
 

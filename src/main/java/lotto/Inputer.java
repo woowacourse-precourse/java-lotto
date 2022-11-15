@@ -12,7 +12,7 @@ import lotto.ExceptionChecker.MoneyInputChecker;
 public class Inputer {
 
     private static final String REGEX = ",";
-
+    private static final int ZERO = 0;
     private List<Integer> LOTTO_LIST;
 
 
@@ -53,7 +53,7 @@ public class Inputer {
 
         List<Integer> lottoWinList = new ArrayList<>();
 
-        for (int i = 0; i < lottoWinArray.length; i++) {
+        for (int i = ZERO; i < lottoWinArray.length; i++) {
             IntegerChecker integerChecker = new IntegerChecker(lottoWinArray[i]);
             lottoWinList.add(integerChecker.getMoney());
         }

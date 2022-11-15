@@ -3,8 +3,10 @@ package lotto.ExceptionChecker;
 import java.util.HashSet;
 import java.util.List;
 import java.util.NoSuchElementException;
+import lotto.EnumCreate.RangeNumber;
 
 public class Lotto {
+    private static final int AMOUNT_LOTTO_NUMBER = 6;
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> lottoNumbers) {
@@ -23,7 +25,7 @@ public class Lotto {
     private void validateSize(List<Integer> lottoNumbers) {
 
         try {
-            if (lottoNumbers.size() != 6) {
+            if (lottoNumbers.size() != AMOUNT_LOTTO_NUMBER) {
                 throw new IllegalArgumentException();
             }
         } catch (Exception IllegalArgumentException) {
@@ -67,7 +69,8 @@ public class Lotto {
 
     private boolean suitableRangeTrue(List<Integer> lottoNumbers) {
         for (int i = 0; i < lottoNumbers.size(); i++) {
-            if (lottoNumbers.get(i) > 45 || lottoNumbers.get(i) == 0) {
+            if (lottoNumbers.get(i) > RangeNumber.RANGE_END.getRangeNumber()
+                    || lottoNumbers.get(i) < RangeNumber.RANGE_START.getRangeNumber()) {
                 return false;
             }
         }
