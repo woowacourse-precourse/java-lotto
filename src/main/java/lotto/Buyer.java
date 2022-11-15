@@ -106,4 +106,12 @@ public class Buyer {
                 + ALL_CORRECT * winningCounts[4];
         return (earnings / purchaseAmount);
     }
+
+    public BoughtTicketsDTO getBoughtTicketDTO() {
+        return (new BoughtTicketsDTO(boughtTickets));
+    }
+
+    public WinningCountsDTO getWinningCountDTO() {
+        return (new WinningCountsDTO(winningCounts));
+    }
 }
