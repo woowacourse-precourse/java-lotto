@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
-import lotto.aspect.PaymentValidator;
+import lotto.validator.PaymentValidator;
 import lotto.domain.Lotto;
 import lotto.domain.Rank;
 import lotto.domain.WinningInfo;

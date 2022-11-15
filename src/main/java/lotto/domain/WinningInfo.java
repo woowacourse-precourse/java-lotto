@@ -1,7 +1,7 @@
 package lotto.domain;
 
 import java.util.List;
-import lotto.aspect.LottoValidator;
+import lotto.validator.LottoValidator;
 
 public class WinningInfo extends Lotto {
 

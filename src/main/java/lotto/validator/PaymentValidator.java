@@ -1,4 +1,4 @@
-package lotto.aspect;
+package lotto.validator;
 
 public class PaymentValidator {
 

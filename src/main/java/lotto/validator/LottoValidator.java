@@ -1,4 +1,4 @@
-package lotto.aspect;
+package lotto.validator;
 
 import java.util.HashSet;
 import java.util.List;
