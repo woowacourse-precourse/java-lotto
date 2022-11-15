@@ -15,7 +15,7 @@ public class Validation {
 
     static final String ERROR_MESSAGE_NOT_NUMERIC = ERROR_MESSAGE + " 숫자로 이루어진 입력이 아닙니다.";
     static final String ERROR_MESSAGE_MONEY_IS_INSUFFICIENT = ERROR_MESSAGE + " 입력이 로또 가격(" + LOTTO_PRICE + "원)보디 낮은 숫자입니다.";
-    static final String ERROR_MESSAGE_NOT_MULTIPLE_LOTTO_PRICE = ERROR_MESSAGE + " 입력이 로또 가격(" + LOTTO_PRICE + "원)의 배수인 숫자가 아닙니다."
+    static final String ERROR_MESSAGE_NOT_MULTIPLE_LOTTO_PRICE = ERROR_MESSAGE + " 입력이 로또 가격(" + LOTTO_PRICE + "원)의 배수인 숫자가 아닙니다.";
     static final String ERROR_MESSAGE_DELIMITER_NUMBER_IS_INCORRECT = ERROR_MESSAGE + " 구분자(" + DELIMITER + ")의 개수가 입력 조건에 맞지 않습니다.";
     static final String ERROR_MESSAGE_BETWEEN_NUMBER_NOT_DELIMITER = ERROR_MESSAGE + " 당첨 번호 입력에서 구분자(" + DELIMITER + ")의 위치가 입력 조건에 맞지 않습니다. 콤마(,)는 숫자 사이에 존재해야 합니다.";
     static final String ERROR_MESSAGE_BETWEEN_DELIMITER_NOT_NUMBER = ERROR_MESSAGE + " 당첨 번호 입력에서 구분자(" + DELIMITER + ")사이에 데이터가 숫자로 이루어진 데이터가 아닙니다.";
@@ -31,8 +31,6 @@ public class Validation {
     }
 
     public static void validateWinningNumberInput(String readWinningNumber){
-        //
-        //validateInputLength(readWinningNumber, LOTTO_LENGTH * 2 - 1);
         validateWinningNumbersHaveComma(readWinningNumber);
         validateWinningNumbersHaveBlank(readWinningNumber);
         validateWinningNumbersHaveNumbers(readWinningNumber);
