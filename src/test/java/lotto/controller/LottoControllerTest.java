@@ -62,4 +62,14 @@ public class LottoControllerTest {
         });
 
     }
+
+    @Test
+    public void computeRateOfReturnTest() {
+        int purchasePrice = 2000;
+        lottoController.setWinningLog(new int[] {1, 1, 0, 0, 0});
+
+        assertSimpleTest(() -> {
+            assertThat(lottoController.computeRateOfReturn(purchasePrice)).isEqualTo(2750.0);
+        });
+    }
 }
