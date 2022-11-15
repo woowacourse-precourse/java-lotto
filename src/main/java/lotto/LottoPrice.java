@@ -12,7 +12,6 @@ public class LottoPrice {
     }
 
     public static int getAmount(int price) {
-        int amount = price / 1000;
-        return amount;
+        return price / 1000;
     }
 }
