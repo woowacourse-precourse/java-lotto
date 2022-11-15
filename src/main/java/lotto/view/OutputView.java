@@ -1,9 +1,14 @@
 package lotto.view;
 
+import java.util.Comparator;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 import lotto.Lotto;
+import lotto.domain.GameResult;
 import lotto.domain.LottoGenerator;
 import lotto.domain.NumberOfLottos;
+import lotto.domain.Ranking;
 
 public class OutputView {
 
@@ -11,8 +16,42 @@ public class OutputView {
     private static final String FRONT_SQUARE_BRACKETS = "[";
     private static final String BACK_SQUARE_BRACKETS = "]\n";
     private static final String DELIMITER = ", %d";
+    private static final String CORRECT_COUNT_PHRASE = "%d개 일치";
+    private static final String CORRECT_BONUS_PHRASE = ", 보너스 볼 일치";
+    private static final String REWARD_AND_COUNT_PHRASE = " (%s원) - %d개\n";
 
     public OutputView() {
+    }
+
+    public static void printResultStatistic(GameResult gameResult) {
+        StringBuilder stringBuilder = new StringBuilder();
+        List<Map.Entry<Ranking, Integer>> gameResults = convertMaptoList(gameResult);
+
+        for (Map.Entry<Ranking, Integer> entry : gameResults) {
+            Ranking ranking = entry.getKey();
+            int count = entry.getValue();
+
+            generateResultPhrase(ranking, count, stringBuilder);
+        }
+        System.out.println(stringBuilder);
+    }
+
+    private static void generateResultPhrase(Ranking ranking, int count, StringBuilder stringBuilder) {
+        String countPhrase = String.format(CORRECT_COUNT_PHRASE, ranking.getCount());
+        stringBuilder.append(countPhrase);
+
+        if (ranking.isExistBonusNumber()) {
+            stringBuilder.append(CORRECT_BONUS_PHRASE);
+        }
+
+        String rewardPhrase = String.format(REWARD_AND_COUNT_PHRASE, ranking.getFormatedMoney(), count);
+        stringBuilder.append(rewardPhrase);
+    }
+
+    private static List<Map.Entry<Ranking, Integer>> convertMaptoList(GameResult gameResult) {
+        return gameResult.getGameResult().entrySet().stream().filter(list -> list.getKey() != Ranking.LOSING)
+                .sorted(Comparator.comparingInt(i -> i.getKey().getMoney()))
+                .collect(Collectors.toList());
     }
 
     public static void printLottos(NumberOfLottos numberOfLottos, LottoGenerator lottoGenerator) {
