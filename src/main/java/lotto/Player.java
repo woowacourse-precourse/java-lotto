@@ -1,10 +1,13 @@
 package lotto;
 
+import lotto.util.InputUtil;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 import static lotto.constant.Constant.*;
+import static lotto.util.InputUtil.*;
 
 public class Player {
 
@@ -13,14 +16,8 @@ public class Player {
     private int bonusNumber;
 
     public int putMoneyforLotto(String money){
-        int totalPayment=0;
-        try {
-            totalPayment = Integer.parseInt(money);
-        }catch (IllegalArgumentException e){
-            System.out.println(ERROR_MESSAGE+ERROR_INTEGER);
-        }
+        int totalPayment = InputUtil.stringToInt(money);
         checkDivideBy1000(totalPayment);
-
         return (int)totalPayment/1000;
     }
     public void checkDivideBy1000(int totalPayment) {
