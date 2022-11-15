@@ -9,7 +9,7 @@ public class Application {
 
         try {
             view.lottoStartMsg();
-            int moneyInput = service.getMoneyInput();
+            String moneyInput = service.getMoneyInput();
 
             view.purchaseMsg(moneyInput);
             List<List<Integer>> lottoNumberList = service.createNumber(moneyInput);

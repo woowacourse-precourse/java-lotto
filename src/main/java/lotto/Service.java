@@ -7,20 +7,27 @@ import java.util.*;
 
 public class Service {
 
-    public int getMoneyInput() {
+    public String getMoneyInput() {
+        String input = Console.readLine();
+        String moneyInput = input.replaceAll("\\s", "");
+        checkMoney(moneyInput);
+        return moneyInput;
+    }
+
+    private void checkMoney(String moneyInput) {
         try {
-            int input = Integer.parseInt(Console.readLine());
-            if (!(input % 1000 == 0)) {
+            int money = Integer.parseInt(moneyInput);
+            if (!(money % 1000 == 0)) {
                 throw new IllegalArgumentException("[ERROR] 1000원 단위로 입력해주세요.");
             }
-            return input;
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("[ERROR] 숫자를 입력해주세요.");
         }
     }
 
-    public List<List<Integer>> createNumber(int moneyInput) {
-        int numberOfCreate = moneyInput / 1000;
+    public List<List<Integer>> createNumber(String moneyInput) {
+        int money = Integer.parseInt(moneyInput);
+        int numberOfCreate = money / 1000;
         List<List<Integer>> lottoNumbers = new ArrayList<>();
         for (int i = 0; i < numberOfCreate; i++) {
             List<Integer> lottoNumber = Randoms.pickUniqueNumbersInRange(1, 45, 6);
@@ -33,16 +40,17 @@ public class Service {
     }
 
     public String getWinningNumberInput() {
-        String input = Console.readLine().trim();
-        checkWinningNumber0(input);
-        return input;
+        String input = Console.readLine();
+        String winningNumberInput = input.replaceAll("\\s", "");
+        checkWinningNumber0(winningNumberInput);
+        return winningNumberInput;
     }
 
-    public void checkWinningNumber0(String input) {
-        if (!input.contains(",")) {
+    public void checkWinningNumber0(String winningNumberInput) {
+        if (!winningNumberInput.contains(",")) {
             throw new IllegalArgumentException("[ERROR] 올바른 형식이 아닙니다.");
         }
-        String[] winningNumbers = input.split(",");
+        String[] winningNumbers = winningNumberInput.split(",");
         if (winningNumbers.length != 6) {
             throw new IllegalArgumentException("[ERROR] 6개의 숫자를 입력해주세요.");
         }
@@ -68,13 +76,14 @@ public class Service {
 
     public String getLuckyNumberInput(String winningNumberInput) {
         String input = Console.readLine();
-        checkLuckyNumber0(input, winningNumberInput);
-        return input;
+        String luckyNumberInput = input.replaceAll("\\s", "");
+        checkLuckyNumber0(luckyNumberInput, winningNumberInput);
+        return luckyNumberInput;
     }
 
-    public void checkLuckyNumber0(String input, String winningNumberInput) {
+    public void checkLuckyNumber0(String luckyNumberInput, String winningNumberInput) {
         try {
-            int luckyNumber = Integer.parseInt(input);
+            int luckyNumber = Integer.parseInt(luckyNumberInput);
             if (!(luckyNumber > 0) || !(luckyNumber < 46)) {
                 throw new IllegalArgumentException("[ERROR] 범위를 벗어나는 숫자입니다.");
             }
