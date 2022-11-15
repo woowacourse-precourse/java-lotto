@@ -6,8 +6,10 @@ import domain.Lottos;
 import domain.Result;
 import dto.LottoDto;
 import dto.LottosDto;
+import dto.ResultDto;
 
 import java.util.List;
+import java.util.Map;
 
 public class OutputUtil {
     public static final int MIN_HIT = 3;
@@ -26,16 +28,16 @@ public class OutputUtil {
         List<Lotto> lottos = lottosDto.lottos;
         Integer size = lottos.size();
 
-        PURCHASE_RESULT= "\n"+Integer.toString(size)+PURCHASE_RESULT;
+        PURCHASE_RESULT = "\n" + Integer.toString(size) + PURCHASE_RESULT;
         System.out.println(PURCHASE_RESULT);
-        for (Lotto lotto: lottos) {
+        for (Lotto lotto : lottos) {
             LottoDto lottoDto = lotto.sendDto();
             List<Integer> numbers = lottoDto.numbers;
             System.out.println(numbers);
         }
     }
 
-    public static  void winningNumberNotice() {
+    public static void winningNumberNotice() {
         System.out.println(WINNING_NUMBER_NOTICE);
     }
 
@@ -43,11 +45,19 @@ public class OutputUtil {
         System.out.println(BONUS_NOTICE);
     }
 
-    public void showResult(){
+    public static void showResult(Result result) {
         System.out.println(START_STATISTICS);
-        for(int hitNumber = MIN_HIT; hitNumber<= MAX_HIT ; hitNumber++){
-            //System.out.println("N개 일치 (N원) - N개");
+        Map<LottoRank, Integer> statistics = result.sendDto().statistics;
+        for (Map.Entry<LottoRank, Integer> pair : statistics.entrySet()) {
+            LottoRank rank = pair.getKey();
+            Integer number = pair.getValue();
+            if (rank == LottoRank.MISS) continue;
+            if (rank == LottoRank.SECOND) {
+                System.out.printf("%d개 일치, 보너스 볼 일치 (%d원) - %d개\n", rank.hitNumber, rank.money, number);
+                continue;
+            }
+            System.out.printf("%d개 일치 (%d원) - %d개\n", rank.hitNumber, rank.money, number);
         }
-        //System.out.println("총 수익률은 62.5%입니다.");
+        System.out.printf("총 수익률은 %.1f%%입니다.\n", result.calcEarningRate());
     }
 }

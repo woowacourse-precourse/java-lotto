@@ -8,8 +8,8 @@ public enum LottoRank {
     SECOND(5,30000000),
     FIRST(6,2000000000);
 
-    Integer hitNumber;
-    Integer money;
+    public Integer hitNumber;
+    public Integer money;
 
     LottoRank(Integer hitNumber, Integer money) {
         this.hitNumber = hitNumber;

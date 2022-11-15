@@ -34,5 +34,6 @@ public class Application {
         Lottos lottos = buyLottos();
         WinningNumberDto winningNumberDto = inputWinningNumbers().sendDTO();
         Result result = lottos.totalResult(winningNumberDto);
+        OutputUtil.showResult(result);
     }
 }
