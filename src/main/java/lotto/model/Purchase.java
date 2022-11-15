@@ -22,7 +22,7 @@ public class Purchase {
         validateInputType(input);
         int totalBudget = Integer.parseInt(input);
         validateTotalBudget(totalBudget);
-        this.ticketNumber = calculateTicketNumber(totalBudget);
+        this.ticketNumber = (int) calculateTicketNumber(totalBudget);
     }
 
     private static void validateInputType(String input) {
@@ -48,7 +48,7 @@ public class Purchase {
         }
     }
 
-    private static int calculateTicketNumber(int totalBudget) {
+    private static double calculateTicketNumber(int totalBudget) {
         return totalBudget / LOTTO_PRICE;
     }
 

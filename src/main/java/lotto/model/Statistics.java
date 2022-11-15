@@ -16,5 +16,4 @@ public class Statistics {
         return List.of(Rank.values());
     }
 
-
 }

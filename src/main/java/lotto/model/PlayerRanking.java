@@ -12,8 +12,8 @@ public class PlayerRanking {
     }
 
     private void setPlayerRankings(List<Integer> matches, List<Boolean> bonusMatches) {
-        for (int i = 0; i < matches.size(); i++) {
-            Rank playerRanking = findPlayerRanking(matches.get(i), bonusMatches.get(i));
+        for (int index = 0; index < matches.size(); index++) {
+            Rank playerRanking = findPlayerRanking(matches.get(index), bonusMatches.get(index));
             playerRankings.add(playerRanking);
         }
     }

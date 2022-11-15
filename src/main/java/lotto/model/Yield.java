@@ -1,12 +1,11 @@
 package lotto.model;
 
+import static lotto.util.Constants.PERCENT_MULTIPLICATION;
 import static lotto.util.Util.formatYield;
 
 import java.util.List;
 
 public class Yield {
-
-    public static final int PERCENT_MULTIPLICATION = 100;
     private final String yield;
 
     public Yield(double totalBudget, List<Rank> ranks) {
