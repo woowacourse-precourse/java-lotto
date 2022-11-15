@@ -20,7 +20,7 @@ public class LottoGenerator {
     }
 
     public static int maximum(int money) {
-        if (money % PRICE != 0) {
+        if (money % PRICE != 0 || money < PRICE) {
             throw new IllegalArgumentException("[ERROR] 1,000원으로 나누어 떨어지지 않습니다.");
         }
         return money / PRICE;
