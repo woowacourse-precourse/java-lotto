@@ -24,7 +24,7 @@ public class Messages {
             "5개 일치 (1,500,000원) - %d개\n" +
             "5개 일치, 보너스 볼 일치 (30,000,000원) - %d개\n" +
             "6개 일치 (2,000,000,000원) - %d개\n" +
-            "총 수익률은 %.2f%%입니다.";
+            "총 수익률은 %.1f%%입니다.";
 
     // ERROR
     public static final String  ERROR_NOT_DIVDE1000 = "[ERROR] 금액은 1,000원 단위로 입력할 수 있습니다.";

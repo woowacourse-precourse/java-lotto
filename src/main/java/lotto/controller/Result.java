@@ -37,6 +37,6 @@ public class Result {
         for (Win win : wins.keySet()) {
             sum +=  win.getWinnings() * wins.get(win);
         }
-        return sum/input;
+        return sum/input * 100;
     }
 }
