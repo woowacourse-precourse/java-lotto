@@ -5,7 +5,7 @@ import lotto.enums.InputExceptionConstants;
 
 public class Clerk {
 
-    public int giveLottoQuantity(String input) {
+    public int calculateLottoQuantity(String input) {
         int money;
         int lottoQuantity;
 

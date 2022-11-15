@@ -14,7 +14,7 @@ class WinningLottoMachineTest {
     void inputNumbersByOutOfRange() {
         String input = "2,56,22,1,144,2";
 
-        assertThatThrownBy(() -> winningLottoMachine.giveWinningLottoNumber(input))
+        assertThatThrownBy(() -> winningLottoMachine.generateWinningLottoNumber(input))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -24,7 +24,7 @@ class WinningLottoMachineTest {
     void inputNumbersByOverSizeOrUnderSize() {
         String input = "2,56,22,1";
 
-        assertThatThrownBy(() -> winningLottoMachine.giveWinningLottoNumber(input))
+        assertThatThrownBy(() -> winningLottoMachine.generateWinningLottoNumber(input))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("6개의 숫자가 아닙니다.");
     }
@@ -34,7 +34,7 @@ class WinningLottoMachineTest {
     void inputNumbersByNonNumeric() {
         String input = "2,56,22,1,a";
 
-        assertThatThrownBy(() -> winningLottoMachine.giveWinningLottoNumber(input))
+        assertThatThrownBy(() -> winningLottoMachine.generateWinningLottoNumber(input))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("수가 아닌 입력이 있습니다.");
 
@@ -45,7 +45,7 @@ class WinningLottoMachineTest {
     void inputNumbersNotContainSplitCharacter() {
         String input = "144141.1515";
 
-        assertThatThrownBy(() -> winningLottoMachine.giveWinningLottoNumber(input))
+        assertThatThrownBy(() -> winningLottoMachine.generateWinningLottoNumber(input))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("분할될 수 없는 입력입니다.");
     }
@@ -55,7 +55,7 @@ class WinningLottoMachineTest {
     void inputBonusNumberByBlank() {
         String input = "";
 
-        assertThatThrownBy(() -> winningLottoMachine.giveWinningLottoBonusNumber(input))
+        assertThatThrownBy(() -> winningLottoMachine.generateWinningLottoBonusNumber(input))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("빈 문자열이 입력되었습니다.");
     }
@@ -65,7 +65,7 @@ class WinningLottoMachineTest {
     void inputBonusNumberByNonNumeric() {
         String input = "aa";
 
-        assertThatThrownBy(() -> winningLottoMachine.giveWinningLottoBonusNumber(input))
+        assertThatThrownBy(() -> winningLottoMachine.generateWinningLottoBonusNumber(input))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("수가 아닌 입력이 있습니다.");
     }

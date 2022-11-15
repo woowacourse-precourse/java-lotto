@@ -10,17 +10,7 @@ import lotto.enums.LottoExceptionConstants;
 
 public class LottoMachine {
 
-    public List<Integer> generateLottoNumber() {
-        List<Integer> numbers = Randoms.pickUniqueNumbersInRange(LottoConstants.MIN_LOTTO_NUMBER_RANGE.getValue(),
-                LottoConstants.MAX_LOTTO_NUMBER_RANGE.getValue(), LottoConstants.LOTTO_NUMBERS_LENGTH.getValue());
-
-        List<Integer> lottoNumbers = sortLottoNumbers(numbers);
-        validateLottoNumber(lottoNumbers);
-
-        return lottoNumbers;
-    }
-
-    public List<Lotto> makeLottos(int lottoQuantity) {
+    public List<Lotto> generateLottos(int lottoQuantity) {
         List<Lotto> lottos = new ArrayList<>();
         for (int i = 0; i < lottoQuantity; i++) {
             lottos.add(new Lotto(generateLottoNumber()));
@@ -35,6 +25,17 @@ public class LottoMachine {
         validateLottoNumbersSorted(numbers);
         validateLottoNumbersInRange(numbers);
     }
+
+    public List<Integer> generateLottoNumber() {
+        List<Integer> numbers = Randoms.pickUniqueNumbersInRange(LottoConstants.MIN_LOTTO_NUMBER_RANGE.getValue(),
+                LottoConstants.MAX_LOTTO_NUMBER_RANGE.getValue(), LottoConstants.LOTTO_NUMBERS_LENGTH.getValue());
+
+        List<Integer> lottoNumbers = sortLottoNumbers(numbers);
+        validateLottoNumber(lottoNumbers);
+
+        return lottoNumbers;
+    }
+
 
     private List<Integer> sortLottoNumbers(List<Integer> numbers) {
         ArrayList<Integer> lottoNumbersCopy = new ArrayList<>(List.copyOf(numbers));

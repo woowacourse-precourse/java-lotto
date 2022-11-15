@@ -8,7 +8,7 @@ import lotto.enums.LottoExceptionConstants;
 
 public class WinningLottoMachine {
 
-    public List<Integer> giveWinningLottoNumber(String input) {
+    public List<Integer> generateWinningLottoNumber(String input) {
         validateNumberCanSplit(input);
         List<Integer> winningNumberList = makeNumberList(input);
         validateLottoNumberLength(winningNumberList);
@@ -17,13 +17,13 @@ public class WinningLottoMachine {
         return winningNumberList;
     }
 
-    public int giveWinningLottoBonusNumber(String input) {
+    public int generateWinningLottoBonusNumber(String input) {
         validateBlank(input);
         int bonusNumber = validateNumeric(input);
         return bonusNumber;
     }
 
-    public WinningLotto makeWinningLotto(List<Integer> winningLottoNumber, int winningLottoBonusNumber) {
+    public WinningLotto generateWinningLotto(List<Integer> winningLottoNumber, int winningLottoBonusNumber) {
         return new WinningLotto(winningLottoNumber, winningLottoBonusNumber);
     }
     private void validateLottoNumberLength(List<Integer> numberList) {

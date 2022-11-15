@@ -15,13 +15,13 @@ import lotto.view.OutputView;
 public class LottoController {
 
     public void start() {
-        int lottoQuantity = getLottoQuantity();
-        List<Lotto> lottos = getLottos(lottoQuantity);
+        int lottoQuantity = makeLottoQuantity();
+        List<Lotto> lottos = makeLottos(lottoQuantity);
         WinningLotto winningLotto = makeWinningLotto();
-        makeResult(lottos, winningLotto);
+        makeStatistics(lottos, winningLotto);
     }
 
-    private void makeResult(List<Lotto> lottos, WinningLotto winningLotto) {
+    private void makeStatistics(List<Lotto> lottos, WinningLotto winningLotto) {
         StatisticsMaker statisticsMaker = new StatisticsMaker();
 
         Map<Integer, Integer> ranking = statisticsMaker.makeRankings(winningLotto, lottos);
@@ -31,34 +31,34 @@ public class LottoController {
         OutputView.printWinningStatistics(statistics);
     }
 
-    private List<Lotto> getLottos(int lottoQuantity) {
+    private List<Lotto> makeLottos(int lottoQuantity) {
         LottoMachine lottoMachine = new LottoMachine();
 
-        List<Lotto> lottos = lottoMachine.makeLottos(lottoQuantity);
+        List<Lotto> lottos = lottoMachine.generateLottos(lottoQuantity);
 
         OutputView.printInputMoneyResultMessage(lottoQuantity);
         OutputView.printPurchasedLottos(lottos);
         return lottos;
     }
 
-    private int getLottoQuantity() {
+    private int makeLottoQuantity() {
         Clerk clerk = new Clerk();
 
         OutputView.printMoneyInputMessage();
 
-        return clerk.giveLottoQuantity(InputView.inputMoney());
+        return clerk.calculateLottoQuantity(InputView.inputMoney());
     }
 
     private WinningLotto makeWinningLotto() {
         WinningLottoMachine winningLottoMachine = new WinningLottoMachine();
 
         OutputView.printWinningNumbersInputMessage();
-        List<Integer> winningLottoNumber = winningLottoMachine.giveWinningLottoNumber(InputView.inputWinningNumber());
+        List<Integer> winningLottoNumber = winningLottoMachine.generateWinningLottoNumber(InputView.inputWinningNumber());
 
         OutputView.printBonusNumberInputMessage();
-        int winningLottoBonusNumber = winningLottoMachine.giveWinningLottoBonusNumber(InputView.inputBonusNumber());
+        int winningLottoBonusNumber = winningLottoMachine.generateWinningLottoBonusNumber(InputView.inputBonusNumber());
 
-        return winningLottoMachine.makeWinningLotto(winningLottoNumber, winningLottoBonusNumber);
+        return winningLottoMachine.generateWinningLotto(winningLottoNumber, winningLottoBonusNumber);
     }
 
 }
