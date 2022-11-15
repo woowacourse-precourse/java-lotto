@@ -1,6 +1,6 @@
-package Constants;
+package constants;
 
-public class Constant {
+public class Message {
     public static final String MESSAGE_INPUT_PAY_AMOUNT = "구입금액을 입력해 주세요.";
     public static final String MESSAGE_NUMBER_OF_TICKET_IS = "개를 구매했습니다.";
     public static final String MESSAGE_INPUT_WINNING_NUMBER = "당첨 번호를 입력해 주세요.";
@@ -12,9 +12,5 @@ public class Constant {
     public static final String MESSAGE_RESULT_OF_RANK_4 = "4개 일치 (50,000원) - ";
     public static final String MESSAGE_RESULT_OF_RANK_5 = "3개 일치 (5,000원) - ";
     public static final String MESSAGE_RESULT_OF_RETURN_RATE = "총 수익률은 ";
-
-
-
-
 
 }

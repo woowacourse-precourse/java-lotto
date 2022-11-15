@@ -1,6 +1,6 @@
 package lotto;
 
-import static Constants.Constant.*;
+import static constants.Message.*;
 
 public class LottoResult {
 

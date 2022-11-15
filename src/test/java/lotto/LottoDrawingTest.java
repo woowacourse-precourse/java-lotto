@@ -2,7 +2,7 @@ package lotto;
 
 import org.junit.jupiter.api.Test;
 
-import static Constants.Error.*;
+import static constants.ErrorMessage.*;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class LottoDrawingTest {

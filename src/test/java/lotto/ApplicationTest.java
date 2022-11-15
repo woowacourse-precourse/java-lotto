@@ -13,10 +13,12 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class ApplicationTest extends NsTest {
     private static final String ERROR_MESSAGE = "[ERROR]";
+
     @BeforeEach
-    void beforeEach(){
+    void beforeEach() {
         PrizeEnum.reset();
     }
+
     @Test
     void 기능_테스트() {
         assertRandomUniqueNumbersInRangeTest(
@@ -30,7 +32,7 @@ class ApplicationTest extends NsTest {
                             "[1, 8, 11, 31, 41, 42]",
                             "[13, 14, 16, 38, 42, 45]",
                             "[7, 11, 30, 40, 42, 43]",
-                             "[2, 13, 22, 32, 38, 45]",
+                            "[2, 13, 22, 32, 38, 45]",
                             "[1, 3, 5, 14, 22, 45]",
                             "3개 일치 (5,000원) - 1개",
                             "4개 일치 (50,000원) - 0개",
@@ -118,6 +120,7 @@ class ApplicationTest extends NsTest {
                 List.of(1, 3, 5, 4, 2, 7)
         );
     }
+
     @Test
     void 예외_테스트() {
         assertSimpleTest(() -> {

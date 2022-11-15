@@ -3,8 +3,7 @@ package utils;
 import camp.nextstep.edu.missionutils.Console;
 import lotto.LottoDrawing;
 
-import static Constants.Constant.MESSAGE_INPUT_BONUS_NUMBER;
-import static Constants.Constant.MESSAGE_INPUT_WINNING_NUMBER;
+import static constants.Message.*;
 
 public class UserInput {
 

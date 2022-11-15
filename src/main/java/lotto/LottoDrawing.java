@@ -3,8 +3,7 @@ package lotto;
 import java.util.ArrayList;
 import java.util.List;
 
-import static Constants.Constant.*;
-import static Constants.Error.*;
+import static constants.ErrorMessage.*;
 
 public class LottoDrawing {
     List<Integer> winningNumbers = new ArrayList<>();

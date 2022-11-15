@@ -3,7 +3,7 @@ package lotto;
 import java.util.ArrayList;
 import java.util.List;
 
-import static Constants.Constant.*;
+import static constants.Message.*;
 
 public enum PrizeEnum {
     fifthWinner_3(5000, 3, false, MESSAGE_RESULT_OF_RANK_5),
@@ -27,11 +27,6 @@ public enum PrizeEnum {
     }
 
     public void plusRankCount(int numberOfCorrectNumbers, boolean checkBonus) {
-        /*System.out.println("jjjjjjjjj");
-
-        System.out.println("this.correctNumber" + this.correctNumber + ", correctNumbers.get(i) " + numberOfCorrectNumbers);
-        System.out.println("checkBonus" + checkBonus + ", this.bonusCorrect" + this.bonusCorrect);
-*/
         if (numberOfCorrectNumbers == this.correctNumber && checkBonus == this.bonusCorrect) {
             this.count++;
         }
