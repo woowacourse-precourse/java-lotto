@@ -1,9 +1,6 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
-import lotto.domain.Cash;
-import lotto.domain.LottoMachine;
-import lotto.domain.Referee;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,12 +8,15 @@ import java.util.List;
 
 public class Application {
     public static void main(String[] args) {
-        printResult(Referee.Compare(LottoMachine.pickLottoNumbers(inputCash()), inputWinningNumbers()));
+        try {
+            printResult(Referee.Compare(LottoMachine.pickLottoNumbers(inputCash()), inputWinningNumbers()));
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     public static int inputCash() {
         int countLotto;
-
         System.out.println("구입금액을 입력해 주세요.");
         countLotto = Cash.countPurchaseQuantity(Console.readLine());
         System.out.println(countLotto + "개를 구매했습니다.");
@@ -36,7 +36,7 @@ public class Application {
 
     public static void printResult(List<List<Integer>> totalResult) {
         int prize = 0;
-        int i = 0;
+        int index = 0;
 
         System.out.println("당첨 통계");
         System.out.println("---");
@@ -46,15 +46,15 @@ public class Application {
         System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - " + totalResult.get(0).get(3) + "개");
         System.out.println("6개 일치 (2,000,000,000원) - " + totalResult.get(0).get(4) + "개");
         for (Rank rank : Rank.values()) {
-            prize += rank.getPrize() * totalResult.get(0).get(i);
-            i++;
+            prize += rank.getPrize() * totalResult.get(0).get(index);
+            index++;
         }
-        printEarningsRate(totalResult.get(1), prize);
+        System.out.println(printEarningsRate(totalResult.get(1), prize));
     }
 
-    public static void printEarningsRate(List<Integer> cashResult, double prize) {
+    public static String printEarningsRate(List<Integer> cashResult, double prize) {
         double sumPrize = (prize / (cashResult.get(0) * 1000)) * 100;
-        System.out.println("총 수익률은 " + sumPrize + "%입니다.");
+        return "총 수익률은 " + sumPrize + "%입니다.";
     }
 
 }
