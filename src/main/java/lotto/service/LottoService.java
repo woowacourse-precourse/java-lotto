@@ -28,7 +28,7 @@ public class LottoService {
     private LottoService() {
     }
 
-    public static long amountInputToInteger(String input) {
+    public static long amountInputToInteger(String input) throws IllegalStateException {
         if (!input.chars().allMatch((Character::isDigit))) {
             throw new IllegalStateException(PURCHASE_AMOUNT_INPUT_IS_NOT_NUMBER_ERROR_MESSAGE);
         }
@@ -59,7 +59,7 @@ public class LottoService {
         return new Lotto(Randoms.pickUniqueNumbersInRange(1, 45, 6));
     }
 
-    public static Lotto getWinningNumber(String input) {
+    public static Lotto getWinningNumber(String input) throws IllegalStateException {
         if (!input.matches(WINNING_NUMBER_INPUT_VALIDATE_REGEX)) {
             throw new IllegalStateException(WINNING_LOTTO_NUMBER_INPUT_IS_NOT_MATCH_REGEX_ERROR_MESSAGE);
         }
@@ -76,7 +76,7 @@ public class LottoService {
         return new Lotto(List.copyOf(numbers));
     }
 
-    public static int getBonusNumber(String input) {
+    public static int getBonusNumber(String input) throws IllegalStateException {
         if (!input.chars().allMatch(Character::isDigit)) {
             throw new IllegalStateException(BONUS_NUMBER_INPUT_IS_NOT_NUMBER_ERROR_MESSAGE);
         }
