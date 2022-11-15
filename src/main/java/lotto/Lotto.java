@@ -1,8 +1,8 @@
 package lotto;
 
-import java.util.Comparator;
-import java.util.HashSet;
-import java.util.List;
+import camp.nextstep.edu.missionutils.Randoms;
+
+import java.util.*;
 
 public class Lotto {
     private final List<Integer> winningNumbers;
@@ -60,8 +60,14 @@ public class Lotto {
         return this.bonus;
     }
 
-    private void sortListInAscending(List<Integer> numbers){
+    private void sortListInAscending(List<Integer> numbers) {
         numbers.sort(Comparator.naturalOrder());
     }
 
+    public List<Integer> generateLottoNumbers() {
+        List<Integer> lottoNumbers;
+        lottoNumbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+        sortListInAscending(lottoNumbers);
+        return lottoNumbers;
+    }
 }
