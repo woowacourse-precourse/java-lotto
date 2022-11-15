@@ -18,12 +18,28 @@ public class Lotto {
         this.numbers = numbers;
     }
 
+    public List<Integer> getNumbers() {
+        return numbers;
+    }
+
+    public static int count(int money) {
+        if (money < 1000) {
+            throw new IllegalArgumentException(INCORRECT_MONEY.getMessage());
+        }
+        if (money % 1000 != 0) {
+            throw new IllegalArgumentException(INCORRECT_MONEY_UNIT.getMessage());
+        }
+
+        int result = money / 1000;
+        return result;
+    }
+
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException(ERROR_MORE_SIX_LOTTO.getMessage());
         }
     }
-    
+
     private void checkDuplicatedNumber(List<Integer> numbers) {
         if (numbers.size() != numbers.stream().distinct().count()) {
             throw new IllegalArgumentException(ERROR_DUPLICATED_LOTTO.getMessage());
