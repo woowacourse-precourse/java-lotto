@@ -19,11 +19,14 @@ public class Application {
 
         // 입력
         System.out.println("구입금액을 입력해 주세요.");
-        int money = Integer.parseInt(Console.readLine());
-
+        int money=0;
         // 입력 예외 처리
-        MoneyException moneyException = new MoneyException(money);
-
+        try{
+            money = Integer.parseInt(Console.readLine());
+            MoneyException moneyException = new MoneyException(money);
+        }catch(IllegalArgumentException e){
+            System.out.println("[ERROR] 금액은 1000원으로 나누어 떨어져야 합니다.");
+        };
         // 입력 수 만큼 6개의 랜덤 숫자 생성
         count = money / 1000;
         for (int i = 0; i < count; i++) {
@@ -72,6 +75,10 @@ public class Application {
         }
         // 당첨 내역 출력
         WinningPrint winningPrint = new WinningPrint(arrCount);
+
         // 수익률
+        long winningSum=winningPrint.priceSum();
+        double revenue=(winningSum/(double)money)*100.0;
+        System.out.println("총 수익률은 "+Math.round(revenue*10)/10.0+"%입니다.");
     }
 }
