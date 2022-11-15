@@ -18,16 +18,23 @@ public class Lotto {
 
     // TODO: 추가 기능 구현
 
-    //입력한 숫자가 (1, 45) 인 수인지 검증 
-    protected void isNumberInRange() {
-        for (Integer numbers_ : this.numbers) {
-            if (numbers_ > 45) {
-                throw new IllegalArgumentException("[ERROR] input bigger than 45");
-            }
-            if (numbers_ < 1) {
-                throw new IllegalArgumentException("[ERROR] input smaller than 1");
-            }
-        }
+    public List<Integer> getLottoNum()
+    {
+        return this.numbers;
+    }
+
+    public void printNumber()
+    {
+        System.out.println(this.numbers.toString());
+    }
+
+    public boolean isContaining(int number)
+    {
+        return numbers.contains(number);
     }
     
+    public int getSameNum(WinnersLotto winnersLotto)
+    {
+        return (int) numbers.stream().filter(winnersLotto::isContaining).count();
+    }
 }
