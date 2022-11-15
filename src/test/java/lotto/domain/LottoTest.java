@@ -8,6 +8,7 @@ import org.junit.jupiter.params.provider.CsvSource;
 
 import java.util.List;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class LottoTest {
@@ -32,5 +33,13 @@ class LottoTest {
     void 로또_번호가_범위를_벗어나게_생성(int outOfRangeNumber) {
         assertThatThrownBy(() -> new Lotto(List.of(outOfRangeNumber, 1, 2, 3, 4, 5)))
                 .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("로또끼리 번호를 비교할 수 있다. ")
+    @Test
+    void 로또_번호_비교_3개가_같을_경우() {
+        Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+        int count = lotto.countMatchNumber(new Lotto(List.of(1, 2, 3, 23, 45, 22)));
+        assertThat(count).isEqualTo(3);
     }
 }
