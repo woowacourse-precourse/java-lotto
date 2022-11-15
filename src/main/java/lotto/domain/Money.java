@@ -9,6 +9,7 @@ public class Money {
     private int money;
 
     public Money(int money) {
+        validate(money);
         this.money = money;
     }
 

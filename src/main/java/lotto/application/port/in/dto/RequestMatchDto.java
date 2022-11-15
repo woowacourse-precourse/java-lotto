@@ -1,21 +1,30 @@
 package lotto.application.port.in.dto;
 
-import java.util.List;
+import lotto.domain.lotto.Bonus;
+import lotto.domain.lotto.Lotto;
 
 public class RequestMatchDto {
-    private List<Integer> winningNumbers;
-    private List<Integer> numbers;
 
-    public RequestMatchDto(List<Integer> winningNumbers, List<Integer> numbers) {
-        this.winningNumbers = winningNumbers;
-        this.numbers = numbers;
+    private Lotto winningLotto;
+    private Bonus bonus;
+    private ResponseBuyLottoDto lottoTickets;
+
+
+    public RequestMatchDto(Lotto winningLotto, Bonus bonus, ResponseBuyLottoDto lottoTickets) {
+        this.winningLotto = winningLotto;
+        this.bonus = bonus;
+        this.lottoTickets = lottoTickets;
     }
 
-    public List<Integer> getWinningNumbers() {
-        return winningNumbers;
+    public Lotto getWinningLotto() {
+        return winningLotto;
     }
 
-    public List<Integer> getNumbers() {
-        return numbers;
+    public Bonus getBonus() {
+        return bonus;
+    }
+
+    public ResponseBuyLottoDto getLottoTickets() {
+        return lottoTickets;
     }
 }

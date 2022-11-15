@@ -1,29 +1,16 @@
 package lotto.application.port.in.dto;
 
+import lotto.domain.result.ResultTable;
+
 public class ResponseMatchDto {
 
-    int rank;
-    double rateOfReturn;
+    ResultTable resultTable;
 
-    /**
-     * 5등 이하는 -1 로 처리.
-     * @param rateOfReturn
-     */
-    public ResponseMatchDto(double rateOfReturn) {
-        this.rank = -1;
-        this.rateOfReturn = rateOfReturn;
+    public ResponseMatchDto(ResultTable resultTable) {
+        this.resultTable = resultTable;
     }
 
-    public ResponseMatchDto(int rank, double rateOfReturn) {
-        this.rank = rank;
-        this.rateOfReturn = rateOfReturn;
-    }
-
-    public int getRank() {
-        return rank;
-    }
-
-    public double getRateOfReturn() {
-        return rateOfReturn;
+    public ResultTable getResultTable() {
+        return resultTable;
     }
 }

@@ -1,6 +1,6 @@
 package lotto.application.port.in.dto;
 
-import lotto.domain.Lotto;
+import lotto.domain.lotto.Lotto;
 
 import java.util.List;
 
