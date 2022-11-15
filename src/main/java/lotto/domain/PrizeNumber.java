@@ -35,7 +35,7 @@ public class PrizeNumber {
         try{
             bonus = Integer.valueOf(Console.readLine());
         } catch(Exception e){
-            throw new IllegalArgumentException(Print.lottoNumberError());
+            throw new IllegalArgumentException(Print.bonusNumberError());
         }
         return bonus;
     }
