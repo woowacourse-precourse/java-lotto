@@ -49,7 +49,7 @@ class RankingTableSystemTest {
     @DisplayName("countFrequencyByRank 메소드에 LottoTickets을 입력하면 순위별로 일치하는 수가 정리된 Map 객체를 반환하는지 확인")
     @ParameterizedTest
     @MethodSource("provideArgumentsForClassifyingTest")
-    void countFrequencyByRank_test(List<List<Integer>> lottoNumbers, String expected) throws NoSuchMethodException, IllegalAccessException, InvocationTargetException {
+    void countFrequencyByRank_test(List<List<Integer>> lottoNumbers, Ranking key, Frequency expected) throws NoSuchMethodException, IllegalAccessException, InvocationTargetException {
         Method method = rankingTableSystem.getClass().getDeclaredMethod("countFrequencyByRank", LottoTickets.class);
         method.setAccessible(true);
         LottoTickets tickets = LottoTickets.from(lottoNumbers.stream()
@@ -58,7 +58,7 @@ class RankingTableSystemTest {
 
         Map<?, ?> frequenciesByRank = (Map<?, ?>) method.invoke(rankingTableSystem, tickets);
 
-        assertThat(frequenciesByRank.toString()).isEqualTo(expected);
+        assertThat(frequenciesByRank.get(key)).isEqualTo(expected);
     }
 
     @DisplayName("createRankingTable 메소드에 LottoTickets을 입력하면 RankingTable을 생성해 반환하는지 확인")
@@ -84,11 +84,23 @@ class RankingTableSystemTest {
     static Stream<Arguments> provideArgumentsForClassifyingTest() {
         return Stream.of(
                 Arguments.of(List.of(
-                                List.of(1, 2, 3, 4, 5, 6),
-                                List.of(1, 2, 3, 4, 5, 6),
-                                List.of(1, 2, 3, 4, 6, 7),
-                                List.of(1, 2, 3, 7, 8, 9)),
-                        "{SECOND_PLACE=1, FIFTH_PLACE=1, FOURTH_PLACE=0, THIRD_PLACE=0, FIRST_PLACE=2}")
+                        List.of(1, 2, 3, 4, 5, 6),
+                        List.of(1, 2, 3, 4, 5, 6),
+                        List.of(1, 2, 3, 4, 6, 7),
+                        List.of(1, 2, 3, 7, 8, 9)), Ranking.FIRST_PLACE, Frequency.from(2)
+                ),
+                Arguments.of(List.of(
+                        List.of(1, 2, 3, 4, 5, 6),
+                        List.of(1, 2, 3, 4, 5, 6),
+                        List.of(1, 2, 3, 4, 6, 7),
+                        List.of(1, 2, 3, 7, 8, 9)), Ranking.SECOND_PLACE, Frequency.from(1)
+                ),
+                Arguments.of(List.of(
+                        List.of(1, 2, 3, 4, 5, 6),
+                        List.of(1, 2, 3, 4, 5, 6),
+                        List.of(1, 2, 3, 4, 6, 7),
+                        List.of(1, 2, 3, 7, 8, 9)), Ranking.THIRD_PLACE, Frequency.from(0)
+                )
         );
     }
 
