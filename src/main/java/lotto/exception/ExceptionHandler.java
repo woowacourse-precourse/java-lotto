@@ -15,6 +15,13 @@ public enum ExceptionHandler {
         }
     },
 
+    OVERLAP_BONUS_NUMBER {
+        @Override
+        public void error() {
+            throw new IllegalArgumentException("[ERROR] 보너스 번호는 당첨 번호와 중복될 수 없습니다.");
+        }
+    },
+
     ILLEGAL_RANGE {
         @Override
         public void error() {

@@ -1,13 +1,17 @@
 package lotto.domain;
 
-import static lotto.domain.constant.IntValueConstant.BONUS_NUMBER_IDX;
-import static lotto.domain.constant.IntValueConstant.LOTTO_MAXIMUM_NUMBER;
-import static lotto.domain.constant.IntValueConstant.LOTTO_MINIMUM_NUMBER;
-import static lotto.domain.constant.IntValueConstant.LOTTO_NUMBER_OF_DIGITS;
+import static lotto.domain.constant.LottoValueConstant.BONUS_NUMBER_IDX;
+import static lotto.domain.constant.LottoValueConstant.LOTTO_MAXIMUM_NUMBER;
+import static lotto.domain.constant.LottoValueConstant.LOTTO_MINIMUM_NUMBER;
+import static lotto.domain.constant.LottoValueConstant.LOTTO_NUMBER_OF_DIGITS;
+import static lotto.domain.constant.LottoValueConstant.ZERO;
 import static lotto.exception.ExceptionHandler.ILLEGAL_RANGE;
 import static lotto.exception.ExceptionHandler.ILLEGAL_VALUE;
 import static lotto.exception.ExceptionHandler.INPUT_SIX_DIGITS;
+import static lotto.exception.ExceptionHandler.OVERLAP_BONUS_NUMBER;
 import static lotto.exception.ExceptionHandler.OVERLAP_NUMBER;
+import static lotto.printer.InputPrinter.INPUT_BONUS_NUMBER;
+import static lotto.printer.InputPrinter.INPUT_WINNING_NUMBERS;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.util.Arrays;
@@ -20,22 +24,27 @@ import java.util.stream.Collectors;
 
 public class LottoAdmin {
 
-    private final Buyer buyer;
     private Set<Integer> winningNumber;
     private List<Integer> bonusNumber;
-    public LottoAdmin(Buyer buyer) {
-        this.buyer = buyer;
-    }
 
     public void createWinningNumbers() {
-        System.out.println("당첨 번호를 입력해 주세요.");
-        String inputValues = Console.readLine();
+        INPUT_WINNING_NUMBERS.print();
 
-        this.winningNumber =  Arrays.stream(inputValues.split(","))
-                                    .map(Integer::parseInt)
-                                    .collect(Collectors.toSet());
+        this.winningNumber = Arrays.stream(Console.readLine().split(","))
+                                   .map(this::winningNumberSafeParsing)
+                                   .collect(Collectors.toSet());
 
         validateWinningNumbers(this.winningNumber);
+    }
+
+    private Integer winningNumberSafeParsing(String winningNumber) {
+        try {
+            return Integer.parseInt(winningNumber);
+        } catch (NumberFormatException exception) {
+            ILLEGAL_VALUE.error();
+        }
+
+        return ZERO.getValue();
     }
 
 
@@ -63,6 +72,8 @@ public class LottoAdmin {
     }
 
     public void createBonusNumber() {
+        INPUT_BONUS_NUMBER.print();
+
         try {
             this.bonusNumber = Collections.singletonList(Integer.parseInt(Console.readLine()));
 
@@ -79,9 +90,17 @@ public class LottoAdmin {
 
         for (Integer winningNumber : winningNumbers) {
             if (Objects.equals(winningNumber, bonusNumber.get(BONUS_NUMBER_IDX.getValue()))) {
-                OVERLAP_NUMBER.error();
+                OVERLAP_BONUS_NUMBER.error();
             }
         }
+    }
+
+    public Set<Integer> getWinningNumber() {
+        return winningNumber;
+    }
+
+    public List<Integer> getBonusNumber() {
+        return bonusNumber;
     }
 
 }

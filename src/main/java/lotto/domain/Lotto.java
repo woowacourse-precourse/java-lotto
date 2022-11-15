@@ -1,8 +1,8 @@
 package lotto.domain;
 
-import static lotto.domain.constant.IntValueConstant.LOTTO_MAXIMUM_NUMBER;
-import static lotto.domain.constant.IntValueConstant.LOTTO_MINIMUM_NUMBER;
-import static lotto.domain.constant.IntValueConstant.LOTTO_NUMBER_OF_DIGITS;
+import static lotto.domain.constant.LottoValueConstant.LOTTO_MAXIMUM_NUMBER;
+import static lotto.domain.constant.LottoValueConstant.LOTTO_MINIMUM_NUMBER;
+import static lotto.domain.constant.LottoValueConstant.LOTTO_NUMBER_OF_DIGITS;
 import static lotto.exception.ExceptionHandler.ILLEGAL_RANGE;
 import static lotto.exception.ExceptionHandler.INPUT_SIX_DIGITS;
 import static lotto.exception.ExceptionHandler.OVERLAP_NUMBER;
