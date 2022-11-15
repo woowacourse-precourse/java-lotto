@@ -2,7 +2,10 @@ package lotto;
 
 import constants.Rank;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class LottoRaffler {
 
@@ -10,23 +13,41 @@ public class LottoRaffler {
 
     private Integer bonusNumber = null;
 
+    private List<Rank> result = new ArrayList<>();
 
     public LottoRaffler(Integer[] winningNumbers, Integer bonusNumber) {
         this.winningNumbers = winningNumbers;
         this.bonusNumber = bonusNumber;
     }
 
-    public Rank raffle(List<Lotto> lottos ) {
+    public List<Rank> raffle(List<Lotto> lottos) {
+
         for (int i = 0; i < lottos.size(); i++) {
             List<Integer> lottoNumbers = lottos.get(i).getNumbers();
-            int i1 = 0;
+            int matchCount = 0;
+            boolean bonus = false;
             for (int j = 0; j < lottoNumbers.size(); j++) {
-                i1 += checkMatches(lottoNumbers.get(j));
+                matchCount += checkMatches(lottoNumbers.get(j));
+                bonus = checkBonus(lottoNumbers.get(j));
             }
-            System.out.println(Rank.getRank(i1));
-            return Rank.getRank(i1);
+            addRaffleList(matchCount);
+
+            if(matchCount==5&&bonus){
+                result.add(Rank.BONUS);
+            }
         }
-        return null;
+        return result;
+    }
+
+    public boolean checkBonus(int lottoNumber){
+        return bonusNumber == lottoNumber;
+    }
+
+    private void addRaffleList(int matchCount) {
+
+        if (Rank.getRank(matchCount) != null&&Rank.getRank(matchCount)!=Rank.FIVE) {
+            result.add(Rank.getRank(matchCount));
+        }
     }
 
 
@@ -35,7 +56,7 @@ public class LottoRaffler {
         int cnt = 0;
 
         for (int i = 0; i < winningNumbers.length; i++) {
-            if(winningNumbers[i]==lottoNumber){
+            if (winningNumbers[i] == lottoNumber) {
                 cnt++;
             }
         }
