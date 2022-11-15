@@ -3,7 +3,11 @@ package lotto;
 public class Application {
 
     public static void main(String[] args) {
-        LottoSystem.run();
+        try {
+            LottoSystem.run();
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+        }
     }
 
 }
