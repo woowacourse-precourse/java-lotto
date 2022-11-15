@@ -61,7 +61,7 @@ public class IOProcessor {
     }
 
     public static void printWinningStatistics(Map<String, Integer> winningInfo) {
-        System.out.println(Messages.STATISTICES_HEADER);
+        System.out.println(Messages.STATISTICES_HEADER.getMessage());
 
         for (String key : winningInfo.keySet()) {
             String bonusNumber = " ";
