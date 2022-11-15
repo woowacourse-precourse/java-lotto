@@ -15,7 +15,13 @@ public class WinningNumbers {
         this.winningNumbers = splitWinningNumbers(input);
     }
 
+    public void pickBonusNumber(String input){
+        int bonus=integerCheck(input);
+        isInRange(bonus);
+        isDuplicated(bonus);
+        this.bonusNumber=bonus;
 
+    }
 
     private void isDuplicated(int bonus) {
         if(winningNumbers.contains(bonus)){
