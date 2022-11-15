@@ -1,4 +1,5 @@
 package lotto.validation;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -6,7 +7,7 @@ import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 public class InputValidation {
-
+    
     public void validatePrice(String price) {
         if (!Pattern.matches("^[1-9][0-9]*0{3}$", price)) {
             throw new IllegalArgumentException();
@@ -33,12 +34,17 @@ public class InputValidation {
         }
     }
 
-    public void validateBonusNumber(String number) {
+    public void validateBonusNumber(String number, List<Integer> winningNumbers) {
         if (!Pattern.matches("^[0-9]{1,2}$", number)) {
             throw new IllegalArgumentException();
         }
 
-        if (Integer.parseInt(number) > 45) {
+        int bonusNumber = Integer.parseInt(number);
+        if (bonusNumber > 45) {
+            throw new IllegalArgumentException();
+        }
+
+        if (winningNumbers.contains(bonusNumber)) {
             throw new IllegalArgumentException();
         }
     }
