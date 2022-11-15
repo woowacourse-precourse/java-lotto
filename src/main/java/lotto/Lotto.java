@@ -7,7 +7,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import static Exception.ErrorMessage.*;
+import static exceptionTemp.ErrorMessage.*;
+
 
 public class Lotto {
     private final List<Integer> numbers;

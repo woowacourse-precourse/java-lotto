@@ -1,10 +1,10 @@
-package Game;
+package game;
 
-import OutputView.Output;
-import Utills.Calculator;
-import Utills.Earning;
-import Winning.WinningHistory;
-import Winning.WinningNumber;
+import outputView.Output;
+import utills.Calculator;
+import utills.Earning;
+import winning.WinningHistory;
+import winning.WinningNumber;
 import lotto.Lotto;
 
 import java.util.List;

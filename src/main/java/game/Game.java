@@ -1,7 +1,7 @@
-package Game;
+package game;
 
-import OutputView.Output;
-import Winning.WinningNumber;
+import outputView.Output;
+import winning.WinningNumber;
 import lotto.Lotto;
 
 import java.util.List;

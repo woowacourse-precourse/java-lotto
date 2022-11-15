@@ -1,4 +1,4 @@
-package Winning;
+package winning;
 
 public class WinningHistory {
 

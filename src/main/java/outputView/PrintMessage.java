@@ -1,4 +1,4 @@
-package OutputView;
+package outputView;
 
 public enum PrintMessage {
 

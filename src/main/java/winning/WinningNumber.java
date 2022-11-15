@@ -1,13 +1,12 @@
-package Winning;
+package winning;
 
-import OutputView.Output;
+import exceptionTemp.Invalidator;
+import outputView.Output;
 import camp.nextstep.edu.missionutils.Console;
 import lotto.Lotto;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import static Exception.Invalidator.isValidBonusNumber;
 
 public class WinningNumber {
 
@@ -40,6 +39,6 @@ public class WinningNumber {
     private int setBonusNumber() {
         Output.bonusMsg();
         String bonusNumber = Console.readLine();
-        return isValidBonusNumber(Integer.parseInt(bonusNumber), winningLotto);
+        return Invalidator.isValidBonusNumber(Integer.parseInt(bonusNumber), winningLotto);
     }
 }

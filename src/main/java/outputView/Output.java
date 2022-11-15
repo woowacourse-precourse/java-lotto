@@ -1,10 +1,10 @@
-package OutputView;
+package outputView;
 
 import lotto.Lotto;
 
 import java.util.List;
 
-import static OutputView.PrintMessage.*;
+import static outputView.PrintMessage.*;
 
 
 public class Output {

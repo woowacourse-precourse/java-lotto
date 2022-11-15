@@ -1,6 +1,6 @@
-package Utills;
+package utills;
 
-import Winning.WinningHistory;
+import winning.WinningHistory;
 
 public class Earning {
 
