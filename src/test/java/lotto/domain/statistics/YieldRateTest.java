@@ -1,5 +1,8 @@
 package lotto.domain.statistics;
 
+import static lotto.message.PrintMessage.YIELD_RATE_NEXT;
+import static lotto.message.PrintMessage.YIELD_RATE_PREVIOUS;
+import static lotto.view.YieldRateMessage.makeYieldRateMessage;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import org.junit.jupiter.api.Test;
@@ -18,10 +21,15 @@ class YieldRateTest {
 
     @ParameterizedTest
     @CsvSource({"10000, 10000, 100.0%"})
-    void 문자열_테스트(int calcAmount, long amountSum, String expected) {
-        YieldRate yieldRate = new YieldRate(calcAmount, amountSum);
+    void 문자열_테스트(int calcAmount, long amountSum, String expectRate) {
 
-        assertThat(yieldRate.toString()).isEqualTo(expected);
+        String expected = String.format("%s%s%s", YIELD_RATE_PREVIOUS.getMessage(), expectRate,
+                YIELD_RATE_NEXT.getMessage());
+        YieldRate yieldRate = new YieldRate(calcAmount, amountSum);
+        
+        String actual = makeYieldRateMessage(yieldRate).getMessage();
+
+        assertThat(actual).isEqualTo(expected);
     }
 
     @Test
