@@ -23,4 +23,12 @@ public class PaymentTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(ErrorMessage.INVALID_PURCHASE_PRICE.getMessage());
     }
+
+    @DisplayName("지불 가격이 0원이면 예외가 발생한다.")
+    @Test
+    void createPaymentByZero() {
+        assertThatThrownBy(() -> new Payment(0))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining(ErrorMessage.NOT_POSITIVE_INTEGER.getMessage());
+    }
 }
