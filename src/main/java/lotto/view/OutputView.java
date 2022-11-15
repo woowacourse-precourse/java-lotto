@@ -1,7 +1,7 @@
 package lotto.view;
 
-import lotto.Lotto;
-import lotto.Rank;
+import lotto.model.Lotto;
+import lotto.model.Rank;
 
 import java.util.*;
 

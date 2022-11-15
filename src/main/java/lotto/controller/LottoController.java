@@ -1,8 +1,8 @@
 package lotto.controller;
 
-import lotto.Lotto;
-import lotto.Rank;
-import lotto.LottoGenerator;
+import lotto.model.Lotto;
+import lotto.model.Rank;
+import lotto.model.LottoGenerator;
 import lotto.view.InputView;
 import lotto.view.OutputView;
 
