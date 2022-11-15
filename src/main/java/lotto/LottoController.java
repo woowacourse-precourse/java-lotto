@@ -7,6 +7,7 @@ import java.util.*;
 
 public class LottoController {
     LottoView lottoView = new LottoView();
+    Prize[] prizes = Prize.values();
 
     public void run() {
         try {
@@ -18,7 +19,7 @@ public class LottoController {
             Lotto winNumber = getWinLottoNumber(inputWinNumber());
             lottoView.printBonusNumberQuestion();
             int bonusNumber = inputBonusNumber(winNumber);
-            Prize[] prizes = getStatistics(lottoList,winNumber,bonusNumber);
+            getStatistics(lottoList,winNumber,bonusNumber);
             lottoView.printStatistics(prizes);
             lottoView.printProfit(getProfit(prizes, NumberOfLotto * 1000));
         } catch (IllegalArgumentException e) {
@@ -130,14 +131,27 @@ public class LottoController {
         return true;
     }
 
-    public Prize[] getStatistics(List<Lotto> lottoList, Lotto winNumber, int bonusNumber) {
-        List<Integer> stats = new ArrayList<>();
-        Prize[] prizes = Prize.values();
-        for (Lotto i : lottoList) {
-            prizes = i.compareLotto(winNumber, bonusNumber);
+    public void compareLotto(Lotto number, Lotto winNumber, int bonusNumber) {
+        int index = 0;
+        Set<Integer> thisSet = new HashSet<>(number.getNumbers());
+        Set<Integer> win = new HashSet<>(winNumber.getNumbers());
+        Set<Integer> bonus = new HashSet<>(List.of(bonusNumber));
+        win.retainAll(thisSet);
+        if (win.size() == 5 && thisSet.retainAll(bonus)) {
+            index = 5;
         }
+        if (win.size() - 2 >= 0) {
+            index = win.size() - 2;
+        }
+        prizes[index].addCount();
+    }
 
-        return prizes;
+    public void getStatistics(List<Lotto> lottoList, Lotto winNumber, int bonusNumber) {
+        List<Integer> stats = new ArrayList<>();
+
+        for (Lotto lotto : lottoList) {
+            compareLotto(lotto, winNumber, bonusNumber);
+        }
     }
 
     public double getProfit(Prize[] prizes, int money) {
