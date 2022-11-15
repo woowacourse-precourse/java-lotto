@@ -1,6 +1,9 @@
 package lotto.domain;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 public class Lotto {
@@ -49,11 +52,11 @@ public class Lotto {
         return numbers;
     }
 
-    public void printSortedLotto() {
+    public List<Integer> sortAscendingLotto() {
         List<Integer> collect = numbers.stream()
-                                       .sorted()
-                                       .collect(Collectors.toList());
-        System.out.println(collect);
+                .sorted()
+                .collect(Collectors.toList());
+        return collect;
     }
 
     private void validateIsDuplicate(List<Integer> numbers) {

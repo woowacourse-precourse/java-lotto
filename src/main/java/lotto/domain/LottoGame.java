@@ -2,7 +2,10 @@ package lotto.domain;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 import static java.util.Arrays.asList;
 
@@ -35,7 +38,7 @@ public class LottoGame {
     public void printLotteries(int buyCount) {
         for (int i = 0; i < buyCount; i++) {
             Lotto createdLotto = lotteries.get(i);
-            createdLotto.printSortedLotto();
+            System.out.println(createdLotto.sortAscendingLotto());
         }
     }
 
