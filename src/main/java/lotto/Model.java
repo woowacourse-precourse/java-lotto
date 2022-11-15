@@ -74,10 +74,6 @@ public class Model {
         return arraylist;
     }
 
-    public static String[] SplitInput(String string) {
-        return string.split(",");
-    }
-
     public static List<Integer> MakeStringToListInteger(String[] strings) {
         try {
             List<Integer> result = new ArrayList<>();

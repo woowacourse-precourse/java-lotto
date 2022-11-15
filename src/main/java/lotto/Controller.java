@@ -94,7 +94,7 @@ public class Controller {
         View.OutputString("당첨 번호를 입력해 주세요.");
         String inputRealLottoNumber = View.Input();
         View.OutputString(inputRealLottoNumber);
-        String[] splittedRealLottoNumbers = Model.SplitInput(inputRealLottoNumber);
+        String[] splittedRealLottoNumbers = View.SplitInput(inputRealLottoNumber);
         List<Integer> realLottoNumbers = Model.MakeStringToListInteger(splittedRealLottoNumbers);
         realLottoNumbers = Model.SortArrayList(realLottoNumbers);
 

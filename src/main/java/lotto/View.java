@@ -11,6 +11,10 @@ public class View {
         return Console.readLine();
     }
 
+    public static String[] SplitInput(String string) {
+        return string.split(",");
+    }
+
     public static void OutputString(String message) {
         System.out.println(message);
     }
