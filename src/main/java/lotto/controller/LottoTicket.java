@@ -5,7 +5,7 @@ import lotto.shell.Amount;
 
 public class LottoTicket {
 
-    private int LottoTicket;
+    private final int LottoTicket;
 
     public LottoTicket() {
         LottoTicket = publishLottoTicket();

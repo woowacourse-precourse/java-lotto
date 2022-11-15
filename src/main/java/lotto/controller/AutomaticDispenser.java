@@ -2,6 +2,7 @@ package lotto.controller;
 
 
 import static camp.nextstep.edu.missionutils.Randoms.pickUniqueNumbersInRange;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -35,13 +36,12 @@ public class AutomaticDispenser {
 
         int lottoTickets = new LottoTicket().publishLottoTicket();
 
-        for ( int i = 0; i < lottoTickets; i ++){
+        for (int i = 0; i < lottoTickets; i++) {
             drawingMachine.put(lottoTickets, buildLottoList());
         }
 
         return drawingMachine;
     }
-
 
 
 }

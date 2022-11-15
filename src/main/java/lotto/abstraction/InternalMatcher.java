@@ -8,7 +8,6 @@ public interface InternalMatcher {
     int countMatcher();
 
 
-
     // 일치 여부 검사의 결과 반영
     int buildMatchCount();
 }

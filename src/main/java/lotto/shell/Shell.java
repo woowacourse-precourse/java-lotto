@@ -6,7 +6,7 @@ import lotto.abstraction.ShellInterface;
 // 사용자 입력 담당 책임
 public class Shell implements ShellInterface {
 
-    private String injection;
+    private final String injection;
 
     public Shell() {
         this.injection = Console.readLine();
@@ -49,7 +49,7 @@ public class Shell implements ShellInterface {
         boolean invalidValue = injection.replaceAll("[^0-9]", "").equals("");
 
         if (invalidValue) {
-            new Exception().invalidException();
+            new ShellException().invalidException();
         }
 
     }

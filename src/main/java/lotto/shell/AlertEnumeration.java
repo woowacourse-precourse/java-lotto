@@ -14,14 +14,14 @@ public enum AlertEnumeration {
     }
 
 
-
-
     public String getAmountEnumeration() {
         return String.valueOf(AMOUNT_EXCEPTION);
     }
+
     public String getInvalidEnumeration() {
         return String.valueOf(INVALID_EXCEPTION);
     }
+
     public String getSizeEnumeration() {
         return String.valueOf(SIZE_EXCEPTION);
     }

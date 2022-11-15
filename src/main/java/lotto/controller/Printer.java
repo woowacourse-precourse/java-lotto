@@ -2,15 +2,16 @@ package lotto.controller;
 
 
 import static java.lang.String.valueOf;
+
 import lotto.domain.MatchResult;
 import lotto.domain.YieldResult;
 
 // 전략 패턴 도전
 // 로또 결과 출력기
-public class Printer{
+public class Printer {
 
-    private String printMatchResult;
-    private String printYieldResult;
+    private final String printMatchResult;
+    private final String printYieldResult;
 
     public Printer() {
 

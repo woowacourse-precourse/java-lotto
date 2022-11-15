@@ -29,7 +29,7 @@ public class Matcher implements InternalMatcher {
 
     // 일치 여부 탐색 순회
     private boolean checkMatch() {
-        for (int i = 0; i < new MatchBuilder().ITERATOR_NUMBER(); i++){
+        for (int i = 0; i < new MatchBuilder().ITERATOR_NUMBER(); i++) {
 
             match = new MatchBuilder().
                     buildLottoNumbers().containsValue(

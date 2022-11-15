@@ -3,9 +3,9 @@ package lotto.domain;
 
 import java.util.List;
 import java.util.stream.Collectors;
-import lotto.shell.Exception;
+import lotto.shell.ShellException;
 
-public class Lotto  {
+public class Lotto {
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
@@ -15,7 +15,7 @@ public class Lotto  {
 
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
-            new Exception().sizeException();
+            new ShellException().sizeException();
         }
     }
 
@@ -24,7 +24,6 @@ public class Lotto  {
         return numbers.stream()
                 .collect(Collectors.toList());
     }
-
 
 
 }

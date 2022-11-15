@@ -5,13 +5,13 @@ import static lotto.shell.AlertEnumeration.INVALID_EXCEPTION;
 import static lotto.shell.AlertEnumeration.SIZE_EXCEPTION;
 
 // 예외 처리를 책임지는 기능
-public class Exception {
+public class ShellException {
 
-    private String alertAmount;
-    private String alertInvalid;
-    private String alertSize;
+    private final String alertAmount;
+    private final String alertInvalid;
+    private final String alertSize;
 
-    public Exception() {
+    public ShellException() {
         this.alertAmount = AMOUNT_EXCEPTION.getAmountEnumeration();
         this.alertInvalid = INVALID_EXCEPTION.getInvalidEnumeration();
         this.alertSize = SIZE_EXCEPTION.getSizeEnumeration();

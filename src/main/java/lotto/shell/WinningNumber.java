@@ -1,15 +1,13 @@
 package lotto.shell;
 
 import static java.lang.Character.getNumericValue;
-import static java.lang.Integer.parseInt;
-import static java.lang.Integer.valueOf;
 
 import java.util.List;
 
 // 추첨 번호를 저장하는 책임
-public class WinningNumber  {
+public class WinningNumber {
 
-    private List<Integer> winningNumberList;
+    private final List<Integer> winningNumberList;
 
     public WinningNumber() {
 

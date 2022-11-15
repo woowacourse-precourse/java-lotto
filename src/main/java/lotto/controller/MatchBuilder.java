@@ -6,9 +6,9 @@ import lotto.shell.WinningNumber;
 
 public class MatchBuilder {
 
+    final int ITERATOR_NUMBER;
     List<Integer> buildWinningNumbers;
     Map<Integer, List<Integer>> buildLottoNumbers;
-    final int ITERATOR_NUMBER;
 
 
     public MatchBuilder() {
@@ -18,7 +18,7 @@ public class MatchBuilder {
     }
 
     public List<Integer> buildWinningNumbers() {
-        return  new WinningNumber().buildWinningNumberList();
+        return new WinningNumber().buildWinningNumberList();
     }
 
     public Map<Integer, List<Integer>> buildLottoNumbers() {

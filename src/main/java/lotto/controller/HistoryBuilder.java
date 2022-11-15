@@ -15,9 +15,9 @@ public class HistoryBuilder implements BuildHistory {
     private final int matchCount;
     private final int winningAmount;
     private final double yield;
+    private final int bonusNumber;
     private String matchHistory;
     private String yieldHistory;
-    private final int bonusNumber;
 
     public HistoryBuilder() {
 
