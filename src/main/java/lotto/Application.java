@@ -11,7 +11,33 @@ import java.util.List;
 public class Application {
 
     public static void main(String[] args) {
-
+        String input;
+        List<Integer> winningNums = new ArrayList<>();
+        int buyMoney = 0;
+        int lottoNum = 0;
+        int bonusNum = 0;
+        long winningMoney = 0;
+        List<Lotto> lottos = new ArrayList<>();
+        System.out.println("구입금액을 입력해 주세요.");
+        input = Console.readLine();
+        buyMoney = Integer.parseInt(input);
+        checkPayMoney(buyMoney);
+        System.out.println(input + "개를 구매했습니다.");
+        lottoNum = checkPayMoney(buyMoney);
+        lottos = makeLottoNumber(lottos, lottoNum);
+        printLottos(lottos);
+        System.out.println("당첨 번호를 입력해 주세요.");
+        input = Console.readLine();
+        String[] inputs = input.split(",");
+        winningNums = stringToIntList(inputs);
+        Lotto winningLotto = new Lotto(winningNums);
+        System.out.println("보너스 번호를 입력해 주세요.");
+        input = Console.readLine();
+        bonusNum = Integer.parseInt(input);
+        System.out.println("당첨통계\n---");
+        printWinning(lottos, winningLotto, bonusNum);
+        long revenue = revenue(lottos, winningLotto, bonusNum);
+        revenuePrint(buyMoney, revenue);
     }
 
     // num개의 lotto를 발행하는 함수
