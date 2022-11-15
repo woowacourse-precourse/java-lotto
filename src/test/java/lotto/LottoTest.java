@@ -3,6 +3,8 @@ package lotto;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -60,6 +62,20 @@ class LottoTest {
     void buyLotto() {
         assertThat(service.buyLotto(3).size()).isEqualTo(3);
         assertThat(service.buyLotto(5).size()).isEqualTo(5);
+    }
+
+    @DisplayName("로또 리스트, 당첨 리스트와 보너스 번호로 당첨 개수 연산하여 반환한다.")
+    @Test
+    void getMatches() {
+        List<Lotto> lottos = new ArrayList<>();
+        lottos.add(new Lotto(Arrays.asList(1,2,3,4,5,6)));
+        lottos.add(new Lotto(Arrays.asList(5,6,2,8,9,10)));
+        lottos.add(new Lotto(Arrays.asList(23,25,27,29,31,33)));
+
+        assertThat(service.getMatches(lottos, new ArrayList<>(Arrays.asList(30,32,34,36,37,38)), 12))
+                .isEqualTo(new ArrayList<>(Arrays.asList(0,0,0,0,0)));
+        assertThat(service.getMatches(lottos, new ArrayList<>(Arrays.asList(1,2,3,4,5,6)), 10))
+                .isEqualTo(new ArrayList<>(Arrays.asList(1,0,0,0,1)));
     }
 
 
