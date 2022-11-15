@@ -1,6 +1,6 @@
 package ui;
 
-public enum Ui {
+public enum UiText {
     ENTER_PURCHASE_AMOUNT("구입 금액을 입력해주세요."),
     BOUGHT_NUM(" 개를 구매했습니다."),
     ENTER_WINNING_NUMBER("당첨 번호를 입력해주세요."),
@@ -15,7 +15,7 @@ public enum Ui {
 
     private final String txt;
 
-    Ui(String txt) {
+    UiText(String txt) {
         this.txt = txt;
     }
 
