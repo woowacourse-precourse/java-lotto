@@ -15,11 +15,11 @@ public class Lotto {
         return numbers;
     }
 
-    public int getNumber(int i){
+    public int getNumber(int i) {
         return numbers.get(i);
     }
 
-    public int getSize(){
+    public int getSize() {
         return numbers.size();
     }
 }

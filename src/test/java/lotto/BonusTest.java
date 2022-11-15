@@ -13,7 +13,7 @@ class BonusTest {
     @Test
     void createBonusByNotNumber() {
         assertThatThrownBy(() ->
-                BonusNumber.exceptionBonusNumber("a",List.of(1, 2, 3, 4, 5, 6)))
+                BonusNumber.exceptionBonusNumber("a", List.of(1, 2, 3, 4, 5, 6)))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -21,7 +21,7 @@ class BonusTest {
     @Test
     void createBonusByOverRange() {
         assertThatThrownBy(() ->
-                BonusNumber.exceptionBonusNumber("77",List.of(1, 2, 3, 4, 5, 6)))
+                BonusNumber.exceptionBonusNumber("77", List.of(1, 2, 3, 4, 5, 6)))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -29,7 +29,7 @@ class BonusTest {
     @Test
     void createBonusByDuplicateWithWinNumber() {
         assertThatThrownBy(() ->
-                BonusNumber.exceptionBonusNumber("3",List.of(1, 2, 3, 4, 5, 6)))
+                BonusNumber.exceptionBonusNumber("3", List.of(1, 2, 3, 4, 5, 6)))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
