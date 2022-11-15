@@ -43,11 +43,12 @@ public enum WinningHistory {
     }
 
     private boolean isRankData(WinningHistory rankData, int matchNumbers, boolean matchBonus) {
-        if (isSecondPrize(rankData) && isSameSecondPrizeData(matchNumbers, matchBonus)) {
-            return matchNumberWithoutBonus(rankData.matchNumbers, matchNumbers);
-        } else if (!rankData.isSecondPrize(rankData) && !rankData.isSameSecondPrizeData(matchNumbers, matchBonus)) {
-            return matchBonus && matchNumberWithBonus(this.matchNumbers, matchNumbers)
-                    || matchNumberWithoutBonus(this.matchNumbers, matchNumbers);
+        if (isSecondPrize(rankData) && matchBonus) {
+            return isMatchNumber(rankData.matchNumbers, matchNumbers);
+        } else if (isThirdPrize(rankData) && !matchBonus) {
+           return isMatchNumber(rankData.matchNumbers, matchNumbers);
+        } else if (!isSecondPrize(rankData) && !isThirdPrize(rankData)) {
+            return isMatchNumber(rankData.matchNumbers, matchNumbers);
         }
 
         return false;
@@ -57,8 +58,12 @@ public enum WinningHistory {
         return rankData == SECOND_PRIZE;
     }
 
-    private boolean isSameSecondPrizeData(int matchNumbers, boolean matchBonus) {
-        return matchBonus && (matchNumbers == SECOND_PRIZE.getMatchNumbers());
+    private boolean isThirdPrize(WinningHistory rankData) {
+        return rankData == THIRD_PRIZE;
+    }
+
+    private boolean isMatchNumber(int rankMatchNumbers, int matchNumbers) {
+        return rankMatchNumbers == matchNumbers;
     }
 
     private boolean matchNumberWithBonus(int winningMatchNumbers, int matchNumbers) {

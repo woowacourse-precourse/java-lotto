@@ -24,10 +24,10 @@ class WinningHistoryTest {
         assertThat(WinningHistory.getWinningHistoryType(5, false)).isEqualTo(WinningHistory.THIRD_PRIZE);
     }
 
-    @DisplayName("당첨 번호 개수와 보너스 당첨 여부에 따른 등수 - 4개 일치, 보너스 일치 -> 3등 당첨")
+    @DisplayName("당첨 번호 개수와 보너스 당첨 여부에 따른 등수 - 4개 일치, 보너스 일치 -> 4등 당첨")
     @Test
     void checkFourMatchWithBonus() {
-        assertThat(WinningHistory.getWinningHistoryType(4, true)).isEqualTo(WinningHistory.THIRD_PRIZE);
+        assertThat(WinningHistory.getWinningHistoryType(4, true)).isEqualTo(WinningHistory.FOURTH_PRIZE);
     }
 
     @DisplayName("당첨 번호 개수와 보너스 당첨 여부에 따른 등수 - 4개 일치 -> 4등 당첨")
@@ -36,10 +36,10 @@ class WinningHistoryTest {
         assertThat(WinningHistory.getWinningHistoryType(4, false)).isEqualTo(WinningHistory.FOURTH_PRIZE);
     }
 
-    @DisplayName("당첨 번호 개수와 보너스 당첨 여부에 따른 등수 - 3개 일치, 보너스 일치 -> 4등 당첨")
+    @DisplayName("당첨 번호 개수와 보너스 당첨 여부에 따른 등수 - 3개 일치, 보너스 일치 -> 5등 당첨")
     @Test
     void checkThreeMatchWithBonus() {
-        assertThat(WinningHistory.getWinningHistoryType(3, true)).isEqualTo(WinningHistory.FOURTH_PRIZE);
+        assertThat(WinningHistory.getWinningHistoryType(3, true)).isEqualTo(WinningHistory.FIFTH_PRIZE);
     }
 
     @DisplayName("당첨 번호 개수와 보너스 당첨 여부에 따른 등수 - 3개 일치 -> 5등 당첨")
@@ -48,10 +48,10 @@ class WinningHistoryTest {
         assertThat(WinningHistory.getWinningHistoryType(3, false)).isEqualTo(WinningHistory.FIFTH_PRIZE);
     }
 
-    @DisplayName("당첨 번호 개수와 보너스 당첨 여부에 따른 등수 - 2개 일치, 보너스 일치 -> 5등 당첨")
+    @DisplayName("당첨 번호 개수와 보너스 당첨 여부에 따른 등수 - 2개 일치, 보너스 일치 -> 낙첨")
     @Test
     void checkTwoMatchWithBonus() {
-        assertThat(WinningHistory.getWinningHistoryType(2, true)).isEqualTo(WinningHistory.FIFTH_PRIZE);
+        assertThat(WinningHistory.getWinningHistoryType(2, true)).isEqualTo(WinningHistory.BLANK);
     }
 
     @DisplayName("당첨 번호 개수와 보너스 당첨 여부에 따른 등수 - 2개 일치 -> 낙첨")
