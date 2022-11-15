@@ -55,5 +55,20 @@ public class BuyLotto {
         return numberOfMatch;
     }
 
-    
+    private static void putRank(List<Integer> oneLottoNumbers,int bonusNumber,int numberOfMatch,Map <Integer,Integer> winStatistics){
+        int rank = oneLottoNumbers.size()-numberOfMatch + 1;
+        if(rank == 1){
+            winStatistics.put(rank,winStatistics.get(rank)+1);
+        }
+        if(rank == 2){
+            if(oneLottoNumbers.contains(bonusNumber)){
+                winStatistics.put(rank,winStatistics.get(rank)+1);
+                return;
+            }
+            winStatistics.put(rank+1,winStatistics.get(rank)+1);
+        }
+        if(rank > 3){
+            winStatistics.put(rank+1,winStatistics.get(rank)+1);
+        }
+    }
 }
