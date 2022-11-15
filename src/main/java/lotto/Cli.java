@@ -10,6 +10,7 @@ import static lotto.response.Message.INPUT_WINNING_NUMBER;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
+import lotto.domain.Lotto;
 
 /** Cli class to interact with user. */
 public class Cli {

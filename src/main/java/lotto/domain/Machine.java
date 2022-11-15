@@ -1,4 +1,4 @@
-package lotto;
+package lotto.domain;
 
 import static lotto.Cli.inputBonusNumber;
 import static lotto.Cli.inputPurchaseAmount;
