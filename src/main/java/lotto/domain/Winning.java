@@ -5,24 +5,19 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Winning {
-    public int win1 = 0;
-    public int win2 = 0;
-    public int win3 = 0;
-    public int win4 = 0;
-    public int win5 = 0;
 
     public void score(List<Lotto> userNum, List<Integer> winNum, int bonusNum) {
         for (int i=0; i<userNum.size(); i++) {
             int count = sameCount(userNum.get(i), winNum);
 
             switch (count) {
-                case 3 : win5++;
+                case 3 : Rank.WIN5.addMatchCount();
                 break;
-                case 4 : win4++;
+                case 4 : Rank.WIN4.addMatchCount();
                 break;
                 case 5 : bonusCount(userNum.get(i), bonusNum);
                 break;
-                case 6 : win1++;
+                case 6 : Rank.WIN1.addMatchCount();
                 break;
                 default: break;
             }
@@ -43,18 +38,21 @@ public class Winning {
 
     public void bonusCount(Lotto userNum, int bonusNum) {
         if (userNum.getNumbers().contains(bonusNum)) {
-            win2++;
+            Rank.WIN2.addMatchCount();
             return;
         }
 
-        win3++;
+        Rank.WIN3.addMatchCount();
     }
 
-    public double rate(List<Integer> score, int amount) {
+    public double rate(int amount) {
         double sum = 0;
 
-        sum = (score.get(0) * 5000) + (score.get(1) * 50000) + (score.get(2) * 1500000) + (score.get(3) * 30000000)
-                + (score.get(4) * 2000000000);
+        sum = (Rank.WIN5.getMatchCount() * 5000)
+                +(Rank.WIN4.getMatchCount() * 50000)
+                +(Rank.WIN3.getMatchCount() * 1500000)
+                +(Rank.WIN2.getMatchCount() * 30000000)
+                +(Rank.WIN1.getMatchCount() * 2000000000);
 
         double rate = (sum / amount) * 100;
 
@@ -83,17 +81,5 @@ public class Winning {
         if (num<0 || num>46) {
             throw new IllegalArgumentException("[ERROR] 1 ~ 46의 숫자만 입력해 주세요.");
         }
-    }
-
-    public List<Integer> score() {
-        List<Integer> score = new ArrayList<>();
-
-        score.add(win5);
-        score.add(win4);
-        score.add(win3);
-        score.add(win2);
-        score.add(win1);
-
-        return score;
     }
 }

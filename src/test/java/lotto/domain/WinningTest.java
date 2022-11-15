@@ -1,5 +1,6 @@
 package lotto.domain;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -20,7 +21,7 @@ class WinningTest {
         Lotto lotto = new Lotto(Arrays.asList(1,2,3,4,5,6));
         list.add(lotto);
         winning.score(list, Arrays.asList(1,2,3,4,5,8), 6);
-        assertThat(winning.win2).isEqualTo(1);
+        assertThat(Rank.WIN2.getMatchCount()).isEqualTo(1);
     }
 
     @DisplayName("같은 숫자 갯수 테스트")
@@ -38,7 +39,7 @@ class WinningTest {
         Winning winning = new Winning();
         Lotto lotto = new Lotto(Arrays.asList(1,2,3,4,5,6));
         winning.bonusCount(lotto, 6);
-        assertThat(winning.win2).isEqualTo(1);
+        assertThat(Rank.WIN2.getMatchCount()).isEqualTo(2);
     }
 
     @DisplayName("보너스가 틀리면 3등 증가")
@@ -47,14 +48,15 @@ class WinningTest {
         Winning winning = new Winning();
         Lotto lotto = new Lotto(Arrays.asList(1,2,3,4,5,6));
         winning.bonusCount(lotto, 7);
-        assertThat(winning.win3).isEqualTo(1);
+        assertThat(Rank.WIN3.getMatchCount()).isEqualTo(1);
     }
 
     @DisplayName("수익률 계산 테스트")
     @Test
     void rate() {
         Winning winning = new Winning();
-        double rate = winning.rate(Arrays.asList(1,0,0,0,0), 8000);
+        Rank.WIN5.addMatchCount();
+        double rate = winning.rate(8000);
         assertThat(rate).isEqualTo(62.5);
     }
 

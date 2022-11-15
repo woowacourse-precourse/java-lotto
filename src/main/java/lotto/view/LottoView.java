@@ -64,11 +64,11 @@ public class LottoView {
     public void winView(Winning winning, double rate) {
         System.out.println("당첨 통계");
         System.out.println("---");
-        System.out.println(Rank.WIN5.getCount() +"개 일치 (" +Rank.WIN5.getPrice() +"원) - " +winning.win5 +"개");
-        System.out.println(Rank.WIN4.getCount() +"개 일치 (" +Rank.WIN4.getPrice() +"원) - " +winning.win4 +"개");
-        System.out.println(Rank.WIN3.getCount() +"개 일치 (" +Rank.WIN3.getPrice() +"원) - " +winning.win3 +"개");
-        System.out.println(Rank.WIN2.getCount() +"개 일치, 보너스 볼 일치 (" +Rank.WIN2.getPrice() +"원) - " +winning.win2 +"개");
-        System.out.println(Rank.WIN1.getCount() +"개 일치 (" +Rank.WIN1.getPrice() +"원) - " +winning.win1 +"개");
+        System.out.println(Rank.WIN5.getCount() +"개 일치 (" +Rank.WIN5.getPrice() +"원) - " +Rank.WIN5.getMatchCount() +"개");
+        System.out.println(Rank.WIN4.getCount() +"개 일치 (" +Rank.WIN4.getPrice() +"원) - " +Rank.WIN4.getMatchCount() +"개");
+        System.out.println(Rank.WIN3.getCount() +"개 일치 (" +Rank.WIN3.getPrice() +"원) - " +Rank.WIN3.getMatchCount() +"개");
+        System.out.println(Rank.WIN2.getCount() +"개 일치, 보너스 볼 일치 (" +Rank.WIN2.getPrice() +"원) - " +Rank.WIN2.getMatchCount() +"개");
+        System.out.println(Rank.WIN1.getCount() +"개 일치 (" +Rank.WIN1.getPrice() +"원) - " +Rank.WIN1.getMatchCount() +"개");
         System.out.println("총 수익률은 " +rate +"%입니다.");
     }
 }

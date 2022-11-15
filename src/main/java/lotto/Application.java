@@ -30,9 +30,7 @@ public class Application {
 
         winning.score(list, lotto.getNumbers(), user.getBonusNum());
 
-        List<Integer> score = winning.score();
-
-        double rate = winning.rate(score, number * 1000);
+        double rate = winning.rate(number * 1000);
 
         System.out.println();
 
