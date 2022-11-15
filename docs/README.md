@@ -67,21 +67,21 @@ public class Lotto {
 
 ####__4-1. bonusAgreement (보너스 번호 대조)__
 
-+ bonusNum, lottoRandomNum 전달 받아서 bonusCount return
++ bonusNum, lottoRandomNum 전달 return
 
 ####__4-2. agreementLotto (로또 당첨 등수 리턴)__
 
 + agreementCount -> 등수 리턴
 
-####__5. prizeMoney (int lottoStart) - (당첨금 출력)__
+####~~5. prizeMoney (int lottoStart) - (당첨금 출력)~~
 
-+ lottoStart 등수에 따른 당첨금 출력
+~~+ lottoStart 등수에 따른 당첨금 출력~~
 
-> - 1등 - 2,000,000,000원
-> - 2등 - 30,000,000원
-> - 3등 - 1,500,000원
-> - 4등 - 50,000원
-> - 5등 - 5,000원
+~~> - 1등 - 2,000,000,000원~~
+~~> - 2등 - 30,000,000원~~
+~~> - 3등 - 1,500,000원~~
+~~> - 4등 - 50,000원~~
+~~> - 5등 - 5,000원~~
 
 ####__6. buyLotto (로또 구입)__
 
@@ -114,9 +114,9 @@ public class Lotto {
 
 	총 수익률은 12.5% 입니다.
 
-####__9. lottoEnd (로또 게임 종료)__
+####~~9. lottoEnd (로또 게임 종료)~~
 
-+ 게임 종료
+~~+ 게임 종료~~
 
 ---------------------------------------------------------------------
 
