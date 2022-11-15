@@ -35,4 +35,18 @@ class LottoTest {
         //then
         assertThat(calcMatchCount).isEqualTo(6);
     }
+    @DisplayName("로또 맞춘 해당 개수의 총 개수 테스트")
+    @Test
+    void matchItemCnt() {
+        //given
+        Lotto lotto =  new Lotto(List.of(1, 2, 3, 4, 5, 6));
+        List<Map<Integer, List<Integer>>> result = new ArrayList<>();
+        Map<Integer, List<Integer>> mapResult = new HashMap<>();
+        mapResult.put(6, List.of(1, 2, 3, 4, 5, 6));
+        result.add(mapResult);
+        //when
+        int matchItemCount = lotto.matchItemCount(result, 0, 6);
+        //then
+        assertThat(matchItemCount).isEqualTo(1);
+    }
 }
