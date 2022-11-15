@@ -6,24 +6,25 @@ import lotto.enums.Reward;
 
 import java.util.List;
 
+import static lotto.enums.Out.*;
+
 public class Output {
     public void buy_lottery(){
-
-        System.out.println(Out.BUY_LOTTERY.getOutput());
+        System.out.println(BUY_LOTTERY.getOutput());
     }
     public void print_buy_lottery(int buy){
-        System.out.printf(Out.PRINT_BUY_LOTTERY.getOutput()+"%n", buy);
+        System.out.printf(PRINT_BUY_LOTTERY.getOutput()+"%n", buy);
     }
-    public void print_lottery(User user){ //TODO: 복권 갯수 마다 출력
+    public void print_lottery(User user){
         for(List<Integer> lottery : user.getLottery_nums()){
             System.out.println(lottery);
         }
     }
     public void win_lottery_number(){
-        System.out.println(Out.WIN_LOTTERY_NUMBER.getOutput());
+        System.out.println(WIN_LOTTERY_NUMBER.getOutput());
     }
     public void bonus_lottery_number(){
-        System.out.println(Out.BONUS_LOTTERY_NUMBER.getOutput());
+        System.out.println(BONUS_LOTTERY_NUMBER.getOutput());
     }
     public void print_result(List<Integer> result) {
         for(Reward reward : Reward.values()){
@@ -32,7 +33,7 @@ public class Output {
     }
 
     public void print_revenue(Float revenue){
-        System.out.printf(Out.YIELD.getOutput(), revenue);
+        System.out.printf(YIELD.getOutput(), revenue);
     }
 
     public static void main(String[] args)  {
