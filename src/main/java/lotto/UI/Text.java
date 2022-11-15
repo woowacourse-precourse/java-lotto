@@ -7,7 +7,7 @@ public enum Text {
     BONUS_NUMBER_INPUT("보너스 번호를 입력해 주세요."),
     WINNING_STATISTICS_TITLE("당첨 통계\n---"),
     WINNING_STATISTICS_DETAIL("%d개 일치 (%s원) - %d개\n"),
-    PROFIT_RATE("총 수익률은 %.1f입니다.");
+    PROFIT_RATE("총 수익률은 %.1f%%입니다.\n");
 
     private String message;
     Text (String message){

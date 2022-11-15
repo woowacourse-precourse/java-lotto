@@ -17,6 +17,6 @@ class ViewTest {
         view.printProfitRate(66.66666);
         OutputStream out = new ByteArrayOutputStream();
         System.setOut(new PrintStream(out));
-        assertThat(out).toString().contains("66.7%");
+        assertThat(out).toString().contains("66.7%%");
     }
 }
