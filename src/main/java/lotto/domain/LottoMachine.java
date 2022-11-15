@@ -6,8 +6,6 @@ import java.util.*;
 
 public class LottoMachine {
 
-    InputAmountValidator validator = InputAmountValidator.getInstance();
-
     private List<Integer> generateLottoNumbers(int startFrom, int endTo, int size) {
         HashSet<Integer> numberSet = new HashSet<Integer>(Randoms.pickUniqueNumbersInRange(startFrom, endTo, size));
         List<Integer> numbers = new ArrayList<Integer>(numberSet);
@@ -15,8 +13,13 @@ public class LottoMachine {
         return numbers;
     }
 
+    private boolean isValidUnit(int money) {
+        if (Math.floorMod(money, LottoConstant.PRICE.getValue()) == 0) return true;
+        return false;
+    }
+
     private int countPurchaseQuantity(int money) {
-        if (!validator.isValidUnit(money)) {
+        if (!isValidUnit(money)) {
             System.out.println(ErrorMessage.INVALID_PURCHASE_UNIT.getMessage());
             throw new IllegalArgumentException();
         }
