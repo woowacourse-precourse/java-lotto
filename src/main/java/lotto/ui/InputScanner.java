@@ -71,11 +71,13 @@ public class InputScanner {
         }
         if (Collections.min(winningNumbers) < 1 || Collections.max(winningNumbers) > 45) {
             System.err.println("[ERROR] 1부터 45까지의 범위 내에서 입력가능합니다.");
+            throw new IllegalArgumentException();
         }
         return winningNumbers;
     }
 
-    private List<Integer> sortWinningNumbers(List<Integer> inputNumbers) {
+    private List<Integer> sortWinningNumbers(List<Integer> inputNumbers)
+    {
         Collections.sort(inputNumbers);
         return inputNumbers;
     }
