@@ -1,4 +1,6 @@
-package lotto;
+package lotto.model;
+
+import lotto.model.Lotto;
 
 public class PrizeLotto {
     Lotto prizeLotto;

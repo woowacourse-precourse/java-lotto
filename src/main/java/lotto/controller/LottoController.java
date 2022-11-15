@@ -1,13 +1,12 @@
 package lotto.controller;
 
 import camp.nextstep.edu.missionutils.Randoms;
-import lotto.Lotto;
-import lotto.MyLottoList;
-import lotto.MyPrize;
-import lotto.PrizeLotto;
+import lotto.model.Lotto;
+import lotto.model.MyLottoList;
+import lotto.model.MyPrize;
+import lotto.model.PrizeLotto;
 import lotto.constant.LottoInfo;
 import lotto.constant.RankInfo;
-import lotto.view.LottoView;
 
 import java.util.ArrayList;
 import java.util.Collections;

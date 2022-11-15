@@ -1,8 +1,8 @@
 package lotto.controller;
 
-import lotto.MyLottoList;
-import lotto.MyPrize;
-import lotto.PrizeLotto;
+import lotto.model.MyLottoList;
+import lotto.model.MyPrize;
+import lotto.model.PrizeLotto;
 import lotto.view.AppView;
 import lotto.view.LottoView;
 

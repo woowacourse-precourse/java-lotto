@@ -1,6 +1,7 @@
-package lotto;
+package lotto.model;
 
 import lotto.constant.LottoInfo;
+import lotto.model.Lotto;
 
 import java.util.List;
 

@@ -1,8 +1,8 @@
 package lotto.view;
 
-import lotto.Lotto;
-import lotto.MyLottoList;
-import lotto.MyPrize;
+import lotto.model.Lotto;
+import lotto.model.MyLottoList;
+import lotto.model.MyPrize;
 import lotto.constant.RankInfo;
 import lotto.controller.LottoController;
 
