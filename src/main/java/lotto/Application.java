@@ -46,11 +46,11 @@ public class Application {
         System.out.println(String.format("5개 일치 (1,500,000원) - %.0f개", match[2]));
         System.out.println(String.format("5개 일치, 보너스 볼 일치 (30,000,000원) - %.0f개", match[3]));
         System.out.println(String.format("6개 일치 (2,000,000,000원) - %.0f개", match[4]));
-        System.out.println(String.format("총 수익률은 %.1f%%입니다.", sum/Float.valueOf(price) * 100));
+        System.out.println(String.format("총 수익률은 %.1f%%입니다.", sum / Float.valueOf(price) * 100));
 
     }
 
-    public enum matching{
+    public enum matching {
         three(0), four(1), five(2), fiveAndBonus(3), six(4), none(5);
 
         private final int value;
@@ -93,7 +93,7 @@ public class Application {
             return "ERROR";
 //            throw new IllegalArgumentException("[ERROR] 숫자 변환이 불가능한 경우");
         }
-        if (Integer.valueOf(price)%1000 != 0) {
+        if (Integer.valueOf(price) % 1000 != 0) {
             System.out.println("[ERROR] 1000으로 나누어 떨어지지 않는 경우");
             return "ERROR";
 //            throw new IllegalArgumentException("[ERROR] 1000으로 나누어 떨어지지 않는 경우");
@@ -117,7 +117,7 @@ public class Application {
 
     public static List<Lotto> getLottoList(Integer price) {
 
-        Integer count = Integer.valueOf(price)/1000;
+        Integer count = Integer.valueOf(price) / 1000;
         System.out.println(count + "개를 구매했습니다.");
         List<Lotto> randomNumsList = new ArrayList<>();
         for (int i = 0; i < count; i++) {
