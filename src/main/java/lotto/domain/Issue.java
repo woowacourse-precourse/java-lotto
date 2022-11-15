@@ -6,8 +6,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Issue {
-    List<Lotto> history;
-    int amount;
+    private List<Lotto> history;
+    private int amount;
     public Issue(int money){
         history = new ArrayList<>();
         amount = amount(money);
