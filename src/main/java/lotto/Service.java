@@ -8,6 +8,7 @@ import java.util.Collections;
 import java.util.List;
 
 public class Service {
+    private final List<Integer> winningNumbers = new ArrayList<>();
 
     // 구매할 금액 계산
     public int getPurchaseAmount() {
@@ -30,7 +31,6 @@ public class Service {
         for (int i = 0; i < purchaseNum; i++) {
             List<Integer> lotto = Randoms.pickUniqueNumbersInRange(1, 45, 6);
             Lotto lottoValidate = new Lotto(lotto);
-            Collections.sort(lotto);
             System.out.println(lotto);
             lottoNumbers.add(lotto);
         }
@@ -40,7 +40,6 @@ public class Service {
 
     // 당첨 번호를 입력받는다.
     public List<Integer> getWinningNumber() {
-        List<Integer> winningNumbers = new ArrayList<>();
         String input = Console.readLine();
 
         if (!input.contains(",")) {
@@ -50,10 +49,46 @@ public class Service {
             winningNumbers.add(Integer.valueOf(number));
         }
         if (winningNumbers.size() != 6) {
-            throw new IllegalArgumentException(ExceptionCode.WINNING_INVALID.getMessage());
+            throw new IllegalArgumentException(ExceptionCode.LENGTH_ERROR.getMessage());
         }
 
         return winningNumbers;
     }
 
+    public int getBonusInput() {
+        int bonusNumber = Integer.parseInt(Console.readLine());
+
+        if (bonusNumber < 1 || bonusNumber > 45) {
+            throw new IllegalArgumentException(ExceptionCode.NUMBER_RANGE.getMessage());
+        }
+        if (winningNumbers.contains(bonusNumber)) {
+            throw new IllegalArgumentException(ExceptionCode.DUPLICATION_ERROR.getMessage());
+        }
+
+        return bonusNumber;
+    }
+
+    public Integer[] calculatorWinner(List<List<Integer>> lottoNumbers, List<Integer> winningNumber, int bonusNumber) {
+        Integer[] winStatistics = { 0,0,0,0,0 };
+        for (List<Integer> lottoNumber : lottoNumbers) {
+            int grade = correctNumber(lottoNumber, winningNumber);
+            if (grade >= 3) {
+                winStatistics[grade-3]++;
+            }
+            if (grade == 5 && lottoNumber.contains(bonusNumber)) {
+                winStatistics[grade-3]--;
+                winStatistics[grade-2]++;
+            }
+        }
+        return winStatistics;
+    }
+    private int correctNumber(List<Integer> lottoNumber, List<Integer> winningNumber) {
+        int grade = 0;
+        for (Integer winNumber : winningNumber) {
+            if (lottoNumber.contains(winNumber)) {
+                grade++;
+            }
+        }
+        return grade;
+    }
 }
