@@ -27,8 +27,28 @@ public class LottoHeadOffice {
     private void inputBonusNum() {
         System.out.println("보너스 번호를 입력해 주세요.");
         String s = Console.readLine();
-        // validate 검사 (입력형식, winningnum이랑 중복되지 않는지)
+
+        validateBonusNum(s);
+
         this.bonusNum = s.charAt(0);
+    }
+
+    private void validateBonusNum(String s) {
+        // 숫자가 아닌 문자가 입력되었을 때
+        char[] arrCh = s.toCharArray();
+        for (char ch : arrCh) {
+            if (!Character.isDigit(ch))
+                throw new IllegalArgumentException();
+        }
+
+        // 숫자 범위가 1~45가 아닐 때
+        int bonusNum = Integer.parseInt(s);
+        if (bonusNum < 1 || 45 < bonusNum)
+            throw new IllegalArgumentException();
+
+        // winningNum과 중복되지 않는지
+        if (winningNum.contains(bonusNum))
+            throw new IllegalArgumentException();
     }
 
     public List<Integer> getWinningNum() {
