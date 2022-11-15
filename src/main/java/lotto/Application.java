@@ -12,5 +12,7 @@ public class Application {
             System.out.println(temp);
             System.out.println(temp.count());
         }
+        double ror = rank.calculateRateOfReturn(user.money);
+        System.out.println(String.format("%.1f", ror));
     }
 }

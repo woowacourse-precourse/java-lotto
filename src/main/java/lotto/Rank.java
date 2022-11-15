@@ -74,12 +74,12 @@ public class Rank {
         result.increaseCount();
     }
 
-    private double calculateRateOfReturn(int money) {
-        double rate = 0.0;
-        int sum = 0;
-
-
-        return rate;
+    public double calculateRateOfReturn(int money) {
+        double sum = 0;
+        for (Result result : Result.values()) {
+            sum += result.count() * result.price();
+        }
+        return (sum * 100) / money;
     }
 }
 
