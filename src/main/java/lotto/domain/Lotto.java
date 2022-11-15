@@ -43,12 +43,15 @@ public class Lotto {
                 correct++;
                 i++;
                 j++;
+                continue;
             }
             if (numbers.get(i) < awardLotto.getNumbers().get(j)) {
                 i++;
+                continue;
             }
             if (numbers.get(i) > awardLotto.getNumbers().get(j)) {
                 j++;
+                continue;
             }
         }
         return correct;
