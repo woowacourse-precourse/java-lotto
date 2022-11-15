@@ -4,6 +4,7 @@ import lotto.domain.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.MethodSource;
 
 import java.util.*;
@@ -18,7 +19,7 @@ class StatisticsServiceTest {
 
     @DisplayName("통계 계산을 확인한다., 각 로또의 등수를 계산한다.")
     @ParameterizedTest
-    @MethodSource("generatedData")
+    @MethodSource("generatedRankingData")
     void calculateRating(List<Integer> userNums, List<Integer> expect) {
         User user = setUpUser(List.of(userNums));
         Statistics result = statisticsService.calculateRating(user, winningLotto);
@@ -26,7 +27,16 @@ class StatisticsServiceTest {
         assertThat(result).usingRecursiveComparison().isEqualTo(expected);
     }
 
-    static Stream<Arguments> generatedData() {
+    @DisplayName("몇개의 숫자가 일치하는지 확인한다.")
+    @ParameterizedTest
+    @MethodSource("generatedMatchingData")
+    void checkMatchCount(List<Integer> userNumbers, int expected) {
+        int result = statisticsService.matchCount(userNumbers, winningLotto.getNumbers());
+        assertThat(result).isEqualTo(expected);
+    }
+
+
+    static Stream<Arguments> generatedRankingData() {
         return Stream.of(
                 Arguments.of(Arrays.asList(1, 2, 3, 4, 5, 6), Arrays.asList(1, 0, 0, 0, 0, 0)),
                 Arguments.of(Arrays.asList(1, 2, 3, 4, 5, 7), Arrays.asList(0, 1, 0, 0, 0, 0)),
@@ -34,6 +44,15 @@ class StatisticsServiceTest {
                 Arguments.of(Arrays.asList(1, 2, 3, 4, 9, 10), Arrays.asList(0, 0, 0, 1, 0, 0)),
                 Arguments.of(Arrays.asList(1, 2, 3, 10, 11, 12), Arrays.asList(0, 0, 0, 0, 1, 0)),
                 Arguments.of(Arrays.asList(1, 2, 24, 34, 44, 45), Arrays.asList(0, 0, 0, 0, 0, 1))
+        );
+    }
+
+    static Stream<Arguments> generatedMatchingData() {
+        return Stream.of(
+                Arguments.of(Arrays.asList(1, 2, 3, 4, 5, 6), 6),
+                Arguments.of(Arrays.asList(1, 2, 3, 4, 5, 7), 5),
+                Arguments.of(Arrays.asList(1, 2, 3, 4, 7, 8), 4),
+                Arguments.of(Arrays.asList(1, 2, 3, 7, 8, 9), 3)
         );
     }
 
