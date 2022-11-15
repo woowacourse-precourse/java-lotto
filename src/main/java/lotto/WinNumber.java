@@ -1,6 +1,8 @@
 package lotto;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import static lotto.Error.*;
 
@@ -10,6 +12,7 @@ public class WinNumber {
     public WinNumber(List<Integer> winNumbers) {
         checkSize(winNumbers);
         checkRange(winNumbers);
+        checkDuplicated(winNumbers);
         this.winNumbers = winNumbers;
     }
 
@@ -24,6 +27,13 @@ public class WinNumber {
             if (i < 1 || i > 45) {
                 throw new IllegalArgumentException(WIN_NUMBER_RANGE_ERROR.getMessage());
             }
+        }
+    }
+
+    private void checkDuplicated(List<Integer> winNumbers) {
+        Set<Integer> set = new HashSet<>(winNumbers);
+        if (set.size() != winNumbers.size()) {
+            throw new IllegalArgumentException(WIN_NUMBER_DUPLICATED_ERROR.getMessage());
         }
     }
 }
