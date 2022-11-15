@@ -5,6 +5,14 @@ import static java.util.stream.Collectors.toList;
 import java.util.List;
 
 public class ValidationUtil {
+    public static boolean checkSize(List<Integer> numbers) {
+        return numbers.size() != 6;
+    }
+
+    public static boolean haveDuplicatedNumbers(List<Integer> numbers) {
+        return numbers.stream().distinct().count() != numbers.size();
+    }
+
     public static boolean isInteger(String input) {
         try {
             Integer.parseInt(input);
