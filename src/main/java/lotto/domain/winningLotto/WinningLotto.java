@@ -1,6 +1,6 @@
 package lotto.domain.winningLotto;
 
-import lotto.domain.Lotto;
+import lotto.domain.myLotto.Lotto;
 import lotto.setting.WinningEnum;
 import lotto.ui.Output;
 

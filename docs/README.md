@@ -51,6 +51,10 @@
     - ```getRank``` : 로또 당첨 등수 반환
     - ```countCorrectNumbers``` : 맞춘 로또 번호 개수 반환
     - ```isCorrectBonusNumber``` : 보너스 번호를 맞췄는지 확인
+    - ```validate``` : 구입한 로또 입력값 검증
+      - ```validateInputLottoNumberIsTotal``` : N개의 로또 번호 입력했는지 검증
+      - ```validateInputNumberIsBetween``` : 올바른 로또 번호 사이의 값을 입력했는지 검증
+      - ```validateInputNumberHaveSame``` : 중복된 숫자를 입력했는지 검증
 
 ### **WinningLotto 클래스(객체)**
 - #### **로또 번호와 보너스 번호**
@@ -65,6 +69,7 @@
       - ```validateInputLottoNumberIsTotal``` : N개의 로또 번호 입력했는지 검증
       - ```validateInputLottoNumberIsRightSeparator``` : 쉼표를 기준으로 숫자를 입력했는지 검증 
       - ```validateInputLottoNumberIsBetween``` : 로또 추첨 번호 사이의 숫자를 입력했는지 검증
+      - ```validateInputNumberHaveSame``` : 중복된 숫자를 입력했는지 검증
 
 ### **Output 클래스**
 - #### **출력 기능**

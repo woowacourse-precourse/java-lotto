@@ -2,10 +2,10 @@ package lotto.domain;
 
 import lotto.domain.money.Money;
 import lotto.domain.money.ValidateMoney;
+import lotto.domain.myLotto.Lotto;
 import lotto.domain.winningLotto.ValidateWinningLotto;
 import lotto.domain.winningLotto.WinningLotto;
 import lotto.setting.Setting;
-import lotto.setting.WinningEnum;
 import lotto.ui.Output;
 
 import java.util.*;
