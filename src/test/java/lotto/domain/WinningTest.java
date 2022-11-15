@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class WinningTest {
@@ -48,5 +49,14 @@ public class WinningTest {
     void createWinningByOverSize() {
         assertThatThrownBy(() -> new Winning("1,2,3,4,5,6,7"))
                 .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("당첨 번호 문자열을 정수형 리스트로 변환 성공")
+    @Test
+    void getSplitNumbers() {
+        String input = "1,2,3,4,5,6";
+        List<Integer> result = new Winning(input).getWinningNumbers();
+
+        assertThat(result).isEqualTo(List.of(1,2,3,4,5,6));
     }
 }
