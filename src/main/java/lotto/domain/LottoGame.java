@@ -20,8 +20,7 @@ public class LottoGame {
         List<Lotto> lottos = getLottosForMoney(lottoShop, money);
 
         WinningLottoNumberDto winningLottoNumberDto = getWinningLottoNumber(lottoShop);
-        RankAggregationDto rankAggregationDto = lottoRankAggregation.rankAggregation(lottos, winningLottoNumberDto);
-
+        RankAggregationDto rankAggregationDto = lottoRankAggregation.getRankAggregation(lottos, winningLottoNumberDto);
         WinningHistoryView.showRankAggregation(rankAggregationDto, money.getPayment());
     }
 
