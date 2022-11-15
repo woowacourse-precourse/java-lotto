@@ -4,6 +4,7 @@ import lotto.Lotto;
 import lotto.MyLottoList;
 import lotto.MyPrize;
 import lotto.constant.RankInfo;
+import lotto.controller.LottoController;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,16 +44,16 @@ public class LottoView {
     }
 
     public static void outputSynthesisEachRank(MyPrize myPrize) {
-        AppView.outputLine(RankInfo.FIFTH.getStatement() + myPrize.getRankArr()[5] + "개");
-        AppView.outputLine(RankInfo.FOURTH.getStatement() + myPrize.getRankArr()[4] + "개");
-        AppView.outputLine(RankInfo.THIRD.getStatement() + myPrize.getRankArr()[3] + "개");
-        AppView.outputLine(RankInfo.SECOND.getStatement() + myPrize.getRankArr()[2] + "개");
-        AppView.outputLine(RankInfo.FIRST.getStatement() + myPrize.getRankArr()[1] + "개");
+        AppView.outputLine(RankInfo.FIFTH.getStatement() + myPrize.getRankArr()[RankInfo.FIFTH.getRank()] + "개");
+        AppView.outputLine(RankInfo.FOURTH.getStatement() + myPrize.getRankArr()[RankInfo.FOURTH.getRank()] + "개");
+        AppView.outputLine(RankInfo.THIRD.getStatement() + myPrize.getRankArr()[RankInfo.THIRD.getRank()] + "개");
+        AppView.outputLine(RankInfo.SECOND.getStatement() + myPrize.getRankArr()[RankInfo.SECOND.getRank()] + "개");
+        AppView.outputLine(RankInfo.FIRST.getStatement() + myPrize.getRankArr()[RankInfo.FIRST.getRank()] + "개");
     }
 
 
     public static void outputProfitRate(long Amount, int money) {
-        double profit = (Amount / (double)money) * 100;
-        AppView.outputLine("총 수익률은 " + String.format("%.1f", profit) + "%입니다.");
+        String profit = LottoController.calculateProfitRate(Amount, money);
+        AppView.outputLine("총 수익률은 " + profit + "%입니다.");
     }
 }

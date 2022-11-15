@@ -23,13 +23,7 @@ public class LottoController {
     }
 
     public static MyPrize generateMyPrizeInstance(MyLottoList myLottoList, PrizeLotto prizeLotto) {
-        int [] rankArr = new int[LottoInfo.REWARD_RANK_COUNT+1];
-        for(Lotto lotto : myLottoList.getLotto()) {
-            int rank = calculateRankOneLotto(lotto, prizeLotto);
-            if(rank <= LottoInfo.REWARD_RANK_COUNT) {
-                rankArr[rank] = rankArr[rank] + 1;
-            }
-        }
+        int [] rankArr = traversalLottoList(myLottoList, prizeLotto);
         return new MyPrize(rankArr);
     }
 
@@ -68,6 +62,18 @@ public class LottoController {
         numbers = temp;
     }
 
+    public static int [] traversalLottoList(MyLottoList myLottoList, PrizeLotto prizeLotto) {
+        int [] rankArr = new int[LottoInfo.REWARD_RANK_COUNT+1];
+        for(Lotto lotto : myLottoList.getLotto()) {
+            int rank = calculateRankOneLotto(lotto, prizeLotto);
+            if(rank <= LottoInfo.REWARD_RANK_COUNT) {
+                rankArr[rank] = rankArr[rank] + 1;
+            }
+        }
+
+        return rankArr;
+    }
+
     public static int calculateRankOneLotto(Lotto lotto, PrizeLotto prizeLotto) {
         int correctNum = 0;
         int rank = 0;
@@ -93,5 +99,10 @@ public class LottoController {
         }
 
         return Integer.MAX_VALUE;
+    }
+
+    public static String calculateProfitRate(long Amount, int money) {
+        double profit = (Amount / (double)money) * 100;
+        return String.format("%.1f", profit);
     }
 }
