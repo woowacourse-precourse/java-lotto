@@ -13,7 +13,7 @@ public class InputView {
     static final String NOT_NUMBER_ERROR_MESSAGE = ErrorMessage.NOT_NUMBER.getErrorMessage();
     static final String WINNING_NUMBER_REQUEST = InputGuidePhrase.WINNING_NUMBER_REQUEST.getPhrase();
     static final String BONUS_NUMBER_REQUEST = InputGuidePhrase.BONUS_NUMBER_REQUEST.getPhrase();
-    static final String EMPTY_VALUE_IN_WINNING_NUMBER = ErrorMessage.EMPTY_VALUE_IN_WINNING_NUMBER.getErrorMessage();
+    static final String EMPTY_VALUE_IN_WINNING_NUMBER = ErrorMessage.MISSING_VALUE.getErrorMessage();
     static final String WINNING_NUMBER_DELIMITER = ",";
 
     public static int takeMoneyInput() throws IllegalArgumentException {
