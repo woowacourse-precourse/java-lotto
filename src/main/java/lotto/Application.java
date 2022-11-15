@@ -17,9 +17,8 @@ public class Application {
         lottoUI.LottoCountOutput();
         lottoUI.PrintLottoNumber();
 
-        String winningNumberInput = lottoUI.WinningNumber();
-        String bonusNumberInput = lottoUI.BonusNumber();
-
+        lottoLogic.logicRank(lottoUI.WinningNumber(), lottoUI.BonusNumber());
+        lottoUI.WinningTotal();
 
     }
 }
