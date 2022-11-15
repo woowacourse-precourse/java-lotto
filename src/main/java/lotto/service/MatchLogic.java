@@ -4,7 +4,6 @@ import lotto.Lotto;
 import lotto.view.LottoIO;
 import lotto.view.UserIO;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -39,12 +38,12 @@ public class MatchLogic {
     }
 
     // 1-5등 정보 갱신
-    private void setWinner(int index) {
+    public void setWinner(int index) {
         matchNums.set(index, matchNums.get(index) + 1);
     }
 
     // 특정 로또와 정답 로또 비교
-    private int answerMatch(List<Integer> userLotto, List<Integer> answerLotto) {
+    public int answerMatch(List<Integer> userLotto, List<Integer> answerLotto) {
         int count = 0;
         for (Integer ans : answerLotto) {
             if (userLotto.contains(ans)) {
@@ -55,7 +54,7 @@ public class MatchLogic {
     }
 
     // 특정 로또와 보너스 번호 비교
-    private boolean bonusMatch(List<Integer> userLotto, int bonus) {
+    public boolean bonusMatch(List<Integer> userLotto, int bonus) {
         if (userLotto.contains(bonus)) {
             return true;
         }
