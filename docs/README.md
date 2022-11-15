@@ -40,6 +40,6 @@
 - [x] 당첨 번호 입력 값의 숫자중 중복값이 있는지 판단한다.  -Lotto#sameNumber()
 - [x] 당첨 번호의 입력 값의 숫자가 1~45인지 판단한다.  -Lotto#wrongNumber()
 - [x] 당첨 번호의 입력 값의 형식이 맞는지 판단한다.  -PrizeNumber#lottoNumber()
-- [x] 보너스 번호가 1~45인지 판단한다.
-- [x] 보너스 번호와 당첨 번호가 겹치는지 판단한다.
+- [x] 보너스 번호가 1~45인지 판단한다.  -Lotto#sameBonusNumber()
+- [x] 보너스 번호와 당첨 번호가 겹치는지 판단한다.  -Lotto#sameBonusNumber()
 - [x] 보너스 번호의 입력 값의 형식이 맞는지 판단한다.  -PrizeNumber#bonusNumber()
