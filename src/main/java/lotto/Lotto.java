@@ -38,7 +38,7 @@ public class Lotto {
         }
     }
 
-    private static void checkRangeOfNumber(Integer number) {
+    private void checkRangeOfNumber(Integer number) {
         if (number < 1 || 45 < number) {
             throw new IllegalArgumentException("[ERROR] 로또 숫자의 범위는 1부터 45 사이의 숫자여야 합니다.");
         }
