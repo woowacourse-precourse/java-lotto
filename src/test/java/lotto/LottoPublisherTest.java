@@ -17,7 +17,7 @@ class LottoPublisherTest {
 
     @BeforeEach
     void setUp() {
-        lottoPublisher = new LottoPublisher(1000);
+        lottoPublisher = LottoPublisher.getInstance();
     }
 
     @ParameterizedTest

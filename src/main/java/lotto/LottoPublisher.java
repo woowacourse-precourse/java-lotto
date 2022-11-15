@@ -6,13 +6,20 @@ import java.util.Comparator;
 import java.util.List;
 
 public class LottoPublisher {
-    private static final int LOTTERY_NUM_CNT = 6;
-    private static final int START_NUM = 1;
-    private static final int END_NUM = 45;
-    private final int LOTTERY_PRICE;
+    private final int LOTTERY_NUM_CNT = 6;
+    private final int START_NUM = 1;
+    private final int END_NUM = 45;
+    private final int LOTTERY_PRICE = Application.LOTTERY_PRICE;
 
-    public LottoPublisher(int lotteryPrice) {
-        this.LOTTERY_PRICE = lotteryPrice;
+    private LottoPublisher() {
+    }
+
+    private static class LottoPublisherHelper {
+        private static final LottoPublisher INSTANCE = new LottoPublisher();
+    }
+
+    public static LottoPublisher getInstance() {
+        return LottoPublisherHelper.INSTANCE;
     }
 
     public List<Lotto> publish(int money) {

@@ -8,8 +8,8 @@ public class Application {
     public static int LOTTERY_PRICE = 1000;
 
     public static void main(String[] args) {
-        InputOutput inputOutput = new InputOutput(LOTTERY_PRICE);
-        LottoPublisher lottoPublisher = new LottoPublisher(LOTTERY_PRICE);
+        InputOutput inputOutput = InputOutput.getInstance();
+        LottoPublisher lottoPublisher = LottoPublisher.getInstance();
 
         int money = inputOutput.getMoney();
         List<Lotto> lottos = lottoPublisher.publish(money);

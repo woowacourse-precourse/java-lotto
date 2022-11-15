@@ -9,10 +9,18 @@ import java.util.TreeSet;
 import java.util.stream.Collectors;
 
 public class InputOutput {
-    private final int LOTTERY_PRICE;
+    private final int lotteryPrice;
 
-    public InputOutput(int lotteryPrice) {
-        LOTTERY_PRICE = lotteryPrice;
+    private InputOutput(int lotteryPrice) {
+        this.lotteryPrice = lotteryPrice;
+    }
+
+    private static class InputOutputHelper {
+        private static final InputOutput INSTANCE = new InputOutput(Application.LOTTERY_PRICE);
+    }
+
+    public static InputOutput getInstance() {
+        return InputOutputHelper.INSTANCE;
     }
 
     public int getMoney() {
@@ -32,13 +40,13 @@ public class InputOutput {
     }
 
     private void validateMoney(int money) {
-        if (money % LOTTERY_PRICE != 0) {
-            System.out.println("[ERROR] 구입 금액은 " + LOTTERY_PRICE + "단위 이어야 합니다.");
+        if (money % lotteryPrice != 0) {
+            System.out.println("[ERROR] 구입 금액은 " + lotteryPrice + "단위 이어야 합니다.");
             throw new IllegalArgumentException();
         }
 
         if (money <= 0) {
-            System.out.println("[ERROR] 구입 금액은 " + LOTTERY_PRICE + "이상만 가능합니다.");
+            System.out.println("[ERROR] 구입 금액은 " + lotteryPrice + "이상만 가능합니다.");
             throw new IllegalArgumentException();
         }
     }
