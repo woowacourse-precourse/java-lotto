@@ -1,5 +1,7 @@
 package lotto.Calculator;
 
+import lotto.Printer.Printer;
+
 import java.util.List;
 
 public class EarningRateCalculator {
@@ -20,13 +22,16 @@ public class EarningRateCalculator {
     private Integer prize = 0;
     private float earningRate;
 
-    public void checkMatching(List<Integer> userLotto, List<List<Integer>> lottos, Integer bonusNumber) {
+    public void checkMatching(List<Integer> userLotto, List<List<Integer>> lottos, Integer bonusNumber, Printer printer) {
         for (List<Integer> lotto : lottos) {
             winningCalculate(userLotto, lotto, bonusNumber);
         }
 
         calculatePrize();
         calculateEarningRate(lottos.size());
+        System.out.println(prize);
+        printer.printWinningStatistics(fifthPlaceCount, fourthPlaceCount , thirdPlaceCount, secondPlaceCount, firstPlaceCount,
+                earningRate);
     }
 
     private void winningCalculate(List<Integer> userLotto, List<Integer> lotto, Integer bonusNumber) {
@@ -42,13 +47,13 @@ public class EarningRateCalculator {
         if (userLotto.size() == 3) {
             fifthPlaceCount++;
         }
-        if (userLotto.size() == 4) {
+        if (userLotto.size() == 2) {
             fourthPlaceCount++;
         }
-        if (userLotto.size() == 5) {
+        if (userLotto.size() == 1) {
             checkBonusNumber(userLotto, bonusNumber);
         }
-        if (userLotto.size() == 6) {
+        if (userLotto.size() == 0) {
             firstPlaceCount++;
         }
     }
@@ -64,7 +69,7 @@ public class EarningRateCalculator {
     private void calculatePrize() {
         prize = (fifthPlaceCount * FIFTH_PLACE_PRIZE) + (fourthPlaceCount * FOURTH_PLACE_PRIZE) +
                 (thirdPlaceCount * THIRD_PLACE_PRIZE) + (secondPlaceCount * SECOND_PLACE_PRIZE) +
-                (firstPlaceCount + FIRST_PLACE_PRIZE);
+                (firstPlaceCount * FIRST_PLACE_PRIZE);
     }
 
     private void calculateEarningRate(Integer numberOfLottos) {
