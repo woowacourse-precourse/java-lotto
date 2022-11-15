@@ -6,10 +6,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 public  class askPlayer {
+
+
     public static int askLottoPurchase(){
+        final String REGEX = "[0-9]+";
         System.out.println("구입금액을 입력해 주세요.");
         String input = Console.readLine();
-        int number = Integer.parseInt(input);
+        int number = 0;
+        if(input.matches(REGEX)){
+            number = Integer.parseInt(input);
+        }
+        else{
+            System.out.println("[ERROR] 로또 번호는 숫자만 입력할수 있습니다.");
+        }
 
         return number/1000;
     }
