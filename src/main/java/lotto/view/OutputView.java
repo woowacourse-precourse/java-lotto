@@ -26,4 +26,15 @@ public class OutputView {
         System.out.println();
         System.out.println("보너스 번호를 입력해 주세요");
     }
+    public void printUserWinningResult(Map<WinningCriteriaInfo, Integer> winningInfo) {
+        System.out.println();
+        System.out.println("당첨 통계");
+        System.out.println("---");
+        for (WinningCriteriaInfo price : WinningCriteriaInfo.values()) {
+            if (price.getLabel() < LOWEST_RANK_MATCHED_LOTTO_NUMBERS) {
+                continue;
+            }
+            System.out.println(price.getRankInfo() + winningInfo.getOrDefault(price, INITIAL_NUMBER) + "개");
+        }
+    }
 }
