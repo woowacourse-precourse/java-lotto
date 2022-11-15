@@ -40,4 +40,15 @@ class LottoTest {
         int count = Lotto.lottoNum(money);
         assertThat(count).isEqualTo(7);
     }
+
+    @DisplayName("금액이 1000원 단위여야 한다.")
+    @Test
+    void checkMoneyFormat(){
+        int money = 7700;
+        assertThatThrownBy(() -> Lotto.lottoNum(money))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("[ERROR]");
+
+
+    }
 }
