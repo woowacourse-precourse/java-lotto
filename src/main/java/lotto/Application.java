@@ -11,8 +11,9 @@ public class Application {
         int lotto_cnt = getMoney();
         for(int i =0 ; i<lotto_cnt;i++){
             Lotto lotto = getLotto();
-
+           System.out.println(lotto.getNumbers());
         }
+        getWinNum();
     }
     public static Lotto getLotto(){
         List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
@@ -20,15 +21,14 @@ public class Application {
         return lotto;
     }
 
-    public static Lotto getWinNum(){
+    public static List<Integer> getWinNum(){
         System.out.println("당첨 번호를 입력해 주세요.");
         String input = Console.readLine();
         List<String> input_string_list = new ArrayList<String>(Arrays.asList(input.split(",")));
         List<Integer> input_integer_list = input_string_list.stream()
                 .map(s -> Integer.parseInt(s))
                 .collect(Collectors.toList());
-        Lotto lotto = new lotto.Lotto(input_integer_list);
-        return lotto;
+        return input_integer_list;
     }
 
     public static int getBonusNum(){
