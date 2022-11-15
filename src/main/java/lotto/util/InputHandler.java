@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class InputHandler {
-    private static final String DEFAULT_ERROR_MESSAGE = "[ERROR] ";
+    public static final String DEFAULT_ERROR_MESSAGE = "[ERROR] ";
 
     public InputHandler() {
     }
@@ -82,4 +82,6 @@ public class InputHandler {
             throw new IllegalArgumentException(DEFAULT_ERROR_MESSAGE + ERROR_MESSAGE.PURCHASE_UNIT_ERROR.getMessage());
         return money / CONSTANTS.MONETARY_UNIT.getNumbers();
     }
+
+
 }
