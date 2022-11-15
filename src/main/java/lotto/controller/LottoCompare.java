@@ -4,7 +4,7 @@ import lotto.model.LottoResult;
 import lotto.model.User;
 import lotto.view.WinningNumberCompareUI;
 
-public class WinningNumberCompare {
+public class LottoCompare {
     private final WinningNumberCompareUI winningNumberCompareUI = new WinningNumberCompareUI();
 
     public void winningNumberCompareControl(User user){
