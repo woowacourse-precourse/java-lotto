@@ -15,8 +15,7 @@ public class LottoGenerator {
                 lottoNumbers.add(random);
             }
         }
+        lottoNumbers.sort(Integer::compareTo);
         return lottoNumbers;
     }
-
-
 }
