@@ -29,15 +29,6 @@ public class UserOutput {
         System.out.printf(WINNING_STATS_DETAIL_MSG,Rank.RANK_3.getNotification(),winningBoard.getOrDefault(Rank.RANK_3,0));
         System.out.printf(WINNING_STATS_DETAIL_MSG,Rank.RANK_2.getNotification(),winningBoard.getOrDefault(Rank.RANK_2,0));
         System.out.printf(WINNING_STATS_DETAIL_MSG,Rank.RANK_1.getNotification(),winningBoard.getOrDefault(Rank.RANK_1,0));
-
-
-        if(0 < winningBoard.get(Rank.RANK_2)){
-            System.out.printf(WINNING_STATS_DETAIL_MSG,Rank.RANK_2.getNotification(),winningBoard.get(Rank.RANK_2) );
-        }
-
-        if(0 < winningBoard.get(Rank.RANK_1)){
-            System.out.printf(WINNING_STATS_DETAIL_MSG,Rank.RANK_1.getNotification(),winningBoard.get(Rank.RANK_1) );
-        }
     }
 
     public static void printWinningRate(double rate){

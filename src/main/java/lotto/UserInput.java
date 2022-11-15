@@ -7,36 +7,27 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Stream;
 
+import static lotto.Valid.*;
+
 public class UserInput {
     private static final String AMOUNT_INPUT_MSG = "구입금액을 입력해 주세요";
     private static final String TARGET_NUMBERS_INPUT_MSG = "당첨 번호를 입력해 주세요";
     private static final String BONUS_NUMBERS_INPUT_MSG = "보너스 번호를 입력해 주세요";
-    private static final String AMOUNT_ERROR_MSG = "[ERROR] 잘못된 금액 값을 입력했습니다.";
+
 
     public static int inputAmount() {
         System.out.println(AMOUNT_INPUT_MSG);
         String str = Console.readLine();
-
-        if(!str.matches("[0-9]+")){
-            throw new IllegalArgumentException(AMOUNT_ERROR_MSG);
-        }
-
-        int amount;
-        try {
-            amount = Integer.parseInt(str);
-        } catch (Exception e) {
-            throw new IllegalArgumentException(AMOUNT_ERROR_MSG);
-        }
-
-        if(amount % 1000 == 0) {
-            return amount;
-        }
-        throw new IllegalArgumentException(AMOUNT_ERROR_MSG);
+        validInputAmount(str);
+        return Integer.parseInt(str);
     }
 
     public static List<Integer> inputTargetNumbers() {
         System.out.println(TARGET_NUMBERS_INPUT_MSG);
         String input = Console.readLine();
+
+        validInputLottoNumbers(input);
+
         String[] targets = input.split(",");
 
         List<Integer> targetNumbers = new ArrayList<>();
@@ -48,10 +39,12 @@ public class UserInput {
         return targetNumbers;
     }
 
-    public static int inputBonusNumber() {
+
+
+    public static int inputBonusNumber(List<Integer> lotto) {
         System.out.println(BONUS_NUMBERS_INPUT_MSG);
         String input = Console.readLine();
-
+        validInputBonusNumber(lotto,input);
         return Integer.parseInt(input);
     }
 }

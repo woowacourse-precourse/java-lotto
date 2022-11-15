@@ -41,7 +41,7 @@ public class Manager {
         UserOutput.printLottoCount(user.getAmount());
         UserOutput.printLottoList(user.getLottos());
         compareLotto.inputTargetNumbers();
-        compareLotto.inputBonusNumber();
+        compareLotto.inputBonusNumber(compareLotto.getTargetNumbers());
         compareLotto();
         UserOutput.printWinningStats(winningBoard);
         calculatorReturns();
