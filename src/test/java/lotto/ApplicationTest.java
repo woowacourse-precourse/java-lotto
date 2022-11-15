@@ -229,5 +229,20 @@ class ApplicationTest extends NsTest {
             assertEquals(lotto.matchBonus(bonusNumberTest, correctWinningNumberTest), answerBooleansTest);
         }
 
+        List<List<Integer>> winningNumberCasesTest = new ArrayList<>(Arrays.asList(
+                new ArrayList<Integer>(Arrays.asList(1,2,3,4,5,6)) // 2000000000
+                , new ArrayList<Integer>(Arrays.asList(2,45,1,13,17,5)) // 5000
+                , new ArrayList<Integer>(Arrays.asList(34,41,32,4,35,16)) // 0
+                , new ArrayList<Integer>(Arrays.asList(3,5,7,4,1,2)) // 30000000
+                , new ArrayList<Integer>(Arrays.asList(1,3,2,4,35,16)) // 50000
+        ));
+
+        @Test
+        void calculateRewardRateTest() {
+            double expectedRatio = 40601100;
+            double testResult = lotto.calculateRewardRate(7, winningNumberCasesTest, 5000);
+
+            assertEquals(expectedRatio, testResult);
+        }
     }
 }
