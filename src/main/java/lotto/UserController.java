@@ -1,7 +1,5 @@
 package lotto;
 
-import static lotto.ExceptionHandler.parseInt;
-
 import java.util.ArrayList;
 import java.util.List;
 import model.Lotto;
