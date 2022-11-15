@@ -27,7 +27,7 @@ public class OutputView {
         System.out.println(WINNING_STATS);
         System.out.println(SEPARATION);
         for (LottoRank lottoRank : LottoRank.values()) {
-            System.out.printf(lottoRank.getMatch() + " (%s원) - "
+            System.out.printf(lottoRank.getInfo() + " (%s원) - "
                     + lottoRank.count + "개\n", NumberFormat.getInstance().format(lottoRank.getReward()));
         }
 

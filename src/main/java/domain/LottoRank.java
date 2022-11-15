@@ -10,7 +10,6 @@ public enum LottoRank {
 
     private final String match;
     private final int reward;
-
     public int count;
 
 
@@ -20,7 +19,7 @@ public enum LottoRank {
         this.count = count;
     }
 
-    public String getMatch() {
+    public String getInfo() {
         return this.match;
     }
 

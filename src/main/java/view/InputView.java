@@ -38,6 +38,7 @@ public class InputView {
         return Arrays.stream(input.split(DIVISION_CHAR))
                 .map(Integer::parseInt)
                 .collect(Collectors.toList());
+
     }
 
     public int getBonusNumber() {
