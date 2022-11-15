@@ -40,7 +40,7 @@ public class LottoSystem {
         view.printLottoCount(lottoCount);
         boughtLottoes = new ArrayList<>();
         for(int i = 0; i < lottoCount; i++) {
-            List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+            List<Integer> numbers = new ArrayList<>(Randoms.pickUniqueNumbersInRange(1, 45, 6));
             Collections.sort(numbers);
             boughtLottoes.add(new Lotto(numbers));
         }
@@ -78,7 +78,7 @@ public class LottoSystem {
         for (Rank rank : Rank.values()) {
             income += rank.getPrize() * rank.getAchievedCount();
         }
-        double ratio = (double) income / money;
+        double ratio = (double) income / money * 100;
         view.printResult(ratio);
     }
 }
