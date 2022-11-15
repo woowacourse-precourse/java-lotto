@@ -14,7 +14,14 @@ public class LottoGame {
     }
 
     public void execute() {
+        try{
+            this.executeProcess();
+        }catch (IllegalArgumentException exception){
+            io.println(exception.getMessage());
+        }
 
+    }
+    private void executeProcess(){
         var randomLottoSystem = new RandomLottoSystem(io);
         var answerLottoSystem = new AnswerLottoSystem(io);
         var settlementSystem = new SettlementSystem(io);
@@ -26,6 +33,5 @@ public class LottoGame {
         settlementSystem.printSettlementResult(lottoBundle, answerLotto);
         settlementSystem.printCalculateProfits(purchaseLottoMoney);
     }
-
 
 }
