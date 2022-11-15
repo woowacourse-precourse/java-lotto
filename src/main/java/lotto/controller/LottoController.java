@@ -113,4 +113,8 @@ public class LottoController {
 
         if (predictionMatchCnt == FIRST.getPredictionMatchCnt()) winningLog[FIRST.getWinningLogIdx()]++;
     }
+
+    public int[] getWinningLog() {
+        return winningLog;
+    }
 }
