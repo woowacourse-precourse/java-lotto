@@ -48,7 +48,7 @@ public class WinningResult {
                 .count();
     }
 
-    public void addRank(Rank rank) {
+    private void addRank(Rank rank) {
         results.put(rank, results.get(rank) + 1);
     }
 
