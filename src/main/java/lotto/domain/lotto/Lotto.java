@@ -41,10 +41,12 @@ public class Lotto {
                 count += 1;
 
                 if (i == winningNumbers.size() - 1) {
+                    count -= 1;
                     bonus = true;
                 }
             }
         }
+        System.out.println(count);
 
         return LottoPrize.checkPrize(count, bonus);
     }

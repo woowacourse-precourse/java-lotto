@@ -23,10 +23,14 @@ public enum LottoPrize {
     }
 
     public static LottoPrize checkPrize(long count, boolean hasBonus) {
-        return Arrays.stream(LottoPrize.values())
-                .filter(prize -> prize.count == count && prize.hasBonus == hasBonus)
-                .findAny()
-                .orElse(DEFAULT);
+        if (hasBonus && count == 5) {
+            return LottoPrize.SECOND;
+        } else {
+            return Arrays.stream(LottoPrize.values())
+                    .filter(prize -> prize.count == count)
+                    .findAny()
+                    .orElse(DEFAULT);
+        }
     }
 
     public long getReward() {
@@ -36,8 +40,8 @@ public enum LottoPrize {
     @Override
     public String toString() {
         if (hasBonus) {
-            return String.format("%d개 일치, 보너스 볼 일치 (%s원)", count, moneyFormat);
+            return String.format("%d개 일치, 보너브 볼 일치 (%s원)", count, moneyFormat);
         }
-        return String.format("%d개 일치 (%s원)", count, moneyFormat);
+        return String.format("%d개 일치, (%s원)", count, moneyFormat);
     }
 }
