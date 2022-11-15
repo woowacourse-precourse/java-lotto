@@ -7,9 +7,8 @@ public class ResultLotto {
     InOutPut bring = new InOutPut();
     winPrizeResult result = new winPrizeResult();
 
-    public ResultLotto(int moneyChance, List<Integer> Lotto, int bonus) {
+    public ResultLotto(int moneyChance, List<Integer> Lotto,List<List<Integer>> lottoPack,int bonus) {
         int PRIZE_RESULT = 0;
-        List<List<Integer>> lottoPack = core.lottoPack(moneyChance);
         for(int j = 0; j < lottoPack.size(); j++){
             int count = core.compareNumber(lottoPack.get(j), Lotto);
             winPrize value = core.setResult(count, core.checkBonus(lottoPack.get(j), bonus));
