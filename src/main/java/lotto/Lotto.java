@@ -33,6 +33,12 @@ public class Lotto {
             throw new IllegalArgumentException("[ERROR] 로또 번호는 6개 입니다.");
         }
 
+        for (int i = 0; i < numbers.size(); i++) {
+            if (numbers.get(i) > 45 || numbers.get(i) < 0) {
+                throw new IllegalArgumentException("[ERROR] 입력값.에러 발생.");
+            }
+        }
+
         Set<Integer> numList = new HashSet<Integer>(numbers);
         if (numList.size() != numbers.size()) {
             throw new IllegalArgumentException("[ERROR] 중복입력.에러 발생.");
