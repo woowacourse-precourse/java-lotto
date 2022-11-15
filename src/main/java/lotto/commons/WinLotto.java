@@ -7,13 +7,23 @@ import java.util.Map;
 public class WinLotto {
 
     private static final Map<String, Integer> winHistory = new HashMap<>();
+    private static long winning;
     private static List<Integer> numbers;
     private static int bonus;
 
-    public WinLotto(List<Integer> winNumbers, int bounusNumber) {
+    public WinLotto(List<Integer> winNumbers, int bonusNumber) {
         numbers = winNumbers;
-        bonus = bounusNumber;
+        bonus = bonusNumber;
+        winning = 0;
         this.setWinHistory();
+    }
+
+    public Map<String, Integer> getWinHistory() {
+        return winHistory;
+    }
+
+    public int getWinning() {
+        return winning;
     }
 
     public List<Integer> getNumbers() {
@@ -32,32 +42,29 @@ public class WinLotto {
         winHistory.put("FIFTH_WIN", 0);
     }
 
-    public void updateWinHistory(String win) {
-        winHistory.put(win, winHistory.get(win) + 1);
+    public void updateWinHistory(String rank) {
+        winHistory.put(rank, winHistory.get(rank) + 1);
+        updateWinning(moneyByRank((rank)));
     }
 
-    public int getWinHistoryValue(int rank) throws IllegalArgumentException {
-        validateRank(rank);
-
-        String win = "";
-        if (rank == 1) {
-            win = "FIRST_WIN";
-        } else if (rank == 2) {
-            win = "SECOND_WIN";
-        } else if (rank == 3) {
-            win = "THIRD_WIN";
-        } else if (rank == 4) {
-            win = "FIRTH_WIN";
-        } else if (rank == 5) {
-            win = "FIFTH_WIN";
-        }
-        return winHistory.get(win);
+    public void updateWinning(long money) {
+        winning += money;
     }
 
-    private void validateRank(int rank) {
-        if (rank < 1 || 5 < rank) {
-            throw new IllegalArgumentException("[ERROR] 5등 안에 들지 못했습니다.");
+
+    private long moneyByRank(String rank) {
+        if (rank.equals("FIRST_WIN")) {
+            return 2000000000;
+        } else if (rank.equals("SECOND_WIN")) {
+            return 30000000;
+        } else if (rank.equals("THIRD_WIN")) {
+            return 1500000;
+        } else if (rank.equals("FIRTH_WIN")) {
+            return 50000;
+        } else if (rank.equals("FIFTH_WIN")) {
+            return 5000;
         }
+        return 0;
     }
 
 }
