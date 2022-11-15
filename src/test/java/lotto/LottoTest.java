@@ -23,5 +23,10 @@ class LottoTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
-    // 아래에 추가 테스트 작성 가능
+    @DisplayName("로또 구입 비용이 1000원단위가 아니면 예외가 발생한다.")
+    @Test
+    void moneyForLottoDoestHaveRemainder(){
+        assertThatThrownBy(() -> Application.countLotto("1001"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }

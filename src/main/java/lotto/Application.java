@@ -10,21 +10,13 @@ public class Application {
     private static Lotto winningLotto;
     private static Integer bonusBall;
     private static void getUserInput(){
-        winningLotto = getWinningLotto();
+        lottoCount = countLotto(Console.readLine());
     }
-    private static void checkIllegalNum(Integer num){
-        if(num > 45 || num < 1)
-            throw new IllegalArgumentException(ErrorEnum.BADREQUEST_NOT_VALID_NUM_EXCEPTION.getMessage());
-    }
-
-    private static Lotto getWinningLotto(){
-        String winningNumsInput = Console.readLine();
-        List<Integer> numbers = new ArrayList<>();
-        for(String s : winningNumsInput.split(",")){
-            Integer num = Integer.parseInt(s);
-            checkIllegalNum(num);
-        }
-        return new Lotto(numbers);
+    public static Integer countLotto(String input){
+        Integer money = Integer.parseInt(input);
+        if(money%1000 != 0)
+            throw new IllegalArgumentException(ErrorEnum.BADREQUEST_MONEY_NOT1000_EXCEPTION.getMessage());
+        return money/1000;
     }
 
     public static void main(String[] args) {
