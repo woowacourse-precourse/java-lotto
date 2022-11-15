@@ -11,7 +11,7 @@ public class LotteriesTest {
 
     @DisplayName("당첨된 갯수 반환 성공")
     @Test
-    void test() {
+    void testCountMatchNumbers() {
         //given
         List<Integer> winNumberList = List.of(1, 2, 3, 4, 5, 6);
         int bonusNumber = 24;
@@ -36,5 +36,22 @@ public class LotteriesTest {
         assertThat(lottoResult.getLottoMatchCountByKey(Match.FIVE)).isEqualTo(1);
         assertThat(lottoResult.getLottoMatchCountByKey(Match.FIVE_WITH_BONUS)).isEqualTo(1);
         assertThat(lottoResult.getLottoMatchCountByKey(Match.SIX)).isEqualTo(2);
+    }
+
+    @Test
+    @DisplayName("결과값 출력 성공")
+    void testGetLottoNumbers() {
+        //given
+        Lotto lotto = new Lotto(List.of(1, 2, 3, 45, 12, 14));
+
+        List<Lotto> lottoList = List.of(lotto);
+        Lotteries lotteries = new Lotteries(lottoList);
+
+        //when
+        String lottoNumbers = lotteries.getLottoNumbers();
+        String testResult = "[1, 2, 3, 45, 12, 14]";
+
+        //then
+        assertThat(lottoNumbers).contains(testResult);
     }
 }

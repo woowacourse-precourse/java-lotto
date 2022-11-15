@@ -5,7 +5,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -30,7 +29,7 @@ class LottoTest {
     }
 
     @ParameterizedTest
-    @DisplayName("당첨 숫자랑 비교")
+    @DisplayName("당첨 숫자와 비교 성공")
     @CsvSource({
             "1-2-3-4-5-6, 6",
             "2-3-4-5-6-8, 5",
@@ -56,7 +55,7 @@ class LottoTest {
     }
 
     @ParameterizedTest
-    @DisplayName("보너스 숫자 비교")
+    @DisplayName("보너스 숫자 비교 성공")
     @CsvSource({
             "10, true",
             "11, false"
