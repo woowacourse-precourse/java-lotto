@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class Lotto {
@@ -47,21 +46,6 @@ public class Lotto {
         }
     }
     // TODO: 추가 기능 구현
-    public static void lottoSystem(){
-        System.out.println("구입금액을 입력해 주세요.");
-        String payment = Console.readLine();
-        Integer amountOfLotto = amountOfLotto(payment);
-        System.out.println();
-        System.out.println(amountOfLotto+"개를 구매했습니다.");
-        ArrayList<List<Integer>> myLottoNumbers = getRandomLottoNumber(amountOfLotto);
-        System.out.println("당첨  번호를 입력해 주세요.");
-        String winningNumber = Console.readLine();
-        System.out.println();
-        List<Integer> getLottoNumber = getTypingWinningNumber(winningNumber);
-        System.out.println("보너스 번호를 입력해 주세요");
-        String bonusNumber = Console.readLine();
-
-    }
     public static Integer amountOfLotto(String lottoPayment){
         try{
             Integer amount = 0;
@@ -73,14 +57,14 @@ public class Lotto {
             amount = payment/1000;
             return amount;
         } catch (NumberFormatException e){
-            System.out.println("[ERROR] 구입 금액 입력은 숫자만 가능합니다.");
+            System.out.println("[ERROR]구입 금액 입력은 숫자만 가능합니다.");
             throw new IllegalArgumentException();
         }
     }
     public static ArrayList<List<Integer>> getRandomLottoNumber(int amountOfLotto){
         ArrayList<List<Integer>> randomLottoNumber = new ArrayList<>();
         for(int amount=0;amount<amountOfLotto;amount++){
-            List<Integer> lottoNumbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+            List<Integer> lottoNumbers = new ArrayList<>(Randoms.pickUniqueNumbersInRange(1, 45, 6));
             Collections.sort(lottoNumbers);
             System.out.println(lottoNumbers);
             randomLottoNumber.add(lottoNumbers);
@@ -117,6 +101,49 @@ public class Lotto {
             getWinningNumber.add(number);
         }
         return getWinningNumber;
+    }
+
+    public static void winningStatistics(Integer[] winningCount){
+        System.out.println("당첨 통계");
+        System.out.println("---");
+        System.out.println("3개 일치 (5,000원) - "+winningCount[0]+"개");
+        System.out.println("4개 일치 (50,000원) - "+winningCount[1]+"개");
+        System.out.println("5개 일치 (1,500,000원) - "+winningCount[2]+"개");
+        System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - "+winningCount[3]+"개");
+        System.out.println("6개 일치 (2,000,000,000원) - "+winningCount[4]+"개");
+    }
+    public static Integer compareToNumber(List<Integer> myLotto, List<Integer> winningNum){
+        Integer count = 0;
+        for(int winNum=0;winNum<winningNum.size();winNum++){
+            if(myLotto.contains(winningNum.get(winNum))){
+                count++;
+            }
+        }
+        return count;
+    }
+
+    public static Integer[] getWinningCount (ArrayList<List<Integer>> myLotto, List<Integer> winningNum, Integer bonus){
+        Integer[] winningCount = {0,0,0,0,0};
+        for(int myNum=0;myNum<myLotto.size();myNum++){
+            if(compareToNumber(myLotto.get(myNum),winningNum) == 5 && myLotto.get(myNum).contains(bonus)){
+                winningCount[3]++;
+            } else if (compareToNumber(myLotto.get(myNum),winningNum) == 5 && !myLotto.get(myNum).contains(bonus)) {
+                winningCount[2]++;
+            } else if (compareToNumber(myLotto.get(myNum),winningNum) != 5 && compareToNumber(myLotto.get(myNum),winningNum) >= 3) {
+                winningCount[compareToNumber(myLotto.get(myNum),winningNum)-3]++;
+            } else if (compareToNumber(myLotto.get(myNum),winningNum) < 3) {
+                continue;
+            }
+        }
+        return winningCount;
+    }
+
+    public static String getRevenueRate(Integer cost, Integer[] count){
+        String revenueRate = "";
+        Integer sum = (count[0]*5000)+(count[1]*50000)+
+                (count[2]*1500000)+(count[3]*30000000)+(count[4]*2000000000);
+        revenueRate = String.format("%.1f", (sum*1.0/cost*1.0)*100);
+        return revenueRate;
     }
 }
 
