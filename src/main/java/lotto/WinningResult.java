@@ -43,7 +43,7 @@ public class WinningResult {
         calculateYield();
     }
 
-    public void addWinningResult(Lotto lotto) {
+    private void addWinningResult(Lotto lotto) {
         if (lotto.countMatchNumbers(winningNumber) == LottoPlace.FIFTH.getMatchNumbers()) {
             winningResult.set(FIFTH_PLACE, winningResult.get(FIFTH_PLACE) + 1);
         }
@@ -65,7 +65,7 @@ public class WinningResult {
         }
     }
 
-    public void calculateYield() {
+    private void calculateYield() {
         long money = user.getMoney();
         long profit = 0;
         for (Integer place = 0; place < winningResult.size(); place++) {
@@ -74,11 +74,11 @@ public class WinningResult {
         this.yield = roundYield(profit / (double) money * 100);
     }
 
-    public Integer addWinningLottoMoney(Integer place) {
+    private Integer addWinningLottoMoney(Integer place) {
         return winningResult.get(place) * LottoPlace.values()[place].getWinMoney();
     }
 
-    public double roundYield(double yield) {
+    private double roundYield(double yield) {
         return Math.round(yield * 10) / 10.0;
     }
 }

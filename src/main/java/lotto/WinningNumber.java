@@ -33,7 +33,7 @@ public class WinningNumber {
         bonusNumber = Integer.valueOf(userInputNumber);
     }
 
-    public void validateWinningNumbers(String[] inputNumbers) {
+    private void validateWinningNumbers(String[] inputNumbers) {
         // 6자리 확인
         validateLength(inputNumbers, 6);
         // 숫자인지 확인
@@ -42,27 +42,27 @@ public class WinningNumber {
         validateRange(inputNumbers);
     }
 
-    public void validateBonusNumber(String userInputNumber) {
+    private void validateBonusNumber(String userInputNumber) {
         // 숫자인지 확인
         validateIsNumeric(userInputNumber);
         // 1 ~ 45인지 확인
         validateIsInRange(userInputNumber);
     }
 
-    public void validateLength(String[] inputNumbers, int expectedLength) {
+    private void validateLength(String[] inputNumbers, int expectedLength) {
         if (inputNumbers.length != expectedLength) {
             ErrorMessage.printNotMatchLengthErrorMessage();
             throw new IllegalArgumentException();
         }
     }
 
-    public void validateNumeric(String[] inputNumbers) {
+    private void validateNumeric(String[] inputNumbers) {
         for (int place = 0; place < inputNumbers.length; place++) {
             validateIsNumeric(inputNumbers[place]);
         }
     }
 
-    public void validateIsNumeric(String input) {
+    private void validateIsNumeric(String input) {
         try {
             Integer inputNumber = Integer.valueOf(input);
         } catch (NumberFormatException e) {
@@ -71,20 +71,20 @@ public class WinningNumber {
         }
     }
 
-    public void validateRange(String[] inputNumbers) {
+    private void validateRange(String[] inputNumbers) {
         for (int place = 0; place < inputNumbers.length; place++) {
             validateIsInRange(inputNumbers[place]);
         }
     }
 
-    public void validateIsInRange(String input) {
+    private void validateIsInRange(String input) {
         if (Integer.valueOf(input) < 1 || Integer.valueOf(input) > 45) {
             ErrorMessage.printNumberRangeErrorMessage();
             throw new IllegalArgumentException();
         }
     }
 
-    public List<Integer> changeToInteger(String[] inputNumbers) {
+    private List<Integer> changeToInteger(String[] inputNumbers) {
         return Arrays.stream(inputNumbers)
                 .map(Integer::parseInt)
                 .collect(Collectors.toList());
