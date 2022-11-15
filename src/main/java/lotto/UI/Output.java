@@ -11,7 +11,6 @@ public class Output {
         for (Lotto lotto : lotteries) {
             System.out.println(lotto);
         }
-        System.out.println();
     }
 
     public static void printWinningStatistics(String resultPrintFormat, float earningRate) {
