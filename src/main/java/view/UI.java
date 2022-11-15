@@ -65,9 +65,24 @@ public class UI {
         }
     }
 
-    public List<Integer> getLottoNums() {
+    public Lotto getWinningNumbers() {
+        //Lotto lottoNumber = new Lotto(lottoNums);
+        return getLottoNums();
+    }
+
+    public Lotto getLottoNums() {
         String[] lottoNumString = Console.readLine().split(",");
         return convertInteger(lottoNumString);
+    }
+
+    public Lotto convertInteger(String[] lottoNumString) {
+        List<Integer> lottoNums = new ArrayList<>();
+        for (String s : lottoNumString) {
+            lottoNums.add(Integer.parseInt(s));
+        }
+        lottoNums.sort(Integer::compareTo);
+        Lotto lotto = new Lotto(lottoNums);
+        return lotto;
     }
 
     public int getBonusNumber() {
@@ -75,20 +90,8 @@ public class UI {
         return bonusNumber;
     }
 
-    public List<Integer> getWinningNumbers() {
-        List<Integer> lottoNums = getLottoNums();
-        Lotto lottoNumber = new Lotto(lottoNums);
-        return lottoNums;
-    }
 
-    public List<Integer> convertInteger(String[] lottoNumString) {
-        List<Integer> lottoNums = new ArrayList<>();
-        for (String s : lottoNumString) {
-            lottoNums.add(Integer.parseInt(s));
-        }
-        lottoNums.sort(Integer::compareTo);
-        return lottoNums;
-    }
+
 
     public void printWinningStats(int money) {
         System.out.println("당첨 통계\n---");
