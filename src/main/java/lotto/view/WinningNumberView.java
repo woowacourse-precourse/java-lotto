@@ -1,6 +1,7 @@
 package lotto.view;
 
 import camp.nextstep.edu.missionutils.Console;
+import lotto.model.Lotto;
 
 import java.util.Collections;
 import java.util.LinkedList;
@@ -8,7 +9,7 @@ import java.util.List;
 
 public class WinningNumberView {
 
-    public List<Integer> inputWinningNumber() {
+    public Lotto inputWinningNumber() {
 
         System.out.println("당첨 번호를 입력해 주세요.");
         String input = Console.readLine();
@@ -19,7 +20,8 @@ public class WinningNumberView {
 
         checkDuplicate(winningNumbers, winningNumberList);
         Collections.sort(winningNumberList);
-        return winningNumberList;
+        Lotto winningLotto = new Lotto(winningNumberList);
+        return winningLotto;
     }
 
     private List<Integer> makeWinningNumberList(String[] winningNumbers) {

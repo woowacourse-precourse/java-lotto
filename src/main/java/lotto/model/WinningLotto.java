@@ -4,15 +4,15 @@ import java.util.List;
 
 public class WinningLotto {
 
-    private final List<Integer> winningLottoNumbers;
+    private final Lotto winningLottoNumbers;
     private final int bonusNumber;
 
-    public WinningLotto(List<Integer> winningLottoNumbers, int bonusNumber) {
+    public WinningLotto(Lotto winningLottoNumbers, int bonusNumber) {
         this.winningLottoNumbers = winningLottoNumbers;
         this.bonusNumber = bonusNumber;
     }
 
-    public List<Integer> getWinningLottoNumbers() {
+    public Lotto getWinningLottoNumbers() {
         return winningLottoNumbers;
     }
 

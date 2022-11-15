@@ -2,6 +2,7 @@ package lotto;
 
 import lotto.domain.LottoService;
 import lotto.model.BuyingLottoList;
+import lotto.model.Lotto;
 import lotto.model.WinningLotto;
 import lotto.view.LottoBuyView;
 import lotto.view.WinningNumberView;
@@ -18,9 +19,9 @@ public class Application {
 
         int numberOfLotto = lottoServiceView.buyLotto();
         BuyingLottoList buyingLottoList = new BuyingLottoList(lottoService.generateLottoList(numberOfLotto));
-        List<Integer> winningNumberList = winningNumberView.inputWinningNumber();
+        Lotto winningLotto = winningNumberView.inputWinningNumber();
         int bonusNumber = winningNumberView.inputBonusNumber();
-        WinningLotto winningLotto = new WinningLotto(winningNumberList, bonusNumber);
+        WinningLotto winningLottoInfo = new WinningLotto(winningLotto, bonusNumber);
 
 
     }
