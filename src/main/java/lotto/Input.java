@@ -54,12 +54,11 @@ public class Input {
         }
     }
     private boolean checkMoney(String inputmoney) {
-        for(char c :inputmoney.toCharArray()){
-            if(!Character.isDigit(c))
-                throw new IllegalArgumentException("[ERROR] 구매 금액을 잘못 입력 하셨습니다.");
+        try {
+            Integer.parseInt(inputmoney);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("[ERROR] 숫자만 입력해 주세요.");
         }
-        if(inputmoney.charAt(0) == '0')
-            throw new IllegalArgumentException("[ERROR] 구매 금액을 잘못 입력 하셨습니다.");
         int money = Integer.parseInt(inputmoney);
         if((money % 1000) != 0)
             throw new IllegalArgumentException("[ERROR] 구매 금액을 잘못 입력 하셨습니다.");
