@@ -75,6 +75,14 @@ public class LottoGameController {
         return inputNumbers;
     }
 
+    public Integer getBonusNum(InputMessages inputMessages, OutputMessages outputMessages) {
+        outputMessages.bonusNumInputMsg();
+        int bonusNumber = Integer.parseInt(inputMessages.readLine());
+        lottoGameService.isValidNumber(bonusNumber);
+
+        return bonusNumber;
+    }
+
 
 }
 
