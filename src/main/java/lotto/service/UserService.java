@@ -19,7 +19,7 @@ public class UserService {
         return new User(purchaseMoney, purchaseLottoPiece, purchaseLotto);
     }
 
-    private List<Lotto> issueLotto(int purchaseLottoNum) {
+    public List<Lotto> issueLotto(int purchaseLottoNum) {
         List<Lotto> tempGeneratedLotto = new ArrayList<>();
         for (int buy = 0; buy < purchaseLottoNum; buy++) {
             Lotto issuedLotto = lottoService.issueLotto();
@@ -40,14 +40,18 @@ public class UserService {
 
     public int scanPayMoney() {
         System.out.println(START_MSG);
+        int money = stringToInter(Console.readLine());
+        validateMoney(money);
+        return money;
+    }
+
+    public int stringToInter(String scanNum){
         int money;
         try {
-            money = Integer.parseInt(Console.readLine());
+            money = Integer.parseInt(scanNum);
         } catch (Exception NumberFormatException) {
             throw new IllegalArgumentException(INPUT_NOT_INTEGER);
         }
-
-        validateMoney(money);
         return money;
     }
 
