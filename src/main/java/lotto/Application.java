@@ -7,7 +7,7 @@ public class Application {
         try {
             Controller controller = new Controller();
         }catch (Exception e) {
-            System.out.println("[ERROR] 잘못된 입력 입니다.");
+            System.out.println(e.getMessage());
             e.initCause(new IllegalArgumentException());
             System.out.println(e.getCause());
         }

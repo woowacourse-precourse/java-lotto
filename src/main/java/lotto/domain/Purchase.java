@@ -54,7 +54,7 @@ public class Purchase {
 
     // For input UI
     public static String purchaseAmountInput() {
-        System.out.println("구입금액을 입력해 주세요.");
+        System.out.println(MSG.INPUT_PURCHASE.getMsg());
         String purchaseAmount = Console.readLine();
         System.out.println();
         validatePurchaseInput(purchaseAmount);
@@ -63,7 +63,7 @@ public class Purchase {
 
     // For Print the Lotteries list purchased
     public void printPurchaseLotteries() {
-        System.out.println(String.format("%d개를 구매했습니다.", purchaseQuantity));
+        System.out.println(String.format(MSG.OUTPUT_PURCHASE.getMsg(), purchaseQuantity));
         for (Lotto lotto : lotteries) {
             lotto.printLotto();
         }
@@ -73,7 +73,7 @@ public class Purchase {
     public static void validatePurchaseInput(final String purchaseAmountInput) {
         final String pattern = "[1-9]+[0-9]*0{3}";
         if (!purchaseAmountInput.matches(pattern)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(MSG.ERR_PURCHASE.getMsg());
         }
     }
 }

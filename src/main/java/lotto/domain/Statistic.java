@@ -76,13 +76,12 @@ public class Statistic {
 
     // For Print the statistical result with purchased lotteries
     public void printWinningStatisticResult() {
-        System.out.println("당첨 통계");
-        System.out.println("---");
+        System.out.println(MSG.OUTPUT_STATISTIC.getMsg());
         for (Grade grade : Grade.values()) {
             int count = winningGradeAndCountRepository.getOrDefault(grade.getGrade(), 0);
             System.out.println(grade.getResult() + count + "개");
         }
-        String format = String.format("총 수익률은 %.1f%%입니다.", this.yield * 100);
+        String format = String.format(MSG.OUTPUT_YIELD.getMsg(), this.yield * 100);
         System.out.println(format);
     }
 }

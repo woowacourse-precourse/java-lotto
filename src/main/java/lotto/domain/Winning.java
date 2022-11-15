@@ -26,7 +26,7 @@ public class Winning {
 
     // For UI with winning number input
     public static String winningNumberInput() {
-        System.out.println("당첨 번호를 입력해 주세요.");
+        System.out.println(MSG.INPUT_WINNING.getMsg());
         String winningNumberInput = Console.readLine();
         System.out.println();
         validateWinningNumberInput(winningNumberInput);
@@ -35,7 +35,7 @@ public class Winning {
 
     // For UI with bonus number input
     public static String bonusNumberInput() {
-        System.out.println("보너스 번호를 입력해 주세요.");
+        System.out.println(MSG.INPUT_BONUS.getMsg());
         String bonusNumberInput = Console.readLine();
         System.out.println();
         validate(bonusNumberInput);
@@ -47,7 +47,7 @@ public class Winning {
         String[] splitWinningNumber = winningNumber.split(",");
 
         if (splitWinningNumber.length != 6) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(MSG.ERR_WINNING.getMsg());
         }
 
         for (String i : splitWinningNumber){
@@ -65,21 +65,21 @@ public class Winning {
         try {
             Integer.parseInt(input);
         }catch (Exception e) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(MSG.ERR_NUMBER_FORMAT.getMsg());
         }
     }
 
     public static void validateRange(final String input) {
         int intInput = Integer.parseInt(input);
         if (intInput < 1 || intInput > 45) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(MSG.ERR_NUMBER_RANGE.getMsg());
         }
     }
 
     public static void validateUniqueNumber(final String input) {
         if (forDuplicateCheck.contains(input)) {
             System.out.println();
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(MSG.ERR_NOT_UNIQUE_NUM.getMsg());
         }
         forDuplicateCheck.add(input);
     }
