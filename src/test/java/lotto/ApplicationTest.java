@@ -56,10 +56,6 @@ class ApplicationTest extends NsTest {
 
     @Override
     public void runMain() {
-        try {
-            Application.main(new String[]{});
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        Application.main(new String[]{});
     }
 }
