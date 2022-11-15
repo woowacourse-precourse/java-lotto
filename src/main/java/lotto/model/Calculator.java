@@ -2,14 +2,11 @@ package lotto.model;
 
 import java.util.List;
 
+import static lotto.utils.PrizeInfo.*;
+
 public class Calculator {
 
     private static final int PRICE_OF_LOTTO = 1000;
-    private static final int EARNING_OF_1ST_PRIZE = 2000000000;
-    private static final int EARNING_OF_2ND_PRIZE = 30000000;
-    private static final int EARNING_OF_3RD_PRIZE = 1500000;
-    private static final int EARNING_OF_4TH_PRIZE = 50000;
-    private static final int EARNING_OF_5TH_PRIZE = 5000;
 
     private Lotto wonLotto;
     private int bonusNumber;
@@ -33,11 +30,11 @@ public class Calculator {
     }
 
     public double calculateEarningRate() {
-        double earned = userRanks[1] * EARNING_OF_1ST_PRIZE
-                + userRanks[2] * EARNING_OF_2ND_PRIZE
-                + userRanks[3] * EARNING_OF_3RD_PRIZE
-                + userRanks[4] * EARNING_OF_4TH_PRIZE
-                + userRanks[5] * EARNING_OF_5TH_PRIZE;
+        double earned = userRanks[1] * PRIZE1.getReward()
+                + userRanks[2] * PRIZE2.getReward()
+                + userRanks[3] * PRIZE3.getReward()
+                + userRanks[4] * PRIZE4.getReward()
+                + userRanks[5] * PRIZE5.getReward();
         double earningRate = earned / userInvestment * 100;
         return earningRate;
     }
