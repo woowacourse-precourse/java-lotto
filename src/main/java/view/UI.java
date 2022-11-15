@@ -5,6 +5,7 @@ import lotto.Lotto;
 import lotto.Buyer;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.NoSuchElementException;
 
@@ -24,6 +25,7 @@ public class UI {
         } catch (IllegalStateException | NumberFormatException e ) {
             System.out.println(e.getMessage());
             System.out.println(ERROR_NOT_NUMBER.getMessage());
+            System.out.println(Arrays.toString(e.getStackTrace()));
             throw new NoSuchElementException();
         }
     }
