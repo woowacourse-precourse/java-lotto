@@ -4,6 +4,8 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.List;
+import lotto.Constant.LottoSystemValidationError;
+import lotto.Constant.LottoValidationError;
 import lotto.Constant.WinInfo;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -19,7 +21,7 @@ class LottoSystemTest {
         LottoSystem lottoSystem = new LottoSystem();
         assertThatThrownBy(() -> lottoSystem.setWinNumbers(winNumbers))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("[ERROR] 로또 번호가 너무 많거나 적습니다.");
+                .isEqualTo(LottoValidationError.COUNT.exception);
 
     }
 
@@ -45,7 +47,7 @@ class LottoSystemTest {
         LottoSystem lottoSystem = new LottoSystem();
         assertThatThrownBy(() -> lottoSystem.setWinNumbers(winNumbers))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
+                .isEqualTo(LottoValidationError.RANGE.exception);
 
     }
 
@@ -64,14 +66,14 @@ class LottoSystemTest {
         );
     }
 
-    @DisplayName("로또 번호의 범위가 설정에서 벗어났다면 발생한다.")
+    @DisplayName("중복되는 로또 번호가 있다면 예외 발생한다.")
     @ParameterizedTest
     @MethodSource("provider_검증_당첨번호중복_IllegalArgumentException")
     void 검증_당첨번호중복_IllegalArgumentException(List<Integer> winNumbers) {
         LottoSystem lottoSystem = new LottoSystem();
         assertThatThrownBy(() -> lottoSystem.setWinNumbers(winNumbers))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("[ERROR] 로또 번호에 중복된 숫자가 있으면 안됩니다.");
+                .isEqualTo(LottoValidationError.DUPLICATE.exception);
 
     }
 
@@ -97,8 +99,7 @@ class LottoSystemTest {
         LottoSystem lottoSystem = new LottoSystem();
         assertThatThrownBy(() -> lottoSystem.setBonusNumbers(bonusNumber))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("[ERROR] 보너스 번호는 1부터 45 사이의 숫자여야 합니다.");
-
+                .isEqualTo(LottoSystemValidationError.BONUS_RANGE.exception);
     }
 
     @DisplayName("Lotto에 대해서 알맞은 WinInfo정보를 반환하는지")

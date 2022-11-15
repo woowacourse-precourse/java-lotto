@@ -1,6 +1,7 @@
 package lotto;
 
 import java.util.List;
+import lotto.Constant.LottoSystemValidationError;
 import lotto.Constant.WinInfo;
 
 public class LottoSystem {
@@ -27,7 +28,8 @@ public class LottoSystem {
 
     private void validateBonusNumbers(int bonusNumbers) {
         if (bonusNumbers < Lotto.NUMBER_MIN || bonusNumbers > Lotto.NUMBER_MAX) {
-            throw new IllegalArgumentException("[ERROR] 보너스 번호는 1부터 45 사이의 숫자여야 합니다.");
+            //throw new IllegalArgumentException("[ERROR] 보너스 번호는 1부터 45 사이의 숫자여야 합니다.");
+            throw LottoSystemValidationError.BONUS_RANGE.exception;
         }
     }
 
