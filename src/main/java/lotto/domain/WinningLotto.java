@@ -10,11 +10,10 @@ public class WinningLotto {
     private final List<Integer> numbersWithBonus;
 
     public WinningLotto(List<Integer> numbers, int bonusNumber) {
-
         this.numbersWithBonus = createWinningLotto(numbers, bonusNumber);
     }
 
-    public List<Integer> getLottoNumber() {
+    public List<Integer> getLottoNumbers() {
         return numbersWithBonus.subList(0, LOTTO_LENGTH);
     }
 
@@ -23,23 +22,30 @@ public class WinningLotto {
     }
 
     public static List<Integer> createWinningLotto(List<Integer> numbers, int bonusNumber) {
-
         List<Integer> lottoNumbers = new ArrayList<>();
 
-        for(int number : numbers) {
-            verifyNumber(lottoNumbers, number);
-            lottoNumbers.add(number);
-        }
+        numbers.forEach(number -> addNumber(lottoNumbers, number));
+        checkSize(lottoNumbers);
 
-        verifyNumber(lottoNumbers, bonusNumber);
-        lottoNumbers.add(bonusNumber);
+        addNumber(lottoNumbers, bonusNumber);
 
         return lottoNumbers;
+    }
+
+    public static void addNumber(List<Integer> numbers, int number) {
+        verifyNumber(numbers, number);
+        numbers.add(number);
     }
 
     public static void verifyNumber(List<Integer> numbers, int number) {
         checkOutOfRange(number);
         checkDuplicated(numbers, number);
+    }
+
+    public static void checkSize(List<Integer> numbers) {
+        if (numbers.size() != 6) {
+            throw new IllegalArgumentException();
+        }
     }
 
     public static void checkOutOfRange(int number) {
@@ -55,9 +61,9 @@ public class WinningLotto {
     public int countEqualNumber(Lotto userLotto) {
 
         int count = 0;
-        for (int number : this.getLottoNumber())
+        for (int number : this.getLottoNumbers())
             if (userLotto.contains(number))
-                count += 1;
+                count++;
 
         if (count != FIVE_EQUALS)
             return count;
