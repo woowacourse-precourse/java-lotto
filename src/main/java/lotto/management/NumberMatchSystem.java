@@ -8,8 +8,8 @@ import java.util.stream.Collectors;
 
 public class NumberMatchSystem {
     private final int INDEX_ADJUSTMENT_VALUE = 3;
-    private final int INIT_VALUE = 0;
     private final int MINIMUM_QUALIFICATION = 3;
+    private final int INIT_VALUE = 0;
     private final int THREE_MATCH_INDEX = 0;
     private final int FOUR_MATCH_INDEX = 1;
     private final int FIVE_MATCH_INDEX = 2;
@@ -21,7 +21,7 @@ public class NumberMatchSystem {
 
     private List<Integer> ticketResult;
 
-    NumberMatchSystem(List<List<Integer>> numberIntegration, List<Integer> winningNumbers, int bonusNumber) {
+    public NumberMatchSystem(List<List<Integer>> numberIntegration, List<Integer> winningNumbers, int bonusNumber) {
         ticketResult = new ArrayList<>();
         init();
         this.numberIntegration = numberIntegration;
@@ -46,7 +46,7 @@ public class NumberMatchSystem {
         }
     }
 
-    private int countMatchNumbers(List<Integer> oneTicket) {
+    public int countMatchNumbers(List<Integer> oneTicket) {
         return oneTicket.stream()
                 .filter(ticket -> winningNumbers.stream().anyMatch(Predicate.isEqual(ticket)))
                 .collect(Collectors.toList())
