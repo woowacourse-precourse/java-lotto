@@ -1,28 +1,28 @@
 package lotto.domain;
 
 public enum Rank {
-    FIRST(6, 2000000000), SECOND(5, 30000000), THIRD(5, 1500000), FOURTH(4, 50000), FIFTH(3, 5000);
+    FIFTH(3, "3개 일치 (5,000원)"), FOURTH(4, "4개 일치 (50,000원)"), THIRD(5, "5개 일치 (1,500,000원)"), SECOND(5, "5개 일치, 보너스 볼 일치 (30,000,000원)"), FIRST(6, "6개 일치 (2,000,000,000원)");
 
     private final int value;
-    private final int lottoMoney;
+    private final String ouputMessage;
     private static final Rank[] RANK_DIR = Rank.values();
 
-    Rank(int value, int lottoMoney) {
+    Rank(int value, String ouputMessage) {
         this.value = value;
-        this.lottoMoney = lottoMoney;
+        this.ouputMessage = ouputMessage;
     }
 
     public int getValue() {
         return value;
     }
 
-    public int getLottoMoney() {
-        return lottoMoney;
+    public String ouputMessage() {
+        return ouputMessage;
     }
 
-    public static String of(int count){
-        for(Rank rank : RANK_DIR){
-            if(rank.getValue()==count){
+    public static String of(int count) {
+        for (Rank rank : RANK_DIR) {
+            if (rank.getValue() == count) {
                 return rank.name();
             }
         }

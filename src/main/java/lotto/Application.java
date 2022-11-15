@@ -33,5 +33,7 @@ public class Application {
             }
             roulette.countLotto(one.getNumbers(), sameNumber);
         }
+
+        printer.printWinning(roulette.lottoStatus);
     }
 }

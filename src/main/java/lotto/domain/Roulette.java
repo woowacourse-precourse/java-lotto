@@ -8,7 +8,7 @@ public class Roulette {
     public Map<String, Integer> lottoStatus = new HashMap<>();
     List<Integer> winningNumber;
     int bonusNumber;
-
+    
     public Roulette(List<Integer> numbers, int number) {
         this.winningNumber = numbers;
         this.bonusNumber = number;
