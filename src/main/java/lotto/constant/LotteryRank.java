@@ -1,7 +1,5 @@
 package lotto.constant;
 
-import lotto.domain.constant.LottoProperty;
-
 import java.text.DecimalFormat;
 import java.util.Arrays;
 import java.util.Collections;

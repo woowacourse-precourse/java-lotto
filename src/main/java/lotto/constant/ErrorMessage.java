@@ -1,7 +1,5 @@
 package lotto.constant;
 
-import lotto.domain.constant.LottoProperty;
-
 public enum ErrorMessage {
     EMPTY_VALUE("값을 입력하지 않았습니다."),
     EMPTY_VALUE_IN_WINNING_NUMBER("입력된 요소 중 비어있는 값이 있습니다."),

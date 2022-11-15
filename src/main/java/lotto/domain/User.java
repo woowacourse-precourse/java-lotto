@@ -2,7 +2,7 @@ package lotto.domain;
 
 import lotto.constant.LotteryRank;
 import lotto.constant.Status;
-import lotto.domain.constant.LottoProperty;
+import lotto.constant.LottoProperty;
 import lotto.constant.ErrorMessage;
 
 import java.util.ArrayList;

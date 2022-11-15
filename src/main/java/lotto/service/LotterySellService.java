@@ -3,7 +3,7 @@ package lotto.service;
 import camp.nextstep.edu.missionutils.Randoms;
 import lotto.domain.LotteryTicket;
 import lotto.domain.User;
-import lotto.domain.constant.LottoProperty;
+import lotto.constant.LottoProperty;
 import lotto.repository.LotteryTicketRepository;
 
 import java.util.List;

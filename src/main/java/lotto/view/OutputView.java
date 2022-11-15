@@ -1,7 +1,7 @@
 package lotto.view;
 
 import lotto.constant.LotteryRank;
-import lotto.domain.constant.LottoProperty;
+import lotto.constant.LottoProperty;
 import lotto.view.constant.Format;
 import lotto.view.constant.PurchasePhrase;
 import lotto.view.constant.ResultPhrase;
