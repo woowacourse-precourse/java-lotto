@@ -17,6 +17,10 @@ public class User {
         return money / 1000;
     }
 
+    public void printCount(){
+        System.out.println(boughtLotto.size() + "개를 구매했습니다.");
+    }
+
     // 구매한 크기만큼의 로또 제공 메소드
     public void generatingLotto(int lottoCount) {
         for (int i = 0; i < lottoCount; i++) {
