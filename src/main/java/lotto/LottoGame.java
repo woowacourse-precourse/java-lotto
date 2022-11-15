@@ -10,6 +10,7 @@ public class LottoGame {
     public List<Integer> winningNumber;
     public int bonusNumber;
     public List<Lotto> issuedLotto;
+    public List<Integer> gameResult;
 
     public void play() {
         Input input = new Input();
@@ -34,5 +35,13 @@ public class LottoGame {
             issuedLotto.add(newLotto);
         }
         return issuedLotto;
+    }
+
+    public void getGameResult() {
+        for (int order=0; order< issuedLotto.size(); order++) {
+            Lotto lotto = issuedLotto.get(order);
+            int rank = lotto.calculateRank(winningNumber, bonusNumber);
+            gameResult.set(rank, gameResult.get(rank)+1);
+        }
     }
 }
