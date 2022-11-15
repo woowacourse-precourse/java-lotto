@@ -1,5 +1,6 @@
-package lotto;
+package lotto.domain;
 
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -24,4 +25,17 @@ class LottoTest {
     }
 
     // 아래에 추가 테스트 작성 가능
+    @DisplayName("로또 번호의 범위에 속하지 않는 숫자가 있으면 예외가 발생한다.")
+    @Test
+    void createInvalidRangeNumber() {
+        assertThatThrownBy(() -> new Lotto(List.of(1, 2, 3, 4, 5, 46)))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("정렬된 숫자를 반환")
+    @Test
+    void getSortedNumbers() {
+        Lotto lotto = new Lotto(List.of(6, 5, 4, 3, 2, 1));
+        Assertions.assertThat(lotto.getSortedNumbers()).isEqualTo(List.of(1, 2, 3, 4, 5, 6));
+    }
 }
