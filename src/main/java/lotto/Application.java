@@ -16,6 +16,7 @@ public class Application {
         int lotto_count = CheckUnit(inputmoney);
         LottoNumber(lotto_count);
         List<Integer> win_numbers = InputNumber();
+        int bonus_number = BonusNumber();
     }
 
     public static String InputMoney() {
@@ -54,6 +55,10 @@ public class Application {
         return win_numbers;
     }
 
+    public static int BonusNumber(){
+        String bonus = Console.readLine();
+        return Integer.valueOf(bonus);
+    }
     public static List<Integer> CompareNumber(){
 
     }
