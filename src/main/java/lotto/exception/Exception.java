@@ -18,7 +18,8 @@ public class Exception {
     }
 
     public static void validateDivision(String purchaseCost) {
-        if(Integer.parseInt(purchaseCost) % LOTTO_COST != ZERO) {
+        int money = Integer.parseInt(purchaseCost);
+        if(money % LOTTO_COST != ZERO || money <= ZERO) {
             throwException(WRONG_PURCHASE_COST_MESSAGE);
         }
     }
