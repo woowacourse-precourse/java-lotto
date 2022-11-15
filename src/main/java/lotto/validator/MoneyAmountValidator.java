@@ -1,5 +1,6 @@
 package lotto.validator;
 
+import lotto.constant.Constant;
 import lotto.constant.ErrorMessage;
 
 public class MoneyAmountValidator {
@@ -17,13 +18,13 @@ public class MoneyAmountValidator {
     }
 
     private static void validateMoneyLessThanThousand(int moneyAmount){
-        if (moneyAmount < 1000) {
+        if (moneyAmount < Constant.LOTTO_PRICE) {
             throw new IllegalArgumentException(ErrorMessage.MONEY_AMOUNT_CANNOT_BUY_LOTTO);
         }
     }
 
     private static void validateMoneyModThousand(int moneyAmount){
-        if (moneyAmount % 1000 != 0) {
+        if (moneyAmount % Constant.LOTTO_PRICE != 0) {
             throw new IllegalArgumentException(ErrorMessage.MONEY_AMOUNT_WRONG_VALUE);
         }
     }
