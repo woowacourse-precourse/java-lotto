@@ -52,7 +52,7 @@ public class User {
         this.lottoNumbers = lottoNumbers;
     }
 
-    private static void validateCost(String cost) {
+    private void validateCost(String cost) {
         try {
             if (Integer.parseInt(cost) % 1000 != 0) {
                 throw new IllegalArgumentException(USER_INPUT_COST.getValue());
