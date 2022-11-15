@@ -3,7 +3,6 @@ package lotto;
 import java.util.List;
 import lotto.domain.BuyLotto;
 import lotto.domain.Output;
-import lotto.domain.PrintMessages;
 import lotto.domain.Rank;
 import lotto.domain.WonAnalysis;
 import lotto.domain.WonNumber;
@@ -13,25 +12,22 @@ public class Application {
 
     public static void main(String[] args) {
         try {
-
-            System.out.println(PrintMessages.INPUT_MONEY.getMessage());
-
-            BuyLotto by = new BuyLotto();
-            by.GenerateLottoNumber();
-            System.out.println(by.cntLotto + PrintMessages.LOTTO_COUNT.getMessage());
-            by.showLottos();
-
-            System.out.println(PrintMessages.INPUT_NUMBER.getMessage());
-            WonNumber wonNumber = new WonNumber();
-            System.out.println(PrintMessages.INPUT_BONUS_NUMBER.getMessage());
-            wonNumber.bonusNumber();
-
-            WonAnalysis wonAnalysis = new WonAnalysis();
-            List<Rank> Result = wonAnalysis.createLottoResult(wonNumber.wonNumber, by.lottoList);
-
             Output output = new Output();
+            BuyLotto by = new BuyLotto();
+
+            output.printInputMoney();
+            by.inputPrice();
+            by.GenerateLottoNumber();
+            output.printBuyLotto(by.lottoList);
+            output.printInputMessage();
+
+            WonNumber wonNumber = new WonNumber();
+            output.inputBonusNumber();
+            wonNumber.bonusNumber();
+            WonAnalysis wonAnalysis = new WonAnalysis();
+            List<Rank> Result = wonAnalysis.Result(wonNumber.wonNumber, by.lottoList);
             output.printLottoResult(Result);
-            String percent = wonAnalysis.calculatePercent(Result);
+            String percent = wonAnalysis.Percent(Result);
             output.printPercent(percent);
 
         } catch (IllegalArgumentException e) {
