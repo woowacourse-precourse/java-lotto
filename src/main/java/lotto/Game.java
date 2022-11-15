@@ -1,7 +1,5 @@
 package lotto;
 
-import exception.LottoException;
-
 import java.util.List;
 
 public class Game {
@@ -14,9 +12,6 @@ public class Game {
     private int hitFiveAndBonus;
     private int hitSix;
     private List<Integer> winningNumbers;
-
-    private LottoException lottoException;
-
 
     public int getBonusNumber(){
         return this.bonusNumber;
@@ -62,7 +57,7 @@ public class Game {
         this.hitSix = hitSix;
     }
     public void changeMoney(int money){
-        lottoException.validateMoney(money);
+        if( money % 1000 != 0 ) throw new IllegalArgumentException("[ERROR] 사용자 투자 금액은 1000으로 나누어떨어져야 유효합니다.");
         this.money = money;
     }
 
