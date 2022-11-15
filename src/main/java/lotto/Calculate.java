@@ -38,11 +38,8 @@ public class Calculate {
     // 비교결과를 바탕으로 당첨 결과에 해당하는 인덱스를 리턴하는 기능
     public static int winningCountAndBonusNumberToIdx(int winningCount, boolean isWinBonusNumber) {
         int idx = winningCount-3;
-        if (winningCount == 5 && isWinBonusNumber) {
+        if (winningCount == 5 && isWinBonusNumber || winningCount == 6) {
             idx++;
-        }
-        if (winningCount == 6) {
-            idx += 2;
         }
         return idx;
     }
