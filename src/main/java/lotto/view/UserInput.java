@@ -11,7 +11,7 @@ public class UserInput {
     private static final String INPUT_MONEY = "구입금액을 입력해 주세요.";
     private static final String INPUT_LOTTO_WIN_NUMBER = "당첨 번호를 입력해 주세요.";
     private static final String INPUT_BONUS_NUMBER = "보너스 번호를 입력해 주세요.";
-    private static final String ERROR_LOTTO_NUMBER_RANGE = "로또 번호는 1부터 45 사이의 숫자여야 합니다.";
+    private static final String ERROR_LOTTO_NOT_NUMBER = "숫자만 입력할 수 있습니다.";
     private static final String ERROR_INPUT_MONEY = "로또 구입 금액은 1000원 단위의 숫자여야 합니다.";
     private static final String ERROR_NULL_INPUT = "값을 입력해야 합니다.";
 
@@ -34,16 +34,10 @@ public class UserInput {
 
     private static Integer validateBonusNumber(String inputBonusNumber) {
         if (!inputBonusNumber.matches("^[0-9]+$")) {
-            throw new IllegalArgumentException(ERROR_LOTTO_NUMBER_RANGE);
+            throw new IllegalArgumentException(ERROR_LOTTO_NOT_NUMBER);
         }
 
-        final Integer bonusNumber = stringToInteger(inputBonusNumber);
-
-        if (bonusNumber < 1 || bonusNumber > 45) {
-            throw new IllegalArgumentException(ERROR_LOTTO_NUMBER_RANGE);
-        }
-
-        return bonusNumber;
+        return stringToInteger(inputBonusNumber);
     }
 
     private static Integer validateInputMoney(String inputMoney) {
@@ -56,7 +50,7 @@ public class UserInput {
 
     private static Lotto validateLottoWinNumber(List<String> inputLottoWinNumber) {
         if (!inputLottoWinNumber.stream().allMatch(n -> n.matches("^[0-9]+$"))) {
-            throw new IllegalArgumentException(ERROR_LOTTO_NUMBER_RANGE);
+            throw new IllegalArgumentException(ERROR_LOTTO_NOT_NUMBER);
         }
 
         return new Lotto(stringListToIntegerList(inputLottoWinNumber));
