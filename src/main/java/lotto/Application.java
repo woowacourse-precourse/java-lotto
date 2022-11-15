@@ -9,16 +9,21 @@ import java.util.stream.Stream;
 
 import static lotto.exception.ErrorCode.MONEY_ERROR;
 import static lotto.exception.ErrorCode.WIN_NUMBER_ERROR;
+import static lotto.exception.ErrorCode.BONUS_NUMBER_ERROR;
 
 public class Application {
     public static void main(String[] args) {
         try {
+            //로또 구매
             int money = askMoney();
             Receipt receipt = new Receipt(money);
             List<Lotto> lottos = receipt.buy();
             print(receipt, lottos);
+
+            //당첨 로또 생성
             List<Integer> winNumbers = askWinNumbers();
-            Lotto winLotto = new Lotto(winNumbers);
+            int bonusNumber = askBonusNumber();
+            WinLotto winLotto = new WinLotto(winNumbers, bonusNumber);
         } catch (MyIllegalArgumentException e) {
             e.printErrorMessage();
         }
@@ -28,6 +33,7 @@ public class Application {
         receipt.printReceipt();
         lottos.forEach(Lotto::sortNumbers);
         lottos.forEach(Lotto::printNumbers);
+        System.out.println();
     }
 
     /**
@@ -49,5 +55,15 @@ public class Application {
         } catch (Exception ignored) {
         }
         throw new MyIllegalArgumentException(WIN_NUMBER_ERROR);
+    }
+
+    public static int askBonusNumber() {
+        System.out.println();
+        System.out.println("보너스 번호를 입력해 주세요.");
+        try {
+            return Integer.parseInt(Console.readLine());
+        } catch (NumberFormatException ignored) {
+        }
+        throw new MyIllegalArgumentException(BONUS_NUMBER_ERROR);
     }
 }
