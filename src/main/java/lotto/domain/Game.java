@@ -25,12 +25,22 @@ public class Game {
         JudgeMent judgeMent = new JudgeMent();
         judgeMent.setCorrectResult(lottoNumbers, winningNumber);
         System.out.println(Resource.resultOfWinning);
+        totalBill = getTotalBill(totalBill, judgeMent);
+        return totalBill;
+    }
+
+    private int getTotalBill(int totalBill, JudgeMent judgeMent) {
         Map<Reward,Integer> result = judgeMent.getCorrectResult();
         Iterator<Reward> keys = result.keySet().iterator();
         while(keys.hasNext()){
             Reward key = keys.next();
             showResult(result,key);
+            if(result.get(key)!=0){
+                String bill = key.getBIll().replaceAll(",","");
+                totalBill +=(Integer.parseInt(bill));
+            }
         }
+        return totalBill;
     }
 
     private void showResult(Map<Reward, Integer> result, Reward key) {
