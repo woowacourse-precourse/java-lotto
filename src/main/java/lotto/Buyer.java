@@ -11,7 +11,7 @@ public class User {
         int count = money / LOTTO_PRICE;
 
         List<Lotto> lottos = new ArrayList<>();
-        LottoMachine lottoMachine = new LottoMachine();
+        LottoRandomGenerator lottoMachine = new LottoRandomGenerator();
         for(int i=0; i<count; i++){
             lottos.add(lottoMachine.createLotto());
         }

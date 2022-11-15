@@ -4,7 +4,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.*;
 
-public class LottoMachine {
+public class LottoRandomGenerator {
     private static final int MIN_NUMBER = 1;
     private static final int MAX_NUMBER = 45;
     private static final int LOTTO_SIZE = 6;
@@ -12,11 +12,6 @@ public class LottoMachine {
     private static final String RANGE_ERROR_MESSAGE = "[ERROR] 로또 범위에 맞지 않는 숫자값을 가지고 있습니다.";
     private static final String SIZE_ERROR_MESSAGE = "[ERROR] 생성된 로또의 번호가 6개가 아닙니다.";
     private static final String OVERLAP_ERROR_MESSAGE = "[ERROR] 로또에 중복된 번호가 있습니다.";
-
-    private int money = 0;
-    List<Lotto> Lottos;
-
-    Map<Rank, Integer> winningBoard;
 
     public Lotto createLotto(){
         List<Integer> lottoNumber = Randoms.pickUniqueNumbersInRange(MIN_NUMBER,MAX_NUMBER,LOTTO_SIZE);
@@ -54,8 +49,4 @@ public class LottoMachine {
         throw new IllegalArgumentException(OVERLAP_ERROR_MESSAGE);
     }
 
-    public void inputMoney() {
-        UserInput input = new UserInput();
-        money = input.moneyInput()
-    }
 }
