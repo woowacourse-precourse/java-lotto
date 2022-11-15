@@ -149,4 +149,20 @@ public class Game {
         return matches;
     }
 
+    /**
+     * 유저의 모든 로또 게임 결과를 합산해, 수익률을 반환
+     **/
+    public String getYield(int[] rankCount) {
+        int amount = this.user.getGameCount() * 1000; // 유저가 지불한 총 금액
+        List<Integer> prizeMoney = new ArrayList<>(Arrays.asList(2000000000, 30000000, 1500000, 50000, 5000)); // 1 ~ 5등 상금
+
+        double yield = 0; // 수익률
+
+        for(int i = 1; i <= 5; i++) {
+            yield += rankCount[i] * prizeMoney.get(i-1);
+        }
+
+        return String.format("%.1f", yield / amount * 100);
+    }
+
 }

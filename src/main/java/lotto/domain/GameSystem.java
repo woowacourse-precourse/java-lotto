@@ -42,10 +42,12 @@ public class GameSystem {
             game.enterBonusNumber();
 
             //7. 등수 확인
-            System.out.println("등수 확인");
             ranks = game.discriminateRanking();
             counts = game.getRankCount(ranks);
             printLottoRank(ranks, counts);
+
+            //8. 수익률 확인
+            printYield(game.getYield(counts));
 
         } catch (IllegalArgumentException e) {
             throw e;
@@ -67,6 +69,8 @@ public class GameSystem {
         List<String> prizeMoney = new ArrayList<>(Arrays.asList("2,000,000,000원", "30,000,000원", "1,500,000원", "50,000원", "5,000원"));
         List<String> matchNumber = new ArrayList<>(Arrays.asList("6", "5", "5", "4", "3"));
 
+        System.out.println("당첨 통계\n---");
+
         for(int i = 4 ; i >= 0 ; i--) {
 
             if(i != 1) // 2등이 아닐 때
@@ -76,6 +80,13 @@ public class GameSystem {
 
         }
 
+    }
+
+    /**
+     * 로또 수익률을 요구사항 포맷에 맞게 출력해주는 함수
+     **/
+    public static void printYield(String yield) {
+        System.out.println("총 수익률은 " + yield + "%입니다.");
     }
 
 }
