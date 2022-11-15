@@ -1,6 +1,6 @@
 package lotto;
 
-import lotto.model.Model;
+import lotto.domain.Model;
 import org.junit.jupiter.api.Test;
 
 import java.util.HashMap;
