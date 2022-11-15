@@ -19,13 +19,13 @@ public class Lotto {
 
     private void validateSize(List<Integer> numbers) {
         if (numbers.size() != NUM_OF_LOTTO) {
-            throw new IllegalArgumentException("[ERROR] 로또 번호는 6자리여야 합니다.");
+            throw new IllegalArgumentException(ERROR_MESSAGE_FOR_SIZE);
         }
     }
 
     private void validateRangeOfNumber(int number) {
         if (number < MIN_VALUE_OF_LOTTO || number > MAX_VALUE_OF_LOTTO) {
-            throw new IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
+            throw new IllegalArgumentException(ERROR_MESSAGE_FOR_RANGE_OF_NUMBER);
         }
     }
 
@@ -42,19 +42,19 @@ public class Lotto {
     private void validateDuplication(List<Integer> numbers) {
         int numsOfUniqueNumber = getNumsOfUniqueNumber(numbers);
         if (numbers.size() != numsOfUniqueNumber) {
-            throw new IllegalArgumentException("[ERROR] 로또 번호는 서로 중복되지 않는 숫자여야 합니다.");
+            throw new IllegalArgumentException(ERROR_MESSAGE_FOR_DUPLICATION);
         }
     }
 
     private void validateDuplicationWithWinningNumbers(int bonus) {
         if (winningNumbers.contains(bonus)) {
-            throw new IllegalArgumentException("[ERROR] 보너스 번호는 로또 번호와 중복되지 않은 숫자여야 합니다.");
+            throw new IllegalArgumentException(ERROR_MESSAGE_FOR_DUPLICATION_WITH_WINNING_NUMBER);
         }
     }
 
     private void validateRangeOfBonusNumber(int number) {
         if (number < MIN_VALUE_OF_LOTTO || number > MAX_VALUE_OF_LOTTO) {
-            throw new IllegalArgumentException("[ERROR] 보너스 번호는 1부터 45 사이의 숫자여야 합니다.");
+            throw new IllegalArgumentException(ERROR_MESSAGE_FOR_RANGE_OF_BONUS_NUMBER);
         }
     }
 
