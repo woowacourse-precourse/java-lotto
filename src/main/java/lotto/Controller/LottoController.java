@@ -11,15 +11,12 @@ public class LottoController {
         activate();
     }
 
-    public static Calculator makeCalculator(Buyer buyer, WinningLotto winningLotto) {
-        return new Calculator(winningLotto.makeRankResult(buyer));
-    }
 
     private void playLotto() {
         Buyer buyer = InputController.inputPurchaseAmount();
         OutputView.printBuyerLotto(buyer);
         WinningLotto winninglotto = InputController.inputWinningLotto();
-        Calculator calculator = LottoController.makeCalculator(buyer, winninglotto);
+        Calculator calculator = InputController.makeCalculator(buyer, winninglotto);
         OutputView.printWinningStatistics(calculator);
     }
 
