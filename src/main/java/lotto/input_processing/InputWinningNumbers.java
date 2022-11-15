@@ -26,7 +26,7 @@ public class InputWinningNumbers {
         }
         return result;
     }
-    /** 보너스 번호 입력 및 예외처리 기능 */
+    /** 보너스 번호를 입력받는 기능 */
      public static int getBonusNumbers(List<Integer> winningNumbers) {
         System.out.println("\n보너스 번호를 입력해 주세요.");
         String input = Console.readLine();
