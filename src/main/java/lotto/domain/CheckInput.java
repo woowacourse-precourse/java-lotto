@@ -104,6 +104,12 @@ public class CheckInput {
         }
     }
 
+    public static int readBonusNumber() {
+        System.out.println(PLEASE_WRITE_BONUS_NUMBER);
+        String input = Console.readLine();
+        return checkBonusNumberValid(input);
+    }
+
     public static int checkBonusNumberValid(String input) {
         checkBonusNumberPattern(input);
         int bonusNumber = Integer.parseInt(input);
