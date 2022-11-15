@@ -7,7 +7,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class WinningsCalculationService {
+public class WinningsSettingService {
 
     private static final Integer SIZE = 6;
 
@@ -24,7 +24,7 @@ public class WinningsCalculationService {
     }
 
 
-    public void settingWinningsInfo() {
+    public void settingWinningsInfo() throws IllegalArgumentException {
         this.winningsNumber = bringWinningsNumber();
         this.bonusNumber = bringBonusNumber();
     }
