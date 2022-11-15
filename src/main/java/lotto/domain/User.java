@@ -15,4 +15,8 @@ public class User {
         }
     }
 
+    public int getGameCount() {
+        return amount / 1000;
+    }
+
 }
