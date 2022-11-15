@@ -10,7 +10,6 @@ public class ConsoleOutput implements Output {
     private static final String PURCHASE_TEXT = "개를 구매했습니다.";
     private static final String RESULT_TEXT = "\n당첨통계\n---";
     private static final String ERROR_PREFIX = "[ERROR] ";
-
     private static final String RESULT_FORMAT = "3개 일치 (5,000원) - %d개\n"
             + "4개 일치 (50,000원) - %d개\n"
             + "5개 일치 (1,500,000원) - %d개\n"
