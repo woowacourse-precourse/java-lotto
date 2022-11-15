@@ -24,8 +24,9 @@ public class Lotto {
     private void validateScope(List<Integer> numbers) {
         boolean isException = numbers.stream()
                 .anyMatch(number -> number < 1 || 45 < number);
-        if (isException)
+        if (isException) {
             throw new IllegalArgumentException();
+        }
     }
 
     private void validateDuplicate(List<Integer> numbers) {
@@ -35,30 +36,28 @@ public class Lotto {
             throw new IllegalArgumentException();
         }
     }
+    private int getBonusNumbers() {
+        return bonusNum;
+    }
+
+    public void addBonusNum(int bonusNum) {
+        this.bonusNum = bonusNum;
+    }
 
     public List<Integer> getNumbers() {
         return this.numbers;
     }
 
-    public int compare(Lotto numbers) {
-        List<Integer> target = numbers.getNumbers();
-        int matchNum = (int) target.stream()
+    public int compare(Lotto target) {
+        List<Integer> targetNumbers = target.getNumbers();
+        int matchNum = (int) targetNumbers.stream()
                 .filter(num -> this.numbers.contains(num))
                 .count();
         return matchNum;
-    }
-    public void addBonusNum(int bonusNum) {
-        this.bonusNum = bonusNum;
-    }
-
-    private int getBonusNumbers() {
-        return bonusNum;
     }
 
     public boolean hasBonusNum(Lotto numbers) {
         bonusNum = numbers.getBonusNumbers();
         return this.numbers.contains(bonusNum);
     }
-
-    // TODO: 추가 기능 구현
 }
