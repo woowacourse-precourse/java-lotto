@@ -10,16 +10,25 @@ import java.util.List;
 import java.util.Map;
 
 public class Application {
-    public static void validate(int value){
-        if (value % 1000 !=0) {
+    public static int validate(String valueStr) {
+        int valueInt = 0;
+        try {
+            valueInt = Integer.parseInt(valueStr);
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
+        }
+
+        if (valueInt % 1000 != 0) {
             System.out.println("[ERROR] 구입 금액은 1000원 단위입니다.");
             throw new IllegalArgumentException();
         }
+
+        return valueInt;
     }
     public static void main(String[] args) {
         System.out.println("구입금액을 입력해 주세요.");
-        int buyingValue = Integer.parseInt(Console.readLine());
-        validate(buyingValue);
+        String temp = Console.readLine();
+        int buyingValue = validate(temp);
 
         int countOfLotto = buyingValue/1000;
         System.out.println(countOfLotto+"개를 구매했습니다.");
