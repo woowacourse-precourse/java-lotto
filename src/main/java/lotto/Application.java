@@ -12,6 +12,8 @@ import java.util.List;
 import java.util.Map;
 
 import static java.lang.Character.*;
+import static lotto.Constants.COMMA;
+import static lotto.Constants.COUNT_DEFAULT_VALUE;
 import static lotto.Rank.*;
 import static lotto.message.ExceptionMessage.*;
 import static lotto.message.Message.*;
@@ -24,17 +26,29 @@ public class Application {
     public static void main(String[] args) {
         try {
             int amount = requestAmount();
-            List<Lotto> userLottos = issue.createLotto(amount);
+            List<Lotto> userLottos = createLottos(amount);
             printLottos(userLottos);
             Lotto prizeLotto = requestPrizeNumbers();
             int bonusNumber = requestBonusNumber();
-            Map<Rank, Integer> results = lottoService.compare(userLottos, prizeLotto, bonusNumber);
+            Map<Rank, Integer> results = getLottoResults(userLottos, prizeLotto, bonusNumber);
             printResults(results);
-            double rate = lottoService.calculateRate(results, amount);
+            double rate = getRate(results, amount);
             printRate(rate);
         } catch (IllegalArgumentException e) {
-            System.out.println(PREFIX + e.getMessage());
+            printExceptionMessage(e);
         }
+    }
+
+    private static List<Lotto> createLottos(int amount) {
+        return issue.createLotto(amount);
+    }
+
+    private static Map<Rank, Integer> getLottoResults(List<Lotto> userLottos, Lotto prizeLotto, int bonusNumber) {
+        return lottoService.compare(userLottos, prizeLotto, bonusNumber);
+    }
+
+    private static double getRate(Map<Rank, Integer> results, int amount) {
+        return lottoService.calculateRate(results, amount);
     }
 
     private static int requestAmount() {
@@ -57,7 +71,7 @@ public class Application {
         String input = Console.readLine();
 
         List<Integer> prizeNumbers = new ArrayList<>();
-        for (String number : input.split(",")) {
+        for (String number : input.split(COMMA)) {
             prizeNumbers.add(Integer.valueOf(number));
         }
         return new Lotto(prizeNumbers);
@@ -82,7 +96,7 @@ public class Application {
         System.out.println(RESULTS);
         System.out.println(DIV_LINE);
         for (Rank rank : Arrays.asList(FIFTH, FOURTH, THIRD, SECOND, FIRST)) {
-            int count = results.getOrDefault(rank, 0);
+            int count = results.getOrDefault(rank, COUNT_DEFAULT_VALUE);
             System.out.println(rank.getMessage(count));
         }
     }
@@ -90,5 +104,9 @@ public class Application {
     private static void printRate(double rate) {
         String message = String.format(RESPONSE_RATE, rate);
         System.out.println(message);
+    }
+
+    private static void printExceptionMessage(IllegalArgumentException e) {
+        System.out.println(PREFIX + e.getMessage());
     }
 }

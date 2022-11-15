@@ -13,6 +13,7 @@ public final class Constants {
     public static final int LOTTO_NUMBERS_COUNT = 6;
     public static final int LOTTO_PRICE = 1000;
     public static final int COUNT_DEFAULT_VALUE = 0;
+    public static final String COMMA = ",";
 
     public static final Map<Integer, Rank> RANKS = new HashMap<>() {
         {
