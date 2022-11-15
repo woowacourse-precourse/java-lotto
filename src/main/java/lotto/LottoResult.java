@@ -22,7 +22,7 @@ public class LottoResult {
                 getIsBonus(lotto, bonusNumber.bonusNumber);
             }
 
-            Result result = getRanking();
+            Result result = getMatchResult(equalCount, isBonus);
             if (lottoResult.containsKey(result)) {
                 lottoResult.put(result, lottoResult.get(result) + 1);
             }
@@ -58,24 +58,5 @@ public class LottoResult {
                 break;
             }
         }
-    }
-
-    private Result getRanking() {
-        if (equalCount == 6) {
-            return FIRST;
-        }
-        if (equalCount == 5 && isBonus) {
-            return SECOND;
-        }
-        if (equalCount == 5) {
-            return THIRD;
-        }
-        if (equalCount == 4) {
-            return FOURTH;
-        }
-        if (equalCount == 3) {
-            return FIFTH;
-        }
-        return NO_REWARD;
     }
 }
