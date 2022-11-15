@@ -57,7 +57,14 @@ public class InputView {
 
     public static int inputBonusNumber() {
         String input = Console.readLine();
+        validatePositiveInputBonusNumber(input);
         return convertInputBonusNumber(input);
+    }
+
+    private static void validatePositiveInputBonusNumber(String input) {
+        if (!input.matches(REGEX_ONLY_NUMBER)) {
+            throw new IllegalArgumentException(ERROR_WITH_TEXT_MESSAGE);
+        }
     }
 
     public static int convertInputBonusNumber(String input) {
