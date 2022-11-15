@@ -1,5 +1,7 @@
 package lotto;
 
+import java.text.MessageFormat;
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -13,53 +15,88 @@ public class Application {
     private static Map<Rank, Integer> resultRankMap = new HashMap<Rank, Integer>();
 
     public static void main(String[] args) {
-        int buyMoney = buyLotto();
-        List<List<Integer>> buyLottoPrint = buyLottoPrint(buyMoney);
-        Lotto myLottoNum = myLottoNum();
-        int bonusNum = bonusNum(myLottoNum);
+        try {
+            int buyMoney = buyLotto();
+            List<List<Integer>> buyLottoPrint = buyLottoPrint(buyMoney);
+            Lotto myLottoNum = myLottoNum();
+            int bonusNum = bonusNum(myLottoNum);
 
-        for (int j = 0; j < buyLottoPrint.size(); j++) {
-            List<Integer> lottoRandomNum = buyLottoPrint.get(j);
+            for (int j = 0; j < buyLottoPrint.size(); j++) {
+                List<Integer> lottoRandomNum = buyLottoPrint.get(j);
 
-            int agreementCount = lottoStart(lottoRandomNum, myLottoNum);
-            boolean bonusAgreement = bonusAgreement(bonusNum, lottoRandomNum);
-            Rank rank = agreementLotto(agreementCount, bonusAgreement);
-            prizeList(rank);
+                int agreementCount = lottoStart(lottoRandomNum, myLottoNum);
+                boolean bonusAgreement = bonusAgreement(bonusNum, lottoRandomNum);
+                Rank rank = agreementLotto(agreementCount, bonusAgreement);
+                prizeList(rank);
+            }
+            prizeListPrint();
+            yield(buyMoney);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
         }
-        yield(buyMoney);
-
-        System.out.println(resultRankMap);
-//        DecimalFormat decFormat = new DecimalFormat("###,###");
-//        String prizeMoney2 = decFormat.format(prizeMoney);
     }
 
-    // 당첨내역 리스트
     /**
-     * 7. prizeList (당첨 내역 저장) 완료 <br/>
+     * 7. prizeList (당첨 내역 저장) <br/>
      * lottoStart 값 받아서 일치 갯수 일치 당첨 복권 갯수 출력 <br/>
      * 
      */
     public static void prizeList(Rank rank) {
         Integer count = resultRankMap.get(rank);
+
         if (count == null) {
             count = 0;
         }
         resultRankMap.put(rank, count + 1);
     }
 
-    // 구매금액입력
+    /**
+     * 11. prizeListPrint (당첨내역 통계 출력) <br/>
+     */
+    public static void prizeListPrint() {
+        StringBuilder sb = new StringBuilder();
+        head(sb);
+        Rank[] rankArray = Rank.values();
+
+        for (int i = rankArray.length; i > 0; i--) {
+            Rank rank = rankArray[i - 1];
+            body(sb, rank, resultRankMap.get(rank));
+        }
+        System.out.print(sb);
+    }
+
+    private static void head(StringBuilder sb) {
+        sb.append("당첨 통계").append("\n").append("---").append("\n");
+    }
+
+    private static void body(StringBuilder sb, Rank rank, Integer count) {
+        if (count == null) {
+            count = 0;
+        }
+
+        String bonusMessage = "";
+        if (Rank.SECOND.equals(rank)) {
+            bonusMessage = ", 보너스 볼 일치";
+        }
+
+        sb.append(MessageFormat.format("{0}개 일치{1} ({2}원) - {3}개", rank.getlottoStart(), bonusMessage,
+                NumberFormat.getInstance().format(rank.getprizeMoney()), count));
+        sb.append("\n");
+
+    }
+
     /**
      * 6. buyLotto (로또 구입) 완료 <br/>
      * 1,000원으로 나누어 떨어지지 않는 경우 예외 처리한다. <br/>
      * 1장에 1,000원. 소숫점 예외처리 발생 <br/>
-     * inputMoney % 1000 != 0 예외발생!<br/>
-     * buyLotto return 값으로 1. lottoRandomNum n회차 돌리기
      * 
      * @return
      */
     public static int buyLotto() {
         System.out.println("구입금액을 입력해 주세요.");
+
         int inputMoney = 0;
+
         try {
             inputMoney = Integer.parseInt(Console.readLine());
         } catch (NumberFormatException e) {
@@ -74,56 +111,47 @@ public class Application {
         return buyLotto;
     }
 
-    // 랜덤 로또번호 뽑기
     /**
-     * 1. lottoRandomNum (Lotto 랜덤 숫자뽑기) 완료 <br/>
+     * 1. lottoRandomNum (Lotto 랜덤 숫자뽑기) <br/>
      * 숫자 1 ~ 45 Random, 중복되지 않는 숫자 6개 오름차순 저장
      * 
      * @return
      */
     public static List<Integer> lottoRandomNum() {
-        List<Integer> lottoRandomNum = new ArrayList<Integer>();
-        while (lottoRandomNum.size() < 6) {
-            List<Integer> lottoNum = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+        List<Integer> lottoRandomNum = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+//        Collections.sort(lottoRandomNum);
 
-            if (!lottoRandomNum.contains(lottoNum)) {
-                lottoRandomNum.addAll(lottoNum);
-                Collections.sort(lottoRandomNum);
-            }
-        }
         return lottoRandomNum;
     }
 
-    // 랜덤 로또번호 리스트 출력
     /**
-     * 10. buyLottoPrint (구매한 로또 lottoRandomNum 리스트 출력) 완료 <br/>
+     * 10. buyLottoPrint (구매한 로또 lottoRandomNum 리스트 출력) <br/>
      * 
      * @param lottoRandomNum
      * @return
      */
     public static List<List<Integer>> buyLottoPrint(int buyLotto) {
         List<List<Integer>> buyLottoPrint = new ArrayList<List<Integer>>();
+
         System.out.println(buyLotto + "개를 구매했습니다.");
 
         for (int i = 0; i < buyLotto; i++) {
-            buyLottoPrint.add(lottoRandomNum());
-        }
-        for (int i = 0; i < buyLottoPrint.size(); i++) {
-            System.out.println(buyLottoPrint.get(i));
+            List<Integer> list = lottoRandomNum();
+            buyLottoPrint.add(list);
+            System.out.println(list);
         }
         return buyLottoPrint;
     }
 
-    // 당첨번호 입력
     /**
-     * 2. myLottoNum (내가 뽑은 Lotto 숫자) 완료
+     * 2. myLottoNum (내가 뽑은 Lotto 숫자)
      * 
      * @param myLottoNum
      */
     public static Lotto myLottoNum() {
-        System.out.print("당첨 번호를 입력해 주세요.");
-        String myPickNum = Console.readLine();
+        System.out.println("당첨 번호를 입력해 주세요.");
 
+        String myPickNum = Console.readLine();
         String[] numbers = myPickNum.split(",");
 
         List<Integer> myLottoNum = new ArrayList<Integer>();
@@ -139,22 +167,22 @@ public class Application {
         return new Lotto(myLottoNum);
     }
 
-    // 보너스 번호 입력
     /**
-     * 2-1. bonusNum (보너스 번호) 완료
+     * 2-1. bonusNum (보너스 번호)
      * 
      * @return
      */
     public static int bonusNum(Lotto myLottoNum) {
-        System.out.print("보너스 번호를 입력해 주세요.");
+        System.out.println("보너스 번호를 입력해 주세요.");
+
         int bonusPick = 0;
+
         try {
             bonusPick = Integer.parseInt(Console.readLine());
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("[ERROR] 입력 타입 오류.");
         }
 
-        int bonusNum = 0;
         if (myLottoNum.contains(bonusPick)) {
             throw new IllegalArgumentException("[ERROR] 중복입력.에러 발생.");
         }
@@ -165,16 +193,14 @@ public class Application {
         return bonusPick;
     }
 
-    // 로또번호 대조
     /**
-     * 4. lottoStart (로또 번호 대조하기) 완료 <br/>
+     * 4. lottoStart (로또 번호 대조하기)<br/>
      * 
      * @param lottoRandomNum
      * @param myLottoNum
      * @return
      */
     public static int lottoStart(List<Integer> lottoRandomNum, Lotto myLottoNum) {
-
         int agreementCount = 0;
 
         for (int i = 0; i < lottoRandomNum.size(); i++) {
@@ -182,13 +208,12 @@ public class Application {
                 agreementCount++;
             }
         }
-        System.out.println(agreementCount);
+
         return agreementCount;
     }
 
-    // 보너스 번호 대조
     /**
-     * 4-1. bonusAgreement (보너스 번호 대조) 완료 <br/>
+     * 4-1. bonusAgreement (보너스 번호 대조) <br/>
      * bonusNum, lottoRandomNum 전달 return
      * 
      * @param bonusNum
@@ -199,9 +224,8 @@ public class Application {
         return lottoRandomNum.contains(bonusNum);
     }
 
-    // 당첨 등수 리턴
     /**
-     * 4-2. agreementLotto (로또 당첨 등수 리턴) 완료 <br/>
+     * 4-2. agreementLotto (로또 당첨 등수 리턴) <br/>
      * lottoStart (로또 번호 대조하기) 값에 따른 등수 리턴 <br/>
      * 
      * @param lottoStart
@@ -226,13 +250,12 @@ public class Application {
             rank = Rank.FIFTH;
         }
 
-        System.out.println(rank);
         return rank;
     }
 
     /**
-     * 8. yield (당첨금 수익률 계산) 보완중 <br/>
-     * ((당첨금총액 - 매입금액)/매입금액)*100 <br/>
+     * 8. yield (당첨금 수익률 계산) <br/>
+     * (당첨금총액/매입금액)*100 <br/>
      * 수익률은 소숫점 둘째자리에서 반올림 한다. <br/>
      * 수익률 프린트
      * 
@@ -251,10 +274,8 @@ public class Application {
                 sumPrizeMoney += prizeMoney * prizeCount;
             }
         }
-        yield = ((double) (sumPrizeMoney - money) / money) * 100;
+        yield = (double) sumPrizeMoney / money * 100;
         String yield2 = String.format("%.1f", yield);
         System.out.println("총 수익률은 " + yield2 + "%입니다.");
-
     }
-
 }
