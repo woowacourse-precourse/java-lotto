@@ -34,7 +34,7 @@ public class Lotto {
         List<Integer> distinct_numbers = numbers.stream()
                 .distinct()
                 .collect(Collectors.toList());
-        if (numbers.size() != distinct_numbers.size()) {
+        if (distinct_numbers.size() != CORRECT_LOTTO_SIZE.getValue()) {
             throw new IllegalArgumentException(ERROR_PREFIX.getMessage() + ERROR_LOTTO_NUMBER_IS_DUPLICATED.getMessage());
         }
     }
