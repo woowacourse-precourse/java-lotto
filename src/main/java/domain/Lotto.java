@@ -15,6 +15,7 @@ public class Lotto {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException();
         }
+        validateIsDuplicate(numbers);
     }
 
     public List<Integer> countMatch(Set<Integer> winningLottoNumbers, int bonusNumber) {
@@ -53,5 +54,12 @@ public class Lotto {
                                        .sorted()
                                        .collect(Collectors.toList());
         System.out.println(collect);
+    }
+
+    private void validateIsDuplicate(List<Integer> numbers) {
+        Set<Integer> lottoNumbers = new HashSet<>(numbers);
+        if (lottoNumbers.size() != 6) {
+            throw new IllegalArgumentException("로또 번호에 중복된 숫자가 있습니다.");
+        }
     }
 }
