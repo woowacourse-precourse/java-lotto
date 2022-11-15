@@ -49,7 +49,7 @@ public class LottoGameTest {
 
     @DisplayName("로또의 결과가 올바르게 나와야 한다.")
     @Test
-    void getResultLottoFunctionalTest() {
+    void getResultFunctionalTest() {
         List<Lotto> lottoes = new ArrayList<>();
         Lotto winningLotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
         int bonusNumber = 7;
@@ -63,7 +63,7 @@ public class LottoGameTest {
         lottoes.add(new Lotto(List.of(1, 2, 3, 43, 44, 45))); // 5등
 
         int[] expected = {2, 1, 1, 2, 1};
-        int[] result = LottoGame.getResultLotto(lottoes, winningLotto, bonusNumber);
+        int[] result = LottoGame.getResult(lottoes, winningLotto, bonusNumber);
 
         Assertions.assertThat(result).isEqualTo(expected);
     }

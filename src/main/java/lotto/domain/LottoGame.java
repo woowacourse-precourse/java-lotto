@@ -58,11 +58,11 @@ public class LottoGame {
     }
 
     // 로또 결과 확인 함수
-    public static int[] getResultLotto(List<Lotto> lottoes, Lotto winningLotto, int bonus) {
+    public static int[] getResult(List<Lotto> lottoes, Lotto winningLotto, int bonus) {
         int[] matchTable = initMatchTable();
 
         for (Lotto lotto : lottoes) {
-            eLottoPlace place = matchLotto(lotto, winningLotto, bonus);
+            eLottoPlace place = getMatchTable(lotto, winningLotto, bonus);
             matchTable = appendPlaceToResult(matchTable, place);
         }
         return matchTable;
@@ -74,7 +74,13 @@ public class LottoGame {
         return matchTable;
     }
 
-    private static eLottoPlace matchLotto(Lotto l1, Lotto l2, int bonus) {
+    private static eLottoPlace getMatchTable(Lotto l1, Lotto l2, int bonus) {
+        int matchCount = getMatchCount(l1, l2);
+
+        return getLottoPlace(matchCount, l1.getNumbers().contains(bonus));
+    }
+
+    private static int getMatchCount(Lotto l1, Lotto l2) {
         int matchCount = 0;
 
         for (int num : l1.getNumbers()) {
@@ -82,7 +88,7 @@ public class LottoGame {
                 matchCount += 1;
             }
         }
-        return getLottoPlace(matchCount, l1.getNumbers().contains(bonus));
+        return matchCount;
     }
 
     private static eLottoPlace getLottoPlace(int matchCount, boolean isBonusMatch) {

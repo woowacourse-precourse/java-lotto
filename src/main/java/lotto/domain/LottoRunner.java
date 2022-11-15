@@ -14,7 +14,7 @@ public class LottoRunner {
             Lotto winningLotto = new Lotto(LottoInStream.readLottoNumbers());
             int bonusNumber = LottoInStream.readBonusNumber(winningLotto);
 
-            int[] matches = LottoGame.getResultLotto(lottoes, winningLotto, bonusNumber);
+            int[] matches = LottoGame.getResult(lottoes, winningLotto, bonusNumber);
 
             LottoOutStream.showLottoResult(matches);
             LottoOutStream.showROR(LottoGame.getROR(matches, money));
