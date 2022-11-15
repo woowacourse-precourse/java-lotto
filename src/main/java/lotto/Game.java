@@ -24,6 +24,4 @@ public class Game {
         winningHistory.print();
         PrintMsg.earningRateMsg(earning.rateCalculate(lottoCount * 1000, earningAmount));
     }
-
-
 }

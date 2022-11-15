@@ -2,6 +2,7 @@ package lotto;
 
 import OutputView.PrintMsg;
 import camp.nextstep.edu.missionutils.Console;
+import static Exception.Invalidator.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,15 +39,5 @@ public class WinningNumber {
         PrintMsg.bonusMsg();
         String bonusNumber = Console.readLine();
         return isValidBonusNumber(Integer.parseInt(bonusNumber), winningLotto);
-    }
-
-    private int isValidBonusNumber(int bonusNumber, List<Integer> winningLotto) throws IllegalArgumentException {
-        if (!(bonusNumber >= 1 && bonusNumber <= 45)) {
-            throw new IllegalArgumentException("[ERROR] 올바르지 않은 보너스 번호입니다.");
-        }
-        if (winningLotto.contains(bonusNumber)) {
-            throw new IllegalArgumentException("[ERROR] 올바르지 않은 보너스 번호입니다.");
-        }
-        return bonusNumber;
     }
 }

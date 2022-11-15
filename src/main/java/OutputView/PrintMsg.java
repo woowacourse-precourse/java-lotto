@@ -4,7 +4,7 @@ import lotto.Lotto;
 
 import java.util.List;
 
-import static OutputView.PrintMessage.*;
+import static OutputView.PrintComment.*;
 
 
 public class PrintMsg {
