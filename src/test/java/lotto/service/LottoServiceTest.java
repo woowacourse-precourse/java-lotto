@@ -1,10 +1,9 @@
-package lotto.controller;
+package lotto.service;
 
 import static lotto.utils.Constants.LOTTO_PRICE;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import lotto.domain.Lotto;
-import lotto.service.LottoService;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
