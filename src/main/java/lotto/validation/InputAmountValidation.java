@@ -7,7 +7,7 @@ public class InputAmountValidation {
     }
 
     private static boolean isRanged(int inputAmount) {
-        return 0 <= inputAmount && inputAmount <= Integer.MAX_VALUE;
+        return 0 <= inputAmount;
     }
 
     public static void validateInputAmount(int inputAmount) {
