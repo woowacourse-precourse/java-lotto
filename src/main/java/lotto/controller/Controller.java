@@ -10,12 +10,12 @@ import lotto.model.Statistics;
 import lotto.view.Input;
 import lotto.view.Output;
 
-public class Play {
+public class Controller {
     Cashier cashier = new Cashier();
     Statistics statistics = new Statistics();
     List<Lotto> lottoTicket = new ArrayList<>();
 
-    public void play() {
+    public void playLotto() {
         try {
             getPlayerInput();
             Output.printYourStatistics(
