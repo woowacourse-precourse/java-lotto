@@ -21,11 +21,11 @@
   - [x] 일치하는 개수 구하기 - `countMatchingNumber`
   - [x] 각 Score에 대해 통계 출력 - `showResults`
   
-- [ ] 수익률 계산
+- [x] 수익률 계산
   
-  - [ ] 수익 금액 구하기
+  - [x] 수익 금액 구하기 - `getWinPrice`
   
-  - [ ] 구입 금액과 비교한 수익률 구하기
+  - [x] 구입 금액과 비교한 수익률 구하기 - `showProfitRate`
 
 
 

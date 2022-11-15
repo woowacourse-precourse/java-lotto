@@ -12,6 +12,7 @@ import java.util.List;
 public class LottoService {
     private static final int LOTTO_PRICE = 1000;
     private static final int LOTTO_NUMBER_SIZE = 6;
+    private static final List<Integer> WIN_PRICE = List.of(0, 5000, 50000, 1500000, 30000000, 2000000000);
 
     private final List<Lotto> lottoRepository;
     private WinningNumbers winningNumbers;
@@ -28,10 +29,10 @@ public class LottoService {
         showLottos();
 
         winningNumbers = UserInput.getWinningNumbers();
-
         checkLottos();
 
         showResults();
+        showProfitRate();
     }
 
     public long purchaseLotto() {
@@ -57,7 +58,7 @@ public class LottoService {
         }
     }
 
-    public void checkLottos(){
+    public void checkLottos() {
         for (Lotto lotto : lottoRepository) {
             Score score = lotto.compareWithWinningNumbers(winningNumbers);
 
@@ -67,7 +68,7 @@ public class LottoService {
         }
     }
 
-    public void showResults(){
+    public void showResults() {
         System.out.println("3개 일치 (5,000원) - " + perScoreCounts.get(1) + "개");
         System.out.println("4개 일치 (50,000원) - " + perScoreCounts.get(2) + "개");
         System.out.println("5개 일치 (1,500,000원) - " + perScoreCounts.get(3) + "개");
@@ -75,7 +76,23 @@ public class LottoService {
         System.out.println("6개 일치 (2,000,000,000원) - " + perScoreCounts.get(5) + "개");
     }
 
-    private int mappingScoreToIndex(Score score){
+    private int mappingScoreToIndex(Score score) {
         return score.ordinal();
+    }
+
+    public void showProfitRate() {
+        long rewardMoney = getWinPrice();
+        long purchaseMoney = lottoRepository.size() * 1000L;
+
+        double profitRate = (double) rewardMoney / purchaseMoney;
+        System.out.println("총 수익률은 " + String.format("%.1f", profitRate * 100) + "%입니다.");
+    }
+
+    public long getWinPrice() {
+        long rewardMoney = 0;
+        for (int i = 0; i < perScoreCounts.size(); i++) {
+            rewardMoney += (long) WIN_PRICE.get(i) * perScoreCounts.get(i);
+        }
+        return rewardMoney;
     }
 }
