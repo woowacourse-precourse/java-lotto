@@ -30,3 +30,5 @@ InvocationTargetException 이 일어났다. 호출한 메소드의 에러를 wra
 결국 illegal 한 상황을 가정하지 않고 올바른 값이 출력되는지 테스트하는 방향으로 테스트를 진행하였다. 
 
 2. exception 처리할 때 강제로 예외를 일으키는 상황이 아니라면 메세지를 어떻게 넣을지 고민해야 할 것 같다. 
+3. 태스트 케이스에서 unsupportedOperationException이 일어난다.
+4. 예외 테스트가 통과되지 않는다.

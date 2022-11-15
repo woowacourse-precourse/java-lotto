@@ -10,6 +10,7 @@ import java.util.stream.Collectors;
 
 public class InputHandler {
     private static final String DEFAULT_ERROR_MESSAGE = "[ERROR] ";
+
     public InputHandler() {
     }
 
@@ -71,8 +72,9 @@ public class InputHandler {
     private static int validateNumberType(String number) {
         try {
             return Integer.parseInt(number);
-        }
-        catch (NumberFormatException E){
+        } catch (NumberFormatException E) {
+            System.out.println("[ERROR]");
+            System.out.println(E.getMessage());
             throw new IllegalArgumentException(DEFAULT_ERROR_MESSAGE + ERROR_MESSAGE.NUMBER_TYPE_EXCEPTION.getMessage());
         }
     }
