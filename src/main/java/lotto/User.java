@@ -67,11 +67,16 @@ public class User {
     }
 
     public void printResult(){
-        System.out.println("3개 일치 (5,000원) - " + winningRank.get(5) + "개");
-        System.out.println("4개 일치 (50,000원) - " + winningRank.get(4) + "개");
-        System.out.println("5개 일치 (1,500,000원) - " + winningRank.get(3) + "개");
-        System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - " + winningRank.get(2) + "개");
-        System.out.println("6개 일치 (2,000,000,000원) - " + winningRank.get(1) + "개");
+        int winRank = 5;
+        for(WinningType rank : WinningType.values()){
+            System.out.println(rank.getMatchNum() + "개 일치 (" + rank.getPrize() + "원) - "+
+                    winningRank.get(winRank)+ "개");
+            if(rank.getRank() == 2){
+                System.out.println(rank.getMatchNum() + "개 일치, 보너스 볼 일치 (" + rank.getPrize() + "원) - "+
+                        winningRank.get(winRank)+ "개");
+            }
+            winRank -= 1;
+        }
     }
 
     public void computeProfit(){
