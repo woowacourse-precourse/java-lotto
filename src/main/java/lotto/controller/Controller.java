@@ -34,7 +34,9 @@ public class Controller {
     }
 
     private void getPlayerInput() {
-        cashier.inputPlayerMoney(Input.getYourMoney());
+        String receivedMoney = Input.getYourMoney();
+        Output.printReceivedMoney(receivedMoney);
+        cashier.inputPlayerMoney(receivedMoney);
         generateLottoTickets(cashier.getReceivedMoney());
         cashier.inputPlayerAnswerNumber(Input.getAnswerNumbers());
         cashier.inputPlayerBonusNumber(Input.getBonusNumber(cashier.getAnswerNumber()));

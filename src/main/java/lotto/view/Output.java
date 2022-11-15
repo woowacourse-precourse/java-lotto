@@ -23,4 +23,8 @@ public class Output {
         lottoNumbers.stream().sorted().collect(Collectors.toList());
         System.out.println(lottoNumbers);
     }
+
+    public static void printReceivedMoney(String receivedMoney) {
+        System.out.println(Integer.parseInt(receivedMoney) / 1000 + "개를 구매했습니다.");
+    }
 }

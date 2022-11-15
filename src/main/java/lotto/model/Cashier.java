@@ -2,12 +2,16 @@ package lotto.model;
 
 import java.util.List;
 
+import lotto.utils.CheckInput;
+
 public class Cashier {
     private int receivedMoney;
     private List<Integer> answerNumber;
     private int bonusNumber;
 
-    public void inputPlayerMoney(int receivedMoney) {
+    public void inputPlayerMoney(String inputValue) {
+        CheckInput.checkInputMoney(inputValue);
+        int receivedMoney = Integer.parseInt(inputValue);
         this.receivedMoney = receivedMoney;
     }
 
