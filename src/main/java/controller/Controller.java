@@ -3,6 +3,7 @@ package controller;
 import lotto.Lotto;
 import model.Server;
 import view.Client;
+import view.PrintResult;
 
 import java.util.HashMap;
 import java.util.List;
@@ -22,7 +23,9 @@ public class Controller {
             bonusNumber = client.getWinBonusNumber();
         } while (server.isInclude(winLottoNumber, bonusNumber));
         setMatchNumberCount();
-        for (int lotto = 0; lotto < server.decideToBuyLotto(money); lotto++) {
+        int lottoPaper = server.decideToBuyLotto(money);
+        PrintResult.printBuyLotto(lottoPaper);
+        for (int lotto = 0; lotto < lottoPaper; lotto++) {
             List<Integer> lottoNumber = server.publishLotto();
             Set common = server.compareLottoNumber(lottoNumber, winLottoNumber);
             int matchNumber = server.countMatchNumber(common);
@@ -35,6 +38,7 @@ public class Controller {
             }
             putMatchNumberCount(matchNumber);
         }
+
     }
 
     public void setMatchNumberCount() {

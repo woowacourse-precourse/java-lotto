@@ -8,7 +8,7 @@ import java.util.List;
 public class PrintResult {
     private final String UNIT = "개";
 
-    public void printBuyLotto(int buyLottoNumber){
+    public static void printBuyLotto(int buyLottoNumber){
         System.out.println(buyLottoNumber + "개를 구매했습니다.");
     }
 
