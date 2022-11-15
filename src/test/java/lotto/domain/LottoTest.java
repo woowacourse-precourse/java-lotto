@@ -48,9 +48,9 @@ class LottoTest {
 
     private static Stream<Arguments> sortLottoNumbers() {
         return Stream.of(
-                Arguments.of("3,1,2,4,5,6", "1,2,3,4,5,6"),
-                Arguments.of("43,1,24,2,11,5", "1,2,5,11,43,24"),
-                Arguments.of("1,2,5,6,7,8", "1,2,5,6,7,8")
+                Arguments.of(List.of(3,1,2,4,5,6), List.of(1,2,3,4,5,6)),
+                Arguments.of(List.of(43,1,24,2,11,5), List.of(1,2,5,11,24,43)),
+                Arguments.of(List.of(1,2,5,6,7,8), List.of(1,2,5,6,7,8))
         );
 
     }
