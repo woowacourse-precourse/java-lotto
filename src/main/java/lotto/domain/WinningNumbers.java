@@ -1,14 +1,14 @@
 package lotto.domain;
 
-import lotto.domain.RankingResult;
-
 import java.util.List;
 
 public class WinningNumbers {
     private static final String ERROR_ALREADY_EXIST = "[ERROR]이미 존재하는 수 입니다.";
+
     private final Lotto lotto;
     private final LottoTickets lottoTickets;
     private final int bonusNumber;
+
     public static List<List<Integer>> resultlotto;
     public static List<Integer> userLottoNumbers;
 

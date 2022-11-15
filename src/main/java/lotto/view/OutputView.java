@@ -1,13 +1,13 @@
 package lotto.view;
 
 import java.util.List;
-import lotto.domain.Lotto;
 import lotto.domain.LottoTickets;
 import lotto.domain.Money;
 import lotto.domain.RankingResult;
 
 public class OutputView {
     private static final String PRINT_LOTTO_COUNT = "\n%d개를 구매했습니다.\n";
+
     public static void printPurchaseLotto(int lottoCount){
         System.out.printf(PRINT_LOTTO_COUNT,lottoCount);
     }

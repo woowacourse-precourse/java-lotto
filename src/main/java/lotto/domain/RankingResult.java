@@ -1,12 +1,12 @@
 package lotto.domain;
 
 import java.text.DecimalFormat;
-import lotto.domain.Ranking;
 import java.util.EnumMap;
 import java.util.Map;
 
 public class RankingResult {
     private Map<Ranking, Integer> rankings;
+
     DecimalFormat decFormat = new DecimalFormat("###,###");
 
     public RankingResult() {

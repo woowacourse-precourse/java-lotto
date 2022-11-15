@@ -1,9 +1,8 @@
 package lotto.domain;
-import lotto.domain.Money;
 public class LottoBonusNumber {
-    private final int bonusNumber;
-
     private static final String ERROR_RANGE_MONEY = "[ERROR]1부터 45까지만 입력해주세요.";
+
+    private final int bonusNumber;
 
     public LottoBonusNumber(String bonusNumber){
         validateNumber(bonusNumber);
