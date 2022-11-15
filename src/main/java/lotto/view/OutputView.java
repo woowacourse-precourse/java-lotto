@@ -4,6 +4,8 @@ import lotto.domain.RandomLottoNumber;
 
 import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
+
 public class OutputView {
 
     public static void purchaseAmountMsg() {
@@ -13,7 +15,11 @@ public class OutputView {
     public static void purchaseResultMsg(List<RandomLottoNumber> lottoNumberList, int countFromMoney) {
         System.out.println(countFromMoney+"개를 구매했습니다.");
         for (RandomLottoNumber lottoNumber : lottoNumberList) {
-            System.out.println(lottoNumber.getRandomNum());
+            List<Integer> sortedRandomNum = lottoNumber.getRandomNum().stream()
+                    .sorted()
+                    .collect(Collectors.toList());
+
+            System.out.println(sortedRandomNum);
         }
     }
 

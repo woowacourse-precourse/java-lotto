@@ -13,4 +13,5 @@ public class RandomLottoNumber {
     public List<Integer> getRandomNum() {
         return randomNumber;
     }
+
 }
