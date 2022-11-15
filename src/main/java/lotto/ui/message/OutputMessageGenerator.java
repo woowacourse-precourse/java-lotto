@@ -43,7 +43,7 @@ public enum OutputMessageGenerator {
     }
 
     private static String getRankCountMessage(Rank rank, int count) {
-        int jackpotHitCnt = rank.getJackpotHitCnt();
+        int jackpotHitCnt = rank.getJackpotCriteriaCnt();
         String reward = rewardFormat.format(rank.getReward());
 
         if (rank == Rank.SECOND) {

@@ -11,7 +11,7 @@ public enum Rank {
     FIFTH(5, 5000),
     NO_LUCK(0, 0);
 
-    private static final Map<Rank, Integer> jackpotCntMap = new EnumMap<>(Map.of(
+    private static final Map<Rank, Integer> jackpotCriteria = new EnumMap<>(Map.of(
             FIRST, Lotto.NUMBER_SIZE,
             SECOND, Lotto.NUMBER_SIZE - 1,
             THIRD, Lotto.NUMBER_SIZE - 1,
@@ -19,21 +19,21 @@ public enum Rank {
             FIFTH, Lotto.NUMBER_SIZE - 3,
             NO_LUCK, 0
     ));
-    private final int rank;
+    private final int rankNumber;
     private final int reward;
 
-    Rank(int rank, int reward) {
-        this.rank = rank;
+    Rank(int rankNumber, int reward) {
+        this.rankNumber = rankNumber;
         this.reward = reward;
     }
 
-    public static Rank getInstanceOf(int jackpotCnt, boolean hasBonus) {
-        if (jackpotCntMap.get(THIRD) == jackpotCnt && !hasBonus) {
+    public static Rank getInstanceOf(int jackpotHitCnt, boolean hitBonus) {
+        if (jackpotCriteria.get(THIRD) == jackpotHitCnt && !hitBonus) {
             return THIRD;
         }
 
         for (Rank rank : Rank.values()) {
-            if (jackpotCntMap.get(rank) == jackpotCnt) {
+            if (jackpotCriteria.get(rank) == jackpotHitCnt) {
                 return rank;
             }
         }
@@ -41,14 +41,14 @@ public enum Rank {
     }
 
     public int getRankNumber() {
-        return rank;
+        return rankNumber;
     }
 
     public int getReward() {
         return reward;
     }
 
-    public int getJackpotHitCnt() {
-        return jackpotCntMap.get(this);
+    public int getJackpotCriteriaCnt() {
+        return jackpotCriteria.get(this);
     }
 }
