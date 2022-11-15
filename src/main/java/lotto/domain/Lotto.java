@@ -19,7 +19,7 @@ public class Lotto {
             throw new IllegalArgumentException();
         }
         validateIsDuplicate(numbers);
-        validateIsNumeric(numbers);
+        validateLottoIsNumeric(numbers);
     }
 
     public List<Integer> countMatch(Set<Integer> winningLottoNumbers, int bonusNumber) {
@@ -63,19 +63,19 @@ public class Lotto {
     private void validateIsDuplicate(List<Integer> numbers) {
         Set<Integer> lottoNumbers = new HashSet<>(numbers);
         if (lottoNumbers.size() != 6) {
-            throw new IllegalArgumentException("로또 번호에 중복된 숫자가 있습니다.");
+            throw new IllegalArgumentException("[Error]로또 번호에 중복된 숫자가 있습니다.");
         }
     }
 
-    private void validateIsNumeric(List<Integer> numbers) {
+    private void validateLottoIsNumeric(List<Integer> numbers) {
         for (Integer number : numbers) {
             checkNumberInterval(number);
         }
     }
 
     private void checkNumberInterval(Integer number) {
-        if (number < 1 || number >45) {
-            throw new IllegalArgumentException("로또 번호는 1이상 45이하이어야 합니다.");
+        if (number < 1 || number > 45) {
+            throw new IllegalArgumentException("[Error]로또 번호는 1이상 45이하이어야 합니다.");
         }
     }
 }
