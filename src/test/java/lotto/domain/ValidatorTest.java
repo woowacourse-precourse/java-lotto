@@ -40,9 +40,23 @@ public class ValidatorTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
-    @DisplayName("보너스 번호가 당첨번호 내에 존재하면 예외가 발생한다")
+    @DisplayName("보너스 번호를 형식에 맞게 입력하지 않으면 예외가 발생한다")
     @Test
     void bonusNumberValidation_2() {
+        assertThatThrownBy(() -> bonusNumber("46"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("보너스 번호를 형식에 맞게 입력하지 않으면 예외가 발생한다")
+    @Test
+    void bonusNumberValidation_3() {
+        assertThatThrownBy(() -> bonusNumber("abc"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("보너스 번호가 당첨번호 내에 존재하면 예외가 발생한다")
+    @Test
+    void bonusNumberValidation_4() {
         Lotto.setWinningNumbers(Arrays.asList(1, 2, 3, 4, 5, 6));
         assertThatThrownBy(() -> bonusNumber("6"))
                 .isInstanceOf(IllegalArgumentException.class);
