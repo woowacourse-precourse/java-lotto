@@ -33,6 +33,7 @@ public class Output {
     }
 
     public void printProfitRate(int earnedMoney, int payedMoney){
-
+        double profitRate=(payedMoney/earnedMoney)*100;
+        System.out.println("총 수익률은 "+String.format("%.1f",profitRate)+"%입니다.");
     }
 }
