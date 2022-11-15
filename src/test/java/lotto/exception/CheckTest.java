@@ -23,56 +23,56 @@ class CheckTest {
         check = new Check();
     }
 
-    @DisplayName("true Case: 로또 중복 번호 검사 테스트")
+    @DisplayName("true case: 로또 중복 번호 검사 테스트")
     @Test
     void lottoCheckDuplicate() {
         boolean checkDuplicate = check.checkDuplicate(lotto);
         assertThat(checkDuplicate).isEqualTo(true);
     }
 
-    @DisplayName("false Case: 로또 중복 번호 검사 테스트")
+    @DisplayName("false case: 로또 중복 번호 검사 테스트")
     @Test
     void lottoCheckDuplicate2() {
         boolean checkDuplicate = check.checkDuplicate(lotto2);
         assertThat(checkDuplicate).isEqualTo(false);
     }
 
-    @DisplayName("true Case: 보너스 번호 중복 검사 테스트")
+    @DisplayName("true case: 보너스 번호 중복 검사 테스트")
     @Test
     void plusLottoCheckDuplicate() {
         boolean checkDuplicate = check.checkDuplicate(lotto, number);
         assertThat(checkDuplicate).isEqualTo(true);
     }
 
-    @DisplayName("false Case: 보너스 번호 중복 검사 테스트")
+    @DisplayName("false case: 보너스 번호 중복 검사 테스트")
     @Test
     void plusLottoCheckDuplicate2() {
         boolean checkDuplicate = check.checkDuplicate(lotto, duplicateNumber);
         assertThat(checkDuplicate).isEqualTo(false);
     }
 
-    @DisplayName("true Case: 로또 범위 테스트")
+    @DisplayName("true case: 로또 범위 테스트")
     @Test
     void lottoCheckRange() {
         boolean checkRange = check.checkRange(lotto);
         assertThat(checkRange).isEqualTo(true);
     }
 
-    @DisplayName("false Case: 로또 범위 테스트")
+    @DisplayName("false case: 로또 범위 테스트")
     @Test
     void lottoCheckRange2() {
         boolean checkRange = check.checkRange(lotto3);
         assertThat(checkRange).isEqualTo(false);
     }
 
-    @DisplayName("true Case: 보너스 번호 범위 테스트")
+    @DisplayName("true case: 보너스 번호 범위 테스트")
     @Test
     void plusLottoCheckRange() {
         boolean checkRange = check.checkRange(number);
         assertThat(checkRange).isEqualTo(true);
     }
 
-    @DisplayName("false Case: 보너스 번호 범위 테스트")
+    @DisplayName("false case: 보너스 번호 범위 테스트")
     @Test
     void plusLottoCheckRange2() {
         boolean checkRange = check.checkRange(rangeNumber);
