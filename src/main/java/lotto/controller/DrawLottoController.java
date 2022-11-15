@@ -16,7 +16,6 @@ public class DrawLottoController {
     InputView inputView = new InputView();
     CreateLottoNumber createLottoNumber = new CreateLottoNumber();
     User user = new User();
-
     WiningNumber winingNumber;
     Lotto lotto;
 
@@ -46,7 +45,7 @@ public class DrawLottoController {
 
     private void setWiningLottoNumber() {
         outputView.printWiningNumberMessage();
-        winingNumber = new WiningNumber(drawLottoService.getListToWiningNumber(inputView.InputWiningNumber()));
+        winingNumber = new WiningNumber(drawLottoService.getListToWiningNumber(inputView.InputWiningNumbers()));
         outputView.printBonusNumberMessage();
         winingNumber.setBonusNumber(inputView.InputBonusNumber());
     }

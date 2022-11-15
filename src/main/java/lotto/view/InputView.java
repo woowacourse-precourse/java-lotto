@@ -8,9 +8,9 @@ public class InputView {
         return buyAmount;
     }
 
-    public String InputWiningNumber() {
-        String winingNumber = readLine();
-        return winingNumber;
+    public String InputWiningNumbers() {
+        String winingNumbers = readLine();
+        return winingNumbers;
     }
 
     public String InputBonusNumber() {
