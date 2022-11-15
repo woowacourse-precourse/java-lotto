@@ -94,6 +94,15 @@ public class Application {
             System.out.println(AllGame.get(i).NumberReturn());
         }
     }
+    public static List<Integer> WinGameCheck(List<Lotto> AllGame,List<Integer> WinningNumber, int BonusNumber){
+        List<Integer> Rank = new ArrayList<>();
+        for(int i = 0; i < AllGame.size();i++){
+            int Ranking =AllGame.get(i).Matching(WinningNumber,BonusNumber);
+            Rank.add(Ranking,Rank.get(Ranking)+1);
+        }
+        return Rank;
+    }
+    
     public static void Game(){
         List<Lotto> AllGame = new ArrayList<>();
         Integer Amount = EnterAmount();
@@ -102,6 +111,7 @@ public class Application {
         PrintAllGame(AllGame);
         List<Integer> Winning = setWinningNumber();
         int BonusNumber = setBonus(Winning);
+        List<Integer> Rank= WinGameCheck(AllGame,Winning,BonusNumber);
     }
     public static void main(String[] args) {
         // TODO: 프로그램 구현
