@@ -9,6 +9,7 @@ public class Confirm {
 		try {
 			System.out.println("당첨 번호를 입력해 주세요.");
 			List<Integer> winNums = WinNumList.run();
+			WinNumErrorCheck.run(winNums);
 			System.out.println("보너스 번호를 입력해 주세요.");
 			winNums = BonusNum.run(winNums);
 			WinNumErrorCheck.run(winNums);
