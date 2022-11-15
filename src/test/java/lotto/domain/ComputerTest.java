@@ -9,7 +9,7 @@ import static org.assertj.core.api.Assertions.*;
 
 public class ComputerTest {
 
-    @DisplayName("당첨 번호를 콤마로 구분했을 때 자연수가 아니면 예외가 발생한다.")
+    @DisplayName("당첨 번호가 자연수가 아니면 예외가 발생한다.")
     @Test
     void createComputerWithNotNaturalNumber() {
         String input = "1,2,3,4,5,a";
