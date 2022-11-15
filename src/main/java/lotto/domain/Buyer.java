@@ -8,11 +8,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Buyer {
+    private final PurchaseAmountUnit purchaseAmountUnit = PurchaseAmountUnit.LOTTO_PURCHASE_UNIT;
     private final List<Lotto> purchaseLotto = new ArrayList<>();
     private int lottoAmount;
 
     Buyer(int lottoAmount) {
+        purchaseAmountUnit.validDivisionByThousand(lottoAmount);
         this.lottoAmount = lottoAmount;
+
     }
 
     static void validConsistByNumber(String purchaseAmount) {
@@ -25,11 +28,9 @@ public class Buyer {
 
     static int LottoAmountConversion(String inputValue) {
         int purchaseAmount;
-        PurchaseAmountUnit purchaseAmountUnit = PurchaseAmountUnit.LOTTO_PURCHASE_UNIT;
 
         validConsistByNumber(inputValue);
         purchaseAmount = Integer.parseInt(inputValue);
-        purchaseAmountUnit.validDivisionByThousand(purchaseAmount);
 
         return purchaseAmount;
     }

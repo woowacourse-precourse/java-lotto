@@ -13,6 +13,9 @@ public class LottoWinningNumber {
     LottoWinningNumber(List<Integer> winningNumbers, int bonusNumber) {
         this.winningNumbers = winningNumbers;
         this.bonusNumber = bonusNumber;
+        validAllWinningNumber(winningNumbers);
+        validAllBonusNumber(bonusNumber);
+        validDuplicateNumber(winningNumbers, bonusNumber);
     }
 
     public int getBonusNumber() {
@@ -44,14 +47,10 @@ public class LottoWinningNumber {
 
         return winningNumber;
     }
-    public void validAllWinningNumber(List<Integer> winningNumbers){
-        validSixNumber(winningNumbers);
-        validAllNumberRange(winningNumbers);
+    public String[] separateByComma(String inputNumbers) {
+        return inputNumbers.split(",");
     }
 
-    public void validAllBonusNumber(int bonusNumber) {
-        validOneNumberRange(bonusNumber);
-    }
     public void validDuplicateNumber(List<Integer> winningNumbers, int bonusNumber) {
         Set<Integer> set = new HashSet<>();
         if (winningNumbers.contains(bonusNumber)) {
@@ -63,6 +62,10 @@ public class LottoWinningNumber {
             }
             set.add(i);
         }
+    }
+    public void validAllWinningNumber(List<Integer> winningNumbers){
+        validSixNumber(winningNumbers);
+        validAllNumberRange(winningNumbers);
     }
 
     public void validSixNumber(List<Integer> inputNumbers) {
@@ -81,6 +84,16 @@ public class LottoWinningNumber {
         }
     }
 
+    public void validAllNumberRange(List<Integer> inputNumbers) {
+        for (int inputNumber : inputNumbers) {
+            validOneNumberRange(inputNumber);
+        }
+    }
+
+    public void validAllBonusNumber(int bonusNumber) {
+        validOneNumberRange(bonusNumber);
+    }
+
     public void validConsistOneNumber(String inputNumber) {
         try {
             Integer.parseInt(inputNumber);
@@ -89,19 +102,9 @@ public class LottoWinningNumber {
         }
     }
 
-    public void validAllNumberRange(List<Integer> inputNumbers) {
-        for (int inputNumber : inputNumbers) {
-            validOneNumberRange(inputNumber);
-        }
-    }
-
     public void validOneNumberRange(int inputNumber) {
         if (inputNumber < Lotto.numberMinRage || inputNumber > Lotto.numberMaxRage) {
             throw new IllegalArgumentException();
         }
-    }
-
-    public String[] separateByComma(String inputNumbers) {
-        return inputNumbers.split(",");
     }
 }
