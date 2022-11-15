@@ -2,13 +2,14 @@ package lotto.view;
 
 import lotto.domain.Rank;
 
+import java.io.Console;
 import java.util.List;
 import java.util.Map;
 
 public class OutputView {
     private static final String INPUT_MONEY_MSG = "구입금액을 입력해 주세요.";
     private static final String NUMBER_OF_LOTTO_MSG = "개를 구매했습니다.";
-    private static final String INPUT_WINNING_LOTTO_MSG = "\n당첨 번호를 입력해 주세요.";
+    private static final String INPUT_WINNING_LOTTO_MSG = "당첨 번호를 입력해 주세요.";
     private static final String INPUT_BONUS_NUMBER_MSG = "\n보너스 번호를 입력해 주세요.";
     private static final String START_GET_RESULT_MSG = "\n당첨 통계\n---";
     private static final String LOTTO_RESULT_MSG = "\n%d개 일치 (%s원) - %d개";
@@ -28,6 +29,7 @@ public class OutputView {
     }
 
     public static void printInputWinningNumbersMessage() {
+        System.out.println();
         System.out.println(INPUT_WINNING_LOTTO_MSG);
     }
 

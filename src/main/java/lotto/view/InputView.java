@@ -3,26 +3,45 @@ package lotto.view;
 import camp.nextstep.edu.missionutils.Console;
 import lotto.util.Validation;
 
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
 public class InputView {
-    public static String getMoney() {
-        String input = Console.readLine();
-        Validation.validateMoney(input);
+    public int getMoney() {
+        int money = 0;
 
-        return input;
+        try {
+            String input = Console.readLine();
+            money = Validation.validateMoney(input);
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+        }
+        return money;
     }
 
-    public static String getLottoNumbers() {
-        String input = Console.readLine();
-        Validation.validateLottoNumbers(input);
+    public List<Integer> getLottoNumbers() {
+        List<Integer> numbers = new ArrayList<>();
 
-        return input;
+        try {
+            String input = Console.readLine();
+            numbers = Validation.validateLottoNumbers(input);
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+        }
+        return numbers;
     }
 
-    public static String getBonusNumber() {
-        String input = Console.readLine();
-        Validation.validateBonusNumbers(input);
+    public int getBonusNumber() {
+        int bonus = 0;
 
-        return input;
+        try {
+            String input = Console.readLine();
+            bonus = Validation.validateBonusNumbers(input);
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+        }
+        return bonus;
     }
 
 }

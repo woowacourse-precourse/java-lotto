@@ -1,9 +1,6 @@
 package lotto.util;
 
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class Validation {
     private static final int START_NUMBER = 1;
@@ -18,31 +15,43 @@ public class Validation {
     private static final String LOTTO_AND_BONUS_NUMBER_DUPLICATE_ERROR_MSG = "[ERROR] 보너스 번호는 로또 번호와 다른 숫자여야 합니다.";
 
 
-    public static void validateMoney(String input) {
+    public static int validateMoney(String input) {
+        int money = 0;
+
         if (isInteger(input)) {
-            int money = Integer.parseInt(input);
+            money = Integer.parseInt(input);
             checkUnit(money);
         }
+        return money;
     }
 
-    public static void validateLottoNumbers(String input) {
+    public static List<Integer> validateLottoNumbers(String input) {
         String[] numbers = input.split(",");
+        List<Integer> lottoNumbers = new ArrayList<>();
 
         for (String s : numbers) {
             if (isInteger(s)) {
                 int number = Integer.parseInt(s);
                 checkInRange(number);
+                lottoNumbers.add(number);
             }
         }
-        checkSize(numbers);
-        checkDuplicate(numbers);
+//        checkSize(numbers);
+//        checkDuplicate(numbers);
+        validateLotto(lottoNumbers);
+
+        return lottoNumbers;
     }
 
-    public static void validateBonusNumbers(String input) {
+    public static int validateBonusNumbers(String input) {
+        int number = 0;
+
         if (isInteger(input)) {
-            int number = Integer.parseInt(input);
+            number = Integer.parseInt(input);
             checkInRange(number);
         }
+
+        return number;
     }
 
     public static void checkDuplicateLottoNumbersAndBonusNumber(List<Integer> lottoNumbers, int number) {
@@ -85,6 +94,18 @@ public class Validation {
     private static void checkInRange(int number) {
         if (number < START_NUMBER || number > END_NUMBER) {
             throw new IllegalArgumentException(INPUT_LOTTO_NUMBER_RANGE_ERROR_MSG);
+        }
+    }
+
+    public static void validateLotto(List<Integer> numbers) {
+        Set<Integer> check = new HashSet<>(numbers);
+
+        if (numbers.size() != check.size()) {
+            throw new IllegalArgumentException(INPUT_LOTTO_NUMBER_DUPLICATE_ERROR_MSG);
+        }
+
+        if (numbers.size() != LOTTO_SIZE) {
+            throw new IllegalArgumentException(INPUT_LOTTO_NUMBER_SIZE_ERROR_MSG);
         }
     }
 }

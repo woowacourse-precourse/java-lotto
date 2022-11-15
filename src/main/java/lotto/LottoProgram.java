@@ -1,5 +1,6 @@
 package lotto;
 
+import camp.nextstep.edu.missionutils.Console;
 import lotto.domain.Lotto;
 import lotto.domain.Rank;
 import lotto.util.Validation;
@@ -20,6 +21,8 @@ public class LottoProgram {
     private int bonusNumber;
     private double rateOfReturn;
 
+    private InputView inputView = new InputView();
+
     public void progress() {
         buyLotto();
         makeLotto();
@@ -29,9 +32,7 @@ public class LottoProgram {
 
     public void buyLotto() {
         OutputView.printInputMoneyMessage();
-
-        String input = InputView.getMoney();
-        int money = Integer.parseInt(input);
+        int money = this.inputView.getMoney();
         this.numberOfLotto = countLottoQuantity(money);
 
         OutputView.printNumberOfLottoMessage(this.numberOfLotto);
@@ -52,24 +53,21 @@ public class LottoProgram {
 
     public void getWinningLottoNumbers() {
         OutputView.printInputWinningNumbersMessage();
-        makeWinningLotto(InputView.getLottoNumbers());
+        List<Integer> numbers = this.inputView.getLottoNumbers();
+        makeWinningLotto(numbers);
 
         OutputView.printInputBonusNumbersMessage();
-        makeBonusNumber(InputView.getBonusNumber());
+        int bonus = this.inputView.getBonusNumber();
+        makeBonusNumber(bonus);
         Validation.checkDuplicateLottoNumbersAndBonusNumber(this.winningLotto.getNumbers(), this.bonusNumber);
     }
 
-    private void makeWinningLotto(String numbers) {
-        String[] lottoNumbers = numbers.split(",");
-        List<Integer> winningNumbers = new ArrayList<>();
-        for (String s : lottoNumbers) {
-            winningNumbers.add(Integer.parseInt(s));
-        }
-        this.winningLotto = new Lotto(winningNumbers);
+    private void makeWinningLotto(List<Integer> numbers) {
+        this.winningLotto = new Lotto(numbers);
     }
 
-    private void makeBonusNumber(String bonusNumber) {
-        this.bonusNumber = Integer.parseInt(bonusNumber);
+    private void makeBonusNumber(int bonusNumber) {
+        this.bonusNumber = bonusNumber;
     }
 
     public void getResult() {
