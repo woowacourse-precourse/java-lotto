@@ -5,6 +5,7 @@ import static org.assertj.core.api.Assertions.*;
 import java.util.List;
 import lotto.domain.User;
 import lotto.domain.WinningLotto;
+import lotto.dto.PurchaseAmountDto;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -17,7 +18,7 @@ class LottoServiceTest {
 
     @BeforeEach
     void setUp() {
-        user = new User(8_000);
+        user = new User(PurchaseAmountDto.of(8_000));
         List<Integer> winningNumbers = List.of(1, 2, 3, 4, 5, 6);
         int bonusNumber = 11;
         winningLotto = new WinningLotto(winningNumbers, bonusNumber);

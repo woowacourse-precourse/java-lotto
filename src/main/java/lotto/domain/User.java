@@ -2,6 +2,7 @@ package lotto.domain;
 
 import java.util.ArrayList;
 import java.util.List;
+import lotto.dto.PurchaseAmountDto;
 
 public class User {
 
@@ -9,7 +10,8 @@ public class User {
     private final List<Lotto> lottos;
     private final List<LottoRank> lottoRanks;
 
-    public User(int purchaseAmount) {
+    public User(PurchaseAmountDto purchaseAmountDto) {
+        int purchaseAmount = purchaseAmountDto.getPurchaseAmount();
         this.purchaseCount = purchaseAmount / Lotto.LOTTO_UNIT;
         this.lottos = new ArrayList<>(this.purchaseCount);
         this.lottoRanks = new ArrayList<>(this.purchaseCount);
