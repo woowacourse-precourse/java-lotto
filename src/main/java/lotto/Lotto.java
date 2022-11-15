@@ -1,5 +1,6 @@
 package lotto;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static lotto.LottoResult.checkRanking;
@@ -10,8 +11,8 @@ public class Lotto {
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
-        numbers.sort(Integer::compareTo);
-        this.numbers = numbers;
+        this.numbers = new ArrayList<>(numbers);
+        this.numbers.sort(Integer::compareTo);
     }
 
     public List<Integer> getNumbers() {

@@ -1,6 +1,5 @@
 package lotto;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
@@ -56,7 +55,7 @@ public class Application {
     }
 
     private static List<Integer> pickNumbers() {
-        return new ArrayList<>(pickUniqueNumbersInRange(1, 45, 6));
+        return pickUniqueNumbersInRange(1, 45, 6);
     }
 
     private static int[] getWinningNumbers(String input) {
