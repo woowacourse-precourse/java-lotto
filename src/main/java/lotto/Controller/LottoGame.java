@@ -15,13 +15,18 @@ public class LottoGame {
     int amount;
 
     public void startGame() {
-        getAmount();
-        buyLotto();
-        showUserLotto();
-        getWinningNumber();
-        showWinningNumber();
-        getBonusNumber();
-        showStatistics();
+        try {
+            getAmount();
+            buyLotto();
+            showUserLotto();
+            getWinningNumber();
+            showWinningNumber();
+            getBonusNumber();
+            showStatistics();
+        } catch (IllegalArgumentException exception) {
+            System.out.println(exception.getMessage());
+            return;
+        }
     }
 
     public void getAmount() {
