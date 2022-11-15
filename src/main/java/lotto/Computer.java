@@ -66,7 +66,7 @@ public class Computer {
     }
 
     public void printWinnings() {
-        System.out.println("3개 일치 (5,000원) - " + this.winningInfo.get("FIFTH") + "개");
+        System.out.println("3개 일치 (5,000원) - " + winningInfo.get("FIFTH") + "개");
         System.out.println("4개 일치 (50,000원) - " + winningInfo.get("FOURTH") + "개");
         System.out.println("5개 일치 (1,500,000원) - " + winningInfo.get("THIRD") + "개");
         System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - " + winningInfo.get("SECOND") + "개");
@@ -76,11 +76,11 @@ public class Computer {
     public void printYield(User user) {
         float profit;
         int money = user.getMoney();
-        profit = winningInfo.get("FIFTH") * 5000;
-        profit += winningInfo.get("FOURTH") * 50000;
-        profit += winningInfo.get("THIRD") * 1500000;
-        profit += winningInfo.get("SECOND") * 30000000;
-        profit += winningInfo.get("FIRST") * 2000000000;
+        profit = winningInfo.get("FIFTH") * LottoRanking.FIFTH.prize();
+        profit += winningInfo.get("FOURTH") * LottoRanking.FOURTH.prize();
+        profit += winningInfo.get("THIRD") * LottoRanking.THIRD.prize();
+        profit += winningInfo.get("SECOND") * LottoRanking.SECOND.prize();
+        profit += winningInfo.get("FIRST") * LottoRanking.FIRST.prize();
         System.out.println("총 수익률은 " + (profit / money) * 100 + "%입니다.");
     }
 
