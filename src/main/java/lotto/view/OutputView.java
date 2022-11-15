@@ -52,7 +52,7 @@ public class OutputView {
         System.out.println(STATISTIC_HEADER);
         System.out.println(STATISTIC_BORDER);
 
-        for (Rank rank : Rank.get()) {
+        for (Rank rank : Rank.getRankWithoutMiss()) {
             System.out.printf(STATISTIC_BODY, rank.getMatchCount(), getMatchBonusBall(rank),
                     winnings.get(rank.getWinnings()),
                     result.getRankCount(rank));

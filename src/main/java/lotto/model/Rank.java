@@ -38,7 +38,7 @@ public enum Rank {
                 .orElse(MISS);
     }
 
-    public static List<Rank> get() {
+    public static List<Rank> getRankWithoutMiss() {
         return Arrays.stream(Rank.values())
                 .filter(rank -> !rank.equals(MISS))
                 .collect(Collectors.toList());
