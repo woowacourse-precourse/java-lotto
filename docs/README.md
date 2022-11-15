@@ -43,13 +43,14 @@
 
 ---
 
-# 클래스 목록
+# MVC 클래스 목록
 ## Model (domain)
 - `User`
+- `Lotto`
 - `LotteryTicket`
 - `LotteryWinningNumber`
-- `LotteryTicketRepository`
 - `LotteryResult`
+- `LotteryTicketRepository`
 
 ## View
 - `InputView`
