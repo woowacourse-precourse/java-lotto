@@ -34,6 +34,9 @@ public class Game {
 
         // 당첨 내역 출력
         printResult();
+
+        // 수익률 출력
+        printEarningsRate(convertMoney, prizeMoney);
     }
 
     private String inputString(String message){
@@ -114,5 +117,10 @@ public class Game {
             }
             System.out.println(String.format("%d개 일치 (%,d원) - %d개", result.getCorrectNumbers(), result.getPrizeMoney(), result.getCount()));
         }
+    }
+
+    private void printEarningsRate(int inputMoney, int prizeMoney) {
+        double earingRate = prizeMoney / (double)inputMoney * 100;
+        System.out.println(String.format("총 수익률은 %.1f%%입니다.", earingRate));
     }
 }
