@@ -9,6 +9,7 @@ public class Lotto {
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
+        isDifferentEachOther(numbers);
         validate(numbers);
         this.numbers = numbers;
     }
@@ -23,10 +24,11 @@ public class Lotto {
     }
 
     public static void isDifferentEachOther(List<Integer> numbers) {
-        Set<Integer> eachOtherLotto = new HashSet<>();
-        eachOtherLotto.addAll(numbers);
+        Set<Integer> eachOtherLotto = new HashSet<>(numbers);
         if (eachOtherLotto.size() != numbers.size()) {
             throw new IllegalArgumentException();
         }
     }
+
+
 }
