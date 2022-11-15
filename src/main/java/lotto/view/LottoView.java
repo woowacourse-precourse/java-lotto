@@ -1,6 +1,7 @@
 package lotto.view;
 
 import static lotto.LottoConstant.GAME_START_MESSAGE;
+import static lotto.LottoConstant.INPUT_BONUS_NUMBER_MESSAGE;
 import static lotto.LottoConstant.INPUT_WINNING_LOTTO_NUMBER_MESSAGE;
 import static lotto.LottoConstant.PURCHASE_LOTTO_COUNT_RESULT_MESSAGE;
 
@@ -32,5 +33,9 @@ public class LottoView {
 
     public static void printInputLottoWinningMessage() {
         System.out.println(INPUT_WINNING_LOTTO_NUMBER_MESSAGE);
+    }
+
+    public static void printInputBonusNumberMessage() {
+        System.out.println(INPUT_BONUS_NUMBER_MESSAGE);
     }
 }
