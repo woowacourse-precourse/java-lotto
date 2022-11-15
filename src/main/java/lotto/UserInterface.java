@@ -33,4 +33,8 @@ public class UserInterface {
         System.out.printf(InformMessage.EARNING_RATE
                 .toString(), earningRate);
     }
+
+    public static void writeExceptionMessage(IllegalArgumentException ex) {
+        System.out.println(ex.getMessage());
+    }
 }
