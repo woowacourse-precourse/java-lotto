@@ -21,4 +21,8 @@ public class Lotto {
     public void sortLotto(List<Integer> numbers) {
         Collections.sort(numbers);
     }
+    @Override
+    public String toString() {
+        return numbers.toString();
+    }
 }

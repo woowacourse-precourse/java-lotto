@@ -13,9 +13,4 @@ public class User {
         lottoCount = Integer.parseInt(amount) / 1000;
         return lottoCount;
     }
-
-    public void purchaseLotto(int lottoCount) {
-
-    }
-
 }
