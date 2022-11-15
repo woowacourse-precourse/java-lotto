@@ -1,8 +1,8 @@
 package domain;
 
 public class WinningNumber {
-    private final int MAX = 45;
-    private final int MIN = 1;
+    private static final int MAX = 45;
+    private static final int MIN = 1;
     private final Lotto winningNumbers;
     private final int bonusNumber;
 
