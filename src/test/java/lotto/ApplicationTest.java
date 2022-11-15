@@ -60,7 +60,7 @@ class ApplicationTest extends NsTest {
     public void runMain() {
         Application.main(new String[]{});
     }
-
+/*
     @Test
     void 예외_테스트1() {
         assertSimpleTest(() ->
@@ -76,4 +76,14 @@ class ApplicationTest extends NsTest {
             org.assertj.core.api.Assertions.assertThat(this.output()).contains(new CharSequence[]{"1개를 구매했습니다.", "[8, 21, 23, 41, 42, 43]"});
         }, List.of(21, 8, 23, 41, 42, 43));
     }
+
+    @Test
+    void 기능_테스트2() {
+        Assertions.assertRandomUniqueNumbersInRangeTest(() -> {
+            this.run(new String[]{"1000", "4,5,6,8,21,23", "7"});
+            org.assertj.core.api.Assertions.assertThat(this.output()).contains(new CharSequence[]{"1개를 구매했습니다.", "[8, 21, 23, 41, 42, 43]","1개입니다."});
+        }, List.of(21, 8, 23, 41, 42, 43), new List[0]);
+    }
+
+ */
 }
