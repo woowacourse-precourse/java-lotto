@@ -29,10 +29,30 @@ public class ExchangerTest {
         );
 
         long expected = Rank.FIRST.getWinnings() * 1 + Rank.SECOND.getWinnings() * 2
-                        + Rank.THIRD.getWinnings() * 0 + Rank.FOURTH.getWinnings() * 3
-                        + Rank.FIFTH.getWinnings() * 9;
+                + Rank.THIRD.getWinnings() * 0 + Rank.FOURTH.getWinnings() * 3
+                + Rank.FIFTH.getWinnings() * 9;
 
         assertThat(exchanger.calculateProfit(countOfRank)).isEqualTo(expected);
+    }
+
+    @DisplayName("로또 당첨의 결과에 대하여 수익률을 계산한다.")
+    @Test
+    void calculateProfitRate() {
+        Map<Rank, Integer> countOfRank = Map.of(
+                Rank.FIRST, 1,
+                Rank.SECOND, 2,
+                Rank.THIRD, 0,
+                Rank.FOURTH, 3,
+                Rank.FIFTH, 9
+        );
+        long payment = 16_000;
+
+        long sumProfit = Rank.FIRST.getWinnings() * 1 + Rank.SECOND.getWinnings() * 2
+                + Rank.THIRD.getWinnings() * 0 + Rank.FOURTH.getWinnings() * 3
+                + Rank.FIFTH.getWinnings() * 9;
+        double expected = (double) sumProfit / payment;
+
+        assertThat(exchanger.calculateProfitRate(countOfRank, payment)).isEqualTo(expected);
     }
 
 }
