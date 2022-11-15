@@ -10,6 +10,13 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class PersonTest {
 
+    @DisplayName("로또 구입 기능 테스트")
+    @Test
+    void from() {
+        Person person = Person.from(6000);
+        assertThat(person.toString().contains("6개")).isTrue();
+    }
+
     @DisplayName("당첨 통계 테스트")
     @Test
     void matchResult() {
