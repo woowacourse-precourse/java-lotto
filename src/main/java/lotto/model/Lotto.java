@@ -33,10 +33,11 @@ public class Lotto {
 
     @Override
     public String toString() {
-        return numbers.stream()
+        String lottoNumbers = numbers.stream()
                 .sorted()
                 .collect(Collectors.toList())
                 .toString();
+        return "로또" + lottoNumbers;
     }
 
     private static boolean isInCorrectRange(List<Integer> numbers) {
