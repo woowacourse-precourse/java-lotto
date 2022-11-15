@@ -32,4 +32,4 @@
     - [x] 수익률을 출력하는 기능
 - [ ] 리팩토링
   - [ ] 로또 생성 역할 LottoManager->LottoList
-  - [ ] 결과 및 통계 역할 LottoManager->Statistics
+  - [x] 결과 및 통계 역할 LottoManager->Statistics
