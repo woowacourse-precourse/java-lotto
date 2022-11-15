@@ -1,9 +1,5 @@
 package lotto.domain.view;
 
-import java.text.DecimalFormat;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
 
 public class Print {
@@ -28,19 +24,13 @@ public class Print {
 	}
 
 	public void result(List<List<Integer>> result) {
-		DecimalFormat decFormat = new DecimalFormat("###,###");
-
 		message(Message.RESULT_TITLE);
 		for (List<Integer> score : result) {
-			String prize = decFormat.format(score.get(1));
-
-			if (prize.equals("30,000,000")) {
+			if (score.get(1).equals(30000000)) {
 				System.out.printf(Message.RESULT_FIVE_BONUS.getMessage(), score.get(2));
 				continue;
 			}
-			System.out.printf(Message.RESULT.getMessage(), score.get(0), prize, score.get(2));
+			System.out.printf(Message.RESULT.getMessage(), score.get(0), score.get(1), score.get(2));
 		}
-
-
 	}
 }

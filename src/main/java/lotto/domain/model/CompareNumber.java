@@ -41,12 +41,9 @@ public class CompareNumber {
 	}
 
 	private void updateResult(int index, List<Integer> ticket) {
-		int value;
-
 		if (index == 2 && ticket.contains(bonusBall)) {
 			index = 3;
-		}
-		else if (index == 3){
+		} else if (index == 3) {
 			index = 4;
 		}
 		result.get(index).set(2, result.get(index).get(2) + 1);
