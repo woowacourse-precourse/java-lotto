@@ -23,8 +23,8 @@ public class Lotto {
                 .count();
     }
     
-    public boolean isNumberContains(final int bonusNumber) {
-        return numbers.contains(bonusNumber);
+    public boolean isNumberContains(final int lottoNumber) {
+        return numbers.contains(lottoNumber);
     }
     
     public List<Integer> lottoNumbers() {
