@@ -22,6 +22,24 @@ public class LottoException {
         validateBonusNumberOverlapNumbers(inputNumbers, inputBonusNumber);
     }
 
+    public void validInputLottoNumbers(String numbers) {
+        for (int i = 0; i < numbers.length(); i++) {
+            char c = numbers.charAt(i);
+            if (!(Character.isDigit(c) || c == ',')) {
+                throw new IllegalArgumentException(ERROR + "로또 번호 입력은 숫자와 콤마(,)로 구성되어야 합니다.");
+            }
+        }
+    }
+
+    public void validInputBonusNumber(String number) {
+        for (int i = 0; i < number.length(); i++) {
+            char c = number.charAt(i);
+            if (!Character.isDigit(c)) {
+                throw new IllegalArgumentException(ERROR + "보너스 번호 입력은 숫자로 구성 되어야합니다.");
+            }
+        }
+    }
+
     public void validateLottoNumbersLength(List<Integer> numbers) {
         if (numbers.size() != PERMITTED_LOTTO_LENGTH) {
             throw new IllegalArgumentException(ERROR + "로또 번호는 6개 입력해주세요.");
