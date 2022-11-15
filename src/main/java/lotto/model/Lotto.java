@@ -6,6 +6,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Lotto {
+    private static final int LOTTOSIZE = 6;
+
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
@@ -21,7 +23,7 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
-        if (numbers.size() != 6) {
+        if (numbers.size() != LOTTOSIZE) {
             throw new IllegalArgumentException("로또번호 개수가 6개가 아닙니다.");
         }
     }
@@ -30,7 +32,7 @@ public class Lotto {
         List<Integer> distinctNumbers = numbers.stream()
                 .distinct()
                 .collect(Collectors.toList());
-        if (distinctNumbers.size() != 6) {
+        if (distinctNumbers.size() != LOTTOSIZE) {
             throw new IllegalArgumentException("중복된 숫자가 있습니다.");
         }
     }

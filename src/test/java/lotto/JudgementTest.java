@@ -11,7 +11,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
 class JudgementTest {
-    private static List<Integer> NUMBERS = Arrays.asList(1, 2, 3, 4, 5, 6);
+    private static final List<Integer> NUMBERS = Arrays.asList(1, 2, 3, 4, 5, 6);
     private Judgement judgement;
 
     @BeforeEach
