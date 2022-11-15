@@ -1,5 +1,7 @@
 package lotto;
 
+import static lotto.Messages.*;
+
 import java.text.NumberFormat;
 import java.util.Optional;
 
@@ -10,6 +12,9 @@ public enum Rank {
     SECONDS(30_000_000, "5개 일치, 보너스 볼 일치"),
     FIRST(2_000_000_000, "6개 일치");
 
+    public static final String OPENING_PARENTHESIS = "(";
+    public static final String CLOSING_PARENTHESIS = ")";
+    public static final String WON = "원";
     private final int prize;
     private final String condition;
 
@@ -40,7 +45,7 @@ public enum Rank {
     @Override
     public String toString() {
         NumberFormat numberFormat = NumberFormat.getInstance();
-        return condition + " (" + numberFormat.format(prize) + "원)";
+        return condition + SPACE + OPENING_PARENTHESIS + numberFormat.format(prize) + WON + CLOSING_PARENTHESIS;
     }
 
     public int getPrize() {
