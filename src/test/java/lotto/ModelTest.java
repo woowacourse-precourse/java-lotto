@@ -80,7 +80,7 @@ class ModelTest {
 
         model.PRIZE_RANKINGS = prizeRankings;
 
-        assertThat(model.calculateRateOfProfit(money)).isEqualTo(result);
+        assertThat(model.calculateRateOfIncome(money)).isEqualTo(result);
     }
 
     @Test
@@ -97,7 +97,7 @@ class ModelTest {
         double result = 257.5;
         model.PRIZE_RANKINGS = prizeRankings;
 
-        assertThat(model.calculateRateOfProfit(money)).isEqualTo(result);
+        assertThat(model.calculateRateOfIncome(money)).isEqualTo(result);
     }
 
     @Test
@@ -108,6 +108,6 @@ class ModelTest {
 
         int result = 6_000;
 
-        assertThat(model.profitByRanking(ranking, number)).isEqualTo(result);
+        assertThat(model.incomeByRanking(ranking, number)).isEqualTo(result);
     }
 }
