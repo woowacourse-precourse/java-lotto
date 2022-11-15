@@ -33,7 +33,6 @@ public class RatingService {
         for (Rating rating : Rating.values()) {
             profit += (long) result.getResult(rating) * rating.getReward();
         }
-        float yield = profit / money * 100;
-        return yield;
+        return (float) profit / (float) money * 100;
     }
 }
