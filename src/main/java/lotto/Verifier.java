@@ -4,68 +4,52 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Verifier {
-    public static boolean isValidMoney(String value) {
-        if (!isInteger(value)) {
-            return false;
-        }
+    public static void validateMoney(String value) {
+        validateInteger(value);
         int money = Integer.parseInt(value);
-        if (money < Lotto.PRICE) {
-            return false;
+        if (money < Lotto.PRICE || (money % Lotto.PRICE) != 0) {
+            throw new IllegalArgumentException(ErrorType.INVALID_MONEY.getMessage());
         }
-        if ((money % Lotto.PRICE) != 0) {
-            return false;
-        }
-        return true;
     }
 
-    public static boolean isValidWinningNumbers(String[] values) {
+    public static void validateWinningNumbers(String[] values) {
         if (values.length != Lotto.NUMBER_COUNT) {
-            return false;
+            throw new IllegalArgumentException(ErrorType.NUMBER_COUNT.getMessage());
         }
-        if (hasDuplicate(values)) {
-            return false;
-        }
+        validateDuplicate(values);
         for (String value : values) {
-            if (!isValidLottoNumber(value)) {
-                return false;
-            }
+            validateLottoNumber(value);
         }
-        return true;
     }
 
-    public static boolean isValidBonusNumber(String bonusNumber, List<Integer> winningNumbers) {
-        if (!isValidLottoNumber(bonusNumber)) {
-            return false;
-        }
+    public static void validateBonusNumber(String bonusNumber, List<Integer> winningNumbers) {
+        validateLottoNumber(bonusNumber);
         if (winningNumbers.contains(Integer.parseInt(bonusNumber))) {
-            return false;
+            throw new IllegalArgumentException(ErrorType.HAS_DUPLICATE.getMessage());
         }
-        return true;
     }
 
-    public static boolean isValidLottoNumber(String value) {
-        if (!isInteger(value)) {
-            return false;
-        }
+    public static void validateLottoNumber(String value) {
+        validateInteger(value);
         int number = Integer.parseInt(value);
         if (number < Lotto.START_RANGE || number > Lotto.END_RANGE) {
-            return false;
+            throw new IllegalArgumentException(ErrorType.OUT_OF_RANGE.getMessage());
         }
-        return true;
     }
 
-    public static boolean hasDuplicate(String[] values) {
+    public static void validateDuplicate(String[] values) {
         List<String> temp = new ArrayList<>();
         for (String value : values) {
             if (temp.contains(value)) {
-                return true;
+                throw new IllegalArgumentException(ErrorType.HAS_DUPLICATE.getMessage());
             }
             temp.add(value);
         }
-        return false;
     }
 
-    public static boolean isInteger(String value) {
-        return value.matches("[+-]?\\d+");
+    public static void validateInteger(String value) {
+        if (!value.matches("[+-]?\\d+")) {
+            throw new IllegalArgumentException(ErrorType.NOT_INTEGER.getMessage());
+        }
     }
 }

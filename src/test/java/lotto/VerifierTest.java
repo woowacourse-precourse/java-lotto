@@ -4,49 +4,50 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.junit.jupiter.api.Assertions.*;
 
 class VerifierTest {
     @Test
-    void isValidMoneyTest() {
-        String input = "987";
-        boolean result = false;
-        assertThat(Verifier.isValidMoney(input)).isEqualTo(result);
+    void validateMoneyTest() {
+        String input = "1001";
+        assertThatThrownBy(() -> Verifier.validateMoney(input))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
-    void isIntegerTest() {
-        String input = "78d";
-        boolean result = false;
-        assertThat(Verifier.isInteger(input)).isEqualTo(result);
-    }
-
-    @Test
-    void hasDuplicateTest() {
-        String[] input = {"1", "2", "3", "4", "5", "5"};
-        boolean result = true;
-        assertThat(Verifier.hasDuplicate(input)).isEqualTo(result);
-    }
-
-    @Test
-    void isValidNumberTest() {
-        String input = "0";
-        boolean result = false;
-        assertThat(Verifier.isValidLottoNumber(input)).isEqualTo(result);
-    }
-
-    @Test
-    void isValidWinningNumbersTest() {
+    void validateWinningNumbersTest() {
         String[] input = {"1", "2", "3", "4", "5"};
-        boolean result = false;
-        assertThat(Verifier.isValidWinningNumbers(input)).isEqualTo(result);
+        assertThatThrownBy(() -> Verifier.validateWinningNumbers(input))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
-    void isValidBonusNumberTest() {
-        String input = "6";
-        List<Integer> winningNumbers = List.of(1,2,3,4,5,6);
-        boolean result = false;
-        assertThat(Verifier.isValidBonusNumber(input, winningNumbers)).isEqualTo(result);
+    void validateBonusNumberTest() {
+        String bonusNumber = "1";
+        List<Integer> winningNumbers = List.of(1, 2, 3, 4, 5, 6);
+        assertThatThrownBy(() -> Verifier.validateBonusNumber(bonusNumber, winningNumbers))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void validateLottoNumberTest() {
+        String input = "0";
+        assertThatThrownBy(() -> Verifier.validateLottoNumber(input))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void validateIntegerTest() {
+        String input = "98d";
+        assertThatThrownBy(() -> Verifier.validateInteger(input))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void validateDuplicateTest() {
+        String[] input = {"1", "2", "3", "4", "5", "5"};
+        assertThatThrownBy(() -> Verifier.validateDuplicate(input))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 }

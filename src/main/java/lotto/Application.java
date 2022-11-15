@@ -1,20 +1,18 @@
 package lotto;
 
-import camp.nextstep.edu.missionutils.Console;
-
 import java.util.List;
 
 public class Application {
     public static void main(String[] args) {
         try {
-            InputManager inputManager = new InputManager();
-            UI ui = new UI();
-            int money = inputManager.inputCustomerMoney();
+            Input input = new Input();
+            Ouput ouput = new Ouput();
+            int money = input.getCustomerMoney();
             Customer customer = new Customer();
             customer.purchaseLotto(money);
-            ui.printPurchaseHistory(customer);
-            List<Integer> winningNumbers = inputManager.inputWinningNumbers();
-            int bonusNumber = inputManager.inputBonusNumber(winningNumbers);
+            ouput.printPurchaseHistory(customer);
+            List<Integer> winningNumbers = input.getWinningNumbers();
+            int bonusNumber = input.getBonusNumber(winningNumbers);
         }catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }

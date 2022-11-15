@@ -16,11 +16,11 @@ public class Lotto {
 
     private void validate(List<Integer> numbers) {
         if (numbers.size() != NUMBER_COUNT) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ErrorType.NUMBER_COUNT.getMessage());
         }
     }
 
     public List<Integer> getNumbers() {
-        return this.numbers;
+        return numbers;
     }
 }
