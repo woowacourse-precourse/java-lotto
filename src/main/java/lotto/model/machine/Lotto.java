@@ -9,8 +9,6 @@ import java.util.concurrent.atomic.AtomicInteger;
 import lotto.model.lucky.BonusNumber;
 import lotto.model.lucky.WinningNumber;
 
-import lotto.TryCatchException;
-
 public class Lotto implements Comparable<WinningNumber> {
 
     private static final int SIZE_OF_NUMBERS = 6;
@@ -23,22 +21,14 @@ public class Lotto implements Comparable<WinningNumber> {
     }
 
     private void validateSize(List<Integer> numbers) {
-        try {
-            if (numbers.size() != SIZE_OF_NUMBERS) {
-                throw new IllegalArgumentException();
-            }
-        } catch (IllegalArgumentException e) {
-            throw new TryCatchException("[ERROR] Lotto number size must be " + SIZE_OF_NUMBERS + ".");
+        if (numbers.size() != SIZE_OF_NUMBERS) {
+            throw new IllegalArgumentException();
         }
     }
 
     private void validateDuplicate(List<Integer> numbers) {
-        try {
-            if (numbers.size() != new HashSet<>(numbers).size()) {
-                throw new IllegalArgumentException();
-            }
-        } catch (IllegalArgumentException e) {
-            throw new TryCatchException("[ERROR] Lotto number must be not duplicate.");
+        if (numbers.size() != new HashSet<>(numbers).size()) {
+            throw new IllegalArgumentException();
         }
     }
 
