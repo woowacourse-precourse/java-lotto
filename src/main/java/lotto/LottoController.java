@@ -94,16 +94,12 @@ public class LottoController {
 	}
 
 	public void addToAnalysis(List<Integer> analysis, int corrections, boolean hasBonus) {
-		if (corrections == 3 || corrections == 4 || corrections == 6) {
+		if (corrections == 3 || corrections == 4 || (corrections == 5 && !hasBonus)) {
 			analysis.set(corrections-3, analysis.get(corrections-3)+1);
 			return;
 		}
-		if (corrections == 5 && !hasBonus) {
-			analysis.set(3, analysis.get(3)+1);
-			return;
-		}
-		if (corrections == 5 && hasBonus) {
-			analysis.set(4, analysis.get(4)+1);
+		if ((corrections == 5 && hasBonus) || corrections == 6) {
+			analysis.set(corrections-2, analysis.get(corrections-2)+1);
 		}
 	}
 

@@ -51,10 +51,13 @@ class LottoControllerTest {
 		controller.addToAnalysis(analysis, corrections, hasBonus);
 		Assertions.assertThat(analysis).isEqualTo(Arrays.asList(1, 0, 0, 0, 0));
 
-		corrections = 5;
-		hasBonus = true;
+		corrections = 4;
 		controller.addToAnalysis(analysis, corrections, hasBonus);
-		Assertions.assertThat(analysis).isEqualTo(Arrays.asList(1, 0, 0, 1, 0));
+		Assertions.assertThat(analysis).isEqualTo(Arrays.asList(1, 1, 0, 0, 0));
+
+		corrections = 5;
+		controller.addToAnalysis(analysis, corrections, hasBonus);
+		Assertions.assertThat(analysis).isEqualTo(Arrays.asList(1, 1, 1, 0, 0));
 	}
 
 	@DisplayName("입력에 따른 수익률 메시지를 반환해야 한다.")
