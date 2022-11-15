@@ -8,12 +8,11 @@ public enum Rank {
     FIFTH(3, 5_000, "3개 일치 (5,000원) - "),
     MISS(0, 0, "");
 
-    private static final int GUESS_MIN_COUNT = 3;
-    private int matchedNumberCount;
-    private int winningMoney;
-    private String message;
+    private final int matchedNumberCount;
+    private final int winningMoney;
+    private final String message;
 
-    private Rank(int matchedNumberCount, int winningMoney, String message) {
+    Rank(int matchedNumberCount, int winningMoney, String message) {
         this.matchedNumberCount = matchedNumberCount;
         this.winningMoney = winningMoney;
         this.message = message;

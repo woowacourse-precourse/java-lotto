@@ -49,11 +49,7 @@ public class LottoGame {
     }
 
     private boolean isValidPayment(String payment) {
-        if (!isValidPaymentCharacter(payment) || !isValidPaymentScope(payment) || !isValidPaymentUnit(payment)) {
-            return false;
-        }
-
-        return true;
+        return isValidPaymentCharacter(payment) && isValidPaymentScope(payment) && isValidPaymentUnit(payment);
     }
 
     private boolean isValidPaymentCharacter(String payment) {
@@ -98,9 +94,8 @@ public class LottoGame {
     private WinningLotto createWinningLotto() {
         Lotto lotto = new Lotto(getWinningNumbers());
         int bonusNumber = getBonusNumber();
-        WinningLotto winningLotto = new WinningLotto(lotto, bonusNumber);
 
-        return winningLotto;
+        return new WinningLotto(lotto, bonusNumber);
     }
 
     private List<Integer> getWinningNumbers() {
@@ -122,10 +117,7 @@ public class LottoGame {
     }
 
     private boolean isValidWinningNumbers(List<String> numbers) {
-        if (!isValidWinningNumbersSize(numbers) || !isValidWinningNumbersScope(numbers)) {
-            return false;
-        }
-        return true;
+        return isValidWinningNumbersSize(numbers) && isValidWinningNumbersScope(numbers);
     }
 
     private boolean isValidWinningNumbersSize(List<String> numbers) {
@@ -153,18 +145,15 @@ public class LottoGame {
     }
 
     private boolean isValidBonusNumber(String bonusNumber) {
-        if (!(Integer.parseInt(bonusNumber) >= LOTTO_MIN_NUMBER && Integer.parseInt(bonusNumber) <= LOTTO_MAX_NUMBER)) {
-            return false;
-        }
-        return true;
+        return Integer.parseInt(bonusNumber) >= LOTTO_MIN_NUMBER && Integer.parseInt(bonusNumber) <= LOTTO_MAX_NUMBER;
     }
 
     private void lottoResultStatistics(List<Lotto> lottos, WinningLotto winningLotto) {
         Map<Rank, Integer> result = setResult();
         Rank rank;
 
-        for (int idx = 0; idx < lottos.size(); idx++) {
-            rank = winningLotto.match(lottos.get(idx));
+        for (Lotto lotto : lottos) {
+            rank = winningLotto.match(lotto);
             result.put(rank, result.get(rank) + 1);
         }
 
