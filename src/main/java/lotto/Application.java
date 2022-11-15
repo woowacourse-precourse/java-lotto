@@ -15,21 +15,21 @@ public class Application {
             printLottos(boughtLottos);
 
             List<Integer> targetNumbers = inputTargetNumbers();
-            Lotto targetLotto = new Lotto(targetNumbers); // 당첨번호 자동 검증
+            Lotto targetLotto = new Lotto(targetNumbers); // 당첨번호 검증용
             int bonusNumber = inputBonusNumber(targetNumbers);
 
-            printResult(boughtLottos, targetLotto, bonusNumber, money);
+            printResult(boughtLottos, targetNumbers, bonusNumber, money);
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
     }
 
-    private static void printResult(List<List<Integer>> boughtLottos, Lotto targetLotto,
+    private static void printResult(List<List<Integer>> boughtLottos, List<Integer> targetNumbers,
                                     int bonusNumber, int money) {
         System.out.println("당첨 통계");
         System.out.println("---");
 
-        Map<Prize, Integer> result = calculatePrize(boughtLottos, targetLotto, bonusNumber);
+        Map<Prize, Integer> result = calculatePrize(boughtLottos, targetNumbers, bonusNumber);
         List<Prize> prizes = Arrays.asList(Prize.THREE, Prize.FOUR, Prize.FIVE, Prize.FIVE_BONUS, Prize.SIX);
         float profits = 0;
         for (Prize p : prizes) {
@@ -41,10 +41,10 @@ public class Application {
     }
 
     private static Map<Prize, Integer> calculatePrize(List<List<Integer>> boughtLottos,
-                                                      Lotto targetLotto, int bonusNumber) {
+                                                      List<Integer> targetNumbers, int bonusNumber) {
         Map<Prize, Integer> map = new HashMap<>(); // 3개 ~ 6개
         for (List<Integer> lotto : boughtLottos) {
-            Prize result = targetLotto.calculate(lotto, bonusNumber);
+            Prize result = Lotto.calculate(lotto, targetNumbers, bonusNumber);
             map.put(result, map.getOrDefault(result, 0) + 1);
         }
 

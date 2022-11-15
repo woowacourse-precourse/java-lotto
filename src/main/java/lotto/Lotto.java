@@ -27,16 +27,16 @@ public class Lotto {
         }
     }
 
-    public Prize calculate(List<Integer> lotto, int bonusNumber) {
+    public static Prize calculate(List<Integer> lotto, List<Integer> targetNumbers, int bonusNumber) {
         int result = 0;
         boolean isBonusRight = false;
-        for (Integer i : lotto) {
-            if (numbers.contains(i)) {
+        for (int i : targetNumbers) {
+            if (lotto.contains(i)) {
                 result++;
             }
         }
         if (result == 5) {
-            if (numbers.contains(bonusNumber)) {
+            if (lotto.contains(bonusNumber)) {
                 isBonusRight = true;
             }
         }
