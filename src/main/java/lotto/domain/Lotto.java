@@ -16,7 +16,9 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
-
+        checkListSize(numbers);
+        checkListRange(numbers);
+        checkListDuplicate(numbers);
     }
 
     private void checkListSize(List<Integer> numbers) {
