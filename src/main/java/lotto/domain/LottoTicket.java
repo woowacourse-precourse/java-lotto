@@ -1,6 +1,5 @@
 package lotto.domain;
 
-import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -15,10 +14,8 @@ public class LottoTicket {
     }
 
     public List<LottoNumbersDTO> exportLottoNumbers() {
-        List<LottoNumbersDTO> exportedNumbers = lottoTicket.stream()
-                .map(Lotto::export)
-                .collect(Collectors.toList());
-        return Collections.unmodifiableList(exportedNumbers);
+        return lottoTicket.stream()
+                .map(Lotto::export).collect(Collectors.toUnmodifiableList());
     }
 
     public RoundResult getResult(WinningLotto winningLotto) {

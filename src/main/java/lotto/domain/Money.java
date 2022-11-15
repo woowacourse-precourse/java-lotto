@@ -19,20 +19,12 @@ public class Money {
         return new Money(money.divide(price.money,2,BigDecimal.ROUND_FLOOR));
     }
 
-    public Money sum(Money input){
-        return new Money(money.add(input.money));
-    }
-
     public int intValue(){
         return money.intValue();
     }
 
     public double doubleValue(){
         return money.doubleValue();
-    }
-
-    public long longValue(){
-        return money.longValue();
     }
 
     @Override

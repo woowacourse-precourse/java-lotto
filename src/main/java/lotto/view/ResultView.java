@@ -15,7 +15,7 @@ import static java.util.stream.Collectors.groupingBy;
 
 public class ResultView {
     public static void printLottoNumbers(List<LottoNumbersDTO> lottoNumbers) {
-        System.out.println(String.format("%d개를 구매했습니다.", lottoNumbers.size()));
+        System.out.printf("%d개를 구매했습니다.%n", lottoNumbers.size());
         lottoNumbers.forEach(ResultView::printLottoNumbers);
     }
 
@@ -33,7 +33,7 @@ public class ResultView {
         System.out.println("당첨 통계");
         System.out.println("---------");
         printByPrize(roundResult.getPrizes());
-        System.out.println(String.format("총 수익률은 %.2f 입니다.", roundResult.getRateOfReturn()));
+        System.out.printf("총 수익률은 %.2f 입니다.%n", roundResult.getRateOfReturn());
     }
 
     private static void printByPrize(List<Prize> prizes) {
@@ -56,7 +56,7 @@ public class ResultView {
         if (prize == Prize.SECOND) {
             stringBuilder.append(", 보너스 볼 일치");
         }
-        stringBuilder.append(String.format("(%d원) -%d개", prize.getWinnings(), count));
+        stringBuilder.append(String.format("(%d원) -%d개", prize.getWinnings().intValue(), count));
         return stringBuilder.toString();
     }
 }
