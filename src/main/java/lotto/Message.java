@@ -1,6 +1,7 @@
 package lotto;
 
 import java.util.List;
+import lotto.model.Lotto;
 
 public class Message {
 
@@ -23,7 +24,7 @@ public class Message {
         System.out.println("보너스 번호를 입력해 주세요.");
     }
 
-    public void printError(String msg) {
+    public void printMsg(String msg) {
         System.out.println(msg);
     }
 }

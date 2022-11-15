@@ -1,4 +1,4 @@
-package lotto;
+package lotto.model;
 
 public enum LottoEnum {
     START_NUM(1),

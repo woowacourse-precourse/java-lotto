@@ -2,6 +2,7 @@ package lotto;
 
 import java.util.List;
 import java.util.Objects;
+import lotto.model.LottoEnum;
 
 public class ValidInput {
 

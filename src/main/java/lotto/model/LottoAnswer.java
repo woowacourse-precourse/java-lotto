@@ -1,13 +1,14 @@
-package lotto;
+package lotto.model;
 
 import java.util.List;
 
-public class Lotto {
-    private final List<Integer> numbers;
+public class LottoAnswer extends Lotto {
+    private final Integer bonusNumber;
 
-    public Lotto(List<Integer> numbers) {
+    public LottoAnswer(List<Integer> numbers, Integer bounsNumber) {
+        super(numbers);
         validate(numbers);
-        this.numbers = numbers;
+        this.bounsNumber = bounsNumber;
     }
 
     private void validate(List<Integer> numbers) {
@@ -15,8 +16,7 @@ public class Lotto {
             throw new IllegalArgumentException("입력한 값이 " + LottoEnum.SIZE + "자리보다 작거나 큽니다!");
         }
     }
-
-    public String getLottoNumber() {
-        return numbers.toString();
+    public Integer getBonusNumber() {
+        return bonusNumber;
     }
 }
