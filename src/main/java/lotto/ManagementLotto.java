@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class ManagementLotto {
+
     private final ValidInput validInput = new ValidInput();
 
     public List<Lotto> purchase(Integer amount) {
@@ -40,7 +41,7 @@ public class ManagementLotto {
         }
 
         validInput.validInputHasDuplicatedNumber(inputNumberList);
-
+        inputNumberList.sort(Integer::compareTo);
         return inputNumberList;
     }
 
