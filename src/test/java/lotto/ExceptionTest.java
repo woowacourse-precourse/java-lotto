@@ -15,6 +15,14 @@ public class ExceptionTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+    @DisplayName("로또 구입 금액이 1000으로 나눠지지 않으면 예외가 발생한다.")
+    @Test
+    void createExceptionTest2() {
+        assertThatThrownBy(() -> new Exception().checkPurchaseAmount("3500"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+
 
 
 }
