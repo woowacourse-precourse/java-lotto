@@ -37,7 +37,7 @@ public class UI {
                 Game.winningStatus.get(Rank.FOURTH.getMessage()),
                 Game.winningStatus.get(Rank.THIRD.getMessage()),
                 Game.winningStatus.get(Rank.SECOND.getMessage()),
-                Game.winningStatus.get(Rank.FIRST.getWins()))
+                Game.winningStatus.get(Rank.FIRST.getMessage()))
         );
     }
 
