@@ -15,7 +15,7 @@ public class LottoService {
     private static final Integer MAX = 45;
     private static final Integer NUMBER = 6;
 
-    public static Lotto makeLottoFromInput(String input) throws IllegalArgumentException{
+    public Lotto makeLottoFromInput(String input) throws IllegalArgumentException{
         String[] splitInput = input.split("[,]");
         isValidNumber(splitInput);
         isValidParser(splitInput);
