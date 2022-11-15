@@ -1,88 +1,88 @@
 package lotto;
 
-import org.assertj.core.api.Assertions;
+import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
+import static org.assertj.core.api.Assertions.assertThat;
+
+import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-class AnswerTest {
-    @DisplayName("당첨 번호에 ',' 과 숫자가 아닌 다른 값이 있으면 예외 발생 1).")
+class AnswerTest extends NsTest {
+    @DisplayName("당첨 번호에 숫자가 아닌 다른 값이 있으면 예외 발생 1).")
     @Test
     void checkAnswerException1() {
-        Assertions.assertThatThrownBy(() -> {
-            String inputAnswer = "1,2,3,5,6,a";
-            Answer.inputValidity(inputAnswer);
-        }).isInstanceOf(IllegalArgumentException.class);
 
-        Assertions.assertThatThrownBy(() -> {
-            String inputAnswer = "1,2,3,5,6.a";
-            Answer.inputValidity(inputAnswer);
-        }).isInstanceOf(IllegalArgumentException.class);
+        assertSimpleTest(() -> {
+            runException("1000", "1,2,3,5,6,a");
+            assertThat(output()).contains("[ERROR]");
+        });
+    }
+
+    @DisplayName("당첨 번호에 ','가 아닌 다른 값이 있으면 예외 발생 1).")
+    @Test
+    void checkAnswerException2() {
+        assertSimpleTest(() -> {
+            runException("1000", "1,2,3,5,6,a");
+            assertThat(output()).contains("[ERROR]");
+        });
     }
 
     @DisplayName("당첨번호에 숫자가 범위 내 숫자가 6개가 들어있는지 확인.")
     @Test
-    void checkAnswerException2() {
-        Assertions.assertThatThrownBy(() -> {
-            String inputAnswer = "1,2,3,5,6,0";
-            Answer.inputValidity(inputAnswer);
-        }).isInstanceOf(IllegalArgumentException.class);
-
-        Assertions.assertThatThrownBy(() -> {
-            String inputAnswer = "1,2,3,5,6,";
-            Answer.inputValidity(inputAnswer);
-        }).isInstanceOf(IllegalArgumentException.class);
-
-        Assertions.assertThatThrownBy(() -> {
-            String inputAnswer = "1,2,3,5,6,46";
-            Answer.inputValidity(inputAnswer);
-        }).isInstanceOf(IllegalArgumentException.class);
-
-        Assertions.assertThatThrownBy(() -> {
-            String inputAnswer = "1,2,3,5,6,12,a";
-            Answer.inputValidity(inputAnswer);
-        }).isInstanceOf(IllegalArgumentException.class);
-
-        Assertions.assertThatThrownBy(() -> {
-            String inputAnswer = "1,2,3,5, ,12";
-            Answer.inputValidity(inputAnswer);
-        }).isInstanceOf(IllegalArgumentException.class);
-
-        Assertions.assertThatThrownBy(() -> {
-            String inputAnswer = "1,2,3,5";
-            Answer.inputValidity(inputAnswer);
-        }).isInstanceOf(IllegalArgumentException.class);
+    void checkAnswerException3() {
+        assertSimpleTest(() -> {
+            runException("1000", "1,2,3,5,6,7,8");
+            assertThat(output()).contains("[ERROR]");
+        });
     }
 
     @DisplayName("당첨 번호에 ',,' 가 있는 경우 예외 발생).")
     @Test
-    void checkAnswerException3() {
-        Assertions.assertThatThrownBy(() -> {
-            String inputAnswer = "1,2,3,5,,6";
-            Answer.inputValidity(inputAnswer);
-        }).isInstanceOf(IllegalArgumentException.class);
+    void checkAnswerException4() {
+        assertSimpleTest(() -> {
+            runException("1000", "1,2,3,5,,8");
+            assertThat(output()).contains("[ERROR]");
+        });
     }
 
     @DisplayName("당첨 번호가 ',' 로 끝나는 경우.")
     @Test
-    void checkAnswerException4() {
-        Assertions.assertThatThrownBy(() -> {
-            String inputAnswer = "1,2,3,5,6,";
-            Answer.inputValidity(inputAnswer);
-        }).isInstanceOf(IllegalArgumentException.class);
-    }
-
-    @DisplayName("당첨 번호에 중복되는 숫자가 있는 경우.")
-    @Test
     void checkAnswerException5() {
-        Assertions.assertThatThrownBy(() -> {
-            String inputAnswer = "1,2,3,5,6,6";
-            Answer.inputValidity(inputAnswer);
-        }).isInstanceOf(IllegalArgumentException.class);
-
-        Assertions.assertThatThrownBy(() -> {
-            String inputAnswer = "6,6,6,6,6,6";
-            Answer.inputValidity(inputAnswer);
-        }).isInstanceOf(IllegalArgumentException.class);
+        assertSimpleTest(() -> {
+            runException("1000", "1,2,3,5,6,");
+            assertThat(output()).contains("[ERROR]");
+        });
     }
 
+    @DisplayName("당첨 번호에 중복되는 숫자가 있는 경우 1.")
+    @Test
+    void checkAnswerException6() {
+        assertSimpleTest(() -> {
+            runException("1000", "1,2,3,5,6,6");
+            assertThat(output()).contains("[ERROR]");
+        });
+    }
+
+    @DisplayName("당첨 번호에 중복되는 숫자가 있는 경우 2.")
+    @Test
+    void checkAnswerException7() {
+        assertSimpleTest(() -> {
+            runException("1000", "6,6,6,6,6,6");
+            assertThat(output()).contains("[ERROR]");
+        });
+    }
+
+    @DisplayName("당첨 번호가 null로 들어오는 경우")
+    @Test
+    void checkAnswerException8() {
+        assertSimpleTest(() -> {
+            runException("1000", null);
+            assertThat(output()).contains("[ERROR]");
+        });
+    }
+
+    @Override
+    public void runMain() {
+        Application.main(new String[]{});
+    }
 }
