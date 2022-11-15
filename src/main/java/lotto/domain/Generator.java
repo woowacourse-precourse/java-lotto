@@ -2,6 +2,7 @@ package lotto.domain;
 
 import java.util.HashMap;
 import java.util.List;
+import lotto.Constants.NUMBER;
 import lotto.Ranking;
 
 public class Generator {
@@ -12,27 +13,33 @@ public class Generator {
     }
 
     private static HashMap<String, Integer> countCorrectNumber(Lotto lotto) {
+        HashMap<String, Integer> result = new HashMap<String, Integer>() {{
+            put(WINNINGCOUNT, NUMBER.ZERO);
+            put(BONUSCOUNT, NUMBER.ZERO);
+        }};
+
+        counting(lotto, result);
+
+        return result;
+    }
+
+    private static void counting(Lotto lotto, HashMap<String, Integer> result) {
         List<Integer> winningNumbers = Lotto.getWinningNumbers();
         int bonusNumber = Lotto.getBonusNumber();
-
-        final int[] winningCount = {0};
-        final int[] bonusCount = {0};
         lotto.getNumbers()
                 .stream()
                 .mapToInt(Integer::intValue)
                 .forEach(number -> {
                     if (winningNumbers.contains(number)) {
-                        winningCount[0]++;
+                        int prevWinningCount = result.get(WINNINGCOUNT);
+                        result.put(WINNINGCOUNT, prevWinningCount + 1);
                     }
                     if (bonusNumber == number) {
-                        bonusCount[0]++;
+                        int prevBonusCount = result.get(BONUSCOUNT);
+                        result.put(BONUSCOUNT, prevBonusCount + 1);
+
                     }
                 });
-
-        HashMap<String, Integer> result = new HashMap<String, Integer>();
-        result.put(WINNINGCOUNT, winningCount[0]);
-        result.put(BONUSCOUNT, bonusCount[0]);
-        return result;
     }
 
     public static void countRank(Buyer buyer) {
