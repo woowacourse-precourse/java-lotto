@@ -58,4 +58,13 @@ public class Lotto {
         if(boughtLotto.contains(this.numbers.get(6))) bonus++;
         return bonus;
     }
+
+    // 당첨총액 산정
+    public int totalPrice(List<Grade> gradeList){
+        int totalPrice = 0;
+        for(Grade grade : gradeList){
+            totalPrice += grade.getReward();
+        }
+        return totalPrice;
+    }
 }
