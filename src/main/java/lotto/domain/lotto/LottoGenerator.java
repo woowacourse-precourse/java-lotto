@@ -20,7 +20,12 @@ public class LottoGenerator {
             throw new IllegalArgumentException("[ERROR] 숫자만 입력해주세요.");
         }
 
-        if (Integer.parseInt(money) % LOTTO_AMOUNT != 0) {
+        int intMoney = Integer.parseInt(money);
+        if (intMoney <= 0) {
+            throw new IllegalArgumentException("[ERROR] 1 이상의 숫자만 입력해주세요.");
+        }
+
+        if (intMoney % LOTTO_AMOUNT != 0) {
             throw new IllegalArgumentException("[ERROR] 금액이 " + LOTTO_AMOUNT + "로 나누어 떨어지지 않습니다.");
         }
     }
