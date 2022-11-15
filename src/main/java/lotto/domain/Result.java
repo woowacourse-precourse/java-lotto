@@ -8,4 +8,8 @@ public class Result {
     public Result(Map<Rank, Integer> results) {
         this.results = results;
     }
+
+    public Map<Rank, Integer> getResults() {
+        return results;
+    }
 }
