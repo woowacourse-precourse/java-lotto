@@ -1,35 +1,26 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
-import lotto.exception.ErrorCode;
 import lotto.exception.MyIllegalArgumentException;
 
 public class Application {
-    private static final int LOTTO_BUY_CURRENCY = 1000;
-
     public static void main(String[] args) {
+        Receipt receipt;
+        String input;
         try {
-            int amount = askAmount();
+            input = askMoney();
+            receipt = new Receipt(input);
         } catch (MyIllegalArgumentException e) {
             e.printErrorMessage();
+            return;
         }
-    }
-
-    public static int askAmount() {
-        try {
-            int money = Integer.parseInt(Console.readLine()) / 1000;
-            if (isValidMoney(money)) {
-                return money;
-            }
-        } catch (NumberFormatException ignored) {
-        }
-        throw new MyIllegalArgumentException(ErrorCode.MONEY_ERROR);
     }
 
     /**
-     * 예외 처리를 위한 편의 기능
+     * 사용자 입력 메서드
      */
-    public static boolean isValidMoney(int money) {
-        return money > 0 && money % LOTTO_BUY_CURRENCY == 0;
+    private static String askMoney() {
+        System.out.println("구매금액을 입력해 주세요.");
+        return Console.readLine();
     }
 }
