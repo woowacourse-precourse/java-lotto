@@ -35,7 +35,7 @@ public class Publisher {
 
     private void validate(long purchaseAmount) {
         if (purchaseAmount % TICKET_PRICE != 0) {
-            throw new IllegalArgumentException("[ERROR] 구입 금액은 1,000원 단위의 숫자여야 합니다.");
+            throw new IllegalArgumentException(Error.purchaseAmount.value());
         }
     }
 }

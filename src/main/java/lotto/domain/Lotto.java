@@ -29,7 +29,7 @@ public class Lotto {
 
     private void validate(List<Integer> numbers) {
         if (!(validateSize(numbers) && validateRange(numbers) && validateDuplication(numbers))) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(Error.lotto.value());
         }
     }
 

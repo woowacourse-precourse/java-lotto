@@ -18,6 +18,5 @@ public class GeneratorTest {
         List<Integer> beforeSorted = generator.createLottoNumbers();
         List<Integer> afterSorted = beforeSorted.stream().sorted().collect(Collectors.toList());
         assertEquals(beforeSorted, afterSorted);
-
     }
 }

@@ -4,6 +4,7 @@ import lotto.UI.*;
 import lotto.domain.*;
 import java.util.ArrayList;
 import java.util.List;
+import lotto.domain.Error;
 
 public class Application {
 
@@ -37,7 +38,7 @@ public class Application {
         try {
             return Input.getAnswerInLong(Request.purchaseAmount.value());
         } catch (Exception e) {
-            throw new IllegalArgumentException("[ERROR] 구입 금액은 1,000원 단위의 숫자여야 합니다.");
+            throw new IllegalArgumentException(Error.purchaseAmount.value());
         }
     }
 
@@ -49,8 +50,7 @@ public class Application {
             }
             return new Lotto(numbers);
         } catch (Exception e) { // 숫자가 아닌 문자인 경우
-            throw new IllegalArgumentException(
-                    "[ERROR] 로또 번호는 쉼표(,)로 구분된 1부터 45 사이의 6자리 숫자여야 합니다");
+            throw new IllegalArgumentException(Error.lotto.value());
         }
     }
 

@@ -16,7 +16,8 @@ public class PublisherTest extends NsTest {
     @Test
     void createPublisherByWrongNumber() {
         assertThatThrownBy(() -> new Publisher(999))
-                .isInstanceOf(IllegalArgumentException.class);
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining(Error.purchaseAmount.value());
     }
 
     @DisplayName("로또 발행이 정상적으로 되는지 확인한다.")
