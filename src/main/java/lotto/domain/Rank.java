@@ -39,4 +39,8 @@ public enum Rank {
         List<Integer> lottoNumbers = lotto.getLottoNumbers();
         return lottoNumbers.contains(bonusNumber);
     }
+
+    public int getMatchMoney() {
+        return matchMoney;
+    }
 }
