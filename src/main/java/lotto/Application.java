@@ -1,14 +1,11 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
-import lotto.domain.Lotto;
-import lotto.domain.LottoShop;
 import lotto.ui.Guide;
-import org.assertj.core.util.Lists;
 
 public class Application {
 
@@ -28,5 +25,12 @@ public class Application {
         return Arrays.stream(winningNumbers)
             .map(Integer::parseInt)
             .collect(Collectors.toList());
+    }
+
+    private static void validate(String bonusNumber) {
+        Pattern correctInputPattern = Pattern.compile("^([1-9]|1[0-9]|2[0-9]|3[0-9]|4[0-5])$");
+        if (!correctInputPattern.matcher(bonusNumber).find()) {
+            throw new IllegalArgumentException(Error.IS_NOT_CORRECT_NUMBER.getMessage());
+        }
     }
 }
