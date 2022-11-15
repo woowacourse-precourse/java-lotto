@@ -3,6 +3,10 @@ package lotto.layer;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.mockito.Mockito.mock;
 
+import lotto.layer.controller.LottoController;
+import lotto.layer.service.LottoService;
+import lotto.layer.view.InputView;
+import lotto.layer.view.OutputView;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;

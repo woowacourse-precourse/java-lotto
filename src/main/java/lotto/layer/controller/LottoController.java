@@ -1,4 +1,4 @@
-package lotto.layer;
+package lotto.layer.controller;
 
 import java.util.Arrays;
 import java.util.List;
@@ -8,6 +8,9 @@ import lotto.domain.Lotto;
 import lotto.domain.LottoNumber;
 import lotto.domain.Money;
 import lotto.domain.WinningLotto;
+import lotto.layer.view.InputView;
+import lotto.layer.service.LottoService;
+import lotto.layer.view.OutputView;
 
 public class LottoController {
 
