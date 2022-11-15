@@ -1,6 +1,7 @@
 package lotto;
 
-import user.NumberComponent;
+import ui.ErrorConstant;
+import user.NumberValidator;
 
 import java.util.List;
 import java.util.ArrayList;
@@ -45,26 +46,26 @@ public class Lotto {
 
     private void validateLottoNull(List<Integer> numbers) {
         if (numbers == null) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ErrorConstant.LOTTO_NOT_NULL);
         }
     }
 
     private void validateLottoSize(List<Integer> numbers) {
         if (numbers.size() != 6) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ErrorConstant.LOTTO_NOT_SIZE_6);
         }
     }
 
     private void validateLottoDuplicate(List<Integer> numbers) {
         Set<Integer> numberSet = new HashSet<>(numbers);
         if (numberSet.size() != 6) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ErrorConstant.LOTTO_NOT_DUPLICATE);
         }
     }
 
     private void validateOutRange(List<Integer> numbers) {
         for (Integer number : numbers) {
-            NumberComponent.checkLottoNumber(number);
+            NumberValidator.checkLottoNumber(number);
         }
     }
 
@@ -86,5 +87,14 @@ public class Lotto {
             }
         }
         return correctCount;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof Lotto) {
+            Lotto lotto = (Lotto) obj;
+            return lotto.toNumberForm() == this.toNumberForm();
+        }
+        return false;
     }
 }
