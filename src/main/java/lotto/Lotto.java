@@ -35,7 +35,6 @@ public class Lotto {
             }
         }
 
-
         return matchNumCnt;
     }
 

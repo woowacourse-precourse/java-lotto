@@ -48,17 +48,19 @@ class LottoTest {
         assertThat(result).isEqualTo(expected);
     }
 
+
+
     //당첨 번호 개수가 5개 일때, 보너스 점수 일치 여부 테스트
     @DisplayName("당첨 번호 개수가 5개 일때, 보너스 점수가 일치하면 true를 반환한다.")
-    @Test
-    void checkReturnValueOfBonusMatched() {
+    @ParameterizedTest
+    @CsvSource({"41,true","33,false"})
+    void checkReturnValueOfBonusMatched(int bonusNum, boolean expected) {
 
         Lotto lotto = new Lotto(List.of(1,23,11,19,36,41));
         int matchNumCnt = lotto.countMatchedNumbers(WINNINGNUMS);
 
-        int bonusNum = 41;
         boolean result = lotto.checkBonusMatched(bonusNum,matchNumCnt);
-        assertThat(result).isEqualTo(true);
+        assertThat(result).isEqualTo(expected);
     }
 
 
