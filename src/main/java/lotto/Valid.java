@@ -58,6 +58,17 @@ public class Valid {
 		}
 	}
 
+	public static void hasCorrectRangeNumber(List<Integer> numbers) {
+		for (int numbersIndex = 0; numbersIndex < numbers.size(); numbersIndex++) {
+			int lottoNumber = numbers.get(numbersIndex);
+			if (lottoNumber < Constant.FIRST_NUMBER_IN_LOTTO
+				|| lottoNumber > Constant.LAST_NUMBER_IN_LOTTO) {
+				System.out.println(Message.WRONG_RANGE_NUMBER_ERROR);
+				throw new IllegalArgumentException(Message.WRONG_RANGE_NUMBER_ERROR);
+			}
+		}
+	}
+
 	private static boolean isNumeric(String str) {
 		return str.chars().allMatch(Character::isDigit);
 	}
