@@ -17,27 +17,30 @@ public class Game {
     int bonusNum;
 
     public void init() {
-        setCalculator();
-        if (calculator == null) {
+        if (setCalculator()) {
             return;
         }
         setLotto();
         if (lotto == null) {
             return;
         }
-
     }
 
-    private void setCalculator() {
+    private boolean setCalculator() {
         long money = Input.inputMoney();
         if (money == INVALID) {
-            return;
+            return true;
         }
         calculator = new Calculator(money);
+        return false;
     }
 
-    private void setLotto() {
+    private boolean setLotto() {
         List numbers = Input.inputLotto();
+        if (numbers == null) {
+            return true;
+        }
         lotto = new Lotto(numbers);
+        return false;
     }
 }
