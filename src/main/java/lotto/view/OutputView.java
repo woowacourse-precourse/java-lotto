@@ -1,30 +1,61 @@
 package lotto.view;
 
 import lotto.domain.Lotto;
+import lotto.dto.LottoResultDto;
+import lotto.dto.PrizeDto;
 
 import java.text.DecimalFormat;
 import java.util.List;
 
 public class OutputView {
-    public void print_LottoCnt(int lottoCnt) {
-        System.out.println(lottoCnt + "개를 구매했습니다.");
+    private static final String BOUGHT_LOTTO_COUNT = "%d개를 구매했습니다.";
+    private static final String LOTTO_WIN_RESULT = "%d개 일치%s (%s원) - %d개";
+    private static final String BONUS_WIN = ", 보너스 볼 일치";
+    private static final String RATE_OF_RETURN = "총 수익률은 %.1f%%입니다.";
+    private static final String RESULT_HEADER = "\n당첨 통계\n---";
+    private static final String EMPTY_STRING = "";
+    private static final DecimalFormat MONEY_FORMAT = new DecimalFormat("###,###");
+
+    private OutputView() {
     }
 
-    public static void print_RandomLottoNumbers(List<Lotto> allLottoNumber) {
-        for (Lotto eachLotto : allLottoNumber) {
-            System.out.println(eachLotto.getNumbers().toString());
+    public static void printIssuedLotto(List<List<Integer>> lottos) {
+        printIssuedLottoCount(lottos.size());
+        printLottos(lottos);
+    }
+
+    public static void printLottoResult(LottoResultDto result) {
+        System.out.println(RESULT_HEADER);
+        result.getPrizes().forEach(OutputView::printEachPrize);
+        printRateOfReturn(result.getRateOfReturn());
+    }
+
+    private static void printIssuedLottoCount(int size) {
+        System.out.printf("\n" + BOUGHT_LOTTO_COUNT + "\n", size);
+    }
+
+    private static void printLottos(List<List<Integer>> lottos) {
+        lottos.forEach(System.out::println);
+    }
+
+    private static void printEachPrize(PrizeDto prize) {
+        System.out.printf(LOTTO_WIN_RESULT + "\n",
+                prize.getMatchCount(), checkBonus(prize.hasBonus()),
+                convertMoneyFormat(prize.getMoney()), prize.getCount());
+    }
+
+    private static String checkBonus(boolean hasBonus) {
+        if (hasBonus) {
+            return BONUS_WIN;
         }
+        return EMPTY_STRING;
     }
 
-    public static void print_winningStats(int[] win_stats) {
-        System.out.printf("3개 일치 (5,000원) - %d개\n", win_stats[0]);
-        System.out.printf("4개 일치 (50,000원) - %d개\n", win_stats[1]);
-        System.out.printf("5개 일치 (1,500,000원) - %d개\n", win_stats[2]);
-        System.out.printf("5개 일치, 보너스 볼 일치 (30,000,000원) - %d개\n", win_stats[3]);
-        System.out.printf("6개 일치 (2,000,000,000원) - %d개\n", win_stats[4]);
+    private static void printRateOfReturn(double rateOfReturn) {
+        System.out.printf(RATE_OF_RETURN, rateOfReturn);
     }
 
-    public static void print_yield(String yield) {
-        System.out.printf("총 수익률은 %s입니다.", yield);
+    private static String convertMoneyFormat(int money) {
+        return MONEY_FORMAT.format(money);
     }
 }
