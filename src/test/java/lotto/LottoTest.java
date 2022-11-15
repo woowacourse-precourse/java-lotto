@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class LottoTest {
@@ -38,5 +39,30 @@ class LottoTest {
         assertThatThrownBy(() -> new Lotto(List.of(0, 1, 2, 3, 4, 5)))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(Lotto.LOTTO_NUMBER_RANGE_MISMATCH_MESSAGE);
+    }
+
+    @DisplayName("당첨 로또와 사용자 로또와의 일치 개수가 4개일 경우 일치 개수 4를 반환한다")
+    @Test
+    void matchLottoWithWinningLotto() {
+        Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+        WinningLotto winningLotto = new WinningLotto(List.of(1, 2, 3, 4, 7, 8), 9);
+
+        assertThat(lotto.match(winningLotto)).isEqualTo(4);
+    }
+
+    @DisplayName("사용자 로또와 보너스 번호가 일치할 경우 참을 반환한다")
+    void matchBonusWithLotto() {
+        Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+        int bonusNumber = 6;
+
+        assertThat(lotto.matchBonus(bonusNumber)).isTrue();
+    }
+
+    @DisplayName("사용자 로또와 보너스 번호가 일치하지 않을 경우 거짓을 반환한다")
+    void dismatchBonusWithLotto() {
+        Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+        int bonusNumber = 7;
+
+        assertThat(lotto.matchBonus(bonusNumber)).isFalse();
     }
 }
