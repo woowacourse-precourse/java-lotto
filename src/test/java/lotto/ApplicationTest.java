@@ -11,9 +11,12 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class ApplicationTest extends NsTest {
     private static final String ERROR_MESSAGE = "[ERROR]";
-
     @Test
-    void 기능_테스트() {
+    void TestBuyLotto(){
+        assertThat(Application.BuyLotto(14000)).isEqualTo(14);
+    }
+    @Test
+    void TestMethods() {
         assertRandomUniqueNumbersInRangeTest(
                 () -> {
                     run("8000", "1,2,3,4,5,6", "7");
@@ -47,7 +50,7 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 예외_테스트() {
+    void TestInputException() {
         assertSimpleTest(() -> {
             runException("1000j");
             assertThat(output()).contains(ERROR_MESSAGE);
