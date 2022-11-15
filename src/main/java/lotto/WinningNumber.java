@@ -47,11 +47,10 @@ public class WinningNumber {
         System.out.println("당첨 번호를 입력해 주세요. (1~45)중 6개를 골라주세요. 쉼표로 구분됩니다");
         String winningNumberUserInput = readLine();
         try {
-            List<Integer> winningNumbers = Stream.of(winningNumberUserInput.split(","))
+            winningNumbers = Stream.of(winningNumberUserInput.split(","))
                     .map(String::trim)
                     .map(Integer::parseInt)
                     .collect(Collectors.toList());
-            this.winningNumbers = winningNumbers;
         } catch (Exception e) {
             throw new IllegalArgumentException("[ERROR] 당첨 번호는 숫자만 입력 가능합니다.");
         }
@@ -61,8 +60,7 @@ public class WinningNumber {
         System.out.println("보너스 번호를 입력해 주세요. (1~45)중 1개를 골라주세요.");
         String bonusNumberUserInput = readLine();
         try {
-            int bonusNumber = Integer.parseInt(bonusNumberUserInput);
-            this.bonusNumber = bonusNumber;
+            bonusNumber = Integer.parseInt(bonusNumberUserInput);
         } catch (Exception e) {
             throw new IllegalArgumentException("[ERROR] 보너스 번호는 숫자만 입력 가능합니다.");
         }
