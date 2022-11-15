@@ -3,17 +3,16 @@ package lotto.Controller;
 import Utils.InputUtils;
 import Utils.RandomUtils;
 import lotto.Domain.Player;
-import lotto.Domain.Rank;
 import lotto.View.InputView;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class PlayerService {
+public class WinningLottoService {
 
     private Player player;
 
-    public PlayerService(Player player) {
+    public WinningLottoService(Player player) {
         this.player = player;
     }
 
@@ -23,10 +22,11 @@ public class PlayerService {
     }
 
     public void getWinningNumber() throws IllegalArgumentException {
-        String winnerNumbers = InputView.requestWinnerNumber();
-        isValidWinningNumber(winnerNumbers);
-        List<String> numbers = isValidRangeNumber(winnerNumbers);
-        List<Integer> lotto = numbers.stream().map(Integer::parseInt).collect(Collectors.toList());
+        String winnerNumber = InputView.requestWinnerNumber();
+        isValidWinningNumber(winnerNumber);
+        List<String> winnerNumbers = InputUtils.splitPlayerInput(winnerNumber);
+        isValidRangeNumber(winnerNumbers);
+        List<Integer> lotto = winnerNumbers.stream().map(Integer::parseInt).collect(Collectors.toList());
         player.setWinningNumber(lotto);
     }
 
@@ -44,18 +44,14 @@ public class PlayerService {
         }
     }
 
-    public List<String> isValidRangeNumber(String input) {
+    public void isValidRangeNumber(List<String> input) {
         final String ERROR_MESSAGE = "[ERROR] 1~45 사이의 숫자를 입력해야 합니다.";
-        List<String> playerInputs = InputUtils.splitPlayerInput(input);
-
-        boolean isValid = playerInputs.stream()
+        boolean isValid = input.stream()
                 .allMatch(value -> InputUtils.isDigit(value) && InputUtils.isNumberInLottoRange(value));
 
         if (!isValid) {
             throw new IllegalArgumentException(ERROR_MESSAGE);
         }
-
-        return playerInputs;
     }
 
     public void isValidBonusNumber(String bonusBall, List<Integer> lottoNumbers) {

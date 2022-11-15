@@ -8,7 +8,6 @@ import java.util.stream.Collectors;
 
 public class Player {
     private int money;
-    private int lottoCount;
     private Lotto winningNumber;
     private int bonusNumber;
     private List<Lotto> lottos;
@@ -37,13 +36,9 @@ public class Player {
         this.bonusNumber = bonusBall;
     }
 
-    public int getLottoCount() {
-        return this.lottoCount;
-    }
-
-    public void setLottoCount(int money) {
+    public int getLottoCount(int money) {
         final int THOUSAND_WON = 1000;
-        this.lottoCount = money / THOUSAND_WON;
+        return money / THOUSAND_WON;
     }
     public List<Lotto> getLottos() {
         return this.lottos;

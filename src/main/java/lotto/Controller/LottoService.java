@@ -12,16 +12,20 @@ public class LottoService {
         this.player = player;
     }
 
-    public void lottoService() throws IllegalArgumentException {
+    public void purchaseLottoService() throws IllegalArgumentException {
+        recievePlayerMoney();
         purchaseLotto();
     }
 
-    public void purchaseLotto() throws IllegalArgumentException {
+    public void recievePlayerMoney() throws IllegalArgumentException {
         String lottoMoney = InputView.requestLottoMoney();
         isValidateLottoMoney(lottoMoney);
         player.setMoney(Integer.parseInt(lottoMoney));
-        player.setLottoCount(Integer.parseInt(lottoMoney));
-        int lottoCount = player.getLottoCount();
+    }
+
+    public void purchaseLotto() throws IllegalArgumentException  {
+        int lottoMoney = player.getMoney();
+        int lottoCount = player.getLottoCount(lottoMoney);
         player.setLottos(lottoCount);
         OutputView.printPurchaseLotto(lottoCount, player.getLottosToOutput());
     }
