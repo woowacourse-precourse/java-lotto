@@ -33,5 +33,6 @@ public class LottoSystem {
 
         WinningNumberParser winningNumberParser = new WinningNumberParser();
         List<Integer> winningNumbers = winningNumberParser.parse(view.requestWinningNumbers());
+        view.requestBonusNumber();
     }
 }
