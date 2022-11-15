@@ -36,4 +36,16 @@ public class Draw {
             result.put(rank, result.getOrDefault(rank, 0) + 1);
         }
     }
+
+    public float calculateRate(int money){
+        return calculateTotalProfit() / (float) money * 100L;
+    }
+
+    public float calculateTotalProfit(){
+        float sum = 0;
+        for(Map.Entry<Rank, Integer> entry : result.entrySet()){
+            sum += Rank.valueOf(entry.getKey().toString()).getPriceMoney() * entry.getValue();
+        }
+        return sum;
+    }
 }
