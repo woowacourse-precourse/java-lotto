@@ -114,10 +114,4 @@ public class LottoService {
     public List<Lotto> getLottos(){
         return lottos;
     }
-
-    public List<Integer> getLottoNumberCountRight(){
-        return lottoNumberCountRight;
-    }
-
-
 }
