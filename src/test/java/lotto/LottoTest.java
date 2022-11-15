@@ -1,9 +1,14 @@
 package lotto;
 
+import camp.nextstep.edu.missionutils.Randoms;
+import lotto.model.Lotto;
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
@@ -24,4 +29,14 @@ class LottoTest {
     }
 
     // 아래에 추가 테스트 작성 가능
+
+    @Test
+    void 랜덤_로또번호_출력_테스트() {
+        for (int i = 0; i < 1000; i++) {
+            List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+            Set<Integer> numberSet = new HashSet<>(numbers);
+            Assertions.assertThat(numberSet.size()).isEqualTo(numbers.size());
+        }
+
+    }
 }
