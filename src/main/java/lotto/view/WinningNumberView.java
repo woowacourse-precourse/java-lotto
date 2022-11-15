@@ -18,7 +18,7 @@ public class WinningNumberView {
         validateWinningNumber(winningNumbers);
         List<Integer> winningNumberList = makeWinningNumberList(winningNumbers);
 
-        checkDuplicate(winningNumbers, winningNumberList);
+        checkDuplicate(winningNumberList);
         Collections.sort(winningNumberList);
         Lotto winningLotto = new Lotto(winningNumberList);
         return winningLotto;
@@ -61,9 +61,17 @@ public class WinningNumberView {
         }
     }
 
-    private void checkDuplicate(String[] winningNumbers, List<Integer> winningNumbersList) {
-        for (String winningNumber : winningNumbers) {
-            if (winningNumbersList.contains(Integer.valueOf(winningNumber))) {
+    private void checkDuplicate(List<Integer> winningNumbersList) {
+        for (int index = 0; index < winningNumbersList.size() - 1; index++) {
+            int operand = winningNumbersList.get(index);
+            compareOtherOperand(winningNumbersList, index, operand);
+        }
+    }
+
+    private void compareOtherOperand(List<Integer> numbers, int index, int operand) {
+
+        for (int compareIndex = index + 1; compareIndex < numbers.size(); compareIndex++) {
+            if (numbers.get(index) == numbers.get(compareIndex)) {
                 throw new IllegalArgumentException("[ERROR] 당첨번호는 중복되어서는 안됩니다.");
             }
         }
