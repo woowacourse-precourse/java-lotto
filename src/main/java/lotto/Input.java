@@ -11,15 +11,15 @@ public class Input {
 
     private Input() {}
 
-    public static boolean inputMoney() {
+    public static long inputMoney() {
         String str = Console.readLine().trim();
         try {
             Validation.validateMoney(str);
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
-            return true;
+            return -1;
         }
-        return false;
+        return Long.parseLong(str);
     }
 
     public static List<Integer> inputLotto() {
