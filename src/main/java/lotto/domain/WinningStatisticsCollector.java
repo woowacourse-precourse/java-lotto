@@ -10,34 +10,25 @@ import lotto.util.Converter;
 public class WinningStatisticsCollector {
 	private static final int INITIAL_VALUE = 0;
 	private static final int ADDED_COUNT = 1;
-	private EnumMap<WinningRating, Integer> countsOfWins;
+
 	private final List<Lotto> lotteries;
-	private int profit;
 	private final WinningNumbers winningNumbers;
 	private final BonusNumber bonusNumber;
+
+	private EnumMap<WinningRating, Integer> countsOfWins;
+	private long profit;
+
 	public WinningStatisticsCollector(List<Lotto> lotteries, WinningNumbers winningNumbers, BonusNumber bonusNumber) {
 		this.lotteries = lotteries;
 		this.winningNumbers = winningNumbers;
 		this.bonusNumber = bonusNumber;
-		compile();
+		collect();
 	}
 
-	public EnumMap<WinningRating, Integer> getCountsOfWins() {
-		return countsOfWins;
-	}
-
-	public int getProfit() {
-		return profit;
-	}
-	private void compile() {
+	private void collect() {
 		init();
 		calculateCountsOfWins();
 		calculateProfit();
-	}
-
-	private void calculateProfit() {
-		countsOfWins.forEach((winningRating, countOfWins) -> profit +=
-			Converter.convertStringOfMoneyToLong(winningRating.getPrizeMoney()) * countOfWins);
 	}
 
 	private void init() {
@@ -52,5 +43,18 @@ public class WinningStatisticsCollector {
 			countsOfWins.computeIfPresent(lottoComparator.getWinningRating(),
 				((winningRating, countOfWins) -> countOfWins + ADDED_COUNT));
 		}
+	}
+
+	private void calculateProfit() {
+		countsOfWins.forEach((winningRating, countOfWins) -> profit +=
+			Converter.convertStringOfMoneyToLong(winningRating.getPrizeMoney()) * countOfWins);
+	}
+
+	public EnumMap<WinningRating, Integer> getCountsOfWins() {
+		return countsOfWins;
+	}
+
+	public long getProfit() {
+		return profit;
 	}
 }
