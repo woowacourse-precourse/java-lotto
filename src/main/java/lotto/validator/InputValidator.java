@@ -16,6 +16,12 @@ public class InputValidator {
         }
     }
 
+    public static void validateZero(int payment) {
+        if (payment == 0) {
+            throw new IllegalArgumentException(ErrorMessage.NOT_POSITIVE_INTEGER.getMessage());
+        }
+    }
+
     public static int changeInputToInt(String input) {
         if (!isNumeric(input)) {
             throw new IllegalArgumentException(ErrorMessage.NOT_DIGIT.getMessage());

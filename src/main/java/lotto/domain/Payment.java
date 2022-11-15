@@ -10,15 +10,12 @@ public class Payment {
         this.payment = payment;
     }
 
-    public int getPayment() {
-        return payment;
-    }
-
     public int getAvailableLottoAmount() {
         return payment / LottoCondition.PRICE.getNumber();
     }
 
     private void validate(int payment) {
+        InputValidator.validateZero(payment);
         InputValidator.validatePayment(payment, LottoCondition.PRICE.getNumber());
     }
 }
