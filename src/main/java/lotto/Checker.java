@@ -13,7 +13,7 @@ public class Checker {
 
     public int checkNumber(String input) throws IllegalArgumentException {
         int number = checkNumeric(input);
-        this.checkNegative(number);
+        checkNegative(number);
         return number;
     }
 
@@ -27,24 +27,26 @@ public class Checker {
         return result;
     }
 
-    public void checkNegative(int input) throws IllegalArgumentException {
+    public int checkNegative(int input) throws IllegalArgumentException {
         if (input < 0) {
             printAndThrowError(String.valueOf(input), ERROR_NEGATIVE.message());
         }
+        return input;
     }
 
-    public void checkPayment(int input) throws IllegalArgumentException {
+    public int checkPayment(int input) throws IllegalArgumentException {
         if (input < 1000) {
             printAndThrowError(String.valueOf(input), ERROR_LACK_OF_AMOUNT.message());
         }
+        return input;
     }
 
     public int checkAmountInput(String input) {
         int amount = -1;
         try {
             amount = checkNumber(input);
-            this.checkPayment(amount);
-            this.checkRemain(amount);
+            amount = checkPayment(amount);
+            amount = checkRemain(amount);
         } catch (IllegalArgumentException illegalArgumentException) {
             amount = -1;
         }
@@ -165,7 +167,7 @@ public class Checker {
 
         coincideCount = result.getCoincideCount();
         winningBonus = result.getBonus();
-        if (winningBonus != 0) {
+        if (winningBonus > 0 && coincideCount == 5) {
             winningBonus = 2;
         }
 
