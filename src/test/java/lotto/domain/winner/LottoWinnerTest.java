@@ -67,4 +67,35 @@ class LottoWinnerTest {
         lottoWinner.setLotto(input);
         Assertions.assertThat(lottoWinner.getLotto().getNumbers()).isEqualTo(List.of(1, 2, 3, 4, 5, 6));
     }
+
+    @DisplayName("보너스 번호에서 중복되면 예외가 발생한다.")
+    @Test
+    void 보너스_번호_중복_테스트() {
+        String input = "1,2,3,4,5,11";
+        lottoWinner.setLotto(input);
+        assertThatThrownBy(() -> lottoWinner.setBonusNumber("11"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("보너스 번호에서 범위가 벗어나면 예외가 발생한다.")
+    @ParameterizedTest
+    @ValueSource(strings = {"66", "-1", "0", "102"})
+    void 보너스_번호_범위_테스트(String input) {
+        String lottoInput = "1,2,3,4,5,11";
+        lottoWinner.setLotto(lottoInput);
+
+        assertThatThrownBy(() -> lottoWinner.setBonusNumber(input))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("입력된 숫자가 문자라면 예외가 발생한다.")
+    @ParameterizedTest
+    @ValueSource(strings = {"킥킥", "@@", "- "})
+    void 보너스_번호_문자_테스트(String input) {
+        String lottoInput = "1,2,3,4,5,11";
+        lottoWinner.setLotto(lottoInput);
+
+        assertThatThrownBy(() -> lottoWinner.setBonusNumber(input))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
