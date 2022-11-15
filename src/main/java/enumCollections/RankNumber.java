@@ -19,7 +19,7 @@ public enum RankNumber {
 
     public static RankNumber getRank(int sameNumbers) {
         for (RankNumber rank : RankNumber.values()) {
-            if (rank.get(rank) == sameNumbers) {
+            if (RankNumber.get(rank) == sameNumbers) {
                 return rank;
             }
         }
