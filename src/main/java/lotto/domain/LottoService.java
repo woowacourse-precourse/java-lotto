@@ -9,6 +9,8 @@ import java.util.List;
 
 public class LottoService {
 
+
+
     public List<Lotto> generateLottoList(int numberOfLotto) {
 
         List<Lotto> lottoList = new LinkedList<>();
