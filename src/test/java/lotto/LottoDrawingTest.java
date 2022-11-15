@@ -12,11 +12,11 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class LottoDrawingTest {
 
-   /* @Test
+    @Test
     void 당첨번호_비정상입력_숫자x() {
-        assertThatThrownBy(() -> new LottoDrawing("1,2,3,4,5,6", "7"))
+        assertThatThrownBy(() -> new LottoDrawing("1,2,3,4,5,o", "7"))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("[ERROR]");
-    }*/
+    }
 
 }
