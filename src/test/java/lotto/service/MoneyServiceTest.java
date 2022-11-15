@@ -28,4 +28,15 @@ class MoneyServiceTest {
         assertThatThrownBy(MoneyService::createMoney)
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @Test
+    void 로또_구입_금액_1000원_이하_예외_발생() {
+        String input = "200";
+
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+
+        assertThatThrownBy(MoneyService::createMoney)
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
