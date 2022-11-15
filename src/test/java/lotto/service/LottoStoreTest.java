@@ -1,11 +1,15 @@
 package lotto.service;
 
+import lotto.domain.Lotto;
+import lotto.domain.LottoGrade;
 import lotto.domain.Money;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -70,4 +74,22 @@ public class LottoStoreTest {
         assertThatThrownBy(() -> lottoStore.confirmBonusNumber("46"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @Test
+    @DisplayName("List를 Map으로 변환했을 시 ONE의 값이 같아야 한다.")
+    void conversionListToMap() {
+        List<LottoGrade> lottoGrades = List.of(LottoGrade.ONE, LottoGrade.ONE, LottoGrade.TWO, LottoGrade.THREE, LottoGrade.THREE, LottoGrade.ONE, LottoGrade.FIVE);
+        Map<LottoGrade, Integer> lottoGradeResult = lottoStore.conversionLottosResult(lottoGrades);
+
+        Map<LottoGrade, Integer> testCase = Map.of(
+                LottoGrade.ONE, 3,
+                LottoGrade.TWO, 1,
+                LottoGrade.THREE, 2,
+                LottoGrade.FOUR, 0,
+                LottoGrade.FIVE, 1
+        );
+        assertThat(lottoGradeResult.get(LottoGrade.ONE)).isEqualTo(testCase.get(LottoGrade.ONE));
+    }
+
+
 }
