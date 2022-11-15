@@ -6,9 +6,10 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import static lotto.ErrorMsg.INPUT_NUMBER_CONDITION;
+
 public class RandomLotto {
     private final List<List<Integer>> randomNumbers;
-    private static final ExceptionHandler exceptionHandler = new ExceptionHandler();
 
     public RandomLotto(List<List<Integer>> randomNumbers) {
         validateRandomNumberDuplicate(randomNumbers);
@@ -30,7 +31,7 @@ public class RandomLotto {
     private void validateRandomNumberDuplicate(List<List<Integer>> numbers) {
         for (int i = 1; i < numbers.size(); i++) {
             if (numbers.get(i-1).equals(numbers.get(i))) {
-                exceptionHandler.foolExceaption("RandomlottoCondition");
+                throw new IllegalArgumentException(INPUT_NUMBER_CONDITION.getMessage());
             }
         }
     }

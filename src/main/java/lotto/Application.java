@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Application {
-    private static final ExceptionHandler exceptionHandler = new ExceptionHandler();
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         startLotto();
