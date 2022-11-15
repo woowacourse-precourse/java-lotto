@@ -12,14 +12,14 @@ public class Calculator {
         }
     }
 
-    public static float calRevenue (List<Integer> result, int amount) {
-        float revenue = 0;
+    public static double calRevenue (List<Integer> result, int amount) {
+        double revenue = 0;
 
-        for (int ret : result) {
-            Rank rank = Rank.getRank(result.indexOf(ret));
-            revenue += rank.getWinAmount() * ret;
+        for (int i = 0; i < result.size(); i++) {
+            Rank rank = Rank.getRank(i);
+            revenue += rank.getWinAmount() * result.get(i);
         }
 
-        return Math.round(revenue / amount * 100 / 100.0);
+        return Math.round(revenue / amount * 1000) / 10.0;
     }
 }
