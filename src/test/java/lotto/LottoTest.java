@@ -46,6 +46,14 @@ class LottoTest {
         for(int i = 1 ; i < lotto.getNumbers().size(); i++){
             assertThat(lotto.getNumbers().get(i) > lotto.getNumbers().get(i-1)).isTrue();
         }
+    }
 
+    @DisplayName("로또 번호 맞은 개수 출력 (보너스 제외)")
+    @Test
+    void createWinCount() {
+
+        int cnt = LottoUtil.checkWin(new Lotto(List.of(1,3,5,7,9,11)), List.of(1,2,3,4,5,6));
+
+        assertThat(cnt).isEqualTo(3);
     }
 }
