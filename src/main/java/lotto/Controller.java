@@ -66,7 +66,14 @@ public class Controller {
         catch (Exception exception){
             throw new IllegalArgumentException();
         }
-
     }
+
+    public void setBonus(){
+        view.printMessage(Text.BONUS_NUMBER_INPUT);
+        String bonusNumberInput = Console.readLine();
+        game.setBonus(toInteger(bonusNumberInput));
+    }
+
+
 
 }
