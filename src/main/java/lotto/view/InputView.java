@@ -9,7 +9,7 @@ import java.util.stream.Collectors;
 
 public class InputView {
     public static final String SEPARATOR = ",";
-    public static final int PROPER_SIZE = 6;
+    public static final int VALID_SIZE = 6;
 
     public static int insertMoney() {
         GuidanceMessage.informToInsertMoney();
@@ -44,8 +44,8 @@ public class InputView {
         if (numbersWithSeparator.isEmpty()) {
             throw new IllegalArgumentException(ErrorMessage.IS_EMPTY);
         }
-        if (hasProperSize(numbersWithSeparator.split(SEPARATOR))) {
-            throw new IllegalArgumentException(ErrorMessage.IMPROPER_SIZE);
+        if (hasInvalidSize(numbersWithSeparator.split(SEPARATOR))) {
+            throw new IllegalArgumentException(ErrorMessage.INVALID_SIZE);
         }
         if (winningNumbersContainsNonNumeric(numbersWithSeparator)) {
             throw new IllegalArgumentException(ErrorMessage.CONTAINS_NON_NUMERIC_VALUES);
@@ -59,8 +59,8 @@ public class InputView {
                 .anyMatch(number -> containsNonNumeric(number));
     }
 
-    private static boolean hasProperSize(String[] separatedNumbers) {
-        return separatedNumbers.length != PROPER_SIZE;
+    private static boolean hasInvalidSize(String[] separatedNumbers) {
+        return separatedNumbers.length != VALID_SIZE;
     }
 
     public static int insertBounsNumber() {

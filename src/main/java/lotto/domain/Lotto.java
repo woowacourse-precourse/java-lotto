@@ -8,7 +8,7 @@ import java.util.HashSet;
 import java.util.List;
 
 public class Lotto {
-    public static final int LOTTO_SIZE = 6;
+    public static final int VALID_SIZE = 6;
     public static final int MIN_NUMBER = 1;
     public static final int MAX_NUMBER = 45;
 
@@ -20,8 +20,8 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
-        if (numbers.size() != LOTTO_SIZE) {
-            throw new IllegalArgumentException();
+        if (hasInvalidSize(numbers)) {
+            throw new IllegalArgumentException(ErrorMessage.INVALID_SIZE);
         }
         if (containsDuplicatedNumbers(numbers)) {
             throw new IllegalArgumentException(ErrorMessage.DUPLICATED_NUMBERS);
@@ -31,10 +31,14 @@ public class Lotto {
         }
     }
 
+    private static boolean hasInvalidSize(List<Integer> numbers) {
+        return numbers.size() != VALID_SIZE;
+    }
+
     private boolean containsDuplicatedNumbers(List<Integer> numbers) {
         HashSet<Integer> uniqueNumbers = new HashSet<>(numbers);
 
-        return uniqueNumbers.size() != LOTTO_SIZE;
+        return uniqueNumbers.size() != VALID_SIZE;
     }
 
     private boolean isNumbersOutOfRange(List<Integer> numbers) {
@@ -47,7 +51,7 @@ public class Lotto {
     }
 
     public static Lotto creatRandom() {
-        List<Integer> uniqueNumbers = Randoms.pickUniqueNumbersInRange(MIN_NUMBER, MAX_NUMBER, LOTTO_SIZE);
+        List<Integer> uniqueNumbers = Randoms.pickUniqueNumbersInRange(MIN_NUMBER, MAX_NUMBER, VALID_SIZE);
 
         return new Lotto(uniqueNumbers);
     }
