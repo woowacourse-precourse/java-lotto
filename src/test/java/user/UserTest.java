@@ -1,4 +1,4 @@
-package lotto;
+package user;
 
 import User.User;
 import org.junit.jupiter.api.DisplayName;
@@ -20,19 +20,9 @@ public class UserTest {
     @DisplayName("입력된 숫자가 1000 단위인 경우에는 true가 반환된다.")
     @Test
     void validateMoney_정상() throws InvocationTargetException, NoSuchMethodException, IllegalAccessException {
-        Method validateMoneyMethod = User.class.getDeclaredMethod("validateMoney", int.class);
+        Method validateMoneyMethod = User.class.getDeclaredMethod("validateMoney", String.class);
         validateMoneyMethod.setAccessible(true);
-        boolean isValidate = (boolean) validateMoneyMethod.invoke(user, 12000);
-        assertThat(isValidate).isEqualTo(true);
-    }
-
-    @DisplayName("입력된 숫자가 1000 단위가 아닌 경우에는 false가 반환된다.")
-    @Test
-    void validateMoney_예외() throws InvocationTargetException, NoSuchMethodException, IllegalAccessException {
-        Method validateMoneyMethod = User.class.getDeclaredMethod("validateMoney", int.class);
-        validateMoneyMethod.setAccessible(true);
-        boolean isValidate = (boolean) validateMoneyMethod.invoke(user, 12500);
-        assertThat(isValidate).isEqualTo(false);
+        validateMoneyMethod.invoke(user, "12000");
     }
 
     @DisplayName("입력된 숫자가 1000 단위인 경우에는 금액을 1000으로 나눈 몫만큼 로또를 구매한다.")

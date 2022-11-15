@@ -27,7 +27,7 @@ class LottoTest {
     @DisplayName("로또 번호에 음수가 있으면 예외가 발생한다.")
     @Test
     void createLottoByNegativeNumber() {
-        assertThatThrownBy(() -> new Lotto(List.of(1, -2, 3, 4, 5, 5)))
+        assertThatThrownBy(() -> new Lotto(List.of(1, -2, 3, 4, 5, 6)))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
