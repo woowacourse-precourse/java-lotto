@@ -44,7 +44,7 @@ public class Manager {
         System.out.println(ManagerMessage.INSERT_WIN_NUMBERS.getMessage());
         String input = readLine();
         try {
-            win = separateWinInput(input);
+            win = sort(separateWinInput(input));
         } catch (IllegalArgumentException e) {
             System.out.println(ErrorMessage.IllegalArgumentException.getMessage());
         }
@@ -60,7 +60,10 @@ public class Manager {
             if (!Util.isInteger(s)) {
                 throw new IllegalArgumentException();
             }
-            result.add(Integer.parseInt(s));
+            int parsed = Integer.parseInt(s);
+            if (!result.isEmpty() && result.get(result.size()-1) == parsed)
+                throw new IllegalArgumentException();
+            result.add(parsed);
         }
         return result;
     }
