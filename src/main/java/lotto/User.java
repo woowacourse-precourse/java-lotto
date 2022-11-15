@@ -28,22 +28,26 @@ public class User {
     public void setPurchasePrice() {
         String purchasePrice = Console.readLine();
         if (!isValidPurchasePriceNumeric(purchasePrice)) {
-            throw new IllegalArgumentException(PURCHASE_PRICE_NUMERIC_ERROR);
+            System.out.println(PURCHASE_PRICE_NUMERIC_ERROR);
+            return;
         }
         if (!isValidPurchasePriceThousand(purchasePrice)) {
-            throw new IllegalArgumentException(PURCHASE_PRICE_THOUSAND_ERROR);
+            System.out.println(PURCHASE_PRICE_THOUSAND_ERROR);
+            return;
         }
         this.purchasePrice = Integer.parseInt(purchasePrice);
     }
 
     private boolean isValidPurchasePriceNumeric(String purchasePrice) {
         boolean isNumeric = Pattern.matches(PRICE_PATTERN, purchasePrice);
+        Error error = new Error(!isNumeric);
 
         return isNumeric;
     }
 
     private boolean isValidPurchasePriceThousand(String purchasePrice) {
         boolean isThousand = (Integer.parseInt(purchasePrice) % 1000 == 0);
+        Error error = new Error(!isThousand);
 
         return isThousand;
     }
@@ -51,41 +55,46 @@ public class User {
     public void setWinningNumbers() {
         List<String> list =  Arrays.asList(Console.readLine().split(","));
         if (!isWinningNumberSize(list)) {
-            throw new IllegalArgumentException(WINNING_NUMBER_SIZE_ERROR);
+            System.out.println(WINNING_NUMBER_SIZE_ERROR);
+            return;
         }
         for (String winningNumber : list) {
             if (isWinningNumberNumeric(winningNumber)) {
                 this.winningNumbers.add(Integer.parseInt(winningNumber));
             }
             if (!isWinningNumberNumeric(winningNumber)) {
-                throw new IllegalArgumentException(WINNING_NUMBER_NUMERIC_ERROR);
+                System.out.println(WINNING_NUMBER_NUMERIC_ERROR);
+                return;
             }
         }
     }
 
     private boolean isWinningNumberNumeric(String winningNumbers) {
         boolean isNumeric = Pattern.matches(PRICE_PATTERN, winningNumbers);
+        Error error = new Error(!isNumeric);
 
         return isNumeric;
     }
 
     private boolean isWinningNumberSize(List<String> winningNumbers) {
         boolean isSize = winningNumbers.size() == WINNING_NUMBER_SIZE;
+        Error error = new Error(!isSize);
 
         return isSize;
     }
 
     public void setBonusNumber() {
         String bonusNumber = Console.readLine();
-        if (isValidBonusNumber(bonusNumber)) {
-            this.bonusNumber = Integer.parseInt(bonusNumber);
+        if (!isValidBonusNumber(bonusNumber)) {
+            System.out.println(BONUS_NUMBER_NUMERIC_ERROR);
             return;
         }
-        throw new IllegalArgumentException(BONUS_NUMBER_NUMERIC_ERROR);
+        this.bonusNumber = Integer.parseInt(bonusNumber);
     }
 
     private boolean isValidBonusNumber(String bonusNumber) {
         boolean isNumeric = Pattern.matches(PRICE_PATTERN, bonusNumber);
+        Error error = new Error(!isNumeric);
 
         return isNumeric;
     }

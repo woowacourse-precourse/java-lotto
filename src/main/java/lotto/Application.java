@@ -11,6 +11,9 @@ public class Application {
         winningNumber(user, notice);
         bonusNumber(user, notice);
         winningResult(user, notice, lottery);
+
+        Error error = new Error();
+        error.check();
     }
 
     public static void purchase(User user, Notice notice) {
