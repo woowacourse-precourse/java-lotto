@@ -50,4 +50,8 @@ public class OutputView {
             System.out.printf(OUTPUT_MATCH_RESULT, result.getMatchCount(), result.getAmount(), count);
         }
     }
+
+    public static void printRateOfReturn(LottoRateOfReturn rateOfReturn) {
+        System.out.printf(OUTPUT_RATE_OF_RETURN, rateOfReturn.getRateOfReturn());
+    }
 }
