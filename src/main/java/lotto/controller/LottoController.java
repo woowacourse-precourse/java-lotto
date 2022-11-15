@@ -20,8 +20,7 @@ public class LottoController {
 			Lotteries lotteries = issueLotteries(numberOfTickets);
 			WinningNumbers winningNumbers = receiveWinningNumbers();
 			BonusNumber bonusNumber = receiveBonusNumbers(winningNumbers);
-			WinningStatistics winningStatistics = collectWinningStatistics(lotteries, winningNumbers,
-				bonusNumber);
+			WinningStatistics winningStatistics = collectWinningStatistics(lotteries, winningNumbers, bonusNumber);
 			calculateRateOfProfit(purchasingAmount, winningStatistics);
 		} catch (IllegalArgumentException e) {
 			outputView.printErrorMessage();
@@ -55,8 +54,8 @@ public class LottoController {
 
 	private WinningStatistics collectWinningStatistics(Lotteries lotteries, WinningNumbers winningNumbers,
 		BonusNumber bonusNumber) {
-		WinningStatistics winningStatistics = new WinningStatistics(lotteries.getLotteries(),
-			winningNumbers, bonusNumber);
+		WinningStatistics winningStatistics = new WinningStatistics(lotteries.getLotteries(), winningNumbers,
+			bonusNumber);
 		outputView.printWinningStatistics(winningStatistics.getCountsOfWins());
 		return winningStatistics;
 	}
