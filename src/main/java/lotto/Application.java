@@ -21,7 +21,7 @@ public class Application {
             new Lotto(lotto);
             bonus = change.money(bring.InputNumber(bring.inputBonus));
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+            System.out.println("[ERROR]");
             return;
         }
         new ResultLotto(moneyChance, lotto, bonus);
