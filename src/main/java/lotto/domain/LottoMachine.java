@@ -11,7 +11,7 @@ public class LottoMachine {
     private final int LOTTO_PRICE = 1000;
     private final int [] PRIZE = {0, 2000000000, 30000000, 1500000, 50000, 5000};
     private int paid;
-    private ArrayList<Lotto> lottos = new ArrayList<>();
+    public ArrayList<Lotto> lottos = new ArrayList<>();
     private int[] result;
     private int revenue;
 
@@ -21,7 +21,7 @@ public class LottoMachine {
     public void getInputMoney() {
         String money = Console.readLine();
         validateMoney(money);
-        this.paid = Integer.parseInt(Console.readLine());
+        this.paid = Integer.parseInt(money);
     }
 
     public void validateMoney(String input) {
@@ -36,11 +36,13 @@ public class LottoMachine {
 
     public List<Lotto> createLottoNumber() {
         int cnt = paid / LOTTO_PRICE;
+        System.out.println(cnt + " 개");
         for (int index = 0; index < cnt; index++) {
             List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
             Lotto lotto = new Lotto(numbers);
             lottos.add(lotto);
         }
+        System.out.println("com");
         return lottos;
     }
 
@@ -54,13 +56,17 @@ public class LottoMachine {
     public  void getResult(List<Integer> winningNum, int bonusNum) {
         result = new int [6];
         for(Lotto lotto: lottos) {
+            boolean isBonusNum = false;
             int rank = 0;
             List<Integer> numbers = lotto.getNumbers();
             if(numbers.contains(bonusNum)) {
-                rank = -1;
+                isBonusNum = true;
             }
 
             numbers.retainAll(winningNum);
+            if(numbers.size() == 5 && isBonusNum) {
+                rank -= 1;
+            }
             rank += 8-numbers.size();
             if(numbers.size() == 6) {
                 rank = 1;
