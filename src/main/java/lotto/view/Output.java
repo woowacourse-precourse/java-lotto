@@ -11,6 +11,7 @@ public class Output {
     private static final String OUTPUT_LOTTO_WIN_SCORE_RESULT_MESSAGE = "%d개 일치 (%s원) - %d개\n";
     private static final String OUTPUT_LOTTO_WIN_SCORE_RESULT_BONUSE_MESSAGE = "%d개 일치, 보너스 볼 일치 (%s원) - %d개\n";
     private static final String OUPUT_WIN_STATUS_MESSAGE = "당첨 통계\n---";
+    private static final String OUPUT_LOTTO_RETURN_RATE_MESSAGE = "총 수익률은 %f%%입니다";
     private static final int MAX_RANK = 5;
     public static void outputPurchaseLottoList(List<Lotto> lottos) {
         System.out.println(OUTPUT_PURCHASE_LOTTO_MESSAGE);
@@ -26,6 +27,10 @@ public class Output {
         System.out.printf(OUTPUT_LOTTO_WIN_SCORE_RESULT_MESSAGE,5, LottoPrize.THIRD_PRIZE.getLottotPrizeString(),lottoScoreResult.winScoreList.get(3));
         System.out.printf(OUTPUT_LOTTO_WIN_SCORE_RESULT_BONUSE_MESSAGE,5, LottoPrize.SECOND_PRIZE.getLottotPrizeString(),lottoScoreResult.winScoreList.get(2));
         System.out.printf(OUTPUT_LOTTO_WIN_SCORE_RESULT_MESSAGE,6, LottoPrize.FIFTH_PRIZE.getLottotPrizeString(),lottoScoreResult.winScoreList.get(1));
+    }
+
+    public static void ouputLottoReturnRate(double lottoReturnRate){
+        System.out.printf(OUPUT_LOTTO_RETURN_RATE_MESSAGE,lottoReturnRate);
     }
 
 }

@@ -43,6 +43,7 @@ public class Person {
 
     public void printLottoScoreResult(){
         Output.outputLottoWinScoreResult(lottoScoreResult);
+        Output.ouputLottoReturnRate(calculateTotalReturnRate());
     }
     public List<Lotto> getLottos() {
         return lottos;
