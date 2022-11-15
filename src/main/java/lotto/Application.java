@@ -11,7 +11,6 @@ public class Application {
 
         List<Lotto> userLottos = lottoSystem.purchaseLotto();
         List<?> wonLottoInfo = lottoSystem.drawLotto();
-
         lottoSystem.getLottoResult(userLottos, wonLottoInfo);
     }
 }
