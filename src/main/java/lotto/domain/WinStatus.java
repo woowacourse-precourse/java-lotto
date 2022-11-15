@@ -27,11 +27,27 @@ public enum WinStatus {
         return matchCount;
     }
 
+    public long getPrize() {
+        return prize;
+    }
+
+    // 인덱스 입력하면 상금 반환 기능
+    public static long getPrizeMoney(int index) {
+        for (WinStatus winStatus : WinStatus.values()) {
+            if (winStatus.getIndex() == index) {
+                return winStatus.getPrize();
+            }
+        }
+        return NOTHING.prize;
+    }
+
+    // 당첨된 숫자 입력하면 해당 enum반환 기능
     public static WinStatus getWinStatus(int number) {
         for (WinStatus winStatus : WinStatus.values()) {
             if (winStatus.getMatchCount() == number) {
                 return winStatus;
             }
         }
+        return NOTHING;
     }
 }
