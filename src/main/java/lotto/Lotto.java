@@ -1,5 +1,6 @@
 package lotto;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -7,8 +8,8 @@ import java.util.Set;
 public class Lotto {
     private final List<Integer> numbers;
     public static final int LOTTO_SIZE = 6;
-    private static final int MIN_NUMBER = 1;
-    private static final int MAX_NUMBER = 45;
+    public static final int MIN_NUMBER = 1;
+    public static final int MAX_NUMBER = 45;
     public static final String DUPLICATE_NUMBERS = "중복된 숫자가 있습니다.";
     public static final String NUMBERS_OUT_OF_RANGE = "범위를 벗어나는 번호가 있습니다.";
     public static final String WRONG_SIZE_OF_NUMBERS = "번호의 개수가 올바르지 않습니다.";
