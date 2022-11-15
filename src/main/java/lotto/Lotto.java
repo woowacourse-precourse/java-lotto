@@ -25,6 +25,21 @@ public class Lotto {
         }
     }
 
+    public int getWinLottoCount(Lotto lotto) {
+        int winLottoCount = 0;
+        for (int number:numbers) {
+            if (lotto.isExistInNumbers(number)) {
+                winLottoCount++;
+            }
+        }
+
+        return winLottoCount;
+    }
+
+    public boolean isExistInNumbers(long lottoNumber) {
+        return numbers.contains(lottoNumber);
+    }
+
     public String toString() {
         return numbers.toString();
     }
