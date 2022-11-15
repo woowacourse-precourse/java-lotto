@@ -19,11 +19,11 @@ public class Output {
 
     public int printWinningRate(List<Integer> winningCount){
         System.out.println("당첨 통계\n---");
-        System.out.println("3개 일치 ("+FIFTHPRICE+"원) - "+winningCount.get(4)+"개");
-        System.out.println("4개 일치 ("+FOURTHPRICE+"원) - "+winningCount.get(3)+"개");
-        System.out.println("5개 일치 ("+THIRDPRICE+"원) - "+winningCount.get(2)+"개");
-        System.out.println("5개 일치, 보너스 볼 일치 ("+SECONDPRICE+"원) - "+winningCount.get(1)+"개");
-        System.out.println("6개 일치 ("+FIRSTPRICE+"원) - "+winningCount.get(0)+"개");
+        System.out.println("3개 일치 (5,000원) - "+winningCount.get(4)+"개");
+        System.out.println("4개 일치 (50,000원) - "+winningCount.get(3)+"개");
+        System.out.println("5개 일치 (1,500,000원) - "+winningCount.get(2)+"개");
+        System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - "+winningCount.get(1)+"개");
+        System.out.println("6개 일치 (2,000,000,000원) - "+winningCount.get(0)+"개");
 
         int earnedMoney=FIRSTPRICE*winningCount.get(0)+SECONDPRICE*winningCount.get(1)+
                 THIRDPRICE*winningCount.get(2)+FOURTHPRICE*winningCount.get(3)+
