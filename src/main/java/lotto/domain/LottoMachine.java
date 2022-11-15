@@ -27,11 +27,11 @@ public class LottoMachine {
     }
 
     private static void validate(int inputMoney) {
-        boolean isMultipleOfAmountOfLotto = (inputMoney % PRICE_OF_ONE_LOTTO) == 0;
-        if (isMultipleOfAmountOfLotto) {
+        boolean isMultipleOfPriceOfLotto = (inputMoney % PRICE_OF_ONE_LOTTO) == 0;
+        if (isMultipleOfPriceOfLotto) {
             return;
         }
-        throw new IllegalArgumentException(ErrorMessage.LOTTO_MACHINE_NOT_MULTIPLE_OF_AMOUNT_OF_LOTTO);
+        throw new IllegalArgumentException(ErrorMessage.LOTTO_MACHINE_NOT_MULTIPLE_OF_PRICE_OF_LOTTO);
     }
 
     private static int getCountOfLottos(int inputMoney) {

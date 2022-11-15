@@ -22,15 +22,15 @@ class LottoMachineTest {
 
     @DisplayName("입력 금액에 해당하는 개수만큼 로또를 구매했는지 확인한다.")
     @Test
-    void publishLottosByAmount() {
+    void publishLottosByMoney() {
         // given
         int inputMoney = PRICE_OF_ONE_LOTTO * 5;
         String inputMoneyRaw = Integer.toString(PRICE_OF_ONE_LOTTO * 5);
         // when
         List<Lotto> lottos = LottoMachine.publish(inputMoneyRaw);
-        int countLottosByAmount = inputMoney / PRICE_OF_ONE_LOTTO;
+        int countLottosByPrice = inputMoney / PRICE_OF_ONE_LOTTO;
         // then
-        assertThat(lottos.size()).isEqualTo(countLottosByAmount);
+        assertThat(lottos.size()).isEqualTo(countLottosByPrice);
     }
 
     @DisplayName("입력 금액이 1,000의 배수가 아님 -> 예외발생")

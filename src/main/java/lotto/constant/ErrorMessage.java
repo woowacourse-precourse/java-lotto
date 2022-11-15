@@ -17,7 +17,7 @@ public class ErrorMessage {
     public static final String LOTTO_INCORRECT_RANGE = "[ERROR] 로또 번호의 범위가 규칙과 다릅니다.";
     public static final String LOTTO_DUPLICATED_NUMBER = "[ERROR] 로또 번호에 중복이 있습니다.";
     // For LottoMachine
-    public static final String LOTTO_MACHINE_NOT_MULTIPLE_OF_AMOUNT_OF_LOTTO = "[ERROR] " + PRICE_OF_ONE_LOTTO + "의 배수가 아닙니다.";
+    public static final String LOTTO_MACHINE_NOT_MULTIPLE_OF_PRICE_OF_LOTTO = "[ERROR] " + PRICE_OF_ONE_LOTTO + "의 배수가 아닙니다.";
     // For WinningCalculator
     public static final String WINNING_NUMBERS_HAVE_TOO_BIG = "[ERROR] 숫자가 너무 큽니다.";
     public static final String WINNING_NUMBERS_INCORRECT_COUNT = "[ERROR] 당첨 번호는 " + COUNT_OF_NUMBERS + "개여야 합니다.";
