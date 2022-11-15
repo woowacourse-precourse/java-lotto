@@ -25,9 +25,15 @@ public enum LottoResult {
         this.prize = prize;
     }
 
-    public static LottoResult getLottoResult(int matchCount, boolean doesBonusMatch) {
+    public static LottoResult[] getValuesWithAscendingOrderByMatchCount() {
         LottoResult[] allLottoResult = LottoResult.values();
         Arrays.sort(allLottoResult, (o1, o2) -> o1.compare(o2.matchCount, o2.doesMatchBonusBall));
+
+        return allLottoResult;
+    }
+
+    public static LottoResult getLottoResult(int matchCount, boolean doesBonusMatch) {
+        LottoResult[] allLottoResult = getValuesWithAscendingOrderByMatchCount();
 
         LottoResult output = LottoResult.MISS;
         for(LottoResult lottoResult : allLottoResult) {

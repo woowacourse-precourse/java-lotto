@@ -39,7 +39,9 @@ public class IoManager {
     public String makeLottoHistoryDescription(LottoStatistics lottoStatistics) {
         StringBuilder stringBuilder = new StringBuilder();
 
-        for (LottoResult lottoResult: LottoResult.values()) {
+        LottoResult[] sortedAllLottoResults = LottoResult.getValuesWithAscendingOrderByMatchCount();
+        for (int i = 0; i < sortedAllLottoResults.length; i++) {
+            LottoResult lottoResult = sortedAllLottoResults[i];
             if(lottoResult.equals(LottoResult.MISS)) {
                 continue;
             }
@@ -48,7 +50,7 @@ public class IoManager {
             String resultDescriptionWithCount = makeLottoResultDescriptionWithCount(lottoResult, resultCount);
             stringBuilder.append(resultDescriptionWithCount);
 
-            if(lottoResult.ordinal() != LottoResult.FIRST.ordinal()) {
+            if(i != sortedAllLottoResults.length - 1) {
                 stringBuilder.append("\n");
             }
         }
