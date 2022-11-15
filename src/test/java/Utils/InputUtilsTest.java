@@ -109,32 +109,6 @@ class InputUtilsTest {
     }
 
     @Nested
-    @DisplayName("listToString 메소드 테스트")
-    class TestListToString {
-        @Test
-        @DisplayName("정수 리스트를 문자열로 변환합니다.")
-        void case1() {
-            List<Integer> numbers = List.of(1, 2, 3, 4, 5, 6);
-            String expected = "[1, 2, 3, 4, 5, 6]";
-            String result = InputUtils.listToString(numbers);
-            assertThat(result).isEqualTo(expected);
-        }
-    }
-
-    @Nested
-    @DisplayName("stringToInteger 메소드 테스트")
-    class TestStringToInteger {
-        @Test
-        @DisplayName("문자열을 정수로 변환합니다.")
-        void case1() {
-            String input = "13";
-            Integer expected = 13;
-            Integer result = InputUtils.stringToInteger(input);
-            assertThat(result).isEqualTo(expected);
-        }
-    }
-
-    @Nested
     @DisplayName("stringToList 메소드 테스트")
     class TestStringToIntegerList {
         @Test
@@ -142,7 +116,7 @@ class InputUtilsTest {
         void case1() {
             String input = "1,2,3,4,5,6";
             List<String> expected = List.of("1", "2", "3", "4", "5", "6");
-            List<String> result = InputUtils.stringToList(input);
+            List<String> result = InputUtils.splitPlayerInput(input);
             assertThat(result).isEqualTo(expected);
         }
     }

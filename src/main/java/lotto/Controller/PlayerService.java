@@ -46,7 +46,7 @@ public class PlayerService {
 
     public List<String> isValidRangeNumber(String input) {
         final String ERROR_MESSAGE = "[ERROR] 1~45 사이의 숫자를 입력해야 합니다.";
-        List<String> playerInputs = InputUtils.stringToList(input);
+        List<String> playerInputs = InputUtils.splitPlayerInput(input);
 
         boolean isValid = playerInputs.stream()
                 .allMatch(value -> InputUtils.isDigit(value) && InputUtils.isNumberInLottoRange(value));
