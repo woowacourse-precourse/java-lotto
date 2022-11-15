@@ -13,7 +13,7 @@ public class Issue {
     public List<List<Integer>> userLotto;
 
     public Issue() {
-        userPrice = InputView.InputPrice();
+        userPrice = BuyLotto();
         if (!Check1000(userPrice)) {
             throw new IllegalArgumentException("구매 가격이 1,000원 단위가 아닙니다.");
         }
@@ -22,12 +22,16 @@ public class Issue {
         OutputView.OutputIssueLotto(count,userLotto);
     }
 
-    private int CountLotto(int userPrice) {
+    private int BuyLotto() {
+        return InputView.InputPrice();
+    }
+
+    public static int CountLotto(int userPrice) {
         int count = userPrice/1000;
         return count;
     }
 
-    private boolean Check1000(int userPrice) {
+    public static boolean Check1000(int userPrice) {
         if (userPrice%1000 == 0) {
             return true;
         }
@@ -39,7 +43,6 @@ public class Issue {
         for (int c = 0; c <count; c++) {
             userLotto.add(Randoms.pickUniqueNumbersInRange(1,45,6));
         }
-
         return userLotto;
     }
 }
