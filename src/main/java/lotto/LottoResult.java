@@ -17,7 +17,7 @@ public class LottoResult {
         tourLottos();
     }
 
-    public void tourLottos() {
+    private void tourLottos() {
         List<Lotto> lottos = lottoMarket.getLottos();
 
         List<Integer> winningNum = lottoHeadOffice.getWinningNum();
@@ -28,7 +28,7 @@ public class LottoResult {
         }
     }
 
-    public void compareNum(List<Integer> user, List<Integer> winning, Integer bonus) {
+    private void compareNum(List<Integer> user, List<Integer> winning, Integer bonus) {
         int cnt = 0;
         for (Integer integer : user) {
             if (winning.contains(integer))
@@ -47,7 +47,14 @@ public class LottoResult {
         System.out.println(results);
     }
 
-    public void printResults() {
+    private void printResults() {
+        System.out.println("당첨 통계");
+        System.out.println("---");
+        System.out.println("3개 일치 (5,000원) - " + results.get(5));
+        System.out.println("4개 일치 (50,000원) - " + results.get(4));
+        System.out.println("5개 일치 (1,500,000원) - " + results.get(3));
+        System.out.println("5개 일치, 보너스 볼 일치 (30,500,000원) - " + results.get(2));
+        System.out.println("6개 일치 (2,000,000,000원) - " + results.get(1));
     }
 
     public void calculateRateOfReturn() {
