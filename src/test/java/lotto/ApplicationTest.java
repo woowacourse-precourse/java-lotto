@@ -53,6 +53,83 @@ class ApplicationTest extends NsTest {
             assertThat(output()).contains(ERROR_MESSAGE);
         });
     }
+    @Test
+    void 돈_입력값에_0을_넣은_경우(){
+        assertSimpleTest(() -> {
+            runException("0");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+    @Test
+    void 돈_입력값에_숫자가_아닌_값을_넣은_경우(){
+        assertSimpleTest(() -> {
+            runException("abc");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
+    @Test
+    void 돈_입력값에_천의_단위가_아닌_숫자를_넣은_경우(){
+        assertSimpleTest(() -> {
+            runException("1500");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+    @Test
+    void 당첨번호에_중복된_값_넣은_경우(){
+        assertSimpleTest(() -> {
+            runException("8000", "1,2,3,4,5,5");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
+    @Test
+    void 당첨번호에_숫자가_아닌_값을_넣은_경우(){
+        assertSimpleTest(() -> {
+            runException("8000", "1,2,3,4,5,a");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
+    @Test
+    void 당첨번호_입력_형식을_지키지_않은_경우(){
+        assertSimpleTest(() -> {
+            runException("8000", "1,2,3,4,5,5");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
+    @Test
+    void 당첨번호에_범위를_벗어난_값을_넣은_경우(){
+        assertSimpleTest(() -> {
+            runException("8000", "1,2,3,46,5,34");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
+    @Test
+    void 보너스번호에_숫자가_아닌_값을_넣은_경우(){
+        assertSimpleTest(() -> {
+            runException("8000", "1,2,3,4,5,6", "a");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+    @Test
+    void 보너스번호에_범위를_벗어나는_값을_넣은_경우(){
+        assertSimpleTest(() -> {
+            runException("8000", "1,2,3,4,5,6", "100");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
+    @Test
+    void 보너스번호에_이미_당첨번호에_포함된_값을_넣은_경우(){
+        assertSimpleTest(() -> {
+            runException("8000", "1,2,3,4,5,6", "3");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
 
     @Override
     public void runMain() {
