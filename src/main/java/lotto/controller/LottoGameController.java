@@ -23,7 +23,7 @@ public class LottoGameController {
         lottoGenerator.generateLottoOfBuyer(buyer.getTickets());
     }
     public void noticeLotteries(){
-
+        lottoGameView.noticeLotteries(lottoGenerator.toString());
     }
     public void checkLotteryWin(){
 

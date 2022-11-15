@@ -38,7 +38,7 @@ public class LottoGameView{
     }
 
     public void noticeLotteries(String lottoNumbers){
-
+        System.out.println(lottoNumbers);
     }
     public void noticeReport(String winReport){
 
