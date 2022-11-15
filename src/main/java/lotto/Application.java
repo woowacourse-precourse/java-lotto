@@ -48,7 +48,8 @@ public class Application {
 
     public static void getLottoNumber(List<List<Integer>> lotto_list, Integer lotto_amount) {
         while (lotto_list.size() < lotto_amount) {
-            List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+
+            List<Integer> numbers = new ArrayList<>(Collections.unmodifiableList(Randoms.pickUniqueNumbersInRange(1, 45, 6)));
             numbers.sort(Comparator.naturalOrder());
             lotto_list.add(numbers);
         }
