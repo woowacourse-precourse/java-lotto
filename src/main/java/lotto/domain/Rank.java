@@ -40,14 +40,11 @@ public enum Rank {
     }
 
     private static void sort(List<Rank> ranks){
-        Collections.sort(ranks, new Comparator<Rank>() {
-            @Override
-            public int compare(Rank rank1, Rank rank2) {
-                if (rank1.getMatchedCount() == rank2.getMatchedCount()) {
-                    return rank1.getBonusCount().compareTo(rank2.getBonusCount());
-                }
-                return rank1.getMatchedCount().compareTo(rank2.getMatchedCount());
+        Collections.sort(ranks, (rank1, rank2) -> {
+            if (rank1.getMatchedCount() == rank2.getMatchedCount()) {
+                return rank1.getBonusCount().compareTo(rank2.getBonusCount());
             }
+            return rank1.getMatchedCount().compareTo(rank2.getMatchedCount());
         });
 
 
