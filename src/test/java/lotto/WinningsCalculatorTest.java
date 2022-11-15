@@ -1,11 +1,9 @@
 package lotto;
 
-import lotto.domain.Lotto;
 import lotto.domain.WinningsCalculator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -86,10 +84,10 @@ public class WinningsCalculatorTest {
     @Test
     void countLottoRankingsTest() {
         List<List<Integer>> lottoPapers = List.of(
-                List.of(1, 2, 5, 7, 8, 10), //1등
-                List.of(1, 2, 3, 5, 6, 9), //5등
-                List.of(2, 9, 11, 13, 15, 16), //없음
-                List.of(2, 5, 7, 8, 10, 40) //2등
+                List.of(1, 2, 5, 7, 8, 10),
+                List.of(1, 2, 3, 5, 6, 9),
+                List.of(2, 9, 11, 13, 15, 16),
+                List.of(2, 5, 7, 8, 10, 40)
         );
         Map<String, Integer> result = new HashMap<>() {
             {
@@ -131,7 +129,3 @@ public class WinningsCalculatorTest {
                 .isEqualTo(result);
     }
 }
-
-/*
-
- */
