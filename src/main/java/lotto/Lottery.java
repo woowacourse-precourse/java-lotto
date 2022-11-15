@@ -13,7 +13,7 @@ public class Lottery {
         printLottoInfos(lotteryTickets);
 
         printRequestWinningNumberMessage();
-        WinningNumber winningNumber = Drawing.getWinningNumber();
+        WinningNumber winningNumber = Generator.getWinningNumber();
     }
 
     private void printRequestWinningNumberMessage() {

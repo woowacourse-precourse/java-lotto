@@ -21,7 +21,7 @@ public class Buyer {
 
     public List<Lotto> getLotteryTickets() {
         int ticketCount = money / 1000;
-        lottoTickets = Drawing.createLotteryTickets(ticketCount);
+        lottoTickets = Generator.createLotteryTickets(ticketCount);
         return lottoTickets;
     }
 }
