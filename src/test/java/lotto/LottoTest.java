@@ -11,7 +11,6 @@ import java.io.InputStream;
 import java.util.List;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.*;
-import static lotto.Lotto.enterTheAmount;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
@@ -43,7 +42,8 @@ class LottoTest extends NsTest {
         InputStream in = new ByteArrayInputStream(INVALID_NUMBER.getBytes());
         System.setIn(in);
         Assertions.assertThrows(IllegalArgumentException.class, () -> {
-            enterTheAmount();
+            Lotto.setInitialNumber();
+            Lotto.setNumberOfPurchasedLotto();
         });
     }
 
@@ -108,7 +108,6 @@ class LottoTest extends NsTest {
             }
         });
     }
-
 
     @Override
     protected void runMain() {Lotto.main(new String[]{});}

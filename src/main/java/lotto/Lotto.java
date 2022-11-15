@@ -13,7 +13,7 @@ public class Lotto {
     static String revenuePercentage;
     static int initialAmount;
     static List<Lotto> purchasedLotto = new ArrayList<>();
-    static List<Integer> trackEachPlace = new ArrayList<>();
+    static List<Integer> match = new ArrayList<>();
     static Lotto winning_number_lotto;
     static final String ENTER_THE_AMOUNT = "구입금액을 입력해 주세요.";
     static final String ENTER_WINNING_NUMBER = "당첨 번호를 입력해 주세요.";
@@ -54,6 +54,7 @@ public class Lotto {
         start();
     }
     public static void start(){
+        catchNumberException();
         printLottoNumbers();
         validateGivenNumbers();
         initializeBonusNumber();
@@ -80,9 +81,12 @@ public class Lotto {
         return numbers.contains(number);
     }
 
-    public static void enterTheAmount() {
+    public static void setInitialNumber() {
         System.out.println(ENTER_THE_AMOUNT);
         initialAmount = Integer.parseInt(Console.readLine());
+    }
+    
+    public static void setNumberOfPurchasedLotto(){
         factorOfThousand();
         numberOfPurchasedLotto = initialAmount / LOTTO_PRICE;
     }
@@ -96,7 +100,8 @@ public class Lotto {
 
     public static void catchNumberException() {
         try {
-            enterTheAmount();
+            setInitialNumber();
+            setNumberOfPurchasedLotto();
         } catch (NumberFormatException e) {
             System.out.println(ERROR_MESSAGE_NUMBER_EXCEPTION);
         }
@@ -148,7 +153,6 @@ public class Lotto {
     }
 
     public static void printLottoNumbers() {
-        catchNumberException();
         System.out.println(numberOfPurchasedLotto + LOTTO_PURCHASE_MESSAGE);
         for (int index = 0; index < numberOfPurchasedLotto; index++) {
             purchasedLotto.add(generateRandomSixNumbers());
@@ -161,10 +165,10 @@ public class Lotto {
             int matchedNumber = returnMatchedNumber(lotto);
             boolean containsBonusNumber = containsBonusNumber(lotto);
             if (containsBonusNumber && matchedNumber == places.THIRD_PLACE.numberMatch) {
-                trackEachPlace.add(Integer.MAX_VALUE);
+                match.add(Integer.MAX_VALUE);
                 continue;
             }
-            trackEachPlace.add(matchedNumber);
+            match.add(matchedNumber);
         }
     }
 
@@ -194,7 +198,7 @@ public class Lotto {
     }
 
     public static void printAndAdd(places place) {
-        int won = Collections.frequency(trackEachPlace, place.numberMatch);
+        int won = Collections.frequency(match, place.numberMatch);
         System.out.println(place.message + won + "개");
         totalRevenue += won * place.prize;
     }
@@ -203,6 +207,4 @@ public class Lotto {
         revenuePercentage = String.format("%.1f", ((double) totalRevenue / initialAmount * 100));
         closingStatement = "총 수익률은 " + revenuePercentage + "%입니다.";
     }
-
-
 }

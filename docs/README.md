@@ -48,3 +48,9 @@
 ### Exception을 throw 해야하는 경우에 수
 - 중복 숫자가 존재한다.
 - 숫자가 1보다 작고 45보다 크다.
+
+## MVC Model 구축
+### View를 담당하는 도메인 생성
+- Lotto 클래스를 Model과 View의 기능으로 분리
+- stati final String 변수들과 이 변수들을 부르는 모든 함수는 View로 이전
+- static variable들은 Controller로 이전
