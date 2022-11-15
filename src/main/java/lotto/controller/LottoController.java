@@ -1,7 +1,11 @@
 package lotto.controller;
 
+import lotto.domain.Lotto;
+import lotto.domain.LottoCreator;
 import lotto.view.Input;
 import lotto.view.Output;
+
+import java.util.ArrayList;
 
 public class LottoController {
     private static final int LOTTO_PRICE_DEFAULT_UNIT = 1000;
