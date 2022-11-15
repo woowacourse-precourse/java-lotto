@@ -10,6 +10,8 @@ import java.util.EnumMap;
 
 public class LottoController {
 
+    private static final int PERCENT = 100;
+
     private final LottoGameService service;
 
     public LottoController(LottoGameService service) {
@@ -37,5 +39,9 @@ public class LottoController {
 
     public EnumMap<LottoRank, Integer> outputRanks() {
         return service.showLottosRank();
+    }
+
+    public float getProfitRate(EnumMap<LottoRank, Integer> lottoRanks) {
+        return service.showProfitRate(lottoRanks) * PERCENT;
     }
 }

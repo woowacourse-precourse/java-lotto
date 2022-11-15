@@ -20,7 +20,7 @@ public enum Views {
         return format;
     }
 
-    public String render(String... data) {
+    public String render(String data) {
         return String.format(format, data);
     }
 }

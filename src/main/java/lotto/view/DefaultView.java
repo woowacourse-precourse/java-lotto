@@ -31,6 +31,7 @@ public class DefaultView implements View {
         }
     }
 
+
     private void sendMoney() {
         System.out.println(Views.REQUEST_MONEY.render());
         String input = Console.readLine();
@@ -76,6 +77,9 @@ public class DefaultView implements View {
             StaticsView view = StaticsView.getView(rank.isHasBonusNumber());
             System.out.println(view.render(rank, count));
         }
+
+        float profitRate = controller.getProfitRate(lottoRanks);
+        System.out.println(ProfitView.PROFIT_RATE.render(profitRate));
     }
 
 }
