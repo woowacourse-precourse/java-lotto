@@ -93,4 +93,15 @@ public class LottoConsoleTest {
             Arguments.of(6, false, 2000000000, 0, "6개 일치 (2,000,000,000원) - 0개")
         );
     }
+
+    @Test
+    @DisplayName("수익률 출력")
+    public void printRoi() {
+        final var sut = new LottoConsole();
+        final double roi = 62.5d;
+
+        final String roiMessage = sut.roiMessage(roi);
+
+        assertEquals("총 수익률은 62.5%입니다.", roiMessage);
+    }
 }

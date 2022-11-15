@@ -70,4 +70,8 @@ public class LottoConsole {
     public String winningStatisticsHeaderMessage() {
         return "당첨 통계\n---";
     }
+
+    public String roiMessage(double roi) {
+        return String.format("총 수익률은 %3.1f%%입니다.", roi);
+    }
 }
