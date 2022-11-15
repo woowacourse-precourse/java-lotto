@@ -1,0 +1,50 @@
+package lotto.domain;
+
+import java.util.Arrays;
+
+public enum Grade {
+    FIFTH("3",3, 5_000),
+    FOURTH("4",4, 50_000),
+    THIRD("5",5, 1_500_000),
+    SECOND("5+B",5, 30_000_000),
+    FIRST("6",6, 2_000_000_000);
+
+    private final int matchCount;
+    private final String key;
+    private final int prizeMoney;
+    private static final String VALIDATE_KEY_MASSAGE = "[ERROR] 유효하지 않은 Key 입니다.";
+
+    Grade(String key, int matchCount, int prizeMoney) {
+        this.key = key;
+        this.matchCount = matchCount;
+        this.prizeMoney = prizeMoney;
+    }
+
+    public static Grade findGrade(int matchCount, int bonusCount) {
+        if ((THIRD.matchCount == matchCount) && (bonusCount == 0)) {
+            return THIRD;
+        }
+        if ((SECOND.matchCount == matchCount) && (bonusCount == 1)) {
+            return SECOND;
+        }
+        return Arrays.stream(values()).filter(grade -> grade.matchCount == matchCount)
+                .findAny().orElse(null);
+    }
+
+    public static Grade findGradeByKey(String key) {
+        return Arrays.stream(values()).filter(grade -> grade.key == key)
+                .findAny().orElseThrow(() -> new IllegalArgumentException(VALIDATE_KEY_MASSAGE));
+    }
+
+    public String getKey() {
+        return key;
+    }
+
+    public int getPrizeMoney() {
+        return prizeMoney;
+    }
+
+    public int getMatchCount() {
+        return matchCount;
+    }
+}
