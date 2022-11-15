@@ -5,6 +5,7 @@
 - 값 입력 - inputValues()
   - 구입금액 입력 - inputPurchaseAmount()
   - 당첨 번호 입력 - inputWinningNumber()
+    - 타입 변환 - typeChange()
   - 보너스 번호 입력 - inputBonusNumber()
 ## 구현
 - 로또 생성 - createLotto()
