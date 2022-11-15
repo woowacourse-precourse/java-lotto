@@ -51,6 +51,10 @@ public class LottoObjectManager {
         return bonusNumber;
     }
 
+    public LottoAnalyzer createLottoAnalyzer(final LottoUser lottoUser, final Lotto winningLotto, final int bonusNumber) {
+        return new LottoAnalyzer(lottoUser, winningLotto, bonusNumber);
+    }
+
     private void validateBonusNumberOutOfRange(final int bonusNumber) {
         if (isLottoNumberOutOfRange(bonusNumber)) {
             throw new IllegalArgumentException(LOTTO_NUMBER_OUT_OF_RANGE.getMessage());
