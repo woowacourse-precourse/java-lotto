@@ -1,3 +1,4 @@
+/*
 package lotto;
 
 
@@ -101,4 +102,4 @@ class FunctionTest {
 
 		return purchase;
 	}
-}
+}*/
