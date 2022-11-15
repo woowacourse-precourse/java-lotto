@@ -13,6 +13,6 @@ public class LottoTest {
     void when_createLotto_Expect_numbers() {
         List<Integer> numbers = List.of(1,32,35,29,10,8);
         Lotto lotto = new Lotto(numbers);
-        assertThat(String.valueOf(lotto.getNumbers())).contains("[1, 32, 35, 29, 10, 8]");
+        assertThat(String.valueOf(lotto.getNumbers())).isEqualTo("[1, 32, 35, 29, 10, 8]");
     }
 }

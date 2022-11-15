@@ -25,6 +25,15 @@ public class Lotto {
     public List<Integer> getNumbers() {
         return this.numbers;
     }
+    public boolean isContainsBonusNumber(int bonusNumber) {
+        return this.numbers.contains(bonusNumber);
+    }
+
+    public List<Integer> deleteWinLottoNumbers(List<Integer> winLottoNumbers) {
+        List<Integer> tempLottoGetNumbers = new ArrayList<>(this.numbers);
+        tempLottoGetNumbers.retainAll(winLottoNumbers);
+        return tempLottoGetNumbers;
+    }
 
     private static List<Integer> createRandomNumbers() {
         List<Integer> randomNumbers = Randoms.pickUniqueNumbersInRange(START_RANDOM_NUMBER, END_RANDOM_NUMBER, NUMBER_LENGTH);

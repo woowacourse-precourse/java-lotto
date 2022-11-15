@@ -1,6 +1,5 @@
 package lotto.domain;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -32,10 +31,9 @@ public enum Stats {
 
     public static void compare(List<Lotto> lottos, List<Integer> winLottoNumbers, int bonusNumber) {
         lottos.forEach(lotto -> {
-            boolean hasBonusNumber = lotto.getNumbers().contains(bonusNumber);
-            List<Integer> tempLottoGetNumbers = new ArrayList<>(lotto.getNumbers());
-            tempLottoGetNumbers.retainAll(winLottoNumbers);
-            Stats stats = valueOfName(tempLottoGetNumbers);
+            boolean hasBonusNumber = lotto.isContainsBonusNumber(bonusNumber);
+            List<Integer> lottoNumbers = lotto.deleteWinLottoNumbers(winLottoNumbers);
+            Stats stats = valueOfName(lottoNumbers);
             addCount(stats, hasBonusNumber);
         });
 

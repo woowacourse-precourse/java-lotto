@@ -9,7 +9,6 @@ public class InputExceptionConstance {
     public static final String SPACE_REGEX = "^[^\\s]*$";
     public static final String NOT_SPACE = "띄어쓰기를 할 수 없습니다.";
     public static final String NOT_SIX_LENGTH = "숫자의 길이가 6자리가 아닙니다.";
-    public static final String NOT_ONE_LENGTH = "보너스 숫자는 1자리여야 합니다.";
     public static final String BELOW_BONUS_NUMBER = "보너스 숫자는 45이하여야 합니다.";
     public static final String NOT_DUPLICATE = "숫자들은 중복되지 않아야 합니다.";
     public static final String SPLIT_BY_COMMA = "숫자들은 콤마로 구분지어야 합니다.";
