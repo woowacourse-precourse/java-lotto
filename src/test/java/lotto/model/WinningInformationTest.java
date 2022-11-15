@@ -1,7 +1,6 @@
 package lotto.model;
 
 
-import java.math.BigDecimal;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Stream;
@@ -20,10 +19,10 @@ class WinningInformationTest {
         public Stream<? extends Arguments> provideArguments(ExtensionContext context) {
             return Stream.of(
                     //당첨 정보, 구입한 로또 개수, 예상 반환 결과를 공금한다.
-                    Arguments.of(Collections.emptyList(), 1,  0.0),
-                    Arguments.of(List.of(Winning.THREE), 8,  62.5),
-                    Arguments.of(List.of(Winning.THREE), 5,  100.0),
-                    Arguments.of(List.of(Winning.SIX), 2,  1.0E+8)
+                    Arguments.of(Collections.emptyList(), 1, 0.0),
+                    Arguments.of(List.of(Winning.THREE), 8, 62.5),
+                    Arguments.of(List.of(Winning.THREE), 5, 100.0),
+                    Arguments.of(List.of(Winning.SIX), 2, 1.0E+8)
             );
         }
     }
