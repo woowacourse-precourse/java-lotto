@@ -75,17 +75,6 @@ public abstract class Utility {
         }
         return _winningNumbers;
     }
-    /*
-    public static List <Integer> saveWinningNumbers(String winningNumbers){
-        List<String> splitWinningNumber = new ArrayList<String>(Arrays.asList(winningNumbers.split(",")));
-        List<Integer> _winningNumbers = new ArrayList<>();
-        for(int i=0; i<splitWinningNumber.size(); i++){
-            int curNum = (int)Exception.checkNumeric(splitWinningNumber.get(i));
-            Exception.checkNumberRange(minLottoNumber, maxLottoNumber, curNum);
-            _winningNumbers.add(curNum);
-        }
-        return _winningNumbers;
-    }*/
 
     public static List <Integer> findTotalLottoResult(List <Lotto> purchaseLotto, List <Integer> winningNumbers, int bonusNumber){
         List <Integer> result = Arrays.asList(0,0,0,0,0,0);
