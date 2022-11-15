@@ -1,5 +1,6 @@
 package lotto.domain;
 
+import java.text.NumberFormat;
 import java.util.Arrays;
 
 public enum LottoRank {
@@ -27,5 +28,9 @@ public enum LottoRank {
                 .filter(rank -> rank.hasBonusNumber == hasBonusNumber)
                 .findAny()
                 .orElse(NOTING);
+    }
+
+    public String getPrizeMoney() {
+        return NumberFormat.getInstance().format(prizeMoney);
     }
 }

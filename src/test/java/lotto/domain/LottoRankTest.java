@@ -21,4 +21,10 @@ class LottoRankTest {
         // then
         assertThat(rank).isEqualTo(LottoRank.SECOND);
     }
+
+    @DisplayName("상금을 출력할 때 천단위로 쉼표가 들어간다.")
+    @Test
+    void getPrizeMoney() {
+        assertThat(LottoRank.FIFTH.getPrizeMoney()).isEqualTo("5,000");
+    }
 }
