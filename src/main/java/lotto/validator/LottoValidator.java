@@ -8,6 +8,13 @@ import java.util.List;
 import java.util.Set;
 
 public class LottoValidator {
+
+    public static void validateLottoNumbers(List<Integer> lottoNumbers) {
+        validateLottoSize(lottoNumbers);
+        validateLottoValues(lottoNumbers);
+        validateDuplicates(lottoNumbers);
+    }
+
     public static void validateLottoSize(List<Integer> lottoNumbers) {
         if (lottoNumbers.size() != Constant.LOTTO_SIZE) {
             throw new IllegalArgumentException(ErrorMessage.WRONG_SIZE_MSG);
