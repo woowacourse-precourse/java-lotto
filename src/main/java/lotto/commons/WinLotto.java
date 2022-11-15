@@ -4,13 +4,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class LottoWin {
+public class WinLotto {
 
     private static final Map<String, Integer> winHistory = new HashMap<>();
     private static List<Integer> numbers;
     private static int bonus;
 
-    public LottoWin(List<Integer> winNumbers, int bounusNumber) {
+    public WinLotto(List<Integer> winNumbers, int bounusNumber) {
         numbers = winNumbers;
         bonus = bounusNumber;
         this.setWinHistory();
