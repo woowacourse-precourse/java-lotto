@@ -70,8 +70,6 @@ public class Statistic {
 
     public double calculateRevenue(int price) {
         double percent = (double) revenue / (double) price;
-        System.out.println("수익률: "+percent);
-        System.out.println("수입: "+revenue);
         percent = Math.round(percent*1000.0)/10.0;
         return percent;
     }

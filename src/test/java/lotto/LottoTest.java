@@ -1,15 +1,11 @@
 package lotto;
 
-import lotto.domain.Buyer;
 import lotto.domain.Lotto;
-import lotto.domain.Validator;
-import lotto.view.OutputView;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
-import camp.nextstep.edu.missionutils.test.NsTest;
+
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 

@@ -1,7 +1,6 @@
 package lotto;
 
-import lotto.domain.Buyer;
-import org.junit.jupiter.api.BeforeEach;
+import lotto.util.Buyer;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;

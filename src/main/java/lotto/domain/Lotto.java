@@ -1,6 +1,7 @@
 package lotto.domain;
 
-import java.util.ArrayList;
+import lotto.util.Validator;
+
 import java.util.List;
 
 public class Lotto {
