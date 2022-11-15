@@ -5,6 +5,12 @@ import java.util.List;
 
 public class Calculate {
     private static final int PURCHASE_UNIT = 1000;
+    private static final int NOTHING_REWARD = 0;
+    private static final String FIRST = "FIRST";
+    private static final String SECOND = "SECOND";
+    private static final String THIRD = "THIRD";
+    private static final String FOURTH = "FOURTH";
+    private static final String FIFTH = "FIFTH";
     private static final String NO_WINNING = "NOTHING";
 
     public static int calculatePurchaseQuantity(int money) throws IllegalArgumentException {
@@ -27,5 +33,24 @@ public class Calculate {
             }
         }
         return NO_WINNING;
+    }
+
+    public static int getWinningPrice(String winning){
+        if(winning.equals(FIRST)){
+            return Winning.FIRST.getReward();
+        }
+        if(winning.equals(SECOND)){
+            return Winning.SECOND.getReward();
+        }
+        if(winning.equals(THIRD)){
+            return Winning.THIRD.getReward();
+        }
+        if(winning.equals(FOURTH)){
+            return Winning.FOURTH.getReward();
+        }
+        if(winning.equals(FIFTH)){
+            return Winning.FIFTH.getReward();
+        }
+        return NOTHING_REWARD;
     }
 }
