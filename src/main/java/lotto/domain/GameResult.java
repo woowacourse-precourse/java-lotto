@@ -33,18 +33,21 @@ public class GameResult {
             return 3;
         } else if (count == 4) {
             return 4;
+        } else if (count == 3) {
+            return 5;
         }
-        return 5;
+        return 0;
     }
 
     public static List<Integer> getGameRankCount(List<Integer> ranks) {
         List<Integer> counts = new ArrayList<>();
 
-        for (int i = 0; i < ranks.size(); i++) {
+        for (int i = 0; i < Constant.RANK_COUNT; i++) {
             counts.add(0);
         }
 
         for (int rank : ranks) {
+            if (rank == 0) continue;
             counts.set((rank - 1), counts.get(rank - 1) + 1);
         }
 
@@ -52,7 +55,7 @@ public class GameResult {
     }
 
     public static Integer calculateSum(List<Integer> counts) {
-        List<Integer> amount = new ArrayList<>(Arrays.asList(Constant.WINNING_FIFTH_AMOUNT, Constant.WINNING_FOURTH_AMOUNT, Constant.WINNING_THIRD_AMOUNT, Constant.WINNING_SECOND_AMOUNT, Constant.WINNING_FIRST_AMOUNT));
+        List<Integer> amount = new ArrayList<>(Arrays.asList(Constant.WINNING_FIRST_AMOUNT, Constant.WINNING_SECOND_AMOUNT, Constant.WINNING_THIRD_AMOUNT, Constant.WINNING_FOURTH_AMOUNT, Constant.WINNING_FIFTH_AMOUNT));
         int result = 0;
 
         for (int i = 0; i < counts.size(); i++) {

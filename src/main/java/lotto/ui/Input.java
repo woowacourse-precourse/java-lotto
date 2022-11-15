@@ -8,12 +8,16 @@ import lotto.utils.Validation;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.concurrent.CompletionService;
 
 public class Input {
     private static final Integer REMAINDER = 0;
 
     public static Integer getPurchaseAmount() {
-        return validatePurchaseAmount(toInts(Console.readLine()));
+        String input = Console.readLine();
+
+        Validation.checkTypeNumber(input);
+        return validatePurchaseAmount(toInts(input));
     }
 
     public static Integer validatePurchaseAmount(int amount) {
@@ -27,7 +31,7 @@ public class Input {
         return Integer.parseInt(number);
     }
 
-    public static void validateWiningNumber(String winingNumber) {
+    public static List<Integer> validateWiningNumber(String winingNumber) {
         String[] splits = winingNumber.split(",");
         List<Integer> numbers = new ArrayList<>();
 
@@ -39,13 +43,14 @@ public class Input {
 
         Validation.checkNumberRange(numbers);
         Validation.checkDuplicatedNumber(numbers);
+
+        return numbers;
     }
 
-    public static String getWiningNumber() {
+    public static List<Integer> getWiningNumber() {
         String winingNumber = Console.readLine();
 
-        validateWiningNumber(winingNumber);
-        return winingNumber;
+        return validateWiningNumber(winingNumber);
     }
 
     public static Integer validateBonusNumber(String bonusNumber) {

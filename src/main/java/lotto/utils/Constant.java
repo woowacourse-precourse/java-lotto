@@ -12,6 +12,6 @@ public class Constant {
     public static final Integer WINNING_THIRD_AMOUNT = 1500000;
     public static final Integer WINNING_FOURTH_AMOUNT = 50000;
     public static final Integer WINNING_FIFTH_AMOUNT = 5000;
-
+    public static final Integer RANK_COUNT = 5;
 
 }

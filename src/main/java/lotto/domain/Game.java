@@ -38,11 +38,13 @@ public class Game {
         return numbers;
     }
 
-    public List<Lotto> getSortLottos(List<Lotto> lottos) {
-        for (Lotto lotto : lottos) {
-            getSortLotto(lotto.getNumbers());
-        }
-        return lottos;
-    }
+    public List<List<Integer>> getSortLottos(List<Lotto> lottos) {
+        List<List<Integer>> result = new ArrayList<>();
 
+        for (Lotto lotto : lottos) {
+            List<Integer> numbers = lotto.getNumbers();
+            result.add(getSortLotto(numbers));
+        }
+        return result;
+    }
 }
