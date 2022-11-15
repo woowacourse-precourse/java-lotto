@@ -1,8 +1,8 @@
 package lotto.controller;
 
-import lotto.domain.Calculator;
-import lotto.domain.Lotto;
-import lotto.domain.NumberGenerator;
+import lotto.model.Calculator;
+import lotto.model.Lotto;
+import lotto.model.NumberGenerator;
 import lotto.utils.Validator;
 import lotto.view.InputView;
 import lotto.view.OutputView;
@@ -24,7 +24,7 @@ public class LottoSystem {
     public List<Lotto> purchaseLotto() {
         String input = inputView.inputMoney();
         int money = validator.convertToInt(input);
-        if (!validator.isValidPrice(money)) {
+        if (!validator.isThousandMultiples(money)) {
             throw new IllegalArgumentException(INVALID_PRICE.getMessage());
         }
         List<Lotto> userLottos = createLotto(money);

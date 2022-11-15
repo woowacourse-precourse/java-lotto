@@ -13,7 +13,7 @@ public class Validator {
         try {
             result = Integer.parseInt(s);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException(INVALID_TYPE_BONUS_NUMBER.getMessage());
+            throw new IllegalArgumentException(NOT_INT_TYPE.getMessage());
         }
         return result;
     }
@@ -33,7 +33,7 @@ public class Validator {
         return result;
     }
 
-    public boolean isValidPrice(int price) {
+    public boolean isThousandMultiples(int price) {
         if (price % 1000 != 0) {
             return false;
         }
