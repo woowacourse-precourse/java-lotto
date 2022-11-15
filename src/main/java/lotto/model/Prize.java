@@ -18,4 +18,8 @@ public enum Prize {
         this.message = message;
         this.expression = expression;
     }
+
+    public Integer calculate(int count) {
+        return expression.apply(count);
+    }
 }
