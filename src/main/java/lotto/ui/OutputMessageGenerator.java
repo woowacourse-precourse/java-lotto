@@ -1,15 +1,22 @@
 package lotto.ui;
 
 import lotto.domain.Lotto;
+import lotto.domain.Rank;
 
+import java.text.DecimalFormat;
+import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 public enum OutputMessageGenerator {
     INSTANCE;
 
     private static final String PURCHASE_LOTTO_MESSAGE_FORMAT = "%d개를 구매했습니다.";
+    private static final String RANK_RESULT_MESSAGE_FORMAT = "%d개 일치 (%s) - %d개";
+    private static final String SECOND_RANK_RESULT_MESSAGE_FORMAT = "%d개 일치, 보너스 볼 일치 (%s) - %d개";
+    private static final DecimalFormat rewardFormat = new DecimalFormat("###,###");
 
     public static String getPurchaseLottoMessage(int lottoCount) {
         return String.format(PURCHASE_LOTTO_MESSAGE_FORMAT, lottoCount);
@@ -20,5 +27,28 @@ public enum OutputMessageGenerator {
                 .sorted()
                 .collect(Collectors.toList())
                 .toString();
+    }
+    public static List<String> getTotalRankCountMessage(Map<Rank, Integer> rankCounts) {
+        List<Rank> ranksByReverseOrder = getRanksByReverseOrder();
+        return ranksByReverseOrder.stream()
+                .map(rank -> getRankCountMessage(rank, rankCounts.get(rank)))
+                .collect(Collectors.toList());
+    }
+
+    private static String getRankCountMessage(Rank rank, int count) {
+        int jackpotHitCnt = rank.getJackpotHitCnt();
+        String reward = rewardFormat.format(rank.getReward());
+
+        if (rank == Rank.SECOND) {
+            return String.format(SECOND_RANK_RESULT_MESSAGE_FORMAT, jackpotHitCnt, reward, count);
+        }
+        return String.format(RANK_RESULT_MESSAGE_FORMAT, jackpotHitCnt, reward, count);
+    }
+
+    private static List<Rank> getRanksByReverseOrder() {
+        return Arrays.stream(Rank.values())
+                .filter(rank -> rank != Rank.NO_LUCK)
+                .sorted(Comparator.comparing(Rank::getRankNumber).reversed())
+                .collect(Collectors.toList());
     }
 }
