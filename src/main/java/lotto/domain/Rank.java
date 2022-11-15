@@ -35,7 +35,7 @@ public enum Rank {
         return NONE;
     }
 
-    public static boolean isMatchedBonusNumber(Lotto lotto, int bonusNumber) {
+    private static boolean isMatchedBonusNumber(Lotto lotto, int bonusNumber) {
         List<Integer> lottoNumbers = lotto.getLottoNumbers();
         return lottoNumbers.contains(bonusNumber);
     }
