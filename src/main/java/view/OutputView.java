@@ -20,4 +20,8 @@ public class OutputView {
     public static void requestWinningNumbers() {
         System.out.println(Text.REQUEST_WINNING_NUMBERS);
     }
+
+    public static void requestBonusNumber() {
+        System.out.println(Text.REQUEST_BONUS_NUMBER);
+    }
 }

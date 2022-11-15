@@ -12,4 +12,9 @@ public class InputView {
         OutputView.requestWinningNumbers();
         return Console.readLine();
     }
+
+    public static String receiveBonusNumber() {
+        OutputView.requestBonusNumber();
+        return Console.readLine();
+    }
 }

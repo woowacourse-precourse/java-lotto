@@ -36,4 +36,8 @@ public class LottoController {
         String numbers = InputView.receiveWinningNumbers();
         lottoService.saveWinningNumbers(numbers);
     }
+
+    private void getBonusNumber() {
+        String number = InputView.receiveBonusNumber();
+    }
 }
