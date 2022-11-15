@@ -24,7 +24,7 @@ public class Application {
         BuyingLottoList buyingLottoList = new BuyingLottoList(lottoService.generateLottoList(numberOfLotto));
         lottoResultView.printBuyResult(buyingLottoList);
         Lotto winningLotto = winningNumberView.inputWinningNumber();
-        int bonusNumber = winningNumberView.inputBonusNumber();
+        int bonusNumber = winningNumberView.inputBonusNumber(winningLotto);
         WinningLotto winningLottoInfo = new WinningLotto(winningLotto, bonusNumber);
 
         LottoResult lottoResult = lottoService.checkLottoResult(buyingLottoList, winningLottoInfo);

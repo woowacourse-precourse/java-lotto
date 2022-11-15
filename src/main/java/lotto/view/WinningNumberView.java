@@ -107,23 +107,32 @@ public class WinningNumberView {
         }
     }
 
-    public int inputBonusNumber() {
+    public int inputBonusNumber(Lotto winingLotto) {
 
         System.out.println("보너스 번호를 입력해 주세요.");
         String bonusNumber = Console.readLine();
-
-        validateBonusNumber(bonusNumber);
+        validateBonusNumber(bonusNumber, winingLotto);
 
         return Integer.parseInt(bonusNumber);
     }
 
-    private void validateBonusNumber(String bonusNumber) {
+    private void validateBonusNumber(String bonusNumber, Lotto winningLotto) {
 
-        bonusNumberIntegerCheck(bonusNumber);
-        bonusNumberRangeCheck(bonusNumber);
+        checkBonusNumberInteger(bonusNumber);
+        checkBonusNumberRange(bonusNumber);
+        checkDuplicateBonusNumber(bonusNumber, winningLotto);
     }
 
-    private void bonusNumberRangeCheck(String bonusNumber) {
+    private void checkDuplicateBonusNumber(String bonusNumber, Lotto winningLotto) {
+
+        List<Integer> winningLottoNumbers = winningLotto.getNumbers();
+
+        if (winningLottoNumbers.contains(Integer.parseInt(bonusNumber))) {
+            throw new IllegalArgumentException("[ERROR] 보너스 번호는 당첨번호와 중복되어선 안됩니다.");
+        }
+    }
+
+    private void checkBonusNumberRange(String bonusNumber) {
 
         int transformedBonusNumber = Integer.parseInt(bonusNumber);
 
@@ -132,7 +141,7 @@ public class WinningNumberView {
         }
     }
 
-    public void bonusNumberIntegerCheck(String bonusNumber) {
+    public void checkBonusNumberInteger(String bonusNumber) {
 
         if (bonusNumber == "") {
             throw new IllegalArgumentException("[ERROR] 보너스 번호는 1~45 사이의 숫자 하나만 입력해야합니다.");
