@@ -8,15 +8,31 @@ public class Purchase {
 
     public void inputMoney() {
         System.out.println("구입금액을 입력해 주세요.");
-        int userInput = Integer.parseInt(Console.readLine());
-        if (isValid(userInput)) {
-            this.money = userInput;
+        String userInput = Console.readLine();
+        int parseInput = 0;
+        try {
+            if (isNumber(userInput)) {
+                parseInput = Integer.parseInt(userInput);
+            }
+            if (isValid(parseInput)) {
+                this.money = parseInput;
+            }
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
         }
+
 
     }
 
-    public boolean isValid(int userInput) throws IllegalArgumentException{
-        if(userInput % 1000 != 0){
+    public boolean isNumber(String userInput) {
+        if (!userInput.matches("[-+]?\\d*\\.?\\d+")) {
+            throw new IllegalArgumentException(Message.MONEY_ERROR);
+        }
+        return true;
+    }
+
+    public boolean isValid(int userInput) {
+        if (userInput % 1000 != 0) {
             throw new IllegalArgumentException(Message.MONEY_ERROR);
         }
         return userInput % 1000 == 0;

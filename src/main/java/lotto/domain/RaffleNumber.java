@@ -20,13 +20,18 @@ public class RaffleNumber {
 
     public void setWinningNumber(String userInput) {
         List<Integer> winningNumber = new ArrayList<>();
-        for (String number : userInput.split(",")) {
-            validateRange(number);
-            winningNumber.add(Integer.valueOf(number));
+        try {
+            for (String number : userInput.split(",")) {
+                validateRange(number);
+                winningNumber.add(Integer.valueOf(number));
+            }
+            validateSize(winningNumber);
+            hasSameNumber(winningNumber);
+            this.winningNumber = winningNumber;
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+            throw e;
         }
-        validateSize(winningNumber);
-        hasSameNumber(winningNumber);
-        this.winningNumber = winningNumber;
     }
 
     private void validateRange(String number) {
@@ -58,7 +63,11 @@ public class RaffleNumber {
     public void setBonusNumber(String userInput) {
         validateRange(userInput);
         int parseNumber = Integer.parseInt(userInput);
-        validateNumber(winningNumber, parseNumber);
+        try {
+            validateNumber(winningNumber, parseNumber);
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+        }
         this.bonusNumber = parseNumber;
     }
 
