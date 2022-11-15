@@ -22,7 +22,10 @@ public class LottoGenerator {
     }
 
     private List<Integer> makeLottoNumbers() {
-        return Randoms.pickUniqueNumbersInRange(1, 45, 6)
+        return Randoms.pickUniqueNumbersInRange(
+                        LottoNumber.MIN.getNumber(),
+                        LottoNumber.MAX.getNumber(),
+                        LottoNumber.SIZE.getNumber())
                 .stream()
                 .sorted()
                 .collect(Collectors.toList());

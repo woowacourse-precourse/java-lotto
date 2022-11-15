@@ -15,14 +15,14 @@ public class Lotto {
     }
 
     private void validateSize(List<Integer> numbers) {
-        if (numbers.size() != 6) {
+        if (numbers.size() != LottoNumber.SIZE.getNumber()) {
             throw new IllegalArgumentException(ErrorMessage.LOTTO_SIZE.getMessage());
         }
     }
 
     private void validateRange(List<Integer> numbers) {
         for (int number : numbers) {
-            if (number < 1 || number > 45) {
+            if (number < LottoNumber.MIN.getNumber() || number > LottoNumber.MAX.getNumber()) {
                 throw new IllegalArgumentException(ErrorMessage.LOTTO_RANGE.getMessage());
             }
         }
