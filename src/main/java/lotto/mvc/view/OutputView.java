@@ -13,7 +13,7 @@ public final class OutputView {
         printWithMessage(outputPlayerInfoDto.getPlayerInfo());
     }
 
-    public static void renderLottoResult(OutputLottoStatisticsDto outputLottoStatisticsDto) {
+    public static void renderLottoStatistics(OutputLottoStatisticsDto outputLottoStatisticsDto) {
         printWithMessage(outputLottoStatisticsDto.getLottoStatistics());
     }
 

@@ -71,7 +71,7 @@ public class LottoGameController {
         lottoResult = lottoStore.calculateLottoResult(
                 LottoNumberFactory.numberOf(inputBonusNumberDto.getInputBonusNumber()));
 
-        OutputView.renderLottoResult(new OutputLottoStatisticsDto(lottoResult));
+        OutputView.renderLottoStatistics(new OutputLottoStatisticsDto(lottoResult));
         return lottoGameStatus.findNextGameStatus();
     }
 
