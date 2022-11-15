@@ -1,5 +1,6 @@
 package lotto;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Lotto {
@@ -7,6 +8,7 @@ public class Lotto {
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
+        checkForSameLottoNumbers(numbers);
         this.numbers = numbers;
     }
 
@@ -16,5 +18,23 @@ public class Lotto {
         }
     }
 
-    // TODO: 추가 기능 구현
+    private void checkForSameLottoNumbers(List <Integer> numbers){
+        ArrayList<Integer> temp = new ArrayList<>();
+        for(Integer number: numbers){
+            if(!temp.contains(number)){
+                temp.add(number);
+            }
+            else{
+                throw new IllegalArgumentException("[Error] 중복된 숫자가 있습니다.");
+            }
+        }
+    }
+
+    public boolean hasWinningNumber(Integer winningNumber){
+        return numbers.contains(winningNumber);
+    }
+
+    public void print() {
+        System.out.println(numbers);
+    }
 }
