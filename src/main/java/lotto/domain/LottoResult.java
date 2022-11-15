@@ -4,7 +4,6 @@ public class LottoResult {
     private final int normalCount;
     private final int bonusCount;
 
-
     public LottoResult(int normalCount, int bonusCount) {
         this.normalCount = normalCount;
         this.bonusCount = bonusCount;

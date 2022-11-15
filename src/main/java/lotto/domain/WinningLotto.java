@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.Map;
 
 public class WinningLotto {
-
     private static final CanValidate<Map<Integer, Boolean>> validator = new WinningLottoValidator();
     /**
      * Key : 로또 번호
