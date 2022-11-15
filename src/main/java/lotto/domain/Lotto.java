@@ -46,6 +46,6 @@ public class Lotto {
     }
 
     public boolean isExistWinningNumber(int number) {
-        return this.numbers.contains(number);
+        return numbers.contains(number);
     }
 }

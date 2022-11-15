@@ -46,10 +46,10 @@ public class Money {
     }
 
     public long getMoney() {
-        return this.money;
+        return money;
     }
 
     public long getLottoCount() {
-        return this.lottoCount;
+        return lottoCount;
     }
 }

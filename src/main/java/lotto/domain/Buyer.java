@@ -25,10 +25,10 @@ public class Buyer {
     }
 
     public long getMoney() {
-        return this.money.getMoney();
+        return money.getMoney();
     }
 
     public long getLottoCount() {
-        return this.money.getLottoCount();
+        return money.getLottoCount();
     }
 }

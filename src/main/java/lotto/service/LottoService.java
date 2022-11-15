@@ -12,16 +12,16 @@ import java.util.stream.LongStream;
 
 public class LottoService {
 
-    public NumberGenerator numberGenerator;
+    private final NumberGenerator numberGenerator;
     private WinningTicket winningTicket;
     
     public LottoService() {
-        this.numberGenerator = new NumberGenerator();
+        numberGenerator = new NumberGenerator();
     }
 
     public Lottos publishLotto(long lottoCount) {
         List<Lotto> result = LongStream.range(0, lottoCount)
-                .mapToObj(i -> new Lotto(this.numberGenerator.createDuplicateNumbers()))
+                .mapToObj(i -> new Lotto(numberGenerator.createDuplicateNumbers()))
                 .collect(Collectors.toList());
 
         return new Lottos(result);
@@ -34,7 +34,7 @@ public class LottoService {
     }
 
     public void publishWinningNumbersWithBonusNumber(View view) throws IllegalArgumentException {
-        this.winningTicket = new WinningTicket(inputWinningNumbers(view), inputBonusNumber(view));
+        winningTicket = new WinningTicket(inputWinningNumbers(view), inputBonusNumber(view));
     }
 
     public List<Integer> inputWinningNumbers(View view) throws IllegalArgumentException {
@@ -59,7 +59,7 @@ public class LottoService {
 
     public void getWinningStatics(Buyer buyer, Rank rank) {
         buyer.getLottos().forEach((lotto) ->
-                rank.setCount(lotto.countWinningNumbers(this.winningTicket.getWinnings()),
-                        lotto.isExistWinningNumber(this.winningTicket.getBonusNumber())));
+                rank.setCount(lotto.countWinningNumbers(winningTicket.getWinnings()),
+                        lotto.isExistWinningNumber(winningTicket.getBonusNumber())));
     }
 }

@@ -57,10 +57,10 @@ public class WinningTicket {
     }
 
     public List<Integer> getWinnings() {
-        return this.winnings;
+        return winnings;
     }
 
     public int getBonusNumber() {
-        return this.bonusNumber;
+        return bonusNumber;
     }
 }
