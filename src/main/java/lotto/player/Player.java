@@ -11,7 +11,7 @@ public class Player {
 			CoinErrorCheck.CEC(coin);
 			int chance = Chance.run(coin);
 			List<List<Integer>> playerPick = PlayerChoose.run(chance);
-			Confirm.start(playerPick);
+			Confirm.start(playerPick, coin);
 		} catch (IllegalArgumentException e) {
 			e.printStackTrace();
 		}
