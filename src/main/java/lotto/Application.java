@@ -6,18 +6,22 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.*;
 
 public class Application {
-    public static void main(String[] args){
-        // TODO: 프로그램 구현
-        int money = inputMoney();
+    public static void main(String[] args) {
+        try {
+            // TODO: 프로그램 구현
+            int money = inputMoney();
 
-        List<List<Integer>> boughtLottos = buyLottos(money);
-        printLottos(boughtLottos);
+            List<List<Integer>> boughtLottos = buyLottos(money);
+            printLottos(boughtLottos);
 
-        List<Integer> targetNumbers = inputTargetNumbers();
-        Lotto targetLotto = new Lotto(targetNumbers); // 당첨번호 자동 검증
-        int bonusNumber = inputBonusNumber(targetNumbers);
+            List<Integer> targetNumbers = inputTargetNumbers();
+            Lotto targetLotto = new Lotto(targetNumbers); // 당첨번호 자동 검증
+            int bonusNumber = inputBonusNumber(targetNumbers);
 
-        printResult(boughtLottos, targetLotto, bonusNumber, money);
+            printResult(boughtLottos, targetLotto, bonusNumber, money);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     private static void printResult(List<List<Integer>> boughtLottos, Lotto targetLotto,
@@ -73,8 +77,7 @@ public class Application {
 
         int bonusNumber = Integer.parseInt(Console.readLine());
         if (targetNumbers.contains(bonusNumber)) {
-            System.out.println("[ERROR] 보너스 번호는 당첨 번호와 중복되면 안됩니다.");
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR] 보너스 번호는 당첨 번호와 중복되면 안됩니다.");
         }
         return bonusNumber;
     }
@@ -86,12 +89,10 @@ public class Application {
         try {
             money = Integer.parseInt(Console.readLine());
         } catch (NumberFormatException e) {
-            System.out.println("[ERROR] 구입금액은 숫자만 입력해야 합니다.");
             throw new IllegalArgumentException("[ERROR] 구입금액은 숫자만 입력해야 합니다.");
         }
         if (money % 1000 != 0) {
-            System.out.println("[ERROR] 구입 금액은 1,000원 단위로 입력해야 합니다.");
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR] 구입 금액은 1,000원 단위로 입력해야 합니다.");
         }
         return money;
     }
@@ -105,8 +106,6 @@ public class Application {
             numbers.add(Integer.parseInt(s));
         }
 
-
         return numbers;
-
     }
 }
