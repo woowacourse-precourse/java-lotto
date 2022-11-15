@@ -7,8 +7,8 @@ import lotto.view.OutputView;
 import java.util.ArrayList;
 import java.util.List;
 
-import static lotto.constant.ExceptionConstants.*;
-import static lotto.constant.GameConstants.*;
+import static lotto.constant.ExceptionConstants.PURCHASE_AMOUNT_INDIVISIBILITY_EXCEPTION;
+import static lotto.constant.GameConstants.LOTTO_PRICE;
 
 public class Player {
     private int purchaseAmount;
