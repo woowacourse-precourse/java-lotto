@@ -40,25 +40,7 @@ public class WinningNumber {
         boolean bonus = lotto.getNumbers().stream()
                 .anyMatch(n -> n == bonusNumber);
 
-        return getWinning(correctNumber, bonus);
-    }
-
-    private Optional<Winning> getWinning(int correctNumber, boolean bonus) {
-        switch (correctNumber) {
-            case 3:
-                return Optional.of(Winning.THREE);
-            case 4:
-                return Optional.of(Winning.FOUR);
-            case 5:
-                if (bonus) {
-                    return Optional.of(Winning.FIVE_BONUS);
-                }
-                return Optional.of(Winning.FIVE);
-            case 6:
-                return Optional.of(Winning.SIX);
-            default:
-                return Optional.empty();
-        }
+        return Winning.findByCountAndBonus(correctNumber, bonus);
     }
 
     public static WinningNumber of(String userInputNumber, String userInputBonusNumber) {
