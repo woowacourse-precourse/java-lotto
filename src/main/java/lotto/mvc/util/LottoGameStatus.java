@@ -1,22 +1,16 @@
 package lotto.mvc.util;
 
 public enum LottoGameStatus {
-    GUIDE_PURCHASE_AMOUNT(ProcessType.INPUT),
-    PROCESS_PURCHASE_LOTTO(ProcessType.LOGIC),
-    GUIDE_WINNING_NUMBERS(ProcessType.INPUT),
-    PROCESS_WINNING_LOTTO(ProcessType.LOGIC),
-    GUIDE_BONUS_NUMBER(ProcessType.INPUT),
-    PROCESS_LOTTO_RANKING(ProcessType.LOGIC),
+    PURCHASE_AMOUNT(ProcessType.RUN),
+    WINNING_NUMBERS(ProcessType.RUN),
+    BONUS_NUMBER(ProcessType.RUN),
     APPLICATION_EXIT(ProcessType.EXIT),
     APPLICATION_EXCEPTION(ProcessType.EXIT);
 
     static {
-        GUIDE_PURCHASE_AMOUNT.nextGameStatus = PROCESS_PURCHASE_LOTTO;
-        PROCESS_PURCHASE_LOTTO.nextGameStatus = GUIDE_WINNING_NUMBERS;
-        GUIDE_WINNING_NUMBERS.nextGameStatus = PROCESS_WINNING_LOTTO;
-        PROCESS_WINNING_LOTTO.nextGameStatus = GUIDE_BONUS_NUMBER;
-        GUIDE_BONUS_NUMBER.nextGameStatus = PROCESS_LOTTO_RANKING;
-        PROCESS_LOTTO_RANKING.nextGameStatus = APPLICATION_EXIT;
+        PURCHASE_AMOUNT.nextGameStatus = WINNING_NUMBERS;
+        WINNING_NUMBERS.nextGameStatus = BONUS_NUMBER;
+        BONUS_NUMBER.nextGameStatus = APPLICATION_EXIT;
         APPLICATION_EXIT.nextGameStatus = APPLICATION_EXIT;
         APPLICATION_EXCEPTION.nextGameStatus = APPLICATION_EXCEPTION;
     }
@@ -30,14 +24,6 @@ public enum LottoGameStatus {
 
     public LottoGameStatus findNextGameStatus() {
         return nextGameStatus;
-    }
-
-    public boolean isInput() {
-        return processType == ProcessType.INPUT;
-    }
-
-    public boolean isLogic() {
-        return processType == ProcessType.LOGIC;
     }
 
     public boolean isExit() {
