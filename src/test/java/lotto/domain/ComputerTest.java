@@ -2,11 +2,11 @@ package lotto.domain;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
 import lotto.Application;
+import lotto.constant.ExceptionConstants;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
-import static lotto.constant.ExceptionConstants.*;
 import static lotto.constant.GameConstants.WINNING_NUMBERS_LENGTH;
 import static org.assertj.core.api.Assertions.*;
 
@@ -17,7 +17,7 @@ public class ComputerTest extends NsTest {
     void ThrowExceptionIfWinningNumbersAreNotNaturalNumber() {
         assertSimpleTest(() -> {
             runException("1000", "1,2,3,4,5,a");
-            assertThat(output()).contains(NOT_NATURAL_NUMBER.toString());
+            assertThat(output()).contains(ExceptionConstants.NOT_NATURAL_NUMBER.toString());
         });
     }
 
@@ -26,7 +26,7 @@ public class ComputerTest extends NsTest {
     void ThrowExceptionIfWinningNumbersWithLeadingZero() {
         assertSimpleTest(() -> {
             runException("1000", "1,2,3,4,5,06");
-            assertThat(output()).contains(LEADING_ZERO.toString());
+            assertThat(output()).contains(ExceptionConstants.LEADING_ZERO.toString());
         });
     }
 
@@ -35,7 +35,8 @@ public class ComputerTest extends NsTest {
     void ThrowExceptionIfFiveWinningNumbers() {
         assertSimpleTest(() -> {
             runException("1000", "1,2,3,4,5");
-            assertThat(output()).contains(String.format(WRONG_LENGTH.toString(), WINNING_NUMBERS_LENGTH));
+            assertThat(output())
+                    .contains(String.format(ExceptionConstants.WRONG_LENGTH.toString(), WINNING_NUMBERS_LENGTH));
         });
     }
 
@@ -44,7 +45,8 @@ public class ComputerTest extends NsTest {
     void ThrowExceptionIfSevenWinningNumbers() {
         assertSimpleTest(() -> {
             runException("1000", "1,2,3,4,5,6,7");
-            assertThat(output()).contains(String.format(WRONG_LENGTH.toString(), WINNING_NUMBERS_LENGTH));
+            assertThat(output())
+                    .contains(String.format(ExceptionConstants.WRONG_LENGTH.toString(), WINNING_NUMBERS_LENGTH));
         });
     }
 
@@ -53,7 +55,7 @@ public class ComputerTest extends NsTest {
     void ThrowExceptionIfWinningNumbersAreOverMax() {
         assertSimpleTest(() -> {
             runException("1000", "41,42,43,44,45,46");
-            assertThat(output()).contains(WRONG_RANGE.toString());
+            assertThat(output()).contains(ExceptionConstants.WRONG_RANGE.toString());
         });
     }
 
@@ -62,7 +64,7 @@ public class ComputerTest extends NsTest {
     void ThrowExceptionIfWinningNumbersAreDuplicated() {
         assertSimpleTest(() -> {
             runException("1000", "1,2,3,4,5,5");
-            assertThat(output()).contains(DUPLICATION.toString());
+            assertThat(output()).contains(ExceptionConstants.DUPLICATION.toString());
         });
     }
 
@@ -71,7 +73,7 @@ public class ComputerTest extends NsTest {
     void ThrowExceptionIfBonusNumberIsNotNaturalNumber() {
         assertSimpleTest(() -> {
             runException("1000", "1,2,3,4,5,6", "a");
-            assertThat(output()).contains(NOT_NATURAL_NUMBER.toString());
+            assertThat(output()).contains(ExceptionConstants.NOT_NATURAL_NUMBER.toString());
         });
     }
 
@@ -80,7 +82,7 @@ public class ComputerTest extends NsTest {
     void ThrowExceptionIfBonusNumberWithLeadingZero() {
         assertSimpleTest(() -> {
             runException("1000", "1,2,3,4,5,6", "07");
-            assertThat(output()).contains(LEADING_ZERO.toString());
+            assertThat(output()).contains(ExceptionConstants.LEADING_ZERO.toString());
         });
     }
 
@@ -89,7 +91,7 @@ public class ComputerTest extends NsTest {
     void ThrowExceptionIfBonusNumberIsOverMax() {
         assertSimpleTest(() -> {
             runException("1000", "1,2,3,4,5,6", "46");
-            assertThat(output()).contains(WRONG_RANGE.toString());
+            assertThat(output()).contains(ExceptionConstants.WRONG_RANGE.toString());
         });
     }
 
@@ -98,7 +100,7 @@ public class ComputerTest extends NsTest {
     void ThrowExceptionIfBonusNumberIsDuplicated() {
         assertSimpleTest(() -> {
             runException("1000", "1,2,3,4,5,6", "3");
-            assertThat(output()).contains(DUPLICATION.toString());
+            assertThat(output()).contains(ExceptionConstants.DUPLICATION.toString());
         });
     }
 
