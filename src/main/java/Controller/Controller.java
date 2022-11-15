@@ -21,8 +21,9 @@ public class Controller {
         String readWinningNumber = InputView.readInputLine();
         Winning winning = new Winning(readWinningNumber);
 
-
-        Bonus bonus = new Bonus(winning);
+        InputView.printInputBonusNumberMessage();
+        String readBonusNumber = InputView.readInputLine();
+        Bonus bonus = new Bonus(readBonusNumber, winning);
 
         calculateLottoResult(lottoList, winning, bonus);
 
