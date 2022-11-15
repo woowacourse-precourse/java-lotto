@@ -3,14 +3,17 @@ package lotto.vo;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
+import lotto.vaildator.WinNumberValidator;
 
-public class LottoWinNumberInfo {
+public class LottoWinNumberInfo extends WinNumberValidator {
 
     private List<Integer> lottoWinNumbers;
     private int bonusNumber;
 
     public LottoWinNumberInfo(String inputWinNumbers) {
-        this.lottoWinNumbers = lottoNumberToList(inputWinNumbers);
+        List<Integer> winNumbers = lottoNumberToList(inputWinNumbers);
+        validateNumbers(winNumbers);
+        this.lottoWinNumbers = winNumbers;
     }
 
     public LottoWinNumberInfo(int bonusNumber) {
@@ -33,4 +36,6 @@ public class LottoWinNumberInfo {
     public int getBonusNumber() {
         return bonusNumber;
     }
+
+
 }

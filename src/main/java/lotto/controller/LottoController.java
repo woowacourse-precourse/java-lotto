@@ -7,7 +7,7 @@ import lotto.service.LottoService;
 import lotto.ui.InputView;
 import lotto.ui.OutputView;
 import lotto.vo.LottoPurchaseInfo;
-import lotto.vo.LottoScore;
+// import lotto.vo.LottoScore;
 import lotto.vo.LottoWinNumberInfo;
 
 public class LottoController {
@@ -31,16 +31,15 @@ public class LottoController {
         List<Lotto> lottoNumbers = createLottoNumbers(lottoPurchaseInfo.getLottoGameCount());
 
         // 5. 당첨번호와 생성한 번호를 비교하여 등수를 체크한다.
-        LottoScore lottoScore = getLottoRank(lottoNumbers, lottoWinNumberInfo);
+        List<String> lottoScore = getLottoRank(lottoNumbers, lottoWinNumberInfo);
 
         // 6. 총 수익률을 출력한다.
 
 
     }
 
-    private LottoScore getLottoRank(final List<Lotto> lottoNumbers, final LottoWinNumberInfo lottoWinNumberInfo) {
-        service.getLottoRank(lottoNumbers, lottoWinNumberInfo);
-        return null;
+    private List<String> getLottoRank(List<Lotto> lottoNumbers, LottoWinNumberInfo lottoWinNumberInfo) {
+        return service.getLottoRank(lottoNumbers, lottoWinNumberInfo);
     }
 
 

@@ -7,7 +7,6 @@ import lotto.ui.InputView;
 import lotto.ui.OutputView;
 import lotto.vo.Lotto;
 import lotto.vo.LottoPurchaseInfo;
-import lotto.vo.LottoScore;
 import lotto.vo.LottoWinNumberInfo;
 
 public class LottoServiceImpl implements LottoService {
@@ -47,8 +46,9 @@ public class LottoServiceImpl implements LottoService {
     }
 
     @Override
-    public LottoScore getLottoRank(List<Lotto> lottoNumbers,
+    public List<String> getLottoRank(List<Lotto> lottoNumbers,
         LottoWinNumberInfo lottoWinNumberInfo) {
+
         return null;
     }
 
