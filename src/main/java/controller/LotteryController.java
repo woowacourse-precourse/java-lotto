@@ -41,5 +41,9 @@ public class LotteryController {
 
     }
 
+    private List<Lotto> makeLottos(int count) {
+        return LottoFactory.createAutoLottos(count);
+    }
+
 
 }
