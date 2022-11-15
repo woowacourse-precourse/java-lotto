@@ -1,9 +1,6 @@
 package lotto;
 
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class Lotto {
     private static final int LOTTO_NUMBER_AMOUNT = 6;
@@ -29,7 +26,6 @@ public class Lotto {
     }
 
     public List<Integer> getNumbers(){
-        Collections.sort(numbers);
-        return Collections.unmodifiableList(numbers);
+        return new ArrayList<>(numbers);
     }
 }

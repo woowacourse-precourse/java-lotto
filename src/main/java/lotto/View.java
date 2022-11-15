@@ -2,10 +2,7 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 import static lotto.Rank.*;
 
@@ -16,8 +13,12 @@ public class View {
 
     public int enterMoneyFromCustomer() {
         System.out.println("구입금액을 입력해 주세요.");
-
-        int money = Integer.parseInt(Console.readLine());
+        int money;
+        try {
+            money = Integer.parseInt(Console.readLine());
+        }catch(NumberFormatException e){
+            throw new IllegalArgumentException("[ERROR] 잘못된 형식의 구입금액입니다.");
+        }
         validateMoney(money);
 
         System.out.println();
@@ -38,6 +39,7 @@ public class View {
 
         for (Lotto lotto : lottos) {
             List<Integer> numbers = lotto.getNumbers();
+            Collections.sort(numbers);
             System.out.println(numbers);
         }
 
@@ -105,8 +107,8 @@ public class View {
         System.out.printf("%d개 일치 (%,d원) - %d개\n", FIFTH.getCntOfSameNumber(), FIFTH.getPrizeMoney(), lottoResult.getRankResult().get(FIFTH));
         System.out.printf("%d개 일치 (%,d원) - %d개\n", FORTH.getCntOfSameNumber(), FORTH.getPrizeMoney(), lottoResult.getRankResult().get(FORTH));
         System.out.printf("%d개 일치 (%,d원) - %d개\n", THIRD.getCntOfSameNumber(), THIRD.getPrizeMoney(), lottoResult.getRankResult().get(THIRD));
-        System.out.printf("%d개 일치 (%,d원) - %d개\n", SECOND.getCntOfSameNumber(), SECOND.getPrizeMoney(), lottoResult.getRankResult().get(SECOND));
+        System.out.printf("%d개 일치, 보너스 볼 일치 (%,d원) - %d개\n", SECOND.getCntOfSameNumber(), SECOND.getPrizeMoney(), lottoResult.getRankResult().get(SECOND));
         System.out.printf("%d개 일치 (%,d원) - %d개\n", FIRST.getCntOfSameNumber(), FIRST.getPrizeMoney(), lottoResult.getRankResult().get(FIRST));
-        System.out.printf("총 수익률은 %.2f%%입니다.", lottoResult.getRateOfReturn());
+        System.out.printf("총 수익률은 %.1f%%입니다.", lottoResult.getRateOfReturn());
     }
 }
