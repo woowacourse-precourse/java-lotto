@@ -1,12 +1,10 @@
 package lotto;
 
-import lotto.domain.Lottery;
-import lotto.domain.Lotto;
-import lotto.domain.PurchaseMoney;
-import lotto.domain.WinningLotto;
+import lotto.domain.*;
 import lotto.view.InputView;
 import lotto.view.OutputView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Application {
@@ -29,5 +27,16 @@ public class Application {
 
         WinningLotto winningLotto = new WinningLotto(new Lotto(winningLottoNumber), bonusNumber);
         OutputView.printResultMessage(lottery, winningLotto);
+
+
+
+        List<Rank> ranks = new ArrayList<>();
+        lottery.getLottery()
+                .forEach(lotto -> ranks.add(winningLotto.getRank(lotto)));
+
+        Result result = new Result(ranks);
+
+        double yield = result.getYield(purchaseMoney.getPurchaseMoney());
+        OutputView.printYieldMessage(yield);
     }
 }

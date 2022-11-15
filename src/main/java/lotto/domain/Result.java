@@ -29,4 +29,13 @@ public class Result {
     public Map<Rank, Integer> getResult() {
         return result;
     }
+
+    public double getYield(int purchaseMoney) {
+        double totalWinningMoney = result.entrySet()
+                .stream()
+                .mapToDouble(rank -> Integer.parseInt(rank.getKey().getWinningPrice().replaceAll(",", "")) * rank.getValue())
+                .sum();
+
+        return totalWinningMoney / purchaseMoney * 100;
+    }
 }
