@@ -29,14 +29,10 @@ public enum Rank {
                 .findFirst()
                 .orElse(NONE);
     }
-
     public int getPrizeMoney() {
         return prizeMoney;
     }
     public int getRank() {
         return rank;
-    }
-    public int getEqualNumber() {
-        return equalNumber;
     }
 }
