@@ -14,7 +14,7 @@ public class Application {
             resultArray = consumer.calcProfit(resultArray);
             LottoConsoleIo.printResultStatistics(resultArray);
         } catch (IllegalArgumentException e) {
-            System.out.println("[Error] " + e.getMessage());
+            System.out.println("[ERROR] " + e.getMessage());
         }
     }
 }
