@@ -48,6 +48,17 @@ public class InputTest extends NsTest {
                 .hasMessageContaining("[ERROR] 당첨번호의 범위를 초과했습니다.");
     }
 
+    @DisplayName("보너스 번호가 숫자가 아닌 다른 값이나 허용 숫자 범위를 초과하는 경우 예외 발생")
+    @Test
+    void 보너스_번호가_유효하지_않을_경우_예외_발생() {
+        assertThatThrownBy(() -> InputView.isValidBonusNumber("one"))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("[ERROR] 숫자가 아닌 다른 값을 입력하였습니다.");
+
+        assertThatThrownBy(() -> InputView.isValidBonusNumber("100"))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("[ERROR] 보너스번호의 범위를 초과했습니다.");
+    }
 
     @Override
     public void runMain() {
