@@ -9,6 +9,7 @@ import camp.nextstep.edu.missionutils.Console;
 public class Application {
     static int money;
     static int lottoNum;
+    static List<Lotto> lottoList;
     static int castInt(String str){
         int num = 0;
         try {
@@ -22,6 +23,18 @@ public class Application {
     static int payMoney(){
         int inputMoney = castInt(Console.readLine());
         return inputMoney;
+    }
+    static List<Integer> createLotto(){
+        List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+        return numbers;
+    }
+
+    static List<Lotto> createLottoList(int lottoNum){
+        List<Lotto> lottoList = new ArrayList<>(8);
+        for (int lottoIndex = 0; lottoIndex < lottoNum; lottoIndex++) {
+            lottoList.add(new Lotto(createLotto()));
+        }
+        return lottoList;
     }
 
     public static void main(String[] args) {
