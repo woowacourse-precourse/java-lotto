@@ -6,7 +6,8 @@ public enum LottoValidationError {
     DUPLICATE(new IllegalArgumentException("[ERROR] 로또 번호에 중복된 숫자가 있으면 안됩니다."));
 
     public IllegalArgumentException exception;
-    LottoValidationError(IllegalArgumentException e){
+
+    LottoValidationError(IllegalArgumentException e) {
         this.exception = e;
     }
 }
