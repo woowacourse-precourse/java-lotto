@@ -30,12 +30,13 @@ public class WinningTicket {
         return adjusted;
     }
 
-    private void inputBonusNumber() {
-        String userInput = "";
+    List<Integer> adjustUserInput(String userInput) {
+        String[] splitInput = userInput.split(",");
+        List<Integer> lottoNumbers;
 
-        System.out.println("보너스 번호를 입력해 주세요.");
-        userInput = Console.readLine();
-        validateBonusNumber(userInput);
-        this.bonusNumber = Integer.parseInt(userInput);
+        validateIsNum(splitInput);
+        lottoNumbers = intoNumbers(splitInput);
+
+        return lottoNumbers;
     }
 }
