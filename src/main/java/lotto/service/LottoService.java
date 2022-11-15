@@ -5,6 +5,7 @@ import lotto.domain.Lotto;
 import lotto.domain.LottoRank;
 import lotto.domain.User;
 import lotto.domain.WinningLotto;
+import lotto.dto.ProfitDto;
 
 public class LottoService {
 
@@ -20,7 +21,7 @@ public class LottoService {
         }
     }
 
-    public double calculateProfit(User user) {
+    public ProfitDto calculateProfit(User user) {
         List<LottoRank> lottoRanks = user.getLottoRanks();
 
         long sumOfPrizeMoney = lottoRanks.stream()
@@ -28,8 +29,7 @@ public class LottoService {
                 .sum();
         int purchaseAmount = user.getPurchaseCount() * Lotto.LOTTO_UNIT;
         double profit = (double) sumOfPrizeMoney / purchaseAmount * PERCENT;
-
-        return Math.round(profit * DEFAULT_RATIO) / DEFAULT_RATIO;
+        return ProfitDto.of(profit);
     }
 
     private LottoRank calculateLottoRank(Lotto purchasedLotto, WinningLotto winningLotto) {

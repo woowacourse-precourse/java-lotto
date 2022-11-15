@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
 import lotto.domain.User;
 import lotto.domain.WinningLotto;
+import lotto.dto.ProfitDto;
 import lotto.dto.PurchaseAmountDto;
 import lotto.service.LottoService;
 import lotto.utils.Converter;
@@ -21,13 +22,13 @@ public class LottoController {
 
     public void run() {
         PurchaseAmountDto purchaseAmountDto = getPurchaseAmountDto();
-        User user = new User(purchaseAmountDto);
+        User user = User.of(purchaseAmountDto);
         showPurchaseHistory(user);
         WinningLotto winningLotto = getWinningLotto();
 
         lottoService.calculateLottoRanks(user, winningLotto);
-        double profit = lottoService.calculateProfit(user);
-        OutputView.printResultInformation(user.getLottoRanks(), profit);
+        ProfitDto profitDto = lottoService.calculateProfit(user);
+        showLottoResult(user, profitDto);
     }
 
     private PurchaseAmountDto getPurchaseAmountDto() {
@@ -55,5 +56,9 @@ public class LottoController {
 
     private void showPurchaseHistory(User user) {
         OutputView.printLottoInformation(user.getLottos());
+    }
+
+    private void showLottoResult(User user, ProfitDto profitDto) {
+        OutputView.printResultInformation(user.getLottoRanks(), profitDto.getProfit());
     }
 }
