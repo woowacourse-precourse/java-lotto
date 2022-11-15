@@ -36,4 +36,10 @@ public class LotteryController {
         end(result, lottoMoney);
     }
 
+    private LottoMoney makeLottoMoney() {
+        return LottoMoney.from(Input.inputMoney());
+
+    }
+
+
 }
