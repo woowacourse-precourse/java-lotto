@@ -1,0 +1,12 @@
+## 기능 목록
+- [x] 사용자로부터 로또 구입 금액을 입력 받는다. _**- inputPrice()**_
+  - [x] 숫자가 아닐 경우 `IllegalArgumentException` 및 `[ERROR]`로 시작하는 에러 메세지 출력 _**- isNumeric()**_
+  - [x] 1000원 단위가 아닐 경우 `IllegalArgumentException` 및 `[ERROR]`로 시작하는 에러 메세지 출력 _**- isThousands()**_
+- [x] 사용자로부터 당첨 번호 6개와 보너스 번호 1개를 입력받는다. _**- inputLottoNumbers()**_
+  - [x] 숫자 중복은 불가능하다.
+  - [x] 숫자 범위가 1 ~ 45가 아닐 경우 `IllegalArgumentException` 및 `[ERROR]`로 시작하는 에러 메세지 출력
+- [x] 구입 금액만큼 로또를 발행 _**- publishLotto()**_
+- [x] 로또 번호 오름차순으로 정렬 _**- sortLotto()**_
+- [x] 사용자의 로또 번호와 당첨 번호를 비교
+- [x] 당첨 내역 출력
+- [x] 수익률 출력
