@@ -50,4 +50,7 @@ public class Lotto {
         return numbers.contains(number);
     }
 
+    public List<Integer> getNumbers() {
+        return numbers;
+    }
 }
