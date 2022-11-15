@@ -17,7 +17,7 @@ public class Domain {
     private static int lottoAmount;
     private static int ticketNumbers;
 
-    private static final List<Lotto> LottoList = new ArrayList<>();
+    private static final List<Lotto> lottoList = new ArrayList<>();
 
     // TODO: 로또 금액 문장 출력 후 로또 금액을 입력 받는다.
     private static int inputLottoAmount(){
@@ -35,9 +35,15 @@ public class Domain {
         ticketNumbers = lottoAmount / TICKET_PRICE;
     }
 
+    // TODO: lottoList를 초기화 한다.
+    private static void initializationLottoList(){
+        for(int i=0; i<ticketNumbers; i++)
+            createLottoTicket();
+    }
+
     // TODO: 로또 객체 생성 후 로또 번호를 랜덤으로 생성
     private static void createLottoTicket(){
-        LottoList.add(new Lotto(Randoms.pickUniqueNumbersInRange(
+        lottoList.add(new Lotto(Randoms.pickUniqueNumbersInRange(
                 MIN_VALUE_OF_LOTTO_NUMBER, MAX_VALUE_OF_LOTTO_NUMBER, LOTTO_COUNT)));
     }
 }
