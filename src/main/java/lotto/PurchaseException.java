@@ -2,8 +2,8 @@ package lotto;
 
 public class PurchaseException {
 
-    private static int MIN_NUMBER = 0;
-    private static int MAX_NUMBER = 9;
+    private static int MIN_RANGE_MONEY = 0;
+    private static int MAX_RANGE_MONEY = 9;
     private static int MIN_AMOUNT = 1000;
 
     public static void validatePurchaseAmount(String amount) {
@@ -18,7 +18,7 @@ public class PurchaseException {
 
     private static boolean isNumberOnly(String amount) {
         for (char money : amount.toCharArray()) {
-            if (!(MIN_NUMBER <= money - '0' && money - '0' <= MAX_NUMBER)) {
+            if (!(MIN_RANGE_MONEY <= money - '0' && money - '0' <= MAX_RANGE_MONEY)) {
                 return true;
             }
         }

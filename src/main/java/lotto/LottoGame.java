@@ -1,20 +1,21 @@
 package lotto;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import camp.nextstep.edu.missionutils.Console;
 
 public class LottoGame {
     private static String amount;
-    private static String[] str;
+    private static String[] basket;
     private static List<Integer> winNumber;
     private static int bonusBall;
     private static List<List<Integer>> randomLottoNumbers;
 
     public LottoGame() {
         amount = "";
-        str = new String[6];
+        basket = new String[6];
         winNumber = new ArrayList<>();
         bonusBall = 0;
         randomLottoNumbers = new ArrayList<>();
@@ -67,10 +68,9 @@ public class LottoGame {
     // 승리 숫자가 입력하는 메서드,
     private void createWinNumber() {
         Message.printWinNumber();
-        str = Console.readLine().split(",");
-        winNumber = new ArrayList<>();
-        for (int i = 0; i < str.length; i++) {
-            winNumber.add(Integer.parseInt(str[i]));
+        basket = Console.readLine().split(",");
+        for (int i = 0; i < basket.length; i++) {
+            winNumber.add(Integer.parseInt(basket[i]));
         }
         Lotto lotto = new Lotto(winNumber); // Exception 체큰
     }

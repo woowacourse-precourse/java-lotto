@@ -6,7 +6,7 @@ public class LottoNumberCheck {
     private static Map<String, Integer> correctNumber; // 당첨 번호를 저장할 Map
     private static Map<List<Integer>, Integer> checkLotto;
     private static List<Integer> countPrizeNumber; // 당첨 번호 갯수 (3개이상 맞춘 것만) 저장하는 List
-    private static Map<String, Integer> mapTest;  // 3개이상 맞춘 것들만 모아서 몇 장인지 저장하는 Map
+    private static Map<String, Integer> winningLotto;  // 3개이상 맞춘 것들만 모아서 몇 장인지 저장하는 Map
 
     private static List<Integer> myPrizeMoney; // 당첨금을 다 합친다.
     private int myMoney = 0;
@@ -15,7 +15,7 @@ public class LottoNumberCheck {
         correctNumber = new LinkedHashMap<>();
         checkLotto = new LinkedHashMap<>();
         countPrizeNumber = new ArrayList<>();
-        mapTest = new LinkedHashMap<>();
+        winningLotto = new LinkedHashMap<>();
         myPrizeMoney = new ArrayList<>();
     }
     private void initPrize(Map<String, Integer> mapTest) {
@@ -26,7 +26,7 @@ public class LottoNumberCheck {
 
 
     public void compareWinNumberWithMyLotto(List<List<Integer>> lottoNumbers, List<Integer> winNumber, int bonusBall) {
-        initPrize(mapTest);
+        initPrize(winningLotto);
 
         myMoney = lottoNumbers.size(); // 내가 입력한 금액 ( 8000 )
         System.out.println(myMoney);
@@ -81,13 +81,13 @@ public class LottoNumberCheck {
                 countPrizeMoneyOfMyLotto(integer, value);
             } // 3개 이상 맞춘 것만 정렬해서 출력후 몇 장인지 구하는 과정
         }
-        combinePrizeMoney(mapTest);
+        combinePrizeMoney(winningLotto);
 
         Message.printLottoResult();
         Message.printLine();
-        for (String s : mapTest.keySet()) {
+        for (String s : winningLotto.keySet()) {
             System.out.print(s);
-            System.out.print(" - " + mapTest.get(s) + "개");
+            System.out.print(" - " + winningLotto.get(s) + "개");
             System.out.println();
         }
     }
@@ -100,9 +100,9 @@ public class LottoNumberCheck {
 
     private void countPrizeMoneyOfMyLotto(int integer, Prize value) {
         if (integer == 7 && value.getPrize().substring(1, 6).equals("개 일치,")) {
-            mapTest.put(value.getPrize(), mapTest.getOrDefault(value.getPrize(), 0) + 1);
+            winningLotto.put(value.getPrize(), winningLotto.getOrDefault(value.getPrize(), 0) + 1);
         } else if (integer != 7 && value.getPrize().substring(0, 5).equals(integer + "개 일치")){
-            mapTest.put(value.getPrize(), mapTest.getOrDefault(value.getPrize(), 0) + 1);
+            winningLotto.put(value.getPrize(), winningLotto.getOrDefault(value.getPrize(), 0) + 1);
         }
     }
 
