@@ -4,6 +4,16 @@ import java.util.List;
 
 public class Validation {
 
+    public boolean isValidMoney(String input) {
+        try {
+            validateMoneyInput(input);
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+            return false;
+        }
+        return true;
+    }
+
     public void validateMoneyInput(String input) {
         validateStringIsNumeric(input);
         validateDivideThousand(Integer.parseInt(input));
