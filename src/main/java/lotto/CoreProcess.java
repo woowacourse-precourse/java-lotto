@@ -5,6 +5,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
+import java.util.*;
 
 public class CoreProcess {
 
@@ -15,6 +16,15 @@ public class CoreProcess {
         List<Integer> LottoNumber = Randoms.pickUniqueNumbersInRange(1, 45, 6);
         Collections.sort(LottoNumber);
         return LottoNumber;
+    }
+
+    public List<List<Integer>> lottoPack(int moneyChance){
+        List<List<Integer>> lottoPack = new ArrayList<>();
+        for (int i = 0; i < moneyChance; i++) {
+            List<Integer> setLottoNumber = setLottoNumber();
+            lottoPack.add(setLottoNumber);
+        }
+        return lottoPack;
     }
 
     public int compareNumber(List<Integer> Lotto, List<Integer> pickedNumber) {
@@ -35,43 +45,22 @@ public class CoreProcess {
         return check;
     }
 
-    public winPrize checkSecond(boolean bonus) {
-        if (bonus) {
+    public winPrize setResult(int compareNumber, boolean checkBonus) {
+        if (compareNumber == winPrize.SECOND.count && checkBonus) {
             return winPrize.SECOND;
         }
-        return null;
+        if (compareNumber < winPrize.FIFTH.count) {
+            return winPrize.MISS;
+        }
+        return Arrays.stream(winPrize.values()).filter(winPrize -> winPrize.count == compareNumber)
+                .findAny().orElseThrow();
     }
 
+    public int earningRatio(int moneyChance, int earning) {
+        return (earning * 100 / (moneyChance * 1000));
 
-    public winPrize setResult(int compareNumber, boolean bonus) {
-        if (compareNumber == winPrize.SECOND.count) {
-            return checkSecond(bonus);
-        }
-        for (winPrize value : winPrize.values()) {
-            if (value.count == compareNumber) {
-                return value;
-            }
-        }
-        return null;
-    }
-
-    public int earningRatio(int money, int earning) {
-        int earningRatio = (earning / money) * 100;
-
-        return earningRatio;
-
-    }
-
-    public int earningLotto(int moneyChance, List<Integer> pickedNumber, int bonus) {
-        int earning = 0;
-        for (int i = 0; i < moneyChance; i++) {
-            int count = compareNumber(setLottoNumber(), pickedNumber);
-
-            earning = earning + setResult(count, checkBonus(setLottoNumber(), bonus)).prize;
-
-        }
-        return earning;
     }
 
 }
+
 
