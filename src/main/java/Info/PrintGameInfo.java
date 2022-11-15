@@ -18,10 +18,16 @@ public class PrintGameInfo {
     public static final String PURCHASE_COUNT = "개를 구매했습니다.";
 
     public static final String OVER_LOTTO_COUNT = "선택가능한 로또 숫자 갯수를 넘겼습니다.";
-    public static final String OUT_OF_RANGE = "선택할 수 없는 숫자를 선택하였습니다.";
+    public static final String OUT_OF_RANGE = "로또 숫자의 범위 밖의 숫자를 선택하였습니다.";
 
     public static void purchaseAmountInfo() {
         System.out.println("구입금액을 입력해 주세요.");
+    }
+    public static void winningNumberInfo() {
+        System.out.println("당첨 번호를 입력해 주세요.");
+    }
+    public static void bonnusNumberInfo() {
+        System.out.println("보너스 번호를 입력해 주세요.");
     }
 
     public static void purchaseCount(BigInteger count) {

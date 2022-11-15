@@ -1,5 +1,6 @@
 package lotto;
 
+import Info.InputException;
 import Info.PrintGameInfo;
 import camp.nextstep.edu.missionutils.Console;
 
@@ -13,51 +14,35 @@ public class Application {
         PrintGameInfo.purchaseAmountInfo();
 
         try {
-            String amount = Console.readLine();
-            amountEmptyException(amount);
-            outOfDigitException(amount);
+            String amount = inputAmount();
             LottoList userLotto = new LottoList(new BigInteger(amount));
-
 
             PrintGameInfo.purchaseCount(userLotto.getLottoCount());
             PrintGameInfo.lottoInfoList(userLotto);
+
+            PrintGameInfo.winningNumberInfo();
+            String winningNumber = Console.readLine();
+            PrintGameInfo.bonnusNumberInfo();
 
         } catch (IllegalArgumentException exception) {
             exception.printStackTrace();
         }
 
     }
-
-    public static void outOfDigitException(String amount) {
-        amount.chars().forEach(amountIndex -> {
-            if (!Character.isDigit(amountIndex)) {
-                throw new IllegalArgumentException(PrintGameInfo.getIsNotDigitString());
-            }
-        });
+    public static String inputAmount() {
+        String amount = Console.readLine();
+        InputException.emptyException(amount);
+        InputException.outOfDigitException(amount);
+        return amount;
     }
 
-    public static void amountEmptyException(String amount) {
-        if (amount == null || amount.isEmpty() || amount.isBlank()) {
-            throw new IllegalArgumentException(PrintGameInfo.getIsEmptyString());
-        }
+    public static String inputWinningNumbers() {
+        String winningNumber = Console.readLine();
+        InputException.wrongWinningNumberFormat(winningNumber);
+
+        return winningNumber;
     }
 
-    /**
-     * 미사용 : 0원에 대해서 예외처리 할지 추후 결정
-     * @param amount
-     */
-    public static void userInputZeroException(String amount) {
-        if (checkAllZero(amount)) {
-            throw new IllegalArgumentException(PrintGameInfo.USER_INPUT_ZERO);
-        }
-    }
-    public static boolean checkAllZero(String amount) {
-        boolean allZero = false;
-        for (char digit : amount.toCharArray()) {
-            if (PrintGameInfo.ZERO != digit) {
-                return false;
-            }
-        }
-        return true;
-    }
+    
+
 }

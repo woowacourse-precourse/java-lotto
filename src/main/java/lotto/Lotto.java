@@ -38,7 +38,7 @@ public class Lotto {
         }
     }
 
-    private static boolean isOutOfRange(Integer number) {
+    public static boolean isOutOfRange(Integer number) {
         return number > LOTTO_MAX_NUMBER || number < LOTTO_MIN_NUMBER;
     }
 

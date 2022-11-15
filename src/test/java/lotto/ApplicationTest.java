@@ -1,5 +1,6 @@
 package lotto;
 
+import Info.InputException;
 import Info.PrintGameInfo;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.BeforeAll;
@@ -70,7 +71,7 @@ class ApplicationTest extends NsTest {
     @ValueSource(strings = {"4,000", "15,000", "hello", "123,0", "8000 "})
     void 로또금액_숫자이외예외처리_테스트(String userInput) {
         assertThatThrownBy(() -> {
-            Application.outOfDigitException(userInput);
+            InputException.outOfDigitException(userInput);
         }).isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -78,7 +79,7 @@ class ApplicationTest extends NsTest {
     @ValueSource(strings = {"", " ", "8000 "})
     void 사용자입력_빈문자확인_테스트(String userInput) {
         assertThatThrownBy(() -> {
-            Application.amountEmptyException(userInput);
+            InputException.emptyException(userInput);
         }).isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -101,6 +102,15 @@ class ApplicationTest extends NsTest {
         assertThat(output()).contains(
                 "[", "]"
         );
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"1,2,3,4,5", "1,,3,6", ""})
+    void 당첨번호규격_테스트(String userInput) {
+        assertThatThrownBy(() -> {
+            InputException.wrongWinningNumberFormat(userInput);
+        }).isInstanceOf(IllegalArgumentException.class);
+
     }
 
     @Override
