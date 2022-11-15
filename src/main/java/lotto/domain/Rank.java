@@ -32,7 +32,11 @@ public enum Rank {
         return matchCount == THIRD.matchCount && !hasBonusNumber;
     }
 
-    public Money prize() {
+    public int getMatchCount() {
+        return matchCount;
+    }
+
+    public Money getPrize() {
         return prize;
     }
 }
