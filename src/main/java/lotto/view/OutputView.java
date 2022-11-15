@@ -32,9 +32,9 @@ public class OutputView {
 	public static void printWinningResult(Map<Rank, Integer> scoreBoard) {
 		System.out.println(RESULT_HEADER_MESSAGE);
 
-		for (Rank rank : getRanksWithoutMiss()) {
+		for (Rank rank : createRanksWithoutMiss()) {
 			System.out.printf(
-				createWinningResultMessage(rank),
+				chooseWinningResultMessage(rank),
 				rank.getHitNumberCount(),
 				rank.getPrizeMoneyWithComma(),
 				scoreBoard.get(rank));
@@ -45,13 +45,13 @@ public class OutputView {
 		System.out.printf(PROFIT_RATE_MESSAGE, getProfitRate);
 	}
 
-	private static List<Rank> getRanksWithoutMiss() {
+	private static List<Rank> createRanksWithoutMiss() {
 		List<Rank> list = new ArrayList<>(List.of(Rank.values()));
 		list.remove(Rank.MISS);
 		return list;
 	}
 
-	private static String createWinningResultMessage(Rank rank) {
+	private static String chooseWinningResultMessage(Rank rank) {
 		if (rank == Rank.SECOND) {
 			return SECOND_RESULT_MESSAGE;
 		}

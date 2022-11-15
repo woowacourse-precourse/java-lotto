@@ -29,7 +29,7 @@ public enum Rank {
 			return SECOND;
 		}
 
-		return getRanksWithoutSecond().get(getListIndex(hitNumberCount));
+		return createRanksWithoutSecond().get(getListIndex(hitNumberCount));
 	}
 
 	public int getHitNumberCount() {
@@ -48,7 +48,7 @@ public enum Rank {
 		return isContainsBonusNumber && SECOND.hitNumberCount == hitNumberCount;
 	}
 
-	private static List<Rank> getRanksWithoutSecond() {
+	private static List<Rank> createRanksWithoutSecond() {
 		List<Rank> list = new ArrayList<>(List.of(Rank.values()));
 		list.remove(SECOND);
 		Collections.reverse(list);
