@@ -3,12 +3,12 @@
   - [X] [예외 처리] 1000원으로 나누어 떨어지지 않는 경우
   - [X] [예외 처리] 문자열이 입력된 경우
 - [X] 발행 로또 수량 출력
-- [ ] 로또 발행
+- [X] 로또 발행
   - [X] 랜던 번호 생성
     - [X] [예외 처리] 생성한 숫자가 6개가 아닌 경우
     - [X] [예외 처리] 중복되는 숫자가 있는 경우
-  - [ ] 오름차순 정리
-  - [ ] 발행한 로또 번호 출력
+  - [X] 오름차순 정리
+  - [X] 발행한 로또 번호 출력
 - [ ] 당첨 번호 입력
   - [ ] [예외 처리] 당첨 번호가 범위(1~45)를 벗어나는 경우
   - [ ] [예외 처리] 문자가 입력되는 경우
@@ -43,3 +43,7 @@
   - refactor: issue lottos
   - feat: check random lotto numbers validation
   - refactor: refactoring issue lottos exception validate
+  - feat: sort in ascending order
+  - refactor: add lotto issue method
+  - feat: add print lottos
+  - test: issue lotto test
