@@ -19,7 +19,6 @@ public class Application {
 
     static List<List<Integer>> purchasedLottos = new ArrayList<>();
     static int noOfLottos;
-    static Lotto winningNumbers;
 
     public static void initializeNumberType() {
         for (int number = 1; number <= 45; number++)
@@ -162,7 +161,7 @@ public class Application {
             isInputLengthExceeds9(splitNumber);
 
         List<Integer> splitNumbersAsInteger = parseNumbers(splitNumbers);
-        winningNumbers = new Lotto(splitNumbersAsInteger);
+        new Lotto(splitNumbersAsInteger);
     }
 
     public static void guideBonusNumberFormat() {
