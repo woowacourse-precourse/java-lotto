@@ -64,7 +64,7 @@ class FunctionTest {
 		HashMap<String, Integer> hashMap = pr.prize_map_return();
 
 		//then
-		assertThat(hashMap.get("3개 일치")).isEqualTo(null);
+		assertThat(hashMap.get("4개 일치")).isEqualTo(1);
 	}
 
 	@Test
