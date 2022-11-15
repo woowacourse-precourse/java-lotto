@@ -147,7 +147,7 @@ public class Application {
             if(i==3){
                 count -= 1;
             }
-            System.out.println(count+"개 일치 (" +rewardList.get(i)+"원) - "+winList.get(winList.size()-1-i)+"개"+decFormat.format(rewardList.get(i)));
+            System.out.println(count+"개 일치 (" +decFormat.format(rewardList.get(i))+"원) - "+winList.get(winList.size()-1-i)+"개");
             count+=1;
         }
     }
@@ -161,16 +161,15 @@ public class Application {
         return rewardList;
     }
     static void calcLotteryYield(ArrayList<Integer> winList, int buyMoney, ArrayList<Float> rewardList){
-        DecimalFormat decFormat = new DecimalFormat("###,###.#");
+        //DecimalFormat decFormat = new DecimalFormat("###,###.#");
 
         float prizeSum =0;
         float LotteryYield;
         for(int i=0; i<winList.size(); i++){
-            prizeSum += winList.get(i)* rewardList.get(rewardList.size()-i);
+            if(winList.get(i) == 0) continue;
+            prizeSum += winList.get(i)* rewardList.get(rewardList.size()-1-i);
         }
         LotteryYield = prizeSum*100 / (float) buyMoney;
-
-        System.out.println(String.format("%.1", LotteryYield));
-
+        System.out.println("총 수익률은 "+ String.format("%.1f", LotteryYield)+"입니다.");
     }
 }
