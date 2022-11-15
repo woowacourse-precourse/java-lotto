@@ -1,7 +1,5 @@
 package lotto;
 
-import java.util.List;
-
 import static lotto.Utils.*;
 
 

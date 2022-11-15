@@ -2,8 +2,6 @@ package lotto;
 
 import lotto.Enums.ErrorMessage;
 
-import java.util.List;
-
 public class Winning {
     private final Lotto winningLotto;
     private final int bonusNum;
