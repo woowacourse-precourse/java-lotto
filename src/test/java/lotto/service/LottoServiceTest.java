@@ -42,4 +42,70 @@ public class LottoServiceTest {
         assertThat(user.getLottiesResult().get(expectedReward)).isEqualTo(2);
     }
 
+    @Test
+    @DisplayName("로또 수익률 계산 테스트")
+    void lottoProfitRateTest() {
+
+        User user = lottoService.getUserForTest();
+        user.setMoney(3000);
+
+        user.addLottoForTest(List.of(2, 39, 13, 4, 1, 6));
+        user.addLottoForTest(List.of(15, 5, 13, 2, 24, 30));
+        user.addLottoForTest(List.of(39, 16, 35, 1, 10, 18));
+
+        lottoService.saveWinningLotto("41,45,39,1,2,18");
+        lottoService.initResultLotto();
+        lottoService.saveResultLotto();
+
+        lottoService.calculateReward();
+
+        double profitRate = lottoService.getProfitRate();
+
+        assertThat(profitRate).isEqualTo(333.33);
+    }
+
+    @Test
+    @DisplayName("로또 수익률 계산 테스트 2")
+    void lottoProfitRateTest2() {
+
+        User user = lottoService.getUserForTest();
+        user.setMoney(3000);
+
+        user.addLottoForTest(List.of(19, 39, 13, 4, 1, 6));
+        user.addLottoForTest(List.of(15, 5, 13, 2, 24, 30));
+        user.addLottoForTest(List.of(39, 16, 35, 1, 10, 18));
+
+        lottoService.saveWinningLotto("41,45,39,1,2,18");
+        lottoService.initResultLotto();
+        lottoService.saveResultLotto();
+
+        lottoService.calculateReward();
+
+        double profitRate = lottoService.getProfitRate();
+
+        assertThat(profitRate).isEqualTo(166.67);
+    }
+
+    @Test
+    @DisplayName("로또 수익률 계산 테스트 3")
+    void lottoProfitRateTest3() {
+
+        User user = lottoService.getUserForTest();
+        user.setMoney(8000);
+
+        user.addLottoForTest(List.of(19, 39, 13, 4, 1, 6));
+        user.addLottoForTest(List.of(15, 5, 13, 2, 24, 30));
+        user.addLottoForTest(List.of(39, 16, 35, 1, 10, 18));
+
+        lottoService.saveWinningLotto("41,45,39,1,2,18");
+        lottoService.initResultLotto();
+        lottoService.saveResultLotto();
+
+        lottoService.calculateReward();
+
+        double profitRate = lottoService.getProfitRate();
+
+        assertThat(profitRate).isEqualTo(62.5);
+    }
+
 }
