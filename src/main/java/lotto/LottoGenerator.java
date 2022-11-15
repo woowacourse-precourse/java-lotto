@@ -23,6 +23,9 @@ public class LottoGenerator {
     public Integer inputMoney(){
         System.out.println("구입금액을 입력해 주세요");
         int money = Integer.parseInt(Console.readLine());
+        Check.validateMoney(money);
+        Check.validateMoney(money);
+
         return money;
     }
 
@@ -31,97 +34,37 @@ public class LottoGenerator {
         return totalCount;
     }
 
-    public List<Integer> LottoGenerator(int count){
-        System.out.printf("%d개를 구매하였습니다.\n", count);
-        List<Integer> lottoList = new ArrayList<>();
+    public List<List> makeLottery(int count){
+        System.out.println("\n" + count + "개를 구매했습니다.");
+        List<List> lottoList = new ArrayList<>();
         for (int i = 0; i < count; i++) {
             List<Integer> numbers = Randoms.pickUniqueNumbersInRange(MIN_RANGE, MAX_RANGE, COUNT);
+            Check.validateBoundary(numbers);
             Lotto newLotto = new Lotto(numbers);
             System.out.println(numbers);
-            lottoList.add(newLotto);
+            lottoList.add(numbers);
         }
+
         return lottoList;
     }
 
     public List<Integer> inputNumber(){
         ArrayList<Integer> winningNumber = new ArrayList<>();
         System.out.println("당첨 번호를 입력해주세요.");
-        String[] arr = Console.readLine().split(", ");
+        String[] arr = Console.readLine().split(",");
         for (String num : arr){
             winningNumber.add(Integer.parseInt(num));
         }
         Collections.sort(winningNumber);
-
+        Check.validateSixNumber(winningNumber);
         return winningNumber;
     }
-
-    public List<Integer> bonusNumber(){
+    public Integer bonusNumber(){
         int bonusNumber = 0;
         System.out.println("보너스 번호를 입력해 주세요.");
         bonusNumber = Integer.parseInt(Console.readLine());
-
+        Check.validateBonusBoundary(bonusNumber);
         return bonusNumber;
     }
 
-
-    public int getMatch(List<Integer> lotto, List<Integer> winning){
-        int match = 0;
-        for(int i=0; i<lotto.size(); i++){
-            if(winning.contains(lotto.get(i)))
-                match += 1;
-        }
-        return match;
-    }
-
-    public int getMatchBonus(List lotteryList, int bonus){
-        int match = 0;
-        for(int i=0; i<lotteryList.size(); i++){
-            if(lotteryList.contains(lotteryList.get(i)))
-                match += 1;
-        }
-        return match;
-    }
-
-    public List<List> compareNumbers(List<List> userList, List<Integer> winList, int bonus){
-        List<List> LotteryResult = new ArrayList<>();
-
-        int lottoCount = 0;
-        int bonusCount = 0;
-        for (int i = 0; i < userList.size(); i++){
-            bonusCount = 0;
-            lottoCount = getMatch(userList.get(i), winList);
-            if (lottoCount != 6){
-                bonusCount = getMatchBonus(userList.get(i), bonus);
-            }
-            LotteryResult.add(comparResultLottery(lottoCount, bonusCount));
-        }
-        return LotteryResult;
-    }
-
-    public List<Integer> comparResultLottery(int lottoCount, int bonusCount){
-        Integer[] account = {0,0,0,0,0};
-
-        if(lottoCount == 6){
-            account[0] ++; //1등
-        }
-        if(bonusCount == 1 && lottoCount == 5){
-            account[1] ++; //2등
-        }
-        if(bonusCount == 0 && lottoCount == 5){
-            account[2] ++; //3등
-        }
-        if(lottoCount == 4){
-            account[3] ++; //4등
-        }
-        if(lottoCount == 3){
-            account[4] ++; //5등
-        }
-        List<Integer> accountLoterry = Arrays.asList(account);
-
-        return accountLoterry;
-    }
-
-    public List<Integer> getResult(List<List> userResult){
-
-    }
 }
