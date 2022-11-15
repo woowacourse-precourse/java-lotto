@@ -1,5 +1,7 @@
 package lotto.domain;
 
+import java.math.BigDecimal;
+
 public class Money {
     private static final int LOTTO_PRICE = 1000;
     private static final int ZERO = 0;
@@ -11,7 +13,7 @@ public class Money {
         this.amount = amount;
     }
 
-    public static Money from(String userInputMoney){
+    public static Money from(String userInputMoney) {
         validateNumeric(userInputMoney);
         int amount = Integer.parseInt(userInputMoney);
         validateSize(amount);
@@ -19,33 +21,35 @@ public class Money {
         return new Money(amount);
     }
 
-    private static void validateNumeric(String userMoney){
-        try{
+    private static void validateNumeric(String userMoney) {
+        try {
             Integer.parseInt(userMoney);
-        }catch (NumberFormatException e){
+        } catch (NumberFormatException e) {
             throw new IllegalArgumentException("[Error] 로또 구입 금액은 숫자만 입력할 수 있습니다.");
         }
     }
 
-    private static void validateSize(int amount){
-        if(amount < LOTTO_PRICE){
+    private static void validateSize(int amount) {
+        if (amount < LOTTO_PRICE) {
             throw new IllegalArgumentException(String.format("[Error] 로또 구입 최소 금액은 %d원입니다.", LOTTO_PRICE));
         }
     }
 
-    private static void validateDivisibleByLottoTicketPrice(int amount){
-        if (amount % LOTTO_PRICE != ZERO){
+    private static void validateDivisibleByLottoTicketPrice(int amount) {
+        if (amount % LOTTO_PRICE != ZERO) {
             throw new IllegalArgumentException(String
-                    .format("[Error] 로또 구입 금액은 %s원 단위로 나누어 떨어져야합니다.",LOTTO_PRICE));
+                    .format("[Error] 로또 구입 금액은 %s원 단위로 나누어 떨어져야합니다.", LOTTO_PRICE));
         }
     }
 
-    public int getCountOfLotto(){
-        return amount/LOTTO_PRICE;
+    public int getCountOfLotto() {
+        return amount / LOTTO_PRICE;
     }
 
-    public double calculateProfitRate(int profit){
-        double profitRate = (double)profit/(double)amount*PROFIT_RATE_MULTIPLIER;
-        return Math.round(profitRate*NUMBER_DECIMAL_CALCULATION)/NUMBER_DECIMAL_CALCULATION;
+    public String calculateProfitRate(int profit) {
+        double profitRate = (double) profit / (double) amount * PROFIT_RATE_MULTIPLIER;
+        double roundedProfitRate = Math.round(profitRate * NUMBER_DECIMAL_CALCULATION) / NUMBER_DECIMAL_CALCULATION;
+        BigDecimal profitRateRemovedExponential = BigDecimal.valueOf(Double.parseDouble(String.valueOf(roundedProfitRate)));
+        return profitRateRemovedExponential.toString();
     }
 }
