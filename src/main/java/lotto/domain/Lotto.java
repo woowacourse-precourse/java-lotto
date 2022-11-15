@@ -3,7 +3,6 @@ package lotto.domain;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import java.util.regex.Pattern;
 
 public class Lotto {
     private final List<Integer> numbers;
@@ -17,7 +16,8 @@ public class Lotto {
         if (numbers.size() != 6
                 || isCheckDuplication(numbers)
                 || isCheckWrongRange(numbers)) {
-            throw new IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
+            System.out.println("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
+            throw new IllegalArgumentException();
         }
     }
 
