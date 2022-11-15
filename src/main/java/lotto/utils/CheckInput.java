@@ -27,7 +27,7 @@ public class CheckInput {
     public static void checkInputLotto(String input) {
         if (isNumeric(input))
             throw new IllegalArgumentException(ERROR_INVALID_NUMBER_TYPE);
-        if (Integer.parseInt(input) < 0 || Integer.parseInt(input) > 45)
+        if (Integer.parseInt(input) < 1 || Integer.parseInt(input) > 45)
             throw new IllegalArgumentException(ERROR_INVALID_LOTTO_RANGE);
     }
 
