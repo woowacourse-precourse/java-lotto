@@ -93,8 +93,8 @@ public class Buyer {
         for (Lotto ticket : boughtTickets) {
             correctCount = winningNumbers.countCorrectNumbers(ticket);
             bonusCount = ticket.checkIfCorrectNumber(bonus);
+            checkIfWon(correctCount, bonusCount);
         }
-        checkIfWon(correctCount, bonusCount);
     }
 
     public double calculateEarningRate() {
