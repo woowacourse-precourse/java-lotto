@@ -9,7 +9,7 @@ public class Referee {
         Judgement judgement = new Judgement();
         int count = judgement.sameNumberCount(myLotto, winLotto);
         if (count == 6) {
-            return LottoResult.FISRT_WIN.name();
+            return LottoResult.FIRST_WIN.name();
         } else if (count == 5) {
             if (judgement.containBonusNumber(myLotto, bonus)) {
                 return LottoResult.SECOND_WIN.name();
