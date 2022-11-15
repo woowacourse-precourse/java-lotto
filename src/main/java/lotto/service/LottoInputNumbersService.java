@@ -21,5 +21,16 @@ public class LottoInputNumbersService {
         return lotto;
     }
 
+    public List<Integer> parsingNumbers(String numbers) {
+        String[] arr = numbers.split(",");
+        List<Integer> result = new ArrayList<>();
+
+        for (String num : arr) {
+            result.add(Integer.parseInt(num));
+        }
+
+        return result;
+    }
+
 
 }
