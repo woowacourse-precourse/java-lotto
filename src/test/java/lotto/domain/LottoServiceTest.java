@@ -28,6 +28,32 @@ class LottoServiceTest {
     }
 
     @ParameterizedTest
+    @DisplayName("당첨 순위 결과가 제대로 확인되는지 검사하는 단위 테스트")
+    @CsvSource(value = {"6, true, 1", "5, true, 2" ,"5, false, 3", "4, true, 4","3, true, 5" })
+    void checkWinningRank(int matchCount, boolean isBonusMatch, int expectedNumber) {
+
+        WinningRank result = lottoService.checkWinningRank(matchCount, isBonusMatch);
+        
+        WinningRank expectedRank;
+
+        if (expectedNumber == 1) {
+            expectedRank = WinningRank.FIRST;
+        } else if (expectedNumber == 2) {
+            expectedRank = WinningRank.SECOND;
+        } else if (expectedNumber == 3) {
+            expectedRank = WinningRank.THIRD;
+        } else if (expectedNumber == 4) {
+            expectedRank = WinningRank.FOURTH;
+        } else if (expectedNumber == 5) {
+            expectedRank = WinningRank.FIFTH;
+        } else {
+            expectedRank = WinningRank.NOTHING;
+        }
+
+        assertThat(result).isEqualTo(expectedRank);
+    }
+
+    @ParameterizedTest
     @DisplayName("보너스 번호가 같은것이 있으면 true 리턴하는지 확인하는 단위 테스트")
     @CsvSource(value = {"1,true", "2,true", "3,true", "4,true", "5, true", "6, true", "7, false"})
     void checkBonusNumberTest(int bonusNumber, boolean expected) {
