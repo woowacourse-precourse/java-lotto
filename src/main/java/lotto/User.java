@@ -16,7 +16,7 @@ public class User {
         this.inputMoney = inputMoney;
         setMoneyNumber();
         validateMoney();
-        userLotto = getUserLotto();
+        userLotto = setUserLotto();
     }
 
     private void setMoneyNumber() {
@@ -33,7 +33,7 @@ public class User {
         }
     }
 
-    public List<Lotto> getUserLotto() {
+    public List<Lotto> setUserLotto() {
         int numOfLotto = money / 1000;
         List<Lotto> lotto = new ArrayList<>();
 

@@ -18,7 +18,7 @@ public class Rank {
     }
 
     private void validateBonusNumber() {
-        List<Integer> lottoNum = new ArrayList<Integer>(lottoNumbers.getNumbers());
+        List<Integer> lottoNum = new ArrayList<>(lottoNumbers.getNumbers());
         lottoNum.add(bonusNumber);
         lottoNum = lottoNum.stream()
                            .distinct()
@@ -66,6 +66,8 @@ public class Rank {
     }
 
     public void run (User user) {
+        for (Lotto numbers : user.userLotto) {
 
+        }
     }
 }
