@@ -12,21 +12,21 @@ public class WinNumber {
     // 겹치는 숫자를 입력했을 때, 예외 발생시키기!
     public void enterWinNumbers() {
         System.out.println("당첨 번호를 입력해 주세요.");
-        getWinNumbers(Console.readLine());
+        inputWinNumbers(Console.readLine());
     }
 
     public void enterBonusNumber() {
         System.out.println("보너스 번호를 입력해 주세요.");
-        getBonusNumber(Console.readLine());
+        inputBonusNumber(Console.readLine());
     }
 
 
-    public void getWinNumbers(String input) {
+    public void inputWinNumbers(String input) {
         String[] numbers = input.split(",");
         validateWinNumbers(numbers);
     }
 
-    public void getBonusNumber(String input) {
+    public void inputBonusNumber(String input) {
         validateBonusNumber(input);
         this.bonusNumber = Integer.valueOf(input);
     }
