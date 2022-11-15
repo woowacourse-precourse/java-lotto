@@ -18,6 +18,7 @@ public class Application {
         int bonusNum = bonusNum(myLottoNum);
         int lottoStart = lottoStart(lottoRandomNum, myLottoNum);
         boolean bonusAgreement = bonusAgreement(bonusNum, lottoRandomNum);
+        int agreementLotto = agreementLotto(lottoStart, bonusAgreement);
     }
 
 //    int lottoStart;
@@ -173,3 +174,33 @@ public class Application {
     public static boolean bonusAgreement(int bonusNum, List<Integer> lottoRandomNum) {
         return lottoRandomNum.contains(bonusNum);
     }
+
+    // 당첨 등수 리턴
+    /**
+     * 4-2. agreementLotto (로또 당첨 등수 리턴) 완료 <br/>
+     * lottoStart (로또 번호 대조하기) 값에 따른 등수 리턴 <br/>
+     * 
+     * @param lottoStart
+     * @return
+     */
+    public static int agreementLotto(int lottoStart, boolean bonusAgreement) {
+        int agreementLotto = 0;
+
+        if (lottoStart == 6) {
+            agreementLotto = 1;
+        }
+        if (lottoStart == 5 && bonusAgreement) {
+            agreementLotto = 2;
+        }
+        if (lottoStart == 5) {
+            agreementLotto = 3;
+        }
+        if (lottoStart == 4) {
+            agreementLotto = 4;
+        }
+        if (lottoStart == 3) {
+            agreementLotto = 5;
+        }
+        return agreementLotto;
+    }
+}
