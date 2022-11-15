@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Input {
     private static final String ERROR_MESSAGE = "[ERROR] ";
@@ -25,9 +26,7 @@ public class Input {
     public int getMoney(){
         try {
             System.out.println(PURCHASE_AMOUNT_MESSAGE);
-            String unverifiedMoney = Console.readLine();
-            int money = validateMoney(unverifiedMoney);
-            return money;
+            return validateMoney(Console.readLine());
         }catch (IllegalArgumentException e){
             System.out.println(ERROR_MESSAGE + e.getMessage());
             return getMoney();
@@ -56,21 +55,28 @@ public class Input {
     }
 
     public Lotto getWinningNumbers(){
-        System.out.println(WINNING_NUMBERS_MESSAGE);
-
-        String winningNumbers = Console.readLine();
-
-        String[] numbers = winningNumbers.split(SEPARATOR);
         try {
-            List<String> winningNumbersCast =
-                    Arrays.stream(numbers)
-                            .map(String::trim)
-                            .collect(Collectors.toList());
-            return convertLettersToNumbers(winningNumbersCast);
+            System.out.println(WINNING_NUMBERS_MESSAGE);
+            return new Lotto(validateWinningNumbers(Console.readLine().split(SEPARATOR)));
         }catch (IllegalArgumentException e){
             System.out.println(ERROR_MESSAGE + e.getMessage());
             return getWinningNumbers();
         }
+    }
+
+    private List<Integer> validateWinningNumbers(String[] numbers) {
+        List<Integer> winningNumbers = null;
+        try {
+            winningNumbers = Stream.of(numbers)
+                                .map(String::trim).map(Integer::parseInt)
+                                .filter(num -> num >= 1 && num <= 45)
+                                .distinct()
+                                .collect(Collectors.toList());
+            if(winningNumbers.size() != 6) errorThrow(SCOPE_DUPLICATE_ERROR_MESSAGE);
+        }catch (NumberFormatException e){
+            errorThrow(IS_NUMBER_MESSAGE);
+        }
+        return winningNumbers;
     }
 
     public int getBonusNumber(List<Integer> winningNumbers){
@@ -100,19 +106,6 @@ public class Input {
         try {
             Integer.parseInt(number);
         }catch (Exception e){
-            throw new IllegalArgumentException(IS_NUMBER_MESSAGE);
-        }
-    }
-
-    private Lotto convertLettersToNumbers(List<String> stringWinningAmount) {
-        try {
-            List<Integer> winningNumbers = new ArrayList<>();
-            for(String number : stringWinningAmount){
-                winningNumbers.add(Integer.parseInt(number));
-            }
-            isItInRange(winningNumbers);
-            return new Lotto(winningNumbers);
-        }catch (NumberFormatException e){
             throw new IllegalArgumentException(IS_NUMBER_MESSAGE);
         }
     }
