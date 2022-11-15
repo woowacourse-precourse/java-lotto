@@ -78,6 +78,32 @@ public class SaturdayTest {
         assertThat(saturday.makeStatistics()).isEqualTo(List.of(0,1,1,1,1));
 
     }
+    @DisplayName("기대한 우승 상금이 나오면 통과")
+    @Test
+    void testPrize(){
+        Saturday saturday = new Saturday("1,2,3,4,5,6","7");
+        DB.insert(new Lotto(List.of(1,2,3,4,11,45)));
+        saturday.makeStatistics();
+        assertThat(DB.getPrizeSum()).isEqualTo(50000);
+    }
+
+    @DisplayName("기대한 수익률이 나오면 통과")
+    @Test
+    void testmakeStatisticsYeild(){
+        Saturday saturday = new Saturday("1,2,3,4,5,6","7");
+        DB.insert(new Lotto(List.of(8, 21, 23, 41, 42, 43)));
+        DB.insert(new Lotto(List.of(3, 5, 11, 16, 32, 38)));
+        DB.insert(new Lotto(List.of(7, 11, 16, 35, 36, 44)));
+        DB.insert(new Lotto(List.of(1, 8, 11, 31, 41, 42)));
+        DB.insert(new Lotto(List.of(13, 14, 16, 38, 42, 45)));
+        DB.insert(new Lotto(List.of(7, 11, 30, 40, 42, 43)));
+        DB.insert(new Lotto(List.of(2, 13, 22, 32, 38, 45)));
+        DB.insert(new Lotto(List.of(1, 3, 5, 14, 22, 45)));
+
+        saturday.makeStatistics();
+        assertThat(saturday.calYeild()).isEqualTo(62.5);
+    }
+
 
 
 }

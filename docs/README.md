@@ -102,3 +102,7 @@
 **makeStatistics**
 
     DB의 모든 로또들을 check 하고 통계를 저장
+
+**calYeild**
+
+    상금의 수익률을 계산하는 기능

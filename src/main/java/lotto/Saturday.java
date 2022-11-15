@@ -81,12 +81,22 @@ public class Saturday {
     public List<Integer> makeStatistics(){
         List<Integer> statistics = new ArrayList<>(List.of(0,0,0,0,0));
         int size = DB.getTableSize();
-        int count,index;
+        int count,index,prize;
         for(int i=0; i<size; i++){
             count = checkLottoAt(i);
-            index=Winner.getStatisticsIndex(count);
-            statistics.set(index,statistics.get(index)+1);
+            if(count>=3){
+                index=Winner.getStatisticsIndex(count);
+                statistics.set(index,statistics.get(index)+1);
+                prize = Winner.getPrize(count);
+                DB.updatePrizeSum(prize);
+            }
         }
         return statistics;
+    }
+
+    public double calYeild(){
+        System.out.println("DB.getPrizeSum() = " + DB.getPrizeSum());
+        System.out.println("DB.getTableSize() = " + DB.getTableSize());
+        return (double)DB.getPrizeSum()*100/(DB.getTableSize()*1000);
     }
 }
