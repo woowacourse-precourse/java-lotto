@@ -60,7 +60,12 @@ public class DefaultView implements View {
         System.out.println(Views.STATICS.render());
         System.out.println(Views.DIVIDER.render());
         EnumMap<LottoRank, Integer> lottoRanks = controller.outputRanks();
+        renderRanks(lottoRanks);
+        float profitRate = controller.getProfitRate(lottoRanks);
+        System.out.println(ProfitView.PROFIT_RATE.render(profitRate));
+    }
 
+    private void renderRanks(EnumMap<LottoRank, Integer> lottoRanks) {
         for (Map.Entry<LottoRank, Integer> entry : lottoRanks.entrySet()) {
             LottoRank rank = entry.getKey();
             int count = entry.getValue();
@@ -70,9 +75,6 @@ public class DefaultView implements View {
             StaticsView view = StaticsView.getView(rank.isHasBonusNumber());
             System.out.println(view.render(rank, count));
         }
-
-        float profitRate = controller.getProfitRate(lottoRanks);
-        System.out.println(ProfitView.PROFIT_RATE.render(profitRate));
     }
 
 }
