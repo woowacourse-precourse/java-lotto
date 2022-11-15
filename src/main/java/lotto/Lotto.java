@@ -16,7 +16,4 @@ public class Lotto {
         }
     }
 
-    public static int numberOfLottoAvailable(int userMoney) {
-        return userMoney/1000;
-    }
 }

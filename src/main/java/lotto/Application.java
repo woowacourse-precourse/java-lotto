@@ -5,7 +5,7 @@ public class Application {
 
         int userMoney = Util.inputUserMoney();
 
-        int userLottoCnt = Lotto.numberOfLottoAvailable(userMoney);
+        int userLottoCnt = LottoUtil.numberOfLottoAvailableCount(userMoney);
 
         System.out.println("userLottoCnt = " + userLottoCnt);
     }

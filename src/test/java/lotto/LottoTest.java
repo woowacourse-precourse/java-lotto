@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class LottoTest {
@@ -24,4 +25,11 @@ class LottoTest {
     }
 
     // 아래에 추가 테스트 작성 가능
+    @DisplayName("입력 숫자가 1000으로 딱 나누어지는 숫자일 때, 몫 구하기")
+    @Test
+    void numberOfLottoAvailableCountTest() {
+        assertThat(LottoUtil.numberOfLottoAvailableCount(5000)).isEqualTo(5);
+        assertThat(LottoUtil.numberOfLottoAvailableCount(13000)).isEqualTo(13);
+        assertThat(LottoUtil.numberOfLottoAvailableCount(7000)).isEqualTo(7);
+    }
 }
