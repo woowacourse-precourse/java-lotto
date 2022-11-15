@@ -30,7 +30,7 @@ public enum GameData {
     }
 
     public Long getIncome() {
-        return this.prizeMoney * this.count ;
+        return this.prizeMoney * this.count;
     }
 
 

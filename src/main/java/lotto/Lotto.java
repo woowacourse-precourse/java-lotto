@@ -27,7 +27,7 @@ public class Lotto {
         return this.numbers;
     }
 
-    public int compareWinNumberAndLottoPaperPoint (List<Integer> LottoPaperLine) {
+    public int compareWinNumberAndLottoPaperPoint(List<Integer> LottoPaperLine) {
         int rankNumber = 0;
 
         for (int i = 0; i < 6; i++) {
@@ -43,7 +43,7 @@ public class Lotto {
         return rankNumber;
     }
 
-    public void rankLineUnderHundred (int rankPoint) {
+    public void rankLineUnderHundred(int rankPoint) {
         if (rankPoint == 3) {
             GameData.FIFTH.addCount();
         }
@@ -58,7 +58,7 @@ public class Lotto {
         }
     }
 
-    public void rankLineOverHundred (int rankPoint) {
+    public void rankLineOverHundred(int rankPoint) {
         if (rankPoint == 103) {
             GameData.FIFTH.addCount();
         }
@@ -70,7 +70,7 @@ public class Lotto {
         }
     }
 
-    public void rankLine (List<Integer> LottoPaperLine) {
+    public void rankLine(List<Integer> LottoPaperLine) {
         int rankPoint = compareWinNumberAndLottoPaperPoint(LottoPaperLine);
 
         if (rankPoint < 100) {
