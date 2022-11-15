@@ -9,7 +9,24 @@ import java.util.List;
 public class Lotto {
     private final List<Integer> numbers;
     
-    private static int bonus;
+    private static int bonusNum;
+    
+    /*
+    1등: 6개 번호 일치 / 2,000,000,000원
+    2등: 5개 번호 + 보너스 번호 일치 / 30,000,000원
+    3등: 5개 번호 일치 / 1,500,000원
+    4등: 4개 번호 일치 / 50,000원
+    5등: 3개 번호 일치 / 5,000원
+    */
+    
+    enum winnings {
+        FIRST,
+        SECOND,
+        THIRD,
+        FOURTH,
+        FIFTH,
+        NONE
+    }
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
@@ -59,8 +76,8 @@ public class Lotto {
             }
             result.add(tempNum);
         }
-        bonus = val(input, 7);
-        if(result.contains(bonus)){
+        bonusNum = val(input, 7);
+        if(result.contains(bonusNum)){
             throw exception;
         }
         return result;
@@ -93,14 +110,24 @@ public class Lotto {
     }
     
     public void compare(List<Integer> win, List<List> purchased){
-        int count = 0;
-        
-        for(List l : purchased){
-            for(Object o : l){
-                if(win.contains(o)){
-                    count++;
-                }
-            }
+    }
+    
+    public winnings winAmount(int count, boolean bonus){
+        if (count == 6){
+            return winnings.FIRST;
         }
+        if (count == 5 && bonus == true){
+            return winnings.SECOND;
+        }
+        if(count == 5){
+            return winnings.THIRD;
+        }
+        if(count == 4){
+            return winnings.FOURTH;
+        }
+        if(count == 3){
+            return winnings.FIFTH;
+        }
+        return winnings.NONE;
     }
 }
