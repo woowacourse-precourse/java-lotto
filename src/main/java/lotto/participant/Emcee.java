@@ -26,14 +26,6 @@ public class Emcee {
         System.out.println(guide);
     }
 
-    public void showPublishedLottos(List<Lotto> lottos) {
-        System.out.println("\n" + lottos.size() + "개를 구매했습니다.");
-        System.out.println("Lotto 정보는 다음과 같습니다.");
-        System.out.println("==================================================");
-        lottos.forEach(System.out::println);
-        System.out.println("==================================================\n");
-    }
-
     public void guideWinningNumber() {
         System.out.println("당첨 번호를 입력해 주세요.");
         System.out.println("당첨 번호는 1과 45 사이의 서로 다른 6개의 숫자입니다.");
@@ -44,6 +36,14 @@ public class Emcee {
         System.out.println("\n보너스 번호를 입력해 주세요.");
         System.out.println("보너스 번호는 당첨 번호와 중복되지 않는 1부터 45 사이의 숫자입니다.");
         System.out.println("하나의 보너스 번호만 입력해 주세요.");
+    }
+
+    public void showPublishedLottos(List<Lotto> lottos) {
+        System.out.println("\n" + lottos.size() + "개를 구매했습니다.");
+        System.out.println("Lotto 정보는 다음과 같습니다.");
+        System.out.println("==================================================");
+        lottos.forEach(System.out::println);
+        System.out.println("==================================================\n");
     }
 
     public void showStatistics(Map<Rank, Integer> tallyOfRanks) {
