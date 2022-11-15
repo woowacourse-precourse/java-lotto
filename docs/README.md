@@ -112,3 +112,8 @@
 7. 당첨내역과 수익률을 출력한다.
 etc : 잘못된 값이 입력되는 경우 에러 메세지를 출력 후 프로그램이 종료된다.
 ```
+
+---
+## 전체적인 클래스 구조
+
+![캡처](https://raw.githubusercontent.com/hong-sile/lotto-java/hong-sile/finalDesign.png?token=GHSAT0AAAAAABZV7YNIY7BGR7GBGAVIFINUY3TLDZA)
