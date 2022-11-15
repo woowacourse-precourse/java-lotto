@@ -1,6 +1,9 @@
 package lotto.domain;
 
 import java.text.DecimalFormat;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
 public enum LottoPrize {
     FIRST_PRIZE(6, 0, 2_000_000_000),
@@ -43,4 +46,11 @@ public enum LottoPrize {
         if (prize > 0) info += String.format(" (%s)원", df.format(prize));
         return info;
     }
+
+    public static List<LottoPrize> getValues() {
+        List<LottoPrize> prizes = Arrays.asList(LottoPrize.values());
+        Collections.reverse(prizes);
+        return prizes;
+    }
+
 }
