@@ -51,7 +51,4 @@ public class ManagementLotto {
         return bonusNumber;
     }
 
-    public void checkLottoNumber() {
-
-    }
 }
