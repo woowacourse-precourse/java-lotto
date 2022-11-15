@@ -21,7 +21,6 @@ public class PrizeChecker {
 			List<Integer> lottoNumber = lotto.getNumbers();
 			int countMatch = countingMatch(winningNumber, lottoNumber);
 			boolean isBonus = checkBonus(countMatch, lottoNumber, bonusNumber);
-
 			LottoRanking lottoRanking = LottoRanking.findByLottoRanking(countMatch, isBonus);
 			this.prizeResult.put(lottoRanking, this.prizeResult.getOrDefault(lottoRanking, 0) + 1);
 		}
