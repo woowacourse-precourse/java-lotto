@@ -50,5 +50,24 @@ public class Compare {
         }
         return NOTHING;
     }
+    public static List<Integer> rankList() {
+        List<Integer> rankcnt = new ArrayList<>();
+        rankcnt.add(fifth);
+        rankcnt.add(fourth);
+        rankcnt.add(third);
+        rankcnt.add(second);
+        rankcnt.add(first);
+        return rankcnt;
+    }
+
+
+    public static void printRank() {
+        rankList();
+        for (int i=0; i<RANKS.length; i++) {
+            Rank rank = Rank.getLottoRanksDesc().get(i);
+            rank.printRank(rankList().get(i));
+        }
+    }
+
 
 }
