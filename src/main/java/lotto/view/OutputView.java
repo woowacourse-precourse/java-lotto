@@ -7,8 +7,13 @@ import lotto.domain.Lotto;
 import lotto.domain.Reward;
 
 public class OutputView {
+    private static String INFORM_AMOUNT = "%d개를 구매했습니다.\n";
+    private static String INFORM_HIT_SECOND = "%d개 일치, 보너스 볼 일치 (%s원) - %d개\n";
+    private static String INFORM_HIT_REST = "%d개 일치 (%s원) - %d개\n";
+    private static String INFORM_YIELD = "총 수익률은 %s%%입니다.";
+
     public static void printUserLotto(List<Lotto> userLotto) {
-        System.out.printf("%d개를 구매했습니다.\n", userLotto.size());
+        System.out.printf(INFORM_AMOUNT, userLotto.size());
         userLotto.stream()
                 .forEach(System.out::println);
         System.out.println();
@@ -27,13 +32,14 @@ public class OutputView {
         for (Reward r : result.keySet()) {
 
             if (r == Reward.SECOND) {
-                System.out.println(
-                        r.getCount() + "개 일치, 보너스 볼 일치 (" + decimalFormat.format(r.getReward()) + "원) - " + result.get(
-                                r) + "개");
+                System.out.printf(
+                        INFORM_HIT_SECOND, r.getCount(), decimalFormat.format(r.getReward()),
+                        result.get(r)
+                );
                 continue;
             }
-            System.out.println(
-                    r.getCount() + "개 일치 (" + decimalFormat.format(r.getReward()) + "원) - " + result.get(r) + "개");
+            System.out.printf(
+                    INFORM_HIT_REST, r.getCount(), decimalFormat.format(r.getReward()), result.get(r));
         }
     }
 
@@ -43,6 +49,6 @@ public class OutputView {
             sum += r.getReward() * result.get(r);
         }
         String yield = String.format("%.1f", (double) sum / (double) (amount * 1000) * 100.0);
-        System.out.println("총 수익률은 " + yield + "%입니다.");
+        System.out.printf(INFORM_YIELD, yield);
     }
 }
