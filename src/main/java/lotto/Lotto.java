@@ -1,6 +1,7 @@
 package lotto;
 
 import java.util.*;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import static lotto.ErrorMessage.*;
 
@@ -50,5 +51,12 @@ public class Lotto {
         List<Integer> sortedNumbers = new ArrayList<>(this.numbers);
         Collections.sort(sortedNumbers);
         System.out.println(Arrays.deepToString(sortedNumbers.toArray()));
+    }
+
+    public long getWinningNumberCount(List<Integer> winningNumbers) {
+        long winningNumberCount = winningNumbers
+                .stream().filter(old -> this.numbers.stream().anyMatch(Predicate.isEqual(old)))
+                .count();
+        return winningNumberCount;
     }
 }
