@@ -53,6 +53,8 @@ public class LottoController {
     private void getRateOfReturn() {
         EnumMap<Winner, Integer> winners = lottoService.getWinners();
         moneyService.saveRateOfReturn(winners);
-    }
 
+        double rateOfReturn = moneyService.getRateOfReturn();
+        OutputView.noticeResult(winners, rateOfReturn);
+    }
 }
