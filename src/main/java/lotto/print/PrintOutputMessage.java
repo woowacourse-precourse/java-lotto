@@ -45,7 +45,6 @@ public class PrintOutputMessage {
         System.out.printf(PRINT_WINNING_PRIZE_AMOUNT,LottoRank.FIRST.printPrintPrize(),countWinPrize[LottoRank.FIRST.printLottoRank()]);
     }
     public static void printLottoRatio(LottoAmount purchaseAmount, int[] countWinPrize) {
-        float ratio = countWinPrize[ZERO]/purchaseAmount.getPurchaseAmount() * UNIT;
-        System.out.printf(PRINT_TOTAL_PROFIT_RATE,ratio);
+        System.out.printf(PRINT_TOTAL_PROFIT_RATE,(double) countWinPrize[ZERO]/purchaseAmount.getPurchaseAmount() * UNIT);
     }
     }
