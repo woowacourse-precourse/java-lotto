@@ -17,6 +17,14 @@ public class WinningNumbers {
 
 
 
+    private void isDuplicated(int bonus) {
+        if(winningNumbers.contains(bonus)){
+            printErrorMessage("[ERROR] 당첨 번호는 중복되서는 안됩니다.");
+            throw new IllegalArgumentException();
+        }
+    }
+
+
     private void validate(String s) {
         StringTokenizer tokenizer = new StringTokenizer(s, ",");
         while (tokenizer.hasMoreTokens()) {
