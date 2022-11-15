@@ -3,7 +3,9 @@ package lotto.domain;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
+import java.util.TreeMap;
 import java.util.TreeSet;
 import lotto.reward.Reward;
 
@@ -105,24 +107,27 @@ public class LottoService {
 
     public int calculateReward(int matched, boolean isBonusNumberContained) {
         if (matched == 6) {
-            return 4;
+            return Reward.FIRST.getRewardIndex();
         }
         if (matched == 5) {
             if (isBonusNumberContained) {
-                return 3;
+                return Reward.SECOND.getRewardIndex();
             }
-            return 2;
+            return Reward.THIRD.getRewardIndex();
         }
-        return matched - 3;
+        if (matched == 4) {
+            return Reward.FOURTH.getRewardIndex();
+        }
+        return Reward.FIFTH.getRewardIndex() - (3 - matched);
     }
 
     public int[] calculateRewards(List<Lotto> lottos, List<Integer> matchNumbers, int bonusNumber) {
         int[] rewards = {0, 0, 0, 0, 0};
         for (Lotto lotto : lottos) {
             int matched = calculateMatched(lotto, matchNumbers);
-            int rewardIdx = calculateReward(matched, matchNumbers.contains(bonusNumber));
-            if (rewardIdx >= 0) {
-                rewards[rewardIdx]++;
+            int rewardIndex = calculateReward(matched, matchNumbers.contains(bonusNumber));
+            if (rewardIndex >= 0) {
+                rewards[rewardIndex]++;
             }
         }
         return rewards;
