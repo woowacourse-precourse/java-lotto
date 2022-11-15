@@ -8,11 +8,12 @@ import lotto.Lotto;
 public class LottoConverter {
     public List<Integer> convertScanNumbersToWinningNumbers(List<String> lottoNumbers) {
         List<Integer> convertedNumbers = lottoNumbers.stream()
-                .map(Integer::parseInt)
+                .map(s -> Integer.parseInt(s.trim()))
                 .sorted(Comparator.naturalOrder())
                 .collect(Collectors.toList());
         return convertedNumbers;
     }
+
     public Lotto convertRandomNumbersToLotto(List<Integer> lottoNumbers) {
         List<Integer> convertedNumbers = lottoNumbers.stream()
                 .sorted(Comparator.naturalOrder())
@@ -26,9 +27,9 @@ public class LottoConverter {
 
     public Long convertMoney(String playerMoney) {
         playerMoney = playerMoney.trim();
-        if(playerMoney.contains(",")){
-            playerMoney = playerMoney.replace(",","");
+        if (playerMoney.contains(",")) {
+            playerMoney = playerMoney.replace(",", "");
         }
-        return Long.parseLong(playerMoney) ;
+        return Long.parseLong(playerMoney);
     }
 }

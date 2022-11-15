@@ -14,10 +14,11 @@ public enum ErrorMessages {
 
     private final String errorMessage;
 
-    ErrorMessages(String errorMessage){
-        this.errorMessage = errorMessage ;
+    ErrorMessages(String errorMessage) {
+        this.errorMessage = errorMessage;
     }
-    public String getMessage(){
+
+    public String getMessage() {
         return this.errorMessage;
     }
 }

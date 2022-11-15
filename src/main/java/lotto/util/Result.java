@@ -8,17 +8,18 @@ public enum Result {
     RANK_ONE("6개 일치 (2,000,000,000원) - ", 2_000_000_000);
 
     private final String message;
-    private final long reward ;
+    private final long reward;
 
     Result(String message, long reward) {
         this.message = message;
-        this.reward = reward ;
+        this.reward = reward;
     }
 
     public String getMessage() {
         return this.message;
     }
-    public long getReward(){
-        return this.reward ;
+
+    public long getReward() {
+        return this.reward;
     }
 }

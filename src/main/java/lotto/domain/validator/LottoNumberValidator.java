@@ -37,7 +37,7 @@ public class LottoNumberValidator {
         String[] splitValues = inputValue.split(",");
         for (String value : splitValues) {
             value = value.trim();
-            if (!value.matches("\\d{1,2}")) {
+            if (!value.matches("[0-9]+")) {
                 throw new IllegalArgumentException(ErrorMessages.NOT_NUMBER_EXIST.getMessage());
             }
         }

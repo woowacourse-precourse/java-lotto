@@ -21,8 +21,8 @@ public class LottoCalculator {
     }
 
     public double getRate(long rewardMoney, long playerMoney) {
-        double rate = (double) rewardMoney / playerMoney ;
-        return Math.round(rate * 1000) / 10.0  ;
+        double rate = (double) rewardMoney / playerMoney;
+        return Math.round(rate * 1000) / 10.0;
     }
 
     public int getEqualsCount(List<Integer> winningNumbers, int bonusNumber, Lotto playerLotto) {
