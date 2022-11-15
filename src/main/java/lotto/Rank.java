@@ -20,7 +20,7 @@ public enum Rank {
     }
 
     public static Rank getMyRank(Match match, boolean bonus) {
-        if (match.getMatch() == 5) {
+        if (match.getMatch() == Rank.THIRD.getMatch()) {
             if (bonus) {
                 return Rank.SECOND;
             }
