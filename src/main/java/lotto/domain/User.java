@@ -1,17 +1,28 @@
 package lotto.domain;
 
+import camp.nextstep.edu.missionutils.Randoms;
 import lotto.exception.LottoException;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class User {
     private int purchaseAmount;
+    private int lotteryCount;
     private List<Lotto> lotteryNumbers;
+
 
     public void inputPurchaseAmount(String input) {
         validate(input);
         this.purchaseAmount = Integer.parseInt(input);
     }
+
+    public void setLotteryCount(){
+        this.lotteryCount = purchaseAmount/1000;
+    }
+
+
 
     public int getPurchaseAmount() {
         return purchaseAmount;
@@ -19,6 +30,10 @@ public class User {
 
     public List<Lotto> getLotteryNumbers() {
         return lotteryNumbers;
+    }
+
+    public int getLotteryCount(){
+        return lotteryCount;
     }
 
     private void validate(String input) throws RuntimeException {
