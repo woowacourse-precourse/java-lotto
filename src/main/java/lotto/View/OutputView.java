@@ -1,20 +1,12 @@
 package lotto.View;
 
 import lotto.Dto.Lotto;
+import lotto.Dto.Reword;
 
 import java.util.List;
 import java.util.Map;
 
 import static lotto.Dto.ConstDto.InputOutputConstDto.*;
-
-enum Reword {
-    FIVE_WORD("3"),FOUR_WORD("4"),THREE_WORD("5"),TWO_WORD("5BonusNumber"),ONE_WORD("6");
-    public final String word;
-
-    Reword(String word) {
-        this.word = word;
-    }
-}
 
 public class OutputView {
 
