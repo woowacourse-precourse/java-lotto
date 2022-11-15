@@ -15,11 +15,11 @@ class ResultTest {
     @Test
     void calculateMatchCount() {
         // given
-        Lotto perchasedLotto = new Lotto(new ArrayList<>(List.of(1, 2, 3, 4, 5, 6)));
+        Lotto purchasedLotto = new Lotto(new ArrayList<>(List.of(1, 2, 3, 4, 5, 6)));
         Lotto winningLotto = new Lotto(new ArrayList<>(List.of(1, 2, 3, 4, 5, 7)));
 
         // when
-        int matchCount = result.checkMatchCount(perchasedLotto, winningLotto);
+        int matchCount = result.checkMatchCount(purchasedLotto, winningLotto);
 
         // then
         assertThat(matchCount).isEqualTo(5);

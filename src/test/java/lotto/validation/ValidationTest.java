@@ -16,10 +16,10 @@ class ValidationTest {
     @Test
     void createPurchaseMoneyNotDivision1000() {
         // given
-        String prchaseMoney = "1111";
+        String purchaseMoney = "1111";
 
         // when + then
-        assertThatThrownBy(() -> Validation.validatePurchaseMoney(prchaseMoney))
+        assertThatThrownBy(() -> Validation.validatePurchaseMoney(purchaseMoney))
             .isInstanceOf(IllegalArgumentException.class)
             .hasMessageContaining(ERROR_MESSAGE);
 
@@ -55,7 +55,7 @@ class ValidationTest {
     @DisplayName(",로 분리된 당첨 번호가 숫자 이외의 값이 있으면 에러가 발생합니다.")
     @ParameterizedTest
     @ValueSource(strings = {"1,,,2,3", "1,ㄱ,2,ㄴ", "!,@,#,$", "a,b,c", "~,1,2,3", "1ㄱ,2ㄴ,3"})
-    void createWinningNumber(String winningNumber) {
+    void createWinningNumberWithContinuousCommaOrOther(String winningNumber) {
         assertThatThrownBy(() -> Validation.validateWinningNumberSplitCommaConsistOfNum(winningNumber))
             .isInstanceOf(IllegalArgumentException.class)
             .hasMessageContaining(ERROR_MESSAGE);
