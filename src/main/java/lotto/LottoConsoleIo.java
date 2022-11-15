@@ -18,4 +18,8 @@ public class LottoConsoleIo {
         System.out.println("당첨 번호를 입력해주세요.");
     }
 
+    static void printRequestBonus() {
+        System.out.println("보너스 번호를 입력해 주세요.");
+    }
+
 }
