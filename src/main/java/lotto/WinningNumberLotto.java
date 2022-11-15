@@ -66,4 +66,9 @@ public class WinningNumberLotto extends Lotto {
         int number = Integer.parseInt(input);
         return START_NUMBER <= number && number <= END_NUMBER;
     }
+
+    private boolean checkDuplicated(String input) {
+        int number = Integer.parseInt(input);
+        return !getLotto().contains(number);
+    }
 }
