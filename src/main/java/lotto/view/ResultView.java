@@ -7,6 +7,9 @@ import java.text.DecimalFormat;
 import java.util.Map;
 
 public class ResultView {
+    private static final DecimalFormat numberFormat = new DecimalFormat("###,###");
+    private static final DecimalFormat totalReturnRatioFormat = new DecimalFormat("###,###.0");
+
     private final LottoResult lottoResult;
 
     public ResultView(LottoResult lottoResult) {
@@ -18,7 +21,16 @@ public class ResultView {
         System.out.println("당첨 통계");
         System.out.println("---");
         printRankResult();
-        System.out.println("총 수익률은 " + formatTotalReturnRatio(this.lottoResult.getTotalReturnRatio()) + "%입니다.");
+        printTotalReturnRatio();
+    }
+
+    private void printTotalReturnRatio() {
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder
+                .append("총 수익률은 ")
+                .append(totalReturnRatioFormat.format(this.lottoResult.getTotalReturnRatio()))
+                .append("%입니다.");
+        System.out.println(stringBuilder.toString());
     }
 
     private void printRankResult() {
@@ -37,17 +49,9 @@ public class ResultView {
         if (rank.isCorrectBonusNumber) {
             stringBuilder.append(", 보너스 볼 일치");
         }
-        stringBuilder.append(" (").append(formatNumber(rank.winningPrize))
+        stringBuilder.append(" (").append(numberFormat.format(rank.winningPrize))
                 .append("원) - ").append(result.getValue()).append("개");
         return stringBuilder.toString();
-    }
-
-    private String formatNumber(long number) {
-        return new DecimalFormat("###,###").format(number);
-    }
-
-    private String formatTotalReturnRatio(double totalReturnRatio) {
-        return new DecimalFormat("###,###.#").format(totalReturnRatio);
     }
 
     private boolean isPrintExclusive(Map.Entry<LottoRank, Integer> result) {
