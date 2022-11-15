@@ -22,7 +22,7 @@ public class InputTest extends NsTest {
     void createBonusByString() {
         assertThatThrownBy(() -> {
             runException("1000", "1,2,3,4,5,6", "a");
-            assertThat(output()).contains("ERROR");
+            assertThat(output()).contains("[ERROR]");
         });
     }
 
