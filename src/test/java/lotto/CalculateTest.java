@@ -35,17 +35,17 @@ public class CalculateTest {
     @DisplayName("맞춘 당첨번호에 따라 등수를 출력한다.")
     @Test
     void 당첨등수_테스트(){
-        assertThat(Calculate.calculateWinning(List.of(6,0))).isEqualTo(2000000000);
-        assertThat(Calculate.calculateWinning(List.of(5,1))).isEqualTo(30000000);
-        assertThat(Calculate.calculateWinning(List.of(5,0))).isEqualTo(1500000);
-        assertThat(Calculate.calculateWinning(List.of(4,1))).isEqualTo(1500000);
-        assertThat(Calculate.calculateWinning(List.of(4,0))).isEqualTo(50000);
-        assertThat(Calculate.calculateWinning(List.of(3,1))).isEqualTo(50000);
-        assertThat(Calculate.calculateWinning(List.of(3,0))).isEqualTo(5000);
-        assertThat(Calculate.calculateWinning(List.of(2,1))).isEqualTo(5000);
-        assertThat(Calculate.calculateWinning(List.of(1,0))).isEqualTo(0);
-        assertThat(Calculate.calculateWinning(List.of(0,1))).isEqualTo(0);
-        assertThat(Calculate.calculateWinning(List.of(0,0))).isEqualTo(0);
+        assertThat(Calculate.calculateWinning(List.of(6,0))).isEqualTo("FIRST");
+        assertThat(Calculate.calculateWinning(List.of(5,1))).isEqualTo("SECOND");
+        assertThat(Calculate.calculateWinning(List.of(5,0))).isEqualTo("THIRD");
+        assertThat(Calculate.calculateWinning(List.of(4,1))).isEqualTo("THIRD");
+        assertThat(Calculate.calculateWinning(List.of(4,0))).isEqualTo("FOURTH");
+        assertThat(Calculate.calculateWinning(List.of(3,1))).isEqualTo("FOURTH");
+        assertThat(Calculate.calculateWinning(List.of(3,0))).isEqualTo("FIFTH");
+        assertThat(Calculate.calculateWinning(List.of(2,1))).isEqualTo("FIFTH");
+        assertThat(Calculate.calculateWinning(List.of(1,0))).isEqualTo("NOTHING");
+        assertThat(Calculate.calculateWinning(List.of(0,1))).isEqualTo("NOTHING");
+        assertThat(Calculate.calculateWinning(List.of(0,0))).isEqualTo("NOTHING");
 
     }
 }
