@@ -61,7 +61,7 @@ public class LottosResult {
     }
 
     private static class Formats {
-        private static final String HEAD = "당첨 통계\n---\n";
+        private static final String HEAD = "\n당첨 통계\n---\n";
         private static final String FIFTH_LOTTO_PRIZE_MESSAGE = "3개 일치 (5,000원) - %d개\n";
         private static final String FOURTH_LOTTO_PRIZE_MESSAGE = "4개 일치 (50,000원) - %d개\n";
         private static final String THIRD_LOTTO_PRIZE_MESSAGE = "5개 일치 (1,500,000원) - %d개\n";

@@ -28,7 +28,7 @@ public class Lottos {
 
     @Override
     public String toString() {
-        StringBuilder result = new StringBuilder(LOTTOS_DELIMITER);
+        StringBuilder result = new StringBuilder();
 
         for (Lotto lotto : lottos) {
             result.append(lotto).append(LOTTOS_DELIMITER);

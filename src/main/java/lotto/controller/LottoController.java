@@ -18,11 +18,12 @@ public class LottoController {
         PurchaseAmount purchaseAmount = inputPurchaseAmount();
 
         printNumberOfLottos(purchaseAmount);
-
+        
         Lottos lottos = purchaseLottos(purchaseAmount);
+        printLottos(lottos);
+
         WinningNumbers winningNumbers = inputWinningNumbers();
 
-        printLottos(lottos);
         printLottosResult(lottos, winningNumbers);
         printLottosProfitRate(purchaseAmount, lottos, winningNumbers);
     }
