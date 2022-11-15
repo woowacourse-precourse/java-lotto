@@ -5,10 +5,10 @@ public class Rate {
     private final double rate;
 
     public Rate(Money money, PrizeResult prizeResult) {
-        this.rate = getAllMoney(prizeResult) / money.getTicket() * 0.1;
+        this.rate = (getAllMoney(prizeResult) * 0.1) / money.getTicket();
     }
 
-    private double getAllMoney(PrizeResult prizeResult) {
+    private long getAllMoney(PrizeResult prizeResult) {
         int result = 0;
 
         for (Prize prize : Prize.values()) {
