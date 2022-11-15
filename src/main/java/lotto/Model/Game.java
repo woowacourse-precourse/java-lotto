@@ -43,6 +43,9 @@ public class Game {
 
     private Money generateMoney() {
         String userInput = input.getInput(Sentence.INPUT_MONEY.getValue(), output);
+        if (userInput == null) {
+            throw new IllegalArgumentException("[ERROR] Input is null");
+        }
         return new Money(userInput.trim());
     }
 
