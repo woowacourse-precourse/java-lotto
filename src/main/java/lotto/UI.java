@@ -2,8 +2,6 @@ package lotto;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
-import org.mockito.internal.matchers.Not;
-
 public class UI {
 
     public String inputPurchase() {
@@ -28,7 +26,7 @@ public class UI {
     public void outputLottoNumbers() {
         for (Lotto lotto : Game.lottos) {
             System.out.println(
-                String.format(Notice.LOTTO_NUMBER.message(), lotto.numbersToString()));
+                String.format(Notice.LOTTO_NUMBER.message(), lotto.sortedNumbersToString()));
         }
     }
 
