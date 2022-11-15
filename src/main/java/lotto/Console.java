@@ -11,7 +11,16 @@ public class Console {
     private static final String ERROR_MESSAGE = "[ERROR]";
     public double inputMoney() {
         System.out.println("구입금액을 입력해 주세요.");
-        return Double.valueOf(readLine());
+        double money = 0;
+        try {
+            money = Double.valueOf(readLine());
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException();
+        }
+        if (money % 1000 != 0) {
+            throw new IllegalArgumentException();
+        }
+        return money;
     }
     public Lotto inputWinningNumbers() {
         System.out.println("당첨 번호를 입력해 주세요.");
@@ -51,5 +60,8 @@ public class Console {
     }
     public void outputErrorMessage() {
         System.out.println(ERROR_MESSAGE + " 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
+    }
+    public void outputMoneyErrorMessage() {
+        System.out.println(ERROR_MESSAGE + " 구입 금액은 1,000원 단위로 입력하셔야 합니다.");
     }
 }

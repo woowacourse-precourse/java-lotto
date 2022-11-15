@@ -12,10 +12,11 @@ public class Application {
         double money=0;
         try {
             money = console.inputMoney();
-        } catch (NumberFormatException e) {
-            console.outputErrorMessage();
+        } catch (IllegalArgumentException e) {
+            console.outputMoneyErrorMessage();
             return;
         }
+
         int count = calculator.getLottoCount(money);
 
         // 로또 구매
