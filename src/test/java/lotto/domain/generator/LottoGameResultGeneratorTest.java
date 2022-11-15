@@ -7,7 +7,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -381,7 +380,7 @@ public class LottoGameResultGeneratorTest {
 
     @DisplayName("수익률 잘 계산하는지 테스트")
     @Nested
-    class earningRateCalculatingTest {
+    class EarningRateCalculatingTest {
         private List<Lotto> lottos = new ArrayList<>();
 
         @BeforeEach
