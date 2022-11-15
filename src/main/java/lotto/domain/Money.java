@@ -1,6 +1,7 @@
 package lotto.domain;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.Objects;
 
 public class Money {
@@ -16,7 +17,7 @@ public class Money {
     }
 
     public Money divide(Money price){
-        return new Money(money.divide(price.money,2,BigDecimal.ROUND_FLOOR));
+        return new Money(money.divide(price.money,2, RoundingMode.FLOOR));
     }
 
     public int intValue(){
