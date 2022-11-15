@@ -3,7 +3,6 @@ package view;
 import domain.LottoRank;
 import domain.Lotto;
 import java.text.NumberFormat;
-import java.util.Collections;
 import java.util.List;
 
 public class OutputView {
@@ -14,7 +13,6 @@ public class OutputView {
 
     public void printLotto(List<Lotto> lottoList) {
         for (Lotto lotto : lottoList){
-            Collections.sort(lotto.numbers);
             System.out.println((lotto.numbers));
         }
 
