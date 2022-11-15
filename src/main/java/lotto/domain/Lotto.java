@@ -30,28 +30,28 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
+        validateLottoSize(numbers);
+        for (Integer number : numbers) {
+            validateLottoRange(number);
+            validateDuplicateCount(number, numbers);
+        }
+    }
+
+    private static void validateLottoSize(List<Integer> numbers) {
         if (numbers.size() != LOTTO_SIZE) {
             throw new IllegalArgumentException(LOTTO_SIZE_ERROR);
         }
-        validateLottoRange(numbers);
-        validateDuplicateCount(numbers);
     }
 
-    private void validateLottoRange(List<Integer> numbers) {
-        for (Integer number : numbers) {
-            if (number < MIN_NUMBER || number > MAX_NUMBER) {
-                throw new IllegalArgumentException(LOTTO_RANGE_ERROR_MESSAGE);
-            }
+    protected void validateLottoRange(Integer number) {
+        if (number < MIN_NUMBER || number > MAX_NUMBER) {
+            throw new IllegalArgumentException(LOTTO_RANGE_ERROR_MESSAGE);
         }
     }
 
-    private void validateDuplicateCount(List<Integer> numbers) {
-        if (numbers.size() != numbers.stream().distinct().count()) {
+    private void validateDuplicateCount(Integer number, List<Integer> numbers) {
+        if (numbers.indexOf(number) != numbers.lastIndexOf(number)) {
             throw new IllegalArgumentException(LOTTO_HAS_DUPLICATED_NUMBER_ERROR_MESSAGE);
         }
-    }
-
-    public List<Integer> getNumbers() {
-        return numbers;
     }
 }
