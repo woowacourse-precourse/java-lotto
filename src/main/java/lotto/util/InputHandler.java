@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class InputHandler {
-    private static final String DEFAULT_ERROR_MESSAGE = "[ERROR]";
+    private static final String DEFAULT_ERROR_MESSAGE = "[ERROR] ";
     public InputHandler() {
     }
 

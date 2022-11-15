@@ -14,6 +14,7 @@ public class LottoMachine {
     private final LottoGenerator lottoGenerator;
     private List<Integer> resultRank;
     private int bonusNumber;
+    private int lottoAmount;
 
     public LottoMachine() {
         randomLotto = new ArrayList<>();
@@ -23,7 +24,7 @@ public class LottoMachine {
     }
 
     public void run() {
-        int lottoAmount = lottoPurchase();
+        lottoAmount = lottoPurchase();
         randomLotto = generateLotto(lottoAmount);
         Lotto winningLottery = getWinningNumbers();
         bonusNumber = getBonusNumber();
@@ -87,6 +88,7 @@ public class LottoMachine {
 
     private void printResult() {
         long totalCredit = 0;
+        System.out.println("\n" + SYSTEM_MESSAGE.RESULT.getMessage());
         for (LOTTERY_REWARD reward :
                 LOTTERY_REWARD.values()) {
             StringBuilder sb = new StringBuilder();
@@ -95,8 +97,11 @@ public class LottoMachine {
             System.out.println(sb);
             totalCredit += (long) reward.getCost() * count;
         }
+        printStatistic(totalCredit);
     }
-    private void printStatistic(int totalCredit){
-        System.out.println();
+
+    private void printStatistic(long totalCredit) {
+        float totalReturnRate = (float) totalCredit / (lottoAmount * 10L);
+        System.out.printf("\n" + SYSTEM_MESSAGE.TOTAL_RETURN.getMessage(), totalReturnRate);
     }
 }
