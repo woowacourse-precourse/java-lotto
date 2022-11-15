@@ -28,5 +28,7 @@ public class MainNumber {
         return numbers;
     }
 
-
+    public List<Integer> getNumbers() {
+        return numbers;
+    }
 }

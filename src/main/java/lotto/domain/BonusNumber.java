@@ -5,7 +5,7 @@ import java.util.List;
 public class BonusNumber {
     private int number;
 
-    BonusNumber(String userInput, List<Integer> winningNumber) {
+    public BonusNumber(String userInput, List<Integer> winningNumber) {
         int number = validate(userInput, winningNumber);
         this.number = number;
     }

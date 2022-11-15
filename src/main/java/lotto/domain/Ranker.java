@@ -8,7 +8,7 @@ public class Ranker {
     private List<Integer> winningNumber;
     private int bonusNumber;
 
-    Ranker(List<Integer> winningNumber, int bonusNumber) {
+    public Ranker(List<Integer> winningNumber, int bonusNumber) {
         this.winningNumber = winningNumber;
         this.bonusNumber = bonusNumber;
     }
