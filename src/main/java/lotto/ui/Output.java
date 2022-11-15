@@ -14,4 +14,5 @@ public class Output {
             System.out.println(lotto.getNumbers().toString());
         }
     }
+
 }

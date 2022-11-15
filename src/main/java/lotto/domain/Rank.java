@@ -16,6 +16,8 @@ public enum Rank {
     private final int winAmount;
     private final String message;
 
+    public static final int length = 5;
+
     Rank(int index, int matchNumbers, int matchBonus, int winAmount, String message) {
         this.index = index;
         this.matchNumbers = matchNumbers;
