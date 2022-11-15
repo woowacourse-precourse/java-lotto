@@ -5,14 +5,16 @@ import java.util.*;
 import static java.util.Comparator.*;
 
 public class LottoResult {
+    private int purchaseAmount;
     private Map<LottoRank, Integer> rankResult;
     private long totalPrize;
     private double totalReturnRatio;
 
-    public LottoResult(List<LottoRank> winningResult, int purchaseAmount) {
+    public LottoResult(List<LottoRank> winningResult) {
         initRankResult();
         updateRankResult(winningResult);
         sortRankResult(comparingLong(result -> result.getKey().winningPrize));
+        this.purchaseAmount = winningResult.size() * LotteryPublisher.LOTTO_PRICE;
         this.totalPrize = calcTotalPrize(this.rankResult);
         this.totalReturnRatio = Math.round((double) totalPrize / purchaseAmount * 1000) / 10.0;
     }
@@ -48,6 +50,10 @@ public class LottoResult {
         return rankResult.entrySet().stream()
                 .map(result -> result.getKey().winningPrize * result.getValue())
                 .reduce(0L, Long::sum);
+    }
+
+    public int getPurchaseAmount() {
+        return purchaseAmount;
     }
 
     public Map<LottoRank, Integer> getRankResult() {

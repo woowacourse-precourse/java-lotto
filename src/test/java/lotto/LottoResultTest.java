@@ -13,7 +13,7 @@ class LottoResultTest {
     @Test
     void sortRankResultTest() {
         List<LottoRank> winningResult = List.of(_1st, DRAW, _3rd);
-        LottoResult lottoResult = new LottoResult(winningResult, 3000);
+        LottoResult lottoResult = new LottoResult(winningResult);
 
         lottoResult.sortRankResult((older, newer) ->
                 Long.valueOf(newer.getKey().winningPrize).intValue()
@@ -24,11 +24,20 @@ class LottoResultTest {
         assertThat(lottoResult.getRankResult().values()).containsExactly(1, 0, 1, 0, 0, 1);
     }
 
+    @DisplayName("로또 결과를 통해 로또 구입 금액을 구한다.")
+    @Test
+    void purchaseAmountTest() {
+        List<LottoRank> winningResult = List.of(_1st, DRAW, _3rd, _3rd);
+        LottoResult lottoResult = new LottoResult(winningResult);
+
+        assertThat(lottoResult.getPurchaseAmount()).isEqualTo(4000);
+    }
+
     @DisplayName("로또 결과를 통해 로또 등수별 기록을 구한다.")
     @Test
     void rankResultTest() {
         List<LottoRank> winningResult = List.of(_1st, DRAW, _3rd, _3rd);
-        LottoResult lottoResult = new LottoResult(winningResult, 4000);
+        LottoResult lottoResult = new LottoResult(winningResult);
 
         assertThat(lottoResult.getRankResult().keySet()).containsExactly(DRAW, _5th, _4th, _3rd, _2nd, _1st);
         assertThat(lottoResult.getRankResult().values()).containsExactly(1, 0, 0, 2, 0, 1);
@@ -38,7 +47,7 @@ class LottoResultTest {
     @Test
     void totalPrizeTest() {
         List<LottoRank> winningResult = List.of(_1st, DRAW, _3rd, _3rd, _1st, DRAW, _5th);
-        LottoResult lottoResult = new LottoResult(winningResult, 7000);
+        LottoResult lottoResult = new LottoResult(winningResult);
 
         assertThat(lottoResult.getTotalPrize()).isEqualTo(4_003_005_000L);
     }
