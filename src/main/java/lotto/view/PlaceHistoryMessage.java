@@ -1,4 +1,4 @@
-package lotto.message;
+package lotto.view;
 
 import lotto.domain.place.MatchResult;
 import lotto.domain.statistics.PlaceHistory;

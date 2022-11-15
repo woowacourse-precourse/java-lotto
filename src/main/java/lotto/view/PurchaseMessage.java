@@ -1,4 +1,4 @@
-package lotto.message;
+package lotto.view;
 
 import static lotto.message.PrintMessage.PURCHASE_QUANTITY;
 

@@ -2,7 +2,7 @@ package lotto.controller;
 
 import static lotto.domain.statistics.WinningStatistics.createWinningStatistics;
 import static lotto.domain.statistics.YieldRate.calcYieldRate;
-import static lotto.message.PurchaseMessage.makePurchaseLottoMessage;
+import static lotto.view.PurchaseMessage.makePurchaseLottoMessage;
 
 import lotto.domain.PurchaseAmount;
 import lotto.domain.User;

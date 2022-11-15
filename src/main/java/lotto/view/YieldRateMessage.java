@@ -1,4 +1,4 @@
-package lotto.message;
+package lotto.view;
 
 import static lotto.value.RateValue.PERCENT;
 

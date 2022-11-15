@@ -11,7 +11,7 @@ import lotto.domain.statistics.WinningStatistics;
 import lotto.io.InputControl;
 import lotto.io.OutputControl;
 import lotto.message.PrintMessage;
-import lotto.message.PurchaseMessage;
+import lotto.view.PurchaseMessage;
 
 public class User {
 

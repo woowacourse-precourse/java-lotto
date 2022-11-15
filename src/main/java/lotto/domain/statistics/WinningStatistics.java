@@ -1,7 +1,7 @@
 package lotto.domain.statistics;
 
-import static lotto.message.PlaceHistoryMessage.makePlaceHistoryMessage;
-import static lotto.message.YieldRateMessage.makeYieldRateMessage;
+import static lotto.view.PlaceHistoryMessage.makePlaceHistoryMessage;
+import static lotto.view.YieldRateMessage.makeYieldRateMessage;
 
 public class WinningStatistics {
 
