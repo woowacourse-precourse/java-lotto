@@ -29,14 +29,14 @@ public class BonusNumber {
         return bonusNumber;
     }
 
-    public static void checkTypeValid(String bonusNumber) {
+    private void checkTypeValid(String bonusNumber) {
         boolean isType = bonusNumber.chars().allMatch(Character::isDigit);
         if (!isType) {
             throw new IllegalArgumentException(BONUS_NUMBER_TYPE_ERROR);
         }
     }
 
-    public static void checkRangeValid(String bonusNumber) {
+    private void checkRangeValid(String bonusNumber) {
         int number = Integer.parseInt(bonusNumber);
         boolean isRange = (number >= MINIMUM_LOTTERY_NUMBER && number <= MAXIMUM_LOTTERY_NUMBER);
         if (!isRange) {
@@ -44,7 +44,7 @@ public class BonusNumber {
         }
     }
 
-    public void checkConflictWithWinningsValid(String bonusNumber) {
+    private void checkConflictWithWinningsValid(String bonusNumber) {
         List<Integer> winningNumbers = winningLotto.getNumbers();
         boolean isConflictWithWinnings = winningNumbers.stream()
                 .noneMatch(number -> Integer.parseInt(bonusNumber) == number);

@@ -21,24 +21,23 @@ public class Lotto {
     }
 
     public int getMatchCount(WinningLotto winningNumbers) {
-        long matchCount = numbers.stream()
+        return (int) numbers.stream()
                 .filter(winningNumbers::contains)
                 .count();
-        return Long.valueOf(matchCount).intValue();
     }
 
     public boolean hasBonusNumber(int bonusNumber) {
         return numbers.contains(bonusNumber);
     }
 
-    public static void checkSizeValid(List<Integer> numbers) {
+    private void checkSizeValid(List<Integer> numbers) {
         boolean isSize = numbers.size() == LOTTERY_NUMBERS_SIZE;
         if (!isSize) {
             throw new IllegalArgumentException(USER_LOTTERY_NUMBERS_SIZE_ERROR);
         }
     }
 
-    public static void checkConflictValid(List<Integer> numbers) {
+    private void checkConflictValid(List<Integer> numbers) {
         boolean isConflict = numbers.stream()
                 .distinct()
                 .count() == LOTTERY_NUMBERS_SIZE;

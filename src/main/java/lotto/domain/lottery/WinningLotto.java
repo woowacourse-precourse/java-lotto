@@ -33,14 +33,14 @@ public class WinningLotto {
         return numbers;
     }
 
-    public static void checkFormatValid(String winningNumber) {
+    private void checkFormatValid(String winningNumber) {
         boolean isFormat = Pattern.matches("^[0-9,]*$", winningNumber); // TODO: ,, 도 안되게!!
         if (!isFormat) {
             throw new IllegalArgumentException(WINNING_NUMBERS_FORMAT_ERROR);
         }
     }
 
-    public static void checkSizeValid(String winningNumber) {
+    private void checkSizeValid(String winningNumber) {
         List<String> winningNumbers = toStringListByComma(winningNumber);
         boolean isSize = winningNumbers.size() == LOTTERY_NUMBERS_SIZE;
         if (!isSize) {
@@ -48,7 +48,7 @@ public class WinningLotto {
         }
     }
 
-    public static void checkConflictValid(String winningNumber) {
+    private void checkConflictValid(String winningNumber) {
         List<Integer> winningNumbers = toIntegerListByComma(winningNumber);
         boolean isConflict = winningNumbers.stream()
                 .distinct()
@@ -58,7 +58,7 @@ public class WinningLotto {
         }
     }
 
-    public static void checkRangeValid(String winningNumber) {
+    private void checkRangeValid(String winningNumber) {
         List<Integer> winningNumbers = toIntegerListByComma(winningNumber);
         boolean isRange = winningNumbers.stream()
                 .filter(number -> MINIMUM_LOTTERY_NUMBER <= number
@@ -78,7 +78,7 @@ public class WinningLotto {
     }
 
     private static List<Integer> toIntegerListByComma(String winningNumber) {
-        List<String> winningNumbers = Arrays.asList(winningNumber.split(","));
+        List<String> winningNumbers = toStringListByComma(winningNumber);
         return winningNumbers.stream()
                 .map(Integer::parseInt)
                 .collect(Collectors.toList());
