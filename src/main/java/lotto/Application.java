@@ -16,11 +16,11 @@ public class Application {
 
         // 당첨 번호 입력 받기 // 예외 처리 (1~45 자리 수, int가 아닌 경우, 6자리 수, 중복 문자 제거)
         System.out.println("당첨 번호를 입력해 주세요.");
-        List<Integer> winningNumber;
-        winningNumber = Input.inputWinningNumber();
+        List<Integer> winningNumber = Input.inputWinningNumber();
         System.out.println(winningNumber);
 
         // 보너스 번호 입력 받기 // 예외 처리 (1~45 자리 수, int가 아닌 경우 )
+
 
         // 발행한 로또 수량 및 번호 출력
 

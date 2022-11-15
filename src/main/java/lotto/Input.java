@@ -26,6 +26,8 @@ public class Input {
         return winningNumber;
     }
 
+
+
     public static void validateNumber(String input) {
         try {
             Integer.parseInt(input);
