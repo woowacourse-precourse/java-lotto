@@ -2,7 +2,6 @@ package lotto.domain;
 
 import static lotto.domain.LottoValidator.validateLottoNumbers;
 
-import java.util.Collections;
 import java.util.List;
 
 public class Lotto {
@@ -14,8 +13,7 @@ public class Lotto {
     }
 
     public List<Integer> getNumbers() {
-        Collections.sort(this.numbers);
-        return this.numbers;
+        return numbers;
     }
 
     public int checkRank(List<Integer> winningNumbers, int bonusNumber) {
