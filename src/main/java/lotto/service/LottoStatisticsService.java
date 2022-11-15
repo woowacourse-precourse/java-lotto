@@ -37,7 +37,7 @@ public class LottoStatisticsService {
             total += (long) entry.getKey().getAmount() * entry.getValue();
         }
 
-        System.out.println("총 수익률: " + money.getYield(total) + "%입니다.");
+        System.out.println("총 수익률은 " + money.getYield(total) + "%입니다.");
     }
 
     private SortedMap<LottoRank, Integer> setLottoRankIntegerSortedMap(List<Integer> winningNumbers, int bonusNumber) {
