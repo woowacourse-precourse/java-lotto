@@ -12,6 +12,11 @@ public class BonusNumber {
         this.bonusNumber = bonusNumber;
     }
 
+    public int matchBonusNumber(List<Integer> unMatchBall) {
+        if (unMatchBall.contains(Integer.parseInt(bonusNumber))) return 1;
+        return 0;
+    }
+
     public void duplicateInputBonusNumber(List<Integer> WinnerLottoNumber) {
         if (WinnerLottoNumber.contains(Integer.parseInt(bonusNumber))) {
             throw new IllegalArgumentException("[ERROR] 보너스 번호는 당첨 번호와 중복될 수 없습니다.");
