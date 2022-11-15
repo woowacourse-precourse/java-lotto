@@ -13,12 +13,16 @@ public class LottoRandomGenerator {
     private static final String SIZE_ERROR_MESSAGE = "[ERROR] 생성된 로또의 번호가 6개가 아닙니다.";
     private static final String OVERLAP_ERROR_MESSAGE = "[ERROR] 로또에 중복된 번호가 있습니다.";
 
-    public Lotto createLotto(){
+    public Lotto createLottoNumber(){
         List<Integer> lottoNumber = Randoms.pickUniqueNumbersInRange(MIN_NUMBER,MAX_NUMBER,LOTTO_SIZE);
         Collections.sort(lottoNumber);
-        checkCorrectLotto(lottoNumber);
 
-        return new Lotto(lottoNumber);
+        return createLotto(lottoNumber);
+    }
+
+    private Lotto createLotto(List<Integer> lottoNumbers){
+        checkCorrectLotto(lottoNumbers);
+        return new Lotto(lottoNumbers);
     }
 
     private void checkCorrectLotto(List<Integer> lotto) {

@@ -3,21 +3,22 @@ package lotto;
 import java.util.List;
 import java.util.Map;
 
-public class Manager {private int amount = 0;
-    List<Lotto> Lottos;
+public class Manager {
+
+    User user = new User();
 
     Map<Rank,Integer> winningBoard;
 
-
-    public void inputAmount() {
+    public void inputMoney() {
         UserInput input = new UserInput();
-        amount  = input.moneyInput();
+        int money = input.moneyInput();
+        user.setMoney(money);
     }
 
     public void compareLotto() {
         Compare compare = new Compare();
 
-        for (Lotto lotto : Lottos) {
+        for (Lotto lotto : user.getLottos()) {
             compare.compareLotto(lotto);
         }
     }

@@ -1,8 +1,5 @@
 package lotto;
 
-import java.util.Map;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public enum Rank {
     RANK_1(6,2_000_000_000,"6개 일치 (2,000,000,000원)"),
@@ -15,7 +12,6 @@ public enum Rank {
     private final int reward;
     private final String notification;
 
-    private static final Map<Integer,Rank> RANK_MAP = Stream.of(values()).collect(Collectors.toMap(Rank::getContainCount, e->e));
 
     Rank(int containCount, int reward, String notification) {
         this.containCount = containCount;
@@ -32,7 +28,4 @@ public enum Rank {
         return notification;
     }
 
-    public static Rank rankByContainCount(int containCount) {
-        return RANK_MAP.get(containCount);
-    }
 }
