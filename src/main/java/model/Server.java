@@ -1,7 +1,9 @@
 package model;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import lotto.NumberMatch;
 
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -36,5 +38,14 @@ public class Server {
 
     public Boolean compareBonusNumber(List<Integer> lottoNumber, int bonusNumber) {
         return lottoNumber.contains(bonusNumber);
+    }
+
+    public int moneyToLotto(HashMap matchNumber){
+        int totalMoney = (int) matchNumber.get(3) * NumberMatch.THREE.getMoney() +
+                (int) matchNumber.get(4) * NumberMatch.FORTH.getMoney() +
+                (int) matchNumber.get(5) * NumberMatch.FIFTH.getMoney() +
+                (int) matchNumber.get(7) * NumberMatch.FIFTH_BONUS.getMoney() +
+                (int) matchNumber.get(6) * NumberMatch.SIXTH.getMoney();
+        return totalMoney;
     }
 }
