@@ -19,11 +19,12 @@ public class Lotto {
 
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ExceptionHandler.WRONG_NUMBERS_COUNT);
         }
         Set<Integer> nums = new HashSet<>(numbers);
-        if(numbers.size() != nums.size())
-            throw new IllegalArgumentException();
+        if (numbers.size() != nums.size()) {
+            throw new IllegalArgumentException(ExceptionHandler.DUPLICATED_LOTTO_NUMBERS);
+        }
     }
 
     public void checkResult(List<Integer> winNumbers, Integer bonusNumber) {
