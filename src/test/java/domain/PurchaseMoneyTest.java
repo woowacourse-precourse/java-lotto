@@ -18,6 +18,7 @@ class PurchaseMoneyTest {
     @DisplayName("사용자가 금액을 입력하면 해당 금액을 1000으로 나눈 개수를 출력합니다.")
     @Test
     void getNumberLotteryPurchasesAvailable() {
-        Assertions.assertThat(new PurchaseMoney(5000).getNumberLotteryPurchasesAvailable()).isEqualTo(5);
+        Assertions.assertThat(new PurchaseMoney(5000).getNumberLotteryPurchasesAvailable())
+                .isEqualTo(5);
     }
 }
