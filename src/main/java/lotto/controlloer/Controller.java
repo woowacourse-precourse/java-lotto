@@ -48,14 +48,10 @@ public class Controller {
 
     private AnswerLotto getAnswerLotto(){
         AnswerLotto answerLotto = new AnswerLotto(getLottoAnswerNumber(), inputBonusNumber());
-        validateDuplicateBonusNumber(answerLotto.getAnswerLotto(), answerLotto.getBonusNumber());
         return answerLotto;
     }
 
-    private static void validateDuplicateBonusNumber( List<Integer> lottos, Integer bonus) {
-        if(lottos.contains(bonus))
-            throw new IllegalArgumentException(ERROR_MESSAGE + DUPLICATE_BONUS_ERROR_MESSAGE);
-    }
+
 
     private int getNumberOfLotto(int money){
         return money / 1000;

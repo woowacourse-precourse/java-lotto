@@ -1,5 +1,6 @@
 package lotto.domain;
 
+import static lotto.domain.SystemMessage.DUPLICATE_BONUS_ERROR_MESSAGE;
 import static lotto.domain.SystemMessage.ERROR_MESSAGE;
 import static lotto.domain.SystemMessage.LIMIT_NUMBER_ERROR_MESSAGE;
 
@@ -12,6 +13,7 @@ public class AnswerLotto {
     public AnswerLotto(List<Integer> answerLotto, int bonusNumber) {
         validateAllLottoNumber(answerLotto);
         validateCheckNumberLimit(bonusNumber);
+        validateDuplicateBonusNumber(answerLotto, bonusNumber);
         this.answerLotto = answerLotto;
         this.bonusNumber = bonusNumber;
     }
@@ -39,5 +41,8 @@ public class AnswerLotto {
         validateCheckLimit(numbers);
     }
 
-
+    private static void validateDuplicateBonusNumber( List<Integer> answerLotto, Integer bonusNumber) {
+        if(answerLotto.contains(bonusNumber))
+            throw new IllegalArgumentException(ERROR_MESSAGE + DUPLICATE_BONUS_ERROR_MESSAGE);
+    }
 }
