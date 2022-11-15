@@ -14,13 +14,13 @@ public class HandlingInputException {
 
     public void checkRightRange(int purchaseAmount) {
 
-        if (purchaseAmount / 1000 >= 1) {
+        if (purchaseAmount / 1000 < 1) {
             throw new IllegalArgumentException("[Error] 1000원 이상 구매해야 합니다.");
         }
     }
 
     public void checkRightUnit(int purchaseAmount) {
-        if (purchaseAmount % 1000 == 0) {
+        if (purchaseAmount % 1000 != 0) {
             throw new IllegalArgumentException("[Error] 1000원 단위로 구매해야 합니다.");
         }
     }
