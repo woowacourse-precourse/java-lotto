@@ -23,4 +23,5 @@
 ## 테스트
 - [x] Lotto 클래스 테스트 코드 작성
 - [x] Place 클래스 테스트 코드 작성
-- [] Calculator 클래스 테스트 코드 작성
+- [X] Calculator 클래스 테스트 코드 작성
+- [X] LottoNumberConverter 클래스 테스트 코드 작성
