@@ -20,7 +20,7 @@ public class LottoManager {
     private List<Integer> winCounts = new ArrayList<>(List.of(0, 0, 0, 0, 0, 0));
 
     public void InputMoney(int money) throws IllegalArgumentException{
-        if (money % 1000 != 0){
+        if (money % 1000 != 0 || money == 0){
             throw new IllegalArgumentException("[ERROR] 1000원 단위 금액으로 입력해주십시오.");
         }
         this.inputMoney = money;
@@ -43,11 +43,7 @@ public class LottoManager {
     }
 
     public float getEarningRate(){
-        float ret = 0;
-
-        if (inputMoney == 0)
-            return ret;
-        ret = (float)calculateTotalPrize() / (float)inputMoney;
+        float ret = (float)calculateTotalPrize() / (float)inputMoney;
         return ret * 100;
     }
 
