@@ -53,7 +53,7 @@ public class LottoController {
         String bonusNumber = Console.readLine();
         saveWinningBonusNumber(bonusNumber);
         System.out.println("winningBonusNumber.getBonusNumber = " + winningBonusNumber.getBonusNumber());
-        
+
 
     }
 
