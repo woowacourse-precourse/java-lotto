@@ -1,5 +1,9 @@
 package lotto.exception;
 
+import lotto.domain.Lotto;
+
+import java.util.List;
+
 public class Exception {
     private static final char INPUT_START = '0';
     private static final char INPUT_END = '9';
@@ -26,6 +30,19 @@ public class Exception {
     public static void validateIsLessThanThousand(String input) {
         if (Integer.parseInt(input)<1000) {
             throw new IllegalArgumentException(ERROR + "구매금액은 1000 이상이어야 합니다.");
+        }
+    }
+
+    public static void validateIsDuplicatedWithWinningLotto(Lotto winningLotto, int bonusNumber) {
+        List<Integer> numbers = winningLotto.getNumbers();
+        for (Integer number: numbers) {
+            checkIsMatched(number, bonusNumber);
+        }
+    }
+
+    private static void checkIsMatched(Integer number, int bonusNumber){
+        if (number == bonusNumber) {
+            throw new IllegalArgumentException(ERROR + "보너스번호가 우승 번호와 중복됩니다.");
         }
     }
 }
