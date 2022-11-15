@@ -1,36 +1,31 @@
 package lotto.domain;
 
-import camp.nextstep.edu.missionutils.Randoms;
+import lotto.domain.strategy.LottoGenerateStrategy;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static lotto.domain.LottoNumberParser.parseLottoNumbers;
-
 public class LottoGenerator {
-    private static final int LOTTO_MIN_NUMBER = 1;
-    private static final int LOTTO_MAX_NUMBER = 45;
-    private static final int LOTTO_SIZE = 6;
+    LottoGenerateStrategy lottoGenerateStrategy;
 
-    private LottoGenerator() {
+    private LottoGenerator(LottoGenerateStrategy lottoGenerateStrategy) {
+        this.lottoGenerateStrategy = lottoGenerateStrategy;
     }
 
-    public static List<Lotto> buyMultipleRandomLotto(Money userMoney) {
-        List<Lotto> userLottos = new ArrayList<>();
-        int countOfLotto = userMoney.getCountOfLotto();
-        for (int count = 0; count < countOfLotto; count++) {
-            userLottos.add(getRandomLotto());
+    public static LottoGenerator from(LottoGenerateStrategy lottoGenerateStrategy) {
+        return new LottoGenerator(lottoGenerateStrategy);
+    }
+
+    public Lotto generate() {
+        return lottoGenerateStrategy.generate();
+    }
+
+    public List<Lotto> generateMultipleLotto(int countOfLotto) {
+        List<Lotto> multipleLotto = new ArrayList<>();
+        while (countOfLotto > 0) {
+            multipleLotto.add(generate());
+            countOfLotto--;
         }
-        return userLottos;
-    }
-
-    private static Lotto getRandomLotto() {
-        List<Integer> lottoNumbers = Randoms.pickUniqueNumbersInRange(LOTTO_MIN_NUMBER, LOTTO_MAX_NUMBER, LOTTO_SIZE);
-        return new Lotto(lottoNumbers);
-    }
-
-    public static Lotto getInputLotto(String inputLottoNumbers) {
-        List<Integer> lottoNumbers = parseLottoNumbers(inputLottoNumbers);
-        return new Lotto(lottoNumbers);
+        return multipleLotto;
     }
 }
