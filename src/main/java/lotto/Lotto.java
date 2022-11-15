@@ -23,4 +23,20 @@ public class Lotto {
 
         return this.numbers;
     }
+
+    public int compareWinNumberAndLottoPaperPoint (List<Integer> LottoPaperLine) {
+        int rankNumber = 0;
+
+        for (int i = 0; i < 6; i++) {
+            if (LottoPaperLine.contains(numbers.get(i))) {
+                rankNumber++;
+            }
+        }
+
+        if (LottoPaperLine.contains(numbers.get(6))) {
+            rankNumber += 100;
+        }
+
+        return rankNumber;
+    }
 }
