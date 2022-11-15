@@ -11,22 +11,28 @@ public class Lotto {
     // 인스턴스 변수 추가 불가
     // 패키지 변경은 가능
     private final List<Integer> numbers; //private 변경 불가
+    private int bonusNumber;
 
+    private int cash;
     public Lotto(List<Integer> numbers) {
         validate(numbers);
         isDuplicated(numbers);
         checkRangeOfNumbers(numbers);
+        isDuplicated(numbers);
         this.numbers = numbers;
 
     }
-
+    public Lotto(List<Integer> numbers, int bonusNumber){
+        isBonusNumberDuplicated(numbers,bonusNumber);
+        this.numbers = numbers;
+        this.bonusNumber = bonusNumber;
+    }
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException("[ERROR] 입력값은 총 6개가 되어야 합니다.");
         }
     }
-    // TODO: 추가 기능 구현
-    // TODO: 번호 유효성 검사
+
 
     private void checkRangeOfNumbers(List<Integer> numbers){
         if(Collections.max(numbers)>45 || Collections.min(numbers)<1){
@@ -44,8 +50,15 @@ public class Lotto {
         }
     }
 
+    private void isBonusNumberDuplicated(List<Integer> numbers, int bonusNumber){
+        for(int numberIndex=0; numberIndex<6; numberIndex++){
+            if(numbers.contains(bonusNumber)){
+                throw new IllegalArgumentException("[ERROR] 보너스 번호가 중복됩니다.");
+            }
+        }
+    }
 
+    private void isNumber(List<Integer> numbers){
 
-
-
+    }
 }

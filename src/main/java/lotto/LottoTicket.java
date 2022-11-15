@@ -26,6 +26,9 @@ public class LottoTicket {
         if (totalCash % 1000 != 0) {
             throw new IllegalArgumentException("[ERROR] 잔돈이 발생합니다.");
         }
+        if (totalCash<1000){
+            throw new IllegalArgumentException("[ERROR] 로또의 최소 가격은 1000원 입니다.");
+        }
         ticketCount = totalCash / ticketPrice;
         return ticketCount;
     }
