@@ -7,6 +7,7 @@ import java.util.List;
 
 public class View {
 
+
     public String input() {
         return Console.readLine();
     }

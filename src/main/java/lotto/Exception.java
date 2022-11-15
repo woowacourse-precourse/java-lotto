@@ -7,9 +7,10 @@ public class Exception {
     //숫자가 아닌 문자 입력시 예외처리
     public boolean isNumeric(String number){
         for(int i=0;i<number.length();i++){
-            if('0'<=number.charAt(i)&&number.charAt(i)<='9')return true;
+            if('0'<=number.charAt(i)&&number.charAt(i)<='9')continue;
+            return false;
         }
-        return false;
+        return true;
     }
 
     public boolean moneyValidator(int money){

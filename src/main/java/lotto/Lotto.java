@@ -14,7 +14,7 @@ public class Lotto {
 
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR]");
         }
     }
 
@@ -23,7 +23,7 @@ public class Lotto {
         StringBuilder sb = new StringBuilder();
 
         for(int i=0;i<numbers.size()-1;i++){
-            sb.append(numbers.get(i)+",");
+            sb.append(numbers.get(i)+", ");
         }
         sb.append(numbers.get(numbers.size()-1));
         return sb.toString();

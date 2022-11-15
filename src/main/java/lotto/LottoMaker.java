@@ -19,7 +19,7 @@ public class LottoMaker {
         List<Integer> LottoNumber = new ArrayList<>();
 
         for(int i=0;i<numbers.length;i++){
-            if(exception.lottoValidator(Integer.parseInt(numbers[i]))){
+            if(exception.lottoValidator(Integer.parseInt(numbers[i]))&&exception.isNumeric(numbers[i])){
                 LottoNumber.add(Integer.parseInt(numbers[i]));
                 addOverlap(Integer.parseInt(numbers[i]));
                 continue;
@@ -35,7 +35,7 @@ public class LottoMaker {
     }
 
     public boolean overlapException(String type){
-        System.out.println(overlapNumber.size());
+        
         if(type =="lotto"){
             if(overlapNumber.size()==6)return true;
         }
