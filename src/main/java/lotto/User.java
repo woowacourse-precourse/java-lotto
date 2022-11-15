@@ -17,15 +17,19 @@ public class User {
 
     public void enterPrice(){
         System.out.println("구입금액을 입력해 주세요.");
-        this.lottoPrice = Integer.valueOf(Console.readLine());
+        lottoPrice = Integer.parseInt(Console.readLine());
+        isValidPrice(lottoPrice);
     }
 
     public void printLottoEA(){
         System.out.println();
         lottoEA = this.lottoPrice/1000;
-        if((lottoPrice%1000) != 0)
-            throw new IllegalArgumentException("[ERROR]1000단위로 구매해야 합니다.");
         System.out.println(lottoEA + "개를 구매했습니다.");
+    }
+
+    public void isValidPrice(int num){
+        if((num%1000) != 0)
+            throw new IllegalArgumentException("[ERROR]1000단위로 구매해야 합니다.");
     }
 
     public void createLotto(){
@@ -62,7 +66,7 @@ public class User {
     private void enter(String nums){
         userNumbers = new ArrayList<>();
         for(String num : nums.split(",")){
-            isOutOfRange(Integer.valueOf(num));
+            isOutOfRange(Integer.parseInt(num));
         }
     }
 
