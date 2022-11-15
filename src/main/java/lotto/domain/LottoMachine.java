@@ -37,8 +37,6 @@ public class LottoMachine {
     }
 
     public void getInputMoney() {
-
-        System.out.println("구입 금액을 입력해 주세요");
         String money = Console.readLine();
         validateMoney(money);
         this.paid = Integer.parseInt(money);
