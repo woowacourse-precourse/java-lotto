@@ -6,6 +6,12 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class CompareNumber {
+    private static final int STANDARDWINNINGLOTTO = 3;
+    private static final int RANKFIVEINDEX = 3;
+    private static final int RANKSIXINDEX = 4;
+    private static final int RIGHTNUMBERFIVE = 5;
+    private static final int RIGHTNUMBERSIX = 6;
+
     private List<List<Integer>> lottoNumbers;
     private List<Integer> winingNumbers;
     private int bonusNumber;
@@ -37,16 +43,14 @@ public class CompareNumber {
     }
 
     public void rankLotto(int correctCount, List<Integer> lottoNumber){
-        if(correctCount == 5 && compareBonusNumber(lottoNumber)){
-            lottoResult.set(3,lottoResult.get(3)+1);
-            return;
+        if(correctCount == RIGHTNUMBERFIVE && compareBonusNumber(lottoNumber)){
+            lottoResult.set(RANKFIVEINDEX,lottoResult.get(RANKFIVEINDEX)+1);
         }
-        if(correctCount == 6){
-            lottoResult.set(4,lottoResult.get(4)+1);
-            return;
+        if(correctCount == RIGHTNUMBERSIX){
+            lottoResult.set(RANKSIXINDEX,lottoResult.get(RANKSIXINDEX)+1);
         }
-        if (correctCount >= 3){
-            lottoResult.set(correctCount-3,lottoResult.get(correctCount-3)+1);
+        if (correctCount >= STANDARDWINNINGLOTTO){
+            lottoResult.set(correctCount-STANDARDWINNINGLOTTO,lottoResult.get(correctCount-STANDARDWINNINGLOTTO)+1);
         }
     }
 
