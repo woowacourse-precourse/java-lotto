@@ -15,14 +15,27 @@ public class LottoGame {
     public static final int _3rd_index = 2;
     public static final int _4th_index = 3;
     public static final int _5th_index = 4;
+    private List<Lotto> _lotto;
+    private Lotto _winning_lotto;
+    private int _bonus_number;
+    private int[] _match_table;
+    private int _money;
 
-    // 로또 구매 함수
-    public static List<Lotto> buy(int money) {
-        validateMoney(money);
-        return generateLotto(calcLottoCount(money));
+    public LottoGame(int money) {
+        setMoney(money);
+        setBonusNumber(-1);
+        setLotto(null);
+        setWinningLotto(null);
+        setMatchTable(null);
     }
 
-    private static List<Lotto> generateLotto(int lottoCount) {
+    // 로또 구매 함수
+    public void buy() {
+        validateMoney();
+        setLotto(generateLotto(calcLottoCount()));
+    }
+
+    private List<Lotto> generateLotto(int lottoCount) {
         List<Lotto> lotto = new ArrayList<>();
 
         for (int i = 0; i < lottoCount; ++i) {
@@ -31,11 +44,13 @@ public class LottoGame {
         return lotto;
     }
 
-    private static int calcLottoCount(int money) {
-        return money / _lotto_price;
+    private int calcLottoCount() {
+        return getMoney() / _lotto_price;
     }
 
-    private static void validateMoney(int money) {
+    private void validateMoney() {
+        int money = getMoney();
+
         if (money < _lotto_price) {
             throw new IllegalArgumentException("[ERROR] 로또의 최소 가격은 " + _lotto_price + "원 입니다.");
         }
@@ -50,14 +65,13 @@ public class LottoGame {
     }
 
     // 로또 결과 확인 함수
-    public static int[] getResult(List<Lotto> lotto, Lotto winningLotto, int bonus) {
-        int[] matchTable = initMatchTable();
+    public void getResult() {
+        setMatchTable(initMatchTable());
 
-        for (Lotto element : lotto) {
-            eLottoPlace place = getMatchTable(element, winningLotto, bonus);
-            matchTable = appendPlaceToResult(matchTable, place);
+        for (Lotto element : getLotto()) {
+            eLottoPlace place = getLottoPlace(element, getWinningLotto());
+            setMatchTable(appendPlaceToResult(getMatchTable(), place));
         }
-        return matchTable;
     }
 
     private static int[] initMatchTable() {
@@ -66,13 +80,14 @@ public class LottoGame {
         return matchTable;
     }
 
-    private static eLottoPlace getMatchTable(Lotto l1, Lotto l2, int bonus) {
-        int matchCount = getMatchCount(l1, l2);
+    private eLottoPlace getLottoPlace(Lotto l1, Lotto l2) {
+        int matchCount = getMatchNumberCount(l1, l2);
+        boolean isBonusMatch = l1.getNumbers().contains(getBonusNumber());
 
-        return getLottoPlace(matchCount, l1.getNumbers().contains(bonus));
+        return matchLottoPlace(matchCount, isBonusMatch);
     }
 
-    private static int getMatchCount(Lotto l1, Lotto l2) {
+    private int getMatchNumberCount(Lotto l1, Lotto l2) {
         int matchCount = 0;
 
         for (int num : l1.getNumbers()) {
@@ -83,7 +98,7 @@ public class LottoGame {
         return matchCount;
     }
 
-    private static eLottoPlace getLottoPlace(int matchCount, boolean isBonusMatch) {
+    private eLottoPlace matchLottoPlace(int matchCount, boolean isBonusMatch) {
         if (matchCount == 6)
             return eLottoPlace.FIRST_PLACE;
         if (matchCount == 5 && isBonusMatch)
@@ -98,7 +113,7 @@ public class LottoGame {
     }
 
 
-    private static int[] appendPlaceToResult(int[] matchTable, eLottoPlace place) {
+    private int[] appendPlaceToResult(int[] matchTable, eLottoPlace place) {
         if (place == eLottoPlace.FIRST_PLACE)
             matchTable[_1st_index] += 1;
         if (place == eLottoPlace.SECOND_PLACE)
@@ -110,5 +125,62 @@ public class LottoGame {
         if (place == eLottoPlace.FIFTH_PLACE)
             matchTable[_5th_index] += 1;
         return matchTable;
+    }
+
+    // setter
+    public void setLotto(List<Lotto> lotto) {
+        this._lotto = lotto;
+    }
+
+    public void setMatchTable(int[] matchTable) {
+        this._match_table = matchTable;
+    }
+
+    public void setMoney(int money) {
+        this._money = money;
+    }
+
+    public void setWinningLotto(Lotto winningLotto) {
+        this._winning_lotto = winningLotto;
+    }
+
+    public void setBonusNumber(int bonusNumber) {
+        this._bonus_number = bonusNumber;
+    }
+
+    // getter
+    public List<Lotto> getLotto() {
+        if (this._lotto == null) {
+            throw new IllegalArgumentException("[ERROR] 로또를 구매하지 않았습니다.");
+        }
+        return this._lotto;
+    }
+
+    public int[] getMatchTable() {
+        if (this._match_table == null) {
+            throw new IllegalArgumentException("[ERROR] 로또 당첨 테이블이 계산 되지 않았습니다.");
+        }
+        return this._match_table;
+    }
+
+    public int getMoney() {
+        if (this._money == -1) {
+            throw new IllegalArgumentException("[ERROR] 구매 금액을 입력 받지 않았습니다.");
+        }
+        return this._money;
+    }
+
+    public Lotto getWinningLotto() {
+        if (this._winning_lotto == null) {
+            throw new IllegalArgumentException("[ERROR] 당첨 번호가 입력되지 않았습니다.");
+        }
+        return this._winning_lotto;
+    }
+
+    public int getBonusNumber() {
+        if (this._bonus_number == -1) {
+            throw new IllegalArgumentException("[ERROR] 보너스 번호가 입력되지 않았습니다.");
+        }
+        return _bonus_number;
     }
 }

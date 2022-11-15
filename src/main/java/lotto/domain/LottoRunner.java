@@ -7,17 +7,17 @@ import lotto.ui.LottoOutStream;
 public class LottoRunner {
     public static void run() {
         try {
-            int money = LottoInStream.readAmount();
-            List<Lotto> lotto = LottoGame.buy(money);
-            LottoOutStream.showLottoList(lotto);
+            LottoGame game = new LottoGame(LottoInStream.readAmount());
+            game.buy();
 
-            Lotto winningLotto = new Lotto(LottoInStream.readLottoNumbers());
-            int bonusNumber = LottoInStream.readBonusNumber(winningLotto);
+            LottoOutStream.showLottoList(game);
 
-            int[] matchTable = LottoGame.getResult(lotto, winningLotto, bonusNumber);
+            game.setWinningLotto(new Lotto(LottoInStream.readLottoNumbers()));
+            game.setBonusNumber(LottoInStream.readBonusNumber(game.getWinningLotto()));
+            game.getResult();
 
-            LottoOutStream.showResult(matchTable);
-            LottoOutStream.showROR(matchTable, money);
+            LottoOutStream.showResult(game);
+            LottoOutStream.showROR(game);
         } catch (IllegalArgumentException ex) {
             System.out.print(ex.getMessage());
         }
