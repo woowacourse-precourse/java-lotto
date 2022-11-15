@@ -1,15 +1,16 @@
 package study;
 
 import camp.nextstep.edu.missionutils.Randoms;
-import lotto.message.ExceptionMessage;
 import lotto.config.LottoConfig;
+import lotto.message.ExceptionMessage;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.fail;
 
 public class RandomsTest {
 
@@ -30,16 +31,21 @@ public class RandomsTest {
     @DisplayName("MIN 이상 MAX 이하의 수를 뽑는지 확인한다.")
     @Test
     void pickUniqueNumbersInRange_범위_확인() {
-        try{
+        try {
             checkRange();
-        } catch (IllegalArgumentException e){
+        } catch (IllegalArgumentException e) {
             fail("범위를 벗어남");
         }
     }
 
-    private void checkRange(){
-        for(int number: numbers){
-            if(number > LottoConfig.RANGE_MAX || number < LottoConfig.RANGE_MIN){
+    @Test
+    void test() {
+        System.out.println(numbers);
+    }
+
+    private void checkRange() {
+        for (int number : numbers) {
+            if (number > LottoConfig.RANGE_MAX || number < LottoConfig.RANGE_MIN) {
                 throw new IllegalArgumentException(ExceptionMessage.ERROR_RANGE);
             }
         }
