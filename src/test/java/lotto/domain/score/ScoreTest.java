@@ -26,29 +26,29 @@ class ScoreTest {
     }
 
     @ParameterizedTest
-    @CsvSource(value = {"4:1", "5:0"}, delimiterString = ":")
-    void 스코어가_5점_0점_혹은_4점_1점이면_3등입니다(final Integer normal, final Integer bonus) {
+    @CsvSource(value = {"5:0"}, delimiterString = ":")
+    void 스코어가_5점_0점이면_3등입니다(final Integer normal, final Integer bonus) {
         var actual = this.scoreGenerator.generateMatchString(normal, bonus);
         assertThat(actual).isEqualTo("5개 일치");
     }
 
 
     @ParameterizedTest
-    @CsvSource(value = {"3:1", "4:0"}, delimiterString = ":")
-    void 스코어가_3점_1점_혹은_4점_0점이면_4등입니다(final Integer normal, final Integer bonus) {
+    @CsvSource(value = {"4:1", "4:0"}, delimiterString = ":")
+    void 스코어가_4점_1점_혹은_4점_0점이면_4등입니다(final Integer normal, final Integer bonus) {
         var actual = this.scoreGenerator.generateMatchString(normal, bonus);
         assertThat(actual).isEqualTo("4개 일치");
     }
 
     @ParameterizedTest
-    @CsvSource(value = {"3:0", "2:1"}, delimiterString = ":")
-    void 스코어가_2점_1점_3점_0점이면_5등입니다(final Integer normal, final Integer bonus) {
+    @CsvSource(value = {"3:0", "3:1"}, delimiterString = ":")
+    void 스코어가_3점_1점_3점_0점이면_5등입니다(final Integer normal, final Integer bonus) {
         var actual = this.scoreGenerator.generateMatchString(normal, bonus);
         assertThat(actual).isEqualTo("3개 일치");
     }
 
     @ParameterizedTest
-    @CsvSource(value = {"0:1", "0:0", "1:0", "1:1", "2:0"}, delimiterString = ":")
+    @CsvSource(value = {"0:1", "0:0", "1:0", "1:1", "2:0","2:1"}, delimiterString = ":")
     void 그_외의_경우는_전부_낙첨입니다(final Integer normal, final Integer bonus) {
         var actual = this.scoreGenerator.generateMatchString(normal, bonus);
         assertThat(actual).isEqualTo("낙첨");
