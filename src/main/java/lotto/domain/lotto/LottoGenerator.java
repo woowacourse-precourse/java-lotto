@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.stream.IntStream;
 
 public final class LottoGenerator {
+
     private LottoGenerator() {}
 
     public static List<Integer> createRandomLottoNumber() {

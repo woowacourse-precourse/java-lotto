@@ -6,7 +6,7 @@ import lotto.exception.InputException;
 
 import java.util.List;
 
-public final class UserLotto {
+public class UserLotto {
 
     private final Lotto winNumbers;
 

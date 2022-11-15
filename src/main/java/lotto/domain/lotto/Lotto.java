@@ -7,7 +7,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.stream.IntStream;
 
-public final class Lotto {
+public class Lotto {
 
     private final List<Integer> numbers;
 

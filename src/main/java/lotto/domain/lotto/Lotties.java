@@ -9,7 +9,7 @@ import java.util.Map;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
-public final class Lotties {
+public class Lotties {
 
     private final List<Lotto> lotties;
 
