@@ -4,7 +4,7 @@ import lotto.domain.LottoRank;
 
 import java.text.NumberFormat;
 
-public enum StaticsView {
+public enum RankView {
 
     MATCH("%s개 일치 (%s원) - %s개"),
     MATCH_WITH_BONUS_NUMBER("%d개 일치, 보너스 볼 일치 (%s원) - %d개"),
@@ -12,11 +12,11 @@ public enum StaticsView {
 
     private final String format;
 
-    StaticsView(String format) {
+    RankView(String format) {
         this.format = format;
     }
 
-    public static StaticsView getView(boolean hasBonusNumber) {
+    public static RankView getView(boolean hasBonusNumber) {
         if (hasBonusNumber) {
             return MATCH_WITH_BONUS_NUMBER;
         }

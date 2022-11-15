@@ -72,7 +72,7 @@ public class DefaultView implements View {
 
             if (rank.getMatchCount() == 0) continue;
 
-            StaticsView view = StaticsView.getView(rank.isHasBonusNumber());
+            RankView view = RankView.getView(rank.isHasBonusNumber());
             System.out.println(view.render(rank, count));
         }
     }
