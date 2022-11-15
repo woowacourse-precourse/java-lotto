@@ -2,14 +2,27 @@ package lotto;
 
 import java.util.List;
 
+/**
+ * Creates lotto ticket objects.
+ *
+ * @author Davin An
+ * @version 2.0
+ */
 public class Lotto {
     private final List<Integer> numbers;
+
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
         this.numbers = numbers;
     }
 
+
+    /**
+     * Confirms that the numbers chosen are appropriate to be created into a ticket.
+     *
+     * @param numbers 6 digit List to create into a lotto ticket
+     */
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException();
