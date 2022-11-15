@@ -1,6 +1,7 @@
 package lotto;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 
 public class Game {
 
@@ -96,13 +97,13 @@ public class Game {
     }
 
     private Integer validateMoney(String inputMoney){
-        if( money % 1000 != 0 ) throw new IllegalArgumentException("[ERROR] 사용자 투자 금액은 1000으로 나누어떨어져야 유효합니다.");
-
         try{
             Integer money = Integer.valueOf(inputMoney);
+            if( money % 1000 != 0 ) throw new IllegalArgumentException("[ERROR] 사용자 투자 금액은 1000으로 나누어떨어져야 유효합니다.");
             return money;
         } catch (Exception e) {
-            throw new IllegalArgumentException("[ERROR] 유효하지않은 투자금액이 입력되었습니다. - 문자, 특수문자, 공백은 입력될수없습니다.");
+            System.out.println("[ERROR] 유효하지않은 투자금액이 입력되었습니다. - 문자, 특수문자, 공백은 입력될수없습니다.");
+            throw new NoSuchElementException("[ERROR] 유효하지않은 투자금액이 입력되었습니다. - 문자, 특수문자, 공백은 입력될수없습니다.");
         }
     }
 }
