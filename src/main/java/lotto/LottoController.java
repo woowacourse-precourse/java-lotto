@@ -8,12 +8,16 @@ public class LottoController {
 
     private final LottoMachine lottoMachine;
     private final Person person;
-    private final WinningLotto winningLotto;
 
-    public LottoController(LottoMachine lottoMachine, Person person, WinningLotto winningLotto) {
+    public LottoController(LottoMachine lottoMachine, Person person) {
         this.lottoMachine = lottoMachine;
         this.person = person;
-        this.winningLotto = winningLotto;
+    }
+
+    public void runLotto() {
+        person.buyLottos(lottoMachine);
+        WinningLotto winningLotto = WinningLotto.getInstance();
+
     }
 
 }
