@@ -77,13 +77,34 @@ class LottoTest {
 
     @Test
     @DisplayName("로또 번호에 보너스 번호가 있는지 확인한다.")
-    void 로또_번호에_보너스_번호가_있는지_확인한다(){
+    void 로또_번호에_보너스_번호가_있는지_확인한다() {
         Matcher matcher = new Matcher();
-        Lotto lottoWithBonusNumber = new Lotto(Arrays.asList(1,2,3,4,5,6));
-        Lotto lottoWithoutBonusNumber = new Lotto(Arrays.asList(1,2,3,5,6,7));
+        Lotto lottoWithBonusNumber = new Lotto(Arrays.asList(1, 2, 3, 4, 5, 6));
+        Lotto lottoWithoutBonusNumber = new Lotto(Arrays.asList(1, 2, 3, 5, 6, 7));
         int bonusNumber = 4;
 
         assertThat(matcher.doesContainBonusNumber(lottoWithBonusNumber, bonusNumber)).isEqualTo(true);
         assertThat(matcher.doesContainBonusNumber(lottoWithoutBonusNumber, bonusNumber)).isEqualTo(false);
+    }
+
+    @Test
+    @DisplayName("로또의 등수를 판별한다.")
+    void 로또의_등수를_확인한다() {
+        Lotto lottoWithFirstPrize = new Lotto(Arrays.asList(1, 2, 3, 4, 5, 6));
+        Lotto lottoWithSecondPrize = new Lotto(Arrays.asList(1, 2, 3, 4, 5, 7));
+        Lotto lottoWithThirdPrize = new Lotto(Arrays.asList(1, 2, 3, 4, 5, 8));
+        Lotto lottoWithFourthPrize = new Lotto(Arrays.asList(1, 2, 3, 4, 8, 9));
+        Lotto lottoWithFifthPrize = new Lotto(Arrays.asList(1, 2, 3, 8, 9, 10));
+        Lotto invalidLotto = new Lotto(Arrays.asList(1, 2, 8, 9, 10, 11));
+        List<Integer> winNumber = Arrays.asList(1, 2, 3, 4, 5, 6);
+        int bonusNumber = 7;
+
+        ResultAnalyzer resultAnalyzer = new ResultAnalyzer(winNumber, bonusNumber);
+        assertThat(resultAnalyzer.determineRank(lottoWithFirstPrize)).isEqualTo(1);
+        assertThat(resultAnalyzer.determineRank(lottoWithSecondPrize)).isEqualTo(2);
+        assertThat(resultAnalyzer.determineRank(lottoWithThirdPrize)).isEqualTo(3);
+        assertThat(resultAnalyzer.determineRank(lottoWithFourthPrize)).isEqualTo(4);
+        assertThat(resultAnalyzer.determineRank(lottoWithFifthPrize)).isEqualTo(5);
+        assertThat(resultAnalyzer.determineRank(invalidLotto)).isEqualTo(6);
     }
 }

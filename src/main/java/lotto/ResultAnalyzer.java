@@ -26,8 +26,8 @@ public class ResultAnalyzer {
         Matcher matcher = new Matcher();
         int hit = matcher.getCountOfCommonElement(lotto, winNumbers);
         int rank = Prize.valueOfHit(hit).getRank();
-        if (hit == 5 && matcher.doesContainBonusNumber(lotto, bonusNumber)) {
-            rank--;
+        if (hit == 5 && !matcher.doesContainBonusNumber(lotto, bonusNumber)) {
+            rank++;
         }
 
         return rank;
