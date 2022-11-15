@@ -16,7 +16,7 @@ public class Bonus {
 
     public Bonus(final Lotto firstPlace, final String bonus) {
         validate(bonus);
-        firstPlace.duplicateCheckBonusNumber(bonus);
+        firstPlace.dupCheckBonusNumber(bonus);
         this.bonus = Integer.parseInt(bonus);
     }
 
