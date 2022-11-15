@@ -35,6 +35,10 @@ public class Lotto {
         return new HashSet<>(numbers).size() == LOTTO_SIZE;
     }
 
+    public int countMatchNumber(Lotto lotto) {
+        return (int) lotto.getNumbers().stream().filter(this.numbers::contains).count();
+    }
+
     public List<LottoNumber> getNumbers() {
         return numbers;
     }

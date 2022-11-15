@@ -33,4 +33,13 @@ class LottoTest {
         assertThatThrownBy(() -> new Lotto(List.of(1, 2, 3, 4, 5, 5)))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @DisplayName("몇 개의 숫자를 맞췄는지 반환한다.")
+    @Test
+    void countMatchNumber() {
+        Lotto lotto = new Lotto("1,2,3,4,5,6");
+        Lotto winningLotto = new Lotto("1,2,3,7,8,9");
+
+        assertThat(winningLotto.countMatchNumber(lotto)).isEqualTo(3);
+    }
 }
