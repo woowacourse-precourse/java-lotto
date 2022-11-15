@@ -12,8 +12,9 @@ public enum Constant {
 	FOURTH_PRIZE(50000),
 	THIRD_PRIZE(1500000),
 	SECOND_PRIZE(30000000),
-	FIRST_PRIZE(2000000000);
-
+	FIRST_PRIZE(2000000000),
+	// 계산 상수
+	DIVIDE_RATE(100);
 	private final int number;
 
 	Constant(int number){
