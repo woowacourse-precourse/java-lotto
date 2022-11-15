@@ -8,7 +8,7 @@ public class EarningRate {
         this.percent = percent;
     }
 
-    public EarningRate calculateRateOfProfit(int reward, Amounts amounts) {
+    public static EarningRate calculateRateOfProfit(int reward, Amounts amounts) {
         return new EarningRate(((double) reward / amounts.getMoney()) * 100);
     }
 
