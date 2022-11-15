@@ -17,9 +17,9 @@ public class LottoView {
     }
 
     public static List<Integer> inputPrizeLotto() {
-        String [] ArrBeforeChange = AppView.inputLine().split(",");
+        String [] arrBeforeChange = AppView.inputLine().split(",");
         List<Integer> inputNum = new ArrayList<>();
-        for(String element : ArrBeforeChange) {
+        for(String element : arrBeforeChange) {
             inputNum.add(ValidateView.possibleNumber(element));
         }
         return inputNum;

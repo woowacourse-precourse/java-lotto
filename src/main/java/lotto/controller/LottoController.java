@@ -13,7 +13,7 @@ import java.util.Collections;
 import java.util.List;
 
 public class LottoController {
-    public static MyLottoList generateMyLottoListLotto(int money) {
+    public static MyLottoList generateMyLottoListInstance(int money) {
         return new MyLottoList(money);
     }
 
@@ -42,7 +42,7 @@ public class LottoController {
         return new PrizeLotto(prizeLotto);
     }
 
-    public static void addBonusNum(int bonusNum, PrizeLotto prizeLotto) {
+    public static void setBonusNum(PrizeLotto prizeLotto, int bonusNum) {
         prizeLotto.setBonusNumber(bonusNum);
     }
 

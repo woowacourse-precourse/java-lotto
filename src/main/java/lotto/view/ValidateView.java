@@ -28,7 +28,7 @@ public class ValidateView {
     }
 
     public static boolean isPossibleBonusNumber(int num) throws IllegalArgumentException {
-        if(num < 1 || num > 45) {
+        if(num < LottoConstant.START_NUMBER || num > LottoConstant.END_NUMBER) {
             throw new IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
         }
 
