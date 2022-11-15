@@ -16,7 +16,7 @@ public enum WinningRank {
     SECOND_RANK(30_000_000, "5개 일치, 보너스 볼 일치",
             (duplicatedNumberCount, isContainBonusNumber) -> (duplicatedNumberCount == 5 && isContainBonusNumber)),
     FIRST_RANK(2_000_000_000, "6개 일치",
-            (duplicatedNumberCount, isContainBonusNumber) -> (duplicatedNumberCount == 6));
+            (duplicatedNumberCount, isContainBonusNumber) -> (duplicatedNumberCount == 6 && !isContainBonusNumber));
 
 
     public static final String RANK_NOT_FOUND_ERROR_MESSAGE = "[ERROR] 잘못된 조건이 입력되었습니다.";
