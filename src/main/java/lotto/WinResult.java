@@ -1,5 +1,6 @@
 package lotto;
 
+import java.text.NumberFormat;
 import java.util.HashMap;
 import java.util.List;
 import java.util.StringTokenizer;
@@ -46,7 +47,7 @@ public class WinResult {
         stringBuffer.append("5개 일치 (1,500,000원) - " + this.winResult.get(WinType.FIVE) + "개\n");
         stringBuffer.append("5개 일치, 보너스 볼 일치 (30,000,000원) - " + this.winResult.get(WinType.FIVE_BONUS) + "개\n");
         stringBuffer.append("6개 일치 (2,000,000,000원) - " + this.winResult.get(WinType.SIX) + "개\n");
-        stringBuffer.append("총 수익률은 " + returnRate + "%입니다.");
+        stringBuffer.append("총 수익률은 " + String.format("%.1f", returnRate) + "%입니다.");
 
         return stringBuffer.toString();
     }
