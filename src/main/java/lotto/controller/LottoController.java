@@ -19,8 +19,7 @@ public class LottoController {
     }
 
     public static PrizeLotto generatePrizeLottoInstance() {
-        Lotto prizeLotto = new Lotto(LottoView.inputPrizeLotto());
-        return new PrizeLotto(prizeLotto);
+        return new PrizeLotto();
     }
 
     public static MyPrize generateMyPrizeInstance(MyLottoList myLottoList, PrizeLotto prizeLotto) {
@@ -48,6 +47,15 @@ public class LottoController {
         myLottoList.setCount(money);
     }
 
+    public static void setPrizeLotto(PrizeLotto prizeLotto, List<Integer> prizeNum) {
+        Lotto tempLotto = new Lotto(prizeNum);
+        prizeLotto.setPrizeLotto(tempLotto);
+    }
+
+    public static void setBonusNum(PrizeLotto prizeLotto, int bonusNum) {
+        prizeLotto.setBonusNumber(bonusNum);
+    }
+
     public static Lotto generateOneLotto() {
         List<Integer> numbers = Randoms.pickUniqueNumbersInRange(LottoInfo.START_NUMBER, LottoInfo.END_NUMBER, LottoInfo.TOTAL_COUNT);
         sortAscendingOrder(numbers);
@@ -58,10 +66,6 @@ public class LottoController {
         List<Integer> temp = new ArrayList<>(numbers);
         Collections.sort(temp);
         numbers = temp;
-    }
-
-    public static void setBonusNum(PrizeLotto prizeLotto, int bonusNum) {
-        prizeLotto.setBonusNumber(bonusNum);
     }
 
     public static int calculateRankOneLotto(Lotto lotto, PrizeLotto prizeLotto) {

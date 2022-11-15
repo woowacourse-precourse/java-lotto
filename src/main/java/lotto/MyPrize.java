@@ -9,6 +9,11 @@ public class MyPrize {
     private int [] rankArr;
     private long profitAmount;
 
+    public MyPrize(int[] rankArr) {
+        this.rankArr = rankArr;
+        calculateProfitAmount(rankArr);
+    }
+
     private long [] fixedPrizeMoneyByRanking = {
             0,
             RankInfo.FIRST.getReward(),
@@ -17,11 +22,6 @@ public class MyPrize {
             RankInfo.FOURTH.getReward(),
             RankInfo.FIFTH.getReward()
     };
-
-    public MyPrize(int[] rankArr) {
-        this.rankArr = rankArr;
-        calculateProfitAmount(rankArr);
-    }
 
     public int[] getRankArr() {
         return rankArr;

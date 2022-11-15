@@ -4,7 +4,10 @@ public class PrizeLotto {
     Lotto prizeLotto;
     int bonusNumber;
 
-    public PrizeLotto(Lotto prizeLotto) {
+    public PrizeLotto() {
+    }
+
+    public void setPrizeLotto(Lotto prizeLotto) {
         this.prizeLotto = prizeLotto;
     }
 

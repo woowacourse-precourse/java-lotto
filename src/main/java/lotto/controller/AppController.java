@@ -6,11 +6,14 @@ import lotto.PrizeLotto;
 import lotto.view.AppView;
 import lotto.view.LottoView;
 
+import java.util.List;
+
 public class AppController {
     private MyLottoList myLottoList;
     private PrizeLotto prizeLotto;
     private MyPrize myPrize;
     private int money;
+    private List<Integer> prizeNum;
     private int bonusNum;
 
     private void purchaseLotto() {
@@ -27,7 +30,9 @@ public class AppController {
 
     private void drawPrizeLotto() {
         AppView.outputLine("당첨 번호를 입력해 주세요.");
+        prizeNum = LottoView.inputPrizeLotto();
         prizeLotto = LottoController.generatePrizeLottoInstance();
+        LottoController.setPrizeLotto(prizeLotto, prizeNum);
         AppView.outputLine("");
         AppView.outputLine("보너스 번호를 입력해 주세요.");
         bonusNum = LottoView.inputBonusNum();
