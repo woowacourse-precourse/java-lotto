@@ -54,7 +54,7 @@ class LottoTest {
         Lotto lotto = new Lotto(numbers);
 
         //then
-        assertThatThrownBy(() ->  lottoService.isValidRange(lotto.getNumbers()))
+        assertThatThrownBy(() -> lottoService.isValidRange(lotto.getNumbers()))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -67,13 +67,13 @@ class LottoTest {
         String testWinningLottoNumber3 = "rk,2,3,4,5,6";
 
         //then
-        assertThatThrownBy(() ->  lottoService.isNumber(testWinningLottoNumber))
+        assertThatThrownBy(() -> lottoService.isNumber(testWinningLottoNumber))
                 .isInstanceOf(IllegalArgumentException.class);
 
-        assertThatThrownBy(() ->  lottoService.isNumber(testWinningLottoNumber2))
+        assertThatThrownBy(() -> lottoService.isNumber(testWinningLottoNumber2))
                 .isInstanceOf(IllegalArgumentException.class);
 
-        assertThatThrownBy(() ->  lottoService.isNumber(testWinningLottoNumber3))
+        assertThatThrownBy(() -> lottoService.isNumber(testWinningLottoNumber3))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -82,12 +82,12 @@ class LottoTest {
     void 사용자_로또번호_당첨번호_비교() {
         //given
         Player player = new Player();
-        List<Integer> playerRandomLottoNumbers = Arrays.asList(1,2,3,4,5,6);
+        List<Integer> playerRandomLottoNumbers = Arrays.asList(1, 2, 3, 4, 5, 6);
         Lotto playerLotto = new Lotto(playerRandomLottoNumbers);
-        List<Integer> lottoWinningNumbers = Arrays.asList(1, 2, 3, 4,5 ,7);
+        List<Integer> lottoWinningNumbers = Arrays.asList(1, 2, 3, 4, 5, 7);
 
         //when
-        lottoService.comparePlayerLottoNumberAndWinningLottoNumber(lottoWinningNumbers , playerLotto ,  player , 6);
+        lottoService.comparePlayerLottoNumberAndWinningLottoNumber(lottoWinningNumbers, playerLotto, player, 6);
 
         //then
         assertThat(player.getLottoCount()).isEqualTo(5);
@@ -132,9 +132,6 @@ class LottoTest {
         //then
         assertThat(yield).isEqualTo("65.4");
     }
-
-
-
 
 
     // 아래에 추가 테스트 작성 가능
