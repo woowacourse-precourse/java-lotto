@@ -23,7 +23,7 @@ public class Lotto {
         uiException.overBoundaryException(numbers);
     }
 
-    public List<Integer> GetLottoNumber(){
+    public List<Integer> GetLottoNumber() {
         return numbers;
     }
 }

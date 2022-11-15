@@ -5,11 +5,11 @@ import lotto.Lotto;
 import java.util.List;
 
 public class UserOutput {
-    public void PrintResult(List<Integer> match, int totalMoney){
+    public void PrintResult(List<Integer> match, int totalMoney) {
         int totalPrize = 5000 * match.get(0) + 50_000 * match.get(1) + 1_500_000 * match.get(2)
                 + 30_000_000 * match.get(3) + 2_000_000_000 * match.get(4);
 
-        float profitPercentage = (float)totalPrize / (float)totalMoney;
+        float profitPercentage = (float) totalPrize / (float) totalMoney;
         profitPercentage *= 100;
 
         System.out.println("당첨통계");
@@ -22,10 +22,9 @@ public class UserOutput {
         System.out.printf("총 수익률은 %.1f%%입니다.", profitPercentage);
     }
 
-    public void PrintBoughtLotto(List<Lotto> myLotto)
-    {
+    public void PrintBoughtLotto(List<Lotto> myLotto) {
         System.out.printf("%d개를 구매했습니다.\n", myLotto.size());
-        for(var e: myLotto)  System.out.println(e.GetLottoNumber().toString());
+        for (var e : myLotto) System.out.println(e.GetLottoNumber().toString());
 
     }
 }

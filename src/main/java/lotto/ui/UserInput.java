@@ -10,14 +10,20 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class UserInput {
     static private List<Integer> lottoNumber;
-    private final UIException uiException = new UIException();
+    UIException uiException = new UIException();
 
-    public int GetMoney() {
+    public Integer GetMoney() {
         System.out.println("구입금액을 입력해 주세요.");
         String money = readLine();
-        uiException.notNumberException(money);
-        System.out.println(money);
-        uiException.notMultipleOf1000Exception(money);
+
+        try {
+            uiException.notNumberException(money);
+            uiException.notMultipleOf1000Exception(money);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return null;
+        }
+
         return Integer.parseInt(money);
     }
 
@@ -28,25 +34,48 @@ public class UserInput {
 
         List<String> lottoNumberString = new ArrayList<>(Arrays.asList(lotto.split(",")));
         lottoNumber = new ArrayList<>();
-        uiException.CheckLottoLength(lottoNumberString);
-        for (String e : lottoNumberString) {
-            uiException.notNumberException(e);
-            lottoNumber.add(Integer.parseInt(e));
+        try {
+            uiException.CheckLottoLength(lottoNumberString);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return null;
         }
-        uiException.overBoundaryException(lottoNumber);
-        uiException.duplicateNumberException(lottoNumber);
+
+        for (String element : lottoNumberString) {
+            try {
+                uiException.notNumberException(element);
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+                return null;
+            }
+
+            lottoNumber.add(Integer.parseInt(element));
+        }
+
+        try {
+            uiException.overBoundaryException(lottoNumber);
+            uiException.duplicateNumberException(lottoNumber);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return null;
+        }
+
         return lottoNumber;
 
     }
 
-    public int GetBonusNumber() {
+    public Integer GetBonusNumber() {
         System.out.println("보너스 번호를 입력해 주세요.");
         int bonusNumber = Integer.parseInt(readLine());
-        uiException.BonusNumberException(lottoNumber, bonusNumber);
+        try {
+            uiException.BonusNumberException(lottoNumber, bonusNumber);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return null;
+        }
 
         return bonusNumber;
     }
-
 
 
 }
