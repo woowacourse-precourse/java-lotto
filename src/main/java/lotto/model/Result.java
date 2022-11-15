@@ -53,4 +53,12 @@ public class Result {
 
         return totalReturn;
     }
+
+    public int getRankResult(Rank rank) {
+        return result.getOrDefault(rank, 0);
+    }
+
+    public float getRateOfReturn() {
+        return rateOfReturn;
+    }
 }
