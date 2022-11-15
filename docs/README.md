@@ -16,7 +16,7 @@
   - [ ] 보너스 번호의 범위 예외를 검사한다. - PlusLotto.range()
     - [ ] 범위 예외를 검사한다. - Check.checkRange()
   - [ ] 보너스 번호를 기져온다. - PlusLotto.getNumber()
-- [ ] 사용자가 발행한 로또를 출력할 수 있다. - Player.printPublishLotto() 
+- [x] 사용자가 발행한 로또를 출력할 수 있다. - Player.printPublishLotto() 
 - [ ] 사용자는 당첨 내역을 출력할 수 있다. - Player.printRank()
   - [x] 맞춘 개수에 따라 당첨금을 가져올 수 있다. - Rank.getMoney() 
   - [x] 맞춘 개수에 따라 메세지를 출력할 수 있다. - Rank.getMessage()

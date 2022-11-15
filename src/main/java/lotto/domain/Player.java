@@ -38,6 +38,10 @@ public class Player {
     }
 
     public void printPublishLotto() {
+        int size = playerLottos.size();
+        System.out.println(size+ "개를 구매했습니다.");
+
+        playerLottos.stream().map(Lotto::getNumbers).forEach(System.out::println);
     }
 
     public void printRank() {
