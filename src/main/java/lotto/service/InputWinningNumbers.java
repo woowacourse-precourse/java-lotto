@@ -1,14 +1,14 @@
 package lotto.service;
 
 import camp.nextstep.edu.missionutils.Console;
-import lotto.handler.InputLottoNumbersHandler;
+import lotto.handler.InputWinningNumbersHandler;
 import lotto.view.Output;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class InputLottoNumbers {
-    InputLottoNumbersHandler inputLottoNumbersHandler = new InputLottoNumbersHandler();
+public class InputWinningNumbers {
+    InputWinningNumbersHandler inputWinningNumbersHandler = new InputWinningNumbersHandler();
     Output output = new Output();
 
     public List<Integer> inputSixNumbers() {
@@ -20,7 +20,7 @@ public class InputLottoNumbers {
     }
 
     public List<Integer> sixLottoNumbers(String[] userLottoNumbers){
-        return inputLottoNumbersHandler.checkException(sendDataToList(userLottoNumbers));
+        return inputWinningNumbersHandler.checkException(sendDataToList(userLottoNumbers));
     }
 
     public String[] userReadLine() {
@@ -32,7 +32,7 @@ public class InputLottoNumbers {
 
     private List<Integer> sendDataToList(String[] userLottoNumbers) {
         List<Integer> LottoList = new ArrayList<>();
-        inputLottoNumbersHandler.checkIsNumber(userLottoNumbers);
+        inputWinningNumbersHandler.checkIsNumber(userLottoNumbers);
         for(int i = 0; i < userLottoNumbers.length ; i++){
             LottoList.add(Integer.valueOf(userLottoNumbers[i]));
         }

@@ -28,7 +28,7 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
-        if (numbers.size() != 6) {
+        if (numbers.size() != pickRandomLotto.LIMIT_LOTTO) {
             throw new IllegalArgumentException(output.ERROR_ORDER+" 로또 개수는 6이어야 합니다.");
         }
     }

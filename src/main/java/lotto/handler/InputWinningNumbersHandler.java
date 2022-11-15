@@ -5,7 +5,7 @@ import lotto.view.Output;
 
 import java.util.List;
 
-public class InputLottoNumbersHandler   {
+public class InputWinningNumbersHandler {
     PickRandomLottoLists pickRandomLotto = new PickRandomLottoLists();
     Output output = new Output();
 
