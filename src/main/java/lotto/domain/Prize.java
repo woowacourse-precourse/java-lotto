@@ -32,4 +32,16 @@ public enum Prize {
 
         return LOSING_TICKET;
     }
+
+    public int getPlace(){
+        return place;
+    }
+
+    public int getAmount(){
+        return amount;
+    }
+
+    public String getStringAmount(){
+        return stringAmount;
+    }
 }
