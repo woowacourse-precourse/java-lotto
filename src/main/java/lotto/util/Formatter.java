@@ -7,7 +7,6 @@ import static lotto.util.Constants.LOTTO_RANGE_MIN;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
-import lotto.model.Rank;
 
 public class Formatter {
     public static final String PERCENT_FORMAT = "%.1f";
