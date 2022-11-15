@@ -7,13 +7,18 @@ import java.util.List;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomUniqueNumbersInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
-import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.*;
 
 class ApplicationTest extends NsTest {
     private static final String ERROR_MESSAGE = "[ERROR]";
     @Test
     void TestBuyLotto(){
         assertThat(Application.BuyLotto(14000)).isEqualTo(14);
+    }
+    @Test
+    void TestBuyLottoException() {
+        assertThatIllegalArgumentException().isThrownBy(()-> Application.BuyLotto(1140));
+        assertThatIllegalArgumentException().isThrownBy(()-> Application.BuyLotto(140));
     }
     @Test
     void TestMethods() {
