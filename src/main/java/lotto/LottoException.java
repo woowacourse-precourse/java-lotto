@@ -34,7 +34,7 @@ public class LottoException {
                 throw new IllegalArgumentException();
             }
             if (winningNumbers.length != 6) {
-                System.out.println("[ERROR]: 당청 번호는 총 6자리를 입력해야 합니다.");
+                System.out.println("[ERROR]: 담청 번호는 총 6자리를 입력해야 합니다.");
                 throw new IllegalArgumentException();
             }
         }
