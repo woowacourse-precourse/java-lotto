@@ -21,9 +21,35 @@ public class LottoResult {
     private Integer totalPrize = 0;
     private Double yield;
 
+    public Integer getThreeCount() {
+        return threeCount;
+    }
+
+    public Integer getFourCount() {
+        return fourCount;
+    }
+
+    public Integer getFiveCount() {
+        return fiveCount;
+    }
+
+    public Integer getFiveAndBonusCount() {
+        return fiveAndBonusCount;
+    }
+
+    public Integer getSixCount() {
+        return sixCount;
+    }
+    public double getYield(){
+        return (double) Math.round(yield * 100) / 100;
+    }
+
+
+
     public LottoResult(List<Lotto> lottoList, WinningLottoNumber winningLottoNumber) {
         this.lottoList = lottoList;
         this.winningLottoNumber = winningLottoNumber;
+        setWinningResult();
     }
 
     private void setWinningResult() {
