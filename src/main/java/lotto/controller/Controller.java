@@ -2,6 +2,7 @@ package lotto.controller;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import lotto.model.Cashier;
 import lotto.model.Lotto;
@@ -18,12 +19,22 @@ public class Controller {
     public void playLotto() {
         try {
             getPlayerInput();
-            Output.printYourStatistics(
-                statistics.checkPrizeQuantity(cashier.getAnswerNumber(), cashier.getBonusNumber(), lottoTicket),
-                statistics.myStat(cashier.getReceivedMoney()));
+            Map<String, Integer> prizeSet = calculatePrizeQuantity();
+            float stat = statistics.myStat(cashier.getReceivedMoney());
+            printResult(prizeSet, stat);
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
+    }
+
+    private Map<String, Integer> calculatePrizeQuantity() {
+        return statistics.checkPrizeQuantity(cashier.getAnswerNumber(), cashier.getBonusNumber(), lottoTicket);
+    }
+
+    private void printResult(Map<String, Integer> PrizeSet, float statistics) {
+        Output.printYourStatistics(
+            PrizeSet,
+            statistics);
     }
 
     private void getPlayerInput() {
