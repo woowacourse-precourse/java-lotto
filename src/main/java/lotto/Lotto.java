@@ -1,5 +1,6 @@
 package lotto;
 
+import java.util.HashSet;
 import java.util.List;
 
 public class Lotto {
@@ -12,9 +13,17 @@ public class Lotto {
 
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR] 6°³ÀÇ ¼ýÀÚ°¡ ¾Æ´Õ´Ï´Ù.");
+        }
+
+        HashSet<Integer> set = new HashSet<>(numbers);
+
+        if(set.size() != numbers.size()) {
+            throw new IllegalArgumentException("[ERROR] Áßº¹µÈ ¼ýÀÚ°¡ µé¾î°¬½À´Ï´Ù.");
         }
     }
 
-    // TODO: ì¶”ê°€ ê¸°ëŠ¥ êµ¬í˜„
+    public List<Integer> getNumbers() {
+        return numbers;
+    }
 }
