@@ -6,7 +6,7 @@ import lotto.domain.*;
 public class LottoController {
 
     private final String perPrizeStringFormat = "%s - %d개";
-    private final String returnRateStringFormat = "총 수익률은 %,.1f%%입니다";
+    private final String returnRateStringFormat = "총 수익률은 %,.1f%%입니다.";
     private final LottoMachine lottoMachine;
     private final Person person;
 
