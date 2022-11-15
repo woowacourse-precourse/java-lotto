@@ -1,7 +1,16 @@
 package lotto;
 
+import lotto.controller.LottoSystem;
+import lotto.model.Lotto;
+
+import java.util.List;
+
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        LottoSystem lottoSystem = new LottoSystem();
+
+        List<Lotto> userLottos = lottoSystem.purchaseLotto();
+        List<?> wonLottoInfo = lottoSystem.drawLotto();
+        lottoSystem.getLottoResult(userLottos, wonLottoInfo);
     }
 }
