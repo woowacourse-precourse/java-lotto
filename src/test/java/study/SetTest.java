@@ -42,5 +42,5 @@ public class SetTest {
     @DisplayName("CsvSource를 활용해 결과값이 다른 인자를 전달받아 다른 결과값을 확인한다.")
     void contains_ShouldReturnTrueForContainingNumberFromCsvSource(int input, boolean expected) {
         assertThat(numbers.contains(input)).isEqualTo(expected);
-    }
 }
+    }
