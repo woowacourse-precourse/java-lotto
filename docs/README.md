@@ -1,7 +1,7 @@
 # 로또
 ---
 ## 기능 목록 
-- [ ] 구매자는 로또를 구매한다.
+- [x] 구매자는 로또를 구매한다.
     - [x] 로또 금액을 입력 받는다. - Buyer#inputLottoAmount()    
       - [x] 금액이 천원으로 나누어 떨어지지 않으면 예외 처리한다. - PurchaseAmountUnit#validDivisionByThousand()  
       - [x] 금액이 숫자로 구성되어있지 않으면 예외 처리한다. - Buyer#validConsistByNumber()  

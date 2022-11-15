@@ -11,6 +11,10 @@ public class Buyer {
     private final List<Lotto> purchaseLotto = new ArrayList<>();
     private int lottoAmount;
 
+    Buyer(int lottoAmount) {
+        this.lottoAmount =lottoAmount;
+    }
+
     static void validConsistByNumber(String purchaseAmount) {
         try {
             Integer.parseInt(purchaseAmount);
