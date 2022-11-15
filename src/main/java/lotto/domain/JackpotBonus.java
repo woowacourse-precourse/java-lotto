@@ -20,21 +20,11 @@ public class JackpotBonus {
         }
     }
 
-    public Rank getRankOf(Lotto lotto) {
-        List<Integer> lottoNumbers = lotto.getNumbers();
-        int jackpotCnt = countJackpot(lottoNumbers);
-        boolean hasBonus = hasBonus(lottoNumbers);
-
-        return Rank.getInstanceOf(jackpotCnt, hasBonus);
+    public List<Integer> getJackpotNumbers() {
+        return jackpotNumbers;
     }
 
-    private int countJackpot(List<Integer> lottoNumbers) {
-        return (int) lottoNumbers.stream()
-                .filter(jackpotNumbers::contains)
-                .count();
-    }
-
-    private boolean hasBonus(List<Integer> lottoNumbers) {
-        return lottoNumbers.contains(bonusNumber);
+    public int getBonusNumber() {
+        return bonusNumber;
     }
 }
