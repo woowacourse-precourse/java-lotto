@@ -1,13 +1,17 @@
 package lotto.domain;
 
+import camp.nextstep.edu.missionutils.test.NsTest;
+import lotto.Application;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayInputStream;
 
+import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
+import static lotto.constant.ExceptionConstants.*;
 import static org.assertj.core.api.Assertions.*;
 
-public class ComputerTest {
+public class ComputerTest extends NsTest {
 
     @DisplayName("당첨 번호가 자연수가 아니면 예외가 발생한다.")
     @Test
@@ -70,5 +74,19 @@ public class ComputerTest {
         System.setIn(new ByteArrayInputStream(input.getBytes()));
         assertThatThrownBy(Computer::new)
                 .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("보너스 번호가 자연수가 아니면 예외가 발생한다.")
+    @Test
+    void inputNotNaturalBonusNumber() {
+        assertSimpleTest(() -> {
+            runException("1000", "1,2,3,4,5,6", "a");
+            assertThat(output()).contains(NOT_NATURAL_NUMBER_EXCEPTION.toString());
+        });
+    }
+
+    @Override
+    public void runMain() {
+        Application.main(new String[]{});
     }
 }
