@@ -9,6 +9,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
+import static lotto.message.ErrorMessage.*;
 import static lotto.message.GameMessage.*;
 
 public class Game {
@@ -55,7 +56,8 @@ public class Game {
         try {
             numbersTmp = numbers.split(",");
         } catch (Exception e) {
-            throw new IllegalArgumentException(ErrorMessage.Lotto_Numbers_Not.getMessage());
+            System.out.println(Lotto_Numbers_Not.getMessage());
+            throw new IllegalArgumentException();
         }
 
         for(int i = 0; i < numbersTmp.length; i++) {
