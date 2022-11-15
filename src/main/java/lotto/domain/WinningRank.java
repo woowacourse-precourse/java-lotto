@@ -35,10 +35,6 @@ public enum WinningRank {
         return matchingCount;
     }
 
-    public boolean getContainsBonusNumber() {
-        return containsBonusNumber;
-    }
-
     public int getWinningPrice() {
         return winningPrice;
     }
