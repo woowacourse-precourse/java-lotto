@@ -19,11 +19,11 @@ public class Application {
     private static void lottoGame(LottoMachine machine, User user) {
         machine.getInputMoney();
         machine.createLottoNumber();
+        machine.printLottos();
 
         user.inputWinningNumber();
         user.inputBonusNumber();
 
-        machine.printLottos();
         machine.getResult(user.getWinningNumber(), user.getBonusNumber());
         machine.printResult();
     }
