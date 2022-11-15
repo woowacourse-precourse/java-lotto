@@ -109,4 +109,14 @@ public class WinningsCalculatorTest {
         assertThat(winningsCalculator.calculateTotalWinnings(rankingCounts))
                 .isEqualTo(result);
     }
+
+    @DisplayName("수익률 계산")
+    @Test
+    void calculateRateOfReturnTest() {
+        long totalWinnings = 3000L;
+        long payment = 11000L;
+        double result = 27.3D;
+        assertThat(winningsCalculator.calculateRateOfReturn(totalWinnings, payment))
+                .isEqualTo(result);
+    }
 }
