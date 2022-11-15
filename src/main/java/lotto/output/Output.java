@@ -9,6 +9,10 @@ public class Output {
         this.winningLotto = winningLotto;
     }
 
+    public void printEarn(double earn) {
+        System.out.println("총 수익률은 " + earn + "%입니다.");
+    }
+
     public void printWinningHistory() {
         for (int key = 3; key <= 7; key++) {
             printLine(key);

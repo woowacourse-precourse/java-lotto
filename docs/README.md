@@ -15,4 +15,5 @@
 ## 출력
 - 당첨 내역 출력 - printWinningHistory()
 - 생성 로또 출력 - printCreatedLotto()
+- 수익률 출력 - printEarn()
 - 에러 문구 출력 - printError()

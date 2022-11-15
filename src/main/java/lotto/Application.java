@@ -3,6 +3,7 @@ package lotto;
 import camp.nextstep.edu.missionutils.Console;
 import lotto.domain.LottoCalculator;
 import lotto.input.Input;
+import lotto.output.Output;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -16,6 +17,8 @@ public class Application {
         Input input = inputValues();
         LottoCalculator lottoCalculator = new LottoCalculator(input);
         lottoCalculator.checkHit();
+        Output output = new Output(lottoCalculator.getWinningLotto());
+
     }
 
     public static Input inputValues() {
