@@ -54,12 +54,12 @@ public class NumberValidator {
         }
     }
 
-
     public static void validateDuplicateNumber(List<Integer> numbers, String number) {
         validateCommon(number);
 
-        if (numbers.contains(number)) {
+        if (numbers.contains(Integer.parseInt(number))) {
             throw new IllegalArgumentException(DUPLICATE_NUMBER.getMessage());
         }
     }
+
 }
