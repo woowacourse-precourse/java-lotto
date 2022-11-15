@@ -2,6 +2,8 @@ package lotto.controller.dto;
 
 import static lotto.exception.ErrorMessage.*;
 import static lotto.utils.Constant.SUBSTRING_STANDARD;
+import static lotto.utils.Convertor.convertStringListToInterList;
+import static lotto.utils.Convertor.convertStringToList;
 
 import java.time.temporal.ValueRange;
 import java.util.Arrays;
@@ -33,13 +35,6 @@ public class WinnerNumberDto {
         return numbers;
     }
 
-    private static List<Integer> convertStringListToInterList(List<String> winnerNumbers) {
-        return winnerNumbers.stream()
-                .mapToInt(Integer::parseInt)
-                .boxed()
-                .collect(Collectors.toList());
-    }
-
     private void validDuplication(List<Integer> numbers) {
         boolean hasDuplicationNumber = numbers.stream()
                 .distinct()
@@ -53,11 +48,6 @@ public class WinnerNumberDto {
         if (!ValueRange.of(1, 45).isValidValue(winnerNumber)) {
             throw new MyException(LOTTO_NOT_IN_RAGE);
         }
-    }
-
-    private static List<String> convertStringToList(String winnerNumber, String standard) {
-        return Arrays.stream(winnerNumber.split(standard))
-                .collect(Collectors.toList());
     }
 
     private int checkBonusNumber(String bonusNumber) {
