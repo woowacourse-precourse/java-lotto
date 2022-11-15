@@ -1,6 +1,6 @@
 package lotto.domain;
 
-import lotto.constants.enums.WinResultStatus;
+import lotto.constants.enums.WinningResultStatus;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -38,21 +38,21 @@ class LottoTest {
     )
     void 로또와_당첨번호가_3개이상_일치하는_경우_당첨결과_반환(String lottoNumber, String bonusNumber, int winResultIndex) {
         // given
-        List<WinResultStatus> winResultStatuses = List.of(
-                WinResultStatus.FIRST,
-                WinResultStatus.SECOND,
-                WinResultStatus.THIRD,
-                WinResultStatus.FOURTH,
-                WinResultStatus.FIFTH
+        List<WinningResultStatus> winningResultStatuses = List.of(
+                WinningResultStatus.FIRST,
+                WinningResultStatus.SECOND,
+                WinningResultStatus.THIRD,
+                WinningResultStatus.FOURTH,
+                WinningResultStatus.FIFTH
         );
         WinningNumber winningNumber = new WinningNumber(List.of(lottoNumber, bonusNumber));
         Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
 
         // when
-        WinResultStatus winResult = lotto.getWinResult(winningNumber);
+        WinningResultStatus winningResult = lotto.getWinningResultStatus(winningNumber);
 
         // then
-        assertThat(winResult).isEqualTo(winResultStatuses.get(winResultIndex));
+        assertThat(winningResult).isEqualTo(winningResultStatuses.get(winResultIndex));
     }
 
     @DisplayName("당첨 번호가 하나도 없을때 결과 반환 테스트")
@@ -71,10 +71,10 @@ class LottoTest {
         Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
 
         // when
-        WinResultStatus winResult = lotto.getWinResult(winningNumber);
+        WinningResultStatus winningResult = lotto.getWinningResultStatus(winningNumber);
 
         // then
-        assertThat(winResult).isEqualTo(WinResultStatus.NOTHING);
+        assertThat(winningResult).isEqualTo(WinningResultStatus.NOTHING);
     }
 
 }

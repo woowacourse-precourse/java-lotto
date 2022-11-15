@@ -1,6 +1,6 @@
 package lotto.constants.utils;
 
-public class WinResultUtil {
+public class WinningResultUtil {
     public static final int FIRST_PLACE_COUNT = 6;
     public static final int SECOND_PLACE_COUNT = 7;
     public static final int THIRD_PLACE_COUNT = 5;
@@ -15,6 +15,6 @@ public class WinResultUtil {
     public static final long FIFTH_PRIZE = 5_000L;
     public static final long NOTHING_PRIZE = 0L;
 
-    private WinResultUtil() {
+    private WinningResultUtil() {
     }
 }

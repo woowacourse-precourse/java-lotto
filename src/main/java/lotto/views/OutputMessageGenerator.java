@@ -4,7 +4,7 @@ import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.util.List;
 import java.util.Map;
-import lotto.constants.enums.WinResultStatus;
+import lotto.constants.enums.WinningResultStatus;
 import lotto.constants.messages.OutputMessage;
 import lotto.constants.utils.MessageFormatUtil;
 import lotto.domain.Lotto;
@@ -30,27 +30,27 @@ public class OutputMessageGenerator {
         return String.format(OutputMessage.BOUGHT_FORMAT, buyingLottoCount);
     }
 
-    public String createStatisticsMessage(Map<WinResultStatus, Integer> statisticsCounts) {
+    public String createStatisticsMessage(Map<WinningResultStatus, Integer> statisticsCounts) {
         StringBuilder statisticsMessage = new StringBuilder();
         appendStatisticsCounts(statisticsCounts, statisticsMessage);
         return deleteLastSeparator(statisticsMessage);
     }
 
-    private void appendStatisticsCounts(Map<WinResultStatus, Integer> statisticsCounts,
+    private void appendStatisticsCounts(Map<WinningResultStatus, Integer> statisticsCounts,
                                         StringBuilder statisticsMessage) {
-        List<WinResultStatus> winResultStatuses = WinResultStatus.getWinResultStatuses();
+        List<WinningResultStatus> winningResults = WinningResultStatus.getWinResultStatuses();
         for (int winResultIndex = 0; winResultIndex < WIN_RESULT_COUNT; winResultIndex++) {
             statisticsMessage.append(
-                            fillMessageFormat(winResultIndex, winResultStatuses.get(winResultIndex), statisticsCounts))
+                            fillMessageFormat(winResultIndex, winningResults.get(winResultIndex), statisticsCounts))
                     .append(MessageFormatUtil.NEXT_LINE);
         }
     }
 
     private String fillMessageFormat(int winResultIndex,
-                                     WinResultStatus winResultStatus,
-                                     Map<WinResultStatus, Integer> statisticsCounts) {
-        if (statisticsCounts.containsKey(winResultStatus)) {
-            return String.format(getStatisticsFormat(winResultIndex), statisticsCounts.get(winResultStatus));
+                                     WinningResultStatus winningResult,
+                                     Map<WinningResultStatus, Integer> statisticsCounts) {
+        if (statisticsCounts.containsKey(winningResult)) {
+            return String.format(getStatisticsFormat(winResultIndex), statisticsCounts.get(winningResult));
         }
         return String.format(getStatisticsFormat(winResultIndex), ZERO_WIN);
     }

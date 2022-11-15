@@ -4,7 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.List;
 import java.util.Map;
-import lotto.constants.enums.WinResultStatus;
+import lotto.constants.enums.WinningResultStatus;
 import lotto.domain.Lotto;
 import lotto.repository.LottoRepository;
 import lotto.views.OutputMessageGenerator;
@@ -67,17 +67,17 @@ class LottoServiceTest {
     void 구매한_로또와_당첨번호를_비교해_당첨내역과_수익율_검증() {
         // given
         lottoService.buyLottos(8000);
-        List<WinResultStatus> winResults = List.of(WinResultStatus.FIFTH);
+        List<WinningResultStatus> winResults = List.of(WinningResultStatus.FIFTH);
 
         // when
         List<Object> lottoResult = lottoService.createLottoResult(winResults);
         double earningsRate = (double) lottoResult.get(1);
-        Map<WinResultStatus, Integer> statisticsCount = (Map<WinResultStatus, Integer>) lottoResult.get(0);
+        Map<WinningResultStatus, Integer> statisticsCount = (Map<WinningResultStatus, Integer>) lottoResult.get(0);
 
         // then
         Assertions.assertAll(() -> {
             assertThat(earningsRate).isEqualTo(62.5);
-            assertThat(statisticsCount.get(WinResultStatus.FIFTH)).isEqualTo(1);
+            assertThat(statisticsCount.get(WinningResultStatus.FIFTH)).isEqualTo(1);
         });
     }
 }

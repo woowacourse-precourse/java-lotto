@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import lotto.constants.enums.WinResultStatus;
+import lotto.constants.enums.WinningResultStatus;
 import lotto.constants.utils.NumberUtil;
 import lotto.domain.WinningNumber;
 import lotto.repository.LottoRepository;
@@ -30,23 +30,23 @@ public class LottoService {
         return List.of(getCountOfLotto(), lottoRepository.findAll());
     }
 
-    public List<WinResultStatus> createWinResultStatuses(WinningNumber winningNumber) {
-        List<WinResultStatus> winResults = new ArrayList<>();
-        addWinResultsOfAllBuyingLotto(winningNumber, winResults);
-        return winResults;
+    public List<WinningResultStatus> createWinningResultStatuses(WinningNumber winningNumber) {
+        List<WinningResultStatus> winningResults = new ArrayList<>();
+        addWinningResultsOfAllBuyingLotto(winningNumber, winningResults);
+        return winningResults;
     }
 
-    private void addWinResultsOfAllBuyingLotto(WinningNumber winningNumber, List<WinResultStatus> winResults) {
+    private void addWinningResultsOfAllBuyingLotto(WinningNumber winningNumber, List<WinningResultStatus> winningResults) {
         lottoRepository.findAll()
-                .forEach(lotto -> winResults.add(lotto.getWinResult(winningNumber)));
+                .forEach(lotto -> winningResults.add(lotto.getWinningResultStatus(winningNumber)));
     }
 
-    public List<Object> createLottoResult(List<WinResultStatus> winResultStatuses) {
-        return List.of(createStatistics(winResultStatuses), calculateEarningsRate(winResultStatuses));
+    public List<Object> createLottoResult(List<WinningResultStatus> winningResults) {
+        return List.of(createStatistics(winningResults), calculateEarningsRate(winningResults));
     }
 
-    private double calculateEarningsRate(List<WinResultStatus> winResults) {
-        long prizeMoney = calculatePrizeMoney(winResults);
+    private double calculateEarningsRate(List<WinningResultStatus> winningResults) {
+        long prizeMoney = calculatePrizeMoney(winningResults);
         return getRatio(prizeMoney);
     }
 
@@ -55,21 +55,21 @@ public class LottoService {
                 / SECOND_DECIMAL_PLACE;
     }
 
-    private Map<WinResultStatus, Integer> createStatistics(List<WinResultStatus> winResults) {
-        Map<WinResultStatus, Integer> statisticsCounts = new HashMap<>();
-        putWinResults(winResults, statisticsCounts);
+    private Map<WinningResultStatus, Integer> createStatistics(List<WinningResultStatus> winningResults) {
+        Map<WinningResultStatus, Integer> statisticsCounts = new HashMap<>();
+        putWinResults(winningResults, statisticsCounts);
         return statisticsCounts;
     }
 
-    private static void putWinResults(List<WinResultStatus> winResults, Map<WinResultStatus, Integer> statisticsCounts) {
-        for (WinResultStatus winResult : winResults) {
-            statisticsCounts.put(winResult, statisticsCounts.getOrDefault(winResult, NumberUtil.ZERO) + NumberUtil.ONE);
+    private static void putWinResults(List<WinningResultStatus> winningResults, Map<WinningResultStatus, Integer> statisticsCounts) {
+        for (WinningResultStatus winningResult : winningResults) {
+            statisticsCounts.put(winningResult, statisticsCounts.getOrDefault(winningResult, NumberUtil.ZERO) + NumberUtil.ONE);
         }
     }
 
-    private long calculatePrizeMoney(List<WinResultStatus> winResults) {
-        return winResults.stream()
-                .mapToLong(WinResultStatus::getPrizeMoney)
+    private long calculatePrizeMoney(List<WinningResultStatus> winningResults) {
+        return winningResults.stream()
+                .mapToLong(WinningResultStatus::getPrizeMoney)
                 .sum();
     }
 }

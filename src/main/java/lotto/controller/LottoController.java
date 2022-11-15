@@ -1,7 +1,7 @@
 package lotto.controller;
 
 import java.util.List;
-import lotto.constants.enums.WinResultStatus;
+import lotto.constants.enums.WinningResultStatus;
 import lotto.domain.WinningNumber;
 import lotto.service.LottoService;
 import lotto.validator.InputValidator;
@@ -46,14 +46,14 @@ public class LottoController {
 
     private void requestWinningNumber() {
         try {
-            printLottoResult(lottoService.createWinResultStatuses(new WinningNumber(inputView.inputWinningNumber())));
+            printLottoResult(lottoService.createWinningResultStatuses(new WinningNumber(inputView.inputWinningNumber())));
         } catch (IllegalArgumentException exception) {
             printExceptionMessage(exception);
         }
     }
 
-    private void printLottoResult(List<WinResultStatus> winResultStatuses) {
-        outputView.outputLottoResult(lottoService.createLottoResult(winResultStatuses));
+    private void printLottoResult(List<WinningResultStatus> winningResults) {
+        outputView.outputLottoResult(lottoService.createLottoResult(winningResults));
     }
 
     private void printExceptionMessage(IllegalArgumentException exception) {

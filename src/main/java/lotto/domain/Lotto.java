@@ -4,11 +4,11 @@ import java.util.Collections;
 import java.util.List;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
-import lotto.constants.enums.WinResultStatus;
+import lotto.constants.enums.WinningResultStatus;
 import lotto.constants.messages.ExceptionMessage;
 import lotto.constants.utils.MessageFormatUtil;
 import lotto.constants.utils.NumberUtil;
-import lotto.constants.utils.WinResultUtil;
+import lotto.constants.utils.WinningResultUtil;
 
 public class Lotto {
     public static final int HIT_THREE = 3;
@@ -63,19 +63,19 @@ public class Lotto {
                 lottoResult.lastIndexOf(MessageFormatUtil.SPACE) + NumberUtil.ONE);
     }
 
-    public WinResultStatus getWinResult(WinningNumber winningNumber) {
+    public WinningResultStatus getWinningResultStatus(WinningNumber winningNumber) {
         int hitCount = getHitCount(winningNumber.getNumbers());
         if (hitCount < HIT_THREE) {
-            return WinResultStatus.NOTHING;
+            return WinningResultStatus.NOTHING;
         }
-        return convertHitCountToWinResult(hitCount, winningNumber);
+        return convertHitCountToWinningResultStatus(hitCount, winningNumber);
     }
 
-    private WinResultStatus convertHitCountToWinResult(int hitCount, WinningNumber winningNumber) {
+    private WinningResultStatus convertHitCountToWinningResultStatus(int hitCount, WinningNumber winningNumber) {
         if (isSecondPlace(hitCount, winningNumber)) {
-            return WinResultStatus.getWinResultStatus(WinResultUtil.SECOND_PLACE_COUNT);
+            return WinningResultStatus.getWinResultStatus(WinningResultUtil.SECOND_PLACE_COUNT);
         }
-        return WinResultStatus.getWinResultStatus(hitCount);
+        return WinningResultStatus.getWinResultStatus(hitCount);
     }
 
     private int getHitCount(List<Integer> winningLotto) {

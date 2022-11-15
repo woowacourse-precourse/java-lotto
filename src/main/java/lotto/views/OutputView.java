@@ -2,7 +2,7 @@ package lotto.views;
 
 import java.util.List;
 import java.util.Map;
-import lotto.constants.enums.WinResultStatus;
+import lotto.constants.enums.WinningResultStatus;
 import lotto.constants.messages.OutputMessage;
 import lotto.domain.Lotto;
 
@@ -27,7 +27,8 @@ public class OutputView {
         System.out.println(OutputMessage.WINNING_STATISTICS);
         System.out.println(OutputMessage.DIVIDING_LINE);
         System.out.println(
-                messageGenerator.createStatisticsMessage((Map<WinResultStatus, Integer>) lottoResult.get(STATISTICS)));
+                messageGenerator.createStatisticsMessage(
+                        (Map<WinningResultStatus, Integer>) lottoResult.get(STATISTICS)));
         System.out.println(messageGenerator.createEarningsRateMessage((double) lottoResult.get(EARNINGS_RATE)));
     }
 
