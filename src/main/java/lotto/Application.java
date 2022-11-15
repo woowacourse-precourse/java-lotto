@@ -5,7 +5,12 @@ public class Application {
         View view = new View();
         Service service = new Service();
 
-        view.lottoStartMsg();
-        int moneyInput = service.getMoneyInput();
+        try{
+            view.lottoStartMsg();
+            int moneyInput = service.getMoneyInput();
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+        }
+
     }
 }
