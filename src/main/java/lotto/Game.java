@@ -26,7 +26,7 @@ public class Game {
         // 당첨 번호 입력 및 타당성 검증
         winningLotto = inputWinningLotto();
 
-        // 보너스 번호 입력
+        // 보너스 번호 입력 및 타당성 검증
         bonusNumber = inputBonusNumber();
     }
 

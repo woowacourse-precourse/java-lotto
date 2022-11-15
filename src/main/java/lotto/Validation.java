@@ -56,4 +56,17 @@ public class Validation {
 
         return convertNumber;
     }
+
+    public static int bonusNumberValidate(String number, Lotto lotto){
+        int convertNumber = numberValidate(number);
+
+        if(convertNumber <= 0 || convertNumber > 45){
+            throw new IllegalArgumentException("[ERROR] 1과 45 사이의 숫자가 입력되어야 합니다.");
+        }
+        if(lotto.containNumbers(convertNumber)){
+            throw new IllegalArgumentException("[ERROR] 보너스 번호가 이미 로또 번호에 포함됩니다.");
+        }
+
+        return convertNumber;
+    }
 }
