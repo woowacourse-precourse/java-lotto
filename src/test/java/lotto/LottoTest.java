@@ -35,4 +35,11 @@ class LottoTest {
         assertThatThrownBy(() -> Application.getWinningLotto("1,2,3,4,5,47"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @DisplayName("보너스 번호에 1 미만 또는 45 초과의 번호가 있으면 예외가 발생한다.")
+    @Test
+    void bonusNumberByInvalidNumbers(){
+        assertThatThrownBy(() -> Application.getBonusBall("99"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
