@@ -21,6 +21,7 @@ public class InputView {
     public static int getMoneyInput() {
         OutputView.printString(MESSAGE_MONEY_INPUT);
         String moneyInput = Console.readLine();
+        OutputView.enterLine();
         if (!moneyInput.matches(NUMBER_REGEX)) {
             throw new IllegalArgumentException(ERROR_NUMBER_ONLY);
         }
@@ -30,6 +31,7 @@ public class InputView {
     public static Lotto getWinningInput() {
         OutputView.printString(MESSAGE_WINNING_INPUT);
         String winningInput = Console.readLine();
+        OutputView.enterLine();
         List<String> tempLotto = Arrays.asList(winningInput.split(COMMA));
         List<Integer> numbers = new ArrayList<>();
         for (String tempNumber : tempLotto) {
@@ -44,6 +46,7 @@ public class InputView {
     public static int getBonusInput() {
         OutputView.printString(MESSAGE_BONUS_INPUT);
         String bonusInput = Console.readLine();
+        OutputView.enterLine();
         if (!bonusInput.matches(NUMBER_REGEX)) {
             throw new IllegalArgumentException(ERROR_NUMBER_ONLY);
         }
