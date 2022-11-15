@@ -47,7 +47,16 @@ public class Application {
         }
 
         //보너스 번호 입력받기
-        int bonusNumber = inputBonusNumber();
+
+        int bonusNumber=0;
+        try {
+            bonusNumber = inputBonusNumber(luckyList);
+        }
+        catch (Exception e){
+            System.out.println(e.getMessage());
+            return;
+        }
+
         //당첨 확인
         ArrayList<Integer> winList = winCount(lottoList, luckyList, bonusNumber);
         //상금 리스트
