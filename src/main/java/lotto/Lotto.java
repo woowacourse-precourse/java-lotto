@@ -37,7 +37,7 @@ public class Lotto {
         }
     }
 
-    public void validateBonus(List<Integer> numbers, int bonus) throws IllegalArgumentException {
+    public void validateBonus(int bonus) throws IllegalArgumentException {
         checkNumberRange(numbers);
         if (numbers.contains(bonus)) {
             throw new IllegalArgumentException("[ERROR] 보너스 번호는 당첨 번호 외의 번호를 입력해야 합니다.");
