@@ -86,8 +86,7 @@ public class Validator {
     }
     public static void isInputNumber(String cash){
         if(!cash.matches("[+-]?\\d*(\\.\\d+)?")){
-            System.out.println("[ERROR]");
-            throw new IllegalArgumentException("[ERROR] 숫자만 입력");
+            throw new IllegalArgumentException(Exception.NOT_NUMBER.getExceptionMessage());
         }
     }
 
