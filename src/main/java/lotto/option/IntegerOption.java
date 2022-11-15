@@ -15,7 +15,8 @@ public enum IntegerOption {
     THIRD_MATCH(5),
     SECOND_MATCH(5),
     FIRST_MATCH(6),
-    BASE_MONEY(1000);
+    BASE_MONEY(1000),
+    INPUT_LIMIT(100000);
 
     public Integer option;
     IntegerOption(Integer option){

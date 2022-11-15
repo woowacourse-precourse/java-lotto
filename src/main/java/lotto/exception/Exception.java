@@ -8,8 +8,7 @@ import java.util.Set;
 
 import static lotto.Game.winningNumbers;
 import static lotto.exception.ExceptionMessage.*;
-import static lotto.option.IntegerOption.BASE_MONEY;
-import static lotto.option.IntegerOption.ZERO;
+import static lotto.option.IntegerOption.*;
 
 public class Exception{
     private static final Character ZERO_CHAR = '0';
@@ -43,5 +42,8 @@ public class Exception{
     }
     public static void catchBonusInWinningException(Integer input){
         throwException(winningNumbers.getNumbers().contains(input), BONUS_IN_WINNING_ERROR.error);
+    }
+    public static void catchOverLimitBuyLottoException(String input){
+        throwException(Integer.parseInt(input)> INPUT_LIMIT.option, INPUT_LIMIT_ERROR.error);
     }
 }

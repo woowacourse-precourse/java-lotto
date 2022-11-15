@@ -40,6 +40,7 @@ public class Game extends View {
         catchNotBuyLottoException(input);
         catchZeroStartInputException(input);
         catchBaseMoneyException(input);
+        catchOverLimitBuyLottoException(input);
 
     }
     private static void inputWinning(){
