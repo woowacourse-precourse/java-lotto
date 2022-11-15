@@ -51,7 +51,7 @@ public class Lotto {
     }
 
     public static void buySucess(int Countlotto) {
-        System.out.println(Countlotto + "개를 구매하였습니다.");
+        System.out.println(Countlotto + "개를 구매했습니다.");
     }
 
     public static int buyScuessCount(int Countlotto) {
@@ -162,7 +162,7 @@ public class Lotto {
 
         public static void CountNumberMessage(int[] Board){
             for(int index = 0; index < Board.length; index++){
-                System.out.println(Board[index] + "개");
+                System.out.println(scoreToWinningEnumMessage(index)+" - "+Board[index]+"개");
             }
         }
 
@@ -176,11 +176,48 @@ public class Lotto {
         filed = Math.round(filed*100);
 
 
-        System.out.println("총 수익률은"+filed/100 +"%입니다.");
+        System.out.println("총 수익률은 "+filed/100+"%입니다.");
 
         }
 
+    public enum Winning {
+        FIRST("6개 일치 (2,000,000,000원)"),
+        SECOND("5개 일치, 보너스 볼 일치 (30,000,000원)"),
+        THIRD("5개 일치 (1,500,000원)"),
+        FOURTH("4개 일치 (50,000원)"),
+        FIFTH("3개 일치 (5,000원)"),
+        NOPE("NotThing");
 
+        private final String message;
+
+        Winning(String message) {
+            this.message = message;
+        }
+
+        public String getMessage() {
+            return message;
+        }
+    }
+
+
+    public static String scoreToWinningEnumMessage(int score) {
+        if (score == 0) {
+            return Winning.FIFTH.getMessage();
+        }
+        if (score == 1) {
+            return Winning.FOURTH.getMessage();
+        }
+        if (score == 2) {
+            return Winning.THIRD.getMessage();
+        }
+        if (score == 3) {
+            return Winning.SECOND.getMessage();
+        }
+        if (score == 4) {
+            return Winning.FIRST.getMessage();
+        }
+        return Winning.NOPE.getMessage();
+    }
 
 }
 

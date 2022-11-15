@@ -4,9 +4,11 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
+import java.util.regex.Pattern;
 
 public class Validator {
 
+    private static final Pattern NUMBER_PATTERN = Pattern.compile("^[0-9]+$");
 
 
     public void ValidatorSix(List<Integer> ValidatorNumber){
@@ -70,7 +72,7 @@ public class Validator {
     }
 
     public void OnlyNumber(String SValueNumber1){
-        if(!SValueNumber1.matches("[\\d]{1,8}")){
+        if(!NUMBER_PATTERN.matcher(SValueNumber1).matches()){
             throw new IllegalArgumentException(("[ERROR] 숫자만 가능합니다."));
 
         }

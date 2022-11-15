@@ -30,7 +30,7 @@ public class Application {
         Lotto.CountNumberMessage();
         List<Integer> toResult = Lotto.toResult(InputList, lottoRandomNumber);
 
-        System.out.println(toResult);
+//        System.out.println(toResult);
 
         List<Boolean> BonuseChooseList = Lotto.BonusChooseList(lottoRandomNumber , bonusNumber);
 
