@@ -1,7 +1,7 @@
 package lotto.controller;
 
-import lotto.Lotto;
-import lotto.Referee;
+import lotto.model.Lotto;
+import lotto.model.Referee;
 
 import java.util.List;
 import java.util.Map;

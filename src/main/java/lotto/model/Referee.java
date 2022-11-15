@@ -1,4 +1,4 @@
-package lotto;
+package lotto.model;
 
 
 import java.util.HashMap;
@@ -6,12 +6,14 @@ import java.util.List;
 import java.util.Map;
 
 public class Referee {
+    //{0=3, 1=4, 2=1, 3=0, 4=0, 5=0, 6=0, 7=0} = {-,-,-,5등, 4등, 3등, 2등, 1등}
     public static Map<Integer, Integer> result;
+    public static final int prizeRange = 7;
 
     public static void initHashMap() {
         result = new HashMap<>();
-        for (int i = 0; i < 8; i++) {
-            result.put(i, 0);
+        for (int index = 0; index < prizeRange + 1; index++) {
+            result.put(index, 0);
         }
     }
 

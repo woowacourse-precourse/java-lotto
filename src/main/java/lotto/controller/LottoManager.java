@@ -1,6 +1,6 @@
 package lotto.controller;
 
-import lotto.Lotto;
+import lotto.model.Lotto;
 import lotto.constant.LottoInfo;
 import lotto.constant.RankInfo;
 import lotto.view.OutputView;
