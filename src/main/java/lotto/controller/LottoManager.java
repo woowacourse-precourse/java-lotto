@@ -84,7 +84,7 @@ public class LottoManager {
         return (money / LOTTO_PRICE);
     }
 
-    public void printPublishedLottos(int numberLottos ) {
+    public void printPublishedLottos(int numberLottos) {
         OutputView.informNumberPurchases(numberLottos);
         System.out.println(LottoInfo.PURCHASE_MESSAGE.message);
     }
