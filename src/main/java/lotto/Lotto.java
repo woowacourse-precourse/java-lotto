@@ -16,5 +16,10 @@ public class Lotto {
         }
     }
 
-    // TODO: 추가 기능 구현
+
+    // Getter method
+    public List<Integer> getNumbers() {
+        return this.numbers;
+    }
+
 }
