@@ -59,7 +59,6 @@ public class Pick {
     }
 
     private int getWinningMoneyWithCount(int rank, int count) {
-        //TODO: 컨벤션 맞추기 위해 enum으로 다시 작성할 것.
         if (rank == 1) {
             return 2_000_000_000 * count;
         }
