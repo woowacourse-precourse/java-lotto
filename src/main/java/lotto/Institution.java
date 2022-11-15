@@ -59,11 +59,11 @@ public class Institution {
         }
     }
 
-    public Integer calculateSumOfPrizeMoney(List<PrizeWinner> prizeWinners) {
-        Integer prizeMoneySum=0;
+    public Long calculateSumOfPrizeMoney(List<PrizeWinner> prizeWinners) {
+        Long prizeMoneySum=0L;
 
         for(PrizeWinner prizeWinner : prizeWinners) {
-            Integer prizeMoney = prizeWinner.getCount() * prizeWinner.getPrizeMoney();
+            Long prizeMoney = Long.valueOf(prizeWinner.getCount() * prizeWinner.getPrizeMoney());
 
             prizeMoneySum += prizeMoney;
         }
@@ -71,7 +71,7 @@ public class Institution {
         return prizeMoneySum;
     }
 
-    public Double calculateYield(Integer prizeMoneySum, Integer userMoney) {
+    public Double calculateYield(Long prizeMoneySum, Integer userMoney) {
         Double yield = (prizeMoneySum.doubleValue()/userMoney);
 
         return yield;
@@ -82,7 +82,7 @@ public class Institution {
             System.out.println(prizeWinner.toString());
         }
 
-        Integer prizeMoneySum = calculateSumOfPrizeMoney(prizeWinners);
+        Long prizeMoneySum = calculateSumOfPrizeMoney(prizeWinners);
         Double yield = calculateYield(prizeMoneySum, user.getMoney());
 
         System.out.println("총 수익률은 " + yieldFormatter.format(yield) +"입니다.");
