@@ -1,25 +1,24 @@
 package lotto.domain;
 
-import java.util.function.Function;
-
 public enum Result {
-    THREE(3, false, value -> value * 5000L),
-    FOUR(4, false, value -> value * 50000L),
-    FIVE(5, false, value -> value * 1500000L),
-    FIVE_AND_BONUS(5, true, value -> value * 30000000L),
-    SIX(6, false, value -> value * 2000000000L);
+    THREE(3, false, 5000L),
+    FOUR(4, false, 50000L),
+    FIVE(5, false, 1500000L),
+    FIVE_AND_BONUS(5, true, 30000000L),
+    SIX(6, false, 2000000000L);
 
     private final int winningPoint;
     private final boolean bonusPoint;
-    private Function<Long, Long> expression;
+    private final long prize;
 
-    Result(int winningPoint, boolean bonusPoint, Function<Long, Long> expression) {
+    Result(int winningPoint, boolean bonusPoint, long prize) {
         this.winningPoint = winningPoint;
         this.bonusPoint = bonusPoint;
+        this.prize = prize;
     }
 
     private long calculate(long value) {
-        return expression.apply(value);
+        return value * prize;
     }
 
     public boolean isWin(int winningPoint, boolean bonusPoint) {
