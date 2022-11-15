@@ -10,7 +10,7 @@ public class Buyer {
     private int money;
     private List<Lotto> lottoTickets;
 
-    public void buyLotteyTickets() {
+    public void buyLottoTickets() {
         printRequestDesiredAmountMessage();
         money = Integer.parseInt(Console.readLine());
         validate(money);

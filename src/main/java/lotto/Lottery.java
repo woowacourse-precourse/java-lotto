@@ -3,7 +3,7 @@ package lotto;
 public class Lottery {
     public void start() {
         Buyer buyer = new Buyer();
-        buyer.buyLotteyTickets();
+        buyer.buyLottoTickets();
 
         WinningNumber winningNumber = Generator.getWinningNumber();
 
