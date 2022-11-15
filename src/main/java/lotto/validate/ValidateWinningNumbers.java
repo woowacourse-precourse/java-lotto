@@ -49,7 +49,7 @@ public class ValidateWinningNumbers extends Validate {
     private static void validateRange(int number) throws IllegalArgumentException {
         if (number < MIN_NUMBER || number > MAX_NUMBER) {
             throw new IllegalArgumentException(ERROR_MESSAGE +
-                    MIN_NUMBER + "과 " +  MAX_NUMBER + "사이의 숫자를 입력하셔야 합니다.");
+                    MIN_NUMBER + "과 " + MAX_NUMBER + "사이의 숫자를 입력하셔야 합니다.");
         }
     }
 

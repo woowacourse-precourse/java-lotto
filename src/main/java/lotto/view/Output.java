@@ -12,7 +12,7 @@ public class Output {
 
     public static void printLottoHistory(List<Lotto> container) {
         int numbers = container.size();
-        System.out.println(numbers + Lotto.LOTTO_UNIT +"를 구매했습니다.");
+        System.out.println(numbers + Lotto.LOTTO_UNIT + "를 구매했습니다.");
         for (int index = 0; index < numbers; index++) {
             System.out.println(container.get(index).toString());
         }
