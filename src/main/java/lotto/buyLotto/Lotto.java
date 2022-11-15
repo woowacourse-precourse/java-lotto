@@ -30,4 +30,12 @@ public class Lotto {
         Collections.sort(numbers);
     }
 
+    public int compareNumbers(int[] prizeNumbers) {
+        int count = 0;
+        for (int n : prizeNumbers) {
+            count += Collections.frequency(numbers, n);
+        }
+
+        return count;
+    }
 }
