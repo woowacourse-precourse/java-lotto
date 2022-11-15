@@ -14,6 +14,10 @@ public class LottoPurchaseService {
 
     private User user;
 
+    public User getUser() {
+        return user;
+    }
+
     public void startLotto() {
         int paymentAmount = enterPaymentAmount();
         int lottoGameCount = calculateLottoCount(paymentAmount);

@@ -31,7 +31,7 @@ public class WinningsSettingService {
 
     private Integer bringBonusNumber() throws IllegalArgumentException {
         String input = enterBonusNumber();
-        if (bonusNumberValidate(input)) {
+        if (!bonusNumberValidate(input)) {
             throw new IllegalArgumentException();
         }
         return Integer.parseInt(input);
