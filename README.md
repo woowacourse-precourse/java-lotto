@@ -138,3 +138,10 @@
 - [x]  총 수익을 계산한다.
 - [x]  총 수익률을 계산한다.
 - [x]  총 수익률을 출력한다.
+
+# 테스트
+
+- [x]  기능 테스트 2: 로또 2등, 3등이 존재할 때
+- [x]  ValidatePurchaseAmountTest1: 로또 구입 금액이 1000원 단위가 아닌 경우
+- [x]  ValidatePurchaseAmountTest2: 로또 구입 금액이 1000원 보다 작은 경우
+- [x]  AnalyzePlayerNumbersTest: 발행한 로또를 분석하는 메소드 테스트
