@@ -13,7 +13,7 @@ public class LotterySellService {
         while (user.hasMoney()) {
             LotteryTicket lotteryTicket = createLotteryTicket();
             registerLotteryTicket(lotteryTicket);
-            user.buyLotteryTicket(createLotteryTicket());
+            user.buyLotteryTicket(lotteryTicket);
         }
     }
 
