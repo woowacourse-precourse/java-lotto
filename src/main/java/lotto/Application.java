@@ -18,7 +18,8 @@ public class Application {
         LottoCalculator lottoCalculator = new LottoCalculator(input);
         lottoCalculator.checkHit();
         Output output = new Output(lottoCalculator.getWinningLotto());
-
+        output.printWinningHistory();
+        output.printEarn(lottoCalculator.calculateEarn());
     }
 
     public static Input inputValues() {

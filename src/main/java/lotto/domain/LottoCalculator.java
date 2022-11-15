@@ -25,7 +25,8 @@ public class LottoCalculator {
         for (int key = 3; key <= 7; key++) {
             total += matchLotto(key, winningLotto.get(key));
         }
-        return Math.round(total * 100 / purchaseAmount);
+        double earn = total * 100.0 / purchaseAmount;
+        return Math.round(earn * 10) / 10.0;
     }
 
     private int matchLotto(int key, int count) {
@@ -89,8 +90,8 @@ public class LottoCalculator {
 
     private int countCorrectNumber(Lotto lotto, List<Integer> winningNumber, int bonusNumber) {
         int correct = 0;
-        for (int index = 0; index < 6; index++) {
-            if (lotto.getNumbers().get(index).equals(winningNumber.get(index))) {
+        for (Integer number : winningNumber) {
+            if (lotto.getNumbers().contains(number)) {
                 correct++;
             }
         }
