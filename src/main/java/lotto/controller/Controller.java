@@ -1,24 +1,41 @@
 package lotto.controller;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import lotto.VO.LottoVO;
+import lotto.constants.Constants;
 import lotto.service.Service;
 
 public class Controller {
-	static Service service = new Service();
-	public void getInputPrice() {
-		getInputNumbers(service.setInputPrice());
-	}
 	
-	public void getInputNumbers(String inputNumber) {
-		getBuyLotto(service.setInputNumbers(inputNumber));
+	Service service = new Service();	
+	
+	public Controller() {
+		Constants constants = new Constants();
+		LottoVO lotto = new LottoVO();
+		getInputPrice(constants, lotto);		
+		getInputNumbers(constants, lotto);
+		getBuyLotto(lotto);
+		getGoalNumbers(constants, lotto);
+		getBonusGoalNumbers(constants, lotto);
 	}
-	public void getBuyLotto(int ea) {		
-		service.setBuyLotto(ea);
+
+	public void getInputPrice(Constants constants, LottoVO lotto) {
+		service.setInputPrice(constants, lotto);
 	}
-	public void getGoalNumbers() {
-		setBonusGoalNumbers(service.setGoalNumbers());
+
+	public void getInputNumbers(Constants constants, LottoVO lotto) {
+		service.setInputNumbers(constants, lotto);
 	}
-	public void setBonusGoalNumbers(int numbers) {
-		service.setBonusGoalNumbers();
+
+	public void getBuyLotto(LottoVO lotto) {
+		service.setBuyLotto(lotto);
+	}
+
+	public void getGoalNumbers(Constants constants, LottoVO lotto) {
+		service.setGoalNumbers(lotto, constants);
+	}
+
+	public void getBonusGoalNumbers(Constants constants, LottoVO lotto) {
+		service.setBonusGoalNumbers(constants, lotto);
 	}
 }
