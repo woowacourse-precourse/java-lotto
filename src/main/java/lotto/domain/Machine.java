@@ -21,8 +21,8 @@ public class Machine {
     }
 
     public Lotto createSingleLottoTicket() {
-        List<Integer> sortedRandomNumbers = Randoms.pickUniqueNumbersInRange(LottoStatistic.MIN_NUMBER.getValue(),
+        List<Integer> randomNumbers = Randoms.pickUniqueNumbersInRange(LottoStatistic.MIN_NUMBER.getValue(),
                 LottoStatistic.MAX_NUMBER.getValue(), LottoStatistic.NUMBER_OF_LOTTERY_NUMBERS.getValue());
-        return new Lotto(sortedRandomNumbers);
+        return new Lotto(randomNumbers);
     }
 }
