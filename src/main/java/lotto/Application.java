@@ -1,15 +1,18 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         try {
             mainUI();
+
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
@@ -25,8 +28,11 @@ public class Application {
         setWinNumbersUI(lottoSystem);
         setBonusNumbersUI(lottoSystem);
 
-
+        user.checkWin();
+        showWinStatisticsUI(user);
+        showReturnRateUI(user);
     }
+
 
     private static LottoUser buyLottoUI(LottoSystem lottoSystem) {
         System.out.println("구입금액을 입력해 주세요.");
@@ -83,4 +89,25 @@ public class Application {
 
         lottoSystem.setBonusNumbers(bonusNumber);
     }
+
+    private static void showWinStatisticsUI(LottoUser user){
+        System.out.println("당첨 통계");
+        System.out.println("---");
+        Map<WinInfo,Integer> statistics = user.getStatistics();
+        DecimalFormat decimalFormat = new DecimalFormat("###,###");
+        for(int i=WinInfo.getTotalCount()-1;i>0;i--){
+            WinInfo winInfo = WinInfo.getByOrder(i);
+            System.out.print(String.format("%d개 일치",winInfo.getMatchCnt()));
+            if(winInfo.getBonusMatchCnt() > 0) {
+                System.out.print(", 보너스 볼 일치");
+            }
+            System.out.print(String.format(" (%s원)",decimalFormat.format(winInfo.getWinMoney())));
+            System.out.println(String.format(" - %d개",statistics.get(winInfo)));
+        }
+    }
+
+    private static void showReturnRateUI(LottoUser user) {
+        System.out.println(String.format("총 수익률은 %2.1f%%입니다.",user.getReturnRate() * 100));
+    }
+
 }
