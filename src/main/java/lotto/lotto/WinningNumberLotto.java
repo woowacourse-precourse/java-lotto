@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 import lotto.lotto.inputNumber.InputNumber;
 
 import java.util.List;
+import java.util.regex.Pattern;
 
 public class WinningNumberLotto extends Lotto {
 
@@ -59,12 +60,7 @@ public class WinningNumberLotto extends Lotto {
     }
 
     private boolean checkInteger(String input) {
-        try {
-            Integer.parseInt(input);
-        } catch (Exception exception) {
-            return false;
-        }
-        return true;
+        return Pattern.matches("^[0-9]*$", input);
     }
 
     private boolean checkRange(String input) {
