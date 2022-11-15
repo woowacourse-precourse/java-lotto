@@ -113,6 +113,18 @@ class ApplicationTest extends NsTest {
         assertEquals(flag, true);
     }
 
+    @Test
+    void 일치하는_로또_번호_개수와_보너스_번호_따른_Statistic_반환() {
+        // given
+        int matchingNumber = 5;
+        boolean bonusFlag = true;
+
+        // when
+        Statistic statistic = findStatistic(matchingNumber, bonusFlag);
+
+        // then
+        assertEquals(statistic, Statistic.BONUS);
+    }
     @Override
     public void runMain() {
         Application.main(new String[]{});
