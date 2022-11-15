@@ -64,4 +64,8 @@ public class OutputView {
         System.out.printf("%.1f", profit);
         System.out.println(Message.PROFIT_LAST.getMessage());
     }
+
+    public static void printErrorMessage(String errorMessage) {
+        System.out.println("[ERROR] " + errorMessage);
+    }
 }
