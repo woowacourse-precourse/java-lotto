@@ -6,7 +6,8 @@ import org.junit.jupiter.api.Test;
 import java.util.List;
 
 import static constant.ErrorMessage.*;
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThatNoException;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class ValidationTest {
 
@@ -56,7 +57,7 @@ class ValidationTest {
     @Test
     void validIsDigit() {
         String number = "2*";
-            assertThatThrownBy(() -> Validation.validIsDigit(number))
+        assertThatThrownBy(() -> Validation.validIsDigit(number))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(NOT_NUMBER);
     }
