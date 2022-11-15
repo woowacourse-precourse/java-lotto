@@ -7,6 +7,7 @@ import lotto.Lotto;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class UserLotto {
     private static final int CNT_NUMBER = 6;
@@ -48,8 +49,8 @@ public class UserLotto {
 
     public void validateLetter(String input){
         if(!input.matches(REGEX)){
-            System.out.println("[ERROR] 구입 금액에 숫자외 문자가 존재합니다.");
-            throw new IllegalArgumentException("[ERROR]구입 금액에 숫자외 문자가 존재합니다.");
+            System.out.println("[ERROR]구입 금액에 숫자외 문자가 존재합니다.");
+            throw new IllegalArgumentException();
         }
     }
 
@@ -63,7 +64,9 @@ public class UserLotto {
         List<Integer> lottoNumbers = new ArrayList<>();
 
         lottoNumbers = Randoms.pickUniqueNumbersInRange(MIN_NUMBER,MAX_NUMBER,CNT_NUMBER);
-        Collections.sort(lottoNumbers);
+        lottoNumbers = lottoNumbers.stream()
+                .sorted()
+                .collect(Collectors.toList());
 
         new Lotto(lottoNumbers);
 
