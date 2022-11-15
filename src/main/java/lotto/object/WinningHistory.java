@@ -17,6 +17,14 @@ public class WinningHistory {
                         .toMap(WinningResult::getMatchNumber, WinningAmount::new));
     }
 
+    public Map<Integer, WinningAmount> getHistory() {
+        return history;
+    }
+
+    public WinningAmount getAmount(Integer key) {
+        return history.get(key);
+    }
+
     @Override
     public String toString() {
         List<WinningAmount> amounts = new ArrayList<>(history.values());
