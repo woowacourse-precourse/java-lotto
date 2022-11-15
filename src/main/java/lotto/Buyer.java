@@ -2,10 +2,12 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
 
+import java.text.DecimalFormat;
 import java.util.List;
 
 
 public class Buyer {
+    private static final DecimalFormat numberFormat = new DecimalFormat("###,###");
     private List<Lotto> myLottos;
     private Store store;
 
@@ -36,9 +38,10 @@ public class Buyer {
         }
     }
 
-    public void checkPrize(List<Lotto> lottos) {
+    public LottoResult checkPrize(List<Lotto> lottos) {
         LottoResult lottoResult = requestPrizeToStore(lottos);
         printPrize(lottoResult);
+        return lottoResult;
     }
 
     private LottoResult requestPrizeToStore(List<Lotto> lottos) {
@@ -49,7 +52,8 @@ public class Buyer {
         System.out.println("당첨 통계");
         System.out.println("---");
         for (Prize prize : Prize.values()) {
-            System.out.println(prize.getMatching() + "개 일치 (" + prize.getPrizeMoney() + ") - " + "" + "개");
+            String priceWithFormat = numberFormat.format(prize.getPrizeMoney());
+            System.out.println(prize.getMatching() + "개 일치 (" + priceWithFormat + "원) - " + "" + "개");
         }
     }
 
