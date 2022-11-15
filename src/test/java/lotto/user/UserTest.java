@@ -18,8 +18,8 @@ public class UserTest {
 
     @DisplayName("입력된 숫자가 1000 단위인 경우에는 true가 반환된다.")
     @Test
-    void validateMoney_정상() throws InvocationTargetException, NoSuchMethodException, IllegalAccessException {
-        Method validateMoneyMethod = User.class.getDeclaredMethod("validateMoney", String.class);
+    void validatePurchasePrice_정상() throws InvocationTargetException, NoSuchMethodException, IllegalAccessException {
+        Method validateMoneyMethod = User.class.getDeclaredMethod("validatePurchasePrice", String.class);
         validateMoneyMethod.setAccessible(true);
         validateMoneyMethod.invoke(user, "12000");
     }
