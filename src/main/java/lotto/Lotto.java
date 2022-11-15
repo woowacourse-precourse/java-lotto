@@ -15,6 +15,14 @@ public class Lotto {
             throw new IllegalArgumentException();
         }
     }
-
     // TODO: 추가 기능 구현
+    public void printLotto() {
+        System.out.println(this.numbers);
+    }
+
+    public int compareLotto(List<Integer> numbers) {
+        return (int) this.numbers.stream()
+                .filter(numbers::contains)
+                .count();
+    }
 }

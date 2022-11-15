@@ -38,4 +38,11 @@ public class LottoService {
         winningNumbers.add(bonusNumber);
         return winningNumbers;
     }
+
+    public List<Integer> compareLotto(List<Integer> winningNumbers){
+        List<Integer> scoreList = new ArrayList<>();
+        this.lottos.forEach(lotto -> scoreList.add(lotto.compareLotto(winningNumbers)));
+        return scoreList;
+    }
+
 }
