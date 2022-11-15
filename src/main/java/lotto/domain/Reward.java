@@ -18,4 +18,7 @@ public enum Reward {
     public int getNumber(){
         return this.number;
     }
+    public String getBIll(){
+        return this.bill;
+    }
 }
