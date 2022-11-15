@@ -71,7 +71,7 @@ public class Game {
             return;
         }
 
-        this.profitRate = ((double) this.winningPrize / user.getLottoMoney()) * 100;
+        this.profitRate = ((double) this.winningPrize / user.getUserMoney()) * 100;
     }
 
     private boolean isWinningPrizeZero(){

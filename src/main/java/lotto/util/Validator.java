@@ -20,8 +20,8 @@ public class Validator {
         return input.isEmpty();
     }
 
-    public static boolean isLottoMoney(int lottoMoney){
-        return lottoMoney % Constant.LOTTO_PRICE == 0;
+    public static boolean isUserMoney(int userMoney){
+        return userMoney % Constant.LOTTO_PRICE == 0;
     }
 
     public static boolean isNotComma(String inputWinningNumbers) {

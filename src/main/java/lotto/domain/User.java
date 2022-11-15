@@ -7,30 +7,30 @@ import lotto.util.UserInput;
 
 public class User {
 
-    private LottoMoney lottoMoney;
+    private UserMoney userMoney;
     private int nLottoTickets;
 
     public User(){
-        Message.printInputUserLottoMoney();
-        setLottoMoney();
+        Message.printInputUserMoney();
+        setUserMoney();
         Message.printNextLine();
 
         setnLottoTickets();
     }
 
-    private void setLottoMoney() {
-        String inputLottoMoney = UserInput.getInputLottoMoney();
-        int lottoMoney = Converter.StringToInteger(inputLottoMoney);
+    private void setUserMoney() {
+        String inputUserMoney = UserInput.getInputUserMoney();
+        int userMoney = Converter.StringToInteger(inputUserMoney);
 
-        this.lottoMoney = new LottoMoney(lottoMoney);
+        this.userMoney = new UserMoney(userMoney);
     }
 
     private void setnLottoTickets() {
-        this.nLottoTickets = this.lottoMoney.getMoney() / Constant.LOTTO_PRICE;
+        this.nLottoTickets = this.userMoney.getMoney() / Constant.LOTTO_PRICE;
     }
 
-    public int getLottoMoney() {
-        return lottoMoney.getMoney();
+    public int getUserMoney() {
+        return userMoney.getMoney();
     }
 
     public int getnLottoTickets() {
