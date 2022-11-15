@@ -11,6 +11,7 @@ public class WinningResultCalculator {
     private int totalPrizeMoney = 0;
 
     public double calculateReturnRatio(double expenses) {
+        calculateTotalPrizeMoney();
         return (totalPrizeMoney / expenses) * 100;
     }
 
@@ -22,8 +23,6 @@ public class WinningResultCalculator {
             Rank rank = Rank.calculateRank(lotto, winningNumbers);
             winningStatus.put(rank, winningStatus.get(rank) + 1);
         }
-
-        calculateTotalPrizeMoney();
 
         return winningStatus;
     }
