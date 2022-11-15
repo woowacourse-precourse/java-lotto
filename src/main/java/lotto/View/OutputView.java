@@ -25,7 +25,7 @@ public class OutputView {
         number.forEach(lotto -> System.out.println(lotto.getNumbers()));
     }
 
-    public void printResult(Map<String, Integer> savedResult) {
+    public void printResult(final Map<String, Integer> savedResult) {
         printMessage(ENTER + STATISTICS_MESSAGE1 + ENTER + STATISTICS_MESSAGE2);
         for (Result key : Result.values()) {
             key.printResult(savedResult.getOrDefault(key.getMatchNumber(), 0));

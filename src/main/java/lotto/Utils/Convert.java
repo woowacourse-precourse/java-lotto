@@ -30,8 +30,8 @@ public class Convert {
         return lottoNum;
     }
 
-    private static void isLottoNumber(int n) {
-        if(!(MIN_NUM <= n && n <= MAX_NUM)) {
+    private static void isLottoNumber(final int n) {
+        if (!(MIN_NUM <= n && n <= MAX_NUM)) {
             throw new IllegalArgumentException(Message.ERROR_ONE_TO_FORTYFIVE.getMessage());
         }
     }

@@ -23,7 +23,7 @@ public class Buyer {
     }
 
     private void isThousandUnit(final int money) {
-        if(money % THOUSAND_UNIT != ZERO || money == 0) {
+        if (money % THOUSAND_UNIT != ZERO || money == 0) {
             throw new IllegalArgumentException(Message.ERROR_THOUSAND_UNIT.getMessage());
         }
     }

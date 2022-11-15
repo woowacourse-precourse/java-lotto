@@ -7,7 +7,7 @@ public class Money {
 
     private long prizeMoney;
 
-    public void calculrateReturnRate(Map<String, Integer> savedResult) {
+    public void calculrateReturnRate(final Map<String, Integer> savedResult) {
         prizeMoney = 0;
         for (Result key : Result.values()) {
             int value = savedResult.getOrDefault(key.getMatchNumber(), 0);
