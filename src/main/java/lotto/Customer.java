@@ -24,4 +24,12 @@ public class Customer {
     public void changeLottos(List<Lotto> lottos){
         this.lottos = new ArrayList<>(lottos);
     }
+
+    public int getCntOfLottos(){
+        return lottos.size();
+    }
+
+    public List<Lotto> getLottos(){
+        return new ArrayList<>(lottos);
+    }
 }
