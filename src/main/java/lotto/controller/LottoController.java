@@ -1,6 +1,8 @@
 package lotto.controller;
 
+import java.util.List;
 import lotto.domain.LottoGenerator;
+import lotto.domain.LottoResult;
 import lotto.domain.NumberOfLottos;
 import lotto.view.InputView;
 import lotto.view.OutputView;
@@ -12,6 +14,7 @@ public class LottoController {
             NumberOfLottos numberOfLottos = getPriceAmount();
             LottoGenerator lottoGenerator = getLottos(numberOfLottos);
             OutputView.printLottos(numberOfLottos, lottoGenerator);
+            LottoResult lottoResult = getLottoResult();
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
@@ -26,5 +29,12 @@ public class LottoController {
         int amount = numberOfLottos.calculateNumberOfLottos(price);
 
         return new LottoGenerator(amount);
+    }
+
+    private LottoResult getLottoResult() {
+        List<Integer> winningNumbers = InputView.getLottoNumbers();
+        int bonusNumber = InputView.getBonusNumbers();
+
+        return new LottoResult(winningNumbers, bonusNumber);
     }
 }
