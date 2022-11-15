@@ -1,10 +1,16 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.Randoms;
-
 import java.util.*;
 
+/**
+ * Handles the generating and comparison of tickets.
+ *
+ * @author Davin An
+ * @version 1.0
+ */
 public class TicketHandler {
+
     Map<Winnings, Integer> winningTickets = new LinkedHashMap<>();
 
     public TicketHandler() {
@@ -15,6 +21,12 @@ public class TicketHandler {
         this.winningTickets.put(Winnings.FirstPlace, 0);
     }
 
+
+    /**
+     * Generates new lotto tickets according to the user's purchase amount.
+     *
+     * @return Lotto tickets as a List
+     */
     public List<Lotto> generateTickets() {
         int count = Application.getPurchaseAmount() / 1000;
         System.out.println(count + "개를 구매했습니다.");
@@ -27,6 +39,13 @@ public class TicketHandler {
         return lotto;
     }
 
+
+    /**
+     * Compares user's lotto tickets to the winning and bonus numbers.
+     *
+     * @param winningNum 6 digit winning number
+     * @param bonusNum   A single bonus number
+     */
     public void compareTickets(List<Integer> winningNum, int bonusNum) {
         int count;
         List<Integer> temp = new ArrayList<>();
@@ -42,6 +61,12 @@ public class TicketHandler {
         }
     }
 
+
+    /**
+     * Counts what place a lotto ticket won.
+     *
+     * @param count Number of matching numbers a lotto ticket has
+     */
     public void countTickets(int count) {
         Winnings place;
         if (count <= 4) {
@@ -51,6 +76,13 @@ public class TicketHandler {
         Application.setWinningTickets(this.winningTickets);
     }
 
+
+    /**
+     * Calculates the profit percentage a user made.
+     *
+     * @param winnings Amount of money the user won
+     * @return Profit the user made
+     */
     public double calcProfit(int winnings) {
         return ((double) winnings / Application.getPurchaseAmount()) * 100;
     }
