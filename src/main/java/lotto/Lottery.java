@@ -11,6 +11,13 @@ public class Lottery {
         buyer.payMoney();
         List<Lotto> lotteryTickets = buyer.getLotteryTickets();
         printLottoInfos(lotteryTickets);
+
+        printRequestWinningNumberMessage();
+        WinningNumber winningNumber = Drawing.getWinningNumber();
+    }
+
+    private void printRequestWinningNumberMessage() {
+        System.out.println("당첨 번호를 입력해 주세요.");
     }
 
     private void printLottoInfos(List<Lotto> lottos) {
