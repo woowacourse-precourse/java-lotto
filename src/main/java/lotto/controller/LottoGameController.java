@@ -1,13 +1,13 @@
 package lotto.controller;
 
-import lotto.Lotto;
+import lotto.model.Lotto;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
-import static lotto.Lotto.*;
+import static lotto.model.Lotto.*;
 import static lotto.view.Input.*;
+import static lotto.view.Output.statistics;
 
 public class LottoGameController {
 

@@ -1,4 +1,4 @@
-package lotto;
+package lotto.model;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
@@ -13,7 +13,6 @@ public class Lotto {
     public List<Integer> getNumbers() {
         return numbers;
     }
-
 
     public static List<List<Integer>> randomLottoNum(int num) {
         List<List<Integer>> lottos = new ArrayList<>();
@@ -73,6 +72,7 @@ public class Lotto {
         if (count == 3) return 5;
         return 0;
     }
+
     public static String rate(List<Integer> grades, int money) {
         long profit = 0;
 
@@ -86,20 +86,6 @@ public class Lotto {
         String rate = String.format("%.1f", result);
         return rate;
     }
-
-    public static void statistics(List<Integer> count, String rate) {
-
-        System.out.println("당첨 통계");
-        System.out.println("---");
-        System.out.println("3개 일치 (5,000원) - " + count.get(5) + "개");
-        System.out.println("4개 일치 (50,000원) - " + count.get(4)+ "개");
-        System.out.println("5개 일치 (1,500,000원) - " + count.get(3)+ "개");
-        System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - " + count.get(2)+ "개");
-        System.out.println("6개 일치 (2,000,000,000원) - " + count.get(1)+ "개");
-
-        System.out.println("총 수익률은 " + rate+ "%입니다.");
-    }
-
 
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
