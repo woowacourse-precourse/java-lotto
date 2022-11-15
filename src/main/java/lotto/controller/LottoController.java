@@ -13,7 +13,7 @@ import java.util.Map;
 
 public class LottoController {
 
-    private static LottoService lottoService = new LottoService();
+    private static final LottoService lottoService = new LottoService();
 
     public static void run() {
         String inputMoney = printInputMessageAndInputAmount();
