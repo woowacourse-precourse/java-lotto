@@ -3,6 +3,8 @@ package lotto.controller;
 import lotto.domain.Lotto;
 import lotto.domain.LottoCashier;
 import lotto.view.InputView;
+import lotto.view.OutputView;
+
 import java.util.List;
 
 public class Game {
@@ -10,6 +12,7 @@ public class Game {
         int money = InputView.inputLottoAmount();
         LottoCashier lottoCashier = new LottoCashier();
         int count = lottoCashier.getLottoCount(money);
+        OutputView.printCheckAmount(count);
         List<Lotto> lottos = lottoCashier.createLottoList(count);
 
         Lotto winningNumbers = setWinningNumbers();

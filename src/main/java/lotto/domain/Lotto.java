@@ -44,4 +44,8 @@ public class Lotto {
             throw new IllegalArgumentException("[ERROR] 보너스 번호는 당첨번호와 다른 숫자여야 합니다.");
         }
     }
+
+    public List<Integer> getNumbers() {
+        return numbers;
+    }
 }
