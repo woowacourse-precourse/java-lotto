@@ -3,14 +3,14 @@ package lotto.Domain;
 import java.util.List;
 
 public class User {
-    private final List<Lotto> Lottos;
+    private final List<Lotto> lottos;
     private final int money;
 
-    public User(List<Lotto> Lottos,int money)
+    public User(List<Lotto> lottos,int money)
     {
         not1000(money);
         this.money = money;
-        this.Lottos = Lottos;
+        this.lottos = lottos;
     }
 
     public void not1000(int money)
@@ -20,4 +20,14 @@ public class User {
             throw new IllegalArgumentException();
         }
     }
-}
+    public User printLottosList()
+    {
+        for(Lotto asd:this.lottos) {
+            System.out.println(asd);
+        }
+        return new User(this.lottos,money);
+    }
+    @Override
+    public String toString() {
+        return this.lottos.toString();
+    }}

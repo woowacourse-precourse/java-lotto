@@ -26,6 +26,9 @@ public class Lotto {
             throw new IllegalArgumentException();
         }
     }
-
+    @Override
+    public String toString() {
+        return numbers.toString();
+    }
     // TODO: 추가 기능 구현
 }
