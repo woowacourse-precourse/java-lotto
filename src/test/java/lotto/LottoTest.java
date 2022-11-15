@@ -45,7 +45,7 @@ class LottoTest {
     	List<List<Integer>> myLottos = new ArrayList<List<Integer>>(Arrays.asList(Arrays.asList(1, 2, 3, 4, 5, 6), Arrays.asList(1, 2, 3, 4, 5, 7)));
     	List<Integer> result = new ArrayList<Integer>(Arrays.asList(0, 0, 0, 0, 0, 0, 1, 1));
     	
-        assertThat(Application.compareNumbers(winningNumbers, myLottos, bonusNumber).equals(result));
+        assertThat(Comparison.compareNumbers(winningNumbers, myLottos, bonusNumber).equals(result));
     }
     
     @DisplayName("countCorrectNumbers()")
@@ -55,7 +55,7 @@ class LottoTest {
     	List<Integer> winningNumbers = new ArrayList<Integer>(Arrays.asList(1, 2, 3, 4, 5, 6));
     	List<Integer> myLotto = new ArrayList<Integer>(Arrays.asList(1, 2, 3, 4, 5, 6));
     	
-        assertThat(Application.countCorrectNumbers(winningNumbers, myLotto) == 6);
+        assertThat(Comparison.countCorrectNumbers(winningNumbers, myLotto) == 6);
     }
     
     @DisplayName("updateLottoResult()")
@@ -66,7 +66,7 @@ class LottoTest {
     	List<Integer> result = new ArrayList<Integer>(Arrays.asList(0, 0, 0, 0, 0, 0, 0, 0));
     	List<Integer> _result = new ArrayList<Integer>(Arrays.asList(0, 0, 0, 0, 0, 0, 0, 1));
     	
-        assertThat(Application.updateLottoResult(result, index).equals(_result));
+        assertThat(Comparison.updateLottoResult(result, index).equals(_result));
     }
     
     @DisplayName("getLottoResultMessage()")
@@ -76,7 +76,7 @@ class LottoTest {
     	int index = 7;
     	Integer numberOfTimes = 1;
     	
-        assertThat(Application.getLottoResultMessage(index, numberOfTimes).equals("5개 일치, 보너스 볼 일치 (30,000,000원) - " + numberOfTimes + "개"));
+        assertThat(Result.getLottoResultMessage(index, numberOfTimes).equals("5개 일치, 보너스 볼 일치 (30,000,000원) - " + numberOfTimes + "개"));
     }
     
     @DisplayName("getRateOfReturn()")
@@ -86,7 +86,7 @@ class LottoTest {
     	int payment = 10000;
     	List<Integer> result = new ArrayList<Integer>(Arrays.asList(0, 0, 0, 6, 0, 0, 0, 0));
     	
-        assertThat(Application.getRateOfReturn(payment, result).equals("200"));
+        assertThat(Result.getRateOfReturn(payment, result).equals("200"));
     }
     
     @DisplayName("getTotalPrizeMoney()")
@@ -96,7 +96,7 @@ class LottoTest {
     	int payment = 10000;
     	List<Integer> result = new ArrayList<Integer>(Arrays.asList(0, 0, 0, 6, 0, 0, 0, 0));
     	
-        assertThat(Application.getTotalPrizeMoney(payment, result) == 20000);
+        assertThat(Result.getTotalPrizeMoney(payment, result) == 20000);
     }
     
     @DisplayName("getPrizeMoney()")
@@ -104,6 +104,6 @@ class LottoTest {
     void getPrizeMoney() {
     	
     	int index = 7;
-        assertThat(Application.getPrizeMoney(index) == 30000000);
+        assertThat(Result.getPrizeMoney(index) == 30000000);
     }
 }

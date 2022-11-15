@@ -21,7 +21,7 @@ public class Lotto {
 			throw new IllegalArgumentException();
 		}
 		
-		User.verifyOverlap(numbers);
+		Verification.verifyOverlap(numbers);
 	}
 
 	// TODO: 추가 기능 구현
