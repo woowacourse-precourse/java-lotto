@@ -36,7 +36,7 @@ public class OutputView {
     }
 
     public static void printProfit(double profit) {
-        System.out.println(MESSAGE_PROFIT_PREFIX + Double.toString(profit) + MESSAGE_PROFIT_SUFFIX);
+        System.out.println(MESSAGE_PROFIT_PREFIX + String.format("%.1f", profit) + MESSAGE_PROFIT_SUFFIX);
     }
 
     public static void printString(String input){
