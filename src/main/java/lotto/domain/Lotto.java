@@ -8,11 +8,9 @@ import lotto.util.Validator;
 
 import java.util.List;
 
-import static lotto.util.Constant.FIVE;
+import static lotto.util.Constant.*;
 
 public class Lotto {
-    private static final int START_INCLUSIVE = 1;
-    private static final int END_INCLUSIVE = 45;
     private static final int NUMBERS_SIZE = 6;
     private static final int BONUS_SCORE = 1;
     private static final int BONUS_SCORELESS = 0;
@@ -36,8 +34,19 @@ public class Lotto {
         return new Lotto(Utilities.sort(numbers));
     }
 
-    public static Lotto generate(String numbers) {
-        return new Lotto(Utilities.convertToList(numbers));
+    public static Lotto generate(String draw) {
+        return new Lotto(Utilities.convertToList(draw));
+    }
+
+    public static int generate(Lotto draw, String bonus) {
+        validateBonus(draw, bonus);
+        return Integer.parseInt(bonus);
+    }
+
+    public static void validateBonus(Lotto draw, String bonus) {
+        BonusValidator.validateInteger(bonus);
+        BonusValidator.validateBonusInRange(Integer.parseInt(bonus), START_INCLUSIVE, END_INCLUSIVE);
+        BonusValidator.validateBonusNotRepeated(draw, Integer.parseInt(bonus));
     }
 
     public int calculateDraw(Lotto draw) {
@@ -84,6 +93,21 @@ public class Lotto {
                     .stream()
                     .anyMatch(number -> (number < START_INCLUSIVE || number > END_INCLUSIVE))) {
                 ErrorHandler.throwException(ErrorMessage.LOTTO_NUMBERS_NOT_IN_RANGE);
+            }
+        }
+    }
+
+    static class BonusValidator extends Validator {
+        public static void validateBonusInRange(int bonus, int startInclusive, int endInclusive) {
+            if (bonus < startInclusive
+                    || bonus > endInclusive) {
+                ErrorHandler.throwException(ErrorMessage.LOTTO_NUMBERS_NOT_IN_RANGE);
+            }
+        }
+
+        public static void validateBonusNotRepeated(Lotto draw, int bonus) {
+            if (draw.numbers.contains(bonus)) {
+                ErrorHandler.throwException(ErrorMessage.BONUS_NUMBER_REPEATED);
             }
         }
     }
