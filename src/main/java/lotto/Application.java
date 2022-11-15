@@ -34,7 +34,7 @@ public class Application {
         // 보너스 번호 입력
         int bonusNumber = console.inputBonusNumber();
         try {
-            lotto.checkException(bonusNumber);
+            lotto.checkBonusException(bonusNumber);
         } catch (IllegalArgumentException e) {
             console.outputErrorMessage();
             return;

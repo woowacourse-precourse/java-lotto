@@ -16,6 +16,7 @@ public class Lotto {
         }
         for (Integer number : numbers) {
             checkException(number);
+            duplicateException(numbers, number);
         }
     }
 
@@ -35,8 +36,24 @@ public class Lotto {
         }
         return false;
     }
-    public void checkException(int num) {
+    private void duplicateException(List<Integer> numbers, int num) {
+        int count = 0;
+        for (int i = 0; i < numbers.size(); i++) {
+            if (numbers.get(i) == num) {
+                count++;
+            }
+            if (count > 1) {
+                throw new IllegalArgumentException();
+            }
+        }
+    }
+    private void checkException(int num) {
         if (num < 1 || num > 45) {
+            throw new IllegalArgumentException();
+        }
+    }
+    public void checkBonusException(int num) {
+        if (num < 1 || num > 45 || numbers.contains(num)) {
             throw new IllegalArgumentException();
         }
     }
