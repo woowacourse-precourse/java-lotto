@@ -5,7 +5,8 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-public enum LottoPrize {
+public enum LottoPrize
+{
     FIRST_PRIZE(6, 0, 2_000_000_000),
     SECOND_PRIZE(5, 1, 30_000_000),
     THIRD_PRIZE(5, 0, 1_500_000),

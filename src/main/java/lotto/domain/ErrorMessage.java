@@ -1,6 +1,7 @@
 package lotto.domain;
 
 public enum ErrorMessage {
+
     INVALID_RANGE("유효한 범위의 번호가 아닙니다."),
     DUPLICATED_NUMBER("로또 번호는 중복될 수 없습니다."),
     INVALID_LOTTO_SIZE("유효한 번호 개수가 아닙니다."),
