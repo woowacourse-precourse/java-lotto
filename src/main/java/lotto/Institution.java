@@ -57,4 +57,9 @@ public class Institution {
         }
     }
 
+    public void announceWinnerResult(List<PrizeWinner> prizeWinners, User user) {
+        for(PrizeWinner prizeWinner : prizeWinners) {
+            System.out.println(prizeWinner.toString());
+        }
+    }
 }
