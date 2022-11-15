@@ -17,4 +17,9 @@ public class Calculation {
         }
         return matchNumber;
     }
+
+    public static boolean calculateMatchNumber(List<Integer> oneLotto, int bonusNumber) {
+        return (oneLotto.contains(bonusNumber));
+    }
+
 }
