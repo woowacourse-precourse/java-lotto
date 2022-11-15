@@ -1,5 +1,7 @@
 package lotto;
 
+import exception.LottoException;
+
 import java.util.List;
 
 public class Game {
@@ -12,6 +14,8 @@ public class Game {
     private int hitFiveAndBonus;
     private int hitSix;
     private List<Integer> winningNumbers;
+
+    private LottoException lottoException;
 
 
     public int getBonusNumber(){
@@ -58,6 +62,7 @@ public class Game {
         this.hitSix = hitSix;
     }
     public void changeMoney(int money){
+        lottoException.validateMoney(money);
         this.money = money;
     }
 
@@ -76,5 +81,7 @@ public class Game {
     public int getHitSix(){
         return this.hitSix;
     }
+
+
 
 }

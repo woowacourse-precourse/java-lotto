@@ -20,7 +20,7 @@ public class LottoException extends IllegalStateException {
         }
     }
 
-    public void IllegalMoneyException(int money){
+    public void validateMoney(int money){
         if( money % 1000 != 0 ) throw new LottoException("[ERROR] 사용자 투자 금액은 1000으로 나누어떨어져야 유효합니다.");
     }
 
