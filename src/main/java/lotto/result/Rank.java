@@ -1,21 +1,22 @@
 package lotto.result;
 
+import java.text.DecimalFormat;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public enum Rank {
-    NONE("0", 0),
-    FIFTH("5,000", 3),
-    FOURTH("50,000", 4),
-    THIRD("1,500,000", 5),
-    SECOND("30,000,000", 5),
-    FIRST("2,000,000,000", 6);
+    NONE(0, 0),
+    FIFTH(5_000, 3),
+    FOURTH(50_000, 4),
+    THIRD(1_500_000, 5),
+    SECOND(30_000_000, 5),
+    FIRST(2_000_000_000, 6);
 
-    private final String winningMoney;
+    private final int winningMoney;
     private final int matchCount;
 
-     Rank(String winningMoney, int matchCount) {
+     Rank(int winningMoney, int matchCount) {
         this.winningMoney = winningMoney;
         this.matchCount = matchCount;
     }
@@ -35,8 +36,15 @@ public enum Rank {
                 .filter(rank -> !rank.equals(NONE))
                 .collect(Collectors.toList());
     }
-
-    private boolean isMatch(int matchCount) {
+    private boolean isMatch(final int matchCount) {
         return this.matchCount == matchCount;
+    }
+
+    public int getPrize() {
+        return winningMoney;
+    }
+
+    public int getMatchCount() {
+        return matchCount;
     }
 }
