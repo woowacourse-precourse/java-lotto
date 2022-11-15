@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import lotto.domain.Money;
-import lotto.domain.Rank;
+import lotto.constant.Rank;
 import lotto.vo.Statistics;
 
 public class StatisticsView {

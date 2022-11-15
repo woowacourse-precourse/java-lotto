@@ -5,7 +5,7 @@ import java.util.Map;
 import java.util.TreeMap;
 
 import lotto.domain.Money;
-import lotto.domain.Rank;
+import lotto.constant.Rank;
 
 public class Statistics {
 

@@ -3,6 +3,8 @@ package lotto.domain;
 import java.util.ArrayList;
 import java.util.List;
 
+import lotto.constant.Rank;
+
 public class Picker {
     private final Lotto winningLotto;
     private final LottoNumber bonusNumber;

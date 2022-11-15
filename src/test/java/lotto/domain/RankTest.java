@@ -7,6 +7,8 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
+import lotto.constant.Rank;
+
 class RankTest {
     @DisplayName("2개 이하는 꼴등")
     @ParameterizedTest(name = "{0}개 맞으면 꼴등")

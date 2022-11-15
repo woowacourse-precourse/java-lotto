@@ -8,7 +8,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import lotto.domain.Money;
-import lotto.domain.Rank;
+import lotto.constant.Rank;
 
 class StatisticsTest {
 

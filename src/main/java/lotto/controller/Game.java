@@ -6,7 +6,7 @@ import lotto.domain.Lotto;
 import lotto.domain.LottoNumber;
 import lotto.domain.Money;
 import lotto.domain.Picker;
-import lotto.domain.Rank;
+import lotto.constant.Rank;
 import lotto.domain.Seller;
 import lotto.view.InputView;
 import lotto.view.OutputView;
