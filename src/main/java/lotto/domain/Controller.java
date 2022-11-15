@@ -76,6 +76,9 @@ public class Controller {
         }
     }
 
+    private void checkEqualOrBiggerThanThousand(int number){
+    }
+
     private void printPublishedLotto(List<Lotto> lottos) {
         System.out.println("\n" + lottos.size() + "개를 구매했습니다.");
         lottos.forEach(lotto -> {
