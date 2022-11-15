@@ -5,7 +5,7 @@ import java.util.List;
 
 //todo 상수들만 모은 클래스 만들기
 public class Store {
-	public long count;	// todo  테스트만을 위한 퍼블릭?
+	public long count;
 	final int PRICE = 1000;
 
 	public Store(long pay) {
