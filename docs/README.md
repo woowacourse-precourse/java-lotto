@@ -27,6 +27,7 @@
 - [x]  당첨 내역을 출력하는 기능
   - 3개 일치 ~ 6개 일치 순으로 출력
 - [x]  수익률을 출력하는 기능
+- [ ]  예외 처리 문구를 출력하는 기능
 
 `**util/Validator**`
 - [x]  입력받은 금액의 예외 상황을 확인하는 기능
@@ -62,10 +63,10 @@
 - `util/Input` 클래스 : 입력 담당, 입력값에 대한 자료형 변환을 위한 유효성 검사 수행
   - `readMoney()`, `readWinningNumbers()`, `readBonusNumber()`
 - `util/Output` 클래스 : 출력 담당
-  - `printInputMessage()`, `printBuyMessage()`, `printLotto()`, `printInputWinnings()`, `printInputBonus()`, `printStatistics()`, `printYield()`
+  - `printInputMessage()`, `printBuyMessage()`, `printLotto()`, `printInputWinnings()`, `printInputBonus()`, `printStatistics()`, `printYield()`, `printException()`
 - `util/Calculator` 클래스 : 당첨 결과, 수익률 계산 수행
   - `Map<Result, Integer> resultCount`, `int earn`
-  - `calculateResult()`, `initializeMap()`, `calculateYield()`
+  - `calculateResult()`, `calculateEarn()`, `initializeMap()`, `stringToInt()`, `calculateYield()`
 
 - `domain/Lotto` 클래스 : 사용자의 로또 1개를 저장, 관련 로직 수행
   - `List<Integer> numbers`
