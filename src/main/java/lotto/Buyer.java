@@ -97,7 +97,7 @@ public class Buyer {
                 + FIVE_CORRECT * winningCounts[2]
                 + BONUS_CORRECT * winningCounts[3]
                 + ALL_CORRECT * winningCounts[4];
-        return (earnings / purchaseAmount);
+        return (earnings / purchaseAmount * 100);
     }
 
     public BoughtTicketsDTO getBoughtTicketDTO() {
