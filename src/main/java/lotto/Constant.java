@@ -10,4 +10,10 @@ public class Constant {
     public static final String MESSAGE_THIRD_PRIZE = "5개 일치 (1,500,000원) - ";
     public static final String MESSAGE_FOURTH_PRIZE = "4개 일치 (50,000원) - ";
     public static final String MESSAGE_FIFTH_PRIZE = "3개 일치 (5,000원) - ";
+
+    public static final int FIRST_PRICE = 2000000000;
+    public static final int SECOND_PRICE = 30000000;
+    public static final int THIRD_PRICE = 1500000;
+    public static final int FOURTH_PRICE = 50000;
+    public static final int FIFTH_PRICE = 5000;
 }

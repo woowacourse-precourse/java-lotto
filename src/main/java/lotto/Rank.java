@@ -73,23 +73,33 @@ public class Rank {
         Result result = Result.fromLabel(countLotto + 2);
         result.increaseCount();
     }
+
+    private double calculateRateOfReturn(int money) {
+        double rate = 0.0;
+        int sum = 0;
+
+
+        return rate;
+    }
 }
 
 enum Result {
-    FST(6, MESSAGE_FIRST_PRIZE, 0),
-    SECOND(7, MESSAGE_SECOND_PRIZE, 0),
-    THIRD(5, MESSAGE_THIRD_PRIZE, 0),
-    FOURTH(4, MESSAGE_FOURTH_PRIZE, 0),
-    FIFTH(3, MESSAGE_FIFTH_PRIZE, 0),
-    EMPTY(-1, "Empty", 0);
+    FST(6, MESSAGE_FIRST_PRIZE, 0, FIRST_PRICE),
+    SECOND(7, MESSAGE_SECOND_PRIZE, 0, SECOND_PRICE),
+    THIRD(5, MESSAGE_THIRD_PRIZE, 0, THIRD_PRICE),
+    FOURTH(4, MESSAGE_FOURTH_PRIZE, 0, FOURTH_PRICE),
+    FIFTH(3, MESSAGE_FIFTH_PRIZE, 0, FIFTH_PRICE),
+    EMPTY(-1, "Empty", 0, 0);
     private final int label;
     private final String text;
     private int count;
+    private final int price;
 
-    Result(int label, String text, int count) {
+    Result(int label, String text, int count, int price) {
         this.label = label;
         this.text = text;
         this.count = count;
+        this.price = price;
     }
 
     public static Result fromLabel(int targetLabel) {
@@ -105,4 +115,5 @@ enum Result {
 
     public String text() { return text; }
     public int count() { return count; }
+    public int price() { return price; }
 }
