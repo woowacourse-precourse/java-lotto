@@ -1,4 +1,4 @@
-package lotto.domain.lottomachine.ranking;
+package lotto.domain.lottomachine.frequency;
 
 import java.math.BigDecimal;
 import java.util.Objects;
@@ -6,6 +6,7 @@ import java.util.Objects;
 import static lotto.domain.lottomachine.error.DomainErrorMessage.NEGATIVE_FREQUENCY;
 
 public class Frequency {
+    private static final int ZERO = 0;
     private final int frequency;
 
     private Frequency(int frequency) {
@@ -18,9 +19,13 @@ public class Frequency {
     }
 
     private void validate(int frequency) {
-        if (frequency < 0) {
+        if (isLessThanZero(frequency)) {
             throw new IllegalArgumentException(NEGATIVE_FREQUENCY.getMessage());
         }
+    }
+
+    private boolean isLessThanZero(int number) {
+        return number < ZERO;
     }
 
     public BigDecimal toBigDecimal() {
