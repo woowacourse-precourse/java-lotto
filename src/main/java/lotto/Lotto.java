@@ -3,6 +3,7 @@ package lotto;
 import java.util.List;
 
 public class Lotto {
+
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
@@ -10,13 +11,19 @@ public class Lotto {
         this.numbers = numbers;
     }
 
-    private void validate(List<Integer> numbers) throws IllegalArgumentException{
+    private void validate(List<Integer> numbers) throws IllegalArgumentException {
         Validation validation = new Validation();
         validation.checkDuplicate(numbers);
-        for(int number : numbers){
+        for (int number : numbers) {
             validation.checkNumberInRange(number);
         }
     }
 
-    // TODO: 추가 기능 구현
+    public boolean hasNumber(int number) {
+        if (numbers.contains(number)) {
+            return true;
+        }
+        return false;
+    }
+
 }
