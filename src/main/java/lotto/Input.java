@@ -31,9 +31,40 @@ public class Input {
 
     public static Lotto inputWinningNumber() {
         String winning = Console.readLine();
-        List<Integer> winningLotto = Stream.of(winning.split(","))
-                .map(s -> Integer.parseInt(s))
-                .collect(Collectors.toList());
-        return Lotto.createWinningLotto(winningLotto);
+        checkSeparator(winning);
+        try {
+            List<Integer> winningLotto = Stream.of(winning.split(","))
+                    .map(s -> Integer.parseInt(s))
+                    .collect(Collectors.toList());
+            checkNumberRange(winningLotto);
+            duplicateValidation(winningLotto);
+            return Lotto.createWinningLotto(winningLotto);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("[ERROR] 숫자를 입력하세요.");
+        }
+    }
+
+    private static void checkSeparator(String winning) {
+        if (!winning.contains(",")) {
+            throw new IllegalArgumentException("[ERROR] 번호는 쉼표(,)를 기준으로 구분해주세요.");
+        }
+    }
+
+    public static void checkNumberRange(List<Integer> winningLotto) {
+        for (int i = 0; i < winningLotto.size(); i++) {
+            if (!inRange(winningLotto.get(i))) {
+                throw new IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
+            }
+        }
+    }
+
+    private static boolean inRange(int number) {
+        return number >= 1 && number <= 45;
+    }
+
+    private static void duplicateValidation(List<Integer> numbers) {
+        if (numbers.size() != numbers.stream().distinct().count()) {
+            throw new IllegalArgumentException("[ERROR] 중복된 숫자가 있습니다.");
+        }
     }
 }
