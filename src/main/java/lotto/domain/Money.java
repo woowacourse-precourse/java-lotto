@@ -20,4 +20,8 @@ public class Money {
     public int getAmount() {
         return money / Config.LOTTO_PRICE;
     }
+
+    public float getProfitRate(float profit) {
+        return profit / money;
+    }
 }

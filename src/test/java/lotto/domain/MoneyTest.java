@@ -3,8 +3,7 @@ package lotto.domain;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.assertj.core.api.Assertions.*;
 
 class MoneyTest {
 
@@ -29,5 +28,15 @@ class MoneyTest {
         assertThatThrownBy(() -> new Money(800))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("[ERROR]");
+    }
+
+    @DisplayName("수익률을 계산할 수 있다.")
+    @Test
+    void getProfitRate() {
+        // given
+        int money = 8000;
+        float profit = 5000f;
+
+        assertThat(new Money(money).getProfitRate(profit)).isEqualTo(profit / money);
     }
 }
