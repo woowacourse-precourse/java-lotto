@@ -3,6 +3,7 @@ package lotto;
 import lotto.domain.Lotto;
 import lotto.domain.LuckyNumber;
 import lotto.message.ErrorMessage;
+import lotto.message.NumberType;
 import lotto.repository.LottoRepository;
 import lotto.service.LottoService;
 import org.assertj.core.api.Assertions;
@@ -13,6 +14,7 @@ import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
+import java.math.BigDecimal;
 import java.util.HashSet;
 import java.util.List;
 
@@ -80,7 +82,61 @@ public class LottoServiceTest {
         assertThat(bonusCount).isEqualTo(1);
     }
 
+    @Test
+    @DisplayName("한개의 로또와 당첨번호를 비교하여 당첨 횟수 정보가 담긴 prizeResult가 정상적으로 반환된다.")
+    void count_Prize_Result_For_Each_Lotto_Test() {
+        //given
+        Lotto lotto = new Lotto(List.of(1,2,3,4,5,6));
+        LuckyNumber luckyNumber = new LuckyNumber(new HashSet<>(List.of(1, 2, 3, 4, 5, 6)), 7);
+        int[] prizeResult = new int[5];
+        //when
+        lottoService.countPrizeResultForEachLotto(lotto, luckyNumber, prizeResult);
+        //then
+        assertThat(prizeResult[NumberType.FIRST_PRIZE.getNumberType()]).isEqualTo(1);
+    }
 
+    @Test
+    @DisplayName("여러개의 로또와 당첨번호를 비교하여 당첨 횟수 정보가 담긴 prizeResult가 정상적으로 반환된다.")
+    void get_Prize_Result_Test() {
+        //given
+        lottoRepository.add(new Lotto(List.of(1,2,3,4,5,6)));
+        lottoRepository.add(new Lotto(List.of(1,2,3,4,5,7)));
+        lottoRepository.add(new Lotto(List.of(1,2,3,4,8,9)));
+        LuckyNumber luckyNumber = new LuckyNumber(new HashSet<>(List.of(1,2,3,4,5,6)),7);
+        //when
+        int[] prizeResult = lottoService.getPrizeResult(luckyNumber);
+        //then
+        assertThat(prizeResult[NumberType.FIFTH_PRIZE.getNumberType()]).isEqualTo(0);
+        assertThat(prizeResult[NumberType.FOURTH_PRIZE.getNumberType()]).isEqualTo(1);
+        assertThat(prizeResult[NumberType.THIRD_PRIZE.getNumberType()]).isEqualTo(0);
+        assertThat(prizeResult[NumberType.SECOND_PRIZE.getNumberType()]).isEqualTo(1);
+        assertThat(prizeResult[NumberType.FIRST_PRIZE.getNumberType()]).isEqualTo(1);
+    }
 
+    @Test
+    @DisplayName("당첨 횟수 정보를 바탕으로 총 당첨 상금이 정상적으로 반환된다.")
+    void calculate_Total_Prize_Test() {
+        //given
+        int[] prizeResult = {1,2,1,2,1};
+        BigDecimal expectedPrize = new BigDecimal(2_061_605);
+        //when
+        BigDecimal totalPrize = lottoService.calculateTotalPrize(prizeResult);
+        int result = totalPrize.compareTo(expectedPrize);
+        //then
+        assertThat(result).isEqualTo(0);
+    }
 
+    @Test
+    @DisplayName("입력한 돈과 당첨 횟수 결과를 바탕으로 수익률이 정상적으로 반환된다.")
+    void calculate_Profit_Rate_Test() {
+        //given
+        int money = 50000;
+        int[] prizeResult = {0,0,0,0,3};
+        BigDecimal expectedProfitRate = new BigDecimal(12_000_000);
+        //when
+        BigDecimal profitRate = lottoService.calculateProfitRate(money, prizeResult);
+        int result = profitRate.compareTo(expectedProfitRate);
+        //then
+        assertThat(result).isEqualTo(0);
+    }
 }
