@@ -11,14 +11,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 class ModelTest {
 
     @Test
-    void 로또_번호_생성_확인() {
-        Model model = new Model();
-        final List<List<Integer>> lottos = model.getUsersLottos(8);
-
-        System.out.println(lottos);
-    }
-
-    @Test
     void 로또_비교_확인() {
         Model model = new Model();
         final List<List<Integer>> lottos = List.of(
