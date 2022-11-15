@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 import view.Client;
 
 import java.util.List;
+import java.util.Set;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -46,7 +47,8 @@ class LottoTest {
     void compareLottoNumberAfterCommonNumber() {
         List<Integer> winLottoNumber = List.of(1, 5, 15, 27, 35, 44);
         List<Integer> lottoNumber = List.of(1, 6, 14, 27, 39, 42);
-        assertThat(server.compareLottoNumber(winLottoNumber, lottoNumber)).isEqualTo(2);
+        Set matchNumber = server.compareLottoNumber(winLottoNumber, lottoNumber);
+        assertThat(server.countMatchNumber(matchNumber)).isEqualTo(2);
     }
 
 
