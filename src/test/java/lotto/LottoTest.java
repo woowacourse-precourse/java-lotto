@@ -1,10 +1,12 @@
 package lotto;
 
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
+import static org.assertj.core.api.Assertions.assertThatCode;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class LottoTest {
@@ -24,4 +26,29 @@ class LottoTest {
     }
 
     // 아래에 추가 테스트 작성 가능
+    @DisplayName("로또 번호가 1보다 작거나 45 보다 크다면 예외가 발생한다")
+    @Test
+    void createLottoRange() {
+        // TODO: 이 테스트가 통과할 수 있게 구현 코드 작성
+        assertThatThrownBy(() -> new Lotto(List.of(1, 2, 3, 4, 5, 46)))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("비용이 1000단위가 아니면 예외가 발생한다.")
+    @Test
+    void _1000원단위() {
+        Purchase purchase = new Purchase();
+        assertThatThrownBy(() -> purchase.lotto(21100)).isInstanceOf(IllegalArgumentException.class);
+    }
+    @DisplayName("비용이 1000단위이면 예외가 발생하지 않고 비용만큼 로또를 구매한다.")
+    @Test
+    void 구매_테스트() {
+        Purchase purchase = new Purchase();
+        assertThatCode(() ->purchase.lotto(10000)).doesNotThrowAnyException();
+        int purchasedLottoCount = purchase.getMyLotto().size();
+        Assertions.assertThat(purchasedLottoCount).isEqualTo(10000 / 1000);
+    }
+
+
+
 }
