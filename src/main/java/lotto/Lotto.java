@@ -72,5 +72,16 @@ public class Lotto {
         return 0;
     }
 
+    public float returnRate(int userInputMoney){
+        float all=0;
+        int money[] = {5000, 50000, 1500000, 30000000, 2000000000};
+        for(int i = 0; i < 6; i++){
+            all += money[i] * winNumbers.get(i);
+        }
+        return all/userInputMoney;
+    }
 
+    public List<Integer>returnWinNums(){
+        return winNumbers;
+    }
 }
