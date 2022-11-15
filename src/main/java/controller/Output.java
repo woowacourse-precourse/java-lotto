@@ -2,6 +2,8 @@ package controller;
 
 import common.message.Message;
 import domain.Lotto;
+import domain.Rank;
+import service.Calculator;
 
 import java.util.List;
 
@@ -16,5 +18,21 @@ public class Output {
         }
 
         System.out.print(sb);
+    }
+
+    public static void printResult(List<Rank> ranks, int lottosSize) {
+        StringBuilder sb = new StringBuilder();
+        sb.append(Message.TOTAL_START.getValue()).append('\n');
+        sb.append(Message.CONTOUR.getValue()).append('\n');
+
+        for (Rank rank : ranks) {
+            sb.append(rank.toString());
+        }
+
+        sb.append(Message.TOTAL_RESULT_A.getValue())
+                .append(Calculator.getYield(ranks, lottosSize))
+                .append(Message.TOTAL_RESULT_B.getValue());
+
+        System.out.println(sb);
     }
 }
