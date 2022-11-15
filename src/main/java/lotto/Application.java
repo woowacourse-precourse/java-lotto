@@ -18,7 +18,7 @@ public class Application {
             String winningNumberInput = service.getWinningNumberInput();
 
             view.registerLuckyNumberMsg();
-            int luckyNumberInput = service.getLuckyNumberInput();
+            int luckyNumberInput = service.getLuckyNumberInput(winningNumberInput);
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }

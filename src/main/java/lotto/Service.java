@@ -66,8 +66,14 @@ public class Service {
         }
     }
 
-    public int getLuckyNumberInput() {
+    public int getLuckyNumberInput(String winningNumberInput) {
         int input = Integer.parseInt(Console.readLine());
+        String[] winningNumbers = winningNumberInput.split(",");
+        for (String winningNumber : winningNumbers) {
+            if(input == Integer.parseInt(winningNumber)){
+                throw new IllegalArgumentException("[ERROR] 중복된 숫자는 입력할 수 없습니다.");
+            }
+        }
         return input;
     }
 }
