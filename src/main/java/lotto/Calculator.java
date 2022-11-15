@@ -6,29 +6,29 @@ public class Calculator {
     int first = 0, second = 0, third = 0, fourth = 0, fifth = 0;
     int bonus, cnt = 0;
 
-    private final List<List<Integer>> lottoLists;
+    private final List<List<Integer>> lottoSet;
     private final List<Integer> winningLotto;
 
-    public Calculator(List<List<Integer>> lottoLists, List<Integer> winningLotto) {
-        this.lottoLists = lottoLists;
+    public Calculator(List<List<Integer>> lottoSet, List<Integer> winningLotto) {
+        this.lottoSet = lottoSet;
         this.winningLotto = winningLotto;
         bonus = winningLotto.get(6);
         winningLotto.remove(6);
     }
 
     public List<Integer> getResult() {
-        for (List<Integer> lottoList : lottoLists) {
+        for (List<Integer> lottoNumber : lottoSet) {
             cnt = 0;
             for (Integer winningNumber : winningLotto) {
-                countCalculator(lottoList, winningNumber);
+                countCalculator(lottoNumber, winningNumber);
             }
             rankCalculator();
         }
         return List.of(first, second, third, fourth, fifth);
     }
 
-    public void countCalculator(List<Integer> lottoList, Integer winningNumber) {
-        if (lottoList.contains(winningNumber)) {
+    public void countCalculator(List<Integer> lottoNumber, Integer winningNumber) {
+        if (lottoNumber.contains(winningNumber)) {
             cnt += 1;
         }
     }
@@ -36,7 +36,7 @@ public class Calculator {
     public void rankCalculator() {
         if (cnt == 6) first += 1;
         if (cnt == 5) {
-            if (lottoLists.contains(bonus)){
+            if (lottoSet.contains(bonus)){
                 second += 1;
             }
             else third += 1;
