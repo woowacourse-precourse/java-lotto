@@ -59,11 +59,17 @@ public class LottoGame {
     }
 
     private void printYield() {
-        long matchPrice = matchResult.entrySet()
-                .stream()
-                .mapToLong(entry -> entry.getKey().getPrice() * entry.getValue())
-                .sum();
-        System.out.printf(Message.YIELD_RESULT, (double) user.getMoney() / matchPrice);
+        System.out.printf(Message.YIELD_RESULT, calculateYield());
+    }
+
+    private double calculateYield() {
+        long matchPrice = 0;
+
+        for (Map.Entry<Rank, Integer> entry : matchResult.entrySet()) {
+            matchPrice += entry.getKey().getPrice() * entry.getValue();
+        }
+
+        return (double) 100 * (matchPrice - user.getMoney()) / user.getMoney();
     }
 
     private void printStatsResult(Rank rank, int count) {
