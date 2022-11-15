@@ -37,7 +37,12 @@ public class Application {
     }
 
     private static void computeRecord(Lottos lottos, WinningNumbers winningNumbers, Money money) {
-        Compute compute = new Compute(lottos, winningNumbers, money);
+        Compute compute = new Compute(
+                lottos.getLottos(),
+                winningNumbers.getWinningNumbers(),
+                winningNumbers.getBonusNumber(),
+                money.getMoney()
+        );
         Output.winRecordEventMessage(compute.getWinRecords());
         Output.profitEventMessage(compute.getProfit());
     }

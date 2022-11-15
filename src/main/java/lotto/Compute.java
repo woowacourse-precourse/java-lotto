@@ -16,20 +16,25 @@ public class Compute {
     private final HashMap<String, Integer> winRecords;
     private final float profit;
 
-    public Compute(Lottos lottos, WinningNumbers winningNumbers, Money money) {
+    public Compute(
+            List<Lotto> lottos,
+            List<Integer> winningNumbers,
+            int bonusNumber,
+            int money
+    ) {
         HashMap<String, Integer> winRecords = initializeWinRecords();
 
-        for (Lotto lotto : lottos.getLottos()) {
+        for (Lotto lotto : lottos) {
             winRecords = computeWinRecords(
                     winRecords,
                     lotto.getNumbers(),
-                    winningNumbers.getWinningNumbers(),
-                    winningNumbers.getBonusNumber()
+                    winningNumbers,
+                    bonusNumber
             );
         }
 
         this.winRecords = winRecords;
-        this.profit = computeProfit(money.getMoney(), winRecords);
+        this.profit = computeProfit(money, winRecords);
     }
     private HashMap<String, Integer> initializeWinRecords() {
         HashMap<String, Integer> winRecords = new HashMap<>();
