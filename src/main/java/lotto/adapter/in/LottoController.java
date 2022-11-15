@@ -19,12 +19,12 @@ public class LottoController {
         this.lottoWinningStatisticsUseCase = lottoWinningStatisticsUseCase;
     }
 
-    ResponseBuyLottoDto handleBuyLotto(String inputMoney) {
+    public ResponseBuyLottoDto handleBuyLotto(String inputMoney) {
         RequestBuyLottoDto requestBuyLottoDto = new RequestBuyLottoDto(inputMoney);
         return lottoServiceUseCase.buyLotto(requestBuyLottoDto);
     }
 
-    ResponseMatchDto handleMatch(String inputNumber, String bonusNumber, ResponseBuyLottoDto requestDto) {
+    public ResponseMatchDto handleMatch(String inputNumber, String bonusNumber, ResponseBuyLottoDto requestDto) {
         Lotto winningLotto = lottoServiceUseCase.ConvertLotto(inputNumber);
         Bonus bonus = new Bonus(bonusNumber);
 
@@ -32,9 +32,9 @@ public class LottoController {
         return lottoServiceUseCase.matchWinningNumber(requestMatchDto);
     }
 
-    ResponseAnalyzeRevenueDto handleRevenue(ResponseMatchDto requestDto, int count) {
+    public ResponseAnalyzeRevenueDto handleRevenue(ResponseMatchDto requestDto) {
         RequestAnalyzeRevenueDto requestAnalyzeRevenueDto =
                 new RequestAnalyzeRevenueDto(requestDto.getRewardTable());
-        return lottoWinningStatisticsUseCase.analyzeRevenue(requestAnalyzeRevenueDto, count);
+        return lottoWinningStatisticsUseCase.analyzeRevenue(requestAnalyzeRevenueDto, requestDto.getLottoCount());
     }
 }

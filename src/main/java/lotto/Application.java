@@ -1,7 +1,16 @@
 package lotto;
 
+import lotto.adapter.in.InputController;
+import lotto.adapter.in.LottoController;
+import lotto.view.BuyLottoView;
+import lotto.view.ResultView;
+
+import javax.swing.text.View;
+
 public class Application {
+
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        Starter starter = new Starter();
+        starter.play();
     }
 }

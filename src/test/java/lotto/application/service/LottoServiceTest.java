@@ -6,7 +6,6 @@ import lotto.application.port.in.dto.ResponseBuyLottoDto;
 import lotto.application.port.in.dto.ResponseMatchDto;
 import lotto.domain.lotto.Bonus;
 import lotto.domain.lotto.Lotto;
-import lotto.domain.lotto.WinningLotto;
 import lotto.domain.reward.Reward;
 import lotto.domain.reward.RewardTable;
 import org.junit.jupiter.api.BeforeEach;

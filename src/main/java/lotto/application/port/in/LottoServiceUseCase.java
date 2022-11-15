@@ -10,6 +10,6 @@ import lotto.domain.reward.RewardTable;
 public interface LottoServiceUseCase {
     ResponseBuyLottoDto buyLotto(RequestBuyLottoDto requestBuyLottoDto);
     ResponseMatchDto matchWinningNumber(RequestMatchDto requestMatchDto);
-    Lotto ConvertLotto(String inputNumbers);
+    Lotto ConvertLotto(String inputNumber);
 
 }

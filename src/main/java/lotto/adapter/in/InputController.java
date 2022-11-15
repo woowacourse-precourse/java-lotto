@@ -3,15 +3,15 @@ package lotto.adapter.in;
 import camp.nextstep.edu.missionutils.Console;
 
 public class InputController {
-    static String readMoney() {
+    public static String readMoney() {
         return Console.readLine();
     }
 
-    static String readWinningNumber() {
+    public static String readWinningNumber() {
         return Console.readLine();
     }
 
-    static String readBonusNumber() {
+    public static String readBonusNumber() {
         return Console.readLine();
     }
 }

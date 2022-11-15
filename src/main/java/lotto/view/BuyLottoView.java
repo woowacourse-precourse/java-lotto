@@ -1,5 +1,8 @@
 package lotto.view;
 
+import lotto.domain.lotto.Lotto;
+
+import java.util.Arrays;
 import java.util.List;
 
 public class BuyLottoView {
@@ -11,7 +14,13 @@ public class BuyLottoView {
         System.out.println(count + "개를 구매했습니다.");
     }
 
-    public static void printLotteryNumbers(List<Integer> lotteryNumbers) {
-        System.out.println(lotteryNumbers);
+    public static void printLottos(List<Lotto> lottos) {
+        for (Lotto lotto : lottos) {
+            printLotteryNumbers(lotto);
+        }
+    }
+
+    private static void printLotteryNumbers(Lotto lotto) {
+        System.out.println(Arrays.toString(Arrays.stream(lotto.getNumbers().toArray()).sorted().toArray()));
     }
 }
