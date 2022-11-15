@@ -3,6 +3,7 @@ package lotto.controller;
 import lotto.domain.Lotto;
 import lotto.domain.UserLotto;
 import lotto.domain.WinningLotto;
+import lotto.domain.WinningResult;
 import lotto.util.InputChecker;
 import lotto.view.InputView;
 import lotto.view.OutputView;
@@ -17,15 +18,19 @@ public class LottoGame {
     private InputChecker inputChecker;
     private OutputView outputView;
     private WinningLotto winningLotto;
+    private WinningResult winningResult;
 
     public LottoGame(){
         inputView=new InputView();
         inputChecker=new InputChecker();
         outputView=new OutputView();
+        winningResult=new WinningResult();
     }
     public void startGame() throws IllegalArgumentException{
         getMoneyInput();
         getLottoWinningNumberInput();
+        winningResult.calcCorrectCountLottos(userLotto, winningLotto);
+        outputView.printLottoResultAll(winningResult);
     }
     public void getMoneyInput() throws IllegalArgumentException{
         String input=inputView.inputMoney();
