@@ -10,31 +10,37 @@ public class Application {
         List<Lotto> lotteries = new ArrayList<>();
         List<Integer> winningNumbers = new ArrayList<>();
 
-        Output.giveMeMoney();
-        money = Input.receiveMoney();
-        System.out.println();
+        try {
+            Output.giveMeMoney();
+            money = Input.receiveMoney();
+            System.out.println();
 
-        for (int i = 0; i < Store.countLines(money); i++) {
-            Lotto lottery = new Lotto(Store.makeNumbers());
-            lotteries.add(lottery);
+            for (int i = 0; i < Store.countLines(money); i++) {
+                Lotto lottery = new Lotto(Store.makeNumbers());
+                lotteries.add(lottery);
+            }
+
+            Output.lottoQuantity(money);
+            Output.lotteriesNumbers(lotteries);
+            System.out.println();
+
+            Output.giveMeWinningNumbers();
+            Input.receiveWinningNumbers(winningNumbers);
+            System.out.println();
+
+            Output.giveMeBonusNumber();
+            Input.receiveBonusNumber(winningNumbers);
+            System.out.println();
+
+            Judge judge = new Judge();
+            judge.setRankCount(lotteries, winningNumbers);
+
+            Output.winningHistory(judge);
+            Output.earningRate(judge, money);
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
         }
 
-        Output.lottoQuantity(money);
-        Output.lotteriesNumbers(lotteries);
-        System.out.println();
-
-        Output.giveMeWinningNumbers();
-        Input.receiveWinningNumbers(winningNumbers);
-        System.out.println();
-
-        Output.giveMeBonusNumber();
-        Input.receiveBonusNumber(winningNumbers);
-        System.out.println();
-
-        Judge judge = new Judge();
-        judge.setRankCount(lotteries, winningNumbers);
-
-        Output.winningHistory(judge);
-        Output.earningRate(judge, money);
     }
 }

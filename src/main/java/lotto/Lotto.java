@@ -10,6 +10,7 @@ public class Lotto {
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
+        Judge.validateRange(numbers);
         checkRedundancy(numbers);
         this.numbers = numbers;
     }
