@@ -8,7 +8,8 @@ public class Lotto {
 
     public Lotto(List<Integer> numbers) {
         this.numbers = numbers;
-        Collections.sort(this.numbers);
+        Verify.verifyDupNumber(this.numbers);
+        Verify.verifyLottoLength(this.numbers);
     }
 
 

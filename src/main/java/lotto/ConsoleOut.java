@@ -29,4 +29,22 @@ public class ConsoleOut {
 		printEmptyLine();
 		System.out.println(Constants.PRINT_INPUT_BONUS);
 	}
+
+	public static void printStatistic() {
+		printEmptyLine();
+		System.out.println(Constants.PRINT_STATISTIC);
+		System.out.println(Constants.PRINT_LINE);
+	}
+
+	public static void printStatisticResult(int[] winLotto, double yield) {
+		StringBuilder sb = new StringBuilder();
+		sb.append("3개 일치 (5,000원) - ").append(winLotto[5]).append("개\n");
+		sb.append("4개 일치 (50,000원) - ").append(winLotto[4]).append("개\n");
+		sb.append("5개 일치 (1,500,000원) - ").append(winLotto[3]).append("개\n");
+		sb.append("5개 일치, 보너스 볼 일치 (30,000,000원) - ").append(winLotto[2]).append("개\n");
+		sb.append("6개 일치 (2,000,000,000원) - ").append(winLotto[1]).append("개\n");
+		sb.append("총 수익률은 ").append(yield).append("%입니다.");
+
+		System.out.println(sb.toString());
+	}
 }

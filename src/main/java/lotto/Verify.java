@@ -20,7 +20,7 @@ public class Verify {
 		verifyDupNumber(goal);
 	}
 
-	private static void verifyLottoLength(List<Integer> goal) {
+	public static void verifyLottoLength(List<Integer> goal) {
 		if (goal.size() != Constants.LOTTO_LENGTH) {
 			illegalArgumentException(Constants.ERROR_NOT_LOTTO_LENGTH);
 		}
@@ -40,7 +40,7 @@ public class Verify {
 		}
 	}
 
-	private static boolean[] verifyDupNumber(List<Integer> goal) {
+	public static boolean[] verifyDupNumber(List<Integer> goal) {
 		boolean[] dupCheck = new boolean[Constants.LOTTO_UPPER_BOUNDARY+1];
 
 		for (Integer number : goal) {

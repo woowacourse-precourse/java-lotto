@@ -3,6 +3,7 @@ package lotto;
 import java.time.Year;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 
@@ -13,14 +14,14 @@ public class LottoStore {
 	private boolean[] goal;
 	private int bonusNumber;
 	private int[] winLotto;
-	private int yield;
+	private double yield;
 
 	public LottoStore() {
 		moneyBuyLotto = 0;
 		lottos = new ArrayList<>();
 		bonusNumber = 0;
 		winLotto = new int[Constants.LOTTO_MINIMUM_RANK + 1];
-		yield = 0;
+		yield = 0.0;
 	}
 
 	public void open() {
@@ -30,6 +31,7 @@ public class LottoStore {
 		bonus();
 		checkWin();
 		calcYield();
+		statistic();
 	}
 
 	private void buy() {
@@ -46,9 +48,11 @@ public class LottoStore {
 
 	private void severalLottoPublish(int numLotto) {
 		for (int num = 1; num <= numLotto; num++) {
-			Lotto lotto = new Lotto(
-					Util.pickUniqueNumbersInRange(Constants.LOTTO_UNDER_BOUNDARY, Constants.LOTTO_UPPER_BOUNDARY,
-							Constants.LOTTO_LENGTH));
+			List<Integer> numbers = Util.pickUniqueNumbersInRange(Constants.LOTTO_UNDER_BOUNDARY,
+					Constants.LOTTO_UPPER_BOUNDARY,
+					Constants.LOTTO_LENGTH);
+//			Collections.sort(numbers);
+			Lotto lotto = new Lotto(numbers);
 			lottos.add(lotto);
 		}
 	}
@@ -83,27 +87,34 @@ public class LottoStore {
 	}
 
 	private void calcYield() {
-		int price = calcPrice(winLotto);
+		long price = calcPrice(winLotto);
+		yield = price * Constants.PERCENT / (double)moneyBuyLotto ;
+		yield = Math.round(yield * 100) / 100.0;
 	}
 
-	private int calcPrice(int[] winLotto) {
-		int price = 0;
+	private long calcPrice(int[] winLotto) {
+		long price = 0;
 		for (int rank = Constants.LOTTO_HIGHEST_RANK; rank <= Constants.LOTTO_MINIMUM_RANK; rank++) {
 			int numRank = winLotto[rank];
 
-			price += getPrice(numRank);
+			price += getPrice(rank, numRank);
 		}
 		return price;
 	}
 
-	private int getPrice(int numRank) {
-		int price = 0;
-		for (Rank rank : Rank.values()) {
-			if (numRank == rank.getRanking()) {
-				price = rank.getPrice();
+	private long getPrice(int rank, int numRank) {
+		long price = 0;
+		for (Rank rankEnum : Rank.values()) {
+			if (rank == rankEnum.getRanking()) {
+				price = rankEnum.getPrice() * numRank;
 				break;
 			}
 		}
 		return price;
+	}
+
+	private void statistic() {
+		ConsoleOut.printStatistic();
+		ConsoleOut.printStatisticResult(winLotto, yield);
 	}
 }
