@@ -5,6 +5,13 @@ import java.util.List;
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class Game {
+    public static void run() {
+        try {
+            start();
+        } catch (IllegalArgumentException e) {
+            System.out.println("[ERROR]");
+        }
+    }
     private static void start() {
         System.out.println("구입금액을 입력해 주세요.");
         String inputMoney = readLine();
