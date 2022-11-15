@@ -23,7 +23,7 @@ public class Lotto {
         return numbers;
     }
 
-    public Prize compareWinningNumbers(List<Integer> winningNumbers, Integer bonusNumber) {
+    public Prize toPrize(List<Integer> winningNumbers, Integer bonusNumber) {
         int matchNumberCount = (int) numbers.stream()
                 .filter(winningNumbers::contains)
                 .count();

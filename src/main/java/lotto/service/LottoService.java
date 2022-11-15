@@ -47,7 +47,7 @@ public class LottoService {
     private List<Prize> confirmWinning(List<Integer> winningNumbers, Integer bonusNumber) {
         List<Lotto> lottos = lottoRepository.findAll();
         return lottos.stream()
-                .map(lotto -> lotto.compareWinningNumbers(winningNumbers, bonusNumber))
+                .map(lotto -> lotto.toPrize(winningNumbers, bonusNumber))
                 .filter(prize -> !Prize.NOTING.equals(prize))
                 .collect(Collectors.toList());
 
