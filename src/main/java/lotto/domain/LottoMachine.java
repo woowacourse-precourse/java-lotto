@@ -7,7 +7,8 @@ import java.util.*;
 public class LottoMachine {
 
     private List<Integer> generateLottoNumbers(int startFrom, int endTo, int size) {
-        HashSet<Integer> numberSet = new HashSet<Integer>(Randoms.pickUniqueNumbersInRange(startFrom, endTo, size));
+        HashSet<Integer> numberSet =
+                new HashSet<Integer>(Randoms.pickUniqueNumbersInRange(startFrom, endTo, size));
         List<Integer> numbers = new ArrayList<Integer>(numberSet);
         Collections.sort(numbers);
         return numbers;

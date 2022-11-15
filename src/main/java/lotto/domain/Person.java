@@ -6,6 +6,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 public class Person {
+
     private List<Lotto> lottos;
     private HashMap<LottoPrize, Integer> lottoResults;
 
@@ -36,8 +37,17 @@ public class Person {
         );
     }
 
+    private void resetLottoResult() {
+        lottoResults = new HashMap<>();
+
+        for (LottoPrize prize : LottoPrize.values()) {
+            lottoResults.put(prize, 0);
+        }
+    }
+
     public void setLottoResult() {
         resetLottoResult();
+
         for (Lotto lotto : lottos) {
             LottoPrize result = checkLottoResult(lotto);
             if (lottoResults.containsKey(result)) lottoResults.put(result, lottoResults.get(result)+1);
@@ -45,15 +55,9 @@ public class Person {
         }
     }
 
-    private void resetLottoResult() {
-        lottoResults = new HashMap<>();
-        for (LottoPrize prize : LottoPrize.values()) {
-            lottoResults.put(prize, 0);
-        }
-    }
-
     private int sumPrize() {
         int totalPrize = 0;
+
         for (LottoPrize result : lottoResults.keySet()) {
             totalPrize += result.getPrize()*lottoResults.get(result);
         }

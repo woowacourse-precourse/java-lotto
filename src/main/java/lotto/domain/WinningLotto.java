@@ -4,6 +4,7 @@ import java.util.List;
 
 
 public class WinningLotto {
+
     private List<Integer> winningLottoNumber;
     private int winningBonusNumber;
 
