@@ -9,5 +9,7 @@ public class OutputView {
     public void announceInsertMoney() {
         Announcement.INSERT_MONEY.announce();
     }
-
+    public void announceInputWinningNumbers() {
+        Announcement.INPUT_WINNING_NUMBERS.announce();
+    }
 }

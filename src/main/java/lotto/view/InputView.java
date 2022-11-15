@@ -22,6 +22,8 @@ public class InputView {
     }
 
     public List<Integer> inputWinningNumbers() {
+        outputView.announceInputWinningNumbers();
+
         String input = Console.readLine();
         validateCommaSplit(input);
         validateDuplicateNumber(input);
