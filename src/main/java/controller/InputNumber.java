@@ -14,38 +14,42 @@ public class InputNumber {
         List<String> parsedString = new ArrayList<>(Arrays.asList(userInput.split("\\s*,\\s*")));
         List<Integer> winningNumber = new ArrayList<>();
         for (String parsed : parsedString) {
-            winningNumber.add(Integer.parseInt(parsed));
+            try {
+                winningNumber.add(Integer.parseInt(parsed));
+            } catch (Exception e) {
+                throw new IllegalArgumentException("[ERROR] 당첨번호는 숫자로 구성되어야 합니다.");
+            }
         }
-        if (isAppropriateLength(winningNumber)) {
-            return winningNumber;
-        }
-        throw new IllegalArgumentException("[ERROR] 당첨번호는 6개여야 합니다.");
+        isAppropriateLength(winningNumber);
+        isInRange(winningNumber);
+        return winningNumber;
     }
 
     public static List<Integer> parseBonusNumber(String userInput) {
         List<Integer> bonusNumber = new ArrayList<>();
         List<String> parsedString = new ArrayList<>(Arrays.asList(userInput.split("\\s*,\\s*")));
         for (String parsed : parsedString) {
-            bonusNumber.add(Integer.parseInt(parsed));
+            try {
+                bonusNumber.add(Integer.parseInt(parsed));
+            } catch (Exception e) {
+                throw new IllegalArgumentException("[ERROR] 보너스 번호는 숫자로 구성되어야 합니다.");
+            }
         }
-        if (isAppropriateBonusLength(bonusNumber)) {
-            return bonusNumber;
-        }
+        isAppropriateBonusLength(bonusNumber);
+        isInRange(bonusNumber);
         throw new IllegalArgumentException("[ERROR] 보너스 번호는 1개여야 합니다.");
     }
 
-    static boolean isAppropriateLength(List<Integer> winningNumber) throws IllegalArgumentException {
+    static void isAppropriateLength(List<Integer> winningNumber) throws IllegalArgumentException {
         if (winningNumber.size() != WINNING_NUMBER_LENGTH) {
             throw new IllegalArgumentException("[ERROR] 당첨번호는 6개여야 합니다.");
         }
-        return true;
     }
 
-    static boolean isAppropriateBonusLength(List<Integer> bonusNumber) throws IllegalArgumentException {
+    static void isAppropriateBonusLength(List<Integer> bonusNumber) throws IllegalArgumentException {
         if (bonusNumber.size() != BONUS_NUMBER_LENGTH) {
             throw new IllegalArgumentException("[ERROR] 보너스 번호는 1개여야 합니다.");
         }
-        return true;
     }
 
     public static List<Integer> getIntegratedWinningNumber(List<Integer> winningNumber, List<Integer> bonusNumber) {
@@ -64,6 +68,14 @@ public class InputNumber {
             return false;
         }
         throw new IllegalArgumentException("[ERROR] 당첨번호와 보너스번호 내 중복이 있습니다.");
+    }
+
+    static void isInRange(List<Integer> numbers) {
+        for (int number : numbers) {
+            if (number > 45 || number < 0) {
+                throw new IllegalArgumentException("[ERROR] 번호는 1~45 이내여야 합니다.");
+            }
+        }
     }
 
 }
