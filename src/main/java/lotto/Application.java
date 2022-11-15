@@ -5,11 +5,9 @@ import java.util.List;
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
-        CreateLotto createLotto = new CreateLotto();
+        InputNumber inputNumber = new InputNumber();
         PlayLotto playLotto = new PlayLotto();
-
-        createLotto.textTicketPrice();
-        Integer money = createLotto.Money(createLotto.inputMoney());
+        Integer money = inputNumber.Money(inputNumber.inputMoney());
 
         /*8개를 구매했습니다.*/
         User user = new User(money);
