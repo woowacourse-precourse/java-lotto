@@ -10,7 +10,7 @@ import java.util.Map;
 public class User {
     private Integer budget = 0;
     private List<Lotto> lottos = new ArrayList<>();
-    private Integer profit = 0;
+    private Integer totalProfit = 0;
     private Map<Rank, Integer> winningCount= new HashMap<>();
 
 
@@ -42,6 +42,23 @@ public class User {
     private List<Integer> generateLottoNumbers(){
         return Randoms.pickUniqueNumbersInRange(1, Game.maximumLottoNumber, Game.numberToDraw);
     }
+
+    public Map<Rank, Integer> getWinningCount(){
+        return winningCount;
+    }
+
+    public Double getProfitRate(){
+        return (1.0) * totalProfit / budget;
+    }
+
+    public void confirmWinning(List<Integer> winningNumbers, Integer bonus){
+        for (Lotto lotto : lottos){
+            Rank rank = lotto.getRank(winningNumbers, bonus);
+            winningCount.put(rank, winningCount.getOrDefault(rank, 0) + 1);
+            totalProfit += rank.getAmount();
+        }
+    }
+
 
 
 
