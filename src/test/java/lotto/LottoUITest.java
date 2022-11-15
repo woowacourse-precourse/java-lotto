@@ -17,7 +17,7 @@ class LottoUITest {
         System.setIn(new ByteArrayInputStream("1,a,3,4,5,6".getBytes()));
 
         //When
-        assertThatThrownBy(() -> lottoUI.getLottoNumber())
+        assertThatThrownBy(() -> lottoUI.setLottoNumber())
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -29,7 +29,7 @@ class LottoUITest {
         System.setIn(new ByteArrayInputStream("1,1.1,3,4,5,6".getBytes()));
 
         //When
-        assertThatThrownBy(() -> lottoUI.getLottoNumber())
+        assertThatThrownBy(() -> lottoUI.setLottoNumber())
                 .isInstanceOf(IllegalArgumentException.class);
     }
 }

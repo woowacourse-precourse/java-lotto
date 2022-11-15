@@ -9,7 +9,7 @@ public class Application {
             lottoProgram.setPurchasePrice();
             lottoProgram.publishLottos();
 
-            lottoProgram.getLottoNumber();
+            lottoProgram.setLottoNumber();
             lottoProgram.setBonusNumber();
 
             lottoProgram.getLottoResult();

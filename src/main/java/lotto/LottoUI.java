@@ -52,7 +52,7 @@ public class LottoUI {
         publishPurchaseLottos = manager.publishPurchaseLottos();
     }
 
-    public void getLottoNumber() {
+    public void setLottoNumber() {
         System.out.println("당첨 번호를 입력해 주세요.");
         String[] input = Console.readLine().trim().split(",");
 
