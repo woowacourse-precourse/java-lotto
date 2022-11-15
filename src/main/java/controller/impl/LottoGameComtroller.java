@@ -15,20 +15,20 @@ public class LottoGameComtroller implements GameController {
     private Inputer inputer;
     private Comparator comparator;
     private List<Integer> resultList;
-    private ResultPrinter resultPrinter;
+    private Printer printer;
     private int money;
 
-    public LottoGameComtroller(Inputer inputer, Comparator comparator, ResultPrinter resultPrinter) {
+    public LottoGameComtroller(Inputer inputer, Comparator comparator, Printer printer) {
         this.inputer = inputer;
         this.comparator = comparator;
-        this.resultPrinter = resultPrinter;
+        this.printer = printer;
     }
 
     @Override
     public void doGame() {
         getLotto();
         compare();
-        resultPrinter.printResult();
+        printer.result();
     }
 
     private void compare() {
@@ -48,7 +48,7 @@ public class LottoGameComtroller implements GameController {
         for(int i = 0 ; i < count ; i++) {
             lottoList = LottoMachine.getLotto(count);
         }
-        resultPrinter.printallLottos(lottoList);
+        printer.allLottos(lottoList);
         inputer.inputlotto();
         inputer.inputbonus();
         lotto = inputer.getInputlottoNumbers();
