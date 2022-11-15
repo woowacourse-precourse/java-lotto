@@ -21,6 +21,6 @@ public class Money {
     }
 
     public Double getRatio(Money money){
-        return (double)money.getAmount()/amount;
+        return (double)money.getAmount()*100/amount;
     }
 }
