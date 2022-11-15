@@ -13,6 +13,7 @@ class UserMissCheckingTest {
 
     @Test
     public void 숫자대신_문자입력_에러(){
-//        assertThatThrownBy(() -> U)
+        assertThatThrownBy(() -> UserMissChecking.numberChecking("사십사"))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 }
