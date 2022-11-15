@@ -69,4 +69,12 @@ class ValidateTest {
 			.isInstanceOf(IllegalArgumentException.class)
 			.hasMessageContaining(Message.ERROR.getMessage() + Message.NOT_DIVISIBLE_MONEY.getMessage());
 	}
+
+	@Test
+	void 초기_당첨_번호_유효성_검사(){
+		String numbers = "1,2,3,4,5,a";
+		assertThat(Validate.isNotConsistNumeric(numbers)).isEqualTo(true);
+		String numbers1 = "1,2,3,4,5,6";
+		assertThat(Validate.isNotConsistNumeric(numbers1)).isEqualTo(false);
+	}
 }
