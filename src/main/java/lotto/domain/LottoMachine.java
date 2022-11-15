@@ -1,6 +1,6 @@
 package lotto.domain;
 
-import static lotto.constant.LottoRule.AMOUNT_OF_ONE_LOTTO;
+import static lotto.constant.LottoRule.PRICE_OF_ONE_LOTTO;
 import static lotto.constant.LottoRule.COUNT_OF_NUMBERS;
 import static lotto.constant.LottoRule.END_NUMBER;
 import static lotto.constant.LottoRule.START_NUMBER;
@@ -27,7 +27,7 @@ public class LottoMachine {
     }
 
     private static void validate(int inputMoney) {
-        boolean isMultipleOfAmountOfLotto = (inputMoney % AMOUNT_OF_ONE_LOTTO) == 0;
+        boolean isMultipleOfAmountOfLotto = (inputMoney % PRICE_OF_ONE_LOTTO) == 0;
         if (isMultipleOfAmountOfLotto) {
             return;
         }
@@ -35,7 +35,7 @@ public class LottoMachine {
     }
 
     private static int getCountOfLottos(int inputMoney) {
-        return inputMoney / AMOUNT_OF_ONE_LOTTO;
+        return inputMoney / PRICE_OF_ONE_LOTTO;
     }
 
     private static List<Lotto> publishLottosByCount(int countOfLottos) {

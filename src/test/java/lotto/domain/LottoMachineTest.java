@@ -1,6 +1,6 @@
 package lotto.domain;
 
-import static lotto.constant.LottoRule.AMOUNT_OF_ONE_LOTTO;
+import static lotto.constant.LottoRule.PRICE_OF_ONE_LOTTO;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
@@ -24,11 +24,11 @@ class LottoMachineTest {
     @Test
     void publishLottosByAmount() {
         // given
-        int inputMoney = AMOUNT_OF_ONE_LOTTO * 5;
-        String inputMoneyRaw = Integer.toString(AMOUNT_OF_ONE_LOTTO * 5);
+        int inputMoney = PRICE_OF_ONE_LOTTO * 5;
+        String inputMoneyRaw = Integer.toString(PRICE_OF_ONE_LOTTO * 5);
         // when
         List<Lotto> lottos = LottoMachine.publish(inputMoneyRaw);
-        int countLottosByAmount = inputMoney / AMOUNT_OF_ONE_LOTTO;
+        int countLottosByAmount = inputMoney / PRICE_OF_ONE_LOTTO;
         // then
         assertThat(lottos.size()).isEqualTo(countLottosByAmount);
     }
