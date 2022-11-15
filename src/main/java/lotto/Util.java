@@ -64,9 +64,7 @@ public class Util {
             if(!isNumber(inputStr)) throw new IllegalArgumentException();
 
             winNumbers = strArrChangeIntList(inputStr);
-        } catch (IOException e) {
-            throw new IllegalArgumentException(e);
-        }
+        } catch (IOException e) {throw new IllegalArgumentException(e);}
         return winNumbers;
     }
 
