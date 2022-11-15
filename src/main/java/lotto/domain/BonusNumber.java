@@ -2,6 +2,8 @@ package lotto.domain;
 
 import java.util.List;
 
+import static lotto.constant.LottoNumbers.LOTTO_MAX;
+import static lotto.constant.LottoNumbers.LOTTO_MIN;
 import static lotto.exception.ExceptionPhrase.EXCEPTION_BONUS_NUMBER_DUPLICATED;
 import static lotto.exception.ExceptionPhrase.EXCEPTION_OUT_OF_RANGE;
 
@@ -18,7 +20,7 @@ public class BonusNumber {
     }
 
     private void validate(int bonus) {
-        if(bonus < 0 || bonus>45) {
+        if(bonus < LOTTO_MIN.getNumber() || bonus> LOTTO_MAX.getNumber()) {
             throw new IllegalArgumentException(EXCEPTION_OUT_OF_RANGE.getMessage());
         }
     }

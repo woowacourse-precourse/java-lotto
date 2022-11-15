@@ -2,8 +2,8 @@ package lotto.controller;
 
 import lotto.domain.BonusNumber;
 import lotto.domain.Lotto;
-import lotto.domain.money.Money;
-import lotto.domain.publish.NumberPublication;
+import lotto.domain.Money;
+import lotto.domain.Numbers;
 import lotto.service.Service;
 import lotto.view.View;
 
@@ -12,13 +12,13 @@ import java.util.Map;
 
 public class Controller {
     private final Service service;
-    private final NumberPublication numberPublication;
+    private final Numbers numbers;
     private final Money money;
     private final View view;
 
     public Controller() {
         service = new Service();
-        numberPublication = new NumberPublication();
+        numbers = new Numbers();
         money = new Money();
         view = new View();
     }
@@ -26,7 +26,6 @@ public class Controller {
     public void play() {
         int inputMoney = inputMoney();
         int count = lottoCount(inputMoney);
-        System.out.println(count); //
         List<List<Integer>> lottoNumbers = showLottoNumbers(count);
 
         Lotto lotto = inputPlayerNumber();
@@ -49,7 +48,7 @@ public class Controller {
     }
     private List<List<Integer>> showLottoNumbers(int count) {
         view.lotteryCountMessage(count);
-        List<List<Integer>> lottoNumbers = numberPublication.publishNumbers(count);
+        List<List<Integer>> lottoNumbers = numbers.publishNumbers(count);
         view.lotteryNumbers(lottoNumbers);
 
         return lottoNumbers;

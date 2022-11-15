@@ -1,4 +1,4 @@
-package lotto.domain.money;
+package lotto.domain;
 
 import lotto.exception.ExceptionPhrase;
 

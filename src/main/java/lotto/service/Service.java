@@ -3,6 +3,7 @@ package lotto.service;
 import lotto.constant.LottoMoney;
 
 import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.math.RoundingMode;
 import java.util.*;
 
@@ -20,8 +21,6 @@ public class Service {
         rewards.put(FIFTH.getReward(),0);
         rewards.put(NO_MONEY.getReward(),0);
     }
-
-    public static final String ZERO = "0";
 
     public Service() {
     }
@@ -85,7 +84,7 @@ public class Service {
     public String sumTotalReward(Map<String , Integer> rewards) {
         Set<String> reward =  rewards.keySet();
 
-        BigDecimal totalPrize = new BigDecimal(ZERO);
+        BigDecimal totalPrize = new BigDecimal(BigInteger.ZERO);
         for (String money : reward) {
             BigDecimal price = multiplyPrize(money, rewards);
 
@@ -103,6 +102,6 @@ public class Service {
 
         BigDecimal result = reward.divide(money, 1,RoundingMode.HALF_UP);
 
-        return result.toString() + "%";
+        return result + "%";
     }
 }

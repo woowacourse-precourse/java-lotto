@@ -1,4 +1,4 @@
-package lotto.domain.publish;
+package lotto.domain;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
@@ -8,10 +8,10 @@ import java.util.List;
 
 import static lotto.constant.LottoNumbers.*;
 
-public class NumberPublication {
+public class Numbers {
     private List<List<Integer>> lottoPublications;
 
-    public NumberPublication() {
+    public Numbers() {
     }
 
 
