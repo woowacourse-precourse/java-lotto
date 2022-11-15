@@ -16,10 +16,10 @@ public class Purchase {
         try {
             money = Integer.parseInt(purchaseMoney);
         } catch (Exception e) {
-            throw new IllegalArgumentException(ExceptionHandler.WORNG_PURCHASE_MONEY);
+            throw new IllegalArgumentException(ExceptionHandler.WRONG_PURCHASE_MONEY);
         }
         if(money % MIN_MONEY != 0)
-            throw new IllegalArgumentException(ExceptionHandler.WORNG_PURCHASE_MONEY);
+            throw new IllegalArgumentException(ExceptionHandler.WRONG_PURCHASE_MONEY);
         return money;
     }
 }
