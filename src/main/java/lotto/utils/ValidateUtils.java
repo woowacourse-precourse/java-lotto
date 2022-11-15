@@ -18,9 +18,16 @@ public class ValidateUtils {
 
     public static boolean isNumbersRangeOver(List<Integer> numbers){
         for(int number: numbers){
-            if(number < Constants.LOTTO_MIN_NUMBER || number > Constants.LOTTO_MAX_NUMBER){
+            if(isNumberRangeOver(number)){
                 return true;
             }
+        }
+        return false;
+    }
+
+    public static boolean isNumberRangeOver(int number){
+        if(number < Constants.LOTTO_MIN_NUMBER || number > Constants.LOTTO_MAX_NUMBER){
+            return true;
         }
         return false;
     }
