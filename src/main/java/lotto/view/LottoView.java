@@ -23,7 +23,7 @@ public class LottoView {
     }
 
     public static void printLottoPurchaseResult(int purchaseAmount, List<Lotto> lottoNumbers) {
-        System.out.println(purchaseAmount + PURCHASE_LOTTO_COUNT_RESULT_MESSAGE);
+        System.out.println("\n" + purchaseAmount + PURCHASE_LOTTO_COUNT_RESULT_MESSAGE);
         lottoNumbers.forEach(System.out::println);
     }
 
