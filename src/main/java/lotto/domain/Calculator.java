@@ -17,10 +17,10 @@ public class Calculator {
         }
     }
 
-    private static double getWinningAmount(List<Integer> results) {
+    private static double getWinningAmount(List<Integer> result) {
         double winningAmount = 0;
         for (int place = 1; place <= 6; place++) {
-            winningAmount += results.get(place) * MoneyUnit.getUnit(place);
+            winningAmount += result.get(place) * MoneyUnit.getUnit(place);
         }
         return winningAmount;
     }
