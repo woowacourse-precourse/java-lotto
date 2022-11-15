@@ -2,6 +2,7 @@ package lotto.controller;
 
 import java.text.DecimalFormat;
 
+import lotto.model.lotto.Lotto;
 import lotto.model.payment.Payment;
 import lotto.model.statistics.LottoResult;
 import lotto.model.statistics.LottoStatistics;
@@ -16,9 +17,25 @@ public class IoManager {
     private static final DecimalFormat integerWithCommaFormatter = new DecimalFormat("###,###");
     private static final DecimalFormat floatWithCommaAndOneDecimalFormatter = new DecimalFormat("###,###.#");
 
-
     public String makePaymentAlert(Payment payment) {
         return payment.getLottoCount() + "개를 구매했습니다.";
+    }
+
+    public String lottoToString(Lotto lotto) {
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("[");
+        for(int i = 0; i < Lotto.LOTTO_NUMBER_LENGTH - 1; i++) {
+            stringBuilder.append(lotto.getNumber(i).getNumber()).append(", ");
+        }
+
+        int lastIndex = Lotto.LOTTO_NUMBER_LENGTH - 1;
+        if(lastIndex < 0) {
+            stringBuilder.append("]");
+            return stringBuilder.toString();
+        }
+
+        stringBuilder.append(lotto.getNumber(lastIndex).getNumber()).append("]");
+        return stringBuilder.toString();
     }
 
     public String makeLottoResultDescription(LottoResult lottoResult) {

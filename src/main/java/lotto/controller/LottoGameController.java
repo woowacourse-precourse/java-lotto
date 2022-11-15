@@ -61,7 +61,7 @@ public class LottoGameController {
         outputView.println(ioManager.makePaymentAlert(payment));
         for(int i = 0; i < payment.getLottoCount(); i++) {
             Lotto tmpLotto = lottoGenerator.autoGenerate();
-            outputView.println(tmpLotto);
+            outputView.println(ioManager.lottoToString(tmpLotto));
             lottos.add(tmpLotto);
         }
         return lottos;
