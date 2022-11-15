@@ -60,6 +60,7 @@ public class User {
     private boolean checkInputInteger(String money) {
         try {
             Integer.parseInt(money);
+
         } catch (Exception exception) {
             return false;
         }

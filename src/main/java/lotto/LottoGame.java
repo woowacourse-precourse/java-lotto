@@ -1,7 +1,7 @@
 package lotto;
 
 import lotto.user.User;
-import lotto.yieldMachine.YieldMachine;
+import lotto.yield.Yield;
 
 public class LottoGame {
     public void play() {
@@ -9,8 +9,8 @@ public class LottoGame {
             User user = new User();
             user.buyLottos();
             user.printLottos();
-            YieldMachine yieldMachine = new YieldMachine();
-            yieldMachine.run(user);
+            Yield yield = new Yield();
+            yield.run(user);
         } catch (IllegalArgumentException exception) {
             System.out.println(exception.getMessage());
         }

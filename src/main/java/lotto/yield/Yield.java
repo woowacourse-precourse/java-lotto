@@ -1,4 +1,4 @@
-package lotto.yieldMachine;
+package lotto.yield;
 
 import lotto.user.User;
 import lotto.lotto.BoughtLotto;
@@ -7,7 +7,7 @@ import lotto.lotto.WinningNumberLotto;
 import java.util.ArrayList;
 import java.util.List;
 
-public class YieldMachine {
+public class Yield {
 
     private static final Integer LOTTO_COST = 1000;
     private static final Integer MAX_COUNT_OF_LOTTO_NUMBER = 6;
@@ -15,13 +15,13 @@ public class YieldMachine {
     private List<Integer> countOfRewards;
     private float yield;
 
-    public YieldMachine() {
+    public Yield() {
         this.winningNumberLotto = new WinningNumberLotto();
         this.countOfRewards = new ArrayList<>(List.of(0, 0, 0, 0, 0));
         this.yield = 0;
     }
 
-    public YieldMachine(List<Integer> numbers, int number) {
+    public Yield(List<Integer> numbers, int number) {
         this.winningNumberLotto = new WinningNumberLotto(numbers, number);
         this.countOfRewards = new ArrayList<>(List.of(0, 0, 0, 0, 0));
         this.yield = 0;
