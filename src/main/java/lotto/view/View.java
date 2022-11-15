@@ -13,7 +13,7 @@ public class View {
         System.out.println(WELCOME_MESSAGE.getValue());
     }
 
-    public void printLottoCountMessage(int count) {
+    public void printLottoCountMessage(long count) {
         System.out.println(count + COUNT_MESSAGE.getValue());
     }
 

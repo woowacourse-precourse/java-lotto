@@ -8,7 +8,7 @@ import lotto.view.View;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
+import java.util.stream.LongStream;
 
 public class LottoService {
 
@@ -19,8 +19,8 @@ public class LottoService {
         this.numberGenerator = new NumberGenerator();
     }
 
-    public Lottos publishLotto(int lottoCount) {
-        List<Lotto> result = IntStream.range(0, lottoCount)
+    public Lottos publishLotto(long lottoCount) {
+        List<Lotto> result = LongStream.range(0, lottoCount)
                 .mapToObj(i -> new Lotto(this.numberGenerator.createDuplicateNumbers()))
                 .collect(Collectors.toList());
 

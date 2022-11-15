@@ -24,11 +24,11 @@ public class Buyer {
         this.money = money;
     }
 
-    public int getMoney() {
+    public long getMoney() {
         return this.money.getMoney();
     }
 
-    public int getLottoCount() {
+    public long getLottoCount() {
         return this.money.getLottoCount();
     }
 }

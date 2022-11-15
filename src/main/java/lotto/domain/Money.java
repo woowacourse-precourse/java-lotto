@@ -7,15 +7,14 @@ import java.util.regex.Pattern;
 public class Money {
     private static final int STANDARD_WON = 1000;
     private static final int NULL = 0;
-    private final int money;
-    private final int lottoCount;
+    private final long money;
+    private final long lottoCount;
 
     public Money(String input) throws IllegalArgumentException {
         validateNotNull(input);
         validateConsistOfNumbers(input);
         validateMoneyZero(input);
-        validateMoney(input);
-        this.money = Integer.parseInt(input);
+        this.money = validateMoney(input);
         this.lottoCount = Math.floorDiv(this.money, STANDARD_WON);
     }
 
@@ -25,11 +24,12 @@ public class Money {
         }
     }
 
-    private void validateMoney(String input) {
-        int money = Integer.parseInt(input);
+    private long validateMoney(String input) {
+        long money = Long.parseLong(input);
         if (Math.floorMod(money, STANDARD_WON) != 0) {
             throw new IllegalArgumentException(NOT_MOD_ZERO_MESSAGE.getValue());
         }
+        return money;
     }
 
     private void validateConsistOfNumbers(String input) throws IllegalArgumentException {
@@ -45,11 +45,11 @@ public class Money {
         }
     }
 
-    public int getMoney() {
+    public long getMoney() {
         return this.money;
     }
 
-    public int getLottoCount() {
+    public long getLottoCount() {
         return this.lottoCount;
     }
 }
