@@ -22,6 +22,7 @@ public class View {
     public static void read_WinningNumbers() {
         System.out.print(MESSAGE_WINNINGNUMBERS_INPUT_FORMAT);
         Game.winningNumbers_Input = Console.readLine();
+        if(Game.winningNumbers_Input.length()!=11) throw new IllegalArgumentException();
     }
 
     public static boolean read_buyingLottoAmount() {
@@ -33,7 +34,6 @@ public class View {
 
             return true;
         }
-
         Game.paymentAmount = Integer.parseInt(Amount);
         if (NOT_DIVISON_AMOUNT) throw new IllegalArgumentException();
         return false;
@@ -41,7 +41,9 @@ public class View {
 
     public static void read_bonusNumber() {
         System.out.print(MESSAGE_BONUSNUMBER_INPUT_FORMAT + "\n");
-        Game.bonusNumber = Integer.parseInt(Console.readLine());
+        String bonusNumber=Console.readLine();
+        if(!bonusNumber.matches("[1-45]*$")) throw new IllegalArgumentException();
+        Game.bonusNumber = Integer.parseInt(bonusNumber);
     }
 
     public static void print_Stactistics() {
