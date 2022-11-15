@@ -1,5 +1,6 @@
 package lotto;
 
+import UserInterface.InputValues;
 import Utils.Validator;
 import domain.Lotto;
 import org.junit.jupiter.api.DisplayName;
@@ -105,8 +106,9 @@ class LottoTest {
     @Test
     void inputLottoNumber() {
         Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
-
-        assertThat(lotto.inputLottoNumber("1,2,3,4,5,6")).isEqualTo(List.of(1, 2, 3, 4, 5, 6));
-        assertThatThrownBy(() -> lotto.inputLottoNumber("1,2,3,4,5,k")).isInstanceOf(IllegalArgumentException.class);
+        Validator validator = new Validator();
+        InputValues inputValues = new InputValues(validator);
+        assertThat(inputValues.inputLottoNumber("1,2,3,4,5,6")).isEqualTo(List.of(1, 2, 3, 4, 5, 6));
+        assertThatThrownBy(() -> inputValues.inputLottoNumber("1,2,3,4,5,k")).isInstanceOf(IllegalArgumentException.class);
     }
 }
