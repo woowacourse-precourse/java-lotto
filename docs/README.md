@@ -18,7 +18,7 @@
   - RandomNumberGenerator#gernerateRandomNumbers()
   - 예외) 생성된 숫자가 로또의 범위를 벋어나면 예외 발생
   - 예외) 생성된 숫자가 중복되면 예외 발생
-- [x] 입력받은 로또의 개수 만큼, 랜덤 숫자를 생성할 수 있다.
+- [x] 입력받은 로또의 개수 만큼, 로또를 발급할 수 있다.
   - LottoGenerator#issueLottosByInputAmount()
   - 예외) 1이상의 자연수가 아니면 예외 발생
 - [ ] 입력받은 수만큼 리스트를 출력할 수 있다.
