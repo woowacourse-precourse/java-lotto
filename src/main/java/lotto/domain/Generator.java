@@ -5,7 +5,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.*;
 
 public class Generator {
-    public List<List<Integer>> lotterys = new ArrayList<List<Integer>>();
+    public List<List<Integer>> lotteries = new ArrayList<List<Integer>>();
     public List<Integer> createRandomLotto() {
         List<Integer> numbers = new ArrayList<>(Randoms.pickUniqueNumbersInRange(1, 45, 6));
         Collections.sort(numbers);
@@ -13,9 +13,9 @@ public class Generator {
     }
     public List<List<Integer>> createLottoByPay(int pay) {
         for (int i=0; i<pay; i++) {
-            lotterys.add(createRandomLotto());
+            lotteries.add(createRandomLotto());
         }
-        return lotterys;
+        return lotteries;
     }
 
 }
