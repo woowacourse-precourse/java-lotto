@@ -65,4 +65,18 @@ class LottoTest {
         assertThat(rank)
                 .isEqualTo(2);
     }
+    @DisplayName("수익이 제대로 계산 되는 지 확인한다.")
+    @Test
+    void revenue() {
+        final Application application = new Application();
+        List<Integer> nums = Arrays.asList(1,2,3,4,5,6);
+        List<Integer> winningNums = Arrays.asList(1,2,3,4,5,7);
+        List<Lotto> lottos = new ArrayList<>();
+        Lotto winningLotto = new Lotto(winningNums);
+        Lotto lotto = new Lotto(nums);
+        lottos.add(lotto);
+        long revenue = application.revenue(lottos,winningLotto, 6);
+        assertThat(revenue)
+                .isEqualTo(30000000);
+    }
 }
