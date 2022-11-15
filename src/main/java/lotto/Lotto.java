@@ -18,7 +18,7 @@ public class Lotto {
         }
         Set<Integer> checkDupe = new HashSet<Integer>(numbers);
         if (checkDupe.size() != numbers.size()) {
-            throw new IllegalArgumentException("Lotto numbers have to be unique");
+            throw new IllegalArgumentException("로또 숫자들은 달라야 합니다");
         }
     }
 
@@ -32,5 +32,10 @@ public class Lotto {
         return lottos;
     }
 
-    
+    public static void checkBuyAmount(Integer amount) {
+        if (amount % 1000 != 0) {
+            throw new IllegalArgumentException("구입 금액은 1,000원 단위");
+        }
+    }
+
 }
