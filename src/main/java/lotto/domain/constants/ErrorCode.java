@@ -9,9 +9,8 @@ public enum ErrorCode {
     NOT_DUPLICATE("로또 번호는 중복될수없습니다."),
     NOT_CONTAINS_IN_LOTTO("보너스 번호는 로또 번호와 중복될수없습니다.");
 
-
     private static final String ERROR_BEGIN = "[ERROR] ";
-    private String errorMessage;
+    private final String errorMessage;
 
     ErrorCode(String message) {
         errorMessage = ERROR_BEGIN + message;
