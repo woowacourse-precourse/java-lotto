@@ -7,6 +7,7 @@ import java.util.List;
 
 import static lotto.domain.messages.ErrorMessages.EXPENSES_INPUT_FORMAT_ERROR_MESSAGE;
 import static lotto.domain.messages.ErrorMessages.WINNIG_NUMBERS_INPUT_FORMAT_ERROR_MESSAGE;
+import static lotto.domain.messages.ErrorMessages.BONUS_INPUT_FORMAT_ERROR_MESSAGE;
 
 public class InputViewImple implements InputView {
 
@@ -33,7 +34,11 @@ public class InputViewImple implements InputView {
 
     @Override
     public Integer inputBonusNumber() {
-        System.out.println("보너스 번호를 입력해 주세요.");
-        return Integer.parseInt(Console.readLine());
+        try{
+            System.out.println("보너스 번호를 입력해 주세요.");
+            return Integer.parseInt(Console.readLine());
+        }catch (Exception e){
+            throw new IllegalArgumentException(BONUS_INPUT_FORMAT_ERROR_MESSAGE);
+        }
     }
 }
