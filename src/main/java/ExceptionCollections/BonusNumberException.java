@@ -6,6 +6,7 @@ import java.util.List;
 
 public class BonusNumberException extends CommonException {
     public static void validate(List<Integer> winningNumbers, String bonusNumber) {
+        isEmpty(bonusNumber);
         hasCharacters(bonusNumber);
         validateNumberRange(stringToInteger(bonusNumber));
         hasSameNumber(winningNumbers, stringToInteger(bonusNumber));
