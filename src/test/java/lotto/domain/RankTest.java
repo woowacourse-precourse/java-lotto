@@ -14,4 +14,13 @@ public class RankTest {
 
         assertThat(result).isEqualTo(rank);
     }
+
+    @DisplayName("Rank 출력 형식에 맞게 반환 성공")
+    @Test
+    void checkRankDataFormat() {
+        Rank rank = Rank.SECOND_RANK;
+        String result = "5개 일치, 보너스 볼 일치 (30,000,000원) - ";
+
+        assertThat(rank.toString()).isEqualTo(result);
+    }
 }
