@@ -101,6 +101,32 @@ public class WinningNumberView {
         System.out.println("보너스 번호를 입력해 주세요.");
         String bonusNumber = Console.readLine();
 
-        return 0;
+        validateBonusNumber(bonusNumber);
+
+        return Integer.parseInt(bonusNumber);
+    }
+
+    private void validateBonusNumber(String bonusNumber) {
+
+        bonusNumberIntegerCheck(bonusNumber);
+        bonusNumberRangeCheck(bonusNumber);
+    }
+
+    private void bonusNumberRangeCheck(String bonusNumber) {
+
+        int transformedBonusNumber = Integer.parseInt(bonusNumber);
+
+        if (transformedBonusNumber < 1 || transformedBonusNumber > 45) {
+            throw new IllegalArgumentException("[ERROR] 보너스 번호는 1~45 사이의 숫자 하나만 입력해야합니다.");
+        }
+    }
+
+    private void bonusNumberIntegerCheck(String bonusNumber) {
+
+        for (int index = 0; index < bonusNumber.length(); index++) {
+            if (bonusNumber.charAt(index) < '0' && bonusNumber.charAt(index) > '9') {
+                throw new IllegalArgumentException("[ERROR] 보너스 번호는 1~45 사이의 숫자 하나만 입력해야합니다.");
+            }
+        }
     }
 }
