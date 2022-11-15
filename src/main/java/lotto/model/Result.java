@@ -7,7 +7,7 @@ public class Result {
     private static final int PERCENT = 100;
 
     private final Map<Rank, Integer> result = new HashMap<>();
-    private final float rateOfReturn;
+    private final double rateOfReturn;
 
     public Result(WinningLotto winningLotto, User user) {
         for (Lotto lotto : user.getLottos()) {
@@ -34,14 +34,14 @@ public class Result {
         return lotto.getNumbers().contains(bonusNumber);
     }
 
-    private float computeRateOfReturn(int money, int totalReturn) {
-        return (float) totalReturn / money * PERCENT;
+    private double computeRateOfReturn(int money, long totalReturn) {
+        return (double) totalReturn / money * PERCENT;
     }
 
-    private int computeTotalReturn() {
-        int totalReturn = 0;
+    private long computeTotalReturn() {
+        long totalReturn = 0;
         for (Rank rank : result.keySet()) {
-            totalReturn += rank.prise() * result.get(rank);
+            totalReturn += (long) rank.prise() * result.get(rank);
         }
 
         return totalReturn;
@@ -51,7 +51,7 @@ public class Result {
         return result.getOrDefault(rank, 0);
     }
 
-    public float getRateOfReturn() {
+    public double getRateOfReturn() {
         return rateOfReturn;
     }
 }
