@@ -1,5 +1,7 @@
 package lotto.domain;
 
+import lotto.validator.Validator;
+
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
@@ -16,6 +18,7 @@ public class Lotto {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException();
         }
+        Validator.checkUniqueNumber(numbers);
     }
 
     public void printNumbers() {

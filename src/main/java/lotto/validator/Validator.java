@@ -1,6 +1,9 @@
 package lotto.validator;
 
+import java.util.Comparator;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Validator {
     public static void checkPurchaseMoney(int purchaseMoney) {
@@ -19,7 +22,15 @@ public class Validator {
 
     public static void checkWinningNumberCount(List<Integer> winningNumber) {
         if (winningNumber.size() != 6) {
-            throw new IllegalArgumentException("[ERROR] 6개의 수를 입력해주세요.");
+            throw new IllegalArgumentException("[ERROR] 6개의 수를 입력하세요.");
+        }
+    }
+
+    public static void checkUniqueNumber(List<Integer> numbers) {
+        Set<Integer> uniqueNumbers = new HashSet<>(numbers);
+
+        if(uniqueNumbers.size()!= numbers.size()) {
+            throw new IllegalArgumentException("[ERROR] 서로 다른 6개의 수를 입력하세요.");
         }
     }
 }

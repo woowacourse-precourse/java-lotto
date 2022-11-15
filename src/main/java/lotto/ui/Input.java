@@ -30,6 +30,7 @@ public class Input {
             winningNumber.add(Integer.valueOf(splittedInput[order]));
         }
         Validator.checkWinningNumberCount(winningNumber);
+        Validator.checkUniqueNumber(winningNumber);
 
         return winningNumber;
     }
