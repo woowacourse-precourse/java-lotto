@@ -34,6 +34,7 @@ public class UserController {
         String input = Input.inputWinNumber();
         WinNumber.exceptionWinNumber(input);
         List<Integer> winNumber = toListWinNumber(input);
+        WinNumber.exceptionDuplication(winNumber);
         return winNumber;
     }
 
