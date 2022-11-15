@@ -26,6 +26,7 @@ public class UserInputFilter {
 	public List<Integer> splitStringToDelimiter(String userInputs, int size) {
 		List<Integer> result = new ArrayList<>();
 
+		checkUserInputDelimiterCount(userInputs, size);
 		String[] splitUserInput = splitUserInputs(userInputs, size);
 		for (String userInput : splitUserInput) {
 			Long number = changeStringToLong(userInput);
@@ -37,8 +38,23 @@ public class UserInputFilter {
 		return result;
 	}
 
+	private void checkUserInputDelimiterCount(String userInputs, int size) {
+		int delimiterCount = 0;
+
+		for (int userInputsIndex = 0; userInputsIndex < userInputs.length(); userInputsIndex++) {
+			String userInputsCharString = userInputs.substring(userInputsIndex, userInputsIndex + 1);
+
+			if (userInputsCharString.equals(DELIMITER)) {
+				delimiterCount += 1;
+			}
+		}
+		if (delimiterCount != size - 1) {
+			throw new IllegalArgumentException(USER_INPUT_ERROR_MESSAGE);
+		}
+	}
+
 	private String[] splitUserInputs(String userInputs, int size) {
-		if (userInputs == null || userInputs.length() != 2 * size - 1) {
+		if (userInputs == null) {
 			throw new IllegalArgumentException(USER_INPUT_ERROR_MESSAGE);
 		}
 		String[] splitUserInput = userInputs.split(DELIMITER);
