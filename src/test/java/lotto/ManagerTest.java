@@ -15,4 +15,11 @@ class ManagerTest {
 			.isInstanceOf(IllegalArgumentException.class)
 			.hasMessageContaining(Message.ERROR.getMessage() + Message.NOT_DIVISIBLE_MONEY.getMessage());
 	}
+
+	@Test
+	void 구매_목록_확인_테스트(){
+		String money = "14000";
+		Manager.showGeneratedLottos(Manager.buyLottos(money));
+		assertThat(Manager.lottoMachine.getLottos().size()).isEqualTo(14);
+	}
 }
