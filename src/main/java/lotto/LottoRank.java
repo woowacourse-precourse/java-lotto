@@ -38,23 +38,23 @@ public enum LottoRank {
     public static int[] getLottoRank(int matchCount, boolean matchBonus, int[] countWinPrize) {
         if (matchCount == 6) {
             countWinPrize[FIRST.lottoRank]++;
-            countWinPrize[0] = FIRST.printWinPrize();
+            countWinPrize[0] += FIRST.printWinPrize();
         }
         if (matchCount == 5 && matchBonus) {
             countWinPrize[SECOND.lottoRank]++;
-            countWinPrize[0] = SECOND.printWinPrize();
+            countWinPrize[0] += SECOND.printWinPrize();
         }
         if (matchCount == 5) {
             countWinPrize[THIRD.lottoRank]++;
-            countWinPrize[0] = THIRD.printWinPrize();
+            countWinPrize[0] += THIRD.printWinPrize();
         }
         if (matchCount == 4) {
             countWinPrize[FOURTH.lottoRank]++;
-            countWinPrize[0] = FOURTH.printWinPrize();
+            countWinPrize[0] += FOURTH.printWinPrize();
         }
         if (matchCount == 3) {
             countWinPrize[FIFTH.lottoRank]++;
-            countWinPrize[0] = FIFTH.printWinPrize();
+            countWinPrize[0] += FIFTH.printWinPrize();
         }
         return countWinPrize;
     }

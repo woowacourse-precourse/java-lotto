@@ -10,6 +10,7 @@ import lotto.LottoRank;
 public class PrintOutputMessage {
 
     private static final int ZERO = 0;
+    private static final int UNIT = 100;
 
     private static final String PRINT_PURCHASE_AMOUNT = "\n%d개를 구매했습니다.\n";
 
@@ -17,7 +18,7 @@ public class PrintOutputMessage {
 
     private static final String PRINT_WINNING_PRIZE_AMOUNT = "%s - %d개\n";
 
-    private static final String PRINT_TOTAL_PROFIT_RATE = "총 수익률은 %.1f%입니다.";
+    private static final String PRINT_TOTAL_PROFIT_RATE = "총 수익률은 %.1f%%입니다.";
 
     public static void printLottoAccount(int lottoAccount) {
         System.out.printf(PRINT_PURCHASE_AMOUNT,lottoAccount);
@@ -44,7 +45,7 @@ public class PrintOutputMessage {
         System.out.printf(PRINT_WINNING_PRIZE_AMOUNT,LottoRank.FIRST.printPrintPrize(),countWinPrize[LottoRank.FIRST.printLottoRank()]);
     }
     public static void printLottoRatio(LottoAmount purchaseAmount, int[] countWinPrize) {
-        float ratio = countWinPrize[ZERO]/purchaseAmount.getpurchaseAmount();
+        float ratio = countWinPrize[ZERO]/purchaseAmount.getPurchaseAmount() * UNIT;
         System.out.printf(PRINT_TOTAL_PROFIT_RATE,ratio);
     }
     }
