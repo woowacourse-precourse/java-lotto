@@ -17,7 +17,7 @@ public class Lotto {
     }
 
     // 로또 한 개 발행
-    public Lotto publishLotto() {
+    public static Lotto publishLotto() {
         List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
         return new Lotto(numbers);
     }
