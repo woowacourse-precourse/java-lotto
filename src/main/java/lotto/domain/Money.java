@@ -1,48 +1,45 @@
 package lotto.domain;
 
+import java.util.NoSuchElementException;
+
 public class Money {
     private static final int LOTTO_PRICE = 1000;
-    private static final String ERROR_INPUT_MONEY = "[ERROR] 숫자만 입력해주세요.";
-    private static final String NOT_VALID_MONEY = "[ERROR] 1000원 단위로 입력해주세요.";
-    private final int money;
+    private static final String ERROR_INPUT_MONEY = "[ERROR]숫자만 입력해주세요.";
+    private static final String NOT_VALID_MONEY = "[ERROR]1000원 단위로 입력해주세요.";
+    private int money;
 
-    public Money(String money) {
-        try {
-            validateMoney(money);
-        } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
-            throw new IllegalArgumentException();
-        }
-        this.money = convertToInt(money);
+    public Money(String inputmoney) {
+
+        this.money = convertToInt(inputmoney);
+        validateMoney(this.money);
     }
 
-    public void validateMoney(String money) {
-        if (!isDigit(money)) {
-            throw new IllegalArgumentException(ERROR_INPUT_MONEY);
+    public void validateMoney(int money) {
+        isCalculator(money);
+    }
+
+    public int calculateLottoAmount() {
+        return this.money / LOTTO_PRICE;
+    }
+
+    public static int convertToInt(String money) {
+        try {
+            return Integer.parseInt(money);
+        } catch (NumberFormatException e) {
+            System.out.println(ERROR_INPUT_MONEY);
+            throw new NoSuchElementException(ERROR_INPUT_MONEY);
         }
-        if (!isCalculator(money)) {
+    }
+
+    private void isCalculator(int money) {
+        if (money % LOTTO_PRICE != 0) {
+            System.out.println(NOT_VALID_MONEY);
             throw new IllegalArgumentException(NOT_VALID_MONEY);
         }
     }
 
-    public static int convertToInt(String money) {
-        return Integer.parseInt(money);
+    public int getMoney() {
+        return money;
     }
-
-    private boolean isCalculator(String money) {
-        int convertMoney = convertToInt(money);
-        if (convertMoney % LOTTO_PRICE != 0) {
-            return false;
-        }
-        return true;
-    }
-
-    public static boolean isDigit(String money) {
-        if (money != null && !money.matches("-?\\d+")) {
-            return false;
-        }
-        return true;
-    }
-
 
 }
