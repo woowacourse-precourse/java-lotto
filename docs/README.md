@@ -49,8 +49,6 @@
 - 당첨 내역을 출력한다
 
 
-
-
 ## 기능 구현 세부사항 List Up
 ### Enum Class
 - Lotto Rank
@@ -82,24 +80,29 @@
 
 ### ValidationUtil Class
 - 검증과 관련된 메소드들을 제공하는 클래스
-- 사용자 입력 구매금액 숫자만으로 구성되어있는지 검증 : checkUserInputCondition(String input)
+- 사용자 입력 구매금액 숫자만으로 구성되어있는지 검증 : validateUserInputCondition(String input)
   - Character.isDigit() 활용해서 숫자로만 구성되어있는지 검증
+  - 문자를 포함하고 있을 시 throw new LottoException
+  - ErrorResponse : INPUT_CONTAINS_CHAR_ERROR
 - 사용자 입력 당첨번호 개수 검증: validateWinnerNumberSize(String userInput)
   - 쉽표(,)로 구분 된 로또 번호가 6개인지 확인
-  - 6개가 아닐 시 throw new IllegalArgumentException
+  - 6개가 아닐 시 throw new LottoException
   - ErrorResponse : INPUT_WRONG_SIZE_ERROR
 - 사용자 입력 당첨번호 쉽표 구성 검증: validateWinnerNumberContainsComma()
   - 사용자 입력이 쉽표로 구분되어 입력되는지 검증
-  - 아닐 시에 throw new IllegalArgumentException
+  - 아닐 시에 throw new LottoException
   - ErrorResponse : INPUT_WITHOUT_COMMA_ERROR
 
 - 사용자 입력 당첨번호 범위 검증 : validateWinnerNumberRange(List[Integer] winnerNumber)
   - winnerNumber의 수가 1~45 사이의 수인지 확인.
-  - 범위 벗어날 시 throw IllegalArgumentException
+  - 범위 벗어날 시 throw LottoException
 - 사용자 입력 보너스번호 검증 : validateBonusNumber(int bonusNumber)
   - bonusNumber가 1~45 사이의 수인지 확인.
-  - 범위 벗어날 시 throw IllegalArgumentException
-  - 
+  - 범위 벗어날 시 throw LottoException
+- 사용자 입력 보너스 번호 이미 입력된 번호인지 검증 : validateBonusNumberIfExistInWinnerNumber()
+  - 사용자가 입력한 보너스 번호가 이전에 입력한 당첨 번호에 존재하는지 확인
+  - 이미 존재할 시에 throw LottoException
+  - ErrorResponse: INPUT_BONUS_NUMBER_EXISTS
 ### Application Class
 - 사용자 입력 구매금액 검증하고 변환: convertBuyingPriceIntoTicketAmount(int buyingPrice)
   - 1000으로 나누어지는 단위인지 확인하고 변환
