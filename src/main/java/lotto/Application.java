@@ -4,6 +4,9 @@ public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         LottoProgram lottoProgram = new LottoProgram();
-        lottoProgram.run();
+        try {
+            lottoProgram.run();
+        }catch(IllegalArgumentException ex){
+        }
     }
 }
