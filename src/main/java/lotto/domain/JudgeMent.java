@@ -23,14 +23,12 @@ public class JudgeMent {
         return countCorrect;
     }
 
-    public boolean bonusCheck(List<Integer> numbers, int correctCount, int bonusNumber) {
-        if (correctCount == correctNumberStandardWhenBonus && numbers.contains(bonusNumber)){
+    public boolean bonusCheck(List<Integer> numbers,int bonusNumber) {
+        if (numbers.contains(bonusNumber)){
             return true;
         }
         return false;
     }
-
-
     private Reward getReward(List<Integer> numbers, WinningNumber winningNumber) {
         int correctCount = compareNumbers(winningNumber.getNumbers(), numbers);
         if (correctCount >= minCorrectNumber) {
@@ -47,7 +45,7 @@ public class JudgeMent {
             return Reward.FOUR;
         }
         if(minCorrectNumber==Reward.FIVE.getNumber()){
-            if (bonusCheck(numbers, correctCount, winningNumber.getBonusNumber())) {
+            if (bonusCheck(numbers, winningNumber.getBonusNumber())) {
                 return Reward.FIVE_BONUS;
             }
             return Reward.FIVE;
