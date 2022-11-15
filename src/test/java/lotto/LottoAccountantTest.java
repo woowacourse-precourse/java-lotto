@@ -41,4 +41,18 @@ class LottoAccountantTest {
         //then
         assertThat(lottoResults.get(0).getWinnings()).isEqualTo(LottoWinnings.LOTTO_6_NUMBERS_MATCH.getWinnings());
     }
+
+    @DisplayName("수익률 구하기 테스트")
+    @Test
+    public void 수익률_구하기_테스트() throws Exception {
+        //given
+        LottoResult lottoResult1 = new LottoResult(3, false); // 5,000 당첨금
+        LottoResult lottoResult2 = new LottoResult(4, false); // 50,000 당첨금
+
+        //when
+        float rateOfReturn = accountant.calculateRateOfReturn(List.of(lottoResult1, lottoResult2), 1000);
+
+        //then
+        assertThat(rateOfReturn).isEqualTo(2750.0f);
+    }
 }
