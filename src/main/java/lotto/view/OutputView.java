@@ -10,7 +10,10 @@ public class OutputView {
         printLottosCount(userLottos);
         printSortedLottos(userLottos);
     }
-
+    public void printLottosCount(UserLottos userLottos) {
+        int count = userLottos.getLottoCount();
+        System.out.println("\n" + count + MESSAGE_TO_PRINT_COUNT);
+    }
 
 
 
