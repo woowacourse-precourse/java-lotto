@@ -33,6 +33,17 @@ public class Lotto {
         }
     }
 
+    private void checkListDuplicate(List<Integer> numbers) {
+        List<Integer> checkDuplicate = new ArrayList<>();
+
+        for (int number : numbers) {
+            if (checkDuplicate.contains(number)) {
+                throw new IllegalArgumentException(LOTTO_ELEMENTS_DUPLICATE_ERROR);
+            }
+            checkDuplicate.add(number);
+        }
+    }
+
     public void printNumbers() {
         System.out.println(this.numbers.toString());
     }
