@@ -3,6 +3,7 @@ package lotto.domain;
 import camp.nextstep.edu.missionutils.Console;
 import lotto.domain.enums.BuyerPrint;
 import lotto.domain.enums.PurchaseAmountUnit;
+import lotto.domain.enums.WinningAmount;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,9 +25,16 @@ public class Buyer {
     public void printLotto() {
         String lottoCount = String.valueOf(purchaseAmountUnit.purchaseAmount(lottoAmount));
 
-        System.out.println(lottoCount+BuyerPrint.PRINT_LOTTO_DATA);
+        System.out.println(lottoCount + BuyerPrint.PRINT_LOTTO_DATA);
         for (int i = 0; i < purchaseLotto.size(); i++) {
             purchaseLotto.get(i).printLottoNumber();
+        }
+    }
+
+    public void printResult() {
+        WinningAmount[] values = WinningAmount.values();
+        for (int i = 0; i < values.length; i++) {
+            System.out.println(values[i].getPrizeMessage()+" - "+myWins[i]+"개");
         }
     }
 
