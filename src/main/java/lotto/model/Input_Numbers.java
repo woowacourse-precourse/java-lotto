@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 
-public class input_numbers {
+public class Input_Numbers {
     private void check_divisible(int num) {
         if (num % Constant.LOTTO_PRICE.getNum() != 0) {
             throw new IllegalArgumentException("[ERROR] 입력된 금액이 1000원 단위로 떨어지지 않습니다.");

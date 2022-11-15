@@ -7,7 +7,7 @@ import lotto.domain.Lotto;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Make_numbers {
+public class Make_Numbers {
     Constant constant;
 
     private List<Integer> make_Numbers() {
