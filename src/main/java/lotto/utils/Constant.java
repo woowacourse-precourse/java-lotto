@@ -12,4 +12,6 @@ public class Constant {
     public static final String WINNING_STATUS_MESSAGE = "%d개 일치 (%,d원) - %d개%n";
     public static final String WINNING_BONUS_STATUS_MESSAGE = "%d개 일치, 보너스 볼 일치 (%,d원) - %d개%n";
     public static final String PROFIT_RATE_MESSAGE = "총 수익률은 %.1f%%입니다.";
+
+    public static final String END_ERROR = "[ERROR]";
 }
