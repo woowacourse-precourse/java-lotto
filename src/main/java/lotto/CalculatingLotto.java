@@ -27,6 +27,15 @@ public class CalculatingLotto {
         return NO;
     }
 
+    public boolean checkBonus(int bonus, List<Integer> oneLotto){
+        for(int index=0;index<LOTTONUMCOUNT;index++){
+            if(bonus==oneLotto.get(index)){
+                return true;
+            }
+        }
+        return false;
+    }
+
     public List<Integer> calculateAllLotto(List<Integer> winningLotto, int bonus, List<List<Integer>> allLotto){
         return null;
     }
