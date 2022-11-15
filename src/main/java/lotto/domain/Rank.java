@@ -39,6 +39,6 @@ public enum Rank {
     }
 
     public String getPrizeForPrint() {
-        return getPrizeForPrint();
+        return prizeForPrint;
     }
 }
