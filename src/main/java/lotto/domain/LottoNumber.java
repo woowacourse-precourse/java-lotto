@@ -13,6 +13,7 @@ public class LottoNumber {
     public static List<Integer> getLottoNumber() {
         String[] numbers = Input.inputLottoNumbers();
         for (String number : numbers) {
+            Validator.isCorrectNumberPattern(number);
             lottoNumbers.add(Integer.parseInt(number));
         }
         new Lotto(lottoNumbers);
