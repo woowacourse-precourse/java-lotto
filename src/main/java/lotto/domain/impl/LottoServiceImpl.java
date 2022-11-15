@@ -20,14 +20,13 @@ public class LottoServiceImpl implements LottoService {
     @Override
     public Map<Rank, Integer> compare(List<Lotto> userLottos, Lotto prizeLotto, int bonusNumber) {
         Map<Rank, Integer> results = new HashMap<>();
+        List<Integer> prizeNumbers = prizeLotto.getNumbers();
 
         for (Lotto userLotto : userLottos) {
             List<Integer> userNumbers = userLotto.getNumbers();
-            List<Integer> prizeNumbers = prizeLotto.getNumbers();
             int count = checkPrizeNumber(userNumbers, prizeNumbers);
             boolean hasBonusNumber = checkBonusNumber(userNumbers, bonusNumber);
-            Rank rank = getRank(count, hasBonusNumber);
-            updateResults(results, rank);
+            updateResults(results, count, hasBonusNumber);
         }
 
         return results;
@@ -41,22 +40,23 @@ public class LottoServiceImpl implements LottoService {
         return judgment.hasBonusNumber(userNumbers, bonusNumber);
     }
 
+    private boolean isRankSecond(int count, boolean hasBonusNumber) {
+        return count == 5 && hasBonusNumber;
+    }
+
+    private void updateResults(Map<Rank, Integer> results, int count, boolean hasBonusNumber) {
+        Rank rank = getRank(count, hasBonusNumber);
+        if (isNotNull(rank)) {
+            int resultCount = results.getOrDefault(rank, COUNT_DEFAULT_VALUE);
+            results.put(rank, resultCount + 1);
+        }
+    }
+
     private Rank getRank(int count, boolean hasBonusNumber) {
         if (isRankSecond(count, hasBonusNumber)) {
             return SECOND;
         }
         return RANKS.get(count);
-    }
-
-    private boolean isRankSecond(int count, boolean hasBonusNumber) {
-        return count == 5 && hasBonusNumber;
-    }
-
-    private void updateResults(Map<Rank, Integer> results, Rank rank) {
-        if (isNotNull(rank)) {
-            int resultCount = results.getOrDefault(rank, COUNT_DEFAULT_VALUE);
-            results.put(rank, resultCount + 1);
-        }
     }
 
     private boolean isNotNull(Rank rank) {
