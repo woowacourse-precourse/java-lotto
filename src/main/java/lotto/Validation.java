@@ -1,8 +1,10 @@
 package lotto;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public class Validation {
     public static void checkPurchaseInput(String str) {
@@ -10,7 +12,7 @@ public class Validation {
         checkValidPurchaseCost(str);
     }
     public static void checkWinningNumberInput(String numbers) {
-        String[] winningNumbers = numbers.split(",");
+        List<String> winningNumbers = new ArrayList<>(List.of(numbers.split(",")));
 
         checkValidLength(winningNumbers);
         checkDuplicatedNumber(winningNumbers);
@@ -27,7 +29,7 @@ public class Validation {
     }
 
     public static void checkLottoNumbers(List<Integer> numbers) {
-        String[] lottoNumbers = changeToStrArr(numbers);
+        List<String> lottoNumbers = changeToStrList(numbers);
 
         checkValidLength(lottoNumbers);
         checkDuplicatedNumber(lottoNumbers);
@@ -58,14 +60,14 @@ public class Validation {
         }
     }
 
-    private static void checkValidLength(String[] str) {
-        if (str.length != Lotto.LOTTO_NUMBER_SIZE) {
+    private static void checkValidLength(List<String> str) {
+        if (str.size() != Lotto.LOTTO_NUMBER_SIZE) {
             System.out.println(ErrorType.INVALID_LENGTH.getErrorMsg());
             throw new IllegalArgumentException(ErrorType.INVALID_LENGTH.getErrorMsg());
         }
     }
 
-    private static void checkDuplicatedNumber(String[] numbers) {
+    private static void checkDuplicatedNumber(List<String> numbers) {
         Set<String> storedNumbers = new HashSet<>();
 
         for (String winningNumber : numbers) {
@@ -86,13 +88,10 @@ public class Validation {
         }
     }
 
-    private static String[] changeToStrArr(List<Integer> numbers) {
-        String[] strNumbers = new String[numbers.size()];
-
-        for (int i = 0; i < numbers.size(); i++) {
-            strNumbers[i] = String.valueOf(numbers.get(i));
-        }
-        return strNumbers;
+    private static List<String> changeToStrList(List<Integer> numbers) {
+        return numbers.stream()
+                .map(value -> value.toString())
+                .collect(Collectors.toList());
     }
 
     private static boolean isValidRange(int number) {
