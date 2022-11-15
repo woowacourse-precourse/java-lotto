@@ -19,7 +19,7 @@ public class ResultServiceTest {
         resultService = new ResultServiceImpl();
     }
 
-    @DisplayName("등수가 맞게 나오는지 확인")
+    @DisplayName("등수가 맞게 나오는지 확인한다.")
     @Test
     void getResultTest() {
         List<Integer> listOfUserNum = List.of(1,2,3,4,5,6);
@@ -45,7 +45,7 @@ public class ResultServiceTest {
         assertThat(testOfCompare).isEqualTo(resultOfCompare);
     }
 
-    @DisplayName("일치하는 번호의 개수가 잘 나오는지 확인")
+    @DisplayName("일치하는 번호의 개수가 잘 나오는지 확인한다.")
     @Test
     void getCntOfMatchedNumTest() {
         List<Integer> listOfUserNum = List.of(1,2,3,4,5,6);
@@ -58,7 +58,7 @@ public class ResultServiceTest {
 
     }
 
-    @DisplayName("보너스 일치 여부가 잘 나오는지 확인")
+    @DisplayName("보너스 일치 여부가 잘 나오는지 확인한다.")
     @Test
     void isBonusMatchedTest() {
         List<Integer> newLotto = List.of(4,2,3,7,5,6);
@@ -72,7 +72,7 @@ public class ResultServiceTest {
         assertThat(testIsBonusMatched2).isEqualTo(false);
     }
 
-    @DisplayName("보너스 일치 여부가 잘 나오는지 확인")
+    @DisplayName("보너스 일치 여부가 잘 나오는지 확인한다.")
     @Test
     void getYieldTest() {
         int userPayment = 6000;
