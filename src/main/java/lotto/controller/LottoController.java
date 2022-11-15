@@ -12,6 +12,19 @@ public class LottoController {
     private LottoController() {
     }
 
+    public static void runGame() {
+        long amount = gameStartAndGetInput();
+        long purchaseCount = getLottoPurchaseCount(amount);
+        List<Lotto> lottoNumbers = getLottoNumbers(purchaseCount);
+        printLottoPurchaseAmount(purchaseCount, lottoNumbers);
+
+        Lotto winningNumber = getWinningNumber();
+        int bonusNumber = getBonusNumber();
+
+        Map<Result, Integer> resultPoints = getResultPoints(lottoNumbers, winningNumber, bonusNumber);
+        LottoView.printResultStatistics(resultPoints, LottoService.getTotalRate(resultPoints, amount));
+    }
+
     public static Map<Result, Integer> getResultPoints(List<Lotto> lottoNumber, Lotto winningNumber, int bonusNumber) {
         return LottoService.getWinningPoint(lottoNumber, winningNumber, bonusNumber);
     }
