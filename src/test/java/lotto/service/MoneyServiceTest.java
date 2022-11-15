@@ -11,7 +11,6 @@ class MoneyServiceTest {
     @Test
     void 로또_구입_금액_정상_입력_테스트() {
         String input = "1000";
-
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
 
@@ -21,7 +20,6 @@ class MoneyServiceTest {
     @Test
     void 로또_구입_금액_1000원_단위_예외_발생() {
         String input = "1111";
-
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
 
@@ -32,7 +30,6 @@ class MoneyServiceTest {
     @Test
     void 로또_구입_금액_1000원_이하_예외_발생() {
         String input = "200";
-
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
 
