@@ -6,7 +6,7 @@ public class OutputValues {
     public void showLottoPaymentReceipt(int totalPayment, List<List<Integer>> generatedLotto) {
         String receipt = "";
 
-        receipt += String.format("%d개를 구매했습니다.\n", totalPayment);
+        receipt += String.format("%d개를 구매했습니다.\n", totalPayment / 1000);
 
         for (List<Integer> lotto : generatedLotto) {
             receipt = receipt.concat(lotto.toString() + '\n');
