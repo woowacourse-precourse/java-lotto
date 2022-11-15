@@ -29,6 +29,12 @@ public class LottoMachine {
     }
 
     public int getLottoBuyCount(int paidMoney) {
+        if (paidMoney < 1000) {
+            throw new IllegalArgumentException(Error.ZERO_MONEY_ERROR.getMessage());
+        }
+        if (paidMoney % LottoInfo.PRICE.getValue() != 0) {
+            throw new IllegalArgumentException(Error.PAY_MONEY_ERROR.getMessage());
+        }
         return paidMoney / LottoInfo.PRICE.getValue();
     }
 

@@ -18,6 +18,22 @@ class LottoMachineTest {
         assertThat(lottoCnt).isEqualTo(input / LottoInfo.PRICE.getValue());
     }
 
+    @DisplayName("1000원 이하인 금액이면 에러 발생")
+    @Test
+    void 기준보다_적은_금액() {
+        int input = 500;
+        assertThatThrownBy(() -> lottoMachine.getLottoBuyCount(input))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("1000원으로 나누어 떨어지지 않는 금액이면 에러 발생")
+    @Test
+    void 나누어_떨어지지_않는_금액() {
+        int input = 8105;
+        assertThatThrownBy(() -> lottoMachine.getLottoBuyCount(input))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
     @DisplayName("올바른 당첨 번호 입력 테스트")
     @Test
     void 올바른_당첨_번호_입력() {
