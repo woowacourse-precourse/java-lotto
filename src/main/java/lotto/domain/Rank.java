@@ -1,5 +1,7 @@
 package lotto.domain;
 
+import lotto.constants.Constants;
+
 import java.util.Arrays;
 import java.util.NoSuchElementException;
 
@@ -22,7 +24,7 @@ public enum Rank {
     }
 
     public static Rank of(int match, boolean bonus) {
-        if (match > 6) {
+        if (match > Constants.MAX_COUNT) {
             throw new NoSuchElementException();
         }
         if (match == 5) {
