@@ -51,7 +51,7 @@ public class LottoMachine {
         return purchaseMoney.getPrice() / LOTTO_UNIT;
     }
 
-    public static Double caculateRateOfProfit(WinningList winningList, PurchaseMoney purchaseMoney) {
+    public static Double calculateRateOfProfit(WinningList winningList, PurchaseMoney purchaseMoney) {
         Map<Ranking, Integer> winningInfo = winningList.getWinningInfo();
         Long profit = caculateProfit(winningInfo);
         return (double) profit / (double) purchaseMoney.getPrice() * 100;

@@ -4,12 +4,10 @@ import lotto.domain.Lotto;
 import lotto.domain.Lottos;
 import lotto.domain.PurchaseMoney;
 import lotto.domain.WinningList;
-import lotto.enumeration.Ranking;
 
 import java.text.NumberFormat;
-import java.util.Map;
 
-import static lotto.domain.LottoMachine.caculateRateOfProfit;
+import static lotto.domain.LottoMachine.calculateRateOfProfit;
 import static lotto.enumeration.Ranking.*;
 
 public class Output {
@@ -32,7 +30,7 @@ public class Output {
     }
 
     public static void printRateofProfit(WinningList winningList, PurchaseMoney purchaseMoney) {
-        Double rateOfProfit = caculateRateOfProfit(winningList, purchaseMoney);
+        Double rateOfProfit = calculateRateOfProfit(winningList, purchaseMoney);
         System.out.printf("총 수익률은 %.1f%%입니다.", rateOfProfit);
     }
 
