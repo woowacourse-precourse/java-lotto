@@ -21,14 +21,14 @@
     - [x] 숫자가 아닐 경우 예외 처리 - bonusTypeError()
     - [x] 범위를 넘어가는 수 입력 시 예외 처리 - bonusRangeError()
     - [x] 당첨 번호와 중복 시 예외 처리 - bonusDuplicate()
-- [ ] 구매 번호와 당첨 번호를 비교한다. - Result.java -> addResult()
+- [x] 구매 번호와 당첨 번호를 비교한다. - TotalResult.java -> addResult()
   - [x] 일치하는 번호 갯수를 센다. - Check.java -> matchCnt
   - [x] 해당하는 당첨 금액을 반환한다. - Check.java -> winMoney()
-  - [x] 해당하는 당첨 등수를 반환한다. - Result.java ->getCount();
+  - [x] 해당하는 당첨 등수를 반환한다. - TotalResult.java ->getCount()
 - [x] 당첨 내역을 출력한다. - Output.java -> printResult()
-- [x] 수익률을 출력한다. - Result.java -> Calculate()
-  - [x] 소수 둘째 자리에서 반올림 
-- [ ] 게임 종료.
+- [x] 수익률을 출력한다. - TotalResult.java -> Calculate()
+  - [x] 소수 둘째 자리에서 반올림 TotalResult.java -> calculate()
+- [x] 게임 종료.
 
 
 ## 기능 요구 사항
@@ -118,15 +118,6 @@
 
         // TODO: 추가 기능 구현
       }
-  
-1. indent depth 2 이하로 작성
-2. 3항 연산자 사용 금지
-3. 테스트 코드로 기능 확인
-4. 함수의 길이가 15라인을 넘어가지 않도록 작성
-5. 함수는 한 가지 기능을 하도록 구현
-6. else/switch,case 문 사용 금지
-7. java Enum 적용
-8. 도메인 로직에 단위 테스트 구현(UI 로직 제외)
 
 
 ## 과제 진행 요구 사항
