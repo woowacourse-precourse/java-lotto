@@ -1,6 +1,7 @@
 미션 - 로또
 
 기능 구현 사항 : 
+
 <details>
 <summary>숫자 생성</summary>
 <div markdown="1">
@@ -39,6 +40,8 @@
 <div markdown="1">
 
 로또 가격을 기반으로 수익률을 계산한다
+
+전체 로또 가격/ 수익 금액
 
 </div>
 </details>
