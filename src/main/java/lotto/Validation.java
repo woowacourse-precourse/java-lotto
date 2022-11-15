@@ -1,9 +1,16 @@
 package lotto;
 
+import java.util.List;
 import java.util.regex.Pattern;
 
 public class Validation {
     private static final String numberPattern = "^[0-9]+$";
+
+    public static void sizeValidate(List<Integer> numbers) {
+        if (numbers.size() != 6) {
+            throw new IllegalArgumentException("[ERROR] 사이즈가 6이 아닙니다.");
+        }
+    }
 
     public static int numberValidate(String number){
         if(!(Pattern.matches(numberPattern, number))){
