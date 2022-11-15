@@ -10,7 +10,7 @@ class MoneyTest {
     @Test
     void 숫자가_아닌_입력_체크(){
         assertThatThrownBy(() -> new Money("ㅁㄴㅇ"))
-                .isInstanceOf(IllegalArgumentException.class);
+                .isInstanceOf(NoSuchElementException.class);
     }
     @Test
     void 나누어_지지_않는_금액_체크(){
