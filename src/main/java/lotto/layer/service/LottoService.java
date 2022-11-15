@@ -59,6 +59,10 @@ public class LottoService {
     public double getBenefitRate() {
         Money money = table.getMoney();
         Map<WinningLotto, Integer> frequency = table.getFrequency();
+        return calculateBenefitRate(money, frequency);
+    }
+
+    private double calculateBenefitRate(Money money, Map<WinningLotto, Integer> frequency) {
         int totalSum = 0;
         for (Entry<WinningLotto, Integer> winningLottoEntry : frequency.entrySet()) {
             WinningLotto winningLotto = winningLottoEntry.getKey();
