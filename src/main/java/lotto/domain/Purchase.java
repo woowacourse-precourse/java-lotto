@@ -34,4 +34,8 @@ public class Purchase {
         LottoGenerator lottoGenerator = new LottoGenerator(money);
         return lottoGenerator.userLottoNumbers();
     }
+
+    public int userMoney() {
+        return money;
+    }
 }

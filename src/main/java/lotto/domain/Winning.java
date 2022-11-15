@@ -25,7 +25,7 @@ public class Winning {
         return 0;
     }
 
-    public int compareNumbers(List<Integer> userNumbers) {
+    private int compareNumbers(List<Integer> userNumbers) {
         int count = 0;
 
         for(int i = 0; i < 6; i++) {
@@ -35,7 +35,7 @@ public class Winning {
         }
 
         if(count == 5 && userNumbers.contains(bonus)) {
-            return count = 2;
+            return 2;
         }
 
         return count;
