@@ -48,7 +48,7 @@ public class Lotto {
     public void isValidSorted(List<Integer> numbers) {
         for (int i = 0; i < numbers.size() - 1; i++) {
             if (numbers.get(i) > numbers.get(i + 1)) {
-                throw new IllegalArgumentException("[ERROR] 로또 번호는 오름차순이어야 합니다.");
+                throw new IllegalArgumentException(ErrorMessage.NOT_SORTED_NUMBER.getMessage());
             }
         }
     }

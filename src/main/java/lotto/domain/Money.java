@@ -33,6 +33,7 @@ public class Money {
     count = (money / 1000);
   }
 
+  // money를 이용해 수익률 계산
   public static String percentage(Map<Integer, Integer> maps) {
     int threeMatchMoney = maps.getOrDefault(Ranking.THREE_MATCH.getRank(), 0) * Ranking.THREE_MATCH.getMoney();
     int fourMatchMoney = maps.getOrDefault(Ranking.FOUR_MATCH.getRank(), 0) * Ranking.FOUR_MATCH.getMoney();

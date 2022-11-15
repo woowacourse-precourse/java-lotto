@@ -30,7 +30,7 @@ public class ControlLotto {
     int validBonusNumber = BonusNumber.validBonusNumber(UserNumberScan.requestValue(), numbers);
     MatchNumbers matchNumbers = new MatchNumbers();
 
-    matchNumbers.match(countLotto, numbers, validBonusNumber);
+    matchNumbers.resultOfMatchValue(countLotto, numbers, validBonusNumber);
     Message.matchMessage(matchNumbers.getMaps());
     Message.ratio(Money.percentage(matchNumbers.getMaps()));
   }

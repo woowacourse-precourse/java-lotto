@@ -1,7 +1,6 @@
 package lotto.domain;
 
 import lotto.Lotto;
-import lotto.domain.Money;
 
 import java.util.HashMap;
 import java.util.List;
@@ -27,7 +26,7 @@ public class MatchNumbers {
     maps.put(count, maps.getOrDefault(count, 0) + 1);
   }
 
-  public void match(List<Lotto> countLotto, List<Integer> numbers, int validBonusNumber) {
+  public void resultOfMatchValue(List<Lotto> countLotto, List<Integer> numbers, int validBonusNumber) {
     for (int j = 0; j < Money.count; j++) {
       Lotto lotto = countLotto.get(j);
       List<Integer> numbers1 = lotto.getNumbers();
