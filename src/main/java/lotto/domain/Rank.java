@@ -1,5 +1,6 @@
 package lotto.domain;
 
+import java.util.Arrays;
 import java.util.Optional;
 
 public enum Rank {
@@ -21,16 +22,19 @@ public enum Rank {
     }
 
     public static Optional<Rank> matchRank(int matchCount, boolean bonusMatch) {
-        Rank[] ranksNotRelatedToBonusNumber = {FIRST_PLACE, THIRD_PLACE, FOURTH_PLACE, FIFTH_PLACE};
-        if (matchCount == SECOND_PLACE.matchCount && bonusMatch) {
-            return Optional.of(SECOND_PLACE);
+        return Arrays.stream(Rank.values())
+                .filter(rank -> rank.checkRank(rank, matchCount, bonusMatch))
+                .findFirst();
+    }
+
+    public static boolean checkRank(Rank rank, int matchCount, boolean bonusMatch) {
+        if(matchCount != rank.matchCount){
+            return false;
         }
-        for (Rank rank : ranksNotRelatedToBonusNumber) {
-            if (matchCount == rank.matchCount) {
-                return Optional.of(rank);
-            }
+        if (matchCount == SECOND_PLACE.matchCount){
+            return rank.bonusMatch == bonusMatch;
         }
-        return Optional.empty();
+        return true;
     }
 
     public int getPrize() {
