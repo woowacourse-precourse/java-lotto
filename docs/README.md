@@ -14,9 +14,7 @@
 
 - [x] 로또 구입 금액을 입력받는 기능
 
-  _InputView #inputTo(String BUDGET)_
-
-    - [x] 구매 가능한 로또 개수 구하는 기능 _Money #getNumberOfTickets_
+    - [x] 구매 가능한 로또 개수 구하는 기능
     - [x] 공백이 있다면 제거
     - [x] (e) 공백인 경우 예외처리
     - [x] (e) 정수 입력이 아니면 예외처리
@@ -27,26 +25,18 @@
 
 - [x] 구매한 로또 개수 출력하는 기능
 
-  _OutputView #outputPurchasedTicketCounts(String.format())_
-
     <br/>
 
 - [x] 로또 목록 기능
     - [x] 로또 티켓을 랜덤으로 생성하는 기능
 
-      _LottoMachine #createAutoTickets()_
-
     - [x] 로또 숫자 정렬하는 기능
 
     - [x] 생성된 티켓 목록을 출력하는 기능
 
-      _OutputView #outputPurchasedTicketList(LottoTickets)_
-
     <br/>
 
 - [x] 당첨 번호 입력받는 기능
-
-  _InputView #inputTo(String WinningNumber)_
 
     - [x] 공백 제거
     - [x] (e) 숫자가 아니면 예외처리
@@ -59,8 +49,6 @@
 
 - [x] 보너스 번호 입력받는 기능
 
-  _InputView #inputTo(String BonusNumber)_
-
     - [x] 공백 제거
     - [x] (e) 숫자가 아니면 예외처리
     - [x] (e) 숫자는 1 ~ 45 범위가 아니면 예외처리
@@ -69,8 +57,6 @@
     <br/>
 
 - [x] 결과를 계산하는 기능
-
-  _WinningStatistics #compareToTicket(winningTicket, LottoTickets)_
 
     - [x] 6등 확인 기능
     - [x] 5등 확인 기능
@@ -81,6 +67,7 @@
 
     <br/>
 
-- [ ] 추첨 결과를 출력하는 기능
-    - [ ] 수익률 출력하는 기능
+- [x] 추첨 결과를 출력하는 기능
+
+    - [x] 수익률 출력하는 기능
 
