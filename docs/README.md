@@ -21,8 +21,8 @@
 - [x] 수익률을 계산한다.  -Analyze#profit
 
 ## 5. 결과 정보와 enum을 비교한다.  - Print()
-- [] 로또 구매 갯수를 출력한다.  -Print#lottoCount
-- [] 구매한 로또들의 번호를 출력한다.  -Print#lottoNumber
+- [x] 로또 구매 갯수를 출력한다.  -Print#lottoCount
+- [x] 구매한 로또들의 번호를 출력한다.  -Print#lottoNumber
 - [] 당첨 내역을 출력한다.  -Print#winningMoney
 - [] 수익률을 출력한다.  -Print#profitRate
 - [] 예외 상황에 따른 에러를 출력한다.  -Print#Error
