@@ -9,6 +9,7 @@ import java.util.stream.Collectors;
 import lotto.exception.BonusNumberDuplicationError;
 import lotto.exception.LottoNumberException;
 import lotto.exception.MoneyNotDividedByPriceException;
+import lotto.exception.MoneyNotPositiveIntegerException;
 import lotto.exception.MoneyRangeException;
 import lotto.exception.WrongLengthException;
 import org.junit.jupiter.api.DisplayName;
@@ -55,21 +56,21 @@ class LottoTest {
     @DisplayName("구입 금액이 로또 가격으로 나누어 떨어지지 않으면 예외가 발생한다.")
     @Test
     void moneyNotDividedByPrice() {
-        assertThatThrownBy(() -> new Money(1400))
+        assertThatThrownBy(() -> new Money("1400"))
                 .isInstanceOf(MoneyNotDividedByPriceException.class);
     }
 
     @DisplayName("구입 금액이 로또 1장 가격보다 작으면 예외가 발생한다.")
     @Test
     void moneyUnderLottoPrice() {
-        assertThatThrownBy(() -> new Money(0))
+        assertThatThrownBy(() -> new Money("900"))
                 .isInstanceOf(MoneyRangeException.class);
     }
 
     @DisplayName("로또 장수는 구입 금액에서 로또 1장 가격을 나눈 값이다.")
     @Test
     void calculateLottoCount() {
-        Money money = new Money(3 * LOTTO_PRICE);
+        Money money = new Money(Integer.toString(3 * LOTTO_PRICE));
         assertThat(money.calculateLottoCount()).isEqualTo(3);
     }
 
@@ -87,6 +88,21 @@ class LottoTest {
     @RepeatedTest(10)
     void generateLotto() {
         assertThat(LottoGenerator.generate()).isInstanceOf(Lotto.class);
+    }
+
+    @DisplayName("구입 금액이 양의 정수가 아닐 경우 예외가 발생한다.")
+    @Test
+    void createMoneyNotPositiveInteger() {
+        assertThatThrownBy(() -> new Money("-1"))
+                .isInstanceOf(MoneyNotPositiveIntegerException.class);
+        assertThatThrownBy(() -> new Money("a100"))
+                .isInstanceOf(MoneyNotPositiveIntegerException.class);
+        assertThatThrownBy(() -> new Money("100a"))
+                .isInstanceOf(MoneyNotPositiveIntegerException.class);
+        assertThatThrownBy(() -> new Money("0"))
+                .isInstanceOf(MoneyNotPositiveIntegerException.class);
+        assertThatThrownBy(() -> new Money("abc"))
+                .isInstanceOf(MoneyNotPositiveIntegerException.class);
     }
 
     private List<LottoNumber> convertIntegerListToLottoNumberList(List<Integer> numbers) {
