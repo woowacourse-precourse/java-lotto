@@ -9,10 +9,11 @@ import lotto.util.ValidConst;
 
 public class InputValidService {
 
-	public Integer validateBonus(String bonus) {
+	public Integer validateBonus(String bonus, List<Integer> winningNumber) {
 		checkIsNumber(bonus);
 		Integer bonusNumber = Integer.valueOf(bonus);
 		validNumberRange(bonusNumber);
+		checkWinningNumberAndBonusNumberDuplicated(winningNumber, bonusNumber);
 		return bonusNumber;
 	}
 
@@ -28,6 +29,12 @@ public class InputValidService {
 		Integer userMoneyNumber = Integer.valueOf(userMoney);
 		validNumberDividedByThousand(userMoneyNumber);
 		return userMoneyNumber;
+	}
+
+	private void checkWinningNumberAndBonusNumberDuplicated(List<Integer> winningNumber, Integer bonusNumber) {
+		if (winningNumber.contains(bonusNumber)) {
+			throw new RuntimeException(ErrorConst.DUPLICATED_ERROR);
+		}
 	}
 
 	private void validNumberRange(Integer bonusNumber) {
