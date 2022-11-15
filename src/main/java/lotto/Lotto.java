@@ -11,22 +11,17 @@ import static camp.nextstep.edu.missionutils.Randoms.pickUniqueNumbersInRange;
 public class Lotto {
     private static final String ERROR_NUMBER_COUNT = "로또 번호는 6개여야 합니다.";
 
-    private static final List<Integer> numbers = new ArrayList<>();
+    private static List<Integer> numbers;
     private static final List<Lotto> number = new ArrayList<>();
-    private static final List<LottoItem> initLottoNumbers = new ArrayList<>();
     private static final List<Lotto> lottos = new ArrayList<>();
     private static final Money lottoPrice = new Money(1000);
 
-    static {
-        for (int i = 1; i <= 45; i++) {
-            initLottoNumbers.add(new LottoItem(i));
-        }
-    }
+
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
 
-        this.numbers.addAll(numbers);
+        this.numbers = numbers;
     }
 
     private void validate(List<Integer> numbers) {
@@ -35,13 +30,10 @@ public class Lotto {
         }
     }
 
-
     public static List<Integer> generateLottoNumbers() {
-        Collections.shuffle(initLottoNumbers);
-        List<Integer> lottoNumbers = pickUniqueNumbersInRange(1, 45, 6);
-        Collections.sort(lottoNumbers);
+        List<Integer> numbers = pickUniqueNumbersInRange(1, 45, 6);
 
-        return lottoNumbers;
+        return numbers;
     }
 
     public static void buy(Money money) {
