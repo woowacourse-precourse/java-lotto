@@ -5,6 +5,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -40,8 +41,12 @@ public class Application {
 
     private static Lotto createLotto() {
         List<Integer> numbers = Randoms.pickUniqueNumbersInRange(START_NUM, END_NUM, COUNT_NUM);
-        Collections.sort(numbers);
-        Lotto lotto = new Lotto(numbers);
+        List<Integer> sortedNumbers = new ArrayList<>();
+        for (Integer number: numbers){
+            sortedNumbers.add(number);
+        }
+        Collections.sort(sortedNumbers);
+        Lotto lotto = new Lotto(sortedNumbers);
         return lotto;
     }
 
