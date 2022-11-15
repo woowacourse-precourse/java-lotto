@@ -10,7 +10,7 @@ import java.util.List;
 public class Yield {
 
     private static final Integer LOTTO_COST = 1000;
-    private static final Integer MAX_COUNT_OF_LOTTO_NUMBER = 6;
+
     private WinningNumberLotto winningNumberLotto;
     private List<Integer> countOfRewards;
     private float yield;
