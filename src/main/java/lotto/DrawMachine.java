@@ -2,10 +2,11 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class DrawMachine {
-    List<Integer> winningNumbers;
+    List<Integer> winningNumbers = new ArrayList<>();
     int bonusNumber;
 
     public void drawNumbers() {
@@ -14,7 +15,7 @@ public class DrawMachine {
         System.out.println();
 
         for (String number : userInput.split(",")) {
-            winningNumbers.add(Integer.parseInt(number));
+            winningNumbers.add(Integer.valueOf(number));
         }
     }
 
