@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Calculate {
     private static final int PURCHASE_UNIT = 1000;
-    private static final String NO_WINNING = "NOTHING";
+    private static final int NO_WINNING = 0;
 
     public static int calculatePurchaseQuantity(int money) throws IllegalArgumentException {
         if (money % PURCHASE_UNIT == 0) {
@@ -19,11 +19,11 @@ public class Calculate {
         return String.format("%.1f", yield).concat("%");
     }
 
-    public static String calculateWinning(List<Integer> winningCount) {
+    public static int calculateWinning(List<Integer> winningCount) {
         for (Winning winning : Winning.values()) {
             List<List<Integer>> comparisonTarget = winning.getWinningCount();
             if (comparisonTarget.contains(winningCount)) {
-                return winning.name();
+                return winning.getReward();
             }
         }
         return NO_WINNING;
