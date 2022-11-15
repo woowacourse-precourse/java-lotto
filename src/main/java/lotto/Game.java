@@ -28,6 +28,9 @@ public class Game {
         int bonusNumber = player.getBonusNumber(winningNumbers);
 
         compareLottoNumbers(winningNumbers, bonusNumber);
+
+        showStatistic();
+        showRateOfReturn(player.getRateOfReturn());
     }
 
     public void compareLottoNumbers(Lotto winningNumbers, int bonusNumber) {

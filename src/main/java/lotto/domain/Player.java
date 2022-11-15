@@ -42,6 +42,11 @@ public class Player {
         return Integer.parseInt(input);
     }
 
+    public String getRateOfReturn() {
+        long totalPrize = Statistic.getTotalPrize();
+        return String.format("%.1f", (double)totalPrize / (double)purchaseCost * UNIT);
+    }
+
     private void validatePurchaseCost(String purchaseCost) {
         validateNumberFormat(purchaseCost);
         validateDivision(purchaseCost);

@@ -35,4 +35,20 @@ public enum Statistic {
     public void addCount() {
         count++;
     }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public int getCount() {
+        return count;
+    }
+
+    public static long getTotalPrize() {
+        long totalPrize = 0;
+        for(Statistic win : values()) {
+            totalPrize += win.prize * win.count;
+        }
+        return totalPrize;
+    }
 }
