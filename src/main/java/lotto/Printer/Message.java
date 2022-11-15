@@ -1,4 +1,4 @@
-package Printer;
+package lotto.Printer;
 
 public enum Message {
 

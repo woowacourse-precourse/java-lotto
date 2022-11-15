@@ -1,7 +1,9 @@
-package Character;
+package ObjectTest;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import lotto.Object.LotteryTicketingMachine;
+import lotto.Object.Lotto;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import java.util.List;

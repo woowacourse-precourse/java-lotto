@@ -1,4 +1,4 @@
-package Character;
+package lotto.Object;
 
 public enum WinningNumberAndEarningPair {
     CORRECT_3_UNDER(0),

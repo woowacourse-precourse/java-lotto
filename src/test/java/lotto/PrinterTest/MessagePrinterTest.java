@@ -1,13 +1,13 @@
-package PrinterTest;
+package lotto.PrinterTest;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
-import Printer.MessagePrinter;
+import lotto.Printer.MessagePrinter;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import Character.Lotto;
-import Character.User;
+import lotto.Object.Lotto;
+import lotto.Object.User;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.util.ArrayList;

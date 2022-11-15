@@ -1,9 +1,9 @@
-package Util;
+package lotto.Controller;
 
-import Printer.MessagePrinter;
-import Character.Lotto;
-import Character.LotteryTicketingMachine;
-import Character.User;
+import lotto.Printer.MessagePrinter;
+import lotto.Object.Lotto;
+import lotto.Object.LotteryTicketingMachine;
+import lotto.Object.User;
 
 public class DoLotto {
 

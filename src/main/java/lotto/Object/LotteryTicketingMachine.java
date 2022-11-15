@@ -1,4 +1,4 @@
-package Character;
+package lotto.Object;
 
 import static camp.nextstep.edu.missionutils.Randoms.pickUniqueNumbersInRange;
 

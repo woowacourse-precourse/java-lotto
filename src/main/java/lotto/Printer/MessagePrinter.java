@@ -1,9 +1,8 @@
-package Printer;
+package lotto.Printer;
 
-import java.util.Arrays;
 import java.util.List;
-import Character.LotteryTicketingMachine;
-import Character.Lotto;
+import lotto.Object.LotteryTicketingMachine;
+import lotto.Object.Lotto;
 
 public class MessagePrinter {
 
