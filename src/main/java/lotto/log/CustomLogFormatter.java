@@ -8,28 +8,35 @@ import java.util.logging.Level;
 import java.util.logging.LogRecord;
 
 public class CustomLogFormatter extends Formatter {
-    
+
     @Override
     public String format(LogRecord record) {
         StringBuilder sb = new StringBuilder(1000);
-        sb.append("[");
-        if (isSevere(record.getLevel())) {
-            sb.append("ERROR");
-        } else {
-            sb.append(record.getLevel());
-        }
-        sb.append("] ");
-        sb.append(toDateTime(record.getMillis()));
-        sb.append(" [");
-        sb.append(record.getSourceMethodName());
-        sb.append("] ");
-        sb.append(record.getMessage());
+        addLevel(sb, record.getLevel());
+        addDateTime(sb, record.getMillis());
+        addSourceMethodName(sb, record.getSourceMethodName());
+        addErrorMessage(sb, record.getMessage());
         sb.append("\n");
         return sb.toString();
     }
 
+    private void addLevel(StringBuilder sb, Level level) {
+        sb.append("[");
+        if (isSevere(level)) {
+            sb.append("ERROR");
+            sb.append("] ");
+            return;
+        }
+        sb.append(level);
+        sb.append("] ");
+    }
+
     private boolean isSevere(Level level) {
         return level.equals(Level.SEVERE);
+    }
+
+    private void addDateTime(StringBuilder sb, long epochMillis) {
+        sb.append(toDateTime(epochMillis));
     }
 
     private String toDateTime(long millis) {
@@ -37,5 +44,15 @@ public class CustomLogFormatter extends Formatter {
         return Instant.ofEpochMilli(millis)
                 .atZone(ZoneId.systemDefault())
                 .format(pattern);
+    }
+
+    private void addSourceMethodName(StringBuilder sb, String sourceMethodName) {
+        sb.append(" [");
+        sb.append(sourceMethodName);
+        sb.append("] ");
+    }
+
+    private void addErrorMessage(StringBuilder sb, String message) {
+        sb.append(message);
     }
 }
