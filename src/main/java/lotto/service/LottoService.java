@@ -24,6 +24,7 @@ public class LottoService {
     public void lottery() {
         int price = Buyer.getIntPrice(InputView.getPrice());
         int quantity = Buyer.getQuantity(price);
+
         buyLotto.createLottos(quantity);
         OutputView.printQuantity(quantity, buyLotto.getLottos());
 

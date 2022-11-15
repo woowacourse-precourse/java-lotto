@@ -1,7 +1,6 @@
 package lotto.domain;
 
 import lotto.enums.LottoReward;
-import lotto.enums.Range;
 
 import java.util.List;
 
