@@ -6,42 +6,32 @@ import lotto.dto.RankAggregationDto;
 import lotto.dto.WinningLottoNumberDto;
 import lotto.dto.WinningNumberCountDto;
 
+import java.util.EnumMap;
 import java.util.List;
+import java.util.Map;
 
 public class LottoRankAggregation {
 
-    private int firstRankCount;
-    private int secondRankCount;
-    private int thirdRankCount;
-    private int fourthRankCount;
-    private int fifthRankCount;
+    private Map<Rank, Integer> rankAggregationMap = new EnumMap<>(Rank.class) {{
+        put(Rank.FIRST, 0);
+        put(Rank.SECOND, 0);
+        put(Rank.THIRD, 0);
+        put(Rank.FOURTH, 0);
+        put(Rank.FIFTH, 0);
+    }};
 
-    public RankAggregationDto rankAggregation(List<Lotto> lottos, WinningLottoNumberDto winningLottoNumberFor) {
+    public RankAggregationDto getRankAggregation(List<Lotto> lottos, WinningLottoNumberDto winningLottoNumberFor) {
         for (Lotto lotto : lottos) {
             WinningNumberCountDto winningNumberCount = lotto.winningLottoNumberCount(winningLottoNumberFor);
             Rank winningRank = Rank.valueOf(winningNumberCount.getWinningCount(), winningNumberCount.isMatchBonusNumber());
 
-            if (winningRank.equals(Rank.FIRST)) {
-                firstRankCount += 1;
+            if (winningRank.equals(Rank.LOSE)) {
+                continue;
             }
 
-            if (winningRank.equals(Rank.SECOND)) {
-                secondRankCount += 1;
-            }
-
-            if (winningRank.equals(Rank.THIRD)) {
-                thirdRankCount += 1;
-            }
-
-            if (winningRank.equals(Rank.FOURTH)) {
-                fourthRankCount += 1;
-            }
-
-            if (winningRank.equals(Rank.FIFTH)) {
-                fifthRankCount += 1;
-            }
+            rankAggregationMap.put(winningRank, rankAggregationMap.computeIfPresent(winningRank, (rank, count) -> count += 1));
         }
 
-        return RankAggregationDto.of(firstRankCount, secondRankCount, thirdRankCount, fourthRankCount, fifthRankCount);
+        return RankAggregationDto.of(rankAggregationMap);
     }
 }

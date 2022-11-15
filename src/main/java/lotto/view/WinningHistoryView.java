@@ -5,20 +5,18 @@ import lotto.dto.RankAggregationDto;
 import lotto.service.YieldService;
 
 import java.text.DecimalFormat;
+import java.util.Comparator;
+import java.util.Map;
 
 public class WinningHistoryView {
 
     private static DecimalFormat decimalFormat = new DecimalFormat("###,###");
     private static YieldService yieldService = new YieldService();
 
-    public static void showRankAggregation(RankAggregationDto responseRankAggregation, int payment) {
+    public static void showRankAggregation(RankAggregationDto rankAggregationDto, int payment) {
         showAggregationForm();
-        showFifthRankCount(responseRankAggregation.getFifthRankCount());
-        showFourthRankCount(responseRankAggregation.getFourthRankCount());
-        showThirdRankCount(responseRankAggregation.getThirdRankCount());
-        showSecondRankCount(responseRankAggregation.getSecondRankCount());
-        showFirstRankCount(responseRankAggregation.getFirstRankCount());
-        showYield(responseRankAggregation, payment);
+        showRankAggregationCount(rankAggregationDto);
+        showYield(rankAggregationDto, payment);
     }
 
     private static void showAggregationForm() {
@@ -26,28 +24,23 @@ public class WinningHistoryView {
         System.out.println("---");
     }
 
-    private static void showFirstRankCount(int firstRankCount) {
-        System.out.printf("%d개 일치 (%s원) - %d개\n", Rank.FIRST.getMatchCount(), decimalFormat.format(Rank.FIRST.getWinningMoney()), firstRankCount);
+    private static void showRankAggregationCount(RankAggregationDto rankAggregationDto) {
+        rankAggregationDto.getRankAggregationMap()
+                .entrySet()
+                .stream()
+                .sorted(Comparator.comparing(entry -> entry.getKey().getWinningMoney()))
+                .forEach(WinningHistoryView::print);
     }
 
-    private static void showSecondRankCount(int secondRankCount) {
-        System.out.printf("%d개 일치, 보너스 볼 일치 (%s원) - %d개\n", Rank.SECOND.getMatchCount(), decimalFormat.format(Rank.SECOND.getWinningMoney()), secondRankCount);
+    private static void print(Map.Entry<Rank, Integer> entry) {
+        System.out.printf("%d개 일치 (%s원) - %d개\n",
+                entry.getKey().getMatchCount(),
+                decimalFormat.format(entry.getKey().getWinningMoney()),
+                entry.getValue());
     }
 
-    private static void showThirdRankCount(int thirdRankCount) {
-        System.out.printf("%d개 일치 (%s원) - %d개\n", Rank.THIRD.getMatchCount(), decimalFormat.format(Rank.THIRD.getWinningMoney()), thirdRankCount);
-    }
-
-    private static void showFourthRankCount(int fourthRankCount) {
-        System.out.printf("%d개 일치 (%s원) - %d개\n", Rank.FOURTH.getMatchCount(), decimalFormat.format(Rank.FOURTH.getWinningMoney()), fourthRankCount);
-    }
-
-    private static void showFifthRankCount(int fifthRankCount) {
-        System.out.printf("%d개 일치 (%s원) - %d개\n", Rank.FIFTH.getMatchCount(), decimalFormat.format(Rank.FIFTH.getWinningMoney()), fifthRankCount);
-    }
-
-    private static void showYield(RankAggregationDto responseRankAggregation, int payment) {
-        String calculate = yieldService.calculate(responseRankAggregation, payment);
+    private static void showYield(RankAggregationDto rankAggregationDto, int payment) {
+        String calculate = yieldService.calculate(rankAggregationDto, payment);
         System.out.println("총 수익률은 " + calculate + "%입니다.");
     }
 }
