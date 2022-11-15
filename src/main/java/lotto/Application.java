@@ -8,6 +8,7 @@ import java.util.List;
 
 import static lotto.Code.ErrorCode.*;
 import static lotto.Code.PrintCode.*;
+import static lotto.Lotto.*;
 
 public class Application {
 
@@ -15,7 +16,7 @@ public class Application {
 
         System.out.println(GET_MONEY);
         int payedMoney = getSingleInput();
-        checkMoneyCanDivideBy1000(payedMoney);
+        validateMoneyCanDivideBy1000(payedMoney);
 
         int lottoCount = payedMoney/1000;
         System.out.println("\n" + lottoCount + PRINT_LOTTO_COUNT);
@@ -23,6 +24,8 @@ public class Application {
 
         System.out.println("\n" + GET_WINNING_LOTTO);
         Lotto winningLotto = new Lotto(getSixInput());
+        validateNotDuplicate(winningLotto);
+
 
     }
 
@@ -42,7 +45,7 @@ public class Application {
         return winningLotto;
     }
 
-    public static void checkMoneyCanDivideBy1000(int money){
+    public static void validateMoneyCanDivideBy1000(int money){
         if (money/1000 != 0)
             throw new IllegalArgumentException(String.valueOf(NO_DIVIDE_BY_1000));
     }
@@ -50,7 +53,7 @@ public class Application {
     public static List<List<Integer>> printSeveralLotto(int lottoCount){
         List<List<Integer>> candidateLotto = new ArrayList<>();
         for (int count = 0; count < lottoCount; count++){
-            List<Integer> tmpLotto = lotto.Lotto.createLotto();
+            List<Integer> tmpLotto = createLotto();
             candidateLotto.add(tmpLotto);
             System.out.println(tmpLotto);
         }

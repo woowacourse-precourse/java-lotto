@@ -3,7 +3,8 @@ package lotto.Code;
 public enum ErrorCode {
 
     NO_DIVIDE_BY_1000("[ERROR] 지불 가능한 금액은 1000원 단위입니다."),
-    LENGTH_MUST_BE_SIX("[ERROR] 당첨 번호는 여섯자리입니다.");
+    LENGTH_MUST_BE_SIX("[ERROR] 당첨 번호는 여섯 자리입니다."),
+    LENGTH_CANNOT_DUPLICATE("[ERROR] 당첨 번호는 중복된 숫자가 없는 여섯 자리입니다.");
 
     private String message;
 
@@ -15,3 +16,5 @@ public enum ErrorCode {
         return this.message;
     }
 }
+
+
