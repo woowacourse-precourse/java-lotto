@@ -14,7 +14,7 @@ public class Output {
         System.out.println(PrizeType.PRIZE3.getResultText(PrizeSet.get("PRIZE3")));
         System.out.println(PrizeType.PRIZE2.getResultText(PrizeSet.get("PRIZE2")));
         System.out.println(PrizeType.PRIZE1.getResultText(PrizeSet.get("PRIZE1")));
-        System.out.println("총 수익률은 " + stat + "%입니다.");
+        System.out.println("총 수익률은 " + String.format("%,.1f", stat) + "%입니다.");
 
     }
 
