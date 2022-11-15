@@ -52,4 +52,8 @@ public class Winning {
     private boolean isIncludeBonus(String bonusNumber) {
         return winningNumbers.contains(Integer.parseInt(bonusNumber));
     }
+
+    public List<Integer> getWinningNumbers() {
+        return winningNumbers;
+    }
 }
