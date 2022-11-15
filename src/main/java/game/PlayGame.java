@@ -1,41 +1,48 @@
 package game;
 
+import camp.nextstep.edu.missionutils.Console;
+import lotto.Lotto;
 import lotto.MakeLotto;
 import user.BuyLotto;
 import user.UserInput;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 import static message.Message.*;
 
+
 public class PlayGame {
-    Scanner sc = new Scanner(System.in);
-    MakeLotto makeLotto = new MakeLotto();
     BuyLotto buyLotto = new BuyLotto();
+    MakeLotto makeLotto = new MakeLotto();
     UserInput userInput = new UserInput();
     Calculate calculate = new Calculate();
 
 
     public void run() {
         System.out.println(INPUT_MONEY.getStatus());
-        int money = sc.nextInt();
+        int money = Integer.parseInt(Console.readLine());
 
         int lottoCnt = buyLotto.countHowMany(money);
-        List<List<Integer>> lottos = makeLotto.publishedLottos(lottoCnt);
+
+        List<List<Integer>> winLottos = makeLotto.makeLotto(lottoCnt);
 
         System.out.println(lottoCnt + COUNT_LOTTO.getStatus());
 
         System.out.println(INPUT_LOTTO_NUMBER.getStatus());
-        List<Integer> usersLotto = userInput.userLotto(sc.next());
+        List<Integer> usersLotto = userInput.userLotto(Console.readLine());
 
         System.out.println(INPUT_BONUS_NUMBER.getStatus());
-        int bonusNum = userInput.getBonusNumber(sc.nextInt());
+        int bonusNum = userInput.getBonusNumber(Integer.parseInt(Console.readLine()));
 
-        List<Integer> grades = calculate.correctLottoCount(lottos, usersLotto, bonusNum);
+
+        List<Integer> grades = calculate.correctLottoCount(winLottos, usersLotto, bonusNum);
         String profitRate = calculate.earningRate(grades, money);
 
         print(grades, profitRate);
+        for (List<Integer> winLotto : winLottos) {
+            System.out.println(winLotto);
+        }
     }
 
     public void print(List<Integer> grades, String profitRate) {

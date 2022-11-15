@@ -32,11 +32,15 @@ public class Lotto {
 
 
     // TODO: 추가 기능 구현
-    private void checkLottoNumberOver45(List<Integer> numbers) {
+    public void checkLottoNumberOver45(List<Integer> numbers) {
+        final int startRange = 1;
+        final int endRange = 45;
         for (int num : numbers) {
-            if (num > 45 || num < 1) throw new IllegalArgumentException(ABOVE_ELEMENT.getStatus());
+            if (num > startRange || num < endRange) throw new IllegalArgumentException(ABOVE_ELEMENT.getStatus());
         }
     }
+
+
 
     public List<Integer> getNumbers() {
         return numbers;

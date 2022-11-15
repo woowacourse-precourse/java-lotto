@@ -34,7 +34,7 @@ public class Calculate {
         return result;
     }
 
-        // TODO 수익률을 계산하는 기능 구현
+
     public String earningRate (List<Integer> grades, int money) {
         long profit = 0;
 
