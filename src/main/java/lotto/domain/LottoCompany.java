@@ -1,23 +1,35 @@
 package lotto.domain;
 
+import camp.nextstep.edu.missionutils.Console;
 import lotto.Lotto;
+import lotto.Utils.CommonUtil;
 import lotto.Utils.Error;
+import lotto.Utils.Print;
 
 import java.util.*;
 import java.util.stream.Collectors;
 
-public class WinningLotto {
+public class LottoCompany {
     private final List<Integer> numbers;
-    private final int bonusNumber;
+    private int bonus;
 
-    public WinningLotto(String numbersInput, String bonusNumberInput) {
-        List<Integer>numbers = convertInputToNumbers(numbersInput);
-        this.numbers = new Lotto(numbers).getNumbers();
+    public LottoCompany() {
+        numbers = inputNumbers();
+        bonus = inputBonus();
+    }
 
-        int bonusNumber = convertInputToNumber(bonusNumberInput);
-        validate(bonusNumber);
-        this.bonusNumber = bonusNumber;
+    private List<Integer> inputNumbers() {
+        Print.askWinningNumber();
+        String input = Console.readLine();
 
+        return CommonUtil.stringToNumbers(input);
+    }
+
+    private int inputBonus() {
+        Print.askBonusNumber();
+        String input = Console.readLine();
+
+        return CommonUtil.stringToNumber(input);
     }
     private void validate(int bonusNumber) {
         Error error = new Error();
@@ -31,33 +43,8 @@ public class WinningLotto {
             error.duplicated();
         }
     }
-    private List<Integer> convertInputToNumbers(String input) {
-        Error error = new Error();
-        List<Integer> result = new ArrayList<>();
-        try {
-            result = Arrays.stream(input.split(","))
-                    .map(s->Integer.valueOf(s))
-                    .collect(Collectors.toList());
-        } catch (NumberFormatException e) {
-            error.outOfRange();
-        }
-        return result;
-    }
-
-    private int convertInputToNumber(String input) {
-        int number = 0;
-        try {
-            number = Integer.parseInt(input);
-        } catch (NumberFormatException e) {
-            return 0;
-        }
-        return number;
-    }
-    public List<Integer> getNumbers() {
-        return this.numbers;
-    }
-    public int getBonusNumber() {
-        return this.bonusNumber;
+    public void processLotto(Lotto lotto) {
+        lotto.drawLotto(numbers, bonus);
     }
 }
 
