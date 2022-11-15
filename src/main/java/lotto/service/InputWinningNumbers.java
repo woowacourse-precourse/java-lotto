@@ -26,7 +26,7 @@ public class InputWinningNumbers {
 
     private String[] userReadLine() {
         String userLottoNumbers = Console.readLine();
-
+        inputWinningNumbersHandler.checkExist(userLottoNumbers);
         return userLottoNumbers.split(",");
     }
 

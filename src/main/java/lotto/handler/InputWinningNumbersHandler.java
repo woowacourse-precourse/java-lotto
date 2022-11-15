@@ -18,6 +18,12 @@ public class InputWinningNumbersHandler {
         return winningNumbers;
     }
 
+    public void checkExist(String inputWinningNumbers) {
+        if(inputWinningNumbers.length() == 0){
+            throw new IllegalArgumentException((output.ERROR_ORDER+" 아무것도 입력되지 않았습니다."));
+        }
+    }
+
     private void checkSize(List<Integer> winningNumbers) {
         if(winningNumbers.size() != pickRandomLottoLists.LIMIT_LOTTO) {
             throw new IllegalArgumentException(output.ERROR_ORDER+" 로또 번호의 개수는 6개여야 합니다.");
