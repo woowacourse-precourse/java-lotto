@@ -4,12 +4,22 @@ import static lotto.constant.ErrorMessage.PURCHASE_AMOUNT_RANGE_ERROR;
 import static lotto.constant.ErrorMessage.PURCHASE_AMOUNT_TYPE_ERROR;
 import static lotto.constant.ErrorMessage.PURCHASE_AMOUNT_UNIT_ERROR;
 import static lotto.constant.InputPattern.PURCHASE_AMOUNT_PATTERN;
+import static lotto.constant.OutputMessage.PLEASE_WRITE_PURCHASE_AMOUNT;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.util.regex.Pattern;
 import lotto.constant.ErrorMessage;
 
 public class CheckInput {
+
+    public int readPurchaseAmount() {
+        System.out.println(PLEASE_WRITE_PURCHASE_AMOUNT);
+
+        String input = Console.readLine();
+        int purchaseAmount = checkPurchaseAmountValid(input);
+
+        return purchaseAmount;
+    }
 
     public int checkPurchaseAmountValid(String input) {
         checkPurchaseAmountPattern(input);
