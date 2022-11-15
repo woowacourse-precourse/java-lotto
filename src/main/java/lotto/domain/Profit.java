@@ -30,8 +30,7 @@ public class Profit {
         rate = (amount / purchaseAmount) * 100;
     }
 
-    @Override
-    public String toString() {
+    public void printRate() {
         StringBuilder message = new StringBuilder();
 
         message.append("총 수익률은 ")
@@ -39,6 +38,7 @@ public class Profit {
                 .append("%")
                 .append("입니다.");
 
-        return message.toString();
+        System.out.println(message);
     }
+
 }
