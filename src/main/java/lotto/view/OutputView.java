@@ -4,7 +4,7 @@ import static java.text.MessageFormat.*;
 
 import java.util.Collections;
 import java.util.List;
-import lotto.Lotto;
+import lotto.domain.Lotto;
 import lotto.domain.LottoRank;
 
 public enum OutputView {

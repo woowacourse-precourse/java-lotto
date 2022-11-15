@@ -4,7 +4,7 @@ package lotto.utils;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import lotto.Lotto;
+import lotto.domain.Lotto;
 import lotto.exception.ErrorMessage;
 
 public class Validator {
