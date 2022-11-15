@@ -22,7 +22,7 @@ public class LottoMachine {
         return LottoPrize.getPrize(count, matchBonusNumber);
     }
 
-    public List<LottoPrize> getPrizeResult(Lottos lottos) {
+    private List<LottoPrize> getPrizeResult(Lottos lottos) {
         return lottos.mapToLottoPrize(this::compareWinningLotto);
     }
 
