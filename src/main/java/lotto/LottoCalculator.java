@@ -11,7 +11,7 @@ public class LottoCalculator
         int count = 0;
         for(int i = 0; i < lottoAnswer.size(); i++)
         {
-            if(count == 5 && i == 6)
+            if(count == 5 && i == 6 && issuedLotto.contains(lottoAnswer.get(i)))
                 count += 2;
 
             if(i < 6 && issuedLotto.contains(lottoAnswer.get(i)))
@@ -52,7 +52,7 @@ public class LottoCalculator
     }
 
     //총 수익률 구하기
-    private String getYield(int issuedLottoCount, int[] resultArr)
+    public String getYield(int issuedLottoCount, int[] resultArr)
     {
         int revenue = 0;
         for(int i = 0; i < resultArr.length; i++)
@@ -68,7 +68,7 @@ public class LottoCalculator
     }
 
     //발행한 로또의 수익
-    private int getOneYield(int index, int value)
+    public int getOneYield(int index, int value)
     {
         for(LottoStandard ls : LottoStandard.values())
         {

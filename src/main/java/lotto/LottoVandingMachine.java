@@ -14,13 +14,10 @@ public class LottoVandingMachine
     //돈 입력
     public void inputMoney()
     {
-        System.out.println("input-------------------");
         String money = Console.readLine();
-        System.out.println("money : "+money);
-        if(!money.matches("[0-9]+")) {
-            System.out.println("here");
+
+        if(!money.matches("[0-9]+"))
             throw new IllegalArgumentException("[ERROR] 돈은 숫자로만 입력해야 합니다.");
-        }
         issuedLottoCount = Integer.parseInt(money) / 1000;
 
         if(Integer.parseInt(money) % 1000 != 0)
@@ -63,9 +60,11 @@ public class LottoVandingMachine
     {
         System.out.println("당첨 번호를 입력해 주세요.");
         String lotto = Console.readLine();
+        System.out.println(lotto);
         System.out.println();
         System.out.println("보너스 번호를 입력해 주세요.");
         String lottoBonus = Console.readLine();
+        System.out.println(lottoBonus);
 
         List<Integer> lottoAnswer = new ArrayList<>();
         for(String number : lotto.split(","))
