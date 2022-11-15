@@ -8,6 +8,7 @@ public class Lotto {
     public Lotto(List<Integer> numbers) {
         validate(numbers);
         rangeValid(numbers);
+        duplicatedValid(numbers);
         this.numbers = numbers;
     }
 
@@ -23,6 +24,12 @@ public class Lotto {
                 throw new IllegalArgumentException();
             }
         });
+    }
+
+    private void duplicatedValid(List<Integer> numbers){
+        if(numbers.size() != numbers.stream().distinct().count()){
+            throw new IllegalArgumentException();
+        }
     }
 
     public List<Integer> getNumbers(){
