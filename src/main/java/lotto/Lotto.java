@@ -43,4 +43,20 @@ public class Lotto {
 
         return number.size() != set.size();
     }
+
+    public Prize compareLotto(Lotto winNumber, int bonusNumber) {
+        int index = 0;
+        Prize[] prize = Prize.values();
+        Set<Integer> thisSet = new HashSet<>(this.numbers);
+        Set<Integer> win = new HashSet<>(winNumber.numbers);
+        Set<Integer> bonus = new HashSet<>(List.of(bonusNumber));
+        win.retainAll(thisSet);
+        if (win.size() == 5 && thisSet.retainAll(bonus)) {
+            return Prize.second;
+        }
+        if (win.size() - 2 >= 0) {
+            index = win.size() - 2;
+        }
+        return prize[index];
+    }
 }
