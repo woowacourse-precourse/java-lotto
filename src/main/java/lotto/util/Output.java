@@ -8,11 +8,17 @@ import java.util.stream.Collectors;
 
 public class Output {
     private static final String INPUT_MONEY = "구입금액을 입력해 주세요.";
+    private static final String BUY_MESSAGE = "개를 구매했습니다.";
+    private static final String INPUT_WINNINGS = "\n당첨 번호를 입력해 주세요.";
+    private static final String INPUT_BONUS = "\n보너스 번호를 입력해 주세요.";
+    private static final String STATISTICS = "\n당첨 통계\n---";
+
+    private Output() {}
+
     public static void printInputMessage() {
         System.out.println(INPUT_MONEY);
     }
 
-    private static final String BUY_MESSAGE = "개를 구매했습니다.";
     public static void printBuyMessage(int number) {
         System.out.println("\n" + number + BUY_MESSAGE);
     }
@@ -25,17 +31,14 @@ public class Output {
         );
     }
 
-    private static final String INPUT_WINNINGS = "\n당첨 번호를 입력해 주세요.";
     public static void printInputWinnings() {
         System.out.println(INPUT_WINNINGS);
     }
 
-    private static final String INPUT_BONUS = "\n보너스 번호를 입력해 주세요.";
     public static void printInputBonus() {
         System.out.println(INPUT_BONUS);
     }
 
-    private static final String STATISTICS = "\n당첨 통계\n---";
     public static void printStatistics(Map<Result, Integer> resultCounts) {
         System.out.println(STATISTICS);
         for (Map.Entry<Result, Integer> resultCount : resultCounts.entrySet()) {

@@ -9,6 +9,8 @@ public class Validator {
     public static final int LOTTO_SIZE = 6;
     public static final int UNIT = 1000;
 
+    private Validator() {}
+
     public static boolean isNumber(String input) {
         try {
             int money = Integer.parseInt(input);

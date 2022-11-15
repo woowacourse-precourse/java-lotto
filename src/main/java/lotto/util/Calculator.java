@@ -8,6 +8,8 @@ import java.util.*;
 public class Calculator {
     private static Map<Result, Integer> resultCounts;
 
+    private Calculator() {}
+
     public static Map<Result, Integer> calculateResult(List<Lotto> lottos, Set<Integer> winningNumbers, int bonusNumber) {
         initializeMap();
 

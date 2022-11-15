@@ -13,6 +13,8 @@ public class Input {
     private static final String TO_INT_ERROR = "[ERROR] 당첨 번호는 숫자로 구성되어야 합니다.";
     private static final String INVALID_NUMBER = "[ERROR] 보너스 번호는 숫자여야 합니다.";
 
+    private Input() {}
+
     public static int readMoney() {
         String input = Console.readLine();
         if (!Validator.isNumber(input)) {
