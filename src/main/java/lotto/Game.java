@@ -1,6 +1,5 @@
 package lotto;
 
-import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import lotto.view.InputView;
 import lotto.view.OutputView;
@@ -13,9 +12,9 @@ public class Game {
 
   private int numOfLotto;
   private List<Lotto> lotteries;
-  private final Map<Ranking, Integer> winningResult = new EnumMap<>(Ranking.class);
   private Money money;
   private WinningNumbers winningNumbers;
+  private final Map<Ranking, Integer> winningResult = new EnumMap<>(Ranking.class);
 
   public Game() {
     this.lotteries = new ArrayList<>();
@@ -149,7 +148,7 @@ public class Game {
   }
 
   public void playGame() {
-    setLotteries(Console.readLine());
+    setLotteries(InputView.userMoney());
     OutputView.printLottoAmount(numOfLotto);
     printLotteriesNumber();
     inputNumber(InputView.winningNumber(), InputView.bonusNumber());
