@@ -41,6 +41,7 @@
    - checkWinningNumber : 몇 개의 당첨 번호가 로또에 해당되는지 확인한다.
    - calculateEarningRate : 수익률을 계산한다.
 4. 예외처리 관련
-   - numberSizeValidate : 로또 번호의 개수가 6개가 넘으면 에러를 반환한다.
-   - duplicateNumberValidate : 로또에 중복된 숫자가 존재하면 에러를 반환한다.
-   - numberRangeValidate : 로또 숫자의 범위가 1 이상 45 이하를 벗어날시 에러를 반환한다.
+   - throwInvalidInputException : 입력 형식이 잘못된 경우 에러를 반환한다.
+   - throwInvalidSizeException : 로또 번호의 개수가 6개가 넘으면 에러를 반환한다.
+   - throwInvalidNumberRangeException : 로또 숫자의 범위가 1 이상 45 이하를 벗어날시 에러를 반환한다.
+   - duplicatedNumberValidate : 로또 번호에 중복된 숫자가 있을 시 에러를 반환한다.
