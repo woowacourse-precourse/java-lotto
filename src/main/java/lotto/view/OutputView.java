@@ -13,7 +13,7 @@ import lotto.model.Rank;
 import lotto.model.Result;
 
 public class OutputView {
-    private static final String NEW_LINE = "\n";
+    private static final String NEW_LINE = System.lineSeparator();
     private static final String COMMA = ", ";
     private static final String NUMBER_OF_PURCHASED_LOTTOS = "%d개를 구매했습니다.";
     private static final String STATISTIC_HEADER = "당첨 통계";
