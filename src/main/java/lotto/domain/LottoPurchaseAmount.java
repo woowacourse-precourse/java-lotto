@@ -17,12 +17,12 @@ public class LottoPurchaseAmount {
     }
 
     private void validateInputMoney(int amount) {
-        isAmountEqualsWithZero(amount);
+        isAmountLessThanZero(amount);
         isDivisibleByThousand(amount);
     }
 
-    private void isAmountEqualsWithZero(int amount) {
-        if (amount == 0) {
+    private void isAmountLessThanZero(int amount) {
+        if (amount <= 0) {
             throw new IllegalArgumentException(NOT_NUMBER_ERROR);
         }
     }
