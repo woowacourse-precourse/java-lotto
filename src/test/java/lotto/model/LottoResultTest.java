@@ -29,7 +29,7 @@ class LottoResultTest {
     @DisplayName("형식에 맞지 않는 당첨 번호가 입력되면 예외를 발생시킨다.")
     @ParameterizedTest
     @CsvSource(value = {"1,a,2,3,4,5", "1,,2,3,4,5,6", "1,2,3,4,5", "1,2,3,4,5,6,7"})
-    void createInvalidPattern(String input){
+    void createInvalidWinningNumberPattern(String input){
         assertThatThrownBy(() -> new LottoResult(input))
                 .isInstanceOf(IllegalArgumentException.class);
     }
@@ -37,7 +37,7 @@ class LottoResultTest {
     @DisplayName("당첨번호로 중복된 숫자가 입력되면 예외를 발생시킨다.")
     @ParameterizedTest
     @CsvSource(value = {"1,1,2,3,4,5", "1,1,1,1,1,1"})
-    void createDuplicatedNumber(String input){
+    void createDuplicatedWinningNumber(String input){
         assertThatThrownBy(() -> new LottoResult(input))
                 .isInstanceOf(IllegalArgumentException.class);
     }
@@ -45,8 +45,36 @@ class LottoResultTest {
     @DisplayName("당첨번호에 1~45 이내의 숫자가 입력되지 않으면 예외를 발생시킨다.")
     @ParameterizedTest
     @CsvSource(value = {"0,1,2,3,4,5", "1,2,3,4,5,46"})
-    void createOutRangeNumber(String input){
+    void createOutRangeWinningNumber(String input){
         assertThatThrownBy(() -> new LottoResult(input))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @DisplayName("형식에 맞지 않는 보너스번호가 입력되면 예외를 발생시킨다.")
+    @ParameterizedTest
+    @CsvSource(value = {"1,2,3,4,5,6", "#", "1,2,3,4,5,6", "1,2,3"})
+    void createInvalidBonusNumberPattern(String bonusNumber){
+        LottoResult lottoResult = new LottoResult("1,2,3,4,5,6");
+        assertThatThrownBy(() -> lottoResult.setBonusNumber(bonusNumber))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("보너스번호로 당첨번호와 중복된 숫자가 입력되면 예외를 발생시킨다.")
+    @ParameterizedTest
+    @CsvSource(value = {"1", "2", "3", "4", "5", "6"})
+    void createDuplicatedBonusNumber(String bonusNumber){
+        LottoResult lottoResult = new LottoResult("1,2,3,4,5,6");
+        assertThatThrownBy(() -> lottoResult.setBonusNumber(bonusNumber))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("보너스번호에 1~45 이내의 숫자가 입력되지 않으면 예외를 발생시킨다.")
+    @ParameterizedTest
+    @CsvSource(value = {"0", "46"})
+    void createOutRangeBonusNumber(String bonusNumber){
+        LottoResult lottoResult = new LottoResult("1,2,3,4,5,6");
+        assertThatThrownBy(() -> lottoResult.setBonusNumber(bonusNumber))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
 }
