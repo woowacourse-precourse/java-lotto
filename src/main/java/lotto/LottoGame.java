@@ -16,11 +16,20 @@ public class LottoGame {
     private Map<Rank, Integer> matchResult = new TreeMap<>(Comparator.reverseOrder());
 
     public void start() {
+        initMatchResult();
         user.start();
         dealer.start();
         matchLottoUserAndDealer();
         removeEmptyMatchResult();
         printMatchResult();
+    }
+
+    private void initMatchResult() {
+        matchResult.put(Rank.FIRST, 0);
+        matchResult.put(Rank.SECOND, 0);
+        matchResult.put(Rank.THIRD, 0);
+        matchResult.put(Rank.FOURTH, 0);
+        matchResult.put(Rank.FIFTH, 0);
     }
 
     private void matchLottoUserAndDealer() {
@@ -41,9 +50,11 @@ public class LottoGame {
     }
 
     private void printMatchResult() {
-        System.out.println(Message.STATS_WIN_LOTTO);
-        matchResult.keySet()
-                .forEach(this::printStatsResult);
+        System.out.print(Message.STATS_WIN_LOTTO);
+        for (Map.Entry<Rank, Integer> entry : matchResult.entrySet()) {
+            printStatsResult(entry.getKey(), entry.getValue());
+        }
+
         printYield();
     }
 
@@ -55,13 +66,13 @@ public class LottoGame {
         System.out.printf(Message.YIELD_RESULT, (double) user.getMoney() / matchPrice);
     }
 
-    private void printStatsResult(Rank rank) {
-        if (rank == Rank.SECOND) {
-            System.out.printf(Message.STATS_RESULT_BONUS, rank.isMatchBonus(), priceFommater(rank.getPrice()), matchResult.get(rank));
+    private void printStatsResult(Rank rank, int count) {
+        if (rank.equals(Rank.SECOND)) {
+            System.out.printf(Message.STATS_RESULT_BONUS, rank.getMatchCount(), priceFommater(rank.getPrice()), count);
             return;
         }
 
-        System.out.printf(Message.STATS_RESULT, rank.isMatchBonus(), priceFommater(rank.getPrice()), matchResult.get(rank));
+        System.out.printf(Message.STATS_RESULT, rank.getMatchCount(), priceFommater(rank.getPrice()), count);
     }
 
     private String priceFommater(long price) {
