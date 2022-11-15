@@ -14,12 +14,15 @@ public class LottoWinning {
             throw new IllegalArgumentException("보너스 번호와 당첨 번호는 일치할 수 없습니다.");
     }
 
-    public static double getBenefit(int[] count, Integer inputMoney) {
-        int[] money = {5000,50000,1500000,2000000000,30000000};
-        long benefit = 0;
-        for (int i = 0; i < 5; i++) {
-            benefit += money[i]*count[i];
+    public static int[] getEqulasCount(List<Integer> lottoList) {
+        int[] count = new int[2];
+        for (int i = 0; i < 6; i++) {
+            if (this.numbers.contains(lottoList.get(i)))
+                count[0]+=1;
+            else if (this.bonus == lottoList.get(i))
+                count[1]=1;
         }
-        return (double) (benefit * 100) / inputMoney;
+        return count;
     }
+
 }
