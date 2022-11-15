@@ -118,4 +118,14 @@ public class LottoService {
         }
         return rewards;
     }
+
+    public double getProfitRate(int[] rewards, int lottoAmount) {
+        long result = 0L;
+        long[] rewardAmount = {5_000L, 50_000L, 1_500_000L, 30_000_000L, 2_000_000_000L};
+        for (int i = 0; i < 5; i++) {
+            result += rewardAmount[i] * rewards[i];
+        }
+
+        return result / (double) (lottoAmount * 1000);
+    }
 }

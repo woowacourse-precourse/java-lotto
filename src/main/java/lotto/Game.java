@@ -28,5 +28,7 @@ public class Game {
 
         int[] rewards = service.calculateRewards(lottos, matchNumbers, bonusNumber);
         ui.printInfo(rewards);
+
+        double profitRate = service.getProfitRate(rewards, lottoAmount);
     }
 }
