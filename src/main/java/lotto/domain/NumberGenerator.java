@@ -6,6 +6,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 import lotto.domain.Lotto;
 
 public class NumberGenerator {
@@ -36,6 +37,7 @@ public class NumberGenerator {
     private Lotto  generateByRandom() {
         List<Integer> randomNumbers = new ArrayList<>();
         randomNumbers = Randoms.pickUniqueNumbersInRange(LottoNumber.START.getValue(), LottoNumber.END.getValue(), LottoNumber.SIZE.getValue());
+        randomNumbers = randomNumbers.stream().collect(Collectors.toList());
         return new Lotto(randomNumbers);
     }
 }
