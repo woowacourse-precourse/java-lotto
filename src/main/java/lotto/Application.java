@@ -12,23 +12,35 @@ public class Application {
 
         int lottoCount = lottoPurchase();
         List<Lotto> lotto = new ArrayList<Lotto>();
+        System.out.println(lottoCount + "개를 구매했습니다.");
 
-        for (int i = 0; i < lottoCount; i++) {
-            lotto.add(new Lotto(issueLottoNumber()));
-            System.out.println(lotto.get(i).getNumbers());
-        }
         List<Integer> enterValue = enterScore();
         int bonusNumber = bonusNumber(enterValue);
 
-        List<List<Integer>> checkList = checkValue(lotto, enterValue, bonusNumber);
-        List<Integer> priceList = price(checkList, bonusNumber);
+        for (int i = 0; i < lottoCount; i++) {
+            lotto.add( new Lotto(issueLottoNumber()));
+            System.out.println(lotto.get(i).getNumbers());
+        }
+
+        List<List<Integer>> checkList = new ArrayList<>();
+
+        for (int i = 0; i < lotto.size(); i++) {
+            checkList.add(checkValue(lotto.get(i).getNumbers(), enterValue, bonusNumber));
+        }
+
+        List<Integer> priceList = new ArrayList<>();
+        for (int i = 0; i < checkList.size(); i++) {
+            priceList.add(price(checkList.get(i), bonusNumber));
+        }
 
         List<String> resultGame = endScore(priceList);
-        for (String result :resultGame ) {
+        for (String result : resultGame) {
             System.out.println(result);
         }
 
+        String result = revenue(priceList, lottoCount);
 
+        System.out.println(result);
     }
 
     public static int lottoPurchase() {
@@ -40,8 +52,6 @@ public class Application {
         }
 
         int value = money / 1000;
-        System.out.println();
-        System.out.println(value + "개를 구매했습니다.");
 
         return value;
     }
@@ -54,7 +64,7 @@ public class Application {
             throw new IllegalArgumentException(CheckRule.FAILSISE.toString());
         }
 
-        Collections.sort(issueLottoList);
+        // Collections.sort(issueLottoList);
 
         return issueLottoList;
     }
@@ -64,6 +74,7 @@ public class Application {
         String readNumber = Console.readLine();
         String[] valueNumber = readNumber.split(",");
         if (Arrays.stream(valueNumber).count() != 6) throw new IllegalArgumentException(CheckRule.FAILSISE.toString());
+        if(Arrays.stream(valueNumber).anyMatch(""::equals)) throw new IllegalArgumentException(CheckRule.FAILSISE.toString());
         int[] intArray = Arrays.stream(valueNumber).mapToInt(Integer::parseInt).toArray();
         List<Integer> resultArray = Arrays.stream(intArray).boxed().collect(Collectors.toList());
 
@@ -80,49 +91,46 @@ public class Application {
         return bonusNumber;
     }
 
-    public static List<List<Integer>> checkValue(List<Lotto> lottos, List<Integer> enterScore, int bonusNumber) {
-
-        List<List<Integer>> value = new ArrayList<>();
-
-        for (int i = 0; i < lottos.size(); i++) {
-            value.add(lottos.get(i).getNumbers().stream().filter(number -> enterScore.stream().anyMatch(Predicate.isEqual(number))).collect(Collectors.toList()));
-            if (value.get(i).size() == 5) {
-                if (lottos.get(i).getNumbers().contains(bonusNumber)) {
-                    value.get(i).add(bonusNumber);
-                }
+    public static List<Integer> checkValue(List<Integer> lotto, List<Integer> enterScore, int bonusNumber) {
+        List<Integer> value = lotto.stream().filter(num -> enterScore.stream().anyMatch(Predicate.isEqual(num))).collect(Collectors.toList());
+        if (value.size() == 5) {
+            if (lotto.contains(bonusNumber)) {
+                value.add(bonusNumber);
             }
         }
-
         return value;
     }
 
-    public static List<Integer> price(List<List<Integer>> value, int bonusNumber) {
+    public static Integer price(List<Integer> value, int bonusNumber) {
 
-        List<Integer> priceCheck = new ArrayList<>();
-
-        for (int i = 0; i < value.size(); i++) {
-
-            if(value.get(i).size() == 3) priceCheck.add(5000);
-            else if (value.get(i).size() == 4 ) priceCheck.add(50000);
-            else if (value.get(i).size() == 5) priceCheck.add(1500000);
-            else if (value.get(i).size() == 6) {
-                if(value.get(i).contains(bonusNumber)) priceCheck.add(30000000);
-                if(!value.get(i).contains(bonusNumber)) priceCheck.add(2000000000);
-            }
+        if (value.size() == 3) return 5000;
+        else if (value.size() == 4) return 50000;
+        else if (value.size() == 5) return 1500000;
+        else if (value.size() == 6) {
+            if (value.contains(bonusNumber)) return 30000000;
+            if (!value.contains(bonusNumber)) return 2000000000;
         }
-        return priceCheck;
+        return 0;
     }
-
 
     public static List<String> endScore(List<Integer> checkPoint) {
         List<String> checkValue = new ArrayList<>();
 
-        checkValue.add("3개 일치 (5,000원) - " +Collections.frequency(checkPoint, 5000)+"개");
-        checkValue.add("4개 일치 (50,000원) - " +Collections.frequency(checkPoint, 50000)+"개");
-        checkValue.add("5개 일치 (1,500,000원) - " +Collections.frequency(checkPoint, 1500000)+"개");
-        checkValue.add("5개 일치, 보너스 볼 일치 (30,000,000원) - " +Collections.frequency(checkPoint, 30000000)+"개");
-        checkValue.add("6개 일치 (2,000,000,000원 - " + Collections.frequency(checkPoint,2000000000)+ "개");
+        checkValue.add("3개 일치 (5,000원) - " + Collections.frequency(checkPoint, 5000) + "개");
+        checkValue.add("4개 일치 (50,000원) - " + Collections.frequency(checkPoint, 50000) + "개");
+        checkValue.add("5개 일치 (1,500,000원) - " + Collections.frequency(checkPoint, 1500000) + "개");
+        checkValue.add("5개 일치, 보너스 볼 일치 (30,000,000원) - " + Collections.frequency(checkPoint, 30000000) + "개");
+        checkValue.add("6개 일치 (2,000,000,000원) - " + Collections.frequency(checkPoint, 2000000000) + "개");
         return checkValue;
+    }
+
+    public static String revenue(List<Integer> priceList, int lottoCnt) {
+        int proceeds = priceList.stream().mapToInt(Integer::intValue).sum();
+        lottoCnt = lottoCnt * 1000;
+        float result = proceeds / (float) lottoCnt * 100;
+        String revenueResult = "총 수익률은 " + Math.round(result*100)/100.0 + "%입니다.";
+
+        return revenueResult;
     }
 
 }

@@ -1,12 +1,21 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestTemplate;
 
+import java.io.*;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomUniqueNumbersInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
+import static lotto.Application.*;
+import static org.assertj.core.api.Assertions.in;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class ApplicationTest extends NsTest {
@@ -57,5 +66,80 @@ class ApplicationTest extends NsTest {
     @Override
     public void runMain() {
         Application.main(new String[]{});
+    }
+
+    @Test
+    public void 로또_구매_하기(){
+        String test = "2000";
+        OutputStream outputStream = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outputStream));
+
+        InputStream inputStream = new ByteArrayInputStream(test.getBytes());
+        System.setIn(inputStream);
+
+        int value = lottoPurchase();
+
+        assertEquals(2, value);
+    }
+
+    @Test
+    public void 로또_번호_입력기(){
+        String test = "1,2,3,4,5,6";
+        OutputStream outputStream = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outputStream));
+
+        InputStream inputStream = new ByteArrayInputStream(test.getBytes());
+        System.setIn(inputStream);
+        List<Integer> lottoList = enterScore();
+        List<Integer> targer = Arrays.asList(1,2,3,4,5,6);
+        assertEquals(lottoList, targer);
+    }
+
+    @Test
+    public void 보너스_번호_입력(){
+        String bousNumber = "7";
+        OutputStream outputStream = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outputStream));
+
+        InputStream inputStream = new ByteArrayInputStream(bousNumber.getBytes());
+        System.setIn(inputStream);
+
+        List<Integer> numberList = Arrays.asList(1,2,3,4,5,6);
+        int result = bonusNumber(numberList);
+
+        assertEquals(7, result);
+    }
+
+    @Test
+    public void 로또_번호_비교(){
+        Lotto lotto = new Lotto(Arrays.asList(1,2,3,4,5,6));
+        List<Integer> lottoNumbers = Arrays.asList(1,2,3,4,5,6);
+        int bonusNumber = 7;
+        List<Integer> value = checkValue(lotto.getNumbers(),lottoNumbers, bonusNumber);
+        assertEquals(6, value.size());
+    }
+
+    @Test
+    public void 금액_반환(){
+        List<Integer> sameNumber = Arrays.asList(1,2,3);
+        int bonusNumber = 4;
+        int test = price(sameNumber, bonusNumber);
+
+        assertEquals(test, 5000);
+    }
+
+    @Test
+    public void 당첨금_확인(){
+        List<Integer> point = Arrays.asList(5000);
+        List<String> test = endScore(point);
+        assertEquals(test.get(0), "3개 일치 (5,000원) - 1개");
+    }
+
+    @Test
+    public void 수익률_확인(){
+        List<Integer> pointList = Arrays.asList(5000);
+        int lotto = 5;
+        String result = revenue(pointList, lotto);
+        assertEquals(result, "총 수익률은 100.0%입니다.");
     }
 }
