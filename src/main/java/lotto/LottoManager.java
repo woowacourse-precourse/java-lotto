@@ -1,6 +1,7 @@
 package lotto;
 
 import lotto.constant.LottoInfo;
+import lotto.constant.RankInfo;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
@@ -25,51 +26,6 @@ public class LottoManager {
 
         public void print() {
             System.out.println(this.message);
-        }
-    }
-
-//    public enum Information {
-//        INPUT_WINNING_NUM_MESSAGE("당첨 번호를 입력해 주세요."),
-//        INPUT_BONUS_NUM_MESSAGE("보너스 번호를 입력해 주세요."),
-//        INPUT_BUY_MESSAGE("구매금액을 입력해 주세요."),
-//        STATISTIC_MESSAGE("\n당첨 통계\n---");
-//
-//        private final String message;
-//
-//        Information(String message) {
-//            this.message = message;
-//        }
-//
-//        public void printMessage() {
-//            System.out.println(this.message);
-//        }
-//    }
-
-    public enum PrizeMoney {
-        WIN_5(5000), WIN_4(50000), WIN_3(1500000), WIN_2(30000000), WIN_1(2000000000);
-
-        private final int prizeMoney;
-
-        PrizeMoney(int prizeMoney) {
-            this.prizeMoney = prizeMoney;
-        }
-    }
-
-    public enum StatisticMessage {
-        WIN_5("3개 일치 (5,000원) - "),
-        WIN_4("4개 일치 (50,000원) - "),
-        WIN_3("5개 일치 (1,500,000원) - "),
-        WIN_2("5개 일치, 보너스 볼 일치 (30,000,000원) - "),
-        WIN_1("6개 일치 (2,000,000,000원) - ");
-
-        private final String message;
-
-        StatisticMessage(String message) {
-            this.message = message;
-        }
-
-        public static void printTotalPrizeRate(double totalRate) {
-            System.out.printf("총 수익률은 %.1f%%입니다.", totalRate);
         }
     }
 
@@ -163,7 +119,7 @@ public class LottoManager {
         LottoInfo.STATISTIC_MESSAGE.printMessage();
 
         int index = 3;
-        for (StatisticMessage win : StatisticMessage.values()) {
+        for (RankInfo win : RankInfo.values()) {
             System.out.println(win.message + result.get(index) + "개");
             index++;
         }
@@ -172,12 +128,12 @@ public class LottoManager {
     public void printProfit(int userMoney, Map<Integer, Integer> result) {
         //{0=3, 1=4, 2=1, 3=0, 4=0, 5=0, 6=0, 7=0}
         int totalProfit = 0, index = 3;
-        for (PrizeMoney prize : PrizeMoney.values()) {
+        for (RankInfo prize : RankInfo.values()) {
             totalProfit += prize.prizeMoney * result.get(index);
             index++;
         }
 
         double totalRate = ((double) totalProfit / userMoney) * 100;
-        StatisticMessage.printTotalPrizeRate(totalRate);
+        RankInfo.printTotalPrizeRate(totalRate);
     }
 }
