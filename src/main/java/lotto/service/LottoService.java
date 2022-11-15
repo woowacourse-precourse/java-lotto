@@ -37,6 +37,9 @@ public class LottoService {
 
     // 당첨 결과 보여주는 기능
     public void showLottoYield() {
-
+        lottoView.displayWinStatsHead();
+        int[] lottoResult = lottoMachine.getLottoResult();
+        lottoView.displayPrizes(lottoResult);
+        lottoView.displayYield(lottoMachine.getYield());
     }
 }
