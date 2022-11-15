@@ -50,7 +50,7 @@ public class Judgement {
 
     public static double calculateEarningRate(int inputMoney, int prizeMoney){
         double earningRate = (double)prizeMoney*100/(double)inputMoney;
-        earningRate = Math.round(earningRate*10/10.0);
+        earningRate = Math.round(earningRate*10)/10.0;
         return earningRate;
     }
 }

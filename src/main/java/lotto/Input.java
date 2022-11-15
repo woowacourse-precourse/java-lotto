@@ -36,22 +36,14 @@ public class Input {
 
     public static void validateNumber(String input) {
         String pattern = "^[0-9]*$";
-        if (!Pattern.matches(pattern, input)){
-            System.out.println("[ERROR] 숫자를 입력해주세요.");
-            throw new IllegalArgumentException("[ERROR] 숫자를 입력해주세요.");
+        if(!Pattern.matches(pattern, input)) {
+            throw new IllegalArgumentException("숫자로 입력해주세요");
         }
-//        try {
-//            Integer.parseInt(input);
-//        } catch(NumberFormatException exception) {
-//            System.out.println("[ERROR] 숫자를 입력해주세요.");
-//            throw new IllegalArgumentException("[ERROR] 숫자를 입력해주세요.");
-//        }
     }
 
     public static void validateUnitIs1000(int input) {
         if(!(input%1000==0)){
-            System.out.println("[ERROR] 1000원 단위로 입력해주세요.");
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("1000원 단위로 입력해주세요.");
         }
     }
 
@@ -59,15 +51,13 @@ public class Input {
         validateNumber(input);
         int number = Integer.parseInt(input);
         if (!(1<=number && number<=45)) {
-            System.out.println("[ERROR] 1과 45사이의 숫자를 입력해주세요.");
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("1과 45사이의 숫자를 입력해주세요.");
         }
     }
 
     public static void validateNotDuplicated(List<Integer> target, String input){
         if(target.contains(Integer.parseInt(input))){
-            System.out.println("[ERROR] 중복되지 않도록 입력해주세요.");
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("중복되지 않도록 입력해주세요.");
         }
     }
 }

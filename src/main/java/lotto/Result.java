@@ -17,7 +17,7 @@ public class Result {
             put(Fifth, 0);
         }
     };
-    List<Lotto> purchasedLotteries = new ArrayList<>();
+    List<Lotto> purchasedLotteries = new ArrayList<Lotto>();
 
     public Result(){
     }
@@ -25,7 +25,6 @@ public class Result {
     public void purchaseLotteries(int count){
         for(int i=0; i<count; i++){
             List<Integer> purchasedLottery = Randoms.pickUniqueNumbersInRange(1, 45, 6);
-            purchasedLottery.sort(Comparator.naturalOrder());
             Lotto lotto = new Lotto(purchasedLottery);
             purchasedLotteries.add(lotto);
         }
