@@ -14,15 +14,6 @@ public class Lotto {
         this.numbers = numbers;
     }
 
-    public static void validateLottoIsNumeric(List<String> numbers) throws IllegalArgumentException {
-        String pattern = "^[0-9]*$";
-        for (String number : numbers) {
-            if (!Pattern.matches(pattern, number)) {
-                throw new IllegalArgumentException("[ERROR] 복권 번호는 양의 정수 형태이어야 합니다.");
-            }
-        }
-    }
-
     public List<Integer> getLotto() {
         return this.numbers;
     }
@@ -45,6 +36,15 @@ public class Lotto {
         for (int index = 0; index < numbers.size(); index++) {
             if (numbers.indexOf(numbers.get(index)) != index) {
                 throw new IllegalArgumentException("[ERROR] 복권 번호는 중복이 허용되지 않습니다.");
+            }
+        }
+    }
+
+    public static void validateLottoIsNumeric(List<String> numbers) throws IllegalArgumentException {
+        String pattern = "^[0-9]*$";
+        for (String number : numbers) {
+            if (!Pattern.matches(pattern, number)) {
+                throw new IllegalArgumentException("[ERROR] 복권 번호는 양의 정수 형태이어야 합니다.");
             }
         }
     }

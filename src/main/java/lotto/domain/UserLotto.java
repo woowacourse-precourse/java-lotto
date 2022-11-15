@@ -17,6 +17,20 @@ public class UserLotto {
         this.lottoAmount = tmpLottoAmount;
     }
 
+    private void validateIsNumeric(String lottoAmount) throws IllegalArgumentException {
+        for (char c : lottoAmount.toCharArray()) {
+            if (!(0 <= c - '0' && c - '0' <= 9)) {
+                throw new IllegalArgumentException("[ERROR] 복권 구입 금액은 양의 정수 형태이어야 합니다.");
+            }
+        }
+    }
+
+    private void validateCanDivideThousand(int lottoAmount) {
+        if (lottoAmount % 1000 != 0) {
+            throw new IllegalArgumentException("[ERROR] 복권 구입 금액은 1000 으로 나누어 떨어져야 합니다.");
+        }
+    }
+
     public static List<Integer> createLottoResult(List<Lotto> lottos,
                                                   List<Integer> winningNumbers, int bonusNumber) {
         List<Integer> lottoResult = new ArrayList<>(List.of(0, 0, 0, 0, 0)); // 1등, 2등 ... 5등
@@ -35,20 +49,6 @@ public class UserLotto {
 
     public int getLottoCount() {
         return (this.lottoAmount / 1000);
-    }
-
-    private void validateIsNumeric(String lottoAmount) throws IllegalArgumentException {
-        for (char c : lottoAmount.toCharArray()) {
-            if (!(0 <= c - '0' && c - '0' <= 9)) {
-                throw new IllegalArgumentException("[ERROR] 복권 구입 금액은 양의 정수 형태이어야 합니다.");
-            }
-        }
-    }
-
-    private void validateCanDivideThousand(int lottoAmount) {
-        if (lottoAmount % 1000 != 0) {
-            throw new IllegalArgumentException("[ERROR] 복권 구입 금액은 1000 으로 나누어 떨어져야 합니다.");
-        }
     }
 
     public double getRateOfReturn(List<Integer> lottoResult) {

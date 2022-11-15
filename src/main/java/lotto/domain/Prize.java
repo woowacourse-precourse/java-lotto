@@ -18,6 +18,14 @@ public enum Prize {
         this.prizeMoney = prizeMoney;
     }
 
+    public int getPrizeMoney() {
+        return this.prizeMoney;
+    }
+
+    public int getMatchingCount() {
+        return this.matchingCount;
+    }
+
     public static Prize getPrize(int lottoMatchingCount, boolean bonusMatching) {
         if (lottoMatchingCount == THIRD.matchingCount && !bonusMatching) {
             return THIRD;
@@ -26,14 +34,6 @@ public enum Prize {
                 .filter(prize -> prize.matchingCount == lottoMatchingCount)
                 .findFirst()
                 .orElse(NONE);
-    }
-
-    public int getPrizeMoney() {
-        return this.prizeMoney;
-    }
-
-    public int getMatchingCount() {
-        return this.matchingCount;
     }
 
 }
