@@ -30,6 +30,7 @@ public class Lotto {
         numbers.add(bonus);
     }
 
+    // 로또 번호맞추기 (보너스 제외)
     public int calculCorrect(List<Integer> boughtLotto){
         int correct = 0;
         List<Integer> correctNumbers = this.numbers.subList(0,7);
@@ -37,5 +38,12 @@ public class Lotto {
             if (correctNumbers.contains(lotto)) correct++;
         }
         return correct;
+    }
+
+    // 보너스 번호 맞추기
+    public int calculBonus(List<Integer> boughtLotto){
+        int bonus = 0;
+        if(boughtLotto.contains(this.numbers.get(6))) bonus++;
+        return bonus;
     }
 }

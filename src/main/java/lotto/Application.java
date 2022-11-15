@@ -8,6 +8,8 @@ public class Application {
         Lotto lotto;
         int lottoCount;
         int bonusNum;
+        int correctCount;
+        int bonusCount;
 
         System.out.println("구입금액을 입력해 주세요.");
         String input = Console.readLine();
@@ -23,5 +25,6 @@ public class Application {
         String inputBonusNum = Console.readLine();
         bonusNum = UserMissChecking.bonusNumberChecking(lotto.getNumbers(), inputBonusNum);
         lotto.addBonus(bonusNum);
+
     }
 }
