@@ -11,7 +11,7 @@ public class Generator {
     private Generator() {
     }
 
-    private static HashMap<String, Integer> judgeWinningCount(Lotto lotto) {
+    private static HashMap<String, Integer> countCorrectNumber(Lotto lotto) {
         List<Integer> winningNumbers = Lotto.getWinningNumbers();
         int bonusNumber = Lotto.getBonusNumber();
 
@@ -35,9 +35,9 @@ public class Generator {
         return result;
     }
 
-    public static void calculateRank(Buyer buyer) {
+    public static void countRank(Buyer buyer) {
         for (Lotto lotto : buyer.getPurchasedLotto()) {
-            HashMap<String, Integer> correct = judgeWinningCount(lotto);
+            HashMap<String, Integer> correct = countCorrectNumber(lotto);
             Ranking rank = Ranking.getRank(correct.get(WINNINGCOUNT), correct.get(BONUSCOUNT));
             Buyer.setWinningSummary(buyer, rank.getLabel());
         }

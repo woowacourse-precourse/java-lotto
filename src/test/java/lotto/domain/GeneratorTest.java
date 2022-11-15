@@ -17,7 +17,7 @@ public class GeneratorTest {
     @DisplayName("로또 인스턴스를 인자로 받아 일치하는 당첨번호 및 보너스번호 개수를 HashMap에 담아 반환해준다")
     @Test
     void judgeWinningCountTest() throws NoSuchMethodException, IllegalAccessException, InvocationTargetException {
-        Method method = Generator.class.getDeclaredMethod("judgeWinningCount", Lotto.class);
+        Method method = Generator.class.getDeclaredMethod("countCorrectNumber", Lotto.class);
         method.setAccessible(true);
 
         List<Integer> winningNumbers = new ArrayList<Integer>(Arrays.asList(1, 2, 3, 4, 5, 6));
@@ -34,7 +34,7 @@ public class GeneratorTest {
 
     @Test
     void judgeWinningCountTest_2() throws NoSuchMethodException, IllegalAccessException, InvocationTargetException {
-        Method method = Generator.class.getDeclaredMethod("judgeWinningCount", Lotto.class);
+        Method method = Generator.class.getDeclaredMethod("countCorrectNumber", Lotto.class);
         method.setAccessible(true);
 
         List<Integer> winningNumbers = new ArrayList<Integer>(Arrays.asList(1, 2, 3, 4, 5, 6));
@@ -57,7 +57,7 @@ public class GeneratorTest {
     }
 
     @Test
-    void calculateRankTest() {
+    void countRankTest() {
         Buyer buyer = new Buyer();
         List<Integer> winningNumbers = new ArrayList<Integer>(Arrays.asList(1, 2, 3, 4, 5, 6));
         Lotto.setWinningNumbers(winningNumbers);
@@ -70,7 +70,7 @@ public class GeneratorTest {
         buyer.setPurchasedLotto(lotto2);
         buyer.setPurchasedLotto(lotto3);
 
-        Generator.calculateRank(buyer);
+        Generator.countRank(buyer);
 
         HashMap<String, Integer> buyerWinningSummary = new HashMap<String, Integer>() {
             {

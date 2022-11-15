@@ -20,7 +20,7 @@ public class LottoProgram {
         issue();
         setWinningNumbers();
         setBonusNumber();
-        Generator.calculateRank(buyer);
+        Generator.countRank(buyer);
         Display.winningResults(buyer);
         Display.profitResult(buyer);
     }
