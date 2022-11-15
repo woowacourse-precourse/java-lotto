@@ -2,6 +2,7 @@ package lotto.domain;
 
 import lotto.constant.CommonValue;
 import lotto.constant.ErrorMessage;
+import lotto.utils.Validation;
 
 import java.util.HashSet;
 import java.util.List;
@@ -16,21 +17,12 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
-        if(!isCorrectSize(numbers)){
+        if(Validation.isCorrectSize(numbers)){
             throw new IllegalArgumentException(ErrorMessage.NUMBER_COUNT_IS_NOT_SIX);
         }
-        if(!haveUniqueNumber(numbers)){
+        if(!Validation.isUniqueNumber(numbers)){
             throw new IllegalArgumentException(ErrorMessage.NUMBER_IS_DUPLICATED);
         }
-    }
-
-    private boolean isCorrectSize(List<Integer> numbers) {
-        return numbers.size() == CommonValue.LOTTO_NUMBER_COUNT;
-    }
-
-    private boolean haveUniqueNumber(List<Integer> numbers) {
-        Set<Integer> numSet = new HashSet<>(numbers);
-        return numSet.size() == numbers.size();
     }
 
     public List<Integer> getNumbers() {
