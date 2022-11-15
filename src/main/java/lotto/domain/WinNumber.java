@@ -9,7 +9,13 @@ public class WinNumber {
     private List<Integer> winLottoNumber = new ArrayList<>();
 
     public WinNumber(String userInput) {
-        isValidInput(userInput);
+        try {
+            isValidInput(userInput);
+            InputValidation.isNumber(userInput);
+        } catch (IllegalArgumentException e) {
+            e.getMessage();
+            return;
+        }
         winLottoNumber(userInput);
     }
 
