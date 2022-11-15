@@ -12,7 +12,7 @@ public class Sample {
     private static final String WINNING_STATISTICS_START_MESSAGE = "당첨 통계" + System.lineSeparator() + "---" + System.lineSeparator();
     private static final String WINNING_STATISTICS_PRINT_FORM = "%correctNumber개 일치 (%money원) - %count개" + System.lineSeparator();
     private static final String WINNING_STATISTICS_PRINT_BONUS_FORM = "%correctNumber개 일치, 보너스 볼 일치 (%money원) - %count개" + System.lineSeparator();
-
+    private static final String WINNING_YIELD_PRINT_FORM = "총 수익률은 %yield%입니다." + System.lineSeparator();
     public int stringToInt(String line){ // Lotto-valid-001
         try{
             int number = Integer.parseInt(line);
@@ -112,7 +112,7 @@ public class Sample {
         return lotto.getNumbers().contains(bonus);
     }
 
-    public String printWinningStatistics(List<LottoWinning> winningStatistics){
+    public String printWinningStatistics(List<LottoWinning> winningStatistics){ //WinningStatistics-print-001
         String message = WINNING_STATISTICS_START_MESSAGE;
         NumberFormat numberFormat = NumberFormat.getInstance();
         for (LottoWinningEnum lottoWinningEnum : LottoWinningEnum.values()){
@@ -130,5 +130,21 @@ public class Sample {
             message += nowMessage;
         }
         return message;
+    }
+
+    public String printYield(List<LottoWinning> winningStatistics, int buyPrice){
+        String message = WINNING_YIELD_PRINT_FORM;
+        message = message.replace("%yield",String.valueOf(getYield(winningStatistics, buyPrice)));
+        return message;
+    }
+    public double getYield(List<LottoWinning> winningStatistics, int buyPrice){
+        double getPrice = 0;
+        for (LottoWinningEnum lottoWinningEnum : LottoWinningEnum.values()){
+            int correctNumber = lottoWinningEnum.getCorrectNumber();
+            boolean hitBonus = lottoWinningEnum.isHitBonus();
+            getPrice += Collections.frequency(winningStatistics, new LottoWinning(correctNumber, hitBonus)) * lottoWinningEnum.getMoney();
+        }
+        double yield = getPrice / buyPrice * 100;
+        return Math.round(yield * 10) / 10.0;
     }
 }

@@ -1,6 +1,6 @@
 package lotto;
 
-public enum LottoWinningEnum {
+public enum LottoWinningEnum { // WinningStatistics-print-001
     FIFTH(3, false, 5000),
     FOURTH(4, false, 50000),
     THIRD(5, false, 1500000),

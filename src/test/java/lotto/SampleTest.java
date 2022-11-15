@@ -146,4 +146,15 @@ class SampleTest {
                         "6개 일치 (2,000,000,000원) - 0개"
                         );
     }
+
+    @Test
+    void printYieldTest1(){
+        List<LottoWinning> lottoWinnings = new ArrayList<>();
+        lottoWinnings.add(new LottoWinning(3,false));
+
+        assertThat(sample.printYield(lottoWinnings, 8000))
+                .contains(
+                        "총 수익률은 62.5%입니다."
+                );
+    }
 }
