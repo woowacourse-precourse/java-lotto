@@ -23,6 +23,7 @@ public class InputView {
     }
 
     public static List<Integer> inputWinningLotto() {
+        System.out.println();
         System.out.println(INPUT_WINNING_LOTTO_MESSAGE);
         String input = Console.readLine();
         return Arrays.stream(split(removeBlank(input)))
@@ -31,6 +32,7 @@ public class InputView {
     }
 
     public static int inputBonusNumber() {
+        System.out.println();
         System.out.println(INPUT_BONUS_NUMBER_MESSAGE);
         String input = Console.readLine();
         validateIsDigit(input);

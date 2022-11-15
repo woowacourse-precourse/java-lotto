@@ -11,5 +11,9 @@ public class Application {
         for (Lotto lotto : lottos) {
             OutputView.printLotto(lotto.getNumbers().toString());
         }
+        Player player = new Player();
+        player.calculateRankStatistics(lottos, new WinningLotto(InputView.inputWinningLotto(), InputView.inputBonusNumber()));
+        OutputView.printRankStatistics(player.getStatistics());
+        OutputView.printEarningRatio(player.calculateEarningRatio(lottoMachine.getLottoCount()));
     }
 }
