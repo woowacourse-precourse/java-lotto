@@ -28,5 +28,4 @@ public class Input {
         return Integer.parseInt(price);
     }
 
-
 }
