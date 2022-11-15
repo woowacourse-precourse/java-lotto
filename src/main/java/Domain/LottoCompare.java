@@ -28,6 +28,17 @@ public class LottoCompare {
         }
     }
 
+    public static double resultProfit(int userMoney) {
+        double sum = 0;
+        for (LottoWinningCriteria lottoWinningCriteria : LottoWinningCriteria.values()) {
+            int count = lottoWinningCriteria.getCount();
+            if (count != 0) {
+                sum += (count * lottoWinningCriteria.getWinMoney());
+            }
+        }
+        return (sum / userMoney) * 100;
+    }
+
     public List<Integer> unMatchUserBall(List<Integer> userLottoSheet, List<Integer> winnerLotto) {
         List<Integer> LottoSheet = new ArrayList<>(userLottoSheet);
         LottoSheet.removeAll(winnerLotto); // 위너와 중복되는 공 제거
