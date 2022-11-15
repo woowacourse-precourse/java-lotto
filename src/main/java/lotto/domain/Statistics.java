@@ -8,7 +8,8 @@ import static lotto.domain.Lotto.LOTTO_PRICE;
 import static lotto.domain.Rank.*;
 
 public class Statistics {
-    private static final int PERCENTAGE = 100;
+    private static final int PERCENTAGE_VALUE = 100;
+    private static final char PERCENTAGE_MARK = '%';
     private static final String EARNINGS_RATE_MARK = "%.1f";
     private Map<Rank, Integer> rankRecord = new TreeMap<>() {{
         put(FIRST_PLACE, 0);
@@ -41,13 +42,13 @@ public class Statistics {
     }
 
     private String roundToTwoDecimalPlaces() {
-        return String.format(EARNINGS_RATE_MARK, calculateEarningsRate());
+        return String.format(EARNINGS_RATE_MARK, calculateEarningsRate()) + PERCENTAGE_MARK;
     }
 
     private double calculateEarningsRate() {
         int payment = calculateNumberOfLottosPaid() * LOTTO_PRICE;
         long earnings = calculateEarnings();
-        return (double) earnings / payment * PERCENTAGE;
+        return (double) earnings / payment * PERCENTAGE_VALUE;
     }
 
     private int calculateNumberOfLottosPaid() {
