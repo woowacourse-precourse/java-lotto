@@ -19,6 +19,7 @@ public class LottoController {
 
     public void run() {
         int money = money();
+        List<Lotto> lottos = buy(money);
     }
 
     private int money() {
@@ -28,4 +29,15 @@ public class LottoController {
 
         return Integer.parseInt(input);
     }
+
+    private List<Lotto> buy(int money) {
+        int amount = money / Constants.LOTTO_PRICE;
+        List<Lotto> lottos = IntStream.range(0, amount).mapToObj(index -> Lotto.generate())
+                .collect(Collectors.toList());
+
+        outputView.printLottoNumbers(lottos);
+
+        return lottos;
+    }
+
 }
