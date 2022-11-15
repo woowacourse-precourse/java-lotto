@@ -37,4 +37,8 @@ public class Display {
     static void displayErrorSameNumber () {
         System.out.println("[ERROR] 로또 번호에는 중복이 없어야 합니다.");
     }
+
+    static void displayErrorBound () {
+        System.out.println("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
+    }
 }
