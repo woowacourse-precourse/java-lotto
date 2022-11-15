@@ -11,7 +11,7 @@ public class LottoStoreValidation {
 
     }
 
-    public void lottoCountCheck(int lottoCount) {
+    public void lotteryTicketCount(int lottoCount) {
         if (lottoCount < 1) {
             throw new IllegalArgumentException(ERROR_LOTTO_COUNT);
         }

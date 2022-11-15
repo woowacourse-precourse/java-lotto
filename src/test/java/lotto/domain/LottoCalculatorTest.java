@@ -1,6 +1,5 @@
 package lotto.domain;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -12,13 +11,8 @@ import java.util.Map;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class LottoCalculatorTest {
-    private LottoCalculator lottoCalculator;
+    private static final LottoCalculator lottoCalculator = new LottoCalculator();
 
-
-    @BeforeEach
-    void setup() {
-        this.lottoCalculator = new LottoCalculator();
-    }
 
     @DisplayName("로또 번호 생성 테스트")
     @Test
@@ -26,9 +20,7 @@ class LottoCalculatorTest {
         final int lottoCount = 6;
         final int startNumber = 1;
         final int endNumber = 45;
-
-
-        List<Integer> actual = this.lottoCalculator.createLotto();
+        List<Integer> actual = lottoCalculator.createLotto();
         assertThat(actual).doesNotHaveDuplicates().hasSize(lottoCount);
 
         for (Integer number : actual) {
@@ -40,9 +32,9 @@ class LottoCalculatorTest {
     @Test
     void lottoNumbersIsSorted() {
         Lotto lotto = new Lotto(List.of(6, 5, 4, 3, 2, 1));
-        List<Lotto> lottos = new ArrayList<>(1);
-        lottos.add(lotto);
-        ArrayList<ArrayList<Integer>> result = this.lottoCalculator.getDisplayLottoNumbers(lottos);
+        List<Lotto> lotteryTickets = new ArrayList<>(1);
+        lotteryTickets.add(lotto);
+        ArrayList<ArrayList<Integer>> result = lottoCalculator.getDisplayLottoNumbers(lotteryTickets);
 
         ArrayList<Integer> actual = result.get(0);
         Lotto expectedLotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
@@ -60,15 +52,15 @@ class LottoCalculatorTest {
         List<Integer> winningNumbers = winningLotto.getNumbers();
         int bonusNumber = 7;
 
-        List<Lotto> lottos = new ArrayList<>(lottoCount);
-        lottos.add(new Lotto(List.of(1, 2, 3, 4, 5, 6)));
-        lottos.add(new Lotto(List.of(1, 2, 3, 4, 5, 7)));
-        lottos.add(new Lotto(List.of(1, 2, 3, 4, 5, 8)));
-        lottos.add(new Lotto(List.of(1, 2, 3, 4, 7, 8)));
-        lottos.add(new Lotto(List.of(1, 2, 3, 7, 8, 9)));
+        List<Lotto> lotteryTickets = new ArrayList<>(lottoCount);
+        lotteryTickets.add(new Lotto(List.of(1, 2, 3, 4, 5, 6)));
+        lotteryTickets.add(new Lotto(List.of(1, 2, 3, 4, 5, 7)));
+        lotteryTickets.add(new Lotto(List.of(1, 2, 3, 4, 5, 8)));
+        lotteryTickets.add(new Lotto(List.of(1, 2, 3, 4, 7, 8)));
+        lotteryTickets.add(new Lotto(List.of(1, 2, 3, 7, 8, 9)));
 
         Map<LottoRankingType, Integer> actual
-                = this.lottoCalculator.getRankings(winningNumbers, bonusNumber, lottos);
+                = lottoCalculator.getRankings(winningNumbers, bonusNumber, lotteryTickets);
 
         Map<LottoRankingType, Integer> expected = new HashMap<>(rankingTypeCount);
         expected.put(LottoRankingType.FIRST_PLACE, 1);

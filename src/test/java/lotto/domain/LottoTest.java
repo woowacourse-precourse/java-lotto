@@ -35,9 +35,10 @@ class LottoTest {
         List<Integer> expected = lotto.getNumbers();
 
         LottoCalculator lottoCalculator = new LottoCalculator();
-        List<Lotto> lottos = new ArrayList<>(testCount);
-        lottos.add(lotto);
-        ArrayList<ArrayList<Integer>> result = lottoCalculator.getDisplayLottoNumbers(lottos);
+        List<Lotto> lotteryTickets = new ArrayList<>(testCount);
+        lotteryTickets.add(lotto);
+
+        ArrayList<ArrayList<Integer>> result = lottoCalculator.getDisplayLottoNumbers(lotteryTickets);
         ArrayList<Integer> notEqualExpected = result.get(0);
         List<Integer> actual = lotto.getNumbers();
 
