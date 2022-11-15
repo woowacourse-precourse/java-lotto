@@ -10,15 +10,11 @@ public class LottoStore {
 
     private final Integer LOTTO_AMOUNT_EACH = 1000;
 
-    public List<Lotto> issueLottos(Integer receivedAmount) {
-        Integer numOfLotto = countLottos(receivedAmount);
-
+    public List<Lotto> issueLottos(Integer numOfLotto) {
         List<Lotto> lottos = new ArrayList<>();
         while (numOfLotto > 0) {
             Lotto lotto = autoIssueLotto();
             lottos.add(lotto);
-
-            System.out.println(lotto);
 
             numOfLotto--;
         }
@@ -35,13 +31,15 @@ public class LottoStore {
         return new Lotto(autoIssuedNumber);
     }
 
-    private int countLottos(Integer amount) {
+    public int calcLottoNumbers(Integer amount) {
         Integer numOfLotto = amount / LOTTO_AMOUNT_EACH;
-        announceNumberOfIssuedLotto(numOfLotto);
+//        announceNumberOfIssuedLotto(numOfLotto);
         return numOfLotto;
     }
 
+    /*
     private void announceNumberOfIssuedLotto(Integer numOfLotto) {
         System.out.printf("%d개를 구매했습니다.\n", numOfLotto);
     }
+     */
 }
