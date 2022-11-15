@@ -1,13 +1,13 @@
-package lotto;
+package lotto.model;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public class Compare {
-    static Map<Integer, Integer> compareLotto = new HashMap<>();
+    public static Map<Integer, Integer> compareLotto = new HashMap<>();
 
-    static void sliceBundle(List<Lotto> lottoBundle, List<Integer> winningNumber) {
+    public static void sliceBundle(List<Lotto> lottoBundle, List<Integer> winningNumber) {
         for (int i = 0; i < lottoBundle.size(); i++) {
             compareNumbers(lottoBundle.get(i), winningNumber);
         }
