@@ -88,7 +88,7 @@ public class LottoManager {
     // 로또 번호를 생성하는 메소드
     public void createLotto() {
         // 1~45 랜덤 번호 6개 생성
-        ArrayList<Integer> numberList =new ArrayList<>(pickUniqueNumbersInRange(1, 45, 6));
+        ArrayList<Integer> numberList = new ArrayList<>(pickUniqueNumbersInRange(1, 45, 6));
 
         // 랜덤 번호 오름차순 정렬
         numberList.sort((o1, o2) -> o1 - o2);
@@ -130,17 +130,23 @@ public class LottoManager {
         }
 
         for (String stringNumber : splitList) {
-            try {
-                int intNumber = Integer.parseInt(stringNumber);
+            validateWinningNaturalNumber(stringNumber);
+        }
+    }
 
-                if (!(1 <= intNumber && intNumber <= 45)) {
-                    System.out.println("[ERROR] 각 당첨 번호는 1~45 자연수여야 합니다.");
-                    throw new IllegalArgumentException("[ERROR] 각 당첨 번호는 1~45 자연수여야 합니다.");
-                }
-            } catch (IllegalArgumentException e) {
+
+    // 당첨 번호가 1~45사이의 자연수인지 판단
+    public void validateWinningNaturalNumber(String stringNumber) {
+        try {
+            int intNumber = Integer.parseInt(stringNumber);
+
+            if (!(1 <= intNumber && intNumber <= 45)) {
                 System.out.println("[ERROR] 각 당첨 번호는 1~45 자연수여야 합니다.");
                 throw new IllegalArgumentException("[ERROR] 각 당첨 번호는 1~45 자연수여야 합니다.");
             }
+        } catch (IllegalArgumentException e) {
+            System.out.println("[ERROR] 각 당첨 번호는 1~45 자연수여야 합니다.");
+            throw new IllegalArgumentException("[ERROR] 각 당첨 번호는 1~45 자연수여야 합니다.");
         }
     }
 
