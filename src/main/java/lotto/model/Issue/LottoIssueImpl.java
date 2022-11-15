@@ -25,14 +25,17 @@ public class LottoIssueImpl implements LottoIssue{
                 .map(Lotto::new)
                 .collect(Collectors.toList());
     }
+    @Override
+    public BigDecimal getCount(){
+        return this.count;
+    }
 
     private List<List<Integer>> generateRandomNumbers(){
         List<List<Integer>> randomNumbers = new ArrayList<>();
-        for(int i =0; i< count.intValue(); i++){
+        for(int i =0; i< count.longValue(); i++){
             List<Integer> randomNumber = Randoms.pickUniqueNumbersInRange(1, 45, 6);
             validateRandomNumber(randomNumber);
-            randomNumber.sort(Comparator.naturalOrder());
-            randomNumbers.add(randomNumber);
+            randomNumbers.add(randomNumber.stream().sorted().collect(Collectors.toList()));
         }
         return randomNumbers;
     }
