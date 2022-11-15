@@ -1,14 +1,13 @@
 package lotto.util;
 
 import static lotto.constant.ErrorType.NUMBER_TYPE_ERROR;
+import static lotto.constant.TypeConversionConstant.SPLIT_EXPRESSION;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class TypeConversion {
-
-    private static final String SPLIT_EXPRESSION = ",";
 
     public static int stringToInt(String input) {
 
@@ -23,7 +22,7 @@ public class TypeConversion {
     }
 
     public static List<String> splitInputByComma(String input) {
-        String[] splitInput = input.split(SPLIT_EXPRESSION);
+        String[] splitInput = input.split(SPLIT_EXPRESSION.getValue());
 
         return Arrays.asList(splitInput);
     }
