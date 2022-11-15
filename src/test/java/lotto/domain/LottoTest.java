@@ -6,7 +6,6 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -40,6 +39,6 @@ class LottoTest {
         List<Integer> numbers;
         List<Integer> expect = new ArrayList<>(List.of(1,2,3,4,5,6));
         numbers = lotto.sortAscendingLotto();
-        assertEquals(numbers, expect);
+        assertEquals(expect, numbers);
     }
 }
