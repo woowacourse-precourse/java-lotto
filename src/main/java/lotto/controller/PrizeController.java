@@ -6,8 +6,8 @@ import java.util.List;
 import lotto.domain.Lotto;
 import lotto.domain.Prize;
 import lotto.domain.WinningNumber;
-import view.EarningRateView;
-import view.PrizeStatisticsView;
+import view.PrizeView.EarningRateView;
+import view.PrizeView.PrizeStatisticsView;
 
 public class PrizeController {
 

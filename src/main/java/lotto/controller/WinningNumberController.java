@@ -3,8 +3,8 @@ package lotto.controller;
 import java.util.List;
 import lotto.domain.WinningNumber;
 import lotto.service.WinningNumberService;
-import view.BonusNumberView;
-import view.WinningNumbersView;
+import view.WinningNumberView.BonusNumberView;
+import view.WinningNumberView.WinningNumbersView;
 
 public class WinningNumberController {
 
@@ -15,18 +15,18 @@ public class WinningNumberController {
     }
 
     public WinningNumber enterNumbers() {
-        List<Integer> numbers = enterWinningNumbers();
-        int bonusNumber = enterBonusNumber(numbers);
+        String numbers = enterWinningNumbers();
+        String bonusNumber = enterBonusNumber();
         return new WinningNumber(numbers, bonusNumber);
     }
 
-    private List<Integer> enterWinningNumbers() {
+    private String enterWinningNumbers() {
         WinningNumbersView winningNumbersView = new WinningNumbersView();
         return winningNumbersView.show();
     }
 
-    private int enterBonusNumber(List<Integer> numbers) {
-        BonusNumberView bonusNumberView = new BonusNumberView(numbers);
+    private String enterBonusNumber() {
+        BonusNumberView bonusNumberView = new BonusNumberView();
         return bonusNumberView.show();
     }
 }

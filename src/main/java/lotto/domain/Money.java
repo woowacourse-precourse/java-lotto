@@ -1,17 +1,34 @@
 package lotto.domain;
 
+import static lotto.exception.ExceptionName.MONEY_NOT_INTEGER_EXCEPTION;
+import static lotto.exception.ExceptionName.MONEY_UNIT_EXCEPTION;
+
 public class Money {
 
     private final int money;
 
     public Money(int money) {
-        validate(money);
+        validateUnit(money);
         this.money = money;
     }
 
-    private void validate(int money) {
+    public Money(String money) {
+        Integer intMoney = validateInteger(money);
+        validateUnit(intMoney);
+        this.money = intMoney;
+    }
+
+    private void validateUnit(int money) {
         if (money % 1000 != 0) {
-            throw new IllegalArgumentException("[ERROR] 구입 금액은 1,000원 단위로 입력해야 합니다.");
+            throw new IllegalArgumentException(MONEY_UNIT_EXCEPTION);
+        }
+    }
+
+    private Integer validateInteger(String money) {
+        try {
+            return Integer.parseInt(money);
+        } catch (Exception e) {
+            throw new IllegalArgumentException(MONEY_NOT_INTEGER_EXCEPTION);
         }
     }
 

@@ -13,12 +13,12 @@ public class MoneyController {
     }
 
     public int receiveMoney() {
-        Money money = viewUserInput();
-        moneyService.saveMoney(money);
+        String money = viewUserInput();
+        moneyService.saveMoney(new Money(money));
         return moneyService.findMoney().getMoney() / 1000;
     }
 
-    private Money viewUserInput() {
+    private String viewUserInput() {
         MoneyView moneyView = new MoneyView();
         return moneyView.show();
     }

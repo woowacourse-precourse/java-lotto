@@ -9,19 +9,40 @@ import lotto.repository.WinningNumberRepository;
 import lotto.service.LottoService;
 import lotto.service.MoneyService;
 import lotto.service.WinningNumberService;
+import view.ExceptionView;
 
 public class FrontController {
 
     public void run() {
+        try {
+            int countLotto = runMoneyController();
+            List<Lotto> lottos = runLottoController(countLotto);
+            WinningNumber winningNumber = runWinningNumberController();
+            runPrizeController(lottos, winningNumber, countLotto);
+        } catch (IllegalArgumentException e) {
+            ExceptionView exceptionView = new ExceptionView(e.getMessage());
+            exceptionView.show();
+            return;
+        }
+    }
+
+    private int runMoneyController() {
         MoneyController moneyController = new MoneyController(new MoneyService(new MoneyRepository()));
-        int countLotto = moneyController.receiveMoney();
+        return moneyController.receiveMoney();
+    }
 
+    private List<Lotto> runLottoController(int countLotto) {
         LottoController lottoController = new LottoController(new LottoService(new LottoRepository()), countLotto);
-        List<Lotto> lottos = lottoController.run();
+        return lottoController.run();
+    }
 
-        WinningNumberController winningNumberController = new WinningNumberController(new WinningNumberService(new WinningNumberRepository()));
-        WinningNumber winningNumber = winningNumberController.enterNumbers();
+    private WinningNumber runWinningNumberController() {
+        WinningNumberController winningNumberController = new WinningNumberController(
+                new WinningNumberService(new WinningNumberRepository()));
+        return winningNumberController.enterNumbers();
+    }
 
+    private void runPrizeController(List<Lotto> lottos, WinningNumber winningNumber, int countLotto) {
         PrizeController prizeController = new PrizeController(lottos, winningNumber, countLotto);
         prizeController.run();
     }

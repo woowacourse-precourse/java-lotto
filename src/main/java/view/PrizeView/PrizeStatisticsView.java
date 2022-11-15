@@ -1,4 +1,4 @@
-package view;
+package view.PrizeView;
 
 import java.util.ArrayList;
 import java.util.Collections;

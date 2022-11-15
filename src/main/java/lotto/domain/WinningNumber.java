@@ -1,12 +1,21 @@
 package lotto.domain;
 
+import static lotto.exception.ExceptionName.BONUS_NUMBER_DUPLICATE_EXCEPTION;
+import static lotto.exception.ExceptionName.BONUS_NUMBER_NOT_INTEGER_EXCEPTION;
+import static lotto.exception.ExceptionName.BONUS_NUMBER_RANGE_EXCEPTION;
+import static lotto.exception.ExceptionName.NUMBER_OF_WINNING_NUMBERS;
+import static lotto.exception.ExceptionName.WINNING_NUMBERS_DUPLICATE_EXCEPTION;
+import static lotto.exception.ExceptionName.WINNING_NUMBERS_NOT_INTEGER_EXCEPTION;
+import static lotto.exception.ExceptionName.WINNING_NUMBERS_NUMBERS_EXCEPTION;
+import static lotto.exception.ExceptionName.WINNING_NUMBERS_RANGE_EXCEPTION;
+
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
 public class WinningNumber {
-
-    public static final int NUMBER_OF_WINNING_NUMBERS = 6;
 
     private final List<Integer> numbers;
     private final int bonusNumber;
@@ -18,6 +27,36 @@ public class WinningNumber {
         this.bonusNumber = bonusNumber;
     }
 
+    public WinningNumber(String stringNumbers, String stringBonusNumber) {
+        List<Integer> numbers = validateWinningNumbersInteger(stringNumbers);
+        Integer bonusNumber = validateBonusNumberInteger(stringBonusNumber);
+        validateWinningNumbers(numbers);
+        validateBonusNumber(bonusNumber, numbers);
+        this.numbers = numbers;
+        this.bonusNumber = bonusNumber;
+    }
+
+    private List<Integer> validateWinningNumbersInteger(String stringNumbers) {
+        List<String> numbers = new ArrayList<String>(Arrays.asList(stringNumbers.split(",")));
+        List<Integer> integerNumbers = new ArrayList<>();
+        try {
+            for (String number : numbers) {
+                integerNumbers.add(Integer.parseInt(number));
+            }
+        } catch (Exception e) {
+            throw new IllegalArgumentException(WINNING_NUMBERS_NOT_INTEGER_EXCEPTION);
+        }
+        return integerNumbers;
+    }
+
+    private Integer validateBonusNumberInteger(String stringBonusNumber) {
+        try {
+            return Integer.parseInt(stringBonusNumber);
+        } catch (Exception e) {
+            throw new IllegalArgumentException(BONUS_NUMBER_NOT_INTEGER_EXCEPTION);
+        }
+    }
+
     private void validateWinningNumbers(List<Integer> numbers) {
         validateWinningNumbersSize(numbers);
         validateWinningNumbersRange(numbers);
@@ -26,14 +65,14 @@ public class WinningNumber {
 
     private void validateWinningNumbersSize(List<Integer> numbers) {
         if (numbers.size() != NUMBER_OF_WINNING_NUMBERS) {
-            throw new IllegalArgumentException("[ERROR] 당첨 번호의 개수는 " + NUMBER_OF_WINNING_NUMBERS + "개입니다.");
+            throw new IllegalArgumentException(WINNING_NUMBERS_NUMBERS_EXCEPTION);
         }
     }
 
     private void validateWinningNumbersRange(List<Integer> numbers) {
         for (int number : numbers) {
             if (number < 1 || number > 45) {
-                throw new IllegalArgumentException("[ERROR] 당첨 번호는 1이상 45이하 범위의 숫자이어야 합니다.");
+                throw new IllegalArgumentException(WINNING_NUMBERS_RANGE_EXCEPTION);
             }
         }
     }
@@ -41,7 +80,7 @@ public class WinningNumber {
     private void validateWinningNumbersDuplicate(List<Integer> integerNumbers) {
         Set<Integer> deduplicatedIntegerNumbers = new HashSet<>(integerNumbers);
         if (deduplicatedIntegerNumbers.size() != integerNumbers.size()) {
-            throw new IllegalArgumentException("[ERROR] 중복된 숫자가 존재합니다.");
+            throw new IllegalArgumentException(WINNING_NUMBERS_DUPLICATE_EXCEPTION);
         }
     }
 
@@ -52,13 +91,13 @@ public class WinningNumber {
 
     private void validateBonusNumberRange(int integerInput) {
         if (integerInput < 1 || integerInput > 45) {
-            throw new IllegalArgumentException("[ERROR] 보너스 번호는 1이상 45이하 범위의 숫자이어야 합니다.");
+            throw new IllegalArgumentException(BONUS_NUMBER_RANGE_EXCEPTION);
         }
     }
 
     private void validateBonusNumberDuplicate(int integerInput, List<Integer> numbers) {
         if (numbers.contains(integerInput)) {
-            throw new IllegalArgumentException("[ERROR] 중복되는 숫자가 존재합니다.");
+            throw new IllegalArgumentException(BONUS_NUMBER_DUPLICATE_EXCEPTION);
         }
     }
 
