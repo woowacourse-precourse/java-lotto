@@ -49,16 +49,7 @@ public class UI {
         return Bonus_Number;
     }
 
-    private void Bonus_number_validate(String Input) {
-        try {
-            Integer number = Integer.valueOf(Input);
-            if (number < 1 || number > 45) {
-                throw new IllegalArgumentException();}
-        }catch(Exception e){
-            throw new IllegalArgumentException("[ERROR] 보너스 번호는 1부터 45 사이의 숫자여야 합니다.");
-        }
 
-    }
 
     public void Lotto_Number_Print(Integer number_of_lotto_paper, List<List<Integer>> Total_Lotto_numbers){
         System.out.printf("%d개를 구매했습니다.%n",number_of_lotto_paper);
