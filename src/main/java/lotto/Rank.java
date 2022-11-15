@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public enum Rank {
+
     LOSER(0, false, 0),
     FIFTH(3, false, 5000),
     FOURTH(4, false, 50000),
@@ -48,9 +49,5 @@ public enum Rank {
 
     public int getMatchCount() {
         return this.matchCount;
-    }
-
-    public boolean isSecond() {
-        return this.winMoney == SECOND.getWinMoney();
     }
 }
