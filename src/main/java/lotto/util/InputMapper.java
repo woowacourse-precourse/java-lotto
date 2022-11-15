@@ -8,8 +8,8 @@ import java.util.stream.Collectors;
 
 public class InputMapper {
     private static final String ERROR_MESSAGE = InputConfig.ERROR_MESSAGE;
-    private final String ERROR_INVALID_SPLIT_REGEX = ERROR_MESSAGE + " (%s)로 구분된 입력을 해주세요.";
-    private final String SPLIT_REGEX = ",";
+    private static final String ERROR_INVALID_SPLIT_REGEX = ERROR_MESSAGE + " (%s)로 구분된 입력을 해주세요.";
+    private static final String SPLIT_REGEX = ",";
 
 
     public List<Integer> splitByComma(String input) {

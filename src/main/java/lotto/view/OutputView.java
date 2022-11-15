@@ -9,13 +9,17 @@ import java.io.OutputStreamWriter;
 import java.util.List;
 
 public class OutputView {
-    private final String YOU_PURCHASED_MESSAGE = "%d개를 구매했습니다.";
-    private final String PRIZE_STATISTICS_MESSAGE = "당첨통계\n---";
-    private final String PROFIT_MESSAGE = "총 수익률은 %,.1f%%입니다.";
-    private final String RANK_MESSAGE = "%d개 일치 (%s원) - %d개";
-    private final String SECOND_RANK_MESSAGE = "%d개 일치, 보너스 볼 일치 (%s원) - %d개";
+    private static final String YOU_PURCHASED_MESSAGE = "%d개를 구매했습니다.";
+    private static final String PRIZE_STATISTICS_MESSAGE = "당첨통계\n---";
+    private static final String PROFIT_MESSAGE = "총 수익률은 %,.1f%%입니다.";
+    private static final String RANK_MESSAGE = "%d개 일치 (%s원) - %d개";
+    private static final String SECOND_RANK_MESSAGE = "%d개 일치, 보너스 볼 일치 (%s원) - %d개";
 
-    private BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+    private final BufferedWriter bw;
+
+    public OutputView() {
+        this.bw = new BufferedWriter(new OutputStreamWriter(System.out));
+    }
 
     void printPurchaseCount(int count) {
         try {
