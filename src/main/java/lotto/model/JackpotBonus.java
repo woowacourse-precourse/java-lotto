@@ -14,17 +14,17 @@ public class JackpotBonus {
         this.bonusNumber = bonusNumber;
     }
 
-    private static void validateBonusNumber(List<Integer> jackpotNumbers, int bonusNumber) throws IllegalArgumentException {
-        if (jackpotNumbers.contains(bonusNumber)) {
-            throw new IllegalArgumentException(BONUS_NUMBER_DUPLICATE_ERROR_MESSAGE);
-        }
-    }
-
     public List<Integer> getJackpotNumbers() {
         return jackpotNumbers;
     }
 
     public int getBonusNumber() {
         return bonusNumber;
+    }
+
+    private static void validateBonusNumber(List<Integer> jackpotNumbers, int bonusNumber) throws IllegalArgumentException {
+        if (jackpotNumbers.contains(bonusNumber)) {
+            throw new IllegalArgumentException(BONUS_NUMBER_DUPLICATE_ERROR_MESSAGE);
+        }
     }
 }
