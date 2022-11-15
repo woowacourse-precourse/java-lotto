@@ -16,4 +16,10 @@ public class Lotto {
     public String toString() {
         return this.numbers.toString();
     }
+
+    public Integer compare(Lotto lotto) {
+        return Math.toIntExact(lotto.numbers.stream()
+            .filter(this.numbers::contains)
+            .count());
+    }
 }
