@@ -54,8 +54,16 @@ public class Input {
 
     public void checkWinningLotto(String inputWinningLotto){
         String[] checkArray = inputWinningLotto.split(",");
-        if(checkArray.length!=6){
+        if(checkArray.length!=LOTTONUMCOUNT){
             throw new IllegalArgumentException("[ERROR] 당첨 번호는 ,로 구분해야 합니다.");
+        }
+
+        for(int index1=0;index1<LOTTONUMCOUNT-1;index1++){
+            for(int index2=index1+1;index2<LOTTONUMCOUNT;index2++){
+                int number1=Integer.parseInt(checkArray[index1]);
+                int number2=Integer.parseInt(checkArray[index2]);
+                checkSameNumber(number1,number2);
+            }
         }
     }
 
