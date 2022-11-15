@@ -23,14 +23,22 @@ public enum Rank {
     public static Rank fromCount(long count, boolean matchBonus) {
         return Arrays.stream(Rank.values())
                 .filter(rank -> {
-                    if (count == 5) {
-                        return rank.matchCount == count && rank.matchBonus == matchBonus;
+                    if (count == SECOND.matchCount) {
+                        return rank.isMatchCountAndBonus(count, matchBonus);
                     }
 
-                    return rank.matchCount == count;
+                    return rank.isMatchCount(count);
                 })
                 .findFirst()
                 .orElseGet(Rank::makeEmpty);
+    }
+
+    private boolean isMatchCountAndBonus(long count, boolean bonus) {
+        return isMatchCount(count) && this.matchBonus == bonus;
+    }
+
+    private boolean isMatchCount(long count) {
+        return this.matchCount == count;
     }
 
     private static Rank makeEmpty() {
