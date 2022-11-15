@@ -36,6 +36,11 @@ class ConsumerTest {
 
     @Test
     void putBonusNumber() {
+        Consumer consumer = new Consumer();
+        String input = "11";
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+        assertThat(consumer.putBonusNumber()).isEqualTo(11);
     }
 
     @Test
