@@ -31,11 +31,11 @@ public class NumberBox {
         if (winningNumbers.size() != Validator.LOTTO_SIZE) {
             throw new IllegalArgumentException(ErrorMessage.WRONG_LENGTH.getMessage());
         }
-        if (Validator.isDuplicate(winningNumbers)) {
-            throw new IllegalArgumentException(ErrorMessage.DUPLICATE_NUMBERS.getMessage());
-        }
         if (!Validator.isInRange(winningNumbers)) {
             throw new IllegalArgumentException(ErrorMessage.NOT_IN_RANGE.getMessage());
+        }
+        if (Validator.isDuplicate(winningNumbers)) {
+            throw new IllegalArgumentException(ErrorMessage.DUPLICATE_NUMBERS.getMessage());
         }
     }
 
