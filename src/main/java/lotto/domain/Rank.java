@@ -38,10 +38,6 @@ public enum Rank implements RankDto {
         return true;
     }
 
-    public int getPrize() {
-        return prize;
-    }
-
     public int getCount() {
         return count;
     }
