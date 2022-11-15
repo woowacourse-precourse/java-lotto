@@ -62,7 +62,7 @@ public class UserInput {
         try {
             Integer.parseInt(userInput);
         } catch (Exception e) {
-            throw new IllegalArgumentException("[ERROR] 숫자만 입력해주세요.");
+            throw new IllegalArgumentException("[ERROR] 숫자 혹은 형식에 맞게 입력해주세요.");
         }
     }
 
@@ -77,11 +77,14 @@ public class UserInput {
 
     // 입력되는 당첨번호가 형식에 맞는지 유효성 검사
     private static void validateInputLottoNumbers(String userInput) {
-        String lottoNumbersPattern = "^(\\d,\\d,\\d,\\d,\\d,\\d)$";
-        Pattern pattern = Pattern.compile(lottoNumbersPattern);
-        Matcher matcher = pattern.matcher(userInput);
+        StringTokenizer st = new StringTokenizer(userInput, ",");
+        int tokenCount = st.countTokens();
 
-        if (!matcher.matches()) {
+        while (st.hasMoreTokens()) {
+            validateInputIsNum(st.nextToken());
+        }
+
+        if (tokenCount != 6) {
             throw new IllegalArgumentException("[ERROR] 형식에 맞게 입력해주세요. 번호는 쉼표(,)를 기준으로 구분합니다.");
         }
     }

@@ -2,13 +2,14 @@ package model;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Game {
     private int purchaseNumber;
     private int bonusNumber;
     private Lotto lotto;
-    private List<List<Integer>> userLottos;
+    private List<List<Integer>> userLottos = new ArrayList<>();
 
     public int getPurchaseNumber() {
         return purchaseNumber;

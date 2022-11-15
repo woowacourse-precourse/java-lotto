@@ -1,26 +1,79 @@
 package utils;
 
-import camp.nextstep.edu.missionutils.Randoms;
-import model.Lotto;
+import model.Game;
+import model.Rank;
 
 import java.util.Collections;
 import java.util.List;
 
-public class LottoNumbers {
+public class Result {
 
-    // 로또 번호 List 오름차순으로 정렬
-    public List<Integer> sortLottoNumbers(List<Integer> lottoNumbers){
-        Collections.sort(lottoNumbers);
+    Game game;
 
-        return lottoNumbers;
+    public Result(Game game) {
+        this.game = game;
     }
 
-    // 로또 번호 List를 Lotto객체로 변환
-    public Lotto listToLottoObject(List<Integer> lottoNumbers){
-        Lotto lotto = new Lotto(lottoNumbers);
-
-        return lotto;
+    public Rank getResultRank(int count, boolean isIncludeBonus) {
+        if(count == 3) {
+            return Rank.FIFTH;
+        }
+        if(count == 4) {
+            return Rank.FOURTH;
+        }
+        if(count == 5) {
+            if(isIncludeBonus) {
+                return Rank.SECOND;
+            }
+            return Rank.THIRD;
+        }
+        if(count == 6) {
+            return Rank.FIRST;
+        }
+        return Rank.NONE;
     }
 
+    public Rank getResult(List<Integer> userLottoNumber, List<Integer> lotto, int bonusNum) {
+        int count = 0;
+        boolean isIncludeBonus = false;
+
+        count += compareUserLottoAndLotto(userLottoNumber, lotto);
+        if (compareUserLottoAndBonusNum(userLottoNumber, bonusNum)) {
+            count++;
+            isIncludeBonus = true;
+        }
+
+        Rank rank = getResultRank(count, isIncludeBonus);
+
+        return rank;
+    }
+
+    public int compareUserLottoAndLotto(List<Integer> userLottoNumber, List<Integer> lotto) {
+        int count = 0;
+
+        for (Integer userLottoNum : userLottoNumber) {
+            for (Integer lottoNum : lotto) {
+                count += compareUserLottoNumAndLottoNum(userLottoNum, lottoNum);
+            }
+        }
+
+        return count;
+    }
+
+    public int compareUserLottoNumAndLottoNum(int userLottoNum, int lottoNum) {
+        if (userLottoNum == lottoNum) {
+            return 1;
+        }
+        return 0;
+    }
+
+    public boolean compareUserLottoAndBonusNum(List<Integer> userLottoNumber, int bonusNum) {
+        for (Integer userLottoNum : userLottoNumber) {
+            if (userLottoNum == bonusNum) {
+                return true;
+            }
+        }
+        return false;
+    }
 
 }
