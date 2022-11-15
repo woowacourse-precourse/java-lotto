@@ -27,10 +27,6 @@ public enum Rank {
                 .orElseThrow(() -> new IllegalArgumentException("[ERROR] 3개 이상 일치하지 않습니다."));
     }
 
-    public int getCntOfMatchedNum() {
-        return cntOfMatchedNum;
-    }
-
     public int getPrize() {
         return prize;
     }
