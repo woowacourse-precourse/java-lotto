@@ -10,11 +10,9 @@ public class Statistics {
     private static final int third = 1_500_000;
     private static final int fourth = 50_000;
     private static final int fifth = 5_000;
-
+    private static final List<Integer> reward = new ArrayList<>(Arrays.asList(first, second, third, fourth, fifth));
     private final Lotto winning;
     private final int bonus;
-    private static final List<Integer> reward = new ArrayList<>(Arrays.asList(first, second, third, fourth, fifth));
-
 
     public Statistics(Lotto winning, int bonus) {
         this.winning = winning;
@@ -50,6 +48,14 @@ public class Statistics {
         if (lotto.getNumbers().contains(bonus))
             return true;
         return false;
+    }
+
+    void checkWinningLotto (List<Lotto> userLottos, List<Integer> winningCount){
+        for (int i = 0; i < userLottos.size(); i++) {
+            int prize = getPrize(userLottos.get(i));
+            if (prize != -1)
+                winningCount.set(prize - 1, winningCount.get(prize - 1) + 1);
+        }
     }
 
 

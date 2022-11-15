@@ -28,12 +28,8 @@ public class Application {
             int winningBonus = inputWinningBonusNum(Console.readLine());
 
             Statistics statistics = new Statistics(winningLotto, winningBonus);
+            statistics.checkWinningLotto(userLottos,winningCount);
 
-            for (int i = 0; i < userLottos.size(); i++) {
-                int prize = statistics.getPrize(userLottos.get(i));
-                if (prize != -1)
-                    winningCount.set(prize - 1, winningCount.get(prize - 1) + 1);
-            }
             double yield = statistics.getYield(cost, winningCount);
 
             printResult(yield);
