@@ -1,7 +1,9 @@
 package lotto.controller;
 
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
+import java.util.stream.Collectors;
 import lotto.model.Lotto;
 import lotto.model.Rank;
 
@@ -20,7 +22,9 @@ public class Customer {
 
     public void watch(LottoBroadcast broadcast) {
         setBroadcast(broadcast);
+        calculateResult();
     }
+
 
     private void printLotteries(List<Lotto> lotteries) {
         System.out.println(lotteries.size() + "개를 구매했습니다.");
@@ -34,6 +38,14 @@ public class Customer {
 
     private void setBroadcast(LottoBroadcast broadcast) {
         this.broadcast = broadcast;
+    }
+
+    private void calculateResult() {
+        List<Rank> ranks = lotteries.stream().map(this::getRank).collect(Collectors.toList());
+
+        for (Rank rank : ranks) {
+            result.put(rank, Collections.frequency(ranks, rank));
+        }
     }
 
     private Rank getRank(Lotto mine) {
