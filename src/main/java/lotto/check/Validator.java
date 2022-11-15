@@ -25,15 +25,10 @@ public class Validator {
         isDuplicateBonusNumber(bonus);
     }
     public static void validateLuckyNumber(String luckyNumber){
-        // 당첨번호가 ,가 아닌 다른 구분자가 있는지
         isSpliterComma(luckyNumber);
-        // 당첨번호가 6개인지
         isLength(luckyNumber);
-        // 구분한 입력값들이 숫자가 맞는지
         isSplitNumber(luckyNumber);
-        // 1~45 숫자 범위내에 있는지
         isRangeNumber(luckyNumber);
-        // 숫자가 중복되는지
         isDuplicateLuckyNumber(luckyNumber);
     }
     public static void isLength(String luckyNumber){

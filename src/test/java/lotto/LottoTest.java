@@ -66,6 +66,4 @@ class LottoTest {
         Assertions.assertThrows(IllegalArgumentException.class,
                 () -> Validator.isDuplicateLuckyNumber(input));
     }
-
-
 }
