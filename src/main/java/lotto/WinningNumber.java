@@ -15,7 +15,8 @@ public class WinningNumber {
         numbers = validateWinningNumber(Console.readLine());
 
         printRequestBonusNumberMessage();
-        bonusNumber = validateNumber(numbers, Console.readLine());
+        int number = Formatter.convertStringToNumber(Console.readLine());
+        bonusNumber = validateNumber(numbers, number);
     }
 
     private static void printRequestWinningNumberMessage() {
@@ -28,8 +29,8 @@ public class WinningNumber {
 
     private List<Integer> validateWinningNumber(String inputNumbers) {
         List<Integer> winningNumber = new ArrayList<>();
-        String[] numbers = inputNumbers.split(",");
-        for (String n : numbers) {
+        int[] numbers = Formatter.convertStringToNumbers(inputNumbers);
+        for (int n : numbers) {
             winningNumber.add(validateNumber(winningNumber, n));
         }
 
