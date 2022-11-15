@@ -3,7 +3,9 @@ package lotto.view;
 import static lotto.model.Constant.PERCENTAGE_CONSTANT;
 
 import java.util.List;
+import java.util.Map;
 import lotto.model.Lotto;
+import lotto.model.Rank;
 
 public class LottoOutputView {
     private final static String LOTTO_COUNT_STRING = "개를 구매했습니다.";
@@ -33,13 +35,13 @@ public class LottoOutputView {
         System.out.println(lotto.toString());
     }
 
-    public void printWinningStatistic(int[] winningCounts, double grossProfitPercentage) {
+    public void printWinningStatistic(Map<Rank, Integer> winningCounts, double grossProfitPercentage) {
         System.out.println(WINNING_STATISTIC_STRING);
-        System.out.println(THREE_SAME_NUMBER + winningCounts[0] + COUNT_STRING);
-        System.out.println(FOUR_SAME_NUMBER + winningCounts[1] + COUNT_STRING);
-        System.out.println(FIVE_SAME_NUMBER + winningCounts[2] + COUNT_STRING);
-        System.out.println(FIVE_SAME_NUMBER_BONUS + winningCounts[3] + COUNT_STRING);
-        System.out.println(LOTTO_WIN + winningCounts[4] + COUNT_STRING);
-        System.out.println(GROSS_RETURN + grossProfitPercentage * PERCENTAGE_CONSTANT + GROSS_RETURN_END_STRING);
+        System.out.println(THREE_SAME_NUMBER + winningCounts.get(Rank.FIFTH) + COUNT_STRING);
+        System.out.println(FOUR_SAME_NUMBER + winningCounts.get(Rank.FOURTH) + COUNT_STRING);
+        System.out.println(FIVE_SAME_NUMBER + winningCounts.get(Rank.THIRD) + COUNT_STRING);
+        System.out.println(FIVE_SAME_NUMBER_BONUS + winningCounts.get(Rank.SECOND) + COUNT_STRING);
+        System.out.println(LOTTO_WIN + winningCounts.get(Rank.FIRST) + COUNT_STRING);
+        System.out.println(GROSS_RETURN + String.format("%.1f", grossProfitPercentage*PERCENTAGE_CONSTANT) + GROSS_RETURN_END_STRING);
     }
 }
