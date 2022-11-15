@@ -13,5 +13,5 @@ public class Constants {
 
 	public static final String ERROR_NOT_NUMBER_FORMAT = "[ERROR] 숫자를 입력해 주십시오.";
 	public static final String ERROR_NOT_MONEY_UNIT = "[ERROR] 구매 금액 단위를 맞춰 주십시오.";
-
+	public static final String ERROR_NOT_LOTTO_LENGTH = "[ERROR] 로또 길이에 적합하지 않습니다.";
 }
