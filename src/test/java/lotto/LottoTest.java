@@ -69,8 +69,8 @@ class LottoTest {
         BigInteger income2 = BigInteger.valueOf(10000);
         int expense = 5000;
 
-        assertAll(()->assertThat(lotto.calculateProfitRatio(income1, expense)).isEqualTo(BigDecimal.valueOf(55.6)),
-                ()->assertThat(lotto.calculateProfitRatio(income2, expense)).isEqualTo(BigDecimal.valueOf(50.0)));
+        assertAll(()->assertThat(lotto.calculateProfitRatio(income1, expense)).isEqualTo(BigDecimal.valueOf(180.0)),
+                ()->assertThat(lotto.calculateProfitRatio(income2, expense)).isEqualTo(BigDecimal.valueOf(200.0)));
         ;
     }
 }

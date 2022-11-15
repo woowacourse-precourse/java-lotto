@@ -5,6 +5,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.IntStream;
 
 public class LottoRandom {
     private final int MIN_LOTTO_NUM = 1;
@@ -28,9 +29,12 @@ public class LottoRandom {
 
         for (int i = 0; i < purchaseCount; i++) {
             numbers = Randoms.pickUniqueNumbersInRange(MIN_LOTTO_NUM, MAX_LOTTO_NUM, LOTTO_COUNT);
-            Collections.sort(numbers);
+            if (!LottoUtil.isSorted(numbers)) {
+                Collections.sort(numbers);
+            }
             lottoRandomList.add(numbers);
         }
         return lottoRandomList;
     }
+
 }

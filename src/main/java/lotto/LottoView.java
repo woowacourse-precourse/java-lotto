@@ -3,7 +3,6 @@ package lotto;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.math.BigDecimal;
-import java.math.BigInteger;
 import java.util.List;
 import java.util.Map;
 
@@ -32,7 +31,7 @@ public class LottoView {
     }
 
     private void printProfitRatio(BigDecimal profitRatio) {
-        System.out.println("총 수익률은 " + profitRatio + "% 입니다.");
+        System.out.println("총 수익률은 " + profitRatio + "%입니다.");
     }
 
     private void printMatchInfo(Map<Lotto.MatchInfo, Integer> lottoStatics) {
@@ -57,6 +56,9 @@ public class LottoView {
         this.printProfitRatio(profitRatio);
     }
 
+    public void printException(Exception e){
+        System.out.println(e.getMessage());
+    }
     public String getUserInput() {
         return Console.readLine();
     }

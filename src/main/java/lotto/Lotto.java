@@ -97,8 +97,8 @@ public class Lotto {
     }
 
     public BigDecimal calculateProfitRatio(BigInteger income, int expense) {
-        BigDecimal profit = BigDecimal.valueOf(expense).multiply(BigDecimal.valueOf(100)).
-                divide(new BigDecimal(income), 1, RoundingMode.HALF_UP);
+        BigDecimal profit = new BigDecimal(income).multiply(BigDecimal.valueOf(100)).
+                divide(new BigDecimal(expense), 1, RoundingMode.HALF_UP);
         return profit;
     }
 

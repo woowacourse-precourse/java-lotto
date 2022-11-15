@@ -3,6 +3,7 @@ package lotto;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.StringTokenizer;
+import java.util.stream.IntStream;
 
 public class LottoUtil {
 
@@ -33,5 +34,8 @@ public class LottoUtil {
             result.add(tokenizer.nextToken());
         }
         return result;
+    }
+    public static boolean isSorted(List<Integer> input) {
+        return IntStream.range(0, input.size() - 1).noneMatch(i -> input.get(i) > input.get(i+1));
     }
 }

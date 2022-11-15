@@ -17,9 +17,14 @@ public class LottoController {
     }
 
     public void run() {
-        int purchaseAmount = this.getPurchaseAmount();
-        List<List<Integer>> lottoRandom = this.generateLottoRandom(purchaseAmount);
-        this.calculateStatics(lottoRandom, purchaseAmount);
+        try{
+            int purchaseAmount = this.getPurchaseAmount();
+            List<List<Integer>> lottoRandom = this.generateLottoRandom(purchaseAmount);
+            this.calculateStatics(lottoRandom, purchaseAmount);
+        } catch (Exception e){
+            this.lottoView.printException(e);
+            throw e;
+        }
     }
 
     private int getPurchaseAmount() {
