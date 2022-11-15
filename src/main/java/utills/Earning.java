@@ -2,6 +2,7 @@ package utills;
 
 import lotto.Lotto;
 import winning.WinningHistory;
+import winning.WinningNumber;
 
 import java.util.List;
 
@@ -16,17 +17,22 @@ public class Earning {
     private WinningHistory winningHistory = new WinningHistory();
     private double earningAmount = 0;
 
-    public void scoreCalculate(List<Integer> purchasedLotto, List<Integer> winningLotto, int bonusNumber) {
-        int sameCount = calculateSameCount(purchasedLotto, winningLotto);
-        boolean bonusCorrect = sameCount == 5 && purchasedLotto.contains(bonusNumber);
+    public void scoreCalculate(Lotto purchasedLotto, WinningNumber winningNumber) {
+        int sameCount = calculateSameCount(purchasedLotto, winningNumber.getWinningNumbers());
+        boolean isSecondRank = isSecondRank(purchasedLotto, winningNumber, sameCount);
 
-        earningAmount += priceCalculate(sameCount, bonusCorrect);
-        rankCalculate(sameCount, bonusCorrect);
+        earningAmount += priceCalculate(sameCount, isSecondRank);
+        rankCalculate(sameCount, isSecondRank);
     }
 
-    private int calculateSameCount(List<Integer> purchasedLotto, List<Integer> winningLotto) {
+    private static boolean isSecondRank(Lotto purchasedLotto, WinningNumber winningNumber, int sameCount) {
+        boolean bonusCorrect = purchasedLotto.getLottoNumber().contains(winningNumber.getBonusNumber());
+        return sameCount == 5 && bonusCorrect;
+    }
+
+    private int calculateSameCount(Lotto purchasedLotto, List<Integer> winningLotto) {
         int sameCount = 0;
-        for (Integer purchasedLottoNumber : purchasedLotto) {
+        for (Integer purchasedLottoNumber : purchasedLotto.getLottoNumber()) {
             if (winningLotto.contains(purchasedLottoNumber)) {
                 sameCount++;
             }

@@ -30,7 +30,7 @@ public class Game {
     public void finish(int purchasedAmount, List<Lotto> purchasedLottos, WinningNumber winningNumber) {
         Earning earning = new Earning();
         for (Lotto purchasedLotto : purchasedLottos) {
-            earning.scoreCalculate(purchasedLotto.getLottoNumber(), winningNumber.getWinningNumbers(), winningNumber.getBonusNumber());
+            earning.scoreCalculate(purchasedLotto, winningNumber);
         }
         Output.printResult(purchasedAmount, earning);
     }
