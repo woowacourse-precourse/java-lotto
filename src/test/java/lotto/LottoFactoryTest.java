@@ -25,21 +25,6 @@ class LottoFactoryTest {
         assertThat(lottos.size()).isEqualTo(quantity);
     }
 
-    @DisplayName("createLottos 메서드로 만들어진 로또가 오름차순인지 테스트")
-    @Test
-    public void createLottos_메서드로_만들어진_로또가_오름차순인지_테스트() throws Exception {
-        //given
-        int quantity = 4;
-
-        //when
-        List<Lotto> lottos = factory.createLottos(quantity);
-
-        //then
-        for (Lotto lotto : lottos) {
-            assertThat(this.isAscendingOrdered(lotto.getNumbers())).isEqualTo(true);
-        }
-    }
-
     @DisplayName("숫자 리스트를 넘겨 createLotto 메서드로 하나의 로또 만들기")
     @Test
     public void 숫자리스트를_넘겨_createLotto_메서드로_하나의_로또_만들기() throws Exception {
