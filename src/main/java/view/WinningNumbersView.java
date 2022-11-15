@@ -30,7 +30,7 @@ public class WinningNumbersView {
 
     private void validateSize(List<String> numbers) {
         if (numbers.size() != NUMBER_OF_WINNING_NUMBERS) {
-            throw new IllegalArgumentException("[Error] 당첨 번호의 개수는 " + NUMBER_OF_WINNING_NUMBERS + "개입니다.");
+            throw new IllegalArgumentException("[ERROR] 당첨 번호의 개수는 " + NUMBER_OF_WINNING_NUMBERS + "개입니다.");
         }
     }
 
@@ -41,7 +41,7 @@ public class WinningNumbersView {
                 integerNumbers.add(Integer.parseInt(number));
             }
         } catch (Exception e) {
-            throw new IllegalArgumentException("[Error] 당첨 번호는 정수 형태이어야 합니다.");
+            throw new IllegalArgumentException("[ERROR] 당첨 번호는 정수 형태이어야 합니다.");
         }
         return integerNumbers;
     }
@@ -49,7 +49,7 @@ public class WinningNumbersView {
     private void validateRange(List<Integer> numbers) {
         for (int number : numbers) {
             if (number < 1 || number > 45) {
-                throw new IllegalArgumentException("[Error] 당첨 번호는 1이상 45이하 범위의 숫자이어야 합니다.");
+                throw new IllegalArgumentException("[ERROR] 당첨 번호는 1이상 45이하 범위의 숫자이어야 합니다.");
             }
         }
     }
@@ -57,7 +57,7 @@ public class WinningNumbersView {
     private void validateDuplicate(List<Integer> integerNumbers) {
         Set<Integer> deduplicatedIntegerNumbers = new HashSet<>(integerNumbers);
         if (deduplicatedIntegerNumbers.size() != integerNumbers.size()) {
-            throw new IllegalArgumentException("[Error] 중복된 숫자가 존재합니다.");
+            throw new IllegalArgumentException("[ERROR] 중복된 숫자가 존재합니다.");
         }
     }
 }

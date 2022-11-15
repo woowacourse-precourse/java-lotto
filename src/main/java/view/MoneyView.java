@@ -1,6 +1,7 @@
 package view;
 
 import camp.nextstep.edu.missionutils.Console;
+import java.util.NoSuchElementException;
 import lotto.domain.Money;
 
 public class MoneyView {
@@ -16,11 +17,13 @@ public class MoneyView {
     private void validate(String money) {
         try {
             Integer.parseInt(money);
-        }catch (Exception e) {
-            throw new IllegalArgumentException("[Error] 구매금액은 정수형태이어야 합니다.");
+        } catch (Exception e) {
+            //throw new IllegalArgumentException("[ERROR] 구매금액은 정수형태이어야 합니다.");
+            System.out.println("[ERROR] 구매금액은 정수형태이어야 합니다.");
+            throw new NoSuchElementException("[ERROR] 구매금액은 정수형태이어야 합니다.");
         }
         if (Integer.parseInt(money) % 1000 != 0) {
-            throw new IllegalArgumentException("[Error] 구입금액은 1,000원 단위로 입력해야 합니다.");
+            throw new IllegalArgumentException("[ERROR] 구입금액은 1,000원 단위로 입력해야 합니다.");
         }
     }
 }

@@ -5,7 +5,7 @@ public enum Prize {
     SECOND_PLACE(5, 30000000, "30,000,000", true),
     THIRD_PLACE(5, 1500000, "1,500,000"),
     FOURTH_PLACE(4, 50000, "50,000"),
-    FIFTH_PLACE(3, 5000,"5,000");
+    FIFTH_PLACE(3, 5000, "5,000");
 
     private final int match;
     private final int money;
