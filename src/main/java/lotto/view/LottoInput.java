@@ -20,19 +20,19 @@ public class LottoInput {
         return lottoInput;
     }
     public void addWinningNumbers(List<Integer> winningNumbersInput) {
-        LottoValidator.validateDuplicateNumber(winningNumbersInput);
         LottoValidator.validateLottoSize(winningNumbersInput);
         LottoValidator.validateNumberRange(winningNumbersInput);
+        LottoValidator.validateDuplicateNumber(winningNumbersInput);
         this.winningNumbers = winningNumbersInput;
     }
 
     public void addBonusNumber(int bonusNumber) {
+        LottoValidator.validateNumberRange(List.of(bonusNumber));
         LottoValidator.validateDuplicateWinningAndBonusNumber(this.winningNumbers, bonusNumber);
         this.bonusNumber = bonusNumber;
     }
 
     public void addMoney(Money money) {
-        LottoValidator.validateLottoMoney(money);
         this.money = money;
     }
     public List<Integer> getWinningNumbers() {
