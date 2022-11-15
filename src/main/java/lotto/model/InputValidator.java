@@ -28,4 +28,26 @@ public class InputValidator {
             throw new IllegalArgumentException(InputError.MONEY_MOD.message());
         }
     }
+
+    public static void checkLottoNumbers(String lottoNumbers) {
+        String[] numbers = lottoNumbers.split(Constants.SPLIT_REGEX);
+        isValidLength(numbers);
+        isAllNumber(numbers);
+    }
+
+    private static void isValidLength(String[] numbers) {
+        if (numbers.length != Constants.NUMBER_LENGTH) {
+            throw new IllegalArgumentException(InputError.LENGTH.message());
+        }
+    }
+
+    private static void isAllNumber(String[] numbers) {
+        for (String number : numbers) {
+            isNumber(number);
+        }
+    }
+
+    public static void checkBonusNumber(String bonusNumber) {
+        isNumber(bonusNumber);
+    }
 }
