@@ -28,6 +28,8 @@ class WinningLottoTest {
                 .isInstanceOf(IllegalArgumentException.class);
         assertThatThrownBy(() -> new WinningLotto("0,2,3,4,5,45").toLotto())
                 .isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> new WinningLotto("1,2,3,4,5,1111111111111111111111111111").toLotto())
+                .isInstanceOf(IllegalArgumentException.class);
     }
 
     @DisplayName("6개의 숫자가 안들어올 경우 예외가 발생한다.")
