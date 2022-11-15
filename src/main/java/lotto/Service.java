@@ -116,8 +116,14 @@ public class Service {
                 result.put(winner3st, result.getOrDefault(winner3st, 1) + 1);
             } else if (countCorrectNumber(lottoNumber, winningNumberInput) == 5 && correctLuckyNumber(luckyNumberInput, lottoNumber)) {
                 result.put(winner2st, result.getOrDefault(winner2st, 1) + 1);
+            } else if (countCorrectNumber(lottoNumber, winningNumberInput) == 6) {
+                result.put(winner1st, result.getOrDefault(winner1st, 1) + 1);
             }
         }
+        return createList();
+    }
+
+    private List<Integer> createList() {
         List<Integer> resultList = new ArrayList<>();
         for (Integer value : result.values()) {
             resultList.add(value);
