@@ -21,5 +21,15 @@ public enum WinningsTable {
         this.REVENUE=revenue;
         this.NUMBER_OF_MATCHES=numberOfMatches;
     }
-    
+    public static boolean isSame(WinningsTable winningsTable, String rankName){
+        return rankName.equals(winningsTable.name());
+    }
+
+    public static WinningsTable findByMatches(String rankName){
+
+        return Arrays.stream(WinningsTable.values()).
+                filter(winningsTable -> WinningsTable.isSame(winningsTable, rankName)).
+                findAny().
+                orElse(NOTHING);
+    }
 }
