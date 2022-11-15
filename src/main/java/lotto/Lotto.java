@@ -1,6 +1,7 @@
 package lotto;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 
@@ -42,6 +43,9 @@ public class Lotto {
         validateUniqueness(numbers, LOTTERY_NUMBER_COUNT);
     }
 
+    public void sortNumbers() {
+        Collections.sort(numbers);
+    }
     public void validateBonusNumber(int bonusNumber) {
         List<Integer> numbersIncludingBonus = new ArrayList<>(numbers);
 

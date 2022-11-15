@@ -3,7 +3,6 @@ package lotto;
 import static camp.nextstep.edu.missionutils.Randoms.pickUniqueNumbersInRange;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class Buyer {
@@ -14,7 +13,7 @@ public class Buyer {
     private static final int LOTTERY_NUMBER_COUNT = 6;
 
     private int purchaseAmount;
-    private List<List<Integer>> boughtTickets;
+    private List<Lotto> boughtTickets;
 
     public Buyer(String purchaseAmount) {
         validateBeingDigits(purchaseAmount);
@@ -50,9 +49,9 @@ public class Buyer {
         }
     }
 
-    private void sortLotteryNumbers(List<List<Integer>> tickets) {
-        for (List<Integer> ticket : tickets) {
-            Collections.sort(ticket);
+    private void sortLotteryNumbers(List<Lotto> tickets) {
+        for (Lotto ticket : tickets) {
+            ticket.sortNumbers();
         }
     }
 
@@ -61,9 +60,9 @@ public class Buyer {
         int ticketCount = purchaseAmount / 1000;
 
         for (int i = 0; i < ticketCount; i++) {
-            boughtTickets.add(
+            boughtTickets.add(new Lotto(
                     pickUniqueNumbersInRange(SMALLEST_LOTTERY_NUMBER, BIGGEST_LOTTERY_NUMBER, LOTTERY_NUMBER_COUNT)
-            );
+            ));
         }
         sortLotteryNumbers(boughtTickets);
     }
