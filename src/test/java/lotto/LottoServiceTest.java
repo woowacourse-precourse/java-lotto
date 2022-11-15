@@ -47,7 +47,16 @@ public class LottoServiceTest {
         LottoService lottoService = new LottoService();
         assertThatThrownBy(() -> lottoService.toLotto("a,b,c,d,e,f"))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage(ArgumentExceptionMessage.INPUT_NOT_INTEGER.getMessage());
+                .hasMessage(ArgumentExceptionMessage.INPUT_LOTTO_UNCONFORMABLE_FROM.getMessage());
+    }
+
+    @DisplayName("로또 당첨 번호가 올바르지 않은 형식인 경우, 예외가 발생한다.")
+    @Test
+    void toLottoByUnconformableForm() {
+        LottoService lottoService = new LottoService();
+        assertThatThrownBy(() -> lottoService.toLotto("1, 2, 3, 4, 5, 6"))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(ArgumentExceptionMessage.INPUT_LOTTO_UNCONFORMABLE_FROM.getMessage());
     }
 
     @DisplayName("로또 당첨 번호의 길이가 로또 번호 개수와 다른 경우, 예외가 발생한다.")
