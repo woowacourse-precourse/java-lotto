@@ -1,5 +1,6 @@
 package lotto;
 
+import java.util.Arrays;
 import java.util.List;
 
 public class Lotto {
@@ -16,5 +17,16 @@ public class Lotto {
         }
     }
 
-    // TODO: 추가 기능 구현
+    public void printLottoNumbers() {
+        System.out.println(Arrays.deepToString(numbers.toArray()));
+    }
+
+    public int calculateLotto(List<Integer> winningNumbers, int bonusNumber) {
+        numbers.retainAll(winningNumbers);
+        int score = numbers.size();
+        if (score == 5 && numbers.contains(bonusNumber)) {
+            score = 7;
+        }
+        return score;
+    }
 }
