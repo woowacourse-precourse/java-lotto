@@ -74,4 +74,7 @@ public class LottoCalculator {
         return correct;
     }
 
+    public Map<Integer, Integer> getWinningLotto() {
+        return winningLotto;
+    }
 }

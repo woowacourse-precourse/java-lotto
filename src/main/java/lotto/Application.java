@@ -1,6 +1,7 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
+import lotto.domain.LottoCalculator;
 import lotto.input.Input;
 
 import java.util.ArrayList;
@@ -12,6 +13,9 @@ import static java.lang.Integer.*;
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
+        Input input = inputValues();
+        LottoCalculator lottoCalculator = new LottoCalculator(input);
+        lottoCalculator.checkHit();
     }
 
     public static Input inputValues() {
