@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 import util.validation.ValidationUtil;
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class InputUtilTest {
+public class ValidationUtilTest {
     @DisplayName("로또의 숫자 개수 테스트")
     @Test
     void checkSizeTest() {
