@@ -10,10 +10,14 @@ public class Input {
     public int getPurchaseAmount() {
         System.out.println("구입금액을 입력해 주세요.");
         String purchaseMoneyInput = Console.readLine();
-        Validator.checkPurchaseMoneyInputForm(purchaseMoneyInput);
+        int purchaseMoney = 0;
 
-        int purchaseMoney = Integer.valueOf(purchaseMoneyInput);
-        Validator.checkPurchaseMoney(purchaseMoney);
+        try {
+            purchaseMoney = Integer.valueOf(purchaseMoneyInput);
+        } catch (Exception notOnlyNumber) { // 에러 발생 시 에러 전파
+            System.out.println("[ERROR] 정수를 입력하세요");
+        }
+
         int purchaseAmount = purchaseMoney / 1000;
 
         return purchaseAmount;
