@@ -23,4 +23,10 @@ public class User {
                 .map(Integer::parseInt)
                 .collect(Collectors.toList());
     }
+
+    public int inputOfBonusNumber(Lotto lotto) {
+        String userInput = Console.readLine();
+        System.out.println();
+        return Integer.parseInt(userInput);
+    }
 }
