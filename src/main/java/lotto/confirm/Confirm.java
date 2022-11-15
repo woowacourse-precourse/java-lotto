@@ -5,7 +5,7 @@ import java.util.List;
 import calculate.Calculate;
 
 public class Confirm {
-	public static void start(List<List<Integer>> playerPick) {
+	public static void start(List<List<Integer>> playerPick, int coin) {
 		try {
 			System.out.println("당첨 번호를 입력해 주세요.");
 			List<Integer> winNums = WinNumList.run();
@@ -14,7 +14,7 @@ public class Confirm {
 			WinNumErrorCheck.run(winNums);
 
 			List<Integer> correctNums = WinList.run(playerPick, winNums);
-			Calculate.run(correctNums);
+			Calculate.run(correctNums, coin);
 		} catch (IllegalArgumentException e) {
 			e.printStackTrace();
 		}
