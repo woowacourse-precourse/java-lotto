@@ -6,6 +6,9 @@ import java.lang.IllegalArgumentException;
 import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
 
+enum ranking {
+    FIRST, SECOND, THIRD, FOURTH, FIFTH, SIXTH
+}
 public class Application {
     static int money;
     static int lottoNum;
@@ -15,7 +18,7 @@ public class Application {
     static List<Lotto> lottoList;
     static List<Integer> hitNumber;
     static int bonus;
-
+    static List<Integer> countHitList;
     static int castInt(String str){
         int num = 0;
         try {
@@ -64,6 +67,7 @@ public class Application {
         return multiNumberList;
     }
 
+
     public static void main(String[] args) {
         System.out.println("구매금액을 입력해주세요");
         money = singleNumberInput();
@@ -79,5 +83,6 @@ public class Application {
 
         System.out.println("보너스 번호를 입력해주세요.");
         bonus = singleNumberInput();
+
     }
 }
