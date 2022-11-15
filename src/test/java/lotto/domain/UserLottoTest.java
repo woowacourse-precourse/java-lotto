@@ -8,6 +8,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 import java.util.List;
 
 import static lotto.constant.ErrorConstant.*;
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
 public class UserLottoTest {
@@ -42,6 +43,14 @@ public class UserLottoTest {
         assertThatIllegalArgumentException()
                 .isThrownBy(() -> new Lotto(List.of(1, 2, 3, 4, 5, 47)))
                 .withMessageStartingWith(ERROR_OUT_OF_RANGE);
+    }
+
+    @DisplayName("예외 처리 : 유저 로또 번호가 오름차순 정렬이 되었는지 검증")
+    @Test
+    void isLottoSorted() {
+        List<Integer> lottoTest = UserLotto.sortLotto(List.of(7, 13, 12, 1, 5, 2));
+        assertThat(List.of(1,2,5,7,12,13)).isEqualTo(lottoTest);
+
     }
 
 }
