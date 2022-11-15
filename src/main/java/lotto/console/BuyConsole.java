@@ -4,7 +4,6 @@ import camp.nextstep.edu.missionutils.Console;
 import lotto.domain.Lotto;
 
 import java.util.List;
-import java.util.regex.Pattern;
 
 import static lotto.constants.ConsoleMessages.INPUT_PRICE;
 import static lotto.constants.ConsoleMessages.PURCHASE;
