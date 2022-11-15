@@ -16,12 +16,9 @@ class LottoGameStatusTest {
         @ParameterizedTest
         @CsvSource(
                 value = {
-                    "GUIDE_PURCHASE_AMOUNT:PROCESS_PURCHASE_LOTTO",
-                    "PROCESS_PURCHASE_LOTTO:GUIDE_WINNING_NUMBERS",
-                    "GUIDE_WINNING_NUMBERS:PROCESS_WINNING_LOTTO",
-                    "PROCESS_WINNING_LOTTO:GUIDE_BONUS_NUMBER",
-                    "GUIDE_BONUS_NUMBER:PROCESS_LOTTO_RANKING",
-                    "PROCESS_LOTTO_RANKING:APPLICATION_EXIT",
+                    "PURCHASE_AMOUNT:WINNING_NUMBERS",
+                    "WINNING_NUMBERS:BONUS_NUMBER",
+                    "BONUS_NUMBER:APPLICATION_EXIT",
                     "APPLICATION_EXIT:APPLICATION_EXIT",
                     "APPLICATION_EXCEPTION:APPLICATION_EXCEPTION"
                 },
@@ -36,74 +33,19 @@ class LottoGameStatusTest {
     }
 
     @Nested
-    @DisplayName("isInput 메소드는")
-    class IsInputMethodTest {
-
-        @ParameterizedTest
-        @CsvSource(
-                value = {
-                    "GUIDE_PURCHASE_AMOUNT:true",
-                    "PROCESS_PURCHASE_LOTTO:false",
-                    "GUIDE_WINNING_NUMBERS:true",
-                    "PROCESS_WINNING_LOTTO:false",
-                    "GUIDE_BONUS_NUMBER:true",
-                    "PROCESS_LOTTO_RANKING:false",
-                    "APPLICATION_EXIT:false",
-                    "APPLICATION_EXCEPTION:false"
-                },
-                delimiter = ':'
-        )
-        @DisplayName("만약 호출하면 해당 LottoGameStatus가 입력용 안내 문구를 출력해야 하는지 여부를 반환한다.")
-        void success_test(LottoGameStatus lottoGameStatus, boolean expected) {
-            boolean actual = lottoGameStatus.isInput();
-
-            assertThat(actual).isSameAs(expected);
-        }
-    }
-
-    @Nested
-    @DisplayName("isLogic 메소드는")
-    class IsLogicMethodTest {
-
-        @ParameterizedTest
-        @CsvSource(
-            value = {
-                "GUIDE_PURCHASE_AMOUNT:false",
-                "PROCESS_PURCHASE_LOTTO:true",
-                "GUIDE_WINNING_NUMBERS:false",
-                "PROCESS_WINNING_LOTTO:true",
-                "GUIDE_BONUS_NUMBER:false",
-                "PROCESS_LOTTO_RANKING:true",
-                "APPLICATION_EXIT:false",
-                "APPLICATION_EXCEPTION:false"
-            },
-            delimiter = ':'
-        )
-        @DisplayName("만약 호출하면 해당 LottoGameStatus가 로직을 수행해야 하는지 여부를 반환한다.")
-        void success_test(LottoGameStatus lottoGameStatus, boolean expected) {
-            boolean actual = lottoGameStatus.isLogic();
-
-            assertThat(actual).isSameAs(expected);
-        }
-    }
-
-    @Nested
     @DisplayName("isExit 메소드는")
     class IsExitMethodTest {
 
         @ParameterizedTest
         @CsvSource(
-            value = {
-                "GUIDE_PURCHASE_AMOUNT:false",
-                "PROCESS_PURCHASE_LOTTO:false",
-                "GUIDE_WINNING_NUMBERS:false",
-                "PROCESS_WINNING_LOTTO:false",
-                "GUIDE_BONUS_NUMBER:false",
-                "PROCESS_LOTTO_RANKING:false",
-                "APPLICATION_EXIT:true",
-                "APPLICATION_EXCEPTION:true"
-            },
-            delimiter = ':'
+                value = {
+                    "PURCHASE_AMOUNT:false",
+                    "WINNING_NUMBERS:false",
+                    "BONUS_NUMBER:false",
+                    "APPLICATION_EXIT:true",
+                    "APPLICATION_EXCEPTION:true"
+                },
+                delimiter = ':'
         )
         @DisplayName("만약 호출하면 해당 LottoGameStatus가 애플리케이션을 종료해야 하는지 여부를 반환한다.")
         void success_test(LottoGameStatus lottoGameStatus, boolean expected) {

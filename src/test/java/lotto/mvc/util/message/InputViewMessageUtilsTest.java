@@ -20,9 +20,9 @@ class InputViewMessageUtilsTest {
         @ParameterizedTest
         @CsvSource(
                 value = {
-                    "GUIDE_PURCHASE_AMOUNT:구입금액을 입력해 주세요.",
-                    "GUIDE_WINNING_NUMBERS:당첨 번호를 입력해 주세요.",
-                    "GUIDE_BONUS_NUMBER:보너스 번호를 입력해 주세요."
+                    "PURCHASE_AMOUNT:구입금액을 입력해 주세요.",
+                    "WINNING_NUMBERS:당첨 번호를 입력해 주세요.",
+                    "BONUS_NUMBER:보너스 번호를 입력해 주세요."
                 },
                 delimiter = ':'
         )
@@ -34,15 +34,7 @@ class InputViewMessageUtilsTest {
         }
 
         @ParameterizedTest
-        @EnumSource(
-                names = {
-                    "PROCESS_PURCHASE_LOTTO",
-                    "PROCESS_WINNING_LOTTO",
-                    "PROCESS_LOTTO_RANKING",
-                    "APPLICATION_EXIT",
-                    "APPLICATION_EXCEPTION"
-                }
-        )
+        @EnumSource(names = {"APPLICATION_EXIT", "APPLICATION_EXCEPTION"})
         @DisplayName("만약 안내 문구가 필요하지 않은 LottoGameStatus가 주어지면 NotFoundViewMessageException 예외가 발생한다.")
         void not_found_message_exception_test(LottoGameStatus lottoGameStatus) {
             assertThatThrownBy(() -> InputViewMessageUtils.findMessage(lottoGameStatus))

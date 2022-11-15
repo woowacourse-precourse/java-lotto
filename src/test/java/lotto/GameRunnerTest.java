@@ -19,7 +19,7 @@ class GameRunnerTest extends NsTest {
 
     @Override
     protected void runMain() {
-        GameRunner.run(LottoGameStatus.GUIDE_PURCHASE_AMOUNT);
+        GameRunner.run(LottoGameStatus.PURCHASE_AMOUNT);
     }
 
     @Nested
