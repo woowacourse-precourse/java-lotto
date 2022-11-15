@@ -4,12 +4,6 @@ import java.util.List;
 import java.util.Objects;
 
 public class LottoResult {
-    public static final int FIRST_PRIZE = 2000000000;
-    public static final int SECOND_PRIZE = 30000000;
-    public static final int THIRD_PRIZE = 1500000;
-    public static final int FOURTH_PRIZE = 50000;
-    public static final int FIFTH_PRIZE = 5000;
-
     private final List<Lotto> lottoList;
     private final WinningLottoNumber winningLottoNumber;
 
@@ -85,11 +79,11 @@ public class LottoResult {
     }
 
     private void setTotalPrize() {
-        this.totalPrize = (sixCount * FIRST_PRIZE)
-                + (fiveAndBonusCount * SECOND_PRIZE)
-                + (fiveCount * THIRD_PRIZE)
-                + (fourCount * FOURTH_PRIZE)
-                + (threeCount * FIFTH_PRIZE);
+        this.totalPrize = (sixCount * WinningPrize.FIRST_PRIZE.getPrize())
+                + (fiveAndBonusCount * WinningPrize.SECOND_PRIZE.getPrize())
+                + (fiveCount * WinningPrize.THIRD_PRIZE.getPrize())
+                + (fourCount * WinningPrize.FOURTH_PRIZE.getPrize())
+                + (threeCount * WinningPrize.FIFTH_PRIZE.getPrize());
     }
 
     private void yieldCalculation() {
