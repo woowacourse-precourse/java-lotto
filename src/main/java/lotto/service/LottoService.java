@@ -3,6 +3,7 @@ package lotto.service;
 import lotto.domain.Lotto;
 import lotto.domain.Statistic;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -11,6 +12,7 @@ import static lotto.domain.Lotto.issueLotto;
 import static lotto.domain.Statistic.*;
 import static lotto.view.InputView.*;
 import static lotto.view.OutputView.printLottoNumber;
+import static lotto.view.OutputView.printLottoResult;
 
 public class LottoService {
     static final int LOTTO_SIZE = 6;
@@ -28,6 +30,7 @@ public class LottoService {
         }
         List<Lotto> issuedLotteries = issueLotto(count);
         printLottoNumber(count, issuedLotteries);
+        printLottoResult(count, generateCountStatistic(inputLottoNumber, bonus, issuedLotteries));
     }
 
     public static List<Integer> stringToIntList(String input) {
