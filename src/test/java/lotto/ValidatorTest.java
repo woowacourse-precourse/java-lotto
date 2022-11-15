@@ -1,5 +1,6 @@
 package lotto;
 
+import lotto.constant.ErrorMessage;
 import lotto.participant.Validator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
@@ -90,7 +91,7 @@ class ValidatorTest {
             // throws
             assertThatThrownBy(() -> validator.validateWinningNumbers("-44,10,13,1,6,a"))
                     .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessageContaining("[ERROR] 당첨 번호들의 형태가 잘못되었습니다.");
+                    .hasMessageContaining(ErrorMessage.FORM_OF_WINNING_NUMBERS_IS_WRONG.getErrorMessage());
         }
 
         @Test
@@ -102,7 +103,7 @@ class ValidatorTest {
             // throws
             assertThatThrownBy(() -> validator.validateWinningNumbers(",12,31,5,1,26,4,"))
                     .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessageContaining("[ERROR] 당첨 번호들의 형태가 잘못되었습니다.");
+                    .hasMessageContaining(ErrorMessage.FORM_OF_WINNING_NUMBERS_IS_WRONG.getErrorMessage());
         }
 
         @Test
@@ -114,7 +115,7 @@ class ValidatorTest {
             // throws
             assertThatThrownBy(() -> validator.validateWinningNumbers("01,02,03,04,05,06"))
                     .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessageContaining("[ERROR] 당첨 번호들의 형태가 잘못되었습니다.");
+                    .hasMessageContaining(ErrorMessage.FORM_OF_WINNING_NUMBERS_IS_WRONG.getErrorMessage());
         }
 
         @Test
@@ -126,7 +127,7 @@ class ValidatorTest {
             // throws
             assertThatThrownBy(() -> validator.validateWinningNumbers("45,36,1,23,5"))
                     .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessageContaining("[ERROR] 당첨 번호들의 형태가 잘못되었습니다.");
+                    .hasMessageContaining(ErrorMessage.FORM_OF_WINNING_NUMBERS_IS_WRONG.getErrorMessage());
         }
 
         @Test
@@ -138,7 +139,7 @@ class ValidatorTest {
             // throws
             assertThatThrownBy(() -> validator.validateWinningNumbers("46,1,2,3,4,5"))
                     .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessageContaining("[ERROR] 당첨 번호들의 값이 잘못되었습니다.");
+                    .hasMessageContaining(ErrorMessage.VALUES_OF_WINNING_NUMBERS_ARE_WRONG.getErrorMessage());
         }
 
         @Test
@@ -150,7 +151,7 @@ class ValidatorTest {
             // throws
             assertThatThrownBy(() -> validator.validateWinningNumbers("1,1,2,3,4,5"))
                     .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessageContaining("[ERROR] 당첨 번호들의 값이 잘못되었습니다.");
+                    .hasMessageContaining(ErrorMessage.VALUES_OF_WINNING_NUMBERS_ARE_WRONG.getErrorMessage());
         }
 
         @Test
@@ -178,7 +179,7 @@ class ValidatorTest {
             // throws
             assertThatThrownBy(() -> validator.validateBonusNumber("-45", winningNumbers))
                     .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessageContaining("[ERROR] 보너스 번호 입력이 잘못되었습니다.");
+                    .hasMessageContaining(ErrorMessage.FORM_OF_BONUS_NUMBER_IS_WRONG.getErrorMessage());
         }
 
         @Test
@@ -191,7 +192,7 @@ class ValidatorTest {
             // throws
             assertThatThrownBy(() -> validator.validateBonusNumber("015", winningNumbers))
                     .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessageContaining("[ERROR] 보너스 번호 입력이 잘못되었습니다.");
+                    .hasMessageContaining(ErrorMessage.FORM_OF_BONUS_NUMBER_IS_WRONG.getErrorMessage());
         }
 
         @Test
@@ -204,7 +205,7 @@ class ValidatorTest {
             // throws
             assertThatThrownBy(() -> validator.validateBonusNumber("46", winningNumbers))
                     .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessageContaining("[ERROR] 보너스 번호 입력이 잘못되었습니다.");
+                    .hasMessageContaining(ErrorMessage.FORM_OF_BONUS_NUMBER_IS_WRONG.getErrorMessage());
         }
 
         @Test
@@ -217,7 +218,7 @@ class ValidatorTest {
             // throws
             assertThatThrownBy(() -> validator.validateBonusNumber("1", winningNumbers))
                     .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessageContaining("[ERROR] 보너스 번호가 당첨 번호와 중복되었습니다.");
+                    .hasMessageContaining(ErrorMessage.BONUS_NUMBER_AND_WINNING_NUMBER_IS_DUPLICATED.getErrorMessage());
         }
 
         @Test
