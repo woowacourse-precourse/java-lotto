@@ -30,4 +30,5 @@ public class Constant {
     public static final String WINNING_STATS_MSG = "\n당첨 통계\n---";
     public static final String WINNING_STATS_RANK_SECOND_MSG = "%d개 일치, 보너스 볼 일치 (%s원) - %d개%n";
     public static final String WINNING_STATS_OTHER_RANK_MSG = "%d개 일치 (%s원) - %d개%n";
+    public static final String YIELD_MSG = "총 수익률은 %s%%입니다.";
 }

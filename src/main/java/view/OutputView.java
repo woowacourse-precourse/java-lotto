@@ -29,4 +29,9 @@ public class OutputView {
                 formatter.format(rank.getPrize()), results.getResult().get(rank));
         }
     }
+
+    // 수익률을 출력하는 기능
+    public static void printYield(Result result, int money) {
+        System.out.printf(YIELD_MSG, result.calculateYield(money));
+    }
 }
