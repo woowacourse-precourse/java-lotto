@@ -24,7 +24,7 @@ public class LottoJudge {
 
         for (Lotto haveLotto : buyLotteries.getBuyLotteries()) {
             int containsCount = getContainsCount(haveLotto, lottoWithBonus.getLotto());
-            LottoReference reference = LottoReference.hasCorrectCount(containsCount);
+            LottoReference reference = LottoReference.getLottoReference(containsCount);
             if (reference == FIVE) {
                 reference = checkBonus(haveLotto, lottoWithBonus);
             }
@@ -42,6 +42,7 @@ public class LottoJudge {
 
     private int getContainsCount(Lotto haveLotto, Lotto myLotto) {
         int containsCount = 0;
+
         for (Integer number : myLotto.getLottoNumbers()) {
             if (haveLotto.getLottoNumbers().contains(number)) {
                 containsCount += 1;

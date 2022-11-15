@@ -21,9 +21,9 @@ public enum LottoReference {
         this.message = message;
     }
 
-    public static LottoReference hasCorrectCount(int correctCount) {
+    public static LottoReference getLottoReference(int containsCount) {
         for (LottoReference lottoReference : LottoReference.values()) {
-            if (lottoReference.getCorrectCount() == correctCount) {
+            if (lottoReference.getCorrectCount() == containsCount) {
                 return lottoReference;
             }
         }
@@ -32,6 +32,7 @@ public enum LottoReference {
 
     public static float getYield(Map<LottoReference, Integer> result) {
         int totalTickets = countTickets(result);
+
         long amountPaid = (long) totalTickets * LOTTO_PRICE;
         long totalPrize = getPrizeByResult(result);
 
@@ -40,6 +41,7 @@ public enum LottoReference {
 
     private static int countTickets(Map<LottoReference, Integer> result) {
         int totalTickets = 0;
+
         for (int tickets : result.values()) {
             totalTickets += tickets;
         }
@@ -48,6 +50,7 @@ public enum LottoReference {
 
     private static long getPrizeByResult(Map<LottoReference, Integer> result) {
         long totalPrize = 0L;
+
         for (LottoReference lo : LottoReference.values()) {
             if (lo == NOPE) {
                 continue;

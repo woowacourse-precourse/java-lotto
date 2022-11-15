@@ -26,6 +26,7 @@ public class InputHandler {
     public List<Integer> stringToList(String readLine) {
         List<String> inputs = List.of(readLine.split(","));
         List<Integer> numbers = new ArrayList<>();
+
         for (String input : inputs) {
             try {
                 numbers.add(Integer.valueOf(input));
