@@ -1,5 +1,7 @@
 package lotto;
 
+import lotto.constants.LottoConstants;
+
 import java.util.LinkedList;
 import java.util.List;
 
@@ -14,7 +16,7 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
-        if (numbers.size() != 6) {
+        if (numbers.size() != LottoConstants.NUMBER_OF_PICKED) {
             throw new IllegalArgumentException();
         }
     }
