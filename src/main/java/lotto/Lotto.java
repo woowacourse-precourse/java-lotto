@@ -23,7 +23,10 @@ public class Lotto {
 
     // TODO: 추가 기능 구현
     public void isDuplicated(List<Integer> numbers) {
-        List<Integer> uniqueNumbers = numbers.stream().distinct().collect(Collectors.toList());
+        List<Integer> uniqueNumbers = numbers.stream()
+                                             .distinct()
+                                             .collect(Collectors.toList());
+
         if (uniqueNumbers.size() != numbers.size()) {
             throw new IllegalArgumentException("[ERROR] 중복되지 않는 숫자들을 입력해주세요.");
         }
