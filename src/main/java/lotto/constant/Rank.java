@@ -8,7 +8,7 @@ public enum Rank {
     THIRD(1500000, 5, 5, false),
     FOURTH(50000, 4, 4, null),
     FIFTH(5000, 3, 3, null),
-    SIXTH(0, null, null, null);
+    SIXTH(0, null, 2, null);
 
     final private Integer winning;
     final private Integer minMatchNum;
@@ -50,5 +50,4 @@ public enum Rank {
         }
         return winning;
     }
-
 }
