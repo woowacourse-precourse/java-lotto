@@ -1,20 +1,26 @@
 package lotto;
 
-import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
 public class Lotto {
-    private final List<Integer> numbers;
+    private final List<LottoNum> numbers;
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
-        this.numbers = numbers;
+        this.numbers = numbers.stream()
+                .map(LottoNum::new).collect(Collectors.toList());
     }
 
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException();
         }
+    }
+
+    public List<LottoNum> getNumbers() {
+        return Collections.unmodifiableList(numbers);
     }
 
 
