@@ -138,7 +138,15 @@ class ApplicationTest extends NsTest {
                 "[ERROR] 숫자만 입력해주세요"
         );
     }
-
+    @ParameterizedTest
+    @DisplayName("보너스 범위 조건 테스트")
+    @ValueSource(strings = {"0", "46"})
+    void 보너스_범위_조건_테스트(String bonus) {
+        run("8000", "1,2,3,4,5,6", bonus);
+        assertThat(output()).contains(
+                "[ERROR] 1~45의 숫자만 입력해주세요"
+        );
+    }
 
     @Override
     public void runMain() {
