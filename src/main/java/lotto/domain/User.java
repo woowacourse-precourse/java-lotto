@@ -28,9 +28,21 @@ public class User {
     }
 
     private void validate(String buyAmount) {
+        validateBuyAmountBlank(buyAmount);
         validateBuyAmountForms(buyAmount);
         validateBuyAmountFirstNumber(buyAmount);
         validateBuyAmount(buyAmount);
+    }
+
+    private void validateBuyAmountBlank(String buyAmount) {
+        if (buyAmount.isEmpty()) {
+            System.out.println(ERROR_MESSAGE + "금액이 비어있으면 안됩니다.");
+            throw new IllegalArgumentException();
+        }
+        if (buyAmount.contains(" ")) {
+            System.out.println(ERROR_MESSAGE + "금액에 공백이 있으면 안됩니다.");
+            throw new IllegalArgumentException();
+        }
     }
 
     private void validateBuyAmountForms(String buyAmount) {
