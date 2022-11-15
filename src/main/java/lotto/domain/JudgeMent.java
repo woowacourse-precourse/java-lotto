@@ -1,5 +1,7 @@
 package lotto.domain;
 
+import javax.swing.*;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -28,6 +30,14 @@ public class JudgeMent {
         return false;
     }
 
+
+    private Reward getReward(List<Integer> numbers, WinningNumber winningNumber) {
+        int correctCount = compareNumbers(winningNumber.getNumbers(), numbers);
+        if (correctCount >= minCorrectNumber) {
+            return checkReward(numbers, winningNumber, correctCount);
+        }
+        return Reward.NOTHING;
+    }
 
     private Reward checkReward(List<Integer> numbers, WinningNumber winningNumber, int correctCount) {
         if(minCorrectNumber == Reward.THREE.getNumber()){
