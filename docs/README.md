@@ -37,7 +37,7 @@
   - [ ] 로또 번호 당첨번호 비교
   - [ ] 보너스 번호 포함 확인
 
-## LottoGenerateMachine(like 복권 판매점)
+## LottoMachine(like 복권 판매점)
 - [ ] 로또 만들어서 반환
   - [ ] 로또 오름차순으로 정렬
 
