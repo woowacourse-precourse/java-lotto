@@ -10,16 +10,15 @@ class ValidatorTest {
     void isBlank_blankInput_exceptionThrown() {
         assertThatThrownBy(() -> Validator.isBlank(""))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("[ERROR] 구입금액을 입력해주세요.");
+                .hasMessageContaining("[ERROR] 입력값이 없습니다. 값을 입력해주세요.");
     }
 
     @Test
     void isNumber_notNumberInput_exceptionThrown() {
         assertThatThrownBy(() -> Validator.isNumber("100a"))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("[ERROR] 구입금액은 숫자여야 합니다.");
+                .hasMessageContaining("[ERROR] 입력값은 숫자여야 합니다.");
     }
-
 
     @Test
     void validate_notCommaInput_Fail() {
