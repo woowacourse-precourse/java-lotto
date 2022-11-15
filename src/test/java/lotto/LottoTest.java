@@ -1,5 +1,6 @@
 package lotto;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import java.util.List;
@@ -27,5 +28,13 @@ class LottoTest {
     void lessThan6() {
         assertThatThrownBy(() -> new Lotto(List.of(1, 2, 3, 4, 5)))
                 .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("로또 번호는 오름차순으로 정렬하여 보여줌")
+    @Test
+    void sortLottoNumber() {
+        Lotto lotto = new Lotto(List.of(6, 5, 4, 3, 2, 1));
+        String actual = lotto.toString();
+        assertThat(actual).isEqualTo("[1, 2, 3, 4, 5, 6]");
     }
 }
