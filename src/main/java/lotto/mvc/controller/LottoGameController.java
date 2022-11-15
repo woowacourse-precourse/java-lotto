@@ -22,7 +22,6 @@ public class LottoGameController {
     private static final String DEFAULT_EXCEPTION_MESSAGE = "예기치 못한 문제가 발생했습니다.";
 
     private LottoStore lottoStore;
-    private LottoResult lottoResult;
 
     public LottoGameStatus process(LottoGameStatus lottoGameStatus) {
         try {
@@ -68,7 +67,7 @@ public class LottoGameController {
     private LottoGameStatus processBonusNumber(LottoGameStatus lottoGameStatus) {
         InputBonusNumberDto inputBonusNumberDto = InputView.renderBonusNumber(lottoGameStatus);
 
-        lottoResult = lottoStore.calculateLottoResult(
+        LottoResult lottoResult = lottoStore.calculateLottoResult(
                 LottoNumberFactory.numberOf(inputBonusNumberDto.getInputBonusNumber()));
 
         OutputView.renderLottoStatistics(new OutputLottoStatisticsDto(lottoResult));
