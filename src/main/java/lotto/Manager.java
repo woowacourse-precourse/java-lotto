@@ -13,6 +13,8 @@ import lotto.ui.ManagerMessage;
 
 public class Manager {
     private static final String SPLIT = ",";
+    private static final int MIN_EXCLUSIVE = 1;
+    private static final int MAX_EXCLUSIVE = 45;
     private List<Lotto> lottos;
     private List<Integer> win;
 
@@ -61,11 +63,22 @@ public class Manager {
                 throw new IllegalArgumentException();
             }
             int parsed = Integer.parseInt(s);
-            if (!result.isEmpty() && result.get(result.size()-1) == parsed)
-                throw new IllegalArgumentException();
-            result.add(parsed);
+            if (isAddable(result, parsed)) {
+                result.add(parsed);
+            }
         }
         return result;
+    }
+
+    private boolean isAddable(List<Integer> list, int number) {
+        // 중복값 검사
+        if (!list.isEmpty() && list.get(list.size() - 1) == number) {
+            throw new IllegalArgumentException();
+        }
+        if (!(number >= MIN_EXCLUSIVE && number <= MAX_EXCLUSIVE)) {
+            throw new IllegalArgumentException();
+        }
+        return true;
     }
 
     public List<Integer> getWin() {
