@@ -17,7 +17,7 @@ class IsInputLengthExceeds18MethodTest {
     }
 
     @Test
-    @DisplayName("입력된 번호가 18자리를 넘으면 예외가 발생한다(1).")
+    @DisplayName("입력된 번호가 18자리를 넘으면 예외가 발생한다(2).")
     void isInputLengthExceeds18MethodExceptionTest2() {
         String numberInput = "1234567890123456789";
         assertThatThrownBy(() -> isInputLengthExceeds18(numberInput))

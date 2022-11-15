@@ -1,6 +1,7 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import lotto.Application.Places;
@@ -15,8 +16,9 @@ import static lotto.Application.noOfLottoWinAt;
 import static lotto.Application.noOfLottos;
 
 class PrintEarningsRateMethodTest extends NsTest {
+    @DisplayName("상금 선형 조합에 대한 수익률 검산(1)")
     @Test
-    void printEarningsRate_메소드_테스트1() {
+    void printEarningsRateMethodTest1() {
         noOfLottos = 2_000_000;
         initializeNoOfLottoWinAt();
         initializePrizesAtPlaces();
@@ -33,8 +35,9 @@ class PrintEarningsRateMethodTest extends NsTest {
         });
     }
 
+    @DisplayName("상금 선형 조합에 대한 수익률 검산(2)")
     @Test
-    void printEarningsRate_메소드_테스트2() {
+    void printEarningsRateMethodTest2() {
         noOfLottos = 2_000_000;
         initializeNoOfLottoWinAt();
         initializePrizesAtPlaces();
@@ -51,8 +54,9 @@ class PrintEarningsRateMethodTest extends NsTest {
         });
     }
 
+    @DisplayName("최대 상금에 대한 수익률 정상 출력 여부 확인")
     @Test
-    void printEarningsRate_메소드_테스트3() {
+    void printEarningsRateMethodTest3() {
         noOfLottos = 2_000_000;
         initializeNoOfLottoWinAt();
         initializePrizesAtPlaces();

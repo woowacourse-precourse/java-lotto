@@ -1,6 +1,7 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -15,8 +16,9 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 class PurchaseLottosMethodTest extends NsTest {
     ArrayList<Integer> winningNumbers = new ArrayList<>(List.of(1, 2, 3, 4, 5, 6));
 
+    @DisplayName("구매 금액 입력에 대한 출력 문구 테스트")
     @Test
-    void purchaseLottos_메소드_테스트1() {
+    void purchaseLottosMethodTest1() {
         initializeNumberType();
         new Lotto(winningNumbers);
 
@@ -46,8 +48,9 @@ class PurchaseLottosMethodTest extends NsTest {
         );
     }
 
+    @DisplayName("숫자 외 다른 문자 입력에 대해 예외가 발생한다.")
     @Test
-    void purchaseLottos_메소드_예외_테스트1() {
+    void purchaseLottosMethodExceptionTest1() {
             assertThatThrownBy(() -> {
                 assertSimpleTest(() -> run("*"));
             })
@@ -55,8 +58,9 @@ class PurchaseLottosMethodTest extends NsTest {
                     .hasMessageContaining("[ERROR] 숫자 외 다른 문자는 입력이 불가합니다.");
     }
 
+    @DisplayName("1000원 단위가 아닌 구매 금액에 대해 예외가 발생한다.")
     @Test
-    void purchaseLottos_메소드_예외_테스트2() {
+    void purchaseLottosMethodExceptionTest2() {
         assertThatThrownBy(() -> {
             assertSimpleTest(() -> run("1001"));
         })
@@ -64,8 +68,9 @@ class PurchaseLottosMethodTest extends NsTest {
                 .hasMessageContaining("[ERROR] 금액을 1000원 단위로 입력해 주세요.");
     }
 
+    @DisplayName("20억을 초과하는 1000의 배수에 대해 예외가 발생한다.")
     @Test
-    void purchaseLottos_메소드_예외_테스트3() {
+    void purchaseLottosMethodExceptionTest3() {
         assertThatThrownBy(() -> {
             assertSimpleTest(() -> run("2000001000"));
         })
@@ -73,8 +78,9 @@ class PurchaseLottosMethodTest extends NsTest {
                 .hasMessageContaining("[ERROR] 20억원보다 큰 금액으로 복권을 구매할 수 없습니다.");
     }
 
+    @DisplayName("20억을 초과하는 숫자에 대해 예외가 발생한다.")
     @Test
-    void purchaseLottos_메소드_예외_테스트4() {
+    void purchaseLottosMethodExceptionTest4() {
         assertThatThrownBy(() -> {
             assertSimpleTest(() -> run("123456789012345678"));
         })
@@ -82,8 +88,9 @@ class PurchaseLottosMethodTest extends NsTest {
                 .hasMessageContaining("[ERROR] 20억원보다 큰 금액으로 복권을 구매할 수 없습니다.");
     }
 
+    @DisplayName("문자열 길이가 18을 초과하는 입력에 대해 예외가 발생한다.")
     @Test
-    void purchaseLottos_메소드_예외_테스트5() {
+    void purchaseLottosMethodExceptionTest5() {
         assertThatThrownBy(() -> {
             assertSimpleTest(() -> run("1234567890123456789"));
         })
@@ -91,8 +98,9 @@ class PurchaseLottosMethodTest extends NsTest {
                 .hasMessageContaining("[ERROR] 20억원보다 큰 금액으로 복권을 구매할 수 없습니다.");
     }
 
+    @DisplayName("구매 금액이 0인 경우 예외가 발생한다.")
     @Test
-    void purchaseLottos_메소드_예외_테스트6() {
+    void purchaseLottosMethodExceptionTest6() {
         assertThatThrownBy(() -> {
             assertSimpleTest(() -> run("0"));
         })
