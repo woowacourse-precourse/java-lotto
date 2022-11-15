@@ -32,12 +32,7 @@ public class LottoService {
 
     public int getMoney() {
         String money = input.scanMoneyInput();
-        if (!validator.isNumeric(money)) {
-            throw new IllegalArgumentException(ErrorMessage.MONEY_TYPE_ERROR.getErrorMessage());
-        }
-        if (!validator.isCorrectUnit(money)) {
-            throw new IllegalArgumentException(ErrorMessage.MONEY_UNIT_ERROR.getErrorMessage());
-        }
+        checkMoneyInput(money);
         return Integer.parseInt(money);
     }
 
@@ -84,32 +79,6 @@ public class LottoService {
         return winningNumber;
     }
 
-    public void checkWinningNumberInput(String winningNumbersInput) {
-        if (!validator.isCorrectDigitAtComma(winningNumbersInput)) {
-            throw new IllegalArgumentException(ErrorMessage.WINNING_NUMBER_DIGIT_ERROR.getErrorMessage());
-        }
-        if (!validator.isNumericAtComma(winningNumbersInput)) {
-            throw new IllegalArgumentException(ErrorMessage.WINNING_NUMBER_TYPE_ERROR.getErrorMessage());
-        }
-        if (!validator.isExistInBoundaryAtComma(winningNumbersInput)) {
-            throw new IllegalArgumentException(ErrorMessage.WINNING_NUMBER_BOUNDARY_ERROR.getErrorMessage());
-        }
-        if (!validator.isUniqueNumberAtComma(winningNumbersInput)) {
-            throw new IllegalArgumentException(ErrorMessage.WINNING_NUMBER_DUPLICATED_ERROR.getErrorMessage());
-        }
-    }
-
-    public void checkBonusNumberInput(String bonusNumberInput, HashSet<Integer> winningNumbers) {
-        if (!validator.isNumeric(bonusNumberInput)) {
-            throw new IllegalArgumentException(ErrorMessage.BONUS_NUMBER_TYPE_ERROR.getErrorMessage());
-        }
-        if (!validator.isExistInBoundary(bonusNumberInput)) {
-            throw new IllegalArgumentException(ErrorMessage.BONUS_NUMBER_BOUNDARY_ERROR.getErrorMessage());
-        }
-        if (!validator.isUniqueNumber(bonusNumberInput, winningNumbers)) {
-            throw new IllegalArgumentException(ErrorMessage.BONUS_NUMBER_DUPLICATED_ERROR.getErrorMessage());
-        }
-    }
     public void printResult(LuckyNumber luckyNumber, int money) {
         output.printResultGuideMessage();
         int[] prizeResult = getPrizeResult(luckyNumber);
@@ -127,7 +96,6 @@ public class LottoService {
                 .setScale(NumberType.ONE.getNumberType(), RoundingMode.DOWN);
         return profitRate;
     }
-
     public BigDecimal calculateTotalPrize(int[] prizeResult) {
         int totalPrize = 0;
         totalPrize += prizeResult[NumberType.FIRST_PRIZE.getNumberType()] * NumberType.FIRST_PRIZE_REWARD.getNumberType();
@@ -188,5 +156,41 @@ public class LottoService {
             return NumberType.ONE.getNumberType();
         }
         return NumberType.ZERO.getNumberType();
+    }
+
+    public void checkMoneyInput(String moneyInput) {
+        if (!validator.isNumeric(moneyInput)) {
+            throw new IllegalArgumentException(ErrorMessage.MONEY_TYPE_ERROR.getErrorMessage());
+        }
+        if (!validator.isCorrectUnit(moneyInput)) {
+            throw new IllegalArgumentException(ErrorMessage.MONEY_UNIT_ERROR.getErrorMessage());
+        }
+    }
+
+    public void checkWinningNumberInput(String winningNumbersInput) {
+        if (!validator.isCorrectDigitAtComma(winningNumbersInput)) {
+            throw new IllegalArgumentException(ErrorMessage.WINNING_NUMBER_DIGIT_ERROR.getErrorMessage());
+        }
+        if (!validator.isNumericAtComma(winningNumbersInput)) {
+            throw new IllegalArgumentException(ErrorMessage.WINNING_NUMBER_TYPE_ERROR.getErrorMessage());
+        }
+        if (!validator.isExistInBoundaryAtComma(winningNumbersInput)) {
+            throw new IllegalArgumentException(ErrorMessage.WINNING_NUMBER_BOUNDARY_ERROR.getErrorMessage());
+        }
+        if (!validator.isUniqueNumberAtComma(winningNumbersInput)) {
+            throw new IllegalArgumentException(ErrorMessage.WINNING_NUMBER_DUPLICATED_ERROR.getErrorMessage());
+        }
+    }
+
+    public void checkBonusNumberInput(String bonusNumberInput, HashSet<Integer> winningNumbers) {
+        if (!validator.isNumeric(bonusNumberInput)) {
+            throw new IllegalArgumentException(ErrorMessage.BONUS_NUMBER_TYPE_ERROR.getErrorMessage());
+        }
+        if (!validator.isExistInBoundary(bonusNumberInput)) {
+            throw new IllegalArgumentException(ErrorMessage.BONUS_NUMBER_BOUNDARY_ERROR.getErrorMessage());
+        }
+        if (!validator.isUniqueNumber(bonusNumberInput, winningNumbers)) {
+            throw new IllegalArgumentException(ErrorMessage.BONUS_NUMBER_DUPLICATED_ERROR.getErrorMessage());
+        }
     }
 }
