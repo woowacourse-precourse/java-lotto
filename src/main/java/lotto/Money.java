@@ -22,4 +22,8 @@ public class Money {
     public int getLottoPurchaseAmount() {
         return money / MONEY_PER_LOTTO;
     }
+
+    public double getEarningRate(long reward) {
+        return (double) reward / money;
+    }
 }

@@ -46,4 +46,8 @@ public enum Rank {
     private boolean equalsMatchBonus(Boolean matchBonus) {
         return matchBonus != null && matchBonus.equals(true);
     }
+
+    public Long prize(int countOfMatchLotto) {
+        return (long) countOfMatchLotto * winningMoney;
+    }
 }
