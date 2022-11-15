@@ -10,6 +10,15 @@ import java.util.Set;
 
 public class Application {
     public static void main(String[] args) {
+        try{
+            playGame();
+        }
+        catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public static void playGame(){
         System.out.println("구입금액을 입력해 주세요.");
         String money = Console.readLine();
         int nLotto = buyTicket(money);
