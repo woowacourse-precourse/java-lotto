@@ -14,6 +14,7 @@ public class Game {
         Print.winningNumber();
         Lotto winning = Input.inputWinningNumber();
         Print.bonusNumber();
-        int bonus = Input.inputBonusNumber();
+        int bonusNumber = Input.inputBonusNumber();
+        Bonus bonus = new Bonus(winning, bonusNumber);
     }
 }

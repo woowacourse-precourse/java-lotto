@@ -73,15 +73,6 @@ public class Input {
     }
 
     public static int inputBonusNumber() {
-        String bonus = Console.readLine();
-        return checkBonusValidation(bonus);
-    }
-
-    public static int checkBonusValidation(String bonus) {
-        int bonusNumber = Integer.parseInt(bonus);
-        if (!inRange(bonusNumber)) {
-            throw new IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
-        }
-        return bonusNumber;
+        return Integer.parseInt(Console.readLine());
     }
 }

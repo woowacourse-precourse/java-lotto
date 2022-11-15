@@ -48,6 +48,10 @@ public class Lotto {
         return new Lotto(numbers);
     }
 
+    public boolean checkBonusInWinning(int bonus) {
+        return numbers.contains(bonus);
+    }
+
     @Override
     public String toString() {
         return numbers.toString();
