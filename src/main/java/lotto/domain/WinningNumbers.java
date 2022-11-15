@@ -24,4 +24,12 @@ public class WinningNumbers extends Lotto {
             throw new IllegalArgumentException();
         }
     }
+
+    public List<Integer> getNumbers() {
+        return numbers;
+    }
+
+    public int getBonus() {
+        return bonus;
+    }
 }

@@ -12,9 +12,9 @@
     - [x] 쉼표를 기준으로 입력 - `convertToList`
   - [x] 보너스 번호 숫자 1개 뽑기 - `convertToBonus`
 - [ ] 당첨 통계
-  - [ ] 로또 번호와 당첨 번호를 비교
+  - [x] 로또 번호와 당첨 번호를 비교 - `compareWithWinningNumbers`
     - [x] Enum Score로 일치하는 개수 관리
-  - [ ] 일치하는 개수 구하기
+  - [x] 일치하는 개수 구하기 - `countMatchingNumber`
   - [ ] 각 Score에 대해 통계 출력
 - [ ] 수익률 계산
   - [ ] 구입 금액과 수익 금액 비교

@@ -26,4 +26,33 @@ public class Lotto {
     }
 
     // TODO: 추가 기능 구현
+    public Score compareWithWinningNumbers(WinningNumbers winningNumbers) {
+        List<Integer> winning = winningNumbers.getNumbers();
+        int bonus = winningNumbers.getBonus();
+
+        int count = countMatchingNumber(winning);
+        return convertToScore(count, bonus);
+    }
+
+    public int countMatchingNumber(List<Integer> winning) {
+        return (int) winning.stream()
+                .filter(numbers::contains)
+                .count();
+    }
+
+    private Score convertToScore(int count, int bonus) {
+        if (count < 3) return Score.NOTHING;
+        if (count == 3) return Score.THREE;
+        if (count == 4) return Score.FOUR;
+        if (count == 5) return compareWithBonus(bonus);
+
+        return Score.SIX;
+    }
+
+    private Score compareWithBonus(int bonus) {
+        if (this.numbers.contains(bonus)) {
+            return Score.FIVE_BONUS;
+        }
+        return Score.FIVE;
+    }
 }
