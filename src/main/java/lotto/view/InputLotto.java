@@ -10,9 +10,9 @@ import java.util.List;
 public class InputLotto {
     public static List<Integer> getInput(){
         List<Integer> inputNumber = new ArrayList<>();
-        char[] input = Console.readLine().replaceAll("[^0-9]","").toCharArray();
-        for(char inputNum :input){
-            inputNumber.add(inputNum-'0');
+        String[] input = Console.readLine().split(",");
+        for(String inputNum :input){
+            inputNumber.add(Integer.parseInt(inputNum));
         }
         Collections.sort(inputNumber);
         return inputNumber;

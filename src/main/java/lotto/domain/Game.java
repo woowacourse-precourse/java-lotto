@@ -1,5 +1,6 @@
 package lotto.domain;
 
+import lotto.exception.ErrorHandler;
 import lotto.utils.GenerateLottoNumbers;
 import lotto.view.InputLotto;
 import lotto.view.InputPrintView;
@@ -31,10 +32,16 @@ public class Game {
         awardLotto= new Lotto(InputLotto.getInput());
         InputPrintView.inputView_Second();
         bonusNumber = InputLotto.getInput().get(0);
+        isBonusUnique(bonusNumber);
     }
     public void updateGame(LottoProperties lottoProperties){
         gameCount[lottoProperties.getIndex()]++;
         totalPrize+=lottoProperties.getPrice();
+    }
+    private void isBonusUnique(int bonusNumber){
+        if(awardLotto.getNumbers().contains(bonusNumber)){
+            ErrorHandler.mutualInputException();
+        }
     }
     public Lotto getAwardLotto(){
         return awardLotto;
