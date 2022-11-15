@@ -46,6 +46,11 @@ public class LottoUser {
         }
     }
 
+    public List<Lotto> getLottos(){
+        return this.lottos;
+    }
+
+
     //소유한 모든 로또의 결과 반환
     public List<WinInfo> getWinInfomations(){
         return this.winInfomations;
