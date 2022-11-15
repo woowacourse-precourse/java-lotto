@@ -34,4 +34,8 @@ public class Lotto {
     public void printNumbers(){
         System.out.println(this.numbers);
     }
+
+    public List<Integer> getNumbers(){
+        return this.numbers;
+    }
 }

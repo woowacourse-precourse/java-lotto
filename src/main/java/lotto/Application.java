@@ -4,8 +4,10 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 //예외처리
 //1.로또 숫자 갯수
@@ -50,6 +52,25 @@ public class Application {
         return lottos;
     }
 
+    public static List<Integer> inputWinLotto(List<Integer> lottoNum){
+        System.out.println();
+        System.out.println("당첨 번호를 입력해 주세요.");
+        Lotto winLotto;
+        try{
+            lottoNum = new ArrayList<>(Arrays.stream(Console.readLine().split(",")).map(num -> Integer.parseInt(num)).collect(Collectors.toList()));
+            Collections.sort(lottoNum);
+            winLotto = new Lotto(lottoNum);
+        }catch (IllegalArgumentException e){
+            throw new IllegalArgumentException();
+        }
+
+        for(int i=0;i<lottoNum.size();i++){
+            if(i==0) System.out.print(lottoNum.get(i));
+            if(i!=0) System.out.print(","+lottoNum.get(i));
+        }
+        return winLotto.getNumbers();
+    }
+
     public static void main(String[] args) {
         //TODO: 프로그램 구현
         //1.입력: 로또 구입금액
@@ -84,5 +105,13 @@ public class Application {
         List<Lotto> lottos = new ArrayList<>();
         List<Integer> numbers = new ArrayList<>();
         lottos = buyLotto(lottos, numbers, buyCashN);
+
+        //3.입력: 당첨 번호 6자리, "," 로 구분 입력
+        List<Integer> lottoNum = new ArrayList<>();
+        try{
+            lottoNum = inputWinLotto(lottoNum);
+        }catch(IllegalArgumentException e){
+            return;
+        }
     }
 }
