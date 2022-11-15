@@ -12,6 +12,10 @@ import java.util.stream.Collectors;
 
 public class Validation {
 
+  /**
+   * Verify that the lotto number is formatted correctly.
+   * @param numbers The number of lotto.
+   */
   public static void validateLotto(List<Integer> numbers) {
     if (numbers.size() != 6) {
       throw new IllegalArgumentException(LOTTO_NUMBER_COUNT_ERROR.toString());
@@ -24,6 +28,10 @@ public class Validation {
     }
   }
 
+  /**
+   * Verify that the purchase amount is formatted correctly.
+   * @param amount The number of purchase amount.
+   */
   public static void validatePurchase(String amount) {
     if (!isNumeric(amount)) {
       throw new IllegalArgumentException(LOTTO_PURCHASE_TYPE_ERROR.toString());
@@ -33,6 +41,10 @@ public class Validation {
     }
   }
 
+  /**
+   * Verify that the answer number is formatted correctly.
+   * @param numbers The number of answer.
+   */
   public static void validateAnswer(String[] numbers) {
     for(String number: numbers) {
       if (!isNumeric(number)) {
