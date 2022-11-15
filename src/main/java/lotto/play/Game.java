@@ -27,7 +27,12 @@ public class Game {
     }
 
     public void playGame() {
-        player.inputMoney();
+        try {
+            player.inputMoney();
+        } catch (IllegalArgumentException e) {
+            return;
+        }
+
         OutputPrint.moneyToNumberPrint(player.getPurchaseNumber() / 1000);
         generateNumbers(player.getPurchaseNumber() / 1000);
         OutputPrint.generatedLottoNumbersPrint(lottos);

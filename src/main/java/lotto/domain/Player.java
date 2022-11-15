@@ -11,11 +11,7 @@ public class Player {
 
     public void inputMoney() {
         String startInput = InputPrint.startInput();
-        try {
-            Validation.purchaseNumberValid(startInput);
-        } catch (Exception e) {
-            return;
-        }
+        Validation.purchaseNumberValid(startInput);
         purchaseNumber = Integer.parseInt(startInput);
     }
 
