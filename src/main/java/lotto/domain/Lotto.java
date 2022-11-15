@@ -12,7 +12,9 @@ public class Lotto {
     public Lotto(List<Integer> numbers) {
         validate(numbers);
         checkUniqueNumbers(numbers);
-        checkNumberInRange(numbers);
+        for(Integer number : numbers){
+            checkNumberInRange(number);
+        }
         this.numbers = numbers;
     }
 
@@ -38,10 +40,8 @@ public class Lotto {
         }
     }
 
-    public void checkNumberInRange(List<Integer> numbers) {
-        for(Integer number : numbers){
-            LottoUtils.checkNumberInRange(number);
-        }
+    public void checkNumberInRange(Integer number) {
+        LottoUtils.checkNumberInRange(number);
     }
 
     public LottoGrade getLottoGrade(WinningLotto winningLotto) {
