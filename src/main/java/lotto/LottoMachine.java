@@ -3,6 +3,7 @@ package lotto;
 import lotto.boundary.Console;
 import lotto.boundary.Randoms;
 
+import java.text.DecimalFormat;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -81,6 +82,26 @@ public class LottoMachine extends AbstractLottoMachine {
 
     @Override
     protected void displayStatistic(Statistic statistic) {
+        System.out.println("\n당첨 통계");
+        System.out.println("---");
+        statistic.getPrizeTable()
+                .forEach((prize, count) -> System.out.println(formattedResult(prize, count)));
+        System.out.printf("총 수익률은 %.1f%%입니다.\n", statistic.getTotalAmountPerOriginalAmount());
+    }
 
+    private String formattedResult(Prize prize, Long count) {
+        DecimalFormat formatter = new DecimalFormat("#,###");
+        return String.format("%d개 일치%s (%s원) - %d개",
+                prize.getNumMatch(),
+                formattedResultHelp(prize),
+                formatter.format(prize.getAmount()),
+                count);
+    }
+
+    private String formattedResultHelp(Prize prize) {
+        if (prize.needsBonusNumber()) {
+            return ", 보너스 볼 일치";
+        }
+        return "";
     }
 }
