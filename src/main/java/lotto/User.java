@@ -5,12 +5,22 @@ import java.util.regex.Pattern;
 
 public class User {
     private final Integer money;
-    private final List<Lotto> lottos;
+    private List<Lotto> lottos;
 
     public User(String userInput, List<Lotto> lottos) {
         validate(userInput);
         Integer money = userInputToMoney(userInput);
         this.money = money;
+        this.lottos = lottos;
+    }
+
+    public User(String userInput) {
+        validate(userInput);
+        Integer money = userInputToMoney(userInput);
+        this.money = money;
+    }
+
+    public void setLottos(List<Lotto> lottos) {
         this.lottos = lottos;
     }
 
