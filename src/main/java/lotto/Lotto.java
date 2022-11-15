@@ -6,7 +6,7 @@ public class Lotto {
     private final List<Integer> numbers;
     private static WinningNumber winningNumber;
 
-    public Lotto(List<Integer> numbers) throws IllegalArgumentException {
+    public Lotto(List<Integer> numbers) {
         validate(numbers);
         this.numbers = numbers;
     }
