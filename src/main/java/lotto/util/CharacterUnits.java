@@ -6,7 +6,8 @@ public enum CharacterUnits {
     SPACE(" "),
     LEFT_CASE("["),
     RIGHT_CASE("]"),
-    PERCENT("%");
+    PERCENT("%"),
+    NO_SPACE("");
 
     private final String unit;
 
