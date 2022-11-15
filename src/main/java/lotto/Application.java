@@ -30,7 +30,7 @@ public class Application {
         UserIO.printWinStat(resultMap, calculateYield(resultMap, purchaseAmount));
     }
 
-    private static List<Integer> getRandomNumbers() {
+     public static List<Integer> getRandomNumbers() {
         return Randoms.pickUniqueNumbersInRange(1, 45, 6);
     }
 
@@ -43,7 +43,7 @@ public class Application {
         return allLotto;
     }
 
-    private static Rank getResult(List<Integer> winningNumbers, Integer bonusNumber,
+    public static Rank getResult(List<Integer> winningNumbers, Integer bonusNumber,
         List<Integer> lottoNumbers) {
         int result = 0;
         for (Integer number : lottoNumbers) {

@@ -7,7 +7,10 @@ import java.util.List;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomUniqueNumbersInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
+import static lotto.Application.getRandomNumbers;
+import static lotto.Application.getResult;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class ApplicationTest extends NsTest {
     private static final String ERROR_MESSAGE = "[ERROR]";
@@ -52,6 +55,25 @@ class ApplicationTest extends NsTest {
             runException("1000j");
             assertThat(output()).contains(ERROR_MESSAGE);
         });
+    }
+
+    @Test
+    void 로또_구입금액이_1000의_배수가_아닐때_예외_발생() {
+        assertSimpleTest(() -> {
+            runException("1300");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
+    @Test
+    void 랜덤으로_6개의_숫자_생성() {
+        assertThat(getRandomNumbers().size()).isEqualTo(6);
+    }
+
+    @Test
+    void 당첨_등수_테스트() {
+        assertThat(getResult(List.of(11,22,33,44,15,35), 25, List.of(11,22,33,44,15,25)))
+            .isEqualTo(Rank.SECOND);
     }
 
     @Override
