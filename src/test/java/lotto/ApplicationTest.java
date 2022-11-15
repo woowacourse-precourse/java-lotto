@@ -100,10 +100,10 @@ class ApplicationTest extends NsTest {
     }
 
     @ParameterizedTest
-    @ValueSource(strings = {"1000", "10000", "0", "50", "08000"})
-    void 최소단위로나눠떨어지지않는경우_테스트(String userInput) {
+    @ValueSource(longs = {1000, 10000, 0L, 50L, 8000L})
+    void 최소단위로나눠떨어지지않는경우_테스트(long userInput) {
         assertThatThrownBy(() -> {
-            LottoList.notDivThousand(new BigInteger(userInput));
+            LottoList.notDivThousand(userInput);
         }).isInstanceOf(IllegalArgumentException.class);
     }
 

@@ -18,7 +18,7 @@ class LottoListTest extends NsTest{
     static LottoList lottos;
     @BeforeAll
     static void createLottoList() {
-        lottos = new LottoList(new BigInteger("8000"));
+        lottos = new LottoList(8000L);
     }
 
     @Test

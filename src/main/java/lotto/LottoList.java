@@ -12,44 +12,32 @@ import java.util.*;
 public class LottoList {
     public static final int AMOUNT_UNIT = 1000;
     public static final int WIN_COUNT = 5;
-    private BigInteger lottoAmount;
-    private BigInteger lottoCount;
+    private long lottoAmount;
+    private long lottoCount;
     private List<Lotto> lottos = new ArrayList<>();
     private Lotto winningLotto;
     private int bonnusNumber;
     private long totalMoney;
     private long[] winningCount = new long[WIN_COUNT];
 
-    public LottoList(BigInteger amount) {
+    public LottoList(long amount) {
         LottoList.notDivThousand(amount);
 
         this.lottoAmount = amount;
-        this.lottoCount = lottoAmount.divide(BigInteger.valueOf(AMOUNT_UNIT));
+        this.lottoCount = lottoAmount / AMOUNT_UNIT;
         setAllLottoList();
     }
 
-    public static void notDivThousand(BigInteger amount) {
-        String remain = getRemainder(amount);
-
-        if (!"0".equals(remain)) {
+    public static void notDivThousand(long amount) {
+        if (amount % 1000 != 0) {
             throw new IllegalArgumentException(PrintGameInfo.getNotDivThousand());
         }
     }
 
-    /**
-     * 로또 결제 금액의 나머지 구하는 함수
-     * @param amount
-     * @return
-     */
-    public static String getRemainder(BigInteger amount) {
-        return amount.remainder(BigInteger.valueOf(AMOUNT_UNIT)).toString();
-    }
-
-
-    public BigInteger getLottoAmount() {
+    public long getLottoAmount() {
         return lottoAmount;
     }
-    public BigInteger getLottoCount() {
+    public long getLottoCount() {
         return lottoCount;
     }
 
@@ -90,7 +78,7 @@ public class LottoList {
      * 전체 로또 발행 함수
      */
     public void setAllLottoList() {
-        for(BigInteger lottoIndex = lottoCount; lottoIndex.compareTo(BigInteger.ZERO) > 0 ; lottoIndex = lottoIndex.subtract(BigInteger.ONE)) {
+        for (int lottoIndex =0; lottoIndex < lottoCount; lottoIndex++ ) {
             List<Integer> numbers = getLottoNumbers();
 
             List<Integer> numbersCopy = deepCopy(numbers);
@@ -192,7 +180,7 @@ public class LottoList {
     }
 
     public double getProfit() {
-        long amount = lottoAmount.longValue();
+        long amount = lottoAmount;
         return (Double.valueOf(totalMoney) / amount) * 100.0;
     }
 

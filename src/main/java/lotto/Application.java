@@ -17,7 +17,7 @@ public class Application {
 
         try {
             String amount = inputAmount();
-            LottoList userLotto = new LottoList(new BigInteger(amount));
+            LottoList userLotto = new LottoList(Long.valueOf(amount));
             PrintGameInfo.printNextLine();
 
             PrintGameInfo.purchaseCount(userLotto.getLottoCount());

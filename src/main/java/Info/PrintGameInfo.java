@@ -49,8 +49,8 @@ public class PrintGameInfo {
         System.out.println(PrintGameInfo.NEXT_LINE);
     }
 
-    public static void purchaseCount(BigInteger count) {
-        System.out.println(count+PURCHASE_COUNT);
+    public static void purchaseCount(long count) {
+        System.out.println(Long.toString(count) +PURCHASE_COUNT);
     }
 
     public static void lottoInfoList(LottoList lottos) {
