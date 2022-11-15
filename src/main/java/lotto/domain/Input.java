@@ -1,7 +1,7 @@
 package lotto.domain;
 
 import camp.nextstep.edu.missionutils.Console;
-import lotto.view.InputMessage;
+import lotto.console.InputMessage;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,7 +9,7 @@ import java.util.List;
 public class Input {
     public String pay = "";
     public List<Integer> numbers = new ArrayList<>();
-    public int bonus = 0;
+    public String bonus = "";
     public String payForLotto() {
         System.out.println(InputMessage.inputPay.getValue());
         pay = Console.readLine();
@@ -23,9 +23,9 @@ public class Input {
         }
         return numbers;
     }
-    public int bonusNumber() {
+    public String bonusNumber() {
         System.out.println(InputMessage.inputBonus.getValue());
-        bonus = Integer.valueOf(Console.readLine());
+        bonus = Console.readLine();
         return bonus;
     }
 }
