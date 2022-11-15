@@ -7,12 +7,12 @@ import static lotto.utils.message.NumberMessageUtil.LOTTO_MAX;
 import static lotto.utils.message.NumberMessageUtil.LOTTO_MIN;
 import static lotto.utils.message.NumberMessageUtil.LOTTO_PRICE;
 import static lotto.utils.message.StaticMessagesUtil.*;
+import static lotto.utils.validate.NumberValidator.validateBuyMoney;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
-import lotto.utils.validate.NumberValidator;
 import lotto.utils.winning.RankUtil;
 
 public class User {
@@ -41,10 +41,6 @@ public class User {
                     LOTTO_MIN.getNumber(), LOTTO_MAX.getNumber(), LOTTO_COUNT.getNumber());
             lottos.add(new Lotto(numbers));
         }
-    }
-
-    private void validateBuyMoney(String money) {
-        NumberValidator.validateBuyMoney(money);
     }
 
     public void showBuyResult() {

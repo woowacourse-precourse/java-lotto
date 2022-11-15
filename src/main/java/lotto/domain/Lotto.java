@@ -56,11 +56,11 @@ public class Lotto {
         return RankUtil.MISS;
     }
 
-    private int correctCount(List<Integer> winningLottoNumbers) {
+    private int correctCount(List<Integer> winningNumbers) {
         int count = 0;
 
-        for (Integer winningLottoNumber : winningLottoNumbers) {
-            if (numbers.contains(winningLottoNumber)) {
+        for (Integer winningNumber : winningNumbers) {
+            if (numbers.contains(winningNumber)) {
                 count++;
             }
         }

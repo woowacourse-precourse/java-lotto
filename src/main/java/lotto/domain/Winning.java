@@ -25,10 +25,14 @@ public class Winning {
         ConsoleUtil.showMessage(INPUT_WINNING_NUMBERS.getMessage());
         String input = ConsoleUtil.input();
 
-        String[] splitNumbers = input.split(SPLIT_NUMBERS_DELIMITER.getMessage());
+        String[] splitNumbers = getSplitNumbers(input);
         validateInputNumber(splitNumbers);
 
         numbers = convertStringToInteger(splitNumbers);
+    }
+
+    private String[] getSplitNumbers(String input) {
+        return input.split(SPLIT_NUMBERS_DELIMITER.getMessage());
     }
 
     public void inputBonusNumber() {
