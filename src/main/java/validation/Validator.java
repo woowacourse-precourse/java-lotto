@@ -9,6 +9,7 @@ import static util.validation.ValidationUtil.isInteger;
 import static util.validation.ValidationUtil.isUnitsOf1000Won;
 import static util.validation.ValidationUtil.isWithinValidRange;
 
+import exception.InvalidBonusNumberSizeException;
 import exception.InvalidLottoException;
 import exception.InvalidLottoSizeException;
 import exception.LottoNumberDuplicatedException;
@@ -57,11 +58,11 @@ public class Validator {
 
     public void validateBonusNumber(String bonusNumber, Lotto winningNumbers) {
         if (!isInteger(bonusNumber)) {
-            throw new IllegalArgumentException();
+            throw new NotIntegerException();
         }
 
         if (checkSize(bonusNumber)) {
-            throw new IllegalArgumentException();
+            throw new InvalidBonusNumberSizeException();
         }
 
         if (!isWithinValidRange(bonusNumber)) {
