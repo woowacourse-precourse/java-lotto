@@ -32,6 +32,13 @@ public class InputView {
         isNumber(input);
         return Integer.parseInt(input);
     }
-
+    public boolean isNumber(String input) {
+        try {
+            Integer.parseInt(input);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("[ERROR] 1000원 단위로 돈을 넣어주세요.");
+        }
+        return true;
+    }
 
 }
