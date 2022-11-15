@@ -1,3 +1,5 @@
+<img src="./lotto.png" alt="java-lotto" width="400px"  >
+
 ## ✨ 기능 구현 목록
 
 ## View
