@@ -49,6 +49,9 @@ public enum Prize {
         this.prizeCount +=1;
     }
 
+    public void initCount(){
+        this.prizeCount = 0;
+    }
 
     public String getMessage() {
         return this.message;
