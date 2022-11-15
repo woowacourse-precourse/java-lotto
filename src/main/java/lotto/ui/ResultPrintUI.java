@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Map;
 
 public class ResultPrintUI {
-    private static final String title = "당첨통계";
+    private static final String title = "당첨 통계";
     private static final String line = "---";
     private static final String body = "%d개 일치%s (%s원) - %d개";
     private static final String bonus = ", 보너스 볼 일치";
