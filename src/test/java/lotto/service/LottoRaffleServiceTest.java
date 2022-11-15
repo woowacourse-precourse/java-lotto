@@ -1,4 +1,4 @@
-package lotto;
+package lotto.service;
 
 import lotto.model.Lotto;
 import lotto.model.LottoRaffleRecord;
@@ -35,7 +35,6 @@ class LottoRaffleServiceTest {
         LottoRaffleRecord lottoRaffleRecord = lottoRaffleService.raffle(lottos);
         Assertions.assertThat(lottoRaffleRecord.getPrizeRecord().size()).isEqualTo(5);
     }
-
 
     @DisplayName("번호 일치, 보너스 일치는 당첨이다")
     @Test

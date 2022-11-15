@@ -1,4 +1,4 @@
-package lotto;
+package lotto.service;
 
 import lotto.service.LottoPublishService;
 import org.assertj.core.api.Assertions;
