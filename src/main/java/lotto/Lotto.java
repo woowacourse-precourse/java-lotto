@@ -33,14 +33,21 @@ public class Lotto {
     }
 
     public LottoRanking compare(List<Integer> winnigLotto, int bonusNum) {
+        int matches = getMatchingSize(winnigLotto);
+        LottoRanking ranking = LottoRanking.NONE;
+        ranking = ranking.getPrize(matches);
+        if (matches == 5 && !numbers.contains(bonusNum))
+            return LottoRanking.THIRD;
+        return ranking;
+    }
+
+    private int getMatchingSize(List<Integer> winnigLotto) {
         int matches = 0;
         for (int index = 0; index < 6; index++) {
             if (winnigLotto.contains(numbers.get(index)))
                 matches++;
         }
-        LottoRanking ranking = LottoRanking.NONE;
-        ranking = ranking.getPrize(matches);
-        return ranking;
+        return matches;
     }
 
     // TODO: 추가 기능 구현
