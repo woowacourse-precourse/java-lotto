@@ -10,7 +10,7 @@
 - [x] Controller 내부에는 Model과 View의 코드가 있어도 된다.
 - [x] View가 Model로부터 데이터를 받을 때, 반드시 Controller에서 받아야 한다.
 
-### Model (domain)
+### Model
 
 - Purchase 모델
 

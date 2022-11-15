@@ -1,6 +1,6 @@
-package lotto.domain;
+package lotto.model;
 
-import static lotto.domain.Bonus.validateDuplicates;
+import static lotto.model.Bonus.validateDuplicates;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import java.util.List;

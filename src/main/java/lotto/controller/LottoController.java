@@ -1,20 +1,20 @@
 package lotto.controller;
 
-import static lotto.domain.Bonus.validateDuplicates;
+import static lotto.model.Bonus.validateDuplicates;
 import static lotto.util.Constants.LOTTO_PRICE;
 import static lotto.util.Formatter.formatWinningNumbersInput;
 
 import java.util.ArrayList;
 import java.util.List;
-import lotto.domain.Bonus;
-import lotto.domain.Lotto;
-import lotto.domain.LottoResult;
-import lotto.domain.Player;
-import lotto.domain.Purchase;
-import lotto.domain.PlayerRanking;
-import lotto.domain.Rank;
-import lotto.domain.Statistics;
-import lotto.domain.Yield;
+import lotto.model.Bonus;
+import lotto.model.Lotto;
+import lotto.model.LottoResult;
+import lotto.model.Player;
+import lotto.model.Purchase;
+import lotto.model.PlayerRanking;
+import lotto.model.Rank;
+import lotto.model.Statistics;
+import lotto.model.Yield;
 import lotto.view.InputView;
 import lotto.view.OutputView;
 

@@ -1,6 +1,6 @@
 package lotto.util;
 
-import static lotto.domain.Yield.calculateYield;
+import static lotto.model.Yield.calculateYield;
 import static lotto.util.Constants.LOTTO_RANGE_MAX;
 import static lotto.util.Constants.LOTTO_RANGE_MIN;
 
