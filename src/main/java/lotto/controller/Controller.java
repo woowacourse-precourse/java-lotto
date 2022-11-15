@@ -37,7 +37,7 @@ public class Controller {
         cashier.inputPlayerMoney(Input.getYourMoney());
         generateLottoTickets(cashier.getReceivedMoney());
         cashier.inputPlayerAnswerNumber(Input.getAnswerNumbers());
-        cashier.inputPlayerBonusNumber(Input.getBonusNumber());
+        cashier.inputPlayerBonusNumber(Input.getBonusNumber(cashier.getAnswerNumber()));
     }
 
     public List<Lotto> generateLottoTickets(int receivedMoney) {

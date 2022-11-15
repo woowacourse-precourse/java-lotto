@@ -38,10 +38,12 @@ public class Input {
         return numbers;
     }
 
-    public static int getBonusNumber() {
+    public static int getBonusNumber(List<Integer> LottoNumber) {
         System.out.println("보너스 번호를 입력해 주세요.");
-        // 예외처리 필요 1~45가 맞는지
-        return Integer.parseInt(Console.readLine());
+        String value = Console.readLine();
+        CheckInput.checkInputLotto(value);
+        CheckInput.checkInputBonusDuplicate(LottoNumber, Integer.parseInt(value));
+        return Integer.parseInt(value);
     }
 
 }

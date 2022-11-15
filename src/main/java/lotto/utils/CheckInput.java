@@ -43,6 +43,12 @@ public class CheckInput {
             throw new IllegalArgumentException(ERROR_INVALID_LOTTO_DUPLICATION);
     }
 
+    public static void checkInputBonusDuplicate(List<Integer> value, int bonusNumber) {
+        Set<Integer> numSet = new HashSet<>(value);
+        if (!numSet.add(bonusNumber))
+            throw new IllegalArgumentException(ERROR_INVALID_SAME_LOTTO_BONUS);
+    }
+
     public static boolean isNumeric(String s) {
         return s == null || !s.matches("[-+]?\\d*\\.?\\d+");
     }
