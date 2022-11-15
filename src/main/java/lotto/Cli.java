@@ -5,6 +5,8 @@ import static lotto.Validation.isNumeric;
 import static lotto.response.Error.LOTTO_PURCHASE_MONETARY_UNIT_ERROR;
 import static lotto.response.Error.LOTTO_PURCHASE_TYPE_ERROR;
 
+import java.util.List;
+
 /** Cli class to interact with user. */
 public class Cli {
 
@@ -18,6 +20,14 @@ public class Cli {
 
     validate(amount);
     return Integer.parseInt(amount);
+  }
+
+  public static void print(List<Lotto> lottoList) {
+    System.out.printf("%d개를 구입했습니다.\n", lottoList.size());
+
+    for(Lotto lotto: lottoList) {
+      System.out.println(lotto);
+    }
   }
 
   private static void validate(String amount) {
