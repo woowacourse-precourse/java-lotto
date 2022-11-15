@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import org.mockito.junit.MockitoJUnit;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -68,5 +69,25 @@ class PurchasedLottoTest {
         List<Integer> mock = Arrays.asList(numbers.get(0), numbers.get(1), -1, -1, -1, -1);
         Double rate = purchasedLotto.calculateReturn(mock, 3);
         assertThat(rate).isEqualTo(0);
+    }
+
+    @DisplayName("발행된 로또 정렬 확인")
+    @Test
+    void 발행된_로또_번호_정렬_확인(){
+        PurchasedLotto purchasedLotto = new PurchasedLotto(10000);
+        List<Lotto> lottos = purchasedLotto.getPurchasedLottoNumbers();
+        boolean flag = true;
+        for (Lotto lotto: lottos){
+            List<Integer> numbers = lotto.getNumbers();
+            Integer before = 0;
+            for (Integer i: numbers){
+                if(before>=i){
+                    flag = false;
+                    break;
+                }
+                before = i;
+            }
+        }
+        assertThat(flag).isTrue();
     }
 }
