@@ -10,6 +10,7 @@ public class Application {
             NumberOfLotto numberOfLotto = new NumberOfLotto(money);
             Output.numberOfPurchaseEventMessage(numberOfLotto.getNumberOfLotto());
             Lottos lottos = new Lottos(numberOfLotto);
+            Output.issuedLottosEventMessage(lottos.getLottos());
             Output.blankLine();
 
             Output.winNumberEventMessage();

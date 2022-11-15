@@ -1,5 +1,7 @@
 package lotto;
 
+import java.util.List;
+
 public class Output {
     public static final String BLANK_LINE = "";
     public static final String PURCHASE_EVENT_MESSAGE = "구입금액을 입력해 주세요.";
@@ -20,6 +22,12 @@ public class Output {
 
     public static void numberOfPurchaseEventMessage(int number) {
         System.out.println(number + AFTER_PURCHASE_EVENT_MESSAGE);
+    }
+
+    public static void issuedLottosEventMessage(List<Lotto> lottos) {
+        for (Lotto lotto : lottos) {
+            System.out.println(lotto.getNumbers().toString());
+        }
     }
 
     public static void winNumberEventMessage() {
