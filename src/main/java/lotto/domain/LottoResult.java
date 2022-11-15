@@ -21,4 +21,11 @@ public class LottoResult {
         lottoResult.put(lottoRank, lottoResult.get(lottoRank) + 1);
     }
 
+    public int getTotalProfit() {
+        int profit = 0;
+        for (LottoRank lottoRank : lottoResult.keySet()) {
+            profit += lottoRank.calculateProfit(lottoResult.get(lottoRank));
+        }
+        return profit;
+    }
 }
