@@ -5,6 +5,9 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.*;
 import java.util.stream.Collectors;
 
+import static lotto.NumberValidate.digitValidate;
+import static lotto.NumberValidate.inRangeValidate;
+
 public class LottoStore {
 
     public List<Lotto> buyLottos(Money money) {
@@ -26,7 +29,13 @@ public class LottoStore {
         return new Lotto(winningNumbers);
     }
 
-    public Map<LottoGrade, Integer> conversionLottosResult(List<Lotto> lottos, Lotto winningNumbers, String bonusNumber) {
+    public Integer confirmBonusNumber(String bonusNumber) {
+        digitValidate(bonusNumber);
+        inRangeValidate(Integer.parseInt(bonusNumber));
+        return Integer.parseInt(bonusNumber);
+    }
+
+    public Map<LottoGrade, Integer> conversionLottosResult(List<Lotto> lottos, Lotto winningNumbers, int bonusNumber) {
         Map<LottoGrade, Integer> totalResult = new EnumMap<>(LottoGrade.class);
         totalResult.put(LottoGrade.ONE, 0);
         totalResult.put(LottoGrade.TWO, 0);
@@ -44,7 +53,7 @@ public class LottoStore {
         return totalResult;
     }
 
-    private List<LottoGrade> allLottosCompare(List<Lotto> lottos, Lotto winningNumbers, String bonusNumber) {
+    private List<LottoGrade> allLottosCompare(List<Lotto> lottos, Lotto winningNumbers, int bonusNumber) {
         List<LottoGrade> lottosResult = new ArrayList<>();
 
         for (Lotto lotto : lottos) {
@@ -53,9 +62,9 @@ public class LottoStore {
         return lottosResult;
     }
 
-    private LottoGrade lottoNumbersCompareToWinningNumbers(Lotto lottoNumbers, Lotto winningNumbers, String bonusNumber) {
+    private LottoGrade lottoNumbersCompareToWinningNumbers(Lotto lottoNumbers, Lotto winningNumbers, int bonusNumber) {
         int count = 0;
-        boolean bonusBall = lottoNumbers.getNumbers().contains(Integer.parseInt(bonusNumber));
+        boolean bonusBall = lottoNumbers.getNumbers().contains(bonusNumber);
         for (Integer number : lottoNumbers.getNumbers()) {
             if (winningNumbers.getNumbers().contains(number)) {
                 count++;
