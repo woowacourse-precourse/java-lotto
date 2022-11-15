@@ -7,6 +7,9 @@ import java.util.List;
 import java.util.Map;
 
 public class OutputView {
+    private static final String ERROR_MESSAGE = "[ERROR]";
+    private static final String SPACE = " ";
+
     public void printBuyLottoTicket(int purchaseAmount) {
         System.out.printf("%d개를 구매했습니다.\n", exchangeTicket(purchaseAmount));
     }
@@ -30,7 +33,7 @@ public class OutputView {
     }
 
     public void printException(Exception e) {
-        System.out.println("[ERROR] " + e.getMessage());
+        System.out.println(ERROR_MESSAGE + SPACE + e.getMessage());
     }
 
     public void printPercentage(double percentage) {
