@@ -21,6 +21,26 @@ class InputMoneyTest {
         assertThat(Integer.parseInt(inputMoney)).isEqualTo(userMoney.getMoney());
     }
 
+    @DisplayName("사용자의 입력 금액이 정수 범위를 벗어낫을 때 Test")
+    @Test
+    void checkUserNothingInputMoney() {
+        String inputMoney = "2200000000";
+
+        assertThatThrownBy(() -> {
+            inputMoneyHandler.checkPositiveNumber(inputMoney);
+        }).isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("사용자의 입력 금액의 맨 앞에 0과 뒤로 1000단위 금액이 붙을 때 Test")
+    @Test
+    void checkZeroNumber() {
+        String inputMoney = "010000";
+
+        assertThatThrownBy(() -> {
+            inputMoneyHandler.checkIsNumber(inputMoney);
+        }).isInstanceOf(IllegalArgumentException.class);
+    }
+
     @DisplayName("사용자의 금액 입력시 아무런 값이 입력되지 않았을때 예외 발생하는지 확인 Test")
     @Test
     void checkExistReadLint() {
