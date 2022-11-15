@@ -99,4 +99,34 @@ class ValidationUtilTest {
                     .hasMessageContaining(NUMBER_COUNT);
         }
     }
+    
+    @Test
+    @DisplayName("당첨 번호에 공백값이 들어있는지 검증한다.")
+    void 당첨_번호_공백_테스트() throws Exception {
+        //given
+        ValidationUtil validationUtil = new ValidationUtil();
+        Method method = validationUtil.getClass().getDeclaredMethod("validateBlank", String[].class);
+        method.setAccessible(true);
+
+        //when
+        String[] wrongNumsWithBlank = {"1", "2", "3", "4", " ", "6"};
+        String[] wrongNumsWithEmpty = {"1", "2", "3", "4", "", "6"};
+
+        //then
+        try {
+            method.invoke(validationUtil, new Object[]{wrongNumsWithBlank});
+        } catch (InvocationTargetException e) {
+            assertThat(e.getTargetException())
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessageContaining(NUMBER_BLANK);
+        }
+
+        try {
+            method.invoke(validationUtil, new Object[]{wrongNumsWithEmpty});
+        } catch (InvocationTargetException e) {
+            assertThat(e.getTargetException())
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessageContaining(NUMBER_BLANK);
+        }
+    }
 }
