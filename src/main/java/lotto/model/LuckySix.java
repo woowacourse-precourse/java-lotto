@@ -22,6 +22,7 @@ public class LuckySix {
                 int checkValue = Integer.parseInt(oneNumber);
             }
         } catch (Exception e) {
+            ErrorMessage.INVALID_INPUT_ERROR_MESSAGE.printMessage();
             throw new IllegalArgumentException(ErrorMessage.INVALID_INPUT_ERROR_MESSAGE.getMessage());
         }
     }
@@ -33,6 +34,7 @@ public class LuckySix {
                 continue;
             }
             if (!Character.isDigit(oneNumber)) {
+                ErrorMessage.SIX_ERROR_MESSAGE.printMessage();
                 throw new IllegalArgumentException(ErrorMessage.SIX_ERROR_MESSAGE.getMessage());
             }
         }

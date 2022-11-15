@@ -22,18 +22,21 @@ public class Lotto {
 
     private void validateLength(List<Integer> numbers) {
         if (numbers.size() != LOTTO_NUMBER_SIZE) {
+            ErrorMessage.LENGTH_ERROR_MESSAGE.printMessage();
             throw new IllegalArgumentException(ErrorMessage.LENGTH_ERROR_MESSAGE.getMessage());
         }
     }
 
     private void validateRange(List<Integer> numbers) {
         if (numbers.stream().anyMatch(number -> number < MIN_NUMBER || number > MAX_NUMBER)) {
+            ErrorMessage.RANGE_ERROR_MESSAGE.printMessage();
             throw new IllegalArgumentException(ErrorMessage.RANGE_ERROR_MESSAGE.getMessage());
         }
     }
 
     private void validateDuplicate(List<Integer> numbers) {
         if (numbers.size() != numbers.stream().distinct().count()) {
+            ErrorMessage.DUPLICATE_ERROR_MESSAGE.printMessage();
             throw new IllegalArgumentException(ErrorMessage.DUPLICATE_ERROR_MESSAGE.getMessage());
         }
     }

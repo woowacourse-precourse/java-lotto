@@ -14,12 +14,17 @@ public class LottoController {
     private Profit userProfit;
 
     public void start() {
-        buyLotto();
-        showTicket();
-        pickLuckySix();
-        pickLuckyBonus();
-        showWinningResult();
-        showProfit();
+        try {
+            buyLotto();
+            showTicket();
+            pickLuckySix();
+            pickLuckyBonus();
+            showWinningResult();
+            showProfit();
+        } catch (IllegalArgumentException e) {
+            return;
+        }
+
     }
 
     private void buyLotto() {

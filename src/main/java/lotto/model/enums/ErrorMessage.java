@@ -16,6 +16,10 @@ public enum ErrorMessage {
         this.errorMessage = errorMessage;
     }
 
+    public void printMessage() {
+        System.out.println(errorMessage);
+    }
+
     public String getMessage() {
         return errorMessage;
     }

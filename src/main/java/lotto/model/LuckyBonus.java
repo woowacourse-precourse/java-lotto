@@ -16,6 +16,7 @@ public class LuckyBonus {
     private void validateBonusDigit(String inputLuckyBonus) {
         for (int index = 0; index < inputLuckyBonus.length(); index++) {
             if (!Character.isDigit(inputLuckyBonus.charAt(index))) {
+                ErrorMessage.DIGIT_ERROR_MESSAGE.printMessage();
                 throw new IllegalArgumentException(ErrorMessage.DIGIT_ERROR_MESSAGE.getMessage());
             }
         }
@@ -23,12 +24,14 @@ public class LuckyBonus {
 
     private void validateBonusRange(int luckyBonus) {
         if (luckyBonus < 1 || luckyBonus > 45) {
+            ErrorMessage.RANGE_ERROR_MESSAGE.printMessage();
             throw new IllegalArgumentException(ErrorMessage.RANGE_ERROR_MESSAGE.getMessage());
         }
     }
 
     private void validateBonusInclude(int tempLuckyBonus, Lotto luckySix) {
         if (luckySix.isIncludeBonus(tempLuckyBonus)) {
+            ErrorMessage.SIX_CONTAIN_BONUS_ERROR_MESSAGE.printMessage();
             throw new IllegalArgumentException(ErrorMessage.SIX_CONTAIN_BONUS_ERROR_MESSAGE.getMessage());
         }
     }

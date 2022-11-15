@@ -8,12 +8,20 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class LuckySixTest {
-    @DisplayName("당첨 번호가 올바른 입력이 아닐 때")
+    @DisplayName("당첨 번호가 올바른 입력이 아닐 때: 경우1")
     @Test
-    void createLuckySixByInvalid() {
+    void createLuckySixByFirstInvalid() {
         assertThatThrownBy(() -> new LuckySix("1,2,3,4,5,a"))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage(ErrorMessage.SIX_ERROR_MESSAGE.getMessage());
+                .hasMessage(ErrorMessage.INVALID_INPUT_ERROR_MESSAGE.getMessage());
+    }
+
+    @DisplayName("당첨 번호가 올바른 입력이 아닐 때: 경우2")
+    @Test
+    void createLuckySixBySecondInvalid() {
+        assertThatThrownBy(() -> new LuckySix("1,2,3,4,5,,6"))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(ErrorMessage.INVALID_INPUT_ERROR_MESSAGE.getMessage());
     }
 
     @DisplayName("당첨 번호가 6개가 아닐 때")

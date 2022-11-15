@@ -16,6 +16,7 @@ public class Price {
     private void validateDigit(String inputPrice) {
         for (int index = 0; index < inputPrice.length(); index++) {
             if (!Character.isDigit(inputPrice.charAt(index))) {
+                ErrorMessage.DIGIT_ERROR_MESSAGE.printMessage();
                 throw new IllegalArgumentException(ErrorMessage.DIGIT_ERROR_MESSAGE.getMessage());
             }
         }
@@ -23,12 +24,14 @@ public class Price {
 
     private void validateUnderPrice(int price) {
         if (price < 1000) {
+            ErrorMessage.PRICE_ERROR_MESSAGE.printMessage();
             throw new IllegalArgumentException(ErrorMessage.PRICE_ERROR_MESSAGE.getMessage());
         }
     }
 
     private void validateDivision(int price) {
         if (price % 1000 != 0) {
+            ErrorMessage.PRICE_ERROR_MESSAGE.printMessage();
             throw new IllegalArgumentException(ErrorMessage.PRICE_ERROR_MESSAGE.getMessage());
         }
     }
