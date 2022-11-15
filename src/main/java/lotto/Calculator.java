@@ -5,10 +5,10 @@ import java.util.HashMap;
 import java.util.List;
 
 public class Calculator {
-    private Lotto winningLotto;
-    private List<Lotto> lottoList;
-    private int bonusNumber;
-    private HashMap<Rank, Integer> history;
+    private final Lotto winningLotto;
+    private final List<Lotto> lottoList;
+    private final int bonusNumber;
+    private final HashMap<Rank, Integer> history;
 
     public Calculator(Lotto winningLotto, List<Lotto> lottoList, int bonusNumber) {
         this.winningLotto = winningLotto;

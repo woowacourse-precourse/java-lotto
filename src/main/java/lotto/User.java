@@ -5,8 +5,8 @@ import java.util.List;
 
 public class User {
 
-    private int purchasePrice;
-    private List<Lotto> lottoList;
+    private final int purchasePrice;
+    private final List<Lotto> lottoList;
 
     public User(String input) {
         validatePurchasePrice(input);

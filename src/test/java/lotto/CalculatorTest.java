@@ -1,14 +1,11 @@
 package lotto;
 
-import camp.nextstep.edu.missionutils.Randoms;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-
 import java.util.*;
 
-import static org.junit.jupiter.api.Assertions.*;
 
 class CalculatorTest {
 
@@ -50,7 +47,7 @@ class CalculatorTest {
     @DisplayName("두 개의 로또를 비교해 몇 개의 숫자가 겹치는지 확인")
     @Test
     void compareWinningLottoWithPurchaseLottoTest() {
-        Lotto purchaseLotto = new Lotto(List.of(2,4,6,8,10,12));
+        Lotto purchaseLotto = new Lotto(List.of(2, 4, 6, 8, 10, 12));
         int result = calculator.compareWinningLottoWithPurchaseLotto(winningLotto, purchaseLotto);
 
         Assertions.assertThat(result).isEqualTo(3);

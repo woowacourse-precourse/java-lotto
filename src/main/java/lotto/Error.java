@@ -7,7 +7,7 @@ public enum Error {
     INVALID_INPUT_VALUE("[ERROR] 각 번호는 1~45 사이의 숫자여야 합니다."),
     INPUT_DUPLICATE("[ERROR] 중복된 숫자가 존재합니다.");
 
-    private String message;
+    private final String message;
     Error(String message){
         this.message = message;
     }

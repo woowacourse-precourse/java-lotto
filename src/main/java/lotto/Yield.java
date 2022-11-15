@@ -1,14 +1,10 @@
 package lotto;
 
 public class Yield {
-    private double purchasePrice;
-    private double profits;
 
-    private double yieldRate;
+    private final double yieldRate;
 
     public Yield(double purchasePrice, double profits) {
-        this.purchasePrice = purchasePrice;
-        this.profits = profits;
         if(purchasePrice == 0){
             yieldRate = 0;
             return;
