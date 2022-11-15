@@ -33,7 +33,7 @@ class LottoTest {
     @DisplayName("입력받은 금액이 1000원 단위가 아니면 예외가 발생한다.")
     @Test
     void buyLottoByUntidyMoney() {
-        assertThatThrownBy(() -> LotteryStore.getInstance().buy(1800))
+        assertThatThrownBy(() -> LottoStore.getInstance().buy(1800))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 }
