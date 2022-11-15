@@ -22,6 +22,17 @@ class LottoServiceTest {
     }
 
     @Test
+    @DisplayName("깊은 복제 기능 테스트")
+    void cloneListTest() {
+
+        List<Integer> givenList = List.of(1,2,3,4,5,6);
+
+        List<Integer> cloneList = lottoService.cloneList(givenList);
+
+        assertThat(cloneList).isEqualTo(givenList);
+    }
+
+    @Test
     @DisplayName("발생한 로또 오름차순 정렬 테스트")
     void sortedLottoNumbersTest() {
 
