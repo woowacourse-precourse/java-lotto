@@ -13,8 +13,8 @@ public class Judgement {
                 .filter(value -> userLotto.stream().anyMatch(Predicate.isEqual(value)))
                 .collect(Collectors.toList());
 
-        if (lottos.contains(bonus)) {
-            return result.size() + 1;
+        if (lottos.contains(bonus) && result.size() == 5) {
+            return 51;
         }
         return result.size();
     }
