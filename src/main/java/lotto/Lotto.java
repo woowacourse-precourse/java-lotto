@@ -1,5 +1,7 @@
 package lotto;
 
+import lotto.Enum.Errors;
+
 import java.util.*;
 
 public class Lotto {
@@ -12,7 +14,7 @@ public class Lotto {
 
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
-            LottoManager.terminateByError(Errors.NOT_CORRECT_SIZE.getName());
+            throw new IllegalArgumentException(Errors.NOT_CORRECT_SIZE.getName());
         }
         checkDuplicatedNumber(numbers);
         isCorrectRange(numbers);
@@ -22,7 +24,7 @@ public class Lotto {
         for (int i = 0; i < numbers.size(); i++) {
             int num = numbers.get(i);
             if(num < 0 || num > 45) {
-                LottoManager.terminateByError(Errors.NOT_CORRECT_RANGE.getName());
+                throw new IllegalArgumentException(Errors.NOT_CORRECT_RANGE.getName());
             }
         }
     }
@@ -35,7 +37,7 @@ public class Lotto {
         Set<Integer> targetset = new HashSet<>(numbers);
         if(targetset.size() != 6) {
             // 중복되는 숫자가 존재. -> 예외처리
-            LottoManager.terminateByError(Errors.IS_NOT_UNIQUE.getName());
+            throw new IllegalArgumentException(Errors.IS_NOT_UNIQUE.getName());
         }
     }
 

@@ -1,4 +1,4 @@
-package lotto;
+package lotto.Enum;
 
 public enum Prize {
 
@@ -11,7 +11,7 @@ public enum Prize {
     Prize(int prize) {
         this.prize = prize;
     }
-    int getPrize() {
+    public int getPrize() {
         return prize;
     }
 }

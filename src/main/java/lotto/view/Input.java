@@ -1,11 +1,12 @@
-package lotto;
+package lotto.view;
 
 import camp.nextstep.edu.missionutils.Console;
+import lotto.view.Output;
 
 public class Input {
     private Output output;
 
-    Input() {
+    public Input() {
         this.output = new Output();
     }
 

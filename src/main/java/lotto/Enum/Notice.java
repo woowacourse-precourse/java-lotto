@@ -1,4 +1,4 @@
-package lotto;
+package lotto.Enum;
 
 public enum Notice {
 
@@ -12,7 +12,7 @@ public enum Notice {
         this.notice = notice;
     }
 
-    String getNotice() {
+    public String getNotice() {
         return notice;
     }
 

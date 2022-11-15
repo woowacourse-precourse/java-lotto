@@ -1,4 +1,8 @@
-package lotto;
+package lotto.view;
+
+import lotto.Lotto;
+import lotto.Enum.Notice;
+import lotto.Enum.Result;
 
 import java.util.List;
 

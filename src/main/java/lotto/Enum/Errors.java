@@ -1,4 +1,4 @@
-package lotto;
+package lotto.Enum;
 
 public enum Errors {
 
@@ -11,5 +11,5 @@ public enum Errors {
     BONUS_NUMBER_NOT_UNIQUE("[ERROR] 보너스 번호는 당첨번호와 중복이 되면 안됩니다.");
     private final String error;
     Errors(String error) { this.error = error; }
-    String getName() { return error; }
+    public String getName() { return error; }
 }

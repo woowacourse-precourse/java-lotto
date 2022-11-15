@@ -1,4 +1,4 @@
-package lotto;
+package lotto.Enum;
 
 public enum Result {
     FIRST("6개 일치 (2,000,000,000원) - %d개"),
@@ -12,7 +12,7 @@ public enum Result {
     Result(String result) {
         this.result = result;
     }
-    String getResult() {
+    public String getResult() {
         return result;
     }
 }

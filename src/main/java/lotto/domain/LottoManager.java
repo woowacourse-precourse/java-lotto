@@ -1,4 +1,9 @@
-package lotto;
+package lotto.domain;
+
+import lotto.Enum.Prize;
+import lotto.Lotto;
+import lotto.view.Input;
+import lotto.view.Output;
 
 import java.util.List;
 
@@ -23,17 +28,13 @@ public class LottoManager {
     private int amount;
     private float yield;
 
-    LottoManager() {
+    public LottoManager() {
         this.input = new Input();
         this.output = new Output();
         this.lottoGenerator = new LottoGenerator();
         this.judge = new Judge();
     }
 
-    public static void terminateByError(String error) {
-        LottoManager.error = error;
-        throw new IllegalArgumentException();
-    }
     private void compare() {
         int correct;
         boolean bonus;
@@ -126,7 +127,7 @@ public class LottoManager {
             calcYield();
             output.printResult(prize, yield);
         } catch(IllegalArgumentException e) {
-            output.printError(LottoManager.error);
+            output.printError(e.getMessage());
         }
     }
 }
