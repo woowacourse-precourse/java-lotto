@@ -27,23 +27,5 @@ public class WinningLotto {
         return winningLotto.winningBonusNumber;
     }
 
-    private static void setWinningLottoNumber() {
-        winningLotto.winningLottoNumber = LottoInputFilter.readLottoNumber();
-    }
-
-    private static void setWinningBonusNumber(int bonusNumber) {
-        if (winningLotto.winningLottoNumber == null) setWinningLottoNumber();
-        if (winningLotto.winningLottoNumber.contains(bonusNumber)) {
-            System.out.println(ErrorMessage.DUPLICATED_NUMBER.getMessage());
-            throw new IllegalArgumentException();
-        }
-        winningLotto.winningBonusNumber = bonusNumber;
-    }
-
-    private static void setWinningBonusNumber() {
-        int bonusNumber = LottoInputFilter.readBonusNumber();
-        setWinningBonusNumber(bonusNumber);
-    }
-
 }
 
