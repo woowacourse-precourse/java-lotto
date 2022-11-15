@@ -2,52 +2,41 @@ package lotto.service;
 
 import lotto.domain.GameSet;
 import lotto.domain.Lotto;
+import lotto.domain.LottoProperties;
+import lotto.utils.GenerateLottoNumbers;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import static lotto.view.InputLotto.getInput;
+
 public class LottoServiceImpl implements LottoService {
-    final int SECOND_WINNDER_CORRECT = 5;
+    private GenerateLottoNumbers generateLottoNumbers = new GenerateLottoNumbers();
+    private List<Lotto> generatedLotto = new ArrayList<>();
     private GameSet gameSet;
     @Override
-    public void play(List<Lotto> generatedLotto, GameSet gameSet){
-        this.gameSet = gameSet;
+    public GameSet startGame(){
+        return gameSet = new GameSet();
+    }
+    @Override
+    public void generateAwardLotto(){
+        System.out.println("당첨 번호를 입력해 주세요.");
+        gameSet.setAwardLotto(new Lotto(getInput()));
+        System.out.println("보너스 번호를 입력해 주세요.");
+        gameSet.setBonusNumber(getInput());
+    }
+    @Override
+    public void generateLotto(){
+        for(int i =0;i<gameSet.getLottoCount();i++) {
+            generatedLotto.add(new Lotto(generateLottoNumbers.generateLottoNumber()));
+            System.out.println(generatedLotto.get(i).getNumbers());
+        }
+    }
+    @Override
+    public void play(){
         for(int i =0;i<generatedLotto.size();i++){
-            lotteryCheck(generatedLotto.get(i),gameSet.getAwardLotto(),gameSet.getBonusNumber());
+            LottoProperties lottoProperties = generatedLotto.get(i).lotteryCheck(gameSet.getAwardLotto(),gameSet.getBonusNumber());
+            gameSet.updateGameSet(lottoProperties);
         }
-    }
-    @Override
-    public void lotteryCheck(Lotto inputLotto, Lotto awardLotto, int bonusNumber){
-        int correct = 0;
-        int bonus = 0;
-        int i = 0;
-        int j = 0;
-        while (i<inputLotto.getNumbers().size() && j<awardLotto.getNumbers().size()){
-            int inputNumber=inputLotto.getNumbers().get(i);
-            int awardNumber=awardLotto.getNumbers().get(j);
-            if(inputNumber==awardNumber){
-                correct++;
-                i++;
-                j++;
-            }
-            if(inputNumber < awardNumber){
-                i++;
-            }
-            if (awardNumber < inputNumber){
-                j++;
-            }
-            if(inputLotto.getNumbers().get(i)==bonusNumber){
-                bonus=2;
-            }
-        }
-        if (correct==SECOND_WINNDER_CORRECT){
-            correct+=bonus;
-        }
-        LottoProperties lottoProperties = LottoProperties.findType(correct);
-        updateGameSet(lottoProperties,correct);
-    }
-    @Override
-    public void updateGameSet(LottoProperties lottoProperties, int correct){
-        gameSet.plusCount(lottoProperties.function(correct));
-        gameSet.plusTotalPrize(lottoProperties.getPrice());
     }
 }
