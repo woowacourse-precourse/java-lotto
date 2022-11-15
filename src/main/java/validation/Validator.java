@@ -9,6 +9,7 @@ import static util.validation.ValidationUtil.isInteger;
 import static util.validation.ValidationUtil.isUnitsOf1000Won;
 import static util.validation.ValidationUtil.isWithinValidRange;
 
+import exception.InvalidLottoSizeException;
 import java.util.List;
 import lotto.Lotto;
 
@@ -17,7 +18,7 @@ public class Validator {
 
     public void validateGeneratedNumbers(List<Integer> numbers) {
         if (checkSize(numbers)) {
-            throw new IllegalArgumentException();
+            throw new InvalidLottoSizeException();
         }
 
         if (haveDuplicatedNumbers(numbers)) {
