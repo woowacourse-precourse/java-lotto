@@ -13,7 +13,9 @@ public class Application {
             if (money % 1000 != 0) {
                 throw new IllegalArgumentException();
             }
+            System.out.print(times+"개를 구매했습니다");
         }
+
         catch(IllegalArgumentException e){
             System.out.println("구입 금액은 1,000원 단위로 입력하셔야 합니다.");
         }
@@ -23,6 +25,7 @@ public class Application {
 
         try{
             for (int i=0; i<times; i++) {
+                System.out.print("[")
                 for (int j = 0; j < 5; j++) {
                     int input = Integer.parseInt(Console.readLine());
                     if (numbers.contains(input)) { //중복 제거하기
@@ -37,8 +40,11 @@ public class Application {
                 if (numbers.size() != 6) { //사용자 입력(당첨 번호) 사이즈 체크
                     throw new IllegalArgumentException();
                 }
-                System.out.print(numbers.get(i));
+                System.out.print(numbers.get(i)+",");
             }
+            System.out.println("]");
+
+
         }
 
         catch(IllegalArgumentException e){
@@ -47,6 +53,10 @@ public class Application {
 
 
         int bonus = Integer.parseInt(Console.readLine()); //보너스 번호 입력받기
+        List<Integer> bonusList = new ArrayList<>();
+        bonusList.add(bonus);
+
+
 
 
         // TODO: 프로그램 구현
