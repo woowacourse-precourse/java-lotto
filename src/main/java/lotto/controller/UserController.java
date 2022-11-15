@@ -3,6 +3,7 @@ package lotto.controller;
 import java.util.ArrayList;
 import java.util.List;
 import lotto.constants.Number;
+import lotto.exception.BonusNumber;
 import lotto.exception.PurchaseAmount;
 import lotto.exception.WinNumber;
 import lotto.view.Input;
@@ -36,6 +37,13 @@ public class UserController {
         return winNumber;
     }
 
+    public static int getBonusNumber(List<Integer> winNumber) {
+        Output.printBonusMsg();
+        String input = Input.inputBonusNumber();
+        BonusNumber.exceptionBonusNumber(input, winNumber);
+        int bonusNumber = Integer.parseInt(input);
+        return bonusNumber;
+    }
 
     public static List<Integer> toListWinNumber(String input) {
         List<Integer> winNumber = new ArrayList<>();
