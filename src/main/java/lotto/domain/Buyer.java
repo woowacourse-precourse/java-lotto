@@ -1,4 +1,4 @@
-package lotto.model;
+package lotto.domain;
 
 public class Buyer {
     private static final String ENTER_WRONG_LETTERS_MESSAGE = "[ERROR] 금액을 잘못 입력하셨습니다.";

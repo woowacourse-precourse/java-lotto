@@ -1,6 +1,6 @@
-package lotto.modelTest;
+package lotto.domainlTest;
 
-import lotto.model.WinningsTable;
+import lotto.domain.WinningsTable;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

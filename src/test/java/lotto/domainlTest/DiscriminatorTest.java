@@ -1,8 +1,8 @@
-package lotto.modelTest;
+package lotto.domainlTest;
 
-import lotto.model.Discriminator;
-import lotto.model.Lotto;
-import lotto.model.RaffleNumber;
+import lotto.domain.Discriminator;
+import lotto.domain.Lotto;
+import lotto.domain.RaffleNumber;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;

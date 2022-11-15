@@ -1,13 +1,6 @@
 package lotto.view;
 
 import camp.nextstep.edu.missionutils.Console;
-import lotto.model.Buyer;
-import lotto.model.Lotto;
-
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.List;
-import java.util.stream.Stream;
 
 public class LottoGameView {
 
