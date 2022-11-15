@@ -1,7 +1,7 @@
-package lotto.ui;
+package lotto.ui.message;
 
-import lotto.domain.Lotto;
-import lotto.domain.Rank;
+import lotto.model.Lotto;
+import lotto.model.Rank;
 
 import java.text.DecimalFormat;
 import java.util.Arrays;

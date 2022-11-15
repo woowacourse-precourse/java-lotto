@@ -1,4 +1,8 @@
-package lotto.domain;
+package lotto.controller;
+
+import lotto.model.JackpotBonus;
+import lotto.model.Lotto;
+import lotto.model.Rank;
 
 import java.text.DecimalFormat;
 import java.util.*;

@@ -1,9 +1,10 @@
-package lotto.domain;
+package lotto.controller;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import lotto.model.Lotto;
 
 public enum LottoIssuer {
     INSTANCE;

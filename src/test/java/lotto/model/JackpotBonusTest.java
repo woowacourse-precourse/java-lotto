@@ -1,5 +1,6 @@
-package lotto.domain;
+package lotto.model;
 
+import lotto.model.JackpotBonus;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

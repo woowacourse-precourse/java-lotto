@@ -1,18 +1,16 @@
-package lotto.ui;
+package lotto.ui.message;
 
-import lotto.domain.Lotto;
-import lotto.domain.Rank;
+import lotto.model.Lotto;
+import lotto.model.Rank;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.EnumMap;
 import java.util.List;
 import java.util.Map;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static lotto.ui.OutputMessageGenerator.*;
+import static lotto.ui.message.OutputMessageGenerator.*;
 
 public class OutputMessageGeneratorTest {
     @DisplayName("`[구매 수량]개를 구매했습니다.` 를 반환한다.")

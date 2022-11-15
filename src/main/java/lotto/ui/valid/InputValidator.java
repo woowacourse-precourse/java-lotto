@@ -1,7 +1,7 @@
-package lotto.valid;
+package lotto.ui.valid;
 
-import lotto.domain.Lotto;
-import lotto.domain.LottoIssuer;
+import lotto.controller.LottoIssuer;
+import lotto.model.Lotto;
 
 import java.util.Arrays;
 import java.util.List;

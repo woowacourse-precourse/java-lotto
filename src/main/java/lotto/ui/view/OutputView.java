@@ -1,8 +1,9 @@
-package lotto.ui;
+package lotto.ui.view;
 
-import lotto.domain.Lotto;
-import lotto.domain.Rank;
-import lotto.domain.TotalResult;
+import lotto.ui.message.OutputMessageGenerator;
+import lotto.model.Lotto;
+import lotto.model.Rank;
+import lotto.controller.TotalResult;
 
 import java.util.List;
 import java.util.Map;

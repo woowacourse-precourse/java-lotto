@@ -1,11 +1,14 @@
 package lotto;
 
-import lotto.domain.*;
-import lotto.ui.*;
-import lotto.valid.InputValidator;
+import lotto.model.JackpotBonus;
+import lotto.model.Lotto;
+import lotto.controller.LottoIssuer;
+import lotto.controller.TotalResult;
+import lotto.ui.valid.InputValidator;
+import lotto.ui.view.InputView;
+import lotto.ui.view.OutputView;
 
 import java.util.List;
-import java.util.Map;
 
 public class Application {
     public static void main(String[] args) {
