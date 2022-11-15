@@ -23,6 +23,9 @@ public class Application {
 
         List<Integer> winningNumbers = InputView.getWinningNumber();
         String bonusNumber = InputView.getBonusNumber();
+        Map<RankEnum, Integer> winningHistory
+                = calculateWinning(userLotto, winningNumbers, bonusNumber);
+        OutputView.showWinningHistory(winningHistory);
     }
 
     private static List<Lotto> publishLotto(int lottoCount) {
