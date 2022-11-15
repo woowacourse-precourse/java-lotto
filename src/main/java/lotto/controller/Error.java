@@ -7,7 +7,7 @@ import java.util.List;
 public class Error {
     static void hasOnlyNumber(String input) {
         if (!input.matches("[0-9]+")) {
-            throw new IllegalArgumentException("[ERROR] 구입 금액은 0보다 큰 숫자여야 합니다.");
+            throw new IllegalArgumentException("[ERROR] 0보다 큰 숫자를 입력해야 합니다.");
         }
     }
 
