@@ -6,7 +6,8 @@ import java.util.List;
 
 import static lotto.exception.ErrorHandler.unCorrectMoneyInputException;
 import static lotto.exception.ErrorHandler.unCorrectMoneyRangeException;
-import static lotto.view.OutputLotto.*;
+import static lotto.view.InputPrintView.buyView;
+import static lotto.view.InputPrintView.initInput;
 
 public class InputLotto {
     public static List<Integer> getInput(){

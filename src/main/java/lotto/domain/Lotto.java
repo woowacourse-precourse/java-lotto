@@ -7,7 +7,6 @@ import static lotto.exception.ErrorHandler.*;
 
 public class Lotto {
     private final List<Integer> numbers;
-    public static final int SECOND_WINNER_COUNT = 7;
     public Lotto(List<Integer> numbers) {
         isUnique(numbers);
         validate(numbers);

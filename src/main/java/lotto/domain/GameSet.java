@@ -5,6 +5,8 @@ import java.util.List;
 
 import static lotto.utils.GenerateLottoNumbers.generateLottoNumber;
 import static lotto.view.InputLotto.*;
+import static lotto.view.InputPrintView.inputView_First;
+import static lotto.view.InputPrintView.inputView_Second;
 import static lotto.view.OutputLotto.*;
 
 public class GameSet {

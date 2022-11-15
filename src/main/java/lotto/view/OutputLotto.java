@@ -24,7 +24,7 @@ public class OutputLotto{
     private static void printGameCount(GameSet gameSet) throws IOException{
         int i =0;
         for(LottoProperties name:LottoProperties.values()){
-            if (name.getCorrect()==-1){
+            if (name==LottoProperties.LOTTO_LOOSE){
                 break;
             }
             bw.append(String.format(name.getStrResultFormat(),name.getCorrect(),name.getSprice(),gameSet.getGameCount()[i++]));
@@ -32,38 +32,6 @@ public class OutputLotto{
     }
     private static void printAllResult(GameSet gameSet) throws IOException{
         bw.append("총 수익률은 "+ gameSet.getResult()+"%입니다.\n");
-    }
-    public static void inputView_First(){
-        try {
-            bw.append("당첨 번호를 입력해 주세요.\n");
-            bw.flush();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-    public static void inputView_Second() {
-        try {
-            bw.append("보너스 번호를 입력해 주세요.\n");
-            bw.flush();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-    public static void initInput(){
-        try {
-            bw.append("구입금액을 입력해 주세요.\n");
-            bw.flush();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-    public static void buyView(int lottoCount){
-        try {
-            bw.append(lottoCount+"개를 구매했습니다.\n");
-            bw.flush();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
     public static void numberPrint(List<Integer> numbers){
         try {
@@ -79,14 +47,6 @@ public class OutputLotto{
             }
             bw.flush();
         }catch (IOException e){
-            e.printStackTrace();
-        }
-    }
-    public static void check(){
-        try {
-            bw.append("돌아옴\n");
-            bw.flush();
-        } catch (IOException e) {
             e.printStackTrace();
         }
     }
