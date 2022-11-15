@@ -6,38 +6,47 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class Lottos {
+import static lotto.domain.Preset.*;
 
-    private final List<Lotto> inputLottos;
+public class Lottos {
+    private final List<Lotto> purchaseLottos;
 
     public Lottos(int number) {
-        this.inputLottos = purchaseLotto(number);
+        this.purchaseLottos = purchaseLotto(number);
     }
 
-    public static List<Lotto> purchaseLotto(int number) {
-
+    public static List<Lotto> purchaseLotto(int purchaseNumber) {
         List<Lotto> lottoTickets = new ArrayList<>();
 
-        for (int i = 0; i < number; i++) {
-            List<Integer> unmodifiableNumbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+        for (int i = 0; i < purchaseNumber; i++) {
+            List<Integer> unmodifiableNumbers = getLottoNumbers();
 
-            List<Integer> numbers = new ArrayList<>();
-            for(Integer elem : unmodifiableNumbers)
-                numbers.add(elem);
-            Collections.sort(numbers);
-            Lotto l = new Lotto(numbers);
-            lottoTickets.add(l);
+            List<Integer> numbers = convertToSortedList(unmodifiableNumbers);
+            Lotto lotto = new Lotto(numbers);
+            lottoTickets.add(lotto);
         }
 
         return lottoTickets;
     }
 
+    public static List<Integer> getLottoNumbers() {
+        return Randoms.pickUniqueNumbersInRange(LOTTO_MIN_VALUE, LOTTO_MAX_VALUE, LOTTO_LENGTH);
+    }
+
+    public static List<Integer> convertToSortedList(List<Integer> unmodifiableNumbers) {
+
+        List<Integer> numbers = new ArrayList<>(unmodifiableNumbers);
+        Collections.sort(numbers);
+
+        return numbers;
+    }
+
     public List<Lotto> getLottos() {
-        return inputLottos;
+        return purchaseLottos;
     }
 
     public void printLottoNumbers() {
-        inputLottos.forEach(System.out::println);
+        purchaseLottos.forEach(System.out::println);
     }
 
 }
