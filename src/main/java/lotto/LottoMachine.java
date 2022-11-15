@@ -9,6 +9,8 @@ public class LottoMachine {
     public static final String INPUT_WINNING_NUMBER = "당첨 번호를 입력해 주세요.";
     public static final String INPUT_BONUS_NUMBER = "보너스 번호를 입력해 주세요.";
     public static final String BONUS_NUMBER_INTEGER = "[ERROR] 보너스 번호는 숫자를 입력해야 합니다.";
+    public static final String BONUS_NUMBER_NOT_OVERLAP = "[ERROR] 보너스 번호는 당첨 번호와 중복되지 않는 숫자여야 합니다.";
+    public static final String BONUS_NUMBER_IN_RANGE = "[ERROR] 보너스 번호는 1~45 범위 내의 숫자여야 합니다.";
 
     Lotto winningNumber;
     int bonusNumber;
@@ -20,6 +22,12 @@ public class LottoMachine {
         winningNumber = checkThatWinningNumberIsRightInput(inputNumber);
     }
 
+    public Lotto checkThatWinningNumberIsRightInput(String inputNumber) {
+        List<String> winningNumberTemp = splitNumber(inputNumber);
+
+        return new Lotto(Exception.changeListStringToInteger(winningNumberTemp));
+    }
+
     public List<String> splitNumber(String number) {
         return Arrays.asList(number.split(","));
     }
@@ -27,6 +35,17 @@ public class LottoMachine {
     public void inputBonusNumber() throws IllegalArgumentException {
         System.out.println(INPUT_BONUS_NUMBER);
 
+        checkThatBonusNumberIsRightInput();
+
+    }
+
+    public void checkThatBonusNumberIsRightInput() throws IllegalArgumentException {
+        isBonusNumberInteger();
+        isBonusNumberOverlap();
+        isBonusNumberOutOfRange();
+    }
+
+    public void isBonusNumberInteger() {
         try {
             bonusNumber = Integer.parseInt(Console.readLine());
         } catch (NumberFormatException e) {
@@ -34,10 +53,16 @@ public class LottoMachine {
         }
     }
 
-    public Lotto checkThatWinningNumberIsRightInput(String inputNumber) {
-        List<String> winningNumberTemp = splitNumber(inputNumber);
+    public void isBonusNumberOverlap() {
+        if (winningNumber.containNumber(bonusNumber)) {
+            throw new IllegalArgumentException(BONUS_NUMBER_NOT_OVERLAP);
+        }
+    }
 
-        return new Lotto(Exception.changeListStringToInteger(winningNumberTemp));
+    public void isBonusNumberOutOfRange() {
+        if (bonusNumber < 1 || bonusNumber > 45) {
+            throw new IllegalArgumentException(BONUS_NUMBER_IN_RANGE);
+        }
     }
 
 
