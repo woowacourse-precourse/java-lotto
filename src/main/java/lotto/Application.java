@@ -23,7 +23,7 @@ public class Application {
 
         int sum = sumOfAllPrizes(compareResult(winningNumbers, ticketNumbers, bonusNumber));
         double earningRatio = earningRatioCalculator(cash, sum);
-        System.out.println("총 수익률은 " + earningRatio + "% 입니다");
+        System.out.println("총 수익률은 " + earningRatio + "%입니다.");
 
 
     }
