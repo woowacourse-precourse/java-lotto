@@ -20,9 +20,29 @@ public class LottoCalculator {
     }
 
     public double calculateEarn() {
-        int purchaseAmount = input.getPurchaseAmount();
+        double purchaseAmount = input.getPurchaseAmount();
+        int total = 0;
         for (int key = 3; key <= 7; key++) {
-            
+            total += matchLotto(key, winningLotto.get(key));
+        }
+        return Math.round(total * 100 / purchaseAmount);
+    }
+
+    private int matchLotto(int key, int count) {
+        if (key == 3) {
+            return count * 5000;
+        }
+        if (key == 4) {
+            return count * 50000;
+        }
+        if (key == 5) {
+            return count * 1500000;
+        }
+        if (key == 6) {
+            return count * 30000000;
+        }
+        if (key == 7) {
+            return count * 2000000000;
         }
     }
 
