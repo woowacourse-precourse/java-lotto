@@ -12,4 +12,19 @@ public class ExceptionCase {
 
         return true;
     }
+
+    private static boolean checkInputAllNumber(String input) {
+
+        char separate = ' ';
+
+        for (int i = 0; i < input.length(); i++) {
+            separate = input.charAt(i);
+
+            if (Character.isDigit(separate) == false) {
+                return false;
+            }
+        }
+
+        return true;
+    }
 }
