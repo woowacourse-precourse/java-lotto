@@ -11,6 +11,6 @@ public class Calculator {
         for (Map.Entry<Comparison.Result, Integer> result: results.entrySet()) {
             totalProfit += (result.getKey().getCash() * result.getValue());
         }
-        return (float) (Math.round(totalProfit / purchasingAmount * PERCENTAGE * POINT) / POINT);
+        return (totalProfit / purchasingAmount) * PERCENTAGE;
     }
 }
