@@ -18,6 +18,13 @@ public class Validation {
         }
     }
 
+    // 구입 금액이 1000원보다 큰지 검증하는 기능
+    public static void validatePurchaseMoneyGreaterThan1000(String money) {
+        if (!(Integer.parseInt(money) >= LOTTO_PURCHASE_COST)) {
+            throw new IllegalArgumentException(ERROR_MSG_PURCHASE_MONEY_LESS_THAN_1000);
+        }
+    }
+
     // 당첨 번호에 ,와 숫자로만 구성되었는지 검증하는 기능
     public static void validateWinningNumberContainCommaAndNum(String winningNumber) {
         if (!winningNumber.matches(WINNING_NUMBER_REGEX)) {
