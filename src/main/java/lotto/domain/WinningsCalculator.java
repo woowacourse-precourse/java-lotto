@@ -62,4 +62,17 @@ public class WinningsCalculator {
     public boolean isExistentNumber(List<Integer> numbers, int targetNumber) {
         return Collections.binarySearch(numbers, targetNumber) >= 0;
     }
+
+    public long calculateTotalWinnings(Map<String, Integer> rankingCounts) {
+        long totalWinnings = 0L;
+        Set<Map.Entry<String, Integer>> entries = rankingCounts.entrySet();
+        for (Map.Entry<String, Integer> entry : entries) {
+            if (entry.getValue() > 0) {
+                String rankingName = entry.getKey();
+                WinningsCalculatorType rankingType = WinningsCalculatorType.valueOf(rankingName);
+                totalWinnings += rankingType.calculateWinnings(entry.getValue());
+            }
+        }
+        return totalWinnings;
+    }
 }
