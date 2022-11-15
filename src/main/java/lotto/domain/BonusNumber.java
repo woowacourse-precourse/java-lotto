@@ -38,7 +38,7 @@ public class BonusNumber {
     private static void validateDuplicateWinning(List<Integer> bonus, Lotto winning) {
         if (winning.get()
                 .stream()
-                .anyMatch(number -> Objects.equals(bonus.get(0), number))){
+                .anyMatch(number -> Objects.equals(bonus.get(0), number))) {
             throw new IllegalArgumentException("[ERROR] Must enter a number that does not overlap with the winning number.");
         }
     }

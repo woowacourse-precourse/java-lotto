@@ -42,7 +42,7 @@ public class Lotto {
         return number < START_NUMBER || number > END_NUMBER;
     }
 
-    public List<Integer> get(){
+    public List<Integer> get() {
         return List.copyOf(numbers);
     }
 
