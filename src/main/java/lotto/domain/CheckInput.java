@@ -11,6 +11,17 @@ import lotto.constant.ErrorMessage;
 
 public class CheckInput {
 
+    public int checkPurchaseAmountValid(String input) {
+        checkPurchaseAmountPattern(input);
+
+        int purchaseAmount = Integer.parseInt(input);
+
+        checkPurchaseAmountRange(purchaseAmount);
+        checkPurchaseAmountUnit(purchaseAmount);
+
+        return purchaseAmount;
+    }
+
     public void checkPurchaseAmountPattern(String input) {
         Pattern pattern = Pattern.compile(PURCHASE_AMOUNT_PATTERN);
         if (!pattern.matcher(input).matches()) {
