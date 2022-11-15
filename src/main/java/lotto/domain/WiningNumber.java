@@ -50,10 +50,23 @@ public class WiningNumber {
         }
     }
 
-    public void setBonusNumber(int bonusNumber) {
-        validateBonusNumberRange(bonusNumber);
-        validateBonusNumberOverlap(bonusNumber);
-        this.bonusNumber = bonusNumber;
+    public void setBonusNumber(String bonusNumber) {
+        int numbers = Integer.parseInt(bonusNumber);
+        validateBonusNumberBlank(bonusNumber);
+        validateBonusNumberRange(numbers);
+        validateBonusNumberOverlap(numbers);
+        this.bonusNumber = numbers;
+    }
+
+    private void validateBonusNumberBlank(String bonusNumber){
+        if (bonusNumber.isEmpty()) {
+            System.out.println(ERROR_MESSAGE + "보너스 번호가 비어있으면 안됩니다.");
+            throw new IllegalArgumentException();
+        }
+        if (bonusNumber.contains(" ")) {
+            System.out.println(ERROR_MESSAGE + "보너스 번호에 공백이 있으면 안됩니다.");
+            throw new IllegalArgumentException();
+        }
     }
 
     private void validateBonusNumberRange(int number) {
