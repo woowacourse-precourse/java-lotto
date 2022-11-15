@@ -3,10 +3,11 @@ package lotto.model;
 import lotto.view.OutputView;
 
 import java.util.List;
+import java.util.regex.Pattern;
 
 public class BonusNumber {
 
-    static OutputView outputView = new OutputView();
+    private static final Pattern pattern = Pattern.compile("^[0-9]*$");
 
     public static int checkBonusNumber(List<Integer> number, String bonus) {
         isNumber(bonus);
@@ -18,35 +19,29 @@ public class BonusNumber {
     public static boolean rangeNumber(String bonus){
         int number = Integer.parseInt(bonus);
         if(!(number >= 1 && number <=45)) {
-            inputError(outputView.rangeMsg());
+            User.inputError(OutputView.rangeMsg());
         }
         return true;
     }
 
     public static boolean isNumber(String bonus){
-        try {
-            int number = Integer.parseInt(bonus);
-        }catch (NumberFormatException e) {
-            //inputError(outputView.isNumberMsg());
+        if(!(pattern.matcher(bonus).matches())) {
+            User.inputError(OutputView.isNumberMsg());
         }
         return true;
     }
 
     public static boolean isEqualNumber(String bonus, List<Integer> number) {
-        int num = Integer.parseInt(bonus);
-        for(Integer i : number) {
-           isEqual(num,i);
+        int bonusNum = Integer.parseInt(bonus);
+        for(Integer num : number) {
+           isEqual(bonusNum, num);
         }
         return true;
     }
 
-    private static void isEqual(int num, int i) {
-        if(num == i) {
-            inputError(outputView.equalBonusMsg());
+    private static void isEqual(int num1, int num2) {
+        if(num1 == num2) {
+            User.inputError(OutputView.equalBonusMsg());
         }
-    }
-
-    private static void inputError(String error) {
-        throw new IllegalArgumentException(error);
     }
 }

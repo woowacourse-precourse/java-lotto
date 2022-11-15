@@ -9,19 +9,17 @@ import java.util.List;
 
 public class LottoNumber {
 
-    static OutputView outputView = new OutputView();
-
     public static List<List<Integer>> userLotto(int count) {
-        List<List<Integer>> lottos = new ArrayList<>();
+        List<List<Integer>> lotto = new ArrayList<>();
         for (int i = 0; i < count; i++) {
-            lottos.add(oneLotto());
+            lotto.add(oneLotto());
         }
-        return lottos;
+        return lotto;
     }
 
     public static void printUserLotto(List<List<Integer>> lotto) {
         for(int index=0;index<lotto.size();index++){
-            outputView.userLottoMsg(index, lotto);
+            OutputView.userLottoMsg(index, lotto);
         }
     }
 
