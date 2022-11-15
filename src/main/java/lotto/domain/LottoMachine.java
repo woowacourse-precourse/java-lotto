@@ -16,6 +16,7 @@ public class LottoMachine extends Lotto {
         List<Integer> convertNumbers = new ArrayList<>();
 
         for (String number : numbers.split(",")) {
+            validateIsNumber(number);
             convertNumbers.add(Integer.parseInt(number));
         }
 
@@ -50,6 +51,14 @@ public class LottoMachine extends Lotto {
     public void validateBonusNumberRange(int bonusNumber) {
         if (bonusNumber < MIN_NUMBER || bonusNumber > MAX_NUMBER) {
             throw new IllegalArgumentException("[ERROR] 보너스 번호는 1~45 사이의 숫자여야 합니다.");
+        }
+    }
+
+    public static void validateIsNumber(String number) {
+        try {
+            Integer.parseInt(number);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("[ERROR] 당첨 번호는 숫자만 입력 가능합니다.");
         }
     }
 }
