@@ -8,6 +8,8 @@ import java.util.List;
 
 public class BonusNumber {
     private int bonusNumber;
+    static final int SMALLEST_LOTTO_NUMBER = 1;
+    static final int BIGGEST_LOTTO_NUMBER = 45;
 
 
     public BonusNumber(List<Integer> numbers) {
@@ -37,7 +39,7 @@ public class BonusNumber {
     }
 
     private void inRangeValidate(int value) {
-        if (value < 1 || value > 45) {
+        if (value < SMALLEST_LOTTO_NUMBER || value > BIGGEST_LOTTO_NUMBER) {
             System.out.println("[ERROR] 보너스 번호는 1~45의 숫자여야 합니다.");
             throw new IllegalArgumentException();
         }

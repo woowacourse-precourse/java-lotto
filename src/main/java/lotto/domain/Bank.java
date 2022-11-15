@@ -13,6 +13,7 @@ public class Bank {
     List<Lotto> purchasedLottos;
     Lotto targetWinningLotto;
     DecimalFormat decimalFormat;
+    static final int LOTTO_PRICE = 1000;
 
     public Bank(List<Lotto> purchasedLottos, Lotto targetWinningLotto, int lottoAmount) {
         prizeCount = new PrizeCount();
@@ -66,7 +67,7 @@ public class Bank {
     }
 
     private void printReturnRate() {
-        double investmentCost = lottoAmount * 1000;
+        double investmentCost = lottoAmount * LOTTO_PRICE;
         double returnRate = (double) Math.round(totalPrizeMoney / investmentCost * 10000) / 100.0;
         System.out.println("총 수익률은 " + returnRate + "%입니다.");
     }

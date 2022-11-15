@@ -28,7 +28,7 @@ public class Cashier {
     }
 
     public void sellLotto(int userValue, List<Lotto> lottos) {
-        lottoAmount = checkInputPrice(userValue) / 1000;
+        lottoAmount = checkInputPrice(userValue) / LOTTO_PRICE;
         System.out.println(lottoAmount + "개를 구매했습니다.");
         releaseLotto(lottos);
     }
@@ -46,6 +46,6 @@ public class Cashier {
     }
 
     private boolean isDividedByThousand(int userValue) {
-        return userValue % 1000 == 0;
+        return userValue % LOTTO_PRICE == 0;
     }
 }

@@ -8,6 +8,9 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 public class Lotto {
     private final List<Integer> numbers;
+    static final int SMALLEST_LOTTO_NUMBER = 1;
+    static final int BIGGEST_LOTTO_NUMBER = 45;
+    static final int LOTTO_NUMBER_COUNT = 6;
 
     public List<Integer> getNumbers() {
         return numbers;
@@ -23,7 +26,8 @@ public class Lotto {
     }
 
     public Lotto() {
-        List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+        List<Integer> numbers = Randoms.pickUniqueNumbersInRange(SMALLEST_LOTTO_NUMBER, BIGGEST_LOTTO_NUMBER,
+                LOTTO_NUMBER_COUNT);
         countValidate(numbers);
         duplicateValidate(numbers);
         duplicateValidate(numbers);
@@ -47,7 +51,7 @@ public class Lotto {
 
     private void inRangeValidate(List<Integer> numbers) {
         for (int number : numbers) {
-            if (number < 1 || number > 45) {
+            if (number < SMALLEST_LOTTO_NUMBER || number > BIGGEST_LOTTO_NUMBER) {
                 System.out.println("[ERROR] 당첨 번호는 1~45의 숫자여야 합니다.");
                 throw new IllegalArgumentException();
             }

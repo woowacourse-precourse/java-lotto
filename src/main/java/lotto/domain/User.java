@@ -16,8 +16,7 @@ public class User {
         } catch (Exception e) {
             System.out.println("[ERROR] 숫자가 아닌 값이 입력되었습니다.");
             throw new IllegalArgumentException("[ERROR] 숫자가 아닌 값이 입력되었습니다.");
-        }
-        finally{
+        } finally {
             throw new NoSuchElementException("[ERROR] 숫자가 아닌 값이 입력되었습니다.");
         }
     }
