@@ -2,35 +2,28 @@
 
 ## 💭 시스템 출력 - Printer
 
-- [x] 🖥️ 로또 구매안내 문구 - printInfoMoneyInput
-- [x] 🖥️ 로또 구매결과 출력 - printLottoGroup
-    - [x] 발행한 로또 수량 출력
-    - [x] 발행한 로또 번호 출력
+### 안내문구
 
-- [x] 🖥️ 당첨 통계 출력
-    - [x] 1 ~ 5등 결과 출력 - printTotalScore
-    - [x] 수익률 출력 - printMoneyReturn
+- [x] 🖥️ 로또 구매안내 - printInfoMoneyInput
+- [x] 🖥️ 로또 결과 입력안내 - printInfoInputResult
+- [x] 🖥️ 보너스 번호 입력 안내 - printInfoInputBonus
+
+### 결과출력
+
+- [x] 🖥️ 발행한 로또 출력 printLottoGroup
+- [x] 🖥️ 로또 결과 통계 출력 printTotalScore
+- [x] 🖥️ 수익률 출력 printMoneyReturn
 
 ## 🕹️ 로또 프로그램 - GameManager
 
 - [x] 🗣️ 사용자의 로또 구입금액 입력
-    - [x] ⚠️ 숫자가 아니라면 예외
-    - [x] ⚠️ 1,000으로 나누어 떨어지지 않으면 예외
-
-- [ ] 🗣️ 사용자의 로또 당첨번호 입력
-    - [ ] 당첨번호를 받는다.
-        - [x] ⚠️ 숫자가 `,`로 구분되어 있지 않으면 예외
-        - [x] ⚠️ 숫자가 아닌 다른값이 들어오면 예외
-        - [x] ⚠️ 숫자가 1 ~ 45 사이의 숫자가 아니면 예외
-        - [x] ⚠️ 중복된 숫자가 존재하면 예외
+- [x] 🗣️ 사용자의 로또 당첨번호 입력
+    - [x] 당첨번호를 받는다.
     - [x] 보너스번호를 받는다.
-        - [x] ⚠️ 숫자가 아닌 다른값이라면 예외
-        - [x] ⚠️ 숫자가 1 ~ 45 사이의 숫자가 아니면 예외
-        - [x] ⚠️ 당첨번호와 중복된 숫자가 존재하면 예외
 
 - [x] 입력받은 값을 이용해 로또를 - play
-    - [x] 주어진 금액에 대해 로또를 발행한다. - `Publisher`
     - [x] 로또 결과 정보를 가지고 있다. - `Lotto`
+    - [x] 주어진 금액에 대해 로또를 발행한다. - `Publisher`
     - [x] 당첨 통계를 구한다. - `Checker`
     - [x] 수익률을 구한다. - `MoneyManger`
 
@@ -38,22 +31,35 @@
 
 - [x] 로또 정보를 가지고있다.
     - [x] 6자리의 로또 정보를 가진다. - `numbers`
-    - [x] 예외처리 - validateBasicNumber
+    - [x] 예외처리 - `validateBasicNumber`
         - [x] ⚠️ 6자리 숫자가 아니면 예외
-        - [x] ⚠️ 중복된 숫자가 존재하면 예외 - isDuplicate
-        - [x] ⚠️ 숫자가 1 ~ 45 사이의 숫자가 아니면 예외 - isOutOfRangeNumbers
+        - [x] ⚠️ 중복된 숫자가 존재하면 예외
+        - [x] ⚠️ 숫자가 1 ~ 45 사이의 숫자가 아니면 예외
 
 ## 🎲 로또 발행 - Publisher
 
 - [x] 주어진 금액에 해당하는 로또를 발행한다. - getLottoGroup
+    - [x] 예외처리 - `validateMoneyInput`
+        - [x] ⚠️ 숫자가 아닌값이 존재하면 예외
+        - [x] ⚠️ 1000으로 나누어떨어지지 않으면 예외
     - [x] 로또 수량을 구한다. - getLottoCount
     - [x] 로또 번호를 구한다. - getLottoNumber
         - [x] 오름차순으로 정렬한다.
 
+## 📝 당첨 결과값 - LottoResultDto
+
+- [x] 예외처리 - `validateMoneyInput`
+    - [x] ⚠️ 당첨번호에 대한 예외 - `validateBasicNumber`
+        - [x] ⚠️ 6자리 숫자가 아니면 예외
+        - [x] ⚠️ 중복된 숫자가 존재하면 예외
+        - [x] ⚠️ 숫자가 1 ~ 45 사이의 숫자가 아니면 예외
+    - [x] ⚠️ 보너스 번호에 대한 예외 - `validateBonusNumber`
+        - [x] ⚠️ 당첨번호와 중복되면 예외
+        - [x] ⚠️ 숫자가 1 ~ 45 사이의 숫자가 아니면 예외
+
 ## 🔎 당첨 확인 - Checker
 
 - [x] 사용자가 구매한 로또 번호와 당첨 번호를 비교한다.
-
     - [x] 1 ~ 5등 통계를 구한다. - getTotalScore
         - [x] 로또 번호들로부터 등수를 저장 - setResultScoreByLottoGroup
             - [x] 로또 번호로부터 등수를 저장 - setResultScoreByLotto
@@ -78,22 +84,29 @@
 
 # 📚 참고값 목록
 
-## 🏆 당첨 등수
+## 🏆 순위별 당첨금 - ResultPrice
+
+- [x] 1등: 6개 번호 일치 / 2,000,000,000원 - `FIRST`
+- [x] 2등: 5개 번호 + 보너스 번호 일치 / 30,000,000원 - `SECOND`
+- [x] 3등: 5개 번호 일치 / 1,500,000원 - `THIRD`
+- [x] 4등: 4개 번호 일치 / 50,000원 - `FOURTH`
+- [x] 5등: 3개 번호 일치 / 5,000원 - `FIFTH`
+
+## ⚠️ 에러메시지 - ErrorMessage
 
 - [x] 당첨금 - ResultPrice
-    - [x] 1등: 6개 번호 일치 / 2,000,000,000원 - FIRST
-    - [x] 2등: 5개 번호 + 보너스 번호 일치 / 30,000,000원 - SECOND
-    - [x] 3등: 5개 번호 일치 / 1,500,000원 - THIRD
-    - [x] 4등: 4개 번호 일치 / 50,000원 - FOURTH
-    - [x] 5등: 3개 번호 일치 / 5,000원 - FIFTH
+    - [x] 중복된 숫자 - `DUPLICATED_NUMBER`
+    - [x] 1000으로 나누어 떨어지지 않음 - `NOT_DIVIDED_BY_THOUSAND`
+    - [x] 1~45 범위외 숫자 - `NUMBER_OUT_OF_RANGE`
+    - [x] 올바르지 않은 입력 - `INVALID_FORMAT`
 
-## ⚠️ 에러메시지
+## 🛠 상수값 - LottoCode
 
-- [x] 당첨금 - ResultPrice
-    - [x] 중복된 숫자 - DUPLICATED_NUMBER
-    - [x] 1000으로 나누어 떨어지지 않음 - NOT_DIVIDED_BY_THOUSAND
-    - [x] 1~45 범위외 숫자 - NUMBER_OUT_OF_RANGE
-    - [x] 올바르지 않은 입력 - INVALID_FORMAT
+- [x] 로또번호 최소값 : 1 - `MIN_LOTTO_NUMBER`
+- [x] 로또번호 최대값 : 45 - `MAX_LOTTO_NUMBER`
+- [x] 로또번호 개수 : 6 - `COUNT_LOTTO_NUMBER`
+- [x] 보너스 번호 개수 : 1 - `COUNT_BONUS_NUMBER`
+- [x] 로또 1장 가격 : 1000 - `LOTTO_PRICE`
 
 ## 📝 실행결과 예시
 
