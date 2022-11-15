@@ -96,11 +96,6 @@ public class LottoApplication {
     private void comparePrizeState(Map<Rank, Integer> winStatus, Lotto lotto, int bonusNumber, Lotto buyLotto) {
         int compareCount = compare.getCompareCount(buyLotto.getNumbers(), lotto.getNumbers());
         boolean bonusCheck = compare.getBonusCheck(bonusNumber, buyLotto.getNumbers());
-
-        if (bonusCheck) {
-            compareCount++;
-        }
-
         Rank rank = Rank.getRank(compareCount, bonusCheck);
         winStatus.put(rank, winStatus.getOrDefault(rank, 0) + 1);
     }

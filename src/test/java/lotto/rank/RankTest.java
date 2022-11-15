@@ -47,7 +47,7 @@ class RankTest {
         @Test
         void prizeRank2() {
             // given
-            int number = 6;
+            int number = 5;
             boolean bonus = true;
             Rank result = Rank.valueOf(Place.SECOND);
 
@@ -64,7 +64,7 @@ class RankTest {
         void prizeRank3() {
             // given
             int number = 5;
-            boolean bonus = true;
+            boolean bonus = false;
             Rank result = Rank.valueOf(Place.THIRD);
 
             // when
@@ -96,7 +96,7 @@ class RankTest {
         void prizeRank5() {
             // given
             int number = 3;
-            boolean bonus = true;
+            boolean bonus = false;
             Rank result = Rank.valueOf(Place.FIFTH);
 
             // when

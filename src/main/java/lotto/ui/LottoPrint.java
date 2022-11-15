@@ -42,8 +42,8 @@ public class LottoPrint {
     }
 
     private void printPrizeDetails(Map<Rank, Integer> winStats, Rank rank, String converterProfit) {
-        if (rank.getNumber() == 6 && rank.getBonusYN()) {
-            System.out.printf(Message.WIN_DETAILS_SECOND_PLACE, rank.getNumber() - 1, converterProfit, winStats.get(rank));
+        if (rank.getNumber() == 5 && rank.getBonusYN()) {
+            System.out.printf(Message.WIN_DETAILS_SECOND_PLACE, rank.getNumber(), converterProfit, winStats.get(rank));
             return;
         }
         System.out.printf(Message.WIN_DETAILS, rank.getNumber(), converterProfit, winStats.get(rank));
