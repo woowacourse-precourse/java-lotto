@@ -1,7 +1,12 @@
 package lotto;
 
+import lotto.Controller.DoLotto;
+
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+
+        DoLotto doLotto = new DoLotto();
+        doLotto.play();
+
     }
 }
