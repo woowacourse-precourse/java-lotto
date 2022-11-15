@@ -34,10 +34,45 @@ public class LottoServiceTest {
                 .hasMessage(ArgumentExceptionMessage.INPUT_NOT_INTEGER.getMessage());
     }
 
-    @DisplayName("구매 금액이 1000으로 나누어 떨어지는 경우 정상 동작한다.")
+    @DisplayName("구매 금액이 로또 구매금액으로 나누어 떨어지는 경우 정상 동작한다.")
     @Test
     void  divideLottoPrice() {
         LottoService lottoService = new LottoService();
         assertThat(lottoService.toPurchaseAmount("9000")).isEqualTo(9);
+    }
+
+    @DisplayName("로또 당첨 번호가 정수가 아닌경우, 예외가 발생한다.")
+    @Test
+    void toLottoByNotInteger() {
+        LottoService lottoService = new LottoService();
+        assertThatThrownBy(() -> lottoService.toLotto("a,b,c,d,e,f"))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(ArgumentExceptionMessage.INPUT_NOT_INTEGER.getMessage());
+    }
+
+    @DisplayName("로또 당첨 번호의 길이가 로또 번호 개수와 다른 경우, 예외가 발생한다.")
+    @Test
+    void toLottoByOutOfLength() {
+        LottoService lottoService = new LottoService();
+        assertThatThrownBy(() -> lottoService.toLotto("1,2,3,4,5,6,7"))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(ArgumentExceptionMessage.INPUT_LOTTO_UNCONFORMABLE_LENGTH.getMessage());
+    }
+
+    @DisplayName("로또 당첨 번호에 중복이 존재하는 경우, 예외가 발생한다.")
+    @Test
+    void toLottoByOverLap() {
+        LottoService lottoService = new LottoService();
+        assertThatThrownBy(() -> lottoService.toLotto("1,2,3,4,4,5"))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(ArgumentExceptionMessage.INPUT_LOTTO_NUMBER_OVERLAP.getMessage());
+    }
+
+    @DisplayName("로또 당첨 번호가 알맞은 번호인 경우, 정상 동작한다.")
+    @Test
+    void  toLotto() {
+        LottoService lottoService = new LottoService();
+        assertThat(lottoService.toLotto("1,2,3,4,5,6"))
+                .usingRecursiveComparison().isEqualTo(new Lotto(List.of(1, 2, 3, 4, 5, 6)));    // usingRecursiveComparison, 내부의 필드들을 모두 비교한다.(재귀) 내부 필드 값만 같다면, 오브젝트가 달라도 테스트 통과
     }
 }
