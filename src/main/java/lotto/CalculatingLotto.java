@@ -6,6 +6,7 @@ public class CalculatingLotto {
     private static final int LOTTONUMCOUNT=6;
     private static final int YES=1;
     private static final int NO=0;
+    private enum Rank {FAILED, FIRST, SECOND, THIRD, FOURTH, FIFTH}
 
     public int calculateLottoRank(List<Integer> winningLotto, int bonus, List<Integer> oneLotto){
         int sameNumCount=0;
@@ -34,6 +35,25 @@ public class CalculatingLotto {
             }
         }
         return false;
+    }
+
+    public int getLottoRank(int sameNumCount, boolean bonusCount){
+        if(sameNumCount==3){
+            return Rank.FIFTH.ordinal();
+        }
+        if(sameNumCount==4){
+            return Rank.FOURTH.ordinal();
+        }
+        if(sameNumCount==5){
+            if(!bonusCount){
+                return Rank.THIRD.ordinal();
+            }
+            return Rank.SECOND.ordinal();
+        }
+        if(sameNumCount==6){
+            return Rank.FIRST.ordinal();
+        }
+        return Rank.FAILED.ordinal();
     }
 
     public List<Integer> calculateAllLotto(List<Integer> winningLotto, int bonus, List<List<Integer>> allLotto){
