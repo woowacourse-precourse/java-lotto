@@ -6,7 +6,6 @@ import static lotto.InputView.inputBonusNumber;
 import static lotto.InputView.inputPurchase;
 import static lotto.InputView.inputWinLotto;
 import static lotto.Lottos.createRandomLottos;
-import static lotto.utils.Messages.ERROR_DIGIT_MESSAGE;
 import static lotto.utils.Messages.ERROR_DUPLICATION_MESSAGE;
 
 public class LottoController {

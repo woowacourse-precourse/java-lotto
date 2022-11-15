@@ -53,7 +53,8 @@ public class InputView {
 
     private static void isCorrectPattern(String inputWinLotto) {
         if (!Pattern.matches(WIN_LOTTO_NUMBER_REGEX, inputWinLotto)) {
-            throw new IllegalArgumentException(ERROR_PATTERN_MESSAGE);
+            System.out.println(ERROR_PATTERN_MESSAGE);
+            throw new IllegalArgumentException();
         }
     }
 }

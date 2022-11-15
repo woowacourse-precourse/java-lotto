@@ -28,7 +28,8 @@ public class Lotto {
 
     private void validateLength(List<Integer> numbers) {
         if (numbers.size() != 6) {
-            throw new IllegalArgumentException(ERROR_LENGTH_MESSAGE);
+            System.out.println(ERROR_LENGTH_MESSAGE);
+            throw new IllegalArgumentException();
         }
     }
 
@@ -36,7 +37,8 @@ public class Lotto {
         for(int number : numbers){
 
             if(number<1 || number >45){
-                throw new IllegalArgumentException(ERROR_RANGE_MESSAGE);
+                System.out.println(ERROR_RANGE_MESSAGE);
+                throw new IllegalArgumentException();
             }
         }
     }
@@ -46,7 +48,8 @@ public class Lotto {
                 .distinct().count();
 
         if (numbers.size() != removedDuplicateSize) {
-            throw new IllegalArgumentException(ERROR_DUPLICATION_MESSAGE);
+            System.out.println(ERROR_DUPLICATION_MESSAGE);
+            throw new IllegalArgumentException();
         }
     }
 }
