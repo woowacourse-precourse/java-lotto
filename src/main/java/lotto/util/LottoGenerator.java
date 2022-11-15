@@ -4,8 +4,9 @@ import camp.nextstep.edu.missionutils.Randoms;
 import lotto.config.InputConfig;
 import lotto.domain.Lotto;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.LongStream;
 
 public class LottoGenerator {
     private final int START_INCLUSIVE = InputConfig.START_INCLUSIVE;
@@ -14,11 +15,10 @@ public class LottoGenerator {
 
 
     public List<Lotto> purchase(long amount) {
-        List<Lotto> list = new ArrayList<>();
-        for (int i = 0; i < amount; i++) {
-            list.add(getLotto());
-        }
-        return list;
+        List<Lotto> purchased = LongStream.range(0, amount)
+                .mapToObj(i -> getLotto())
+                .collect(Collectors.toList());
+        return purchased;
     }
 
     private Lotto getLotto() {
