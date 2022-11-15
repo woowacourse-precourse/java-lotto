@@ -1,6 +1,7 @@
 package lotto;
 
-import lotto.domain.Player;
+import lotto.domain.Money;
+import lotto.domain.InputNumber;
 import lotto.domain.RandomNumber;
 import lotto.view.Print;
 
@@ -8,16 +9,18 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import static lotto.domain.Player.*;
+import static lotto.domain.Money.numberOfLottos;
+import static lotto.domain.InputNumber.*;
 
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
-        List<Integer> numbers = new ArrayList<>();
+        // 구입금액
         Print.requestMoneyMessage();
-        Player.getMoney();
+        Money.getMoney();
         Print.howmanyLottos(numberOfLottos);
 
+        // 구매 장수만큼 로또 번호 출력
         Compare.randomLottos = new HashMap<>();
         Compare.userList = new ArrayList<>();
         for (int i = 0; i < numberOfLottos; i++) {
@@ -29,17 +32,20 @@ public class Application {
         }
 
         Print.requestWinNumbers();
-        List<Integer> correctNumbers = Player.getWinNumbers();
+        List<Integer> correctNumbers = InputNumber.getWinNumbers();
         for (int i = 0; i < correctNumbers.size(); i++) {
             Compare.userList.add(correctNumbers.get(i));
         }
         Print.winNumbers();
         Print.requestBonusNumber();
-        Player.getBonusNumber();
+        InputNumber.getBonusNumber();
         Compare.bonusNumber = bonusNumber;
         Print.bonusNumber();
 
         Compare.numbers();
+        Compare.getResult();
+
+        FinalResult.printFinalResult();
 
 
     }
