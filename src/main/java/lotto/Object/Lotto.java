@@ -4,9 +4,11 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import lotto.Exception.Exception;
 
 public class Lotto {
     private final List<Integer> numbers;
+    Exception exception = new Exception();
 
     public String getNumbersToString() {
         return numbers.toString();
@@ -30,8 +32,7 @@ public class Lotto {
 
     private void numberSizeValidate(List<Integer> numbers) {
         if (numbers.size() != 6) {
-            System.out.println("[ERROR] 입력 숫자의 개수는 6개여야 합니다.");
-            throw new IllegalArgumentException();
+            exception.throwInvalidSizeException();
         }
     }
 
@@ -39,16 +40,14 @@ public class Lotto {
         Set<Integer> noDuplicateNumbers = new HashSet<>(numbers);
 
         if (!(numbers.size()==noDuplicateNumbers.size())) {
-            System.out.println("[ERROR] 중복된 숫자가 존재해서는 안 됩니다.");
-            throw new IllegalArgumentException();
+            exception.throwInvalidInputException();
         }
     }
 
     private void numberRangeValidate (List<Integer> numbers) {
         for (int value : numbers) {
             if (value<1||value>45) {
-                System.out.println("[ERROR] 숫자의 범위는 1 이상 45 이하여야 합니다.");
-                throw new IllegalArgumentException();
+                exception.throwInvalidNumberRangeException();
             }
         }
     }

@@ -65,15 +65,17 @@ public class User {
     }
 
     public void inputWinningNumber() throws IllegalArgumentException  {
-        List<Integer> winningNumber;
+        List<Integer> winningNumber = new ArrayList<>();
 
         try {
             winningNumber = splitStringToIntegerArray(Console.readLine());
         } catch(NumberFormatException e) {
             exception.throwInvalidInputException();
-            throw new IllegalArgumentException();
         }
 
+        if (winningNumber.size()!=6) {
+            exception.throwInvalidSizeException();
+        }
         this.winningNumber=winningNumber;
     }
 

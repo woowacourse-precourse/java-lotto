@@ -14,7 +14,9 @@ public enum Message {
     WINNING_RESULT_MESSAGE_6CORRECT("6개 일치 (2,000,000,000원) - "),
 
     INVALID_INPUT_ERROR("[ERROR] 잘못된 입력 형식입니다."),
-    INVALID_NUMBER_RANGE_ERROR("[ERROR] 잘못된 숫자 범위입니다.");
+    INVALID_NUMBER_RANGE_ERROR("[ERROR] 잘못된 숫자 범위입니다."),
+    INVALID_SIZE_ERROR("[ERROR] 입력 숫자의 개수는 6개여야 합니다.");
+
 
 
     private final String printingMessage;
