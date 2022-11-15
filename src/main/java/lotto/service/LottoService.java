@@ -27,6 +27,18 @@ public class LottoService {
         lottoMachine.addBonusNumber(Integer.parseInt(bonusNumber));
     }
 
+    public void saveResultLotto() {
+        for (Lotto lotto : user.getLotties()) {
+            int winningCount = matchLottoCount(lotto.getNumbers(), lottoMachine.getNumbers());
+
+            if (checkBonusNumber(lottoMachine.getBonusNumber(), winningCount, lotto.getNumbers())) {
+                user.saveResult(RewardFactory.createRewardByLottoCount(winningCount));
+            } else {
+                user.saveResult(RewardFactory.createBonusReward());
+            }
+        }
+    }
+
     public int matchLottoCount(List<Integer> lottoNumbers, List<Integer> winningNumbers) {
         int count = 0;
         for (Integer number : lottoNumbers) {
@@ -43,5 +55,10 @@ public class LottoService {
         }
 
         return false;
+    }
+
+    //테스트를 위한 메서드
+    public User getUserForTest() {
+        return user;
     }
 }
