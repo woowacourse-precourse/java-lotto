@@ -1,6 +1,5 @@
 package lotto.view;
 
-
 import camp.nextstep.edu.missionutils.Console;
 import java.text.DecimalFormat;
 import lotto.domain.Lotto;
