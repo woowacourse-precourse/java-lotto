@@ -9,6 +9,11 @@ import java.util.EnumMap;
 import java.util.List;
 
 public class ResultMessage {
+    public static void printLottoInformation(List<Lotto> lottos) {
+        printNumberOfPurchase(lottos.size());
+        print(lottos);
+    }
+
     public static void printNumberOfPurchase(int number) {
         printFormat(
                 ResultStatistics.NUMBER_OF_PURCHASE,
@@ -42,7 +47,7 @@ public class ResultMessage {
         }
     }
 
-    public static void printLottos(List<Lotto> lottos) {
+    public static void print(List<Lotto> lottos) {
         for (Lotto lotto : lottos) {
             lotto.printLottoNumbers();
         }

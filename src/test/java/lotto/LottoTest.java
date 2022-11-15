@@ -37,7 +37,7 @@ class LottoTest extends NsTest {
     @DisplayName("지불한 금액 만큼의 로또가 생성된다.")
     @Test
     void generateLotto() {
-        assertThat(Generator.generate(10).size())
+        assertThat(Generator.generate(10000).size())
                 .isEqualTo(10);
     }
 

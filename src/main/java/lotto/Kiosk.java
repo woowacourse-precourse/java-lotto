@@ -13,10 +13,9 @@ public class Kiosk {
 
     static public void start(Buyer buyer) {
         try {
-            int payment = getPurchaseAmount();
-            int numberOfLottos = countLottos(payment);
-            List<Lotto> lottos = Generator.generate(numberOfLottos);
-            printLottoInformation(numberOfLottos, lottos);
+            int payment = getPayment();
+            List<Lotto> lottos = Generator.generate(payment);
+            printLottoInformation(lottos);
             buyer.buy(lottos);
             List<Integer> winningNumbers = getWinningNumbers();
             int bonusNumber = getBonusNumber(winningNumbers);
@@ -26,9 +25,8 @@ public class Kiosk {
         }
     }
 
-    static private void printLottoInformation(int numberOfLottos, List<Lotto> lottos) {
-        ResultMessage.printNumberOfPurchase(numberOfLottos);
-        ResultMessage.printLottos(lottos);
+    static private void printLottoInformation(List<Lotto> lottos) {
+        ResultMessage.printLottoInformation(lottos);
     }
 
     static private List<Integer> getWinningNumbers() {
@@ -46,7 +44,7 @@ public class Kiosk {
         ResultMessage.printYield(Calculator.getYield(payment, resultStatistics));
     }
 
-    static private int getPurchaseAmount() {
+    static private int getPayment() {
         GuideMessage.printGetPayment();
         return Input.getPayment();
     }

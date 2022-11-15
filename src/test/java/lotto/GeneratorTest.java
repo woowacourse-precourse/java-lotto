@@ -13,7 +13,7 @@ public class GeneratorTest {
     @DisplayName("로또 발행 테스트")
     @Test
     void 발행한_로또_개수_테스트() {
-        assertThat(Generator.generate(7).size())
+        assertThat(Generator.generate(7000).size())
                 .isEqualTo(7);
     }
 
