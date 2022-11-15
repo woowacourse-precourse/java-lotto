@@ -19,7 +19,7 @@ public class LottoManager {
     private void makeLottos(int amount){
         for (int i = 0; i < amount; i++){
             Lotto lotto = new Lotto(Randoms.pickUniqueNumbersInRange(1, 45, 6));
-            lottos.set(i, lotto);
+            lottos.add(lotto);
         }
     }
 
@@ -85,5 +85,9 @@ public class LottoManager {
 
     int getWinCount(int idx){
         return winCounts.get(idx);
+    }
+
+    List<Lotto> getLottos(){
+        return lottos;
     }
 }
