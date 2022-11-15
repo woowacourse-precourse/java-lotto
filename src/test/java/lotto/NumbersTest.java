@@ -10,14 +10,20 @@ public class NumbersTest {
     @ParameterizedTest
     @DisplayName("로또 당첨 등수 확인")
     @CsvSource(value = {
-            "1,NOTHING",
-            "2,NOTHING",
-            "3,THREE",
-            "4,FOUR",
-            "5,FIVE",
-            "6,SIX"
+            "1,false,NOTHING",
+            "1,true,NOTHING",
+            "2,false,NOTHING",
+            "2,true,NOTHING",
+            "3,false,THREE",
+            "3,true,THREE",
+            "4,false,FOUR",
+            "4,true,FOUR",
+            "5,false,FIVE",
+            "5,true,FIVE_WITH_BONUS",
+            "6,false,SIX",
+            "6,true,SIX"
     })
-    void matchLottoRank(int count, Numbers findRank) {
-        assertThat(Numbers.findRank(count)).isEqualTo(findRank);
+    void matchLottoRank(int count, boolean bonus, Numbers findRank) {
+        assertThat(Numbers.findRank(count, bonus)).isEqualTo(findRank);
     }
 }
