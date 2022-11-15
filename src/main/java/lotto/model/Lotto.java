@@ -49,6 +49,10 @@ public class Lotto {
         return numbers;
     }
 
+    public List<Integer> getIntegerNumbers() {
+        return numbers.stream().map(LottoNumber::getNumber).collect(Collectors.toList());
+    }
+
     @Override
     public String toString() {
         return String.valueOf(numbers);
