@@ -3,8 +3,6 @@ package lotto.ExceptionTest;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import lotto.Exception.Exception;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
 public class ExceptionTest {
 
     Exception exception = new Exception();
