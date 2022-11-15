@@ -81,34 +81,55 @@ public class Application {
         System.out.println(LOTTO_RESULT);
         System.out.println(LOTTO_RESULT_LINE);
         List lottoAnswer = answer.getNumbers();
+        HashMap result = setMap();
+
+        for (List<Integer> lotto : lottos) {
+            int count=calculateCount(lotto,lottoAnswer);
+            int isLucky=checkIsLucky(lotto,luckyNum);
+            count=checkIsSeven(count,isLucky);
+            int num =setNum(count,result);
+            result.put(count, num);
+        }
+        
+        printResult(result);
+        return result;
+    }
+    public static int setNum(int count,HashMap result){
+        int num=0;
+        if (count > 2 && count < 8) {
+            num = (int) result.get(count);
+        }
+        num++;
+        return num;
+    }
+    public static int checkIsSeven(int count,int isLucky){
+        if (count == 5 && isLucky == 1) {
+            count = 7;
+        }
+        return count;
+    }
+    public static int checkIsLucky(List lotto,int luckyNum){
+        int isLucky = 0;
+        if (lotto.contains(luckyNum)) {
+            isLucky = 1;
+        }
+        return isLucky;
+    }
+    public static HashMap setMap(){
         HashMap result = new HashMap();
         for (int loop = 3; loop < 8; loop++) {
             result.put(loop, 0);
         }
-        //수정필요 함수 분리
-        for (List<Integer> lotto : lottos) {
-            int count = 0;
-            int isLucky = 0;
-            int num = 0;
-            for (Object number : lottoAnswer) {
-                if (lotto.contains(number)) {
-                    count++;
-                }
-            }
-            if (lotto.contains(luckyNum)) {
-                isLucky = 1;
-            }
-            if (count == 5 && isLucky == 1) {
-                count = 7;
-            }
-            if (count > 2 && count < 8) {
-                num = (int) result.get(count);
-            }
-            num++;
-            result.put(count, num);
-        }
-        printResult(result);
         return result;
+    }
+    public static int calculateCount(List<Integer> lotto,List lottoAnswer){
+        int count=0;
+        for (Object number : lottoAnswer) {
+            if (lotto.contains(number)) {
+                count++;
+            }
+        }
+        return count;
     }
 
     public static double calculateProfit(int price, HashMap result) {
@@ -166,12 +187,6 @@ public class Application {
             System.out.println(ERROR_MESSAGE);
 //            throw new IllegalArgumentException(ERROR_MESSAGE);
         }
-//        for (int loop = 0; loop < price.length(); loop++) {
-//            if (!Character.isDigit(price.charAt(loop))) {
-//                System.out.println(ERROR_MESSAGE + NOT_NUMBER_MESSAGE);
-//                throw new IllegalArgumentException(ERROR_MESSAGE + NOT_NUMBER_MESSAGE);
-//            }
-//        }
         return priceChecked;
     }
 
