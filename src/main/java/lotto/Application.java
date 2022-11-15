@@ -77,20 +77,57 @@ public class Application {
 
     public static int inputCost(String userInput) {
         userInput = userInput.strip();
-        //TODO : 기능구현, 예외처리
-        return 0;
+        int cost;
+
+        try {
+            cost = Integer.parseInt(userInput);
+        } catch (NumberFormatException ex) {
+            throw new IllegalArgumentException("[ERROR] 가격은 숫자를 입력해주세요");
+        }
+
+        if (cost < 0)
+            throw new IllegalArgumentException("[ERROR] 가격은 0 이상의 숫자여야만 합니다.");
+        if (cost % 1000 != 0)
+            throw new IllegalArgumentException("[ERROR] 가격은 1000원 단위로만 입력 가능합니다.");
+
+        return cost;
     }
 
     public static List<Integer> inputWinningLottoNums(String userInput) {
+        userInput = userInput.strip();
+        String[] inputNums = userInput.split(",");
+        List<Integer> lottoNums = new ArrayList<>();
 
-        //TODO : 기능구현, 예외처리
-        return Arrays.asList(9, 8, 7, 6, 5, 4);
+        for (int i = 0; i < inputNums.length; i++) {
+            try {
+                int num = Integer.parseInt(inputNums[i]);
+                lottoNums.add(num);
+            } catch (NumberFormatException ex) {
+                throw new IllegalArgumentException("[ERROR] 로또번호에는 숫자와 ,만 입력해주세요");
+            }
+        }
+
+        if (lottoNums.size() != 6)
+            throw new IllegalArgumentException("[ERROR] 로또번호는 6개의 숫자를 입력해주세요");
+
+        if (lottoNums.stream().anyMatch(x -> x > 45 || x < 1))
+            throw new IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
+        return lottoNums;
     }
 
     public static int inputWinningBonusNum(String userInput) {
-        //TODO : 기능구현, 예외처리
-        return 0;
+        userInput = userInput.strip();
+        int bonus;
+
+        try {
+            bonus = Integer.parseInt(userInput);
+        } catch (NumberFormatException ex) {
+            throw new IllegalArgumentException("[ERROR] 보너스번호는 숫자를 입력해주세요");
+        }
+
+        if (bonus > 45 || bonus < 1)
+            throw new IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
+
+        return bonus;
     }
-
-
 }
