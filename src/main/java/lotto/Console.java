@@ -14,11 +14,18 @@ public class Console {
         String input = readLine();
         String replacedInput = input.replaceAll("[^0-9]", "");
         if (input != replacedInput) {
-            System.out.println("[ERROR] 올바른 숫자를 입력하세요.");
+            System.out.println("[ERROR] 숫자를 입력해주세요.");
             throw new IllegalArgumentException();
         }
-
         int money = Integer.valueOf(replacedInput);
+        if (money % 1000 != 0) {
+            System.out.println("[ERROR] 1,000원 단위가 아닙니다.");
+            throw new IllegalArgumentException();
+        }
+        if (money < 0  ) {
+            System.out.println("[ERROR] 양수가 아닙니다.");
+            throw new IllegalArgumentException();
+        }
         System.out.println(money);
         return money;
     }
