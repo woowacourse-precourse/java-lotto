@@ -18,6 +18,9 @@ public class Prize {
     static final String PURCHASE_LOTTO = "%d개를 구매했습니다.\n";
     static final String WINNING_NUMBER = "당첨 번호를 입력해 주세요.";
     static final String BONUS_NUMBER = "보너스 번호를 입력해 주세요.";
+    static final String WINNING_STATISTICS = "당첨 통계\n" + "---\n" + "3개 일치 (5,000원) - %d개\n"
+            + "4개 일치 (50,000원) - %d개\n" + "5개 일치 (1,500,000원) - %d개\n"
+            + "5개 일치, 보너스 볼 일치 (30,000,000원) - %d개\n" + "6개 일치 (2,000,000,000원) - %d개";
 
     static final int LOTTO_COUNT = 1000;
 
@@ -27,6 +30,7 @@ public class Prize {
         makeMyLotto(lottoCount);
         inputWinningLotto();
         compareLotto(winningLotto, myLottoNumbers);
+        lottoWinningHistory();
     }
 
     public int purchaseLotto() {
@@ -85,6 +89,15 @@ public class Prize {
             Integer hit = Hit.valueOfLabel(String.valueOf(count), String.valueOf(bouns));
             if (hit != null) countWinningTicket.set(hit, countWinningTicket.get(hit) + 1);
         }
+    }
+
+    public void lottoWinningHistory() {
+        Integer firstPrize = countWinningTicket.get(0);
+        Integer secondPrize = countWinningTicket.get(1);
+        Integer thirdPrize = countWinningTicket.get(2);
+        Integer fourthPrize = countWinningTicket.get(3);
+        Integer fifthPrize = countWinningTicket.get(4);
+        System.out.printf(WINNING_STATISTICS, fifthPrize, fourthPrize, thirdPrize, secondPrize, firstPrize);
     }
 
     private void validateMoney(String moneyValue) {
