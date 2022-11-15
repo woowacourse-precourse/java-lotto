@@ -17,5 +17,8 @@ public class InputView {
         return bonusNumber;
     }
 
-
+    public String askInputLottoLuckyNumbers() {
+        String LuckyLottoNumbers = Console.readLine();
+        return LuckyLottoNumbers;
+    }
 }
