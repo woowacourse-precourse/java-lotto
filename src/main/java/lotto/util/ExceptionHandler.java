@@ -81,9 +81,18 @@ public class ExceptionHandler {
     }
 
     public static void checkValidationBonusNumber(String input, List<Integer> winningNumbers) throws IllegalArgumentException {
-        Integer bonusNumber = Integer.parseInt(input);
+        int bonusNumber = Integer.parseInt(input);
+        isValidationRange(bonusNumber);
         if (winningNumbers.contains(bonusNumber)) {
             throw new IllegalArgumentException();
         }
     }
+
+    private static void isValidationRange(int bonusNumber) throws IllegalArgumentException {
+        if (Number.ONE <= bonusNumber && bonusNumber <= Number.FORTY_FIVE) {
+            return;
+        }
+        throw new IllegalArgumentException();
+    }
+
 }
