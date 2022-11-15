@@ -1,6 +1,5 @@
 package lotto.ui.message;
 
-import lotto.model.Lotto;
 import lotto.model.Rank;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -10,24 +9,8 @@ import java.util.List;
 import java.util.Map;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static lotto.ui.message.OutputMessageGenerator.*;
 
-public class OutputMessageGeneratorTest {
-    @DisplayName("`[구매 수량]개를 구매했습니다.` 를 반환한다.")
-    @Test
-    void getPurchaseLottoMessageTest() {
-        assertThat(getPurchaseLottoMessage(4))
-                .isEqualTo("4개를 구매했습니다.");
-    }
-
-    @DisplayName("오름차순으로 정렬한 로또 번호를 문자열로 반환한다.")
-    @Test
-    void getAllLottoNumbersByAscendingOrderTest() {
-        Lotto lotto = new Lotto(List.of(1, 4, 5, 6, 2, 3));
-        assertThat(getLottoNumbersByAscendingOrder(lotto))
-                .isEqualTo("[1, 2, 3, 4, 5, 6]");
-    }
-
+public class TotalResultPageGeneratorTest {
     @DisplayName("각 당첨 순위의 결과를 문자열 리스트로 반환한다.")
     @Test
     void getTotalRankCountMessageTest() {
@@ -48,14 +31,14 @@ public class OutputMessageGeneratorTest {
                 "6개 일치 (2,000,000,000원) - 1개"
         );
 
-        assertThat(getTotalRankCountMessage(rankCounts))
+        assertThat(TotalResultPageGenerator.getTotalRankCountMessage(rankCounts))
                 .isEqualTo(expected);
     }
 
     @DisplayName("`총 수익률은 [수익률]%입니다.`를 반환한다")
     @Test
     void getYieldMessageTest() {
-        assertThat(getYieldMessage("32.5"))
+        assertThat(TotalResultPageGenerator.getYieldMessage("32.5"))
                 .isEqualTo("총 수익률은 32.5%입니다.");
     }
 }

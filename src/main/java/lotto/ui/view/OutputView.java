@@ -1,6 +1,6 @@
 package lotto.ui.view;
 
-import lotto.ui.message.OutputMessageGenerator;
+import lotto.ui.message.*;
 import lotto.model.Lotto;
 import lotto.model.Rank;
 import lotto.controller.TotalResult;
@@ -25,21 +25,21 @@ public enum OutputView {
 
     private static void printPurchaseLottoMessage(List<Lotto> lotteries) {
         int lottoCnt = lotteries.size();
-        System.out.println(OutputMessageGenerator.getPurchaseLottoMessage(lottoCnt));
+        System.out.println(LottoReceiptGenerator.getPurchaseLottoMessage(lottoCnt));
     }
 
     private static void printLotteries(List<Lotto> lotteries) {
         lotteries.stream()
-                .map(OutputMessageGenerator::getLottoNumbersByAscendingOrder)
+                .map(LottoReceiptGenerator::getLottoNumbersByAscendingOrder)
                 .forEach(System.out::println);
     }
 
     private static void printTotalRankCountMessage(Map<Rank, Integer> rankCounts) {
-        OutputMessageGenerator.getTotalRankCountMessage(rankCounts)
+        TotalResultPageGenerator.getTotalRankCountMessage(rankCounts)
                 .forEach(System.out::println);
     }
 
     private static void printYieldMessage(String yield) {
-        System.out.println(OutputMessageGenerator.getYieldMessage(yield));
+        System.out.println(TotalResultPageGenerator.getYieldMessage(yield));
     }
 }
