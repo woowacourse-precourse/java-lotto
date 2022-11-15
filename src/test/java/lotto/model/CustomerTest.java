@@ -2,6 +2,9 @@ package lotto.model;
 
 import static lotto.constants.LottoConstant.LOTTO_NUMBER_SEPARATOR;
 import static lotto.constants.LottoConstant.LOTTO_PRICE;
+import static lotto.model.Rank.FIRST_PLACE;
+import static lotto.model.Rank.SECOND_PLACE;
+import static lotto.model.Rank.findRewardWithRank;
 import static lotto.validator.ErrorMessages.INVALID_PAID_MONEY_ERROR_MESSAGE;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
@@ -10,6 +13,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -73,5 +77,23 @@ public class CustomerTest {
 
         //then
         assertThat(afterResult[0] < afterResult[1]).isTrue();
+    }
+
+    @Test
+    @DisplayName("순위에 따라 알맞은 고객의 수익률을 반환한다.")
+    void checkGetRateOfProfit() {
+        //given
+        Map<Rank, Integer> lottoRanks = Rank.initRankMap();
+        lottoRanks.put(FIRST_PLACE, 1);
+        lottoRanks.put(SECOND_PLACE, 2);
+
+        int profit = findRewardWithRank(FIRST_PLACE) + findRewardWithRank(SECOND_PLACE) * 2;
+        float compareResult = profit / (float) paidMoney * 100;
+
+        //when
+        float result = customer.getRateOfProfit(lottoRanks);
+
+        //then
+        assertThat(result).isEqualTo(compareResult);
     }
 }

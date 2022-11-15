@@ -5,6 +5,7 @@ import static lotto.model.Rank.FIRST_PLACE;
 import static lotto.model.Rank.FOURTH_PLACE;
 import static lotto.model.Rank.SECOND_PLACE;
 import static lotto.model.Rank.THIRD_PLACE;
+import static lotto.model.Rank.findRewardWithRank;
 import static lotto.utils.Calculator.calculateCountsByRanks;
 import static lotto.utils.Calculator.calculateLottoRank;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
@@ -51,5 +52,24 @@ public class CalculatorTest {
                         FIFTH_PLACE, 0
                 )
         );
+    }
+
+    @Test
+    @DisplayName("순위에 따라 알맞는 수익률을 반환한다.")
+    void checkCalculateProfit() {
+        //given
+        Map<Rank, Integer> ranks = Rank.initRankMap();
+        ranks.put(FIRST_PLACE, 1);
+        ranks.put(SECOND_PLACE, 2);
+        int paidMoney = 5000;
+        int profit = findRewardWithRank(FIRST_PLACE) + findRewardWithRank(SECOND_PLACE) * 2;
+
+        float compareReuslt = profit / (float) paidMoney * 100;
+
+        //when
+        float result = Calculator.calculateRateOfProfit(ranks, paidMoney);
+
+        //then
+        assertThat(result).isEqualTo(compareReuslt);
     }
 }
