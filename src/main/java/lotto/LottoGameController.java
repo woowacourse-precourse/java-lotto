@@ -20,17 +20,17 @@ public class LottoGameController {
     }
 
     private Lottos purchaseLotto(int lottoTickets) {
-        Lottos lottos = lottoGenerator.makeLottos(lottoTickets);
+        Lottos lottos = lottoGenerator.generateLottoTickets(lottoTickets);
         SystemMessage.purchaseLotto(lottoTickets, lottos);
         return lottos;
     }
 
     private WinningLotto makeWinningLotto() {
         SystemMessage.winningNumber();
-        List<Integer> winningNumber = Input.winningNumber();
+        List<Integer> winningNumber = Input.winningTicket();
         SystemMessage.bonusNumber();
         int bonus = Input.getNumber();
-        return lottoGenerator.makeLotto(winningNumber, bonus);
+        return lottoGenerator.generateWinningTicket(winningNumber, bonus);
     }
 
     private LottoResult getResult(Lottos lottos, WinningLotto winningLotto) {

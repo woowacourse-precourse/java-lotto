@@ -9,16 +9,16 @@ public class LottoGenerator {
     private static final int MAX_NUMBER = 45;
     private static final int LOTTO_SIZE = 6;
 
-    public Lottos makeLottos(int lottoTickets) {
-        List<Lotto> lottos = new ArrayList<>();
-        for (int i = 0; i < lottoTickets; i++) {
+    public Lottos generateLottoTickets(int numberOfLottoTickets) {
+        List<Lotto> lottoTickets = new ArrayList<>();
+        for (int i = 0; i < numberOfLottoTickets; i++) {
             List<Integer> random = Randoms.pickUniqueNumbersInRange(MIN_NUMBER, MAX_NUMBER, LOTTO_SIZE);
-            lottos.add(new Lotto(random));
+            lottoTickets.add(new Lotto(random));
         }
-        return new Lottos(lottos);
+        return new Lottos(lottoTickets);
     }
 
-    public WinningLotto makeLotto(List<Integer> winningNumber, int bonus) {
+    public WinningLotto generateWinningTicket(List<Integer> winningNumber, int bonus) {
         return new WinningLotto(winningNumber, bonus);
     }
 }

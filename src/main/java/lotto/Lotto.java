@@ -21,8 +21,8 @@ public class Lotto {
         Collections.sort(this.numbers);
     }
 
-    public int count(Lotto other) {
-        return (int) other.numbers.stream()
+    public int countMatchingNumbers(Lotto otherLotto) {
+        return (int) otherLotto.numbers.stream()
                 .filter(this::checkContains)
                 .count();
     }

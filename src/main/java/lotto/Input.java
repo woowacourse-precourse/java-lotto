@@ -10,6 +10,9 @@ public class Input {
     private static final String NUMBER_FORMAT_ERROR = "[ERROR] 숫자를 입력해 주세요.";
     private static final String SEPARATOR_ERROR = "[ERROR] 구분자 '" + DELIMITER + "' 를 입력해 주세요.";
 
+    /**
+     * 구입 금액이나 보너스 번호를 입력받는데에 쓰이는 함수
+     */
     public static int getNumber() {
         return convertToInt(Console.readLine());
     }
@@ -22,7 +25,7 @@ public class Input {
         }
     }
 
-    public static List<Integer> winningNumber() {
+    public static List<Integer> winningTicket() {
         String input = Console.readLine();
         checkContainDelimiter(input);
         return Stream.of(input.split(DELIMITER))

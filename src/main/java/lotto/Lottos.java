@@ -15,7 +15,7 @@ public class Lottos {
     public List<Ranking> result(WinningLotto bonusLotto) {
         List<Ranking> winningRanks = new ArrayList<>();
         for (Lotto lotto : lottos) {
-            int count = lotto.count(bonusLotto);
+            int count = lotto.countMatchingNumbers(bonusLotto);
             boolean bonus = checkBonus(bonusLotto, lotto, count);
             winningRanks.add(Ranking.find(count, bonus));
         }
