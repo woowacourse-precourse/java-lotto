@@ -1,5 +1,7 @@
 package lotto;
 
+import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 
 public class WinningCheck {
@@ -18,7 +20,13 @@ public class WinningCheck {
         for(Lotto lotto : lottoList) {
             List<Integer> lottoNumbers = lotto.getNumbers();
             int matchCount = getMathCount(lottoNumbers);
+            if(matchCount < Rank.FIFTH.getMatchNumber())
+                continue;
+             if(isRankTwo(matchCount, lottoNumbers))
+                 matchCount = Rank.SECOND.getMatchNumber();
+             Rank.getRank(matchCount).plus();
         }
+        printWinningStatistics();
     }
 
     public int getMathCount(List<Integer> lottoNumbers) {
@@ -28,6 +36,18 @@ public class WinningCheck {
                 count += 1;
         }
         return count;
+    }
+
+    public boolean isRankTwo(int matchCount, List<Integer> lottoNumbers) {
+        return matchCount == 5 && lottoNumbers.contains(bonusNumber);
+    }
+
+    public void printWinningStatistics() {
+        System.out.println("당첨 통계");
+        System.out.println("---");
+        Arrays.stream(Rank.values())
+                .sorted(Comparator.reverseOrder())
+                .forEach(rank -> System.out.println(rank.getMessage() + rank.getStrCount()));
     }
 
 }
