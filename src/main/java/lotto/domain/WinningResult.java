@@ -18,22 +18,27 @@ public class WinningResult {
         this(winningLotto, bonusNumber, new HashMap<>());
     }
 
-    public void compareLotto(Lotto lotto) {
-        Rank.decide(countCoincide(lotto), isCoincideBonus());
+    public Map<Rank, Integer> getResults() {
+        return results;
     }
 
-    private boolean isCoincideBonus() {
-        return winningLotto.getNumbers().contains(bonusNumber);
+    public void compareLotto(Lotto purchaseLotto) {
+        Rank rank = Rank.decide(countCoincide(purchaseLotto), isCoincideBonus(purchaseLotto));
+        addRank(rank);
     }
 
-    private long countCoincide(Lotto lotto) {
-        return lotto.getNumbers()
+    private boolean isCoincideBonus(Lotto purchaseLotto) {
+        return purchaseLotto.getNumbers().contains(bonusNumber);
+    }
+
+    private long countCoincide(Lotto purchaseLotto) {
+        return purchaseLotto.getNumbers()
                 .stream()
-                .filter(number -> winningLotto.getNumbers().contains(number))
+                .filter(winningLotto.getNumbers()::contains)
                 .count();
     }
 
-    public void add(Rank rank) {
+    public void addRank(Rank rank) {
         results.put(rank, results.getOrDefault(rank, 0) + 1);
     }
 }
