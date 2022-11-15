@@ -19,15 +19,23 @@ public class User {
 		}
 
 		catch (NumberFormatException e) {
-			throwNonNumericException();
+			throwException(ErrorMessage.NON_NUMERIC.value);
 		}
 
 		return payment;
 	}
 
-	public static void throwNonNumericException() {
+	public static void throwException(String message) {
 
-		throw new IllegalArgumentException("[ERROR] 숫자만 입력해야 합니다.");
+		try {
+			throw new IllegalArgumentException(message);			
+		}
+		
+		catch (IllegalArgumentException e) {
+			
+			System.out.println(e.getMessage());
+			throw new IllegalArgumentException(message);
+		}
 	}
 
 	public static void checkPaymentUnit(int payment) {
@@ -36,8 +44,8 @@ public class User {
 
 		if (!isThousandUnits) {
 
-			String message = "[ERROR] " + Constant.PAYMENT_UNIT.value + "원 단위로 입력해야 합니다.";
-			throw new IllegalArgumentException(message);
+			String message = Constant.PAYMENT_UNIT.value + "원 단위로 입력해야 합니다.";
+			throwException(ErrorMessage.ERROR.value + message);
 		}
 	}
 
@@ -64,7 +72,7 @@ public class User {
 			}
 
 			catch (NumberFormatException e) {
-				throwNonNumericException();
+				throwException(ErrorMessage.NON_NUMERIC.value);
 			}
 		}
 
@@ -83,8 +91,8 @@ public class User {
 		boolean isValid = winningNumbers.size() == Constant.LOTTO_NUMBERS_LENGTH.value;
 		if (!isValid) {
 
-			String message = "[ERROR] '1,2,3,4,5,6' 형식으로 번호 6개를 입력해야 합니다.";
-			throw new IllegalArgumentException(message);
+			String message = "'1,2,3,4,5,6' 형식으로 번호 6개를 입력해야 합니다.";
+			throwException(ErrorMessage.ERROR.value + message);
 		}
 	}
 
@@ -98,8 +106,8 @@ public class User {
 			if (!isValidStartingNumber || !isValidEndingNumber) {
 
 				String range = Constant.LOTTO_STARTING_NUMBER.value + "부터 " + Constant.LOTTO_ENDING_NUMBER.value;
-				String message = "[ERROR] 로또 번호는 " + range + " 사이의 숫자여야 합니다.";
-				throw new IllegalArgumentException(message);
+				String message = "로또 번호는 " + range + " 사이의 숫자여야 합니다.";
+				throwException(ErrorMessage.ERROR.value + message);
 			}
 		}
 	}
@@ -111,7 +119,9 @@ public class User {
 		for (Integer number : winningNumbers) {
 
 			if (uniqueNumbers.contains(number)) {
-				throw new IllegalArgumentException("[ERROR] 중복되지 않는 숫자들로 입력해야 합니다.");
+				
+				String message = "중복되지 않는 숫자들로 입력해야 합니다.";
+				throwException(ErrorMessage.ERROR.value + message);
 			}
 
 			uniqueNumbers.add(number);
@@ -128,23 +138,25 @@ public class User {
 		}
 
 		catch (NumberFormatException e) {
-			throwNonNumericException();
+			throwException(ErrorMessage.NON_NUMERIC.value);
 		}
 
 		verifyNumber(number, winningNumbers);
-		
+
 		return number;
 	}
-	
+
 	public static void verifyNumber(Integer bonusNumber, List<Integer> winningNumbers) {
-		
+
 		List<Integer> transformedNumber = new ArrayList<Integer>(1);
 		transformedNumber.add(bonusNumber);
 		verifyRange(transformedNumber);
-		
+
 		boolean isOverlap = winningNumbers.contains(bonusNumber);
 		if (isOverlap) {
-			throw new IllegalArgumentException("[ERROR] 보너스 번호는 당첨 번호와 다른 숫자를 입력해야 합니다.");
+			
+			String message = "보너스 번호는 당첨 번호와 다른 숫자를 입력해야 합니다.";
+			throwException(ErrorMessage.ERROR.value + message);
 		}
 	}
 }

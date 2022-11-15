@@ -67,7 +67,7 @@ public class Application {
 
 			int numberOfNumbers = countCorrectNumbers(winningNumbers, myLotto);
 
-			boolean isSecondPlace = numberOfNumbers == Constant.SECOND_PLACE.condition && winningNumbers.contains(bonusNumber);
+			boolean isSecondPlace = numberOfNumbers == Constant.SECOND_PLACE.condition && myLotto.contains(bonusNumber);
 			if (isSecondPlace) {
 
 				updateLottoResult(result, length - 1);

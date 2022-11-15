@@ -20,6 +20,8 @@ public class Lotto {
 		if (numbers.size() != 6) {
 			throw new IllegalArgumentException();
 		}
+		
+		User.verifyOverlap(numbers);
 	}
 
 	// TODO: 추가 기능 구현
