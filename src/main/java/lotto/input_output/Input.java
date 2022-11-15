@@ -9,17 +9,6 @@ import java.util.stream.Collectors;
 
 public class Input extends Valid {
 
-
-    protected static List<Integer> returnList(){ //Lotto 당첨 번호 입력받기 List<Integer>로 반환
-        String input  = input();
-        checkLottonums(input);
-        return ChangeType.string_to_listinteger(input);
-    }
-
-    protected static int returnInt(){// 정수형 반환
-        String input = input();
-        return Integer.parseInt(input);
-    }
     protected static List<Integer> returnLotteryNumber(){
         String input = input();
         checkLottonums(input);
