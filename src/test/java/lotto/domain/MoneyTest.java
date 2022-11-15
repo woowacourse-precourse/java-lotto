@@ -1,5 +1,6 @@
 package lotto.domain;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import org.junit.jupiter.api.DisplayName;
@@ -34,5 +35,17 @@ class MoneyTest {
         assertThatThrownBy(() -> {
             Money money = new Money(-1000);
         }).isInstanceOf(IllegalArgumentException.class);
+    }
+    @DisplayName("금액에 상태가 천단위 콤마로 이루어진 문자열 출력애야함")
+    @Test
+    void getMoneyFormat() {
+        // given
+        Money money = new Money(10000);
+
+        // when
+        String result = money.getMoneyFormat();
+
+        // then
+        assertThat(result).isEqualTo("10,000");
     }
 }
