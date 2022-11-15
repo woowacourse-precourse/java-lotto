@@ -38,7 +38,7 @@ public class Controller {
             return Integer.parseInt(budgetInput);
         }
         catch (Exception exception){
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR] 입력은 정수여야 합니다.");
         }
     }
 
@@ -62,7 +62,7 @@ public class Controller {
         try {
             List<Integer> winningNumbers = new ArrayList<>();
             for (String string : splitInput) {
-                winningNumbers.add(Integer.parseInt(string));
+                winningNumbers.add(Integer.parseInt(string.trim()));
             }
             return winningNumbers;
         }
