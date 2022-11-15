@@ -60,6 +60,7 @@ public class LottoView {
     public void printException(Exception e){
         System.out.println("[ERROR]"+ e.getMessage());
     }
+
     public String getUserInput() {
         return Console.readLine();
     }

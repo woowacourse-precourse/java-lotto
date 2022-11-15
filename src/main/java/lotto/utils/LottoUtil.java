@@ -35,6 +35,7 @@ public class LottoUtil {
         }
         return result;
     }
+
     public static boolean isSorted(List<Integer> input) {
         return IntStream.range(0, input.size() - 1).noneMatch(i -> input.get(i) > input.get(i+1));
     }
