@@ -45,7 +45,7 @@ public class Manager {
         }
 
         if (amount % COST != 0) {
-            throw new IllegalArgumentException("[ERROR] 로또 한 장은 " + COST + "원 입니다. " + COST + "리원 단위의 숫자를 입력해주세요.");
+            throw new IllegalArgumentException("[ERROR] 로또 한 장은 " + COST + "원 입니다. " + COST + "원 단위의 숫자를 입력해주세요.");
         }
     }
 
