@@ -11,12 +11,10 @@ public class Valid {
 		int verification = isNumber(purchaseAmount);
 
 		if (isZero(verification)) {
-			System.out.println(Message.PURCHASE_AMOUNT_IS_ZERO_ERROR);
 			throw new IllegalArgumentException(Message.PURCHASE_AMOUNT_IS_ZERO_ERROR);
 		}
 		if(isDividedBy1000(verification))
 			return verification;
-		System.out.println(Message.NOT_DIVIDED_BY_1000_ERROR);
 		throw new IllegalArgumentException(Message.NOT_DIVIDED_BY_1000_ERROR);
 	}
 
@@ -30,7 +28,6 @@ public class Valid {
 		if (isNumeric(purchaseAmount)) {
 			return Integer.parseInt(purchaseAmount);
 		}
-		System.out.println(Message.INPUT_IS_NOT_NUMBER_ERROR);
 		throw new IllegalArgumentException(Message.INPUT_IS_NOT_NUMBER_ERROR);
 	}
 	private static boolean isZero(int purchaseAmount) {
@@ -44,7 +41,6 @@ public class Valid {
 		if (isNumeric(lottoNumber)) {
 			return Integer.parseInt(lottoNumber);
 		}
-		System.out.println(Message.INPUT_IS_NOT_NUMBER_ERROR);
 		throw new IllegalArgumentException(Message.INPUT_IS_NOT_NUMBER_ERROR);
 	}
 
@@ -54,14 +50,12 @@ public class Valid {
 										.collect(Collectors.toList());
 
 		if (eraseDuplicate.size() != numbers.size()) {
-			System.out.println(Message.DUPLICATE_IN_LOTTO_NUMBER_ERROR);
 			throw new IllegalArgumentException(Message.DUPLICATE_IN_LOTTO_NUMBER_ERROR);
 		}
 	}
 
 	public static void hasCorrectSizeLotto(List<Integer> numbers) {
 		if (numbers.size() != 6) {
-			System.out.println(Message.WRONG_SIZE_LOTTO_ERROR);
 			throw new IllegalArgumentException(Message.WRONG_SIZE_LOTTO_ERROR);
 		}
 	}
@@ -71,7 +65,6 @@ public class Valid {
 			int lottoNumber = numbers.get(numbersIndex);
 			if (lottoNumber < Constant.FIRST_NUMBER_IN_LOTTO
 				|| lottoNumber > Constant.LAST_NUMBER_IN_LOTTO) {
-				System.out.println(Message.WRONG_RANGE_NUMBER_ERROR);
 				throw new IllegalArgumentException(Message.WRONG_RANGE_NUMBER_ERROR);
 			}
 		}
@@ -80,7 +73,6 @@ public class Valid {
 	public static int isDuplicateWithWinningNumber(List<Integer> winningNumber, String bonusNumber) {
 		int validNumber = Valid.isDigit(bonusNumber);
 		if (winningNumber.contains(validNumber)) {
-			System.out.println(Message.DUPLICATE_WITH_WINNING_NUMBER);
 			throw new IllegalArgumentException(Message.DUPLICATE_WITH_WINNING_NUMBER);
 		}
 		return validNumber;
@@ -89,7 +81,6 @@ public class Valid {
 	public static void hasCorrectRangeNumber(int bonusNumber) {
 		if (bonusNumber < Constant.FIRST_NUMBER_IN_LOTTO
 			|| bonusNumber > Constant.LAST_NUMBER_IN_LOTTO) {
-			System.out.println(Message.WRONG_RANGE_NUMBER_ERROR);
 			throw new IllegalArgumentException(Message.WRONG_RANGE_NUMBER_ERROR);
 		}
 	}
