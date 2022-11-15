@@ -50,7 +50,8 @@ public class RaffleNumber {
 
     private void validateProperQuantity(List<String> raffleNumbers) {
         if (raffleNumbers.size() != PROPER_QUANTITY) {
-            throw new IllegalArgumentException(WRONG_QUANTITY_ERROR_MESSAGE);
+            System.out.println(WRONG_QUANTITY_ERROR_MESSAGE);
+            throw new IllegalArgumentException();
         }
     }
 
@@ -59,7 +60,8 @@ public class RaffleNumber {
         Stream<String> lottoNumbers = numbers.stream();
         numberOfUniqueNumbers = (int) lottoNumbers.distinct().count();
         if (numberOfUniqueNumbers != PROPER_QUANTITY) {
-            throw new IllegalArgumentException(DUPLICATE_ERROR_MESSAGE);
+            System.out.println(DUPLICATE_ERROR_MESSAGE);
+            throw new IllegalArgumentException();
         }
     }
 
@@ -74,7 +76,8 @@ public class RaffleNumber {
     private void validateProperRaffleNumber(String givenNumber, String pattern) {
         String numberRemovedLetters = givenNumber.replaceAll(pattern, BLANK);
         if (!numberRemovedLetters.equals(BLANK)) {
-            throw new IllegalArgumentException(ENTER_WRONG_LETTERS_MESSAGE);
+            System.out.println(ENTER_WRONG_LETTERS_MESSAGE);
+            throw new IllegalArgumentException();
         }
     }
 

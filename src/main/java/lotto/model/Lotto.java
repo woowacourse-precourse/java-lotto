@@ -19,7 +19,8 @@ public class Lotto {
 
     private void validateProperQuantity(List<Integer> numbers) {
         if (numbers.size() != PROPER_QUANTITY) {
-            throw new IllegalArgumentException(WRONG_QUANTITY_ERROR_MESSAGE);
+            System.out.println(WRONG_QUANTITY_ERROR_MESSAGE);
+            throw new IllegalArgumentException();
         }
     }
 
@@ -28,7 +29,8 @@ public class Lotto {
         Stream<Integer> lottoNumbers = numbers.stream();
         numberOfUniqueNumbers = (int) lottoNumbers.distinct().count();
         if (numberOfUniqueNumbers != PROPER_QUANTITY) {
-            throw new IllegalArgumentException(DUPLICATE_ERROR_MESSAGE);
+            System.out.println(DUPLICATE_ERROR_MESSAGE);
+            throw new IllegalArgumentException();
         }
     }
 

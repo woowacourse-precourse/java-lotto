@@ -55,16 +55,20 @@ public class LottoGameController {
     }
 
     public void start() {
+        try {
+            calculateTickets();
+            noticeNumberOfTickets();
+            createLotteries();
+            noticeLotteries();
+            checkLotteryWin();
+            produceWinStatics();
+            noticeWinReport();
+            calculateRateOfRevenue();
+            noticeRateOfRevenue();
 
-        calculateTickets();
-        noticeNumberOfTickets();
-        createLotteries();
-        noticeLotteries();
-        checkLotteryWin();
-        produceWinStatics();
-        noticeWinReport();
-        calculateRateOfRevenue();
-        noticeRateOfRevenue();
+        }catch (IllegalArgumentException e){
+            System.out.println("프로그램을 종료합니다.");
+        }
 
     }
 
