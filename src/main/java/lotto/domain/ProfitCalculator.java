@@ -8,7 +8,7 @@ public class ProfitCalculator {
 
     public static float calculateProfitRate(Map<Prize, Integer> prizeBoard, Money money) {
         float profit = calculateProfit(prizeBoard);
-        float profitRate = profit / money.getMoney() * RATE_UNIT;
+        float profitRate = Money.calculateProfitRate(profit, money);
         return (float) Math.round(profitRate * RATE_UNIT) / RATE_UNIT;
     }
 
