@@ -4,6 +4,8 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.List;
 
+import static lotto.Code.ErrorCode.*;
+
 public class Lotto {
     private final List<Integer> numbers;
 
@@ -14,7 +16,7 @@ public class Lotto {
 
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(String.valueOf(LENGTH_MUST_BE_SIX));
         }
     }
 

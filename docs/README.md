@@ -7,7 +7,7 @@
   - `Randoms.pickUniqueNumbersInRange()`을 이용하여 발행한 로또 번호를 출력 [🚀]
 - phase 3) 당첨 번호 입력받기
   - `Console.readLine()`을 이용하여 사용자 입력값(6개) 받기 [🚀]
-  - [ERROR] 6자리가 아니면 에러 발생
+  - [ERROR] 6자리가 아니면 에러 발생 [🚀]
   - [ERROR] 중복된 번호가 있으면 에러 발생
   - [ERROR] 1~45 내의 숫자가 아니면 에러 발생
 - phase 4) 보너스 번호 입력받기
