@@ -29,7 +29,9 @@ public class Lotto {
         return bonusNumber;
     }
 
-
+    private void validate(List<Integer> numbers) {
+        luckyLottoNumberException.checkLuckyLottoNumberExceptions(numbers);
+    }
 
 
 
