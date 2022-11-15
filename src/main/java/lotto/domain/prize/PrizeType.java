@@ -1,23 +1,25 @@
-package lotto.domain;
+package lotto.domain.prize;
 
 import java.text.DecimalFormat;
 import java.util.Arrays;
 import java.util.NoSuchElementException;
 
 public enum PrizeType {
-    NONE(0, 0),
-    FIFTH(3, 5000),
-    FOURTH(4, 50000),
-    THIRD(5, 1500000),
-    SECOND(5, 30000000),
-    FIRST(6, 2000000000);
+    NONE(0, 0, "0개 일치"),
+    FIFTH(3, 5000, "3개 일치 (5,000원) - %d개"),
+    FOURTH(4, 50000, "4개 일치 (50,000원) - %d개"),
+    THIRD(5, 1500000, "5개 일치 (1,500,000원) - %d개"),
+    SECOND(5, 30000000, "5개 일치, 보너스 볼 일치 (30,000,000원) - %d개"),
+    FIRST(6, 2000000000, "6개 일치 (2,000,000,000원) - %d개");
 
     private final int numOfMatched;
     private final int prizeMoney;
+    private final String prizeDetails;
 
-    PrizeType(int numOfMatched, int prizeMoney) {
+    PrizeType(int numOfMatched, int prizeMoney, String prizeDetails) {
         this.numOfMatched = numOfMatched;
         this.prizeMoney = prizeMoney;
+        this.prizeDetails = prizeDetails;
     }
 
     public static PrizeType getPrizeType(int numOfMatched, boolean containBonusNumber) {
@@ -43,17 +45,7 @@ public enum PrizeType {
         return prizeMoney;
     }
 
-    public String printNumOfMatched() {
-
-        if (this.equals(SECOND)) {
-            return numOfMatched + "개 일치, 보너스 볼 일치 ";
-        }
-        return numOfMatched + "개 일치 ";
-    }
-
-    public String printPrizeMoney() {
-        DecimalFormat decimalFormat = new DecimalFormat("###,###");
-
-        return "(" + decimalFormat.format(prizeMoney) + "원)";
+    public String getPrizeDetails() {
+        return prizeDetails;
     }
 }
