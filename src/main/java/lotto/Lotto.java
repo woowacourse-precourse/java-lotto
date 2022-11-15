@@ -40,7 +40,8 @@ public class Lotto {
             for (int j = 0; j < numbers.size(); j++) {
                 count = compareNumbers(numbers.get(j), lottoNumbers[i]);
                 bonus = compareBonusNumber(lottoNumbers[i], bonusNumber);
-                Ranking.getRank(count);
+                Ranking ranking = Ranking.getRank(count, bonus);
+                countWinning(ranking, countWinning);
             }
         }
     }
@@ -61,22 +62,33 @@ public class Lotto {
         }
         return false;
     }
+    public void countWinning(Ranking ranking, List<Integer> countWinning) {
+        if (ranking != null) {
+            countWinning.set(ranking.getIndex(), countWinning.get(ranking.getIndex()) + 1);
+        }
+    }
 
     public enum Ranking {
-        THREE(3, false, 5000),
-        FOUR(4, false, 50_000),
-        FIVE(5, false, 1_500_000),
-        BONUS(5, true, 30_000_000),
-        SIX(6, false, 2_000_000_000);
+        THREE(0, 3, false, 5000),
+        FOUR(1, 4, false, 50_000),
+        FIVE(2, 5, false, 1_500_000),
+        BONUS(3, 5, true, 30_000_000),
+        SIX(4, 6, false, 2_000_000_000);
 
+        private final int index;
         private final int rightNumber;
         private final boolean bonus;
         private final int prize;
 
-        Ranking(int rightNumber, boolean bonus, int prize) {
+        Ranking(int index, int rightNumber, boolean bonus, int prize) {
+            this.index = index;
             this.rightNumber = rightNumber;
             this.bonus = bonus;
             this.prize = prize;
+        }
+
+        public int getIndex() {
+            return this.index;
         }
 
         public static Ranking getRank(int countWinner, boolean bonus) {
