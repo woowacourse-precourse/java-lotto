@@ -33,7 +33,7 @@ public class LottoMachine extends Lotto {
 
         int bonusNumber = Integer.parseInt(inputBonusNumber);
 
-        validate(bonusNumber);
+        validateBonusNumber(bonusNumber);
         this.bonusNumber = bonusNumber;
     }
 
@@ -42,12 +42,12 @@ public class LottoMachine extends Lotto {
     }
 
     //validate check
-    public void validate(int bonusNumber) {
-        validateBonusNumber(bonusNumber);
+    public void validateBonusNumber(int bonusNumber) {
+        validateDuplicateBonusNumber(bonusNumber);
         validateBonusNumberRange(bonusNumber);
     }
 
-    public void validateBonusNumber(int bonusNumber) {
+    public void validateDuplicateBonusNumber(int bonusNumber) {
         if (getNumbers().contains(bonusNumber)) {
             throw new IllegalArgumentException(ExceptionMessage.BONUS_NUMBER_DUPLICATE_ERROR.getMessage());
         }
@@ -66,4 +66,5 @@ public class LottoMachine extends Lotto {
             throw new IllegalArgumentException(ExceptionMessage.NUMBER_FORMAT_ERROR.getMessage());
         }
     }
+
 }
