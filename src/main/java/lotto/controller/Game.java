@@ -6,8 +6,7 @@ import java.util.List;
 
 public class Game {
     public void startLottoGame() {
-        int money = InputView.inputLottoAmount();
-        RandomNumbersGenerator randomNumbers = new RandomNumbersGenerator();
-        List<Integer> lottoNumbers = randomNumbers.createRandomNumbers();
+
+
     }
 }
