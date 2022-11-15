@@ -29,4 +29,11 @@ public class WinningTest {
         assertThatThrownBy(() -> new Winning(List.of(1,2,3,4,5,6), "5"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @DisplayName("로또 번호가 1보다 작으면 예외가 발생한다.")
+    @Test
+    void checkNumberLessOne() {
+        assertThatThrownBy(() -> new Winning(List.of(0,2,3,4,5,6), "5"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
