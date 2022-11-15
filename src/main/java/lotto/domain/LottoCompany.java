@@ -7,7 +7,6 @@ import lotto.Utils.Error;
 import lotto.Utils.Print;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 public class LottoCompany {
     private final List<Integer> numbers;
@@ -29,18 +28,19 @@ public class LottoCompany {
         Print.askBonusNumber();
         String input = Console.readLine();
 
-        return CommonUtil.stringToNumber(input);
+        int number = CommonUtil.stringToNumber(input);
+        validate(number);
+        return number;
     }
-    private void validate(int bonusNumber) {
-        Error error = new Error();
-        if (bonusNumber == 0) {
-            error.outOfRange();
+    private void validate(int bonus) {
+        if (bonus == 0) {
+            Error.outOfRange();
         }
-        if (bonusNumber < 1 || bonusNumber > 45) {
-            error.outOfRange();
+        if (bonus < 1 || bonus > 45) {
+            Error.outOfRange();
         }
-        if (this.numbers.contains(bonusNumber)) {
-            error.duplicated();
+        if (numbers.contains(bonus)) {
+            Error.duplicated();
         }
     }
     public void processLotto(Lotto lotto) {
