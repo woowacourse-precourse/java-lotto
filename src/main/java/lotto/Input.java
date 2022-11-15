@@ -23,12 +23,11 @@ public class Input {
         return inputValidator.getWinningNumbers();
     }
 
-    public int inputBonusNumber(){
+    public int inputBonusNumber(List<Integer> winningLottos){
         System.out.println("보너스 번호를 입력 해 주세요.");
         String bonusNumber = Console.readLine();
         InputValidator inputValidator = new InputValidator(bonusNumber);
-        return inputValidator.getBonusNumbers();
+        return inputValidator.getBonusNumbers(winningLottos);
     }
-
 
 }

@@ -22,10 +22,11 @@ public class InputValidator {
         return inputMoney;
     }
 
-    public int getBonusNumbers(){
+    public int getBonusNumbers(List<Integer> winning){
         int inputBonusNumber;
         inputBonusNumber = changeString(input);
         checkBonusNumberRange(inputBonusNumber);
+        winningContainsBouns(inputBonusNumber,winning);
         return inputBonusNumber;
     }
 
@@ -76,5 +77,7 @@ public class InputValidator {
             throw new IllegalArgumentException("[ERROR] 보너스 숫자는 당첨 번호와 중복될 수 없습니다.");
         }
     }
+
+
 
 }
