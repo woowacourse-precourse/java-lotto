@@ -1,15 +1,15 @@
 package lotto;
 
 import lotto.domain.Lotto;
-import lotto.domain.Money;
+import lotto.domain.LottoNumber;
 
-import org.junit.jupiter.api.BeforeEach;
+
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-import static org.assertj.core.api.Assertions.assertThat;
+
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class LottoTest {
@@ -17,7 +17,7 @@ class LottoTest {
     @DisplayName("로또 번호의 개수가 6개가 넘어가면 예외가 발생한다.")
     @Test
     void createLottoByOverSize() {
-        assertThatThrownBy(() -> new Lotto(List.of(1, 2, 3, 4, 5, 6, 7).toString()))
+        assertThatThrownBy(() -> new Lotto(List.of(1, 2, 3, 4, 5, 6, 7)))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -25,17 +25,16 @@ class LottoTest {
     @Test
     void createLottoByDuplicatedNumber() {
         // TODO: 이 테스트가 통과할 수 있게 구현 코드 작성
-        assertThatThrownBy(() -> new Lotto(List.of(1, 2, 3, 4, 5, 5).toString()))
+        assertThatThrownBy(() -> new Lotto(List.of(1, 2, 3, 5, 5, 5)))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
     // 아래에 추가 테스트 작성 가능
     @Test
-    void 숫자_이외에_값_입력_체크(){
-        assertThatThrownBy(() -> new Lotto(List.of(1, 2, 'd', 'c', 'b', 'a').toString()))
+    void 숫자_이외에_값_체크() {
+        // TODO: 이 테스트가 통과할 수 있게 구현 코드 작성
+        assertThatThrownBy(() -> new Lotto(LottoNumber.convertStringArrToIntegerList("1,2,3,4,a,5")))
                 .isInstanceOf(IllegalArgumentException.class);
     }
-
-
 
 }
