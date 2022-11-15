@@ -1,6 +1,7 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -9,9 +10,11 @@ import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomUniqueN
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 
+@DisplayName("로또 게임에 대해서,")
 class ApplicationTest extends NsTest {
     private static final String ERROR_MESSAGE = "[ERROR]";
 
+    @DisplayName("모든 입력을 정상적으로 입력하면 정상적인 결과를 출력해야 한다.")
     @Test
     void 기능_테스트() {
         assertRandomUniqueNumbersInRangeTest(
@@ -46,6 +49,7 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @DisplayName("로또 구매시 잘못된 숫자를 입력하면 에러 메시지를 출력해야 한다.")
     @Test
     void 예외_테스트() {
         assertSimpleTest(() -> {
