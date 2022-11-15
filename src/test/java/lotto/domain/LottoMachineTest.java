@@ -13,9 +13,9 @@ class LottoMachineTest {
     @Test
     void publishLotto() {
         // given
-        String inputMoneyRaw = "1000";
+        String moneyRaw = "1000";
         // when
-        List<Lotto> lottos = LottoMachine.publish(inputMoneyRaw);
+        List<Lotto> lottos = LottoMachine.publish(moneyRaw);
         // then
         assertThat(lottos.get(0)).isInstanceOf(Lotto.class);
     }
@@ -24,11 +24,11 @@ class LottoMachineTest {
     @Test
     void publishLottosByMoney() {
         // given
-        int inputMoney = PRICE_OF_ONE_LOTTO * 5;
-        String inputMoneyRaw = Integer.toString(PRICE_OF_ONE_LOTTO * 5);
+        int money = PRICE_OF_ONE_LOTTO * 5;
+        String moneyRaw = Integer.toString(PRICE_OF_ONE_LOTTO * 5);
         // when
-        List<Lotto> lottos = LottoMachine.publish(inputMoneyRaw);
-        int countLottosByPrice = inputMoney / PRICE_OF_ONE_LOTTO;
+        List<Lotto> lottos = LottoMachine.publish(moneyRaw);
+        int countLottosByPrice = money / PRICE_OF_ONE_LOTTO;
         // then
         assertThat(lottos.size()).isEqualTo(countLottosByPrice);
     }

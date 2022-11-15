@@ -24,8 +24,8 @@ public class Cashier {
     }
 
     public void publishLottos() {
-        String inputMoneyRaw = UserInterface.getInputMoney();
-        this.lottos = LottoMachine.publish(inputMoneyRaw);
+        String moneyRaw = UserInterface.getInputMoney();
+        this.lottos = LottoMachine.publish(moneyRaw);
     }
 
     public void setWinningRule() {

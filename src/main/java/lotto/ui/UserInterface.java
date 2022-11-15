@@ -17,9 +17,9 @@ public class UserInterface {
 
     public static String getInputMoney() {
         System.out.println(INPUT_MONEY_ANNOUNCEMENT);
-        String inputMoneyRaw = Console.readLine();
-        InputValidator.checkInputMoney(inputMoneyRaw);
-        return inputMoneyRaw;
+        String moneyRaw = Console.readLine();
+        InputValidator.validateInputMoney(moneyRaw);
+        return moneyRaw;
     }
 
     public static void announceCountOfLottosPublished(int countOfLottosPurchased) {
@@ -33,14 +33,14 @@ public class UserInterface {
     public static String getWinningNumbers() {
         System.out.println(INPUT_WINNING_NUMBERS_ANNOUNCEMENT);
         String numbersRaw = Console.readLine();
-        InputValidator.checkInputWinningNumbers(numbersRaw);
+        InputValidator.validateInputWinningNumbers(numbersRaw);
         return numbersRaw;
     }
 
     public static String getBonusNumber() {
         System.out.println(INPUT_BONUS_NUMBER_ANNOUNCEMENT);
         String bonusNumberRaw = Console.readLine();
-        InputValidator.checkInputBonusNumber(bonusNumberRaw);
+        InputValidator.validateInputBonusNumber(bonusNumberRaw);
         return bonusNumberRaw;
     }
 

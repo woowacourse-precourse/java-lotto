@@ -13,10 +13,10 @@ import lotto.constant.ErrorMessage;
 import lotto.ui.UserInterface;
 
 public class LottoMachine {
-    public static List<Lotto> publish(String inputMoneyRaw) {
-        int inputMoney = convertStringToInt(inputMoneyRaw);
-        validate(inputMoney);
-        int countOfLottos = getCountOfLottos(inputMoney);
+    public static List<Lotto> publish(String moneyRaw) {
+        int money = convertStringToInt(moneyRaw);
+        validate(money);
+        int countOfLottos = getCountOfLottos(money);
         UserInterface.announceCountOfLottosPublished(countOfLottos);
         List<Lotto> lottos = publishLottosByCount(countOfLottos);
         return lottos;
@@ -26,16 +26,16 @@ public class LottoMachine {
         return Integer.parseInt(numberRaw);
     }
 
-    private static void validate(int inputMoney) {
-        boolean isMultiplePriceOfLotto = (inputMoney % PRICE_OF_ONE_LOTTO) == 0;
+    private static void validate(int money) {
+        boolean isMultiplePriceOfLotto = (money % PRICE_OF_ONE_LOTTO) == 0;
         if (isMultiplePriceOfLotto) {
             return;
         }
         throw new IllegalArgumentException(ErrorMessage.MONEY_NOT_MULTIPLE_PRICE_OF_LOTTO);
     }
 
-    private static int getCountOfLottos(int inputMoney) {
-        return inputMoney / PRICE_OF_ONE_LOTTO;
+    private static int getCountOfLottos(int money) {
+        return money / PRICE_OF_ONE_LOTTO;
     }
 
     private static List<Lotto> publishLottosByCount(int countOfLottos) {
