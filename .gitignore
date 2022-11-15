@@ -1,3 +1,4 @@
+*.class
 HELP.md
 .gradle
 build/
