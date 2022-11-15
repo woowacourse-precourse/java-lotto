@@ -1,10 +1,14 @@
 package lotto;
 
+import lotto.domain.Lotto;
+import lotto.view.OutputView;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class LottoTest {
@@ -24,4 +28,12 @@ class LottoTest {
     }
 
     // 아래에 추가 테스트 작성 가능
+
+    @Test
+    void createLottoOutOfRange() {
+        assertThatThrownBy(() -> new Lotto(List.of(1, 2, 46, 5, 7, 9)))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+
 }
