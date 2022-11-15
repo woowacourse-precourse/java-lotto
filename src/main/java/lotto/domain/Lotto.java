@@ -1,5 +1,8 @@
 package lotto.domain;
 
+import lotto.model.LottoCalculator;
+
+import java.util.HashSet;
 import java.util.List;
 
 public class Lotto {
@@ -11,10 +14,24 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
-        if (numbers.size() != 6) {
-            throw new IllegalArgumentException();
+        check_NotEqualSize(numbers);
+        check_Duplicate(numbers);
+    }
+
+    public List<Integer> getNumbers() {
+        return numbers;
+    }
+
+    private void check_NotEqualSize(List<Integer> numbers) {
+        if (numbers.size() != LottoCondition.LOTTO_RANGE_LENGTH.getNum()) {
+            throw new IllegalArgumentException("[ERROR] 랜덤한 로또의 번호의 크기가 정해진 개수만큼 존재하지 않습니다.");
         }
     }
 
-    // TODO: 추가 기능 구현
+    private void check_Duplicate(List<Integer> numbers) {
+        HashSet set = new HashSet<>(numbers);
+        if (set.size() != numbers.size()) {
+            throw new IllegalArgumentException("[ERROR] 랜덤한 로또의 번호들이 서로 겹치는 것이 존재합니다.");
+        }
+    }
 }
