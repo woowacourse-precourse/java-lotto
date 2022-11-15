@@ -13,29 +13,37 @@ public class Buyer {
     private static final int BIGGEST_LOTTERY_NUMBER = 45;
     private static final int LOTTERY_NUMBER_COUNT = 6;
 
-
-    private boolean isDigits(String userInput) {
+    private void validateBeingDigits(String userInput) {
         int len = userInput.length();
         int i = 0;
 
         while (i < len && Character.isDigit(userInput.charAt(i))) {
             i++;
         }
-        return (i == len);
+        if (i != len) {
+            throw (new IllegalArgumentException(ExceptionMessage.PURCHASE_AMOUNT_EXCEPTION
+                    .toString()));
+        }
     }
 
-    private boolean isValidFormat(String userInput) {
-        return (userInput.charAt(0) != INVALID_MOST_SIGNIFICANT_DIGIT);
+    private void validateFormat(String userInput) {
+        if (userInput.charAt(0) == INVALID_MOST_SIGNIFICANT_DIGIT) {
+            throw (new IllegalArgumentException(ExceptionMessage.PURCHASE_AMOUNT_EXCEPTION
+                    .toString()));
+        }
     }
 
-    private boolean isMultipleOfThousand(String userInput) {
-        return (Integer.parseInt(userInput) % SMALLEST_UNIT == 0);
+    private void validateBeingMultipleOfThousand(String userInput) {
+        if (Integer.parseInt(userInput) % SMALLEST_UNIT != 0) {
+            throw (new IllegalArgumentException(ExceptionMessage.PURCHASE_AMOUNT_EXCEPTION
+                    .toString()));
+        }
     }
 
     public void validatePurchaseAmount(String purchaseAmount) {
-        if (!isDigits(purchaseAmount) || !isValidFormat(purchaseAmount) || !isMultipleOfThousand(purchaseAmount))
-            throw (new IllegalArgumentException(ExceptionMessage.PURCHASE_AMOUNT_EXCEPTION
-                    .toString()));
+        validateBeingDigits(purchaseAmount);
+        validateFormat(purchaseAmount);
+        validateBeingMultipleOfThousand(purchaseAmount);
     }
 
     public List<List<Integer>> pickLotteryNumbers(int ticketCount) {
