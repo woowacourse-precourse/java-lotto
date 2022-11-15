@@ -46,9 +46,11 @@ public class UI {
 
     public static void printTotalResult(int money) {
         System.out.println("당첨 통계");
-        System.out.println(---);
+        System.out.println("---");
         for (Result result : Result.values()) {
-            System.out.println();
+            System.out.println(result.text() + result.count() + "개");
         }
+        double ror = Rank.calculateRateOfReturn(money);
+        System.out.println(MESSAGE_RATE_OF_RETURN_INIT + String.format("%.1f", ror) + MESSAGE_RATE_OF_RETURN_FINAL);
     }
 }

@@ -2,6 +2,7 @@ package lotto;
 
 public class Constant {
     public static final Integer LOTTO_NUMBER_SIZE = 6;
+
     public static final String MESSAGE_INIT_LOTTO = "구입금액을 입력해 주세요.";
     public static final String MESSAGE_INSERT_LOTTO_NUMBER = "당첨 번호를 입력해 주세요.";
     public static final String MESSAGE_INSERT_BONUS_NUMBER = "보너스 번호를 입력해 주세요.";
@@ -10,6 +11,8 @@ public class Constant {
     public static final String MESSAGE_THIRD_PRIZE = "5개 일치 (1,500,000원) - ";
     public static final String MESSAGE_FOURTH_PRIZE = "4개 일치 (50,000원) - ";
     public static final String MESSAGE_FIFTH_PRIZE = "3개 일치 (5,000원) - ";
+    public static final String MESSAGE_RATE_OF_RETURN_INIT = "총 수익률은 ";
+    public static final String MESSAGE_RATE_OF_RETURN_FINAL = "%입니다. ";
 
     public static final int FIRST_PRICE = 2000000000;
     public static final int SECOND_PRICE = 30000000;

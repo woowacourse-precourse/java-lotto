@@ -65,6 +65,9 @@ public class Rank {
     }
 
     private void updateResult(int countLotto, int countBonus) {
+        if (countLotto < 3) {
+            return;
+        }
         if ((countLotto != 5) || (countLotto == 5 && countBonus == 0)) {
             Result result = Result.fromLabel(countLotto);
             result.increaseCount();
@@ -74,7 +77,7 @@ public class Rank {
         result.increaseCount();
     }
 
-    public double calculateRateOfReturn(int money) {
+    public static double calculateRateOfReturn(int money) {
         double sum = 0;
         for (Result result : Result.values()) {
             sum += result.count() * result.price();
