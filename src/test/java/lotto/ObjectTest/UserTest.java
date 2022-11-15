@@ -4,6 +4,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import lotto.Object.User;
+import lotto.Util.Util;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -15,6 +16,7 @@ import java.util.Scanner;
 public class UserTest {
 
     User user = new User();
+    Util util = new Util();
 
     public static InputStream generateUserInput(String input) {
         return new ByteArrayInputStream(input.getBytes());
@@ -74,7 +76,7 @@ public class UserTest {
         System.setIn(in);
         Scanner scanner = new Scanner(System.in);
 
-        assertEquals(result,user.splitStringToIntegerArray(inputtedWinningNumber));
+        assertEquals(result,util.splitStringToIntegerArray(inputtedWinningNumber));
     }
 
     @ParameterizedTest
@@ -109,7 +111,7 @@ public class UserTest {
         System.setIn(in);
         Scanner scanner = new Scanner(System.in);
 
-        assertThatThrownBy(() -> user.checkBonusNumberRange(Integer.parseInt(bonusNumberInput)))
+        assertThatThrownBy(() -> util.checkNumberRange(Integer.parseInt(bonusNumberInput)))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 

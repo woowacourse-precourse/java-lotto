@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 import camp.nextstep.edu.missionutils.Console;
 import lotto.Exception.Exception;
+import lotto.Util.Util;
 
 public class User {
     private int money;
@@ -15,6 +16,8 @@ public class User {
     private List<Integer> winningNumberCounting= new ArrayList<>(8);
     LotteryTicketingMachine lotteryTicketingMachine = new LotteryTicketingMachine();
     Exception exception = new Exception();
+
+    Util util = new Util();
 
     public User() {
         for (int i=0; i<8; i++) {
@@ -68,42 +71,21 @@ public class User {
         List<Integer> winningNumber = new ArrayList<>();
 
         try {
-            winningNumber = splitStringToIntegerArray(Console.readLine());
+            winningNumber = util.splitStringToIntegerArray(Console.readLine());
+            util.checkWinningNumberValidation(winningNumber);
         } catch(NumberFormatException e) {
             exception.throwInvalidInputException();
         }
-        if (winningNumber.size()!=6) {
-            exception.throwInvalidSizeException();
-        }
-
         this.winningNumber=winningNumber;
-    }
-
-    public List<Integer> splitStringToIntegerArray(String inputtedWinningNumber) {
-        List<Integer> listedWinningNumber = new ArrayList<>();
-        String[] unconvertedWinningNumber = inputtedWinningNumber.split(",");
-
-        for (String unconvertedWinningNumberContent : unconvertedWinningNumber) {
-            listedWinningNumber.add(Integer.parseInt(unconvertedWinningNumberContent));
-        }
-
-        return listedWinningNumber;
     }
     
     public void inputBonusNumber() throws IllegalArgumentException {
         try{
             int inputtedBonusNumber = Integer.parseInt(Console.readLine());
             bonusNumber = inputtedBonusNumber;
-            checkBonusNumberRange(inputtedBonusNumber);
+            util.checkNumberRange(inputtedBonusNumber);
         } catch (NumberFormatException e) {
             exception.throwInvalidInputException();
-        }
-    }
-
-    public void checkBonusNumberRange(int bonusNumber) throws IllegalArgumentException {
-        if (bonusNumber<1||bonusNumber>45) {
-            exception.throwInvalidNumberRangeException();
-            throw new IllegalArgumentException();
         }
     }
 
