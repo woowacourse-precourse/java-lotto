@@ -20,9 +20,8 @@ public class CheckInput {
         System.out.println(PLEASE_WRITE_PURCHASE_AMOUNT);
 
         String input = Console.readLine();
-        int purchaseAmount = checkPurchaseAmountValid(input);
 
-        return purchaseAmount;
+        return checkPurchaseAmountValid(input);
     }
 
     public int checkPurchaseAmountValid(String input) {
@@ -59,6 +58,12 @@ public class CheckInput {
         Pattern pattern = Pattern.compile(WINNING_NUMBER_PATTERN);
         if (!pattern.matcher(input).matches()) {
             throw new IllegalArgumentException("[ERROR] 당첨 번호는 숫자와 콤마(,)로 이루어져야 합니다.");
+        }
+    }
+
+    public static void checkWinningNumberSize(String[] winningNumbers) {
+        if (winningNumbers.length != 6) {
+            throw new IllegalArgumentException("[ERROR] 당첨 번호는 6개를 입력해야 합니다.");
         }
     }
 
