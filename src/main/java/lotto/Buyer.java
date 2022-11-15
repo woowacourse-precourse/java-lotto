@@ -13,6 +13,16 @@ public class Buyer {
     private static final int BIGGEST_LOTTERY_NUMBER = 45;
     private static final int LOTTERY_NUMBER_COUNT = 6;
 
+    private int purchaseAmount;
+    private List<List<Integer>> boughtTickets;
+
+    public Buyer(String purchaseAmount) {
+        validateBeingDigits(purchaseAmount);
+        validateFormat(purchaseAmount);
+        validateBeingMultipleOfThousand(purchaseAmount);
+        this.purchaseAmount = Integer.parseInt(purchaseAmount);
+    }
+
     private void validateBeingDigits(String userInput) {
         int len = userInput.length();
         int i = 0;
@@ -40,26 +50,21 @@ public class Buyer {
         }
     }
 
-    public void validatePurchaseAmount(String purchaseAmount) {
-        validateBeingDigits(purchaseAmount);
-        validateFormat(purchaseAmount);
-        validateBeingMultipleOfThousand(purchaseAmount);
-    }
-
-    public List<List<Integer>> pickLotteryNumbers(int ticketCount) {
-        List<List<Integer>> lotteryTickets = new ArrayList<>();
-
-        for (int i = 0; i < ticketCount; i++) {
-            lotteryTickets.add(
-                    pickUniqueNumbersInRange(SMALLEST_LOTTERY_NUMBER, BIGGEST_LOTTERY_NUMBER, LOTTERY_NUMBER_COUNT)
-            );
-        }
-        return (lotteryTickets);
-    }
-
-    public void sortLotteryNumbers(List<List<Integer>> tickets) {
+    private void sortLotteryNumbers(List<List<Integer>> tickets) {
         for (List<Integer> ticket : tickets) {
             Collections.sort(ticket);
         }
+    }
+
+    public void pickLotteryNumbers() {
+        boughtTickets = new ArrayList<>();
+        int ticketCount = purchaseAmount / 1000;
+
+        for (int i = 0; i < ticketCount; i++) {
+            boughtTickets.add(
+                    pickUniqueNumbersInRange(SMALLEST_LOTTERY_NUMBER, BIGGEST_LOTTERY_NUMBER, LOTTERY_NUMBER_COUNT)
+            );
+        }
+        sortLotteryNumbers(boughtTickets);
     }
 }
