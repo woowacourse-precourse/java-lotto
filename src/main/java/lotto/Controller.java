@@ -35,6 +35,12 @@ public class Controller {
         }
     }
 
+    /**
+     * 사용자가 구매한 로또 번호와 당첨 번호를 비교하여 당첨 내역을 분석한다.
+     * @param numbers 사용자가 입력한 로또 번호
+     * @param publishedLottoArray 발행된 로또 번호
+     * @return 분석 결과
+     */
     public static LinkedHashMap<Integer, Integer> AnalyzePlayerNumbers
             (List<Integer> numbers, List<List<Integer>> publishedLottoArray) {
         // 분석 결과를 담는 LinkedHashMap을 만든다.
