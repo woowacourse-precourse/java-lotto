@@ -1,6 +1,5 @@
 package lotto.domain;
 
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -14,6 +13,9 @@ public class NumberGenerator {
     private static final String regexWinningNumber = "^\\d,\\d,\\d,\\d,\\d,\\d$";
     private static final String regexBonusNumber = "^\\d$";
 
+    public NumberGenerator() {
+    }
+    
     public NumberGenerator(int start, int end, int count) {
         numbers = Randoms.pickUniqueNumbersInRange(start, end, count);
     }
@@ -36,15 +38,15 @@ public class NumberGenerator {
 
     private void validateWinningNumber(String str) {
         if (!str.matches(regexWinningNumber)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR] 당첨 번호는 쉼표로 구분된 6개의 숫자여야 합니다.");
         }
         Set<Integer> set = remainUniqueNumber(str);
         if (set.size() != 6) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR] 당첨 번호는 중복되지 않아야 합니다.");
         }
         for (Integer i : set) {
             if (i < 1 || i > 45) {
-                throw new IllegalArgumentException();
+                throw new IllegalArgumentException("[ERROR] 당첨 번호는 1부터 45 사이의 숫자여야 합니다.");
             }
         }
     }
@@ -63,7 +65,7 @@ public class NumberGenerator {
         return inputNumber;
     }
 
-    private void setBonusNumber() {
+    public void setBonusNumber() {
         String str = Console.readLine();
         validateBonusNumber(str);
         bonusNumber = Integer.parseInt(str);
@@ -71,11 +73,11 @@ public class NumberGenerator {
 
     private void validateBonusNumber(String str) {
         if (!str.matches(regexBonusNumber)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR] 보너스 번호는 숫자여야 합니다.");
         }
         int bonusNum = Integer.parseInt(str);
         if (bonusNum < 1 || bonusNum > 45) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR] 보너스 번호는 1부터 45 사이의 숫자여야 합니다.");
         }
     }
 

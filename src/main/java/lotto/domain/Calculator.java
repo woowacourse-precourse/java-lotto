@@ -7,15 +7,13 @@ public class Calculator {
     private static List<Integer> winningNumbers;
     private static int bonusNumber;
     private static int reward;
+    private static int rank;
     private static final int NUMBER_LENGTH = 6;
     
-    public Calculator() {
-        NumberGenerator numberGenerator = new NumberGenerator(1, 45, 6);
-        Lotto lotto = new Lotto(numberGenerator.getNumbers());
+    public Calculator(Lotto lotto, NumberGenerator ng) {
         numbers = lotto.getNumbers();
-        numberGenerator.setWinningNumber();
-        winningNumbers = numberGenerator.getNumbers();
-        bonusNumber = numberGenerator.getBonusNumber();
+        winningNumbers = ng.getNumbers();
+        bonusNumber = ng.getBonusNumber();
     }
     
     public void compareNumber() {
@@ -30,7 +28,16 @@ public class Calculator {
             bonus++;
         }
         LottoRank lottoRank = LottoRank.findByWinAndBonus(score, bonus);
+        rank = lottoRank.ordinal();
         LottoReward lottoReward = LottoReward.findByName(lottoRank.getRank());
         reward = lottoReward.getReward();
+    }
+    
+    public int getRank() {
+        return rank;
+    }
+    
+    public int getReward() {
+        return reward;
     }
 }

@@ -22,10 +22,10 @@ public class User {
 
     private void validate(String price) {
         if (!price.matches(regex)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR] 로또 구입 금액은 숫자여야 합니다.");
         }
-        if (Integer.parseInt(price) % 10 != 0) {
-            throw new IllegalArgumentException();
+        if (Integer.parseInt(price) % 1000 != 0) {
+            throw new IllegalArgumentException("[ERROR] 로또 구입 금액은 1000원 단위여야 합니다.");
         }
     }
     
