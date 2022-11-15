@@ -61,13 +61,13 @@ public class Application {
         }
     }
 
-    public static double getProfits(HashMap<String, Integer> history) {
+    public static double getProfits(HashMap<Rank, Integer> history) {
         double profits = 0;
-        profits += history.get("3") * 5000;
-        profits += history.get("4") * 50000;
-        profits += history.get("5") * 1500000;
-        profits += history.get("5+") * 30000000;
-        profits += history.get("6") * 2000000000;
+        profits += history.get(Rank.FIFTH) * Rank.FIFTH.getPrice();
+        profits += history.get(Rank.FOURTH) * Rank.FOURTH.getPrice();
+        profits += history.get(Rank.THIRD) * Rank.THIRD.getPrice();
+        profits += history.get(Rank.SECOND) * Rank.SECOND.getPrice();
+        profits += history.get(Rank.FIRST) * Rank.FIRST.getPrice();
         return profits;
     }
 }
