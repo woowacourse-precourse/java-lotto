@@ -55,7 +55,7 @@ public class LottoMachine {
     }
 
     private void earningService(OutputView outputView, Purchase purchase, PrizeStatistics prizeStatistics) {
-        Earning earning = new Earning(purchase.getAmount(), prizeStatistics);
+        Earning earning = new Earning(purchase.getAmount(), prizeStatistics.getPrizeStatistics());
         outputView.earningOutput(earning);
     }
 }
