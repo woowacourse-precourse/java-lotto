@@ -32,6 +32,10 @@ public enum Reward {
         return price;
     }
 
+    public boolean isHasBonusNumber() {
+        return hasBonusNumber;
+    }
+
     public static Reward getRank(WinningLotto winningLotto, Lotto lotto) {
         int targetCount = winningLotto.getLotto()
                 .getCorrectCount(lotto);
