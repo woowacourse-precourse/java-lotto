@@ -5,7 +5,7 @@ public enum Text {
     BUY_LOTTO("%d개를 구매했습니다.\n"),
     WINNING_NUMBER_INPUT("당첨 번호를 입력해 주세요."),
     BONUS_NUMBER_INPUT("보너스 번호를 입력해 주세요."),
-    WINNING_STATISTICS_TITLE("당첨 통계\n---"),
+    WINNING_STATISTICS_TITLE("당첨 통계\n---\n"),
     WINNING_STATISTICS_DETAIL("%d개 일치 (%s원) - %d개\n"),
     PROFIT_RATE("총 수익률은 %.1f%%입니다.\n");
 
