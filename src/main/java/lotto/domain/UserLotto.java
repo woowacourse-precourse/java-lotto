@@ -5,7 +5,7 @@ import lotto.view.InputView;
 import lotto.view.OutputView;
 
 public class UserLotto {
-    private final LottoWrapper userLottery = new LottoWrapper();
+    private final LottoRepository userLottery = new LottoRepository();
 
     public UserLotto() {
         buyLotto();
