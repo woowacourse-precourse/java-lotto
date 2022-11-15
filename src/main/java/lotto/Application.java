@@ -37,6 +37,7 @@ public class Application {
                 win_list.put(win,win_list.get(win) + 1);
             }
         }
+        PrintWin();
     }
 
     public static String InputMoney() {
@@ -127,7 +128,9 @@ public class Application {
     }
 
     public static void PrintWin(){
-
+        for(String key : keys){
+            System.out.println(key + win_list.get(key) + "개");
+        }
     }
 
     public static int CalculateMoney(){
