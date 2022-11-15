@@ -6,6 +6,15 @@ import java.util.List;
 
 public class Compare {
 
+//    private final List<Integer> lottoNumbers;
+//    private final int bonusNumber;
+//
+//    public Compare(List<Integer> lottoNumbers, int bonusNumber) {
+//        validate(lottoNumbers, bonusNumber);
+//        this.lottoNumbers = lottoNumbers;
+//        this.bonusNumber = bonusNumber;
+//    }
+
     public int[] getResult(int inputMoney, List<List<Integer>> computerRandomNumbers, List<Integer> lottoNumbers, int bonusNumber ) {
         validate(lottoNumbers, bonusNumber);
         int[] result = new int[5];
@@ -47,13 +56,13 @@ public class Compare {
         validateDuplicationInBonus(lottoNumbers, bonusNumber);
     }
 
-    private void validateLength(List<Integer> lottoNumbers) {
+    public void validateLength(List<Integer> lottoNumbers) {
         if (lottoNumbers.size() != 6) {
             throw new IllegalArgumentException(Exception.INVALID_LOTTO_NUMBER_COUNT.getExceptionMessage());
         }
     }
 
-    private void validateRange(List<Integer> lottoNumbers, int bonusNumber) {
+    public void validateRange(List<Integer> lottoNumbers, int bonusNumber) {
         for (Integer lottoNumber: lottoNumbers) {
             if (lottoNumber < 1 || lottoNumber > 45) {
                 throw new IllegalArgumentException(Exception.INVALID_LOTTO_NUMBER_RANGE.getExceptionMessage());
@@ -65,7 +74,7 @@ public class Compare {
         }
     }
 
-    private void validateDuplication(List<Integer> lottoNumbers) {
+    public void validateDuplication(List<Integer> lottoNumbers) {
         for (int i = 0; i < lottoNumbers.size(); i++) {
             List<Integer> subNumbers = lottoNumbers.subList(i+1, lottoNumbers.size());
             int lottonumber = lottoNumbers.get(i);
@@ -75,7 +84,7 @@ public class Compare {
         }
     }
 
-    private void validateDuplicationInBonus(List<Integer> lottoNumbers, int bonusNumber) {
+    public void validateDuplicationInBonus(List<Integer> lottoNumbers, int bonusNumber) {
         if (lottoNumbers.contains(bonusNumber)) {
             throw new IllegalArgumentException(Exception.INVALID_BONUS_NUMBER_DUPLICATION.getExceptionMessage());
         }

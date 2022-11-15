@@ -23,7 +23,6 @@ public class LottoController {
         List<List<Integer>> computerRandomNumbers = generateRandomNumbers(inputMoney);
         int[] result = compareLottoNumbers(inputMoney, computerRandomNumbers);
         createStatistic(inputMoney, result);
-
     }
 
     private int purchaseLotto() {
