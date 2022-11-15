@@ -2,6 +2,10 @@ package lotto.view;
 
 import camp.nextstep.edu.missionutils.Console;
 
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+
 public class Input {
     public static int inputPrice() {
         System.out.println(InputMessage.NOTICE_INPUT_PRICE.getMessage());
@@ -28,4 +32,18 @@ public class Input {
         return Integer.parseInt(price);
     }
 
+    public static List<Integer> inputWinningNumber() throws IllegalArgumentException {
+        System.out.println(System.lineSeparator() + InputMessage.NOTICE_INPUT_WINNING_NUMBER.getMessage());
+        return convertStringToIntegerList(Console.readLine());
+    }
+
+    private static List<Integer> convertStringToIntegerList(String winningNumber) throws IllegalArgumentException {
+        try {
+            return Arrays.stream(winningNumber.split(", "))
+                    .map(Integer::parseInt)
+                    .collect(Collectors.toList());
+        } catch (Exception exception) {
+            throw new IllegalArgumentException(ErrorMessage.GET_ERROR_FOR_INPUT_WINNING_NUMBER.getMessage());
+        }
+    }
 }

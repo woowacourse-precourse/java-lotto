@@ -24,6 +24,8 @@ public class LottoController {
         Output.printQuantity(lottoQuantity);
         //입력한 로또에 대한 목록 출력하기
         getSavedLotto(lottoQuantity);
+        //당첨 번호 입력 문구
+        Input.inputWinningNumber();
     }
 
     public static void getPrice() {
