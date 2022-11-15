@@ -57,9 +57,7 @@ public class PurchaseLottos {
     }
 
     private void appendLottos(StringBuffer stringBuffer) {
-        lottos.forEach(lotto -> {
-            appendLotto(stringBuffer, lotto);
-        });
+        lottos.forEach(lotto -> appendLotto(stringBuffer, lotto));
     }
 
     private void appendLotto(StringBuffer stringBuffer, Lotto lotto) {
