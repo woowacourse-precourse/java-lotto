@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.math.BigInteger;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -64,4 +65,19 @@ class OutputViewTest {
         assertEquals(message, outContent.toString());
     }
 
+    @Test
+    @DisplayName("lotto를 몇 개 구매했는지에 대한 메세지 출력")
+    void announceNumberOfPurchases() {
+        // Given
+        BigInteger numberOfLottos = new BigInteger("987654321");
+        String message = "개를 구매했습니다.\n";
+
+        // When
+        outputView.announceNumberOfPurchases(numberOfLottos);
+
+        // Then
+        String resultMessage = numberOfLottos + message;
+        assertEquals(resultMessage, outContent.toString());
+    }
+    
 }
