@@ -46,7 +46,7 @@ public class ControlLottoGame {
         if (validateNumber(input)) {
             int bonusNumber = Integer.parseInt(input);
 
-            if ((bonusNumber < 0) || (bonusNumber > 45)) {
+            if ((bonusNumber < 1) || (bonusNumber > 45)) {
                 throw new IllegalArgumentException(Message.ERROR.get() + Message.ERROR_INCORRECT_RANGE.get());
             }
 
