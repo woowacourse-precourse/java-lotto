@@ -26,4 +26,7 @@ public enum Rank {
     public static List<Rank> getLottoRanksDesc() {
         return List.of(FIFTH, FOURTH, THIRD, SECOND, FIRST);
     }
+    public static List<Integer> getWinningsDesc() {
+        return List.of(5000, 50000, 1500000, 30000000, 2000000000);
+    }
 }
