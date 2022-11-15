@@ -8,10 +8,11 @@ import java.util.List;
 import java.util.Objects;
 
 public class Controller {
+    static View view = new View();
     Lotto lotto;
-    String input;
-    EnumMap<Money, Integer> map = new EnumMap<>(Money.class);
-    Computer[] computers;
+    static String input;
+    static EnumMap<Money, Integer> map = new EnumMap<>(Money.class);
+    static Computer[] computers;
 
     void start() {
         long inMoney;
@@ -33,14 +34,12 @@ public class Controller {
     }
 
     private void Result(long inMoney) {
-        View view = new View();
         Domain domain = new Domain();
         long result = domain.checkWinningMoney(map);
         view.printBenfit(inMoney, result);
     }
 
     private void checkWinning() {
-        View view = new View();
         Domain domain = new Domain();
         domain.checkWinning(computers, map, lotto);
         view.printResult(map);
@@ -65,7 +64,6 @@ public class Controller {
     }
 
     private void Bonus() {
-        View view = new View();
         view.inputBonus();
         input = getInput();
     }
@@ -76,13 +74,11 @@ public class Controller {
     }
 
     private void startMoney() {
-        View view = new View();
         view.startMention();
         input = getInput();
     }
 
     private void getComputers(long inMoney) {
-        View view = new View();
         computers = new Computer[(int)inMoney / 1000];
         for (int i = 0; i < inMoney / 1000; i++) computers[i] = new Computer();
         view.purchaseNumber((int)inMoney / 1000, computers);
@@ -99,7 +95,6 @@ public class Controller {
     }
 
     private void winningNumber() {
-        View view = new View();
         view.inputNumber();
         input = getInput();
     }
