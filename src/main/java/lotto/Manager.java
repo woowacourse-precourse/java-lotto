@@ -53,5 +53,15 @@ public class Manager {
 		return numbers;
 	}
 
+	public String inputBonusNumber(String bonusNumber) {
+		printBonusNumberInput();
+		Validate.checkBonusNumber(bonusNumber, lotto.getNumbers());
+		return bonusNumber;
+	}
+
+	public static void printBonusNumberInput(){
+		System.out.println(Message.INPUT_BONUS_NUMBER.getMessage());
+	}
+
 
 }
