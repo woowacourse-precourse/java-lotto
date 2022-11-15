@@ -14,8 +14,8 @@ public class WinningNumberLotto extends Lotto {
 
     public WinningNumberLotto() {
         super(InputNumber.createNumber());
-        int number = inputBonusNumber();
         printBonusMessage();
+        int number = inputBonusNumber();
         setBonusNumber(number);
     }
 
