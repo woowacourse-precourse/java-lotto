@@ -35,5 +35,14 @@ public class Lotto {
     public void check_bonus(int bonus) {
         if(numbers.contains(bonus)) throw new IllegalArgumentException("[ERROR] 보너스 번호와 당첨번호가 같을 수 없습니다");
     }
-
+    public float check_rank(List<Integer> lotto_nums){
+        float check = 0;
+        List<Integer> numbers = this.numbers;
+        for(Integer number : lotto_nums){
+            if(numbers.contains(number)){
+                check++;
+            }
+        }
+        return check;
+    }
 }
