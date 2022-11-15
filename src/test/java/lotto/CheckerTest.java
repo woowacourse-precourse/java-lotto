@@ -2,7 +2,6 @@ package lotto;
 
 import enumCollections.RankNumber;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.EnumMap;
@@ -30,9 +29,8 @@ public class CheckerTest {
         );
     }
 
-    @DisplayName("로또번호와 당첨번호를 비교하여 당첨된 등수를 알 수 있다.")
     @Test
-    void compareLottoNumbersTest() {
+    void 당첨_통계_테스트() {
         initializeParameters(
                 List.of(1, 8, 11, 31, 42, 45),
                 2
@@ -44,9 +42,8 @@ public class CheckerTest {
         )).isEqualTo(getExpected(0, 0, 1, 0, 0));
     }
 
-    @DisplayName("당첨번호와 로또 번호를 비교한다.")
     @Test
-    void compareLottoTest() {
+    void 당첨_통계_테스트_2() {
         List<Lotto> lottos = List.of(
                 new Lotto(List.of(1, 2, 3, 4, 5, 6)),
                 new Lotto(List.of(3, 4, 5, 6, 7, 8)),
@@ -60,9 +57,8 @@ public class CheckerTest {
                 );
     }
 
-    @DisplayName("2등 당첨 확인")
     @Test
-    void winSecondPrizeTest() {
+    void 당첨_통계_테스트_3() {
         List<Lotto> lottos = List.of(
                 new Lotto(List.of(1, 2, 3, 4, 5, 6)),
                 new Lotto(List.of(3, 4, 5, 6, 7, 8)),
