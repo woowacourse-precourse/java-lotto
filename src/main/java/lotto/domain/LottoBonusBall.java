@@ -10,7 +10,7 @@ import java.util.List;
  */
 public class LottoBonusBall {
 
-    public final int bonusBall;
+    private final int bonusBall;
 
     public LottoBonusBall(int bonusBall, Lotto lotto) {
         validate(bonusBall);
@@ -39,4 +39,7 @@ public class LottoBonusBall {
         }
     }
 
+    public int getBonusBall() {
+        return bonusBall;
+    }
 }
