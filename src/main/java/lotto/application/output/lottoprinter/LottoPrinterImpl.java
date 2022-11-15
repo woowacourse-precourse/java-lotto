@@ -1,14 +1,15 @@
 package lotto.application.output.lottoprinter;
 
-import java.util.Arrays;
+import lotto.domain.Lotto;
+
 import java.util.List;
 
 public class LottoPrinterImpl implements LottoPrinter {
 
     @Override
-    public void showGeneratedLottoNumber(List<List<Integer>> generatedLottoNumber) {
-        for (List<Integer> eachLottoNumber : generatedLottoNumber) {
-            System.out.println(Arrays.toString(Arrays.stream(eachLottoNumber.toArray()).sorted().toArray()));
+    public void showGeneratedLottoNumber(List<Lotto> generatedLottoNumber) {
+        for (Lotto lotto : generatedLottoNumber) {
+            System.out.println(lotto.getNumbers());
         }
     }
 }

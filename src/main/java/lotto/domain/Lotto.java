@@ -1,14 +1,13 @@
 package lotto.domain;
 
-import lotto.application.util.inputvalidator.InputValidator;
-import lotto.application.util.inputvalidator.InputValidatorImpl;
-
 import java.util.List;
+
+import static lotto.application.util.inputvalidator.ErrorMessage.LOTTO_AUTO_PUBLISHER_LENGTH;
+import static lotto.application.util.inputvalidator.ErrorMessage.LOTTO_AUTO_PUBLISHER_OVERLAP;
 
 public class Lotto {
 
     private final List<Integer> numbers;
-    private final InputValidator inputValidator = InputValidatorImpl.getInputValidatorInstance();
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
@@ -16,6 +15,15 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
-        inputValidator.validateInputLottoNumbers(numbers);
+        if (numbers.size() != 6) {
+            throw new IllegalArgumentException(LOTTO_AUTO_PUBLISHER_LENGTH.getErrorMessage());
+        }
+        if (numbers.stream().distinct().count() != 6) {
+            throw new IllegalArgumentException(LOTTO_AUTO_PUBLISHER_OVERLAP.getErrorMessage());
+        }
+    }
+
+    public List<Integer> getNumbers() {
+        return numbers;
     }
 }

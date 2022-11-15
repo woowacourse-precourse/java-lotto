@@ -1,8 +1,9 @@
 package lotto.application.service.lottonumber;
 
+import lotto.domain.Lotto;
+
 import java.util.List;
 
 public interface LottoNumberGenerator {
-
-    List<List<Integer>> generateLottoNumber(int purchaseNumber);
+    List<Lotto> generateLottoNumber(int purchaseNumber);
 }

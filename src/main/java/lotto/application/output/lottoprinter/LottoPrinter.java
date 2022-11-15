@@ -1,8 +1,10 @@
 package lotto.application.output.lottoprinter;
 
+import lotto.domain.Lotto;
+
 import java.util.List;
 
 public interface LottoPrinter {
 
-    void showGeneratedLottoNumber(List<List<Integer>> generatedLottoNumber);
+    void showGeneratedLottoNumber(List<Lotto> generatedLottoNumber);
 }

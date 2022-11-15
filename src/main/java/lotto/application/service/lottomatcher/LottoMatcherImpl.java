@@ -1,20 +1,21 @@
 package lotto.application.service.lottomatcher;
 
+import lotto.domain.Lotto;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class LottoMatcherImpl implements LottoMatcher {
 
     @Override
-    public List<List<Integer>> matchWinningLotto(
-            List<List<Integer>> generatedLottoNumbers, List<Integer> winningLottoNumbers, int bonusWinningNumber) {
-        winningLottoNumbers.add(bonusWinningNumber);
-
+    public List<List<Integer>> matchWinningLotto(List<Lotto> generatedLottoNumbers, List<Integer> winningLottoNumbers) {
         List<Integer> matchedWinningLotto = new ArrayList<>();
-        for (List<Integer> generatedLottoNumber : generatedLottoNumbers) {
+
+        for (Lotto generatedLottoNumber : generatedLottoNumbers) {
+            List<Integer> lotto = generatedLottoNumber.getNumbers();
             int count = 0;
             for (Integer winningNumber : winningLottoNumbers) {
-                count += generatedLottoNumber.stream()
+                count += lotto.stream()
                         .filter(e -> e.equals(winningNumber))
                         .count();
             }
@@ -22,7 +23,7 @@ public class LottoMatcherImpl implements LottoMatcher {
         }
 
         List<Integer> countingContainBonusNumber = countContainBonusNumber(
-                matchedWinningLotto, generatedLottoNumbers, bonusWinningNumber);
+                matchedWinningLotto, generatedLottoNumbers, winningLottoNumbers.get(winningLottoNumbers.size() - 1));
 
         return new ArrayList<>() {{
             add(matchedWinningLotto);
@@ -32,12 +33,14 @@ public class LottoMatcherImpl implements LottoMatcher {
 
     @Override
     public List<Integer> countContainBonusNumber(
-            List<Integer> matchedWinningLotto, List<List<Integer>> generatedLottoNumbers, int bonusWinningNumber) {
+            List<Integer> matchedWinningLotto, List<Lotto> generatedLottoNumbers, int bonusWinningNumber) {
         List<Integer> result = new ArrayList<>();
 
         for (int index = 0; index < matchedWinningLotto.size(); index++) {
             if (matchedWinningLotto.get(index) == 5 &&
-                    generatedLottoNumbers.get(index).contains(bonusWinningNumber)) {
+                    generatedLottoNumbers.get(index)
+                            .getNumbers()
+                            .contains(bonusWinningNumber)) {
                 result.add(1);
             }
         }
