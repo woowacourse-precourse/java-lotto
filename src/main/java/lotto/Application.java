@@ -11,6 +11,7 @@ public class Application {
     public static ConsoleUserOutput out = new ConsoleUserOutput();
     public static void main(String[] args) {
         //완료
+        int moneyForLottos;
         int theNumberOfTickets;
         int bonusNumber;
         float principal=0;
@@ -20,7 +21,8 @@ public class Application {
 
         try {
             out.askHowMuchWouldYouPayForLottos();
-            theNumberOfTickets = LottoTicketing.countTheNumberOfTickets(in.inputMoneyForLottos());
+            moneyForLottos = Lotto.ToIntegerMoneyForCalculation(Lotto.validateMoneyForLottos(in.inputMoneyForLottos()));
+            theNumberOfTickets = LottoTicketing.countTheNumberOfTickets(moneyForLottos);
             principal = theNumberOfTickets * 1000;
             out.insertBlankLine();
 
@@ -32,11 +34,11 @@ public class Application {
             out.insertBlankLine();
 
             out.askWinningNumbers();
-            winningNumbers = in.toIntegerNumbersWithoutComma(in.inputWinningNumbers());
+            winningNumbers = Lotto.toIntegerNumbersWithoutComma(Lotto.validateWinningNumbers(in.inputWinningNumbers()));
             out.insertBlankLine();
 
             out.askBonusNumber();
-            bonusNumber = in.inputBonusNumber(winningNumbers);
+            bonusNumber = Lotto.getBonusNumber(Lotto.validateBonusNumber(in.inputBonusNumber(),winningNumbers));
             out.insertBlankLine();
 
         for(int lottosheet=0; lottosheet<theNumberOfTickets; lottosheet++) {
