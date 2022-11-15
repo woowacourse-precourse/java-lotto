@@ -40,7 +40,6 @@ public class LottoPrize {
         double earningRate = Double.parseDouble(computeEarningRate(purchaseAmount, totalWinningAmount));
 
         messageUtil.printEarningRate(earningRate);
-
     }
 
     private long getTotalWinningAmount() {
@@ -78,14 +77,14 @@ public class LottoPrize {
     }
 
     private int checkBonusNumber(List<Integer> userNums, int matchCount) {
-        if(matchCount == FIVE_COUNT.getNumber() && userNums.contains(winningNumInfo.getBonusNum())) {
+        if (matchCount == FIVE_COUNT.getNumber() && userNums.contains(winningNumInfo.getBonusNum())) {
             return matchCount * 10;
         }
 
         return matchCount;
     }
 
-    public String computeEarningRate(int purchaseAmount, long winningAmount) {
+    private String computeEarningRate(int purchaseAmount, long winningAmount) {
         if (winningAmount == 0) {
             return "0";
         }
@@ -93,5 +92,4 @@ public class LottoPrize {
         double earningRate = (double) winningAmount / (double) purchaseAmount * 100;
         return String.format("%.1f", earningRate);
     }
-
 }
