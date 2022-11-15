@@ -1,4 +1,4 @@
-package Error;
+package error;
 
 import java.util.List;
 
