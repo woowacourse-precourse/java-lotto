@@ -45,7 +45,7 @@ class ApplicationTest extends NsTest {
                 List.of(1, 3, 5, 14, 22, 45)
         );
     }
-
+//돈 검증
     @Test
     void 예외_테스트() {
         assertSimpleTest(() -> {
@@ -53,6 +53,43 @@ class ApplicationTest extends NsTest {
             assertThat(output()).contains(ERROR_MESSAGE);
         });
     }
+    @Test
+    void checkInputNull() {
+        assertSimpleTest(() -> {
+            String test = null;
+            runException(test);
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+    @Test
+    void checkInputBlank() {
+        assertSimpleTest(() -> {
+            runException("");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+    // 당첨 로또 검증
+
+    // 보너스 번호 검증
+
+    // 계산 검증
+
+
+//    @Test
+//    void checkInputNull() {
+//        assertSimpleTest(() -> {
+//            runException("1000j");
+//            assertThat(output()).contains(ERROR_MESSAGE);
+//        });
+//    }
+//    @Test
+//    void checkInputNull() {
+//        assertSimpleTest(() -> {
+//            runException("1000j");
+//            assertThat(output()).contains(ERROR_MESSAGE);
+//        });
+//    }
+
 
     @Override
     public void runMain() {
