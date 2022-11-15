@@ -20,9 +20,14 @@ public class LottoGame {
     static WinningNumber winningNumber;
 
     public static void run() {
-        purchaseLotto();
-        enterWinningNumber();
-        enterBonusNumber();
+        try {
+            purchaseLotto();
+            enterWinningNumber();
+            enterBonusNumber();
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+            return;
+        }
         winningNumber = new WinningNumber(winningNumbers, bonusNumber);
         getResultOfLotto();
         getRateOfReturn();
