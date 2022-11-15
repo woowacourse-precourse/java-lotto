@@ -9,7 +9,7 @@ import java.util.HashSet;
 import java.util.List;
 
 public class Input {
-    private int number;
+    private int lottoCount;
 
     private final List<Integer> answer;
 
@@ -18,13 +18,13 @@ public class Input {
     private final static int unitPrice = 1000;
 
     public Input() {
-        number = 0;
+        lottoCount = 0;
         answer = new ArrayList<>();
         bonus = 0;
     }
 
     public int getNumber() {
-        return this.number;
+        return this.lottoCount;
     }
 
     public List<Integer> getAnswer() {
@@ -52,7 +52,7 @@ public class Input {
     public void savePrice(String price) {
         validatePrice(price);
         int priceNum = Integer.parseInt(price);
-        number = priceNum / unitPrice;
+        lottoCount = priceNum / unitPrice;
     }
 
     public String[] enterAnswer() {
