@@ -16,37 +16,63 @@ public class Game {
     public void start(){
 
         Money money = new Money();
-        int lottoCount = money.boughtLottoCount();
-        List<Lotto> lottos = new ArrayList<>();
-
-        for(int i=0; i<lottoCount; i++){
-            List<Integer> boughtLotto = pickUniqueNumbersInRange(Setting.LOTTO_MIN_NUMBER, Setting.LOTTO_MAX_NUMBER, Setting.LOTTO_PICK_NUMBER);
-            lottos.add(new Lotto(boughtLotto));
-            Output.printBoughtLottoNumbers(boughtLotto);
-        }
+        List<Lotto> myLotto = myLotto(money.boughtLottoCount());
 
         List<Integer> pickLottoNumber = pickLotto.lottoNumbers();
         int pickBonusNumber = pickLotto.bonusNumber();
 
-        Long total = 0L;
-        Map<WinningEnum, Integer> statistics = new HashMap<>();
-        for(Lotto lotto : lottos){
-            WinningEnum winning = lotto.getRank(pickLottoNumber, pickBonusNumber);
-            if(winning == null) {
-                continue;
-            }
-            total += Long.valueOf(winning.getWinningAmount());
+        List<WinningEnum> myWinnings = myLottoToWinning(myLotto, pickLottoNumber, pickBonusNumber);
+        statistics(myWinnings);
+        total(myWinnings, money.getLongMoney());
+    }
 
-            if(statistics.containsKey(winning)){
+    public List<Lotto> myLotto(int lottoCount){
+        List<Lotto> myLotto = new ArrayList<>();
+
+        for(int i=0; i<lottoCount; i++){
+            List<Integer> boughtLotto = pickUniqueNumbersInRange(Setting.LOTTO_MIN_NUMBER, Setting.LOTTO_MAX_NUMBER, Setting.LOTTO_PICK_NUMBER);
+            myLotto.add(new Lotto(boughtLotto));
+            Output.printBoughtLottoNumbers(boughtLotto);
+        }
+
+        return myLotto;
+    }
+
+    public List<WinningEnum> myLottoToWinning(List<Lotto> myLotto, List<Integer> pickLottoNumber, int pickBonusNumber){
+        List<WinningEnum> winnings = new ArrayList<>();
+
+        for(Lotto lotto : myLotto){
+            WinningEnum winning = lotto.getRank(pickLottoNumber, pickBonusNumber);
+            if(winning != null) {
+                winnings.add(winning);
+            }
+        }
+
+        return winnings;
+    }
+
+    public void statistics(List<WinningEnum> winnings){
+        Map<WinningEnum, Integer> statistics = new HashMap<>();
+
+        for(WinningEnum winning : winnings){
+            if (statistics.containsKey(winning)) {
                 int counting = statistics.get(winning).intValue();
                 statistics.put(winning, counting++);
-            }
-            else{
+            } else {
                 statistics.put(winning, 1);
             }
         }
 
         Output.printWinningStatistics(statistics);
-        Output.printYield(total / (double)money.getLongMoney() * 100);
+    }
+
+    public void total(List<WinningEnum> winnings, Long money){
+        Long total = 0L;
+
+        for(WinningEnum winning : winnings){
+            total += Long.valueOf(winning.getWinningAmount());
+        }
+
+        Output.printYield(total / (double)money * 100);
     }
 }

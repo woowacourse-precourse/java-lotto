@@ -24,13 +24,9 @@ public enum WinningEnum {
 
     public static WinningEnum getWinning(int inputCorrect, boolean inputHaveToCorrect){
         for(WinningEnum winning : WinningEnum.values()){
-            if(inputCorrect != winning.correctNumberCount){
-                continue;
+            if(inputCorrect == winning.correctNumberCount && inputHaveToCorrect == winning.haveToCorrectBonusNumber){
+                return winning;
             }
-            if(inputHaveToCorrect != winning.haveToCorrectBonusNumber){
-                continue;
-            }
-            return winning;
         }
         return null;
     }
