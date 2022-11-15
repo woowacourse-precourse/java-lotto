@@ -1,6 +1,7 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
+import domain.Lotto;
 import domain.Money;
 import dto.ResultDto;
 import ui.Printer;

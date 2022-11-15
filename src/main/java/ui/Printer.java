@@ -1,9 +1,8 @@
 package ui;
 
 import dto.ResultDto;
-import lotto.Lotto;
+import domain.Lotto;
 
-import java.util.Collections;
 import java.util.List;
 
 public class Printer {
@@ -18,7 +17,6 @@ public class Printer {
 
     public void printLotto(List<Lotto> boughtLotto) {
         for (Lotto lotto : boughtLotto) {
-//            Collections.sort(lotto.getNumbers());
             System.out.println(lotto.getNumbers());
         }
     }

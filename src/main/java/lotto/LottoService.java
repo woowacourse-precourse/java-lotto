@@ -1,5 +1,6 @@
 package lotto;
 
+import domain.Lotto;
 import dto.ResultDto;
 import ui.ExceptionMessage;
 
