@@ -1,5 +1,6 @@
 package lotto.model;
 
+import java.math.BigDecimal;
 import java.util.HashMap;
 
 public class LottoStatics {
@@ -24,10 +25,14 @@ public class LottoStatics {
         return staticsInfo;
     }
 
-    public long getTotalPrize() {
-        long totalPrize = 0;
+    public BigDecimal getTotalPrize() {
+        BigDecimal totalPrize = new BigDecimal("0");
         for (Winning value : Winning.values()) {
-            totalPrize += (long) value.getPrize() * staticsInfo.get(value);
+            BigDecimal count = new BigDecimal(String.valueOf(staticsInfo.get(value)));
+            BigDecimal tmpPrize = new BigDecimal(String.valueOf(value.getPrize()));
+
+            BigDecimal multiple = tmpPrize.multiply(count);
+            totalPrize = totalPrize.add(multiple);
         }
         return totalPrize;
     }

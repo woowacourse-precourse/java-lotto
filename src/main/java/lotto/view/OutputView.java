@@ -1,6 +1,7 @@
 package lotto.view;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.HashMap;
 import java.util.List;
 import lotto.model.Lotto;
@@ -33,9 +34,9 @@ public class OutputView {
 
     public static void printYield(int inputmoney, LottoStatics statics) {
         BigDecimal money = new BigDecimal(String.valueOf(inputmoney));
-        BigDecimal totalPrize = new BigDecimal(String.valueOf(statics.getTotalPrize()));
+        BigDecimal totalPrize = statics.getTotalPrize();
 
-        BigDecimal yield = totalPrize.divide(money);
+        BigDecimal yield = totalPrize.divide(money, 3, RoundingMode.HALF_UP);
         yield = yield.multiply(new BigDecimal("100"));
 
         System.out.printf(MESSAGE_YIELD, yield);
