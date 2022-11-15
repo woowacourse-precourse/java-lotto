@@ -28,4 +28,8 @@ public class WinningNumbers {
         return winningNumber.countMatchNumber(lottoTicket);
     }
 
+    public boolean isMatchBonusNumber(Lotto lottoTicket) {
+        return lottoTicket.contains(bonusNumber);
+    }
+
 }
