@@ -46,4 +46,13 @@ class CalculatorTest {
             Assertions.assertThat(history.get(rank)).isEqualTo(1);
         }
     }
+
+    @DisplayName("두 개의 로또를 비교해 몇 개의 숫자가 겹치는지 확인")
+    @Test
+    void compareWinningLottoWithPurchaseLottoTest() {
+        Lotto purchaseLotto = new Lotto(List.of(2,4,6,8,10,12));
+        int result = calculator.compareWinningLottoWithPurchaseLotto(winningLotto, purchaseLotto);
+
+        Assertions.assertThat(result).isEqualTo(3);
+    }
 }
