@@ -1,4 +1,4 @@
-package lotto;
+package lotto.domain;
 
 import java.util.Collection;
 import java.util.List;
@@ -18,16 +18,16 @@ public class Lotto {
         }
     }
 
-    private void duplication(List<Integer> numbers){
-        for(int index1=0;index1<numbers.size();index1++){
-            for(int index2=index1+1;index2<numbers.size();index2++){
-                duplication2(numbers,index1,index2);
+    private void duplication(List<Integer> numbers) {
+        for (int index1 = 0; index1 < numbers.size(); index1++) {
+            for (int index2 = index1 + 1; index2 < numbers.size(); index2++) {
+                duplicationCompare(numbers, index1, index2);
             }
         }
     }
 
-    private void duplication2(List<Integer> numbers, int index1, int index2){
-        if(numbers.get(index1).equals(numbers.get(index2))){
+    private void duplicationCompare(List<Integer> numbers, int index1, int index2) {
+        if (numbers.get(index1).equals(numbers.get(index2))) {
             throw new IllegalArgumentException("[ERROR] 중복 숫자를 확인하세요.");
         }
 
