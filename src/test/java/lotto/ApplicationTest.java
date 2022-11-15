@@ -19,6 +19,15 @@ class ApplicationTest extends NsTest {
         });
     }
     @Test
+    void makeRandomNumbersTest(){
+        assertSimpleTest(() -> {
+            run("8000");
+            assertThat(output()).contains("8개를 구매했습니다.",
+                    "[","]"
+            );
+        });
+    }
+    @Test
     void 기능_테스트() {
         assertRandomUniqueNumbersInRangeTest(
                 () -> {
