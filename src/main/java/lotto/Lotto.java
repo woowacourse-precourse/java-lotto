@@ -1,5 +1,6 @@
 package lotto;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -25,7 +26,8 @@ public class Lotto {
     // TODO: 추가 기능 구현
 
     public void printNumbers() {
-        Collections.sort(numbers);
-        System.out.println(numbers);
+        List<Integer> sortedNumbers = new ArrayList<>(numbers);
+        Collections.sort(sortedNumbers);
+        System.out.println(sortedNumbers);
     }
 }
