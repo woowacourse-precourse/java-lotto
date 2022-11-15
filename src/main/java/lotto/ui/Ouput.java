@@ -61,9 +61,9 @@ public class Ouput {
     public void notifyResult(List<Integer> result) {
         System.out.println(GRADE_STATISTICS_NOTICE);
         System.out.println(LINE_NOTICE);
-        GradeNotice[] gradeNotices = GradeNotice.values();
-        for (int index = 0; index < 5; index++) {
-            System.out.printf(gradeNotices[index].notice, result.get(index));
+        int index = 0;
+        for (GradeNotice gradeNotice : GradeNotice.values()){
+            System.out.printf(gradeNotice.notice, result.get(index++));
         }
     }
 

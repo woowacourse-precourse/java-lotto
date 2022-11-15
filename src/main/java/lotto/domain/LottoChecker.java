@@ -34,11 +34,8 @@ public class LottoChecker {
 
     public List<Integer> toResult(List<Integer> countGroup) {
         List<Integer> result = new ArrayList<>();
-        for (int count = Grade.FIFTH.getCount(); count <= Grade.FIRST.getCount(); count++) {
-            result.add(Collections.frequency(countGroup, count));
-            if (count == Grade.THIRD.getCount()) {
-                result.add(Collections.frequency(countGroup, Grade.SECOND.getCount()));
-            }
+        for (Grade grade : Grade.values()){
+            result.add(Collections.frequency(countGroup, grade.getCount()));
         }
         result.add(countGroup.size());
         return result;
