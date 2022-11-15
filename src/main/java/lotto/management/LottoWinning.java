@@ -26,13 +26,13 @@ public class LottoWinning {
         totalWinningAmount = 0;
     }
 
-    public double getLottoYield() {
-        return (float) getTotalWinningAmount() / (float) purchaseMoney;
+    public int getLottoYield() {
+        return getTotalWinningAmount() / purchaseMoney;
     }
 
     private int getTotalWinningAmount() {
         for (int index = 0; index < ticketResult.size(); index++) {
-            totalWinningAmount += winningAmount.get(index) * ticketResult.get(index);
+            totalWinningAmount += (winningAmount.get(index) * ticketResult.get(index));
         }
         return totalWinningAmount;
     }
