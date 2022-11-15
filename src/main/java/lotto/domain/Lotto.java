@@ -19,9 +19,9 @@ public class Lotto {
     }
 
     public static int countCommonNumber(Lotto winningNums, Lotto lotto) {
-        return  (int) lotto.getNumbers()
+        return  (int) lotto.numbers
             .stream()
-            .filter(number -> winningNums.getNumbers().contains(number))
+            .filter(number -> winningNums.numbers.contains(number))
             .count();
     }
 
