@@ -6,7 +6,8 @@ public enum Result {
     SECOND(5, true, "5개 일치, 보너스 볼 일치 (30,000,000원) - "),
     THIRD(5, false, "5개 일치 (1,500,000원) - "),
     FOURTH(4, false, "4개 일치 (50,000원) - "),
-    FIFTH(3, false, "3개 일치 (5,000원) - ");
+    FIFTH(3, false, "3개 일치 (5,000원) - "),
+    NO_REWARD(0, false, "");
 
     private final int equalCount;
     private final boolean isBonus;
