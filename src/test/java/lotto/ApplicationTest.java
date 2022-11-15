@@ -47,12 +47,117 @@ class ApplicationTest extends NsTest {
 	}
 
 	@Test
-	void 예외_테스트() {
+	void 예외처리_금액_문자() {
 		assertSimpleTest(() -> {
 			runException("1000j");
 			assertThat(output()).contains(ERROR_MESSAGE);
 		});
 	}
+
+	@Test
+	void 예외처리_금액_가격() {
+		assertSimpleTest(() -> {
+			runException("1200");
+			assertThat(output()).contains(ERROR_MESSAGE);
+		});
+	}
+
+	@Test
+	void 예외처리_금액_잘못된인풋() {
+		assertSimpleTest(() -> {
+			runException(" 12000");
+			assertThat(output()).contains(ERROR_MESSAGE);
+		});
+	}
+
+	@Test
+	void 예외처리_당첨번호_5개() {
+		assertSimpleTest(() -> {
+			runException("1000", "1,2,3,4,5");
+			assertThat(output()).contains(ERROR_MESSAGE);
+		});
+	}
+
+	@Test
+	void 예외처리_당첨번호_7개() {
+		assertSimpleTest(() -> {
+			runException("3000", "1,2,3,4,5,6,7");
+			assertThat(output()).contains(ERROR_MESSAGE);
+		});
+	}
+
+	@Test
+	void 예외처리_당첨번호_쉼표_연속() {
+		assertSimpleTest(() -> {
+			runException("1000", "1,2,3,4,,5,6");
+			assertThat(output()).contains(ERROR_MESSAGE);
+		});
+	}
+
+	@Test
+	void 예외처리_당첨번호_마지막쉼표() {
+		assertSimpleTest(() -> {
+			runException("1000", "1,2,3,4,5,6,");
+			assertThat(output()).contains(ERROR_MESSAGE);
+		});
+	}
+
+	@Test
+	void 예외처리_당첨번호_문자() {
+		assertSimpleTest(() -> {
+			runException("1000", "1,2,3,4,a5");
+			assertThat(output()).contains(ERROR_MESSAGE);
+		});
+	}
+
+	@Test
+	void 예외처리_당첨번호_1미만() {
+		assertSimpleTest(() -> {
+			runException("1000", "0, 1,2,3,4,5");
+			assertThat(output()).contains(ERROR_MESSAGE);
+		});
+	}
+
+	@Test
+	void 예외처리_당첨번호_45초과() {
+		assertSimpleTest(() -> {
+			runException("1000", "1,2,3,4,5,46");
+			assertThat(output()).contains(ERROR_MESSAGE);
+		});
+	}
+
+	@Test
+	void 예외처리_당첨번호_공백() {
+		assertSimpleTest(() -> {
+			runException("1000", "1 2,3,4,5,6");
+			assertThat(output()).contains(ERROR_MESSAGE);
+		});
+	}
+
+	@Test
+	void 예외처리_보너스_중복() {
+		assertSimpleTest(() -> {
+			runException("1000", "1,2,3,4,5,6", "1");
+			assertThat(output()).contains(ERROR_MESSAGE);
+		});
+	}
+
+	@Test
+	void 예외처리_보너스_1미만() {
+		assertSimpleTest(() -> {
+			runException("1000", "1,2,3,4,5,6", "0");
+			assertThat(output()).contains(ERROR_MESSAGE);
+		});
+	}
+
+	@Test
+	void 예외처리_보너스_45초과() {
+		assertSimpleTest(() -> {
+			runException("1000", "1,2,3,4,5,6", "100");
+			assertThat(output()).contains(ERROR_MESSAGE);
+		});
+	}
+
 
 	@Override
 	public void runMain() {
