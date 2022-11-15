@@ -6,12 +6,13 @@ import java.util.Map;
 public class LottoResult {
     private static final int INITIAL_COUNT = 0;
     private static final double INITIAL_RETURN_RATE = 0.0;
+    private static final int FIVE_NUMBER = 5;
     private final Map<PrizeType, Integer> result = new HashMap<>();
     private double profitRate;
 
     public LottoResult(Lottos lottos, WinningLotto winningLotto, Money money) {
         initializeResult();
-        checkResult(lottos, winningLotto);
+        countWinningNumber(lottos, winningLotto);
         calculateProfitRate(money);
     }
 
@@ -22,20 +23,23 @@ public class LottoResult {
         profitRate = INITIAL_RETURN_RATE;
     }
 
-    private void checkResult(Lottos lottos, WinningLotto winningLotto) {
+    private void countWinningNumber(Lottos lottos, WinningLotto winningLotto) {
         for (Lotto lotto : lottos.getLottos()) {
-            countWinningNumber(lotto, winningLotto.getWinningLotto(),
+            PrizeType type = findPrizeType(lotto, winningLotto.getWinningLotto(),
                     winningLotto.getBonusNumber());
+            addResult(type);
         }
     }
 
-    private void countWinningNumber(Lotto lotto, Lotto winningLotto, int bonusNumber) {
-        int count = lotto.compare(winningLotto.getNumbers());
-        addResult(count, lotto.isContainBonusNumber(bonusNumber));
+    private PrizeType findPrizeType(Lotto lotto, Lotto winningLotto, int bonusNumber) {
+        int winningCount = lotto.compare(winningLotto.getNumbers());
+        if (winningCount == FIVE_NUMBER && lotto.isContainBonusNumber(bonusNumber)) {
+            return PrizeType.getPrizeType(winningCount, true);
+        }
+        return PrizeType.getPrizeType(winningCount, false);
     }
 
-    private void addResult(int count, boolean bonus) {
-        PrizeType type = PrizeType.getPrizeType(count, bonus);
+    private void addResult(PrizeType type) {
         if (type != null) {
             result.put(type, getResult().get(type) + 1);
         }
