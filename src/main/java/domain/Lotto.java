@@ -1,14 +1,18 @@
 package domain;
 
 import dto.ResultDto;
+import ui.ExceptionMessage;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Lotto {
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
+        isUniqueNumber(numbers);
         this.numbers = numbers;
     }
 
@@ -16,6 +20,16 @@ public class Lotto {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException();
         }
+    }
+
+    private void isUniqueNumber(List<Integer> numbers) {
+        Set<Integer> set = new HashSet<>();
+        for (Integer value : numbers) {
+            set.add(value);
+        }
+
+        if (set.size() != numbers.size())
+            throw new IllegalArgumentException(ExceptionMessage.IS_NOT_UNIQUE_LOTTO_NUMBER.getTxt());
     }
 
     public List<Integer> getNumbers() {
