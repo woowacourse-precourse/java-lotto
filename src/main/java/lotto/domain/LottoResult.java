@@ -5,13 +5,18 @@ import java.util.EnumMap;
 import java.util.Map;
 
 public class LottoResult {
-    private static final Long ZERO = 0L;
+    private static final Long ZERO_COUNT = 0L;
     private static final double DEFAULT_RATIO = 100.0;
 
     private final EnumMap<LottoPrize, Long> result = new EnumMap<>(LottoPrize.class);
 
     public LottoResult(Map<LottoPrize, Long> result) {
         this.result.putAll(result);
+    }
+
+    @Override
+    public String toString() {
+        return "LottoResult{" + result + '}';
     }
 
     public double calculateProfitRatio() {
@@ -27,11 +32,11 @@ public class LottoResult {
     private Money calculatePayAmount() {
         return LottoSeller.LOTTO_PRICE.times(Arrays.stream(LottoPrize.values())
                 .map(this::getCount)
-                .reduce(ZERO, Long::sum));
+                .reduce(ZERO_COUNT, Long::sum));
     }
 
     public Long getCount(LottoPrize lottoPrize) {
-        return result.getOrDefault(lottoPrize, ZERO);
+        return result.getOrDefault(lottoPrize, ZERO_COUNT);
     }
 
     public EnumMap<LottoPrize, Long> value() {
