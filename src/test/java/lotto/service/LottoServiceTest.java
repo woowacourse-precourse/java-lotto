@@ -48,7 +48,7 @@ class LottoServiceTest {
         List<Integer> winningNumbers = List.of(1, 5, 15, 21, 40, 41);
         int bonus = 13;
         lottoRepository.save(new Lotto(randomNumbers));
-        LottoInput lottoInput = LottoInput.create(winningNumbers, bonus, Money.of(1000));
+        LottoInput lottoInput = LottoInput.create(winningNumbers, bonus, Money.of(1000L));
         //when
         PrizeDto prizeDto = lottoService.calcWinningResult(lottoInput);
 
