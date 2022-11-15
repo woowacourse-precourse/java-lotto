@@ -22,10 +22,13 @@ public class Lotto {
     }
 
     private void validateOverlap(List<Integer> numbers) {
-        HashSet<Integer> set = new HashSet<>(numbers);
-        if (set.size() != Statistic.SAME_SIX.getValue()) {
+        if (getDistinctLength(numbers) != Statistic.SAME_SIX.getValue()) {
             throw new IllegalArgumentException();
         }
+    }
+
+    private int getDistinctLength(List<Integer> numbers) {
+        return (int)numbers.stream().distinct().count();
     }
 
     private void sortByAscending(List<Integer> numbers) {

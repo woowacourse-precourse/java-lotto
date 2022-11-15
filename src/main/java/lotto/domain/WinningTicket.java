@@ -1,8 +1,5 @@
 package lotto.domain;
 
-import lotto.Message;
-
-import java.util.HashSet;
 import java.util.List;
 import static lotto.Message.*;
 
@@ -23,32 +20,36 @@ public class WinningTicket {
         this.bonusNumber = bonusNumber;
     }
 
-    public void validateNumberRange(List<Integer> winnings) throws IllegalArgumentException {
+    private void validateNumberRange(List<Integer> winnings) throws IllegalArgumentException {
         winnings.forEach(this::checkRange);
     }
 
-    public void validateLength(List<Integer> winnings) throws IllegalArgumentException {
+    private void validateLength(List<Integer> winnings) throws IllegalArgumentException {
         if(winnings.size() != MAX_SIZE) {
             throw new IllegalArgumentException(LENGTH_MESSAGE.getValue());
         }
     }
 
-    public void validateOverlap(List<Integer> winnings) throws IllegalArgumentException {
-        if(new HashSet<>(winnings).size() != MAX_SIZE) {
+    private void validateOverlap(List<Integer> winnings) throws IllegalArgumentException {
+        if(getDistinctLength(winnings) != MAX_SIZE) {
             throw new IllegalArgumentException(OVERLAP_MESSAGE.getValue());
         }
     }
 
-    public void validateBonusNumberOverlap(List<Integer> winnings, int bonusNumber) throws IllegalArgumentException {
+    private int getDistinctLength(List<Integer> winnings) {
+        return (int)winnings.stream().distinct().count();
+    }
+
+    private void validateBonusNumberOverlap(List<Integer> winnings, int bonusNumber) throws IllegalArgumentException {
         if(winnings.contains(bonusNumber)) {
-            throw new IllegalArgumentException(Message.OVERLAP_BONUS_NUMBER_MESSAGE.getValue());
+            throw new IllegalArgumentException(OVERLAP_BONUS_NUMBER_MESSAGE.getValue());
         }
     }
 
-    public void checkRange(int num) throws IllegalArgumentException {
+    private void checkRange(int num) throws IllegalArgumentException {
         try {
             if(num < START || num > END) {
-                throw new IllegalArgumentException(Message.RANGE_EXCEED_MESSAGE.getValue());
+                throw new IllegalArgumentException(RANGE_EXCEED_MESSAGE.getValue());
             }
         } catch (IllegalArgumentException e) {
             throw new IllegalArgumentException(e.getMessage());
