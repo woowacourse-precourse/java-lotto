@@ -9,8 +9,8 @@ import java.util.List;
 public class Consumer {
     private static List<Lotto> lottos;
 
-    Consumer() {
-        lottos = new ArrayList<>();
+    Consumer(Lotto lotto) {
+        lottos = new ArrayList<>(List.of(lotto));
     }
 
     public static void buyLotto() {
@@ -23,7 +23,7 @@ public class Consumer {
         LottoConsoleIo.printNoOfLotto(lottos);
     }
     public static List<Integer> calcStat(Lotto winNumber, int bonus) {
-        List<Integer> stat = List.of(0,0,0,0,0,0);
+        List<Integer> stat = new ArrayList<>(List.of(0,0,0,0,0,0));
         HashSet winNumbers = new HashSet(winNumber.getNumbers());
         for (Lotto lotto:lottos) {
             HashSet<Integer> myNumbers = new HashSet(lotto.getNumbers());
