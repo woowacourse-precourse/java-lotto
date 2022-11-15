@@ -3,6 +3,7 @@ package lotto;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomUniqueNumbersInRangeTest;
@@ -61,7 +62,27 @@ class ApplicationTest extends NsTest {
         int expectedCount = 230;
         assertThat(lottoCount).isEqualTo(expectedCount);
     }
-    
+
+    @Test
+    void 당첨_개수_계산_테스트() {
+        LottoBank lottoBank = new LottoBank();
+        int lottoCount = 5;
+        List<List<Integer>> totalLotteries = new ArrayList<>();
+        totalLotteries.add(List.of(8, 21, 23, 41, 42, 43));
+        totalLotteries.add(List.of(3, 13, 22, 32, 38, 45));
+        totalLotteries.add(List.of(1, 13, 25, 33, 42, 44));
+        totalLotteries.add(List.of(1, 14, 21, 31, 39, 43));
+        totalLotteries.add(List.of(5, 13, 22, 32, 38, 45));
+        List<Integer> winningNumbers = new ArrayList<>();
+        winningNumbers = List.of(1, 13, 22, 32, 42, 45);
+        int[] winningCount =
+                lottoBank.calculateWinningCount(lottoCount, totalLotteries, winningNumbers);
+        int[] expectedWinningCount = {1, 4, 3, 1, 4};
+        for (int i = 0; i < winningCount.length; i++) {
+            assertThat(winningCount[i]).isEqualTo(expectedWinningCount[i]);
+        }
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
