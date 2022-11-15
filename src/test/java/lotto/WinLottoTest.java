@@ -23,4 +23,12 @@ public class WinLottoTest {
         WinLotto winLotto = new WinLotto(Arrays.asList(1, 7, 8, 9, 10, 11), 12);
         Assertions.assertThat(winLotto.compare(lotto)).isEqualTo(Arrays.asList(1));
     }
+
+    @DisplayName("로또 번호에 보너스번호가 포함되는지 확인하는 기능을 테스트한다.")
+    @Test
+    void isBonusCorrect() {
+        Lotto lotto = new Lotto(Arrays.asList(3, 2, 1, 5, 4, 6));
+        WinLotto winLotto = new WinLotto(Arrays.asList(1, 7, 8, 9, 10, 11), 2);
+        Assertions.assertThat(winLotto.isBonusCorrect(lotto)).isEqualTo(true);
+    }
 }
