@@ -24,16 +24,7 @@ public class WinningNumbers {
     }
 
     public boolean checkBonusMatch(Lotto lotto) {
-        boolean doesBonusMatch = false;
-        for(int i = 0; i < Lotto.LOTTO_NUMBER_LENGTH; i++) {
-            LottoNumber lottoNumber = lotto.getNumber(i);
-            doesBonusMatch = (lottoNumber.equals(bonusNumber));
-            if(doesBonusMatch) {
-                break;
-            }
-        }
-
-        return doesBonusMatch;
+        return lotto.contains(bonusNumber);
     }
 
     private static void validate(Lotto lottoNumbers, LottoNumber bonusNumber) {
