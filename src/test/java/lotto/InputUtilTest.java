@@ -57,4 +57,13 @@ public class InputUtilTest {
 
         assertThat(origin).isEqualTo(true);
     }
+
+    @DisplayName("isDuplicatedWithWinningNumbersTest")
+    @Test
+    void isDuplicatedWithWinningNumbersTest() {
+        boolean origin = ValidationUtil.isDuplicatedWithWinningNumbers("1",
+                new Lotto(List.of(1, 2, 3, 4, 5, 6)));
+
+        assertThat(origin).isEqualTo(false);
+    }
 }
