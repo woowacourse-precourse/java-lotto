@@ -19,7 +19,7 @@ public class LottoProgram {
 
     public LottoProgram() {
         int buyAmount = buyLotto();
-        //getWinLotto();
+        getWinLotto();
         //winStats(buyAmount);
     }
 
@@ -35,5 +35,13 @@ public class LottoProgram {
         return buyAmount;
     }
 
+    private void getWinLotto() {
+        System.out.println(InformationLines.WIN_NUMBER_LINE.getLine());
+        List<Integer> winNumbers = inputOutput.getLottoNumbers();
 
+        System.out.println(InformationLines.BONUS_NUMBER_LINE.getLine());
+        int bonusNumber = inputOutput.getLottoBonusNumbers();
+
+        winLotto = new WinLotto(winNumbers, bonusNumber);
+    }
 }
