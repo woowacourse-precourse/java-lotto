@@ -82,4 +82,13 @@ public class UserInterface {
         return eachMessageWinStatistic.get(index);
     }
 
+    public static void printWinStatics(Map<Integer,Integer> winStatistics){
+        int noPrice = 4;
+        int numberOfMessage = 5;
+
+        System.out.println("\n당첨 통계\n---");
+        for(int i = winStatistics.size()-noPrice ; i > 0 ;i--){
+            System.out.println(messageWinStatstic(numberOfMessage-i,winStatistics.get(i)));
+        }
+    }
 }
