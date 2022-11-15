@@ -35,6 +35,14 @@ public class BuyLotto {
         randomPick(buyCount);
     }
 
+    private static void randomPick(int buyCount) {
+        System.out.println("당첨 통계");
+        System.out.println("---");
+        for (int i = 0; i < buyCount; i++) {
+            List<Integer>numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+            Lotto_Random_arr.add(sortNumbers(numbers));
+        }
+    }
 
 
 }
