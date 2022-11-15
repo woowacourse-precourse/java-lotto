@@ -65,10 +65,10 @@ public class LottoStatistics {
 
     protected LottoResult findRanking(List<Integer> count, Lotto oneLottoTicket){
         if (count.get(lottoSixNumber) == numberThree) oneLottoTicket.setLottoResult(THREE);
-        else if (count.get(lottoSixNumber) == numberFour) oneLottoTicket.setLottoResult(FOUR);
-        else if (count.get(lottoSixNumber) == numberFive && count.get(lottoBonusNumber) == 0) oneLottoTicket.setLottoResult(FIVE);
-        else if (count.get(lottoSixNumber) == numberSix) oneLottoTicket.setLottoResult(SIX);
-        else if (count.get(lottoSixNumber) == numberFive && count.get(lottoBonusNumber)== LOTTO_BONUS_LENGTH) oneLottoTicket.setLottoResult(FIVE_BONUS);
+        if (count.get(lottoSixNumber) == numberFour) oneLottoTicket.setLottoResult(FOUR);
+        if (count.get(lottoSixNumber) == numberFive && count.get(lottoBonusNumber) == 0) oneLottoTicket.setLottoResult(FIVE);
+        if (count.get(lottoSixNumber) == numberFive && count.get(lottoBonusNumber)== LOTTO_BONUS_LENGTH) oneLottoTicket.setLottoResult(FIVE_BONUS);
+        if (count.get(lottoSixNumber) == numberSix) oneLottoTicket.setLottoResult(SIX);
         return oneLottoTicket.getLottoResult();
     }
 
