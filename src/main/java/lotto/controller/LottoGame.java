@@ -54,7 +54,7 @@ public class LottoGame {
         double rateOfReturn2 = (double)winStatistics.calculationTotalAmount()/(double)input * 100;
         String rateOfReturn = String.format("%,.1f",rateOfReturn2);
         StringBuilder sb5 = new StringBuilder();
-        sb5.append("총 수익률은").append(rateOfReturn).append("%입니다.");
+        sb5.append("총 수익률은 ").append(rateOfReturn).append("%입니다.");
         System.out.println(sb5);
         //System.out.println("총 수익률은 "+rateOfReturn+"%입니다.");
     }
