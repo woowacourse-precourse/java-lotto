@@ -7,16 +7,10 @@ import java.util.stream.Collectors;
 public class WinLotto {
     Lotto inputLottto;
     int bonusLotto;
-    static String lottoinputMessage = "로또번호 입력하세요.";
-    static String bonusinputMessage = "보너스번호 입력하세요.";
     static String totalrateMessage = "총 수익률은 %s%%입니다.";
 
-    WinLotto(){
-        System.out.println(lottoinputMessage);
-        String inputLotto = Console.readLine();
+    WinLotto(String inputLotto,String bonusLotto){
         this.inputLottto = convertLottos(inputLotto);
-        System.out.println(bonusinputMessage);
-        String bonusLotto = Console.readLine();
         this.bonusLotto = convertBonus(bonusLotto);
     }
     Lotto convertLottos(String inputLotto){
