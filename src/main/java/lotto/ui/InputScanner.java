@@ -27,12 +27,10 @@ public class InputScanner {
         try {
             purchaseAmount = stringToInteger(input);
         } catch (IllegalArgumentException e) {
-            System.err.println("[ERROR] 구입 금액은 숫자로만 이루어져야 합니다.");
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR] 구입 금액은 숫자로만 이루어져야 합니다.");
         }
         if (purchaseAmount % 1000 > 0) {
-            System.err.println("[ERROR] 구입 금액은 천원 단위여야 합니다.");
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR] 구입 금액은 천원 단위여야 합니다.");
         }
         return purchaseAmount;
     }
@@ -62,22 +60,18 @@ public class InputScanner {
         try {
             winningNumbers = stringToIntegerList(input);
         } catch (NumberFormatException e) {
-            System.err.println("[ERROR] 당첨번호는 쉼표와 숫자만 입력가능합니다.");
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR] 당첨번호는 쉼표와 숫자만 입력가능합니다.");
         }
         if (winningNumbers.size() != 6) {
-            System.err.println("[ERROR] 6자리 숫자만 입력가능합니다. ");
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR] 6자리 숫자만 입력가능합니다. ");
         }
         if (Collections.min(winningNumbers) < 1 || Collections.max(winningNumbers) > 45) {
-            System.err.println("[ERROR] 1부터 45까지의 범위 내에서 입력가능합니다.");
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR] 1부터 45까지의 범위 내에서 입력가능합니다.");
         }
         return winningNumbers;
     }
 
-    private List<Integer> sortWinningNumbers(List<Integer> inputNumbers)
-    {
+    private List<Integer> sortWinningNumbers(List<Integer> inputNumbers) {
         Collections.sort(inputNumbers);
         return inputNumbers;
     }
@@ -108,16 +102,13 @@ public class InputScanner {
         try {
             bonusNumber = stringToInteger(input);
         } catch (NumberFormatException e) {
-            System.err.println("[ERROR] 보너스번호는 숫자만 입력가능합니다.");
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR] 보너스번호는 숫자만 입력가능합니다.");
         }
         if (winningNumbers.contains(bonusNumber)) {
-            System.err.println("[ERROR] 당첨번호와 중복되지 않는 수를 입력해 주세요. ");
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR] 당첨번호와 중복되지 않는 수를 입력해 주세요.");
         }
         if (bonusNumber < 0 || bonusNumber > 45) {
-            System.err.println("[ERROR] 1부터 45까지의 범위 내에서 입력가능합니다. ");
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR] 1부터 45까지의 범위 내에서 입력가능합니다. ");
         }
         return bonusNumber;
     }
