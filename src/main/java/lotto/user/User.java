@@ -2,11 +2,15 @@ package lotto.user;
 
 import camp.nextstep.edu.missionutils.Console;
 import lotto.lotto.BoughtLotto;
+import lotto.user.validation.ValidationPurchasePrice;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class User {
+
+    private static final Integer LOTTO_PRICE = 1000;
+
     List<BoughtLotto> lottos;
 
     public User() {
@@ -14,25 +18,35 @@ public class User {
     }
 
     public void buyLottos() {
-        int money = inputMoney();
-        int countOfBuyLotto = money / 1000;
+        int money = inputPurchasePrice();
+        int countOfBuyLotto = money / LOTTO_PRICE;
         for (int i = 0; i < countOfBuyLotto; i++) {
             lottos.add(new BoughtLotto());
         }
     }
 
-    private void validateMoney(String money) {
-        if (!checkInputInteger(money)) {
-            throw new IllegalArgumentException("[ERROR] 금액은 자연수여야 합니다.");
-        }
-        if (!checkInputNumber(money)) {
-            throw new IllegalArgumentException("[ERROR] 금액은 1000원 단위여야 합니다.");
+    private void printInputMessage() {
+        System.out.println("구입금액을 입력해 주세요.");
+    }
+
+    private int inputPurchasePrice() {
+        printInputMessage();
+        String input = Console.readLine();
+        validatePurchasePrice(input);
+        return Integer.parseInt(input);
+    }
+
+    private void validatePurchasePrice(String money) {
+        ValidationPurchasePrice validationPurchasePrice = ValidationPurchasePrice.validate(money);
+        if (validationPurchasePrice.getIsThrow()) {
+            String errorMessage = validationPurchasePrice.getErrorMessage();
+            throw new IllegalArgumentException(errorMessage);
         }
     }
 
     public void printLottos() {
         int countOfLotto = lottos.size();
-        System.out.println(String.valueOf(countOfLotto) + "개를 구매했습니다.");
+        System.out.println(countOfLotto + "개를 구매했습니다.");
         for (BoughtLotto lotto : lottos) {
             printOneLotto(lotto);
         }
@@ -44,29 +58,5 @@ public class User {
 
     public List<BoughtLotto> getLottos() {
         return lottos;
-    }
-
-    private int inputMoney() {
-        printInputMessage();
-        String input = Console.readLine();
-        validateMoney(input);
-        return Integer.parseInt(input);
-    }
-
-    private void printInputMessage() {
-        System.out.println("구입금액을 입력해 주세요.");
-    }
-
-    private boolean checkInputInteger(String money) {
-        try {
-            Integer.parseInt(money);
-        } catch (Exception exception) {
-            return false;
-        }
-        return true;
-    }
-
-    private boolean checkInputNumber(String money) {
-        return Integer.parseInt(money) % 1000 == 0;
     }
 }

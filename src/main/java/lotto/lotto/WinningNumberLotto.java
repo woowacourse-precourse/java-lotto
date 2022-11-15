@@ -4,18 +4,19 @@ import camp.nextstep.edu.missionutils.Console;
 import lotto.lotto.inputNumber.InputNumber;
 
 import java.util.List;
+import java.util.regex.Pattern;
 
 public class WinningNumberLotto extends Lotto {
 
-    private int bonusNumber;
     private static final int START_NUMBER = 1;
     private static final int END_NUMBER = 45;
 
+    private int bonusNumber;
 
     public WinningNumberLotto() {
         super(InputNumber.createNumber());
-        int number = inputBonusNumber();
         printBonusMessage();
+        int number = inputBonusNumber();
         setBonusNumber(number);
     }
 
@@ -41,13 +42,16 @@ public class WinningNumberLotto extends Lotto {
 
     private void validateBonusNumber(String input) {
         if (!checkInteger(input)) {
-            throw new IllegalArgumentException("[ERROR] 보너스 번호는 자연수 값을 입력해주세요.");
+            String errorMessage = "[ERROR] 보너스 번호는 자연수 값을 입력해주세요.";
+            throw new IllegalArgumentException(errorMessage);
         }
         if (!checkRange(input)) {
-            throw new IllegalArgumentException("[ERROR] 보너스 번호는 1부터 45의 값을 입력해주세요.");
+            String errorMessage = "[ERROR] 보너스 번호는" + START_NUMBER + "부터 " + END_NUMBER + "의 값을 입력해주세요.";
+            throw new IllegalArgumentException(errorMessage);
         }
         if (!checkDuplicated(input)) {
-            throw new IllegalArgumentException("[ERROR] 보너스 번호는 당첨 번호와 중복되지 않은 값으로 입력해주세요.");
+            String errorMessage = "[ERROR] 보너스 번호는 당첨 번호와 중복되지 않은 값으로 입력해주세요.";
+            throw new IllegalArgumentException(errorMessage);
         }
     }
 
@@ -56,12 +60,7 @@ public class WinningNumberLotto extends Lotto {
     }
 
     private boolean checkInteger(String input) {
-        try {
-            Integer.parseInt(input);
-        } catch (Exception exception) {
-            return false;
-        }
-        return true;
+        return Pattern.matches("^[0-9]*$", input);
     }
 
     private boolean checkRange(String input) {

@@ -1,7 +1,6 @@
 package lotto.lotto;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
-import lotto.lotto.WinningNumberLotto;
 import org.junit.jupiter.api.Test;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;

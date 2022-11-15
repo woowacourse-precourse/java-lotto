@@ -1,4 +1,4 @@
-package lotto.yieldMachine;
+package lotto.yield;
 
 import lotto.user.User;
 import lotto.lotto.BoughtLotto;
@@ -7,21 +7,22 @@ import lotto.lotto.WinningNumberLotto;
 import java.util.ArrayList;
 import java.util.List;
 
-public class YieldMachine {
+public class Yield {
 
     private static final Integer LOTTO_COST = 1000;
-    private static final Integer MAX_COUNT_OF_LOTTO_NUMBER = 6;
+    private static final Integer PERCENT_INTEGER_VALUE = 37;
+
     private WinningNumberLotto winningNumberLotto;
     private List<Integer> countOfRewards;
     private float yield;
 
-    public YieldMachine() {
+    public Yield() {
         this.winningNumberLotto = new WinningNumberLotto();
         this.countOfRewards = new ArrayList<>(List.of(0, 0, 0, 0, 0));
         this.yield = 0;
     }
 
-    public YieldMachine(List<Integer> numbers, int number) {
+    public Yield(List<Integer> numbers, int number) {
         this.winningNumberLotto = new WinningNumberLotto(numbers, number);
         this.countOfRewards = new ArrayList<>(List.of(0, 0, 0, 0, 0));
         this.yield = 0;
@@ -45,18 +46,18 @@ public class YieldMachine {
         this.yield = totalYield / totalCost * 100;
     }
 
+    private void calculateAllLottoReward(List<BoughtLotto> boughtLottos) {
+        for (BoughtLotto boughtLotto: boughtLottos) {
+            calculateOneLottoReward(boughtLotto);
+        }
+    }
+
     private void calculateOneLottoReward(BoughtLotto boughtLotto) {
         List<Integer> numberOfMatching = findCountOfSameNumberWithWinningNumber(boughtLotto);
         Reward reward = Reward.getReward(numberOfMatching);
         if (reward != null) {
             int index = reward.getIndex();
             countOfRewards.set(index, countOfRewards.get(index) + 1);
-        }
-    }
-
-    private void calculateAllLottoReward(List<BoughtLotto> boughtLottos) {
-        for (BoughtLotto boughtLotto: boughtLottos) {
-            calculateOneLottoReward(boughtLotto);
         }
     }
 
@@ -80,8 +81,8 @@ public class YieldMachine {
             Integer index = reward.getIndex();
             printOneYield(prize, matchingNumber, index);
         }
-        String yieldMessage = String.format("총 수익률은 %.1f%c입니다.", yield, 37);
-        System.out.println(yieldMessage);
+        String yieldMessage = String.format("총 수익률은 %.1f%c입니다.", yield, PERCENT_INTEGER_VALUE);
+        System.out.println(yieldMessage + '\n');
     }
 
     private void printOneYield(Integer prize, List<Integer> matchingNumber, Integer index){
@@ -98,9 +99,5 @@ public class YieldMachine {
 
     public List<Integer> getCountOfRewards() {
         return this.countOfRewards;
-    }
-
-    public float getYield() {
-        return yield;
     }
 }
