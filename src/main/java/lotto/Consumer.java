@@ -26,7 +26,7 @@ public class Consumer {
         LottoConsoleIo.printRequestPurchase();
         String inputValue = LottoConsoleIo.scanInputValue();
         ValidCheck.formatCheckPrice(inputValue);
-        for (int i = 0; i < Integer.parseInt(inputValue)/LOTTO_PRICE; i++) {
+        for (int i = 0; i < Integer.parseInt(inputValue) / LOTTO_PRICE; i++) {
             lottos.add(new Lotto(Randoms.pickUniqueNumbersInRange(1, 45, 6)));
         }
         LottoConsoleIo.printNoOfLotto(lottos);
@@ -64,7 +64,7 @@ public class Consumer {
                 stat.set(Prize.FIVE.getIndex(), stat.get(Prize.FIVE.getIndex()) + 1);
                 continue;
             }
-            stat.set(Prize.sizeToInd(myNumbers.size()), stat.get(Prize.sizeToInd(myNumbers.size()) + 1));
+            stat.set(Prize.sizeToInd(myNumbers.size()), stat.get(Prize.sizeToInd(myNumbers.size())) + 1);
         }
         return stat;
     }
