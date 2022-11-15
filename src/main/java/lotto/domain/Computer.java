@@ -33,7 +33,6 @@ public class Computer {
             lottos.add(lotto);
             times -= PASS_TURN;
         }
-        printLottos(lottos);
         return lottos;
     }
 
