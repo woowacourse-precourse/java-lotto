@@ -59,7 +59,7 @@ public class InputManager {
      *
      * @return 당첨 번호 List
      */
-    public static List<Integer> getInput_predictLottoNumber() {
+    public static List<Integer> getInput_predictLottoNumbers() {
         String userInput_predictLottoNumber = Console.readLine();
         if (!checkPredictLottoNumber_regex(userInput_predictLottoNumber)) {
             throw new IllegalArgumentException();
@@ -143,10 +143,16 @@ public class InputManager {
 
     /**
      * @param userInput_predictBonusLottoNumber 사용자가 입력한 보너스 번호
-     * @return 번호의 범위가 1 ~ 45라면 true / 범위를 벗어났다면 false
+     * @return 번호의 범위가 1 ~ 45라면 true / 범위를 벗어났거나 입력한 당첨 번호와 중복된 번호라면 false
      */
     private static boolean checkPredictBonusLottoNumber_value(int userInput_predictBonusLottoNumber) {
-        return userInput_predictBonusLottoNumber >= LottoManager.MIN_NUMBER && userInput_predictBonusLottoNumber <= LottoManager.MAX_NUMBER;
+        if (userInput_predictBonusLottoNumber < LottoManager.MIN_NUMBER || userInput_predictBonusLottoNumber > LottoManager.MAX_NUMBER) {
+            return false;
+        }
+        if (ProgramManager.userPredictLottoNumbers.contains(userInput_predictBonusLottoNumber)) {
+            return false;
+        }
+        return true;
     }
 
 }
