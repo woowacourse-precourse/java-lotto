@@ -48,10 +48,10 @@ public class LottoSeller {
     }
 
     public List<List<Integer>> generateTickets() {
-        NumberGenerator newNumbers = new NumberGenerator(numberOfTickets);
+        TicketMachine newTickets = new TicketMachine(numberOfTickets);
 
-        newNumbers.generateNumbers();
-        newLottos = newNumbers.myLotto;
+        newLottos = newTickets.generateTickets();
+
         return newLottos;
     }
 
