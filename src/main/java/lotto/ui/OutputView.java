@@ -15,5 +15,9 @@ public class OutputView {
             .forEach(lotto -> System.out.println(lotto.toString()));
     }
 
+    public void inputValue(String input) {
+        System.out.print(input);
+    }
+
 
 }
