@@ -6,12 +6,10 @@ import java.util.Arrays;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-import static lotto.config.Constants.LottoPrizeFilter.NOT_ALLOWED_RECORD_PRIZE;
-
 public class LottoRaffleRecord {
 
-    private final Map<String, Integer> prizeRecord;
-    private int winningMoney;
+    private final Map<LottoPrizeRules, Integer> prizeRecord;
+    private Long winningMoney = 0L;
 
     public LottoRaffleRecord() {
         prizeRecord = new LinkedHashMap<>();
@@ -19,37 +17,28 @@ public class LottoRaffleRecord {
     }
 
     private void initByLottoPrizeRules() {
-        Arrays.stream(LottoPrizeRules.values()).forEach(prize -> initRecord(prize.name()));
+        Arrays.stream(LottoPrizeRules.values()).forEach(this::initRecord);
     }
 
-    private void initRecord(String prize) {
-        if (checkRecordAllowed(prize)) {
-            prizeRecord.put(prize, 0);
-        }
+    private void initRecord(LottoPrizeRules prize) {
+        prizeRecord.put(prize, 0);
     }
 
-    private boolean checkRecordAllowed(String prize) {
-        if (NOT_ALLOWED_RECORD_PRIZE.contains(prize)) {
-            return false;
-        }
-        return true;
+    public void updatePrizeRecord(LottoPrizeRules prize) {
+        prizeRecord.put(prize, prizeRecord.get(prize) + 1);
     }
 
-    public void updatePrizeRecord(String key) {
-        prizeRecord.put(key, prizeRecord.get(key) + 1);
-    }
-
-    public Map<String, Integer> getPrizeRecord() {
+    public Map<LottoPrizeRules, Integer> getPrizeRecord() {
         return prizeRecord;
     }
 
-    public int getWinnings() {
-        collectWinnings();
+    public Long getWinningMoney() {
+        collectWinningMoney();
         return winningMoney;
     }
 
-    private void collectWinnings() {
-        prizeRecord.forEach((prize, count) -> winningMoney += LottoPrizeRules.getWinningsByPrize(prize) * count);
+    private void collectWinningMoney() {
+        prizeRecord.forEach((prize, count) -> winningMoney += prize.getWinningMoney() * count);
     }
 
 }
