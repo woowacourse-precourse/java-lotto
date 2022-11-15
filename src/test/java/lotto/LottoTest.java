@@ -66,15 +66,15 @@ class LottoTest {
 
     //등수 구하는 메서드 테스트
     @DisplayName("당첨 번호 개수에 따른 등수를 구한다.")
-    @Test
-    void checkRankByWinningCnt(){
+    @ParameterizedTest
+    @CsvSource({"1,23,11,19,36,41,13,SECOND","1,25,11,19,32,17,13,FIFTH","1,23,11,19,36,41,39,THIRD"})
+    void checkRankByWinningCnt(int num1,int num2,int num3,int num4,int num5,int num6,int bonusNum,Rank expected){
 //        1,23,11,19,36,13
-        Lotto lotto = new Lotto(List.of(1,23,11,19,36,41));
-        int bonusNum = 13;
+        Lotto lotto = new Lotto(List.of(num1,num2,num3,num4,num5,num6));
         int matchedNumCnt = lotto.countMatchedNumbers(WINNINGLOTTO.getNumbers());
         boolean isbonusMatched = WINNINGLOTTO.checkBonusMatched(bonusNum,matchedNumCnt);
 
         Rank result = lotto.getRank(matchedNumCnt, isbonusMatched);
-        assertThat(result).isEqualTo(Rank.SECOND);
+        assertThat(result).isEqualTo(expected);
     }
 }
