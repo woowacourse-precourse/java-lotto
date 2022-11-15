@@ -54,6 +54,14 @@ class ApplicationTest extends NsTest {
         });
     }
 
+    @Test
+    void 로또_개수_테스트() {
+        LottoStore lottoStore = new LottoStore();
+        int lottoCount = lottoStore.calculatePurchasedLottoCount(230000);
+        int expectedCount = 230;
+        assertThat(lottoCount).isEqualTo(expectedCount);
+    }
+    
     @Override
     public void runMain() {
         Application.main(new String[]{});
