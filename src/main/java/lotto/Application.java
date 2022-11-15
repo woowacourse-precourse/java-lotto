@@ -12,16 +12,13 @@ public class Application {
 
     public static void main(String[] args) {
         String purchaseAmount = InputView.getPurchaseAmount();
-        Exception.validatePurchaseAmount(purchaseAmount);
 
         int lottoCount = OutputView.getLottoCount(purchaseAmount, UNIT);
         List<Lotto> userLotto = publishLotto(lottoCount);
         OutputView.showLottoSheets(userLotto);
 
         List<Integer> winningNumbers = InputView.getWinningNumber();
-        Exception.validateWinningNumbers(winningNumbers);
         String bonusNumber = InputView.getBonusNumber();
-        Exception.validateBonusNumber(bonusNumber);
     }
 
     private static List<Lotto> publishLotto(int lottoCount) {

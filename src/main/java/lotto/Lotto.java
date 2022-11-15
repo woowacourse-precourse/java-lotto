@@ -16,11 +16,8 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
-        if (numbers.size() != COUNT_NUM) {
-            throw new IllegalArgumentException(ERROR + "로또 번호의 개수는" + COUNT_NUM + "개가 아닙니다");
-        }
-        if (Validator.isDuplicate(numbers)) {
-            throw new IllegalArgumentException(ERROR + "로또 번호에 중복된 숫자가 있습니다");
-        }
+        Validator.checkLottoSize(numbers);
+        Validator.checkDuplicate(numbers);
+        Validator.checkOutOfRange(numbers);
     }
 }
