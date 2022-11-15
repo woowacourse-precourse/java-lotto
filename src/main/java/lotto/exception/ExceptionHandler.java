@@ -1,5 +1,7 @@
 package lotto.exception;
 
+import java.util.List;
+
 public class ExceptionHandler {
 
     public void noNumberException(String input) throws IllegalArgumentException {
@@ -13,6 +15,12 @@ public class ExceptionHandler {
     public void amountUnitException(String money) throws IllegalArgumentException {
         if (Integer.parseInt(money) % 1000 != 0) {
             throw new IllegalArgumentException("[ERROR] 로또 구입 금액은 1000원 단위입니다.");
+        }
+    }
+
+    public void lottoNumberException(List<Integer> numbers) throws IllegalArgumentException {
+        if (numbers.size() != 6) {
+            throw new IllegalArgumentException("[ERROR] 로또 번호는 6개여야 합니다.");
         }
     }
 
