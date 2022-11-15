@@ -1,5 +1,6 @@
 package lotto.model;
 
+import java.math.BigInteger;
 import java.util.Objects;
 import lotto.util.LottoExceptionMessage;
 
@@ -25,14 +26,14 @@ public class LottoNumber implements Comparable<LottoNumber> {
     }
 
     private void validate(String bonusNumber) {
-        if (!hasNumber(bonusNumber) || !hasLottoNumberRange(Integer.parseInt(bonusNumber))) {
+        if (!hasNumber(bonusNumber) || !hasLottoNumberRange(bonusNumber)) {
             throw new IllegalArgumentException(LottoExceptionMessage.LOTTO_NUMBER_RANGE.getMessage());
         }
     }
 
     private boolean hasNumber(String bonusNumber) {
         try {
-            Integer.parseInt(bonusNumber);
+            new BigInteger(bonusNumber);
             return true;
         } catch (NumberFormatException e) {
             return false;
@@ -41,6 +42,12 @@ public class LottoNumber implements Comparable<LottoNumber> {
 
     private boolean hasLottoNumberRange(int number) {
         return number >= MIN_NUMBER && number <= MAX_NUMBER;
+    }
+
+    private boolean hasLottoNumberRange(String bonusNumber) {
+        BigInteger maybeBonusNumber = new BigInteger(bonusNumber);
+        return maybeBonusNumber.compareTo(BigInteger.valueOf(MIN_NUMBER)) >= 0
+                && maybeBonusNumber.compareTo(BigInteger.valueOf(MAX_NUMBER)) <= 0;
     }
 
     public int getNumber() {
