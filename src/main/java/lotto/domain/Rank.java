@@ -9,7 +9,8 @@ public enum Rank {
     THIRD(5, 1_500_000, "5개 일치 (1,500,000원) - %d개\n"),
     FOURTH(4, 50_000, "4개 일치 (50,000원) - %d개\n"),
     FIFTH(3, 5_000, "3개 일치 (5,000원) - %d개\n"),
-    ZERO(0, 0, "");
+    LOST(1, 0, ""),
+    WINNING(0, 0, "");
 
     private final int count;
     private final long winnings;
@@ -33,7 +34,7 @@ public enum Rank {
     public static Rank getRank(Lotto lotto, Lotto winningNumber, int bonusNumber){
         int correctCount = calculateCorrectNumber(lotto, winningNumber);
         Rank candidate = Arrays.stream(Rank.values())
-                .filter(rank -> rank.getCount() == correctCount).findAny().orElse(ZERO);
+                .filter(rank -> rank.getCount() == correctCount).findAny().orElse(LOST);
         if(candidate.getCount() == 5 && isCorrectBonusNumber(lotto, bonusNumber)){
             return SECOND;
         }
