@@ -12,7 +12,6 @@ public class User {
     private List<Lotto> lottos = new ArrayList<>();
     private List<Integer> winningNumber = new ArrayList<>();
     private Integer bonusNumber;
-
     public User(List<Lotto> lottos) {
         this.lottos = lottos;
     }
@@ -30,9 +29,13 @@ public class User {
         return winningNumber;
     }
     public void inputBonusNumber() {
+        Printer.inputBonusNumber();
         String bonusInput = Console.readLine();
         validateBonusNum(bonusInput);
         bonusNumber = Integer.parseInt(bonusInput);
+    }
+    public Integer getBonusNumber() {
+        return bonusNumber;
     }
     private void validateLottoNum(List<String> numbers) {
         if(numbers.size() != 6) {

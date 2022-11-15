@@ -52,7 +52,7 @@ public class LottoMachine {
         }
     }
 
-    public  void getResult(List<Integer> winningNum, int bonusNum) {
+    public void getResult(List<Integer> winningNum, int bonusNum) {
         result = new int [6];
         for(Lotto lotto: lottos) {
             boolean isBonusNum = false;
