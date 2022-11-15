@@ -11,4 +11,8 @@ public class Messages {
     public static final String FIVE_MATCH_MESSAGE = "5개 일치 (1,500,000원)";
     public static final String FIVE_BONUS_MATCH_MESSAGE = "5개 일치, 보너스 볼 일치 (30,000,000원)";
     public static final String SIX_MATCH_MESSAGE = "6개 일치 (2,000,000,000원)";
+    public static final String MAKE_RESULT_MASSAGE = "%s - %d개";
+
+    public static final String SHOW_LOTTO_TICKETS_MESSAGE = "%d개를 구매했습니다.";
+    public static final String SHOW_RETURN_OF_RATE_MESSAGE = "총 수익률은 %,.1f%%입니다.";
 }
