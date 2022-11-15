@@ -14,7 +14,28 @@ public class Lotto {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException();
         }
+
+        checkDuplicate(numbers);
     }
 
-    // TODO: 추가 기능 구현
+    private void checkDuplicate(List<Integer> numbers) {
+        long numbersCount = numbers.stream().distinct().count();
+        if (numbersCount != 6) {
+            throw new IllegalArgumentException("[ERROR] 중복된 값을 입력할 수 없습니다.");
+        }
+    }
+
+    public long getWinLottoCount(Lotto lotto) {
+        return numbers.stream()
+                .filter(lotto::isExistInNumbers)
+                .count();
+    }
+
+    public boolean isExistInNumbers(long lottoNumber) {
+        return numbers.contains(lottoNumber);
+    }
+
+    public String toString() {
+        return numbers.toString();
+    }
 }
