@@ -7,7 +7,7 @@ public class Money {
 
     private final int money;
 
-    public Money(String money){
+    public Money(String money) {
         validateMoney(money);
         this.money = Integer.parseInt(money);
     }
