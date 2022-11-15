@@ -22,19 +22,24 @@ public class LottoSeller {
     }
 
     public void validate(String inputMoney) {
+        checkRange(inputMoney);
+        checkAmount(inputMoney);
+    }
+
+    private void checkRange(String inputMoney){
         if (!inputMoney.matches("[0-9]+")) {
             System.out.println(ERROR_INPUT_PAY_AMOUNT);
             throw new IllegalArgumentException();
         }
+    }
+    private void checkAmount(String inputMoney){
         if (Integer.parseInt(inputMoney) % 1000 != 0) {
             System.out.println(ERROR_INPUT_PAY_AMOUNT);
             throw new IllegalArgumentException(ERROR_INPUT_PAY_AMOUNT);
         }
     }
-
     public int countNumberOfTickets() {
         this.numberOfTickets = payAmount / 1000;
-
         return numberOfTickets;
     }
 
@@ -53,6 +58,4 @@ public class LottoSeller {
             System.out.println(newLottos.get(i).toString());
         }
     }
-
-
 }

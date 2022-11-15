@@ -36,10 +36,6 @@ public class GameController {
 
         numberChecker.countRanks();
 
-      /*  for(PrizeEnum p : PrizeEnum.values()){
-            System.out.println(p.getCount());
-        }
-*/
         LottoResult result = new LottoResult();
 
         result.printResult(myLottos.size());
