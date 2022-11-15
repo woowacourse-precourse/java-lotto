@@ -59,7 +59,9 @@ public class LottoResultTest {
                 Arguments.of(Map.of(_5TH_PRIZE, 1L, _NOTHING, 7L), 62.5),
                 Arguments.of(Map.of(_5TH_PRIZE, 1L, _NOTHING, 499L), 1.0),
                 Arguments.of(Map.of(_5TH_PRIZE, 2L, _NOTHING, 1L), 10000L / 3000.0 * 100),
-                Arguments.of(Map.of(_NOTHING, 3L), 0.0)
+                Arguments.of(Map.of(_3RD_PRIZE, 1L), 150000.0),
+                Arguments.of(Map.of(_NOTHING, 3L), 0.0),
+                Arguments.of(Map.of(), 0.0)
         );
     }
 

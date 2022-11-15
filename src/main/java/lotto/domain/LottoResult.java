@@ -7,6 +7,7 @@ import java.util.Map;
 public class LottoResult {
     private static final Long ZERO_COUNT = 0L;
     private static final double DEFAULT_RATIO = 100.0;
+    private static final double RATIO_OF_ZERO = 0.0;
 
     private final EnumMap<LottoPrize, Long> result = new EnumMap<>(LottoPrize.class);
 
@@ -20,7 +21,11 @@ public class LottoResult {
     }
 
     public double calculateProfitRatio() {
-        return calculateTotalPrize().divide(calculatePayAmount()) * DEFAULT_RATIO;
+        Money buyAmount = calculatePayAmount();
+        if (buyAmount.equals(Money.ZERO)) {
+            return RATIO_OF_ZERO;
+        }
+        return calculateTotalPrize().divide(buyAmount) * DEFAULT_RATIO;
     }
 
     private Money calculateTotalPrize() {
