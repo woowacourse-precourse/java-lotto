@@ -22,6 +22,7 @@ public enum LottoMatch {
         this.resultMsg = resultMsg;
     }
 
+    // 연산된 로또 결과와 enum mapping 해서 일치하는 enum 반환
     public static LottoMatch calculatedLottoMapper(CalculatedLotto calculatedLotto) {
         return Arrays.stream(LottoMatch.values())
                 .filter(lottoMatch -> lottoMatch.matches(calculatedLotto))
@@ -29,6 +30,7 @@ public enum LottoMatch {
                 .orElse(NULL_RESULT);
     }
 
+    // 일치 여부 반환
     public boolean matches(CalculatedLotto calculatedLotto) {
         if (calculatedLotto.getWinningLottoCount() == 5 && numberMatchCount == 5 && calculatedLotto
                 .isBonusNumberIncluded()) {
@@ -38,10 +40,6 @@ public enum LottoMatch {
             return true;
         }
         return false;
-    }
-
-    public int getNumberMatchCount() {
-        return numberMatchCount;
     }
 
     public int getProfit() {
