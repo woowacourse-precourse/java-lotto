@@ -20,4 +20,8 @@ public class Lotto {
         Validator.checkDuplicate(numbers);
         Validator.checkOutOfRange(numbers);
     }
+
+    public List<Integer> getNumbers(){
+        return numbers;
+    }
 }

@@ -35,4 +35,21 @@ public class Application {
         Lotto lotto = new Lotto(numbers);
         return lotto;
     }
+
+    public static int matchCount(Lotto lotto, List<Integer> winningNumbers){
+        int match = 0;
+        for (int number: winningNumbers){
+            if(lotto.getNumbers().contains(number)){
+                match++;
+            }
+        }
+        return match;
+    }
+    public static boolean matchBonus(Lotto lotto, String bonus) {
+        int bonusNumber = Integer.parseInt(bonus);
+        if(lotto.getNumbers().contains(bonusNumber)){
+            return true;
+        }
+        return false;
+    }
 }
