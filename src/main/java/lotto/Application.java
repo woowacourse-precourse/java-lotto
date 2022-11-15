@@ -20,4 +20,6 @@ public class Application {
         }
         return all_lottery;
     }
+
+
 }

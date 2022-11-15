@@ -1,5 +1,6 @@
 package lotto;
 
+import java.util.Collections;
 import java.util.List;
 
 public class Lotto {
@@ -15,6 +16,8 @@ public class Lotto {
             throw new IllegalArgumentException();
         }
     }
+    public void sort(){
+        Collections.sort(this.numbers);
+    }
 
-    // TODO: 추가 기능 구현
 }
