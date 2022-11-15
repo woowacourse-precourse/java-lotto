@@ -9,6 +9,7 @@ import java.util.Map;
 public class OutputView {
     private static final String ERROR_MESSAGE = "[ERROR]";
     private static final String SPACE = " ";
+    private static final int LOTTO_AMOUNT = 1000;
 
     public void printBuyLottoTicket(int purchaseAmount) {
         System.out.printf("%d개를 구매했습니다.\n", exchangeTicket(purchaseAmount));
@@ -42,7 +43,7 @@ public class OutputView {
     }
 
     private int exchangeTicket(int purchaseAmount) {
-        return purchaseAmount / 1000;
+        return purchaseAmount / LOTTO_AMOUNT;
     }
 
 }

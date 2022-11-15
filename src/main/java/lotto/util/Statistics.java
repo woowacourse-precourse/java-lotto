@@ -8,8 +8,8 @@ import java.util.List;
 import java.util.Map;
 
 public class Statistics {
-    private final int ONE_HUNDRED_PERCENT = 100;
-    private Map<Rank, Integer> totalResult = new HashMap<>();
+    private final static int ONE_HUNDRED_PERCENT = 100;
+    private final Map<Rank, Integer> totalResult = new HashMap<>();
 
     public void makeTotalResult(WinningNumbers winningNumbers, List<List<Integer>> lottoNumbers) {
         setTotalResult();

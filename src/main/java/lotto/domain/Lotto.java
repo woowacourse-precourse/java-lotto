@@ -3,18 +3,18 @@ package lotto.domain;
 import java.util.List;
 
 public class Lotto {
-    private final List<Integer> NUMBERS;
+    private final List<Integer> numbers;
     private static final int START_LOTTO_NUMBER = 1;
     private static final int END_LOTTO_NUMBER = 45;
     private static final int LOTTO_NUMBERS_LENGTH = 6;
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
-        this.NUMBERS = numbers;
+        this.numbers = numbers;
     }
 
     public List<Integer> getLottoNumber() {
-        return NUMBERS;
+        return numbers;
     }
 
     private void validate(List<Integer> numbers) {

@@ -1,17 +1,17 @@
 package lotto.domain;
 
 public class BonusNumber {
-    private final int BONUS_NUMBER;
+    private final int bonusNumber;
     private static final int START_LOTTO_NUMBER = 1;
     private static final int END_LOTTO_NUMBER = 45;
 
     public BonusNumber(int number) {
         validate(number);
-        this.BONUS_NUMBER = number;
+        this.bonusNumber = number;
     }
 
     public int getBonusNumber() {
-        return BONUS_NUMBER;
+        return bonusNumber;
     }
 
     private void validate(int number) {
