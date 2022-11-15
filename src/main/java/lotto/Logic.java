@@ -19,6 +19,8 @@ public class Logic {
         for(int i = 0; i <= input.length() - 4; ++i) {
             ans *= 10;
             c = input.charAt(i);
+            if(i == 0)
+                throwInputExceptions(c > '0' && c <= '9', PRICE_INCORRECT_INPUT);
             throwInputExceptions(c >= '0' && c <= '9', PRICE_INCORRECT_INPUT);
             ans += c - '0';
         }
