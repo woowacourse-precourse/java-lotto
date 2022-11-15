@@ -1,6 +1,6 @@
-package lotto;
+package lotto.constants;
 
-public enum Constants {
+public enum UIConstants {
     INPUT_COST("구입 금액을 입력해 주세요."),
     SHOW_COST_COUNT("개를 구매했습니다."),
 
@@ -21,7 +21,7 @@ public enum Constants {
 
     private final String value;
 
-    private Constants(String value) {
+    private UIConstants(String value) {
         this.value = value;
     }
 

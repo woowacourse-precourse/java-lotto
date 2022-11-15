@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static camp.nextstep.edu.missionutils.Console.*;
-import static lotto.Constants.*;
+import static lotto.constants.UIConstants.*;
 
 public class UI {
     private int cost;

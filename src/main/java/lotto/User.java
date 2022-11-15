@@ -1,8 +1,11 @@
 package lotto;
 
+import lotto.constants.ExceptionConstants;
+
 import java.util.*;
 
 import static camp.nextstep.edu.missionutils.Randoms.pickUniqueNumbersInRange;
+import static lotto.constants.ExceptionConstants.*;
 
 public class User {
     private int cost;
@@ -14,9 +17,9 @@ public class User {
     private int fifth;
 
     public User(int cost) {
-        this.lottoNumbers = new ArrayList<>();
         validateCost(cost);
         this.cost = cost;
+        this.lottoNumbers = new ArrayList<>();
     }
 
     public int getCost() {
@@ -47,14 +50,9 @@ public class User {
         return fifth;
     }
 
-    public float calculateYield() {
-        float yield = (float) (fifth * 5000 + fourth * 50000 + third * 1500000 + second * 30000000 + first * 2000000000) / cost * 100;
-        return yield;
-    }
-
     private void validateCost(int cost) {
         if (cost % 1000 != 0) {
-            throw new IllegalArgumentException("[ERROR] 구입 금액은 1,000원으로 나누어 떨어져야 합니다");
+            throw new IllegalArgumentException(USER_INPUT_COST.getValue());
         }
     }
 
@@ -99,5 +97,10 @@ public class User {
             return;
         }
         this.third++;
+    }
+
+    public float calculateYield() {
+        float yield = (float) (fifth * 5000 + fourth * 50000 + third * 1500000 + second * 30000000 + first * 2000000000) / cost * 100;
+        return yield;
     }
 }
