@@ -46,4 +46,21 @@ public class Calculator {
         }
         return null;
     }
+
+    public void printWinHistory() {
+        System.out.println("당첨 통계");
+        System.out.println("---");
+        for (Rank rank : Rank.values()) {
+            System.out.println(rank.getNeedToPrint() + " - " + countOfWins.get(rank) + "개");
+        }
+    }
+
+    public void printRateOfReturn(int expense) {
+        int totalPrize = 0;
+        for (Rank rank : Rank.values()) {
+            totalPrize += rank.getPrize() * countOfWins.get(rank);
+        }
+        float rateOfReturn = (float) totalPrize / expense * 100;
+        System.out.println("총 수익률은 " + rateOfReturn + "%입니다.");
+    }
 }

@@ -11,5 +11,8 @@ public class Application {
 
         Calculator calculator = new Calculator();
         calculator.calculate(lotterySeller.soldLotto, drawMachine.winningNumbers, drawMachine.bonusNumber);
+
+        calculator.printWinHistory();
+        calculator.printRateOfReturn(lotterySeller.numberOfLottoIssued * 1000);
     }
 }
