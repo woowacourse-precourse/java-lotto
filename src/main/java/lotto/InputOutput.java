@@ -12,6 +12,7 @@ import java.util.stream.Stream;
 public class InputOutput {
 
     public int getMoneyInput() {
+        System.out.println("구입금액을 입력해 주세요.");
         String inputMoney = Console.readLine();
         return gameStringToInt(inputMoney);
     }
@@ -45,10 +46,9 @@ public class InputOutput {
     }
 
     public List<Integer> getWinnigLotto() {
+        System.out.println("당첨 번호를 입력해 주세요.");
         String winnigLottoString = Console.readLine();
-
         String[] split = winnigLottoString.split(",");
-
         return arrayStringToIntList(split);
     }
 
@@ -81,11 +81,13 @@ public class InputOutput {
     }
 
     public int getBonusNumber(List<Integer> winningNumber) {
+        System.out.println("보너스 번호를 입력해 주세요.");
         String bonusNumString = Console.readLine();
         return stringToIntAndCheckError(winningNumber, bonusNumString);
     }
 
     public void printWinningList(Map<LottoRanking, Integer> prizeList) {
+        System.out.println("당첨 통계\n---");
         LottoRanking[] prizeValues = LottoRanking.values();
 
         for (int i = prizeValues.length - 2; i >= 0; i--) {
