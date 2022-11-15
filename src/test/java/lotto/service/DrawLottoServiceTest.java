@@ -69,4 +69,23 @@ public class DrawLottoServiceTest {
         //then
         assertThat(winingCount.get(rankCount)).isEqualTo(drawLottoService.getWiningCount().get(rank));
     }
+
+    @DisplayName("수익률이 잘나오는지 확인하는 테스트")
+    @Test
+    void getRevenueTest() {
+        //given
+        int buyAmountLotto = 1000;
+        int FirstPrice = 2000000000;
+        double expectedRevenue = FirstPrice / buyAmountLotto * 100;
+        drawLottoService.correctNumberCount.put(7, 1);
+        drawLottoService.setWiningCount();
+        drawLottoService.setReward();
+
+        //when
+        double actualRevenue = drawLottoService.getRevenue(buyAmountLotto);
+
+        //then
+        assertThat(expectedRevenue).isEqualTo(actualRevenue);
+
+    }
 }
