@@ -31,7 +31,7 @@ class LottoTest extends NsTest {
     @DisplayName("로또 구입 금액이 1,000원 단위로 나누어 떨어지지 않으면 예외가 발생한다.")
     @Test
     void wrongOfLottoAmount() {
-        int amount = 15400;
+        String amount = "15400";
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> Lotto.numberOfLottosQuantity(amount))
                         .isInstanceOf(IllegalArgumentException.class)
@@ -41,7 +41,7 @@ class LottoTest extends NsTest {
     @DisplayName("로또 구입 금액이 1,000원 단위로 나누어 떨어질 경우 몇 장을 구매했는지 확인한다.")
     @Test
     void rightOfLottoAmount() {
-       int amount = 15000;
+        String amount = "15000";
        assertThat(Lotto.numberOfLottosQuantity(amount)).isEqualTo(15);
     }
 
