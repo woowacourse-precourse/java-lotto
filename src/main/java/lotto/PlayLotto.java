@@ -120,7 +120,7 @@ public class PlayLotto {
     }
 
     public int profit1st(List<Integer> correctNumber) {
-        return correctNumber.get(0) * Reward.FIFTH.getAmount();
+        return correctNumber.get(0) * Reward.FIRST.getAmount();
     }
 
     public double yield(Integer money, List<Integer> correctNumber) {
