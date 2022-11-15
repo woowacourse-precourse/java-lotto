@@ -50,7 +50,7 @@ public abstract class Data {
     public static void printUser(final User userLotto, final Price pay) {
         System.out.println();
         System.out.println(pay.calculateQuantity() + Buy_lotto.getMessage());
-        for (String lotto : userLotto.getUserLotto()) {
+        for (String lotto : userLotto.getUser()) {
             System.out.println(lotto);
         }
         System.out.println();
