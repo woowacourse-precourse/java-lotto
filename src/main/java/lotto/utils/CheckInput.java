@@ -24,10 +24,10 @@ public class CheckInput {
             throw new IllegalArgumentException(ERROR_INVALID_NUMBER_PRICE_TYPE);
     }
 
-    public static void checkInputLotto(String input) {
-        if (isNumeric(input))
+    public static void checkInputLotto(int input) {
+        if (isNumeric(Integer.toString(input)))
             throw new IllegalArgumentException(ERROR_INVALID_NUMBER_TYPE);
-        if (Integer.parseInt(input) < 1 || Integer.parseInt(input) > 45)
+        if (input < 1 || input > 45)
             throw new IllegalArgumentException(ERROR_INVALID_LOTTO_RANGE);
     }
 

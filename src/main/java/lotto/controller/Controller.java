@@ -35,11 +35,13 @@ public class Controller {
 
     private void getPlayerInput() {
         String receivedMoney = Input.getYourMoney();
-        Output.printReceivedMoney(receivedMoney);
         cashier.inputPlayerMoney(receivedMoney);
+        Output.printReceivedMoney(receivedMoney);
         generateLottoTickets(cashier.getReceivedMoney());
-        cashier.inputPlayerAnswerNumber(Input.getAnswerNumbers());
-        cashier.inputPlayerBonusNumber(Input.getBonusNumber(cashier.getAnswerNumber()));
+        List<Integer> answerNumbers = Input.getAnswerNumbers();
+        cashier.inputPlayerAnswerNumber(answerNumbers);
+        int bonusNumber = Input.getBonusNumber();
+        cashier.inputPlayerBonusNumber(bonusNumber, cashier.getAnswerNumber());
     }
 
     public List<Lotto> generateLottoTickets(int receivedMoney) {

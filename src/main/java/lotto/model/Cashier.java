@@ -16,10 +16,16 @@ public class Cashier {
     }
 
     public void inputPlayerAnswerNumber(List<Integer> answerNumber) {
+        for (int value : answerNumber)
+            CheckInput.checkInputLotto(value);
+        CheckInput.checkInputLottoLength(answerNumber);
+        CheckInput.checkInputLottoDuplicate(answerNumber);
         this.answerNumber = answerNumber;
     }
 
-    public void inputPlayerBonusNumber(int bonusNumber) {
+    public void inputPlayerBonusNumber(int bonusNumber, List<Integer> LottoNumber) {
+        CheckInput.checkInputLotto(bonusNumber);
+        CheckInput.checkInputBonusDuplicate(LottoNumber, bonusNumber);
         this.bonusNumber = bonusNumber;
     }
 
