@@ -13,13 +13,24 @@ public class ResultService {
     public static Result addRankResult(User user, WinningLotto winningLotto) {
         Map<Rank, Integer> results = new HashMap<>();
         for (Lotto lotto : user.getLottos()) {
-            int count = compareNumbers(lotto.getNumbers(), winningLotto.getWinningNumbers());
+            List<Integer> userNumbers = lotto.getNumbers();
+            int count = compareNumbers(userNumbers, winningLotto.getWinningNumbers());
+            boolean isBonus = checkBonusNumber(userNumbers, winningLotto.getBounsNumber());
             if (count >= 3) {
-                Rank key = Rank.valueOf(count, false);
+                Rank key = Rank.valueOf(count, isBonus);
                 results.put(key, results.getOrDefault(key, 0) + 1);
             }
         }
         return new Result(results);
+    }
+
+    private static boolean checkBonusNumber(List<Integer> userNumbers, int bonusNumber) {
+        for (int userNumber : userNumbers) {
+            if (userNumber == bonusNumber) {
+                return true;
+            }
+        }
+        return false;
     }
 
     private static int compareNumbers(List<Integer> userNumbers, List<Integer> winningNumbers) {
