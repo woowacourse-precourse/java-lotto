@@ -1,12 +1,19 @@
 package lotto.mvc.controller;
 
 import lotto.domain.player.LottoPurchaseAmount;
+import lotto.mvc.dto.input.InputBonusNumberDto;
+import lotto.mvc.dto.input.InputPurchaseAmountDto;
+import lotto.mvc.dto.input.InputWinningLottoDto;
+import lotto.mvc.dto.output.OutputExceptionMessageDto;
+import lotto.mvc.dto.output.OutputLottoStatisticsDto;
+import lotto.mvc.dto.output.OutputPlayerInfoDto;
 import lotto.mvc.model.LottoResult;
 import lotto.mvc.model.LottoStore;
 import lotto.mvc.util.LottoGameStatus;
 import lotto.mvc.util.exception.NotFoundViewMessageException;
-import lotto.mvc.util.message.InputViewMessageUtils;
-import lotto.mvc.view.ConsoleView;
+import lotto.mvc.util.exception.WrongGameStatusException;
+import lotto.mvc.view.InputView;
+import lotto.mvc.view.OutputView;
 import lotto.util.message.CommonMessageConst;
 import lotto.util.number.LottoNumberFactory;
 
@@ -17,70 +24,58 @@ public class LottoGameController {
     private LottoStore lottoStore;
     private LottoResult lottoResult;
 
-    public LottoGameStatus process(LottoGameStatus lottoGameStatus, String playerInput) {
-        if (lottoGameStatus.isInput()) {
-            return renderInputView(lottoGameStatus);
-        }
-        if (lottoGameStatus.isLogic()) {
-            return handle(lottoGameStatus, playerInput);
-        }
-        return lottoGameStatus.findNextGameStatus();
-    }
-
-    private LottoGameStatus renderInputView(LottoGameStatus lottoGameStatus) {
-        ConsoleView.render(findInputViewMessage(lottoGameStatus));
-        return lottoGameStatus.findNextGameStatus();
-    }
-
-    private String findInputViewMessage(LottoGameStatus lottoGameStatus) {
-        return InputViewMessageUtils.findMessage(lottoGameStatus);
-    }
-
-    private LottoGameStatus renderOutputView(LottoGameStatus lottoGameStatus) {
-        if (lottoGameStatus == LottoGameStatus.PROCESS_WINNING_LOTTO) {
-            return lottoGameStatus.findNextGameStatus();
-        }
-
-        ConsoleView.render(findOutputViewMessage(lottoGameStatus));
-        return lottoGameStatus.findNextGameStatus();
-    }
-
-    private String findOutputViewMessage(LottoGameStatus lottoGameStatus) {
-        if (lottoGameStatus == LottoGameStatus.PROCESS_PURCHASE_LOTTO) {
-            return lottoStore.findPlayerInfo();
-        }
-        return lottoResult.toString();
-    }
-
-    private LottoGameStatus handle(LottoGameStatus lottoGameStatus, String playerInput) {
+    public LottoGameStatus process(LottoGameStatus lottoGameStatus) {
         try {
-            processDetailLogic(lottoGameStatus, playerInput);
-            return renderOutputView(lottoGameStatus);
-        } catch (IllegalArgumentException | NotFoundViewMessageException e) {
-            return renderExceptionView(CommonMessageConst.LINE_FEED + e.getMessage());
+            return playLottoGame(lottoGameStatus);
+        } catch (IllegalArgumentException | NotFoundViewMessageException | WrongGameStatusException e) {
+            OutputView.renderExceptionMessage(
+                    new OutputExceptionMessageDto(CommonMessageConst.LINE_FEED + e.getMessage()));
         } catch (Exception e) {
-            return renderExceptionView(processApplicationExceptionMessage());
+            OutputView.renderExceptionMessage(new OutputExceptionMessageDto(processApplicationExceptionMessage()));
         }
+        return LottoGameStatus.APPLICATION_EXCEPTION;
+    }
+
+    private LottoGameStatus playLottoGame(LottoGameStatus lottoGameStatus) {
+        if (lottoGameStatus == LottoGameStatus.PURCHASE_AMOUNT) {
+            return processLottoPurchaseAmount(lottoGameStatus);
+        }
+        if (lottoGameStatus == LottoGameStatus.WINNING_NUMBERS) {
+            return processWinningLotto(lottoGameStatus);
+        }
+        if (lottoGameStatus == LottoGameStatus.BONUS_NUMBER) {
+            return processBonusNumber(lottoGameStatus);
+        }
+        throw new WrongGameStatusException();
+    }
+
+    private LottoGameStatus processLottoPurchaseAmount(LottoGameStatus lottoGameStatus) {
+        InputPurchaseAmountDto inputPurchaseAmountDto = InputView.renderPurchaseAmount(lottoGameStatus);
+
+        lottoStore = new LottoStore(new LottoPurchaseAmount(inputPurchaseAmountDto.getInputPurchaseAmount()));
+
+        OutputView.renderPlayerLotto(new OutputPlayerInfoDto(lottoStore));
+        return lottoGameStatus.findNextGameStatus();
+    }
+
+    private LottoGameStatus processWinningLotto(LottoGameStatus lottoGameStatus) {
+        InputWinningLottoDto inputWinningLottoDto = InputView.renderWinningLotto(lottoGameStatus);
+
+        lottoStore.createWinningLotto(inputWinningLottoDto.getInputWinningLotto());
+        return lottoGameStatus.findNextGameStatus();
+    }
+
+    private LottoGameStatus processBonusNumber(LottoGameStatus lottoGameStatus) {
+        InputBonusNumberDto inputBonusNumberDto = InputView.renderBonusNumber(lottoGameStatus);
+
+        lottoResult = lottoStore.calculateLottoResult(
+                LottoNumberFactory.numberOf(inputBonusNumberDto.getInputBonusNumber()));
+
+        OutputView.renderLottoResult(new OutputLottoStatisticsDto(lottoResult));
+        return lottoGameStatus.findNextGameStatus();
     }
 
     private String processApplicationExceptionMessage() {
         return CommonMessageConst.LINE_FEED + CommonMessageConst.EXCEPTION_MESSAGE_PREFIX + DEFAULT_EXCEPTION_MESSAGE;
-    }
-
-    private LottoGameStatus renderExceptionView(String message) {
-        ConsoleView.render(message);
-        return LottoGameStatus.APPLICATION_EXCEPTION;
-    }
-
-    private void processDetailLogic(LottoGameStatus lottoGameStatus, String playerInput) {
-        if (lottoGameStatus == LottoGameStatus.PROCESS_PURCHASE_LOTTO) {
-            lottoStore = new LottoStore(new LottoPurchaseAmount(playerInput));
-            return;
-        }
-        if (lottoGameStatus == LottoGameStatus.PROCESS_WINNING_LOTTO) {
-            lottoStore.createWinningLotto(playerInput);
-            return;
-        }
-        lottoResult = lottoStore.calculateLottoResult(LottoNumberFactory.numberOf(playerInput));
     }
 }
