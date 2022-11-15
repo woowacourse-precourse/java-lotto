@@ -8,7 +8,7 @@ public class Calculator {
             int matchBonus = lotto.getNumbers().contains(bonus) ? 1 : 0;
             lotto.getNumbers().retainAll(numbers);
             Rank rank = Rank.findRank(lotto.getNumbers().size(), matchBonus);
-            result.set(rank.getIndex(), result.get(rank.getIndex() + 1));
+            result.set(rank.getIndex(), result.get(rank.getIndex()) + 1);
         }
     }
 
