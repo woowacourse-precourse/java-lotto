@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.Map;
 
 public class Result {
+    private static final int PERCENT = 100;
+
     private final Map<Rank, Integer> result = new HashMap<>();
     private final float rateOfReturn;
 
@@ -34,7 +36,7 @@ public class Result {
     }
 
     private float computeRateOfReturn(int money, int totalReturn) {
-        return (float) totalReturn / money * 100;
+        return (float) totalReturn / money * PERCENT;
     }
 
     private int computeTotalReturn() {
