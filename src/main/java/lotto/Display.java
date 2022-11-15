@@ -72,4 +72,8 @@ public class Display {
     public static void lottoNumbers(List<Integer> lotto) {
         System.out.println(lotto);
     }
+
+    public static void error(IllegalArgumentException e) {
+        System.out.println(e);
+    }
 }

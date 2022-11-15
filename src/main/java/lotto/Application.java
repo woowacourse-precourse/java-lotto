@@ -7,7 +7,7 @@ public class Application {
         try {
             LottoProgram.init();
         } catch (IllegalArgumentException e) {
-            System.out.println(e);
+            Display.error(e);
         }
     }
 }
