@@ -18,4 +18,15 @@ class InputTest {
         assertThatThrownBy(Input::inputPurchaseAmount)
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @DisplayName("입력 된 당첨 번호의 구분자가 콤마가 아닐 경우 예외가 발생한다.")
+    @Test
+    void validateComma() {
+        String input = "1#2#3#4#5#6";
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+
+        assertThatThrownBy(Input::inputWinningNumbers)
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
