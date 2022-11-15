@@ -44,5 +44,8 @@ class InputTest {
 
         assertThatThrownBy(() -> input.checkWinningLotto("1,2,3,4"))
                 .isInstanceOf(IllegalArgumentException.class);
+
+        assertThatThrownBy(() -> input.checkWinningLotto("1,2,3,4,4,5"))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 }
