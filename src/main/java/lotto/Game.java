@@ -6,7 +6,8 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.Random;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 public class Game {
     public static final int UNIT = 1000;
@@ -72,10 +73,16 @@ public class Game {
         return buyingNumbers;
     }
 
-    public int compareNumbers(List<Integer> numbers, List<Integer> predictedNumbers) {
-
-        return 0;
+    public List<Integer> compareNumbers(List<Integer> predictedNumbers) {
+        List<Integer> sameNumbers = new ArrayList<>();
+        List<Integer> winGames = new ArrayList<>();
+        for (List<Integer> numbers : buyingNumbers) {
+            sameNumbers = numbers.stream().filter(number -> predictedNumbers.stream()
+                    .anyMatch(Predicate.isEqual(number)))
+                    .collect(Collectors.toList());
+            int size = sameNumbers.size();
+            winGames.add(size);
+        }
+        return sameNumbers;
     }
-
-
 }
