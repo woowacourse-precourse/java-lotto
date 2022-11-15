@@ -14,20 +14,20 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
-       validateNumberCounts(numbers);
-       validateDuplicate(numbers);
-       validateRange(numbers);
+        validateNumberCounts(numbers);
+        validateDuplicate(numbers);
+        validateRange(numbers);
     }
 
-    void validateNumberCounts(List<Integer> numbers){
+    void validateNumberCounts(List<Integer> numbers) {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException(ErrorMessage.LOTTO_COUNT_ERROR.getMessage());
         }
     }
 
-    void validateDuplicate(List<Integer> numbers){
-        for(int i : numbers){
-            if(this.numbers.contains(i)) {
+    void validateDuplicate(List<Integer> numbers) {
+        for (int i : numbers) {
+            if (this.numbers.contains(i)) {
                 throw new IllegalArgumentException(ErrorMessage.LOTTO_DUPLICATE_ERROR.getMessage());
             }
             this.numbers.add(i);
@@ -35,15 +35,15 @@ public class Lotto {
         Collections.sort(this.numbers);
     }
 
-    void validateRange(List<Integer> numbers){
-        for(int i : numbers){
-            if(i <1 | i>45) {
+    void validateRange(List<Integer> numbers) {
+        for (int i : numbers) {
+            if (i < 1 | i > 45) {
                 throw new IllegalArgumentException(ErrorMessage.LOTTO_RANGE_ERROR.getMessage());
             }
         }
     }
 
-    public List<Integer> getLotto(){
+    public List<Integer> getLotto() {
         return this.numbers;
     }
 }

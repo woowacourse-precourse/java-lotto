@@ -1,11 +1,9 @@
 package lotto.Model.enums;
 
-import lotto.Model.Bonus;
-
 import java.util.Arrays;
 
 public enum Prize {
-    FIFTH("3개 일치 (5,000원) - ", 3, 0,  0, 5000),
+    FIFTH("3개 일치 (5,000원) - ", 3, 0, 0, 5000),
     FOURTH("4개 일치 (50,000원) - ", 4, 0, 0, 50000),
     THIRD("5개 일치 (1,500,000원) - ", 5, 0, 0, 1500000),
     SECOND("5개 일치, 보너스 볼 일치 (30,000,000원) - ", 5, 1, 0, 30000000),
@@ -25,18 +23,6 @@ public enum Prize {
         this.money = money;
     }
 
-    /*
-    public static Prize findByIndex(int index) {
-        for(Prize prize : Prize.values()) {
-            if(prize.index == index) {
-                return prize;
-            }
-        }
-        throw new RuntimeException();
-    }
-
-     */
-
     public static Prize findNameByValue(int count, int bonusCount) {
         return Arrays.stream(Prize.values())
                 .filter(prize -> prize.getCount() == count)
@@ -45,11 +31,11 @@ public enum Prize {
                 .orElse(null);
     }
 
-    public void increaseCount(){
-        this.prizeCount +=1;
+    public void increaseCount() {
+        this.prizeCount += 1;
     }
 
-    public void initCount(){
+    public void initCount() {
         this.prizeCount = 0;
     }
 
@@ -57,15 +43,15 @@ public enum Prize {
         return this.message;
     }
 
-    public int getCount(){
+    public int getCount() {
         return this.count;
     }
 
-    public int getBonusCount(){
+    public int getBonusCount() {
         return this.bonusCount;
     }
 
-    public int getPrizeCount(){
+    public int getPrizeCount() {
         return this.prizeCount;
     }
 

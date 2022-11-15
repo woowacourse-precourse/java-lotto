@@ -2,7 +2,6 @@ package lotto.Model;
 
 import lotto.Model.enums.Prize;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.function.Predicate;
 
@@ -25,7 +24,7 @@ public class Draw {
             int bonusCount = 0;
             if (lotto.contains(bonus)) bonusCount = 1;
 
-            if(Prize.findNameByValue(count, bonusCount) != null){
+            if (Prize.findNameByValue(count, bonusCount) != null) {
                 Prize.findNameByValue(count, bonusCount).increaseCount();
             }
         }

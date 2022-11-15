@@ -1,7 +1,6 @@
 package lotto.Model;
 
 public class Purchase {
-    private String input;
     private int money;
     private int lottoCount;
 

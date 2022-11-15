@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class LottoUnitTest {
@@ -23,28 +24,28 @@ public class LottoUnitTest {
     @DisplayName("로또 리스트와 당첨 번호, 보너스 번호를 비교하고 각 등수별 당첨 내역을 확인")
     @Test
     void drawTest() {
-        List<Integer> winning = List.of(1,2,3,4,5,6);
+        List<Integer> winning = List.of(1, 2, 3, 4, 5, 6);
         int bonus = 7;
 
-        for(Prize prize:Prize.values()){
+        for (Prize prize : Prize.values()) {
             prize.initCount();
         }
 
         List<List<Integer>> lottoes = List.of(
-                List.of(1,2,3,4,5,6),
-                List.of(1,2,3,4,5,7),
-                List.of(1,2,3,4,5,9),
-                List.of(1,2,3,4,8, 10),
-                List.of(1,2,3,8,9,10)
+                List.of(1, 2, 3, 4, 5, 6),
+                List.of(1, 2, 3, 4, 5, 7),
+                List.of(1, 2, 3, 4, 5, 9),
+                List.of(1, 2, 3, 4, 8, 10),
+                List.of(1, 2, 3, 8, 9, 10)
         );
 
         Draw draw = new Draw(winning, bonus, lottoes);
         List<Integer> prizeCounts = new ArrayList<>();
 
-        for(Prize prize: Prize.values()){
+        for (Prize prize : Prize.values()) {
             prizeCounts.add(prize.getPrizeCount());
         }
-        assertThat(prizeCounts).isEqualTo(List.of(1,1,1,1,1));
+        assertThat(prizeCounts).isEqualTo(List.of(1, 1, 1, 1, 1));
     }
 
 

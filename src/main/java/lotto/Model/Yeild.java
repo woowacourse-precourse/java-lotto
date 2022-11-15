@@ -2,8 +2,6 @@ package lotto.Model;
 
 import lotto.Model.enums.Prize;
 
-import java.util.List;
-
 public class Yeild {
     private int money;
     private int prizeMoney;
@@ -15,10 +13,10 @@ public class Yeild {
     }
 
     public void createStatistic() {
-        for (int i = 0; i<5; i++) {
+        for (int i = 0; i < 5; i++) {
             prizeMoney += Prize.values()[i].getMoney() * Prize.values()[i].getPrizeCount();
         }
-        yeild = Math.round(((double) prizeMoney / money)* 100*100)/100.0;
+        yeild = Math.round(((double) prizeMoney / money) * 100 * 100) / 100.0;
     }
 
     public double getYeild() {
