@@ -33,6 +33,14 @@ public class UserTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+    @DisplayName("금액이 공백이면 예외가 발생한다.")
+    @Test
+    void createBuyAmountByBlank() {
+        User user = new User();
+        assertThatThrownBy(() -> user.setBuyAmount(" "))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
     @DisplayName("금액 설정하기.")
     @Test
     void setBuyAmount() {
