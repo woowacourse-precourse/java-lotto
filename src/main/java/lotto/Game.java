@@ -28,6 +28,9 @@ public class Game {
 
         // 보너스 번호 입력 및 타당성 검증
         bonusNumber = inputBonusNumber();
+
+        // 수익률 계산
+        int prizeMoney = countPrizeMoney();
     }
 
     private String inputString(String message){
@@ -79,5 +82,21 @@ public class Game {
         int bonusNumber = bonusNumberValidate(inputNumber, winningLotto);
 
         return bonusNumber;
+    }
+
+    private int countPrizeMoney() {
+        int prizeMoney = 0;
+
+        for(Lotto lotto : randomLottos){
+            int cnt = winningLotto.countNumbers(lotto);
+            boolean isBonusNumber = lotto.containNumbers(bonusNumber);
+
+            if(cnt < 3) continue;
+
+            Result result = Result.getResult(cnt, isBonusNumber);
+            prizeMoney += result.getPrizeMoney();
+            result.increaseCount();
+        }
+        return prizeMoney;
     }
 }
