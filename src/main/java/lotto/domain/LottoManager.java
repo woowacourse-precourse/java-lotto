@@ -27,13 +27,17 @@ public class LottoManager {
     }
 
     public void start() {
-        totalBuyMoney = MoneyView.inputMoneyNumber();
-        List<Lotto> usersLottoNumbers = LottoGenerateManager.generateTotalLotto(totalBuyMoney);
-        registerWinnerLottoNumbers();
-        registerWinnerBonus();
-        updateScoreBoard(usersLottoNumbers);
-        printScoreBoard(scoreBoard);
-        printRateOfReturn(scoreBoard);
+        try {
+            totalBuyMoney = MoneyView.inputMoneyNumber();
+            List<Lotto> usersLottoNumbers = LottoGenerateManager.generateTotalLotto(totalBuyMoney);
+            registerWinnerLottoNumbers();
+            registerWinnerBonus();
+            updateScoreBoard(usersLottoNumbers);
+            printScoreBoard(scoreBoard);
+            printRateOfReturn(scoreBoard);
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     private void updateScoreBoard(List<Lotto> usersLottoNumbers) {

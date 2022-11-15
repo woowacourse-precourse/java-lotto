@@ -14,7 +14,7 @@ public class InputMoneyValidator {
     }
 
     private static final Integer ZERO = 0;
-    private static final String NUMBER_REGEXP = "\\d+$";
+    private static final String NUMBER_REGEXP = "^[0-9]+$";
 
     public static void validate(String input) {
         try {
@@ -28,9 +28,11 @@ public class InputMoneyValidator {
 
     }
 
-    private static void validateOnlyNumber(String userAmount) {
-        if (!userAmount.matches(NUMBER_REGEXP)) {
-            throw new OnlyNumberConsistBetweenOneToNineInputException();
+    private static void validateOnlyNumber(String input) {
+        if (!input.matches(NUMBER_REGEXP)) {
+//            throw new OnlyNumberConsistBetweenOneToNineInputException();
+            throw new IllegalArgumentException("[ERROR] 오직 숫자만 입력할 수 있습니다.");
+
         }
     }
 

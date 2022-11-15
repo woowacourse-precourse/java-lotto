@@ -5,7 +5,7 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
 
 import static lotto.utils.ScoreUtil.calRateOfReturnMessage;
-import static lotto.view.controller.ConsoleMessage.INPUT_BUY_MONEY;
+import static lotto.view.controller.ConsoleMessage.*;
 import static lotto.view.vlidation.InputMoneyValidator.validate;
 
 public class MoneyView {
@@ -21,7 +21,9 @@ public class MoneyView {
 
     public static void printRateOfReturn(List<Integer> scoreBoard) {
         String rateOfReturnMessage = calRateOfReturnMessage(scoreBoard);
-        System.out.println(rateOfReturnMessage);
+        System.out.println(PRINT_FRONT_TOTAL_RETURN_RATE.getMessage()
+                + rateOfReturnMessage + PRINT_BACK_TOTAL_RETURN_RATE.getMessage());
+
 
     }
 }
