@@ -110,7 +110,7 @@ class ManagerTest {
         manager.setPurchasePrice(8000);
 
         //When
-        double rate = manager.calculator(new int[]{1, 0, 0, 0, 0});
+        double rate = manager.calculateYield(new int[]{1, 0, 0, 0, 0});
 
         //Then
         assertThat(rate).isEqualTo(62.5);

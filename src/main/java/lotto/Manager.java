@@ -42,7 +42,7 @@ public class Manager {
         return Arrays.copyOfRange(matchCounts, LottoConst.MIN_MATCH, LottoConst.MAX_MATCH);
     }
 
-    public double calculator(int[] matchCounts) {
+    public double calculateYield(int[] matchCounts) {
         double totalWinnings = 0;
         totalWinnings += matchCounts[0] * WinningPrice.MATCH_3.getPrice();
         totalWinnings += matchCounts[1] * WinningPrice.MATCH_4.getPrice();
