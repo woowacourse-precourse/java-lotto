@@ -30,9 +30,12 @@ public class Lotto {
 
     public static List<Integer> pickLottoNumbers() {
         List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
-        numbers.sort(Comparator.naturalOrder());
 
-        return numbers;
+        List<Integer> unmodifiableNumbers = Collections.unmodifiableList(numbers);
+
+        List<Integer> sortedNumbers = new ArrayList<>(unmodifiableNumbers);
+        Collections.sort(sortedNumbers);
+        return sortedNumbers;
     }
 
     public void printLottoNumbers() {
