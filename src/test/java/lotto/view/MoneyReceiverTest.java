@@ -15,6 +15,6 @@ public class MoneyReceiverTest {
         String expected = "8000";
         InputStream in = new ByteArrayInputStream(expected.getBytes());
         System.setIn(in);
-        assertThat(MoneyReceiver.receiveMoney()).isEqualTo(Integer.parseInt(expected));
+        assertThat(MoneyReceiver.receiveMoney()).isEqualTo(expected);
     }
 }
