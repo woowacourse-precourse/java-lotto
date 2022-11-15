@@ -2,7 +2,6 @@ package lotto.domain;
 
 import camp.nextstep.edu.missionutils.Console;
 import lotto.util.LottoGenerator;
-import lotto.util.Message;
 import lotto.validate.UserValidator;
 import lotto.validate.Validator;
 

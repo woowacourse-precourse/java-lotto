@@ -2,7 +2,6 @@ package lotto;
 
 import lotto.domain.Dealer;
 import lotto.domain.User;
-import lotto.util.Message;
 import lotto.util.Rank;
 
 import java.text.DecimalFormat;

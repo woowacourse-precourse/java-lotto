@@ -1,7 +1,6 @@
 package lotto.domain;
 
 import camp.nextstep.edu.missionutils.Console;
-import lotto.util.Message;
 import lotto.validate.DealerValidator;
 
 import java.util.Arrays;
