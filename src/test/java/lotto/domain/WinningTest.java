@@ -42,4 +42,11 @@ public class WinningTest {
         assertThatThrownBy(() -> new Winning(List.of(46, 2, 3, 4, 5, 6), "5"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @DisplayName("당첨 번호의 개수가 6개가 넘어가면 예외가 발생한다.")
+    @Test
+    void createWinningByOverSize() {
+        assertThatThrownBy(() -> new Winning("1,2,3,4,5,6,7"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
