@@ -16,7 +16,18 @@ public class Application {
             lottos[i] = new Lotto(makeRandomNumbers());
         }
 
+        List<Integer> winningNumber = inputWinningNumbers();
 
+
+    }
+
+    private static List<Integer> inputWinningNumbers() {
+        List<Integer> winningNumber = new ArrayList<>();
+        String[] input = Console.readLine().split(",");
+        for (String s : input) {
+            winningNumber.add(Integer.parseInt(s));
+        }
+        return winningNumber;
     }
 
     private static int numberOfLotto() {
