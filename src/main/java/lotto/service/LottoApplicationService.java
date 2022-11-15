@@ -36,8 +36,8 @@ public class LottoApplicationService {
                         InputParser.divideInputBySeparator(consoleInput.readInput()));
 
         consoleOutput.printDirectiveAboutInputBonusNumber();
-        Integer bounsBall = InputParser.parseToInteger(consoleInput.readInput());
-        winningLotto = WinningLottoGenerator.generateWinningLotto(winningBalls, bounsBall);
+        Integer bonusBall = InputParser.parseToInteger(consoleInput.readInput());
+        winningLotto = WinningLottoGenerator.generateWinningLotto(winningBalls, bonusBall);
     }
 
     public void getStatisticsOfLotto() {
