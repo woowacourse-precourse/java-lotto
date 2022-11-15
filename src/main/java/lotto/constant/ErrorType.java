@@ -2,7 +2,7 @@ package lotto.constant;
 
 public enum ErrorType {
 
-    PURCHASE_AMOUNT_TYPE_ERROR("구입금액은 숫자여야 합니다."),
+    NUMBER_TYPE_ERROR("숫자를 입력해야 합니다."),
     NOT_POSITIVE_NUMBER_ERROR("구입금액은 양수여야 합니다."),
     PURCHASE_AMOUNT_UNIT_ERROR("구입금액은 1,000원 단위여야 합니다."),
     PLAYER_NUMBERS_COUNT_STANDARD_ERROR("당첨 번호는 6개를 입력해야 합니다."),

@@ -1,6 +1,6 @@
 package lotto.util;
 
-import static lotto.constant.ErrorType.PURCHASE_AMOUNT_TYPE_ERROR;
+import static lotto.constant.ErrorType.NUMBER_TYPE_ERROR;
 
 import java.util.Arrays;
 import java.util.List;
@@ -12,14 +12,14 @@ public class TypeConversion {
 
     public static int stringToInt(String input) {
 
-        int purchaseAmount;
+        int number;
         try {
-            purchaseAmount = Integer.parseInt(input);
+            number = Integer.parseInt(input);
         } catch (Exception e) {
-            throw new IllegalArgumentException(PURCHASE_AMOUNT_TYPE_ERROR.getMessage());
+            throw new IllegalArgumentException(NUMBER_TYPE_ERROR.getMessage());
         }
 
-        return purchaseAmount;
+        return number;
     }
 
     public static List<String> splitInputByComma(String input) {
