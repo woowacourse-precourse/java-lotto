@@ -4,8 +4,13 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 import lotto.constants.Number;
+import lotto.constants.Rank;
 import lotto.model.Lotto;
+import lotto.view.Output;
+
 public class LottoMachineController {
     public static List<Lotto> operateLottoMachine(int purchaseNumber){
         Output.printPurchaseMsg(purchaseNumber);
@@ -34,6 +39,22 @@ public class LottoMachineController {
             lottos.add(initLotto());
         }
         return lottos;
+    }
+
+    public static int[] getWinningStats(List<Lotto> lottos, List<Integer> win, int bonusNumber){
+        int prizeNumber;
+        boolean isBonus;
+        int index;
+        int[] winningStats = new int[Number.LENGTH.getNumber()];
+
+        for(Lotto l:lottos){
+            List<Integer> lotto = l.getNumbers();
+            prizeNumber = comparePrizeNumber(lotto,win);
+            isBonus = isBonusNumber(lotto,bonusNumber);
+            index = getRankIndex(prizeNumber, isBonus);
+            winningStats[index] = winningStats[index]+1;
+        }
+        return winningStats;
     }
 
     public static int comparePrizeNumber(List<Integer> lotto, List<Integer> win){
