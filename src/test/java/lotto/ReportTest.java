@@ -40,6 +40,7 @@ class ReportTest {
     @Test
     void lottoWinningCount() {
         Report report = new Report(Rank.Two);
+        report.winningCount = new Integer[]{0, 0, 0, 0, 0, 0};
         report.winningCount(5, true);
         Integer[] answer = {0, 0, 0, 0, 1, 0};
         assertThat(report.winningCount).isEqualTo(answer);
