@@ -7,6 +7,7 @@ import java.util.TreeMap;
 
 public class Statistics {
     static final int ZERO_COUNT = 0;
+    static final int ONE_COUNT = 1;
 
     static Map<LottoRank, Integer> result = new TreeMap<>(Collections.reverseOrder());
 
@@ -22,7 +23,7 @@ public class Statistics {
         for (int i = 0; i < winningCount.size(); i++) {
             LottoRank lottoRank = LottoRank.getLottoRankResult(winningCount.get(i), bonusMatching.get(i));
 
-            result.put(lottoRank, result.get(lottoRank) + 1);
+            result.put(lottoRank, result.get(lottoRank) + ONE_COUNT);
         }
 
         return result;

@@ -14,6 +14,9 @@ public class WinningNumbersValidator {
     private static final String DUPLICATE_NUMBER_ERROR_MESSAGE = "[ERROR] 입력된 당첨 번호에 중복된 수가 있습니다.";
 
     private static final String COMMA_DELIMITER = ",";
+    private static final int LIMIT_SIZE = 6;
+    private static final int RANGE_FIRST_VALUE = 1;
+    private static final int RANGE_LAST_VALUE = 45;
 
     public static void validateBeforeParse(String winningNumbers) {
         validateEmptyWinningNumbers(winningNumbers);
@@ -92,14 +95,14 @@ public class WinningNumbersValidator {
     }
 
     public static void validateSixElements(List<Integer> winningNumbers) {
-        if (winningNumbers.size() != 6) {
+        if (winningNumbers.size() != LIMIT_SIZE) {
             throw new IllegalArgumentException(NOT_SIX_ELEMENTS_ERROR_MESSAGE);
         }
     }
 
     public static void validateLottoNumberRange(List<Integer> winningNumbers) {
         for (Integer number : winningNumbers) {
-            if (number < 1 || number > 45) {
+            if (number < RANGE_FIRST_VALUE || number > RANGE_LAST_VALUE) {
                 throw new IllegalArgumentException(LOTTO_NUMBER_OUT_OF_RANGE_ERROR_MESSAGE);
             }
         }
