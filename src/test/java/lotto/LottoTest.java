@@ -3,6 +3,8 @@ package lotto;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -39,4 +41,17 @@ class LottoTest {
         final RuntimeException exception = assertThrows(RuntimeException.class, ()-> Application.checkPayMoney(money));
         assertThat(exception.getMessage()).isEqualTo("[ERROR] 1000원 단위의 금액만 가능합니다.");
     }
+    @DisplayName("same값이 제대로 계산되는 지 확인")
+    @Test
+    void checkLottoSame() {
+        final Application application = new Application();
+        List<Integer> nums = Arrays.asList(1,2,3,4,5,6);
+        List<Integer> winningNums = Arrays.asList(1,2,3,4,5,7);
+        Lotto winningLotto = new Lotto(winningNums);
+        Lotto lotto = new Lotto(nums);
+        int same = application.checkLottoSame(winningLotto, lotto);
+        assertThat(same)
+                .isEqualTo(5);
+    }
+
 }
