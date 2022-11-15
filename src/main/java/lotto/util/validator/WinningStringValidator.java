@@ -31,7 +31,7 @@ public class WinningStringValidator {
             if (winningString.charAt(index) == ',') {
                 continue;
             }
-            if ((winningString.charAt(index) > '0') && (winningString.charAt(index) <= '9')) {
+            if ((winningString.charAt(index) >= '0') && (winningString.charAt(index) <= '9')) {
                 continue;
             }
             throw new IllegalArgumentException(Constants.ERROR_WINNING_NUMBER_STRING);

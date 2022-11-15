@@ -73,7 +73,7 @@ public class WinningMoneyService {
         if (correctCount == 4) {
             return 4;
         }
-        if (correctCount == 5) {
+        if (correctCount == 5 && !correctBonus) {
             return 3;
         }
         if ((correctCount == 5) && correctBonus) {
