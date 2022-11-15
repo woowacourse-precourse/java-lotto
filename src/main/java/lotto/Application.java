@@ -10,28 +10,41 @@ import java.util.List;
 
 public class Application {
     public static void main(String[] args) {
-        Output.printInputMessage();
-        int money = Input.readMoney();
+        try {
+            Output.printInputMessage();
+            int money = Input.readMoney();
 
-        User user = new User(money);
-        user.printLottos();
+            User user = new User(money);
+            user.printLottos();
 
-        Output.printInputWinnings();
-        List<Integer> winningNumbers = Input.readWinningNumbers();
+            Output.printInputWinnings();
+            List<Integer> winningNumbers = Input.readWinningNumbers();
 
-        Output.printInputBonus();
-        int bonusNumber = Input.readBonusNumber();
+            Output.printInputBonus();
+            int bonusNumber = Input.readBonusNumber();
 
-        NumberBox numberBox = new NumberBox(winningNumbers, bonusNumber);
+            NumberBox numberBox = new NumberBox(winningNumbers, bonusNumber);
 
-        Output.printStatistics(
-                Calculator.calculateResult(
-                        user.getLottos(),
-                        numberBox.getWinningNumbers(),
-                        numberBox.getBonusNumber()
-                )
-        );
+            Output.printStatistics(
+                    Calculator.calculateResult(
+                            user.getLottos(),
+                            numberBox.getWinningNumbers(),
+                            numberBox.getBonusNumber()
+                    )
+            );
 
-        Output.printYield(Calculator.calculateYield(money));
+            Output.printYield(
+                    Calculator.calculateYield(
+                            money,
+                            Calculator.calculateEarn(
+                                    user.getLottos(),
+                                    numberBox.getWinningNumbers(),
+                                    numberBox.getBonusNumber()
+                            )
+                    )
+            );
+        } catch (IllegalArgumentException exception) {
+            Output.printException(exception.getMessage());
+        }
     }
 }

@@ -48,4 +48,8 @@ public class Output {
     public static void printYield(double yield) {
         System.out.println("총 수익률은 " + String.format("%.1f", yield) + "%입니다.");
     }
+
+    public static void printException(String exceptionMessage) {
+        System.out.println(exceptionMessage);
+    }
 }
