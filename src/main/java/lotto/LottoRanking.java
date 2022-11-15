@@ -11,20 +11,20 @@ public enum LottoRanking {
     RANK_1("6개 일치", 2000000000);
 
     private final String description;
-    private final int reward;
+    private final long reward;
 
-    LottoRanking(String description, int reward) {
+    LottoRanking(String description, long reward) {
         this.description = description;
         this.reward = reward;
     }
 
-    public int getReward() {
+    public long getReward() {
         return reward;
     }
 
     @Override
     public String toString() {
         DecimalFormat formatter = new DecimalFormat("###,###");
-        return description + " (" + formatter.format(reward) + ")";
+        return description + " (" + formatter.format(reward) + "원)";
     }
 }
