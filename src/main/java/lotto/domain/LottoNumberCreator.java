@@ -23,7 +23,6 @@ public class LottoNumberCreator {
         List<Lotto> lotteries = new ArrayList<>();
         for (int i = 0; i < lottoQuantity; ++i) {
             List<Integer> lottoCreateNumbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
-            lottoCreateNumbers.sort(Comparator.naturalOrder());
             lotteries.add(new Lotto(lottoCreateNumbers));
         }
         return lotteries;

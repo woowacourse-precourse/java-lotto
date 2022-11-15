@@ -3,8 +3,10 @@ package lotto.ui;
 import lotto.domain.Lotto;
 import lotto.domain.LottoRank;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 /**
  * 도메인에 관한 출력 UI
@@ -24,7 +26,10 @@ public class OutputUi {
     public void printLottoAmountAndNumber(List<Lotto> lotteries) {
         System.out.println(lotteries.size() + "개를 구매했습니다.");
         for (Lotto lottery : lotteries) {
-            System.out.println(lottery.toString());
+            lottery.getNumbers()
+                    .stream()
+                    .sorted(Comparator.naturalOrder())
+                    .collect(Collectors.toList());
         }
     }
 
