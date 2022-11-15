@@ -1,6 +1,6 @@
-package lotto.model;
+package lotto.model.vallidator;
 
-import lotto.Constants;
+import lotto.model.Constants;
 
 public enum LottoError {
     PREFIX("[ERROR] "),
