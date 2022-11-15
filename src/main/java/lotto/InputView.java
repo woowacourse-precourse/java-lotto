@@ -20,7 +20,11 @@ public class InputView {
         String[] inputSplit = input.split(",");
         List<Integer> winningNumbers = new ArrayList<>();
         for (int cnt = 0; cnt < COUNT_NUM; cnt++){
-            winningNumbers.add(Integer.parseInt(inputSplit[cnt]));
+            int winningNumber = Integer.parseInt(inputSplit[cnt]);
+            if (Validator.isOutOfRange(winningNumber)) {
+                throw new IllegalArgumentException(ERROR + "당첨 번호가 범위를 벗어났습니다");
+            }
+            winningNumbers.add(winningNumber);
         }
         return winningNumbers;
     }

@@ -19,16 +19,8 @@ public class Lotto {
         if (numbers.size() != COUNT_NUM) {
             throw new IllegalArgumentException(ERROR + "로또 번호의 개수는" + COUNT_NUM + "개가 아닙니다");
         }
-        if (isDuplicate(numbers)) {
+        if (Validator.isDuplicate(numbers)) {
             throw new IllegalArgumentException(ERROR + "로또 번호에 중복된 숫자가 있습니다");
         }
-    }
-
-    private boolean isDuplicate(List<Integer> numbers) {
-        Set<Integer> eliminateDuplication = new HashSet<>(numbers);
-        if (numbers.size() != eliminateDuplication.size()) {
-            return true;
-        }
-        return false;
     }
 }
