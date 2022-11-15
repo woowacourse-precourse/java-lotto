@@ -14,6 +14,7 @@ import lotto.winning.WinningResultCalculator;
 import lotto.winning.WinningStatistical;
 
 public class LottoGame {
+    public static final int PRICE_UNIT = 1000;
     private final WinningResultCalculator winningResultCalculator = new WinningResultCalculator();
 
     private final LottoGenerator lottoGenerator;
@@ -58,7 +59,7 @@ public class LottoGame {
     }
 
     private List<Lotto> issueLottos(Integer lottoBuyingPrice) {
-        List<Lotto> lottos = Stream.generate(lottoGenerator::generate).limit(lottoBuyingPrice / 1000)
+        List<Lotto> lottos = Stream.generate(lottoGenerator::generate).limit(lottoBuyingPrice / PRICE_UNIT)
                 .collect(Collectors.toList());
 
         lottoGamePrinter.printBoughtLottos(lottos);
@@ -74,7 +75,7 @@ public class LottoGame {
     }
 
     private void validateLottoBuyingPrice(Integer readPrice) throws IllegalPriceUnitException {
-        if (readPrice % 1000 != 0) {
+        if (readPrice % PRICE_UNIT != 0) {
             throw new IllegalPriceUnitException();
         }
     }

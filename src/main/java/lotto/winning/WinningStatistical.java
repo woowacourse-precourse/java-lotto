@@ -2,6 +2,7 @@ package lotto.winning;
 
 import java.util.HashMap;
 import java.util.Map;
+import lotto.LottoGame.LottoGame;
 
 public class WinningStatistical {
     private final Map<WinningResult, Integer> winningResultCount = new HashMap<>();
@@ -12,7 +13,7 @@ public class WinningStatistical {
         Integer prevWinningResultCount = winningResultCount.getOrDefault(winningResult, 0);
         winningResultCount.put(winningResult, prevWinningResultCount + 1);
         winningPrice += winningResult.getPrize();
-        boughtPrice += 1000;
+        boughtPrice += LottoGame.PRICE_UNIT;
     }
 
     public Integer getCountOfWinningResult(WinningResult winningResult) {
