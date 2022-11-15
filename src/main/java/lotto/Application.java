@@ -11,13 +11,12 @@ import camp.nextstep.edu.missionutils.Randoms;
 public class Application {
     public static void main(String[] args){
     	int count =0;
-    	try {
-    		count = getCount();
-    	}catch(Exception e) {
-    		return;
-    	}
+    	
+    	count = getCount();
+    		
     	if(count==-1)
     		return;
+    	
     	List<Lotto> lottoNumbers = createLottoNumbers(count);
     	List<Integer> WinningNumber = getWinningNumber();
     	int bonusNumber = getBonusNumber();
@@ -40,16 +39,13 @@ public class Application {
     	try {
     		result = Integer.parseInt(input)/1000;
     	}catch(Exception e){
-    		//e.printStackTrace();
-    		System.out.println("[ERROR]");
-    		
+    		System.out.println("[ERROR] 잘못된 입력 값입니다.");
     		return -1;
     	}
     	
-    	if(!(input.matches("-?\\d+000"))) {
-    		System.out.println("[ERROR]");
-    	}
-    	
+    	if(!(input.matches("-?\\d+000"))) 
+    		throw new IllegalArgumentException("[ERROR] 1000원 단위가 아닙니다.");
+    
     	return result;
     }
     
@@ -64,12 +60,12 @@ public class Application {
     	for(String s:inputSplited) {
     		eachNumber = Integer.parseInt(s);
     		if(eachNumber<1 || eachNumber>46)
-    			throw new IllegalArgumentException("[ERROR]");
+    			throw new IllegalArgumentException("[ERROR] 잘못된 입력 값입니다.");
     		result.add(eachNumber);
     	}
 
     	if(result.size()!=6)
-    		throw new IllegalArgumentException("[ERROR]");
+    		throw new IllegalArgumentException("[ERROR] 6자리가 아닙니다.");
     	
     	return result;
     }
@@ -80,7 +76,7 @@ public class Application {
     	int result = Integer.parseInt(input);
     	
     	if(result<1 || result>46)
-			throw new IllegalArgumentException("[ERROR]");
+			throw new IllegalArgumentException("[ERROR] 1~45 사이의 숫자가 아닙니다.");
     	
     	return result;
     }
@@ -131,7 +127,7 @@ public class Application {
     	result = 12-hash.size();
     	if(result==5 && winningNumber.contains(bonusNumber))
     		result+=2;
-    	System.out.println(result);
+
     	return result;
     }
 }
