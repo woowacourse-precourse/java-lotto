@@ -134,7 +134,7 @@ public class LottoGameController {
     public void isCashInt(String cash, OutputMessages outputMessages) {
         if(!cash.matches("[+-]?\\d*(\\.\\d+)?")) {
             System.out.println(outputMessages.CashIsNotInt());
-            throw new IllegalArgumentException();
+            LottoSystem(new InputMessages(), outputMessages);
         }
     }
 
