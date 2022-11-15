@@ -23,6 +23,7 @@ public class Application {
 
         System.out.println("보너스 번호를 입력해 주세요.");
         input = readLine();
+        bonusInputValidation(input);
         int bonusNumber = Integer.parseInt(input);
 
         Hashtable<Integer, Integer> counts = countsInitialization();
@@ -34,7 +35,7 @@ public class Application {
     }
 
     public static Hashtable<Integer,Integer> countsInitialization(){
-        Hashtable counts = new Hashtable<>();
+        Hashtable<Integer,Integer> counts = new Hashtable<>();
         for (int i = 3; i <= 7; i++){
             counts.put(i,0);
         }
@@ -55,7 +56,7 @@ public class Application {
     }
 
     public static void bonusInputValidation(String bonusInput) throws IllegalArgumentException{
-        if (!bonusInput.matches("[0-45]{1}")){
+        if (!bonusInput.matches("[0-45]")){
             throw new IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
         }
     }
@@ -75,9 +76,9 @@ public class Application {
         List<Lotto> lottos = user.getLottos();
         Lotto lotto;
         printLottos.append("\n");
-        for (int i = 0; i < lottos.size(); i++){
-            lotto = lottos.get(i);
-            printLottos.append(lotto.getNumbers().toString() + "\n");
+        for (Lotto value : lottos) {
+            lotto = value;
+            printLottos.append(lotto.getNumbers().toString()).append("\n");
         }
         System.out.println(printLottos);
     }
@@ -108,21 +109,20 @@ public class Application {
 
     public static void userLottoCheck(Hashtable<Integer,Integer> counts, List<Lotto> userLottos, Lotto winnerLotto, int bonusNumber){
         int count;
-        for (int i = 0; i < userLottos.size(); i++){
-            count = checkWinLotto(userLottos.get(i), winnerLotto, bonusNumber);
-            if (counts.containsKey(count)){
-                counts.put(count,counts.get(count) + 1);
+        for (Lotto userLotto : userLottos) {
+            count = checkWinLotto(userLotto, winnerLotto, bonusNumber);
+            if (counts.containsKey(count)) {
+                counts.put(count, counts.get(count) + 1);
             }
         }
     }
 
     public static void winningStatistics(Hashtable<Integer,Integer> counts){
-        StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append("3개 일치 (5,000원) - "+ counts.get(3)+"개\n");
-        stringBuilder.append("4개 일치 (50,000원) - " + counts.get(4) + "개\n");
-        stringBuilder.append("5개 일치 (1,500,000원) - " + counts.get(5) +"개\n");
-        stringBuilder.append("5개 일치, 보너스 볼 일치 (30,000,000원) - "+ counts.get(7) + "개\n");
-        stringBuilder.append("6개 일치 (2,000,000,000원) - "+ counts.get(6) + "개\n");
+        String stringBuilder = "3개 일치 (5,000원) - " + counts.get(3) + "개\n" +
+                "4개 일치 (50,000원) - " + counts.get(4) + "개\n" +
+                "5개 일치 (1,500,000원) - " + counts.get(5) + "개\n" +
+                "5개 일치, 보너스 볼 일치 (30,000,000원) - " + counts.get(7) + "개\n" +
+                "6개 일치 (2,000,000,000원) - " + counts.get(6) + "개\n";
         System.out.println(stringBuilder);
     }
 
