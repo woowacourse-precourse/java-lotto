@@ -16,7 +16,7 @@ class ManagerTest {
         Manager manager = new Manager();
 
         //When
-        assertThatThrownBy(() -> manager.getPurchasePrice(950))
+        assertThatThrownBy(() -> manager.setPurchasePrice(950))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -27,7 +27,7 @@ class ManagerTest {
         Manager manager = new Manager();
 
         //When
-        assertThatThrownBy(() -> manager.getPurchasePrice(21312))
+        assertThatThrownBy(() -> manager.setPurchasePrice(21312))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -36,7 +36,7 @@ class ManagerTest {
     void publishLottos() throws Exception {
         //Given
         Manager manager = new Manager();
-        manager.getPurchasePrice(5000);
+        manager.setPurchasePrice(5000);
 
         //When
         List<List<Integer>> lottos = manager.publishPurchaseLottos();
@@ -55,7 +55,7 @@ class ManagerTest {
     void matchEachCount() throws Exception {
         //Given
         Manager manager = new Manager();
-        manager.getPurchasePrice(6000);
+        manager.setPurchasePrice(6000);
 
         //When
         List<Integer> lotto = List.of(1, 2, 3, 4, 5, 6, 7);
@@ -80,7 +80,7 @@ class ManagerTest {
     void matchDifferently() throws Exception {
         //Given
         Manager manager = new Manager();
-        manager.getPurchasePrice(6000);
+        manager.setPurchasePrice(6000);
 
         //When
         List<Integer> lotto = List.of(1, 2, 3, 4, 5, 6, 7);
@@ -104,7 +104,7 @@ class ManagerTest {
     void calcWinningPrice() throws Exception {
         //Given
         Manager manager = new Manager();
-        manager.getPurchasePrice(8000);
+        manager.setPurchasePrice(8000);
 
         //When
         double rate = manager.calculator(new int[]{1, 0, 0, 0, 0});

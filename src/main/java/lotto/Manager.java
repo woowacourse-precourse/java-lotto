@@ -9,7 +9,7 @@ import java.util.List;
 public class Manager {
     private Integer purchasePrice;
 
-    public void getPurchasePrice(int purchasePrice) {
+    public void setPurchasePrice(int purchasePrice) {
         if (purchasePrice % LottoConst.PURCHASE_UNIT != 0) {
             throw new IllegalArgumentException("[ERROR] ");
         }
