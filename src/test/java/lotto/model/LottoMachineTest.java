@@ -48,4 +48,15 @@ class LottoMachineTest {
         boolean result = lotto.equals(new Lotto(List.of(1, 2, 3, 4, 5, 6)));
         assertThat(result).isTrue();
     }
+
+    @DisplayName("입력된 보너스 번호를 가지고 보너스가 발행된다.")
+    @Test
+    void publishBonus() {
+        Lotto winningLotto = lottoMachine.publishWinningLotto("1,2,3,4,5,6");
+        Bonus bonus = lottoMachine.publishBonus(7, winningLotto);
+
+        boolean actual = bonus.equals(new Bonus(7, winningLotto));
+
+        assertThat(actual).isTrue();
+    }
 }
