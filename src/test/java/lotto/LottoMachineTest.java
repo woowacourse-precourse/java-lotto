@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.assertj.core.api.Assertions.*;
 
 class LottoMachineTest {
     LottoMachine lottoMachine = new LottoMachine();
@@ -30,5 +30,14 @@ class LottoMachineTest {
     void createNotInRangeWinningNumber() {
         assertThatThrownBy(() -> lottoMachine.checkThatWinningNumberIsRightInput("1,2,3,4,5,50"))
                 .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("당첨 번호를 입력하면 ,를 기준으로 번호를 분리한다.")
+    @Test
+    void createWinningNumberString() {
+        String winningNumber = "1,12,23,34,35,6";
+        List<String> result = List.of("1", "12", "23", "34", "35", "6");
+
+        assertThat(lottoMachine.splitNumber(winningNumber)).isEqualTo(result);
     }
 }
