@@ -25,13 +25,17 @@ import lotto.rank.RankChecker;
 public class LottoController {
 
     public void playLottoGame() {
-        Money purchaseMoney = getPurchaseMoney();
-        printBlank();
-        List<Lotto> lottos = getGeneratedLotto(purchaseMoney);
-        printBlank();
-        WinningLotto winningLotto = getWinningLotto();
-        printBlank();
-        getResult(lottos, winningLotto, purchaseMoney);
+        try {
+            Money purchaseMoney = getPurchaseMoney();
+            printBlank();
+            List<Lotto> lottos = getGeneratedLotto(purchaseMoney);
+            printBlank();
+            WinningLotto winningLotto = getWinningLotto();
+            printBlank();
+            getResult(lottos, winningLotto, purchaseMoney);
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     private Money getPurchaseMoney() {
