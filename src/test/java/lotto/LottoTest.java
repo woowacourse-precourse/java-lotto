@@ -40,4 +40,12 @@ class LottoTest {
         assertThatThrownBy(() -> new User("1000a"))
                 .isInstanceOf(NoSuchElementException.class);
     }
+
+    @DisplayName("구매 금액이 1000원 단위가 아니면 예외가 발생한다.")
+    @Test
+    void createUserHavingRemainder() {
+        // TODO: 이 테스트가 통과할 수 있게 구현 코드 작성R
+        assertThatThrownBy(() -> new User("11500"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
