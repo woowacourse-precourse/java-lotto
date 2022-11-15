@@ -1,8 +1,6 @@
-package lotto.model;
+package lotto.domain;
 
 import java.util.*;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public enum Rank {
     FIRST(6, 0, 2000000000),

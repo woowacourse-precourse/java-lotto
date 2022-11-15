@@ -1,11 +1,6 @@
-package lotto.model;
+package lotto.domain;
 
-import camp.nextstep.edu.missionutils.Randoms;
-
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class Game {
     public static final Integer price = 1000;

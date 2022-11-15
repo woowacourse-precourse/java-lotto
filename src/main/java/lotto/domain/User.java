@@ -1,14 +1,18 @@
-package lotto.model;
+package lotto.domain;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class User {
     private Integer budget = 0;
     private List<Lotto> lottos = new ArrayList<>();
     private Integer profit = 0;
+    private Map<Rank, Integer> winningCount= new HashMap<>();
+
 
     public User(){
 
@@ -39,9 +43,7 @@ public class User {
         return Randoms.pickUniqueNumbersInRange(1, Game.maximumLottoNumber, Game.numberToDraw);
     }
 
-    public void calculateProfit(){
 
 
-    }
 
 }
