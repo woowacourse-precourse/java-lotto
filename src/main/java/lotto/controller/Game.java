@@ -5,7 +5,7 @@ import java.util.List;
 import lotto.domain.Lotto;
 import lotto.domain.LottoNumber;
 import lotto.domain.Money;
-import lotto.domain.Picker;
+import lotto.domain.PickedLotto;
 import lotto.constant.Rank;
 import lotto.domain.Seller;
 import lotto.view.InputView;
@@ -28,10 +28,10 @@ public class Game {
         }
     }
 
-    private Picker getPicker() {
+    private PickedLotto getPicker() {
         Lotto winningLotto = new Lotto(InputView.promptWinningNumbers());
         LottoNumber bonusNumber = new LottoNumber(InputView.promptBonusNumber());
-        return new Picker(winningLotto, bonusNumber);
+        return new PickedLotto(winningLotto, bonusNumber);
     }
 
     private List<Lotto> issueLottosWith(Money money) {

@@ -5,11 +5,11 @@ import java.util.List;
 
 import lotto.constant.Rank;
 
-public class Picker {
+public class PickedLotto {
     private final Lotto winningLotto;
     private final LottoNumber bonusNumber;
 
-    public Picker(Lotto winningLotto, LottoNumber bonusNumber) {
+    public PickedLotto(Lotto winningLotto, LottoNumber bonusNumber) {
         validateBonusNumber(winningLotto, bonusNumber);
         this.winningLotto = winningLotto;
         this.bonusNumber = bonusNumber;
