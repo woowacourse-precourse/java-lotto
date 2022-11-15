@@ -9,12 +9,12 @@ import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import lotto.model.resources.Lotto;
-
-import lotto.model.computer.lottonumber.LottoLine;
-import lotto.model.computer.repository.LottoRepository;
-
 import lotto.model.resources.Money;
 import lotto.model.resources.Rank;
+
+import lotto.model.computer.lottonumber.LottoLine;
+
+import lotto.model.computer.repository.LottoRepository;
 
 public class LottoComputer {
 

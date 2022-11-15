@@ -1,8 +1,10 @@
 package lotto.view;
 
 import camp.nextstep.edu.missionutils.Console;
+
 import java.util.ArrayList;
 import java.util.List;
+
 import lotto.ExceptionHandle;
 
 public class View implements Input {

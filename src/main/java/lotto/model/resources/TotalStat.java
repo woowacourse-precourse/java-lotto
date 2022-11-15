@@ -2,7 +2,9 @@ package lotto.model.resources;
 
 import java.util.ArrayList;
 import java.util.Map;
+
 import lotto.model.computer.LottoComputer;
+
 import lotto.view.View;
 import lotto.view.Message;
 

@@ -1,8 +1,10 @@
 package lotto.view;
 
 import java.text.DecimalFormat;
+
 import java.util.List;
 import java.util.Map;
+
 import lotto.model.resources.Rank;
 
 public enum Message {

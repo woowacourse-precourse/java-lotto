@@ -1,6 +1,7 @@
 package lotto.model.computer.lottonumber;
 
 import java.util.List;
+
 import java.util.function.Consumer;
 
 public class LottoLine {

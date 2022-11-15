@@ -1,12 +1,15 @@
 package lotto.controller;
 
 import lotto.ExceptionHandle;
+
 import lotto.model.computer.LottoComputer;
+
 import lotto.model.resources.LottoWin;
 import lotto.model.resources.TotalStat;
 import lotto.model.resources.BonusLotto;
 import lotto.model.resources.Money;
 import lotto.model.resources.TotalWinningLotto;
+
 import lotto.view.View;
 import lotto.view.Message;
 
