@@ -2,7 +2,7 @@ package lotto.Utils;
 
 import java.util.*;
 import java.util.stream.Collectors;
-public class commonUtil {
+public class CommonUtil {
     public static int stringToNumber(String input) {
         int number = 0;
         try {
