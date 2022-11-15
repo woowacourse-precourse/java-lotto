@@ -23,4 +23,8 @@ public class Utils {
                 .map(s -> Integer.parseInt(s))
                 .collect(Collectors.toList());
     }
+
+    public static double getRateOfReturn(double money, double prize) {
+        return (prize / money) * 100;
+    }
 }
