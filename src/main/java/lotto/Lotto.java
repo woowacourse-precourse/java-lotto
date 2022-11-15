@@ -90,4 +90,10 @@ public class Lotto {
         }
         return 0;
     }
+    public int itemContainsKey(Map<Integer, List<Integer>> item, int count) {
+        if (item.containsKey(count)) {
+            return 1;
+        }
+        return 0;
+    }
 }
