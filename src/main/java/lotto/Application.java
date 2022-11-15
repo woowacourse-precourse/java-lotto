@@ -21,7 +21,7 @@ public class Application {
 
             Lotto answerLotto = Lotto.numberOf(answerNumbers);
 
-            HashMap<Calculator.Hit, Integer> result = Calculator.getLottoResult(randomLottos, answerLotto, bonusNumber);
+            HashMap<Hit, Integer> result = Calculator.getLottoResult(randomLottos, answerLotto, bonusNumber);
 
             Float earningRate = Calculator.getEarningRate(result, money);
 

@@ -22,10 +22,10 @@ class CalculatorTest {
         Integer bonusNumber = 7;
 
         // when
-        HashMap<Calculator.Hit, Integer> result = Calculator.getLottoResult(lottos, answerLotto, bonusNumber);
+        HashMap<Hit, Integer> result = Calculator.getLottoResult(lottos, answerLotto, bonusNumber);
 
         // then
-        for (Calculator.Hit hit : result.keySet()) {
+        for (Hit hit : result.keySet()) {
             Assertions.assertThat(result.get(hit)).isEqualTo(1);
         }
     }

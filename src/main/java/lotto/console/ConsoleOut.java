@@ -1,6 +1,6 @@
 package lotto.console;
 
-import lotto.Calculator;
+import lotto.Hit;
 import lotto.Lotto;
 import lotto.message.MessageGenerator;
 
@@ -20,8 +20,8 @@ public class ConsoleOut {
         }
     }
 
-    public static void printResult(HashMap<Calculator.Hit, Integer> result) {
-        for (Calculator.Hit hit : result.keySet()) {
+    public static void printResult(HashMap<Hit, Integer> result) {
+        for (Hit hit : result.keySet()) {
             System.out.println(MessageGenerator.getLottoResultMessage(hit, result.get(hit)));
         }
     }
