@@ -1,3 +1,7 @@
+- fix(InputManagerTest): fix tests of checking predictBonusLottoNumber
+- fix(ProgramManager): separate method of getting userPredictlottoNumbers input
+- fix(InputManager): add predictBonusLottoNumber validation
+- docs(CHANGELOG): create CHANGELOG.md
 - docs(README): update README
 - refactor: change file structure
 - fix: delete enum Reward, fix lottoRankResult to Map
