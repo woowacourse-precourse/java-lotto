@@ -6,9 +6,13 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.MethodSource;
+
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Stream;
 
 class UserLottoTest {
 
@@ -30,6 +34,26 @@ class UserLottoTest {
         UserLotto user = new UserLotto(lottoAmount);
 
         assertThat(user.getLottoCount()).isEqualTo(lottoCount);
+    }
+
+    static Stream<Arguments> setParametersForRateOfReturn() {
+        return Stream.of(
+                Arguments.arguments(new ArrayList<Integer>(List.of(1, 0, 0, 0, 0)),
+                        200000000.0, "1000"),
+                Arguments.arguments(new ArrayList<Integer>(List.of(0, 0, 0, 2, 0)),
+                        1000.0, "10000"),
+                Arguments.arguments(new ArrayList<Integer>(List.of(0, 0, 0, 1, 1)),
+                        5.5, "1000000"));
+    }
+
+    @DisplayName("로또 수익률 계산 테스트")
+    @MethodSource("setParametersForRateOfReturn")
+    @ParameterizedTest(name = "[{index}] 수익률 테스트 - 금액 : {2}, 결과 : {0}, 수익률 : {1}")
+    void createLottoByOtherWords(List<Integer> lottoResult, double lottoRateOfReturn,
+                                 String lottoAmount) {
+        UserLotto user = new UserLotto(lottoAmount);
+
+        assertThat(user.getRateOfReturn(lottoResult)).isEqualTo(lottoRateOfReturn);
     }
 
     @DisplayName("로또 결과 리스트 반환")
