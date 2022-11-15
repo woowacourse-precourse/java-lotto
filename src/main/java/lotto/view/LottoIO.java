@@ -33,11 +33,11 @@ public class LottoIO {
     public void inputBonusAnswer() {
         System.out.println("보너스 번호를 입력해 주세요.");
         String input = Console.readLine();
-        System.out.println(input + "\n");
 
-        if (checkInvalidBonus(input)) {
+        if (checkInvalidBonus(input, lottoAnswer)) {
             throw new IllegalArgumentException(messages.INVALID_BONUS.getErrorMsg());
         }
+        System.out.println(input + "\n");
         Integer result = Integer.valueOf(input);
         this.bonus = result;
         return;
@@ -49,7 +49,7 @@ public class LottoIO {
             return true;
         }
         String[] nums = input.split(",");
-        if (checkInvalidLength(input, 6) || checkDuplicate(nums)) {
+        if (checkInvalidLength(input, 6) || checkDuplicate(nums) || input.chars().filter(ch -> ch == ',').count() != 5) {
             return true;
         }
         for (String num : nums) {
@@ -61,11 +61,14 @@ public class LottoIO {
     }
 
     // 올바르지 않은 보너스 번호 확인
-    public boolean checkInvalidBonus(String input) {
+    public boolean checkInvalidBonus(String input, List<Integer> lottoAnswer) {
         if (input == null) {
             return true;
         }
         if (checkInvalidLength(input, 1) || isNotNumericRange(input)) {
+            return true;
+        }
+        if (lottoAnswer.contains(Integer.valueOf(input))) {
             return true;
         }
         return false;
@@ -122,8 +125,15 @@ public class LottoIO {
         return this.lottoAnswer;
     }
 
+    public void setLottoAnswer(List<Integer> lottoAnswer) {
+        this.lottoAnswer = lottoAnswer;
+    }
+
     public int getBonus() {
         return this.bonus;
     }
 
+    public void setBonus(int bonus) {
+        this.bonus = bonus;
+    }
 }
