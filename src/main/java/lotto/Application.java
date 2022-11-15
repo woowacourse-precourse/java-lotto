@@ -28,26 +28,10 @@ public class Application {
             String inputBonus = Console.readLine();
             Winning.addBonus(inputBonus);
 
-            Compare compare = new Compare();
+            int totalPrize = Report.totalPrize(allLotto);
+            double returnRate = Report.returnRate(lottoCount * 1000, totalPrize);
 
-            Report report = new Report(Rank.None);
-
-            int totalPrize = 0;
-
-            for(int i = 0; i < allLotto.size(); i++){
-                List<Integer> lotto = allLotto.get(i).getNumbers();
-                int matchNumber = compare.matchCount(lotto, Winning.numbers);
-                boolean matchBonus = compare.matchBonus(lotto, Winning.numbers);
-
-                Rank rank = Rank.valueOf(matchNumber, matchBonus);
-
-                report = new Report(rank);
-                report.winningCount(matchNumber, matchBonus);
-
-                totalPrize += rank.getPrize();
-            }
-            double returnRate = returnRate(lottoCount * 1000, totalPrize);
-            reportPrint(report.winningCount, returnRate);
+            reportPrint(Report.winningCount, returnRate);
         } catch (IllegalArgumentException e) {
             System.out.println(ERROR_MESSAGE + e.getMessage());
         }
@@ -80,12 +64,6 @@ public class Application {
         System.out.println("6개 일치 (2,000,000,000원) - " + winningCount[5] + "개");
         System.out.println("총 수익률은 " + returnRate + "%입니다.");
     }
-
-    public static double returnRate(int inputMoney, int totalPrize){
-        double returnRate = totalPrize / (double) inputMoney * 100;
-        return ((double)Math.round(returnRate * 100) / 100);
-    }
-
 
     public static void disableWarning() {
         System.err.close();
