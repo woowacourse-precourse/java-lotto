@@ -3,8 +3,10 @@ package lotto;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class LottoTest {
@@ -23,5 +25,22 @@ class LottoTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+    @Test
+    void getCorrectNumberTest1(){
+        Lotto lotto = new Lotto(new ArrayList<>(List.of(1,3,5,6,7,8)));
+        Lotto lotto2 = new Lotto(new ArrayList<>(List.of(1,3,5,10,15,17)));
+
+        assertThat(lotto.getCorrectNumber(lotto2))
+                .isEqualTo(3);
+    }
+
+    @Test
+    void hitBonusTest1(){
+
+        Lotto lotto = new Lotto(new ArrayList<>(List.of(1,3,5,6,7,8)));
+
+        assertThat(lotto.hitBonus(7))
+                .isEqualTo(true);
+    }
     // 아래에 추가 테스트 작성 가능
 }
