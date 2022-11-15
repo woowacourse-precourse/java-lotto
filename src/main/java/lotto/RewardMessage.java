@@ -40,4 +40,35 @@ public class RewardMessage {
             System.out.println(FIRST_MESSAGE+value+AMOUNT);
         }
     }
+
+    static int lottoReward(Map<Rank,Integer> ranking){
+        Iterator<Rank> iterator = ranking.keySet().iterator();
+        int sum =0;
+        while (iterator.hasNext()) {
+            Rank key = iterator.next();
+            int value = ranking.get(key);
+            sum += sumReward(key,value,0);
+        }
+        return sum;
+    }
+
+    static int sumReward(Rank key,int value, int money){
+
+        if(key.equals(Rank.FIVE)){
+            money = (Rank.FIVE.getReward())*value;
+        }
+        if(key.equals(Rank.FOUR)){
+            money = (Rank.FOUR.getReward())*value;
+        }
+        if(key.equals(Rank.THIRD)){
+            money = (Rank.THIRD.getReward())*value;
+        }
+        if(key.equals(Rank.SECOND)){
+            money = (Rank.SECOND.getReward())*value;
+        }
+        if(key.equals(Rank.FIRST)){
+            money = (Rank.FIRST.getReward())*value;
+        }
+        return money;
+    }
 }
