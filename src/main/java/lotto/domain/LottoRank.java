@@ -9,7 +9,7 @@ import java.util.Map;
 import static lotto.util.ConstValue.LottoConst.*;
 
 public enum LottoRank {
-    
+
     WIN_1ST(1, PRIZE_MONEY_1ST, String.format("6개 일치 (%,d원)", PRIZE_MONEY_1ST)),
     WIN_2ND(2, PRIZE_MONEY_2ND, String.format("5개 일치, 보너스 볼 일치 (%,d원)", PRIZE_MONEY_2ND)),
     WIN_3RD(3, PRIZE_MONEY_3RD, String.format("5개 일치 (%,d원)", PRIZE_MONEY_3RD)),
@@ -34,6 +34,10 @@ public enum LottoRank {
         this.ranking = ranking;
         this.prizeMoney = prizeMoney;
         this.message = message;
+    }
+
+    public String getMessage() {
+        return message;
     }
 
     public long getPrizeMoney() {

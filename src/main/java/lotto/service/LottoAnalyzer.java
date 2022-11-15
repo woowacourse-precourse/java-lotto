@@ -34,7 +34,7 @@ public class LottoAnalyzer {
     public void showLottoStatistics() {
         System.out.println("\n당첨 통계");
         System.out.println("---");
-        winningStatus.forEach((k, v) -> System.out.println(k + " - " + v + "개"));
+        winningStatus.forEach((k, v) -> System.out.println(k.getMessage() + " - " + v + "개"));
 
         final double profitPercent =
                 ((double) calculateWinningPriceSum() / lottoUser.getPurchaseCost()) * 100;
