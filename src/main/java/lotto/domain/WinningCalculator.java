@@ -50,7 +50,7 @@ public class WinningCalculator {
     public WinningResult getResultOfOneLotto(Lotto lotto) {
         int countContainNumbers = calculateCountContainNumbers(lotto);
         boolean isContainBonusNumber = checkIsContainBonusNumber(lotto);
-        WinningResult winningResult = getWinningResultByCount(countContainNumbers, isContainBonusNumber);
+        WinningResult winningResult = matchWinningResult(countContainNumbers, isContainBonusNumber);
         return winningResult;
     }
 
@@ -78,7 +78,7 @@ public class WinningCalculator {
         return isContainBonusNumber;
     }
 
-    private WinningResult getWinningResultByCount(int countContainNumbers, boolean isContainBonusNumber) {
+    private WinningResult matchWinningResult(int countContainNumbers, boolean isContainBonusNumber) {
         WinningResult winningResult = this.winningTable.get(countContainNumbers);
         boolean isClass2 = (winningResult == RANK_3) && isContainBonusNumber;
         if (isClass2) {
