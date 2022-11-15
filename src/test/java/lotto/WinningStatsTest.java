@@ -24,7 +24,7 @@ class WinningStatsTest {
     @DisplayName("알맞은 당첨이 추가되는지 확인")
     @ParameterizedTest
     @MethodSource("WinningData")
-    public void RightWinningStat(List<Integer> winningNumber, int bonus, int first, int second, int third, int forth, int fifth) {
+    public void rightWinningStat(List<Integer> winningNumber, int bonus, int first, int second, int third, int forth, int fifth) {
         Lotto winning = new Lotto(winningNumber);
 
         // <Rank, Number>
@@ -43,7 +43,7 @@ class WinningStatsTest {
         }
     }
 
-    static Stream<Arguments> WinningData() {
+    static Stream<Arguments> winningData() {
         return Stream.of(
                 Arguments.of(Arrays.asList(1,7,15,21,25,40),6,0,0,0,0,0),
                 Arguments.of(Arrays.asList(1,2,3,4,5,6),7,1,0,0,0,1),
@@ -57,14 +57,14 @@ class WinningStatsTest {
     @DisplayName("수익률 계산이 알맞게 작동하는지 확인")
     @ParameterizedTest
     @MethodSource("EarningRateData")
-    void RightEarningRate(List<Integer> winningNumber, int bonus, double earningRate) {
+    void rightEarningRate(List<Integer> winningNumber, int bonus, double earningRate) {
         Lotto winning = new Lotto(winningNumber);
         WinningStats winningStats = new WinningStats(purchase, winning, bonus);
         winningStats.calculateEarningRate(purchase.size() * 1000);
         assertThat(WinningStats.earningRate).isEqualTo(earningRate);
     }
 
-    static Stream<Arguments> EarningRateData() {
+    static Stream<Arguments> earningRateData() {
         return Stream.of(
                 Arguments.of(Arrays.asList(1,7,15,21,25,40),6,0),
                 Arguments.of(Arrays.asList(1,2,3,4,5,6),7,33333416.7),
