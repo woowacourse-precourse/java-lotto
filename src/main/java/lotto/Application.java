@@ -1,6 +1,7 @@
 package lotto;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
+import org.assertj.core.internal.Doubles;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -24,13 +25,13 @@ public class Application {
 
     public static int getTheNumberOfLotto() {
         String money = Console.readLine();
-        MoneyValidate(money);
+        moneyValidate(money);
         int numberOfLotto = Integer.parseInt(money) / 1000;
 
         return numberOfLotto;
     }
 
-    public static void MoneyValidate(String money) {
+    public static void moneyValidate(String money) {
         if (validateMoneyType(money) || validateMoneyRange(money)) {
             System.out.println("[ERROR] 구매 금액은 1000원 단위로 입력해야 합니다.");
             throw new IllegalArgumentException();
@@ -71,6 +72,9 @@ public class Application {
 
     public static List<Integer> getMyLottoNumbers() {
         String[] lotto = Console.readLine().split(",");
+
+        myLottoValidate(lotto);
+
         List<Integer> myLotto = new ArrayList();
 
         for (String l : lotto) {
@@ -88,6 +92,60 @@ public class Application {
         myLotto.add(bonusNumber);
 
         return myLotto;
+    }
+
+    public static void myLottoValidate(String[] lotto) {
+        if (validateMyLottoLength(lotto) || validateMyLottoElement(lotto)
+                || validateMyLottoElementDuplication(lotto) || validateMyLottoElementRange(lotto)) {
+            System.out.println("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
+            throw new IllegalArgumentException();
+        }
+    }
+
+    public static boolean validateMyLottoLength(String[] lotto) {
+        if (lotto.length != 6) {
+            return true;
+        }
+
+        return false;
+    }
+
+    public static boolean validateMyLottoElement(String[] lotto) {
+//        List<String> tempLotto = new ArrayList<>(Arrays.asList(lotto));
+
+        for (String s : lotto) {
+            if (!s.chars().allMatch(Character::isDigit)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    public static boolean validateMyLottoElementDuplication(String[] lotto) {
+        List<String> tempLotto = new ArrayList<>();
+
+        for (String s: lotto) {
+            if (tempLotto.contains(s)) {
+                return true;
+            }
+            tempLotto.add(s);
+        }
+
+        return false;
+    }
+
+    public static boolean validateMyLottoElementRange(String[] lotto) {
+        List<Integer> myLotto = new ArrayList();
+
+        for (String l : lotto) {
+            int n = Integer.parseInt(l);
+            if (n > 45 || n < 1) {
+                return true;
+            }
+        }
+
+        return false;
     }
 
 }
