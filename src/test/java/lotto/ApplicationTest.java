@@ -3,6 +3,7 @@ package lotto;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomUniqueNumbersInRangeTest;
@@ -12,6 +13,14 @@ import static org.assertj.core.api.Assertions.assertThat;
 class ApplicationTest extends NsTest {
     private static final String ERROR_MESSAGE = "[ERROR]";
 
+    @Test
+    void 로또번호_몇개_일치_테스트() {
+        List<Integer> nums = new ArrayList<>();
+        Lotto input_nums = new Lotto(List.of(1,2,3,4,5,6));
+        Lotto win_nums = new Lotto(List.of(7,2,3,11,5,6));
+        int result = 4;
+        assertThat(result).isEqualTo(input_nums.howManyMatches(win_nums));
+    }
     @Test
     void 기능_테스트() {
         assertRandomUniqueNumbersInRangeTest(

@@ -20,4 +20,14 @@ public class Lotto {
         Collections.sort(this.numbers);
     }
 
+    public int howManyMatches(Lotto win_lottery){
+        int cnt =0;
+        for(int i=0; i<6; i++){
+            if(win_lottery.numbers.contains(this.numbers.get(i))){
+                cnt++;
+            }
+        }
+        return cnt;
+    }
+
 }
