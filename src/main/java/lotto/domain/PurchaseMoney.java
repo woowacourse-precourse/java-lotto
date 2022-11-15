@@ -1,7 +1,5 @@
 package lotto.domain;
 
-import lotto.view.Input;
-
 public class PurchaseMoney {
     private final String PURCHASE_MONEY_MUST_OVER_1000 = "구매 금액은 1000원 이상을 입력해주세요.";
     private final String PURCHASE_MONEY_UNIT_IS_1000 = "구매 금액은 1000원 단위로 입력해주세요.";
