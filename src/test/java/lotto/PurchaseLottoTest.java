@@ -16,7 +16,7 @@ public class PurchaseLottoTest {
         assertThatCode(() -> lottoGame.purchaseLotto(value)).doesNotThrowAnyException();
     }
 
-    @DisplayName("음수를 입력할 경우 에처 출력 후 종료")
+    @DisplayName("음수를 입력할 경우 에러 출력 후 종료")
     @Test
     void 입력이_음수() {
         Integer value = -5000;
