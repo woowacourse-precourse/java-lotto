@@ -13,9 +13,9 @@ public enum ErrorMessage {
             )
     ),
     DUPLICATE("중복되는 로또 번호가 있습니다."),
-    NOT_NUMBER(
+    NOT_INTEGER(
             String.format(
-                    "%d이상, %d이하의 정수를 입력하셔야 합니다.",
+                    "%d이상, %d이하의 \"정수\"만 입력하셔야 합니다.",
                     Integer.MIN_VALUE,
                     Integer.MAX_VALUE
             )

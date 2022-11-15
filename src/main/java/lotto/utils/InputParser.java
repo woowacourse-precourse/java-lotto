@@ -1,6 +1,6 @@
 package lotto.utils;
 
-import lotto.constant.ErrorMessage;
+import lotto.exception.NotNumberInputException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,7 +12,7 @@ public class InputParser {
         try {
             return Integer.parseInt(singleLine.trim());
         } catch (NumberFormatException err) {
-            throw new IllegalArgumentException(ErrorMessage.NOT_NUMBER.getMessage());
+            throw new NotNumberInputException();
         }
     }
 
