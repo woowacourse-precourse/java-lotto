@@ -1,9 +1,9 @@
 package lotto.domain;
 
-import static lotto.message.LottoLine.LOTTO_NUMBER_DELIMITER;
 import static lotto.message.PrintMessage.INPUT_BONUS_NUMBER;
 import static lotto.message.PrintMessage.INPUT_PURCHASE_AMOUNT;
 import static lotto.message.PrintMessage.INPUT_WINNING_LOTTO;
+import static lotto.value.LottoLine.LOTTO_NUMBER_DELIMITER;
 
 import java.util.List;
 import lotto.domain.lotto.WinningLotto;

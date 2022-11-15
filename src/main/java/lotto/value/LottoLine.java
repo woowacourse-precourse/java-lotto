@@ -1,8 +1,9 @@
-package lotto.message;
+package lotto.value;
 
 public enum LottoLine {
     LOTTO_LINE_START("["),
     LOTTO_LINE_END("]"),
+
     LOTTO_NUMBER_SEPARATOR(", "),
     LOTTO_NUMBER_DELIMITER(",");
 

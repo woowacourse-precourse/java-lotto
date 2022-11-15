@@ -1,12 +1,12 @@
 package lotto.domain.lotto;
 
 import static lotto.domain.place.PlaceCondition.findByCondition;
-import static lotto.message.LottoLine.LOTTO_LINE_END;
-import static lotto.message.LottoLine.LOTTO_LINE_START;
-import static lotto.message.LottoLine.LOTTO_NUMBER_SEPARATOR;
 import static lotto.validation.LottoNumberValidation.validateDuplicate;
 import static lotto.validation.LottoNumberValidation.validateNumbersRange;
 import static lotto.validation.LottoNumberValidation.validateSize;
+import static lotto.value.LottoLine.LOTTO_LINE_END;
+import static lotto.value.LottoLine.LOTTO_LINE_START;
+import static lotto.value.LottoLine.LOTTO_NUMBER_SEPARATOR;
 import static lotto.value.LottoValue.LOTTO_END_NUMBER;
 import static lotto.value.LottoValue.LOTTO_SIZE;
 import static lotto.value.LottoValue.LOTTO_START_NUMBER;
