@@ -39,12 +39,6 @@ public class Lotto {
         return Arrays.toString(numbers.toArray());
     }
 
-    public void validateBonusNumber(int bonusNumber) {
-        if (numbers.contains(bonusNumber)) {
-            throw new IllegalArgumentException("[ERROR] 보너스 번호는 당첨 번호와 중복될 수 없습니다.");
-        }
-    }
-
     public int getMatchCountWith(Lotto lotto) {
         Set<Integer> uniqueNumbers = new HashSet<>(lotto.numbers);
         uniqueNumbers.addAll(this.numbers);
