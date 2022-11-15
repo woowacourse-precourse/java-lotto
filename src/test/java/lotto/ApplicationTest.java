@@ -1,6 +1,7 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -57,5 +58,23 @@ class ApplicationTest extends NsTest {
     @Override
     public void runMain() {
         Application.main(new String[]{});
+    }
+
+    @DisplayName("구매금액이 1000원보다 작은 경우 예외를 발생시킨다.")
+    @Test
+    void 예외_테스트2() {
+        assertSimpleTest(() -> {
+            runException("10");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
+    @DisplayName("구매금액이 1000원단위가 아닌 경우 예외를 발생시킨다.")
+    @Test
+    void 예외_테스트3() {
+        assertSimpleTest(() -> {
+            runException("10001");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
     }
 }
