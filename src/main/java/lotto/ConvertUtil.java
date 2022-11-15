@@ -27,4 +27,18 @@ public class ConvertUtil {
             throw new IllegalArgumentException(ERROR_PREFIX.getMessage() + ERROR_WINNING_NUMBER_INPUT_IS_INVALID_INPUT_TYPE.getMessage());
         }
     }
+
+    private String IntegerPartOfNumber(String number) {
+        return number.chars()
+                .limit(number.indexOf('.'))
+                .collect(StringBuilder::new, StringBuilder::appendCodePoint, StringBuilder::append)
+                .toString();
+    }
+
+    private String DecimalPartOfNumber(String number) {
+        return number.chars()
+                .skip(number.indexOf('.'))
+                .collect(StringBuilder::new, StringBuilder::appendCodePoint, StringBuilder::append)
+                .toString();
+    }
 }

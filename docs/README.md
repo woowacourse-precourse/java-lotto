@@ -43,8 +43,9 @@
 5.  ConvertData
     - [x]  문자열을 숫자로 변환해주는 기능 → StringIntoInt
     - [x]  문자열을 리스트로 변환해주는 기능 → StringIntoList
-    - [ ]  실수 형식의 문자열의 정수 부분을 변환해주는 기능 → IntegerPartOfNumber
-    - [ ]  실수 형식의 문자열의 소수 부분을 변환해주는 기능 → DecimalPartOfNumber
+    - [x]  실수 형식의 문자열의 정수 부분을 변환해주는 기능 → IntegerPartOfNumber
+    - [ ]  정수 부분의 문자열의 사이에 쉼표(,)를 넣어주는 기능 → addCommaToNumber
+    - [x]  실수 형식의 문자열의 소수 부분을 변환해주는 기능 → DecimalPartOfNumber
 
       당첨 번호를 쉼표 기준으로 입력했는지 검증
 
