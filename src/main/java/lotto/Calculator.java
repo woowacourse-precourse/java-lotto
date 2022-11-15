@@ -42,6 +42,14 @@ public class Calculator {
         Double ratio = (double) (this.totalEarning * 100) / (ticketNumber * Constant.TICKET_PRICE);
 
         for (Win win : Win.values()) {
+            if (win.grade.equals(0)) {
+                continue;
+            }
+            if (win.grade.equals(2)) {
+                System.out.println(win.match + "개 일치, 보너스 볼 일치 (" + NumberFormat.getInstance().format(win.earning) +
+                        "원) - " + this.gradeStorage.get(win.grade) + "개");
+                continue;
+            }
             System.out.println(win.match + "개 일치 (" + NumberFormat.getInstance().format(win.earning) +
                     "원) - " + this.gradeStorage.get(win.grade) + "개");
         }
