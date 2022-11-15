@@ -111,6 +111,17 @@ public class LottoMachineController {
         return Rank.REST.getPrice();
     }
 
+    public static double getWinningAmount(int[] winningStats){
+        double winningAmount = 0;
+        int rankIndex;
+        int rankPrice;
+        for(int i=0;i<winningStats.length;i++){
+            rankPrice = getRankPrice(i);
+            winningAmount += rankPrice*winningStats[i];
+        }
+        return winningAmount;
+    }
+
     public static int[] toListLotto(Lotto lotto){
         int[] lottoArr = new int[lotto.getSize()];
         for(int i=0;i< lotto.getSize();i++){
