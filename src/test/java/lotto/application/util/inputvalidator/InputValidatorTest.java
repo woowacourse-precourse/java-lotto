@@ -2,6 +2,7 @@ package lotto.application.util.inputvalidator;
 
 import lotto.application.service.lottonumber.LottoNumberGenerator;
 import lotto.application.service.lottonumber.LottoNumberGeneratorImpl;
+import lotto.domain.Lotto;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -150,7 +151,7 @@ class InputValidatorTest {
     @Test
     void 구매한_로또_갯수와_발급받은_로또_갯수_비교() {
         int purchaseNumber = 11000;
-        List<List<Integer>> generateLottoNumber = lottoNumberGenerator.generateLottoNumber(purchaseNumber);
+        List<Lotto> generateLottoNumber = lottoNumberGenerator.generateLottoNumber(purchaseNumber);
         assertThat(generateLottoNumber.size()).isEqualTo(11);
     }
 
@@ -158,9 +159,9 @@ class InputValidatorTest {
     @Test
     void 구매한_로또가_6개의_수로_이루어졌는지_체크() {
         int purchaseNumber = 11000;
-        List<List<Integer>> generateLottoNumber = lottoNumberGenerator.generateLottoNumber(purchaseNumber);
-        for (List<Integer> lotto : generateLottoNumber) {
-            assertThat(lotto.size()).isEqualTo(6);
+        List<Lotto> generateLottoNumber = lottoNumberGenerator.generateLottoNumber(purchaseNumber);
+        for (Lotto lotto : generateLottoNumber) {
+            assertThat(lotto.getNumbers().size()).isEqualTo(6);
         }
     }
 
