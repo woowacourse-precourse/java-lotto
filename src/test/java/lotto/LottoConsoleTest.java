@@ -38,4 +38,14 @@ public class LottoConsoleTest {
             buoughtLottoMessage
         );
     }
+
+    @Test
+    @DisplayName("당첨 번호 입력 프롬프트 출력")
+    public void promptAskWinningNumbersMessage() {
+        final var sut = new LottoConsole();
+
+        final String winningNumbersMessage = sut.winningNumbersAskMessage();
+
+        assertEquals("당첨 번호를 입력해 주세요.", winningNumbersMessage);
+    }
 }
