@@ -1,20 +1,40 @@
 package lotto;
 
-import java.util.List;
+import lotto.Utils.CommonUtil;
+import lotto.domain.WinInfo;
+
+import java.util.*;
 
 public class Lotto {
     private final List<Integer> numbers;
+    private WinInfo winInfo;
 
     public Lotto(List<Integer> numbers) {
-        validate(numbers);
+        CommonUtil.validateLotto(numbers);
+        try {
+            Collections.sort(numbers);
+        } catch (UnsupportedOperationException e) {
+        }
         this.numbers = numbers;
     }
 
-    private void validate(List<Integer> numbers) {
-        if (numbers.size() != 6) {
-            throw new IllegalArgumentException();
+    public void drawLotto(List<Integer> winNumbers, int bonus) {
+        int matchCount = 0;
+
+        for (Integer number : numbers) {
+            if (winNumbers.contains(number)) {
+                matchCount++;
+            }
         }
+
+        winInfo = WinInfo.convert(matchCount, numbers.contains(bonus));
     }
 
-    // TODO: 추가 기능 구현
+    public WinInfo getWinInfo() {
+        return winInfo;
+    }
+
+    public void print() {
+        System.out.println(numbers);
+    }
 }
