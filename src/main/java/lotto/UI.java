@@ -20,7 +20,7 @@ public class UI {
             Integer money = Integer.valueOf(Input);
             Integer remainder = money % 1000;
             if (remainder != 0) {
-                throw new IllegalArgumentException("[ERROR] 로또 구입 금액은 1000원 단위의 숫자여야 합니다.");
+                throw new IllegalArgumentException();
             }
         } catch (Exception e) {
             throw new IllegalArgumentException("[ERROR] 로또 구입 금액은 1000원 단위의 숫자여야 합니다.");
