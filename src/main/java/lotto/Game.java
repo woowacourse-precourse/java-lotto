@@ -1,5 +1,6 @@
 package lotto;
 
+import camp.nextstep.edu.missionutils.Console;
 import lotto.domain.Buyer;
 import lotto.domain.Stats;
 
@@ -16,7 +17,7 @@ public class Game {
 
     public void play() {
         inputLottoAmountMessage();
-        int amount = buyer.buyLotto();
+        int amount = buyer.buyLotto(Console.readLine());
         Stats.compare(buyer.getLottos(), inputWinLottoNumber(), inputBonusNumber());
         Stats.calculateProfit(amount);
     }

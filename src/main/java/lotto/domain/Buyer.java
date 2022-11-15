@@ -17,8 +17,7 @@ public class Buyer {
         lottos = new ArrayList<>();
     }
 
-    public int buyLotto() {
-        String lottoAmount = Console.readLine();
+    public int buyLotto(String lottoAmount) {
         validatesLottoAmount(lottoAmount);
         generateLotto(Integer.parseInt(lottoAmount));
         return Integer.parseInt(lottoAmount);
