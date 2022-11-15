@@ -9,6 +9,6 @@ public class Profit {
         for (Rank rank : ranks){
             Profit += totalRank.get(rank) * rank.getReward();
         }
-        return ((double)(Profit / money) * 100.0);
+        return (((double)Profit / (double)money) * 100.0);
     }
 }

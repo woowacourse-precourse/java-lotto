@@ -27,7 +27,7 @@ public class Print {
     }
 
     public void infoProfit(double profit){
-        System.out.println(String.format("총 수익률은 %.1f%%입니다", profit));
+        System.out.println(String.format("총 수익률은 %.1f%%입니다.", profit));
     }
 
     public void infoError(String message){

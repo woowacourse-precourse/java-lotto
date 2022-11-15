@@ -7,7 +7,7 @@ public class Lotto {
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
-        sortAscending(numbers);
+        numbers = sortAscending(numbers);
         this.numbers = numbers;
     }
 
@@ -26,8 +26,10 @@ public class Lotto {
         }
     }
 
-    private void sortAscending(List<Integer> numbers) {
-        Collections.sort(numbers);
+    private List<Integer> sortAscending(List<Integer> numbers) {
+        List<Integer> sortedNumbers = new ArrayList<>(numbers);
+        Collections.sort(sortedNumbers);
+        return (sortedNumbers);
     }
 
     public List<Integer> getNumbers(){
