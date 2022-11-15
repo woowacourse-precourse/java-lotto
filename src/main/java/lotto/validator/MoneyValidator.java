@@ -1,4 +1,4 @@
-package lotto.Validator;
+package lotto.validator;
 
 public class MoneyValidator {
     public static int validateMoney(String input) {

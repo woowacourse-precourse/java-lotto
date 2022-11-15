@@ -1,9 +1,9 @@
-package lotto.Validator;
+package lotto.validator;
 
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
-import lotto.Domain.Lotto;
+import lotto.domain.Lotto;
 
 public class LottoValidator {
     public static boolean checkLottoRange(int num) {

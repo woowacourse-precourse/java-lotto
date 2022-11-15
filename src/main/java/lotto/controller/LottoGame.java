@@ -1,12 +1,12 @@
-package lotto.Controller;
+package lotto.controller;
 
 import java.util.List;
-import lotto.Domain.Lotto;
-import lotto.Domain.LottoMachine;
-import lotto.Validator.LottoValidator;
-import lotto.Validator.MoneyValidator;
-import lotto.View.InputView;
-import lotto.View.OutputView;
+import lotto.domain.Lotto;
+import lotto.domain.LottoMachine;
+import lotto.validator.LottoValidator;
+import lotto.validator.MoneyValidator;
+import lotto.view.InputView;
+import lotto.view.OutputView;
 
 public class LottoGame {
     List<Lotto> userLotto;

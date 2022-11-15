@@ -1,6 +1,6 @@
 package lotto;
 
-import lotto.Controller.LottoGame;
+import lotto.controller.LottoGame;
 
 public class Application {
     public static void main(String[] args) {

@@ -1,9 +1,9 @@
-package lotto.Domain;
+package lotto.domain;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import lotto.Validator.LottoValidator;
+import lotto.validator.LottoValidator;
 import org.assertj.core.util.Sets;
 
 public class Lotto {
@@ -36,10 +36,6 @@ public class Lotto {
         Collections.sort(temp);
 
         return temp.toString();
-    }
-
-    public int size() {
-        return numbers.size();
     }
 
     public List<Integer> getNumbers() {

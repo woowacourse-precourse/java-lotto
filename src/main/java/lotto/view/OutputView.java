@@ -1,10 +1,10 @@
-package lotto.View;
+package lotto.view;
 
 import java.text.DecimalFormat;
 import java.util.List;
 import java.util.Map;
-import lotto.Domain.Lotto;
-import lotto.Domain.Reward;
+import lotto.domain.Lotto;
+import lotto.domain.Reward;
 
 public class OutputView {
     public static void printUserLotto(List<Lotto> userLotto) {
