@@ -6,8 +6,8 @@ public class Application {
     public static void main(String[] args) {
 
         LottoGame game = new LottoGame();
-        game.start();
-        game.play();
-        game.result();
+        boolean go = game.start();
+        if (go == true) game.play();
+        if (go == true) game.result();
     }
 }

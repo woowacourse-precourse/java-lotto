@@ -14,13 +14,20 @@ public class LottoGame {
     private static List<Integer> winNumbers = new ArrayList<>();
     private static List<Integer> cashPrizes = Arrays.asList(5000, 50000, 1500000, 30000000, 2000000000);
 
-    public void start() {
+    public boolean start() {
         String input = InputView.inputPurchaseAmount();
 
-        InputView.isNumber(input);
+        try {
+            InputView.isNumber(input);
+        } catch (IllegalArgumentException e) {
+            System.out.println(ErrorType.NOT_NUMBER_INPUT.getError());
+            return false;
+        }
+
 
         purchaseAmount = Integer.parseInt(input);
         InputView.isValidUnit(purchaseAmount);
+        return true;
     }
 
     public void play() {
@@ -42,7 +49,6 @@ public class LottoGame {
 
         String bonusNumberInput = InputView.inputBonusNumber();
 
-        InputView.isValidFormat(bonusNumberInput);
         InputView.isValidBonusNumber(bonusNumberInput);
         isDuplicateWithWinNumbers(bonusNumberInput);
 

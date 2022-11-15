@@ -19,7 +19,9 @@ public class InputView {
 
         for (int i = 0; i < input.length(); i++) {
 
-            if (!NUMBERS.contains(input.substring(i,i+1))) throw new IllegalArgumentException(ErrorType.NOT_NUMBER_INPUT.getError());
+            if (!NUMBERS.contains(input.substring(i,i+1))){
+                throw new IllegalArgumentException(ErrorType.NOT_NUMBER_INPUT.getError());
+            }
         }
     }
 
