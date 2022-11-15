@@ -9,10 +9,10 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
 class WinnerNumberTest {
-    private final String OUT_OF_FORMAT = ExceptionMessage.ERROR + ExceptionMessage.WINNING_FORMAT_ERROR;
-    private final String DUPLICATED_NUMBER = ExceptionMessage.ERROR + ExceptionMessage.DUPLICATED_NUMBER;
-    private final String OUT_OF_BOUNDS = ExceptionMessage.ERROR + ExceptionMessage.OUT_OF_BOUNDS;
-    private final String NON_NUMERIC = ExceptionMessage.NON_NUMERIC_INPUT;
+    private static final String OUT_OF_FORMAT = ExceptionMessage.ERROR + ExceptionMessage.WINNING_FORMAT_ERROR;
+    private static final String DUPLICATED_NUMBER = ExceptionMessage.ERROR + ExceptionMessage.DUPLICATED_NUMBER;
+    private static final String OUT_OF_BOUNDS = ExceptionMessage.ERROR + ExceptionMessage.OUT_OF_BOUNDS;
+    private static final String NON_NUMERIC = ExceptionMessage.NON_NUMERIC_INPUT;
 
     @DisplayName("당첨 번호 입력시 발생할 수 있는 모든 예외 검증 테스트")
     @ParameterizedTest
