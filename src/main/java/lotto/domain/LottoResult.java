@@ -12,5 +12,18 @@ public class LottoResult {
         this.result = result;
     }
 
+    public double calculateYield(Wallet wallet) {
+        int money = wallet.getMoney();
 
+        int proceeds = calculateProceeds();
+
+        return Math.floor(((double) proceeds / money) * 100);
+    }
+
+    private int calculateProceeds() {
+        return result.keySet()
+                .stream()
+                .mapToInt(WinningRank::getPrize)
+                .sum();
+    }
 }

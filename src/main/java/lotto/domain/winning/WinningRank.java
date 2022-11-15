@@ -48,4 +48,8 @@ public enum WinningRank {
     public boolean isSecond() {
         return this == SECOND;
     }
+
+    public int getPrize() {
+        return this.prize;
+    }
 }

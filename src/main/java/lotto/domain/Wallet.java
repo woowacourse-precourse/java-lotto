@@ -31,4 +31,8 @@ public class Wallet {
             throw new IllegalArgumentException("[ERROR] 구입 금액이 티켓 가격으로 나누어 떨어지지 않습니다.");
         }
     }
+
+    public int getMoney() {
+        return this.money;
+    }
 }
