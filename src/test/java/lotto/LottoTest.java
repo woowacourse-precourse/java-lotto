@@ -3,6 +3,7 @@ package lotto;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.nio.channels.Pipe;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -57,22 +58,6 @@ class LottoTest {
         System.out.println(numbers);
     }
 
-    @DisplayName("LottoCheck 의 전체적인 test")
-    @Test
-    void test_Lotto_game_test() {
-        Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
-        lotto.setBonus(7);
-        List<Integer> numbers = LottoMachine.generateLotto();
-        System.out.println("winning numbers: " + lotto.getWinningNumbers());
-        System.out.println("bonus number: " + lotto.getBonus());
-        System.out.println("random numbers: " + numbers);
-
-        int countMatchedNumber = LottoCheck.checkNumsOfMatchedNumber(lotto.getWinningNumbers(), numbers);
-        boolean containBonus = LottoCheck.containBonus(lotto.getBonus(), numbers);
-        System.out.println("count: " + countMatchedNumber);
-        System.out.println("containBonus: " + containBonus);
-    }
-
     @DisplayName("금액이 1000으로 나누어 떨어지지 않을 때")
     @Test
     void test_MyLotto_Money_is_1001() {
@@ -82,9 +67,34 @@ class LottoTest {
 
     @DisplayName("금액만큼 Lotto 구매 했는지")
     @Test
-    void test_MyLotto_BuyLotto_Size_Money_15000(){
+    void test_MyLotto_BuyLotto_Size_Money_15000() {
         int money = 15000;
         MyLotto myLotto = new MyLotto(money);
         assertThat(myLotto.getMyPocket().size()).isEqualTo(15);
+    }
+
+    @DisplayName("전체적인 test")
+    @Test
+    void test_Lotto_game_test() {
+        int money = 10000;
+
+        MyLotto myLotto = new MyLotto(money);
+        Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+        lotto.setBonus(7);
+
+        System.out.println("winning numbers: " + lotto.getWinningNumbers());
+        System.out.println("bonus number: " + lotto.getBonus());
+        System.out.println("random numbers: " + myLotto.getMyPocket());
+
+        for (List<Integer> eachLotto : myLotto.getMyPocket()){
+            int numsOfMatched = LottoCheck.checkNumsOfMatchedNumber(lotto.getWinningNumbers(), eachLotto);
+            boolean containBonus = LottoCheck.containBonus(lotto.getBonus(), eachLotto);
+            Prize.checkRanking(numsOfMatched, containBonus);
+        }
+        Prize.checkRanking(4, false);
+        for (Prize p : Prize.values()){
+            System.out.println(p.getPrize()+"-"+p.getNumsOfWinner());
+        }
+        System.out.println(Prize.getComputeIncomeRate(money)+"% 입니다");
     }
 }
