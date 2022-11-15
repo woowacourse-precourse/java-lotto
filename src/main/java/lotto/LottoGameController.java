@@ -34,6 +34,6 @@ public class LottoGameController {
     }
 
     private LottoResult getResult(LottoTickets lottoTickets, WinningTicket winningTicket) {
-        return new LottoResult(lottoTickets.result(winningTicket));
+        return new LottoResult(lottoTickets.getResult(winningTicket));
     }
 }

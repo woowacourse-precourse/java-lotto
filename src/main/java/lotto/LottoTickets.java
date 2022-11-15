@@ -12,7 +12,7 @@ public class LottoTickets {
         this.lottoTickets = lottoTickets;
     }
 
-    public List<Ranking> result(WinningTicket bonusLotto) {
+    public List<Ranking> getResult(WinningTicket bonusLotto) {
         List<Ranking> winningRanks = new ArrayList<>();
         for (Lotto lotto : lottoTickets) {
             int count = lotto.countMatchingNumbers(bonusLotto);
