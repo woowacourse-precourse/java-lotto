@@ -5,9 +5,11 @@ import repository.LottoRepository;
 import repository.MoneyRepository;
 import service.LottoService;
 import service.MoneyService;
+import service.Winner;
 import view.InputView;
 import view.OutputView;
 
+import java.util.EnumMap;
 import java.util.List;
 
 public class LottoController {
@@ -47,4 +49,10 @@ public class LottoController {
     private void getWinners() {
         lottoService.saveWinners();
     }
+
+    private void getRateOfReturn() {
+        EnumMap<Winner, Integer> winners = lottoService.getWinners();
+        moneyService.saveRateOfReturn(winners);
+    }
+
 }

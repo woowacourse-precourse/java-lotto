@@ -10,7 +10,8 @@ public enum Winner {
     SECOND_PLACE(-1, 30_000_000),
     THIRD_PLACE(5, 1_5000_000),
     FOURTH_PLACE(4, 50_000),
-    FIFTH_PLACE(3, 5_000);
+    FIFTH_PLACE(3, 5_000),
+    LAST_PLACE(2, 0);
 
     private final int match;
     private final int prize;
@@ -24,10 +25,17 @@ public enum Winner {
         return this.match;
     }
 
+    public int getPrize() {
+        return this.prize;
+    }
+
     private static final Map<Integer, Winner> BY_MATCH =
             Stream.of(values()).collect(Collectors.toMap(Winner::getMatch, Function.identity()));
 
     public static Winner getByMatch(int match) {
+        if (match <= LAST_PLACE.getMatch()) {
+            return Winner.LAST_PLACE;
+        }
         return BY_MATCH.get(match);
     }
 }

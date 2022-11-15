@@ -2,6 +2,7 @@ package service;
 
 import repository.MoneyRepository;
 
+import java.util.EnumMap;
 import java.util.regex.Pattern;
 
 public class MoneyService {
@@ -41,5 +42,20 @@ public class MoneyService {
 
     public int getPurchaseAmount() {
         return moneyRepository.getMoney();
+    }
+
+    public void saveRateOfReturn(EnumMap<Winner, Integer> winners) {
+        double rateOfReturn = calculateRateOfReturn(winners);
+        moneyRepository.saveRateOfReturn(rateOfReturn);
+    }
+
+    private double calculateRateOfReturn(EnumMap<Winner, Integer> winners) {
+        double purchaseAmount = moneyRepository.getMoney();
+
+        double sumOfReturn = winners.entrySet().stream()
+                .mapToInt(rank -> rank.getKey().getPrize() * rank.getValue())
+                .sum();
+
+        return sumOfReturn / purchaseAmount;
     }
 }
