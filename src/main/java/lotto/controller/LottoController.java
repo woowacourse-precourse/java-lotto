@@ -1,13 +1,11 @@
 package lotto.controller;
 
-import lotto.domain.Lotties;
-import lotto.domain.Lotto;
-import lotto.domain.Statistics;
-import lotto.domain.UserLotto;
+import lotto.domain.*;
 import lotto.view.InputView;
 import lotto.view.OutputView;
 
 import java.util.List;
+import java.util.Map;
 
 
 public class LottoController {
@@ -28,7 +26,8 @@ public class LottoController {
             lotties = createLottiesByPurchaseAmount(purchase);
 
             userLotto = inputWinAndBonusNumber();
-            findMatchAndBonusCount();
+            Map<LottoRank, Long> lottoRankMap =
+                    lotties.generateLottoRankMap(userLotto.getLotto(), userLotto.getBonusNumber());
 
             statistics.findTotalWinAmount();
             printResults(purchase);
@@ -47,14 +46,6 @@ public class LottoController {
         List<Integer> winNumber = InputView.inputUserWinNumber();
         int bonusNumber = InputView.inputUserBonusNumber();
         return new UserLotto(winNumber, bonusNumber);
-    }
-
-    public void findMatchAndBonusCount() {
-        for (Lotto lotto : lotties.getLotties()) {
-            int matchCount = lotto.findLottoWinCount(userLotto.getLotto());
-            int bonusCount = userLotto.findBonusNumberWinCount(lotto.getNumbers());
-            statistics.setLottoWinResultToMap(matchCount, bonusCount);
-        }
     }
 
     public void printResults(int purchaseAmount) {
