@@ -41,7 +41,7 @@ public class Validation {
     public static void validateWinningNumberSplitCommaConsistOfNum(String winningNumber){
         boolean numberOnly = Arrays.stream(winningNumber.split(COMMA))
             .allMatch(s -> s.matches(NUMBER_REGEX));
-        if(!numberOnly || winningNumber.contains(",,")){
+        if(!numberOnly || winningNumber.contains(CONTINUOUS_COMMA)){
             throw new IllegalArgumentException(ERROR_MSG_WINNING_LOTTO_CONTAIN_NUM);
         }
     }
