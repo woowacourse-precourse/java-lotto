@@ -2,24 +2,30 @@ package lotto.controller;
 
 import lotto.domain.Lotto;
 import lotto.domain.LottoPurchaseMoney;
+import lotto.domain.LottoStore;
 import lotto.domain.WinningNumbers;
 import lotto.view.InputView;
 import lotto.view.OutputView;
+
+import java.util.List;
 
 public class LottoController {
 
     private InputView inputView;
     private OutputView outputView;
+    private LottoStore lottoStore;
 
-    public LottoController(InputView inputView, OutputView outputView) {
+    public LottoController(InputView inputView, OutputView outputView, LottoStore lottoStore) {
         this.inputView = inputView;
         this.outputView = outputView;
+        this.lottoStore = lottoStore;
     }
 
     public void run() {
         try {
             LottoPurchaseMoney lottoPurchaseMoney = getLottoPurchaseMoney();
             WinningNumbers winningNumbers = getWinningNumbers();
+            List<Lotto> lottoTickets = lottoStore.buyLottoTickets(lottoPurchaseMoney.get());
         } catch (IllegalArgumentException e) {
             outputView.printErrorMessage(e.getMessage());
         }
