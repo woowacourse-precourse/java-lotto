@@ -50,6 +50,7 @@ class ApplicationTest extends NsTest {
     void 예외_테스트() {
         assertSimpleTest(() -> {
             runException("1000j");
+
             assertThat(output()).contains(ERROR_MESSAGE);
         });
     }
