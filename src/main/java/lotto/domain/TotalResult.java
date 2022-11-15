@@ -66,6 +66,6 @@ public class TotalResult {
         BigDecimal revenue = totalPrize()
                 .multiply(new BigDecimal(100))
                 .divide(moneyInput, 1, RoundingMode.HALF_EVEN);
-        return new DecimalFormat("###,###.0").format(revenue);
+        return new DecimalFormat("###,##0.0").format(revenue);
     }
 }
