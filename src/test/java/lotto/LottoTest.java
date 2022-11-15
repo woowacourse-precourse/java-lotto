@@ -26,11 +26,18 @@ class LottoTest {
     }
 
     // 아래에 추가 테스트 작성 가능
-//    @DisplayName("당첨 번호화 로또 번호 일치 갯수 계산하여 반환한다.")
-//    @Test
-//    void getCompareResultMethodTest(){
-//        Lotto playerLotto = new Lotto(Arrays.asList(1,2,3,7,9,11));
-//        List<Integer> winningNumbers = Arrays.asList(1,2,3,4,5,6);
-//        assertThat(playerLotto.getCompareResult(winningNumbers)).isEqualTo(3);
-//    }
+    @DisplayName("당첨 번호화 로또 번호 일치 갯수 계산하여 반환한다.")
+    @Test
+    void getCompareResultMethodTest(){
+        Lotto playerLotto = new Lotto(Arrays.asList(1,2,3,7,9,11));
+        List<Integer> winningNumbers = Arrays.asList(1,2,3,4,5,6);
+        assertThat(playerLotto.getCompareResult(winningNumbers)).isEqualTo(3);
+    }
+    @DisplayName("보너스 번호가 포함되어 있는지 확인한다.")
+    @Test
+    void isBonusContained(){
+        Lotto playerLotto = new Lotto(Arrays.asList(1,2,3,7,9,11));
+        int bonusNumber = 7 ;
+        assertThat(playerLotto.isBonusContained(bonusNumber)).isTrue();
+    }
 }
