@@ -3,6 +3,7 @@ package lotto.domain;
 public class LottoMoney {
 
   private int money;
+  private int lottoTicketCount;
   private static int MONEY_UNIT = 1000;
   
   public LottoMoney(int money) {
@@ -16,11 +17,15 @@ public class LottoMoney {
 
   public void calculateLottoTicketCount() {
     try {
-      int lottoTicketCount = money / MONEY_UNIT;
+      this.lottoTicketCount = money / MONEY_UNIT;
       System.out.println("LottoMoney.calculateLottiTicketCount(): " + lottoTicketCount);
     } catch (Exception e) {
       throw new IllegalArgumentException("[ERROR] calculateLottoTicketCount");
     }
+  }
+
+  public int getLottoTicketCount() {
+    return this.lottoTicketCount;
   }
 
   private void validateMoney(int money) {

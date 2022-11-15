@@ -1,6 +1,10 @@
 package lotto.domain;
 
+import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
+
+import camp.nextstep.edu.missionutils.Randoms;
 
 public class Lotto {
     private final List<Integer> numbers;
@@ -19,7 +23,7 @@ public class Lotto {
             throw new IllegalArgumentException("[ERROR] 입력한 당첨 번호의 숫자의 길이가 6이 아닙니다.");
         } else if (isDuplicate(numbers, LOTTO_SIZE)) {
             throw new IllegalArgumentException("[ERROR] 입력한 당첨 번호의 숫자에 중복이 있습니다.");
-        } else if (isLottoNumbersRange(numbers, BONUS_SIZE)) {
+        } else if (isLottoNumbersRange(numbers, LOTTO_SIZE)) {
             throw new IllegalArgumentException("[ERROR] 입력한 당첨 번호의 숫자가 1-45 사이가 아닙니다.");
         }
     }
@@ -37,7 +41,7 @@ public class Lotto {
             throw new IllegalArgumentException("[ERROR] 입력한 당첨 번호와 보너스 숫자의 길이가 7이 아닙니다.");
         } else if (isDuplicate(winningNumbers, LOTTO_SIZE + BONUS_SIZE)) {
             throw new IllegalArgumentException("[ERROR] 입력한 당첨 번호와 보너스 번호에 중복이 있습니다.");
-        } else if (isLottoNumbersRange(winningNumbers, BONUS_SIZE)) {
+        } else if (isLottoNumbersRange(winningNumbers, LOTTO_SIZE + BONUS_SIZE)) {
             throw new IllegalArgumentException("[ERROR] 입력한 당첨 번호와 보너스 숫자가 1-45 사이가 아닙니다.");
         }
     }
@@ -51,10 +55,16 @@ public class Lotto {
     }
 
     private Boolean isNumberRange(int number) {
-        return number > LOTTO_MIN_NUMBER && number < LOTTO_MAX_NUMBER;
+        return number >= LOTTO_MIN_NUMBER && number <= LOTTO_MAX_NUMBER;
     }
 
     public List<Integer> getLottoNumber() {
         return this.numbers;
+    }
+
+    public static List<Integer> generateLottoTicket() {
+        List<Integer> lottoTicket = Randoms.pickUniqueNumbersInRange(LOTTO_MIN_NUMBER, LOTTO_MAX_NUMBER, LOTTO_SIZE);
+        Collections.shuffle(lottoTicket);
+        return lottoTicket.stream().sorted().collect(Collectors.toList());
     }
 }
