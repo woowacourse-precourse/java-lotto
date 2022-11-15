@@ -3,11 +3,13 @@ package lotto;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import static lotto.ErrorMessage.INVALID_MONEY_ERROR;
+import static lotto.ErrorMessage.*;
 import static lotto.LottoMachine.LOTTO_PRICE;
 
 public class InputConsole {
@@ -52,8 +54,46 @@ public class InputConsole {
     public static List<Integer> winningNumber() {
         System.out.println(WINNING_NUMBER_INPUT_MESSAGE);
         String numbers = Console.readLine();
+        validateWinningNumber(numbers);
         List<Integer> winningNumbers = splitNumber(numbers);
         return winningNumbers;
+    }
+
+    private static void validateWinningNumber(String numbers) {
+        checkFormat(numbers);
+        checkSize(numbers);
+        checkDuplicate(numbers);
+        checkNumberRange(numbers);
+    }
+
+    private static void checkFormat(String numbers) {
+        if (!numbers.matches("([0-9]+,)*[0-9]+")) {
+            throw new IllegalArgumentException(INVALID_LOTTO_FORM_ERROR.getMessage());
+        }
+    }
+
+    private static void checkSize(String numbers) {
+        String[] splitNumbers = numbers.split(",");
+        if (splitNumbers.length != 6) {
+            throw new IllegalArgumentException(INVALID_LOTTO_SIZE_ERROR.getMessage());
+        }
+    }
+
+    private static void checkDuplicate(String numbers) {
+        String[] splitNumbers = numbers.split(",");
+        Set<String> deleteDuplicateNumbers = new HashSet<String>(Arrays.asList(splitNumbers));
+        if (deleteDuplicateNumbers.size() != 6) {
+            throw new IllegalArgumentException(INVALID_LOTTO_NUMBER_ERROR.getMessage());
+        }
+    }
+
+    private static void checkNumberRange(String numbers) {
+        List<Integer> splitNumbers  = splitNumber(numbers);
+        for (int i = 0; i < splitNumbers.size(); i++) {
+            if (splitNumbers.get(i) < 1 || splitNumbers.get(i) > 45) {
+                throw new IllegalArgumentException(INVALID_LOTTO_RANGE_ERROR.getMessage());
+            }
+        }
     }
 
     private static List<Integer> splitNumber(String numbers) {
