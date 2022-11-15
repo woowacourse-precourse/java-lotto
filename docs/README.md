@@ -17,14 +17,17 @@
 
 ## 기능 목록
 - 1~45 범위의 숫자 중 중복되지 않은 6개의 번호를 뽑는다.:로또 발행 - LottoManager#issue
-- 로또의 번호를 출력한다. - UI#printLotto
-- 금액을 입력받는다. - InputManager#inputCustomerMoney
-  - 입력 받은 금액의 유효성을 검증한다. - Verifier#isValidMoney
+- 금액을 입력받는다. - Input#getCustomerMoney
+  - 입력 받은 금액의 유효성을 검증한다. - Verifier#validateMoney
 - 금액에 맞게 로또를 구매한다. - Customer#purchaseLotto
-- 당첨 번호를 입력 받는다. - InputManager#inputWinningNumber
-- 보너스 번호를 입력 받는다. - InputManager#inputBonusNumber
-- 구매한 로또 수량 및 번호를 오름차순으로 정렬 후 출력한다. - UI#printPurchaseHistory
+  - 구매한 로또 수량과 목록을 오름차순으로 정렬 후 출력한다. - Output#printPurchaseHistory
+- 당첨 번호를 입력 받는다. - Input#getWinningNumbers
+- 보너스 번호를 입력 받는다. - Input#getBonusNumber
 - 당첨 내역과 수익률을 출력 후 종료한다. 수익률은 소수점 둘째 자리에서 반올림한다. UI#printWinningStatistics
-  - 당첨 내역을 알 수 있다.
-  - 수익률을 알 수 있다.
-- 사용자의 입력에 대해 예외처리를 적용하고 에러메세지를 출력 후 종료한다. 
+  - 당첨 내역을 알 수 있다. Customer#checkMyLotto
+  - 수익률을 알 수 있다. LottoManager#getYield
+- 사용자의 입력에 대해 예외처리를 적용하고 에러메세지를 출력 후 종료한다. Verifier
+  - 금액의 유효성을 검증한다. #validateMoney
+  - 로또 번호의 개수가 6장인지, 유효한 숫자들로 이루어져 있는지 검증한다. #validateLottoNumbers
+  - 중복 값이 있는지 검증한다. #validateDuplicate
+  - 정수형인지 검증한다. #validateInteger

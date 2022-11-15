@@ -1,17 +1,25 @@
 package lotto;
 
-import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 
-public class Ouput {
+public class Output {
+    public void printGetMoneyMessage() {
+        System.out.println("구입금액을 입력해 주세요.");
+    }
+
+    public void printGetWinningNumbersMessage() {
+        System.out.println("당첨 번호를 입력해 주세요.");
+    }
+
+    public void printGetBonusNumberMessage() {
+        System.out.println("보너스 번호를 입력해 주세요.");
+    }
 
     public void printPurchaseHistory(Customer customer) {
         List<Lotto> purchaseHistory = customer.getLottoTickets();
         int count = purchaseHistory.size();
         System.out.println(count + "개를 구매했습니다.");
-
         for (Lotto lotto : purchaseHistory) {
             printLotto(lotto);
         }
@@ -32,16 +40,13 @@ public class Ouput {
 
     public void printYield(List<Rank> rankResult) {
         LottoManager lottoManager = new LottoManager();
-        double winnings = lottoManager.getWinnings(rankResult);
-        double payment = Lotto.PRICE * rankResult.size();
-        double yield = winnings / payment * 100;
+        double yield = lottoManager.getYield(rankResult);
         System.out.println("총 수익률은 " + String.format("%.1f", yield) + "%입니다.");
     }
 
     public void printLotto(Lotto lotto) {
         List<Integer> numbers = lotto.getNumbers();
         Collections.sort(numbers);
-        //numbers.sort(Comparator.naturalOrder());
         System.out.println(numbers);
     }
 }

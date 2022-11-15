@@ -3,13 +3,21 @@ package lotto;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class LottoManager {
     public Lotto issue() {
-        List<Integer> numbers = Randoms.pickUniqueNumbersInRange(Lotto.START_RANGE, Lotto.END_RANGE, Lotto.NUMBER_COUNT);
+        List<Integer> numbers = new ArrayList<>(Randoms.pickUniqueNumbersInRange(Lotto.START_RANGE, Lotto.END_RANGE, Lotto.NUMBER_COUNT));
         Lotto lotto = new Lotto(numbers);
         return lotto;
+    }
+
+    public double getYield(List<Rank> rankResult) {
+        double winnings = getWinnings(rankResult);
+        double payment = Lotto.PRICE * rankResult.size();
+        double yield = winnings / payment * 100;
+        return yield;
     }
 
     public int getWinnings(List<Rank> rankResult) {
@@ -26,31 +34,25 @@ public class LottoManager {
     public Rank getRank(Lotto lotto, List<Integer> winningNumbers, int bonusNumber) {
         int matchCount = getMatchCount(lotto, winningNumbers);
         boolean hasBonusNumber = hasBonusNumber(lotto, bonusNumber);
-        if (matchCount == Rank.FIRST.getMatchCount()) {
-            return Rank.FIRST;
-        }
-        if (matchCount == Rank.SECOND.getMatchCount() && hasBonusNumber) {
-            return Rank.SECOND;
-        }
-        if (matchCount == Rank.THIRD.getMatchCount()) {
-            return Rank.THIRD;
-        }
-        if (matchCount == Rank.FOURTH.getMatchCount()) {
-            return Rank.FOURTH;
-        }
-        if (matchCount == Rank.FIFTH.getMatchCount()) {
-            return Rank.FIFTH;
+        for (Rank rank : Rank.RANK_ASC) {
+            if (matchCount == Rank.SECOND.getMatchCount() && hasBonusNumber) {
+                return Rank.SECOND;
+            }
+            if (matchCount == rank.getMatchCount()) {
+                return rank;
+            }
         }
         return null;
     }
 
-    public int[] getRankCount (List<Rank> rankResult){
+    public int[] getRankCount(List<Rank> rankResult) {
         int[] rankCount = new int[Rank.MAX_RANK];
         for (Rank rank : rankResult) {
             if (rank == null) {
                 continue;
             }
-            rankCount[rank.getIndex()]++;;
+            rankCount[rank.getIndex()]++;
+            ;
         }
         return rankCount;
     }
