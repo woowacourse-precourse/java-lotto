@@ -32,6 +32,10 @@ public enum PrizeWinner {
         return count;
     }
 
+    public Integer getPrizeMoney() {
+        return prizeMoney;
+    }
+
     @Override
     public String toString() {
         return  matchingHistory +
