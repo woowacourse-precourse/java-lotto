@@ -6,14 +6,14 @@ import static lotto.domain.messages.ErrorMessages.DUPLICATE_BONUS_ERROR_MESSAGE;
 
 public class WinningNumbersImple implements WinningNumbers{
     private Lotto winningLottoNumbers;
-    private LottoNumberImple bonus;
+    private LottoNumber bonus;
 
     public WinningNumbersImple() {
     }
 
     private WinningNumbersImple(List<Integer> mainNumbers, Integer bonus) {
         this.winningLottoNumbers = Lotto.generateFromRawValues(mainNumbers);
-        this.bonus = LottoNumberImple.generateFromRawValue(bonus);
+        this.bonus = LottoNumber.generateFromRawValue(bonus);
         validate(); //반드시 필드 값 할당 후에 실행해야 함
     }
 
