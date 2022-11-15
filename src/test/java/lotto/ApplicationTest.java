@@ -1,6 +1,7 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -8,6 +9,7 @@ import java.util.List;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomUniqueNumbersInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class ApplicationTest extends NsTest {
     private static final String ERROR_MESSAGE = "[ERROR]";
@@ -57,5 +59,57 @@ class ApplicationTest extends NsTest {
     @Override
     public void runMain() {
         Application.main(new String[]{});
+    }
+
+    @DisplayName("사용자가 1000원 단위로 입력하지 않았을 때")
+    @Test
+    void validateInputMoney() {
+        assertSimpleTest(() ->
+            assertThatThrownBy(() -> runException("100"))
+                .isInstanceOf(IllegalArgumentException.class));
+    }
+
+    @DisplayName("구분자 \",\"가 없을 때")
+    @Test
+    void validateInputWinningNums_without_separator() {
+        assertSimpleTest(() ->
+        {
+            assertThatThrownBy(() -> runException("8000", "123456"))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(ErrorMsg.SEPARATOR_ERROR.getMessage());
+        });
+    }
+
+    @DisplayName("숫자 6개가 아닐 때")
+    @Test
+    void validateInputWinningNums_number_count_is_not_six() {
+        assertSimpleTest(() ->
+        {
+            assertThatThrownBy(() -> runException("8000", "1,2,3,4,5"))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(ErrorMsg.INPUT_COUNT_ERROR.getMessage());
+        });
+    }
+
+    @DisplayName("로또 범위가 아닐 때")
+    @Test
+    void validateInputWinningNums_number_not_contained_lotto_range() {
+        assertSimpleTest(() ->
+        {
+            assertThatThrownBy(() -> runException("8000", "50,2,3,47,5,7"))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(ErrorMsg.RANGE_ERROR.getMessage());
+        });
+    }
+
+    @DisplayName("보너스 번호가 숫자가 아닐 때")
+    @Test
+    void validateInputBonusNum() {
+        assertSimpleTest(() ->
+        {
+            assertThatThrownBy(() -> runException("8000", "1,2,3,4,5,6", "j"))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(ErrorMsg.INPUT_ERROR.getMessage());
+        });
     }
 }
