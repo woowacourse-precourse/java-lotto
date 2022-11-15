@@ -37,27 +37,27 @@ public class Output {
     public void lineSpace() {
         System.out.println();
     }
-    public void fifthPlace(int count){
+    public void fifthPlace(int count) {
         DecimalFormat formatter = new DecimalFormat("###,###.##");
         System.out.println("3개 일치 ("+formatter.format(PrizeRanking.FIFTH.getNumber())+"원) - "+count+"개");
         WinLottoResult.yield += count * PrizeRanking.FIFTH.getNumber();
     }
-    public void fourthPlace(int count){
+    public void fourthPlace(int count) {
         DecimalFormat formatter = new DecimalFormat("###,###.##");
         System.out.println("4개 일치 ("+formatter.format(PrizeRanking.FOURTH.getNumber())+"원) - "+count+"개");
         winLottoResult.yield += count * PrizeRanking.FOURTH.getNumber();
     }
-    public void thirdPlace(int count){
+    public void thirdPlace(int count) {
         DecimalFormat formatter = new DecimalFormat("###,###.##");
         System.out.println("5개 일치 ("+formatter.format(PrizeRanking.THIRD.getNumber())+"원) - "+count+"개");
         winLottoResult.yield += count * PrizeRanking.THIRD.getNumber();
     }
-    public void secondPlace(int count){
+    public void secondPlace(int count) {
         DecimalFormat formatter = new DecimalFormat("###,###,###.#");
         System.out.println("5개 일치, 보너스 볼 일치 ("+formatter.format(PrizeRanking.SECOND.getNumber())+"원) - "+count+"개");
         winLottoResult.yield += count * PrizeRanking.SECOND.getNumber();
     }
-    public void firstPlace(int count){
+    public void firstPlace(int count) {
         DecimalFormat formatter = new DecimalFormat("###,###.##");
         System.out.println("6개 일치 ("+formatter.format(PrizeRanking.FIRST.getNumber())+"원) - "+count+"개");
         winLottoResult.yield += count * PrizeRanking.FIRST.getNumber();

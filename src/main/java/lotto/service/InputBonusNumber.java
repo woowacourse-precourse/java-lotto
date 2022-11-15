@@ -23,7 +23,7 @@ public class InputBonusNumber {
         return Integer.parseInt(inputBonusNumber);
     }
 
-    private void bonusLottoNumber(String bonusNumber, List<Integer> sixWinningNumbers){
+    private void bonusLottoNumber(String bonusNumber, List<Integer> sixWinningNumbers) {
         inputBonusNumberHandler.checkBonusNumberException(bonusNumber);
         inputBonusNumberHandler.checkAllNumbersException(bonusNumber, sixWinningNumbers);
     }

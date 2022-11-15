@@ -34,7 +34,7 @@ public class InputMoneyHandler {
     public void checkPositiveNumber(String inputMoney) {
         long money = Long.parseLong(inputMoney);
 
-        if(money <= 0) {
+        if(money <= 0){
             throw new IllegalArgumentException(output.ERROR_ORDER+" 입력 금액은 0원 보다 크게 입력해야 합니다.");
         }
         if(money > Integer.MAX_VALUE){
@@ -47,7 +47,7 @@ public class InputMoneyHandler {
 
         int money = Integer.parseInt(inputMoney);
 
-        if(money % userLottoService.LOTTO_PRICE  != 0) {
+        if(money % userLottoService.LOTTO_PRICE  != 0){
             throw new IllegalArgumentException(output.ERROR_ORDER+" 입력 금액은 1000단위로 나누어져야 합니다.");
         }
     }

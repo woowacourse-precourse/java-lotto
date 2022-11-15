@@ -20,7 +20,7 @@ public class InputWinningNumbers {
         return sixWinningNumbers;
     }
 
-    private List<Integer> sixLottoNumbers(String[] userLottoNumbers){
+    private List<Integer> sixLottoNumbers(String[] userLottoNumbers) {
         return inputWinningNumbersHandler.checkException(sendDataToList(userLottoNumbers));
     }
 

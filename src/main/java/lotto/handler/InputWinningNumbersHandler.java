@@ -25,13 +25,13 @@ public class InputWinningNumbersHandler {
     }
 
     public void checkSize(List<Integer> winningNumbers) {
-        if(winningNumbers.size() != pickRandomLottoLists.LIMIT_LOTTO) {
+        if(winningNumbers.size() != pickRandomLottoLists.LIMIT_LOTTO){
             throw new IllegalArgumentException(output.ERROR_ORDER+" 로또 번호의 개수는 6개여야 합니다.");
         }
     }
 
     public void checkSameNumbers(List<Integer> winningNumbers) {
-        if(winningNumbers.stream().distinct().count() != pickRandomLottoLists.LIMIT_LOTTO) {
+        if(winningNumbers.stream().distinct().count() != pickRandomLottoLists.LIMIT_LOTTO){
             throw new IllegalArgumentException(output.ERROR_ORDER+" 로또 번호는 같은 숫자가 중복되지 않아야 합니다.");
         }
     }
@@ -57,7 +57,7 @@ public class InputWinningNumbersHandler {
     }
 
     public void checkInRangeNumber(int index, List<Integer> winningNumbers) {
-        if(winningNumbers.get(index) < output.UNDER_LIMIT || winningNumbers.get(index) > output.UPPER_LIMIT)    {
+        if(winningNumbers.get(index) < output.UNDER_LIMIT || winningNumbers.get(index) > output.UPPER_LIMIT){
             throw new IllegalArgumentException(output.ERROR_ORDER+" 로또 번호는 1부터 45 사이의 숫자여야 합니다.");}
     }
 }
