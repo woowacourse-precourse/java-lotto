@@ -39,7 +39,7 @@ public class Statistics {
 
     public void calculateYield(BigDecimal money){
         try {
-            yield = prize.divide(money, 3, RoundingMode.HALF_UP).multiply(BigDecimal.valueOf(100));
+            yield = prize.divide(money).multiply(BigDecimal.valueOf(100)).setScale(1,RoundingMode.HALF_UP);
         }catch (Exception e){
             throw new IllegalArgumentException(ErrorMessage.CANNOT_CALCULATE_YIELD.message);
         }
