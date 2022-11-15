@@ -18,12 +18,9 @@ public class LottoMachine {
         return new LottoCollection(lottos);
     }
     public static List<Integer> createRandomNumber() {
-        List<Integer> numbers = new ArrayList<>();
-        while (numbers.size() < LOTTO_LIMIT_SIZE) {
-            int number = Randoms.pickNumberInRange(START_NUMBER, END_NUMBER);
-            if (!numbers.contains(number))
-                numbers.add(number);
-        }
+        List<Integer> numbers;
+
+        numbers = Randoms.pickUniqueNumbersInRange(START_NUMBER,END_NUMBER,LOTTO_LIMIT_SIZE);
         Collections.sort(numbers);
         return numbers;
     }
