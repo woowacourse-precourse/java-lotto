@@ -13,5 +13,11 @@ public class Application {
         LottoMachine game = new LottoMachine();
         List<List<Integer>> LottoPaper = game.makeBuyLottoPaper(inputMoney);
         Display.displayLottoPaper(LottoPaper);
+
+        System.out.println("당첨 번호를 입력해 주세요");
+        String winSixNumber = readLine();
+
+        System.out.println("보너스 번호를 입력해 주세요");
+        String bonusNumber = readLine();
     }
 }
