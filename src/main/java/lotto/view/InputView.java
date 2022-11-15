@@ -8,30 +8,30 @@ import java.util.stream.Collectors;
 
 public class InputView {
 
-    private String purchaseMoney;
-    private String winningNumbers;
-    private String bonusNumber;
+    private static String purchaseMoney;
+    private static String winningNumbers;
+    private static String bonusNumber;
 
-    public String enterPurchaseMoney() {
+    public static String enterPurchaseMoney() {
         OutputView.printEnterPurchaseAmount();
-        this.purchaseMoney = Console.readLine();
+        purchaseMoney = Console.readLine();
         return purchaseMoney;
     }
 
 
-    public List<Integer> enterWinningNumbers() {
+    public static List<Integer> enterWinningNumbers() {
         OutputView.printEnterWinningNumbers();
-        this.winningNumbers = Console.readLine();
+        winningNumbers = Console.readLine();
         return changeTypeForSystem(winningNumbers);
     }
 
-    public int enterBonusNumber() {
+    public static int enterBonusNumber() {
         OutputView.printEnterBonusNumber();
-        this.bonusNumber = Console.readLine();
+        bonusNumber = Console.readLine();
         return Integer.parseInt(bonusNumber);
     }
 
-    private List<Integer> changeTypeForSystem(String winningNumbers) {
+    private static List<Integer> changeTypeForSystem(String winningNumbers) {
         return Arrays.asList(winningNumbers.split(","))
                 .stream().map(s -> Integer.parseInt(s))
                 .collect(Collectors.toList());

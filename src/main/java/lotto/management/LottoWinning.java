@@ -26,8 +26,8 @@ public class LottoWinning {
         totalWinningAmount = 0;
     }
 
-    public int getLottoYield() {
-        return getTotalWinningAmount() / purchaseMoney;
+    public float getLottoYield() {
+        return (float) getTotalWinningAmount() / (float) purchaseMoney;
     }
 
     private int getTotalWinningAmount() {

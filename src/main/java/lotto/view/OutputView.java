@@ -50,7 +50,7 @@ public class OutputView {
                 + ticketResult.get(SIX_MATCH_INDEX) + "개");
     }
 
-    public static void printLottoYield(double lottoYield) {
+    public static void printLottoYield(float lottoYield) {
         System.out.print("총 수익률은 " + Math.round(lottoYield * 1000) / 10.0 + "%입니다.");
     }
 }
