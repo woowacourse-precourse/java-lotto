@@ -20,7 +20,7 @@ public class InputView {
 
     public List<Integer> enterWinningNumbers() {
         this.winningNumbers = Console.readLine();
-        return changeTypeForSystem(replaceComma(winningNumbers));
+        return changeTypeForSystem(winningNumbers);
     }
 
     public int enterBonusNumber() {
@@ -28,12 +28,8 @@ public class InputView {
         return Integer.parseInt(bonusNumber);
     }
 
-    private String replaceComma(String winningNumbers) {
-        return winningNumbers.replace(",", "");
-    }
-
     private List<Integer> changeTypeForSystem(String winningNumbers) {
-        return Arrays.asList(winningNumbers.split(""))
+        return Arrays.asList(winningNumbers.split(","))
                 .stream().map(s -> Integer.parseInt(s))
                 .collect(Collectors.toList());
     }
