@@ -30,5 +30,12 @@ public class WinNumber {
         }
     }
 
+    public static void exceptionSize(String input) {
+        String[] winNumber = input.split(",");
+        if (winNumber.length != 6) {
+            throw new IllegalArgumentException(Error.WRONG_LOTTO_LENGTH.getMsg());
+
+        }
+    }
 
 }
