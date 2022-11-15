@@ -62,7 +62,7 @@ public class Lotto {
     }
 
     public static boolean isWinningLottoHasBouns(int bonusNum, Lotto lotto) {
-        return lotto.getNumbers().contains(bonusNum);
+        return lotto.numbers.contains(bonusNum);
     }
 
     public List<Integer> getNumbers() {
