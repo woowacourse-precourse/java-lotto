@@ -33,4 +33,16 @@ class InputTest {
         assertThatThrownBy(() -> input.checkLotto("90"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @Test
+    void checkWinningTest() {
+        assertThatThrownBy(() -> input.checkWinningLotto("dsf"))
+                .isInstanceOf(IllegalArgumentException.class);
+
+        assertThatThrownBy(() -> input.checkWinningLotto("ds,12,df,4"))
+                .isInstanceOf(IllegalArgumentException.class);
+
+        assertThatThrownBy(() -> input.checkWinningLotto("1,2,3,4"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
