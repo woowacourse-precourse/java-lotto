@@ -1,13 +1,28 @@
 package lotto.domain;
 
+import java.io.ByteArrayInputStream;
 import java.util.List;
 
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.*;
 
 public class OrganizerTest {
+    @BeforeEach
+    protected final void init() {
+        String testInput = "1,2,3,4,5,6\n7";
+        final byte[] buf = testInput.getBytes();
+        System.setIn(new ByteArrayInputStream(buf));
+    }
+
+    @AfterEach
+    protected final void close() {
+        System.setIn(System.in);
+    }
+
     @Test
     @DisplayName("입력 문자열을 숫자 리스트로 변환한다.")
     void getNumberListFromStringInput() {
@@ -17,7 +32,7 @@ public class OrganizerTest {
     }
 
     @Test
-    @DisplayName("입력 문자열에 띄어쓰기와 무관하게 숫자 리스트로 변환한다.")
+    @DisplayName("입력 문자열을 띄어쓰기와 무관하게 숫자 리스트로 변환한다.")
     void getNumberListFromStringInputWithSpaces() {
         Organizer organizer = new Organizer();
         assertThat(organizer.transformStringToWinningNumbers("1 , 2,3 ,4 ,5 ,6"))

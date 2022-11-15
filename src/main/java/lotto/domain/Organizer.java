@@ -13,6 +13,8 @@ public class Organizer {
     public int bonusNumber;
 
     public Organizer() {
+        setWinningNumbersFromInput();
+        setBonusNumberFromInput();
     }
 
     public List<Integer> getWinningNumbers() {
@@ -27,7 +29,6 @@ public class Organizer {
         String winningNumberInput = Input.getInputWithMessage(GameMessage.ASK_FOR_WINNING_NUMBERS.getMessage());
         this.winningNumbers = transformStringToWinningNumbers(winningNumberInput);
         validateWinningNumbers(this.winningNumbers);
-        ExceptionHandler.doesContainDuplicate(this.winningNumbers);
     }
 
     public void setBonusNumberFromInput() {
@@ -56,6 +57,7 @@ public class Organizer {
 
     private void validateWinningNumbers(List<Integer> winningNumbers) {
         ExceptionHandler.isListCorrectSize(winningNumbers, LottoStatistic.NUMBER_OF_LOTTERY_NUMBERS.getValue());
+        ExceptionHandler.doesContainDuplicate(this.winningNumbers);
         for (int number : winningNumbers) {
             ExceptionHandler.isWithinRange(number,
                     LottoStatistic.MIN_NUMBER.getValue(), LottoStatistic.MAX_NUMBER.getValue());

@@ -17,12 +17,9 @@ public class Application {
             player.buyLottoTickets(lottoMachine);
 
             Organizer organizer = new Organizer();
-            organizer.setWinningNumbersFromInput();
-            organizer.setBonusNumberFromInput();
-
             player.checkResult(organizer);
-        } catch (IllegalArgumentException e) {
-            e.printStackTrace();
+        } catch (IllegalArgumentException exception) {
+            exception.printStackTrace();
         }
     }
 }
