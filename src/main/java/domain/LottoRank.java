@@ -27,7 +27,7 @@ public enum LottoRank {
             return determineSecondOrThird(hasBonusNumber);
         }
         return Arrays.stream(LottoRank.values())
-                .filter(r -> r.count == count)
+                .filter(r -> r.isMatch(count))
                 .findAny()
                 .orElse(ZERO);
     }
