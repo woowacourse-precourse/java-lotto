@@ -42,12 +42,6 @@ public enum Prize {
                 .orElse(EMPTY);
     }
 
-    public static List<Prize> getWinning() {
-        return Arrays.stream(Prize.values())
-                .filter(prize -> prize != EMPTY)
-                .collect(Collectors.toList());
-    }
-
     public int getMoney() {
         return money;
     }
