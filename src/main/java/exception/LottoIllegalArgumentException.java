@@ -1,11 +1,9 @@
 package exception;
 
-import exception.type.CustomIllegalArgumentException;
-
-public class LottoIllegalArgumentException extends CustomIllegalArgumentException {
+public class LottoIllegalArgumentException extends IllegalArgumentException {
     private String message;
 
     public LottoIllegalArgumentException(String message) {
-        super(message);
+        super(ExceptionUtil.ERROR_PREFIX + message);
     }
 }

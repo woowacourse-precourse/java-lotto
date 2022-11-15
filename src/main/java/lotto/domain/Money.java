@@ -12,7 +12,7 @@ public class Money {
         this.money = money;
     }
 
-    private void validate(int money) throws MoneyIllegalArgumentException {
+    private void validate(int money) {
         if (divideLottoPriceIsNotZero(money)) {
             throw new MoneyIllegalArgumentException("구입 금액은 1,000원 단위여야 합니다.");
         }

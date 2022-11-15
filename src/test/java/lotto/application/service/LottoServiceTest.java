@@ -1,5 +1,6 @@
 package lotto.application.service;
 
+import exception.MoneyIllegalArgumentException;
 import lotto.application.port.in.RequestBuyLottoDto;
 import lotto.application.port.in.ResponseBuyLottoDto;
 import org.assertj.core.api.Assertions;
