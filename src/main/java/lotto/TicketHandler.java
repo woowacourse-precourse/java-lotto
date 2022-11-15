@@ -43,6 +43,11 @@ public class TicketHandler {
     }
 
     public void countTickets(int count) {
-
+        Winnings place;
+        if (count <= 4) {
+            place = Winnings.values()[count];
+            this.winningTickets.put(place, this.winningTickets.get(place) + 1);
+        }
+        Application.setWinningTickets(this.winningTickets);
     }
 }
