@@ -23,16 +23,16 @@ public class LottoStore {
         }
 
         System.out.println(lottoCount + "개를 구매했습니다.");
-        for (Lotto lotto : lottos) {
-            System.out.println(lotto.toString());
-        }
 
         return lottos;
     }
 
     private void validateMoney(long money) {
-        if (money <= 0 || money % 1000 != 0) {
-            throw new IllegalArgumentException();
+        if (money <= 0) {
+            throw new IllegalArgumentException("[ERROR] 돈은 양수여야 합니다.");
+        }
+        if (money % 1000 != 0) {
+            throw new IllegalArgumentException("[ERROR] 돈은 1000원 단위여야 합니다.");
         }
     }
 

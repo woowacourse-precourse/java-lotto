@@ -39,10 +39,10 @@ public class LottoChecker {
                     .mapToInt(Integer::parseInt)
                     .boxed()
                     .collect(Collectors.toList());
-            new Lotto(winningNumbers); // validate
         } catch (Exception e) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR] 숫자를 콤마로 구분하여 입력해주세요.");
         }
+        new Lotto(winningNumbers); // validate
         return winningNumbers;
     }
 
@@ -51,12 +51,12 @@ public class LottoChecker {
         int number;
         try {
             number = Integer.parseInt(Console.readLine());
-        } catch (Exception e) {
-            throw new IllegalArgumentException();
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("[ERROR] 숫자만 입력해주세요.");
         }
 
         if (winningNumbers.contains(number)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[Error] 보너스 번호는 당첨 번호와 겹치지 않아야 합니다.");
         }
 
         return number;
