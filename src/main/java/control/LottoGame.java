@@ -18,15 +18,17 @@ public class LottoGame {
     }
 
     public void playLotto() {
-        try{
+        try {
             int purchaseQuantity = inputView.purchaseAmount();
             lottoAnalysis.makeLottoList(purchaseQuantity);
             outputView.printAmount(purchaseQuantity);
             outputView.printLotto(lottoAnalysis.lottoList);
-            lottoAnalysis.countWinning(purchaseQuantity,inputView.getWinningNumbers(),inputView.getBonusNumber());
+
+            lottoAnalysis.countWinning(purchaseQuantity, inputView.getWinningNumbers(), inputView.getBonusNumber());
             outputView.printTotalResult();
-            outputView.printReturnRate(lottoAnalysis.getTotalReward(),purchaseQuantity);
-        }catch (IllegalArgumentException illegalArgumentException){
+            outputView.printReturnRate(lottoAnalysis.getTotalReward(), purchaseQuantity);
+
+        } catch (IllegalArgumentException illegalArgumentException) {
             System.out.println(illegalArgumentException.getMessage());
         }
     }
