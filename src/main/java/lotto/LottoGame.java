@@ -90,7 +90,6 @@ public class LottoGame {
                 value += Character.toString(digit);
             else {
                 System.out.println(ErrorMessage.INPUT_IS_NOT_INTEGER.getMessage());
-                throw new IllegalArgumentException(ErrorMessage.INPUT_IS_NOT_INTEGER.getMessage());
             }
         }
 
