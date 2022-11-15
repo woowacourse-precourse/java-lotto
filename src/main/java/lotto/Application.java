@@ -27,7 +27,7 @@ public class Application {
 
     private static WinLotto getWinLottoInputFromUser() {
         Scanner scanner = new Scanner(System.in);
-        String[] input = scanner.nextLine().split(",");
+        String input = scanner.nextLine();
         WinLotto winLotto = validateWinLottoInput(input);
 
 
@@ -35,16 +35,17 @@ public class Application {
         return null;
     }
 
-    private static WinLotto validateWinLottoInput(String[] input) {
-        for (String lottoNumber : input) {
+    public static WinLotto validateWinLottoInput(String input) {
+        String[] input_split = input.split(",");
+        for (String lottoNumber : input_split) {
             if (!isInteger(lottoNumber) || !inLottoRange(lottoNumber)) {
                 throw new IllegalArgumentException(Message.ERROR_LOTTO_INPUT.message);
             }
         }
-        return convertStringToWinLotto(input);
+        return convertStringArrayToWinLotto(input_split);
     }
 
-    private static WinLotto convertStringToWinLotto(String[] input) {
+    private static WinLotto convertStringArrayToWinLotto(String[] input) {
         List<Integer> lottoNumbers = new LinkedList<>();
         for (String numberString : input) {
             lottoNumbers.add(Integer.parseInt(numberString));
