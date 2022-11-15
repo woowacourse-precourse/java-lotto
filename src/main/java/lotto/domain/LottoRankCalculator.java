@@ -4,20 +4,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class LottoRankCalculator {
-    private static LottoRankCalculator lottoCalculator;
+    private LottoRankCalculator(){};
 
-    private LottoRankCalculator() {
-
-    }
-
-    public static LottoRankCalculator getInstance() {
-        if (lottoCalculator == null) {
-            lottoCalculator = new LottoRankCalculator();
-        }
-        return lottoCalculator;
-    }
-
-    public Map<Lotto, LottoRank> calculateRanks(WinningNumbers winningNumbers, Lottos lottos) {
+    public static Map<Lotto, LottoRank> calculateRanks(WinningNumbers winningNumbers, Lottos lottos) {
         Map<Lotto, LottoRank> ranks = new HashMap<>();
         for (Lotto lotto : lottos) {
             LottoRank rank = calculateRank(winningNumbers, lotto);
@@ -26,7 +15,7 @@ public class LottoRankCalculator {
         return ranks;
     }
 
-    public LottoRank calculateRank(WinningNumbers winningNumbers, Lotto lotto) {
+    private static LottoRank calculateRank(WinningNumbers winningNumbers, Lotto lotto) {
         int match = getMatchedNumberCount(winningNumbers, lotto);
         boolean isBonusMatch = isBonusMatch(winningNumbers, lotto);
 
@@ -40,7 +29,7 @@ public class LottoRankCalculator {
         return lottoRank;
     }
 
-    private int getMatchedNumberCount(WinningNumbers winningNumbers, Lotto lotto) {
+    private static int getMatchedNumberCount(WinningNumbers winningNumbers, Lotto lotto) {
         int matched = 0;
         for (int index = 0; index < LottoRule.TOTAL_COUNT; index++) {
             Integer number = lotto.get(index);
@@ -51,7 +40,7 @@ public class LottoRankCalculator {
         return matched;
     }
 
-    private boolean isBonusMatch(WinningNumbers winningNumbers, Lotto lotto) {
+    private static boolean isBonusMatch(WinningNumbers winningNumbers, Lotto lotto) {
         for (int index = 0; index < LottoRule.TOTAL_COUNT; index++) {
             Integer number = lotto.get(index);
             if (winningNumbers.isEqualToBonusNumbers(number)) {
