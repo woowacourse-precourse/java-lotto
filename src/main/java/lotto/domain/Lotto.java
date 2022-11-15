@@ -1,10 +1,12 @@
 package lotto.domain;
 
+import lotto.domain.exception.IllegalArgumentException;
+
 import java.util.List;
 
 import static java.util.Collections.sort;
 import static java.util.stream.Collectors.toList;
-import static lotto.domain.ErrorType.*;
+import static lotto.domain.exception.ErrorType.*;
 
 public class Lotto {
     public static final int LOTTO_SIZE = 6;

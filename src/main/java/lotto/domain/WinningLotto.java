@@ -1,8 +1,10 @@
 package lotto.domain;
 
+import lotto.domain.exception.IllegalArgumentException;
+
 import java.util.List;
 
-import static lotto.domain.ErrorType.ERROR_WINNING_LOTTO_CONTAIN_BONUS;
+import static lotto.domain.exception.ErrorType.ERROR_WINNING_LOTTO_CONTAIN_BONUS;
 
 public class WinningLotto {
     private final Lotto winningLotto;

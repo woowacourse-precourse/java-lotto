@@ -1,4 +1,4 @@
-package lotto.domain;
+package lotto.domain.exception;
 
 public enum ErrorType {
     ERROR_INPUT_PAYMENT("[ERROR] 로또 구매 금액 입력 에러: 로또 구매 금액은 1,000원 단위로 입력합니다. (화폐 단위 생략)"),

@@ -1,14 +1,14 @@
 package lotto.view.scanner;
 
-import lotto.domain.ErrorType;
-import lotto.domain.IllegalArgumentException;
+import lotto.domain.exception.ErrorType;
+import lotto.domain.exception.IllegalArgumentException;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
 import static java.lang.Integer.parseInt;
-import static lotto.domain.ErrorType.*;
+import static lotto.domain.exception.ErrorType.*;
 
 public class NumberScanner {
     private static final String DELIMITER = ",";

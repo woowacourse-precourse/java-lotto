@@ -1,10 +1,12 @@
 package lotto.domain;
 
+import lotto.domain.exception.IllegalArgumentException;
+
 import java.util.ArrayList;
 import java.util.List;
 
 import static camp.nextstep.edu.missionutils.Randoms.pickUniqueNumbersInRange;
-import static lotto.domain.ErrorType.ERROR_UNDER_LOTTO_PRICE;
+import static lotto.domain.exception.ErrorType.ERROR_UNDER_LOTTO_PRICE;
 import static lotto.domain.Lotto.*;
 
 public class Buyer {

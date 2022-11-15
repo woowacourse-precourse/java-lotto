@@ -1,5 +1,6 @@
 package lotto.domain;
 
+import lotto.domain.exception.IllegalArgumentException;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

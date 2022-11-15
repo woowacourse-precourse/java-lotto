@@ -1,6 +1,8 @@
 package lotto.domain;
 
-import static lotto.domain.ErrorType.ERROR_LOTTO_NUMBER_RANGE;
+import lotto.domain.exception.IllegalArgumentException;
+
+import static lotto.domain.exception.ErrorType.ERROR_LOTTO_NUMBER_RANGE;
 import static lotto.domain.Lotto.LOTTO_END_NUMBER;
 import static lotto.domain.Lotto.LOTTO_START_NUMBER;
 
