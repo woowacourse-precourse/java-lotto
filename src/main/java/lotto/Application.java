@@ -7,6 +7,7 @@ import lotto.view.OutputView;
 
 import java.math.BigInteger;
 import java.util.List;
+import java.util.Map;
 
 public class Application {
     private static final InputView inputView = new InputView();
@@ -19,6 +20,12 @@ public class Application {
             List<Lotto> lottos = Machine.generateLottos(numberOfLottos);
             outputView.announceNumberOfPurchases(numberOfLottos);
             outputView.printLottos(lottos);
+
+            List<Integer> winningNumbers = inputView.inputWinningNumbers();
+            Integer bonusNumber = inputView.inputBonusNumber(winningNumbers);
+
+            Machine machine = new Machine(winningNumbers, bonusNumber);
+            Map<String, Integer> resultOfLottos = machine.judge(lottos);
 
         } catch (IllegalArgumentException exception) {
             outputView.printErrorMessage(exception.getMessage());

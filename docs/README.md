@@ -41,7 +41,7 @@
 
 - [x] 입력한 금액에 대해 몇개의 lotto를 구매 할 수 있는지 계산한다. #countNumberOfLottos(money)
 - [x] 구매할 수 있는 로또 개수만큼 로또를 생성한다. #generateLottos(numberOfLottos)
-- [ ] 입력한 당첨 번호와 보너스 번호를 기준으로, lotto를 판정한다.
+- [x] 입력한 당첨 번호와 보너스 번호를 기준으로, lotto를 판정한다. #judge(lottos)
 - [ ] 수익률을 계산한다.
     - 소수 둘째자리에서 반올림한다.
 
