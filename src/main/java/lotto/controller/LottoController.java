@@ -13,7 +13,7 @@ import java.util.List;
 
 import static lotto.utils.GetInput.getInput;
 public class LottoController {
-    private static final String message = "[ERROR] 입력";
+    private static final String message = "[ERROR]";
     private GenerateLottoNumbers generateLottoNumbers = new GenerateLottoNumbers();
     private LottoService lottoService = new LottoServiceImpl();
     private final int SECOND_WINNER_COUNT = 7;
@@ -27,20 +27,18 @@ public class LottoController {
         lottoService.play(generatedLotto,gameSet);
         printResult();
     }
-    private void init() {
+    private void init() throws IllegalArgumentException{
         System.out.println("구입금액을 입력해 주세요.");
         try{
             lottoCount=Integer.parseInt(Console.readLine());
         }catch (NumberFormatException n){
             System.out.println(message);
-            //throw new IllegalArgumentException();
-            lottoCount = 1000;
+            throw new IllegalArgumentException();
         }
 
         if(lottoCount%1000!=0){
             System.out.println(message);
-            lottoCount=1000;
-            //throw new IllegalArgumentException();
+            throw new IllegalArgumentException();
         }
         lottoCount/=1000;
         System.out.println(lottoCount+"개를 구매했습니다.");
