@@ -3,7 +3,7 @@ package lotto;
 import java.util.List;
 
 public interface LottoSystem {
-    void askFeeFromUser();
+    Integer askFeeFromUser();
     List<Lotto> purchaseMultipleLotto(Integer payment);
     void showMultipleLotto(List<Lotto> lottos);
     void setNumbersByUser();

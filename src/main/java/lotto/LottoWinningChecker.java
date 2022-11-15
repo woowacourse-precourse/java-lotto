@@ -16,6 +16,10 @@ public class LottoWinningChecker {
 
         for (Lotto lotto : lottos) {
             Integer equalNumber = target.compare(lotto);
+            if (!lottoMetadata.getPrizeTable()
+                    .containsKey(Map.entry(equalNumber, lotto.getNumbers().contains(bonus)))) {
+                continue;
+            }
             Prize prize = lottoMetadata.getPrizeTable().get(
                     Map.entry(equalNumber, lotto.getNumbers().contains(bonus))
             );

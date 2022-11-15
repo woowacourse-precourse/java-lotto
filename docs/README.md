@@ -128,7 +128,7 @@
 로또 구매부터 결과 확인까지 로또의 모든 프로세스를 사용자에게 제공하는 ***인터페이스***
 
 - 로또 구매를 안내한다.
-  - `void askFeeFronUser()`
+  - `Integer askFeeFronUser()`
 - 로또들을 구매한다.
   - `List<Lotto> purchaseMultipleLotto(Integer payment)`
 - 로또들을 보여준다.

@@ -36,10 +36,20 @@ public class StdIOLottoSystem implements LottoSystem{
         }
     }
     @Override
-    public void askFeeFromUser() {
+    public Integer askFeeFromUser() {
         printSystemMessage(SystemMessage.ASK_FEE.message);
         String line = Console.readLine();
+        raiseErrorIfNotNumber(line);
         payment = Integer.parseInt(line);
+        return payment;
+    }
+
+    private void raiseErrorIfNotNumber(String line) {
+        Pattern pattern = Pattern.compile("[1-9][0-9]*");
+        Matcher matcher = pattern.matcher(line);
+        if (!matcher.matches()) {
+            throw new IllegalArgumentException("[ERROR] 지불 금액은 숫자여야합니다.");
+        }
     }
 
     private void printSystemMessage(String message) {
@@ -138,18 +148,12 @@ public class StdIOLottoSystem implements LottoSystem{
         StringBuilder sb = new StringBuilder();
         sb.append("당첨 통계\n");
         sb.append("---\n");
-        for (Map.Entry<Map.Entry<Integer, Boolean>, Prize> entry : prizeTable.entrySet()) {
-            Integer equalCount = entry.getKey().getKey();
-            Boolean isEqualBonus = entry.getKey().getValue();
-            Integer money = prizeMoney.get(entry.getValue());
-            sb.append(equalCount).append("개 일치");
-            if (isEqualBonus) {
-                sb.append(", 보너스 볼 일치");
-            }
-            sb.append(" (").append(money).append("원) - ");
-            sb.append(winningLotto.get(entry.getValue())).append("개");
-        }
-        sb.append("총 수익률은 ").append(getRevenueRatio(winningLotto)).append("%입니다.\n");
+        sb.append("3개 일치 (5,000원) - ").append(winningLotto.get(Prize.FIFTH)).append("개\n");
+        sb.append("4개 일치 (50,000원) - ").append(winningLotto.get(Prize.FOURTH)).append("개\n");
+        sb.append("5개 일치 (1,500,000원) - ").append(winningLotto.get(Prize.THIRD)).append("개\n");
+        sb.append("5개 일치, 보너스 볼 일치 (30,000,000원) - ").append(winningLotto.get(Prize.SECOND)).append("개\n");
+        sb.append("6개 일치 (2,000,000,000원) - ").append(winningLotto.get(Prize.FIRST)).append("개\n");
+        sb.append("총 수익률은 ").append(getRevenueRatio(winningLotto)).append("%입니다.").append("\n");
         return sb;
     }
 
@@ -159,7 +163,9 @@ public class StdIOLottoSystem implements LottoSystem{
         for (Prize prize : List.of(Prize.values())) {
             sum += (long) prizeMoney.get(prize) * winningLotto.get(prize);
         }
-        return (double) sum / payment;
+        Double result = (double) sum / payment * 100L;
+        result = Double.parseDouble(String.format("%.2f", result));
+        return result;
     }
 
     public Lotto getWinningNumber() {
