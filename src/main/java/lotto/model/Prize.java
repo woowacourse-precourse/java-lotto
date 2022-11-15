@@ -83,15 +83,12 @@ public enum Prize {
     public static Prize judge(int winningMatches, int bonusMatches) {
         return Arrays.stream(Prize.values())
                 .filter(it -> it.find(winningMatches, bonusMatches))
-                .findFirst().orElseGet(() -> Prize.NONE);
+                .findFirst()
+                .orElse(Prize.NONE);
     }
 
     private boolean find(int winningMatches, int bonusMatches) {
         return judge.test(winningMatches, bonusMatches);
-    }
-
-    public static Prize type(Prize prize) {
-        return prize;
     }
 
     public int getMoney() {
