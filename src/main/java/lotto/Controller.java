@@ -18,7 +18,7 @@ public class Controller {
     public void purchaseLotto(final String pay) {
         this.price = new Price(pay);
         this.user = new User(this.price);
-        Data.printUserLotto(this.user, this.price);
+        Data.printUser(this.user, this.price);
     }
 
     public void FirstPlace(final String firstPlace) {
