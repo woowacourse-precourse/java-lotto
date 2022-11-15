@@ -2,6 +2,8 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
 
+import java.io.ByteArrayOutputStream;
+import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,29 +19,22 @@ public class Application {
 
 
     public static void main(String[] args) {
+        try {
+            System.out.println("구입금액을 입력해 주세요.");
+            String amountInput = Console.readLine();
 
-        System.out.println("구입금액을 입력해 주세요.");
-        String amountInput = Console.readLine();
-
-        calcAmount(amountInput);
+            calcAmount(amountInput);
         /* 로또 랜덤 발행
         [1, 2, 3, 4, 5, 6]
          */
 
-        noticeInputWiningLottoNumbers();
-        Lotto winingLotto = noticeWiningLottoInputMessage();
-        // 1,2,3,4,5,6
+            noticeInputWiningLottoNumbers();
+            Lotto winingLotto = noticeWiningLottoInputMessage();
 
-        // 보너스 번호를 입력해 주세요
-        // 7
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+        }
 
-        // 당첨 통계
-        // ---
-        /*
-         ~개 일치 ()
-         */
-
-        // 총 수익률은 62.5%입니다.
 
         // TODO: 프로그램 구현
     }
@@ -63,13 +58,16 @@ public class Application {
         System.out.println("당첨 번호를 입력해 주세요.");
     }
 
-    private static Integer calcAmount(String amountInput) {
+    private static Integer calcAmount(String amountInput) throws IllegalArgumentException {
 
         try {
+
             Integer amount = Integer.parseInt(amountInput);
             return amount;
+
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("[ERROR] 숫자만 입력 가능합니다.");
+
+            throw new IllegalArgumentException("[ERROR]");
         }
 
     }
