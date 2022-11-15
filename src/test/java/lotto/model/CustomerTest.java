@@ -37,6 +37,24 @@ class CustomerTest {
         assertThat(String.format("%.1f", customer.calculateProfit(matchResult))).isEqualTo("1000166.7");
     }
 
+    @DisplayName("아무것도 당첨되지 않았을 때 수익률은 0.0이 되어야 한다.")
+    @Test
+    void buyTest2() {
+        Customer customer = new Customer(new PurchasePrice("3000"));
+        customer.buy(List.of(makeLotto(1, 2, 7, 8, 9, 10),
+                makeLotto(1, 7, 9, 10, 11, 12),
+                makeLotto(1, 11, 13, 24, 25, 37)));
+        MatchResult matchResult = customer.checkMyLottoNumbers(lottoCompany);
+
+        assertThat(matchResult.getResultByMatchType(MatchType.THREE)).isEqualTo(0);
+        assertThat(matchResult.getResultByMatchType(MatchType.FOUR)).isEqualTo(0);
+        assertThat(matchResult.getResultByMatchType(MatchType.FIVE)).isEqualTo(0);
+        assertThat(matchResult.getResultByMatchType(MatchType.FIVE_BONUS)).isEqualTo(0);
+        assertThat(matchResult.getResultByMatchType(MatchType.SIX)).isEqualTo(0);
+        assertThat(matchResult.getTotalPrizeMoney()).isEqualTo(0);
+        assertThat(String.format("%.1f", customer.calculateProfit(matchResult))).isEqualTo("0.0");
+    }
+
     private LottoCompany makeLottoCompany(String winningLottoInput, String bonusNumberInput) {
         Lotto winningLotto = new WinningLotto(winningLottoInput).toLotto();
         LottoNumber bonusNumber = new LottoNumber(bonusNumberInput);
