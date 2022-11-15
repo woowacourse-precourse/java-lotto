@@ -9,11 +9,7 @@ public enum Message {
     BONUS_ASK("보너스 번호를 입력해 주세요."),
 
     OUT_STATISTIC("당첨 통계\n---"),
-    CORRECT_3("3개 일치 (5,0000원) - "),
-    CORRECT_4("4개 일치 (50,000원) - "),
-    CORRECT_5("5개 일치 (1,500,000원) - "),
-    CORRECT_5_BONUS("5개 일치, 보너스 볼 일치 (30,000,000원) - "),
-    CORRECT_6("6개 일치 (2,000,000,000원) - "),
+
 
     REVENUE("총 수익률은 ");
 

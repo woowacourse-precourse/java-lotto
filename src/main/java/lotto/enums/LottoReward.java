@@ -8,24 +8,24 @@ public enum LottoReward {
     CORRECT_SIX(4, 2000000000);
 
     private final int reward;
-    private final int correct;
+    private final int idx;
 
     public int getReward() {
         return reward;
     }
 
-    public int getCorrect() {
-        return correct;
+    public int getIdx() {
+        return idx;
     }
 
-    LottoReward(int correct, int reward) {
+    LottoReward(int idx, int reward) {
         this.reward = reward;
-        this.correct = correct;
+        this.idx = idx;
     }
 
-    public static LottoReward withCorrectNum(int correct) {
+    public static LottoReward withIndex(int idx) {
         for (LottoReward lottoReward : LottoReward.values()) {
-            if (lottoReward.correct == correct) {
+            if (lottoReward.idx == idx) {
                 return lottoReward;
             }
         }
