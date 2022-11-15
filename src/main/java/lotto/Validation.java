@@ -4,18 +4,20 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Pattern;
 
+import static lotto.ErrorMessage.*;
+
 public class Validation {
     private static final String numberPattern = "^[0-9]+$";
 
     public static void sizeValidate(List<Integer> numbers) {
         if (numbers.size() != 6) {
-            throw new IllegalArgumentException("[ERROR] 사이즈가 6이 아닙니다.");
+            throw new IllegalArgumentException(SIZE_ERROR);
         }
     }
 
     public static int numberValidate(String number){
         if(!(Pattern.matches(numberPattern, number))){
-            throw new IllegalArgumentException("[ERROR] 입력 형식이 잘못되었습니다.");
+            throw new IllegalArgumentException(WRONG_INPUT_TYPE);
         }
         return Integer.parseInt(number);
     }
@@ -24,7 +26,7 @@ public class Validation {
         int convertNumber = numberValidate(number);
 
         if(convertNumber % 1000 != 0 || convertNumber < 1000){
-            throw new IllegalArgumentException("[ERROR] 1000원 이상이고 1000원으로 나누어떨어지는 금액이어야 합니다.");
+            throw new IllegalArgumentException(WRONG_INPUT_MONEY);
         }
 
         return convertNumber;
@@ -48,10 +50,10 @@ public class Validation {
         int convertNumber = numberValidate(number);
 
         if(convertNumber <= 0 || convertNumber > 45){
-            throw new IllegalArgumentException("[ERROR] 1과 45 사이의 숫자가 입력되어야 합니다.");
+            throw new IllegalArgumentException(OUT_OF_RANGE);
         }
         if(lottos.contains(convertNumber)){
-            throw new IllegalArgumentException("[ERROR] 숫자가 중복됩니다.");
+            throw new IllegalArgumentException(NUMBER_DUPLICATE);
         }
 
         return convertNumber;
@@ -61,10 +63,10 @@ public class Validation {
         int convertNumber = numberValidate(number);
 
         if(convertNumber <= 0 || convertNumber > 45){
-            throw new IllegalArgumentException("[ERROR] 1과 45 사이의 숫자가 입력되어야 합니다.");
+            throw new IllegalArgumentException(OUT_OF_RANGE);
         }
         if(lotto.containNumbers(convertNumber)){
-            throw new IllegalArgumentException("[ERROR] 보너스 번호가 이미 로또 번호에 포함됩니다.");
+            throw new IllegalArgumentException(BONUS_NUMBER_DUPLICATE);
         }
 
         return convertNumber;
