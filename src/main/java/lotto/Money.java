@@ -26,7 +26,6 @@ public class Money {
     public static int init() {
         System.out.println("구입금액을 입력해 주세요.");
         String userInput = readLine();
-        isDigitCheck(userInput);
         validateEmpty(userInput);
         return changeInt(userInput);
     }
@@ -34,7 +33,7 @@ public class Money {
     private static void isDigitCheck(String userInput) {
         for (int i = 0; i < userInput.length(); i++) {
             if (!Character.isDigit(userInput.charAt(i))) {
-                throw new IllegalArgumentException("[ERROR] 숫자만 입력하세요.");
+                throw new IllegalArgumentException(ERROR_NOT_INT_MONEY);
             }
         }
     }
