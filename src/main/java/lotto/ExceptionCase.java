@@ -56,6 +56,16 @@ public class ExceptionCase {
         return true;
     }
 
+    static boolean checkBoundLottoNumber (String input) {
+        int bonusNumber = Integer.parseInt(input);
+
+        if (!(bonusNumber > 0 && bonusNumber < 46)) {
+            return false;
+        }
+
+        return true;
+    }
+
     static public void checkInputMoney(String input) {
         if (!checkInputAllNumber(input)) {
             throw new IllegalArgumentException();
