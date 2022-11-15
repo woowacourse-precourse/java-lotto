@@ -5,7 +5,7 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.List;
 
-import static lotto.constant.Constants.LOTTO_COST;
+import static lotto.constant.Constants.*;
 import static lotto.exception.Exception.*;
 
 public class Player {
@@ -27,6 +27,11 @@ public class Player {
         for(int i = 0; i < lottoCount; i++) {
             lottos.add(Lotto.generate());
         }
+    }
+
+    public Lotto getWinningNumbers() {
+        String numbers = Console.readLine();
+        return new Lotto(numbers);
     }
 
     private void validatePurchaseCost(String purchaseCost) {

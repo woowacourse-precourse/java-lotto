@@ -1,5 +1,6 @@
 package lotto;
 
+import lotto.domain.Lotto;
 import lotto.domain.Player;
 
 import static lotto.view.InputView.*;
@@ -17,5 +18,8 @@ public class Game {
         player.getPurchaseCost();
         player.purchaseLotto();
         printPurchasedLotto(player.getLottos());
+
+        showWinningNumberInputMessage();
+        Lotto winningNumbers = player.getWinningNumbers();
     }
 }

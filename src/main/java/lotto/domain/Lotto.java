@@ -7,6 +7,8 @@ import static lotto.exception.Exception.*;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Lotto {
     private final List<Integer> numbers;
@@ -15,6 +17,19 @@ public class Lotto {
         validate(numbers);
         Arrays.sort(numbers.toArray());
         this.numbers = numbers;
+    }
+
+    public Lotto(String numbers) {
+        List<Integer> sortedNumbers = toSortedList(numbers);
+        validate(sortedNumbers);
+        this.numbers = sortedNumbers;
+    }
+
+    public static List<Integer> toSortedList(String numbers) {
+        return Stream.of(numbers.split(DELIMITER))
+                .map(Integer::parseInt)
+                .sorted()
+                .collect(Collectors.toList());
     }
 
     private void validate(List<Integer> numbers) {
