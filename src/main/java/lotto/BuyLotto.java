@@ -71,4 +71,16 @@ public class BuyLotto {
             winStatistics.put(rank+1,winStatistics.get(rank)+1);
         }
     }
+
+    public static List<Integer> howManyMatchNumbers(List<List<Integer>> userLottoNumbers, List<Integer> winNumbers,int bonusNumber,Map <Integer,Integer> winStatistics){
+        List<Integer> allNumberOfMatch = new ArrayList<>();
+        winStatisticDefault(winStatistics);
+
+        for(int i = 0 ; i < userLottoNumbers.size(); i++){
+            int numberOfMatch = getNumberOfMatch(userLottoNumbers.get(i),winNumbers);
+            allNumberOfMatch.add(numberOfMatch);
+            putRank(userLottoNumbers.get(i),bonusNumber,numberOfMatch,winStatistics);
+        }
+        return allNumberOfMatch;
+    }
 }
