@@ -96,6 +96,18 @@ public class Application {
         System.out.println("6개 일치, 보너스 볼 일치 (2,000,000,000원) - " + lottoRankInfo.get(ranking.FIRST) + "개");
     }
 
+    static int howMuchPrize(HashMap<ranking, Integer> lottoRankInfo){
+        int cashprize = 0;
+        for (Map.Entry<ranking, Integer> entry : lottoRankInfo.entrySet()){
+            cashprize += entry.getValue() * cashPrizeInfo.get(entry.getKey());
+        }
+        return cashprize;
+    }
+
+    static void printEarningRate(int cashprize, int inputmoney){
+        System.out.printf("총 수익률은 %.1f%%입니다", (double)cashprize / inputmoney);
+    }
+
     public static void main(String[] args) {
         System.out.println("구매금액을 입력해주세요");
         inputmoney = singleNumberInput();
@@ -116,5 +128,7 @@ public class Application {
 //        bonus = 7;
 
         lottoRankInfo = initRankInfo();
+        printResult(lottoRankInfo);
+        printEarningRate(howMuchPrize(lottoRankInfo), inputmoney);
     }
 }
