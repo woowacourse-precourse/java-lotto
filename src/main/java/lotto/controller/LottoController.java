@@ -9,9 +9,15 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import static lotto.domain.Rank.*;
+
 public class LottoController {
     public static final int PRICE_OF_LOTTO = 1000;
     public static final int QUANTITY_OF_LOTTO_DIGITS = 6;
+
+    public static final int QUANTITY_OF_RANK = 5;
+    public static final int IDX_FOR_PREDICTION_MATCH_CNT = 0;
+    public static final int IDX_FOR_BONUS_MATCH_CNT = 1;
 
     private InputView inputView = new InputView();
     private OutputView outputView = new OutputView();
@@ -19,6 +25,7 @@ public class LottoController {
     private List<Lotto> lottos = new ArrayList<>();
     private int predictionMatchCnt = 0;
     private int bonusMatchCnt = 0;
+    private int[] winningLog = new int[QUANTITY_OF_RANK];
 
     public void playLottoGame() {
         int purchasePrice = inputView.userInputPurchasePrice();
@@ -30,6 +37,7 @@ public class LottoController {
         int bonusNumber = inputView.userInputBonusNumber();
 
         List<List<Integer>> matchCounts = computeMatchCounts(predictionNumbers, bonusNumber);
+        recordWinningLog(matchCounts);
     }
 
     public int computeAmountOfLotto(int purchasePrice) {
@@ -81,6 +89,23 @@ public class LottoController {
     public void increaseBonusMatchCnt(List<Integer> lottoNumbers, int bonusNumber) {
         if (lottoNumbers.contains(bonusNumber)) {
             bonusMatchCnt++;
+        }
+    }
+
+    public void recordWinningLog(List<List<Integer>> matchCounts) {
+        for (List<Integer> matchCnt : matchCounts) {
+            int predictionMatchCnt = matchCnt.get(IDX_FOR_PREDICTION_MATCH_CNT);
+            int bonusMatchCnt = matchCnt.get(IDX_FOR_BONUS_MATCH_CNT);
+
+            if (predictionMatchCnt == FIFTH.getPredictionMatchCnt()) winningLog[FIFTH.getWinningLogIdx()]++;
+
+            if (predictionMatchCnt == FOURTH.getPredictionMatchCnt()) winningLog[FOURTH.getWinningLogIdx()]++;
+
+            if (predictionMatchCnt == THIRD.getPredictionMatchCnt()) winningLog[THIRD.getWinningLogIdx()]++;
+
+            if (predictionMatchCnt == SECOND.getPredictionMatchCnt() && bonusMatchCnt == SECOND.getBonusMatchCnt()) winningLog[SECOND.getWinningLogIdx()]++;
+
+            if (predictionMatchCnt == FIRST.getPredictionMatchCnt()) winningLog[FIRST.getWinningLogIdx()]++;
         }
     }
 }
