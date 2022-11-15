@@ -11,7 +11,7 @@ import java.util.List;
 public class Service {
 
     private List<Lotto> lottoTickets;
-    private List<Integer> winningNumbers;
+    private WinningNumbers winningNumbers;
     private BonusNumber bonusNumber;
 
     public Service(int nLottoTickets){
@@ -39,7 +39,13 @@ public class Service {
     }
 
     private void setWinningNumbers() {
-        this.winningNumbers = ServiceInput.getWinningNumbers();
+        List<String> splitInputWinningNumbers = ServiceInput.getSplitInputWinningNumbers();
+        List<Integer> winningNumbers = new ArrayList<>();
+        for (int i=0; i<splitInputWinningNumbers.size(); i++){
+            winningNumbers.add(Converter.StringToInteger(splitInputWinningNumbers.get(i)));
+        }
+
+        this.winningNumbers = new WinningNumbers(winningNumbers);
     }
 
     private void setBonusNumber(){
@@ -51,8 +57,8 @@ public class Service {
     }
 
     private void validateBonusNumberInWinningNumbers(int bonusNumber){
-        for (int i=0; i< this.winningNumbers.size(); i++){
-            validateDuplicateBonusNumber(bonusNumber, this.winningNumbers.get(i));
+        for (int i=0; i< this.winningNumbers.getNumbers().size(); i++){
+            validateDuplicateBonusNumber(bonusNumber, this.winningNumbers.getNumbers().get(i));
         }
     }
 
@@ -68,7 +74,7 @@ public class Service {
     }
 
     public List<Integer> getWinningNumbers() {
-        return winningNumbers;
+        return winningNumbers.getNumbers();
     }
 
     public int getBonusNumber() {

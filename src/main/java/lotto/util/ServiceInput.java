@@ -26,26 +26,18 @@ public class ServiceInput {
         return numbers;
     }
 
-    public static List<Integer> getWinningNumbers(){
-        List<String> splitInputWinningNumbers = getSplitInputWinningNumbers();
+    public static List<String> getSplitInputWinningNumbers(){
+        String inputWinningNumbers = getInputWinningNumbers();
 
-        List<Integer> winningNumbers = new ArrayList<>();
-        for (int i=0; i<splitInputWinningNumbers.size(); i++){
-            winningNumbers.add(Converter.StringToInteger(splitInputWinningNumbers.get(i)));
-        }
-        validateWinningNumbers(winningNumbers);
+        List<String> splitInputWinningNumbers = Arrays.asList(inputWinningNumbers.split("\\s*,\\s*"));
+        validateSplitInputWinningNumbers(splitInputWinningNumbers);
 
-        return winningNumbers;
+        return splitInputWinningNumbers;
     }
 
-    private static void validateWinningNumbers(List<Integer> winningNumbers) {
-        if (Validator.isListRangeOut(winningNumbers)){
-            Message.printInputErrorRangeOut();
-            throw new IllegalArgumentException();
-        }
-
-        if (Validator.isListDuplicate(winningNumbers)){
-            Message.printInputErrorDuplicate();
+    private static void validateSplitInputWinningNumbers(List<String> splitInputWinningNumbers){
+        if (Validator.isListhasCharacter(splitInputWinningNumbers)){
+            Message.printInputErrorHasCharacter();
             throw new IllegalArgumentException();
         }
     }
@@ -65,22 +57,6 @@ public class ServiceInput {
 
         if (Validator.isNotComma(inputWinningNumbers)){
             Message.printInputErrorIsNotComma();
-            throw new IllegalArgumentException();
-        }
-    }
-
-    private static List<String> getSplitInputWinningNumbers(){
-        String inputWinningNumbers = getInputWinningNumbers();
-
-        List<String> splitInputWinningNumbers = Arrays.asList(inputWinningNumbers.split("\\s*,\\s*"));
-        validateSplitInputWinningNumbers(splitInputWinningNumbers);
-
-        return splitInputWinningNumbers;
-    }
-
-    private static void validateSplitInputWinningNumbers(List<String> splitInputWinningNumbers){
-        if (Validator.isListhasCharacter(splitInputWinningNumbers)){
-            Message.printInputErrorHasCharacter();
             throw new IllegalArgumentException();
         }
     }
