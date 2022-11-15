@@ -11,4 +11,8 @@ public class Input {
     String input = Console.readLine();
     return Integer.valueOf(input);
   }
+
+  public static void emptyBuffer() {
+    Console.readLine();
+  }
 }
