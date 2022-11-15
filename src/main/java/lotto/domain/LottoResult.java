@@ -36,7 +36,7 @@ public class LottoResult {
      * @return 수익률을 소숫점 둘째자리에서 반올림한 값의 문자열
      */
     public String getPriceEarningsRatio() {
-        DecimalFormat formatter = new DecimalFormat("###,###.0");
+        DecimalFormat formatter = new DecimalFormat("###,##0.0");
         return formatter.format((double) totalPrizeMoney * 100 / totalPrice);
     }
 
