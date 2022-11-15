@@ -63,6 +63,7 @@ public class Application {
             final boolean hasBonus = sameNumbers.contains(gameData.getBonusNumber());
             setWinnings(sameNumbers.size(), hasBonus);
         }
+        printLottos();
         printWinnings();
     }
 
@@ -104,5 +105,11 @@ public class Application {
                 + (gameData.getHitSix() * 2000000000);
         double rate = ((double) earnMoney / gameData.getMoney() ) * 100;
         System.out.println("총 수익률은 "+ String.format("%.1f", rate) + "%입니다.");
+    }
+
+    private static void printLottos(){
+        for(Lotto lotto : lottos){
+            sb.append(lotto.getNumbers()).append("\n");
+        }
     }
 }
