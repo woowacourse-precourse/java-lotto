@@ -40,7 +40,7 @@ public class Application {
         // phase 5) 당첨 통계 출력하기
         List<Integer> score = countScoreCandidate(candidateLotto, winningLotto, bonusNumber);
         int totalPrize = printWinningResult(score);
-
+        printYield(totalPrize, payedMoney);
 
     }
 
@@ -92,7 +92,9 @@ public class Application {
         }
         return totalPrize;
     }
-
+    public static void printYield(int totalPrize, int payedMoney){
+        System.out.println(String.format("%.2f", totalPrize/payedMoney*100) + "%");
+    }
     public static List<Integer> countScoreCandidate(List<Lotto> candidateLotto,
                                          Lotto winningLotto,
                                          int bonusNumber){
@@ -110,6 +112,5 @@ public class Application {
         }
         return score;
     }
-
 
 }
