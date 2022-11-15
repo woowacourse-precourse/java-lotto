@@ -20,6 +20,16 @@ public class WinningNumbers {
         }
     }
 
+    private Integer integerCheck(String num) {
+        Integer winNum = 0;
+        try{
+             winNum = Integer.parseInt(num);
+        }
+        catch(NumberFormatException e){
+            printErrorMessage("[ERROR] 숫자 형식으로만 입력해주세요.");
+        }
+        return winNum;
+    }
 
 
 }
