@@ -14,13 +14,6 @@ import static lotto.domain.Rank.*;
 
 public class LottoGameConsole {
 
-    private final Map<Rank, Integer> prize = Map.of(
-            FIRST_SIX_MATCHED, 2_000_000_000,
-            SECOND_FIVE_WITH_BONUS, 30_000_000,
-            THIRD_FIVE_MATCHED, 1_500_000,
-            FOURTH_FOUR_MATCHED, 50_000,
-            FIFTH_THREE_MATCHED, 5_000);
-
     private final Emcee emcee = new Emcee();
     private final Player player = new Player();
     private final LottoPublisher publisher = new LottoPublisher();
@@ -76,11 +69,11 @@ public class LottoGameConsole {
     }
 
     private double calculateRateOfReturn(Map<Rank, Integer> tallyOfRanks, int payment) {
-        double totalProfit = tallyOfRanks.getOrDefault(FIRST_SIX_MATCHED, 0) * prize.get(FIRST_SIX_MATCHED)
-                + tallyOfRanks.getOrDefault(SECOND_FIVE_WITH_BONUS, 0) * prize.get(SECOND_FIVE_WITH_BONUS)
-                + tallyOfRanks.getOrDefault(THIRD_FIVE_MATCHED, 0) * prize.get(THIRD_FIVE_MATCHED)
-                + tallyOfRanks.getOrDefault(FOURTH_FOUR_MATCHED, 0) * prize.get(FOURTH_FOUR_MATCHED)
-                + tallyOfRanks.getOrDefault(FIFTH_THREE_MATCHED, 0) * prize.get(FIFTH_THREE_MATCHED);
+        double totalProfit = tallyOfRanks.getOrDefault(FIRST_SIX_MATCHED, 0) * FIRST_SIX_MATCHED.getPrize()
+                + tallyOfRanks.getOrDefault(SECOND_FIVE_WITH_BONUS, 0) * SECOND_FIVE_WITH_BONUS.getPrize()
+                + tallyOfRanks.getOrDefault(THIRD_FIVE_MATCHED, 0) * THIRD_FIVE_MATCHED.getPrize()
+                + tallyOfRanks.getOrDefault(FOURTH_FOUR_MATCHED, 0) * FOURTH_FOUR_MATCHED.getPrize()
+                + tallyOfRanks.getOrDefault(FIFTH_THREE_MATCHED, 0) * FIFTH_THREE_MATCHED.getPrize();
         double rateOfReturn = totalProfit / payment * 100;
         return Math.round(rateOfReturn * 10) / 10.0;
     }
