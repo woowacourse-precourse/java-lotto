@@ -52,14 +52,7 @@ public class LottoService {
     }
 
     private static Lotto generateLottoNumber() {
-        List<Integer> numbers = new ArrayList<>();
-        while (numbers.size() < 6) {
-            int randomNumber = Randoms.pickNumberInRange(1, 45);
-            if (!numbers.contains(randomNumber)) {
-                numbers.add(randomNumber);
-            }
-        }
-        return new Lotto(numbers);
+        return new Lotto(Randoms.pickUniqueNumbersInRange(1, 45, 6));
     }
 
     public static Lotto getWinningNumber(String input) {
