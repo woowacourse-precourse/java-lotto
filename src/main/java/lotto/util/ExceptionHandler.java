@@ -17,7 +17,7 @@ public class ExceptionHandler {
     }
 
     public static void validateBonusNumber(int bonusNumber) {
-        if (!(bonusNumber >= MIN_LOTTO_NUBMER && bonusNumber <= MAX_LOTTO_NUBMER)) {
+        if (!(bonusNumber >= MIN_LOTTO_NUMBER && bonusNumber <= MAX_LOTTO_NUMBER)) {
             throw new IllegalArgumentException(RANGE_ERROR_MESSAGE);
         }
     }
@@ -38,7 +38,7 @@ public class ExceptionHandler {
 
     private static void validateNumbersRange(List<Integer> numbers) {
         numbers.forEach(num -> {
-            if (!(num >= MIN_LOTTO_NUBMER && num <= MAX_LOTTO_NUBMER)) {
+            if (!(num >= MIN_LOTTO_NUMBER && num <= MAX_LOTTO_NUMBER)) {
                 throw new IllegalArgumentException(RANGE_ERROR_MESSAGE);
             }
         });
