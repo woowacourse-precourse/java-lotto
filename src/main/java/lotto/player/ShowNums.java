@@ -8,6 +8,6 @@ public class ShowNums {
 		for (int i = 0; i < 6; i++) {
 			arr2[i] = arr.get(i);
 		}
-		System.out.printf("[%d, %d, %d, %d, %d, %d]", arr2[0], arr2[1], arr2[2], arr2[3], arr2[4], arr2[5]);
+		System.out.printf("[%d, %d, %d, %d, %d, %d]\n", arr2[0], arr2[1], arr2[2], arr2[3], arr2[4], arr2[5]);
 	}
 }
