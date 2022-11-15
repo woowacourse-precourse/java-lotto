@@ -25,4 +25,11 @@ class GetWinningNumberTest {
             assertThat(number).isBetween(1, 45);
         }
     }
+    @DisplayName("당첨번호의 길이가 6인지에 대한 경우")
+    @Test
+    void winningNumberSize(){
+        String input = "1,2,3,4,5,6";
+        getWinningNumber.getWinningNumber(input);
+        assertThat(getWinningNumber.winningNumber.size()).isEqualTo(6);
+    }
 }
