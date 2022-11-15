@@ -80,13 +80,13 @@ public class LottoService {
         return false;
     }
 
-    public static double calculateProfit(int count, HashMap<Statistic, Integer> countStatic) {
+    public static double calculateProfit(int count, HashMap<Statistic, Integer> countStatistic) {
         double profit = 0;
-        for (Statistic e : countStatic.keySet()) {
-            profit += countStatic.get(e) * e.getPrize();
+        for (Statistic e : countStatistic.keySet()) {
+            profit += countStatistic.get(e) * e.getPrize();
         }
         double profitRate = (profit / (count * 1000)) * 100;
 
-        return Math.round(profitRate * 100) / 100.0;
+        return Math.round(profitRate * 10) / 10.0;
     }
 }

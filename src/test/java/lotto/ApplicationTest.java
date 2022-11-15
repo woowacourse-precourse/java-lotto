@@ -5,6 +5,7 @@ import lotto.domain.Lotto;
 import lotto.domain.Statistic;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -96,7 +97,7 @@ class ApplicationTest extends NsTest {
         int count = countMatchingNumber(lottoA, lottoB);
 
         // then
-        assertEquals(count, 2);
+        assertEquals(2, count);
     }
 
     @Test
@@ -109,7 +110,7 @@ class ApplicationTest extends NsTest {
         boolean flag = compareBonus(lottoA, bonus);
 
         // then
-        assertEquals(flag, true);
+        assertEquals(true, flag);
     }
 
     @Test
@@ -122,7 +123,7 @@ class ApplicationTest extends NsTest {
         Statistic statistic = findStatistic(matchingNumber, bonusFlag);
 
         // then
-        assertEquals(statistic, Statistic.BONUS);
+        assertEquals(Statistic.BONUS, statistic);
     }
 
     @Test
@@ -142,8 +143,8 @@ class ApplicationTest extends NsTest {
         calculateStatistic(inputLotto, bonus, issuedLotteries, countStatistic, 1);
 
         // then
-        assertEquals(countStatistic.get(FOUR), 1);
-        assertEquals(countStatistic.get(THREE), 0);
+        assertEquals(1, countStatistic.get(FOUR));
+        assertEquals(0, countStatistic.get(THREE));
     }
 
     @Test
@@ -160,8 +161,32 @@ class ApplicationTest extends NsTest {
         HashMap<Statistic, Integer> result = generateCountStatistic(inputLotto, bonus, issuedLotteries);
 
         // then
-        assertEquals(result.get(FOUR), 1);
-        assertEquals(result.get(THREE), 1);
+        assertEquals(1, result.get(FOUR));
+        assertEquals(1, result.get(THREE));
+    }
+
+    @Test
+    void 수익률_테스트() {
+        // given
+        Lotto inputLotto = new Lotto(List.of(5, 6, 7, 8, 9, 10));
+        int bonus = 22;
+
+        Lotto lottoA = new Lotto(List.of(2, 3, 4, 5, 6, 7));
+        Lotto lottoB = new Lotto(List.of(3, 4, 5, 6, 7, 8));
+        Lotto lottoC = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+        List<Lotto> issuedLotteries = new ArrayList<>();
+        issuedLotteries.add(lottoA);
+        issuedLotteries.add(lottoB);
+        for (int i = 0; i < 50; i++) {
+            issuedLotteries.add(lottoC);
+        }
+        HashMap<Statistic, Integer> countStatistic = generateCountStatistic(inputLotto, bonus, issuedLotteries);
+
+        // when
+        double result = calculateProfit(issuedLotteries.size(), countStatistic);
+
+        // then
+        assertEquals(105.8, result);
     }
 
     @Override
