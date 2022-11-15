@@ -15,10 +15,12 @@ public class Lotto {
 
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
+            System.out.println("[ERROR] 로또 번호는 6개 입니다.");
             throw new IllegalArgumentException();
         }
 
         if (hasSameNumber(numbers)) {
+            System.out.println("[ERROR] 로또 번호는 중복되지 않는 수로 구성되어 있습니다.");
             throw new IllegalArgumentException();
         }
     }

@@ -16,7 +16,7 @@ public class Application {
         try {
             money = Integer.parseInt(input);
         } catch (NumberFormatException e) {
-            System.out.println("[ERROR]");
+            System.out.println("[ERROR] 숫자 이외의 값을 입력하였습니다.");
             return ;
         }
 
@@ -40,7 +40,7 @@ public class Application {
         try {
             bonusNumber = Integer.parseInt(inputBonusNumber);
         } catch (NumberFormatException e) {
-            System.out.println("[ERROR]");
+            System.out.println("[ERROR] 숫자 이외의 값을 입력하였습니다.");
             return ;
         }
         List<Integer> ranking = rank(lottos, winningLotto, bonusNumber);
@@ -51,8 +51,8 @@ public class Application {
 
     public static void validate(int money) {
         if (money % 1000 != 0) {
-            System.out.println("[ERROR]");
-            throw new IllegalArgumentException("[ERROR]");
+            System.out.println("[ERROR] 로또는 1000원단위로 판매합니다.");
+            throw new IllegalArgumentException();
         }
     }
 
