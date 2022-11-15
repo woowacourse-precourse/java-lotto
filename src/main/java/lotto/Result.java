@@ -16,6 +16,19 @@ public enum Result {
         this.prizeMoney = prizeMoney;
     }
 
+    public static Result getResult(int correctNumbers, boolean bonusNumber){
+        if(correctNumbers == SECOND.getCorrectNumbers() && bonusNumber){
+            return SECOND;
+        }
+
+        for(Result result : Result.values()){
+            if(correctNumbers == result.getCorrectNumbers()){
+                return result;
+            }
+        }
+        throw new IllegalArgumentException("[ERROR] 해당하는 등수를 찾을 수 없습니다.");
+    }
+
     public int getCorrectNumbers(){
         return this.correctNumbers;
     }
