@@ -1,15 +1,21 @@
 package lotto;
 
 public enum Prize {
-    FIRST(2_000_000_000), SECOND(30_000_000), THIRD(1_500_000), FOURTH(50_000), FIFTH(5_000), NOTHING(0);
+    FIRST(2_000_000_000, 6), SECOND(30_000_000, 5), THIRD(1_500_000, 5), FOURTH(50_000, 4), FIFTH(5_000, 3), NOTHING(0, 0);
 
-    private final int REWARD;
+    private final long REWARD;
+    private final int CORRECT;
 
-    Prize(int reward) {
+    Prize(int reward, int correct) {
         REWARD = reward;
+        CORRECT = correct;
     }
 
-    int reward() {
+    long reward() {
         return REWARD;
+    }
+
+    int correct() {
+        return CORRECT;
     }
 }

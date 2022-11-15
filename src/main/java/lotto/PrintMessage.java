@@ -25,14 +25,15 @@ public class PrintMessage {
     }
 
     public String coincidence(Prize prize, int count) {
-        StringBuilder messageBuilder = new StringBuilder("개 일치");
+        StringBuilder messageBuilder = new StringBuilder(String.valueOf(prize.correct()))
+                .append("개 일치");
 
         if (prize == Prize.SECOND) {
             messageBuilder.append(", 보너스 볼 일치");
         }
 
         return messageBuilder.append(" (")
-                .append(prize.reward())
+                .append(String.format("%,d", prize.reward()))
                 .append("원) - ")
                 .append(count)
                 .append("개")
@@ -42,7 +43,7 @@ public class PrintMessage {
 
     public String benefit(double benefit) {
         return new StringBuilder("총 수익률은 ")
-                .append(benefit)
+                .append(String.format("%1.1f", benefit))
                 .append("%입니다.")
                 .toString();
     }

@@ -65,8 +65,7 @@ public class Client {
 
         for (int i = 0; i < prizes.length; i++) {
             int amount = Collections.frequency(prizeResults, prizes[i]);
-            print(amount + printMessage.coincidence(prizes[i],
-                    amount));
+            print(printMessage.coincidence(prizes[i], amount));
         }
 
         print(printMessage.benefit(benefit));
@@ -89,13 +88,11 @@ public class Client {
 
 
     private int parseStringToIntOrElseThrow(String moneyAmountString) {
-        int moneyAmount;
         try {
-            moneyAmount = Integer.parseInt(moneyAmountString);
+            return Integer.parseInt(moneyAmountString);
         } catch (Exception e) {
             throw new IllegalArgumentException(ErrorMessage.MONEY_NOT_INTEGER);
         }
-        return moneyAmount;
     }
 
     private void ThousandMultipleOrElseThrow(int moneyAmount) {
