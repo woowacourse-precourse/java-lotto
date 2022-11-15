@@ -16,8 +16,8 @@ public class LottoGame {
         try {
             countLottos(userMoney);
             pickRandomLottos(inputMoney.lottoCount);
-            List<Integer> answerLotto = inputLottoNumbers();
-            winLottosResult(answerLotto, randomLottoLists);
+            List<Integer> randomLottoLists = inputLottoNumbers();
+            winLottosResult(randomLottoLists, PickRandomLottoLists.randomLottoLists);
             winLottoResult.calBenefit(winLottoResult.profitMoney, userMoney);
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
@@ -30,7 +30,7 @@ public class LottoGame {
     public void pickRandomLottos(int lottoPapers) {
         PickRandomLottoLists pickRandomLotto = new PickRandomLottoLists();
 
-        pickRandomLotto.PickRandomNumber(lottoPapers);
+        pickRandomLotto.PickRandomLottoNumbers(lottoPapers);
     }
 
     public List<Integer> inputLottoNumbers() {

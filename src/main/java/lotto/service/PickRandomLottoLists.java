@@ -3,7 +3,8 @@ package lotto.service;
 import camp.nextstep.edu.missionutils.Randoms;
 import lotto.view.Output;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.stream.Collectors;
 
 public class PickRandomLottoLists {
@@ -11,22 +12,17 @@ public class PickRandomLottoLists {
     public static List<List<Integer>> randomLottoLists = new ArrayList<>();
     Output output = new Output();
 
-    public void PickRandomNumber(int lottoPapers) {
+    public void PickRandomLottoNumbers(int lottoPapers) {
         while(randomLottoLists.size() != lottoPapers) {
-            List<Integer> sixLottoNumbers = Randoms.pickUniqueNumbersInRange(1,45,LIMIT_LOTTO);
-            Lotto lotto = new Lotto(sixLottoNumbers);
+            List<Integer> randomLottoNumbers = Randoms.pickUniqueNumbersInRange(1,45,LIMIT_LOTTO);
+            Lotto lotto = new Lotto(randomLottoNumbers);
         }
-        checkRandomLottoLists();
+        printRandomLottoLists();
     }
 
-    public void checkRandomLottoLists() {
-        Iterator<List<Integer>> iterator = randomLottoLists.iterator();
-
-        while(iterator.hasNext()) {
-            List<Integer> values = iterator.next();
-            System.out.println(values.stream()
-                    .sorted()
-                    .collect(Collectors.toList()));
+    public void printRandomLottoLists() {
+        for (List<Integer> values : randomLottoLists) {
+            System.out.println(values.stream().sorted().collect(Collectors.toList()));
         }
         output.lineSpace();
     }
