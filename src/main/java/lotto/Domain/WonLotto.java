@@ -1,5 +1,7 @@
 package lotto.Domain;
 
+import java.util.List;
+
 public class WonLotto {
     private int lottoCount=0;
     private int bonusCount=0;
@@ -10,8 +12,18 @@ public class WonLotto {
         this.bonusCount=this.bonusCount+bonusCount;
     }
 
+    public int getLottoCount()
+    {
+        return lottoCount;
+    }
+
+    public int getBonusCount()
+    {
+        return bonusCount;
+    }
     @Override
     public String toString() {
         return "lottoCount : "+lottoCount+", bonusCount : "+bonusCount;
     }
+
 }

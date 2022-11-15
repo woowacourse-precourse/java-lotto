@@ -7,13 +7,11 @@ import java.util.List;
 public class User {
     private final List<Lotto> lottos;
     private final int money;
-    private final int bonusNumber;
-    public User(List<Lotto> lottos,int money,int bonusNumber)
+    public User(List<Lotto> lottos,int money)
     {
         not1000(money);
         this.money = money;
         this.lottos = lottos;
-        this.bonusNumber=bonusNumber;
     }
 
     public void not1000(int money)
@@ -29,7 +27,7 @@ public class User {
         for(Lotto lotto:sortedUser.lottos) {
             System.out.println(lotto);
         }
-        return new User(sortedUser.lottos,money,bonusNumber);
+        return new User(sortedUser.lottos,money);
     }
     public User lottosSort()
     {
@@ -39,14 +37,13 @@ public class User {
         {
             List<Integer> newNumList  = new ArrayList<>();
             newNumList.addAll(lottos.get(i).getNumbers());
-            System.out.println(newNumList);
             Collections.sort(newNumList);
             sortedList.add(new Lotto(newNumList));
         }
-        return new User(sortedList,money,bonusNumber);
+        return new User(sortedList,money);
     }
 ;
-    public List<WonLotto> countLotto(Lotto answer)
+    public List<WonLotto> countLotto(Lotto answer,int bonusNumber)
     {
         List<WonLotto> answerSize = new ArrayList<>();
         for(int i=0;i<lottos.size();i++) {
