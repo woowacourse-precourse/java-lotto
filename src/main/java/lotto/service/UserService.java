@@ -36,9 +36,10 @@ public class UserService {
 
     public HashMap<LottoResultType, Integer> getMyResult(LottoQueryDto lottoQueryDto) {
         HashMap<LottoResultType, Integer> lottoResults = new HashMap<>();
+        Long userId = lottoQueryDto.getUserId();
         Long roundId = lottoQueryDto.getRoundId();
-        WinNumber winNumber = userDao.getWinNumber(roundId);
-        List<LottoBundle> lottoBundles = userDao.selectLottoBundles(lottoQueryDto);
+        WinNumber winNumber = userDao.selectWinNumber(roundId);
+        List<LottoBundle> lottoBundles = userDao.selectLottoBundles(userId, roundId);
         lottoBundles.stream()
                 .map(LottoBundle::getLottos)
                 .flatMap(Collection::stream)

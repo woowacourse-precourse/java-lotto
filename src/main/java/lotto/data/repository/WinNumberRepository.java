@@ -17,32 +17,23 @@ public class WinNumberRepository {
 
     private static void assignNewInstance() {
         synchronized (WinNumberRepository.class) {
-            instance = new WinNumberRepository(0L);
+            instance = new WinNumberRepository();
         }
     }
 
     private final HashMap<Long, WinNumber> winNumberRepository = new HashMap<>();
-    private Long currentRoundId;
 
-    private WinNumberRepository(Long initRoundId) {
-        this.currentRoundId = initRoundId;
-    }
-
-    public Long getCurrentRoundId() {
-        return currentRoundId;
-    }
+    private WinNumberRepository() {}
 
     public Optional<WinNumber> findById(Long id) {
         return Optional.ofNullable(winNumberRepository.getOrDefault(id, null));
     }
 
     public void save(WinNumber winNumber) {
-        Long roundId = winNumber.getRoundId();
-        winNumberRepository.put(roundId, winNumber);
+        winNumberRepository.put(winNumber.getRoundId(), winNumber);
     }
 
-    public Long increaseRoundId() {
-        return ++currentRoundId;
+    public int count() {
+        return winNumberRepository.size();
     }
-
 }

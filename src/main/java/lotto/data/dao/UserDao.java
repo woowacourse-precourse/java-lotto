@@ -4,31 +4,30 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
-import lotto.data.dto.LottoQueryDto;
 import lotto.data.entity.LottoBundle;
 import lotto.data.entity.LottoRound;
 import lotto.data.entity.WinNumber;
-import lotto.data.repository.LottoBundleRepository;
+import lotto.data.repository.LottoRoundRepository;
 import lotto.data.repository.WinNumberRepository;
 import lotto.type.ExceptionType;
 
 public class UserDao {
-    private final LottoBundleRepository lottoBundleRepository;
+    private final LottoRoundRepository lottoRoundRepository;
     private final WinNumberRepository winNumberRepository;
 
     public UserDao() {
-        lottoBundleRepository = LottoBundleRepository.getInstance();
+        lottoRoundRepository = LottoRoundRepository.getInstance();
         winNumberRepository = WinNumberRepository.getInstance();
     }
 
     public Long getCurrentRoundId() {
-        return winNumberRepository.getCurrentRoundId();
+        return (long) lottoRoundRepository.count();
     }
 
     public void insertLottoBundle(LottoBundle lottoBundle) {
         Long roundId = lottoBundle.getRoundId();
         Long ownerId = lottoBundle.getOwnerId();
-        HashMap<Long, List<LottoBundle>> userIdMapper = getLottoRound(roundId).getUserIdMapper();
+        HashMap<Long, List<LottoBundle>> userIdMapper = selectLottoRound(roundId).getUserIdMapper();
         List<LottoBundle> lottoBundles = userIdMapper.getOrDefault(ownerId, new ArrayList<>());
         if (isRoundFinished(roundId)) {
             throw ExceptionType.FINISHED_ROUND.getException();
@@ -38,13 +37,11 @@ public class UserDao {
     }
 
     private boolean isRoundFinished(Long roundId) {
-        return !roundId.equals(winNumberRepository.getCurrentRoundId());
+        return !roundId.equals((long) lottoRoundRepository.count());
     }
 
-    public List<LottoBundle> selectLottoBundles(LottoQueryDto lottoQueryDto) {
-        Long roundId = lottoQueryDto.getRoundId();
-        Long userId = lottoQueryDto.getUserId();
-        HashMap<Long, List<LottoBundle>> userIdMapper = getLottoRound(roundId).getUserIdMapper();
+    public List<LottoBundle> selectLottoBundles(Long roundId, Long userId) {
+        HashMap<Long, List<LottoBundle>> userIdMapper = selectLottoRound(roundId).getUserIdMapper();
         List<LottoBundle> lottoBundles = userIdMapper.getOrDefault(userId, null);
         if(lottoBundles == null) {
             throw ExceptionType.NULL_PURCHASE.getException();
@@ -52,15 +49,15 @@ public class UserDao {
         return lottoBundles;
     }
 
-    private LottoRound getLottoRound(Long roundId) {
-        Optional<LottoRound> selectedLottoRound = lottoBundleRepository.findById(roundId);
+    public LottoRound selectLottoRound(Long roundId) {
+        Optional<LottoRound> selectedLottoRound = lottoRoundRepository.findById(roundId);
         if (selectedLottoRound.isEmpty()) {
             throw ExceptionType.NULL_ROUND.getException();
         }
         return selectedLottoRound.get();
     }
 
-    public WinNumber getWinNumber(Long roundId) {
+    public WinNumber selectWinNumber(Long roundId) {
         Optional<WinNumber> selectedWinNumber = winNumberRepository.findById(roundId);
         if (selectedWinNumber.isEmpty()) {
             throw ExceptionType.NULL_WIN_NUMBER.getException();
