@@ -16,6 +16,7 @@ public class GameService {
     private static GameService INSTANCE;
 
     private final Map<Place, Integer> prizeMap = new HashMap<>();
+
     {
         prizeMap.put(Place.FIRST, 0);
         prizeMap.put(Place.SECOND, 0);

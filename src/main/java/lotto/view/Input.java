@@ -9,7 +9,8 @@ import java.util.List;
 public class Input {
     private static final String NUMERIC_ERROR_MSG = "[ERROR] 반드시 숫자여야 합니다.";
 
-    private Input() {}
+    private Input() {
+    }
 
     public static Integer inputPurchaseLottoValue() {
         System.out.println("구입 금액을 입력해 주세요.");

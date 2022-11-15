@@ -6,7 +6,7 @@ import java.util.Set;
 
 public class Validator {
     public static void validateMoney(int money) {
-        if(money % 1000 != 0) {
+        if (money % 1000 != 0) {
             throw new IllegalArgumentException("[ERROR] 로또 구입 금액은 반드시 1,000원 단위여야 합니다.");
         }
     }
@@ -21,13 +21,13 @@ public class Validator {
         }
 
         Set<Integer> numberSet = new HashSet<>(numbers);
-        if(numberSet.size() != numbers.size()) {
+        if (numberSet.size() != numbers.size()) {
             throw new IllegalArgumentException("[ERROR] 로또 번호는 중복될 수 없습니다.");
         }
     }
 
     public static void validateBonusNumber(List<Integer> numbers, int bonusNumber) {
-        if(numbers.contains(bonusNumber)) {
+        if (numbers.contains(bonusNumber)) {
             throw new IllegalArgumentException("[ERROR] 보너스 번호는 로또 발행번호와 일치하지 않아야 합니다.");
         }
     }
