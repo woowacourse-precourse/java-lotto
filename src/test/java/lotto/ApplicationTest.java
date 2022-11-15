@@ -21,6 +21,17 @@ class ApplicationTest extends NsTest {
         int result = 4;
         assertThat(result).isEqualTo(input_nums.howManyMatches(win_nums));
     }
+
+    @Test
+    void 로또번호_당첨_순위_테스트(){
+        List<Integer> nums = new ArrayList<>();
+        Lotto input_nums = new Lotto(List.of(1,2,3,23,5,6));
+        Lotto win_nums = new Lotto(List.of(1,2,3,11,5,6));
+        int bonus = 23;
+
+        int result = 2;
+        assertThat(result).isEqualTo(input_nums.rank(win_nums, bonus));
+    }
     @Test
     void 기능_테스트() {
         assertRandomUniqueNumbersInRangeTest(
