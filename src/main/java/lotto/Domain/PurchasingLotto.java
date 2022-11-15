@@ -8,12 +8,12 @@ public class PurchasingLotto {
 
     public PurchasingLotto(int purchase) {
         devisionValid(purchase);
+        this.amountOfLotto = calculateNumberOfLotto(purchase);
         this.purchase = purchase;
     }
 
     public int calculateNumberOfLotto(int purchasingAmount) {
         int numberOfLotto = purchasingAmount / 1000;
-        amountOfLotto = numberOfLotto;
         return numberOfLotto;
     }
 
