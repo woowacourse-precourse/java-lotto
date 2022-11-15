@@ -12,7 +12,6 @@ import java.util.List;
 public class LottoGame {
 
     private final LottoRankAggregation lottoRankAggregation = new LottoRankAggregation();
-    private final InputView inputView = new InputView();
 
     public void start() {
         LottoShop lottoShop = new LottoShop();
@@ -25,7 +24,7 @@ public class LottoGame {
     }
 
     private Money getMoney() {
-        String payment = inputView.requestMoney();
+        String payment = InputView.requestMoney();
         return Money.of(payment);
     }
 
@@ -36,8 +35,8 @@ public class LottoGame {
     }
 
     private WinningLottoNumberDto getWinningLottoNumber(LottoShop lottoShop) {
-        String winningNumberData = inputView.requestWinningNumbers();
-        String bonusNumberData = inputView.requestBonusNumber();
+        String winningNumberData = InputView.requestWinningNumbers();
+        String bonusNumberData = InputView.requestBonusNumber();
         return lottoShop.createWinningLottoNumberFor(winningNumberData, bonusNumberData);
     }
 }
