@@ -47,6 +47,13 @@ public class Referee {
         return score;
     }
 
+    public double calculateProfitRate(int inputMoney) {
+        int profit = sumTotalProfit();
+        double profitRate = ((double) profit / inputMoney) * 100;
+        double roundOfProfitRate = Math.round(profitRate * 10) / 10.0;
+        return roundOfProfitRate;
+    }
+
     public int sumTotalProfit() {
         int totalProfit = 0;
         for (Map.Entry<Prize, Integer> entrySet : result.entrySet()) {
