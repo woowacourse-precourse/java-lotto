@@ -13,10 +13,6 @@ public class Lottos {
         this.inputLottos = purchaseLotto(number);
     }
 
-    public void printLottoNumbers() {
-        inputLottos.stream().forEach(lotto -> System.out.println(lotto));
-    }
-
     public static List<Lotto> purchaseLotto(int number) {
 
         List<Lotto> lottoTickets = new ArrayList<>();
@@ -31,5 +27,12 @@ public class Lottos {
         return lottoTickets;
     }
 
+    public List<Lotto> getLottos() {
+        return inputLottos;
+    }
+
+    public void printLottoNumbers() {
+        inputLottos.forEach(lotto -> System.out.println(lotto));
+    }
 
 }

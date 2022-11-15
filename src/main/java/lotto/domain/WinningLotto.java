@@ -3,14 +3,27 @@ package lotto.domain;
 import java.util.ArrayList;
 import java.util.List;
 
-import static lotto.domain.Preset.LOTTO_MAX_VALUE;
-import static lotto.domain.Preset.LOTTO_MIN_VALUE;
+import static lotto.domain.Preset.*;
 
 public class WinningLotto {
 
+    private final List<Integer> numbersWithBonus;
+
     public WinningLotto(List<Integer> numbers, int bonusNumber) {
 
-        List<Integer> numbersWithBonus = createWinningLotto(numbers, bonusNumber);
+        this.numbersWithBonus = createWinningLotto(numbers, bonusNumber);
+    }
+
+    public List<Integer> getAllLottoNumbers() {
+        return numbersWithBonus.subList(0, LOTTO_LENGTH);
+    }
+
+    public Integer getBonusNumber() {
+        return numbersWithBonus.get(LOTTO_LENGTH);
+    }
+
+    public Integer getLottoNumber(int index) {
+        return numbersWithBonus.get(index);
     }
 
     public static List<Integer> createWinningLotto(List<Integer> numbers, int bonusNumber) {

@@ -1,157 +1,110 @@
 package lotto;
 
-import camp.nextstep.edu.missionutils.Console;
-import camp.nextstep.edu.missionutils.Randoms;
+import lotto.domain.*;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.text.DecimalFormat;
+import java.util.*;
+import java.util.stream.Stream;
+
+import static lotto.domain.Preset.LOTTO_LENGTH;
+import static lotto.domain.Preset.LOTTO_PRICE;
+import static lotto.domain.WinningType.getWinningType;
+import static lotto.view.InputView.*;
+import static lotto.view.OutputView.printPurchaseNum;
 
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
 
-        // 로또 구입 금액을 입력받는 메서드 호출
-        System.out.println("구입금액을 입력해 주세요.");
-        int inputMoney = getInputMoney();
+        int inputMoney = readInputMoney();
 
-        // 금액에 따른 구매 개수를 구하는 메서드 호출
         int purchaseNum = getPurchaseNum(inputMoney);
-        System.out.println(purchaseNum + "개를 구매했습니다.");
+        printPurchaseNum(purchaseNum);
 
-        // 구매 개수에 맞게 로또를 발행하는 메서드 호출
-        List<Lotto> lottos = purchaseLotto(purchaseNum);
-        for (Lotto l : lottos)
-            l.printElements();
+        Lottos purchasedLottos = new Lottos(purchaseNum);
+        purchasedLottos.printLottoNumbers();
 
-        // 당첨 번호를 입력받는 메서드 호출
-        System.out.println("당첨 번호를 입력해 주세요.");
-        Lotto winningLotto = getWinningNumber();
-
-        System.out.println("보너스 번호를 입력해 주세요.");
-        // 보너스 번호를 입력받는 메서드 호출
-        int bonusNumber = getBonusInput(winningLotto);
+        List<Integer> winningNumbers = readWinningNumbers();
+        int bonusNumber = readBonusNumber();
+        WinningLotto lotto = new WinningLotto(winningNumbers, bonusNumber);
 
         // 당첨 통계를 구하는 메서드 호출
-        printResult(winningLotto, lottos, bonusNumber);
+        printResult(lotto, purchasedLottos, bonusNumber);
     }
-
-    public static int getInputMoney() {
-        int money = userInputToInteger(Console.readLine());
-
-        if (money < 1000) throw new IllegalArgumentException("[ERROR]Input error");
-        if (money % 1000 != 0) throw new IllegalArgumentException("[ERROR]Input error");
-
-        return money;
-    }
-
 
     public static int getPurchaseNum(int inputMoney) {
-        return inputMoney / 1000;
+        return inputMoney / LOTTO_PRICE;
     }
 
-    public static Lotto getWinningNumber() {
-        String winningNumberInput = Console.readLine();
-
-        if (!winningNumberInput.contains(","))
-            throw new IllegalArgumentException("[ERROR]Winning number error");
-
-        String[] winningNumberSplit = winningNumberInput.split(",");
-
-        if (winningNumberSplit.length != 6)
-            throw new IllegalArgumentException("[ERROR]Winning number error");
-
-        List<Integer> winningNumbers = new ArrayList<>();
-        for (String num : winningNumberSplit) {
-            int number = userInputToInteger(num);
-            winningNumbers.add(number);
-        }
-
-        return new Lotto(winningNumbers);
-    }
-
-    public static int getBonusInput(Lotto winningLotto) {
-        int bonus = userInputToInteger(Console.readLine());
-
-        isBonusOutOfRange(bonus);
-        isBonusNotDuplicated(winningLotto, bonus);
-
-        return bonus;
-    }
-
-    public static int userInputToInteger(String consoleInput) {
-        try {
-            return Integer.parseInt(consoleInput);
-        } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("[ERROR] 입력은 숫자여야 합니다");
-        }
-    }
-
-    public static void isBonusOutOfRange(int bonus) {
-        if (bonus < 1 || bonus > 45)
-            throw new IllegalArgumentException("[ERROR]Bonus input error");
-    }
-
-    public static void isBonusNotDuplicated(Lotto winningLotto, int bonus) {
-        if (winningLotto.getElements().contains(bonus))
-            throw new IllegalArgumentException("[ERROR]Bonus input error");
-    }
-
-    public static List<Lotto> purchaseLotto(int purchaseNum) {
-
-        List<Lotto> lottos = new ArrayList<>();
-
-        for (int i = 0; i < purchaseNum; i++) {
-            List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
-            Lotto l = new Lotto(numbers);
-            l.sortElements();
-            lottos.add(l);
-        }
-
-        return lottos;
-    }
-
-
-    public static void printResult(Lotto winningLotto, List<Lotto> lottos, int bonusNumber) {
+    public static void printResult(WinningLotto winningLotto, Lottos lottos, int bonusNumber) {
         System.out.println("당첨 통계\n" + "---");
 
-        Result history = getEqualNumber(winningLotto, lottos, bonusNumber);
-        history.printResultElements();
+        Map<WinningType, Integer> winningResults = new EnumMap<>(WinningType.class);
 
-        calculateEarning(history, lottos.size() * 1000);
-    }
+        for (Lotto lotto : lottos.getLottos()) {
 
-    public static Result getEqualNumber(Lotto winningLotto, List<Lotto> lottos, int bonusNumber) {
+            Boolean withBonus = false;
+            int equalNumber = equalNumberCounter(winningLotto, lotto);
 
-        Result history = new Result();
+            if (equalNumber == 7) {
+                withBonus = true;
+                equalNumber = 5;
+            }
+            WinningType type = getWinningType(equalNumber, withBonus);
+            System.out.println(type.getEqualCount());
 
-        for (Lotto lotto : lottos) {
-            int equalCount = equalNumberCounter(winningLotto, lotto, bonusNumber);
+            if (winningResults.containsKey(type)) {
+                winningResults.put(type, winningResults.get(type) + 1);
 
-            if (equalCount == 3)
-                history.setEqualThree();
-            if (equalCount == 4)
-                history.setEqualFour();
-            if (equalCount == 5)
-                history.setEqualFive();
-            if (equalCount == 6)
-                history.setEqualSix();
-            if (equalCount == 7)
-                history.setEqualFiveWithBonus();
+            } else winningResults.put(type, 1);
         }
 
-        return history;
+        printResultElements(winningResults);
+
+        /*
+
+        calculateEarning(history, lottos.size() * 1000);
+
+         */
     }
 
-    public static int equalNumberCounter(Lotto winningLotto, Lotto userLotto, int bonusNumber) {
+    public static void printResultElements(Map<WinningType, Integer> winningResults) {
+
+        DecimalFormat decimalFormat = new DecimalFormat("###,###");
+
+        Iterator<WinningType> winningTypeIterator = Arrays.stream(WinningType.values()).iterator();
+        while(winningTypeIterator.hasNext()) {
+            WinningType type = winningTypeIterator.next();
+            if(type != WinningType.NONE) {
+                System.out.print(type.getEqualCount());
+                System.out.print("개 일치");
+
+                if(type.getWithBonus())
+                    System.out.print(", 보너스 볼 일치");
+                System.out.print(" (" +decimalFormat.format(type.getWinnings()) + "원) - ");
+
+                winningResults.putIfAbsent(type, 0);
+                System.out.println(winningResults.get(type)+ "개");
+            }
+        }
+    }
+
+    public static int equalNumberCounter(WinningLotto winningLotto, Lotto userLotto) {
 
         int count = 0;
-        for (Integer num : winningLotto.getElements())
-            if (userLotto.getElements().contains(num))
-                count += 1;
+        for (int i = 0; i < LOTTO_LENGTH; i++) {
+            int number = winningLotto.getLottoNumber(i);
 
-        if (count == 5)
-            if (userLotto.getElements().contains(bonusNumber)) count = 7;
+            if (userLotto.getElements().contains(number))
+                count += 1;
+        }
+
+        if (count == 5) {
+            int bonusNumber = winningLotto.getBonusNumber();
+
+            if (userLotto.getElements().contains(bonusNumber))
+                count = 7;
+        }
 
         return count;
     }
