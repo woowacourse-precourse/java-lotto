@@ -6,6 +6,7 @@ import lotto.Lotto;
 import lotto.Util;
 import lotto.condition.Condition;
 import lotto.condition.ConditionGenerator;
+import lotto.message.ErrorMessageGenerator;
 import lotto.message.MessageGenerator;
 import lotto.validator.Validator;
 
@@ -28,7 +29,7 @@ public class UserInterface {
 
         if (notPassConditionIndex != -1) {
             Condition notPassCondition = conditions.get(notPassConditionIndex);
-            throw new IllegalArgumentException(notPassCondition.getErrorMessage());
+            throw new IllegalArgumentException(ErrorMessageGenerator.getErrorMessage(notPassCondition));
         }
 
         return Util.getParsedNumbers(input);
@@ -43,7 +44,7 @@ public class UserInterface {
 
         if (notPassConditionIndex != -1) {
             Condition notPassCondition = conditions.get(notPassConditionIndex);
-            throw new IllegalArgumentException(notPassCondition.getErrorMessage());
+            throw new IllegalArgumentException(ErrorMessageGenerator.getErrorMessage(notPassCondition));
         }
 
         return Integer.parseInt(input);
@@ -72,7 +73,7 @@ public class UserInterface {
 
         if (notPassConditionIndex != -1) {
             Condition notPassCondition = conditions.get(notPassConditionIndex);
-            throw new IllegalArgumentException(notPassCondition.getErrorMessage());
+            throw new IllegalArgumentException(ErrorMessageGenerator.getErrorMessage(notPassCondition));
         }
 
         return Integer.parseInt(input);
