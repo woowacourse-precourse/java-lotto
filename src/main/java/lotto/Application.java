@@ -34,8 +34,10 @@ public class Application {
             int totalPrize = 0;
 
             for(int i = 0; i < allLotto.size(); i++){
-                int matchNumber = compare.matchCount(allLotto.get(i),Winning.numbers);
-                boolean matchBonus = compare.matchBonus(allLotto.get(i), Winning.numbers);
+                List<Integer> lotto = (List<Integer>) allLotto.get(i);
+                int matchNumber = compare.matchCount(lotto, Winning.numbers);
+                boolean matchBonus = compare.matchBonus(lotto, Winning.numbers);
+                System.out.println(matchNumber);
 
                 Rank rank = Rank.valueOf(matchNumber, matchBonus);
 

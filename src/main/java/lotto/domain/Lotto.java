@@ -6,12 +6,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Lotto {
-    public static List<Integer> allNumbers;
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
-        allNumbers = numbers;
         this.numbers = numbers;
         show(numbers);
     }
