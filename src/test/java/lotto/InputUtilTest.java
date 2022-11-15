@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 import util.validation.ValidationUtil;
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class UtilTest {
+public class InputUtilTest {
     @DisplayName("checkSizeTest")
     @Test
     void checkSizeTest() {
@@ -37,6 +37,14 @@ public class UtilTest {
     @Test
     void isUnitsOf1000WonTest() {
         boolean origin = ValidationUtil.isUnitsOf1000Won("1000");
+
+        assertThat(origin).isEqualTo(true);
+    }
+
+    @DisplayName("haveUndefinedNumberTest")
+    @Test
+    void haveUndefinedNumberTest() {
+        boolean origin = ValidationUtil.haveUndefinedNumber(List.of("", "1"));
 
         assertThat(origin).isEqualTo(true);
     }
