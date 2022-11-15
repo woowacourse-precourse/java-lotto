@@ -1,6 +1,7 @@
 package domain;
 
 import dto.LottosDto;
+import dto.WinningNumberDto;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,5 +21,12 @@ public class Lottos {
         return lottos.size();
     }
 
-
+    public Result totalResult(WinningNumberDto winningNumberDto){
+        Result result = new Result();
+        for(Lotto lotto : lottos){
+            LottoRank rank = Lotto.countHit(winningNumberDto);
+            result.increment(rank);
+        }
+        return result;
+    }
 }
