@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 public class Application {
     public static void main(String[] args) {
@@ -27,6 +28,7 @@ public class Application {
         //보너스 번호 입력받기
         int bonusNumber = inputBonusNumber();
         //당첨 확인
+        ArrayList<Integer> winList = winCount(lottoList, luckyList, bonusNumber);
         //당첨통계
         //수익률 출력
 
@@ -73,6 +75,22 @@ public class Application {
 
         return bonusNumber;
     }
+
+    static ArrayList<Integer> winCount(List<Lotto> lottoList, List<Integer> luckyList, int bonusNumber){
+        ArrayList<Integer> winList = new ArrayList<Integer>();
+        ArrayList<Integer> difference;
+        /*
+        * 구매한 로또번호와 당첨번호를 차집합을 통해 비교
+        * 차집합이 0일경우 1등
+        * 차집합이 1일경우에 보너스가 일치하면 2등
+        * 차집합이 1일경우에 보너스가 일치하지 않으면 3등
+        * 차집합이 2일경우 4등
+        * 차집합이 3일경우 5등
+        */
+
+        return winList;
+    }
+
 
 
 }
