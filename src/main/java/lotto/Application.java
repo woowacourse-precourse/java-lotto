@@ -26,10 +26,10 @@ public class Application {
     public static void main(String[] args) {
         try {
             int amount = requestAmount();
-            List<Lotto> userLottos = createLottos(amount);
-            printUserLottos(userLottos);
+            List<Lotto> issuedLottes = createLottos(amount);
+            printissuedLottos(issuedLottes);
             PrizeNumber prizeNumber = requestPrizeNumber();
-            Map<Rank, Integer> results = getLottoResults(userLottos, prizeNumber);
+            Map<Rank, Integer> results = getLottoResults(issuedLottes, prizeNumber);
             printResults(results);
             double rate = getRate(results, amount);
             printRate(rate);
@@ -48,8 +48,8 @@ public class Application {
         return issue.createLottos(amount);
     }
 
-    private static Map<Rank, Integer> getLottoResults(List<Lotto> userLottos, PrizeNumber prizeNumber) {
-        return lottoService.compare(userLottos, prizeNumber);
+    private static Map<Rank, Integer> getLottoResults(List<Lotto> issuedLottos, PrizeNumber prizeNumber) {
+        return lottoService.compare(issuedLottos, prizeNumber);
     }
 
     private static double getRate(Map<Rank, Integer> results, int amount) {
@@ -87,7 +87,7 @@ public class Application {
         return Integer.parseInt(input);
     }
 
-    private static void printUserLottos(List<Lotto> lottos) {
+    private static void printissuedLottos(List<Lotto> lottos) {
         String message = String.format(RESPONSE_LOTTO_SIZE, lottos.size());
         System.out.println(message);
         for (Lotto lotto : lottos) {

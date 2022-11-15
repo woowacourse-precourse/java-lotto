@@ -19,12 +19,12 @@ public class LottoServiceImpl implements LottoService {
     private final Judgment judgment = new JudgmentImpl();
 
     @Override
-    public Map<Rank, Integer> compare(List<Lotto> userLottos, PrizeNumber prizeNumber) {
+    public Map<Rank, Integer> compare(List<Lotto> issuedLottos, PrizeNumber prizeNumber) {
         Map<Rank, Integer> results = new HashMap<>();
         List<Integer> prizeNumbers = prizeNumber.getNumbers();
         int bonusNumber = prizeNumber.getBonusNumber();
 
-        for (Lotto userLotto : userLottos) {
+        for (Lotto userLotto : issuedLottos) {
             List<Integer> userNumbers = userLotto.getNumbers();
             int count = checkPrizeNumber(userNumbers, prizeNumbers);
             boolean hasBonusNumber = checkBonusNumber(userNumbers, bonusNumber);
