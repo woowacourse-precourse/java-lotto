@@ -23,13 +23,13 @@ public class OutputView {
         }
     }
 
-    public void printStatistic(List<Integer> prizeCounts, double yeild){
+    public void printStatistic(double yeild){
         System.out.println(OUTPUT_STATISTIC_MESSAGE);
         System.out.println(OUTPUT_DASH_MESSAGE);
 
-        for(int i = 0; i<prizeCounts.size(); i++){
-            System.out.print(Prize.findByIndex(i).getMessage());
-            System.out.println(prizeCounts.get(i) + OUTPUT_COUNT_MESSAGE);
+        for(int i = 0; i<5; i++){
+            System.out.print(Prize.values()[i].getMessage());
+            System.out.println(Prize.values()[i].getPrizeCount() + OUTPUT_COUNT_MESSAGE);
         }
 
         System.out.print(OUTPUT_YEILD_MESSAGE);
