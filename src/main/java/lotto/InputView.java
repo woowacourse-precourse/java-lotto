@@ -10,27 +10,18 @@ public class InputView {
 
     public static int inputPrice() {
         System.out.println("구입금액을 입력해 주세요.");
-        int inputPrice = Integer.parseInt(Console.readLine());
-        LottoPrice.checkPrice(inputPrice);
-
-        return inputPrice;
+        return Integer.parseInt(Console.readLine());
     }
 
-    public static WinNumber inputWinNumber() {
+    public static List<Integer> inputWinNumbers() {
         System.out.println("당첨 번호를 입력해 주세요.");
-        String inputWinNumbers = Console.readLine();
-
-        List<Integer> winNumbers = Arrays.stream(inputWinNumbers.split(","))
+        return Arrays.stream(Console.readLine().split(","))
                 .map(Integer::parseInt)
                 .collect(Collectors.toList());
-
-        return new WinNumber(winNumbers);
     }
 
-    public static BonusNumber inputBonusNumber(List<Integer> winNumbers) {
+    public static int inputBonusNumber() {
         System.out.println("보너스 번호를 입력해 주세요.");
-        int inputBonusNumber = Integer.parseInt(Console.readLine());
-
-        return new BonusNumber(inputBonusNumber, winNumbers);
+        return Integer.parseInt(Console.readLine());
     }
 }
