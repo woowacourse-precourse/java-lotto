@@ -89,6 +89,18 @@ public class Application {
         }
 
     }
+    // 수익률
+
+
+//    public static void rateLotto() {
+//        Double rate = 0.0;
+//        LottoRank[] lottoRanks = LottoRank.values();
+//        for(LottoRank lottoRank : lottoRanks) {
+//            if(lottoRank == lottoRank.SIXTH_PLACE)
+//                continue;
+//            int result = 0;
+//        }
+//    }
 
 
 
