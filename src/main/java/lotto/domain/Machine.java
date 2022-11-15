@@ -14,14 +14,14 @@ import java.util.stream.Collectors;
 public class Machine {
 
   private Answer answer;
-  private String[] resultMessage = {
+  private final String[] resultMessage = {
     "3개 일치 (5,000원)",
     "4개 일치 (50,000원)",
     "5개 일치 (1,500,000원)",
     "5개 일치, 보너스 볼 일치 (30,000,000원)",
     "6개 일치 (2,000,000,000원)",
   };
-  private int[] prizeMoney = { 5000, 50000, 1500000, 30000000, 2000000000 };
+  private final int[] prizeMoney = { 5000, 50000, 1500000, 30000000, 2000000000 };
 
   /**
    * Get money to return ticket count.

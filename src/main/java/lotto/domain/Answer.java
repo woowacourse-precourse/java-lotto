@@ -2,8 +2,8 @@ package lotto.domain;
 
 public class Answer {
 
-  private Lotto winningLotto;
-  private Integer bonusNumber;
+  private final Lotto winningLotto;
+  private final Integer bonusNumber;
 
   public Answer(Lotto winningLotto, Integer bonusNumber) {
     this.winningLotto = winningLotto;
