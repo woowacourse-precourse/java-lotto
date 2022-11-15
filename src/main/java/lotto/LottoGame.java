@@ -5,58 +5,59 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import lotto.domain.buyer.Buyer;
-import lotto.domain.buyer.User;
 import lotto.domain.lotto.Lotto;
-import lotto.domain.lotto.LottoGenerator;
 import lotto.domain.lotto.LottoRanking;
-import lotto.domain.lotto.WinningLotto;
-import lotto.domain.seller.LottoMachine;
 import lotto.domain.seller.Seller;
 import lotto.dto.LottoCount;
 import lotto.dto.LottoGameResult;
 
 public class LottoGame {
+    private final Buyer buyer;
+    private final Seller seller;
 
+    public LottoGame(Buyer buyer, Seller seller) {
+        this.buyer = buyer;
+        this.seller = seller;
+    }
 
     public void start() {
-        List<Lotto> lottos =  buyLottos();
-        Buyer buyer = new User(lottos);
-
-        WinningLotto winningLotto = LottoGenerator.createWinningLottoWithEnterNumbers();
-        Seller seller = new LottoMachine(winningLotto);
-        LottoGameResult lottoGameResult = findLottoGameResult(lottos, seller);
-
-        
+        List<LottoRanking> lottoRankings = findLottoRankings();
+        Map<LottoRanking, Integer> lottoRankingCount = findLottoRankingCount(lottoRankings);
+        int totalWinningAmount = seller.calculateTotalWinningAmount(lottoRankings);
+        double profitRatio = buyer.calculateProfitRatio(totalWinningAmount);
+        LottoGameResult lottoGameResult = new LottoGameResult(lottoRankings, lottoRankingCount,
+            profitRatio);
+        printLottoGameResult(lottoGameResult);
     }
 
-    private List<Lotto> buyLottos() {
-        int money = LottoGenerator.enterToBuyLottoForMoney();
-        int lottoCount = LottoGenerator.findLottoCountByMoney(money);
-        System.out.println("\n" + lottoCount + "개를 구매했습니다.");
-
-        List<Lotto> lottos = new ArrayList<>();
-        for (int i = 0; i < lottoCount; i++) {
-            buyLotto(lottos);
+    private void printLottoGameResult(LottoGameResult lottoGameResult) {
+        System.out.println("당첨 통계");
+        System.out.println("---");
+        for (LottoRanking lottoRanking : LottoRanking.values()) {
+            Integer count = lottoGameResult.getLottoRankingCount()
+                .getOrDefault(lottoRanking, 0);
+            lottoRanking.printMessage(count);
         }
-        return lottos;
+        System.out.printf("총 수익률은 %.1f%s입니다.", lottoGameResult.getProfitRatio(), "%");
     }
 
-    private void buyLotto(List<Lotto> lottos) {
-        Lotto lotto = LottoGenerator.createLottoWithRandomNumbers();
-        lottos.add(lotto);
-        System.out.println(lotto.getNumbers());
-    }
-
-    private LottoGameResult findLottoGameResult(List<Lotto> lottos, Seller seller) {
+    private List<LottoRanking> findLottoRankings() {
         List<LottoRanking> lottoRankings = new ArrayList<>();
-        Map<LottoRanking, Integer> lottoRankingCount = new HashMap<>();
-        for (Lotto lotto: lottos) {
+        for (Lotto lotto: buyer.getLottos()) {
             int hits = seller.compareNumbers(lotto.getNumbers());
             boolean bonus = seller.compareBonusNumber(lotto.getNumbers());
             LottoRanking lottoRanking = LottoRanking.of(new LottoCount(hits, bonus));
-            lottoRankingCount.put(lottoRanking, lottoRankingCount.getOrDefault(lottoRanking, 0) + 1);
             lottoRankings.add(lottoRanking);
         }
-        return new LottoGameResult(lottoRankings, lottoRankingCount);
+        return lottoRankings;
+    }
+
+    private Map<LottoRanking, Integer> findLottoRankingCount(List<LottoRanking> lottoRankings) {
+        Map<LottoRanking, Integer> lottoRankingCount = new HashMap<>();
+        for (LottoRanking lottoRanking : lottoRankings) {
+            lottoRankingCount.put(lottoRanking,
+                lottoRankingCount.getOrDefault(lottoRanking, 0) + 1);
+        }
+        return lottoRankingCount;
     }
 }

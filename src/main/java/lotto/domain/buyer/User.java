@@ -19,4 +19,9 @@ public class User implements Buyer {
 
         return (double) amount / (lottos.size() * 1000) * 100;
     }
+
+    @Override
+    public List<Lotto> getLottos() {
+        return lottos;
+    }
 }
