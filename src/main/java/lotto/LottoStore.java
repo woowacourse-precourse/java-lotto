@@ -21,7 +21,7 @@ public class LottoStore {
 
         Lotto winningNumbers = getWinningNumbers(LottoPrinter.inputer("당첨 번호를 입력해 주세요."));
         String bonusNumber = LottoPrinter.inputer("보너스 번호를 입력해 주세요.");
-        divideValidate(bonusNumber);
+        digitValidate(bonusNumber);
         inRangeValidate(Integer.parseInt(bonusNumber));
 
 
