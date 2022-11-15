@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 public class Lotto {
     private final List<Integer> numbers;
@@ -24,7 +25,9 @@ public class Lotto {
         int numbersCount = numbers.size();
         HashSet<Integer> tempNumbers = new HashSet<>(numbers);
         if (numbersCount != tempNumbers.size()) {
-            throw new IllegalArgumentException("[ERROR] 로또 번호로 중복된 숫자가 존재 합니다.");
+            IllegalArgumentException exception = new IllegalArgumentException("[ERROR] 로또 번호로 중복된 숫자가 존재 합니다.");
+            System.out.println(exception.getMessage());
+            throw exception;
         }
     }
 
