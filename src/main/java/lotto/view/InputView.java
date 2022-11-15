@@ -12,18 +12,21 @@ public class InputView {
     private String winningNumbers;
     private String bonusNumber;
 
-    public int enterPurchaseMoney() {
+    public String enterPurchaseMoney() {
+        OutputView.printEnterPurchaseAmount();
         this.purchaseMoney = Console.readLine();
-        return Integer.parseInt(purchaseMoney);
+        return purchaseMoney;
     }
 
 
     public List<Integer> enterWinningNumbers() {
+        OutputView.printEnterWinningNumbers();
         this.winningNumbers = Console.readLine();
         return changeTypeForSystem(winningNumbers);
     }
 
     public int enterBonusNumber() {
+        OutputView.printEnterBonusNumber();
         this.bonusNumber = Console.readLine();
         return Integer.parseInt(bonusNumber);
     }
