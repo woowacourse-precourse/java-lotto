@@ -1,19 +1,18 @@
 package lotto;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class PlayLotto {
-    CreateLotto createLotto = new CreateLotto();
+    InputNumber inputNumber = new InputNumber();
+
     public List<List<Integer>> allTicket(Integer ticketCount) {
         List<List<Integer>> allLottoNumber = new ArrayList<>();
         for (int i = 0; i < ticketCount; i++) {
             CreateLotto createLotto = new CreateLotto();
-            /*이 부분 createRandomBall 직접 받지 않도록 수정해야 할듯*/
             Lotto lotto = new Lotto(createLotto.createRandomBall());
             /*밑에 두줄 lotto에 포함시킬 수 있을 듯.*/
-            Collections.sort(createLotto.createRandomBall());
+//            List<Integer> lottoNumber = createLotto.createRandomBall().sort(Comparator.naturalOrder());
             lotto.printLottoNumber();
             allLottoNumber.add(createLotto.createRandomBall());
         }
@@ -34,7 +33,7 @@ public class PlayLotto {
     }
 
     public int compareTicketAndWinningNumber(List<Integer> ticket, String winningNumber) {
-        List<Integer> winning = createLotto.winningNumber(winningNumber);
+        List<Integer> winning = inputNumber.winningNumber(winningNumber);
         int countWinning = 0;
         for (Integer ticketNumber : ticket) {
             if (winning.contains(ticketNumber)) {
