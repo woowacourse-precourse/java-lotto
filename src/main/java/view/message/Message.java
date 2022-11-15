@@ -1,4 +1,4 @@
-package lotto.message;
+package view.message;
 
 public class Message {
 
