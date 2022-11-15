@@ -22,7 +22,7 @@
 - [x] 로또 구입 금액입력 - PurchaseManager#askAmountOfMoney()
   - [x] 숫자가 아닌 경우 - PurchaseManager#isDecimal()
   - [x] 1000원 단위가 아닌 경우 - PurchaseManager#isThousandUnit()
-  - [x] 구입 금액에 0인 경우
+  - [x] 구입 금액에 1000원 미만인 경우
 - [x] 당첨번호 입력 - WinningNumberValidator#askWinningNumber()
   - [x] 입력 포맷이 "숫자,숫자,숫자..."이 아닌 경우 - WinningNumberValidator#isCorrectFormat()
   - [x] 숫자가 중복되는 경우 - WinningNumberValidator#isDuplicated()

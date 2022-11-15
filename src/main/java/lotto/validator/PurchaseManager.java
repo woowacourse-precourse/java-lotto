@@ -20,7 +20,7 @@ public class PurchaseManager {
         if (!isThousandUnit(input)) {
             throw new IllegalArgumentException("천원 단위로 입력해야 합니다.");
         }
-        if (Integer.parseInt(input) == 0) {
+        if (Integer.parseInt(input) < 1000) {
             throw new IllegalArgumentException("최소 하나 이상의 로또은 사야합니다.");
         }
     }
