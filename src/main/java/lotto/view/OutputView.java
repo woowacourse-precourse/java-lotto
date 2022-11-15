@@ -1,8 +1,9 @@
 package lotto.view;
 
+import lotto.domain.Lotto;
 import lotto.domain.LottoRank;
 
-import java.util.List;
+import java.util.Arrays;
 import java.util.Map;
 
 public class OutputView {
@@ -19,21 +20,22 @@ public class OutputView {
         System.out.println(lottoChance + LOTTO_PURCHASE_COMPLETE_MESSAGE);
     }
 
-    public static void printLottoNumber(List<Integer> lotto) {
+    public static void printLottoNumber(Lotto lotto) {
         System.out.println(lotto);
     }
 
     public static void printLottoResult(Map<LottoRank, Integer> result) {
-        System.out.println(LottoRank.FIFTH.getResultText()+ result.get(LottoRank.FIFTH)+NUMBER_OF_THING);
-        System.out.println(LottoRank.FOURTH.getResultText()+ result.get(LottoRank.FOURTH)+NUMBER_OF_THING);
-        System.out.println(LottoRank.THIRD.getResultText()+ result.get(LottoRank.THIRD)+NUMBER_OF_THING);
-        System.out.println(LottoRank.SECOND.getResultText()+ result.get(LottoRank.SECOND)+NUMBER_OF_THING);
-        System.out.println(LottoRank.FIRST.getResultText()+ result.get(LottoRank.FIRST)+NUMBER_OF_THING);
+        Arrays.stream(LottoRank.values())
+                .filter(lottoRank -> !lottoRank.equals(LottoRank.FAILED))
+                .forEach(lottoRank -> printEachResult(lottoRank, result));
+    }
+
+    private static void printEachResult(LottoRank lottoRank, Map<LottoRank, Integer> result) {
+        System.out.println(lottoRank.getResultText() + result.get(lottoRank) + NUMBER_OF_THING);
     }
 
     public static void printLottoEarningRate(double earningRate) {
         String rateResult = String.format("%.1f", earningRate);
-        System.out.println("총 수익률은 "+ rateResult +"%입니다.");
-
+        System.out.println("총 수익률은 " + rateResult + "%입니다.");
     }
 }
