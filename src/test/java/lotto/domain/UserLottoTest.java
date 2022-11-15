@@ -14,10 +14,28 @@ class UserLottoTest {
 
     @DisplayName("구입 금액이 1000원 단위가 아니면 예외가 발생한다.")
     @Test
-    void purchaseLottoByUnit() {
+    void purchaseAmountByUnit() {
        UserLotto userLotto = new UserLotto();
-       int input = 100;
+       int input = 5100;
        assertThatThrownBy(() -> userLotto.validateUnit(input))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("구입 금액이 1000원 미만이면 예외가 발생한다.")
+    @Test
+    void purchaseAmountByRange() {
+        UserLotto userLotto = new UserLotto();
+        int input = 900;
+        assertThatThrownBy(() -> userLotto.validateUnit(input))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("구입 금액에 문자가 들어가면 예외가 발생한다.")
+    @Test
+    void purchaseAmountByLetter() {
+        UserLotto userLotto = new UserLotto();
+        String input = "100a00";
+        assertThatThrownBy(() -> userLotto.validateLetter(input))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 

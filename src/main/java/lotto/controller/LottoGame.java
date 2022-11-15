@@ -14,6 +14,7 @@ import java.util.Map;
 
 public class LottoGame {
     private static final int INIT = 0;
+    private static final int PERCENTAGE = 100;
     private UserLotto user = new UserLotto();
     private UserView userView = new UserView();
     private WinLotto winLotto = new WinLotto();
@@ -24,34 +25,30 @@ public class LottoGame {
     public LottoGame() {}
 
     public void startLotto(){
-        userView.printPurchaseAmount();
+        userView.printPurchaseAmountNotice();
         String purchaseAmount = Console.readLine();
+
         int lottoCount = user.setPurchaseOfLotto(purchaseAmount);
         userView.printNumberOfPurchases(lottoCount);
         user.setPurchaseLottoNumbers(lottoCount);
         getPurchaseLottoNumbers(lottoCount);
 
+        userView.printWinningNumbersNotice();
+        String winningNumbers = Console.readLine();
+        winLotto.setWinningNumbers(winningNumbers);
 
-        printWinningNumbers();
-        winLotto.setWinningNumbers();
+        userView.printBonusNumbersNotice();
+        String bonusNumber = Console.readLine();
+        winLotto.setBonusNumber(bonusNumber);
 
-        userView.printNewLine();
-        printBounsNumbers();
-        winLotto.setBounsNumber();
-
-        userView.printNewLine();
-        printWinStatistics();
-        System.out.println("---");
+        userView.printWinStatistics();
         winStatistics.startWinStatistics();
-        countAccord = winStatistics.getCountAccord();
-        bonusAccord = winStatistics.getBonusAccord();
+        getAccord();
 
         printResult();
 
-        double rateOfReturn2 = (double)winStatistics.calculationTotalAmount()/Double.parseDouble(purchaseAmount) * 100;
-        String rateOfReturn = String.format("%,.1f",rateOfReturn2);
-        String sb5 = "총 수익률은 " + rateOfReturn + "%입니다.";
-        System.out.println(sb5);
+        String rateOfReturn = getRateOfReturn(purchaseAmount);
+        userView.printRateOfReturn(rateOfReturn);
     }
 
     public void getPurchaseLottoNumbers(int lottoCount){
@@ -61,6 +58,14 @@ public class LottoGame {
         }
     }
 
+    public void getAccord(){
+        countAccord = winStatistics.getCountAccord();
+        bonusAccord = winStatistics.getBonusAccord();
+    }
+
+    public String getRateOfReturn(String purchaseAmount){
+        return String.format("%,.1f",(double)winStatistics.calculationTotalAmount()/Double.parseDouble(purchaseAmount) * PERCENTAGE);
+    }
 
     public void printResult(){
         for(int i=3;i<=6;i++){
@@ -84,17 +89,6 @@ public class LottoGame {
         }
     }
 
-    public void printWinningNumbers() {
-        userView.printNewLine();
-        System.out.println("당첨 번호를 입력해 주세요.");
-    }
 
-    public void printBounsNumbers() {
-        System.out.println("보너스 번호를 입력해 주세요.");
-    }
-
-    public void printWinStatistics() {
-        System.out.println("당첨 통계");
-    }
 
 }
