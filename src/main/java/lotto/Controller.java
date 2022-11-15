@@ -10,6 +10,5 @@ public class Controller {
         }catch (IllegalArgumentException e){
             System.out.println(e.getMessage());
         }
-
     }
 }
