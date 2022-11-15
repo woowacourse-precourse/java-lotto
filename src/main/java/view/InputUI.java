@@ -1,18 +1,15 @@
 package view;
 
 import camp.nextstep.edu.missionutils.Console;
-import lotto.Lotto;
-
-import java.util.ArrayList;
-import java.util.List;
+import exception.CheckingException;
 
 public class InputUI {
-    final static int MAX_LOTTO_LENGTH = 6;
-
     // 구입할 금액 입력
     public String inputPurchaseAmount() {
         System.out.println("구입금액을 입력해 주세요.");
         String amount = Console.readLine();
+
+        CheckingException checkingException = new CheckingException(amount);
 
         return amount;
     }
