@@ -59,11 +59,11 @@ public class LottoService {
         for(Lotto numbers : history) {
             int count = win.compare(numbers);
             if(count == 5 && numbers.hasBonusNum(win)){
-                CoincideNumber.plusCountOfRank(2);
+                CoincideNumber.plusCountOfRank(5);
                 continue;
             }
             int rank = 7-count;
-            if(rank < 6) {
+            if(rank < 5) {
                 CoincideNumber.plusCountOfRank(rank);
             }
         }
@@ -73,8 +73,9 @@ public class LottoService {
     public void revenue() {
         int revenue = 0;
         for (CoincideNumber coincideNumber : CoincideNumber.values()){
-            if(coincideNumber.count()!=0)
+            if(coincideNumber.count()!=0) {
                 revenue = revenue + coincideNumber.calculateRevenue();
+            }
         }
         output.revenue(issue.calculate(revenue));
     }
