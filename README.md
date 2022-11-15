@@ -148,7 +148,25 @@ BUILD SUCCESSFUL in 0s
 ```
 
 ---
-
+## 구현할 기능 목록
+1. [User] User 클래스 생성 - 로또 구매자
+2. [User] 몇개의 로또를 구매할 지 입력받는 메서드 구현
+3. [User] 로또 번호를 생성하여 list로 리턴하는 메서드 구현
+4. [User] 구매할 로또의 개수만큼 3번에서 리턴한 list를 Lotto(객체)에 매개 변수로 넣어 User의 List<Lotto>에 저장하는 메서드 구현
+5. [User] 저장한 List<Lotto>를 출력하는 메서드 구현
+6. [Application] 당첨 번호를 입력받아 저장하는 메서드 구현
+7. [User] 당첨된 로또의 개수를 등수로 구분하여 저장하는 EnumMap 추가
+8. [User] 당첨 번호와 User의 List<Lotto>의 Lotto들을 비교하여 같은 번호의 개수를 리턴하는 메서드 구현
+9. [User] 8번에서 리턴받은 개수 = EnumMap의 key값 으로 하여 key값에 해당하는 value를 더해주는 메서드 구현 
+10. [User] 당첨 통계를 출력하는 메서드 구현
+11. [User] user의 수익률을 계산하여 출력하는 메서드 구현
+12. [Lotto] validate 메서드 외에 다른 예외 사항을 throw하는 메서드 구현(아래-예외 사항 리스트)
+    1) 구입 금액의 validity 검사
+    2) 당첨 번호의 validity 검사
+    3) 보너스 번호의 validity 검사
+13. [domainTest] 도메인 로직에 대한 단위 테스트를 실행하는 domainTest 클래스 추가 및 단위 테스트 구현 
+    
+    
 ## 🎯 프로그래밍 요구 사항
 
 - JDK 11 버전에서 실행 가능해야 한다. **JDK 11에서 정상적으로 동작하지 않을 경우 0점 처리한다.**
