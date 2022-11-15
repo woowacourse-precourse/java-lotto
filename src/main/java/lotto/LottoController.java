@@ -3,10 +3,8 @@ package lotto;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 import camp.nextstep.edu.missionutils.Console;
-import lotto.model.Constants;
 import lotto.model.Lotto;
 import lotto.model.Result;
 import lotto.model.User;
