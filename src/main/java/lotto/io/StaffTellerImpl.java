@@ -40,6 +40,8 @@ public class StaffTellerImpl implements  StaffTeller{
 
     @Override
     public void tellLottoResult(int[] rankResult) {
+        System.out.println("당첨 통계");
+        System.out.println("---");
         StringBuilder sb = new StringBuilder();
         for(int i = LottoConstants.LAST_RANK; i >= 1; i--) {
             WaysToWinAndRewards rank = WaysToWinAndRewards.findByRank(i);
@@ -70,6 +72,6 @@ public class StaffTellerImpl implements  StaffTeller{
 
     @Override
     public void tellROI(double roi) {
-        System.out.printf("총 수익률은 %.1f입니다.%n", roi);
+        System.out.printf("총 수익률은 %.1f%%입니다.%n", roi*100.0);
     }
 }

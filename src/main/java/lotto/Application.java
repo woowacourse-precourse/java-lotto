@@ -30,7 +30,6 @@ public class Application {
         LottoGenerator lottoGenerator = new LottoGeneratorImpl(randomNumbersGenerator);
 
         String money = staffListener.receiveMoney();
-        System.out.println(money);
         lottoCashier.validateReceivedMoney(money);
         int num = lottoCashier.calculateNumberOfLottos(Integer.parseInt(money));
         staffTeller.tellPurchasedNumberOfLotto(num);
@@ -38,9 +37,7 @@ public class Application {
         staffTeller.tellLottos(lottoList);
 
         String str1 = staffListener.listenMainWinningNumbers();
-        System.out.println(str1);
         String str2 = staffListener.listenBonusWinningNumber();
-        System.out.println(str2);
 
         WinningNumbers winningNumbers = winningNumbersGenerator.generateWinningNumbers(str1, str2);
         LottoChecker lottoChecker = new LottoCheckerImpl(winningNumbers);
