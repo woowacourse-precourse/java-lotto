@@ -40,4 +40,8 @@ public class Ui {
         System.out.printf("5개 일치, 보너스 볼 일치 (30,000,000원) - %d개\n", result[3]);
         System.out.printf("6개 일치 (2,000,000,000원) - %d개\n", result[4]);
     }
+
+    public void printProfitRate(double profitRate){
+        System.out.printf("총 수익률은 %,.1f%%입니다.\n", profitRate * 100);
+    }
 }

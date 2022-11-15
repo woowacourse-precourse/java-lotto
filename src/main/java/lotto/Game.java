@@ -30,5 +30,6 @@ public class Game {
         ui.printInfo(rewards);
 
         double profitRate = service.getProfitRate(rewards, lottoAmount);
+        ui.printProfitRate(profitRate);
     }
 }
