@@ -43,4 +43,20 @@ public class LottoValidatorTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+    @DisplayName("보너스 번호가 정해진 범위를 넘어가면 예외 발생")
+    @Test
+    void validateBonusNumber_OutOfRange() {
+        int bonusNumber = LottoInfo.MAX_NUMBER.value() + 1;
+        assertThatThrownBy(() -> LottoValidator.validateBonusNumber(List.of(1, 2, 3, 4, 5, 6), bonusNumber))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("보너스 번호가 당첨 번호와 중복되면 예외 발생")
+    @Test
+    void validateBonusNumber_Duplication() {
+        int bonusNumber = 1;
+        assertThatThrownBy(() -> LottoValidator.validateBonusNumber(List.of(1, 2, 3, 4, 5, 6), bonusNumber))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
 }
