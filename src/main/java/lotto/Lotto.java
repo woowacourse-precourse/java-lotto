@@ -1,8 +1,9 @@
 package lotto;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+
+enum winNumTimes{THREE, FOUR, FIVE, BONUS, SIX};
 
 public class Lotto {
     private final List<Integer> numbers;
@@ -53,8 +54,23 @@ public class Lotto {
         lottoMoney(frequencyNumber, bonusNumFrequency);
     }
 
-    private void lottoMoney(int frequencyNumber, boolean bonusFrequency){
-
+    private int lottoMoney(int nums, boolean bonus){
+        if(nums == 5 && bonus == true){
+            this.winNumbers.set(winNumTimes.BONUS.ordinal(), winNumbers.get(winNumTimes.BONUS.ordinal()) + 1);
+            return 0;
+        }
+        if(nums == 6){
+            this.winNumbers.set(winNumTimes.SIX.ordinal(), winNumbers.get(winNumTimes.BONUS.ordinal()) + 1);
+            return 0;
+        }
+        for(int i = 3; i<6;i++){
+            if(i == nums){
+                this.winNumbers.set(i-3, this.winNumbers.get(i-3)+1);
+                return 0;
+            }
+        }
+        return 0;
     }
+
 
 }
