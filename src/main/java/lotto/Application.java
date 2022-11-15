@@ -13,7 +13,7 @@ public class Application {
             Lotto lotto = getLotto();
            System.out.println(lotto.getNumbers());
         }
-        getWinNum();
+        List<Integer> win_numbers = getWinNum();
     }
     public static Lotto getLotto(){
         List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
@@ -28,6 +28,7 @@ public class Application {
         List<Integer> input_integer_list = input_string_list.stream()
                 .map(s -> Integer.parseInt(s))
                 .collect(Collectors.toList());
+        input_integer_list.add(getBonusNum());
         return input_integer_list;
     }
 
