@@ -15,4 +15,19 @@ public class WinLotto {
             throw new IllegalArgumentException();
         }
     }
+
+    public Rank getLottoResult(Lotto userLotto) {
+        long winLottoCount = lotto.getWinLottoCount(userLotto);
+
+        long bonusCount = 0;
+        if (userLotto.isExistInNumbers(bonusNumber)) {
+            bonusCount++;
+        }
+
+        if (winLottoCount == 5 && bonusCount == 1) {
+            return Rank.SECOND;
+        }
+
+        return Rank.valueOfLottoCount(winLottoCount);
+    }
 }

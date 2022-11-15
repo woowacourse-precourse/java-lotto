@@ -25,13 +25,14 @@ public class Game {
         long bonusNumber = validateNumberFormat(inputBonusNumber);
 
         WinLotto winLotto = new WinLotto(new Lotto(winNumbers), bonusNumber);
+        user.printLottoResult(winLotto);
     }
 
     private long validateNumberFormat(String inputNumber) {
         try {
             return Integer.parseInt(inputNumber);
         } catch (NumberFormatException numberFormatException) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR] 숫자만 입력해주세요.");
         }
     }
 
@@ -46,5 +47,4 @@ public class Game {
 
         return winNumbers;
     }
-
 }
