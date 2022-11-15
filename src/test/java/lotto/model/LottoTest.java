@@ -32,9 +32,9 @@ class LottoTest {
 
     @DisplayName("새로운 로또를 생성할 수 있다.")
     @Test
-    void testGenerate() {
-        Lotto lotto = Lotto.generate();
-        assertThat(lotto).isNotNull();
+    void testBuyLottos() {
+        List<Lotto> lottos = Lotto.buyLottos(8000);
+        assertThat(lottos.size()).isEqualTo(8);
     }
 
 }
