@@ -6,14 +6,6 @@ public class BonusNumber {
     private final int MIN_NUMBER = 1;
     private final int MAX_NUMBER = 45;
 
-    public int getBonusNumber(String input){
-        numberCount(input);
-        notNumber(input);
-        int bonus = convertStringToInteger(input);
-        numberRange(bonus);
-        return bonus;
-    }
-
     public void numberCount(String input){
         if(input.length() != BONUS_CNT){
             throw new IllegalArgumentException();
