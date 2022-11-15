@@ -3,7 +3,7 @@ package lotto.view;
 import java.util.List;
 import lotto.model.Lotto;
 import lotto.model.Calculator;
-import lotto.model.Compare;
+import lotto.model.Comparison;
 
 public class Output {
     public static void printPurchaseAmount() {
@@ -32,12 +32,12 @@ public class Output {
         System.out.println();
         System.out.println("당첨 통계");
         System.out.println("---");
-        System.out.println("3개 일치 (5,000원) - " + Calculator.convertNull(Compare.compareLotto.get(3)) + "개");
-        System.out.println("4개 일치 (50,000원) - " + Calculator.convertNull(Compare.compareLotto.get(4)) + "개");
-        System.out.println("5개 일치 (1,500,000원) - " + Calculator.convertNull(Compare.compareLotto.get(5)) + "개");
+        System.out.println("3개 일치 (5,000원) - " + Calculator.convertNull(Comparison.compareLotto.get(3)) + "개");
+        System.out.println("4개 일치 (50,000원) - " + Calculator.convertNull(Comparison.compareLotto.get(4)) + "개");
+        System.out.println("5개 일치 (1,500,000원) - " + Calculator.convertNull(Comparison.compareLotto.get(5)) + "개");
         System.out.println(
-                "5개 일치, 보너스 볼 일치 (30,000,000원) - " + Calculator.convertNull(Compare.compareLotto.get(6)) + "개");
-        System.out.println("6개 일치 (2,000,000,000원) - " + Calculator.convertNull(Compare.compareLotto.get(7)) + "개");
+                "5개 일치, 보너스 볼 일치 (30,000,000원) - " + Calculator.convertNull(Comparison.compareLotto.get(6)) + "개");
+        System.out.println("6개 일치 (2,000,000,000원) - " + Calculator.convertNull(Comparison.compareLotto.get(7)) + "개");
         System.out.println("총 수익률은 " + rate + "%입니다.");
     }
 

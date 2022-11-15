@@ -18,20 +18,20 @@ public class Calculator {
     }
 
     public static void addPrize() {
-        if (Compare.compareLotto.get(3) != null) {
-            priceAmount = Compare.compareLotto.get(3) * THREE_MATCH_REWARD;
+        if (Comparison.compareLotto.get(3) != null) {
+            priceAmount = Comparison.compareLotto.get(3) * THREE_MATCH_REWARD;
         }
-        if (Compare.compareLotto.get(4) != null) {
-            priceAmount = Compare.compareLotto.get(4) * FOUR_MATCH_REWARD;
+        if (Comparison.compareLotto.get(4) != null) {
+            priceAmount = Comparison.compareLotto.get(4) * FOUR_MATCH_REWARD;
         }
-        if (Compare.compareLotto.get(5) != null) {
-            priceAmount = Compare.compareLotto.get(5) * FIVE_MATCH_REWARD;
+        if (Comparison.compareLotto.get(5) != null) {
+            priceAmount = Comparison.compareLotto.get(5) * FIVE_MATCH_REWARD;
         }
-        if (Compare.compareLotto.get(6) != null) {
-            priceAmount = Compare.compareLotto.get(6) * FIVE_BONUS_MATCH_REWARD;
+        if (Comparison.compareLotto.get(6) != null) {
+            priceAmount = Comparison.compareLotto.get(6) * FIVE_BONUS_MATCH_REWARD;
         }
-        if (Compare.compareLotto.get(7) != null) {
-            priceAmount = Compare.compareLotto.get(7) * SIX_MATCH_REWARD;
+        if (Comparison.compareLotto.get(7) != null) {
+            priceAmount = Comparison.compareLotto.get(7) * SIX_MATCH_REWARD;
         }
     }
 

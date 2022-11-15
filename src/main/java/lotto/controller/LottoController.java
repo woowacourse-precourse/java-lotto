@@ -2,7 +2,7 @@ package lotto.controller;
 
 import java.util.List;
 import lotto.model.Calculator;
-import lotto.model.Compare;
+import lotto.model.Comparison;
 import lotto.model.Generator;
 import lotto.model.InputException;
 import lotto.model.Lotto;
@@ -28,7 +28,7 @@ public class LottoController {
         // 당첨 번호에 보너스 번호 추가
         winningNumber = Generator.addBonusNumber(winningNumber, bonusNumber);
         // 로또 한장씩 당첨 번호와 비교
-        Compare.sliceBundle(lottoBundle, winningNumber);
+        Comparison.sliceBundle(lottoBundle, winningNumber);
         // 당첨 금액 추가
         Calculator.addPrize();
         // 당첨 통계 출력

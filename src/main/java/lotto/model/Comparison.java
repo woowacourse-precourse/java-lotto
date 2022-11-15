@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class Compare {
+public class Comparison {
     public static Map<Integer, Integer> compareLotto = new HashMap<>();
 
     public static void sliceBundle(List<Lotto> lottoBundle, List<Integer> winningNumber) {
