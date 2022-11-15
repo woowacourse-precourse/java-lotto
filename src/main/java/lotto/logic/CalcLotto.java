@@ -21,8 +21,8 @@ public class CalcLotto {
         winningNumbers = numbers;
     }
 
-    public static Map<Integer, WinningAmount> getHistory() {
-        return history.getHistory();
+    public static WinningHistory getHistory() {
+        return history;
     }
 
     public static void calcWinningTimes(List<Lotto> lottos) {

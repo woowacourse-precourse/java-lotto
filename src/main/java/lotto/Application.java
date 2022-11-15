@@ -1,7 +1,15 @@
 package lotto;
 
+import lotto.logic.LottoMain;
+import lotto.view.ErrorView;
+
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        try {
+            LottoMain.lotto();
+        } catch (IllegalArgumentException exception) {
+            String message = ErrorView.getErrorMessage(exception);
+            System.out.println(message);
+        }
     }
 }

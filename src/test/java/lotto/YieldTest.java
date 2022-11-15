@@ -10,7 +10,7 @@ public class YieldTest {
     @DisplayName("원금과 수익이 주어지면 올바른 수익률을 구해야 한다.")
     @Test
     void createYield() {
-        Yield yield = new Yield(2000, 6000);
+        Yield yield = new Yield(2000L, 6000L);
 
         assertThat(yield.getYield()).isEqualTo(300.0f);
     }

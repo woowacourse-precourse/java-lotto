@@ -2,8 +2,8 @@ package lotto.view;
 
 public class ErrorView {
 
-    public static void printErrorMessage(IllegalArgumentException exception) {
+    public static String getErrorMessage(IllegalArgumentException exception) {
         String message = String.format("[ERROR] %s", exception.getMessage());
-        System.out.println(message);
+        return message;
     }
 }

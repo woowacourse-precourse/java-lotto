@@ -1,7 +1,6 @@
 package lotto;
 
 import lotto.logic.CalcLottoNumber;
-import lotto.logic.LottoAmount;
 import lotto.object.Lotto;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

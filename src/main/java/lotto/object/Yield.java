@@ -3,32 +3,32 @@ package lotto.object;
 import java.text.DecimalFormat;
 
 public class Yield {
-    private Integer principal;
-    private Integer revenue;
+    private Long principal;
+    private Long revenue;
 
-    public Yield(Integer principal, Integer revenue) {
+    public Yield(Long principal, Long revenue) {
         this.principal = principal;
         this.revenue = revenue;
     }
 
-    public Yield(Integer principal) {
+    public Yield(Long principal) {
         this.principal = principal;
-        this.revenue = 0;
+        this.revenue = 0L;
     }
 
-    public Integer getPrincipal() {
+    public Long getPrincipal() {
         return principal;
     }
 
-    public void setPrincipal(Integer principal) {
+    public void setPrincipal(Long principal) {
         this.principal = principal;
     }
 
-    public Integer getRevenue() {
+    public Long getRevenue() {
         return revenue;
     }
 
-    public void setRevenue(Integer revenue) {
+    public void setRevenue(Long revenue) {
         this.revenue = revenue;
     }
 
