@@ -1,7 +1,5 @@
 package lotto.model;
 
-import net.bytebuddy.dynamic.loading.InjectionClassLoader;
-
 import java.util.*;
 import java.util.stream.Stream;
 

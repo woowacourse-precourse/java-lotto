@@ -13,7 +13,6 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class BuyerTest {
-    private static final String ENTER_WRONG_LETTERS_MESSAGE = "[ERROR] 금액을 잘못 입력하셨습니다.";
 
     @Test
     @DisplayName("구매 금액을 최소 금액 단위로 나누어 티켓의 수를 맞게 구하는지 확인한다.")

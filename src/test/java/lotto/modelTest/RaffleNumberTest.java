@@ -12,9 +12,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class RaffleNumberTest {
-    private static final String WRONG_QUANTITY_ERROR_MESSAGE = "[ERROR] 추첨 번호가 6개가 아닙니다. 프로그램을 종료합니다.";
-    private static final String DUPLICATE_ERROR_MESSAGE = "[ERROR] 숫자가 중복되었습니다. 프로그램을 종료합니다.";
-    private static final String ENTER_WRONG_LETTERS_MESSAGE = "[ERROR] 금액을 잘못 입력하셨습니다. 프로그램을 종료합니다.";
+
     private String raffleNumbers;
     private String bonusNumbers;
 
@@ -23,7 +21,7 @@ public class RaffleNumberTest {
     public void createRaffleNumberTest() {
         raffleNumbers = "1,2,3,4,5,6,7";
         bonusNumbers = "8";
-        assertThatThrownBy(() -> new RaffleNumber().create(raffleNumbers, bonusNumbers)).isInstanceOf(IllegalArgumentException.class).hasMessageContaining(WRONG_QUANTITY_ERROR_MESSAGE);
+        assertThatThrownBy(() -> new RaffleNumber().create(raffleNumbers, bonusNumbers)).isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
@@ -31,7 +29,7 @@ public class RaffleNumberTest {
     public void createDuplicatedRaffleNumberTest() {
         raffleNumbers = "1,2,3,4,5,5";
         bonusNumbers = "8";
-        assertThatThrownBy(() -> new RaffleNumber().create(raffleNumbers, bonusNumbers)).isInstanceOf(IllegalArgumentException.class).hasMessageContaining(DUPLICATE_ERROR_MESSAGE);
+        assertThatThrownBy(() -> new RaffleNumber().create(raffleNumbers, bonusNumbers)).isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
@@ -39,7 +37,7 @@ public class RaffleNumberTest {
     public void createWrongRaffleNumberTest() {
         raffleNumbers = "1,2,3,[,5,ㄷ";
         bonusNumbers = "8";
-        assertThatThrownBy(() -> new RaffleNumber().create(raffleNumbers, bonusNumbers)).isInstanceOf(IllegalArgumentException.class).hasMessageContaining(ENTER_WRONG_LETTERS_MESSAGE);
+        assertThatThrownBy(() -> new RaffleNumber().create(raffleNumbers, bonusNumbers)).isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
@@ -59,8 +57,7 @@ public class RaffleNumberTest {
     public void createWrongBonusNumberTest(String bonusNumbers) {
         raffleNumbers = "1,2,3,4,5,6";
         assertThatThrownBy(() -> new RaffleNumber().create(raffleNumbers, bonusNumbers))
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining(ENTER_WRONG_LETTERS_MESSAGE);
+                .isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test

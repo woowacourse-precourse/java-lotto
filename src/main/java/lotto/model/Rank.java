@@ -13,10 +13,10 @@ public enum Rank {
     FIFTH(List.of(3, 0), 5000),
     NOTHING(Collections.EMPTY_LIST, 0);
     private final List<Integer> NUMBER_OF_MATCHES;
-    private final int REVENUE;
+    private final int revenue;
 
     Rank(List<Integer> numberOfMatches, int revenue) {
-        this.REVENUE = revenue;
+        this.revenue = revenue;
         this.NUMBER_OF_MATCHES = numberOfMatches;
     }
 
@@ -49,6 +49,6 @@ public enum Rank {
 
     public static int getWinningsByMatchState(List<Integer> match) {
         Rank rank = Rank.findByMatches(match);
-        return rank.REVENUE;
+        return rank.revenue;
     }
 }
