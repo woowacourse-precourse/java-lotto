@@ -1,9 +1,8 @@
 package lotto.domain;
 
-import java.util.Collections;
-import java.util.List;
-
 import camp.nextstep.edu.missionutils.Randoms;
+
+import java.util.List;
 
 public class NumberGenerator {
     private static final int START_NUMBER = 1;
@@ -12,7 +11,6 @@ public class NumberGenerator {
 
     public List<Integer> createRandomNumbers() {
         List<Integer> numbers = Randoms.pickUniqueNumbersInRange(START_NUMBER, END_NUMBER, LOTTO_NUMBER_COUNT);
-        Collections.sort(numbers);
         return numbers;
     }
 }

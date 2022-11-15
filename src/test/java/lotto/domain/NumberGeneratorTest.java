@@ -34,13 +34,4 @@ class NumberGeneratorTest {
         assertThat(resultSize).isEqualTo(EXPECTED_LIST_SIZE);
     }
 
-    @Test
-    @DisplayName("리스트의 요소가 정렬되어있는지 테스트")
-    void 정렬_확인_테스트() {
-        List<Integer> result = numberGenerator.createRandomNumbers();
-        List<Integer> copyResult = new ArrayList<>(List.of());
-        copyResult.addAll(result);
-        Collections.sort(copyResult);
-        assertThat(copyResult).isEqualTo(result);
-    }
 }
