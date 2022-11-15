@@ -1,9 +1,9 @@
 package lotto;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
-import static lotto.Validation.validateAnswer;
 import static lotto.Validation.validateBonus;
 import static lotto.Validation.validatePurchase;
+import static lotto.Validation.validateWinning;
 
 import java.util.Arrays;
 import java.util.List;
@@ -25,16 +25,16 @@ public class Cli {
   }
 
   /**
-   * Function that receives answer numbers.
+   * Function that receives winning numbers.
    * @return list of lotto number.
    */
-  public static List<Integer> inputAnswerNumbers() {
+  public static List<Integer> inputWinningNumbers() {
     System.out.println("당첨 번호를 입력해 주세요.");
     String input = readLine();
-    String[] inputArray = input.split(",");
-    validateAnswer(inputArray);
+    String[] numbers = input.split(",");
+    validateWinning(numbers);
 
-    return Arrays.stream(inputArray)
+    return Arrays.stream(numbers)
         .map(Integer::parseInt)
         .collect(Collectors.toList());
   }

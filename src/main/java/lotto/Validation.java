@@ -43,18 +43,18 @@ public class Validation {
   }
 
   /**
-   * Verify that the answer number is formatted correctly.
+   * Verify that the winning number is formatted correctly.
    * @param numbers The number of answer.
    */
-  public static void validateAnswer(String[] numbers) {
+  public static void validateWinning(String[] numbers) {
     for(String number: numbers) {
       if (!isNumeric(number)) {
         throw new IllegalArgumentException(LOTTO_PURCHASE_TYPE_ERROR.toString());
       }
     }
-    List<Integer> numberList = Arrays.stream(numbers)
+    List<Integer> winningNumbers = Arrays.stream(numbers)
         .map(Integer::parseInt).collect(Collectors.toList());
-    validateLotto(numberList);
+    validateLotto(winningNumbers);
   }
 
   /**
