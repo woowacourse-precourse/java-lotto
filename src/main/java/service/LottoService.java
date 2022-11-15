@@ -6,6 +6,7 @@ import repository.LottoRepository;
 
 import java.util.Comparator;
 import java.util.List;
+import java.util.regex.Pattern;
 
 public class LottoService {
     private final LottoRepository lottoRepository;
@@ -30,5 +31,21 @@ public class LottoService {
 
     public List<Lotto> getPublishedLotto() {
         return lottoRepository.getPublishedLotto();
+    }
+
+    public void saveWinningNumbers(String numbers) {
+
+    }
+
+    private void validateWinningNumbers(String numbers) {
+        checkWinningNumbersFormat(numbers);
+    }
+
+    private void checkWinningNumbersFormat(String numbers) {
+        Format winningNumbers = Format.WINNING_NUMBERS;
+
+        if (!Pattern.matches(winningNumbers.getRegex(), numbers)) {
+            throw new IllegalArgumentException(Error.WINNING_NUMBERS_FORMAT.getText());
+        }
     }
 }
