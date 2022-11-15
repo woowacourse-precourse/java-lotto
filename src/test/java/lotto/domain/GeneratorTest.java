@@ -17,7 +17,7 @@ public class GeneratorTest {
     @DisplayName("로또 인스턴스를 인자로 받아 일치하는 당첨번호 및 보너스번호 개수를 HashMap에 담아 반환해준다")
     @Test
     void judgeWinningCountTest() throws NoSuchMethodException, IllegalAccessException, InvocationTargetException {
-        Method method = Generator.class.getDeclaredMethod("countCorrectNumber", Lotto.class);
+        Method method = Generator.class.getDeclaredMethod("getCorrectCount", Lotto.class);
         method.setAccessible(true);
 
         List<Integer> winningNumbers = new ArrayList<Integer>(Arrays.asList(1, 2, 3, 4, 5, 6));
@@ -34,7 +34,7 @@ public class GeneratorTest {
 
     @Test
     void judgeWinningCountTest_2() throws NoSuchMethodException, IllegalAccessException, InvocationTargetException {
-        Method method = Generator.class.getDeclaredMethod("countCorrectNumber", Lotto.class);
+        Method method = Generator.class.getDeclaredMethod("getCorrectCount", Lotto.class);
         method.setAccessible(true);
 
         List<Integer> winningNumbers = new ArrayList<Integer>(Arrays.asList(1, 2, 3, 4, 5, 6));
