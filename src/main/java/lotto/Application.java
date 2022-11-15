@@ -4,7 +4,6 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 import java.text.NumberFormat;
 import java.util.*;
-import java.util.stream.Collectors;
 
 public class Application {
     static final int lottoPrice = 1000;
@@ -21,18 +20,18 @@ public class Application {
     }};
 
 
-    public static Integer getMoney() {
+    public static Integer getMoney() throws IllegalArgumentException {
         int money = readMoney();
         validMoney(money);
         return money;
     }
 
-    public static Integer readMoney() {
+    public static Integer readMoney() throws IllegalArgumentException {
         System.out.println("구입금액을 입력해주세요.");
         String userInput = Console.readLine();
         try {
             return Integer.parseInt(userInput);
-        } catch (Exception e){
+        } catch (Exception e) {
             throw new IllegalArgumentException(ErrorMessage.INVALID_INPUT);
         }
     }
@@ -78,7 +77,7 @@ public class Application {
         return luckyNums;
     }
 
-    public static List<Integer> readLuckyNumbers(){
+    public static List<Integer> readLuckyNumbers() {
         System.out.println("당첨 번호를 입력해 주세요.");
         String userInput = Console.readLine();
         String[] inputs = userInput.split(",");
@@ -122,7 +121,7 @@ public class Application {
         return bonusNum;
     }
 
-    public static int readBonusNumbers() throws IllegalArgumentException {
+    public static int readBonusNumbers() {
         System.out.println("보너스 번호를 입력해 주세요.");
         String userInput = Console.readLine();
         try {
@@ -184,8 +183,12 @@ public class Application {
         getResult(lottos, luckyNumbers, bonusNumber);
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args){
         // TODO: 프로그램 구현
-        playLottos();
+        try {
+            playLottos();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 }
