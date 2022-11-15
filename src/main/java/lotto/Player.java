@@ -8,9 +8,19 @@ import java.util.List;
 public class Player {
 
     private int lottoCount;
+    private Lotto lotto;
+    private Integer bonus;
 
     public int getLottoCount() {
         return lottoCount;
+    }
+
+    public Lotto getLotto() {
+        return lotto;
+    }
+
+    public Integer getBonus() {
+        return bonus;
     }
 
     public void buyLotto() {
@@ -43,28 +53,49 @@ public class Player {
         System.out.println("당첨 번호를 입력해 주세요.");
         String numbers = Console.readLine();
         List<Integer> integers = stringToList(numbers);
+        lotto = new Lotto(integers);
 
         System.out.println("보너스 번호를 입력해 주세요.");
-        //보너스 입력 구현
+        String bonusNum = Console.readLine();
+        bonusValidate(bonusNum);
+        bonus = Integer.parseInt(bonusNum);
     }
 
     public List<Integer> stringToList(String numbers) {
+        int num;
         String[] split = numbers.split(",");
         List<Integer> integers = new ArrayList<>();
 
         for (String s : split) {
             try {
-                integers.add(Integer.parseInt(s));
+                num = Integer.parseInt(s);
             }
             catch (NumberFormatException ex) {
                 throw new IllegalArgumentException("[ERROR] 숫자만 입력 가능합니다");
             }
+            if (num < 1 || num > 45) {
+                throw new IllegalArgumentException("[ERROR] 1~45 사이에 숫자만 입력 가능합니다");
+            }
+            integers.add(num);
         }
-
         if (integers.size() != 6) {
             throw new IllegalArgumentException("[ERROR] 6개의 숫자를 입력해야합니다");
         }
 
         return integers;
+    }
+
+    public void bonusValidate(String input) {
+        int bonus;
+        try {
+            bonus = Integer.parseInt(input);
+        }
+        catch (NumberFormatException ex) {
+            throw new IllegalArgumentException("[ERROR] 숫자만 입력 가능합니다");
+        }
+
+        if (bonus < 1 || bonus > 45) {
+            throw new IllegalArgumentException("[ERROR] 1~45 사이에 숫자만 입력 가능합니다");
+        }
     }
 }
