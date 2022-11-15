@@ -10,6 +10,9 @@ public class Application {
     private static Constant constant = new Constant();
     private static String Answer_Numbers = "당첨 번호를 입력해 주세요.";
     private static String Regex = ",";
+    private static String Insert_Money = "구매 금액을 입력하세요";
+    private static String Buy_Message = "개를 구매했습니다.";
+
     public static void main(String[] args) {
         // TODO: 프로그램 구현
     }
@@ -47,6 +50,29 @@ public class Application {
             winning.add(rank);
         }
         return winning;
+    }
+
+    public static Integer Buy_Lotto()   {
+        System.out.println(Insert_Money);
+        String cost = Console.readLine();
+        int Total_Cost = 0;
+
+        if(cost == null)
+            throw new IllegalArgumentException(constant.Print_No_Insert());
+
+        try {
+            Total_Cost = Integer.parseInt(cost);
+        }
+        catch (NumberFormatException e){
+            System.out.println(constant.Print_Only_Numbers());
+        }
+
+        if(Total_Cost % 1000 != 0)
+            throw new IllegalArgumentException(constant.Print_Buy_Per_1000());
+
+        System.out.println(Total_Cost / 1000 + Buy_Message);
+
+        return Total_Cost / 1000;
     }
 
 }
