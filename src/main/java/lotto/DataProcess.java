@@ -26,8 +26,10 @@ public class DataProcess {
 
     public static List<List<Integer>> GetLottoNumber(int count) {
         List<List<Integer>> numbers = new ArrayList<>();
-        for(int i = 0; i < count; i++)
+        for(int i = 0; i < count; i++) {
             numbers.add(Randoms.pickUniqueNumbersInRange(MINIMUM_NUMBER_OF_LOTTO, MAXIMUM_NUMBER_OF_LOTTO, NUMBER_OF_LOTTO_NUMBER));
+            Lotto lottoNumber = new Lotto(numbers.get(i));
+        }
         return numbers;
     }
 

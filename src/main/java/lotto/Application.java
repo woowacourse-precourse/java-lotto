@@ -8,7 +8,7 @@ public class Application {
         int count = DataInput.PurchaseAmount();
         List<List<Integer>> lottoNumber = new ArrayList<>(DataProcess.GetLottoNumber(count));
         List<Integer> winningNumber = new ArrayList<>(DataInput.WinningNumber());
-        int bonusNumber = DataInput.BonusNumber();
+        int bonusNumber = DataInput.BonusNumber(winningNumber);
         int[] matching_number = DataProcess.CalculateReward(lottoNumber, winningNumber, bonusNumber, count);
         long totalReward = DataProcess.CalculateTotalReward(matching_number);
         double income = DataProcess.CalculateIncome(totalReward, count);
