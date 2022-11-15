@@ -62,4 +62,11 @@
         다음을 검사한다 (발행된 로또 번호,당첨 번호)
 ### 4. 문자열 데이터의 유효성을 검사하는 Exception Class
         다음을 검사한다 (로또 구입금액,보너스 번호)
+
+---
+## test code를 작성한다
+### ApplicationTest 
+        프로그램의 기능을 test함
+### LottoTest
+        당첨 번호에 대한 유효성을 test함 
         
