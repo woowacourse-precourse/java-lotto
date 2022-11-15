@@ -1,6 +1,7 @@
 package lotto.constant;
 
 public enum Rank {
+
     FIRST_SIX_MATCHED(2_000_000_000, "6개 일치 (2,000,000,000원)"),
     SECOND_FIVE_WITH_BONUS(30_000_000, "5개 일치, 보너스 볼 일치 (30,000,000원)"),
     THIRD_FIVE_MATCHED(1_500_000, "5개 일치 (1,500,000원)"),
