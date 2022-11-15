@@ -25,7 +25,7 @@ public class LottoData{
     private static Lotto winnerNumber;
 
     private static int bonusNumber;
-    public void setCountOfLotto(int numberOfLotto){
+    public void setCountOfLotto(int countOfLotto){
         LottoData.countOfLotto = countOfLotto / LOTTOPRICE;
     }
     public void setNumberOfWins(HashMap<Integer, Integer> numberOfWins){LottoData.numberOfWins = numberOfWins;}

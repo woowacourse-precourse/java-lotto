@@ -14,31 +14,27 @@ public class LottoController {
     InputView input = new InputView();
 
     public void start(){
-        userLottoProcessing();
-        winnerLottoProcessing();
-        compareLottoProcessing();
+        try {
+            userLottoProcessing();
+            winnerLottoProcessing();
+            compareLottoProcessing();
+        }catch(IllegalArgumentException e){
+            System.out.println("[ERROR]입력 오류 발생");
+        }
     }
 
-    private void userLottoProcessing(){
-    try {
+    private void userLottoProcessing() throws IllegalArgumentException{
         int purchasePrice = input.purchasePrice();
         userLotto.setLottoCount(purchasePrice);
         userLotto.makeLottoNumber();
         output.showPurchasedLotto(userLotto.countOfLotto(), userLotto.listOfLotto());
-    }catch(IllegalArgumentException e) {
-        System.out.println("[ERROR]구입 가격이 잘못 입력되었습니다.");
-    }
     }
 
-    private void winnerLottoProcessing(){
-    try {
+    private void winnerLottoProcessing() throws IllegalArgumentException{
         List<Integer> winnerNumber = input.winnerNumbers();
         winnerLotto.setWinnerNumber(winnerNumber);
         int bonusNumber = input.bonusNumber();
         winnerLotto.setBonusNumber(bonusNumber);
-    }catch(IllegalArgumentException e) {
-        System.out.println("[ERROR]당첨 번호 혹은 보너스 번호가 잘못 입력되었습니다.");
-    }
     }
 
     private void compareLottoProcessing(){
