@@ -1,5 +1,6 @@
 package lotto.exception;
 
+import java.util.Collections;
 import java.util.List;
 
 public class ExceptionHandler {
@@ -21,6 +22,14 @@ public class ExceptionHandler {
     public void lottoNumberException(List<Integer> numbers) throws IllegalArgumentException {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException("[ERROR] 로또 번호는 6개여야 합니다.");
+        }
+    }
+
+    public void overlapException(List<Integer> numbers) throws IllegalArgumentException {
+        for (int number : numbers) {
+            if (Collections.frequency(numbers, number) != 1) {
+                throw new IllegalArgumentException("[ERROR] 서로 다른 수가 아닙니다.");
+            }
         }
     }
 
