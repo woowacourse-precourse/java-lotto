@@ -26,13 +26,17 @@ public class Play {
     private Map<ResultType,Integer> totalResult;
 
     public void startPlay(){
-        result.calculateProfit(12000,5000);
-        inputAmount();
-        generateLotto();
-        winLotto = inputWinningNumber();
-        bonus = inputBonusNumber();
-        totalResult = makeResult(winLotto, bonus);
-        printResult(totalResult);
+        try {
+            result.calculateProfit(12000, 5000);
+            inputAmount();
+            generateLotto();
+            winLotto = inputWinningNumber();
+            bonus = inputBonusNumber();
+            totalResult = makeResult(winLotto, bonus);
+            printResult(totalResult);
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+        }
 
     }
 
@@ -44,7 +48,7 @@ public class Play {
     }
 
     private Map<ResultType, Integer> makeResult(List<Integer> winLotto, String bonus) {
-        Map<ResultType,Integer> totalResult = result.calculateLotto(lotto, winLotto, bonus);
+        totalResult = result.calculateLotto(lotto, winLotto, bonus);
 
         prize = result.makePrize(totalResult);
         return totalResult;
@@ -73,11 +77,12 @@ public class Play {
         System.out.println(START_MESSAGE);
 
         String amount = Console.readLine();
-        try{
-            total = purchase.checkAmount(amount);
-        } catch (Exception e){
-            System.out.println(e.getMessage());
-        }
+//        try{
+//            total = purchase.checkAmount(amount);
+//        } catch (Exception e){
+//            System.out.println(e.getMessage());
+//        }
+        total = purchase.checkAmount(amount);
         System.out.println("\n"+(total/1000)+CHECK_MESSAGE);
     }
 
