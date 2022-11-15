@@ -48,9 +48,9 @@ class LottoTest {
 
     private static Stream<Arguments> sortLottoNumbers() {
         return Stream.of(
-                Arguments.of(List.of(3,1,2,4,5,6), List.of(1,2,3,4,5,6)),
-                Arguments.of(List.of(43,1,24,2,11,5), List.of(1,2,5,11,24,43)),
-                Arguments.of(List.of(1,2,5,6,7,8), List.of(1,2,5,6,7,8))
+                Arguments.of(List.of(3, 1, 2, 4, 5, 6), List.of(1, 2, 3, 4, 5, 6)),
+                Arguments.of(List.of(43, 1, 24, 2, 11, 5), List.of(1, 2, 5, 11, 24, 43)),
+                Arguments.of(List.of(1, 2, 5, 6, 7, 8), List.of(1, 2, 5, 6, 7, 8))
         );
 
     }
@@ -62,7 +62,7 @@ class LottoTest {
 
         assertThatThrownBy(() -> new Lotto(numbers))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("로또 번호는 1보다 크거나 같고 45보다 작거나 같아야 합니다.");
+                .hasMessageContaining("로또 번호는 1부터 45사이의 숫자여야 합니다.");
     }
 
 }

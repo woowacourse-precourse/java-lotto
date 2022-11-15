@@ -14,7 +14,7 @@ import lotto.domain.Lottos;
 
 public class Out {
     public static void printErrorMessage(Exception exception) {
-        System.out.println("[ERROR]" + exception.getMessage());
+        System.out.println("[ERROR] " + exception.getMessage());
     }
 
     public static void printLottos(Lottos lottos) {

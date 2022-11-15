@@ -30,7 +30,7 @@ public class Validator {
     private static void isInRange(int number) {
         if (number < LottoRule.MIN_NUMBER || number > LottoRule.MAX_NUMBER) {
             throw new IllegalArgumentException
-                    ("로또 번호는 " + LottoRule.MIN_NUMBER + "보다 크거나 같고 " + LottoRule.MAX_NUMBER + "보다 작거나 같아야 합니다.");
+                    ("로또 번호는 " + LottoRule.MIN_NUMBER + "부터 " + LottoRule.MAX_NUMBER + " 사이의 숫자여야 합니다.");
         }
     }
 

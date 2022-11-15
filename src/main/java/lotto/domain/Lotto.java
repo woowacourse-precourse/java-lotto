@@ -7,8 +7,12 @@ public class Lotto {
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
-        Validator.validate(numbers);
+        validate(numbers);
         this.numbers = numbers.stream().sorted().collect(Collectors.toList());
+    }
+
+    private void validate(List<Integer> numbers) {
+        Validator.validate(numbers);
     }
 
     public Integer get(int index) {
