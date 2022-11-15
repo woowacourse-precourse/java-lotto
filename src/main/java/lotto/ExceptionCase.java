@@ -36,4 +36,15 @@ public class ExceptionCase {
 
         return false;
     }
+
+    static boolean checkBoundLottoNumber (List<Integer> input) {
+
+        for (int i = 0; i < input.size(); i++) {
+            if (!(input.get(i) > 0 && input.get(i) < 46)) {
+                return false;
+            }
+        }
+
+        return true;
+    }
 }
