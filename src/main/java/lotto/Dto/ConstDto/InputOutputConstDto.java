@@ -14,6 +14,6 @@ public class InputOutputConstDto {
     public final static String SIX_MATCHES = "6개 일치 (2,000,000,000원) - ";
     public final static String DEPENDENT_NOUN = "개";
     public final static String OUTPUT_YIELD = "총 수익률은 ";
-    public final static String LAST_WORD = "입니다.";
+    public final static String LAST_WORD = "%입니다.";
 
 }
