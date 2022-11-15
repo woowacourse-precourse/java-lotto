@@ -7,7 +7,6 @@ import lotto.util.Converter;
 import lotto.util.UserInput;
 
 public class User {
-
     private UserMoney userMoney;
     private int nLottoTickets;
 

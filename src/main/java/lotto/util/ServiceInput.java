@@ -11,7 +11,6 @@ import java.util.Collections;
 import java.util.List;
 
 public class ServiceInput {
-
     public static List<Integer> getLottoNumbers(){
         List<Integer> numbers = new ArrayList<>(
                 Randoms.pickUniqueNumbersInRange(Constant.LOTTO_START_NUMBER, Constant.LOTTO_END_NUMBER, Constant.LOTTO_SIZE)

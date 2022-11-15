@@ -12,7 +12,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Service {
-
     private List<Lotto> lottoTickets;
     private WinningNumbers winningNumbers;
     private BonusNumber bonusNumber;

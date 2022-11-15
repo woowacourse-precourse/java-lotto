@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Game {
-
     private final User user;
     private final Service service;
     private int[] winningResult;
@@ -56,32 +55,6 @@ public class Game {
         }
     }
 
-    private void setResult(int rank) {
-        this.winningResult[rank - 1] += 1;
-    }
-
-    private void setWinningPrize() {
-        for (int i=0; i< WinningInfo.values().length; i++){
-            this.winningPrize += WinningInfo.values()[i].getPrize() * this.winningResult[i];
-        }
-    }
-
-    private void setProfitRate() {
-        if (isWinningPrizeZero()) {
-            this.profitRate = Constant.ZERO_PROFIT_RATE;
-            return;
-        }
-
-        this.profitRate = ((double) this.winningPrize / user.getUserMoney()) * 100;
-    }
-
-    private boolean isWinningPrizeZero(){
-        return this.winningPrize == Constant.ZERO_WINNING_PRIZE;
-    }
-    private boolean isNotRank(int rank) {
-        return rank == Constant.NO_RANK;
-    }
-
     private int getSameCount(List<Integer> lottoNumbers){
         List<Integer> equalLottoNumbers = new ArrayList<>(lottoNumbers);
         equalLottoNumbers.retainAll(service.getWinningNumbers());
@@ -114,5 +87,32 @@ public class Game {
         }
 
         return WinningInfo.THIRDRANK.getRank();
+    }
+
+    private boolean isNotRank(int rank) {
+        return rank == Constant.NO_RANK;
+    }
+
+    private void setResult(int rank) {
+        this.winningResult[rank - 1] += 1;
+    }
+
+    private void setWinningPrize() {
+        for (int i=0; i< WinningInfo.values().length; i++){
+            this.winningPrize += WinningInfo.values()[i].getPrize() * this.winningResult[i];
+        }
+    }
+
+    private void setProfitRate() {
+        if (isWinningPrizeZero()) {
+            this.profitRate = Constant.ZERO_PROFIT_RATE;
+            return;
+        }
+
+        this.profitRate = ((double) this.winningPrize / user.getUserMoney()) * 100;
+    }
+
+    private boolean isWinningPrizeZero(){
+        return this.winningPrize == Constant.ZERO_WINNING_PRIZE;
     }
 }
