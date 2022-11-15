@@ -5,7 +5,7 @@ import java.util.Map;
 
 public class OutputView {
     public void printLottoCountMessage(long lottoCount) {
-        System.out.println(lottoCount + "개를 구매했습니다.");
+        System.out.printf("\n%d개를 구매했습니다.\n", lottoCount);
     }
 
     public void printLottoNumbers(List<List<Integer>> lottoPapers) {
@@ -13,7 +13,7 @@ public class OutputView {
     }
 
     public void printStatisticsMessage() {
-        System.out.println("당첨 통계\n---");
+        System.out.println("\n당첨 통계\n---");
     }
 
     public void printWinningCounts(Map<String, Integer> rankingCounts) {
@@ -27,10 +27,6 @@ public class OutputView {
     }
 
     public void printRateOfReturn(double rateOfReturn) {
-        System.out.print("총 수익률은 " + rateOfReturn + "%입니다.");
-    }
-
-    public void printNewLine() {
-        System.out.println();
+        System.out.printf("총 수익률은 " + rateOfReturn + "입니다.");
     }
 }
