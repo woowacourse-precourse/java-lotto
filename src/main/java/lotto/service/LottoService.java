@@ -46,4 +46,11 @@ public class LottoService {
         }
         return cnt;
     }
+
+    public static boolean compareBonus(Lotto issuedLotto, int bonus) {
+        if (issuedLotto.getNumbers().contains(bonus)) {
+            return true;
+        }
+        return false;
+    }
 }
