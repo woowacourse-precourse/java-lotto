@@ -6,8 +6,8 @@ public final class Constants {
     public static final String SCAN_ANSWER_MSG = "당첨 번호를 입력해 주세요. ";
     public static final String SCAN_BONUS_NUMBER_MSG = "보너스 번호를 입력해 주세요.";
     public static final String PRINT_STATISTICS_MSG = "당첨 통계\n" + "---";
-    public static final String PROFIT_MSG = "총 수익률은 %s%%입니다.";
-    public static final String PRINT_RANK_PRIZE = "%d개 일치%s (%s원) - %d개";
+    public static final String PROFIT_MSG = "총 수익률은 %,.1f%%입니다.";
+    public static final String PRINT_RANK_PRIZE = "%d개 일치%s (%,d원) - %d개";
     public static final String PRINT_BONUS_MATCH = ", 보너스 볼 일치";
     public static final String BLANK_BR = "\n";
 

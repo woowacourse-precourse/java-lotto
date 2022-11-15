@@ -2,7 +2,6 @@ package lotto.service;
 
 import lotto.domain.*;
 
-import java.text.DecimalFormat;
 import java.util.EnumMap;
 import java.util.List;
 import java.util.Map;
@@ -10,7 +9,6 @@ import java.util.Map;
 import static constants.Constants.*;
 
 public class StatisticsService {
-    private static final DecimalFormat formatter = new DecimalFormat("###,###.##");
 
     public Statistics calculateRating(User user, WinningLotto winningLotto) {
         Map<Prize, Integer> prizeMap = new EnumMap<>(Prize.class);
@@ -52,14 +50,13 @@ public class StatisticsService {
 
     private String printEachCount(Prize prize, int cnt) {
         if (prize.isBonusCatchPoint()) {
-            return String.format(PRINT_RANK_PRIZE, prize.getCatchPoint(), PRINT_BONUS_MATCH,
-                    formatter.format(prize.getMoney()), cnt);
+            return String.format(PRINT_RANK_PRIZE, prize.getCatchPoint(), PRINT_BONUS_MATCH, prize.getMoney(), cnt);
         }
-        return String.format(PRINT_RANK_PRIZE, prize.getCatchPoint(), "", formatter.format(prize.getMoney()), cnt);
+        return String.format(PRINT_RANK_PRIZE, prize.getCatchPoint(), "", prize.getMoney(), cnt);
     }
 
     public void printProfit(Statistics statistic, User user) {
         double profit = statistic.getTotal() / user.getPurchaseMoney() * 100;
-        System.out.printf(PROFIT_MSG + "\n", formatter.format(profit));
+        System.out.printf(PROFIT_MSG + "\n", profit);
     }
 }
