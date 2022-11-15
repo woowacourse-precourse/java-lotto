@@ -14,13 +14,13 @@ public class LottoController {
             int NumberOfLotto = getNumberOfLotto();
             List<Lotto> lottoList = makeBunchOfLotto(NumberOfLotto);
             lottoView.printLottoList(lottoList);
-
             lottoView.printWinNumberQuestion();
             Lotto winNumber = getWinLottoNumber(inputWinNumber());
-
             lottoView.printBonusNumberQuestion();
             int bonusNumber = inputBonusNumber(winNumber);
-
+            Prize[] prizes = getStatistics(lottoList,winNumber,bonusNumber);
+            lottoView.printStatistics(prizes);
+            lottoView.printProfit(getProfit(prizes, NumberOfLotto * 1000));
         } catch (IllegalArgumentException e) {
             return ;
         }
@@ -123,6 +123,30 @@ public class LottoController {
         Set<Integer> winNumber = new HashSet<>(win.getNumbers());
         Set<Integer> bonusNumber = new HashSet<>(List.of(bonus));
 
-        return winNumber.retainAll(bonusNumber);
+        winNumber.retainAll(bonusNumber);
+        if (winNumber.size() == 0) {
+            return false;
+        }
+        return true;
+    }
+
+    public Prize[] getStatistics(List<Lotto> lottoList, Lotto winNumber, int bonusNumber) {
+        List<Integer> stats = new ArrayList<>();
+        Prize[] prizes = Prize.values();
+        for (Lotto i : lottoList) {
+            prizes = i.compareLotto(winNumber, bonusNumber);
+        }
+
+        return prizes;
+    }
+
+    public double getProfit(Prize[] prizes, int money) {
+        double sum = 0.;
+        int[] prices = {0,5000,50000,1500000,2000000000,30000000};
+
+        for (int i = 1; i < prizes.length; i++) {
+            sum += prizes[i].getCount() * prices[i];
+        }
+        return sum / money * 100;
     }
 }
