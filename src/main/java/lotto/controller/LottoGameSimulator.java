@@ -1,16 +1,15 @@
 package lotto.controller;
 
-import lotto.LottoConstants;
 import lotto.domain.*;
 import lotto.domain.generator.LottoGameResultGenerator;
 import lotto.domain.generator.LottoGenerator;
 import lotto.domain.generator.WinningNumbersGenerator;
-import lotto.domain.validator.BonusNumberValidator;
 import lotto.domain.validator.MoneyValidator;
 import lotto.io.Inputter;
 import lotto.io.MessagePrinter;
-
 import java.util.List;
+
+import static lotto.ErrorMessages.NEMERIC_ERROR_MESSAGE;
 
 public class LottoGameSimulator {
     private LottoGameResult lottoGameResult;
@@ -92,7 +91,7 @@ public class LottoGameSimulator {
         try {
             bonusNumber = Integer.parseInt(bonusNumberInput);
         } catch (Exception exception) {
-            throw new IllegalArgumentException("[ERROR] 숫자를 입력헤야 합니다");
+            throw new IllegalArgumentException(NEMERIC_ERROR_MESSAGE.getMessage());
         }
 
         winningNumbers.registerBonusNumber(bonusNumber);

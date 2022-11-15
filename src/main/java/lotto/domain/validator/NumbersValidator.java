@@ -6,14 +6,12 @@ import java.util.List;
 import static lotto.LottoConstants.LOTTO_SIZE;
 import static lotto.LottoConstants.MIN_LOTTO_NUMBER;
 import static lotto.LottoConstants.MAX_LOTTO_NUMBER;
+import static lotto.ErrorMessages.RANGE_ERROR_MESSAGE;
+import static lotto.ErrorMessages.DUPLICATE_ERROR_MESSAGE;
+import static lotto.ErrorMessages.SIZE_ERROR_MESSAGE;
 
 public class NumbersValidator {
-    private static String SIX_NUMBERS_ERROR_MESSAGE = "[ERROR] 6개로 구성돼야 합니다";
-    private static String RANGE_ERROR_MESSAGE = String.format("[ERROR] %d ~ %d 사이의 숫자들로 구성돼야 합니다",
-            MIN_LOTTO_NUMBER.getValue(), MAX_LOTTO_NUMBER.getValue());
-    private static String DUPLICATE_ERROR_MESSAGE = "[ERROR] 중복없이 구성돼야 합니다";
-
-    private static boolean isSixInputs(List<Integer> numbers) {
+    private static boolean isLottoSize(List<Integer> numbers) {
         return numbers.size() == LOTTO_SIZE.getValue();
     }
 
@@ -36,14 +34,17 @@ public class NumbersValidator {
     }
 
     public static void validate(List<Integer> numbers) {
-        if (!isSixInputs(numbers)) {
-            throw new IllegalArgumentException(SIX_NUMBERS_ERROR_MESSAGE);
+        if (!isLottoSize(numbers)) {
+            String errorMessage = String.format(SIZE_ERROR_MESSAGE.getMessage(), LOTTO_SIZE.getValue());
+            throw new IllegalArgumentException(errorMessage);
         }
         if (!isInValidRange(numbers)) {
-            throw new IllegalArgumentException(RANGE_ERROR_MESSAGE);
+            String errorMessage = String.format(RANGE_ERROR_MESSAGE.getMessage(),
+                    MIN_LOTTO_NUMBER.getValue(), MAX_LOTTO_NUMBER.getValue());
+            throw new IllegalArgumentException(errorMessage);
         }
         if (isDuplicate(numbers)) {
-            throw new IllegalArgumentException(DUPLICATE_ERROR_MESSAGE);
+            throw new IllegalArgumentException(DUPLICATE_ERROR_MESSAGE.getMessage());
         }
     }
 }

@@ -4,12 +4,10 @@ import lotto.domain.WinningNumbers;
 
 import static lotto.LottoConstants.MIN_LOTTO_NUMBER;
 import static lotto.LottoConstants.MAX_LOTTO_NUMBER;
+import static lotto.ErrorMessages.RANGE_ERROR_MESSAGE;
+import static lotto.ErrorMessages.DUPLICATE_ERROR_MESSAGE;
 
 public class BonusNumberValidator {
-    private static String RANGE_ERROR_MESSAGE = String.format("[ERROR] %d ~ %d 사이의 숫자들로 입력해야 합니다",
-            MIN_LOTTO_NUMBER.getValue(), MAX_LOTTO_NUMBER.getValue());
-    private static String DUPLICATE_ERROR_MESSAGE = "[ERROR] 당첨번호들 중 중복되는 값이 있습니다";
-
     private static boolean isInValidRange(int number) {
         return (MIN_LOTTO_NUMBER.getValue() <= number && number <= MAX_LOTTO_NUMBER.getValue());
     }
@@ -20,10 +18,12 @@ public class BonusNumberValidator {
 
     public static void validate(WinningNumbers winningNumbers, int number) {
         if (!isInValidRange(number)) {
-            throw new IllegalArgumentException(RANGE_ERROR_MESSAGE);
+            String errorMessage = String.format(RANGE_ERROR_MESSAGE.getMessage(),
+                    MIN_LOTTO_NUMBER.getValue(), MAX_LOTTO_NUMBER.getValue());
+            throw new IllegalArgumentException(errorMessage);
         }
         if (isDuplicate(winningNumbers, number)) {
-            throw new IllegalArgumentException(DUPLICATE_ERROR_MESSAGE);
+            throw new IllegalArgumentException(DUPLICATE_ERROR_MESSAGE.getMessage());
         }
     }
 }
