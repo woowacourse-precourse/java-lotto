@@ -19,7 +19,7 @@ public class Lotto {
     }
 
     public List<Integer> getNumbers() {
-        return this.numbers;
+        return numbers;
     }
 
     private void sizeValidate(List<Integer> numbers) {
@@ -30,7 +30,7 @@ public class Lotto {
 
     private void duplicationValidate(List<Integer> numbers) {
         for (int i = 0; i < numbers.size(); i++) {
-            if (i != numbers.indexOf(i)) {
+            if (i != numbers.indexOf(numbers.get(i))) {
                 throw new IllegalArgumentException(ERROR_DUPLICATION_EXCEPTION);
             }
         }
