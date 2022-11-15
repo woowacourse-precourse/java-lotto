@@ -13,7 +13,7 @@ import camp.nextstep.edu.missionutils.test.NsTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-class LottoTest extends NsTest {
+class LottoTest{
     @DisplayName("로또 번호의 개수가 6개가 넘어가면 예외가 발생한다.")
     @Test
     void createLottoByOverSize() {
@@ -37,13 +37,6 @@ class LottoTest extends NsTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
-    @Test
-    void createLottoByNotNum(){
-        System.out.println(output());
-        assertThatThrownBy(()-> new Validator().validateNumber("1,2,3,4,5,a"))
-                .isInstanceOf(IllegalArgumentException.class);
-
-    }
 
     @Test
     void createWrongBonus(){
@@ -56,8 +49,4 @@ class LottoTest extends NsTest {
     }
 
 
-    @Override
-    protected void runMain() {
-        new Validator().validateNumber("1,2,3,4,5,a");
-    }
 }
