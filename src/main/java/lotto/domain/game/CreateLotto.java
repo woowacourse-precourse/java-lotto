@@ -12,7 +12,6 @@ import static lotto.domain.game.Lotto.*;
 public class CreateLotto {
     private List<Integer> lotto;
 
-
     public CreateLotto(){
         List<Integer> temLotto = generateLotto();
         lotto = new ArrayList<>(temLotto);

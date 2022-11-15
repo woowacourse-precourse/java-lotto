@@ -5,11 +5,11 @@ import java.util.List;
 import static lotto.domain.game.LottoString.*;
 
 public class Lotto {
-    private final List<Integer> lotto;
     public static final int LOTTO_COUNT = 6;
     public static final int LOTTO_BONUS_COUNT = 1;
     public static int LOTTO_MIN_RANGE = 1;
     public static int LOTTO_MAX_RANGE = 45;
+    private final List<Integer> lotto;
 
     public Lotto(List<Integer> winningNumbers) {
         validateSizeWinningNumber(winningNumbers);
