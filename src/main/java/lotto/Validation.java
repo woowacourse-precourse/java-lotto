@@ -17,7 +17,11 @@ public class Validation {
     }
 
     public void isValidPrice(int price) {
-   }
+        if(price % 1000 != 0) {
+            System.out.println("[ERROR] 올바른 금액이 아닙니다.");
+            throw new IllegalArgumentException("[ERROR] 올바른 금액이 아닙니다.");
+        }
+    }
 
     public void isValidWinningNumbers(List<Integer> numbers) {
         isValidSize(numbers);
