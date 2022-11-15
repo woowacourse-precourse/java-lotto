@@ -14,7 +14,15 @@ public class Lotto {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException();
         }
+        for(int i = 0; i < 6; i++){
+            if(numbers.indexOf(i) < 1 || numbers.indexOf(i) > 45){
+                throw new IllegalArgumentException();
+            }
+        }
     }
-
     // TODO: 추가 기능 구현
+
+    public void printNumber(){
+        System.out.println(numbers);
+    }
 }
