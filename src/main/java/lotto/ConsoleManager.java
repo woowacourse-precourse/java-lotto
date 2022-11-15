@@ -9,6 +9,20 @@ import static lotto.LottoService.*;
 import static lotto.Validator.isValidFormat;
 
 public class ConsoleManager {
+    public static void playGame(){
+        printPurchaseMoney();
+        int money = getMoney();
+        int count = calculateLotto(money);
+        HashMap<Integer, List<Integer>> lotties = makeLotto(count);
+        printLotties(count, lotties);
+        List<Integer> winningNumbers = getWinningNumbers();
+        int bonusNumber = getBonusNumber();
+        HashMap<Integer, List<Integer>> compareResult = calculateCompareResult(count, lotties, winningNumbers, bonusNumber);
+        HashMap<Integer, Integer> rankResult = calculateRank(compareResult, count);
+        printResult(rankResult);
+        double doubleTypeRateOfReturn = calculateRateOfReturn(rankResult, money);
+        printRateOfReturn(doubleTypeRateOfReturn);
+    }
 
     public static void printPurchaseMoney(){
         System.out.println("구입금액을 입력해 주세요.");
