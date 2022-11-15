@@ -12,6 +12,17 @@ public class LottoList {
         this.lottoList.add(lotto);
     }
 
+    public List<LottoRank> lottoResult(WinningLotto winningLotto) {
+        List<LottoRank> results = new ArrayList<>();
+        for (Lotto lotto : lottoList) {
+            int matchCount = winningLotto.getWinningLottoNumber().checkSameCount(lotto);
+            boolean isBonus = lotto.contain(winningLotto.getBonusNumber());
+            results.add(LottoRank.checkRanking(matchCount, isBonus));
+        }
+        return results;
+    }
+
+
     @Override
     public String toString() {
         StringBuilder str = new StringBuilder();
