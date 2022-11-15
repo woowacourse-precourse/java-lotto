@@ -10,6 +10,7 @@ public class Player {
     private List<Lotto> lottoNumbers;
     private List<Integer> winningNumber;
     private int bonusNumber;
+    private int totalPrize;
 
     public void setPurchaseAmount(int purchaseAmount) {
         this.purchaseAmount = purchaseAmount;
@@ -68,5 +69,12 @@ public class Player {
         }
 
         return matchingNumbers;
+    }
+
+    public void registerTotalPrize() {
+        this.totalPrize = 0;
+        for (Ranking rank : Ranking.values()) {
+            totalPrize += rank.getPrize() * rank.getWinningResult();
+        }
     }
 }

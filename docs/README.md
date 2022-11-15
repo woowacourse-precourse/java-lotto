@@ -22,7 +22,7 @@
 
         당첨 기준 1등~5등 enum으로 선언
     - [x]  당첨 내역 저장 기능 → registerWinningResult
-    - [ ]  당첨금 저장 기능 → registerTotalPrize
+    - [x]  당첨금 저장 기능 → registerTotalPrize
     - [ ]  수익률 저장 기능 → registerLottoYield
 3. Seller
     - [x]  발행할 로또 개수 계산 기능 → countIssueingLotto
