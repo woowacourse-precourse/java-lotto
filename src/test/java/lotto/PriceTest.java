@@ -31,7 +31,15 @@ public class PriceTest extends NsTest {
     }
 
     @Test
-    void 예외_최소_가격_테스트() {
+    void 예외_범위밖_최대_가격_테스트() {
+        assertSimpleTest(() -> {
+            runException("90000000000000");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
+    @Test
+    void 예외_범위밖_최소_가격_테스트() {
         assertSimpleTest(() -> {
             runException("-3000");
             assertThat(output()).contains(ERROR_MESSAGE);

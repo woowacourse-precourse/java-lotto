@@ -15,8 +15,8 @@ public class Record {
         System.out.println(ErrorMessage.IS_ERROR.getMessage() + ErrorMessage.DIVIDED_PRICE.getMessage());
     }
 
-    public static void printMinimumError() {
-        System.out.println(ErrorMessage.IS_ERROR.getMessage() + ErrorMessage.MINIMUM_PRICE.getMessage());
+    public static void printPriceRangeError() {
+        System.out.println(ErrorMessage.IS_ERROR.getMessage() + ErrorMessage.PRICE_RANGE.getMessage());
     }
 
     public static void printSizeError() {
@@ -123,7 +123,7 @@ public class Record {
         DUPLICATE_LOTTO(" 이미 존재하는 로또입니다."),
         IS_NUMBER(" 해당 입력값은 숫자로 전환할 수 없습니다."),
         OUT_OF_RANGE(" 로또 번호는 1부터 45 사이의 숫자여야 합니다."),
-        MINIMUM_PRICE(" 입력값이 1,000 이상 되야합니다."),
+        PRICE_RANGE(" 가격이 허용 범위에서 벗어났습니다."),
         DIVIDED_PRICE(" 입력값이 1,000 으로 나눠떨어져야 합니다."),
         DUPLICATE_BONUS(" 이미 당첨 번호에 해당 숫자가 있습니다.");
 

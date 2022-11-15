@@ -4,8 +4,6 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 
 public class Game {
@@ -13,11 +11,11 @@ public class Game {
     static int bonus;
     static Lotto winningNumbers;
     static LottoTickets lottoTickets;
-    public static int price;
+    public static double price;
 
     Game(String input) {
         checkInputError(input);
-        this.price = Integer.valueOf(input);
+        this.price = Double.parseDouble(input);
     }
 
     public static void play() {
@@ -50,7 +48,7 @@ public class Game {
     }
 
     private static void enterLottoTickets() {
-        int counts = price / ReferenceValue.Lotto.PRICE.getValue();
+        int counts = (int) price / ReferenceValue.Lotto.PRICE.getValue();
         System.out.println(Record.getBuyCounts(counts));
 
         List<Lotto> allLottery = new ArrayList<>();
@@ -133,16 +131,18 @@ public class Game {
         Record.printEnterPrice();
         System.out.println(input + ReferenceValue.LINE_BREAK);
 
-        if (checkNumberError(input) || checkMinimumPriceError(input) || checkPriceError(input)) {
+        if (checkNumberError(input) || checkPriceRangeError(input) || checkPriceError(input)) {
             throw new IllegalArgumentException();
         }
     }
 
-    private static boolean checkMinimumPriceError(String input) {
-        int price = Integer.parseInt(input);
+    private static boolean checkPriceRangeError(String input) {
+        double price = Double.parseDouble(input);
+        double minPrice = (double) ReferenceValue.Lotto.PRICE.getValue();
+        double maxPrice = minPrice * ReferenceValue.Lotto.MAX_COUNTS.getValue();
 
-        if (price < ReferenceValue.Lotto.PRICE.getValue()) {
-            Record.printMinimumError();
+        if (price < minPrice || price > maxPrice) {
+            Record.printPriceRangeError();
             return true;
         }
 
@@ -150,7 +150,7 @@ public class Game {
     }
 
     private static boolean checkPriceError(String input) {
-        int price = Integer.parseInt(input);
+        double price = Double.parseDouble(input);
 
         if (price % ReferenceValue.Lotto.PRICE.getValue() != ReferenceValue.NOTHING) {
             Record.printPriceError();
@@ -162,7 +162,7 @@ public class Game {
 
     public static boolean checkNumberError(String input) {
         try {
-            Integer.parseInt(input);
+            Double.valueOf(input);
         } catch (NumberFormatException e) {
             Record.printNumberError();
             return true;

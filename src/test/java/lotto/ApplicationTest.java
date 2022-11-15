@@ -48,7 +48,7 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 기능2_테스트() {
+    void 기능_사천원_테스트() {
         assertRandomUniqueNumbersInRangeTest(
                 () -> {
                     run("4000", "1,2,33,4,5,6", "7");
@@ -74,7 +74,7 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 기능3_테스트() {
+    void 기능_이천원_테스트() {
         assertRandomUniqueNumbersInRangeTest(
                 () -> {
                     run("2000", "1,2,4,5,6,33", "7");
@@ -89,6 +89,21 @@ class ApplicationTest extends NsTest {
                             "6개 일치 (2,000,000,000원) - 0개",
                             "총 수익률은 500.0%입니다."
                     );
+                },
+                List.of(16, 1, 32, 4, 2, 7),
+                List.of(1, 2, 22, 14, 45, 4)
+        );
+    }
+
+    @Test
+    void 기능_최대_테스트() {
+        assertRandomUniqueNumbersInRangeTest(
+                () -> {
+                    run("8145060000");
+                    assertThat(output()).contains(
+                            "구입금액을 입력해 주세요.",
+                            "8145060000",
+                            ERROR_MESSAGE);
                 },
                 List.of(16, 1, 32, 4, 2, 7),
                 List.of(1, 2, 22, 14, 45, 4)

@@ -12,6 +12,7 @@ public class ReferenceValue {
     public enum Lotto {
         SIZE("크기", 6),
         PRICE("가격", 1_000),
+        MAX_COUNTS("제한갯수",8_145_060),
         START_RANGE("최솟값", 1),
         END_RANGE("최댓값", 45),
         IS_BONUS("보너스",777);

@@ -50,7 +50,7 @@ public class LottoTickets {
         return totalReturnPercent;
     }
 
-    private static int getPurchaseAmount() {
+    private static double getPurchaseAmount() {
         return size * ReferenceValue.Lotto.PRICE.getValue();
     }
 
