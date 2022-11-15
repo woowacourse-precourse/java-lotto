@@ -8,12 +8,13 @@ import java.util.HashMap;
 import java.util.List;
 
 import static lotto.domain.Lotto.issueLotto;
-import static lotto.domain.Statistic.findStatistic;
+import static lotto.domain.Statistic.*;
 import static lotto.view.InputView.*;
 import static lotto.view.OutputView.printLottoNumber;
 
 public class LottoService {
     static final int LOTTO_SIZE = 6;
+
     public static void lottoService() {
         int count, bonus;
         Lotto inputLottoNumber;
@@ -27,7 +28,6 @@ public class LottoService {
         }
         List<Lotto> issuedLotteries = issueLotto(count);
         printLottoNumber(count, issuedLotteries);
-
     }
 
     public static List<Integer> stringToIntList(String input) {
@@ -40,9 +40,21 @@ public class LottoService {
         return output;
     }
 
-    // 일치하는 로또 번호 개수와 보너스 번호를 기준으로 Statistic을 선정하고 조건을 만족하면 StatisticAndCount의 value에 1을 추가한다.
-    public static void countStatistic(Lotto inputLotto, int bonus, List<Lotto> issuedLotteries,
-                                       HashMap<Statistic, Integer> countStatistic, int index) {
+    // countStatistic을 초기화하고 발행된 로또 수만큼 당첨 결과를 적용하여 반환한다.
+    public static HashMap<Statistic, Integer> generateCountStatistic(int count, Lotto inputLottoNumber,
+                                                                     int bonus, List<Lotto> issuedLotteries) {
+        HashMap<Statistic, Integer> countStatistic = new HashMap<>();
+        initializeCountStatistic(countStatistic);
+
+        for (int i = 0; i < count; i++) {
+            calculateStatistic(inputLottoNumber, bonus, issuedLotteries, countStatistic, i);
+        }
+        return countStatistic;
+    }
+
+    // 일치하는 로또 번호 개수와 보너스 번호를 기준으로 Statistic을 선정하고 조건을 만족하면 countStatistic의 value에 1을 추가한다.
+    public static void calculateStatistic(Lotto inputLotto, int bonus, List<Lotto> issuedLotteries,
+                                          HashMap<Statistic, Integer> countStatistic, int index) {
         int matchingNumber = countMatchingNumber(issuedLotteries.get(index), inputLotto);
         boolean bonusFlag = compareBonus(issuedLotteries.get(index), bonus);
         Statistic statistic = findStatistic(matchingNumber, bonusFlag);

@@ -139,7 +139,7 @@ class ApplicationTest extends NsTest {
         initializeCountStatistic(countStatistic);
 
         // when
-        countStatistic(inputLotto, bonus, issuedLotteries, countStatistic, 1);
+        calculateStatistic(inputLotto, bonus, issuedLotteries, countStatistic, 1);
 
         // then
         assertEquals(countStatistic.get(FOUR), 1);
