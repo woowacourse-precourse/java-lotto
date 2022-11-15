@@ -17,6 +17,15 @@ public class Game {
     private Lotto winLotto;
     private int bonusNumber;
 
+    public void playLotto(){
+        Person person = new Person();
+        person.buyLottos();
+        setWinLotto();
+        saveScoreResult(person);
+        person.calculateTotalLottoPrize();
+        person.printLottoScoreResult();
+    }
+
     public void setWinLotto() {
         winLotto = new Lotto(Input.inputWinLottoNumbers());
         bonusNumber = Input.inputWinLottoBonusNumber();
@@ -36,7 +45,7 @@ public class Game {
             rank = calculateRank(userLotto);
             count = result.get(rank);
             count++;
-            result.add(rank, count);
+            result.set(rank, count);
         }
     }
 

@@ -14,12 +14,9 @@ public class LottoScoreResult {
     public List<Integer> winScoreList = new ArrayList<>();// 등수별 당첨수 저장
 
     public LottoScoreResult() {
-        winScoreList.add(FIRST_RANK, 0);
-        winScoreList.add(SECOND_RANK, 0);
-        winScoreList.add(THIRD_RANK, 0);
-        winScoreList.add(FOURTH_RANK, 0);
-        winScoreList.add(FIFTH_RANK, 0);
-        winScoreList.add(NO_RANK, 0);
+        for (int i = 0; i < 6; i++) {
+            winScoreList.add(0);
+        }
     }
 
 }
