@@ -1,5 +1,7 @@
 package lotto;
 
+import java.util.Collections;
+import java.util.stream.Collectors;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -43,5 +45,17 @@ class LottoTest {
         List<Lotto> lottos = lottoGenerator.generateLottos(1);
 
         assertThat(lottos).doesNotHaveDuplicates();
+    }
+
+    @DisplayName("만들어진 로또 번호가 오름차순인지 테스트")
+    @Test
+    void inAscendingOrder() {
+        List<Lotto> lottos = lottoGenerator.generateLottos(1);
+
+        List<Lotto> sortedLottos = lottos.stream()
+                .sorted()
+                .collect(Collectors.toList());
+
+        assertThat(lottos).isEqualTo(sortedLottos);
     }
 }
