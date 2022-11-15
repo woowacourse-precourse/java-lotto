@@ -20,19 +20,19 @@ public class Customer {
                 .collect(Collectors.toList()));
     }
 
-    private int getLottoCount(int purchaseMoney) {
-        return purchaseMoney / LottoConstant.PRICE.getValue();
-    }
-
-    private Lotto purchaseLotto() {
+    public Lotto purchaseLotto() {
         return new Lotto(generateLottoNumbers());
     }
 
-    private List<Integer> generateLottoNumbers() {
+    public List<Integer> generateLottoNumbers() {
         return Randoms.pickUniqueNumbersInRange(
                 LottoConstant.START_NUMBER.getValue(),
                 LottoConstant.END_NUMBER.getValue(),
                 LottoConstant.NUMBER_COUNT.getValue());
+    }
+
+    private int getLottoCount(int purchaseMoney) {
+        return purchaseMoney / LottoConstant.PRICE.getValue();
     }
 
     private void validateUnitOfTenThousand(int money) {
