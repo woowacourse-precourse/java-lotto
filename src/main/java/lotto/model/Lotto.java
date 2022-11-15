@@ -6,8 +6,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 import static lotto.constValue.Constants.ExceptionMessage.*;
-import static lotto.constValue.Constants.LottoInfo.MAX_RANGE;
-import static lotto.constValue.Constants.LottoInfo.MIN_RANGE;
+import static lotto.constValue.Constants.LottoInfo.*;
 
 public class Lotto {
     private final List<Integer> numbers;
@@ -21,7 +20,7 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
-        if (numbers.size() != 6) {
+        if (numbers.size() != COUNT_RANGE) {
             throw new IllegalArgumentException();
         }
     }

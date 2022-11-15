@@ -9,6 +9,7 @@ import static lotto.constValue.Constants.ExceptionMessage.LOTTO_WINNING_NUMBER_O
 import static lotto.constValue.Constants.Format.WINNING_NUMBER_FORMAT;
 import static lotto.constValue.Constants.LottoInfo.MAX_RANGE;
 import static lotto.constValue.Constants.LottoInfo.MIN_RANGE;
+import static lotto.constValue.Constants.WinnerInfo.SEPARATOR_COMMA;
 
 public class Winner {
 
@@ -25,7 +26,7 @@ public class Winner {
 
     public List<Integer> getWinningNumberParsing(String winningNumber) {
         List<Integer> winningNumberGroup = new ArrayList<>();
-        String[] winningNumbersOnly = winningNumber.split(",");
+        String[] winningNumbersOnly = winningNumber.split(SEPARATOR_COMMA);
         for (String numberOnly : winningNumbersOnly) {
             int lottoNumberParsing = Integer.parseInt(numberOnly);
             winningNumberGroup.add(lottoNumberParsing);

@@ -2,6 +2,8 @@ package lotto.model;
 
 import java.util.*;
 
+import static lotto.constValue.Constants.LottoInfo.COUNT_RANGE;
+
 public class Referee {
 
     private static Map<LottoRank, Integer> lottoResultCount;
@@ -14,22 +16,22 @@ public class Referee {
         return lottoResultCount;
     }
 
-    public void createLottoResult(List<Lotto> lottos, List<Integer> winningNumber, int bonusNum){
+    public void createLottoResult(List<Lotto> lottos, List<Integer> winningNumber, int bonusNum) {
         for (Lotto lotto : lottos) {
             List<Integer> lottoNumbers = lotto.getNumbers();
-            createLottoResultCount(lottoNumbers,winningNumber, bonusNum);
+            createLottoResultCount(lottoNumbers, winningNumber, bonusNum);
         }
     }
 
-    public void createLottoResultCount(List<Integer> lottoNumbers,List<Integer> winningNumber, int bonusNum) {
+    public void createLottoResultCount(List<Integer> lottoNumbers, List<Integer> winningNumber, int bonusNum) {
         int correctCount = correctCountLottoNumAndWinnerNum(lottoNumbers, winningNumber);
         boolean foundBonus = isBonusNumberInWinningNumber(winningNumber, bonusNum);
-        putLottoResultCount(correctCount,foundBonus);
+        putLottoResultCount(correctCount, foundBonus);
     }
 
     public int correctCountLottoNumAndWinnerNum(List<Integer> lottoNumber, List<Integer> winnerNumber) {
         int correctCount = 0;
-        for (int i = 0; i < 6; i++) {
+        for (int i = 0; i < COUNT_RANGE; i++) {
             correctCount = getCorrectCount(lottoNumber, winnerNumber, correctCount, i);
         }
         return correctCount;
@@ -48,7 +50,7 @@ public class Referee {
 
     public void putLottoResultCount(int correctCountLottoAndWinner, boolean foundBonus) {
         LottoRank rank = findLottoRank(correctCountLottoAndWinner, foundBonus);
-        if(rank!=null) {
+        if (rank != null) {
             addLottoCount(rank);
         }
     }

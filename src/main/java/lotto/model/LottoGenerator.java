@@ -12,11 +12,10 @@ public class LottoGenerator {
     public List<Lotto> createLottoNumbers(int lottoTicket) {
         List<Lotto> lottos = new ArrayList<>();
 
-        while (lottoTicket > 0) {
+        for (int lottoTicketCount = 0; lottoTicketCount < lottoTicket; lottoTicketCount++) {
             List<Integer> numbers = Randoms.pickUniqueNumbersInRange(MIN_RANGE, MAX_RANGE, COUNT_RANGE);
             Lotto lotto = new Lotto(numbers);
             lottos.add(lotto);
-            lottoTicket--;
         }
         return lottos;
     }
