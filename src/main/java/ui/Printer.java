@@ -1,5 +1,8 @@
 package ui;
 
+import java.util.Collections;
+import java.util.List;
+
 public class Printer {
 
     public void printEnterPurchaseAmount() {
@@ -8,6 +11,13 @@ public class Printer {
 
     public void printBoughtNum(Integer boughtNum) {
         System.out.println(boughtNum + UiText.BOUGHT_NUMBER.getTxt());
+    }
+
+    public void printLotto(List<List<Integer>> boughtLotto) {
+        for (List<Integer> lotto : boughtLotto) {
+            Collections.sort(lotto);
+            System.out.println(lotto);
+        }
     }
 
     public void printEnterWinningNumber() {
