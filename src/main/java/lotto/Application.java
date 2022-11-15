@@ -17,8 +17,10 @@ public class Application {
             int purchaseAmount = buyLotto();
             List<List> purchaseLotto = autoLotto(purchaseAmount);
             List<Integer> winnerLotto = winLotto();
+
             int bonusNumber = bonusLotto();
             List<List> compareResult = compareLotto(purchaseLotto,winnerLotto,bonusNumber);
+            checkLottoInputException(bonusNumber, winnerLotto);
             List<Integer> winCnt = gameResult(compareResult);
             printResult(winCnt);
             getMoney(winCnt, purchaseAmount);
@@ -62,7 +64,11 @@ public class Application {
     public static List<Integer> winLotto(){
         System.out.println(WIN_LOTTO_NUMBER_INPUT);
         String winNum = Console.readLine();
-        checkWinLottoException(winNum);
+        try {
+            checkWinLottoException(winNum);
+        }catch(IllegalArgumentException e){
+            System.out.println(e.getMessage());
+        }
         String[] inputNum = winNum.split(",");
         List<Integer> winNumbers = new ArrayList<>();
         for (int i = 0; i < inputNum.length; i++) {
@@ -75,9 +81,13 @@ public class Application {
     private static void checkWinLottoException(String winNum) {
         String[] winLottoCheck = winNum.split("");
         int cnt = 0;
+        int integerCnt = 0;
         for (int i = 0; i < winLottoCheck.length; i++) {
-            if(winLottoCheck[i].equals(",")){
+            if(winLottoCheck[i].equals(",")) {
                 cnt++;
+            }
+            else if(!winLottoCheck[i].matches("-?\\d+")){
+                throw new IllegalArgumentException(USER_INPUT_ERROR);
             }
         }
         if(cnt!=5){
@@ -95,7 +105,11 @@ public class Application {
         System.out.println(BONUS_NUMBER_INPUT);
         String bonusNum = Console.readLine();
         int bonus = 0;
-        checkBonusNumException(bonusNum);
+        try {
+            checkBonusNumException(bonusNum);
+        }catch(IllegalArgumentException e){
+            System.out.println(e.getMessage());
+        }
         bonus = Integer.parseInt(bonusNum);
         return bonus;
     }
@@ -114,7 +128,11 @@ public class Application {
 
     public static List<List> compareLotto(List<List> purchaseLotto, List<Integer> winNumbers, int bonusNumber){
         List<List> LottoPrize = new ArrayList<>();
-        checkLottoInputException(bonusNumber, winNumbers);
+        try {
+            checkLottoInputException(bonusNumber, winNumbers);
+        }catch(IllegalArgumentException e){
+            System.out.println(e.getMessage());
+        }
         int cnt = 0;
         int bonusCnt = 0;
         for (int i = 0; i < purchaseLotto.size(); i++) {
