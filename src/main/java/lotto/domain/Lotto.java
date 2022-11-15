@@ -20,7 +20,7 @@ public class Lotto {
     }
 
     private void validateDuplicate(List<Integer> numbers) {
-        Set<Integer> uniqueNumbers = new HashSet();
+        Set<Integer> uniqueNumbers = new HashSet<Integer>();
         
         for (Integer number : numbers) {
             
@@ -30,5 +30,9 @@ public class Lotto {
             
             uniqueNumbers.add(number);
         }
+    }
+    
+    public List<Integer> getNumbers() {
+        return this.numbers;
     }
 }
