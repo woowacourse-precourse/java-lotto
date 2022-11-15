@@ -23,19 +23,24 @@ public class Application {
 
         return lottos;
     }
+
+    private static WinningNumbers setWinningNumbers() {
+        Output.winNumberEventMessage();
+        String winNumbers = Input.input();
+        Output.blankLine();
+        Output.bonusNumberEventMessage();
+        String bonusNumber = Input.input();
+        WinningNumbers winningNumbers = new WinningNumbers(winNumbers, bonusNumber);
+        Output.blankLine();
+
+        return winningNumbers;
+    }
     public static void main(String[] args) {
         try {
             Money money = purchaseAmount();
             NumberOfLotto numberOfLotto = buyLotto(money);
             Lottos lottos = issueLotto(numberOfLotto);
-
-            Output.winNumberEventMessage();
-            String winNumbers = Input.input();
-            Output.blankLine();
-            Output.bonusNumberEventMessage();
-            String bonusNumber = Input.input();
-            WinningNumbers winningNumbers = new WinningNumbers(winNumbers, bonusNumber);
-            Output.blankLine();
+            WinningNumbers winningNumbers = setWinningNumbers();
 
             Compute compute = new Compute(lottos, winningNumbers, money);
         }
