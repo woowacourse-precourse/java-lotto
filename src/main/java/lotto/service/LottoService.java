@@ -10,7 +10,7 @@ import lotto.domain.LottoResult;
 
 public class LottoService {
 
-    public static final int MAKE_PERCENTAGE_SCALE = 100;
+    private static final int MAKE_PERCENTAGE_SCALE = 100;
 
     public List<Lotto> buy(int money) {
         LottoGenerator lottoGenerator = new LottoGenerator();
