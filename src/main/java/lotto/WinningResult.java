@@ -5,11 +5,10 @@ import java.util.EnumMap;
 import java.util.List;
 import java.util.Map;
 
+import static lotto.Constant.*;
+
 public class WinningResult {
     private Map<LottoRating, Integer> totalResult;
-    public final int DEFAULT_VALUE = 0;
-    public final int PERCENTAGE_REFERENCE_VALUE = 100;
-    public final int ADD = 1;
 
     public WinningResult(WinningLotto winningNumber, List<Lotto> lottos) {
         this.totalResult = conversionLotto(winningNumber, lottos);

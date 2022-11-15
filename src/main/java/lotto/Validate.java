@@ -4,14 +4,9 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import static lotto.MessageConstant.*;
+import static lotto.Constant.*;
 
 public class Validate {
-    private static final int LOTTO_SIZE = 6;
-    private static final int MINIMUM_LOTTO_PRICE = 1000;
-    private static final int ZERO = 0;
-    private static final int MINIMUM_LOTTO_NUMBER = 1;
-    private static final int MAXIMUM_LOTTO_NUMBER = 45;
     private static final String INPUT_LOTTO_PATTERN = "^([1-9]\\d?,){5}[1-9]\\d?$";
     private static final String ONLY_NUMBER_PATTERN = "^\\d*$";
     public static void lottoSize(List<Integer> lottoNumbers) {
@@ -53,11 +48,11 @@ public class Validate {
     }
 
     public static void canBuyLotto(int money) {
-        if (money < MINIMUM_LOTTO_PRICE) {
+        if (money < PRICE_OF_A_TICKET) {
             throw new IllegalArgumentException(ERROR_MESSAGE + LOTTO_MINIMUM_PRICE_MESSAGE);
         }
 
-        if (money % MINIMUM_LOTTO_PRICE != ZERO) {
+        if (money % PRICE_OF_A_TICKET != ZERO) {
             throw new IllegalArgumentException(ERROR_MESSAGE + LOTTO_PRICE_RULE_MESSAGE);
         }
     }
