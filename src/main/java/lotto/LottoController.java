@@ -64,8 +64,8 @@ public class LottoController {
             System.out.printf(generateResultMessage(prize, number));
         }
 
-        double rate = Math.floor(lottoResult.getRate() * 100) ;
-        System.out.printf("총 수익률은 %.1f%% 입니다.", rate);
+        double rate = lottoResult.getRate() * 100 ;
+        System.out.printf("총 수익률은 %.1f%%입니다.", rate);
     }
 
     public String generateResultMessage(LottoPrize prize, int number) {
@@ -73,8 +73,20 @@ public class LottoController {
             return "";
         }
         if (prize == LottoPrize.SECOUND) {
-            return String.format("%d개 일치, 보너스 볼 일치 (%d)원 - %d개 \n", prize.getLottoNumberMatches(), prize.getReward().get(), number);
+            return String.format("%d개 일치, 보너스 볼 일치 (30,000,000원) - %d개 \n", prize.getLottoNumberMatches(), number);
         }
-        return String.format("%d개 일치 (%d원) - %d개 \n", prize.getLottoNumberMatches(), prize.getReward().get(), number);
+        if (prize == LottoPrize.FIFTH) {
+            return String.format("%d개 일치 (5,000원) - %d개 \n", prize.getLottoNumberMatches(), number);
+        }
+        if (prize == LottoPrize.FOURTH) {
+            return String.format("%d개 일치 (50,000원) - %d개 \n", prize.getLottoNumberMatches(), number);
+        }
+        if (prize == LottoPrize.THIRD) {
+            return String.format("%d개 일치 (1,500,000원) - %d개 \n", prize.getLottoNumberMatches(), number);
+        }
+        if (prize == LottoPrize.FIRST) {
+            return String.format("%d개 일치 (2,000,000,000원) - %d개 \n", prize.getLottoNumberMatches(), number);
+        }
+        return "";
     }
 }
