@@ -1,6 +1,7 @@
 package lotto.utils;
 
 import lotto.domain.Lotto;
+import lotto.exception.Exception;
 
 import java.util.List;
 import java.util.stream.Stream;
@@ -13,21 +14,21 @@ public class Validator {
         try {
             Integer.parseInt(number);
         } catch (NumberFormatException e) {
-            throwException(NOT_NUMBER.getMessage());
+            throwException(NOT_NUMBER);
         }
     }
 
     public static void validateDivision(String purchaseCost) {
         int money = Integer.parseInt(purchaseCost);
         if(money % LOTTO_COST != ZERO || money <= ZERO) {
-            throwException(WRONG_PURCHASE_COST.getMessage());
+            throwException(WRONG_PURCHASE_COST);
         }
     }
 
     public static void validateNumberCount(List<Integer> numbers) {
         int numberCount = numbers.size();
         if(numberCount != MAX_COUNT) {
-            throwException(WRONG_COUNT.getMessage());
+            throwException(WRONG_COUNT);
         }
     }
 
@@ -36,7 +37,7 @@ public class Validator {
                 .anyMatch(num -> (num < MIN || num > MAX));
 
         if(isOutOfRange) {
-            throwException(OUT_OF_RANGE.getMessage());
+            throwException(OUT_OF_RANGE);
         }
     }
 
@@ -45,7 +46,7 @@ public class Validator {
                 .distinct().count();
 
         if(distinctCount != MAX_COUNT) {
-            throwException(DUPLICATE.getMessage());
+            throwException(DUPLICATE);
         }
     }
 
@@ -56,7 +57,7 @@ public class Validator {
                 .count();
 
         if(delimiterCount != numberCount - 1) {
-            throwException(WRONG_DELIMITER.getMessage());
+            throwException(WRONG_DELIMITER);
         }
     }
 
@@ -68,7 +69,7 @@ public class Validator {
     public static void validateBonusNumberRange(String number) {
         int bonusNumber = Integer.parseInt(number);
         if(bonusNumber < MIN || bonusNumber > MAX) {
-            throwException(OUT_OF_RANGE.getMessage());
+            throwException(OUT_OF_RANGE);
         }
     }
 
@@ -76,11 +77,11 @@ public class Validator {
         List<Integer> numbers = winningNumbers.getNumbers();
         int bonus = Integer.parseInt(bonusNumber);
         if(numbers.contains(bonus)) {
-            throwException(BONUS_DUPLICATE.getMessage());
+            throwException(BONUS_DUPLICATE);
         }
     }
 
-    public static void throwException(String message) {
-        throw new IllegalArgumentException(message);
+    public static void throwException(Exception exception) {
+        throw new IllegalArgumentException(exception.getMessage());
     }
 }
