@@ -39,4 +39,11 @@ class LottoTest {
         assertThatThrownBy(() -> new Lotto("1,2,3,4,5,46"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @DisplayName("로또 번호에 숫자가 아닌 다른 문자가 입력되면 예외가 발생한다.")
+    @Test
+    void createLottoByChar() {
+        assertThatThrownBy(() -> new Lotto("1,2,3,4,5,l"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
