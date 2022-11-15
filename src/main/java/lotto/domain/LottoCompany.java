@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 import lotto.Lotto;
 import lotto.Utils.CommonUtil;
 import lotto.Utils.Error;
+import lotto.Utils.Message;
 import lotto.Utils.Print;
 
 import java.util.*;
@@ -34,13 +35,13 @@ public class LottoCompany {
     }
     private void validate(int bonus) {
         if (bonus == 0) {
-            Error.outOfRange();
+            Error.generate(Message.RANGE);
         }
         if (bonus < 1 || bonus > 45) {
-            Error.outOfRange();
+            Error.generate(Message.RANGE);
         }
         if (numbers.contains(bonus)) {
-            Error.duplicated();
+            Error.generate(Message.RANGE);
         }
     }
     public void processLotto(Lotto lotto) {

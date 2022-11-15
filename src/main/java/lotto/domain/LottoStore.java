@@ -5,6 +5,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import lotto.Lotto;
 import lotto.Utils.Error;
 import lotto.Utils.CommonUtil;
+import lotto.Utils.Message;
 
 import java.util.*;
 
@@ -13,10 +14,10 @@ public class LottoStore {
 
     private void validate(int money) {
         if (money < 1000) {
-            Error.amountInput();
+            Error.generate(Message.AMOUNT);
         }
         if (money % 1000 != 0) {
-            Error.amountInput();
+            Error.generate(Message.AMOUNT);
         }
     }
     public void inputPurchase() {

@@ -1,6 +1,7 @@
 package lotto;
 
 import lotto.Utils.Error;
+import lotto.Utils.Message;
 import lotto.domain.WinInfo;
 
 import java.util.*;
@@ -17,13 +18,13 @@ public class Lotto {
     private void checkDuplicated(List<Integer> numbers) {
         HashSet<Integer> duplicatesExcluded = new HashSet<>(numbers);
         if (duplicatesExcluded.size() != 6) {
-            Error.duplicated();
+            Error.generate(Message.DUPLICATED);
         }
     }
     private void checkRange(List<Integer> numbers) {
         for (Integer number : numbers) {
             if (number < 1 || number > 45) {
-                Error.outOfRange();
+                Error.generate(Message.DUPLICATED);
             }
         }
     }
