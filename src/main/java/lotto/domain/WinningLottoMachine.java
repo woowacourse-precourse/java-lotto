@@ -2,7 +2,9 @@ package lotto.domain;
 
 import java.util.ArrayList;
 import java.util.List;
-import lotto.Constants;
+import lotto.constants.LottoConstants;
+import lotto.constants.InputExceptionConstants;
+import lotto.constants.LottoExceptionConstants;
 
 public class WinningLottoMachine {
 
@@ -25,18 +27,18 @@ public class WinningLottoMachine {
         return new WinningLotto(winningLottoNumber, winningLottoBonusNumber);
     }
     private void validateLottoNumberLength(List<Integer> numberList) {
-        if (numberList.size() != Constants.LOTTO_NUMBERS_LENGTH.getValue()) {
-            throw new IllegalArgumentException("6 개의 숫자가 아닙니다.");
+        if (numberList.size() != LottoConstants.LOTTO_NUMBERS_LENGTH.getValue()) {
+            throw new IllegalArgumentException(LottoExceptionConstants.LOTTO_NUMBER_LENGTH.getValue());
         }
     }
 
     private void validateLottoNumberRange(List<Integer> numberList) {
         boolean rangeOverFlag = numberList.stream()
-                .anyMatch(number -> number < Constants.MIN_LOTTO_NUMBER_RANGE.getValue()
-                        || number > Constants.MAX_LOTTO_NUMBER_RANGE.getValue());
+                .anyMatch(number -> number < LottoConstants.MIN_LOTTO_NUMBER_RANGE.getValue()
+                        || number > LottoConstants.MAX_LOTTO_NUMBER_RANGE.getValue());
 
         if (rangeOverFlag) {
-            throw new IllegalArgumentException("로또 숫자중 범위 밖의 숫자가 있습니다.");
+            throw new IllegalArgumentException(LottoExceptionConstants.LOTTO_NUMBER_RANGE.getValue());
         }
     }
 
@@ -53,7 +55,7 @@ public class WinningLottoMachine {
 
     private void validateNumberCanSplit(String input) {
         if (!input.contains(",")) {
-            throw new IllegalArgumentException("분할될 수 없는 입력입니다.");
+            throw new IllegalArgumentException(InputExceptionConstants.INPUT_NONE_SPLIT.getValue());
         }
     }
 
@@ -62,14 +64,14 @@ public class WinningLottoMachine {
         try {
             number = Integer.parseInt(input);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("수가 아닌 입력이 있습니다.");
+            throw new IllegalArgumentException(InputExceptionConstants.INPUT_NONE_NUMERIC.getValue());
         }
         return number;
     }
 
     private void validateBlank(String input) {
         if (input.length() == 0) {
-            throw new IllegalArgumentException("빈 문자열이 입력되었습니다.");
+            throw new IllegalArgumentException(InputExceptionConstants.INPUT_BLANK.getValue());
         }
     }
 }

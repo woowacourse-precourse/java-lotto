@@ -3,7 +3,7 @@ package lotto.domain;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import lotto.Constants;
+import lotto.constants.LottoConstants;
 
 public class StatisticsMaker {
 
@@ -16,7 +16,7 @@ public class StatisticsMaker {
             totalIncome += ranking.get(rank) * prizeList.get(rank);
         }
 
-        return Math.round((totalIncome / (lottoQuantity * Constants.LOTTO_PRICE.getValue()) * 100) * 10) / 10.0;
+        return Math.round((totalIncome / (lottoQuantity * LottoConstants.LOTTO_PRICE.getValue()) * 100) * 10) / 10.0;
     }
 
     public Map<Integer,Integer> makeRankings(WinningLotto winningLotto, List<Lotto> lottos) {
@@ -53,7 +53,7 @@ public class StatisticsMaker {
     private Map<Integer,Integer> initRankings() {
         Map<Integer, Integer> ranking = new HashMap<>();
 
-        for (int rank = Constants.LOTTO_RANKING_RANGE.getValue(); rank > 0; rank--) {
+        for (int rank = LottoConstants.LOTTO_RANKING_RANGE.getValue(); rank > 0; rank--) {
             ranking.put(rank, 0);
         }
 

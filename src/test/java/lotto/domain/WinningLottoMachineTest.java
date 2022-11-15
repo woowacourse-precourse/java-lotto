@@ -26,7 +26,7 @@ class WinningLottoMachineTest {
 
         assertThatThrownBy(() -> winningLottoMachine.giveWinningLottoNumber(input))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("6 개의 숫자가 아닙니다.");
+                .hasMessageContaining("6개의 숫자가 아닙니다.");
     }
 
     @DisplayName("나누어진 정답 로또 번호의 입력중 숫자외의 문자가 있으면 예외가 발생한다.")
