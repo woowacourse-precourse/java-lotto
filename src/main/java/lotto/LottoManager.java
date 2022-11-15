@@ -19,6 +19,14 @@ public class LottoManager {
     private List<Integer> winNumbers;
     private int bonusNumber;
     private List<Integer> winCounts = new ArrayList<>(List.of(0, 0, 0, 0, 0, 0));
+
+    void InputMoney(int money){
+        if (money % 1000 != 0){
+            throw new IllegalArgumentException();
+        }
+        this.inputMoney = money;
+        makeLottos(money / 1000);
+    }
     private void makeLottos(int amount){
         for (int i = 0; i < amount; i++){
             Lotto lotto = new Lotto(Randoms.pickUniqueNumbersInRange(1, 45, 6));
@@ -88,14 +96,6 @@ public class LottoManager {
 
     void setBonusNumber(int bonusNumber){
         this.bonusNumber = bonusNumber;
-    }
-
-    void InputMoney(int money){
-        if (money % 1000 != 0){
-            throw new IllegalArgumentException();
-        }
-        this.inputMoney = money;
-        makeLottos(money / 1000);
     }
 
     int getInputMoney(){
