@@ -35,11 +35,9 @@ public class StatisticController {
 
     private void recordRevenueRate() {
         int totalRevenue = 0;
-
         for(int i = 3; i < 8; i++) {
             totalRevenue += countStatistic[i] * Statistic.getRevenue(i);
         }
-
         printRevenueRate(calculateRevenueRate(totalRevenue, getCost()));
     }
 

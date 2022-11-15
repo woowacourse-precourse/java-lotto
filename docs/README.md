@@ -12,21 +12,16 @@
 - Input 클래스
   - (x)inputNumber : 숫자 입력 메소드
   - (x)inputSixNumber : 쉼표로 구분된 6자 입력 메소드
-  - (x)inputBonusNumber : 보너스 번호 입력 메소드
 
 - Output 클래스
-  - BufferedRecorder 내부클래스
-    - (x)writeBuyLotto : ~개를 구매했습니다. streamWriter 메소드 정의
-    - (x)writeLotto : 로또 번호 1개 streamWriter 메소드
-    - (x)writeStatistics : 당첨 통계 streamWriter 메소드
-    - (x)writeGrading : ~개 일치, ~원 streamWriter 메소드
-    - (x)writeRevenueRate : 총 수익률 streamWriter 메소드
-    - (x)writeNewLine : 띄어쓰기 streamWriter 메소드
-
+  - (x)printLotto : 로또 리스트 출력 메소드
+  - (x)printStatistics : 당첨 통계 --- 출력 메소드
+  - (x)printGrading : 맞춘 개수와 가격 및 해당 개수 출력 메소드
+  - (x)printRevenueRate : 수익률 출력 메소드
+  - (x)printBuyLotto : 로또 살때 출력 메소드
   - (x)printInputWinningNumber : 당첨 번호를 입력 받을때 출력 메소드
   - (x)printInputBonusNumber : 보너스 번호를 입력 받을때 출력 메소드
   - (x)printInputCost : 구매 금액을 입력 받을때 출력 메소드
-  - (x)printBufferedStream : Buffered 출력 메소드
 
 - - -
 
@@ -35,7 +30,6 @@
 - BuyLottoController 클래스 
   - (x)inputCost : 구입금액에 입력 메소드
   - (x)createLottoNumber : 구입금액에 대한 로또 번호 생성 메소드
-  - (x)printLottoNumber : 구입금액에 대한 로또 번호 출력 메소드
   - (x)runBuyLottoController : 해당 클래스의 로직 총 실행 메소드
 
 - StatisticController 클래스
@@ -55,6 +49,7 @@
 
 - Lotto 클래스
   - (x)로또 번호 배열 반환 메소드
+  - (x)getter 메소드
 
 - Statistic enum 클래스
   - (x) msg, revenue를 가진 생성자들
@@ -77,6 +72,9 @@
   - (x)isUp : 최소보다 이상인지 검증하는 메소드
   - (x)isMultiplesOf1000 : 1000의 배수 검증 메소드
   - (x)isLotto : 리스트의 원소들이 로또 번호에 맞는지 검증 메소드
+  - (x)isNumber : 문자열의 숫자 형태 검증 메소드
+  - (x)isSixNumber : 리스트가 6개의 원소인지 검증 메소드
+  - (x)isNonContains : 리스트에 숫자가 포함 안되어 있는지 검증 메소드
 
 - - -
 
@@ -86,4 +84,4 @@
 - - -
 
 # LottoPlay : 로또 실행 객체
-- (  )run : Controller 들을 순차적으로 실행하는 run 메소드
+- (x)run : Controller 들을 순차적으로 실행하는 run 메소드
