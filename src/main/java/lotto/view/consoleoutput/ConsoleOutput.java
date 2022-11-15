@@ -33,8 +33,8 @@ public class ConsoleOutput {
         System.out.println(Directive.INPUT_BONUS_NUMBER.getMessage());
     }
 
-    public void printStatisticsOfWiningLotto(LottoStatistic statistic, int money) {
-        System.out.println(Information.WINNING_STATISTICS.getMessage());
+    public void printStatisticOfWiningLotto(LottoStatistic statistic, int money) {
+        System.out.println(Information.WINNING_STATISTIC.getMessage());
 
         LottoAward[] values = LottoAward.values();
         //NONE은 출력하지 않으므로 index를 values.length - 2부터 설정한다.

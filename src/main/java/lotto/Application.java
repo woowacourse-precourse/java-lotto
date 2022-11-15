@@ -12,7 +12,7 @@ public class Application {
             lottoApplicationService.inputMoney();
             lottoApplicationService.createLottos();
             lottoApplicationService.createWinningLottoNumbers();
-            lottoApplicationService.getStatisticsOfLotto();
+            lottoApplicationService.getStatisticOfLotto();
         } catch (IllegalArgumentException error) {
             System.out.println(error.getMessage());
         }

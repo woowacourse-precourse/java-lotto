@@ -40,8 +40,8 @@ public class LottoApplicationService {
         winningLotto = WinningLottoGenerator.generateWinningLotto(winningBalls, bonusBall);
     }
 
-    public void getStatisticsOfLotto() {
+    public void getStatisticOfLotto() {
         statistic = LottoStatistic.of(lottoCollection.countLottoAward(winningLotto));
-        consoleOutput.printStatisticsOfWiningLotto(statistic, money.getMoney());
+        consoleOutput.printStatisticOfWiningLotto(statistic, money.getMoney());
     }
 }

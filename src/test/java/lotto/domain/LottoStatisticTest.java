@@ -50,11 +50,11 @@ class LottoStatisticTest {
         //given
         Map<LottoAward, Integer> awardCount = new HashMap<>();
         awardCount.put(LottoAward.NONE, Integer.MAX_VALUE / 1000);
-        LottoStatistic statistics = LottoStatistic.of(awardCount);
+        LottoStatistic statistic = LottoStatistic.of(awardCount);
 
         //when
         double answer = 0.0;
-        double result = statistics.getReturnOnInvestmentRatio((Integer.MAX_VALUE / 1000) * 1000);
+        double result = statistic.getReturnOnInvestmentRatio((Integer.MAX_VALUE / 1000) * 1000);
         result = Math.round((result * 100)) / 100.0;
 
         //then
@@ -71,7 +71,7 @@ class LottoStatisticTest {
         awardCount.put(LottoAward.FOURTH, 3);
         awardCount.put(LottoAward.SECOND, 4);
 
-        LottoStatistic statistics = LottoStatistic.of(awardCount);
+        LottoStatistic statistic = LottoStatistic.of(awardCount);
 
         //when
         int fifthResult = 1;
@@ -80,10 +80,10 @@ class LottoStatisticTest {
         int secondResult = 4;
         int firstResult = 0;
         //then
-        assertThat(statistics.getWinningCount(LottoAward.FIFTH)).isEqualTo(fifthResult);
-        assertThat(statistics.getWinningCount(LottoAward.FOURTH)).isEqualTo(fourthResult);
-        assertThat(statistics.getWinningCount(LottoAward.THIRD)).isEqualTo(thirdResult);
-        assertThat(statistics.getWinningCount(LottoAward.SECOND)).isEqualTo(secondResult);
-        assertThat(statistics.getWinningCount(LottoAward.FIRST)).isEqualTo(firstResult);
+        assertThat(statistic.getWinningCount(LottoAward.FIFTH)).isEqualTo(fifthResult);
+        assertThat(statistic.getWinningCount(LottoAward.FOURTH)).isEqualTo(fourthResult);
+        assertThat(statistic.getWinningCount(LottoAward.THIRD)).isEqualTo(thirdResult);
+        assertThat(statistic.getWinningCount(LottoAward.SECOND)).isEqualTo(secondResult);
+        assertThat(statistic.getWinningCount(LottoAward.FIRST)).isEqualTo(firstResult);
     }
 }
