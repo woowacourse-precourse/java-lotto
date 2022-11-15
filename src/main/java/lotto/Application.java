@@ -73,5 +73,6 @@ public class Application {
         String inputWinningNum = InputWinningNum();
         List<Integer> winningNum = SeparateInput(inputWinningNum);
         InputWinningNumException(winningNum);
+        winningNum.add(stringToInt(Console.readLine())); // 보너스 번호 입력
     }
 }
