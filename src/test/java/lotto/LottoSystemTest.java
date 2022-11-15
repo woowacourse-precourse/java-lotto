@@ -120,16 +120,20 @@ class LottoSystemTest {
                         new Lotto(List.of(1,2,3,4,5,6)),
                         WinInfo.WIN1
                 ),
+                Arguments.of(
+                        lottoSystem,
+                        new Lotto(List.of(6,5,4,3,2,1)),
+                        WinInfo.WIN1
+                ),
                 //matched 5 bonus 1
                 Arguments.of(
                         lottoSystem,
                         new Lotto(List.of(1,7,3,4,5,6)),
                         WinInfo.WIN2
                 ),
-                //matched 5 bonus 1
                 Arguments.of(
                         lottoSystem,
-                        new Lotto(List.of(1,2,3,7,5,6)),
+                        new Lotto(List.of(6,7,5,4,3,1)),
                         WinInfo.WIN2
                 ),
                 //matched 5 bonus 0
@@ -138,34 +142,43 @@ class LottoSystemTest {
                         new Lotto(List.of(1,2,8,4,5,6)),
                         WinInfo.WIN3
                 ),
-                //matched 5 bonus 0
                 Arguments.of(
                         lottoSystem,
-                        new Lotto(List.of(1,2,3,4,11,6)),
+                        new Lotto(List.of(3,2,1,6,11,4)),
                         WinInfo.WIN3
                 ),
-                //matched 4 bonus 0
                 Arguments.of(
                         lottoSystem,
                         new Lotto(List.of(1,2,9,4,11,6)),
                         WinInfo.WIN4
                 ),
+                //matched 4 bonus 0
+                Arguments.of(
+                        lottoSystem,
+                        new Lotto(List.of(1,9,2,4,6,11)),
+                        WinInfo.WIN4
+                ),
                 //matched 4 bonus 1
                 Arguments.of(
                         lottoSystem,
-                        new Lotto(List.of(1,2,3,4,11,7)),
+                        new Lotto(List.of(1,3,2,4,11,7)),
                         WinInfo.WIN4
                 ),
-                //matched 3 matched 0
+                //matched 3 bonus 0
                 Arguments.of(
                         lottoSystem,
                         new Lotto(List.of(1,2,3,17,11,13)),
                         WinInfo.WIN5
                 ),
+                Arguments.of(
+                        lottoSystem,
+                        new Lotto(List.of(17,3,2,11,1,13)),
+                        WinInfo.WIN5
+                ),
                 //matched 3 bonus 1
                 Arguments.of(
                         lottoSystem,
-                        new Lotto(List.of(1,2,3,17,11,7)),
+                        new Lotto(List.of(7,3,1,17,11,2)),
                         WinInfo.WIN5
                 ),
                 //matched 2 bonus 0
