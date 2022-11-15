@@ -20,7 +20,7 @@ public class Lotto {
     private void numbersRangeCheck(List<Integer> numbers) {
         for(int i=0; i<numbers.size(); i++) {
             if (numbers.get(i)<1 || numbers.get(i)>45) {
-                throw new IllegalArgumentException("[ERROR] 숫자의 범위는 1~45입니다.");
+                throw new IllegalArgumentException(ExceptionMessage.RANGE_EXCEPTION.message());
             }
         }
     }
@@ -29,13 +29,13 @@ public class Lotto {
         HashSet<Integer> checkOverlap = new HashSet<>(numbers);
         
         if (numbers.size() != checkOverlap.size()) {
-            throw new IllegalArgumentException("[ERROR] 숫자가 중복되었습니다");
+            throw new IllegalArgumentException(ExceptionMessage.OVERLAP_EXCEPTION.message());
         }
     }
 
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
-            throw new IllegalArgumentException("[ERROR] 로또 번호는 6개의 숫자를 입력하여야 합니다.");
+            throw new IllegalArgumentException(ExceptionMessage.SIZE_EXCEPTION.message());
         }   
     }
 }
