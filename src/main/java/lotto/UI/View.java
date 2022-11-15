@@ -14,8 +14,8 @@ public class View {
         System.out.printf(Text.BUY_LOTTO.getMessage(), lottoCount);
     }
 
-    public void printWinningStatisticsDetail(Integer matchedNumberCount, String formattedAmount, Integer matchedLottoCount){
-        System.out.printf(Text.WINNING_STATISTICS_DETAIL.getMessage(), matchedNumberCount, formattedAmount, matchedLottoCount);
+    public void printStatisticsDetail(Text format, Integer matchedNumberCount, String amount, Integer lottoCount){
+        System.out.printf(format.getMessage(), matchedNumberCount, amount, lottoCount);
     }
 
     public void printProfitRate(Double profitRate){

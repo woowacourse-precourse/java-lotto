@@ -93,11 +93,11 @@ public class Controller {
     }
 
     public void showStatistics(){
-        view.print(Text.WINNING_STATISTICS_TITLE);
+        view.print(Text.STATISTICS_TITLE);
 
         for (Rank rank : user.getWinningCount().keySet()){
             if (rank != Rank.NONE) {
-                view.printWinningStatisticsDetail(rank.getMatchedCount(), format(rank.getAmount()), user.getWinningCount().get(rank));
+                view.printStatisticsDetail(selectFormatByRank(rank), rank.getMatchedCount(), format(rank.getAmount()), user.getWinningCount().get(rank));
             }
         }
 
@@ -108,6 +108,12 @@ public class Controller {
         DecimalFormat decimalFormat = new DecimalFormat("###,###");
         String formattedAmount = decimalFormat.format(amount);
         return formattedAmount;
+    }
+
+    private Text selectFormatByRank(Rank rank){
+        if (rank == Rank.NONE) return Text.NONE;
+        if (rank.getBonusCount() != 0) return Text.STATISTICS_DETAIL_WITH_BONUS;
+        return Text.STATISTICS_DETAIL_WITHOUT_BONUS;
     }
 
 
