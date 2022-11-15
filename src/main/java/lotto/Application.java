@@ -5,7 +5,11 @@ public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         Game game = new Game();
-        game.run();
-        System.out.println("git test");
+
+        try{
+            game.run();
+        }catch (IllegalArgumentException ex){
+            System.out.println("[ERROR]");
+        }
     }
 }
