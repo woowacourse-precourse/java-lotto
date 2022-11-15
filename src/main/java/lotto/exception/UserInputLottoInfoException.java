@@ -33,4 +33,10 @@ public class UserInputLottoInfoException {
             }
         }
     }
+    public void validate(String[] numbers, String message) {
+        if (numbers.length != NUMBER_OF_LOTTO_NUMBERS) {
+            System.out.println(ERROR_MESSAGE + message);
+            throw new IllegalArgumentException();
+        }
+    }
 }
