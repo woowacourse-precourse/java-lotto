@@ -1,11 +1,15 @@
 package lotto.controller;
 
+import lotto.model.Lottos;
+import lotto.model.LottosGenerator;
 import lotto.model.Money;
 import lotto.view.InputView;
+import lotto.view.OutputView;
 
 public class LottoController {
 
     public void run() {
-        Money money = new Money(InputView.inputMoney());
+        Lottos lottos = LottosGenerator.generate(new Money(InputView.inputMoney()));
+        OutputView.printLotto(lottos.getLottos());
     }
 }

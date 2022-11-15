@@ -1,6 +1,7 @@
 package lotto.model;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -14,6 +15,7 @@ public class Lotto {
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
+        Collections.sort(numbers);
         this.numbers = numbers.stream().map(LottoNumber::of).collect(Collectors.toList());
     }
 
@@ -45,5 +47,10 @@ public class Lotto {
 
     public List<LottoNumber> getNumbers() {
         return numbers;
+    }
+
+    @Override
+    public String toString() {
+        return String.valueOf(numbers);
     }
 }
