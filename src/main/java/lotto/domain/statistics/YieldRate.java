@@ -1,7 +1,8 @@
 package lotto.domain.statistics;
 
+import static lotto.value.RateValue.PERCENT;
+
 public class YieldRate {
-    private static final char RATE = '%';
     private final int calculateAmount;
     private final long amountSum;
 
@@ -11,11 +12,11 @@ public class YieldRate {
     }
 
     public double rate() {
-        return (double) amountSum / calculateAmount * 100;
+        return (double) amountSum / calculateAmount * PERCENT.getPercentage();
     }
 
     @Override
     public String toString() {
-        return String.format("%,.1f%c", rate(), RATE);
+        return String.format("%,.1f%s", rate(), PERCENT.getRateChar());
     }
 }
