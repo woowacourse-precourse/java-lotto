@@ -54,9 +54,11 @@ public class WinLotto {
 
     private void validateRank(String rank) throws IllegalArgumentException {
         boolean isRank = false;
-        if (rank.equals("FIRST_WIN") || rank.equals("SECOND_WIN") || rank.equals("THIRD_WIN")
-                || rank.equals("FIRTH_WIN") || rank.equals("FIFTH_WIN")) {
-            isRank = true;
+        for (String str : Rank.FIFTH_WIN.getRankList()) {
+            if (rank.equals(str)) {
+                isRank = true;
+                break;
+            }
         }
         if (!isRank) {
             throw new IllegalArgumentException("[ERROR] 랭크가 아닙니다.");
@@ -69,7 +71,7 @@ public class WinLotto {
 
 
     private long moneyByRank(String rank) {
-        return RankMoney.valueOf(rank).getMoney();
+        return Rank.valueOf(rank).getMoney();
     }
 
 }
