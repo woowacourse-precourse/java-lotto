@@ -17,8 +17,17 @@ class PlayLottoTest {
     private User user;
     private PlayLotto game;
 
-    @Test
-    void buy_lottery() {
+    @BeforeEach
+    public void beforeEach() {
+        lotto = new Lotto(List.of(1,2,3,4,5,6));
+        user = new User();
+        game = new PlayLotto();
+        List<List<Integer>> lotterys = new ArrayList<>(List.of(List.of(1,2,3,4,5,6), List.of(7,8,9,10,11,12)));
+        game.setLotto(lotto);
+        user.setLottery_count(2);
+        user.setMoney(2000);
+        user.setLottery_nums(lotterys);
+        game.setUser(user);
     }
 
 
