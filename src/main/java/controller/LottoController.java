@@ -5,6 +5,7 @@ import view.InputView;
 import view.OutputView;
 
 import static util.StringUtil.parseToInt;
+import static util.StringUtil.parseToIntegerList;
 
 public class LottoController {
     public void run() {
@@ -18,7 +19,7 @@ public class LottoController {
     }
 
     private WinningNumber createWinningNumber() {
-        Lotto winningNumbers = new Lotto(InputView.inputWinningNumber());
+        Lotto winningNumbers = new Lotto(parseToIntegerList(InputView.inputWinningNumber()));
         int bonusNumber = parseToInt(InputView.inputBonusNumber());
 
         return getWinningNumbers(winningNumbers, bonusNumber);

@@ -16,12 +16,6 @@ public class Lotto {
         Collections.sort(numbers);
     }
 
-    public Lotto(String inputNumbers) {
-        this.numbers = parseToIntegerList(inputNumbers);
-        validate(this.numbers);
-        Collections.sort(this.numbers);
-    }
-
     private void validate(List <Integer> numbers) {
         checkNumberRange(numbers);
         checkLength(numbers);
@@ -30,7 +24,7 @@ public class Lotto {
 
     private void checkNumberRange(List<Integer> numbers){
         for(int number : numbers){
-            if(number < 1|| number > 45){
+            if(number < 1 || number > 45){
                 throw new IllegalArgumentException("숫자는 1~45 내로 입력해 주세요.");
             }
         }
