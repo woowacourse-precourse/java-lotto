@@ -81,9 +81,8 @@ public class Application {
 //    }
 
     public List<Integer> lottoArr(){
-        List<Integer> myLotto = new ArrayList<>();
-        myLotto  = Randoms.pickUniqueNumbersInRange(1, 45, 6);
-//        Collections.sort(myLotto);
+        List<Integer> myLotto = Randoms.pickUniqueNumbersInRange(1, 45, 6).stream().sorted().collect(Collectors.toList());
+//        myLotto.sort(Comparator.naturalOrder());
         return myLotto;
     }
     public List<Integer> winningNums(String userInputNumber){
