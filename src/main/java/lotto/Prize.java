@@ -1,7 +1,9 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
 
+import java.util.List;
 import java.util.Objects;
 
 public class Prize {
@@ -13,6 +15,7 @@ public class Prize {
     public Prize() {
         Integer lottoCount = purchaseLotto();
         System.out.printf(PURCHASE_LOTTO, lottoCount);
+        makeMyLotto();
     }
 
     public Integer purchaseLotto(){
@@ -21,6 +24,11 @@ public class Prize {
         validateMoney(inputMoney);
         int money = Integer.parseInt(inputMoney);
         return money / LOTTO_COUNT;
+    }
+
+    public void makeMyLotto(){
+        List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+        System.out.println(numbers);
     }
 
     private void validateMoney(String moneyValue) {
