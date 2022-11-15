@@ -9,6 +9,9 @@ import java.util.List;
 import java.util.Set;
 
 public class RaffleNumber {
+    final int START_NUMBER = 1;
+    final int END_NUMBER = 45;
+    final int LOTTO_SIZE = 6;
     public List<Integer> winningNumber;
     public int bonusNumber;
 
@@ -36,14 +39,14 @@ public class RaffleNumber {
 
     private void validateRange(String number) {
         int parseNumber = Integer.parseInt(number);
-        if (1 > parseNumber || parseNumber > 45) {
+        if (START_NUMBER > parseNumber || parseNumber > END_NUMBER) {
             throw new IllegalArgumentException(Message.WINNING_RANGE_ERROR);
         }
     }
 
     private void hasSameNumber(List<Integer> numbers) {
         Set<Integer> sameNumber = new HashSet<>(numbers);
-        if (sameNumber.size() < 6) {
+        if (sameNumber.size() < LOTTO_SIZE) {
             throw new IllegalArgumentException(Message.WINNING_OVERLAP_ERROR);
         }
     }
