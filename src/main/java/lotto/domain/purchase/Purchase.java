@@ -20,8 +20,7 @@ public class Purchase {
     }
 
     public int numOfLotto(int purchaseAmount) {
-        int num = purchaseAmount / 1000;
-        return num;
+        return purchaseAmount / 1000;
     }
 
     private void validateInteger(String input) {

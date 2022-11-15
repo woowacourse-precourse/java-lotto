@@ -2,7 +2,6 @@ package lotto.domain.prize;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.NoSuchElementException;
 
 public class Prize {
     private static final String PRIZE_NUMBER_FORMAT_ERROR = "[ERROR] 당첨 번호는 6개의 숫자와 ','로 구분되어야 합니다.";

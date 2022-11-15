@@ -1,6 +1,5 @@
 package lotto.domain.prize;
 
-import java.text.DecimalFormat;
 import java.util.Arrays;
 import java.util.NoSuchElementException;
 
@@ -23,7 +22,6 @@ public enum PrizeType {
     }
 
     public static PrizeType getPrizeType(int numOfMatched, boolean containBonusNumber) {
-
         if (numOfMatched == 5 && containBonusNumber) {
             return SECOND;
         }

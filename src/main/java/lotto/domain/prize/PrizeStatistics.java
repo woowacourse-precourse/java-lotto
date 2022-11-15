@@ -11,7 +11,6 @@ public class PrizeStatistics {
     private final Map<PrizeType, Integer> prizeStatistics = new EnumMap<>(PrizeType.class);
 
     public PrizeStatistics() {
-
         for (PrizeType prizeType : PrizeType.values()) {
             prizeStatistics.put(prizeType, 0);
         }

@@ -20,6 +20,7 @@ public class LottoMachine {
             Prize prize = prizeService(inputView);
             PrizeStatistics prizeStatistics = prizeStatisticsService(outputView, lottos, prize);
             earningService(outputView, purchase, prizeStatistics);
+
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
@@ -27,18 +28,21 @@ public class LottoMachine {
 
     private Purchase purchaseService(InputView inputView) {
         String inputPurchase = inputView.purchaseInput();
+
         return new Purchase(inputPurchase);
     }
 
     private LottoGenerator lottoGeneratorService(OutputView outputView, Purchase purchase) {
         LottoGenerator lottos = new LottoGenerator(purchase.numOfLotto(purchase.getAmount()));
         outputView.lottosOutput(lottos.getLottos());
+
         return lottos;
     }
 
     private Prize prizeService(InputView inputView) {
         String inputPrize = inputView.prizeInput();
         String inputBonus = inputView.bonusInput();
+
         return new Prize(inputPrize, inputBonus);
     }
 
@@ -46,6 +50,7 @@ public class LottoMachine {
         PrizeStatistics prizeStatistics = new PrizeStatistics();
         prizeStatistics.calculateStatistics(lottos, prize);
         outputView.prizeStatisticsOutPut(prizeStatistics);
+
         return prizeStatistics;
     }
 
