@@ -9,13 +9,9 @@ public class InputView {
 
   private static final String DELIMITER = ",";
 
-  public static int inputPurchaseMoney() {
+  public static int inputPurchaseMoney() throws IllegalArgumentException{
     System.out.println("로또 구입 금액을 입력해주세요.");
     String purchaseMoney = Console.readLine();
-    if (!purchaseMoney.matches("^[0-9]*$")) {
-      System.out.println("[ERROR]");
-      throw new IllegalArgumentException("[ERROR]");
-    }
     return convertToInt(purchaseMoney);
   }
   
@@ -33,9 +29,8 @@ public class InputView {
 
   private static int convertToInt(String input) throws IllegalArgumentException {
     try {
-      int num = Integer.parseInt(input);
-      return num;
-    } catch (NumberFormatException e) {
+      return Integer.parseInt(input);
+    } catch (Exception e) {
       System.out.println("[ERROR] 숫자가 아닌 값을 입력하였습니다.");
       throw new IllegalArgumentException("[ERROR] 숫자가 아닌 값을 입력하였습니다.");
     }
