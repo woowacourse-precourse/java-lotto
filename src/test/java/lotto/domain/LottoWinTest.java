@@ -13,7 +13,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 class LottoWinTest {
     @ParameterizedTest(name = "[{index}] sameNumberCount = {0}, sameBonusNumberCount = {1}, LottoWin = {2}")
     @MethodSource("whenFindLottoWinThenSuccessDummy")
-    @DisplayName("맞힌 번호 숫자와 보너스 숫자를 이용한 로또 당첨 순위 검색 성공 테스트")
+    @DisplayName("로또 당첨 순위를 맞힌 번호 숫자와 보너스 숫자를 이용한 검색 성공")
     void whenFindLottoWinThenSuccessTest(int sameNumberCount, int sameBonusNumberCount, LottoWin lottoWin) {
         LottoWin findLottoWin = LottoWin.of(sameNumberCount, sameBonusNumberCount);
         assertThat(findLottoWin).isEqualTo(lottoWin);
@@ -21,7 +21,7 @@ class LottoWinTest {
 
     @ParameterizedTest(name = "[{index}] LottoWin = {0}, prize = {1}")
     @MethodSource("whenFindLottoWinPrizeThenSuccessDummy")
-    @DisplayName("로또 당첨 금액 매치 성공 테스트")
+    @DisplayName("로또 당첨 순위별 상금 매치 성공")
     void whenFindLottoWinPrizeThenSuccessTest(LottoWin lottoWin, int prize) {
         assertThat(lottoWin.getPrize()).isEqualTo(prize);
     }

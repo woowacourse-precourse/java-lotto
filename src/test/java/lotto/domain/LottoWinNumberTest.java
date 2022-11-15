@@ -19,7 +19,7 @@ import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 class LottoWinNumberTest {
     @ParameterizedTest(name = "[{index}] winNumber = {0}, bonusNumber = {1}, exception = {2}")
     @MethodSource("whenWrongArgumentsThenExceptionDummy")
-    @DisplayName("중복, 개수, 범위로 인한 당첨 번호 생성 실패 예외처리 테스트")
+    @DisplayName("당첨 번호 생성 중복, 개수, 범위로 인한 예외처리 테스트")
     void whenWrongArgumentsThenExceptionTest(Set<Integer> winNumbers, int bonusNumber, LottoWinNumberExceptionMessage exceptionMessage) {
         assertThatExceptionOfType(IllegalArgumentException.class)
                 .isThrownBy(() -> new LottoWinNumber(winNumbers, bonusNumber))

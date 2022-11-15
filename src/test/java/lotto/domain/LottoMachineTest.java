@@ -26,7 +26,7 @@ class LottoMachineTest {
     }
 
     @Test
-    @DisplayName("부족한 현금으로 인한 로또 구매 실패 예외처리 테스트")
+    @DisplayName("현금 부족으로 인한 로또 구매 예외처리 테스트")
     void whenPurchaseLottosNotEnoughCashThenSuccessTest() {
         LottoMachine lottoMachine = new LottoMachine(new Cash(0));
         assertThatExceptionOfType(IllegalArgumentException.class)

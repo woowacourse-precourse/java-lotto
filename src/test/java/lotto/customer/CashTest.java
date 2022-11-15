@@ -22,7 +22,7 @@ class CashTest{
 
     @ParameterizedTest(name = "[{index}] [예외] cash = {0}")
     @MethodSource("whenCreateWrongCashUnitThenFailDummy")
-    @DisplayName("1,000원 단위로 나눠지지 않는 현금 생성 실패 예외 처리 테스트")
+    @DisplayName("현금 생성 1,000원 단위로 나눠지지 않음으로 인한 예외처리 테스트")
     void whenCreateWrongCashUnitThenFail(int inputCash) {
         assertThatExceptionOfType(IllegalArgumentException.class)
                 .isThrownBy(() -> new Cash(inputCash))
