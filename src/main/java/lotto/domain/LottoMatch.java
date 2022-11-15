@@ -1,25 +1,26 @@
 package lotto.domain;
 
 import java.util.Arrays;
-import lotto.ui.ConsoleMessage;
+import lotto.domain.MatchConst.*;
 
 public enum LottoMatch {
 
-    SIX_MATCHES(6, 2000000000, ConsoleMessage.SIX_MATCHES),
-    FIVE_MATCHES_PLUS_BONUS(5, 30000000, ConsoleMessage.FIVE_MATCHES_PLUS_BONUS),
-    FIVE_MATCHES(5, 1500000, ConsoleMessage.FIVE_MATCHES),
-    FOUR_MATCHES(4, 50000, ConsoleMessage.FOUR_MATCHES),
-    THREE_MATCHES(3, 5000, ConsoleMessage.THREE_MATCHES),
-    NULL_RESULT(-1, 0, null);
+    SIX_MATCHES(MatchCount.SIX_MATCH, MatchProfit.SIX_MATCH_PROFIT, MatchMessage.SIX_MATCHES_MSG),
+    FIVE_MATCHES_PLUS_BONUS(MatchCount.FIVE_MATCH_PLUS_BONUS, MatchProfit.FIVE_MATCH_PLUS_BONUS_PROFIT,
+            MatchMessage.FIVE_MATCHES_PLUS_BONUS_MSG),
+    FIVE_MATCHES(MatchCount.FIVE_MATCH, MatchProfit.FIVE_MATCH_PROFIT, MatchMessage.FIVE_MATCHES_MSG),
+    FOUR_MATCHES(MatchCount.FOUR_MATCH, MatchProfit.FOUR_MATCH_PROFIT, MatchMessage.FOUR_MATCHES_MSG),
+    THREE_MATCHES(MatchCount.THREE_MATCH, MatchProfit.THREE_MATCH_PROFIT, MatchMessage.THREE_MATCHES_MSG),
+    NULL_RESULT(-1, -1, null);
 
-    private final int numberMatchCount;
-    private final int profit;
-    private final ConsoleMessage resultMsg;
+    private final int matchCount;
+    private final int matchProfit;
+    private final String matchMsg;
 
-    LottoMatch(int numberMatchCount, int profit, ConsoleMessage resultMsg) {
-        this.numberMatchCount = numberMatchCount;
-        this.profit = profit;
-        this.resultMsg = resultMsg;
+    LottoMatch(int matchCount, int matchProfit, String matchMsg) {
+        this.matchCount = matchCount;
+        this.matchProfit = matchProfit;
+        this.matchMsg = matchMsg;
     }
 
     // 연산된 로또 결과와 enum mapping 해서 일치하는 enum 반환
@@ -32,21 +33,21 @@ public enum LottoMatch {
 
     // 일치 여부 반환
     public boolean matches(CalculatedLotto calculatedLotto) {
-        if (calculatedLotto.getWinningLottoCount() == 5 && numberMatchCount == 5 && calculatedLotto
+        if (calculatedLotto.getWinningLottoCount() == 5 && matchCount == 5 && calculatedLotto
                 .isBonusNumberIncluded()) {
             return true;
         }
-        if (calculatedLotto.getWinningLottoCount() == numberMatchCount) {
+        if (calculatedLotto.getWinningLottoCount() == matchCount) {
             return true;
         }
         return false;
     }
 
     public int getProfit() {
-        return profit;
+        return matchProfit;
     }
 
-    public ConsoleMessage getResultMsg() {
-        return resultMsg;
+    public String getResultMsg() {
+        return matchMsg;
     }
 }
