@@ -1,4 +1,6 @@
 package lotto.view;
+
+import java.util.List;
 public class OutputView {
 
     enum Message {
@@ -22,5 +24,11 @@ public class OutputView {
         System.out.println();
         System.out.printf( "%d", count);
         System.out.println(Message.COUNT_LOTTO.getMessage());
+    }
+
+    public static void printNumberOfEachLotto(List<List<Integer>> tickets) {
+        for (List<Integer> ticket : tickets) {
+            System.out.println(ticket);
+        }
     }
 }
