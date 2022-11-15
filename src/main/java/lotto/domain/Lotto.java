@@ -14,29 +14,33 @@ public class Lotto {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException();
         }
-        if (!isValidRange(numbers)){
+        if (!isValidRange(numbers)) {
             throw new IllegalArgumentException();
         }
-        if (hasSameNumber(numbers)){
+        if (hasSameNumber(numbers)) {
             throw new IllegalArgumentException();
         }
     }
     // TODO: 추가 기능 구현
     // TODO: 예외 사항 구현
 
-    private Boolean isValidRange(List<Integer> numbers){
-        for (int number: numbers){
-            if (number < 1 || number > 45){
+    private Boolean isValidRange(List<Integer> numbers) {
+        for (int number : numbers) {
+            if (number < 1 || number > 45) {
                 return false;
             }
         }
         return true;
     }
 
-    private Boolean hasSameNumber(List<Integer> numbers){
-        if (numbers.size() != numbers.stream().distinct().count()){
+    private Boolean hasSameNumber(List<Integer> numbers) {
+        if (numbers.size() != numbers.stream().distinct().count()) {
             return true;
         }
         return false;
+    }
+
+    public List<Integer> getNumbers(){
+        return numbers;
     }
 }
