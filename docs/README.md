@@ -10,7 +10,7 @@
 9. Lotto Instance와 winning Lotto 비교 (OK)
 10. (4) => 로또 수량 및 번호 출력 (OK)
 11. (8) => 당첨 내역 출력 (OK)
-12. 예외 처리 
+12. 예외 처리 (OK)
 
 # 클래스 설계
 #### 1. Lotto
