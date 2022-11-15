@@ -42,5 +42,24 @@ public class LottoResult {
 
         return Math.round((totalPrize / money) * 1000) / 10.0;
     }
+    //getter 모음
+    public Map<Rank, Integer> getResultMap() {
+        return this.resultMap;
+    }
 
+    public double getYield() {
+        return this.yield;
+    }
+
+    //서비스로직 - 문자열로 형변환
+    public String getResultString() {
+        StringBuffer sb = new StringBuffer();
+
+        for (Rank rank : Rank.values()) {
+            int count = resultMap.getOrDefault(rank, 0);
+            sb.append(String.format(rank.getSentence() + "\n", count));
+        }
+
+        return sb.toString().trim();
+    }
 }
