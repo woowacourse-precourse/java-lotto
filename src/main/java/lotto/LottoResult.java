@@ -15,7 +15,7 @@ public class LottoResult {
             System.out.println(rank.getMessage() + rank.getCount() + "개");
         }
 
-        System.out.println(MESSAGE_RESULT_OF_RETURN_RATE + getReturn(numberOfLottos) + "%입니다.");
+        System.out.println(MESSAGE_RESULT_OF_RETURN_RATE + String.format("%.1f", getReturn(numberOfLottos)) + "%입니다.");
     }
 
     //수익률 계산
@@ -26,7 +26,7 @@ public class LottoResult {
         if (sum == 0) {
             return 0;
         }
-        returnRate = (sum / (numberOfLottos * 1000)) * 100;
+        returnRate = (double) sum / (numberOfLottos * 1000) * 100;
 
         return returnRate;
     }
