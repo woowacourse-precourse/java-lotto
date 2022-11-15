@@ -26,13 +26,13 @@ public class Controller {
         return lottoCount;
     }
 
-    public List<List<Integer>> makeRandomNum(int lottoCount) {
+    public List<List<Integer>> buyerLottoNumber(int lottoCount) {
         List<List<Integer>> randomNumbers = lottoManager.makeRandomNumbers(lottoCount);
         output.randomNumbers(randomNumbers);
         return randomNumbers;
     }
 
-    public List<Integer> winingNumber() throws IllegalArgumentException{
+    public List<Integer> winingLottoNumber() throws IllegalArgumentException{
         String[] inputNumbers = input.Number().split(",");
         List<Integer> winningLottoNumber = Arrays.asList(inputNumbers)
                 .stream()
@@ -64,8 +64,8 @@ public class Controller {
     public void startLotto(){
         int lottoCount = findLottoCount();
 
-        List<List<Integer>> randomNumbers = makeRandomNum(lottoCount);
-        List<Integer> winingNumbers = winingNumber();
+        List<List<Integer>> randomNumbers = buyerLottoNumber(lottoCount);
+        List<Integer> winingNumbers = winingLottoNumber();
         int bonusNumber = bonusNumber(winingNumbers);
 
         compareNumber(randomNumbers, winingNumbers, bonusNumber);
