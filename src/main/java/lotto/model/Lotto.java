@@ -28,6 +28,6 @@ public class Lotto {
     }
 
     public boolean isContain(int number) {
-        return this.numbers.contains(number);
+        return numbers.contains(number);
     }
 }

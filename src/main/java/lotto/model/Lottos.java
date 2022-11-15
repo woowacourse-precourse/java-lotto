@@ -7,7 +7,7 @@ public class Lottos {
     private final List<Lotto> lottos;
 
     public Lottos() {
-        this.lottos = new ArrayList<>();
+        lottos = new ArrayList<>();
     }
 
     public List<Lotto> getLottos() {
@@ -15,6 +15,6 @@ public class Lottos {
     }
 
     public void addLotto(Lotto lotto) {
-        this.lottos.add(lotto);
+        lottos.add(lotto);
     }
 }

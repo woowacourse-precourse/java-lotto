@@ -9,12 +9,12 @@ public class Result {
     public Result(Lottos lottos, WinningLotto winningLotto) {
         for (Lotto lotto : lottos.getLottos()) {
             Rank rank = Rank.of(lotto.countSameNumber(winningLotto), lotto.isContain(winningLotto.getBonusNumber()));
-            this.result.put(rank, this.result.getOrDefault(rank, 0) + 1);
+            result.put(rank, result.getOrDefault(rank, 0) + 1);
         }
     }
 
     public int getRankCount(Rank rank) {
-        return this.result.getOrDefault(rank, 0);
+        return result.getOrDefault(rank, 0);
     }
 
     public int getWinnings() {
