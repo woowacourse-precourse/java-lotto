@@ -1,6 +1,7 @@
 package lotto;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Lotto {
@@ -66,5 +67,13 @@ public class Lotto {
             totalPrice += grade.getReward();
         }
         return totalPrice;
+    }
+
+    public void printResult(List<Grade> gradeList){
+        System.out.println("3개 일치 (5,000원) - " + Collections.frequency(gradeList, Grade.FIFTH) +"개");
+        System.out.println("4개 일치 (50,000원) -" + Collections.frequency(gradeList, Grade.FOURTH) +"개");
+        System.out.println("5개 일치 (1,500,000원) - " + Collections.frequency(gradeList, Grade.THIRD) +"개");
+        System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - " + Collections.frequency(gradeList, Grade.SECOND) +"개");
+        System.out.println("6개 일치 (2,000,000,000원) - " + Collections.frequency(gradeList, Grade.FIRST) +"개");
     }
 }
