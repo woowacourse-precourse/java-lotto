@@ -22,6 +22,10 @@ public class LottoGame {
         List<Lotto> lottos = getLottos();
 
         printLottos(lottos);
+
+        WinningLotto winningLotto = getWinningLotto();
+
+        printStatistics(lottos, winningLotto);
     }
 
     private List<Lotto> getLottos() {
@@ -33,5 +37,15 @@ public class LottoGame {
     private void printLottos(List<Lotto> lottos) {
         lottoBuyer.setLottos(lottos);
         lottoBuyer.printAllLottos();
+    }
+
+    private WinningLotto getWinningLotto() {
+        return new WinningLotto(winningNumbers, bonusNumber);
+    }
+
+    private void printStatistics(List<Lotto> lottos, WinningLotto winningLotto) {
+        LottoStatistics lottoStatistics = new LottoStatistics(winningLotto, lottos);
+
+        lottoStatistics.print();
     }
 }
