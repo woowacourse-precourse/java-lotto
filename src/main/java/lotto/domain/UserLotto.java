@@ -17,7 +17,6 @@ public class UserLotto {
 
     private Lotto makeLotto() {
         List<Integer> lottoNumbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
-        Collections.sort(lottoNumbers);
         return new Lotto(lottoNumbers);
     }
 

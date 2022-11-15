@@ -8,20 +8,23 @@ import lotto.domain.UserLotto;
 
 public class OutputView {
     public void printQuantity(int quantity) {
-        System.out.println(quantity + OutputMessage.PRINT_LOTTO_QUANTITY.toString());
+        System.out.println(quantity + OutputMessage.PRINT_LOTTO_QUANTITY.getMessage());
     }
     public void printLottoNumber(UserLotto userLotto) {
         System.out.println(userLotto.toString());
     }
 
     public void printLottoResult(List<LottoRanking> lottoResult) {
-        StringBuilder sb = new StringBuilder();
-        for(LottoRanking ranking : lottoResult) {
-            sb.append(ranking.getMessage()).append(Collections.frequency(lottoResult, ranking)).append(OutputMessage.PRINT_UNIT).append("\n");
-            System.out.println(sb);
-        }
+        System.out.println(LottoRanking.THREE_RIGHT.getMessage() + Collections.frequency(lottoResult, LottoRanking.THREE_RIGHT) + OutputMessage.PRINT_UNIT.getMessage());
+        System.out.println(LottoRanking.FOUR_RIGHT.getMessage() + Collections.frequency(lottoResult, LottoRanking.FOUR_RIGHT) + OutputMessage.PRINT_UNIT.getMessage());
+        System.out.println(LottoRanking.FIVE_RIGHT.getMessage() + Collections.frequency(lottoResult, LottoRanking.FIVE_RIGHT) + OutputMessage.PRINT_UNIT.getMessage());
+        System.out.println(LottoRanking.FIVE_AND_BONUS_RIGHT.getMessage() + Collections.frequency(lottoResult, LottoRanking.FIVE_AND_BONUS_RIGHT) + OutputMessage.PRINT_UNIT.getMessage());
+        System.out.println(LottoRanking.SIX_RIGHT.getMessage() + Collections.frequency(lottoResult, LottoRanking.SIX_RIGHT) + OutputMessage.PRINT_UNIT.getMessage());
+//        StringBuilder sb = new StringBuilder();
+//            sb.append(ranking.getMessage()).append(Collections.frequency(lottoResult, ranking)).append(OutputMessage.PRINT_UNIT.getMessage()).append("\n");
+//        System.out.println(sb);
     }
     public void printYield(double yield) {
-        System.out.format("%.1f%%%n", yield);
+        System.out.format("총 수익률은 %.1f%%입니다.", yield);
     }
 }

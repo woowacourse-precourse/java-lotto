@@ -48,7 +48,7 @@ class LottoSystemTest {
     public void createResultTest() {
         //given
         Lotto lotto = new Lotto(Arrays.asList(1, 2, 3, 4, 5, 6));
-        WinningLotto winningLotto = new WinningLotto(Arrays.asList(1, 2, 3, 4, 5, 7), 6);
+        WinningLotto winningLotto = new WinningLotto(new Lotto (Arrays.asList(1, 2, 3, 4, 5, 7)), 6);
         //when
         int expected = lottoSystem.calculateLotto(lotto, winningLotto);
         //then

@@ -56,8 +56,9 @@ public class LottoSystem {
             int countNumber = calculateLotto(userLotto.getLottos(index), winningLotto);
             if(countNumber == 5) {
                 lottoResult.add(addBonusResult(index, winningLotto.getBonusNumber()));
+                continue;
             }
-            lottoResult.add(LottoRanking.getByindex(index));
+            lottoResult.add(LottoRanking.getByindex(countNumber));
         }
         return lottoResult;
     }
