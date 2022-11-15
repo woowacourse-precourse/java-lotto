@@ -19,4 +19,10 @@ public class Lotto {
         }
         Calculator.calculateLottos(count, isBonus);
     }
+
+    public void isBonusDuplicate(int bonus) {
+        if (numbers.contains(bonus)) {
+            throw new IllegalArgumentException(ErrorMessage.INPUT_DUPLICATE.printError());
+        }
+    }
 }
