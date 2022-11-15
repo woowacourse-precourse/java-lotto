@@ -19,9 +19,10 @@ public class Model {
         List<Integer> randomNumber = Randoms.pickUniqueNumbersInRange(1, 45, 6);
 
         // 로또 번호는 오름차순으로 정렬한다.
-        randomNumber = SortArrayList(randomNumber);
+        List<Integer> lottoNumber = new ArrayList<>(randomNumber);
+        SortArrayList(lottoNumber);
 
-        return randomNumber;
+        return lottoNumber;
     }
 
     /**
