@@ -13,6 +13,7 @@ public class LottoBroadcast {
 
     private LottoBroadcast() {
         drawWinning();
+        drawBonus();
     }
     private void drawWinning() {
         this.winning = new Lotto(getWinningInput());
@@ -22,6 +23,17 @@ public class LottoBroadcast {
         System.out.println("당첨 번호를 입력해 주세요.");
         String input = InputUtility.readLine(Type.LOTTO.getValue());
         return InputUtility.parseLotto(input);
+    }
+
+    private void drawBonus() {
+        this.bonus = getBonusInput();
+        ValidationUtility.isValidBonus(winning, bonus);
+    }
+
+    private int getBonusInput() {
+        System.out.println("보너스 번호를 입력해 주세요.");
+        String input = InputUtility.readLine(Type.BONUS.getValue());
+        return Integer.parseInt(input);
     }
 
 
