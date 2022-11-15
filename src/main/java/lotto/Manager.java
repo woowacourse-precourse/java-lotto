@@ -11,7 +11,8 @@ public class Manager {
 
     public void setPurchasePrice(int purchasePrice) {
         if (purchasePrice % LottoConst.PURCHASE_UNIT != 0) {
-            throw new IllegalArgumentException("[ERROR] ");
+            System.out.println("[ERROR] 잘못된 금액입니다.");
+            throw new IllegalArgumentException();
         }
 
         this.purchasePrice = purchasePrice;
