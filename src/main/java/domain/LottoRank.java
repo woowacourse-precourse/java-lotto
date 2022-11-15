@@ -23,11 +23,27 @@ public enum LottoRank {
     }
 
     public static LottoRank findRank(int count, boolean hasBonusNumber) {
+        if (FIVE.isMatch(count) || FIVE_WITH_BONUS.isMatch(count)) {
+            return determineSecondOrThird(hasBonusNumber);
+        }
         return Arrays.stream(LottoRank.values())
-                .filter(r -> r.count == count && r.hasBonusNumber == hasBonusNumber)
+                .filter(r -> r.count == count)
                 .findAny()
                 .orElse(ZERO);
     }
+
+    private boolean isMatch(int count) {
+        return this.count == count;
+    }
+
+
+    private static LottoRank determineSecondOrThird(boolean hasBonusNumber) {
+        if (hasBonusNumber) {
+            return FIVE_WITH_BONUS;
+        }
+        return FIVE;
+    }
+
 
     public static Map <LottoRank,Integer> initializeMap() {
         Map <LottoRank,Integer> result = new EnumMap <>(LottoRank.class);
