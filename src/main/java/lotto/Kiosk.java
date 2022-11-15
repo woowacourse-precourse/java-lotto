@@ -1,7 +1,8 @@
 package lotto;
 
+import View.GuideMessage;
 import View.Input;
-import View.Output;
+import View.ResultMessage;
 import enumCollections.RankNumber;
 
 import java.util.EnumMap;
@@ -26,27 +27,27 @@ public class Kiosk {
     }
 
     static private void printLottoInformation(int numberOfLottos, List<Lotto> lottos) {
-        Output.getNumberOfPurchase(numberOfLottos);
-        Output.printLottos(lottos);
+        ResultMessage.printNumberOfPurchase(numberOfLottos);
+        ResultMessage.printLottos(lottos);
     }
 
     static private List<Integer> getWinningNumbers() {
-        Output.getWinningNumbers();
+        GuideMessage.printGetWinningNumbers();
         return Input.getWinningNumbers();
     }
 
     static private int getBonusNumber(List<Integer> winningNumbers) {
-        Output.getBonusNumber();
+        GuideMessage.printGetBonusNumber();
         return Input.getBonusNumber(winningNumbers);
     }
 
     static private void printResult(EnumMap<RankNumber, Integer> resultStatistics, int payment) {
-        Output.showResultStatistics(resultStatistics);
-        Output.yield(Calculator.getYield(payment, resultStatistics));
+        ResultMessage.printStatistics(resultStatistics);
+        ResultMessage.printYield(Calculator.getYield(payment, resultStatistics));
     }
 
     static private int getPurchaseAmount() {
-        Output.getPurchaseAmount();
+        GuideMessage.printGetPayment();
         return Input.getPurchaseMoney();
     }
 
