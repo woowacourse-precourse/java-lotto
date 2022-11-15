@@ -22,6 +22,7 @@ public class Application {
         //당첨 번호 입력 받기
         List<Integer> winningNums = InputNum.askWinningNumbers();
 
+        //당첨 로또 발행
         Lotto winningLotto = Publish.publishLotto(winningNums);
 
         //보너스 번호 입력 받기

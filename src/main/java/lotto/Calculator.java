@@ -17,9 +17,9 @@ public class Calculator {
 
     public static double CalculateRate(List<Lotto> lottos, Lotto winningLotto,int bonus){
 
-        List<Integer> WinningNumbers = winningLotto.getNumbers();
 
-        int totalPrize = getTotalPrize(lottos, WinningNumbers, bonus);
+
+        int totalPrize = getTotalPrize(lottos, winningLotto, bonus);
         double rate = 0;
 
         rate = ((totalPrize*1.0)/(lottos.size()*1000))*100;
@@ -28,14 +28,15 @@ public class Calculator {
 
     }
 
-    public static int getTotalPrize(List<Lotto> lottos, List<Integer> WinningNumbers,int bonus){
+    public static int getTotalPrize(List<Lotto> lottos, Lotto winningLotto,int bonus){
 
         int totalPrize = 0;
+        List<Integer> WinningNumbers = winningLotto.getNumbers();
 
         for(Lotto lotto : lottos){
             int cnt = lotto.countMatchedNumbers(WinningNumbers);
-            boolean isBonusmatched = lotto.checkBonusMatched(bonus,cnt);
-            Rank rank = lotto.getRank(WinningNumbers,isBonusmatched);
+            boolean isBonusmatched = winningLotto.checkBonusMatched(bonus,cnt);
+            Rank rank = lotto.getRank(cnt,isBonusmatched);
             rank.setCount(rank.getCount()+1);
 //            System.out.println("cnt = " + cnt);
 //            System.out.println("isBonusmatched = " + isBonusmatched);

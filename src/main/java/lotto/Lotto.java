@@ -68,9 +68,7 @@ public class Lotto {
 
 
     //등수를 구하는 메소드 구현
-    public Rank getRank(List<Integer> winningNums, boolean isbonusMatched) {
-
-        int matchedNumCnt = countMatchedNumbers(winningNums);
+    public Rank getRank(int matchedNumCnt, boolean isbonusMatched) {
 
         return Rank.getRank(matchedNumCnt,isbonusMatched);
     }

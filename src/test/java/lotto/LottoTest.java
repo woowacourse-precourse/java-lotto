@@ -13,7 +13,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class LottoTest {
 
-    private static final List<Integer> WINNINGNUMS = List.of(1,23,11,19,36,13);
+    private static final Lotto WINNINGLOTTO = new Lotto(List.of(1,23,11,19,36,13));
 
 
 
@@ -44,7 +44,7 @@ class LottoTest {
 
         Lotto lotto = new Lotto(List.of(num1,num2,num3,num4,num5,num6));
 
-        int result = lotto.countMatchedNumbers(WINNINGNUMS);
+        int result = lotto.countMatchedNumbers(WINNINGLOTTO.getNumbers());
         assertThat(result).isEqualTo(expected);
     }
 
@@ -53,16 +53,28 @@ class LottoTest {
     //당첨 번호 개수가 5개 일때, 보너스 점수 일치 여부 테스트
     @DisplayName("당첨 번호 개수가 5개 일때, 보너스 점수가 일치하면 true를 반환한다.")
     @ParameterizedTest
-    @CsvSource({"41,true","33,false"})
+    @CsvSource({"13,true","33,false"})
     void checkReturnValueOfBonusMatched(int bonusNum, boolean expected) {
 
         Lotto lotto = new Lotto(List.of(1,23,11,19,36,41));
-        int matchNumCnt = lotto.countMatchedNumbers(WINNINGNUMS);
+        int matchNumCnt = lotto.countMatchedNumbers(WINNINGLOTTO.getNumbers());
 
-        boolean result = lotto.checkBonusMatched(bonusNum,matchNumCnt);
+        boolean result = WINNINGLOTTO.checkBonusMatched(bonusNum,matchNumCnt);
         assertThat(result).isEqualTo(expected);
     }
 
 
     //등수 구하는 메서드 테스트
+    @DisplayName("당첨 번호 개수에 따른 등수를 구한다.")
+    @Test
+    void checkRankByWinningCnt(){
+//        1,23,11,19,36,13
+        Lotto lotto = new Lotto(List.of(1,23,11,19,36,41));
+        int bonusNum = 13;
+        int matchedNumCnt = lotto.countMatchedNumbers(WINNINGLOTTO.getNumbers());
+        boolean isbonusMatched = WINNINGLOTTO.checkBonusMatched(bonusNum,matchedNumCnt);
+
+        Rank result = lotto.getRank(matchedNumCnt, isbonusMatched);
+        assertThat(result).isEqualTo(Rank.SECOND);
+    }
 }
