@@ -1,4 +1,4 @@
-package lotto.function;
+package lotto;
 
 
 import lotto.domain.jackpot.JackpotResult;

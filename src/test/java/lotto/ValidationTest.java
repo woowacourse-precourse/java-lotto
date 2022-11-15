@@ -1,4 +1,4 @@
-package lotto.function.validation;
+package lotto;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
 import lotto.app.Application;
