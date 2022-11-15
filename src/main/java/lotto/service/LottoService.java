@@ -6,7 +6,6 @@ import lotto.repository.StatisticsRepository;
 
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 
 public class LottoService {
     private final PurchaserRepository purchaserRepository;
