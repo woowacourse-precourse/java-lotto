@@ -12,6 +12,9 @@ public class PrintInputMessage {
     private static final String INPUT_WINNING_LOTTO_NUMBER = "당첨 번호를 입력해 주세요.";
     private static final String INPUT_BONUS_LOTTO_NUMBER = "보너스 번호를 입력해 주세요.";
     private static final String INPUT_WRONG_DATA_TYPE = "[ERROR] 입력한 값이 숫자가 아닙니다.";
+    private static final String PRINT_DUPLICATE_ERROR = "[ERROR] 겹치는 로또 숫자가 있습니다.";
+
+
 
 
     public static int getPurchaseAmount() {
@@ -31,11 +34,16 @@ public class PrintInputMessage {
         return  inputWinningNum.stream().map(Integer::valueOf).collect(Collectors.toList());
     }
 
-    public static int getBonusLottoNumber() {
+    public static int getBonusLottoNumber(List<Integer> getWinningLottoNum) {
+        System.out.println();
         System.out.println(INPUT_BONUS_LOTTO_NUMBER);
+        int getBonusNum = Integer.parseInt(Console.readLine());
+        if(getWinningLottoNum.contains(getBonusNum)) {
+            throw new IllegalArgumentException(PRINT_DUPLICATE_ERROR);
+        }
         try {
-            return Integer.parseInt(Console.readLine());
-        } catch (NumberFormatException ei) {
+            return getBonusNum;
+        } catch (NumberFormatException e) {
             throw new IllegalArgumentException(INPUT_WRONG_DATA_TYPE);
         }
     }
