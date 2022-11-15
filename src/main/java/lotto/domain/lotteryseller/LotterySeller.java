@@ -1,68 +1,58 @@
 package lotto.domain.lotteryseller;
 
 import lotto.controller.LotteryRequestController;
-import lotto.dto.lotteryseller.RandomNumbersSets;
-import lotto.dto.lotterystore.MoneyForPurchase;
+import lotto.dto.lotto.Lotto;
+import lotto.dto.lotteryseller.LottoSetsDto;
+import lotto.dto.lotterystore.MoneyDto;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Stream;
 
 public class LotterySeller {
-	private static final LotterySeller lotterySeller = new LotterySeller();
-	private final LotteryRequestController requestController;
+
 	private int money = 0;
 
-	private LotterySeller() {
-		requestController = LotteryRequestController.getController();
+	public void receiveMoney(MoneyDto money) {
+		this.money = Integer.parseInt(money.getMoney());
 	}
 
-	public static LotterySeller getLotterySeller() {
-		return lotterySeller;
-	}
-
-	public void receiveInformationAboutPurchase(MoneyForPurchase moneyDto) {
-		money = Integer.parseInt(moneyDto.getMoney());
-	}
-
-	public void sendGeneratedLotterySets() {
+	public void sendGeneratedLotterySets(LotteryRequestController requestController) {
 		int numberOfPurchases = getNumberOfPurchases();
 
-		List<List<Integer>> randomNumbersSets = generateRandomNumbersSets(numberOfPurchases);
-		int randomNumbersSetsSize = randomNumbersSets.size();
+		List<List<Integer>> orderedLottoSets = generateLottoSets(numberOfPurchases);
+		int orderedLottoSetsSize = orderedLottoSets.size();
 
-		RandomNumbersSets randomNumbersSetsDto =
-			new RandomNumbersSets(randomNumbersSets, randomNumbersSetsSize);
-		requestController.receiveRandomNumbersSets(randomNumbersSetsDto);
+		LottoSetsDto lottoSetsDto =
+			new LottoSetsDto(orderedLottoSets, orderedLottoSetsSize);
+		requestController.receiveLottoSets(lottoSetsDto);
 	}
 
 	private int getNumberOfPurchases() {
 		return money / 1000;
 	}
 
-	private List<List<Integer>> generateRandomNumbersSets(int numberOfPurchases) {
-		List<List<Integer>> randomNumbersSets = new ArrayList<>();
+	private List<List<Integer>> generateLottoSets(int numberOfPurchases) {
+		List<List<Integer>> orderedLottoSets = new ArrayList<>();
 
 		for (int i = 0; i < numberOfPurchases; i++) {
-			List<Integer> numbersSet = getOneSet();
-			numbersSet = sortAscendingOrder(numbersSet);
-			randomNumbersSets.add(numbersSet);
+			Lotto lotto = getOneSet();
+			orderedLottoSets.add(sortAscendingOrder(lotto));
 		}
 
-		return randomNumbersSets;
+		return orderedLottoSets;
 	}
 
-	private List<Integer> getOneSet() {
-		return Randoms.pickUniqueNumbersInRange(1, 45, 6);
+	private Lotto getOneSet() {
+		return new Lotto(Randoms.pickUniqueNumbersInRange(1, 45, 6));
 	}
 
-	private List<Integer> sortAscendingOrder(List<Integer> numbersSet) {
-		List<Integer> sortedSet = new ArrayList<>();
+	private List<Integer> sortAscendingOrder(Lotto lotto) {
+		List<Integer> lottoNumbers = lotto.getNumbers();
+		List<Integer> orderedNumbers = new ArrayList<>();
 
-		Stream<Integer> elementsForSort = numbersSet.stream();
-		elementsForSort.sorted().forEach(sortedSet::add);
+		lottoNumbers.stream().sorted().forEach(orderedNumbers::add);
 
-		return sortedSet;
+		return orderedNumbers;
 	}
 }
