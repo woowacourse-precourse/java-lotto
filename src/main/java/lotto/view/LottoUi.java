@@ -33,9 +33,10 @@ public class LottoUi {
 
     public static int inputBonusNumber() {
         LottoService lottoService = LottoService.getLottoService();
-        int bonusNumber = lottoService.generateBonusNumber();
+        int bonusNumber;
 
         printInputBonusNumberMessage();
+        bonusNumber = lottoService.generateBonusNumber();
         printEnter();
 
         return bonusNumber;
@@ -55,9 +56,10 @@ public class LottoUi {
 
     public static Lotto inputWinningLotto() {
         LottoService lottoService = LottoService.getLottoService();
-        Lotto winningLotto = lottoService.generateWinningLotto();
+        Lotto winningLotto;
 
         printInputWinningNumberMessage();
+        winningLotto = lottoService.generateWinningLotto();
         printEnter();
 
         return winningLotto;
