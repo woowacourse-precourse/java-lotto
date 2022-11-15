@@ -33,4 +33,8 @@ public class Display {
 
         System.out.println("총 수익률은 " + String.format("%.1f" , rate) + "%입니다.");
     }
+
+    static void displayErrorSameNumber () {
+        System.out.println("[ERROR] 로또 번호에는 중복이 없어야 합니다.");
+    }
 }
