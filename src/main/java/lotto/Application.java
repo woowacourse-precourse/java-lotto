@@ -1,5 +1,6 @@
 package lotto;
 
+import java.io.PrintStream;
 import java.util.*;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
@@ -38,20 +39,40 @@ public class Application {
             buyer.add(digits[order]);
         }
         Collections.sort(buyer);
+
+//      보너스 넘버 입력
+        int bonusNum = Integer.valueOf(Console.readLine());
+
+        for (int buyerEnter : buyer) {
+            if (bonusNum.contains(buyerEnter)) {
+                System.out.printf("%d 는 당첨번호에 이미 포함되어 있습니다.\n", bonusNum);
+            }
+        }
+
+
+
+
+
         System.out.println(buyer);
 
 //        List<String> compare = lottoNumbers.stream().filter(old -> buyer.stream().anyMatch(Predicate.isEqual(old)));
         lottoNumbers.removeAll(buyer);
         System.out.println(lottoNumbers);
 
-        int three = 0;
+        int three = 1;
         int four = 0;
         int five = 0;
         int fiveBo = 0;
         int six = 0;
-        double profit = 0;
-        profit = (5000 * three + 50000 * four + 1500000 * five + 30000000 * fiveBo + 2000000000 * six) / money);
+        double profit;
+        double division = ((double)100/(double)15);
+        System.out.println(division);
 
+        profit = (5000 * (double)three + 50000 * (double)four + 1500000 * (double)five + 30000000 * (double)fiveBo + 2000000000 * (double)six) / (double)money;
+        System.out.println(money);
+        System.out.println(profit);
+        double profitRound = round((double)profit*(double)1000)/(double)10;
+        System.out.println(profitRound);
 //당첨통계
         System.out.println("당첨 통계");
         System.out.println("---");
@@ -60,7 +81,8 @@ public class Application {
         System.out.printf("5개 일치 (1,500,000원) - %d개\n", five);
         System.out.printf("5개 일치, 보너스 볼 일치 (30,000,000원) - %d개\n", fiveBo);
         System.out.printf("6개 일치 (2,000,000,000원) - %d개\n", six);
-        System.out.printf("총 수익률은 %d입니다.\n", (double)Math.round(profit*10)/10);
+        System.out.printf("총 수익률은 %f%% 입니다.", profitRound);
+//        System.out.printf("총 수익률은 %f % 입니다.\n", profitRound);
 
     }
 
