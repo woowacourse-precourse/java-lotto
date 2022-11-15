@@ -15,6 +15,10 @@ public class Lotto {
         this.winningNumbers = numbers;
     }
 
+    public List<Integer> getWinningNumbers(){
+        return this.winningNumbers;
+    }
+
     private void validateSize(List<Integer> numbers) {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException("[ERROR] 로또 번호는 6자리여야 합니다.");
