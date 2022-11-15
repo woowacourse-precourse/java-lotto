@@ -59,15 +59,15 @@ public class WinningResult {
     }
 
     private Rank countRankOne(int count, boolean bonusFlag) {
-        if(count == 6)
+        if(count == Rank.FIRST.getCount())
             return Rank.FIRST;
-        else if(count == 5 && bonusFlag)
+        else if(count == Rank.SECOND.getCount() && bonusFlag)
             return Rank.SECOND;
-        else if(count == 5)
+        else if(count == Rank.THIRD.getCount())
             return Rank.THIRD;
-        else if(count == 4)
+        else if(count == Rank.FOURTH.getCount())
             return Rank.FOURTH;
-        else if(count == 3)
+        else if(count == Rank.FIFTH.getCount())
             return Rank.FIFTH;
         else
             return Rank.NONE;
