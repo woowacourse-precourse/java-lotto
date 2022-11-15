@@ -29,7 +29,10 @@ public class Application {
             System.out.println("\n" + INPUT_BONUS_NUMBER);
             LottoStorage.setBonusNumber(BonusNumberReceiver.receiveBonusNumber());
             System.out.println("\n" + WIN_STATS + "\n" + SPLIT_PARAGRAPH + "\n");
-
+            LottoStorage.setResultCollection(
+                    WinResultManager.getCorrectedNumbersWithWin(
+                            LottoStorage.getLottoTickets(), LottoStorage.getWinNumbers(),
+                            LottoStorage.getBonusNumber()));
             ResultPrinter.printResult();
 
         } catch (IllegalArgumentException e) {

@@ -3,6 +3,7 @@ package lotto.model;
 import java.util.ArrayList;
 import java.util.List;
 import lotto.Lotto;
+import lotto.controller.CorrectNumber;
 import lotto.controller.ExceptionHandler;
 
 public class LottoStorage {
@@ -14,6 +15,7 @@ public class LottoStorage {
     private static List<Integer> winNumbers = new ArrayList<>();
     private static int bonusNumber = 0;
     private static String inputMoney = "";
+    private static List<CorrectNumber> resultCollectionStorage = new ArrayList<>();
 
     public static void setLottoTickets(List<List<Integer>> tickets) {
         lottoTickets = tickets;
@@ -38,6 +40,10 @@ public class LottoStorage {
         inputMoney = money;
     }
 
+    public static void setResultCollection(List<CorrectNumber> resultCollection) {
+        resultCollectionStorage = resultCollection;
+    }
+
     public static List<List<Integer>> getLottoTickets() {
         return lottoTickets;
     }
@@ -55,4 +61,6 @@ public class LottoStorage {
     }
 
     public static String getInputMoney() { return inputMoney; }
+
+    public static List<CorrectNumber> getResultCollectionStorage() { return resultCollectionStorage; }
 }

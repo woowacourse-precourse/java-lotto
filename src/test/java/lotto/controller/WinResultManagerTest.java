@@ -17,12 +17,13 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class WinResultManagerTest {
     @DisplayName("각 티켓별 당첨 번호와 비교한 결과 확인")
     @Test
-    void findDuplicatedNumber() {
+    void findCorrectedNumbersWithWin() {
         List<List<Integer>> tickets = new ArrayList<>();
+        int bonus = 38;
         tickets.add(Arrays.asList(8,21,23,41,42,43));
         tickets.add(Arrays.asList(3,5,11,16,32,38));
-        List<Integer> winNumbers = new ArrayList<>(Arrays.asList(3,5,8,11,16,17));
-        List<Integer> expected = new ArrayList<>(Arrays.asList(1, 4));
-        assertThat(WinResultManager.getCorrectedNumbersWithWin(tickets, winNumbers)).isEqualTo(expected);
+        List<Integer> winNumbers = new ArrayList<>(Arrays.asList(3,5,8,11,16,32));
+        List<CorrectNumber> expected = new ArrayList<>(Arrays.asList(CorrectNumber.FIVE_BONUS));
+        assertThat(WinResultManager.getCorrectedNumbersWithWin(tickets, winNumbers, bonus)).isEqualTo(expected);
     }
 }
