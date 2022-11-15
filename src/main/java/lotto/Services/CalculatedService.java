@@ -17,13 +17,13 @@ public class CalculatedService {
         return this.money / 1000;
     }
 
-    public String calculatedYield(Map<String,Integer> lottoResult){
+    public float calculatedYield(Map<String,Integer> lottoResult){
         float total = lottoResult.get(Reword.FIVE_WORD.word) * Reword.FIVE_WORD.money
                 + lottoResult.get(Reword.FOUR_WORD.word) * Reword.FOUR_WORD.money
                 + lottoResult.get(Reword.THREE_WORD.word) * Reword.THREE_WORD.money
                 + lottoResult.get(Reword.TWO_WORD.word) * Reword.TWO_WORD.money
                 + lottoResult.get(Reword.ONE_WORD.word) * Reword.ONE_WORD.money;
-
-        return String.format("%.2f",total/money);
+        float result = total /money;
+        return (float) Math.round(result*10000)/100;
     }
 }
