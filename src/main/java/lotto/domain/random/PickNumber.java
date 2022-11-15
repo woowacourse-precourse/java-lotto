@@ -16,7 +16,7 @@ public class PickNumber {
         sb.append('\n').append(pages_of_lotto+"개를 구매했습니다.").append('\n');
 
         for (int i=0;i<pages_of_lotto;i++){
-            List<Integer> page_of_lotto = Randoms.pickUniqueNumbersInRange(1, 8, 6);
+            List<Integer> page_of_lotto = Randoms.pickUniqueNumbersInRange(1, 45, 6);
             purchased_lotto.add(page_of_lotto);
             sb.append(page_of_lotto).append('\n');
         }
