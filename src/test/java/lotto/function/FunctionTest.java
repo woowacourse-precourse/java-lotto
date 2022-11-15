@@ -80,6 +80,16 @@ class FunctionTest {
 		assertThat(prize_money_sum).isEqualTo(3005000);
 	}
 
+	@Test
+	void ENUM_GET_PRIZE_MONEY_이넘값에_존재하는_금액추출_테스트(){
+		//given
+		String key="4개 일치";
+		//when
+		int money = Rate.add_money_list(key);
+		//then
+		assertThat(money).isEqualTo(50000);
+	}
+
 	private static List<Integer> one_of_lotto() {
 		List<Integer> purchase = new ArrayList<>();
 		purchase.add(1);

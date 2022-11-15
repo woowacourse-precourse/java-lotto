@@ -29,7 +29,7 @@ public class Rate {
 		return prize_money_list;
 	}
 
-	private static int add_money_list(String key){
+	public static int add_money_list(String key){
 		if (key.equals(Prize.THREE.getGrade()))
 			return Integer.parseInt(Prize.THREE.getPrize_money().replaceAll(",",""));
 		if (key.equals(Prize.FOUR.getGrade()))
