@@ -26,6 +26,5 @@ public class Money {
 
     public int getNumberOfLottoGame() {
         return this.amount / PRICE_OF_ONE_TIME_LOTTO;
-        //TODO : 검증
     }
 }

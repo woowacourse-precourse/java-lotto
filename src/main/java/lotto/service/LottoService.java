@@ -14,21 +14,22 @@ import static java.util.Collections.sort;
 
 public class LottoService {
 
+
     public RandomLotto makeRandomLottoNumbers(Money money) {
         int numberOfLottoGame = money.getNumberOfLottoGame();
-        RandomLotto randomLotto = new RandomLotto(numberOfLottoGame);
+        List<List<Integer>> randomLottos = new ArrayList<>();
 
         for (int i = 0; i < numberOfLottoGame; i++) {
-            List<Integer> randomNumbers = new ArrayList<>(Randoms.pickUniqueNumbersInRange(1, 45, 6));
+            List<Integer> randomNumbers = new ArrayList<>(generateRandomLottoNumbers());
             sort(randomNumbers);
-            randomLotto.getRandomLottoNumbers().add(randomNumbers);
+            randomLottos.add(randomNumbers);
         }
-        return randomLotto;
+        return new RandomLotto(randomLottos, numberOfLottoGame);
     }
 
     public HashMap<Winning, Integer> confirmWinningResult(RandomLotto randomLotto, Lotto lotto) {
         HashMap<Winning, Integer> winningResultMap = initWinningResultMap();
-        for (List<Integer> randomLottoNums : randomLotto.getRandomLottoNumbers()) {
+        for (List<Integer> randomLottoNums : randomLotto.getRandomLottos()) {
             calcWinningRankAndWinningNum(lotto, winningResultMap, randomLottoNums);
         }
         return winningResultMap;
@@ -61,5 +62,7 @@ public class LottoService {
         return map;
     }
 
-
+    private List<Integer> generateRandomLottoNumbers() {
+        return Randoms.pickUniqueNumbersInRange(Lotto.LOTTO_MIN_NUM, Lotto.LOTTO_MAX_NUM, Lotto.MAX_LOTTO_SIZE);
+    }
 }

@@ -5,15 +5,16 @@ import java.util.List;
 
 public class RandomLotto {
 
-    private final List<List<Integer>> randomLottoNumbers = new ArrayList<>();
+    private final List<List<Integer>> randomLottos;
     private final int numberOfLottoGame;
 
-    public RandomLotto(int numberOfLottoGame) {
+    public RandomLotto(List<List<Integer>> randomLottos, int numberOfLottoGame) {
+        this.randomLottos = randomLottos;
         this.numberOfLottoGame = numberOfLottoGame;
     }
 
-    public List<List<Integer>> getRandomLottoNumbers() {
-        return randomLottoNumbers;
+    public List<List<Integer>> getRandomLottos() {
+        return randomLottos;
     }
 
     public int getNumberOfLottoGame() {

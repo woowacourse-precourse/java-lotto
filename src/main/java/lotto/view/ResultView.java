@@ -25,7 +25,7 @@ public class ResultView {
     }
 
     public void showAllRandomLottoNumbers(RandomLotto randomLotto) {
-        for (List<Integer> list : randomLotto.getRandomLottoNumbers()) {
+        for (List<Integer> list : randomLotto.getRandomLottos()) {
             System.out.println(list);
         }
     }
