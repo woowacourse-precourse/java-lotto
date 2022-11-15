@@ -4,13 +4,14 @@ import java.util.HashSet;
 import java.util.List;
 
 public class Lotto {
-    private final List<Integer> numbers;
+    private final List<Integer> winningNumbers;
     private int bonus;
+
     public Lotto(List<Integer> numbers) {
         validateSize(numbers);
         validateRange(numbers);
         validateDuplication(numbers);
-        this.numbers = numbers;
+        this.winningNumbers = numbers;
     }
 
     private void validateSize(List<Integer> numbers) {
@@ -42,19 +43,19 @@ public class Lotto {
         }
     }
 
-    private void validateDuplicationWithNumbers(int bonus){
-        if (numbers.contains(bonus)) {
+    private void validateDuplicationWithNumbers(int bonus) {
+        if (winningNumbers.contains(bonus)) {
             throw new IllegalArgumentException("[ERROR] 보너스 번호는 로또 번호와 중복되지 않은 숫자여야 합니다.");
         }
     }
 
-    public void setBonus(int number){
+    public void setBonus(int number) {
         validateRangeOfNumber(number);
         validateDuplicationWithNumbers(number);
         this.bonus = number;
     }
 
-    public int getBonus(){
+    public int getBonus() {
         return this.bonus;
     }
 }
