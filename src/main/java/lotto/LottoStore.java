@@ -12,7 +12,7 @@ public class LottoStore {
             List<Lotto> lottos = lottoMachine.buy(money);
             OutputConsole.printLottoList(lottos);
             List<Integer> winningNumber = InputConsole.winningNumber();
-            int bonusNumber = InputConsole.bonusNumber();
+            int bonusNumber = InputConsole.bonusNumber(winningNumber);
             Map<Rank, Integer> rankResult = lottoMachine.makeRankResult(lottos, winningNumber, bonusNumber);
             OutputConsole.printWinningList(rankResult);
             ProfitRateCalculator profitRateCalculator = new ProfitRateCalculator();

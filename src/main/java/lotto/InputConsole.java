@@ -102,9 +102,32 @@ public class InputConsole {
         return winningNumbers;
     }
 
-    public static int bonusNumber() {
+    public static int bonusNumber(List<Integer> winningNumber) {
         System.out.println(BONUS_NUMBER_INPUT_MESSAGE);
+        String input = Console.readLine();
+        validateBonusNumber(input, winningNumber);
         int bonusNumber = Integer.parseInt(Console.readLine());
         return bonusNumber;
+    }
+
+    private static void validateBonusNumber(String numbers, List<Integer> winningNumber) {
+        if (!isDigit(numbers) || !isCorrectRange(numbers) || !isWithoutDuplicateBonus(numbers, winningNumber)) {
+            throw new IllegalArgumentException(INVALID_BONUS_NUMBER_ERROR.getMessage());
+        }
+    }
+
+    private static boolean isCorrectRange(String numbers) {
+        int bonusNumber = Integer.parseInt(numbers);
+        if (bonusNumber >= 1 && bonusNumber <= 45) {
+            return true;
+        }
+        return false;
+    }
+
+    private static boolean isWithoutDuplicateBonus(String numbers, List<Integer> winningNumber) {
+        if (!winningNumber.contains(Integer.parseInt(numbers))) {
+            return true;
+        }
+        return false;
     }
 }
