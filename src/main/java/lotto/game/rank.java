@@ -1,4 +1,4 @@
 package lotto.game;
 
-public class game {
+public class rank {
 }
