@@ -8,8 +8,4 @@ public class ConsoleOutputView {
     public void println(String text) {
         System.out.println(text);
     }
-
-    public void printlnError(String errorText) {
-        System.out.println("[ERROR] " + errorText);
-    }
 }

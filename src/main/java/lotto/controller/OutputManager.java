@@ -6,22 +6,56 @@ import lotto.model.lotto.Lotto;
 import lotto.model.payment.Payment;
 import lotto.model.statistics.LottoResult;
 import lotto.model.statistics.LottoStatistics;
+import lotto.view.ConsoleOutputView;
 
-public class IoManager {
-    public final String PUT_PAYMENT_INPUT_ALERT = "구입금액을 입력해 주세요.";
-    public final String PUT_WINNING_NUMBERS_INPUT_ALERT = "당첨 번호를 입력해 주세요.";
-    public final String PUT_BONUS_NUMBER_INPUT_ALERT = "보너스 번호를 입력해 주세요.";
+public class OutputManager {
+    public final String PAYMENT_INPUT_ALERT = "구입금액을 입력해 주세요.";
+    public final String WINNING_LOTTO_INPUT_ALERT = "당첨 번호를 입력해 주세요.";
+    public final String BONUS_NUMBER_INPUT_ALERT = "보너스 번호를 입력해 주세요.";
     public final String STATISTICS_LABEL = "당첨 통계";
     public final String DIVIDER = "---";
 
     private static final DecimalFormat integerWithCommaFormatter = new DecimalFormat("###,###");
     private static final DecimalFormat floatWithCommaAndOneDecimalFormatter = new DecimalFormat("###,###.#");
 
-    public String makePaymentAlert(Payment payment) {
-        return payment.getLottoCount() + "개를 구매했습니다.";
+    private final ConsoleOutputView outputView;
+
+    public OutputManager() {
+        this.outputView = new ConsoleOutputView();
     }
 
-    public String lottoToString(Lotto lotto) {
+    public void printError(String errorText) {
+        System.out.println("[ERROR] " + errorText);
+    }
+
+    public void printPaymentInputAlert() {
+        outputView.println(PAYMENT_INPUT_ALERT);
+    }
+
+    public void printWinningLottoInputAlert() {
+        outputView.println(WINNING_LOTTO_INPUT_ALERT);
+    }
+
+    public void printBonusNumberInputAlert() {
+        outputView.println(BONUS_NUMBER_INPUT_ALERT);
+    }
+
+    public void printPaymentAlert(Payment payment) {
+        outputView.println(payment.getLottoCount() + "개를 구매했습니다.");
+    }
+
+    public void printLotto(Lotto lotto) {
+        outputView.println(lottoToString(lotto));
+    }
+
+    public void printLottoStatistics(Payment payment, LottoStatistics lottoStatistics) {
+        outputView.println(STATISTICS_LABEL);
+        outputView.println(DIVIDER);
+        outputView.println(makeLottoHistoryDescription(lottoStatistics));
+        outputView.println(makeReturnRateDescription(payment, lottoStatistics));
+    }
+
+    private String lottoToString(Lotto lotto) {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("[");
         for(int i = 0; i < Lotto.LOTTO_NUMBER_LENGTH - 1; i++) {
@@ -38,7 +72,7 @@ public class IoManager {
         return stringBuilder.toString();
     }
 
-    public String makeLottoResultDescription(LottoResult lottoResult) {
+    private String makeLottoResultDescription(LottoResult lottoResult) {
         if(lottoResult.equals(LottoResult.MISS)) {
             return "꽝";
         }
@@ -53,7 +87,7 @@ public class IoManager {
         return stringBuilder.toString();
     }
 
-    public String makeLottoHistoryDescription(LottoStatistics lottoStatistics) {
+    private String makeLottoHistoryDescription(LottoStatistics lottoStatistics) {
         StringBuilder stringBuilder = new StringBuilder();
 
         LottoResult[] sortedAllLottoResults = LottoResult.getValuesWithAscendingOrderByMatchCount();
@@ -79,7 +113,7 @@ public class IoManager {
         return resultDescription + " - " + count + "개";
     }
 
-    public String makeReturnRateDescription(Payment payment, LottoStatistics lottoStatistics) {
+    private String makeReturnRateDescription(Payment payment, LottoStatistics lottoStatistics) {
         int totalPayment = payment.getAmount();
         int totalPrize = lottoStatistics.getTotalPrize();
         float returnRate = 100 * ((float) totalPrize / (float) totalPayment);
