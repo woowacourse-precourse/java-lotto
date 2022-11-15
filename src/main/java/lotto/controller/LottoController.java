@@ -47,10 +47,10 @@ public class LottoController {
 
     private static String printInputMessageAndInputAmount() {
         InputView.printInputMoneyMessage();
-        String money = Console.readLine();
-        ValidationUtils.validateNumber(money);
+        String moneyAmount = Console.readLine();
+        ValidationUtils.validateMoneyAmount(moneyAmount);
 
-        return money;
+        return moneyAmount;
     }
 
     private static Result inputWinningNumber() {
