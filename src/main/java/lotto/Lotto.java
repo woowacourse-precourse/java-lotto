@@ -49,4 +49,15 @@ public class Lotto {
     public List<Integer> gen(){
         return Randoms.pickUniqueNumbersInRange(1, 45, 6);
     }
+    
+    public List<List> purchased(int  n){
+        List<List> result = new ArrayList<>();
+        for(int i = 0; i < n; i++){
+            List<Integer> gen = gen();
+            result.add(gen);
+        }
+        return result;
+    }
+    
+    
 }
