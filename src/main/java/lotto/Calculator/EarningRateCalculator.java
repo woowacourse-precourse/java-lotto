@@ -24,8 +24,7 @@ public class EarningRateCalculator {
         calculatePrize();
         calculateEarningRate(lottos.size());
         System.out.println(prize);
-        printer.printWinningStatistics(Prize.FIFTH_PLACE_PRIZE.prize, Prize.FOURTH_PLACE_PRIZE.prize , Prize.THIRD_PLACE_PRIZE.prize, Prize.SECOND_PLACE_PRIZE.prize, Prize.FIRST_PLACE_PRIZE.prize,
-                earningRate);
+        printer.printWinningStatistics(fifthPlaceCount, fourthPlaceCount , thirdPlaceCount, secondPlaceCount, firstPlaceCount, earningRate);
     }
 
     private void winningCalculate(List<Integer> userLotto, List<Integer> lotto, Integer bonusNumber) {

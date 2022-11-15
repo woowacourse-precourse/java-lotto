@@ -17,13 +17,13 @@ public class Lotto {
 
     private final List<Integer> numbers;
 
-    public Lotto(String numbers) {
-        List<Integer> newNumbers = castNumbers(numbers);
-        validateLottoNumber(newNumbers);
-        this.numbers = newNumbers;
+    public Lotto(List<Integer> numbers) {
+//        List<Integer> newNumbers = castNumbers(numbers);
+        validateLottoNumber(numbers);
+        this.numbers = numbers;
     }
 
-    private List<Integer> castNumbers(String numbers) {
+    public List<Integer> castNumbers(String numbers) {
         List<Integer> newNumbers = new ArrayList<>();
         String[] partedNumbers = numbers.split(", ");
 
