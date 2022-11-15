@@ -49,4 +49,21 @@ public class LottoGeneratorTest {
         String result = lottoGenerator.createLottoNumberFormat(sortedLottoNumbers);
         assertThat(result).isEqualTo(expectedLotto);
     }
+    @Test
+    @DisplayName("발행한 로또들을 오름차순으로 정렬한 뒤 문자열로 변환되는지 확인한다.")
+    public void checkSortedLotteriesResult(){
+        String expectedLotto= "[1, 2, 3, 4, 5, 6]\n[2, 3, 4, 5, 6, 7]\n";
+        LottoGenerator lottoGenerator = new LottoGenerator();
+        List<Lotto> generatedLotteries=new ArrayList<>();
+        generatedLotteries.add(new Lotto(List.of(2,6,3,4,1,5)));
+        generatedLotteries.add(new Lotto(List.of(2,6,5,7,4,3)));
+        List<String> sortedLotteries=new ArrayList<>();
+        String result;
+        for(Lotto lotto:generatedLotteries){
+            Stream<Integer> sortedLottoNumbers= lottoGenerator.sortLottoNumbers(lotto);
+            sortedLotteries.add(lottoGenerator.createLottoNumberFormat(sortedLottoNumbers));
+        }
+        result=String.join("", sortedLotteries);
+        assertThat(result).isEqualTo(expectedLotto);
+    }
 }
