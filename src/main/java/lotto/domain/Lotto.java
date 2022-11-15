@@ -25,8 +25,8 @@ public class Lotto {
 
     public int compareWithNumberList(List<Integer> anotherNumbers) {
         return (int) numbers.stream()
-                        .filter(old -> anotherNumbers.stream()
-                        .anyMatch(Predicate.isEqual(old)))
+                        .filter(number -> anotherNumbers.stream()
+                        .anyMatch(Predicate.isEqual(number)))
                         .count();
     }
 
