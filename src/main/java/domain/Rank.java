@@ -67,6 +67,26 @@ public class Rank {
         return (reward * count);
     }
 
+    public void setRanking(int ranking) {
+        this.ranking = ranking;
+    }
+
+    public void setMatch(int match) {
+        this.match = match;
+    }
+
+    public void setReward(long reward) {
+        this.reward = reward;
+    }
+
+    public void setBonus(boolean bonus) {
+        this.bonus = bonus;
+    }
+
+    public void setCount(int count) {
+        this.count = count;
+    }
+
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append(match).append(Message.RESULT_A.getValue());
