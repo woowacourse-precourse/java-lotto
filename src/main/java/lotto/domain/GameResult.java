@@ -1,6 +1,9 @@
 package lotto.domain;
 
+import lotto.utils.Constant;
+
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class GameResult {
@@ -46,5 +49,15 @@ public class GameResult {
         }
 
         return counts;
+    }
+
+    public static Integer calculateRateOfReturn(List<Integer> counts) {
+        List<Integer> amount = new ArrayList<>(Arrays.asList(Constant.WINNING_FIFTH_AMOUNT, Constant.WINNING_FOURTH_AMOUNT, Constant.WINNING_THIRD_AMOUNT, Constant.WINNING_SECOND_AMOUNT, Constant.WINNING_FIRST_AMOUNT));
+        int result = 0;
+
+        for (int i = 0; i < counts.size(); i++) {
+            result += amount.get(i) * counts.get(i);
+        }
+        return result;
     }
 }
