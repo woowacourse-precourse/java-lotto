@@ -15,6 +15,7 @@ public class InputView {
         System.out.println(INPUT_PURCHASE_MONEY_MSG);
         String money = Console.readLine();
         Validation.validatePurchaseMoneyConsistOfNum(money);
+        Validation.validatePurchaseMoneyGreaterThan1000(money);
         Validation.validatePurchaseMoney(money);
         return Integer.parseInt(money);
     }
