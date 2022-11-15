@@ -23,6 +23,16 @@ public class Application {
 
     final static int NUMBER_SIZE = 6;
 
+    final static int HIT_THREE = 5000;
+
+    final static int HIT_FOUR = 50000;
+
+    final static int HIT_FIVE = 1500000;
+
+    final static int HIT_FIVE_BONUS = 30000000;
+
+    final static int HIT_SIX = 2000000000;
+
     public static void main(String[] args) {
         saveInput();
         calculateWinnings();
@@ -99,9 +109,9 @@ public class Application {
     }
 
     public static void calculateRate(){
-        int earnMoney = (gameData.getHitThree() * 5000) + (gameData.getHitFour() * 50000) +
-                (gameData.getHitFive() * 1500000) + (gameData.getHitFiveAndBonus() * 30000000)
-                + (gameData.getHitSix() * 2000000000);
+        int earnMoney = (gameData.getHitThree() * HIT_THREE) + (gameData.getHitFour() * HIT_FOUR) +
+                (gameData.getHitFive() * HIT_FIVE) + (gameData.getHitFiveAndBonus() * HIT_FIVE_BONUS)
+                + (gameData.getHitSix() * HIT_SIX);
         double rate = ((double) earnMoney / gameData.getMoney() ) * 100;
         System.out.println("총 수익률은 "+ String.format("%.1f", rate) + "%입니다.");
     }
