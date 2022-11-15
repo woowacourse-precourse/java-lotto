@@ -9,6 +9,16 @@ public class ExceptionHandler {
     public final String error06 = "[ERROR] 06 당첨 번호의 형식이 올바르지 않습니다.";
     public final String error07 = "[ERROR] 07 중복되는 숫자가 입력되었습니다.";
 
+    public void purchaseAmountException(String input) {
+        if (input.isEmpty()) {
+            throw new IllegalArgumentException(error01);
+        } else if (isInteger(input)) {
+            throw new IllegalArgumentException(error02);
+        } else if (Integer.parseInt(input) % 1000 != 0) {
+            throw new IllegalArgumentException(error03);
+        }
+    }
+
     public static boolean isInteger(String str) {
         try {
             Integer.parseInt(str);
