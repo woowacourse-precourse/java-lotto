@@ -7,19 +7,20 @@ public class GameStarter {
     private static final String WIN_INPUT_MESSAGE = "당첨 번호를 입력해 주세요.";
     private static final String BONUS_INPUT_MESSAGE = "보너스 번호를 입력해 주세요.";
 
-    Inputer inputer = new Inputer();
-    LottoNumberGenerator lottoNumberGenerator = new LottoNumberGenerator();
-    Printer printer = new Printer();
-    CorrectNumberCounter correctNumberCounter = new CorrectNumberCounter();
-    RevenueCalculater revenueCalculater = new RevenueCalculater();
-
-
     private List<List<Integer>> userLottoNumberList;
     private int userInputMoney;
 
 
     private List<Integer> lottoWinNumber;
     private int bonusNumber;
+
+
+    Inputer inputer = new Inputer();
+    LottoNumberGenerator lottoNumberGenerator = new LottoNumberGenerator();
+    Printer printer = new Printer();
+    CorrectNumberCounter correctNumberCounter = new CorrectNumberCounter();
+    RevenueCalculater revenueCalculater = new RevenueCalculater();
+
 
 
     public void gameStart() {

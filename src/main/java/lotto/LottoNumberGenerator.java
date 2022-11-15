@@ -9,15 +9,11 @@ import lotto.EnumCreate.RangeNumber;
 
 public class LottoNumberGenerator {
 
-    RangeNumber startRange = RangeNumber.RANGE_START;
-    int startNumber = startRange.getRangeNumber();
-
-    RangeNumber endRange = RangeNumber.RANGE_END;
-    int endNumber = endRange.getRangeNumber();
-
     private static final int MONEY_UNIT = 1000; // 1000원
     private static final int LOTTO_NUMBER_AMOUNT = 6;
     private static final int ZERO = 0;
+    private int startNumber = RangeNumber.RANGE_START.getRangeNumber();
+    private int endNumber = RangeNumber.RANGE_END.getRangeNumber();
     private List<List<Integer>> returnList = new ArrayList<>();
 
 
