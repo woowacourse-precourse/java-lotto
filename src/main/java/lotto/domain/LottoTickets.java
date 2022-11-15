@@ -1,19 +1,30 @@
 package lotto.domain;
 
+import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class LottoTickets {
-    private final List<LottoNumbers> LottoTicket = new ArrayList<>();
+
+    private List<List<Integer>> LottoTicket;
 
     public LottoTickets(int lottoCount) {
-        createLottoTickets(lottoCount);
+        LottoTicket = createLottoTickets(lottoCount);
     }
 
-    private void createLottoTickets(int lottoCount) {
+    private List<List<Integer>> createLottoTickets(int lottoCount) {
+        List<List<Integer>> LottoTicket = new ArrayList<>();
         for (int i = 0; i < lottoCount; i++) {
-            LottoTicket.add(new LottoNumbers());
+            LottoTicket.add(Randoms.pickUniqueNumbersInRange(1, 45, 6));
         }
+        return LottoTicket;
+    }
+
+
+
+    public List<List<Integer>> getLottoTicket(){
+        return LottoTicket;
     }
 }
 
