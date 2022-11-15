@@ -1,4 +1,4 @@
-package lotto;
+package lotto.repository;
 
 import lotto.domain.Lotto;
 import lotto.domain.enummodel.LottoEnum;

@@ -1,4 +1,4 @@
-package lotto;
+package lotto.facade;
 
 import lotto.application.LottoFacade;
 import lotto.application.LottoFacadeImpl;
@@ -14,7 +14,7 @@ import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.*;
 
-public class LottoFacadeImplTest {
+public class LottoFacadeTest {
 
     private LottoFacade lottoFacade;
 

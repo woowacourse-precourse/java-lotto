@@ -1,4 +1,4 @@
-package lotto;
+package lotto.processor;
 
 import lotto.domain.enummodel.LottoEnum;
 import lotto.domain.enummodel.PriceEnum;

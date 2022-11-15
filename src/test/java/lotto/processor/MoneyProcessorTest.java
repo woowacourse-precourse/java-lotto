@@ -1,4 +1,4 @@
-package lotto;
+package lotto.processor;
 
 import lotto.domain.processor.MoneyProcessor;
 import lotto.domain.processor.MoneyProcessorImpl;
