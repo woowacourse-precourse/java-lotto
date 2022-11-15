@@ -1,5 +1,12 @@
 package lotto.constant;
 
+import lotto.domain.constant.LottoProperty;
+
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+import java.util.stream.Collectors;
+
 public enum LotteryRank {
     FIRST(6, 2_000_000_000),
     SECOND(5, 30_000_000),
@@ -29,6 +36,13 @@ public enum LotteryRank {
         }
 
         return BEFORE_DRAW;
+    }
+
+    public static List<LotteryRank> findWinningRankInAscendingOrder() {
+        return Arrays.stream(LotteryRank.values())
+                .filter(rank -> rank.getNumberOfMatches() >= LottoProperty.MIN_WINNING_MATCHES.getProperty())
+                .sorted(Collections.reverseOrder())
+                .collect(Collectors.toList());
     }
 
     private LotteryRank (int numberOfMatches, int reward) {
