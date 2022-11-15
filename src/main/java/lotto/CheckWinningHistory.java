@@ -55,5 +55,9 @@ public class CheckWinningHistory {
         System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - " + this.secondPlace + "개");
         System.out.println("6개 일치 (2,000,000,000원) - 0개" + this.firstPlace + "개");
     }
-
+    /** 총 수익률을 출력하는 기능 */
+    private void printEarningsRate(float earningsRate) {
+        System.out.printf("총 수익률은 ");
+        System.out.println(String.format("%.1f", earningsRate) + "%입니다.");
+    }
 }
