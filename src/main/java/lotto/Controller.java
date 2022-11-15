@@ -26,14 +26,13 @@ public class Controller {
     public void setBudget(){
         view.printMessage(Text.BUDGET_INPUT);
         String budgetInput = Console.readLine();
-        validateBudget(budgetInput);
-        user.setBudget(Integer.parseInt(budgetInput));
+        user.setBudget(toInteger(budgetInput));
 
     }
 
-    private void validateBudget(String budgetInput){
+    private Integer toInteger(String budgetInput){
         try {
-            Integer.parseInt(budgetInput);
+            return Integer.parseInt(budgetInput);
         }
         catch (Exception exception){
             throw new IllegalArgumentException();
@@ -43,37 +42,31 @@ public class Controller {
     public void setWinningNumbers(){
         view.printMessage(Text.WINNING_NUMBER_INPUT);
         String winningNumbersInput = Console.readLine();
-        String[] splitInput = winningNumbersInput.split(",");
-        validateWinningNumbers(splitInput);
-        game.setWinningNumbers(toIntegerList(splitInput));
+        game.setWinningNumbers(toIntegerList(split(winningNumbersInput)));
     }
 
-    private void validateWinningNumbers(String[] splitInput){
-        try {
-            for (String string : splitInput) {
-                Integer.parseInt(string);
-            }
+    private String[] split(String string){
+        try{
+            return string.split(",");
         }
         catch (Exception exception){
             throw new IllegalArgumentException();
         }
     }
 
-    private List<Integer> toIntegerList(String[] splitInput){
-        List<Integer> winningNumbers = new ArrayList<>();
-        for (String string : splitInput){
-            winningNumbers.add(Integer.parseInt(string));
+
+    private List<Integer> toIntegerList(String[] splitInput) {
+        try {
+            List<Integer> winningNumbers = new ArrayList<>();
+            for (String string : splitInput) {
+                winningNumbers.add(Integer.parseInt(string));
+            }
+            return winningNumbers;
         }
-        return winningNumbers;
+        catch (Exception exception){
+            throw new IllegalArgumentException();
+        }
+
     }
-
-
-
-
-
-
-
-
-
 
 }
