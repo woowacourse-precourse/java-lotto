@@ -2,6 +2,7 @@ package lotto.service;
 
 import camp.nextstep.edu.missionutils.Console;
 import lotto.printer.RequestInputPrinter;
+import lotto.util.StringUtils;
 
 import java.util.Arrays;
 import java.util.List;
@@ -61,15 +62,10 @@ public class WinningsSettingService {
         if (bonusNumber.isBlank() || bonusNumber.length() > 2) {
             throw new IllegalArgumentException(BONUS_NUMBER_OVERSIZE.getMessage());
         }
-        if (!isDigit(bonusNumber)) {
+        if (!StringUtils.isDigit(bonusNumber)) {
             throw new IllegalArgumentException(BONUS_NUMBER_NOT_NUMBER.getMessage());
         }
 
-    }
-
-    private boolean isDigit(String bonusNumber) {
-        return bonusNumber.chars()
-            .allMatch(Character::isDigit);
     }
 
     private void winningsNumberValidate(String[] winningsNumber) throws IllegalArgumentException {
@@ -77,7 +73,7 @@ public class WinningsSettingService {
             throw new IllegalArgumentException(WINNING_NUMBER_OVERSIZE.getMessage());
         }
         for (int i = 0; i < SIZE; i++) {
-            if (!isDigit(winningsNumber[i])) {
+            if (!StringUtils.isDigit(winningsNumber[i])) {
                 throw new IllegalArgumentException(WINING_NUMBER_NOT_NUMBER.getMessage());
             }
         }

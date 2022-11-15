@@ -7,6 +7,7 @@ import lotto.domain.LottoFactory;
 import lotto.domain.User;
 import lotto.printer.RequestInputPrinter;
 import lotto.printer.SystemGuidePrinter;
+import lotto.util.StringUtils;
 
 import java.util.List;
 
@@ -34,15 +35,10 @@ public class LottoPurchaseService {
     private Integer enterPaymentAmount() throws IllegalArgumentException {
         RequestInputPrinter.paymentAmountInputGuide();
         String input = Console.readLine();
-        if (!isDigit(input)) {
+        if (!StringUtils.isDigit(input)) {
             throw new IllegalArgumentException(PAYMENT_AMOUNT_NOT_NUMBER.getMessage());
         }
         return Integer.parseInt(input);
-    }
-
-    private boolean isDigit(String paymentAmount) {
-        return paymentAmount.chars()
-            .allMatch(Character::isDigit);
     }
 
     private Integer calculateLottoCount(int amount) throws IllegalArgumentException {
