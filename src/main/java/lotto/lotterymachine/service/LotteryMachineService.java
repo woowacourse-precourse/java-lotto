@@ -77,4 +77,10 @@ public class LotteryMachineService {
         return prize;
     }
 
+    public Map<Score, Integer> getScoreBoard() {
+        return ScoreBoard;
+    }
+    public void setScoreBoardForTest(Map<Score, Integer> scoreBoard){
+        this.ScoreBoard = scoreBoard;
+    }
 }
