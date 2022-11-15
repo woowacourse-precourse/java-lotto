@@ -1,68 +1,59 @@
 package lotto;
 
-import static constance.Texts.*;
-import static constance.Values.*;
+import constance.Values;
+
+import static constance.Values.Texts.*;
+import static constance.Values.Constants.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
 
 public class Checker {
-    public int checkNumber(String input) throws IllegalArgumentException{
 
+    public int checkNumber(String input) throws IllegalArgumentException {
         int number = checkNumeric(input);
-
         this.checkNegative(number);
-
         return number;
-
     }
 
-    public int checkNumeric(String input) throws IllegalArgumentException{
+    public int checkNumeric(String input) throws IllegalArgumentException {
         int result = -1;
         try {
             result = Integer.parseInt(input);
         } catch (Exception e) {
-            String errorMessage = String.format(LOTTO_CHECKER_ERROR, input, LOTTO_CHECKER_ERROR_NON_NUMERIC);
-            printAndThrowError(errorMessage);
+            printAndThrowError(input, ERROR_NON_NUMERIC.message());
         }
         return result;
     }
 
-    public void checkNegative(int input) throws IllegalArgumentException{
+    public void checkNegative(int input) throws IllegalArgumentException {
         if (input < 0) {
-            String errorMessage = String.format(LOTTO_CHECKER_ERROR, input, LOTTO_CHECKER_ERROR_NEGATIVE);
-            printAndThrowError(errorMessage);
+            printAndThrowError(String.valueOf(input), ERROR_NEGATIVE.message());
         }
     }
 
-    public void checkPayment(int input) throws IllegalArgumentException{
+    public void checkPayment(int input) throws IllegalArgumentException {
         if (input < 1000) {
-            String errorMessage = String.format(LOTTO_CHECKER_ERROR, input, LOTTO_CHECKER_ERROR_LACK_OF_AMOUNT);
-            printAndThrowError(errorMessage);
+            printAndThrowError(String.valueOf(input), ERROR_LACK_OF_AMOUNT.message());
         }
     }
 
     public int checkAmountInput(String input) {
-
-        int amount=-1;
-
-        try{
+        int amount = -1;
+        try {
             amount = checkNumber(input);
-
             this.checkPayment(amount);
             this.checkRemain(amount);
         } catch (IllegalArgumentException illegalArgumentException) {
-            amount=-1;
+            amount = -1;
         }
-
         return amount;
     }
 
     public void checkValidate(List<Integer> numbers) {
-        if (numbers.size() != NUMBERS_SIZE) {
-            String errorMessage = String.format(LOTTO_CHECKER_ERROR, numbers, LOTTO_CHECKER_ERROR_VALIDATE);
-            printAndThrowError(errorMessage);
+        if (numbers.size() != NUMBERS_SIZE.value()) {
+            printAndThrowError(numbers.toString(), ERROR_VALIDATE.message());
         }
         checkBoundary(numbers);
         checkDuplicated(numbers);
@@ -73,11 +64,10 @@ public class Checker {
         for (int number : numbers) {
             copyNumbers.add(number);
         }
-        for (int i = 0; i < NUMBERS_SIZE; ++i) {
+        for (int i = 0; i < NUMBERS_SIZE.value(); ++i) {
             int number = copyNumbers.remove(0);
             if (copyNumbers.contains(number)) {
-                String errorMessage = String.format(LOTTO_CHECKER_ERROR, numbers, LOTTO_CHECKER_ERROR_DUPLICATED);
-                printAndThrowError(errorMessage);
+                printAndThrowError(numbers.toString(), ERROR_DUPLICATED.message());
             }
         }
     }
@@ -85,8 +75,7 @@ public class Checker {
     public void checkDuplicated(List<Integer> numbers, int bonusNumber) {
         this.checkDuplicated(numbers);
         if (numbers.contains(bonusNumber)) {
-            String errorMessage = String.format(LOTTO_CHECKER_ERROR, numbers + " + " + bonusNumber, LOTTO_CHECKER_ERROR_DUPLICATED);
-            printAndThrowError(errorMessage);
+            printAndThrowError(numbers + " + " + bonusNumber, ERROR_DUPLICATED.message());
         }
     }
 
@@ -98,8 +87,7 @@ public class Checker {
 
     public void checkBoundary(int number) {
         if (45 < number || number < 1) {
-            String errorMessage = String.format(LOTTO_CHECKER_ERROR, number, LOTTO_CHECKER_ERROR_ILLEGAL);
-            printAndThrowError(errorMessage);
+            printAndThrowError(String.valueOf(number), ERROR_ILLEGAL.message());
         }
     }
 
@@ -123,7 +111,7 @@ public class Checker {
         int remain;
         if (input % 1000 > 0) {
             remain = input % 1000;
-            System.out.println(String.format(LOTTO_CHECKER_EXCEPTION_AMOUNT_REMAIN, input, remain));
+            System.out.println(String.format(EXCEPTION_AMOUNT_REMAIN.message(), input, remain));
             input -= remain;
         }
         return input;
@@ -181,7 +169,7 @@ public class Checker {
             winningBonus = 2;
         }
 
-        winning = WINNINGS[coincideCount + winningBonus];
+        winning = Values.WINNINGS[coincideCount + winningBonus];
         return winning;
     }
 
@@ -200,8 +188,8 @@ public class Checker {
         return lotteryStat;
     }
 
-    public void printAndThrowError(String errorMessage) {
-        System.out.println(errorMessage);
+    public void printAndThrowError(String target, String errorMessage) {
+        System.out.println(String.format(ERROR.message(), target, errorMessage));
         throw new IllegalArgumentException(errorMessage);
     }
 
