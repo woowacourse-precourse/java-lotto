@@ -48,4 +48,13 @@ public class UI {
             throw new IllegalArgumentException();
         }
     }
+
+    public void getWinningNumber() {
+        System.out.println("당첨 번호를 입력해 주세요.");
+
+        String winningNumbers = Console.readLine();
+
+    }
+
+
 }

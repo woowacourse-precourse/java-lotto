@@ -13,5 +13,6 @@ public class Application {
 
         List<List<Integer>> issueLotto = lottoMachine.issueLotto(amount);
 
+        ui.getWinningNumber();
     }
 }
