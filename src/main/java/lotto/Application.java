@@ -40,32 +40,32 @@ public class Application {
 
     private static int validateInputMoney(String inputMoney) {
         if (!inputMoney.matches(RegValue.NUMBER_REG.getReg())) {
-            System.out.println("[ERROR] 숫자만 입력 가능합니다.");
-            throw new NoSuchElementException("[ERROR] 숫자만 입력 가능합니다.");
+            System.out.println(ErrorMsg.INPUT_ERROR.getMessage());
+            throw new NoSuchElementException(ErrorMsg.INPUT_ERROR.getMessage());
         } else if (Integer.parseInt(inputMoney) % 1000 != 0) {
-            throw new IllegalArgumentException("[ERROR] 1000원 단위만 입력할 수 있습니다.");
+            throw new IllegalArgumentException(ErrorMsg.UNIT_ERROR.getMessage());
         }
         return Integer.parseInt(inputMoney);
     }
 
     private static void validateInputWinningNums(String inputWinningNums) {
         if (!inputWinningNums.contains(",")) {
-            throw new IllegalArgumentException("[ERROR] 구분자 \",\"를 포함해야 합니다.");
+            throw new IllegalArgumentException(ErrorMsg.SEPARATOR_ERROR.getMessage());
         }
         String[] inputWinningNumsArr = inputWinningNums.split(",");
         if (inputWinningNumsArr.length < 6) {
-            throw new IllegalArgumentException("[ERROR] 숫자 6개를 입력해야 합니다.");
+            throw new IllegalArgumentException(ErrorMsg.INPUT_COUNT_ERROR.getMessage());
         }
         for (String s : inputWinningNumsArr) {
             if (!s.matches(RegValue.LOTTO_NUMBER_REG.getReg())) {
-                throw new IllegalArgumentException("[ERROR] 숫자는 1~45까지만 입력할 수 있습니다.");
+                throw new IllegalArgumentException(ErrorMsg.RANGE_ERROR.getMessage());
             }
         }
     }
 
     private static void validateInputBonusNum(String inputBonusNum) {
         if (!inputBonusNum.matches(RegValue.NUMBER_REG.getReg())) {
-            throw new IllegalArgumentException("[ERROR] 숫자만 입력 가능합니다.");
+            throw new IllegalArgumentException(ErrorMsg.INPUT_ERROR.getMessage());
         }
     }
 
