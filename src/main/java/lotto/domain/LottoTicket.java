@@ -18,7 +18,7 @@ public class LottoTicket {
     }
 
     public List<Integer> lottoNumberGenerate() {
-        List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+        List<Integer> numbers = new ArrayList<>(Randoms.pickUniqueNumbersInRange(1, 45, 6));
         Collections.sort(numbers);
         return numbers;
     }
@@ -26,7 +26,7 @@ public class LottoTicket {
     public List<Lotto> lottoTicketGenerate(final int count) {
         List<Lotto> lottos = new ArrayList<>();
         for (int i = 0; i < count; i++) {
-            List<Integer> numbers = lottoNumberGenerate();
+            List<Integer> numbers = new ArrayList<>(lottoNumberGenerate());
             Lotto lotto = new Lotto(numbers);
 
             lottos.add(lotto);
