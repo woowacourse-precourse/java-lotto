@@ -11,9 +11,8 @@ public class User {
     private final int money;
     private final List<Lotto> lotto;
 
-    public User(String money) {
-        validateMoney(money);
-        this.money = Integer.parseInt(money);
+    public User(int money) {
+        this.money = money;
         lotto = new ArrayList<>();
     }
 
@@ -27,15 +26,5 @@ public class User {
 
     public void buyLotto(Lotto lotto){
         this.lotto.add(lotto);
-    }
-
-    private void validateMoney(String money) throws IllegalArgumentException{
-        try {
-            Integer.parseInt(money);
-        }catch (Exception e){
-            throw new IllegalArgumentException(ErrorMsg.INPUT_ERROR.toString());
-        }
-        if (Integer.parseInt(money) % LottoInfo.PRICE.getValue() != 0)
-            throw new IllegalArgumentException(ErrorMsg.WRONG_BUYING_UNIT.toString());
     }
 }

@@ -1,5 +1,6 @@
 package lotto;
 
+import lotto.controller.Dispatch;
 import lotto.controller.UserController;
 import lotto.domain.lotto.LottoInfo;
 import lotto.domain.user.User;
@@ -13,12 +14,13 @@ public class StoreTest {
     LottoConfig lottoConfig = new LottoConfig();
     StoreService storeService = lottoConfig.storeService();
     UserController userController = lottoConfig.userController();
+    Dispatch dispatch = new Dispatch(lottoConfig);
 
     @Test
     @DisplayName("금액 입력 테스트")
     void getMoney(){
         int money = 8000;
-        User user = new User(String.valueOf(money));
+        User user = new User(money);
 
         assertThat(user.getMoney()).isEqualTo(money);
     }
@@ -26,11 +28,10 @@ public class StoreTest {
     @Test
     @DisplayName("금액 입력 예외 테스트")
     void getMoneyException(){
-        int money = 8100;
-
-        assertThatThrownBy(() -> new User(String.valueOf(money)))
+        assertThatThrownBy(() -> dispatch.convertMoney("8100"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
 
     @Test
     @DisplayName("로또 생성 테스트")
@@ -52,7 +53,7 @@ public class StoreTest {
     @DisplayName("로또 구매 개수 테스트2")
     void numberOfLotto2(){
         int money = 8000;
-        User user = new User(String.valueOf(money));
+        User user = new User(money);
         userController.buyLotto(user);
 
         assertThat(user.getLotto().size())

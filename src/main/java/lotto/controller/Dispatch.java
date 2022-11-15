@@ -24,7 +24,8 @@ public class Dispatch {
 
     public void buyLotto(){
         System.out.println(Message.SELLING_MSG);
-        this.user = new User(Console.readLine());
+        int money = convertMoney(Console.readLine());
+        this.user = new User(money);
 
         Store store  = lottoConfig.userController().buyLotto(user);
         store.show();
@@ -42,6 +43,22 @@ public class Dispatch {
         RankingView rankingView = lottoConfig.rankController()
                 .statistics(this.user, winLotto);
         rankingView.show();
+    }
+
+    public Integer convertMoney(String money) throws IllegalArgumentException{
+        int validMoney = 0;
+        try {
+            validMoney = Integer.parseInt(money);
+        }catch (Exception e){
+            throw new IllegalArgumentException(ErrorMsg.INPUT_ERROR.toString());
+        }
+        if (validMoney == 0)
+            throw new IllegalArgumentException(ErrorMsg.NO_MONEY.toString());
+
+        if (validMoney % LottoInfo.PRICE.getValue() != 0)
+            throw new IllegalArgumentException(ErrorMsg.WRONG_BUYING_UNIT.toString());
+
+        return validMoney;
     }
 
     public List<Integer> convertWinningNumbers(String numbers){

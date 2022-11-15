@@ -72,7 +72,7 @@ public class RankTest {
         Integer bonus = dispatch.convertBonus("7");
         List<Lotto> lottos = testLottos();
 
-        User user = new User(String.valueOf(lottos.size() * 1000));
+        User user = new User(1000);
         buylotto(lottos, user);
 
         WinLotto winLotto = new WinLotto(winningNumbers, bonus);

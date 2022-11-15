@@ -29,7 +29,7 @@ public class ProfitTest {
         int bonus = Integer.parseInt("7");
         List<Lotto> lottos = testLottos();
 
-        User user = new User(String.valueOf(lottos.size() * 1000));
+        User user = new User(1000);
         buylotto(lottos, user);
         WinLotto winLotto = new WinLotto(winningNumber, bonus);
         Rank rank = rankService.calculateRanking(user, winLotto);

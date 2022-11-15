@@ -8,7 +8,8 @@ public enum ErrorMsg {
     DUPLICATE_LOTTO_NUMBER("[ERROR] 로또에 중복된 숫자가 존재합니다."),
     WRONG_LOTTO_NUMBER("[ERROR] 로또 번호는 "+LottoInfo.MIN+"부터 "+LottoInfo.MAX+" 사이의 숫자여야 합니다."),
     INPUT_ERROR("[ERROR] 잘못된 입력입니다."),
-    DUPLICATE_BONUS_NUMBER("[ERROR] 로또 번호와 보너스 번호가 중복됩니다.");
+    DUPLICATE_BONUS_NUMBER("[ERROR] 로또 번호와 보너스 번호가 중복됩니다."),
+    NO_MONEY("[ERROR] 금액을 "+LottoInfo.PRICE+"이상 입력해주세요");
 
     private final String errorMsg;
 
