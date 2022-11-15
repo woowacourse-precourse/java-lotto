@@ -36,9 +36,10 @@ public class Application {
         // 당첨 확인
         ConfirmationOfTheWinner(userLottoList, lottoNums, bonusNumber);
         // 당첨 통계 출력
-
         // 일치 항목 출력
         // 수익률 출력
+        printWinningStats(money);
+
     }
 
     // 발행 로또 출력
@@ -124,6 +125,35 @@ public class Application {
             FirstPlace.setCount(FirstPlace.getCount() + 1);
         }
     }
+
+    private void printWinningStats(int money) {
+        System.out.println("당첨 통계\n---");
+        printMatch();
+        printYield(money);
+    }
+
+    private void printMatch() {
+        System.out.println(FifthPlace.getDESCRIPTION() + " " + FifthPlace.getSRING_PRICE() + " - " + FifthPlace.getCount() + "개");
+        System.out.println(FourthPlace.getDESCRIPTION() + " " + FourthPlace.getSRING_PRICE() + " - " + FourthPlace.getCount() + "개");
+        System.out.println(ThirdPlace.getDESCRIPTION() + " " + ThirdPlace.getSRING_PRICE() + " - " + ThirdPlace.getCount() + "개");
+        System.out.println(SecondPlace.getDESCRIPTION() + " " + SecondPlace.getSRING_PRICE() + " - " + SecondPlace.getCount() + "개");
+        System.out.println(FirstPlace.getDESCRIPTION() + " " + FirstPlace.getSRING_PRICE() + " - " + FirstPlace.getCount() + "개");
+    }
+
+
+    private void printYield(int money) {
+        int earnings = getPrizeMoney();
+        System.out.printf("총 수익률은 %.1f%%입니다.", (double)earnings/money*100);
+    }
+
+    private int getPrizeMoney() {
+        return (FifthPlace.getCount() * FifthPlace.getPRICE())
+                + (FourthPlace.getCount() * FourthPlace.getPRICE())
+                + (ThirdPlace.getCount() * ThirdPlace.getPRICE())
+                + (SecondPlace.getCount() * SecondPlace.getPRICE())
+                + (FirstPlace.getCount() * FirstPlace.getPRICE());
+    }
+
 
     public static void main(String[] args) {
         Application app = new Application();
