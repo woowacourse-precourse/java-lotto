@@ -7,7 +7,10 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class LottoIO {
-    static public List<Integer> getLottoNumber() {
+    private LottoIO() {
+    }
+
+    public static List<Integer> getLottoNumber() {
         String[] input = Console.readLine().trim().split(",");
 
         return Arrays.stream(input)
