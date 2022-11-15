@@ -14,7 +14,7 @@ public class WinningNumber {
         int bonusNumber = inputToBonusNumber(inputBonusNumber);
 
         winningNumbersValidate(winningNumbers);
-        bonusNumberValidate(bonusNumber);
+        bonusNumberValidate(bonusNumber, winningNumbers);
 
         this.winningNumbers = winningNumbers;
         this.bonusNumber = bonusNumber;
@@ -26,8 +26,9 @@ public class WinningNumber {
         UserInputValidator.winNumberDuplicateValidate(numbers);
     }
 
-    private void bonusNumberValidate(int number) {
+    private void bonusNumberValidate(int number, List<Integer> numbers) {
         UserInputValidator.bonusNumberRangeValidate(number);
+        UserInputValidator.bonusNumberInWinNumber(number, numbers);
     }
 
     public List<Integer> inputToWinnigNumbers(String inputNumbers) {

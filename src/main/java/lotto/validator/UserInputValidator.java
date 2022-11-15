@@ -41,6 +41,12 @@ public class UserInputValidator {
         }
     }
 
+    public static void bonusNumberInWinNumber(int inputBonus, List<Integer> inputNumber) throws IllegalArgumentException {
+        if (inputNumber.contains(inputBonus)) {
+            throw new IllegalArgumentException("[ERROR] 보너스 번호는 당첨번호와 중복되면 안됩니다..");
+        }
+    }
+
     public static void isNumValidate(String input) throws IllegalArgumentException {
         for (char c : input.toCharArray()) {
             if (!Character.isDigit(c)) {
