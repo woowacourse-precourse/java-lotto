@@ -1,5 +1,7 @@
 package lotto;
 
+import lotto.Enums.ErrorMessage;
+
 import java.util.ArrayList;
 
 public class Buyer {
@@ -11,9 +13,15 @@ public class Buyer {
     private ArrayList<Integer> results;
 
     public Buyer(int purchase){
-
+        validate(purchase);
         this.purchase = purchase;
         //TODO: 다른 인스턴스들도 초기화 예정
+    }
+
+    private void validate(int purchase){
+        if(purchase%1000 != 0) {
+            throw new IllegalArgumentException(ErrorMessage.PRICE_MOD.getMessage());
+        }
     }
 
     public void getResult(){
