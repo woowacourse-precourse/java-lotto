@@ -18,6 +18,7 @@ public class Application {
         int lottoCount = lottoCount(money);
         // 로또 수량 출력
         // 로또 번호 출력
+        printLottoInfo(lottoCount, userLottoList);
 
         // 당첨 번호 입력 (Lotto)
         // 보너스 번호 입력
@@ -40,6 +41,27 @@ public class Application {
             throw new IllegalArgumentException("[ERROR] 금액은 1,000원 단위로 떨어져야 합니다.");
         }
         return lottoCount;
+    }
+
+    // 로또 번호 출력
+    public void printLottoInfo(int lottoCount, List<User> userLottoList) {
+        System.out.println(lottoCount + "개를 구매했습니다.");
+        // 갯수만큼 로또 초기화
+        inputUserLottoNumber(lottoCount, userLottoList);
+        // 로또 번호 출력
+        printLottoNumberList(lottoCount, userLottoList);
+    }
+
+    private void printLottoNumberList(int lottoCount, List<User> userLottoList) {
+        for (int i = 0; i < lottoCount; i++) {
+            System.out.println(userLottoList.get(i).userNumber);
+        }
+    }
+
+    private void inputUserLottoNumber(int lottoCount, List<User> userLottoList) {
+        for (int i = 0; i < lottoCount; i++) {
+            userLottoList.add(new User());
+        }
     }
 
     public static void main(String[] args) {
