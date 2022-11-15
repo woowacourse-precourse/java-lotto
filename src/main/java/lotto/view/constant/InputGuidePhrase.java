@@ -5,13 +5,13 @@ public enum InputGuidePhrase {
     WINNING_NUMBER_REQUEST("당첨 번호를 입력해주세요."),
     BONUS_NUMBER_REQUEST("보너스 번호를 입력해 주세요.");
 
-    private final String text;
+    private final String phrase;
 
-    private InputGuidePhrase(String text) {
-        this.text = text;
+    private InputGuidePhrase(String phrase) {
+        this.phrase = phrase;
     }
 
-    public String getText() {
-        return text;
+    public String getPhrase() {
+        return phrase;
     }
 }

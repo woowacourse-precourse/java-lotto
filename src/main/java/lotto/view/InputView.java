@@ -11,8 +11,8 @@ import java.util.stream.Collectors;
 public class InputView {
     static final String EMPTY_VALUE_ERROR_MESSAGE = ErrorMessage.EMPTY_VALUE.getErrorMessage();
     static final String NOT_NUMBER_ERROR_MESSAGE = ErrorMessage.NOT_NUMBER.getErrorMessage();
-    static final String WINNING_NUMBER_REQUEST = InputGuidePhrase.WINNING_NUMBER_REQUEST.getText();
-    static final String BONUS_NUMBER_REQUEST = InputGuidePhrase.BONUS_NUMBER_REQUEST.getText();
+    static final String WINNING_NUMBER_REQUEST = InputGuidePhrase.WINNING_NUMBER_REQUEST.getPhrase();
+    static final String BONUS_NUMBER_REQUEST = InputGuidePhrase.BONUS_NUMBER_REQUEST.getPhrase();
     static final String EMPTY_VALUE_IN_WINNING_NUMBER = ErrorMessage.EMPTY_VALUE_IN_WINNING_NUMBER.getErrorMessage();
     static final String WINNING_NUMBER_DELIMITER = ",";
 
@@ -24,7 +24,7 @@ public class InputView {
     }
 
     private static void printPurchaseMoneyRequest() {
-        System.out.println(InputGuidePhrase.PURCHASE_MONEY_REQUEST.getText());
+        System.out.println(InputGuidePhrase.PURCHASE_MONEY_REQUEST.getPhrase());
     }
 
     private static void validate (String input) throws IllegalArgumentException {
