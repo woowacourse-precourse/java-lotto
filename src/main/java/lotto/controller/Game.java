@@ -20,7 +20,5 @@ public class Game {
         } catch (IllegalArgumentException e) {
             System.out.println("[ERROR] "+e.getMessage());
         }
-
     }
-
 }
