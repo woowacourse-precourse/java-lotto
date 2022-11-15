@@ -25,5 +25,12 @@ public class CalculateUserCorrectLottoInfoService {
               LottoCompareToWinningNumbers(lotto, userSingleLottoNumber.getLottoNumbers(), user)
           );
     }
+    public void LottoCompareToWinningNumbers(Lotto lotto, List<Integer> lottoNumbers, User user){
+
+        int count = compareBonusNumber(lotto.getBonusNumber(), lottoNumbers, compareWinningNumbers(lotto, lottoNumbers));
+        WinningCriteriaInfo winning = WinningCriteriaInfo.valueOf(count);
+        user.addUserWinningPrice(winning.getPrice());
+        countWinning.put(winning, countWinning.getOrDefault(winning, INITIAL_NUMBER) + INCREASE_COUNT_NUMBER);
+    }
 
 }
