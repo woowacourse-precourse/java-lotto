@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Set;
 
 public class Lotto {
+
     private static final int LOTTO_NUMBERS_SIZE_LIMIT = 6;
 
     private final List<Integer> numbers;

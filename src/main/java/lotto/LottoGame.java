@@ -12,6 +12,7 @@ import lotto.dto.LottoCount;
 import lotto.dto.LottoGameResult;
 
 public class LottoGame {
+
     private final Buyer buyer;
     private final Seller seller;
 
@@ -43,7 +44,7 @@ public class LottoGame {
 
     private List<LottoRanking> findLottoRankings() {
         List<LottoRanking> lottoRankings = new ArrayList<>();
-        for (Lotto lotto: buyer.getLottos()) {
+        for (Lotto lotto : buyer.getLottos()) {
             int hits = seller.compareNumbers(lotto.getNumbers());
             boolean bonus = seller.compareBonusNumber(lotto.getNumbers());
             LottoRanking lottoRanking = LottoRanking.of(new LottoCount(hits, bonus));

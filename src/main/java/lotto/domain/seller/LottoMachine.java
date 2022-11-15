@@ -5,7 +5,8 @@ import lotto.domain.lotto.LottoRanking;
 import lotto.domain.lotto.WinningLotto;
 import lotto.dto.LottoCount;
 
-public class LottoMachine implements Seller{
+public class LottoMachine implements Seller {
+
     private final WinningLotto winningLotto;
 
     public LottoMachine(WinningLotto winningLotto) {

@@ -11,6 +11,7 @@ import lotto.domain.seller.LottoMachine;
 import lotto.domain.seller.Seller;
 
 public class Application {
+
     public static void main(String[] args) {
         try {
             List<Lotto> lottos = buyLottos();
