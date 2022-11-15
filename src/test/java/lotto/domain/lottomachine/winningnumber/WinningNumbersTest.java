@@ -67,33 +67,33 @@ class WinningNumbersTest {
 
     static Stream<Arguments> provideNonDuplicateListForTest() {
         return Stream.of(
-                Arguments.of(List.of(1,2,3,4,5,6)),
-                Arguments.of(List.of(1,6,2,19,34,25)),
-                Arguments.of(List.of(1,2,33,24,45,16))
+                Arguments.of(List.of(1, 2, 3, 4, 5, 6)),
+                Arguments.of(List.of(1, 6, 2, 19, 34, 25)),
+                Arguments.of(List.of(1, 2, 33, 24, 45, 16))
         );
     }
 
     static Stream<Arguments> provideDuplicateListForErrorTest() {
         return Stream.of(
-                Arguments.of(List.of(1,1,1,4,5,6)),
-                Arguments.of(List.of(45,6,45,19,34,25)),
-                Arguments.of(List.of(1,2,2,24,45,16))
+                Arguments.of(List.of(1, 1, 1, 4, 5, 6)),
+                Arguments.of(List.of(45, 6, 45, 19, 34, 25)),
+                Arguments.of(List.of(1, 2, 2, 24, 45, 16))
         );
     }
 
     static Stream<Arguments> provideListForErrorTest() {
         return Stream.of(
-                Arguments.of(List.of(1,2,3,4,5,6), 1, true),
-                Arguments.of(List.of(45,6,44,19,34,25), 1, false),
-                Arguments.of(List.of(1,2,5,24,45,16), 5, true)
+                Arguments.of(List.of(1, 2, 3, 4, 5, 6), 1, true),
+                Arguments.of(List.of(45, 6, 44, 19, 34, 25), 1, false),
+                Arguments.of(List.of(1, 2, 5, 24, 45, 16), 5, true)
         );
     }
 
     static Stream<Arguments> provideTwoListForCountTest() {
         return Stream.of(
-                Arguments.of(List.of(1,2,3,4,5,6), List.of(1,2,3,4,5,6), "6"),
-                Arguments.of(List.of(45,6,44,19,34,25), List.of(45,6,44,19,2,1), "4"),
-                Arguments.of(List.of(1,2,5,24,45,16), List.of(43,6,44,19,34,25), "0")
+                Arguments.of(List.of(1, 2, 3, 4, 5, 6), List.of(1, 2, 3, 4, 5, 6), "6"),
+                Arguments.of(List.of(45, 6, 44, 19, 34, 25), List.of(45, 6, 44, 19, 2, 1), "4"),
+                Arguments.of(List.of(1, 2, 5, 24, 45, 16), List.of(43, 6, 44, 19, 34, 25), "0")
         );
     }
 }

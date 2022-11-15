@@ -70,7 +70,7 @@ class WinningNumberSystemTest {
     @ParameterizedTest()
     @ValueSource(strings = {"11", "22", "35"})
     void receiveBonusNumber_test(String input) {
-        List<WinningNumber> numbers =Stream.iterate(1, n -> n + 1)
+        List<WinningNumber> numbers = Stream.iterate(1, n -> n + 1)
                 .limit(6)
                 .map(WinningNumber::from)
                 .collect(Collectors.toList());
@@ -83,7 +83,7 @@ class WinningNumberSystemTest {
     @ParameterizedTest()
     @ValueSource(strings = {"1", "2", "5"})
     void receiveBonusNumber_error_test(String input) {
-        List<WinningNumber> numbers =Stream.iterate(1, n -> n + 1)
+        List<WinningNumber> numbers = Stream.iterate(1, n -> n + 1)
                 .limit(6)
                 .map(WinningNumber::from)
                 .collect(Collectors.toList());

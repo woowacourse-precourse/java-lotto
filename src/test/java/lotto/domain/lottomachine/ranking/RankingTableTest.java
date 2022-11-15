@@ -42,11 +42,11 @@ class RankingTableTest {
         assertThat(method.invoke(rankingTable)).isEqualTo(expected);
     }
 
-    @DisplayName("changeToRateOfReturnFormat 메소드에 BigDecimal 객체를 입력했을 때 수익률 형식(\"###,###.0%\")의 String으로 반환하는지 확인")
+    @DisplayName("changeFormat 메소드에 BigDecimal 객체를 입력했을 때 수익률 형식(\"###,###.0%\")의 String으로 반환하는지 확인")
     @ParameterizedTest
     @MethodSource("provideArgumentsForChangingTest")
-    void changeToRateOfReturnFormat_test(String bigNumber, String expected) throws NoSuchMethodException, IllegalAccessException, InvocationTargetException {
-        Method method = rankingTable.getClass().getDeclaredMethod("changeToRateOfReturnFormat", BigDecimal.class);
+    void changeFormat_test(String bigNumber, String expected) throws NoSuchMethodException, IllegalAccessException, InvocationTargetException {
+        Method method = rankingTable.getClass().getDeclaredMethod("changeFormat", BigDecimal.class);
         method.setAccessible(true);
         BigDecimal input = new BigDecimal(bigNumber);
 
@@ -64,11 +64,11 @@ class RankingTableTest {
         assertThat(actual).isEqualTo(expected);
     }
 
-    @DisplayName("getAllByAscendingRanking 메소드가 로또 번호가 맞춘 개수, 당첨 금액, 티켓 매수를 리스트에 담아 반환하는지 확인")
+    @DisplayName("getEntryByAscendingRanking 메소드가 Map.Entry를 리스트에 담아 반환하는지 확인")
     @ParameterizedTest
-    @ValueSource(strings = {"[[3, 5,000, 1], [4, 50,000, 2], [5, 1,500,000, 0], [5B, 30,000,000, 1], [6, 2,000,000,000, 2]]"})
-    void getAllByAscendingRanking_test(String expected) {
-        List<List<String>> actual = rankingTable.getAllByAscendingRanking();
+    @ValueSource(strings = {"[FIFTH_PLACE=1, FOURTH_PLACE=2, THIRD_PLACE=0, SECOND_PLACE=1, FIRST_PLACE=2]"})
+    void getEntryByAscendingRanking_test(String expected) {
+        List<Map.Entry<Ranking, Frequency>> actual = rankingTable.getEntryByAscendingRanking();
 
         assertThat(actual.toString()).isEqualTo(expected);
     }

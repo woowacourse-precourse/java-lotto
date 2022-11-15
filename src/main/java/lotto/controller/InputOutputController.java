@@ -3,9 +3,14 @@ package lotto.controller;
 import lotto.domain.lottomachine.lottoticket.LottoTickets;
 import lotto.domain.lottomachine.messages.InputErrorMessage;
 import lotto.domain.lottomachine.payment.Payment;
+import lotto.domain.lottomachine.ranking.Frequency;
+import lotto.domain.lottomachine.ranking.Ranking;
 import lotto.domain.lottomachine.ranking.RankingTable;
 import lotto.view.InputMessenger;
 import lotto.view.OutputMessenger;
+
+import java.util.List;
+import java.util.Map;
 
 public class InputOutputController {
     private final OutputMessenger outputMessenger = new OutputMessenger();
@@ -35,7 +40,17 @@ public class InputOutputController {
     }
 
     public void printStatistics(RankingTable table) {
-        outputMessenger.printStatisticsMessage(table.getAllByAscendingRanking());
+        outputMessenger.printStatisticsIntro();
+        table.getEntryByAscendingRanking()
+                .stream()
+                .map(this::createFigures)
+                .forEach(outputMessenger::printStatisticsByAscendingRanking);
+    }
+
+    private List<String> createFigures(Map.Entry<Ranking, Frequency> entry) {
+        Ranking value = entry.getKey();
+        Frequency frequency = entry.getValue();
+        return List.of(value.getNumberOfMatching(), value.getCashInDecimalFormat(), frequency.toString());
     }
 
     public void printRateOfReturn(RankingTable table, Payment money) {

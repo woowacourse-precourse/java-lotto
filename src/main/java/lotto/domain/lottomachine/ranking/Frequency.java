@@ -2,6 +2,8 @@ package lotto.domain.lottomachine.ranking;
 
 import java.math.BigDecimal;
 
+import static lotto.domain.lottomachine.messages.DomainErrorMessage.NEGATIVE_FREQUENCY;
+
 public class Frequency {
     private final int frequency;
 
@@ -16,7 +18,7 @@ public class Frequency {
 
     private void validate(int frequency) {
         if (frequency < 0) {
-            throw new IllegalArgumentException("[ERROR] 빈도는 음수가 될 수 없습니다.");
+            throw new IllegalArgumentException(NEGATIVE_FREQUENCY.getMessage());
         }
     }
 

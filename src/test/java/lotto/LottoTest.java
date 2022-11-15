@@ -18,7 +18,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class LottoTest {
-
     private WinningNumbers winningNumbers;
     private WinningNumber bonusNumber;
 

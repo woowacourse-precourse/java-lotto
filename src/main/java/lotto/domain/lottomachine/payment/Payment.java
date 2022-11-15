@@ -1,8 +1,15 @@
 package lotto.domain.lottomachine.payment;
 
+import lotto.domain.lottomachine.lottoticket.LottoTicketSystem;
+
 import java.math.BigDecimal;
 
+import static lotto.domain.lottomachine.messages.DomainErrorMessage.LESS_THAN_PRICE;
+import static lotto.domain.lottomachine.messages.DomainErrorMessage.NON_MULTIPLE_OF_PRICE;
+import static lotto.domain.lottomachine.messages.DomainErrorMessage.ZERO_DIVISOR;
+
 public class Payment {
+    private final static int ZERO = 0;
     private final int money;
 
     private Payment(int money) {
@@ -14,6 +21,23 @@ public class Payment {
         return new Payment(money);
     }
 
+    private void validateAmount(int money) {
+        if (isLessThanPrice(money)) {
+            throw new IllegalArgumentException(LESS_THAN_PRICE.getMessage());
+        }
+        if (isNotMultipleOfPrice(money)) {
+            throw new IllegalArgumentException(NON_MULTIPLE_OF_PRICE.getMessage());
+        }
+    }
+
+    private boolean isLessThanPrice(int number) {
+        return number < LottoTicketSystem.TICKET_PRICE;
+    }
+
+    private boolean isNotMultipleOfPrice(int number) {
+        return number % LottoTicketSystem.TICKET_PRICE != ZERO;
+    }
+
     public int divideBy(int price) {
         validateDivisor(price);
         return money / price;
@@ -21,32 +45,15 @@ public class Payment {
 
     private void validateDivisor(int number) {
         if (isZero(number)) {
-            throw new ArithmeticException("[ERROR] 0으로 나눌 수 없습니다.");
+            throw new ArithmeticException(ZERO_DIVISOR.getMessage());
         }
     }
 
     private boolean isZero(int number) {
-        return number == 0;
+        return number == ZERO;
     }
 
     public BigDecimal createBigDecimal() {
         return BigDecimal.valueOf(money);
-    }
-
-    private void validateAmount(int money) {
-        if (isLessThanPrice(money)) {
-            throw new IllegalArgumentException("[ERROR] 금액은 1000원 이상이어야 합니다.");
-        }
-        if (isNotMultipleOfPrice(money)) {
-            throw new IllegalArgumentException("[ERROR] 금액은 1000원으로 나누어 떨어져야 합니다.");
-        }
-    }
-
-    private boolean isLessThanPrice(int number) {
-        return number < 1000;
-    }
-
-    private boolean isNotMultipleOfPrice(int number) {
-        return number % 1000 != 0;
     }
 }

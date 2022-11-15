@@ -50,7 +50,7 @@ class LottoTicketsTest {
 
         assertThat(actual).isEqualTo("[1, 2, 3, 4, 5, 6]\n" +
                 "[1, 2, 3, 4, 5, 7]\n" +
-                "[1, 11, 12, 13, 14, 15]" );
+                "[1, 11, 12, 13, 14, 15]");
     }
 
     static Stream<Arguments> provideListForTest() {

@@ -9,7 +9,7 @@ import java.util.stream.Collectors;
 import static java.util.stream.Collectors.joining;
 
 public class LottoTickets {
-
+    private final static String NEW_LINE = "\n";
     private final List<Lotto> tickets;
 
     private LottoTickets(List<Lotto> tickets) {
@@ -34,6 +34,6 @@ public class LottoTickets {
     public String toString() {
         return tickets.stream()
                 .map(Lotto::toString)
-                .collect(joining("\n"));
+                .collect(joining(NEW_LINE));
     }
 }

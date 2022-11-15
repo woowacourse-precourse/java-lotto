@@ -5,13 +5,17 @@ import lotto.domain.lottomachine.lottoticket.LottoTickets;
 import java.util.List;
 
 public class OutputMessenger {
+    private static final int FIRST_COLUMN = 0;
+    private static final int SECOND_COLUMN = 1;
+    private static final int THIRD_COLUMN = 2;
+    private static final int FIRST_LETTER = 0;
 
-    public void printPaymentMessage() {
-        System.out.print(OutputMessages.PAYMENT.getMessage());
+    public void printPaymentInputMessage() {
+        System.out.print(OutputMessage.PAYMENT.getMessage());
     }
 
     public void printOrderMessage(int number) {
-        System.out.printf(OutputMessages.ORDER.getMessage(), number);
+        System.out.printf(OutputMessage.ORDER.getMessage(), number);
     }
 
     public void printLottoTicketsMessage(LottoTickets lottoTickets) {
@@ -19,34 +23,35 @@ public class OutputMessenger {
     }
 
     public void printWinningNumberInputMessage() {
-        System.out.print(OutputMessages.WINNING_NUMBER_INPUT.getMessage());
+        System.out.print(OutputMessage.WINNING_NUMBER_INPUT.getMessage());
     }
 
     public void printBonusNumberInputMessage() {
-        System.out.print(OutputMessages.BONUS_NUMBER_INPUT.getMessage());
+        System.out.print(OutputMessage.BONUS_NUMBER_INPUT.getMessage());
     }
 
-    public void printStatisticsMessage(List<List<String>> table) {
-        System.out.print(OutputMessages.STATISTICS_TITLE.getMessage());
-        System.out.print(OutputMessages.DIVIDING_LINE.getMessage());
-        for (List<String> row : table) {
-            System.out.print(makeStatisticsMessage(row));
-        }
+    public void printStatisticsByAscendingRanking(List<String> row) {
+        System.out.print(makeStatisticsMessage(row));
+    }
+
+    public void printStatisticsIntro() {
+        System.out.print(OutputMessage.STATISTICS_TITLE.getMessage());
+        System.out.print(OutputMessage.DIVIDING_LINE.getMessage());
     }
 
     private String makeStatisticsMessage(List<String> row) {
-        String numberOfMatching = row.get(0);
-        String cash = row.get(1);
-        String frequency = row.get(2);
+        String numberOfMatching = row.get(FIRST_COLUMN);
+        String cash = row.get(SECOND_COLUMN);
+        String frequency = row.get(THIRD_COLUMN);
 
         if (numberOfMatching.equals("5B")) {
-            return String.format(OutputMessages.STATISTICS_BONUS_SENTENCE.getMessage(), numberOfMatching.charAt(0), cash, frequency);
+            return String.format(OutputMessage.STATISTICS_BONUS_SENTENCE.getMessage(), numberOfMatching.charAt(FIRST_LETTER), cash, frequency);
         }
-        return String.format(OutputMessages.STATISTICS_NORMAL_SENTENCE.getMessage(), numberOfMatching, cash, frequency);
+        return String.format(OutputMessage.STATISTICS_NORMAL_SENTENCE.getMessage(), numberOfMatching, cash, frequency);
     }
 
     public void printRateOfReturnMessage(String rateOfReturn) {
-        System.out.printf(OutputMessages.RATE_OF_RETURN.getMessage(), rateOfReturn);
+        System.out.printf(OutputMessage.RATE_OF_RETURN.getMessage(), rateOfReturn);
     }
 
     public void printErrorMessage(String errorMessage) {

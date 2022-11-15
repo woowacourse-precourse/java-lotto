@@ -34,7 +34,7 @@ public class LottoMachineController {
         RankingTableSystem system = createRankingTableSystem(winningNumbers, bonusNumber);
         RankingTable table = createRankingTable(tickets, system);
 
-        printLottoResult(table, money);
+        printResult(table, money);
     }
 
     private Payment receivePayment() {
@@ -73,7 +73,7 @@ public class LottoMachineController {
         return RankingTableSystem.of(winningNumbers, bonusNumber);
     }
 
-    private void printLottoResult(RankingTable table, Payment money) {
+    private void printResult(RankingTable table, Payment money) {
         inputOutputController.printStatistics(table);
         inputOutputController.printRateOfReturn(table, money);
     }

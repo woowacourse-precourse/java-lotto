@@ -20,7 +20,6 @@ import java.util.stream.Stream;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class RankingTableSystemTest {
-
     private RankingTableSystem rankingTableSystem;
 
     @BeforeEach
@@ -50,14 +49,16 @@ class RankingTableSystemTest {
     @DisplayName("countFrequencyByRank 메소드에 LottoTickets을 입력하면 순위별로 일치하는 수가 정리된 Map 객체를 반환하는지 확인")
     @ParameterizedTest
     @MethodSource("provideArgumentsForClassifyingTest")
-    void countFrequencyByRank_test(List<List<Integer>> lottoNumbers, Map<Ranking, Integer> expected) throws NoSuchMethodException, IllegalAccessException, InvocationTargetException {
+    void countFrequencyByRank_test(List<List<Integer>> lottoNumbers, String expected) throws NoSuchMethodException, IllegalAccessException, InvocationTargetException {
         Method method = rankingTableSystem.getClass().getDeclaredMethod("countFrequencyByRank", LottoTickets.class);
         method.setAccessible(true);
         LottoTickets tickets = LottoTickets.from(lottoNumbers.stream()
                 .map(Lotto::new)
                 .collect(Collectors.toList()));
 
-        assertThat(method.invoke(rankingTableSystem, tickets)).isEqualTo(expected);
+        Map<?, ?> frequenciesByRank = (Map<?, ?>) method.invoke(rankingTableSystem, tickets);
+
+        assertThat(frequenciesByRank.toString()).isEqualTo(expected);
     }
 
     @DisplayName("createRankingTable 메소드에 LottoTickets을 입력하면 RankingTable을 생성해 반환하는지 확인")
@@ -87,12 +88,7 @@ class RankingTableSystemTest {
                                 List.of(1, 2, 3, 4, 5, 6),
                                 List.of(1, 2, 3, 4, 6, 7),
                                 List.of(1, 2, 3, 7, 8, 9)),
-                        Map.of(
-                                Ranking.FIRST_PLACE, 2,
-                                Ranking.SECOND_PLACE, 1,
-                                Ranking.THIRD_PLACE, 0,
-                                Ranking.FOURTH_PLACE, 0,
-                                Ranking.FIFTH_PLACE, 1))
+                        "{SECOND_PLACE=1, FIFTH_PLACE=1, FOURTH_PLACE=0, THIRD_PLACE=0, FIRST_PLACE=2}")
         );
     }
 

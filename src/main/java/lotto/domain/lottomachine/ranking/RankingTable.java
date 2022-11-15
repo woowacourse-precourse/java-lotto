@@ -11,6 +11,8 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 public class RankingTable {
+    private final static int THIRD_DECIMAL_PLACE = 3;
+    private final static String RATE_OF_RETURN_FORMAT = "###,###.0%";
     private final Map<Ranking, Frequency> frequenciesByRank;
 
     public RankingTable(Map<Ranking, Frequency> frequenciesByRank) {
@@ -20,7 +22,7 @@ public class RankingTable {
     public String calculateRateOfReturn(Payment money) {
         BigDecimal currentValue = calculateCurrentValue();
         BigDecimal originalValue = money.createBigDecimal();
-        return changeToRateOfReturnFormat(currentValue.divide(originalValue, 3, RoundingMode.HALF_UP));
+        return changeFormat(currentValue.divide(originalValue, THIRD_DECIMAL_PLACE, RoundingMode.HALF_UP));
     }
 
     private BigDecimal calculateCurrentValue() {
@@ -44,16 +46,15 @@ public class RankingTable {
         return frequency.toBigDecimal();
     }
 
-    private String changeToRateOfReturnFormat(BigDecimal rateOfReturn) {
-        DecimalFormat formatter = new DecimalFormat("###,###.0%");
+    private String changeFormat(BigDecimal rateOfReturn) {
+        DecimalFormat formatter = new DecimalFormat(RATE_OF_RETURN_FORMAT);
         return formatter.format(rateOfReturn);
     }
 
-    public List<List<String>> getAllByAscendingRanking() {
+    public List<Map.Entry<Ranking, Frequency>> getEntryByAscendingRanking() {
         return frequenciesByRank.entrySet()
                 .stream()
-                .sorted(Comparator.comparing(entry -> entry.getKey().getCash()))
-                .map(entry -> List.of(entry.getKey().getNumberOfMatching(), entry.getKey().getCashInDecimalFormat(), entry.getValue().toString()))
+                .sorted(Comparator.comparing(entry -> getCashOfRanking(entry.getKey())))
                 .collect(Collectors.toList());
     }
 }

@@ -2,6 +2,9 @@ package lotto.domain.lottomachine.winningnumber;
 
 import java.util.List;
 
+import static lotto.domain.lottomachine.messages.DomainErrorMessage.WINNING_NUMBERS_DUPLICATION;
+
+
 public class WinningNumbers {
     private final List<WinningNumber> winningNumbers;
 
@@ -16,7 +19,7 @@ public class WinningNumbers {
 
     private void validateDuplication(List<WinningNumber> numbers) {
         if (hasDuplication(numbers)) {
-            throw new IllegalArgumentException("[ERROR] 당첨번호는 중복될 수 없습니다.");
+            throw new IllegalArgumentException(WINNING_NUMBERS_DUPLICATION.getMessage());
         }
     }
 

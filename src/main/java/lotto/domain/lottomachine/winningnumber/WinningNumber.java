@@ -1,9 +1,16 @@
 package lotto.domain.lottomachine.winningnumber;
 
+import lotto.domain.lottomachine.lottoticket.LottoTicketSystem;
+import lotto.domain.lottomachine.lottoticket.LottoTickets;
+
 import java.util.List;
 import java.util.Objects;
 
+import static lotto.domain.lottomachine.messages.DomainErrorMessage.WINNING_NUMBER_RANGE;
+
 public class WinningNumber {
+    private final static String BONUS_COUNT = "B";
+    private final static String NON_BONUS_COUNT = "";
     private final int number;
 
     private WinningNumber(int number) {
@@ -17,12 +24,12 @@ public class WinningNumber {
 
     private void validateRange(int number) {
         if (isOutOfRange(number)) {
-            throw new IllegalArgumentException("[ERROR] 숫자는 1부터 45에 속해야 합니다.");
+            throw new IllegalArgumentException(WINNING_NUMBER_RANGE.getMessage());
         }
     }
 
     private boolean isOutOfRange(int number) {
-        return number < 1 || number > 45;
+        return number < LottoTicketSystem.START || number > LottoTicketSystem.END;
     }
 
     @Override
@@ -48,8 +55,8 @@ public class WinningNumber {
 
     public String checkSameValue(List<Integer> numbers) {
         if (numbers.contains(number)) {
-            return "B";
+            return BONUS_COUNT;
         }
-        return "";
+        return NON_BONUS_COUNT;
     }
 }
