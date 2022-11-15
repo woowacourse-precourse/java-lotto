@@ -37,7 +37,7 @@ public class LottoResult {
     public float getTotalEarnedMoney() {
         return (float) result.entrySet()
                 .stream()
-                .filter((Map.Entry<Rank, Integer> e) -> e.getValue() > 0 ).mapToLong(entry -> (long) entry.getKey().getPrice() * entry.getValue())
+                .filter((Map.Entry<Rank, Integer> e) -> e.getValue() > 0).mapToLong(entry -> (long) entry.getKey().getPrice() * entry.getValue())
                 .sum();
     }
 

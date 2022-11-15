@@ -36,7 +36,7 @@ public class LotteryTickets {
         return lottoTickets;
     }
 
-    public void setLottoTickets(List<Lotto> lottos){
+    public void setLottoTickets(List<Lotto> lottos) {
         this.lottoTickets = new ArrayList<>(lottos);
     }
 

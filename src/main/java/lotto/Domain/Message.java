@@ -3,7 +3,7 @@ package lotto.Domain;
 public class Message {
 
     public static final String INPUT_LOTTO_PURCHASE_AMOUNT = "구입금액을 입력해 주세요.";
-    public static final String INPUT_LOTTO_WNNING_NUM_MESSAGE ="당첨 번호를 입력해 주세요";
+    public static final String INPUT_LOTTO_WNNING_NUM_MESSAGE = "당첨 번호를 입력해 주세요";
     public static final String INPUT_LOTTO_BONUS_NUMS = "보너스 번호를 입력해 주세요";
 
 
@@ -16,7 +16,7 @@ public class Message {
     public static final String SECOND_RANK_MESSAGE = "%d개 일치, 보너스 볼 일치 (%s원) - %d개";
     public static final String EARN_RATIO_MESSAGE = "총 수익률은 %.1f%%입니다.";
 
-    public static final String ERROR_PURCHASE_AMOUNT_IS_NOT_INT = "[ERROR] 구매 금액을 잘못 입력하였습니다." ;
+    public static final String ERROR_PURCHASE_AMOUNT_IS_NOT_INT = "[ERROR] 구매 금액을 잘못 입력하였습니다.";
     public static final String ERROR_NOT_VALID_WINNING_NUMS_INPUT = "[ERROR] 유효하지 않은 문자가 들어있습니다.";
     public static final String ERROR_DUPLICATE_WINNING_NUMS = "[ERROR] 중복된 당첨 번호입니다.";
     public static final String ERROR_DUPLICATE_BONUS_NUM = "[ERROR] 잘못된 보너스 번호입니다.";

@@ -14,10 +14,11 @@ public class Lotto {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException();
         }
-        if (!Validator.checkIsNotDupicateLottoNum(numbers)){
+        if (!Validator.checkIsNotDupicateLottoNum(numbers)) {
             throw new IllegalArgumentException();
         }
     }
+
     public List<Integer> getNumbers() {
         return numbers;
     }

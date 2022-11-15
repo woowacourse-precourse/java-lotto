@@ -18,6 +18,7 @@ public class WinningNumber {
         }
         Validator.checkIsValidWinningNums(numbers);
     }
+
     public List<Integer> getWinningNumbers() {
         return winningNumbers;
     }
