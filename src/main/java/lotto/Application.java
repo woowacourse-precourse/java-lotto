@@ -5,6 +5,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.List;
 public class Application {
+    final static int lotto_price = 1000;
     public static void main(String[] args) {
         String inputmoney = InputMoney();
         CheckUnit(inputmoney);
@@ -15,12 +16,13 @@ public class Application {
         String inputmoney = Console.readLine();
         return inputmoney;
     }
-    public static void CheckUnit(String inputmoney){
+    public static int CheckUnit(String inputmoney){
         try{
             Integer money = Integer.valueOf(inputmoney);
-            if(money % 1000 !=0){
+            if(money % lotto_price !=0){
                 throw new IllegalArgumentException("[ERROR] 구매 금액은 1000원 단위입니다.");
             }
+            return money/lotto_price;
         } catch (Exception e){
             throw new IllegalArgumentException("[ERROR] 유효한 숫자를 입력해주세요");
         }
