@@ -20,6 +20,10 @@ public class PrintGameInfo {
     public static final String OVER_LOTTO_COUNT = "선택가능한 로또 숫자 갯수를 넘겼습니다.";
     public static final String OUT_OF_RANGE = "로또 숫자의 범위 밖의 숫자를 선택하였습니다.";
     public static final String DUPLICATE = "사용자의 입력 중 중복되는 값이 존재합니다.";
+    public static final String BONNUS_NUMBER_EXIST = "보너스 번호의 값이 이미 당첨 번호에 선택되었습니다.";
+    public static final String POINT_ERROR = "잘못된 포인트 값이 들어왔습니다. 내부 로직 에러";
+    public static final String WINNING_TOTAL = "당첨 통계";
+    public static final String BAR = "---";
 
     public static void purchaseAmountInfo() {
         System.out.println("구입금액을 입력해 주세요.");
@@ -63,5 +67,13 @@ public class PrintGameInfo {
 
     public static String getDuplicate() {
         return ERROR + DUPLICATE;
+    }
+
+    public static String getBonnusNumberExist() {
+        return ERROR + BONNUS_NUMBER_EXIST;
+    }
+
+    public static String getPointError() {
+        return ERROR + POINT_ERROR;
     }
 }

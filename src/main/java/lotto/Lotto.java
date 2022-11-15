@@ -3,6 +3,8 @@ package lotto;
 import Info.InputException;
 import Info.PrintGameInfo;
 
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -16,6 +18,7 @@ public class Lotto {
     public Lotto(List<Integer> numbers) {
         validate(numbers);
         outOfRangeExceptioin(numbers);
+        Collections.sort(numbers);
         this.numbers = numbers;
     }
 

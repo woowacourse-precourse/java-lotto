@@ -27,6 +27,7 @@ public class Application {
 
             PrintGameInfo.bonnusNumberInfo();
             userLotto.setBonnusNumber(inputBonnusNumber());
+            userLotto.checkAllLotto();
 
         } catch (IllegalArgumentException exception) {
             exception.printStackTrace();
