@@ -60,4 +60,8 @@ public class Lotto {
         common.retainAll(other.getNumbers());
         return common;
     }
+
+    public boolean contains(int number) {
+        return numbers.contains(number);
+    }
 }
