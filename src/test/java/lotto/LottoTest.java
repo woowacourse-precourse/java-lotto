@@ -26,6 +26,13 @@ class LottoTest {
     }
 
     // 아래에 추가 테스트 작성 가능
+    @DisplayName("사용자가 입력한 값 형변환 테스트")
+    @Test
+    void userCast() {
+        User user = new User();
+        Assertions.assertThat(user.userLotto("1,2,3,4,5,6")).isEqualTo(List.of(1, 2, 3, 4, 5, 6));
+    }
+    
     @DisplayName("금액에 맞게 로또를 발행해야 한다.")
     @Test
     void buyLottoTest1 (){
