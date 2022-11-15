@@ -3,6 +3,7 @@ package lotto;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.stream.Collectors;
+import java.text.MessageFormat;
 
 import java.util.*;
 
@@ -30,15 +31,21 @@ public class Game {
     }
 
     public void run(){
-        List<Lotto> user;
+        List<Lotto> users;
         ValidLotto Win;
 
         int Amount = PurchaseAmount();
-        user = makeLotto(Amount);
+        users= makeLotto(Amount);
         Win = new ValidLotto(WinNumber(), BonusNumber());
 
         Map<Prize, Integer> records = new HashMap<>();
         initRecords(records);
+
+        for (Lotto user : users) {
+            Prize results = Win.lottoPlace(user);
+            records.put(results, records.get(results) + 1);
+        }
+        showresults(records, Margin(records));
 
     }
 
@@ -70,6 +77,33 @@ public class Game {
             lottos.add(new Lotto(lottoCandidate));
         }
         return lottos;
+    }
+
+    public void showresults(Map<Prize, Integer> records, double marginRate) {
+        List<Prize> result = List.of(Prize.values()).stream()
+                .sorted(Comparator.comparing(Prize::getPrizeMoney))
+                .collect(Collectors.toList());
+        System.out.println("당첨 통계\n----");
+
+        for (Prize place : result) {
+            if (place.equals(Prize.NONE)) {
+                continue;
+            }
+            System.out.println(MessageFormat.format("{0} ({1}원) - {2}개", place.getInfo(), place.getPrizeMoney(), records.get(place)));
+        }
+        System.out.println("총 수익률은"+marginRate+"% 입니다");
+    }
+
+    public double Margin(Map<Prize, Integer> winningRecords) {
+        int countPurchased = winningRecords.entrySet().stream()
+                .mapToInt(entry -> entry.getValue() * 1000)
+                .sum();
+        int countWinning = winningRecords.entrySet().stream()
+                .filter(entry -> !entry.getKey().equals(Prize.NONE))
+                .mapToInt(entry -> entry.getValue() * entry.getKey().getPrizeMoney())
+                .sum();
+        System.out.println(countWinning + " : " + countPurchased);
+        return 100.0 * (double) countWinning / (double) countPurchased;
     }
 
     private void showPurchasedLotto(Lotto lotto) {
