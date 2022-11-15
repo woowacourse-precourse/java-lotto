@@ -33,8 +33,7 @@ public class Application {
                     WinResultManager.getCorrectedNumbersWithWin(
                             LottoStorage.getLottoTickets(), LottoStorage.getWinNumbers(),
                             LottoStorage.getBonusNumber()));
-            ResultPrinter.printResult();
-
+            ResultPrinter.printResult(WinResultManager.correctCaseCollector(LottoStorage.getResultCollectionStorage()));
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
