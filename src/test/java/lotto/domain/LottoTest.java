@@ -62,4 +62,18 @@ class LottoTest {
         assertThatThrownBy(() -> Extraction.extractWinningNumbers("1,2,3,4,5,46"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @DisplayName("보너스 로또 번호 입력에 숫자가 아닌 문자가 입력되면 예외가 발생한다.")
+    @Test
+    void 보너스번호_다른문자입력_예외발생() {
+        assertThatThrownBy(() -> InputException.validateBonusNumber("a"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("보너스 로또 번호가 허용된 범위가 아니면 예외가 발생한다.")
+    @Test
+    void 보너스번호_숫자범위_예외발생() {
+        assertThatThrownBy(() -> InputException.validateBonusNumber("0"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
