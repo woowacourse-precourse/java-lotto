@@ -20,7 +20,7 @@ public enum Rank {
         this.winnings = winnings;
     }
 
-    public static Optional<Rank> getWinning(int sameCount, int bonusCount) {
+    public static Optional<Rank> getRank(int sameCount, int bonusCount) {
         for (Rank current : Rank.values()) {
             if (current.sameCount == sameCount && current.bonusCount == bonusCount) {
                 return Optional.of(current);
