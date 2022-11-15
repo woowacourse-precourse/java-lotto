@@ -22,12 +22,10 @@ public class LottoNumber {
         return lottoNumbers;
     }
 
-
     private void validate(String request) {
         if (!isRightLottoNumbersType(request)) {
             throw new IllegalArgumentException(ERROR_TYPE_NUMBER);
         }
-
     }
 
     // TODO: 추가 기능 구현
@@ -44,6 +42,7 @@ public class LottoNumber {
                 return false;
             }
         }
+
         if (request.charAt(request.length() - 1) == ',' || request.charAt(0) == ',') {
             return false;
         }
