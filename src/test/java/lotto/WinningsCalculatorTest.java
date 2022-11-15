@@ -1,5 +1,6 @@
 package lotto;
 
+import lotto.domain.Lotto;
 import lotto.domain.WinningsCalculator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -10,11 +11,21 @@ import java.util.List;
 import java.util.Map;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class WinningsCalculatorTest {
     List<Integer> winningNumbers = List.of(8, 10, 2, 1, 5, 7);
     int bonusNumber = 40;
     WinningsCalculator winningsCalculator = new WinningsCalculator(winningNumbers, bonusNumber);
+
+    @DisplayName("로또 번호에 중복된 숫자가 있으면 예외가 발생한다.")
+    @Test
+    void createWinningsCalculatorByDuplicateNumber() {
+        int duplicatedBonusNumber = 2;
+        assertThatThrownBy(() -> new WinningsCalculator(winningNumbers, duplicatedBonusNumber))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("[ERROR] 로또 번호와 보너스 번호가 중복됩니다.");
+    }
 
     @DisplayName("숫자 리스트와 타겟 숫자가 일치 여부 확인 - 성공")
     @Test
@@ -120,3 +131,7 @@ public class WinningsCalculatorTest {
                 .isEqualTo(result);
     }
 }
+
+/*
+
+ */
