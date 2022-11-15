@@ -1,12 +1,12 @@
 package lotto.view;
 
+import static lotto.util.ErrorMessage.ERROR_MESSAGE;
 import static lotto.util.Formatter.formatCashPrize;
 
 import java.util.List;
 import lotto.model.Rank;
 
 public class OutputView {
-    public static final String ERROR_MESSAGE = "[ERROR] %s";
     public static final String REQUEST_CASH = "구입금액을 입력해 주세요.";
     public static final String RESPOND_TICKET_NUMBER = "%d개를 구매했습니다.";
     public static final String REQUEST_WINNING_NUMBER = "당첨 번호를 입력해 주세요.";

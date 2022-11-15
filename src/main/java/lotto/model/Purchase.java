@@ -1,12 +1,16 @@
 package lotto.model;
 
 import static lotto.util.Constants.LOTTO_PRICE;
+import static lotto.util.ErrorMessage.ERROR_PURCHASE_MINIMUM_BUDGET;
+import static lotto.util.ErrorMessage.ERROR_PURCHASE_TYPE;
+import static lotto.util.ErrorMessage.ERROR_PURCHASE_UNIT_OF_BUDGET;
 
 import java.util.regex.Pattern;
 import lotto.util.Formatter;
 
 public class Purchase {
     private static final Pattern MONEY_REGEX = Pattern.compile("^[0-9]*$");
+
     private int ticketNumber;
 
     public Purchase(String input) {
@@ -23,7 +27,7 @@ public class Purchase {
 
     private static void validateInputType(String input) {
         if (!MONEY_REGEX.matcher(input).matches()) {
-            throw new IllegalArgumentException("숫자만 입력 가능합니다.");
+            throw new IllegalArgumentException(ERROR_PURCHASE_TYPE);
         }
     }
 
@@ -34,13 +38,13 @@ public class Purchase {
 
     private static void verifyMinimumBudget(int totalBudget) {
         if (totalBudget < LOTTO_PRICE) {
-            throw new IllegalArgumentException("구입 금액은 1,000원 단위로 가능합니다.");
+            throw new IllegalArgumentException(ERROR_PURCHASE_MINIMUM_BUDGET);
         }
     }
 
     private static void verifyUnitOfBudget(int totalBudget) {
         if (totalBudget % LOTTO_PRICE != 0) {
-            throw new IllegalArgumentException("구입 금액은 1,000원 단위로 가능합니다.");
+            throw new IllegalArgumentException(ERROR_PURCHASE_UNIT_OF_BUDGET);
         }
     }
 

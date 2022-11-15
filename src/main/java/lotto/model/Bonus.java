@@ -1,5 +1,6 @@
 package lotto.model;
 
+import static lotto.util.ErrorMessage.ERROR_BONUS_DUPLICATES;
 import static lotto.util.Formatter.removeSpace;
 import static lotto.util.Formatter.verifyRangeOfLottoNumber;
 
@@ -24,7 +25,7 @@ public class Bonus {
 
     public static void validateDuplicates(List<Integer> winningNumbers, int bonusNumber) {
         if (winningNumbers.contains(bonusNumber)) {
-            throw new IllegalArgumentException("보너스 번호가 당첨 번호와 중복됩니다.");
+            throw new IllegalArgumentException(ERROR_BONUS_DUPLICATES);
         }
     }
 

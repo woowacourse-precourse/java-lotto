@@ -1,6 +1,8 @@
 package lotto.model;
 
 import static lotto.util.Constants.NUMBER_COUNTS;
+import static lotto.util.ErrorMessage.ERROR_LOTTO_DUPLICATES;
+import static lotto.util.ErrorMessage.ERROR_LOTTO_SIZE;
 import static lotto.util.Formatter.verifyRangeOfLottoNumber;
 
 import java.util.List;
@@ -15,7 +17,7 @@ public class Lotto {
 
     private void validate(List<Integer> numbers) {
         if (numbers.size() != NUMBER_COUNTS) {
-            throw new IllegalArgumentException("6개의 당첨번호를 입력해 주세요.");
+            throw new IllegalArgumentException(ERROR_LOTTO_SIZE);
         }
         validateRangeOfNumbers(numbers);
         validateDuplicateNumbers(numbers);
@@ -23,7 +25,7 @@ public class Lotto {
 
     private static void validateDuplicateNumbers(List<Integer> numbers) {
         if (numbers.size() != numbers.stream().distinct().count()) {
-            throw new IllegalArgumentException("입력하신 당첨번호 내에 중복되는 숫자가 존재합니다.");
+            throw new IllegalArgumentException(ERROR_LOTTO_DUPLICATES);
         }
     }
 
