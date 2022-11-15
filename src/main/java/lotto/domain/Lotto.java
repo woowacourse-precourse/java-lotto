@@ -32,6 +32,7 @@ public class Lotto {
         duplicateValidate(numbers);
         duplicateValidate(numbers);
         inRangeValidate(numbers);
+        numbers.sort(Comparator.naturalOrder());
         this.numbers = numbers;
     }
 
