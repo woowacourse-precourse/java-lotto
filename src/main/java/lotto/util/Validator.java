@@ -1,7 +1,5 @@
 package lotto.util;
 
-import java.util.List;
-
 public class Validator {
     public Validator() {}
 
@@ -16,15 +14,6 @@ public class Validator {
             ErrorHandler.throwException(ErrorMessage.EMPTY);
         }
     }
-
-
-
-//    public static void validateIntegerInRange(int integer, int startInclusive, int endInclusive) {
-//        if (integer < startInclusive
-//                || integer > endInclusive) {
-//            ErrorHandler.throwException(ErrorMessage.NOT_NULL);
-//        }
-//    }
 
     public static <T> void validateInteger(T input) {
         try {
