@@ -32,9 +32,13 @@ public class LottoService {
 
     public List<WinResultStatus> createWinResultStatuses(WinningNumber winningNumber) {
         List<WinResultStatus> winResults = new ArrayList<>();
+        addWinResultsOfAllBuyingLotto(winningNumber, winResults);
+        return winResults;
+    }
+
+    private void addWinResultsOfAllBuyingLotto(WinningNumber winningNumber, List<WinResultStatus> winResults) {
         lottoRepository.findAll()
                 .forEach(lotto -> winResults.add(lotto.getWinResult(winningNumber)));
-        return winResults;
     }
 
     public List<Object> createLottoResult(List<WinResultStatus> winResultStatuses) {
@@ -53,10 +57,14 @@ public class LottoService {
 
     private Map<WinResultStatus, Integer> createStatistics(List<WinResultStatus> winResults) {
         Map<WinResultStatus, Integer> statisticsCounts = new HashMap<>();
+        putWinResults(winResults, statisticsCounts);
+        return statisticsCounts;
+    }
+
+    private static void putWinResults(List<WinResultStatus> winResults, Map<WinResultStatus, Integer> statisticsCounts) {
         for (WinResultStatus winResult : winResults) {
             statisticsCounts.put(winResult, statisticsCounts.getOrDefault(winResult, NumberUtil.ZERO) + NumberUtil.ONE);
         }
-        return statisticsCounts;
     }
 
     private long calculatePrizeMoney(List<WinResultStatus> winResults) {

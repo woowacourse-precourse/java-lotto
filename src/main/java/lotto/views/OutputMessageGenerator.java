@@ -15,11 +15,15 @@ public class OutputMessageGenerator {
 
     public String createBuyingLottoResultMessage(List<Lotto> buyingLottos) {
         StringBuilder allLottoNumber = new StringBuilder();
+        appendBuyingLottos(buyingLottos, allLottoNumber);
+        return deleteLastSeparator(allLottoNumber);
+    }
+
+    private static void appendBuyingLottos(List<Lotto> buyingLottos, StringBuilder allLottoNumber) {
         buyingLottos.stream()
                 .map(Lotto::createMessage)
                 .forEach(lotto -> allLottoNumber.append(lotto)
                         .append(MessageFormatUtil.NEXT_LINE));
-        return deleteLastSeparator(allLottoNumber);
     }
 
     public String createBuyingLottoCountMessage(int buyingLottoCount) {
@@ -28,13 +32,18 @@ public class OutputMessageGenerator {
 
     public String createStatisticsMessage(Map<WinResultStatus, Integer> statisticsCounts) {
         StringBuilder statisticsMessage = new StringBuilder();
+        appendStatisticsCounts(statisticsCounts, statisticsMessage);
+        return deleteLastSeparator(statisticsMessage);
+    }
+
+    private void appendStatisticsCounts(Map<WinResultStatus, Integer> statisticsCounts,
+                                        StringBuilder statisticsMessage) {
         List<WinResultStatus> winResultStatuses = WinResultStatus.getWinResultStatuses();
         for (int winResultIndex = 0; winResultIndex < WIN_RESULT_COUNT; winResultIndex++) {
             statisticsMessage.append(
                             fillMessageFormat(winResultIndex, winResultStatuses.get(winResultIndex), statisticsCounts))
                     .append(MessageFormatUtil.NEXT_LINE);
         }
-        return deleteLastSeparator(statisticsMessage);
     }
 
     private String fillMessageFormat(int winResultIndex,
