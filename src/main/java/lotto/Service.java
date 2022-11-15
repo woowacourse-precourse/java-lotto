@@ -7,31 +7,44 @@ import java.util.List;
 
 public class Service {
     Input input;
-    public Service(){
-        input=new Input();
+    private int price;
+    private int startInclusive;
+    private int endInclusive;
+    private int range;
+    private final static String winningNumberMessage="당첨 번호를 입력해 주세요.";
+    private final static String bonusNumberMessage="보너스 번호를 입력해 주세요.";
+    private final static String cashMessage="구입금액을 입력해 주세요.";
+    private final static String totalMessage="당첨 통계\n---";
+
+    public Service(int price,int startInclusive,int endInclusive,int range){
+        input=new Input(price,startInclusive,endInclusive);
+        this.price=price;
+        this.startInclusive=startInclusive;
+        this.endInclusive=endInclusive;
+        this.range=range;
         start();
     }
     public void start(){
         int cash=cash();
         int bonusNumber;
         int[] lotteResults;
-        List<List<Integer>> lottoBundle=buyLotto(cash/1000);
+        List<List<Integer>> lottoBundle=buyLotto(cash/price);
         lottoBundlePrint(lottoBundle);
-        System.out.println("당첨 번호를 입력해 주세요.");
-        Lotto lotto=new Lotto(input.getWinningNumbers());
-        System.out.println("보너스 번호를 입력해 주세요.");
+        System.out.println(winningNumberMessage);
+        Lotto lotto=new Lotto(input.getWinningNumbers(),range);
+        System.out.println(bonusNumberMessage);
         bonusNumber=input.getBonusNumber(lotto.getWinningNumber());
         lotteResults=lotto.lottoResults(lottoBundle,bonusNumber);
         winning_stats(lotteResults);
         total_money(lotteResults,cash);
     }
     private int cash(){
-        System.out.println("구입금액을 입력해 주세요.");
+        System.out.println(cashMessage);
         int lottoCount=input.getCash();
         return lottoCount;
     }
     private List<List<Integer>> buyLotto(int count){
-        Buy buy =new Buy();
+        Buy buy =new Buy(startInclusive,endInclusive,range);
         System.out.println(count+"개를 구매했습니다.");
         return buy.quickPicks(count);
     }
@@ -44,8 +57,7 @@ public class Service {
         }
     }
     private void winning_stats(int[] lotteResults){
-        System.out.println("당첨 통계");
-        System.out.println("---");
+        System.out.println(totalMessage);
         int order=0;
         for(Result result :Result.values()){
             System.out.println(result.getWin()+lotteResults[order]+"개");

@@ -8,15 +8,19 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class InputTest {
+    private static final String ERROR_MESSAGE = "[ERROR]";
+    private final static int price=1000;
+    private final static int startInclusive=1;
+    private final static int endInclusive=45;
     @Test
     @DisplayName("숫자가 아닐 경우 에러가 발생한다.")
     void 입력금액_숫자정규식_테스트(){
         assertThatThrownBy(() -> {
             command("1s00");
             Application.main(new String[]{
-                    String.valueOf(new Input().getCash())
+                    String.valueOf(new Input(price,startInclusive,endInclusive).getCash())
             });
-        }).hasMessageContaining("[ERROR]");
+        }).hasMessageContaining(ERROR_MESSAGE);
     }
 
     @Test
@@ -25,9 +29,9 @@ public class InputTest {
         assertThatThrownBy(() -> {
             command("1100");
             Application.main(new String[]{
-                    String.valueOf(new Input().getCash())
+                    String.valueOf(new Input(price,startInclusive,endInclusive).getCash())
             });
-        }).hasMessageContaining("[ERROR]");
+        }).hasMessageContaining(ERROR_MESSAGE);
     }
     @Test
     @DisplayName("입력금액을 0을 넣을 시 에러가 발생한다.")
@@ -35,9 +39,9 @@ public class InputTest {
         assertThatThrownBy(() -> {
             command("0");
             Application.main(new String[]{
-                    String.valueOf(new Input().getCash())
+                    String.valueOf(new Input(price,startInclusive,endInclusive).getCash())
             });
-        }).hasMessageContaining("[ERROR]");
+        }).hasMessageContaining(ERROR_MESSAGE);
     }
 
     @Test
@@ -46,9 +50,9 @@ public class InputTest {
         assertThatThrownBy(() -> {
                 command("1,2,3,4,5,j");
                 Application.main(new String[]{
-                        new Input().getWinningNumbers().toString()
+                        new Input(price,startInclusive,endInclusive).getWinningNumbers().toString()
                 });
-        }).hasMessageContaining("[ERROR]");
+        }).hasMessageContaining(ERROR_MESSAGE);
     }
     @Test
     @DisplayName("당첨 번호 입력 시 숫자가 범위를 벗어날 경우 에러가 발생한다.")
@@ -56,9 +60,9 @@ public class InputTest {
         assertThatThrownBy(() -> {
             command("1,2,3,4,5,0");
             Application.main(new String[]{
-                    new Input().getWinningNumbers().toString()
+                    new Input(price,startInclusive,endInclusive).getWinningNumbers().toString()
             });
-        }).hasMessageContaining("[ERROR]");
+        }).hasMessageContaining(ERROR_MESSAGE);
     }
     @Test
     @DisplayName("보너스 입력 시 숫자가 아닌 경우 에러가 발생한다.")
@@ -66,9 +70,9 @@ public class InputTest {
         assertThatThrownBy(() -> {
             command("k");
             Application.main(new String[]{
-                    String.valueOf(new Input().getBonusNumber(List.of(1, 2, 3, 4, 5,6)))
+                    String.valueOf(new Input(price,startInclusive,endInclusive).getBonusNumber(List.of(1, 2, 3, 4, 5,6)))
             });
-        }).hasMessageContaining("[ERROR]");
+        }).hasMessageContaining(ERROR_MESSAGE);
     }
     @Test
     @DisplayName("보너스 입력 시 숫자가 범위를 벗어날 경우 에러가 발생한다.")
@@ -76,9 +80,9 @@ public class InputTest {
         assertThatThrownBy(() -> {
             command("0");
             Application.main(new String[]{
-                    String.valueOf(new Input().getBonusNumber(List.of(1, 2, 3, 4, 5,6)))
+                    String.valueOf(new Input(price,startInclusive,endInclusive).getBonusNumber(List.of(1, 2, 3, 4, 5,6)))
             });
-        }).hasMessageContaining("[ERROR]");
+        }).hasMessageContaining(ERROR_MESSAGE);
     }
     @Test
     @DisplayName("보너스 입력 시 당첨 번호와 숫자가 중복될 경우 에러가 발생한다.")
@@ -86,9 +90,9 @@ public class InputTest {
         assertThatThrownBy(() -> {
             command("1");
             Application.main(new String[]{
-                    String.valueOf(new Input().getBonusNumber(List.of(1, 2, 3, 4, 5,6)))
+                    String.valueOf(new Input(price,startInclusive,endInclusive).getBonusNumber(List.of(1, 2, 3, 4, 5,6)))
             });
-        }).hasMessageContaining("[ERROR]");
+        }).hasMessageContaining(ERROR_MESSAGE);
     }
     private void command(final String... args) {
         final byte[] buf = String.join("\n", args).getBytes();

@@ -11,6 +11,15 @@ import java.util.regex.Pattern;
 public class Input {
     private Pattern pattern;
     private Matcher matcher;
+    private int startInclusive;
+    private int endInclusive;
+    private int price;
+    public Input(int price,int startInclusive, int endInclusive) {
+        this.price=price;
+        this.startInclusive=startInclusive;
+        this.endInclusive=endInclusive;
+    }
+
     public int getCash(){
         String cash=Console.readLine();
         numberRegex(cash);
@@ -40,7 +49,7 @@ public class Input {
     }
     private int NumberRange(String number){
         int checkNumber=Integer.parseInt(number);
-        if(checkNumber<1 || checkNumber>45)
+        if(checkNumber<startInclusive || checkNumber>endInclusive)
             throw new IllegalArgumentException("[ERROR] 입력 값이 범위가 아닙니다.");
         return checkNumber;
     }
@@ -52,7 +61,7 @@ public class Input {
     }
     private int cashUnit(String cash){
         int money=Integer.parseInt(cash);
-        if(money%1000 !=0 || money==0)
+        if(money%price !=0 || money==0)
             throw new IllegalArgumentException("[ERROR] 입력하신 금액은 1,000원 단위가 아닙니다.");
         return money;
     }
