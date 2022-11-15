@@ -13,6 +13,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class InputTest {
+/*
 
     @DisplayName("readInteger() 값 테스트")
     @Test
@@ -63,5 +64,5 @@ public class InputTest {
 
         assertThat(Input.readListInteger(",")).contains(1,2,3,4,5,6);
     }
-
+*/
 }
