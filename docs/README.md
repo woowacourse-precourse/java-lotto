@@ -25,10 +25,12 @@
   - [x] 5개 일치는 1,500,000원이다.  
   - [x] 5개 일치, 보너스 볼 일치는 30,000,000원이다.  
   - [x] 6개 일치는 2,000,000,000원이다.  
-- [ ] 로또 구입 금액과 당첨 금액을 토대로 수익률을 계산한다. - Buyer#calculateRate()  
-- [ ] 수익률은 소수 둘째 자리에서 반올림 한다. - Buyer#roundOffRate()  
-- [ ] 발행한 로또 수량 및 번호를 오름차순 정렬후 출력한다. - Buyer#printLotto()  
-- [ ] 당첨 내역을 출력한다. - Buyer#printResult()
+- [x] 당첨 개수 목록을 계산한다. Judgment#calculateWins() 
+- [ ] 당첨 금액을 계산한다. Judgment#calculatePrizeMoney() 
+- [ ] 로또 구입 금액과 당첨 금액을 토대로 수익률을 계산한다. - Judgment#calculateRate()  
+- [ ] 수익률은 소수 둘째 자리에서 반올림 한다. - Judgment#roundOffRate()  
+- [ ] 발행한 로또 수량 및 번호를 오름차순 정렬후 출력한다. - Judgment#printLotto()  
+- [ ] 당첨 내역을 출력한다. - Judgment#printResult()
 ---
 ## 기능 요구 사항
 로또 게임 기능을 구현해야 한다. 로또 게임은 아래와 같은 규칙으로 진행된다.
