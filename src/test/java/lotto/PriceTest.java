@@ -13,7 +13,7 @@ class PriceTest {
     @DisplayName("입력값이 문자를 포함하는지 확인")
     @ParameterizedTest(name = "{displayName} : {0}")
     @CsvSource({"100a", "abcd", "100!", "100-"})
-    void 문자가_포함된_입력(String input) {
+    void includeCharacter(String input) {
         try {
             price = new Price(input);
         } catch (IllegalArgumentException e) {
@@ -24,7 +24,7 @@ class PriceTest {
     @DisplayName("입력값이 천 단위가 아닐 때")
     @ParameterizedTest(name = "{displayName} : {0}")
     @CsvSource({"123", "1234", "12345", "123456", "1234567"})
-    void 천단위가_아닐때(String input) {
+    void notDividedBy1000(String input) {
         try {
             price = new Price(input);
         } catch (IllegalArgumentException e) {

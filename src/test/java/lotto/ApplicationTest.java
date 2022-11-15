@@ -54,7 +54,7 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 롱_타입_테스트() {
+    void priceLongType() {
         assertRandomUniqueNumbersInRangeTest(
                 () -> {
                     run("3000", "1,2,3,4,5,6", "7");
