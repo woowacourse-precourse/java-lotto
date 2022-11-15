@@ -74,14 +74,11 @@ public class LottoStore {
 
     private static LottoGrade lottoNumbersCompareToWinningNumbers(Lotto lottoNumbers, Lotto winningNumbers, String bonusNumber) {
         int count = 0;
-        boolean bonusBall = false;
+        boolean bonusBall = lottoNumbers.getNumbers().contains(Integer.parseInt(bonusNumber));
         for (Integer number : lottoNumbers.getNumbers()) {
             if (winningNumbers.getNumbers().contains(number)) {
                 count++;
             }
-        }
-        if (count == 5) {
-            bonusBall = lottoNumbers.getNumbers().contains(Integer.parseInt(bonusNumber));
         }
         return LottoGrade.getRank(count, bonusBall);
     }
