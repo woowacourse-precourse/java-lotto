@@ -2,7 +2,9 @@ package lotto.controller;
 
 import lotto.domain.Lotto;
 import lotto.domain.Money;
+import lotto.domain.ReceivedPrize;
 import lotto.domain.WinningLotto;
+import lotto.dto.LottoResultDto;
 import lotto.model.AutoLottoGenerator;
 import lotto.view.InputView;
 import lotto.view.OutputView;
@@ -18,7 +20,10 @@ public class LottoController {
     public void play() {
         Money money = getUserMoneyInput();
         List<Lotto> lottos = issueUserBoughtLotto(money.calculateBoughtLottoCount());
+        showIssuedLottos(lottos);
         WinningLotto winningLotto = issueWinningLotto();
+        ReceivedPrize receivedPrize = calculatePrize(lottos, winningLotto);
+        showLottoResult(receivedPrize, money.getMoney());
     }
 
     private Money getUserMoneyInput() {
@@ -31,6 +36,9 @@ public class LottoController {
         return lottos;
     }
 
+    private void showIssuedLottos(List<Lotto> lottos) {
+        OutputView.printIssuedLotto(transferLottoToNumbers(lottos));
+    }
     private List<Lotto> generateAutoLotto(List<Lotto> lottos, int lottoCount) {
         while (lottos.size() < lottoCount) {
             lottos.add(AutoLottoGenerator.objectLotto());
@@ -48,5 +56,15 @@ public class LottoController {
         Lotto lotto = new Lotto(InputView.inputLottoNum());
         int bonusNumber = InputView.inputBonusNum();
         return new WinningLotto(lotto, bonusNumber);
+    }
+
+    private ReceivedPrize calculatePrize(List<Lotto> lottos, WinningLotto winningLotto) {
+        return new ReceivedPrize(lottos, winningLotto);
+    }
+
+    public void showLottoResult(ReceivedPrize receivedPrize, int money) {
+        LottoResultDto resultDto = LottoResultDto.of(receivedPrize,
+                receivedPrize.calculateRateOfReturn(money));
+        OutputView.printLottoResult(resultDto);
     }
 }
