@@ -48,9 +48,8 @@ class LottoListTest extends NsTest{
     @ParameterizedTest
     @ValueSource(ints = {5000,6000,7000,8000,9000})
     void 이익률계산_테스트(int totalMoney) {
-        BigInteger money = new BigInteger(Integer.toString(totalMoney));
-        lottos.setTotalMoney(money);
-        assertThat(lottos.getProfit()).isInstanceOf(BigInteger.class);
+        lottos.setTotalMoney(totalMoney);
+        assertThat(lottos.getProfit()).isLessThan(70).isGreaterThan(0);
     }
 
     @Override

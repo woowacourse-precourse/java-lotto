@@ -6,7 +6,6 @@ import Info.WinningStatus;
 import camp.nextstep.edu.missionutils.Randoms;
 import org.assertj.core.util.Sets;
 
-import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.*;
 
@@ -18,7 +17,7 @@ public class LottoList {
     private List<Lotto> lottos = new ArrayList<>();
     private Lotto winningLotto;
     private int bonnusNumber;
-    private BigInteger totalMoney = new BigInteger("0");
+    private long totalMoney;
     private long[] winningCount = new long[WIN_COUNT];
 
     public LottoList(BigInteger amount) {
@@ -58,7 +57,7 @@ public class LottoList {
         return lottos;
     }
 
-    public BigInteger getTotalMoney() {
+    public long getTotalMoney() {
         return totalMoney;
     }
 
@@ -71,7 +70,7 @@ public class LottoList {
         return winningCount[index];
     }
 
-    public void setTotalMoney(BigInteger test) {
+    public void setTotalMoney(long test) {
         totalMoney = test;
     }
 
@@ -142,7 +141,7 @@ public class LottoList {
 
             WinningStatus status = WinningStatus.getWinningStatusWithPoint(point);
             winningCount[status.getPointIndex()] += 1;
-            totalMoney = totalMoney.add(getBigInteger(status.getWinningMoney()));
+            totalMoney += status.getWinningMoney();
         }
     }
 
@@ -192,13 +191,10 @@ public class LottoList {
         return false;
     }
 
-    public BigDecimal getProfit() {
-        BigDecimal money = new BigDecimal(totalMoney);
-        return money.divide(new BigDecimal(lottoAmount)).multiply(new BigDecimal(100));
+    public double getProfit() {
+        long amount = lottoAmount.longValue();
+        return (Double.valueOf(totalMoney) / amount) * 100.0;
     }
 
-    public BigInteger getBigInteger(Long value) {
-        return new BigInteger(Long.toString(value));
-    }
 }
 

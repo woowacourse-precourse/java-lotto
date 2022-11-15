@@ -30,7 +30,6 @@ public class InputException {
     }
 
     /**
-     * 0원에 대해서 예외처리
      * @param amount
      */
     public static void userInputZeroException(String amount) {
