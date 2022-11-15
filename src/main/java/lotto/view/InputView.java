@@ -12,7 +12,7 @@ public class InputView {
     public static Integer getAmount(String input) {
         try {
             Integer amount = Integer.valueOf(input);
-            if (amount % 1000 != 0 || amount < 0) {
+            if (amount % 1000 != 0 || amount <= 0) {
                 System.out.println("[ERROR] 1000원 단위로 입력해주세요. ");
                 throw new IllegalArgumentException();
             }
