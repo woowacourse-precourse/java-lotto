@@ -18,8 +18,13 @@ public class LottoController {
     private final OutputView outputView = OutputView.getInstance();
 
     public void run() {
-        int money = money();
-        List<Lotto> lottos = buy(money);
+        try {
+            int money = money();
+            List<Lotto> lottos = buy(money);
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+        }
+
     }
 
     private int money() {
