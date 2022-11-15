@@ -59,6 +59,13 @@ class WinningNumberTest {
                 .hasMessageContaining(ERROR_MESSAGE);
     }
 
+    @Test
+    void inputBonusNumberInWinningNumber() {
+        assertThatThrownBy(() -> new WinningNumber("1,2,3,4,5,6", "6"))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining(ERROR_MESSAGE);
+    }
+
     @DisplayName("입력값이 정상적으로 변경되는지 테스트.")
     @Test
     void convertWinningAndBonusNumbers() {
