@@ -10,12 +10,12 @@ import java.util.List;
 
 public class ResultMessage {
     public static void printLottoInformation(List<Lotto> lottos) {
-        printNumberOfPurchase(lottos.size());
+        printNumberOfPurchaseLottos(lottos.size());
         print(lottos);
     }
 
-    public static void printNumberOfPurchase(int number) {
-        printFormat(
+    public static void printNumberOfPurchaseLottos(int number) {
+        print(
                 ResultStatistics.NUMBER_OF_PURCHASE,
                 Integer.toString(number)
         );
@@ -23,7 +23,7 @@ public class ResultMessage {
 
     public static void printYield(double yield) {
         BigDecimal yieldIncludeZeros = new BigDecimal(Double.toString(yield));
-        printFormat(
+        print(
                 ResultStatistics.YIELD,
                 yieldIncludeZeros.toPlainString()
         );
@@ -40,7 +40,7 @@ public class ResultMessage {
             if (rank.equals(ResultStatistics.NUMBER_OF_PURCHASE)) {
                 break;
             }
-            printFormat(
+            print(
                     rank,
                     resultStatistics.get(ResultStatistics.getRankNumber(rank)).toString()
             );
@@ -57,7 +57,7 @@ public class ResultMessage {
         System.out.println(ResultStatistics.getMessage(rank));
     }
 
-    public static void printFormat(ResultStatistics rank, String value) {
+    public static void print(ResultStatistics rank, String value) {
         System.out.printf(ResultStatistics.getMessage(rank).concat("\n"), value);
     }
 }
