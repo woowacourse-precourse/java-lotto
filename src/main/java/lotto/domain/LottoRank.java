@@ -25,4 +25,9 @@ public enum LottoRank {
     public boolean correctWinningNumberCount(int winningNumberCount) {
         return this.winningNumberCount == winningNumberCount;
     }
+
+    public boolean correctBonusNumber(boolean hasBonusNumber) {
+        return this.hasBonusNumber == hasBonusNumber;
+    }
+
 }
