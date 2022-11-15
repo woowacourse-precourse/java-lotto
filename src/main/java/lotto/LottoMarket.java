@@ -40,4 +40,8 @@ public class LottoMarket {
             System.out.println(lotto.getNumbers());
         }
     }
+
+    public List<Lotto> getLottos() {
+        return lottos;
+    }
 }

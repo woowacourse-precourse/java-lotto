@@ -30,4 +30,12 @@ public class LottoHeadOffice {
         // validate 검사 (입력형식, winningnum이랑 중복되지 않는지)
         this.bonusNum = s.charAt(0);
     }
+
+    public List<Integer> getWinningNum() {
+        return winningNum;
+    }
+
+    public int getBonusNum() {
+        return bonusNum;
+    }
 }

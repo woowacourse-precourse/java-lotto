@@ -18,7 +18,7 @@
     - [x] 보너스 번호 입력 받기 (1개) - LottoHeadOffice#inputBonusNum
 
 - [ ] 당첨 금액 확인 - LottoResult
-    - [ ] 당첨 금액 계산 - LottoResult#calculator
+    - [x] 로또를 순회 - LottoResult#tourLottos
         [ ] 사용자 번호와 당첨 번호 비교 - LottoResult#compareNum
         - [ ] 1등: 6개 번호 일치 / 2,000,000,000원
         - [ ] 2등: 5개 번호 + 보너스 번호 일치 / 30,000,000원
