@@ -11,7 +11,7 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
-        if (checkSize(numbers) || checkRange(numbers)) {
+        if (checkSize(numbers) && checkRange(numbers)) {
             throw new IllegalArgumentException();
         }
     }
@@ -22,7 +22,7 @@ public class Lotto {
     
     private boolean checkRange(List<Integer> numbers) {
     	for (Integer number : numbers) {
-    		if (number > Game.START_RANGE || number < Game.END_RANGE) {
+    		if (number >= Game.START_RANGE || number <= Game.END_RANGE) {
     			return true;
     		}
     	}

@@ -13,6 +13,7 @@ public class Application {
     	game.printLottoNumbers();
     	outputPurchase(game, input);
     	game.setWinningNumber(inputWinningNumber());
+    	inputBonusNumber();
     	
     }
     
