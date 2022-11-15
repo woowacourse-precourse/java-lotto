@@ -3,8 +3,10 @@ package lotto.domain;
 import camp.nextstep.edu.missionutils.Console;
 import lotto.exception.InvalidUserInputException;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.stream.Collectors;
+import java.util.List;
 
 public class Game {
 
@@ -57,6 +59,94 @@ public class Game {
         }
 
         this.bonusNumber = tempBonusNumber;
+        this.winningLotto.getNumbers().add(bonusNumber);
+    }
+
+    /**
+     * 각 로또마다, 당첨 등수를 계산해 반환
+     */
+    public List<Integer> discriminateRanking() {
+
+        List<Long> matchingCount = countMatchingNumbers();
+        List<Boolean> isBonusMatched = isBonusMatch();
+
+        List<Integer> ranks = new ArrayList<>();
+
+        int cnt = 0;
+        for(Long count : matchingCount) {
+            ranks.add(getRank(count, isBonusMatched.get(cnt++)));
+        }
+
+        return ranks;
+    }
+
+    /**
+     * 로또의 각 게임마다, 당첨 등수의 개수를 반환
+     */
+    public int[] getRankCount(List<Integer> ranks) {
+        int[] counts = new int[6];
+
+        for(int rank : ranks) {
+            counts[rank]++;
+        }
+
+        return counts;
+    }
+
+    /**
+     * 로또 당첨 등수를 반환
+     */
+    public int getRank(Long matchingCount, Boolean bonusMatched) {
+
+        if(matchingCount == 6) {
+            return 1;
+        } else if(matchingCount == 5 && bonusMatched) {
+            return 2;
+        } else if(matchingCount == 5) {
+            return 3;
+        } else if(matchingCount == 4) {
+            return 4;
+        } else if(matchingCount == 3) {
+            return 5;
+        } else {
+            return 0;
+        }
+
+    }
+
+    /**
+     * 당첨 로또와 사용자의 각 로또를 비교해 각 로또마다 매칭되는 개수를 반환
+     */
+    public List<Long> countMatchingNumbers() {
+        List<Long> counts = new ArrayList<>();
+
+        this.user.getUserLottos().stream()
+                .forEach(
+                        lotto -> counts.add(lotto.getNumbers()
+                                .stream()
+                                .filter(num -> winningLotto.getNumbers().contains(num))
+                                .count())
+                );
+
+        return counts;
+    }
+
+    /**
+     * 당첨 로또와 사용자의 각 로또를 비교해 각 로또마다 보너스 매칭 여부를 반환
+     */
+    public List<Boolean> isBonusMatch() {
+        List<Boolean> matches = new ArrayList<>();
+
+        this.user.getUserLottos().stream()
+                .forEach(
+                        lotto -> matches.add(lotto.getNumbers()
+                                .stream()
+                                .filter(num -> winningLotto.getNumbers().contains(num))
+                                .findAny()
+                                .isPresent())
+                );
+
+        return matches;
     }
 
 }

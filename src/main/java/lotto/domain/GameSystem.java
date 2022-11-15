@@ -1,6 +1,7 @@
 package lotto.domain;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class GameSystem {
@@ -13,8 +14,10 @@ public class GameSystem {
         Game game = new Game(user, computer);
 
         /* Game Component */
-        int gameCount = 0;
-        List<Lotto> lottoGames = new ArrayList<>();
+        int gameCount = 0; // 유저가 구매한 로또 개수
+        List<Integer> ranks = new ArrayList<>(); // 로또의 각 등수
+        int[] counts = new int[5]; // 각 로또마다, 해당 로또의 1~5등 당첨 개수
+
 
         //1. 게임 시작 문구 출력
         System.out.println("구입 금액을 입력해 주세요.");
@@ -25,10 +28,10 @@ public class GameSystem {
 
             //3. 컴퓨터 생성 로또 번호 저장
             gameCount = user.getGameCount();
-            lottoGames = computer.getLottoGames(gameCount);
+            user.setBuyLottos(computer.getLottoGames(gameCount));
 
             //4. 컴퓨터가 생성한 로또 번호 출력
-            printGeneratedLottoNumbers(lottoGames);
+            printGeneratedLottoNumbers(user.getUserLottos());
 
             //5. 당첨 번호 입력
             System.out.println("당첨 번호를 입력해 주세요.");
@@ -37,6 +40,12 @@ public class GameSystem {
             //6. 보너스 번호 입력
             System.out.println("보너스 번호를 입력해 주세요.");
             game.enterBonusNumber();
+
+            //7. 등수 확인
+            System.out.println("등수 확인");
+            ranks = game.discriminateRanking();
+            counts = game.getRankCount(ranks);
+            printLottoRank(ranks, counts);
 
         } catch (IllegalArgumentException e) {
             throw e;
@@ -49,6 +58,24 @@ public class GameSystem {
         for(Lotto game : lottoGames) {
             System.out.println(game.getNumbers());
         }
+    }
+
+    /**
+     * 로또 당첨 결과를 요구사항 포맷에 맞게 출력해주는 함수
+    **/
+    public static void printLottoRank(List<Integer> ranks, int[] counts) {
+        List<String> prizeMoney = new ArrayList<>(Arrays.asList("2,000,000,000원", "30,000,000원", "1,500,000원", "50,000원", "5,000원"));
+        List<String> matchNumber = new ArrayList<>(Arrays.asList("6", "5", "5", "4", "3"));
+
+        for(int i = 4 ; i >= 0 ; i--) {
+
+            if(i != 1) // 2등이 아닐 때
+                System.out.println(matchNumber.get(i) + "개 일치 (" + prizeMoney.get(i) + ") - " + counts[i+1] + "개");
+            else // 2등일 때
+                System.out.println(matchNumber.get(i) + "개 일치, 보너스 볼 일치 (" + prizeMoney.get(i) + ") - " + counts[i+1] + "개");
+
+        }
+
     }
 
 }
