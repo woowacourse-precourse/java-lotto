@@ -7,7 +7,7 @@ import java.util.EnumMap;
 
 public class LottoResult {
     private static final int PERCENT_CONVERT_NUMBER = 100;
-    EnumMap<Rank, Integer> ranks;
+    private final EnumMap<Rank, Integer> ranks;
 
     public LottoResult(EnumMap<Rank, Integer> ranks) {
         this.ranks = ranks;
@@ -36,6 +36,6 @@ public class LottoResult {
         LottoResult compareResult = (LottoResult) o;
 
         return Arrays.stream(Rank.values()).allMatch(rank ->
-                this.ranks.get(rank).equals(compareResult.ranks.get(rank)));
+                this.ranks.getOrDefault(rank, 0).equals(compareResult.ranks.getOrDefault(rank, 0)));
     }
 }

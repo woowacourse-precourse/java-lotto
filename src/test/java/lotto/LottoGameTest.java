@@ -33,6 +33,6 @@ class LottoGameTest {
         LottoResult result = game.generateResult();
 
         //then
-        assertThat(result.ranks).isEqualTo(expectResult.ranks);
+        assertThat(result).isEqualTo(expectResult);
     }
 }
