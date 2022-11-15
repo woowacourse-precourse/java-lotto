@@ -28,5 +28,8 @@ public class Validator {
         if (amount % 1000 != 0) {
             throw new IllegalArgumentException(ErrorMessage.WRONG_UNIT.printMessage());
         }
+        if (amount < 1000) {
+            throw new IllegalArgumentException(ErrorMessage.WRONG_UNIT.printMessage());
+        }
     }
 }
