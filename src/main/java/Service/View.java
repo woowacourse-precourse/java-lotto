@@ -31,7 +31,6 @@ public class View {
     public static boolean read_buyingLottoAmount() {
         System.out.print(MESSAGE_BUYINGAMOUNT_INPUT_FORMAT + "\n");
         String Amount = Console.readLine();
-
         if (!Amount.matches("[0-9]*$")) {
             System.out.print(MESSAGE_ERROR_FORMAT);
 

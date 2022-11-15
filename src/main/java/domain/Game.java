@@ -10,7 +10,6 @@ public class Game {
     public static int bonusNumber;
     public static int paymentAmount;
     public static List<Integer> winning_numbers;
-    public static int total_gain = 0;
 
     public static int getLottoCount() {
         return paymentAmount / LottoPrice;
@@ -20,7 +19,7 @@ public class Game {
         return winning_numbers;
     }
 
-    public static void setWinning_numbers(List<Integer> InputNumber){
-        winning_numbers=InputNumber;
+    public static void setWinning_numbers(List<Integer> InputNumber) {
+        winning_numbers = InputNumber;
     }
 }

@@ -24,11 +24,6 @@ public class Lotto {
             throw new IllegalArgumentException();
         }
     }
-
-    public List<Integer> getNumbers() {
-        return this.numbers;
-    }
-
     public static Lotto get() {
         ArrayList<Integer> lotto = new ArrayList<>(Randoms.pickUniqueNumbersInRange(1, 45, 6));
         return new Lotto(lotto);

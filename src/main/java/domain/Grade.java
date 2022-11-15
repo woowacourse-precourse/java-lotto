@@ -1,10 +1,5 @@
 package domain;
 
-import Service.gradeService;
-
-import java.util.Arrays;
-import java.util.List;
-
 public class Grade {
     public static final int THREE_HIT = 3;
     public static final int FOUR_HIT = 4;
