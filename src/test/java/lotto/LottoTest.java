@@ -1,5 +1,6 @@
 package lotto;
 
+import java.util.NoSuchElementException;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -30,5 +31,13 @@ class LottoTest {
         // TODO: 이 테스트가 통과할 수 있게 구현 코드 작성
         assertThatThrownBy(() -> new Lotto(List.of(1, 2, 3, 4, 46, 5)))
                 .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("구매 금액이 숫자가 아니면 예외가 발생한다.")
+    @Test
+    void createUserUsingCharacter() {
+        // TODO: 이 테스트가 통과할 수 있게 구현 코드 작성R
+        assertThatThrownBy(() -> new User("1000a"))
+                .isInstanceOf(NoSuchElementException.class);
     }
 }
