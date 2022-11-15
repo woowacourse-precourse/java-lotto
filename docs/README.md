@@ -64,7 +64,7 @@
     - 예외) 보너스 맞춘 수가 0 또는 1이 아니면 예외 발생
 - [x] 당첨 결과를 출력할 수 있다.
   - StaffTeller#tellLottoResult()
-- [ ] 수익률을 계산할 수 있다.
+- [x] 수익률을 계산할 수 있다.
   - LottoChecker#calculateROI()
 - [ ] 당첨 통계 메시지를 출력할 수 있다.
   - StaffTeller#tellROI()

@@ -11,6 +11,6 @@ public interface LottoChecker {
     void checkLottos(List<Lotto> lottos);
     int[] getRankResult();
     int getRewardResult();
-    double calculateROI(int[] lottosResult);
+    double calculateROI();
     int[] checkHowManyMatches(List<Integer> lottoNumbers);
 }

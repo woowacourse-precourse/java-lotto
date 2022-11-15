@@ -17,6 +17,7 @@ public class LottoCheckerImpl implements LottoChecker{
     private int[] rankResult;
     //총 상금을 의미한다.
     private int rewardResult = 0;
+    private int numberOfBoughtLottos = 0;
 
     public LottoCheckerImpl(WinningNumbers winningNumbers) {
         this.winningMainNumbers = new HashSet<>(winningNumbers.getNumbers());
@@ -26,19 +27,22 @@ public class LottoCheckerImpl implements LottoChecker{
 
     @Override
     public void checkLottos(List<Lotto> lottos) {
+        this.numberOfBoughtLottos = lottos.size();
         for(Lotto lotto : lottos) {
             int[] matchResult = checkHowManyMatches(lotto.getNumbers());
             WaysToWinAndRewards rank = WaysToWinAndRewards.findByMatches(matchResult);
             if(rank.getRank() >= 1) {
-                rankResult[rank.getRank()]++;
-                rewardResult += rank.getReward();
+                this.rankResult[rank.getRank()]++;
+                this.rewardResult += rank.getReward();
             }
         }
     }
 
     @Override
-    public double calculateROI(int[] lottosResult) {
-        return 0;
+    public double calculateROI() {
+        int totalInput = LottoConstants.PRICE_OF_LOTTO * this.numberOfBoughtLottos;
+        int totalOutput = this.rewardResult;
+        return (double)totalOutput / (double)totalInput;
     }
     //return int 배열의 0번째는 메인넘버에서 맞춘 개수, 1번째는 보너스 넘버 맞춤 여부
     @Override

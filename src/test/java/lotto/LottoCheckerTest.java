@@ -15,6 +15,26 @@ import static org.assertj.core.api.AssertionsForClassTypes.catchThrowable;
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class LottoCheckerTest {
     @Nested
+    @TestInstance(TestInstance.Lifecycle.PER_CLASS)
+    public class checkHowManyMatchesTest {
+        @Test
+        void test() {
+            //given
+            List<Integer> winningMainNumbers = List.of(1, 2, 3, 4, 5, 6);
+            int winningBonusNumber = 7;
+            WinningNumbers winningNumbers = new WinningNumbersImpl(winningMainNumbers, winningBonusNumber);
+            LottoChecker lottoChecker = new LottoCheckerImpl(winningNumbers);
+            Lotto lotto1st = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+            Lotto lotto4th = new Lotto(List.of(1, 2, 3, 4, 9, 7));
+            //when
+            lottoChecker.checkLottos(List.of(lotto1st, lotto4th));
+            double roi = lottoChecker.calculateROI();
+            //then
+            assertThat(roi)
+                    .isGreaterThan(0);
+        }
+    }
+    @Nested
     @DisplayName("checkLottosTest")
     public class checkLottosTest {
         @Test
@@ -40,7 +60,7 @@ public class LottoCheckerTest {
     @Nested
     @DisplayName("checkHowManyMatchesTest")
     @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-    public class checkHowManyMatchesTest {
+    public class calculateTest {
         private LottoChecker lottoChecker;
         @BeforeAll
         void initChecker() {
