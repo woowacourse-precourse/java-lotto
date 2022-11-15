@@ -90,6 +90,12 @@ public class LottoGameController {
         }
     }
 
+    public void countCorrectNumbers(int countNum, int index, int bonusNum) {
+        int count = lotto.countCorrectNums(lottoList, countNum, index);
+        countEqualNumberList.add(count);
+        setRank(index, bonusNum);
+    }
+
 
 }
 
