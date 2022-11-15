@@ -4,11 +4,11 @@ import java.util.Arrays;
 
 public enum LottoResult {
     NONE(0, 0),
-    THREE_MATCH(3, 5000),
-    FOUR_MATCH(4, 50000),
-    FIVE_MATCH(5, 1500000),
-    FIVE_AND_BONUS_MATCH(5, 30000000),
-    SIX_MATCH(6, 2000000000);
+    THREE_MATCH(3, 5_000),
+    FOUR_MATCH(4, 50_000),
+    FIVE_MATCH(5, 1_500_000),
+    FIVE_AND_BONUS_MATCH(5, 30_000_000),
+    SIX_MATCH(6, 2_000_000_000);
 
     private final int matchCount;
     private final int amount;
@@ -44,5 +44,9 @@ public enum LottoResult {
             return FIVE_AND_BONUS_MATCH;
         }
         return FIVE_MATCH;
+    }
+
+    public boolean isMatchBonusNumber() {
+        return this == FIVE_AND_BONUS_MATCH;
     }
 }
