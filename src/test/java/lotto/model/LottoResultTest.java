@@ -17,4 +17,11 @@ class LottoResultTest {
         int count = lottoResult.compareLottoWinningNumber(Arrays.asList(1,2,3,4,5,6), Set.of(1,2,3,4,5,7));
         assertThat(count).isEqualTo(5);
     }
+
+    @Test
+    void 보너스_번호_일치여부_테스트(){
+        LottoResult lottoResult = new LottoResult();
+        boolean isBonus = lottoResult.compareLottoBonusNumber(Arrays.asList(1,2,3,4,5,6), 7);
+        assertThat(isBonus).isFalse();
+    }
 }
