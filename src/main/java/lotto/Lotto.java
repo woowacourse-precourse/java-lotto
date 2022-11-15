@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Lotto {
+
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
@@ -26,7 +27,6 @@ public class Lotto {
         }
         sb.append(numbers.get(numbers.size()-1));
         return sb.toString();
-
     }
 
 
