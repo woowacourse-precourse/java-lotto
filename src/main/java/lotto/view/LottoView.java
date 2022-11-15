@@ -29,4 +29,10 @@ public class LottoView {
             System.out.println(lottoNumbers);
         }
     }
+
+    // 당첨 번호 입력 요청
+    public static void inputLottoNumber() {
+        System.out.println();
+        System.out.println(OutputMessage.INPUT_LOTTO_NUMBER.printMessage());
+    }
 }
