@@ -18,23 +18,19 @@ public class Lotto {
 
     // TODO: 추가 기능 구현
 
-    public List<Integer> getLottoNum()
-    {
+    public List<Integer> getLottoNum() {
         return this.numbers;
     }
 
-    public void printNumber()
-    {
+    public void printNumber() {
         System.out.println(this.numbers.toString());
     }
 
-    public boolean isContaining(int number)
-    {
+    public boolean isContaining(int number) {
         return numbers.contains(number);
     }
-    
-    public int getSameNum(WinnersLotto winnersLotto)
-    {
+
+    public int getSameNum(WinnersLotto winnersLotto) {
         return (int) numbers.stream().filter(winnersLotto::isContaining).count();
     }
 }

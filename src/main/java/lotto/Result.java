@@ -7,21 +7,17 @@ import java.util.List;
 public class Result {
 
     private static HashMap<Reward, Integer> map = new HashMap<>();
-    
-    Result(List<Lotto> lottos, WinnersLotto winnersLotto)
-    {
-        for(Lotto lotto_ : lottos)
-        {
-            Reward reward = Reward.of(lotto_.getSameNum(winnersLotto),lotto_.isContaining(winnersLotto.getBonus()));
+
+    Result(List<Lotto> lottos, WinnersLotto winnersLotto) {
+        for (Lotto lotto_ : lottos) {
+            Reward reward = Reward.of(lotto_.getSameNum(winnersLotto), lotto_.isContaining(winnersLotto.getBonus()));
             map.merge(reward, 1, Integer::sum);
         }
     }
-    
-    public long getPrizeMoney()
-    {
+
+    public long getPrizeMoney() {
         long prizeMoney = 0;
-        for(Reward reward : map.keySet())
-        {
+        for (Reward reward : map.keySet()) {
             prizeMoney += (long) reward.getPrize() * map.get(reward);
         }
 
@@ -32,5 +28,4 @@ public class Result {
         return map.getOrDefault(rank, 0);
     }
 
-    
 }

@@ -42,7 +42,6 @@ public enum Reward {
                 .collect(Collectors.toList());
     }
 
-
     public int getPrize() {
         return prize;
     }
