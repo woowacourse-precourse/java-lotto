@@ -10,7 +10,7 @@ import lotto.domain.LottoRepository;
 import lotto.domain.Money;
 import lotto.type.Prize;
 import lotto.view.LottoDto;
-import lotto.view.LottoInputDto;
+import lotto.view.LottoInput;
 import lotto.view.PrizeDto;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -48,11 +48,9 @@ class LottoServiceTest {
         List<Integer> winningNumbers = List.of(1, 5, 15, 21, 40, 41);
         int bonus = 13;
         lottoRepository.save(new Lotto(randomNumbers));
-        LottoInputDto lottoInputDto = new LottoInputDto(winningNumbers, bonus);
-        lottoInputDto.setMoney(Money.of(1000L));
-
+        LottoInput lottoInput = LottoInput.create(winningNumbers, bonus, Money.of(1000));
         //when
-        PrizeDto prizeDto = lottoService.calcWinningResult(lottoInputDto);
+        PrizeDto prizeDto = lottoService.calcWinningResult(lottoInput);
 
         //then
         Map<Prize, Long> prizeLongMap = prizeDto.groupByPrizes();
