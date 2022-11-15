@@ -1,7 +1,9 @@
 package lotto.domain;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Game {
     public static final Integer price = 1000;
@@ -20,7 +22,32 @@ public class Game {
     }
 
     public void setWinningNumbers(List<Integer> winningNumbers) {
+        validate(winningNumbers);
         this.winningNumbers = winningNumbers;
+    }
+
+
+    private void validate(List<Integer> winningNumbers){
+        validateWinningNumberBySize(winningNumbers);
+        validateWinningNumberByDistinction(winningNumbers);
+        validateWinningNumberByRange(winningNumbers);
+    }
+
+    private void validateWinningNumberByRange(List<Integer> winningNumbers){
+        for (Integer number : winningNumbers){
+            if (number > 45 || number < 1) throw new IllegalArgumentException();
+        }
+    }
+
+    private void validateWinningNumberBySize(List<Integer> winningNumbers){
+        if (winningNumbers.size() != maximumLottoNumber){
+            throw new IllegalArgumentException();
+        }
+    }
+
+    private void validateWinningNumberByDistinction(List<Integer> winningNumbers){
+        Set<Integer> distinctNumbers = new HashSet<>(winningNumbers);
+        if (distinctNumbers.size() != winningNumbers.size()) throw new IllegalArgumentException();
     }
 
     public Integer getBonus(){
