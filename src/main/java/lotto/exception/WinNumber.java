@@ -7,6 +7,12 @@ import lotto.constants.Error;
 import lotto.constants.Number;
 
 public class WinNumber {
+    public static void exceptionWinNumber(String winNumber) {
+        exceptionNoNumbers(winNumber);
+        exceptionRange(winNumber);
+        exceptionSize(winNumber);
+    }
+
     public static void exceptionRange(String input) {
         String[] winNumber = input.split(",");
         int rangeStart = Number.RANGE_START.getNumber();
