@@ -2,7 +2,7 @@ package lotto.view;
 
 public interface View {
     String requestMoney();
-    void printLottoCount();
+    void printLottoCount(int count);
     void printLotto();
     String requestWinningNumbers();
     String requestBonusNumber();

@@ -11,6 +11,7 @@ public class LottoSystem {
     private final MoneyParser moneyParser = new MoneyParser();
 
     public void run() {
-        int money = moneyParser.parse(view.requestMoney());
+        int lottoCount = moneyParser.parse(view.requestMoney()) / LOTTO_PRICE;
+        view.printLottoCount(lottoCount);
     }
 }

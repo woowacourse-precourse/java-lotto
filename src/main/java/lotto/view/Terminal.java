@@ -10,8 +10,8 @@ public class Terminal implements View {
     }
 
     @Override
-    public void printLottoCount() {
-
+    public void printLottoCount(int count) {
+        System.out.printf("%d개를 구매했습니다.\n", count);
     }
 
     @Override
