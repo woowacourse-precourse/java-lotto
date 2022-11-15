@@ -1,5 +1,6 @@
 package lotto;
 
+import lotto.domain.Machine;
 import lotto.view.InputView;
 import lotto.view.OutputView;
 
@@ -11,6 +12,8 @@ public class Application {
     public static void main(String[] args) {
         try {
             BigInteger money = inputView.insertMoney();
+
+            BigInteger numberOfLottos = Machine.countNumberOfLottos(money);
 
         } catch (IllegalArgumentException exception) {
             outputView.printErrorMessage(exception.getMessage());
