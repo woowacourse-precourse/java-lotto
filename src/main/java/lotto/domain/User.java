@@ -1,5 +1,6 @@
 package lotto.domain;
 
+import static lotto.message.LottoLine.LOTTO_NUMBER_DELIMITER;
 import static lotto.message.PrintMessage.INPUT_BONUS_NUMBER;
 import static lotto.message.PrintMessage.INPUT_PURCHASE_AMOUNT;
 import static lotto.message.PrintMessage.INPUT_WINNING_LOTTO;
@@ -31,7 +32,7 @@ public class User {
     }
 
     public void displayMessage(PrintMessage printMessage) {
-        OutputControl.println(printMessage.toString());
+        OutputControl.println(printMessage.getMessage());
 
     }
 
@@ -45,7 +46,7 @@ public class User {
 
     private List<Integer> inputLottoNums() {
         displayMessage(INPUT_WINNING_LOTTO);
-        return InputControl.readInts(",");
+        return InputControl.readInts(LOTTO_NUMBER_DELIMITER.getValue());
     }
 
     public void displayPurchaseResult(PurchaseLottos purchaseLottos) {

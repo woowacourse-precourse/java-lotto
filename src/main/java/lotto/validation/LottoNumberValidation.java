@@ -1,7 +1,7 @@
 package lotto.validation;
 
-import static lotto.message.ErrorMessage.DUPLICATE_MESSAGE;
-import static lotto.message.ErrorMessage.OUT_OF_RANGE_MESSAGE;
+import static lotto.message.ErrorMessage.DUPLICATE;
+import static lotto.message.ErrorMessage.OUT_OF_RANGE;
 import static lotto.value.LottoValues.LOTTO_END_NUMBER;
 import static lotto.value.LottoValues.LOTTO_START_NUMBER;
 
@@ -18,7 +18,7 @@ public class LottoNumberValidation {
     static public void validateDuplicate(List<Integer> numbers) {
         numbers.forEach((number) -> {
             if (!isOnceAppear(numbers, number)) {
-                throw new IllegalArgumentException(DUPLICATE_MESSAGE.toString());
+                throw new IllegalArgumentException(DUPLICATE.getMessage());
             }
         });
     }
@@ -29,13 +29,13 @@ public class LottoNumberValidation {
 
     static public void validateNumberRange(int number) {
         if (!isRanged(number)) {
-            throw new IllegalArgumentException(OUT_OF_RANGE_MESSAGE.toString());
+            throw new IllegalArgumentException(OUT_OF_RANGE.getMessage());
         }
     }
 
     public static void validateDuplicate(List<Integer> numbers, int bonusNumber) {
         if (numbers.contains(bonusNumber)) {
-            throw new IllegalArgumentException(DUPLICATE_MESSAGE.toString());
+            throw new IllegalArgumentException(DUPLICATE.getMessage());
         }
     }
 
