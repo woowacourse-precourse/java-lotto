@@ -11,13 +11,13 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
-        if (numbers.size() != 6) {
+        if (numbers.size() != LottoConst.LOTTO_LENGTH) {
             throw new IllegalArgumentException();
         }
     }
 
     public void setLottoBonusNumber(int number) {
-        if (number < 1 || number > 45) {
+        if (number < LottoConst.START_RANGE || number > LottoConst.END_RANGE) {
             throw new IllegalArgumentException();
         }
 
