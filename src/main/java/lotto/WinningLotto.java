@@ -3,16 +3,17 @@ package lotto;
 import java.util.ArrayList;
 import java.util.List;
 
-import static lotto.Validate.inRangeLottoNumber;
-import static lotto.Validate.isInteger;
+import static lotto.Validate.*;
 
 public class WinningLotto {
     private Lotto number;
     private Integer bonusNumber;
 
     public WinningLotto(String winningInput, String bonusInput) {
+        findOnlyNumber(winningInput, bonusInput);
         Lotto winningNumber = number(winningInput);
         Integer bonusNumber = isInteger(bonusInput);
+        bonusNumberBelongsNumber(winningNumber,bonusNumber);
         inRangeLottoNumber(bonusNumber);
         this.number = winningNumber;
         this.bonusNumber = bonusNumber;

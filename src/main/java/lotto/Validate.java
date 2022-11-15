@@ -18,13 +18,14 @@ public class Validate {
         }
     }
 
-    public static void bonusNumberBelongsNumber(List<Integer> lottoNumber, Integer bonusNumber) {
-        if (lottoNumber.contains(bonusNumber)) {
+    public static void bonusNumberBelongsNumber(Lotto lottoNumber, Integer bonusNumber) {
+        List<Integer> number = lottoNumber.getNumbers();
+        if (number.contains(bonusNumber)) {
             throw new IllegalArgumentException("[ERROR] 당첨번호와 보너스 번호는 달라야 합니다.");
         }
     }
 
-    public static void number(String input, String bonusNumber) {
+    public static void findOnlyNumber(String input, String bonusNumber) {
         if (!input.matches("^(\\d?,){5}\\d?$")) {
             throw new IllegalArgumentException("[ERROR] 숫자와 ,만 입력해 주세요.");
         }
