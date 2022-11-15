@@ -15,7 +15,7 @@ public class Game {
     HashMap<Integer, List<Integer>> userLottoNumbers;
     List<Integer> lottoNumbers;
     int bonusNumber;
-    HashMap<Integer, Integer> winningStat;
+    HashMap<Integer, Integer> winningStat = new HashMap<>();
 
     public Game() {
         for(int i = 0; i < 5; i++) {
