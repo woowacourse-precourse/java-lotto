@@ -1,8 +1,6 @@
 package controller;
 
-import lotto.LottoPurchase;
-import lotto.LottoTickets;
-import org.mockito.internal.matchers.Null;
+import lotto.*;
 import view.Input;
 import view.Output;
 
@@ -10,6 +8,10 @@ public class LottoController {
     public void implement() {
         LottoPurchase purchase = inputMoney();
         LottoTickets lottoTickets = changeTickets(purchase);
+        WinningNumbers winningNumbers = createWinningNumbers();
+        WinningResult winningResult = createWinningResult(lottoTickets,winningNumbers);
+
+        printResult(purchase, winningResult);
     }
 
     private LottoPurchase inputMoney() {
@@ -28,5 +30,23 @@ public class LottoController {
         LottoTickets lottoTickets = new LottoTickets(count);
         Output.outputTicket(lottoTickets);
         return lottoTickets;
+    }
+
+    private WinningNumbers createWinningNumbers() {
+        try {
+            return new WinningNumbers(Input.inputWinNumber(),Input.bonusNumber());
+        } catch (IllegalArgumentException exception) {
+            Output.outputException(exception);
+            return createWinningNumbers();
+        }
+    }
+
+    private WinningResult createWinningResult(LottoTickets lottos, WinningNumbers winningNumbers) {
+        return lottos.getWinningStatistic(winningNumbers);
+    }
+
+    private void printResult(LottoPurchase purchase, WinningResult winningResult) {
+        Output.outputWinningResult(winningResult);
+        Output.printProfit(purchase.calculateProfit(winningResult.getAllPrize()));
     }
 }

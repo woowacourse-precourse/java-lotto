@@ -66,6 +66,6 @@ class LottoTest {
     @Test
     void checkPurchaseByMargin() {
         LottoPurchase lottopurchase = new LottoPurchase("8000");
-        Assertions.assertEquals(lottopurchase.calculateMargin(5000),62.5);
+        Assertions.assertEquals(lottopurchase.calculateProfit(5000),62.5);
     }
 }

@@ -22,7 +22,7 @@ public class LottoPurchase {
     public int calculateTicketCount() {
         return money / MIN_MONEY;
     }
-    public double calculateMargin(int sum) {
+    public double calculateProfit(long sum) {
         return DECIMAL_POINT * PERCENT * sum / money;
     }
     private void validatePurchase(String money) {

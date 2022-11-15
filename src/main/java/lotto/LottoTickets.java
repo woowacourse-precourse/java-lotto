@@ -1,9 +1,9 @@
 package lotto;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
+
+import static java.util.stream.Collectors.toList;
 
 public class LottoTickets {
     private static final int COUNT_NUM = 1;
@@ -19,5 +19,12 @@ public class LottoTickets {
     }
     public List<Lotto> getLotto() {
         return Collections.unmodifiableList(lottos);
+    }
+    public WinningResult getWinningStatistic(WinningNumbers winningNumbers) {
+        List<Ranking> rankings = lottos.stream()
+                .map(winningNumbers::calculateRanking)
+                .filter(Objects::nonNull)
+                .collect(Collectors.collectingAndThen(toList(), Collections::unmodifiableList));
+        return new WinningResult(rankings);
     }
 }
