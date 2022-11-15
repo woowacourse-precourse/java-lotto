@@ -1,6 +1,9 @@
 package lotto;
 
-import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
+
+import static lotto.Validator.*;
 
 public class Lotto {
     private final List<Integer> numbers;
@@ -11,10 +14,21 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
-        if (numbers.size() != 6) {
-            throw new IllegalArgumentException();
+        for (Integer number: numbers) {
+            checkNotValidNumber(number);
         }
+
+        checkIncludingDuplicatedNumber(numbers);
+
+        checkNumbersCount(numbers.size());
     }
 
     // TODO: 추가 기능 구현
+    public String toString() {
+        return numbers.stream().sorted().collect(Collectors.toList()).toString();
+    }
+
+    public List<Integer> getNumbers() {
+        return numbers;
+    }
 }
