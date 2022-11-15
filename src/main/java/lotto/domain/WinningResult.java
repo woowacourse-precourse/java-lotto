@@ -22,12 +22,15 @@ public class WinningResult {
             result = 50000;
         }
         else if(number == 5){
-            Five++;
-            result = 1500000;
-        }
-        else if(number == 5 && bonus == 1){
-            FiveAndBonus++;
-            result = 30000000;
+            if(bonus == 1){
+                FiveAndBonus++;
+                result = 30000000;
+            }
+            if(result == 0 ){
+                Five++;
+                result = 1500000;
+            }
+
         }
         else if(number == 6){
             Six++;
