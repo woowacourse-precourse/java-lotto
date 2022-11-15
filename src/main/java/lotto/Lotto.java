@@ -10,10 +10,14 @@ import static lotto.matchType.*;
 
 public class Lotto {
     private final List<Integer> numbers;
+    private int winningResult;
+    private boolean bonusResult;
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
         this.numbers = numbers;
+        this.winningResult = 0;
+        this.bonusResult = false;
     }
 
     private void validate(List<Integer> numbers) {
@@ -37,23 +41,26 @@ public class Lotto {
         return numbers;
     }
 
-    int matchWinning(List<Integer> winning) {
+    void matchWinning(List<Integer> winning) {
         int result = 0;
         for (int winNum : winning) {
             if (numbers.contains(winNum)) {
                 result++;
             }
         }
-        return result;
+        winningResult = result;
     }
 
-    boolean matchBonus(int bonus) {
-        return numbers.contains(bonus);
+    void matchBonus(int bonus) {
+        bonusResult = numbers.contains(bonus);
     }
 
-    matchType matchAll(List<Integer> winning, int bonus) {
-        int winningResult = matchWinning(winning);
-        boolean bonusResult = matchBonus(bonus);
+    void matchAll(List<Integer> winning, int bonus) {
+        matchWinning(winning);
+        matchBonus(bonus);
+    }
+
+    matchType getType() {
         matchType type = NONE;
         if (winningResult == 3) {
             type = THREE;

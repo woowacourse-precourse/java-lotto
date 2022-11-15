@@ -39,17 +39,15 @@ class LottoTest {
         assertThat(lotto).hasFieldOrPropertyWithValue("numbers", numbers);
     }
 
-    @DisplayName("당첨 번호와 보너스 번호가 주어지면 몇 개가 매치되는지 확인한다.")
+    @DisplayName("당첨 번호가 주어지면 몇 개가 매치되는지 확인한다.")
     @Test
     void match() {
         List<Integer> numbers = List.of(3, 4, 5, 6, 7, 8);
         Lotto lotto = new Lotto(numbers);
         List<Integer> winning = List.of(1, 2, 3, 4, 5, 6);
         int bonus = 7;
-        int matchWinning = 4;
-        boolean matchBonus = true;
-        assertThat(lotto.matchWinning(winning)).isEqualTo(matchWinning);
-        assertThat(lotto.matchBonus(bonus)).isEqualTo(matchBonus);
+        lotto.matchAll(winning,bonus);
+        assertThat(lotto.getType()).isEqualTo(matchType.FOUR);
     }
 
 }
