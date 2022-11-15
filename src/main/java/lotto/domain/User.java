@@ -26,26 +26,11 @@ public class User {
         this.lotto = lotto;
         this.bonus = bonus;
     }
-    public int getMoneyInput() {
-        String money = readLine();
-        return Integer.parseInt(money);
-    }
 
     private void validateMoney(int money) {
         if (money % 1000 != 0) {
             throw new IllegalArgumentException("[ERROR] 입력된 돈이 1000원 단위가 아닙니다.");
         }
-    }
-
-    public List<Integer> getLottoInput() {
-        String lottoInput = readLine();
-        String[] lotto = lottoInput.split(",");
-        List<Integer> lottoNumber = new ArrayList<>();
-
-        for (String s : lotto) {
-            lottoNumber.add(Integer.parseInt(s));
-        }
-        return lottoNumber;
     }
 
     private void validateLottoLength(List<Integer> lotto) {
@@ -60,11 +45,6 @@ public class User {
                 throw new IllegalArgumentException("[ERROR] 1~45 사이 숫자를 입력해주세요.");
             }
         }
-    }
-
-    public int getBonusInput() {
-        String bonusInput = readLine();
-        return Integer.parseInt(bonusInput);
     }
 
     private void validateRange(int bonus) {
