@@ -4,6 +4,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class BonusNumberInputValidationTest {
@@ -18,6 +20,15 @@ public class BonusNumberInputValidationTest {
     @Test
     void validateInputIsIntegerTest() {
         assertThatThrownBy(() -> bonusNumberInputValidation.validateInputIsInteger("b"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("보너스 번호가 예측 번호와 중복된 경우, 예외가 발생한다.")
+    @Test
+    void validateNoDuplicationWithPredictionNumbersTest() {
+        List<Integer> predictionNumbers = List.of(1,2,3,4,5,6);
+
+        assertThatThrownBy(() -> bonusNumberInputValidation.validateNoDuplicationWithPredictionNumbers(predictionNumbers, "1"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 }
