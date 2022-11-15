@@ -60,7 +60,7 @@ public class Winning {
                 .collect(Collectors.toList());
     }
 
-    public List<String> getDistinctNumbers(String[] splitNumbers) {
+    private List<String> getDistinctNumbers(String[] splitNumbers) {
         return Arrays.stream(splitNumbers)
                 .distinct()
                 .collect(Collectors.toList());
