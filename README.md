@@ -164,7 +164,7 @@ BUILD SUCCESSFUL in 0s
     1) 구입 금액의 validity 검사
     2) 당첨 번호의 validity 검사
     3) 보너스 번호의 validity 검사
-    
+13. [domainTest] 도메인 로직에 대한 단위 테스트를 실행하는 domainTest 클래스 추가 및 단위 테스트 구현 
     
     
 ## 🎯 프로그래밍 요구 사항
