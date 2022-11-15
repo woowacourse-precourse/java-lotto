@@ -7,7 +7,13 @@ public class Application {
         // TODO: 프로그램 구현
         InputNumber inputNumber = new InputNumber();
         PlayLotto playLotto = new PlayLotto();
-        Integer money = inputNumber.Money(inputNumber.inputMoney());
+        Integer money;
+        try {
+            money = inputNumber.Money(inputNumber.inputMoney());
+        } catch (Exception e) {
+            money = inputNumber.Money(inputNumber.inputMoney());
+        }
+
 
         /*8개를 구매했습니다.*/
         User user = new User(money);
