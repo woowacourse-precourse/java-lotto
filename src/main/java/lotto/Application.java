@@ -22,14 +22,10 @@ public class Application {
         List<Lotto> candidateLotto = printCountAndLottoNumber(payedMoney);
 
         // phase 3) 당첨 번호 입력받기
-        System.out.println("\n" + GET_WINNING_LOTTO.getMessage());
-        Lotto winningLotto = new Lotto(getSixInput());
-        validateNumberVariation(winningLotto);
+        Lotto winningLotto = getWinningNumber();
 
         // phase 4) 보너스 번호 입력받기
-        System.out.println("\n" + GET_BONUS_NUMBER.getMessage());
-        int bonusNumber = getSingleInput();
-        validateOneTo45(List.of(bonusNumber));
+        int bonusNumber = getBonusNumber();
 
         // phase 5) 당첨 통계 출력하기
         List<Integer> score = countScoreCandidate(candidateLotto, winningLotto, bonusNumber);
@@ -77,7 +73,6 @@ public class Application {
         List<Lotto> candidateLotto = new ArrayList<>();
         for (int count = 0; count < lottoCount; count++){
             Lotto tmpLotto = createLotto();
-
             candidateLotto.add(tmpLotto);
             printLotto(tmpLotto);
         }
@@ -99,12 +94,15 @@ public class Application {
     public static List<Integer> countScoreCandidate(List<Lotto> candidateLotto,
                                          Lotto winningLotto,
                                          int bonusNumber){
-        List<Integer> score = List.of(0,0,0,0,0); // 3, 4, 5, 5+bonus, 6
+        ArrayList<Integer> score = new ArrayList<>(List.of(0,0,0,0,0)); // 3, 4, 5, 5+bonus, 6
 
         for (Lotto candidate : candidateLotto){
             int candiScore = countWinningLotto(winningLotto, candidate);
-            if (candiScore == 3) score.set(0,score.get(0)+1);
-            if (candiScore == 4) score.set(1,score.get(1)+1);
+            if (candiScore == 3) {
+                int newScore = score.get(0) + 1;
+                score.set(0, newScore);
+            }
+            if (candiScore == 4) score.set(1, score.get(1)+1);
             if (candiScore == 5) {
                 int indexFor5 = checkBonusNumber(bonusNumber, candidate);
                 score.set(indexFor5,score.get(indexFor5)+1);
@@ -124,5 +122,25 @@ public class Application {
         int lottoCount = payedMoney/1000;
         System.out.println("\n" + lottoCount + PRINT_LOTTO_COUNT.getMessage());
         return printSeveralLotto(lottoCount);
+    }
+    public static Lotto getWinningNumber(){
+        System.out.println("\n" + GET_WINNING_LOTTO.getMessage());
+        Lotto winningLotto = new Lotto(getSixInput());
+        validateNumberVariation(winningLotto);
+        return winningLotto;
+    }
+    public static int getBonusNumber(){
+        System.out.println("\n" + GET_BONUS_NUMBER.getMessage());
+        int bonusNumber = getSingleInput();
+        validateOneTo45(List.of(bonusNumber));
+        return bonusNumber;
+    }
+    public static void printLottoStatistics(List<Lotto> candidateLotto,
+                                            Lotto winningLotto,
+                                            int bonusNumber,
+                                            int payedMoney){
+        List<Integer> score = countScoreCandidate(candidateLotto, winningLotto, bonusNumber);
+        int totalPrize = printWinningResult(score);
+        printYield(totalPrize, payedMoney);
     }
 }
