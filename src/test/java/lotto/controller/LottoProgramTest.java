@@ -1,4 +1,4 @@
-package lotto;
+package lotto.controller;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
 import lotto.controller.LottoProgram;
