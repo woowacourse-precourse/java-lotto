@@ -36,7 +36,7 @@ public class LottoDesignator {
         return changeInt(input);
     }
 
-    public void checkOnlyNumber(String input) {
+    private void checkOnlyNumber(String input) {
         String lotto = Arrays
                 .stream(removeComma(input))
                 .collect(Collectors.joining());
@@ -45,14 +45,14 @@ public class LottoDesignator {
         }
     }
 
-    public void checkSixCipher(String input) {
+    private void checkSixCipher(String input) {
         String[] lotto = removeComma(input);
         if (lotto.length != CIPHER) {
             throw new IllegalArgumentException("[ERROR] 로또 번호는 6개를 입력해야 합니다.");
         }
     }
 
-    public void checkDuplication(String input) {
+    private void checkDuplication(String input) {
         List<Integer> lotto = changeList(input);
         HashSet<Integer> removeDuplication = new HashSet<>(lotto);
         if (lotto.size() != removeDuplication.size()) {
@@ -60,7 +60,7 @@ public class LottoDesignator {
         }
     }
 
-    public void checkRange(String input) {
+    private void checkRange(String input) {
         List<Integer> lotto = changeList(input);
         for(int lottoIndex = 0; lottoIndex < lotto.size(); lottoIndex++) {
             int lottoNum = lotto.get(lottoIndex);
@@ -70,7 +70,7 @@ public class LottoDesignator {
         }
     }
 
-    public void checkBonusDuplication(String input, String number) {
+    private void checkBonusDuplication(String input, String number) {
         List<Integer> lotto = changeList(input);
         int bonus = changeInt(number);
         if (lotto.contains(bonus)) {
