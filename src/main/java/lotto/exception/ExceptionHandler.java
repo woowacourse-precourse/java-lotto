@@ -55,5 +55,10 @@ public class ExceptionHandler {
         amountUnitException(input);
     }
 
+    public void createLottoNumberException(List<Integer> numbers) throws IllegalArgumentException {
+        lottoNumberException(numbers);
+        overlapException(numbers);
+    }
+
 
 }

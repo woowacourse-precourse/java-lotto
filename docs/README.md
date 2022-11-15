@@ -22,7 +22,7 @@
   - [x] 로또 구입 금액을 입력 받을 때 예외상황 - getLottoBuyAmountException()
     - [x] 입력값이 숫자가 아닐 경우 예외처리한다. - noNumberException()
     - [x] 로또 구입 금액은 1000원 단위가 아닐 경우 예외처리한다. - amountUnitException()
-  - [ ] 로또 번호 생성할 때 예외상황 - createLottoNumberException()
+  - [x] 로또 번호 생성할 때 예외상황 - createLottoNumberException()
     - [x] 로또번호가 6개가 아닐 경우 예외처리한다. - lottoNumberException()
     - [x] 서로 다른 수가 아닐 경우 예외처리한다. - overlapException()
   - [ ] 로또 당첨 번호를 입력 받을 때 예외상황 - getLottoWinnerNumberException()
