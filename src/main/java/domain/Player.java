@@ -19,9 +19,11 @@ public class Player {
         this.lottoPrice = purchaseLottoPrice;
     }
 
-    public void canDivideThousand(){
-        if(this.lottoPrice% Constant.LOTTO_PRICE != 0)
+    public void canDivideThousand() throws IllegalArgumentException{
+        if(this.lottoPrice% Constant.LOTTO_PRICE != 0) {
+            System.out.println(Constant.NOT_VALID_PRICE_EXCEPTION);
             throw new IllegalArgumentException(Constant.NOT_VALID_PRICE_EXCEPTION);
+        }
     }
     public void countLottoNumber(){
         this.lottoCount = this.lottoPrice/Constant.LOTTO_PRICE;
