@@ -44,6 +44,7 @@ public class Service {
         List<String> splitInputWinningNumbers = ServiceInput.getSplitInputWinningNumbers();
         List<Integer> winningNumbers = new ArrayList<>();
         for (int i=0; i<splitInputWinningNumbers.size(); i++){
+            /* 문자열 -> 숫자로 변환 */
             winningNumbers.add(Converter.StringToInteger(splitInputWinningNumbers.get(i)));
         }
 
@@ -52,6 +53,7 @@ public class Service {
 
     private void setBonusNumber(){
         String inputBonusNumber = ServiceInput.getInputBonusNumber();
+        /* 문자열 -> 숫자로 변환 */
         int bonusNumber = Converter.StringToInteger(inputBonusNumber);
 
         validateBonusNumberInWinningNumbers(bonusNumber);

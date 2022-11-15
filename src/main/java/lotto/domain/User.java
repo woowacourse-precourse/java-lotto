@@ -20,6 +20,7 @@ public class User {
 
     private void setUserMoney() {
         String inputUserMoney = UserInput.getInputUserMoney();
+        /* 문자열 -> 숫자로 변환 */
         int userMoney = Converter.StringToInteger(inputUserMoney);
 
         this.userMoney = new UserMoney(userMoney);
