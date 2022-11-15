@@ -9,8 +9,6 @@ import java.util.Collections;
 import java.util.List;
 
 public class LottoNumber {
-    private static final int LENGTH = 6;
-
     public static List<Lotto> generateLottoNumber(int numberOfLotto) {
         List<Lotto> lottoList = new ArrayList<>();
         Lotto lotto;
@@ -19,7 +17,7 @@ public class LottoNumber {
             List<Integer> lottoNumber = Randoms.pickUniqueNumbersInRange(1, 45, 6);
             Collections.sort(lottoNumber);
             lotto = new Lotto(lottoNumber);
-            System.out.println(lotto);
+            System.out.println(lotto.getNumbers());
             lottoList.add(lotto);
         }
         return lottoList;
