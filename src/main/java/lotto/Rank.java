@@ -89,7 +89,6 @@ enum Result {
     THIRD(5, MESSAGE_THIRD_PRIZE, 0, THIRD_PRICE),
     FOURTH(4, MESSAGE_FOURTH_PRIZE, 0, FOURTH_PRICE),
     FIFTH(3, MESSAGE_FIFTH_PRIZE, 0, FIFTH_PRICE),
-    EMPTY(-1, "Empty", 0, 0);
     private final int label;
     private final String text;
     private int count;
@@ -106,7 +105,7 @@ enum Result {
         return Arrays.stream(Result.values())
                 .filter(result -> result.label == targetLabel)
                 .findAny()
-                .orElse(EMPTY);
+                .orElseThrow( () -> new IllegalArgumentException("[ERROR] 존재하지 않는 당첨 결과입니다."));
     }
 
     public void increaseCount() {

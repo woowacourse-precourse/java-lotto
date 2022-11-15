@@ -43,4 +43,12 @@ public class UI {
         System.out.println();
         return Integer.parseInt(inputNumber);
     }
+
+    public static void printTotalResult(int money) {
+        System.out.println("당첨 통계");
+        System.out.println(---);
+        for (Result result : Result.values()) {
+            System.out.println();
+        }
+    }
 }
