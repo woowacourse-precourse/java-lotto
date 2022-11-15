@@ -28,20 +28,23 @@ public class LottoGame {
 
     public void run() {
         try {
-            // 금액을 입력 받는다.
             Integer lottoBuyingPrice = readLottoBuyingPrice();
-            // 입력 받은 금액으로 로또를 발행한다.
             List<Lotto> lottos = issueLottos(lottoBuyingPrice);
             WinningNumber winningNumber = readWinningNumber();
 
-            List<WinningResult> winningResults = lottos.stream()
-                    .map(lotto -> winningResultCalculator.calculate(winningNumber, lotto)).collect(Collectors.toList());
-            WinningStatistical winningStatistical = new WinningStatistical();
-            winningResults.forEach(winningStatistical::addWinningResult);
+            WinningStatistical winningStatistical = getWinningStatistical(winningNumber, lottos);
             lottoGamePrinter.printWinningStatistical(winningStatistical);
         } catch (IllegalArgumentException illegalArgumentException) {
             handleIllegalArgumentException(illegalArgumentException);
         }
+    }
+
+    private WinningStatistical getWinningStatistical(WinningNumber winningNumber, List<Lotto> lottos) {
+        List<WinningResult> winningResults = lottos.stream()
+                .map(lotto -> winningResultCalculator.calculate(winningNumber, lotto)).collect(Collectors.toList());
+        WinningStatistical winningStatistical = new WinningStatistical();
+        winningResults.forEach(winningStatistical::addWinningResult);
+        return winningStatistical;
     }
 
     private WinningNumber readWinningNumber() {
