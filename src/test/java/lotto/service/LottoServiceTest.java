@@ -64,7 +64,10 @@ class LottoServiceTest {
         return Stream.of(
                 Arguments.of(List.of(1, 5, 15, 18, 20, 39), Prize.THREE, 1L),
                 Arguments.of(List.of(1, 5, 15, 18, 21, 39), Prize.FOUR, 1L),
-                Arguments.of(List.of(1, 5, 15, 18, 21, 40), Prize.FIVE, 1L)
+                Arguments.of(List.of(1, 5, 15, 18, 21, 40), Prize.FIVE, 1L),
+                Arguments.of(List.of(1, 5, 15, 13, 21, 40), Prize.FIVE_AND_BONUS, 1L),
+                Arguments.of(List.of(1, 5, 15, 21, 40, 41), Prize.SIX, 1L)
+
         );
     }
 }
