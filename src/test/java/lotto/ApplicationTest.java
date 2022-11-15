@@ -113,6 +113,78 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    void 보너스_번호_예외_테스트_2() {
+        assertSimpleTest(() -> {
+            runException("8000", "1,2,3,4,5,6", "46");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
+    @Test
+    void 보너스_번호_예외_테스트_3() {
+        assertSimpleTest(() -> {
+            runException("8000", "1,2,3,4,5,6", "0");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
+    @Test
+    void 보너스_번호_예외_테스트_4() {
+        assertSimpleTest(() -> {
+            runException("8000", "1,2,3,4,5,6", "a");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
+    @Test
+    void 당첨_번호_예외_테스트() {
+        assertSimpleTest(() -> {
+            runException("8000", "1,2,3.4.5,6");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
+    @Test
+    void 당첨_번호_예외_테스트_2() {
+        assertSimpleTest(() -> {
+            runException("8000", "1,2,3.4.5,46");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
+    @Test
+    void 당첨_번호_예외_테스트_3() {
+        assertSimpleTest(() -> {
+            runException("8000", "1,2,3.4.1,45");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
+    @Test
+    void 당첨_번호_예외_테스트_4() {
+        assertSimpleTest(() -> {
+            runException("8000", "1,2,3.4.5,6,7");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
+    @Test
+    void 당첨_번호_예외_테스트_5() {
+        assertSimpleTest(() -> {
+            runException("8000", "1,2,3,4.5,6,7");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
+    @Test
+    void 당첨_번호_예외_테스트_6() {
+        assertSimpleTest(() -> {
+            runException("8000", "1,2,3,a,6,7");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
+    @Test
     void 예외_테스트() {
         assertSimpleTest(() -> {
             runException("1000j");
