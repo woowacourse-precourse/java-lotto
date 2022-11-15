@@ -27,7 +27,6 @@ class LottoTest {
     @DisplayName("로또 구입 금액의 단위가 1000원이 아니면 예외가 발생한다.")
     @Test
     void buyLottoNotUnit1000Won() {
-        // TODO: 이 테스트가 통과할 수 있게 구현 코드 작성
         assertThatThrownBy(() -> Lotto.calculate("1200"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
@@ -35,7 +34,6 @@ class LottoTest {
     @DisplayName("로또 구입 금액이 0으로 시작하면 예외가 발생한다.")
     @Test
     void buyLottoStartZero() {
-        // TODO: 이 테스트가 통과할 수 있게 구현 코드 작성
         assertThatThrownBy(() -> Lotto.checkIsInt("01000"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
@@ -43,7 +41,6 @@ class LottoTest {
     @DisplayName("로또 구입 금액에 문자가 있으면 예외가 발생한다.")
     @Test
     void buyLottoNotInteger() {
-        // TODO: 이 테스트가 통과할 수 있게 구현 코드 작성
         assertThatThrownBy(() -> Lotto.checkIsInt("1200k"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
