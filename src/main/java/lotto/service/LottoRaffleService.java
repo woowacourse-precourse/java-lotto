@@ -1,6 +1,6 @@
 package lotto.service;
 
-import lotto.config.LottoPrizeRules;
+import lotto.config.LottoPrize;
 import lotto.model.Lotto;
 import lotto.model.LottoRaffleRecord;
 import lotto.model.LottoWinning;
@@ -10,8 +10,8 @@ import java.util.stream.Collectors;
 
 public class LottoRaffleService {
 
-    private LottoRaffleRecord lottoRaffleRecord;
-    private LottoWinning lottoWinning;
+    private final LottoRaffleRecord lottoRaffleRecord;
+    private final LottoWinning lottoWinning;
 
     public LottoRaffleService(LottoWinning lottoWinning) {
         this.lottoRaffleRecord = new LottoRaffleRecord();
@@ -27,28 +27,28 @@ public class LottoRaffleService {
         int matchCount = checkMatchedNumbers(lottoNumbers);
         boolean matchBonus = checkBonusNumber(lottoNumbers);
 
-        List<LottoPrizeRules> result = findPrize(matchCount, matchBonus);
+        List<LottoPrize> result = findPrize(matchCount, matchBonus);
         if (!result.isEmpty()) {
             lottoRaffleRecord.updatePrizeRecord(result.get(0));
         }
     }
 
-    public List<LottoPrizeRules> findPrize(int count, boolean bonus) {
-        List<LottoPrizeRules> result = findCountAndBonusMatch(count, bonus);
+    public List<LottoPrize> findPrize(int count, boolean bonus) {
+        List<LottoPrize> result = findCountAndBonusMatch(count, bonus);
         if (!result.isEmpty()) {
             return result;
         }
         return findCountMatch(count);
     }
 
-    private List<LottoPrizeRules> findCountMatch(int count) {
-        return Arrays.stream(LottoPrizeRules.values())
+    private List<LottoPrize> findCountMatch(int count) {
+        return Arrays.stream(LottoPrize.values())
                 .filter(prize -> prize.getMatchCount() == count)
                 .collect(Collectors.toList());
     }
 
-    private List<LottoPrizeRules> findCountAndBonusMatch(int count, boolean bonus) {
-        return Arrays.stream(LottoPrizeRules.values())
+    private List<LottoPrize> findCountAndBonusMatch(int count, boolean bonus) {
+        return Arrays.stream(LottoPrize.values())
                 .filter(prize -> prize.getMatchCount() == count && prize.getBonus() == bonus)
                 .collect(Collectors.toList());
     }

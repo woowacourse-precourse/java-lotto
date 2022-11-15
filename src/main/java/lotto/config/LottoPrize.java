@@ -1,6 +1,6 @@
 package lotto.config;
 
-public enum LottoPrizeRules {
+public enum LottoPrize {
 
     FIFTH_PLACE(3, false, 5_000L),
     FOURTH_PLACE(4, false, 50_000L),
@@ -12,7 +12,7 @@ public enum LottoPrizeRules {
     private final boolean bonus;
     private final Long winningMoney;
 
-    LottoPrizeRules(int matchCount, boolean bonus, Long winningMoney) {
+    LottoPrize(int matchCount, boolean bonus, Long winningMoney) {
         this.matchCount = matchCount;
         this.bonus = bonus;
         this.winningMoney = winningMoney;

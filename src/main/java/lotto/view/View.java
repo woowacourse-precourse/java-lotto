@@ -1,6 +1,6 @@
 package lotto.view;
 
-import lotto.config.LottoPrizeRules;
+import lotto.config.LottoPrize;
 import lotto.controller.LottoController;
 import lotto.model.Lotto;
 import lotto.model.LottoRaffleRecord;
@@ -69,7 +69,7 @@ public class View {
 
     private void showStatistics() {
         lottoRaffleRecord = lottoController.raffle();
-        Map<LottoPrizeRules, Integer> result = lottoRaffleRecord.getPrizeRecord();
+        Map<LottoPrize, Integer> result = lottoRaffleRecord.getPrizeRecord();
 
         System.out.println(STATISTICS_TITLE);
         result.forEach((prize, count) -> System.out.println(makePrizeRuleString(prize, count)));
@@ -85,7 +85,7 @@ public class View {
         return String.format("%.1f", result);
     }
 
-    private String makePrizeRuleString(LottoPrizeRules prize, int count) {
+    private String makePrizeRuleString(LottoPrize prize, int count) {
         String result = "";
         result += addMatchNumber(prize.getMatchCount());
         if (prize.getBonus()) {
