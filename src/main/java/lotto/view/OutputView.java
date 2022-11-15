@@ -13,6 +13,7 @@ public class OutputView {
     private static final int FIVE_MATCH_INDEX = 2;
     private static final int SIX_MATCH_INDEX = 3;
     private static final int FIVE_AND_BONUS_MATCH_INDEX = 4;
+
     public static void printEnterPurchaseAmount() {
         System.out.println("구매금액을 입력해 주세요.");
     }
@@ -22,20 +23,21 @@ public class OutputView {
     }
 
     public static void printLottoNumbers(List<List<Integer>> TicketIntegration) {
-        for(List<Integer> ticket : TicketIntegration){
+        for (List<Integer> ticket : TicketIntegration) {
             System.out.println(ticket);
         }
     }
 
-    private static void printEnterWinningNumbers() {
+    public static void printEnterWinningNumbers() {
         System.out.println("당첨 번호를 입력해 주세요.");
     }
 
-    private static void printEnterBonusNumber() {
+    public static void printEnterBonusNumber() {
         System.out.println("보너스 번호를 입력해 주세요.");
     }
 
-    private static void printWinningTickets(List<Integer> ticketResult) {
+    public static void printWinningTickets(List<Integer> ticketResult) {
+        System.out.println("당첨 통계\n---");
         System.out.println(THREE_MATCHES + "개 일치 (5,0000원) - "
                 + ticketResult.get(THREE_MATCH_INDEX) + "개");
         System.out.println(FOUR_MATCHES + "개 일치 (50,0000원) - "
@@ -48,7 +50,7 @@ public class OutputView {
                 + ticketResult.get(SIX_MATCH_INDEX) + "개");
     }
 
-    private  static void printLottoYield(double lottoYield){
-        System.out.print(Math.round(lottoYield*10)/10.0);
+    public static void printLottoYield(double lottoYield) {
+        System.out.print("총 수익률은 " + Math.round(lottoYield * 1000) / 10.0 + "%입니다.");
     }
 }
