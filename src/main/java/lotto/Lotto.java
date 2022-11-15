@@ -20,6 +20,13 @@ public class Lotto {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException();
         }
+        Set<Integer> validDuplicate = new HashSet<>();
+        numbers.stream().forEach((number)->{
+            validDuplicate.add(number);
+        });
+        if(validDuplicate.size() < 6){
+            throw new IllegalArgumentException();
+        }
     }
 
     // TODO: 추가 기능 구현
