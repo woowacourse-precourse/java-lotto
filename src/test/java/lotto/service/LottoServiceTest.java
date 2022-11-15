@@ -7,6 +7,7 @@ import java.util.Map;
 import lotto.constants.enums.WinResultStatus;
 import lotto.domain.Lotto;
 import lotto.repository.LottoRepository;
+import lotto.views.OutputMessageGenerator;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -15,6 +16,7 @@ import org.junit.jupiter.params.provider.CsvSource;
 
 class LottoServiceTest {
     private final LottoService lottoService = new LottoService();
+    private final OutputMessageGenerator outputMessageGenerator = new OutputMessageGenerator();
 
     @DisplayName("(입력된 금액 / 1,000)의 개수 만큼의 로또 구매 성공 테스트")
     @ParameterizedTest
@@ -49,16 +51,15 @@ class LottoServiceTest {
     @Test
     void 구매한_로또_결과_리스트_검증() {
         // given
-        LottoRepository.getInstance()
-                .generateLottos(1);
-        List<Lotto> lottos = LottoRepository.getInstance()
-                .findAll();
+        List<Object> buyingResult = lottoService.buyLottos(1000);
+        List<Lotto> buyingLottos = (List<Lotto>) buyingResult.get(1);
+        Lotto lotto = buyingLottos.get(0);
 
         // when
-        List<String> boughtResultMessage = lottoService.createBuyingResultMessage();
-        Lotto lotto = lottos.get(0);
+        String buyingLottoResultMessage = outputMessageGenerator.createBuyingLottoResultMessage(buyingLottos);
+
         // then
-        assertThat(lotto.createMessage()).isEqualTo(boughtResultMessage.get(1));
+        assertThat(lotto.createMessage()).isEqualTo(buyingLottoResultMessage);
     }
 
     @DisplayName("구매한 로또 번호와 당첨 번호를 비교해 당첨 통계 및 수익율 검증 테스트")
