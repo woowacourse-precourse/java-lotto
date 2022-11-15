@@ -16,6 +16,16 @@ public class LottoStoreTest extends NsTest {
                 }).isInstanceOf(IllegalArgumentException.class);
     }
 
+    @DisplayName("당첨번호와 중복된 보너스번호를 입력하면 예외가 발생한다.")
+    @Test
+    void setBonusNumberDuplicateWithWinNumber() {
+        assertThatThrownBy(() -> {
+            LottoStore lottoStore = new LottoStore();
+            lottoStore.setWinNumbers("1,2,3,4,5,6");
+            lottoStore.setBonusNumber("2");
+        }).isInstanceOf(IllegalArgumentException.class);
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
