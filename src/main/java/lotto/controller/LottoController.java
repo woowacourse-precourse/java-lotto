@@ -26,6 +26,7 @@ public class LottoController {
             LottoPurchaseMoney lottoPurchaseMoney = getLottoPurchaseMoney();
             WinningNumbers winningNumbers = getWinningNumbers();
             List<Lotto> lottoTickets = lottoStore.buyLottoTickets(lottoPurchaseMoney.get());
+            outputView.outputLottoTickets(lottoTickets);
         } catch (IllegalArgumentException e) {
             outputView.printErrorMessage(e.getMessage());
         }
