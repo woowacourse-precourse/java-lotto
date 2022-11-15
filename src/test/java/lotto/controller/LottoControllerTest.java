@@ -21,4 +21,14 @@ public class LottoControllerTest {
             assertThat(lottoController.computeAmountOfLotto(8000)).isEqualTo(8);
         });
     }
+
+    @Test
+    public void generateLottoTest() {
+        int amountOfLotto = 8;
+        lottoController.generateLotto(amountOfLotto);
+
+        assertSimpleTest(() -> {
+            assertThat(lottoController.getLottos().size()).isEqualTo(amountOfLotto);
+        });
+    }
 }
