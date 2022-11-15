@@ -6,51 +6,52 @@ import lotto.view.Output;
 import java.util.List;
 
 public class InputWinningNumbersHandler {
-    PickRandomLottoLists pickRandomLotto = new PickRandomLottoLists();
+    PickRandomLottoLists pickRandomLottoLists = new PickRandomLottoLists();
     Output output = new Output();
 
-    public List<Integer> checkException(List<Integer> lottoNumbers) {
-        checkSize(lottoNumbers);
-        checkSameNumbers(lottoNumbers);
-        checkInRange(lottoNumbers);
+    public List<Integer> checkException(List<Integer> winningNumbers) {
+        checkSize(winningNumbers);
+        checkSameNumbers(winningNumbers);
+        checkInRange(winningNumbers);
         output.lineSpace();
-        return lottoNumbers;
+
+        return winningNumbers;
     }
 
-    public void checkSize(List<Integer> lottoNumbers) {
-        if(lottoNumbers.size() != pickRandomLotto.LIMIT_LOTTO) {
+    public void checkSize(List<Integer> winningNumbers) {
+        if(winningNumbers.size() != pickRandomLottoLists.LIMIT_LOTTO) {
             throw new IllegalArgumentException(output.ERROR_ORDER+" 로또 번호의 개수는 6개여야 합니다.");
         }
     }
 
-    public void checkSameNumbers(List<Integer> lottoNumbers) {
-        if(lottoNumbers.stream().distinct().count() != pickRandomLotto.LIMIT_LOTTO) {
+    public void checkSameNumbers(List<Integer> winningNumbers) {
+        if(winningNumbers.stream().distinct().count() != pickRandomLottoLists.LIMIT_LOTTO) {
             throw new IllegalArgumentException(output.ERROR_ORDER+" 로또 번호는 같은 숫자가 중복되지 않아야 합니다.");
         }
     }
 
-    public void checkIsNumber(String[] lottoNumbers) {
-        for(int index = 0; index < lottoNumbers.length; index++) {
-            calculateIsNumber(index, lottoNumbers);
+    public void checkIsNumber(String[] winningNumbers) {
+        for(int index = 0; index < winningNumbers.length; index++) {
+            calculateIsNumber(index, winningNumbers);
         }
     }
 
-    private void calculateIsNumber(int index, String[] lottoNumbers) {
-        boolean checkNumeric = lottoNumbers[index].matches("[+-]?\\d*(\\.\\d+)?");
+    private void calculateIsNumber(int index, String[] winningNumbers) {
+        boolean checkNumeric = winningNumbers[index].matches("[+-]?\\d*(\\.\\d+)?");
 
         if(!checkNumeric){
             throw new IllegalArgumentException(output.ERROR_ORDER+" 로또 번호는 숫자로 입력되어야 합니다.");
         }
     }
 
-    private void checkInRange(List<Integer> lottoNumbers){
-        for(int index = 0; index < lottoNumbers.size(); index++){
-            checkInRangeNumber(index, lottoNumbers);
+    private void checkInRange(List<Integer> winningNumbers){
+        for(int index = 0; index < winningNumbers.size(); index++){
+            checkInRangeNumber(index, winningNumbers);
         }
     }
 
-    private void checkInRangeNumber(int index, List<Integer> lottoNumber) {
-        if(lottoNumber.get(index) < 1 || lottoNumber.get(index) > 45)    {
+    private void checkInRangeNumber(int index, List<Integer> winningNumbers) {
+        if(winningNumbers.get(index) < 1 || winningNumbers.get(index) > 45)    {
             throw new IllegalArgumentException(output.ERROR_ORDER+" 로또 번호는 1부터 45 사이의 숫자여야 합니다.");}
     }
 }

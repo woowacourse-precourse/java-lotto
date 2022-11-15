@@ -7,16 +7,16 @@ import java.util.List;
 
 public class LottoGame {
     InputMoney inputMoney = new InputMoney();
-    UserMoney userMoney = inputMoney.InputMoney();
+    UserMoney userMoney = inputMoney.inputMoney();
     WinLottoResult winLottoResult = new WinLottoResult();
 
     public void run() {
         try {
             countLottos(userMoney);
-            pickRandomLottos(inputMoney.lottoCount);
+            pickRandomLottos(inputMoney.lottoPapers);
             List<Integer> randomLottoLists = inputLottoNumbers();
             winLottosResult(randomLottoLists, PickRandomLottoLists.randomLottoLists);
-            winLottoResult.calBenefit(winLottoResult.profitMoney, userMoney);
+            winLottoResult.calBenefit(winLottoResult.yield, userMoney);
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
@@ -28,14 +28,14 @@ public class LottoGame {
     public void pickRandomLottos(int lottoPapers) {
         PickRandomLottoLists pickRandomLotto = new PickRandomLottoLists();
 
-        pickRandomLotto.PickRandomLottoNumbers(lottoPapers);
+        pickRandomLotto.pickRandomLottoNumbers(lottoPapers);
     }
 
     public List<Integer> inputLottoNumbers() {
         InputWinningNumbers inputWinningNumbers = new InputWinningNumbers();
         InputBonusNumber inputBonusNumber = new InputBonusNumber();
 
-        List<Integer> sixLottoNumbers = inputWinningNumbers.inputSixNumbers();
+        List<Integer> sixLottoNumbers = inputWinningNumbers.inputWinningNumber();
         sixLottoNumbers.add(inputBonusNumber.inputBonusNumber(sixLottoNumbers));
         return sixLottoNumbers;
     }

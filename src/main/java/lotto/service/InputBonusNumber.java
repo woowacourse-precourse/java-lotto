@@ -8,19 +8,20 @@ import lotto.view.Output;
 import java.util.List;
 
 public class InputBonusNumber {
+    public static String inputBonusNumber;
     InputBonusNumberHandler inputBonusNumberHandler = new InputBonusNumberHandler();
     InputMoneyHandler inputMoneyHandler = new InputMoneyHandler();
-    public static String INPUT_BONUS_NUMBER;
 
-    public Integer inputBonusNumber(List<Integer> sixLottoNumbers) {
+
+    public Integer inputBonusNumber(List<Integer> sixWinningNumbers) {
         Output output = new Output();
         output.bonusLottoNumberOrder();
-        INPUT_BONUS_NUMBER = userReadLine();
-        inputMoneyHandler.checkIsNumber(INPUT_BONUS_NUMBER);
-        bonusLottoNumber(INPUT_BONUS_NUMBER, sixLottoNumbers);
+        inputBonusNumber = userReadLine();
+        inputMoneyHandler.checkIsNumber(inputBonusNumber);
+        bonusLottoNumber(inputBonusNumber, sixWinningNumbers);
         output.lineSpace();
 
-        return Integer.parseInt(INPUT_BONUS_NUMBER);
+        return Integer.parseInt(inputBonusNumber);
     }
 
     public String userReadLine() {
@@ -29,8 +30,8 @@ public class InputBonusNumber {
         return userLottoNumbers;
     }
 
-    public void bonusLottoNumber(String bonusNumber, List<Integer> sixLottoNumbers){
+    public void bonusLottoNumber(String bonusNumber, List<Integer> sixWinningNumbers){
         inputBonusNumberHandler.checkBonusNumberException(bonusNumber);
-        inputBonusNumberHandler.checkAllNumbersException(bonusNumber, sixLottoNumbers);
+        inputBonusNumberHandler.checkAllNumbersException(bonusNumber, sixWinningNumbers);
     }
 }

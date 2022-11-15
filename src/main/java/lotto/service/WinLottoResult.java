@@ -7,53 +7,55 @@ import lotto.view.Output;
 import java.util.List;
 
 public class WinLottoResult {
-    public static int profitMoney;
+    public static int yield;
     InputBonusNumber inputBonusNumber = new InputBonusNumber();
 
-    public void checkWinLottoResult(List<Integer> answerLotto, List<List<Integer>> lottoList) {
+    public void checkWinLottoResult(List<Integer> winningNumbers, List<List<Integer>> randomLottoLists) {
         Output output = new Output();
+        int[] checkLottoPoint = new int[randomLottoLists.size()];
 
         output.winStatistics();
-        int[] checkWinPrice = new int[lottoList.size()];
-        for(int i = 0; i < lottoList.size(); i++){
-            checkWinPrice[i] = compareLottos(answerLotto, lottoList.get(i));
+        for(int i = 0; i < randomLottoLists.size(); i++){
+            checkLottoPoint[i] = countWinResult(winningNumbers, randomLottoLists.get(i));
         }
-        lottoResultChart(checkWinResult(checkWinPrice));
+        printWinResult(checkWinResult(checkLottoPoint));
     }
 
-    private int[] checkWinResult(int[] checkWinPrice) {
+    private int[] checkWinResult(int[] checkLottoPoint) {
         int[] checkWinResult = new int[PrizeRanking.values().length];
 
-        for(int i = 0; i < checkWinPrice.length; i++){
-            if(checkWinPrice[i]%10 == 3){ checkWinResult[0] += 1;}
-            if(checkWinPrice[i]%10 == 4){ checkWinResult[1] += 1;}
-            if(checkWinPrice[i] == 5){ checkWinResult[2] += 1;}
-            if(checkWinPrice[i] == 15){ checkWinResult[3] += 1;}
-            if(checkWinPrice[i]%10 == 6){ checkWinResult[4] += 1;}
+        for(int i = 0; i < checkLottoPoint.length; i++){
+            if(checkLottoPoint[i] % 10 == 3){ checkWinResult[0] += 1;}
+            if(checkLottoPoint[i] % 10 == 4){ checkWinResult[1] += 1;}
+            if(checkLottoPoint[i] == 5){ checkWinResult[2] += 1;}
+            if(checkLottoPoint[i] == 15){ checkWinResult[3] += 1;}
+            if(checkLottoPoint[i] % 10 == 6){ checkWinResult[4] += 1;}
         }
+
         return checkWinResult;
     }
 
-    private int compareLottos(List<Integer> answerLotto, List<Integer> lottoList ) {
+    private int countWinResult(List<Integer> winningNumbers, List<Integer> randomLottoLists ) {
         int count = 0;
-        for(int i = 0; i < lottoList.size(); i++){
-            if(lottoList.get(i) == Integer.parseInt(inputBonusNumber.INPUT_BONUS_NUMBER)) {
+
+        for(int i = 0; i < randomLottoLists.size(); i++){
+            if(randomLottoLists.get(i) == Integer.parseInt(inputBonusNumber.inputBonusNumber)) {
                 count += 10;
             }
-            if(answerLotto.contains(lottoList.get(i))) count++;
-
+            if(winningNumbers.contains(randomLottoLists.get(i))) count++;
         }
+
         return count;
     }
 
-    public void lottoResultChart(int[] lottoResult) {
+    public void printWinResult(int[] winResult) {
         Output output = new Output();
 
-        output.fifthPlace(lottoResult[0]);
-        output.fourthPlace(lottoResult[1]);
-        output.thirdPlace(lottoResult[2]);
-        output.secondPlace(lottoResult[3]);
-        output.firstPlace(lottoResult[4]);
+        output.fifthPlace(winResult[0]);
+        output.fourthPlace(winResult[1]);
+        output.thirdPlace(winResult[2]);
+        output.secondPlace(winResult[3]);
+        output.firstPlace(winResult[4]);
     }
 
     public void calBenefit(int profitMoney, UserMoney userMoney) {

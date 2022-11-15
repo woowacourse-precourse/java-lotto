@@ -7,11 +7,11 @@ import lotto.view.Output;
 
 public class InputMoney {
     public final int LOTTO_PRICE = 1000;
-    public static int lottoCount;
+    public static int lottoPapers;
     InputMoneyHandler inputMoneyHandler = new InputMoneyHandler();
     Output output = new Output();
 
-    public UserMoney InputMoney() {
+    public UserMoney inputMoney() {
         output.inputMoneyOrder();
         String inputMoney = Console.readLine();
         output.lineSpace();
@@ -22,7 +22,7 @@ public class InputMoney {
     }
 
     public void calculateLottoPapers(UserMoney inputMoney) {
-        lottoCount = inputMoney.getMoney() / LOTTO_PRICE;
-        output.purchaseLottoOrder(lottoCount);
+        lottoPapers = inputMoney.getMoney() / LOTTO_PRICE;
+        output.purchaseLottoOrder(lottoPapers);
     }
 }

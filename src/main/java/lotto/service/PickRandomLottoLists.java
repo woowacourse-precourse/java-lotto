@@ -12,7 +12,7 @@ public class PickRandomLottoLists {
     public static List<List<Integer>> randomLottoLists = new ArrayList<>();
     Output output = new Output();
 
-    public void PickRandomLottoNumbers(int lottoPapers) {
+    public void pickRandomLottoNumbers(int lottoPapers) {
         while(randomLottoLists.size() != lottoPapers) {
             List<Integer> randomLottoNumbers = Randoms.pickUniqueNumbersInRange(1,45,LIMIT_LOTTO);
             Lotto lotto = new Lotto(randomLottoNumbers);

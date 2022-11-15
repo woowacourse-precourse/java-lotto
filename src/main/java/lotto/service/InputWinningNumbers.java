@@ -11,12 +11,12 @@ public class InputWinningNumbers {
     InputWinningNumbersHandler inputWinningNumbersHandler = new InputWinningNumbersHandler();
     Output output = new Output();
 
-    public List<Integer> inputSixNumbers() {
-        List<Integer> resultSixLottoNumbers;
-        output.userLottoNumbersOrder();
-        resultSixLottoNumbers = sixLottoNumbers(userReadLine());
+    public List<Integer> inputWinningNumber() {
+        List<Integer> sixWinningNumbers;
+        output.winningLottoNumbersOrder();
+        sixWinningNumbers = sixLottoNumbers(userReadLine());
 
-        return resultSixLottoNumbers;
+        return sixWinningNumbers;
     }
 
     public List<Integer> sixLottoNumbers(String[] userLottoNumbers){
