@@ -1,57 +1,90 @@
 package lotto;
 
-import camp.nextstep.edu.missionutils.test.NsTest;
+import lotto.Model.WinningLotto;
 import org.junit.jupiter.api.Test;
 
-import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
-import static org.assertj.core.api.Assertions.assertThat;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
 
-public class ExceptionTest extends NsTest {
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-    private static final String ERROR_MESSAGE = "[ERROR]";
-
+public class ExceptionTest {
     @Test
-    void 로또_구분자_입력_테스트() {
-        assertSimpleTest(() -> {
-            runException("3000", "1,2,3,4,5_8", "9");
-            assertThat(output()).contains(ERROR_MESSAGE);
-        });
+    void 로또_자릿수_부족_테스트() {
+        String input = "1,2,3,4,7";
+        String[] splitInput = input.split(",");
+
+        List<Integer> list = Arrays.stream(splitInput)
+                .map(n -> Integer.parseInt(n))
+                .collect(Collectors.toList());
+
+        assertThatThrownBy(() -> new WinningLotto(list, 8))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
-    void 로또_자릿수_테스트() {
-        assertSimpleTest(() -> {
-            runException("3000", "1,2,3,4,7", "5");
-            assertThat(output()).contains(ERROR_MESSAGE);
-        });
-    }
+    void 로또_자릿수_초과_테스트() {
+        String input = "1,2,3,4,7,10,12";
+        String[] splitInput = input.split(",");
 
-    @Test
-    void 로또_문자_입력_테스트() {
-        assertSimpleTest(() -> {
-            runException("3000", "1,2,3,4,5,aaa", "8");
-            assertThat(output()).contains(ERROR_MESSAGE);
-        });
+        List<Integer> list = Arrays.stream(splitInput)
+                .map(n -> Integer.parseInt(n))
+                .collect(Collectors.toList());
+
+        assertThatThrownBy(() -> new WinningLotto(list, 8))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
     void 로또_중복_테스트() {
-        assertSimpleTest(() -> {
-            runException("3000", "1,2,3,4,7,7", "8");
-            assertThat(output()).contains(ERROR_MESSAGE);
-        });
+        String input = "1,2,3,4,7,7";
+        String[] splitInput = input.split(",");
+
+        List<Integer> list = Arrays.stream(splitInput)
+                .map(n -> Integer.parseInt(n))
+                .collect(Collectors.toList());
+
+        assertThatThrownBy(() -> new WinningLotto(list, 8))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
     void 보너스번호_중복_테스트() {
-        assertSimpleTest(() -> {
-            runException("3000", "1,2,3,4,6,45", "45");
-            assertThat(output()).contains(ERROR_MESSAGE);
-        });
+        String input = "1,2,3,4,6,45";
+        String[] splitInput = input.split(",");
+
+        List<Integer> list = Arrays.stream(splitInput)
+                .map(n -> Integer.parseInt(n))
+                .collect(Collectors.toList());
+
+        assertThatThrownBy(() -> new WinningLotto(list, 45))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 
-    @Override
-    protected void runMain() {
-        Application.main(new String[]{});
+    @Test
+    void 숫자범위_미달_테스트() {
+        String input = "1,2,3,4,6,0";
+        String[] splitInput = input.split(",");
+
+        List<Integer> list = Arrays.stream(splitInput)
+                .map(n -> Integer.parseInt(n))
+                .collect(Collectors.toList());
+
+        assertThatThrownBy(() -> new WinningLotto(list, 45))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void 숫자범위_초과_테스트() {
+        String input = "1,2,3,4,6,50";
+        String[] splitInput = input.split(",");
+
+        List<Integer> list = Arrays.stream(splitInput)
+                .map(n -> Integer.parseInt(n))
+                .collect(Collectors.toList());
+
+        assertThatThrownBy(() -> new WinningLotto(list, 45))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 }

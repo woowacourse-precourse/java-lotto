@@ -1,5 +1,6 @@
 package lotto;
 
+import lotto.Model.Lotto;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -18,8 +19,21 @@ class LottoTest {
     @DisplayName("로또 번호에 중복된 숫자가 있으면 예외가 발생한다.")
     @Test
     void createLottoByDuplicatedNumber() {
-        // TODO: 이 테스트가 통과할 수 있게 구현 코드 작성
         assertThatThrownBy(() -> new Lotto(List.of(1, 2, 3, 4, 5, 5)))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("로또 번호에 1 미만의 숫자가 있으면 예외가 발생한다.")
+    @Test
+    void createLottoByInvalidMinNumber() {
+        assertThatThrownBy(() -> new Lotto(List.of(0, 2, 3, 45, 8, 5)))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("로또 번호에 45 초과의 숫자가 있으면 예외가 발생한다.")
+    @Test
+    void createLottoByInvalidMaxNumber() {
+        assertThatThrownBy(() -> new Lotto(List.of(46, 2, 3, 4, 9, 5)))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
