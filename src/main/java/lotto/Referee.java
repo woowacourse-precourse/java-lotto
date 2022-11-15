@@ -2,14 +2,13 @@ package lotto;
 
 import static lotto.MatchingType.FIVE_WITH_BONUS_MATCH;
 import static lotto.MatchingType.NOT_MATCH;
+import static lotto.constant.NumberConstant.ZERO;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 public class Referee {
-
-    private static final int ZERO = 0;
 
     private final Judgement judgement;
     private final List<WinningStat> result;
@@ -25,7 +24,7 @@ public class Referee {
         Arrays.stream(MatchingType.values())
                 .filter(matchingType -> matchingType != NOT_MATCH)
                 .forEach(matchingType ->
-                        result.add(new WinningStat(matchingType, ZERO)));
+                        result.add(new WinningStat(matchingType, ZERO.getValue())));
 
         return result;
     }
