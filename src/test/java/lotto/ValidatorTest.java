@@ -35,7 +35,13 @@ public class ValidatorTest {
     }
 
     //중복 확인하는 메서드 체크
-
+    @ParameterizedTest
+    @MethodSource("parametersProvider2")
+    void 중복_확인_체크(List<String> numbers){
+        assertThatThrownBy(()->{
+            Validator.validateDuplicate(numbers);
+        }).isInstanceOf(IllegalArgumentException.class);
+    }
 
     // 1000으로 나누어 떨어지는지 확인하는 메서드 체크
     @ParameterizedTest
@@ -56,5 +62,13 @@ public class ValidatorTest {
         );
     }
 
-
+    private static Stream<Arguments> parametersProvider2(){
+        return Stream.of(
+                Arguments.arguments(List.of("15","24","1","2","3","1")),
+                Arguments.arguments(List.of("15","5","1","2","2","2")),
+                Arguments.arguments(List.of("5","5","5","5","5","5")),
+                Arguments.arguments(List.of("15","15","10","2","3","1")),
+                Arguments.arguments(List.of("16","17","18","16","20","21"))
+        );
+    }
 }
