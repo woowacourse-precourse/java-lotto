@@ -61,4 +61,15 @@ public class Controller {
         output.yield(yield);
     }
 
+    public void startLotto(){
+        int lottoCount = findLottoCount();
+
+        List<List<Integer>> randomNumbers = makeRandomNum(lottoCount);
+        List<Integer> winingNumbers = winingNumber();
+        int bonusNumber = bonusNumber(winingNumbers);
+
+        compareNumber(randomNumbers, winingNumbers, bonusNumber);
+        calculationYield();
+    }
+
 }
