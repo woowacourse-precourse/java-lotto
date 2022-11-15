@@ -29,6 +29,7 @@ public class Constant {
     public static final String ERROR_MSG_NOT_NUMBER = "[ERROR] 보너스 번호는 숫자여야 합니다.";
     public static final String ERROR_MSG_PURCHASE_MONEY_CONSIST_OF_NUM = "[ERROR] 로또 구입 금액은 숫자여야 합니다.";
     public static final String ERROR_MSG_PURCHASE_MONEY_LESS_THAN_1000 = "[ERROR] 로또 구입 금액은 1000원보다 같거나 커야합니다.";
+    public static final String ERROR_MSG_WINNING_LOTTO_CONTAIN_COMMA = "[ERROR] 당첨 번호는 ,를 포함해야합니다.";
 
     public static final String PURCHASE_LOTTO_TICKETS_MSG = "%n%d개를 구매했습니다.%n";
     public static final String WINNING_STATS_MSG = "\n당첨 통계\n---";

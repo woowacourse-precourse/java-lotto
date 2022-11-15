@@ -30,6 +30,9 @@ public class Validation {
         if (!winningNumber.matches(WINNING_NUMBER_REGEX)) {
             throw new IllegalArgumentException(ERROR_MSG_INVALID_INPUT);
         }
+        if (!winningNumber.contains(",")){
+            throw new IllegalArgumentException(ERROR_MSG_WINNING_LOTTO_CONTAIN_COMMA);
+        }
     }
 
     // 당첨 번호에 ,가 처음과 끝에 없는지 검증하는 기능
