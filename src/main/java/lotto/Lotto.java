@@ -12,14 +12,15 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
-        if (numbers.size() != 6) {
-            throw new IllegalArgumentException("[ERROR]로또는 1~45사이의 숫자 6개여야 합니다.");
-        }
+
+        Validate.validateSize(numbers);
+        Validate.validateDuplication(numbers);
+
         for (int num : numbers){
-            if (num <1 || num>45){
-                throw new IllegalArgumentException("[ERROR]로또는 1~45사이의 숫자 6개여야 합니다.");
-            }
+            Validate.validateRange(num);
         }
+
+
     }
 
     // TODO: 추가 기능 구현
@@ -74,6 +75,9 @@ public class Lotto {
         boolean isbonusMatched = checkBonusMatched(winningNums.get(bonusNumIdx),matchedNumCnt);
         return Rank.getRank(matchedNumCnt,isbonusMatched);
     }
-    
 
+
+    public List<Integer> getNumbers() {
+        return numbers;
+    }
 }

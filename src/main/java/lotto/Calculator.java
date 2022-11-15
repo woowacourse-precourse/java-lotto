@@ -5,26 +5,27 @@ import java.util.List;
 public class Calculator {
 
     private static final int LOTTO_PRICE = 1000;
-    private static final int bonusNumIdx = 6;
 
 
 
     public static int countLotto(int price){
 
-        validate(price);
+        Validate.validatePrice(price);
         return price/LOTTO_PRICE;
 
     }
 
-    public static double CalculateRate(List<Lotto> lottos, List<Integer> winningNums){
+    public static double CalculateRate(List<Lotto> lottos, Lotto winningLotto,int bonus){
 
         int totalPrize = 0;
         double rate = 0;
 
+        List<Integer> WinningNumbers = winningLotto.getNumbers();
+
         for(Lotto lotto : lottos){
-            int cnt = lotto.countMatchedNumbers(winningNums);
-            boolean isBonusmatched = lotto.checkBonusMatched(winningNums.get(bonusNumIdx),cnt);
-            Rank rank = lotto.getRank(winningNums);
+            int cnt = lotto.countMatchedNumbers(WinningNumbers);
+            boolean isBonusmatched = lotto.checkBonusMatched(bonus,cnt);
+            Rank rank = lotto.getRank(WinningNumbers);
             rank.setCount(rank.getCount()+1);
             System.out.println("cnt = " + cnt);
             System.out.println("isBonusmatched = " + isBonusmatched);
@@ -43,11 +44,7 @@ public class Calculator {
 
 
 
-    private static void validate(int price){
-        if (price % 1000 != 0) {
-            throw new IllegalArgumentException("[ERROR] 1000원 단위의 금액이여야 합니다.");
-        }
-    }
+
 
 
 }

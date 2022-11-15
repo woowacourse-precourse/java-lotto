@@ -26,6 +26,21 @@ public class Publish {
         return lottos;
     }
 
+    public static Lotto publishLotto(List<Integer> winningNums){
+
+        return new Lotto(winningNums);
+
+    }
+
+    public static int getBonusNum(List<Integer> winningNums){
+        int bonus = InputNum.askBonusNum();
+
+        winningNums.add(bonus);
+        Validate.validateDuplication(winningNums);
+
+        return bonus;
+    }
+
 
     public static List<Integer> OrderASC(List<Integer> nums){
         Collections.sort(nums);

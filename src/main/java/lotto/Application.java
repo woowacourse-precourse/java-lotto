@@ -22,9 +22,13 @@ public class Application {
         //당첨 번호 입력 받기
         List<Integer> winningNums = InputNum.askWinningNumbers();
 
+        Lotto winningLotto = Publish.publishLotto(winningNums);
+
+        //보너스 번호 입력 받기
+        int bonus = Publish.getBonusNum(winningNums);
+
         //수익률 구하기
-        double rate = Calculator.CalculateRate(lottos, winningNums);
-        System.out.println("rate = " + rate);
+        double rate = Calculator.CalculateRate(lottos,winningLotto,bonus );
 
         //당첨 통계 출력
         Print.printState(rate);
