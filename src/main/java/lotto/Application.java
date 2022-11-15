@@ -84,8 +84,11 @@ public class Application {
         ArrayList<Integer> luckyList = new ArrayList<Integer>();
 
         System.out.println("당첨 번호를 입력해 주세요.");
-        //todo: 잘못입력시 에러발생 1~45, 숫자
-        String inputLuckyNumber[] = Console.readLine().split(",");
+        String input = Console.readLine();
+        if(!isValidLottery(input)){
+            throw new IllegalArgumentException("[ERROR] 로또 번호는 "+minLottoNumber+"부터 "+maxLottoNumber+" 사이의 숫자여야 합니다.");
+        }
+        String inputLuckyNumber[] = input.split(",");
 
         for(int i=0; i<inputLuckyNumber.length; i++){
             luckyList.add(Integer.parseInt(inputLuckyNumber[i]));
@@ -239,7 +242,6 @@ public class Application {
         if(inputStringList.length != set.size()){
             return false;
         }
-
         return true;
     }
 }
