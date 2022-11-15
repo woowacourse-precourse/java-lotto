@@ -2,9 +2,17 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
+
 import java.util.Collections;
 import java.util.List;
 import static java.lang.Integer.parseInt;
+
+import java.util.logging.ConsoleHandler;
+import java.util.logging.Handler;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.util.logging.Logger;
+
 
 public class Application {
     public static void main(String[] args) {
@@ -31,7 +39,6 @@ public class Application {
         printStatistic(currentLotto.getWinNums(), currentLotto.getReturnRate(moneyInt));
     }
 
-
     public static int moneyExceptionHandling(String moneyString){
         int moneyInt;
         try{
@@ -39,11 +46,11 @@ public class Application {
         }
         catch(NumberFormatException e){
             System.out.println("[ERROR] 금액을 다시 확인해주세요.");
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR] 금액을 다시 확인해주세요.");
         }
         if(moneyInt%1000!=0){
             System.out.println("[ERROR] 금액을 1000원 단위로 입력해주세요.");
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR] 금액을 1000원 단위로 입력해주세요.");
         }
         return moneyInt/1000;
     }
