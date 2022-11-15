@@ -43,7 +43,7 @@ public class LottoGameView{
         System.out.println(lottoNumbers);
     }
     public void noticeReport(String winReport){
-
+        System.out.println(winReport);
     }
 
     public String getPurchaseAmount(){

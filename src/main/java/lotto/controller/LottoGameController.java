@@ -38,7 +38,7 @@ public class LottoGameController {
         revenue.makeStatics(discriminator.getMatches());
     }
     public void noticeWinReport(){
-
+        lottoGameView.noticeReport(revenue.getRevenueStaticsReport());
     }
     public void calculateRateOfRevenue(){
 
@@ -53,7 +53,7 @@ public class LottoGameController {
         createLotteries();
         noticeLotteries();
         checkLotteryWin();
-        figureOutWinStatics();
+        produceWinStatics();
         noticeWinReport();
         calculateRateOfRevenue();
         noticeRateOfRevenue();
