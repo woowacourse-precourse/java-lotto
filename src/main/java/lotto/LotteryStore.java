@@ -13,11 +13,11 @@ public class LotteryStore {
         return instance;
     }
 
-    public List<Lotto> buy(int money) {
+    public List<Lotto> buy(long money) {
         validateMoney(money);
 
         List<Lotto> lottos = new ArrayList<>();
-        int lottoCount = money / 1000;
+        long lottoCount = money / 1000;
         for(int i = 0; i < lottoCount; i++) {
             lottos.add(buyOne());
         }
@@ -30,7 +30,7 @@ public class LotteryStore {
         return lottos;
     }
 
-    private void validateMoney(int money) {
+    private void validateMoney(long money) {
         if (money % 1000 != 0) {
             throw new IllegalArgumentException();
         }
