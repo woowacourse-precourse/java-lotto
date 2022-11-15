@@ -1,10 +1,13 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import lotto.domain.Lotto;
+import lotto.domain.Lottos;
 import lotto.domain.WinningLotto;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.NoSuchElementException;
 
@@ -154,6 +157,21 @@ public class CustomTest extends NsTest {
     @Test
     void 단위_테스트_3_3() {
         assertThatThrownBy(() -> new WinningLotto(List.of(1,2,3,4,5,6), 6))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    // 단위테스트 - 로또를 발행하는 기능
+    @DisplayName("로또 번호에 중복이 있으면 예외가 발생한다.")
+    @Test
+    void 단위_테스트_4_1() {
+        assertThatThrownBy(() -> new Lotto(List.of(1,2,3,4,6,6)))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("로또 번호가 범위 내에 속하지 않으면 예외가 발생한다.")
+    @Test
+    void 단위_테스트_4_2() {
+        assertThatThrownBy(() -> new Lotto(List.of(1,2,3,4,5,56)))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
