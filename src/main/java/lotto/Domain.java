@@ -25,6 +25,7 @@ public class Domain {
     private static final List<Lotto> lottoList = new ArrayList<>();
     private static List<String> winningNumbers = new ArrayList<>();
     private static int bonusNumber;
+    private static final List<Rank> prizeList = new ArrayList<>();
 
     // TODO: 티켓 구매 루틴을 실행한다.
     public void buyTicket(){
@@ -40,6 +41,7 @@ public class Domain {
         initializationBonusNumber();
     }
 
+    // TODO: 구매 티켓의 번호를 비교하여 당첨 내역, 수익률을 출력하는 루틴을 실행한다.
 
     // TODO: 로또 금액 문장 출력 후 로또 금액을 입력 받는다.
     private static int inputLottoAmount(){
@@ -90,5 +92,21 @@ public class Domain {
 
     public static List<String> getWinningNumbers() {
         return winningNumbers;
+    }
+
+    // TODO: 로또 번호와 당첨 번호를 비교 한다.
+    private static void lotteryComparison(){
+        for(Lotto lottoTicket : lottoList) {
+
+            int hitCount = 0;
+            boolean hitBonus = false;
+
+            for(int number : lottoTicket.getNumbers()){
+                if (winningNumbers.contains(Integer.toString(number))) hitCount++;
+                if (bonusNumber == number) hitBonus = true;
+            }
+
+            prizeList.add(Rank.valueOf(hitCount, hitBonus));
+        }
     }
 }
