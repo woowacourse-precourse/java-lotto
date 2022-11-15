@@ -10,7 +10,6 @@ public class GenerateNumbers {
 	public static final int LOTTO_PRICE = 1000;
 	public List<Integer> lottoNumbers;
 	public static int bonusNumber;
-	public static String inputAmount;
 	public static int lotteryCount;
 
 	public List<Integer> lotto() {
@@ -24,15 +23,15 @@ public class GenerateNumbers {
 		return lottoNumbers;
 	}
 	
-	public int purchaseCount(String inputAmount) {
+	public int purchaseCount() {
 		System.out.println("구입 금액을 입력해 주세요.");
-		inputAmount = Console.readLine();
+		String inputAmount = Console.readLine();
 		int purchaseAmount = Integer.parseInt(inputAmount);
 		int lotteryCount = purchaseAmount / LOTTO_PRICE;
 		return lotteryCount;
 	}
 	
-	public String randomNubmer(int lotteryCount) {
+	public String randomNubmer() {
 		String randomNumbers = "";
 		for (int repeat = 0; repeat < lotteryCount; repeat++) {
 			randomNumbers += lotto() + "\n";
