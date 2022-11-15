@@ -6,8 +6,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Input {
-    Output output = new Output();
-    public int buyLotto() {
+    static Output output = new Output();
+    public static int buyLotto() {
         System.out.println("구입금액을 입력해 주세요.");
         int purchasedValueReader = 0;
 
@@ -21,7 +21,7 @@ public class Input {
     }
 
 
-    public int checkHowManyLotto(int purchasedValue){
+    public static int checkHowManyLotto(int purchasedValue){
         if (purchasedValue % 1000 != 0) {
             output.wrongNumberException();
         }
@@ -32,7 +32,7 @@ public class Input {
         return lottoCount;
     }
 
-    public Lotto userInputLottoNumber(){
+    public static Lotto userInputLottoNumber(){
         String userInputLotto;
         String[] userInputLottoTmp;
         List<Integer> numbers = new ArrayList<>();
@@ -40,7 +40,7 @@ public class Input {
         userInputLotto = Console.readLine();
         userInputLottoTmp = userInputLotto.split(",");
         for (int i = 0; i < userInputLottoTmp.length; i++) {
-              numbers.add(Integer.parseInt(userInputLottoTmp[i]));
+            numbers.add(Integer.parseInt(userInputLottoTmp[i]));
         }
 
         return new Lotto(numbers);
