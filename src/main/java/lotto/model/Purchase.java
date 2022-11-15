@@ -25,7 +25,7 @@ public class Purchase {
         try{
             return Integer.parseInt(PurchaseMoney);
         } catch(NumberFormatException e){
-            throw new IllegalArgumentException(Error.NUMBER.getMessage());
+            throw new IllegalArgumentException(Error.UNIT.getMessage());
         }
     }
 
