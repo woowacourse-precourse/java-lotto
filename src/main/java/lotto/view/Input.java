@@ -10,23 +10,12 @@ import java.util.stream.Stream;
 
 public class Input {
     public static final String INPUT_MONEY_THOUSAND_ERROR = "[ERROR] 금액이 천원 단위가 아닙니다.";
+    public static final String INPUT_LOTTO_COMMA_ERROR = "[ERROR] , 구분자를 정확히 입력하세요.";
 
     public static int inputMoney() {
         String money = Console.readLine();
         validateInputMoneyThousand(money);
         return Integer.parseInt(money);
-    }
-
-    public static List<Integer> inputPrizeNumbers() {
-        String numbers = Console.readLine();
-
-        return Stream.of(numbers.split(","))
-                .map(Integer::parseInt)
-                .collect(Collectors.toList());
-    }
-
-    public static int inputBonusNumber() {
-        return Integer.parseInt(Console.readLine());
     }
 
     private static void validateInputMoneyThousand(String money){
@@ -36,4 +25,25 @@ public class Input {
             throw new IllegalArgumentException(INPUT_MONEY_THOUSAND_ERROR);
         }
     }
+
+    public static List<Integer> inputPrizeNumbers() {
+        String numbers = Console.readLine();
+        validateInputLottoComma(numbers);
+        return Stream.of(numbers.split(","))
+                .map(Integer::parseInt)
+                .collect(Collectors.toList());
+    }
+
+    private static void validateInputLottoComma(String numbers){
+        for(int i = 1; i < numbers.length(); i +=2){
+            if(!(numbers.charAt(i) == ',')){
+                throw new IllegalArgumentException(INPUT_LOTTO_COMMA_ERROR);
+            }
+        }
+    }
+
+    public static int inputBonusNumber() {
+        return Integer.parseInt(Console.readLine());
+    }
+
 }
