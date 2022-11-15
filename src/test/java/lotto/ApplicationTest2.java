@@ -4,6 +4,9 @@ import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -12,19 +15,7 @@ public class ApplicationTest2 extends NsTest {
     Application app = new Application();
     private static final String ERROR_MESSAGE = "[ERROR]";
 
-    @Test
-    public void inputTest1() {
-        assertThat(app.userMoneyCheck("8000")).isEqualTo(8);
-    }
-
-    @Test
-    public void inputTest2() {
-        assertThrows(IllegalArgumentException.class, () -> {
-                    app.userMoneyCheck("1000j");
-            }
-        );
-    }
-
+  
     @Test
     public void winningNumberDuplicateTest(){
         assertThrows(IllegalArgumentException.class, () -> {
@@ -47,6 +38,12 @@ public class ApplicationTest2 extends NsTest {
                     new WinningNumbers("1,2,88,5,7,6");
                 }
         );
+    }
+
+    @Test
+    public void checkLottoIsSorted(){
+        Lotto lotto = new Lotto(List.of(5,3,7,10,8,45));
+        assertThat(lotto.getSortedLottoNumbers()).containsExactly(3,5,7,8,10,45);
     }
 
     @Override
