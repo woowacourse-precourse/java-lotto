@@ -11,6 +11,14 @@ public class Application {
     private static final String INPUT_WINNING_NUMBERS_MESSAGE = "당첨 번호를 입력해 주세요.\n";
     
     public static void main(String[] args) {
+        try {
+            start();
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+    
+    public static void start() {
         UserInterFace userInterFace = new UserInterFace();
         userInterFace.print(INPUT_MONEY_MESSAGE);
         int inputMoney = userInterFace.inputInteger();
