@@ -25,4 +25,18 @@ class ValidateTest {
         assertThat(wrong).isEqualTo(true);
         assertThat(correct).isEqualTo(false);
     }
+
+    @DisplayName("중복된 수 확인")
+    @Test
+    void duplicateNumberTest() {
+        int duplicateNumber = 5;
+        int newNumber = 6;
+        int [] numbers = {1,2,3,4,5};
+
+        boolean incorrect = validate.duplicateNumber(duplicateNumber, numbers);
+        boolean correct =  validate.duplicateNumber(newNumber, numbers);
+
+        assertThat(incorrect).isEqualTo(true);
+        assertThat(correct).isEqualTo(false);
+    }
 }
