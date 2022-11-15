@@ -7,6 +7,7 @@ import lotto.domain.prize.PrizeStatistics;
 import lotto.domain.prize.PrizeType;
 
 public class OutputView {
+    private static final String TOTAL_EARNING_OUTPUT = "총 수익률은 %.1f%%입니다.\n";
 
     public void lottosOutput(List<List<Integer>> lottos) {
         System.out.println();
@@ -32,6 +33,6 @@ public class OutputView {
     }
 
     public void earningOutput(Earning earning) {
-        System.out.println("총 수익률은 " + earning.getEarning() + "%입니다.");
+        System.out.printf(TOTAL_EARNING_OUTPUT, earning.getEarning());
     }
 }
