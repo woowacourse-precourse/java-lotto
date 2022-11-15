@@ -1,5 +1,7 @@
-package lotto;
+package lotto.domain;
 
+import lotto.domain.Lotto;
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -24,4 +26,10 @@ class LottoTest {
     }
 
     // 아래에 추가 테스트 작성 가능
+    @Test
+    void 로또번호잘가져오는지확인() {
+        Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+
+        Assertions.assertThat(lotto.getLottoNumbers()).isEqualTo(List.of(1, 2, 3, 4, 5, 6));
+    }
 }
