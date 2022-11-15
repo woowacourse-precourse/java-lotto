@@ -11,6 +11,7 @@ public enum Rank {
     private final int reward;
     private final int count;
     private final boolean bonus;
+
     Rank(int reward, final int count, boolean bonus) {
         this.reward = reward;
         this.count = count;
