@@ -1,5 +1,8 @@
 package lotto.domain;
 
+import static lotto.constant.OutputMessage.DIVISION;
+import static lotto.constant.OutputMessage.WINNING_STATISTICS;
+
 import java.util.List;
 
 public class MatchLotto {
@@ -10,6 +13,19 @@ public class MatchLotto {
     private static int rank4 = 0;
     private static int rank5 = 0;
     private static double revenue = 0;
+
+    public void matchLottos(List<Lotto> lottos, List<Integer> winningNumbers, int bonusNumber, int inputAmount) {
+        System.out.println(WINNING_STATISTICS);
+        System.out.println(DIVISION);
+
+        for (Lotto lotto : lottos) {
+            int winningRank = getRank(lotto, winningNumbers, bonusNumber);
+//            calculateResult(winningRank);
+        }
+
+        double yield = revenue / (double) inputAmount * 100;
+//        printResult(yield);
+    }
 
     public int getRank(Lotto lotto, List<Integer> winningNumber, int bonusNumber) {
         int count = 0;
