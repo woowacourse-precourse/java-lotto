@@ -14,6 +14,18 @@ public class Referee {
         this.bonusNumber = bonusNumber;
     }
 
+    public List<Grade> calculateGrades() {
+        List<Grade> grades = new ArrayList<>();
+        for(Lotto lotto : lottos) {
+            int matchCount = getWinningNumberMatchCount(lotto);
+            int bonusCount = getBonusNumberMatchCount(lotto);
+            Grade grade = Grade.findingGrade(matchCount, bonusCount);
+            if (grade != null) {
+                grades.add(grade);
+            }
+        }
+        return grades;
+    }
 
     public int getWinningNumberMatchCount(Lotto lotto) {
         int winNumberMatchCount = 0;
