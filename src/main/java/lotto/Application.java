@@ -39,7 +39,7 @@ public class Application {
         }
 
         lottoQuantity = inputMoney / LOTTO_PRICE;
-        System.out.printf("%d개를 구매했습니다.\n", lottoQuantity);
+        System.out.printf("\n%d개를 구매했습니다.\n", lottoQuantity);
 
         for (int cnt = 0; cnt < lottoQuantity; cnt++) {
             Lotto lotto = new Lotto(Randoms.pickUniqueNumbersInRange(MIN_LOTTO_NUMBER, MAX_LOTTO_NUMBER, LOTTO_NUMBER_COUNT));
@@ -48,7 +48,7 @@ public class Application {
             System.out.println(lotto);
         }
 
-        System.out.println("당첨 번호를 입력해 주세요.");
+        System.out.println("\n당첨 번호를 입력해 주세요.");
         userInput = Console.readLine();
         Set<Integer> checkDuplicatedNumbers = new HashSet<>();
         String[] splitInput = userInput.split(",");
@@ -80,7 +80,7 @@ public class Application {
         List<Integer> winningNumbers = new ArrayList<>(checkDuplicatedNumbers);
         winningNumbers.sort(Integer::compareTo);
 
-        System.out.println("보너스 번호를 입력해 주세요.");
+        System.out.println("\n보너스 번호를 입력해 주세요.");
         userInput = Console.readLine();
         int bonusNumber;
 
@@ -113,5 +113,21 @@ public class Application {
                 rankCounts.put(rank, rankCounts.get(rank) + 1);
             }
         }
+
+        System.out.println("\n당첨 통계");
+        System.out.println("---");
+
+        List<Rank> ranks = new ArrayList<>(rankCounts.keySet());
+        ranks.sort(Rank::compareTo);
+        long totalPrize = 0L;
+
+        for (Rank rank : ranks) {
+            int rankCount = rankCounts.get(rank);
+            totalPrize += ((long) rank.getPrize()) * rankCount;
+            System.out.printf(rank + " - %d개\n", rankCounts.get(rank));
+        }
+
+        double rateOfReturn = Math.round(((double) totalPrize / inputMoney) * 1000) / 10.0;
+        System.out.printf("총 수익률은 %.1f%%입니다.", rateOfReturn);
     }
 }
