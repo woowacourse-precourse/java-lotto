@@ -1,6 +1,7 @@
-package yieldMachine;
+package lotto.yieldMachine;
 
-import lotto.BoughtLotto;
+import lotto.lotto.BoughtLotto;
+import lotto.yieldMachine.YieldMachine;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

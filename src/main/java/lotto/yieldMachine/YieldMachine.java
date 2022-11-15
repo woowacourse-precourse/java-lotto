@@ -1,8 +1,8 @@
-package yieldMachine;
+package lotto.yieldMachine;
 
-import user.User;
-import lotto.BoughtLotto;
-import lotto.WinningNumberLotto;
+import lotto.user.User;
+import lotto.lotto.BoughtLotto;
+import lotto.lotto.WinningNumberLotto;
 
 import java.util.ArrayList;
 import java.util.List;

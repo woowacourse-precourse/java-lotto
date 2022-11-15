@@ -1,4 +1,4 @@
-package lotto.inputNumber;
+package lotto.lotto.inputNumber;
 
 import camp.nextstep.edu.missionutils.Console;
 

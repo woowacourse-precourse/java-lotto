@@ -1,9 +1,8 @@
-package lotto;
+package lotto.lotto;
 
 import camp.nextstep.edu.missionutils.Console;
-import lotto.inputNumber.InputNumber;
+import lotto.lotto.inputNumber.InputNumber;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class WinningNumberLotto extends Lotto {
