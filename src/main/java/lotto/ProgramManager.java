@@ -14,8 +14,8 @@ public class ProgramManager {
 
     private static int price;
     private static int numberOfLotto;
-    private static List<Integer> userPredictLottoNumbers;
-    private static int userPredictBonusNumber;
+    public static List<Integer> userPredictLottoNumbers;
+    public static int userPredictBonusNumber;
 
     public static List<List<Integer>> lotto;
     public static Map<String, Integer> lottoRankResult;
@@ -30,7 +30,8 @@ public class ProgramManager {
         lotto = LottoManager.generateLotto(numberOfLotto);
         OutputManager.printLotto(numberOfLotto);
 
-        getUserPredictLottoNumbers();
+        setUserPredictLottoNumbers();
+        setUserPredictBonusNumber();
 
         lottoRankResult = LottoManager.getLottoRankResult(userPredictLottoNumbers, userPredictBonusNumber);
         lottoRevenueRate = LottoManager.getRevenueRate(price, lottoRankResult);
@@ -49,14 +50,16 @@ public class ProgramManager {
         OutputManager.printNumberOfLottoMessage(numberOfLotto);
     }
 
-    private static void getUserPredictLottoNumbers() {
+    private static void setUserPredictLottoNumbers() {
         OutputManager.askPredictLottoNumber();
         try {
-            userPredictLottoNumbers = InputManager.getInput_predictLottoNumber();
+            userPredictLottoNumbers = InputManager.getInput_predictLottoNumbers();
         } catch (IllegalArgumentException exception) {
             OutputManager.printErrorMessage_wrongLottoValue();
         }
+    }
 
+    private static void setUserPredictBonusNumber() {
         OutputManager.askPredictBonusNumber();
         try {
             userPredictBonusNumber = InputManager.getInput_predictBonusLottoNumber();
