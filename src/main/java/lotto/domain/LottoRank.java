@@ -1,5 +1,7 @@
 package lotto.domain;
 
+import java.util.Arrays;
+
 public enum LottoRank {
     LOSE(0, false, 0, ""),
     FIFTH(3, false, 5_000, "3개 일치 (5,000원)"),
@@ -18,5 +20,9 @@ public enum LottoRank {
         this.hasBonusNumber = hasBonusNumber;
         this.prizeMoney = prizeMoney;
         this.description = description;
+    }
+
+    public boolean correctWinningNumberCount(int winningNumberCount) {
+        return this.winningNumberCount == winningNumberCount;
     }
 }
