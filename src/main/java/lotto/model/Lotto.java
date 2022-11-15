@@ -1,5 +1,7 @@
 package lotto.model;
 
+import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -9,7 +11,12 @@ public class Lotto {
     public Lotto(List<Integer> numbers) {
         validate(numbers);
         checkOverlap(numbers);
-        this.numbers = numbers;
+        List<Integer> sortedNumbers = new ArrayList<>();
+        for (Integer number : numbers) {
+            sortedNumbers.add(number);
+        }
+        sortedNumbers.sort(Comparator.naturalOrder());
+        this.numbers = sortedNumbers;
     }
 
     public List<Integer> getNumbers() {
