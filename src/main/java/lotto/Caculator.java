@@ -1,7 +1,5 @@
 package lotto;
 
-import lotto.WinningChecker;
-
 import java.util.HashMap;
 
 public class Caculator {
@@ -14,8 +12,8 @@ public class Caculator {
         this.money = money;
     }
 
-    private int caculatePaper(int money) {
-        int paper = money / LOTTO_PRICE;
+    private int caculatePaper(long money) {
+        int paper = (int)money / LOTTO_PRICE;
         return paper;
     }
 
