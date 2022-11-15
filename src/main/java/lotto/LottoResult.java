@@ -4,8 +4,15 @@ import java.util.List;
 import java.util.Objects;
 
 public class LottoResult {
+    public static final int FIRST_PRIZE = 2000000000;
+    public static final int SECOND_PRIZE = 30000000;
+    public static final int THIRD_PRIZE = 1500000;
+    public static final int FOURTH_PRIZE = 50000;
+    public static final int FIFTH_PRIZE = 5000;
+
     private final List<Lotto> lottoList;
     private final WinningLottoNumber winningLottoNumber;
+
     private Integer threeCount = 0;
     private Integer fourCount = 0;
     private Integer fiveCount = 0;
@@ -48,27 +55,15 @@ public class LottoResult {
     }
 
     private void setTotalPrize() {
-        this.totalPrize = (sixCount * 2000000000)
-                + (fiveAndBonusCount * 30000000)
-                + (fiveCount * 1500000)
-                + (fourCount * 50000)
-                + (threeCount * 5000);
-    }
-
-    public void getWinningResult() {
-        setWinningResult();
-        System.out.println("당첨 통계");
-        System.out.println("---");
-        System.out.println("3개 일치 (5,000원) - " + threeCount + "개");
-        System.out.println("4개 일치 (50,000원) - " + fourCount + "개");
-        System.out.println("5개 일치 (1,500,000원) - " + fiveCount + "개");
-        System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - " + fiveAndBonusCount + "개");
-        System.out.println("6개 일치 (2,000,000,000원) - " + sixCount + "개");
-        System.out.println();
-        System.out.println("총 수익률은 " + (double) Math.round(yield * 100) / 100 + "%입니다.");
+        this.totalPrize = (sixCount * FIRST_PRIZE)
+                + (fiveAndBonusCount * SECOND_PRIZE)
+                + (fiveCount * THIRD_PRIZE)
+                + (fourCount * FOURTH_PRIZE)
+                + (threeCount * FIFTH_PRIZE);
     }
 
     private void yieldCalculation() {
         yield = (double) totalPrize / (lottoList.size() * 10);
     }
+
 }
