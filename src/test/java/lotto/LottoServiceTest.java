@@ -33,4 +33,18 @@ public class LottoServiceTest {
         Set<Integer> set = new HashSet<>(generator.createDuplicateNumbers());
         assertThat(set.size()).isEqualTo(6);
     }
+
+    @Test
+    @DisplayName("당첨 티켓에 숫자가 아닌 값 들어가면 IllegalArgumentException 발생한다.")
+    void 당첨티켓_숫자가_아닌값일시_예외발생_테스트() {
+        assertThatIllegalArgumentException()
+                .isThrownBy(() -> lottoService.separateInputWinningNumbers("1,3,5,7,9,!"));
+    }
+
+    @Test
+    @DisplayName("당첨 티켓에 구분 값 , 이 아닌 다른 값 들어가면 IllegalArgumentException 발생한다.")
+    void 당첨티켓_구분값_잘못_들어가면_예외발생_테스트() {
+        assertThatIllegalArgumentException()
+                .isThrownBy(() -> lottoService.separateInputWinningNumbers("1,3,5,7,9.11"));
+    }
 }
