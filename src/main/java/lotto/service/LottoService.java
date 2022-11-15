@@ -1,13 +1,12 @@
 package lotto.service;
 
-import lotto.domain.Lotto;
-
-import java.util.ArrayList;
-import java.util.List;
-
 import static camp.nextstep.edu.missionutils.Randoms.pickUniqueNumbersInRange;
 import static lotto.utils.Constants.*;
 import static lotto.utils.Converter.convertToCountsOfLotto;
+
+import lotto.domain.Lotto;
+import java.util.ArrayList;
+import java.util.List;
 
 public class LottoService {
     public static List<Lotto> generateLottoByPurchaseAmount(int purchaseAmount) {
