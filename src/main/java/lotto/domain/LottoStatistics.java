@@ -6,7 +6,15 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import static lotto.domain.LottoResult.*;
+import static lotto.domain.LottoResult.THREE;
+import static lotto.domain.LottoResult.FOUR;
+import static lotto.domain.LottoResult.FIVE;
+import static lotto.domain.LottoResult.FIVE_BONUS;
+import static lotto.domain.LottoResult.SIX;
+import static lotto.domain.LottoResult.LOSING;
+
+import static lotto.domain.LottoResult.fromBonus;
+import static lotto.domain.LottoResult.fromSix;
 
 public class LottoStatistics {
     private static final int numberThree = 3;
