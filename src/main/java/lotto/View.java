@@ -35,7 +35,7 @@ public class View {
         }
     }
 
-    void printBenfit(int input, long result) {
+    void printBenfit(long input, long result) {
         double db = (double) result / input * 100;
         DecimalFormat df = new DecimalFormat("#,##0.0");
         String answer = df.format(db);

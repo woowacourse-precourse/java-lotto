@@ -14,7 +14,7 @@ public class Controller {
     Computer[] computers;
 
     void start() {
-        int inMoney;
+        long inMoney;
         try {
             startMoney();
             startMoneyException();
@@ -32,7 +32,7 @@ public class Controller {
         }
     }
 
-    private void Result(int inMoney) {
+    private void Result(long inMoney) {
         View view = new View();
         Domain domain = new Domain();
         long result = domain.checkWinningMoney(map);
@@ -51,8 +51,8 @@ public class Controller {
         lotto.getNumbers().add(bonus);
     }
 
-    private int inMoney() {
-        return Integer.parseInt(input);
+    private Long inMoney() {
+        return Long.parseLong(input);
     }
 
     private String getInput() {
@@ -81,11 +81,11 @@ public class Controller {
         input = getInput();
     }
 
-    private void getComputers(int inMoney) {
+    private void getComputers(long inMoney) {
         View view = new View();
-        computers = new Computer[inMoney / 1000];
+        computers = new Computer[(int)inMoney / 1000];
         for (int i = 0; i < inMoney / 1000; i++) computers[i] = new Computer();
-        view.purchaseNumber(inMoney / 1000, computers);
+        view.purchaseNumber((int)inMoney / 1000, computers);
         System.out.println();
     }
 
