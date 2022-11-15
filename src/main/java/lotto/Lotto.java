@@ -2,6 +2,8 @@ package lotto;
 
 import java.util.List;
 
+import static lotto.constant.MessageConstant.*;
+
 public class Lotto {
     private final List<Integer> numbers;
 
