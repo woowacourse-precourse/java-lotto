@@ -1,8 +1,11 @@
 package lotto.model;
 
 import lotto.Constant;
+import lotto.domain.Lotto;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 
 public class Main_Service {
@@ -28,4 +31,41 @@ public class Main_Service {
         List<Integer> intersection = make_Intersection(eachLottoNumbers, winNumbers);
         return intersection.size();
     }
+
+    private HashMap<Integer, List<Integer>> init_Map() {
+        HashMap<Integer, List<Integer>> indexMap = new HashMap<>();
+        indexMap.put(3, Arrays.asList(0));
+        indexMap.put(4, Arrays.asList(1));
+        indexMap.put(5, Arrays.asList(2, 3));
+        indexMap.put(6, Arrays.asList(4));
+        return indexMap;
+    }
+
+    private List<Integer> change_LottoToList(Lotto eachLotto) {
+        return eachLotto.getNumbers();
+    }
+
+    private boolean check_Bonus(List<Integer> difference, int bonusNumber) {
+        if (difference.contains(bonusNumber)) { // bonus까지 맞췄을 경우
+            return true;
+        }
+        return false;
+    }
+
+    private int get_Index(List<Integer> eachLottoNumbers, List<Integer> winNumbers, int bonusNumber) {
+        HashMap<Integer, List<Integer>> index_map = init_Map();
+        List<Integer> difference = make_Difference(eachLottoNumbers, winNumbers);
+        int match_cnt = count_MatchingNumbers(eachLottoNumbers, winNumbers);
+        if (match_cnt < 3) {
+            return -1;
+        }
+        if (match_cnt == 5) {
+            if (check_Bonus(difference, bonusNumber)) {
+                return index_map.get(match_cnt).get(1);
+            }
+            return index_map.get(match_cnt).get(0);
+        }
+        return index_map.get(match_cnt).get(0);
+    }
+
 }
