@@ -19,23 +19,56 @@ public class Application {
         int money = getMoneyInputFromUser();
         int numberOfLotteries = calculateNumberOfLotteries(money);
 
+        List<Lotto> lotteries = getLotteries(numberOfLotteries);
+
+        WinLotto winLotto = getWinLotto();
+
+        Map<Result, Integer> matches = new HashMap<>();
+        printWins(lotteries, winLotto, matches);
+        printProfit(matches, money);
+    }
+
+    private static void printProfit(Map<Result, Integer> matches, int money) {
+        int profit = calculateProfit(matches);
+        double profitPercent = calculateProfitPercent(profit, money);
+        System.out.println("총 수익률은 " + profitPercent + "%입니다");
+    }
+
+    public static double calculateProfitPercent(int profit, int money) {
+        return round((double) profit / money * 100, 1);
+    }
+
+    private static int calculateProfit(Map<Result, Integer> matches) {
+        int profit = 0;
+        for (Entry<Result, Integer> entry : matches.entrySet()) {
+            profit += entry.getKey().price * entry.getValue();
+        }
+        return profit;
+    }
+
+    private static double round (double value, int precision) {
+        int scale = (int) Math.pow(10, precision);
+        return (double) Math.round(value * scale) / scale;
+    }
+
+    private static List<Lotto> getLotteries(int numberOfLotteries) {
         printNumberOfLotteries(numberOfLotteries);
 
         List<Lotto> lotteries = new LinkedList<>();
         randomPickLotteries(lotteries, numberOfLotteries);
+        return lotteries;
+    }
 
+    private static WinLotto getWinLotto() {
         printInputWinLotto();
         WinLotto winLotto = getWinLottoInputFromUser();
         String bonusInput = getBonusInputFromUser();
         winLotto.validateBonusInput(bonusInput);
         winLotto.setBonus(Integer.parseInt(bonusInput));
-
-        printWins(lotteries, winLotto);
-
+        return winLotto;
     }
 
-    private static void printWins(List<Lotto> lotteries, WinLotto winLotto) {
-        Map<Result, Integer> matches = new HashMap<>();
+    private static void printWins(List<Lotto> lotteries, WinLotto winLotto, Map<Result, Integer> matches) {
         for (Lotto lotto : lotteries) {
             winLotto.matches(lotto, matches);
         }
