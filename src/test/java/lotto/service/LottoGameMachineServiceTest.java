@@ -82,4 +82,8 @@ class LottoGameMachineServiceTest {
         assertThat(rating.get(Rating.FIRST)).isEqualTo(1);
     }
 
+    @AfterAll
+    public static void afterAll(){
+        service = null;
+    }
 }

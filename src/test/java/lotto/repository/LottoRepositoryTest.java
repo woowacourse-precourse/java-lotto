@@ -1,6 +1,7 @@
 package lotto.repository;
 
 import lotto.domain.Lotto;
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -59,5 +60,10 @@ class LottoRepositoryTest {
 
         // Then
         assertThat(repository.getBonusNumber()).isEqualTo(1);
+    }
+
+    @AfterAll
+    public static void afterAll(){
+        repository = null;
     }
 }
