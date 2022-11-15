@@ -14,21 +14,30 @@ public class BuyLotto {
 
     BuyLotto(String buyNumber) {
         int buyNum = valid_BuyNum(buyNumber);
+        valid_devideNum(buyNum);
         this.buyNum = buyNum;
         buyCount();
 
     }
 
+    public  static void valid_devideNum(int buyNum) {
+        if (buyNum % 1000 != 0) {
+            throw new IllegalArgumentException("[ERROR] : 1000 단위의 숫자만 입력해주세요");
+        }
+    }
+
     public static int valid_BuyNum(String BuyNum) {
-        int num =0;
+        int num = 0;
+
         try {
             num = Integer.parseInt(BuyNum);
         } catch (IllegalArgumentException e) {
             System.out.println("[ERROR]");
         }
         return num;
-    }
 
+
+    }
     private void buyCount() {
         int buyCount = buyNum/1000;
         System.out.println(buyCount+"개를 구매했습니다.");
