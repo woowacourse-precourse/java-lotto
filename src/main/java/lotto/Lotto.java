@@ -78,7 +78,7 @@ public class Lotto {
     }
 
     private void outOfRangeExceptioin(List<Integer> numbers) {
-        for(Integer number : numbers) {
+        for (Integer number : numbers) {
             isOutOfRangeException(number);
         }
     }
