@@ -33,5 +33,27 @@ class LottoTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+    @DisplayName("금액 입력값이 숫자가 아니면 예외가 발생한다.")
+    @Test
+    void moneyInputIsNotNumber() {
+        assertThatThrownBy(() -> service.getLottoCount("122gfgg"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("금액 입력값이 1000 단위가 아니면 예외가 발생한다.")
+    @Test
+    void moneyInputIsNotRightFormat() {
+        assertThatThrownBy(() -> service.getLottoCount("1230"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("금액에 맞는 로또 개수를 반환한다.")
+    @Test
+    void getLottoCount() {
+        assertThat(service.getLottoCount("5000")).isEqualTo(5);
+        assertThat(service.getLottoCount("23000")).isEqualTo(23);
+        assertThat(service.getLottoCount("2000")).isEqualTo(2);
+    }
+
 
 }
