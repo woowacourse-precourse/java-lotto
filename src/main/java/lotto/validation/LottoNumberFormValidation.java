@@ -1,6 +1,8 @@
-package lotto.service;
+package lotto.validation;
 
 import lotto.exception.ErrorCode;
+
+import java.util.List;
 
 public class LottoNumberFormValidation {
 
@@ -21,14 +23,14 @@ public class LottoNumberFormValidation {
         return bonusNumber;
     }
 
-    private void digitValid(String writePay) {
-        if (!isDigit(writePay)) {
+    private void digitValid(String writeBonusNumber) {
+        if (!isDigit(writeBonusNumber)) {
             throw new IllegalArgumentException(ErrorCode.ERROR.getMessage());
         }
     }
 
-    private boolean isDigit(String write) {
-        return write.chars().allMatch(Character::isDigit);
+    private boolean isDigit(String writeBonusNumber) {
+        return writeBonusNumber.chars().allMatch(Character::isDigit);
     }
 
     private void rangeNumberValid(int bonusNumber) {
@@ -37,4 +39,12 @@ public class LottoNumberFormValidation {
         }
     }
 
+    public void duplicatedValid(List<Integer> numbers) {
+        int currentCount = numbers.size();
+        int distinctCount = (int) numbers.stream().distinct().count();
+
+        if (currentCount != distinctCount) {
+            throw new IllegalArgumentException(ErrorCode.ERROR.getMessage());
+        }
+    }
 }

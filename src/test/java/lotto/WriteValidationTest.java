@@ -1,8 +1,8 @@
 package lotto;
 
-import lotto.dto.WinningLottoNumber;
+import lotto.dto.WinningLottoNumberDto;
 import lotto.exception.ErrorCode;
-import lotto.service.WriteValidation;
+import lotto.service.LottoShopService;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -13,7 +13,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class WriteValidationTest {
 
-    private WriteValidation validation = new WriteValidation();
+    private LottoShopService lottoShopService = new LottoShopService();
 
     @Test
     @DisplayName("유효한 당첨번호 6개를 입력하고 보너스 번호 1개를 입력하여 테스트 성공")
@@ -26,7 +26,7 @@ class WriteValidationTest {
         int expectedBonusNumber = 7;
 
         // when
-        WinningLottoNumber winningLottoNumber = validation.writeWinningLottoNumbers(writeLottoNumber, writeBonusNumber);
+        WinningLottoNumberDto winningLottoNumber = lottoShopService.getWinningLottoNumber(writeLottoNumber, writeBonusNumber);
 
         // then
         assertThat(expectedLottoNumber).isEqualTo(winningLottoNumber.getWinningNumbers());
@@ -41,7 +41,7 @@ class WriteValidationTest {
         String writeBonusNumber = "7";
 
         // when && then
-        assertThatThrownBy(() -> validation.writeWinningLottoNumbers(writeLottoNumber, writeBonusNumber))
+        assertThatThrownBy(() -> lottoShopService.getWinningLottoNumber(writeLottoNumber, writeBonusNumber))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(ErrorCode.ERROR.getMessage());
     }
@@ -54,7 +54,7 @@ class WriteValidationTest {
         String writeBonusNumber = "7,1";
 
         // when && then
-        assertThatThrownBy(() -> validation.writeWinningLottoNumbers(writeLottoNumber, writeBonusNumber))
+        assertThatThrownBy(() -> lottoShopService.getWinningLottoNumber(writeLottoNumber, writeBonusNumber))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(ErrorCode.ERROR.getMessage());
     }
@@ -67,7 +67,7 @@ class WriteValidationTest {
         String writeBonusNumber = "46";
 
         // when && then
-        assertThatThrownBy(() -> validation.writeWinningLottoNumbers(writeLottoNumber, writeBonusNumber))
+        assertThatThrownBy(() -> lottoShopService.getWinningLottoNumber(writeLottoNumber, writeBonusNumber))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(ErrorCode.ERROR.getMessage());
     }

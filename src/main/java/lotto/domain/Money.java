@@ -24,4 +24,8 @@ public class Money {
     public int getPayment() {
         return payment;
     }
+
+    public static Money of(String payment) {
+        return new Money(payment);
+    }
 }

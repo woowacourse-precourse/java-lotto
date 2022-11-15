@@ -1,7 +1,7 @@
 package lotto.view;
 
 import lotto.domain.Rank;
-import lotto.dto.ResponseRankAggregation;
+import lotto.dto.RankAggregationDto;
 import lotto.service.YieldService;
 
 import java.text.DecimalFormat;
@@ -11,14 +11,14 @@ public class WinningHistoryView {
     private static DecimalFormat decimalFormat = new DecimalFormat("###,###");
     private static YieldService yieldService = new YieldService();
 
-    public static void showRankAggregation(ResponseRankAggregation responseRankAggregation, String pay) {
+    public static void showRankAggregation(RankAggregationDto responseRankAggregation, int payment) {
         showAggregationForm();
         showFifthRankCount(responseRankAggregation.getFifthRankCount());
         showFourthRankCount(responseRankAggregation.getFourthRankCount());
         showThirdRankCount(responseRankAggregation.getThirdRankCount());
         showSecondRankCount(responseRankAggregation.getSecondRankCount());
         showFirstRankCount(responseRankAggregation.getFirstRankCount());
-        showYield(responseRankAggregation, pay);
+        showYield(responseRankAggregation, payment);
     }
 
     private static void showAggregationForm() {
@@ -46,8 +46,8 @@ public class WinningHistoryView {
         System.out.printf("%d개 일치 (%s원) - %d개\n", Rank.FIFTH.getMatchCount(), decimalFormat.format(Rank.FIFTH.getWinningMoney()), fifthRankCount);
     }
 
-    private static void showYield(ResponseRankAggregation responseRankAggregation, String pay) {
-        String calculate = yieldService.calculate(responseRankAggregation, pay);
+    private static void showYield(RankAggregationDto responseRankAggregation, int payment) {
+        String calculate = yieldService.calculate(responseRankAggregation, payment);
         System.out.println("총 수익률은 " + calculate + "%입니다.");
     }
 }

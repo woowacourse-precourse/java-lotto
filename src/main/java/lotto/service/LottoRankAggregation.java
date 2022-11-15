@@ -2,9 +2,9 @@ package lotto.service;
 
 import lotto.domain.Lotto;
 import lotto.domain.Rank;
-import lotto.dto.ResponseRankAggregation;
-import lotto.dto.WinningLottoNumber;
-import lotto.dto.WinningNumberCount;
+import lotto.dto.RankAggregationDto;
+import lotto.dto.WinningLottoNumberDto;
+import lotto.dto.WinningNumberCountDto;
 
 import java.util.List;
 
@@ -16,9 +16,9 @@ public class LottoRankAggregation {
     private int fourthRankCount;
     private int fifthRankCount;
 
-    public ResponseRankAggregation rankAggregation(List<Lotto> lottos, WinningLottoNumber winningLottoNumberFor) {
+    public RankAggregationDto rankAggregation(List<Lotto> lottos, WinningLottoNumberDto winningLottoNumberFor) {
         for (Lotto lotto : lottos) {
-            WinningNumberCount winningNumberCount = lotto.winningLottoNumberCount(winningLottoNumberFor);
+            WinningNumberCountDto winningNumberCount = lotto.winningLottoNumberCount(winningLottoNumberFor);
             Rank winningRank = Rank.valueOf(winningNumberCount.getWinningCount(), winningNumberCount.isMatchBonusNumber());
 
             if (winningRank.equals(Rank.FIRST)) {
@@ -42,6 +42,6 @@ public class LottoRankAggregation {
             }
         }
 
-        return ResponseRankAggregation.of(firstRankCount, secondRankCount, thirdRankCount, fourthRankCount, fifthRankCount);
+        return RankAggregationDto.of(firstRankCount, secondRankCount, thirdRankCount, fourthRankCount, fifthRankCount);
     }
 }

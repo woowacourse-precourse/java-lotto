@@ -2,18 +2,18 @@ package lotto.dto;
 
 import java.util.List;
 
-public class WinningLottoNumber {
+public class WinningLottoNumberDto {
 
     private List<Integer> winningNumbers;
     private int bonusNumber;
 
-    public WinningLottoNumber(List<Integer> winningNumbers, int bonusNumber) {
+    public WinningLottoNumberDto(List<Integer> winningNumbers, int bonusNumber) {
         this.winningNumbers = winningNumbers;
         this.bonusNumber = bonusNumber;
     }
 
-    public static WinningLottoNumber createWinningLottoNumber(List<Integer> winningNumbers, int bonusNumber) {
-        return new WinningLottoNumber(winningNumbers, bonusNumber);
+    public static WinningLottoNumberDto createWinningLottoNumber(List<Integer> winningNumbers, int bonusNumber) {
+        return new WinningLottoNumberDto(winningNumbers, bonusNumber);
     }
 
     public List<Integer> getWinningNumbers() {

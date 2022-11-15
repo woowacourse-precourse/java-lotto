@@ -1,17 +1,17 @@
 package lotto.dto;
 
-public class WinningNumberCount {
+public class WinningNumberCountDto {
 
     private int winningCount;
     private boolean isMatchBonusNumber;
 
-    public WinningNumberCount(int winningCount, boolean isMatchBonusNumber) {
+    public WinningNumberCountDto(int winningCount, boolean isMatchBonusNumber) {
         this.winningCount = winningCount;
         this.isMatchBonusNumber = isMatchBonusNumber;
     }
 
-    public static WinningNumberCount of(int winningCount, boolean isMatchBonusNumber) {
-        return new WinningNumberCount(winningCount, isMatchBonusNumber);
+    public static WinningNumberCountDto of(int winningCount, boolean isMatchBonusNumber) {
+        return new WinningNumberCountDto(winningCount, isMatchBonusNumber);
     }
 
     public int getWinningCount() {

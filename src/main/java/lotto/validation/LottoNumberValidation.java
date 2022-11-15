@@ -1,4 +1,4 @@
-package lotto;
+package lotto.validation;
 
 import lotto.exception.ErrorCode;
 

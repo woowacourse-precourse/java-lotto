@@ -1,6 +1,7 @@
 package lotto.service;
 
-import lotto.dto.WinningLottoNumber;
+import lotto.dto.WinningLottoNumberDto;
+import lotto.validation.LottoNumberFormValidation;
 
 import java.util.Arrays;
 import java.util.List;
@@ -10,13 +11,14 @@ public class LottoShopService {
 
     private final LottoNumberFormValidation lottoNumberFormValidation = new LottoNumberFormValidation();
 
-    public WinningLottoNumber getWinningLottoNumber(String writeLottoNumber, String writeBonusNumber) {
+    public WinningLottoNumberDto getWinningLottoNumber(String writeLottoNumber, String writeBonusNumber) {
         lottoNumberFormValidation.blankIncludeValid(writeLottoNumber, writeBonusNumber);
 
         List<Integer> winningNumbers = getSplitSeparator(writeLottoNumber);
+        lottoNumberFormValidation.duplicatedValid(winningNumbers);
         int bonusNumber = lottoNumberFormValidation.getValidBonusNumber(writeBonusNumber);
 
-        return WinningLottoNumber.createWinningLottoNumber(winningNumbers, bonusNumber);
+        return WinningLottoNumberDto.createWinningLottoNumber(winningNumbers, bonusNumber);
     }
 
     private List<Integer> getSplitSeparator(String writeLottoNumber) {

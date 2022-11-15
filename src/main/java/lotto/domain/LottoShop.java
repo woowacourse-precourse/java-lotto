@@ -1,6 +1,6 @@
 package lotto.domain;
 
-import lotto.dto.WinningLottoNumber;
+import lotto.dto.WinningLottoNumberDto;
 import lotto.exception.PayMoneyException;
 import lotto.service.LottoShopService;
 
@@ -22,7 +22,7 @@ public class LottoShop {
         }
     }
 
-    public WinningLottoNumber createWinningLottoNumberFor(String writeLottoNumber, String writeBonusNumber) {
+    public WinningLottoNumberDto createWinningLottoNumberFor(String writeLottoNumber, String writeBonusNumber) {
         return lottoShopService.getWinningLottoNumber(writeLottoNumber, writeBonusNumber);
     }
 

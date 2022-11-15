@@ -1,9 +1,9 @@
 package lotto.domain;
 
 import camp.nextstep.edu.missionutils.Randoms;
-import lotto.LottoNumberValidation;
-import lotto.dto.WinningLottoNumber;
-import lotto.dto.WinningNumberCount;
+import lotto.validation.LottoNumberValidation;
+import lotto.dto.WinningLottoNumberDto;
+import lotto.dto.WinningNumberCountDto;
 import lotto.exception.PayMoneyException;
 
 import java.util.ArrayList;
@@ -45,19 +45,19 @@ public class Lotto {
         return numbers;
     }
 
-    public WinningNumberCount winningLottoNumberCount(WinningLottoNumber winningLottoNumber) {
+    public WinningNumberCountDto winningLottoNumberCount(WinningLottoNumberDto winningLottoNumber) {
         int winningCount = getWinningNumberCount(winningLottoNumber);
         boolean isMatchBonusNumber = isMatchBonusNumber(winningLottoNumber);
-        return WinningNumberCount.of(winningCount, isMatchBonusNumber);
+        return WinningNumberCountDto.of(winningCount, isMatchBonusNumber);
     }
 
-    private int getWinningNumberCount(WinningLottoNumber winningLottoNumber) {
+    private int getWinningNumberCount(WinningLottoNumberDto winningLottoNumber) {
         return (int) numbers.stream()
                 .filter(number -> winningLottoNumber.getWinningNumbers().contains(number))
                 .count();
     }
 
-    private boolean isMatchBonusNumber(WinningLottoNumber winningLottoNumber) {
+    private boolean isMatchBonusNumber(WinningLottoNumberDto winningLottoNumber) {
         return numbers.stream()
                 .anyMatch(number -> number == winningLottoNumber.getBonusNumber());
     }

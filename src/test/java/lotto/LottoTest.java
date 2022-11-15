@@ -1,8 +1,8 @@
 package lotto;
 
 import lotto.domain.Lotto;
-import lotto.dto.WinningLottoNumber;
-import lotto.dto.WinningNumberCount;
+import lotto.dto.WinningLottoNumberDto;
+import lotto.dto.WinningNumberCountDto;
 import lotto.exception.PayMoneyException;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -80,13 +80,13 @@ class LottoTest {
     void winningLottoNumberCount() {
         // given
         Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
-        WinningLottoNumber winningLottoNumber = WinningLottoNumber
+        WinningLottoNumberDto winningLottoNumber = WinningLottoNumberDto
                 .createWinningLottoNumber(List.of(1, 2, 3, 4, 5, 6), 7);
 
         int expectedWinningNumberCount = 6;
 
         // when
-        WinningNumberCount winningNumberCount = lotto.winningLottoNumberCount(winningLottoNumber);
+        WinningNumberCountDto winningNumberCount = lotto.winningLottoNumberCount(winningLottoNumber);
 
         // then
         assertThat(winningNumberCount).isNotNull();

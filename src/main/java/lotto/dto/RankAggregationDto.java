@@ -1,6 +1,6 @@
 package lotto.dto;
 
-public class ResponseRankAggregation {
+public class RankAggregationDto {
 
     private final int firstRankCount;
     private final int secondRankCount;
@@ -8,7 +8,7 @@ public class ResponseRankAggregation {
     private final int fourthRankCount;
     private final int fifthRankCount;
 
-    public ResponseRankAggregation(int firstRankCount, int secondRankCount, int thirdRankCount, int fourthRankCount, int fifthRankCount) {
+    public RankAggregationDto(int firstRankCount, int secondRankCount, int thirdRankCount, int fourthRankCount, int fifthRankCount) {
         this.firstRankCount = firstRankCount;
         this.secondRankCount = secondRankCount;
         this.thirdRankCount = thirdRankCount;
@@ -16,8 +16,8 @@ public class ResponseRankAggregation {
         this.fifthRankCount = fifthRankCount;
     }
 
-    public static ResponseRankAggregation of(int firstRankCount, int secondRankCount, int thirdRankCount, int fourthRankCount, int fifthRankCount) {
-        return new ResponseRankAggregation(firstRankCount, secondRankCount, thirdRankCount, fourthRankCount, fifthRankCount);
+    public static RankAggregationDto of(int firstRankCount, int secondRankCount, int thirdRankCount, int fourthRankCount, int fifthRankCount) {
+        return new RankAggregationDto(firstRankCount, secondRankCount, thirdRankCount, fourthRankCount, fifthRankCount);
     }
 
     public int getFirstRankCount() {
