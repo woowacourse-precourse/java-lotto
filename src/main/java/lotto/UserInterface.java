@@ -91,4 +91,9 @@ public class UserInterface {
             System.out.println(messageWinStatstic(numberOfMessage-i,winStatistics.get(i)));
         }
     }
+
+    public static void printYield(int inputMoney,Map <Integer,Integer> winStatistics){
+        double yeild = BuyLotto.yieldOfLotto(inputMoney,winStatistics);
+        System.out.println("총 수익률은 " + yeild + "%입니다.");
+    }
 }
