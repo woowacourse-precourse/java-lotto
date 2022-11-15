@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class AmountTest {
@@ -37,6 +38,13 @@ class AmountTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+    @DisplayName("구입 금액이 10000원이면 로또가 10개이다.")
+    @Test
+    void getCountByAmount(){
+        assertThat(Amount.pay(10000).getCount())
+                .isEqualTo(10);
+    }
+
     @DisplayName("구입 금액이 음수이면 예외가 발생한다.")
     @Test
     void createAmountByNegativeNumber() {
@@ -52,4 +60,11 @@ class AmountTest {
                 .hasMessageContainingAll("[ERROR] 구매 금액은", "원 단위여야 합니다.")
                 .isInstanceOf(IllegalArgumentException.class);
     }
-}
+
+    @DisplayName("구입 금액이 1000원이고 당첨금이 20000이면 수익률이 2,000.0% 이다.")
+    @Test
+    void getYieldByAmountAndMoney() {
+        assertThat(Amount.pay(1000).getYield(20000))
+                .isEqualTo("2,000.0");
+    }
+    }

@@ -1,7 +1,6 @@
 package lotto.domain;
 
 import java.text.DecimalFormat;
-import java.text.NumberFormat;
 
 public class Amount {
     private static final int LOTTO_PRICE = 1000;
