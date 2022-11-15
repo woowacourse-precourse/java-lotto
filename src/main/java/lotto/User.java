@@ -37,20 +37,7 @@ public class User {
             return Sixinput;
         }
 
-        public static List<Integer> lottoToList (String UserIn){
 
-            String lottoList = new String();
-            List<Integer> lottoToList1 = new ArrayList<>();
-            Set<Integer> repeatDestroy = new HashSet<Integer>(lottoToList1);
-
-            if (!lottoList.equals(UserIn)) {
-                lottoToList1.contains(lottoList);
-                System.out.println(repeatDestroy);
-            }
-
-
-            return (List<Integer>) repeatDestroy;
-        }
 
         public static int bonusNumber() {
             String BonusInput = readLine();

@@ -15,19 +15,33 @@ public class Application {
 
         User user = new User();
         Lotto.buySucess(input2);
-        User.lottoRandomNumber(input2);
+        List<List<Integer>> lottoRandomNumber = User.lottoRandomNumber(input2);
 
 
-        Lotto.sayLottoNumber();
+        Lotto.sayLottoNumber();     //32번
         String lottoListSix = user.lottoListSix();
-
+        List<Integer> InputList = Validator.InputList(lottoListSix);
 
         Lotto.bonusSay();
         int bonusNumber = User.bonusNumber();
+        Validator.ValidatorBonusRepeatNumber(InputList, bonusNumber);
 
 
-        Lotto.LottoResultMessage();
+        Lotto.CountNumberMessage();
+        List<Integer> toResult = Lotto.toResult(InputList, lottoRandomNumber); //43
 
+        System.out.println(toResult);
+
+        List<Boolean> BonuseChooseList = Lotto.BonusChooseList(lottoRandomNumber , bonusNumber);
+
+        int[] ScoreNumber = Lotto.ScoreNumber(toResult,BonuseChooseList );
+
+
+        Lotto.CountNumberMessage(ScoreNumber);
+
+        int TotalNumber = Lotto.TotalNumber(toResult, BonuseChooseList);
+
+        Lotto.decimalPointCirculator(TotalNumber, input);
 
 
 

@@ -31,7 +31,7 @@ public class Validator {
         }
     }
 
-    public void ValidatorBonusRepeatNumber(List<Integer> ValidatorNumber, String BonusNumber){
+    public static void ValidatorBonusRepeatNumber(List<Integer> ValidatorNumber, int BonusNumber){
         if(ValidatorNumber.contains(BonusNumber)){
             throw new IllegalArgumentException("[ERROR] 중복된 수는 들어올수 없습니다!");
         }
@@ -52,7 +52,7 @@ public class Validator {
         ValidatorRange(InputList);
     }
 
-    public List<Integer> InputList(String placeSplit){
+    public static List<Integer> InputList(String placeSplit){
         List<Integer> afterSplit = new ArrayList<>();
         String[] split = placeSplit.split(",");
 

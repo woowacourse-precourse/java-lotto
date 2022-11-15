@@ -1,7 +1,6 @@
 package lotto;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 public class Lotto {
@@ -46,51 +45,52 @@ public class Lotto {
         System.out.println("보너스 번호를 입력해주세요");
     }
 
-    public static void LottoResultMessage() {
+    public static void CountNumberMessage() {
         System.out.println("\n당첨 통계\n---");
     }
 
 
 
-    public static void toResult(Integer number, int Countlotto) {
-        User user = new User();
+    public static List<Integer> toResult(List<Integer> InputNumber, List<List<Integer>> RandomNumberList) {
+        List<Integer> CountList = new ArrayList<>();
 
-        String lottoInput = user.lottoListSix();
-        List<Integer> lottoToList = user.lottoToList(lottoInput);
 
-        List<List<Integer>> lottoRandomNumber = user.lottoRandomNumber((Integer) (Countlotto));  //숫자에서 숫자로 형변환시킬때
-
-        int cnt = 0;
-        for (int i = 0; i < number; i++) {
-            if (!lottoRandomNumber.contains(lottoToList))
-                lottoRandomNumber.contains(lottoToList);
+        for(int index = 0; index < RandomNumberList.size(); index++){  //8
+                int cnt = 0;
+            for(int j = 0; j < RandomNumberList.get(index).size(); j++){    //6 각자
+        if(InputNumber.contains(RandomNumberList.get(index).get(j))) {
                 cnt++;
+                }
+            }
+            CountList.add(cnt);
         }
+        return CountList;
     }
 
 
-    public boolean BonuseChoose(List<Lotto> listchoose, int intchoose){
-        for(Lotto lotto : listchoose){
-            if(lotto.getNumbers().contains(intchoose))
+    public static boolean BonuseChoose(List<List<Integer>> listchoose, int intchoose){
+        for(List<Integer> lotto : listchoose){
+            if(lotto.contains(intchoose))
                 return true;
         }
         return false;
     }
 
-    public List<Integer> BonusChooseList(List<Lotto> listchoose, int intchoose){
-        List<Integer> Bonuse = new ArrayList<>();
+    public static List<Boolean> BonusChooseList(List<List<Integer>> listchoose, int intchoose){
+        List<Boolean> Bonuse = new ArrayList<>();
 
-        if(!Bonuse.contains(BonuseChoose(listchoose, intchoose))){
-            Bonuse.contains(BonuseChoose(listchoose, intchoose));
+        for(List<Integer> lotto : listchoose){
+            Bonuse.add(BonuseChoose(listchoose,intchoose));
         }
+
         return Bonuse;
     }
 
 
-    public int[] ScoreNumber(List<Integer> correct, List<Boolean> BonusBoolean) {
+    public  static int[] ScoreNumber(List<Integer> correct, List<Boolean> BonusBoolean) {
 
 
-        int[] CountNumber = {1, 2, 3, 4, 5};
+        int[] CountNumber = new int[5];
         for (int index = 0; index < correct.size(); index++) {
             if (correct.get(index) == 3) {
                 CountNumber[0]++;
@@ -112,26 +112,26 @@ public class Lotto {
     }
 
 
-    public int[] TotalNumber(List<Integer> correct, List<Boolean> BonusCorrect) {
+    public static int TotalNumber(List<Integer> correct, List<Boolean> BonusCorrect) {
 
 
-        int[] totalNumber = {};
+        int totalNumber = 0;
 
         for (int index = 0; index < correct.size(); index++) {
             if (correct.get(index) == 3) {
-                totalNumber[0] += 5000;
+                totalNumber += 5000;
             }
             if (correct.get(index) == 4) {
-                totalNumber[1] += 50000;
+                totalNumber += 50000;
             }
             if (correct.get(index) == 5 && !BonusCorrect.get(index)) {
-                totalNumber[2] += 1500000;
+                totalNumber += 1500000;
             }
             if (correct.get(index) == 5 && BonusCorrect.get(index)) {
-                totalNumber[3] += 30000000;
+                totalNumber += 30000000;
             }
             if (correct.get(index) == 6) {
-                totalNumber[4] += 2000000000;
+                totalNumber += 2000000000;
             }
         }
 
@@ -139,18 +139,17 @@ public class Lotto {
 
     }
 
-
-        public int countNumber(List<Integer> countNum){
-            int countN = 0;
-            for(int index = 0; index < countNum.size(); index++){
-                if(countN == countNum.get(index))
-                    countN++;
+        public static void CountNumberMessage(int[] Board){
+            for(int index = 0; index < Board.length; index++){
+                System.out.println(Board[index] + "개");
             }
-            return countN;
         }
 
 
-        public void decimalPointCirculator(int decimalpoint1, int decimalpoint2){
+
+
+
+        public static void decimalPointCirculator(int decimalpoint1, int decimalpoint2){
 
         double filed  = ((double)decimalpoint1 / decimalpoint2) * 100;
         filed = Math.round(filed*100);
