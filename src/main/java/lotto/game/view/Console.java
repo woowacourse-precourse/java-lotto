@@ -15,12 +15,16 @@ public interface Console {
             System.out.println(message.text());
         }
 
-        public static void print(String message) {
-            System.out.print(message);
+        public static void printLine(Message message, String text) {
+            System.out.println(message.text() + text);
         }
 
-        public static void printLine(String message) {
-            System.out.println(message);
+        public static void print(String text) {
+            System.out.print(text);
+        }
+
+        public static void printLine(String text) {
+            System.out.println(text);
         }
 
         public static void printError(ErrorMessage errorMessage) {
