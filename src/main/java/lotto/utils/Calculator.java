@@ -39,7 +39,10 @@ public class Calculator {
 
     public static double calculateProfit(int purchaseAmount, int profit) {
         try {
-            return ((int) (((float) profit / purchaseAmount) * MONEY_CELL) / 10.0);
+            if (purchaseAmount == 0) {
+                throw new IllegalArgumentException("[ERROR] 숫자를 0으로 나눌 수 없습니다.");
+            }
+            return ((int) ((float) profit / purchaseAmount * MONEY_CELL) / 10.0);
         } catch (ArithmeticException e) {
             throw new IllegalArgumentException("[ERROR] 숫자를 0으로 나눌 수 없습니다.");
         }
