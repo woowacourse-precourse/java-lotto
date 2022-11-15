@@ -18,7 +18,7 @@ public class LottoStore {
         return lottos;
     }
 
-    public Lotto inputWinningNumbers(String winningNumber) {
+    public Lotto confirmWinningNumbers(String winningNumber) {
         List<Integer> winningNumbers = Arrays.asList(winningNumber.split(",")).stream()
                 .map(Integer::parseInt)
                 .collect(Collectors.toList());
