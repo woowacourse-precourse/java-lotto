@@ -26,4 +26,11 @@ public class InputView {
 
         return new WinNumber(winNumbers);
     }
+
+    public static BonusNumber inputBonusNumber(List<Integer> winNumbers) {
+        System.out.println("보너스 번호를 입력해 주세요.");
+        int inputBonusNumber = Integer.parseInt(Console.readLine());
+
+        return new BonusNumber(inputBonusNumber, winNumbers);
+    }
 }
