@@ -27,7 +27,7 @@ class ConvertorTest {
                 .hasMessageContaining(ERROR_TITLE + NOT_IN_THOUSANDS);
     }
 
-    @DisplayName("당첨 번호 입력 시 6개의 쉼표를 사용하지 않으면 예외가 발생한다.")
+    @DisplayName("당첨 번호 입력 시 5개의 쉼표를 사용하지 않으면 예외가 발생한다.")
     @ParameterizedTest
     @ValueSource(strings = {"1.2.3.4.5.6", "12345,6", "1&2&3&4&5&6", "1+2+3+4+5+6", "12345and6", "1,2,3,4,5,6,7"})
     void winningNumbersWithoutComma(String input) {
@@ -38,7 +38,7 @@ class ConvertorTest {
 
     @DisplayName("당첨 번호 입력 시 숫자를 올바르게 쓰지 않으면 예외가 발생한다.")
     @ParameterizedTest
-    @ValueSource(strings = {"1,2,3,4,5, 6:45", "1,!!,3,4,5,6:45", "하나,2,3,4,5,6:45", "one,2,3,4,5,6:45"})
+    @ValueSource(strings = {"1,2,3,4,5, 6", "1,!!,3,4,5,6", "하나,2,3,4,5,6", "one,2,3,4,5,6"})
     void winningNumbersWithoutProperNumbers(String input) {
         assertThatThrownBy(() -> Convertor.separate(input))
                 .isInstanceOf(IllegalArgumentException.class)
