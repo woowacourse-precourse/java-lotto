@@ -34,6 +34,12 @@ public class Verify {
 		}
 	}
 
+	private static void verifyNumberBoundary(int number) {
+		if (number < Constants.LOTTO_UNDER_BOUNDARY || number > Constants.LOTTO_UPPER_BOUNDARY) {
+			illegalArgumentException(Constants.ERROR_NOT_IN_BOUNDARY);
+		}
+	}
+
 	private static boolean[] verifyDupNumber(List<Integer> goal) {
 		boolean[] dupCheck = new boolean[Constants.LOTTO_UPPER_BOUNDARY+1];
 
@@ -57,5 +63,6 @@ public class Verify {
 
 	public static void verifyBonus(int bonusNumber, List<Integer> goal) {
 		verifyDupNumber(bonusNumber, goal);
+		verifyNumberBoundary(bonusNumber);
 	}
 }
