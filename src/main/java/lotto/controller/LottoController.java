@@ -3,11 +3,12 @@ package lotto.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import lotto.domain.BonusNumber;
 import lotto.domain.Lotto;
 import lotto.domain.LottoGenerator;
 import lotto.domain.ProfitCalculator;
 import lotto.domain.PurchasingAmount;
-import lotto.domain.WinningAndBonusNumbers;
+import lotto.domain.WinningNumbers;
 import lotto.domain.WinningStatisticsCompiler;
 import lotto.view.InputView;
 import lotto.view.OutputView;
@@ -18,7 +19,8 @@ public class LottoController {
 	PurchasingAmount purchasingAmount;
 	int numberOfTickets;
 	List<Lotto> lotteries;
-	WinningAndBonusNumbers winningAndBonusNumbers;
+	WinningNumbers winningNumbers;
+	BonusNumber bonusNumber;
 	WinningStatisticsCompiler winningStatisticsCompiler;
 
 	public void control() {
@@ -57,15 +59,15 @@ public class LottoController {
 	}
 
 	private void receiveWinningNumbers() {
-		winningAndBonusNumbers = new WinningAndBonusNumbers(inputView.getWinningNumbers());
+		winningNumbers = new WinningNumbers(inputView.getWinningNumbers());
 	}
 
 	private void receiveBonusNumbers() {
-		winningAndBonusNumbers = new WinningAndBonusNumbers(Integer.parseInt(inputView.getBonusNumber()));
+		bonusNumber = new BonusNumber(Integer.parseInt(inputView.getBonusNumber()), winningNumbers);
 	}
 
 	private void compileWinningStatistics() {
-		winningStatisticsCompiler = new WinningStatisticsCompiler(lotteries, winningAndBonusNumbers);
+		winningStatisticsCompiler = new WinningStatisticsCompiler(lotteries, winningNumbers, bonusNumber);
 		outputView.printWinningStatistics(winningStatisticsCompiler.getCountsOfWins());
 	}
 }

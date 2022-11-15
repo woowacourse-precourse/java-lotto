@@ -13,11 +13,12 @@ public class WinningStatisticsCompiler {
 	EnumMap<WinningRating, Integer> countsOfWins;
 	List<Lotto> lotteries;
 	int profit;
-	WinningAndBonusNumbers winningAndBonusNumbers;
-
-	public WinningStatisticsCompiler(List<Lotto> lotteries, WinningAndBonusNumbers winningAndBonusNumbers) {
+	WinningNumbers winningNumbers;
+	BonusNumber bonusNumber;
+	public WinningStatisticsCompiler(List<Lotto> lotteries, WinningNumbers winningNumbers, BonusNumber bonusNumber) {
 		this.lotteries = lotteries;
-		this.winningAndBonusNumbers = winningAndBonusNumbers;
+		this.winningNumbers = winningNumbers;
+		this.bonusNumber = bonusNumber;
 		compile();
 	}
 
@@ -45,7 +46,7 @@ public class WinningStatisticsCompiler {
 	}
 
 	private void calculateCountsOfWins() {
-		LottoComparator lottoComparator = new LottoComparator(winningAndBonusNumbers);
+		LottoComparator lottoComparator = new LottoComparator(winningNumbers, bonusNumber);
 		for (Lotto lotto : lotteries) {
 			lottoComparator.compare(lotto);
 			countsOfWins.computeIfPresent(lottoComparator.getWinningRating(),

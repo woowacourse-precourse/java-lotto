@@ -11,15 +11,15 @@ import lotto.constant.WinningRating;
 public class LottoComparator {
 	private static final int INITIAL_VALUE = 0;
 	Lotto lotto;
-	WinningAndBonusNumbers winningAndBonusNumbers;
-	List<Integer> winningNumbers;
+	WinningNumbers winningNumbers;
+	BonusNumber bonusNumber;
 	List<Integer> winningNumbersWithBonusNumber;
-	int bonusNumber;
 	int countOfMatchedNumber;
 	WinningRating winningRating;
 
-	LottoComparator(WinningAndBonusNumbers winningAndBonusNumbers) {
-		this.winningAndBonusNumbers = winningAndBonusNumbers;
+	LottoComparator(WinningNumbers winningNumbers, BonusNumber bonusNumber) {
+		this.winningNumbers = winningNumbers;
+		this.bonusNumber = bonusNumber;
 	}
 
 	public void compare(Lotto lotto) {
@@ -60,15 +60,13 @@ public class LottoComparator {
 	private void init() {
 		winningRating = WinningRating.MISS;
 		countOfMatchedNumber = INITIAL_VALUE;
-		winningNumbers = winningAndBonusNumbers.getWinningNumbers();
-		bonusNumber = winningAndBonusNumbers.getBonusNumber();
 		winningNumbersWithBonusNumber = new ArrayList<>();
-		winningNumbersWithBonusNumber.addAll(winningNumbers);
-		winningNumbersWithBonusNumber.add(bonusNumber);
+		winningNumbersWithBonusNumber.addAll(winningNumbers.getWinningNumbers());
+		winningNumbersWithBonusNumber.add(bonusNumber.getBonusNumber());
 	}
 
 	private void calculateCountOfMatchedNumber(List<Integer> numbers) {
-		countOfMatchedNumber = (int)numbers.stream().filter(winningNumbers::contains).count();
+		countOfMatchedNumber = (int)numbers.stream().filter(winningNumbers.getWinningNumbers()::contains).count();
 	}
 
 	public WinningRating getWinningRating() {

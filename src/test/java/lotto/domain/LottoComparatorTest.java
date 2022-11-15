@@ -14,10 +14,10 @@ class LottoComparatorTest {
 	@DisplayName("당첨 번호와 보너스 번호로 2등 당첨 여부를 구한다.")
 	@Test
 	void getSecondRating() {
-		WinningAndBonusNumbers winningAndBonusNumbers;
-		winningAndBonusNumbers = new WinningAndBonusNumbers("4,12,16,26,32,45");
-		WinningAndBonusNumbers winningAndBonusNumbers1 = new WinningAndBonusNumbers(2);
-		LottoComparator lottoComparator = new LottoComparator(winningAndBonusNumbers1);
+		WinningNumbers winningNumbers;
+		winningNumbers = new WinningNumbers("4,12,16,26,32,45");
+		BonusNumber bonusNumber = new BonusNumber(2, winningNumbers);
+		LottoComparator lottoComparator = new LottoComparator(winningNumbers, bonusNumber);
 		lottoComparator.compare(new Lotto(List.of(2, 4, 12, 26, 32, 45)));
 		assertThat(lottoComparator.getWinningRating()).isEqualTo(WinningRating.SECOND);
 	}
@@ -25,10 +25,10 @@ class LottoComparatorTest {
 	@DisplayName("당첨 번호로 1등 당첨 여부를 구한다.")
 	@Test
 	void getFirstRating() {
-		WinningAndBonusNumbers winningAndBonusNumbers;
-		winningAndBonusNumbers = new WinningAndBonusNumbers("4,12,16,26,32,45");
-		WinningAndBonusNumbers winningAndBonusNumbers1 = new WinningAndBonusNumbers(2);
-		LottoComparator lottoComparator = new LottoComparator(winningAndBonusNumbers1);
+		WinningNumbers winningNumbers;
+		winningNumbers = new WinningNumbers("4,12,16,26,32,45");
+		BonusNumber bonusNumber = new BonusNumber(2, winningNumbers);
+		LottoComparator lottoComparator = new LottoComparator(winningNumbers, bonusNumber);
 		lottoComparator.compare(new Lotto(List.of(4, 12, 16, 26, 32, 45)));
 		assertThat(lottoComparator.getWinningRating()).isEqualTo(WinningRating.FIRST);
 	}
