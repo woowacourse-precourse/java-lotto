@@ -5,6 +5,8 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.List;
 
+import static lotto.ErrorMsg.INPUT_ONLY_NUMBER;
+
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
@@ -14,7 +16,8 @@ public class Application {
     private static void startLotto() {
 
         System.out.println("구입금액을 입력해 주세요.");
-        int amount = Integer.parseInt(Console.readLine());
+        String amount = Console.readLine();
+        int amountNum = Integer.parseInt(amount);
         System.out.println(amount);
         System.out.println();
 
@@ -48,6 +51,6 @@ public class Application {
         System.out.println("---");
         WinningLotto winningLotto = new WinningLotto(userNum, randomNumbers);
         int totalYield = winningLotto.getTotalYield();
-        new Yield(totalYield, amount);
+        new Yield(totalYield, amountNum);
     }
 }

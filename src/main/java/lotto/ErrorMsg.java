@@ -8,12 +8,11 @@ public enum ErrorMsg {
     INPUT_BONUS_NUMBER_DUPLICATE("당첨 번호와 중복되지 않는 수를 입력해야 합니다."),
     INPUT_ONLY_NUMBER("숫자만 입력해 주세요."),
     INPUT_NO_SPACE("띄어쓰기가 불가합니다.");
-
-    private String ERROR = "[ERROR] ";
+    private final String ERROR_MESSAGE = "[ERROR]";
     private String message;
 
     ErrorMsg(String message) {
-        this.message = ERROR + message;
+        this.message = ERROR_MESSAGE + " " + message;
     }
 
     public String getMessage() {

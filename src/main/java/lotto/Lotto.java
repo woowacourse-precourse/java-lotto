@@ -9,13 +9,24 @@ public class Lotto {
     private final List<Integer> numbers;
     private static final int price = 1000;
 
-    public static int numberOfLottosQuantity(int amountPaid) {
-        String pattern = "^[\\D]*$";
-        if (pattern.matches(String.valueOf(amountPaid))) {
+    private static void checkNumberFormatException(String amountPaid) {
+        try {
+            if (amountPaid.contains("[^0-9]")) {
+                System.out.println(INPUT_ONLY_NUMBER.getMessage());
+                throw new NumberFormatException();
+            }
+        } catch (NumberFormatException e) {
             throw new IllegalArgumentException(INPUT_ONLY_NUMBER.getMessage());
         }
-        int lottoQuantity = amountPaid/price;
-        if (amountPaid%price != 0) {
+    }
+
+    public static int numberOfLottosQuantity(String amountPaid) {
+
+        checkNumberFormatException(amountPaid);
+
+        int amount = Integer.parseInt(amountPaid);
+        int lottoQuantity = amount/price;
+        if (amount%price != 0) {
             throw new IllegalArgumentException(INPUT_AMOUNT.getMessage());
         }
         return lottoQuantity;
