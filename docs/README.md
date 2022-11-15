@@ -27,7 +27,7 @@
 > 각 입력 제약조건을 벗어나면, "[ERROR]"를 포함하는 출력과 IllegalArgumentException를 발생시키고 프로그램이 종료시킨다.
 
 ### OutputView
-- [ ] 에러 메세지를 출력한다.
+- [x] 에러 메세지를 출력한다. #printErrorMessage(message)
 - [x] 구입금액 입력 메세지를 출력한다. #announceInsertMoney()
 - [ ] lotto를 몇개 구매했는지 출력한다.
 - [ ] 구매한 lotto를 출력한다.
