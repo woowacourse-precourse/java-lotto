@@ -87,6 +87,64 @@ public class Application {
         return bonusNum;
     }
 
+    public static void calWinLotto(List<Lotto> lottos, List<Integer> lottoNum, Integer bonusNum, Float earnCash, Float earnPerc, int num3, int num4, int num5, int num5Bonus, int num6, int buyCashN){
+        //5.당첨 통계 계산
+        //1) 각 구매 로또 리스트 탐색
+        //만약 당첨번호 일치하는 것 있으면 카운트
+        //만약 보너스 번호 맞으면 카운트
+        //2) 당첨 갯수 계산
+        //6개 일치
+        //5개 일치, 보너스 볼 일치
+        //5개 일치
+        //4개 일치
+        //3개 일치
+        //3)수익률 계산
+        System.out.println();
+        System.out.println("당첨 통계");
+        System.out.println("---");
+        for(int i=0;i<lottos.size();i++){
+            int lottoNumCnt=0;
+            int bonusNumCnt =0;
+            Lotto curLotto = lottos.get(i);
+            for(int j=0;j<curLotto.getNumbers().size();j++){
+                if(lottoNum.contains(curLotto.getNumbers().get(j))){
+                    lottoNumCnt++;
+                }
+                if(bonusNum.equals(curLotto.getNumbers().get(j))){
+                    bonusNumCnt++;
+                }
+            }
+
+            if(lottoNumCnt==6){
+                earnCash+=2000000000;
+                num6++;
+            }
+            if(lottoNumCnt==5 && bonusNumCnt==1){
+                earnCash+= 3000000;
+                num5Bonus++;
+            }
+            if(lottoNumCnt==5 && bonusNumCnt==0){
+                earnCash+= 1500000;
+                num5++;
+            }
+            if(lottoNumCnt==4){
+                earnCash+=50000;
+                num4++;
+            }
+            if(lottoNumCnt==3){
+                earnCash+=5000;
+                num3++;
+            }
+        }
+        System.out.print("3개 일치 (5,000원) - ");System.out.println(num3+"개");
+        System.out.print("4개 일치 (50,000원) - ");System.out.println(num4+"개");
+        System.out.print("5개 일치 (1,500,000원) - ");System.out.println(num5+"개");
+        System.out.print("5개 일치, 보너스 볼 일치 (30,000,000원) - ");System.out.println(num5Bonus+"개");
+        System.out.print("6개 일치 (2,000,000,000원) - ");System.out.println(num6+"개");
+        earnPerc = earnCash / buyCashN * 100;
+        System.out.print("총 수익률은 " + String.format("%.1f",earnPerc)+"%입니다.");
+    }
+
     public static void main(String[] args) {
         //TODO: 프로그램 구현
         //1.입력: 로또 구입금액
@@ -134,6 +192,13 @@ public class Application {
         Integer bonusNum=0;
         try{
             bonusNum = inputBonusNum(bonusNum);
+        }catch (IllegalArgumentException e){
+            return;
+        }
+
+        //5.당첨 통계 계산
+        try{
+            calWinLotto( lottos,  lottoNum, bonusNum, earnCash, earnPerc, num3, num4, num5, num5Bonus, num6,buyCashN );
         }catch (IllegalArgumentException e){
             return;
         }
