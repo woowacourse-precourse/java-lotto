@@ -1,6 +1,7 @@
 package lotto;
 
 import lotto.domain.Lotto;
+import lotto.domain.Rank;
 import lotto.domain.WinningNumbers;
 import org.junit.jupiter.api.Test;
 
@@ -92,5 +93,41 @@ class WinningNumbersTest {
 
         assertThatThrownBy(() -> winningNumbers.newBonusNumber(bonusNumber))
                 .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void rankingLotto() {
+        WinningNumbers winningNumbers = new WinningNumbers();
+
+        Integer[] inputLotto = {1,2,3,4,5,6};
+        int bonusNumber= 7;
+        winningNumbers.newWinningNumbers(new ArrayList<>(List.of(inputLotto)));
+        winningNumbers.newBonusNumber(bonusNumber);
+
+        Integer[] firstNumbers = {1,2,3,4,5,6};
+        Lotto firstLotto = new Lotto(new ArrayList<>(List.of(firstNumbers)));
+        Integer[] secondNumbers = {1,2,3,4,5,7};
+        Lotto secondLotto = new Lotto(new ArrayList<>(List.of(secondNumbers)));
+        Integer[] thirdNumbers = {1,2,3,4,5,8};
+        Lotto thirdLotto = new Lotto(new ArrayList<>(List.of(thirdNumbers)));
+        Integer[] firthNumbers = {1,2,3,4,8,9};
+        Lotto firthLotto = new Lotto(new ArrayList<>(List.of(firthNumbers)));
+        Integer[] fifthNumbers = {1,2,3,8,9,10};
+        Lotto fifthLotto = new Lotto(new ArrayList<>(List.of(fifthNumbers)));
+        Integer[] loseNumbers = {1,2,8,9,10,11};
+        Lotto loseLotto = new Lotto(new ArrayList<>(List.of(loseNumbers)));
+
+        assertThat(winningNumbers.rankingLotto(firstLotto))
+                .isEqualTo(Rank.FIRST_CLASS);
+        assertThat(winningNumbers.rankingLotto(secondLotto))
+                .isEqualTo(Rank.SECOND_CLASS);
+        assertThat(winningNumbers.rankingLotto(thirdLotto))
+                .isEqualTo(Rank.THIRD_CLASS);
+        assertThat(winningNumbers.rankingLotto(firthLotto))
+                .isEqualTo(Rank.FIRTH_CLASS);
+        assertThat(winningNumbers.rankingLotto(fifthLotto))
+                .isEqualTo(Rank.FIFTH_CLASS);
+        assertThat(winningNumbers.rankingLotto(loseLotto))
+                .isEqualTo(Rank.LOSE_LOTTO);
     }
 }
