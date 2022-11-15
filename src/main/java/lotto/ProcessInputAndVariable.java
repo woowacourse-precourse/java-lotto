@@ -25,7 +25,7 @@ public class ProcessInputAndVariable {
     public Lotto makeWinNumber(String input) {
         List<Integer> inputNumberList = Arrays.stream(input.split(",")).map(Integer::parseInt)
             .collect(Collectors.toList());
-
+        validInput.validInputLength(inputNumberList);
         return new Lotto(inputNumberList);
     }
 }

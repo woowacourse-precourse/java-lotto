@@ -11,7 +11,9 @@ public class ValidInput {
     }
 
     public void validInputLength(List<Integer> numbers) {
-
+        if (numbers.size() != LottoEnum.SIZE.getValue()) {
+            throw new IllegalArgumentException("[ERROR] 로또 번호가 6자리로 이루어져있지 않습니다!");
+        }
     }
 
     public void validIsInputInRange(List<Integer> numbers) {
