@@ -6,8 +6,6 @@ import lotto.domain.WinningNumber;
 import lotto.util.LottoRank;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -64,7 +62,7 @@ public class LottosTest {
         Map<LottoRank, Integer> rankCount = Map.of(LottoRank.THIRD_PLACE, 3, LottoRank.FOURTH_PLACE, 1);
         int result = 4_550_000;
 
-        int totalPrizeMoney = lottos.getTotalPrizeMoney(rankCount);
+        long totalPrizeMoney = lottos.getTotalPrizeMoney(rankCount);
 
         assertThat(totalPrizeMoney).isEqualTo(result);
     }

@@ -43,7 +43,7 @@ public class WinningNumberTest {
     void isContainNumber() {
         WinningNumber winningNumber = new WinningNumber(List.of(1, 10, 12, 24, 33, 43), 45);
 
-        boolean contain = winningNumber.isContainedWinningNumber(10);
+        boolean contain = winningNumber.isContainedInWinningNumber(10);
 
         assertThat(contain).isEqualTo(true);
     }
@@ -53,7 +53,7 @@ public class WinningNumberTest {
     void isNotContainNumber() {
         WinningNumber winningNumber = new WinningNumber(List.of(1, 10, 12, 24, 33, 43), 45);
 
-        boolean contain = winningNumber.isContainedWinningNumber(11);
+        boolean contain = winningNumber.isContainedInWinningNumber(11);
 
         assertThat(contain).isEqualTo(false);
     }

@@ -33,7 +33,7 @@ class LottoTest {
         List<Integer> result = List.of(7, 10, 24, 34, 40, 41);
         Lotto lotto = new Lotto(List.of(34, 24, 40, 41, 10, 7));
 
-        List<Integer> sortedByAscend = lotto.getSortedByAscendNumbers();
+        List<Integer> sortedByAscend = lotto.getNumbersSortedByAscending();
 
         assertThat(sortedByAscend).isEqualTo(result);
     }
@@ -127,7 +127,7 @@ class LottoTest {
         Map<LottoRank, Integer> ranks = Map.of(LottoRank.SECOND_PLACE, 2, LottoRank.THIRD_PLACE, 1);
         int result = 61_500_000;
 
-        int totalPrizeMoney = lottos.getTotalPrizeMoney(ranks);
+        long totalPrizeMoney = lottos.getTotalPrizeMoney(ranks);
 
         assertThat(totalPrizeMoney).isEqualTo(result);
     }
