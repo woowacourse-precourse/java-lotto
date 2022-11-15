@@ -6,8 +6,22 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Application {
+
+    // 1.로또 구입
+    static int buyLotto() {
+
+        int price = 1000;
+
+        System.out.println("구입금액을 입력해 주세요.");
+        int money = Integer.parseInt(Console.readLine());
+        int sheets = money / price;
+
+        return sheets;
+    }
+
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        // 로또 구입
+        int sheets = buyLotto();
     }
 }
 
