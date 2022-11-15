@@ -36,6 +36,9 @@ public enum Rank {
         }
 
         for (Rank rank : values()) {
+            if (rank.equals(Rank.SECOND)) {
+                continue;
+            }
             if (rank.matchCount(countOfMatch)) {
                 return rank;
             }
