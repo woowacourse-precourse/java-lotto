@@ -4,7 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 import lotto.input.Input;
 
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import static java.lang.Integer.*;
@@ -17,6 +17,7 @@ public class Application {
     public static Input inputValues() {
         int inputPurchaseAmount = inputPurchaseAmount();
         List<Integer> winningNumbers = inputWinningNumber();
+        Collections.sort(winningNumbers);
         int bonusNumber = inputBonusNumber();
         return new Input(inputPurchaseAmount, winningNumbers, bonusNumber);
     }
