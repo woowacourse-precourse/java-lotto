@@ -24,7 +24,7 @@ public class User {
 
     public User(String input) {
         int amount;
-        amount=checker.checkAmountInput(input);
+        amount = checker.checkAmountInput(input);
         init(amount);
     }
 
@@ -91,6 +91,10 @@ public class User {
 
     public void setWinnings(int winnings) {
         this.winnings = winnings;
+    }
+
+    public int getWinnings() {
+        return winnings;
     }
 
     public List<List<Result>> getResults() {
