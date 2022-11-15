@@ -14,8 +14,10 @@ public enum ErrorMessage {
     // 당첨번호 & 보너스 번호
     WINNING_NUMBER_OVERSIZE("[ERROR] 당첨번호는 6자리만 입력해야 합니다."),
     WINNING_NUMBER_OUT_OF_RANGE("[ERROR] 당첨 번호는 1부터 45까지의 숫자 중 선택해야 합니다."),
+    WINING_NUMBER_NOT_NUMBER("[ERROR] 당첨버호는 숫자로만 이루어져야 합니다."),
     BONUS_NUMBER_OVERSIZE("[ERROR] 보너스 번호는 하나의 숫자만 입력해야 합니다."),
     BONUS_NUMBER_OUF_OF_RANGE("[ERROR] 보너스 번호는 1부터 45까지의 숫자 중 선택해야 합니다."),
+    BONUS_NUMBER_NOT_NUMBER("[ERROR] 당첨버호는 숫자로만 이루어져야 합니다."),
     ;
 
     private final String message;

@@ -7,6 +7,8 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static lotto.error.ErrorMessage.*;
+
 public class WinningsSettingService {
 
     private static final Integer SIZE = 6;
@@ -31,17 +33,14 @@ public class WinningsSettingService {
 
     private Integer bringBonusNumber() throws IllegalArgumentException {
         String input = enterBonusNumber();
-        if (!bonusNumberValidate(input)) {
-            throw new IllegalArgumentException();
-        }
+
+        bonusNumberValidate(input);
         return Integer.parseInt(input);
     }
 
     private List<Integer> bringWinningsNumber() throws IllegalArgumentException {
         String[] winningsNumber = enterWinningsNumber().split(",");
-        if(!winningsNumberValidate(winningsNumber)) {
-            throw new IllegalArgumentException();
-        }
+        winningsNumberValidate(winningsNumber);
 
         return Arrays.stream(winningsNumber)
             .map(Integer::parseInt)
@@ -58,11 +57,14 @@ public class WinningsSettingService {
         return Console.readLine();
     }
 
-    private boolean bonusNumberValidate(String bonusNumber) {
+    private void bonusNumberValidate(String bonusNumber) {
         if (bonusNumber.isBlank() || bonusNumber.length() > 2) {
-            return false;
+            throw new IllegalArgumentException(BONUS_NUMBER_OVERSIZE.getMessage());
         }
-        return isDigit(bonusNumber);
+        if (!isDigit(bonusNumber)) {
+            throw new IllegalArgumentException(BONUS_NUMBER_NOT_NUMBER.getMessage());
+        }
+
     }
 
     private boolean isDigit(String bonusNumber) {
@@ -70,16 +72,15 @@ public class WinningsSettingService {
             .allMatch(Character::isDigit);
     }
 
-    private boolean winningsNumberValidate(String[] winningsNumber) {
+    private void winningsNumberValidate(String[] winningsNumber) throws IllegalArgumentException {
         if (winningsNumber.length != SIZE) {
-            return false;
+            throw new IllegalArgumentException(WINNING_NUMBER_OVERSIZE.getMessage());
         }
         for (int i = 0; i < SIZE; i++) {
             if (!isDigit(winningsNumber[i])) {
-                return false;
+                throw new IllegalArgumentException(WINING_NUMBER_NOT_NUMBER.getMessage());
             }
         }
-        return true;
     }
 
 }

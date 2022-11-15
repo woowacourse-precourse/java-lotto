@@ -31,7 +31,7 @@ public class LottoController {
         lottoPurchaseService.startLotto();
     }
 
-    private void winningsNumberSetting() {
+    private void winningsNumberSetting() throws IllegalArgumentException {
         winningsSettingService.settingWinningsInfo();
     }
 
