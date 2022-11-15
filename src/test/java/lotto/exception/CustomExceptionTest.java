@@ -1,5 +1,6 @@
-package lotto.domain;
+package lotto.exception;
 
+import lotto.exception.CustomException;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
