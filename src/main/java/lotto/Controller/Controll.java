@@ -25,6 +25,7 @@ public class Controll {
             comparison.compareLotto(buyer.getLottoNumber(), winningTicket);
             outputView.printResult(comparison.getSavedResult());
             money.calculrateReturnRate(comparison.getSavedResult());
+            outputView.printPrizeMoney(money.getPrizeMoney(), buyer.getBuyerMoney());
         } catch (IllegalArgumentException e) {
             outputView.printMessage(e.getMessage());
         }
