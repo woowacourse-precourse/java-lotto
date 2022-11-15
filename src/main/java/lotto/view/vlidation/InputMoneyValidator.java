@@ -1,13 +1,12 @@
 package lotto.view.vlidation;
 
-import lotto.domain.LottoConfig;
 import lotto.view.exception.CantBlankOrNullInputException;
 import lotto.view.exception.CantDivideByThousandToZeroException;
 import lotto.view.exception.OnlyNumberConsistBetweenOneToNineInputException;
 
 import java.util.Objects;
 
-import static lotto.domain.LottoConfig.*;
+import static lotto.domain.LottoConfig.THOUSAND;
 
 public class InputMoneyValidator {
 
@@ -46,7 +45,7 @@ public class InputMoneyValidator {
         }
     }
 
-    private static void validateBlank(final String input) {
+    public static void validateBlank(final String input) {
         if (isBlank(input)) {
             throw new CantBlankOrNullInputException();
         }
