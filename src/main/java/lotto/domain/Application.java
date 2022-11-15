@@ -21,6 +21,7 @@ public class Application {
             MoneyException moneyException = new MoneyException(init.getMoney());
         }catch(IllegalArgumentException e){
             System.out.println("[ERROR] 금액은 1000원으로 나누어 떨어져야 합니다.");
+            return;
         };
 
         try {
@@ -28,6 +29,7 @@ public class Application {
             init.setMoney(init.getMoney() / (moneyException.result()));
         } catch (ArithmeticException e) {
             System.out.println("[ERROR] 금액은 1000원으로 나누어 떨어져야 합니다.");
+            return;
         }
         init.setCount(init.getMoney()/1000);
         SetRandomSixNumber setRandomSixNumber = new SetRandomSixNumber();
