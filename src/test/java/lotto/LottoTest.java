@@ -2,6 +2,8 @@ package lotto;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import java.util.List;
 
@@ -24,4 +26,14 @@ class LottoTest {
     }
 
     // 아래에 추가 테스트 작성 가능
+    private final ExceptionHandler exception = new ExceptionHandler();
+
+    @ParameterizedTest
+    @CsvSource({"'', '[ERROR] 01'", "'300b', '[ERROR] 02'", "'8200', '[ERROR] 03'"})
+    void purchaseAmountException(String input, String expected) {
+        assertThatThrownBy(() -> exception.purchaseAmountException(input))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining(expected);
+    }
+
 }
