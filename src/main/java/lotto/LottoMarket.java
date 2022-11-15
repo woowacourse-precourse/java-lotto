@@ -22,9 +22,24 @@ public class LottoMarket {
         System.out.println("구입금액을 입력해 주세요.");
         String s = Console.readLine();
 
-        // validate 검사 (입력형식, 금액이 1000으로 나눠어 떨어지지 않는 경우)
+        validateInputPrice(s);
+
         this.purchasePrice = Integer.parseInt(s);
         this.purchaseLottoNum = purchasePrice / LOTTOPRICE;
+    }
+
+    public void validateInputPrice(String s) {
+        // 숫자가 아닌 문자가 입력되었을 때
+        char[] arrCh = s.toCharArray();
+        for (char ch : arrCh) {
+            if (!Character.isDigit(ch))
+                throw new IllegalArgumentException();
+        }
+
+        // 금액이 1000으로 나뉘어 떨어지지 않는 경우
+        int price = Integer.parseInt(s);
+        if (price % LOTTOPRICE != 0)
+            throw new IllegalArgumentException();
     }
 
     private void publishLotto() {
