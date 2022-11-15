@@ -28,6 +28,10 @@ public class LottoResultCalculator {
         this.bonusNum = bonusNum;
     }
 
+    public double calRateOfReturn(long winningAmount, int money) {
+        return (double) winningAmount / money;
+    }
+
     public long calWinningAmount(EnumMap<Rank, Integer> ranks) {
         return ranks.entrySet()
                 .stream()
