@@ -16,22 +16,14 @@ public class Result {
     }
 
     private void computeRank(WinningLotto winningLotto, Lotto lotto) {
-        int count = countMatch(winningLotto.getWinningLotto(), lotto);
+        int common = countCommon(winningLotto.getWinningLotto(), lotto);
         boolean bonus = isBonus(winningLotto.getBonusNumber(), lotto);
+        Rank rank = Rank.findRank(common, bonus);
 
-        for (Rank rank : Rank.values()) {
-            if (rank.common() == count && rank.bonus() && bonus) {
-                result.put(rank, result.getOrDefault(rank, 0) + 1);
-                break;
-            }
-            if (rank.common() == count) {
-                result.put(rank, result.getOrDefault(rank, 0) + 1);
-                break;
-            }
-        }
+        result.put(rank, result.getOrDefault(rank, 0) + 1);
     }
 
-    private int countMatch(Lotto winningLotto, Lotto lotto) {
+    private int countCommon(Lotto winningLotto, Lotto lotto) {
         return (int) lotto.getNumbers().stream()
                 .filter(integer -> winningLotto.getNumbers().contains(integer))
                 .count();
