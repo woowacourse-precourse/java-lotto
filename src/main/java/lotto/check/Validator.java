@@ -85,6 +85,5 @@ public class Validator {
             System.out.println("[ERROR]");
             throw new IllegalArgumentException(Exception.NOT_NUMBER.getExceptionMessage());
         }
-
     }
 }
