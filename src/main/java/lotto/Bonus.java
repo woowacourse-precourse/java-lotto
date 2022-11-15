@@ -9,12 +9,13 @@ import static lotto.ErrorMessage.BONUS_NUMBER_IS_DUPLICATED;
 
 public class Bonus {
     public static int BonusNumber;
+
     public static void askBonusNumber() {
-        System.out.println("\n"+Constant.ASK_BONUS_NUMBER);
+        System.out.println("\n" + Constant.ASK_BONUS_NUMBER);
         String Bonus = Console.readLine();
         BonusNumber = Integer.parseInt(Bonus);
         validateNumberRange(BonusNumber);
-        BonusValidate(BonusNumber,Game.JackpotNumbers);
+        BonusValidate(BonusNumber, Game.JackpotNumbers);
     }
 
     private static void BonusValidate(int BonusNumber, List<Integer> numbers) {

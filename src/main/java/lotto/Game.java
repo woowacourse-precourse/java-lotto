@@ -5,7 +5,6 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.List;
 
-import static lotto.Bonus.BonusNumber;
 import static lotto.Constant.*;
 import static lotto.Count.*;
 import static lotto.Count.WinningCount;

@@ -16,7 +16,7 @@ public class Buy {
         return nLotto;
     }
 
-    public static int validatePrice2(String price){
+    public static int validatePrice2(String price) {
         for (char c : price.toCharArray()) {
             if (!('0' <= c && c <= '9')) {
                 throw new IllegalArgumentException(PURCHASE_MONEY_IS_INTEGER.getMsg());
@@ -25,16 +25,18 @@ public class Buy {
         nLottoPrice = Integer.parseInt(price);
         return nLottoPrice;
     }
-    public static int validatePrice(String price){
-        try{
+
+    public static int validatePrice(String price) {
+        try {
             nLottoPrice = Integer.parseInt(price);
-        }catch(NumberFormatException e){
-            throw new IllegalArgumentException(PURCHASE_MONEY_IS_INTEGER.getMsg());}
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException(PURCHASE_MONEY_IS_INTEGER.getMsg());
+        }
         return nLottoPrice;
     }
 
-    public static void validate1000(int nLottoPrice){
-        if (nLottoPrice % 1000 != 0){
+    public static void validate1000(int nLottoPrice) {
+        if (nLottoPrice % 1000 != 0) {
             throw new IllegalArgumentException(PURCHASE_MONEY_DIVIDABLE.getMsg());
         }
     }

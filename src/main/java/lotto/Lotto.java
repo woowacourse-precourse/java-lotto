@@ -26,6 +26,7 @@ public class Lotto {
             throw new IllegalArgumentException(WINNING_NUMBERS_RANGE.getMsg());
         }
     }
+
     private void validateLottoRange(List<Integer> numbers) {
         for (int num : numbers) {
             validateNumberRange(num);
@@ -38,6 +39,7 @@ public class Lotto {
             throw new IllegalArgumentException(WINNING_NUMBERS_ARE_DUPLICATED.getMsg());
         }
     }
+
     public List<Integer> getLottoNumber() {
         return numbers;
     }

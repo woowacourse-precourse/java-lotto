@@ -14,4 +14,10 @@ public class Constant {
     public static final String TOTAL_YIELD = "총 수익률은";
     public static final String PIECE = "개";
 
+    public static final int win_1st = 1;
+    public static final int win_2nd = 2;
+    public static final int win_3rd = 3;
+    public static final int win_4th = 4;
+    public static final int win_5th = 5;
+
 }

@@ -11,7 +11,7 @@ public class Count {
         List<Integer> counts = new ArrayList<>();
         for (List<Integer> lotto : GeneratedLotto) {
             MatchNumber set = WinCount(lotto, numbers);
-            if(set.getValue() != 0){
+            if (set.getValue() != 0) {    //set.getRank() == Constant.win_?
                 WinTypeCounter[set.getRank()]++;
             }
             counts.add(set.getValue());
@@ -26,19 +26,19 @@ public class Count {
                 winningCount++;
             }
         }
-        if(winningCount == 5 && lotto.contains(Bonus.BonusNumber)){
+        if (winningCount == 5 && lotto.contains(Bonus.BonusNumber)) {
             return MatchNumber.FIVE_BONUS;
         }
-        if(winningCount >= 3) {
+        if (winningCount >= 3) {
             return findWinType(winningCount);
         }
         return MatchNumber.Zero;
     }
 
     public static MatchNumber findWinType(int number) {
-        if(number == 3) return MatchNumber.THREE;
-        if(number == 4) return MatchNumber.FOUR;
-        if(number == 5) return MatchNumber.FIVE;
+        if (number == 3) return MatchNumber.THREE;
+        if (number == 4) return MatchNumber.FOUR;
+        if (number == 5) return MatchNumber.FIVE;
         return MatchNumber.SIX;
     }
 }
