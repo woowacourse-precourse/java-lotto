@@ -27,5 +27,7 @@ public class Application {
         EnumMap<Rank, Integer> ranks = lottoResultCalculator.calRankAll(lottos);
         long winningAmount = lottoResultCalculator.calWinningAmount(ranks);
         double rateOfReturn = lottoResultCalculator.calRateOfReturn(winningAmount, money);
+
+        inputOutput.printResult(ranks, rateOfReturn);
     }
 }

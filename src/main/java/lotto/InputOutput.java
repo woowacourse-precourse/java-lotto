@@ -3,6 +3,7 @@ package lotto;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.Arrays;
 import java.util.Comparator;
+import java.util.EnumMap;
 import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
@@ -114,6 +115,20 @@ public class InputOutput {
         if (bonusNum < 1 || 45 < bonusNum) {
             throw new IllegalArgumentException("[ERROR] 보너스 번호는 1부터 45사이의 숫자여야 합니다.");
         }
+    }
+
+    public void printResult(EnumMap<Rank, Integer> ranks, double rateOfReturn) {
+        System.out.println("당첨 통계\n---");
+
+        List<Rank> sortedKeys = Arrays.stream(Rank.values())
+                .sorted(Comparator.reverseOrder())
+                .collect(Collectors.toList());
+
+        sortedKeys.forEach(rank -> {
+            System.out.println(rank.getResultMessage() + ranks.get(rank) + "개");
+        });
+
+        System.out.println(String.format("총 수익률은 %.1f%%입니다.", rateOfReturn));
     }
 
 }
