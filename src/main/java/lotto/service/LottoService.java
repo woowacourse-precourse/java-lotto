@@ -2,14 +2,19 @@ package lotto.service;
 
 import lotto.domain.Lotto;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Predicate;
 
 public class LottoService {
+    private static final double DECIMAL_PLACE = 100.0f;
     private List<Lotto> lotteries = new ArrayList<>();
     private List<Integer> winnings = new ArrayList<>();
     private int bonus;
+    private double buyMoney;
+    private String profitRate;
+    private double totalProfit = 0;
 
     public LottoService() {
 
@@ -36,8 +41,14 @@ public class LottoService {
                         .anyMatch(Predicate.isEqual(number)))
                 .count();
     }
+
     private boolean checkBonusNumber(List<Integer> lottoNumbers) {
         return lottoNumbers.stream()
                 .anyMatch(number -> number.equals(bonus));
+    }
+
+    private String getLottoRate() {
+        DecimalFormat RateFormat = new DecimalFormat("###,###.0");
+        return RateFormat.format((totalProfit / buyMoney) * DECIMAL_PLACE);
     }
 }
