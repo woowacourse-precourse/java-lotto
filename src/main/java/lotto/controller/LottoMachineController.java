@@ -46,6 +46,12 @@ public class LottoMachineController {
         return prizeNumber;
     }
 
+    public static boolean isBonusNumber(List<Integer> lotto, int bonusNumber){
+        if(lotto.contains(bonusNumber)){
+            return true;
+        }
+        return false;
+    }
     public static int[] toListLotto(Lotto lotto){
         int[] lottoArr = new int[lotto.getSize()];
         for(int i=0;i< lotto.getSize();i++){
