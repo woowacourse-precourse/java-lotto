@@ -94,8 +94,7 @@ public class Application {
         List<Integer> inputNumbers = setInputWinningNumbers();
         int inputBonusNumber = setInputBonusNumber();
 
-        System.out.println(inputNumbers.size());
-        lha.draw(inputNumbers, inputBonusNumber);
+        lha.setDrawalNumbers(inputNumbers, inputBonusNumber);
         List<LotteryHostAgency.WinningCriteria> results = lottories.parallelStream().map(lha::getResult).collect(Collectors.toList());
         printWiningStats(results);
     }

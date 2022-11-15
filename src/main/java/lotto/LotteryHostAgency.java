@@ -1,7 +1,6 @@
 package lotto;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class LotteryHostAgency {
@@ -28,7 +27,7 @@ public class LotteryHostAgency {
     }
 
 
-    public void draw(List<Integer> winningNumbers, int bonusNumber) {
+    public void setDrawalNumbers(List<Integer> winningNumbers, int bonusNumber) {
         setWinningNumbers(winningNumbers);
         setBonusNumber(bonusNumber);
     }
