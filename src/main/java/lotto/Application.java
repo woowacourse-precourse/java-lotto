@@ -1,7 +1,16 @@
 package lotto;
 
+import camp.nextstep.edu.missionutils.Console;
+
+import static java.lang.Integer.parseInt;
+
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        try{
+            Manager manager = new Manager();
+            manager.start();
+        }catch (IllegalAccessError e){
+            System.out.println(e);
+        }
     }
 }
