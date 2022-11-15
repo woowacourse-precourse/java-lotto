@@ -3,7 +3,7 @@ package lotto.model;
 import java.util.List;
 
 public class Lottos {
-    public static final String LOTTOS_DELIMITER = "\n";
+    private static final String LOTTOS_DELIMITER = "\n";
     private final List<Lotto> lottos;
 
     public Lottos(List<Lotto> lottos) {

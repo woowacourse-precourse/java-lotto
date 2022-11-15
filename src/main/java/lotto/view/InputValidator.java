@@ -7,10 +7,9 @@ import java.util.List;
 import java.util.Set;
 
 public class InputValidator {
-
     private static final String PATTERN_PURCHASE_AMOUNT = "^[0-9]+$";
-    public static final String PATTERN_WINNING_NUMBERS = "^[0-9]+(,[0-9]+){5}$";
-    public static final String PATTERN_BONUS_NUMBER = "^([1-9]|[1-3][0-9]|4[0-5])$";
+    private static final String PATTERN_WINNING_NUMBERS = "^[0-9]+(,[0-9]+){5}$";
+    private static final String PATTERN_BONUS_NUMBER = "^([1-9]|[1-3][0-9]|4[0-5])$";
     public static final String ERR_PURCHASE_AMOUNT = "[ERROR] 구매 금액은 1000원 단위여야 합니다. 예시) 7000(O), 15000(O), 6500(X)";
     public static final String ERR_WINNING_NUMBERS_FORMAT = "[ERROR] 당첨 번호는 ','로 구분된 6개의 숫자입니다. 예시) 1,2,3,4,5,6(O)";
     public static final String ERR_WINNING_NUMBERS_RANGE = "[ERROR] 당첨 번호는 1 ~ 45 사이의 숫자입니다. 예시) 1,7,13,25,38,43(O), 0,2,3,4,46,48,90(X)";
