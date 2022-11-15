@@ -7,9 +7,9 @@ import static lotto.message.LottoLine.LOTTO_NUMBER_SEPARATOR;
 import static lotto.validation.LottoNumberValidation.validateDuplicate;
 import static lotto.validation.LottoNumberValidation.validateNumbersRange;
 import static lotto.validation.LottoNumberValidation.validateSize;
-import static lotto.value.LottoValues.LOTTO_END_NUMBER;
-import static lotto.value.LottoValues.LOTTO_SIZE;
-import static lotto.value.LottoValues.LOTTO_START_NUMBER;
+import static lotto.value.LottoValue.LOTTO_END_NUMBER;
+import static lotto.value.LottoValue.LOTTO_SIZE;
+import static lotto.value.LottoValue.LOTTO_START_NUMBER;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.List;

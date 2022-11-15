@@ -2,8 +2,8 @@ package lotto.validation;
 
 import static lotto.message.ErrorMessage.DUPLICATE;
 import static lotto.message.ErrorMessage.OUT_OF_RANGE;
-import static lotto.value.LottoValues.LOTTO_END_NUMBER;
-import static lotto.value.LottoValues.LOTTO_START_NUMBER;
+import static lotto.value.LottoValue.LOTTO_END_NUMBER;
+import static lotto.value.LottoValue.LOTTO_START_NUMBER;
 
 import java.util.List;
 
