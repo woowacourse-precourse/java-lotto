@@ -10,7 +10,7 @@ import static lotto.common.constant.NumberConstant.LOTTO_MIN_VALUE;
 
 public class Validator {
 
-    private static Pattern LOTTO_PATTERN = Pattern.compile("^[\\d]+,[\\d]+,[\\d]+,[\\d]+,[\\d]+,[\\d]+$");
+    private static Pattern LOTTO_PATTERN = Pattern.compile("^([0-9],?){5}[0-9]$");
 
     public static int validateInt(String str){
         try {
