@@ -26,7 +26,12 @@ public class Input {
         return winningNumber;
     }
 
-
+    public static int inputBonusNumber(List<Integer> winningNumber) {
+        String input = Console.readLine();
+        validateLottoNumber(input);
+        validateNotDuplicated(winningNumber, input);
+        return Integer.parseInt(input);
+    }
 
     public static void validateNumber(String input) {
         try {

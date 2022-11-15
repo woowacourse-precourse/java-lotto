@@ -20,7 +20,9 @@ public class Application {
         System.out.println(winningNumber);
 
         // 보너스 번호 입력 받기 // 예외 처리 (1~45 자리 수, int가 아닌 경우 )
-
+        System.out.println("보너스 번호를 입력해 주세요.");
+        int bonusNumber = Input.inputBonusNumber(winningNumber);
+        System.out.println(bonusNumber);
 
         // 발행한 로또 수량 및 번호 출력
 
