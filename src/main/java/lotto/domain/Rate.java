@@ -1,13 +1,11 @@
 package lotto.domain;
 
-import java.util.Arrays;
-
 public class Rate {
 
     private final double rate;
 
     public Rate(Money money, PrizeResult prizeResult) {
-        this.rate = getAllMoney(prizeResult) / money.getMoney();
+        this.rate = getAllMoney(prizeResult) / money.getTicket() * 0.1;
     }
 
     private double getAllMoney(PrizeResult prizeResult) {
@@ -18,5 +16,9 @@ public class Rate {
         }
 
         return result;
+    }
+
+    public double getRate() {
+        return rate;
     }
 }
