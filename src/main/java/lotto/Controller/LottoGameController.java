@@ -22,6 +22,15 @@ public class LottoGameController {
 
     }
 
+    public String getInputNumber(InputMessages inputMessages, OutputMessages outputMessages) {
+        outputMessages.inputMoneyMsg();
+        String cash = inputMessages.readLine();
+        lottoGameService.isCashInt(cash);
+
+        return cash;
+    }
+
+
 }
 
 enum rankType {
