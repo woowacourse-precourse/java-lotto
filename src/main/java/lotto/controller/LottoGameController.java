@@ -44,7 +44,7 @@ public class LottoGameController {
         revenue.calculateRateOfRevenue(buyer.getPurchaseAmount());
     }
     public void noticeRateOfRevenue(){
-
+        lottoGameView.noticeRateOfRevenue(revenue.getRateOfRevenue());
     }
     public void start(){
 

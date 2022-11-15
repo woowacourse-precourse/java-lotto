@@ -10,7 +10,8 @@ import java.util.List;
 import java.util.stream.Stream;
 
 public class LottoGameView{
-
+    
+    private static final String PERCENT="%";
 
     private String purchaseAmount;
     private String raffleNumbers;
@@ -36,7 +37,7 @@ public class LottoGameView{
     }
 
     public void noticeRateOfRevenue(float rateOfRevenue){
-
+        System.out.printf("총 수익률은 %.1f%s입니다.", rateOfRevenue, PERCENT);
     }
 
     public void noticeLotteries(String lottoNumbers){
