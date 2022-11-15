@@ -6,16 +6,18 @@ public class UserInputException {
     final static int numSizeStart = 1;
     final static int numSizeEnd = 45;
 
+    public UserInputException(){}
+
     // 입력 자료형이 정수인지와 입력 숫자의 크기를 동시 확인
     public boolean checkInputTypeAndRange(String inputString){
-        if (checkInputIsInteger(inputString)
+        if (checkInputIsNum(inputString)
                 && checkWinningNumberRange(Integer.valueOf(inputString))){
             return true;
         }
         return false;
     }
     // 입력받은 값이 정수가 아니라면 false 리턴
-    public boolean checkInputIsInteger(String inputString) {
+    public boolean checkInputIsNum(String inputString) {
         try {
             Integer.parseInt(inputString);
         } catch (NumberFormatException e) {
