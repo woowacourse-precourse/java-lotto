@@ -14,6 +14,7 @@ public class BonusNumber {
         Validator.numberFormatCheck(userInput);
         int number = Integer.parseInt(userInput);
         Validator.containsCheck(number, winningNumber);
+        Validator.rangeCheck(List.of(number));
         return number;
     }
 
