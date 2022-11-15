@@ -15,6 +15,7 @@
 - [X] LotteryMachine이 수익금을 통해 수익률을 계산하여 보여준다. LotteryMachine#calculateRate
 
 
-## 예외 케이스 추가(예정)
-- [X] 구입 금액이 1000단위가 아니라면 IllegalArgumentException을 발생시킨다.
+## 예외 케이스 추가
+- [X] 구입 금액이 1000단위가 아니라면, "[ERROR]"로 시작하는 에러 문구를 출력한다.
+- [X] 당첨 번호를 1~45 범위 밖의 숫자를 입력하면, "[ERROR]"로 시작하는 에러 문구를 출력한다.
     

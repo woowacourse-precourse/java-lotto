@@ -23,7 +23,7 @@ public class User {
     public void printLottoEA(){
         lottoEA = this.lottoPrice/1000;
         if((lottoPrice%1000) != 0)
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR]1000단위로 구매해야 합니다.");
         System.out.println(lottoEA + "개를 구매했습니다.");
     }
 
@@ -64,8 +64,14 @@ public class User {
     private void enter(String nums){
         userNumbers = new ArrayList<>();
         for(String num : nums.split(",")){
-            this.userNumbers.add(Integer.valueOf(num));
+            isOutOfRange(Integer.valueOf(num));
         }
+    }
+
+    private void isOutOfRange(int num){
+        if(num<1 || num>45)
+            throw new IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
+        this.userNumbers.add(num);
     }
 
     public List<Integer> getUserNumbers(){
