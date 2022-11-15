@@ -1,6 +1,5 @@
 package lotto.domain;
 
-import lotto.Lotto;
 import lotto.view.ConsoleOutput;
 
 import java.util.ArrayList;
@@ -13,11 +12,12 @@ public class LottoList {
         this.lottoList.add(lotto);
     }
 
-    public void printLottoList(int amount) {
-        ConsoleOutput output = new ConsoleOutput();
-        output.LottoAmount(amount);
-        for(Lotto lotto : this.lottoList){
-            System.out.println(lotto.getNumbers());
+    @Override
+    public String toString() {
+        StringBuilder str = new StringBuilder();
+        for (Lotto lotto : lottoList) {
+            str.append(lotto.toString());
         }
+        return str.toString();
     }
 }
