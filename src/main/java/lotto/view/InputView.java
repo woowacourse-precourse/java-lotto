@@ -52,7 +52,7 @@ public class InputView {
         System.out.println(MONEY_INPUT_MESSAGE);
         buyLottoMoney();
         cntLotto();
-        System.out.println("구매금액: " + inputMoney);
+        System.out.println(inputMoney);
         if (inputMoney % lotteryPrice != 0) {
             throw new IllegalArgumentException("[ERROR] : 1000원 단위로 입력해주세요");
         }
@@ -63,6 +63,8 @@ public class InputView {
 
     public static List<Integer> makeList(String userInput) {
         String[] arrayInput = userInput.split(",");
+        String joinString = String.join(", ", arrayInput);
+        System.out.println(joinString);
         List<Integer> userNumbers = new ArrayList<>();
         for (int i = 0; i < arrayInput.length; i++) {
             userNumbers.add(Integer.valueOf(arrayInput[i]));
@@ -94,6 +96,7 @@ public class InputView {
         System.out.println(BONUS_INPUT_MESSAGE);
         bonusNum = Integer.parseInt(getUserInput());
         bonus_Numbers_Validate(bonusNum);
+        System.out.println(bonusNum);
     }
 
     public void bonus_Numbers_Validate(int bonusNum) {
