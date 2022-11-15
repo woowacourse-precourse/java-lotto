@@ -42,6 +42,10 @@ public class LottoGameController {
         return calculateCount(inputCash);
     }
 
+    public List<Integer> getRandomNumList() {
+        return Randoms.pickUniqueNumbersInRange(1, 45, 6);
+    }
+
 
 }
 
