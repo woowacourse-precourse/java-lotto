@@ -11,6 +11,7 @@ public class MyLotto {
 
     MyLotto(int money) {
         validateMoney(money);
+        this.money = money;
         this.countNumsOfLotto = money / 1000;
     }
     private void validateMoney(int money) {
