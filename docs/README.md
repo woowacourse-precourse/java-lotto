@@ -4,11 +4,13 @@
     - [V] 숫자의 범위를 1~45까지만 되도록 뽑기
     - [V] 중복되지 않는 6개의 숫자 뽑기
     - [V] 오름차순 정렬
-- [] 로또구매 구현
+- [V] 로또구매 구현
     - [V] 로또 1장의 가격은 1000원
     - [V] 로또 구매 개수 출력
+    - [V] ERROR : 입력값이 숫자가 아닐때 예외 검사
+    - [V] ERROR : 입력값이 숫자가 아닐때 IllegalArgumentException 발생 및 에러 메세지 출력
     - [V] ERROR : 1000원으로 나눠 떨어지지 않을때 검사
-    - [] ERROR : 1000원으로 나눠 떨어지지 않을때 IllegalArgumentException 발생 및 에러 메세지 출력   
+    - [V] ERROR : 1000원으로 나눠 떨어지지 않을때 IllegalArgumentException 발생 및 에러 메세지 출력   
 - [V] 로또 당첨 로직 구현
     - [V] 일치하는 번호 개수 추출
     - [V] 보너스 번호 일치 여부 확인
@@ -24,7 +26,7 @@
    - [V] 1자리의 보너스 번호 뽑기
    - [V] ERROR : 숫자의 범위를 1~45까지인지 검사 
    - [V] ERROR : 6개의 숫자를 입력 하였는지 검사
-   - [] ERROR : 잘못된 값이 입력되었을 때 IllegalArgumentException 발생 및 에러 메세지 출력
+   - [V] ERROR : 잘못된 값이 입력되었을 때 IllegalArgumentException 발생 및 에러 메세지 출력
 
 
 ## 로또 기능 요구사항
