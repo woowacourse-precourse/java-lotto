@@ -9,7 +9,7 @@
 ### 당첨 번호 추첨 (사용자에게서 입력받음)
 - [x] 당첨 번호를 입력받고 번호를 검증한다.
   - [x] [당첨 번호를 입력받는다.](docs/viewREADME.md)
-  - [ ] [입력받은 번호를 검증한다.](docs/validateREADME.md)
+  - [x] [입력받은 번호를 검증한다.](docs/validateREADME.md)
 ### 구매한 로또 번호와 당첨 번호 비교
 
 
