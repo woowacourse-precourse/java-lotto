@@ -72,10 +72,15 @@
 
 <br>
 
+- [x] **등수를 매기기 위한 등수리스트 생성 기능** - RankingCalculator
+  - [x] 같은 수가 몇개 있는지 판단하는 기능 - RankingCalculator
+  - [x] 당첨번호, 보너스번호에 따른 등수 판단 기능 - RankingCalculator
+  - [x] 당첨번호, 보너스번호에 따른 등수 결과 리스트를 만드는 기능 - RankingCalculator
+
 - [x] **등수를 매기는 기능** - Ranking Enum
-  - [x] 등수 Enum
-  - [x] 등수 리스트를 만드는 기능
-  - [x] 로또 하나에 대한 등수를 매기는 기능
+  - [x] 등수 Enum - Ranking Enum
+  - [x] 등수 리스트를 만드는 기능 - Ranking Enum
+  - [x] 로또 하나에 대한 등수를 매기는 기능 - Ranking Enum
 
 - [ ] **당첨 통계를 출력하는 기능** - OutputView
     - [x] 당첨 개수를 확인하는 기능 - GameResult
