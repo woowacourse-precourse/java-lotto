@@ -1,10 +1,7 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-
-import java.util.List;
 
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -17,14 +14,38 @@ public class ApplicationTest2 extends NsTest {
 
     @Test
     public void inputTest1() {
-        assertThat(app.userInput("8000")).isEqualTo(8);
+        assertThat(app.userMoneyCheck("8000")).isEqualTo(8);
     }
 
     @Test
     public void inputTest2() {
         assertThrows(IllegalArgumentException.class, () -> {
-                    app.userInput("1000j");
+                    app.userMoneyCheck("1000j");
             }
+        );
+    }
+
+    @Test
+    public void winningNumberDuplicateTest(){
+        assertThrows(IllegalArgumentException.class, () -> {
+                    new WinningNumbers("1,2,4,5,6,6");
+                }
+        );
+    }
+
+    @Test
+    public void winningNumberNotNumberTest(){
+        assertThrows(IllegalArgumentException.class, () -> {
+                    new WinningNumbers("1,2,jj,5,6,6");
+                }
+        );
+    }
+
+    @Test
+    public void winningNumberNotInRangeTest(){
+        assertThrows(IllegalArgumentException.class, () -> {
+                    new WinningNumbers("1,2,88,5,7,6");
+                }
         );
     }
 
