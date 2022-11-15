@@ -56,7 +56,7 @@ public class InputView {
         if (inputMoney % lotteryPrice != 0) {
             throw new IllegalArgumentException("[ERROR] : 1000원 단위로 입력해주세요");
         }
-        System.out.println(lotteryAmount + "개를 구매했습니다");
+        System.out.println(lotteryAmount + "개를 구매했습니다.");
 
         return lotteryAmount;
     }
