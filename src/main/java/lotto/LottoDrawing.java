@@ -32,7 +32,7 @@ public class LottoDrawing {
 
     private void checkBonusInput(String input) {
         if (!input.matches(REG_EXP_NUMBER_ONLY)) {
-            throw new IllegalArgumentException(ERROR_NOT_NUMBER); //상수변경해야함 :숫자만 입력할 수 있습니다.
+            throw new IllegalArgumentException(ERROR_NOT_NUMBER);
         }
     }
     private List<Integer> convertStringToNumberList(String input) {
@@ -48,7 +48,7 @@ public class LottoDrawing {
 
     private void checkRange(int input) {
         if (input < MIN_LOTTO_NUMBER || input > MAX_LOTTO_NUMBER) {
-            throw new IllegalArgumentException(ERROR_RANGE); //상수변경해야함 : 1 이상 45 이하의 숫자만 입력할 수 있습니다.
+            throw new IllegalArgumentException(ERROR_RANGE);
         }
     }
     private void bonusDuplicate(int bonusNumber){

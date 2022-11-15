@@ -57,7 +57,7 @@ public class LottoSeller {
     }
 
     public void printTicket() {
-        System.out.println(numberOfTickets + MESSAGE_NUMBER_OF_TICKET_IS);
+        System.out.println(String.format(MESSAGE_NUMBER_OF_TICKET_IS,numberOfTickets));
 
         for (int i = 0; i < numberOfTickets; i++) {
             System.out.println(newLottos.get(i).toString());
