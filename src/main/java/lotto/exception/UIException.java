@@ -1,11 +1,11 @@
 package lotto.exception;
 
+import java.io.StringReader;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
 public final class UIException extends IllegalArgumentException {
-
 
     public void notNumberException(String money) {
         try {

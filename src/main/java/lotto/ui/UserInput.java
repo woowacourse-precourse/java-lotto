@@ -66,15 +66,19 @@ public class UserInput {
 
     public Integer GetBonusNumber() {
         System.out.println("보너스 번호를 입력해 주세요.");
-        int bonusNumber = Integer.parseInt(readLine());
+
+        String bonusNumber = readLine();
         try {
-            uiException.BonusNumberException(lottoNumber, bonusNumber);
+            uiException.notNumberException(bonusNumber);
+            int bn = Integer.parseInt(bonusNumber);
+            uiException.BonusNumberException(lottoNumber, bn);
+            uiException.overBoundaryException(List.of(bn));
         } catch (Exception e) {
             System.out.println(e.getMessage());
             return null;
         }
 
-        return bonusNumber;
+        return Integer.parseInt(bonusNumber);
     }
 
 
