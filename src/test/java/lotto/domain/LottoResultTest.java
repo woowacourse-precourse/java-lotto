@@ -1,6 +1,10 @@
 package lotto.domain;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 
 class LottoResultTest {
 
@@ -11,6 +15,17 @@ class LottoResultTest {
         lottoResult = new LottoResult();
         lottoResult.add(LottoRank.THIRD);
         lottoResult.add(LottoRank.THIRD);
+    }
+
+    @DisplayName("수익의 총합을 반환할 수 있다. ")
+    @Test
+    void 수익의_총합_계산하기() {
+        //given
+
+        //when
+        int totalProfit = lottoResult.getTotalProfit();
+        //then
+        assertThat(totalProfit).isEqualTo(3000000);
     }
 
 }
