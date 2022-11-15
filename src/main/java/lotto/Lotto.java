@@ -2,13 +2,14 @@ package lotto;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
+
+import static camp.nextstep.edu.missionutils.Randoms.pickUniqueNumbersInRange;
 
 public class Lotto {
     private static final String ERROR_NUMBER_COUNT = "로또 번호는 6개여야 합니다.";
 
-    private static final List<LottoItem> numbers = new ArrayList<>();
+    private static final List<Integer> numbers = new ArrayList<>();
     private static final List<Lotto> number = new ArrayList<>();
     private static final List<LottoItem> initLottoNumbers = new ArrayList<>();
     private static final List<Lotto> lottos = new ArrayList<>();
@@ -20,13 +21,13 @@ public class Lotto {
         }
     }
 
-    public Lotto(List<LottoItem> numbers) {
+    public Lotto(List<Integer> numbers) {
         validate(numbers);
 
         this.numbers.addAll(numbers);
     }
 
-    private void validate(List<LottoItem> numbers) {
+    private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException(ERROR_NUMBER_COUNT);
         }
@@ -34,9 +35,9 @@ public class Lotto {
 
 
 
-    public static List<LottoItem> generateLottoNumbers() {
+    public static List<Integer> generateLottoNumbers() {
         Collections.shuffle(initLottoNumbers);
-        List<LottoItem> lottoNumbers = initLottoNumbers.subList(0, 45);
+        List<Integer> lottoNumbers = pickUniqueNumbersInRange(1, 45, 6);
         Collections.sort(lottoNumbers);
 
         return lottoNumbers;
@@ -53,7 +54,7 @@ public class Lotto {
         return Collections.unmodifiableList(number);
     }
 
-    public static List<LottoItem> getNumbers() {
+    public static List<Integer> getNumbers() {
         return Collections.unmodifiableList(numbers);
     }
 

@@ -34,7 +34,7 @@ public class Money {
         return input;
     }
 
-    private static int changeInt(String userInput) {
+    public static int changeInt(String userInput) {
         try {
             return Integer.parseInt(userInput);
         } catch (Exception e) {
