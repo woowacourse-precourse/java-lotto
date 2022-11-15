@@ -10,18 +10,16 @@ import java.util.List;
 public class PurchaseLotto {
     public List<Integer> purchaseLotto() {
         System.out.println("구입금액을 입력해주세요");
-        List<Integer> myLotto = new ArrayList<>();
+        List<Integer> newLotto = new ArrayList<>();
         String moneyInput = Console.readLine();
         int inputMoney = Integer.parseInt(moneyInput);
         if (inputMoney % 1000 != 0)
             throw new IllegalArgumentException("[ERROR] 로또 가격은 1000원 단위입니다!");
         for (String lottoMoney : moneyInput.split("")) {
-            myLotto.add(Integer.parseInt(lottoMoney));
+            newLotto.add(Integer.parseInt(lottoMoney));
         }
-        return myLotto;
+        return newLotto;
     }
-    private static void lottoCount(int inputMoney) {
-        int myCount = inputMoney / 1000;
-        for (int i = 0; i < myCount; i++) ;
-    }
+
 }
+

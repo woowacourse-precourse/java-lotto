@@ -14,7 +14,7 @@ public class LottoManager {
         return this.mynumbers = mynumbers;
     }
 
-    public int lotttoCompare(List<Integer> number, List<Integer> mynumbers){
+    public int lottoCompare(List<Integer> number, List<Integer> mynumbers){
         int result = 0;
         for(int i = 0; i < mynumbers.size(); i++){
             if(number.contains(mynumbers.get(i))){
