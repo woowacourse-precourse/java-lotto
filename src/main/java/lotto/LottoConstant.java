@@ -5,6 +5,7 @@ public class LottoConstant {
     public static final String PURCHASE_LOTTO_COUNT_RESULT_MESSAGE = "개를 구매했습니다.";
     public static final String INPUT_WINNING_LOTTO_NUMBER_MESSAGE = "\n당첨 번호를 입력해 주세요.";
     public static final String INPUT_BONUS_NUMBER_MESSAGE = "\n보너스 번호를 입력해 주세요.";
+    public static final String STATISTICS_PRINT_MESSAGE = "\n당첨통계\n---\n";
 
     public static final String PURCHASE_AMOUNT_INPUT_IS_NOT_NUMBER_ERROR_MESSAGE = "[ERROR] 입력값이 올바른 숫자가 아닙니다.";
     public static final String PURCHASE_AMOUNT_INPUT_IS_TOO_LOW_TO_BUY_LOTTO_ERROR_MESSAGE = "[ERROR] 로또를 구매하기에 너무 작은 금액입니다.";
