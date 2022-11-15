@@ -31,6 +31,7 @@ public class LottoCompany {
     }
 
     public void makeWinningNumbers(String numbers) {
+        validateInputString(numbers);
         String[] winningNumbers = numbers.split(",");
         Arrays.sort(winningNumbers);
         validateWinningNumbers(winningNumbers);
@@ -42,6 +43,13 @@ public class LottoCompany {
         this.lotto = new Lotto(lottoNumbers);
 
         makeBonusNumber();
+    }
+
+    public void validateInputString(String numbers) {
+        if(!numbers.contains(",")){
+            System.out.println("[ERROR] ','로 당첨 번호를 구분해서 입력해야 합니다.");
+            throw new IllegalArgumentException();
+        }
     }
 
     private void validateWinningNumbers(String[] winningNumbers) {
