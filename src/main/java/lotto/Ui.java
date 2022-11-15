@@ -18,6 +18,16 @@ public class Ui {
 
         String winNumber= inputWinNumber();
 
+        String bonusNumber= inputBonusNumber();
+
+
+
+    }
+
+    private String inputBonusNumber() {
+        System.out.println("보너스 번호를 입력해 주세요.");
+        //당연히 validation 있어야 하고
+        return readLine();
     }
 
     private String inputWinNumber() {
