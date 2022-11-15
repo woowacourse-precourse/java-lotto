@@ -5,7 +5,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
-public class InputValidator {
+public class Validator {
     public void validateLotto(List<Integer> lotto) {
         validateLottoSize(lotto);
         validateDuplicatedLotto(lotto);
@@ -13,11 +13,11 @@ public class InputValidator {
             validateLottoNumber(number);
         }
     }
-
-    public void validateOnlyNumbers(String inputString) {
+    public void validateSeriesOfNumbers(String inputString) {
         String regexOnlyNumbers = "^[0-9]*$";
         Matcher matcherOnlyNumbers = Pattern.compile(regexOnlyNumbers).matcher(inputString);
         if (!matcherOnlyNumbers.matches()){
+            System.out.println("[ERROR] 숫자만 입력해주세요.");
             throw new IllegalArgumentException("[ERROR] 숫자만 입력해주세요.");
         }
     }
