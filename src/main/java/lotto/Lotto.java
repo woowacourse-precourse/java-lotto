@@ -7,7 +7,6 @@ public class Lotto {
 
     public Lotto(List<Integer> numbers) {
         validateLottoNumbers(numbers);
-        Collections.sort(numbers);
         this.numbers = numbers;
     }
 
@@ -41,5 +40,9 @@ public class Lotto {
 
     void printNumbers() {
         System.out.println(numbers);
+    }
+
+    Boolean matchNumber(Integer winNumber) {
+        return numbers.contains(winNumber);
     }
 }

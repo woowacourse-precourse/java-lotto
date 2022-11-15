@@ -5,8 +5,8 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.*;
 
 public class WinningTicket {
-    private List<Integer> numbers;
-    private int bonusNumber;
+    List<Integer> numbers;
+    int bonusNumber;
 
     public WinningTicket() {
     }
@@ -24,7 +24,7 @@ public class WinningTicket {
         String userInput;
         List<Integer> adjusted;
 
-        System.out.println("당첨 번호를 입력해 주세요.");
+        System.out.println("\n당첨 번호를 입력해 주세요.");
         userInput = Console.readLine();
         adjusted = adjustUserInput(userInput);
         return adjusted;
@@ -69,7 +69,7 @@ public class WinningTicket {
     private String inputBonusNumber() {
         String userInput;
 
-        System.out.println("보너스 번호를 입력해 주세요.");
+        System.out.println("\n보너스 번호를 입력해 주세요.");
         userInput = Console.readLine();
 
         return userInput;
