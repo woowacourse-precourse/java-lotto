@@ -1,5 +1,7 @@
 package lotto.model;
 
+import lotto.domain.WinningRank;
+
 public class LottoResult {
 
     private int firstCount;
@@ -8,6 +10,21 @@ public class LottoResult {
     private int fourthCount;
     private int fifthCount;
     private float profit;
+
+    public void refreshResult(WinningRank winningRank) {
+
+        if (winningRank.equals(WinningRank.FIFTH)) {
+            firstCount++;
+        } else if (winningRank.equals(WinningRank.SECOND)) {
+            secondCount++;
+        } else if (winningRank.equals(WinningRank.THIRD)) {
+            thirdCount++;
+        } else if (winningRank.equals(WinningRank.FOURTH)) {
+            fourthCount++;
+        } else if (winningRank.equals(WinningRank.FIFTH)) {
+            fifthCount++;
+        }
+    }
 
     public float getProfit() {
         return profit;
@@ -35,25 +52,5 @@ public class LottoResult {
 
     public int getFifthCount() {
         return fifthCount;
-    }
-
-    public void addFirstCount() {
-        firstCount++;
-    }
-
-    public void addSecondCount() {
-        secondCount++;
-    }
-
-    public void addThirdCount() {
-        thirdCount++;
-    }
-
-    public void addFourthCount() {
-        fourthCount++;
-    }
-
-    public void addFifthCount() {
-        fifthCount++;
     }
 }
