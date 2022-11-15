@@ -27,7 +27,8 @@ class LottoTest {
 
     @Test
     void sortAscending(){
-        assertThat(Lotto.sortAscending(Arrays.asList(1, 2, 6, 4, 8, 0))).isEqualTo(List.of(0,1,2,4,6,8));
+        Lotto lotto = new Lotto(Arrays.asList(1,2,7,8,3,5));
+//        assertThat(lotto.numbers).isEqualTo(List.of(1,2,3,5,7,8));
     }
 
     // 아래에 추가 테스트 작성 가능

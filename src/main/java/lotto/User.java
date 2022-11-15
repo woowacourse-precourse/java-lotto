@@ -13,7 +13,7 @@ public class User {
 
     }
 
-    int lotteryPurchaseAmount(){
+    public static int lotteryPurchaseAmount(){
         System.out.println("구입금액을 입력해 주세요.");
         String input = Console.readLine();
         int lotteryPurchaseAmount = Integer.parseInt(input);
