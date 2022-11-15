@@ -23,7 +23,8 @@ public class Calculator {
         }
         return sum;
     }
-    public double calculateEarningRate(double sum, double pay){
+    public double calculateEarningRate(List<Integer> winningTable, double pay){
+        sumJackpot(winningTable);
         earningRate = Math.round(sum/pay)/10.0;
         return earningRate;
     }

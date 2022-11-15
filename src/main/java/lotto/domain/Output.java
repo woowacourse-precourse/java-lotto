@@ -1,6 +1,6 @@
 package lotto.domain;
 
-import lotto.view.InputMessage;
+import lotto.console.InputMessage;
 
 import java.util.HashMap;
 import java.util.List;
@@ -19,8 +19,8 @@ public class Output {
         }
         return countOfPrize;
     }
-    public void writeDown(double earningRate){
-        Calculator calculator = new Calculator();
+    public void writeDown(List<Integer> winningTable, double earningRate){
+        createMakeOfPrize(winningTable);
         System.out.println("당첨 통계");
         System.out.println("---");
         System.out.println("3개 일치 (5,000원) - "+countOfPrize.getOrDefault(3,0)+"개");

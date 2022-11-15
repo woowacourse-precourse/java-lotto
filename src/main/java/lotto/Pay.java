@@ -1,6 +1,6 @@
 package lotto;
 
-import lotto.view.ErrorMessage;
+import lotto.console.ErrorMessage;
 
 public class Pay {
     private final int payNum;
@@ -11,7 +11,6 @@ public class Pay {
         divisible(payment);
         this.payNum = payment/1000;
     }
-
     private void validate(String pay){
         for (int index = 0; index < pay.length(); index++) {
             int eachChar = pay.charAt(index);
