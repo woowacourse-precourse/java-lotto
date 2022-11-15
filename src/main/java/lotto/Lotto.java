@@ -59,19 +59,26 @@ public class Lotto {
         return result;
     }
 
-    public int countSameNumber(Lotto winningLotto, int bonusNumber) {
-        int result = 0;
+    public Rank countSameNumber(Lotto winningLotto, int bonusNumber) {
+        int count = 0;
         List<Integer> winningNumbers = winningLotto.getNumbers();
 
         for (int number : numbers) {
             if (winningNumbers.contains(number))
-                result++;
+                count++;
         }
 
-        if (result == 5 && numbers.contains(bonusNumber))
-            result += 2;
-
-        return result;
+        if (count == 6)
+            return Rank.FIRST;
+        else if (count == 5 && numbers.contains(bonusNumber))
+            return Rank.SECOND;
+        else if (count == 5)
+            return Rank.THIRD;
+        else if (count == 4)
+            return Rank.FOURTH;
+        else if (count == 3)
+            return Rank.FIFTH;
+        return Rank.NONE;
     }
 
     private boolean hasSameNumber(List<Integer> numbers) {

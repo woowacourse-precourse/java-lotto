@@ -85,27 +85,14 @@ public class Application {
     }
 
     public static List<Integer> rank(List<Lotto> lottos, Lotto winningLotto, int bonusNumber) {
-        List<Integer> result = new ArrayList<>();
-        int first = 0, second = 0, third = 0, forth = 0, fifth = 0;
-
+        List<Integer> result = new ArrayList<>(List.of(0, 0, 0, 0, 0));
+        int count = 0;
         for (Lotto lotto : lottos) {
-            if (lotto.countSameNumber(winningLotto, bonusNumber) == 3)
-                fifth++;
-            else if (lotto.countSameNumber(winningLotto, bonusNumber) == 4)
-                forth++;
-            else if (lotto.countSameNumber(winningLotto, bonusNumber) == 5)
-                third++;
-            else if (lotto.countSameNumber(winningLotto, bonusNumber) == 6)
-                first++;
-            else if (lotto.countSameNumber(winningLotto, bonusNumber) == 7)
-                second++;
+            if (lotto.countSameNumber(winningLotto, bonusNumber) != Rank.NONE) {
+                count = result.get(lotto.countSameNumber(winningLotto, bonusNumber).getValue());
+                result.set(lotto.countSameNumber(winningLotto, bonusNumber).getValue(), ++count);
+            }
         }
-
-        result.add(first);
-        result.add(second);
-        result.add(third);
-        result.add(forth);
-        result.add(fifth);
 
         return result;
     }
