@@ -17,6 +17,9 @@ public class LottoGame {
     private static List<Integer> countAccord;
     private static int bonusAccord;
     public LottoGame() {
+    }
+
+    public void startLotto(){
         printPurchaseAmount();
 
         int input = user.setPurchaseAmount();
@@ -46,10 +49,9 @@ public class LottoGame {
 
         printResult();
 
-        double rateOfReturn2 = winStatistics.calculationTotalAmount()/input*100;
+        double rateOfReturn2 = (double)winStatistics.calculationTotalAmount()/(double)input * 100;
         String rateOfReturn = String.format("%,.1f",rateOfReturn2);
         System.out.println("총 수익률은 "+rateOfReturn+"%입니다.");
-
     }
 
     public void setPurchaseAmountLotto(int input) {
