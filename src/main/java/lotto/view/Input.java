@@ -16,7 +16,13 @@ public final class Input {
     }
 
     public static String inputWinningNumbers() {
-        return validateDigitAndComma(readLine());
+        String input = validateDigitAndComma(readLine());
+
+        for (String number : input.split(",")) {
+            validateNumberRange(convertToInt(number));
+        }
+
+        return input;
     }
 
     public static int inputBonusNumber() {
