@@ -5,6 +5,7 @@ import lotto.domain.lotto.correctLotto.CorrectLottoNumbers;
 import lotto.domain.lotto.Lotto;
 import lotto.domain.lotto.LottoNumber;
 import lotto.domain.lotto.correctLotto.Ranking;
+import lotto.domain.lotto.correctLotto.RankingValue;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -39,7 +40,7 @@ class CorrectLottoNumbersTest {
 
         //then
         Assertions.assertThat(ranking.getRankingValue())
-                .isEqualTo(1);
+                .isEqualTo(RankingValue.FIRST);
     }
 
     @Test
@@ -63,7 +64,7 @@ class CorrectLottoNumbersTest {
 
         //then
         Assertions.assertThat(ranking.getRankingValue())
-                .isEqualTo(2);
+                .isEqualTo(RankingValue.SECOND);
 
     }
 
@@ -87,6 +88,6 @@ class CorrectLottoNumbersTest {
 
         //then
         Assertions.assertThat(ranking.getRankingValue())
-                .isEqualTo(0);
+                .isEqualTo(RankingValue.OUT);
     }
 }
