@@ -1,6 +1,5 @@
 package lotto.layer.view;
 
-import java.text.DecimalFormat;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -38,9 +37,7 @@ public class OutputView extends View {
         Rank rank = rankEntry.getKey();
         int count = rankEntry.getValue();
         int commonMatch = rank.getCommonMatch();
-        int money = rank.getMoneyValue();
-        DecimalFormat decimalFormat = new DecimalFormat("###,###");
-        String moneyFormat = decimalFormat.format(money);
+        String moneyFormat = rank.getMoneyFormat();
         if (rank.equals(Rank.PLACE_2)) {
             print(String.format(RANK_BONUS_INFO, commonMatch, moneyFormat, count));
             return;
