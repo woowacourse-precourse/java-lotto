@@ -21,6 +21,16 @@ public class LuckyLottoNumberException {
         checkDuplicatedLottoBonusNumber(inputLuckyNumbers, bonusLottoNumber);
     }
 
+    public void checkDuplicatedLottoNumber(List<Integer> inputLuckyNumbers) {
+        Set<Integer> inputLuckyNumbersBundle = new HashSet<>();
+        for (int i = 0; i < inputLuckyNumbers.size(); i++) {
+            inputLuckyNumbersBundle.add(inputLuckyNumbers.get(i));
+        }
+        if (inputLuckyNumbersBundle.size() != Constant.LOTTO_SIZE) {
+            throw new IllegalArgumentException(Constant.ERROR_MESSAGE + "중복된 숫자가 있습니다.");
+        }
+    }
+
 
 
 }
