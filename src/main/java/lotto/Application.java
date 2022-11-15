@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
@@ -46,14 +47,24 @@ public class Application {
 
         for(int i = 0; i < NumberOfGame; i++){
             GameNumberTemp.add(Randoms.pickUniqueNumbersInRange(1, 45, 6));
-            Lotto TempLotto = new Lotto(GameNumberTemp.get(i));
+            Collections.sort(GameNumberTemp.get(i));
+            Lotto TempLotto = new Lotto((GameNumberTemp.get(i)));
             AllGame.add(TempLotto);
         }
 
         return AllGame;
     }
+    public static void PrintAllGame(List<Lotto> AllGame){
+        for(int i = 0; i < AllGame.size();i++){
+            System.out.println(AllGame.get(i).NumberReturn());
+        }
+    }
     public static void Game(){
-        PrintPurchaseResult(EnterAmount());
+        List<Lotto> AllGame = new ArrayList<>();
+        Integer Amount = EnterAmount();
+        int NumberOfGame = PrintPurchaseResult(Amount);
+        AllGame = MakeGame(NumberOfGame);
+        PrintAllGame(AllGame);
     }
     public static void main(String[] args) {
         // TODO: 프로그램 구현
