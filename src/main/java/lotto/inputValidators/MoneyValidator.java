@@ -1,12 +1,11 @@
 package lotto.inputValidators;
 
-import lotto.domain.ErrorMessage;
-import lotto.domain.LotteryNumber;
+import lotto.messages.ErrorMessage;
 
 public class MoneyValidator {
     static public void validateInputMoney(String inputMoney) {
         if (NumberValidator.includeNotNumericCharacter(inputMoney)) {
-            System.out.println(ErrorMessage.MONEY_INPUT_ERROR_MESSAGE);
+            System.out.println(ErrorMessage.MONEY_INPUT_ERROR_MESSAGE.getMessage());
             throw new IllegalArgumentException();
         }
 

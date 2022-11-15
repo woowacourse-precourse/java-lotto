@@ -1,6 +1,6 @@
 package lotto.inputValidators;
 
-import lotto.domain.ErrorMessage;
+import lotto.messages.ErrorMessage;
 import lotto.domain.LotteryNumber;
 
 import java.util.List;
@@ -9,19 +9,19 @@ public class NumberValidator {
 
     static public void validateWinningNumbers(String[] winningNumbers) {
         if (!isCorrectCountOfNumbers(winningNumbers)) {
-            System.out.println(ErrorMessage.DRAW_NUMBER_INPUT_ERROR_MESSAGE);
+            System.out.println(ErrorMessage.DRAW_NUMBER_INPUT_ERROR_MESSAGE.getMessage());
             throw new IllegalArgumentException();
         }
 
         for (int i = 0; i < winningNumbers.length; ++i) {
             if (includeNotNumericCharacter(winningNumbers[i])) {
-                System.out.println(ErrorMessage.DRAW_NUMBER_INPUT_ERROR_MESSAGE);
+                System.out.println(ErrorMessage.DRAW_NUMBER_INPUT_ERROR_MESSAGE.getMessage());
                 throw new IllegalArgumentException();
             }
 
             int number = Integer.parseInt(winningNumbers[i]);
             if (isNumberOutOfRange(number)) {
-                System.out.println(ErrorMessage.DRAW_NUMBER_INPUT_ERROR_MESSAGE);
+                System.out.println(ErrorMessage.DRAW_NUMBER_INPUT_ERROR_MESSAGE.getMessage());
                 throw new IllegalArgumentException();
             }
         }
