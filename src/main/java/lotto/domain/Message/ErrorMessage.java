@@ -1,4 +1,4 @@
-package lotto.domain;
+package lotto.domain.Message;
 
 public enum ErrorMessage {
     MONEY_IS_NOT_NUMBER("[ERROR] 구입 금액은 양수인 숫자여야 합니다."),

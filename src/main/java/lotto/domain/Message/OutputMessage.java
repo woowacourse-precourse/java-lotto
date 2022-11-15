@@ -1,4 +1,4 @@
-package lotto.domain;
+package lotto.domain.Message;
 
 public enum OutputMessage {
     PRINT_LOTTO_QUANTITY("개를 구매했습니다."),

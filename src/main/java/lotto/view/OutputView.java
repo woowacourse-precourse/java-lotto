@@ -3,7 +3,7 @@ package lotto.view;
 import java.util.Collections;
 import java.util.List;
 import lotto.domain.LottoRanking;
-import lotto.domain.OutputMessage;
+import lotto.domain.Message.OutputMessage;
 import lotto.domain.UserLotto;
 
 public class OutputView {

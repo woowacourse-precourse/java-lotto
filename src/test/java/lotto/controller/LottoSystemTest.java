@@ -8,6 +8,7 @@ import static lotto.domain.LottoRanking.ZERO_RIGHT;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import lotto.domain.Lotto;
@@ -47,8 +48,8 @@ class LottoSystemTest {
     @Test
     public void createResultTest() {
         //given
-        Lotto lotto = new Lotto(Arrays.asList(1, 2, 3, 4, 5, 6));
-        WinningLotto winningLotto = new WinningLotto(new Lotto (Arrays.asList(1, 2, 3, 4, 5, 7)), 6);
+        Lotto lotto = new Lotto(new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5, 6)));
+        WinningLotto winningLotto = new WinningLotto(new Lotto (new ArrayList<>(Arrays.asList(1, 2, 3, 4, 8, 7))), 6);
         //when
         int expected = lottoSystem.calculateLotto(lotto, winningLotto);
         //then

@@ -1,7 +1,7 @@
 package lotto.utils;
 
 import java.util.regex.Pattern;
-import lotto.domain.ErrorMessage;
+import lotto.domain.Message.ErrorMessage;
 
 public class Validator {
     private static final String INPUT_NUMBER_REGEX = "^[0-9]*$";
