@@ -50,7 +50,8 @@ public class LottoSystem {
         int bonusNumber = (int) wonLottoInfo.get(1);
 
         Calculator calculator = new Calculator(wonLotto, bonusNumber);
-        calculator.calculateLottoResult(userLottos);
+        int[] ranks = calculator.countLottoRanks(userLottos);
+        outputView.outputLottoResult(ranks);
     }
 
     private List<Lotto> createLotto(int money) {

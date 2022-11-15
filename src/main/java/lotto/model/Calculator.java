@@ -14,11 +14,12 @@ public class Calculator {
         this.userRanks = new int[]{0, 0, 0, 0, 0, 0};
     }
 
-    public void calculateLottoResult(List<Lotto> userLottos) {
+    public int[] countLottoRanks(List<Lotto> userLottos) {
         for (Lotto userlotto : userLottos) {
             Judgement judgement = new Judgement(){};
             int rank = judgement.judgeRank(userlotto, wonLotto, bonusNumber);
             userRanks[rank]++;
         }
+        return userRanks;
     }
 }
