@@ -1,11 +1,21 @@
 package lotto.domain;
 
+import java.util.regex.Pattern;
+
 public class BuyLotto {
     private static final int LOTTO_PRICE = 1_000;
 
-    public static int getQuantity(final int price) {
+    public static int getQuantity(final String number) {
+        validateNumber(number);
+        int price = Integer.parseInt(number);
         validatePrice(price);
         return price / LOTTO_PRICE;
+    }
+
+    private static void validateNumber(final String numbers){
+        if (!Pattern.matches("^[0-9]*$", numbers)) {
+            throw new IllegalArgumentException("[ERROR] Only enter numbers.");
+        }
     }
 
     private static void validatePrice(final int price) {

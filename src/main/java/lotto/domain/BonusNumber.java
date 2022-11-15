@@ -2,7 +2,6 @@ package lotto.domain;
 
 import java.util.List;
 import java.util.Objects;
-import java.util.function.Predicate;
 
 public class BonusNumber {
     private static final int BONUS_NUMBER_SIZE = 1;

@@ -8,42 +8,43 @@ import java.util.LinkedHashMap;
 import java.util.List;
 
 public class LottoController {
-    static int price;
+    static String price;
     static int quantity;
     static List<Lotto> allLotto;
     static Lotto winningNumber;
     static BonusNumber bonusNumber;
 
-    public static void lottoRun() {
+    public void lottoRun() {
         getPrice();
-        getAllLotto();
         getNumbers();
+        getAllLotto();
         getResult();
     }
 
     public static void getPrice() {
-        price = Input.getPrice();
-        System.out.println(price);
-        quantity = BuyLotto.getQuantity(price);
-    }
-
-    public static void getAllLotto() {
-        allLotto = LottoGenerator.getAllLotto(quantity);
-        Output.printLottoNumbers(allLotto, quantity);
+        Input input = new Input();
+        price = input.getPrice();
+        System.out.println(input.printNext(price));
     }
 
     public static void getNumbers() {
         winningNumber = new Lotto(Input.getWinningNumber());
         System.out.println(winningNumber);
         bonusNumber = new BonusNumber(Input.getBonusNumber(), winningNumber);
-        System.out.println(bonusNumber);
+        System.out.println(bonusNumber.get().get(0));
+    }
+
+    public static void getAllLotto() {
+        quantity = BuyLotto.getQuantity(price);
+        allLotto = LottoGenerator.getAllLotto(quantity);
+        Output.printLottoNumbers(allLotto, quantity);
     }
 
     public static void getResult() {
         final List<Integer> matchResult
                 = LottoMatch.putMatchNumbers(allLotto, winningNumber);
         final List<Boolean> hasBonus = LottoMatch.putBonus(allLotto, bonusNumber);
-        final double earningRate = LottoEarnings.calculateEarningRate(matchResult, hasBonus, price);
+        final double earningRate = LottoEarnings.calculateEarningRate(matchResult, hasBonus, Integer.parseInt(price));
         final LinkedHashMap<Rank, Integer> winningResult = Result.getWinningResult(matchResult, hasBonus);
 
         Output.printStatics(winningResult);
