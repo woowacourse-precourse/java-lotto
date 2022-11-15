@@ -21,7 +21,8 @@ public class WinningNumbers {
         numberSizeValidate(numbers);
         numbersDuplicationValidate(numbers);
         numbersRangeValidate(numbers);
-        bonusNumberValidate(bonusNumber);
+        bonusNumberRangeValidate(bonusNumber);
+        bonusNumberDuplicateValidate(numbers, bonusNumber);
     }
 
     private void numberSizeValidate(List<Integer> numbers) {
@@ -46,8 +47,19 @@ public class WinningNumbers {
         }
     }
 
-    private void bonusNumberValidate(Integer number) {
+    private void bonusNumberRangeValidate(Integer number) {
+        if (number < 1 || number > 45) {
+            throw new IllegalArgumentException("보너스 번호는 1~45 내의 수여야 합니다.");
+        }
+    }
 
+    private void bonusNumberDuplicateValidate(List<Integer> numbers, Integer bonusNumber) {
+        Set set = new HashSet(numbers);
+        set.add(bonusNumber);
+
+        if (set.size() != 7) {
+            throw new IllegalArgumentException("보너스 번호는 당첨 번호와 중복되어서는 안됩니다.");
+        }
     }
 
     public List<Integer> getNumbers() {
