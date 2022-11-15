@@ -41,11 +41,16 @@ public class InputOutput {
     }
 
     public void printWinHistory(Map<String, Integer> winHistory) {
-        System.out.println(LottoResults.FIFTH_WIN + " - " + winHistory.get("FIFTH_WIN") + "개");
-        System.out.println(LottoResults.FIRTH_WIN + " - " + winHistory.get("FIRTH_WIN") + "개");
-        System.out.println(LottoResults.THIRD_WIN + " - " + winHistory.get("THIRD_WIN") + "개");
-        System.out.println(LottoResults.SECOND_WIN + " - " + winHistory.get("SECOND_WIN") + "개");
-        System.out.println(LottoResults.FIRST_WIN + " - " + winHistory.get("FIRST_WIN") + "개");
+        System.out.println(
+            LottoResults.FIFTH_WIN.getResult() + " - " + winHistory.get("FIFTH_WIN") + "개");
+        System.out.println(
+            LottoResults.FIRTH_WIN.getResult() + " - " + winHistory.get("FIRTH_WIN") + "개");
+        System.out.println(
+            LottoResults.THIRD_WIN.getResult() + " - " + winHistory.get("THIRD_WIN") + "개");
+        System.out.println(
+            LottoResults.SECOND_WIN.getResult() + " - " + winHistory.get("SECOND_WIN") + "개");
+        System.out.println(
+            LottoResults.FIRST_WIN.getResult() + " - " + winHistory.get("FIRST_WIN") + "개");
     }
 
     public void printRateOfProfit(double profit) {
