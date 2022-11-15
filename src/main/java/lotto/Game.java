@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import static lotto.Validation.*;
-import static lotto.printMessage.*;
+import static Message.printMessage.*;
 
 public class Game {
     private static List<Lotto> randomLottos;

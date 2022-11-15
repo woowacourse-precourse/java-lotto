@@ -1,4 +1,4 @@
-package lotto;
+package Message;
 
 public class printMessage {
     public static final String INPUT_MONEY = "구입 금액을 입력해 주세요.";

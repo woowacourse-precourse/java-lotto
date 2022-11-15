@@ -1,4 +1,4 @@
-package lotto;
+package Message;
 
 public class ErrorMessage {
     public static final String SIZE_ERROR = "[ERROR] 로또 번호의 개수가 6이 아닙니다.";

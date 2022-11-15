@@ -1,6 +1,6 @@
 package lotto;
 
-import static lotto.ErrorMessage.CANNOT_FIND_RANK;
+import static Message.ErrorMessage.CANNOT_FIND_RANK;
 
 public enum Result {
     FIFTH(3, 5000),

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Pattern;
 
-import static lotto.ErrorMessage.*;
+import static Message.ErrorMessage.*;
 
 public class Validation {
     private static final String numberPattern = "^[0-9]+$";
