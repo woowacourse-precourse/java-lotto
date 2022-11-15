@@ -27,8 +27,8 @@ public class OutputConsole {
         }
     }
 
-    public void yield(float yield){
-        System.out.printf("총 수익률은 %.1f%%입니다.\n",yield);
+    public void yield(float yield) {
+        System.out.printf("총 수익률은 %.1f%%입니다.\n", yield);
     }
 
 }
