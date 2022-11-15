@@ -13,6 +13,6 @@ public class ProfitCalculator {
 	public float calculate(PurchasingAmount purchasingAmount, EnumMap<WinningRating, Integer> countsOfWins) {
 		countsOfWins.forEach((winningRating, countOfWins) -> profit +=
 			Converter.convertStringOfMoneyToLong(winningRating.getPrizeMoney()) * countOfWins);
-		return profit / purchasingAmount.getPurchasingAmount() * HUNDRED;
+		return (profit / purchasingAmount.getPurchasingAmount()) * HUNDRED;
 	}
 }

@@ -20,31 +20,31 @@ public class Validator {
 	}
 
 	public static void validateSizeOfNumbers(List<Integer> numbers) {
-		if (numbers.size() != 6) {
+		if (numbers.size() != LottoConstant.COUNT_OF_LOTTO_NUMBERS) {
 			throw new IllegalArgumentException();
 		}
 	}
 
 	public static void validateNoDuplication(List<Integer> numbers) {
-		if (numbers.stream().distinct().count() != 6) {
+		if (numbers.stream().distinct().count() != LottoConstant.COUNT_OF_LOTTO_NUMBERS) {
 			throw new IllegalArgumentException();
 		}
 	}
 
 	public static void validateDivisibility(int amount) {
-		if (amount % LottoConstant.PRICE_OF_LOTTO != 0) {
+		if (amount % LottoConstant.PRICE_OF_LOTTO != LottoConstant.ZERO) {
 			throw new IllegalArgumentException();
 		}
 	}
 
 	public static void validateIntegerOrNot(String input) {
-		if (input.chars().anyMatch(letter -> letter < '0' || letter > '9')) {
+		if (input.chars().anyMatch(letter -> letter < LottoConstant.MINIMUM_DIGIT || letter > LottoConstant.MAXIMUM_DIGIT)) {
 			throw new IllegalArgumentException();
 		}
 	}
 
 	public static void validateFormOfWinningNumbers(String winningNumbers) {
-		Pattern pattern = Pattern.compile("^\\d{0,2},\\d{0,2},\\d{0,2},\\d{0,2},\\d{0,2},\\d{0,2}$");
+		Pattern pattern = Pattern.compile(LottoConstant.FORM_OF_WINNING_NUMBERS);
 		Matcher matcher = pattern.matcher(winningNumbers);
 		if (!matcher.matches()) {
 			throw new IllegalArgumentException();

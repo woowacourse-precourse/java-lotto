@@ -1,7 +1,7 @@
 package lotto.constant;
 
 public enum WinningRating {
-	MISS(0,"0원", false),
+	MISS(0, "0원", false),
 	FIFTH(3, "5,000원", false),
 	FOURTH(4, "50,000원", false),
 	THIRD(5, "1,500,000원", false),
@@ -25,6 +25,7 @@ public enum WinningRating {
 	public String getPrizeMoney() {
 		return prizeMoney;
 	}
+
 	public boolean getIsUsingBonusNumber() {
 		return isUsingBonusNumber;
 	}

@@ -8,11 +8,13 @@ import lotto.constant.WinningRating;
 
 public class OutputView {
 	public void printErrorMessage() {
-		System.out.println(OutputMessage.ERROR_MESSAGE.message());
+		System.out.println(OutputMessage.ERROR.message());
 	}
+
 	public void printRateOfProfit(float rateOfProfit) {
 		System.out.printf(OutputMessage.DISPLAYING_RATE_OF_PROFIT.message(), rateOfProfit);
 	}
+
 	public void printWinningStatistics(EnumMap<WinningRating, Integer> countsOfWins) {
 		System.out.println();
 		System.out.println(OutputMessage.WINNING_STATISTICS_BEGINNING.message());
@@ -22,11 +24,11 @@ public class OutputView {
 
 	private void printCountsOfWins(EnumMap<WinningRating, Integer> countsOfWins) {
 		countsOfWins.forEach((rating, countOfWins) -> {
-			if (rating != WinningRating.MISS && rating != WinningRating.SECOND) {
-				printCountingPrizeMessage(OutputMessage.COUNTING_PRIZE_WITHOUT_BONUS.message(), rating, countOfWins);
-			}
-			if (rating == WinningRating.SECOND) {
+			if (rating.getIsUsingBonusNumber() == true) {
 				printCountingPrizeMessage(OutputMessage.COUNTING_PRIZE_WITH_BONUS.message(), rating, countOfWins);
+			}
+			if (rating != WinningRating.MISS && rating.getIsUsingBonusNumber() == false) {
+				printCountingPrizeMessage(OutputMessage.COUNTING_PRIZE_WITHOUT_BONUS.message(), rating, countOfWins);
 			}
 		});
 	}

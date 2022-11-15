@@ -1,9 +1,7 @@
 package lotto.domain;
 
 import java.util.Arrays;
-import java.util.HashSet;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import lotto.constant.WinningRating;
 
@@ -32,12 +30,11 @@ public class LottoComparator {
 	}
 
 	private void rateWinning(int countOfMatchedNumber, boolean hasBonusNumber) {
-		Arrays.stream(WinningRating.values())
-			.forEach(rating -> {
-				if (rating.getCountOfMatchedNumber() == countOfMatchedNumber
-					&& rating.getIsUsingBonusNumber() == hasBonusNumber)
-					winningRating = rating;
-			});
+		Arrays.stream(WinningRating.values()).forEach(rating -> {
+			if (rating.getCountOfMatchedNumber() == countOfMatchedNumber
+				&& rating.getIsUsingBonusNumber() == hasBonusNumber)
+				winningRating = rating;
+		});
 	}
 
 	public WinningRating getWinningRating() {

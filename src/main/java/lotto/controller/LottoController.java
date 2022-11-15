@@ -28,8 +28,7 @@ public class LottoController {
 	}
 
 	private PurchasingAmount receivePurchasingAmount() {
-		return new PurchasingAmount(
-			Integer.parseInt(inputView.getPurchasingAmount()));
+		return new PurchasingAmount(Integer.parseInt(inputView.getPurchasingAmount()));
 	}
 
 	private int calculateNumberOfTickets(PurchasingAmount purchasingAmount) {
