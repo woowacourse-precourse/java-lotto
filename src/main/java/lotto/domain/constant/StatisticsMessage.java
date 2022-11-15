@@ -26,7 +26,7 @@ public enum StatisticsMessage {
       .append(SAME_FOUR_NUMBER.message).append(dto.getSame4Num()).append(NUMBER.message).append("\n")
       .append(SAME_FIVE_NUMBER.message).append(dto.getSame5Num()).append(NUMBER.message).append("\n")
       .append(SAME_FIVE_AND_BONUS_NUMBER.message).append(dto.getSame5AndBonusNum()).append(NUMBER.message).append("\n")
-      .append(SAME_SIX_NUMBER.message).append(dto.getSame6Num()).append(NUMBER.message).append("\n");
+      .append(SAME_SIX_NUMBER.message).append(dto.getSame6Num()).append(NUMBER.message);
     return sb.toString();
   }
 
