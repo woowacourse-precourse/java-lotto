@@ -11,8 +11,9 @@ import java.util.Set;
 public class Validator {
 
     public List<Integer> inputNumber(String inputNum) {
-        String[] inputN = inputNum.split(",");
+        String[] inputN = winNumCommaValidate(inputNum);
         List<Integer> numbers = new ArrayList<>();
+
         for (String s : inputN) {
             int n = stringToInt(s);
             if (validateNumRange(n)) {
@@ -23,12 +24,23 @@ public class Validator {
         return numbers;
     }
 
+    private String[] winNumCommaValidate(String inputNum){
+        String[] inputN = new String[6];
+        try{
+            inputN = inputNum.split(",");
+        }catch (Exception e){
+            throw new IllegalArgumentException(ErrorMessage.COMMA_ERROR.getErrorMessage());
+        }
+
+        return inputN;
+    }
+
     public int stringToInt(String s) {
         validateNumber(s);
         return Integer.parseInt(s);
     }
 
-    public void validateNumber(String s) {
+    private void validateNumber(String s) {
         for (int i = 0; i < s.length(); i++) {
             if (!Character.isDigit(s.charAt(i))) {
                 throw new IllegalArgumentException(ErrorMessage.NUM_ERROR.getErrorMessage());
@@ -36,20 +48,20 @@ public class Validator {
         }
     }
 
-    public boolean validateNumRange(int idxNum) {
+    private boolean validateNumRange(int idxNum) {
         if (idxNum > Range.MAX_RANGE.get() || idxNum < Range.MIN_RANGE.get()) {
             throw new IllegalArgumentException(ErrorMessage.RANGE_ERROR.getErrorMessage());
         }
         return true;
     }
 
-    public void validateLength(List<Integer> input) {
+    private void validateLength(List<Integer> input) {
         if (input.size() != Range.DIGIT.get()) {
             throw new IllegalArgumentException(ErrorMessage.LEN_ERROR.getErrorMessage());
         }
     }
 
-    public void checkDuplicated(List<Integer> numbers) {
+    private void checkDuplicated(List<Integer> numbers) {
         Set<Integer> inputSet = new HashSet<>(numbers);
         if (inputSet.size() != Range.DIGIT.get()) {
             throw new IllegalArgumentException(ErrorMessage.DUPLICATE_ERROR.getErrorMessage());
@@ -62,6 +74,19 @@ public class Validator {
         for (int n : numbers) {
             validateNumRange(n);
         }
+    }
+
+    private void bonusDuplicate(int bonus, List<Integer> numbers){
+        if (numbers.contains(bonus)){
+            throw new IllegalArgumentException(ErrorMessage.BONUS_DUPLICATE_ERROR.getErrorMessage());
+        }
+    }
+
+    public int bonusTotal(String stringBonus, List<Integer> numbers){
+        int bonus = stringToInt(stringBonus);
+        bonusDuplicate(bonus, numbers);
+        validateNumRange(bonus);
+        return bonus;
     }
 
 

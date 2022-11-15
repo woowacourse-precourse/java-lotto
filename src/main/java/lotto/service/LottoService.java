@@ -28,8 +28,8 @@ public class LottoService {
         OutputView.printQuantity(quantity, buyLotto.getLottos());
 
         List<Integer> winNum = validator.inputNumber(InputView.getWinNum());
-        int bonus = validator.stringToInt(InputView.getBonusNum());
-        validator.validateNumRange(bonus);
+        int bonus = validator.bonusTotal(InputView.getBonusNum(), winNum);
+
         runStatistic(winNum, buyLotto.getLottos(), bonus, price);
     }
 
