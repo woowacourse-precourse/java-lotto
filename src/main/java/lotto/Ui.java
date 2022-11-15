@@ -5,6 +5,7 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 
 public class Ui {
     public void printMessage(String message) {
@@ -27,17 +28,17 @@ public class Ui {
         }
     }
 
-    public void printWinningStatistics() {
+    public void printWinningStatistics(WinningResult winningResult) {
         System.out.println("당첨 통계");
         System.out.println("---");
-        System.out.printf("3개 일치 (5,000원) - %d개%n");
-        System.out.printf("4개 일치 (50,000원) - %d개%n");
-        System.out.printf("5개 일치 (1,500,000원) - %d개%n");
-        System.out.printf("5개 일치, 보너스 볼 일치 (30,000,000원) - %d개%n");
-        System.out.printf("6개 일치 (2,000,000,000원) - %d개%n");
+        System.out.printf("3개 일치 (5,000원) - %d개%n",winningResult.getCount(LottoRating.FIFTH));
+        System.out.printf("4개 일치 (50,000원) - %d개%n",winningResult.getCount(LottoRating.FOURTH));
+        System.out.printf("5개 일치 (1,500,000원) - %d개%n",winningResult.getCount(LottoRating.THIRD));
+        System.out.printf("5개 일치, 보너스 볼 일치 (30,000,000원) - %d개%n",winningResult.getCount(LottoRating.SECOND));
+        System.out.printf("6개 일치 (2,000,000,000원) - %d개%n",winningResult.getCount(LottoRating.FIRST));
     }
 
     public void printTotalRevenue() {
-        System.out.printf("총 수익률은 %f입니다.");
+        System.out.printf("총 수익률은 %.2f입니다.");
     }
 }
