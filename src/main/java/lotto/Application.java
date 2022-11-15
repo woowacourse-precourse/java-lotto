@@ -16,11 +16,9 @@ public class Application {
 
     public static Input inputValues() {
         int inputPurchaseAmount = inputPurchaseAmount();
-        System.out.println("당첨 번호를 입력해 주세요.");
-        List<String> winningNumbers = Arrays.asList(Console.readLine().split(","));
-        System.out.println("보너스 번호를 입력해 주세요.");
-        int bonusNumber = parseInt(Console.readLine());
-        Input input = new Input(inputPurchaseAmount, winningNumbers, bonusNumber);
+        List<Integer> winningNumbers = inputWinningNumber();
+        int bonusNumber = inputBonusNumber();
+        return new Input(inputPurchaseAmount, winningNumbers, bonusNumber);
     }
 
     private static int inputPurchaseAmount() {
@@ -40,6 +38,11 @@ public class Application {
             winningNumbers.add(parseInt(number));
         }
         return winningNumbers;
+    }
+
+    private static int inputBonusNumber() {
+        System.out.println("보너스 번호를 입력해 주세요.");
+        return parseInt(Console.readLine());
     }
 
 }
