@@ -3,7 +3,7 @@ package lotto;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import ui.View;
-import user.NumberComponent;
+import user.NumberValidator;
 import user.User;
 
 import java.util.ArrayList;
@@ -24,21 +24,9 @@ public class LottoSeller {
     }
 
     public void giveLottos(User user) {
-        user.setLottos(makeUserLottos(user.getLottoMount()));
-    }
-
-    private List<Lotto> makeUserLottos(int mount) {
-        List<Lotto> purchasedLottos = new ArrayList<>();
-        List<String> duplicateCheckList = new ArrayList<>();
-        Lotto lotto;
-        while (purchasedLottos.size() < mount) {
-            lotto = makeLotto();
-            if (duplicateCheckList.contains(lotto.toNumberForm()) == NOT_HAVE) {
-                purchasedLottos.add(lotto);
-                duplicateCheckList.add(lotto.toNumberForm());
-            }
+        while (user.getLottoMount() != user.getLottos().size()) {
+            user.addLottos(makeLotto());
         }
-        return purchasedLottos;
     }
 
     public void lottoDraw() {
@@ -53,10 +41,11 @@ public class LottoSeller {
     }
 
     private void makeBonusNumber() {
-        int bonus = NumberComponent.makeLottoNumber();
+        int bonus = NumberValidator.makeLottoNumber();
         validateBonusNotInLotto(bonus);
         this.bonus = bonus;
     }
+
     private void validateBonusNotInLotto(int bonus) {
         if (winningLotto.hasBonus(bonus)) {
             throw new IllegalArgumentException();
@@ -88,9 +77,8 @@ public class LottoSeller {
 
     private int prizeCalculate(List<Integer> winningCount) {
         int result = 0;
-        int[] prize = {5000, 50000, 1500000, 30000000, 2000000000};
         for (int i = 0; i < winningCount.size(); i++) {
-            result += winningCount.get(i) * prize[i];
+            result += Prize.getPrizeValue(i + 3, winningCount.get(i));
         }
         return result;
     }
@@ -100,3 +88,4 @@ public class LottoSeller {
         user.setPrizeMoney(prize);
     }
 }
+
