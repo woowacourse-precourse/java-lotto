@@ -25,7 +25,7 @@ public class Controller {
             List<Integer> winningLottoNumbers = lottoService.generateWinningLottoNumbers(inputView.inputWinningLottoNumbers());
             int bonusNumber = lottoService.generateBonusNumber(inputView.inputBonusNumber());
             lottoService.matchLottos(purchaserId, winningLottoNumbers, bonusNumber);
-            double rateReturn = lottoService.computeRateReturn(purchaserId);
+            String rateReturn = lottoService.computeRateReturn(purchaserId);
             printWinningStatistics(purchaserId, rateReturn);
         } catch (IllegalArgumentException e) {
             outputView.printException(e.getMessage());
@@ -33,7 +33,7 @@ public class Controller {
         }
     }
 
-    private void printWinningStatistics(Long purchaserId, double rateReturn) {
+    private void printWinningStatistics(Long purchaserId, String rateReturn) {
         outputView.printWinningHistory(lottoService.findPurchaserWinningHistory(purchaserId));
         outputView.printRateReturn(rateReturn);
     }

@@ -59,10 +59,10 @@ public class StatisticsTest {
         statistics.countWinningLotto(lottos, winningLottoNumbers, bonusNumber);
 
         //when
-        double rateReturn = statistics.computeRateReturn(2031555000);
+        String rateReturn = statistics.computeRateReturn(2031555000);
 
         //then
-        assertEquals(100, rateReturn);
+        assertEquals("100.0", rateReturn);
     }
 
 }

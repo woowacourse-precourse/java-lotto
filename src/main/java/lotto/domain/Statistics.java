@@ -24,10 +24,10 @@ public class Statistics {
         }
     }
 
-    public double computeRateReturn(int money) {
+    public String computeRateReturn(int money) {
         long profit = computeProfit();
         double rateReturn = (double) profit / money * 100;
-        return rateReturn;
+        return String.format("%.1f", rateReturn);
     }
 
     private Long computeProfit() {

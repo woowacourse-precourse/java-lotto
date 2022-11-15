@@ -44,7 +44,7 @@ public class LottoService {
         return statistics.getWinningHistory();
     }
 
-    public double computeRateReturn(Long purchaserId) {
+    public String computeRateReturn(Long purchaserId) {
         Purchaser purchaser = purchaserRepository.findById(purchaserId);
         Statistics statistics = statisticsRepository.findByPurchaserId(purchaserId);
 

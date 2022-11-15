@@ -43,7 +43,7 @@ public class OutputView {
         });
     }
 
-    public void printRateReturn(double rateReturn) {
+    public void printRateReturn(String rateReturn) {
         System.out.println("총 수익률은 " + rateReturn + "%입니다.");
     }
 
