@@ -6,11 +6,13 @@ import java.util.Map;
 
 public class Result {
     private final Map<Rank, Integer> result = new HashMap<>();
+    private final float rateOfReturn;
 
     public Result(WinningLotto winningLotto, List<Lotto> lottos, int money) {
         for (Lotto lotto : lottos) {
             computeRank(winningLotto, lotto);
         }
+        this.rateOfReturn = computeRateOfReturn(money, computeTotalReturn());
     }
 
     private void computeRank(WinningLotto winningLotto, Lotto lotto) {
@@ -37,5 +39,18 @@ public class Result {
 
     private boolean isBonus(int bonusNumber, Lotto lotto) {
         return lotto.getNumbers().contains(bonusNumber);
+    }
+
+    private float computeRateOfReturn(int money, int totalReturn) {
+        return (float) totalReturn / money * 100;
+    }
+
+    private int computeTotalReturn() {
+        int totalReturn = 0;
+        for (Rank rank : result.keySet()) {
+            totalReturn += rank.prise() * result.get(rank);
+        }
+
+        return totalReturn;
     }
 }
