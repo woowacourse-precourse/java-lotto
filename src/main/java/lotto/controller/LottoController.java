@@ -18,7 +18,8 @@ public class LottoController {
             this.inputView = new InputView();
             this.outputView = new OutputView();
         }
-        void run(){
+
+        public void run(){
             buyLotto();
             if(purchase.getLottoCount() != 0){
                 issueLottoes();
@@ -56,12 +57,8 @@ public class LottoController {
         }
 
         void printStatistic(){
-            yeild = new Yeild(purchase.getCost(), draw.getPrizeCounts());
+            yeild = new Yeild(purchase.getCost());
             yeild.createStatistic();
-            outputView.printStatistic(draw.getPrizeCounts(), yeild.getYeild());
+            outputView.printStatistic(yeild.getYeild());
         }
-
-
-
-    }
 }
