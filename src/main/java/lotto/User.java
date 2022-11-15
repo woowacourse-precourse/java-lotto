@@ -90,7 +90,7 @@ public class User {
 
     public static List<Integer> getLottoNumbers() { // 랜덤으로 6개의 숫자 뽑기
         List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
-        // sort
+        Collections.sort(numbers);
         return numbers;
     }
 
