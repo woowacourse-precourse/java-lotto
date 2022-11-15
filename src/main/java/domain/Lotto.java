@@ -29,8 +29,4 @@ public class Lotto {
             throw new IllegalArgumentException();
         }
     }
-
-    public void sortAscending(List<Integer> numbers) {
-        Collections.sort(numbers);
-    }
 }

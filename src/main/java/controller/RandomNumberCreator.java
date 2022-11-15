@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import domain.Lotto;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class RandomNumberCreator {
@@ -23,11 +24,10 @@ public class RandomNumberCreator {
     public static List<List<Integer>> MakeRandomNumber(int chance) {
         List<List<Integer>> randomNumbersContainer = new ArrayList<>();
         for (int i = 0; i < chance; i++) {
-            List<Integer> randomNumbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+            List<Integer> randomNumbers = new ArrayList<>(Randoms.pickUniqueNumbersInRange(1, 45, 6));
+            Collections.sort(randomNumbers);
             Lotto lotto = new Lotto(randomNumbers);
-            randomNumbersContainer.add(randomNumbers);
             Lotto.isDifferentEachOther(lotto.getNumbers());
-            lotto.sortAscending(lotto.getNumbers());
             view.OutputView.showRandomLottoNumbers(lotto.getNumbers());
             randomNumbersContainer.add(randomNumbers);
         }
