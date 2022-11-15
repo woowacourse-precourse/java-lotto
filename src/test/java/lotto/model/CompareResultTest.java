@@ -14,7 +14,7 @@ class CompareResultTest {
     }
 
     @Test
-    void 로또의_숫자와_당첨_숫자가_몇_개_일치하는지_세는_기능() {
+    void 로또의_숫자와_당첨_숫자가_몇_개_일치하는지_기록하는_기능() {
         CompareResult expected = new CompareResult(3, false);
 
         compareResult = compareResult.oneMoreNumberMatched();
