@@ -57,4 +57,25 @@ public class LottoGameTest {
         double rate = lottoGame.getEarnPriceRate();
         assertThat(rate).isEqualTo(100);
     }
+    @DisplayName("로또 발행 내역을 오름차순 정렬한다.")
+    @Test
+    void getSortedLottoList() {
+        LottoGame lottoGame = new LottoGame(this.price, this.lottoList, this.winningNumbers, this.bonusNumber);
+
+        List<List<Integer>> expectLottoList = new ArrayList<>();
+        expectLottoList.add(List.of(1, 2, 3, 4, 5, 6));
+        expectLottoList.add(List.of(3, 5, 11, 16, 32, 38));
+        expectLottoList.add(List.of(7, 11, 16, 35, 36, 44));
+        expectLottoList.add(List.of(1, 8, 11, 31, 41, 42));
+        expectLottoList.add(List.of(13, 14, 16, 38, 42, 45));
+
+        List<List<Integer>> lottoList = new ArrayList<>();
+
+        List<Lotto> sortedLottoList = lottoGame.getSortedLottoList();
+        for (Lotto lotto : sortedLottoList) {
+
+            lottoList.add(lotto.getNumbers());
+        }
+        assertThat(lottoList).isEqualTo(expectLottoList);
+    }
 }

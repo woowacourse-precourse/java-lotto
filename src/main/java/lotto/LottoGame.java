@@ -1,6 +1,7 @@
 package lotto;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 
@@ -41,12 +42,13 @@ public class LottoGame {
     public List<Rank> getStatistics() {
         List<Rank> statistics = new ArrayList<>();
         for (Lotto lotto : lottoList) {
-            if(getRank(lotto)!=null) {
+            if (getRank(lotto) != null) {
                 statistics.add(getRank(lotto));
             }
         }
         return new ArrayList<>(statistics);
     }
+
     public Double getEarnPriceRate() {
         List<Rank> statistics = getStatistics();
         double sumReward = 0.0;
@@ -57,5 +59,15 @@ public class LottoGame {
         }
         double rate = ((sumReward / this.price) * 100) / 100.0;
         return rate * 100;
+    }
+
+    public List<Lotto> getSortedLottoList() {
+        List<Lotto> sortedLottoList = new ArrayList<>();
+        for (Lotto lotto : this.lottoList) {
+            ArrayList<Integer> sortedList = new ArrayList<>(lotto.getNumbers());
+            Collections.sort(sortedList);
+            sortedLottoList.add(new Lotto(sortedList));
+        }
+        return sortedLottoList;
     }
 }
