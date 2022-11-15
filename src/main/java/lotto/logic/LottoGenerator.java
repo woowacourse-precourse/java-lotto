@@ -3,8 +3,8 @@ package lotto.logic;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class LottoGenerator {
 
@@ -13,7 +13,7 @@ public class LottoGenerator {
     public List<Integer> lottoGenerate() {
         lottonum = new ArrayList<>();
         lottonum = Randoms.pickUniqueNumbersInRange(1, 45, 6);
-        Collections.sort(lottonum);
+        lottonum = lottonum.stream().sorted().collect(Collectors.toList());
         return lottonum;
     }
 }

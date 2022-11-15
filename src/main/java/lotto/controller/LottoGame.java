@@ -3,7 +3,6 @@ package lotto.controller;
 import lotto.logic.*;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
@@ -51,6 +50,6 @@ public class LottoGame {
         System.out.println("5개 일치 (1,500,000원) - " + rank.getRankthree(map) + "개");
         System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - " + rank.getranktwo(map) + "개");
         System.out.println("6개 일치 (2,000,000,000원) - " + rank.getrankone(map) + "개");
-        System.out.println("총 수익률은 " + (rank.getearningRate(map, amount)+ "%입니다."));
+        System.out.println("총 수익률은 " + (rank.getearningRate(map, amount) + "%입니다."));
     }
 }
