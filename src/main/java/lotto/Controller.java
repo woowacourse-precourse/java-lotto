@@ -109,7 +109,7 @@ public class Controller {
         LinkedHashMap<Integer, Integer> lottoResult = Controller.AnalyzePlayerNumbers
                 (realLottoNumbers, publishedLottoArray);
 
-        // 당첨 통계 출력
+        // 당첨 결과 통계 출력
         View.Output("당첨 통계");
         View.Output("---");
         View.PrintResult(lottoResult);
