@@ -132,6 +132,8 @@ public class Application {
         return winList;
     }
 
+    void printWinningDetails(){
 
+    }
 
 }
