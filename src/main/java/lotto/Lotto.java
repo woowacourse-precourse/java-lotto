@@ -1,6 +1,8 @@
 package lotto;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Lotto {
     static final int MIN_NUMBER = 1;
@@ -19,6 +21,9 @@ public class Lotto {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException();
         }
+        Set<Integer> nums = new HashSet<>(numbers);
+        if(numbers.size() != nums.size())
+            throw new IllegalArgumentException();
     }
 
     public void checkResult(List<Integer> winNumbers, Integer bonusNumber) {
