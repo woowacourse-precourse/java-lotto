@@ -15,6 +15,7 @@ public class WinningNumbers {
         this.lottoNumbers = new Lotto(numbers);
         int bonus = isNumberInteger(inputBonus);
         isNumberInRange(bonus);
+        isBonusDuplicate(bonus);
         this.bonusNumber = bonus;
     }
 
@@ -49,6 +50,12 @@ public class WinningNumbers {
     private void isNumberInRange(int number){
         if((number > Number.MAX.getValue() || number < Number.MIN.getValue())){
             throw new IllegalArgumentException(Error.NUMBER.getMessage());
+        }
+    }
+
+    private void isBonusDuplicate(int number) {
+        if (getWinningNumbers().contains(number)) {
+            throw new IllegalArgumentException(Error.BONUS.getMessage());
         }
     }
 }
