@@ -24,7 +24,8 @@ public class LottoGame {
             outputView.printAmount(purchaseQuantity);
             outputView.printLotto(lottoAnalysis.lottoList);
             lottoAnalysis.countWinning(purchaseQuantity,inputView.getWinningNumbers(),inputView.getBonusNumber());
-            outputView.printTotalResult(lottoAnalysis.getTotalReward(),purchaseQuantity);
+            outputView.printTotalResult();
+            outputView.printReturnRate(lottoAnalysis.getTotalReward(),purchaseQuantity);
         }catch (IllegalArgumentException illegalArgumentException){
             System.out.println(illegalArgumentException.getMessage());
         }
