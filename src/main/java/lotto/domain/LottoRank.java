@@ -41,4 +41,9 @@ public enum LottoRank {
     public int calculateProfit(int count) {
         return prizeMoney * count;
     }
+
+    public String getDescription() {
+        return description;
+    }
+
 }
