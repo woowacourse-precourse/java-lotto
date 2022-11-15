@@ -378,4 +378,88 @@ public class LottoGameResultGeneratorTest {
             assertThat(profits).isEqualTo(FIRST.prizeMoney());
         }
     }
+
+    @DisplayName("수익률 잘 계산하는지 테스트")
+    @Nested
+    class earningRateCalculatingTest {
+        private List<Lotto> lottos = new ArrayList<>();
+
+        @BeforeEach
+        void initialize() {
+            lottoGameResultGenerator = new LottoGameResultGenerator();
+            lottos.add(new Lotto(List.of(1, 2, 3, 4, 5, 6)));
+            lottos.add(new Lotto(List.of(5, 6, 7, 8, 9, 10)));
+            lottos.add(new Lotto(List.of(7, 8, 9, 10, 11, 12)));
+        }
+
+        @DisplayName("5등 2번한 경우")
+        @Test
+        void case1() {
+            WinningNumbers winningNumbers = new WinningNumbers(List.of(1, 2, 3, 10, 11, 12));
+            winningNumbers.registerBonusNumber(7);
+
+            LottoGameResult lottoGameResult = lottoGameResultGenerator.
+                    generateLottoGameResult(lottos, winningNumbers, 3000);
+            double earningRate = lottoGameResult.getEarningRate();
+            String roundedEarningRate = String.format("%.1f", earningRate);
+
+            assertThat(roundedEarningRate).isEqualTo("333.3");
+        }
+
+        @DisplayName("5등 1번, 4등 1번한 경우")
+        @Test
+        void case2() {
+            WinningNumbers winningNumbers = new WinningNumbers(List.of(4, 5, 6, 7, 8, 29));
+            winningNumbers.registerBonusNumber(1);
+
+            LottoGameResult lottoGameResult = lottoGameResultGenerator.
+                    generateLottoGameResult(lottos, winningNumbers, 3000);
+            double earningRate = lottoGameResult.getEarningRate();
+            String roundedEarningRate = String.format("%.1f", earningRate);
+
+            assertThat(roundedEarningRate).isEqualTo("1833.3");
+        }
+
+        @DisplayName("5등 2번, 2등 1번한 경우")
+        @Test
+        void case3() {
+            WinningNumbers winningNumbers = new WinningNumbers(List.of(4, 5, 6, 7, 8, 9));
+            winningNumbers.registerBonusNumber(10);
+
+            LottoGameResult lottoGameResult = lottoGameResultGenerator.
+                    generateLottoGameResult(lottos, winningNumbers, 3000);
+            double earningRate = lottoGameResult.getEarningRate();
+            String roundedEarningRate = String.format("%.1f", earningRate);
+
+            assertThat(roundedEarningRate).isEqualTo("1000333.3");
+        }
+
+        @DisplayName("5등 1번한 경우")
+        @Test
+        void case4() {
+            WinningNumbers winningNumbers = new WinningNumbers(List.of(10, 11, 12, 13, 14, 15));
+            winningNumbers.registerBonusNumber(16);
+
+            LottoGameResult lottoGameResult = lottoGameResultGenerator.
+                    generateLottoGameResult(lottos, winningNumbers, 3000);
+            double earningRate = lottoGameResult.getEarningRate();
+            String roundedEarningRate = String.format("%.1f", earningRate);
+
+            assertThat(roundedEarningRate).isEqualTo("166.7");
+        }
+
+        @DisplayName("4등 1번, 1등 1번한 경우")
+        @Test
+        void case5() {
+            WinningNumbers winningNumbers = new WinningNumbers(List.of(7, 8, 9, 10, 11, 12));
+            winningNumbers.registerBonusNumber(16);
+
+            LottoGameResult lottoGameResult = lottoGameResultGenerator.
+                    generateLottoGameResult(lottos, winningNumbers, 3000);
+            double earningRate = lottoGameResult.getEarningRate();
+            String roundedEarningRate = String.format("%.1f", earningRate);
+
+            assertThat(roundedEarningRate).isEqualTo("66668333.3");
+        }
+    }
 }
