@@ -10,6 +10,7 @@ import static util.validation.ValidationUtil.isUnitsOf1000Won;
 import static util.validation.ValidationUtil.isWithinValidRange;
 
 import exception.InvalidLottoSizeException;
+import exception.LottoNumberDuplicatedException;
 import java.util.List;
 import lotto.Lotto;
 
@@ -22,7 +23,7 @@ public class Validator {
         }
 
         if (haveDuplicatedNumbers(numbers)) {
-            throw new IllegalArgumentException();
+            throw new LottoNumberDuplicatedException();
         }
     }
 
