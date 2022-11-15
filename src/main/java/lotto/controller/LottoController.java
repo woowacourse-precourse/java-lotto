@@ -31,11 +31,10 @@ public class LottoController {
         int purchasePrice = inputView.userInputPurchasePrice();
         int amountOfLotto = computeAmountOfLotto(purchasePrice);
         outputView.printAmountOfLottoMessage(amountOfLotto);
-
         generateLotto(amountOfLotto);
+
         List<Integer> predictionNumbers = inputView.userInputPredictionNumbers();
         int bonusNumber = inputView.userInputBonusNumber();
-
         List<List<Integer>> matchCounts = computeMatchCounts(predictionNumbers, bonusNumber);
         recordWinningLog(matchCounts);
         outputView.printWinningLog(winningLog);
@@ -73,7 +72,6 @@ public class LottoController {
             bonusMatchCnt = 0;
 
             List<Integer> lottoNumbers = lotto.getNumbers();
-
             increasePredictionMatchCnt(lottoNumbers, predictionNumbers);
             increaseBonusMatchCnt(lottoNumbers, bonusNumber);
             ret.add(Arrays.asList(predictionMatchCnt, bonusMatchCnt));
