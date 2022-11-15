@@ -265,7 +265,7 @@ class ApplicationTest extends NsTest {
         String userInput = "1,2,3,4,5,6";
         String expectedValue = "1,2,3,4,5,6";
         //when
-        String actualValue = Application.validateWinnerNumberContainsComma(userInput);
+        String actualValue = ValidationUtil.validateWinnerNumberContainsComma(userInput);
 
         //then
         assertEquals(expectedValue, actualValue);
@@ -279,7 +279,7 @@ class ApplicationTest extends NsTest {
         //when
 
         //then
-        assertThatThrownBy(() -> Application.validateWinnerNumberContainsComma(userInputWithBlank))
+        assertThatThrownBy(() -> ValidationUtil.validateWinnerNumberContainsComma(userInputWithBlank))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -297,7 +297,7 @@ class ApplicationTest extends NsTest {
         String expectedValue = "1,2,3,4,5,6";
 
         //when
-        String actualValue = Application.validateWinnerNumberSize(userInput);
+        String actualValue = ValidationUtil.validateWinnerNumberSize(userInput);
 
         //then
         assertEquals(expectedValue, actualValue);
@@ -311,7 +311,7 @@ class ApplicationTest extends NsTest {
         //when
 
         //then
-        assertThatThrownBy(() -> Application.validateWinnerNumberSize(userInput))
+        assertThatThrownBy(() -> ValidationUtil.validateWinnerNumberSize(userInput))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -346,7 +346,7 @@ class ApplicationTest extends NsTest {
         //when
 
         //then
-        assertThatThrownBy(() -> Application.validateWinnerNumberRange(winnerNumber))
+        assertThatThrownBy(() -> ValidationUtil.validateWinnerNumberRange(winnerNumber))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -363,7 +363,7 @@ class ApplicationTest extends NsTest {
         //when
 
         //then
-        assertThatThrownBy(() -> Application.validateBonusNumberRange(bonusNumber))
+        assertThatThrownBy(() -> ValidationUtil.validateBonusNumberRange(bonusNumber))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
