@@ -3,12 +3,13 @@ package lotto;
 import java.util.*;
 
 public class LottoNumberCheck {
-    private static Map<String, Integer> correctNumber; // 당첨 번호를 저장할 Map
+    private static final int PAYMENT = 1000;
+    private static Map<String, Integer> correctNumber;
     private static Map<List<Integer>, Integer> checkLotto;
-    private static List<Integer> countPrizeNumber; // 당첨 번호 갯수 (3개이상 맞춘 것만) 저장하는 List
-    private static Map<String, Integer> winningLotto;  // 3개이상 맞춘 것들만 모아서 몇 장인지 저장하는 Map
+    private static List<Integer> countPrizeNumber;
+    private static Map<String, Integer> winningLotto;
 
-    private static List<Integer> myPrizeMoney; // 당첨금을 다 합친다.
+    private static List<Integer> myPrizeMoney;
     private int myMoney = 0;
 
     public LottoNumberCheck() {
@@ -28,13 +29,12 @@ public class LottoNumberCheck {
     public void compareWinNumberWithMyLotto(List<List<Integer>> lottoNumbers, List<Integer> winNumber, int bonusBall) {
         initPrize(winningLotto);
 
-        myMoney = lottoNumbers.size(); // 내가 입력한 금액 ( 8000 )
+        myMoney = lottoNumbers.size();
         System.out.println(myMoney);
-        saveOneOrMoreMatchLotto(lottoNumbers, winNumber, bonusBall); // 로또들 저장 ( 몇 개 일치했는지 다 저장 )
-        countWinningLotto(correctNumber); // 당첨된 로또들만 저장
+        saveOneOrMoreMatchLotto(lottoNumbers, winNumber, bonusBall);
+        countWinningLotto(correctNumber);
     }
 
-    // 로또 번호, winNumber랑 로또랑 비교해서 몇 개 일치하는지 저장하는 메서드
 
     private void saveOneOrMoreMatchLotto(List<List<Integer>> randomLottoNumbers, List<Integer> winNumber, int bonusBall) {
         for (int i = 0; i < randomLottoNumbers.size(); i++) {
@@ -51,7 +51,6 @@ public class LottoNumberCheck {
             correctNumber.put(randomLottoNumbers.get(i).toString(), correctNumber.getOrDefault(randomLottoNumbers.get(i).toString(), 0) + 1);
         }
     }
-    // 5개 이상 맞춘 로또들 중에 보너스 번호가 맞았는지 안 맞았는지 체크하는 메서드
 
     private void compareMyLottoNumberWithBonusNumber(Map<List<Integer>, Integer> checkLotto, Map<String, Integer> correctNumber, int bonusBall) {
         for (List<Integer> integers : checkLotto.keySet()) {
@@ -60,7 +59,6 @@ public class LottoNumberCheck {
             }
         }
     }
-    // 3개 이상 맞춘 로또들이 몇 개인지 저장하는 것이다.
 
     private void countWinningLotto(Map<String, Integer> correctNumber) {
         for (String s : correctNumber.keySet()) {
@@ -73,13 +71,12 @@ public class LottoNumberCheck {
         getPrizeMoney(countPrizeNumber);
         calculateYield(myMoney, myPrizeMoney);
     }
-    // mapTest 변수명 수정하기
 
     private void getPrizeMoney(List<Integer> countPrizeNumber) {
         for (Integer integer : countPrizeNumber) {
             for (Prize value : Prize.values()) {
                 countPrizeMoneyOfMyLotto(integer, value);
-            } // 3개 이상 맞춘 것만 정렬해서 출력후 몇 장인지 구하는 과정
+            }
         }
         combinePrizeMoney(winningLotto);
 
@@ -112,7 +109,7 @@ public class LottoNumberCheck {
 
 
     private void calculateYield(int myMoney, List<Integer> myPrizeMoney) {
-        myMoney = myMoney * 1000;
+        myMoney = myMoney * PAYMENT;
 
         int count = 0;
         int total = 0;

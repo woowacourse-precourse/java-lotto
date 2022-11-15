@@ -11,6 +11,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class CompareTest extends NsTest {
 
+    @DisplayName("승리 번호와 로또가 제대로 비교 되는지 확인")
     @Test
     void 기능_테스트2() {
         assertRandomUniqueNumbersInRangeTest(
@@ -33,6 +34,7 @@ class CompareTest extends NsTest {
         );
     }
 
+    @DisplayName(" 5개 일치, 보너스 볼 제대로 일치하는지 확인")
     @Test
     void 기능_테스트3() {
         assertRandomUniqueNumbersInRangeTest(
@@ -56,6 +58,7 @@ class CompareTest extends NsTest {
                 List.of(1, 2, 3, 4, 6, 7)
         );
     }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});

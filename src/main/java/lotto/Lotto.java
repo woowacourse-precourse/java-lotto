@@ -39,7 +39,7 @@ public class Lotto {
 
     private boolean checkWinNumberRange(List<Integer> numbers) {
         for (Integer number : numbers) {
-            if (!(1 <= number && number <= 45)) {
+            if (!(LottoRandomNumbers.MIN_NUMBER <= number && number <= LottoRandomNumbers.MAX_NUMBER)) {
                 return true;
             }
         }
@@ -64,7 +64,7 @@ public class Lotto {
     }
 
     private boolean checkBonusNumberRange(int bonusNumber) {
-        if (!(1 <= bonusNumber && bonusNumber <= 45)) {
+        if (!(LottoRandomNumbers.MIN_NUMBER <= bonusNumber && bonusNumber <= LottoRandomNumbers.MAX_NUMBER)) {
             return true;
         }
         return false;
