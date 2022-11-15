@@ -4,7 +4,7 @@
 >- 자세한 기능에 대한 설명은, 루트 디렉토리의 `README.md` 파일을 참고한다.
 ---
 # 도메인 모델링
-![img.png](img.png)
+![img.png](domain-model.png)
 >- UserInterface : 사용자 입출력
 >- InputValidator : 입력값 예외 처리
 >- Cashier : 로또 발급과 당첨금 계산을 요청
