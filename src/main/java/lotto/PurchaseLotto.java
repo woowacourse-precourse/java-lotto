@@ -8,7 +8,7 @@ import java.util.List;
 // 3. 나누어 떨어지지 않는 경우 예외 처리
 // 4. 나누어 떨어지는 경우 구매갯수 처리
 public class PurchaseLotto {
-    public List<Integer> buyLotto() {
+    public List<Integer> purchaseLotto() {
         System.out.println("구입금액을 입력해주세요");
         List<Integer> myLotto = new ArrayList<>();
         String moneyInput = Console.readLine();
