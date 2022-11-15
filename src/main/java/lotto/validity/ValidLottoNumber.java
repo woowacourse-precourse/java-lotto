@@ -11,7 +11,7 @@ public class ValidLottoNumber {
     public static final String ErrorMessage_NumberRange = "[ERROR] 로또 번호는 1~45 사이의 숫자만 입력해 주세요.";
     public static final String ErrorMessage_NumberSize = "[ERROR] 로또 번호의 개수는 6개만 입력해 주세요.";
     public static final String ErrorMessage_NumberOverlap = "[ERROR] 중복된 번호가 포함되어 있습니다.";
-    public static final String ErrorMessage_BonusOverlap = "[ERROR] 보너스 번호가 로또 번호에 포함되어 있습니다.";
+    public static final String ErrorMessage_BonusOverlap = "[ERROR] 보너스 번호가 당첨 번호에 포함되어 있습니다.";
 
     public static void validRange(int number) {
         if (outRange(number)) {
