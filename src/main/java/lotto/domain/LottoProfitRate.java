@@ -5,8 +5,8 @@ import java.util.Map;
 
 public class LottoProfitRate {
     public double calculateProfitRate(List<Lotto> lotteries, Map<LottoRank, Integer> lottoWinAmounts) {
-        int buyAmount = lotteries.size() * 1000;
-        long lottoProfit = 0L;
+        double buyAmount = lotteries.size() * 1000;
+        long lottoProfit = 0;
         for (LottoRank lottoRank : lottoWinAmounts.keySet()) {
             lottoProfit += lottoRank.getRankMoney() * lottoWinAmounts.get(lottoRank);
         }

@@ -156,7 +156,7 @@ class LottoTest {
 
     @DisplayName("사용자 로또 당첨 개수")
     @Test
-    void UserWinLottoAmount() {
+    void userWinLottoAmount() {
         List<Lotto> lottoNumbers = new ArrayList<>();
         lottoNumbers.add(new Lotto(List.of(1,2,10,11,12,13)));
         lottoNumbers.add(new Lotto(List.of(1,2,3,11,12,13)));
@@ -172,5 +172,23 @@ class LottoTest {
         for (LottoRank lottoRank : lottoWinAmounts.keySet()) {
             assertThat(lottoWinAmounts.get(lottoRank)).isEqualTo(1);
         }
+    }
+    
+    @DisplayName("로또 수익률 확인")
+    @Test
+    void userLottoProfitRate() {
+        List<Lotto> lottoNumbers = new ArrayList<>();
+        lottoNumbers.add(new Lotto(List.of(1,2,3,10,11,13)));
+        for (int i = 0; i < 7; ++i) {
+            lottoNumbers.add(new Lotto(List.of(1,2,9,10,11,13)));
+        }
+        List<Integer> lottoWinNumber = List.of(1,2,3,4,5,6);
+        int lottoBonusBall = 7;
+        LottoAnalyzer lottoAnalyzer = new LottoAnalyzer(lottoNumbers, lottoWinNumber, lottoBonusBall);
+
+        Map<LottoRank, Integer> lottoWinAmounts = lottoAnalyzer.analyzeLottoWin();
+        LottoProfitRate lottoProfitRate = new LottoProfitRate();
+        double profitRate = lottoProfitRate.calculateProfitRate(lottoNumbers, lottoWinAmounts);
+        assertThat(profitRate).isEqualTo(62.5);
     }
 }
