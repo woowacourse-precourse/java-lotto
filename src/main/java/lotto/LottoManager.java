@@ -15,13 +15,10 @@ public class LottoManager {
 
     public int startLotto() {
         HashMap<Integer, Integer> lottoResult = new HashMap<>();
-        int amount;
         try {
-            amount = inputManager.getPurchasingAmount();
-            int count = countBuyableLotto(amount);
-            lottos = buyLotto(count);
-            printLottoCount(count);
-            printLottos(lottos);
+            int amount = inputManager.getPurchasingAmount();
+            lottos = buyLotto(amount);
+            printLottos(amount, lottos);
             List<Integer> winningNumbers = inputManager.drawWinningNumbers();
             int bonusNumber = inputManager.drawBonusNumber(winningNumbers);
             lottoMachine = new LottoMachine(winningNumbers, bonusNumber);
@@ -40,7 +37,8 @@ public class LottoManager {
         return count;
     }
 
-    public List<Lotto> buyLotto(int count) {
+    public List<Lotto> buyLotto(int amount) {
+        int count = countBuyableLotto(amount);
         List<Lotto> lottos = new ArrayList<>();
 
         for (int i = 0; i < count; i++) {
@@ -55,7 +53,9 @@ public class LottoManager {
         System.out.println(count + "개를 구매했습니다.");
     }
 
-    public void printLottos(List<Lotto> lottos) {
+    public void printLottos(int amount, List<Lotto> lottos) {
+        int count = countBuyableLotto(amount);
+        printLottoCount(count);
         for (Lotto lotto : lottos) {
             Collections.sort(lotto.getNumbers());
             System.out.println(Arrays.toString(lotto.getNumbers().toArray()));
