@@ -17,21 +17,24 @@
 
 - [ ] 예외 상황 시 에러 문구를 출력해야 한다. 단, 에러 문구는 "[ERROR]"로 시작해야 한다.
 
-## 기능 목록
+## 기능 목록 checkList
 
-  - [x] 로또 구입 금액 입력
+  - [x] 로또 구입 금액 입력 - LottoMachine#getInputMoney()
     - [x] 금액은 1,000원 단위여야 한다.
     - [x] 잘못된 금액을 입력할 경우 `IllegalArgumentException`
   
-  - [x] 구입 금액에 해당하는 만큼 로또를 발행해서 출력
-    - [x] 구입금액에 해당하는 만큼 로또 발행한다.
+  - [x] 구입 금액에 해당하는 만큼 로또를 발행해서 출력 - LottoMachine#createLottoNumber()
+    - [x] 로또 한 장의 가격은 1,000원이다.
+    - [x] 구입금액에 해당하는 만큼 로또 발행한다. 
+    - [x] 로또 하나의 6개의 수는 중복되지 않는다. 그리고 1 ~ 45의 숫자로 이루어진다.
     - [ ] 해당 갯수만큼 출력한다.
 
-  - [ ] 당첨 번호와 보너스 번호를 입력
+  - [x] 당첨 번호와 보너스 번호를 입력
     - [x] 로또 번호의 숫자 범위는 1 ~ 45 이다. - LottoMachine#createLottoNumber()
     - [x] 6개의 당첨 번호와 1개의 보너스 번호를 입력한다. - User#inputWinningNUmber()
-    - [ ] 7개의 수는 중복되지 않는다.
-    - [ ] 잘못된 번호 혹은 중복될 경우 `IllegalArgumentException`
+    - [x] 7개의 수는 중복되지 않는다. - User#validateLottoNum(), validateBonusNum()
+    - [x] 잘못된 번호 혹은 중복된 번호인 경우 `IllegalArgumentException`- User#validateLottoNum(), validateBonusNum()
+    - [x] 잘못된 개수 입력한 경우 `IllegalArgumentException` - User#validateLottoNum(), validateBonusNum()
 
   - [ ] 구매한 로또 번호와 당첨 번호를 비교
     - [ ] 당첨 내역을 출력한다.
