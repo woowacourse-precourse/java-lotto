@@ -7,9 +7,11 @@ public class LottoValidator {
 
     public static void validateLottoNumber(String num) {
         validateInteger(num);
-        Integer number = Integer.parseInt(num);
-        if (!(0 < number && number < 46))
+        int number = Integer.parseInt(num);
+        if (!(0 < number && number < 46)) {
+            System.out.println("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
             throw new IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
+        }
     }
 
 
@@ -17,6 +19,7 @@ public class LottoValidator {
         try {
             Integer.parseInt(userInput);
         } catch (NumberFormatException e) {
+            System.out.println("[ERROR] 정상적인 정수를 입력해주세요.");
             throw new IllegalArgumentException("[ERROR] 정상적인 정수를 입력해주세요." + userInput);
         }
     }
@@ -40,14 +43,18 @@ public class LottoValidator {
     public static void validateDuplicateNumbers(List<Integer> lottos) {
         for(int i = 0; i < lottos.size(); i++) {
             for(int j = i + 1; j < lottos.size(); j++) {
-                if (lottos.get(i).equals(lottos.get(j)))
+                if (lottos.get(i).equals(lottos.get(j))) {
+                    System.out.println("[ERROR] 로또에는 중복된 숫자가 들어갈 수 없습니다.");
                     throw new IllegalArgumentException("[ERROR] 로또에는 중복된 숫자가 들어갈 수 없습니다.");
+                }
             }
         }
     }
 
     public static void validateLottoSize(List<Integer> lottos) {
-        if (lottos.size() != 6)
+        if (lottos.size() != 6) {
+            System.out.println("[ERROR] 로또 숫자의 개수는 6개여야 합니다.");
             throw new IllegalArgumentException("[ERROR] 로또 숫자의 개수는 6개여야 합니다.");
+        }
     }
 }

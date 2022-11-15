@@ -29,6 +29,6 @@ class LottoComparatorTest {
 
         int output = LottoComparator.getMatchedNumbers(answer.getNumbers(), user.getNumbers());
 
-        assertEquals(output, 6);
+        assertEquals(6, output);
     }
 }

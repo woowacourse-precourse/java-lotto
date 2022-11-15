@@ -1,20 +1,23 @@
 package lotto.lotto;
 
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Lotto {
-    private final List<Integer> numbers;
+    private List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
         this.numbers = numbers;
-        numbers.sort(Integer::compareTo);
+        numbers = sortList(numbers);
     }
 
     private void validate(List<Integer> numbers) {
-        if (numbers.size() != 6) {
-            throw new IllegalArgumentException();
-        }
+        LottoValidator.validateLottoSize(numbers);
+        LottoValidator.validateDuplicateNumbers(numbers);
     }
 
     public List<Integer> getNumbers() {
@@ -30,5 +33,10 @@ public class Lotto {
         LottoValidator.validateLottoNumber(input);
         numbers.add(Integer.parseInt(input));
         LottoValidator.validateDuplicateNumbers(numbers);
+    }
+
+    private List<Integer> sortList(List<Integer> unsortedList) {
+        Integer[] arr = unsortedList.toArray(new Integer[0]);
+        return Arrays.stream(arr).sorted().collect(Collectors.toList());
     }
 }
