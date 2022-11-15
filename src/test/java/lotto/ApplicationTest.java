@@ -128,7 +128,7 @@ class ApplicationTest extends NsTest {
     @Test
     void 해당하는_Statistic에_1추가() {
         // given
-        Lotto inputLotto = new Lotto(List.of(5,6,7,8,9,10));
+        Lotto inputLotto = new Lotto(List.of(5, 6, 7, 8, 9, 10));
         int bonus = 22;
 
         Lotto lottoA = new Lotto(List.of(1, 2, 3, 4, 5, 6));
@@ -144,6 +144,24 @@ class ApplicationTest extends NsTest {
         // then
         assertEquals(countStatistic.get(FOUR), 1);
         assertEquals(countStatistic.get(THREE), 0);
+    }
+
+    @Test
+    void 생성된_countStatistic_테스트() {
+        // given
+        Lotto inputLotto = new Lotto(List.of(5, 6, 7, 8, 9, 10));
+        int bonus = 22;
+g
+        Lotto lottoA = new Lotto(List.of(2, 3, 4, 5, 6, 7));
+        Lotto lottoB = new Lotto(List.of(3, 4, 5, 6, 7, 8));
+        List<Lotto> issuedLotteries = List.of(lottoA, lottoB);
+
+        // when
+        HashMap<Statistic, Integer> result = generateCountStatistic(inputLotto, bonus, issuedLotteries);
+
+        // then
+        assertEquals(result.get(FOUR), 1);
+        assertEquals(result.get(THREE), 1);
     }
 
     @Override

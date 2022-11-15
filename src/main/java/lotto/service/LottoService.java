@@ -41,12 +41,12 @@ public class LottoService {
     }
 
     // countStatistic을 초기화하고 발행된 로또 수만큼 당첨 결과를 적용하여 반환한다.
-    public static HashMap<Statistic, Integer> generateCountStatistic(int count, Lotto inputLottoNumber,
+    public static HashMap<Statistic, Integer> generateCountStatistic(Lotto inputLottoNumber,
                                                                      int bonus, List<Lotto> issuedLotteries) {
         HashMap<Statistic, Integer> countStatistic = new HashMap<>();
         initializeCountStatistic(countStatistic);
 
-        for (int i = 0; i < count; i++) {
+        for (int i = 0; i < issuedLotteries.size(); i++) {
             calculateStatistic(inputLottoNumber, bonus, issuedLotteries, countStatistic, i);
         }
         return countStatistic;
