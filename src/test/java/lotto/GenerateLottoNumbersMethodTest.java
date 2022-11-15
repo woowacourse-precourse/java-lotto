@@ -1,5 +1,6 @@
 package lotto;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -13,8 +14,9 @@ import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomUniqueN
 class GenerateLottoNumbersMethodTest {
     static int index = 0;
 
+    @DisplayName("생성된 당첨 번호는 정렬된다(1).")
     @Test
-    void generateLottoNumbers_메소드_테스트1() {
+    void generateLottoNumbersMethodTest1() {
         noOfLottos = 1;
         assertRandomUniqueNumbersInRangeTest(() -> {
                 generateLottoNumbers();
@@ -24,25 +26,15 @@ class GenerateLottoNumbersMethodTest {
         );
     }
 
+    @DisplayName("생성된 당첨 번호는 정렬된다(2).")
     @Test
-    void generateLottoNumbers_메소드_테스트2() {
+    void generateLottoNumbersMethodTest2() {
         noOfLottos = 1;
         assertRandomUniqueNumbersInRangeTest(() -> {
                     generateLottoNumbers();
                     assertThat(purchasedLottos.get(index++))
                             .isEqualTo(List.of(2, 7, 13, 29, 37, 45));
                 }, List.of(45, 2, 7, 29, 13, 37)
-        );
-    }
-
-    @Test
-    void generateLottoNumbers_메소드_테스트3() {
-        noOfLottos = 1;
-        assertRandomUniqueNumbersInRangeTest(() -> {
-                    generateLottoNumbers();
-                    assertThat(purchasedLottos.get(index++))
-                            .isEqualTo(List.of(5, 7, 27, 31, 43, 45));
-                }, List.of(7, 27, 31, 5, 43, 45)
         );
     }
 }
