@@ -47,12 +47,13 @@ public class Application {
 
         System.out.println("보너스 번호를 입력해 주세요.");
         input = readInput();
-
         int bonusNum = validateBonusNum(input, pickedNumbers);
-        int totalIncome = calculateTotalGain(boughtLottos, pickedNumbers, List.of(bonusNum));
-        float rateOfReturn = getRateOfReturn(totalIncome, MONEY);
 
-        System.out.printf("총 수익률은 %.1f", rateOfReturn);
+        LottoRegister lottoRegister = new LottoRegister();
+        lottoRegister.calculateTotalGain(boughtLottos, pickedNumbers, List.of(bonusNum));
+        lottoRegister.getRateOfReturn(MONEY);
+
+        System.out.printf("총 수익률은 %.1f", lottoRegister.rateOfReturn);
         System.out.println("%입니다.");
 
         return;
@@ -74,34 +75,6 @@ public class Application {
         }
 
         return bonusNum;
-    }
-
-    public static int calculateTotalGain(List<Lotto> boughtLottos, List<Integer> pickedNumbers, List<Integer> bonusNum) {
-        LotteryWon income;
-        HashMap<LotteryWon, Integer> history = initializeHistory();
-        int totalIncome = 0;
-
-        for (int i = 0; i < boughtLottos.size(); i++) {
-            int matchCount = countMatchedNumber(boughtLottos.get(i), pickedNumbers);
-            int bonusCount = countMatchedNumber(boughtLottos.get(i), bonusNum);
-
-            income = selectLotteryWonType(matchCount, bonusCount);
-            history = updateHistory(history, income);
-            totalIncome += income.calculateIncome(1);
-        }
-        printHistory(history);
-
-        return totalIncome;
-    }
-
-    public static void printHistory(HashMap<LotteryWon, Integer> history) {
-        System.out.println("당첨 통계");
-        System.out.println("---");
-        System.out.println("3개 일치 (5,000원) - " + history.get(LotteryWon.FifthPlace) + "개");
-        System.out.println("4개 일치 (50,000원) - " + history.get(LotteryWon.FourthPlace) + "개");
-        System.out.println("5개 일치 (1,500,000원) - " + history.get(LotteryWon.ThirdPlace) + "개");
-        System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - " + history.get(LotteryWon.SecondPlace) + "개");
-        System.out.println("6개 일치 (2,000,000,000원) - " + history.get(LotteryWon.FirstPlace) + "개");
     }
 
     public static HashMap<LotteryWon, Integer> updateHistory(HashMap<LotteryWon, Integer> history, LotteryWon income) {
