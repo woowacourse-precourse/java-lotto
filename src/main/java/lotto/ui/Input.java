@@ -18,8 +18,8 @@ public class Input {
             System.out.println("[ERROR] 정수를 입력하세요");
         }
 
+        Validator.checkPurchaseMoney(purchaseMoney);
         int purchaseAmount = purchaseMoney / 1000;
-
         return purchaseAmount;
     }
 

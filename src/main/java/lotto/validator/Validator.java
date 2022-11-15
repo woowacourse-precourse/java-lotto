@@ -6,15 +6,6 @@ import java.util.List;
 import java.util.Set;
 
 public class Validator {
-    public static void checkPurchaseMoneyInputForm(String purchaseMoneyInput) {
-        for (int i=0; i<purchaseMoneyInput.length(); i++) {
-            char inputDigit = purchaseMoneyInput.charAt(i);
-            if (inputDigit < 48 || inputDigit > 58) {
-                throw new IllegalArgumentException("[ERROR] 정수를 입력하세요");
-            }
-        }
-    }
-
     public static void checkPurchaseMoney(int purchaseMoney) {
         if (purchaseMoney % 1000 != 0) { // 1000으로 나누어 떨어지지 않을 경우
             throw new IllegalArgumentException("[ERROR] 1000원 단위의 수를 입력하세요.");
