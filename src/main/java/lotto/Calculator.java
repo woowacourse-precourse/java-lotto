@@ -19,6 +19,6 @@ public class Calculator {
     }
 
     private static double getRoundedYield(double yield) {
-        return Math.round(yield * 10) / 10.0;
+        return Math.round(yield * 10.0) / 10.0;
     }
 }

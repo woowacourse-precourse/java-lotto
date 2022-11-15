@@ -10,14 +10,15 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Input {
-    public static int getPurchaseMoney() {
+    public static int getPayment() {
         String payment = Console.readLine();
         PaymentException.validate(payment);
         return Integer.valueOf(payment);
     }
 
     public static List<Integer> getWinningNumbers() {
-        List<String> winningNumbers = Arrays.stream(Console.readLine().split(","))
+        List<String> winningNumbers = Arrays
+                .stream(Console.readLine().split(","))
                 .collect(Collectors.toList());
         WinningNumbersExeption.validateWinningNumber(winningNumbers);
         return winningNumbers.stream()

@@ -17,7 +17,7 @@ public class Kiosk {
             int numberOfLottos = countLottos(payment);
             List<Lotto> lottos = Generator.generate(numberOfLottos);
             printLottoInformation(numberOfLottos, lottos);
-            buyer.get(lottos);
+            buyer.buy(lottos);
             List<Integer> winningNumbers = getWinningNumbers();
             int bonusNumber = getBonusNumber(winningNumbers);
             printResult(Checker.compareAllLottos(buyer, winningNumbers, bonusNumber), payment);
@@ -48,7 +48,7 @@ public class Kiosk {
 
     static private int getPurchaseAmount() {
         GuideMessage.printGetPayment();
-        return Input.getPurchaseMoney();
+        return Input.getPayment();
     }
 
     static private int countLottos(int payment) {
