@@ -22,6 +22,7 @@ public class LottoGenerator {
     }
 
     public static int enterToBuyLottoForMoney() {
+        System.out.println("구입금액을 입력해 주세요.");
         String money = Console.readLine();
         return Integer.parseInt(money);
     }
@@ -33,12 +34,15 @@ public class LottoGenerator {
     }
 
     public static WinningLotto createWinningLottoWithEnterNumbers() {
+        System.out.println("\n" + "당첨 번호를 입력해 주세요.");
         String enterNumbers = Console.readLine();
         List<Integer> numbers = Arrays.stream(enterNumbers.split(","))
             .mapToInt(Integer::parseInt)
             .boxed()
             .sorted()
             .collect(Collectors.toList());
+
+        System.out.println("\n" + "보너스 번호를 입력해 주세요.");
         int bonusNumber = Integer.parseInt(Console.readLine());
         return new WinningLotto(new Lotto(numbers), bonusNumber);
     }

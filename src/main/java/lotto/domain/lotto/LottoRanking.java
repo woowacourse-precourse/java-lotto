@@ -3,8 +3,12 @@ package lotto.domain.lotto;
 import lotto.dto.LottoCount;
 
 public enum LottoRanking {
-    FIRST(6, false,2000000000), SECOND(5, true, 30000000), THIRD(5, false, 1500000), FOURTH(4,
-        false, 50000), FIFTH(3, false,5000), LOSER(-1, false, 0),;
+    LOSER(-1, false, 0),
+    FIFTH(3, false, 5000),
+    FOURTH(4, false, 50000),
+    THIRD(5, false, 1500000),
+    SECOND(5, true, 30000000),
+    FIRST(6, false, 2000000000);
 
     private final int lottoCount;
     private final boolean bonus;
@@ -18,7 +22,8 @@ public enum LottoRanking {
 
     public static LottoRanking of(LottoCount lottoCount) {
         for (LottoRanking lottoRanking : LottoRanking.values()) {
-            if (lottoRanking.lottoCount == lottoCount.getLottoCount() && lottoRanking.bonus == lottoCount.isBonus()) {
+            if (lottoRanking.lottoCount == lottoCount.getLottoCount()
+                && lottoRanking.bonus == lottoCount.isBonus()) {
                 return lottoRanking;
             }
         }
@@ -27,5 +32,13 @@ public enum LottoRanking {
 
     public int getWinningAmount() {
         return winningAmount;
+    }
+
+    public int getLottoCount() {
+        return lottoCount;
+    }
+
+    public boolean isBonus() {
+        return bonus;
     }
 }
