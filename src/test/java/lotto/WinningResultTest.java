@@ -1,19 +1,17 @@
 package lotto;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
 import java.util.ArrayList;
 import java.util.List;
-
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Nested;
-import org.junit.jupiter.api.Test;
-
 import lotto.domain.Rank;
 import lotto.domain.WinningResult;
 import lotto.domain.lotto.Lotto;
 import lotto.domain.lotto.WinningLotto;
 import lotto.service.LottoService;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Nested;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class WinningResultTest {
 

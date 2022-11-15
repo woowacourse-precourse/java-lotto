@@ -1,16 +1,13 @@
 package lotto;
 
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
 import java.util.List;
-
+import lotto.util.LottoParser;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
-import lotto.util.LottoParser;
-
-import org.junit.jupiter.api.Nested;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class LottoParserTest {
 

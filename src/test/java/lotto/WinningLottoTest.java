@@ -1,16 +1,14 @@
 package lotto;
 
+import java.util.List;
+import lotto.domain.lotto.Lotto;
+import lotto.domain.lotto.WinningLotto;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
-import lotto.domain.lotto.Lotto;
-import lotto.domain.lotto.WinningLotto;
-
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-
-import java.util.List;
 
 class WinningLottoTest {
     @DisplayName("보너스 번호가 로또 번호와 중복되면 예외가 발생한다.")
