@@ -2,12 +2,13 @@ package lotto;
 
 public class PurchaseException {
 
-    private static int MIN_NUMBER = 1;
+    private static int MIN_NUMBER = 0;
     private static int MAX_NUMBER = 9;
     private static int MIN_AMOUNT = 1000;
 
     public static void validatePurchaseAmount(String amount) {
         if (isNumberOnly(amount)) {
+            System.out.println("hi");
             throw new IllegalArgumentException("[ERROR]");
         }
 
