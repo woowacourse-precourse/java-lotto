@@ -97,9 +97,9 @@ public class LottoServiceTest {
 
         lottoService.calculateReward();
 
-        double profitRate = lottoService.getProfitRate();
+        String profitRate = lottoService.getProfitRate();
 
-        Assertions.assertThat(profitRate).isEqualTo(333.3);
+        Assertions.assertThat(profitRate).isEqualTo("333.3");
     }
 
     @Test
@@ -119,9 +119,9 @@ public class LottoServiceTest {
 
         lottoService.calculateReward();
 
-        double profitRate = lottoService.getProfitRate();
+        String profitRate = lottoService.getProfitRate();
 
-        Assertions.assertThat(profitRate).isEqualTo(166.7);
+        Assertions.assertThat(profitRate).isEqualTo("166.7");
     }
 
     @Test
@@ -141,9 +141,9 @@ public class LottoServiceTest {
 
         lottoService.calculateReward();
 
-        double profitRate = lottoService.getProfitRate();
+        String profitRate = lottoService.getProfitRate();
 
-        Assertions.assertThat(profitRate).isEqualTo(62.5);
+        Assertions.assertThat(profitRate).isEqualTo("62.5");
     }
 
 }

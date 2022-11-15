@@ -32,7 +32,7 @@ public class OutputView {
         }
     }
 
-    public static void printLottoProfit(double profit) {
+    public static void printLottoProfit(String profit) {
         System.out.println("총 수익률은 " + profit + "%입니다.");
     }
 

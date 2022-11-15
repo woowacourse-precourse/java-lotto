@@ -77,11 +77,11 @@ public class LottoService {
         user.saveTotalReward();
     }
 
-    public double getProfitRate() {
+    public String getProfitRate() {
         int totalReward = user.getRewardMoney();
         int totalMoney = user.getMoney();
-        return Math.round((double) totalReward / totalMoney
-                * PROFIT_CALCULATE_NUMBER * ROUND_NUMBER) / ROUND_NUMBER;
+        float profitRate = ((float) totalReward / (float) totalMoney) * 100;
+        return String.format("%.1f", profitRate);
     }
 
     // 테스트를 위한 메서드
