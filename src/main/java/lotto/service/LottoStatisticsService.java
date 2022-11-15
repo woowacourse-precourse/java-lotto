@@ -1,6 +1,7 @@
 package lotto.service;
 
 import lotto.domain.*;
+import lotto.utils.Formatter;
 
 import java.util.List;
 import java.util.Map;
@@ -26,9 +27,16 @@ public class LottoStatisticsService {
     }
 
     private void printStatistics(SortedMap<LottoRank, Integer> countOfRank) {
-        StringBuilder sb = new StringBuilder();
-        countOfRank.forEach((key, value) -> sb.append(key).append(" - ").append(value).append("개").append('\n'));
-        System.out.print(sb);
+        countOfRank.forEach((key, value) -> {
+            StringBuilder sb = new StringBuilder();
+            sb.append(key.getCount()).append("개 일치");
+            if (key.isSameBonus()) {
+                sb.append(", 보너스 볼 일치");
+            }
+            sb.append(" (").append(Formatter.format(key.getAmount())).append("원)").append(" - ").append(value).append("개");
+
+            System.out.println(sb);
+        });
     }
 
     private void printTotalYield(SortedMap<LottoRank, Integer> countOfRank, Money money) {
@@ -52,7 +60,7 @@ public class LottoStatisticsService {
                 countOfRank.put(rank, countOfRank.get(rank) + 1);
             }
         }
-        
+
         return countOfRank;
     }
 
