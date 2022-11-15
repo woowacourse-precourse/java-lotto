@@ -2,6 +2,7 @@ package lotto.domain;
 
 import lotto.constant.LotteryRank;
 import lotto.constant.Status;
+import lotto.domain.constant.LottoProperty;
 
 import java.util.HashMap;
 import java.util.HashSet;
@@ -38,6 +39,17 @@ public class LotteryResult {
         rankedTicketIds.add(id);
         totalReward += rank.getReward();
         size++;
+    }
+
+    public Map<LotteryRank, Integer> findWinningInformation() {
+        Map<LotteryRank, Integer> winningInformation = new HashMap<>();
+        for (LotteryRank rank : LotteryRank.values()) {
+            if (rank.getNumberOfMatches() < LottoProperty.MIN_WINNING_MATCHES.getProperty()) {
+                continue;
+            }
+            winningInformation.put(rank, result.get(rank));
+        }
+        return winningInformation;
     }
 
     public int findByRank (LotteryRank rank) {
