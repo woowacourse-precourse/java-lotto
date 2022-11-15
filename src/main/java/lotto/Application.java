@@ -20,6 +20,8 @@ public class Application {
     private static final int LOTTO_NUMBERS_SIZE = 6;
     private static final int NO_OUT_OF_RANGE_SIZE = 0;
 
+    private static final int INVALID_BONUS_NUMBER = -1;
+
     public static int getLottoPurchaseMoney() {
         System.out.println(INPUT_REQUEST_MESSAGE.getMessage());
         String userInput = Console.readLine();
@@ -134,6 +136,50 @@ public class Application {
         return bonusNumber;
     }
 
+    public static int getBonusNumber(List<Integer> winningNumbers) {
+        System.out.println(BONUS_NUMBER_REQUEST_MESSAGE.getMessage());
+        String userInput = Console.readLine();
+        boolean valid = validateBonusNumber(winningNumbers, userInput);
+        if (valid) {
+            int bonusNumber = Integer.parseInt(userInput);
+            return bonusNumber;
+        }
+        return INVALID_BONUS_NUMBER;
+    }
+
+    public static boolean validateBonusNumber(List<Integer> winningNumbers, String userInput) throws IllegalArgumentException {
+        boolean valid = checkBonusNumberValid(userInput);
+        if (valid) {
+            int bonusNumber = Integer.parseInt(userInput);
+            checkBonusNumberRange(bonusNumber);
+            checkWinningNumbersContainBonusNumber(winningNumbers, bonusNumber);
+        }
+        return valid;
+    }
+
+    public static boolean checkBonusNumberValid(String userInput) throws IllegalArgumentException {
+        try {
+            Integer.parseInt(userInput);
+            return true;
+        } catch (Exception e) {
+            IllegalArgumentException exception = new IllegalArgumentException();
+            System.out.println(NOT_NUMBER_INPUT_MESSAGE.getMessage());
+            return false;
+        }
+    }
+
+    public static void checkWinningNumbersContainBonusNumber(List<Integer> winningNumbers, int bonusNumber) {
+        if (winningNumbers.contains(bonusNumber)) {
+            throw new IllegalArgumentException(BONUS_NUMBER_DUPLICATED_MESSAGE.getMessage());
+        }
+    }
+
+    public static void checkBonusNumberRange(int bonusNumber) throws IllegalArgumentException {
+        if (bonusNumber < LOTTO_NUMBER_FIRST_RANGE || bonusNumber > LOTTO_NUMBER_LAST_RANGE) {
+            throw new IllegalArgumentException(INVALID_BONUS_NUMBER_RANGE_MESSAGE.getMessage());
+        }
+    }
+
     public static void main(String[] args) {
         int lottoPurchaseMoney = getLottoPurchaseMoney();
         if (lottoPurchaseMoney == INVALID_PURCHASE_MONEY) {
@@ -146,5 +192,8 @@ public class Application {
             return;
         }
         int bonusNumber = getBonusNumber();
+        if (bonusNumber == INVALID_BONUS_NUMBER) {
+            return;
+        }
     }
 }
