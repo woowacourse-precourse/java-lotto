@@ -31,7 +31,7 @@ public class LottoGame {
     }
 
     // 게임을 실행하는 기능
-    private void playgame(){
+    private void playgame() {
         int money = InputView.purchaseMoney();
 
         Lottos perchaseLottos = makePerchaseLotto(lottoCount(money));
@@ -47,8 +47,8 @@ public class LottoGame {
     }
 
     // 로또 구입 개수를 구하는 기능
-    private int lottoCount(int money){
-        return money/LOTTO_PURCHASE_COST;
+    private int lottoCount(int money) {
+        return money / LOTTO_PURCHASE_COST;
     }
 
     // 구매된 로또들을 생성하는 기능

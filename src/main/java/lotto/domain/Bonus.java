@@ -16,7 +16,7 @@ public class Bonus {
 
     // 보너스 번호가 1과 45 사이의 수로 구성되어 있는지 검증하는 기능
     private void validateNumBetween1And45(int bonus) {
-        if(!(LOTTO_MIN_NUM <=bonus && bonus <= LOTTO_MAX_NUM)) {
+        if (!(LOTTO_MIN_NUM <= bonus && bonus <= LOTTO_MAX_NUM)) {
             throw new IllegalArgumentException(ERROR_MSG_BONUS_OTHER_NUMBER_BETWEEN_1_AND_45);
         }
     }
