@@ -42,4 +42,17 @@ public class Game {
         int bonus = Check.checkBonusNum(input);
         return bonus;
     }
+    public static void run(){
+        try {
+            Integer buyLottoCount= setBuyLottoCount();
+            List<Lotto>lottoBuckets = setLottoBuckets(buyLottoCount);
+            printLottoBuckets(lottoBuckets);
+            Lotto userLotto = setUserLotto();
+            int bonus = setBonus();
+            Calculator.calculateLotto(lottoBuckets,userLotto,bonus);
+            Calculator.printLotto(lottoBuckets,userLotto,bonus,buyLottoCount);
+        }catch (IllegalArgumentException e){
+            System.out.println(e.getMessage());
+        }
+    }
 }
