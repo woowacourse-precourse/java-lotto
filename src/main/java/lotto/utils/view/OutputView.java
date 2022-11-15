@@ -1,9 +1,9 @@
-package lotto.view;
+package lotto.utils.view;
 
 import lotto.domain.Lotto;
 import lotto.domain.Statistic;
 
-import static lotto.constant.MessageConstants.*;
+import static lotto.utils.constant.Messages.*;
 import java.util.List;
 
 public class OutputView {
@@ -24,5 +24,9 @@ public class OutputView {
 
     public static void showRateOfReturn(String rateOfReturn) {
         System.out.println(ROR_START_MESSAGE + rateOfReturn + END_MESSAGE);
+    }
+
+    public static void showErrorMessage(IllegalArgumentException e) {
+        System.out.println(e.getMessage());
     }
 }

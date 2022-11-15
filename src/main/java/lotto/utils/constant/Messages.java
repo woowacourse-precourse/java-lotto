@@ -1,6 +1,6 @@
-package lotto.constant;
+package lotto.utils.constant;
 
-public final class MessageConstants {
+public final class Messages {
     public static final String PURCHASE_INPUT_MESSAGE = "구입 금액을 입력해 주세요.";
     public static final String WINNING_NUMBER_INPUT_MESSAGE = "당첨 번호를 입력해 주세요.";
     public static final String BONUS_INPUT_MESSAGE = "보너스 번호를 입력해 주세요.";
@@ -12,15 +12,6 @@ public final class MessageConstants {
     public static final String END_MESSAGE = "%입니다.";
     public static final String COUNT = "개";
     public static final String ENTER = "\n";
-
-    public static final String WRONG_FORMAT_MESSAGE = "숫자(정수)만 입력해주세요.";
-    public static final String WRONG_PURCHASE_COST_MESSAGE = "로또는 한개에 1000원입니다. 1000원 단위로 입력해주세요.";
-
-    public static final String WRONG_COUNT_MESSAGE = "6개의 번호를 입력해주세요.";
-    public static final String WRONG_RANGE_MESSAGE = "로또 번호는 1부터 45 사이의 숫자여야 합니다.";
-    public static final String DUPLICATE_MESSAGE = "로또 번호는 중복되지 않는 숫자여야 합니다.";
-    public static final String WRONG_DELIMITER_MESSAGE = "당첨 번호는 쉼표로 구분되어야 합니다.";
-    public static final String BONUS_DUPLICATE_MESSAGE = "보너스 번호는 당첨 번호와 중복되면 안됩니다.";
 
     public static final String FIRST_PLACE_MESSAGE = "6개 일치 (2,000,000,000원) - ";
     public static final String SECOND_PLACE_MESSAGE = "5개 일치, 보너스 볼 일치 (30,000,000원) - ";
