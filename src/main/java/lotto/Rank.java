@@ -6,7 +6,8 @@ public enum Rank {
     SECOND("2등", 7, 30000000),
     THIRD("3등", 5, 1500000),
     FOURTH("4등", 4, 50000),
-    FIFTH("5등", 3, 5000);
+    FIFTH("5등", 3, 5000),
+    UNRANKED("낙첨", 0, 0);
 
     private final String message;
     private final int wins;
