@@ -14,7 +14,6 @@ public class Output {
         for (List<Integer> lotto : buyLotto) {
             sb.append(lotto).append("\n");
         }
-
         System.out.println(sb);
     }
 
@@ -23,13 +22,13 @@ public class Output {
         sb.append(PrintMessages.LOTTO_RESULT.getMessage());
 
         for (Rank rank : Rank.values()) {
-            sb.append(ResultMessage(rank, Result)).append("\n");
+            sb.append(resultMessage(rank, Result)).append("\n");
         }
         sb.deleteCharAt(sb.length() - 1);
         System.out.println(sb);
     }
 
-    public String ResultMessage(Rank rank, List<Rank> Result) {
+    public String resultMessage(Rank rank, List<Rank> Result) {
         StringBuilder sb = new StringBuilder();
 
         long count = countRank(rank, Result);
@@ -54,4 +53,15 @@ public class Output {
         System.out.println(sb);
     }
 
+    public void printInputMessage() {
+        System.out.println(PrintMessages.INPUT_NUMBER.getMessage());
+    }
+
+    public void inputBonusNumber() {
+        System.out.println(PrintMessages.INPUT_BONUS_NUMBER.getMessage());
+    }
+
+    public void printInputMoney() {
+        System.out.println(PrintMessages.INPUT_MONEY.getMessage());
+    }
 }
