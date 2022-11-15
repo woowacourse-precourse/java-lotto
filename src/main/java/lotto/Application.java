@@ -16,14 +16,13 @@ public class Application {
         // TODO: 프로그램 구현
 
         System.out.println("구입금액을 입력해주세요.");
-        Integer purchaseAmount = Integer.parseInt(readLine());
 
-        LottoAmount lottoAmount = new LottoAmount(purchaseAmount);
+        LottoAmount lottoAmount = new LottoAmount(readLine());
 
         System.out.printf("%d개를 구매했습니다.\n", lottoAmount.getAmount());
 
 
-        List<Lotto> lottos = IntStream.range(0, purchaseAmount).boxed()
+        List<Lotto> lottos = IntStream.range(0, lottoAmount.getAmount()).boxed()
                 .map((i) -> new Lotto(new LottoCreate())).collect(Collectors.toList());
 
         lottos.forEach(Lotto::print);
