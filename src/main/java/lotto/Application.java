@@ -40,14 +40,26 @@ public class Application {
         return lottoList;
     }
 
+    public static List<Integer> readWinningNumbers() {
+        String input = Console.readLine();
+        String[] stringLotto = input.split(",");
+        List<Integer> winningNumbers = new ArrayList<>();
+        for (String number : stringLotto) {
+            winningNumbers.add(Integer.parseInt(number));
+        }
+        return winningNumbers;
+    }
+
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         int price;
         List<Lotto> lottoList;
+        List<Integer> winningNumbers;
 
         try {
             price = readLottoPrice();
             lottoList = buyLottoList(price);
+            winningNumbers = readWinningNumbers();
 
         } catch (Exception e) {
             System.out.println("[ERROR] 입력이 올바르지 않습니다.");
