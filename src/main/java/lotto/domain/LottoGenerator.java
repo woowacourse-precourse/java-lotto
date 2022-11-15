@@ -33,6 +33,7 @@ public class LottoGenerator {
     }
 
     private void checkNumbers(List<Integer> numbers) {
+        numbers = new ArrayList<>(numbers);
         Collections.sort(numbers);
         Validator.validateNumbers(numbers);
     }
