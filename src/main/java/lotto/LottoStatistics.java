@@ -28,7 +28,9 @@ public class LottoStatistics {
                 key = checkBonusNumber(lotto, bonus, key);
             }
             winningMoney += countMatchingMoney.get(key).get(0);
-            countMatchingMoney.get(key).set(1, countMatchingMoney.get(key).get(1) + 1);
+            List<Integer> updateProfitsNumber = List.of(countMatchingMoney.get(key).get(0),
+                    countMatchingMoney.get(key).get(1) + 1);
+            countMatchingMoney.put(key, updateProfitsNumber);
         }
     }
 
