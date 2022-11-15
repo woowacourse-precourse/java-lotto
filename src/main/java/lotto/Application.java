@@ -27,6 +27,9 @@ public class Application {
         judgement.makeWinningTable(generator.lotteries, input.numbers, input.bonus); //당첨 갯수 저장
         calculator.sumJackpot(judgement.winningTable); //당첨 금액 저장
         calculator.calculateEarningRate(pay); //수익률저장
+
+        output.createMakeOfPrize(judgement.winningTable); //당첨 등수 저장
+        output.writeDown(calculator.earningRate); //당첨 결과 출력
     }
     public static int askPay() {
         Input input = new Input();
