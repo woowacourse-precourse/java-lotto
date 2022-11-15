@@ -105,7 +105,7 @@ class LottoSystemTest {
                 //matched 0 bonus 0
                 Arguments.of(
                         lottoSystem,
-                        new Lotto(List.of(55,25,21,17,11,9)),
+                        new Lotto(List.of(44,25,21,17,11,9)),
                         WinInfo.NO_WIN
                 )
         );
