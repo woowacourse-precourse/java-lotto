@@ -34,6 +34,15 @@ public class LottoMachine {
                 .collect(Collectors.toList());
     }
 
+    public WinningStatics enterWinningLotto(WinningLotto winningLotto) {
+        WinningStatics winningStatics = new WinningStatics();
+        lottos.stream()
+                .map(winningLotto::makeResult)
+                .filter(LottoResult::isNotFailed)
+                .forEach(winningStatics::updateLottoResults);
+        winningStatics.calculateRateOfReturn(purchaseMoney);
+        return winningStatics;
+    }
 
     public List<Lotto> getLottos() {
         return lottos;
