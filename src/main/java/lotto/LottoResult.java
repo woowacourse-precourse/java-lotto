@@ -7,15 +7,8 @@ public class LottoResult {
 
     public LottoResult(Map<LottoPrize, Integer> result) {
         validate(result);
-        addKey(result);
 
         this.result = result;
-    }
-
-    private void addKey(Map<LottoPrize, Integer> result) {
-        for (LottoPrize prize : LottoPrize.values()) {
-            result.put(prize, result.getOrDefault(prize, 0));
-        }
     }
 
     private void validate(Map<LottoPrize, Integer> result) {
