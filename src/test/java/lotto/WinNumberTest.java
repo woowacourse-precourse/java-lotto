@@ -21,7 +21,9 @@ public class WinNumberTest {
     private static Stream<Arguments> provideUserWinNumber(){
         return Stream.of(
                 Arguments.of("0,1,2,3,4,5","6"),
-                Arguments.of("1,2,3,4,5,6","6")
+                Arguments.of("1,2,3,4,5,6","6"),
+                Arguments.of("1,2","3"),
+                Arguments.of("김,맨,구,가,일,이","호")
                 );
     }
 
