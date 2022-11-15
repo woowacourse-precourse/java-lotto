@@ -55,4 +55,18 @@ public class LottoInputFilter {
         return bonusNumber;
     }
 
+    public static int readPurchaseAmount() {
+        System.out.println("구입금액을 입력해 주세요.");
+        String input = Console.readLine();
+        if (!validator.isPositiveInteger(input)) {
+            System.out.println(ErrorMessage.NON_POSITIVE_INTEGER_VALUE.getMessage());
+            throw new IllegalArgumentException();
+        }
+        int money = Integer.valueOf(input);
+        if (!validator.isPositiveInteger(money)) {
+            System.out.println(ErrorMessage.NON_POSITIVE_AMOUNT.getMessage());
+            throw new IllegalArgumentException();
+        }
+        return money;
+    }
 }
