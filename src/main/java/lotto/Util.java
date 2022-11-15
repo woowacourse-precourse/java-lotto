@@ -16,12 +16,10 @@ public class Util {
             String userInput = br.readLine();
 
             if(isNumber(userInput)) userMoney = Integer.parseInt(userInput);
+            if(isDivisionByThousand(userMoney)) throw new IllegalArgumentException();
 
-        } catch (IOException e) {
-            throw new IllegalArgumentException();
-        }
-
-        return userMoney;
+            return userMoney;
+        } catch (IOException e){ throw new IllegalArgumentException(); }
     }
 
     public static boolean isNumber(String str){
@@ -32,5 +30,12 @@ public class Util {
         }catch(NumberFormatException e){
             throw new IllegalArgumentException();
         }
+    }
+
+    public static boolean isDivisionByThousand(int number){
+
+        if(number % 1000 == 0) return true;
+
+        return false;
     }
 }
