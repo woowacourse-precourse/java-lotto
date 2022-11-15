@@ -1,10 +1,12 @@
 package lotto;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class Lotto {
+    static final String ERROR_MESSAGE_FOR_LOTTO_NUMBER_SIZE = "로또번호는 총 6개여야 합니다.";
+    static final String ERROR_MESSAGE_FOR_DISTINCT_LOTTO_NUMBER = "로또번호는 중복이 없어야 합니다.";
+
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
@@ -14,11 +16,11 @@ public class Lotto {
 
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
-            throw new IllegalArgumentException("로또번호는 총 6개여야 합니다.");
+            throw new IllegalArgumentException(ERROR_MESSAGE_FOR_LOTTO_NUMBER_SIZE);
         }
         List<Integer> distinctNumbers = numbers.stream().distinct().collect(Collectors.toList());
         if (distinctNumbers.size() != numbers.size()) {
-            throw new IllegalArgumentException("로또번호는 중복이 없어야 합니다.");
+            throw new IllegalArgumentException(ERROR_MESSAGE_FOR_DISTINCT_LOTTO_NUMBER);
         }
     }
 

@@ -1,9 +1,10 @@
 package lotto;
 
-import java.util.Arrays;
 import java.util.List;
 
 public class WinningLottoNumber {
+    static final String ERROR_MESSAGE_FOR_DISTINCT_WINNING_AND_BONUS_NUMBER = "당첨번호와 보너스번호는 중복될 수 없습니다.";
+
     private final Lotto WinningLottoNumber;
     private final BonusNumber bonusNumber;
 
@@ -17,7 +18,7 @@ public class WinningLottoNumber {
         List<Integer> numbers = winningLottoNumber.getNumbers();
         for (int num : numbers) {
             if (num == bonus.getBonusNumber()) {
-                throw new IllegalArgumentException("당첨번호와 보너스번호는 중복될 수 없습니다.");
+                throw new IllegalArgumentException(ERROR_MESSAGE_FOR_DISTINCT_WINNING_AND_BONUS_NUMBER);
             }
         }
     }
