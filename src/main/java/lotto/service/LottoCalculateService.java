@@ -17,6 +17,7 @@ public class LottoCalculateService {
     private static final int SIX_NUMBER_MATCHES = 6;
     private static final int BONUS_ENUM_LABEL = 7;
     private static final int BEFORE_BONUS_NUMBER_INDEX = 6;
+    private static final String DECIMAL_FORMAT = "###,##0.0";
     private final OutputView outputView = new OutputView();
     private Map<Winning, Integer> countOfWinning = new HashMap<>();
 
@@ -37,7 +38,7 @@ public class LottoCalculateService {
         if (user.getBuyingPrice() == 0) {
             return "0.0";
         }
-        DecimalFormat decimalFormat = new DecimalFormat("###,##0.0");
+        DecimalFormat decimalFormat = new DecimalFormat(DECIMAL_FORMAT);
         return decimalFormat.format((double) totalPrice / user.getBuyingPrice() * 100);
     }
 
