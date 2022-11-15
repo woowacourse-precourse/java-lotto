@@ -29,14 +29,6 @@ public class LuckyNumbers {
             throw new IllegalArgumentException(LOTTO_NUMBERS_RANGE_EXCEPTION);
         }
     }
-    
-    public Lotto getLuckyNumbers(){
-        return luckyNumbers;
-    }
-
-    public boolean contains(Integer integer) {
-        return luckyNumbers.contains(integer);
-    }
 
     public LottoRank calculateRanking(Lotto lotto) {
         int cnt = luckyNumbers.countSameNum(lotto);
