@@ -11,6 +11,27 @@ public class LottoManager {
         return lotto;
     }
 
+    public Rank getRank(Lotto lotto, List<Integer> winningNumbers, int bonusNumber) {
+        int matchCount = getMatchCount(lotto, winningNumbers);
+        boolean hasBonusNumber = hasBonusNumber(lotto, bonusNumber);
+        if (matchCount == Rank.FIRST.getMatchCount()) {
+            return Rank.FIRST;
+        }
+        if (matchCount == Rank.SECOND.getMatchCount() && hasBonusNumber) {
+            return Rank.SECOND;
+        }
+        if (matchCount == Rank.THIRD.getMatchCount()) {
+            return Rank.THIRD;
+        }
+        if (matchCount == Rank.FOURTH.getMatchCount()) {
+            return Rank.FOURTH;
+        }
+        if (matchCount == Rank.FIFTH.getMatchCount()) {
+            return Rank.FIFTH;
+        }
+        return null;
+    }
+
     public boolean hasBonusNumber(Lotto lotto, int bonusNumber) {
         for (int myNum : lotto.getNumbers()) {
             if (myNum == bonusNumber) {
