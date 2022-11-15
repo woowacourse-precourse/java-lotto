@@ -42,22 +42,22 @@ public class Money {
     public Long getAmount() {
         return amount;
     }
-
+    
+    @Override
     public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
-
-        if (!(o instanceof Money)) {
+        if (o == null || getClass() != o.getClass()) {
             return false;
         }
-
-        Money object = (Money) o;
-        return Objects.equals(amount, object.amount);
+        Money money = (Money) o;
+        return Objects.equals(amount, money.amount);
     }
 
+    @Override
     public int hashCode() {
-        return Objects.hashCode(amount);
+        return Objects.hash(amount);
     }
 
     @Override
