@@ -40,7 +40,7 @@ public class Application {
     }
 
     private static List<Lotto> createLottos(int amount) {
-        return issue.createLotto(amount);
+        return issue.createLottos(amount);
     }
 
     private static Map<Rank, Integer> getLottoResults(List<Lotto> userLottos, Lotto prizeLotto, int bonusNumber) {

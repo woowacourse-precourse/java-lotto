@@ -20,7 +20,7 @@ class IssueTest {
     @Test
     @DisplayName("구입 금액이 1,000으로 나누어 떨어지지 않으면 예외가 발생한다.")
     void amountException() {
-        assertThatThrownBy(() -> issue.createLotto(1100))
+        assertThatThrownBy(() -> issue.createLottos(1100))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(AMOUNT_EXCEPTION);
     }
@@ -29,7 +29,7 @@ class IssueTest {
     @DisplayName("발행 매수는 [구입 금액 / 1000]이다.")
     @CsvSource({"10000,10", "1000,1", "5000,5"})
     void issueLottoCount(int amount, int expected) {
-        List<Lotto> lottos = issue.createLotto(amount);
+        List<Lotto> lottos = issue.createLottos(amount);
 
         assertThat(lottos.size()).isEqualTo(expected);
     }

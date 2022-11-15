@@ -16,7 +16,7 @@ public class IssueImpl implements Issue {
     private final NumberGenerator numberGenerator = new NumberGeneratorImpl();
 
     @Override
-    public List<Lotto> createLotto(int amount) {
+    public List<Lotto> createLottos(int amount) {
         int lottoIssueCount = getLottoIssueCount(amount);
 
         return IntStream.range(0, lottoIssueCount)

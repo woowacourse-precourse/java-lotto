@@ -6,5 +6,5 @@ import java.util.List;
 
 public interface Issue {
 
-    List<Lotto> createLotto(int amount);
+    List<Lotto> createLottos(int amount);
 }
