@@ -33,4 +33,25 @@ class LottoPrizeTest {
         assertThat(matchCount).isEqualTo(3);
     }
 
+    @Test
+    @DisplayName("5개가 일치하면서 보너스 번호가 일치할 때 결과값으로 50을 받아야 한다.")
+    void 보너스_번호_체크_테스트() throws Exception {
+        //given
+        LottoWinningNumber lottoWinningNumber = new LottoWinningNumber();
+        Field winningNums = lottoWinningNumber.getClass().getDeclaredField("bonusNum");
+        winningNums.setAccessible(true);
+        winningNums.set(lottoWinningNumber, 7);
+
+        LottoPrize lottoPrize = new LottoPrize(lottoWinningNumber);
+        Method method = lottoPrize.getClass().getDeclaredMethod("checkBonusNumber", List.class, int.class);
+        method.setAccessible(true);
+
+        //when
+        List<Integer> userNums = List.of(1, 2, 3, 4, 5, 7);
+
+        //then
+        int matchCount = (int) method.invoke(lottoPrize, userNums, 5);
+        assertThat(matchCount).isEqualTo(50);
+    }
+
 }
