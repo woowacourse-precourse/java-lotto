@@ -11,7 +11,7 @@ public class Convert {
 
     public static int StrToInt(final String number) {
         try {
-            return Integer.parseInt(number);
+            return isBuySum(number);
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException(Error.NUMBER);
         }
@@ -33,6 +33,14 @@ public class Convert {
         if (!(Number.START_NUM <= n && n <= Number.END_NUM)) {
             throw new IllegalArgumentException(Error.ONE_TO_FORTYFIVE);
         }
+    }
+
+    private static int isBuySum(final String number) {
+        int check = Integer.parseInt(number);
+        if(!(Number.ZERO < check && check <= Integer.MAX_VALUE)) {
+            throw new IllegalArgumentException(Error.MONEY);
+        }
+        return check;
     }
 
 
