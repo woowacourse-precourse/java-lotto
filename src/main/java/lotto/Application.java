@@ -2,15 +2,20 @@ package lotto;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
 
+        List<Lotto> lottos = new ArrayList<>();
         int numberOfLotto = getTheNumberOfLotto();
 
-        Lotto lotto = new Lotto(createLottoNumbers());
+        for (int i = 0; i < numberOfLotto; i++) {
+            lottos.add(new Lotto(createLottoNumbers()));
+        }
+        printLottos(lottos);
 
     }
 
@@ -53,6 +58,12 @@ public class Application {
         List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
 
         return numbers;
+    }
+
+    public static void printLottos(List<Lotto> lottos) {
+        for (Lotto lotto: lottos) {
+            lotto.printLotto();
+        }
     }
 
 }
