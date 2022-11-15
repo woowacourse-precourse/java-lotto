@@ -15,12 +15,12 @@ public class LottoGame {
     public Output output;
 
     public void LottoGame() {
-        this.input = new Input();
-        this.output = new Output();
         this.gameResult = new ArrayList<Integer>(6); // Rank : 1~5
     }
 
     public void play() {
+        this.input = new Input();
+        this.output = new Output();
         this.purchaseAmount = input.getPurchaseAmount();
         issueLotto();
         output.printIssuedLotto(issuedLotto);
