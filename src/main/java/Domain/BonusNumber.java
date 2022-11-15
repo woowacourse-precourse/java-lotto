@@ -1,5 +1,7 @@
 package Domain;
 
+import java.util.List;
+
 public class BonusNumber {
 
     String bonusNumber;
@@ -8,6 +10,12 @@ public class BonusNumber {
         validInputBonusNumber(bonusNumber);
         outOfRangeBonusNumber(bonusNumber);
         this.bonusNumber = bonusNumber;
+    }
+
+    public void duplicateInputBonusNumber(List<Integer> WinnerLottoNumber) {
+        if (WinnerLottoNumber.contains(Integer.parseInt(bonusNumber))) {
+            throw new IllegalArgumentException("[ERROR] 보너스 번호는 당첨 번호와 중복될 수 없습니다.");
+        }
     }
 
     private void validInputBonusNumber(String bonus) {
