@@ -1,5 +1,6 @@
 package lotto.exception;
 
+import java.util.List;
 import lotto.constants.Error;
 import lotto.constants.Number;
 
@@ -22,4 +23,9 @@ public class BonusNumber {
         }
     }
 
+    public static void exceptionDuplication(String bonusNumber, List<Integer> winNumber) {
+        if (winNumber.contains(Integer.parseInt(bonusNumber))) {
+            throw new IllegalArgumentException(Error.DUPLICATE_BONUS_NUM.getMsg());
+        }
+    }
 }
