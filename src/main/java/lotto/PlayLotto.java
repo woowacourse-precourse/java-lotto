@@ -44,7 +44,7 @@ public class PlayLotto {
     }
 
     public boolean compareTicketAndBonusNumber(List<Integer> ticket, String bonus) {
-        Integer bonusNumber = createLotto.bonusNumber(bonus);
+        Integer bonusNumber = inputNumber.bonusNumber(bonus);
         boolean countbonus = false;
         if (ticket.contains(bonusNumber)) {
             countbonus = true;
