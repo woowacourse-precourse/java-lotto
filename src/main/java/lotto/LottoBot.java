@@ -3,6 +3,7 @@ package lotto;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class LottoBot {
@@ -19,7 +20,9 @@ public class LottoBot {
     private int initialMoney;
 
     public Lotto createLotto() {
-        return new Lotto(createRandomNumbers());
+        List<Integer> randomNumbers = new ArrayList<>(createRandomNumbers());
+        Collections.sort(randomNumbers);
+        return new Lotto(randomNumbers);
     }
 
     private List<Integer> createRandomNumbers() {

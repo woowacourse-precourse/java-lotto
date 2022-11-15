@@ -9,15 +9,13 @@ public class Lotto {
     public static final int LOTTO_PRICE = 1000;
     private final List<Integer> numbers;
 
-    private final Validation validation = new Validation();
-
     public Lotto(List<Integer> numbers) {
         validate(numbers);
         this.numbers = numbers;
     }
 
     private void validate(List<Integer> numbers) {
-        validation.checkLottoNumbers(numbers);
+        Validation.checkLottoNumbers(numbers);
     }
 
     public int getRank(List<String> winningNumbers, String bonusNumber) {
