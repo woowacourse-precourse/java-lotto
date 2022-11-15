@@ -6,6 +6,11 @@ import java.util.Map;
 
 public class Result {
 
+    private static final String SEPARATOR = ",";
+    private static final String NULL = "";
+    private static final int PERCENTILE = 100;
+    private static final int ZERO = 0;
+
     private final Map<Rank, Integer> result;
 
     public Result(List<Rank> ranks) {
@@ -15,14 +20,14 @@ public class Result {
         for (Rank rank : ranks) {
             if (rank == Rank.NON) continue;
 
-            result.put(rank, result.getOrDefault(rank, 0) + 1);
+            result.put(rank, result.getOrDefault(rank, ZERO) + 1);
         }
     }
 
     public void initResult() {
         for (Rank rank : Rank.values()) {
             if (rank == Rank.NON) continue;
-            result.put(rank, 0);
+            result.put(rank, ZERO);
         }
     }
 
@@ -33,9 +38,9 @@ public class Result {
     public double getYield(int purchaseMoney) {
         double totalWinningMoney = result.entrySet()
                 .stream()
-                .mapToDouble(rank -> Integer.parseInt(rank.getKey().getWinningPrice().replaceAll(",", "")) * rank.getValue())
+                .mapToDouble(rank -> Integer.parseInt(rank.getKey().getWinningPrice().replaceAll(SEPARATOR, NULL)) * rank.getValue())
                 .sum();
 
-        return totalWinningMoney / purchaseMoney * 100;
+        return totalWinningMoney / purchaseMoney * PERCENTILE;
     }
 }
