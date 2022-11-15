@@ -37,7 +37,7 @@ public class LottoCompany {
         validateWinningNumbers(winningNumbers);
 
         List<Integer> lottoNumbers = new ArrayList<>();
-        for (int order = 0; order < LENGTH; order++) {
+        for (int order = 0; order < winningNumbers.length; order++) {
             lottoNumbers.add((Integer.parseInt(winningNumbers[order])));
         }
         this.lotto = new Lotto(lottoNumbers);
