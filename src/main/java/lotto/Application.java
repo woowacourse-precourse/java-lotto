@@ -84,19 +84,4 @@ public class Application {
         }
         return bonusNumber;
     }
-
-    public static void compareNumber(List<Integer> winNumbers, int bonusNumber){
-        int frequency=0;
-        for(int i = 0; i<winNumbers.size();i++){
-            frequency = Collections.frequency(winNumbers, winNumbers.get(i));
-            if(frequency != 1){
-                System.out.println("[ERROR] 당첨번호를 중복되지 않게 입력해주세요.");
-                throw new IllegalArgumentException();
-            }
-        }
-        if(Collections.frequency(winNumbers, bonusNumber) != 0){
-            System.out.println("[ERROR] 보너스 번호를 중복되지 않게 입력해주세요.");
-            throw new IllegalArgumentException();
-        }
-    }
 }
