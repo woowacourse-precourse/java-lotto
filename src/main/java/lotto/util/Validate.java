@@ -9,6 +9,7 @@ public class Validate {
     public static final String ERROR_INVALID_NUMBER = "[ERROR] 숫자이외의 값이 포함되어 있습니다.";
     public static final String ERROR_DUPLICATE_VALUE = "[ERROR] 중복 값이 포함되어 있습니다.";
     public static final String ERROR_DIFFERENT_LENGTHS = "[ERROR] 허용 길이를 벗어났습니다.";
+    public static final String ERROR_OUT_OF_RANGE = "[ERROR] 허용 범위를 벗어났습니다.";
 
     public static void isNull(Object number) {
         if (number == null) {
@@ -37,5 +38,15 @@ public class Validate {
         if (numbers.size() != length) {
             throw new IllegalArgumentException(ERROR_DIFFERENT_LENGTHS);
         }
+    }
+
+    public static void range(List<Integer> numbers, int startInclusive, int endInclusive) {
+        numbers.stream()
+                .map(e -> Integer.parseInt(e.toString()))
+                .forEach(e -> {
+                    if (e < startInclusive && e > endInclusive) {
+                        throw new IllegalArgumentException(ERROR_OUT_OF_RANGE);
+                    }
+                });
     }
 }
