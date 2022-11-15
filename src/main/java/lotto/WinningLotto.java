@@ -14,14 +14,19 @@ public class WinningLotto {
     }
 
     public Rank getRankOfLotto(Lotto lotto) {
-        List<Integer> userNumbers = lotto.getNumbers();
-        int countOfMatchingNumbers = userNumbers.stream()
-                .filter(this.lotto::contains)
-                .collect(toList())
-                .size();
+        int countOfMatchingNumbers = getCountOfMatchingNumbers(lotto);
 
         boolean includesBonusNumber = lotto.contains(bonusNumber);
 
         return Rank.of(countOfMatchingNumbers, includesBonusNumber);
+    }
+
+    private int getCountOfMatchingNumbers(Lotto lotto) {
+        List<Integer> userNumbers = lotto.getNumbers();
+
+        return userNumbers.stream()
+                .filter(this.lotto::contains)
+                .collect(toList())
+                .size();
     }
 }
