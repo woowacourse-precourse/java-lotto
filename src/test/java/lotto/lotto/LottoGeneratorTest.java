@@ -36,8 +36,9 @@ class LottoGeneratorTest {
             Lotto lotto = generator.getLotto();
             List<Integer> numbers = lotto.getNumbers();
             for(int i = 0; i < numbers.size(); i++) {
-                for (int j = i + 1; j < numbers.size(); j++) {
-                    assertNotEquals(numbers.get(i), numbers.get(j));
+                for (int j = 0; j < numbers.size(); j++) {
+                    if (i != j)
+                        assertNotEquals(numbers.get(i), numbers.get(j));
                 }
             }
         }

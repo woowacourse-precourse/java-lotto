@@ -26,6 +26,8 @@ public class Application {
         System.out.println("보너스 번호를 입력해 주세요.");
         winner.setBonusNumber(user.getInput());
 
-        System.out.println(winner);
+        System.out.println("\n당첨 통계\n---\n");
+        winner.printResult(user.getLottos());
+
     }
 }

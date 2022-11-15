@@ -1,6 +1,8 @@
 package lotto.lotto;
 
+import java.util.LinkedList;
 import java.util.List;
+import lotto.user.User;
 
 public class Lotto {
     private final List<Integer> numbers;
@@ -30,5 +32,17 @@ public class Lotto {
         LottoValidator.validateLottoNumber(input);
         numbers.add(Integer.parseInt(input));
         LottoValidator.validateDuplicateNumbers(numbers);
+    }
+
+    public void printResult(List<Lotto> lottos) {
+        LottoPrinter printer = new LottoPrinter();
+        for(Lotto lotto: lottos) {
+            int matchedBalls = LottoComparator.getMatchedNumbers(numbers, lotto.getNumbers());
+            boolean bonusMatched = LottoComparator.isBonusMatched(numbers, lotto.getNumbers());
+
+            printer.addResult(matchedBalls, bonusMatched);
+        }
+
+        printer.printLottoResult();
     }
 }

@@ -42,4 +42,8 @@ public class User {
             throw new IllegalArgumentException("[ERROR] 값이 입력되지 않았습니다.");
         }
     }
+
+    public List<Lotto> getLottos() {
+        return lottos;
+    }
 }
