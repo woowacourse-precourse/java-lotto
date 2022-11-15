@@ -29,7 +29,7 @@ public class Model {
 
     // 계산된 수익률을 반환하는 메서드
     public double getRateOfProfit () {
-        return calculateRateOfProfit(MONEY);
+        return calculateRateOfIncome(MONEY);
     }
 
     public List<List<Integer>> getUsersLottos (int money) {
@@ -120,18 +120,18 @@ public class Model {
     }
 
     // 수익률 계산하는 메서드
-    public double calculateRateOfProfit (int money) {
-        int totalProfit = 0;
+    public double calculateRateOfIncome (int money) {
+        int totalIncome = 0;
 
         for (int ranking: PRIZE_RANKINGS.keySet()) {
-            totalProfit += profitByRanking(ranking, PRIZE_RANKINGS.get(ranking));
+            totalIncome += incomeByRanking(ranking, PRIZE_RANKINGS.get(ranking));
         }
 
-        return (double)totalProfit / money;
+        return (double)totalIncome / money;
     }
 
     // 당첨된 순위에 해당하는 금액을 반환하는 메서드
-    public int profitByRanking (int ranking, int numberOfRanking) {
+    public int incomeByRanking (int ranking, int numberOfRanking) {
         if (ranking == 1) return Prize.FIRST.getPrize() * numberOfRanking;
         if (ranking == 2) return Prize.SECOND.getPrize() * numberOfRanking;
         if (ranking == 3) return Prize.THIRD.getPrize() * numberOfRanking;
