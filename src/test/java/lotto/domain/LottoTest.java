@@ -4,8 +4,6 @@ import lotto.domain.exception.IllegalArgumentException;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.util.Arrays;
-import java.util.Comparator;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -33,17 +31,10 @@ class LottoTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
-    @DisplayName("로또 생성 시 오름차순으로 정렬된다.")
-    @Test
-    void createLottoByAscendingOrder() {
-        Lotto lotto = new Lotto(Arrays.asList(6, 5, 4, 3, 2, 1));
-        assertThat(lotto.getNumbers()).isSortedAccordingTo(Comparator.naturalOrder());
-    }
-
     @DisplayName("로또 번호 리스트의 보너스 번호 포함 여부를 알 수 있다.")
     @Test
     void containsBonusNumber() {
-        Lotto lotto = new Lotto(Arrays.asList(1, 2, 3, 4, 5, 6));
+        Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
         int bonusNumber = 1;
         assertThat(lotto.containsBonusNumber(bonusNumber)).isTrue();
     }
@@ -51,7 +42,7 @@ class LottoTest {
     @DisplayName("로또 번호 리스트를 조회할 수 있다.")
     @Test
     void getLottoNumbers() {
-        Lotto lotto = new Lotto(Arrays.asList(1, 2, 3, 4, 5, 6));
+        Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
         List<Integer> numbers = lotto.getNumbers();
         assertThat(numbers).contains(1, 2, 3, 4, 5, 6);
     }
