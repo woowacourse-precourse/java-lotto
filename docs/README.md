@@ -1,9 +1,9 @@
 # 기능요구사항
 
 ## 입력
+- 천원 단위 체크 - checkAmount()
 - 값 입력 - inputValues()
   - 구입금액 입력 - inputPurchaseAmount()
-  - 천원 단위 체크 - checkAmount()
   - 당첨 번호 입력 - inputWinningNumber()
   - 보너스 번호 입력 - inputBonusNumber()
 ## 구현
