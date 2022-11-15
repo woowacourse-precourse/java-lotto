@@ -1,12 +1,8 @@
 package domain;
 
-import view.ErrorMessage;
-
-import java.util.HashSet;
 import java.util.List;
 
-import static controller.Util.validateDuplicate;
-import static controller.Util.validateSize;
+import static controller.Util.*;
 
 public class LottoCompany {
 
@@ -18,6 +14,7 @@ public class LottoCompany {
         validateRange(winningBonus);
         validateSize(winningNumbers);
         validateDuplicate(winningNumbers);
+        validateNumbersRange(winningNumbers);
         this.winningNumbers = winningNumbers;
     }
 
@@ -29,9 +26,4 @@ public class LottoCompany {
         return winningBonus;
     }
 
-
-    private void validateRange(int lottoWinningBonus) {
-        if (lottoWinningBonus < 1 || lottoWinningBonus > 45)
-            throw new IllegalArgumentException(ErrorMessage.NOT_RANGE.getErrorMessage());
-    }
 }

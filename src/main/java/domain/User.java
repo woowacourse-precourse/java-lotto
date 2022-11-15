@@ -5,6 +5,8 @@ import view.ErrorMessage;
 
 import java.util.List;
 
+import static controller.Util.validateInputMoney;
+
 public class User {
 
     private final int inputMoney;
@@ -31,7 +33,4 @@ public class User {
         return totalCount;
     }
 
-    private void validateInputMoney(int inputMoney) {
-        if (inputMoney % 1000 != 0) throw new IllegalArgumentException(ErrorMessage.NOT_UNIT.getErrorMessage());
-    }
 }

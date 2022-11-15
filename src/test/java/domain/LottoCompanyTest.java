@@ -35,4 +35,9 @@ class LottoCompanyTest {
     void createWinningDuplicate(){
         assertThatThrownBy(() -> new LottoCompany(List.of(1,2,3,4,5,5), 20)).isInstanceOf(IllegalArgumentException.class);
     }
+    @DisplayName("당첨 번호가 1 ~ 45 범위가 넘어갈 경우 예외처리 한다.")
+    @Test
+    void createWinningOverRange(){
+        assertThatThrownBy(() -> new LottoCompany(List.of(1,2,3,4,5,77), 20)).isInstanceOf(IllegalArgumentException.class);
+    }
 }

@@ -17,6 +17,7 @@ public class Util {
         if (!lottoWinningNumbers.contains(","))
             throw new IllegalArgumentException(ErrorMessage.NOT_COMMA.getErrorMessage());
     }
+
     public static void validateSize(List<Integer> numbers) {
         if (numbers.size() != 6)
             throw new IllegalArgumentException(ErrorMessage.NOT_SIZE.getErrorMessage());
@@ -28,5 +29,18 @@ public class Util {
             throw new IllegalArgumentException(ErrorMessage.HAVE_DUPLICATION.getErrorMessage());
     }
 
+    public static void validateNumbersRange(List<Integer> numbers) {
+        for (int i = 0; i < numbers.size(); i++)
+            validateRange(numbers.get(i));
+    }
+
+    public static void validateRange(int lottoWinningBonus) {
+        if (lottoWinningBonus < 1 || lottoWinningBonus > 45)
+            throw new IllegalArgumentException(ErrorMessage.NOT_RANGE.getErrorMessage());
+    }
+
+    public static void validateInputMoney(int inputMoney) {
+        if (inputMoney % 1000 != 0) throw new IllegalArgumentException(ErrorMessage.NOT_UNIT.getErrorMessage());
+    }
 
 }
