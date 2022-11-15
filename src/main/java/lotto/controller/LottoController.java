@@ -58,11 +58,8 @@ public class LottoController {
 
     public void getUserBonusNumber() {
         int bonusNumber=InputView.requestBonusNumber();
-        System.out.println("-----1");
         Validation.validateBonus(bonusNumber, userLottoNumbers);
-        System.out.println("-----2");
         userLottoNumbers.add(bonusNumber);
-        System.out.println("-----3");
         Validation.validateNumberDuplicate(userLottoNumbers);
     }
 

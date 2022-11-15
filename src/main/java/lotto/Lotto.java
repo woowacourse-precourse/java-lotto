@@ -25,8 +25,7 @@ public class Lotto {
                 .filter(lotto::contains)
                 .count();
     }
-
-
+    
     public boolean contains(List<Integer> lottoWinningNumbers) {
         return numbers.contains(lottoWinningNumbers);
     }

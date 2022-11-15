@@ -23,7 +23,6 @@ public class InputView {
         List<Integer> inputNumbers = new ArrayList<>();
         String[] tmpInputNumber = tmpInputNumbers.split(COMMA);
         Validation.validateNotNumber(tmpInputNumber);
-
         for (int i = 0; i < tmpInputNumber.length; i++) {
             int splitInputNumber=Integer.parseInt(tmpInputNumber[i]);
             Validation.validateNumberRange(splitInputNumber);
