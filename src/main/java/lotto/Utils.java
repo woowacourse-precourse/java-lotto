@@ -7,15 +7,15 @@ import java.util.*;
 import static lotto.Result.*;
 
 public class Utils {
-    private static final int PRICE_OF_LOTTO = 1000;
+    private static final int PRICE_OF_A_LOTTO = 1000;
     private static final int MIN_NUM = 1;
     private static final int MAX_NUM = 45;
-    private static final int NUMBER_OF_NUMS = 6;
+    private static final int NUMBER_OF_LOTTO_NUMS = 6;
     private static final int SECOND_THIRD_STANDARD = 5;
     public static final Map<Result, Integer> WINNING_DATA = new HashMap<>();
 
     public static int getNumberOfIssues(int price) {
-        return price / PRICE_OF_LOTTO;
+        return price / PRICE_OF_A_LOTTO;
     }
 
     private static void initializeMap() {
@@ -26,8 +26,8 @@ public class Utils {
 
     public static List<Lotto> issueLotto(int price) {
         List<Lotto> issuedLottos = new ArrayList<>();
-        for (int count = 0; count < price ; count++) {
-            List<Integer> picked = Randoms.pickUniqueNumbersInRange(MIN_NUM, MAX_NUM, NUMBER_OF_NUMS);
+        for (int count = 0; count < price; count++) {
+            List<Integer> picked = Randoms.pickUniqueNumbersInRange(MIN_NUM, MAX_NUM, NUMBER_OF_LOTTO_NUMS);
             issuedLottos.add(new Lotto(picked));
         }
         return issuedLottos;
