@@ -25,7 +25,7 @@ public enum LottoRank {
             return SECOND;
         }
         return Arrays.stream(LottoRank.values())
-                .filter(LottoRank-> LottoRank.winningNumberCount == winningNumberCount && !bonusNumber)
+                .filter(LottoRank-> LottoRank.winningNumberCount == winningNumberCount)
                 .findFirst()
                 .orElse(FAILED);
     }
