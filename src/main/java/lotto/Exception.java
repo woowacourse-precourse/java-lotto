@@ -50,6 +50,12 @@ public class Exception {
             throw new IllegalArgumentException("[ERROR] Duplicate number exists in input value.");
     }
 
+    // TODO: 리스트의 모든 입력 값이 1~45 범위에 해당하는 경우 True 를 반환한다.
+    private static void isRangeFromOneToFortyFive(List<String> winningNumbers) throws IllegalArgumentException{
+        for(String number : winningNumbers)
+            isMatchFromOneToFortyFive(number);
+    }
+
     // TODO: 문자열을 1~45와 비교하여 일치하지 않는 경우 예외 처리한다.
     private static void isMatchFromOneToFortyFive(String number) throws IllegalArgumentException{
         if ( !(MIN_VALUE_OF_WINNING_NUMBER <= isContainCharacter(number)
