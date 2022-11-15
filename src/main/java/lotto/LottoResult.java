@@ -1,6 +1,5 @@
 package lotto;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -10,9 +9,10 @@ public class LottoResult {
     private int equalCount;
     private boolean isBonus;
 
-    public Map<Result, Integer> getResult(List<Lotto> lottos, WinNumber winNumber, BonusNumber bonusNumber) {
-        Map<Result, Integer> lottoResult = new HashMap<>();
-        initLottoResult(lottoResult);
+    private Map<Result, Integer> lottoResult;
+
+    public void getResult(List<Lotto> lottos, WinNumber winNumber, BonusNumber bonusNumber) {
+        initLottoResult();
 
         for (Lotto lotto : lottos) {
             initValue();
@@ -27,7 +27,14 @@ public class LottoResult {
                 lottoResult.put(result, lottoResult.get(result) + 1);
             }
         }
-        return lottoResult;
+    }
+
+    public double getEarning(int price) {
+        int totalReward = 0;
+        for (Result result : lottoResult.keySet()) {
+            totalReward += lottoResult.get(result) * result.getReward();
+        }
+        return (double) totalReward / price * 100;
     }
 
     private void initValue() {
@@ -35,7 +42,7 @@ public class LottoResult {
         isBonus = false;
     }
 
-    private void initLottoResult(Map<Result, Integer> lottoResult) {
+    private void initLottoResult() {
         lottoResult.put(FIRST, 0);
         lottoResult.put(SECOND, 0);
         lottoResult.put(THIRD, 0);
@@ -58,5 +65,9 @@ public class LottoResult {
                 break;
             }
         }
+    }
+
+    public Map<Result, Integer> getLottoResult() {
+        return lottoResult;
     }
 }
