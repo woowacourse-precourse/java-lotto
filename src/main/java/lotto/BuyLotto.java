@@ -44,4 +44,16 @@ public class BuyLotto {
         }
     }
 
+    private static int getNumberOfMatch(List<Integer> oneLottoGame,List<Integer> winNumbers){
+        int numberOfMatch = 0;
+
+        for(int i = 0; i < winNumbers.size(); i++){
+            if(oneLottoGame.contains(winNumbers.get(i))){
+                numberOfMatch++;
+            }
+        }
+        return numberOfMatch;
+    }
+
+    
 }
