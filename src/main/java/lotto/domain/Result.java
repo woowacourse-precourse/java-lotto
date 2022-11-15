@@ -17,7 +17,7 @@ public enum Result {
         this.prize = prize;
     }
 
-    private long calculate(long value) {
+    public long calculate(long value) {
         return value * prize;
     }
 
