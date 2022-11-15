@@ -31,11 +31,12 @@ public enum WinningPrize {
     public static int findRanking(int amountOfCorrectNumbers, Lotto oneLottoPaper, int bonusNumber){
         boolean isThirdPrize = (amountOfCorrectNumbers == 5) && !isBonusNumberIncludedInPapers(oneLottoPaper,bonusNumber);
 
+        if(isThirdPrize){
+            return 3;
+        }
+
         for(WinningPrize prize : WinningPrize.values()){
             if(amountOfCorrectNumbers == prize.howManyNumbersIncluded){
-                if(isThirdPrize){
-                    return 3;
-                }
                 return prize.ranking;
             }
         }
