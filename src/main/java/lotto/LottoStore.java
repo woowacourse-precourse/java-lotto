@@ -10,8 +10,7 @@ import static lotto.NumberValidate.*;
 public class LottoStore {
 
     public static void start() {
-        String inputer = LottoPrinter.inputer("구입금액을 입력해 주세요.");
-        Money money = new Money(inputer);
+        Money money = new Money(LottoPrinter.inputer("구입금액을 입력해 주세요."));
 
         int lottoCount = (int)(money.getMoney() / 1000);
         List<Lotto> lottos = addLotto(lottoCount);
