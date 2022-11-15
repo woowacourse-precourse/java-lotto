@@ -91,16 +91,6 @@ public class UI {
     }
 
     public void Rate_Of_Return_Print(String Rate_Of_Return){
-        System.out.printf("총 수익률은 %s%입니다.%n",Rate_Of_Return);
+        System.out.printf("총 수익률은 %s%%입니다.%n",Rate_Of_Return);
     }
-
-
-
-
-
-//    public static void main(String[] args) {
-//        UI UI = new UI();
-//        System.out.println(UI.Bonus_Number());
-//    }
-//
-//}
+}
