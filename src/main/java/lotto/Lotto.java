@@ -62,5 +62,11 @@ public class Lotto {
             int matchCount = checkWinningNumbers(randomNumber.get(i));
             matches = saveWinningResult(matchCount, matches);
         }
+
+        System.out.println("당첨 통계");
+        System.out.println("---");
+        for (int i = 0; i < matches.length; i++) {
+            System.out.println((i + 3) + "개 일치 - " + matches[i] + "개");
+        }
     }
 }
