@@ -1,7 +1,9 @@
 package lotto;
 
-import lotto.domain.Lotto;
 import lotto.domain.Player;
+
+import static lotto.view.InputView.*;
+import static lotto.view.OutputView.*;
 
 public class Game {
     private final Player player;
@@ -11,7 +13,9 @@ public class Game {
     }
 
     public void start() {
+        showPurchaseInputMessage();
         player.getPurchaseCost();
         player.purchaseLotto();
+        printPurchasedLotto(player.getLottos());
     }
 }

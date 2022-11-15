@@ -12,6 +12,10 @@ public class Player {
     private final List<Lotto> lottos = new ArrayList<>();
     private int purchaseCost = 0;
 
+    public List<Lotto> getLottos() {
+        return lottos;
+    }
+
     public void getPurchaseCost() {
         String input = Console.readLine();
         validatePurchaseCost(input);

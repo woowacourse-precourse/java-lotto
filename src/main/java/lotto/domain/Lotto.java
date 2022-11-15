@@ -30,4 +30,9 @@ public class Lotto {
     private static List<Integer> pickLottoNumbers() {
         return Randoms.pickUniqueNumbersInRange(MIN,MAX,MAX_COUNT);
     }
+
+    @Override
+    public String toString() {
+        return numbers.toString();
+    }
 }
