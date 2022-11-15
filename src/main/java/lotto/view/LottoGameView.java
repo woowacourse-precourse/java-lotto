@@ -30,7 +30,7 @@ public class LottoGameView{
     }
 
     public void noticeNumberOfTickets(int numberOfTickets){
-
+        System.out.printf("%d개를 구매했습니다.\n",numberOfTickets);
     }
 
     public void noticeRateOfRevenue(float rateOfRevenue){
