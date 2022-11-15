@@ -7,10 +7,6 @@ import java.util.List;
 
 public class WinNumber {
 
-    static final int MIN_NUMBER = 1;
-    static final int MAX_NUMBER = 45;
-    static final int WIN_NUMBER_SIZE = 6;
-
     private List<Integer> winNumbers = new ArrayList<>();
     private Integer bonusNumber = 0;
     // 겹치는 숫자를 입력했을 때, 예외 발생시키기!
@@ -36,7 +32,7 @@ public class WinNumber {
     }
 
     void validateWinNumbers(String[] numbers) {
-        if (numbers.length != WIN_NUMBER_SIZE) {
+        if (numbers.length != Lotto.WIN_NUMBER_SIZE) {
             throw new IllegalArgumentException(ExceptionHandler.WRONG_WIN_NUMBERS);
         }
         for (String number : numbers) {
@@ -58,7 +54,7 @@ public class WinNumber {
 
     public boolean isNotInRange(String number) {
         int num = Integer.parseInt(number);
-        return num < MIN_NUMBER || MAX_NUMBER < num;
+        return num < Lotto.MIN_NUMBER || Lotto.MAX_NUMBER < num;
     }
 
     public boolean isNotNumeric(String number) {

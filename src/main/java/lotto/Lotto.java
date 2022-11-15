@@ -3,6 +3,10 @@ package lotto;
 import java.util.List;
 
 public class Lotto {
+    static final int MIN_NUMBER = 1;
+    static final int MAX_NUMBER = 45;
+    static final int WIN_NUMBER_SIZE = 6;
+
     private final List<Integer> numbers;
     private Prize grade = Prize.UNCHECKED;
 
