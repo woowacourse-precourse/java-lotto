@@ -29,7 +29,7 @@ public class OutputUI {
     }
 
     // 당첨 내역 출력
-    public void printWinningResult(List<List<Integer>> userRandomNumber, int count, Lotto lotto, int bonusNumber) {
+    public void printWinningResult(List<List<Integer>> userRandomNumber, int count, Lotto lotto, int bonusNumber, int amount) {
         int[] matches = {0, 0, 0, 0, 0};
         String bonusMoney = "30,000,000";
         String[] moneys = {"5,000", "50,000", "1,500,000", bonusMoney, "2,000,000,000"};
@@ -41,6 +41,8 @@ public class OutputUI {
         for (int i = 0; i < matches.length; i++) {
             printTheNumberOfCases(i, matches, moneys, bonusMoney);
         }
+
+        System.out.println("총 수익률은 " + returnIncomeRate(matches, amount) + "%입니다.");
     }
 
     public void printTheNumberOfCases(int index, int[] matches, String[] moneys, String bonusMoney) {
@@ -48,11 +50,24 @@ public class OutputUI {
             System.out.println("5개 일치, 보너스 볼 일치 (" + bonusMoney + "원) - " + matches[index] + "개");
             return;
         }
+
         if (index == 4) {
             System.out.println((index + 2) + "개 일치 (" + moneys[index] + "원) - " + matches[index] + "개");
             return;
         }
 
         System.out.println((index + 3) + "개 일치 (" + moneys[index] + "원) - " + matches[index] + "개");
+    }
+
+    public double returnIncomeRate(int[] matches, int amount) {
+        // 총 수익  내가 낸 돈 * 100
+        String[] moneys = {"5000", "50000", "1500000", "30000000", "2000000000"};
+        double sum = 0;
+
+        for (int i = 0; i < matches.length; i++) {
+            sum += (Integer.parseInt(moneys[i]) * matches[i]);
+        }
+
+        return (sum / amount) * 100;
     }
 }

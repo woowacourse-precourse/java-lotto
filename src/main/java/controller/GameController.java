@@ -14,6 +14,7 @@ public class GameController {
     private LottoService lottoService;
     private Lotto lotto;
     private int bonusNumber;
+    private int amount;
     List<List<Integer>> userRandomNumbers;
 
     // 필드 초기화 및 게임 작동
@@ -30,7 +31,7 @@ public class GameController {
     // 게임 시작 부분
     public void startGame() {
         // 1. 로또 구입 금액 입력 기능 (게임 시작)
-        int amount = Integer.parseInt(inputUI.inputPurchaseAmount());
+        amount = Integer.parseInt(inputUI.inputPurchaseAmount());
         count = outputUI.printPurchaseAmountResult(amount);
     }
 
@@ -46,6 +47,6 @@ public class GameController {
 
     // 게임 종료 부분
     public void endGame() {
-        outputUI.printWinningResult(userRandomNumbers, count, lotto, bonusNumber);
+        outputUI.printWinningResult(userRandomNumbers, count, lotto, bonusNumber, amount);
     }
 }
