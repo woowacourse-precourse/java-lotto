@@ -11,6 +11,7 @@ public class LottoPublisher {
     public static final int lottoPrice = 1000;
     public static final int startNum = 1;
     public static final int lastNum = 45;
+
     private int money;
 
     public LottoPublisher(){

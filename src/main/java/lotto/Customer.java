@@ -8,6 +8,14 @@ public class Customer {
     private int asset;
     private List<Lotto> userLotto;
 
+    public int getAsset() {
+        return asset;
+    }
+
+    public List<Lotto> getUserLotto() {
+        return userLotto;
+    }
+
     public Customer(){
 
     }

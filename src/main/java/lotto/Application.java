@@ -13,5 +13,6 @@ public class Application {
         LottoManager lottoManager = new LottoManager();
         lottoManager.askWinningNumber();
         lottoManager.askBonusNumber();
+        lottoManager.reportResult(customer);
     }
 }
