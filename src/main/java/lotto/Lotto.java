@@ -18,7 +18,9 @@ public class Lotto {
     }
 
     public static Lotto generate() {
-        return new Lotto(Randoms.pickUniqueNumbersInRange(1, 45, 6));
+        List<Integer> mutableNumbers = new ArrayList<>(Randoms.pickUniqueNumbersInRange(1, 45, 6));
+        mutableNumbers.sort(Integer::compareTo);
+        return new Lotto(mutableNumbers);
     }
 
     public List<Integer> getLottoNumber() {
