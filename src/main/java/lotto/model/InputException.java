@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import lotto.view.Output.ErrorMessage;
 
 public class InputException {
     static final int DIVIDE_NUMBER = 1000;
@@ -76,25 +77,6 @@ public class InputException {
         int compare = Integer.valueOf(input);
         if (compare < 1 || compare > 45) {
             throw new IllegalArgumentException(ErrorMessage.ERROR_RANGE.printMessage());
-        }
-    }
-
-    public enum ErrorMessage {
-        ERROR_NUMBER("숫자만 입력해 주세요."),
-        ERROR_DIVIDE("1000원 단위로 입력해 주세요."),
-        ERROR_LENGTH("6자리 숫자와 쉼표로 입력해 주세요."),
-        ERROR_OVERLAP("중복되지 않는 숫자를 입력하세요."),
-        ERROR_RANGE("1~45 숫자를 입력하세요."),
-        ERROR_BONUS_NUMBER_OVERLAP("당첨번호와 중복되지 않는 숫자를 입력하세요.");
-
-        protected final String message;
-
-        ErrorMessage(String message) {
-            this.message = message;
-        }
-
-        public String printMessage() {
-            return "[ERROR] " + message;
         }
     }
 }

@@ -40,4 +40,23 @@ public class Output {
         System.out.println("6개 일치 (2,000,000,000원) - " + Calculator.convertNull(Compare.compareLotto.get(7)) + "개");
         System.out.println("총 수익률은 " + rate + "%입니다.");
     }
+
+    public enum ErrorMessage {
+        ERROR_NUMBER("숫자만 입력해 주세요."),
+        ERROR_DIVIDE("1000원 단위로 입력해 주세요."),
+        ERROR_LENGTH("6자리 숫자와 쉼표로 입력해 주세요."),
+        ERROR_OVERLAP("중복되지 않는 숫자를 입력하세요."),
+        ERROR_RANGE("1~45 숫자를 입력하세요."),
+        ERROR_BONUS_NUMBER_OVERLAP("당첨번호와 중복되지 않는 숫자를 입력하세요.");
+
+        protected final String message;
+
+        ErrorMessage(String message) {
+            this.message = message;
+        }
+
+        public String printMessage() {
+            return "[ERROR] " + message;
+        }
+    }
 }
