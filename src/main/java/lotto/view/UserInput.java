@@ -3,7 +3,6 @@ package lotto.view;
 import static lotto.view.util.InputUtil.*;
 
 import java.util.List;
-import lotto.domain.Lotto;
 
 import camp.nextstep.edu.missionutils.Console;
 
@@ -20,7 +19,7 @@ public class UserInput {
         return validateInputMoney(getInput());
     }
 
-    public static Lotto inputLottoWinNumber() {
+    public static List<Integer> inputLottoWinNumber() {
         System.out.println(INPUT_LOTTO_WIN_NUMBER);
         final List<String> lottoWinNumber = stringToList(getInput());
 
@@ -48,12 +47,12 @@ public class UserInput {
         return stringToInteger(inputMoney);
     }
 
-    private static Lotto validateLottoWinNumber(List<String> inputLottoWinNumber) {
+    private static List<Integer> validateLottoWinNumber(List<String> inputLottoWinNumber) {
         if (!inputLottoWinNumber.stream().allMatch(n -> n.matches("^[0-9]+$"))) {
             throw new IllegalArgumentException(ERROR_LOTTO_NOT_NUMBER);
         }
 
-        return new Lotto(stringListToIntegerList(inputLottoWinNumber));
+        return stringListToIntegerList(inputLottoWinNumber);
     }
 
     private static String getInput() {

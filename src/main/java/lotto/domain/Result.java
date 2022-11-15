@@ -7,7 +7,7 @@ import java.util.Map;
 public class Result {
     private final Map<WinRank, Integer> result;
 
-    public Result(Lottos lottos, Lotto winLotto, Integer bonusNumber) {
+    public Result(Lottos lottos, Lotto winLotto, BonusNumber bonusNumber) {
         this.result = new HashMap<>();
         initFinalResult();
         calculateResult(lottos, winLotto, bonusNumber);
@@ -17,7 +17,7 @@ public class Result {
         return Collections.unmodifiableMap(result);
     }
 
-    private void calculateResult(Lottos lottos, Lotto winLotto, Integer bonusNumber) {
+    private void calculateResult(Lottos lottos, Lotto winLotto, BonusNumber bonusNumber) {
         for (Lotto lotto : lottos.getLottos()) {
             final WinRank winRank = WinRank.calculateRankOfLotto(lotto, winLotto, bonusNumber);
             updateResult(winRank);

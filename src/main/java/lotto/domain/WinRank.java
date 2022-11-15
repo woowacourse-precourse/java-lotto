@@ -29,10 +29,10 @@ public enum WinRank {
         return matched;
     }
 
-    public static WinRank calculateRankOfLotto(Lotto lotto, Lotto winLotto, Integer bonusNumber) {
+    public static WinRank calculateRankOfLotto(Lotto lotto, Lotto winLotto, BonusNumber bonusNumber) {
         final Integer matched = getMatchedOfLotto(lotto, winLotto);
 
-        if (matched.equals(SECOND.matched) && !lotto.isContain(bonusNumber)) {
+        if (matched.equals(SECOND.matched) && !lotto.isContain(bonusNumber.getBonusNumber())) {
             return THIRD;
         }
 

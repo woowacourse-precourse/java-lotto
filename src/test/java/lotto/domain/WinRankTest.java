@@ -13,7 +13,8 @@ public class WinRankTest {
         assertThat(WinRank.calculateRankOfLotto(
                 new Lotto(List.of(1, 2, 3, 4, 5, 6))
                 , new Lotto(List.of(3, 4, 5, 6, 7, 8))
-                , 1)).isEqualTo(WinRank.FOURTH);
+                , new BonusNumber(1, new Lotto(List.of(3, 4, 5, 6, 7, 8)))))
+                .isEqualTo(WinRank.FOURTH);
     }
 
     @Test
@@ -21,7 +22,8 @@ public class WinRankTest {
         assertThat(WinRank.calculateRankOfLotto(
                 new Lotto(List.of(1, 2, 3, 4, 5, 6))
                 , new Lotto(List.of(7, 8, 9, 10, 11, 12))
-                , 1)).isEqualTo(WinRank.FAIL);
+                , new BonusNumber(1, new Lotto(List.of(7, 8, 9, 10, 11, 12)))))
+                .isEqualTo(WinRank.FAIL);
     }
 
     @DisplayName("보너스 번호가 등수에 알맞게 집계된다.")
@@ -30,7 +32,8 @@ public class WinRankTest {
         assertThat(WinRank.calculateRankOfLotto(
                 new Lotto(List.of(1, 7, 3, 4, 5, 6))
                 , new Lotto(List.of(3, 4, 5, 6, 7, 8))
-                , 10)).isEqualTo(WinRank.THIRD);
+                , new BonusNumber(10, new Lotto(List.of(3, 4, 5, 6, 7, 8)))))
+                .isEqualTo(WinRank.THIRD);
     }
 
     @Test
@@ -38,6 +41,7 @@ public class WinRankTest {
         assertThat(WinRank.calculateRankOfLotto(
                 new Lotto(List.of(1, 7, 3, 4, 5, 6))
                 , new Lotto(List.of(3, 4, 5, 6, 7, 8))
-                , 1)).isEqualTo(WinRank.SECOND);
+                , new BonusNumber(1, new Lotto(List.of(3, 4, 5, 6, 7, 8)))))
+                .isEqualTo(WinRank.SECOND);
     }
 }
