@@ -22,6 +22,15 @@ public class Domain {
 
     private static final List<Lotto> lottoList = new ArrayList<>();
 
+    // TODO: 티켓 구매 루틴을 실행한다.
+    public void buyTicket(){
+        initializationLottoAmount();
+        initializationTicketNumbers();
+        initializationLottoList();
+        printLottoNumbers();
+    }
+
+
     // TODO: 로또 금액 문장 출력 후 로또 금액을 입력 받는다.
     private static int inputLottoAmount(){
         System.out.println(INPUT_LOTTO_AMOUNT);
