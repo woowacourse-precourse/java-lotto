@@ -2,7 +2,7 @@ package lotto.domain.console;
 
 import lotto.Hit;
 import lotto.domain.lotto.Lotto;
-import lotto.message.MessageGenerator;
+import lotto.message.ResultMessageGenerator;
 
 import java.util.HashMap;
 import java.util.List;
@@ -12,7 +12,7 @@ public class ConsoleOut {
     }
 
     public static void printLottos(List<Lotto> lottos) {
-        String purchaseCountMessage = MessageGenerator.getPurchaseConfirmMessage(lottos.size());
+        String purchaseCountMessage = ResultMessageGenerator.getPurchaseConfirmMessage(lottos.size());
         System.out.println(purchaseCountMessage);
 
         for (Lotto lotto : lottos) {
@@ -22,11 +22,11 @@ public class ConsoleOut {
 
     public static void printResult(HashMap<Hit, Integer> result) {
         for (Hit hit : result.keySet()) {
-            System.out.println(MessageGenerator.getLottoResultMessage(hit, result.get(hit)));
+            System.out.println(ResultMessageGenerator.getLottoResultMessage(hit, result.get(hit)));
         }
     }
 
     public static void printEarningRate(float earningRate) {
-        System.out.println(MessageGenerator.getEarningRateMessage(earningRate));
+        System.out.println(ResultMessageGenerator.getEarningRateMessage(earningRate));
     }
 }

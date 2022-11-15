@@ -2,7 +2,7 @@ package lotto.message;
 
 import lotto.Hit;
 
-public class MessageGenerator {
+public class ResultMessageGenerator {
     private static final String PURCHASE_COUNT_MESSAGE_TEMPLATE = "개를 구매했습니다.";
 
     public static String getPurchaseConfirmMessage(Integer count) {
