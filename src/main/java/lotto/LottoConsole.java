@@ -24,11 +24,13 @@ public class LottoConsole {
         String input = Console.readLine();
         List<Integer> numbers = validateNumbers(input);
         lottoManager.setWinNumbers(numbers);
+        System.out.println();
 
         System.out.println("보너스 번호를 입력해 주세요.");
         input = Console.readLine();
         int bonusNumber = validateNumber(input, numbers);
         lottoManager.setBonusNumber(bonusNumber);
+        System.out.println();
 
         lottoManager.matchLottos();
     }
@@ -44,6 +46,18 @@ public class LottoConsole {
         System.out.println();
     }
 
+    void printResult(){
+        System.out.println("당첨 통계");
+        System.out.println("---");
+
+        System.out.printf("3개 일치 (5,000원) - %d개\n", lottoManager.getWinCount(5));
+        System.out.printf("4개 일치 (50,000원) - %d개\n", lottoManager.getWinCount(4));
+        System.out.printf("5개 일치 (1,500,000원) - %d개\n", lottoManager.getWinCount(3));
+        System.out.printf("5개 일치, 보너스 볼 일치 (30,000,000원) - %d개\n", lottoManager.getWinCount(2));
+        System.out.printf("6개 일치 (2,000,000,000원) - %d개\n", lottoManager.getWinCount(1));
+        System.out.printf("총 수익률은 %.1f%%입니다.\n", lottoManager.getEarningRate());
+    }
+
     void printLottoNumber(Lotto lotto){
         List<Integer> numbers = lotto.getNumbers();
         System.out.print("[");
@@ -55,11 +69,6 @@ public class LottoConsole {
         }
         System.out.print("]");
     }
-
-    void printResult(){
-
-    }
-
     List<Integer> validateNumbers(String input){
         List<Integer> ret = new ArrayList<>();
         String[] strings = input.split(",");

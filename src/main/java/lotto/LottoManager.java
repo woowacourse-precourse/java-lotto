@@ -2,7 +2,10 @@ package lotto;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Vector;
+
 import camp.nextstep.edu.missionutils.Randoms;
+import org.junit.jupiter.api.extension.InvocationInterceptor;
 
 public class LottoManager {
     static final int firstGrade = 6;
@@ -11,11 +14,11 @@ public class LottoManager {
     static final int fifthGrade = 3;
 
     private List<Lotto> lottos = new ArrayList<Lotto>();
+    private List<Integer> prizes = List.of(0, 2000000000, 30000000, 1500000, 50000, 5000);
     private int inputMoney;
     private List<Integer> winNumbers;
     private int bonusNumber;
-    private List<Integer> winCounts = new ArrayList<>(6);
-
+    private List<Integer> winCounts = new ArrayList<>(List.of(0, 0, 0, 0, 0, 0));
     private void makeLottos(int amount){
         for (int i = 0; i < amount; i++){
             Lotto lotto = new Lotto(Randoms.pickUniqueNumbersInRange(1, 45, 6));
@@ -28,6 +31,22 @@ public class LottoManager {
             int grade = calculateGrade(lotto);
             winCounts.set(grade, winCounts.get(grade) + 1);
         }
+
+        calculateTotalPrize();
+    }
+
+    float getEarningRate(){
+        return calculateTotalPrize() / inputMoney;
+    }
+
+    long calculateTotalPrize(){
+        long total = 0;
+
+        for (int i = 1; i < 6; i++){
+            total += winCounts.get(i) * prizes.get(i);
+        }
+
+        return total;
     }
 
     private int calculateGrade(Lotto lotto){
