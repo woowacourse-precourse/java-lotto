@@ -1,5 +1,6 @@
 package lotto;
 
+import lotto.domain.Prize;
 import lotto.domain.User;
 import lotto.exception.LottoError;
 import org.junit.jupiter.api.Test;
@@ -51,7 +52,27 @@ class UserTest {
         user.createLottos();
 
         //then
-        assertThat(user.getLottos().size()).isEqualTo(50);
-        assertThat(user.getLottos().get(0).sorted()).isSorted();
+        assertThat(user.getLottos()
+                .size()).isEqualTo(50);
+        assertThat(user.getLottos()
+                .get(0)
+                .sorted()).isSorted();
+    }
+
+    @Test
+    void 수익률_계산하기() throws Exception {
+        //given
+        User user = new User();
+        user.inputPurchaseAmount("50000");
+        user.addPrize(Prize.FIRST);
+        user.addPrize(Prize.FIRST);
+
+        //when
+        String yield = user.getYield();
+
+        //then
+        double expectedResult = (double) Prize.FIRST.getPrize() * 2 / user.getPurchaseAmount() * 100;
+        assertThat(Double.parseDouble(yield)).isEqualTo(expectedResult);
+        System.out.println("yield = " + yield);
     }
 }
