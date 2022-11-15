@@ -58,11 +58,11 @@ public class UserOutput {
     }
 
     public void winningHistory(Map<LottoRankingType, Integer> lottoRankingTypes) {
-        fifthPlaceHistory(lottoRankingTypes.get(LottoRankingType.FIFTH_PLACE).intValue());
-        fourthPlaceHistory(lottoRankingTypes.get(LottoRankingType.FOURTH_PLACE).intValue());
-        thirdPlaceHistory(lottoRankingTypes.get(LottoRankingType.THIRD_PLACE).intValue());
-        secondPlaceHistory(lottoRankingTypes.get(LottoRankingType.SECOND_PLACE).intValue());
-        firstPlaceHistory(lottoRankingTypes.get(LottoRankingType.FIRST_PLACE).intValue());
+        fifthPlaceHistory(lottoRankingTypes.get(LottoRankingType.FIFTH_PLACE));
+        fourthPlaceHistory(lottoRankingTypes.get(LottoRankingType.FOURTH_PLACE));
+        thirdPlaceHistory(lottoRankingTypes.get(LottoRankingType.THIRD_PLACE));
+        secondPlaceHistory(lottoRankingTypes.get(LottoRankingType.SECOND_PLACE));
+        firstPlaceHistory(lottoRankingTypes.get(LottoRankingType.FIRST_PLACE));
     }
 
     public void rateOfReturn(double rateOfReturn) {

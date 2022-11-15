@@ -8,55 +8,53 @@ import java.util.Map;
 
 public class UserInterface {
     private static final int LOTTO_PRICE = 1000;
-    private UserInput userInput;
-    private UserOutput userOutput;
+    private static final UserInput userInput = new UserInput();
+    private static final UserOutput userOutput = new UserOutput();
 
     public UserInterface() {
-        this.userInput = new UserInput();
-        this.userOutput = new UserOutput();
     }
 
     public int getBuyLottoCount() {
-        this.userOutput.buyLotto();
+        userOutput.buyLotto();
 
-        String inputAmount = this.userInput.getInputAmount();
-        int buyAmount = this.userInput.getBuyAmount(inputAmount);
+        String inputAmount = userInput.getInputAmount();
+        int buyAmount = userInput.getBuyAmount(inputAmount);
 
-        this.userOutput.lineBreak();
+        userOutput.lineBreak();
         return buyAmount / LOTTO_PRICE;
     }
 
     public void printLotto(int lottoCount, ArrayList<ArrayList<Integer>> displayLottoNumbers) {
-        this.userOutput.lottoCount(lottoCount);
-        this.userOutput.lottoNumbers(displayLottoNumbers);
-        this.userOutput.lineBreak();
+        userOutput.lottoCount(lottoCount);
+        userOutput.lottoNumbers(displayLottoNumbers);
+        userOutput.lineBreak();
     }
 
     public List<Integer> getWinningNumbers() {
-        this.userOutput.winningNumbers();
+        userOutput.winningNumbers();
 
-        String inputWinningNumbers = this.userInput.getInputWinningNumbers();
-        List<Integer> winningNumbers = this.userInput.makeWinningNumbers(inputWinningNumbers);
+        String inputWinningNumbers = userInput.getInputWinningNumbers();
+        List<Integer> winningNumbers = userInput.makeWinningNumbers(inputWinningNumbers);
 
-        this.userOutput.lineBreak();
+        userOutput.lineBreak();
         return winningNumbers;
     }
 
     public int getBonusNumber() {
-        this.userOutput.bonusNumber();
+        userOutput.bonusNumber();
 
-        String inputBonusNumber = this.userInput.getInputBonusNumber();
-        int bonusNumber = this.userInput.getBonusNumber(inputBonusNumber);
+        String inputBonusNumber = userInput.getInputBonusNumber();
+        int bonusNumber = userInput.getBonusNumber(inputBonusNumber);
 
-        this.userOutput.lineBreak();
+        userOutput.lineBreak();
         return bonusNumber;
     }
 
     public void printResult(Map<LottoRankingType, Integer> lottoRankingTypes, double rateOfReturn) {
-        this.userOutput.winningStatistics();
-        this.userOutput.borderLine();
-        this.userOutput.winningHistory(lottoRankingTypes);
-        this.userOutput.rateOfReturn(rateOfReturn);
-        this.userOutput.lineBreak();
+        userOutput.winningStatistics();
+        userOutput.borderLine();
+        userOutput.winningHistory(lottoRankingTypes);
+        userOutput.rateOfReturn(rateOfReturn);
+        userOutput.lineBreak();
     }
 }

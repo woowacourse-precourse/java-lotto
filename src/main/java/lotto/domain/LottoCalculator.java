@@ -28,9 +28,9 @@ public class LottoCalculator {
         return Randoms.pickUniqueNumbersInRange(START_NUMBER, END_NUMBER, LOTTO_NUMBER_COUNT);
     }
 
-    public ArrayList<ArrayList<Integer>> getDisplayLottoNumbers(List<Lotto> lottos) {
+    public ArrayList<ArrayList<Integer>> getDisplayLottoNumbers(List<Lotto> lotteryTickets) {
         ArrayList<ArrayList<Integer>> displayLottoNumbers = new ArrayList<>(LIST_SIZE);
-        for (Lotto lotto : lottos) {
+        for (Lotto lotto : lotteryTickets) {
             ArrayList<Integer> numbers = new ArrayList<>(lotto.getNumbers());
             bubbleSort(numbers);
             displayLottoNumbers.add(numbers);
@@ -38,15 +38,16 @@ public class LottoCalculator {
         return displayLottoNumbers;
     }
 
-    public Map<LottoRankingType, Integer> getRankings(List<Integer> numbers, int bonusNumber, List<Lotto> lottos) {
+    public Map<LottoRankingType, Integer> getRankings
+            (List<Integer> numbers, int bonusNumber, List<Lotto> lotteryTickets) {
+
         Map<LottoRankingType, Integer> lottoRankingTypes = new HashMap<>(MAP_SIZE);
         lottoRankingTypesInitialize(lottoRankingTypes);
-        for (Lotto lotto : lottos) {
+        for (Lotto lotto : lotteryTickets) {
             int winNumber = getWinNumberCount(numbers, lotto);
             boolean winBonus = lotto.getNumbers().contains(bonusNumber);
             LottoRankingType lottoRankingType = getLottoRanking(winNumber, winBonus);
-
-            lottoRankingTypes.put(lottoRankingType, lottoRankingTypes.get(lottoRankingType).intValue() + ONE);
+            lottoRankingTypes.put(lottoRankingType, lottoRankingTypes.get(lottoRankingType) + ONE);
         }
         return lottoRankingTypes;
     }
@@ -103,8 +104,8 @@ public class LottoCalculator {
     }
 
     private void swapNumber(List<Integer> numbers, int thisIndex, int nextIndex) {
-        int thisNumber = numbers.get(thisIndex).intValue();
-        int nextNumber = numbers.get(nextIndex).intValue();
+        int thisNumber = numbers.get(thisIndex);
+        int nextNumber = numbers.get(nextIndex);
         if (thisNumber > nextNumber) {
             numbers.set(thisIndex, nextNumber);
             numbers.set(nextIndex, thisNumber);
