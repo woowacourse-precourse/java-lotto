@@ -23,16 +23,16 @@ class LottoSystemTest {
 
     }
 
-    private static List<Arguments> provider_검증_6개이외의당첨번호입력_IllegalArgumentException(){
+    private static List<Arguments> provider_검증_6개이외의당첨번호입력_IllegalArgumentException() {
         return List.of(
                 Arguments.of(
                         List.of(
-                                1,2,3,4,5,6,7
+                                1, 2, 3, 4, 5, 6, 7
                         )
                 ),
                 Arguments.of(
                         List.of(
-                                1,2,3,4,5
+                                1, 2, 3, 4, 5
                         )
                 )
         );
@@ -49,16 +49,16 @@ class LottoSystemTest {
 
     }
 
-    private static List<Arguments> provider_검증_당첨번호범위벗어남_IllegalArgumentException(){
+    private static List<Arguments> provider_검증_당첨번호범위벗어남_IllegalArgumentException() {
         return List.of(
                 Arguments.of(
                         List.of(
-                                1,2,3,4,5,46
+                                1, 2, 3, 4, 5, 46
                         )
                 ),
                 Arguments.of(
                         List.of(
-                                0,2,3,4,5,45
+                                0, 2, 3, 4, 5, 45
                         )
                 )
         );
@@ -75,16 +75,16 @@ class LottoSystemTest {
 
     }
 
-    private static List<Arguments> provider_검증_당첨번호중복_IllegalArgumentException(){
+    private static List<Arguments> provider_검증_당첨번호중복_IllegalArgumentException() {
         return List.of(
                 Arguments.of(
                         List.of(
-                                1,2,3,4,6,6
+                                1, 2, 3, 4, 6, 6
                         )
                 ),
                 Arguments.of(
                         List.of(
-                                1,2,3,4,5,3
+                                1, 2, 3, 4, 5, 3
                         )
                 )
         );
@@ -92,7 +92,7 @@ class LottoSystemTest {
 
     @DisplayName("보너스 번호의 범위가 범위를 벗어난 경우")
     @ParameterizedTest
-    @ValueSource(ints = {0,46})
+    @ValueSource(ints = {0, 46})
     void 검증_보너스번호범위벗어남_IllegalArgumentException(int bonusNumber) {
         LottoSystem lottoSystem = new LottoSystem();
         assertThatThrownBy(() -> lottoSystem.setBonusNumbers(bonusNumber))
@@ -105,110 +105,110 @@ class LottoSystemTest {
     @ParameterizedTest
     @MethodSource("judgeWinTestProvider")
     void judgeWinTest(LottoSystem lottoSystem, Lotto lotto, WinInfo winInfo) {
-        assertEquals(lottoSystem.judgeWin(lotto),winInfo);
+        assertEquals(lottoSystem.judgeWin(lotto), winInfo);
     }
 
     private static List<Arguments> judgeWinTestProvider() {
         LottoSystem lottoSystem = new LottoSystem();
-        lottoSystem.setWinNumbers(List.of(1,2,3,4,5,6));
+        lottoSystem.setWinNumbers(List.of(1, 2, 3, 4, 5, 6));
         lottoSystem.setBonusNumbers(7);
 
         return List.of(
                 //matched 6 bonus 0
                 Arguments.of(
                         lottoSystem,
-                        new Lotto(List.of(1,2,3,4,5,6)),
+                        new Lotto(List.of(1, 2, 3, 4, 5, 6)),
                         WinInfo.WIN1
                 ),
                 Arguments.of(
                         lottoSystem,
-                        new Lotto(List.of(6,5,4,3,2,1)),
+                        new Lotto(List.of(6, 5, 4, 3, 2, 1)),
                         WinInfo.WIN1
                 ),
                 //matched 5 bonus 1
                 Arguments.of(
                         lottoSystem,
-                        new Lotto(List.of(1,7,3,4,5,6)),
+                        new Lotto(List.of(1, 7, 3, 4, 5, 6)),
                         WinInfo.WIN2
                 ),
                 Arguments.of(
                         lottoSystem,
-                        new Lotto(List.of(6,7,5,4,3,1)),
+                        new Lotto(List.of(6, 7, 5, 4, 3, 1)),
                         WinInfo.WIN2
                 ),
                 //matched 5 bonus 0
                 Arguments.of(
                         lottoSystem,
-                        new Lotto(List.of(1,2,8,4,5,6)),
+                        new Lotto(List.of(1, 2, 8, 4, 5, 6)),
                         WinInfo.WIN3
                 ),
                 Arguments.of(
                         lottoSystem,
-                        new Lotto(List.of(3,2,1,6,11,4)),
+                        new Lotto(List.of(3, 2, 1, 6, 11, 4)),
                         WinInfo.WIN3
                 ),
                 Arguments.of(
                         lottoSystem,
-                        new Lotto(List.of(1,2,9,4,11,6)),
+                        new Lotto(List.of(1, 2, 9, 4, 11, 6)),
                         WinInfo.WIN4
                 ),
                 //matched 4 bonus 0
                 Arguments.of(
                         lottoSystem,
-                        new Lotto(List.of(1,9,2,4,6,11)),
+                        new Lotto(List.of(1, 9, 2, 4, 6, 11)),
                         WinInfo.WIN4
                 ),
                 //matched 4 bonus 1
                 Arguments.of(
                         lottoSystem,
-                        new Lotto(List.of(1,3,2,4,11,7)),
+                        new Lotto(List.of(1, 3, 2, 4, 11, 7)),
                         WinInfo.WIN4
                 ),
                 //matched 3 bonus 0
                 Arguments.of(
                         lottoSystem,
-                        new Lotto(List.of(1,2,3,17,11,13)),
+                        new Lotto(List.of(1, 2, 3, 17, 11, 13)),
                         WinInfo.WIN5
                 ),
                 Arguments.of(
                         lottoSystem,
-                        new Lotto(List.of(17,3,2,11,1,13)),
+                        new Lotto(List.of(17, 3, 2, 11, 1, 13)),
                         WinInfo.WIN5
                 ),
                 //matched 3 bonus 1
                 Arguments.of(
                         lottoSystem,
-                        new Lotto(List.of(7,3,1,17,11,2)),
+                        new Lotto(List.of(7, 3, 1, 17, 11, 2)),
                         WinInfo.WIN5
                 ),
                 //matched 2 bonus 0
                 Arguments.of(
                         lottoSystem,
-                        new Lotto(List.of(1,2,21,17,11,9)),
+                        new Lotto(List.of(1, 2, 21, 17, 11, 9)),
                         WinInfo.NO_WIN
                 ),
                 //matched 2 bonus 1
                 Arguments.of(
                         lottoSystem,
-                        new Lotto(List.of(1,2,21,17,11,7)),
+                        new Lotto(List.of(1, 2, 21, 17, 11, 7)),
                         WinInfo.NO_WIN
                 ),
                 //matched 1 bonus 0
                 Arguments.of(
                         lottoSystem,
-                        new Lotto(List.of(1,25,21,17,11,9)),
+                        new Lotto(List.of(1, 25, 21, 17, 11, 9)),
                         WinInfo.NO_WIN
                 ),
                 //matched 1 bonus 1
                 Arguments.of(
                         lottoSystem,
-                        new Lotto(List.of(1,25,21,17,11,7)),
+                        new Lotto(List.of(1, 25, 21, 17, 11, 7)),
                         WinInfo.NO_WIN
                 ),
                 //matched 0 bonus 0
                 Arguments.of(
                         lottoSystem,
-                        new Lotto(List.of(44,25,21,17,11,9)),
+                        new Lotto(List.of(44, 25, 21, 17, 11, 9)),
                         WinInfo.NO_WIN
                 )
         );

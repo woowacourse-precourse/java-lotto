@@ -61,7 +61,8 @@ public class Application {
             System.out.println(lottoNumbersStr);
         }
     }
-    private static void setWinNumbersUI(LottoSystem lottoSystem){
+
+    private static void setWinNumbersUI(LottoSystem lottoSystem) {
         System.out.println("당첨 번호를 입력해 주세요.");
         String input = Console.readLine();
         String[] inputSplited = input.split(",");
@@ -70,14 +71,14 @@ public class Application {
             for (String i : inputSplited) {
                 numbers.add(Integer.valueOf(i));
             }
-        }
-        catch (IllegalArgumentException e){
+        } catch (IllegalArgumentException e) {
             throw new IllegalArgumentException("[ERROR] 당첨번호는 정수여야 합니다.");
         }
 
         lottoSystem.setWinNumbers(numbers);
     }
-    private static void setBonusNumbersUI(LottoSystem lottoSystem){
+
+    private static void setBonusNumbersUI(LottoSystem lottoSystem) {
         System.out.println("보너스 번호를 입력해 주세요.");
         String input = Console.readLine();
         int bonusNumber;
@@ -90,24 +91,24 @@ public class Application {
         lottoSystem.setBonusNumbers(bonusNumber);
     }
 
-    private static void showWinStatisticsUI(LottoUser user){
+    private static void showWinStatisticsUI(LottoUser user) {
         System.out.println("당첨 통계");
         System.out.println("---");
-        Map<WinInfo,Integer> statistics = user.getStatistics();
+        Map<WinInfo, Integer> statistics = user.getStatistics();
         DecimalFormat decimalFormat = new DecimalFormat("###,###");
-        for(int i=WinInfo.getTotalCount()-1;i>0;i--){
+        for (int i = WinInfo.getTotalCount() - 1; i > 0; i--) {
             WinInfo winInfo = WinInfo.getByOrder(i);
-            System.out.print(String.format("%d개 일치",winInfo.getMatchCnt()));
-            if(winInfo.getBonusMatchCnt() > 0) {
+            System.out.print(String.format("%d개 일치", winInfo.getMatchCnt()));
+            if (winInfo.getBonusMatchCnt() > 0) {
                 System.out.print(", 보너스 볼 일치");
             }
-            System.out.print(String.format(" (%s원)",decimalFormat.format(winInfo.getWinMoney())));
-            System.out.println(String.format(" - %d개",statistics.get(winInfo)));
+            System.out.print(String.format(" (%s원)", decimalFormat.format(winInfo.getWinMoney())));
+            System.out.println(String.format(" - %d개", statistics.get(winInfo)));
         }
     }
 
     private static void showReturnRateUI(LottoUser user) {
-        System.out.println(String.format("총 수익률은 %2.1f%%입니다.",user.getReturnRate() * 100));
+        System.out.println(String.format("총 수익률은 %2.1f%%입니다.", user.getReturnRate() * 100));
     }
 
 }

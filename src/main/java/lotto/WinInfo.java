@@ -50,25 +50,25 @@ public enum WinInfo {
                 return winInfo;
             }
         }
-        throw new RuntimeException(String.format("WinInfo에 order=%d인 상수가 존재하지 않음",order));
+        throw new RuntimeException(String.format("WinInfo에 order=%d인 상수가 존재하지 않음", order));
     }
 
-    public static Map<WinInfo,Integer> getStatistics(List<WinInfo> winInformations){
-        Map<WinInfo,Integer> result = new HashMap<>();
-        for(WinInfo winInfo : winInformations){
-            if(!result.containsKey(winInfo)){
-                result.put(winInfo,0);
-            }
-            result.put(winInfo,result.get(winInfo) + 1);
+    public static Map<WinInfo, Integer> getStatistics(List<WinInfo> winInformations) {
+        Map<WinInfo, Integer> result = new HashMap<>();
+        for (WinInfo winInfo : WinInfo.values()) {
+            result.put(winInfo, 0);
+        }
+        for (WinInfo winInfo : winInformations) {
+            result.put(winInfo, result.get(winInfo) + 1);
         }
         return result;
     }
 
-    public static int getTotalCount(){
+    public static int getTotalCount() {
         return totalCount;
     }
 
-    public long getWinMoney(){
+    public long getWinMoney() {
         return this.winMoney;
     }
 
@@ -83,7 +83,4 @@ public enum WinInfo {
     public int getOrder() {
         return this.order;
     }
-
-
-
 }

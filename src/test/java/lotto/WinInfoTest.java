@@ -37,7 +37,7 @@ class WinInfoTest {
     @ParameterizedTest
     @MethodSource("getTestProvider")
     void getTest(int matchedCnt, int bonusMatchedCnt, WinInfo trg) {
-        assertEquals(WinInfo.get(matchedCnt,bonusMatchedCnt), trg);
+        assertEquals(WinInfo.get(matchedCnt, bonusMatchedCnt), trg);
     }
 
     private static List<Arguments> getTestProvider() {
@@ -58,12 +58,12 @@ class WinInfoTest {
     @DisplayName("getByOrder이 알맞은 WinInfo를 반환하는지 테스트")
     @Test
     void getByOrderTest() {
-        assertEquals(WinInfo.getByOrder(0),WinInfo.NO_WIN);
-        assertEquals(WinInfo.getByOrder(1),WinInfo.WIN1);
-        assertEquals(WinInfo.getByOrder(2),WinInfo.WIN2);
-        assertEquals(WinInfo.getByOrder(3),WinInfo.WIN3);
-        assertEquals(WinInfo.getByOrder(4),WinInfo.WIN4);
-        assertEquals(WinInfo.getByOrder(5),WinInfo.WIN5);
+        assertEquals(WinInfo.getByOrder(0), WinInfo.NO_WIN);
+        assertEquals(WinInfo.getByOrder(1), WinInfo.WIN1);
+        assertEquals(WinInfo.getByOrder(2), WinInfo.WIN2);
+        assertEquals(WinInfo.getByOrder(3), WinInfo.WIN3);
+        assertEquals(WinInfo.getByOrder(4), WinInfo.WIN4);
+        assertEquals(WinInfo.getByOrder(5), WinInfo.WIN5);
     }
 
 
@@ -83,11 +83,11 @@ class WinInfoTest {
                 WinInfo.NO_WIN
         );
         //when
-        Map<WinInfo,Integer> statistics = WinInfo.getStatistics(INPUT);
+        Map<WinInfo, Integer> statistics = WinInfo.getStatistics(INPUT);
         //then
-        assertEquals(statistics.get(WinInfo.NO_WIN),2);
-        assertEquals(statistics.get(WinInfo.WIN2),3);
-        assertEquals(statistics.get(WinInfo.WIN3),3);
-        assertEquals(statistics.get(WinInfo.WIN1),1);
+        assertEquals(statistics.get(WinInfo.NO_WIN), 2);
+        assertEquals(statistics.get(WinInfo.WIN2), 3);
+        assertEquals(statistics.get(WinInfo.WIN3), 3);
+        assertEquals(statistics.get(WinInfo.WIN1), 1);
     }
 }

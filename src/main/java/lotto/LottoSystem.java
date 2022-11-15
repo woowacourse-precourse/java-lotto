@@ -20,11 +20,12 @@ public class LottoSystem {
         this.bonusNumbers = bonusNumbers;
     }
 
-    private void validateWinNumbers(List<Integer> winNumbers){
+    private void validateWinNumbers(List<Integer> winNumbers) {
         Lotto lotto = new Lotto(winNumbers);
     }
-    private void validateBonusNumbers(int bonusNumbers){
-        if(bonusNumbers < Lotto.NUMBER_MIN || bonusNumbers > Lotto.NUMBER_MAX){
+
+    private void validateBonusNumbers(int bonusNumbers) {
+        if (bonusNumbers < Lotto.NUMBER_MIN || bonusNumbers > Lotto.NUMBER_MAX) {
             throw new IllegalArgumentException("[ERROR] 보너스 번호는 1부터 45 사이의 숫자여야 합니다.");
         }
     }
