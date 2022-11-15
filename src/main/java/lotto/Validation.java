@@ -41,6 +41,7 @@ public class Validation {
     public static void validateNumbers(List<Integer> numbers) {
         validateNumbersSize(numbers);
         validateNumbersRange(numbers);
+        validateNumbersDuplicate(numbers);
     }
 
     private static void validateNumbersSize(List<Integer> numbers) {
