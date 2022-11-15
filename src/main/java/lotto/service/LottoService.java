@@ -20,4 +20,10 @@ public class LottoService {
             buyNumber--;
         }
     }
+
+    public void printLotteries() {
+        for (Lotto lotto : lotteries) {
+            System.out.println(lotto.getNumbers());
+        }
+    }
 }
