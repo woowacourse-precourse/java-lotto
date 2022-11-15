@@ -27,5 +27,6 @@ public class Game {
         int bonusNumber = service.getBonusNumber(inputBonusNumber, matchNumbers);
 
         int[] rewards = service.calculateRewards(lottos, matchNumbers, bonusNumber);
+        ui.printInfo(rewards);
     }
 }
