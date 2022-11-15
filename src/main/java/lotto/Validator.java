@@ -4,12 +4,22 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class Validator {
-    public static boolean isNotValidNumber(int n) {
-        return n < 1 || n > 45;
+    public static void checkNotValidNumber(int n) {
+        if (n < 1 || n > 45) {
+            throw new IllegalArgumentException(ErrorMessage.NUMERIC_RANGE_ERROR.getMessage());
+        }
     }
 
-    public static boolean isDuplicatedNumber(List<Integer> numbers, int n) {
-        return numbers.contains(n);
+    public static void checkDuplicatedNumber(List<Integer> numbers, int n) {
+        if (numbers.contains(n)) {
+            throw new IllegalArgumentException(ErrorMessage.DUPLICATED_NUMBER_ERROR.getMessage());
+        }
+    }
+
+    public static void checkWinningNumberCount(int winningNumberCount) {
+        if (winningNumberCount != 6) {
+            throw new IllegalArgumentException();
+        }
     }
 
     public static boolean hasDuplicatedNumber(List<Integer> numbers) {
