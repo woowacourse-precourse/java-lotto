@@ -10,7 +10,7 @@ import java.util.List;
 public class LottoNumber {
     private static final int LENGTH = 6;
 
-    public List<Lotto> generateLottoNumber(int numberOfLotto) {
+    public static List<Lotto> generateLottoNumber(int numberOfLotto) {
         List<Lotto> lottoList = new ArrayList<>();
         Lotto lotto;
         for (int i = 0; i < numberOfLotto; i++) {
