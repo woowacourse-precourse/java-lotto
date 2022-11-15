@@ -37,7 +37,7 @@ public class InputHandler {
 
     public static void validateBonusNumber(Lotto winningLotto, int bonusNumber) {
         if (winningLotto.getLotto().contains(bonusNumber))
-            throw new IllegalArgumentException("[ERROR]");
+            throw new IllegalArgumentException(DEFAULT_ERROR_MESSAGE + ERROR_MESSAGE.BONUS_NUMBER_DUPLICATED.getMessage());
     }
 
     private static List<Integer> validateListType(String userInput) {
@@ -48,13 +48,13 @@ public class InputHandler {
 
     private static void validateSize(List<Integer> userInput) {
         if (userInput.size() != CONSTANTS.LOTTO_COUNT.getNumbers()) {
-            throw new IllegalArgumentException("number exception");
+            throw new IllegalArgumentException(DEFAULT_ERROR_MESSAGE + ERROR_MESSAGE.NUMBER_SIZE_EXCEPTION.getMessage());
         }
     }
 
     private static void validateRange(int number) {
         if (number > CONSTANTS.MAXIMUM.getNumbers() || number < CONSTANTS.MINIMUM.getNumbers()) {
-            throw new IllegalArgumentException("number exception");
+            throw new IllegalArgumentException(DEFAULT_ERROR_MESSAGE + ERROR_MESSAGE.NUMBER_RANGE_EXCEPTION.getMessage());
         }
     }
 
@@ -63,7 +63,7 @@ public class InputHandler {
         for (Integer number :
                 userInput) {
             if (!numbers.add(number)) {
-                throw new IllegalArgumentException("test");
+                throw new IllegalArgumentException(DEFAULT_ERROR_MESSAGE + ERROR_MESSAGE.NUMBER_DUPLICATED.getMessage());
             }
         }
     }
@@ -73,13 +73,13 @@ public class InputHandler {
             return Integer.parseInt(number);
         }
         catch (NumberFormatException E){
-            throw new IllegalArgumentException("moneytype exception");
+            throw new IllegalArgumentException(DEFAULT_ERROR_MESSAGE + ERROR_MESSAGE.NUMBER_TYPE_EXCEPTION.getMessage());
         }
     }
 
     private static int validatePurchaseAmount(int money) {
         if (money % CONSTANTS.MONETARY_UNIT.getNumbers() != 0)
-            throw new IllegalArgumentException("money error");
+            throw new IllegalArgumentException(DEFAULT_ERROR_MESSAGE + ERROR_MESSAGE.PURCHASE_UNIT_ERROR.getMessage());
         return money / CONSTANTS.MONETARY_UNIT.getNumbers();
     }
 }
