@@ -68,8 +68,8 @@ public class Lotto {
     }
 
     private boolean hasSameNumber(List<Integer> numbers) {
-        for (int number : numbers) {
-            if (numbers.contains(number))
+        for (int i = 0; i < numbers.size(); i++) {
+            if (numbers.indexOf(numbers.get(i)) != i)
                 return true;
         }
 

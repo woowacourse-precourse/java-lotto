@@ -36,7 +36,13 @@ public class Application {
         String inputBonusNumber = Console.readLine();
 
         // 예외처리 필요
-        int bonusNumber = Integer.parseInt(inputBonusNumber);
+        int bonusNumber = -1;
+        try {
+            bonusNumber = Integer.parseInt(inputBonusNumber);
+        } catch (NumberFormatException e) {
+            System.out.println("[ERROR]");
+            return ;
+        }
         List<Integer> ranking = rank(lottos, winningLotto, bonusNumber);
         printRanking(ranking);
         printEarningRate(money, ranking);

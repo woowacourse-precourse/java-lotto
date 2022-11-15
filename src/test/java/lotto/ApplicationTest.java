@@ -89,7 +89,7 @@ class ApplicationTest extends NsTest {
                 new Lotto(List.of(3, 13, 18, 32, 33, 39)),
                 new Lotto(List.of(7, 9, 12, 15, 24, 44)),
                 new Lotto(List.of(10, 11, 12, 24, 25, 39))));
-        int bonusNumber = 10;
+        int bonusNumber = 11;
 
         assertThat(Application.rank(lottos, winningLotto, bonusNumber)).isEqualTo(List.of(0, 0, 0, 0, 1));
     }
