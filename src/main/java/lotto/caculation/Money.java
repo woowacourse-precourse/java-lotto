@@ -13,6 +13,9 @@ public class Money {
     public Money(String input) {
         checkPattern(input);
         money = Integer.parseInt(input);
+        if (money % 1000 != 0 && money >= 1000) {
+            throw new IllegalArgumentException("[ERROR] 구입 금액은 1,000원 단위입니다.");
+        }
     }
 
     private void checkPattern(String input) {

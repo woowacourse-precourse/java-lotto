@@ -11,7 +11,7 @@ import java.util.StringJoiner;
 
 public class Result {
     public static void printLottoEA(int count) {
-        System.out.println(count + "개를 구매했습니다.");
+        System.out.println(count + "buy");
     }
 
     public static void printLottos(List<Lotto> lottos){

@@ -15,7 +15,6 @@ public class Input {
     }
 
     public static RewardNumbers inputRewardNumber() {
-        System.out.println();
         System.out.println("당첨 번호를 입력해 주세요.");
         String input = Console.readLine();
         return new RewardNumbers(checkNull(input));

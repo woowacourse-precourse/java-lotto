@@ -41,9 +41,9 @@ public class Numbers implements Comparable<Numbers> {
     public static Numbers of(String input) {
         Matcher matcher = CORRECT_NUMBER_PATTERN.matcher(input);
         if (!matcher.find()) {
-            throw new IllegalArgumentException(MoneyFalseException.catchException());
+            throw new IllegalArgumentException("[ERROR] : 입력이 숫자가 아닙니다.");
         }
-        return of(String.valueOf(Integer.parseInt(input)));
+        return of(Integer.parseInt(input));
     }
 
     public int getNumber() {
