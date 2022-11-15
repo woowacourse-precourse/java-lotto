@@ -1,13 +1,13 @@
 package lotto.domain;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 public class Calculator {
+
     public int sum = 0;
     public double earningRate = 0;
-    public int sumJackpot (List<Integer> winningTable){
+
+    public int sumJackpot(List<Integer> winningTable) {
         for (int result : winningTable) {
             if (result == 7) {
                 sum += 30000000;
@@ -23,9 +23,11 @@ public class Calculator {
         }
         return sum;
     }
-    public double calculateEarningRate(List<Integer> winningTable, double pay){
+
+    public double calculateEarningRate(List<Integer> winningTable, double pay) {
         sumJackpot(winningTable);
-        earningRate = Math.round(sum/pay)/10.0;
+        earningRate = Math.round(sum / pay) / 10.0;
         return earningRate;
     }
+
 }

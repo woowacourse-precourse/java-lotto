@@ -14,19 +14,22 @@ public class Bonus {
         repeat(numbers, bonusNum);
         this.bonusNumber = bonusNum;
     }
-    private void range(int bonus){
+
+    private void range(int bonus) {
         if (bonus < 1 || bonus > 45) {
             throw new IllegalArgumentException(ErrorMessage.bonusLength.getValue());
         }
     }
+
     private void type(String bonus) {
         int eachChar = String.valueOf(bonus).charAt(0);
         if (!Character.isDigit(eachChar)) {
             throw new IllegalArgumentException(ErrorMessage.bonusType.getValue());
         }
     }
+
     private void repeat(List<Integer> numbers, int bonus) {
-        if (numbers.contains(bonus)){
+        if (numbers.contains(bonus)) {
             throw new IllegalArgumentException(ErrorMessage.bonusRepetition.getValue());
         }
     }

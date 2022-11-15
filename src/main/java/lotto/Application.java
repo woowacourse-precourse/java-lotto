@@ -2,7 +2,7 @@ package lotto;
 
 import lotto.domain.*;
 
-import java.util.*;
+import java.util.List;
 
 public class Application {
     public static void main(String[] args) {
@@ -31,6 +31,7 @@ public class Application {
             System.out.println(e.getMessage());
         }
     }
+
     public static int askPay() {
         Input input = new Input(); //구입 금액
         String payment = input.payForLotto();

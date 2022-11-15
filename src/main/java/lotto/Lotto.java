@@ -14,11 +14,13 @@ public class Lotto {
         range(numbers);
         this.numbers = numbers;
     }
+
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException(ErrorMessage.lottoIndex.getValue());
         }
     }
+
     private void repeat(List<Integer> numbers) {
         List<Integer> inputNumber = new ArrayList<>();
         for (int eachNumber : numbers) {
@@ -29,9 +31,10 @@ public class Lotto {
             }
         }
     }
+
     private void range(List<Integer> numbers) {
         for (int eachNumber : numbers) {
-            if ( eachNumber < 1 || eachNumber > 45) {
+            if (eachNumber < 1 || eachNumber > 45) {
                 throw new IllegalArgumentException(ErrorMessage.lottoRange.getValue());
             }
         }
