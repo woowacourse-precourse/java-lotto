@@ -18,6 +18,10 @@ public class Money {
         return money / price;
     }
 
+    public double getYield(long total) {
+        return (int) Math.round((double)total / money * 1000) / 10.0;
+    }
+
     private void validateMoney(int money) {
         if (money <= 0) {
             throw new IllegalArgumentException(NOT_INPUT_NEGATIVE_MONEY_EXCEPTION.getMessage());
