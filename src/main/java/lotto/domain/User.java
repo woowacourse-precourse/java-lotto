@@ -20,7 +20,7 @@ public class User {
         return new PurchaseAmount(InputControl.readInt());
     }
 
-    public WinningLotto inputLotto() {
+    public WinningLotto inputWinningLotto() {
         List<Integer> inputLottoNums = inputLottoNums();
         int lottoBonusNum = inputLottoBonusNum();
 
@@ -28,7 +28,7 @@ public class User {
     }
 
     public void displayGameResult(WinningStatistics winningStatistics) {
-        OutputControl.println(winningStatistics.toString());
+        OutputControl.println(winningStatistics.getMessage());
     }
 
     public void displayMessage(PrintMessage printMessage) {

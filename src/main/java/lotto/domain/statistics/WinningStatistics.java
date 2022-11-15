@@ -1,34 +1,30 @@
 package lotto.domain.statistics;
 
-import lotto.domain.lotto.PurchaseLottos;
-import lotto.domain.lotto.WinningLotto;
+import static lotto.value.RateValue.PERCENT;
 
 public class WinningStatistics {
 
-    private final PurchaseLottos purchaseLottos;
-    private final WinningLotto winningLotto;
+    private final PlaceHistory placeHistory;
+    private final YieldRate yieldRate;
 
-    private PlaceHistory placeHistory;
-    private YieldRate yieldRate;
-
-    public WinningStatistics(PurchaseLottos purchaseLottos, WinningLotto winningLotto) {
-        this.purchaseLottos = purchaseLottos;
-        this.winningLotto = winningLotto;
-
-        fillLottoPlaceCount();
-        setYieldRate();
+    public WinningStatistics(PlaceHistory placeHistory, YieldRate yieldRate) {
+        this.placeHistory = placeHistory;
+        this.yieldRate = yieldRate;
     }
 
-    public void fillLottoPlaceCount() {
-        this.placeHistory = purchaseLottos.placeHistoryFor(winningLotto);
+    public static WinningStatistics createWinningStatistics(PlaceHistory placeHistory, YieldRate yieldRate) {
+        return new WinningStatistics(placeHistory, yieldRate);
     }
 
-    public void setYieldRate() {
-        this.yieldRate = new YieldRate(purchaseLottos.calculateAmount(), placeHistory.amountSum());
+    private String yieldRateMessage() {
+        return String.format("총 수익률은 %s입니다.", yieldRate());
     }
 
-    @Override
-    public String toString() {
-        return String.format("당첨 통계\n---\n%s총 수익률은 %s입니다.", placeHistory, yieldRate);
+    private String yieldRate() {
+        return String.format("%,.1f%s", yieldRate.rate(), PERCENT.getRateChar());
+    }
+
+    public String getMessage() {
+        return String.format("당첨 통계\n---\n%s\n%s", placeHistory.toString(), yieldRateMessage());
     }
 }

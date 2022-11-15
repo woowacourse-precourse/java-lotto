@@ -20,8 +20,4 @@ public class YieldRate {
         return (double) amountSum / calculateAmount * PERCENT.getPercentage();
     }
 
-    @Override
-    public String toString() {
-        return String.format("%,.1f%s", rate(), PERCENT.getRateChar());
-    }
 }

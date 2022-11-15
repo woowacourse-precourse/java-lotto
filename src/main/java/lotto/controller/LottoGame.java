@@ -1,12 +1,16 @@
 package lotto.controller;
 
+import static lotto.domain.statistics.WinningStatistics.createWinningStatistics;
+import static lotto.domain.statistics.YieldRate.calcYieldRate;
 import static lotto.message.PurchaseMessage.makePurchaseLottoMessage;
 
 import lotto.domain.PurchaseAmount;
 import lotto.domain.User;
 import lotto.domain.lotto.PurchaseLottos;
 import lotto.domain.lotto.WinningLotto;
+import lotto.domain.statistics.PlaceHistory;
 import lotto.domain.statistics.WinningStatistics;
+import lotto.domain.statistics.YieldRate;
 
 public class LottoGame {
 
@@ -29,14 +33,14 @@ public class LottoGame {
         PurchaseLottos purchaseLottos = purchaseLotto();
         user.displayPurchaseResult(makePurchaseLottoMessage(purchaseLottos));
 
-        WinningLotto winningLotto = inputWinningLotto();
+        WinningLotto winningLotto = user.inputWinningLotto();
 
-        WinningStatistics winningStatistics = createWinningStatistics(purchaseLottos, winningLotto);
+        PlaceHistory placeHistory = purchaseLottos.placeHistoryFor(winningLotto);
+        YieldRate yieldRate = calcYieldRate(purchaseLottos.calculateAmount(), placeHistory.amountSum());
+
+        WinningStatistics winningStatistics = createWinningStatistics(placeHistory, yieldRate);
+
         user.displayGameResult(winningStatistics);
-    }
-
-    private WinningLotto inputWinningLotto() {
-        return user.inputLotto();
     }
 
     private PurchaseLottos purchaseLotto() {
@@ -44,7 +48,4 @@ public class LottoGame {
         return new PurchaseLottos(purchaseAmount.quantity());
     }
 
-    private WinningStatistics createWinningStatistics(PurchaseLottos purchaseLottos, WinningLotto winningLotto) {
-        return new WinningStatistics(purchaseLottos, winningLotto);
-    }
 }
