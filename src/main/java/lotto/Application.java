@@ -1,9 +1,6 @@
 package lotto;
 
-import lotto.domain.Bonus;
-import lotto.domain.Lotto;
-import lotto.domain.Model;
-import lotto.domain.Money;
+import lotto.domain.*;
 import lotto.view.View;
 
 import java.util.HashMap;
@@ -27,13 +24,14 @@ public class Application {
 
         Model model = new Model();
         Money money = new Money(view.inputMoney());
-        app.LOTTOS = model.getUsersLottos(money.getMoney());
+        RandomLotto randomLotto = new RandomLotto(money.getMoney());
+        app.LOTTOS = randomLotto.getLottos();
 
         view.printUncheckedLotto(app.LOTTOS);
 
         Lotto lotto = new Lotto(view.inputLottoNumber());
         Bonus bonus = new Bonus(view.inputBonusNumber(), lotto.getLottoNumbers());
-        app.PRIZE_RANKINGS = model.checkPrize(money.getMoney(), bonus.getBonus(), lotto.getLottoNumbers());
+        app.PRIZE_RANKINGS = model.checkPrize(money.getMoney(), bonus.getBonus(), lotto.getLottoNumbers(), app.LOTTOS);
 
         view.printResult(app.PRIZE_RANKINGS, model.getRateOfProfit());
     }
