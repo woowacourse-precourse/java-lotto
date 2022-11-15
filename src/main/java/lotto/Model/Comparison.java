@@ -22,10 +22,7 @@ public class Comparison {
     }
 
     private boolean compareLottoNum(final List<Integer> numbers, final int bonusNum) {
-        if (numbers.contains(bonusNum)) {
-            return true;
-        }
-        return false;
+        return numbers.contains(bonusNum);
     }
 
     private int compareLottoNum(final List<Integer> numbers, final Lotto ticket) {
