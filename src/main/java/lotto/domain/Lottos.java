@@ -5,6 +5,8 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.List;
 
+import static lotto.view.GameOutput.getLottoNum;
+
 public class Lottos{
     public static int money ;
     private final List<Lotto> Lottos = new ArrayList<Lotto>();
@@ -21,6 +23,7 @@ public class Lottos{
 
     public Lotto make_lotto(){
         List<Integer> RandomNumbers = new Random().getRandomNumbers();
+        System.out.println(RandomNumbers);
         return new Lotto(RandomNumbers);
     }
 
@@ -30,6 +33,7 @@ public class Lottos{
 
     public static int getMoney() {
         money = Integer.parseInt(Console.readLine());
+        getLottoNum(money/1000);
         return money;
     }
 }

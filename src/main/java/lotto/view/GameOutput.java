@@ -18,7 +18,7 @@ public class GameOutput {
 
 
     public static void getLottoNum(int n){
-        System.out.println("${n}개를 구매했습니다.");
+        System.out.println(n+"개를 구매했습니다.");
     }
     public static void getDetailResults(int money, List<Integer> RewardList){
         getDetailResult1(RewardList);
@@ -27,22 +27,20 @@ public class GameOutput {
     }
     public static void getDetailResult1(List<Integer> RewardList){
         if (RewardList.subList(1,6)!=Arrays.asList(0,0,0,0,0)){
-            System.out.println(first_result+RewardList.get(1)+count);
-            System.out.println(second_result+RewardList.get(2)+count);
+            System.out.println(first_result+RewardList.get(5)+count);
+            System.out.println(second_result+RewardList.get(4)+count);
             System.out.println(third_result+RewardList.get(3)+count);
-            System.out.println(fourth_result+RewardList.get(4)+count);
-            System.out.println(fifth_result+RewardList.get(5)+count);
+            System.out.println(fourth_result+RewardList.get(2)+count);
+            System.out.println(fifth_result+RewardList.get(1)+count);
         }
     }
     public static void getDetailResult2(int money,List<Integer> RewardList){
         double totalmoney=0;
-        totalmoney+=RewardList.get(1)*RewardType.FIRST.getreward();
-        totalmoney+=RewardList.get(2)*RewardType.SECOND.getreward();
+        totalmoney+=RewardList.get(5)*RewardType.FIRST.getreward();
+        totalmoney+=RewardList.get(4)*RewardType.SECOND.getreward();
         totalmoney+=RewardList.get(3)*RewardType.THIRD.getreward();
-        totalmoney+=RewardList.get(4)*RewardType.FOURTH.getreward();
-        totalmoney+=RewardList.get(5)*RewardType.FIFTH.getreward();
-        System.out.println(money);
-        System.out.println(totalmoney);
+        totalmoney+=RewardList.get(2)*RewardType.FOURTH.getreward();
+        totalmoney+=RewardList.get(1)*RewardType.FIFTH.getreward();
         System.out.println(rating_result1+String.format("%.1f", (double) totalmoney / money * 100)+rating_result2);
     }
 }
