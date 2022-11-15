@@ -26,13 +26,13 @@ public class Controller {
         return lottoCount;
     }
 
-    public List<List<Integer>> buyerLottoNumber(int lottoCount) {
-        List<List<Integer>> randomNumbers = lottoManager.makeRandomNumbers(lottoCount);
+    public List<List<Integer>> printBuyerLottoNumber(int lottoCount) {
+        List<List<Integer>> randomNumbers = lottoManager.buyerLottoNumbers(lottoCount);
         output.randomNumbers(randomNumbers);
         return randomNumbers;
     }
 
-    public List<Integer> winingLottoNumber() throws IllegalArgumentException{
+    public List<Integer> checkWiningLottoNumber() throws IllegalArgumentException{
         String[] inputNumbers = input.Number().split(",");
         List<Integer> winningLottoNumber = Arrays.asList(inputNumbers)
                 .stream()
@@ -43,7 +43,7 @@ public class Controller {
         return lotto.getNumbers();
     }
 
-    public int bonusNumber(List<Integer> numbers) throws IllegalArgumentException{
+    public int checkBonusNumber(List<Integer> numbers) throws IllegalArgumentException{
         int bonusNumber = Integer.parseInt(input.bonusNum());
         lotto = new Lotto(numbers, bonusNumber);
         return bonusNumber;
@@ -64,9 +64,9 @@ public class Controller {
     public void startLotto(){
         int lottoCount = findLottoCount();
 
-        List<List<Integer>> randomNumbers = buyerLottoNumber(lottoCount);
-        List<Integer> winingNumbers = winingLottoNumber();
-        int bonusNumber = bonusNumber(winingNumbers);
+        List<List<Integer>> randomNumbers = printBuyerLottoNumber(lottoCount);
+        List<Integer> winingNumbers = checkWiningLottoNumber();
+        int bonusNumber = checkBonusNumber(winingNumbers);
 
         compareNumber(randomNumbers, winingNumbers, bonusNumber);
         calculationYield();
