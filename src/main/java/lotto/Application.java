@@ -6,18 +6,22 @@ import java.util.List;
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
-        Input input=new Input();
-        MakingLotto makingLotto=new MakingLotto();
+        try {
+            Input input = new Input();
+            MakingLotto makingLotto = new MakingLotto();
 
-        System.out.println("구입금액을 입력해 주세요.");
-        int money= input.setMoney();
-        List<Lotto> allLotto=getLotto(money);
+            System.out.println("구입금액을 입력해 주세요.");
+            int money = input.setMoney();
+            List<Lotto> allLotto = getLotto(money);
 
-        String lottoString=getLottString(input);
-        int bonus=getBonus(input);
+            String lottoString = getLottString(input);
+            int bonus = getBonus(input);
 
-        Lotto winningLotto= makingLotto.getWinningLotto(lottoString);
-        showLotto(allLotto,bonus,winningLotto,money);
+            Lotto winningLotto = makingLotto.getWinningLotto(lottoString);
+            showLotto(allLotto, bonus, winningLotto, money);
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+        }
     }
 
     public static List<Lotto> getLotto(int money){
