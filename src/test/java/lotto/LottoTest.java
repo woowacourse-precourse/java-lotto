@@ -1,12 +1,12 @@
 package lotto;
 
+import static org.assertj.core.api.Assertions.*;
+
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
-
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class LottoTest {
 	@DisplayName("로또 번호의 개수가 6개가 넘어가면 예외가 발생한다.")
@@ -104,27 +104,62 @@ class LottoTest {
 	@DisplayName("당첨 로또번호와 3개가 일치하면, 0번째원소가 1 증가한다.")
 	@Test
 	void matchCorrect3Numbers(){
+		List<Integer> userLotto = List.of(1,2,3,4,5,6);
+		List<Integer> winningLotto = List.of(1,2,3,45,44,43);
+		Integer bonusNumber = 6;
 
+		CorrectLottoNumber correctLottoNumber = new CorrectLottoNumber();
+		correctLottoNumber.calculateCorrectNumber(userLotto,winningLotto,bonusNumber);
+
+		assertThat(correctLottoNumber.getCorrectLottoNumber().get(0)).isEqualTo(1);
 	}
 
 	@DisplayName("당첨 로또번호 4개와 일치하면, 1번째원소가 1 증가한다.")
 	@Test
 	void matchCorrect4Numbers(){
+		List<Integer> userLotto = List.of(1,2,3,4,5,6);
+		List<Integer> winningLotto = List.of(1,2,3,4,44,43);
+		Integer bonusNumber = 6;
 
+		CorrectLottoNumber correctLottoNumber = new CorrectLottoNumber();
+		correctLottoNumber.calculateCorrectNumber(userLotto,winningLotto,bonusNumber);
+
+		assertThat(correctLottoNumber.getCorrectLottoNumber().get(1)).isEqualTo(1);
 	}
 	@DisplayName("당첨 로또번호 5개와 일치하면, 2번째원소가 1 증가한다.")
 	@Test
 	void matchCorrect5Numbers(){
+		List<Integer> userLotto = List.of(1,2,3,4,5,6);
+		List<Integer> winningLotto = List.of(1,2,3,5,4,43);
+		Integer bonusNumber = 6;
 
+		CorrectLottoNumber correctLottoNumber = new CorrectLottoNumber();
+		correctLottoNumber.calculateCorrectNumber(userLotto,winningLotto,bonusNumber);
+
+		assertThat(correctLottoNumber.getCorrectLottoNumber().get(2)).isEqualTo(1);
 	}
 	@DisplayName("당첨 로또번호 5개 + 보너스번호와 일치하면, 3번째원소가 1 증가한다.")
 	@Test
 	void matchCorrect6NumbersContainBonusNumber(){
+		List<Integer> userLotto = List.of(1,2,3,4,5,6);
+		List<Integer> winningLotto = List.of(1,2,3,5,4,43);
+		Integer bonusNumber = 6;
 
+		CorrectLottoNumber correctLottoNumber = new CorrectLottoNumber();
+		correctLottoNumber.calculateCorrectNumber(userLotto,winningLotto,bonusNumber);
+
+		assertThat(correctLottoNumber.getCorrectLottoNumber().get(3)).isEqualTo(1);
 	}
 	@DisplayName("당첨 로또번호 6개와 일치하면, 4번째원소가 1 증가한다.")
 	@Test
 	void matchCorrect6Numbers(){
+		List<Integer> userLotto = List.of(1,2,3,4,5,6);
+		List<Integer> winningLotto = List.of(1,2,3,4,5,6);
+		Integer bonusNumber = 9;
 
+		CorrectLottoNumber correctLottoNumber = new CorrectLottoNumber();
+		correctLottoNumber.calculateCorrectNumber(userLotto,winningLotto,bonusNumber);
+
+		assertThat(correctLottoNumber.getCorrectLottoNumber().get(4)).isEqualTo(1);
 	}
 }
