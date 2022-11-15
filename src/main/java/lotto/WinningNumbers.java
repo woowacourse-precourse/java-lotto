@@ -13,7 +13,6 @@ public class WinningNumbers {
     private final List<Integer> winningNumbers;
     private final int bonusNumber;
     private enum GuideMessageType {
-        WINNING_NUMBERS("당첨 번호를 입력해 주세요."),
         BONUS_NUMBER("보너스 번호를 입력해 주세요.");
 
         private final String message;
@@ -24,7 +23,6 @@ public class WinningNumbers {
     }
 
     public WinningNumbers() {
-        printGuideMessage(GuideMessageType.WINNING_NUMBERS.message);
         this.winningNumbers = convertNumbers();
 
         System.out.println();
