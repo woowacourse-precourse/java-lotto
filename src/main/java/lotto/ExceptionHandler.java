@@ -10,9 +10,13 @@ public class ExceptionHandler {
     }
 
     public static void validNumberDupplication(int newNumber, List<Integer> numbers){
+        if(numbers.size() != numbers.stream().distinct().count()){
+            throw new IllegalArgumentException("중복된 값은 입력할 수 없습니다.");
+        } // 당첨 번호 중복 체크
+
         if(numbers.contains(newNumber)){
             throw new IllegalArgumentException("중복된 값은 입력할 수 없습니다.");
-        }
+        } // 보너스 번호 중복 체크
     }
 
     public static void validWinningForm(String readline){
@@ -23,13 +27,13 @@ public class ExceptionHandler {
     }
 
     public static void validPurchaseForm(String readline){
-        int amount = parseInt(readline);
+        int amount = excParseInt(readline);
         if(amount%1000 != 0){
             throw new IllegalArgumentException("1000원 단위로만 구입이 가능합니다.");
         }
     }
 
-    public static Integer parseInt(String input) {
+    public static Integer excParseInt(String input) {
         try {
             return Integer.parseInt(input);
         }
