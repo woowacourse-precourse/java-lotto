@@ -90,7 +90,7 @@ public class LottoProgram {
     }
 
     public Map<String, Integer> makeRanking(Map<String, Integer> ranking, int count, int bonusCount) {
-        for (Rank rank: Rank.values()) {
+        for (Rank rank : Rank.values()) {
             if (count == 5 && bonusCount == 1 && rank.getMatchCount() == count) {
                 ranking.put(rank.name(), ranking.get(rank.name()) + 1);
                 break;
@@ -124,11 +124,12 @@ public class LottoProgram {
 
         for (Rank rank : Rank.values()) {
             if (ranking.get(rank.name()) != 0) {
-                totalReward += Integer.parseInt(rank.getReward().replace(",", ""));
+                totalReward += Integer.parseInt(rank.getReward().replace(",", ""))
+                        * ranking.get(rank.name());
             }
         }
 
-        this.rateOfReturn = (double) totalReward / (this.numberOfLotto * LOTTO_PRICE) * 100;
+        setRateOfReturn((double) totalReward / (this.numberOfLotto * LOTTO_PRICE) * 100);
     }
 
     public void setBonusNumber(int bonusNumber) {
@@ -137,5 +138,13 @@ public class LottoProgram {
 
     public void setWinningLotto(Lotto winningLotto) {
         this.winningLotto = winningLotto;
+    }
+
+    public void setNumberOfLotto(int number) {
+        this.numberOfLotto = number;
+    }
+
+    public void setRateOfReturn(double rate) {
+        this.rateOfReturn = rate;
     }
 }
