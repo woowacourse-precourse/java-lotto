@@ -12,19 +12,22 @@ public enum PrizeOfLotto {
 
     private final String criteria;
     private final String rank;
-    private final int prize;
-
     public String getRank() {
         return rank;
     }
+    private final int prize;
     public int getPrize() {
         return prize;
     }
-
+    private final DecimalFormat decimalFormat = new DecimalFormat("###,###");
     PrizeOfLotto(String criteria, String rank, int prize) {
         this.criteria = criteria;
         this.rank = rank;
         this.prize = prize;
+    }
+
+    public void announce(Map<String, Integer> resultOfLottos) {
+        System.out.println(criteria + " (" + decimalFormat.format(prize) + "원) - " + resultOfLottos.get(rank) + "개");
     }
 
 }
