@@ -1,4 +1,3 @@
-package lotto;
 package lotto.domain;
 
 import controller.Lottery;
@@ -40,6 +39,27 @@ class LottoTest {
     @Test
     void 구매금액_숫자아님_예외발생() {
         assertThatThrownBy(() -> InputException.validateInputAmount("1a000"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("당첨 로또 번호 입력에 숫자가 아닌 문자가 입력되면 예외가 발생한다.")
+    @Test
+    void 당첨번호_다른문자입력_예외발생() {
+        assertThatThrownBy(() -> Extraction.extractWinningNumbers("a,2,3,4,5,6"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("당첨 로또 번호에 중복된 숫자가 있으면 예외가 발생한다.")
+    @Test
+    void 당첨번호_중복문자_예외발생() {
+        assertThatThrownBy(() -> Extraction.extractWinningNumbers("1,2,3,4,5,5"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("당첨 로또 번호가 허용된 범위가 아니면 예외가 발생한다.")
+    @Test
+    void 당첨번호_숫자범위_예외발생() {
+        assertThatThrownBy(() -> Extraction.extractWinningNumbers("1,2,3,4,5,46"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 }
