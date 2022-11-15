@@ -27,8 +27,7 @@ public class OutputView {
         }
     }
 
-
-    public static void printWinResult(Map<LottoRank, Integer> winLottoInfo) {
+    public static void printWinResult(Map<LottoRank, Long> winLottoInfo) {
         System.out.println(View.OUTPUT_STATISTICS.message());
         System.out.println(View.OUTPUT_DOTTED_LINE.message());
 
@@ -37,7 +36,7 @@ public class OutputView {
                 .filter(rank -> !rank.equals(LottoRank.FAIL))
                 .sorted(Comparator.comparingInt(LottoRank::matchCount))
                 .sorted((o1, o2) -> Boolean.compare(o1.isBonusNumber(), o2.isBonusNumber()))
-                .forEach(rank -> printResultAccordingToBonus(rank, winLottoInfo.get(rank)));
+                .forEach(rank -> printResultAccordingToBonus(rank, winLottoInfo.get(rank).intValue()));
     }
 
     private static void printResultAccordingToBonus(LottoRank rank, int totalCount) {

@@ -2,6 +2,7 @@ package lotto.controller;
 
 import lotto.domain.lotto.Lotties;
 import lotto.domain.rank.LottoRank;
+import lotto.domain.rank.LottoRanks;
 import lotto.domain.rank.Statistics;
 import lotto.domain.user.UserLotto;
 import lotto.view.InputView;
@@ -19,6 +20,8 @@ public class LottoController {
 
     private UserLotto userLotto;
 
+    private LottoRanks lottoRanks;
+
     public LottoController(Statistics statistics) {
         this.statistics = statistics;
     }
@@ -32,8 +35,9 @@ public class LottoController {
             Map<LottoRank, Long> lottoRankMap =
                     lotties.generateLottoRankMap(userLotto.getLotto(), userLotto.getBonusNumber());
 
-            statistics.findTotalWinAmount();
-            printResults(purchase);
+            int totalWinAmount = findWinAmount(lottoRankMap);
+
+            printResults(totalWinAmount);
         } catch (IllegalArgumentException ex) {
             System.out.println(ex.getMessage());
         }
@@ -51,8 +55,13 @@ public class LottoController {
         return new UserLotto(winNumber, bonusNumber);
     }
 
+    public int findWinAmount(Map<LottoRank, Long> lottoRankMap) {
+        lottoRanks = new LottoRanks(lottoRankMap);
+        return lottoRanks.findTotalWinAmount();
+    }
+
     public void printResults(int purchaseAmount) {
-        OutputView.printWinResult(statistics.getWinLottoInfoMap());
+        OutputView.printWinResult(lottoRanks.getWinLottoInfoMap());
         OutputView.printYieldResult(statistics.findLottoYield(purchaseAmount));
     }
 }
