@@ -17,4 +17,8 @@ public class OutputView {
     public static void showWinningStatistics() {
         System.out.println(SHOW_WINNING_STATISTICS);
     }
+
+    public static void showEndResult(String endResult) {
+        System.out.println(endResult);
+    }
 }
