@@ -21,28 +21,21 @@ public class Lotto {
     private void validateByRange(List<Integer> numbers){
         for (Integer number : numbers){
             if (number > Constants.MAXIMUM_LOTTO_NUMBER.getValue() || number < Constants.MINIMUM_LOTTO_NUMBER.getValue()) {
-                throw new IllegalArgumentException(
-                        "[ERROR] 로또 번호는 " + Constants.MINIMUM_LOTTO_NUMBER.getValue() + "와 "
-                                + Constants.MAXIMUM_LOTTO_NUMBER.getValue() + "사이의 정수들이어야 합니다."
-                );
+                throw new IllegalArgumentException(ErrorMessages.OUT_OF_RANGE.getMessage());
             }
         }
     }
 
     private void validateBySize(List<Integer> numbers){
         if (numbers.size() != Constants.NUMBER_TO_DRAW.getValue()){
-            throw new IllegalArgumentException(
-                    "[ERROR] 로또 번호는 정확히 " + Constants.NUMBER_TO_DRAW.getValue() + "개의 정수여야 합니다."
-            );
+            throw new IllegalArgumentException(ErrorMessages.WRONG_SIZE.getMessage());
         }
     }
 
     private void validateByDistinction(List<Integer> numbers){
         Set<Integer> distinctNumbers = new HashSet<>(numbers);
         if (distinctNumbers.size() != numbers.size()) {
-            throw new IllegalArgumentException(
-                    "[ERROR] 로또 번호에는 중복되는 수가 없어야 합니다."
-            );
+            throw new IllegalArgumentException(ErrorMessages.DUPLICATE.getMessage());
         }
     }
 

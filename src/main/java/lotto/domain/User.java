@@ -39,9 +39,7 @@ public class User {
 
     private void validateBudget(Integer budget){
         if (budget % Constants.PRICE.getValue() != 0) {
-            throw new IllegalArgumentException(
-                    "[ERROR] 구매 금액은 " + Constants.PRICE.getValue() + "로 나누어 떨어지는 정수여야 합니다."
-            );
+            throw new IllegalArgumentException(ErrorMessages.INDIVISIBLE.getMessage());
         }
     }
 

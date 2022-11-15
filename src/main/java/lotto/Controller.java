@@ -50,7 +50,7 @@ public class Controller {
             return Integer.parseInt(budgetInput);
         }
         catch (Exception exception){
-            throw new IllegalArgumentException("[ERROR] 이 입력은 정수여야 합니다.");
+            throw new IllegalArgumentException(ErrorMessages.NOT_INTEGER.getMessage());
         }
     }
 
@@ -65,9 +65,7 @@ public class Controller {
             return string.split(",");
         }
         catch (Exception exception){
-            throw new IllegalArgumentException(
-                    "[ERROR] 이 입력은 ','로 구분되는 정수들의 나열이어야 합니다."
-            );
+            throw new IllegalArgumentException(ErrorMessages.CANNOT_SPLIT.getMessage());
         }
     }
 
@@ -81,9 +79,7 @@ public class Controller {
             return winningNumbers;
         }
         catch (Exception exception){
-            throw new IllegalArgumentException(
-                    "[ERROR] 이 입력은 ','로 구분되는 정수들의 나열이어야 합니다."
-            );
+            throw new IllegalArgumentException(ErrorMessages.CANNOT_SPLIT.getMessage());
         }
     }
 

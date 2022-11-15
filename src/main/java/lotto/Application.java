@@ -11,6 +11,5 @@ public class Application {
         View view = new View();
         Controller controller = new Controller(game, user, view);
         controller.run();
-
     }
 }
