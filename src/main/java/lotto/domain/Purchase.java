@@ -8,6 +8,7 @@ public class Purchase {
 
     private static final int LOTTO_PRICE = 1_000;
 
+    private List<Lotto> lottos;
     private final int amount;
     private final int count;
 
@@ -24,13 +25,17 @@ public class Purchase {
     }
 
     public List<Lotto> createLottos() {
-        List<Lotto> lottos = new ArrayList<>();
+        lottos = new ArrayList<>();
 
         for (int i = 0; i < this.count; i++) {
             lottos.add(new Lotto(NumberGenerator.createDifferentRandomNumbers()));
         }
 
         return lottos;
+    }
+
+    public void printLottos() {
+        lottos.forEach(System.out::println);
     }
 
     public int createLottoBonusNumber() {
@@ -45,4 +50,7 @@ public class Purchase {
         return amount;
     }
 
+    public List<Lotto> getLottos() {
+        return lottos;
+    }
 }

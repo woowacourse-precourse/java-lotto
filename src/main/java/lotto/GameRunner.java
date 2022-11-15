@@ -1,15 +1,9 @@
 package lotto;
 
-import static lotto.view.InputView.getInt;
-import static lotto.view.InputView.getNumbers;
-import static lotto.view.OutputView.askBonusNumber;
-import static lotto.view.OutputView.askNumbers;
-import static lotto.view.OutputView.askPurchaseAmount;
-import static lotto.view.OutputView.printLottos;
-import static lotto.view.OutputView.printWinningStatisticsMessage;
+import static lotto.view.InputView.*;
+import static lotto.view.OutputView.*;
 
 import java.util.List;
-import lotto.domain.Lotto;
 import lotto.domain.Player;
 import lotto.domain.PrizeCount;
 import lotto.domain.Profit;
@@ -22,7 +16,6 @@ public class GameRunner {
     private Player player;
     private Profit profit;
 
-    private List<Lotto> lottos;
     private List<Integer> numbers;
     private int lottoBonusNumber;
     private int bonusNumber;
@@ -49,8 +42,8 @@ public class GameRunner {
     }
 
     private void purchaseLottos() {
-        lottos = purchase.createLottos();
-        printLottos(lottos);
+        purchase.createLottos();
+        purchase.printLottos();
 
         lottoBonusNumber = purchase.createLottoBonusNumber();
     }
@@ -69,7 +62,7 @@ public class GameRunner {
         prizeCount = new PrizeCount();
 
         player = new Player(numbers, bonusNumber);
-        player.compare(prizeCount, lottos, lottoBonusNumber);
+        player.compare(prizeCount, purchase.getLottos(), lottoBonusNumber);
 
         profit = new Profit(prizeCount, purchase.getAmount());
         profit.calculate();
