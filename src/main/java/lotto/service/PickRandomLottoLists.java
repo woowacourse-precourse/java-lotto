@@ -10,7 +10,6 @@ import java.util.stream.Collectors;
 public class PickRandomLottoLists {
     public final int LIMIT_LOTTO = 6;
     public static List<List<Integer>> randomLottoLists = new ArrayList<>();
-    Output output = new Output();
 
     public void pickRandomLottoNumbers(int lottoPapers) {
         while(randomLottoLists.size() != lottoPapers) {
@@ -21,6 +20,8 @@ public class PickRandomLottoLists {
     }
 
     private void printRandomLottoLists() {
+        Output output = new Output();
+
         for (List<Integer> values : randomLottoLists) {
             System.out.println(values.stream().sorted().collect(Collectors.toList()));
         }

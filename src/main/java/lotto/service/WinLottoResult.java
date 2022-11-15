@@ -9,7 +9,6 @@ import java.util.List;
 public class WinLottoResult {
     private final int BONUS_POINT = 10;
     public static int yield;
-    InputBonusNumber inputBonusNumber = new InputBonusNumber();
 
     public void checkWinLottoResult(List<Integer> winningNumbers, List<List<Integer>> randomLottoLists) {
         Output output = new Output();
@@ -25,12 +24,12 @@ public class WinLottoResult {
     private int[] checkWinResult(int[] checkLottoPoint) {
         int[] checkWinResult = new int[PrizeRanking.values().length];
 
-        for(int i = 0; i < checkLottoPoint.length; i++){
-            if(checkLottoPoint[i] % BONUS_POINT == 3){ checkWinResult[0] += 1;}
-            if(checkLottoPoint[i] % BONUS_POINT == 4){ checkWinResult[1] += 1;}
-            if(checkLottoPoint[i] == 5){ checkWinResult[2] += 1;}
-            if(checkLottoPoint[i] == 15){ checkWinResult[3] += 1;}
-            if(checkLottoPoint[i] % BONUS_POINT == 6){ checkWinResult[4] += 1;}
+        for (int countWinPoints : checkLottoPoint) {
+            if (countWinPoints % BONUS_POINT == 3) { checkWinResult[0] += 1;}
+            if (countWinPoints % BONUS_POINT == 4) { checkWinResult[1] += 1;}
+            if (countWinPoints == 5) { checkWinResult[2] += 1;}
+            if (countWinPoints == 15) { checkWinResult[3] += 1;}
+            if (countWinPoints % BONUS_POINT == 6) { checkWinResult[4] += 1;}
         }
 
         return checkWinResult;
@@ -38,13 +37,12 @@ public class WinLottoResult {
 
     private int countWinPoints(List<Integer> winningNumbers, List<Integer> randomLottoLists ) {
         int count = 0;
+        int winningPoint= 1;
 
-        for(int i = 0; i < randomLottoLists.size(); i++){
-            if(randomLottoLists.get(i) == Integer.parseInt(inputBonusNumber.inputBonusNumber)) {
-                count += BONUS_POINT;
-            }
-            int WINNING_POINT = 1;
-            if(winningNumbers.contains(randomLottoLists.get(i))) count += WINNING_POINT;
+        for (Integer randomLottoList : randomLottoLists) {
+            if (randomLottoList == Integer.parseInt(InputBonusNumber.inputBonusNumber)) { count += BONUS_POINT;}
+
+            if (winningNumbers.contains(randomLottoList)) count += winningPoint;
         }
 
         return count;
@@ -62,6 +60,7 @@ public class WinLottoResult {
 
     public void calculateYield(int profitMoney, UserMoney userMoney) {
         Output output = new Output();
+
         double userInputMoney = userMoney.getMoney();
         double answer = (profitMoney) / userInputMoney;
         double yield = Math.round(answer*1000)/10.0;

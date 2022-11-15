@@ -5,8 +5,6 @@ import lotto.view.Output;
 import java.util.List;
 
 public class InputBonusNumberHandler {
-    private static final int BONUS_UNITS_COUNT = 1;
-    private static final int BONUS_TENS_COUNT = 2;
 
     public void checkAllNumbersException(String bonusNumber, List<Integer> sixLottoNumbers) {
         Output output = new Output();
@@ -32,7 +30,10 @@ public class InputBonusNumberHandler {
     private void checkSize(String bonusNumber) {
         Output output = new Output();
 
-        if(bonusNumber.length() > BONUS_TENS_COUNT || bonusNumber.length() < BONUS_UNITS_COUNT){
+        int bonusUnitsCount = 1;
+        int bonusTensCount = 2;
+
+        if(bonusNumber.length() > bonusTensCount || bonusNumber.length() < bonusUnitsCount){
             throw new IllegalArgumentException(output.ERROR_ORDER+" 보너스 로또 번호의 자릿수는 하나 이거나 둘이어야 합니다.");
         }
     }

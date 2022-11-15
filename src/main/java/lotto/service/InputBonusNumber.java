@@ -15,18 +15,12 @@ public class InputBonusNumber {
     public Integer inputBonusNumber(List<Integer> sixWinningNumbers) {
         Output output = new Output();
         output.bonusLottoNumberOrder();
-        inputBonusNumber = userReadLine();
+        inputBonusNumber = Console.readLine();
         inputMoneyHandler.checkIsNumber(inputBonusNumber);
         bonusLottoNumber(inputBonusNumber, sixWinningNumbers);
         output.lineSpace();
 
         return Integer.parseInt(inputBonusNumber);
-    }
-
-    private String userReadLine() {
-        String userLottoNumbers = Console.readLine();
-
-        return userLottoNumbers;
     }
 
     private void bonusLottoNumber(String bonusNumber, List<Integer> sixWinningNumbers){

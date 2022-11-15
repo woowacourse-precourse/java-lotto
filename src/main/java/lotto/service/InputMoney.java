@@ -16,9 +16,8 @@ public class InputMoney {
         String inputMoney = Console.readLine();
         output.lineSpace();
         inputMoneyHandler.checkException(inputMoney);
-        UserMoney userMoney = new UserMoney(Integer.parseInt(inputMoney));
 
-        return userMoney;
+        return new UserMoney(Integer.parseInt(inputMoney));
     }
 
     public void calculateLottoPapers(UserMoney inputMoney) {

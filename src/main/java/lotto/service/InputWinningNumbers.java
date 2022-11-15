@@ -9,9 +9,10 @@ import java.util.List;
 
 public class InputWinningNumbers {
     InputWinningNumbersHandler inputWinningNumbersHandler = new InputWinningNumbersHandler();
-    Output output = new Output();
 
     public List<Integer> inputWinningNumber() {
+        Output output = new Output();
+
         List<Integer> sixWinningNumbers;
         output.winningLottoNumbersOrder();
         sixWinningNumbers = sixLottoNumbers(userReadLine());
@@ -25,9 +26,8 @@ public class InputWinningNumbers {
 
     private String[] userReadLine() {
         String userLottoNumbers = Console.readLine();
-        String[] userLottoNumbersArray = userLottoNumbers.split(",");
 
-        return userLottoNumbersArray;
+        return userLottoNumbers.split(",");
     }
 
     private List<Integer> sendDataToList(String[] userLottoNumbers) {

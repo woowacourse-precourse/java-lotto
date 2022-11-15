@@ -7,16 +7,15 @@ import java.util.List;
 
 public class LottoGame {
     InputMoney inputMoney = new InputMoney();
-    WinLottoResult winLottoResult = new WinLottoResult();
-
     public void run() {
+        WinLottoResult winLottoResult = new WinLottoResult();
         try {
             UserMoney userMoney = inputMoney.inputMoney();
             countLottos(userMoney);
-            pickRandomLottos(inputMoney.lottoPapers);
+            pickRandomLottos(InputMoney.lottoPapers);
             List<Integer> randomLottoLists = inputLottoNumbers();
             winLottosResult(randomLottoLists, PickRandomLottoLists.randomLottoLists);
-            winLottoResult.calculateYield(winLottoResult.yield, userMoney);
+            winLottoResult.calculateYield(WinLottoResult.yield, userMoney);
 
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
