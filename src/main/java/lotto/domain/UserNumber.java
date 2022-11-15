@@ -11,7 +11,12 @@ public class UserNumber {
     private static int countingNumber = 1000;
 
     public static int inputPrice() {
-        int price = Integer.valueOf(Console.readLine());
+        int price;
+        try {
+            price = Integer.valueOf(Console.readLine());
+        } catch(Exception e){
+            throw new IllegalArgumentException(Print.priceError());
+        }
         return price / countingNumber;
     }
 
