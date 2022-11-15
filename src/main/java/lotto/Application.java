@@ -1,6 +1,5 @@
 package lotto;
 
-import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,15 +10,18 @@ public class Application {
         User user = new User();
         LottoMachine lottoMachine = new LottoMachine();
 
+
         user.inputMoney();
         int money = user.getMoney();
         lottoMachine.inputWinningLotto();
         Lotto winningLotto = lottoMachine.getWinningLotto();
         lottoMachine.inputBonusNumber();
         int bonus = lottoMachine.getBonus();
+
+        lottoMachine.issueLotto(user.getMoney());
         List<Integer> winningInfo;
 
-        List<Lotto> issuedLotto = issueLotto(money);
+        List<Lotto> issuedLotto = lottoMachine.getIssuedLotto();
         printIssuedLotto(issuedLotto);
 
         winningInfo = checkWinnings(issuedLotto, winningLotto, bonus);
@@ -28,23 +30,6 @@ public class Application {
 
     }
 
-    public static List<Lotto> issueLotto(int money) {
-        int numberOfLotto = money / 1000;
-        System.out.println(numberOfLotto + "개를 구매했습니다.");
-
-        return createNewLotto(numberOfLotto);
-    }
-
-    public static List<Lotto> createNewLotto(int numberOfLotto) {
-        List<Lotto> issuedLotto = new ArrayList<>();
-
-        for (int i = 0; i < numberOfLotto; i++) {
-            List<Integer> newLottoNumber = Randoms.pickUniqueNumbersInRange(1, 45, 6);
-            Lotto newLotto = new Lotto(newLottoNumber);
-            issuedLotto.add(newLotto);
-        }
-        return issuedLotto;
-    }
 
     public static void printIssuedLotto(List<Lotto> lottoList) {
         for (Lotto lotto : lottoList) {

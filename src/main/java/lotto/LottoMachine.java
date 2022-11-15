@@ -1,6 +1,7 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -9,6 +10,8 @@ import java.util.List;
 public class LottoMachine {
     private Lotto winningLotto;
     private int bonus;
+    private List<Lotto> issuedLotto;
+
     public LottoMachine() {
 
     }
@@ -48,6 +51,7 @@ public class LottoMachine {
         return this.winningLotto;
     }
 
+
     public void inputBonusNumber() {
         String bonusString = Console.readLine();
         boolean bonusError = false;
@@ -57,7 +61,7 @@ public class LottoMachine {
         } catch (Exception e) {
             bonusError = true;
             throw new IllegalArgumentException();
-        }finally {
+        } finally {
             if (bonusError) {
                 System.out.println("[ERROR] 잘못된 보너스 입력");
             }
@@ -75,4 +79,26 @@ public class LottoMachine {
         return this.bonus;
     }
 
+
+    public void issueLotto(int money) {
+        int numberOfLotto = money / 1000;
+        System.out.println(numberOfLotto + "개를 구매했습니다.");
+
+        this.issuedLotto = createIssuedLotto(numberOfLotto);
+    }
+
+    private static List<Lotto> createIssuedLotto(int numberOfLotto) {
+        List<Lotto> issuedLotto = new ArrayList<>();
+
+        for (int i = 0; i < numberOfLotto; i++) {
+            List<Integer> newLottoNumber = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+            Lotto newLotto = new Lotto(newLottoNumber);
+            issuedLotto.add(newLotto);
+        }
+        return issuedLotto;
+    }
+
+    public List<Lotto> getIssuedLotto() {
+        return this.issuedLotto;
+    }
 }
