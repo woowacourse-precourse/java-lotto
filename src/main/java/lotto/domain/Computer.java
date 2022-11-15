@@ -31,7 +31,7 @@ public class Computer {
         while(times>VALID_TIME_CRITERIA){
             List<Integer> lotto = new Lotto(createLottoNumbers()).getNumbers();
             lottos.add(lotto);
-            times -= PASS_TURN;
+            times += PASS_TURN;
         }
         return lottos;
     }
