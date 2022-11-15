@@ -47,9 +47,15 @@ public class Application {
         System.out.println("보너스 번호를 입력해 주세요.");
         int customerBounusNumber = GetBounusNumber();
 
+        List<String> result = new ArrayList<>();
         for(Lotto lotto: lottos){
-            Prize count = new Prize(winningNumbers, lotto, customerBounusNumber);
-            System.out.println(count);
+            Prize prize = new Prize(winningNumbers, lotto, customerBounusNumber);
+            String count = prize.print();
+            result.add(count);
         }
+
+        System.out.println("당첨 통계");
+        System.out.println("---");
+        printResults.total(result);
     }
 }
