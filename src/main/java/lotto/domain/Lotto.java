@@ -24,19 +24,19 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
-        checkCountOfNumbers(numbers);
-        checkRangeOfNumbers(numbers);
-        checkDuplicationOfNumbers(numbers);
+        validateCountOfNumbers(numbers);
+        validateRangeOfNumbers(numbers);
+        validateDuplicationOfNumbers(numbers);
     }
 
-    private static void checkCountOfNumbers(List<Integer> numbers) {
+    private static void validateCountOfNumbers(List<Integer> numbers) {
         if (numbers.size() == COUNT_OF_NUMBERS) {
             return;
         }
         throw new IllegalArgumentException(ErrorMessage.LOTTO_INCORRECT_COUNT);
     }
 
-    private void checkRangeOfNumbers(List<Integer> numbers) {
+    private void validateRangeOfNumbers(List<Integer> numbers) {
         for (int number: numbers) {
             if (START_NUMBER <= number && number <= END_NUMBER) {
                 continue;
@@ -45,9 +45,9 @@ public class Lotto {
         }
     }
 
-    private static void checkDuplicationOfNumbers(List<Integer> numbers) {
-        Set<Integer> numbersDeleteDuplication = new HashSet<>(numbers);
-        if (numbers.size() == numbersDeleteDuplication.size()) {
+    private static void validateDuplicationOfNumbers(List<Integer> numbers) {
+        Set<Integer> numbersDeletedDuplication = new HashSet<>(numbers);
+        if (numbers.size() == numbersDeletedDuplication.size()) {
             return;
         }
         throw new IllegalArgumentException(ErrorMessage.LOTTO_DUPLICATED_NUMBER);
