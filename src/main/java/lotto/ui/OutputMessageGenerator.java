@@ -34,7 +34,7 @@ public enum OutputMessageGenerator {
     public static List<String> getTotalRankCountMessage(Map<Rank, Integer> rankCounts) {
         List<Rank> ranksByReverseOrder = getRanksByReverseOrder();
         return ranksByReverseOrder.stream()
-                .map(rank -> getRankCountMessage(rank, rankCounts.get(rank)))
+                .map(rank -> getRankCountMessage(rank, rankCounts.getOrDefault(rank, 0)))
                 .collect(Collectors.toList());
     }
 
