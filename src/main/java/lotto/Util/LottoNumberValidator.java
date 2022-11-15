@@ -62,7 +62,7 @@ public class LottoNumberValidator {
         return true;
     }
 
-    public static void validateNumbers(List<Integer> numbers) {
+    public static void validateNumbers(List<Integer> numbers) throws IllegalArgumentException{
         if (existDuplicate(numbers)) {
             throw new IllegalArgumentException(DUPLICATED_INPUT);
         }
@@ -76,7 +76,7 @@ public class LottoNumberValidator {
         }
     }
 
-    public static void validateBonusNumber(List<Integer> numbers, int bonusNumber) {
+    public static void validateBonusNumber(List<Integer> numbers, int bonusNumber) throws IllegalArgumentException{
         if (isOutOfRange(bonusNumber)) {
             throw new IllegalArgumentException(WRONG_RANGE);
         }
