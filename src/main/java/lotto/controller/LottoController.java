@@ -16,7 +16,7 @@ public class LottoController {
     private final String BONUS_MESSAGE = "보너스 번호를 입력해 주세요.";
     private final String STATISTICS_MESSAGE = "당첨 통계\n---";
     private final String REVENUE_MESSAGE_ONE = "총 수익률은 ";
-    private final String REVENUE_MESSAGE_TWO = "입니다.";
+    private final String REVENUE_MESSAGE_TWO = "%입니다.";
 
     public void inputUserMoney(){
         System.out.println(START_MESSAGE);
