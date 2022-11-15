@@ -1,6 +1,5 @@
 package lotto.controller;
 
-import java.util.List;
 import lotto.domain.WinningNumber;
 import lotto.service.WinningNumberService;
 import view.WinningNumberView.BonusNumberView;
@@ -17,7 +16,8 @@ public class WinningNumberController {
     public WinningNumber enterNumbers() {
         String numbers = enterWinningNumbers();
         String bonusNumber = enterBonusNumber();
-        return new WinningNumber(numbers, bonusNumber);
+        winningNumberService.saveWinningNumber(new WinningNumber(numbers, bonusNumber));
+        return winningNumberService.findWinningNumber();
     }
 
     private String enterWinningNumbers() {

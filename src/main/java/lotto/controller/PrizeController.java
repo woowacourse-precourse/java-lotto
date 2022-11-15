@@ -11,8 +11,6 @@ import view.PrizeView.PrizeStatisticsView;
 
 public class PrizeController {
 
-    public static final int LOTTO_PRICE = 1000;
-
     private final List<Lotto> lottos;
     private final WinningNumber winningNumber;
     private final int countLotto;
@@ -67,8 +65,7 @@ public class PrizeController {
             index++;
         }
         double earningRate = prizeSum / (countLotto * 1000) * 100;
-        earningRate = Math.round(earningRate * 10) / 10.0;
-        return earningRate;
+        return Math.round(earningRate * 10) / 10.0;
     }
 
     private void viewEarningRate(double earningRate) {
