@@ -27,7 +27,7 @@ class LottoMachineTest extends NsTest {
         assertRandomUniqueNumbersInRangeTest(
                 () -> {
                     LottoMachine lottoMachine = new LottoMachine(new Money(1000));
-                    for (Lotto lotto : lottoMachine.getBuyLottoList()) {
+                    for (Lotto lotto : lottoMachine.getBuyLotteries()) {
                         assertThat(lotto.getLottoNumbers()).isEqualTo(
                                 inputHandler.stringToList(inputString));
                         System.out.println(lotto.getLottoNumbers());

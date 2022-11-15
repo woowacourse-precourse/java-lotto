@@ -3,7 +3,7 @@ package lotto.controller;
 import java.util.List;
 import lotto.domain.LottoJudge;
 import lotto.domain.LottoMachine;
-import lotto.domain.vo.BuyLottoList;
+import lotto.domain.vo.BuyLotteries;
 import lotto.domain.vo.Lotto;
 import lotto.domain.vo.LottoResult;
 import lotto.domain.vo.LottoWithBonus;
@@ -16,35 +16,26 @@ public class LottoController {
     InputHandler inputHandler = new InputHandler();
     OutputHandler outputHandler = new OutputHandler();
 
-    private static LottoResult getResult(BuyLottoList buyLottoList, LottoWithBonus lottoWithBonus) {
-        LottoJudge lottoJudge = new LottoJudge(buyLottoList, lottoWithBonus);
-        LottoResult lottoResult = lottoJudge.getLottoResult();
-        return lottoResult;
-    }
 
     public void run() {
 
         Money money = inputMoney();
 
-        BuyLottoList buyLottoList = buyLotto(money);
+        BuyLotteries buyLotteries = buyLotto(money);
 
         LottoWithBonus lottoWithBonus = inputBonus(inputLotto());
 
-        LottoResult lottoResult = getResult(buyLottoList, lottoWithBonus);
+        LottoResult lottoResult = getResult(buyLotteries, lottoWithBonus);
 
         outputResult(lottoResult);
     }
 
-    private void outputResult(LottoResult lottoResult) {
-        outputHandler.winningStatistics(lottoResult);
-        outputHandler.printYield(lottoResult);
-    }
 
-    private BuyLottoList buyLotto(Money money) {
+    private BuyLotteries buyLotto(Money money) {
         try {
             LottoMachine lottoMachine = new LottoMachine(money);
             outputHandler.printBuyLottoList(lottoMachine);
-            return new BuyLottoList(lottoMachine.getBuyLottoList());
+            return new BuyLotteries(lottoMachine.getBuyLotteries());
         } catch (Exception e) {
             throw e;
         }
@@ -75,5 +66,15 @@ public class LottoController {
         } catch (Exception e) {
             throw e;
         }
+    }
+
+    private LottoResult getResult(BuyLotteries buyLotteries, LottoWithBonus lottoWithBonus) {
+        LottoJudge lottoJudge = new LottoJudge(buyLotteries, lottoWithBonus);
+        return lottoJudge.calculateResult();
+    }
+
+    private void outputResult(LottoResult lottoResult) {
+        outputHandler.winningStatistics(lottoResult);
+        outputHandler.printYield(lottoResult);
     }
 }

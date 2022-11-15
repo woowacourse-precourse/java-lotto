@@ -2,15 +2,15 @@ package lotto.domain.vo;
 
 import java.util.List;
 
-public class BuyLottos {
+public class BuyLotteries {
 
-    private final List<Lotto> buyLottoList;
+    private final List<Lotto> buyLotteries;
 
-    public BuyLottos(List<Lotto> buyLottoList) {
-        this.buyLottoList = buyLottoList;
+    public BuyLotteries(List<Lotto> buyLotteries) {
+        this.buyLotteries = buyLotteries;
     }
 
-    public List<Lotto> getBuyLottoList() {
-        return buyLottoList;
+    public List<Lotto> getBuyLotteries() {
+        return buyLotteries;
     }
 }
