@@ -30,10 +30,10 @@ public class OutputView {
 
     private static void printResult(Rank rank, Map<Rank, Integer> statistics) {
         if (validateMatchCountIs5(rank)) {
-            System.out.print(String.format("%d 개 일치, 보너스 볼 일치(%,d원)", rank.getMatchCount(), rank.getReward()));
+            System.out.print(String.format("%d개 일치, 보너스 볼 일치 (%,d원)", rank.getMatchCount(), rank.getReward()));
             System.out.println(" - " + statistics.get(rank) + '개');
         } else if (validateMatchCountOver3(rank)) {
-            System.out.print(String.format("%d 개 일치 (%,d원)", rank.getMatchCount(), rank.getReward()));
+            System.out.print(String.format("%d개 일치 (%,d원)", rank.getMatchCount(), rank.getReward()));
             System.out.println(" - " + statistics.get(rank) + '개');
         }
     }
@@ -63,6 +63,6 @@ public class OutputView {
     }
 
     public static void printEarningRate(String calculateEarningRate) {
-        System.out.printf("총 수익률은 %s" + "%% 입니다.", calculateEarningRate);
+        System.out.printf("총 수익률은 %s" + "%%입니다.", calculateEarningRate);
     }
 }
