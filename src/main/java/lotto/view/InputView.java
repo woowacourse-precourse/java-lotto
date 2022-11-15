@@ -38,15 +38,22 @@ public class InputView {
         String input = Console.readLine();
         return input;
     }
-
+    private static boolean buyMoneyCheck(String input) {
+        return input != null && input.matches("^[0-9,]*$");
+    }
     public void buyLottoMoney() {
         String input = getUserInput();
+        if (!buyMoneyCheck(input)) {
+            throw new IllegalArgumentException("[ERROR] : 숫자를 입력해야 합니다.");
+        }
         setInputMoney(Integer.parseInt(input));
     }
 
     public void cntLotto() {
         setLotteryAmount(getInputMoney() / lotteryPrice);
     }
+
+
 
     public int purchasedLotto() {
         System.out.println(MONEY_INPUT_MESSAGE);
@@ -92,6 +99,7 @@ public class InputView {
             }
         }
     }
+
     public void input_Bonus_Number() {
         System.out.println(BONUS_INPUT_MESSAGE);
         bonusNum = Integer.parseInt(getUserInput());
