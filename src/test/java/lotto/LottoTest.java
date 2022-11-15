@@ -6,7 +6,6 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -50,13 +49,14 @@ class LottoTest {
     void 부동소수점() {
         int cost = 8000;
         int prize = 5000;
-        Assertions.assertThat(Math.round(prize * 100.0 / cost)).isEqualTo(62.5);
+        Assertions.assertThat(String.format("%.1f", (prize * 100.0 / cost))).isEqualTo("62.5");
     }
 
     @Test
     void 형변환실패하면_무슨예외발생하더라() {
         String brokenNumber = "a12";
-        Integer.parseInt(brokenNumber);
+        assertThatThrownBy(() -> Integer.parseInt(brokenNumber))
+                .isInstanceOf(NumberFormatException.class);
     }
 
     // 아래에 추가 테스트 작성 가능
