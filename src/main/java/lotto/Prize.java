@@ -3,12 +3,16 @@ package lotto;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
+
 import java.util.*;
 
 import static java.lang.Integer.parseInt;
 
 public class Prize {
     static List<Lotto> myLottos = new ArrayList<>();
+    static List<List<Integer>> myLottoNumbers = new ArrayList<>();
+    static List<Integer> winningLotto = new ArrayList<>();
+    static List<Integer> countWinningTicket = new ArrayList<>(List.of(0, 0, 0, 0, 0));
 
     static final String ENTER_MONEY = "구매금액을 입력해 주세요.";
     static final String PURCHASE_LOTTO = "%d개를 구매했습니다.\n";
@@ -22,6 +26,7 @@ public class Prize {
         System.out.printf(PURCHASE_LOTTO, lottoCount);
         makeMyLotto(lottoCount);
         inputWinningLotto();
+        compareLotto(winningLotto, myLottoNumbers);
     }
 
     public int purchaseLotto() {
@@ -32,7 +37,22 @@ public class Prize {
         return money / LOTTO_COUNT;
     }
 
-    public void inputWinningLotto(){
+    public void makeMyLotto(Integer lottoCount) {
+        for (int i = 1; i <= lottoCount; i++) {
+            List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+            List<Integer> myNumber = new ArrayList<>();
+            myNumber.addAll(numbers);
+            Collections.sort(myNumber);
+            Lotto lotto = new Lotto(myNumber);
+            myLottos.add(lotto);
+        }
+        for (Lotto lotto : myLottos) {
+            System.out.println(lotto.getLotto());
+            myLottoNumbers.add(lotto.getLotto());
+        }
+    }
+
+    public void inputWinningLotto() {
         System.out.println(WINNING_NUMBER);
         String winningNumber = Console.readLine();
 
@@ -44,17 +64,26 @@ public class Prize {
 
         winningNumbers.add(bonusNumber);
         System.out.println(winningNumbers);
+
+        for (String number : winningNumbers) {
+            winningLotto.add(Integer.valueOf(number));
+        }
     }
 
-    public void makeMyLotto(Integer lottoCount) {
-        for (int i = 1; i <= lottoCount; i++){
-            List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
-            Collections.sort(numbers);
-            Lotto lotto = new Lotto(numbers);
-            myLottos.add(lotto);
-        }
-        for(Lotto lotto : myLottos) {
-            System.out.println(lotto.getLotto());
+    public void compareLotto(List<Integer> winningLotto, List<List<Integer>> myLottoNumbers) {
+        for (List<Integer> oneLotto : myLottoNumbers) {
+            int count = 0;
+            int bouns = 0;
+            for (Integer oneNumber : oneLotto) {
+                if (winningLotto.subList(0, 6).contains(oneNumber)) {
+                    count += 1;
+                }
+                if (winningLotto.get(6) == oneNumber) {
+                    bouns += 1;
+                }
+            }
+            Integer hit = Hit.valueOfLabel(String.valueOf(count), String.valueOf(bouns));
+            if (hit != null) countWinningTicket.set(hit, countWinningTicket.get(hit) + 1);
         }
     }
 
