@@ -29,6 +29,21 @@ public class Lotto {
         return sb.toString();
     }
 
+    public int rightNumberCheck(List<Integer> lotto){
+
+        int cnt =0;
+        for(int i=0;i<lotto.size();i++){
+            if(numbers.contains(lotto.get(i)))cnt++;
+        }
+        return cnt;
+    }
+
+    public int rightBonusNumberCheck(int bonusNumber){
+        int cnt=0;
+        if(numbers.contains(bonusNumber))return cnt=10;
+        return cnt;
+    }
+
 
     // TODO: 추가 기능 구현
 }
