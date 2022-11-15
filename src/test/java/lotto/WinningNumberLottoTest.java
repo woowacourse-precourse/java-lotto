@@ -19,7 +19,31 @@ public class WinningNumberLottoTest extends NsTest {
     }
 
     @Test
-    void inputBonusNumberByUnderSize() {
+    void inputBonusNumberByOverNumber() {
+        assertSimpleTest(() -> {
+            assertThatThrownBy(() -> run("1,2,3,4,5,6", "46"))
+                    .isInstanceOf(IllegalArgumentException.class);
+        });
+    }
+
+    @Test
+    void inputBonusNumberByNegativeNumber() {
+        assertSimpleTest(() -> {
+            assertThatThrownBy(() -> run("1,2,3,4,5,6", "-46"))
+                    .isInstanceOf(IllegalArgumentException.class);
+        });
+    }
+
+    @Test
+    void inputBonusNumberByFloatNumber() {
+        assertSimpleTest(() -> {
+            assertThatThrownBy(() -> run("1,2,3,4,5,6", "4.4"))
+                    .isInstanceOf(IllegalArgumentException.class);
+        });
+    }
+
+    @Test
+    void inputWinningNumberByUnderSize() {
         assertSimpleTest(() -> {
             assertThatThrownBy(() -> run("1,2,3,4,5"))
                     .isInstanceOf(IllegalArgumentException.class);
@@ -27,7 +51,7 @@ public class WinningNumberLottoTest extends NsTest {
     }
 
     @Test
-    void inputBonusNumberBySpaceSplit() {
+    void inputWinningNumberBySpaceSplit() {
         assertSimpleTest(() -> {
             assertThatThrownBy(() -> run("1 2 3 4 5 6"))
                     .isInstanceOf(IllegalArgumentException.class);
@@ -35,14 +59,22 @@ public class WinningNumberLottoTest extends NsTest {
     }
 
     @Test
-    void inputBonusNumberByNormal() {
+    void inputWinningNumberByOverNumber() {
+        assertSimpleTest(() -> {
+            assertThatThrownBy(() -> run("1,2,3,4,5,46"))
+                    .isInstanceOf(IllegalArgumentException.class);
+        });
+    }
+
+    @Test
+    void inputWinningNumberByNormal() {
         assertSimpleTest(() ->
             run("1,2,3,4,5,6", "1")
         );
     }
 
     @Test
-    void inputBonusNumberByFloatNumber() {
+    void inputWinningNumberByFloatNumber() {
         assertSimpleTest(() -> {
             assertThatThrownBy(() -> run("1,2.3,3,4,5,6.4"))
                     .isInstanceOf(IllegalArgumentException.class);
