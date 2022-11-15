@@ -13,7 +13,7 @@ public class MatchResult {
         return isHavingBonus;
     }
 
-    public int getBonusNumberCount(){
+    public int getWinningNumberCount(){
         return winningCount;
     }
 }

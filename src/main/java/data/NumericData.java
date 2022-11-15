@@ -1,8 +1,5 @@
 package data;
 
-/**
- * numeric은 숫자, outputMoney는 출력용 문자열 입니다.
- */
 public enum NumericData {
     NUMBER_AMOUNT(6),
     MIN_NUMBER(1),
