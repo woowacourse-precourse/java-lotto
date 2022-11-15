@@ -2,16 +2,15 @@ package lotto.domain;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 public class LottoMachine {
 
     InputAmountValidator validator = InputAmountValidator.getInstance();
 
     private List<Integer> generateLottoNumbers(int startFrom, int endTo, int size) {
-        List<Integer> numbers = Randoms.pickUniqueNumbersInRange(startFrom, endTo, size);
+        HashSet<Integer> numberSet = new HashSet<Integer>(Randoms.pickUniqueNumbersInRange(startFrom, endTo, size));
+        List<Integer> numbers = new ArrayList<Integer>(numberSet);
         Collections.sort(numbers);
         return numbers;
     }
