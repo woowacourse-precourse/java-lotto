@@ -11,31 +11,31 @@ import java.util.stream.Collectors;
 
 public class InputView {
 
-	public static int getPrice() {
-		System.out.println("구입금액을 입력해 주세요.");
-		int price = getNumber();
-		validatePrice(price);
-		return price;
-	}
+    public static int getPrice() {
+        System.out.println("구입금액을 입력해 주세요.");
+        int price = getNumber();
+        validatePrice(price);
+        return price;
+    }
 
-	public static int getBonusNumber() {
-		System.out.println("\n보너스 번호를 입력해 주세요.");
-		return getNumber();
-	}
+    public static int getBonusNumber() {
+        System.out.println("\n보너스 번호를 입력해 주세요.");
+        return getNumber();
+    }
 
-	public static int getNumber() {
-		String input = readLine();
-		validateFormat(input);
-		return Integer.parseInt(input);
-	}
+    public static int getNumber() {
+        String input = readLine();
+        validateFormat(input);
+        return Integer.parseInt(input);
+    }
 
-	public static List<Integer> getNumbers() {
-		System.out.println("\n당첨번호를 입력해 주세요.");
-		String[] numbers = readLine().split(",");
-		validateNumbers(numbers);
+    public static List<Integer> getNumbers() {
+        System.out.println("\n당첨번호를 입력해 주세요.");
+        String[] numbers = readLine().split(",");
+        validateNumbers(numbers);
 
-		return Arrays.stream(numbers)
-			.map(Integer::parseInt)
-			.collect(Collectors.toList());
-	}
+        return Arrays.stream(numbers)
+            .map(Integer::parseInt)
+            .collect(Collectors.toList());
+    }
 }

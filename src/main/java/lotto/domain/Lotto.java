@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Set;
 
 public class Lotto {
+
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
@@ -28,7 +29,7 @@ public class Lotto {
     }
 
     int getMatchingNumbers(final List<Integer> winningNumbers) {
-        return (int)numbers.stream()
+        return (int) numbers.stream()
             .filter(winningNumbers::contains)
             .count();
     }

@@ -25,8 +25,8 @@ public class InputValidationUtilsTest {
     @ValueSource(strings = {"1000j", "r나다라1", "13456l"})
     void validateFormat_입력된_문자열이_숫자로만_이루어져_있는지_검증(final String input) {
         Assertions.assertThatThrownBy(
-                () -> InputValidationUtils.validateFormat(input)
-            ).isInstanceOf(NoSuchElementException.class);
+            () -> InputValidationUtils.validateFormat(input)
+        ).isInstanceOf(NoSuchElementException.class);
     }
 
     @DisplayName("입력된 당첨 번호가 유효한지 검증할 수 있다.")
@@ -36,7 +36,7 @@ public class InputValidationUtilsTest {
         final String[] splitNumbers = numbers.split(",");
 
         Assertions.assertThatThrownBy(
-                () -> InputValidationUtils.validateNumbers(splitNumbers)
-            ).isInstanceOf(NoSuchElementException.class);
+            () -> InputValidationUtils.validateNumbers(splitNumbers)
+        ).isInstanceOf(NoSuchElementException.class);
     }
 }

@@ -12,15 +12,15 @@ import java.util.stream.Collectors;
 
 public class LottoGenerator {
 
-	public static List<Lotto> publish(final int numberOfTickets) {
-		List<Lotto> tickets = new ArrayList<>();
+    public static List<Lotto> publish(final int numberOfTickets) {
+        List<Lotto> tickets = new ArrayList<>();
 
-		for (int i = 0; i < numberOfTickets; i++) {
-			tickets.add(new Lotto(pickUniqueNumbersInRange(MIN_LOTTO_NUMBER,
-				MAX_LOTTO_NUMBER, MAX_LOTTO_NUMBERS_SIZE)));
-		}
-		return tickets.stream()
-			.sorted(Comparator.comparingInt(Lotto::getSumOfNumbers))
-			.collect(Collectors.toList());
-	}
+        for (int i = 0; i < numberOfTickets; i++) {
+            tickets.add(new Lotto(pickUniqueNumbersInRange(MIN_LOTTO_NUMBER,
+                MAX_LOTTO_NUMBER, MAX_LOTTO_NUMBERS_SIZE)));
+        }
+        return tickets.stream()
+            .sorted(Comparator.comparingInt(Lotto::getSumOfNumbers))
+            .collect(Collectors.toList());
+    }
 }
