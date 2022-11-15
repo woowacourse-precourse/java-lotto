@@ -14,7 +14,7 @@ public class Constants {
     public static final String LOTTO_RESULT_HEADER_MESSAGE = "당첨 통계\n---";
     public static final String LOTTO_EARNING_RATE_MESSAGE = "총 수익률은 %s%%입니다.";
 
-    private static final String PREV_ERROR_MESSAGE = "[Error] ";
+    private static final String PREV_ERROR_MESSAGE = "[ERROR] ";
     public static final String PURCHASE_AMOUNT_IS_NOT_NUMBER_ERROR_MESSAGE = PREV_ERROR_MESSAGE + "숫자가 아닙니다.";
     public static final String PURCHASE_AMOUNT_IS_NOT_IN_RANGE_ERROR_MESSAGE = PREV_ERROR_MESSAGE + "1000원 이상이어야합니다.";
     public static final String PURCHASE_AMOUNT_IS_NOT_DIVIDED_ERROR_MESSAGE =
