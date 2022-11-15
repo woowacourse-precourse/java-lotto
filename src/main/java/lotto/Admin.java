@@ -33,7 +33,7 @@ public class Admin {
 
     private void validateWinningNumbersInput(String input) {
         if (!input.matches("^[0-9|,]+$")) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR] 로또 번호는 정수로만 이루어져야합니다.");
         }
     }
 
@@ -75,16 +75,16 @@ public class Admin {
     private void validateGameNumbers(Lotto winningNumbers, int bonusNumber) {
         List<Integer> numbers = winningNumbers.getNumbers();
         if (numbers.contains(bonusNumber)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR] 로또 번호는 중복되면 안됩니다.");
         }
     }
 
     private void validateBonusNumber(String input) {
         if (input == null) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR] 보너스 번호 값이 존재하지 않습니다.");
         }
         if (!input.matches("^[0-9]+$")) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR] 보너스 번호는 번호는 정수여야합니다.");
         }
     }
 }

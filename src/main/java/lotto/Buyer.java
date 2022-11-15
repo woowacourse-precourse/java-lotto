@@ -34,7 +34,7 @@ public class Buyer {
     private void validateSeedMoney(String input) {
         // 숫자로만 이루어져있지 않으면 예외 발생
         if (!input.matches("^[0-9]+$")) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR] 로또 번호는 정수로만 이루어져야합니다.");
         }
     }
 

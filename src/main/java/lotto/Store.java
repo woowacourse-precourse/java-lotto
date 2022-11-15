@@ -26,7 +26,7 @@ public class Store {
 
     private void validateInputMoney(int money) {
         if (money % 1000 != 0) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR] 1,000의 배수만 입력되야합니다.");
         }
     }
 
@@ -67,18 +67,18 @@ public class Store {
 
     private void validateWinningLotto() {
         if (winningLotto == null) {
-            throw new NullPointerException();
+            throw new NullPointerException("[ERROR] 1등번호가 존재하지 않습니다.");
         }
     }
 
     private void validateBonusNumber() {
         if (bonusNumber == null) {
-            throw new NullPointerException();
+            throw new NullPointerException("[ERROR] 보너스 번호가 존재하지 않습니다.");
         }
         if (winningLotto != null) {  // 1등 당첨번호와 보너스번호가 중복되면 예외 발생
             List<Integer> winningNumbers = winningLotto.getNumbers();
             if (winningNumbers.contains(bonusNumber)) {
-                throw new IllegalArgumentException();
+                throw new IllegalArgumentException("[ERROR] 로또 번호는 중복되면 안됩니다.");
             }
         }
     }

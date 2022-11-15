@@ -26,7 +26,7 @@ public class Lotto {
     private static void validateRange(List<Integer> numbers) {
         for (int n : numbers) {
             if (n < MINIMUM_NUMBER || MAXIMUM_NUMBER < n) {
-                throw new IllegalArgumentException();
+                throw new IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
             }
         }
     }
@@ -35,13 +35,13 @@ public class Lotto {
         Set<Integer> sixNumbers = new HashSet<Integer>();
         sixNumbers.addAll(numbers);
         if (sixNumbers.size() != 6) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR] 로또 번호는 중복될 수 없습니다.");
         }
     }
 
     private static void validateSize(List<Integer> numbers) {
         if (numbers.size() != 6) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR] 로또 번호는 6개의 숫자로 이루어져야합니다.");
         }
     }
 
