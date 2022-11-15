@@ -2,6 +2,7 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -13,14 +14,19 @@ public class Lotto {
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
+        isDuplicated(numbers);
+        checkRangeOfNumbers(numbers);
         this.numbers = numbers;
+
     }
 
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR] 입력값은 총 6개가 되어야 합니다.");
         }
     }
+    // TODO: 추가 기능 구현
+    // TODO: 번호 유효성 검사
 
     private void checkRangeOfNumbers(List<Integer> numbers){
         if(Collections.max(numbers)>45 || Collections.min(numbers)<1){
@@ -28,9 +34,11 @@ public class Lotto {
         }
     }
 
-    private void isAlreadyExisted(List<Integer> numbers,int bonusNumber) {
-        for(int numberIndex=0; numberIndex<6; numberIndex++){
-            if(numbers.contains(numbers.get(numberIndex))||numbers.contains(bonusNumber)){
+    private void isDuplicated(List<Integer> numbers) {
+        List<Integer> newNumbers = new ArrayList<>();
+        for(int numberIndex=0; numberIndex<5; numberIndex++){
+            newNumbers.add(numbers.get(numberIndex));
+            if(newNumbers.contains(numbers.get(numberIndex+1))){
                 throw new IllegalArgumentException("[ERROR] 중복되는 수가 있습니다.");
             }
         }
@@ -38,7 +46,6 @@ public class Lotto {
 
 
 
-    // TODO: 추가 기능 구현
-    // TODO: 번호 유효성 검사
+
 
 }
