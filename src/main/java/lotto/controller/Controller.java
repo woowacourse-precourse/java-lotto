@@ -51,8 +51,7 @@ public class Controller {
         CompareNumber compareNumber = new CompareNumber(lottoNumber, winingNumber, bonusNumber);
         compareNumber.compareLotto();
         List<Integer> lottoResult = compareNumber.getLottoResult();
-//        output.lottoRank(lottoResult);
-        System.out.println(lottoResult);
+        output.lottoRank(lottoResult);
     }
 
 }
