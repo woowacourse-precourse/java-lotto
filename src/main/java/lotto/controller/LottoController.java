@@ -47,6 +47,10 @@ public class LottoController {
         return lottos;
     }
 
+    public void setLottos(List<Lotto> lottos) {
+        this.lottos = lottos;
+    }
+
     public List<List<Integer>> computeMatchCounts(List<Integer> predictionNumbers, int bonusNumber) {
         List<List<Integer>> ret = new ArrayList<>();
 
