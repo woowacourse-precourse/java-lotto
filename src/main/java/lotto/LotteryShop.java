@@ -1,6 +1,7 @@
 package lotto;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
+import static lotto.exception.ExceptionCode.ALREADY_PICKED_BONUS_NUMBER;
 import static lotto.exception.ExceptionCode.INVALID_BONUS_NUMBER_INPUT;
 import static lotto.exception.ExceptionCode.INVALID_MONEY_INPUT;
 import static lotto.exception.ExceptionCode.INVALID_WINNING_NUMBER_INPUT;
@@ -57,7 +58,16 @@ public class LotteryShop {
     }
 
     private WinningLotto getWinningLotto() {
-        return new WinningLotto(new Lotto(getWinningLottoNumbers()), new LottoNumber(getBonusNo()));
+        Lotto winningLotto = new Lotto(getWinningLottoNumbers());
+        LottoNumber bonusNo = new LottoNumber(getBonusNo());
+        validateLottoNumbersContainBonusNumber(winningLotto, bonusNo);
+        return new WinningLotto(winningLotto, bonusNo);
+    }
+
+    private void validateLottoNumbersContainBonusNumber(Lotto winningLotto, LottoNumber bonusNo) {
+        if (winningLotto.isContains(bonusNo)) {
+            throw new IllegalArgumentException(ALREADY_PICKED_BONUS_NUMBER);
+        }
     }
 
     private List<Integer> getWinningLottoNumbers() {

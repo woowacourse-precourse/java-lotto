@@ -15,14 +15,11 @@ public class ExceptionCode {
             + "부터 "
             + LottoNumber.UPPER_BOUND
             + "까지여야 합니다.";
-
     public static final String INVALID_MONEY_PER_LOTTO = "[ERROR] 로또 구입금액은 "
             + MONEY_PER_LOTTO
             + "원 이상이어야 합니다";
-
     public static final String INVALID_MONEY_INPUT = "[ERROR] 구입 금액 입력 오류";
-
     public static final String INVALID_WINNING_NUMBER_INPUT = "[ERROR] 당첨 번호 입력 오류";
-
     public static final String INVALID_BONUS_NUMBER_INPUT = "[ERROR] 보너스 번호 입력 오류";
+    public static final String ALREADY_PICKED_BONUS_NUMBER = "[ERROR] 당첨 로또 번호에 이미 있는 보너스 번호 입니다.";
 }
