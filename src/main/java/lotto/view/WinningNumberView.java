@@ -71,7 +71,7 @@ public class WinningNumberView {
         char winningNumber;
         for (int index = 0; index < winningNumbers.length(); index++) {
             winningNumber = winningNumbers.charAt(index);
-            if (winningNumber < '1' || winningNumber > '9') {
+            if (winningNumber < '0' || winningNumber > '9') {
                 throw new IllegalArgumentException("[ERROR] 당첨번호는 1 ~ 45 사이의 숫자여야 합니다.");
             }
         }
