@@ -75,11 +75,8 @@ public class ApplicationController {
     }
 
     public void control_LottoYield() {
-        //TODO
-        //  - [x] 총 당첨금 계산
-        //  - [x] 수익률 계산
-        //  - [ ] 수익률 출력
         player.registerTotalPrize();
         player.registerLottoYield();
+        outputView.printLottoYield(player.getLottoYield());
     }
 }

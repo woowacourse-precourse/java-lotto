@@ -24,4 +24,8 @@ public class OutputView {
             System.out.println(rank.getMessage() + rank.getWinningResult() + OUTPUT_COUNT.getMessage());
         }
     }
+
+    public void printLottoYield(String lottoYield) {
+        System.out.println(OUTPUT_TOTAL_YIELD.getMessage() + lottoYield + OUTPUT_POSTFIX.getMessage());
+    }
 }

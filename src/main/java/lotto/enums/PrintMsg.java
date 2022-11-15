@@ -8,6 +8,8 @@ public enum PrintMsg {
     OUTPUT_PURCHASE_LOTTO("개를 구매했습니다."),
     OUTPUT_WINNING_RESULT("당첨 통계\n---"),
     OUTPUT_COUNT("개"),
+    OUTPUT_TOTAL_YIELD("총 수익률은 "),
+    OUTPUT_POSTFIX("%입니다."),
     ERROR_PREFIX("[ERROR] "),
     ERROR_INPUT_VALUE_IS_NOT_NUMBER("입력은 숫자 형식이어야 합니다."),
     ERROR_PURCHASE_AMOUNT_IS_NOT_DIVIDED_BY_1000("구입 금액은 1,000원 단위로 입력해야 합니다."),
