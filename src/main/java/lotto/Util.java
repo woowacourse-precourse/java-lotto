@@ -34,7 +34,7 @@ public class Util {
 
     public static boolean isDivisionByThousand(int number){
 
-        if(number % 1000 == 0) return true;
+        if(number % 1000 == 0 && number != 0) return true;
 
         return false;
     }
