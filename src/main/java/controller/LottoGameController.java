@@ -1,19 +1,31 @@
 package controller;
 
+import java.util.List;
+import java.util.Map;
+
 import model.Lotto;
+import model.LottoMachine;
+import model.LottoProfitCalculator;
 import model.LottoRandomNumberGenerator;
 import model.LottoTotalCountCalculator;
-import view.LottoOutput;
+
+import view.LottoBonusNumberInput;
+import view.LottoOutputView;
 import view.LottoPurchaseAmountInput;
-import view.LottoTotalCountOutput;
+import view.LottoWinningNumberInput;
 
 public class LottoGameController {
 
 	private LottoPurchaseAmountInput lottoPurchaseAmountInput = new LottoPurchaseAmountInput();
-	private LottoTotalCountCalculator lottoTotalCountCalculator = new LottoTotalCountCalculator();
-	private LottoOutput lottoOutput = new LottoOutput();
-	private LottoTotalCountOutput lottoTotalCountOutput = new LottoTotalCountOutput();
+	private LottoWinningNumberInput lottoWinningNumberInput = new LottoWinningNumberInput();
+	private LottoBonusNumberInput lottoBonusNumberInput = new LottoBonusNumberInput();
+
+	private LottoOutputView lottoOutputView = new LottoOutputView();
+
 	private LottoRandomNumberGenerator randomGenerator = new LottoRandomNumberGenerator();
+	private LottoMachine lottoMachine = new LottoMachine();
+	private LottoTotalCountCalculator lottoTotalCountCalculator = new LottoTotalCountCalculator();
+	private LottoProfitCalculator lottoProfitCalculator = new LottoProfitCalculator();
 
 	public void gameProgress() {
 		long lottoPurchaseAmount = lottoPurchaseAmountInput();
@@ -22,8 +34,20 @@ public class LottoGameController {
 
 		for (int lottoCount = 0; lottoCount < lottoTotalCount; lottoCount++) {
 			Lotto lotto = lottoCreate();
+			lottoMachine.addLotto(lotto);
 			lottoPrint(lotto);
 		}
+		System.out.println();
+
+		List<Integer> winningNumbers = lottoWinningNumberInput.readLottoWinningNumber();
+		int bonusNumber = lottoBonusNumberInput.readLottoBonusNumber();
+
+		Map<Integer, Integer> winningDetails = lottoMachine.calculateLottoResult(winningNumbers, bonusNumber);
+		lottoOutputView.showWinningResult(winningDetails);
+
+		double lottoProfit = lottoProfitCalculator.calculateLottoProfit(winningDetails, lottoPurchaseAmount);
+
+		lottoOutputView.showLottoProfit(lottoProfit);
 	}
 
 	private long lottoPurchaseAmountInput() {
@@ -36,7 +60,7 @@ public class LottoGameController {
 	}
 
 	private void lottoTotalCountPrint(long totalCount) {
-		lottoTotalCountOutput.showLottoCount(totalCount);
+		lottoOutputView.showLottoCount(totalCount);
 	}
 
 	private Lotto lottoCreate() {
@@ -45,6 +69,6 @@ public class LottoGameController {
 	}
 
 	private void lottoPrint(Lotto lotto) {
-		lottoOutput.showLotto(lotto);
+		lottoOutputView.showLotto(lotto);
 	}
 }
