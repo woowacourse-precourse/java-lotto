@@ -1,7 +1,9 @@
 package lotto.view;
 
 import lotto.domain.Lotto;
+import lotto.domain.MoneyUnit;
 
+import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.List;
 
@@ -27,16 +29,29 @@ public class OutputView {
         System.out.println("보너스 번호를 입력해 주세요.");
     }
 
-    public static void printStatic(List<Integer> numbers, double number) {
-        System.out.println("당첨 통계\n" +
-                "---\n" +
-                "3개 일치 (5,000원) - " + numbers.get(1) + "개\n" +
-                "4개 일치 (50,000원) - " + numbers.get(2) + "개\n" +
-                "5개 일치 (1,500,000원) - " + numbers.get(3) + "개\n" +
-                "5개 일치, 보너스 볼 일치 (30,000,000원) - " + numbers.get(4) + "개\n" +
-                "6개 일치 (2,000,000,000원) - " + numbers.get(5) + "개\n" +
-                "총 수익률은 " + number + "%입니다.");
+    public static void printStatic(List<Integer> numbers, double yield) {
+        System.out.print("당첨 통계\n---\n");
+        for (int place = 5; place >= 1; place--) {
+            System.out.println(getCollectWord(place) + " " + getPrizeMoneyWord(place) + " - " + getNumberOfWin(numbers, place));
+        }
+        System.out.println("총 수익률은 " + new BigDecimal(yield).toString() + "%입니다.");
     }
 
+    private static String getCollectWord(int place) {
+        if (place >= 3) {
+            return 8 - place + "개 일치";
+        }
+        if (place == 2) {
+            return "5개 일치, 보너스 볼 일치";
+        }
+        return "6개 일치";
+    }
 
+    private static String getPrizeMoneyWord(int place) {
+        return "(" + MoneyUnit.getUnitString(place) + "원)";
+    }
+
+    private static String getNumberOfWin(List<Integer> numbers, int place) {
+        return numbers.get(place) + "개";
+    }
 }
