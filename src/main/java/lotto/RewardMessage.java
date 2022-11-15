@@ -71,4 +71,13 @@ public class RewardMessage {
         }
         return money;
     }
+
+    static String lottoYield(int buyLottoMoney, int sumReward){
+        double yield = ((double) sumReward / (double) buyLottoMoney)*100.0;
+        return String.format("%.1f",yield);
+    }
+    static void yieldMessage(int buyLottoMoney, int sumReward){
+        String yield = lottoYield(buyLottoMoney,sumReward);
+        System.out.println(ALL_YIELD_MESSAGE_FRONT+yield+ALL_YIELD_MESSAGE_BACK);
+    }
 }
