@@ -33,9 +33,9 @@ public enum Ranking {
         this.bonusNumCheck = bonusNumCheck;
     }
 
-    private static Ranking findRank(int correctCount,boolean bonusNum){
+    private static Ranking findRank(int correctCount,boolean bonusNumCheck){
         if(correctCount == 5){
-
+            decideSecondOrThird(bonusNumCheck);
         }
         return Arrays.stream(Ranking.values())
                 .filter( r -> r.getCorrectNums() == correctCount)
@@ -43,5 +43,8 @@ public enum Ranking {
                 .orElse(FAIL);
     }
 
-
+    private static Ranking decideSecondOrThird(boolean bonusNumCheck){
+        if(bonusNumCheck) return SECOND;
+        return THIRD;
+    }
 }
