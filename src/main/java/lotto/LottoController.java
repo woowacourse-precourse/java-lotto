@@ -22,4 +22,12 @@ public class LottoController {
         return lottoService.createWinningLotto(lottoNumbers, bonusNumber);
     }
 
+    public List<LottoResult> getLottoResults(WinningLotto winningLotto, List<Lotto> userLottos) {
+        return lottoService.getLottoResults(winningLotto, userLottos);
+    }
+
+    public float calculateRateOfReturn(List<LottoResult> lottoResults) {
+        return lottoService.calculateRateOfReturn(lottoResults);
+    }
+
 }

@@ -8,4 +8,8 @@ public interface LottoService {
     List<Lotto> createLottos(int orderQuantity);
 
     WinningLotto createWinningLotto(List<Integer> lottoNumbers, int bonusNumber);
+
+    List<LottoResult> getLottoResults(WinningLotto winningLotto, List<Lotto> userLottos);
+
+    float calculateRateOfReturn(List<LottoResult> lottoResults);
 }
