@@ -22,8 +22,8 @@ public class Lottos {
             List<Integer> unmodifiableNumbers = getLottoNumbers();
 
             List<Integer> numbers = convertToSortedList(unmodifiableNumbers);
-            Lotto lotto = new Lotto(numbers);
-            lottoTickets.add(lotto);
+            Lotto ticket = new Lotto(numbers);
+            lottoTickets.add(ticket);
         }
 
         return lottoTickets;
