@@ -48,4 +48,11 @@ class LottoTest {
         assertThat(isBonusNum).isTrue();
     }
 
+    @DisplayName("보너스 번호가 당첨 번호와 중복되었는지 판단")
+    @Test
+    void is_bonusnum_duplicated_with_winningnums() {
+        boolean isDuplicated = Lotto.isWinningLottoHasBouns(5,
+            new Lotto(List.of(1, 2, 3, 4, 5, 6)));
+        assertThat(isDuplicated).isTrue();
+    }
 }
