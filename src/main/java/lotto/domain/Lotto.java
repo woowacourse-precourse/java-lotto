@@ -20,7 +20,11 @@ public class Lotto {
     }
 
     long countMatchingNumber(Lotto winNumbers) {
-        return this.numbers.stream().filter(i -> winNumbers.numbers.contains(i)).count();
+        return this.numbers.stream().filter(winNumbers.numbers::contains).count();
+    }
+
+    boolean contains(Bonus bonusNumber) {
+        return numbers.contains(bonusNumber.getBonusNumber());
     }
 
     private void validate(List<Integer> numbers) {
