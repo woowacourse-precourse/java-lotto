@@ -1,5 +1,6 @@
 package lotto;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -7,9 +8,12 @@ public class Lotto {
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
-        validate(numbers);
-        ascendingSort(numbers);
-        this.numbers = numbers;
+        List<Integer> lottoNumbers;
+        lottoNumbers = new ArrayList<>(numbers);
+        validate(lottoNumbers);
+        checkDuplication(numbers);
+        Collections.sort(lottoNumbers);
+        this.numbers = lottoNumbers;
     }
 
     private void validate(List<Integer> numbers) {
@@ -18,8 +22,10 @@ public class Lotto {
         }
     }
 
-    private void ascendingSort(List<Integer> numbers){
-        Collections.sort(numbers);
+    private void checkDuplication(List<Integer> numbers){
+        if (numbers.size() != numbers.stream().distinct().count()) {
+            throw new IllegalArgumentException("[ERROR] 중복된 로또 번호가 존재합니다.");
+        }
     }
 
     public List<Integer> getNumbers(){
