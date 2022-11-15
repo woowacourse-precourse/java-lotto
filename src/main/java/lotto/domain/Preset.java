@@ -7,6 +7,9 @@ public class Preset {
     public static final int LOTTO_MIN_VALUE = 1;
     public static final int LOTTO_MAX_VALUE = 45;
 
+    public static final int FIVE_EQUALS = 5;
+    public static final int SECOND_WINNING = 7;
+
     public static final String LINE_FEED = "\n";
     public static final String INPUT_REGEX = ",";
     public static final int pourcentage = 100;

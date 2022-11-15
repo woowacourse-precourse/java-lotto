@@ -8,8 +8,7 @@ import lotto.domain.WinningType;
 import java.text.DecimalFormat;
 import java.util.*;
 
-import static lotto.domain.Preset.LOTTO_LENGTH;
-import static lotto.domain.Preset.LOTTO_PRICE;
+import static lotto.domain.Preset.*;
 import static lotto.domain.WinningType.getWinningType;
 import static lotto.view.InputView.*;
 import static lotto.view.OutputView.*;
@@ -37,30 +36,44 @@ public class LottoController {
     }
 
     public static void printResult(WinningLotto winningLotto, Lottos lottos, int inputMoney) {
-        System.out.println(PRINT_RESULT_MAIN_MESSAGE);
+
+        printResultMainMessage();
+
+        Map<WinningType, Integer> winningResults = getWinningResults(winningLotto, lottos);
+        printWinningResult(winningResults);
+
+        double earning = calculateEarning(winningResults, inputMoney);
+        printEarning(earning);
+    }
+
+    public static Map<WinningType, Integer> getWinningResults(WinningLotto winningLotto, Lottos purchasedLottos) {
 
         Map<WinningType, Integer> winningResults = new EnumMap<>(WinningType.class);
 
-        for (Lotto lotto : lottos.getLottos()) {
+        Boolean withBonus;
+        for (Lotto lotto : purchasedLottos.getLottos()) {
 
-            Boolean withBonus = false;
-            int equalNumber = equalNumberCounter(winningLotto, lotto);
+            withBonus = false;
+            int equalNumber = countEqualNumber(winningLotto, lotto);
 
-            if (equalNumber == 7) {
+            if (equalNumber == SECOND_WINNING) {
+                equalNumber = FIVE_EQUALS;
                 withBonus = true;
-                equalNumber = 5;
             }
             WinningType type = getWinningType(equalNumber, withBonus);
-
-            if (winningResults.containsKey(type)) {
-                winningResults.put(type, winningResults.get(type) + 1);
-
-            } else winningResults.put(type, 1);
+            countWinnings(winningResults, type);
         }
 
-        printWinningResult(winningResults);
+        return winningResults;
+    }
 
-        calculateEarning(winningResults, inputMoney);
+    public static void countWinnings(Map<WinningType, Integer> winningResults, WinningType type) {
+
+        if (winningResults.containsKey(type))
+            winningResults.put(type, winningResults.get(type) + 1);
+
+        if (!winningResults.containsKey(type))
+            winningResults.put(type, 1);
     }
 
     public static void printWinningResult(Map<WinningType, Integer> winningResults) {
@@ -68,31 +81,29 @@ public class LottoController {
         Iterator<WinningType> winningTypeIterator = getWinningTypeIterator();
         while (winningTypeIterator.hasNext()) {
             WinningType type = winningTypeIterator.next();
+            winningResults.putIfAbsent(type, 0);
             printEachWinningResult(type, winningResults);
         }
     }
 
-    public static int equalNumberCounter(WinningLotto winningLotto, Lotto userLotto) {
+    public static int countEqualNumber(WinningLotto winningLotto, Lotto userLotto) {
 
         int count = 0;
-        for (int i = 0; i < LOTTO_LENGTH; i++) {
-            int number = winningLotto.getLottoNumber(i);
-
-            if (userLotto.getNumbers().contains(number))
+        for (int number : winningLotto.getLottoNumber())
+            if (userLotto.contains(number))
                 count += 1;
-        }
 
-        if (count == 5) {
-            int bonusNumber = winningLotto.getBonusNumber();
+        if (count != FIVE_EQUALS)
+            return count;
 
-            if (userLotto.getNumbers().contains(bonusNumber))
-                count = 7;
-        }
+        int bonusNumber = winningLotto.getBonusNumber();
+        if (userLotto.contains(bonusNumber))
+            count = SECOND_WINNING;
 
         return count;
     }
 
-    public static void calculateEarning(Map<WinningType, Integer> winningResults, int inputMoney) {
+    public static double calculateEarning(Map<WinningType, Integer> winningResults, int inputMoney) {
 
         double earning = 0;
 
@@ -102,11 +113,11 @@ public class LottoController {
             earning += (double) type.getWinnings() * (double) winningResults.get(type);
         }
         earning /= inputMoney;
-        printEarning(earning);
+
+        return earning;
     }
 
-    public static Iterator<WinningType> getWinningTypeIterator () {
-
+    public static Iterator<WinningType> getWinningTypeIterator() {
         return Arrays.stream(WinningType.values()).iterator();
     }
 }
