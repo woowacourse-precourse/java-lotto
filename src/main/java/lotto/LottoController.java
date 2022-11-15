@@ -66,8 +66,18 @@ public class LottoController {
 		model.addAttribute("bonusNumber", Integer.parseInt(bonusNumber));
 	}
 
-	//
-	// private void handleAnalysis(List<Lotto> lottos, List<Integer> answer) {
-	//
-	// }
+	private void handleAnalysis() {
+		List<Lotto> lottos = (List<Lotto>)model.getAttribute("Lottos");
+		Lotto correctLotto = (Lotto)model.getAttribute("correctLotto");
+		int bonusNumber = (int)model.getAttribute("bonusNumber");
+		for (Lotto lotto : lottos) {
+			int corrections = getCorrections(lotto, correctLotto);
+		}
+	}
+
+	public int getCorrections(Lotto lotto, Lotto correctLotto) {
+		List<Integer> input = lotto.getLotto();
+		List<Integer> target = correctLotto.getLotto();
+		return (int)input.stream().filter(i -> target.contains(i)).count();
+	}
 }
