@@ -14,7 +14,7 @@ public class TicketMachineTest {
     @ValueSource(ints = {3, 4, 5})
     void issueTickets(int ticketNumber) {
         assertThat(TicketMachine.issueTickets(ticketNumber).size()).isEqualTo(ticketNumber);
-        for(List<Integer> ticket : TicketMachine.issueTickets(ticketNumber)) {
+        for (List<Integer> ticket : TicketMachine.issueTickets(ticketNumber)) {
             assertThat(ticket.stream().distinct().count() == ticket.size()).isTrue();
         }
     }

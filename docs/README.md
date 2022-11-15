@@ -33,7 +33,7 @@
 #### TicketMachine
 - 구입한 금액만큼의 티켓을 랜덤넘버로 발행
 #### WinResultManager
-- 일치하는 번호의 개수, 금액을 반환
+- 일치하는 번호의 개수 반환
 #### EarningRateCalculator
 - 수익률 계산
 ### 예외처리 로직
