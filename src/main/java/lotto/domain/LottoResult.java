@@ -14,7 +14,16 @@ public class LottoResult {
         resultMap = setResultMap(userLottos, winningLotto);
         yield = calculateYield(money);
     }
+    public Map<Rank, Integer> setResultMap(UserLottos userLottos, WinningLotto winningLotto) {
+        Map<Rank, Integer> resultMap = new HashMap<>();
+        Set<Lotto> lottoSet = userLottos.getUserLottos();
 
+        for (Lotto eachLotto : lottoSet) {
+            Rank rank = winningLotto.getRankof(eachLotto);
+            addToResultMap(rank, resultMap);
+        }
+        return resultMap;
+    }
 
 
 
