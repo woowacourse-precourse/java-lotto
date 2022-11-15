@@ -53,7 +53,6 @@ public class InputManager {
         }
         validateWinningNumbers(winningNumbers);
 
-
         return winningNumbers;
     }
 

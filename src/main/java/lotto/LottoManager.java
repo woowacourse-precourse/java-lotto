@@ -33,6 +33,7 @@ public class LottoManager {
             System.out.println(exception);
             return 1;
         }
+
         return 0;
     }
 
@@ -52,6 +53,7 @@ public class LottoManager {
             Lotto lotto = new Lotto(numbers);
             lottos.add(lotto);
         }
+
         return lottos;
     }
 
@@ -75,6 +77,7 @@ public class LottoManager {
                 count += 1;
             }
         }
+
         return count;
     }
 
@@ -82,6 +85,7 @@ public class LottoManager {
         if (lotto.getNumbers().contains(bonusNumbers)) {
             return true;
         }
+
         return false;
     }
 

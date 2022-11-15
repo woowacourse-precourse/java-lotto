@@ -27,6 +27,7 @@ public class Lotto {
         if (numbersSet.size() != 6) {
             throw new IllegalArgumentException(LOTTO_DUPLICATE_ERROR);
         }
+
         for (Integer number : numbers) {
             if (number < 1 || number > 45) {
                 throw new IllegalArgumentException(LOTTO_RANGE_ERROR);
