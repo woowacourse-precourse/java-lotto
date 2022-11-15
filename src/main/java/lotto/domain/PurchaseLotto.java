@@ -15,8 +15,19 @@ public class PurchaseLotto {
         generateLottoWithCount(lottoCnt);
     }
 
-    public static List<Lotto> generateLottoWithCount(int lottoCnt) {
+    public static void generateLottoWithCount(int lottoCnt) {
         LottoView.printLottoCount(lottoCnt);
-        return null;
+
+        List<Lotto> lottos = new ArrayList<>();
+        for (int cnt = 0; cnt < lottoCnt; cnt++) {
+            lottos.add(generateLotto());
+        }
+
+        LottoView.printLottoNumbers(lottos);
+    }
+
+    public static Lotto generateLotto() {
+        List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+        return new Lotto(numbers);
     }
 }

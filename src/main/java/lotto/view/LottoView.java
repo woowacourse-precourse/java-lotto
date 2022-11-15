@@ -1,5 +1,6 @@
 package lotto.view;
 
+import lotto.domain.Lotto;
 import lotto.util.OutputMessage;
 import lotto.util.ResultMessage;
 
@@ -19,4 +20,11 @@ public class LottoView {
         System.out.printf(ResultMessage.LOTTO_COUNT.printMessage(), count);
     }
 
+    // 로또 발행 리스트 출력
+    public static void printLottoNumbers(List<Lotto> lottos) {
+        for (Lotto lotto : lottos) {
+            List<Integer> lottoNumbers = lotto.getNumbers();
+            System.out.println(lottoNumbers);
+        }
+    }
 }

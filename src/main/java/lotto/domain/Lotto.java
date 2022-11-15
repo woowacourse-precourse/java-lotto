@@ -16,5 +16,7 @@ public class Lotto {
         }
     }
 
-    // 입력값 검증
+    public List<Integer> getNumbers() {
+        return numbers;
+    }
 }
