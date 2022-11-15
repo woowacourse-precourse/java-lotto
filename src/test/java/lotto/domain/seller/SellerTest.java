@@ -22,15 +22,6 @@ public class SellerTest {
         assertThat(lottoCount).isEqualTo(10);
     }
 
-    @DisplayName("[예외 발생] 로또 금액이 1000원으로 나누어 떨어지지 않는다면 IllegalException 발생")
-    @Test
-    void findLottoCountByMoneyOfDivide1000() {
-        Seller seller = new LottoMachine(new WinningLotto(new Lotto(List.of(1,2,3,4,5,6)), 7));
-        int money = 10001;
-        assertThatThrownBy(() -> LottoGenerator.findLottoCountByMoney(money))
-            .isInstanceOf(IllegalArgumentException.class);
-    }
-
     @DisplayName("[성공] 로또 당첨 번호와 구매한 로또 번호를 비교하여 당첨 번호에 포함되는 개수 찾기")
     @Test
     void compareNumbers() {
