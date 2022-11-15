@@ -16,6 +16,9 @@ public class Lotto {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException();
         }
+        String numbs = numbers.toString().replaceAll("[^0-9,]", "");
+        ValidationCheck.checkOverlapAndSize(numbs);
+        ValidationCheck.isBetweenCertainNumbers(numbs, 1, 45);
     }
     public void printLotto(){
         List<Integer> sortedLotto = new ArrayList<>(this.numbers);
