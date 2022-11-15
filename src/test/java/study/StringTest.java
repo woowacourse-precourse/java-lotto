@@ -6,8 +6,9 @@ import java.text.DecimalFormat;
 import org.junit.jupiter.api.Test;
 
 public class StringTest {
+
     @Test
-    void ShouldBe2DecimalPointAndComma() {
+    void should_Be2DecimalPointAndHaveComma_When_AdjustDecimalFormat() {
         // given
         double yieldRaw = 16283 / 3.0;
         // when
@@ -18,7 +19,7 @@ public class StringTest {
     }
 
     @Test
-    void ShouldBeIntegerWhenParse() {
+    void should_BeInt_When_ParseStringStartWithZero() {
         // given
         String numberRaw = "01";
         // when
