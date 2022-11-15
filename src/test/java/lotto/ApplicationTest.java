@@ -8,6 +8,7 @@ import java.util.List;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomUniqueNumbersInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class ApplicationTest extends NsTest {
     private static final String ERROR_MESSAGE = "[ERROR]";
@@ -46,12 +47,27 @@ class ApplicationTest extends NsTest {
         );
     }
 
+
     @Test
     void 예외_테스트() {
         assertSimpleTest(() -> {
             runException("1000j");
             assertThat(output()).contains(ERROR_MESSAGE);
         });
+    }
+
+    @Test
+    void 당첨번호_개수_테스트() {
+        assertThatThrownBy(() -> runException("8000", "1,2,3,4,5,6,7", "8")).isInstanceOf(IllegalArgumentException.class);
+    }
+    @Test
+    void 중복_당첨번호_테스트() {
+        assertThatThrownBy(() -> runException("8000", "1,2,3,4,5,5", "7")).isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void _1000의_배수_테스트() {
+        assertThatThrownBy(() -> runException("5500")).isInstanceOf(IllegalArgumentException.class);
     }
 
     @Override
