@@ -13,31 +13,24 @@ public class LottoPublisher {
         this.lottoMetadata = lottoMetadata;
     }
 
-    public Lotto purchase() {
+    List<Lotto> purchase(Integer num) {
+        return purchaseMultipleLotto(num);
+    }
+
+    private List<Lotto> purchaseMultipleLotto(Integer num) {
+        List<Lotto> lottos = new ArrayList<>();
+        for (int i = 0; i < num; ++i) {
+            lottos.add(purchaseOne());
+        }
+        return lottos;
+    }
+
+    private Lotto purchaseOne() {
         List<Integer> numbers = Randoms.pickUniqueNumbersInRange(
                 lottoMetadata.getStartNumber(),
                 lottoMetadata.getEndNumber(),
                 LOTTO_NUMBER_COUNT
         );
         return new Lotto(numbers);
-    }
-
-    List<Lotto> purchase(Integer payment) {
-        raiseErrorIfRemainderIsZero(payment, lottoMetadata.getPriceOfLotto());
-        return purchaseMultipleLotto(payment);
-    }
-
-    private List<Lotto> purchaseMultipleLotto(Integer payment) {
-        List<Lotto> lottos = new ArrayList<>();
-        for (int i = 0; i < payment / lottoMetadata.getPriceOfLotto(); ++i) {
-            lottos.add(purchase());
-        }
-        return lottos;
-    }
-
-    private void raiseErrorIfRemainderIsZero(Integer payment, Integer wonPerLotto) {
-        if (payment % wonPerLotto != 0) {
-            throw new IllegalArgumentException("[ERROR] 구입 금액이 로또 가격으로 나누어 떨어지지 않습니다.");
-        }
     }
 }

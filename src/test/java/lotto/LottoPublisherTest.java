@@ -11,23 +11,13 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 class LottoPublisherTest {
     private static final LottoMetadata lottoMetadata = new LottoMetadata.Builder().build();
 
-    @DisplayName("지불금액이 로또 가격으로 나누어떨어지지 않으면 예외가 발생한다.")
-    @Test
-    void remainderIsNotZero() {
-        LottoPublisher lottoPublisher = new LottoPublisher(lottoMetadata);
-        Integer payment = 12300;
-        assertThatThrownBy(() -> lottoPublisher.purchase(payment))
-                .isInstanceOf(IllegalArgumentException.class);
-    }
-
-    @DisplayName("지불금액을 로또 가격으로 나눈 몫은 로또 발행 수와 같다.")
+    @DisplayName("개수 만큼 로또를 발행한다.")
     @Test
     void purchaseMultipleLotto() {
         LottoPublisher lottoPublisher = new LottoPublisher(lottoMetadata);
-        Integer payment = 12000;
 
-        List<Lotto> lottos = lottoPublisher.purchase(payment);
+        List<Lotto> lottos = lottoPublisher.purchase(12);
 
-        assertThat(lottos.size()).isEqualTo(payment / lottoMetadata.getPriceOfLotto());
+        assertThat(lottos.size()).isEqualTo(12);
     }
 }

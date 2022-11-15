@@ -11,13 +11,14 @@ public class LottoWinningChecker {
         this.lottoMetadata = lottoMetadata;
     }
 
-    public Map<Prize, Integer> countWinningLotto(Lotto target, List<Lotto> lottos, Integer bonus) {
+    public Map<Prize, Integer> countWinningLotto(Lotto target, Integer bonus, List<Lotto> lottos) {
         Map<Prize, Integer> countTable = initializeCountTable();
-        Integer equalNumber;
+
         for (Lotto lotto : lottos) {
-            equalNumber = target.compare(lotto);
-            Prize prize = lottoMetadata.getPrizeTable()
-                    .get(Map.entry(equalNumber, lotto.getNumbers().contains(bonus)));
+            Integer equalNumber = target.compare(lotto);
+            Prize prize = lottoMetadata.getPrizeTable().get(
+                    Map.entry(equalNumber, lotto.getNumbers().contains(bonus))
+            );
             countTable.put(prize, countTable.get(prize) + 1);
         }
         return countTable;

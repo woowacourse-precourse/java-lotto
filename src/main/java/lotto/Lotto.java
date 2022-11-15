@@ -2,6 +2,7 @@ package lotto;
 
 import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Lotto {
     private final List<Integer> numbers;
@@ -68,5 +69,21 @@ public class Lotto {
 
     public List<Integer> getNumbers() {
         return numbers;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        List<Integer> collect = numbers.stream()
+                .sorted(Comparator.naturalOrder()).collect(Collectors.toList());
+        sb.append('[');
+        for (Integer number : collect) {
+            sb.append(number);
+            sb.append(", ");
+        }
+        sb.delete(sb.lastIndexOf(", "), sb.length());
+        sb.append(']');
+
+        return sb.toString();
     }
 }

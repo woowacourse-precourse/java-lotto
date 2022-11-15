@@ -73,10 +73,8 @@
 
 - 로또의 메타데이터를 갖는다.
   - `private final LottoMetadata lottoMetadata`
-- 로또를 발행한다.
-  - `Lotto purchase()`
-- 구입 금액을 입력받아 로또를 발행한다.
-  - `List<Lotto> purchase(Integer payment)`
+- 개수를 입력받아 로또를 발행한다.
+  - `List<Lotto> purchase(Integer num)`
 
 #### LottoWinningChecker
 
@@ -85,7 +83,7 @@
 - 로또의 메타데이터를 갖는다.
   - `private final LottoMetadata lottoMetadata`
 - 로또 정보를 받아 로또 결과를 계산한다.
-  - `Map<Prize, Integer> countWinningLotto(Lotto target, List<Lotto> lottos, Integer bonus>`
+  - `Map<Prize, Integer> countWinningLotto(Lotto target, Integer bonus, List<Lotto> lottos)`
 
 #### Prize
 
@@ -103,8 +101,8 @@
   - `private final Integer endNumberInRange`
 - 로또 한 장당 가격을 의미한다.
   - `private final Integer wonPerLotto`
-- 로또 숫자의 개수를 의미한다.
-  - `private final Integer numberSize`
+- 로또 당첨의 표를 의미한다.
+  - `private final Map<Map.Entry<Integer, Boolean>, Prize> prizeTable`
 
 ### 입출력 기능
 
@@ -130,15 +128,15 @@
 로또 구매부터 결과 확인까지 로또의 모든 프로세스를 사용자에게 제공하는 ***인터페이스***
 
 - 로또 구매를 안내한다.
-  - `Integer askFeeFronUser()`
-- 하나의 로또를 구매한다.
-  - `Lotto purchase()`
+  - `void askFeeFronUser()`
 - 로또들을 구매한다.
-  - `List<Lotto> purchaseLottos()`
+  - `List<Lotto> purchaseMultipleLotto(Integer payment)`
+- 로또들을 보여준다.
+  - `void showMultipleLotto(List<Lotto> lottos)`
 - 당첨 번호를 얻는다.
-  - `Lotto getWinningNumbers()`
+  - `void setNumbersByUser()`
 - 당첨 결과를 알린다.
-  - `String noticeResult()`
+  - `void announceResult(List<Lotto> lottos)`
 
 #### StdIOLottoSystem
 
@@ -152,3 +150,7 @@
   - `private final LottoPublisher lottoPublisher`
 - 로또 당첨확인기를 갖는다.
   - `private final LottoWinningChecker lottoWinningChecker`
+- 당첨 번호를 갖는다.
+  - `private final Lotto winningNumber`
+- 보너스 번호를 갖는다.
+  - `private final Integer bonusNumber`

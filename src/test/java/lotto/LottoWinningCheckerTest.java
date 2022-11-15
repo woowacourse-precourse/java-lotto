@@ -20,7 +20,7 @@ class LottoWinningCheckerTest {
         List<Lotto> lottos = List.of(lotto);
 
         Map<Prize, Integer> prizeIntegerMap =
-                checker.countWinningLotto(lotto, lottos, bonus);
+                checker.countWinningLotto(lotto, bonus, lottos);
 
         assertThat(prizeIntegerMap.get(Prize.FIRST)).isEqualTo(1);
     }
@@ -35,7 +35,7 @@ class LottoWinningCheckerTest {
         List<Lotto> lottos = List.of(lotto);
 
         Map<Prize, Integer> prizeIntegerMap =
-                checker.countWinningLotto(winningNumber, lottos, bonus);
+                checker.countWinningLotto(winningNumber, bonus, lottos);
 
         assertThat(prizeIntegerMap.get(Prize.SECOND)).isEqualTo(1);
     }
@@ -49,7 +49,8 @@ class LottoWinningCheckerTest {
         Integer bonus = 7;
         List<Lotto> lottos = List.of(lotto);
 
-        Map<Prize, Integer> prizeIntegerMap = checker.countWinningLotto(winningNumber, lottos, bonus);
+        Map<Prize, Integer> prizeIntegerMap =
+                checker.countWinningLotto(winningNumber, bonus, lottos);
 
         assertThat(prizeIntegerMap.get(Prize.THIRD)).isEqualTo(1);
     }
@@ -63,7 +64,8 @@ class LottoWinningCheckerTest {
         Integer bonus = 7;
         List<Lotto> lottos = List.of(lotto);
 
-        Map<Prize, Integer> prizeIntegerMap = checker.countWinningLotto(winningNumber, lottos, bonus);
+        Map<Prize, Integer> prizeIntegerMap =
+                checker.countWinningLotto(winningNumber, bonus, lottos);
 
         assertThat(prizeIntegerMap.get(Prize.FOURTH)).isEqualTo(1);
     }
@@ -77,7 +79,8 @@ class LottoWinningCheckerTest {
         Integer bonus = 7;
         List<Lotto> lottos = List.of(lotto);
 
-        Map<Prize, Integer> prizeIntegerMap = checker.countWinningLotto(winningNumber, lottos, bonus);
+        Map<Prize, Integer> prizeIntegerMap =
+                checker.countWinningLotto(winningNumber, bonus, lottos);
 
         assertThat(prizeIntegerMap.get(Prize.FIFTH)).isEqualTo(1);
     }
