@@ -3,6 +3,7 @@ package lotto;
 import static lotto.response.Error.LOTTO_NUMBER_COUNT_ERROR;
 import static lotto.response.Error.LOTTO_NUMBER_DUPLICATION_ERROR;
 import static lotto.response.Error.LOTTO_NUMBER_OUT_OF_RANGE_ERROR;
+import static lotto.response.Error.LOTTO_NUMBER_TYPE_ERROR;
 import static lotto.response.Error.LOTTO_PURCHASE_MONETARY_UNIT_ERROR;
 import static lotto.response.Error.LOTTO_PURCHASE_TYPE_ERROR;
 
@@ -57,6 +58,19 @@ public class Validation {
   }
 
   /**
+   * Verify that the bonus number is formatted correctly.
+   * @param number The number of bonus.
+   */
+  public static void validateBonus(String number) {
+    if (!isNumeric(number)) {
+      throw new IllegalArgumentException(LOTTO_NUMBER_TYPE_ERROR.toString());
+    }
+    if (outOfRange(Integer.parseInt(number))) {
+      throw new IllegalArgumentException(LOTTO_NUMBER_OUT_OF_RANGE_ERROR.toString());
+    }
+  }
+
+  /**
    * Verify numbers contains number that have been used once.
    * @param numbers the list of integer to be checked.
    * @return true if no duplicate value exists.
@@ -73,6 +87,15 @@ public class Validation {
    */
   private static boolean outOfRange(List<Integer> numbers) {
     return numbers.stream().anyMatch(num -> num<1 || num>45);
+  }
+
+  /**
+   * Check if the Lotto number is out of range.
+   * @param number the integer to be checked.
+   * @return false if number is not in between 1 and 45.
+   */
+  private static boolean outOfRange(Integer number) {
+    return number < 1 || number > 45;
   }
 
   /**
