@@ -2,6 +2,8 @@ package lotto.domain.constant;
 
 public enum Message {
 
+    NOT_NUMBER_REGEX("\\D"),
+    COMMA(","),
     RESULT_FIFTH("3개 일치 (5,000원) - "),
     RESULT_FOURTH("4개 일치 (50,000원) - "),
     RESULT_THIRD("5개 일치 (1,500,000원) - "),
