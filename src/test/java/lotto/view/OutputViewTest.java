@@ -2,6 +2,7 @@ package lotto.view;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayOutputStream;
@@ -25,6 +26,7 @@ class OutputViewTest {
     }
 
     @Test
+    @DisplayName("구입금액 입력 메세지 출력")
     void announceInsertMoney() {
         // Given
         String message = "구입금액을 입력해 주세요.\n";
