@@ -45,6 +45,7 @@ public class InitSetting {
     public int getMoney(){return money;}
     public void setMoney(int money){this.money=money;}
     public int getCount(){return count;}
+    public void setCount(int count){this.count=count;}
     public boolean getBonusCheck(){return bonusCheck;}
 }
 // 입력 수 만큼 6개의 랜덤 숫자 생성

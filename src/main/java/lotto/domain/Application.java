@@ -14,7 +14,22 @@ public class Application {
         // 초기화
         InitSetting init = new InitSetting();
         init.setInput();
-        init.setException();
+        //init.setException();
+
+        try{
+            init.setMoney(Integer.parseInt(Console.readLine()));
+            MoneyException moneyException = new MoneyException(init.getMoney());
+        }catch(IllegalArgumentException e){
+            System.out.println("[ERROR] 금액은 1000원으로 나누어 떨어져야 합니다.");
+        };
+
+        try {
+            MoneyException moneyException = new MoneyException(init.getMoney());
+            init.setMoney(init.getMoney() / (moneyException.result()));
+        } catch (ArithmeticException e) {
+            System.out.println("[ERROR] 금액은 1000원으로 나누어 떨어져야 합니다.");
+        }
+        init.setCount(init.getMoney()/1000);
         SetRandomSixNumber setRandomSixNumber = new SetRandomSixNumber();
         init.setLottoNumbers(setRandomSixNumber.randomNumber(init.getMoney(), init.getLottoNumbers()));
 
