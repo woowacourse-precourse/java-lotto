@@ -66,13 +66,9 @@ class WinningNumberTest {
                     Arguments.of("A,B,C,D,E,F", "alphabet uppercase"),
                     Arguments.of("a,b,c,d,e,f", "alphabet lowercase"),
                     Arguments.of("0,0,0,0,0,0", "zero"),
-                    Arguments.of("           ", "only white spaces"),
-                    Arguments.of("abcdefABCDEF", "only alphabet"),
                     Arguments.of("0,1,2,3,4,5", "zero with numbers"),
                     Arguments.of("46,47,48,49,50,51", "over max boundary1"),
                     Arguments.of("99,99,99,99,99,99", "over max boundary2"),
-                    Arguments.of("!@#%ADS 23 @#$^5g4g^*1U >Y >?<we_fq", "mixed"),
-                    Arguments.of("", "empty"),
                     Arguments.of(null, "NULL")
                 );
             }
@@ -98,8 +94,12 @@ class WinningNumberTest {
             Stream<Arguments> invalidParameters() throws Throwable {
                 return Stream.of(
 
+                    Arguments.of("           ", "only white spaces"),
+                    Arguments.of("abcdefABCDEF", "only alphabet"),
                     Arguments.of("1 2 3 4 5 6", "white spaces"),
-                    Arguments.of("1!2@3#4$5%6", "special")
+                    Arguments.of("1!2@3#4$5%6", "special"),
+                    Arguments.of("!@#%ADS 23 @#$^5g4g^*1U >Y >?<we_fq", "mixed"),
+                    Arguments.of("", "empty")
                 );
             }
         }
