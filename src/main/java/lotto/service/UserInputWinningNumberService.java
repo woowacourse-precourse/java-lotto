@@ -13,6 +13,11 @@ public class UserInputWinningNumberService {
     OutputView outputView = new OutputView();
     UserInputLottoInfoException userInputLottoInfoException = new UserInputLottoInfoException();
 
+    public Lotto setWinningNumbersInfo() {
+        List<Integer> winningNumbers = setWinningNumbers();
+        int bonusNumber = setBonusNumbers();
+        return setLotto(winningNumbers, bonusNumber);
+    }
     public List<Integer> setWinningNumbers() {
         outputView.printWinningNumberQuestion();
         String[] winningNumbers = inputView.inputWinningNumber();
@@ -44,5 +49,11 @@ public class UserInputWinningNumberService {
         userInputLottoInfoException.verifyExistBlank(bonusNumber, "보너스 번호 입력 중 곰백이 있습니다.");
         userInputLottoInfoException.isInputValueOnlyNumber(bonusNumber, "보너스 번호는 한 개이며, 숫자만 가능합니다.");
         userInputLottoInfoException.checkLottoNumberRange(bonusNumber, "1 ~ 45 사이의 숫자만 입력가능합니다.");
+    }
+
+    public Lotto setLotto(List<Integer> winningNumbers, int bonusNumber) {
+        Lotto lotto = new Lotto(winningNumbers);
+        lotto.setBonusNumber(bonusNumber);
+        return lotto;
     }
 }
