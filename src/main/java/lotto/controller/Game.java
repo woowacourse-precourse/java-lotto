@@ -42,9 +42,8 @@ public class Game {
         return new Picker(winningLotto, bonusNumber);
     }
 
-    private List<Lotto> issueLottosWith(Money capital) {
-        List<Lotto> lottos = new Seller().issueLottos(capital);
-
+    private List<Lotto> issueLottosWith(Money money) {
+        List<Lotto> lottos = Seller.issueLottosWith(money);
         OutputView.printPurchase(lottos);
         OutputView.printIssuedLottos(lottos);
         return lottos;
