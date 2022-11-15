@@ -16,10 +16,7 @@ public class Game {
     }
 
     public void start() {
-        showPurchaseInputMessage();
-        player.getPurchaseCost();
-        player.purchaseLotto();
-        printPurchasedLotto(player.getLottos());
+        purchaseLotto();
 
         showWinningNumberInputMessage();
         Lotto winningNumbers = player.getWinningNumbers();
@@ -31,6 +28,13 @@ public class Game {
 
         showStatistic();
         showRateOfReturn(player.getRateOfReturn());
+    }
+
+    public void purchaseLotto() {
+        showPurchaseInputMessage();
+        player.getPurchaseCost();
+        player.purchaseLotto();
+        printPurchasedLotto(player.getLottos());
     }
 
     public void compareLottoNumbers(Lotto winningNumbers, int bonusNumber) {
