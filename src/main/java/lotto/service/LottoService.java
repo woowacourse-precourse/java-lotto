@@ -1,5 +1,6 @@
-package lotto;
+package lotto.service;
 
+import lotto.utils.RandomGenerator;
 import lotto.domain.*;
 import lotto.domain.LottoNumber;
 
@@ -10,7 +11,6 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class LottoService {
-    private final RandomGenerator randomGenerator = new RandomGenerator();
     private final List<Lotto> lotteries = new ArrayList<>();
     private WinningResult winningResult;
     private LottoMoney lottoMoney;
@@ -20,7 +20,7 @@ public class LottoService {
         int buyQuantity = lottoMoney.getMoney() / 1000;
 
         for (int i = 0; i < buyQuantity; i++) {
-            lotteries.add(new Lotto(randomGenerator.createRandomNumbers()));
+            lotteries.add(new Lotto(RandomGenerator.createRandomNumbers()));
         }
     }
 

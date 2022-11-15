@@ -2,8 +2,8 @@ package lotto.controller;
 
 import camp.nextstep.edu.missionutils.Console;
 
-import lotto.LottoMessage;
-import lotto.LottoService;
+import lotto.view.LottoMessage;
+import lotto.service.LottoService;
 import lotto.domain.Lotto;
 import lotto.domain.LottoMoney;
 import lotto.domain.WinningResult;

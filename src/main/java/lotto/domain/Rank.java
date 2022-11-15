@@ -32,10 +32,6 @@ public enum Rank {
         return coincideCount;
     }
 
-    public boolean isCoincideBonus() {
-        return coincideBonus;
-    }
-
     public static Rank decide(long coincideCount, boolean coincideBonus) {
         return Arrays.stream(Rank.values())
                 .filter(rank -> rank.coincideCount == coincideCount)
