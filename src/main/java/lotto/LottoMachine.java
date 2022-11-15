@@ -24,6 +24,20 @@ public class LottoMachine {
         }
     }
 
+    public void calculateResult(List<Integer> winning, int bonus) {
+        for (Lotto lotto : lottos) {
+            int matchCount = lotto.getMatchNumberCount(winning);
+            boolean haveBonus = lotto.haveBonusNumber(bonus);
+            WinningResult key = WinningResult.findByMatchCountAndBonus(matchCount, haveBonus);
+            statistics.put(key, statistics.getOrDefault(key, 0) + 1);
+            reward += key.getReward();
+        }
+    }
+
+    public void calculateRevenue(int paidMoney) {
+        revenue = reward / (double) paidMoney;
+    }
+
     public List<Lotto> getLottos() {
         return lottos;
     }
@@ -59,22 +73,5 @@ public class LottoMachine {
 
     public double getRevenue() {
         return revenue;
-    }
-
-    public void calculateResult(List<Integer> winning, int bonus) {
-        for (Lotto lotto : lottos) {
-            int matchCount = lotto.getMatchNumberCount(winning);
-            boolean haveBonus = lotto.haveBonusNumber(bonus);
-            WinningResult key = WinningResult.findByMatchCountAndBonus(matchCount, haveBonus);
-            statistics.put(key, statistics.getOrDefault(key, 0) + 1);
-            reward += key.getReward();
-        }
-    }
-
-    public void calculateRevenue(int paidMoney) {
-        if (paidMoney == 0) {
-            return;
-        }
-        revenue = reward / (double) paidMoney;
     }
 }

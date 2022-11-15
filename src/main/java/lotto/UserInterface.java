@@ -49,9 +49,7 @@ public class UserInterface {
     public List<Integer> inputWinningNumbers() {
         String input = Console.readLine();
         validateInputNumberAndComma(input);
-        return Arrays.stream(input.split(","))
-                .map(Integer::parseInt)
-                .collect(Collectors.toList());
+        return Arrays.stream(input.split(",")).map(Integer::parseInt).collect(Collectors.toList());
     }
 
     private void validateInputOnlyNumber(String input) {

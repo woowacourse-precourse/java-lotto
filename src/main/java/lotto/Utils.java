@@ -26,7 +26,6 @@ public class Utils {
         return Randoms.pickUniqueNumbersInRange(
                 LottoInfo.START_NUMBER.getValue(),
                 LottoInfo.END_NUMBER.getValue(),
-                LottoInfo.NUMBER_COUNT.getValue()
-        );
+                LottoInfo.NUMBER_COUNT.getValue());
     }
 }
