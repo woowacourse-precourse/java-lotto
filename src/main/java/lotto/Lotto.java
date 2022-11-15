@@ -17,4 +17,17 @@ public class Lotto {
     }
 
     // TODO: 추가 기능 구현
+    public void printLotto() {
+        String lotto = "[";
+        for (int i = 0; i < numbers.size(); i++) {
+            lotto += Integer.toString(numbers.get(i));
+
+            if (i < numbers.size()-1) {
+                lotto += ", ";
+            }
+        }
+        lotto += "]";
+
+        System.out.println(lotto);
+    }
 }
