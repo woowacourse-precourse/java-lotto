@@ -16,15 +16,12 @@ public class Lotto {
         return lottoQuantity;
     }
 
-    public Lotto(List<Integer> numbers, int number) {
+    public Lotto(List<Integer> numbers) {
         validateCntNumber(numbers);
         validateDuplicate(numbers);
         validateNumberCondition(numbers);
-        validateBonusDuplicate(numbers, number);
-        validateBonusNumberCondition(number);
         Collections.sort(numbers);
 
-        numbers.add(number);
         this.numbers = numbers;
     }
 
@@ -48,20 +45,6 @@ public class Lotto {
             if (numbers.get(i-1) < 1 || numbers.get(i-1) > 45) {
                 exceptionHandler.foolExceaption("lottoCondition");
             }
-        }
-    }
-
-    private void validateBonusDuplicate(List<Integer> numbers, int number) {
-        for (int compareNumber : numbers) {
-            if (compareNumber == number) {
-                exceptionHandler.foolExceaption("lottoDuplicate");
-            }
-        }
-    }
-
-    private void validateBonusNumberCondition(int number) {
-        if (number < 1 || number > 45) {
-            exceptionHandler.foolExceaption("lottoCondition");
         }
     }
 }
