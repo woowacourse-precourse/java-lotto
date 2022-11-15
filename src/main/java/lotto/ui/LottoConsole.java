@@ -1,15 +1,15 @@
 package lotto.ui;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
-import static lotto.service.LottoMatch.FIVE_MATCHES;
-import static lotto.service.LottoMatch.FIVE_MATCHES_PLUS_BONUS;
-import static lotto.service.LottoMatch.FOUR_MATCHES;
-import static lotto.service.LottoMatch.SIX_MATCHES;
-import static lotto.service.LottoMatch.THREE_MATCHES;
+import static lotto.domain.LottoMatch.FIVE_MATCHES;
+import static lotto.domain.LottoMatch.FIVE_MATCHES_PLUS_BONUS;
+import static lotto.domain.LottoMatch.FOUR_MATCHES;
+import static lotto.domain.LottoMatch.SIX_MATCHES;
+import static lotto.domain.LottoMatch.THREE_MATCHES;
 
 import java.util.EnumMap;
 import java.util.List;
-import lotto.service.LottoMatch;
+import lotto.domain.LottoMatch;
 
 public class LottoConsole {
 

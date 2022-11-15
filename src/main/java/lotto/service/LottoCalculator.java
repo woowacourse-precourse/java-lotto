@@ -1,11 +1,11 @@
 package lotto.service;
 
-import static lotto.service.LottoMatch.NULL_RESULT;
-import static lotto.service.LottoMatch.THREE_MATCHES;
-import static lotto.service.LottoMatch.FOUR_MATCHES;
-import static lotto.service.LottoMatch.FIVE_MATCHES;
-import static lotto.service.LottoMatch.FIVE_MATCHES_PLUS_BONUS;
-import static lotto.service.LottoMatch.SIX_MATCHES;
+import static lotto.domain.LottoMatch.NULL_RESULT;
+import static lotto.domain.LottoMatch.THREE_MATCHES;
+import static lotto.domain.LottoMatch.FOUR_MATCHES;
+import static lotto.domain.LottoMatch.FIVE_MATCHES;
+import static lotto.domain.LottoMatch.FIVE_MATCHES_PLUS_BONUS;
+import static lotto.domain.LottoMatch.SIX_MATCHES;
 import static lotto.ui.LottoConsole.printTotalResult;
 
 import java.util.ArrayList;
@@ -15,6 +15,7 @@ import java.util.Map;
 import lotto.domain.BonusNumber;
 import lotto.domain.CalculatedLotto;
 import lotto.domain.Lotto;
+import lotto.domain.LottoMatch;
 import lotto.domain.UserLottoInfo;
 import lotto.domain.WinningLotto;
 

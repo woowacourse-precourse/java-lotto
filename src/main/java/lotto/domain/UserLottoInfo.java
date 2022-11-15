@@ -1,7 +1,6 @@
 package lotto.domain;
 
 import static lotto.ui.ConsoleMessage.INVALID_INPUT_PRICE;
-import static lotto.ui.LottoConsole.*;
 
 import java.util.ArrayList;
 import java.util.List;

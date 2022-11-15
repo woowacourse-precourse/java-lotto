@@ -1,7 +1,6 @@
-package lotto.service;
+package lotto.domain;
 
 import java.util.Arrays;
-import lotto.domain.CalculatedLotto;
 import lotto.ui.ConsoleMessage;
 
 public enum LottoMatch {
