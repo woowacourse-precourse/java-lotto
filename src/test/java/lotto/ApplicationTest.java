@@ -14,10 +14,10 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 class ApplicationTest extends NsTest {
     private static final String ERROR_MESSAGE = "[ERROR]";
 
-    @BeforeEach
+/*    @BeforeEach
     void beforeEach() {
         PrizeEnum.reset();
-    }
+    }*/
 
     @Test
     void 기능_테스트() {
@@ -130,6 +130,7 @@ class ApplicationTest extends NsTest {
 
         });
     }
+
 
     @Override
     public void runMain() {

@@ -28,6 +28,7 @@ public class GameController {
     }
 
     public void getResult() {
+        PrizeEnum.reset();
         NumberChecker numberChecker = new NumberChecker(winningNumbers, bonusNumber, myLottos);
 
         numberChecker.countRanks();
