@@ -9,15 +9,17 @@ import java.util.List;
 public class LottoGenerator {
     public Lotto generate(List<Integer> numbers) {
         List<Integer> numbersArrayList = new ArrayList<>(numbers);
-
         numbersArrayList.sort(Comparator.naturalOrder());
-        return new Lotto(numbersArrayList);
+
+        List<LottoNumber> lottoNumbers = new ArrayList<>();
+        for(int number : numbersArrayList) {
+            lottoNumbers.add(new LottoNumber(number));
+        }
+        return new Lotto(lottoNumbers);
     }
 
     public Lotto autoGenerate() {
-        List<Integer> numbers = new ArrayList<>(Randoms.pickUniqueNumbersInRange(Lotto.MINIMUM_NUMBER, Lotto.MAXIMUM_NUMBER, Lotto.LOTTO_NUMBER_LENGTH));
-
-        numbers.sort(Comparator.naturalOrder());
-        return new Lotto(numbers);
+        List<Integer> numbers = new ArrayList<>(Randoms.pickUniqueNumbersInRange(LottoNumber.MINIMUM_NUMBER, LottoNumber.MAXIMUM_NUMBER, Lotto.LOTTO_NUMBER_LENGTH));
+        return generate(numbers);
     }
 }

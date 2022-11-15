@@ -1,12 +1,10 @@
 package lotto.model.lotto;
 
-import java.util.List;
-
 public class WinningNumbers {
     private final Lotto winningLotto;
-    private final int bonusNumber;
+    private final LottoNumber bonusNumber;
 
-    public WinningNumbers(Lotto winningLotto, int bonusNumber) {
+    public WinningNumbers(Lotto winningLotto, LottoNumber bonusNumber) {
         validate(winningLotto, bonusNumber);
 
         this.winningLotto = new Lotto(winningLotto);
@@ -14,11 +12,10 @@ public class WinningNumbers {
     }
 
     public int checkMatchCount(Lotto lotto) {
-        List<Integer> lottoNumbers = lotto.getNumbers();
-
         int matchCount = 0;
-        for(int lottoNumber: lottoNumbers) {
-            if(winningLotto.getNumbers().contains(lottoNumber)) {
+        for(int i = 0; i < Lotto.LOTTO_NUMBER_LENGTH; i++) {
+            LottoNumber lottoNumber = lotto.getNumber(i);
+            if(winningLotto.contains(lottoNumber)) {
                 matchCount++;
             }
         }
@@ -27,11 +24,10 @@ public class WinningNumbers {
     }
 
     public boolean checkBonusMatch(Lotto lotto) {
-        List<Integer> lottoNumbers = lotto.getNumbers();
-
         boolean doesBonusMatch = false;
-        for(int lottoNumber: lottoNumbers) {
-            doesBonusMatch = (lottoNumber == bonusNumber);
+        for(int i = 0; i < Lotto.LOTTO_NUMBER_LENGTH; i++) {
+            LottoNumber lottoNumber = lotto.getNumber(i);
+            doesBonusMatch = (lottoNumber.equals(bonusNumber));
             if(doesBonusMatch) {
                 break;
             }
@@ -40,21 +36,13 @@ public class WinningNumbers {
         return doesBonusMatch;
     }
 
-    private static void validate(Lotto lottoNumbers, int bonusNumber) {
-        if(isOutOfRange(bonusNumber)) {
-            throw new IllegalArgumentException("로또 번호는 " + Lotto.MINIMUM_NUMBER + "부터 " + Lotto.MAXIMUM_NUMBER + " 사이의 숫자여야 합니다.");
-        }
-
+    private static void validate(Lotto lottoNumbers, LottoNumber bonusNumber) {
         if(isSameNumberOnLotto(bonusNumber, lottoNumbers)) {
             throw new IllegalArgumentException("로또 번호가 중복되어서는 안 됩니다.");
         }
     }
 
-    private static boolean isOutOfRange(int number) {
-        return number < Lotto.MINIMUM_NUMBER || number > Lotto.MAXIMUM_NUMBER;
-    }
-
-    private static boolean isSameNumberOnLotto(int number, Lotto lottoNumbers) {
-        return lottoNumbers.getNumbers().contains(number);
+    private static boolean isSameNumberOnLotto(LottoNumber number, Lotto lottoNumbers) {
+        return lottoNumbers.contains(number);
     }
 }

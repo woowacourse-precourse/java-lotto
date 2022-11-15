@@ -1,6 +1,6 @@
 package lotto.view;
 
-import java.util.List;
+import lotto.model.lotto.Lotto;
 
 public class ConsoleOutputView {
     public void print(String text) {
@@ -11,28 +11,28 @@ public class ConsoleOutputView {
         System.out.println(text);
     }
 
-    public void println(List<Integer> integers) {
-        System.out.println(integersToString(integers));
+    public void println(Lotto lotto) {
+        System.out.println(lottNumbersToString(lotto));
     }
 
     public void printlnError(String errorText) {
         System.out.println("[ERROR] " + errorText);
     }
 
-    private String integersToString(List<Integer> integers) {
+    private String lottNumbersToString(Lotto lotto) {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("[");
-        for(int i = 0; i < integers.size() - 1; i++) {
-            stringBuilder.append(integers.get(i)).append(", ");
+        for(int i = 0; i < Lotto.LOTTO_NUMBER_LENGTH - 1; i++) {
+            stringBuilder.append(lotto.getNumber(i).getNumber()).append(", ");
         }
 
-        int lastIndex = integers.size() - 1;
+        int lastIndex = Lotto.LOTTO_NUMBER_LENGTH - 1;
         if(lastIndex < 0) {
             stringBuilder.append("]");
             return stringBuilder.toString();
         }
 
-        stringBuilder.append(integers.get(lastIndex)).append("]");
+        stringBuilder.append(lotto.getNumber(lastIndex).getNumber()).append("]");
         return stringBuilder.toString();
     }
 }

@@ -2,6 +2,7 @@ package lotto.controller;
 
 import lotto.model.lotto.Lotto;
 import lotto.model.lotto.LottoGenerator;
+import lotto.model.lotto.LottoNumber;
 import lotto.model.payment.Payment;
 import lotto.model.statistics.LottoResult;
 import lotto.model.statistics.LottoStatistics;
@@ -60,7 +61,7 @@ public class LottoGameController {
         outputView.println(ioManager.makePaymentAlert(payment));
         for(int i = 0; i < payment.getLottoCount(); i++) {
             Lotto tmpLotto = lottoGenerator.autoGenerate();
-            outputView.println(tmpLotto.getNumbers());
+            outputView.println(tmpLotto);
             lottos.add(tmpLotto);
         }
         return lottos;
@@ -72,7 +73,7 @@ public class LottoGameController {
         Lotto winningLotto = lottoGenerator.generate(numbers);
 
         outputView.println(ioManager.PUT_BONUS_NUMBER_INPUT_ALERT);
-        int bonusNumber = inputView.readInteger();
+        LottoNumber bonusNumber = new LottoNumber(inputView.readInteger());
 
         return new WinningNumbers(winningLotto, bonusNumber);
     }

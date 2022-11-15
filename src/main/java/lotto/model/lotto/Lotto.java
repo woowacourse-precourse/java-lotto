@@ -1,18 +1,13 @@
 package lotto.model.lotto;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class Lotto {
     public static final int LOTTO_NUMBER_LENGTH = 6;
-    public static final int MINIMUM_NUMBER = 1;
-    public static final int MAXIMUM_NUMBER = 45;
 
-    private final List<Integer> numbers;
+    private final List<LottoNumber> numbers;
 
-    public Lotto(List<Integer> numbers) {
+    Lotto(List<LottoNumber> numbers) {
         validate(numbers);
 
         this.numbers = new ArrayList<>(numbers);
@@ -22,43 +17,49 @@ public class Lotto {
         this.numbers = new ArrayList<>(oth.numbers);
     }
 
-    public List<Integer> getNumbers() {
-        return new ArrayList<>(numbers);
+    public LottoNumber getNumber(int idx) {
+        return numbers.get(idx);
     }
 
-    private void validate(List<Integer> numbers) {
+    public boolean contains(LottoNumber number) {
+        return numbers.contains(number);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+
+        Lotto lotto = (Lotto) o;
+        return Objects.equals(numbers, lotto.numbers);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(numbers);
+    }
+
+    private void validate(List<LottoNumber> numbers) {
         if(doesNotHaveRightLength(numbers)) {
             throw new IllegalArgumentException("로또 번호는 " + Lotto.LOTTO_NUMBER_LENGTH + "개여야 합니다.");
-        }
-        if(hasNumberOutOfRange(numbers)) {
-            throw new IllegalArgumentException("로또 번호는 " + Lotto.MINIMUM_NUMBER + "부터 " + Lotto.MAXIMUM_NUMBER + " 사이의 숫자여야 합니다.");
         }
         if(haveDuplicate(numbers)) {
             throw new IllegalArgumentException("로또 번호가 중복되어서는 안 됩니다.");
         }
     }
 
-    private boolean doesNotHaveRightLength(List<Integer> numbers) {
+    private boolean doesNotHaveRightLength(List<LottoNumber> numbers) {
         return numbers.size() != Lotto.LOTTO_NUMBER_LENGTH;
     }
 
-    private boolean isOutOfRange(int number) {
-        return number < Lotto.MINIMUM_NUMBER || number > Lotto.MAXIMUM_NUMBER;
-    }
+    private boolean haveDuplicate(List<LottoNumber> numbers) {
+        Set<LottoNumber> tmpSet = new HashSet<>();
 
-    private boolean hasNumberOutOfRange(List<Integer> numbers) {
-        for(int number : numbers) {
-            if(isOutOfRange(number)) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    private boolean haveDuplicate(List<Integer> numbers) {
-        Set<Integer> tmpSet = new HashSet<>();
-
-        for (int number : numbers) {
+        for (LottoNumber number : numbers) {
             if (!tmpSet.add(number)) {
                 return true;
             }
