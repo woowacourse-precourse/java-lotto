@@ -4,7 +4,10 @@ import lotto.domain.WinningsCalculator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -33,7 +36,7 @@ public class WinningsCalculatorTest {
 
     @DisplayName("당첨 번호와 일치하는 개수 세기")
     @Test
-    void countMatchingWinningNumbers() {
+    void countMatchingWinningNumbersTest() {
         List<Integer> lottoNumbers = List.of(2, 3, 5, 7, 10, 40);
         int matchingCount = 4;
         assertThat(winningsCalculator.countMatchingWinningNumbers(lottoNumbers))
@@ -42,15 +45,51 @@ public class WinningsCalculatorTest {
 
     @DisplayName("보너스 번호와 일치하는 개수 세기")
     @Test
-    void countMatchingBonusNumbers() {
+    void countMatchingBonusNumbersTest() {
         List<Integer> lottoNumbers = List.of(7, 2, 5, 3, 10, 41);
         int matchingCount = 0;
         assertThat(winningsCalculator.countMatchingBonusNumbers(lottoNumbers))
                 .isEqualTo(matchingCount);
     }
+
+    @DisplayName("등수 찾기")
+    @Test
+    void addRankingCountsTest() {
+        Map<String, Integer> rankingCounts = new HashMap<>() {
+            {
+                put("FIRST_PLACE", 0);
+                put("SECOND_PLACE", 0);
+                put("THIRD_PLACE", 0);
+                put("FOURTH_PLACE", 0);
+                put("FIFTH_PLACE", 0);
+            }
+        };
+        int winningCount = 5;
+        int bonusCount = 0;
+        winningsCalculator.addRankingCounts(rankingCounts, winningCount, bonusCount);
+        assertThat(rankingCounts.get("THIRD_PLACE"))
+                .isEqualTo(1);
+    }
+
+    @DisplayName("등수 세기")
+    @Test
+    void countLottoRankingsTest() {
+        List<List<Integer>> lottoPapers = List.of(
+                List.of(1, 2, 5, 7, 8, 10), //1등
+                List.of(1, 2, 3, 5, 6, 9), //5등
+                List.of(2, 9, 11, 13, 15, 16), //없음
+                List.of(2, 5, 7, 8, 10, 40) //2등
+        );
+        Map<String, Integer> result = new HashMap<>() {
+            {
+                put("FIRST_PLACE", 1);
+                put("SECOND_PLACE", 1);
+                put("THIRD_PLACE", 0);
+                put("FOURTH_PLACE", 0);
+                put("FIFTH_PLACE", 1);
+            }
+        };
+        assertThat(winningsCalculator.countLottoRankings(lottoPapers))
+                .isEqualTo(result);
+    }
 }
-
-
-/*
-로또 번호와 추첨 번호 비교하여 일치하는 개수 세기
- */
