@@ -77,6 +77,7 @@ public class Validator {
 
     public static void isDuplicated(String[] Input) throws IllegalArgumentException {
         HashSet<Integer> duplicateTest = new HashSet<>();
+        System.out.println(Input.length+ " " + duplicateTest.size());
         for (int i = 0; i < Input.length; i++) {
             duplicateTest.add(Integer.parseInt(Input[i]));
         }

@@ -6,7 +6,7 @@ import static lotto.NumberType.NUMBER_START;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.List;
-
+import
 public class Lotto {
     private final List<Integer> numbers;
     public Lotto(List<Integer> numbers) {
