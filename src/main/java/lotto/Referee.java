@@ -1,4 +1,4 @@
-package lotto.domain;
+package lotto;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -14,7 +14,7 @@ public class Referee {
         List<Integer> compareResult = new ArrayList<>(Arrays.asList(0, 0, 0, 0, 0));
         int countCash = 0;
         for (List<Integer> lotto : lottos) {
-            compareOneResult = compareOne(lotto, winningNumbers);
+            compareOneResult = countHitsOne(lotto, winningNumbers);
             for (int i = 0; i < compareResult.size(); i++) {
                 compareResult.set(i, compareResult.get(i) + compareOneResult.get(i));
             }
@@ -25,7 +25,7 @@ public class Referee {
         return totalResult;
     }
 
-    public static List<Integer> compareOne(List<Integer> lotto, List<List<String>> winningNumbers) {
+    public static List<Integer> countHitsOne(List<Integer> lotto, List<List<String>> winningNumbers) {
         int countWinningNumHits = 0;
         int countBonusNumHits = 0;
         for (int i = 0; i < LOTTO_LENGTH; i++) {
