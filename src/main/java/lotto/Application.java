@@ -9,11 +9,25 @@ public class Application {
     public static void Error(String ErrorType){
         throw new IllegalArgumentException("[ERROR] " + ErrorType);
     }
+    public static void Error(){
+        throw new IllegalArgumentException("[ERROR]");
+    }
+
+    public static void InputNumberMiss(String Input){
+        for(int i = 0; i < Input.length();i++){
+            if(Input.charAt(i)<48||Input.charAt(i)>57){
+                Error();
+            }
+        }
+    }
     public static Integer EnterAmount(){
         System.out.println("구입금액을 입력해 주세요.");
 
+        String Temp;
         Integer Amount;
-        Amount = Integer.parseInt(Console.readLine());
+        Temp =Console.readLine();
+        InputNumberMiss(Temp);
+        Amount = Integer.parseInt(Temp);
         if(Amount<1000||Amount%1000!=0){
             Error("구입금액은 1000의 배수여야 합니다.");
         }
@@ -89,7 +103,7 @@ public class Application {
 
         for(int i = 0; i < NumberOfGame; i++){
             GameNumberTemp.add(Randoms.pickUniqueNumbersInRange(1, 45, 6));
-            Collections.sort(GameNumberTemp.get(i));
+            //Collections.sort(GameNumberTemp.get(i));
             Lotto TempLotto = new Lotto((GameNumberTemp.get(i)));
             AllGame.add(TempLotto);
         }
@@ -122,7 +136,7 @@ public class Application {
         System.out.println("5개 일치 (1,500,000원) - "+ Rank.get(5) + "개");
         System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - "+ Rank.get(7) + "개");
         System.out.println("6개 일치 (2,000,000,000원) - "+ Rank.get(6) + "개");
-        System.out.println("총 수익률은 " + Yield +"% 입니다.");
+        System.out.println("총 수익률은 " + Yield +"%입니다.");
     }
 
     public static double Calculating(List<Integer> Rank,int Amount){
