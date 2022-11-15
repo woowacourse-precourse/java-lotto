@@ -34,7 +34,7 @@ public class LottoGameController {
     public String getInputNumber(InputMessages inputMessages, OutputMessages outputMessages) {
         outputMessages.inputMoneyMsg();
         String cash = inputMessages.readLine();
-        lottoGameService.isCashInt(cash);
+        isCashInt(cash, outputMessages);
 
         return cash;
     }
@@ -66,9 +66,7 @@ public class LottoGameController {
 
     public void setEnterLotto(InputMessages inputMessages, OutputMessages outputMessages) {
         List<Integer> winNumList = getWinNumList(inputMessages, outputMessages);
-        for (Integer number: winNumList) {
-            lottoGameService.isValidNumber(number);
-        }
+
         lotto = new Lotto(winNumList);
     }
 
@@ -86,7 +84,7 @@ public class LottoGameController {
     public Integer getBonusNum(InputMessages inputMessages, OutputMessages outputMessages) {
         outputMessages.bonusNumInputMsg();
         int bonusNumber = Integer.parseInt(inputMessages.readLine());
-        lottoGameService.isValidNumber(bonusNumber);
+        lotto.isValidNumber(bonusNumber);
 
         return bonusNumber;
     }
@@ -131,6 +129,13 @@ public class LottoGameController {
         String earningRate = df.format(((double) prize/(double) Integer.parseInt(inputCash))*100.0);
 
         outputMessages.totalResultMsg(fifth, fourth, third, second, first, earningRate);
+    }
+
+    public void isCashInt(String cash, OutputMessages outputMessages) {
+        if(!cash.matches("[+-]?\\d*(\\.\\d+)?")) {
+            System.out.println(outputMessages.CashIsNotInt());
+            throw new IllegalArgumentException();
+        }
     }
 
 
