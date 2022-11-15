@@ -2,6 +2,7 @@ package lotto.view;
 
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import lotto.model.PrizeType;
 
@@ -19,6 +20,7 @@ public class Output {
     }
 
     public static void printLotto(List<Integer> lottoNumbers) {
+        lottoNumbers.stream().sorted().collect(Collectors.toList());
         System.out.println(lottoNumbers);
     }
 }
