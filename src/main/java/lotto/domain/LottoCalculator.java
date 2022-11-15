@@ -39,10 +39,10 @@ public class LottoCalculator {
             return count * 1500000;
         }
         if (key == 6) {
-            return count * 30000000;
+            return count * 2000000000;
         }
         if (key == 7) {
-            return count * 2000000000;
+            return count * 30000000;
         }
         return 0;
     }
