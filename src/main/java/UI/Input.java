@@ -21,7 +21,7 @@ public class Input {
             throw new IllegalArgumentException(ERROR_MESSAGE_FOR_IS_NUMERIC);
         }
     }
-    public static int validateRangeOfMoney(int money){
+    public static void validateRangeOfMoney(int money){
         if (money < 1000){
             throw new IllegalArgumentException(ERROR_MESSAGE_FOR_PROPER_MONEY);
         }
