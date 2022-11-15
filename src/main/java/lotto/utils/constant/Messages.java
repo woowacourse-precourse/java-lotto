@@ -18,7 +18,6 @@ public final class Messages {
     public static final String THIRD_PLACE_MESSAGE = "5개 일치 (1,500,000원) - ";
     public static final String FOURTH_PLACE_MESSAGE = "4개 일치 (50,000원) - ";
     public static final String FIFTH_PLACE_MESSAGE = "3개 일치 (5,000원) - ";
-
 }
 
 
