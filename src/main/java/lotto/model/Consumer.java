@@ -15,6 +15,10 @@ public class Consumer {
         this.money = money;
     }
 
+    public List<Lotto> getLottos() {
+        return lottos;
+    }
+
     public void createLottos() {
         int lottoAmount = divideMoneyIntoLottoPrice();
 

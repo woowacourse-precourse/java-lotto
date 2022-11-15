@@ -13,6 +13,10 @@ public class Draw {
         }
     }
 
+    public Map<Rank, Integer> getResult() {
+        return result;
+    }
+
     public void drawLotto(List<Lotto> lottos, List<Integer> priceNumbers, int bonusNumber){
         for(int i = 0; i < lottos.size(); i++){
             int matchNumberCount = 0;
