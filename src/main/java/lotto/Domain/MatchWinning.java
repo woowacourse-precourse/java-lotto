@@ -32,4 +32,28 @@ public class MatchWinning {
             fifthPrice++;
         }
     }
+
+    public int getProfit() {
+        return profit;
+    }
+
+    public int getFirstPrice() {
+        return firstPrice;
+    }
+
+    public int getSecondPrice() {
+        return secondPrice;
+    }
+
+    public int getThirdPrice() {
+        return thirdPrice;
+    }
+
+    public int getForthPrice() {
+        return forthPrice;
+    }
+
+    public int getFifthPrice() {
+        return fifthPrice;
+    }
 }
