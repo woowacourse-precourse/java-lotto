@@ -34,6 +34,9 @@ public class ParserUtil {
         if (!ValidationUtil.validateIsDigitAndComma(winningNumInput)) {
             throw new IllegalArgumentException("[ERROR] 숫자와 콤마 이외에 문자를 입력할 수 없습니다.");
         }
+        if (!ValidationUtil.invalidComma(winningNumInput)) {
+            throw new IllegalArgumentException("[ERROR] 잘못된 콤마(',') 입력입니다.");
+        }
     }
 
     public static void parseBonusNumberInput(String bonusNumInput) throws IllegalArgumentException {

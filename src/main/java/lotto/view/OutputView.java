@@ -2,6 +2,7 @@ package lotto.view;
 
 import lotto.domain.RandomLottoNumber;
 
+import java.util.Comparator;
 import java.util.List;
 public class OutputView {
 

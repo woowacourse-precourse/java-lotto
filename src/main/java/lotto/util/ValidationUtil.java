@@ -42,6 +42,14 @@ public class ValidationUtil {
         return true;
     }
 
+    public static boolean invalidComma(String input) {
+        if (input.startsWith(",") || input.endsWith(",")
+                || input.contains(",,")) {
+            return false;
+        }
+        return true;
+    }
+
     public static boolean validateIsInRange(int input) {
         return input>=1 && input<=45;
     }

@@ -1,5 +1,6 @@
 package lotto.util;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -35,7 +36,7 @@ public class RandomUtil {
 
     private static RandomLottoNumber createLottoNumbers() {
         List<Integer> lottoNumbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
-        // Collections.sort(lottoNumbers);
+        // lottoNumbers.sort(Comparator.naturalOrder());
         RandomLottoNumber randomLottoNumber = new RandomLottoNumber(lottoNumbers);
         return randomLottoNumber;
     }
