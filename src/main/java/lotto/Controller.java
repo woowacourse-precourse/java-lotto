@@ -46,7 +46,7 @@ public class Controller {
         // 로또 분석 결과를 담는 LinkedHashMap을 만든다.
         LinkedHashMap<Integer, Integer> result = Model.CreateAnalyzedResultLinkedHashMap();
 
-        // 로또 보너스 번호와 로또 번호 집합을를 준비한다.
+        // 로또 보너스 번호와 로또 번호 집합을 준비한다.
         Integer lottoBonusNumber = numbers.get(6);
 
         List<Integer> lottoNumbers = numbers;
@@ -66,7 +66,6 @@ public class Controller {
             // 등수에 따라 결과에 추가한다.
             result.put(rank, result.get(rank) + 1);
         }
-
         return result;
     }
 
