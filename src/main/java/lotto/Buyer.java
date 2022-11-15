@@ -11,6 +11,12 @@ public class Buyer {
     private static final int SMALLEST_LOTTERY_NUMBER = 1;
     private static final int BIGGEST_LOTTERY_NUMBER = 45;
     private static final int LOTTERY_NUMBER_COUNT = 6;
+    private static final int THREE_CORRECT = 5_000;
+    private static final int FOUR_CORRECT = 50_000;
+    private static final int FIVE_CORRECT = 1_500_000;
+    private static final int BONUS_CORRECT = 30_000_000;
+    private static final int ALL_CORRECT = 2_000_000_000;
+
 
     private List<Lotto> boughtTickets;
     private int[] winningCounts = {0, 0, 0, 0, 0};
@@ -89,5 +95,15 @@ public class Buyer {
             bonusCount = ticket.checkIfCorrectNumber(bonus);
         }
         checkIfWon(correctCount, bonusCount);
+    }
+
+    public double calculateEarningRate() {
+        double purchaseAmount = SMALLEST_MONETARY_UNIT * boughtTickets.size();
+        double earnings = THREE_CORRECT * winningCounts[0]
+                + FOUR_CORRECT * winningCounts[1]
+                + FIVE_CORRECT * winningCounts[2]
+                + BONUS_CORRECT * winningCounts[3]
+                + ALL_CORRECT * winningCounts[4];
+        return (earnings / purchaseAmount);
     }
 }
