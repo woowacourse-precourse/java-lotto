@@ -5,7 +5,7 @@ import lotto.validation.Validation;
 
 import java.math.BigInteger;
 
-
+//예기치 못한 오류 테스트 커밋
 public class BuyLotto {
 
 	private static String USER_MONEY;

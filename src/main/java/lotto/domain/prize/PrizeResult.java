@@ -2,7 +2,7 @@ package lotto.domain.prize;
 
 import java.util.HashMap;
 import java.util.LinkedHashMap;
-
+//예기치 못한 오류 테스트 커밋
 public class PrizeResult {
 
 	private static HashMap<String,Integer> prize_map=new LinkedHashMap<>();

@@ -6,7 +6,7 @@ import lotto.domain.prize.Prize;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-
+//예기치 못한 오류 테스트 커밋
 public class Rate {
 
 	public static String calculate_rate(HashMap<String,Integer> hashMap){

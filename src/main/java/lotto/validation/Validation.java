@@ -3,7 +3,7 @@ package lotto.validation;
 import java.math.BigInteger;
 import java.util.Arrays;
 import java.util.List;
-
+//예기치 못한 오류 테스트 커밋
 public class Validation {
 	private static List<String> jackpot_number_list_compare;
 	//============================사용자 입력 금액 예외 처리============================//

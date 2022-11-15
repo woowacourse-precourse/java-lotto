@@ -1,5 +1,5 @@
 package lotto.domain.prize;
-
+//예기치 못한 오류 테스트 커밋
 public enum Prize {
 	THREE("3개 일치","5,000"),
 	FOUR("4개 일치","50,000"),

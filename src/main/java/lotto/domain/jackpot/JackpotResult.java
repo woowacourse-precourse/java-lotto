@@ -1,5 +1,5 @@
 package lotto.domain.jackpot;
-
+//예기치 못한 오류 테스트 커밋
 public class JackpotResult {
 	private static int jackpot_count=0;
 

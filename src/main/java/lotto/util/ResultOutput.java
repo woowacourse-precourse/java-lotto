@@ -4,7 +4,7 @@ import lotto.domain.prize.PrizeResult;
 import lotto.domain.rate.Rate;
 
 import java.util.HashMap;
-
+//예기치 못한 오류 테스트 커밋
 public class ResultOutput {
 	private static HashMap<String,Integer> result_map=PrizeResult.prize_map_return();
 	public static void all_result_output(){

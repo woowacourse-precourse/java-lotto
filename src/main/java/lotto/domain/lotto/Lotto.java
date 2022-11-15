@@ -6,7 +6,7 @@ import lotto.util.ResultOutput;
 
 import java.util.Arrays;
 import java.util.List;
-
+//예기치 못한 오류 테스트 커밋
 public class Lotto {
     private final List<Integer> numbers;
 

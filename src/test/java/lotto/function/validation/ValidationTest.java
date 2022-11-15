@@ -15,7 +15,7 @@ import java.util.List;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-
+//예기치 못한 오류 테스트 커밋
 class ValidationTest extends NsTest {
 
 

@@ -5,7 +5,7 @@ import lotto.domain.random.PickNumber;
 import lotto.validation.Validation;
 
 import static lotto.util.InputImport.*;
-
+//예기치 못한 오류 테스트 커밋
 public class Jackpot {
 
     public static String jackpot_number_static;

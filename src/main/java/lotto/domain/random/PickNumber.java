@@ -5,7 +5,7 @@ import lotto.domain.jackpot.Jackpot;
 
 import java.util.ArrayList;
 import java.util.List;
-
+//예기치 못한 오류 테스트 커밋
 public class PickNumber {
 
     public static List<List<Integer>> purchased_lotto=new ArrayList<>();
