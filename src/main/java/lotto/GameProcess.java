@@ -31,6 +31,5 @@ public class GameProcess {
         String yield = getYield(payMoney);
 
         Output.resultAnnouncement(yield);
-
     }
 }

@@ -15,13 +15,13 @@ public class Lotto {
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
-        ascendingSort(numbers);
+//        ascendingSort(numbers);
         this.numbers = numbers;
     }
 
-    private void ascendingSort(List<Integer>numbers) {
-        sort(numbers);
-    }
+//    private void ascendingSort(List<Integer>numbers) {
+//        sort(numbers);
+//    }
 
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
