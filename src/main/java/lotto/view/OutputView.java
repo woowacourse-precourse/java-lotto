@@ -1,6 +1,7 @@
 package lotto.view;
 
 import java.util.EnumMap;
+import java.util.List;
 
 import lotto.constant.OutputMessage;
 import lotto.constant.WinningRating;
@@ -39,5 +40,9 @@ public class OutputView {
 		System.out.println();
 		System.out.printf(OutputMessage.DISPLAYING_PURCHASING_QUANTITY.message(), numberOfTickets);
 		System.out.println();
+	}
+
+	public void printTotalLottoNumbers(List<List<Integer>> totalLottoNumbers) {
+		totalLottoNumbers.forEach(System.out::println);
 	}
 }

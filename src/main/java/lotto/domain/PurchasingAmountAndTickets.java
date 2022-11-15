@@ -3,11 +3,11 @@ package lotto.domain;
 import lotto.constant.LottoConstant;
 import lotto.util.Validator;
 
-public class PurchasingAmount {
+public class PurchasingAmountAndTickets {
 	private final int purchasingAmount;
 	private final int numberOfTickets;
 
-	public PurchasingAmount(int amount) {
+	public PurchasingAmountAndTickets(int amount) {
 		Validator.validateDivisibility(amount);
 		this.purchasingAmount = amount;
 		this.numberOfTickets = purchasingAmount / LottoConstant.PRICE_OF_LOTTO;

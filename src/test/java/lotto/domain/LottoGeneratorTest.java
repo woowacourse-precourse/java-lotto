@@ -11,20 +11,20 @@ class LottoGeneratorTest {
 	@Test
 	void validateSixNumbers() {
 		LottoGenerator lottoGenerator = new LottoGenerator();
-		assertThat(lottoGenerator.getNumbers()).hasSize(6);
+		assertThat(lottoGenerator.getLotto()).hasSize(6);
 	}
 
 	@DisplayName("번호가 중복이 아니다.")
 	@Test
 	void validateNoDuplication() {
 		LottoGenerator lottoGenerator = new LottoGenerator();
-		assertThat(lottoGenerator.getNumbers()).doesNotHaveDuplicates();
+		assertThat(lottoGenerator.getLotto()).doesNotHaveDuplicates();
 	}
 
 	@DisplayName("오름차순으로 정렬되어 있다.")
 	@Test
 	void validateAscendingOrder() {
 		LottoGenerator lottoGenerator = new LottoGenerator();
-		assertThat(lottoGenerator.getNumbers()).isSorted();
+		assertThat(lottoGenerator.getLotto()).isSorted();
 	}
 }

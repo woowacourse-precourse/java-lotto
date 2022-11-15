@@ -7,16 +7,16 @@ import camp.nextstep.edu.missionutils.Randoms;
 import lotto.constant.LottoConstant;
 
 public class LottoGenerator {
-	private List<Integer> numbers;
+	private List<Integer> lotto;
 
 	private void generateLotto() {
-		numbers = Randoms.pickUniqueNumbersInRange(LottoConstant.MINIMUM_LOTTO_NUMBER,
+		lotto = Randoms.pickUniqueNumbersInRange(LottoConstant.MINIMUM_LOTTO_NUMBER,
 			LottoConstant.MAXIMUM_LOTTO_NUMBER, LottoConstant.COUNT_OF_LOTTO_NUMBERS);
-		numbers = numbers.stream().sorted().collect(Collectors.toList());
+		lotto = lotto.stream().sorted().collect(Collectors.toList());
 	}
 
-	public List<Integer> getNumbers() {
+	public List<Integer> getLotto() {
 		generateLotto();
-		return numbers;
+		return lotto;
 	}
 }

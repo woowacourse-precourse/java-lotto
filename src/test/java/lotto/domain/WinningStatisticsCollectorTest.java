@@ -8,7 +8,7 @@ import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-class WinningStatisticsCompilerTest {
+class WinningStatisticsCollectorTest {
 	@DisplayName("각 등수별 당첨 횟수를 구한다.")
 	@Test
 	void getCountsOfWins() {
@@ -20,9 +20,9 @@ class WinningStatisticsCompilerTest {
 		WinningNumbers winningNumbers;
 		winningNumbers = new WinningNumbers("5,17,19,22,32,41");
 		BonusNumber bonusNumber = new BonusNumber(2, winningNumbers);
-		WinningStatisticsCompiler winningStatisticsCompiler = new WinningStatisticsCompiler(lotteries,
+		WinningStatisticsCollector winningStatisticsCollector = new WinningStatisticsCollector(lotteries,
 			winningNumbers, bonusNumber);
-		assertThat(new ArrayList<>(winningStatisticsCompiler.getCountsOfWins().values())).isEqualTo(
+		assertThat(new ArrayList<>(winningStatisticsCollector.getCountsOfWins().values())).isEqualTo(
 			List.of(1, 1, 0, 0, 1, 1));
 	}
 }
