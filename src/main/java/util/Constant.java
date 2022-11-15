@@ -20,5 +20,6 @@ public class Constant {
     public static final String ERROR_MSG_INVALID_INPUT = "[ERROR] 당첨 번호는 숫자와 ,로만 구셩되어야 합니다.";
     public static final String ERROR_MSG_START_OR_END_COMMA = "[ERROR] 콤마는 처음과 끝이면 안됩니다.";
     public static final String ERROR_MSG_NOT_NUMBER = "[ERROR] 보너스 번호는 숫자여야 합니다.";
+    public static final String ERROR_MSG_PURCHASE_MONEY_CONSIST_OF_NUM = "[ERROR] 로또 구입 금액은 숫자여야 합니다.";
 
 }
