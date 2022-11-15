@@ -82,6 +82,13 @@ class ApplicationTest extends NsTest {
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
+    @Test
+    void 당첨번호_중복_테스트() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("8000","1,2,3,4,5,5","7"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
     @Override
     public void runMain() {
         Application.main(new String[]{});
