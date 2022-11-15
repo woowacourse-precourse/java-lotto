@@ -228,6 +228,7 @@ class LottoCountingTest {
     @Nested
     class CountWinningPaperTest{
 
+        // 위의 테스트 데이터에서부터 하나씩 받아온다. 1,2,3,4,5,X,X,X,X 순.
         Map<Lotto, Integer> getCountedLotto(int size){
             Lotto winningLotto = getWinningLotto();
             List<Lotto> lottoPapers = getLottoPapersFromData(size);
@@ -247,6 +248,7 @@ class LottoCountingTest {
         // 4 : 5등
         // 5~8 : 탈락(-1)
 
+        // 1등이면 "1", 1등 2등 같이 있으면, "1 1". 이런 식으로 들어가서 매핑된다.
         void putExpectedResult(Map<Integer, Integer> expectedResult,String input){
             String[] inputs = input.split(" ");
             for(int inputIndex = 1 ; inputIndex <= inputs.length; inputIndex++){
@@ -269,6 +271,7 @@ class LottoCountingTest {
             assertThat(actualResult).isEqualTo(expectedResult);
         }
 
+        @DisplayName("1등짜리 하나 넣어서 테스트")
         @Test
         void countWinningPaper_case1(){
             int sizeInput = 1;
@@ -276,6 +279,7 @@ class LottoCountingTest {
             testWinningPaperCase(sizeInput,expectedOutput);
         }
 
+        @DisplayName("1등 2등 각각 하나씩 넣고 테스트")
         @Test
         void countWinningPaper_case2(){
             int sizeInput = 2;
@@ -283,6 +287,7 @@ class LottoCountingTest {
             testWinningPaperCase(sizeInput,expectedOutput);
         }
 
+        @DisplayName("1,2,3등 데이터 테스트")
         @Test
         void countWinningPaper_case3(){
             int sizeInput = 3;
@@ -290,7 +295,7 @@ class LottoCountingTest {
             testWinningPaperCase(sizeInput,expectedOutput);
         }
 
-
+        @DisplayName("1~4 등 넣고 테스트")
         @Test
         void countWinningPaper_case4(){
             int sizeInput = 4;
@@ -298,6 +303,7 @@ class LottoCountingTest {
             testWinningPaperCase(sizeInput,expectedOutput);
         }
 
+        @DisplayName("1~5등 넣고 테스트")
         @Test
         void countWinningPaper_case5(){
             int sizeInput = 5;
@@ -305,6 +311,7 @@ class LottoCountingTest {
             testWinningPaperCase(sizeInput,expectedOutput);
         }
 
+        @DisplayName("1~5등, 탈락 3개 넣고 테스트")
         @Test
         void countWinningPaper_case6(){
             int sizeInput = 8;
