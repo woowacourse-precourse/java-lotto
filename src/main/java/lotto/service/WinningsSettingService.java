@@ -84,12 +84,30 @@ public class WinningsSettingService {
     }
 
     private void winningsNumberValidate(String[] winningsNumber) throws IllegalArgumentException {
+        winningsNumberOverSize(winningsNumber);
+        winningsNumberIsDigit(winningsNumber);
+        winningsNumberRangeCheck(winningsNumber);
+    }
+
+    private void winningsNumberOverSize(String[] winningsNumber) throws IllegalArgumentException {
         if (winningsNumber.length != SIZE) {
             throw new IllegalArgumentException(WINNING_NUMBER_OVERSIZE.getMessage());
         }
+    }
+
+    private void winningsNumberIsDigit(String[] winningsNumber) throws IllegalArgumentException {
         for (int i = 0; i < SIZE; i++) {
             if (!StringUtils.isDigit(winningsNumber[i])) {
                 throw new IllegalArgumentException(WINING_NUMBER_NOT_NUMBER.getMessage());
+            }
+        }
+    }
+
+    private void winningsNumberRangeCheck(String[] winningsNumber) throws IllegalArgumentException {
+        for (int i = 0; i < SIZE; i++) {
+            int number = Integer.parseInt(winningsNumber[i]);
+            if (!(1 <= number && number <= 45)) {
+                throw new IllegalArgumentException(WINNING_NUMBER_OUT_OF_RANGE.getMessage());
             }
         }
     }
