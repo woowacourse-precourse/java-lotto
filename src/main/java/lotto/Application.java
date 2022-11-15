@@ -15,7 +15,7 @@ public class Application {
 
     private static List<Integer> makeRandomNumbers() {
         List<Integer> numberList = new ArrayList<>();
-        while (numberList.size() < 3) {
+        while (numberList.size() < 6) {
             int randomNumber = Randoms.pickNumberInRange(1, 45);
             if (!numberList.contains(randomNumber)) {
                 numberList.add(randomNumber);
