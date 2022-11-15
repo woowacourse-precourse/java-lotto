@@ -19,7 +19,7 @@ public enum WinningResultStatus {
         this.prizeMoney = prizeMoney;
     }
 
-    public static WinningResultStatus getWinResultStatus(int hitCount) {
+    public static WinningResultStatus getWinningResultStatus(int hitCount) {
         if (FIRST.winCount == hitCount) {
             return FIRST;
         }

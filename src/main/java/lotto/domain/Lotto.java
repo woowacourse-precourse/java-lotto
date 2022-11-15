@@ -73,9 +73,9 @@ public class Lotto {
 
     private WinningResultStatus convertHitCountToWinningResultStatus(int hitCount, WinningNumber winningNumber) {
         if (isSecondPlace(hitCount, winningNumber)) {
-            return WinningResultStatus.getWinResultStatus(WinningResultUtil.SECOND_PLACE_COUNT);
+            return WinningResultStatus.getWinningResultStatus(WinningResultUtil.SECOND_PLACE_COUNT);
         }
-        return WinningResultStatus.getWinResultStatus(hitCount);
+        return WinningResultStatus.getWinningResultStatus(hitCount);
     }
 
     private int getHitCount(List<Integer> winningLotto) {

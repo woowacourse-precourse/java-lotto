@@ -58,11 +58,11 @@ public class LottoService {
 
     private Map<WinningResultStatus, Integer> createStatistics(List<WinningResultStatus> winningResults) {
         Map<WinningResultStatus, Integer> statisticsCounts = new HashMap<>();
-        putWinResults(winningResults, statisticsCounts);
+        putWinningResults(winningResults, statisticsCounts);
         return statisticsCounts;
     }
 
-    private static void putWinResults(List<WinningResultStatus> winningResults,
+    private static void putWinningResults(List<WinningResultStatus> winningResults,
                                       Map<WinningResultStatus, Integer> statisticsCounts) {
         for (WinningResultStatus winningResult : winningResults) {
             statisticsCounts.put(winningResult,
