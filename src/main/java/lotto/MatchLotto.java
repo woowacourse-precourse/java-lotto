@@ -73,7 +73,12 @@ public class MatchLotto {
                 System.out.println(matches.getMatchCount() + "개 일치 ("+ money+"원) - "+countMatch[matches.ordinal()]+"개");
             }
     }
-
+    public static void calculateOutput(int buyNum) {
+        double output = ((double)sum/(double)buyNum)*100;
+        DecimalFormat df = new DecimalFormat("#.#");
+        String result = df.format(output);
+        System.out.println("총 수익률은 " + result+"%입니다.");
+    }
 
 }
 
