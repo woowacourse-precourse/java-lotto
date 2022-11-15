@@ -3,8 +3,8 @@ package lotto;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.lang.reflect.Array;
+import java.util.*;
 
 public class Application {
     public static void main(String[] args) {
@@ -15,7 +15,6 @@ public class Application {
         for (int i = 0; i < lottos.length; i++) {
             lottos[i] = new Lotto(makeRandomNumbers());
         }
-
         List<Integer> winningNumber = inputWinningNumbers();
 
         int[] result = new int[6];
@@ -28,6 +27,7 @@ public class Application {
         printResult(result, lottos.length);
 
     }
+
 
     private static void printResult(int[] result, int count) {
         System.out.println("당첨 통계");
@@ -58,22 +58,24 @@ public class Application {
     }
 
     private static int numberOfLotto() {
+        System.out.println("구입금액을 입력해 주세요.");
         String inputStringMoney = Console.readLine();
         int money = Integer.parseInt(inputStringMoney);
         if(money < 0 || money%1000 != 0) {
             throw new IllegalArgumentException();
         }
+        System.out.println((money/1000) + "개를 구매했습니다.");
         return money/1000;
     }
 
     private static List<Integer> makeRandomNumbers() {
-        List<Integer> numberList = new ArrayList<>();
-        while (numberList.size() < 6) {
-            int randomNumber = Randoms.pickNumberInRange(1, 45);
-            if (!numberList.contains(randomNumber)) {
-                numberList.add(randomNumber);
-            }
-        }
-        return numberList;
+        List<Integer> numberList = Randoms.pickUniqueNumbersInRange(1, 45,6);
+        List<Integer> newList = new ArrayList<>();
+        for(int number : numberList) newList.add(number);
+
+        Collections.sort(newList);
+        System.out.println(newList);
+
+        return newList;
     }
 }
