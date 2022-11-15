@@ -1,6 +1,7 @@
 package lotto;
 
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
 
 public class ValidCheck {
@@ -11,6 +12,10 @@ public class ValidCheck {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException(Error.LENGTH_ERROR.getText());
         }
+        HashSet<Integer> numbersWithoutDuplicate = new HashSet<>(numbers);
+        if (numbersWithoutDuplicate.size() != numbers.size()) {
+            throw new IllegalArgumentException(Error.DUPLICATE_ERROR.getText());
+        }
     }
 
     public static void validateBounus(Integer number) {
@@ -18,4 +23,24 @@ public class ValidCheck {
             throw new IllegalArgumentException(Error.RANGE_ERROR.getText());
         }
     }
+
+    public static void formatCheckLotto(String InputValue) {
+        InputValue = InputValue.replaceAll(" ", "");
+        String pattern = "(.+,+).+";
+        if (!InputValue.matches(pattern)) {
+            throw new IllegalArgumentException(Error.INPUT_FORMAT_ERROR.getText());
+        }
+        List<String> numbers = List.of(InputValue.split(","));
+        if (numbers.size() != 6) {
+            throw new IllegalArgumentException(Error.LENGTH_ERROR.getText());
+        }
+        try {
+            numbers.forEach((n) -> {
+                Integer.parseInt(n);
+            });
+        } catch (Exception e) {
+            throw new IllegalArgumentException(Error.NONDIGIT_ERROR.getText());
+        }
+    }
+
 }

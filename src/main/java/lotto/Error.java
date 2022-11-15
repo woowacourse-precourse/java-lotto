@@ -5,7 +5,8 @@ public enum Error {
     LENGTH_ERROR("6자리 숫자를 입력해주세요"),
     PURCHASE_UNIT_ERROR("구입금액은 1000원 단위로 입력해주세요 ex)14000"),
     INPUT_FORMAT_ERROR("당첨 번호는 쉼표로 구분해주세요 ex)1,2,3,4,5,6"),
-    NONDIGIT_ERROR("숫자만 입력해주세요");
+    NONDIGIT_ERROR("숫자만 입력해주세요"),
+    DUPLICATE_ERROR("중복된 숫자가 있습니다.");
     private String errorMessage;
 
     Error(String errorMessage) {
