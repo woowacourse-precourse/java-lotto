@@ -1,5 +1,6 @@
 package domain;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -27,7 +28,19 @@ public class WinningStatistics {
 
     public List<Integer> getWinningStatistics(List<List<Integer>> randomNumbersContainer, List<Integer> winningNumber, int bonus) {
         calculateStatistics(randomNumbersContainer,winningNumber,bonus);
+        List<Integer> calStatistics = countStatistics();
+        return calStatistics;
+    }
 
+    private List<Integer> countStatistics() {
+        List<Integer> statistics = new ArrayList<>();
+        for (int i = 3000; i < 6001; i += 1000) {
+            if (i == 5000) {
+                statistics.add(comparisonTarget.get(i+100));
+            }
+            statistics.add(comparisonTarget.get(i));
+        }
+        return statistics;
     }
 
     private void calculateStatistics(List<List<Integer>> randomNumbersContainer, List<Integer> winningNumber, int bonus) {
