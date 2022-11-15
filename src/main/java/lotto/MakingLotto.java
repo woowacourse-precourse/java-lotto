@@ -27,4 +27,15 @@ public class MakingLotto {
         return allLotto;
     }
 
+    public Lotto getWinningLotto(String winningLotto){
+        String[] lottoNum=winningLotto.split(",");
+        List<Integer> winnigLottoNumber=new ArrayList<>();
+        for(int index=0;index<lottoNum.length;index++){
+            int number=Integer.parseInt(lottoNum[index]);
+            winnigLottoNumber.add(number);
+        }
+        Lotto lotto=new Lotto(winnigLottoNumber);
+        return lotto;
+    }
+
 }
