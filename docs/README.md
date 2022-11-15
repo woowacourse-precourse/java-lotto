@@ -1,39 +1,40 @@
 ## 🛠 기능 목록
-- [ ] Computer
-  - [ ] 1~45의 서로다른 임의의 수 6개를 생성한다. -createLottoNumbers()
-    - [ ] camp.nextstep.edu.missionutils.Randoms의 pickUniqueNumbersInRange()를 활용한다.
-    - [ ] 오름차순으로 정렬하여 출력한다.
-  - [ ] 돈으로 몇개의 로또를 살 수 있는지 계산한다. - countTimes()
-  - [ ] 구입 금액을 1000으로 나눈 몫 만큼 리스트를 생성한다. - createLottos()
+- [x] Computer
+  - [x] 1~45의 서로다른 임의의 수 6개를 생성한다. -createLottoNumbers()
+    - [x] camp.nextstep.edu.missionutils.Randoms의 pickUniqueNumbersInRange()를 활용한다.
+    - [x] 오름차순으로 정렬하여 출력한다.
+  - [x] 돈으로 몇개의 로또를 살 수 있는지 계산한다. - countTimes()
+  - [x] 구입 금액을 1000으로 나눈 몫 만큼 리스트를 생성한다. - createLottos()
+  - [x] 만든 로또를 출력한다. - printLottos()
 
 
-- [ ] User
-  - [ ] 구입 금액을 입력한다. - inputMoney()
-    - [ ] 사용자가 입력하는 값은 camp.nextstep.edu.missionutils.Console의 readLine()을 활용한다.
-    - [ ] 1000단위 입력해야한다.
-  - [ ] 당첨 번호를 입력한다. - inputWinningNumbers()
-    - [ ] 서로다른 6자리 수를 입력한다.
-    - [ ] 쉼표로 구분하여 입력한다.
-  - [ ] 보너스 번호를 입력한다. - inputBonusNumber()
-    - [ ] 보너스 번호는 한 자리이다.
+- [x] User
+  - [x] 구입 금액을 입력한다. - inputMoney()
+    - [x] 사용자가 입력하는 값은 camp.nextstep.edu.missionutils.Console의 readLine()을 활용한다.
+    - [x] 1000단위 입력해야한다.
+  - [x] 당첨 번호를 입력한다. - inputWinningNumbers()
+    - [x] 서로다른 6자리 수를 입력한다.
+    - [x] 쉼표로 구분하여 입력한다.
+  - [x] 보너스 번호를 입력한다. - inputBonusNumber()
+    - [x] 보너스 번호는 한 자리이다.
 
 
-- [ ] Process
-  - [ ] 생성한 로또 번호와 당첨 번호가 몇개 맞는지 확인한다. -compareWinningNumbers()
-  - [ ] 맞은 개수에 따라 등수를 결정한다. -decideRank()
-  - [ ] 당첨 통계를 출력한다. -printStatistics()
-  - [ ] 수익률을 계산하여 출력한다. -calculateRateOfReturn()
+- [x] Process
+  - [x] 생성한 로또 번호와 당첨 번호가 몇개 맞는지 확인한다. -compareWinningNumbers()
+  - [x] 맞은 개수에 따라 등수를 결정한다. -decideRank()
+  - [x] 당첨 통계를 출력한다. -printStatistics()
+  - [x] 수익률을 계산하여 출력한다. -printCalculateRateOfReturn()
 
 
--[ ] Lotto
-  - [ ] 제한 사항을 만족하는지 체크한다. -validate()
-  - [ ] 제한 사항을 만족하는 로또 번호를 반환한다. -getNumbers()
+-[x] Lotto
+  - [x] 제한 사항을 만족하는지 체크한다. -validate()
+  - [x] 제한 사항을 만족하는 로또 번호를 반환한다. -getNumbers()
 
 
--[ ] Rank
-  - [ ] enum 클래스로 작성한다.
-  - [ ] 등수별 상금을 반환한다. -getPrice()
-  - [ ] 등수별 상금과 명수를 출력한다. -getMessage()
+-[x] Rank
+  - [x] enum 클래스로 작성한다.
+  - [x] 등수별 상금을 반환한다. -getPrice()
+  - [x] 등수별 상금과 명수를 출력한다. -getMessage()
 
 ## 🔧 기능 요구 사항
 - 로또 번호의 숫자 범위는 1~45까지이다.
@@ -52,16 +53,18 @@
 - 사용자가 잘못된 값을 입력할 경우 IllegalArgumentException를 발생시키고, "[ERROR]"로 시작하는 에러 메시지를 출력 후 종료한다.
 
 ## ⚠️ 유효성 체크
--[ ] 로또 구입 금액
-  - [ ] 1,000 단위로 입력
-- [ ] 당첨번호
-  - [ ] 당첨 번호는 숫자만
-  - [ ] 당첨 번호의 숫자 범위는 1~45
-  - [ ] 1개의 로또 번호는 중복되지 않은 숫자
-  - [ ] 1개의 로또 번호 자리수는 6자리
-  - [ ] 쉼표를 기준으로 구분
-- [ ] 보너스 번호
-  - [ ] 한 자리인지
+-[x] 로또 구입 금액
+  - [x] 1,000 단위로 입력
+- [x] 당첨번호
+  - [x] 당첨 번호는 숫자만
+  - [x] 당첨 번호의 숫자 범위는 1~45
+  - [x] 1개의 로또 번호는 중복되지 않은 숫자
+  - [x] 1개의 로또 번호 자리수는 6자리
+  - [x] 쉼표를 기준으로 구분
+- [x] 보너스 번호
+  - [x] 하나의 숫자인지
+  - [x] 1~45범위의 숫자인지
+  - [x] 당첨 번호와 중복되지 않는지
 
 ## 📌 추가 요구사항
 - 함수(또는 메서드)의 길이가 15라인을 넘어가지 않도록 구현한다.
@@ -74,5 +77,5 @@
   - 단위 테스트 작성이 익숙하지 않다면 test/java/lotto/LottoTest를 참고하여 학습한 후 테스트를 구현한다.
 
 ## 📗학습 목록
-- [ ] Enum
-- [ ] 단위 테스트
+- [x] Enum
+- [x] 단위 테스트
