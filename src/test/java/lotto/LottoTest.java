@@ -1,13 +1,12 @@
 package lotto;
 
-import camp.nextstep.edu.missionutils.test.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 
 
 class LottoTest {
@@ -58,7 +57,7 @@ class LottoTest {
         System.out.println(numbers);
     }
 
-    @DisplayName("전체적인 test")
+    @DisplayName("LottoCheck 의 전체적인 test")
     @Test
     void test_Lotto_game_test() {
         Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
@@ -74,4 +73,18 @@ class LottoTest {
         System.out.println("containBonus: " + containBonus);
     }
 
+    @DisplayName("금액이 1000으로 나누어 떨어지지 않을 때")
+    @Test
+    void test_MyLotto_Money_is_1001() {
+        assertThatThrownBy(() -> new MyLotto(1001))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("금액만큼 Lotto 구매 했는지")
+    @Test
+    void test_MyLotto_BuyLotto_Size_Money_15000(){
+        int money = 15000;
+        MyLotto myLotto = new MyLotto(money);
+        assertThat(myLotto.getMyPocket().size()).isEqualTo(15);
+    }
 }
