@@ -18,7 +18,7 @@ public class ValidatorProcessorImpl implements ValidatorProcessor{
     }
 
     @Override
-    public List<Integer> validateLottoNumberInput(String input) {
+    public List<Integer> validateAndParseLottoNumberInput(String input) {
         try {
             return Arrays.stream(input.split(","))
                     .map(Integer::valueOf)

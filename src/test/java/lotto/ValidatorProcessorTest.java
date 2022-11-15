@@ -46,21 +46,21 @@ public class ValidatorProcessorTest {
     }
 
     @TestFactory
-    @DisplayName("ValidatorProcessor validateLottoNumberInput Test")
-    Stream<DynamicTest> ValidatorProcessorValidateLottoNumberInputTest() {
+    @DisplayName("validateAndParseLottoNumberInput Test")
+    Stream<DynamicTest> validateAndParseLottoNumberInputTest() {
         validatorProcessor = new ValidatorProcessorImpl();
 
         return Stream.of(
                 DynamicTest.dynamicTest("입력값이 유요한경우 통과", () -> {
                     final String input = "1,2,3,4,5,6";
-                    List<Integer> result = validatorProcessor.validateLottoNumberInput(input);
+                    List<Integer> result = validatorProcessor.validateAndParseLottoNumberInput(input);
 
                     assertThat(result.size()).isEqualTo(LottoEnum.LOTTO.getSize());
                 }),
                 DynamicTest.dynamicTest("입력이 잘못된 경우 예외를 던져준다.", () -> {
                     final String input = "1,2,3,4,5,r";
 
-                    assertThatThrownBy(() -> validatorProcessor.validateLottoNumberInput(input))
+                    assertThatThrownBy(() -> validatorProcessor.validateAndParseLottoNumberInput(input))
                             .isInstanceOf(IllegalArgumentException.class)
                             .hasMessageContaining("잘못된 입력값 입니다.");
                 })
@@ -91,6 +91,34 @@ public class ValidatorProcessorTest {
                     assertThatThrownBy(() -> validatorProcessor.validateLottoSize(size, LottoEnum.LOTTO))
                             .isInstanceOf(IllegalArgumentException.class)
                             .hasMessageContaining("입력 길이가 다릅니다.");
+                })
+        );
+    }
+
+    @TestFactory
+    @DisplayName("ValidatorProcessor validateLottoNumber Test")
+    Stream<DynamicTest> validateLottoNumberTest() {
+        validatorProcessor = new ValidatorProcessorImpl();
+
+        return Stream.of(
+                DynamicTest.dynamicTest("알맞은 번호 목록을 가지고있는경우 통과한다.", () -> {
+                    final List<Integer> numberList = List.of(1,2,3,4,5,45);
+
+                    validatorProcessor.validateLottoNumber(numberList, LottoEnum.LOTTO);
+                }),
+                DynamicTest.dynamicTest("번호 목록에 범위가 더 큰 숫자가 들어있는경우 예외를 던져준다", () -> {
+                    final List<Integer> numberList = List.of(-1,2,3,4,5,6);
+
+                    assertThatThrownBy(() -> validatorProcessor.validateLottoNumber(numberList, LottoEnum.LOTTO))
+                            .isInstanceOf(IllegalArgumentException.class)
+                            .hasMessageContaining("입력 숫자의 범위가 다릅니다.");
+                }),
+                DynamicTest.dynamicTest("번호 목록에 범위가 더 작은 숫자가 들어있는경우 예외를 던져준다", () -> {
+                    final List<Integer> numberList = List.of(1,2,3,4,5,46);
+
+                    assertThatThrownBy(() -> validatorProcessor.validateLottoNumber(numberList, LottoEnum.LOTTO))
+                            .isInstanceOf(IllegalArgumentException.class)
+                            .hasMessageContaining("입력 숫자의 범위가 다릅니다.");
                 })
         );
     }

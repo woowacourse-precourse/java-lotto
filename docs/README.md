@@ -64,3 +64,4 @@
 23. [x] (LottoController): 로또 당첨내역을 출력하는 기능
 24. [x] (LottoController): 로또 수익률을 출력하는 기능
 25. [x] (LottoController): 예외 처리 기능
+26. [x] (ValidateProcessor): 입력번호의 범위 유효성체크 기능과 테스트

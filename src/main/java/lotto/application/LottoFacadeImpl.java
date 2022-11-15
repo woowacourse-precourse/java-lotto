@@ -27,7 +27,7 @@ public class LottoFacadeImpl implements LottoFacade{
 
     @Override
     public Lotto registerWinLotto(String input) {
-        List<Integer> validatedLottoNumber = validatorProcessor.validateLottoNumberInput(input);
+        List<Integer> validatedLottoNumber = validatorProcessor.validateAndParseLottoNumberInput(input);
         validatorProcessor.validateLottoSize(validatedLottoNumber.size(), LottoEnum.LOTTO);
         validatorProcessor.validateLottoNumber(validatedLottoNumber, LottoEnum.LOTTO);
         return lottoProcessor.createLotto(validatedLottoNumber);
