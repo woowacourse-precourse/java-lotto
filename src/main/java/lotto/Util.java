@@ -80,9 +80,8 @@ public class Util {
         return newList;
     }
 
-    public static int inputBonusNumber() {
+    public static int inputBonusNumber(List<Integer> winNumber) {
         int bonusNumber = 0;
-
         PrintUtil.inputBonusNumberGuide();
 
         try {
@@ -91,10 +90,10 @@ public class Util {
 
             bonusNumber = Integer.parseInt(str);
 
+            if(winNumber.contains(bonusNumber)) throw new IllegalArgumentException();
+
             return bonusNumber;
-        } catch (IOException e) {
-            throw new IllegalArgumentException(e);
-        }
+        } catch (IOException e) {throw new IllegalArgumentException(e);}
     }
 
 }

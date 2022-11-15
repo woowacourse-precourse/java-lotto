@@ -15,7 +15,7 @@ public class Application {
 
         List<Integer> winNumber = Util.inputWinNumber();
 
-        int bonusNumber = Util.inputBonusNumber();
+        int bonusNumber = Util.inputBonusNumber(winNumber);
 
         List<Integer> winStatistics = LottoUtil.checkWin(userLottos, winNumber);
         List<Boolean> bonusStatistics = LottoUtil.checkBonus(userLottos, bonusNumber);

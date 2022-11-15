@@ -108,7 +108,7 @@ public class LottoUtil {
             revenue += getRevenueByRank(rank);
         }
 
-        System.out.println(revenue);
+        PrintUtil.printRevenue(revenue, userLottoCnt);
     }
 
     private static int getRevenueByRank(int rank) {

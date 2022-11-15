@@ -63,4 +63,10 @@ public class PrintUtil {
         if(idx == 3) System.out.println("4개 일치 (50,000원) - " + rank + "개");
         if(idx == 4) System.out.println("3개 일치 (5,000원) - " + rank + "개");
     }
+
+    public static void printRevenue(int revenue, int userLottoCnt) {
+        double revenuePercent = (double) revenue / (double) (userLottoCnt * 1000);
+        String str = String.format("%.1f", revenuePercent);
+        System.out.println("총 수익률은 " + str + "%입니다.");
+    }
 }
