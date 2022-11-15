@@ -9,7 +9,14 @@ public class Application {
         Console console = new Console();
         Controller controller = new Controller();
 
-        int money = console.inputMoney();
+        int money = 0;
+        try {
+            money = console.inputMoney();
+        } catch (IllegalArgumentException e) {
+            System.out.println(e);
+            return;
+        }
+
         int count = controller.getCount(money);
         List<Integer>[] issuedList = controller.issueLotto(count);
         console.outputIssuedLotto(count,issuedList);

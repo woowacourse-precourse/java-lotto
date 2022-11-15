@@ -12,15 +12,15 @@ public class Console {
     public int inputMoney() {
         System.out.println("구입금액을 입력해 주세요.");
         String input = readLine();
+
         String replacedInput = input.replaceAll("[^0-9]", "");
         if (input != replacedInput) {
-            System.out.println("[ERROR] 숫자를 입력해주세요.");
-            throw new IllegalArgumentException("[ERROR] 오류");
+            throw new IllegalArgumentException("[ERROR] 숫자 입력 오류");
         }
+
         int money = Integer.valueOf(replacedInput);
         if (money % 1000 != 0) {
-            System.out.println("[ERROR] 1,000원 단위가 아닙니다.");
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR] 1,000원 단위가 아닙니다.");
         }
         if (money < 0  ) {
             System.out.println("[ERROR] 양수가 아닙니다.");
