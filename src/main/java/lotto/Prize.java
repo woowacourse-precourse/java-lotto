@@ -15,6 +15,10 @@ public enum Prize {
         this.numsOfWinner = 0;
     }
 
+    public int getNumsOfWinner() {
+        return this.numsOfWinner;
+    }
+
     private void plusNumsOfWinner() {
         this.numsOfWinner++;
     }
