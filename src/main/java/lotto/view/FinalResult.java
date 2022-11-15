@@ -1,5 +1,7 @@
 package lotto.view;
 
+import lotto.domain.RateOfReturn;
+
 public class FinalResult {
     public static int first=0;
     public static int second=0;
@@ -15,6 +17,6 @@ public class FinalResult {
                 "5개 일치 (1,500,000원) -" +third+ "개\n" +
                 "5개 일치, 보너스 볼 일치 (30,000,000원) - " +second + "개\n" +
                 "6개 일치 (2,000,000,000원) - " +first+ "개");
-        System.out.println("총 수익률은 "+62.5+"%입니다.");
+        System.out.println("총 수익률은 "+ RateOfReturn.rate() +"%입니다.");
     }
 }
