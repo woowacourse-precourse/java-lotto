@@ -17,11 +17,12 @@ public class LottoList {
         this.amount = 0;
     }
 
-    public void generateLotto() {
-        List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
-        numbers = numbers.stream().sorted().collect(Collectors.toList());
-        appendLotto(new Lotto(numbers));
-        amount++;
+    public void generateLotto(Long amountOfLotto) {
+        for (int i = 0; i < amountOfLotto; i++) {
+            pickLotto();
+        }
+        System.out.println(amountOfLotto + "개를 구매했습니다.");
+
     }
     public void printLottoList() {
         System.out.println(amount + "개를 구매했습니다.");
@@ -30,9 +31,15 @@ public class LottoList {
         }
     }
 
+    private void pickLotto(){
+        List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+        numbers = numbers.stream().sorted().collect(Collectors.toList());
+        appendLotto(new Lotto(numbers));
+        amount++;
+    }
+
     private void appendLotto(Lotto lotto) {
         this.lottos.add(lotto);
     }
-
 
 }

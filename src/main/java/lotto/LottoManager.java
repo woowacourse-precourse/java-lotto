@@ -14,7 +14,7 @@ public class LottoManager {
     public void buyLotto() {
         Long amountOfMoney = getAmountOfMoney();
         this.input = new Money(amountOfMoney);
-        pickLottoNumbers();
+        lottos.generateLotto(input.getAmountOfLotto());
         lottos.printLottoList();
     }
 
@@ -39,18 +39,7 @@ public class LottoManager {
         }
     }
 
-    private void pickLottoNumbers() {
-        Long amountOfLotto = input.getAmountOfLotto();
-        for (int i = 0; i < amountOfLotto; i++) {
-            this.lottos.generateLotto();
-        }
-        System.out.println(amountOfLotto + "개를 구매했습니다.");
-    }
-
     private List<Long> parseAnswerNumbers(String answerNumberString) {
         return Arrays.stream(answerNumberString.split(",")).map(Long::valueOf).collect(Collectors.toList());
     }
-
-
-
 }
