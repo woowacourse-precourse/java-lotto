@@ -28,7 +28,7 @@ public class Application {
 
             printLottoTicketHistory();
 
-            printWinningsOutOfBuyingPrice(inputPrice);
+            printRankOutOfBuyingPrice(inputPrice);
         } catch (LottoException e) {
             System.out.println(e.getMessage());
         }
@@ -118,6 +118,7 @@ public class Application {
         String userInput = Console.readLine();
 
         int bonusNumber = checkUserInputCondition(userInput);
+        bonusNumber = validateBonusNumberRange(bonusNumber);
         bonusNumber = validateBonusNumberIfExistInWinnerNumber(winnerLotto, bonusNumber);
 
         return bonusNumber;
@@ -169,7 +170,7 @@ public class Application {
         System.out.println(LottoRank.FIRST_PLACE.getMessage() + winningHistory.get(LottoRank.FIRST_PLACE) + "개");
     }
 
-    private static void printWinningsOutOfBuyingPrice(int buyingPrice) {
+    private static void printRankOutOfBuyingPrice(int buyingPrice) {
         int sumOfWinnings = getTotalWinnings();
 
         Double winningsRate = (Double.valueOf(sumOfWinnings) / Double.valueOf(buyingPrice)) * 100.0f;
