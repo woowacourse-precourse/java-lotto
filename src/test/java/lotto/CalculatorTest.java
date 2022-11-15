@@ -61,6 +61,7 @@ class CalculatorTest {
             calculator = new CalculatorModel();
         }
 
+        @DisplayName("8000원")
         @Test
         void case1() {
             Cash cash = new Cash(8000);
@@ -70,6 +71,7 @@ class CalculatorTest {
             assertThat(actual).isEqualTo(result);
         }
 
+        @DisplayName("14000원")
         @Test
         void case2() {
             Cash cash = new Cash(14000);
