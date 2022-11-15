@@ -27,10 +27,11 @@ public enum Rank {
         this.printMessage = printMessage;
     }
 
-    public void initializeRankCount(Rank rank) {
-        rank.count = 0;
+    public static void initializeRankCount() {
+        for (Rank rank : Rank.values()) {
+            rank.count = 0;
+        }
     }
-
 
     public void addCount(Rank rank) {
         rank.count++;
