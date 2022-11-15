@@ -13,11 +13,14 @@ import static lotto.constant.Constant.*;
 
 
 public class CalculateUserCorrectLottoInfoService {
-
     private final Map<WinningCriteriaInfo, Integer> countWinning = new HashMap<>();
     OutputView outputView = new OutputView();
 
-
+    public void calculateUserWinningInfo(Lotto lotto, User user) {
+        countWinningInfo(lotto, user);
+        outputView.printUserWinningResult(countWinning);
+        outputView.printUserTotalYield(calculateYieldOfUser(user));
+    }
     public void countWinningInfo(Lotto lotto, User user) {
         List<UserSingleLottoNumber> userSingleLottoNumbers = user.getUserLottoNumbers();
         userSingleLottoNumbers
@@ -51,5 +54,9 @@ public class CalculateUserCorrectLottoInfoService {
         }
         return count;
     }
-
+    public String calculateYieldOfUser(User user) {
+        user.setUserYield(user.getUserWinningPrice() / user.getUserLottoBuyingPrice() * HUNDRED);
+        DecimalFormat decimalFormat = new DecimalFormat("###,##0.0");
+        return decimalFormat.format(user.getUserYield());
+    }
 }
