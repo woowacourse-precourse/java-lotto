@@ -18,7 +18,7 @@ public class Lotto {
 
     private void validateLength(List<Integer> numbers) throws IllegalArgumentException {
         if (numbers.size() != Rules.LOTTO_SIZE) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(Errors.ERROR_LOTTO_NUMBER_SIZE.getValue());
         }
     }
 

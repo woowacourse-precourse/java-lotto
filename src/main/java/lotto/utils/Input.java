@@ -3,6 +3,7 @@ package lotto.utils;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Input {
@@ -30,7 +31,7 @@ public class Input {
         List<Integer> separateInput = new ArrayList<>();
         for (int inputIndex = 0; inputIndex < inputs.length; inputIndex++) {
             String elementInput = inputs[inputIndex];
-            validateNumber(input);
+            validateNumber(elementInput);
             separateInput.add(Integer.parseInt(elementInput));
         }
         return separateInput;
