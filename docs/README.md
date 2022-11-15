@@ -14,9 +14,9 @@
   - [X] [예외 처리] 문자가 입력되는 경우
   - [X] [예외 처리] 중복되는 숫자가 있는 경우
   - [X] [예외 처리] 당첨 번호가 쉼표(,)로 구분되지 않은 경우
-- [ ] 보너스 번호 입력
-  - [ ] [예외 처리] 보너스 번호가 범위(1~45)를 벗어나는 경우
-  - [ ] [예외 처리] 당첨 번호와 중복되는 경우
+- [X] 보너스 번호 입력
+  - [X] [예외 처리] 보너스 번호가 범위(1~45)를 벗어나는 경우
+  - [X] [예외 처리] 당첨 번호와 중복되는 경우
 - [ ] 당첨 결과 확인
   - [ ] 당첨 숫자와 비교
   - [ ] 보너스 숫자와 비교
@@ -55,3 +55,9 @@
   - feat: add winning number validation
   - refactor: separate createWinningLotto method
   - test: test winning number validation
+  - feat: print bonus number message
+  - feat: input bonus number
+  - refactor: separate bonus validation checking method
+  - test: test bonus duplicate validation
+  - refactor: add bonus class
+  - test: bonus validation test
