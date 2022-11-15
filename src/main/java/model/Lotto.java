@@ -77,8 +77,7 @@ public class Lotto {
 
     private int getMatchCount(List<Integer> winningNumbers) {
         return (int) numbers.stream()
-                .filter(number -> winningNumbers.stream()
-                        .anyMatch(Predicate.isEqual(number)))
+                .filter(number -> winningNumbers.stream().anyMatch(Predicate.isEqual(number)))
                 .count();
     }
 

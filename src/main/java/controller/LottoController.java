@@ -19,9 +19,7 @@ public class LottoController {
             Lottos lottos = new Lottos(money);
             OutputView.printLottos(lottos);
 
-            Lotto winningNumber = InputView.inputWinningNumber();
-            BonusNumber bonusNumber = InputView.inputBonusNumber();
-            WinningLotto winningLotto = new WinningLotto(winningNumber, bonusNumber);
+            WinningLotto winningLotto = getWinningLotto();
 
             WinningResult winningResult = lottos.getTotalWinningResult(winningLotto);
             EarningsRate earningsRate = winningResult.getEarningsRate(money);
@@ -30,5 +28,11 @@ public class LottoController {
         } catch (IllegalArgumentException e) {
             System.out.println(ERROR + e.getMessage());
         }
+    }
+
+    private WinningLotto getWinningLotto() {
+        Lotto winningNumber = InputView.inputWinningNumber();
+        BonusNumber bonusNumber = InputView.inputBonusNumber();
+        return new WinningLotto(winningNumber, bonusNumber);
     }
 }
