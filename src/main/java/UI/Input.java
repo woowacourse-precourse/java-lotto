@@ -10,31 +10,35 @@ import java.util.List;
 
 public class Input {
 
-    public static int price() {
-        Output.inputPrice();
+    private static List<Integer> lotto;
+    private Output output = new Output();
+
+    public int price() {
+        output.inputPrice();
         String price = Console.readLine();
         PriceException.checkException(price);
         return Integer.valueOf(price);
     }
 
-    public static List<Integer> winningNumbers() {
-        Output.inputWinningNumber();
+    public List<Integer> winningNumbers() {
+        output.inputWinningNumber();
         String[] numbers = Console.readLine().split(",");
 
         List<Integer> winningNumbers = new ArrayList<>();
         for (String number : numbers) {
-            LottoNumberException.checkException(number);
+            LottoNumberException.checkWinningNumberException(number);
             winningNumbers.add(Integer.valueOf(number));
         }
         Lotto lotto = new Lotto(winningNumbers);
+        this.lotto = lotto.getNumbers();
 
-        return lotto.getNumbers();
+        return this.lotto;
     }
 
-    public static int bonusNumber() {
-        Output.inputBounsNumber();
+    public int bonusNumber() {
+        output.inputBounsNumber();
         String bonusNumber = Console.readLine();
-        LottoNumberException.checkException(bonusNumber);
+        LottoNumberException.checkBonusNumberException(bonusNumber,this.lotto);
         return Integer.valueOf(bonusNumber);
     }
 
