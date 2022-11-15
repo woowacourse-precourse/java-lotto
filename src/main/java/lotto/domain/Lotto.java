@@ -46,6 +46,25 @@ public class Lotto {
     }
 
     // TODO: 추가 기능 구현
+
+    /**
+     * 인자로 주어진 로또와 일치하는 번호 개수 반환
+     *
+     * @param lotto 비교할 로또
+     * @return 일치하는 번호 개수
+     */
+    public int countCommonNumber(Lotto lotto) {
+        int result = 0;
+
+        for (Integer e : lotto.numbers) {
+            if (numbers.contains(e)) {
+                result++;
+            }
+        }
+
+        return result;
+    }
+
     @Override
     public String toString() {
         return numbers.toString();

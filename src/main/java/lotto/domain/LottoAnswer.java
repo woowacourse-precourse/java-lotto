@@ -70,4 +70,14 @@ public class LottoAnswer {
 
         return bonus;
     }
+
+    /**
+     * 당첨 번호 중에서 인자로 주어진 로또와 일치하는 번호 개수 반환
+     *
+     * @param lotto 비교할 로또
+     * @return 당첨 번호에서 일치하는 번호 개수
+     */
+    public int getCorrectCount(Lotto lotto) {
+        return winningNumber.countCommonNumber(lotto);
+    }
 }
