@@ -1,4 +1,4 @@
-package lotto;
+package lotto.model;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -51,16 +51,22 @@ public class Lotto {
         }
     }
 
-    public int compareWithWinningNumbers(List<Integer> winningNumbers) {
+    public int matchWithWinningNumber(Lotto winningNumber) {
         int matchCount = 0;
 
-        for (int winningNumber : winningNumbers) {
-            if (this.contains(winningNumber)) {
+        for (int i = 0; i < LOTTO_NUMBER_COUNT; i++) {
+            int number = winningNumber.get(i);
+
+            if (this.contains(number)) {
                 matchCount++;
             }
         }
 
         return matchCount;
+    }
+
+    public int get(int index) {
+        return numbers.get(index);
     }
 
     public boolean contains(int number) {

@@ -1,4 +1,4 @@
-package lotto;
+package lotto.util;
 
 public enum Rank {
     NONE("", 0),
@@ -14,10 +14,6 @@ public enum Rank {
     Rank(String description, int prize) {
         this.description = description;
         this.prize = prize;
-    }
-
-    public String getDescription() {
-        return description;
     }
 
     public int getPrize() {
