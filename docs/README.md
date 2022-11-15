@@ -21,7 +21,7 @@
 
 ## Util
 
-    - 
+    - random number 생성기
 
 ## View
 
