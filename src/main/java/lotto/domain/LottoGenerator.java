@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
-import lotto.validate.Validate;
+import lotto.validate.ValidatePurchasingAmount;
 import lotto.view.Input;
 import lotto.view.Output;
 
@@ -16,15 +16,22 @@ public class LottoGenerator {
         container = new ArrayList<>();
     }
 
-    public void generate() {
-        generate(Integer.parseInt(ShouldReturnInputPurchasingAmountWhenValidated()) / 1000);
+    public List<Lotto> generate() throws IllegalArgumentException {
+        String purchasingAmount = Input.readPurchasingAmount();
+        ValidatePurchasingAmount.validate(purchasingAmount);
+        return generate(getLottoNumbers(purchasingAmount));
     }
 
-    public void generate(int numberOfLottos) {
+    private int getLottoNumbers(String purchasingAmount) {
+        return Integer.parseInt(purchasingAmount) / 1000;
+    }
+
+    public List<Lotto> generate(int numberOfLottos) {
         for (int number = 0; number < numberOfLottos; number++) {
             createLottoAndPutIntoContainer();
         }
         Output.printLottoHistory(container);
+        return container;
     }
 
     public void createLottoAndPutIntoContainer() {
@@ -32,15 +39,6 @@ public class LottoGenerator {
         Stream<Integer> randomNumbersStream = randomNumbers.stream();
         randomNumbers = randomNumbersStream.sorted().collect(Collectors.toList());
         container.add(new Lotto(randomNumbers));
-    }
-
-    public String ShouldReturnInputPurchasingAmountWhenValidated() {
-        return validate(Input.readPurchasingAmount());
-    }
-
-    private String validate(String purchasingAmount) {
-        Validate.validatePurchasingAmount(purchasingAmount);
-        return purchasingAmount;
     }
 
     public int size() {
