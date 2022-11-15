@@ -49,11 +49,12 @@ public class Exception {
     }
 
     public static void validateDelimiter(String numbers) {
+        int numberCount = (int)Stream.of(numbers.split(EXCEPT_NUMBERS)).count();
         int delimiterCount = (int) Stream.of(numbers.split(NULL))
                 .filter(c -> c.equals(DELIMITER))
                 .count();
 
-        if(delimiterCount != CORRECT_DELIMITER_COUNT) {
+        if(delimiterCount != numberCount - 1) {
             throwException(WRONG_DELIMITER_MESSAGE);
         }
     }

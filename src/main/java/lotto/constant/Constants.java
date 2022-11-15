@@ -10,5 +10,5 @@ public final class Constants {
 
     public static final String NULL = "";
     public static final String DELIMITER = ",";
-    public static final int CORRECT_DELIMITER_COUNT = 5;
+    public static final String EXCEPT_NUMBERS = "[^\\d]";
 }
