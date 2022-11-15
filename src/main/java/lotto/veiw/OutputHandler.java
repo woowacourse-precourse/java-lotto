@@ -31,13 +31,13 @@ public class OutputHandler {
         Map<LottoReference, Integer> result = lottoResult.getValue();
         DecimalFormat floatFormat = new DecimalFormat("###,###.#");
 
-        float yield = LottoReference.getYield(result);
-        System.out.printf("총 수익률은 %s%%입니다.\n", floatFormat.format(yield));
+        float lottoYield = LottoReference.getYield(result);
+        System.out.printf("총 수익률은 %s%%입니다.\n", floatFormat.format(lottoYield));
     }
 
     public void printBuyLottoList(LottoMachine lottoMachine) {
-        System.out.println(lottoMachine.getBuyLottoList().size() + "개를 구매했습니다.");
-        for (Lotto lotto : lottoMachine.getBuyLottoList()) {
+        System.out.println(lottoMachine.getBuyLotteries().size() + "개를 구매했습니다.");
+        for (Lotto lotto : lottoMachine.getBuyLotteries()) {
             System.out.println(lotto.getLottoNumbers());
         }
     }

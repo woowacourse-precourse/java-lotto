@@ -25,24 +25,22 @@ public class InputHandler {
 
     public List<Integer> stringToList(String readLine) {
         List<String> inputs = List.of(readLine.split(","));
-        List<Integer> lottoNumbers = new ArrayList<>();
+        List<Integer> numbers = new ArrayList<>();
         for (String input : inputs) {
             try {
-                lottoNumbers.add(Integer.valueOf(input));
+                numbers.add(Integer.valueOf(input));
             } catch (Exception e) {
                 throw ErrorCode.NOT_NUMBER.getException();
             }
         }
-        return lottoNumbers;
+        return numbers;
     }
 
     private int stringToInt(String input) {
-        int inputNumber;
         try {
-            inputNumber = Integer.valueOf(input);
+            return Integer.parseInt(input);
         } catch (Exception e) {
             throw ErrorCode.NOT_NUMBER.getException();
         }
-        return inputNumber;
     }
 }
