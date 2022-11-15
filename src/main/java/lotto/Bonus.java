@@ -10,10 +10,10 @@ public class Bonus {
 
     private void validate(int number, Lotto lotto) {
         if (!isValidRange(number)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ExceptionMessage.BONUS_NOT_VALID.getMessage());
         }
         if (hasSameNumber(number, lotto)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ExceptionMessage.BONUS_NOT_VALID.getMessage());
         }
     }
 
