@@ -7,7 +7,9 @@ public class Application {
         // TODO: 프로그램 구현
 
         User user = UI.getUser();
-        Rank rank = new Rank();
+        Lotto lottoNumbers = UI.getLottoNumbers();
+        int bonusNumber = UI.getBonusNumber();
+        Rank rank = new Rank(lottoNumbers, bonusNumber);
         rank.run(user);
         UI.printTotalResult(user.money);
     }

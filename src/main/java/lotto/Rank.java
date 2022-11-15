@@ -11,9 +11,9 @@ public class Rank {
     private final int bonusNumber;
     private final Lotto lottoNumbers;
 
-    public Rank() {
-        this.lottoNumbers = UI.getLottoNumbers();
-        this.bonusNumber = UI.getBonusNumber();
+    public Rank(Lotto lottoNumbers, int bonusNumber) {
+        this.lottoNumbers = lottoNumbers;
+        this.bonusNumber = bonusNumber;
         validateBonusNumber();
     }
 

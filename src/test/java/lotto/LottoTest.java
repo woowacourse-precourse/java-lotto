@@ -1,5 +1,7 @@
 package lotto;
 
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
 import java.util.NoSuchElementException;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -48,4 +50,10 @@ class LottoTest {
         assertThatThrownBy(() -> new User("11500"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+//    @DisplayName("입력한 당첨 번호와 보너스 번호가 중복이면 예외가 발생한다.")
+//    @Test
+//    void createWinningLottoByDuplicatedNumber() {
+//        run()
+//    }
 }
