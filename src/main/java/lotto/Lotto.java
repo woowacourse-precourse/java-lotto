@@ -35,11 +35,7 @@ public class Lotto {
         }
     }
 
-    public void checkBonusExists(int bonus) {
-        if (this.numbers.contains(bonus)) {
-            throw new IllegalArgumentException();
-        }
-    }
+
 
     public void printLotto() {
         System.out.println(this.numbers);
