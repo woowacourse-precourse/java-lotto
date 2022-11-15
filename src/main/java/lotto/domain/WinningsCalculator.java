@@ -36,8 +36,7 @@ public class WinningsCalculator {
                 return;
             }
             rankingCounts.put(rankingType.name(), rankingCounts.get(rankingType.name()) + 1);
-        }
-        catch (Exception error) {
+        } catch (Exception error) {
             System.out.println(error.getMessage());
         }
     }
@@ -74,5 +73,9 @@ public class WinningsCalculator {
             }
         }
         return totalWinnings;
+    }
+
+    public double calculateRateOfReturn(long totalWinnings, long payment) {
+        return Math.round(((double) totalWinnings / payment) * 1000) / 10.0;
     }
 }
