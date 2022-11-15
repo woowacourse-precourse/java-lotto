@@ -27,7 +27,7 @@ class ViewTest extends NsTest{
         view.printUncheckedLotto(lottos);
 
         assertThat(output()).contains(
-                "7개를 구입했습니다.",
+                "7개를 구매했습니다.",
                 "[1, 4, 6, 9, 15, 7]",
                 "[5, 19, 21, 37, 40, 45]",
                 "[3, 8, 10, 31, 40, 41]",
