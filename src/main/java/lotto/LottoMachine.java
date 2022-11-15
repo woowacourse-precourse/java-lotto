@@ -31,7 +31,7 @@ public class LottoMachine {
         winningNumber = checkWiningNumber(input);
     }
 
-    private List<Integer> checkWiningNumber(String input) {
+    public List<Integer> checkWiningNumber(String input) {
         StringTokenizer st = new StringTokenizer(input, ",");
         if (st.countTokens() != 6)
             throw new IllegalArgumentException("[ERROR] 6개의 수를 입력해야 합니다.");
