@@ -2,6 +2,8 @@ package lotto.validation;
 
 import java.util.List;
 
+import static lotto.validation.ErrorMessage.*;
+
 public class BonusNumberInputValidation {
     public static final int MIN_LOTTO_NUM = 1;
     public static final int MAX_LOTTO_NUM = 45;
@@ -16,7 +18,7 @@ public class BonusNumberInputValidation {
         try {
             Integer.parseInt(inputBonusNumber);
         } catch (Exception e) {
-            throw new IllegalArgumentException("[ERROR] 숫자를 입력해 주세요.");
+            throw new IllegalArgumentException(INPUT_BONUS_NUMBER_IN_INTEGER.getMessage());
         }
     }
 
@@ -24,7 +26,7 @@ public class BonusNumberInputValidation {
         int bonusNumber = Integer.parseInt(inputBonusNumber);
 
         if (predictionNumbers.contains(bonusNumber)) {
-            throw new IllegalArgumentException("[ERROR] 예측 번호와 중복되는 번호를 입력할 수 없습니다.");
+            throw new IllegalArgumentException(NO_DUPLICATION_WITH_PREDICTION_NUMBERS.getMessage());
         }
     }
 
@@ -32,7 +34,7 @@ public class BonusNumberInputValidation {
         int bonusNumber = Integer.parseInt(inputBonusNumber);
 
         if (bonusNumber < MIN_LOTTO_NUM || bonusNumber > MAX_LOTTO_NUM) {
-            throw new IllegalArgumentException("[ERROR] 번호의 범위는 1이상 45이하여야 합니다.");
+            throw new IllegalArgumentException(NUMBERS_RANGE_BETWEEN_ONE_AND_FOURTYFIVE.getMessage());
         }
     }
 }
