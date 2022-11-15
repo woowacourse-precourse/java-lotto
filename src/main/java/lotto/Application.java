@@ -22,8 +22,15 @@ public class Application {
         String bonusNumString = Console.readLine();
         List<Integer> winNumberList = makeWinNumberList(winNumberString);
         int bonusNumber = bonusNumber(bonusNumString);
-        compareNumber(winNumberList, bonusNumber);
+
+        Lotto currentLotto = new Lotto(winNumberList);
+        currentLotto.setBonus(bonusNumber);
+        for(int i = 0; i<moneyInt;i++){
+            currentLotto.lottoNumberCompare(lottoList.get(i));
+        }
+        printStatistic(currentLotto.getWinNums(), currentLotto.getReturnRate(moneyInt));
     }
+
 
     public static int moneyExceptionHandling(String moneyString){
         int moneyInt;
@@ -31,7 +38,7 @@ public class Application {
             moneyInt = parseInt(moneyString);
         }
         catch(NumberFormatException e){
-            System.out.println("[ERROR] 숫자만 입력해주세요.");
+            System.out.println("[ERROR] 금액을 다시 확인해주세요.");
             throw new IllegalArgumentException();
         }
         if(moneyInt%1000!=0){
@@ -83,5 +90,9 @@ public class Application {
             throw new IllegalArgumentException();
         }
         return bonusNumber;
+    }
+
+    public static void printStatistic(List<Integer> winTimes, float returnRate){
+
     }
 }
