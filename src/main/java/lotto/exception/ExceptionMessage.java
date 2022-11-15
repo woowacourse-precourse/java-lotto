@@ -11,7 +11,8 @@ public enum ExceptionMessage {
     NUMBER_FORMAT_ERROR("로또 번호는 숫자만 입력 가능합니다."),
     MONEY_LOWER_BOUND_ERROR("금액은 1000원 이상이어야 합니다."),
     MONEY_DIVIDE_ERROR("금액은 1000원으로 나누어 떨어져야 합니다."),
-    NONE_SEPARATOR_ERROR("숫자들의 구분자는 ',' 만 가능합니다.");
+    NONE_SEPARATOR_ERROR("숫자들의 구분자는 ',' 만 가능합니다."),
+    EMPTY_INPUT("입력값이 비어있습니다.");
 
     private final String message;
 
