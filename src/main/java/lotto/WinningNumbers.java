@@ -1,5 +1,6 @@
 package lotto;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.StringTokenizer;
 
@@ -10,10 +11,11 @@ public class WinningNumbers {
     private int bonusNumber;
 
     public WinningNumbers(String input){
-
+        validate(input);
+        this.winningNumbers= splitWinningNumbers(input);
     }
 
-    private void winningNumbersSplit(String s){
+    private void validate(String s){
         StringTokenizer tokenizer= new StringTokenizer(s,",");
         while(tokenizer.hasMoreTokens()){
             integerCheck(tokenizer.nextToken());
@@ -27,8 +29,17 @@ public class WinningNumbers {
         catch(NumberFormatException e){
             printErrorMessage("[ERROR] 숫자 형식으로만 입력해주세요.");
         }
-
     }
+
+    private List<Integer> splitWinningNumbers(String s){
+        List<Integer> splitInput=new ArrayList<>();
+        StringTokenizer tokenizer= new StringTokenizer(s,",");
+        while(tokenizer.hasMoreTokens()){
+            splitInput.add(Integer.parseInt(tokenizer.nextToken()));
+        }
+        return splitInput;
+    }
+
 
 
 }
