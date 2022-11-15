@@ -7,13 +7,12 @@ public class InputMoneyHandler {
     Output output = new Output();
 
     public void checkException(String inputMoney) {
-        checkExist(inputMoney);
         checkIsNumber(inputMoney);
         checkPositiveNumber(inputMoney);
         checkIsValidMoney(inputMoney);
     }
 
-    private void checkExist (String inputMoney) {
+    public void checkExist (String inputMoney) {
         if(inputMoney.length() == 0){
             throw new IllegalArgumentException(output.ERROR_ORDER+" 숫자를 입력하여야 합니다.");
         }
