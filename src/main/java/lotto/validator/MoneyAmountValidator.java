@@ -16,4 +16,10 @@ public class MoneyAmountValidator {
             throw new IllegalArgumentException(ErrorMessage.MONEY_AMOUNT_CANNOT_BUY_LOTTO);
         }
     }
+
+    public static void validateMoneyModThousand(int moneyAmount){
+        if (moneyAmount % 1000 != 0) {
+            throw new IllegalArgumentException(ErrorMessage.MONEY_AMOUNT_WRONG_VALUE);
+        }
+    }
 }
