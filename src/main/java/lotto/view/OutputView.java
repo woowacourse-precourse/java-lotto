@@ -1,9 +1,6 @@
 package lotto.view;
 import lotto.domain.Rating;
 
-import java.lang.Enum;
-import java.sql.SQLOutput;
-
 public class OutputView {
     private static final String START_MESSAGE = "구입금액을 입력해 주세요.";
     private static final String NOTIFICATION_MESSAGE = "개를 구매했습니다.";
