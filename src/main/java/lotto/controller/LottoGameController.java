@@ -29,6 +29,14 @@ public class LottoGameController {
     }
 
     public void runGame() {
+        try {
+            runGameWithNoExceptionControl();
+        } catch (Exception e) {
+            outputView.printlnError(e.getMessage());
+        }
+    }
+
+    private void runGameWithNoExceptionControl () {
         outputView.println(PUT_PAYMENT_INPUT_ALERT);
         int amount = inputView.readInteger();
         Payment payment = new Payment(amount);
