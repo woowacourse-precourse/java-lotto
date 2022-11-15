@@ -29,24 +29,53 @@ public class Application {
 
     public static Buyer createBuyer() {
         System.out.println(INPUT_MONEY);
+        try {
+            int money = convertToInteger(readLine());
+            Buyer buyer = new Buyer(money);
 
-        int money = convertToInteger(readLine());
-        Buyer buyer = new Buyer(money);
+            buyer.showLottos();
 
-        buyer.showLottos();
+            return buyer;
+        } catch (Exception exception) {
+            throw exception;
+        }
 
-        return buyer;
+    }
+
+    public static List<Integer> inputNumbers() {
+        System.out.println(INPUT_NUMBERS);
+
+        try {
+            List<Integer> winningNumbers = convertToIntegerList(readLine());
+            LottoNumberValidator.validateNumbers(winningNumbers);
+
+            return winningNumbers;
+        } catch (Exception exception) {
+            throw exception;
+        }
+    }
+
+    public static int inputBonusNumber() {
+        System.out.println(INPUT_BONUS_NUMBER);
+        
+        try {
+            int bonusNumber = convertToInteger(readLine());
+
+            return bonusNumber;
+        } catch (Exception exception) {
+            throw exception;
+        }
     }
 
     public static WinningLotto createWinningLotto() {
-        System.out.println(INPUT_NUMBERS);
-        List<Integer> winningNumbers = convertToIntegerList(readLine());
-        LottoNumberValidator.validateNumbers(winningNumbers);
+        try {
+            List<Integer> winningNumbers = inputNumbers();
+            int bonusNumber = inputBonusNumber();
 
-        System.out.println(INPUT_BONUS_NUMBER);
-        int bonusNumber = convertToInteger(readLine());
-
-        return new WinningLotto(winningNumbers, bonusNumber);
+            return new WinningLotto(winningNumbers, bonusNumber);
+        } catch (Exception exception) {
+            throw exception;
+        }
     }
 
     public static void main(String[] args) {
