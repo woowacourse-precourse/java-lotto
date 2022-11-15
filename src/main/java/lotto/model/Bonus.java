@@ -10,7 +10,7 @@ public class Bonus {
     public Bonus(String inputBonusNumber, List<Integer> lotto){
         int number = convertNumber(inputBonusNumber);
 
-        checkBonusNumberRange(number);
+        validateBonusNumberRange(number);
         checkBonusDuplicatedNumber(number, lotto);
         this.number = number;
     }
@@ -30,7 +30,7 @@ public class Bonus {
     }
 
     // 입력된 보너스 번호가 1~45 이내인지 확인
-    public void checkBonusNumberRange(int bonusNumber){
+    public void validateBonusNumberRange(int bonusNumber){
         if (bonusNumber < 1 || bonusNumber > 45){
             PrintError.BONUS_RANGE.print();
             throw new IllegalArgumentException();
