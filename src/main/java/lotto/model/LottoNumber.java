@@ -25,16 +25,6 @@ public class LottoNumber {
         this.number = number;
     }
 
-    private void validate(int number) {
-        if (!isValidNumber(number)) {
-            throw new IllegalArgumentException("로또 번호는 1부터 45 사이의 숫자여야 합니다.");
-        }
-    }
-
-    private boolean isValidNumber(int number) {
-        return number >= MIN_LOTTO_NUMBER && number <= MAX_LOTTO_NUMBER;
-    }
-
     public static LottoNumber of(int number) {
         return Optional.ofNullable(LottoNumbers.get(number))
                 .orElseThrow(() -> new IllegalArgumentException("로또 번호는 1부터 45 사이의 숫자여야 합니다."));
@@ -49,6 +39,16 @@ public class LottoNumber {
         if (!money.matches(NUMBER_PATTERN)) {
             throw new IllegalArgumentException("숫자만 입력해주세요.");
         }
+    }
+
+    private void validate(int number) {
+        if (!isValidNumber(number)) {
+            throw new IllegalArgumentException("로또 번호는 1부터 45 사이의 숫자여야 합니다.");
+        }
+    }
+
+    private boolean isValidNumber(int number) {
+        return number >= MIN_LOTTO_NUMBER && number <= MAX_LOTTO_NUMBER;
     }
 
     public int getNumber() {

@@ -19,7 +19,7 @@ public class Lotto {
         this.numbers = numbers.stream().map(LottoNumber::of).collect(Collectors.toList());
     }
 
-    public Lotto(String numbers){
+    public Lotto(String numbers) {
         this(mapToInteger(numbers));
     }
 
