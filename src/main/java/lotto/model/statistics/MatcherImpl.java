@@ -19,6 +19,7 @@ public class MatcherImpl implements Matcher{
         this.winningNumbers = winningNumbers;
         this.money = money;
         this.statistics = new Statistics();
+        match();
     }
     @Override
     public Statistics getStatistics() {
@@ -31,24 +32,26 @@ public class MatcherImpl implements Matcher{
             Integer sameCount = getCorrectMatch(winningNumbers, lotto);
             Boolean bonusMatch = getBonusMatch(winningNumbers, lotto);
             Rank rank = Rank.of(sameCount, bonusMatch);
-            statistics.update(rank);
+            if(!rank.equals(Rank.FAIL)) {
+                statistics.update(rank);
+            }
         }
         statistics.calculateYield(money);
     }
 
-    private Integer getCorrectMatch(WinningNumbers WinningNumber, Lotto IssuedNumber) {
-        List<Integer> winningNumbers = WinningNumber.getWinningNumbers();
-        List<Integer> issuedNumbers = IssuedNumber.getNumbers();
+    private Integer getCorrectMatch(WinningNumbers winningNumber, Lotto issuedNumber) {
+        List<Integer> winningNumbers = winningNumber.getWinningNumbers();
+        List<Integer> issuedNumbers = issuedNumber.getNumbers();
 
         return (int) winningNumbers.stream()
-                .filter(winningNumber -> issuedNumbers.stream().anyMatch(Predicate.isEqual(winningNumber)))
+                .filter(number -> issuedNumbers.stream().anyMatch(Predicate.isEqual(number)))
                 .distinct()
                 .count();
     }
 
 
-    private Boolean getBonusMatch(WinningNumbers winningNumbers, Lotto IssuedNumber) {
-        List<Integer> numbers = IssuedNumber.getNumbers();
+    private Boolean getBonusMatch(WinningNumbers winningNumbers, Lotto issuedNumber) {
+        List<Integer> numbers = issuedNumber.getNumbers();
         Integer bonusNumber = winningNumbers.getBonusNumber();
         return numbers.contains(bonusNumber);
     }
