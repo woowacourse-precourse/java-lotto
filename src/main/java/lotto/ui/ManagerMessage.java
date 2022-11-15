@@ -1,7 +1,8 @@
 package lotto.ui;
 
 public enum ManagerMessage {
-	INSERT_WIN_NUMBERS("당첨 번호를 입력해 주세요.");
+	INSERT_WIN_NUMBERS("당첨 번호를 입력해 주세요."),
+	INSERT_BONUM_NUMBER("보너스 번호를 입력해 주세요.");
 
 	private final String message;
 

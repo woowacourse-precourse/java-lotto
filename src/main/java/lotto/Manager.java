@@ -17,6 +17,7 @@ public class Manager {
     private static final int MAX_EXCLUSIVE = 45;
     private List<Lotto> lottos;
     private List<Integer> win;
+    private int bonus;
 
     private Lotto makeLotto() {
         List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
@@ -75,6 +76,11 @@ public class Manager {
         if (!list.isEmpty() && list.get(list.size() - 1) == number) {
             throw new IllegalArgumentException();
         }
+        validateRange(number);
+        return true;
+    }
+
+    private boolean validateRange(int number) {
         if (!(number >= MIN_EXCLUSIVE && number <= MAX_EXCLUSIVE)) {
             throw new IllegalArgumentException();
         }
@@ -83,5 +89,17 @@ public class Manager {
 
     public List<Integer> getWin() {
         return win;
+    }
+
+    public void setBonus() {
+        System.out.println(ManagerMessage.INSERT_BONUM_NUMBER.getMessage());
+        String input = readLine();
+        if (!Util.isInteger(input)) {
+            throw new IllegalArgumentException();
+        }
+        int parsed = Integer.parseInt(input);
+        if (validateRange(parsed)) {
+            this.bonus = parsed;
+        }
     }
 }
