@@ -34,6 +34,7 @@ public class LottoServiceTest {
         user.addLottoForTest(List.of(30, 5, 13, 2, 24, 6));
 
         lottoService.saveWinningLotto("30,24,13,4,5,6");
+        lottoService.initResultLotto();
         lottoService.saveResultLotto();
 
         Reward expectedReward = Reward.SECOND_REWARD;
