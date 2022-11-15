@@ -145,5 +145,17 @@ class LottoServiceTest {
             // then
             assertThrows(IllegalStateException.class, () -> LottoService.getBonusNumber(input));
         }
+
+        @Test
+        @DisplayName("보너스 번호가 1~45 범위가 아닌 경우")
+        void isNotInRange() {
+            // given
+            final String input = "1000";
+
+            // when
+
+            // then
+            assertThrows(IllegalStateException.class, () -> LottoService.getBonusNumber(input));
+        }
     }
 }
