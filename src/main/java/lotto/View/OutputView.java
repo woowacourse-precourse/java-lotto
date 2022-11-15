@@ -40,7 +40,7 @@ public class OutputView {
         System.out.printf((Message.RANK_MESSAGE) + "%n", key.getMatchCount(), decFormat.format(key.getPrice()), value);
     }
 
-    public static void showEarningRatioResult(float ratio) {
+    public static void showEarningRatioResult(double ratio) {
         System.out.printf((Message.EARN_RATIO_MESSAGE) + "%n", ratio);
     }
 }

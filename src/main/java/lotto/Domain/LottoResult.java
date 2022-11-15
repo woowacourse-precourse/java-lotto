@@ -30,12 +30,12 @@ public class LottoResult {
         return lotto.getNumbers().contains(bonusNum);
     }
 
-    public float calcEarnedRatio(int purchaseAmount) {
+    public double calcEarnedRatio(int purchaseAmount) {
         return getTotalEarnedMoney() / purchaseAmount;
     }
 
-    public float getTotalEarnedMoney() {
-        return (float) result.entrySet()
+    public double getTotalEarnedMoney() {
+        return (double) result.entrySet()
                 .stream()
                 .filter((Map.Entry<Rank, Integer> e) -> e.getValue() > 0).mapToLong(entry -> (long) entry.getKey().getPrice() * entry.getValue())
                 .sum();
