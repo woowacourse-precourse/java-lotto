@@ -1,7 +1,5 @@
 package domain;
 
-import exception.BonusExceptionType;
-
 public class BonusNumber {
 
     private final int BONUS_CNT = 1;
@@ -18,7 +16,7 @@ public class BonusNumber {
 
     public void numberCount(String input){
         if(input.length() != BONUS_CNT){
-            throw new IllegalArgumentException(BonusExceptionType.NOT_MATCH_BONUS_CNT.getErrorMessage());
+            throw new IllegalArgumentException();
         }
     }
 
@@ -29,13 +27,13 @@ public class BonusNumber {
 
     public void numberRange(int bonus){
         if(bonus < MIN_NUMBER || bonus > MAX_NUMBER){
-            throw new IllegalArgumentException(BonusExceptionType.NOT_MATCH_BONUS_RANGE.getErrorMessage());
+            throw new IllegalArgumentException();
         }
     }
 
     public void notNumber(String input){
         if(input.charAt(0) < 48 || input.charAt(0) > 57){
-            throw new IllegalArgumentException(BonusExceptionType.NOT_NUMBER_BONUS.getErrorMessage());
+            throw new IllegalArgumentException();
         }
     }
 }

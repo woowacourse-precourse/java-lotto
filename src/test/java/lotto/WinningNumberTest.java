@@ -1,7 +1,6 @@
 package lotto;
 
 import domain.WinningNumber;
-import exception.LottoExceptionType;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;

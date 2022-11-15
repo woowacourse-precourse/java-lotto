@@ -1,6 +1,5 @@
 package domain;
 
-import exception.WinningExceptionType;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -35,14 +34,14 @@ public class WinningNumber {
     public void numberCount(List<Integer> list){
         HashSet<Integer> set = new HashSet<>(list);
         if(set.size() != winning_cnt){
-            throw new IllegalArgumentException(WinningExceptionType.NOT_MATCH_NUMBER_COUNT.getErrorMessage());
+            throw new IllegalArgumentException();
         }
     }
 
     public void numberRange(List<Integer> list){
         for(int num : list){
             if(num < MIN_NUMBER || num > MAX_NUMBER){
-                throw new IllegalArgumentException(WinningExceptionType.NOT_MATCH_NUMBER_RANGE.getErrorMessage());
+                throw new IllegalArgumentException();
             }
         }
     }
@@ -50,7 +49,7 @@ public class WinningNumber {
     public void notNumber(String input){
         for (int i = 0; i < input.length(); i+=2) {
             if(input.charAt(i) < 48 || input.charAt(i) > 57){
-                throw new IllegalArgumentException(WinningExceptionType.NOT_MATCH_IS_NUMBER.getErrorMessage());
+                throw new IllegalArgumentException();
             }
         }
     }
@@ -58,7 +57,7 @@ public class WinningNumber {
     public void notComma(String input){
         for (int i = 1; i < input.length()-1; i+=2) {
             if(input.charAt(i) != ','){
-                throw new IllegalArgumentException(WinningExceptionType.NOT_MATCH_COMMA.getErrorMessage());
+                throw new IllegalArgumentException();
             }
         }
     }
