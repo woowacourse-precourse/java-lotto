@@ -33,6 +33,14 @@ public class Lotto {
             appearedNumList.add(tmpNum);
         }
     }
+    public static void validateNumberVariation(Lotto lotto) {
+        List<Integer> numbers = lotto.numbers;
+        for (int index = 0; index < 6; index++){
+            int tmpNum = numbers.get(index);
+            if (tmpNum >= 1 || tmpNum <= 45)
+                throw new IllegalArgumentException(String.valueOf(NUMBER_VARIATION));
+        }
+    }
 
 
     public static List<Integer> createLotto(){

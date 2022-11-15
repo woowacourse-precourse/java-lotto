@@ -25,6 +25,7 @@ public class Application {
         System.out.println("\n" + GET_WINNING_LOTTO);
         Lotto winningLotto = new Lotto(getSixInput());
         validateNotDuplicate(winningLotto);
+        validateNumberVariation(winningLotto);
 
 
     }
