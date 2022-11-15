@@ -10,11 +10,11 @@ public class Validator {
         if(!isNumber(inputMoney)) {
             throw new IllegalArgumentException(ErrorMessage.MONEY_IS_NOT_NUMBER.getMessage());
         }
-        if(isZero(inputMoney)) {
-            throw new IllegalArgumentException(ErrorMessage.MONEY_IS_ZERO.getMessage());
-        }
         if(isEnteredSpace(inputMoney)){
             throw new IllegalArgumentException(ErrorMessage.MONEY_IS_NOT_ENTERED.getMessage());
+        }
+        if(isZero(inputMoney)) {
+            throw new IllegalArgumentException(ErrorMessage.MONEY_IS_ZERO.getMessage());
         }
         if(!is1000Units(Integer.parseInt(inputMoney))) {
             throw new IllegalArgumentException(ErrorMessage.MONEY_IS_NOT_1000_UNIT.getMessage());

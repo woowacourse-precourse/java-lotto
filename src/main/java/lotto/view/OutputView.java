@@ -7,6 +7,10 @@ import lotto.domain.OutputMessage;
 import lotto.domain.UserLotto;
 
 public class OutputView {
+    public static void printMessage(String message) {
+        System.out.println(message);
+    }
+
     public void printQuantity(int quantity) {
         System.out.println(quantity + OutputMessage.PRINT_LOTTO_QUANTITY.getMessage());
     }

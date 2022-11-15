@@ -16,16 +16,20 @@ public class LottoSystem {
     private static UserLotto userLotto;
 
     public void startLottoSystem() {
-        int userMoney = Integer.parseInt(inputView.inputUserMoney());
-        int lottoQuantity = LottoQuantityCalculation(userMoney);
-        outputView.printQuantity(lottoQuantity);
-        userLotto = makeUserLottos(lottoQuantity);
-        outputView.printLottoNumber(userLotto);
-        WinningLotto winningLotto = inputView.inputLottoNumbers();
-        List<LottoRanking> lottoResult = makeResult(winningLotto);
-        outputView.printLottoResult(lottoResult);
-        int prizeMoney = calculatePrizeMoey(lottoResult);
-        outputView.printYield(calculateYield(prizeMoney, userMoney));
+        try {
+            int userMoney = Integer.parseInt(inputView.inputUserMoney());
+            int lottoQuantity = LottoQuantityCalculation(userMoney);
+            outputView.printQuantity(lottoQuantity);
+            userLotto = makeUserLottos(lottoQuantity);
+            outputView.printLottoNumber(userLotto);
+            WinningLotto winningLotto = inputView.inputLottoNumbers();
+            List<LottoRanking> lottoResult = makeResult(winningLotto);
+            outputView.printLottoResult(lottoResult);
+            int prizeMoney = calculatePrizeMoey(lottoResult);
+            outputView.printYield(calculateYield(prizeMoney, userMoney));
+        } catch (IllegalArgumentException e) {
+            OutputView.printMessage(e.getMessage());
+        }
     }
 
     public double calculateYield(int prizeMoney, int userMoney) {
