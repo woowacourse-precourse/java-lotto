@@ -17,18 +17,22 @@ public class OutputView {
         printLottosCount(userLottos);
         printSortedLottos(userLottos);
     }
+
     public void printLottosCount(UserLottos userLottos) {
         int count = userLottos.getLottoCount();
         System.out.println("\n" + count + MESSAGE_TO_PRINT_COUNT);
     }
+
     public void printResult(LottoResult lottoResult) {
         System.out.println(MESSAGE_TO_PRINT_RESULT);
         System.out.println(lottoResult.getResultString());
         System.out.println(MESSAGE_TO_PRINT_YIELD_A + lottoResult.getYield() + MESSAGE_TO_PRINT_YIELD_B);
     }
+
     public void printErrorMessage(String errorMessage) {
         System.out.println(errorMessage);
     }
+
     public void printSortedLottos(UserLottos userLottos) {
         Set<Lotto> lottoSet = userLottos.getUserLottos();
 
