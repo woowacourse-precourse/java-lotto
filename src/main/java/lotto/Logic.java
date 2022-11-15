@@ -1,8 +1,11 @@
 package lotto;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
+
+import static camp.nextstep.edu.missionutils.Randoms.pickUniqueNumbersInRange;
 
 import static lotto.ErrorCode.*;
 
@@ -47,5 +50,15 @@ public class Logic {
             return;
         }
         throw new IllegalArgumentException(exceptionMessage.getMessage());
+    }
+
+    public List<Lotto> setLottos(int amount) {
+        List<Lotto> answer = new ArrayList<>();
+        for(int i = 0; i < amount; ++i) {
+            List lottoNum = pickUniqueNumbersInRange(1, 45, 6);
+            Collections.sort(lottoNum);
+            answer.add(new Lotto(lottoNum));
+        }
+        return answer;
     }
 }

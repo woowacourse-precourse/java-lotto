@@ -24,6 +24,16 @@ public class LottoSystem {
     }
 
     void loop() {
+        piecesInput(); // 사용자 금액 입력받기
+        userLottosInput(); // 금액만큼의 로또 발급 후 로또 출력하기
+    }
+    void piecesInput() {
         this.pieces = logic.checkPieces(view_input.getPieces());
+        view_output.showPieces(this.pieces);
+    }
+
+    void userLottosInput() {
+       this.userLottos = logic.setLottos(this.pieces);
+       view_output.showLottos(this.userLottos);
     }
 }
