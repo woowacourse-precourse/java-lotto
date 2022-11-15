@@ -27,9 +27,10 @@ public class LottoController {
         inputView.purchaseLotto();
 //        InputView.purchaseLotto();
         int purchaseMoney = Integer.valueOf(camp.nextstep.edu.missionutils.Console.readLine());
+        System.out.println("purchaseMoney = " + purchaseMoney);
         saveMoney(purchaseMoney);
-        outputView.lottoNumber(calculateLottoCount(money.getMoney()), lottoList);
         makeLottoNumbers(lottoList, purchaseMoney);
+        outputView.lottoNumber(calculateLottoCount(money.getMoney()), lottoList);
 
 
     }
@@ -37,12 +38,13 @@ public class LottoController {
         money.setMoney(purchaseMoney);
     }
     public int calculateLottoCount(int purchaseMoney) {
-        return purchaseMoney % 1000;
+        return purchaseMoney / 1000;
     }
     public void makeLottoNumbers(List<Lotto> lottoList, int purchaseMoney) {
-        List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
         int count = calculateLottoCount(purchaseMoney);
         for (int i = 0; i < count; i++) {
+            List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+
             lottoList.add(new Lotto(numbers));
         }
     }
