@@ -6,13 +6,20 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static lotto.domain.winningElements.WinningNumbersValidator.validateAfterParse;
+import static lotto.domain.winningElements.WinningNumbersValidator.validateBeforeParse;
+
 public class WinningElements {
     static List<Integer> winningNumbers;
 
     public static List<Integer> getWinningNumbers() {
         String receivedWinningNumbers = InputView.receiveWinningNumber();
 
+        validateBeforeParse(receivedWinningNumbers);
+
         winningNumbers = parseReceivedWinningNumbers(receivedWinningNumbers);
+
+        validateAfterParse(winningNumbers);
 
         return winningNumbers;
     }
