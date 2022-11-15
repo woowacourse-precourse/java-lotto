@@ -31,6 +31,9 @@ public class OutputView {
             System.out.println(reward.getMessage() +
                     String.format(LOTTO_RESULT_MESSAGE, eachReward.getValue()));
         }
+    }
 
+    public static void printLottoProfit(double profit) {
+        System.out.println("총 수익률은 " + profit +"%입니다.");
     }
 }
