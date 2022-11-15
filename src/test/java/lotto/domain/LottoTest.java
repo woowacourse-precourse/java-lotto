@@ -52,10 +52,10 @@ class LottoTest {
     @Test
     public void rankTest(){
         Game game = new Game();
-        game.setWinningLotto(List.of(1, 2, 3, 4, 5, 6));
+        game.setWinningNumbers(List.of(1, 2, 3, 4, 5, 6));
         game.setBonus(7);
         Lotto lotto = new Lotto(List.of(1,2,3,4,5,7));
-        assertThat(lotto.getRank(game.getWinningLotto().getNumbers(), game.getBonus())).isEqualTo(Rank.SECOND);
+        assertThat(lotto.getRank(game.getWinningNumbers(), game.getBonus())).isEqualTo(Rank.SECOND);
     }
 
 
