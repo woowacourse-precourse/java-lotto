@@ -11,19 +11,22 @@ import java.util.Map;
 
 public class Application {
     public static void main(String[] args) {
-        Machine machine = new Machine();
-        Console console = new Console();
+        try {
+            Machine machine = new Machine();
+            Console console = new Console();
 
-        int count = console.inputCellCount();
-        List<Lotto> lottos = machine.draw(count);
-        console.printBuyLottos(lottos);
+            int count = console.inputCellCount();
+            List<Lotto> lottos = machine.draw(count);
+            console.printBuyLottos(lottos);
 
-        WinningNumber winningNumber = console.inputWinningNumber();
+            WinningNumber winningNumber = console.inputWinningNumber();
 
-        Map<Rank, Integer> rankings = machine.checkRanking(winningNumber, lottos.toArray(new Lotto[0]));
+            Map<Rank, Integer> rankings = machine.checkRanking(winningNumber, lottos.toArray(new Lotto[0]));
 
-        double yieldRate = machine.calculateYieldRate(rankings);
-        console.printResult(rankings, yieldRate);
+            double yieldRate = machine.calculateYieldRate(rankings);
+            console.printResult(rankings, yieldRate);
+        } catch (Exception e) {
+        }
     }
 
 

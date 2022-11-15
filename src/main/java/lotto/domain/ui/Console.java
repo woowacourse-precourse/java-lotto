@@ -24,7 +24,7 @@ public class Console {
             }
             count = amount / Lotto.PRICE;
         } catch (Exception e) {
-            System.out.println("[ERROR] : 1장에 " + Lotto.PRICE + "원 입니다. 딱 맞게 입력해 주세요.");
+            System.out.println("[ERROR] 1장에 " + Lotto.PRICE + "원 입니다. 딱 맞게 입력해 주세요.");
             throw new IllegalArgumentException();
         }
         return count;
