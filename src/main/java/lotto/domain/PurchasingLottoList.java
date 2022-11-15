@@ -3,6 +3,7 @@ package lotto.domain;
 import java.util.List;
 
 public class PurchasingLottoList {
+    Message message = null;
     private NumberGenerator numberGenerator = new NumberGenerator();
     private List<List<Integer>> lottoList;
     private int numberOfTicket;
@@ -18,7 +19,7 @@ public class PurchasingLottoList {
 
     public void moneyToTicket(int money) {
         if (money % 1000 != 0) {
-            throw new IllegalArgumentException("[ERROR] 1000원 단위로 입력하세요.");
+            throw new IllegalArgumentException(message.ERROR_MESSAGE_INVALID_INPUT_MONEY_1000_UNIT.getMessage());
         }
 
         this.numberOfTicket = money / 1000;

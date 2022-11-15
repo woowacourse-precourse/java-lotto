@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class NumberGenerator {
+    Message message = null;
 
     final private int MIN_LOTTO_NUM = 1;
     final private int MAX_LOTTO_NUM = 45;
@@ -13,7 +14,7 @@ public class NumberGenerator {
     public void checkValidateNumber(String money) {
         for (int i = 0; i < money.length(); i++) {
             if ((int) money.charAt(i) < 48 || (int) money.charAt(i) > 57) {
-                throw new IllegalArgumentException("[ERROR] 숫자를 입력하세요");
+                throw new IllegalArgumentException(message.ERROR_MESSAGE_INVALID_INPUT_NUMBER.getMessage());
             }
         }
     }
