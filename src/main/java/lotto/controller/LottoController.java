@@ -1,9 +1,7 @@
 package lotto.controller;
 
 import camp.nextstep.edu.missionutils.Console;
-import java.util.Calendar;
 import java.util.List;
-import lotto.domain.LottoRank;
 import lotto.domain.User;
 import lotto.domain.WinningLotto;
 import lotto.service.LottoService;
@@ -27,9 +25,9 @@ public class LottoController {
         WinningLotto winningLotto = createWinningLotto();
 
         lottoService.calculateLottoRanks(user, winningLotto);
-        for (LottoRank lottoRank : user.getLottoRanks()) {
-            System.out.println("lottoRank = " + lottoRank);
-        }
+
+        OutputView.printResultInformation(user.getLottoRanks());
+
     }
 
     private Integer getPurchaseAmount() {
