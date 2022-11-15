@@ -6,7 +6,7 @@ import java.util.Set;
 
 public class Lotto {
     private final List<Integer> numbers;
-
+    private int bonus;
     public Lotto(List<Integer> numbers) {
         validateSize(numbers);
         validateRange(numbers);
@@ -40,6 +40,12 @@ public class Lotto {
         int numsOfUniqueNumber = getNumsOfUniqueNumber(numbers);
         if (numbers.size() != numsOfUniqueNumber) {
             throw new IllegalArgumentException("[ERROR] 로또 번호는 서로 중복되지 않는 숫자여야 합니다.");
+        }
+    }
+
+    private void validateDuplicationWithNumbers(int bonus){
+        if (numbers.contains(bonus)) {
+            throw new IllegalArgumentException("[ERROR] 보너스 번호는 로또 번호와 중복되지 않은 숫자여야 합니다.");
         }
     }
 }
