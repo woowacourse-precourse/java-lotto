@@ -13,6 +13,8 @@ import lotto.domain.place.MatchResult;
 
 public class PlaceHistory {
 
+    public static final int ONCE = 1;
+    public static final int INIT_VALUE = 0;
     Map<MatchResult, Integer> matchResults;
 
     public PlaceHistory() {
@@ -44,15 +46,15 @@ public class PlaceHistory {
     private void fillMatchResults() {
         matchResults = new LinkedHashMap<>();
 
-        matchResults.put(FIFTH_PLACE, 0);
-        matchResults.put(FOURTH_PLACE, 0);
-        matchResults.put(THIRD_PLACE, 0);
-        matchResults.put(SECOND_PLACE, 0);
-        matchResults.put(FIRST_PLACE, 0);
+        matchResults.put(FIFTH_PLACE, INIT_VALUE);
+        matchResults.put(FOURTH_PLACE, INIT_VALUE);
+        matchResults.put(THIRD_PLACE, INIT_VALUE);
+        matchResults.put(SECOND_PLACE, INIT_VALUE);
+        matchResults.put(FIRST_PLACE, INIT_VALUE);
     }
 
     private void addCountFor(MatchResult matchResult) {
-        matchResults.merge(matchResult, 1, Integer::sum);
+        matchResults.merge(matchResult, ONCE, Integer::sum);
     }
 
     private long amountFor(Entry<MatchResult, Integer> entity) {
