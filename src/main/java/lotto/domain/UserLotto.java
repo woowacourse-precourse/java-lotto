@@ -35,21 +35,15 @@ public class UserLotto {
     }
 
     public void printPurchaseLottoNumbers(List<Integer> numbers){
-        StringBuilder sb2 = new StringBuilder();
-        sb2.append("[");
-        //System.out.print("[");
+        String sb2 ="[";
         for(int i=0;i<numbers.size();i++){
-            sb2.append(numbers.get(i));
-            //System.out.print(numbers.get(i));
+            sb2 +=  numbers.get(i);
             if(i!=numbers.size()-1){
-                sb2.append(", ");
-                //System.out.print(", ");
+                sb2 += ", ";
             }
         }
-        sb2.append("]");
-        //System.out.println("]");
-
-        System.out.println(sb2.toString());
+        sb2 += "]";
+        System.out.println(sb2);
     }
 
     public void validateLetter(String input){
