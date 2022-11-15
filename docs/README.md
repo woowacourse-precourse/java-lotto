@@ -26,7 +26,7 @@
     - [x] 로또번호가 6개가 아닐 경우 예외처리한다. - lottoNumberException()
     - [x] 서로 다른 수가 아닐 경우 예외처리한다. - overlapException()
   - [ ] 로또 당첨 번호를 입력 받을 때 예외상황 - getLottoWinnerNumberException()
-    - [ ] 콤마 사이의 글자가 숫자가 아닌 경우 예외처리한다. - splitResultNoNumberException()
+    - [x] 콤마 사이의 글자가 숫자가 아닌 경우 예외처리한다. - splitResultNoNumberException()
     - [x] 로또번호가 6개가 아닐 경우 예외처리한다. - lottoNumberException()
     - [ ] 1부터 45까지의 범위가 아닌 경우 예외처리한다. - numberRangeException()
     - [x] 서로 다른 수가 아닐 경우 예외처리한다. - overlapException()
