@@ -16,6 +16,7 @@ public class LottoConsole {
         int money = stringToInt(input);
 
         lottoManager.InputMoney(money);
+        System.out.println();
     }
 
     void inputNumbers(){
@@ -33,7 +34,26 @@ public class LottoConsole {
     }
 
     void printLottoNumbers(){
+        System.out.printf("%d개를 구매했습니다.\n", lottoManager.getInputMoney() / 1000);
+        List<Lotto> lottos = lottoManager.getLottos();
 
+        for (Lotto lotto : lottos){
+            printLottoNumber(lotto);
+            System.out.println();
+        }
+        System.out.println();
+    }
+
+    void printLottoNumber(Lotto lotto){
+        List<Integer> numbers = lotto.getNumbers();
+        System.out.print("[");
+        for (int i = 0; i < numbers.size(); i++){
+            System.out.printf("%d", numbers.get(i));
+            if (i != numbers.size() - 1){
+                System.out.print(",");
+            }
+        }
+        System.out.print("]");
     }
 
     void printResult(){
