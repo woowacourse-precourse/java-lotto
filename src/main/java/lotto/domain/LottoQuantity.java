@@ -1,10 +1,10 @@
 package lotto.domain;
 
-public class LottoCount {
+public class LottoQuantity {
     private static final int LOTTO_PRICE = 1000;
     private final int lottoCount;
 
-    public LottoCount(Money money) {
+    public LottoQuantity(Money money) {
         this.lottoCount = countLottoByMoney(money);
     }
 
