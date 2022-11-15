@@ -7,13 +7,12 @@ import view.PrintResult;
 
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
 
 public class Controller {
     private final Client client = new Client();
     private final Server server = new Server();
-    private Map<Integer, Integer> matchNumberCount = new HashMap<>();
+    private HashMap<Integer, Integer> matchNumberCount = new HashMap<>();
 
     public void checkLotto() {
         int money = client.getLottoMoney();
@@ -27,6 +26,7 @@ public class Controller {
         PrintResult.printBuyLotto(lottoPaper);
         for (int lotto = 0; lotto < lottoPaper; lotto++) {
             List<Integer> lottoNumber = server.publishLotto();
+            PrintResult.printLottoNumber(lottoNumber);
             Set common = server.compareLottoNumber(lottoNumber, winLottoNumber);
             int matchNumber = server.countMatchNumber(common);
             if(matchNumber < 3){
@@ -38,7 +38,7 @@ public class Controller {
             }
             putMatchNumberCount(matchNumber);
         }
-
+        PrintResult.printMatchDetail(matchNumberCount);
     }
 
     public void setMatchNumberCount() {
