@@ -20,6 +20,7 @@ public class Input {
     private static final String SMALL_AMOUNT_ERROR_MESSAGE = "1000원 이상의 금액을 입력해주세요.";
     private static final String SEPARATOR = ",";
 
+    private static final String REDUNDANT_OR_NON_NUMERIC_CHARACTERS = "중복되거나 숫자가 아닌 문자를 입력하였습니다.";
 
     public int getMoney(){
         try {
@@ -69,7 +70,7 @@ public class Input {
                     .collect(Collectors.toList());
             if(winningNumbers.size() != 6) errorThrow(SCOPE_DUPLICATE_ERROR_MESSAGE);
         }catch (NumberFormatException e){
-            errorThrow(IS_NUMBER_MESSAGE);
+            errorThrow(REDUNDANT_OR_NON_NUMERIC_CHARACTERS);
         }
         return winningNumbers;
     }
