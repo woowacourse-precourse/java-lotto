@@ -9,7 +9,7 @@ public enum ExceptionMessage {
     ERROR_DUPLICATED("로또 번호는 서로 중복되지 않아야 합니다."),
     ERROR_COUNT(String.format("로또 번호는 %d개여야 합니다.", LottoConfig.NUMBER_COUNT)),
     ERROR_RANGE(String.format("로또 번호는 %d부터 %d 사이의 숫자여야 합니다.",
-            LottoConfig.RANGE_MIN,LottoConfig.RANGE_MAX));
+            LottoConfig.RANGE_MIN, LottoConfig.RANGE_MAX));
 
     private final String message;
 
@@ -17,7 +17,7 @@ public enum ExceptionMessage {
         this.message = message;
     }
 
-    public String getMessage(){
+    public String getMessage() {
         return "[ERROR] " + message;
     }
 }

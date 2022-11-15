@@ -18,9 +18,7 @@ public class Validator {
         try {
             isInRange(money);
             isCorrectMoney(money);
-        }
-        catch (NumberFormatException e){
-            System.out.println(ExceptionMessage.ERROR_FORMAT.getMessage());
+        } catch (NumberFormatException e) {
             throw new IllegalArgumentException(ExceptionMessage.ERROR_FORMAT.getMessage());
         }
     }
@@ -67,7 +65,6 @@ public class Validator {
 
     private static void isCorrectMoney(int money) {
         if (money % LottoConfig.PRICE != 0) {
-            System.out.println(ExceptionMessage.ERROR_PRICE.getMessage());
             throw new IllegalArgumentException(ExceptionMessage.ERROR_PRICE.getMessage());
         }
     }

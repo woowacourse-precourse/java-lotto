@@ -14,7 +14,7 @@ public enum PrintMessage {
     MESSAGE_ENTER_WINNING_NUMBER("당첨 번호를 입력해 주세요."),
     MESSAGE_ENTER_BONUS_NUMBER("보너스 번호를 입력해 주세요.");
 
-    private String message;
+    private final String message;
 
     PrintMessage(String message) {
         this.message = message;

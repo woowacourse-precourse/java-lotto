@@ -1,7 +1,6 @@
 package lotto.ui;
 
 import lotto.domain.*;
-import lotto.message.ExceptionMessage;
 import lotto.message.PrintMessage;
 
 import java.util.List;
