@@ -30,6 +30,12 @@ public class InputException extends IllegalArgumentException {
         }
     }
 
+    public void duplicateBonusNumberException(List<Integer> numbers, Integer bonusNumber) {
+        if (numbers.contains(bonusNumber)) {
+            throw new IllegalArgumentException(DUPLICATE_NUMBER.getMessage());
+        }
+    }
+
     public void numbersRangeException(List<Integer> numbers) {
         for (Integer number : numbers) {
             if (1 > number || number > 45) {

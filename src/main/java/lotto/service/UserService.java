@@ -65,6 +65,6 @@ public class UserService {
     public void bonusNumberValidate(String bonusNumber) {
         inputException.notDigitException(bonusNumber);
         inputException.numbersRangeException(List.of(Integer.parseInt(bonusNumber)));
-        inputException.duplicateNumberException(List.of(Integer.parseInt(bonusNumber)));
+        inputException.duplicateBonusNumberException(getUser().getNumbers(), Integer.parseInt(bonusNumber));
     }
 }
