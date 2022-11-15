@@ -12,6 +12,7 @@ import static util.validation.ValidationUtil.isWithinValidRange;
 import exception.InvalidBonusNumberSizeException;
 import exception.InvalidLottoException;
 import exception.InvalidLottoSizeException;
+import exception.InvalidRangeException;
 import exception.LottoNumberDuplicatedException;
 import exception.NotInUnitsOf1000WonException;
 import exception.NotIntegerException;
@@ -66,7 +67,7 @@ public class Validator {
         }
 
         if (!isWithinValidRange(bonusNumber)) {
-            throw new IllegalArgumentException();
+            throw new InvalidRangeException();
         }
     }
 }
