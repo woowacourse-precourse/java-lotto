@@ -66,6 +66,7 @@ public class PrintUtil {
 
     public static void printRevenue(int revenue, int userLottoCnt) {
         double revenuePercent = (double) revenue / (double) (userLottoCnt * 1000);
+        revenuePercent *= 100;
         String str = String.format("%.1f", revenuePercent);
         System.out.println("총 수익률은 " + str + "%입니다.");
     }

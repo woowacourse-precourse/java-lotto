@@ -19,7 +19,8 @@ public class LottoUtil {
         List<Lotto> userLottos = new ArrayList<>();
 
         for(int i = 0 ; i < userLottoCnt ; i++){
-            List<Integer> lottoNumbers = Randoms.pickUniqueNumbersInRange(1,45,6);
+            List<Integer> tmpList = Randoms.pickUniqueNumbersInRange(1,45,6);
+            List<Integer> lottoNumbers = new ArrayList<>(tmpList);
             Collections.sort(lottoNumbers);
             userLottos.add(new Lotto(lottoNumbers));
         }
