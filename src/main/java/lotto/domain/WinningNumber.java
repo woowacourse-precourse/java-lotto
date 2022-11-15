@@ -18,6 +18,11 @@ public class WinningNumber {
         this.lotto = new Lotto(numbers);
     }
 
+    // 당첨 번호 반환
+    public List<Integer> getWinningNumber() {
+        return lotto.getNumbers();
+    }
+
     // 보너스 번호 생성 기능
     public void inputBonusNumber(String input) throws IllegalArgumentException {
         checkBlank(input);
@@ -25,6 +30,12 @@ public class WinningNumber {
         int number = Integer.parseInt(input);
         checkNumberRange(number);
         checkDuplicate(number);
+        this.bonusNumber = Integer.parseInt(input);
+    }
+
+    // 보너스 번호 반환
+    public int getBonusNumber() {
+        return this.bonusNumber;
     }
 
     // 올바른 당첨 번호 입력값인지 검증하는 기능
