@@ -52,4 +52,18 @@ public class PurchasingLottoTest {
         // then
         assertThat(getPurchase).isEqualTo(purchasing);
     }
+
+    @DisplayName("구입 금액에 따른 로또의 개수를 가져온다.")
+    @Test
+    void getAmountOfLottoTesT() {
+        // given
+        int purchasing = 5000;
+        PurchasingLotto purchasingLotto = new PurchasingLotto(purchasing);
+
+        // when
+        int theNumberOfLotto = purchasingLotto.getAmountOfLotto();
+
+        //then
+        assertThat(theNumberOfLotto).isEqualTo(5);
+    }
 }
