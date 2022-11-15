@@ -1,5 +1,7 @@
 package lotto.view;
 
+import static lotto.message.PrintMessage.YIELD_RATE_NEXT;
+import static lotto.message.PrintMessage.YIELD_RATE_PREVIOUS;
 import static lotto.value.RateValue.PERCENT;
 
 import lotto.domain.statistics.YieldRate;
@@ -16,7 +18,7 @@ public class YieldRateMessage {
     }
 
     public String getMessage() {
-        return String.format("총 수익률은 %s입니다.", yieldRate());
+        return String.format("%s%s%s", YIELD_RATE_PREVIOUS.getMessage(), yieldRate(), YIELD_RATE_NEXT.getMessage());
     }
 
     private String yieldRate() {
