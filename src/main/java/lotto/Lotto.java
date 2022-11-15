@@ -17,6 +17,9 @@ public class Lotto {
         }
         return false;
     }
+    public List<Integer> copyNumbers(){
+        return List.copyOf(numbers);
+    }
 
     private void validate(List<Integer> numbers) {
         validLottoFalseRange(numbers);

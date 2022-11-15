@@ -8,4 +8,7 @@ public class LottoCollection {
     public LottoCollection(List<Lotto> lottos) {
         this.lottos = lottos;
     }
+    public List<Lotto> copyCollection(){
+        return List.copyOf(lottos);
+    }
 }

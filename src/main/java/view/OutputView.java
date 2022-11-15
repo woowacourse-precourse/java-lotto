@@ -1,5 +1,7 @@
 package view;
 
+import lotto.Lotto;
+import lotto.LottoCollection;
 import lotto.LottoCount;
 
 public class OutputView {
@@ -7,5 +9,10 @@ public class OutputView {
 
     public static void printLottoCount(LottoCount count) {
         System.out.printf(PRINT_NUMBER_OF_LOTTO_COUNT, count.getLottoCount());
+    }
+    public static void printLottoCollection(LottoCollection lottoCollection){
+        for (Lotto lotto : lottoCollection.copyCollection()) {
+            System.out.println(lotto.copyNumbers());
+        }
     }
 }
