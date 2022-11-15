@@ -20,7 +20,7 @@ public class TotalResult {
         Map<Rank, Integer> rankCounts = new EnumMap<>(Rank.class);
 
         for (Lotto lotto : lotteries) {
-            Rank rankOfLotto = jackpotBonus.getRankOf(lotto);
+            Rank rankOfLotto = RankCalculator.getRankOf(jackpotBonus, lotto);
             int currentCnt = rankCounts.getOrDefault(rankOfLotto, DEFAULT_RANK_COUNT);
             rankCounts.put(rankOfLotto, currentCnt + 1);
         }
