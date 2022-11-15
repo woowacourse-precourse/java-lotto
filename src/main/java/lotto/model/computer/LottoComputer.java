@@ -36,7 +36,7 @@ public class LottoComputer {
         LottoRandomGenerator lottoRandomGenerator = new LottoRandomGenerator();
 
         this.money = money;
-        for (int i = 0; i < money.moneyDivide1000(); i++) {
+        for (long i = 0; i < money.moneyDivide1000(); i++) {
             lottoLine = new LottoLine(sortLotto(createLottoNumber(lottoRandomGenerator)));
             lottoRepository.saveLotto(lottoLine);
         }
