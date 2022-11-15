@@ -22,6 +22,8 @@ public class LottoController {
             int money = money();
             List<Lotto> lottos = buy(money);
             WinningLotto winningLotto = new WinningLotto(new Lotto(winningNumbers()), bonusNumber());
+            Result result = new Result(winningLotto, lottos, money);
+            outputView.printStatistics(result);
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
