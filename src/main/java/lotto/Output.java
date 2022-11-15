@@ -1,5 +1,6 @@
 package lotto;
 
+import java.math.BigDecimal;
 import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -52,8 +53,6 @@ public class Output {
         }
         double moneyRate=money/cash*100;
         moneyRate = Math.round(moneyRate * 100) / 100.0;
-        NumberFormat numberFormat =NumberFormat.getInstance();
-        numberFormat.setGroupingUsed(false);
-        System.out.println("총 수익률은 "+numberFormat.format(moneyRate)+"%입니다.");
+        System.out.println("총 수익률은 "+String.format("%,.1f",moneyRate)+"%입니다.");
     }
 }
