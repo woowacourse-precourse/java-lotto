@@ -76,22 +76,4 @@ public class LottoService {
     public int getLottoCntByMoney(Money money) {
         return money.getMoney() / LOTTO_PRICE;
     }
-
-    private int calculateProfit(LinkedHashMap<Integer, Integer> rankData) {
-        int totalProfit = 0;
-        Set<Integer> ranking = rankData.keySet();
-
-        for (Integer rank : ranking) {
-            Integer cnt = rankData.get(rank);
-            totalProfit += rankService.calculateRankingPrize(rank, cnt);
-        }
-        return totalProfit;
-    }
-
-    public String getProfitPercentage(Rank rank, int inputMoney) {
-        int totalProfit = calculateProfit(rank.getRank());
-        double profitPercent = (double) totalProfit / (double) inputMoney * 100.0;
-        String roundedPercent = String.format("%.1f", profitPercent);
-        return roundedPercent;
-    }
 }

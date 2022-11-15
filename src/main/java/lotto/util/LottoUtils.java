@@ -31,7 +31,7 @@ public class LottoUtils {
         Lotto winningLotto = lottoUi.inputWinningLotto();
         int bonusNumber = lottoUi.inputBonusNumber();
         Rank rank = rankService.getLottoDrawResult(lottos, winningLotto, bonusNumber);
-        String profitPercentage = lottoService.getProfitPercentage(rank, money.getMoney());
+        String profitPercentage = rankService.getProfitPercentage(rank, money.getMoney());
 
         printRanking(rank);
         printEnter();

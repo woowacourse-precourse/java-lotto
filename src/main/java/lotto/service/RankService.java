@@ -6,6 +6,7 @@ import lotto.domain.Rank;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Set;
 
 import static lotto.values.Constants.Console.STATISTICS_MESSAGE;
 import static lotto.values.Constants.Digit.*;
@@ -114,5 +115,23 @@ public class RankService {
         }
 
         return prize * cnt;
+    }
+
+    private int calculateProfit(LinkedHashMap<Integer, Integer> rankData) {
+        int totalProfit = 0;
+        Set<Integer> ranking = rankData.keySet();
+
+        for (Integer rank : ranking) {
+            Integer cnt = rankData.get(rank);
+            totalProfit += rankService.calculateRankingPrize(rank, cnt);
+        }
+        return totalProfit;
+    }
+
+    public String getProfitPercentage(Rank rank, int inputMoney) {
+        int totalProfit = calculateProfit(rank.getRank());
+        double profitPercent = (double) totalProfit / (double) inputMoney * 100.0;
+        String roundedPercent = String.format("%.1f", profitPercent);
+        return roundedPercent;
     }
 }
