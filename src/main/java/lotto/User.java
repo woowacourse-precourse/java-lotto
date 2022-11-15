@@ -30,13 +30,13 @@ public class User {
         return Integer.parseInt(userInput);
     }
 
-    public Integer getMoney() {
-        return money;
-    }
-
     public void printLottoNumbers() {
         for(Lotto lotto : lottos) {
             System.out.println(lotto.getNumbers());
         }
+    }
+
+    public List<Lotto> getLottos() {
+        return lottos;
     }
 }
