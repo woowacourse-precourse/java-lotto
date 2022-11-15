@@ -9,6 +9,10 @@ public class Validator {
         if (money % 1000 != 0) {
             throw new IllegalArgumentException("[ERROR] 로또 구입 금액은 반드시 1,000원 단위여야 합니다.");
         }
+
+        if (money < 0) {
+            throw new IllegalArgumentException("[ERROR] 로또 구임 금액은 반드시 양수여야 합니다.");
+        }
     }
 
     public static void validateLottoNumber(List<Integer> numbers) {

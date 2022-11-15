@@ -70,7 +70,7 @@ public class GameService {
         return Calculator.calculateProfit(money, getTotalAmountOfHit(prizeMap));
     }
 
-    private int getTotalAmountOfHit(Map<Place, Integer> prizeMap) {
+    private long getTotalAmountOfHit(Map<Place, Integer> prizeMap) {
         return Stream.of(prizeMap)
                 .flatMap(prize -> prize.entrySet()
                         .stream()

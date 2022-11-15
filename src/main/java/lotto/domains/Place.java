@@ -29,8 +29,14 @@ public enum Place {
     }
 
     public static Place getPlace(int count, boolean bonus) {
+        if (bonus && count == Place.SECOND.correction) {
+            return Arrays.stream(Place.values())
+                    .filter(place -> place.correction == count && place.bonus == bonus)
+                    .findAny()
+                    .orElse(ZERO);
+        }
         return Arrays.stream(Place.values())
-                .filter(place -> place.correction == count && place.bonus == bonus)
+                .filter(place -> place.correction == count)
                 .findAny()
                 .orElse(ZERO);
     }

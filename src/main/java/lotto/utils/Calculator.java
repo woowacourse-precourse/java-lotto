@@ -37,7 +37,7 @@ public class Calculator {
         return place.getPrize() * amountOfHit;
     }
 
-    public static double calculateProfit(int purchaseAmount, int profit) {
+    public static double calculateProfit(int purchaseAmount, long profit) {
         try {
             if (purchaseAmount == 0) {
                 throw new IllegalArgumentException("[ERROR] 숫자를 0으로 나눌 수 없습니다.");
