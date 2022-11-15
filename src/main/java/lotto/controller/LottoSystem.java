@@ -74,7 +74,7 @@ public class LottoSystem {
         for (Rank rank : Rank.values()) {
             income += rank.getPrize() * rank.getAchievedCount();
         }
-        double ratio = income / money;
+        double ratio = (double) income / money;
         view.printResult(ratio);
     }
 }
