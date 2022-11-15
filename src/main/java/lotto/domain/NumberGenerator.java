@@ -1,6 +1,7 @@
 package lotto.domain;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import lotto.exception.ExceptionHandler;
@@ -10,8 +11,9 @@ public class NumberGenerator {
     ExceptionHandler exception = new ExceptionHandler();
 
     public List<Integer> createRandomNumbers() {
-        List<Integer> randomNumbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+        List<Integer> randomNumbers = new ArrayList<>(Randoms.pickUniqueNumbersInRange(1, 45, 6));
         exception.createLottoNumberException(randomNumbers);
+
         randomNumbers = sortAscendingOrder(randomNumbers);
         return randomNumbers;
     }
