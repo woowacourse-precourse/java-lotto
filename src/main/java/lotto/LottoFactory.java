@@ -10,4 +10,11 @@ public class LottoFactory {
         return new Lotto(Randoms.pickUniqueNumbersInRange(1,45,6));
     }
 
+    public List<Lotto> purchaseLottos(UserMoney money) {
+        List<Lotto> lottos = new ArrayList<>();
+        for (int i = 0; i < money.lottoTicketQuantity(); i++) {
+            lottos.add(pickNumber());
+        }
+        return lottos;
+    }
 }
