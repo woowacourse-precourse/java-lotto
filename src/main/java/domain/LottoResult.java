@@ -14,7 +14,7 @@ public class LottoResult {
     }
 
     public double profitPercent(int purchaseMoney) {
-        return (double) allWinning() / purchaseMoney;
+        return (double) allWinning() / purchaseMoney * 100;
     }
 
     private long allWinning() {

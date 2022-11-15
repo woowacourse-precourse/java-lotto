@@ -9,7 +9,7 @@ public enum LottoRank {
     THREE(5_000, 3, false),
     FOUR(50_000, 4, false),
     FIVE(1_500_000, 5, false),
-    FIVE_WITH_BONUS(3_000_000, 5, true),
+    FIVE_WITH_BONUS(30_000_000, 5, true),
     SIX(2_000_000_000, 6, false);
 
     private final int prize;
