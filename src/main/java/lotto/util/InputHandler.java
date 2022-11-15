@@ -3,7 +3,6 @@ package lotto.util;
 import camp.nextstep.edu.missionutils.Console;
 import lotto.Lotto;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
@@ -36,8 +35,8 @@ public class InputHandler {
         return bonusNumber;
     }
 
-    public static void validateBonusNumber(Lotto winningLotto, int bonusNumber){
-        if(winningLotto.getLotto().contains(bonusNumber))
+    public static void validateBonusNumber(Lotto winningLotto, int bonusNumber) {
+        if (winningLotto.getLotto().contains(bonusNumber))
             throw new IllegalArgumentException("[ERROR]");
     }
 
@@ -70,7 +69,12 @@ public class InputHandler {
     }
 
     private static int validateNumberType(String number) {
-        return Integer.parseInt(number);
+        try {
+            return Integer.parseInt(number);
+        }
+        catch (NumberFormatException E){
+            throw new IllegalArgumentException("moneytype exception");
+        }
     }
 
     private static int validatePurchaseAmount(int money) {
