@@ -3,6 +3,8 @@ package lotto;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 
 public class Application {
@@ -62,6 +64,22 @@ public class Application {
         }
     }
 
+    public static HashMap<Rank, Integer> countWinningRank(List<Rank> statistics) {
+        HashMap<Rank, Integer> countWinningRank = new HashMap<>();
+        for (Rank rank : Rank.values()) {
+            int count = Collections.frequency(statistics, rank);
+            countWinningRank.put(rank, count);
+        }
+        return countWinningRank;
+    }
+
+    public static void printStatistics(List<Rank> statistics) {
+        HashMap<Rank, Integer> countWinningRank = countWinningRank(statistics);
+        for (Rank rank : Rank.values()) {
+            System.out.println(rank.getResultText() + " - " + countWinningRank.get(rank) + "개");
+        }
+    }
+
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         int price;
@@ -82,5 +100,8 @@ public class Application {
 
         LottoGame lottoGame = new LottoGame(price, lottoList, winningNumbers, bonusNumber);
         printSortedLottoList(lottoGame.getSortedLottoList());
+
+        List<Rank> statistics = lottoGame.getStatistics();
+        printStatistics(statistics);
     }
 }
