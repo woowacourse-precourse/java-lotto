@@ -1,5 +1,6 @@
 package lotto.domain;
 
+import camp.nextstep.edu.missionutils.Randoms;
 import lotto.exception.LottoError;
 
 import java.util.ArrayList;
@@ -21,6 +22,17 @@ public class User {
     public void inputPurchaseAmount(String input) {
         validate(input);
         this.purchaseAmount = Integer.parseInt(input);
+    }
+
+    public List<Lotto> createLottos() {
+        int count = purchaseAmount / 1000;
+
+        while (count-- > 0) {
+            List<Integer> randoms = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+            lottos.add(new Lotto(randoms));
+        }
+
+        return lottos;
     }
 
     private void validate(String input) throws RuntimeException {
