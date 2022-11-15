@@ -4,7 +4,7 @@
 - [x] 로또 구입 금액을 입력 받는다. - InputOutput#getLottoBuyAmount()
 - [x] 1부터 45까지의 서로 다른 수 6개를 생성한다. - NumberGenerator#createRandomNumbers()
 - [x] 로또 번호는 오름차순으로 정렬한다. - NumberGenerator#sortAscendingOrder()
-- [ ] 로또 당첨 번호 6개를 입력 받는다. - InputOutput#getLottoNumbers()
+- [x] 로또 당첨 번호 6개를 입력 받는다. - InputOutput#getLottoNumbers()
 - [ ] 로또 보너스 번호 1개를 입력 받는다. - InputOutput#getLottoBonusNumber()
 - [ ] 당첨번호와 로또번호를 비교할 수 있다. - compare()
   - [ ] 1등: 6개 번호 일치 / 2,000,000,000원
@@ -12,7 +12,7 @@
   - [ ] 3등: 5개 번호 일치 / 1,500,000원
   - [ ] 4등: 4개 번호 일치 / 50,000원
   - [ ] 5등: 3개 번호 일치 / 5,000원
-- [ ] 당첨 내역을 출력한다. - InputOutput#printWinHistory()
+- [ ] 당첨 내역을 출력한다. - InputOutput#pri햐ntWinHistory()
 - [ ] 수익률을 소수점 둘째 자리까지 계산한다. - calculateRateOfProfit()
 - [ ] 수익률을 출력한다. - InputOutput#printRateOfProfit()
 - [ ] 예외상황 시 에러 문구를 출력한다. - ErrorHandler

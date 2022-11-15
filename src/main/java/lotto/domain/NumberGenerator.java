@@ -16,5 +16,4 @@ public class NumberGenerator {
         Collections.sort(object);
         return object;
     }
-
 }
