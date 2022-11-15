@@ -19,9 +19,8 @@ public class Lotto {
     }
 
     public static Lotto generateRandomLotto() {
-        List<Integer> lottos = Randoms.pickUniqueNumbersInRange(MIN_LOTTO_NUMBER, MAX_LOTTO_NUMBER, LOTTO_SIZE);
-        Collections.sort(lottos);
-        return new Lotto(lottos);
+        List<Integer> lottoNumbers = Randoms.pickUniqueNumbersInRange(MIN_LOTTO_NUMBER, MAX_LOTTO_NUMBER, LOTTO_SIZE);
+        return new Lotto(lottoNumbers);
     }
 
     private void validateLottoValue(List<Integer> numbers) {
@@ -44,6 +43,19 @@ public class Lotto {
 
     public List<Integer> getNumbers() {
         return numbers;
+    }
+
+    public int match(Lotto winningLotto) {
+        int matchCount = 0;
+        for (int i = 0; i < numbers.size(); i++) {
+            matchCount += winningLotto.getNumbers().contains(numbers.get(i)) ? 1 : 0;
+        }
+        return matchCount;
+    }
+
+
+    public boolean isBonusMatch(int bonusNumber) {
+        return numbers.contains(bonusNumber);
     }
 
     @Override
