@@ -1,10 +1,12 @@
 package lotto;
 
 import lotto.domain.Machine;
+import lotto.model.Lotto;
 import lotto.view.InputView;
 import lotto.view.OutputView;
 
 import java.math.BigInteger;
+import java.util.List;
 
 public class Application {
     private static final InputView inputView = new InputView();
@@ -14,6 +16,8 @@ public class Application {
             BigInteger money = inputView.insertMoney();
 
             BigInteger numberOfLottos = Machine.countNumberOfLottos(money);
+            List<Lotto> lottos = Machine.generateLottos(numberOfLottos);
+
 
         } catch (IllegalArgumentException exception) {
             outputView.printErrorMessage(exception.getMessage());
