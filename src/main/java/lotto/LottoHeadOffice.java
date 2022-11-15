@@ -68,17 +68,17 @@ public class LottoHeadOffice {
         char[] arrCh = s.toCharArray();
         for (char ch : arrCh) {
             if (!Character.isDigit(ch))
-                throw new IllegalArgumentException();
+                throw new IllegalArgumentException("[ERROR] 보너스 번호는 숫자여야 합니다.");
         }
 
         // 숫자 범위가 1~45가 아닐 때
         int bonusNum = Integer.parseInt(s);
         if (bonusNum < 1 || 45 < bonusNum)
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR] 보너스 번호의 범위는 1~45입니다.");
 
         // winningNum과 중복되지 않는지
         if (winningNum.contains(bonusNum))
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR] 보너스 번호는 당첨 번호와 중복되어서는 안됩니다.");
     }
 
     public List<Integer> getWinningNum() {

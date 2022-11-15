@@ -33,13 +33,13 @@ public class LottoMarket {
         char[] arrCh = s.toCharArray();
         for (char ch : arrCh) {
             if (!Character.isDigit(ch))
-                throw new IllegalArgumentException();
+                throw new IllegalArgumentException("[ERROR] 구입 금액은 숫자여야 합니다");
         }
 
         // 금액이 1000으로 나뉘어 떨어지지 않는 경우
         int price = Integer.parseInt(s);
         if (price % LOTTOPRICE != 0)
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR] 구입 금액은 1000으로 나뉘어 떨어져야 합니다.");
     }
 
     private void publishLotto() {
