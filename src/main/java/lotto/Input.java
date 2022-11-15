@@ -9,7 +9,9 @@ import java.util.regex.Pattern;
 public class Input {
     public static int inputMoney() {
         String input = Console.readLine();
-        validateNumber(input);
+        if(!validateNumber(input)){
+            throw new IllegalArgumentException();
+        }
         int price = Integer.parseInt(input);
         validateUnitIs1000(price);
         return price;
@@ -34,19 +36,21 @@ public class Input {
         return Integer.parseInt(input);
     }
 
-    public static void validateNumber(String input) {
+    public static boolean validateNumber(String input) {
         String pattern = "^[0-9]*$";
-        if (!Pattern.matches(pattern, input)){
-            System.out.println("[ERROR] 숫자를 입력해주세요.");
-            throw new IllegalArgumentException("[ERROR] 숫자를 입력해주세요.");
-        }
-//        try {
-//            Integer.parseInt(input);
-//        } catch(NumberFormatException exception) {
-//            System.out.println("[ERROR] 숫자를 입력해주세요.");
-//            throw new IllegalArgumentException("[ERROR] 숫자를 입력해주세요.");
-//        }
+        boolean result = Pattern.matches(pattern, input);
+        return result;
     }
+
+//    public static boolean validateNumber(String input) {
+//        String pattern = "^[0-9]*$";
+//        boolean result = Pattern.matches(pattern, input);
+////        if(!result){
+////            System.out.println("[ERROR] 숫자를 입력해주세요.");
+////        }
+//        return result;
+//    }
+
 
     public static void validateUnitIs1000(int input) {
         if(!(input%1000==0)){
