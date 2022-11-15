@@ -42,7 +42,7 @@ public class OutputView {
     }
 
     private void printRateOfReturn(Result result) {
-        System.out.printf(OutputMessage.RESULT_ROT.message(), result.getRateOfReturn());
+        System.out.printf(OutputMessage.RESULT_ROR.message(), result.getRateOfReturn());
     }
 
     public static OutputView getInstance() {
