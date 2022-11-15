@@ -10,7 +10,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class WinningNumbersTest {
 
-    WinningNumbers winningNumbers = new WinningNumbers();
+    WinningNumbersImple winningNumbers = new WinningNumbersImple();
 
     @DisplayName("당첨 번호와 보너스 번호가 중복되면 예외")
     @Test
