@@ -14,7 +14,7 @@ public class UserOutput {
     private static final String OUTPUT_PERCENT = "%입니다.";
 
     public static void outputBuyLottos(Lottos lottos) {
-        System.out.println("\n" + lottos.getNumberOfLottos().toString() + OUTPUT_BUY_LOTTOS);
+        System.out.println("\n" + lottos.getLottos().size() + OUTPUT_BUY_LOTTOS);
 
         for (Lotto lotto : lottos.getLottos()) {
             System.out.println(lotto.getLotto().toString());
