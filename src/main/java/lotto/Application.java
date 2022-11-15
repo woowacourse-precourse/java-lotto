@@ -82,7 +82,7 @@ public class Application {
 
     public static void makeRandomNumbers() {
         for (int lotto = 0; lotto < lottoNumber; lotto++) {
-            List<Integer> pickNumbers = Randoms.pickUniqueNumbersInRange(1, 45, 7);
+            List<Integer> pickNumbers = new ArrayList<>(Randoms.pickUniqueNumbersInRange(1, 45, 6));
             Collections.sort(pickNumbers);
             randomNumbers.add(pickNumbers);
             printOut(lotto);
@@ -107,13 +107,15 @@ public class Application {
     public static void printOutResult() {
         long profit = 0;
         System.out.println(lineBreak + winningStats);
+
         for (Rate r : Rate.values()) {
             System.out.print(r.getStr() + String.format(" - %d개\n", stats[r.getRate()]));
             profit += r.calculate(stats[r.getRate()]);
         }
-        System.out.println(String.format("총 수익률은 %.1f입니다.", profit / inputMoney));
-    }
 
+        double profitRate = profit / (double) inputMoney * 100;
+        System.out.println(String.format("총 수익률은 %.1f%%입니다.", profitRate));
+    }
     public static void printOut(int num) {
         List<Integer> numbers = randomNumbers.get(num);
 
@@ -121,10 +123,9 @@ public class Application {
         for (int i = 0; i < numbers.size() - 1; i++) {
             System.out.print(String.format("%d, ", numbers.get(i)));
         }
-        System.out.print(numbers.get(6));
+        System.out.print(numbers.get(5));
         System.out.println("]");
     }
-
     public static List<Integer> stringToListInteger(String str) {
         String[] strArray = str.split(",");
         List<Integer> list = new ArrayList<>();
@@ -136,11 +137,9 @@ public class Application {
     }
 
     public static void main(String[] args) {
-
         getMoney();
         makeRandomNumbers();
         getWinningNumbers();
         printOutResult();
-
     }
 }
