@@ -18,7 +18,7 @@ public class LottoGameView {
         this.viewValidator = viewValidator;
     }
 
-    public int inputMoney() {
+    public long inputMoney() {
         InformationMessage.INPUT_PRICE.print();
         String money = Console.readLine();
 
@@ -27,7 +27,7 @@ public class LottoGameView {
         viewValidator.validateMoneyIsZero(money);
         viewValidator.validateUnitOf1000(money);
 
-        return Integer.parseInt(money);
+        return Long.parseLong(money);
     }
 
     public List<Integer> inputWinningNumbers() {

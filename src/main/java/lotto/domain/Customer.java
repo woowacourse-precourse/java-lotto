@@ -13,7 +13,7 @@ public class Customer {
         return new WinningNumber(winningNumbers, bonusNumber);
     }
 
-    public Lottos purchaseLottos(int purchaseMoney) {
+    public Lottos purchaseLottos(long purchaseMoney) {
         validateUnitOfTenThousand(purchaseMoney);
         return new Lottos(IntStream.range(0, getLottoCount(purchaseMoney))
                 .mapToObj(index -> purchaseLotto())
@@ -31,11 +31,11 @@ public class Customer {
                 LottoConstant.NUMBER_COUNT.getValue());
     }
 
-    private int getLottoCount(int purchaseMoney) {
-        return purchaseMoney / LottoConstant.PRICE.getValue();
+    private int getLottoCount(long purchaseMoney) {
+        return (int) (purchaseMoney / LottoConstant.PRICE.getValue());
     }
 
-    private void validateUnitOfTenThousand(int money) {
+    private void validateUnitOfTenThousand(long money) {
         if (money % LottoConstant.PRICE.getValue() != 0) {
             throw new IllegalArgumentException(ErrorMessage.INVALID_UNIT_OF_MONEY.getMessage());
         }

@@ -2,7 +2,6 @@ package lotto.domain;
 
 import lotto.util.ErrorMessage;
 import lotto.util.LottoConstant;
-
 import java.util.HashSet;
 import java.util.List;
 

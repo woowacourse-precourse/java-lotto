@@ -21,13 +21,13 @@ public class ViewValidator {
     }
 
     public void validateUnitOf1000(String money) {
-        if (Integer.parseInt(money) % UNIT_OF_MONEY != 0) {
+        if (Long.parseLong(money) % UNIT_OF_MONEY != 0L) {
             throw new IllegalArgumentException(ErrorMessage.INVALID_UNIT_OF_MONEY.getMessage());
         }
     }
 
     public void validateMoneyIsZero(String money) {
-        if (Integer.parseInt(money) == 0) {
+        if (Long.parseLong(money) == 0L) {
             throw new IllegalArgumentException(ErrorMessage.MONEY_IS_ZERO.getMessage());
         }
     }
