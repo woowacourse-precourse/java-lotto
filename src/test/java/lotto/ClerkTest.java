@@ -1,11 +1,12 @@
 package lotto;
 
+import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class ClerkTest extends CustomNsTest {
+public class ClerkTest extends NsTest {
     private static final String ERROR_MESSAGE = "[ERROR]";
 
     @Test

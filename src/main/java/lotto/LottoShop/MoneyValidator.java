@@ -24,13 +24,13 @@ public class MoneyValidator {
     }
 
     private void validatePurchaseRange(int purchaseAmount) {
-        if (purchaseAmount == ZERO.getIntValue() || purchaseAmount > HUNDRED_THOUSAND.getIntValue()) {
+        if (purchaseAmount < LOTTO_PURCHASE_MIN.getIntValue() || purchaseAmount > LOTTO_PURCHASE_MAX.getIntValue()) {
             throw new IllegalArgumentException(PURCHASE_RANGE_ERROR.getMessage());
         }
     }
 
     private void validatePurchaseThousandModular(int purchaseAmount) {
-        if (purchaseAmount % THOUSAND.getIntValue() != ZERO.getIntValue()) {
+        if (purchaseAmount % LOTTO_PURCHASE_MIN.getIntValue() != THOUSAND_MODULAR_ZERO.getIntValue()) {
             throw new IllegalArgumentException(PURCHASE_THOUSAND_MODULAR_ERROR.getMessage());
         }
     }

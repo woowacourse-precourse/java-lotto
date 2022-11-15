@@ -1,6 +1,6 @@
 package lotto.LottoShop;
 
-import lotto.LottoManager.Lotto;
+import lotto.LottoManagement.Lotto;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,7 +16,7 @@ public class LottoPublishingMachine {
     public List<Lotto> publishLottoGroup(int lotto_amount) {
         List<Lotto> lotto_group = new ArrayList<>();
 
-        for (int i = ZERO.getIntValue(); i < lotto_amount; i++) {
+        for (int i = ZERO_INDEX.getIntValue(); i < lotto_amount; i++) {
             Lotto new_lotto = publishLotto(lotto_group);
             lotto_group.add(new_lotto);
         }
@@ -25,7 +25,7 @@ public class LottoPublishingMachine {
 
     private Lotto publishLotto(List<Lotto> lotto_group) {
         List<Integer> random_lotto_num
-                = pickUniqueNumbersInRange(ONE.getIntValue(), FOURTY_FIVE.getIntValue(), SIX.getIntValue())
+                = pickUniqueNumbersInRange(LOTTO_NUMBER_MIN.getIntValue(), LOTTO_NUMBER_MAX.getIntValue(), LOTTO_NUMBER_COUNT.getIntValue())
                         .stream()
                         .sorted()
                         .collect(Collectors.toList());

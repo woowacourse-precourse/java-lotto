@@ -11,8 +11,7 @@ public enum Error {
 
     DRAW_LOTTO_FORMAT_ERROR("[ERROR] 로또 당첨 번호 입력 형식은 ','로 구분된 6개의 숫자여야 합니다."),
     DRAW_LOTTO_BONUS_ERROR("[ERROR] 로또 당첨 번호 보너스 번호는 1개의 숫자여야 합니다."),
-    DRAW_LOTTO_RANGE_ERROR("[ERROR] 로또 당첨 번호는 1부터 45까지의 숫자여야 합니다."),
-    DRAW_LOTTO_DUPLICATED_ERROR("[ERROR] 로또 당첨 번호가 중복되면 안됩니다.")
+    DRAW_LOTTO_RANGE_ERROR("[ERROR] 로또 당첨 번호는 1부터 45까지의 고유한 숫자여야 합니다."),
     ;
 
     final private String message;

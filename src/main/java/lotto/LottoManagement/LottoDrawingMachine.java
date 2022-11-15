@@ -1,4 +1,4 @@
-package lotto.LottoManager;
+package lotto.LottoManagement;
 
 import camp.nextstep.edu.missionutils.Console;
 
@@ -33,9 +33,12 @@ public class LottoDrawingMachine {
     }
 
     private static List<String> drawLottoNumbers() {
+        System.out.println("당첨 번호를 입력해 주세요.");
         String winning_number_line =
                 Console.readLine()
                         .replace(SPACE.getValue(), EMPTY.getValue());
+
+        System.out.println("보너스 번호를 입력해 주세요.");
         String bonus_number_line =
                 Console.readLine()
                         .replace(SPACE.getValue(), EMPTY.getValue());
@@ -97,7 +100,7 @@ public class LottoDrawingMachine {
 
         int matched_count = countLottoNumberDistinct(concat_numbers);
 
-        if (matched_count == THIRD_GRADE_NUMBER.getIntValue()) {
+        if (matched_count == THIRD_GRADE_COUNT.getIntValue()) {
             return checkBonusNumber(lotto_numbers);
         }
         return matched_count;
@@ -110,9 +113,9 @@ public class LottoDrawingMachine {
                         .count();
 
         if (bonus_matched == BONUS_NUMBER_MATCHED.getIntValue()) {
-            return SECOND_GRADE_NUMBER.getIntValue();
+            return SECOND_GRADE_COUNT.getIntValue();
         }
-        return THIRD_GRADE_NUMBER.getIntValue();
+        return THIRD_GRADE_COUNT.getIntValue();
     }
 
 

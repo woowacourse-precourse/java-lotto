@@ -1,6 +1,6 @@
 package lotto.LottoShop;
 
-import lotto.LottoManager.Lotto;
+import lotto.LottoManagement.Lotto;
 
 import java.util.List;
 
@@ -28,7 +28,7 @@ public class Clerk {
     }
 
     private int getLottoAmount(String purchaseAmount) {
-        return Integer.parseInt(purchaseAmount) / THOUSAND.getIntValue();
+        return Integer.parseInt(purchaseAmount) / LOTTO_PURCHASE_MIN.getIntValue();
     }
 
     private void printPurchasedLotto(List<Lotto> lotto_group) {
