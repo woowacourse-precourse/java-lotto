@@ -7,14 +7,26 @@ import lotto.domain.Rank;
 import lotto.service.Service;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-
 import java.util.HashMap;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.catchThrowable;
 
 class ServiceTest {
+
+    private static final List<Integer> FIRST_RANK_LOTTO = List.of(1,2,3,4,5,6);
+    private static final List<Integer> SECOND_RANK_LOTTO = List.of(1,2,3,4,5,45);
+    private static final List<Integer> THIRD_RANK_LOTTO = List.of(2,3,4,5,6,7);
+    private static final List<Integer> FOURTH_RANK_LOTTO = List.of(3,4,5,6,7,8);
+    private static final List<Integer> BONUS_FOURTH_RANK_LOTTO = List.of(3,4,5,6,7,45);
+    private static final List<Integer> FIFTH_RANK_LOTTO = List.of(4,5,6,7,8,9);
+    private static final List<Integer> BONUS_FIFTH_RANK_LOTTO = List.of(4,5,6,7,8,45);
+    private static final List<Integer> NO_RANK_TWO_LOTTO = List.of(5,6,7,8,9,10);
+    private static final List<Integer> BONUS_NO_RANK_TWO_LOTTO = List.of(5,6,7,8,9,45);
+    private static final List<Integer> NO_RANK_ONE_LOTTO = List.of(6,7,8,9,10,11);
+    private static final List<Integer> BONUS_NO_RANK_ONE_LOTTO = List.of(6,7,8,9,10,45);
+    private static final List<Integer> NO_RANK_ZERO_LOTTO = List.of(7,8,9,10,11,12);
+    private static final List<Integer> BONUS_NO_RANK_ZERO_LOTTO = List.of(7,8,9,10,11,45);
     final Service service = new Service();
 
     @DisplayName("입력된 금액으로 구매가능한 개수만큼 로또번호를 발급해야 한다.")
@@ -40,14 +52,14 @@ class ServiceTest {
         final LottoGame lottogame = new LottoGame(List.of(1,2,3,4,5,6),45);
         final Buyer cases = new Buyer(1000);
         //로또 번호 리스트, 보너스번호 상수화하기
-        cases.buyLotto(new Lotto(List.of(1,2,3,4,5,6)));    //6개 일치
-        cases.buyLotto(new Lotto(List.of(1,2,3,4,5,45)));   //5개 일치 + 보너스번호 일치
-        cases.buyLotto(new Lotto(List.of(2,3,4,5,6,7)));    //5개 일치
-        cases.buyLotto(new Lotto(List.of(3,4,5,6,7,8)));    //4개 일치
-        cases.buyLotto(new Lotto(List.of(4,5,6,7,8,9)));    //3개 일치
-        cases.buyLotto(new Lotto(List.of(5,6,7,8,9,10)));   //2개 일치
-        cases.buyLotto(new Lotto(List.of(6,7,8,9,10,11)));  //1개 일치
-        cases.buyLotto(new Lotto(List.of(7,8,9,10,11,12))); //0개 일치
+        cases.buyLotto(new Lotto(FIRST_RANK_LOTTO));    //6개 일치
+        cases.buyLotto(new Lotto(SECOND_RANK_LOTTO));   //5개 일치 + 보너스번호 일치
+        cases.buyLotto(new Lotto(THIRD_RANK_LOTTO));    //5개 일치
+        cases.buyLotto(new Lotto(FOURTH_RANK_LOTTO));   //4개 일치
+        cases.buyLotto(new Lotto(FIFTH_RANK_LOTTO));    //3개 일치
+        cases.buyLotto(new Lotto(NO_RANK_TWO_LOTTO));   //2개 일치
+        cases.buyLotto(new Lotto(NO_RANK_ONE_LOTTO));  //1개 일치
+        cases.buyLotto(new Lotto(NO_RANK_ZERO_LOTTO)); //0개 일치
 
         //when
         service.checkBuyerLotteries(cases, lottogame);
@@ -71,12 +83,12 @@ class ServiceTest {
         final LottoGame lottogame = new LottoGame(List.of(1,2,3,4,5,6),45);
         final Buyer cases = new Buyer(1000);
         //로또 번호 리스트, 보너스번호 상수화하기
-        cases.buyLotto(new Lotto(List.of(1,2,3,4,5,45)));   //5개 일치 + 보너스번호 일치
-        cases.buyLotto(new Lotto(List.of(3,4,5,6,7,45)));    //4개 일치 + 보너스번호 일치
-        cases.buyLotto(new Lotto(List.of(4,5,6,7,8,45)));    //3개 일치 + 보너스번호 일치
-        cases.buyLotto(new Lotto(List.of(5,6,7,8,9,45)));   //2개 일치 + 보너스번호 일치
-        cases.buyLotto(new Lotto(List.of(6,7,8,9,10,45)));  //1개 일치 + 보너스번호 일치
-        cases.buyLotto(new Lotto(List.of(7,8,9,10,11,45))); //0개 일치 + 보너스번호 일치
+        cases.buyLotto(new Lotto(SECOND_RANK_LOTTO));   //5개 일치 + 보너스번호 일치
+        cases.buyLotto(new Lotto(BONUS_FOURTH_RANK_LOTTO));    //4개 일치 + 보너스번호 일치
+        cases.buyLotto(new Lotto(BONUS_FIFTH_RANK_LOTTO));    //3개 일치 + 보너스번호 일치
+        cases.buyLotto(new Lotto(BONUS_NO_RANK_TWO_LOTTO));   //2개 일치 + 보너스번호 일치
+        cases.buyLotto(new Lotto(BONUS_NO_RANK_ONE_LOTTO));  //1개 일치 + 보너스번호 일치
+        cases.buyLotto(new Lotto(BONUS_NO_RANK_ZERO_LOTTO)); //0개 일치 + 보너스번호 일치
 
         //when
         service.checkBuyerLotteries(cases, lottogame);
