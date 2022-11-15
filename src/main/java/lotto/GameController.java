@@ -5,8 +5,6 @@ import utils.UserInput;
 import java.util.ArrayList;
 import java.util.List;
 
-import static lotto.Constant.*;
-
 public class GameController {
     List<List<Integer>> myLottos = new ArrayList<>();
     List<Integer> winningNumbers = new ArrayList<>();

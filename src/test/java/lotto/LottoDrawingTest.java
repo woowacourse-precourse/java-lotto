@@ -2,21 +2,36 @@ package lotto;
 
 import org.junit.jupiter.api.Test;
 
-import java.util.List;
-
-import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomUniqueNumbersInRangeTest;
-import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
-import static org.assertj.core.api.Assertions.assertThat;
+import static Constants.Error.*;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static org.junit.jupiter.api.Assertions.*;
 
 class LottoDrawingTest {
+    @Test
+    void 당첨번호_비정상입력_숫자범위() {
+        assertThatThrownBy(() -> new LottoDrawing("1,2,3,4,5,50", "7"))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(ERROR_RANGE);
+    }
 
     @Test
     void 당첨번호_비정상입력_숫자x() {
-        assertThatThrownBy(() -> new LottoDrawing("1,2,3,4,5,o", "7"))
+        assertThatThrownBy(() -> new LottoDrawing("1,2,3,4,5,a", "7"))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("[ERROR]");
+                .hasMessage(ERROR_NOT_NUMBER);
+    }
+
+    @Test
+    void 보너스번호_비정상입력_숫자범위() {
+        assertThatThrownBy(() -> new LottoDrawing("1,2,3,4,5,6", "50"))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(ERROR_RANGE);
+    }
+
+    @Test
+    void 보너스번호_비정상입력_숫자x() {
+        assertThatThrownBy(() -> new LottoDrawing("1,2,3,4,5,6", "a"))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(ERROR_NOT_NUMBER);
     }
 
 }

@@ -5,7 +5,8 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.List;
 
-import static lotto.Constant.*;
+import static Constants.Constant.*;
+import static Constants.Error.ERROR_INPUT_PAY_AMOUNT;
 
 public class LottoSeller {
     int payAmount;

@@ -4,7 +4,8 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 
-import static lotto.Constant.*;
+import static Constants.Constant.*;
+import static Constants.Error.*;
 
 public class Lotto {
     private final List<Integer> numbers;

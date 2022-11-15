@@ -3,7 +3,7 @@ package lotto;
 import java.util.ArrayList;
 import java.util.List;
 
-import static lotto.Constant.*;
+import static Constants.Constant.*;
 
 public enum PrizeEnum {
     fifthWinner_3(5000, 3, false, MESSAGE_RESULT_OF_RANK_5),

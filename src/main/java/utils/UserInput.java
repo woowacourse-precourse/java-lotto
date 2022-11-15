@@ -3,10 +3,8 @@ package utils;
 import camp.nextstep.edu.missionutils.Console;
 import lotto.LottoDrawing;
 
-import java.util.List;
-
-import static lotto.Constant.MESSAGE_INPUT_BONUS_NUMBER;
-import static lotto.Constant.MESSAGE_INPUT_WINNING_NUMBER;
+import static Constants.Constant.MESSAGE_INPUT_BONUS_NUMBER;
+import static Constants.Constant.MESSAGE_INPUT_WINNING_NUMBER;
 
 public class UserInput {
 
