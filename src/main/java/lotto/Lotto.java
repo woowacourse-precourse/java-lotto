@@ -12,12 +12,14 @@ public class Lotto {
     private final List<Integer> numbers;
     private int winningResult;
     private boolean bonusResult;
+    private matchType type;
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
         this.numbers = numbers;
         this.winningResult = 0;
         this.bonusResult = false;
+        this.type = NONE;
     }
 
     private void validate(List<Integer> numbers) {
@@ -55,12 +57,13 @@ public class Lotto {
         bonusResult = numbers.contains(bonus);
     }
 
-    void matchAll(List<Integer> winning, int bonus) {
+    void compare(List<Integer> winning, int bonus) {
         matchWinning(winning);
         matchBonus(bonus);
+        decideType();
     }
 
-    matchType getType() {
+    void decideType() {
         matchType type = NONE;
         if (winningResult == 3) {
             type = THREE;
@@ -73,6 +76,10 @@ public class Lotto {
         } else if (winningResult == 6) {
             type = SIX;
         }
+        this.type=type;
+    }
+
+    matchType getType(){
         return type;
     }
 }

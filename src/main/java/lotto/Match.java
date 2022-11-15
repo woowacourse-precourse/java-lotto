@@ -45,7 +45,7 @@ public class Match {
 
     public void countAll(List<Lotto> lottos, List<Integer> winning, int bonus) {
         for (Lotto lotto : lottos) {
-            lotto.matchAll(winning, bonus);
+            lotto.compare(winning, bonus);
             matchType type = lotto.getType();
             countEach(type);
         }
