@@ -45,9 +45,9 @@ public class Lotto {
     }
 
     private boolean hasInvalidInput(List<Integer> numbers) {
-        Pattern isInvalidInputPattern = Pattern.compile("[^1-45]");
+        Pattern correctInputPattern = Pattern.compile("^([1-9]|1[0-9]|2[0-9]|3[0-9]|4[0-5])$");
         return numbers.stream()
-            .anyMatch(number -> isInvalidInputPattern
+            .noneMatch(number -> correctInputPattern
                 .matcher(number.toString())
                 .find()
             );
