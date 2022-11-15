@@ -5,27 +5,9 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.*;
 import java.util.stream.Collectors;
 
-import static lotto.NumberValidate.*;
-
 public class LottoStore {
 
-    public static void start() {
-        Money money = new Money(LottoPrinter.inputer("구입금액을 입력해 주세요."));
-        List<Lotto> lottos = addLotto(money);
-        LottoPrinter.lottosPrint(lottos);
-
-        Lotto winningNumbers = getWinningNumbers(LottoPrinter.inputer("당첨 번호를 입력해 주세요."));
-        String bonusNumber = LottoPrinter.inputer("보너스 번호를 입력해 주세요.");
-        digitValidate(bonusNumber);
-        inRangeValidate(Integer.parseInt(bonusNumber));
-
-        Map<LottoGrade, Integer> lottosResult = conversionLottosResult(lottos, winningNumbers, bonusNumber);
-        LottoPrinter.lottoResultPrint(lottosResult);
-        double calculationResult = revenueCalculator(money.getMoney(), lottosResult);
-        LottoPrinter.revenueResultPrint(calculationResult);
-    }
-
-    private static List<Lotto> addLotto(Money money) {
+    public List<Lotto> addLotto(Money money) {
         int lottoCount = (int)(money.getMoney() / 1000);
 
         ArrayList<Lotto> lottos = new ArrayList<>();
@@ -36,7 +18,7 @@ public class LottoStore {
         return lottos;
     }
 
-    private static Lotto getWinningNumbers(String winningNumber) {
+    public Lotto getWinningNumbers(String winningNumber) {
         List<Integer> winningNumbers = Arrays.asList(winningNumber.split(",")).stream()
                 .map(Integer::parseInt)
                 .collect(Collectors.toList());
@@ -44,7 +26,7 @@ public class LottoStore {
         return new Lotto(winningNumbers);
     }
 
-    private static Map<LottoGrade, Integer> conversionLottosResult(List<Lotto> lottos, Lotto winningNumbers, String bonusNumber) {
+    public Map<LottoGrade, Integer> conversionLottosResult(List<Lotto> lottos, Lotto winningNumbers, String bonusNumber) {
         Map<LottoGrade, Integer> totalResult = new EnumMap<>(LottoGrade.class);
         totalResult.put(LottoGrade.ONE, 0);
         totalResult.put(LottoGrade.TWO, 0);
@@ -62,7 +44,7 @@ public class LottoStore {
         return totalResult;
     }
 
-    private static List<LottoGrade> allLottosCompare(List<Lotto> lottos, Lotto winningNumbers, String bonusNumber) {
+    private List<LottoGrade> allLottosCompare(List<Lotto> lottos, Lotto winningNumbers, String bonusNumber) {
         List<LottoGrade> lottosResult = new ArrayList<>();
 
         for (Lotto lotto : lottos) {
@@ -71,7 +53,7 @@ public class LottoStore {
         return lottosResult;
     }
 
-    private static LottoGrade lottoNumbersCompareToWinningNumbers(Lotto lottoNumbers, Lotto winningNumbers, String bonusNumber) {
+    private LottoGrade lottoNumbersCompareToWinningNumbers(Lotto lottoNumbers, Lotto winningNumbers, String bonusNumber) {
         int count = 0;
         boolean bonusBall = lottoNumbers.getNumbers().contains(Integer.parseInt(bonusNumber));
         for (Integer number : lottoNumbers.getNumbers()) {
@@ -82,7 +64,7 @@ public class LottoStore {
         return LottoGrade.getRank(count, bonusBall);
     }
 
-    private static double revenueCalculator(Long money, Map<LottoGrade, Integer> lottosResult) {
+    public double revenueCalculator(Long money, Map<LottoGrade, Integer> lottosResult) {
         int sum = 0;
         for (LottoGrade key : lottosResult.keySet()) {
             if (lottosResult.get(key) != 0) {
