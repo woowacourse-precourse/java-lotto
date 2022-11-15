@@ -13,7 +13,7 @@ public class User {
         return this.money;
     }
 
-    public void inputAmount() {
+    public void inputMoney() {
         this.money = UserInput.moneyInput();
     }
 

@@ -13,6 +13,13 @@ public class Compare {
     public Compare() {
         this.initRankBoard();
     }
+    public void setWinningLotto(List<Integer> winningLotto) {
+        this.winningLotto = winningLotto;
+    }
+
+    public void setBonusNumber(int bonusNumber) {
+        this.bonusNumber = bonusNumber;
+    }
 
     private void initRankBoard() {
         RANK_BOARD.put(6,Rank.RANK_1);
@@ -24,27 +31,22 @@ public class Compare {
 
     public Rank compareLotto(Lotto lotto) {
         int count = 0;
-        for (int number : winningLotto) {
-            if (lotto.isContainNumber(number)) {
-                count += 1;
+        for(int num : winningLotto) {
+            if(lotto.isContainNumber(num)) {
+                count++;
             }
         }
         Rank rank = RANK_BOARD.get(count);
-
-        if (rank == null) {
+        if(rank == null) {
             return Rank.RANK_NONE;
         }
-
-        if (rank == Rank.RANK_3) {
-            if (lotto.isContainBonusNumber(bonusNumber)) {
-                return Rank.RANK_2;
+        if(rank == Rank.RANK_3) {
+            if(lotto.isContainBonusNumber(bonusNumber)) {
+                return  Rank.RANK_2;
             }
         }
-        return rank;
-    }
 
-    public void setWinningLotto(List<Integer> winningLotto) {
-        this.winningLotto = winningLotto;
+        return rank;
     }
 
     public void inputTargetNumbers() {
@@ -54,8 +56,5 @@ public class Compare {
     public void inputBonusNumber() {
         this.bonusNumber = UserInput.inputBonusNumber();
     }
-    public void setBonusNumber(int bonusNumber) {
-        this.bonusNumber = bonusNumber;
 
-    }
 }

@@ -13,7 +13,6 @@ public class UserInput {
 
     public static int moneyInput() {
         System.out.println(MONEY_INPUT_MESSAGE);
-
         String userInputMoney = Console.readLine();
 
         try {

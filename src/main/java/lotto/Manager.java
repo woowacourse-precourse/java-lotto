@@ -5,16 +5,12 @@ import java.util.List;
 import java.util.Map;
 
 public class Manager {
-
     User user = new User();
-
     Map<Rank,Integer> winningBoard = new HashMap<>();
     Compare compareLotto = new Compare();
     private double rateOfReturns = 0.d;
 
-
     public void compareLotto() {
-
         for (Lotto lotto : user.getLottos()) {
             Rank rank = compareLotto.compareLotto(lotto);
             winningBoard.put(rank, (winningBoard.getOrDefault(rank,0))+1);
@@ -40,7 +36,7 @@ public class Manager {
     }
 
     public void start() {
-        user.inputAmount();
+        user.inputMoney();
         user.buyLotto();
         UserOutput.printLottoCount(user.getMoney());
         UserOutput.printLottoList(user.getLottos());
