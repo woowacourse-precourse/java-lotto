@@ -11,6 +11,8 @@ import java.util.stream.Collectors;
 
 public class Answer {
 
+    private static final char comma = ',';
+
     public static List<Integer> lottoAnswerGenerator(String answerInputByUser) {
         inputValidity(answerInputByUser.trim());
         return splitValidity(splitByComma(answerInputByUser.trim()));
@@ -20,8 +22,7 @@ public class Answer {
         long count = answerInput.chars()
                 .filter(Character::isDigit).count();
         long commaCount = answerInput.chars()
-                .filter(c -> c == ',').count();
-
+                .filter(c -> c == comma).count();
         try {
             if (count + commaCount != answerInput.length() || commaCount != Constants.COMMA_NUMBER.getValue()) {
                 throw new IllegalArgumentException(Sentence.WINNING_NOT_VALID.getValue());
@@ -35,7 +36,7 @@ public class Answer {
     private static List<Integer> splitByComma(String answerInput) {
         List<Long> splited;
         try {
-            splited = Arrays.stream(answerInput.split(","))
+            splited = Arrays.stream(answerInput.split("" + comma))
                     .map(Long::parseLong)
                     .collect(Collectors.toList());
         } catch (Exception e) {

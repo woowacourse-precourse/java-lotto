@@ -9,9 +9,9 @@ import lotto.resources.ExceptionCatcher;
 public class Bonus {
 
     public static void inputValidity(String input, Lotto answer) {
-        if (checkNum(input.trim()) == Constants.ERROR_CASE.getValue()
-                || checkInRange(input.trim()) == Constants.ERROR_CASE.getValue()
-                || checkNotInWin(checkInRange(input.trim()), answer) == Constants.ERROR_CASE.getValue()) {
+        if (checkNum(input.trim()) == Constants.ERROR_CASE.getValue() ||
+            checkInRange(input.trim()) == Constants.ERROR_CASE.getValue() ||
+            checkNotInWin(checkInRange(input.trim()), answer) == Constants.ERROR_CASE.getValue()) {
         }
     }
 
@@ -30,7 +30,8 @@ public class Bonus {
     private static Integer checkInRange(String input) {
 
         try {
-            if (!(Long.parseLong(input) >= Constants.FROM.getValue() && Long.parseLong(input) <= Constants.TO.getValue())) {
+            if (!(Long.parseLong(input) >= Constants.FROM.getValue() &&
+                    Long.parseLong(input) <= Constants.TO.getValue())) {
                 throw new IllegalArgumentException(Sentence.BONUS_OUT_OF_RANGE.getValue());
             }
         } catch (IllegalArgumentException e) {

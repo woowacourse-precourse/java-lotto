@@ -1,6 +1,5 @@
 package lotto.Model;
 
-import lotto.io.Output;
 import lotto.resources.Rank;
 import lotto.resources.Constants;
 
@@ -37,8 +36,8 @@ public class TotalResultMaker {
         return resultTable;
     }
     private void checkBonus(int index, List<Integer> answerResult, List<Integer> bonusResult) {
-        if (Objects.equals(answerResult.get(index), Constants.BONUS_INDEX.getValue())
-            && Objects.equals(bonusResult.get(index), Constants.BONUS_EXIST.getValue())) {
+        if (Objects.equals(answerResult.get(index), Constants.BONUS_INDEX.getValue()) &&
+                Objects.equals(bonusResult.get(index), Constants.BONUS_EXIST.getValue())) {
             bonusCase++;
         }
     }
@@ -52,7 +51,7 @@ public class TotalResultMaker {
                 continue;
             }
             sb.append(String.format("%d개 일치 (%s원) - %d개", rank.getRank(), setCommaInPrint(rank.getMoney()),
-                resultTable.get(i++)));
+                    resultTable.get(i++)));
             if (i <= 6) {
                 sb.append("\n");
             }
@@ -64,7 +63,7 @@ public class TotalResultMaker {
 
         AtomicReference<Long> totalSum = new AtomicReference<>(0L);
         IntStream.range(Constants.RANK_START.getValue(), Constants.LOTTO_LENGTH.getValue() + 1)
-            .forEach(i -> totalSum.updateAndGet(v -> v + Rank.getMoney(i) * resultTable.get(i)));
+                .forEach(i -> totalSum.updateAndGet(v -> v + Rank.getMoney(i) * resultTable.get(i)));
         float totalSumAndBonus = totalSum.get();
         totalSumAndBonus += Rank.getMoney(Constants.LOTTO_LENGTH.getValue() + Constants.ONE.getValue()) * bonusCase;
         int divisor = (int) (purchaseLottoCnt * Constants.CURRENCY.getValue());

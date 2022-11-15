@@ -1,6 +1,6 @@
 package lotto.resources;
 
-public class ExceptionCatcher extends RuntimeException{
+public class ExceptionCatcher extends RuntimeException {
 
     public ExceptionCatcher(String message) {
 

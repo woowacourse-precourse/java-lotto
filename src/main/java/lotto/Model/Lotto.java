@@ -2,8 +2,8 @@ package lotto.Model;
 
 import lotto.resources.Constants;
 
-import java.util.HashSet;
 import java.util.List;
+import java.util.HashSet;
 import java.util.function.Consumer;
 
 public class Lotto {
@@ -20,8 +20,8 @@ public class Lotto {
             throw new IllegalArgumentException();
         }
         HashSet<Integer> numSet = new HashSet<>(numbers);
-        if (!(numSet.size() == Constants.LOTTO_LENGTH.getValue()
-                || numSet.size() == Constants.BONUS_LOTTO_SIZE.getValue())) {
+        if (!(numSet.size() == Constants.LOTTO_LENGTH.getValue() ||
+                numSet.size() == Constants.BONUS_LOTTO_SIZE.getValue())) {
             throw new IllegalArgumentException();
         }
     }
@@ -34,12 +34,6 @@ public class Lotto {
 
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("[");
-        for (int i = 0; i < 5; i++) {
-            sb.append(numbers.get(i).toString()).append(", ");
-        }
-        sb.append(numbers.get(5).toString()).append("]");
-        return sb.toString();
+        return this.numbers.toString();
     }
 }

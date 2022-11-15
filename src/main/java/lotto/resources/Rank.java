@@ -28,6 +28,7 @@ public enum Rank {
     public Integer getRank() {
         return this.rank;
     }
+
     public Long getMoney() {
         return this.money;
     }

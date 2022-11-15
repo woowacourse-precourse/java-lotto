@@ -1,9 +1,10 @@
 package lotto.Model;
 
 import lotto.io.Input;
-import lotto.io.InputKeyboard;
 import lotto.io.Output;
 import lotto.io.OutputScreen;
+import lotto.io.InputKeyboard;
+
 import lotto.resources.Sentence;
 import lotto.resources.ExceptionCatcher;
 
@@ -56,7 +57,7 @@ public class Game {
 
     private LottoContainer createLottoContainer(Money moneyUserTyped) {
         return new LottoContainer(
-            SixDigitGenerator.generateLottoDigits(moneyUserTyped.getLottoCntForCalculate()));
+                SixDigitGenerator.generateLottoDigits(moneyUserTyped.getLottoCntForCalculate()));
     }
 
     private TotalResultMaker calculateResult(LottoContainer lottoBox, Lotto answer, Lotto bonus) {

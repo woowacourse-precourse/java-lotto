@@ -1,6 +1,5 @@
 package lotto.Model;
 
-
 import java.util.List;
 import java.util.ArrayList;
 
@@ -8,11 +7,9 @@ public class LottoContainer {
 
     private static List<Lotto> lottoBundle;
 
-
     public LottoContainer(List<Lotto> lottoBundle) {
         LottoContainer.lottoBundle = lottoBundle;
     }
-
 
     public List<Integer> getAnswerCompareResult(Lotto answer) {
         List<Integer> returnResult = new ArrayList<>();
