@@ -37,7 +37,7 @@ public class LottoGame {
             System.out.println("\n당첨 통계\n" + "---");
             confirmWinningCount(winningNumbers, userNumber, bonusNumber);
             printEarnRate(lottoAmount);
-        } catch (IllegalArgumentException e) {
+        } catch (IllegalArgumentException e){
             System.out.println(e.getMessage());
         }
     }

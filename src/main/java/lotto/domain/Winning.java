@@ -12,10 +12,10 @@ public enum Winning {
             x -> false, 0, 300_00_000),
     SIX("6개 일치 (2,000,000,000원) - ", x -> x == 6, 0, 2_000_000_000);
 
-    private String winningMessage;
-    private Predicate<Integer> predicate;
+    private final String winningMessage;
+    private final Predicate<Integer> predicate;
+    private final int value;
     private int count;
-    private int value;
 
     Winning(String winningMessage, Predicate<Integer> predicate, int count, int value) {
         this.winningMessage = winningMessage;
@@ -28,7 +28,14 @@ public enum Winning {
         return predicate.test(count);
     }
 
+    private static void initCount(){
+        for (Winning winning : Winning.values()) {
+            winning.count = 0;
+        }
+    }
+
     public static void findWinningValue(int count, Lotto winningNumbers, int bonus) {
+        initCount();
 
         Winning win = Arrays.stream(Winning.values())
                 .filter(winning -> winning.test(count))
