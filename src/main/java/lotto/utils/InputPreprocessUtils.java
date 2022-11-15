@@ -7,7 +7,7 @@ import java.util.stream.Collectors;
 public class InputPreprocessUtils {
     public static List<Integer> preprocess(String input){
         String[] stringNumbers = splitByComma(input);
-        isInterger(stringNumbers);
+        isInteger(stringNumbers);
 
         List<String> list = Arrays.asList(stringNumbers);
         return list.stream().map(Integer::parseInt).collect(Collectors.toList());
@@ -17,7 +17,7 @@ public class InputPreprocessUtils {
         return input.replace(" ", "").split(",");
     }
 
-    private static void isInterger(String[] inputs){
+    private static void isInteger(String[] inputs){
         for(String input: inputs){
             if(!ValidateUtils.isNumber(input)){
                 ValidateUtils.throwIllegalArgumentException(Constants.INVALID_PURCHASE_INPUT_MESSAGE);
