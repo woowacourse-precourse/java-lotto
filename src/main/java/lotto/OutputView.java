@@ -41,7 +41,15 @@ public class OutputView {
 
     }
 
+    private String rankingMessage(Ranking ranking, Integer count) {
+        if(ranking == Ranking.SECOND){
+            return String.format(SECOND_RANK_RESULT_MESSAGE,ranking.getCorrectNums(),ranking.getReward(),count);
+        }
+        return String.format(RANK_RESULT_MESSAGE,ranking.getCorrectNums(),ranking.getReward(),count);
+    }
 
-
+    private  void printProfitRate(double profitRate){
+        printMessage(String.format(PROFIT_RATE_MESSAGE,profitRate,'%'));
+    }
 
 }
